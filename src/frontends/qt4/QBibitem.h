@@ -14,7 +14,7 @@
 
 #include "QDialogView.h"
 
-#include "ui/BibitemUi.h"
+#include "ui_BibitemUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

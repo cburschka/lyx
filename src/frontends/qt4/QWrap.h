@@ -13,7 +13,7 @@
 #define QWRAP_H
 
 #include "QDialogView.h"
-#include "ui/WrapUi.h"
+#include "ui_WrapUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

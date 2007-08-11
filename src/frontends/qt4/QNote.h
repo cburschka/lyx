@@ -13,7 +13,7 @@
 #define QNOTE_H
 
 #include "QDialogView.h"
-#include "ui/NoteUi.h"
+#include "ui_NoteUi.h"
 
 #include <QDialog>
 class QCloseEvent;

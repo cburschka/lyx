@@ -15,7 +15,7 @@
 #define QNOMENCL_H
 
 #include "QDialogView.h"
-#include "ui/NomenclUi.h"
+#include "ui_NomenclUi.h"
 
 #include <QDialog>
 

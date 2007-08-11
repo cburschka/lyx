@@ -15,7 +15,7 @@
 #include "QDialogView.h"
 
 #include "ControlTexinfo.h"
-#include "ui/TexinfoUi.h"
+#include "ui_TexinfoUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

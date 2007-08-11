@@ -16,7 +16,7 @@
 #include "QDialogView.h"
 
 #include "Layout.h"
-#include "ui/ParagraphUi.h"
+#include "ui_ParagraphUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

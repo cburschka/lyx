@@ -16,7 +16,7 @@
 
 #include "QDialogView.h"
 
-#include "ui/VSpaceUi.h"
+#include "ui_VSpaceUi.h"
 
 #include <QDialog>
 

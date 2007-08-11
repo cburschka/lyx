@@ -15,19 +15,19 @@
 #include "QDialogView.h"
 #include "BulletsModule.h"
 
-#include "ui/DocumentUi.h"
-#include "ui/FontUi.h"
-#include "ui/TextLayoutUi.h"
-#include "ui/MathsUi.h"
-#include "ui/LaTeXUi.h"
-#include "ui/PageLayoutUi.h"
-#include "ui/LanguageUi.h"
-#include "ui/BiblioUi.h"
-#include "ui/NumberingUi.h"
-#include "ui/MarginsUi.h"
+#include "ui_DocumentUi.h"
+#include "ui_FontUi.h"
+#include "ui_TextLayoutUi.h"
+#include "ui_MathsUi.h"
+#include "ui_LaTeXUi.h"
+#include "ui_PageLayoutUi.h"
+#include "ui_LanguageUi.h"
+#include "ui_BiblioUi.h"
+#include "ui_NumberingUi.h"
+#include "ui_MarginsUi.h"
 
 // For the Preamble module
-#include "ui/PreambleUi.h"
+#include "ui_PreambleUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>

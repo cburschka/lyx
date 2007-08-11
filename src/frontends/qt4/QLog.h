@@ -15,7 +15,7 @@
 #include "QDialogView.h"
 
 
-#include "ui/LogUi.h"
+#include "ui_LogUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

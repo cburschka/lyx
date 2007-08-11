@@ -14,7 +14,7 @@
 #define QSPELLCHECKER_H
 
 #include "QDialogView.h"
-#include "ui/SpellcheckerUi.h"
+#include "ui_SpellcheckerUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

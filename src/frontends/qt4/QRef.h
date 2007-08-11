@@ -14,7 +14,7 @@
 
 #include "QDialogView.h"
 
-#include "ui/RefUi.h"
+#include "ui_RefUi.h"
 
 #include <QDialog>
 

@@ -13,7 +13,7 @@
 #define FORMABOUT_H
 
 #include "QDialogView.h"
-#include "ui/AboutUi.h"
+#include "ui_AboutUi.h"
 #include <QDialog>
 
 namespace lyx {

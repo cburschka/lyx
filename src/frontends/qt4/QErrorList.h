@@ -13,7 +13,7 @@
 #define QERRORLIST_H
 
 #include "QDialogView.h"
-#include "ui/ErrorListUi.h"
+#include "ui_ErrorListUi.h"
 
 #include <QDialog>
 

@@ -13,7 +13,7 @@
 #define QBRANCH_H
 
 #include "QDialogView.h"
-#include "ui/BranchUi.h"
+#include "ui_BranchUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>

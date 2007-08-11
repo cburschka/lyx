@@ -13,7 +13,7 @@
 #define QSEARCH_H
 
 #include "QDialogView.h"
-#include "ui/SearchUi.h"
+#include "ui_SearchUi.h"
 #include <string>
 
 #include <QDialog>

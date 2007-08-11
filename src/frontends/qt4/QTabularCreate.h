@@ -13,7 +13,7 @@
 #define QTABULARCREATE_H
 
 #include "QDialogView.h"
-#include "ui/TabularCreateUi.h"
+#include "ui_TabularCreateUi.h"
 
 #include <QDialog>
 

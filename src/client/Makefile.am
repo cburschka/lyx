@@ -14,9 +14,9 @@ AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/liblyxcore.la \
-	$(top_builddir)/src/insets/liblyxinsets.la \
-	$(top_builddir)/src/mathed/liblyxmathed.la \
-	$(top_builddir)/src/graphics/liblyxgraphics.la \
+	$(top_builddir)/src/liblyxinsets.la \
+	$(top_builddir)/src/liblyxmathed.la \
+	$(top_builddir)/src/liblyxgraphics.la \
 	$(top_builddir)/src/frontends/liblyxfrontends.la \
 	$(top_builddir)/src/frontends/controllers/liblyxcontrollers.la \
 	$(top_builddir)/src/frontends/qt4/liblyxqt4.la \

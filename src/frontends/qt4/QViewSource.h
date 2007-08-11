@@ -16,7 +16,7 @@
 
 #include "frontends/controllers/ControlViewSource.h"
 #include "frontends/Application.h"
-#include "ui/ViewSourceUi.h"
+#include "ui_ViewSourceUi.h"
 
 #include <QWidget>
 #include <QSyntaxHighlighter>

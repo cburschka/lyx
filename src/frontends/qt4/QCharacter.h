@@ -14,7 +14,7 @@
 #define QCHARACTER_H_CONTROLLER
 
 #include "QDialogView.h"
-#include "ui/CharacterUi.h"
+#include "ui_CharacterUi.h"
 #include <QDialog>
 
 #include "controllers/frontend_helpers.h"

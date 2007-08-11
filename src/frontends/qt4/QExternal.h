@@ -14,7 +14,7 @@
 
 #include "QDialogView.h"
 
-#include "ui/ExternalUi.h"
+#include "ui_ExternalUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>

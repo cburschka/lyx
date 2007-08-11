@@ -17,30 +17,30 @@
 #include "Color.h"
 #include "LyXRC.h"
 
-#include "ui/PrefsUi.h"
+#include "ui_PrefsUi.h"
 
 #include <vector>
 
 #include <QDialog>
 #include <QCloseEvent>
 
-#include "ui/PrefPlaintextUi.h"
-#include "ui/PrefDateUi.h"
-#include "ui/PrefKeyboardUi.h"
-#include "ui/PrefLatexUi.h"
-#include "ui/PrefScreenFontsUi.h"
-#include "ui/PrefColorsUi.h"
-#include "ui/PrefCygwinPathUi.h"
-#include "ui/PrefDisplayUi.h"
-#include "ui/PrefPathsUi.h"
-#include "ui/PrefSpellcheckerUi.h"
-#include "ui/PrefConvertersUi.h"
-#include "ui/PrefCopiersUi.h"
-#include "ui/PrefFileformatsUi.h"
-#include "ui/PrefLanguageUi.h"
-#include "ui/PrefPrinterUi.h"
-#include "ui/PrefUi.h"
-#include "ui/PrefIdentityUi.h"
+#include "ui_PrefPlaintextUi.h"
+#include "ui_PrefDateUi.h"
+#include "ui_PrefKeyboardUi.h"
+#include "ui_PrefLatexUi.h"
+#include "ui_PrefScreenFontsUi.h"
+#include "ui_PrefColorsUi.h"
+#include "ui_PrefCygwinPathUi.h"
+#include "ui_PrefDisplayUi.h"
+#include "ui_PrefPathsUi.h"
+#include "ui_PrefSpellcheckerUi.h"
+#include "ui_PrefConvertersUi.h"
+#include "ui_PrefCopiersUi.h"
+#include "ui_PrefFileformatsUi.h"
+#include "ui_PrefLanguageUi.h"
+#include "ui_PrefPrinterUi.h"
+#include "ui_PrefUi.h"
+#include "ui_PrefIdentityUi.h"
 
 namespace lyx {
 

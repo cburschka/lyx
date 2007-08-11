@@ -13,7 +13,7 @@
 #ifndef QLPRINTDIALOG_H
 #define QLPRINTDIALOG_H
 
-#include "ui/PrintUi.h"
+#include "ui_PrintUi.h"
 
 #include <QDialog>
 

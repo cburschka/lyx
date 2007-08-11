@@ -13,7 +13,7 @@
 #define QSENDTO_H
 
 #include "QDialogView.h"
-#include "ui/SendtoUi.h"
+#include "ui_SendtoUi.h"
 
 #include <QDialog>
 

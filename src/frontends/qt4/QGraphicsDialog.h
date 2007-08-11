@@ -14,7 +14,7 @@
 #ifndef QGRAPHICSDIALOG_H
 #define QGRAPHICSDIALOG_H
 
-#include "ui/GraphicsUi.h"
+#include "ui_GraphicsUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>

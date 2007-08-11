@@ -14,7 +14,7 @@
 
 #include "QDialogView.h"
 
-#include "ui/ShowFileUi.h"
+#include "ui_ShowFileUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

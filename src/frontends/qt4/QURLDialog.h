@@ -12,7 +12,7 @@
 #ifndef QURLDIALOG_H
 #define QURLDIALOG_H
 
-#include "ui/URLUi.h"
+#include "ui_URLUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

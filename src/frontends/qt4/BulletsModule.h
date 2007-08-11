@@ -13,7 +13,7 @@
 #define QBULLETSMODULE_H
 
 
-#include "ui/BulletsUi.h"
+#include "ui_BulletsUi.h"
 #include "Bullet.h"
 #include <boost/array.hpp>
 

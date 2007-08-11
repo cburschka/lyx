@@ -17,7 +17,7 @@
 
 #include "QDialogView.h"
 
-#include "ui/TabularUi.h"
+#include "ui_TabularUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

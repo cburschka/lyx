@@ -14,7 +14,7 @@
 #define QINDEX_H
 
 #include "QDialogView.h"
-#include "ui/IndexUi.h"
+#include "ui_IndexUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

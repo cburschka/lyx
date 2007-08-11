@@ -13,7 +13,7 @@
 #define QLISTINGS_H
 
 #include "QDialogView.h"
-#include "ui/ListingsUi.h"
+#include "ui_ListingsUi.h"
 
 #include <QDialog>
 #include <QCloseEvent>

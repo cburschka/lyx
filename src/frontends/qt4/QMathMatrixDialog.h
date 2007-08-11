@@ -16,7 +16,7 @@
 
 #include "QDialogView.h"
 
-#include "ui/MathMatrixUi.h"
+#include "ui_MathMatrixUi.h"
 
 #include <QDialog>
 

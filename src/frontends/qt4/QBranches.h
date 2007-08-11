@@ -12,7 +12,7 @@
 #ifndef QBRANCHES_H
 #define QBRANCHES_H
 
-#include "ui/BranchesUi.h"
+#include "ui_BranchesUi.h"
 #include "QDocument.h"
 #include "BranchList.h"
 

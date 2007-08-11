@@ -3,9 +3,9 @@ include $(srcdir)/Makefile.dialogs
 
 CLEANFILES += *.h
 CLEANFILES += *_moc.cpp
-CLEANFILES += $(UIFILES:%.ui=ui/%.h)
+CLEANFILES += $(UIFILES:%.ui=ui_%.h)
 
-BUILT_SOURCES = $(UIFILES:%.ui=ui/%.h)
+BUILT_SOURCES = $(UIFILES:%.ui=ui_%.h)
 BUILT_SOURCES += $(PCH_FILE)
 BUILT_SOURCES += $(MOCEDFILES)
 
@@ -16,7 +16,7 @@ EXTRA_DIST += Makefile.dialogs
 # Use _() for localization instead of tr() or trUtf8()
 UIC4FLAGS=-tr lyx::qt_
 
-%.h: %.ui
+ui_%.h: ui/%.ui
 	$(UIC4) $(UIC4FLAGS) $< -o $@
 
 MOCEDFILES = $(MOCFILES:%.cpp=%_moc.cpp)

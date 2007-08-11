@@ -13,7 +13,7 @@
 #define QCHANGES_H
 
 #include "QDialogView.h"
-#include "ui/ChangesUi.h"
+#include "ui_ChangesUi.h"
 #include <QCloseEvent>
 #include <QDialog>
 

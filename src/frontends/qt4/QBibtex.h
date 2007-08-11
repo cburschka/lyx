@@ -14,8 +14,8 @@
 
 #include "QDialogView.h"
 
-#include "ui/BibtexUi.h"
-#include "ui/BibtexAddUi.h"
+#include "ui_BibtexUi.h"
+#include "ui_BibtexAddUi.h"
 
 #include "ButtonController.h"
 

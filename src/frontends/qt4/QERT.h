@@ -13,7 +13,7 @@
 #define QERT_H
 
 #include "QDialogView.h"
-#include "ui/ERTUi.h"
+#include "ui_ERTUi.h"
 
 #include <QCloseEvent>
 #include <QDialog>
