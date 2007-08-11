@@ -942,7 +942,7 @@ Edit\SpecialChar \menuseparator
 Undo
 \family default
  to undo some mistake.
- If you accidently undo too much, use 
+ If you accidentally undo too much, use 
 \family sans
 Edit\SpecialChar \menuseparator
 Redo
@@ -955,7 +955,7 @@ undo the undo.
 \begin_inset Quotes erd
 \end_inset
 
- The undo mechanism is currently limited to 100 steps to minimise memory
+ The undo mechanism is currently limited to 100 steps to minimize memory
  overhead.
  
 \end_layout
@@ -1624,11 +1624,11 @@ broadway Layout for writing plays.
 
 \begin_layout Description
 curiculum\InsetSpace ~
-vitae classes to create curriculum vitaes
+vitae classes to create curriculum vitae
 \end_layout
 
 \begin_layout Description
-Dinbrief Letters in format of the german DIN (german industry norm)
+Dinbrief Letters in format of the DIN (German industry norm)
 \end_layout
 
 \begin_layout Description
@@ -1636,7 +1636,7 @@ dtk Layout for
 \family typewriter
 Die TeXnische Komödie
 \family default
-, the journal of the german TeX user Group (Dante)
+, the journal of the German TeX user Group (Dante)
 \end_layout
 
 \begin_layout Description
@@ -1648,7 +1648,7 @@ Foils Used to make transparencies
 \end_layout
 
 \begin_layout Description
-g-brief Letters in format of the german DIN (german industry norm)
+g-brief Letters in format of the DIN (German industry norm)
 \end_layout
 
 \begin_layout Description
@@ -2638,7 +2638,7 @@ not
 \emph default
  indented.
  Only a paragraph following another paragraph gets indented.
- Note that the indentation behaviour is different when you use another document
+ Note that the indentation behavior is different when you use another document
  language than English.
  LaTeX takes care that the indentation follows the rules of the used language.
 \end_layout
@@ -3209,7 +3209,7 @@ Subparagraph
 \begin_layout Standard
 LyX labels each heading with a series of numbers, separated by periods.
  The numbers describe where in the document you are.
- Unlike the other headings, parts are numbered with latin letters.
+ Unlike the other headings, parts are numbered with Latin letters.
 \end_layout
 
 \begin_layout Standard
@@ -4009,7 +4009,7 @@ Short\InsetSpace ~
 Title
 \family default
 .
- This will insert a box labelled 
+ This will insert a box labeled 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4050,7 +4050,7 @@ You cannot use a margin note in any of these environments.
 \end_layout
 
 \begin_layout Itemize
-You can only use inlined math in these environments.
+You can only use inline math in these environments.
 \end_layout
 
 \begin_layout Itemize
@@ -4855,7 +4855,7 @@ C-Space
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Fotrmatting\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
 Protected\InsetSpace ~
 Space
 \family default
@@ -6314,7 +6314,7 @@ Floats
 
 \begin_layout Standard
 LyX can treat these three objects as either a word or as a paragraph.
- If a figure, table, or an equation is inlined, it goes wherever the paragraph
+ If a figure, table, or an equation is inline, it goes wherever the paragraph
  it is in goes.
 \end_layout
 
@@ -7387,7 +7387,7 @@ Lastly, we reset the environment to
 Standard
 \family default
 .
- As you can see, the level number doesn't correspond to what type of labelling
+ As you can see, the level number doesn't correspond to what type of labeling
  LyX uses for the 
 \family sans
 Enumerate
@@ -8134,7 +8134,7 @@ hphantom
 \series bold
 vphantom
 \series default
-, but this too special for the LyX userguide.
+, but this too special for the LyX Userguide.
  If you are interested in knowing more about this, have a look at 
 \begin_inset LatexCommand cite
 key "latexcompanion,latexguide"
@@ -8849,7 +8849,7 @@ cm
 \family typewriter
 ec
 \family default
- are bitmap fonts, they often looks pixeld in PDF output, especially when
+ are bitmap fonts, they often looks pixeled in PDF output, especially when
  you read the PDF in a zoomed size.
 \begin_inset Foot
 status collapsed
@@ -9172,8 +9172,8 @@ Note when you choose a new font or font size, LyX does
 \emph on
 not
 \emph default
- change the screen font! You willl only see a difference in the printed
- output; this is part of the WYSIWYM concept.
+ change the screen font! You will only see a difference in the printed output;
+ this is part of the WYSIWYM concept.
  LyX's screen fonts can be adjusted in the 
 \family sans
 Tools\SpecialChar \menuseparator
@@ -9385,7 +9385,7 @@ There are always occasions when you'll need to do some fine-tuning, so LyX
  For example, an academic journal or a corporation may have a style sheet
  requiring a sans-serif font be used in certain situations.
  Also, writers sometimes use a different font to offset a character's thoughts
- from ordinary dialogue.
+ from ordinary dialog.
 \end_layout
 
 \begin_layout Standard
@@ -9393,8 +9393,8 @@ Before we document how to use custom character style, we want to issue a
  warning yet again: Don't overuse character styles! 
 \newline
 Documents that overuse
- different fonts and sizes are not well readable and tend to look like someone's
- knocked huge holes in it.
+ different fonts and sizes are not well readable and tend to look like someone
+ has knocked huge holes in it.
 \end_layout
 
 \begin_layout Standard
@@ -9497,7 +9497,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-The LaTeX-command prevents text to be breaked at the end of a line.
+The LaTeX-command prevents text to be broken at the end of a line.
  It is explained in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -11501,7 +11501,7 @@ dvips
 \family default
  to PostScript-file, which is finally printed using the program 
 \family typewriter
-ghostscript
+Ghostscript
 \family default
 .
  Due to these steps in the background, this method is not the fastest.
@@ -13260,25 +13260,10 @@ The footnote will appear in the output as a superscript number at the text
 \family roman
 h
 \family default
-ey are described in the section 
-\begin_inset Quotes eld
-\end_inset
-
-
+ey are described in the 
 \emph on
-Tricks for Footnotes and Marginpars
-\begin_inset Quotes erd
-\end_inset
-
-
-\emph default
- of the 
-\emph on
-Extended
-\emph default
- 
-\emph on
-Features
+Embedded\InsetSpace ~
+Objects
 \emph default
  manual.
 \end_layout
@@ -13563,7 +13548,7 @@ Similar to fonts there are two types of image formats:
 \begin_layout Description
 Bitmap\InsetSpace ~
 images consist of pixel values, often in a compressed form.
- They are therefore not fully scalable and look pixeld in large zooms.
+ They are therefore not fully scalable and look pixeled in large zooms.
  Well-known bitmap image formats are 
 \begin_inset Quotes eld
 \end_inset
@@ -13793,7 +13778,7 @@ You can insert a table using either the toolbar button
  or the menu 
 \family sans
 Insert\SpecialChar \menuseparator
-Tabule
+Table
 \family default
 .
  A dialog will appear, asking you for the number of rows and columns.
@@ -18100,7 +18085,7 @@ apply.
 \end_layout
 
 \begin_layout Standard
-Minipages in LyX have their own collapsable box inserted via the menu 
+Minipages in LyX have their own collapsible box inserted via the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Box
@@ -18329,7 +18314,7 @@ alpha
 \begin_inset Quotes erd
 \end_inset
 
-, followed by a space, in a formula will create the greek letter 
+, followed by a space, in a formula will create the Greek letter 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -20634,7 +20619,7 @@ This results in the following macro definition box:
 status collapsed
 
 \begin_layout Standard
-The first box is an image to show the behaviour in the output.
+The first box is an image to show the behavior in the output.
  The second one is the definition box, that doesn't appear in the output.
 \end_layout
 
@@ -21218,7 +21203,7 @@ So better don't use this feature.
 \end_layout
 
 \begin_layout Standard
-The typefaces have no effect on greek letters: 
+The typefaces have no effect on Greek letters: 
 \begin_inset Formula $\mathfrak{abc\delta e}$
 \end_inset
 
@@ -21647,7 +21632,7 @@ To reference the item, we refer to its label using the menu
 Insert\SpecialChar \menuseparator
 Cross-Reference
 \family default
- or the toolbat button 
+ or the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
@@ -21914,7 +21899,7 @@ If a cross-reference refers to a non-existing label, you'll see two question
 \end_layout
 
 \begin_layout Standard
-Refernces are described in detail in the 
+References are described in detail in the 
 \emph on
 Embedded Objects
 \emph default
@@ -22145,7 +22130,7 @@ Here
 
 \begin_layout Standard
 Every chapter (or section) within the appendix region is treated as an appendix,
- numbered with a capital latin letter.
+ numbered with a capital Latin letter.
  The appendix subsections are numbered with this letter followed by a dot
  and the subsection number.
  All appendix sections can be referenced as if they were normal sections,
@@ -23298,7 +23283,7 @@ program
 
 \begin_layout Standard
 Now LaTeX comes into play.
- As wrote above, for every problem exists a LaTeX-package.
+ As written above, for every problem exists a LaTeX-package.
  First you have to find out which and therefore look in the LaTeX package
  database, 
 \begin_inset LatexCommand cite
@@ -23392,7 +23377,8 @@ bfseries}
 in the preamble and the problem is solved.
  So if you plan to write a large document, you should have a look at the
  documentation of the document class you want to use.
- (Btw 
+ (Btw.
+ 
 \series bold
 
 \backslash
@@ -23469,7 +23455,7 @@ dialog under
 Look\InsetSpace ~
 and\InsetSpace ~
 feel\SpecialChar \menuseparator
-Graphcis
+Graphics
 \family default
 .
 \end_layout
@@ -23634,15 +23620,15 @@ latin1
 \end_layout
 
 \begin_layout Standard
-LyX also supports unicode output, which is particularly useful if you need
+LyX also supports Unicode output, which is particularly useful if you need
  lots of special symbols or non-alphabetic scripts, respectively.
- If you want to use this (and your LaTeX installation supports unicode,
+ If you want to use this (and your LaTeX installation supports Unicode,
  for that matter), the 
 \family typewriter
 utf8
 \family default
  encoding is the right choice for most purposes.
- Besides this, you will find some alternative unicode encodings for specific
+ Besides this, you will find some alternative Unicode encodings for specific
  purposes: 
 \family typewriter
 UTF8
@@ -23659,7 +23645,7 @@ utf8-plain
 \family sans
 XeTeX
 \family default
-, which uses unicode directly, without the help of the LaTeX-package 
+, which uses Unicode directly, without the help of the LaTeX-package 
 \series bold
 inputenc
 \series default
@@ -23704,7 +23690,7 @@ Finally, you may just want to change a few key mappings or create an entirely
  keyboard but want to include an occasional quotation in German.
  In such a case, you can write your own keyboard mapping or modify an existing
  one to support the characters you want.
- This and much more costomizations are explained in the 
+ This and much more customizations are explained in the 
 \emph on
 Customization
 \emph default
@@ -28346,7 +28332,7 @@ macron
 \begin_layout Standard
 ŐŰőű
 \hfill
-hungarian umlaut
+Hungarian umlaut
 \end_layout
 
 \end_deeper
@@ -28600,7 +28586,7 @@ status collapsed
 eX\InsetSpace ~
 (pdflatex)
 \family default
- text file with the LaTeX source, addtionally all images used in the document
+ text file with the LaTeX source, additionally all images used in the document
  will be converted to a format that is readable for the 
 \family typewriter
 pdflatex
@@ -28625,7 +28611,7 @@ status collapsed
 eX\InsetSpace ~
 (plain)
 \family default
- text file with the LaTeX source code, addtionally all images used in the
+ text file with the LaTeX source code, additionally all images used in the
  document will be converted to the EPS-format, only this format is readable
  for the 
 \family typewriter
@@ -28648,7 +28634,7 @@ y
 \end_layout
 
 \begin_layout Description
-OpenDocument OpenDocument-formatted text file, to be opened with OpneOffice,
+OpenDocument OpenDocument-formatted text file, to be opened with OpenOffice,
  KOffice, Abiword, etc.
  (the OpenDocument-converter is a third-party product and doesn't work in
  all cases)
@@ -28953,7 +28939,7 @@ Increase / Decrease List Depth
 \end_layout
 
 \begin_layout Standard
-These menus are only active whe the cursor is in an environment that can
+These menus are only active when the cursor is in an environment that can
  be nested.
  They in/decrease the environment nesting level as explained in section\InsetSpace ~
 
@@ -29372,7 +29358,7 @@ Text Layout
 \begin_layout Standard
 You can specify if paragraphs should be separated by indentations or vertical
  skips.
- The line spacing and the number of text colums can here also be specified.
+ The line spacing and the number of text columns can here also be specified.
  
 \end_layout
 
@@ -29553,7 +29539,7 @@ pt154 Cyrillic for Kazakh
 \end_layout
 
 \begin_layout Description
-utf8 code page for unicode utf8
+utf8 code page for Unicode utf8
 \end_layout
 
 \begin_layout Description
@@ -29577,7 +29563,7 @@ XeTeX is a TeX typesetting engine, an alternative for LaTeX.
 
 \end_inset
 
-, which uses unicode directly, without the help of the LaTeX-package 
+, which uses Unicode directly, without the help of the LaTeX-package 
 \series bold
 inputenc
 \series default
@@ -30618,7 +30604,7 @@ Note
  
 \family sans
 Insert\SpecialChar \menuseparator
-Url
+URL
 \end_layout
 
 \begin_layout Itemize
@@ -30963,7 +30949,7 @@ Some bind files, like math.bind, have only a small scope.
 \end_layout
 
 \begin_layout Standard
-If you like to customise the keybindings to your own taste, modify the .bind-file
+If you like to customize the keybindings to your own taste, modify the .bind-file
 s with a text editor and don't forget to load the modified files into LyX
  using the 
 \family sans
@@ -31029,11 +31015,11 @@ times
 \emph default
  as serif font, 
 \emph on
-arial
+Aral
 \emph default
  or 
 \emph on
-helvetica
+Helvetica
 \emph default
  (depends on the system) as sans serif font, and 
 \emph on
@@ -31546,9 +31532,9 @@ Preferences
 Moreover, each Format can have a Viewer associated with it.
  For example, you might want to use 
 \family typewriter
-ghostview
+Ghostview
 \family default
- to examine PostScript® files, or 
+ to examine PostScript files, or 
 \family typewriter
 xdvi
 \family default
@@ -31556,15 +31542,8 @@ xdvi
  You can alter the viewer to use (and what options to pass to it) via the
  
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references:Converters
+Tols\SpecialChar \menuseparator
+Preferences:Converters
 \family default
  dialog.
  For example, to change the 
@@ -31581,10 +31560,7 @@ kdvi
 \family default
  (or whatever), and hit 
 \family sans
-\bar under
-M
-\bar default
-odify
+Modify
 \family default
 .
 \end_layout
