@@ -21,7 +21,7 @@ lyxclient_LDADD = \
 	$(top_builddir)/src/frontends/controllers/liblyxcontrollers.la \
 	$(top_builddir)/src/frontends/qt4/liblyxqt4.la \
 	$(top_builddir)/src/support/liblyxsupport.la \
-	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS)
+	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS)  $(QT4_LIB) $(AIKSAURUS_LIBS)
 
 lyxclient_SOURCES = \
   boost.cpp \
