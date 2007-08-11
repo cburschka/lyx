@@ -1076,7 +1076,6 @@ src_frontends_qt4_extra_files = Split('''
     ChangeLog
     GuiFontMetrics.h
     Makefile.am
-    Makefile.dialogs
     README
     pch.h
 ''')
