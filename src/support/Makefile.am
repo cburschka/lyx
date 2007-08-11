@@ -10,7 +10,7 @@ pkglib_LTLIBRARIES = liblyxsupport.la
 liblyxsupport_la_LIBADD = $(LIBSHLWAPI) $(QT4_CORE_LIB) $(BOOST_SIGNALS)
 liblyxsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)
 
-BUILT_SOURCES = $(PCH_FILE) package.C
+BUILT_SOURCES = $(PCH_FILE) Package.cpp
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
@@ -66,7 +66,7 @@ liblyxsupport_la_SOURCES = \
 	os.h \
 	Path.cpp \
 	Path.h \
-	package.C \
+	Package.cpp \
 	Package.h \
 	qstring_helpers.cpp \
 	qstring_helpers.h \
@@ -89,7 +89,7 @@ liblyxsupport_la_SOURCES = \
 	unlink.cpp
 
 
-package.C: build_package
+Package.cpp: build_package
 
 # Solaris sed does not like spaces bewteen the ;-delimited commands
 build_package: Package.cpp.in
@@ -99,11 +99,11 @@ s,@LOCALEDIR@,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
 s,@TOP_SRCDIR@,$(LYX_ABS_TOP_SRCDIR),;\
 s,@PROGRAM_SUFFIX@,$(program_suffix)," \
 		$(srcdir)/Package.cpp.in > tmp_package ;\
-	if cmp -s tmp_package package.C ; then \
+	if cmp -s tmp_package Package.cpp ; then \
 		rm -f tmp_package ;\
 	else \
-		rm -f package.C ;\
-		mv tmp_package package.C ;\
+		rm -f Package.cpp ;\
+		mv tmp_package Package.cpp ;\
 	fi
 
 
