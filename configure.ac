@@ -421,7 +421,6 @@ AC_CONFIG_FILES([Makefile
        src/support/Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
-       src/frontends/controllers/tests/Makefile \
        src/frontends/qt4/Makefile \
 ])
 

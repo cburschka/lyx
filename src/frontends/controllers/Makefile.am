@@ -1,7 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-SUBDIRS = tests
-
 EXTRA_DIST = pch.h BCView.tmpl
 
 BUILT_SOURCES = $(PCH_FILE)
@@ -95,3 +93,24 @@ liblyxcontrollers_la_SOURCES= \
 	ControlWrap.h \
 	frontend_helpers.cpp \
 	frontend_helpers.h
+
+
+################################# Tests ################################
+
+EXTRA_DIST += test_biblio
+
+TESTS = \
+	test_biblio
+
+check_PROGRAMS = \
+	biblio
+
+biblio_LDADD = $(BOOST_REGEX)
+biblio_SOURCES = \
+	tests/biblio.cpp \
+	tests/boost.cpp
+
+makeregfiles: ${check_PROGRAMS}
+	for all in ${check_PROGRAMS} ; do \
+		./$$all > ${srcdir}/regfiles/$$all ; \
+	done
