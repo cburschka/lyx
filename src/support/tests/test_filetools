@@ -1,7 +1,7 @@
 #!/bin/sh
 
 regfile=`cat ${srcdir}/regfiles/filetools`
-output=`./filetools`
+output=`./check_filetools`
 
 test "$regfile" = "$output"
 exit $?

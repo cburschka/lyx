@@ -419,7 +419,6 @@ AC_CONFIG_FILES([Makefile
        src/graphics/Makefile \
        src/insets/Makefile \
        src/support/Makefile \
-       src/support/tests/Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/controllers/tests/Makefile \

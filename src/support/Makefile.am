@@ -1,7 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-SUBDIRS = . tests
-
 CLEANFILES += $(BUILT_SOURCES)
 
 EXTRA_DIST = Package.cpp.in pch.h \
@@ -107,3 +105,42 @@ s,@PROGRAM_SUFFIX@,$(program_suffix)," \
 		rm -f package.C ;\
 		mv tmp_package package.C ;\
 	fi
+
+
+############################## Tests ##################################
+
+EXTRA_DIST += test_convert test_filetools test_lstrings regfiles
+
+TESTS = \
+	test_convert \
+	test_filetools \
+	test_lstrings
+
+check_PROGRAMS = \
+	check_convert \
+	check_filetools \
+	check_lstrings
+
+check_convert_LDADD = ../debug.o convert.o docstring.o lstrings.o unicode.o \
+	qstring_helpers.o $(BOOST_LIBS) $(QT4_CORE_LIB)
+check_convert_LDFLAGS = $(QT4_CORE_LDFLAGS)
+check_convert_SOURCES = \
+	tests/check_convert.cpp \
+	tests/boost.cpp
+
+check_filetools_LDADD = ../debug.o libsupport.la $(BOOST_LIBS)
+check_filetools_SOURCES = \
+	tests/check_filetools.cpp \
+	tests/boost.cpp
+
+check_lstrings_LDADD = ../debug.o lstrings.o convert.o docstring.o unicode.o \
+	qstring_helpers.o $(QT4_CORE_LIB)
+check_lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS)
+check_lstrings_SOURCES = \
+	tests/check_lstrings.cpp \
+	tests/boost.cpp
+
+makeregfiles: ${check_PROGRAMS}
+	for all in ${check_PROGRAMS} ; do \
+		./$$all > ${srcdir}/regfiles/$$all ; \
+	done
