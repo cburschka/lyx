@@ -16,11 +16,11 @@ EXTRA_DIST = config.h.in stamp-h.in version.cpp.in \
 	paper.h \
 	pch.h
 
-LYX_PRE_LIBS = mathed/liblyxmathed.la insets/liblyxinsets.la \
+LYX_PRE_LIBS = liblyxmathed.la liblyxinsets.la \
 	frontends/liblyxfrontends.la
 
 LYX_POST_LIBS = frontends/controllers/liblyxcontrollers.la \
-	graphics/liblyxgraphics.la \
+	liblyxgraphics.la \
 	support/liblyxsupport.la
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
