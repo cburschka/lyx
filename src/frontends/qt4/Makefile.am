@@ -176,7 +176,7 @@ liblyxqt4_la_SOURCES = \
 	QShowFile.h \
 	QSpellchecker.cpp \
 	QSpellchecker.h \
-	Qt2BC.cppQt2BC.h\ \
+	Qt2BC.cpp Qt2BC.h\ \
 	QTabular.cpp \
 	QTabularCreate.cpp \
 	QTabularCreate.h \
