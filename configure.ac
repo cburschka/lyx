@@ -415,9 +415,6 @@ AC_CONFIG_FILES([Makefile
        src/Makefile \
        src/version.cpp-tmp:src/version.cpp.in \
        src/tex2lyx/Makefile \
-       src/mathed/Makefile \
-       src/graphics/Makefile \
-       src/insets/Makefile \
        src/support/Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \

@@ -1077,7 +1077,7 @@ bool Cursor::upDownInMath(bool up)
 		
 		// We want to keep the x-target on subsequent up/down movements
 		// that cross beyond the end of short lines. Thus a special
-		// handling when the cursor is at the end of line: Use the new 
+		// handling when the cursor is at the end of line: Use the new
 		// x-target only if the old one was before the end of line
 		// or the old one was after the beginning of the line
 		bool inRTL = isWithinRtlParagraph(*this);
@@ -1091,12 +1091,12 @@ bool Cursor::upDownInMath(bool up)
 			right = pos() == textRow().endpos();
 		}
 		if ((!left && !right) ||
-				(left && !right && xo < x_target_) || 
+				(left && !right && xo < x_target_) ||
 				(!left && right && x_target_ < xo))
 			setTargetX(xo);
 		else
 			xo = targetX();
-	} else 
+	} else
 		xo = targetX();
 
 	// try neigbouring script insets
@@ -1169,7 +1169,7 @@ bool Cursor::upDownInMath(bool up)
 }
 
 
-bool Cursor::upDownInText(bool up, bool & updateNeeded) 
+bool Cursor::upDownInText(bool up, bool & updateNeeded)
 {
 	BOOST_ASSERT(text());
 
@@ -1184,14 +1184,14 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 	// if we cannot move up/down inside this inset anymore
 	if (x_target_ == -1)
 		setTargetX(xo);
-	else if (xo - textTargetOffset() != x_target() && 
+	else if (xo - textTargetOffset() != x_target() &&
 					 depth() == beforeDispatchCursor_.depth()) {
 		// In text mode inside the line (not left or right) possibly set a new target_x,
 		// but only if we are somewhere else than the previous target-offset.
 		
 		// We want to keep the x-target on subsequent up/down movements
 		// that cross beyond the end of short lines. Thus a special
-		// handling when the cursor is at the end of line: Use the new 
+		// handling when the cursor is at the end of line: Use the new
 		// x-target only if the old one was before the end of line
 		// or the old one was after the beginning of the line
 		bool inRTL = isWithinRtlParagraph(*this);
@@ -1205,12 +1205,12 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			right = pos() == textRow().endpos();
 		}
 		if ((!left && !right) ||
-				(left && !right && xo < x_target_) || 
+				(left && !right && xo < x_target_) ||
 				(!left && right && x_target_ < xo))
 			setTargetX(xo);
 		else
 			xo = targetX();
-	} else 
+	} else
 		xo = targetX();
 		
 	// first get the current line
@@ -1227,7 +1227,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		if (pit() == 0 && row == 0)
 			return false;
 	} else {
-		if (pit() + 1 >= int(text()->paragraphs().size()) && 
+		if (pit() + 1 >= int(text()->paragraphs().size()) &&
 				row + 1 >= int(pm.rows().size()))
 			return false;
 	}	
@@ -1463,7 +1463,7 @@ Font Cursor::getFont() const
 	// on space? Take the font before (only for RTL boundary stay)
 	if (pos > 0) {
 		if (pos == sl.lastpos()
-				|| (par.isSeparator(pos) && 
+				|| (par.isSeparator(pos) &&
 						!text.isRTLBoundary(buffer(), par, pos)))
 			--pos;
 	}
