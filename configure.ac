@@ -424,7 +424,6 @@ AC_CONFIG_FILES([Makefile
        src/frontends/controllers/Makefile \
        src/frontends/controllers/tests/Makefile \
        src/frontends/qt4/Makefile \
-       src/frontends/qt4/ui/Makefile \
 ])
 
 AC_OUTPUT
