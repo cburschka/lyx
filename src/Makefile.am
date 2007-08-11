@@ -4,11 +4,7 @@ DISTCLEANFILES += config.h libintl.h version.cpp stamp-version version.cpp-tmp
 
 MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
-if BUILD_CLIENT_SUBDIR
-CLIENT = client
-endif
-
-SUBDIRS = mathed insets graphics support frontends . $(CLIENT) tex2lyx
+SUBDIRS = mathed insets graphics support frontends .
 
 EXTRA_DIST = config.h.in stamp-h.in version.cpp.in \
 	Section.h \

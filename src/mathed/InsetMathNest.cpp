@@ -546,7 +546,7 @@ goto_char_backwards:
 	case LFUN_DOWN:
 	case LFUN_UP:
 		cur.updateFlags(Update::Decoration | Update::FitCursor);
-	case LFUN_DOWN_SELECT: 
+	case LFUN_DOWN_SELECT:
 	case LFUN_UP_SELECT: {
 		// close active macro
 		if (cur.inMacroMode()) {

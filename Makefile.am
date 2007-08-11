@@ -9,11 +9,17 @@ MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 
 DIST_SUBDIRS = m4 config development intl po boost src sourcedoc lib
 
-if USE_INCLUDED_BOOST
-SUBDIRS = config development intl po boost src sourcedoc lib
-else
-SUBDIRS = config development intl po src sourcedoc lib
+if BUILD_CLIENT_SUBDIR
+CLIENT = src/client
 endif
+
+if USE_INCLUDED_BOOST
+BOOST = boost
+endif
+
+SUBDIRS = config development intl po $(BOOST) src sourcedoc lib \
+	$(CLIENT) src/tex2lyx
+
 
 EXTRA_DIST = ANNOUNCE INSTALL.autoconf RELEASE-NOTES UPGRADING \
 	INSTALL.Win32 INSTALL.MacOSX INSTALL.scons INSTALL.cmake \
