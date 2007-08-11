@@ -30,7 +30,7 @@ noinst_PROGRAMS = $(FRONTENDS_PROGS)
 EXTRA_PROGRAMS = lyx-qt4
 
 lyx_qt4_LDADD = liblyxcore.la  $(LYX_PRE_LIBS) \
-	frontends/qt4/liblyxqt4.la $(LYX_POST_LIBS) $(OTHERLIBS)
+	frontends/qt4/liblyxqt4.la $(LYX_POST_LIBS) $(OTHERLIBS) $(QT4_LIB) 
 lyx_qt4_SOURCES = main.cpp
 
 lyx$(EXEEXT): $(FRONTENDS_PROGS)

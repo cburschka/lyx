@@ -27,7 +27,7 @@ MOCEDFILES = $(MOCFILES:%.cpp=%_moc.cpp)
 
 #########################  LIBRARIES  #############################
 
-noinst_LTLIBRARIES = liblyxqt4.la
+pkglib_LTLIBRARIES = liblyxqt4.la
 
 liblyxqt4_la_DEPENDENCIES = $(MOCEDFILES)
 liblyxqt4_la_LDFLAGS = $(QT4_LDFLAGS)
