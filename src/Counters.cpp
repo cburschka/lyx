@@ -120,6 +120,12 @@ void Counters::newCounter(docstring const & newc,
 }
 
 
+bool Counters::hasCounter(docstring const & c) const
+{
+	return counterList.find(c) != counterList.end();
+}
+
+
 void Counters::set(docstring const & ctr, int const val)
 {
 	CounterList::iterator const it = counterList.find(ctr);

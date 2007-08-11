@@ -38,16 +38,16 @@ public:
 	///
 	void reset();
 	/// Returns the master counter of this counter
-	lyx::docstring const & master() const;
+	docstring const & master() const;
 	/// sets the master counter for this counter
-	void setMaster(lyx::docstring const & m);
+	void setMaster(docstring const & m);
 private:
 	///
 	int value_;
 	/// contains master counter name; master counter is the counter
 	/// that, if stepped (incremented) zeroes this counter. E.g.
 	/// "subparagraph"'s master is "paragraph".
-	lyx::docstring master_;
+	docstring master_;
 };
 
 
@@ -56,48 +56,55 @@ private:
 class Counters {
 public:
 	/// Add a new counter to array.
-	void newCounter(lyx::docstring const & newc);
+	void newCounter(docstring const & newc);
 	/// Add new counter having oldc as its master.
-	void newCounter(lyx::docstring const & newc,
-			lyx::docstring const & oldc);
+	void newCounter(docstring const & newc,
+			docstring const & oldc);
 	///
-	void set(lyx::docstring const & ctr, int val);
+	bool hasCounter(docstring const & c) const;
 	///
-	void addto(lyx::docstring const & ctr, int val);
+	void set(docstring const & ctr, int val);
 	///
-	int value(lyx::docstring const & ctr) const;
+	void addto(docstring const & ctr, int val);
+	///
+	int value(docstring const & ctr) const;
 	/// Step (increment by one) counter named by arg, and
 	/// zeroes slave counter(s) for which it is the master.
 	/// NOTE sub-slaves not zeroed! That happens at slave's
 	/// first step 0->1. Seems to be sufficient.
-	void step(lyx::docstring const & ctr);
+	void step(docstring const & ctr);
 	/// Reset all counters.
 	void reset();
 	/// Reset counters matched by match string.
-	void reset(lyx::docstring const & match);
+	void reset(docstring const & match);
 	/// Copy counters whose name matches match from the &from to
 	/// the &to array of counters. Empty string matches all.
 	void copy(Counters & from, Counters & to,
-		  lyx::docstring const & match = lyx::docstring());
+		  docstring const & match = docstring());
 	/// A complete expanded label, like 2.1.4 for a subsubsection
 	/// according to the given format
-	lyx::docstring counterLabel(lyx::docstring const & format);
+	docstring counterLabel(docstring const & format);
 	///
 	bool appendix() const { return appendix_; };
 	///
 	void appendix(bool a) { appendix_ = a; };
+	///
+	std::string const & current_float() const { return current_float_; }
+	///
+	void current_float(std::string const & f) { current_float_ = f; }
 private:
 	/// A counter label's single item, 1 for subsection number in
 	/// the 2.1.4 subsubsection number label.
-	lyx::docstring labelItem(lyx::docstring const & ctr,
-				 lyx::docstring const & numbertype);
+	docstring labelItem(docstring const & ctr,
+				 docstring const & numbertype);
 	/// Maps counter (layout) names to actual counters.
-	typedef std::map<lyx::docstring, Counter> CounterList;
+	typedef std::map<docstring, Counter> CounterList;
 	/// Instantiate.
 	CounterList counterList;
 	///
 	bool appendix_;
-
+	///
+	std::string current_float_;
 };
 
 
