@@ -408,7 +408,7 @@ dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AC_ARG_WITH(included-boost,
-	    [  --without-included-boost  do not use the boost lib supplied with LyX],
+	    [  --without-included-boost  do not use the boost lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found],
 	    [lyx_cv_with_included_boost=$withval
 		AC_MSG_RESULT([$with_included_boost])],
 	    [lyx_cv_with_included_boost=yes])
