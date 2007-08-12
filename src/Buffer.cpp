@@ -932,7 +932,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		lyxerr << "Caught iconv exception: " << e.what() << endl;
 		failed_export = true;
 	}
-	catch (std::exception  const & e) {
+	catch (std::exception const & e) {
 		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
 		failed_export = true;
 	}
@@ -1796,7 +1796,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		runparams.par_end = par_end;
 		if (par_begin + 1 == par_end)
 			os << "% "
-			   << bformat(_("Preview source code for paragraph %1$s"), par_begin)
+			   << bformat(_("Preview source code for paragraph %1$d"), par_begin)
 			   << "\n\n";
 		else
 			os << "% "
