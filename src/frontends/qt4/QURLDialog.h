@@ -26,9 +26,6 @@ class QURLDialog : public QDialog, public Ui::QURLUi {
 	Q_OBJECT
 public:
 	QURLDialog(UrlView * form);
-	~QURLDialog();
-
-	virtual void show();
 public Q_SLOTS:
 	void changed_adaptor();
 protected:
