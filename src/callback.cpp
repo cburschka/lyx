@@ -110,7 +110,8 @@ bool menuWrite(Buffer * buffer)
 	docstring const file = makeDisplayPath(buffer->fileName(), 30);
 
 	docstring text = bformat(_("The document %1$s could not be saved.\n\n"
-					     "Do you want to rename the document and try again?"), file);
+				   "Do you want to rename the document and "
+				   "try again?"), file);
 	int const ret = Alert::prompt(_("Rename and save?"),
 		text, 0, 1, _("&Rename"), _("&Cancel"));
 
@@ -130,9 +131,11 @@ bool writeAs(Buffer * buffer, string const & newname)
 
 		// FIXME UNICODE
 		FileDialog fileDlg(_("Choose a filename to save document as"),
-			LFUN_BUFFER_WRITE_AS,
-			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Templates|#T#t"), from_utf8(lyxrc.template_path)));
+				   LFUN_BUFFER_WRITE_AS,
+				   make_pair(_("Documents|#o#O"), 
+					     from_utf8(lyxrc.document_path)),
+				   make_pair(_("Templates|#T#t"), 
+					     from_utf8(lyxrc.template_path)));
 
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
@@ -162,8 +165,10 @@ bool writeAs(Buffer * buffer, string const & newname)
 	FileName const filename(fname);
 	if (fs::exists(filename.toFilesystemEncoding())) {
 		docstring const file = makeDisplayPath(fname, 30);
-		docstring text = bformat(_("The document %1$s already exists.\n\n"
-					   "Do you want to overwrite that document?"), file);
+		docstring text = bformat(_("The document %1$s already "
+					   "exists.\n\nDo you want to "
+					   "overwrite that document?"), 
+					 file);
 		int const ret = Alert::prompt(_("Overwrite document?"),
 			text, 0, 1, _("&Overwrite"), _("&Cancel"));
 
@@ -213,7 +218,8 @@ private:
 
 int AutoSaveBuffer::start()
 {
-	command_ = to_utf8(bformat(_("Auto-saving %1$s"), from_utf8(fname_.absFilename())));
+	command_ = to_utf8(bformat(_("Auto-saving %1$s"), 
+				   from_utf8(fname_.absFilename())));
 	return run(DontWait);
 }
 
@@ -237,9 +243,10 @@ int AutoSaveBuffer::generateChild()
 			// assume successful write of tmp_ret
 			if (!rename(tmp_ret, fname_)) {
 				failed = true;
-				// most likely couldn't move between filesystems
-				// unless write of tmp_ret failed
-				// so remove tmp file (if it exists)
+				// most likely couldn't move between
+				// filesystems unless write of tmp_ret
+				// failed so remove tmp file (if it
+				// exists)
 				unlink(tmp_ret);
 			}
 		} else {
@@ -251,9 +258,9 @@ int AutoSaveBuffer::generateChild()
 			if (!bv_.buffer()->writeFile(fname_)) {
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
-				if (pid == -1)
-					// emit message signal.
-					bv_.buffer()->message(_("Autosave failed!"));
+				if (pid == -1) // emit message signal.
+					bv_.buffer()
+					  ->message(_("Autosave failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -324,7 +331,9 @@ void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 	if (!bv->buffer())
 		return;
 
-	docstring const tmpstr = getContentsOfPlaintextFile(bv, f, asParagraph);
+	docstring const tmpstr =
+	  getContentsOfPlaintextFile(bv, f, asParagraph);
+
 	if (tmpstr.empty())
 		return;
 
@@ -339,13 +348,15 @@ void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 
 
 docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
-		bool asParagraph)
+					   bool asParagraph)
 {
 	FileName fname(f);
 
 	if (fname.empty()) {
 		FileDialog fileDlg(_("Select file to insert"),
-			(asParagraph) ? LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT);
+				   ( (asParagraph)
+				     ? LFUN_FILE_INSERT_PLAINTEXT_PARA 
+				     : LFUN_FILE_INSERT_PLAINTEXT) );
 
 		FileDialog::Result result =
 			fileDlg.open(from_utf8(bv->buffer()->filePath()),
@@ -363,8 +374,9 @@ docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
 	if (!fs::is_readable(fname.toFilesystemEncoding())) {
 		docstring const error = from_ascii(strerror(errno));
 		docstring const file = makeDisplayPath(fname.absFilename(), 50);
-		docstring const text = bformat(_("Could not read the specified document\n"
-							   "%1$s\ndue to the error: %2$s"), file, error);
+		docstring const text =
+		  bformat(_("Could not read the specified document\n"
+			    "%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not read file"), text);
 		return docstring();
 	}
@@ -373,8 +385,9 @@ docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
 	if (!ifs) {
 		docstring const error = from_ascii(strerror(errno));
 		docstring const file = makeDisplayPath(fname.absFilename(), 50);
-		docstring const text = bformat(_("Could not open the specified document\n"
-							   "%1$s\ndue to the error: %2$s"), file, error);
+		docstring const text =
+		  bformat(_("Could not open the specified document\n"
+			    "%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not open file"), text);
 		return docstring();
 	}
@@ -400,11 +413,11 @@ docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
 	docstring file_content = from_utf8(tmpstr);
 	if (file_content.empty()) {
 		Alert::error(_("Reading not UTF-8 encoded file"),
-					_("The file is not UTF-8 encoded.\n"
-					"It will be read as local 8Bit-encoded.\n"
-					"If this does not give the correct result\n"
-					"then please change the encoding of the file\n"
-					"to UTF-8 with a program other than LyX.\n"));
+			     _("The file is not UTF-8 encoded.\n"
+			       "It will be read as local 8Bit-encoded.\n"
+			       "If this does not give the correct result\n"
+			       "then please change the encoding of the file\n"
+			       "to UTF-8 with a program other than LyX.\n"));
 		file_content = from_local8bit(tmpstr);
 	}
 
@@ -433,8 +446,8 @@ void reconfigure(LyXView & lv)
 
 	Alert::information(_("System reconfigured"),
 			   _("The system has been reconfigured.\n"
-					  "You need to restart LyX to make use of any\n"
-					  "updated document class specifications."));
+			     "You need to restart LyX to make use of any\n"
+			     "updated document class specifications."));
 }
 
 
