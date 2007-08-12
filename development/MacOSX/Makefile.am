@@ -16,6 +16,6 @@ nodist_pkgdata_DATA = lyxrc.dist
 
 install-data-hook:
 	LINGUAS_=`sed -e "/^#/d" -e "s/#.*//" $(LINGUAS)`; \
-	for f in $$LINGUAS_ ; do \
+	for f in en $$LINGUAS_ ; do \
 	  $(MKDIR_P) $(pkgdatadir)/$$f.lproj ; \
 	done
