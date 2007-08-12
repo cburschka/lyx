@@ -721,8 +721,15 @@ void Tabular::deleteColumn(col_type const column)
 		return;
 
 	column_info.erase(column_info.begin() + column);
-	for (row_type i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i) {
+		// Care about multicolumn cells
+		if (column + 1 < columns_ &&
+		    cell_info[i][column].multicolumn == CELL_BEGIN_OF_MULTICOLUMN &&
+		    cell_info[i][column + 1].multicolumn == CELL_PART_OF_MULTICOLUMN) {
+			cell_info[i][column + 1].multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
+		}
 		cell_info[i].erase(cell_info[i].begin() + column);
+	}
 	--columns_;
 	fixCellNums();
 }
