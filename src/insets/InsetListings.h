@@ -36,6 +36,8 @@ public:
 	virtual DisplayType display() const;
 	///
 	docstring name() const { return from_ascii("Listings"); }
+	// Update the counters of this inset and of its contents
+	virtual void updateLabels(Buffer const &, ParIterator const &);
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///

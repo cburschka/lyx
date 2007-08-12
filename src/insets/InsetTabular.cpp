@@ -21,8 +21,10 @@
 #include "InsetTabular.h"
 
 #include "Buffer.h"
+#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Counters.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "CoordCache.h"
@@ -41,6 +43,7 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "ParIterator.h"
 #include "Undo.h"
 
 #include "support/convert.h"
@@ -3181,6 +3184,25 @@ void InsetTabular::edit(Cursor & cur, bool left)
 }
 
 
+void InsetTabular::updateLabels(Buffer const & buf, ParIterator const & it)
+{
+	// In a longtable, tell captions what the current float is
+	Counters & cnts = buf.params().getTextClass().counters();
+	string const saveflt = cnts.current_float();
+	if (tabular.isLongTabular())
+		cnts.current_float("table");
+
+	ParIterator it2 = it;
+	it2.forwardPos();
+	for ( ; it2.idx() <= it2.lastidx() ; it2.forwardIdx())
+		lyx::updateLabels(buf, it2);
+
+	//reset afterwards
+	if (tabular.isLongTabular())
+		cnts.current_float(saveflt);
+}
+
+
 void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::DEBUG) << "# InsetTabular::doDispatch: cmd: " << cmd
@@ -4788,7 +4810,6 @@ bool InsetTabular::tablemode(Cursor & cur) const
 {
 	return cur.selection() && cur.selBegin().idx() != cur.selEnd().idx();
 }
-
 
 
 

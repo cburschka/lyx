@@ -758,6 +758,8 @@ public:
 	Inset * editXY(Cursor & cur, int x, int y);
 	/// can we go further down on mouse click?
 	bool descendable() const { return true; }
+	// Update the counters of this inset and of its contents
+	virtual void updateLabels(Buffer const &, ParIterator const &);
 
 	//
 	// Public structures and variables

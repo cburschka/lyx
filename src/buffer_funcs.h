@@ -66,6 +66,9 @@ int countWords(DocIterator const & from, DocIterator const & to);
 void updateLabels(Buffer const &, bool childonly = false);
 
 ///
+void updateLabels(Buffer const &, ParIterator &);
+
+///
 void checkBufferStructure(Buffer &, ParIterator const &);
 
 } // namespace lyx

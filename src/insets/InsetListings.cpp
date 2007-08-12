@@ -14,6 +14,9 @@
 #include "InsetListings.h"
 #include "InsetCaption.h"
 
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "Counters.h"
 #include "Language.h"
 #include "gettext.h"
 #include "DispatchResult.h"
@@ -81,6 +84,21 @@ InsetListings::~InsetListings()
 Inset::DisplayType InsetListings::display() const
 {
 	return params().isInline() || params().isFloat() ? Inline : AlignLeft;
+}
+
+
+void InsetListings::updateLabels(Buffer const & buf, ParIterator const & it)
+{
+	Counters & cnts = buf.params().getTextClass().counters();
+	string const saveflt = cnts.current_float();
+
+	// Tell to captions what the current float is
+	cnts.current_float("listing");
+
+	InsetCollapsable::updateLabels(buf, it);
+
+	//reset afterwards
+	cnts.current_float(saveflt);
 }
 
 

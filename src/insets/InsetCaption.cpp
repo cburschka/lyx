@@ -123,8 +123,7 @@ void InsetCaption::addToToc(TocList & toclist, Buffer const & buf, ParConstItera
 	ParConstIterator pit = par_const_iterator_begin(*this);
 
 	Toc & toc = toclist[type_];
-	docstring const str = convert<docstring>(counter_)
-		+ ". " + pit->asString(buf, false);
+	docstring const str = full_label_ + ". " + pit->asString(buf, false);
 	toc.push_back(TocItem(pit, 0, str));
 }
 
@@ -133,8 +132,6 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int const width_offset = TEXT_TO_INSET_OFFSET / 2;
 	mi.base.textwidth -= width_offset;
-
-	computeFullLabel(*mi.base.bv->buffer());
 
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
@@ -257,8 +254,6 @@ int InsetCaption::latex(Buffer const & buf, odocstream & os,
 int InsetCaption::plaintext(Buffer const & buf, odocstream & os,
 			    OutputParams const & runparams) const
 {
-	computeFullLabel(buf);
-
 	os << '[' << full_label_ << "\n";
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
@@ -292,15 +287,32 @@ int InsetCaption::getOptArg(Buffer const & buf, odocstream & os,
 }
 
 
-void InsetCaption::computeFullLabel(Buffer const & buf) const
+void InsetCaption::updateLabels(Buffer const & buf, ParIterator const & it)
 {
-	if (type_.empty())
+	TextClass const & tclass = buf.params().getTextClass();
+	Counters & cnts = tclass.counters();
+	string const & type = cnts.current_float();
+	if (type.empty())
 		full_label_ = buf.B_("Senseless!!! ");
 	else {
-		docstring const number = convert<docstring>(counter_);
-		docstring label = custom_label_.empty()? buf.B_(type_): custom_label_;
-		full_label_ = bformat(from_ascii("%1$s %2$s:"), label, number);
+		// FIXME: life would be _much_ simpler if listings was
+		// listed in Floating.
+		docstring name;
+		if (type == "listing")
+			name = buf.B_("Listing");
+		else
+			name = buf.B_(tclass.floats().getType(type).name());
+		if (cnts.hasCounter(from_utf8(type))) {
+			cnts.step(from_utf8(type));
+			full_label_ = bformat(from_ascii("%1$s %2$s:"), 
+					      name, 
+					      convert<docstring>(cnts.value(from_utf8(type))));
+		} else
+			full_label_ = bformat(from_ascii("%1$s #:"), name);	
 	}
+
+	// Do the real work now.
+	InsetText::updateLabels(buf, it);
 }
 
 

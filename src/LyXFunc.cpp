@@ -1995,7 +1995,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 
 	Buffer * const b = newFile(filename, templname, !name.empty());
 	if (b) {
-		updateLabels(*b);
+		//updateLabels(*b);
 		lyx_view_->setBuffer(b);
 	}
 }

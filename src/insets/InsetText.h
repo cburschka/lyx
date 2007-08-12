@@ -138,6 +138,8 @@ public:
 	virtual bool wide() const { return wide_inset_; }
 	///
 	void setWide(bool wide_inset) { wide_inset_ = wide_inset; }
+	// Update the counters of this inset and of its contents
+	virtual void updateLabels(Buffer const &, ParIterator const &);
 
 protected:
 	///

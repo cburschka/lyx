@@ -111,7 +111,7 @@ bool isListings(InsetCommandParams const & params)
 InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: params_(p), include_label(uniqueID()),
 	  preview_(new RenderMonitoredPreview(this)),
-	  set_label_(false), counter_(0)
+	  set_label_(false)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
@@ -122,7 +122,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	  params_(other.params_),
 	  include_label(other.include_label),
 	  preview_(new RenderMonitoredPreview(this)),
-	  set_label_(false), counter_(0)
+	  set_label_(false)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
@@ -336,23 +336,19 @@ docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 
 	switch (type(params_)) {
 		case INPUT:
-			temp += buf.B_("Input");
+			temp = buf.B_("Input");
 			break;
 		case VERB:
-			temp += buf.B_("Verbatim Input");
+			temp = buf.B_("Verbatim Input");
 			break;
 		case VERBAST:
-			temp += buf.B_("Verbatim Input*");
+			temp = buf.B_("Verbatim Input*");
 			break;
 		case INCLUDE:
-			temp += buf.B_("Include");
+			temp = buf.B_("Include");
 			break;
 		case LISTINGS: {
-			if (counter_ > 0)
-				temp += buf.B_("Program Listing ") + convert<docstring>(counter_);
-			else
-				temp += buf.B_("Program Listing");
-			break;
+			temp = listings_label_;
 		}
 	}
 
@@ -925,27 +921,25 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIt
 }
 
 
-void InsetInclude::updateLabels(Buffer const & buffer) const
+void InsetInclude::updateLabels(Buffer const & buffer, 
+				ParIterator const &) const
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer, params_);
-	if (!childbuffer)
-		return;
-
-	lyx::updateLabels(*childbuffer, true);
-}
-
-
-void InsetInclude::updateCounter(Counters & counters)
-{
-	if (!isListings(params_))
-		return;
-
-	InsetListingsParams const par = params_.getOptions();
-	if (par.getParamValue("caption").empty())
-		counter_ = 0;
-	else {
-		counters.step(from_ascii("listing"));
-		counter_ = counters.value(from_ascii("listing"));
+	if (childbuffer)
+		lyx::updateLabels(*childbuffer, true);
+	else if (isListings(params_)) {
+		InsetListingsParams const par = params_.getOptions();
+		if (par.getParamValue("caption").empty())
+			listings_label_.clear();
+		else {
+			Counters & counters = buffer.params().getTextClass().counters();
+			docstring const cnt = from_ascii("listing");
+			if (counters.hasCounter(cnt)) {
+				counters.step(cnt);
+				listings_label_ = buffer.B_("Program Listing ") + convert<docstring>(counters.value(cnt));
+			} else
+				listings_label_ = buffer.B_("Program Listing");
+		}
 	}
 }
 

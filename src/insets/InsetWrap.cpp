@@ -15,6 +15,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Counters.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
@@ -105,6 +106,21 @@ bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 	}
+}
+
+
+void InsetWrap::updateLabels(Buffer const & buf, ParIterator const & it)
+{
+	Counters & cnts = buf.params().getTextClass().counters();
+	string const saveflt = cnts.current_float();
+
+	// Tell to captions what the current float is
+	cnts.current_float(params().type);
+
+	InsetCollapsable::updateLabels(buf, it);
+
+	//reset afterwards
+	cnts.current_float(saveflt);
 }
 
 

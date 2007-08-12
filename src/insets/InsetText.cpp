@@ -14,6 +14,7 @@
 #include "InsetNewline.h"
 
 #include "Buffer.h"
+#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CoordCache.h"
@@ -38,6 +39,7 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "ParIterator.h"
 #include "rowpainter.h"
 #include "Row.h"
 #include "sgml.h"
@@ -458,6 +460,15 @@ ParagraphList const & InsetText::paragraphs() const
 ParagraphList & InsetText::paragraphs()
 {
 	return text_.paragraphs();
+}
+
+
+void InsetText::updateLabels(Buffer const & buf, ParIterator const & it)
+{
+	ParIterator it2 = it;
+	it2.forwardPos();
+	BOOST_ASSERT(&it2.inset() == this && it2.pit() == 0);
+	lyx::updateLabels(buf, it2);
 }
 
 

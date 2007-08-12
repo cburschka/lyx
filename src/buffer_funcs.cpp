@@ -16,6 +16,7 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
+#include "debug.h"
 #include "DocIterator.h"
 #include "Counters.h"
 #include "ErrorList.h"
@@ -42,6 +43,7 @@
 #include "insets/InsetInclude.h"
 #include "insets/InsetTabular.h"
 
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
 #include "support/lyxlib.h"
@@ -402,84 +404,11 @@ bool needEnumCounterReset(ParIterator const & it)
 }
 
 
-void setCaptionLabels(Inset & inset, string const & type,
-		docstring const label, Counters & counters)
-{
-	Text * text = inset.getText(0);
-	if (!text)
-		return;
-
-	ParagraphList & pars = text->paragraphs();
-	if (pars.empty())
-		return;
-
-	docstring const counter = from_ascii(type);
-
-	ParagraphList::iterator p = pars.begin();
-	for (; p != pars.end(); ++p) {
-		InsetList::iterator it2 = p->insetlist.begin();
-		InsetList::iterator end2 = p->insetlist.end();
-		// Any caption within this float should have the same
-		// label prefix but different numbers.
-		for (; it2 != end2; ++it2) {
-			Inset & icap = *it2->inset;
-			// Look deeper just in case.
-			setCaptionLabels(icap, type, label, counters);
-			if (icap.lyxCode() == Inset::CAPTION_CODE) {
-				// We found a caption!
-				counters.step(counter);
-				int number = counters.value(counter);
-				InsetCaption & ic = static_cast<InsetCaption &>(icap);
-				ic.setType(type);
-				ic.setCount(number);
-				ic.setCustomLabel(label);
-			}
-		}
-	}
-}
-
-
-void setCaptions(Paragraph & par, TextClass const & textclass)
-{
-	if (par.insetlist.empty())
-		return;
-
-	Counters & counters = textclass.counters();
-
-	InsetList::iterator it = par.insetlist.begin();
-	InsetList::iterator end = par.insetlist.end();
-	for (; it != end; ++it) {
-		Inset & inset = *it->inset;
-		if (inset.lyxCode() == Inset::FLOAT_CODE
-			|| inset.lyxCode() == Inset::WRAP_CODE) {
-			docstring const name = inset.name();
-			if (name.empty())
-				continue;
-
-			Floating const & fl = textclass.floats().getType(to_ascii(name));
-			// FIXME UNICODE
-			string const & type = fl.type();
-			docstring const label = from_utf8(fl.name());
-			setCaptionLabels(inset, type, label, counters);
-		}
-		else if (inset.lyxCode() == Inset::TABULAR_CODE
-			&&  static_cast<InsetTabular &>(inset).tabular.isLongTabular()) {
-			// FIXME: are "table" and "Table" the correct type and label?
-			setCaptionLabels(inset, "table", from_ascii("Table"), counters);
-		}
-		else if (inset.lyxCode() == Inset::LISTINGS_CODE)
-			setCaptionLabels(inset, "listing", from_ascii("Listing"), counters);
-		else if (inset.lyxCode() == Inset::INCLUDE_CODE)
-			// if this include inset contains lstinputlisting, and has a caption
-			// it will increase the 'listing' counter by one
-			static_cast<InsetInclude &>(inset).updateCounter(counters);
-	}
-}
-
 // set the label of a paragraph. This includes the counters.
-void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
+void setLabel(Buffer const & buf, ParIterator & it)
 {
-	Paragraph & par = *it;
+	TextClass const & textclass = buf.params().getTextClass();
+	Paragraph & par = it.paragraph();
 	Layout_ptr const & layout = par.layout();
 	Counters & counters = textclass.counters();
 
@@ -501,11 +430,6 @@ void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
 		par.params().labelWidthString(docstring());
 	}
 
-	// Optimisation: setLabel() can be called for each for each
-	// paragraph of the document. So we make the string static to
-	// avoid the repeated instanciation.
-	static docstring itemlabel;
-
 	// is it a layout that has an automatic label?
 	if (layout->labeltype == LABEL_COUNTER) {
 		if (layout->toclevel <= buf.params().secnumdepth
@@ -523,6 +447,7 @@ void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
 		//   par.params().labelString(
 		//    buf.params().user_defined_bullet(par.itemdepth).getText());
 		// for now, use a simple hardcoded label
+		docstring itemlabel;
 		switch (par.itemdepth) {
 		case 0:
 			itemlabel = char_type(0x2022);
@@ -600,40 +525,21 @@ void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
 			par.translateIfPossible(layout->labelstring(), buf.params()));
 		// In biblio shouldn't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
-		// Search for the first float or wrap inset in the iterator
-		size_t i = it.depth();
-		Inset * in = 0;
-		while (i > 0) {
-			--i;
-			Inset::Code const code = it[i].inset().lyxCode();
-			if (code == Inset::FLOAT_CODE ||
-			    code == Inset::WRAP_CODE) {
-				in = &it[i].inset();
-				break;
-			}
+		string const & type = counters.current_float();
+		docstring full_label;
+		if (type.empty())
+			full_label = buf.B_("Senseless!!! ");
+		else {
+			docstring name = buf.B_(textclass.floats().getType(type).name());
+			if (counters.hasCounter(from_utf8(type))) {
+				counters.step(from_utf8(type));
+				full_label = bformat(from_ascii("%1$s %2$s:"), 
+						     name, 
+						     convert<docstring>(counters.value(from_utf8(type))));
+			} else
+				full_label = bformat(from_ascii("%1$s #:"), name);	
 		}
-		// FIXME Can Inset::name() return an empty name for wide or
-		// float insets? If not we can put the definition of type
-		// inside the if (in) clause and use that instead of
-		// if (!type.empty()).
-		docstring type;
-		if (in)
-			type = in->name();
-
-		if (!type.empty()) {
-			Floating const & fl = textclass.floats().getType(to_ascii(type));
-			// FIXME UNICODE
-			counters.step(from_ascii(fl.type()));
-
-			// Doesn't work... yet.
-			par.params().labelString(par.translateIfPossible(
-				bformat(from_ascii("%1$s #:"), from_utf8(fl.name())),
-				buf.params()));
-		} else {
-			// par->SetLayout(0);
-			par.params().labelString(par.translateIfPossible(
-				layout->labelstring(), buf.params()));
-		}
+		par.params().labelString(full_label);	
 
 	} else if (layout->labeltype == LABEL_NO_LABEL)
 		par.params().labelString(docstring());
@@ -643,6 +549,31 @@ void setLabel(Buffer const & buf, ParIterator & it, TextClass const & textclass)
 }
 
 } // anon namespace
+
+void updateLabels(Buffer const & buf, ParIterator & parit)
+{
+	BOOST_ASSERT(parit.pit() == 0);
+
+	depth_type maxdepth = 0;
+	pit_type const lastpit = parit.lastpit();
+	for ( ; parit.pit() <= lastpit ; ++parit.pit()) {
+		// reduce depth if necessary
+		parit->params().depth(min(parit->params().depth(), maxdepth));
+		maxdepth = parit->getMaxDepthAfter();
+
+		// set the counter for this paragraph
+		setLabel(buf, parit);
+
+		// Now the insets
+		InsetList::const_iterator iit = parit->insetlist.begin();
+		InsetList::const_iterator end = parit->insetlist.end();
+		for (; iit != end; ++iit) {
+			parit.pos() = iit->pos;
+			iit->inset->updateLabels(buf, parit);
+		}
+	}
+	
+}
 
 
 void updateLabels(Buffer const & buf, bool childonly)
@@ -662,34 +593,10 @@ void updateLabels(Buffer const & buf, bool childonly)
 		textclass.counters().reset();
 	}
 
-	ParIterator const end = par_iterator_end(buf.inset());
-
-	for (ParIterator it = par_iterator_begin(buf.inset()); it != end; ++it) {
-		// reduce depth if necessary
-		if (it.pit()) {
-			Paragraph const & prevpar = it.plist()[it.pit() - 1];
-			it->params().depth(min(it->params().depth(),
-					       prevpar.getMaxDepthAfter()));
-		} else
-			it->params().depth(0);
-
-		// set the counter for this paragraph
-		setLabel(buf, it, textclass);
-
-		// It is better to set the captions after setLabel because
-		// the caption number might need the section number in the
-		// future.
-		setCaptions(*it, textclass);
-
-		// Now included docs
-		InsetList::const_iterator iit = it->insetlist.begin();
-		InsetList::const_iterator end = it->insetlist.end();
-		for (; iit != end; ++iit) {
-			if (iit->inset->lyxCode() == Inset::INCLUDE_CODE)
-				static_cast<InsetInclude const *>(iit->inset)
-					->updateLabels(buf);
-		}
-	}
+	// do the real work
+	ParIterator parit = par_iterator_begin(buf.inset());
+	parit.forwardPos();
+	updateLabels(buf, parit);
 
 	Buffer & cbuf = const_cast<Buffer &>(buf);
 	cbuf.tocBackend().update();

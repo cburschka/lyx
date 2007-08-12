@@ -58,6 +58,8 @@ public:
 	bool insetAllowed(Inset::Code code) const;
 	///
 	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	// Update the counters of this inset and of its contents
+	virtual void updateLabels(Buffer const &, ParIterator const &);
 	///
 	virtual bool wide() const { return false; }
 	///
@@ -76,8 +78,6 @@ public:
 	int getOptArg(Buffer const & buf, odocstream & os,
 		  OutputParams const &) const;
 	///
-	void setCount(int c) { counter_ = c; }
-	///
 	std::string const & type() const { return type_; }
 	///
 	void setType(std::string const & type) { type_ = type; }
@@ -90,8 +90,6 @@ public:
 
 private:
 	///
-	void computeFullLabel(Buffer const & buf) const;
-	///
 	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	mutable docstring full_label_;
@@ -101,8 +99,6 @@ private:
 	std::string type_;
 	///
 	docstring custom_label_;
-	///
-	int counter_;
 	///
 	TextClass const & textclass_;
 };

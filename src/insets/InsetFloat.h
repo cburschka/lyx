@@ -87,6 +87,8 @@ public:
 	InsetFloatParams const & params() const { return params_; }
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	// Update the counters of this inset and of its contents
+	virtual void updateLabels(Buffer const &, ParIterator const &);
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:

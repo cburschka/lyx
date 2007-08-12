@@ -97,12 +97,9 @@ public:
 	///
 	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
 	///
-	void updateLabels(Buffer const & buffer) const;
-	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	/// if this inset contains lstinputlisting and has a caption,
-	/// update internal counter and passed counter
-	void updateCounter(Counters & counters);
+	///
+	void updateLabels(Buffer const & buffer, ParIterator const &) const;
 protected:
 	InsetInclude(InsetInclude const &);
 	///
@@ -137,7 +134,7 @@ private:
 	/// cache
 	mutable bool set_label_;
 	mutable RenderButton button_;
-	int counter_;
+	mutable docstring listings_label_;
 };
 
 

@@ -15,7 +15,9 @@
 #include "InsetNote.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
+#include "Counters.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
@@ -278,6 +280,14 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 	}
+}
+
+void InsetNote::updateLabels(Buffer const & buf, ParIterator const & it)
+{
+	TextClass const & tclass = buf.params().getTextClass();
+	Counters savecnt = tclass.counters();
+	InsetCollapsable::updateLabels(buf, it);
+	tclass.counters() = savecnt;
 }
 
 
