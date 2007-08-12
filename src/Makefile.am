@@ -27,8 +27,6 @@ LYX_POST_LIBS = frontends/controllers/liblyxcontrollers.la \
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
-
 pkglib_LTLIBRARIES = liblyxcore.la
 noinst_PROGRAMS = $(FRONTENDS_PROGS)
 EXTRA_PROGRAMS = lyx-qt4
