@@ -6,6 +6,8 @@ DISTCLEANFILES += config.h libintl.h version.cpp stamp-version version.cpp-tmp
 
 MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
+AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
+
 SUBDIRS = support frontends .
 
 EXTRA_DIST = config.h.in stamp-h.in version.cpp.in \
