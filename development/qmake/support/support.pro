@@ -3,6 +3,8 @@ include(../config.pri)
 
 TARGET = lyxsupport$${DEBUGSUFFIX}
 
+DEFINES += QT_NO_KEYWORDS
+
 QT = core
 
 INC += boost
@@ -19,6 +21,7 @@ HPP += Package.h
 HPP += Path.h
 HPP += RandomAccessList.h
 HPP += Systemcall.h
+HPP += Timeout.h
 HPP += Translator.h
 HPP += convert.h
 HPP += copied_ptr.h
@@ -56,6 +59,7 @@ CPP += Forkedcall.cpp
 CPP += ForkedcallsController.cpp
 CPP += Path.cpp
 CPP += Systemcall.cpp
+CPP += Timeout.cpp
 CPP += abort.cpp
 CPP += chdir.cpp
 CPP += convert.cpp
