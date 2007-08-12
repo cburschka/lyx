@@ -721,8 +721,15 @@ void Tabular::deleteColumn(col_type const column)
 		return;
 
 	column_info.erase(column_info.begin() + column);
-	for (row_type i = 0; i < rows_; ++i)
+	for (row_type i = 0; i < rows_; ++i) {
+		// Care about multicolumn cells
+		if (column + 1 < columns_ &&
+		    cell_info[i][column].multicolumn == CELL_BEGIN_OF_MULTICOLUMN &&
+		    cell_info[i][column + 1].multicolumn == CELL_PART_OF_MULTICOLUMN) {
+			cell_info[i][column + 1].multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
+		}
 		cell_info[i].erase(cell_info[i].begin() + column);
+	}
 	--columns_;
 	fixCellNums();
 }
@@ -747,22 +754,10 @@ void Tabular::copyColumn(BufferParams const & bp, col_type const column)
 void Tabular::set_row_column_number_info()
 {
 	numberofcells = 0;
+	// Count only non-multicol cells plus begin multicol
+	// cells, ignore non-begin multicol cells:
 	for (row_type row = 0; row < rows_; ++row) {
 		for (col_type column = 0; column < columns_; ++column) {
-
-			// If on its left is either the edge, or a normal cell,
-			// then this cannot be a non-begin multicol cell.
-			// Clean up as well as we can:
-			if (cell_info[row][column].multicolumn
-				   == CELL_PART_OF_MULTICOLUMN) {
-				if (column == 0 || 
-				    cell_info[row][column - 1]
-					.multicolumn == CELL_NORMAL)
-					cell_info[row][column].multicolumn = 
-						CELL_NORMAL;
-			}
-			// Count only non-multicol cells plus begin multicol
-			// cells, ignore non-begin multicol cells:
 			if (cell_info[row][column].multicolumn
 				!= Tabular::CELL_PART_OF_MULTICOLUMN)
 				++numberofcells;

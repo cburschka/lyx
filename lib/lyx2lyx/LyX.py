@@ -30,7 +30,7 @@ try:
     import lyx2lyx_version
     version_lyx2lyx = lyx2lyx_version.version
 except: # we are running from build directory so assume the last version
-    version_lyx2lyx = '1.5.0svn'
+    version_lyx2lyx = '1.6.0svn'
 
 default_debug_level = 2
 
@@ -77,7 +77,8 @@ format_relation = [("0_06",    [200], generate_minor_versions("0.6" , 4)),
                    ("1_2",     [220], generate_minor_versions("1.2" , 4)),
                    ("1_3",     [221], generate_minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), generate_minor_versions("1.4" , 5)),
-                   ("1_5", range(246,277), generate_minor_versions("1.5" , 0))]
+                   ("1_5", range(246,277), generate_minor_versions("1.5" , 1)),
+                   ("1_6", range(277,278), generate_minor_versions("1.6" , 0))]
 
 
 def formats_list():
@@ -470,7 +471,7 @@ class LyX_Base:
             first_step = 1
             for step in format_relation:
                 if  initial_step <= step[0] <= final_step:
-                    if first_step and len(step[1]) == 1:
+                    if first_step:
                         first_step = 0
                         continue
                     steps.append(step[0])
@@ -488,6 +489,7 @@ class LyX_Base:
             if last_step[1][-1] == self.end_format:
                 steps.pop()
 
+        self.warning("Convertion mode: %s\tsteps%s" %(mode, steps), 10)
         return mode, steps
 
 
