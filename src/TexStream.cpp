@@ -1,4 +1,5 @@
-#include "LaTeXStream.h"
+#include "TexStream.h"
+#include "TexRow.h"
 
 #include <iostream>
 #include <streambuf>
@@ -7,43 +8,50 @@ namespace lyx {
 
 ////////////////////////////////////////////////////////////////
 //
-// LaTeXStreamBuffer
+// TexStreamBuffer
 //
 ////////////////////////////////////////////////////////////////
 
 
-class LaTeXStreamBuffer : public std::streambuf
+class TexStreamBuffer : public TexStreamBase
 {
 public:
-  explicit LaTeXStreamBuffer(std::streambuf * sbuf);
+  TexStreamBuffer(TexStreamBase * sbuf, TexRow * texrow);
 	int line() const { return line_; }
+	int column() const { return column_; }
 
 protected:
   int overflow(int);
   int sync();
 
 private:
-  std::streambuf * sbuf_; 
+  TexStreamBase * sbuf_; 
+	TexRow * texrow_;
+	int column_;
 	int line_;
 };
 
 
-LaTeXStreamBuffer::LaTeXStreamBuffer(std::streambuf *sb)
-  : sbuf_(sb), line_(0)
+TexStreamBuffer::TexStreamBuffer(TexStreamBase *sb, TexRow * texrow)
+  : sbuf_(sb), texrow_(texrow), line_(0)
 {
   setp(0, 0);
   setg(0, 0, 0);
 }
 
-int LaTeXStreamBuffer::overflow(int c)
+int TexStreamBuffer::overflow(int c)
 {
-	if (c == '\n')
+	if (c == '\n') {
 		++line_;
+		column_ = 0;
+	} else {
+		++column_;
+	}
 	return c;
 }
 
 
-int LaTeXStreamBuffer::sync()
+int TexStreamBuffer::sync()
 {
   sbuf_->pubsync();
   return 0;
@@ -52,22 +60,22 @@ int LaTeXStreamBuffer::sync()
   
 ////////////////////////////////////////////////////////////////
 //
-// LaTeXStream
+// TexStream
 //
 ////////////////////////////////////////////////////////////////
 
-LaTeXStream::LaTeXStream(std::streambuf * sbuf)
-		: std::ostream(sbuf_ = new LaTeXStreamBuffer(sbuf))
+TexStream::TexStream(TexStreamBase * sbuf, TexRow * texrow)
+		: std::basic_ostream<char_type>(sbuf_ = new TexStreamBuffer(sbuf, texrow))
 {}
 
 
-LaTeXStream::~LaTeXStream()
+TexStream::~TexStream()
 {
 	delete sbuf_;
 }
 
 
-int LaTeXStream::line() const
+int TexStream::line() const
 {
 	return sbuf_->line();
 }
@@ -83,7 +91,7 @@ int LaTeXStream::line() const
 
 int main(int argc, char *argv[])
 {
-	LaTeXStream out(std::cout.rdbuf());
+	TexStream out(std::cout.rdbuf());
 	char c;
 	while (std::cin) {
 		if (std::cin.get(c))

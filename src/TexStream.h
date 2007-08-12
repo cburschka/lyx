@@ -1,21 +1,29 @@
 #ifndef LATEXSTREAM_H
 #define LATEXSTREAM_H
 
+#include "support/docstring.h"
+
+#include "TexRow.h"
+
 #include <iostream>
 #include <streambuf>
 
 namespace lyx {
 
-class LaTeXStreamBuffer;
+class TexStreamBuffer;
+class TexRow;
 
-class LaTeXStream : public std::ostream
+typedef std::basic_streambuf<char_type> TexStreamBase;
+
+class TexStream : public std::basic_ostream<char_type>
 {
 public:
-  LaTeXStream(std::streambuf * sbuf);
-  ~LaTeXStream();
+  TexStream(TexStreamBase * sbuf, TexRow * texrow);
+  ~TexStream();
 	int line() const;
+
 private:
-	LaTeXStreamBuffer * sbuf_;
+	TexStreamBuffer * sbuf_;
 };
 
 } // namespace lyx

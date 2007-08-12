@@ -20,7 +20,9 @@
 namespace lyx {
 
 
-/// Represents the correspondence between paragraphs and the generated LaTeX file
+/// Represents the correspondence between paragraphs and the generated
+//LaTeX file
+
 class TexRow {
 public:
 	///
@@ -60,24 +62,13 @@ public:
 		{}
 
 		/// paragraph id
-		int id() const {
-			return id_;
-		}
-
+		int id() const { return id_; }
 		/// set paragraph position
-		void pos(int p) {
-			pos_ = p;
-		}
-
+		void pos(int p) { pos_ = p; }
 		/// paragraph position
-		int pos() const {
-			return pos_;
-		}
-
+		int pos() const { return pos_; }
 		/// row number
-		int rownumber() const {
-			return rownumber_;
-		}
+		int rownumber() const { return rownumber_; }
 	private:
 		RowItem();
 		int id_;

@@ -25,6 +25,8 @@ LYX_POST_LIBS = frontends/controllers/liblyxcontrollers.la \
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 
+AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
+
 pkglib_LTLIBRARIES = liblyxcore.la
 noinst_PROGRAMS = $(FRONTENDS_PROGS)
 EXTRA_PROGRAMS = lyx-qt4
@@ -224,6 +226,8 @@ liblyxcore_la_SOURCES = \
 	SpellBase.h \
 	TexRow.cpp \
 	TexRow.h \
+	TexStream.cpp \
+	TexStream.h \
 	Text.h \
 	Text.cpp \
 	Text2.cpp \
@@ -456,8 +460,6 @@ pkglib_LTLIBRARIES += liblyxinsets.la
 EXTRA_DIST += \
 	insets/InsetTheorem.cpp \
 	insets/InsetTheorem.h
-
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 liblyxinsets_la_SOURCES = \
 	insets/MailInset.cpp \

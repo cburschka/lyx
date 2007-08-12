@@ -47,6 +47,7 @@
 #include "ParIterator.h"
 #include "sgml.h"
 #include "TexRow.h"
+#include "TexStream.h"
 #include "TocBackend.h"
 #include "Undo.h"
 #include "version.h"
@@ -919,6 +920,8 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	odocfstream ofs(encoding);
 	if (!openFileWrite(ofs, fname))
 		return false;
+
+	//TexStream ts(ofs.rdbuf(), &texrow());
 
 	bool failed_export = false;
 	try {
