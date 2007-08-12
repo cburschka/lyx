@@ -41,8 +41,6 @@ lyx$(EXEEXT): $(FRONTENDS_PROGS)
 
 BUILT_SOURCES = $(PCH_FILE) version.cpp
 
-AM_CPPFLAGS += $(PCH_FLAGS) $(BOOST_INCLUDES)
-
 if USE_ASPELL
 ASPELL = ASpell.cpp ASpell_local.h
 endif
