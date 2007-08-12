@@ -20,7 +20,7 @@ $(PCH_FILE): $(PCH_SOURCE)
 	$(MAKE) PCH_FLAGS= pch-file
 
 pch-file:
-	$(CXXCOMPILE) -x c++-header $(PCH_SOURCE) -o $(PCH_FILE) \
+	$(CXXCOMPILE) -x c++-header -fPIC -DPIC $(PCH_SOURCE) -o $(PCH_FILE) \
 	-MT $(PCH_FILE)  -MD -MP -MF "./$(PCH_FILE).Tdep" \
 	&& mv "./$(PCH_FILE).Tdep" "./$(PCH_FILE).dep" \
 	|| rm "./$(PCH_FILE).Tdep"
