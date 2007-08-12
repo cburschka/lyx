@@ -50,10 +50,10 @@ QSearchDialog::QSearchDialog(QSearch * form)
 	setupUi(this);
 
 	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
-  connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));
-  connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));
-  connect(replaceallPB, SIGNAL(clicked()), this, SLOT(replaceallClicked()));
-  connect(findCO, SIGNAL(editTextChanged(const QString &)),
+	connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));
+	connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));
+	connect(replaceallPB, SIGNAL(clicked()), this, SLOT(replaceallClicked()));
+	connect(findCO, SIGNAL(editTextChanged(const QString &)),
 		this, SLOT(findChanged()));
 
 	setFocusProxy(findCO);

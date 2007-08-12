@@ -65,19 +65,25 @@ QMathMatrixDialog::QMathMatrixDialog(QMathMatrix * form)
 	columnsSB->setValue(5);
 	valignCO->setCurrentIndex(1);
 
-	connect(okPB, SIGNAL(clicked()),
-		this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()),
-		this, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-    connect( table, SIGNAL( rowsChanged(int) ), rowsSB, SLOT( setValue(int) ) );
-    connect( table, SIGNAL( colsChanged(int) ), columnsSB, SLOT( setValue(int) ) );
-    connect( rowsSB, SIGNAL( valueChanged(int) ), table, SLOT( setNumberRows(int) ) );
-    connect( columnsSB, SIGNAL( valueChanged(int) ), table, SLOT( setNumberColumns(int) ) );
-    connect( rowsSB, SIGNAL( valueChanged(int) ), this, SLOT( rowsChanged(int) ) );
-    connect( columnsSB, SIGNAL( valueChanged(int) ), this, SLOT( columnsChanged(int) ) );
-    connect( valignCO, SIGNAL( highlighted(const QString&) ), this, SLOT( change_adaptor() ) );
-    connect( halignED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
+	connect(table, SIGNAL(rowsChanged(int)),
+		rowsSB, SLOT(setValue(int)));
+	connect(table, SIGNAL(colsChanged(int)),
+		columnsSB, SLOT(setValue(int)));
+	connect(rowsSB, SIGNAL(valueChanged(int)),
+		table, SLOT(setNumberRows(int)));
+	connect(columnsSB, SIGNAL(valueChanged(int)),
+		table, SLOT(setNumberColumns(int)));
+	connect(rowsSB, SIGNAL(valueChanged(int)),
+		this, SLOT(rowsChanged(int)));
+	connect(columnsSB, SIGNAL(valueChanged(int)),
+		this, SLOT(columnsChanged(int)) );
+	connect(valignCO, SIGNAL(highlighted(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(halignED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
 }
 
 
