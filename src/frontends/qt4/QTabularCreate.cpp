@@ -36,13 +36,12 @@ QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
 	rowsSB->setValue(5);
 	columnsSB->setValue(5);
 
-	connect(okPB, SIGNAL(clicked()),
-		form_, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()),
-		form_, SLOT(slotClose()));
-    connect(rowsSB, SIGNAL(valueChanged(int)),
-		this, SLOT( rowsChanged(int)));
-    connect(columnsSB, SIGNAL(valueChanged(int)),
+	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+
+	connect(rowsSB, SIGNAL(valueChanged(int)),
+		this, SLOT(rowsChanged(int)));
+	connect(columnsSB, SIGNAL(valueChanged(int)),
 		this, SLOT(columnsChanged(int)));
 }
 
