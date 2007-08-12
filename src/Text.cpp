@@ -1628,6 +1628,10 @@ void Text::write(Buffer const & buf, std::ostream & os) const
 	depth_type dth = 0;
 	for (; pit != end; ++pit)
 		pit->write(buf, os, buf.params(), dth);
+
+	// Close begin_deeper
+	for(; dth > 0; --dth)
+		os << "\n\\end_deeper";
 }
 
 

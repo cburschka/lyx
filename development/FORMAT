@@ -1,6 +1,18 @@
 LyX file-format changes
 -----------------------
 
+2007-08-12 José Matos
+
+	* format incremented to 278: Close begin_deeper with a
+          corresponding end_deeper (the only case where it matters is
+          at the end of the body).
+
+2007-08-12 José Matos
+
+	* format incremented to 277: lyx is able to create invalid
+          table where a multicolumn does not have a first cell
+          (required by the table file format)
+
 2007-07-20 Dov Feldstern <dov@lyx.org>
 
 	* format *not* incremented; fixed format 249 conversion, so that it now

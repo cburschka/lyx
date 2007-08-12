@@ -22,7 +22,7 @@ import re
 import unicodedata
 import sys, os
 
-from parser_tools import find_token, find_end_of
+from parser_tools import find_token, find_end_of, find_tokens
 
 ####################################################################
 # Private helper functions
@@ -67,6 +67,26 @@ def fix_wrong_tables(document):
         i = j + 1
 
 
+def close_begin_deeper(document):
+    i = 0
+    depth = 0
+    while True:
+        i = find_tokens(document.body, ["\\begin_deeper", "\\end_deeper"], i)
+
+        if i == -1:
+            break
+
+        if document.body[i][:13] == "\\begin_deeper":
+            depth += 1
+        else:
+            depth -= 1
+
+        i += 1
+
+    document.body[-2:-2] = ['\\end_deeper' for i in range(depth)]
+        
+
+
 ##
 # Conversion hub
 #
@@ -74,10 +94,12 @@ def fix_wrong_tables(document):
 supported_versions = ["1.6.0","1.6"]
 convert = [
            [277, [fix_wrong_tables]],
+           [278, [close_begin_deeper]],
           ]
 
 revert =  [
            [276, []],
+           [277, []],
           ]
 
 
