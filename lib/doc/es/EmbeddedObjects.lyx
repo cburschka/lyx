@@ -4610,6 +4610,386 @@ reference "tab:DifEncabezados"
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+Longtable Alignment
+\begin_inset LatexCommand index
+name "Tablas Largas ! Alignment"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Longtables are by default centered.
+ In contrary to the alignment of the table columns and row, the table alignment
+ can currently not be changed in the table dialog.
+ To change the alignment of longtables you have to change the value of the
+ lengths 
+\series bold
+
+\backslash
+LTleft 
+\series default
+and 
+\series bold
+
+\backslash
+LTright
+\series default
+ by inserting this line as ERT before the corresponding longtable:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+setlength{
+\backslash
+LTleft}{value}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Where the value can have any of the units listed in 
+\lang spanish
+tabla\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "tab:Unidades"
+
+\end_inset
+
+.
+ 
+\series bold
+\lang english
+
+\backslash
+LTleft
+\series default
+ controls the horizontal distance from the left page border to the longtable,
+ 
+\series bold
+
+\backslash
+LTright
+\series default
+ the distance from the right side.
+ The default value for both lengths is 
+\series bold
+
+\backslash
+fill
+\series default
+, which is in this case the same as an horizontal fill in LyX.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The following longtable was left-aligned by setting 
+\series bold
+
+\backslash
+LTleft
+\series default
+ to
+\lang spanish
+ 0\InsetSpace \thinspace{}
+pt.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setlength{
+\backslash
+LTleft}{0pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features islongtable="true">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+asd
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+setlength{
+\backslash
+LTleft}{
+\backslash
+fill}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Encabezados en Tablas Largas
 \begin_inset LatexCommand index
 name "Tablas Largas ! Encabezados"
@@ -8273,6 +8653,12 @@ Roberto
 
 \end_layout
 
+\begin_layout Standard
+
+\newpage
+
+\end_layout
+
 \begin_layout Section
 Particularidades de las Tablas Largas
 \end_layout
@@ -9234,7 +9620,38 @@ Lassini
 \begin_inset Text
 
 \begin_layout Standard
-Giancarlo
+Giancarlo, 11.
+ Fürst von Montecompatri, 11.
+ Fürst von Sulmona und Vivaro, 10.
+ Fürst von Rossano, 5.
+ Herzog von Canemorte, 11.
+ Herzog von Palombara, 5.
+ Herzog von Castelchiodato,
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+& 111
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Standard
+
+&
+\end_layout
+
+\end_inset
+
+ 11.
+ Herzog von Poggionativo, 11.
+ Markis von Mentana, Norma, Civitella, Pratica, Moricone und Percille, 11.
+ Graf von Valinfreda, 11.
+ Baron von Cropalati, 11.
+ Herr von Scarpa, Edelmann von Rom, Patrizier von Venedig, Neapel und Genua
 \end_layout
 
 \end_inset
@@ -9243,7 +9660,7 @@ Giancarlo
 \begin_inset Text
 
 \begin_layout Standard
-111
+
 \end_layout
 
 \end_inset
@@ -9482,38 +9899,7 @@ Rizzardi
 \begin_inset Text
 
 \begin_layout Standard
-Paolo, 11.
- Fürst von Montecompatri, 11.
- Fürst von Sulmona und Vivaro, 10.
- Fürst von Rossano, 5.
- Herzog von Canemorte, 11.
- Herzog von Palombara, 5.
- Herzog von Castelchiodato,
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-& 111
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Standard
-
-&
-\end_layout
-
-\end_inset
-
- 11.
- Herzog von Poggionativo, 11.
- Markis von Mentana, Norma, Civitella, Pratica, Moricone und Percille, 11.
- Graf von Valinfreda, 11.
- Baron von Cropalati, 11.
- Herr von Scarpa, Edelmann von Rom, Patrizier von Venedig, Neapel und Genua
+Paolo
 \end_layout
 
 \end_inset
@@ -9522,7 +9908,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-
+111
 \end_layout
 
 \end_inset
