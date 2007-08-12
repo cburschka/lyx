@@ -77,13 +77,13 @@ AC_LANG(C++)
 dnl we do not need that currently (and probably all our supported
 dnl compiler allow that)
 dnl LYX_CXX_PARTIAL
-LYX_CXX_EXPLICIT
+dnl LYX_CXX_EXPLICIT
 LYX_CXX_GLOBAL_CSTD
-LYX_STD_COUNT
+dnl LYX_STD_COUNT
 dnl we disable rtti for now
 dnl LYX_CXX_RTTI
-AC_CHECK_HEADERS(ostream istream sstream locale limits ios)
-LYX_CXX_STL_MODERN_STREAMS
+dnl AC_CHECK_HEADERS(ostream istream sstream locale limits ios)
+dnl LYX_CXX_STL_MODERN_STREAMS
 
 ### and now some special lyx flags.
 AC_ARG_ENABLE(assertions,
@@ -100,7 +100,7 @@ if test "x$enable_assertions" = xyes ; then
 fi
 
 ### Library Files
-AC_CHECK_LIB(m, sin)
+dnl AC_CHECK_LIB(m, sin)
 
 ### Add extra directories to check for libraries.
 LYX_WITH_DIR([extra-lib],[extra library directory],extra_lib, NONE)

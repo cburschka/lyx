@@ -15,15 +15,13 @@
 #include "MathExtern.h"
 #include "MathStream.h"
 
-#include "support/lyxalgo.h"
 #include "support/textutils.h"
 
+#include <algorithm>
 
 namespace lyx {
 
 using std::strlen;
-
-
 
 
 //////////////////////////////////////////////////////////////////////
@@ -154,7 +152,7 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 		ws.pendingSpace(false);
 	}
 	ws.os() << s;
-	ws.addlines(int(count(s, s + strlen(s), '\n')));
+	ws.addlines(int(std::count(s, s + strlen(s), '\n')));
 	return ws;
 }
 

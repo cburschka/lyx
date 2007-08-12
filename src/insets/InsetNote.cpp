@@ -28,9 +28,9 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
-#include "support/lyxalgo.h"
 #include "support/Translator.h"
 
+#include <algorithm>
 #include <sstream>
 
 
@@ -323,7 +323,7 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 	os << str;
 	runparams_in.encoding = runparams.encoding;
 	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(), '\n'));
+	return int(std::count(str.begin(), str.end(), '\n'));
 }
 
 

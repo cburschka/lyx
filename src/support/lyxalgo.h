@@ -73,21 +73,6 @@ OutputIter copy_if(InputIter first, InputIter last,
 }
 
 
-/// A slot in replacement for std::count for systems where it is broken.
-template <class Iterator, class T>
-typename std::iterator_traits<Iterator>::difference_type
-count (Iterator first, Iterator last, T const & value)
-{
-#ifdef HAVE_STD_COUNT
-	return std::count(first, last, value);
-#else
-	typename std::iterator_traits<Iterator>::difference_type n = 0;
-	while (first != last)
-		if (*first++ == value) ++n;
-	return n;
-#endif
-}
-
 /// Remove all duplicate entries in c.
 template<class C>
 void eliminate_duplicates(C & c)

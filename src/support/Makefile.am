@@ -52,6 +52,8 @@ liblyxsupport_la_SOURCES = \
 	gzstream.cpp \
 	gzstream.h \
 	kill.cpp \
+	LaTeXStream.cpp \
+	LaTeXStream.h \
 	limited_stack.h \
 	lstrings.cpp \
 	lstrings.h \

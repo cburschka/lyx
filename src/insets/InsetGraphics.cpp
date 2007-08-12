@@ -76,7 +76,6 @@ TODO
 
 #include "support/convert.h"
 #include "support/filetools.h"
-#include "support/lyxalgo.h" // count
 #include "support/lyxlib.h" // sum
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -85,6 +84,7 @@ TODO
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
 
+#include <algorithm>
 #include <sstream>
 
 
@@ -823,7 +823,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	LYXERR(Debug::GRAPHICS) << "InsetGraphics::latex outputting:\n"
 				<< latex_str << endl;
 	// Return how many newlines we issued.
-	return int(lyx::count(latex_str.begin(), latex_str.end(),'\n'));
+	return int(std::count(latex_str.begin(), latex_str.end(),'\n'));
 }
 
 

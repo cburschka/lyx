@@ -37,6 +37,8 @@
 
 #include <boost/filesystem/operations.hpp>
 
+#include <algorithm>
+
 using std::endl;
 using std::string;
 using std::vector;
@@ -387,7 +389,7 @@ int writeExternal(InsetExternalParams const & params,
 	str = substituteOptions(params, str, format);
 	// FIXME UNICODE
 	os << from_utf8(str);
-	return int(lyx::count(str.begin(), str.end(),'\n'));
+	return int(std::count(str.begin(), str.end(),'\n'));
 }
 
 namespace {

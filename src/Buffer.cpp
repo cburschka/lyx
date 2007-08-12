@@ -79,6 +79,7 @@
 #include <boost/filesystem/exception.hpp>
 #include <boost/filesystem/operations.hpp>
 
+#include <algorithm>
 #include <iomanip>
 #include <stack>
 #include <sstream>
@@ -1758,7 +1759,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	} else
 		getLabelList(labels);
 
-	if (lyx::count(labels.begin(), labels.end(), from) > 1)
+	if (std::count(labels.begin(), labels.end(), from) > 1)
 		return;
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {

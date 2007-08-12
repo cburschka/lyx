@@ -39,14 +39,15 @@
 #include "frontends/alert.h"
 #include "insets/InsetListingsParams.h"
 
-#include "support/lyxalgo.h" // for lyx::count
 #include "support/convert.h"
 #include "support/Translator.h"
 
 #include <boost/array.hpp>
 
+#include <algorithm>
 #include <sstream>
 
+using std::count;
 using std::endl;
 using std::string;
 using std::istringstream;
@@ -1159,7 +1160,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	lyxpreamble += "\\makeatother\n\n";
 
 	int const nlines =
-		int(lyx::count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
+		int(count(lyxpreamble.begin(), lyxpreamble.end(), '\n'));
 	for (int j = 0; j != nlines; ++j) {
 		texrow.newline();
 	}
