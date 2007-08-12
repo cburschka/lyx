@@ -29,6 +29,19 @@ namespace lyx {
  * BufferView::dispatch(), Cursor::dispatch() and
  * Inset*::doDispatch();
  */
+
+/** LFUN documentation (a start at least, Chr 2007-08-12)
+ *
+ * The documentation below is primarily notes about restrictions and
+ * oddities relating to the different LFUNs. Note that this
+ * documentation may well be moved to a more suitable location later
+ * on.
+ *
+ * The documentation is interspersed with the enum:s. Another choice
+ * was to put it in a separate list. The best choice was unclear, so
+ * this may change. Particularly if doxygen can be used somehow.
+ */
+
 enum kb_action {
 	LFUN_UNKNOWN_ACTION = -1,
 	// 0
@@ -39,6 +52,15 @@ enum kb_action {
 	LFUN_BUFFER_WRITE,
 	// 5
 	LFUN_BUFFER_WRITE_AS,
+/**	LFUN_BUFFER_WRITE_AS,		Chr 2007-08-12
+ * Function:	Save current buffer as .lyx-file with a new filename.
+ * Syntax:	buffer-write-as <filename>
+ * In:		<filename> = Name of the new file. Must currently be
+ *		an absolute path (bug 4135). Relative paths will be
+ *		treated as relative to the location of the original
+ *		buffer (i.e. LyX file?).
+ *
+ */
 	LFUN_BUILD_PROGRAM,
 	LFUN_BUFFER_VIEW,
 	LFUN_BUFFER_CLOSE,
