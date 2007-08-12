@@ -411,7 +411,7 @@ dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AC_ARG_WITH(included-boost,
-	    [  --with-included-boost  use the boost lib supplied with LyX],
+	    [  --without-included-boost  do not use the boost lib supplied with LyX],
 	    [lyx_cv_with_included_boost=$withval
 		AC_MSG_RESULT([$with_included_boost])],
 	    [lyx_cv_with_included_boost=yes])
@@ -471,7 +471,7 @@ dnl                       [default-yes-value])
 dnl  Adds a --with-'dir-name' option (described by 'desc') and puts the
 dnl  resulting directory name in 'dir-var-name'.
 AC_DEFUN([LYX_WITH_DIR],[
-  AC_ARG_WITH($1,[  --with-$1        specify $2])
+  AC_ARG_WITH($1,[AC_HELP_STRING([--with-$1],[specify $2])])
   AC_MSG_CHECKING([for $2])
   if test -z "$with_$3"; then
      AC_CACHE_VAL(lyx_cv_$3, lyx_cv_$3=$4)
