@@ -925,6 +925,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 
 	bool failed_export = false;
 	try {
+		texrow().reset();
 		writeLaTeXSource(ofs, original_path,
 		      runparams, output_preamble, output_body);
 	}
@@ -972,12 +973,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	validate(features);
 	LYXERR(Debug::LATEX) << "  Buffer validation done." << endl;
 
-	texrow().reset();
-
 	// The starting paragraph of the coming rows is the
 	// first paragraph of the document. (Asger)
-	texrow().start(paragraphs().begin()->id(), 0);
-
 	if (output_preamble && runparams.nice) {
 		os << "%% LyX " << lyx_version << " created this file.  "
 			"For more info, see http://www.lyx.org/.\n"
@@ -1027,6 +1024,9 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		os << "\\begin{document}\n";
 		texrow().newline();
 	} // output_preamble
+
+	texrow().start(paragraphs().begin()->id(), 0);
+	
 	LYXERR(Debug::INFO) << "preamble finished, now the body." << endl;
 
 	if (!lyxrc.language_auto_begin &&
@@ -1784,8 +1784,11 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
+	texrow().reset();
 	if (full_source) {
 		os << "% " << _("Preview source code") << "\n\n";
+		texrow().newline();
+		texrow().newline();
 		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
 		else {
@@ -1804,9 +1807,10 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 					convert<docstring>(par_begin),
 					convert<docstring>(par_end - 1))
 			   << "\n\n";
+		texrow().newline();
+		texrow().newline();
 		// output paragraphs
 		if (isLatex()) {
-			texrow().reset();
 			latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
 		} else {
 			// DocBook

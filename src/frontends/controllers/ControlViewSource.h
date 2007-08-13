@@ -47,6 +47,9 @@ public:
 		\param fullSource get full source code
 	 */
 	docstring const updateContent(bool fullSource);
+	/** get the cursor position in the source code
+	 */
+	std::pair<int, int> getRows() const;
 };
 
 } // namespace frontend

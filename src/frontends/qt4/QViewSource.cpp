@@ -61,6 +61,13 @@ void QViewSourceDialog::update()
 	if (autoUpdateCB->isChecked())
 		form_->update(viewFullSourceCB->isChecked());
 
+	int beg, end;
+	boost::tie(beg, end) = form_->getRows();
+	QTextCursor c = QTextCursor(viewSourceTV->document());
+	c.movePosition(QTextCursor::NextBlock, QTextCursor::MoveAnchor, beg);
+	c.select(QTextCursor::BlockUnderCursor);
+	c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor, end - beg + 1);
+	viewSourceTV->setTextCursor(c);
 	QWidget::update();
 }
 

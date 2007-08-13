@@ -18,6 +18,7 @@
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
+#include "TexRow.h"
 #include <sstream>
 
 using std::string;
@@ -55,6 +56,20 @@ docstring const ControlViewSource::updateContent(bool fullSource)
 	lyx::odocstringstream ostr;
 	view->buffer()->getSourceCode(ostr, par_begin, par_end + 1, fullSource);
 	return ostr.str();
+}
+
+
+std::pair<int, int> ControlViewSource::getRows() const
+{
+	BufferView const * view = kernel().bufferview();
+	CursorSlice beg = view->cursor().selectionBegin().bottom();
+	CursorSlice end = view->cursor().selectionEnd().bottom();
+
+	int begrow = view->buffer()->texrow().
+		getRowFromIdPos(beg.paragraph().id(), beg.pos());
+	int endrow = view->buffer()->texrow().
+		getRowFromIdPos(end.paragraph().id(), end.pos() + 1);
+	return std::make_pair(begrow, endrow);
 }
 
 
