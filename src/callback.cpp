@@ -122,12 +122,49 @@ bool menuWrite(Buffer * buffer)
 
 
 
+/** Write a buffer to a new file name and rename the buffer
+    according to the new file name.
+
+    This function is e.g. used by menu callbacks and
+    LFUN_BUFFER_WRITE_AS.
+
+    If 'newname' is empty (the default), the user is asked via a
+    dialog for the buffer's new name and location.
+
+    If 'newname' is not empty, FileName::makeAbsPath() will indirectly
+    produce the following behaviour:
+
+    * If 'newname' has an absolute path, use that.
+
+    * If 'newname' has a relative path (or no path) and the buffer has
+      a path, that path is used as the base for 'newname'. Typically
+      this means that 'M-x buffer-write-as newname.lyx' will write to
+      the same directory as the original file.
+
+    * Otherwise use CWD as the base directory for 'newname'.
+      This behavour is arguably a bug, perhaps a system depedenant
+      "document directory" shoul be used instead. Note that CWD
+      isn't actually used according to a simple test on Linux.
+      Instead, it's based on '~', contrar to the documentation of
+      makeAbsPath(). Don't know what to do. *shrug*
+
+    Note: No checks are done on the extension etc of 'newname' when
+    it's non-empty. This may arguably also be a bug.
+
+    Note: The code may not code check that 'newname' is a valid for
+    the relevant file system?
+
+    Note: In Linux, it doesn't work with e.g. '~/file.lyx'. If it's
+    done from e.g. a buffer '/tmp/buf.lyx', it instead tries to write
+    to '/tmp/~/file.lyx'.
+*/
+
 bool writeAs(Buffer * buffer, string const & newname)
 {
 	string fname = buffer->fileName();
 	string const oldname = fname;
 
-	if (newname.empty()) {
+	if (newname.empty()) {	/// No argument? Ask user through dialog
 
 		// FIXME UNICODE
 		FileDialog fileDlg(_("Choose a filename to save document as"),
@@ -159,11 +196,11 @@ bool writeAs(Buffer * buffer, string const & newname)
 		fname = makeAbsPath(fname).absFilename();
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
-	} else
-		fname = newname;
 
-	FileName const filename(fname);
-	if (fs::exists(filename.toFilesystemEncoding())) {
+	} else 
+		fname = makeAbsPath(newname, onlyPath(oldname)).absFilename();
+
+	if (fs::exists(FileName(fname).toFilesystemEncoding())) {
 		docstring const file = makeDisplayPath(fname, 30);
 		docstring text = bformat(_("The document %1$s already "
 					   "exists.\n\nDo you want to "
