@@ -397,7 +397,7 @@ AC_ARG_ENABLE(monolithic-boost,
   AC_HELP_STRING([--with-monolithic-boost],
 		[Use monolithic boost compilations]),,
   [monolithic_boost=$withval],
-	[monolithic_boost=yes]
+	[monolithic_boost=no]
 )
 AM_CONDITIONAL(MONOLITHIC_BOOST, test $monolithic_boost = yes)
 
