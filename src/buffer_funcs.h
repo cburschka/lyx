@@ -71,6 +71,9 @@ void updateLabels(Buffer const &, ParIterator &);
 ///
 void checkBufferStructure(Buffer &, ParIterator const &);
 
+///
+void loadChildDocuments(Buffer const & buffer);
+
 } // namespace lyx
 
 #endif // BUFFER_FUNCS_H

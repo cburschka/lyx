@@ -23,8 +23,10 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "gettext.h"
+#include "InsetIterator.h"
 #include "Language.h"
 #include "LaTeX.h"
+#include "LyX.h"
 #include "TextClass.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
@@ -612,6 +614,27 @@ void checkBufferStructure(Buffer & buffer, ParIterator const & par_it)
 		master->tocBackend().updateItem(par_it);
 		master->structureChanged();
 	}
+}
+
+
+void loadChildDocuments(Buffer const & buf)
+{
+	bool parse_error = false;
+		
+	for (InsetIterator it = inset_iterator_begin(buf.inset()); it; ++it) {
+		if (it->lyxCode() != Inset::INCLUDE_CODE)
+			continue;
+		InsetInclude const & inset = static_cast<InsetInclude const &>(*it);
+		InsetCommandParams const & ip = inset.params();
+		Buffer * child = loadIfNeeded(buf, ip);
+		if (!child)
+			continue;
+		parse_error |= !child->errorList("Parse").empty();
+		loadChildDocuments(*child);
+	}
+
+	if (use_gui && buf.getMasterBuffer() == &buf)
+		updateLabels(buf);
 }
 
 } // namespace lyx
