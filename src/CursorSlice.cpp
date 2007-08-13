@@ -91,6 +91,71 @@ CursorSlice::col_type CursorSlice::col() const
 }
 
 
+void CursorSlice::forwardPos()
+{
+	//  move on one position if possible
+	if (pos() < lastpos()) {
+		//lyxerr << "... next pos" << endl;
+		++pos();
+		return;
+	}
+
+	// otherwise move on one paragraph if possible
+	if (pit() < lastpit()) {
+		//lyxerr << "... next par" << endl;
+		++pit();
+		pos() = 0;
+		return;
+	}
+
+	// otherwise try to move on one cell if possible
+	if (idx() < lastidx()) {
+		//lyxerr << "... next idx" << endl;
+		++idx();
+		pit() = 0;
+		pos() = 0;
+		return;
+	}
+	BOOST_ASSERT(false);
+}
+
+
+void CursorSlice::backwardPos()
+{
+	if (pos() != 0) {
+		--pos();
+		return;
+	}
+
+	if (pit() != 0) {
+		--pit();
+		pos() = lastpos();
+		return;
+	}
+
+	if (idx() != 0) {
+		--idx();
+		pit() = lastpit();
+		pos() = lastpos();
+		return;
+	}
+
+	BOOST_ASSERT(false);
+}
+
+
+bool CursorSlice::at_end() const 
+{
+	return idx() == lastidx() && pit() == lastpit() && pos() == lastpos();
+}
+
+
+bool CursorSlice::at_begin() const
+{
+	return idx() == 0 && pit() == 0 && pos() == 0;
+}
+
+
 bool operator==(CursorSlice const & p, CursorSlice const & q)
 {
 	return &p.inset() == &q.inset()

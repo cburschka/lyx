@@ -401,7 +401,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else if (cmd.argument() == "toggle" || cmd.argument().empty())
 			if (isOpen()) {
 				setStatus(cur, Collapsed);
-				cur.forwardPosNoDescend();
+				cur.top().forwardPos();
 			}
 			else
 				setStatus(cur, Open);

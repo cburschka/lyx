@@ -178,8 +178,6 @@ public:
 	//
 	// elementary moving
 	//
-	/// move on one logical position, do not descend into nested insets
-	void forwardPosNoDescend();
 	/**
 	 * move on one logical position, descend into nested insets
 	 * skip collapsed insets if \p ignorecollapsed is true

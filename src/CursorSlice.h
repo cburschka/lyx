@@ -70,7 +70,7 @@ public:
 	pit_type pit() const { return pit_; }
 	/// set the offset of the paragraph this cursor is in
 	pit_type & pit() { return pit_; }
-	/// return the last paragraph offset this cursor is in
+	/// return the last paragraph offset within the ParagraphList
 	pit_type lastpit() const;
 	/// increments the paragraph this cursor is in
 	void incrementPar();
@@ -121,6 +121,15 @@ public:
 
 	/// write some debug information to \p os
 	friend std::ostream & operator<<(std::ostream &, CursorSlice const &);
+	/// move to next position
+	void forwardPos();
+	/// move to previous position
+	void backwardPos();
+	/// are we at the end of this slice
+	bool at_end() const;
+	/// are we at the start of this slice
+	bool at_begin() const;
+	
 private:
 
 	/// pointer to 'owning' inset. This is some kind of cache.

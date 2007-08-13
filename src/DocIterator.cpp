@@ -338,76 +338,13 @@ void DocIterator::forwardPos(bool ignorecollapsed)
 		return;
 	}
 
-	// otherwise move on one position if possible
-	if (tip.pos() < lastp) {
-		//lyxerr << "... next pos" << endl;
-		++tip.pos();
+	if (!tip.at_end()) {
+		tip.forwardPos();
 		return;
 	}
-	//lyxerr << "... no next pos" << endl;
-
-	// otherwise move on one paragraph if possible
-	if (tip.pit() < lastpit()) {
-		//lyxerr << "... next par" << endl;
-		++tip.pit();
-		tip.pos() = 0;
-		return;
-	}
-	//lyxerr << "... no next pit" << endl;
-
-	// otherwise try to move on one cell if possible
-	if (tip.idx() < lastidx()) {
-		//lyxerr << "... next idx" << endl;
-		++tip.idx();
-		tip.pit() = 0;
-		tip.pos() = 0;
-		return;
-	}
-	//lyxerr << "... no next idx" << endl;
-
 	// otherwise leave inset and jump over inset as a whole
 	pop_back();
-	// 'top' is invalid now...
-	if (!empty())
-		++top().pos();
-}
-
-
-void DocIterator::forwardPosNoDescend()
-{
-	CursorSlice & tip = top();
-	pos_type const lastp = lastpos();
-
-	//  move on one position if possible
-	if (tip.pos() < lastp) {
-		//lyxerr << "... next pos" << endl;
-		++tip.pos();
-		return;
-	}
-	//lyxerr << "... no next pos" << endl;
-
-	// otherwise move on one paragraph if possible
-	if (tip.pit() < lastpit()) {
-		//lyxerr << "... next par" << endl;
-		++tip.pit();
-		tip.pos() = 0;
-		return;
-	}
-	//lyxerr << "... no next pit" << endl;
-
-	// otherwise try to move on one cell if possible
-	if (tip.idx() < lastidx()) {
-		//lyxerr << "... next idx" << endl;
-		++tip.idx();
-		tip.pit() = 0;
-		tip.pos() = 0;
-		return;
-	}
-	//lyxerr << "... no next idx" << endl;
-
-	// otherwise leave inset and jump over inset as a whole
-	pop_back();
-	// 'top' is invalid now...
+	// 'tip' is invalid now...
 	if (!empty())
 		++top().pos();
 }
@@ -492,32 +429,21 @@ void DocIterator::backwardPos()
 		return;
 	}
 
-	CursorSlice & tip = top();
-
-	if (tip.pos() != 0) {
-		--tip.pos();
-	} else if (tip.pit() != 0) {
-		--tip.pit();
-		tip.pos() = lastpos();
-		return;
-	} else if (tip.idx() != 0) {
-		--tip.idx();
-		tip.pit() = lastpit();
-		tip.pos() = lastpos();
-		return;
-	} else {
+	if (top().at_begin()) {
 		pop_back();
 		return;
 	}
+
+	top().backwardPos();
 
 	// move into an inset to the left if possible
 	Inset * n = 0;
 
 	if (inMathed()) {
-		n = (tip.cell().begin() + tip.pos())->nucleus();
+		n = (top().cell().begin() + top().pos())->nucleus();
 	} else {
-		if (paragraph().isInset(tip.pos()))
-			n = paragraph().getInset(tip.pos());
+		if (paragraph().isInset(top().pos()))
+			n = paragraph().getInset(top().pos());
 	}
 
 	if (n && n->isActive()) {

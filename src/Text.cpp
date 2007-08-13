@@ -1226,7 +1226,7 @@ bool Text::erase(Cursor & cur)
 		recordUndo(cur, Undo::DELETE);
 		if(!par.eraseChar(cur.pos(), cur.buffer().params().trackChanges)) {
 			// the character has been logically deleted only => skip it
-			cur.forwardPosNoDescend();
+			cur.top().forwardPos();
 		}
 		checkBufferStructure(cur.buffer(), cur);
 		needsUpdate = true;

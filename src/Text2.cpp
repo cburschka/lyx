@@ -327,7 +327,7 @@ void Text::setInsetFont(Buffer const & buffer, pit_type pit,
 			DocIterator cellend = cellbegin;
 			cellend.pit() = cellend.lastpit();
 			cellend.pos() = cellend.lastpos();
-			text->setFont(buffer, cellbegin, cellend, font, toggleall);
+			text->setFont(buffer, cellbegin.top(), cellend.top(), font, toggleall);
 		}
 		if (dit == end)
 			break;
@@ -492,13 +492,13 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	// Ok, we have a selection.
 	recordUndoSelection(cur);
 
-	setFont(cur.buffer(), cur.selectionBegin(), cur.selectionEnd(), font,
-		toggleall);
+	setFont(cur.buffer(), cur.selectionBegin().top(), 
+		cur.selectionEnd().top(), font, toggleall);
 }
 
 
-void Text::setFont(Buffer const & buffer, DocIterator const & begin,
-		DocIterator const & end, Font const & font,
+void Text::setFont(Buffer const & buffer, CursorSlice const & begin,
+		CursorSlice const & end, Font const & font,
 		bool toggleall)
 {
 	// Don't use forwardChar here as ditend might have
@@ -506,7 +506,7 @@ void Text::setFont(Buffer const & buffer, DocIterator const & begin,
 	// Can't use forwardPos either as this descends into
 	// nested insets.
 	Language const * language = buffer.params().language;
-	for (DocIterator dit = begin; dit != end; dit.forwardPosNoDescend()) {
+	for (CursorSlice dit = begin; dit != end; dit.forwardPos()) {
 		if (dit.pos() != dit.lastpos()) {
 			pit_type const pit = dit.pit();
 			pos_type const pos = dit.pos();

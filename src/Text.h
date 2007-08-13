@@ -103,8 +103,8 @@ public:
 	/// FIXME: replace Cursor with DocIterator.
 	void setFont(Cursor & cur, Font const &, bool toggleall = false);
 	/// Set font from \p begin to \p end and rebreak.
-	void setFont(Buffer const & buffer, DocIterator const & begin,
-		DocIterator const & end, Font const &,
+	void setFont(Buffer const & buffer, CursorSlice const & begin,
+		CursorSlice const & end, Font const &,
 		bool toggleall = false);
 
 	///

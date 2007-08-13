@@ -366,21 +366,16 @@ bool findNextChange(BufferView * bv)
 
 	Change orig_change = cur.paragraph().lookupChange(cur.pos());
 
-	DocIterator et = doc_iterator_end(cur.inset());
-	DocIterator ok = cur;   // see below
-	for (; cur != et; cur.forwardPosNoDescend()) {
-		ok = cur;
-		Change change = cur.paragraph().lookupChange(cur.pos());
-		if (change != orig_change) {
+	CursorSlice & tip = cur.top();
+	for (; !tip.at_end(); tip.forwardPos()) {
+		Change change = tip.paragraph().lookupChange(tip.pos());
+		if (change != orig_change)
 			break;
-		}
 	}
-
 	// avoid crash (assertion violation) if the imaginary end-of-par
 	// character of the last paragraph of the document is marked as changed
-	if (cur == et) {
-		cur = ok;
-	}
+	if (tip.at_end())
+		tip.backwardPos();
 
 	// Now put cursor to end of selection:
 	bv->cursor().setCursor(cur);
