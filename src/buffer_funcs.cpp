@@ -597,7 +597,6 @@ void updateLabels(Buffer const & buf, bool childonly)
 
 	// do the real work
 	ParIterator parit = par_iterator_begin(buf.inset());
-	parit.forwardPos();
 	updateLabels(buf, parit);
 
 	Buffer & cbuf = const_cast<Buffer &>(buf);
