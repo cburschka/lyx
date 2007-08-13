@@ -320,17 +320,19 @@ bool QCitationDialog::isSelected(const QModelIndex & idx)
 void QCitationDialog::setButtons()
 {
 	int const arows = availableLV->model()->rowCount();
+	QModelIndexList const availSels = 
+			availableLV->selectionModel()->selectedIndexes();
 	addPB->setEnabled(arows > 0 &&
-		availableLV->currentIndex().isValid() &&
-		!isSelected(availableLV->currentIndex()));
+			!availSels.isEmpty() &&
+			!isSelected(availSels.first()));
 
 	int const srows = selectedLV->model()->rowCount();
-	int const sel_nr = selectedLV->currentIndex().row();
+	QModelIndexList const selSels = 
+			selectedLV->selectionModel()->selectedIndexes();
+	int const sel_nr = 	selSels.empty() ? -1 : selSels.first().row();
 	deletePB->setEnabled(sel_nr >= 0);
 	upPB->setEnabled(sel_nr > 0);
 	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
-	applyPB->setEnabled(srows > 0);
-	okPB->setEnabled(srows > 0);
 }
 
 
@@ -346,7 +348,6 @@ void QCitationDialog::updateInfo(const QModelIndex & idx)
 
 void QCitationDialog::on_selectedLV_clicked(const QModelIndex &)
 {
-	availableLV->selectionModel()->reset();
 	update();
 }
 
@@ -355,15 +356,12 @@ void QCitationDialog::selectedChanged(const QModelIndex & idx, const QModelIndex
 {
 	if (!idx.isValid())
 		return;
-
-	availableLV->selectionModel()->reset();
 	update();
 }
 
 
 void QCitationDialog::on_availableLV_clicked(const QModelIndex &)
 {
-	selectedLV->selectionModel()->reset();
 	update();
 }
 
@@ -372,8 +370,6 @@ void QCitationDialog::availableChanged(const QModelIndex & idx, const QModelInde
 {
 	if (!idx.isValid())
 		return;
-
-	selectedLV->selectionModel()->reset();
 	update();
 }
 
@@ -382,14 +378,7 @@ void QCitationDialog::on_availableLV_doubleClicked(const QModelIndex & idx)
 {
 	if (isSelected(idx))
 		return;
-
-	selectedLV->selectionModel()->reset();
 	on_addPB_clicked();
-}
-
-
-void QCitationDialog::on_availableLV_entered(const QModelIndex &)
-{
 }
 
 
@@ -416,7 +405,6 @@ void QCitationDialog::on_addPB_clicked()
 	form_->addKey(idxToAdd);
 	if (idx.isValid())
 		selectedLV->setCurrentIndex(idx);
-	selectedLV->selectionModel()->reset();
 	update();
 }
 
@@ -436,7 +424,6 @@ void QCitationDialog::on_deletePB_clicked()
 	if (nrows>1)
 		selectedLV->setCurrentIndex(idx);
 
-	availableLV->selectionModel()->reset();
 	update();
 }
 

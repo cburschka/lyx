@@ -73,7 +73,6 @@ protected Q_SLOTS:
 	void selectedChanged(const QModelIndex &, const QModelIndex &);
 	void on_availableLV_clicked(const QModelIndex &);
 	void on_availableLV_doubleClicked(const QModelIndex &);
-	void on_availableLV_entered(const QModelIndex &);
 	void availableChanged(const QModelIndex &, const QModelIndex &);
 	virtual void changed();
 	/// check whether key is already selected
