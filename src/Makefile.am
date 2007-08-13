@@ -54,6 +54,10 @@ if USE_ISPELL
 ISPELL = ISpell.cpp ISpell.h
 endif
 
+# These four objects are linked as object files as they are not
+# referenced within the core and therefore are not picked up
+# by the linker without looping over libs. We do not want that,
+# and in fact libtools seems not able to do that.
 lyx_qt4_SOURCES = \
 	main.cpp \
 	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
