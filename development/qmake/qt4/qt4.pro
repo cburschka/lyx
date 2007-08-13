@@ -3,8 +3,6 @@ include(../config.pri)
 
 TARGET = lyxqt4$${DEBUGSUFFIX}
 
-DEFINES += QT_NO_KEYWORDS
-
 INC += boost
 INC += src
 INC += src/frontends
@@ -69,7 +67,6 @@ HPP += UrlView.h
 HPP += Validator.h
 HPP += QLPainter.h
 HPP += QFloat.h
-HPP += qtTimeout.h
 HPP += PanelStack.h
 HPP += QCommandBuffer.h
 HPP += QTexinfo.h
@@ -167,7 +164,6 @@ CPP += GuiApplication.cpp
 CPP += QKeySymbol.cpp
 CPP += QGraphicsDialog.cpp
 CPP += socket_callback.cpp
-CPP += qtTimeout.cpp
 CPP += QDelimiterDialog.cpp
 CPP += QLToolbar.cpp
 CPP += QAbout.cpp
@@ -258,7 +254,15 @@ UI += IncludeUi.ui
 UI += SendtoUi.ui
 
 BASE = $${BUILD_BASE_SOURCE_DIR}/src/frontends/qt4
+
+for(FILE,HPP) { XHPP += $${BASE}/$${FILE} }
+moc1.output  = ${QMAKE_FILE_BASE}_moc.cpp
+moc1.commands = moc ${QMAKE_FILE_NAME} -o ${QMAKE_FILE_OUT}
+moc1.depend_command = g++ -E -M ${QMAKE_FILE_NAME} | sed "s,^.*: ,,"
+moc1.input = XHPP
+QMAKE_EXTRA_COMPILERS += moc1
+
 for(FILE,CPP) { SOURCES += $${BASE}/$${FILE} }
-for(FILE,HPP) { HEADERS += $${BASE}/$${FILE} }
+#for(FILE,HPP) { HEADERS += $${BASE}/$${FILE} }
 for(FILE,UI) { FORMS += $${BASE}/ui/$${FILE} }
 for(PATH,INC) { INCLUDEPATH += $${BUILD_BASE_SOURCE_DIR}/$${PATH} }

@@ -3,8 +3,6 @@ include(../config.pri)
 
 TARGET = lyxfrontends$${DEBUGSUFFIX}
 
-DEFINES += QT_NO_KEYWORDS
-
 INC += boost
 INC += src
 INC += src/support
@@ -24,7 +22,6 @@ HPP += NoGuiFontLoader.h
 HPP += NoGuiFontMetrics.h
 HPP += Painter.h
 HPP += Selection.h
-HPP += Timeout.h
 HPP += Toolbars.h
 HPP += WorkArea.h
 HPP += alert.h
@@ -35,7 +32,6 @@ CPP += Application.cpp
 CPP += Dialogs.cpp
 CPP += LyXView.cpp
 CPP += Painter.cpp
-CPP += Timeout.cpp
 CPP += Toolbars.cpp
 CPP += WorkArea.cpp
 CPP += alert.cpp

@@ -7,8 +7,6 @@ TEMPLATE = lib
 
 QT =
 
-#DEFINES += QT_NO_KEYWORDS
-
 INC += src
 INC += boost
 
@@ -215,7 +213,6 @@ CPP += factory.cpp
 CPP += gettext.cpp
 CPP += lengthcommon.cpp
 CPP += lyxfind.cpp
-CPP += main1.cpp
 CPP += output.cpp
 CPP += output_docbook.cpp
 CPP += output_latex.cpp
