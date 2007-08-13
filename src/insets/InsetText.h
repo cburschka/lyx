@@ -75,6 +75,9 @@ public:
 	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	//FIXME The following should be removed when wide is.
+	/// Overridden to force an update if the inset was wide().
+	virtual bool notifyCursorLeaves(Cursor & cur);
 
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,

@@ -346,6 +346,13 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
+bool InsetText::notifyCursorLeaves(Cursor & cur) { 
+	if(wide()) 
+		cur.updateFlags(cur.disp_.update() | Update::Force); 
+	return false; 
+} 
+
+
 void InsetText::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
