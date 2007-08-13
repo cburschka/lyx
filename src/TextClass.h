@@ -17,6 +17,7 @@
 
 #include <vector>
 #include <set>
+#include <map>
 
 namespace lyx {
 
@@ -40,9 +41,23 @@ public:
 };
 
 
+class InsetLayout {
+public:
+	docstring labelstring;
+	std::string latextype;
+	std::string latexname;
+	std::string latexparam;
+	Font font;
+	Font labelfont;
+	docstring preamble;
+};
+
+
 /// List of semantically defined character style insets
 typedef std::vector<CharStyle> CharStyles;
 
+/// List of inset layouts
+typedef std::map<docstring, InsetLayout> InsetLayouts;
 
 /// Stores the layout specification of a LyX document class.
 class TextClass {
@@ -79,6 +94,8 @@ public:
 	///
 	void readCharStyle(Lexer &, std::string const &);
 	///
+	void readInsetLayout(Lexer &, docstring const &);
+	///
 	void readFloat(Lexer &);
 	///
 	void readCounter(Lexer &);
@@ -101,6 +118,8 @@ public:
 	Counters & counters() const;
 	/// CharStyles of this doc class
 	CharStyles & charstyles() const { return charstylelist_; };
+	///  Inset layouts of this doc class
+	InsetLayout const & insetlayout(docstring const & name) const;
 	/// Retrieve element of name s:
 	CharStyles::iterator charstyle(std::string const & s) const;
 	///
@@ -109,6 +128,8 @@ public:
 	Layout_ptr const & defaultLayout() const;
 	///
 	std::string const & name() const;
+	///
+	docstring const & labelstring() const;
 	///
 	std::string const & latexname() const;
 	///
@@ -228,6 +249,9 @@ private:
 	LayoutList layoutlist_;
 	/// CharStyles available to this layout
 	mutable CharStyles charstylelist_;
+
+	/// Input layouts available to this layout
+	mutable InsetLayouts insetlayoutlist_;
 
 	/// available types of float, eg. figure, algorithm.
 	boost::shared_ptr<FloatList> floatlist_;

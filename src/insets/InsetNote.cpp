@@ -17,7 +17,11 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+<<<<<<< .mine
+#include "BufferParams.h"
+=======
 #include "Counters.h"
+>>>>>>> .r19497
 #include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
@@ -111,24 +115,19 @@ void InsetNoteParams::read(Lexer & lex)
 }
 
 
-void InsetNote::init()
-{
-	setButtonLabel();
-}
-
-
 InsetNote::InsetNote(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp)
 {
 	params_.type = notetranslator().find(label);
-	init();
+	setLayout(bp);
+	setButtonLabel();
 }
 
 
 InsetNote::InsetNote(InsetNote const & in)
 	: InsetCollapsable(in), params_(in.params_)
 {
-	init();
+	setButtonLabel();
 }
 
 
@@ -147,6 +146,12 @@ auto_ptr<Inset> InsetNote::doClone() const
 docstring const InsetNote::editMessage() const
 {
 	return _("Opened Note Inset");
+}
+
+
+docstring InsetNote::name() const 
+{
+	return from_ascii(string("Note") + string(":") + string(notetranslator().find(params_.type)));
 }
 
 
@@ -173,6 +178,7 @@ void InsetNote::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
+	setLayout(buf.params());
 	setButtonLabel();
 }
 
@@ -181,31 +187,7 @@ void InsetNote::setButtonLabel()
 {
 	docstring const label = notetranslator_loc().find(params_.type);
 	setLabel(label);
-
-	Font font(Font::ALL_SANE);
-	font.decSize();
-	font.decSize();
-
-	Color_color c;
-	switch (params_.type) {
-	case InsetNoteParams::Note:
-		c = Color::note;
-		break;
-	case InsetNoteParams::Comment:
-		c = Color::comment;
-		break;
-	case InsetNoteParams::Greyedout:
-		c = Color::greyedout;
-		break;
-	case InsetNoteParams::Framed:
-		c = Color::greyedout;
-		break;
-	case InsetNoteParams::Shaded:
-		c = Color::greyedout;
-		break;
-	}
-	font.setColor(c);
-	setLabelFont(font);
+	setLabelFont(layout_.labelfont);
 }
 
 
@@ -246,6 +228,8 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY:
 		InsetNoteMailer::string2params(to_utf8(cmd.argument()), params_);
+		// get a bp from cur:
+		setLayout(cur.buffer().params());
 		setButtonLabel();
 		break;
 

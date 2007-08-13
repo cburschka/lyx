@@ -30,15 +30,13 @@ using std::ostream;
 InsetMarginal::InsetMarginal(BufferParams const & bp)
 	: InsetFootlike(bp)
 {
-	setLabel(_("margin"));
+	setLayout(bp);
 }
 
 
 InsetMarginal::InsetMarginal(InsetMarginal const & in)
 	: InsetFootlike(in)
-{
-	setLabel(_("margin"));
-}
+{}
 
 
 auto_ptr<Inset> InsetMarginal::doClone() const

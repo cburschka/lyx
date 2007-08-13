@@ -150,6 +150,7 @@ enum TextClassTags {
 	TC_STYLE,
 	TC_DEFAULTSTYLE,
 	TC_CHARSTYLE,
+	TC_INSETLAYOUT,
 	TC_ENVIRONMENT,
 	TC_NOSTYLE,
 	TC_COLUMNS,
@@ -192,6 +193,7 @@ bool TextClass::read(FileName const & filename, bool merge)
 		{ "float",           TC_FLOAT },
 		{ "format",          TC_FORMAT },
 		{ "input",           TC_INPUT },
+		{ "insetlayout",     TC_INSETLAYOUT },
 		{ "leftmargin",      TC_LEFTMARGIN },
 		{ "nofloat",         TC_NOFLOAT },
 		{ "nostyle",         TC_NOSTYLE },
@@ -411,6 +413,12 @@ bool TextClass::read(FileName const & filename, bool merge)
 				readCharStyle(lexrc, name);
 			}
 			break;
+		case TC_INSETLAYOUT:
+			if (lexrc.next()) {
+				docstring const name = subst(lexrc.getDocString(), '_', ' ');
+				readInsetLayout(lexrc, name);
+			}
+			break;
 		case TC_FLOAT:
 			readFloat(lexrc);
 			break;
@@ -606,6 +614,19 @@ enum CharStyleTags {
 };
 
 
+enum InsetLayoutTags {
+	IL_FONT = 1,
+	IL_LABELFONT,
+	IL_LABELSTRING,
+	IL_LATEXTYPE,
+	IL_LATEXNAME,
+	IL_LATEXPARAM,
+	IL_PREAMBLE,
+	IL_END
+};
+
+
+
 void TextClass::readCharStyle(Lexer & lexrc, string const & name)
 {
 	keyword_item elementTags[] = {
@@ -681,6 +702,92 @@ void TextClass::readCharStyle(Lexer & lexrc, string const & name)
 
 	lexrc.popTable();
 }
+
+
+void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
+{
+	keyword_item elementTags[] = {
+		{ "end", IL_END },
+		{ "font", IL_FONT },
+		{ "labelfont", IL_LABELFONT },
+		{ "labelstring", IL_LABELSTRING },
+		{ "latexname", IL_LATEXNAME },
+		{ "latexparam", IL_LATEXPARAM },
+		{ "latextype", IL_LATEXTYPE },
+		{ "preamble", IL_PREAMBLE}
+	};
+
+	lexrc.pushTable(elementTags, IL_END);
+
+	docstring labelstring;
+	string latextype;
+	string latexname;
+	string latexparam;
+	Font font(Font::ALL_INHERIT);
+	Font labelfont(Font::ALL_INHERIT);
+	string preamble;
+
+	bool getout = false;
+	while (!getout && lexrc.isOK()) {
+		int le = lexrc.lex();
+		switch (le) {
+		case Lexer::LEX_UNDEF:
+			lexrc.printError("Unknown ClassOption tag `$$Token'");
+			continue;
+		default: break;
+		}
+		switch (static_cast<InsetLayoutTags>(le)) {
+		case IL_LATEXTYPE:
+			lexrc.next();
+			latextype = lexrc.getString();
+			break;
+		case IL_LABELSTRING:
+			lexrc.next();
+			labelstring = lexrc.getDocString();
+			break;
+		case IL_LATEXNAME:
+			lexrc.next();
+			latexname = lexrc.getString();
+			break;
+		case IL_LATEXPARAM:
+			lexrc.next();
+			latexparam = subst(lexrc.getString(), "&quot;", "\"");
+			break;
+		case IL_LABELFONT:
+			labelfont.lyxRead(lexrc);
+			labelfont.realize(defaultfont());
+			break;
+		case IL_FONT:
+			font.lyxRead(lexrc);
+			font.realize(defaultfont());
+			labelfont = font;
+			break;
+		case IL_PREAMBLE:
+			preamble = lexrc.getLongString("EndPreamble");
+			break;
+		case IL_END:
+			getout = true;
+			break;
+		}
+	}
+
+	//
+	// Here add element to list if getout == true
+	if (getout) {
+		InsetLayout il;
+		il.labelstring = labelstring;
+		il.latextype = latextype;
+		il.latexname = latexname;
+		il.latexparam = latexparam;
+		il.font = font;
+		il.labelfont = labelfont;
+		il.preamble = from_utf8(preamble);
+		insetlayoutlist_[name] = il;
+	}
+
+	lexrc.popTable();
+}
+
 
 
 enum FloatTags {
@@ -953,6 +1060,11 @@ FloatList const & TextClass::floats() const
 Counters & TextClass::counters() const
 {
 	return *ctrs_.get();
+}
+
+InsetLayout const & TextClass::insetlayout(docstring const & name) const 
+{
+	return insetlayoutlist_[name]; 
 }
 
 

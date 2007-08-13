@@ -33,6 +33,7 @@ class ParConstIterator;
 class CursorSlice;
 class FuncRequest;
 class FuncStatus;
+class InsetLayout;
 class InsetMath;
 class InsetText;
 class LaTeXFeatures;
@@ -379,6 +380,8 @@ public:
 
 	///
 	virtual docstring name() const { return from_ascii("unknown"); }
+	///
+	virtual InsetLayout const & getLayout(BufferParams const & bp) const;
 	/// used to toggle insets
 	/// is the inset open?
 	/// should this inset be handled like a normal charater

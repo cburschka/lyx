@@ -63,7 +63,7 @@ InsetCollapsable::InsetCollapsable
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
-		labelfont_(rhs.labelfont_),
+		layout_(rhs.layout_),
 		button_dim(rhs.button_dim),
 		topx(rhs.topx),
 		topbaseline(rhs.topbaseline),
@@ -75,6 +75,13 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 		// the sole purpose of this copy constructor
 		mouse_hover_(false)
 {
+}
+
+
+void  InsetCollapsable::setLayout(BufferParams const & bp)
+{
+	setLabelFont(getLayout(bp).labelfont);
+	setLabel(getLayout(bp).labelstring);
 }
 
 
@@ -141,7 +148,7 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 Dimension InsetCollapsable::dimensionCollapsed() const
 {
 	Dimension dim;
-	theFontMetrics(labelfont_).buttonText(
+	theFontMetrics(layout_.labelfont).buttonText(
 		label, dim.wid, dim.asc, dim.des);
 	return dim;
 }
@@ -206,7 +213,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = top;
 		button_dim.y2 = top + dimc.height();
 
-		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_, mouse_hover_);
+		pi.pain.buttonText(xx, top + dimc.asc, label, layout_.labelfont, mouse_hover_);
 
 		if (status() == Open) {
 			int textx, texty;
@@ -448,9 +455,9 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 }
 
 
-void InsetCollapsable::setLabelFont(Font & font)
+void InsetCollapsable::setLabelFont(Font const & font)
 {
-	labelfont_ = font;
+	layout_.labelfont = font;
 }
 
 docstring InsetCollapsable::floatName(string const & type, BufferParams const & bp) const

@@ -19,6 +19,7 @@ Style Standard
 	AlignPossible         Block, Left, Right, Center
 End
 
+Input stdinsets.inc
 Input stdlists.inc
 Input stdcounters.inc
 Input stdfloats.inc

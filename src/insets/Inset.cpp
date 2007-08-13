@@ -17,6 +17,7 @@
 #include "Inset.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "Color.h"
 #include "CoordCache.h"
@@ -29,6 +30,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "Text.h"
+#include "TextClass.h"
 #include "MetricsInfo.h"
 #include "MetricsInfo.h"
 
@@ -341,6 +343,12 @@ bool Inset::covers(BufferView const & bv, int x, int y) const
 			&& x <= xo(bv) + width()
 			&& y >= yo(bv) - ascent()
 			&& y <= yo(bv) + descent();
+}
+
+
+InsetLayout const & Inset::getLayout(BufferParams const & bp) const
+{
+	return bp.getTextClass().insetlayout(name());  
 }
 
 

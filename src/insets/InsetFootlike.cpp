@@ -17,29 +17,16 @@
 #include "BufferParams.h"
 #include "MetricsInfo.h"
 
-
 namespace lyx {
 
 InsetFootlike::InsetFootlike(BufferParams const & bp)
 	: InsetCollapsable(bp)
-{
-	Font font(Font::ALL_SANE);
-	font.decSize();
-	font.decSize();
-	font.setColor(Color::collapsable);
-	setLabelFont(font);
-}
+{}
 
 
 InsetFootlike::InsetFootlike(InsetFootlike const & in)
 	: InsetCollapsable(in)
-{
-	Font font(Font::ALL_SANE);
-	font.decSize();
-	font.decSize();
-	font.setColor(Color::collapsable);
-	setLabelFont(font);
-}
+{}
 
 
 bool InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const

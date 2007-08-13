@@ -16,6 +16,7 @@
 
 #include "Inset.h"
 #include "InsetText.h"
+#include "TextClass.h"
 
 #include "Box.h"
 #include "Font.h"
@@ -27,6 +28,7 @@ namespace lyx {
 class Text;
 class Paragraph;
 class CursorSlice;
+class InsetLayout;
 
 namespace frontend { class Painter; }
 
@@ -45,6 +47,8 @@ public:
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
 	docstring name() const { return from_ascii("Collapsable"); }
+	///
+	void setLayout(BufferParams const &);
 	///
 	void read(Buffer const &, Lexer &);
 	///
@@ -71,7 +75,7 @@ public:
 	///
 	virtual void setButtonLabel() {}
 	///
-	void setLabelFont(Font & f);
+	void setLabelFont(Font const & f);
 	///
 	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///
@@ -105,8 +109,6 @@ protected:
 
 protected:
 	///
-	Font labelfont_;
-	///
 	mutable Box button_dim;
 	///
 	mutable int topx;
@@ -114,6 +116,8 @@ protected:
 	mutable int topbaseline;
 	///
 	mutable docstring label;
+	///
+	mutable InsetLayout layout_;
 private:
 	///
 	mutable CollapseStatus status_;

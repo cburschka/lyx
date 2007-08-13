@@ -52,7 +52,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::NOTE_CODE; }
 	///
-	docstring name() const { return from_ascii("Note"); }
+	docstring name() const;
 	/// framed and shaded notes are displayed
 	virtual DisplayType display() const;
 	///

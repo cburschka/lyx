@@ -32,15 +32,13 @@ using std::ostream;
 InsetFoot::InsetFoot(BufferParams const & bp)
 	: InsetFootlike(bp)
 {
-	setLabel(_("foot"));
+	setLayout(bp);
 }
 
 
 InsetFoot::InsetFoot(InsetFoot const & in)
 	: InsetFootlike(in)
-{
-	setLabel(_("foot"));
-}
+{}
 
 
 auto_ptr<Inset> InsetFoot::doClone() const

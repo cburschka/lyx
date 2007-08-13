@@ -37,6 +37,7 @@ Style Standard
 End
 
 
+Input stdinsets.inc
 Input stdlists.inc
 Input stdsections.inc
 Input stdstarsections.inc
