@@ -1657,6 +1657,15 @@ if build_support:
     support = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
         source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files] + Package_cpp,
+        CCFLAGS =  [
+            '$CCFLAGS',
+            '-DHAVE_CONFIG_H',
+            '-DQT_CLEAN_NAMESPACE',
+            '-DQT_GENUINE_STR',
+            '-DQT_NO_STL',
+            '-DQT_NO_KEYWORDS',
+        ]
+
     )
     Alias('support', support)
 
@@ -1734,23 +1743,9 @@ if build_qt4:
 
     print "Processing files in src/frontends/qt4..."
 
-    qt4_moc_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in src_frontends_qt4_moc_files]
-
-    #
-    # Compile resources
-    #
-    resources = [frontend_env.Uic4(x.split('.')[0]) for x in \
-        ["$BUILDDIR/common/frontends/qt4/ui/%s" % x for x in src_frontends_qt4_ui_files]]
-
     #
     # moc qt4_moc_files, the moced files are included in the original files
     #
-
-#    qt4_moced_files = [frontend_env.Moc4(x.replace('.cpp', '_moc.cpp'), \
-#        x.replace('.cpp', '.h')) for x in qt4_moc_files]
-
-    qt4_moced_files = [frontend_env.Moc4(x.replace('.cpp', '_moc.cpp'), x.replace('.cpp', '.h')) for x in qt4_moc_files]
-
     qt4 = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/qt4',
         source = ['$BUILDDIR/common/frontends/qt4/%s' % x for x in src_frontends_qt4_files],
@@ -1760,6 +1755,7 @@ if build_qt4:
             '$BUILDDIR/common/images',
             '$BUILDDIR/common/frontends',
             '$BUILDDIR/common/frontends/qt4',
+            '$BUILDDIR/common/frontends/qt4/ui',
             '$BUILDDIR/common/frontends/controllers'
         ],
         CCFLAGS =  [

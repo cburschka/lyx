@@ -300,6 +300,7 @@ src_support_header_files = Split('''
     Path.h
     RandomAccessList.h
     Systemcall.h
+    Timeout.h
     Translator.h
     convert.h
     copied_ptr.h
@@ -339,6 +340,7 @@ src_support_files = Split('''
     ForkedcallsController.cpp
     Path.cpp
     Systemcall.cpp
+    Timeout.cpp
     abort.cpp
     chdir.cpp
     convert.cpp
@@ -681,7 +683,6 @@ src_frontends_header_files = Split('''
     NoGuiFontMetrics.h
     Painter.h
     Selection.h
-    Timeout.h
     Toolbars.h
     WorkArea.h
     alert.h
@@ -695,7 +696,6 @@ src_frontends_files = Split('''
     Dialogs.cpp
     LyXView.cpp
     Painter.cpp
-    Timeout.cpp
     Toolbars.cpp
     WorkArea.cpp
     alert.cpp
@@ -906,7 +906,6 @@ src_frontends_qt4_header_files = Split('''
     UrlView.h
     Validator.h
     qlkey.h
-    qtTimeout.h
     qt_helpers.h
     socket_callback.h
 ''')
@@ -996,78 +995,7 @@ src_frontends_qt4_files = Split('''
     UrlView.cpp
     Validator.cpp
     alert_pimpl.cpp
-    qtTimeout.cpp
     qt_helpers.cpp
-    socket_callback.cpp
-''')
-
-
-src_frontends_qt4_moc_files = Split('''
-    Action.cpp
-    BulletsModule.cpp
-    EmptyTable.cpp
-    FloatPlacement.cpp
-    GuiApplication.cpp
-    GuiImplementation.cpp
-    GuiView.cpp
-    GuiWorkArea.cpp
-    IconPalette.cpp
-    InsertTableWidget.cpp
-    LengthCombo.cpp
-    LyXFileDialog.cpp
-    PanelStack.cpp
-    QAbout.cpp
-    QBibitem.cpp
-    QBibtex.cpp
-    QBox.cpp
-    QBranch.cpp
-    QBranches.cpp
-    QChanges.cpp
-    QCharacter.cpp
-    QCitationDialog.cpp
-    QCommandBuffer.cpp
-    QCommandEdit.cpp
-    QDelimiterDialog.cpp
-    QDialogView.cpp
-    QDocument.cpp
-    QERT.cpp
-    QErrorList.cpp
-    QExternal.cpp
-    QFloatDialog.cpp
-    QGraphicsDialog.cpp
-    QInclude.cpp
-    QIndex.cpp
-    QListings.cpp
-    QLMenubar.cpp
-    QLPopupMenu.cpp
-    QLPrintDialog.cpp
-    QLToolbar.cpp
-    QLog.cpp
-    QLog.cpp
-    QMathMatrixDialog.cpp
-    QNomencl.cpp
-    QNomencl.cpp
-    QNote.cpp
-    QParagraph.cpp
-    QPrefs.cpp
-    QRef.cpp
-    QSearch.cpp
-    QSendto.cpp
-    QSetBorder.cpp
-    QShowFile.cpp
-    QSpellchecker.cpp
-    QTabular.cpp
-    QTabularCreate.cpp
-    QTexinfo.cpp
-    QThesaurus.cpp
-    QToc.cpp
-    QURLDialog.cpp
-    QVSpace.cpp
-    QViewSource.cpp
-    QWrap.cpp
-    TocModel.cpp
-    TocWidget.cpp
-    Validator.cpp
     socket_callback.cpp
 ''')
 
@@ -2628,6 +2556,7 @@ lib_lyx2lyx_files = Split('''
     lyx_1_3.py
     lyx_1_4.py
     lyx_1_5.py
+    lyx_1_6.py
     parser_tools.py
     profiling.py
     test_parser_tools.py

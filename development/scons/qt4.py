@@ -267,7 +267,7 @@ def generate(env):
 		action='$QT4_UIC4COM',
 		src_suffix='$QT4_UISUFFIX',
 		suffix='$QT4_UICDECLSUFFIX',
-		#prefix='$QT4_UICDECLPREFIX',
+		prefix='$QT4_UICDECLPREFIX',
 		single_source = True
 		)
 	env.Append( BUILDERS = { 'Uic4': uic4builder } )
