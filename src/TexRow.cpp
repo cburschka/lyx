@@ -20,30 +20,10 @@
 
 namespace lyx {
 
-using std::find_if;
-
-
-namespace {
-
-/// function object returning true when row number is found
-class same_rownumber {
-public:
-	same_rownumber(int row) : row_(row) {}
-	bool operator()(TexRow::RowList::value_type const & vt) const {
-		return vt.rownumber() == row_;
-	}
-
-private:
-	int row_;
-};
-
-} // namespace anon
-
 
 void TexRow::reset()
 {
 	rowlist.clear();
-	count = 0;
 	lastid = -1;
 	lastpos = -1;
 }
@@ -59,32 +39,41 @@ void TexRow::start(int id, int pos)
 void TexRow::newline()
 {
 	int const id = lastid;
-	RowList::value_type tmp(id, lastpos, ++count);
+	RowList::value_type tmp(id, lastpos);
 	rowlist.push_back(tmp);
 }
 
 
 bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 {
-	RowList::const_iterator cit =
-		find_if(rowlist.begin(), rowlist.end(),
-			same_rownumber(row));
-
-	if (cit != rowlist.end()) {
-		id = cit->id();
-		pos = cit->pos();
-		return true;
+	if (row <= 0 || row > rowlist.size()) {
+		id = -1;
+		pos = 0;
+		return false;
 	}
-	id = -1;
-	pos = 0;
-	return false;
+
+	id = rowlist[row - 1].id();
+	pos = rowlist[row - 1].pos();
+	return true;
 }
 
 
-TexRow & TexRow::operator+=(TexRow const & tr)
+int TexRow::getRowFromIdPos(int id, int pos) const
 {
-	rowlist.insert(rowlist.end(), tr.rowlist.begin(), tr.rowlist.end());
-	return *this;
+	int bestrow = 0;
+	bool foundid = false;
+
+	// this loop finds the last *nonempty* row whith the same id
+	// and position <= pos
+	for (unsigned r = 0, n = rowlist.size(); r != n; ++r) {
+		if (rowlist[r].id() == id && rowlist[r].pos() <= pos) {
+			foundid = true;
+			if (rowlist[bestrow].id() != id || rowlist[r].pos() > rowlist[bestrow].pos())
+				bestrow = r;
+		} else if (foundid)
+			break;
+	}
+	return bestrow;
 }
 
 
