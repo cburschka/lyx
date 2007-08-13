@@ -392,6 +392,16 @@ char * strerror(int n);
 #endif
 ])
 
+
+AC_ARG_ENABLE(monolithic-boost,
+  AC_HELP_STRING([--with-monolithic-boost],
+		[Use monolithic boost compilations]),,
+  [monolithic_boost=$withval],
+	[monolithic_boost=yes]
+)
+AM_CONDITIONAL(MONOLITHIC_BOOST, test $monolithic_boost = yes)
+
+
 AC_DEFINE_UNQUOTED([LYX_DATE],"$LYX_DATE",[Date of release])
 AC_DEFINE_UNQUOTED([VERSION_INFO],"$VERSION_INFO",[Full version info])
 
