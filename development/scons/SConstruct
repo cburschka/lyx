@@ -60,7 +60,7 @@ if version[0] == 0 and version[1] == 96 and version[2] < 92:
 #
 # get version number from configure.ac so that JMarc does
 # not have to change SConstruct during lyx release
-package_version = utils.getVerFromConfigure(top_src_dir)
+package_version, lyx_date = utils.getVerFromConfigure(top_src_dir)
 package_cygwin_version = '%s-1' % package_version
 boost_version = ['1_34']
 
@@ -885,6 +885,41 @@ if sizeof_wchar_t == 0:
     print 'Please check config.log for more information.'
     Exit(1)
 
+
+# fill in the version info
+env['VERSION_INFO'] = '''Configuration
+  Host type:                      %s
+  Special build flags:            %s
+  C   Compiler:                   %s
+  C   Compiler flags:             %s %s
+  C++ Compiler:                   %s
+  C++ Compiler LyX flags:         %s
+  C++ Compiler flags:             %s %s
+  Linker flags:                   %s
+  Linker user flags:              %s
+Build info:
+  Builing directory:              %s
+  Local library directory:        %s
+  Libraries paths:                %s
+  Boost libraries:                %s
+  include search path:            %s
+Frontend:
+  Frontend:                       %s
+  Packaging:                      %s
+  LyX dir:                        %s
+  LyX files dir:                  %s
+''' % (platform_name,
+    env.subst('$CCFLAGS'), env.subst('$CC'),
+    env.subst('$CPPFLAGS'), env.subst('$CFLAGS'),
+    env.subst('$CXX'), env.subst('$CXXFLAGS'),
+    env.subst('$CPPFLAGS'), env.subst('$CXXFLAGS'),
+    env.subst('$LINKFLAGS'), env.subst('$LINKFLAGS'),
+    env.subst('$BUILDDIR'), env.subst('$LOCALLIBPATH'),
+    str(env['LIBPATH']), str(boost_libraries),
+    str(env['CPPPATH']),
+    frontend, packaging_method,
+    prefix, env['LYX_DIR'])
+
 #
 # create config.h
 result = utils.createConfigFile(conf,
@@ -1035,6 +1070,10 @@ result = utils.createConfigFile(conf,
             'Define to the one symbol short name of this package.'),
         ('#define PACKAGE_VERSION "%s"' % package_version,
             'Define to the version of this package.'),
+        ('#define VERSION_INFO "%s"' % env['VERSION_INFO'].replace('\n', '\\n'),
+            'Full version info'),
+        ('#define LYX_DATE "%s"' % lyx_date,
+            'Date of release'),
         ('#define BOOST_ALL_NO_LIB 1',
             'disable automatic linking of boost libraries.'),
         ('#define USE_%s_PACKAGING 1' % packaging_method.upper(),
@@ -1394,47 +1433,7 @@ if frontend == 'qt4':
 #
 # Report results
 #
-# fill in the version info
-env['VERSION_INFO'] = '''Configuration
-  Host type:                      %s
-  Special build flags:            %s
-  C   Compiler:                   %s
-  C   Compiler flags:             %s %s
-  C++ Compiler:                   %s
-  C++ Compiler LyX flags:         %s
-  C++ Compiler flags:             %s %s
-  Linker flags:                   %s
-  Linker user flags:              %s
-Build info:
-  Builing directory:              %s
-  Local library directory:        %s
-  Libraries paths:                %s
-  Boost libraries:                %s
-  Frontend libraries:             %s
-  System libraries:               %s
-  include search path:            %s
-Frontend:
-  Frontend:                       %s
-  Packaging:                      %s
-  LyX dir:                        %s
-  LyX files dir:                  %s
-''' % (platform_name,
-    env.subst('$CCFLAGS'), env.subst('$CC'),
-    env.subst('$CPPFLAGS'), env.subst('$CFLAGS'),
-    env.subst('$CXX'), env.subst('$CXXFLAGS'),
-    env.subst('$CPPFLAGS'), env.subst('$CXXFLAGS'),
-    env.subst('$LINKFLAGS'), env.subst('$LINKFLAGS'),
-    env.subst('$BUILDDIR'), env.subst('$LOCALLIBPATH'),
-    str(env['LIBPATH']), str(boost_libraries),
-    str(frontend_libs), str(system_libs), str(env['CPPPATH']),
-    frontend, packaging_method,
-    prefix, env['LYX_DIR'])
 
-if frontend in ['qt4']:
-    env['VERSION_INFO'] += '''  include dir:                    %s
-  library dir:                    %s
-  X11:                            %s
-''' % (qt_inc_path, qt_lib_path, env['X11'])
 
 print env['VERSION_INFO']
 

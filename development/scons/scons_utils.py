@@ -17,7 +17,9 @@ from SCons.Util import *
 
 
 def getVerFromConfigure(path):
-    " get lyx version from the AC_INIT line of configure.ac "
+    ''' get lyx version from the AC_INIT line of configure.ac,
+        and LYX_DATE from an AC_SUBST line.
+    '''
     try:
         config = open(os.path.join(path, 'configure.ac'))
     except:
@@ -25,12 +27,18 @@ def getVerFromConfigure(path):
         return 'x.x.x'
     # find a line like follows
     # AC_INIT(LyX,1.4.4svn,[lyx-devel@lists.lyx.org],[lyx])
-    pat = re.compile('AC_INIT\([^,]+,([^,]+),')
+    ver_pat = re.compile('AC_INIT\([^,]+,([^,]+),')
+    date_pat = re.compile('AC_SUBST\(LYX_DATE, \["(.*)"\]\)')
+    version = 'x.x.x'
+    date = 'Not released'
     for line in config.readlines():
-        if pat.match(line):
-            (version,) = pat.match(line).groups()
-            return version.strip()
-    return 'x.x.x'
+        if ver_pat.match(line):
+            (version,) = ver_pat.match(line).groups()
+        if date_pat.match(line):
+            (date,) = date_pat.match(line).groups()
+        if version != 'x.x.x' and date != 'Not released':
+            break
+    return version.strip(), date.strip()
 
 
 def relativePath(path, base):
