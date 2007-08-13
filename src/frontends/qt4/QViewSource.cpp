@@ -15,6 +15,9 @@
 #include "QViewSource.h"
 #include "qt_helpers.h"
 
+#include <boost/tuple/tuple.hpp>
+
+#include <QTextCursor>
 #include <QTextDocument>
 
 namespace lyx {
