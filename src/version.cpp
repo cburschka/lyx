@@ -12,10 +12,12 @@
  * All changes to this file will be lost.
  */
 
-///
-char const * lyx_version = "@PACKAGE_VERSION@";
-///
-char const * lyx_release_date = "@LYX_DATE@";
+#include <config.h>
 
-/// This is the version information shown by 'lyx -version'
-char const * lyx_version_info = "@VERSION_INFO@";
+///
+char const * lyx_version = PACKAGE_VERSION;
+///
+char const * lyx_release_date = LYX_DATE;
+
+/// This is the version information shown by 'lyx --version'
+char const * lyx_version_info = VERSION_INFO;

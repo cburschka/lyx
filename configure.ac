@@ -392,6 +392,9 @@ char * strerror(int n);
 #endif
 ])
 
+AC_DEFINE_UNQUOTED([LYX_DATE],"$LYX_DATE",[Date of release])
+AC_DEFINE_UNQUOTED([VERSION_INFO],"$VERSION_INFO",[Full version info])
+
 ### Finish the work.
 AC_CONFIG_FILES([Makefile
        boost/Makefile \
@@ -413,7 +416,6 @@ AC_CONFIG_FILES([Makefile
        sourcedoc/Makefile \
        src/client/Makefile \
        src/Makefile \
-       src/version.cpp-tmp:src/version.cpp.in \
        src/tex2lyx/Makefile \
        src/support/Makefile \
        src/frontends/Makefile \

@@ -221,6 +221,7 @@ CPP += paragraph_funcs.cpp
 CPP += rowpainter.cpp
 CPP += sgml.cpp
 CPP += toc.cpp
+CPP += version.cpp
 
 for(FILE,CPP) { SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
 for(FILE,HPP) { HEADERS += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
@@ -233,16 +234,6 @@ configtarget.target = $${BUILD_BASE_TARGET_DIR}/src/config.h
 configtarget.commands = \
 	cp $${BUILD_BASE_SOURCE_DIR}/development/qmake/config.h.template config.h
 
-versiontarget.target = version.cpp
-versiontarget.commands = \
-	cp $${BUILD_BASE_SOURCE_DIR}/src/version.cpp.in version.cpp 
-versiontarget.depends = config.h
-
-versiontarget2.target = version.o
-versiontarget2.commands = $${QMAKE_RUN_CXX1} -c version.cpp -o version.o
-versiontarget2.depends = version.cpp config.h
-
-
 packagetarget.target = Package.cpp
 packagetarget.commands = \
 	cp $${BUILD_BASE_SOURCE_DIR}/src/support/Package.cpp.in Package.cpp 
@@ -254,14 +245,12 @@ packagetarget2.depends = Package.cpp config.h
 
 
 QMAKE_EXTRA_TARGETS += configtarget
-QMAKE_EXTRA_TARGETS += versiontarget versiontarget2
 QMAKE_EXTRA_TARGETS += packagetarget packagetarget2
 
-QMAKE_CLEAN += Package.o Package.cpp version.o version.cpp config.h
+QMAKE_CLEAN += Package.o Package.cpp config.h
 
 PRE_TARGETDEPS += $${BUILD_BASE_TARGET_DIR}/src/config.h
 PRE_TARGETDEPS += Package.o 
-PRE_TARGETDEPS += version.o 
 
-LIBS += version.o Package.o
+LIBS += Package.o
 

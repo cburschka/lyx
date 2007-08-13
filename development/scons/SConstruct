@@ -371,15 +371,10 @@ env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 #       TOP_SRCDIR, LOCALEDIR, LYX_DIR, PROGRAM_SUFFIX
 #     lib/lyx2lyx/lyx2lyx_version.py.in
 #       PACKAGE_VERSION
-#     src/version.cpp.in
-#       PACKAGE_VERSION, LYX_DATE, VERSION_INFO
 
 # full path name is used to build msvs project files
 # and to replace TOP_SRCDIR in package.C
 env['TOP_SRCDIR'] = Dir(top_src_dir).abspath
-# needed by src/version.cpp.in => src/version.cpp
-env['PACKAGE_VERSION'] = package_version
-env['LYX_DATE'] = time.asctime()
 
 # determine share_dir etc
 packaging_method = env.get('packaging')
@@ -1824,9 +1819,6 @@ if build_lyxbase:
     #
     print "Processing files in src..."
 
-    env.Depends('$BUILDDIR/common/version.cpp', '$BUILDDIR/common/config.h')
-    version_cpp = env.substFile('$BUILDDIR/common/version.cpp', '$TOP_SRCDIR/src/version.cpp.in')
-
     if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
         src_post_files.append('ASpell.cpp')
     elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
@@ -1838,7 +1830,7 @@ if build_lyxbase:
     # so I exclude main.cpp from lyxbase
     lyxbase_pre = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_pre',
-        source = ['$BUILDDIR/common/%s' % x for x in src_pre_files] + version_cpp
+        source = ['$BUILDDIR/common/%s' % x for x in src_pre_files]
     )
     lyxbase_post = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_post',

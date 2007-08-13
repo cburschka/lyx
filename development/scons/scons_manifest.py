@@ -234,6 +234,7 @@ src_pre_files = Split('''
     rowpainter.cpp
     sgml.cpp
     toc.cpp
+    version.cpp
 ''')
 
 
@@ -253,8 +254,6 @@ src_extra_src_files = Split('''
     Section.cpp
     Variables.cpp
     main.cpp
-    stamp-h.in
-    version.cpp.in
 ''')
 
 

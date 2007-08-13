@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 ############################### Core  ##############################
 
-DISTCLEANFILES += config.h libintl.h version.cpp stamp-version version.cpp-tmp
+DISTCLEANFILES += config.h libintl.h
 
 MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
@@ -10,7 +10,7 @@ AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
 SUBDIRS = support frontends .
 
-EXTRA_DIST = config.h.in stamp-h.in version.cpp.in \
+EXTRA_DIST = config.h.in \
 	Section.h \
 	Section.cpp \
 	Variables.cpp \
@@ -41,7 +41,7 @@ lyx$(EXEEXT): $(FRONTENDS_PROGS)
 
 #lyx_LDFLAGS=-Wl,-O1
 
-BUILT_SOURCES = $(PCH_FILE) version.cpp
+BUILT_SOURCES = $(PCH_FILE)
 
 if USE_ASPELL
 ASPELL = ASpell.cpp ASpell_local.h
@@ -258,19 +258,6 @@ liblyxcore_la_SOURCES = \
 	WordLangTuple.h \
 	VSpace.cpp \
 	VSpace.h
-
-version.cpp: stamp-version
-	@:
-
-stamp-version: version.cpp-tmp
-	if cmp -s $< version.cpp ; then \
-		: ;\
-	else \
-		rm -f version.cpp ;\
-		cp $< version.cpp ;\
-	fi
-	echo timestamp > $@
-
 
 ############################### Graphics ##############################
 
