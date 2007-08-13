@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-#include <QTextLayout>
-
 #include "QLPainter.h"
 
 #include "GuiApplication.h"
@@ -28,11 +26,35 @@
 
 #include "support/unicode.h"
 
+#include <QPixmapCache>
+#include <QTextLayout>
+
+// Set this to one for enabling the use of a Pixmap cache when drawing
+// text. This is especially useful for older PPC/Mac systems.
+#define USE_PIXMAP_CACHE 1
+
 using std::endl;
 using std::string;
 
 namespace lyx {
 namespace frontend {
+
+namespace {
+
+bool const usePixmapCache = USE_PIXMAP_CACHE;
+
+QString generateStringSignature(QString const & str, Font const & f)
+{
+	QString sig = str;
+	sig.append(QChar(static_cast<short>(f.family())));
+	sig.append(QChar(static_cast<short>(f.series())));
+	sig.append(QChar(static_cast<short>(f.realShape())));
+	sig.append(QChar(static_cast<short>(f.size())));
+	sig.append(QChar(static_cast<short>(f.color())));
+	return sig;
+}
+
+} // anon namespace
 
 QLPainter::QLPainter(QPaintDevice * device)
 	: QPainter(device), Painter()
@@ -243,42 +265,89 @@ int QLPainter::text(int x, int y, docstring const & s,
 
 	int textwidth;
 
-	if (f.realShape() != Font::SMALLCAPS_SHAPE) {
+	if (f.realShape() == Font::SMALLCAPS_SHAPE) {
+		textwidth = smallCapsText(x, y, str, f);
+		if (f.underbar() == Font::ON)
+			underline(f, x, y, textwidth);
+		return textwidth;
+	}
+
+	// Here we use the font width cache instead of
+	//   textwidth = fontMetrics().width(str);
+	// because the above is awfully expensive on MacOSX
+	textwidth = fi.metrics->width(s);
+	if (f.underbar() == Font::ON)
+		underline(f, x, y, textwidth);
+
+	if (!isDrawingEnabled())
+		return textwidth;
+
+	// Qt4 does not display a glyph whose codepoint is the
+	// same as that of a soft-hyphen (0x00ad), unless it
+	// occurs at a line-break. As a kludge, we force Qt to
+	// render this glyph using a one-column line.
+	if (s.size() == 1 && str[0].unicode() == 0x00ad) {
+		QTextLayout adsymbol(str);
+		adsymbol.setFont(fi.font);
+		adsymbol.beginLayout();
+		QTextLine line = adsymbol.createLine();
+		line.setNumColumns(1);
+		line.setPosition(QPointF(0, -line.ascent()));
+		adsymbol.endLayout();
+		line.draw(this, QPointF(x, y));
+		return textwidth;
+	}
+
+	if (!usePixmapCache) {
+		// don't use the pixmap cache,
+		// draw directly onto the painting device
 		setQPainterPen(f.realColor());
 		if (font() != fi.font)
 			setFont(fi.font);
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
-		if (isDrawingEnabled()) {
-			LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
-				<< " at " << x << "," << y << std::endl;
-			// Qt4 does not display a glyph whose codepoint is the
-			// same as that of a soft-hyphen (0x00ad), unless it
-			// occurs at a line-break. As a kludge, we force Qt to
-			// render this glyph using a one-column line.
-			if (s.size() == 1 && str[0].unicode() == 0x00ad) {
-				QTextLayout adsymbol(str);
-				adsymbol.setFont(fi.font);
-				adsymbol.beginLayout();
-				QTextLine line = adsymbol.createLine();
-				line.setNumColumns(1);
-				line.setPosition(QPointF(0, -line.ascent()));
-				adsymbol.endLayout();
-				line.draw(this, QPointF(x, y));
-			} else
-				drawText(x, y, str);
-		}
-		// Here we use the font width cache instead of
-		//   textwidth = fontMetrics().width(str);
-		// because the above is awfully expensive on MacOSX
-		textwidth = fi.metrics->width(str);
-	} else {
-		textwidth = smallCapsText(x, y, str, f);
+		// We need to draw the text as LTR as we use our own bidi code.
+		setLayoutDirection(Qt::LeftToRight);
+		drawText(x, y, str);
+		LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
+			<< " at " << x << "," << y << std::endl;
+		return textwidth;
 	}
 
-	if (f.underbar() == Font::ON) {
-		underline(f, x, y, textwidth);
+	QPixmap pm;
+	QString key = generateStringSignature(str, f);
+	// Warning: Left bearing is in general negative! Only the case
+	// where left bearing is negative is of interest WRT the the 
+	// pixmap width and the text x-position.
+	// Only the left bearing of the first character is important
+	// as we always write from left to right, even for
+	// right-to-left languages.
+	int const lb = std::min(fi.metrics->lbearing(s[0]), 0);
+	int const mA = fi.metrics->maxAscent();
+	if (!QPixmapCache::find(key, pm)) {
+		// Only the right bearing of the last character is
+		// important as we always write from left to right,
+		// even for right-to-left languages.
+		int const rb = fi.metrics->rbearing(s[s.size()-1]);
+		int const w = textwidth + rb - lb;
+		int const mD = fi.metrics->maxDescent();
+		int const h = mA + mD;
+		pm = QPixmap(w, h);
+		pm.fill(Qt::transparent);
+		QLPainter p(&pm);
+		p.setQPainterPen(f.realColor());
+		if (p.font() != fi.font)
+			p.setFont(fi.font);
+		// We need to draw the text as LTR as we use our own bidi code.
+		p.setLayoutDirection(Qt::LeftToRight);
+		p.drawText(-lb, mA, str);
+		QPixmapCache::insert(key, pm);
+		LYXERR(Debug::PAINTING) << "h=" << h << "  mA=" << mA << "  mD=" << mD
+			<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth 
+			<< "  rb=" << rb << endl;
 	}
+	// Draw the cached pixmap.
+	drawPixmap(x + lb, y - mA, pm);
 
 	return textwidth;
 }
