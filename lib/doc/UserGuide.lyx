@@ -12784,15 +12784,14 @@ status open
 \begin_layout Standard
 This is text
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 This is an example footnote within a greyed out note.
  In this document the greyed out note color is redefined to blue.
  How this can be done is explained in the 
 \emph on
-Embedded\InsetSpace ~
-Objects
+Embedded Objects
 \emph default
  manual.
 \end_layout
@@ -13006,8 +13005,7 @@ h
 \family default
 ey are described in the 
 \emph on
-Embedded\InsetSpace ~
-Objects
+Embedded Objects
 \emph default
  manual.
 \end_layout
@@ -16706,7 +16704,7 @@ reference "cap:escher"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \align center
@@ -16747,7 +16745,7 @@ A severely distorted platypus in a float.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -16856,7 +16854,7 @@ reference "cap:Two-distorted-images"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -16966,7 +16964,7 @@ reference "cap:a table float"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -17302,7 +17300,7 @@ wrap
 \begin_inset Wrap figure
 placement l
 width "40col%"
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Graphics
@@ -17528,8 +17526,7 @@ Rotated floats are always placed on its own page (or column, when you have
  a page with an even number).
  Forcing the rotation direction is explained in the 
 \emph on
-Embedded\InsetSpace ~
-Objects
+Embedded Objects
 \emph default
  manual.
 \end_layout
@@ -17847,10 +17844,6 @@ key "latexcompanion,latexguide,latexbook"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Section
@@ -18983,7 +18976,7 @@ reference "cap:Accent-names-and"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -20624,7 +20617,7 @@ reference "cap:Typefaces-and-the"
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -24625,6 +24618,493 @@ reports
 \end_layout
 
 \begin_layout Section
+Change Tracking
+\begin_inset LatexCommand index
+name "Change Tracking"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Document ! Change Tracking"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sec:Change-Tracking"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When you work on a document together with many people it is extremely useful
+ to see changes others made highlighted in the document.
+ You can then decide if you accept a change or not.
+ This can be achieved by turning on change tracking in the menu 
+\family sans
+Document\SpecialChar \menuseparator
+Change\InsetSpace ~
+Tracking\SpecialChar \menuseparator
+Track\InsetSpace ~
+Changes
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Changes made in the document will then be highlighted by colors: 
+\color blue
+Blue text
+\color inherit
+ is an addition, 
+\color red
+red canceled text
+\color inherit
+ is a deletion.
+ You can change the color in LyX's preferences dialog under 
+\family sans
+Look\InsetSpace ~
+and\InsetSpace ~
+feel
+\family default
+, 
+\family sans
+Colors
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+When change tracking is activated, you will see the review toolbar in LyX:
+\begin_inset LatexCommand index
+name "Toolbar ! Review"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename clipart/ChangesToolbar.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The review toolbar as shown above contains from left to right the following
+ buttons:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="2">
+<features islongtable="true">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/changes-track.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Document\SpecialChar \menuseparator
+Change\InsetSpace ~
+Tracking\SpecialChar \menuseparator
+Track\InsetSpace ~
+Changes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/changes-output.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Document\SpecialChar \menuseparator
+Change\InsetSpace ~
+Tracking\SpecialChar \menuseparator
+Show\InsetSpace ~
+Changes\InsetSpace ~
+in\InsetSpace ~
+Output
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/change-next.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Jumps to the next change
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/change-accept.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Document\SpecialChar \menuseparator
+Change\InsetSpace ~
+Tracking\SpecialChar \menuseparator
+Accept\InsetSpace ~
+Change
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/change-reject.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Document\SpecialChar \menuseparator
+Change\InsetSpace ~
+Tracking\SpecialChar \menuseparator
+Reject\InsetSpace ~
+Change
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/changes-merge.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Document\SpecialChar \menuseparator
+Change\InsetSpace ~
+Tracking\SpecialChar \menuseparator
+Merge\InsetSpace ~
+Changes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/all-changes-accept.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Document\SpecialChar \menuseparator
+Change\InsetSpace ~
+Tracking\SpecialChar \menuseparator
+Accept\InsetSpace ~
+All\InsetSpace ~
+Changes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/all-changes-reject.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Document\SpecialChar \menuseparator
+Change\InsetSpace ~
+Tracking\SpecialChar \menuseparator
+Reject\InsetSpace ~
+All\InsetSpace ~
+Changes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/note-insert.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Insert\SpecialChar \menuseparator
+Note\SpecialChar \menuseparator
+LyX\InsetSpace ~
+Note
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/note-next.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Navigate\SpecialChar \menuseparator
+Next\InsetSpace ~
+Note
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The review toolbar helps you to accept, reject, or merge changes -- highlight
+ the change and press one of the desired toolbar buttons.
+ When you merge changes, a window pops up showing you informations about
+ the next change behind the current cursor position.
+ So you don't need to highlight a certain change.
+ Within the merge window you can decide to accept or reject changes and
+ step to the next change.
+ This way you can jump through all changes of the document.
+\end_layout
+
+\begin_layout Standard
+The toolbar has two buttons to handle notes because notes are often important
+ to describe a change.
+\end_layout
+
+\begin_layout Standard
+To show made changes in the output you need the LaTeX package 
+\series bold
+dvipost
+\begin_inset LatexCommand index
+name "LaTeX-packages ! dvipost"
+
+\end_inset
+
+
+\series default
+ installed.
+ You find it in the TeX Catalogue, 
+\begin_inset LatexCommand cite
+key "TeXCatalogue"
+
+\end_inset
+
+ or in the package manager of your LaTeX-system.
+\end_layout
+
+\begin_layout Section
 International Support
 \begin_inset LatexCommand index
 name "International support"
@@ -24646,10 +25126,21 @@ key "Arabic,Armenian,Farsi,Hebrew"
 
 \end_layout
 
+\begin_layout Standard
+Besides languages, LyX also supports phonetic symbols, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Special-Character"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Language Options
 \begin_inset LatexCommand index
-name "Language options"
+name "Language ! Options"
 
 \end_inset
 
@@ -29465,10 +29956,6 @@ T1
  font-encoding.
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Chapter
 \start_of_appendix
 The User Interface
@@ -29488,6 +29975,12 @@ This appendix lists all available menus and describes its functionality.
 
 \begin_layout Section
 The File Menu
+\begin_inset LatexCommand index
+name "Menu ! File"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -29919,6 +30412,12 @@ Opens a new instance of LyX with all currently opened documents.
 
 \begin_layout Section
 The Edit Menu
+\begin_inset LatexCommand index
+name "Menu ! Edit"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -30091,6 +30590,12 @@ reference "sub:numbering-depth"
 
 \begin_layout Section
 The View Menu
+\begin_inset LatexCommand index
+name "Menu ! View"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -30189,6 +30694,18 @@ This menu allows you to update the view with your latest changes without
 
 \begin_layout Subsection
 Toolbars
+\begin_inset LatexCommand label
+name "sub:Toolbars"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Toolbar"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -30248,16 +30765,178 @@ automatic
  is inside a formula or table, respectively.
 \end_layout
 
+\begin_layout Standard
+LyX's toolbars and its buttons are explained in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Toolbars"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 The Insert Menu
+\begin_inset LatexCommand index
+name "Menu ! Insert"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Math
 \end_layout
 
 \begin_layout Standard
-??
+Inserts math constructs that are explained in chapter\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "cha:Mathematical-Formulas"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Special Character
+\begin_inset LatexCommand label
+name "sub:Special-Character"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here you can insert the following characters:
+\end_layout
+
+\begin_layout Description
+Ellipsis Inserts an ellipsis: \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Description
+End\InsetSpace ~
+of\InsetSpace ~
+Sentence Inserts an end of sentence dot as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:abbrev"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Ordinary\InsetSpace ~
+Quote Inserts this quote: 
+\begin_inset Quotes erd
+\end_inset
+
+, no matter what quote type you selected in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+ dialog under 
+\family sans
+Language
+\family default
+.
+\end_layout
+
+\begin_layout Description
+Single\InsetSpace ~
+Quote Inserts this quote: 
+\begin_inset Quotes els
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Menu\InsetSpace ~
+Separator Inserts the menu separator sign: \SpecialChar \menuseparator
+
+\end_layout
+
+\begin_layout Description
+Phonetic\InsetSpace ~
+Symbols
+\begin_inset LatexCommand index
+name "Phonetic symbols"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Language ! Phonetic symbols"
+
+\end_inset
+
+ Creates a formula with a so called tipa inset.
+ Here you can insert commands to create IPA phonetic symbols.
+ For this feature you must have the LaTeX-package 
+\series bold
+tipa
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! tipa"
+
+\end_inset
+
+ installed.
+\newline
+For more informations about this feature we refer to the documentation
+ of 
+\series bold
+tipa, 
+\begin_inset LatexCommand cite
+key "tipa"
+
+\end_inset
+
+
+\series default
+ and this 
+\begin_inset LatexCommand url
+name "Wiki-page:\\newline "
+target "http://wiki.lyx.org/LyX/LinguistLyX"
+
+\end_inset
+
+.
+\newline
+Here is the English word 
+\begin_inset Quotes eld
+\end_inset
+
+explanation
+\begin_inset Quotes erd
+\end_inset
+
+ in phonetic symbols: 
+\begin_inset Formula $\text{\textipa{""Ekspl@"neIS@n}}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 The Navigate Menu
+\begin_inset LatexCommand index
+name "Menu ! Navigate"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -30335,6 +31014,12 @@ Only active when the cursor is in front of a cross-reference.
 
 \begin_layout Section
 The Document Menu
+\begin_inset LatexCommand index
+name "Menu ! Document"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -30342,7 +31027,14 @@ Change Tracking
 \end_layout
 
 \begin_layout Standard
-Not yet described in one of the manuals! (??)
+Change Tracking is described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Change-Tracking"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -30416,12 +31108,6 @@ Un/compresses the actual document.
 
 \begin_layout Subsection
 Settings
-\begin_inset LatexCommand index
-name "Dialogs ! Document Settings"
-
-\end_inset
-
-
 \begin_inset LatexCommand label
 name "sub:Settings"
 
@@ -30515,8 +31201,7 @@ Note that LyX won't show two columns or the set up line spacing on screen.
 The listings settings are explained in the corresponding section in the
  
 \emph on
-Embedded\InsetSpace ~
-Objects
+Embedded Objects
 \emph default
  manual.
 \end_layout
@@ -30559,6 +31244,12 @@ reference "sub:Margins"
 
 \begin_layout Subsubsection*
 Language
+\begin_inset LatexCommand index
+name "Language ! Encoding"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -30905,6 +31596,12 @@ reference "sub:LaTeX-Syntax"
 
 \begin_layout Section
 The Tools Menu
+\begin_inset LatexCommand index
+name "Menu ! Tools"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -31007,12 +31704,6 @@ reference "sec:Basic-LyX-Setup"
 
 \begin_layout Subsection
 Preferences
-\begin_inset LatexCommand index
-name "Dialogs ! Preferences"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -31031,6 +31722,12 @@ reference "cha:The-Preferences-dialog"
 
 \begin_layout Section
 The Help Menu
+\begin_inset LatexCommand index
+name "Menu ! Help"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -31056,7 +31753,44 @@ reference "sec:LaTeX-Setup"
 \end_layout
 
 \begin_layout Section
-The Toolbar
+Toolbars
+\begin_inset LatexCommand label
+name "sec:Toolbars"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+How to show or hide toolbars is explained in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Toolbars"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It is also possible to define custom toolbars.
+ This is described in the 
+\emph on
+Extended Features
+\emph default
+ manual.
+ 
+\end_layout
+
+\begin_layout Subsection
+Standard Toolbar
+\begin_inset LatexCommand index
+name "Toolbar ! Standard"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -31767,6 +32501,16 @@ Toggle table toolbar on/off
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Extra Toolbar
+\begin_inset LatexCommand index
+name "Toolbar ! Extra"
 
 \end_inset
 
@@ -32506,22 +33250,282 @@ Thesaurus
 \end_inset
 
 
-\hfill
+\end_layout
+
+\begin_layout Subsection
+View / Update Toolbar
+\begin_inset LatexCommand index
+name "Toolbar ! View / Update"
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Graphics
+	filename clipart/ViewToolbar.png
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
-It is possible to define custom toolbars.
- This is described in the 
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The view / update toolbar as shown above contains from left to right the
+ following buttons:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features islongtable="true">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/buffer-view_dvi.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+View\SpecialChar \menuseparator
+DVI
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/buffer-update_dvi.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+View\SpecialChar \menuseparator
+Update\SpecialChar \menuseparator
+DVI
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/buffer-view_pdf2.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+View\SpecialChar \menuseparator
+PDF
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/buffer-update_pdf2.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+View\SpecialChar \menuseparator
+Update\SpecialChar \menuseparator
+PDF
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+This button is on some LyX for Windows installations not here because its
+ functionality is merged with 
+\family sans
+View\SpecialChar \menuseparator
+PDF
+\family default
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/buffer-view_ps.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+View\SpecialChar \menuseparator
+Postscript
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../images/buffer-update_ps.xpm
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+View\SpecialChar \menuseparator
+Update\SpecialChar \menuseparator
+Postscript
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Other Toolbars
+\end_layout
+
+\begin_layout Standard
+The change tracking toolbar is explained in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Change-Tracking"
+
+\end_inset
+
+, the table toolbar
+\begin_inset LatexCommand index
+name "Toolbar ! Table"
+
+\end_inset
+
+ is explained in the 
 \emph on
-Extended Features
+Embedded Objects
 \emph default
  manual.
- 
 \end_layout
 
 \begin_layout Chapter
@@ -34426,6 +35430,49 @@ nomencl
 
 \begin_inset LatexCommand index
 name "LaTeX-packages ! nomencl"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "tipa"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf}{
+\end_layout
+
+\end_inset
+
+Documentation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+tipa
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! tipa"
 
 \end_inset
 
