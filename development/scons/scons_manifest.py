@@ -2226,6 +2226,7 @@ lib_doc_biblio_files = Split('''
 lib_doc_clipart_files = Split('''
     Abstract.pdf
     BoxInsetDefaultQt4.png
+    ChangesToolbar.png
     ChildDocumentQt4.png
     CommentNoteImageQt4.png
     ERT.png
@@ -2250,6 +2251,7 @@ lib_doc_clipart_files = Split('''
     mobius.eps
     platypus.eps
     referenceQt4.png
+    ViewToolbar.png
     with_fntright.pdf
     without_fntright.pdf
 ''')

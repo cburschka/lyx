@@ -16,6 +16,7 @@ dist_clipartdoc_DATA = \
 	clipart/platypus.eps \
 	clipart/Abstract.pdf \
 	clipart/BoxInsetDefaultQt4.png \
+	clipart/ChangesToolbar.png \
 	clipart/ChildDocumentQt4.png \
 	clipart/CommentNoteImageQt4.png \
 	clipart/endnotes.pdf \
@@ -37,6 +38,7 @@ dist_clipartdoc_DATA = \
 	clipart/SpaceMarker.png \
 	clipart/StandardToolbar.png \
 	clipart/ToolbarEnvBox.png \
+	clipart/ViewToolbar.png \
 	clipart/without_fntright.pdf \
 	clipart/with_fntright.pdf
 
