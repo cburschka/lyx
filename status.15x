@@ -27,14 +27,14 @@ What's new
   all of its menus and for help files. Documents strings like
   "Chapter" are correctly translated on screen too.
 
-- Add support for translating the menus in Simplified  Chinese.
+- Add support for translating the menus in Simplified Chinese.
 
 
 * USER INTERFACE
 
-- Add "Save all" menu entry, to save all modified files (Bug 2840)
+- Add "Save all" menu entry, to save all modified files (Bug 2840).
 
-- Mark modified files in the View menu with an asterisk (Bug 2876)
+- Mark modified files in the View menu with an asterisk (Bug 2876).
 
 
 ** Bug fixes:
@@ -46,6 +46,9 @@ What's new
 
 
 * USER INTERFACE:
+
+- Fix crash when clickin in a tabular cell and the "delete empty paragraph"
+  mechanism triggers (bug 4133).
 
 - Fix loading non-lyx child documents with relative path names, change 
   'Load' to 'Edit' in the child document dialog (Bugs 4107 and 4111)

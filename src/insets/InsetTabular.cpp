@@ -3204,39 +3204,17 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_PRESS:
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
-		// FIXME: the following should be replaced by a better fix
-		// that is already used for plain text (Text3.cpp).
-		cap::saveSelection(bvcur);
 
-		if (cmd.button() == mouse_button::button1
-		    || (cmd.button() == mouse_button::button3
-			&& (&bvcur.selBegin().inset() != this || !tablemode(bvcur)))) {
-			if (!bvcur.selection() && !cur.bv().mouseSetCursor(cur))
-				cur.noUpdate();
-			cur.selection() = false;
-			setCursorFromCoordinates(cur, cmd.x, cmd.y);
-			cur.bv().mouseSetCursor(cur);
-			break;
-		}
-
-		if (cmd.button() == mouse_button::button2) {
-			if (cap::selection()) {
-				// See comment in Text::dispatch why we
-				// do this
-				// FIXME This does not use paste_tabular,
-				// another reason why paste_tabular should go.
-				cap::copySelectionToStack();
-				cmd = FuncRequest(LFUN_PASTE, "0");
-			} else {
-				cmd = FuncRequest(LFUN_PRIMARY_SELECTION_PASTE,
-						  "paragraph");
-			}
-			doDispatch(cur, cmd);
-			cur.bv().buffer()->markDirty();
-			cur.bv().mouseSetCursor(cur);
-		}
+		// do not reset cursor/selection if we have selected
+		// some cells (bug 2715).
+		if (cmd.button() == mouse_button::button3
+		    && &bvcur.selBegin().inset() == this 
+		    && tablemode(bvcur)) 
+			;
+		else
+			// Let InsetText do it
+			cell(cur.idx())->dispatch(cur, cmd);
 		break;
-
 	case LFUN_MOUSE_MOTION:
 		//lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button1) {
