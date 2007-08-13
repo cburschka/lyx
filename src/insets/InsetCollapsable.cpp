@@ -63,11 +63,11 @@ InsetCollapsable::InsetCollapsable
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
-		layout_(rhs.layout_),
 		button_dim(rhs.button_dim),
 		topx(rhs.topx),
 		topbaseline(rhs.topbaseline),
 		label(rhs.label),
+		layout_(rhs.layout_),
 		status_(rhs.status_),
 		openinlined_(rhs.openinlined_),
 		autoOpen_(rhs.autoOpen_),
