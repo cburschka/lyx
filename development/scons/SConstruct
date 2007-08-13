@@ -945,14 +945,6 @@ result = utils.createConfigFile(conf,
         ('mktemp', 'HAVE_MKTEMP', None),
         ('mkstemp', 'HAVE_MKSTEMP', None),
         ('strerror', 'HAVE_STRERROR', None),
-        ('count', 'HAVE_STD_COUNT', '''
-#include <algorithm>
-int count()
-{
-char a[] = "hello";
-return std::count(a, a+5, 'l');
-}
-'''),
         ('getcwd', 'HAVE_GETCWD', None),
         ('setenv', 'HAVE_SETENV', None),
         ('putenv', 'HAVE_PUTENV', None),
