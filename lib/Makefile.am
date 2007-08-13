@@ -989,6 +989,7 @@ dist_layouts_DATA =\
 	layouts/stdclass.inc \
 	layouts/stdcounters.inc \
 	layouts/stdfloats.inc \
+	layouts/stdinsets.inc \
 	layouts/stdlayouts.inc \
 	layouts/stdletter.inc \
 	layouts/stdlists.inc \
