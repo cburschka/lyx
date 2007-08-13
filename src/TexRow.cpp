@@ -73,6 +73,8 @@ int TexRow::getRowFromIdPos(int id, int pos) const
 		} else if (foundid)
 			break;
 	}
+	if (!foundid)
+		return rowlist.size();
 	return bestrow;
 }
 
