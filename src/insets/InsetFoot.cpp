@@ -10,17 +10,22 @@
  */
 
 #include <config.h>
+#include "debug.h"
 
 #include "InsetFoot.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
+#include "Counters.h"
 #include "gettext.h"
 // the following is needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
 #include "OutputParams.h"
+#include "ParIterator.h"
 
+#include "support/convert.h"
 #include "support/std_ostream.h"
-
+#include "support/lstrings.h"
 
 namespace lyx {
 
@@ -52,6 +57,23 @@ docstring const InsetFoot::editMessage() const
 	return _("Opened Footnote Inset");
 }
 
+
+void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
+{
+	TextClass const & tclass = buf.params().getTextClass();
+	Counters & cnts = tclass.counters();
+	docstring const & foot = from_ascii("footnote");
+	Paragraph const & outer =  it.paragraph();
+	if (!outer.layout()->intitle && cnts.hasCounter(foot)) {
+		cnts.step(foot);
+		//FIXME: the counter should format itself.
+		setLabel(support::bformat(from_ascii("%1$s %2$s"), 
+					  getLayout(buf.params()).labelstring, 
+					  convert<docstring>(cnts.value(foot))));
+	
+	}
+	InsetCollapsable::updateLabels(buf, it);
+}
 
 int InsetFoot::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams_in) const

@@ -40,6 +40,9 @@ public:
 		    OutputParams const &) const;
 	///
 	virtual docstring const editMessage() const;
+	/// Update the counters of this inset and of its contents
+	void updateLabels(Buffer const &, ParIterator const &);
+
 protected:
 	InsetFoot(InsetFoot const &);
 private:

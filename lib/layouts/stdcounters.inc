@@ -80,3 +80,7 @@ End
 Counter
 	Name                 listing
 End
+
+Counter
+	Name                 footnote
+End
