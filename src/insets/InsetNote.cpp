@@ -17,11 +17,8 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-<<<<<<< .mine
 #include "BufferParams.h"
-=======
 #include "Counters.h"
->>>>>>> .r19497
 #include "Cursor.h"
 #include "debug.h"
 #include "DispatchResult.h"
