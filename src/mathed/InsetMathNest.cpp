@@ -1151,29 +1151,30 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
 	BufferView & bv = cur.bv();
+	bv.mouseSetCursor(cur);
 	if (cmd.button() == mouse_button::button1) {
 		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;
-		bv.mouseSetCursor(cur);
 		// Update the cursor update flags as needed:
 		//
-		// Update::Decoration: tells to update the decoration (visual box
-		//                     corners that define the inset)/
-		// Update::FitCursor: adjust the screen to the cursor position if
-		//                    needed
+		// Update::Decoration: tells to update the decoration
+		//                     (visual box corners that define
+		//                     the inset)/
+		// Update::FitCursor: adjust the screen to the cursor
+		//                    position if needed
 		// cur.result().update(): don't overwrite previously set flags.
-		cur.updateFlags(Update::Decoration | Update::FitCursor | cur.result().update());
+		cur.updateFlags(Update::Decoration | Update::FitCursor 
+				| cur.result().update());
 	} else if (cmd.button() == mouse_button::button2) {
-		MathData ar;
 		if (cap::selection()) {
 			// See comment in Text::dispatch why we do this
 			cap::copySelectionToStack();
 			cmd = FuncRequest(LFUN_PASTE, "0");
-			doDispatch(cur, cmd);
-		} else
+			doDispatch(bv.cursor(), cmd);
+		} else {
+			MathData ar;
 			asArray(theSelection().get(), ar);
-
-		cur.insert(ar);
-		bv.mouseSetCursor(cur);
+			bv.cursor().insert(ar);
+		}
 	}
 }
 
