@@ -159,6 +159,8 @@ private:
 	InsetInclude & inset_;
 };
 
+/// return loaded Buffer or zero if the file loading did not proceed.
+Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params);
 
 } // namespace lyx
 

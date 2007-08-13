@@ -384,16 +384,17 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 		return childBuffer;
 }
 
+} // namespace anon
 
-/// return true if the file is or got loaded.
-bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
+
+Buffer * loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 {
 	if (isVerbatim(params) || isListings(params))
-		return false;
+		return 0;
 
 	FileName const included_file = includedFilename(buffer, params);
 	if (!isLyXFilename(included_file.absFilename()))
-		return false;
+		return 0;
 
 	Buffer * buf = theBufferList().getBuffer(included_file.absFilename());
 	if (!buf) {
@@ -416,11 +417,8 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 		return buf;
 	}
 	buf->setParentName(parentFilename(buffer));
-	return true;
+	return buf;
 }
-
-
-} // namespace anon
 
 
 int InsetInclude::latex(Buffer const & buffer, odocstream & os,
