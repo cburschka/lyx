@@ -131,32 +131,9 @@ bool menuWrite(Buffer * buffer)
     If 'newname' is empty (the default), the user is asked via a
     dialog for the buffer's new name and location.
 
-    If 'newname' is not empty, FileName::makeAbsPath() will indirectly
-    produce the following behaviour:
-
-    * If 'newname' has an absolute path, use that.
-
-    * If 'newname' has a relative path (or no path) and the buffer has
-      a path, that path is used as the base for 'newname'. Typically
-      this means that 'M-x buffer-write-as newname.lyx' will write to
-      the same directory as the original file.
-
-    * Otherwise use CWD as the base directory for 'newname'.
-      This behavour is arguably a bug, perhaps a system depedenant
-      "document directory" shoul be used instead. Note that CWD
-      isn't actually used according to a simple test on Linux.
-      Instead, it's based on '~', contrar to the documentation of
-      makeAbsPath(). Don't know what to do. *shrug*
-
-    Note: No checks are done on the extension etc of 'newname' when
-    it's non-empty. This may arguably also be a bug.
-
-    Note: The code may not code check that 'newname' is a valid for
-    the relevant file system?
-
-    Note: In Linux, it doesn't work with e.g. '~/file.lyx'. If it's
-    done from e.g. a buffer '/tmp/buf.lyx', it instead tries to write
-    to '/tmp/~/file.lyx'.
+    If 'newname' is non-empty and has an absolute path, that is used.
+    Otherwise the base directory of the buffer is used as the base
+    for any relative path in 'newname'.
 */
 
 bool writeAs(Buffer * buffer, string const & newname)

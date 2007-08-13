@@ -52,14 +52,11 @@ enum kb_action {
 	LFUN_BUFFER_WRITE,
 	// 5
 	LFUN_BUFFER_WRITE_AS,
-/**	LFUN_BUFFER_WRITE_AS,		Chr 2007-08-12
- * Function:	Save current buffer as .lyx-file with a new filename.
+/**	LFUN_BUFFER_WRITE_AS,		
+ * Function:	Rename and save current buffer.
  * Syntax:	buffer-write-as <filename>
- * In:		<filename> = Name of the new file. Must currently be
- *		an absolute path (bug 4135). Relative paths will be
- *		treated as relative to the location of the original
- *		buffer (i.e. LyX file?).
- *
+ * In:		<filename> = New name of the buffer/file. A relative path
+ *		is with respect to the original location of the buffer/file.
  */
 	LFUN_BUILD_PROGRAM,
 	LFUN_BUFFER_VIEW,
