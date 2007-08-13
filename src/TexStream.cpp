@@ -1,3 +1,13 @@
+/**
+ * \file TexStream.cpp
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
 #include "TexStream.h"
 #include "TexRow.h"
 
@@ -105,3 +115,4 @@ int main(int argc, char *argv[])
 #endif
 
 }
+
