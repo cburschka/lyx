@@ -18,22 +18,23 @@ EXTRA_DIST = config.h.in \
 	paper.h \
 	pch.h
 
-LYX_PRE_LIBS = liblyxmathed.la liblyxinsets.la \
-	frontends/liblyxfrontends.la
-
-LYX_POST_LIBS = frontends/controllers/liblyxcontrollers.la \
-	liblyxgraphics.la \
-	support/liblyxsupport.la
-
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 
 pkglib_LTLIBRARIES = liblyxcore.la
 noinst_PROGRAMS = $(FRONTENDS_PROGS)
 EXTRA_PROGRAMS = lyx-qt4
 
-lyx_qt4_LDADD = liblyxcore.la  $(LYX_PRE_LIBS) \
-	frontends/qt4/liblyxqt4.la $(LYX_POST_LIBS) $(OTHERLIBS) $(QT4_LIB) 
-lyx_qt4_SOURCES = main.cpp
+lyx_qt4_LDADD = \
+	liblyxcore.la \
+	liblyxmathed.la \
+	liblyxinsets.la \
+	frontends/liblyxfrontends.la \
+	frontends/qt4/liblyxqt4.la \
+	frontends/controllers/liblyxcontrollers.la \
+	liblyxgraphics.la \
+	support/liblyxsupport.la \
+	$(OTHERLIBS) \
+	$(QT4_LIB) 
 
 lyx$(EXEEXT): $(FRONTENDS_PROGS)
 	rm -f $@
@@ -53,16 +54,24 @@ if USE_ISPELL
 ISPELL = ISpell.cpp ISpell.h
 endif
 
+lyx_qt4_SOURCES = \
+	main.cpp \
+	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
+	Box.cpp \
+	Box.h \
+	Dimension.cpp \
+	Dimension.h \
+	PrinterParams.cpp \
+	PrinterParams.h \
+	Thesaurus.cpp \
+	Thesaurus.h
 
 liblyxcore_la_SOURCES = \
-	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
 	Author.cpp \
 	Author.h \
 	Bidi.cpp \
 	Bidi.h \
 	boost.cpp \
-	Box.cpp \
-	Box.h \
 	BranchList.cpp \
 	BranchList.h \
 	Buffer.cpp \
@@ -104,8 +113,6 @@ liblyxcore_la_SOURCES = \
 	debug.h \
 	DepTable.cpp \
 	DepTable.h \
-	Dimension.cpp \
-	Dimension.h \
 	DispatchResult.h \
 	DocIterator.cpp \
 	DocIterator.h \
@@ -211,8 +218,6 @@ liblyxcore_la_SOURCES = \
 	ParagraphParameters.h \
 	ParIterator.cpp \
 	ParIterator.h \
-	PrinterParams.cpp \
-	PrinterParams.h \
 	Row.cpp \
 	Row.h \
 	rowpainter.cpp \
@@ -238,8 +243,6 @@ liblyxcore_la_SOURCES = \
 	TextClassList.h \
 	TextMetrics.cpp \
 	TextMetrics.h \
-	Thesaurus.cpp \
-	Thesaurus.h \
 	TocBackend.cpp \
 	TocBackend.h \
 	toc.cpp \
@@ -258,7 +261,6 @@ liblyxcore_la_SOURCES = \
 	WordLangTuple.h \
 	VSpace.cpp \
 	VSpace.h
-
 ############################### Graphics ##############################
 
 pkglib_LTLIBRARIES += liblyxgraphics.la

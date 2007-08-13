@@ -14,7 +14,6 @@
 
 namespace lyx {
 
-
 void Dimension::operator+=(Dimension const & dim)
 {
 	if (asc < dim.asc)
