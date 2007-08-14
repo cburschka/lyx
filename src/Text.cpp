@@ -344,6 +344,13 @@ void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
 } // namespace anon
 
 
+bool Text::empty() const
+{
+	return pars_.empty() || (pars_.size() == 1 && pars_[0].empty()
+		// FIXME: Should we consider the labeled type as empty too? 
+		&& pars_[0].layout()->labeltype == LABEL_NO_LABEL);
+}
+
 
 double Text::spacing(Buffer const & buffer,
 		Paragraph const & par) const

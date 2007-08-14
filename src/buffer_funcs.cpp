@@ -578,6 +578,8 @@ void updateLabels(Buffer const & buf, ParIterator & parit)
 }
 
 
+// FIXME: buf should should be const because updateLabels() modifies
+// the contents of the paragraphs.
 void updateLabels(Buffer const & buf, bool childonly)
 {
 	Buffer const * const master = buf.getMasterBuffer();
@@ -595,11 +597,20 @@ void updateLabels(Buffer const & buf, bool childonly)
 		textclass.counters().reset();
 	}
 
+	Buffer & cbuf = const_cast<Buffer &>(buf);
+
+	if (buf.text().empty()) {
+		// FIXME: we don't call continue with updateLabels() here because
+		// it crashes on newly created documents. But the TocBackend needs to
+		// be initialised nonetheless so we update the tocBackend manually.
+		cbuf.tocBackend().update();
+		return;
+	}
+
 	// do the real work
 	ParIterator parit = par_iterator_begin(buf.inset());
 	updateLabels(buf, parit);
 
-	Buffer & cbuf = const_cast<Buffer &>(buf);
 	cbuf.tocBackend().update();
 	if (!childonly)
 		cbuf.structureChanged();

@@ -49,6 +49,11 @@ public:
 	/// constructor
 	explicit Text();
 
+	/// \return true if there's no content at all.
+	/// \warning a non standard layout on an empty paragraph doesn't
+	// count as empty.
+	bool empty() const;
+
 	///
 	Font getFont(Buffer const & buffer, Paragraph const & par,
 		pos_type pos) const;
