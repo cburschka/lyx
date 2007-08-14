@@ -11,7 +11,9 @@
 
 #include <config.h>
 
-#include "Toolbars.h"
+#include "frontends/Toolbars.h"
+
+#include "frontends/LyXView.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -19,10 +21,9 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
+#include "LyX.h"
 #include "LyXFunc.h"
 #include "TextClass.h"
-#include "LyXView.h"
-#include "LyX.h"
 
 
 using std::endl;
