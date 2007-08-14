@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -6,17 +6,12 @@
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
-% I've designed this preamble to ensure that the User's Guide prints
+% This preamble is designed to ensure that the User's Guide prints
 % out as advertised. If you mess with this preamble,
 % parts of the User's Guide may not print out as expected.  If you
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
-% provides missing characters,
-% see note in chapter 'Character Tables'
-\usepackage{textcomp}
-\usepackage{wasysym}
 
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
@@ -55,7 +50,7 @@
  \renewcommand\tableofcontents{%
    \pdfbookmark[1]{Contents}{}
    \myTOC
-   \clearpage
+   \cleardoublepage
    \pagenumbering{arabic} }
    
 \fi 
@@ -611,7 +606,7 @@ Template
  (see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:doc-classes"
+reference "sec:Document-Classes"
 
 \end_inset
 
@@ -1128,7 +1123,7 @@ Single click
 \begin_layout Section
 Basic Key Bindings
 \begin_inset LatexCommand label
-name "sec: key bindings"
+name "sec:Key-Bindings"
 
 \end_inset
 
@@ -1196,7 +1191,7 @@ description "Tabulator key"
  If you don't understand this, go read sections\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:parindentintro"
+reference "sec:Par-indent-intro"
 
 \end_inset
 
@@ -1575,7 +1570,7 @@ Read on for info about the document classes you can choose from LyX, and
 \end_layout
 
 \begin_layout Subsection
-The Various Document Classes
+Document Classes
 \begin_inset LatexCommand index
 name "Document ! Classes"
 
@@ -1583,7 +1578,7 @@ name "Document ! Classes"
 
 
 \begin_inset LatexCommand label
-name "sec:doc-classes"
+name "sec:Document-Classes"
 
 \end_inset
 
@@ -2507,7 +2502,7 @@ Separation
  of paragraphs is described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:parindentintro"
+reference "sec:Par-indent-intro"
 
 \end_inset
 
@@ -2717,7 +2712,7 @@ name "Paragraph ! Indentation"
 \begin_layout Subsection
 Introduction
 \begin_inset LatexCommand label
-name "sec:parindentintro"
+name "sec:Par-indent-intro"
 
 \end_inset
 
@@ -3108,7 +3103,7 @@ Standard
  and the nesting depth (for more on nesting see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:nest"
+reference "sec:Nesting"
 
 \end_inset
 
@@ -3549,7 +3544,7 @@ reference "sec:toc"
 \begin_layout Subsubsection
 Changing the Numbering
 \begin_inset LatexCommand label
-name "sub:numbering-depth"
+name "sub:Numbering-depth"
 
 \end_inset
 
@@ -3782,7 +3777,7 @@ Quotation
 \family default
 
 \begin_inset LatexCommand label
-name "sec:quote"
+name "sec:Quote"
 
 \end_inset
 
@@ -4060,7 +4055,7 @@ You can nest lists of any type inside one another.
  you read all of section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:nest"
+reference "sec:Nesting"
 
 \end_inset
 
@@ -4081,7 +4076,7 @@ name "Lists ! Itemize"
 
 
 \begin_inset LatexCommand label
-name "sec:itemize"
+name "sec:Itemize"
 
 \end_inset
 
@@ -4146,7 +4141,7 @@ LyX always shows the same symbol on screen.
 See section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:nest"
+reference "sec:Nesting"
 
 \end_inset
 
@@ -4243,7 +4238,7 @@ Notice how the space between items decreases with increasing depth.
  in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:nest"
+reference "sec:Nesting"
 
 \end_inset
 
@@ -4263,7 +4258,7 @@ name "Lists ! Enumerate"
 
 
 \begin_inset LatexCommand label
-name "sec:enumerate"
+name "sec:Enumerate"
 
 \end_inset
 
@@ -4416,7 +4411,7 @@ Enumerate
  You should read section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:nest"
+reference "sec:Nesting"
 
 \end_inset
 
@@ -4436,7 +4431,7 @@ name "Lists ! Description"
 
 
 \begin_inset LatexCommand label
-name "sec:descrlist"
+name "sec:Description-List"
 
 \end_inset
 
@@ -4508,7 +4503,7 @@ Space
 , see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:Protected-blanks"
+reference "sub:Protected-Space"
 
 \end_inset
 
@@ -4584,7 +4579,7 @@ name "Lists ! LyX list"
 
 
 \begin_inset LatexCommand label
-name "sec:lyxlist"
+name "sec:LyX-List"
 
 \end_inset
 
@@ -4775,7 +4770,7 @@ List
  Read section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:nest"
+reference "sec:Nesting"
 
 \end_inset
 
@@ -4916,7 +4911,7 @@ Address
 \begin_layout Subsubsection
 Usage
 \begin_inset LatexCommand label
-name "sec:adress_usage"
+name "sec:Address-Usage"
 
 \end_inset
 
@@ -5215,7 +5210,7 @@ name "Bibliography"
 
 
 \begin_inset LatexCommand label
-name "sub:biblio_environment"
+name "sub:Biblio_environment"
 
 \end_inset
 
@@ -5532,7 +5527,7 @@ name "Nesting ! Environments"
 
 
 \begin_inset LatexCommand label
-name "sec:nest"
+name "sec:Nesting"
 
 \end_inset
 
@@ -6401,7 +6396,7 @@ inside
 \begin_layout Subsection
 Usage and General Features
 \begin_inset LatexCommand label
-name "sub:nest-Usage"
+name "sub:Nesting-Usage"
 
 \end_inset
 
@@ -7812,7 +7807,7 @@ key "latexcompanion,latexguide"
 \begin_layout Subsection
 Vertical Space
 \begin_inset LatexCommand label
-name "sec:vertspace"
+name "sub:Vertical-Space"
 
 \end_inset
 
@@ -8024,8 +8019,14 @@ this one is left aligned.
 
 \begin_layout Subsection
 Forced Pagebreaks
+\begin_inset LatexCommand index
+name "Pagebreaks"
+
+\end_inset
+
+
 \begin_inset LatexCommand label
-name "sec:pagebreak"
+name "sub:Forced-Pagebreaks"
 
 \end_inset
 
@@ -8079,7 +8080,7 @@ pagebreak[number]
 status collapsed
 
 \begin_layout Standard
-More about ERT is in section\InsetSpace ~
+For more about ERT see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:ERT"
@@ -8134,8 +8135,65 @@ Floats
 .
 \end_layout
 
+\begin_layout Subsubsection
+Clear Pagebreaks
+\begin_inset LatexCommand label
+name "sub:Clear-Pages"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Pagebreaks ! clear"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Differently to forced pagebreaks where the content behind the break is directly
+ placed at the next page, pages can also be cleared while breaking them.
+ That means that the current paragraph is terminated and all, perhaps not
+ yet processed floats from previous document parts are placed behind it,
+ if necessary by adding pages.
+\end_layout
+
+\begin_layout Standard
+You can insert a clear pagebreak with the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Clear\InsetSpace ~
+Page
+\family default
+.
+ When you have a two-sided document like a book, you can use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Formatting\SpecialChar \menuseparator
+Clear\InsetSpace ~
+Double\InsetSpace ~
+Page
+\family default
+ to insert a clear pagebreak that assures that the next page is a right-hand
+ page (odd-numbered), if necessary by adding a page.
+\end_layout
+
 \begin_layout Subsection
 Forced Linebreaks
+\begin_inset LatexCommand index
+name "Linebreaks"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sub:Forced-Linebreaks"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8193,7 +8251,7 @@ You shouldn't use forced linebreaks to correct LaTeX's linebreaking, as
  in a poem or for an address (see sections\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:quote"
+reference "sec:Quote"
 
 \end_inset
 
@@ -8205,7 +8263,7 @@ reference "sec:Verse"
 
  and 
 \begin_inset LatexCommand ref
-reference "sec:adress_usage"
+reference "sec:Address-Usage"
 
 \end_inset
 
@@ -8213,9 +8271,9 @@ reference "sec:adress_usage"
 \end_layout
 
 \begin_layout Subsection
-Protected Blanks
-\begin_inset LatexCommand label
-name "sub:Protected-blanks"
+Blanks / Spaces
+\begin_inset LatexCommand index
+name "Spaces"
 
 \end_inset
 
@@ -8223,21 +8281,88 @@ name "sub:Protected-blanks"
 \end_layout
 
 \begin_layout Standard
-The 
+A blank is a blank? Not in good typography.
+ While you might be used to press the space key anytime you want to separate
+ two words in ordinary word processors, LyX offers you more spaces: Spaces
+ of different width and spaces which can or cannot be broken at the end
+ of a line.
+ The following sections will show you some examples where those spaces are
+ useful.
+\end_layout
+
+\begin_layout Subsubsection
+Inter-word Space
+\begin_inset LatexCommand label
+name "sub:Inter-word-Space"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Spaces ! inter-word"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some languages (e.\InsetSpace \thinspace{}
+g.\InsetSpace \space{}
+English) have the typographical convention to add extra
+ space after an end-of-sentence punctuation mark, and LyX honors those conventio
+ns (see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Abbreviations"
+
+\end_inset
+
+).
+ Sometimes, you want a normal space nevertheless.
+ In this case, insert one with 
 \family sans
-protected\InsetSpace ~
-blank
+Insert\SpecialChar \menuseparator
+Special\InsetSpace ~
+Formatting\SpecialChar \menuseparator
+Inter-word\InsetSpace ~
+Space
 \family default
- is used to tell LyX (and LaTeX) not to break the line at that point.
+ (shortcut 
+\family sans
+C-M-Space
+\family default
+).
+\end_layout
+
+\begin_layout Subsubsection
+Protected Space
+\begin_inset LatexCommand label
+name "sub:Protected-Space"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Spaces ! protected"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The protected space: It is used to tell LyX (and LaTeX) not to break the
+ line at that point.
  This may be necessary to avoid unlucky linebreaks, like in: 
 \end_layout
 
 \begin_layout Quote
-More information is given in section
+Further documentation is given in section
 \newline
 
 \begin_inset LatexCommand ref
-reference "sec:quote"
+reference "sec:Bibliography"
 
 \end_inset
 
@@ -8246,7 +8371,7 @@ reference "sec:quote"
 \end_layout
 
 \begin_layout Standard
-Obviously, it would be a good thing to put a protected blank between 
+Obviously, it would be a good thing to put a protected space between 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8258,21 +8383,475 @@ section
 \begin_inset Quotes eld
 \end_inset
 
-2.2
+
+\begin_inset LatexCommand ref
+reference "sec:Bibliography"
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
 .
- A protected blank is inserted with 
+ A protected space is set with 
 \family sans
 Insert\SpecialChar \menuseparator
+Special\InsetSpace ~
 Formatting\SpecialChar \menuseparator
-Protected\InsetSpace ~
+Protected
+\bar under
+\InsetSpace ~
+
+\bar default
 Space
 \family default
- or with 
+ (shortcut 
 \family sans
-C-Space.
+C-Space
+\family default
+).
+\end_layout
+
+\begin_layout Subsubsection
+Thin Space
+\begin_inset LatexCommand label
+name "sub:Thin-Space"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Spaces ! thin"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset Quotes eld
+\end_inset
+
+thin space
+\begin_inset Quotes erd
+\end_inset
+
+ is a blank which has half the size of a normal space (and it is also 
+\begin_inset Quotes eld
+\end_inset
+
+protected
+\begin_inset Quotes erd
+\end_inset
+
+).
+ The typographical conventions in a lot of languages propose the use of
+ thin spaces in cases where normal spaces would be too wide, for instance
+ inside abbreviations:
+\end_layout
+
+\begin_layout Quote
+D.\InsetSpace \thinspace{}
+E.
+ Knuth has developed our beloved typesetting program, i.\InsetSpace \thinspace{}
+e.\InsetSpace \space{}
+TeX.
+\end_layout
+
+\begin_layout Standard
+or between values and units.
+ Compare for example this:
+\newline
+10\InsetSpace \thinspace{}
+kg (thin space)
+\newline
+10 kg (normal space
+\end_layout
+
+\begin_layout Standard
+You can insert thin spaces with the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Special\InsetSpace ~
+Formatting\SpecialChar \menuseparator
+Thin\InsetSpace ~
+Space
+\family default
+ (shortcut 
+\family sans
+C-S-Space
+\family default
+).
+\end_layout
+
+\begin_layout Subsubsection
+More Spaces
+\end_layout
+
+\begin_layout Standard
+Apart from the ones described, there are still some more spaces.
+ Although LyX supports them natively, they can only be reached via a formula
+ as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Altering-Spacing"
+
+\end_inset
+
+ or via the 
+\family sans
+command buffer
+\family default
+ toolbar.
+ Te latter means to type
+\newline
+ 
+\series bold
+space-insert <command>
+\family typewriter
+\series default
+
+\newline
+
+\family default
+ into the command buffer, where 
+\series bold
+<command>
+\series default
+ is one of the following:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+The unit 
+\begin_inset Quotes eld
+\end_inset
+
+em
+\begin_inset Quotes erd
+\end_inset
+
+ is explained in Appendix\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "cha:Units-available-in"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+command
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+width
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+protected?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+normal
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1/3\InsetSpace ~
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+protected
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1/3\InsetSpace ~
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+thin
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1/6\InsetSpace ~
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+enspace
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0.5\InsetSpace ~
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+enskip
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0.5\InsetSpace ~
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+quad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1\InsetSpace ~
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+qquad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+2\InsetSpace ~
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family typewriter
+negthinspace
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+-1/6\InsetSpace ~
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -11315,7 +11894,7 @@ name "Hyphens"
 
 
 \begin_inset LatexCommand label
-name "sec:hyphens"
+name "sub:Hyphens"
 
 \end_inset
 
@@ -11710,7 +12289,7 @@ name "Punctuation marks"
 \begin_layout Subsubsection
 Abbreviations and End of Sentence
 \begin_inset LatexCommand label
-name "sec:abbrev"
+name "sub:Abbreviations"
 
 \end_inset
 
@@ -11795,19 +12374,47 @@ To fix this problem, use one of the following:
 \end_layout
 
 \begin_layout Enumerate
-Use a 
+Use an 
 \family sans
-Protected\InsetSpace ~
-Blank
+Inter-word\InsetSpace ~
+Space
 \family default
  after lowercase abbreviations (see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:Protected-blanks"
+reference "sub:Inter-word-Space"
 
 \end_inset
 
 ).
+\begin_inset LatexCommand index
+name "Spaces ! inter-word"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Use a 
+\family sans
+Thin\InsetSpace ~
+Space
+\family default
+ between two tokens of an abbreviation (see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Thin-Space"
+
+\end_inset
+
+).
+\begin_inset LatexCommand index
+name "Spaces ! thin"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -11815,7 +12422,8 @@ Use an
 \family sans
 End\InsetSpace ~
 of\InsetSpace ~
-sentence
+sentence\InsetSpace ~
+period
 \family default
  found under the 
 \family sans
@@ -11823,11 +12431,12 @@ Insert\SpecialChar \menuseparator
 Special\InsetSpace ~
 Character
 \family default
- menu (shortcut 
+ menu to force the use of inter-sentence spacing.
+ This function is also bound to 
 \family sans
 C-period
 \family default
-) to force the use of inter-sentence spacing.
+ for easy access.
 \end_layout
 
 \begin_layout Standard
@@ -11835,8 +12444,8 @@ With the corrections, our earlier examples look like this:
 \end_layout
 
 \begin_layout Itemize
-e.\InsetSpace ~
-g.\InsetSpace ~
+e.\InsetSpace \thinspace{}
+g.\InsetSpace \space{}
 this is too much space!
 \end_layout
 
@@ -11881,7 +12490,7 @@ name "Quotes | see{Typography}"
 
 
 \begin_inset LatexCommand label
-name "sec:quotes"
+name "sub:Quotes"
 
 \end_inset
 
@@ -12195,7 +12804,7 @@ name "Ligatures | see{Typography}"
 
 
 \begin_inset LatexCommand label
-name "sec:ligatures"
+name "sub:Ligatures"
 
 \end_inset
 
@@ -12625,7 +13234,7 @@ name "Typography ! Widows and orphans"
 
 
 \begin_inset LatexCommand label
-name "sec:widows"
+name "sub:Widows"
 
 \end_inset
 
@@ -12875,6 +13484,12 @@ name "Footnotes"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "sec:Footnotes"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13014,6 +13629,12 @@ Embedded Objects
 Marginal Notes
 \begin_inset LatexCommand index
 name "Marginal notes"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sec:Marginal-Notes"
 
 \end_inset
 
@@ -13502,7 +14123,7 @@ name "Tables"
 
 
 \begin_inset LatexCommand label
-name "sec:tables"
+name "sec:Tables"
 
 \end_inset
 
@@ -13761,13 +14382,26 @@ contents
 \end_layout
 
 \begin_layout Standard
+Additionally to the table dialog the 
+\family sans
+table\InsetSpace ~
+toolbar
+\family default
+, that appears when the cursor is inside a table, helps you in setting table
+ properties.
+ It is for example currently only possible to add\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+delete lines via the table
+ toolbar.
+\end_layout
+
+\begin_layout Standard
 In the tab 
 \family sans
 Table\InsetSpace ~
 Settings
 \family default
- you can delete the current row/column and set the horizontal alignment
- for the current row.
+ of the table dialog you can set the alignment for the current row.
  If you add a row or column, it will be inserted right beside or below the
  current cell respectively.
  The vertical alignment of a column can only be adjusted when a column width
@@ -13996,6 +14630,12 @@ Default
 Longtables
 \begin_inset LatexCommand index
 name "Tables ! Longtables"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Longtables"
 
 \end_inset
 
@@ -16618,6 +17258,11 @@ Figure\InsetSpace ~
  The label will automatically be translated to the document language in
  the output.
  Behind the label you can insert the caption text.
+\begin_inset LatexCommand index
+name "Floats ! Captions"
+
+\end_inset
+
  The image or table is inserted above or below the caption in a separate
  paragraph within the float.
  To keep your LyX-document readable, you can open and close the float box
@@ -16683,7 +17328,7 @@ Figure\InsetSpace ~
  This is what we did for Figure\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cap:kill-plat"
+reference "cap:Platypus"
 
 \end_inset
 
@@ -16693,7 +17338,7 @@ reference "cap:kill-plat"
  This was done in Figure\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cap:escher"
+reference "cap:Escher"
 
 \end_inset
 
@@ -16724,7 +17369,7 @@ status open
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "cap:kill-plat"
+name "cap:Platypus"
 
 \end_inset
 
@@ -16752,7 +17397,7 @@ status open
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "cap:escher"
+name "cap:Escher"
 
 \end_inset
 
@@ -16953,7 +17598,7 @@ Table
  Table\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cap:a table float"
+reference "cap:Table-float"
 
 \end_inset
 
@@ -16971,7 +17616,7 @@ status open
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "cap:a table float"
+name "cap:Table-float"
 
 \end_inset
 
@@ -17319,7 +17964,7 @@ status open
 
 \begin_layout Standard
 \begin_inset LatexCommand label
-name "cap:This-is-a"
+name "cap:Wrapped-figure"
 
 \end_inset
 
@@ -17376,7 +18021,7 @@ Configuration
  Figure\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cap:This-is-a"
+reference "cap:Wrapped-figure"
 
 \end_inset
 
@@ -17854,6 +18499,12 @@ name "Minipages"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "sec:Minipages"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17975,6 +18626,27 @@ This is a minipage with some stupid dummy text.
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When you right-click on a minipage box, you can change the box from a minipage
+ to other box types.
+ All box types and their settings are explained in detail in chapter 
+\emph on
+Boxes
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+\end_layout
+
 \begin_layout Chapter
 Mathematical Formulas
 \begin_inset LatexCommand index
@@ -18028,29 +18700,13 @@ Math
 \end_layout
 
 \begin_layout Standard
-Editing the parameters of a formula may be done from the 
+Editing the parameters of a formula and adding math constructs can be done
+ with the 
 \family sans
-Math\InsetSpace ~
-Panel
+math\InsetSpace ~
+toolbar
 \family default
-, that appears when you right-click on a formula (also available with the
- menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
-Math\InsetSpace ~
-Panel
-\family default
-), or via the menu 
-\family sans
-Edit\SpecialChar \menuseparator
-Math
-\family default
-.
- The math panel is very useful, so you may want to open it and leave it
- somewhere on the screen.
- If you're not already in a formula, selecting anything from the math panel
- will insert a formula for you.
+, that appears when the cursor is in a formula.
 \end_layout
 
 \begin_layout Standard
@@ -18298,40 +18954,6 @@ Shift
  Alternatively, you can select text with the mouse in the usual way.
  That text can then be cut or copied, and then pasted within any formula,
  but not in a normal text region in LyX.
-\end_layout
-
-\begin_layout Subsection
-The Math Panel
-\begin_inset LatexCommand index
-name "Math ! Math Panel"
-
-\end_inset
-
-
-\begin_inset LatexCommand label
-name "sec:math-panel"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The 
-\family sans
-Math\InsetSpace ~
-Panel
-\family default
- dialog is accessible by right-clicking on a formula or via the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Math
-\family default
-.
- It has an extensive list of symbols and structures.
- As stated earlier, you can keep the math panel open when writing mathematics.
- The use of the panel should be fairly obvious; we'll describe some of the
- details in the following sections.
 \end_layout
 
 \begin_layout Subsection
@@ -18703,7 +19325,7 @@ lim
  Have a look at section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:math-functions"
+reference "sub:Functions"
 
 \end_inset
 
@@ -18762,6 +19384,12 @@ Panel
 Altering Spacing
 \begin_inset LatexCommand index
 name "Math ! Spaces"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sub:Altering-Spacing"
 
 \end_inset
 
@@ -18852,7 +19480,7 @@ name "Math ! Functions"
 
 
 \begin_inset LatexCommand label
-name "sec:math-functions"
+name "sub:Functions"
 
 \end_inset
 
@@ -21478,7 +22106,7 @@ status collapsed
 described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:Protected-blanks"
+reference "sub:Protected-Space"
 
 \end_inset
 
@@ -21770,7 +22398,7 @@ reference "sec:Short-Titles"
  Section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:numbering-depth"
+reference "sub:Numbering-depth"
 
 \end_inset
 
@@ -21819,6 +22447,12 @@ TOC
 URLs (Uniform Resource Locators)
 \begin_inset LatexCommand index
 name "URLs"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sec:URL"
 
 \end_inset
 
@@ -22000,7 +22634,7 @@ Bibliography
 , described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:biblio_environment"
+reference "sub:Biblio_environment"
 
 \end_inset
 
@@ -22112,6 +22746,12 @@ name "Bibliography ! Databases"
 
 \begin_inset LatexCommand index
 name "Bibliography ! BibTeX"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sub:Bibliography-databases"
 
 \end_inset
 
@@ -22359,6 +22999,12 @@ name "Index generation"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "sec:Index"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -22526,7 +23172,7 @@ reference "sub:Lists"
  In the text field for the itemized list index entry in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:itemize"
+reference "sec:Itemize"
 
 \end_inset
 
@@ -22553,7 +23199,7 @@ Lists ! Enumerate
 for the enumerated list in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:enumerate"
+reference "sec:Enumerate"
 
 \end_inset
 
@@ -23025,6 +23671,12 @@ name "Nomenclature"
 
 \begin_inset LatexCommand index
 name "Glossary|see{Nomenclature}"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sec:Nomenclature"
 
 \end_inset
 
@@ -23805,7 +24457,7 @@ Question: Who was the first Physics Nobel prize winner?
 
 \begin_layout Standard
 \begin_inset Branch Answer
-status open
+status collapsed
 
 \begin_layout Standard
 Answer: Wilhelm Conrad Röntgen
@@ -30551,7 +31203,7 @@ These two menus are only active when the cursor is inside a table or a formula.
  The properties of tables are described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:tables"
+reference "sec:Tables"
 
 \end_inset
 
@@ -30575,13 +31227,13 @@ These menus are only active when the cursor is in an environment that can
  They in/decrease the environment nesting level as explained in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:nest"
+reference "sec:Nesting"
 
 \end_inset
 
  and 
 \begin_inset LatexCommand ref
-reference "sub:numbering-depth"
+reference "sub:Numbering-depth"
 
 \end_inset
 
@@ -30826,7 +31478,7 @@ of\InsetSpace ~
 Sentence Inserts an end of sentence dot as described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:abbrev"
+reference "sub:Abbreviations"
 
 \end_inset
 
@@ -30905,28 +31557,585 @@ key "tipa"
 
 
 \series default
- and this 
+ and this Wiki-page:
+\newline
+
 \begin_inset LatexCommand url
-name "Wiki-page:\\newline "
 target "http://wiki.lyx.org/LyX/LinguistLyX"
 
 \end_inset
 
 .
-\newline
-Here is the English word 
-\begin_inset Quotes eld
+\end_layout
+
+\begin_layout Subsection
+Formatting
+\end_layout
+
+\begin_layout Standard
+Here you can insert the following format constructs:
+\end_layout
+
+\begin_layout Description
+Superscript Inserts an superscript: test
+\begin_inset Formula $^{\text{a,b}}$
 \end_inset
 
-explanation
-\begin_inset Quotes erd
+
+\end_layout
+
+\begin_layout Description
+Subscript Inserts an subscript: test
+\begin_inset Formula $_{\text{3x}}$
 \end_inset
 
- in phonetic symbols: 
-\begin_inset Formula $\text{\textipa{""Ekspl@"neIS@n}}$
+
+\end_layout
+
+\begin_layout Description
+Protected\InsetSpace ~
+Space Inserts a protected space that is described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Protected-Space"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Inter-word\InsetSpace ~
+Space Inserts an inter-word space that is described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Inter-word-Space"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Thin\InsetSpace ~
+Space Inserts a thin space that is described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Thin-Space"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Horizontal\InsetSpace ~
+Fill Inserts an horizontal fill, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Horizontal-Space"
+
+\end_inset
+
+ for a description.
+\end_layout
+
+\begin_layout Description
+Horizontal\InsetSpace ~
+Line Inserts an horizontal line, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Horizontal-Lines"
+
+\end_inset
+
+ for a description.
+\end_layout
+
+\begin_layout Description
+Vertical\InsetSpace ~
+Space Inserts vertical space, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Vertical-Space"
+
+\end_inset
+
+ for a description.
+\end_layout
+
+\begin_layout Description
+Hyphenation\InsetSpace ~
+Point Inserts an hyphenation point, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Hyphenation"
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Description
+Ligature\InsetSpace ~
+Break Inserts a ligature break, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Ligatures"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Line\InsetSpace ~
+Break Inserts a forced linebreak, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Forced-Linebreaks"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Page\InsetSpace ~
+Break Inserts a forced pagebreak, described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Forced-Pagebreaks"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Clear\InsetSpace ~
+Page Inserts a clear pagebreak, described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Clear-Pages"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Clear\InsetSpace ~
+Double\InsetSpace ~
+Page Inserts a clear doublepage break, described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Clear-Pages"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+List / TOC
+\end_layout
+
+\begin_layout Standard
+Various lists can be inserted with this menu.
+ The table of contents, the algorithm, figures, and tables list are described
+ in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:toc"
+
+\end_inset
+
+.
+ The index list is described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Index"
+
+\end_inset
+
+, the nomenclature in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Nomenclature"
+
+\end_inset
+
+, and the BibTeX bibliography in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Bibliography-databases"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Float
+\end_layout
+
+\begin_layout Standard
+To insert floats, described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Floats"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Note
+\end_layout
+
+\begin_layout Standard
+To insert notes, described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Notes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Branch
+\end_layout
+
+\begin_layout Standard
+Inserts branch insets as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Branches"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+File
+\begin_inset LatexCommand index
+name "External Material"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here you can inserts files to include them or its content to your document.
+ How this can be done is in detail explained in chapter 
+\emph on
+External Stuff
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Subsection
+Box
+\begin_inset LatexCommand index
+name "Boxes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inserts a minipage box that is described section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Minipages"
+
+\end_inset
+
+.
+ All box types supported by LyX are explained in detail in chapter 
+\emph on
+Boxes
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Subsection
+Citation
+\end_layout
+
+\begin_layout Standard
+Inserts a citation as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Bibliography"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Cross-Reference
+\end_layout
+
+\begin_layout Standard
+Inserts a cross-reference as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Cross-References"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Label
+\end_layout
+
+\begin_layout Standard
+Inserts a label as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Cross-References"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Caption
+\begin_inset LatexCommand index
+name "Captions"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Longtables ! Caption"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inserts a caption to floats or longtables.
+ Floats are described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Floats"
+
+\end_inset
+
+, cations in longtables are described in section 
+\emph on
+Longtable Captions
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Subsection
+Index Entry
+\end_layout
+
+\begin_layout Standard
+Inserts an index entry as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Index"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Nomenclature Entry
+\end_layout
+
+\begin_layout Standard
+Inserts a nomenclature entry as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Nomenclature"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Table
+\end_layout
+
+\begin_layout Standard
+Inserts a table.
+ Tables are described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Tables"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Graphics
+\end_layout
+
+\begin_layout Standard
+Inserts a graphic.
+ Graphics are described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Graphics"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+URL
+\end_layout
+
+\begin_layout Standard
+Inserts an URL box as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:URL"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Footnote
+\end_layout
+
+\begin_layout Standard
+Inserts a footnote, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Footnotes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Marginal Note
+\end_layout
+
+\begin_layout Standard
+Inserts a marginal note, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Marginal-Notes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Short Title
+\end_layout
+
+\begin_layout Standard
+Inserts a short title, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Footnotes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+TeX Code
+\end_layout
+
+\begin_layout Standard
+Inserts an ERT box, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:ERT-Boxes"
+
+\end_inset
+
+ for a description.
+\end_layout
+
+\begin_layout Subsection
+Program Listing
+\begin_inset LatexCommand index
+name "Program listings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inserts a program listings box.
+ Program listings are explained in chapter 
+\emph on
+Program Code Listings
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Subsection
+Date
+\end_layout
+
+\begin_layout Standard
+Inserts the actual date in the following form: month/day/year
+\end_layout
+
+\begin_layout Standard
+The format is independent of the document language.
+ LyX offers another ways to insert a date which is explained in section
+ 
+\emph on
+External Material
+\emph default
+ of the 
+\emph on
+Embedded Objects
+\emph default
+ manual.
+ There the different methods are also compared.
 \end_layout
 
 \begin_layout Section
@@ -31151,7 +32360,7 @@ Here you set the document class, class options, and a Postscript driver.
  Document classes are described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:doc-classes"
+reference "sec:Document-Classes"
 
 \end_inset
 
@@ -31393,6 +32602,13 @@ status collapsed
 XeTeX is a TeX typesetting engine, an alternative for LaTeX.
  It natively supports Unicode while its input file is assumed to be in UTF-8
  encoding.
+ More about using LyX with XeTeX can be found here: 
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/XeTeX"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -31423,7 +32639,7 @@ You can adjust here the numbering depth of sections headings as described
  in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:numbering-depth"
+reference "sub:Numbering-depth"
 
 \end_inset
 
@@ -31538,7 +32754,7 @@ Here you can adjust the characters for the itemize levels.
  The itemize environment is described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:itemize"
+reference "sec:Itemize"
 
 \end_inset
 
