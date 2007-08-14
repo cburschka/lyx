@@ -375,8 +375,7 @@ void DocIterator::forwardIdx()
 	CursorSlice & tip = top();
 
 	//prevent endless loops
-	BOOST_ASSERT(tip.idx() < lastidx());
-
+	BOOST_ASSERT(tip.idx() < tip.nargs());
 	++tip.idx();
 	tip.pit() = 0;
 	tip.pos() = 0;
