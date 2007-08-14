@@ -774,7 +774,7 @@ void Tabular::set_row_column_number_info()
 				!= Tabular::CELL_PART_OF_MULTICOLUMN)
 				++numberofcells;
 			// Shouldn't happen after above fix - MV
-			BOOST_ASSERT(numberofcells == 0);
+			BOOST_ASSERT(numberofcells != 0);
 			cell_info[row][column].cellno =
 				numberofcells - 1;
 		}
