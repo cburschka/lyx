@@ -118,6 +118,8 @@ namespace lyx {
 
 using bv_funcs::freefont2string;
 
+using frontend::LyXView;
+
 using support::absolutePath;
 using support::addName;
 using support::addPath;

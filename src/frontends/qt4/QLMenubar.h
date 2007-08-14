@@ -15,23 +15,24 @@
 
 #include "frontends/Menubar.h"
 
+#include "QLPopupMenu.h"
+
 #include <map>
 #include <boost/scoped_ptr.hpp>
 
 #include <QObject>
 #include <QMenuBar>
 
-#include "QLPopupMenu.h"
+namespace lyx {
 
-class LyXView;
 class MenuBackend;
 class Menu;
 class MenuItem;
 
-namespace lyx {
 namespace frontend {
 
 class GuiView;
+class LyXView;
 
 class QLMenubar : public QObject, public Menubar {
 	Q_OBJECT

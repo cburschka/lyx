@@ -21,11 +21,11 @@
 
 namespace lyx {
 
-class LyXView;
 class BufferView;
 
 namespace frontend {
 
+class LyXView;
 class WorkArea;
 
 

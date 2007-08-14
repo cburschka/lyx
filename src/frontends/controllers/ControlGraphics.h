@@ -26,9 +26,10 @@ namespace lyx {
 
 class InsetGraphics;
 class InsetGraphicsParams;
-class LyXView;
 
 namespace frontend {
+
+class LyXView;
 
 /** A controller for Graphics dialogs.
  */

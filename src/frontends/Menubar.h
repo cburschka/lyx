@@ -17,6 +17,7 @@
 
 
 namespace lyx {
+namespace frontend {
 
 /**
  * The LyX GUI independent menubar class
@@ -32,6 +33,7 @@ public:
 	virtual void update() = 0;
 };
 
+} // namespace frontend
 } // namespace lyx
 
 #endif // MENUBAR_H

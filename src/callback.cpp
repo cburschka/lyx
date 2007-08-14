@@ -66,7 +66,7 @@ using std::ios;
 using std::istream_iterator;
 
 using boost::shared_ptr;
-
+namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -87,9 +87,9 @@ using support::split;
 using support::Systemcall;
 using support::tempName;
 using support::unlink;
+using frontend::LyXView;
 
 namespace Alert = frontend::Alert;
-namespace fs = boost::filesystem;
 
 // this should be static, but I need it in Buffer.cpp
 bool quitting;	// flag, that we are quitting the program

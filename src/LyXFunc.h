@@ -30,8 +30,10 @@ class FuncRequest;
 class FuncStatus;
 class KeySymbol;
 class Text;
-class LyXView;
 
+namespace frontend {
+class LyXView;
+}
 
 /** This class encapsulates all the LyX command operations.
     This is the class of the LyX's "high level event handler".
@@ -48,7 +50,7 @@ public:
 	void dispatch(FuncRequest const &);
 
 	///
-	void setLyXView(LyXView * lv);
+	void setLyXView(frontend::LyXView * lv);
 
 	///
 	void initKeySequences(KeyMap * kb);
@@ -86,7 +88,7 @@ private:
 	BufferView * view() const;
 
 	///
-	LyXView * lyx_view_;
+	frontend::LyXView * lyx_view_;
 
 	/// the last character added to the key sequence, in UCS4 encoded form
 	char_type encoded_last_key;

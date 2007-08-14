@@ -38,6 +38,7 @@ using support::bformat;
 using support::changeExtension;
 using support::FileName;
 using support::makeDisplayPath;
+using frontend::LyXView;
 
 
 bool Importer::Import(LyXView * lv, FileName const & filename,

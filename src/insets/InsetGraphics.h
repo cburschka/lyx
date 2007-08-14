@@ -23,7 +23,6 @@
 
 namespace lyx {
 
-class Dialogs;
 class RenderGraphic;
 class LaTeXFeatures;
 

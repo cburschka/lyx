@@ -17,11 +17,13 @@
 #define QLTOOLBAR_H
 
 #include "frontends/Toolbars.h"
-#include <boost/scoped_ptr.hpp>
+#include "Session.h"
 
 #include <QToolBar>
+
+#include <boost/scoped_ptr.hpp>
+
 #include <vector>
-#include "Session.h"
 
 class QComboBox;
 

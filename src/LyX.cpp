@@ -70,6 +70,20 @@
 #include <string>
 #include <vector>
 
+using std::endl;
+using std::for_each;
+using std::map;
+using std::make_pair;
+using std::string;
+using std::vector;
+
+#ifndef CXX_GLOBAL_CSTD
+using std::exit;
+using std::signal;
+using std::system;
+#endif
+
+namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -89,23 +103,11 @@ using support::package;
 using support::prependEnvPath;
 using support::rtrim;
 using support::Systemcall;
+using frontend::LyXView;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
-namespace fs = boost::filesystem;
 
-using std::endl;
-using std::for_each;
-using std::map;
-using std::make_pair;
-using std::string;
-using std::vector;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::exit;
-using std::signal;
-using std::system;
-#endif
 
 
 /// are we using the GUI at all?

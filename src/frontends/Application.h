@@ -18,7 +18,6 @@
 namespace lyx {
 
 class BufferView;
-class LyXView;
 class Color_color;
 struct RGBColor;
 
@@ -27,6 +26,7 @@ namespace frontend {
 class Clipboard;
 class FontLoader;
 class Gui;
+class LyXView;
 class Selection;
 
 /// The main application class

@@ -99,7 +99,8 @@
 
 using std::string;
 
-using namespace lyx::frontend;
+namespace lyx {
+namespace frontend {
 
 namespace {
 
@@ -131,9 +132,6 @@ private:
 
 
 } // namespace anon
-
-
-namespace lyx {
 
 
 bool Dialogs::isValidName(string const & name) const
@@ -272,7 +270,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkApplyCancelPolicy);
 	} else if (name == "ref") {
 		// full qualification because qt4 has also a ControlRef type
-		dialog->setController(new lyx::frontend::ControlRef(*dialog));
+		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new QRef(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "sendto") {
@@ -342,5 +340,5 @@ bool Dialogs::tooltipsEnabled()
 	return false;
 }
 
-
+} // namespace frontend
 } // namespace lyx

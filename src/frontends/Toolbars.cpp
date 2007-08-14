@@ -25,11 +25,11 @@
 #include "LyX.h"
 
 
-namespace lyx {
-
 using std::endl;
 using std::string;
 
+namespace lyx {
+namespace frontend {
 
 Toolbars::Toolbars(LyXView & owner)
 	: owner_(owner),
@@ -375,5 +375,5 @@ void layoutSelected(LyXView & lv, docstring const & name)
 	       << endl;
 }
 
-
+} // namespace frontend
 } // namespace lyx

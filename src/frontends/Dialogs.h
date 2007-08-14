@@ -21,9 +21,11 @@
 namespace lyx {
 
 class Inset;
-class LyXView;
 
-namespace frontend { class Dialog; }
+namespace frontend {
+
+class Dialog;
+class LyXView;
 
 /** Container of all dialogs.
  */
@@ -98,9 +100,9 @@ private:
 	///
 	bool isValidName(std::string const & name) const;
 	///
-	frontend::Dialog * find_or_build(std::string const & name);
+	Dialog * find_or_build(std::string const & name);
 	///
-	typedef boost::shared_ptr<frontend::Dialog> DialogPtr;
+	typedef boost::shared_ptr<Dialog> DialogPtr;
 	///
 	DialogPtr build(std::string const & name);
 
@@ -119,6 +121,7 @@ private:
 	boost::signals::connection connection_;
 };
 
+} // namespace frontend
 } // namespace lyx
 
 #endif

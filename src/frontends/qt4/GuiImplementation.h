@@ -19,13 +19,12 @@
 
 #include <map>
 
-class LyXView;
-
 namespace lyx {
 namespace frontend {
 
 class GuiWorkArea;
 class GuiView;
+class LyXView;
 
 /**
  * The GuiImplementation class is the interface to all Qt4 components.

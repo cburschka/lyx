@@ -20,10 +20,9 @@
 
 
 namespace lyx {
+namespace frontend {
 
 class LyXView;
-
-namespace frontend {
 
 /**
  * ControlCommandBuffer

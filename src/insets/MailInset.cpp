@@ -16,8 +16,6 @@
 #include "debug.h"
 #include "LyX.h"
 
-#include "frontends/Dialogs.h"
-
 
 namespace lyx {
 

@@ -24,12 +24,14 @@
 #define TOOLBARS_H
 
 #include "ToolbarBackend.h"
-#include <boost/shared_ptr.hpp>
-#include <map>
 #include "Session.h"
 
+#include <boost/shared_ptr.hpp>
+
+#include <map>
 
 namespace lyx {
+namespace frontend {
 
 class LyXView;
 
@@ -158,6 +160,7 @@ private:
 void layoutSelected(LyXView & lv, docstring const & name);
 
 
+} // namespace frontend
 } // namespace lyx
 
 #endif // NOT TOOLBARS_H

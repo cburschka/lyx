@@ -33,7 +33,6 @@ class Inset;
 class LyXFunc;
 class Server;
 class ServerSocket;
-class LyXView;
 class Messages;
 class Mover;
 class Movers;
@@ -42,7 +41,10 @@ class KeyMap;
 
 extern bool use_gui;
 
-namespace frontend { class Application; }
+namespace frontend {
+class Application;
+class LyXView;
+}
 
 /// initial startup
 class LyX : boost::noncopyable {
@@ -96,7 +98,7 @@ public:
 	void setGuiLanguage(std::string const & language);
 
 	///
-	LyXView * newLyXView();
+	frontend::LyXView * newLyXView();
 
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.

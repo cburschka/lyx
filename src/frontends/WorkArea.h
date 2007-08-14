@@ -27,10 +27,10 @@ namespace lyx {
 
 class BufferView;
 class FuncRequest;
-class LyXView;
 
 namespace frontend {
 
+class LyXView;
 class Painter;
 
 /// types of cursor in work area

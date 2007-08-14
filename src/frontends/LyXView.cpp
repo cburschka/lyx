@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "LyXView.h"
+
 #include "Dialogs.h"
 #include "Toolbars.h"
 #include "Menubar.h"
@@ -47,8 +48,6 @@
 #include <boost/bind.hpp>
 
 
-namespace lyx {
-
 #ifdef HAVE_SYS_TIME_H
 # include <sys/time.h>
 #endif
@@ -56,20 +55,19 @@ namespace lyx {
 # include <unistd.h>
 #endif
 
-using frontend::WorkArea;
+using std::endl;
+using std::string;
+
+namespace lyx {
 
 using support::bformat;
 using support::FileName;
 using support::makeDisplayPath;
 using support::onlyFilename;
 
-using std::endl;
-using std::string;
-
-using lyx::frontend::ControlCommandBuffer;
+namespace frontend {
 
 docstring current_layout;
-
 
 LyXView::LyXView(int id)
 	: work_area_(0),
@@ -530,5 +528,5 @@ Buffer const * const LyXView::updateInset(Inset const * inset) const
 	return buffer_ptr;
 }
 
-
+} // namespace frontend
 } // namespace lyx

@@ -71,6 +71,10 @@
 #include <clocale>
 #include <sstream>
 
+using std::endl;
+using std::string;
+using std::istringstream;
+using std::ostringstream;
 
 namespace lyx {
 
@@ -83,14 +87,9 @@ using cap::replaceSelection;
 using support::isStrUnsignedInt;
 using support::token;
 
-using std::endl;
-using std::string;
-using std::istringstream;
-using std::ostringstream;
-
-
+namespace frontend {
 extern docstring current_layout;
-
+}
 
 namespace {
 
@@ -896,7 +895,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 
-		bool change_layout = (current_layout != layout);
+		bool change_layout = (frontend::current_layout != layout);
 
 		if (!change_layout && cur.selection() &&
 			cur.selBegin().pit() != cur.selEnd().pit())
@@ -904,7 +903,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			pit_type spit = cur.selBegin().pit();
 			pit_type epit = cur.selEnd().pit() + 1;
 			while (spit != epit) {
-				if (pars_[spit].layout()->name() != current_layout) {
+				if (pars_[spit].layout()->name() != frontend::current_layout) {
 					change_layout = true;
 					break;
 				}

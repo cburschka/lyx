@@ -22,14 +22,17 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class LyXView;
 class ErrorList;
 class Format;
+
+namespace frontend {
+class LyXView;
+}
 
 class Importer {
 public:
 	///
-	static bool Import(LyXView * lv, support::FileName const & filename,
+	static bool Import(frontend::LyXView * lv, support::FileName const & filename,
 		    std::string const & format, ErrorList & errorList);
 
 	///

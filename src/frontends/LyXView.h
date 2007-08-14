@@ -29,22 +29,20 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class Buffer;
-class Inset;
-class Menubar;
-
-class BufferView;
-class Dialogs;
-class LyXFunc;
 class Font;
-class Timeout;
+class Buffer;
+class BufferView;
 class FuncRequest;
+class Inset;
+class LyXFunc;
+class Timeout;
 
 namespace frontend {
-class WorkArea;
-class ControlCommandBuffer;
-} // namespace frontend
 
+class ControlCommandBuffer;
+class Dialogs;
+class Menubar;
+class WorkArea;
 
 /**
  * LyXView - main LyX window
@@ -75,13 +73,13 @@ public:
 	std::vector<int> const & workAreaIds() const { return work_area_ids_; }
 
 	/// FIXME: rename to setCurrentWorkArea()
-	void setWorkArea(frontend::WorkArea * work_area);
+	void setWorkArea(WorkArea * work_area);
 
 	/// return the current WorkArea (the one that has the focus).
-	frontend::WorkArea const * currentWorkArea() const;
+	WorkArea const * currentWorkArea() const;
 	/// FIXME: This non-const access is needed because of
 	/// a mis-designed \c ControlSpellchecker.
-	frontend::WorkArea * currentWorkArea();
+	WorkArea * currentWorkArea();
 
 	/**
 	 * This is called after the concrete view has been created.
@@ -293,7 +291,7 @@ protected:
 	/// view's command buffer controller
 	// this has to be declared _after_ lyxfunc_ as its initialization depends
 	// on it!
-	typedef boost::scoped_ptr<frontend::ControlCommandBuffer>
+	typedef boost::scoped_ptr<ControlCommandBuffer>
 	CommandBufferPtr;
 
 	CommandBufferPtr const controlcommand_;
@@ -303,6 +301,7 @@ private:
 	std::vector<int> work_area_ids_;
 };
 
+} // namespace frontend
 } // namespace lyx
 
 #endif // LYXVIEW_H

@@ -21,12 +21,10 @@
 #include <boost/scoped_ptr.hpp>
 
 namespace lyx {
-
-class LyXView;
-
 namespace frontend {
 
 class ButtonController;
+class LyXView;
 
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.

@@ -25,8 +25,7 @@ using std::string;
 
 namespace lyx {
 
-using lyx::frontend::Dialog;
-
+namespace frontend {
 
 Dialogs::Dialogs(LyXView & lyxview)
 	: lyxview_(lyxview), in_show_(false)
@@ -218,5 +217,5 @@ void Dialogs::checkStatus()
 	}
 }
 
-
+} // namespace frontend
 } // namespace lyx

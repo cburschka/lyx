@@ -19,9 +19,10 @@ namespace lyx {
 class Buffer;
 class BufferView;
 class FuncRequest;
-class LyXView;
 
 namespace frontend {
+
+class LyXView;
 
 /** \c Kernel is a wrapper making the LyX kernel available to the dialog.
  * (Ie, it provides an interface to the Model part of the Model-Controller-
