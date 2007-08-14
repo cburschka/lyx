@@ -21,13 +21,15 @@
 #include "frontends/LyXView.h"
 #include "FuncRequest.h"
 
-#include <QMainWindow>
-#include <QTimer>
 #include <QAction>
 #include <QCloseEvent>
+#include <QMainWindow>
+#include <QTimer>
 
-class QToolBar;
+class QDragEnterEvent;
+class QDropEvent;
 class QMenu;
+class QToolBar;
 
 
 namespace lyx {
