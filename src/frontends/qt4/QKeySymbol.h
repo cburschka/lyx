@@ -81,6 +81,8 @@ private:
 	QString text_;
 };
 
+/// return the LyX key state from Qt's
+key_modifier::state q_key_state(Qt::KeyboardModifiers state);
 
 } // namespace lyx
 

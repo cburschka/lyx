@@ -63,20 +63,6 @@ namespace lyx {
 
 using support::FileName;
 
-/// return the LyX key state from Qt's
-static key_modifier::state q_key_state(Qt::KeyboardModifiers state)
-{
-	key_modifier::state k = key_modifier::none;
-	if (state & Qt::ControlModifier)
-		k |= key_modifier::ctrl;
-	if (state & Qt::ShiftModifier)
-		k |= key_modifier::shift;
-	if (state & Qt::AltModifier || state & Qt::MetaModifier)
-		k |= key_modifier::alt;
-	return k;
-}
-
-
 /// return the LyX mouse button state from Qt's
 static mouse_button::state q_button_state(Qt::MouseButton button)
 {

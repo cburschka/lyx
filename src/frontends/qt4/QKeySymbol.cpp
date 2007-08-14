@@ -199,4 +199,16 @@ bool QKeySymbol::operator==(KeySymbol const & ks) const
 }
 
 
+key_modifier::state q_key_state(Qt::KeyboardModifiers state)
+{
+	key_modifier::state k = key_modifier::none;
+	if (state & Qt::ControlModifier)
+		k |= key_modifier::ctrl;
+	if (state & Qt::ShiftModifier)
+		k |= key_modifier::shift;
+	if (state & Qt::AltModifier || state & Qt::MetaModifier)
+		k |= key_modifier::alt;
+	return k;
+}
+
 } // namespace lyx
