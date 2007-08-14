@@ -21,10 +21,9 @@ EXTRA_DIST = config.h.in \
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 
 pkglib_LTLIBRARIES = liblyxcore.la
-noinst_PROGRAMS = $(FRONTENDS_PROGS)
-EXTRA_PROGRAMS = lyx-qt4
+bin_PROGRAMS = lyx
 
-lyx_qt4_LDADD = \
+lyx_LDADD = \
 	liblyxcore.la \
 	liblyxmathed.la \
 	liblyxinsets.la \
@@ -35,10 +34,6 @@ lyx_qt4_LDADD = \
 	support/liblyxsupport.la \
 	$(OTHERLIBS) \
 	$(QT4_LIB) 
-
-lyx$(EXEEXT): $(FRONTENDS_PROGS)
-	rm -f $@
-	$(LN_S) $< $@
 
 if LYX_WIN_RESOURCE
 .rc.o:
@@ -64,7 +59,7 @@ endif
 # referenced within the core and therefore are not picked up
 # by the linker without looping over libs. We do not want that,
 # and in fact libtools seems not able to do that.
-lyx_qt4_SOURCES = \
+lyx_SOURCES = \
 	main.cpp \
 	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
 	Box.cpp \
@@ -77,7 +72,7 @@ lyx_qt4_SOURCES = \
 	Thesaurus.h
 
 if LYX_WIN_RESOURCE
-lyx_qt4_SOURCES += lyxwinres.rc
+lyx_SOURCES += lyxwinres.rc
 endif
 
 liblyxcore_la_SOURCES = \
