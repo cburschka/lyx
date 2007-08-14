@@ -1728,6 +1728,15 @@ if build_qt4:
     env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRCDIR/src/frontend/$frontend', duplicate = 0)
 
     print "Processing files in src/frontends/qt4..."
+    frontend_env['QT4_MOCHPREFIX'] = ''
+    frontend_env['QT4_MOCHSUFFIX'] = '_moc.cpp'
+
+    # tells scons how to get these moced files, although not all moced files are needed
+    # (or are actually generated).
+    qt4_moced_files = [frontend_env.Moc4('$BUILDDIR/common/frontends/qt4/%s' % x)
+        for x in src_frontends_qt4_header_files ]
+    resources = [frontend_env.Uic4('$BUILDDIR/common/frontends/qt4/ui/%s' % x.split('.')[0])
+        for x in src_frontends_qt4_ui_files]
 
     #
     # moc qt4_moc_files, the moced files are included in the original files
