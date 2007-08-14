@@ -324,7 +324,7 @@ void autoSave(BufferView * bv)
 // create new file with template
 // SERVERCMD !
 //
-void newFile(BufferView * bv, string const & filename)
+void newFile(LyXView & lv, string const & filename)
 {
 	// Split argument by :
 	string name;
@@ -335,7 +335,7 @@ void newFile(BufferView * bv, string const & filename)
 
 	Buffer * const b = newFile(name, tmpname);
 	if (b)
-		bv->setBuffer(b);
+		lv.setBuffer(b);
 }
 
 

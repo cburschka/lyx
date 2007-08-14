@@ -1258,7 +1258,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_FILE_NEW:
 			BOOST_ASSERT(lyx_view_);
-			newFile(lyx_view_->view(), argument);
+			newFile(*lyx_view_, argument);
 			break;
 
 		case LFUN_FILE_OPEN:

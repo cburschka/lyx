@@ -33,7 +33,7 @@ bool writeAs(Buffer * buffer, std::string const & filename = std::string());
 ///
 void autoSave(BufferView * bv);
 ///
-void newFile(BufferView * bv, std::string const & filename);
+void newFile(frontend::LyXView & lv, std::string const & filename);
 ///
 void insertPlaintextFile(BufferView * bv, std::string const & f, bool asParagraph);
 /// read plain text file (if \p f is empty, prompt for a filename)
