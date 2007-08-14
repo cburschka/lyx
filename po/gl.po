@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl-1.5.0rc2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 23:04+0200\n"
+"POT-Creation-Date: 2007-08-14 07:59+0100\n"
 "PO-Revision-Date: 2007-07-11 18:48+0200\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -83,11 +83,11 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:766 src/LyXFunc.cpp:963
-#: src/LyXFunc.cpp:1134 src/LyXFunc.cpp:2143 src/LyXVC.cpp:175
-#: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
-#: src/callback.cpp:115 src/callback.cpp:168
+#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:808
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:767
+#: src/LyXFunc.cpp:964 src/LyXFunc.cpp:1135 src/LyXFunc.cpp:2144
+#: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
+#: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
 msgstr "&Cancelar"
 
@@ -163,7 +163,7 @@ msgstr "&Engadir"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:882 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:883 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1299,10 +1299,9 @@ msgstr "Entrada"
 msgid "Verbatim"
 msgstr "Literal"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/frontends/qt4/ui/ListingsUi.ui:16
-#: src/insets/InsetListings.cpp:251
-msgid "Listing"
-msgstr "Lista"
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:354
+msgid "Program Listing"
+msgstr "Código programación"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:336
 #, fuzzy
@@ -1332,6 +1331,10 @@ msgstr "&Codificación:"
 #: src/frontends/qt4/ui/LanguageUi.ui:141
 msgid "&Quote Style:"
 msgstr "&Estilo de cita:"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetListings.cpp:251
+msgid "Listing"
+msgstr "Lista"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:43
 msgid "&Main Settings"
@@ -2447,7 +2450,7 @@ msgid "&Maximum last files:"
 msgstr "Documentos &recentes:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:765
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:766
 msgid "&Save"
 msgstr "&Gravar"
 
@@ -2860,7 +2863,7 @@ msgstr "Repete esta fila como cabezallo en cada páxina (agás na primeira)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1845
+#: src/LyXFunc.cpp:1846
 msgid "on"
 msgstr "activado"
 
@@ -7470,7 +7473,7 @@ msgstr "Gravar|G"
 msgid "Save As...|A"
 msgstr "Gravar como...|c"
 
-#: lib/ui/classic.ui:54 lib/ui/stdmenus.inc:44
+#: lib/ui/classic.ui:54
 msgid "Revert|R"
 msgstr "Reverter|R"
 
@@ -8288,6 +8291,11 @@ msgstr "Abrir recente|t"
 msgid "Save All|l"
 msgstr "Gravar como...|c"
 
+#: lib/ui/stdmenus.inc:44
+#, fuzzy
+msgid "Revert to saved|R"
+msgstr "Reverter ao documento gravado?"
+
 #: lib/ui/stdmenus.inc:52
 msgid "New Window|W"
 msgstr "Nova xanela|o"
@@ -8623,8 +8631,9 @@ msgstr "Título breve|b"
 msgid "TeX Code|X"
 msgstr "Código TeX|g"
 
-#: lib/ui/stdmenus.inc:315 src/insets/InsetInclude.cpp:354
-msgid "Program Listing"
+#: lib/ui/stdmenus.inc:315
+#, fuzzy
+msgid "Program Listing[[Menu]]"
 msgstr "Código programación"
 
 #: lib/ui/stdmenus.inc:322
@@ -11383,47 +11392,47 @@ msgstr ""
 "Data de hoxe.\n"
 "Lea 'info date' para obter mais información.\n"
 
-#: src/Buffer.cpp:229
+#: src/Buffer.cpp:236
 msgid "Could not remove temporary directory"
 msgstr "Non foi posíbel eliminar directória temporária"
 
-#: src/Buffer.cpp:230
+#: src/Buffer.cpp:237
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Non foi posíbel eliminar a directória temporária %1$s"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:408
 msgid "Unknown document class"
 msgstr "Clase de documento descoñecida"
 
-#: src/Buffer.cpp:402
+#: src/Buffer.cpp:409
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 "Usando a clase de documento predefinida, xa que a clase %1$s é descoñecida."
 
-#: src/Buffer.cpp:462 src/Text.cpp:295
+#: src/Buffer.cpp:469 src/Text.cpp:295
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Símbolo descoñecido: %1$s %2$s\n"
 
-#: src/Buffer.cpp:466 src/Buffer.cpp:473 src/Buffer.cpp:493
+#: src/Buffer.cpp:473 src/Buffer.cpp:480 src/Buffer.cpp:500
 msgid "Document header error"
 msgstr "Erro de cabezallo do documento"
 
-#: src/Buffer.cpp:472
+#: src/Buffer.cpp:479
 msgid "\\begin_header is missing"
 msgstr "\\begin_header falta"
 
-#: src/Buffer.cpp:492
+#: src/Buffer.cpp:499
 msgid "\\begin_document is missing"
 msgstr "\\begin_document falta"
 
-#: src/Buffer.cpp:503
+#: src/Buffer.cpp:510
 msgid "Can't load document class"
 msgstr "Non é posíbel carregar a clase de documento"
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:511
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
@@ -11431,12 +11440,12 @@ msgstr ""
 "Usando a clase de documento predefinida, xa que non se pode carregar a clase "
 "%1$s ."
 
-#: src/Buffer.cpp:515 src/Buffer.cpp:521 src/BufferView.cpp:849
+#: src/Buffer.cpp:522 src/Buffer.cpp:528 src/BufferView.cpp:849
 #: src/BufferView.cpp:855
 msgid "Changes not shown in LaTeX output"
 msgstr "Mudanzas non mostradas na saida LaTeX"
 
-#: src/Buffer.cpp:516 src/BufferView.cpp:850
+#: src/Buffer.cpp:523 src/BufferView.cpp:850
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11448,7 +11457,7 @@ msgstr ""
 "Instale eses pacotes ou redefina \\lyxadded e \\lyxdeleted no preámbulo "
 "LaTeX."
 
-#: src/Buffer.cpp:522 src/BufferView.cpp:856
+#: src/Buffer.cpp:529 src/BufferView.cpp:856
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11460,29 +11469,29 @@ msgstr ""
 "Instale ambos pacotes ou redefina \\lyxadded e \\lyxdeleted no preámbulo "
 "LaTeX."
 
-#: src/Buffer.cpp:657 src/Buffer.cpp:666
+#: src/Buffer.cpp:664 src/Buffer.cpp:673
 msgid "Document could not be read"
 msgstr "Non se pudo ler o documento"
 
-#: src/Buffer.cpp:658 src/Buffer.cpp:667
+#: src/Buffer.cpp:665 src/Buffer.cpp:674
 #, c-format
 msgid "%1$s could not be read."
 msgstr "Non se pudo ler %1$s ."
 
-#: src/Buffer.cpp:675 src/Buffer.cpp:747
+#: src/Buffer.cpp:682 src/Buffer.cpp:754
 msgid "Document format failure"
 msgstr "Fallo ao formatar documento"
 
-#: src/Buffer.cpp:676
+#: src/Buffer.cpp:683
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s non é un documento de LyX."
 
-#: src/Buffer.cpp:700
+#: src/Buffer.cpp:707
 msgid "Conversion failed"
 msgstr "Fallou a conversión"
 
-#: src/Buffer.cpp:701
+#: src/Buffer.cpp:708
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -11491,11 +11500,11 @@ msgstr ""
 "%1$s é dunha versión diferente de LyX, porén non se pudo criar un ficheiro "
 "temporário para o converter."
 
-#: src/Buffer.cpp:710
+#: src/Buffer.cpp:717
 msgid "Conversion script not found"
 msgstr "Non se achou script de conversión"
 
-#: src/Buffer.cpp:711
+#: src/Buffer.cpp:718
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -11504,11 +11513,11 @@ msgstr ""
 "%1$s é dunha versión diferente de LyX, porén non se pudo achar o script de "
 "conversión lyx2lyx."
 
-#: src/Buffer.cpp:732
+#: src/Buffer.cpp:739
 msgid "Conversion script failed"
 msgstr "Fallou o script de conversión"
 
-#: src/Buffer.cpp:733
+#: src/Buffer.cpp:740
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -11517,16 +11526,16 @@ msgstr ""
 "%1$s é dunha versión diferente de LyX, porén o script lyx2lyx fallou ao "
 "converte-lo."
 
-#: src/Buffer.cpp:748
+#: src/Buffer.cpp:755
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s rematou inesperadamente, probabelmente estexa corrompido."
 
-#: src/Buffer.cpp:784
+#: src/Buffer.cpp:794
 msgid "Backup failure"
 msgstr "fallo na cópia de seguranza"
 
-#: src/Buffer.cpp:785
+#: src/Buffer.cpp:795
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -11535,11 +11544,31 @@ msgstr ""
 "Non foi posíbel criar a cópia de seguranza %1$s.\n"
 "Comprobe que exista a directória e que teña permiso de escritura."
 
-#: src/Buffer.cpp:931
+#: src/Buffer.cpp:805
+#, fuzzy, c-format
+msgid ""
+"Document %1$s has been externally modified. Are you sure you want to "
+"overwrite this file?"
+msgstr ""
+"O documento %1$s xa existe.\n"
+"\n"
+"Desexa sobre-escreber ese documento?"
+
+#: src/Buffer.cpp:807
+#, fuzzy
+msgid "Overwrite modified file?"
+msgstr "Sobreescreber ficheiro?"
+
+#: src/Buffer.cpp:808 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
+#: src/LyXFunc.cpp:2144 src/callback.cpp:186
+msgid "&Overwrite"
+msgstr "&Sobreescreber"
+
+#: src/Buffer.cpp:954
 msgid "Encoding error"
 msgstr "Erro de codificación"
 
-#: src/Buffer.cpp:932
+#: src/Buffer.cpp:955
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -11549,28 +11578,28 @@ msgstr ""
 "codificación escollida.\n"
 "Trocar a codificación do documento para utf8 poderia axudar."
 
-#: src/Buffer.cpp:1210
+#: src/Buffer.cpp:1233
 msgid "Running chktex..."
 msgstr "Executando chktex..."
 
-#: src/Buffer.cpp:1223
+#: src/Buffer.cpp:1246
 msgid "chktex failure"
 msgstr "fallo de chktex"
 
-#: src/Buffer.cpp:1224
+#: src/Buffer.cpp:1247
 msgid "Could not run chktex successfully."
 msgstr "Non se pudo executar chktex exitosamente."
 
-#: src/Buffer.cpp:1759
+#: src/Buffer.cpp:1792
 msgid "Preview source code"
 msgstr "Vista preliminar do código fonte"
 
-#: src/Buffer.cpp:1770
+#: src/Buffer.cpp:1803
 #, c-format
 msgid "Preview source code for paragraph %1$s"
 msgstr "Vista preliminar do código fonte para o parágrafo %1$s"
 
-#: src/Buffer.cpp:1774
+#: src/Buffer.cpp:1807
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Vista preliminar do código fonte para os parágrafos %1$s a %2$s"
@@ -11586,7 +11615,7 @@ msgstr ""
 "\n"
 "Desexa gravar o documento ou descartar as mudanzas?"
 
-#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:764
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:765
 msgid "Save changed document?"
 msgstr "Gravar o documento modificado?"
 
@@ -11690,8 +11719,8 @@ msgstr "Contar palabras"
 msgid "Select LyX document to insert"
 msgstr "Seleccionar documento LyX a inserir"
 
-#: src/BufferView.cpp:1585 src/LyXFunc.cpp:1982 src/LyXFunc.cpp:2021
-#: src/LyXFunc.cpp:2094 src/callback.cpp:134
+#: src/BufferView.cpp:1585 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
+#: src/LyXFunc.cpp:2095 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11700,17 +11729,17 @@ msgstr "Seleccionar documento LyX a inserir"
 msgid "Documents|#o#O"
 msgstr "Documentos|#o#O"
 
-#: src/BufferView.cpp:1586 src/LyXFunc.cpp:2022 src/LyXFunc.cpp:2095
+#: src/BufferView.cpp:1586 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
 msgid "Examples|#E#e"
 msgstr "Exemplos|#E#e"
 
-#: src/BufferView.cpp:1592 src/LyXFunc.cpp:1987 src/LyXFunc.cpp:2026
-#: src/callback.cpp:140
+#: src/BufferView.cpp:1592 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
+#: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "Documentos LyX (*.lyx)"
 
-#: src/BufferView.cpp:1604 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2116
-#: src/LyXFunc.cpp:2130 src/LyXFunc.cpp:2146
+#: src/BufferView.cpp:1604 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
+#: src/LyXFunc.cpp:2131 src/LyXFunc.cpp:2147
 msgid "Canceled."
 msgstr "Cancelado."
 
@@ -12067,7 +12096,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "Estilo de carácter non definido"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1130
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1131
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12078,14 +12107,9 @@ msgstr ""
 "\n"
 "Desexa sobreescreber ese ficheiro?"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1133
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1134
 msgid "Overwrite file?"
 msgstr "Sobreescreber ficheiro?"
-
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1134 src/LyXFunc.cpp:2143
-#: src/callback.cpp:168
-msgid "&Overwrite"
-msgstr "&Sobreescreber"
 
 #: src/Exporter.cpp:87
 msgid "Overwrite &all"
@@ -12378,29 +12402,29 @@ msgstr "LyX: reconfigurando directória do usuário"
 msgid "Done!"
 msgstr "Feito!"
 
-#: src/LyX.cpp:505
+#: src/LyX.cpp:509
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Non foi posíbel eliminar a directória temporária %1$s"
 
-#: src/LyX.cpp:507
+#: src/LyX.cpp:511
 msgid "Unable to remove temporary directory"
 msgstr "Non foi posíbel eliminar a directória temporária"
 
-#: src/LyX.cpp:543
+#: src/LyX.cpp:547
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Opción da liña de comandos incorrecta `%1$s'. Saindo."
 
-#: src/LyX.cpp:811
+#: src/LyX.cpp:815
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:944
 msgid "Could not create temporary directory"
 msgstr "Non foi posíbel criar directória temporária"
 
-#: src/LyX.cpp:941
+#: src/LyX.cpp:945
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12411,11 +12435,11 @@ msgstr ""
 "%1$s. Asegure-se esa rota existir\n"
 "e estar permitido escreber nela, e tente-o outra vez."
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1112
 msgid "Missing user LyX directory"
 msgstr "Falta a directória LyX do usuário"
 
-#: src/LyX.cpp:1109
+#: src/LyX.cpp:1113
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -12424,37 +12448,37 @@ msgstr ""
 "Especificou unha directória LyX de usuário non existente, %1$s.\n"
 "Ela é necesária para manter a sua configuración persoal."
 
-#: src/LyX.cpp:1114
+#: src/LyX.cpp:1118
 msgid "&Create directory"
 msgstr "&Criar directória"
 
-#: src/LyX.cpp:1115
+#: src/LyX.cpp:1119
 msgid "&Exit LyX"
 msgstr "&Sair de LyX"
 
-#: src/LyX.cpp:1116
+#: src/LyX.cpp:1120
 msgid "No user LyX directory. Exiting."
 msgstr "Sen directória LyX de usuário. Saindo."
 
-#: src/LyX.cpp:1120
+#: src/LyX.cpp:1124
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Creando directória %1$s"
 
-#: src/LyX.cpp:1126
+#: src/LyX.cpp:1130
 msgid "Failed to create directory. Exiting."
 msgstr "Erro ao criar directória. Saindo."
 
-#: src/LyX.cpp:1299
+#: src/LyX.cpp:1303
 msgid "List of supported debug flags:"
 msgstr "Lista de etiquetas de depuración admitidas:"
 
-#: src/LyX.cpp:1303
+#: src/LyX.cpp:1307
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Estabelecendo nivel de depuración a %1$s"
 
-#: src/LyX.cpp:1314
+#: src/LyX.cpp:1318
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12493,40 +12517,40 @@ msgstr ""
 "  -version       info da versión e de compilación\n"
 "Lea a páxina do manual de LyX para máis detalles."
 
-#: src/LyX.cpp:1350 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1354 src/support/Package.cpp.in:568
 msgid "No system directory"
 msgstr "Sen directória de sistema"
 
-#: src/LyX.cpp:1351
+#: src/LyX.cpp:1355
 msgid "Missing directory for -sysdir switch"
 msgstr "Falta directória para a opción -sysdir"
 
-#: src/LyX.cpp:1361
+#: src/LyX.cpp:1365
 msgid "No user directory"
 msgstr "Sen directória de usuário"
 
-#: src/LyX.cpp:1362
+#: src/LyX.cpp:1366
 msgid "Missing directory for -userdir switch"
 msgstr "Falta directória para a opción -userdir"
 
-#: src/LyX.cpp:1372
+#: src/LyX.cpp:1376
 msgid "Incomplete command"
 msgstr "Comando incompleto"
 
-#: src/LyX.cpp:1373
+#: src/LyX.cpp:1377
 msgid "Missing command string after --execute switch"
 msgstr "Falta comando despois da opción --execute"
 
-#: src/LyX.cpp:1383
+#: src/LyX.cpp:1387
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Falta tipo de ficheiro [p. ej. latex, ps...] despois da opción --export"
 
-#: src/LyX.cpp:1395
+#: src/LyX.cpp:1399
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Falta tipo de ficheiro [p. ej. latex, ps] despois da opción --import"
 
-#: src/LyX.cpp:1400
+#: src/LyX.cpp:1404
 msgid "Missing filename for --import"
 msgstr "Falta nome de ficheiro para --import"
 
@@ -12542,7 +12566,7 @@ msgstr "Nada que facer"
 msgid "Unknown action"
 msgstr "Acción descoñecida"
 
-#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:748
+#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:749
 msgid "Command disabled"
 msgstr "Comando desactivado"
 
@@ -12550,15 +12574,15 @@ msgstr "Comando desactivado"
 msgid "Command not allowed without any document open"
 msgstr "Comando non permitido sen un documento aberto"
 
-#: src/LyXFunc.cpp:734
+#: src/LyXFunc.cpp:735
 msgid "Document is read-only"
 msgstr "O documento é de sólo-lectura"
 
-#: src/LyXFunc.cpp:742
+#: src/LyXFunc.cpp:743
 msgid "This portion of the document is deleted."
 msgstr "Esta parte do documento está borrada."
 
-#: src/LyXFunc.cpp:761
+#: src/LyXFunc.cpp:762
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12569,7 +12593,7 @@ msgstr ""
 "\n"
 "Desexa gravar o documento?"
 
-#: src/LyXFunc.cpp:779
+#: src/LyXFunc.cpp:780
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -12578,11 +12602,11 @@ msgstr ""
 "Non foi posíbel imprimir o documento %1$s.\n"
 "Comprobe que a sua impresora está instalada correctamente."
 
-#: src/LyXFunc.cpp:782
+#: src/LyXFunc.cpp:783
 msgid "Print document failed"
 msgstr "Fallou a impresión do documento"
 
-#: src/LyXFunc.cpp:801
+#: src/LyXFunc.cpp:802
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -12591,30 +12615,30 @@ msgstr ""
 "Non foi posíbel converter o documento\n"
 "á clase de documento %1$s."
 
-#: src/LyXFunc.cpp:804
+#: src/LyXFunc.cpp:805
 msgid "Could not change class"
 msgstr "Non foi posíbel trocar a clase"
 
-#: src/LyXFunc.cpp:916
+#: src/LyXFunc.cpp:917
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Gravando documento %1$s..."
 
-#: src/LyXFunc.cpp:920
+#: src/LyXFunc.cpp:921
 msgid " done."
 msgstr " feito."
 
-#: src/LyXFunc.cpp:937
+#: src/LyXFunc.cpp:938
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "Gravando documento %1$s..."
 
-#: src/LyXFunc.cpp:950
+#: src/LyXFunc.cpp:951
 #, fuzzy
 msgid "All documents saved."
 msgstr "Documento non gravado"
 
-#: src/LyXFunc.cpp:960
+#: src/LyXFunc.cpp:961
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -12623,102 +12647,102 @@ msgstr ""
 "Perderá-se calquer mudanza. Está certo de desexar reverter á versión gravada "
 "do documento %1$s?"
 
-#: src/LyXFunc.cpp:962 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:963 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
 msgstr "Reverter ao documento gravado?"
 
-#: src/LyXFunc.cpp:963 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:964 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
 msgid "&Revert"
 msgstr "&Reverter"
 
-#: src/LyXFunc.cpp:1157
+#: src/LyXFunc.cpp:1158
 msgid "Exiting."
 msgstr "Saindo."
 
-#: src/LyXFunc.cpp:1175 src/Text3.cpp:1337
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1337
 msgid "Missing argument"
 msgstr "Falta argumento"
 
-#: src/LyXFunc.cpp:1184
+#: src/LyXFunc.cpp:1185
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Abrindo ficheiro de axuda %1$s..."
 
-#: src/LyXFunc.cpp:1579
+#: src/LyXFunc.cpp:1580
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxe: set-color <nome_lyx> <nome_x11>"
 
-#: src/LyXFunc.cpp:1590
+#: src/LyXFunc.cpp:1591
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "set-color \"%1$s\" fallou - a cor non está definida ou pode non ser "
 "redefinida"
 
-#: src/LyXFunc.cpp:1704
+#: src/LyXFunc.cpp:1705
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Configuracións predefinidas gravados en %1$s"
 
-#: src/LyXFunc.cpp:1707
+#: src/LyXFunc.cpp:1708
 msgid "Unable to save document defaults"
 msgstr "Non foi posíbel gravar as configuracións predefinidas do documento"
 
-#: src/LyXFunc.cpp:1763
+#: src/LyXFunc.cpp:1764
 msgid "Converting document to new document class..."
 msgstr "Convertendo documento á nova clase de documento..."
 
-#: src/LyXFunc.cpp:1839
+#: src/LyXFunc.cpp:1840
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Característica de táboa descoñecida '%1$s'"
 
-#: src/LyXFunc.cpp:1847
+#: src/LyXFunc.cpp:1848
 msgid "off"
 msgstr "off"
 
-#: src/LyXFunc.cpp:1849
+#: src/LyXFunc.cpp:1850
 msgid "auto"
 msgstr "auto"
 
-#: src/LyXFunc.cpp:1851
+#: src/LyXFunc.cpp:1852
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Estado da barra de ferramentas \"%1$s\" posto a %2$s"
 
-#: src/LyXFunc.cpp:1980
+#: src/LyXFunc.cpp:1981
 msgid "Select template file"
 msgstr "Seleccionar modelo"
 
-#: src/LyXFunc.cpp:1983 src/callback.cpp:135
+#: src/LyXFunc.cpp:1984 src/callback.cpp:150
 msgid "Templates|#T#t"
 msgstr "Modelos|#M#m"
 
-#: src/LyXFunc.cpp:2019
+#: src/LyXFunc.cpp:2020
 msgid "Select document to open"
 msgstr "Seleccionar documento para abrir"
 
-#: src/LyXFunc.cpp:2058
+#: src/LyXFunc.cpp:2059
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Abrindo documento %1$s..."
 
-#: src/LyXFunc.cpp:2062
+#: src/LyXFunc.cpp:2063
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Documento %1$s aberto."
 
-#: src/LyXFunc.cpp:2064
+#: src/LyXFunc.cpp:2065
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "No foi posíbel abrir o documento %1$s"
 
-#: src/LyXFunc.cpp:2089
+#: src/LyXFunc.cpp:2090
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Seleccionar ficheiro %1$s a importar"
 
-#: src/LyXFunc.cpp:2140 src/callback.cpp:165
+#: src/LyXFunc.cpp:2141 src/callback.cpp:181
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12729,11 +12753,11 @@ msgstr ""
 "\n"
 "Desexa sobre-escreber ese documento?"
 
-#: src/LyXFunc.cpp:2142 src/callback.cpp:167
+#: src/LyXFunc.cpp:2143 src/callback.cpp:185
 msgid "Overwrite document?"
 msgstr "Sobre-escreber documento?"
 
-#: src/LyXFunc.cpp:2205
+#: src/LyXFunc.cpp:2206
 msgid "Welcome to LyX!"
 msgstr "Benvindo a LyX!"
 
@@ -13667,28 +13691,28 @@ msgstr "Renomear e gravar?"
 msgid "&Rename"
 msgstr "&Renomear"
 
-#: src/callback.cpp:132
+#: src/callback.cpp:146
 msgid "Choose a filename to save document as"
 msgstr "Escoller un nome de ficheiro para gravar o documento como"
 
-#: src/callback.cpp:216
+#: src/callback.cpp:234
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Auto-gravar %1$s"
 
-#: src/callback.cpp:256
+#: src/callback.cpp:274
 msgid "Autosave failed!"
 msgstr "Fallou auto-gravar!"
 
-#: src/callback.cpp:283
+#: src/callback.cpp:301
 msgid "Autosaving current document..."
 msgstr "Auto-gravando o documento actual..."
 
-#: src/callback.cpp:347
+#: src/callback.cpp:365
 msgid "Select file to insert"
 msgstr "Seleccionar ficheiro a inserir"
 
-#: src/callback.cpp:366
+#: src/callback.cpp:384
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -13699,11 +13723,11 @@ msgstr ""
 "%1$s\n"
 "por mor do erro: %2$s"
 
-#: src/callback.cpp:368
+#: src/callback.cpp:386
 msgid "Could not read file"
 msgstr "Non foi posíbel ler o ficheiro"
 
-#: src/callback.cpp:376
+#: src/callback.cpp:394
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -13714,15 +13738,15 @@ msgstr ""
 "%1$s\n"
 "por mor do error: %2$s"
 
-#: src/callback.cpp:378 src/output.cpp:41
+#: src/callback.cpp:396 src/output.cpp:41
 msgid "Could not open file"
 msgstr "Non foi posíbel abrir o ficheiro"
 
-#: src/callback.cpp:402
+#: src/callback.cpp:420
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lendo un ficheiro con codificación non UTF-8"
 
-#: src/callback.cpp:403
+#: src/callback.cpp:421
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -13736,19 +13760,19 @@ msgstr ""
 "troque de codificación do ficheiro a UTF-8\n"
 "con outro programa, diferente de LyX.\n"
 
-#: src/callback.cpp:420
+#: src/callback.cpp:438
 msgid "Running configure..."
 msgstr "Executando configurar..."
 
-#: src/callback.cpp:429
+#: src/callback.cpp:447
 msgid "Reloading configuration..."
 msgstr "Recarregando configuración..."
 
-#: src/callback.cpp:434
+#: src/callback.cpp:452
 msgid "System reconfigured"
 msgstr "Sistema reconfigurado"
 
-#: src/callback.cpp:435
+#: src/callback.cpp:453
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15476,15 +15500,15 @@ msgstr "FormatoRef: "
 msgid "Unknown TOC type"
 msgstr "Tipo de índice descoñecido"
 
-#: src/insets/InsetTabular.cpp:3150
+#: src/insets/InsetTabular.cpp:3165
 msgid "Opened table"
 msgstr "Táboa aberta"
 
-#: src/insets/InsetTabular.cpp:4292
+#: src/insets/InsetTabular.cpp:4285
 msgid "Error setting multicolumn"
 msgstr "Erro ao seleccionar multicoluna"
 
-#: src/insets/InsetTabular.cpp:4293
+#: src/insets/InsetTabular.cpp:4286
 msgid "You cannot set multicolumn vertically."
 msgstr "No se pode pór unha multicoluna vertical."
 

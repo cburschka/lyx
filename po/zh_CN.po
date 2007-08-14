@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-07 23:04+0200\n"
+"POT-Creation-Date: 2007-08-14 07:59+0100\n"
 "PO-Revision-Date: 2007-07-18 12:08Central Daylight Time\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -80,11 +80,11 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:629 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:766 src/LyXFunc.cpp:963
-#: src/LyXFunc.cpp:1134 src/LyXFunc.cpp:2143 src/LyXVC.cpp:175
-#: src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128 src/buffer_funcs.cpp:169
-#: src/callback.cpp:115 src/callback.cpp:168
+#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:808
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:767
+#: src/LyXFunc.cpp:964 src/LyXFunc.cpp:1135 src/LyXFunc.cpp:2144
+#: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
+#: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -160,7 +160,7 @@ msgstr "添加(&A)"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:882 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:883 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "取消"
 
@@ -1293,9 +1293,8 @@ msgstr "输入"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:302 src/frontends/qt4/ui/ListingsUi.ui:16
-#: src/insets/InsetListings.cpp:251
-msgid "Listing"
+#: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:354
+msgid "Program Listing"
 msgstr "程序列表"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:336
@@ -1326,6 +1325,10 @@ msgstr "编码(&E)："
 #: src/frontends/qt4/ui/LanguageUi.ui:141
 msgid "&Quote Style:"
 msgstr "引号风格(&Q):"
+
+#: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetListings.cpp:251
+msgid "Listing"
+msgstr "程序列表"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:43
 msgid "&Main Settings"
@@ -2434,7 +2437,7 @@ msgid "&Maximum last files:"
 msgstr "最多最近打开文件(&M)"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:765
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:766
 msgid "&Save"
 msgstr "保存(&S)"
 
@@ -2847,7 +2850,7 @@ msgstr "在每页重复此行为表头"
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1845
+#: src/LyXFunc.cpp:1846
 msgid "on"
 msgstr "打开"
 
@@ -7455,7 +7458,7 @@ msgstr "保存(S)|S"
 msgid "Save As...|A"
 msgstr "另存为(A)...|A"
 
-#: lib/ui/classic.ui:54 lib/ui/stdmenus.inc:44
+#: lib/ui/classic.ui:54
 msgid "Revert|R"
 msgstr "恢复(R)|R"
 
@@ -8273,6 +8276,11 @@ msgstr "打开新进文件(t)|t"
 msgid "Save All|l"
 msgstr "另存为(A)...|A"
 
+#: lib/ui/stdmenus.inc:44
+#, fuzzy
+msgid "Revert to saved|R"
+msgstr "使用磁盘上文档?"
+
 #: lib/ui/stdmenus.inc:52
 msgid "New Window|W"
 msgstr "新建窗口(W)|W"
@@ -8608,8 +8616,9 @@ msgstr "短标题(S)|S"
 msgid "TeX Code|X"
 msgstr "TeX程序(X)|X"
 
-#: lib/ui/stdmenus.inc:315 src/insets/InsetInclude.cpp:354
-msgid "Program Listing"
+#: lib/ui/stdmenus.inc:315
+#, fuzzy
+msgid "Program Listing[[Menu]]"
 msgstr "程序列表"
 
 #: lib/ui/stdmenus.inc:322
@@ -11367,58 +11376,58 @@ msgstr ""
 "今天的日期.\n"
 "详情请参阅 'info date'\n"
 
-#: src/Buffer.cpp:229
+#: src/Buffer.cpp:236
 msgid "Could not remove temporary directory"
 msgstr "无法删除临时目录"
 
-#: src/Buffer.cpp:230
+#: src/Buffer.cpp:237
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "无法删除临时目录 %1$s"
 
-#: src/Buffer.cpp:401
+#: src/Buffer.cpp:408
 msgid "Unknown document class"
 msgstr "未知文档类"
 
-#: src/Buffer.cpp:402
+#: src/Buffer.cpp:409
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "使用缺省文档类，因为类 %1$s 未知。"
 
-#: src/Buffer.cpp:462 src/Text.cpp:295
+#: src/Buffer.cpp:469 src/Text.cpp:295
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "未知关键词:  %1$s %2$s\n"
 
-#: src/Buffer.cpp:466 src/Buffer.cpp:473 src/Buffer.cpp:493
+#: src/Buffer.cpp:473 src/Buffer.cpp:480 src/Buffer.cpp:500
 msgid "Document header error"
 msgstr "文档头出错"
 
-#: src/Buffer.cpp:472
+#: src/Buffer.cpp:479
 msgid "\\begin_header is missing"
 msgstr "\\begin_header 缺失"
 
-#: src/Buffer.cpp:492
+#: src/Buffer.cpp:499
 msgid "\\begin_document is missing"
 msgstr "\\begin_document 缺失"
 
-#: src/Buffer.cpp:503
+#: src/Buffer.cpp:510
 msgid "Can't load document class"
 msgstr "无法读入文档类"
 
-#: src/Buffer.cpp:504
+#: src/Buffer.cpp:511
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 "Using the default document class, because the class %1$s could not be loaded."
 
-#: src/Buffer.cpp:515 src/Buffer.cpp:521 src/BufferView.cpp:849
+#: src/Buffer.cpp:522 src/Buffer.cpp:528 src/BufferView.cpp:849
 #: src/BufferView.cpp:855
 msgid "Changes not shown in LaTeX output"
 msgstr "改变项没有输出至LaTeX输出"
 
-#: src/Buffer.cpp:516 src/BufferView.cpp:850
+#: src/Buffer.cpp:523 src/BufferView.cpp:850
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11430,7 +11439,7 @@ msgstr ""
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 
-#: src/Buffer.cpp:522 src/BufferView.cpp:856
+#: src/Buffer.cpp:529 src/BufferView.cpp:856
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11442,29 +11451,29 @@ msgstr ""
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 
-#: src/Buffer.cpp:657 src/Buffer.cpp:666
+#: src/Buffer.cpp:664 src/Buffer.cpp:673
 msgid "Document could not be read"
 msgstr "无法读取文件"
 
-#: src/Buffer.cpp:658 src/Buffer.cpp:667
+#: src/Buffer.cpp:665 src/Buffer.cpp:674
 #, c-format
 msgid "%1$s could not be read."
 msgstr "无法读取 %1$s"
 
-#: src/Buffer.cpp:675 src/Buffer.cpp:747
+#: src/Buffer.cpp:682 src/Buffer.cpp:754
 msgid "Document format failure"
 msgstr "文档格式错误"
 
-#: src/Buffer.cpp:676
+#: src/Buffer.cpp:683
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s 不是LyX文档"
 
-#: src/Buffer.cpp:700
+#: src/Buffer.cpp:707
 msgid "Conversion failed"
 msgstr "转换出错"
 
-#: src/Buffer.cpp:701
+#: src/Buffer.cpp:708
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -11473,11 +11482,11 @@ msgstr ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 
-#: src/Buffer.cpp:710
+#: src/Buffer.cpp:717
 msgid "Conversion script not found"
 msgstr "未找到转换脚本"
 
-#: src/Buffer.cpp:711
+#: src/Buffer.cpp:718
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -11486,11 +11495,11 @@ msgstr ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 
-#: src/Buffer.cpp:732
+#: src/Buffer.cpp:739
 msgid "Conversion script failed"
 msgstr "转换脚本执行出错"
 
-#: src/Buffer.cpp:733
+#: src/Buffer.cpp:740
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -11499,16 +11508,16 @@ msgstr ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 
-#: src/Buffer.cpp:748
+#: src/Buffer.cpp:755
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s 非正常结束，它可能是无效的"
 
-#: src/Buffer.cpp:784
+#: src/Buffer.cpp:794
 msgid "Backup failure"
 msgstr "备份失败"
 
-#: src/Buffer.cpp:785
+#: src/Buffer.cpp:795
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -11517,11 +11526,30 @@ msgstr ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 
-#: src/Buffer.cpp:931
+#: src/Buffer.cpp:805
+#, fuzzy, c-format
+msgid ""
+"Document %1$s has been externally modified. Are you sure you want to "
+"overwrite this file?"
+msgstr ""
+"文件 %1 已经存在\n"
+"您要覆盖它吗？"
+
+#: src/Buffer.cpp:807
+#, fuzzy
+msgid "Overwrite modified file?"
+msgstr "覆盖文件吗？"
+
+#: src/Buffer.cpp:808 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
+#: src/LyXFunc.cpp:2144 src/callback.cpp:186
+msgid "&Overwrite"
+msgstr "覆盖(&O)"
+
+#: src/Buffer.cpp:954
 msgid "Encoding error"
 msgstr "编码出错"
 
-#: src/Buffer.cpp:932
+#: src/Buffer.cpp:955
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -11531,28 +11559,28 @@ msgstr ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 
-#: src/Buffer.cpp:1210
+#: src/Buffer.cpp:1233
 msgid "Running chktex..."
 msgstr "执行 chktex..."
 
-#: src/Buffer.cpp:1223
+#: src/Buffer.cpp:1246
 msgid "chktex failure"
 msgstr "chktex执行出错"
 
-#: src/Buffer.cpp:1224
+#: src/Buffer.cpp:1247
 msgid "Could not run chktex successfully."
 msgstr "无法正确执行chktex"
 
-#: src/Buffer.cpp:1759
+#: src/Buffer.cpp:1792
 msgid "Preview source code"
 msgstr "预览源文件"
 
-#: src/Buffer.cpp:1770
+#: src/Buffer.cpp:1803
 #, c-format
 msgid "Preview source code for paragraph %1$s"
 msgstr "预览段落 %1$s 之源代码"
 
-#: src/Buffer.cpp:1774
+#: src/Buffer.cpp:1807
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "预览段落  %1$s 至  %2$s 段落之源代码"
@@ -11568,7 +11596,7 @@ msgstr ""
 "\n"
 "您希望保存或取消这些变化?"
 
-#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:764
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:765
 msgid "Save changed document?"
 msgstr "保存改变的文档?"
 
@@ -11672,8 +11700,8 @@ msgstr "统计字数"
 msgid "Select LyX document to insert"
 msgstr "选择插入的LyX文档"
 
-#: src/BufferView.cpp:1585 src/LyXFunc.cpp:1982 src/LyXFunc.cpp:2021
-#: src/LyXFunc.cpp:2094 src/callback.cpp:134
+#: src/BufferView.cpp:1585 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
+#: src/LyXFunc.cpp:2095 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11682,17 +11710,17 @@ msgstr "选择插入的LyX文档"
 msgid "Documents|#o#O"
 msgstr "文档|#o#O"
 
-#: src/BufferView.cpp:1586 src/LyXFunc.cpp:2022 src/LyXFunc.cpp:2095
+#: src/BufferView.cpp:1586 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
 msgid "Examples|#E#e"
 msgstr "示例|#E#e"
 
-#: src/BufferView.cpp:1592 src/LyXFunc.cpp:1987 src/LyXFunc.cpp:2026
-#: src/callback.cpp:140
+#: src/BufferView.cpp:1592 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
+#: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX 文档 (*.lyx)"
 
-#: src/BufferView.cpp:1604 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2116
-#: src/LyXFunc.cpp:2130 src/LyXFunc.cpp:2146
+#: src/BufferView.cpp:1604 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
+#: src/LyXFunc.cpp:2131 src/LyXFunc.cpp:2147
 msgid "Canceled."
 msgstr "已取消。"
 
@@ -12049,7 +12077,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "未定义字符样式"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1130
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1131
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12059,14 +12087,9 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1133
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1134
 msgid "Overwrite file?"
 msgstr "覆盖文件吗？"
-
-#: src/Exporter.cpp:87 src/LyXFunc.cpp:1134 src/LyXFunc.cpp:2143
-#: src/callback.cpp:168
-msgid "&Overwrite"
-msgstr "覆盖(&O)"
 
 #: src/Exporter.cpp:87
 msgid "Overwrite &all"
@@ -12353,29 +12376,29 @@ msgstr "LyX: 重新配置用户目录"
 msgid "Done!"
 msgstr "完成！"
 
-#: src/LyX.cpp:505
+#: src/LyX.cpp:509
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "无法删除临时目录 %1$s"
 
-#: src/LyX.cpp:507
+#: src/LyX.cpp:511
 msgid "Unable to remove temporary directory"
 msgstr "无法删除临时目录"
 
-#: src/LyX.cpp:543
+#: src/LyX.cpp:547
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "未知命令行选项 `%1$s'. 退出."
 
-#: src/LyX.cpp:811
+#: src/LyX.cpp:815
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:940
+#: src/LyX.cpp:944
 msgid "Could not create temporary directory"
 msgstr "无法创建临时目录"
 
-#: src/LyX.cpp:941
+#: src/LyX.cpp:945
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12386,11 +12409,11 @@ msgstr ""
 "%1$s. 请确定此\n"
 "目录存在而且可写，然后重新尝试."
 
-#: src/LyX.cpp:1108
+#: src/LyX.cpp:1112
 msgid "Missing user LyX directory"
 msgstr "缺失LyX用户目录"
 
-#: src/LyX.cpp:1109
+#: src/LyX.cpp:1113
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -12399,37 +12422,37 @@ msgstr ""
 "您指定了一不存在用户目录, %1$s.\n"
 "用来保存您的配置信息."
 
-#: src/LyX.cpp:1114
+#: src/LyX.cpp:1118
 msgid "&Create directory"
 msgstr "创建目录 (&C)"
 
-#: src/LyX.cpp:1115
+#: src/LyX.cpp:1119
 msgid "&Exit LyX"
 msgstr "退出 LyX (&E)"
 
-#: src/LyX.cpp:1116
+#: src/LyX.cpp:1120
 msgid "No user LyX directory. Exiting."
 msgstr "无用户 LyX 目录。退出。"
 
-#: src/LyX.cpp:1120
+#: src/LyX.cpp:1124
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: 创建目录 %1$s"
 
-#: src/LyX.cpp:1126
+#: src/LyX.cpp:1130
 msgid "Failed to create directory. Exiting."
 msgstr "未能创建目录。退出。"
 
-#: src/LyX.cpp:1299
+#: src/LyX.cpp:1303
 msgid "List of supported debug flags:"
 msgstr "支持的调试符号"
 
-#: src/LyX.cpp:1303
+#: src/LyX.cpp:1307
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "设置调试级别至 %1$s"
 
-#: src/LyX.cpp:1314
+#: src/LyX.cpp:1318
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12469,39 +12492,39 @@ msgstr ""
 "\t-version        版本和编译信息\n"
 "详细使用方法请参阅 LyX 手册."
 
-#: src/LyX.cpp:1350 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1354 src/support/Package.cpp.in:568
 msgid "No system directory"
 msgstr "无系统目录"
 
-#: src/LyX.cpp:1351
+#: src/LyX.cpp:1355
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdir 参数后缺省目录名"
 
-#: src/LyX.cpp:1361
+#: src/LyX.cpp:1365
 msgid "No user directory"
 msgstr "无用户目录"
 
-#: src/LyX.cpp:1362
+#: src/LyX.cpp:1366
 msgid "Missing directory for -userdir switch"
 msgstr "-userdir 参数后缺失目录名"
 
-#: src/LyX.cpp:1372
+#: src/LyX.cpp:1376
 msgid "Incomplete command"
 msgstr "不完整命令"
 
-#: src/LyX.cpp:1373
+#: src/LyX.cpp:1377
 msgid "Missing command string after --execute switch"
 msgstr "--execute 参数后缺失命令"
 
-#: src/LyX.cpp:1383
+#: src/LyX.cpp:1387
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 
-#: src/LyX.cpp:1395
+#: src/LyX.cpp:1399
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--import 参数后缺失文件类型 （例如 latex, ps...）"
 
-#: src/LyX.cpp:1400
+#: src/LyX.cpp:1404
 msgid "Missing filename for --import"
 msgstr "--import 参数缺失文件名"
 
@@ -12517,7 +12540,7 @@ msgstr "无操作"
 msgid "Unknown action"
 msgstr "未知操作"
 
-#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:748
+#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:749
 msgid "Command disabled"
 msgstr "被禁止命令"
 
@@ -12525,15 +12548,15 @@ msgstr "被禁止命令"
 msgid "Command not allowed without any document open"
 msgstr "此命令在没有任何打开文档下不能执行"
 
-#: src/LyXFunc.cpp:734
+#: src/LyXFunc.cpp:735
 msgid "Document is read-only"
 msgstr "文档只读"
 
-#: src/LyXFunc.cpp:742
+#: src/LyXFunc.cpp:743
 msgid "This portion of the document is deleted."
 msgstr "此段文档已被删除"
 
-#: src/LyXFunc.cpp:761
+#: src/LyXFunc.cpp:762
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12544,7 +12567,7 @@ msgstr ""
 "\n"
 "您希望保存文档吗?"
 
-#: src/LyXFunc.cpp:779
+#: src/LyXFunc.cpp:780
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -12553,11 +12576,11 @@ msgstr ""
 "无法打印文档 %1$s.\n"
 "请检查打印机是否设置正确."
 
-#: src/LyXFunc.cpp:782
+#: src/LyXFunc.cpp:783
 msgid "Print document failed"
 msgstr "打印文件失败"
 
-#: src/LyXFunc.cpp:801
+#: src/LyXFunc.cpp:802
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -12566,130 +12589,130 @@ msgstr ""
 "此文档无法改变到\n"
 "文档类 %1$s."
 
-#: src/LyXFunc.cpp:804
+#: src/LyXFunc.cpp:805
 msgid "Could not change class"
 msgstr "无法改变文档类"
 
-#: src/LyXFunc.cpp:916
+#: src/LyXFunc.cpp:917
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "保存文件 %1$s..."
 
-#: src/LyXFunc.cpp:920
+#: src/LyXFunc.cpp:921
 msgid " done."
 msgstr "完成。"
 
-#: src/LyXFunc.cpp:937
+#: src/LyXFunc.cpp:938
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "保存文件 %1$s..."
 
-#: src/LyXFunc.cpp:950
+#: src/LyXFunc.cpp:951
 #, fuzzy
 msgid "All documents saved."
 msgstr "未保存文档"
 
-#: src/LyXFunc.cpp:960
+#: src/LyXFunc.cpp:961
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "任何改变将被遗失. 您确定希望恢复 文件 %1$s 到磁盘上保存的版本吗?"
 
-#: src/LyXFunc.cpp:962 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:963 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
 msgstr "使用磁盘上文档?"
 
-#: src/LyXFunc.cpp:963 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:964 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
 msgid "&Revert"
 msgstr "还原(&R)"
 
-#: src/LyXFunc.cpp:1157
+#: src/LyXFunc.cpp:1158
 msgid "Exiting."
 msgstr "退出."
 
-#: src/LyXFunc.cpp:1175 src/Text3.cpp:1337
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1337
 msgid "Missing argument"
 msgstr "缺失参数"
 
-#: src/LyXFunc.cpp:1184
+#: src/LyXFunc.cpp:1185
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "打开帮助文件 %1$s..."
 
-#: src/LyXFunc.cpp:1579
+#: src/LyXFunc.cpp:1580
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "语法: set-color <lyx_name> <x11_name>"
 
-#: src/LyXFunc.cpp:1590
+#: src/LyXFunc.cpp:1591
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "设置颜色 \"%1$s\" 失败 - 未定义或不能重定义颜色"
 
-#: src/LyXFunc.cpp:1704
+#: src/LyXFunc.cpp:1705
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文档缺省设置保存至 %1$s"
 
-#: src/LyXFunc.cpp:1707
+#: src/LyXFunc.cpp:1708
 msgid "Unable to save document defaults"
 msgstr "无法保存文档缺省设置"
 
-#: src/LyXFunc.cpp:1763
+#: src/LyXFunc.cpp:1764
 msgid "Converting document to new document class..."
 msgstr "转换文档至新文档类..."
 
-#: src/LyXFunc.cpp:1839
+#: src/LyXFunc.cpp:1840
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "未知工具条 \"%1$s\""
 
-#: src/LyXFunc.cpp:1847
+#: src/LyXFunc.cpp:1848
 msgid "off"
 msgstr "关闭"
 
-#: src/LyXFunc.cpp:1849
+#: src/LyXFunc.cpp:1850
 msgid "auto"
 msgstr "自动"
 
-#: src/LyXFunc.cpp:1851
+#: src/LyXFunc.cpp:1852
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "工具条 \"%1$s\" 状态设置为 %2$s"
 
-#: src/LyXFunc.cpp:1980
+#: src/LyXFunc.cpp:1981
 msgid "Select template file"
 msgstr "选择模板文件"
 
-#: src/LyXFunc.cpp:1983 src/callback.cpp:135
+#: src/LyXFunc.cpp:1984 src/callback.cpp:150
 msgid "Templates|#T#t"
 msgstr "模板|#T#t"
 
-#: src/LyXFunc.cpp:2019
+#: src/LyXFunc.cpp:2020
 msgid "Select document to open"
 msgstr "选择要打开的文档"
 
-#: src/LyXFunc.cpp:2058
+#: src/LyXFunc.cpp:2059
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "打开文档 %1$s ..."
 
-#: src/LyXFunc.cpp:2062
+#: src/LyXFunc.cpp:2063
 #, c-format
 msgid "Document %1$s opened."
 msgstr "文档 %1$s 已打开"
 
-#: src/LyXFunc.cpp:2064
+#: src/LyXFunc.cpp:2065
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "无法打开文档 %1$s"
 
-#: src/LyXFunc.cpp:2089
+#: src/LyXFunc.cpp:2090
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "选择导入文件 %1$s "
 
-#: src/LyXFunc.cpp:2140 src/callback.cpp:165
+#: src/LyXFunc.cpp:2141 src/callback.cpp:181
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12699,11 +12722,11 @@ msgstr ""
 "文件 %1 已经存在\n"
 "您要覆盖它吗？"
 
-#: src/LyXFunc.cpp:2142 src/callback.cpp:167
+#: src/LyXFunc.cpp:2143 src/callback.cpp:185
 msgid "Overwrite document?"
 msgstr "覆盖文件?"
 
-#: src/LyXFunc.cpp:2205
+#: src/LyXFunc.cpp:2206
 msgid "Welcome to LyX!"
 msgstr "欢迎使用LyX!"
 
@@ -13616,28 +13639,28 @@ msgstr "改名并保存?"
 msgid "&Rename"
 msgstr "重命名(&R)"
 
-#: src/callback.cpp:132
+#: src/callback.cpp:146
 msgid "Choose a filename to save document as"
 msgstr "选择另存为文件名"
 
-#: src/callback.cpp:216
+#: src/callback.cpp:234
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "自动保存 %1$s"
 
-#: src/callback.cpp:256
+#: src/callback.cpp:274
 msgid "Autosave failed!"
 msgstr "自动保存失败!"
 
-#: src/callback.cpp:283
+#: src/callback.cpp:301
 msgid "Autosaving current document..."
 msgstr "自动保存当前文档..."
 
-#: src/callback.cpp:347
+#: src/callback.cpp:365
 msgid "Select file to insert"
 msgstr "选择插入文件"
 
-#: src/callback.cpp:366
+#: src/callback.cpp:384
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -13648,11 +13671,11 @@ msgstr ""
 "%1$s\n"
 "错误信息: %2$s"
 
-#: src/callback.cpp:368
+#: src/callback.cpp:386
 msgid "Could not read file"
 msgstr "无法读取文件"
 
-#: src/callback.cpp:376
+#: src/callback.cpp:394
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -13663,15 +13686,15 @@ msgstr ""
 "%1$s\n"
 "出错信息: %2$s"
 
-#: src/callback.cpp:378 src/output.cpp:41
+#: src/callback.cpp:396 src/output.cpp:41
 msgid "Could not open file"
 msgstr "无法打开文件"
 
-#: src/callback.cpp:402
+#: src/callback.cpp:420
 msgid "Reading not UTF-8 encoded file"
 msgstr "读入非UTF-8编码的文件"
 
-#: src/callback.cpp:403
+#: src/callback.cpp:421
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -13685,19 +13708,19 @@ msgstr ""
 "请使用适当程序改变文件编码\n"
 "至 UTF-8 .\n"
 
-#: src/callback.cpp:420
+#: src/callback.cpp:438
 msgid "Running configure..."
 msgstr "执行配置程序..."
 
-#: src/callback.cpp:429
+#: src/callback.cpp:447
 msgid "Reloading configuration..."
 msgstr "读入系统配置..."
 
-#: src/callback.cpp:434
+#: src/callback.cpp:452
 msgid "System reconfigured"
 msgstr "重配置系统完毕"
 
-#: src/callback.cpp:435
+#: src/callback.cpp:453
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15408,15 +15431,15 @@ msgstr "FormatRef: "
 msgid "Unknown TOC type"
 msgstr "未知目录项"
 
-#: src/insets/InsetTabular.cpp:3150
+#: src/insets/InsetTabular.cpp:3165
 msgid "Opened table"
 msgstr "打开的表格"
 
-#: src/insets/InsetTabular.cpp:4292
+#: src/insets/InsetTabular.cpp:4285
 msgid "Error setting multicolumn"
 msgstr "设置多列出错"
 
-#: src/insets/InsetTabular.cpp:4293
+#: src/insets/InsetTabular.cpp:4286
 msgid "You cannot set multicolumn vertically."
 msgstr "不能竖向设置多列表格"
 
