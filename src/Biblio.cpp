@@ -10,6 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <config.h>
+
 #include "Biblio.h"
 
 #include "gettext.h"
@@ -22,6 +24,8 @@
 #include "insets/InsetInclude.h"
 
 #include "support/lstrings.h"
+
+#include "boost/regex.hpp"
 
 using std::string;
 using std::vector;
