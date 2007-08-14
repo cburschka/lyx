@@ -46,7 +46,7 @@ void TexRow::newline()
 
 bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 {
-	if (row <= 0 || row > rowlist.size()) {
+	if (row <= 0 || row > int(rowlist.size())) {
 		id = -1;
 		pos = 0;
 		return false;
