@@ -383,7 +383,7 @@ char * strerror(int n);
  * does: What we need is a 32bit wide wchar_t, and a libstdc++ that
  * has the needed wchar_t support and uses UCS4. Whether it
  * implements this with the help of libc, or whether it has own code
- * does not matter for us, because we don't use libc directly (Georg)
+ * does not matter for us, because we do not use libc directly (Georg)
 */
 #if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4 && !defined(__FreeBSD__) && !defined(__FreeBSD_kernel__)
 #  define USE_WCHAR_T
@@ -394,12 +394,10 @@ char * strerror(int n);
 
 
 AC_ARG_ENABLE(monolithic-boost,
-  AC_HELP_STRING([--with-monolithic-boost],
+  AC_HELP_STRING([--enable-monolithic-boost],
 		[Use monolithic boost compilations]),,
-  [monolithic_boost=$withval],
-	[monolithic_boost=no]
-)
-AM_CONDITIONAL(MONOLITHIC_BOOST, test $monolithic_boost = yes)
+  [enable_monolithic_boost=no])
+AM_CONDITIONAL(MONOLITHIC_BOOST, test $enable_monolithic_boost = yes)
 
 
 AC_DEFINE_UNQUOTED([LYX_DATE],"$LYX_DATE",[Date of release])
