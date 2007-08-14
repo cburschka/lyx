@@ -23,6 +23,24 @@ lyxclient_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.la \
 	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS)  $(QT4_LIB) $(AIKSAURUS_LIBS)
 
+# everything below the line containing a single backslash and the 
+# spellchecker stuff is an ugly hack and needed because of the
+# linking problems described in ../Makefile.am
+# These four objects are linked as object files as they are not
+# referenced within the core and therefore are not picked up
+# by the linker without looping over libs. We do not want that,
+# and in fact libtools seems not able to do that.
+
+if USE_ASPELL
+ASPELL = ../ASpell.cpp ../ASpell_local.h
+endif
+if USE_PSPELL
+PSPELL = ../PSpell.cpp ../PSpell.h
+endif
+if USE_ISPELL
+ISPELL = ../ISpell.cpp ../ISpell.h
+endif
+
 lyxclient_SOURCES = \
   boost.cpp \
   client.cpp \
@@ -30,7 +48,17 @@ lyxclient_SOURCES = \
   debug.h \
   gettext.cpp \
   Messages.cpp \
-  Messages.h
+  Messages.h \
+	\
+	$(ASPELL) $(PSPELL) $(ISPELL) ../SpellBase.cpp \
+	../Box.cpp \
+	../Box.h \
+	../Dimension.cpp \
+	../Dimension.h \
+	../PrinterParams.cpp \
+	../PrinterParams.h \
+	../Thesaurus.cpp \
+	../Thesaurus.h
 
 lyxclient.1:
 	cp -p $(srcdir)/lyxclient.man lyxclient.1
