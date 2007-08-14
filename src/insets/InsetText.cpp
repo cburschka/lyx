@@ -346,8 +346,9 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-bool InsetText::notifyCursorLeaves(Cursor & cur) { 
-	if(wide()) 
+bool InsetText::notifyCursorLeaves(Cursor & cur)
+{ 
+	if (wide()) 
 		cur.updateFlags(cur.disp_.update() | Update::Force); 
 	return false; 
 } 
