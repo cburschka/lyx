@@ -155,7 +155,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1046  # for portuguese (brasilian)
-   StrCpy ${LangNme} "English" # there is currently no portuguese translation of LyX but of the installer
+   StrCpy ${LangNme} "Português"
    StrCpy ${LangCdeSys} "pt"
    StrCpy ${LangNmeSys} "Português"
    StrCpy ${LangSysEnc} "1252"
@@ -386,7 +386,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 2070  # for portuguese
-   StrCpy ${LangNme} "English" # there is currently no portuguese translation of LyX but of the installer
+   StrCpy ${LangNme} "Português"
    StrCpy ${LangCdeSys} "pt"
    StrCpy ${LangNmeSys} "Português"
    StrCpy ${LangSysEnc} "1252"
@@ -611,6 +611,11 @@
   ${if} ${Name} == "Polski"
    StrCpy ${LangCde} "pl_PL"
    StrCpy ${LangEnc} "cp-1250"
+  ${endif}
+
+  ${if} ${Name} == "Português"
+   StrCpy ${LangCde} "pt_PT"
+   StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Româna"
