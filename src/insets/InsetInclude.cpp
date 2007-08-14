@@ -728,7 +728,8 @@ void InsetInclude::getLabelList(Buffer const & buffer,
 
 
 void InsetInclude::fillWithBibKeys(Buffer const & buffer,
-		std::vector<std::pair<string, docstring> > & keys) const
+		std::vector<std::pair<string, docstring> > & keys,
+		InsetIterator const & /*di*/) const
 {
 	if (loadIfNeeded(buffer, params_)) {
 		string const included_file = includedFilename(buffer, params_).absFilename();

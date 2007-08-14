@@ -59,8 +59,9 @@ public:
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.
 	 */
-	void fillWithBibKeys(Buffer const & buffer,
-		std::vector<std::pair<std::string, docstring> > & keys) const;
+	virtual void fillWithBibKeys(Buffer const &,
+		std::vector<std::pair<std::string, docstring> > &,
+		InsetIterator const & /*di*/) const;
 	/** Update the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).
 	 *  Does nothing if the child document is not loaded to prevent

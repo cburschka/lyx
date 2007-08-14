@@ -556,7 +556,8 @@ namespace {
 
 // This method returns a comma separated list of Bibtex entries
 void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
-		std::vector<std::pair<string, docstring> > & keys) const
+		std::vector<std::pair<string, docstring> > & keys,
+		InsetIterator const & /*di*/) const
 {
 	vector<FileName> const files = getFiles(buffer);
 	for (vector<FileName>::const_iterator it = files.begin();

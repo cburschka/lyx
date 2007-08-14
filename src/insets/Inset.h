@@ -31,6 +31,7 @@ class BufferView;
 class ParIterator;
 class ParConstIterator;
 class CursorSlice;
+class InsetIterator;
 class FuncRequest;
 class FuncStatus;
 class InsetLayout;
@@ -437,8 +438,13 @@ public:
 	/// Add an entry to the TocList
 	/// pit is the ParConstIterator of the paragraph containing the inset
 	virtual void addToToc(TocList &, Buffer const &, ParConstIterator const &) const {}
-	// Update the counters of this inset and of its contents
+	/// Fill keys with BibTeX information
+	virtual void fillWithBibKeys(Buffer const &,
+		std::vector<std::pair<std::string, docstring> > &,
+		InsetIterator const &) const { return; }
+	/// Update the counters of this inset and of its contents
 	virtual void updateLabels(Buffer const &, ParIterator const &) {}
+
 
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)

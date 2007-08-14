@@ -15,6 +15,7 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
+#include "Biblio.h"
 #include "TextClass.h"
 #include "paper.h"
 

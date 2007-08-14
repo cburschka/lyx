@@ -38,8 +38,9 @@ public:
 	///
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	void fillWithBibKeys(Buffer const & buffer,
-		std::vector<std::pair<std::string, docstring> > & keys) const;
+	virtual void fillWithBibKeys(Buffer const &,
+		std::vector<std::pair<std::string, docstring> > &,
+		InsetIterator const &) const;
 	///
 	std::vector<support::FileName> const getFiles(Buffer const &) const;
 	///

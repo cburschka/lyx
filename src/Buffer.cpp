@@ -1354,36 +1354,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 void Buffer::fillWithBibKeys(vector<pair<string, docstring> > & keys)
 	const
 {
-	/// if this is a child document and the parent is already loaded
-	/// use the parent's list instead  [ale990412]
-	Buffer const * tmp = getMasterBuffer();
-	BOOST_ASSERT(tmp);
-	if (tmp != this) {
-		tmp->fillWithBibKeys(keys);
-		return;
-	}
-
-	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() == Inset::BIBTEX_CODE) {
-			InsetBibtex const & inset =
-				static_cast<InsetBibtex const &>(*it);
-			inset.fillWithBibKeys(*this, keys);
-		} else if (it->lyxCode() == Inset::INCLUDE_CODE) {
-			InsetInclude const & inset =
-				static_cast<InsetInclude const &>(*it);
-			inset.fillWithBibKeys(*this, keys);
-		} else if (it->lyxCode() == Inset::BIBITEM_CODE) {
-			InsetBibitem const & inset =
-				static_cast<InsetBibitem const &>(*it);
-			// FIXME UNICODE
-			string const key = to_utf8(inset.getParam("key"));
-			docstring const label = inset.getParam("label");
-			DocIterator doc_it(it); doc_it.forwardPos();
-			docstring const ref = doc_it.paragraph().asString(*this, false);
-			docstring const info = label + "TheBibliographyRef" + ref;
-			keys.push_back(pair<string, docstring>(key, info));
-		}
-	}
+	biblio::fillWithBibKeys(this, keys);
 }
 
 

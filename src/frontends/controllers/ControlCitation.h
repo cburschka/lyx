@@ -13,9 +13,8 @@
 #ifndef CONTROLCITATION_H
 #define CONTROLCITATION_H
 
-
+#include "Biblio.h"
 #include "ControlCommand.h"
-#include "frontend_helpers.h"
 
 namespace lyx {
 namespace frontend {

@@ -83,6 +83,8 @@ endif
 liblyxcore_la_SOURCES = \
 	Author.cpp \
 	Author.h \
+	Biblio.h \
+	Biblio.cpp \
 	Bidi.cpp \
 	Bidi.h \
 	boost.cpp \

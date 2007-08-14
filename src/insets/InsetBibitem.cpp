@@ -12,11 +12,13 @@
 
 #include "InsetBibitem.h"
 
+#include "Biblio.h"
 #include "Buffer.h"
 #include "BufferView.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "Font.h"
+#include "InsetIterator.h"
 #include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
@@ -183,5 +185,18 @@ docstring const bibitemWidest(Buffer const & buffer)
 	return from_ascii("99");
 }
 
+
+void InsetBibitem::fillWithBibKeys(Buffer const & buf,
+	std::vector<std::pair<std::string, docstring> > & keys,
+	InsetIterator const & it) const
+{
+	string const key = to_utf8(getParam("key"));
+	docstring const label = getParam("label");
+	DocIterator doc_it(it); 
+	doc_it.forwardPos();
+	docstring const ref = doc_it.paragraph().asString(buf, false);
+	docstring const info = label + biblio::TheBibliographyRef + ref;
+	keys.push_back(std::pair<string, docstring>(key, info));
+}
 
 } // namespace lyx
