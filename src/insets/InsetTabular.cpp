@@ -764,6 +764,9 @@ void Tabular::set_row_column_number_info()
 			if (cell_info[row][column].multicolumn
 				!= Tabular::CELL_PART_OF_MULTICOLUMN)
 				++numberofcells;
+			BOOST_ASSERT(numberofcells != 0);
+			cell_info[row][column].cellno =
+				numberofcells - 1;
 		}
 	}
 
