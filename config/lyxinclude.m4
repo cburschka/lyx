@@ -717,3 +717,20 @@ do
        break],
       [AC_MSG_RESULT(no)])
 done])
+
+dnl Extract the single digits from PACKAGE_VERSION and make them available.
+dnl Defines LYX_MAJOR_VERSION, LYX_MINOR_VERSION, LYX_RELEASE_LEVEL, and
+dnl LYX_RELEASE_PATCH, the latter being possibly equal to 0.
+AC_DEFUN([LYX_SET_VERSION_INFO],
+[lyx_major=`echo $PACKAGE_VERSION | sed -e 's/[[.]].*//'`
+ lyx_patch=`echo $PACKAGE_VERSION | sed -e "s/^$lyx_major//" -e 's/^.//'`
+ lyx_minor=`echo $lyx_patch | sed -e 's/[[.]].*//'`
+ lyx_patch=`echo $lyx_patch | sed -e "s/^$lyx_minor//" -e 's/^.//'`
+ lyx_release=`echo $lyx_patch | sed -e 's/[[^0-9]].*//'`
+ lyx_patch=`echo $lyx_patch | sed -e "s/^$lyx_release//" -e 's/^[[.]]//' -e 's/[[^0-9]].*//'`
+ test "x$lyx_patch" = "x" && lyx_patch=0
+ AC_SUBST(LYX_MAJOR_VERSION,$lyx_major)
+ AC_SUBST(LYX_MINOR_VERSION,$lyx_minor)
+ AC_SUBST(LYX_RELEASE_LEVEL,$lyx_release)
+ AC_SUBST(LYX_RELEASE_PATCH,$lyx_patch)
+])

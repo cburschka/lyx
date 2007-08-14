@@ -281,6 +281,13 @@ LIBS="$save_LIBS"
 AM_CONDITIONAL(BUILD_CLIENT_SUBDIR, $lyx_client_subdir)
 AC_LANG_POP(C)
 
+lyx_win_res=false;
+case ${host} in
+    *mingw*|*cygwin*) lyx_win_res=true;;
+esac
+AM_CONDITIONAL(LYX_WIN_RESOURCE, $lyx_win_res)
+LYX_SET_VERSION_INFO
+
 AC_FUNC_SELECT_ARGTYPES
 
 ### Some information on what just happened
@@ -399,6 +406,11 @@ int mkstemp(char*);
 
 #endif
 ])
+
+AC_DEFINE_UNQUOTED([LYX_MAJOR_VERSION],$lyx_major,[Major version number])
+AC_DEFINE_UNQUOTED([LYX_MINOR_VERSION],$lyx_minor,[Minor version number])
+AC_DEFINE_UNQUOTED([LYX_RELEASE_LEVEL],$lyx_release,[Release version number])
+AC_DEFINE_UNQUOTED([LYX_RELEASE_PATCH],$lyx_patch,[Patch version number])
 
 ### Finish the work.
 AC_CONFIG_FILES([Makefile

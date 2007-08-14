@@ -41,6 +41,13 @@ lyx$(EXEEXT): $(FRONTENDS_PROGS)
 	rm -f $@
 	$(LN_S) $< $@
 
+if LYX_WIN_RESOURCE
+lyx_qt4_SOURCES += lyxwinres.rc
+.rc.o:
+	cp $(top_srcdir)/development/Win32/packaging/icons/lyx_*32x32.ico .
+	windres -I. --preprocessor "$(CPP) -xc-header -DRC_INVOKED" $< -o $@
+endif
+
 #lyx_LDFLAGS=-Wl,-O1
 
 BUILT_SOURCES = $(PCH_FILE) version.cpp
