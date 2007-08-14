@@ -105,6 +105,14 @@
 
 #include <sstream>
 
+using std::endl;
+using std::make_pair;
+using std::pair;
+using std::string;
+using std::istringstream;
+using std::ostringstream;
+
+namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -136,15 +144,7 @@ using support::token;
 using support::trim;
 using support::prefixIs;
 
-using std::endl;
-using std::make_pair;
-using std::pair;
-using std::string;
-using std::istringstream;
-using std::ostringstream;
-
 namespace Alert = frontend::Alert;
-namespace fs = boost::filesystem;
 
 
 namespace {
@@ -234,6 +234,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	if (keyseq->length())
 		c = 0;
 
+	BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 	lyx_view_->view()->getIntl().getTransManager().deadkey(
 		c, get_accent(action).accent, view()->cursor().innerText(), view()->cursor());
 	// Need to clear, in case the minibuffer calls these
@@ -456,7 +457,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_SWITCH:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
-		if (to_utf8(cmd.argument()) == buf->fileName())
+		if (buf && to_utf8(cmd.argument()) == buf->fileName())
 			flag.setOnOff(true);
 		break;
 
@@ -608,8 +609,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_BUFFER_WRITE: {
-		enable = view()->buffer()->isUnnamed()
-			|| !view()->buffer()->isClean();
+		enable = lyx_view_->buffer()->isUnnamed()
+			|| !lyx_view_->buffer()->isClean();
 		break;
 	}
 
@@ -877,7 +878,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 			keyseq->reset();
 			meta_fake_bit = key_modifier::none;
-			if (view()->buffer())
+			if (lyx_view_->buffer())
 				// cancel any selection
 				dispatch(FuncRequest(LFUN_MARK_OFF));
 			setMessage(from_ascii(N_("Cancel")));
@@ -957,7 +958,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_RELOAD: {
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			docstring const file = makeDisplayPath(view()->buffer()->fileName(), 20);
+			docstring const file = makeDisplayPath(lyx_view_->buffer()->fileName(), 20);
 			docstring text = bformat(_("Any changes will be lost. Are you sure "
 							     "you want to revert to the saved version of the document %1$s?"), file);
 			int const ret = Alert::prompt(_("Revert to saved document?"),
@@ -1243,19 +1244,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_NEXT:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->setBuffer(theBufferList().next(view()->buffer()));
+			lyx_view_->setBuffer(theBufferList().next(lyx_view_->buffer()));
 			updateFlags = Update::Force;
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->setBuffer(theBufferList().previous(view()->buffer()));
+			lyx_view_->setBuffer(theBufferList().previous(lyx_view_->buffer()));
 			updateFlags = Update::Force;
 			break;
 
 		case LFUN_FILE_NEW:
 			BOOST_ASSERT(lyx_view_);
-			newFile(view(), argument);
+			newFile(lyx_view_->view(), argument);
 			break;
 
 		case LFUN_FILE_OPEN:
@@ -1511,22 +1512,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_KEYMAP_OFF:
-			BOOST_ASSERT(lyx_view_);
+			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 			lyx_view_->view()->getIntl().keyMapOn(false);
 			break;
 
 		case LFUN_KEYMAP_PRIMARY:
-			BOOST_ASSERT(lyx_view_);
+			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 			lyx_view_->view()->getIntl().keyMapPrim();
 			break;
 
 		case LFUN_KEYMAP_SECONDARY:
-			BOOST_ASSERT(lyx_view_);
+			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 			lyx_view_->view()->getIntl().keyMapSec();
 			break;
 
 		case LFUN_KEYMAP_TOGGLE:
-			BOOST_ASSERT(lyx_view_);
+			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 			lyx_view_->view()->getIntl().toggleKeyMap();
 			break;
 
@@ -1862,7 +1863,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 		}
 
-		if (lyx_view_ && view()->buffer()) {
+		if (lyx_view_ && lyx_view_->buffer()) {
 			// BufferView::update() updates the ViewMetricsInfo and
 			// also initializes the position cache for all insets in
 			// (at least partially) visible top-level paragraphs.
@@ -1871,7 +1872,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// Buffer::changed() signals that a repaint is needed.
 				// The frontend (WorkArea) knows which area to repaint
 				// thanks to the ViewMetricsInfo updated above.
-				view()->buffer()->changed();
+				lyx_view_->buffer()->changed();
 			}
 
 			lyx_view_->updateStatusBar();
@@ -1880,7 +1881,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (flag.enabled()
 			    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
 			    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
-				view()->buffer()->markDirty();
+				lyx_view_->buffer()->markDirty();
 
 			//Do we have a selection?
 			theSelection().haveSelection(view()->cursor().selection());
@@ -1952,7 +1953,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	string initpath = lyxrc.document_path;
 	string filename(name);
 
-	if (view()->buffer()) {
+	if (lyx_view_->buffer()) {
 		string const trypath = lyx_view_->buffer()->filePath();
 		// If directory is writeable, use this as default.
 		if (isDirWriteable(FileName(trypath)))
@@ -2005,7 +2006,7 @@ void LyXFunc::open(string const & fname)
 {
 	string initpath = lyxrc.document_path;
 
-	if (view()->buffer()) {
+	if (lyx_view_->buffer()) {
 		string const trypath = lyx_view_->buffer()->filePath();
 		// If directory is writeable, use this as default.
 		if (isDirWriteable(FileName(trypath)))
@@ -2078,7 +2079,7 @@ void LyXFunc::doImport(string const & argument)
 	if (filename.empty()) {
 		string initpath = lyxrc.document_path;
 
-		if (view()->buffer()) {
+		if (lyx_view_->buffer()) {
 			string const trypath = lyx_view_->buffer()->filePath();
 			// If directory is writeable, use this as default.
 			if (isDirWriteable(FileName(trypath)))
@@ -2200,7 +2201,8 @@ docstring const LyXFunc::viewStatusMessage()
 	if (keyseq->length() > 0 && !keyseq->deleted())
 		return keyseq->printOptions(true);
 
-	if (!view()->buffer())
+	BOOST_ASSERT(lyx_view_);
+	if (!lyx_view_->buffer())
 		return _("Welcome to LyX!");
 
 	return view()->cursor().currentState();
