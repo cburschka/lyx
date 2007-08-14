@@ -30,31 +30,36 @@
 #include "support/filetools.h"
 #include "support/convert.h"
 #include "support/lstrings.h"
+#include "support/os.h"
 
+#include "Buffer.h"
 #include "BufferView.h"
 #include "BufferList.h"
+#include "callback.h"
 #include "debug.h"
 #include "FuncRequest.h"
-#include "callback.h"
-#include "LyXRC.h"
 #include "LyX.h"
-#include "Session.h"
 #include "LyXFunc.h"
+#include "LyXRC.h"
 #include "MenuBackend.h"
-#include "Buffer.h"
-#include "BufferList.h"
+#include "Session.h"
 
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
+#include <QDesktopWidget>
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QHBoxLayout>
+#include <QList>
+#include <QMimeData>
 #include <QPixmap>
+#include <QPushButton>
 #include <QStatusBar>
 #include <QToolBar>
 #include <QTabBar>
-#include <QDesktopWidget>
+#include <QUrl>
 #include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QPushButton>
 
 
 #include <boost/bind.hpp>
@@ -222,6 +227,9 @@ GuiView::GuiView(int id)
 	if (!iconname.empty())
 		setWindowIcon(QPixmap(toqstr(iconname.absFilename())));
 #endif
+
+	// For Drag&Drop.
+	setAcceptDrops(true);
 }
 
 
@@ -317,6 +325,33 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	close_event->accept();
 	// quit the event loop
 	qApp->quit();
+}
+
+
+void GuiView::dragEnterEvent(QDragEnterEvent * event)
+{
+	if (event->mimeData()->hasUrls())
+		event->accept();
+	/// \todo Ask lyx-devel is this is enough:
+	/// if (event->mimeData()->hasFormat("text/plain"))
+	///	event->acceptProposedAction();
+}
+
+
+void GuiView::dropEvent(QDropEvent* event)
+{
+	QList<QUrl> files = event->mimeData()->urls();
+	if (files.isEmpty())
+		return;
+
+	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
+		<< " got URLs!" << endl;
+	for (int i = 0; i!=files.size(); ++i) {
+		string const file = support::os::internal_path(fromqstr(
+			files.at(i).toLocalFile()));
+		if (!file.empty())
+			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
+	}
 }
 
 

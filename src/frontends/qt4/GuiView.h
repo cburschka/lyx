@@ -117,6 +117,11 @@ protected:
 	virtual void moveEvent(QMoveEvent * e);
 
 private:
+	///
+	void dragEnterEvent(QDragEnterEvent * ev);
+	///
+	void dropEvent(QDropEvent * ev);
+
 	/// focus the command buffer widget
 	void focus_command_widget();
 

@@ -18,32 +18,28 @@
 #include "QKeySymbol.h"
 #include "qt_helpers.h"
 
-#include "LyXView.h"
+#include "frontends/LyXView.h"
 
 #include "BufferView.h"
-#include "rowpainter.h"
+#include "Color.h"
 #include "debug.h"
 #include "FuncRequest.h"
-#include "Color.h"
-#include "version.h"
 #include "LyXRC.h"
+#include "rowpainter.h"
+#include "version.h"
 
 #include "support/filetools.h" // LibFileSearch
-#include "support/os.h"
 #include "support/convert.h"
 
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"
 
+#include <QInputContext>
 #include <QLayout>
 #include <QMainWindow>
-#include <QMimeData>
-#include <QUrl>
-#include <QDragEnterEvent>
 #include <QPainter>
 #include <QScrollBar>
 #include <QTimer>
-#include <QInputContext>
 
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
@@ -62,9 +58,6 @@ int const CursorWidth = 1;
 
 using std::endl;
 using std::string;
-
-namespace os = lyx::support::os;
-
 
 namespace lyx {
 
@@ -268,31 +261,6 @@ void GuiWorkArea::adjustViewWithScrollBar(int)
 {
 	scrollBufferView(verticalScrollBar()->sliderPosition());
 	QApplication::syncX();
-}
-
-
-void GuiWorkArea::dragEnterEvent(QDragEnterEvent * event)
-{
-	if (event->mimeData()->hasUrls())
-		event->accept();
-	/// \todo Ask lyx-devel is this is enough:
-	/// if (event->mimeData()->hasFormat("text/plain"))
-	///	event->acceptProposedAction();
-}
-
-
-void GuiWorkArea::dropEvent(QDropEvent* event)
-{
-	QList<QUrl> files = event->mimeData()->urls();
-	if (files.isEmpty())
-		return;
-
-	LYXERR(Debug::GUI) << "GuiWorkArea::dropEvent: got URIs!" << endl;
-	for (int i = 0; i!=files.size(); ++i) {
-		string const file = os::internal_path(fromqstr(files.at(i).toLocalFile()));
-		if (!file.empty())
-			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
-	}
 }
 
 

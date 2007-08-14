@@ -117,10 +117,6 @@ public:
 private:
 	void doGreyOut(QLPainter & pain);
 	///
-	void dragEnterEvent(QDragEnterEvent * ev);
-	///
-	void dropEvent(QDropEvent * ev);
-	///
 	void focusInEvent(QFocusEvent *);
 	///
 	void focusOutEvent(QFocusEvent *);
