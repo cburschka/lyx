@@ -3,7 +3,10 @@ include(../config.pri)
 
 TARGET = lyxqt4$${DEBUGSUFFIX}
 
+QT = core gui
+
 INC += boost
+INC += .
 INC += src
 INC += src/frontends
 INC += src/frontends/controllers
@@ -183,8 +186,6 @@ CPP += QWrap.cpp
 
 UI += PrefLanguageUi.ui
 UI += PrefKeyboardUi.ui
-UI += PrefIdentityUi.ui
-UI += ExternalUi.ui
 UI += PrefsUi.ui
 UI += MarginsUi.ui
 UI += BibitemUi.ui
@@ -255,12 +256,16 @@ UI += SendtoUi.ui
 
 BASE = $${BUILD_BASE_SOURCE_DIR}/src/frontends/qt4
 
+# This is only there because we name our stuff *_moc instead of moc_*
 for(FILE,HPP) { XHPP += $${BASE}/$${FILE} }
 moc1.output  = ${QMAKE_FILE_BASE}_moc.cpp
 moc1.commands = moc ${QMAKE_FILE_NAME} -o ${QMAKE_FILE_OUT}
-moc1.depend_command = g++ -E -M ${QMAKE_FILE_NAME} | sed "s,^.*: ,,"
+#moc1.depend_command = g++ -E -M ${QMAKE_FILE_NAME} | sed "s,^.*: ,,"
+moc1.dependency_type = TYPE_C
 moc1.input = XHPP
+moc1.CONFIG += no_link
 QMAKE_EXTRA_COMPILERS += moc1
+
 
 for(FILE,CPP) { SOURCES += $${BASE}/$${FILE} }
 #for(FILE,HPP) { HEADERS += $${BASE}/$${FILE} }

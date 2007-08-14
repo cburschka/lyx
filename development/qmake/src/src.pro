@@ -196,7 +196,6 @@ CPP += Text3.cpp
 CPP += TextClass.cpp
 CPP += TextClassList.cpp
 CPP += TextMetrics.cpp
-CPP += Thesaurus.cpp
 CPP += TocBackend.cpp
 CPP += ToolbarBackend.cpp
 CPP += Trans.cpp
@@ -223,34 +222,37 @@ CPP += sgml.cpp
 CPP += toc.cpp
 CPP += version.cpp
 
-for(FILE,CPP) { SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
-for(FILE,HPP) { HEADERS += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
-for(PATH,INC) { INCLUDEPATH += $${BUILD_BASE_SOURCE_DIR}/$${PATH} }
+CPP += Thesaurus.cpp
+
+BASE = $${BUILD_BASE_SOURCE_DIR}/src/frontends/qt4
 
 
 QMAKE_RUN_CXX1  = $(CXX) -c $(CXXFLAGS) $(INCPATH)
 
-configtarget.target = $${BUILD_BASE_TARGET_DIR}/src/config.h
-configtarget.commands = \
-	cp $${BUILD_BASE_SOURCE_DIR}/development/qmake/config.h.template config.h
-
-packagetarget.target = Package.cpp
+packagetarget.target = $${BUILD_BASE_TARGET_DIR}/src/Package.cpp
 packagetarget.commands = \
-	cp $${BUILD_BASE_SOURCE_DIR}/src/support/Package.cpp.in Package.cpp 
+	@rm -f tmp_package ;\
+	sed \'s,@LYX_DIR@,$(LYX_ABS_INSTALLED_DATADIR),;\
+s,@LOCALEDIR@,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
+s,@TOP_SRCDIR@,$(LYX_ABS_TOP_SRCDIR),;\
+s,@PROGRAM_SUFFIX@,$(program_suffix),\' \
+		$${BUILD_BASE_SOURCE_DIR}/src/support/Package.cpp.in > tmp_package ;\
+	if cmp -s tmp_package Package.cpp ; then \
+		rm -f tmp_package ;\
+	else \
+		rm -f Package.cpp ;\
+		cp tmp_package Package.cpp ;\
+	fi
 packagetarget.depends = config.h
+packagetarget.CONFIG = no_link
+#SOURCES += $${BUILD_BASE_TARGET_DIR}/src/Package.cpp
+QMAKE_EXTRA_TARGETS += packagetarget
 
-packagetarget2.target = Package.o
-packagetarget2.commands = $${QMAKE_RUN_CXX1} -c Package.cpp -o Package.o
-packagetarget2.depends = Package.cpp config.h
+#OBJECTS += $(OBJECTS_DIR)/Package.o 
+POST_TARGETDEPS += $(OBJECTS_DIR)/Package.o 
 
+for(FILE,CPP) { SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
+for(FILE,HPP) { HEADERS += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
+for(PATH,INC) { INCLUDEPATH += $${BUILD_BASE_SOURCE_DIR}/$${PATH} }
 
-QMAKE_EXTRA_TARGETS += configtarget
-QMAKE_EXTRA_TARGETS += packagetarget packagetarget2
-
-QMAKE_CLEAN += Package.o Package.cpp config.h
-
-PRE_TARGETDEPS += $${BUILD_BASE_TARGET_DIR}/src/config.h
-PRE_TARGETDEPS += Package.o 
-
-LIBS += Package.o
 
