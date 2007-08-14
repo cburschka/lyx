@@ -229,7 +229,30 @@ BASE = $${BUILD_BASE_SOURCE_DIR}/src/frontends/qt4
 
 QMAKE_RUN_CXX1  = $(CXX) -c $(CXXFLAGS) $(INCPATH)
 
-packagetarget.target = $${BUILD_BASE_TARGET_DIR}/src/Package.cpp
+#packagetarget.target = Package.cpp
+#packagetarget.commands = \
+#	@rm -f tmp_package ;\
+#	sed \'s,@LYX_DIR@,$(LYX_ABS_INSTALLED_DATADIR),;\
+#s,@LOCALEDIR@,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
+#s,@TOP_SRCDIR@,$(LYX_ABS_TOP_SRCDIR),;\
+#s,@PROGRAM_SUFFIX@,$(program_suffix),\' \
+#		$${BUILD_BASE_SOURCE_DIR}/src/support/Package.cpp.in > tmp_package ;\
+#	if cmp -s tmp_package Package.cpp ; then \
+#		rm -f tmp_package ;\
+#	else \
+#		rm -f Package.cpp ;\
+#		cp tmp_package Package.cpp ;\
+#	fi
+#packagetarget.depends = config.h
+#packagetarget.variable_out = SOURCES
+#packagetarget.CONFIG = no_link
+##SOURCES += $${BUILD_BASE_TARGET_DIR}/src/Package.cpp
+#QMAKE_EXTRA_TARGETS += packagetarget
+#
+##OBJECTS += $(OBJECTS_DIR)/Package.o 
+#POST_TARGETDEPS += $(OBJECTS_DIR)/Package.o 
+
+packagetarget.target = Package.cpp
 packagetarget.commands = \
 	@rm -f tmp_package ;\
 	sed \'s,@LYX_DIR@,$(LYX_ABS_INSTALLED_DATADIR),;\
@@ -246,10 +269,21 @@ s,@PROGRAM_SUFFIX@,$(program_suffix),\' \
 packagetarget.depends = config.h
 packagetarget.CONFIG = no_link
 #SOURCES += $${BUILD_BASE_TARGET_DIR}/src/Package.cpp
-QMAKE_EXTRA_TARGETS += packagetarget
+ 
+packagetarget2.target = Package.o
+packagetarget2.commands = $${QMAKE_RUN_CXX1} -c Package.cpp -o Package.o
+packagetarget2.depends = Package.cpp config.h
+ 
+QMAKE_EXTRA_TARGETS += configtarget
+QMAKE_EXTRA_TARGETS += versiontarget versiontarget2
+QMAKE_EXTRA_TARGETS += packagetarget packagetarget2
+ 
+QMAKE_CLEAN += Package.o Package.cpp
 
-#OBJECTS += $(OBJECTS_DIR)/Package.o 
-POST_TARGETDEPS += $(OBJECTS_DIR)/Package.o 
+PRE_TARGETDEPS += Package.o 
+
+LIBS += Package.o
+
 
 for(FILE,CPP) { SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }
 for(FILE,HPP) { HEADERS += $${BUILD_BASE_SOURCE_DIR}/src/$${FILE} }

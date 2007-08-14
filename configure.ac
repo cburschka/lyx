@@ -400,12 +400,16 @@ char * strerror(int n);
 ])
 
 
+AC_ARG_WITH(qmake,
+	AC_HELP_STRING([--with-qmake],
+		[Use qmake instead of automake to generate Makefiles]),,
+	[with_qmake=no])
+
 AC_ARG_ENABLE(monolithic-boost,
   AC_HELP_STRING([--enable-monolithic-boost],
 		[Use monolithic boost compilations]),,
   [enable_monolithic_boost=no])
 AM_CONDITIONAL(MONOLITHIC_BOOST, test $enable_monolithic_boost = yes)
-
 
 AC_DEFINE_UNQUOTED([LYX_DATE],"$LYX_DATE",[Date of release])
 AC_DEFINE_UNQUOTED([VERSION_INFO],"$VERSION_INFO",[Full version info])
@@ -414,33 +418,37 @@ AC_DEFINE_UNQUOTED([LYX_MINOR_VERSION],$lyx_minor,[Minor version number])
 AC_DEFINE_UNQUOTED([LYX_RELEASE_LEVEL],$lyx_release,[Release version number])
 AC_DEFINE_UNQUOTED([LYX_RELEASE_PATCH],$lyx_patch,[Patch version number])
 
-### Finish the work.
+
 AC_CONFIG_FILES([Makefile
-       boost/Makefile \
-       config/Makefile \
-       development/Makefile \
-       development/MacOSX/Makefile \
-       development/MacOSX/Info.plist \
-       development/MacOSX/lyxrc.dist \
-       development/MacOSX/spotlight/Makefile \
-       development/lyx.spec \
-       intl/Makefile \
-       lib/Makefile \
-       lib/doc/Makefile \
-       lib/lyx2lyx/lyx2lyx_version.py \
-       lib/lyx2lyx/Makefile \
-       m4/Makefile \
-       po/Makefile.in \
-       sourcedoc/Doxyfile \
-       sourcedoc/Makefile \
-       src/client/Makefile \
-       src/Makefile \
-       src/tex2lyx/Makefile \
-       src/support/Makefile \
-       src/frontends/Makefile \
-       src/frontends/controllers/Makefile \
-       src/frontends/qt4/Makefile \
+      boost/Makefile \
+      config/Makefile \
+      development/Makefile \
+      development/MacOSX/Makefile \
+      development/MacOSX/Info.plist \
+      development/MacOSX/lyxrc.dist \
+      development/MacOSX/spotlight/Makefile \
+      development/lyx.spec \
+      intl/Makefile \
+      lib/Makefile \
+      lib/doc/Makefile \
+      lib/lyx2lyx/lyx2lyx_version.py \
+      lib/lyx2lyx/Makefile \
+      m4/Makefile \
+      po/Makefile.in \
+      sourcedoc/Doxyfile \
+      sourcedoc/Makefile \
+      src/client/Makefile \
+      src/Makefile \
+      src/tex2lyx/Makefile \
+      src/support/Makefile \
+      src/frontends/Makefile \
+      src/frontends/controllers/Makefile \
+      src/frontends/qt4/Makefile
 ])
+
+
+test x$with_qmake = xyes && ${srcdir}/development/qmake/doit
+
 
 AC_OUTPUT
 # show version information
