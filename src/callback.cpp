@@ -121,18 +121,34 @@ bool menuWrite(Buffer * buffer)
 
 
 
+/** Write a buffer to a new file name and rename the buffer
+    according to the new file name.
+
+    This function is e.g. used by menu callbacks and
+    LFUN_BUFFER_WRITE_AS.
+
+    If 'newname' is empty (the default), the user is asked via a
+    dialog for the buffer's new name and location.
+
+    If 'newname' is non-empty and has an absolute path, that is used.
+    Otherwise the base directory of the buffer is used as the base
+    for any relative path in 'newname'.
+*/
+
 bool writeAs(Buffer * buffer, string const & newname)
 {
 	string fname = buffer->fileName();
 	string const oldname = fname;
 
-	if (newname.empty()) {
+	if (newname.empty()) {	/// No argument? Ask user through dialog
 
 		// FIXME UNICODE
 		FileDialog fileDlg(_("Choose a filename to save document as"),
-			LFUN_BUFFER_WRITE_AS,
-			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Templates|#T#t"), from_utf8(lyxrc.template_path)));
+				   LFUN_BUFFER_WRITE_AS,
+				   make_pair(_("Documents|#o#O"), 
+					     from_utf8(lyxrc.document_path)),
+				   make_pair(_("Templates|#T#t"), 
+					     from_utf8(lyxrc.template_path)));
 
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
@@ -156,14 +172,16 @@ bool writeAs(Buffer * buffer, string const & newname)
 		fname = makeAbsPath(fname).absFilename();
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
-	} else
-		fname = newname;
 
-	FileName const filename(fname);
-	if (fs::exists(filename.toFilesystemEncoding())) {
+	} else 
+		fname = makeAbsPath(newname, onlyPath(oldname)).absFilename();
+
+	if (fs::exists(FileName(fname).toFilesystemEncoding())) {
 		docstring const file = makeDisplayPath(fname, 30);
-		docstring text = bformat(_("The document %1$s already exists.\n\n"
-					   "Do you want to overwrite that document?"), file);
+		docstring text = bformat(_("The document %1$s already "
+					   "exists.\n\nDo you want to "
+					   "overwrite that document?"), 
+					 file);
 		int const ret = Alert::prompt(_("Overwrite document?"),
 			text, 0, 1, _("&Overwrite"), _("&Cancel"));
 

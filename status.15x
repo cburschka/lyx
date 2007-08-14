@@ -64,6 +64,10 @@ What's new
 
 - Fix bug related to citation dialog (Bug 4121)
 
+- Fix crash when using the LFUN 'buffer-write-as' with an argument
+  that is not an absolute path (Bug 4135).
+
+
 * DOCUMENTATION
 
 - Embedded Objects manual: section about longtable alignment added
