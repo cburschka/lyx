@@ -111,7 +111,8 @@ s,@PROGRAM_SUFFIX@,$(program_suffix)," \
 
 ############################## Tests ##################################
 
-EXTRA_DIST += test_convert test_filetools test_lstrings regfiles
+EXTRA_DIST += tests/test_convert tests/test_filetools \
+	tests/test_lstrings tests/regfiles
 
 TESTS = \
 	test_convert \

@@ -97,7 +97,7 @@ liblyxcontrollers_la_SOURCES= \
 
 ################################# Tests ################################
 
-EXTRA_DIST += test_biblio
+EXTRA_DIST += tests/test_biblio
 
 TESTS = \
 	test_biblio
