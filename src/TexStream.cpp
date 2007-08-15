@@ -26,16 +26,16 @@ namespace lyx {
 class TexStreamBuffer : public TexStreamBase
 {
 public:
-  TexStreamBuffer(TexStreamBase * sbuf, TexRow * texrow);
+	TexStreamBuffer(TexStreamBase * sbuf, TexRow * texrow);
 	int line() const { return line_; }
 	int column() const { return column_; }
 
 protected:
-  int overflow(int);
-  int sync();
+	int overflow(int);
+	int sync();
 
 private:
-  TexStreamBase * sbuf_; 
+	TexStreamBase * sbuf_; 
 	TexRow * texrow_;
 	int column_;
 	int line_;
@@ -45,8 +45,8 @@ private:
 TexStreamBuffer::TexStreamBuffer(TexStreamBase *sb, TexRow * texrow)
   : sbuf_(sb), texrow_(texrow), line_(0)
 {
-  setp(0, 0);
-  setg(0, 0, 0);
+	setp(0, 0);
+	setg(0, 0, 0);
 }
 
 int TexStreamBuffer::overflow(int c)
@@ -63,8 +63,8 @@ int TexStreamBuffer::overflow(int c)
 
 int TexStreamBuffer::sync()
 {
-  sbuf_->pubsync();
-  return 0;
+	sbuf_->pubsync();
+	return 0;
 }
 
   
@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "line count: " << out.line() << std::endl;
 
-  return 0;
+	return 0;
 }
 
 #endif

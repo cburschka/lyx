@@ -1,5 +1,5 @@
-#ifndef LATEXSTREAM_H
-#define LATEXSTREAM_H
+#ifndef TEXSTREAM_H
+#define TEXSTREAM_H
 
 #include "support/docstring.h"
 
@@ -18,8 +18,8 @@ typedef std::basic_streambuf<char_type> TexStreamBase;
 class TexStream : public std::basic_ostream<char_type>
 {
 public:
-  TexStream(TexStreamBase * sbuf, TexRow * texrow);
-  ~TexStream();
+	TexStream(TexStreamBase * sbuf, TexRow * texrow);
+	~TexStream();
 	int line() const;
 
 private:
