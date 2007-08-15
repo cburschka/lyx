@@ -345,6 +345,14 @@ contributers = [
                  "19 October 2006",
                  u"New commandparams structure, Nomenclature inset"),
 
+    contributer(u"Susana Barbosa",
+                 "susana.barbosa () fc ! up ! pt",
+                 "GPL",
+                 "License",
+                 "m=118707828425316",
+                 "14 August 2007",
+                 u"Portuguese translation"),
+
      contributer(u"Yves Bastide",
                  "yves.bastide () irisa ! fr",
                  "GPL",
