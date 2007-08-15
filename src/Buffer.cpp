@@ -1058,6 +1058,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		params().parentname.erase();
 	}
 
+	loadChildDocuments(*this);
+
 	// the real stuff
 	latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
 
@@ -1209,6 +1211,8 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 	params().getTextClass().counters().reset();
 
+	loadChildDocuments(*this);
+
 	sgml::openTag(os, top);
 	os << '\n';
 	docbookParagraphs(paragraphs(), *this, os, runparams);
@@ -1298,6 +1302,8 @@ void Buffer::validate(LaTeXFeatures & features) const
 	if (params().use_esint == BufferParams::package_on)
 		features.require("esint");
 
+	loadChildDocuments(*this);
+
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
 
@@ -1344,6 +1350,8 @@ void Buffer::getLabelList(vector<docstring> & list) const
 		tmp->getLabelList(list);
 		return;
 	}
+
+	loadChildDocuments(*this);
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
 		it.nextInset()->getLabelList(*this, list);

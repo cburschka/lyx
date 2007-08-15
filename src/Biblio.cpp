@@ -14,6 +14,7 @@
 
 #include "Biblio.h"
 
+#include "buffer_funcs.h"
 #include "gettext.h"
 #include "InsetIterator.h"
 #include "Paragraph.h"
@@ -844,6 +845,9 @@ void fillWithBibKeys(Buffer const * const buf,
 		fillWithBibKeys(tmp, keys);
 		return;
 	}
+
+	// Pre-load all child documents.
+	loadChildDocuments(*buf);
 
 	for (InsetIterator it = inset_iterator_begin(buf->inset()); it; ++it)
 			it->fillWithBibKeys(*buf, keys, it);

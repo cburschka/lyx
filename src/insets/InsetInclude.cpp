@@ -414,7 +414,6 @@ Buffer * loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 				return false;
 			}
 		}
-		return buf;
 	}
 	buf->setParentName(parentFilename(buffer));
 	return buf;
