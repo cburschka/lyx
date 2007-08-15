@@ -100,7 +100,7 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	void updateLabels(Buffer const & buffer, ParIterator const &) const;
+	void updateLabels(Buffer const & buffer, ParIterator const &);
 protected:
 	InsetInclude(InsetInclude const &);
 	///

@@ -920,7 +920,7 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIt
 
 
 void InsetInclude::updateLabels(Buffer const & buffer, 
-				ParIterator const &) const
+				ParIterator const &)
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer, params_);
 	if (childbuffer)
