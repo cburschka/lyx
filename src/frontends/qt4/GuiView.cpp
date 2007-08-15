@@ -717,25 +717,25 @@ void GuiView::moveEvent(QMoveEvent *)
 
 bool GuiView::event(QEvent * e)
 {
-	// Useful debug code:
-	/*
 	switch (e->type())
 	{
-	case QEvent::WindowActivate:
-	case QEvent::ActivationChange:
-	case QEvent::WindowDeactivate:
-	case QEvent::Paint:
-	case QEvent::Enter:
-	case QEvent::Leave:
-	case QEvent::HoverEnter:
-	case QEvent::HoverLeave:
-	case QEvent::HoverMove:
-	case QEvent::StatusTip:
-		break;
-	default:
-	*/
+	// Useful debug code:
+	//case QEvent::WindowActivate:
+	//case QEvent::ActivationChange:
+	//case QEvent::WindowDeactivate:
+	//case QEvent::Paint:
+	//case QEvent::Enter:
+	//case QEvent::Leave:
+	//case QEvent::HoverEnter:
+	//case QEvent::HoverLeave:
+	//case QEvent::HoverMove:
+	//case QEvent::StatusTip:
+	//case QEvent::DragEnter:
+	//case QEvent::DragLeave:
+	//case QEvent::Drop:
+	//	break;
 
-	if (e->type() == QEvent::ShortcutOverride) {
+	case QEvent::ShortcutOverride: {
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
 			boost::shared_ptr<QKeySymbol> sym(new QKeySymbol);
@@ -746,9 +746,9 @@ bool GuiView::event(QEvent * e)
 			return true;
 		}
 	}
-	//} for the debug switch above.
-
-	return QMainWindow::event(e);
+	default:
+		return QMainWindow::event(e);
+	}
 }
 
 
