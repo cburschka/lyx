@@ -260,7 +260,10 @@ void ParagraphParameters::apply(
 }
 
 
-bool canApply(ParagraphParameters const & params, Layout const & layout)
+//FIXME This needs to be made a real method, so that getStatus()
+//can return sensible information.
+bool ParagraphParameters::canApply(
+	ParagraphParameters const & /*params*/, Layout const & /*layout*/)
 {
 	return true;
 }
