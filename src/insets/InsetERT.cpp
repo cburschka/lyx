@@ -349,6 +349,7 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_URL_INSERT:
 		case LFUN_FLOAT_LIST:
 		case LFUN_INSET_INSERT:
+		case LFUN_PARAGRAPH_PARAMS:
 		case LFUN_PARAGRAPH_PARAMS_APPLY:
 		case LFUN_PARAGRAPH_UPDATE:
 		case LFUN_NOMENCL_INSERT:

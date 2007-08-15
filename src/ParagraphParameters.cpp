@@ -37,17 +37,10 @@ using std::string;
 
 namespace lyx {
 
+//NOTE The order of these MUST be the same as in Layout.h.
 static char const * const string_align[] = {
-	"block", "left", "right", "center", ""
+	"block", "left", "right", "center", "default", ""
 };
-
-
-static int findToken(char const * const str[], string const & search_token)
-{
-	return search_token == "default" ?
-		0 :
-		support::findToken(str, search_token);
-}
 
 
 ParagraphParameters::ParagraphParameters()
@@ -180,8 +173,19 @@ void ParagraphParameters::leftIndent(Length const & li)
 }
 
 
-void ParagraphParameters::read(Lexer & lex)
+void ParagraphParameters::read(std::string str, bool merge)
 {
+	std::istringstream is(str);
+	Lexer lex(0, 0);
+	lex.setStream(is);
+	read(lex, merge);
+}
+
+
+void ParagraphParameters::read(Lexer & lex, bool merge)
+{
+	if (!merge)
+		clear();
 	while (lex.isOK()) {
 		lex.nextToken();
 		string const token = lex.getString();
@@ -196,6 +200,12 @@ void ParagraphParameters::read(Lexer & lex)
 
 		if (token == "\\noindent") {
 			noindent(true);
+		} else if (token == "\\indent") {
+			//not found in LyX files but can be used with lfuns
+			noindent(false);
+		} else if (token == "\\indent-toggle") {
+			//not found in LyX files but can be used with lfuns
+			noindent(!noindent());
 		} else if (token == "\\leftindent") {
 			lex.next();
 			Length value(lex.getString());
@@ -205,7 +215,10 @@ void ParagraphParameters::read(Lexer & lex)
 		} else if (token == "\\paragraph_spacing") {
 			lex.next();
 			string const tmp = rtrim(lex.getString());
-			if (tmp == "single") {
+			if (tmp == "default") {
+				//not found in LyX files but can be used with lfuns
+				spacing(Spacing(Spacing::Default));
+			} else if (tmp == "single") {
 				spacing(Spacing(Spacing::Single));
 			} else if (tmp == "onehalf") {
 				spacing(Spacing(Spacing::Onehalf));
@@ -220,7 +233,7 @@ void ParagraphParameters::read(Lexer & lex)
 			}
 		} else if (token == "\\align") {
 			lex.next();
-			int tmpret = findToken(string_align, lex.getString());
+			int tmpret = support::findToken(string_align, lex.getString());
 			if (tmpret == -1)
 				++tmpret;
 			align(LyXAlignment(1 << tmpret));
@@ -232,6 +245,28 @@ void ParagraphParameters::read(Lexer & lex)
 			break;
 		}
 	}
+}
+
+
+void ParagraphParameters::apply(
+		ParagraphParameters const & p, Layout const & layout)
+{
+	spacing(p.spacing());
+	// does the layout allow the new alignment?
+	if ((p.align() == LYX_ALIGN_LAYOUT) || 
+	    (p.align() & layout.alignpossible))
+		align(p.align());
+	labelWidthString(p.labelWidthString());
+	noindent(p.noindent());
+}
+
+
+//FIXME This needs to be made a real method, so that getStatus()
+//can return sensible information.
+bool ParagraphParameters::canApply(
+	ParagraphParameters const & /*params*/, Layout const & /*layout*/)
+{
+	return true;
 }
 
 

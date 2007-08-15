@@ -336,6 +336,7 @@ void LyXAction::init()
 		{ LFUN_INSET_MODIFY, "", Noop },
 		{ LFUN_INSET_DIALOG_UPDATE, "", Noop },
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly },
+		{ LFUN_PARAGRAPH_PARAMS, "paragraph-params", Noop },
 		{ LFUN_PARAGRAPH_PARAMS_APPLY, "paragraph-params-apply", Noop },
 		{ LFUN_PARAGRAPH_UPDATE, "", Noop },
 		{ LFUN_EXTERNAL_EDIT, "external-edit", Noop },

@@ -29,6 +29,7 @@
 #include "BufferView.h"
 #include "bufferview_funcs.h"
 #include "Bullet.h"
+#include "Color.h"
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
@@ -38,7 +39,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "Language.h"
-#include "Color.h"
+#include "Lexer.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Row.h"
@@ -72,7 +73,7 @@ using std::ostringstream;
 using std::string;
 using std::max;
 using std::min;
-
+using std::istringstream;
 
 Text::Text()
 	: current_font(Font::ALL_INHERIT),
@@ -633,9 +634,7 @@ docstring Text::getStringToIndex(Cursor const & cur)
 }
 
 
-void Text::setParagraph(Cursor & cur,
-			   Spacing const & spacing, LyXAlignment align,
-			   docstring const & labelwidthstring, bool noindent)
+void Text::setParagraphs(Cursor & cur, docstring arg, bool merge) 
 {
 	BOOST_ASSERT(cur.text());
 	// make sure that the depth behind the selection are restored, too
@@ -645,19 +644,30 @@ void Text::setParagraph(Cursor & cur,
 	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
 	     pit <= end; ++pit) {
 		Paragraph & par = pars_[pit];
-		ParagraphParameters & params = par.params();
-		params.spacing(spacing);
-
-		// does the layout allow the new alignment?
-		//FIXME The reason we need the first check is because
-		//LYX_ALIGN_LAYOUT isn't required to be possible. It
-		//should be...and will be.
-		if ((align == LYX_ALIGN_LAYOUT) ||
-		    (align & par.layout()->alignpossible))
-		    	params.align(align);
-		par.setLabelWidthString(labelwidthstring);
-		params.noindent(noindent);
+		ParagraphParameters params = par.params();
+		params.read(to_utf8(arg), merge);
+		Layout const & layout = *(par.layout());
+		par.params().apply(params, layout);
 	}
+}
+
+
+//FIXME This is a little redundant now, but it's probably worth keeping,
+//especially if we're going to go away from using serialization internally
+//quite so much.
+void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p) 
+{
+	BOOST_ASSERT(cur.text());
+	// make sure that the depth behind the selection are restored, too
+	pit_type undopit = undoSpan(cur.selEnd().pit());
+	recUndo(cur, cur.selBegin().pit(), undopit - 1);
+
+	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
+	     pit <= end; ++pit) {
+		Paragraph & par = pars_[pit];
+		Layout const & layout = *(par.layout());
+		par.params().apply(p, layout);
+	}	
 }
 
 
