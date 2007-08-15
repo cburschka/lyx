@@ -80,8 +80,17 @@ public:
 	///
 	void leftIndent(Length const &);
 
+	/// read the parameters from a string
+	void read (std::string str, bool merge = true);
+	
 	/// read the parameters from a lex
-	void read(Lexer & lex);
+	void read(Lexer & lex, bool merge = true);
+	
+	/// 
+	void apply(ParagraphParameters const & params, Layout const & layout);
+	
+	///
+	bool canApply(ParagraphParameters const & params, Layout const & layout);
 
 	/// write out the parameters to a stream
 	void write(std::ostream & os) const;

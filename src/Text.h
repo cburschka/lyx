@@ -274,12 +274,11 @@ public:
 	 always in the first physical paragraph, the bottom settings in the
 	 last. When a paragraph is broken, the top settings rest, the bottom
 	 settings are given to the new one.
+	 This function will handle a multi-paragraph selection.
 	 */
-	void setParagraph(Cursor & cur,
-			  Spacing const & spacing,
-			  LyXAlignment align,
-			  docstring const & labelwidthstring,
-			  bool noindent);
+	void setParagraphs(Cursor & cur, docstring arg, bool modify = false);
+	/// Sets parameters for current or selected paragraphs
+	void setParagraphs(Cursor & cur, ParagraphParameters const & p);
 
 	/* these things are for search and replace */
 

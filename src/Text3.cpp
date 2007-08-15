@@ -685,6 +685,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	// TODO
+	// With the creation of LFUN_PARAGRAPH_PARAMS, this is now redundant,
+	// as its duties can be performed there. Should it be removed??
+	// FIXME For now, it can just dispatch LFUN_PARAGRAPH_PARAMS...
 	case LFUN_PARAGRAPH_SPACING: {
 		Paragraph & par = cur.paragraph();
 		Spacing::Space cur_spacing = par.params().spacing().getSpace();
@@ -1525,7 +1529,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 
 			setLayout(cur, tclass.defaultLayoutName());
-			setParagraph(cur, Spacing(), LYX_ALIGN_LAYOUT, docstring(), 0);
+			ParagraphParameters p;
+			setParagraphs(cur, p);
 			insertInset(cur, new InsetFloatList(to_utf8(cmd.argument())));
 			cur.posRight();
 		} else {
@@ -1563,17 +1568,21 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_PARAGRAPH_PARAMS_APPLY: {
 		// Given data, an encoding of the ParagraphParameters
 		// generated in the Paragraph dialog, this function sets
-		// the current paragraph appropriately.
-		istringstream is(to_utf8(cmd.argument()));
-		Lexer lex(0, 0);
-		lex.setStream(is);
-		ParagraphParameters params;
-		params.read(lex);
-		setParagraph(cur,
-			     params.spacing(),
-			     params.align(),
-			     params.labelWidthString(),
-			     params.noindent());
+		// the current paragraph, or currently selected paragraphs,
+		// appropriately. 
+		// NOTE: This function overrides all existing settings.
+		setParagraphs(cur, cmd.argument());
+		cur.message(_("Paragraph layout set"));
+		break;
+	}
+	
+	case LFUN_PARAGRAPH_PARAMS: {
+		// Given data, an encoding of the ParagraphParameters as we'd
+		// find them in a LyX file, this function modifies the current paragraph, 
+		// or currently selected paragraphs. 
+		// NOTE: This function only modifies, and does not override, existing
+		// settings.
+		setParagraphs(cur, cmd.argument(), true);
 		cur.message(_("Paragraph layout set"));
 		break;
 	}
@@ -1991,6 +2000,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_OGONEK:
 	case LFUN_THESAURUS_ENTRY:
 	case LFUN_PARAGRAPH_PARAMS_APPLY:
+	case LFUN_PARAGRAPH_PARAMS:
 	case LFUN_ESCAPE:
 	case LFUN_BUFFER_END:
 	case LFUN_BUFFER_BEGIN:
