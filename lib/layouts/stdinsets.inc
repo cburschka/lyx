@@ -2,7 +2,7 @@
 # Author : Martin vermeer <amrtin.vermeer@hut.fi>
 # Inset layouts definition
 
-Format 2
+Format 4
 
 InsetLayout Marginal
 	LabelString           margin
