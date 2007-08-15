@@ -35,6 +35,7 @@
 #include "ParIterator.h"
 #include "LyXVC.h"
 #include "TexRow.h"
+#include "Text.h"
 #include "TocBackend.h"
 #include "VCBackend.h"
 
@@ -600,9 +601,10 @@ void updateLabels(Buffer const & buf, bool childonly)
 	Buffer & cbuf = const_cast<Buffer &>(buf);
 
 	if (buf.text().empty()) {
-		// FIXME: we don't call continue with updateLabels() here because
-		// it crashes on newly created documents. But the TocBackend needs to
-		// be initialised nonetheless so we update the tocBackend manually.
+		// FIXME: we don't call continue with updateLabels()
+		// here because it crashes on newly created documents.
+		// But the TocBackend needs to be initialised
+		// nonetheless so we update the tocBackend manually.
 		cbuf.tocBackend().update();
 		return;
 	}
