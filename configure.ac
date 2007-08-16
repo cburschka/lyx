@@ -447,10 +447,34 @@ AC_CONFIG_FILES([Makefile
 ])
 
 
-test x$with_qmake = xyes && ${srcdir}/development/qmake/doit
-
-
 AC_OUTPUT
+
+if test x$with_qmake = xyes ; then
+	echo "CONFIGURE WITH QMAKE ONLY"
+	if test x$srcdir = x ; then
+		echo "ONLY FOR OUT-OF-TREE-BUILDS POSSIBLE"
+	else
+		rm boost/Makefile
+		rm src/client/Makefile
+		rm src/Makefile
+		rm src/tex2lyx/Makefile
+		rm src/support/Makefile
+		rm src/frontends/Makefile
+		rm src/frontends/controllers/Makefile
+		rm src/frontends/qt4/Makefile
+		rm -rf boost/.deps
+		rm -rf src/client/.deps
+		rm -rf src/.deps
+		rm -rf src/tex2lyx/.deps
+		rm -rf src/support/.deps
+		rm -rf src/frontends/.deps
+		rm -rf src/frontends/controllers/.deps
+		rm -rf src/frontends/qt4/.deps
+		${srcdir}/development/qmake/doit
+	fi
+fi
+
+
 # show version information
 echo
 printf "$VERSION_INFO"
