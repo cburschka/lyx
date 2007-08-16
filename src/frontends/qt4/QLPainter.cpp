@@ -287,6 +287,7 @@ int QLPainter::text(int x, int y, docstring const & s,
 	// occurs at a line-break. As a kludge, we force Qt to
 	// render this glyph using a one-column line.
 	if (s.size() == 1 && str[0].unicode() == 0x00ad) {
+		setQPainterPen(f.realColor());
 		QTextLayout adsymbol(str);
 		adsymbol.setFont(fi.font);
 		adsymbol.beginLayout();
