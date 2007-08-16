@@ -67,6 +67,8 @@ What's new
 - Fix crash when using the LFUN 'buffer-write-as' with an argument
   that is not an absolute path (Bug 4135).
 
+- Fix crash when a user removes the underlying figure of a graphic inset
+  that has been copied and pasted (Bug 4108).
 
 * DOCUMENTATION
 
