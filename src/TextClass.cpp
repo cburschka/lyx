@@ -1095,18 +1095,7 @@ Counters & TextClass::counters() const
 
 InsetLayout const & TextClass::insetlayout(docstring const & name) const 
 {
-	docstring n = name;
-	while (!n.empty()) {
-		if (insetlayoutlist_.count(n) > 0)
-			return insetlayoutlist_[n];
-		docstring::size_type i = n.rfind(':');
-		if (i != string::npos) // delimiter was found
-			n = n.substr(i + 1);
-		else
-			break;
-	}
-	static const InsetLayout empty;
-	return empty;
+	return insetlayoutlist_[name]; 
 }
 
 
