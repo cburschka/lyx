@@ -12,8 +12,6 @@
 
 #include "InsetBibitem.h"
 
-#include "debug.h"
-
 #include "Biblio.h"
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -199,9 +197,8 @@ void InsetBibitem::fillWithBibKeys(Buffer const & buf,
 
 
 /// Update the counters of this inset and of its contents
-void InsetBibitem::updateLabels(Buffer const &buf, ParIterator const & pit) 
+void InsetBibitem::updateLabels(Buffer const &buf, ParIterator const &) 
 {
-	lyxerr << "update! " << to_utf8(getParam("key")) << std::endl;
 	Counters & counters = buf.params().getTextClass().counters();
 	docstring const bibitem = from_ascii("bibitem");
 	if (counters.hasCounter(bibitem) && getParam("label").empty()) {
