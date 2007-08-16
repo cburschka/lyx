@@ -27,11 +27,19 @@ using std::endl;
 using std::ostringstream;
 using std::string;
 
-
 namespace lyx {
 
+using support::lowercase;
 
 Counter::Counter()
+{
+	reset();
+}
+
+
+Counter::Counter(docstring const & mc, docstring const & ls, 
+		 docstring const & lsa)
+	: master_(mc), labelstring_(ls), labelstringappendix_(lsa)
 {
 	reset();
 }
@@ -73,50 +81,30 @@ docstring const & Counter::master() const
 }
 
 
-void Counter::setMaster(docstring const & m)
+docstring const & Counter::labelString() const
 {
-	master_ = m;
+	return labelstring_;
 }
 
 
-void Counters::newCounter(docstring const & newc)
+docstring const & Counter::labelStringAppendix() const
 {
-	// First check if newc already exist
-	CounterList::iterator const cit = counterList.find(newc);
-	// if already exist give warning and return
-	if (cit != counterList.end()) {
-		lyxerr << "New counter already exists: "
-		       << to_utf8(newc)
-		       << endl;
-		return;
-	}
-	counterList[newc];
+	return labelstringappendix_;
 }
 
 
 void Counters::newCounter(docstring const & newc,
-			  docstring const & masterc)
+			  docstring const & masterc, 
+			  docstring const & ls,
+			  docstring const & lsa)
 {
-	// First check if newc already exists
-	CounterList::iterator const cit = counterList.find(newc);
-	// if already existant give warning and return
-	if (cit != counterList.end()) {
-		lyxerr << "New counter already exists: "
-		       << to_utf8(newc)
-		       << endl;
-		return;
-	}
-	// then check if masterc exists
-	CounterList::iterator const it = counterList.find(masterc);
-	// if not give warning and return
-	if (it == counterList.end()) {
+	if (!masterc.empty() && !hasCounter(masterc)) {
 		lyxerr << "Master counter does not exist: "
 		       << to_utf8(masterc)
 		       << endl;
 		return;
 	}
-
-	counterList[newc].setMaster(masterc);
+	counterList[newc] = Counter(masterc, ls, lsa);
 }
 
 
@@ -185,6 +173,7 @@ void Counters::step(docstring const & ctr)
 void Counters::reset()
 {
 	appendix_ = false;
+	current_float_.erase();
 	CounterList::iterator it = counterList.begin();
 	CounterList::iterator const end = counterList.end();
 	for (; it != end; ++it) {
@@ -351,12 +340,47 @@ docstring Counters::labelItem(docstring const & ctr,
 }
 
 
+docstring Counters::theCounter(docstring const & counter)
+{
+	if (!hasCounter(counter))
+		return from_ascii("??");
+
+	Counter const & c = counterList[counter];
+	docstring ls = appendix() ? c.labelStringAppendix() : c.labelString();
+
+	if (ls.empty()) {
+		if (!c.master().empty())
+			ls = from_ascii("\\the") + c.master() + from_ascii(".");
+		ls += from_ascii("\\arabic{") + counter + "}";
+	}
+	return counterLabel(ls);
+}
+
+
 docstring Counters::counterLabel(docstring const & format)
 {
 	docstring label = format;
+
+	// FIXME: Using regexps would be better, but we compile boost without
+	// wide regexps currently.
+
 	while (true) {
-		// FIXME: Using boost::regex or boost::spirit would make
-	  	// FIXME: this code a lot simpler... (Lgb)
+		//lyxerr << "label=" << to_utf8(label) << endl;
+		size_t const i = label.find(from_ascii("\\the"), 0);
+		if (i == docstring::npos)
+			break;
+		size_t j = i + 4;
+		size_t k = j;
+		while (k < label.size() && lowercase(label[k]) >= 'a' 
+		       && lowercase(label[k]) <= 'z')
+			++k;
+		docstring counter = label.substr(j, k - j);
+		docstring repl = theCounter(counter);
+		label.replace(i, k - j + 4, repl);
+	}
+	
+	while (true) {
+		//lyxerr << "label=" << to_utf8(label) << endl;
 
 		size_t const i = label.find('\\', 0);
 		if (i == docstring::npos)
@@ -372,10 +396,8 @@ docstring Counters::counterLabel(docstring const & format)
 		docstring const rep = labelItem(counter, numbertype);
 		label = docstring(label, 0, i) + rep
 			+ docstring(label, k + 1, docstring::npos);
-		//lyxerr << "  : " << " (" << counter  << ","
-		//	<< numbertype << ") -> " << label << endl;
 	}
-	//lyxerr << "counterLabel: " << format  << " -> "	<< label << endl;
+	//lyxerr << "DONE! label=" << to_utf8(label) << endl;
 	return label;
 }
 

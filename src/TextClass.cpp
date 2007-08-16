@@ -212,12 +212,12 @@ bool TextClass::read(FileName const & filename, bool merge)
 
 	if (!merge)
 		LYXERR(Debug::TCLASS) << "Reading textclass "
-					<< to_utf8(makeDisplayPath(filename.absFilename()))
-					<< endl;
+				      << to_utf8(makeDisplayPath(filename.absFilename()))
+				      << endl;
 	else
 		LYXERR(Debug::TCLASS) << "Reading input file "
-				     << to_utf8(makeDisplayPath(filename.absFilename()))
-				     << endl;
+				      << to_utf8(makeDisplayPath(filename.absFilename()))
+				      << endl;
 
 	Lexer lexrc(textClassTags,
 		sizeof(textClassTags) / sizeof(textClassTags[0]));
@@ -825,7 +825,7 @@ void TextClass::readFloat(Lexer & lexrc)
 	string within;
 	string style;
 	string name;
-	string listname;
+	string listName;
 	bool builtin = false;
 
 	bool getout = false;
@@ -841,8 +841,16 @@ void TextClass::readFloat(Lexer & lexrc)
 		case FT_TYPE:
 			lexrc.next();
 			type = lexrc.getString();
-			// Here we could check if this type is already defined
-			// and modify it with the rest of the vars instead.
+			if (floatlist_->typeExist(type)) {
+				Floating const & fl = floatlist_->getType(type);
+				placement = fl.placement();
+				ext = fl.ext();
+				within = fl.within();
+				style = fl.style();
+				name = fl.name();
+				listName = fl.listName();
+				builtin = fl.builtin();
+			} 
 			break;
 		case FT_NAME:
 			lexrc.next();
@@ -868,7 +876,7 @@ void TextClass::readFloat(Lexer & lexrc)
 			break;
 		case FT_LISTNAME:
 			lexrc.next();
-			listname = lexrc.getString();
+			listName = lexrc.getString();
 			break;
 		case FT_BUILTIN:
 			lexrc.next();
@@ -882,9 +890,12 @@ void TextClass::readFloat(Lexer & lexrc)
 
 	// Here if have a full float if getout == true
 	if (getout) {
-		Floating newfloat(type, placement, ext, within,
-				  style, name, listname, builtin);
-		floatlist_->newFloat(newfloat);
+		Floating fl(type, placement, ext, within,
+			    style, name, listName, builtin);
+		floatlist_->newFloat(fl);
+		// each float has its own counter
+		ctrs_->newCounter(from_ascii(type), from_ascii(within), 
+				  docstring(), docstring());
 	}
 
 	lexrc.popTable();
@@ -894,6 +905,8 @@ void TextClass::readFloat(Lexer & lexrc)
 enum CounterTags {
 	CT_NAME = 1,
 	CT_WITHIN,
+	CT_LABELSTRING,
+	CT_LABELSTRING_APPENDIX,
 	CT_END
 };
 
@@ -901,6 +914,8 @@ void TextClass::readCounter(Lexer & lexrc)
 {
 	keyword_item counterTags[] = {
 		{ "end", CT_END },
+		{ "labelstring", CT_LABELSTRING },
+		{ "labelstringappendix", CT_LABELSTRING_APPENDIX },
 		{ "name", CT_NAME },
 		{ "within", CT_WITHIN }
 	};
@@ -909,6 +924,8 @@ void TextClass::readCounter(Lexer & lexrc)
 
 	docstring name;
 	docstring within;
+	docstring labelstring;
+	docstring labelstring_appendix;
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -922,13 +939,30 @@ void TextClass::readCounter(Lexer & lexrc)
 		switch (static_cast<CounterTags>(le)) {
 		case CT_NAME:
 			lexrc.next();
-			name = from_ascii(lexrc.getString());
+			name = lexrc.getDocString();
+			if (ctrs_->hasCounter(name))
+				LYXERR(Debug::TCLASS) 
+					<< "Reading existing counter " 
+					<< to_utf8(name) << endl;
+			else
+				LYXERR(Debug::TCLASS) 
+					<< "Reading new counter " 
+					<< to_utf8(name) << endl;
 			break;
 		case CT_WITHIN:
 			lexrc.next();
-			within = from_ascii(lexrc.getString());
+			within = lexrc.getDocString();
 			if (within == "none")
 				within.erase();
+			break;
+		case CT_LABELSTRING:
+			lexrc.next();
+			labelstring = lexrc.getDocString();
+			labelstring_appendix = labelstring;
+			break;
+		case CT_LABELSTRING_APPENDIX:
+			lexrc.next();
+			labelstring_appendix = lexrc.getDocString();
 			break;
 		case CT_END:
 			getout = true;
@@ -937,12 +971,9 @@ void TextClass::readCounter(Lexer & lexrc)
 	}
 
 	// Here if have a full counter if getout == true
-	if (getout) {
-		if (within.empty())
-			ctrs_->newCounter(name);
-		else
-			ctrs_->newCounter(name, within);
-	}
+	if (getout)
+		ctrs_->newCounter(name, within, 
+				  labelstring, labelstring_appendix);
 
 	lexrc.popTable();
 }

@@ -28,6 +28,9 @@ public:
 	///
 	Counter();
 	///
+	Counter(docstring const & mc, docstring const & ls, 
+		docstring const & lsa);
+	///
 	void set(int v);
 	///
 	void addto(int v);
@@ -39,15 +42,24 @@ public:
 	void reset();
 	/// Returns the master counter of this counter
 	docstring const & master() const;
-	/// sets the master counter for this counter
-	void setMaster(docstring const & m);
+	/// Returns a LaTeX-like string to format the counter, similar
+	/// to LaTeX' \c \thesubsection.
+	docstring const & labelString() const;
+	/// Returns a LaTeX-like string to format the counter in
+	/// appendix, similar to LaTeX' \c \thesubsection.
+	docstring const & labelStringAppendix() const;
 private:
 	///
 	int value_;
 	/// contains master counter name; master counter is the counter
 	/// that, if stepped (incremented) zeroes this counter. E.g.
-	/// "subparagraph"'s master is "paragraph".
+	/// "subsection"'s master is "section".
 	docstring master_;
+	// Contains a LaTeX-like string to format the counter, similar
+	// to LaTeX' \c \thesubsection.
+	docstring labelstring_;
+	// The same as labelstring_, but in appendices.
+	docstring labelstringappendix_;
 };
 
 
@@ -57,9 +69,11 @@ class Counters {
 public:
 	/// Add a new counter to array.
 	void newCounter(docstring const & newc);
-	/// Add new counter having oldc as its master.
+	/// Add new counter having oldc as its master and ls as its label.
 	void newCounter(docstring const & newc,
-			docstring const & oldc);
+			docstring const & masterc,
+			docstring const & ls,
+			docstring const & lsa);
 	///
 	bool hasCounter(docstring const & c) const;
 	///
@@ -81,6 +95,8 @@ public:
 	/// the &to array of counters. Empty string matches all.
 	void copy(Counters & from, Counters & to,
 		  docstring const & match = docstring());
+	/// returns the string representation of the counter.
+	docstring theCounter(docstring const & c);
 	/// A complete expanded label, like 2.1.4 for a subsubsection
 	/// according to the given format
 	docstring counterLabel(docstring const & format);
@@ -96,7 +112,7 @@ private:
 	/// A counter label's single item, 1 for subsection number in
 	/// the 2.1.4 subsubsection number label.
 	docstring labelItem(docstring const & ctr,
-				 docstring const & numbertype);
+			    docstring const & numbertype);
 	/// Maps counter (layout) names to actual counters.
 	typedef std::map<docstring, Counter> CounterList;
 	/// Instantiate.
