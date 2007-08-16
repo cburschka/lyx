@@ -14,8 +14,7 @@ NoStyle Abstract
 
 
 Style Chapter
-	LabelString          "\arabic{chapter}"
-	LabelStringAppendix  "\Alph{chapter}"
+	LabelString          "\thechapter"
 End
 
 

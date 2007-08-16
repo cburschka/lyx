@@ -37,6 +37,8 @@ Style Standard
 End
 
 
+Input stdfloats.inc
+Input stdcounters.inc
 Input stdinsets.inc
 Input stdlists.inc
 Input stdsections.inc
@@ -45,5 +47,3 @@ Input stdtitle.inc
 Input stdstruct.inc
 Input lyxmacros.inc
 Input stdlayouts.inc
-Input stdfloats.inc
-Input stdcounters.inc

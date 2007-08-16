@@ -1,5 +1,5 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 278
 \begin_document
 \begin_header
 \textclass book
@@ -39,10 +39,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -7426,8 +7424,36 @@ Settings
 LabelCounter
 \family default
 \series default
- is set, this string can be contain special formatting commands as explained
+ is set, this string can be contain the special formatting commands described
  in Section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:counter"
+
+\end_inset
+
+.
+ For the sake of backwards compatibility, the string 
+\family typewriter
+@
+\emph on
+style-name
+\emph default
+@
+\family default
+ will be replaced by the expanded 
+\family typewriter
+LabelString
+\family default
+ of style 
+\family typewriter
+\emph on
+style-name
+\family default
+\emph default
+.
+ This feature is now obsolete and should be replaced by the mechanisms of
+ Section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:counter"
@@ -8304,6 +8330,22 @@ string
 ] The heading used for the list of floats.
 \end_layout
 
+\begin_layout Standard
+Note that defining a float with type 
+\family typewriter
+\emph on
+type
+\family default
+\emph default
+ automatically defines the corresponding counter with name 
+\family typewriter
+\emph on
+type
+\family default
+\emph default
+.
+\end_layout
+
 \begin_layout Subsection
 Character styles
 \end_layout
@@ -8459,9 +8501,7 @@ Input stdcounters.inc
 \end_layout
 
 \begin_layout Standard
-The definition of counters is presently a bit primitive in LyX, since many
- things are still hardcoded.
- The following two parameters can be used:
+The following parameters can be used:
 \end_layout
 
 \begin_layout Description
@@ -8483,7 +8523,7 @@ string
 \begin_inset Quotes erd
 \end_inset
 
-] The name of the counter
+] The name of the counter.
 \end_layout
 
 \begin_layout Description
@@ -8506,48 +8546,75 @@ string
 \end_inset
 
 ] If this is set to the name of another counter, the present counter will
- be reset everytime the other one is increased (is that unclear enough?).
+ be reset everytime the other one is increased.
+ For example, 
+\family typewriter
+subsection
+\family default
+ is numbered inside 
+\family typewriter
+section
+\family default
+.
 \end_layout
 
-\begin_layout Standard
-When a counter has been associated to a style, it is possible to use some
- special constructs in 
+\begin_layout Description
+
 \family typewriter
-LabelSt
+\series medium
+LabelString [string=""]
 \family default
-r
-\family typewriter
-ing
-\family default
- and 
+\series default
+ when this is defined, this string defines how the counter is displayed.
+ Setting this value resets 
 \family typewriter
 LabelStringAppendix
 \family default
-:
+ to the same value.
+ The following special constructs can be used in the string:
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-@
-\emph on
-style-name
-\emph default
-@
+
+\backslash
+thecounter
 \family default
- will be replaced the expanded 
+ will be replaced by the expansion of the 
 \family typewriter
 LabelString
 \family default
- of style 
+ (or 
 \family typewriter
-\emph on
-style-name
+LabelStringAppendix
 \family default
-\emph default
+) of the counter 
+\family typewriter
+counter
+\family default
 .
- This is used for example to define the label of a subsection in terms of
- the label of a section.
+ If these are empty, a default value is constructed as follows: if the counter
+ has a master counter 
+\family typewriter
+master
+\family default
+, the string 
+\family typewriter
+
+\backslash
+themaster.
+\backslash
+arabic{counter}
+\family default
+ is used; otherwise the string 
+\family typewriter
+
+\backslash
+arabic{counter}
+\family default
+ is used.
 \end_layout
 
 \begin_layout Itemize
@@ -8684,6 +8751,21 @@ hebrew
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelStringAppendix [string=""]
+\family default
+\series default
+ the same as 
+\family typewriter
+LabelString
+\family default
+, for use in appendix.
+\end_layout
+
 \begin_layout Subsection
 Font description
 \end_layout

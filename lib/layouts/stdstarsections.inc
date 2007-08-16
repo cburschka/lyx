@@ -15,6 +15,7 @@ Style Part*
 	Margin                Static
 	LatexName             part*
 	LabelType             No_Label
+	LabelCounter	      ""	
 End
 
 
@@ -23,6 +24,7 @@ Style Chapter*
 	Margin                Static
 	LatexName             chapter*
 	LabelType             No_Label
+	LabelCounter	      ""	
 	OptionalArgs          0
 End
 
@@ -32,6 +34,7 @@ Style Section*
 	Margin                Static
 	LatexName             section*
 	LabelType             No_Label
+	LabelCounter	      ""	
 	OptionalArgs          0
 End
 
@@ -41,6 +44,7 @@ Style Subsection*
 	Margin                Static
 	LatexName             subsection*
 	LabelType             No_Label
+	LabelCounter	      ""	
 	OptionalArgs          0
 End
 
@@ -50,6 +54,7 @@ Style Subsubsection*
 	Margin                Static
 	LatexName             subsubsection*
 	LabelType             No_Label
+	LabelCounter	      ""	
 	OptionalArgs          0
 End
 
@@ -59,6 +64,7 @@ Style Paragraph*
 	Margin                Static
 	LatexName             paragraph*
 	LabelType             No_Label
+	LabelCounter	      ""	
 	OptionalArgs          0
 End
 
@@ -68,5 +74,6 @@ Style Subparagraph*
 	Margin                Static
 	LatexName             subparagraph*
 	LabelType             No_Label
+	LabelCounter	      ""	
 	OptionalArgs          0
 End

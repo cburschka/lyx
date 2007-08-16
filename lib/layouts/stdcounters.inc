@@ -5,8 +5,9 @@
 
 
 Format 4
-Counter
-	Name                 part
+Counter 
+	Name                  part
+	LabelString	      "\Roman{part}"
 End
 
 Counter
@@ -62,23 +63,11 @@ Counter
 End
 
 Counter
-	Name                 figure
-End
-
-Counter
-	Name                 table
-End
-
-Counter
-	Name                 algorithm
+	Name                 listing
 End
 
 Counter
 	Name                 equation
-End
-
-Counter
-	Name                 listing
 End
 
 Counter

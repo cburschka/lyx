@@ -10,6 +10,10 @@
 Format 4
 Style Part
 	Margin                Dynamic
+	LabelString	      "Part \thepart"
+	LabelType	      Counter
+	TocLevel              0
+	LabelCounter	      part
 	LatexType             Command
 	LatexName             part
 	NeedProtect           1
@@ -30,6 +34,11 @@ End
 
 Style Chapter
 	Margin                Static
+	LabelString	      "Chapter \thechapter"
+	LabelStringAppendix   "Appendix \thechapter"
+	LabelType	      Counter
+	LabelCounter	      chapter
+	TocLevel              0
 	LatexType             Command
 	LatexName             chapter
 	NeedProtect           1
@@ -50,6 +59,9 @@ End
 
 Style Section
 	Margin                Dynamic
+	LabelType	      Counter
+	LabelCounter	      section
+	TocLevel              1
 	LatexType             Command
 	LatexName             section
 	NeedProtect           1
@@ -71,6 +83,8 @@ End
 
 Style Subsection
 	CopyStyle             Section
+	LabelCounter	      subsection
+	TocLevel              2
 	LatexName             subsection
 	TopSep                0.9
 	BottomSep             0.5
@@ -84,6 +98,8 @@ End
 
 Style Subsubsection
 	CopyStyle             Subsection
+	LabelCounter	      subsubsection
+	TocLevel              3
 	LatexName             subsubsection
 	TopSep                0.7
 	BottomSep             0.4
@@ -96,6 +112,8 @@ End
 
 Style Paragraph
 	CopyStyle             Subsubsection
+	LabelCounter	      paragraph
+	TocLevel              4
 	LatexName             paragraph
 	TopSep                0.4
 	BottomSep             0
@@ -104,6 +122,8 @@ End
 
 Style Subparagraph
 	CopyStyle             Paragraph
+	LabelCounter	      subparagraph
+	TocLevel              5
 	LatexName             subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
