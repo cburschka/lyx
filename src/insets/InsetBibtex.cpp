@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
+ * \author Richard Heck (BibTeX parser improvements)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -414,14 +415,14 @@ namespace {
 		// read value
 		bool legalChar = true;
 		while (ifs && !isSpace(ch) && 
-			   delimChars.find(ch) == docstring::npos &&
-			   (legalChar = illegalChars.find(ch) == docstring::npos)
-			   ) {
-			if (chCase == makeLowerCase) {
+						 delimChars.find(ch) == docstring::npos &&
+						 (legalChar = (illegalChars.find(ch) == docstring::npos))
+					) 
+		{
+			if (chCase == makeLowerCase)
 				val += lowercase(ch);
-			} else {
+			else
 				val += ch;
-			}
 			ifs.get(ch);
 		}
 		
@@ -478,17 +479,40 @@ namespace {
 					return false;
 
 			} else if (ch == '"' || ch == '{') {
+				// set end delimiter
+				char_type delim = ch == '"' ? '"': '}';
 
-				// read delimited text - set end delimiter
-				char_type delim = ch == '"'? '"': '}';
-
-				// inside this delimited text braces must match.
-				// Thus we can have a closing delimiter only
-				// when nestLevel == 0
+				//Skip whitespace
+				do {
+					ifs.get(ch);
+				} while (ifs && isSpace(ch));
+				
+				if (!ifs)
+					return false;
+				
+				//We now have the first non-whitespace character
+				//We'll collapse adjacent whitespace.
+				bool lastWasWhiteSpace = false;
+				
+ 				// inside this delimited text braces must match.
+ 				// Thus we can have a closing delimiter only
+ 				// when nestLevel == 0
 				int nestLevel = 0;
-
-				ifs.get(ch);
+ 
 				while (ifs && (nestLevel > 0 || ch != delim)) {
+					if (isSpace(ch)) {
+						lastWasWhiteSpace = true;
+						ifs.get(ch);
+						continue;
+					}
+					//We output the space only after we stop getting 
+					//whitespace so as not to output any whitespace
+					//at the end of the value.
+					if (lastWasWhiteSpace) {
+						lastWasWhiteSpace = false;
+						val += ' ';
+					}
+					
 					val += ch;
 
 					// update nesting level
@@ -556,8 +580,7 @@ namespace {
 
 // This method returns a comma separated list of Bibtex entries
 void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
-		std::vector<std::pair<string, docstring> > & keys,
-		InsetIterator const & /*di*/) const
+		biblio::BibKeyList & keys, InsetIterator const & /*di*/) const
 {
 	vector<FileName> const files = getFiles(buffer);
 	for (vector<FileName>::const_iterator it = files.begin();
@@ -573,15 +596,6 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		// - it accepts more characters in keys or value names than
 		//   bibtex does.
 		//
-		// TODOS:
-		// - the entries are split into name = value pairs by the
-		//   parser. These have to be merged again because of the
-		//   way lyx treats the entries ( pair<...>(...) ). The citation
-		//   mechanism in lyx should be changed such that it can use
-		//   the split entries.
-		// - messages on parsing errors can be generated.
-		//
-
 		// Officially bibtex does only support ASCII, but in practice
 		// you can use the encoding of the main document as long as
 		// some elements like keys and names are pure ASCII. Therefore
@@ -589,9 +603,10 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		// We don't restrict keys to ASCII in LyX, since our own
 		// InsetBibitem can generate non-ASCII keys, and nonstandard
 		// 8bit clean bibtex forks exist.
+		
 		idocfstream ifs(it->toFilesystemEncoding().c_str(),
-				std::ios_base::in,
-				buffer.params().encoding().iconvName());
+			std::ios_base::in,
+			buffer.params().encoding().iconvName());
 
 		char_type ch;
 		VarMap strings;
@@ -660,25 +675,31 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 
 			} else {
 
-				// Citation entry. Read the key and all name = value pairs
+				// Citation entry. Try to read the key.
 				docstring key;
-				docstring fields;
-				docstring name;
-				docstring value;
-				docstring commaNewline;
 
 				if (!readTypeOrKey(key, ifs, from_ascii(","), 
 				                   from_ascii("}"), keepCase) || !ifs)
 					continue;
 
-				// now we have a key, so we will add an entry
-				// (even if it's empty, as bibtex does)
+				/////////////////////////////////////////////
+				// now we have a key, so we will add an entry 
+ 				// (even if it's empty, as bibtex does)
 				//
-				// all items must be separated by a comma. If
-				// it is missing the scanning of this entry is
-				// stopped and the next is searched.
+				// we now read the field = value pairs.
+ 				// all items must be separated by a comma. If
+ 				// it is missing the scanning of this entry is
+ 				// stopped and the next is searched.
+				docstring fields;
+				docstring name;
+				docstring value;
+				docstring commaNewline;
+				docstring data;
+				biblio::BibTeXInfo keyvalmap;
+				keyvalmap.entryType = entryType;
+				
 				bool readNext = removeWSAndComma(ifs);
-
+ 
 				while (ifs && readNext) {
 
 					// read field name
@@ -699,27 +720,18 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 					if (!readValue(value, ifs, strings))
 						break;
 
-					// append field to the total entry string.
-					//
-					// TODO: Here is where the fields can be put in
-					//       a more intelligent structure that preserves
-					//	     the already known parts.
-					fields += commaNewline;
-					fields += name + from_ascii(" = {") + value + '}';
-
-					if (!commaNewline.length())
-						commaNewline = from_ascii(",\n");
+					keyvalmap[name] = value;
+					data += "\n\n" + value;
 
 					readNext = removeWSAndComma(ifs);
 				}
 
 				// add the new entry
-				keys.push_back(pair<string, docstring>(
-				to_utf8(key), fields));
+				keyvalmap.allData = data;
+				keyvalmap.isBibTeX = true;
+				keys[to_utf8(key)] = keyvalmap;
 			}
-
 		} //< searching '@'
-
 	} //< for loop over files
 }
 

@@ -14,6 +14,7 @@
 
 
 #include "InsetCommand.h"
+#include "Biblio_typedefs.h"
 
 
 namespace lyx {
@@ -45,8 +46,7 @@ public:
 	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	virtual void fillWithBibKeys(Buffer const &,
-		std::vector<std::pair<std::string, docstring> > &,
-		InsetIterator const &) const;
+		biblio::BibKeyList &, InsetIterator const &) const;
 
 protected:
 	///

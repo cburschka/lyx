@@ -65,13 +65,13 @@ docstring const getNatbibLabel(Buffer const & buffer,
 		return docstring();
 
 	// Cache the labels
-	typedef std::map<Buffer const *, biblio::InfoMap> CachedMap;
+	typedef std::map<Buffer const *, biblio::BibKeyList> CachedMap;
 	static CachedMap cached_keys;
 
 	// and cache the timestamp of the bibliography files.
 	static std::map<FileName, time_t> bibfileStatus;
 
-	biblio::InfoMap infomap;
+	biblio::BibKeyList keylist;
 
 	vector<FileName> const & bibfilesCache = buffer.getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
@@ -97,22 +97,13 @@ docstring const getNatbibLabel(Buffer const & buffer,
 
 	// build the keylist only if the bibfiles have been changed
 	if (cached_keys[&buffer].empty() || bibfileStatus.empty() || changed) {
-		typedef vector<std::pair<string, docstring> > InfoType;
-		InfoType bibkeys;
-		buffer.fillWithBibKeys(bibkeys);
-
-		InfoType::const_iterator bit  = bibkeys.begin();
-		InfoType::const_iterator bend = bibkeys.end();
-
-		for (; bit != bend; ++bit)
-			infomap[bit->first] = bit->second;
-
-		cached_keys[&buffer] = infomap;
+		buffer.fillWithBibKeys(keylist);
+		cached_keys[&buffer] = keylist;
 	} else
 		// use the cached keys
-		infomap = cached_keys[&buffer];
+		keylist = cached_keys[&buffer];
 
-	if (infomap.empty())
+	if (keylist.empty())
 		return docstring();
 
 	// the natbib citation-styles
@@ -175,8 +166,8 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	vector<string>::const_iterator end = keys.end();
 	for (; it != end; ++it) {
 		// get the bibdata corresponding to the key
-		docstring const author(biblio::getAbbreviatedAuthor(infomap, *it));
-		docstring const year(biblio::getYear(infomap, *it));
+		docstring const author(biblio::getAbbreviatedAuthor(keylist, *it));
+		docstring const year(biblio::getYear(keylist, *it));
 
 		// Something isn't right. Fail safely.
 		if (author.empty() || year.empty())

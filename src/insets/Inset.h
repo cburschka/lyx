@@ -15,6 +15,7 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
+#include "Biblio_typedefs.h"
 #include "Changes.h"
 #include "Dimension.h"
 
@@ -440,8 +441,7 @@ public:
 	virtual void addToToc(TocList &, Buffer const &, ParConstIterator const &) const {}
 	/// Fill keys with BibTeX information
 	virtual void fillWithBibKeys(Buffer const &,
-		std::vector<std::pair<std::string, docstring> > &,
-		InsetIterator const &) const { return; }
+		biblio::BibKeyList &, InsetIterator const &) const { return; }
 	/// Update the counters of this inset and of its contents
 	virtual void updateLabels(Buffer const &, ParIterator const &) {}
 

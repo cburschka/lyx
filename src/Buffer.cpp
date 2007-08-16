@@ -13,6 +13,7 @@
 #include "Buffer.h"
 
 #include "Author.h"
+#include "Biblio.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"
@@ -1359,7 +1360,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 
 
 // This is also a buffer property (ale)
-void Buffer::fillWithBibKeys(vector<pair<string, docstring> > & keys)
+void Buffer::fillWithBibKeys(biblio::BibKeyList & keys)
 	const
 {
 	biblio::fillWithBibKeys(this, keys);
@@ -1730,10 +1731,10 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	vector<docstring> labels;
 
 	if (code == Inset::CITE_CODE) {
-		vector<pair<string, docstring> > keys;
+		biblio::BibKeyList keys;
 		fillWithBibKeys(keys);
-		vector<pair<string, docstring> >::const_iterator bit  = keys.begin();
-		vector<pair<string, docstring> >::const_iterator bend = keys.end();
+		biblio::BibKeyList::const_iterator bit  = keys.begin();
+		biblio::BibKeyList::const_iterator bend = keys.end();
 
 		for (; bit != bend; ++bit)
 			// FIXME UNICODE

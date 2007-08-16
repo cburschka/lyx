@@ -62,7 +62,7 @@ public:
 	}
 private:
 	/// The info associated with each key
-	biblio::InfoMap bibkeysInfo_;
+	biblio::BibKeyList bibkeysInfo_;
 
 	///
 	static std::vector<biblio::CiteStyle> citeStyles_;

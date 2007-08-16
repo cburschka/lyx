@@ -13,8 +13,8 @@
 #ifndef BIBLIO_H
 #define BIBLIO_H
 
+#include "Biblio_typedefs.h"
 #include "Buffer.h"
-#include "support/docstring.h"
 
 #include <vector>
 
@@ -22,8 +22,6 @@ namespace lyx {
 	
 namespace biblio {
 	
-	extern const docstring TheBibliographyRef;
-
 	enum CiteEngine {
 		ENGINE_BASIC,
 		ENGINE_NATBIB_AUTHORYEAR,
@@ -59,8 +57,7 @@ namespace biblio {
 /** Fills keys with BibTeX information derived from the various
  *  in this document or its master document.
  */
-	void fillWithBibKeys(Buffer const * const buf, 
-		std::vector<std::pair<std::string, docstring> > & keys);
+	void fillWithBibKeys(Buffer const * const buf, BibKeyList & keys);
 
 /** Each citation engine recognizes only a subset of all possible
 	*  citation commands. Given a latex command \c input, this function
@@ -69,49 +66,43 @@ namespace biblio {
 	std::string const asValidLatexCommand(std::string const & input,
 	                                      CiteEngine const engine);
 
-/// First entry is the bibliography key, second the data
-	typedef std::map<std::string, docstring> InfoMap;
-
 /// Returns a vector of bibliography keys
-	std::vector<std::string> const getKeys(InfoMap const &);
+	std::vector<std::string> const getKeys(BibKeyList const &);
 
 /** Returns the BibTeX data associated with a given key.
 	Empty if no info exists. */
-	docstring const getInfo(InfoMap const &, std::string const & key);
+	docstring const getInfo(BibKeyList const &, std::string const & key);
 
 /// return the year from the bibtex data record
-	docstring const getYear(InfoMap const & map, std::string const & key);
+	docstring const getYear(BibKeyList const & map, std::string const & key);
 
 /// return the short form of an authorlist
-	docstring const getAbbreviatedAuthor(InfoMap const & map, std::string const & key);
+	docstring const getAbbreviatedAuthor(BibKeyList const & map, std::string const & key);
 
-// return only the family name
+/// return only the family name
 	docstring const familyName(docstring const & name);
 
 /** Search a BibTeX info field for the given key and return the
 	associated field. */
-	docstring const parseBibTeX(docstring data, std::string const & findkey);
+	docstring const getValueForKey(BibTeXInfo const & data, std::string const & findkey);
 
 /** Returns an iterator to the first key that meets the search
 	criterion, or end() if unsuccessful.
 
     User supplies :
-	the InfoMap of bibkeys info,
+	the BibKeyList of bibliography info,
 	the vector of keys to be searched,
 	the search criterion,
 	an iterator defining the starting point of the search,
 	an enum defining a Simple or Regex search,
 	an enum defining the search direction.
  */
-
 	std::vector<std::string>::const_iterator
-			searchKeys(InfoMap const & map,
+			searchKeys(BibKeyList const & map,
 			           std::vector<std::string> const & keys_to_search,
 			           docstring const & search_expression,
 			           std::vector<std::string>::const_iterator start,
-	 Search,
-	Direction,
- bool caseSensitive=false);
+			           Search, Direction, bool caseSensitive=false);
 
 
 	class CitationStyle {
@@ -145,12 +136,12 @@ namespace biblio {
 
    User supplies :
 	the key,
-	the InfoMap of bibkeys info,
+	the BibKeyList of bibkeys info,
 	the available citation styles
  */
 	std::vector<docstring> const
 			getNumericalStrings(std::string const & key,
-			                    InfoMap const & map,
+			                    BibKeyList const & map,
 			                    std::vector<CiteStyle> const & styles);
 
 /**
@@ -162,12 +153,12 @@ namespace biblio {
 
    User supplies :
 	the key,
-	the InfoMap of bibkeys info,
+	the BibKeyList of bibkeys info,
 	the available citation styles
  */
 	std::vector<docstring> const
 			getAuthorYearStrings(std::string const & key,
-			                     InfoMap const & map,
+			                     BibKeyList const & map,
 			                     std::vector<CiteStyle> const & styles);
 
 } // namespace biblio

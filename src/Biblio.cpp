@@ -49,6 +49,22 @@ using support::trim;
 
 namespace biblio {
 
+	
+BibTeXInfo::BibTeXInfo(): isBibTeX(true)
+{}
+
+	
+BibTeXInfo::BibTeXInfo(bool isBibTeX): isBibTeX(isBibTeX)
+{};
+
+
+bool BibTeXInfo::hasKey(docstring const & key) 
+{
+	const_iterator it = find(key);
+	return it == end();
+}
+
+
 namespace {
 
 	vector<string> const init_possible_cite_commands()
@@ -108,8 +124,6 @@ namespace {
 
 } // namespace anon
 
-
-const docstring TheBibliographyRef(from_ascii("TheBibliographyRef"));
 
 string const asValidLatexCommand(string const & input,
                                  CiteEngine const engine)
@@ -182,89 +196,58 @@ docstring const familyName(docstring const & name)
 }
 
 
-docstring const getAbbreviatedAuthor(InfoMap const & map, string const & key)
+docstring const getAbbreviatedAuthor(BibKeyList const & map, string const & key)
 {
 	BOOST_ASSERT(!map.empty());
-
-	InfoMap::const_iterator it = map.find(key);
+	BibKeyList::const_iterator it = map.find(key);
 	if (it == map.end())
 		return docstring();
-	docstring const & data = it->second;
-
-// Is the entry a BibTeX one or one from lyx-layout "bibliography"?
-	docstring::size_type const pos = data.find(TheBibliographyRef);
-	if (pos != docstring::npos) {
-		if (pos <= 2) {
-			return docstring();
-		}
-
-		docstring const opt = trim(data.substr(0, pos - 1));
-		if (opt.empty())
-			return docstring();
-
-		docstring authors;
-		split(opt, authors, '(');
-		return authors;
-	}
-
-	docstring author = parseBibTeX(data, "author");
-
-	if (author.empty())
-		author = parseBibTeX(data, "editor");
-
+	BibTeXInfo const & data = it->second;
+ 
+	if (!data.isBibTeX) 
+		return docstring();
+ 
+	docstring author = getValueForKey(data, "author");
+ 
 	if (author.empty()) {
-		author = parseBibTeX(data, "key");
-		if (author.empty())
-		// FIXME UNICODE
-			return from_utf8(key);
-		return author;
+		author = getValueForKey(data, "editor");
+		if (author.empty()) {
+			author = getValueForKey(data, "key");
+			if (author.empty())
+				// FIXME UNICODE
+				return from_utf8(key);
+			else 
+				return author; //this is the key
+		}
 	}
 
+	//OK, we've got some names. Let's format them.
+	//try to split the author list on " and "
 	vector<docstring> const authors = getVectorFromString(author, from_ascii(" and "));
-	if (authors.empty())
-		return author;
-
+	
 	if (authors.size() == 2)
 		return bformat(_("%1$s and %2$s"),
-									familyName(authors[0]), familyName(authors[1]));
-
-	if (authors.size() > 2)
+									 familyName(authors[0]), familyName(authors[1]));
+	else if (authors.size() > 2)
 		return bformat(_("%1$s et al."), familyName(authors[0]));
-
-	return familyName(authors[0]);
+	else  
+		return familyName(authors[0]);
 }
 
 
-docstring const getYear(InfoMap const & map, string const & key)
+docstring const getYear(BibKeyList const & map, string const & key)
 {
 	BOOST_ASSERT(!map.empty());
-
-	InfoMap::const_iterator it = map.find(key);
+ 
+	BibKeyList::const_iterator it = map.find(key);
 	if (it == map.end())
 		return docstring();
-	docstring const & data = it->second;
-
-// Is the entry a BibTeX one or one from lyx-layout "bibliography"?
-	docstring::size_type const pos = data.find(TheBibliographyRef);
-	if (pos != docstring::npos) {
-		if (pos <= 2) {
-			return docstring();
-		}
-
-		docstring const opt =
-					trim(data.substr(0, pos - 1));
-		if (opt.empty())
-			return docstring();
-
-		docstring authors;
-		docstring const tmp = split(opt, authors, '(');
-		docstring year;
-		split(tmp, year, ')');
-		return year;
-
-	}
-
-	docstring year = parseBibTeX(data, "year");
+	BibTeXInfo const & data = it->second;
+ 
+	if (!data.isBibTeX) 
+		return docstring();
+ 
+	docstring year = getValueForKey(data, "year");
 	if (year.empty())
 		year = _("No year");
 
@@ -284,11 +267,11 @@ class compareNoCase: public std::binary_function<string, string, bool>
 } // namespace anon
 
 
-vector<string> const getKeys(InfoMap const & map)
+vector<string> const getKeys(BibKeyList const & map)
 {
 	vector<string> bibkeys;
-	InfoMap::const_iterator it  = map.begin();
-	InfoMap::const_iterator end = map.end();
+	BibKeyList::const_iterator it  = map.begin();
+	BibKeyList::const_iterator end = map.end();
 	for (; it != end; ++it) {
 		bibkeys.push_back(it->first);
 	}
@@ -298,72 +281,67 @@ vector<string> const getKeys(InfoMap const & map)
 }
 
 
-docstring const getInfo(InfoMap const & map, string const & key)
+docstring const getInfo(BibKeyList const & map, string const & key)
 {
 	BOOST_ASSERT(!map.empty());
-
-	InfoMap::const_iterator it = map.find(key);
+ 
+	BibKeyList::const_iterator it = map.find(key);
 	if (it == map.end())
 		return docstring();
-	docstring const & data = it->second;
-
-// is the entry a BibTeX one or one from lyx-layout "bibliography"?
-	docstring::size_type const pos = data.find(TheBibliographyRef);
-	if (pos != docstring::npos) {
-		docstring::size_type const pos2 = pos + TheBibliographyRef.size();
-		docstring const info = trim(data.substr(pos2));
-		return info;
+	BibTeXInfo const & data = it->second;
+ 
+	if (!data.isBibTeX) {
+		BibTeXInfo::const_iterator it3 = data.find(from_ascii("ref"));
+		return it3->second;
 	}
-
-// Search for all possible "required" keys
-	docstring author = parseBibTeX(data, "author");
+ 
+	//FIXME
+	//This could be made alot better using the biblio::TheEntryType
+	//field to customize the output based upon entry type.
+	
+	//Search for all possible "required" fields
+	docstring author = getValueForKey(data, "author");
 	if (author.empty())
-		author = parseBibTeX(data, "editor");
-
-	docstring year      = parseBibTeX(data, "year");
-	docstring title     = parseBibTeX(data, "title");
-	docstring booktitle = parseBibTeX(data, "booktitle");
-	docstring chapter   = parseBibTeX(data, "chapter");
-	docstring number    = parseBibTeX(data, "number");
-	docstring volume    = parseBibTeX(data, "volume");
-	docstring pages     = parseBibTeX(data, "pages");
-	docstring annote    = parseBibTeX(data, "annote");
-	docstring media     = parseBibTeX(data, "journal");
-	if (media.empty())
-		media = parseBibTeX(data, "publisher");
-	if (media.empty())
-		media = parseBibTeX(data, "school");
-	if (media.empty())
-		media = parseBibTeX(data, "institution");
-
-	odocstringstream result;
-	if (!author.empty())
-		result << author << ", ";
-	if (!title.empty())
-		result << title;
-	if (!booktitle.empty())
-		result << ", in " << booktitle;
-	if (!chapter.empty())
-		result << ", Ch. " << chapter;
-	if (!media.empty())
-		result << ", " << media;
-	if (!volume.empty())
-		result << ", vol. " << volume;
-	if (!number.empty())
-		result << ", no. " << number;
-	if (!pages.empty())
-		result << ", pp. " << pages;
-	if (!year.empty())
-		result << ", " << year;
-	if (!annote.empty())
-		result << "\n\n" << annote;
-
-	docstring const result_str = rtrim(result.str());
-	if (!result_str.empty())
-		return result_str;
-
-// This should never happen (or at least be very unusual!)
-	return data;
+		author = getValueForKey(data, "editor");
+ 
+	docstring year      = getValueForKey(data, "year");
+	docstring title     = getValueForKey(data, "title");
+	docstring docLoc    = getValueForKey(data, "pages");
+	if (docLoc.empty()) {
+		docLoc = getValueForKey(data, "chapter");
+		if (!docLoc.empty())
+			docLoc = from_ascii("Ch. ") + docLoc;
+	}	else 
+		docLoc = from_ascii("pp. ") + docLoc;
+		docstring media     = getValueForKey(data, "journal");
+		if (media.empty()) {
+			media = getValueForKey(data, "publisher");
+			if (media.empty()) {
+				media = getValueForKey(data, "school");
+				if (media.empty())
+					media = getValueForKey(data, "institution");
+			}
+		}
+		docstring volume = getValueForKey(data, "volume");
+ 
+		odocstringstream result;
+		if (!author.empty())
+			result << author << ", ";
+		if (!title.empty())
+			result << title;
+		if (!media.empty())
+			result << ", " << media;
+		if (!year.empty())
+			result << ", " << year;
+		if (!docLoc.empty())
+			result << ", " << docLoc;
+ 
+		docstring const result_str = rtrim(result.str());
+		if (!result_str.empty())
+			return result_str;
+ 
+ 	// This should never happen (or at least be very unusual!)
+	return docstring();
 }
 
 
@@ -400,37 +378,33 @@ class RegexMatch : public std::unary_function<string, bool>
 	public:
 // re and icase are used to construct an instance of boost::RegEx.
 // if icase is true, then matching is insensitive to case
-		RegexMatch(InfoMap const & m, string const & re, bool icase)
+		RegexMatch(BibKeyList const & m, string const & re, bool icase)
 		: map_(m), regex_(re, icase) {}
 
 		bool operator()(string const & key) const {
-// the data searched is the key + its associated BibTeX/biblio
-// fields
-			string data = key;
-			InfoMap::const_iterator info = map_.find(key);
-			if (info != map_.end())
-	// FIXME UNICODE
-				data += ' ' + to_utf8(info->second);
-
-// Attempts to find a match for the current RE
-// somewhere in data.
+			//FIXME This should search the monolith.
+			BibKeyList::const_iterator info = map_.find(key);
+			if (info == map_.end())
+				return false;
+ 
+			BibTeXInfo const kvm = info->second;
+			string const data = key + ' ' + to_utf8(kvm.allData);
+			
 			return boost::regex_search(data, regex_);
 		}
 	private:
-		InfoMap const map_;
+		BibKeyList const map_;
 		mutable boost::regex regex_;
 };
 
 } // namespace anon
 
 
-vector<string>::const_iterator searchKeys(InfoMap const & theMap,
+vector<string>::const_iterator searchKeys(BibKeyList const & theMap,
 		vector<string> const & keys,
 		string const & search_expr,
 		vector<string>::const_iterator start,
-		Search type,
-		Direction dir,
-	bool caseSensitive)
+		Search type, Direction dir,	bool caseSensitive)
 {
 	// Preliminary checks
 	if (start < keys.begin() || start >= keys.end())
@@ -471,143 +445,16 @@ vector<string>::const_iterator searchKeys(InfoMap const & theMap,
 }
 
 
-docstring const parseBibTeX(docstring data, string const & findkey)
+docstring const getValueForKey(BibTeXInfo const & data, string const & findkey)
 {
-	// at first we delete all characters right of '%' and
-	// replace tabs through a space and remove leading spaces
-	// we read the data line by line so that the \n are
-	// ignored, too.
-	docstring data_;
-	int Entries = 0;
-	docstring dummy = token(data,'\n', Entries);
-	while (!dummy.empty()) {
-		// no tabs
-		dummy = subst(dummy, '\t', ' ');
-		// no leading spaces
-		dummy = ltrim(dummy);
-		// ignore lines with a beginning '%' or ignore all right of %
-		docstring::size_type const idx =
-					dummy.empty() ? docstring::npos : dummy.find('%');
-		if (idx != docstring::npos)
-			// Check if this is really a comment or just "\%"
-			if (idx == 0 || dummy[idx - 1] != '\\')
-				dummy.erase(idx, docstring::npos);
-			else
-				//  This is "\%", so just erase the '\'
-				dummy.erase(idx - 1, 1);
-		// do we have a new token or a new line of
-		// the same one? In the first case we ignore
-		// the \n and in the second we replace it
-		// with a space
-		if (!dummy.empty()) {
-			if (!contains(dummy, '='))
-				data_ += ' ' + dummy;
-			else
-				data_ += dummy;
-		}
-		dummy = token(data, '\n', ++Entries);
-	} //end while
-
-	// replace double commas with "" for easy scanning
-	data = subst(data_, from_ascii(",,"), from_ascii("\"\""));
-
-	// unlikely!
-	if (data.empty())
+	docstring key = from_ascii(findkey);
+	BibTeXInfo::const_iterator it = data.find(key);
+	if (it == data.end())
 		return docstring();
-
-	// now get only the important line of the bibtex entry.
-	// all entries are devided by ',' except the last one.
-	data += ',';
-	// now we have same behaviour for all entries because the last one
-	// is "blah ... }"
-	Entries = 0;
-	bool found = false;
-	// parsing of title and booktitle is different from the
-	// others, because booktitle contains title
-	do {
-		dummy = token(data, ',', Entries++);
-		if (!dummy.empty()) {
-			found = contains(ascii_lowercase(dummy), from_ascii(findkey));
-			if (findkey == "title" &&
-								contains(ascii_lowercase(dummy), from_ascii("booktitle")))
-				found = false;
-		}
-	} while (!found && !dummy.empty());
-	if (dummy.empty())
-		// no such keyword
-		return docstring();
-
-	// we are not sure, if we get all, because "key= "blah, blah" is
-	// allowed.
-	// Therefore we read all until the next "=" character, which follows a
-	// new keyword
-	docstring keyvalue = dummy;
-	dummy = token(data, ',', Entries++);
-	while (!contains(dummy, '=') && !dummy.empty()) {
-		keyvalue += ',' + dummy;
-		dummy = token(data, ',', Entries++);
-	}
-
-	// replace double "" with originals ,, (two commas)
-	// leaving us with the all-important line
-	data = subst(keyvalue, from_ascii("\"\""), from_ascii(",,"));
-
-	// Clean-up.
-	// 1. Spaces
-	data = rtrim(data);
-	// 2. if there is no opening '{' then a closing '{' is probably cruft.
-	if (!contains(data, '{'))
-		data = rtrim(data, "}");
-	// happens, when last keyword
-		docstring::size_type const idx =
-			!data.empty() ? data.find('=') : docstring::npos;
-
-		if (idx == docstring::npos)
-			return docstring();
-
-		data = trim(data.substr(idx));
-
-	// a valid entry?
-	if (data.length() < 2 || data[0] != '=')
-		return docstring();
-	else {
-		// delete '=' and the following spaces
-		data = ltrim(data, " =");
-		if (data.length() < 2) {
-			// not long enough to find delimiters
-			return data;
-		} else {
-			docstring::size_type keypos = 1;
-			char_type enclosing;
-			if (data[0] == '{') {
-				enclosing = '}';
-			} else if (data[0] == '"') {
-				enclosing = '"';
-			} else {
-				// no {} and no "", pure data but with a
-				// possible ',' at the end
-				return rtrim(data, ",");
-			}
-			docstring tmp = data.substr(keypos);
-			while (tmp.find('{') != docstring::npos &&
-					tmp.find('}') != docstring::npos &&
-					tmp.find('{') < tmp.find('}') &&
-					tmp.find('{') < tmp.find(enclosing)) {
-				keypos += tmp.find('{') + 1;
-				tmp = data.substr(keypos);
-				keypos += tmp.find('}') + 1;
-				tmp = data.substr(keypos);
-			}
-			if (tmp.find(enclosing) == docstring::npos)
-				return data;
-			else {
-				keypos += tmp.find(enclosing);
-				return data.substr(1, keypos - 1);
-			}
-		}
-	}
+	//FIXME ?? return it->second??
+	BibTeXInfo & data2 = const_cast<BibTeXInfo &>(data);
+	return data2[key];
 }
-
 
 namespace {
 
@@ -723,7 +570,7 @@ vector<CiteStyle> const getCiteStyles(CiteEngine const engine)
 
 vector<docstring> const
 	getNumericalStrings(string const & key,
-	InfoMap const & map, vector<CiteStyle> const & styles)
+	BibKeyList const & map, vector<CiteStyle> const & styles)
 {
 	if (map.empty())
 		return vector<docstring>();
@@ -777,7 +624,7 @@ vector<docstring> const
 
 vector<docstring> const
 		getAuthorYearStrings(string const & key,
-			InfoMap const & map, vector<CiteStyle> const & styles)
+			BibKeyList const & map, vector<CiteStyle> const & styles)
 {
 	if (map.empty())
 		return vector<docstring>();
@@ -835,7 +682,7 @@ vector<docstring> const
 
 
 void fillWithBibKeys(Buffer const * const buf, 
-                     vector<pair<string, docstring> > & keys)
+                     BibKeyList & keys)
 {	
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]

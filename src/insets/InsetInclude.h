@@ -12,6 +12,7 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
+#include "Biblio_typedefs.h"
 #include "Inset.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
@@ -58,10 +59,11 @@ public:
 	/** Fills \c keys
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.
+	 *  \param it not used here
 	 */
-	virtual void fillWithBibKeys(Buffer const &,
-		std::vector<std::pair<std::string, docstring> > &,
-		InsetIterator const & /*di*/) const;
+	virtual void fillWithBibKeys(Buffer const & buffer,
+		biblio::BibKeyList & keys, InsetIterator const & it) const;
+	
 	/** Update the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).
 	 *  Does nothing if the child document is not loaded to prevent

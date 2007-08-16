@@ -187,16 +187,16 @@ docstring const bibitemWidest(Buffer const & buffer)
 
 
 void InsetBibitem::fillWithBibKeys(Buffer const & buf,
-	std::vector<std::pair<std::string, docstring> > & keys,
-	InsetIterator const & it) const
+	biblio::BibKeyList & keys, InsetIterator const & it) const
 {
 	string const key = to_utf8(getParam("key"));
-	docstring const label = getParam("label");
+	biblio::BibTeXInfo keyvalmap;
+	keyvalmap[from_ascii("label")] = getParam("label");
 	DocIterator doc_it(it); 
 	doc_it.forwardPos();
-	docstring const ref = doc_it.paragraph().asString(buf, false);
-	docstring const info = label + biblio::TheBibliographyRef + ref;
-	keys.push_back(std::pair<string, docstring>(key, info));
+	keyvalmap [from_ascii("ref")] = doc_it.paragraph().asString(buf, false);
+	keyvalmap.isBibTeX = false;
+	keys[key] = keyvalmap;
 }
 
 } // namespace lyx

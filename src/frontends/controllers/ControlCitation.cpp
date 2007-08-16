@@ -48,12 +48,8 @@ bool ControlCitation::initialiseParams(string const & data)
 
 	bool use_styles = engine != biblio::ENGINE_BASIC;
 
-	vector<pair<string, docstring> > blist;
-	kernel().buffer().fillWithBibKeys(blist);
-	bibkeysInfo_.clear();
-	for (size_t i = 0; i < blist.size(); ++i)
-		bibkeysInfo_[blist[i].first] = blist[i].second;
-
+	kernel().buffer().fillWithBibKeys(bibkeysInfo_);
+	
 	if (citeStyles_.empty())
 		citeStyles_ = biblio::getCiteStyles(engine);
 	else {
@@ -137,23 +133,20 @@ vector<string> ControlCitation::searchKeys(
 		// it is treated as a simple string by boost::regex.
 		expr = escape_special_chars(expr);
 
-	boost::regex reg_exp(to_utf8(expr), case_sensitive?
+	boost::regex reg_exp(to_utf8(expr), case_sensitive ?
 		boost::regex_constants::normal : boost::regex_constants::icase);
 
 	vector<string>::const_iterator it = keys_to_search.begin();
 	vector<string>::const_iterator end = keys_to_search.end();
 	for (; it != end; ++it ) {
-		biblio::InfoMap::const_iterator info = bibkeysInfo_.find(*it);
+		biblio::BibKeyList::const_iterator info = bibkeysInfo_.find(*it);
 		if (info == bibkeysInfo_.end())
 			continue;
-
-		string data = *it;
-		// FIXME UNICODE
-		data += ' ' + to_utf8(info->second);
-
+		
+		biblio::BibTeXInfo const kvm = info->second;
+		string const data = *it + ' ' + to_utf8(kvm.allData);
+		
 		try {
-			// Attempts to find a match for the current RE
-			// somewhere in data.
 			if (boost::regex_search(data, reg_exp))
 				foundKeys.push_back(*it);
 		}

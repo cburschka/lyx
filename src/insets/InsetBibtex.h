@@ -12,9 +12,9 @@
 #ifndef INSET_BIBTEX_H
 #define INSET_BIBTEX_H
 
-
-#include <vector>
+#include <map>
 #include "InsetCommand.h"
+#include "Biblio_typedefs.h"
 
 #include "support/FileName.h"
 
@@ -39,8 +39,7 @@ public:
 	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	virtual void fillWithBibKeys(Buffer const &,
-		std::vector<std::pair<std::string, docstring> > &,
-		InsetIterator const &) const;
+		biblio::BibKeyList &, InsetIterator const &) const;
 	///
 	std::vector<support::FileName> const getFiles(Buffer const &) const;
 	///
