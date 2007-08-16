@@ -23,7 +23,6 @@
 #include "OutputParams.h"
 #include "ParIterator.h"
 
-#include "support/convert.h"
 #include "support/std_ostream.h"
 #include "support/lstrings.h"
 
@@ -69,7 +68,7 @@ void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
 		//FIXME: the counter should format itself.
 		setLabel(support::bformat(from_ascii("%1$s %2$s"), 
 					  getLayout(buf.params()).labelstring, 
-					  convert<docstring>(cnts.value(foot))));
+					  cnts.theCounter(foot)));
 	
 	}
 	InsetCollapsable::updateLabels(buf, it);

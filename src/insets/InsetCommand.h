@@ -68,6 +68,8 @@ protected:
 		p_.setContents(c);
 	}
 public:
+	/// tell that the button label should be recomputed.
+	void refresh() { updateButtonLabel_ = true; }
 	///
 	void setParam(std::string const & name, docstring const & value)
 	{

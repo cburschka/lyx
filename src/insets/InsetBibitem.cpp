@@ -12,9 +12,13 @@
 
 #include "InsetBibitem.h"
 
+#include "debug.h"
+
 #include "Biblio.h"
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
+#include "Counters.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "Font.h"
@@ -41,7 +45,7 @@ int InsetBibitem::key_counter = 0;
 docstring const key_prefix = from_ascii("key-");
 
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)
-	: InsetCommand(p, "bibitem"), counter(1)
+	: InsetCommand(p, "bibitem")
 {
 	if (getParam("key").empty())
 		setParam("key", key_prefix + convert<docstring>(++key_counter));
@@ -51,7 +55,7 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 auto_ptr<Inset> InsetBibitem::doClone() const
 {
 	auto_ptr<InsetBibitem> b(new InsetBibitem(params()));
-	b->setCounter(counter);
+	b->autolabel_ = autolabel_;
 	return auto_ptr<Inset>(b);
 }
 
@@ -80,12 +84,6 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-void InsetBibitem::setCounter(int c)
-{
-	counter = c;
-}
-
-
 void InsetBibitem::read(Buffer const & buf, Lexer & lex)
 {
 	InsetCommand::read(buf, lex);
@@ -100,7 +98,7 @@ void InsetBibitem::read(Buffer const & buf, Lexer & lex)
 docstring const InsetBibitem::getBibLabel() const
 {
 	docstring const & label = getParam("label");
-	return label.empty() ? convert<docstring>(counter) : label;
+	return label.empty() ? autolabel_ : label;
 }
 
 
@@ -114,7 +112,7 @@ int InsetBibitem::plaintext(Buffer const &, odocstream & os,
 			    OutputParams const &) const
 {
 	odocstringstream oss;
-	oss << '[' << getCounter() << "] ";
+	oss << '[' << getBibLabel() << "] ";
 
 	docstring const str = oss.str();
 	os << str;
@@ -198,5 +196,21 @@ void InsetBibitem::fillWithBibKeys(Buffer const & buf,
 	keyvalmap.isBibTeX = false;
 	keys[key] = keyvalmap;
 }
+
+
+/// Update the counters of this inset and of its contents
+void InsetBibitem::updateLabels(Buffer const &buf, ParIterator const & pit) 
+{
+	lyxerr << "update! " << to_utf8(getParam("key")) << std::endl;
+	Counters & counters = buf.params().getTextClass().counters();
+	docstring const bibitem = from_ascii("bibitem");
+	if (counters.hasCounter(bibitem) && getParam("label").empty()) {
+		counters.step(bibitem);
+		autolabel_ = counters.theCounter(bibitem);
+	} else
+		autolabel_ = from_ascii("??");
+	refresh();
+}
+
 
 } // namespace lyx

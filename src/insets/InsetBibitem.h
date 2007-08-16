@@ -37,16 +37,14 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::BIBITEM_CODE; }
 	///
-	void setCounter(int);
-	///
-	int getCounter() const { return counter; }
-	///
 	docstring const getBibLabel() const;
 	///
 	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	virtual void fillWithBibKeys(Buffer const &,
 		biblio::BibKeyList &, InsetIterator const &) const;
+	/// Update the counter of this inset
+	virtual void updateLabels(Buffer const &, ParIterator const &);
 
 protected:
 	///
@@ -54,8 +52,8 @@ protected:
 private:
 	virtual std::auto_ptr<Inset> doClone() const;
 
-	///
-	int counter;
+	/// The label that is set by updateLabels
+	docstring autolabel_;
 	///
 	static int key_counter;
 };

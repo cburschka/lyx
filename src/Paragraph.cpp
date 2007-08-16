@@ -1663,6 +1663,10 @@ docstring Paragraph::expandLabel(Layout_ptr const & layout,
 	else
 		fmt = translateIfPossible(layout->labelstring(), bparams);
 
+	if (fmt.empty() && layout->labeltype == LABEL_COUNTER 
+	    && !layout->counter.empty())
+		fmt = "\\the" + layout->counter;
+
 	// handle 'inherited level parts' in 'fmt',
 	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'
 	size_t const i = fmt.find('@', 0);
@@ -1670,8 +1674,10 @@ docstring Paragraph::expandLabel(Layout_ptr const & layout,
 		size_t const j = fmt.find('@', i + 1);
 		if (j != docstring::npos) {
 			docstring parent(fmt, i + 1, j - i - 1);
-			docstring label = expandLabel(tclass[parent], bparams);
-			fmt = docstring(fmt, 0, i) + label + docstring(fmt, j + 1, docstring::npos);
+			docstring label = expandLabel(tclass[parent], bparams,
+						      process_appendix);
+			fmt = docstring(fmt, 0, i) + label 
+				+ docstring(fmt, j + 1, docstring::npos);
 		}
 	}
 

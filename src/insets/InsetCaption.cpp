@@ -36,7 +36,6 @@
 #include "frontends/Painter.h"
 
 #include "support/lstrings.h"
-#include "support/convert.h"
 
 #include <sstream>
 
@@ -306,7 +305,7 @@ void InsetCaption::updateLabels(Buffer const & buf, ParIterator const & it)
 			cnts.step(from_utf8(type));
 			full_label_ = bformat(from_ascii("%1$s %2$s:"), 
 					      name, 
-					      convert<docstring>(cnts.value(from_utf8(type))));
+					      cnts.theCounter(from_utf8(type)));
 		} else
 			full_label_ = bformat(from_ascii("%1$s #:"), name);	
 	}

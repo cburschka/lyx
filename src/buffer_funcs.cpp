@@ -42,11 +42,8 @@
 #include "frontends/alert.h"
 
 #include "insets/InsetBibitem.h"
-#include "insets/InsetCaption.h"
 #include "insets/InsetInclude.h"
-#include "insets/InsetTabular.h"
 
-#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
 #include "support/lyxlib.h"
@@ -518,15 +515,6 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		par.params().labelString(counters.counterLabel(
 			par.translateIfPossible(from_ascii(format), buf.params())));
 
-	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
-		counters.step(from_ascii("bibitem"));
-		int number = counters.value(from_ascii("bibitem"));
-		if (par.bibitem())
-			par.bibitem()->setCounter(number);
-
-		par.params().labelString(
-			par.translateIfPossible(layout->labelstring(), buf.params()));
-		// In biblio shouldn't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		string const & type = counters.current_float();
 		docstring full_label;
@@ -538,7 +526,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 				counters.step(from_utf8(type));
 				full_label = bformat(from_ascii("%1$s %2$s:"), 
 						     name, 
-						     convert<docstring>(counters.value(from_utf8(type))));
+						     counters.theCounter(from_utf8(type)));
 			} else
 				full_label = bformat(from_ascii("%1$s #:"), name);	
 		}
