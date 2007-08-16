@@ -51,7 +51,8 @@ tex2lyx_SOURCES = \
 
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.la \
-	$(top_builddir)/boost/liblyxboost.la 
+	$(top_builddir)/boost/liblyxboost.la \
+	$(LIBICONV) @LIBS@
 
 $(LINKED_FILES) :
 	@rm -f $@ ; \
