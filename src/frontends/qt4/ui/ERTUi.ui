@@ -37,17 +37,7 @@
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item>
-       <widget class="QRadioButton" name="inlineRB" >
-        <property name="toolTip" >
-         <string>Show ERT inline</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Inline</string>
-        </property>
-       </widget>
-      </item>
-      <item>
+     <item>
        <widget class="QRadioButton" name="collapsedRB" >
         <property name="toolTip" >
          <string>Show ERT button only</string>

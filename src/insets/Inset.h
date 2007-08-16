@@ -486,7 +486,6 @@ public:
 	///
 	enum CollapseStatus {
 		Collapsed,
-		Inlined,
 		Open
 	};
 	///

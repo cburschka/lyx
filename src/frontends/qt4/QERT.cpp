@@ -36,7 +36,6 @@ QERTDialog::QERTDialog(QERT * form)
 	setupUi(this);
 	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
-	connect(inlineRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(collapsedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(openRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 }
@@ -82,11 +81,9 @@ void QERT::build_dialog()
 void QERT::apply()
 {
 	if (dialog_->openRB->isChecked())
-		controller().setStatus(InsetERT::Open);
-	else if (dialog_->inlineRB->isChecked())
-		controller().setStatus(InsetERT::Inlined);
+		controller().setStatus(Inset::Open);
 	else
-		controller().setStatus(InsetERT::Collapsed);
+		controller().setStatus(Inset::Collapsed);
 }
 
 
@@ -96,7 +93,6 @@ void QERT::update_contents()
 
 	switch (controller().status()) {
 		case InsetERT::Open: rb = dialog_->openRB; break;
-		case InsetERT::Inlined: rb = dialog_->inlineRB; break;
 		case InsetERT::Collapsed: rb = dialog_->collapsedRB; break;
 	}
 

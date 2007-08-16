@@ -42,7 +42,7 @@ public:
 	///
 	static int const TEXT_TO_BOTTOM_OFFSET = 2;
 	///
-	InsetCollapsable(BufferParams const &, CollapseStatus status = Open);
+	InsetCollapsable(BufferParams const &, CollapseStatus status = Inset::Open);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	///
@@ -77,11 +77,51 @@ public:
 	///
 	void setLabelFont(Font const & f);
 	///
-	bool isOpen() const { return status_ == Open || status_ == Inlined; }
+	bool isOpen() const { return geometry() != ButtonOnly; }
 	///
-	bool inlined() const { return status_ == Inlined; }
+	bool inlined() const { return decoration() == Minimalistic|| decoration() == Conglomerate; }
 	///
 	CollapseStatus status() const;
+	/** Of the old CollapseStatus we only keep the values  
+	 *  Open and Collapsed.
+	 * We define a list of possible inset decoration
+	 * styles, and a list of possible (concrete, visual)
+	 * inset geometries. Relationships between them
+	 * (geometries in body of table):
+	 *
+	 *               \       CollapseStatus:
+	 *   Decoration:  \ Open                Collapsed
+	 *   -------------+-------------------------------
+	 *   Classic      | *) TopButton, <--x) ButtonOnly
+	 *                | LeftButton
+	 *   Minimalistic | NoButton            NoButton
+	 *   Conglomerate | SubLabel            Corners
+	 *   ---------------------------------------------
+	 *   *) toggled by openinlined_
+	 *   x) toggled by autoOpen_
+	 */
+
+	///
+	enum Decoration {
+		Classic,
+		Minimalistic,
+		Conglomerate
+	};
+	/// Default looks
+	virtual Decoration decoration() const { return Classic;  }
+	///
+	enum Geometry {
+		TopButton,
+		ButtonOnly,
+		NoButton,
+		LeftButton,
+		SubLabel,
+		Corners
+	};
+	/// Returns the geometry based on CollapseStatus
+	/// (status_), autoOpen_ and openinlined_, and of
+	/// course decoration().
+	Geometry geometry() const;
 	///
 	bool allowSpellCheck() const { return true; }
 	///
@@ -102,8 +142,6 @@ protected:
 	void edit(Cursor & cur, bool left);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
-	///
-	void setInlined() { status_ = Inlined; }
 	///
 	docstring floatName(std::string const & type, BufferParams const &) const;
 

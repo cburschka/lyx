@@ -78,6 +78,9 @@ public:
 	///
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 	///
+	virtual Decoration decoration() const { return Conglomerate; }
+
+	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///

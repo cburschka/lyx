@@ -51,7 +51,6 @@ using std::ostringstream;
 
 void InsetCharStyle::init()
 {
-	setInlined();
 	setDrawFrame(false);
 }
 
@@ -134,7 +133,6 @@ void InsetCharStyle::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
-	setInlined();
 }
 
 
@@ -236,7 +234,6 @@ void InsetCharStyle::getDrawFont(Font & font) const
 
 void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	setInlined();
 	switch (cmd.action) {
 
 	case LFUN_MOUSE_RELEASE:
