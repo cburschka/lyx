@@ -295,20 +295,20 @@ real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
 real_pkgdatadir=`eval "echo \`eval \"echo \\\`eval \\\"echo ${pkgdatadir}\\\"\\\`\"\`"`
 real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
 VERSION_INFO="Configuration\n\
-  Host type:                      ${host}\n\
-  Special build flags:            ${lyx_flags}\n\
-  C   Compiler:                   ${CC} ${CC_VERSION}\n\
-  C   Compiler LyX flags:         ${AM_CPPFLAGS} ${AM_CFLAGS}\n\
-  C   Compiler flags:             ${CPPFLAGS} ${CFLAGS}\n\
-  C++ Compiler:                   ${CXX} ${CXX_VERSION}\n\
-  C++ Compiler LyX flags:         ${AM_CPPFLAGS} ${AM_CXXFLAGS}\n\
-  C++ Compiler flags:             ${CPPFLAGS} ${CXXFLAGS}\n\
-  Linker flags:                   ${AM_LDFLAGS}\n\
-  Linker user flags:              ${LDFLAGS}\n\
+  Host type:                    ${host}\n\
+  Special build flags:          ${lyx_flags}\n\
+  C   Compiler:                 ${CC} ${CC_VERSION}\n\
+  C   Compiler LyX flags:       ${AM_CPPFLAGS} ${AM_CFLAGS}\n\
+  C   Compiler flags:           ${CPPFLAGS} ${CFLAGS}\n\
+  C++ Compiler:                 ${CXX} ${CXX_VERSION}\n\
+  C++ Compiler LyX flags:       ${AM_CPPFLAGS} ${AM_CXXFLAGS}\n\
+  C++ Compiler flags:           ${CPPFLAGS} ${CXXFLAGS}\n\
+  Linker flags:                 ${AM_LDFLAGS}\n\
+  Linker user flags:            ${LDFLAGS}\n\
 ${FRONTEND_INFO}\
-  Packaging:                      ${lyx_use_packaging}\n\
-  LyX binary dir:                 ${real_bindir}\n\
-  LyX files dir:                  ${real_pkgdatadir}\n"
+  Packaging:                    ${lyx_use_packaging}\n\
+  LyX binary dir:               ${real_bindir}\n\
+  LyX files dir:                ${real_pkgdatadir}\n"
 
 MSYS_AC_CANONICAL_PATH(LYX_ABS_TOP_SRCDIR, ${srcdir})
 MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_LOCALEDIR, ${real_localedir})
