@@ -3,6 +3,8 @@ include(../config.pri)
 
 TEMPLATE = app
 
+QT = core gui
+
 DESTDIR = ../bin
 
 TARGET = lyx$${DEBUGSUFFIX}
@@ -18,12 +20,17 @@ CONFIG += debug_and_release
 LIBS += -lAiksaurus
 
 LIBS += -L../lib
+
+LIBS += ../support/$(OBJECTS_DIR)/Package.o
+LIBS += -Wl,--start-group
 LIBS += -llyxmathed$${DEBUGSUFFIX}
 LIBS += -llyxinsets$${DEBUGSUFFIX}
 LIBS += -llyxgraphics$${DEBUGSUFFIX}
-LIBS += -llyxsupport$${DEBUGSUFFIX}
 LIBS += -llyxfrontends$${DEBUGSUFFIX}
 LIBS += -llyxcontrollers$${DEBUGSUFFIX}
 LIBS += -llyxqt4$${DEBUGSUFFIX}
-LIBS += -llyxboost$${DEBUGSUFFIX}
 LIBS += -llyxsrc$${DEBUGSUFFIX}
+LIBS += -llyxsupport$${DEBUGSUFFIX}
+LIBS += -Wl,--end-group
+
+LIBS += -llyxboost$${DEBUGSUFFIX}
