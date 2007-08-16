@@ -56,6 +56,8 @@ public:
 	Image::ImagePtr image_;
 	/// This signal is emitted when the image loading status changes.
 	boost::signal<void()> signal_;
+	/// The connection of the signal StatusChanged 	
+	boost::signals::connection sc_;
 
 private:
 	///
@@ -222,6 +224,9 @@ void Loader::Impl::resetFile(FileName const & file)
 
 	if (!old_file.empty()) {
 		continue_monitoring = cached_item_->monitoring();
+		// cached_item_ is going to be reset, so the connected
+		// signal needs to be disconnected.
+		sc_.disconnect();
 		cached_item_.reset();
 		Cache::get().remove(old_file);
 	}
@@ -243,7 +248,7 @@ void Loader::Impl::resetFile(FileName const & file)
 	if (continue_monitoring && !cached_item_->monitoring())
 		cached_item_->startMonitoring();
 
-	cached_item_->connect(boost::bind(&Impl::statusChanged, this));
+	sc_ = cached_item_->connect(boost::bind(&Impl::statusChanged, this));
 }
 
 

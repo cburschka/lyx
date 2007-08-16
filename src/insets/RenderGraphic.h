@@ -17,7 +17,6 @@
 #include "graphics/GraphicsLoader.h"
 #include "graphics/GraphicsParams.h"
 
-#include <boost/signal.hpp>
 
 namespace lyx {
 
@@ -28,8 +27,6 @@ public:
 	RenderGraphic(Inset const *);
 	RenderGraphic(RenderGraphic const &, Inset const *);
 	std::auto_ptr<RenderBase> clone(Inset const *) const;
-
-	~RenderGraphic() { loader_connection_.disconnect(); }
 
 	/// compute the size of the object returned in dim
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -49,9 +46,6 @@ private:
 	/// The stored data.
 	graphics::Loader loader_;
 	graphics::Params params_;
-
-	//
-	boost::signals::connection loader_connection_;
 };
 
 

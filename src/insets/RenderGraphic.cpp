@@ -40,7 +40,7 @@ using std::auto_ptr;
 
 RenderGraphic::RenderGraphic(Inset const * inset)
 {
-	loader_connection_ = loader_.connect(boost::bind(&LyX::updateInset,
+	loader_.connect(boost::bind(&LyX::updateInset,
 				    boost::cref(LyX::cref()), inset));
 }
 
@@ -51,7 +51,7 @@ RenderGraphic::RenderGraphic(RenderGraphic const & other,
 	  loader_(other.loader_),
 	  params_(other.params_)
 {
-	loader_connection_ = loader_.connect(boost::bind(&LyX::updateInset,
+	loader_.connect(boost::bind(&LyX::updateInset,
 				    boost::cref(LyX::cref()), inset));
 }
 
