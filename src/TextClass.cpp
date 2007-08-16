@@ -104,7 +104,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 TextClass::TextClass(string const & fn, string const & cln,
 			   string const & desc, bool texClassAvail )
 	: name_(fn), latexname_(cln), description_(desc),
-	  floatlist_(new FloatList), ctrs_(new Counters),
+	  floatlist_(new FloatList), counters_(new Counters),
 	  texClassAvail_(texClassAvail)
 {
 	outputType_ = LATEX;
@@ -894,8 +894,8 @@ void TextClass::readFloat(Lexer & lexrc)
 			    style, name, listName, builtin);
 		floatlist_->newFloat(fl);
 		// each float has its own counter
-		ctrs_->newCounter(from_ascii(type), from_ascii(within), 
-				  docstring(), docstring());
+		counters_->newCounter(from_ascii(type), from_ascii(within), 
+				      docstring(), docstring());
 	}
 
 	lexrc.popTable();
@@ -940,7 +940,7 @@ void TextClass::readCounter(Lexer & lexrc)
 		case CT_NAME:
 			lexrc.next();
 			name = lexrc.getDocString();
-			if (ctrs_->hasCounter(name))
+			if (counters_->hasCounter(name))
 				LYXERR(Debug::TCLASS) 
 					<< "Reading existing counter " 
 					<< to_utf8(name) << endl;
@@ -972,8 +972,8 @@ void TextClass::readCounter(Lexer & lexrc)
 
 	// Here if have a full counter if getout == true
 	if (getout)
-		ctrs_->newCounter(name, within, 
-				  labelstring, labelstring_appendix);
+		counters_->newCounter(name, within, 
+				      labelstring, labelstring_appendix);
 
 	lexrc.popTable();
 }
@@ -1090,12 +1090,23 @@ FloatList const & TextClass::floats() const
 
 Counters & TextClass::counters() const
 {
-	return *ctrs_.get();
+	return *counters_.get();
 }
 
 InsetLayout const & TextClass::insetlayout(docstring const & name) const 
 {
-	return insetlayoutlist_[name]; 
+	docstring n = name;
+	while (!n.empty()) {
+		if (insetlayoutlist_.count(n) > 0)
+			return insetlayoutlist_[n];
+		docstring::size_type i = n.rfind(':');
+		if (i != string::npos) // delimiter was found
+			n = n.substr(i + 1);
+		else
+			break;
+	}
+	static const InsetLayout empty;
+	return empty;
 }
 
 

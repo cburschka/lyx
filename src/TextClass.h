@@ -257,7 +257,7 @@ private:
 	boost::shared_ptr<FloatList> floatlist_;
 
 	/// Types of counters, eg. sections, eqns, figures, avail. in document class.
-	boost::shared_ptr<Counters> ctrs_;
+	boost::shared_ptr<Counters> counters_;
 
 	/// Has this layout file been loaded yet?
 	mutable bool loaded_;
