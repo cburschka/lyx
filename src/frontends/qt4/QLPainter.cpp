@@ -29,9 +29,13 @@
 #include <QPixmapCache>
 #include <QTextLayout>
 
-// Set this to one for enabling the use of a Pixmap cache when drawing
-// text. This is especially useful for older PPC/Mac systems.
+// Set USE_PIXMAP_CACHE to 1 for enabling the use of a Pixmap cache when
+// drawing text. This is especially useful for older PPC/Mac systems.
+#ifdef Q_WS_X11
+#define USE_PIXMAP_CACHE 0
+#else
 #define USE_PIXMAP_CACHE 1
+#endif
 
 using std::endl;
 using std::string;
