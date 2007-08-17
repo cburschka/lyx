@@ -158,6 +158,9 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		docstring s(from_utf8(params_.type));
 		if (undefined())
 			s = _("Undef: ") + s;
+		// Chop off prefix:
+		if (s.find(':') != string::npos)
+			s = s.substr(s.find(':'));
 		theFontMetrics(font).rectText(s, w, a, d);
 		dim.wid = max(dim.wid, w);
 	}
@@ -207,6 +210,9 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		docstring s(from_utf8(params_.type));
 		if (undefined())
 			s = _("Undef: ") + s;
+		// Chop off prefix:
+		if (s.find(':') != string::npos)
+			s = s.substr(s.find(':'));
 		theFontMetrics(font).rectText(s, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
 			s, font, Color::none, Color::none);

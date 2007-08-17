@@ -29,20 +29,10 @@ class FloatList;
 
 
 ///
-class CharStyle {
-public:
-	std::string name;
-	std::string latextype;
-	std::string latexname;
-	std::string latexparam;
-	Font font;
-	Font labelfont;
-	docstring preamble;
-};
-
-
 class InsetLayout {
 public:
+	std::string name;
+	std::string lyxtype;
 	docstring labelstring;
 	std::string latextype;
 	std::string latexname;
@@ -54,7 +44,7 @@ public:
 
 
 /// List of semantically defined character style insets
-typedef std::vector<CharStyle> CharStyles;
+typedef std::vector<InsetLayout> CharStyles;
 
 /// List of inset layouts
 typedef std::map<docstring, InsetLayout> InsetLayouts;
