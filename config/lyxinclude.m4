@@ -156,6 +156,7 @@ fi
 AC_MSG_RESULT($CXX)
 
 AC_PROG_CXX
+AC_PROG_CXXCPP
 
 ### We might want to get or shut warnings.
 AC_ARG_ENABLE(warnings,
