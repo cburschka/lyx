@@ -84,7 +84,25 @@ def close_begin_deeper(document):
         i += 1
 
     document.body[-2:-2] = ['\\end_deeper' for i in range(depth)]
-        
+
+
+def long_charstyle_names(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CharStyle", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace("CharStyle ", "CharStyle CharStyle:")
+        i += 1
+
+def revert_long_charstyle_names(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CharStyle", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace("CharStyle CharStyle:", "CharStyle")
+        i += 1
 
 
 ##
@@ -95,11 +113,13 @@ supported_versions = ["1.6.0","1.6"]
 convert = [
            [277, [fix_wrong_tables]],
            [278, [close_begin_deeper]],
+           [279, [long_charstyle_names]]
           ]
 
 revert =  [
-           [276, []],
+           [278, [revert_long_charstyle_names]],
            [277, []],
+           [276, []]
           ]
 
 

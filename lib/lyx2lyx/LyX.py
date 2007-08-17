@@ -78,7 +78,7 @@ format_relation = [("0_06",    [200], generate_minor_versions("0.6" , 4)),
                    ("1_3",     [221], generate_minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), generate_minor_versions("1.4" , 5)),
                    ("1_5", range(246,277), generate_minor_versions("1.5" , 1)),
-                   ("1_6", range(277,279), generate_minor_versions("1.6" , 0))]
+                   ("1_6", range(277,280), generate_minor_versions("1.6" , 0))]
 
 
 def formats_list():
@@ -471,7 +471,7 @@ class LyX_Base:
             first_step = 1
             for step in format_relation:
                 if  initial_step <= step[0] <= final_step:
-                    if first_step:
+                    if first_step and len(step[1]) == 1:
                         first_step = 0
                         continue
                     steps.append(step[0])
