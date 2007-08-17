@@ -60,14 +60,17 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 				return TopButton;
 		} else
 			return ButtonOnly;
-		break;
+
 	case Minimalistic:
 		return NoButton;
-		break;
+
 	case Conglomerate:
-		return ( status_ == Open ? SubLabel : Corners );
-		break;
+		return status_ == Open ? SubLabel : Corners;
 	}
+
+	// dummy return value to shut down a warning,
+	// this is dead code.
+	return NoButton;
 }
 
 
