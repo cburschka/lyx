@@ -430,8 +430,8 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		par.params().labelWidthString(docstring());
 	}
 
-	// is it a layout that has an automatic label?
-	if (layout->labeltype == LABEL_COUNTER) {
+	switch(layout->labeltype) {
+	case LABEL_COUNTER:
 		if (layout->toclevel <= buf.params().secnumdepth
 		    && (layout->latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
@@ -440,8 +440,9 @@ void setLabel(Buffer const & buf, ParIterator & it)
 				par.expandLabel(layout, buf.params()));
 		} else
 			par.params().labelString(docstring());
+		break;
 
-	} else if (layout->labeltype == LABEL_ITEMIZE) {
+	case LABEL_ITEMIZE: {
 		// At some point of time we should do something more
 		// clever here, like:
 		//   par.params().labelString(
@@ -463,10 +464,11 @@ void setLabel(Buffer const & buf, ParIterator & it)
 			break;
 		}
 		par.params().labelString(itemlabel);
+		break;
+	}
 
-	} else if (layout->labeltype == LABEL_ENUMERATE) {
-		// FIXME
-		// Yes I know this is a really, really! bad solution
+	case LABEL_ENUMERATE: {
+		// FIXME: Yes I know this is a really, really! bad solution
 		// (Lgb)
 		docstring enumcounter = from_ascii("enum");
 
@@ -515,7 +517,10 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		par.params().labelString(counters.counterLabel(
 			par.translateIfPossible(from_ascii(format), buf.params())));
 
-	} else if (layout->labeltype == LABEL_SENSITIVE) {
+		break;
+	}
+
+	case LABEL_SENSITIVE: {
 		string const & type = counters.current_float();
 		docstring full_label;
 		if (type.empty())
@@ -531,12 +536,23 @@ void setLabel(Buffer const & buf, ParIterator & it)
 				full_label = bformat(from_ascii("%1$s #:"), name);	
 		}
 		par.params().labelString(full_label);	
+		break;
+	}
 
-	} else if (layout->labeltype == LABEL_NO_LABEL)
+	case LABEL_NO_LABEL:
 		par.params().labelString(docstring());
-	else
+		break;
+
+	case LABEL_MANUAL:
+	case LABEL_TOP_ENVIRONMENT:
+	case LABEL_CENTERED_TOP_ENVIRONMENT:
+	case LABEL_STATIC:	
+	case LABEL_BIBLIO:
 		par.params().labelString(
-			par.translateIfPossible(layout->labelstring(), buf.params()));
+			par.translateIfPossible(layout->labelstring(), 
+						buf.params()));
+		break;
+	}
 }
 
 } // anon namespace
