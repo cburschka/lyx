@@ -68,8 +68,10 @@ std::pair<int, int> ControlViewSource::getRows() const
 	int begrow = view->buffer()->texrow().
 		getRowFromIdPos(beg.paragraph().id(), beg.pos());
 	int endrow = view->buffer()->texrow().
+		getRowFromIdPos(end.paragraph().id(), end.pos());
+	int nextendrow = view->buffer()->texrow().
 		getRowFromIdPos(end.paragraph().id(), end.pos() + 1);
-	return std::make_pair(begrow, endrow);
+	return std::make_pair(begrow, endrow == nextendrow ? endrow : (nextendrow - 1));
 }
 
 
