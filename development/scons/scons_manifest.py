@@ -2684,6 +2684,7 @@ lib_layouts_inc_files = Split('''
     stdclass.inc
     stdcounters.inc
     stdfloats.inc
+    stdinsets.inc
     stdlayouts.inc
     stdletter.inc
     stdlists.inc
