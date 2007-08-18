@@ -1,5 +1,5 @@
 :: be sure there is a solution
-cmake ..\trunk\development\cmake
+cmake ..\trunk\development\cmake -Dmerge=1
 
 :: clean
 devenv lyx-qt4.sln /clean Release
