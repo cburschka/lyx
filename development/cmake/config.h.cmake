@@ -112,7 +112,10 @@
 #endif
 
 #cmakedefine PACKAGE "${PACKAGE}"
-#cmakedefine PACKAGE_VERSION ${PACKAGE_VERSION}
+#cmakedefine PACKAGE_VERSION "${PACKAGE_VERSION}"
+#cmakedefine LYX_DATE "${LYX_DATE}"
+#cmakedefine VERSION_INFO "${VERSION_INFO}"
+
 
 #cmakedefine USE_POSIX_PACKAGING 1
 #cmakedefine USE_WINDOWS_PACKAGING 1
