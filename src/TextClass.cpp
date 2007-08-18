@@ -1015,7 +1015,7 @@ InsetLayout const & TextClass::insetlayout(docstring const & name) const
 {
 	docstring n = name;
 	while (!n.empty()) {
-		if (!insetlayoutlist_.count(n) > 0)
+		if (insetlayoutlist_.count(n) > 0)
 			return insetlayoutlist_[n];
 		docstring::size_type i = n.find(':');
 		if (i == string::npos)
