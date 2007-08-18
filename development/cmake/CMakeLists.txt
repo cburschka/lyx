@@ -98,10 +98,7 @@ endif(UNIX)
 set(qt_postfix qt4)
 project(lyx-${qt_postfix})
 find_package(Qt4 REQUIRED)
-# maybe anyway
-if(MERGE_FILES)
-	add_definitions(-DQT_CLEAN_NAMESPACE -DQT_NO_STL -DQT_NO_KEYWORDS)
-endif(MERGE_FILES)
+add_definitions(-DQT_CLEAN_NAMESPACE -DQT_NO_STL -DQT_NO_KEYWORDS)
 
 find_package(ZLIB REQUIRED)
 

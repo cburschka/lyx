@@ -18,10 +18,7 @@ lyx_automoc(${frontends_qt4_sources})
 lyx_add_ui_files(frontends_qt4_sources ui_files ${frontend_qt4_UI})
 
 add_definitions(
-		-DQT_CLEAN_NAMESPACE
 		-DQT_GENUINE_STR
-		-DQT_NO_STL
-		-DQT_NO_KEYWORDS
 		-DLYX_BUILD_QT4_FRONTEND
 		)
 
