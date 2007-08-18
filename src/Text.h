@@ -295,15 +295,6 @@ public:
 	/// \sa BufferView::getCoveringInset() to get the innermost inset.
 	Inset * checkInsetHit(BufferView &, int x, int y);
 
-	///
-	/// FIXME: move to TextMetrics.
-	int singleWidth(Buffer const &, Paragraph const & par,
-		pos_type pos) const;
-	///
-	/// FIXME: move to TextMetrics.
-	int singleWidth(Paragraph const & par, pos_type pos, char_type c,
-		Font const & Font) const;
-
 	/// return the color of the canvas
 	Color_color backgroundColor() const;
 

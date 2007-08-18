@@ -361,41 +361,6 @@ double Text::spacing(Buffer const & buffer,
 }
 
 
-int Text::singleWidth(Buffer const & buffer, Paragraph const & par,
-		pos_type pos) const
-{
-	return singleWidth(par, pos, par.getChar(pos),
-		getFont(buffer, par, pos));
-}
-
-
-int Text::singleWidth(Paragraph const & par,
-			 pos_type pos, char_type c, Font const & font) const
-{
-	// The most common case is handled first (Asger)
-	if (isPrintable(c)) {
-		Language const * language = font.language();
-		if (language->rightToLeft()) {
-			if (language->lang() == "arabic_arabtex" ||
-				language->lang() == "arabic_arabi" ||
-			    language->lang() == "farsi") {
-				if (Encodings::isComposeChar_arabic(c))
-					return 0;
-				c = par.transformChar(c, pos);
-			} else if (language->lang() == "hebrew" &&
-				   Encodings::isComposeChar_hebrew(c))
-				return 0;
-		}
-		return theFontMetrics(font).width(c);
-	}
-
-	if (c == Paragraph::META_INSET)
-		return par.getInset(pos)->width();
-
-	return theFontMetrics(font).width(c);
-}
-
-
 int Text::leftMargin(Buffer const & buffer, int max_width, pit_type pit) const
 {
 	BOOST_ASSERT(pit >= 0);
@@ -1749,7 +1714,7 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 				getLabelFont(buffer, par));
 			x += m.label_hfill + labelfm.width(par.layout()->labelsep);
 			if (par.isLineSeparator(body_pos - 1))
-				x -= singleWidth(buffer, par, body_pos - 1);
+				x -= tm.singleWidth(pit, body_pos - 1);
 		}
 
 		// Use font span to speed things up, see above
@@ -1758,7 +1723,7 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 			font = getFont(buffer, par, pos);
 		}
 
-		x += singleWidth(par, pos, par.getChar(pos), font);
+		x += pm.singleWidth(pos, font);
 
 		if (par.hfillExpansion(row, pos))
 			x += (pos >= body_pos) ? m.hfill : m.label_hfill;
@@ -1769,9 +1734,9 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 	// see correction above
 	if (boundary_correction) {
 		if (isRTL(buffer, sl, boundary))
-			x -= singleWidth(buffer, par, ppos);
+			x -= tm.singleWidth(pit, ppos);
 		else
-			x += singleWidth(buffer, par, ppos);
+			x += tm.singleWidth(pit, ppos);
 	}
 
 	return int(x);

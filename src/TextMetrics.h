@@ -62,6 +62,8 @@ public:
 
 	///
 	int maxWidth() const { return max_width_; }
+	///
+	int singleWidth(pit_type const pit,	pos_type pos) const;
 
 	///
 	int rightMargin(ParagraphMetrics const & pm) const;
@@ -77,7 +79,7 @@ private:
 	ParagraphMetrics & parMetrics(pit_type, bool redo_paragraph);
 
 	/// the minimum space a manual label needs on the screen in pixels
-	int labelFill(Paragraph const & par, Row const & row) const;
+	int labelFill(pit_type const pit, Row const & row) const;
 
 	/// FIXME??
 	int labelEnd(pit_type const pit) const;

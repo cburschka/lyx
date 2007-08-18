@@ -189,4 +189,32 @@ int ParagraphMetrics::rightMargin(Buffer const & buffer) const
 	return r_margin;
 }
 
+
+int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
+{
+	char_type c = par_->getChar(pos);
+
+	// The most special cases are handled first.
+	if (c == Paragraph::META_INSET)
+		return par_->getInset(pos)->width();
+
+	if (!isPrintable(c))
+		return theFontMetrics(font).width(c);
+
+	Language const * language = font.language();
+	if (language->rightToLeft()) {
+		if (language->lang() == "arabic_arabtex" ||
+			language->lang() == "arabic_arabi" ||
+			language->lang() == "farsi") {
+				if (Encodings::isComposeChar_arabic(c))
+					return 0;
+				c = par_->transformChar(c, pos);
+		} else if (language->lang() == "hebrew" &&
+			Encodings::isComposeChar_hebrew(c))
+			return 0;
+	}
+	return theFontMetrics(font).width(c);
+}
+
+
 } // namespace lyx

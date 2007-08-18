@@ -74,6 +74,8 @@ public:
 	void updateRowChangeStatus();
 	///
 	int rightMargin(Buffer const & buffer) const;
+	///
+	int singleWidth(pos_type pos, Font const & Font) const;
 
 	/// dump some information to lyxerr
 	void dump() const;

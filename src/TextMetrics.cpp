@@ -303,7 +303,7 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 			++nlh;
 
 		if (nlh && !par.getLabelWidthString().empty())
-			result.label_hfill = labelFill(par, row) / double(nlh);
+			result.label_hfill = labelFill(pit, row) / double(nlh);
 	}
 
 	// are there any hfills in the row?
@@ -395,9 +395,10 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 }
 
 
-int TextMetrics::labelFill(Paragraph const & par, Row const & row) const
+int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 {
 	Buffer & buffer = *bv_->buffer();
+	Paragraph const & par = text_->getPar(pit);
 
 	pos_type last = par.beginOfBody();
 	BOOST_ASSERT(last > 0);
@@ -411,7 +412,7 @@ int TextMetrics::labelFill(Paragraph const & par, Row const & row) const
 
 	int w = 0;
 	for (pos_type i = row.pos(); i <= last; ++i)
-		w += text_->singleWidth(buffer, par, i);
+		w += singleWidth(pit, i);
 
 	docstring const & label = par.params().labelWidthString();
 	if (label.empty())
@@ -455,6 +456,7 @@ void TextMetrics::rowBreakPoint(int width, pit_type const pit,
 		Row & row) const
 {
 	Buffer & buffer = *bv_->buffer();
+	ParagraphMetrics const & pm = par_metrics_[pit];
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
 	pos_type const pos = row.pos();
@@ -493,8 +495,7 @@ void TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	pos_type point = end;
 	pos_type i = pos;
 	for ( ; i < end; ++i, ++fi) {
-		char_type const c = par.getChar(i);
-		int thiswidth = text_->singleWidth(par, i, c, *fi);
+		int thiswidth = pm.singleWidth(i, *fi);
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
@@ -502,7 +503,7 @@ void TextMetrics::rowBreakPoint(int width, pit_type const pit,
 				text_->getLabelFont(buffer, par));
 			int add = fm.width(layout->labelsep);
 			if (par.isLineSeparator(i - 1))
-				add -= text_->singleWidth(buffer, par, i - 1);
+				add -= singleWidth(pit, i - 1);
 
 			add = std::max(add, label_end - x);
 			thiswidth += add;
@@ -573,7 +574,7 @@ void TextMetrics::setRowWidth(int right_margin,
 	Buffer & buffer = *bv_->buffer();
 	// get the pure distance
 	pos_type const end = row.endpos();
-
+	ParagraphMetrics const & pm = par_metrics_[pit];
 	Paragraph const & par = text_->getPar(pit);
 	int w = text_->leftMargin(buffer, max_width_, pit, row.pos());
 	int label_end = labelEnd(pit);
@@ -589,11 +590,10 @@ void TextMetrics::setRowWidth(int right_margin,
 					text_->getLabelFont(buffer, par));
 				w += fm.width(par.layout()->labelsep);
 				if (par.isLineSeparator(i - 1))
-					w -= text_->singleWidth(buffer, par, i - 1);
+					w -= singleWidth(pit, i - 1);
 				w = max(w, label_end);
 			}
-			char_type const c = par.getChar(i);
-			w += text_->singleWidth(par, i, c, *fi);
+			w += pm.singleWidth(i, *fi);
 		}
 	}
 
@@ -602,7 +602,7 @@ void TextMetrics::setRowWidth(int right_margin,
 			text_->getLabelFont(buffer, par));
 		w += fm.width(par.layout()->labelsep);
 		if (end > 0 && par.isLineSeparator(end - 1))
-			w -= text_->singleWidth(buffer, par, end - 1);
+			w -= singleWidth(pit, end - 1);
 		w = max(w, label_end);
 	}
 
@@ -850,21 +850,21 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 				text_->getLabelFont(buffer, par));
 			tmpx += r.label_hfill + fm.width(layout->labelsep);
 			if (par.isLineSeparator(body_pos - 1))
-				tmpx -= text_->singleWidth(buffer, par, body_pos - 1);
+				tmpx -= singleWidth(pit, body_pos - 1);
 		}
 
 		if (par.hfillExpansion(row, c)) {
-			tmpx += text_->singleWidth(buffer, par, c);
+			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
 				tmpx += r.hfill;
 			else
 				tmpx += r.label_hfill;
 		} else if (par.isSeparator(c)) {
-			tmpx += text_->singleWidth(buffer, par, c);
+			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
 				tmpx += r.separator;
 		} else {
-			tmpx += text_->singleWidth(buffer, par, c);
+			tmpx += singleWidth(pit, c);
 		}
 		++vc;
 	}
@@ -911,9 +911,9 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	// Newline inset, air gap below:
 	if (row.pos() < end && c >= end && par.isNewline(end - 1)) {
 		if (bidi.level(end -1) % 2 == 0)
-			tmpx -= text_->singleWidth(buffer, par, end - 1);
+			tmpx -= singleWidth(pit, end - 1);
 		else
-			tmpx += text_->singleWidth(buffer, par, end - 1);
+			tmpx += singleWidth(pit, end - 1);
 		c = end - 1;
 	}
 
@@ -952,6 +952,15 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 	bool bound = false;
 	Row const & r = pm.rows()[row];
 	return r.pos() + getColumnNearX(pit, r, x, bound);
+}
+
+
+int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
+{
+	Buffer const & buffer = *bv_->buffer();
+	ParagraphMetrics const & pm = par_metrics_[pit];
+
+	return pm.singleWidth(pos, text_->getFont(buffer, text_->getPar(pit), pos));
 }
 
 
