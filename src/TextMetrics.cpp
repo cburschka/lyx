@@ -385,8 +385,8 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 		if (body_pos > 0
 		    && (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		{
-			docstring const lsep = from_utf8(layout->labelsep);
-			result.x += theFontMetrics(text_->getLabelFont(buffer, par)).width(lsep);
+			result.x += theFontMetrics(text_->getLabelFont(buffer, par)).
+				width(layout->labelsep);
 			if (body_pos <= end)
 				result.x += result.label_hfill;
 		}
@@ -493,15 +493,15 @@ void TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	FontIterator fi = FontIterator(buffer, *text_, par, pos);
 	pos_type point = end;
 	pos_type i = pos;
-	FontMetrics const & fm = theFontMetrics(text_->getLabelFont(buffer, par));
 	for ( ; i < end; ++i, ++fi) {
 		char_type const c = par.getChar(i);
 		int thiswidth = text_->singleWidth(par, i, c, *fi);
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
-			docstring lsep = from_utf8(layout->labelsep);
-			int add = fm.width(lsep);
+			FontMetrics const & fm = theFontMetrics(
+				text_->getLabelFont(buffer, par));
+			int add = fm.width(layout->labelsep);
 			if (par.isLineSeparator(i - 1))
 				add -= text_->singleWidth(buffer, par, i - 1);
 
@@ -576,20 +576,19 @@ void TextMetrics::setRowWidth(int right_margin,
 	pos_type const end = row.endpos();
 
 	Paragraph const & par = text_->getPar(pit);
-	docstring const labelsep = from_utf8(par.layout()->labelsep);
 	int w = text_->leftMargin(buffer, max_width_, pit, row.pos());
 	int label_end = labelEnd(pit);
 
 	pos_type const body_pos = par.beginOfBody();
 	pos_type i = row.pos();
 
-	FontMetrics const & fm = theFontMetrics(text_->getLabelFont(buffer, par));
-
 	if (i < end) {
 		FontIterator fi = FontIterator(buffer, *text_, par, i);
 		for ( ; i < end; ++i, ++fi) {
 			if (body_pos > 0 && i == body_pos) {
-				w += fm.width(labelsep);
+				FontMetrics const & fm = theFontMetrics(
+					text_->getLabelFont(buffer, par));
+				w += fm.width(par.layout()->labelsep);
 				if (par.isLineSeparator(i - 1))
 					w -= text_->singleWidth(buffer, par, i - 1);
 				w = max(w, label_end);
@@ -600,7 +599,9 @@ void TextMetrics::setRowWidth(int right_margin,
 	}
 
 	if (body_pos > 0 && body_pos >= end) {
-		w += fm.width(labelsep);
+		FontMetrics const & fm = theFontMetrics(
+			text_->getLabelFont(buffer, par));
+		w += fm.width(par.layout()->labelsep);
 		if (end > 0 && par.isLineSeparator(end - 1))
 			w -= text_->singleWidth(buffer, par, end - 1);
 		w = max(w, label_end);
@@ -842,16 +843,13 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		return 0;
 	}
 
-	frontend::FontMetrics const & fm
-		= theFontMetrics(text_->getLabelFont(buffer, par));
-
 	while (vc < end && tmpx <= x) {
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
-			// FIXME UNICODE
-			docstring const lsep = from_utf8(layout->labelsep);
-			tmpx += r.label_hfill + fm.width(lsep);
+			FontMetrics const & fm = theFontMetrics(
+				text_->getLabelFont(buffer, par));
+			tmpx += r.label_hfill + fm.width(layout->labelsep);
 			if (par.isLineSeparator(body_pos - 1))
 				tmpx -= text_->singleWidth(buffer, par, body_pos - 1);
 		}

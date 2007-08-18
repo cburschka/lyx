@@ -375,22 +375,22 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 		case LT_LEFTMARGIN:	// left margin type
 			if (lexrc.next())
-				leftmargin = lexrc.getString();
+				leftmargin = lexrc.getDocString();
 			break;
 
 		case LT_RIGHTMARGIN:	// right margin type
 			if (lexrc.next())
-				rightmargin = lexrc.getString();
+				rightmargin = lexrc.getDocString();
 			break;
 
 		case LT_LABELINDENT:	// label indenting flag
 			if (lexrc.next())
-				labelindent = lexrc.getString();
+				labelindent = lexrc.getDocString();
 			break;
 
 		case LT_PARINDENT:	// paragraph indent. flag
 			if (lexrc.next())
-				parindent = lexrc.getString();
+				parindent = lexrc.getDocString();
 			break;
 
 		case LT_PARSKIP:	// paragraph skip size
@@ -420,7 +420,7 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 
 		case LT_LABELSEP:	// label separator
 			if (lexrc.next()) {
-				labelsep = subst(lexrc.getString(), 'x', ' ');
+				labelsep = from_utf8(subst(lexrc.getString(), 'x', ' '));
 			}
 			break;
 

@@ -163,10 +163,10 @@ public:
 	Font const & defaultfont() const;
 
 	/// Text that dictates how wide the left margin is on the screen
-	std::string const & leftmargin() const;
+	docstring const & leftmargin() const;
 
 	/// Text that dictates how wide the right margin is on the screen
-	std::string const & rightmargin() const;
+	docstring const & rightmargin() const;
 
 	/// The type of command used to produce a title
 	LYX_TITLE_LATEX_TYPES titletype() const;
@@ -225,10 +225,10 @@ private:
 	*/
 	Font defaultfont_;
 	/// Text that dictates how wide the left margin is on the screen
-	std::string leftmargin_;
+	docstring leftmargin_;
 
 	/// Text that dictates how wide the right margin is on the screen
-	std::string rightmargin_;
+	docstring rightmargin_;
 
 	/// The type of command used to produce a title
 	LYX_TITLE_LATEX_TYPES titletype_;

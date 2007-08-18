@@ -250,15 +250,15 @@ public:
 	Font reslabelfont;
 
 	/// Text that dictates how wide the left margin is on the screen
-	std::string leftmargin;
+	docstring leftmargin;
 	/// Text that dictates how wide the right margin is on the screen
-	std::string rightmargin;
+	docstring rightmargin;
 	/// Text that dictates how much space to leave after a potential label
-	std::string labelsep;
+	docstring labelsep;
 	/// Text that dictates how much space to leave before a potential label
-	std::string labelindent;
+	docstring labelindent;
 	/// Text that dictates the width of the indentation of indented pars
-	std::string parindent;
+	docstring parindent;
 	///
 	double parskip;
 	///

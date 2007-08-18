@@ -623,13 +623,11 @@ void RowPainter::paintFirst()
 
 				pain_.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 			} else {
-				// FIXME UNICODE
-				docstring lab = from_utf8(layout->labelsep);
 				if (is_rtl) {
 					x = width_ - leftMargin()
-						+ fm.width(lab);
+						+ fm.width(layout->labelsep);
 				} else {
-					x = x_ - fm.width(lab)
+					x = x_ - fm.width(layout->labelsep)
 						- fm.width(str);
 				}
 
@@ -818,9 +816,8 @@ void RowPainter::paintText()
 		}
 
 		if (body_pos > 0 && pos == body_pos - 1) {
-			// FIXME UNICODE
 			int const lwidth = theFontMetrics(getLabelFont())
-				.width(from_utf8(layout->labelsep));
+				.width(layout->labelsep);
 
 			x_ += label_hfill_ + lwidth - width_pos;
 		}

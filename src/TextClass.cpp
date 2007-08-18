@@ -398,12 +398,12 @@ bool TextClass::read(FileName const & filename, bool merge)
 
 		case TC_LEFTMARGIN:	// left margin type
 			if (lexrc.next())
-				leftmargin_ = lexrc.getString();
+				leftmargin_ = lexrc.getDocString();
 			break;
 
 		case TC_RIGHTMARGIN:	// right margin type
 			if (lexrc.next())
-				rightmargin_ = lexrc.getString();
+				rightmargin_ = lexrc.getDocString();
 			break;
 		case TC_INSETLAYOUT:
 			if (lexrc.next()) {
@@ -903,13 +903,13 @@ Font const & TextClass::defaultfont() const
 }
 
 
-string const & TextClass::leftmargin() const
+docstring const & TextClass::leftmargin() const
 {
 	return leftmargin_;
 }
 
 
-string const & TextClass::rightmargin() const
+docstring const & TextClass::rightmargin() const
 {
 	return rightmargin_;
 }

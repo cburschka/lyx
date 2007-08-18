@@ -416,16 +416,15 @@ int Text::leftMargin(Buffer const & buffer, int max_width,
 	TextClass const & tclass = buffer.params().getTextClass();
 	Layout_ptr const & layout = par.layout();
 
-	string parindent = layout->parindent;
+	docstring parindent = layout->parindent;
 
 	int l_margin = 0;
 
 	if (isMainText(buffer))
 		l_margin += changebarMargin();
 
-	// FIXME UNICODE
-	docstring leftm = from_utf8(tclass.leftmargin());
-	l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(leftm);
+	l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
+		tclass.leftmargin());
 
 	if (par.getDepth() != 0) {
 		// find the next level paragraph
@@ -456,55 +455,41 @@ int Text::leftMargin(Buffer const & buffer, int max_width,
 	switch (layout->margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout->leftmargin.empty()) {
-			// FIXME UNICODE
-			docstring leftm = from_utf8(layout->leftmargin);
-			l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(leftm);
+			l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
+				layout->leftmargin);
 		}
 		if (!par.getLabelstring().empty()) {
-			// FIXME UNICODE
-			docstring labin = from_utf8(layout->labelindent);
-			l_margin += labelfont_metrics.signedWidth(labin);
-			docstring labstr = par.getLabelstring();
-			l_margin += labelfont_metrics.width(labstr);
-			docstring labsep = from_utf8(layout->labelsep);
-			l_margin += labelfont_metrics.width(labsep);
+			l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+			l_margin += labelfont_metrics.width(par.getLabelstring());
+			l_margin += labelfont_metrics.width(layout->labelsep);
 		}
 		break;
 
 	case MARGIN_MANUAL: {
-		// FIXME UNICODE
-		docstring labin = from_utf8(layout->labelindent);
-		l_margin += labelfont_metrics.signedWidth(labin);
+		l_margin += labelfont_metrics.signedWidth(layout->labelindent);
 		// The width of an empty par, even with manual label, should be 0
 		if (!par.empty() && pos >= par.beginOfBody()) {
 			if (!par.getLabelWidthString().empty()) {
 				docstring labstr = par.getLabelWidthString();
 				l_margin += labelfont_metrics.width(labstr);
-				docstring labsep = from_utf8(layout->labelsep);
-				l_margin += labelfont_metrics.width(labsep);
+				l_margin += labelfont_metrics.width(layout->labelsep);
 			}
 		}
 		break;
 	}
 
 	case MARGIN_STATIC: {
-		// FIXME UNICODE
-		docstring leftm = from_utf8(layout->leftmargin);
-		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(leftm)
-			* 4	/ (par.getDepth() + 4);
+		l_margin += theFontMetrics(buffer.params().getFont()).
+			signedWidth(layout->leftmargin) * 4	/ (par.getDepth() + 4);
 		break;
 	}
 
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout->labeltype == LABEL_MANUAL) {
 			if (pos >= par.beginOfBody()) {
-				// FIXME UNICODE
-				l_margin += labelfont_metrics.signedWidth(
-					from_utf8(layout->leftmargin));
+				l_margin += labelfont_metrics.signedWidth(layout->leftmargin);
 			} else {
-				// FIXME UNICODE
-				l_margin += labelfont_metrics.signedWidth(
-					from_utf8(layout->labelindent));
+				l_margin += labelfont_metrics.signedWidth(layout->labelindent);
 			}
 		} else if (pos != 0
 			   // Special case to fix problems with
@@ -512,14 +497,13 @@ int Text::leftMargin(Buffer const & buffer, int max_width,
 			   || (layout->labeltype == LABEL_STATIC
 			       && layout->latextype == LATEX_ENVIRONMENT
 			       && !isFirstInSequence(pit, pars_))) {
-			// FIXME UNICODE
-			l_margin += labelfont_metrics.signedWidth(from_utf8(layout->leftmargin));
+			l_margin += labelfont_metrics.signedWidth(layout->leftmargin);
 		} else if (layout->labeltype != LABEL_TOP_ENVIRONMENT
 			   && layout->labeltype != LABEL_BIBLIO
 			   && layout->labeltype !=
 			   LABEL_CENTERED_TOP_ENVIRONMENT) {
-			l_margin += labelfont_metrics.signedWidth(from_utf8(layout->labelindent));
-			l_margin += labelfont_metrics.width(from_utf8(layout->labelsep));
+			l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+			l_margin += labelfont_metrics.width(layout->labelsep);
 			l_margin += labelfont_metrics.width(par.getLabelstring());
 		}
 		break;
@@ -574,8 +558,8 @@ int Text::leftMargin(Buffer const & buffer, int max_width,
 		|| buffer.params().paragraph_separation ==
 		   BufferParams::PARSEP_INDENT))
 	{
-		docstring din = from_utf8(parindent);
-		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(din);
+		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
+			parindent);
 	}
 
 	return l_margin;
@@ -1749,8 +1733,6 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 	// Use font span to speed things up, see below
 	FontSpan font_span;
 	Font font;
-	FontMetrics const & labelfm = theFontMetrics(
-		getLabelFont(buffer, par));
 
 	// If the last logical character is a separator, skip it, unless
 	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
@@ -1763,9 +1745,9 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 			continue;
 		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
-			// FIXME UNICODE
-			docstring const lsep = from_utf8(par.layout()->labelsep);
-			x += m.label_hfill + labelfm.width(lsep);
+			FontMetrics const & labelfm = theFontMetrics(
+				getLabelFont(buffer, par));
+			x += m.label_hfill + labelfm.width(par.layout()->labelsep);
 			if (par.isLineSeparator(body_pos - 1))
 				x -= singleWidth(buffer, par, body_pos - 1);
 		}
