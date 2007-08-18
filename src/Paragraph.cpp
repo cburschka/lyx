@@ -1378,18 +1378,14 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 {
 	BOOST_ASSERT(pos >= 0);
 
-	Layout_ptr const & lout = layout();
+	Font font = getFontSettings(bparams, pos);
 
 	pos_type const body_pos = beginOfBody();
-
-	Font * layoutfont;
 	if (pos < body_pos)
-		layoutfont = &lout->labelfont;
+		font.realize(layout_->labelfont);
 	else
-		layoutfont = &lout->font;
+		font.realize(layout_->font);
 
-	Font font = getFontSettings(bparams, pos);
-	font.realize(*layoutfont);
 	font.realize(outerfont);
 	font.realize(bparams.getFont());
 
