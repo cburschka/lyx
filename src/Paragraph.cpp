@@ -1382,14 +1382,14 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 
 	pos_type const body_pos = beginOfBody();
 
-	Font layoutfont;
+	Font * layoutfont;
 	if (pos < body_pos)
-		layoutfont = lout->labelfont;
+		layoutfont = &lout->labelfont;
 	else
-		layoutfont = lout->font;
+		layoutfont = &lout->font;
 
 	Font font = getFontSettings(bparams, pos);
-	font.realize(layoutfont);
+	font.realize(*layoutfont);
 	font.realize(outerfont);
 	font.realize(bparams.getFont());
 
