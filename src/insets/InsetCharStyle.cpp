@@ -50,13 +50,11 @@ using std::ostringstream;
 
 
 void InsetCharStyle::init()
-{
-	setDrawFrame(false);
-}
+{}
 
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
-	: InsetCollapsable(bp)
+	: InsetCollapsable(bp, Collapsed)
 {
 	params_.type = s;
 	setUndefined();
@@ -66,7 +64,7 @@ InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 				CharStyles::iterator cs)
-	: InsetCollapsable(bp)
+	: InsetCollapsable(bp, Collapsed)
 {
 	params_.type = cs->name;
 	setDefined(cs);
@@ -101,7 +99,6 @@ void InsetCharStyle::setUndefined()
 	params_.font = Font(Font::ALL_INHERIT);
 	params_.labelfont = Font(Font::ALL_INHERIT);
 	params_.labelfont.setColor(Color::error);
-	params_.show_label = true;
 }
 
 
@@ -112,7 +109,6 @@ void InsetCharStyle::setDefined(CharStyles::iterator cs)
 	params_.latexparam = cs->latexparam;
 	params_.font = cs->font;
 	params_.labelfont = cs->labelfont;
-	params_.show_label = true;
 }
 
 
@@ -145,7 +141,7 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::metrics(mi, dim);
 	mi.base.font = tmpfont;
-	if (params_.show_label) {
+	if (status() == Open) {
 		// consider width of the inset label
 		Font font(params_.labelfont);
 		font.realize(Font(Font::ALL_SANE));
@@ -168,9 +164,13 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
-	if (params_.show_label)
+	if (status() == Open)
 		dim.des += ascent();
-	bool const changed = dim_ != dim;
+	else {
+		dim.des -= 3;
+		dim.asc -= 3;
+	}
+	bool const changed =  dim_ != dim;
 	dim_ = dim;
 	return changed;
 }
@@ -184,12 +184,14 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	getDrawFont(pi.base.font);
 	// I don't understand why the above .reduce and .realize aren't
 	//needed, or even wanted, here. It just works. -- MV 10.04.2005
-	InsetText::draw(pi, x + TEXT_TO_INSET_OFFSET, y);
+	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
 
 	int desc = InsetText::descent();
-	if (params_.show_label)
+	if (status() == Open)
 		desc -= ascent();
+	else
+		desc -= 3;
 
 	pi.pain.line(x, y + desc - 4, x, y + desc, params_.labelfont.color());
 	pi.pain.line(x, y + desc, x + dim_.wid - 3, y + desc,
@@ -198,7 +200,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		params_.labelfont.color());
 
 	// the name of the charstyle. Can be toggled.
-	if (params_.show_label) {
+	if (status() == Open) {
 		Font font(params_.labelfont);
 		font.realize(Font(Font::ALL_SANE));
 		font.decSize();
@@ -218,10 +220,11 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 			s, font, Color::none, Color::none);
 	}
 
-	// a visual clue when the cursor is inside the inset
+	// a visual cue when the cursor is inside the inset
 	Cursor & cur = pi.base.bv->cursor();
 	if (cur.isInside(this)) {
 		y -= ascent();
+		y += 3;
 		pi.pain.line(x, y + 4, x, y, params_.labelfont.color());
 		pi.pain.line(x + 4, y, x, y, params_.labelfont.color());
 		pi.pain.line(x + dim_.wid - 3, y + 4, x + dim_.wid - 3, y,
@@ -244,18 +247,24 @@ void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 			if (cmd.button() == mouse_button::button3)
-				params_.show_label = !params_.show_label;
+				if (status() == Open)
+					setStatus(cur, Collapsed);
+				else
+					setStatus(cur, Open);
 			else
 				InsetCollapsable::doDispatch(cur, cmd);
 			break;
 
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "open")
-			params_.show_label = true;
+			setStatus(cur, Open);
 		else if (cmd.argument() == "close")
-			params_.show_label = false;
+			setStatus(cur, Collapsed);
 		else if (cmd.argument() == "toggle" || cmd.argument().empty())
-			params_.show_label = !params_.show_label;
+			if (status() == Open)
+				setStatus(cur, Collapsed);
+			else
+				setStatus(cur, Open);
 		else // if assign or anything else
 			cur.undispatched();
 		cur.dispatched();
@@ -351,7 +360,6 @@ void InsetCharStyle::validate(LaTeXFeatures & features) const
 void InsetCharStyleParams::write(ostream & os) const
 {
 	os << "CharStyle " << type << "\n";
-	os << "show_label " << convert<string>(show_label) << "\n";
 }
 
 
@@ -366,11 +374,7 @@ void InsetCharStyleParams::read(Lexer & lex)
 			type = lex.getString();
 		}
 
-		else if (token == "show_label") {
-			lex.next();
-			show_label = lex.getBool();
-		}
-
+		// This is handled in Collapsable
 		else if (token == "status") {
 			lex.pushToken(token);
 			break;

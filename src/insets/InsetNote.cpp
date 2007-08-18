@@ -184,6 +184,7 @@ void InsetNote::setButtonLabel()
 {
 	docstring const label = notetranslator_loc().find(params_.type);
 	setLabel(label);
+	// isn't this an identity? - MV
 	setLabelFont(layout_.labelfont);
 }
 

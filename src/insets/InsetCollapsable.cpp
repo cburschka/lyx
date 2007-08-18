@@ -228,43 +228,47 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
 	const int xx = x + TEXT_TO_INSET_OFFSET;
 
-	if (decoration() == Minimalistic)  {
-		InsetText::draw(pi, xx, y);
-	} else {
-		Dimension dimc = dimensionCollapsed();
-		int const top  = y - ascent() + TEXT_TO_INSET_OFFSET;
+	// Draw button first -- top, left or only
+	Dimension dimc = dimensionCollapsed();
+	int const top  = y - ascent() + TEXT_TO_INSET_OFFSET;
+	if (decoration() == Classic) {
 		button_dim.x1 = xx + 0;
 		button_dim.x2 = xx + dimc.width();
 		button_dim.y1 = top;
 		button_dim.y2 = top + dimc.height();
 
 		pi.pain.buttonText(xx, top + dimc.asc, label, layout_.labelfont, mouse_hover_);
+	}
 
-		int textx, texty;
-		switch (geometry()) {
-		case LeftButton:
-			textx = xx + dimc.width();
-			texty = top + textdim_.asc;
-			InsetText::draw(pi, textx, texty);
-			break;
-		case TopButton:
-			textx = xx;
-			texty = top + dimc.height() + textdim_.asc;
-			InsetText::draw(pi, textx, texty);
-			break;
-		case ButtonOnly:
-			break;
-		case NoButton:
-			textx = xx;
-			texty = top + textdim_.asc;
-			InsetText::draw(pi, textx, texty);
-			break;
-		case SubLabel:
-		case Corners:
-			// FIXME add handling of SubLabel, Corners
-			// still in CharStyle
-			break;
-		}
+	int textx, texty;
+	switch (geometry()) {
+	case LeftButton:
+		textx = xx + dimc.width();
+		texty = top + textdim_.asc;
+		InsetText::draw(pi, textx, texty);
+		break;
+	case TopButton:
+		textx = xx;
+		texty = top + dimc.height() + textdim_.asc;
+		InsetText::draw(pi, textx, texty);
+		break;
+	case ButtonOnly:
+		break;
+	case NoButton:
+		textx = xx;
+		texty = y + textdim_.asc;
+		InsetText::draw(pi, textx, texty);
+		break;
+	case SubLabel:
+	case Corners:
+		// FIXME add handling of SubLabel, Corners
+		// still in CharStyle
+		textx = xx;
+		texty = y + textdim_.asc;
+		const_cast<InsetCollapsable *>(this)->setDrawFrame(false);
+		InsetText::draw(pi, textx, texty);
+		const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
+		break;
 	}
 	setPosCache(pi, x, y);
 }

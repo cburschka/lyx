@@ -105,6 +105,45 @@ def revert_long_charstyle_names(document):
         i += 1
 
 
+def axe_show_label(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CharStyle", i)
+        if i == -1:
+            return
+        if document.body[i + 1].find("show_label") != -1:
+            if document.body[i + 1].find("true") != -1:
+                document.body[i + 1] = "status open"
+                del document.body[ i + 2]
+            else:
+                if document.body[i + 1].find("false") != -1:
+                    document.body[i + 1] = "status collapsed"
+                    del document.body[ i + 2]
+                else:
+                    document.warning("Malformed LyX document: show_label neither false nor true.")
+        else:
+            document.warning("Malformed LyX document: show_label missing in CharStyle.")
+            
+	i += 1
+
+
+def revert_show_label(document):
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CharStyle", i)
+        if i == -1:
+            return
+        if document.body[i + 1].find("status open") != -1:
+            document.body.insert(i + 1, "show_label true")
+        else:
+            if document.body[i + 1].find("status collapsed") != -1:
+                document.body.insert(i + 1, "show_label false")
+            else:
+                document.warning("Malformed LyX document: no legal status line in CharStyle.")
+        i += 1
+
+
+
 ##
 # Conversion hub
 #
@@ -113,10 +152,12 @@ supported_versions = ["1.6.0","1.6"]
 convert = [
            [277, [fix_wrong_tables]],
            [278, [close_begin_deeper]],
-           [279, [long_charstyle_names]]
+           [279, [long_charstyle_names]],
+           [280, [axe_show_label]]
           ]
 
 revert =  [
+           [279, [revert_show_label]],
            [278, [revert_long_charstyle_names]],
            [277, []],
            [276, []]

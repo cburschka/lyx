@@ -38,8 +38,6 @@ public:
 	Font font;
 	///
 	Font labelfont;
-	///
-	bool show_label;
 };
 
 
