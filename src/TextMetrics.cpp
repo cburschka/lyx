@@ -154,14 +154,14 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 	unsigned int w = 0;
 	for (pit_type pit = 0, n = text_->paragraphs().size(); pit != n; ++pit) {
 		changed |= redoParagraph(pit);
-		ParagraphMetrics const & pm = parMetrics(pit);
+		ParagraphMetrics const & pm = par_metrics_[pit];
 		h += pm.height();
 		if (w < pm.width())
 			w = pm.width();
 	}
 
 	dim.wid = w;
-	dim.asc = parMetrics(0).ascent();
+	dim.asc = par_metrics_[0].ascent();
 	dim.des = h - dim.asc;
 
 	changed |= dim_ != dim;
@@ -184,8 +184,13 @@ int TextMetrics::rightMargin(pit_type const pit) const
 
 bool TextMetrics::redoParagraph(pit_type const pit)
 {
+	// IMPORTANT NOTE: We pass 'false' explicitely in order to not call
+	// redoParagraph() recursively inside parMetrics.
+	Dimension old_dim = parMetrics(pit, false).dim();
+	ParagraphMetrics & pm = par_metrics_[pit];
+	// reinitialize paragraph dimension.
+	pm.dim() = Dimension();
 	Paragraph & par = text_->getPar(pit);
-	ParagraphMetrics pm(par);
 	Buffer & buffer = *bv_->buffer();
 	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
@@ -257,17 +262,11 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	pm.dim().asc += pm.rows()[0].ascent();
 	pm.dim().des -= pm.rows()[0].ascent();
 
-	// IMPORTANT NOTE: We pass 'false' explicitely in order to not call
-	// redoParagraph() recursively inside parMetrics.
-	Dimension old_dim = parMetrics(pit, false).dim();
-
 	changed |= old_dim.height() != pm.dim().height();
-
-	par_metrics_[pit] = pm;
 
 	// Update the row change statuses. The painter will need that info
 	// in order to know which row has to be repainted.
-	par_metrics_[pit].updateRowChangeStatus();
+	pm.updateRowChangeStatus();
 
 	return changed;
 }
@@ -947,7 +946,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 {
-	ParagraphMetrics const & pm = parMetrics(pit);
+	ParagraphMetrics const & pm = par_metrics_[pit];
 	BOOST_ASSERT(!pm.rows().empty());
 	BOOST_ASSERT(row < int(pm.rows().size()));
 	bool bound = false;
@@ -958,7 +957,7 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 
 //int Text::pos2x(pit_type pit, pos_type pos) const
 //{
-//	ParagraphMetrics const & pm = parMetrics(pit);
+//	ParagraphMetrics const & pm = par_metrics_[pit];
 //	Row const & r = pm.rows()[row];
 //	int x = 0;
 //	pos -= r.pos();
