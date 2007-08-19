@@ -27,17 +27,7 @@ public:
 	///
 	void read(Lexer & lex);
 	///
-	std::string type;
-	///
-	std::string latextype;
-	///
-	std::string latexname;
-	///
-	std::string latexparam;
-	///
-	Font font;
-	///
-	Font labelfont;
+	std::string name;
 };
 
 

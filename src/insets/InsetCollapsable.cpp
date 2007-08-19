@@ -76,7 +76,7 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 
 InsetCollapsable::InsetCollapsable
 		(BufferParams const & bp, CollapseStatus status)
-	: InsetText(bp), label(from_ascii("Label")), status_(status),
+	: InsetText(bp), status_(status),
 	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
 	setAutoBreakRows(true);
@@ -91,7 +91,6 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 		button_dim(rhs.button_dim),
 		topx(rhs.topx),
 		topbaseline(rhs.topbaseline),
-		label(rhs.label),
 		layout_(rhs.layout_),
 		status_(rhs.status_),
 		openinlined_(rhs.openinlined_),
@@ -105,8 +104,7 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 
 void  InsetCollapsable::setLayout(BufferParams const & bp)
 {
-	setLabelFont(getLayout(bp).labelfont);
-	setLabel(getLayout(bp).labelstring);
+	layout_ = getLayout(bp);
 }
 
 
@@ -168,7 +166,7 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 {
 	Dimension dim;
 	theFontMetrics(layout_.labelfont).buttonText(
-		label, dim.wid, dim.asc, dim.des);
+		layout_.labelstring, dim.wid, dim.asc, dim.des);
 	return dim;
 }
 
@@ -237,7 +235,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = top;
 		button_dim.y2 = top + dimc.height();
 
-		pi.pain.buttonText(xx, top + dimc.asc, label, layout_.labelfont, mouse_hover_);
+		pi.pain.buttonText(xx, top + dimc.asc, layout_.labelstring, layout_.labelfont, mouse_hover_);
 	}
 
 	int textx, texty;
@@ -507,7 +505,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetCollapsable::setLabel(docstring const & l)
 {
-	label = l;
+	layout_.labelstring = l;
 }
 
 

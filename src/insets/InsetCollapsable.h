@@ -153,8 +153,6 @@ protected:
 	///
 	mutable int topbaseline;
 	///
-	mutable docstring label;
-	///
 	mutable InsetLayout layout_;
 private:
 	///

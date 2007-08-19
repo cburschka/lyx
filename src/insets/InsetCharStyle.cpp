@@ -56,7 +56,7 @@ void InsetCharStyle::init()
 InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
 	: InsetCollapsable(bp, Collapsed)
 {
-	params_.type = s;
+	params_.name = s;
 	setUndefined();
 	init();
 }
@@ -66,7 +66,7 @@ InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 				CharStyles::iterator cs)
 	: InsetCollapsable(bp, Collapsed)
 {
-	params_.type = cs->name;
+	params_.name = cs->name;
 	setDefined(cs);
 	init();
 }
@@ -87,28 +87,24 @@ auto_ptr<Inset> InsetCharStyle::doClone() const
 
 bool InsetCharStyle::undefined() const
 {
-	return params_.latexname.empty();
+	return layout_.latexname.empty();
 }
 
 
 void InsetCharStyle::setUndefined()
 {
-	params_.latextype.clear();
-	params_.latexname.clear();
-	params_.latexparam.clear();
-	params_.font = Font(Font::ALL_INHERIT);
-	params_.labelfont = Font(Font::ALL_INHERIT);
-	params_.labelfont.setColor(Color::error);
+	layout_.latextype.clear();
+	layout_.latexname.clear();
+	layout_.latexparam.clear();
+	layout_.font = Font(Font::ALL_INHERIT);
+	layout_.labelfont = Font(Font::ALL_INHERIT);
+	layout_.labelfont.setColor(Color::error);
 }
 
 
 void InsetCharStyle::setDefined(CharStyles::iterator cs)
 {
-	params_.latextype = cs->latextype;
-	params_.latexname = cs->latexname;
-	params_.latexparam = cs->latexparam;
-	params_.font = cs->font;
-	params_.labelfont = cs->labelfont;
+	layout_ = *cs;
 }
 
 
@@ -143,7 +139,7 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.font = tmpfont;
 	if (status() == Open) {
 		// consider width of the inset label
-		Font font(params_.labelfont);
+		Font font(layout_.labelfont);
 		font.realize(Font(Font::ALL_SANE));
 		font.decSize();
 		font.decSize();
@@ -151,7 +147,7 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		int a = 0;
 		int d = 0;
 		// FIXME UNICODE
-		docstring s(from_utf8(params_.type));
+		docstring s(from_utf8(params_.name));
 		if (undefined())
 			s = _("Undef: ") + s;
 		// Chop off prefix:
@@ -193,15 +189,15 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	else
 		desc -= 3;
 
-	pi.pain.line(x, y + desc - 4, x, y + desc, params_.labelfont.color());
+	pi.pain.line(x, y + desc - 4, x, y + desc, layout_.labelfont.color());
 	pi.pain.line(x, y + desc, x + dim_.wid - 3, y + desc,
-		params_.labelfont.color());
+		layout_.labelfont.color());
 	pi.pain.line(x + dim_.wid - 3, y + desc, x + dim_.wid - 3, y + desc - 4,
-		params_.labelfont.color());
+		layout_.labelfont.color());
 
 	// the name of the charstyle. Can be toggled.
 	if (status() == Open) {
-		Font font(params_.labelfont);
+		Font font(layout_.labelfont);
 		font.realize(Font(Font::ALL_SANE));
 		font.decSize();
 		font.decSize();
@@ -209,7 +205,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		int a = 0;
 		int d = 0;
 		// FIXME UNICODE
-		docstring s(from_utf8(params_.type));
+		docstring s(from_utf8(params_.name));
 		if (undefined())
 			s = _("Undef: ") + s;
 		// Chop off prefix:
@@ -225,19 +221,19 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	if (cur.isInside(this)) {
 		y -= ascent();
 		y += 3;
-		pi.pain.line(x, y + 4, x, y, params_.labelfont.color());
-		pi.pain.line(x + 4, y, x, y, params_.labelfont.color());
+		pi.pain.line(x, y + 4, x, y, layout_.labelfont.color());
+		pi.pain.line(x + 4, y, x, y, layout_.labelfont.color());
 		pi.pain.line(x + dim_.wid - 3, y + 4, x + dim_.wid - 3, y,
-			params_.labelfont.color());
+			layout_.labelfont.color());
 		pi.pain.line(x + dim_.wid - 7, y, x + dim_.wid - 3, y,
-			params_.labelfont.color());
+			layout_.labelfont.color());
 	}
 }
 
 
 void InsetCharStyle::getDrawFont(Font & font) const
 {
-	font = params_.font;
+	font = layout_.font;
 }
 
 
@@ -299,9 +295,9 @@ int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
 {
 	if (!undefined()) {
 		// FIXME UNICODE
-		os << '\\' << from_utf8(params_.latexname);
-		if (!params_.latexparam.empty())
-			os << from_utf8(params_.latexparam);
+		os << '\\' << from_utf8(layout_.latexname);
+		if (!layout_.latexparam.empty())
+			os << from_utf8(layout_.latexparam);
 		os << '{';
 	}
 	int i = InsetText::latex(buf, os, runparams);
@@ -327,8 +323,8 @@ int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
 
 	if (!undefined())
 		// FIXME UNICODE
-		sgml::openTag(os, params_.latexname,
-			      par->getID(buf, runparams) + params_.latexparam);
+		sgml::openTag(os, layout_.latexname,
+			      par->getID(buf, runparams) + layout_.latexparam);
 
 	for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,
@@ -337,7 +333,7 @@ int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
 	}
 
 	if (!undefined())
-		sgml::closeTag(os, params_.latexname);
+		sgml::closeTag(os, layout_.latexname);
 
 	return 0;
 }
@@ -352,14 +348,14 @@ void InsetCharStyle::textString(Buffer const & buf, odocstream & os) const
 void InsetCharStyle::validate(LaTeXFeatures & features) const
 {
 	// Force inclusion of preamble snippet in layout file
-	features.require(params_.type);
+	features.require(params_.name);
 	InsetText::validate(features);
 }
 
 
 void InsetCharStyleParams::write(ostream & os) const
 {
-	os << "CharStyle " << type << "\n";
+	os << "CharStyle " << name << "\n";
 }
 
 
@@ -371,7 +367,7 @@ void InsetCharStyleParams::read(Lexer & lex)
 
 		if (token == "CharStyle") {
 			lex.next();
-			type = lex.getString();
+			name = lex.getString();
 		}
 
 		// This is handled in Collapsable
