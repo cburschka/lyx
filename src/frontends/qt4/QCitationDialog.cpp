@@ -30,6 +30,8 @@
 #include <QCloseEvent>
 #include <QKeyEvent>
 
+#undef KeyPress
+
 using std::vector;
 using std::string;
 

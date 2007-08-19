@@ -412,6 +412,48 @@ AC_ARG_ENABLE(monolithic-boost,
   [enable_monolithic_boost=no])
 AM_CONDITIONAL(MONOLITHIC_BOOST, test $enable_monolithic_boost = yes)
 
+AC_ARG_ENABLE(monolithic-client,
+  AC_HELP_STRING([--enable-monolithic-client],
+		[Use monolithic client compilations]),,
+  [enable_monolithic_client=no])
+AM_CONDITIONAL(MONOLITHIC_CLIENT, test $enable_monolithic_client = yes)
+
+AC_ARG_ENABLE(monolithic-controllers,
+  AC_HELP_STRING([--enable-monolithic-controllers],
+		[Use monolithic controllers compilations]),,
+  [enable_monolithic_controllers=no])
+AM_CONDITIONAL(MONOLITHIC_CONTROLLERS, test $enable_monolithic_controllers = yes)
+
+AC_ARG_ENABLE(monolithic-insets,
+  AC_HELP_STRING([--enable-monolithic-insets],
+		[Use monolithic insets compilations]),,
+  [enable_monolithic_insets=no])
+AM_CONDITIONAL(MONOLITHIC_INSETS, test $enable_monolithic_insets = yes)
+
+AC_ARG_ENABLE(monolithic-mathed,
+  AC_HELP_STRING([--enable-monolithic-mathed],
+		[Use monolithic mathed compilations]),,
+  [enable_monolithic_mathed=no])
+AM_CONDITIONAL(MONOLITHIC_MATHED, test $enable_monolithic_mathed = yes)
+
+AC_ARG_ENABLE(monolithic-core,
+  AC_HELP_STRING([--enable-monolithic-core],
+		[Use monolithic core files compilations]),,
+  [enable_monolithic_core=no])
+AM_CONDITIONAL(MONOLITHIC_CORE, test $enable_monolithic_core = yes)
+
+AC_ARG_ENABLE(monolithic-tex2lyx,
+  AC_HELP_STRING([--enable-monolithic-tex2lyx],
+		[Use monolithic tex2lyx compilations]),,
+  [enable_monolithic_tex2lyx=no])
+AM_CONDITIONAL(MONOLITHIC_TEX2LYX, test $enable_monolithic_tex2lyx = yes)
+
+AC_ARG_ENABLE(monolithic-frontend-qt4,
+  AC_HELP_STRING([--enable-monolithic-frontend-qt4],
+		[Use monolithic compilation of the Qt 4 frontend. Only recommended with > 512 MB of RAM]),,
+  [enable_monolithic_frontend_qt4=no])
+AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT4, test $enable_monolithic_frontend_qt4 = yes)
+
 AC_DEFINE_UNQUOTED([LYX_DATE],"$LYX_DATE",[Date of release])
 AC_DEFINE_UNQUOTED([VERSION_INFO],"$VERSION_INFO",[Full version info])
 AC_DEFINE_UNQUOTED([LYX_MAJOR_VERSION],$lyx_major,[Major version number])

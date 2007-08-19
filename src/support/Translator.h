@@ -65,8 +65,8 @@ public:
 		// For explanation see the next find() function.
 		typename Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
-				     boost::bind(std::equal_to<T1>(),
-						 boost::bind(&MapPair::first, _1),
+				     ::boost::bind(std::equal_to<T1>(),
+						 ::boost::bind(&MapPair::first, _1),
 						 first)
 				);
 
@@ -94,8 +94,8 @@ public:
 		// equal_to(select2nd(pair) , second)
 		typename Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
-				     boost::bind(std::equal_to<T2>(),
-						 boost::bind(&MapPair::second, _1),
+				     ::boost::bind(std::equal_to<T2>(),
+						 ::boost::bind(&MapPair::second, _1),
 						 second)
 				);
 

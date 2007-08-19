@@ -31,7 +31,7 @@ public:
 	docstring const get(std::string const & msg) const;
 private:
 	class Pimpl;
-	boost::scoped_ptr<Pimpl> pimpl_;
+	::boost::scoped_ptr<Pimpl> pimpl_;
 };
 
 

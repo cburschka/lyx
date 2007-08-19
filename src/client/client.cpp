@@ -61,8 +61,8 @@ namespace lyx {
 using support::FileName;
 using support::prefixIs;
 
-using boost::scoped_ptr;
-namespace fs = boost::filesystem;
+using ::boost::scoped_ptr;
+namespace fs = ::boost::filesystem;
 
 using std::string;
 using std::vector;
@@ -76,7 +76,7 @@ namespace support {
 
 string itoa(unsigned int i)
 {
-	return boost::lexical_cast<string>(i);
+	return ::boost::lexical_cast<string>(i);
 }
 
 

@@ -55,6 +55,8 @@ int const CursorWidth = 2;
 int const CursorWidth = 1;
 #endif
 
+#undef KeyPress
+#undef NoModifier 
 
 using std::endl;
 using std::string;

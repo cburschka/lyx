@@ -15,6 +15,8 @@
 #include <QKeyEvent>
 #include <QEvent>
 
+#undef KeyPress
+
 namespace lyx {
 namespace frontend {
 

@@ -2,43 +2,57 @@ include $(top_srcdir)/config/common.am
 
 CLEANFILES += $(man_MANS)
 
-EXTRA_DIST = pch.h lyxclient.man
-
-BUILT_SOURCES = $(PCH_FILE)
-
 man_MANS = lyxclient.1
 
 bin_PROGRAMS = lyxclient
 
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
+EXTRA_DIST = lyxclient.man
+
+AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
+
+lyxclient.1:
+	cp -p $(srcdir)/lyxclient.man lyxclient.1
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.la \
 	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS) 
 
-# everything below the line containing a single backslash and the 
-# spellchecker stuff is an ugly hack and needed because of the
+# everything below the line containing the single backslashs
+# an ugly hack and needed because of the
 # linking problems described in ../Makefile.am
 # These four objects are linked as object files as they are not
 # referenced within the core and therefore are not picked up
 # by the linker without looping over libs. We do not want that,
 # and in fact libtools seems not able to do that.
 
-lyxclient_SOURCES = \
+SOURCEFILES = \
   boost.cpp \
   client.cpp \
   debug.cpp \
-  debug.h \
   gettext.cpp \
-  Messages.cpp \
-  Messages.h \
-	\
-	../Box.cpp \
-	../Box.h \
-	../Dimension.cpp \
-	../Dimension.h \
-	../PrinterParams.cpp \
-	../PrinterParams.h 
+  Messages.cpp 
 
-lyxclient.1:
-	cp -p $(srcdir)/lyxclient.man lyxclient.1
+HEADERFILES = \
+  debug.h \
+  Messages.h 
+
+
+if MONOLITHIC_CLIENT
+
+lyxclient.cpp:
+	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
+
+AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
+BUILT_SOURCES = lyxclient.cpp
+ 
+lyxclient_SOURCES = lyxclient.cpp $(HEADERFILES)
+
+else
+
+EXTRA_DIST += pch.h
+AM_CPPFLAGS += $(PCH_FLAGS)
+BUILT_SOURCES = $(PCH_FILE)
+
+lyxclient_SOURCES = $(SOURCEFILES) $(HEADERFILES)
+
+endif

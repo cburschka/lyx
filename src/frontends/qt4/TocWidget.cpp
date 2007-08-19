@@ -129,7 +129,7 @@ void TocWidget::setTreeDepth(int depth)
 	QModelIndexList indices = tocTV->model()->match(
 		tocTV->model()->index(0,0),
 		Qt::DisplayRole, "*", -1,
-		Qt::MatchWildcard|Qt::MatchRecursive);
+		Qt::MatchFlags(Qt::MatchWildcard|Qt::MatchRecursive));
 
 	int size = indices.size();
 	for (int i = 0; i < size; i++) {

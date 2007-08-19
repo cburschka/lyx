@@ -22,6 +22,7 @@
 
 #include <boost/signals/trackable.hpp>
 
+#undef CursorShape
 
 namespace lyx {
 

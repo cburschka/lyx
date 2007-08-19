@@ -1,14 +1,10 @@
 include $(top_srcdir)/config/common.am
 
-CLEANFILES += *.h
-CLEANFILES += *_moc.cpp
 CLEANFILES += $(UIFILES:%.ui=ui_%.h)
+CLEANFILES += $(MOCEDFILES)
 
 BUILT_SOURCES = $(UIFILES:%.ui=ui_%.h)
-BUILT_SOURCES += $(PCH_FILE)
 BUILT_SOURCES += $(MOCEDFILES)
-
-EXTRA_DIST = pch.h
 
 #########################  Translation  #############################
 # Use _() for localization instead of tr() or trUtf8()
@@ -17,11 +13,10 @@ UIC4FLAGS=-tr lyx::qt_
 ui_%.h: ui/%.ui
 	$(UIC4) $(UIC4FLAGS) $< -o $@
 
-MOCEDFILES = $(MOCFILES:%.cpp=%_moc.cpp)
+MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
 
 %_moc.cpp: %.h
 	$(MOC4) -o $@ $<
-
 
 #########################  LIBRARIES  #############################
 
@@ -33,184 +28,183 @@ liblyxqt4_la_LIBADD = $(QT4_LIB)
 
 AM_CPPFLAGS += \
 	$(QT4_CPPFLAGS) \
-	$(PCH_FLAGS) \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/images \
 	$(QT4_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-liblyxqt4_la_SOURCES = \
+SOURCEFILES = \
 	alert_pimpl.cpp \
 	CheckedLineEdit.cpp \
-	CheckedLineEdit.h \
 	Dialogs.cpp \
 	FileDialog.cpp \
 	GuiClipboard.cpp \
-	GuiClipboard.h \
 	GuiFontLoader.cpp \
-	GuiFontLoader.h \
 	GuiFontMetrics.cpp \
-	GuiFontMetrics.h \
 	GuiSelection.cpp \
-	GuiSelection.h \
 	KeySymbol.cpp \
 	QCitation.cpp \
 	QFloat.cpp \
 	QFontExample.cpp \
-	QGraphics.h \
 	QLImage.cpp \
-	QLImage.h \
 	QLPainter.cpp \
-	QLPainter.h \
 	QPrint.cpp \
-	QPrint.h \
 	Qt2BC.cpp \
-	Qt2BC.h \
 	qt_helpers.cpp \
-	qt_helpers.h \
 	UrlView.cpp \
-	UrlView.h \
-	$(MOCFILES)
-
-MOCFILES = \
 	Action.cpp \
-	Action.h \
 	BulletsModule.cpp \
-	BulletsModule.h \
 	ColorCache.cpp \
-	ColorCache.h \
-	DockView.h \
 	EmptyTable.cpp \
-	EmptyTable.h \
 	FloatPlacement.cpp \
-	FloatPlacement.h \
 	GuiApplication.cpp \
-	GuiApplication.h \
 	GuiImplementation.cpp \
-	GuiImplementation.h \
 	GuiView.cpp \
-	GuiView.h \
 	GuiWorkArea.cpp \
-	GuiWorkArea.h \
 	IconPalette.cpp \
-	IconPalette.h \
 	InsertTableWidget.cpp \
-	InsertTableWidget.h \
 	LengthCombo.cpp \
-	LengthCombo.h \
 	LyXFileDialog.cpp \
-	LyXFileDialog.h \
 	PanelStack.cpp \
-	PanelStack.h \
 	QAbout.cpp \
-	QAbout.h \
 	QBibitem.cpp \
-	QBibitem.h \
 	QBibtex.cpp \
-	QBibtex.h \
 	QBox.cpp \
-	QBox.h \
 	QBranch.cpp \
 	QBranches.cpp \
+	QChanges.cpp \
+	QCharacter.cpp \
+	QCitationDialog.cpp \
+	QCommandBuffer.cpp \
+	QCommandEdit.cpp \
+	QDelimiterDialog.cpp \
+	QDialogView.cpp \
+	QDocument.cpp \
+	QErrorList.cpp \
+	QERT.cpp \
+	QExternal.cpp \
+	QFloatDialog.cpp \
+	QGraphics.cpp \
+	QGraphicsDialog.cpp \
+	QInclude.cpp \
+	QIndex.cpp \
+	QKeySymbol.cpp \
+	QListings.cpp \
+	QLMenubar.cpp \
+	QLog.cpp \
+	QLPopupMenu.cpp \
+	QLPrintDialog.cpp \
+	QLToolbar.cpp \
+	QMathMatrixDialog.cpp \
+	QNomencl.cpp \
+	QNote.cpp \
+	QParagraph.cpp \
+	QPrefs.cpp \
+	QRef.cpp \
+	QSearch.cpp \
+	QSendto.cpp \
+	QSetBorder.cpp \
+	QShowFile.cpp \
+	QSpellchecker.cpp \
+	QTabular.cpp \
+	QTabularCreate.cpp \
+	QTexinfo.cpp \
+	QThesaurus.cpp \
+	QToc.cpp \
+	QURLDialog.cpp \
+	QViewSource.cpp \
+	QVSpace.cpp \
+	QWrap.cpp \
+	socket_callback.cpp \
+	TocModel.cpp \
+	TocWidget.cpp \
+	Validator.cpp 
+
+NOMOCHEADER = \
+	CheckedLineEdit.h \
+	GuiClipboard.h \
+	GuiFontLoader.h \
+	GuiFontMetrics.h \
+	GuiSelection.h \
+	QGraphics.h \
+	QLImage.h \
+	QLPainter.h \
+	QPrint.h \
+	Qt2BC.h \
+	qt_helpers.h
+
+MOCHEADER = \
+	Action.h \
+	BulletsModule.h \
+	ColorCache.h \
+	DockView.h \
+	EmptyTable.h \
+	FloatPlacement.h \
+	GuiApplication.h \
+	GuiImplementation.h \
+	GuiView.h \
+	GuiWorkArea.h \
+	IconPalette.h \
+	InsertTableWidget.h \
+	LengthCombo.h \
+	LyXFileDialog.h \
+	PanelStack.h \
+	QAbout.h \
+	QBibitem.h \
+	QBibtex.h \
+	QBox.h \
 	QBranches.h \
 	QBranch.h \
-	QChanges.cpp \
 	QChanges.h \
-	QCharacter.cpp \
 	QCharacter.h \
-	QCitationDialog.cpp \
 	QCitationDialog.h \
 	QCitation.h \
-	QCommandBuffer.cpp \
 	QCommandBuffer.h \
-	QCommandEdit.cpp \
 	QCommandEdit.h \
-	QDelimiterDialog.cpp \
 	QDelimiterDialog.h \
-	QDialogView.cpp \
 	QDialogView.h \
-	QDocument.cpp \
 	QDocument.h \
-	QErrorList.cpp \
 	QErrorList.h \
-	QERT.cpp \
 	QERT.h \
-	QExternal.cpp \
 	QExternal.h \
-	QFloatDialog.cpp \
 	QFloatDialog.h \
 	QFloat.h \
 	QFontExample.h \
-	QGraphics.cpp \
-	QGraphicsDialog.cpp \
 	QGraphicsDialog.h \
-	QInclude.cpp \
 	QInclude.h \
-	QIndex.cpp \
 	QIndex.h \
-	QKeySymbol.cpp \
 	QKeySymbol.h \
-	QListings.cpp \
 	QListings.h \
 	qlkey.h \
-	QLMenubar.cpp \
 	QLMenubar.h \
-	QLog.cpp \
 	QLog.h \
-	QLPopupMenu.cpp \
 	QLPopupMenu.h \
-	QLPrintDialog.cpp \
 	QLPrintDialog.h \
-	QLToolbar.cpp \
 	QLToolbar.h \
-	QMathMatrixDialog.cpp \
 	QMathMatrixDialog.h \
-	QNomencl.cpp \
 	QNomencl.h \
-	QNote.cpp \
 	QNote.h \
-	QParagraph.cpp \
 	QParagraph.h \
-	QPrefs.cpp \
 	QPrefs.h \
-	QRef.cpp \
 	QRef.h \
-	QSearch.cpp \
 	QSearch.h \
-	QSendto.cpp \
 	QSendto.h \
-	QSetBorder.cpp \
 	QSetBorder.h \
-	QShowFile.cpp \
 	QShowFile.h \
-	QSpellchecker.cpp \
 	QSpellchecker.h \
-	QTabular.cpp \
-	QTabularCreate.cpp \
 	QTabularCreate.h \
 	QTabular.h \
-	QTexinfo.cpp \
 	QTexinfo.h \
-	QThesaurus.cpp \
 	QThesaurus.h \
-	QToc.cpp \
 	QToc.h \
-	QURLDialog.cpp \
 	QURLDialog.h \
-	QViewSource.cpp \
 	QViewSource.h \
-	QVSpace.cpp \
 	QVSpace.h \
-	QWrap.cpp \
 	QWrap.h \
-	socket_callback.cpp \
 	socket_callback.h \
-	TocModel.cpp \
 	TocModel.h \
-	TocWidget.cpp \
 	TocWidget.h \
-	Validator.cpp \
 	Validator.h
 
 UIFILES = \
@@ -285,3 +279,32 @@ UIFILES = \
 	ViewSourceUi.ui \
 	VSpaceUi.ui \
 	WrapUi.ui
+
+
+if MONOLITHIC_FRONTEND_QT4
+
+
+liblyxqt4.cpp:
+	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
+
+liblyxqt4_la_SOURCES = \
+	liblyxqt4.cpp \
+	$(MOCHEADER) \
+	$(NOMOCHEADER)
+
+BUILT_SOURCES += liblyxqt4.cpp
+
+else
+
+
+liblyxqt4_la_SOURCES = \
+	$(SOURCEFILES) \
+	$(MOCHEADER) \
+	$(NOMOCHEADER)
+
+EXTRA_DIST = pch.h
+BUILT_SOURCES += $(PCH_FILE)
+AM_CPPFLAGS += $(PCH_FLAGS)
+
+
+endif

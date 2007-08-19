@@ -53,7 +53,7 @@ private:
 	std::string fromcode_;
 
 	struct Private;
-	boost::scoped_ptr<Private> pimpl_;
+	::boost::scoped_ptr<Private> pimpl_;
 };
 
 // A single codepoint conversion for utf8_to_ucs4 does not make
