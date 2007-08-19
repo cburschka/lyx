@@ -124,7 +124,7 @@ def axe_show_label(document):
         else:
             document.warning("Malformed LyX document: show_label missing in CharStyle.")
             
-	i += 1
+        i += 1
 
 
 def revert_show_label(document):
