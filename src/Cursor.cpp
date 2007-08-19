@@ -1476,12 +1476,14 @@ Font Cursor::getFont() const
 }
 
 
-void Cursor::fixIfBroken()
+bool Cursor::fixIfBroken()
 {
 	if (DocIterator::fixIfBroken()) {
 			clearSelection();
 			resetAnchor();
+			return true;
 	}
+	return false;
 }
 
 
