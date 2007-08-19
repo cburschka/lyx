@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-19 21:04+0200\n"
+"POT-Creation-Date: 2007-08-19 21:22+0200\n"
 "PO-Revision-Date: 2007-07-09 23:15+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -905,7 +905,7 @@ msgstr "&Entwurf"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:86
 msgid "Edit the file externally"
-msgstr "Datei mit externem Editor bearbeiten"
+msgstr "Die Datei mit einem externen Editor bearbeiten"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:89
 msgid "&Edit File..."
@@ -1386,9 +1386,8 @@ msgid "Program Listing"
 msgstr "Programmlisting"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:336
-#, fuzzy
 msgid "Edit the file"
-msgstr "Lade die Datei"
+msgstr "Die Datei bearbeiten"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:58
 msgid "Document &class:"
@@ -8390,14 +8389,12 @@ msgid "Open Recent|t"
 msgstr "Zuletzt geöffnet|Z"
 
 #: lib/ui/stdmenus.inc:43
-#, fuzzy
 msgid "Save All|l"
-msgstr "Speichern unter...|u"
+msgstr "Alles speichern|A"
 
 #: lib/ui/stdmenus.inc:44
-#, fuzzy
 msgid "Revert to Saved|R"
-msgstr "Gespeichertes Dokument wieder herstellen?"
+msgstr "Speicherung wieder herstellen|w"
 
 #: lib/ui/stdmenus.inc:52
 msgid "New Window|W"
@@ -8735,9 +8732,8 @@ msgid "TeX Code|X"
 msgstr "TeX-Code|X"
 
 #: lib/ui/stdmenus.inc:315
-#, fuzzy
 msgid "Program Listing[[Menu]]"
-msgstr "Programmlisting"
+msgstr "Programmlisting|P"
 
 #: lib/ui/stdmenus.inc:322
 msgid "Ordinary Quote|Q"
@@ -11628,19 +11624,17 @@ msgstr ""
 "Bitte prüfen Sie, ob das Verzeichnis existiert und beschreibbar ist."
 
 #: src/Buffer.cpp:805
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
-"Das Dokument %1$s existiert bereits.\n"
-"\n"
-"Möchten Sie dieses Dokument überschreiben?"
+"Das Dokument %1$s wurde extern verändert. Sind Sie sicher, dass Sie diese Datei "
+"überschreiben möchten?"
 
 #: src/Buffer.cpp:807
-#, fuzzy
 msgid "Overwrite modified file?"
-msgstr "Datei überschreiben?"
+msgstr "Veränderte Datei überschreiben?"
 
 #: src/Buffer.cpp:808 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
 #: src/LyXFunc.cpp:2144 src/callback.cpp:186
@@ -12728,14 +12722,12 @@ msgid " done."
 msgstr " fertig."
 
 #: src/LyXFunc.cpp:938
-#, fuzzy
 msgid "Saving all documents..."
-msgstr "Speichere Dokument %1$s..."
+msgstr "Alle Dokumente speichern..."
 
 #: src/LyXFunc.cpp:951
-#, fuzzy
 msgid "All documents saved."
-msgstr "Das Dokument wurde nicht gespeichert"
+msgstr "Alle Dokumente wurden gespeichert."
 
 #: src/LyXFunc.cpp:961
 #, c-format
@@ -13417,9 +13409,8 @@ msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
 #: src/MenuBackend.cpp:476
-#, fuzzy
 msgid "No Documents Open!"
-msgstr "Kein Dokument geöffnet!"
+msgstr "Keine Dokumente geöffnet!"
 
 #: src/MenuBackend.cpp:503 src/MenuBackend.cpp:575 src/MenuBackend.cpp:597
 #: src/MenuBackend.cpp:620 src/MenuBackend.cpp:706 src/MenuBackend.cpp:821
@@ -14498,23 +14489,20 @@ msgid "Directories"
 msgstr "Verzeichnisse"
 
 #: src/frontends/qt4/GuiApplication.cpp:369
-#, fuzzy
 msgid "About %1"
-msgstr "Über LyX"
+msgstr "Über %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:369 src/frontends/qt4/QPrefs.cpp:2031
 msgid "Preferences"
 msgstr "Einstellungen"
 
 #: src/frontends/qt4/GuiApplication.cpp:370
-#, fuzzy
 msgid "Reconfigure"
-msgstr "Neu konfigurieren|k"
+msgstr "Neu konfigurieren"
 
 #: src/frontends/qt4/GuiApplication.cpp:370
-#, fuzzy
 msgid "Quit %1"
-msgstr "LyX beenden"
+msgstr "%1 beenden"
 
 #: src/frontends/qt4/GuiView.cpp:172
 msgid "Small-sized icons"
@@ -15994,17 +15982,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#, fuzzy
-#~ msgid "theorem"
-#~ msgstr "Theorem"
-
-#, fuzzy
-#~ msgid "Opened Theorem Inset"
-#~ msgstr "Notiz-Einfügung geöffnet"
-
-#~ msgid "&Load"
-#~ msgstr "&Öffnen"
-
-#~ msgid "Acknowledgement \\arabic{theorem}"
-#~ msgstr "Danksagung \\arabic{theorem}"
