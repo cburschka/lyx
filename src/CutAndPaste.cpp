@@ -453,7 +453,7 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 		if (it->lyxCode() == Inset::CHARSTYLE_CODE) {
 			InsetCharStyle & inset =
 				static_cast<InsetCharStyle &>(*it);
-			string const name = inset.params().type;
+			string const name = inset.params().name;
 			CharStyles::iterator const found_cs =
 				tclass2.charstyle(name);
 			if (found_cs == tclass2.charstyles().end()) {
