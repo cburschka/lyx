@@ -134,18 +134,9 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	getDrawFont(mi.base.font);
 	mi.base.font.reduce(Font(Font::ALL_SANE));
 	mi.base.font.realize(tmpfont);
-	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
-	InsetText::metrics(mi, dim);
+	bool changed = InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
 	if (status() == Open) {
-		// consider width of the inset label
-		Font font(layout_.labelfont);
-		font.realize(Font(Font::ALL_SANE));
-		font.decSize();
-		font.decSize();
-		int w = 0;
-		int a = 0;
-		int d = 0;
 		// FIXME UNICODE
 		docstring s(from_utf8(params_.name));
 		if (undefined())
@@ -153,21 +144,8 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		// Chop off prefix:
 		if (s.find(':') != string::npos)
 			s = s.substr(s.find(':'));
-		theFontMetrics(font).rectText(s, w, a, d);
-		dim.wid = max(dim.wid, w);
+		layout_.labelstring = s;
 	}
-	dim.asc += TEXT_TO_INSET_OFFSET;
-	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
-	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
-	if (status() == Open)
-		dim.des += ascent();
-	else {
-		dim.des -= 3;
-		dim.asc -= 3;
-	}
-	bool const changed =  dim_ != dim;
-	dim_ = dim;
 	return changed;
 }
 
@@ -183,27 +161,8 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
 
-	int desc = InsetText::descent();
-	if (status() == Open)
-		desc -= ascent();
-	else
-		desc -= 3;
-
-	pi.pain.line(x, y + desc - 4, x, y + desc, layout_.labelfont.color());
-	pi.pain.line(x, y + desc, x + dim_.wid - 3, y + desc,
-		layout_.labelfont.color());
-	pi.pain.line(x + dim_.wid - 3, y + desc, x + dim_.wid - 3, y + desc - 4,
-		layout_.labelfont.color());
-
 	// the name of the charstyle. Can be toggled.
 	if (status() == Open) {
-		Font font(layout_.labelfont);
-		font.realize(Font(Font::ALL_SANE));
-		font.decSize();
-		font.decSize();
-		int w = 0;
-		int a = 0;
-		int d = 0;
 		// FIXME UNICODE
 		docstring s(from_utf8(params_.name));
 		if (undefined())
@@ -211,22 +170,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		// Chop off prefix:
 		if (s.find(':') != string::npos)
 			s = s.substr(s.find(':'));
-		theFontMetrics(font).rectText(s, w, a, d);
-		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
-			s, font, Color::none, Color::none);
-	}
-
-	// a visual cue when the cursor is inside the inset
-	Cursor & cur = pi.base.bv->cursor();
-	if (cur.isInside(this)) {
-		y -= ascent();
-		y += 3;
-		pi.pain.line(x, y + 4, x, y, layout_.labelfont.color());
-		pi.pain.line(x + 4, y, x, y, layout_.labelfont.color());
-		pi.pain.line(x + dim_.wid - 3, y + 4, x + dim_.wid - 3, y,
-			layout_.labelfont.color());
-		pi.pain.line(x + dim_.wid - 7, y, x + dim_.wid - 3, y,
-			layout_.labelfont.color());
+		layout_.labelstring = s;
 	}
 }
 
@@ -243,7 +187,7 @@ void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 			if (cmd.button() == mouse_button::button3)
-				if (status() == Open)
+				if (internalStatus() == Open)
 					setStatus(cur, Collapsed);
 				else
 					setStatus(cur, Open);
@@ -257,7 +201,7 @@ void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else if (cmd.argument() == "close")
 			setStatus(cur, Collapsed);
 		else if (cmd.argument() == "toggle" || cmd.argument().empty())
-			if (status() == Open)
+			if (internalStatus() == Open)
 				setStatus(cur, Collapsed);
 			else
 				setStatus(cur, Open);

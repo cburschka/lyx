@@ -154,6 +154,8 @@ protected:
 	mutable int topbaseline;
 	///
 	mutable InsetLayout layout_;
+	///
+	CollapseStatus internalStatus() const { return status_; }
 private:
 	///
 	mutable CollapseStatus status_;

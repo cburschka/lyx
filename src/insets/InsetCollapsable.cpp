@@ -178,8 +178,29 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	switch (decoration()) {
 	case Minimalistic:
+		InsetText::metrics(mi, dim);
+		break;
 	case Conglomerate:
 		InsetText::metrics(mi, dim);
+		if (status() == Open) {
+			// consider width of the inset label
+			Font font(layout_.labelfont);
+			font.realize(Font(Font::ALL_SANE));
+			font.decSize();
+			font.decSize();
+			int w = 0;
+			int a = 0;
+			int d = 0;
+			docstring s = layout_.labelstring;
+			theFontMetrics(font).rectText(s, w, a, d);
+			dim.wid = max(dim.wid, w);
+		}
+		if (status() == Open)
+			dim.des += ascent();
+		else {
+			dim.des -= 3;
+			dim.asc -= 3;
+		}
 		break;
 	case Classic:
 		dim = dimensionCollapsed();
@@ -259,13 +280,64 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		break;
 	case SubLabel:
 	case Corners:
-		// FIXME add handling of SubLabel, Corners
-		// still in CharStyle
 		textx = xx;
 		texty = y + textdim_.asc;
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(false);
 		InsetText::draw(pi, textx, texty);
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
+
+		int desc = InsetText::descent();
+		if (status() == Open)
+			desc -= ascent();
+		else
+			desc -= 3;
+
+		pi.pain.line(x, y + desc - 4, x, y + desc, 
+			layout_.labelfont.color());
+		if (internalStatus() == Open)
+			pi.pain.line(x, y + desc, 
+				x + dim_.wid - 3, y + desc,
+				layout_.labelfont.color());
+		else {
+			// Make status_ value visible:
+			pi.pain.line(x, y + desc,
+				x + 4, y + desc,
+				layout_.labelfont.color());
+			pi.pain.line(x + dim_.wid - 7, y + desc,
+				x + dim_.wid -3, y + desc,
+				layout_.labelfont.color());
+		}
+		pi.pain.line(x + dim_.wid - 3, y + desc, x + dim_.wid - 3, y + desc - 4,
+			layout_.labelfont.color());
+
+		// the label of the charstyle. Can be toggled.
+		if (status() == Open) {
+			Font font(layout_.labelfont);
+			font.realize(Font(Font::ALL_SANE));
+			font.decSize();
+			font.decSize();
+			int w = 0;
+			int a = 0;
+			int d = 0;
+			// FIXME UNICODE
+			docstring s = layout_.labelstring;
+			theFontMetrics(font).rectText(s, w, a, d);
+			pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
+				s, font, Color::none, Color::none);
+		}
+
+		// a visual cue when the cursor is inside the inset
+		Cursor & cur = pi.base.bv->cursor();
+		if (cur.isInside(this)) {
+			y -= ascent();
+			y += 3;
+			pi.pain.line(x, y + 4, x, y, layout_.labelfont.color());
+			pi.pain.line(x + 4, y, x, y, layout_.labelfont.color());
+			pi.pain.line(x + dim_.wid - 3, y + 4, x + dim_.wid - 3, y,
+				layout_.labelfont.color());
+			pi.pain.line(x + dim_.wid - 7, y, x + dim_.wid - 3, y,
+				layout_.labelfont.color());
+		}
 		break;
 	}
 	setPosCache(pi, x, y);
