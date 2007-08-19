@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-14 07:59+0100\n"
+"POT-Creation-Date: 2007-08-19 21:04+0200\n"
 "PO-Revision-Date: 2007-07-14 12:11+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -8583,7 +8583,7 @@ msgstr "שמור בשם|ב"
 
 #: lib/ui/stdmenus.inc:44
 #, fuzzy
-msgid "Revert to saved|R"
+msgid "Revert to Saved|R"
 msgstr "חזור למסמך השמור?"
 
 #: lib/ui/stdmenus.inc:52
@@ -8598,17 +8598,17 @@ msgstr "סגור חלון"
 msgid "Redo|R"
 msgstr "בצע שוב"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:839
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:843
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "גזור"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:844
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "העתק"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:821
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "הדבק"
@@ -12971,7 +12971,7 @@ msgstr "חזור"
 msgid "Exiting."
 msgstr "יוצא"
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1337
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1341
 #, fuzzy
 msgid "Missing argument"
 msgstr ".ץבוק םש רסח %s תינכתל\n"
@@ -13681,17 +13681,17 @@ msgstr "*** [%s] 0x%x הלקת ***"
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:585
 #, fuzzy
 msgid "No font change defined."
 msgstr "לך לשינוי הבא"
 
-#: src/Text2.cpp:625
+#: src/Text2.cpp:626
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "ב ךרוצ ןיא\n"
 
-#: src/Text2.cpp:627
+#: src/Text2.cpp:628
 msgid "Cannot index more than one paragraph!"
 msgstr ""
 
@@ -13700,24 +13700,24 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "מצב החלקת הקצוות."
 
-#: src/Text3.cpp:724
+#: src/Text3.cpp:728
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/Text3.cpp:898
+#: src/Text3.cpp:902
 msgid "Layout "
 msgstr ""
 
-#: src/Text3.cpp:899
+#: src/Text3.cpp:903
 msgid " not known"
 msgstr "לא ידוע"
 
-#: src/Text3.cpp:1448 src/Text3.cpp:1460
+#: src/Text3.cpp:1452 src/Text3.cpp:1464
 #, fuzzy
 msgid "Character set"
 msgstr "הגדר קבוצה"
 
-#: src/Text3.cpp:1583
+#: src/Text3.cpp:1581 src/Text3.cpp:1592
 msgid "Paragraph layout set"
 msgstr ""
 
@@ -15416,7 +15416,7 @@ msgstr ""
 msgid "Opened ERT Inset"
 msgstr "תוסף ט\"אם פתוח"
 
-#: src/insets/InsetERT.cpp:387
+#: src/insets/InsetERT.cpp:388
 msgid "ERT"
 msgstr "טא\"ם"
 
@@ -15784,33 +15784,23 @@ msgstr "מבנה לא תקין"
 msgid "Unknown TOC type"
 msgstr "%s: %s:%d: \"%s\" תרכומ-יתלב חתפמ תלימ\n"
 
-#: src/insets/InsetTabular.cpp:3165
+#: src/insets/InsetTabular.cpp:3169
 #, fuzzy
 msgid "Opened table"
 msgstr "&הגדרות טבלה"
 
-#: src/insets/InsetTabular.cpp:4285
+#: src/insets/InsetTabular.cpp:4289
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "%s: שגיאה בקביעת %s ל %s"
 
-#: src/insets/InsetTabular.cpp:4286
+#: src/insets/InsetTabular.cpp:4290
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
 #: src/insets/InsetText.cpp:237
 #, fuzzy
 msgid "Opened Text Inset"
-msgstr "ערכת הכלים הנוספת של Andrew"
-
-#: src/insets/InsetTheorem.cpp:41
-#, fuzzy
-msgid "theorem"
-msgstr "משפט"
-
-#: src/insets/InsetTheorem.cpp:91
-#, fuzzy
-msgid "Opened Theorem Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
 #: src/insets/InsetUrl.cpp:42
@@ -15990,11 +15980,6 @@ msgstr "הטלאה בוצעה"
 msgid " strings have been replaced."
 msgstr "נוצר\n"
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, fuzzy, c-format
-msgid " Macro: %1$s: "
-msgstr "Macro"
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -16062,6 +16047,11 @@ msgstr ""
 #: src/mathed/InsetMathNest.cpp:862
 msgid "entered math text mode (textrm)"
 msgstr ""
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, fuzzy, c-format
+msgid " Macro: %1$s: "
+msgstr "Macro"
 
 #: src/mathed/MathMacroTemplate.cpp:241
 #, fuzzy
@@ -16166,6 +16156,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "%s: שורה %d: משתמש לא מוכר %s\n"
+
+#, fuzzy
+#~ msgid "theorem"
+#~ msgstr "משפט"
+
+#, fuzzy
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "ערכת הכלים הנוספת של Andrew"
 
 #~ msgid "&Load"
 #~ msgstr "טען"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-14 07:59+0100\n"
+"POT-Creation-Date: 2007-08-19 21:04+0200\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -8458,7 +8458,7 @@ msgstr "Gorde honela...|h"
 
 #: lib/ui/stdmenus.inc:44
 #, fuzzy
-msgid "Revert to saved|R"
+msgid "Revert to Saved|R"
 msgstr "Gordetako dokumentua berreskuratu?"
 
 #: lib/ui/stdmenus.inc:52
@@ -8473,17 +8473,17 @@ msgstr "Itxi leihoa|x"
 msgid "Redo|R"
 msgstr "Berregin|B"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:839
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:843
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Ebaki"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:844
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:821
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Itsatsi"
@@ -13115,7 +13115,7 @@ msgstr "&Berreskuratu"
 msgid "Exiting."
 msgstr "Irtetzen"
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1337
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1341
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
@@ -13918,16 +13918,16 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ", Muga: "
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:585
 #, fuzzy
 msgid "No font change defined."
 msgstr "Joan hurrengo aldaketara"
 
-#: src/Text2.cpp:625
+#: src/Text2.cpp:626
 msgid "Nothing to index!"
 msgstr "Ezer ez indexatzeko!"
 
-#: src/Text2.cpp:627
+#: src/Text2.cpp:628
 msgid "Cannot index more than one paragraph!"
 msgstr "Ezin da paragrafo bat baino gehiago indexatu!"
 
@@ -13935,23 +13935,23 @@ msgstr "Ezin da paragrafo bat baino gehiago indexatu!"
 msgid "Math editor mode"
 msgstr "Mat. editore-modua"
 
-#: src/Text3.cpp:724
+#: src/Text3.cpp:728
 msgid "Unknown spacing argument: "
 msgstr "Tartekatze-argumentu ezezaguna: "
 
-#: src/Text3.cpp:898
+#: src/Text3.cpp:902
 msgid "Layout "
 msgstr "Diseinua "
 
-#: src/Text3.cpp:899
+#: src/Text3.cpp:903
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/Text3.cpp:1448 src/Text3.cpp:1460
+#: src/Text3.cpp:1452 src/Text3.cpp:1464
 msgid "Character set"
 msgstr "Karaktere-mota"
 
-#: src/Text3.cpp:1583
+#: src/Text3.cpp:1581 src/Text3.cpp:1592
 msgid "Paragraph layout set"
 msgstr "Paragrafo-estiloa"
 
@@ -15592,7 +15592,7 @@ msgstr ""
 msgid "Opened ERT Inset"
 msgstr "ERT barnekoa irekita"
 
-#: src/insets/InsetERT.cpp:387
+#: src/insets/InsetERT.cpp:388
 msgid "ERT"
 msgstr "ERT"
 
@@ -15956,29 +15956,21 @@ msgstr "F&ormatua:"
 msgid "Unknown TOC type"
 msgstr "Token ezezaguna"
 
-#: src/insets/InsetTabular.cpp:3165
+#: src/insets/InsetTabular.cpp:3169
 msgid "Opened table"
 msgstr "Irekitako taula"
 
-#: src/insets/InsetTabular.cpp:4285
+#: src/insets/InsetTabular.cpp:4289
 msgid "Error setting multicolumn"
 msgstr "Errorea zutabe anitza ezartzean"
 
-#: src/insets/InsetTabular.cpp:4286
+#: src/insets/InsetTabular.cpp:4290
 msgid "You cannot set multicolumn vertically."
 msgstr "Ezin duzu zutabe anitza bertikalki ezarri."
 
 #: src/insets/InsetText.cpp:237
 msgid "Opened Text Inset"
 msgstr "Testuen barnekoa irekita"
-
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "teorema"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
-msgstr "Teoremen barnekoa irekita"
 
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
@@ -16141,11 +16133,6 @@ msgstr "Katea ordeztu da."
 msgid " strings have been replaced."
 msgstr " kate ordeztu dira."
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Makroa: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -16208,6 +16195,11 @@ msgstr "sortu matematika-testu ingurune berria ($...$)"
 #: src/mathed/InsetMathNest.cpp:862
 msgid "entered math text mode (textrm)"
 msgstr "sartu matematika-testu moduan (textrm)"
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " Makroa: %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:241
 #, fuzzy
@@ -16326,6 +16318,12 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
+
+#~ msgid "theorem"
+#~ msgstr "teorema"
+
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "Teoremen barnekoa irekita"
 
 #~ msgid "&Load"
 #~ msgstr "&Kargatu"

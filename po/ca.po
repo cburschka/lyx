@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-14 07:59+0100\n"
+"POT-Creation-Date: 2007-08-19 21:04+0200\n"
 "PO-Revision-Date: 2007-06-01 18:19+0200\n"
 "Last-Translator: Joan Montané <jmontane@gmail.com>\n"
 "Language-Team: catalan <ca@li.org>\n"
@@ -8426,7 +8426,7 @@ msgstr "Anomena i desa...|A"
 
 #: lib/ui/stdmenus.inc:44
 #, fuzzy
-msgid "Revert to saved|R"
+msgid "Revert to Saved|R"
 msgstr "Revertir a document salvat"
 
 #: lib/ui/stdmenus.inc:52
@@ -8441,17 +8441,17 @@ msgstr "Tanca finesltra|d"
 msgid "Redo|R"
 msgstr "Refès|R"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:839
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:843
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Talla"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:844
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Copia"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:821
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Enganxa"
@@ -12761,7 +12761,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "Sortir"
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1337
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1341
 msgid "Missing argument"
 msgstr "Argument manquant"
 
@@ -13478,17 +13478,17 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:585
 #, fuzzy
 msgid "No font change defined."
 msgstr "Anar al següent error"
 
-#: src/Text2.cpp:625
+#: src/Text2.cpp:626
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Res a fer"
 
-#: src/Text2.cpp:627
+#: src/Text2.cpp:628
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
@@ -13497,25 +13497,25 @@ msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
 msgid "Math editor mode"
 msgstr "Mode editor matemàtic"
 
-#: src/Text3.cpp:724
+#: src/Text3.cpp:728
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Argument manquant"
 
-#: src/Text3.cpp:898
+#: src/Text3.cpp:902
 msgid "Layout "
 msgstr "Format"
 
-#: src/Text3.cpp:899
+#: src/Text3.cpp:903
 msgid " not known"
 msgstr " desconegut"
 
-#: src/Text3.cpp:1448 src/Text3.cpp:1460
+#: src/Text3.cpp:1452 src/Text3.cpp:1464
 #, fuzzy
 msgid "Character set"
 msgstr "Joc de caràcters:|#H"
 
-#: src/Text3.cpp:1583
+#: src/Text3.cpp:1581 src/Text3.cpp:1592
 msgid "Paragraph layout set"
 msgstr "Format de paràgraf modificat"
 
@@ -15161,7 +15161,7 @@ msgstr "Falta \\end_inset en aquest punt."
 msgid "Opened ERT Inset"
 msgstr ""
 
-#: src/insets/InsetERT.cpp:387
+#: src/insets/InsetERT.cpp:388
 msgid "ERT"
 msgstr "ERT"
 
@@ -15514,28 +15514,20 @@ msgstr ""
 msgid "Unknown TOC type"
 msgstr "Tipus de TOC desconegut"
 
-#: src/insets/InsetTabular.cpp:3165
+#: src/insets/InsetTabular.cpp:3169
 msgid "Opened table"
 msgstr "Taula oberta"
 
-#: src/insets/InsetTabular.cpp:4285
+#: src/insets/InsetTabular.cpp:4289
 msgid "Error setting multicolumn"
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4286
+#: src/insets/InsetTabular.cpp:4290
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
 #: src/insets/InsetText.cpp:237
 msgid "Opened Text Inset"
-msgstr ""
-
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "teorema"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
 msgstr ""
 
 #: src/insets/InsetUrl.cpp:42
@@ -15700,11 +15692,6 @@ msgstr "S'ha substituït una cadena de caràcters"
 msgid " strings have been replaced."
 msgstr "cadenes han estat substituïdes"
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Macro: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -15767,6 +15754,11 @@ msgstr ""
 #: src/mathed/InsetMathNest.cpp:862
 msgid "entered math text mode (textrm)"
 msgstr ""
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " Macro: %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:241
 msgid "math macro"
@@ -15874,6 +15866,9 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Usuari desconegut"
+
+#~ msgid "theorem"
+#~ msgstr "teorema"
 
 #~ msgid "&Load"
 #~ msgstr "&Carrega"

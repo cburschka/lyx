@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-14 07:59+0100\n"
+"POT-Creation-Date: 2007-08-19 21:04+0200\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -8506,7 +8506,7 @@ msgstr "Zapisz jako...|j"
 
 #: lib/ui/stdmenus.inc:44
 #, fuzzy
-msgid "Revert to saved|R"
+msgid "Revert to Saved|R"
 msgstr "Powrót do zapisanego dokumentu?"
 
 #: lib/ui/stdmenus.inc:52
@@ -8521,17 +8521,17 @@ msgstr ""
 msgid "Redo|R"
 msgstr "Ponów|P"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:839
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:843
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Wytnij"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:844
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopiuj"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:821
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
 #: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Wklej"
@@ -13171,7 +13171,7 @@ msgstr "&Przywróæ"
 msgid "Exiting."
 msgstr "Zakoñcz|k"
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1337
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1341
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
@@ -13937,16 +13937,16 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:584
+#: src/Text2.cpp:585
 #, fuzzy
 msgid "No font change defined."
 msgstr "Id¼ do nastêpnej zmiany"
 
-#: src/Text2.cpp:625
+#: src/Text2.cpp:626
 msgid "Nothing to index!"
 msgstr "Brak obiektów do indeksowania!"
 
-#: src/Text2.cpp:627
+#: src/Text2.cpp:628
 msgid "Cannot index more than one paragraph!"
 msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 
@@ -13954,23 +13954,23 @@ msgstr "Nie mo¿na indeksowaæ wiêcej ni¿ jednego akapitu"
 msgid "Math editor mode"
 msgstr "Tryb edytora matematycznego"
 
-#: src/Text3.cpp:724
+#: src/Text3.cpp:728
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/Text3.cpp:898
+#: src/Text3.cpp:902
 msgid "Layout "
 msgstr "Ustawienia "
 
-#: src/Text3.cpp:899
+#: src/Text3.cpp:903
 msgid " not known"
 msgstr " nieznane"
 
-#: src/Text3.cpp:1448 src/Text3.cpp:1460
+#: src/Text3.cpp:1452 src/Text3.cpp:1464
 msgid "Character set"
 msgstr "Kodowanie"
 
-#: src/Text3.cpp:1583
+#: src/Text3.cpp:1581 src/Text3.cpp:1592
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
 
@@ -15624,7 +15624,7 @@ msgstr ""
 msgid "Opened ERT Inset"
 msgstr "Otwarta wstawka ERT"
 
-#: src/insets/InsetERT.cpp:387
+#: src/insets/InsetERT.cpp:388
 msgid "ERT"
 msgstr "ERT"
 
@@ -15988,31 +15988,21 @@ msgstr "&Format:"
 msgid "Unknown TOC type"
 msgstr "Nieznany token"
 
-#: src/insets/InsetTabular.cpp:3165
+#: src/insets/InsetTabular.cpp:3169
 msgid "Opened table"
 msgstr "Otwarta tabela"
 
-#: src/insets/InsetTabular.cpp:4285
+#: src/insets/InsetTabular.cpp:4289
 msgid "Error setting multicolumn"
 msgstr "B³±d ustawienia wielokolumnowej komórki"
 
-#: src/insets/InsetTabular.cpp:4286
+#: src/insets/InsetTabular.cpp:4290
 msgid "You cannot set multicolumn vertically."
 msgstr "Nie mo¿na ustawiæ wielokolumnowej komórki pionowo"
 
 #: src/insets/InsetText.cpp:237
 msgid "Opened Text Inset"
 msgstr "Otwarta wstawka tekstowa"
-
-#: src/insets/InsetTheorem.cpp:41
-#, fuzzy
-msgid "theorem"
-msgstr "Twierdzenie"
-
-#: src/insets/InsetTheorem.cpp:91
-#, fuzzy
-msgid "Opened Theorem Inset"
-msgstr "Otwarta wstawka notki"
 
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
@@ -16181,11 +16171,6 @@ msgstr "Ci±g znaków zosta³ zast±piony."
 msgid " strings have been replaced."
 msgstr " zast±piono."
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr "Makro:  %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -16248,6 +16233,11 @@ msgstr ""
 #: src/mathed/InsetMathNest.cpp:862
 msgid "entered math text mode (textrm)"
 msgstr "podano matematyczny tryb tekstowy (textrm)"
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr "Makro:  %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:241
 #, fuzzy
@@ -16365,6 +16355,14 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Nieznany u¿ytkownik"
+
+#, fuzzy
+#~ msgid "theorem"
+#~ msgstr "Twierdzenie"
+
+#, fuzzy
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "Otwarta wstawka notki"
 
 #~ msgid "&Load"
 #~ msgstr "&Wczytaj"
