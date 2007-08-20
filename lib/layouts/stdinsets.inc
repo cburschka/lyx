@@ -47,8 +47,8 @@ End
 
 InsetLayout Note:Greyedout
 	LabelString           greyedout
-	LatexType             command
-	LatexName             greyedout
+	LatexType             environment
+	LatexName             lyxgreyedout
 	LabelFont
 	  Color               Red
 	  Size                Small
@@ -57,7 +57,7 @@ End
 
 InsetLayout Note:Framed
 	LabelString           framed
-	LatexType             command
+	LatexType             environment
 	LatexName             framed
 	LabelFont
 	  Color               Red
@@ -67,7 +67,7 @@ End
 
 InsetLayout Note:Shaded
 	LabelString           shaded
-	LatexType             command
+	LatexType             environment
 	LatexName             shaded
 	LabelFont
 	  Color               Red
