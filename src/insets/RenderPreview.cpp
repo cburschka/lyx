@@ -62,6 +62,13 @@ RenderPreview::RenderPreview(RenderPreview const & other,
 {}
 
 
+RenderPreview::~RenderPreview()
+{
+       if (ploader_connection_.connected())
+               ploader_connection_.disconnect();
+}
+
+
 auto_ptr<RenderBase> RenderPreview::clone(Inset const * inset) const
 {
 	return auto_ptr<RenderBase>(new RenderPreview(*this, inset));

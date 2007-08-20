@@ -49,6 +49,7 @@ public:
 
 	RenderPreview(Inset const *);
 	RenderPreview(RenderPreview const &, Inset const *);
+	~RenderPreview();
 	std::auto_ptr<RenderBase> clone(Inset const *) const;
 
 	/// Compute the size of the object, returned in dim
