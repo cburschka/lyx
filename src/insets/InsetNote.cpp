@@ -184,8 +184,6 @@ void InsetNote::setButtonLabel()
 {
 	docstring const label = notetranslator_loc().find(params_.type);
 	setLabel(label);
-	// isn't this an identity? - MV
-	setLabelFont(layout_.labelfont);
 }
 
 
@@ -280,23 +278,17 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 		return 0;
 
 	OutputParams runparams(runparams_in);
-	string type;
 	if (params_.type == InsetNoteParams::Comment) {
-		type = "comment";
 		runparams.inComment = true;
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
-	} else if (params_.type == InsetNoteParams::Greyedout)
-		type = "lyxgreyedout";
-	else if (params_.type == InsetNoteParams::Framed)
-		type = "framed";
-	else if (params_.type == InsetNoteParams::Shaded)
-		type = "shaded";
+	} 
 
 	odocstringstream ss;
-	ss << "%\n\\begin{" << from_ascii(type) << "}\n";
+	//ss << "%\n\\begin{" << from_ascii(type) << "}\n";
+	ss << "%\n\\begin{" << from_ascii(layout_.latexname) << "}\n";
 	InsetText::latex(buf, ss, runparams);
-	ss << "\n\\end{" << from_ascii(type) << "}\n";
+	ss << "\n\\end{" << from_ascii(layout_.latexname) << "}\n";
 	// the space after the comment in 'a[comment] b' will be eaten by the
 	// comment environment since the space before b is ignored with the
 	// following latex output:
