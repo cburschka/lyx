@@ -183,37 +183,7 @@ void InsetCharStyle::getDrawFont(Font & font) const
 
 void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	switch (cmd.action) {
-
-	case LFUN_MOUSE_RELEASE:
-			if (cmd.button() == mouse_button::button3)
-				if (internalStatus() == Open)
-					setStatus(cur, Collapsed);
-				else
-					setStatus(cur, Open);
-			else
-				InsetCollapsable::doDispatch(cur, cmd);
-			break;
-
-	case LFUN_INSET_TOGGLE:
-		if (cmd.argument() == "open")
-			setStatus(cur, Open);
-		else if (cmd.argument() == "close")
-			setStatus(cur, Collapsed);
-		else if (cmd.argument() == "toggle" || cmd.argument().empty())
-			if (internalStatus() == Open)
-				setStatus(cur, Collapsed);
-			else
-				setStatus(cur, Open);
-		else // if assign or anything else
-			cur.undispatched();
-		cur.dispatched();
-		break;
-
-	default:
-		InsetCollapsable::doDispatch(cur, cmd);
-		break;
-	}
+	InsetCollapsable::doDispatch(cur, cmd);
 }
 
 

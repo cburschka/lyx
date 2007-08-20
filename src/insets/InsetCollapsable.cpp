@@ -495,9 +495,19 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
-			// Open the Inset configuration dialog
-			showInsetDialog(&cur.bv());
-			break;
+			if (decoration() == Conglomerate) {
+
+				if (internalStatus() == Open)
+					setStatus(cur, Collapsed);
+				else
+					setStatus(cur, Open);
+				break;
+			} else {
+				// Open the Inset 
+				// configuration dialog
+				showInsetDialog(&cur.bv());
+				break;
+			}
 		}
 
 		if (decoration() == Minimalistic) {
@@ -538,11 +548,11 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else if (cmd.argument() == "close")
 			setStatus(cur, Collapsed);
 		else if (cmd.argument() == "toggle" || cmd.argument().empty())
-			if (isOpen()) {
+			if (internalStatus() == Open) {
 				setStatus(cur, Collapsed);
-				cur.top().forwardPos();
-			}
-			else
+				if (geometry() == ButtonOnly)
+					cur.top().forwardPos();
+			} else
 				setStatus(cur, Open);
 		else // if assign or anything else
 			cur.undispatched();
