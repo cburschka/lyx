@@ -48,7 +48,7 @@ bool ControlCitation::initialiseParams(string const & data)
 
 	bool use_styles = engine != biblio::ENGINE_BASIC;
 
-	kernel().buffer().fillWithBibKeys(bibkeysInfo_);
+	bibkeysInfo_.fillWithBibKeys(&(kernel().buffer()));
 	
 	if (citeStyles_.empty())
 		citeStyles_ = biblio::getCiteStyles(engine);
@@ -70,9 +70,43 @@ void ControlCitation::clearParams()
 }
 
 
-vector<string> const ControlCitation::availableKeys() const
+vector<docstring> const ControlCitation::availableKeys() const
 {
-	return biblio::getKeys(bibkeysInfo_);
+	return bibkeysInfo_.getKeys();
+}
+
+
+vector<docstring> const ControlCitation::availableFields() const
+{
+	return bibkeysInfo_.getFields();
+}
+
+
+vector<docstring> const ControlCitation::availableEntries() const
+{
+	return bibkeysInfo_.getEntries();
+}
+
+
+void ControlCitation::filterByEntryType(
+	vector<docstring> & keyVector, docstring entryType) 
+{
+	if (entryType.empty())
+		return;
+	
+	vector<docstring>::iterator it = keyVector.begin();
+	vector<docstring>::iterator end = keyVector.end();
+	
+	vector<docstring> result;
+	for (; it != end; ++it) {
+		docstring const key = *it;
+		BiblioInfo::const_iterator cit = bibkeysInfo_.find(key);
+		if (cit == bibkeysInfo_.end())
+			continue;
+		if (cit->second.entryType == entryType)
+			result.push_back(key);
+	}
+	keyVector = result;
 }
 
 
@@ -82,12 +116,12 @@ biblio::CiteEngine const ControlCitation::getEngine() const
 }
 
 
-docstring const ControlCitation::getInfo(std::string const & key) const
+docstring const ControlCitation::getInfo(docstring const & key) const
 {
 	if (bibkeysInfo_.empty())
 		return docstring();
 
-	return biblio::getInfo(bibkeysInfo_, key);
+	return bibkeysInfo_.getInfo(key);
 }
 
 namespace {
@@ -117,12 +151,12 @@ docstring const escape_special_chars(docstring const & expr)
 
 } // namespace anon
 
-vector<string> ControlCitation::searchKeys(
-	vector<string> const & keys_to_search,
-	docstring const & search_expression,
+vector<docstring> ControlCitation::searchKeys(
+	vector<docstring> const & keys_to_search, bool only_keys,
+ 	docstring const & search_expression, docstring field,
 	bool case_sensitive, bool regex)
 {
-	vector<string> foundKeys;
+	vector<docstring> foundKeys;
 
 	docstring expr = support::trim(search_expression);
 	if (expr.empty())
@@ -136,37 +170,40 @@ vector<string> ControlCitation::searchKeys(
 	boost::regex reg_exp(to_utf8(expr), case_sensitive ?
 		boost::regex_constants::normal : boost::regex_constants::icase);
 
-	vector<string>::const_iterator it = keys_to_search.begin();
-	vector<string>::const_iterator end = keys_to_search.end();
+	vector<docstring>::const_iterator it = keys_to_search.begin();
+	vector<docstring>::const_iterator end = keys_to_search.end();
 	for (; it != end; ++it ) {
-		biblio::BibKeyList::const_iterator info = bibkeysInfo_.find(*it);
+		BiblioInfo::const_iterator info = bibkeysInfo_.find(*it);
 		if (info == bibkeysInfo_.end())
 			continue;
 		
-		biblio::BibTeXInfo const kvm = info->second;
-		string const data = *it + ' ' + to_utf8(kvm.allData);
+		BibTeXInfo const & kvm = info->second;
+		string data;
+		if (only_keys)
+			data = to_utf8(*it);
+		else if (field.empty())
+			data = to_utf8(*it) + ' ' + to_utf8(kvm.allData);
+		else if (kvm.hasField(field))
+			data = to_utf8(kvm.getValueForField(field));
 		
+		if (data.empty())
+			continue;
+
 		try {
 			if (boost::regex_search(data, reg_exp))
 				foundKeys.push_back(*it);
 		}
 		catch (boost::regex_error &) {
-			return vector<string>();
+			return vector<docstring>();
 		}
 	}
 	return foundKeys;
 }
 
 
-vector<docstring> const ControlCitation::getCiteStrings(string const & key) const
+vector<docstring> const ControlCitation::getCiteStrings(docstring const & key) const
 {
-	biblio::CiteEngine const engine = kernel().buffer().params().getEngine();
-	vector<biblio::CiteStyle> const cs = biblio::getCiteStyles(engine);
-
-	if (engine == biblio::ENGINE_NATBIB_NUMERICAL)
-		return biblio::getNumericalStrings(key, bibkeysInfo_, cs);
-	else
-		return biblio::getAuthorYearStrings(key, bibkeysInfo_, cs);
+	return bibkeysInfo_.getCiteStrings(key, kernel().buffer());
 }
 
 } // namespace frontend

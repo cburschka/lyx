@@ -13,6 +13,7 @@
 
 #include "InsetCitation.h"
 
+#include "Biblio.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "debug.h"
@@ -39,6 +40,7 @@ using support::FileName;
 using support::getStringFromVector;
 using support::getVectorFromString;
 using support::ltrim;
+using support::prefixIs;
 using support::rtrim;
 using support::split;
 using support::tokenPos;
@@ -55,8 +57,107 @@ namespace fs = boost::filesystem;
 
 namespace {
 
+vector<string> const init_possible_cite_commands()
+{
+	char const * const pos[] = {
+		"cite", "citet", "citep", "citealt", "citealp",
+		"citeauthor", "citeyear", "citeyearpar",
+		"citet*", "citep*", "citealt*", "citealp*", "citeauthor*",
+		"Citet",  "Citep",  "Citealt",  "Citealp",  "Citeauthor",
+		"Citet*", "Citep*", "Citealt*", "Citealp*", "Citeauthor*",
+		"fullcite",
+		"footcite", "footcitet", "footcitep", "footcitealt",
+		"footcitealp", "footciteauthor", "footciteyear", "footciteyearpar",
+		"citefield", "citetitle", "cite*"
+	};
+	size_t const size_pos = sizeof(pos) / sizeof(pos[0]);
+
+	return vector<string>(pos, pos + size_pos);
+}
+
+
+vector<string> const & possible_cite_commands()
+{
+	static vector<string> const pos = init_possible_cite_commands();
+	return pos;
+}
+
+
+bool is_possible_cite_command(string const & input)
+{
+	vector<string> const & possibles = possible_cite_commands();
+	vector<string>::const_iterator const end = possibles.end();
+	return std::find(possibles.begin(), end, input) != end;
+}
+
+
+string const default_cite_command(biblio::CiteEngine engine)
+{
+	string str;
+	switch (engine) {
+		case biblio::ENGINE_BASIC:
+			str = "cite";
+			break;
+		case biblio::ENGINE_NATBIB_AUTHORYEAR:
+			str = "citet";
+			break;
+		case biblio::ENGINE_NATBIB_NUMERICAL:
+			str = "citep";
+			break;
+		case biblio::ENGINE_JURABIB:
+			str = "cite";
+			break;
+	}
+	return str;
+}
+
+		
+string const 
+		asValidLatexCommand(string const & input, biblio::CiteEngine const engine)
+{
+	string const default_str = default_cite_command(engine);
+	if (!is_possible_cite_command(input))
+		return default_str;
+
+	string output;
+	switch (engine) {
+		case biblio::ENGINE_BASIC:
+			output = default_str;
+			break;
+
+		case biblio::ENGINE_NATBIB_AUTHORYEAR:
+		case biblio::ENGINE_NATBIB_NUMERICAL:
+			if (input == "cite" || input == "citefield" ||
+							input == "citetitle" || input == "cite*")
+				output = default_str;
+			else if (prefixIs(input, "foot"))
+				output = input.substr(4);
+			else
+				output = input;
+			break;
+
+			case biblio::ENGINE_JURABIB: {
+		// Jurabib does not support the 'uppercase' natbib style.
+				if (input[0] == 'C')
+					output = string(1, 'c') + input.substr(1);
+				else
+					output = input;
+
+		// Jurabib does not support the 'full' natbib style.
+				string::size_type const n = output.size() - 1;
+				if (output != "cite*" && output[n] == '*')
+					output = output.substr(0, n);
+
+				break;
+			}
+	}
+
+	return output;
+}
+
+
 docstring const getNatbibLabel(Buffer const & buffer,
-			    string const & citeType, string const & keyList,
+			    string const & citeType, docstring const & keyList,
 			    docstring const & before, docstring const & after,
 			    biblio::CiteEngine engine)
 {
@@ -65,13 +166,13 @@ docstring const getNatbibLabel(Buffer const & buffer,
 		return docstring();
 
 	// Cache the labels
-	typedef std::map<Buffer const *, biblio::BibKeyList> CachedMap;
+	typedef std::map<Buffer const *, BiblioInfo> CachedMap;
 	static CachedMap cached_keys;
 
 	// and cache the timestamp of the bibliography files.
 	static std::map<FileName, time_t> bibfileStatus;
 
-	biblio::BibKeyList keylist;
+	BiblioInfo biblist;
 
 	vector<FileName> const & bibfilesCache = buffer.getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
@@ -95,15 +196,15 @@ docstring const getNatbibLabel(Buffer const & buffer,
 		}
 	}
 
-	// build the keylist only if the bibfiles have been changed
+	// build the list only if the bibfiles have been changed
 	if (cached_keys[&buffer].empty() || bibfileStatus.empty() || changed) {
-		buffer.fillWithBibKeys(keylist);
-		cached_keys[&buffer] = keylist;
+		biblist.fillWithBibKeys(&buffer);
+		cached_keys[&buffer] = biblist;
 	} else
 		// use the cached keys
-		keylist = cached_keys[&buffer];
+		biblist = cached_keys[&buffer];
 
-	if (keylist.empty())
+	if (biblist.empty())
 		return docstring();
 
 	// the natbib citation-styles
@@ -118,10 +219,12 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	// CITE:	author/<before field>
 
 	// We don't currently use the full or forceUCase fields.
-	string cite_type = biblio::asValidLatexCommand(citeType, engine);
+	string cite_type = asValidLatexCommand(citeType, engine);
 	if (cite_type[0] == 'C')
+		//If we were going to use them, this would mean ForceUCase
 		cite_type = string(1, 'c') + cite_type.substr(1);
 	if (cite_type[cite_type.size() - 1] == '*')
+		//and this would mean FULL
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
 
 	docstring before_str;
@@ -161,13 +264,13 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	docstring const sep_str(from_ascii(sep) + ' ');
 
 	docstring label;
-	vector<string> keys = getVectorFromString(keyList);
-	vector<string>::const_iterator it  = keys.begin();
-	vector<string>::const_iterator end = keys.end();
+	vector<docstring> keys = getVectorFromString(keyList);
+	vector<docstring>::const_iterator it  = keys.begin();
+	vector<docstring>::const_iterator end = keys.end();
 	for (; it != end; ++it) {
 		// get the bibdata corresponding to the key
-		docstring const author(biblio::getAbbreviatedAuthor(keylist, *it));
-		docstring const year(biblio::getYear(keylist, *it));
+		docstring const author(biblist.getAbbreviatedAuthor(*it));
+		docstring const year(biblist.getYear(*it));
 
 		// Something isn't right. Fail safely.
 		if (author.empty() || year.empty())
@@ -190,9 +293,7 @@ docstring const getNatbibLabel(Buffer const & buffer,
 					year + cp + sep_str;
 				break;
 			case biblio::ENGINE_NATBIB_NUMERICAL:
-				// FIXME UNICODE
-				label += author + op_str + before_str +
-					'#' + from_utf8(*it) + cp + sep_str;
+				label += author + op_str + before_str + '#' + *it + cp + sep_str;
 				break;
 			case biblio::ENGINE_JURABIB:
 				label += before_str + author + op_str +
@@ -206,8 +307,7 @@ docstring const getNatbibLabel(Buffer const & buffer,
 		} else if (cite_type == "citep" ||
 			   cite_type == "citealp") {
 			if (engine == biblio::ENGINE_NATBIB_NUMERICAL) {
-				// FIXME UNICODE
-				label += from_utf8(*it) + sep_str;
+				label += *it + sep_str;
 			} else {
 				label += author + ", " + year + sep_str;
 			}
@@ -221,9 +321,7 @@ docstring const getNatbibLabel(Buffer const & buffer,
 					year + sep_str;
 				break;
 			case biblio::ENGINE_NATBIB_NUMERICAL:
-				// FIXME UNICODE
-				label += author + ' ' + before_str +
-					'#' + from_utf8(*it) + sep_str;
+				label += author + ' ' + before_str + '#' + *it + sep_str;
 				break;
 			case biblio::ENGINE_JURABIB:
 				label += before_str + author + ' ' +
@@ -310,8 +408,7 @@ docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 	docstring label;
 	biblio::CiteEngine const engine = buffer.params().getEngine();
 	if (engine != biblio::ENGINE_BASIC) {
-		// FIXME UNICODE
-		label = getNatbibLabel(buffer, getCmdName(), to_utf8(getParam("key")),
+		label = getNatbibLabel(buffer, getCmdName(), getParam("key"),
 				       before, after, engine);
 	}
 
@@ -415,7 +512,7 @@ int InsetCitation::latex(Buffer const & buffer, odocstream & os,
 	biblio::CiteEngine cite_engine = buffer.params().getEngine();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
-		biblio::asValidLatexCommand(getCmdName(), cite_engine));
+		asValidLatexCommand(getCmdName(), cite_engine));
 
 	os << "\\" << cite_str;
 

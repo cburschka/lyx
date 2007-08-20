@@ -12,7 +12,6 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include "Biblio_typedefs.h"
 #include "DocIterator.h"
 
 #include "support/FileName.h"
@@ -302,8 +301,6 @@ public:
 	*/
 	void validate(LaTeXFeatures &) const;
 
-	/// return all bibkeys from buffer and its childs
-	void fillWithBibKeys(biblio::BibKeyList & keys) const;
 	/// Update the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	void updateBibfilesCache();

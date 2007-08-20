@@ -20,6 +20,8 @@
 #include "frontends/controllers/frontend_helpers.h"
 #include "frontends/controllers/ControlCitation.h"
 
+#include "support/docstring.h"
+
 #include "debug.h"
 #include "gettext.h"
 
@@ -70,6 +72,7 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 	connect(this, SIGNAL(rejected()), this, SLOT(cleanUp()));
 	availableLV->installEventFilter(this);
 	selectedLV->installEventFilter(this);
+	availableFocused_ = true;
 }
 
 
@@ -120,7 +123,7 @@ bool QCitationDialog::eventFilter(QObject * obj, QEvent * event)
 				on_deletePB_clicked();
 			else if (keyModifiers == Qt::ControlModifier) {
 				form_->clearSelection();
-				update();
+				updateDialog();
 			} else
 				//ignore it otherwise
 				return QObject::eventFilter(obj, event);
@@ -215,19 +218,33 @@ void QCitationDialog::on_restorePB_clicked()
 
 void QCitationDialog::update()
 {
-	if (selectedLV->selectionModel()->selectedIndexes().isEmpty()) {
+	fillFields();
+	fillEntries();
+	updateDialog();
+}
+
+
+//The main point of separating this out is that the fill*() methods
+//called in update() do not need to be called for INTERNAL updates,
+//such as when addPB is pressed, as the list of fields, entries, etc,
+//will not have changed. At the moment, however, the division between
+//fillStyles() and updateStyles() doesn't lend itself to dividing the
+//two methods, though they should be divisible.
+void QCitationDialog::updateDialog()
+{
+	if (availableFocused_ || 
+	    selectedLV->selectionModel()->selectedIndexes().isEmpty()) {
 		if (availableLV->selectionModel()->selectedIndexes().isEmpty()
-			&& availableLV->model()->rowCount() > 0)
-				availableLV->setCurrentIndex(availableLV->model()->index(0,0));
-		updateInfo(availableLV->currentIndex());
+					&& availableLV->model()->rowCount() > 0)
+			availableLV->setCurrentIndex(availableLV->model()->index(0,0));
+		updateInfo(availableLV);
 	} else
-		updateInfo(selectedLV->currentIndex());
+		updateInfo(selectedLV);
 
 	setButtons();
 
 	textBeforeED->setText(form_->textBefore());
 	textAfterED->setText(form_->textAfter());
-
 	fillStyles();
 	updateStyle();
 }
@@ -241,10 +258,16 @@ void QCitationDialog::updateStyle()
 		engine == biblio::ENGINE_NATBIB_NUMERICAL;
 	bool const basic_engine = engine == biblio::ENGINE_BASIC;
 
-	fulllistCB->setEnabled(natbib_engine);
-	forceuppercaseCB->setEnabled(natbib_engine);
-	textBeforeED->setEnabled(!basic_engine);
-	textBeforeLA->setEnabled(!basic_engine);
+	bool const haveSelection = 
+		selectedLV->model()->rowCount() > 0;
+	fulllistCB->setEnabled(natbib_engine && haveSelection);
+	forceuppercaseCB->setEnabled(natbib_engine && haveSelection);
+	textBeforeED->setEnabled(!basic_engine && haveSelection);
+	textBeforeLA->setEnabled(!basic_engine && haveSelection);
+	textAfterED->setEnabled(haveSelection);
+	textAfterLA->setEnabled(haveSelection);
+	citationStyleCO->setEnabled(!basic_engine && haveSelection);
+	citationStyleLA->setEnabled(!basic_engine && haveSelection);
 
 	string const & command = form_->params().getCmdName();
 
@@ -262,21 +285,24 @@ void QCitationDialog::updateStyle()
 	else
 		citationStyleCO->setCurrentIndex(0);
 
-	fulllistCB->setChecked(false);
-	forceuppercaseCB->setChecked(false);
-
 	if (cit != styles.end()) {
 		int const i = int(cit - styles.begin());
 		citationStyleCO->setCurrentIndex(i);
 		fulllistCB->setChecked(cs.full);
 		forceuppercaseCB->setChecked(cs.forceUCase);
+	} else {
+		fulllistCB->setChecked(false);
+		forceuppercaseCB->setChecked(false);
 	}
 }
 
 
+//This one needs to be called whenever citationStyleCO needs
+//to be updated---and this would be on anything that changes the
+//selection in selectedLV, or on a general update.
 void QCitationDialog::fillStyles()
 {
-	int const orig = citationStyleCO->currentIndex();
+	int const oldIndex = citationStyleCO->currentIndex();
 
 	citationStyleCO->clear();
 
@@ -297,7 +323,7 @@ void QCitationDialog::fillStyles()
 	QStringList sty = form_->citationStyles(curr);
 
 	bool const basic_engine =
-		(form_->getEngine() == biblio::ENGINE_BASIC);
+			(form_->getEngine() == biblio::ENGINE_BASIC);
 
 	citationStyleCO->setEnabled(!sty.isEmpty() && !basic_engine);
 	citationStyleLA->setEnabled(!sty.isEmpty() && !basic_engine);
@@ -307,8 +333,37 @@ void QCitationDialog::fillStyles()
 
 	citationStyleCO->insertItems(0, sty);
 
-	if (orig != -1 && orig < citationStyleCO->count())
-		citationStyleCO->setCurrentIndex(orig);
+	if (oldIndex != -1 && oldIndex < citationStyleCO->count())
+		citationStyleCO->setCurrentIndex(oldIndex);
+}
+
+
+void QCitationDialog::fillFields()
+{
+	fieldsCO->blockSignals(true);
+	int const oldIndex = fieldsCO->currentIndex();
+	fieldsCO->clear();
+	QStringList const & fields = form_->getFieldsAsQStringList();
+	fieldsCO->insertItem(0, qt_("All Fields"));
+	fieldsCO->insertItem(1, qt_("Keys"));
+	fieldsCO->insertItems(2, fields);
+	if (oldIndex != -1 && oldIndex < fieldsCO->count())
+		fieldsCO->setCurrentIndex(oldIndex);
+	fieldsCO->blockSignals(false);
+}
+
+
+void QCitationDialog::fillEntries()
+{
+	entriesCO->blockSignals(true);
+	int const oldIndex = entriesCO->currentIndex();
+	entriesCO->clear();
+	QStringList const & entries = form_->getEntriesAsQStringList();
+	entriesCO->insertItem(0, qt_("All Entry Types"));
+	entriesCO->insertItems(1, entries);
+	if (oldIndex != -1 && oldIndex < entriesCO->count())
+		entriesCO->setCurrentIndex(oldIndex);
+	entriesCO->blockSignals(false);
 }
 
 
@@ -338,8 +393,9 @@ void QCitationDialog::setButtons()
 }
 
 
-void QCitationDialog::updateInfo(const QModelIndex & idx)
+void QCitationDialog::updateInfo(QListView const * const qlv)
 {
+	QModelIndex idx = qlv->currentIndex();
 	if (idx.isValid()) {
 		QString const keytxt = form_->getKeyInfo(idx.data().toString());
 		infoML->document()->setPlainText(keytxt);
@@ -350,7 +406,8 @@ void QCitationDialog::updateInfo(const QModelIndex & idx)
 
 void QCitationDialog::on_selectedLV_clicked(const QModelIndex &)
 {
-	update();
+	availableFocused_ = false;
+	updateDialog();
 }
 
 
@@ -358,13 +415,14 @@ void QCitationDialog::selectedChanged(const QModelIndex & idx, const QModelIndex
 {
 	if (!idx.isValid())
 		return;
-	update();
+	updateDialog();
 }
 
 
 void QCitationDialog::on_availableLV_clicked(const QModelIndex &)
 {
-	update();
+	availableFocused_ = true;
+	updateDialog();
 }
 
 
@@ -372,7 +430,8 @@ void QCitationDialog::availableChanged(const QModelIndex & idx, const QModelInde
 {
 	if (!idx.isValid())
 		return;
-	update();
+	availableFocused_ = true;
+	updateDialog();
 }
 
 
@@ -380,6 +439,7 @@ void QCitationDialog::on_availableLV_doubleClicked(const QModelIndex & idx)
 {
 	if (isSelected(idx))
 		return;
+	availableFocused_ = true;
 	on_addPB_clicked();
 }
 
@@ -407,7 +467,8 @@ void QCitationDialog::on_addPB_clicked()
 	form_->addKey(idxToAdd);
 	if (idx.isValid())
 		selectedLV->setCurrentIndex(idx);
-	update();
+	availableFocused_ = true;
+	updateDialog();
 }
 
 
@@ -425,8 +486,8 @@ void QCitationDialog::on_deletePB_clicked()
 
 	if (nrows>1)
 		selectedLV->setCurrentIndex(idx);
-
-	update();
+	availableFocused_ = true;
+	updateDialog();
 }
 
 
@@ -436,7 +497,8 @@ void QCitationDialog::on_upPB_clicked()
 	form_->upKey(idx);
 	selectedLV->setCurrentIndex(idx.sibling(idx.row() - 1, idx.column()));
 	availableLV->selectionModel()->reset();
-	update();
+	availableFocused_ = false;
+	updateDialog();
 }
 
 
@@ -446,17 +508,58 @@ void QCitationDialog::on_downPB_clicked()
 	form_->downKey(idx);
 	selectedLV->setCurrentIndex(idx.sibling(idx.row() + 1, idx.column()));
 	availableLV->selectionModel()->reset();
-	update();
+	availableFocused_ = false;
+	updateDialog();
 }
 
 
-void QCitationDialog::findText(QString const & text)
+void QCitationDialog::findText(QString const & text, bool reset)
 {
+	//"All Fields" and "Keys" are the first two
+	int index = fieldsCO->currentIndex() - 2; 
+	vector<docstring> const & fields = form_->availableFields();
+	docstring field;
+	
+	if (index <= -1 || index >= fields.size())
+		//either "All Fields" or "Keys" or an invalid value
+		field = from_ascii("");
+	else
+		field = fields[index];
+	
+	//Was it "Keys"?
+	bool const onlyKeys = index == -1;
+	
+	//"All Entry Types" is first.
+	index = entriesCO->currentIndex() - 1; 
+	vector<docstring> const & entries = form_->availableEntries();
+	docstring entryType;
+	if (index < 0 || index >= entries.size())
+		entryType = from_ascii("");
+	else 
+		entryType = entries[index];
+	
 	bool const case_sentitive = caseCB->checkState();
 	bool const reg_exp = regexCB->checkState();
-	form_->findKey(text, false, case_sentitive, reg_exp);
-	selectedLV->selectionModel()->reset();
-	update();
+	form_->findKey(text, onlyKeys, field, entryType, 
+	               case_sentitive, reg_exp, reset);
+	//FIXME
+	//It'd be nice to save and restore the current selection in 
+	//availableLV. Currently, we get an automatic reset, since the
+	//model is reset.
+	
+	updateDialog();
+}
+
+
+void QCitationDialog::on_fieldsCO_currentIndexChanged(int /*index*/)
+{
+	findText(findLE->text(), true);
+}
+
+
+void QCitationDialog::on_entriesCO_currentIndexChanged(int /*index*/)
+{
+	findText(findLE->text(), true);
 }
 
 

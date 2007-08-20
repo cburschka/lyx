@@ -727,14 +727,14 @@ void InsetInclude::getLabelList(Buffer const & buffer,
 
 
 void InsetInclude::fillWithBibKeys(Buffer const & buffer,
-		biblio::BibKeyList & keys, InsetIterator const & /*di*/) const
+		BiblioInfo & keys, InsetIterator const & /*di*/) const
 {
 	if (loadIfNeeded(buffer, params_)) {
 		string const included_file = includedFilename(buffer, params_).absFilename();
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 		//FIXME This is kind of a dirty hack and should be made reasonable.
 		tmp->setParentName("");
-		tmp->fillWithBibKeys(keys);
+		keys.fillWithBibKeys(tmp);
 		tmp->setParentName(parentFilename(buffer));
 	}
 }

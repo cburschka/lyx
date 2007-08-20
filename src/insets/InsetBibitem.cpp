@@ -12,7 +12,6 @@
 
 #include "InsetBibitem.h"
 
-#include "Biblio.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -183,14 +182,14 @@ docstring const bibitemWidest(Buffer const & buffer)
 
 
 void InsetBibitem::fillWithBibKeys(Buffer const & buf,
-	biblio::BibKeyList & keys, InsetIterator const & it) const
+	BiblioInfo & keys, InsetIterator const & it) const
 {
-	string const key = to_utf8(getParam("key"));
-	biblio::BibTeXInfo keyvalmap;
+	docstring const key = getParam("key");
+	BibTeXInfo keyvalmap;
 	keyvalmap[from_ascii("label")] = getParam("label");
 	DocIterator doc_it(it); 
 	doc_it.forwardPos();
-	keyvalmap [from_ascii("ref")] = doc_it.paragraph().asString(buf, false);
+	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString(buf, false);
 	keyvalmap.isBibTeX = false;
 	keys[key] = keyvalmap;
 }

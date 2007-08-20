@@ -37,32 +37,41 @@ public:
 	virtual bool disconnectOnApply() const { return true; }
 
 	/// \return the list of all available bibliography keys.
-	std::vector<std::string> const availableKeys() const;
+	std::vector<docstring> const availableKeys() const;
+	/// \return the list of all used BibTeX fields
+	std::vector<docstring> const availableFields() const;
+	/// \return the list of all used BibTeX entry types
+	std::vector<docstring> const availableEntries() const;
+	///
+	void filterByEntryType(
+		std::vector<docstring> & keyVector, docstring entryType);
 	///
 	biblio::CiteEngine const getEngine() const;
 
 	/// \return information for this key.
-	docstring const getInfo(std::string const & key) const;
+	docstring const getInfo(docstring const & key) const;
 
 	/// Search a given string within the passed keys.
 	/// \return the vector of matched keys.
-	std::vector<std::string> searchKeys(
-		std::vector<std::string> const & keys_to_search, //< Keys to search.
+	std::vector<docstring> searchKeys(
+		std::vector<docstring> const & keys_to_search, //< Keys to search.
+		bool only_keys, //< whether to search only the keys
 		docstring const & search_expression, //< Search expression (regex possible)
-		bool case_sensitive = false, // set to true is the search should be case sensitive
-		bool regex = false /// \set to true if \c search_expression is a regex
+		docstring field, //< field to search, empty for all fields
+		bool case_sensitive = false, //< set to true is the search should be case sensitive
+		bool regex = false //< \set to true if \c search_expression is a regex
 		); //
 
 	/// \return possible citations based on this key.
-	std::vector<docstring> const getCiteStrings(std::string const & key) const;
+	std::vector<docstring> const getCiteStrings(docstring const & key) const;
 
 	/// available CiteStyle-s (depends on availability of Natbib/Jurabib)
 	static std::vector<biblio::CiteStyle> const & getCiteStyles() {
 		return citeStyles_;
 	}
 private:
-	/// The info associated with each key
-	biblio::BibKeyList bibkeysInfo_;
+	/// The BibTeX information available to the dialog
+	BiblioInfo bibkeysInfo_;
 
 	///
 	static std::vector<biblio::CiteStyle> citeStyles_;

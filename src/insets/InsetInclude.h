@@ -12,7 +12,7 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-#include "Biblio_typedefs.h"
+#include "Biblio.h"
 #include "Inset.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
@@ -62,7 +62,7 @@ public:
 	 *  \param it not used here
 	 */
 	virtual void fillWithBibKeys(Buffer const & buffer,
-		biblio::BibKeyList & keys, InsetIterator const & it) const;
+		BiblioInfo & keys, InsetIterator const & it) const;
 	
 	/** Update the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).

@@ -15,6 +15,7 @@
 #define QCITATION_H
 
 #include "frontends/controllers/ControlCitation.h"
+#include "support/docstring.h"
 
 #include <QStringList>
 #include <QStringListModel>
@@ -50,13 +51,22 @@ public:
 
 	/// Clear selected keys
 	void clearSelection();
-
+	
+	/// Return a list of available fields 
+	QStringList getFieldsAsQStringList();
+	
+	/// Return a list of available fields 
+	QStringList getEntriesAsQStringList();
+	
 	/// Find keys containing a string.
 	void findKey(
 		QString const & str, //< string expression
 		bool only_keys, //< set to true if only keys shall be searched.
+		docstring field, //<field to search, empty for all fields
+		docstring entryType, //<entry type to display, empty for all
 		bool case_sensitive, //< set to true for case sensitive search.
-		bool reg_exp //< set to true if \c str is a regular expression.
+		bool reg_exp, //< set to true if \c str is a regular expression.
+		bool reset = false //< whether to reset and search all keys
 		);
 
 	/// Add key to selected keys
@@ -87,7 +97,7 @@ private:
 
 	/// All keys.
 	QStringList all_keys_;
-
+	
 	/// Cited keys.
 	QStringList cited_keys_;
 };

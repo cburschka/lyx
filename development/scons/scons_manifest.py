@@ -34,7 +34,6 @@ src_header_files = Split('''
     ASpell_local.h
     Author.h
     Biblio.h
-    Biblio_typedefs.h
     Bidi.h
     Box.h
     BranchList.h

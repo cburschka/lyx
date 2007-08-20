@@ -1359,14 +1359,6 @@ void Buffer::getLabelList(vector<docstring> & list) const
 }
 
 
-// This is also a buffer property (ale)
-void Buffer::fillWithBibKeys(biblio::BibKeyList & keys)
-	const
-{
-	biblio::fillWithBibKeys(this, keys);
-}
-
-
 void Buffer::updateBibfilesCache()
 {
 	// if this is a child document and the parent is already loaded
@@ -1731,14 +1723,14 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	vector<docstring> labels;
 
 	if (code == Inset::CITE_CODE) {
-		biblio::BibKeyList keys;
-		fillWithBibKeys(keys);
-		biblio::BibKeyList::const_iterator bit  = keys.begin();
-		biblio::BibKeyList::const_iterator bend = keys.end();
+		BiblioInfo keys;
+		keys.fillWithBibKeys(this);
+		BiblioInfo::const_iterator bit  = keys.begin();
+		BiblioInfo::const_iterator bend = keys.end();
 
 		for (; bit != bend; ++bit)
 			// FIXME UNICODE
-			labels.push_back(from_utf8(bit->first));
+			labels.push_back(bit->first);
 	} else
 		getLabelList(labels);
 

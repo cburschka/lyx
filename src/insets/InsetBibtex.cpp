@@ -580,7 +580,7 @@ namespace {
 
 // This method returns a comma separated list of Bibtex entries
 void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
-		biblio::BibKeyList & keys, InsetIterator const & /*di*/) const
+		BiblioInfo & keylist, InsetIterator const & /*di*/) const
 {
 	vector<FileName> const files = getFiles(buffer);
 	for (vector<FileName>::const_iterator it = files.begin();
@@ -695,7 +695,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 				docstring value;
 				docstring commaNewline;
 				docstring data;
-				biblio::BibTeXInfo keyvalmap;
+				BibTeXInfo keyvalmap;
 				keyvalmap.entryType = entryType;
 				
 				bool readNext = removeWSAndComma(ifs);
@@ -722,14 +722,16 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 
 					keyvalmap[name] = value;
 					data += "\n\n" + value;
-
+					keylist.fieldNames.insert(name);
 					readNext = removeWSAndComma(ifs);
 				}
 
 				// add the new entry
+				keylist.entryTypes.insert(entryType);
 				keyvalmap.allData = data;
 				keyvalmap.isBibTeX = true;
-				keys[to_utf8(key)] = keyvalmap;
+				keyvalmap.bibKey = key;
+				keylist[key] = keyvalmap;
 			}
 		} //< searching '@'
 	} //< for loop over files

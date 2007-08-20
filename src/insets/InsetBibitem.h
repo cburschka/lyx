@@ -14,7 +14,7 @@
 
 
 #include "InsetCommand.h"
-#include "Biblio_typedefs.h"
+#include "Biblio.h"
 
 
 namespace lyx {
@@ -42,7 +42,7 @@ public:
 	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	virtual void fillWithBibKeys(Buffer const &,
-		biblio::BibKeyList &, InsetIterator const &) const;
+		BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
 	virtual void updateLabels(Buffer const &, ParIterator const &);
 

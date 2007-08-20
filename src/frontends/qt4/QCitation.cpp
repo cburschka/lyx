@@ -17,6 +17,7 @@
 #include "qt_helpers.h"
 
 #include "support/lstrings.h"
+#include "support/docstring.h"
 
 #include "debug.h"
 
@@ -40,13 +41,13 @@ template<typename String> static QStringList to_qstring_list(vector<String> cons
 }
 
 
-static vector<string> const to_string_vector(QStringList const & qlist)
+static vector<lyx::docstring> const to_docstring_vector(QStringList const & qlist)
 {
-	vector<string> v;
+	vector<lyx::docstring> v;
 	for (int i = 0; i != qlist.size(); ++i) {
 		if (qlist[i].isEmpty())
 			continue;
-		v.push_back(lyx::fromqstr(qlist[i]));
+		v.push_back(lyx::qstring_to_ucs4(qlist[i]));
 	}
 	return v;
 }
@@ -123,19 +124,14 @@ void QCitation::init()
 		cited_keys_.clear();
 	else
 		cited_keys_ = str.split(",");
-
 	selected_model_.setStringList(cited_keys_);
 }
 
 
 void QCitation::findKey(QString const & str, bool only_keys,
-		bool case_sensitive, bool reg_exp)
+	docstring field, docstring entryType,
+	bool case_sensitive, bool reg_exp, bool reset)
 {
-	if (str.isEmpty()) {
-		available_model_.setStringList(all_keys_);
-		return;
-	}
-
 	// Used for optimisation: store last searched string.
 	static QString last_searched_string;
 	// Used to disable the above optimisation.
@@ -155,8 +151,10 @@ void QCitation::findKey(QString const & str, bool only_keys,
 			Qt::CaseSensitive: Qt::CaseInsensitive;
 	QStringList keys;
 	// If new string (str) contains the last searched one...
-	if (!last_searched_string.isEmpty() && str.size() > 1
-		&& str.contains(last_searched_string, qtcase))
+	if (!reset &&
+		!last_searched_string.isEmpty() &&
+		str.size() > 1 &&
+		str.contains(last_searched_string, qtcase))
 		// ... then only search within already found list.
 		keys = available_model_.stringList();
 	else
@@ -166,15 +164,29 @@ void QCitation::findKey(QString const & str, bool only_keys,
 	last_searched_string = str;
 
 	QStringList result;
-	if (only_keys)
-		// Search only within the matching keys:
-		result = keys.filter(str, qtcase);
+	
+	//First, filter by entryType, which will be faster than 
+	//what follows, so we may get to do that on less.
+	vector<docstring> keyVector = to_docstring_vector(keys);
+	filterByEntryType(keyVector, entryType);
+	
+	if (str.isEmpty())
+		result = to_qstring_list(keyVector);
 	else
-		// Search within matching keys and associated info.
-		result = to_qstring_list(searchKeys(to_string_vector(keys),
-			qstring_to_ucs4(str), case_sensitive, reg_exp));
-
+		result = to_qstring_list(searchKeys(keyVector, only_keys, 
+			qstring_to_ucs4(str), field, case_sensitive, reg_exp));
+	
 	available_model_.setStringList(result);
+}
+
+
+QStringList QCitation::getFieldsAsQStringList() {
+	return to_qstring_list(availableFields());
+}
+
+
+QStringList QCitation::getEntriesAsQStringList() {
+	return to_qstring_list(availableEntries());
 }
 
 
@@ -210,14 +222,14 @@ void QCitation::downKey(QModelIndex const & index)
 
 QStringList QCitation::citationStyles(int sel)
 {
-	string const key = fromqstr(cited_keys_[sel]);
+	docstring const key = qstring_to_ucs4(cited_keys_[sel]);
 	return to_qstring_list(getCiteStrings(key));
 }
 
 
 QString QCitation::getKeyInfo(QString const & sel)
 {
-	return toqstr(getInfo(fromqstr(sel)));
+	return toqstr(getInfo(qstring_to_ucs4(sel)));
 }
 
 
