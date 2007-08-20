@@ -83,6 +83,11 @@ public:
 		unsigned int lines_;
 		/// additional amount to be skipped when drawing
 		int skip_;
+		/// Special alignment.
+		/// This does also contain align_ and lines_ if it is nonempty.
+		/// It needs to be in sync with align_ and lines_ because some
+		/// code only uses align_ and lines_.
+		docstring special_;
 	};
 
 public:

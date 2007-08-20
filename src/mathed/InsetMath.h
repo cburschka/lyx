@@ -63,7 +63,6 @@ class InsetMathGrid;
 class InsetMathHull;
 class InsetMathMatrix;
 class InsetMathNest;
-class InsetMathParbox;
 class InsetMathScript;
 class InsetMathString;
 class InsetMathSpace;
@@ -132,7 +131,6 @@ public:
 	virtual InsetMathMatrix const   * asMatrixInset() const   { return 0; }
 	virtual InsetMathNest           * asNestInset()           { return 0; }
 	virtual InsetMathNest const     * asNestInset() const     { return 0; }
-	virtual InsetMathParbox         * asParboxInset()         { return 0; }
 	virtual InsetMathScript         * asScriptInset()         { return 0; }
 	virtual InsetMathScript const   * asScriptInset() const   { return 0; }
 	virtual InsetMathSpace          * asSpaceInset()          { return 0; }

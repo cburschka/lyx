@@ -178,6 +178,7 @@ void InsetMathGrid::setDefaults()
 	for (col_type col = 0; col < ncols(); ++col) {
 		colinfo_[col].align_ = defaultColAlign(col);
 		colinfo_[col].skip_  = defaultColSpace(col);
+		colinfo_[col].special_.clear();
 	}
 }
 
@@ -189,13 +190,70 @@ void InsetMathGrid::halign(docstring const & hh)
 		char_type c = *it;
 		if (c == '|') {
 			colinfo_[col].lines_++;
+		} else if ((c == 'p' || c == 'm' || c == 'b'||
+		            c == '!' || c == '@' || c == '>' || c == '<') &&
+		           it + 1 != hh.end() && *(it + 1) == '{') {
+			// @{decl.} and p{width} are standard LaTeX, the
+			// others are extensions by array.sty
+			bool const newcolumn = c == 'p' || c == 'm' || c == 'b';
+			if (newcolumn) {
+				// this declares a new column
+				if (col >= ncols())
+					// Only intercolumn stuff is allowed
+					// in the last dummy column
+					break;
+				colinfo_[col].align_ = 'l';
+			} else {
+				// this is intercolumn stuff
+				if (colinfo_[col].special_.empty())
+					// Overtake possible lines
+					colinfo_[col].special_ = docstring(colinfo_[col].lines_, '|');
+			}
+			int brace_open = 0;
+			int brace_close = 0;
+			while (it != hh.end()) {
+				c = *it;
+				colinfo_[col].special_ += c;
+				if (c == '{')
+					++brace_open;
+				else if (c == '}')
+					++brace_close;
+				++it;
+				if (brace_open > 0 && brace_open == brace_close)
+					break;
+			}
+			--it;
+			if (newcolumn) {
+				colinfo_[col].lines_ = std::count(
+					colinfo_[col].special_.begin(),
+					colinfo_[col].special_.end(), '|');
+				LYXERR(Debug::MATHED)
+					<< "special column separator: `"
+					<< to_utf8(colinfo_[col].special_)
+					<< '\'' << endl;
+				++col;
+				colinfo_[col].lines_ = 0;
+				colinfo_[col].special_.clear();
+			}
 		} else if (col >= ncols()) {
-			// Only '|' is allowed in the last dummy column
+			// Only intercolumn stuff is allowed in the last
+			// dummy column
 			break;
 		} else if (c == 'c' || c == 'l' || c == 'r') {
-			colinfo_[col].align_ = (char)c;
+			colinfo_[col].align_ = static_cast<char>(c);
+			if (!colinfo_[col].special_.empty()) {
+				colinfo_[col].special_ += c;
+				colinfo_[col].lines_ = std::count(
+						colinfo_[col].special_.begin(),
+						colinfo_[col].special_.end(), '|');
+				LYXERR(Debug::MATHED)
+					<< "special column separator: `"
+					<< to_utf8(colinfo_[col].special_)
+					<< '\'' << endl;
+			}
 			++col;
 			colinfo_[col].lines_ = 0;
+			colinfo_[col].special_.clear();
 		} else {
 			lyxerr << "unknown column separator: '" << c << "'" << endl;
 		}
@@ -215,7 +273,8 @@ InsetMathGrid::col_type InsetMathGrid::guessColumns(docstring const & hh) const
 {
 	col_type col = 0;
 	for (docstring::const_iterator it = hh.begin(); it != hh.end(); ++it)
-		if (*it == 'c' || *it == 'l' || *it == 'r')
+		if (*it == 'c' || *it == 'l' || *it == 'r'||
+		    *it == 'p' || *it == 'm' || *it == 'b')
 			++col;
 	// let's have at least one column, even if we did not recognize its
 	// alignment
@@ -228,6 +287,12 @@ InsetMathGrid::col_type InsetMathGrid::guessColumns(docstring const & hh) const
 void InsetMathGrid::halign(char h, col_type col)
 {
 	colinfo_[col].align_ = h;
+	if (!colinfo_[col].special_.empty()) {
+		char_type & c = colinfo_[col].special_[colinfo_[col].special_.size() - 1];
+		if (c == 'l' || c == 'c' || c == 'r')
+			c = h;
+	}
+	// FIXME: Change alignment of p, m and b columns, too
 }
 
 
@@ -241,10 +306,15 @@ docstring InsetMathGrid::halign() const
 {
 	docstring res;
 	for (col_type col = 0; col < ncols(); ++col) {
-		res += docstring(colinfo_[col].lines_, '|');
-		res += colinfo_[col].align_;
+		if (colinfo_[col].special_.empty()) {
+			res += docstring(colinfo_[col].lines_, '|');
+			res += colinfo_[col].align_;
+		} else
+			res += colinfo_[col].special_;
 	}
-	return res + docstring(colinfo_[ncols()].lines_, '|');
+	if (colinfo_[ncols()].special_.empty())
+		return res + docstring(colinfo_[ncols()].lines_, '|');
+	return res + colinfo_[ncols()].special_;
 }
 
 
@@ -1147,14 +1217,34 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			swapCol(cur.col());
 			cur.pos() = 0; // trick, see above
 		}
-		else if (s == "add-vline-left")
+		else if (s == "add-vline-left") {
 			colinfo_[cur.col()].lines_++;
-		else if (s == "add-vline-right")
+			if (!colinfo_[cur.col()].special_.empty())
+				colinfo_[cur.col()].special_ += '|';
+		}
+		else if (s == "add-vline-right") {
 			colinfo_[cur.col()+1].lines_++;
-		else if (s == "delete-vline-left")
+			if (!colinfo_[cur.col()+1].special_.empty())
+				colinfo_[cur.col()+1].special_.insert(0, 1, '|');
+		}
+		else if (s == "delete-vline-left") {
 			colinfo_[cur.col()].lines_--;
-		else if (s == "delete-vline-right")
+			docstring & special = colinfo_[cur.col()].special_;
+			if (!special.empty()) {
+				docstring::size_type i = special.rfind('|');
+				BOOST_ASSERT(i != docstring::npos);
+				special.erase(i, 1);
+			}
+		}
+		else if (s == "delete-vline-right") {
 			colinfo_[cur.col()+1].lines_--;
+			docstring & special = colinfo_[cur.col()+1].special_;
+			if (!special.empty()) {
+				docstring::size_type i = special.find('|');
+				BOOST_ASSERT(i != docstring::npos);
+				special.erase(i, 1);
+			}
+		}
 		else {
 			cur.undispatched();
 			break;
