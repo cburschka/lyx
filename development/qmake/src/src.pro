@@ -12,7 +12,7 @@ INC += boost
 
 HPP += ASpell_local.h
 HPP += Author.h
-HPP += Biblio.h
+HPP += BiblioInfo.h
 HPP += Bidi.h
 HPP += Box.h
 HPP += BranchList.h
@@ -122,7 +122,7 @@ HPP += version.h
 
 #CPP += ASpell.cpp
 CPP += Author.cpp
-CPP += Biblio.cpp
+CPP += BiblioInfo.cpp
 CPP += Bidi.cpp
 CPP += Box.cpp
 CPP += BranchList.cpp

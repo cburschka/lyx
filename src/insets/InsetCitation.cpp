@@ -13,7 +13,6 @@
 
 #include "InsetCitation.h"
 
-#include "Biblio.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "debug.h"

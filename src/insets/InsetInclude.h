@@ -12,7 +12,7 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-#include "Biblio.h"
+#include "BiblioInfo.h"
 #include "Inset.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"

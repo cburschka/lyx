@@ -16,7 +16,7 @@
 
 #include "InsetCommand.h"
 
-#include "Biblio.h"
+#include "BiblioInfo.h"
 
 
 namespace lyx {

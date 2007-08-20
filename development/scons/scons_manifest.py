@@ -33,7 +33,7 @@ TOP_extra_files = Split('''
 src_header_files = Split('''
     ASpell_local.h
     Author.h
-    Biblio.h
+    BiblioInfo.h
     Bidi.h
     Box.h
     BranchList.h
@@ -144,7 +144,7 @@ src_header_files = Split('''
 
 src_pre_files = Split('''
     Author.cpp
-    Biblio.cpp
+    BiblioInfo.cpp
     Bidi.cpp
     BranchList.cpp
     Buffer.cpp

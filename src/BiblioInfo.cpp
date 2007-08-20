@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "Biblio.h"
+#include "BiblioInfo.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "buffer_funcs.h"

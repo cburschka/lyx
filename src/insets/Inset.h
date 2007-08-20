@@ -15,7 +15,7 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
-#include "Biblio.h"
+//#include "BiblioInfo.h"
 #include "Changes.h"
 #include "Dimension.h"
 
@@ -26,6 +26,7 @@
 
 namespace lyx {
 
+class BiblioInfo;
 class Buffer;
 class BufferParams;
 class BufferView;

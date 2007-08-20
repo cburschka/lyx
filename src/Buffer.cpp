@@ -13,7 +13,7 @@
 #include "Buffer.h"
 
 #include "Author.h"
-#include "Biblio.h"
+#include "BiblioInfo.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"

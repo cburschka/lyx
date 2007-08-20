@@ -14,7 +14,7 @@
 
 #include <map>
 #include "InsetCommand.h"
-#include "Biblio.h"
+#include "BiblioInfo.h"
 
 #include "support/FileName.h"
 

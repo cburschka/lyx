@@ -13,7 +13,7 @@
 #ifndef CONTROLCITATION_H
 #define CONTROLCITATION_H
 
-#include "Biblio.h"
+#include "BiblioInfo.h"
 #include "ControlCommand.h"
 
 namespace lyx {
