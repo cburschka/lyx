@@ -6,6 +6,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\doc"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
