@@ -70,6 +70,9 @@ What's new
 - Fix crash when a user removes the underlying figure of a graphic inset
   that has been copied and pasted (Bug 4108).
 
+- Fix crash when a user removes a formula when its preview is being generated.
+  (gcc 3 only).
+
 * DOCUMENTATION
 
 - Embedded Objects manual: section about longtable alignment added
