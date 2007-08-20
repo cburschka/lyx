@@ -29,7 +29,7 @@ InsetLayout Note:Comment
 	LatexType             environment
 	LatexName             comment
 	LabelFont
-	  Color               Magenta
+	  Color               comment
 	  Size                Small
 	EndFont
 End
@@ -40,7 +40,7 @@ InsetLayout Note:Note
 	LatexType             command
 	LatexName             note
 	LabelFont
-	  Color               Blue
+	  Color               note
 	  Size                Small
 	EndFont
 End
@@ -50,7 +50,7 @@ InsetLayout Note:Greyedout
 	LatexType             environment
 	LatexName             lyxgreyedout
 	LabelFont
-	  Color               Red
+	  Color               greyedout
 	  Size                Small
 	EndFont
 End
@@ -60,7 +60,7 @@ InsetLayout Note:Framed
 	LatexType             environment
 	LatexName             framed
 	LabelFont
-	  Color               Red
+	  Color               greyedout
 	  Size                Small
 	EndFont
 End
@@ -70,7 +70,7 @@ InsetLayout Note:Shaded
 	LatexType             environment
 	LatexName             shaded
 	LabelFont
-	  Color               Red
+	  Color               greyedout
 	  Size                Small
 	EndFont
 End
