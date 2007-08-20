@@ -204,23 +204,6 @@ bool InsetCharStyle::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
-			  OutputParams const & runparams) const
-{
-	if (!undefined()) {
-		// FIXME UNICODE
-		os << '\\' << from_utf8(layout_.latexname);
-		if (!layout_.latexparam.empty())
-			os << from_utf8(layout_.latexparam);
-		os << '{';
-	}
-	int i = InsetText::latex(buf, os, runparams);
-	if (!undefined())
-		os << "}";
-	return i;
-}
-
-
 int InsetCharStyle::plaintext(Buffer const & buf, odocstream & os,
 			      OutputParams const & runparams) const
 {
@@ -262,7 +245,7 @@ void InsetCharStyle::textString(Buffer const & buf, odocstream & os) const
 void InsetCharStyle::validate(LaTeXFeatures & features) const
 {
 	// Force inclusion of preamble snippet in layout file
-	features.require(params_.name);
+	features.require(layout_.latexname);
 	InsetText::validate(features);
 }
 

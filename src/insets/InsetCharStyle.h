@@ -69,9 +69,6 @@ public:
 	virtual Decoration decoration() const { return Conglomerate; }
 
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
-	///
 	int plaintext(Buffer const &, odocstream &,
 		      OutputParams const &) const;
 	///

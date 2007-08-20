@@ -232,14 +232,6 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetNoteMailer(*this).updateDialog(&cur.bv());
 		break;
-
-	case LFUN_MOUSE_RELEASE:
-		if (cmd.button() == mouse_button::button3 && hitButton(cmd))
-			InsetNoteMailer(*this).showDialog(&cur.bv());
-		else
-			InsetCollapsable::doDispatch(cur, cmd);
-		break;
-
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
@@ -285,10 +277,7 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 	} 
 
 	odocstringstream ss;
-	//ss << "%\n\\begin{" << from_ascii(type) << "}\n";
-	ss << "%\n\\begin{" << from_ascii(layout_.latexname) << "}\n";
-	InsetText::latex(buf, ss, runparams);
-	ss << "\n\\end{" << from_ascii(layout_.latexname) << "}\n";
+	InsetCollapsable::latex(buf, ss, runparams);
 	// the space after the comment in 'a[comment] b' will be eaten by the
 	// comment environment since the space before b is ignored with the
 	// following latex output:

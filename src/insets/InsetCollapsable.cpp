@@ -618,4 +618,37 @@ docstring InsetCollapsable::floatName(string const & type, BufferParams const & 
 }
 
 
+
+int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
+			  OutputParams const & runparams) const
+{
+	// This implements the standard way of handling the LaTeX output of
+	// a collapsable inset, either a command or an environment. Standard 
+	// collapsable insets should not redefine this, non-standard ones may
+	// call this.
+	if (!layout_.latexname.empty()) {
+		if (layout_.latextype == "command") {
+			// FIXME UNICODE
+			os << '\\' << from_utf8(layout_.latexname);
+			if (!layout_.latexparam.empty())
+				os << from_utf8(layout_.latexparam);
+			os << '{';
+		} else if (layout_.latextype == "environment") {
+			os << "%\n\\begin{" << from_utf8(layout_.latexname) << "}\n";
+			if (!layout_.latexparam.empty())
+				os << from_utf8(layout_.latexparam);
+		}
+	}
+	int i = InsetText::latex(buf, os, runparams);
+	if (!layout_.latexname.empty())
+		if (layout_.latextype == "command") {
+			os << "}";
+		} else if (layout_.latextype == "environment") {
+			os << "\n\\end{" << from_utf8(layout_.latexname) << "}\n";
+			i += 4;
+		}
+	return i;
+}
+
+
 } // namespace lyx

@@ -130,6 +130,9 @@ public:
 	void setStatus(Cursor & cur, CollapseStatus st);
 	///
 	bool setMouseHover(bool mouse_hover);
+	///
+	int latex(Buffer const &, odocstream &,
+		  OutputParams const &) const;
 
 protected:
 	///
