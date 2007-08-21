@@ -889,6 +889,14 @@ contributers = [
                  "31 October 2005",
                  u"Dutch translation coordinator"),
 
+     contributer(u"Joan Montané",
+                 "jmontane () gmail ! com",
+                 "GPL",
+                 "Re: LyX translation updates needed",
+                 "m=118765575314017",
+                 "21 August 2007",
+                 u"Catalan translations of menus"),
+
      contributer(u"Iñaki Larrañaga Murgoitio",
                  "dooteo () euskalgnu ! org",
                  "GPL",
