@@ -461,7 +461,8 @@ as.
 Opciones\InsetSpace ~
 extra En esta solapa puedes modificar la apariencia de la imagen
  en LyX, y poner la imagen como subfigura de una figura flotante con su
- propio título.Las subfiguras se explican en la sección\InsetSpace ~
+ propio título.
+ Las subfiguras se explican en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Figuras-Flotantes"
@@ -4610,11 +4611,9 @@ reference "tab:DifEncabezados"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Longtable Alignment
+Alineación de Tablas Largas
 \begin_inset LatexCommand index
-name "Tablas Largas ! Alignment"
+name "Tablas Largas ! Alineación"
 
 \end_inset
 
@@ -4622,44 +4621,38 @@ name "Tablas Largas ! Alignment"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Longtables are by default centered.
- In contrary to the alignment of the table columns and row, the table alignment
- can currently not be changed in the table dialog.
- To change the alignment of longtables you have to change the value of the
- lengths 
+Las tablas largas se centran por defecto.
+ Al contrario de la alineación de filas y columnas, la alineación de una
+ tabla no se puede cambiar por ahora en el diálogo de tablas.
+ Para cambiar la alineación de tablas largas debes cambiar el valor de las
+ longitudes 
 \series bold
 
 \backslash
-LTleft 
+LTleft
 \series default
-and 
+ y 
 \series bold
 
 \backslash
-LTright
+LTright 
 \series default
- by inserting this line as ERT before the corresponding longtable:
+insertando la línea siguiente como ERT antes de la correspondiente tabla
+ larga:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 setlength{
 \backslash
-LTleft}{value}
+LTleft}{valor}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Where the value can have any of the units listed in 
-\lang spanish
-tabla\InsetSpace ~
+donde el valor puede tener cualquiera de las unidades listadas en el cuadro\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "tab:Unidades"
@@ -4669,41 +4662,35 @@ reference "tab:Unidades"
 .
  
 \series bold
-\lang english
 
 \backslash
-LTleft
+LTleft 
 \series default
- controls the horizontal distance from the left page border to the longtable,
+controla la distancia entre el borde izquierdo de la página y la tabla.
  
 \series bold
 
 \backslash
-LTright
+LTright 
 \series default
- the distance from the right side.
- The default value for both lengths is 
+la distancia desde el lado derecho.
+ El valor predeterminado para ambas longitudes es 
 \series bold
 
 \backslash
 fill
 \series default
-, which is in this case the same as an horizontal fill in LyX.
+, que en este caso es lo mismo que un relleno horizontal en LyX.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The following longtable was left-aligned by setting 
+La siguiente tabla larga se ha alineado a la izquierda poniendo 
 \series bold
 
 \backslash
 LTleft
 \series default
- to
-\lang spanish
- 0\InsetSpace \thinspace{}
-pt.
+ 0 pt.
 \begin_inset ERT
 status collapsed
 
