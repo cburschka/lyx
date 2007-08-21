@@ -22,6 +22,7 @@
 #include "Bullet.h"
 #include "Chktex.h"
 #include "debug.h"
+#include "DocIterator.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Exporter.h"
@@ -227,7 +228,12 @@ Buffer::~Buffer()
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
-	closing();
+	Buffer * master = getMasterBuffer();
+	if (master != this && use_gui)
+		// We are closing buf which was a child document so we
+		// must update the labels and section numbering of its master
+		// Buffer.
+		updateLabels(*master);
 
 	if (!temppath().empty() && !destroyDir(FileName(temppath()))) {
 		Alert::warning(_("Could not remove temporary directory"),
@@ -237,6 +243,8 @@ Buffer::~Buffer()
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
 	graphics::Previews::get().removeLoader(*this);
+
+	closing(this);
 }
 
 
@@ -1704,13 +1712,6 @@ void Buffer::buildMacros()
 			}
 		}
 	}
-}
-
-
-void Buffer::saveCursor(StableDocIterator cur, StableDocIterator anc)
-{
-	cursor_ = cur;
-	anchor_ = anc;
 }
 
 

@@ -77,7 +77,15 @@ bool Importer::Import(LyXView * lv, FileName const & filename,
 
 
 	if (loader_format == "lyx") {
-		lv->loadLyXFile(lyxfile);
+		Buffer * buf = lv->loadLyXFile(lyxfile);
+		if (!buf) {
+			// we are done
+			lv->message(_("file not imported!"));
+			return false;
+		}
+		updateLabels(*buf);
+		lv->setBuffer(buf);
+		lv->showErrorList("Parse");
 	} else {
 		Buffer * const b = newFile(lyxfile.absFilename(), string(), true);
 		if (b)

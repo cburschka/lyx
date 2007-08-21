@@ -85,8 +85,9 @@
 #include "frontends/KeySymbol.h"
 #include "frontends/LyXView.h"
 #include "frontends/Menubar.h"
-#include "frontends/Toolbars.h"
 #include "frontends/Selection.h"
+#include "frontends/Toolbars.h"
+#include "frontends/WorkArea.h"
 
 #include "support/environment.h"
 #include "support/FileFilterList.h"
@@ -221,7 +222,7 @@ void LyXFunc::initKeySequences(KeyMap * kb)
 
 void LyXFunc::setLyXView(LyXView * lv)
 {
-	if (!quitting && lyx_view_ && lyx_view_ != lv)
+	if (!quitting && lyx_view_ && lyx_view_->view() && lyx_view_ != lv)
 		// save current selection to the selection buffer to allow
 		// middle-button paste in another window
 		cap::saveSelection(lyx_view_->view()->cursor());
@@ -385,6 +386,12 @@ void LyXFunc::processKeySym(KeySymbolPtr keysym, key_modifier::state state)
 	} else {
 		dispatch(func);
 	}
+
+	/* When we move around, or type, it's nice to be able to see
+	 * the cursor immediately after the keypress.
+	 */
+	if (lyx_view_ && lyx_view_->currentWorkArea())
+		lyx_view_->currentWorkArea()->startBlinkingCursor();
 }
 
 
@@ -903,15 +910,17 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// --- Menus -----------------------------------------------
 		case LFUN_BUFFER_NEW:
 			menuNew(argument, false);
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_NEW_TEMPLATE:
 			menuNew(argument, true);
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_CLOSE:
 			closeBuffer();
-			view()->update();
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_WRITE:
@@ -1187,7 +1196,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			lyx_view_->message(bformat(_("Opening help file %1$s..."),
 				makeDisplayPath(fname.absFilename())));
-			lyx_view_->loadLyXFile(fname, false);
+			Buffer * buf = lyx_view_->loadLyXFile(fname, false);
+			if (buf) {
+				updateLabels(*buf);
+				lyx_view_->setBuffer(buf);
+				lyx_view_->showErrorList("Parse");
+			}
+			updateFlags = Update::None;
 			break;
 		}
 
@@ -1241,29 +1256,31 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BUFFER_SWITCH:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().getBuffer(argument));
-			updateFlags = Update::Force;
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_NEXT:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().next(lyx_view_->buffer()));
-			updateFlags = Update::Force;
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().previous(lyx_view_->buffer()));
-			updateFlags = Update::Force;
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_FILE_NEW:
 			BOOST_ASSERT(lyx_view_);
 			newFile(*lyx_view_, argument);
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_FILE_OPEN:
 			BOOST_ASSERT(lyx_view_);
 			open(argument);
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_DROP_LAYOUTS_CHOICE:
@@ -1296,24 +1313,35 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			int row;
 			istringstream is(argument);
 			is >> file_name >> row;
-			if (prefixIs(file_name, package().temp_dir().absFilename())) {
+			Buffer * buf = 0;
+			bool loaded = false;
+			if (prefixIs(file_name, package().temp_dir().absFilename()))
 				// Needed by inverse dvi search. If it is a file
 				// in tmpdir, call the apropriated function
-				lyx_view_->setBuffer(theBufferList().getBufferFromTmp(file_name));
-			} else {
+				buf = theBufferList().getBufferFromTmp(file_name);
+			else {
 				// Must replace extension of the file to be .lyx
 				// and get full path
 				FileName const s = fileSearch(string(), changeExtension(file_name, ".lyx"), "lyx");
 				// Either change buffer or load the file
-				if (theBufferList().exists(s.absFilename())) {
-					lyx_view_->setBuffer(theBufferList().getBuffer(s.absFilename()));
-				} else {
-					lyx_view_->loadLyXFile(s);
+				if (theBufferList().exists(s.absFilename()))
+					buf = theBufferList().getBuffer(s.absFilename());
+				else {
+					buf = lyx_view_->loadLyXFile(s);
+					loaded = true;
 				}
 			}
 
-			view()->setCursorFromRow(row);
+			if (!buf) {
+				updateFlags = Update::None;
+				break;
+			}
 
+			updateLabels(*buf);
+			lyx_view_->setBuffer(buf);
+			view()->setCursorFromRow(row);
+			if (loaded)
+				lyx_view_->showErrorList("Parse");
 			updateFlags = Update::FitCursor;
 			break;
 		}
@@ -1472,36 +1500,33 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_CHILD_OPEN: {
-			// takes an optional argument, "|bool", at the end
-			// indicating whether this file is being opened automatically
-			// by LyX itself, in which case we will not want to switch
-			// buffers after opening. The default is false, so in practice
-			// it is used only when true.
-			BOOST_ASSERT(lyx_view_);
-			int const arglength = argument.length();
-			FileName filename;
-			bool autoOpen = false;
-			if (argument.substr(arglength - 5, 5) == "|true") {
-				autoOpen = true;
-				filename = makeAbsPath(argument.substr(0, arglength - 5), 
-					lyx_view_->buffer()->filePath());
-			} else if (argument.substr(arglength - 6, 6) == "|false") {
-				filename = makeAbsPath(argument.substr(0, arglength - 6), 
-					lyx_view_->buffer()->filePath());
-			} else filename = 
-				makeAbsPath(argument, lyx_view_->buffer()->filePath());
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
+			Buffer * parent = lyx_view_->buffer();
+			FileName filename = makeAbsPath(argument, parent->filePath());
 			view()->saveBookmark(false);
+			Buffer * child = 0;
+			bool parsed = false;
 			if (theBufferList().exists(filename.absFilename())) {
-				Buffer * buf = theBufferList().getBuffer(filename.absFilename());
-				if (!autoOpen)
-					lyx_view_->setBuffer(buf, true);
-				else
-					buf->setParentName(lyx_view_->buffer()->fileName());
-			} else
-				lyx_view_->loadLyXFile(filename, true, true, autoOpen);
+				child = theBufferList().getBuffer(filename.absFilename());
+			} else {
+				setMessage(bformat(_("Opening child document %1$s..."),
+					makeDisplayPath(filename.absFilename())));
+				child = lyx_view_->loadLyXFile(filename, true);
+				parsed = true;
+			}
+			if (child) {
+				// Set the parent name of the child document.
+				// This makes insertion of citations and references in the child work,
+				// when the target is in the parent or another child document.
+				child->setParentName(parent->fileName());
+				updateLabels(*child->getMasterBuffer());
+				lyx_view_->setBuffer(child);
+				if (parsed)
+					lyx_view_->showErrorList("Parse");
+			}
 
 			// If a screen update is required (in case where auto_open is false), 
-			// loadLyXFile() would have taken care of it already. Otherwise we shall 
+			// setBuffer() would have taken care of it already. Otherwise we shall 
 			// reset the update flag because it can cause a circular problem.
 			// See bug 3970.
 			updateFlags = Update::None;
@@ -1997,10 +2022,8 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	}
 
 	Buffer * const b = newFile(filename, templname, !name.empty());
-	if (b) {
-		updateLabels(*b);
+	if (b)
 		lyx_view_->setBuffer(b);
-	}
 }
 
 
@@ -2060,7 +2083,11 @@ void LyXFunc::open(string const & fname)
 	lyx_view_->message(bformat(_("Opening document %1$s..."), disp_fn));
 
 	docstring str2;
-	if (lyx_view_->loadLyXFile(fullname)) {
+	Buffer * buf = lyx_view_->loadLyXFile(fullname);
+	if (buf) {
+		updateLabels(*buf);
+		lyx_view_->setBuffer(buf);
+		lyx_view_->showErrorList("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
 	} else {
 		str2 = bformat(_("Could not open document %1$s"), disp_fn);
@@ -2169,8 +2196,19 @@ void LyXFunc::closeBuffer()
 void LyXFunc::reloadBuffer()
 {
 	FileName filename(lyx_view_->buffer()->fileName());
+	docstring const disp_fn = makeDisplayPath(filename.absFilename());
+	docstring str;
 	closeBuffer();
-	lyx_view_->loadLyXFile(filename);
+	Buffer * buf = lyx_view_->loadLyXFile(filename);
+	if (buf) {
+		updateLabels(*buf);
+		lyx_view_->setBuffer(buf);
+		lyx_view_->showErrorList("Parse");
+		str = bformat(_("Document %1$s reloaded."), disp_fn);
+	} else {
+		str = bformat(_("Could not reload document %1$s"), disp_fn);
+	}
+	lyx_view_->message(str);
 }
 
 // Each "lyx_view_" should have it's own message method. lyxview and

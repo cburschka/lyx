@@ -124,7 +124,7 @@ void LyXAction::init()
 		{ LFUN_BUFFER_NEW, "buffer-new", NoBuffer },
 		{ LFUN_BUFFER_NEW_TEMPLATE,"buffer-new-template", NoBuffer },
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly },
-		{ LFUN_BUFFER_SWITCH, "buffer-switch", ReadOnly },
+		{ LFUN_BUFFER_SWITCH, "buffer-switch", NoBuffer | ReadOnly },
 		{ LFUN_BUFFER_TOGGLE_READ_ONLY, "buffer-toggle-read-only", ReadOnly },
 		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly },
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly },

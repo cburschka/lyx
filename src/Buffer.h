@@ -25,7 +25,6 @@
 
 #include <iosfwd>
 #include <string>
-#include <map>
 #include <utility>
 #include <vector>
 
@@ -50,7 +49,6 @@ class OutputParams;
 class ParConstIterator;
 class ParIterator;
 class ParagraphList;
-class StableDocIterator;
 class TeXErrors;
 class TexRow;
 class TocBackend;
@@ -159,7 +157,7 @@ public:
 	/// Reset autosave timers for all users.
 	boost::signal<void()> resetAutosaveTimers;
 	/// This signal is emitting if the buffer is being closed.
-	boost::signal<void()> closing;
+	boost::signal<void(Buffer *)> closing;
 
 
 	/** Save file.
@@ -382,12 +380,6 @@ public:
 	void insertMacro(docstring const & name, MacroData const & data);
 
 	///
-	void saveCursor(StableDocIterator cursor, StableDocIterator anchor);
-	///
-	StableDocIterator getCursor() const { return cursor_; }
-	///
-	StableDocIterator getAnchor() const { return anchor_; }
-	///
 	void changeRefsIfUnique(docstring const & from, docstring const & to,
 		Inset::Code code);
 /// get source code (latex/docbook) for some paragraphs, or all paragraphs
@@ -417,11 +409,6 @@ private:
 	/// The pointer never changes although *pimpl_'s contents may.
 	boost::scoped_ptr<Impl> const pimpl_;
 
-	/// Save the cursor Position on Buffer switch
-	/// this would not be needed if every Buffer would have
-	/// it's BufferView, this should be FIXED in future.
-	StableDocIterator cursor_;
-	StableDocIterator anchor_;
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
 	mutable std::vector<support::FileName> bibfilesCache_;

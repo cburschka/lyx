@@ -75,8 +75,6 @@ public:
 	virtual void clearMessage();
 	virtual bool hasFocus() const;
 
-	virtual void updateTab();
-
 	/// show - display the top-level window
 	void show();
 
@@ -85,8 +83,6 @@ public:
 
 	/// menu item has been selected
 	void activated(FuncRequest const &);
-
-	void initTab(QWidget* workArea);
 
 	QMenu* createPopupMenu();
 
@@ -117,6 +113,19 @@ protected:
 
 	///
 	virtual void moveEvent(QMoveEvent * e);
+
+	/// \return the \c Workarea associated to \p  Buffer
+	/// \retval 0 if no \c WorkArea is found.
+	WorkArea * workArea(Buffer & buffer);
+
+	/// Add a \c WorkArea 
+	/// \return the \c Workarea associated to \p  Buffer
+	/// \retval 0 if no \c WorkArea is found.
+	WorkArea * addWorkArea(Buffer & buffer);
+	void setCurrentWorkArea(WorkArea * work_area);
+	void removeWorkArea(WorkArea * work_area);
+	WorkArea const * currentWorkArea() const;
+	WorkArea * currentWorkArea();
 
 private:
 	///

@@ -70,16 +70,19 @@ public:
 
 	virtual void setFocus() = 0;
 
-	std::vector<int> const & workAreaIds() const { return work_area_ids_; }
-
-	/// FIXME: rename to setCurrentWorkArea()
-	void setWorkArea(WorkArea * work_area);
-
+	///
+	virtual WorkArea * workArea(Buffer & buffer) = 0;
+	///
+	virtual WorkArea * addWorkArea(Buffer & buffer) = 0;
+	///
+	virtual void setCurrentWorkArea(WorkArea * work_area) = 0;
+	///
+	virtual void removeWorkArea(WorkArea * work_area) = 0;
 	/// return the current WorkArea (the one that has the focus).
-	WorkArea const * currentWorkArea() const;
+	virtual WorkArea const * currentWorkArea() const = 0;
 	/// FIXME: This non-const access is needed because of
 	/// a mis-designed \c ControlSpellchecker.
-	WorkArea * currentWorkArea();
+	virtual WorkArea * currentWorkArea() = 0;
 
 	/**
 	 * This is called after the concrete view has been created.
@@ -114,14 +117,12 @@ public:
 
 	//@{ generic accessor functions
 
-	/** return the current buffer view
-	    Returned as a shared_ptr so that anything wanting to cache the
-	    buffer view can do so safely using a boost::weak_ptr.
-	 */
-	BufferView * view() const;
+	/// \return the current buffer view.
+	BufferView * view();
 
-	/// return the buffer currently shown in this window
-	Buffer * buffer() const;
+	/// \return the buffer currently shown in this window
+	Buffer * buffer();
+	Buffer const * buffer() const;
 
 	/// return the toolbar for this view
 	Toolbars & getToolbars() { return *toolbars_.get(); }
@@ -141,14 +142,11 @@ public:
 	//@}
 
 	/// load a buffer into the current workarea.
-	bool loadLyXFile(support::FileName const &  name, ///< File to load.
-		bool tolastfiles = true,  ///< append to the "Open recent" menu?
-		bool child_document = false, ///< Is this a child document?
-    bool auto_open = false); ///< Is this being opened by LyX itself?
+	Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true);  ///< append to the "Open recent" menu?
 
 	/// set a buffer to the current workarea.
-	void setBuffer(Buffer * b, ///< \c Buffer to set.
-		bool child_document = false);  ///< Is this a child document?
+	void setBuffer(Buffer * b); ///< \c Buffer to set.
 
 	/// updates the possible layouts selectable
 	void updateLayoutChoice();
@@ -176,9 +174,6 @@ public:
 	/// updates the title of the window
 	void updateWindowTitle();
 
-	/// updates the tab view
-	virtual void updateTab() = 0;
-
 	/// reset autosave timer
 	void resetAutosaveTimer();
 
@@ -188,7 +183,7 @@ public:
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
-	Buffer const * const updateInset(Inset const *) const;
+	Buffer const * const updateInset(Inset const *);
 
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
@@ -196,17 +191,15 @@ public:
 	/// show the error list to the user
 	void showErrorList(std::string const &);
 
+protected:
 	/// connect to signals in the given BufferView
 	void connectBufferView(BufferView & bv);
 	/// disconnect from signals in the given BufferView
 	void disconnectBufferView();
-
-protected:
-	/// current work area (screen view of a BufferView).
-	/**
-	\todo FIXME: there is only one workArea per LyXView for now.
-	*/
-	frontend::WorkArea * work_area_;
+	/// connect to signals in the given buffer
+	void connectBuffer(Buffer & buf);
+	/// disconnect from signals in the given buffer
+	void disconnectBuffer();
 
 	/// view's menubar
 	boost::scoped_ptr<Menubar> menubar_;
@@ -231,8 +224,6 @@ private:
 	/// dialogs for this view
 	boost::scoped_ptr<Dialogs> dialogs_;
 
-	/// buffer changed signal connection
-	boost::signals::connection bufferChangedConnection_;
 	/// buffer structure changed signal connection
 	boost::signals::connection bufferStructureChangedConnection_;
 	/// buffer errors signal connection
@@ -247,18 +238,6 @@ private:
 	boost::signals::connection timerConnection_;
 	/// buffer readonly status changed signal connection
 	boost::signals::connection readonlyConnection_;
-	/// buffer closing signal connection
-	boost::signals::connection closingConnection_;
-	/// connect to signals in the given buffer
-	void connectBuffer(Buffer & buf);
-	/// disconnect from signals in the given buffer
-	/// NOTE: Do not call this unless you really want no buffer
-	/// to be connected---for example, when closing the last open
-	/// buffer. If you are switching buffers, just call 
-	/// connectBuffer(), and the old buffer will be disconnected
-	/// automatically. This ensures that we do not leave LyX in a
-	/// state in which no buffer is connected.
-	void disconnectBuffer();
 
 	/// BufferView messages signal connection
 	//@{
@@ -298,7 +277,6 @@ protected:
 
 private:
 	int id_;
-	std::vector<int> work_area_ids_;
 };
 
 } // namespace frontend

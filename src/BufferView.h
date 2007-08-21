@@ -79,20 +79,14 @@ struct ScrollbarParameters
  */
 class BufferView : boost::noncopyable {
 public:
-	BufferView();
+	///
+	BufferView(Buffer & buffer);
 
 	~BufferView();
 
-	/// set the buffer we are viewing.
-	/// \todo FIXME: eventually, we will create a new BufferView
-	/// when switching Buffers, so this method should go.
-	/// returns the buffer currently set
-	Buffer * setBuffer(Buffer * b);
 	/// return the buffer being viewed.
-	Buffer * buffer() const;
-
-	/// resize the BufferView.
-	void resize();
+	Buffer * buffer();
+	Buffer const * buffer() const;
 
 	/// perform pending metrics updates.
 	/** \c Update::FitCursor means first to do a FitCursor, and to
@@ -269,7 +263,7 @@ private:
 	///
 	CoordCache coord_cache_;
 	///
-	Buffer * buffer_;
+	Buffer & buffer_;
 
 	/// Estimated average par height for scrollbar.
 	int wh_;

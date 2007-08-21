@@ -22,7 +22,6 @@
 namespace lyx {
 namespace frontend {
 
-class GuiWorkArea;
 class GuiView;
 class LyXView;
 
@@ -44,9 +43,6 @@ public:
 
 	virtual LyXView& view(int id) const;
 
-	virtual int newWorkArea(unsigned int width, unsigned int height, int view_id);
-	virtual WorkArea& workArea(int id);
-
 private:
 
 	/// Multiple views container.
@@ -56,22 +52,6 @@ private:
 	* \sa Qt::WA_DeleteOnClose attribute.
 	*/
 	std::map<int, GuiView *> views_;
-
-	/// Multiple workareas container.
-	/**
-	* Warning: This must not be a smart pointer as the destruction of the
-	* object is handled by Qt when its parent view is closed.
-	*/
-	std::map<int, GuiWorkArea *> work_areas_;
-	///
-
-	/// view of a buffer. Eventually there will be several.
-	std::map<int, boost::shared_ptr<BufferView> > buffer_views_;
-
-
-	std::vector<int> const & workAreaIds();
-
-	std::vector<int> work_area_ids_;
 };
 
 } // namespace frontend

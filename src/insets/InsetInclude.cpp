@@ -386,37 +386,34 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 
 } // namespace anon
 
-
-Buffer * loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
+/// return true if the file is or got loaded.
+Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 {
 	if (isVerbatim(params) || isListings(params))
 		return 0;
 
-	FileName const included_file = includedFilename(buffer, params);
+	string const parent_filename = parent.fileName();
+	FileName const included_file = makeAbsPath(to_utf8(params["filename"]),
+			   onlyPath(parent_filename));
+
 	if (!isLyXFilename(included_file.absFilename()))
 		return 0;
 
-	Buffer * buf = theBufferList().getBuffer(included_file.absFilename());
-	if (!buf) {
+	Buffer * child = theBufferList().getBuffer(included_file.absFilename());
+	if (!child) {
 		// the readonly flag can/will be wrong, not anymore I think.
 		if (!fs::exists(included_file.toFilesystemEncoding()))
-			return false;
-		if (use_gui) {
-			lyx::dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN,
-				included_file.absFilename() + "|true"));
-			buf = theBufferList().getBuffer(included_file.absFilename());
-		}
-		else {
-			buf = theBufferList().newBuffer(included_file.absFilename());
-			if (!loadLyXFile(buf, included_file)) {
-				//close the buffer we just opened
-				theBufferList().close(buf, false);
-				return false;
-			}
+			return 0;
+
+		child = theBufferList().newBuffer(included_file.absFilename());
+		if (!loadLyXFile(child, included_file)) {
+			//close the buffer we just opened
+			theBufferList().close(child, false);
+			return 0;
 		}
 	}
-	buf->setParentName(parentFilename(buffer));
-	return buf;
+	child->setParentName(parent_filename);
+	return child;
 }
 
 
@@ -768,7 +765,7 @@ InsetInclude::getBibfilesCache(Buffer const & buffer) const
 
 bool InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
+	BOOST_ASSERT(mi.base.bv);
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
@@ -801,7 +798,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 
-	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
+	BOOST_ASSERT(pi.base.bv);
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {

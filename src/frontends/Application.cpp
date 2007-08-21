@@ -52,14 +52,11 @@ LyXView & Application::createView(unsigned int width,
 				  const std::string & geometryArg)
 {
 	LyXView & view = gui().createRegisteredView();
-	int view_id = view.id();
-
 	theLyXFunc().setLyXView(&view);
-
-	/*int workArea_id_ =*/ gui().newWorkArea(width, height, view_id);
 
 	view.init();
 	view.setGeometry(width, height, posx, posy, maximized, iconSizeXY, geometryArg);
+
 	view.setFocus();
 
 	setCurrentView(view);

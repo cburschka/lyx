@@ -24,6 +24,7 @@
 #include "qt_helpers.h"
 
 #include "frontends/Application.h"
+#include "frontends/Dialogs.h"
 #include "frontends/Gui.h"
 #include "frontends/WorkArea.h"
 
@@ -43,6 +44,7 @@
 #include "LyXRC.h"
 #include "MenuBackend.h"
 #include "Session.h"
+#include "version.h"
 
 #include <QAction>
 #include <QApplication>
@@ -50,17 +52,16 @@
 #include <QDesktopWidget>
 #include <QDragEnterEvent>
 #include <QDropEvent>
-#include <QHBoxLayout>
 #include <QList>
 #include <QMimeData>
+#include <QPainter>
 #include <QPixmap>
 #include <QPushButton>
+#include <QStackedWidget>
 #include <QStatusBar>
 #include <QToolBar>
-#include <QTabBar>
+#include <QTabWidget>
 #include <QUrl>
-#include <QVBoxLayout>
-
 
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
@@ -81,84 +82,59 @@ namespace {
 
 int const statusbar_timer_value = 3000;
 
-class TabWidget : public QWidget
+class BackgroundWidget: public QWidget
 {
-	QHBoxLayout* hlayout;
 public:
-	QTabBar* tabbar;
-	QPushButton* closeTabButton;
-
-	void hideTabsIfNecessary()
+	BackgroundWidget(QString const & file, QString const & text)
 	{
-		if (tabbar->count() > 1) {
-			tabbar->show();
-			closeTabButton->show();
-		} else {
-			tabbar->hide();
-			closeTabButton->hide();
+		splash_ = new QPixmap(file);
+		if (!splash_) {
+			lyxerr << "could not load splash screen: '" << fromqstr(file) << "'" << endl;
+			return;
 		}
+
+		QPainter pain(splash_);
+		pain.setPen(QColor(255, 255, 0));
+		QFont font;
+		// The font used to display the version info
+		font.setStyleHint(QFont::SansSerif);
+		font.setWeight(QFont::Bold);
+		font.setPointSize(convert<int>(lyxrc.font_sizes[Font::SIZE_LARGE]));
+		pain.setFont(font);
+		pain.drawText(260, 270, text);
 	}
 
-	TabWidget(QWidget* w, bool topTabBar)
+	void paintEvent(QPaintEvent * ev)
 	{
-		closeTabButton = new QPushButton(this);
-		FileName const file = support::libFileSearch("images", "closetab", "xpm");
-		if (!file.empty()) {
-			QPixmap pm(toqstr(file.absFilename()));
-			closeTabButton->setIcon(QIcon(pm));
-			closeTabButton->setMaximumSize(pm.size());
-			closeTabButton->setFlat(true);
-		} else {
-			closeTabButton->setText("Close");
-		}
-		closeTabButton->setCursor(Qt::ArrowCursor);
-		closeTabButton->setToolTip(tr("Close tab"));
-		closeTabButton->setEnabled(true);
+		if (!splash_)
+			return;
 
-		tabbar = new QTabBar;
-#if QT_VERSION >= 0x040200
-		tabbar->setUsesScrollButtons(true);
-#endif
-		hlayout = new QHBoxLayout;
-		QVBoxLayout* vlayout = new QVBoxLayout;
-		hlayout->addWidget(tabbar);
-		hlayout->addWidget(closeTabButton);
-		if (topTabBar) {
-			vlayout->addLayout(hlayout);
-			vlayout->addWidget(w);
-		} else {
-			tabbar->setShape(QTabBar::RoundedSouth);
-			vlayout->addWidget(w);
-			vlayout->addLayout(hlayout);
-		}
-		vlayout->setMargin(0);
-		vlayout->setSpacing(0);
-		hlayout->setMargin(0);
-		setLayout(vlayout);
-		hideTabsIfNecessary();
+		int x = (width() - splash_->width()) / 2;
+		int y = (height() - splash_->height()) / 2;
+		QPainter pain(this);
+		pain.drawPixmap(x, y, *splash_);
 	}
 
-	void clearTabbar()
-	{
-		for (int i = tabbar->count() - 1; i >= 0; --i)
-			tabbar->removeTab(i);
-	}
+private:
+	QPixmap * splash_;
 };
+
 
 } // namespace anon
 
 
 struct GuiView::GuiViewPrivate
 {
-	vector<string> tabnames;
 	string cur_title;
-
-	TabWidget* tabWidget;
 
 	int posx_offset;
 	int posy_offset;
 
-	GuiViewPrivate() : tabWidget(0), posx_offset(0), posy_offset(0)
+	QTabWidget * tab_widget_;
+	QStackedWidget * stack_widget_;
+	BackgroundWidget * bg_widget_;
+
+	GuiViewPrivate() : posx_offset(0), posy_offset(0)
 	{}
 
 	unsigned int smallIconSize;
@@ -201,6 +177,28 @@ struct GuiView::GuiViewPrivate
 
 		return menu;
 	}
+
+	void initBackground()
+	{
+		bg_widget_ = 0;
+		LYXERR(Debug::GUI) << "show banner: " << lyxrc.show_banner << endl;
+		/// The text to be written on top of the pixmap
+		QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
+		FileName const file = support::libFileSearch("images", "banner", "png");
+		if (file.empty())
+			return;
+
+		bg_widget_ = new BackgroundWidget(toqstr(file.absFilename()), text);
+	}
+
+	void setBackground()
+	{
+		if (!bg_widget_)
+			return;
+
+		stack_widget_->setCurrentWidget(bg_widget_);
+		bg_widget_->setUpdatesEnabled(true);
+	}
 };
 
 
@@ -228,6 +226,44 @@ GuiView::GuiView(int id)
 		setWindowIcon(QPixmap(toqstr(iconname.absFilename())));
 #endif
 
+	d.tab_widget_ = new QTabWidget;
+
+	QPushButton * closeTabButton = new QPushButton(this);
+	FileName const file = support::libFileSearch("images", "closetab", "xpm");
+	if (!file.empty()) {
+		QPixmap pm(toqstr(file.absFilename()));
+		closeTabButton->setIcon(QIcon(pm));
+		closeTabButton->setMaximumSize(pm.size());
+		closeTabButton->setFlat(true);
+	} else {
+		closeTabButton->setText("Close");
+	}
+	closeTabButton->setCursor(Qt::ArrowCursor);
+	closeTabButton->setToolTip(tr("Close tab"));
+	closeTabButton->setEnabled(true);
+
+	QObject::connect(d.tab_widget_, SIGNAL(currentChanged(int)),
+			this, SLOT(currentTabChanged(int)));
+	QObject::connect(closeTabButton, SIGNAL(clicked()),
+			this, SLOT(closeCurrentTab()));
+
+	d.tab_widget_->setCornerWidget(closeTabButton);
+#if QT_VERSION >= 0x040200
+	d.tab_widget_->setUsesScrollButtons(true);
+#endif
+
+	d.initBackground();
+	if (d.bg_widget_) {
+		lyxerr << "stack widget!" << endl;
+		d.stack_widget_ = new QStackedWidget;
+		d.stack_widget_->addWidget(d.bg_widget_);
+		d.stack_widget_->addWidget(d.tab_widget_);
+		setCentralWidget(d.stack_widget_);
+	} else {
+		d.stack_widget_ = 0;
+		setCentralWidget(d.tab_widget_);
+	}
+
 	// For Drag&Drop.
 	setAcceptDrops(true);
 }
@@ -250,8 +286,8 @@ void GuiView::close()
 
 void GuiView::setFocus()
 {
-	BOOST_ASSERT(work_area_);
-	static_cast<GuiWorkArea *>(work_area_)->setFocus();
+	if (d.tab_widget_->count())
+		d.tab_widget_->currentWidget()->setFocus();
 }
 
 
@@ -274,14 +310,8 @@ void GuiView::init()
 	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(update_view_state_qt()));
 
-	BOOST_ASSERT(work_area_);
-	if (!work_area_->bufferView().buffer() && !theBufferList().empty())
-		setBuffer(theBufferList().first());
-
-	// make sure the buttons are disabled if needed
-	updateToolbars();
-	updateLayoutChoice();
-	updateMenubar();
+	if (d.stack_widget_)
+		d.stack_widget_->setCurrentWidget(d.bg_widget_);
 }
 
 
@@ -310,15 +340,6 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	}
 
 	quitting = true;
-
-	if (view()->buffer()) {
-		// save cursor position for opened files to .lyx/session
-		// only bottom (whole doc) level pit and pos is saved.
-		LyX::ref().session().lastFilePos().save(
-			FileName(buffer()->fileName()),
-			boost::tie(view()->cursor().bottom().pit(),
-			view()->cursor().bottom().pos()));
-	}
 
 	// this is the place where we leave the frontend.
 	// it is the only point at which we start quitting.
@@ -501,7 +522,9 @@ void GuiView::setGeometry(unsigned int width,
 		(void)geometryArg;
 #endif
 	}
-
+	
+	d.setBackground();
+	
 	show();
 
 	// For an unknown reason, the Window title update is not effective for
@@ -610,56 +633,6 @@ void GuiView::update_view_state_qt()
 }
 
 
-void GuiView::initTab(QWidget* workarea)
-{
-	// construct the TabWidget with 'false' to have the tabbar at the bottom
-	d.tabWidget = new TabWidget(workarea, true);
-	setCentralWidget(d.tabWidget);
-	QObject::connect(d.tabWidget->tabbar, SIGNAL(currentChanged(int)),
-			this, SLOT(currentTabChanged(int)));
-	QObject::connect(d.tabWidget->closeTabButton, SIGNAL(clicked()),
-			this, SLOT(closeCurrentTab()));
-}
-
-
-void GuiView::updateTab()
-{
-	std::vector<string> const & names = theBufferList().getFileNames();
-
-	string cur_title;
-	if (view()->buffer()) {
-		cur_title = view()->buffer()->fileName();
-	}
-
-	// avoid unnecessary tabbar rebuild:
-	// check if something has changed
-	if (d.tabnames == names && d.cur_title == cur_title)
-		return;
-	d.tabnames = names;
-	d.cur_title = cur_title;
-
-	QTabBar & tabbar = *d.tabWidget->tabbar;
-
-	// update when all is done
-	tabbar.blockSignals(true);
-
-	// remove all tab bars
-	d.tabWidget->clearTabbar();
-
-	// rebuild tabbar and function map from scratch
-	if (names.size() > 1) {
-		for(size_t i = 0; i < names.size(); i++) {
-			tabbar.addTab(toqstr(makeDisplayPath(names[i], 30)));
-			// set current tab
-			if (names[i] == cur_title)
-				tabbar.setCurrentIndex(i);
-		}
-	}
-	tabbar.blockSignals(false);
-	d.tabWidget->hideTabsIfNecessary();
-}
-
-
 void GuiView::closeCurrentTab()
 {
 	dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
@@ -668,8 +641,32 @@ void GuiView::closeCurrentTab()
 
 void GuiView::currentTabChanged(int i)
 {
-	BOOST_ASSERT(i >= 0 && size_type(i) < d.tabnames.size());
-	dispatch(FuncRequest(LFUN_BUFFER_SWITCH, d.tabnames[i]));
+	disconnectBuffer();
+	disconnectBufferView();
+	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(i));
+	BOOST_ASSERT(wa);
+	BufferView & bv = wa->bufferView();
+	connectBufferView(bv);
+	connectBuffer(*bv.buffer());
+	bv.updateMetrics(false);
+	bv.cursor().fixIfBroken();
+	wa->setUpdatesEnabled(true);
+	wa->redraw();
+	wa->setFocus();
+
+	updateToc();
+	// Buffer-dependent dialogs should be updated or
+	// hidden. This should go here because some dialogs (eg ToC)
+	// require bv_->text.
+	getDialogs().updateBufferDependent(true);
+	updateMenubar();
+	updateToolbars();
+	updateLayoutChoice();
+	updateWindowTitle();
+	updateStatusBar();
+
+	lyxerr << "currentTabChanged " << i
+		<< "File" << wa->bufferView().buffer()->fileName() << endl;
 }
 
 
@@ -741,11 +738,18 @@ bool GuiView::event(QEvent * e)
 
 	case QEvent::ShortcutOverride: {
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+		if (d.tab_widget_->count() == 0) {
+			theLyXFunc().setLyXView(this);
+			boost::shared_ptr<QKeySymbol> sym(new QKeySymbol);
+			sym->set(ke);
+			theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
+			e->accept();
+			return true;
+		}
 		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
 			boost::shared_ptr<QKeySymbol> sym(new QKeySymbol);
 			sym->set(ke);
-			BOOST_ASSERT(work_area_);
-			work_area_->processKeySym(sym, key_modifier::none);
+			currentWorkArea()->processKeySym(sym, key_modifier::none);
 			e->accept();
 			return true;
 		}
@@ -773,17 +777,20 @@ void GuiView::show()
 
 void GuiView::busy(bool yes)
 {
-	BOOST_ASSERT(work_area_);
-	static_cast<GuiWorkArea *>(work_area_)->setUpdatesEnabled(!yes);
+	if (d.tab_widget_->count()) {
+		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
+		BOOST_ASSERT(wa);
+		wa->setUpdatesEnabled(!yes);
+		if (yes)
+			wa->stopBlinkingCursor();
+		else
+			wa->startBlinkingCursor();
+	}
 
-	if (yes) {
-		work_area_->stopBlinkingCursor();
+	if (yes)
 		QApplication::setOverrideCursor(Qt::WaitCursor);
-	}
-	else {
-		work_area_->startBlinkingCursor();
+	else
 		QApplication::restoreOverrideCursor();
-	}
 }
 
 
@@ -832,6 +839,96 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newli
 
 	return Toolbars::ToolbarPtr(Tb);
 }
+
+
+WorkArea * GuiView::workArea(Buffer & buffer)
+{
+	for (int i = 0; i != d.tab_widget_->count(); ++i) {
+		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(i));
+		BOOST_ASSERT(wa);
+		if (wa->bufferView().buffer() == &buffer)
+			return wa;
+	}
+	return 0;
+}
+
+
+WorkArea * GuiView::addWorkArea(Buffer & buffer)
+{
+	GuiWorkArea * wa = new GuiWorkArea(buffer, *this);
+	d.tab_widget_->addTab(wa, toqstr(makeDisplayPath(buffer.fileName(), 30)));
+	wa->bufferView().updateMetrics(false);
+	if (d.stack_widget_)
+		d.stack_widget_->setCurrentWidget(d.tab_widget_);
+	return wa;
+}
+
+
+WorkArea * GuiView::currentWorkArea()
+{
+	if (d.tab_widget_->count() == 0)
+		return 0;
+	BOOST_ASSERT(dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget()));
+	return dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
+}
+
+
+WorkArea const * GuiView::currentWorkArea() const
+{
+	if (d.tab_widget_->count() == 0)
+		return 0;
+	BOOST_ASSERT(dynamic_cast<GuiWorkArea const *>(d.tab_widget_->currentWidget()));
+	return dynamic_cast<GuiWorkArea const *>(d.tab_widget_->currentWidget());
+}
+
+
+void GuiView::setCurrentWorkArea(WorkArea * work_area)
+{
+	BOOST_ASSERT(work_area);
+
+	// Changing work area can result from opening a file so
+	// update the toc in any case.
+	updateToc();
+
+	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(work_area);
+	BOOST_ASSERT(wa);
+	d.tab_widget_->setCurrentWidget(wa);
+	wa->setFocus();
+}
+
+
+void GuiView::removeWorkArea(WorkArea * work_area)
+{
+	BOOST_ASSERT(work_area);
+	if (work_area == currentWorkArea()) {
+		disconnectBuffer();
+		disconnectBufferView();
+	}
+
+	// removing a work area often results from closing a file so
+	// update the toc in any case.
+	updateToc();
+
+	GuiWorkArea * gwa = dynamic_cast<GuiWorkArea *>(work_area);
+	BOOST_ASSERT(gwa);
+	int index = d.tab_widget_->indexOf(gwa);
+	d.tab_widget_->removeTab(index);
+
+	delete gwa;
+
+	if (d.tab_widget_->count()) {
+		// make sure the next work area is enabled.
+		d.tab_widget_->currentWidget()->setUpdatesEnabled(true);
+		return;
+	}
+
+	getDialogs().hideBufferDependent();
+	if (d.stack_widget_) {
+		// No more work area, switch to the background widget.
+		d.setBackground();
+	}
+}
+
 
 } // namespace frontend
 } // namespace lyx

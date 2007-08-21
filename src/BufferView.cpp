@@ -122,14 +122,21 @@ T * getInsetByCode(Cursor & cur, Inset::Code code)
 } // anon namespace
 
 
-BufferView::BufferView()
-	: width_(0), height_(0), buffer_(0), wh_(0),
+BufferView::BufferView(Buffer & buf)
+	: width_(0), height_(0), buffer_(buf), wh_(0),
 	  cursor_(*this),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
 	  intl_(new Intl), last_inset_(0)
 {
 	xsel_cache_.set = false;
 	intl_->initKeyMapper(lyxrc.use_kbmap);
+
+	cursor_.push(buffer_.inset());
+	cursor_.resetAnchor();
+	buffer_.text().setCurrentFont(cursor_);
+
+	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
+		graphics::Previews::get().generateBufferPreviews(buffer_);
 }
 
 
@@ -138,124 +145,15 @@ BufferView::~BufferView()
 }
 
 
-Buffer * BufferView::buffer() const
+Buffer * BufferView::buffer()
 {
-	return buffer_;
+	return &buffer_;
 }
 
 
-Buffer * BufferView::setBuffer(Buffer * b)
+Buffer const * BufferView::buffer() const
 {
-	LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
-			    << "[ b = " << b << "]" << endl;
-
-	if (buffer_) {
-		// Save the current selection if any
-		cap::saveSelection(cursor_);
-		// Save the actual cursor position and anchor inside the
-		// buffer so that it can be restored in case we rechange
-		// to this buffer later on.
-		buffer_->saveCursor(cursor_.selectionBegin(),
-				    cursor_.selectionEnd());
-		// update bookmark pit of the current buffer before switch
-		for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i) {
-			BookmarksSection::Bookmark const & bm = LyX::ref().session().bookmarks().bookmark(i);
-			if (buffer()->fileName() != bm.filename.absFilename())
-				continue;
-			// if top_id or bottom_pit, bottom_pos has been changed, update bookmark
-			// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
-			pit_type new_pit;
-			pos_type new_pos;
-			int new_id;
-			boost::tie(new_pit, new_pos, new_id) = moveToPosition(bm.bottom_pit, bm.bottom_pos, bm.top_id, bm.top_pos);
-			if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos || bm.top_id != new_id )
-				const_cast<BookmarksSection::Bookmark &>(bm).updatePos(new_pit, new_pos, new_id);
-		}
-		// current buffer is going to be switched-off, save cursor pos
-		// Ideally, the whole cursor stack should be saved, but session
-		// currently can only handle bottom (whole document) level pit and pos.
-		// That is to say, if a cursor is in a nested inset, it will be
-		// restore to the left of the top level inset.
-		LyX::ref().session().lastFilePos().save(FileName(buffer_->fileName()),
-			boost::tie(cursor_.bottom().pit(), cursor_.bottom().pos()) );
-	}
-
-	// If we're quitting lyx, don't bother updating stuff
-	if (quitting) {
-		buffer_ = 0;
-		return 0;
-	}
-
-	//FIXME Fix for bug 3440 is here.
-	// If we are closing current buffer, switch to the first in
-	// buffer list.
-	if (!b) {
-		LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
-				    << " No Buffer!" << endl;
-		// We are closing the buffer, use the first buffer as current
-		//FIXME 3440
-		// if (last_buffer_) buffer_ = last_buffer_;
-		// also check that this is in theBufferList()?
-		buffer_ = theBufferList().first();
-	} else {
-		//FIXME 3440
-		// last_buffer = buffer_;
-		// Set current buffer
-		buffer_ = b;
-	}
-
-	// Reset old cursor
-	cursor_ = Cursor(*this);
-	anchor_ref_ = 0;
-	offset_ref_ = 0;
-
-	if (!buffer_)
-		return 0;
-
-	LYXERR(Debug::INFO) << BOOST_CURRENT_FUNCTION
-					<< "Buffer addr: " << buffer_ << endl;
-	cursor_.push(buffer_->inset());
-	cursor_.resetAnchor();
-	buffer_->text().setCurrentFont(cursor_);
-
-	// Update the metrics now that we have a proper Cursor.
-	updateMetrics(false);
-
-	// FIXME: This code won't be needed once we switch to
-	// "one Buffer" / "one BufferView".
-	if (buffer_->getCursor().size() > 0 &&
-			buffer_->getAnchor().size() > 0)
-	{
-		cursor_.setCursor(buffer_->getAnchor().asDocIterator(&(buffer_->inset())));
-		cursor_.resetAnchor();
-		cursor_.setCursor(buffer_->getCursor().asDocIterator(&(buffer_->inset())));
-		cursor_.setSelection();
-		// do not set selection to the new buffer because we
-		// only paste recent selection.
-
-		// Make sure that the restored cursor is not broken. This can happen for
-		// example if this Buffer has been modified by another view.
-		cursor_.fixIfBroken();
-
-		if (fitCursor())
-			// Update the metrics if the cursor new position was off screen.
-			updateMetrics(false);
-	}
-
-	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
-		graphics::Previews::get().generateBufferPreviews(*buffer_);
-	return buffer_;
-}
-
-
-void BufferView::resize()
-{
-	if (!buffer_)
-		return;
-
-	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION << endl;
-
-	updateMetrics(false);
+	return &buffer_;
 }
 
 
@@ -298,17 +196,11 @@ bool BufferView::update(Update::flags flags)
 		<< "[fitcursor = " << (flags & Update::FitCursor)
 		<< ", forceupdate = " << (flags & Update::Force)
 		<< ", singlepar = " << (flags & Update::SinglePar)
-		<< "]  buffer: " << buffer_ << endl;
-
-	// Check needed to survive LyX startup
-	if (!buffer_)
-		return false;
-
-	LYXERR(Debug::WORKAREA) << "BufferView::update" << std::endl;
+		<< "]  buffer: " << &buffer_ << endl;
 
 	// Update macro store
 	if (!(cursor().inMathed() && cursor().inMacroMode()))
-		buffer_->buildMacros();
+		buffer_.buildMacros();
 
 	// Now do the first drawing step if needed. This consists on updating
 	// the CoordCache in updateMetrics().
@@ -360,14 +252,7 @@ bool BufferView::update(Update::flags flags)
 
 void BufferView::updateScrollbar()
 {
-	if (!buffer_) {
-		LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION
-				     << " no text in updateScrollbar" << endl;
-		scrollbarParameters_.reset();
-		return;
-	}
-
-	Text & t = buffer_->text();
+	Text & t = buffer_.text();
 	TextMetrics & tm = text_metrics_[&t];
 
 	int const parsize = int(t.paragraphs().size() - 1);
@@ -432,10 +317,7 @@ void BufferView::scrollDocView(int value)
 	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
 			   << "[ value = " << value << "]" << endl;
 
-	if (!buffer_)
-		return;
-
-	Text & t = buffer_->text();
+	Text & t = buffer_.text();
 	TextMetrics & tm = text_metrics_[&t];
 
 	float const bar = value / float(wh_ * t.paragraphs().size());
@@ -453,10 +335,7 @@ void BufferView::scrollDocView(int value)
 
 void BufferView::setCursorFromScrollbar()
 {
-	if (!buffer_)
-		return;
-
-	Text & t = buffer_->text();
+	Text & t = buffer_.text();
 
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
@@ -469,14 +348,14 @@ void BufferView::setCursorFromScrollbar()
 	case bv_funcs::CUR_ABOVE:
 		// We reset the cursor because bv_funcs::status() does not
 		// work when the cursor is within mathed.
-		cur.reset(buffer_->inset());
+		cur.reset(buffer_.inset());
 		t.setCursorFromCoordinates(cur, 0, first);
 		cur.clearSelection();
 		break;
 	case bv_funcs::CUR_BELOW:
 		// We reset the cursor because bv_funcs::status() does not
 		// work when the cursor is within mathed.
-		cur.reset(buffer_->inset());
+		cur.reset(buffer_.inset());
 		t.setCursorFromCoordinates(cur, 0, last);
 		cur.clearSelection();
 		break;
@@ -484,7 +363,7 @@ void BufferView::setCursorFromScrollbar()
 		int const y = bv_funcs::getPos(*this, cur, cur.boundary()).y_;
 		int const newy = min(last, max(y, first));
 		if (y != newy) {
-			cur.reset(buffer_->inset());
+			cur.reset(buffer_.inset());
 			t.setCursorFromCoordinates(cur, 0, newy);
 		}
 	}
@@ -508,7 +387,7 @@ void BufferView::saveBookmark(unsigned int idx)
 	// pit and pos will be updated with bottom level pit/pos
 	// when lyx exits.
 	LyX::ref().session().bookmarks().save(
-		FileName(buffer_->fileName()),
+		FileName(buffer_.fileName()),
 		cursor_.bottom().pit(),
 		cursor_.bottom().pos(),
 		cursor_.paragraph().id(),
@@ -530,8 +409,8 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 	// This is the case for a 'live' bookmark when unique paragraph ID
 	// is used to track bookmarks.
 	if (top_id > 0) {
-		ParIterator par = buffer_->getParFromID(top_id);
-		if (par != buffer_->par_iterator_end()) {
+		ParIterator par = buffer_.getParFromID(top_id);
+		if (par != buffer_.par_iterator_end()) {
 			DocIterator dit = makeDocIterator(par, min(par->size(), top_pos));
 			// Some slices of the iterator may not be
 			// reachable (e.g. closed collapsable inset)
@@ -556,8 +435,8 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 	// restoration is inaccurate. If a bookmark was within an inset,
 	// it will be restored to the left of the outmost inset that contains
 	// the bookmark.
-	if (static_cast<size_t>(bottom_pit) < buffer_->paragraphs().size()) {
-		DocIterator it = doc_iterator_begin(buffer_->inset());
+	if (static_cast<size_t>(bottom_pit) < buffer_.paragraphs().size()) {
+		DocIterator it = doc_iterator_begin(buffer_.inset());
 		it.pit() = bottom_pit;
 		it.pos() = min(bottom_pos, it.paragraph().size());
 		setCursor(it);
@@ -613,10 +492,10 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
-		flag.enabled(!buffer_->undostack().empty());
+		flag.enabled(!buffer_.undostack().empty());
 		break;
 	case LFUN_REDO:
-		flag.enabled(!buffer_->redostack().empty());
+		flag.enabled(!buffer_.redostack().empty());
 		break;
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
@@ -656,12 +535,12 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_CHANGES_TRACK:
 		flag.enabled(true);
-		flag.setOnOff(buffer_->params().trackChanges);
+		flag.setOnOff(buffer_.params().trackChanges);
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
-		flag.enabled(buffer_);
-		flag.setOnOff(buffer_->params().outputChanges);
+		flag.enabled(true);
+		flag.setOnOff(buffer_.params().outputChanges);
 		break;
 
 	case LFUN_CHANGES_MERGE:
@@ -672,11 +551,11 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		// In principle, these command should only be enabled if there
 		// is a change in the document. However, without proper
 		// optimizations, this will inevitably result in poor performance.
-		flag.enabled(buffer_);
+		flag.enabled(true);
 		break;
 
 	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
-		flag.setOnOff(buffer_->params().compressed);
+		flag.setOnOff(buffer_.params().compressed);
 		break;
 	}
 
@@ -701,10 +580,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		<< " y[" << cmd.y << ']'
 		<< " button[" << cmd.button() << ']'
 		<< endl;
-
-	// FIXME: this should not be possible.
-	if (!buffer_)
-		return Update::None;
 
 	Cursor & cur = cursor_;
 	// Default Update flags.
@@ -774,7 +649,9 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_PARAGRAPH_GOTO: {
 		int const id = convert<int>(to_utf8(cmd.argument()));
 		int i = 0;
-		for (Buffer * b = buffer_; i == 0 || b != buffer_; b = theBufferList().next(b)) {
+		for (Buffer * b = &buffer_; i == 0 || b != &buffer_;
+			b = theBufferList().next(b)) {
+
 			ParIterator par = b->getParFromID(id);
 			if (par == b->par_iterator_end()) {
 				LYXERR(Debug::INFO)
@@ -786,7 +663,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 					<< " found in buffer `"
 					<< b->fileName() << "'." << endl;
 
-				if (b == buffer_) {
+				if (b == &buffer_) {
 					// Set the cursor
 					setCursor(makeDocIterator(par, 0));
 				} else {
@@ -806,20 +683,20 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_OUTLINE_UP:
 		toc::outline(toc::Up, cursor_);
 		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
-		updateLabels(*buffer_);
+		updateLabels(buffer_);
 		break;
 	case LFUN_OUTLINE_DOWN:
 		toc::outline(toc::Down, cursor_);
 		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
-		updateLabels(*buffer_);
+		updateLabels(buffer_);
 		break;
 	case LFUN_OUTLINE_IN:
 		toc::outline(toc::In, cursor_);
-		updateLabels(*buffer_);
+		updateLabels(buffer_);
 		break;
 	case LFUN_OUTLINE_OUT:
 		toc::outline(toc::Out, cursor_);
-		updateLabels(*buffer_);
+		updateLabels(buffer_);
 		break;
 
 	case LFUN_NOTE_NEXT:
@@ -835,12 +712,12 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_CHANGES_TRACK:
-		buffer_->params().trackChanges = !buffer_->params().trackChanges;
+		buffer_.params().trackChanges = !buffer_.params().trackChanges;
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
-		buffer_->params().outputChanges = !buffer_->params().outputChanges;
-		if (buffer_->params().outputChanges) {
+		buffer_.params().outputChanges = !buffer_.params().outputChanges;
+		if (buffer_.params().outputChanges) {
 			bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 			bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
 					  LaTeXFeatures::isAvailable("xcolor");
@@ -872,21 +749,21 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_ALL_CHANGES_ACCEPT:
 		// select complete document
-		cursor_.reset(buffer_->inset());
+		cursor_.reset(buffer_.inset());
 		cursor_.selHandle(true);
-		buffer_->text().cursorBottom(cursor_);
+		buffer_.text().cursorBottom(cursor_);
 		// accept everything in a single step to support atomic undo
-		buffer_->text().acceptOrRejectChanges(cursor_, Text::ACCEPT);
+		buffer_.text().acceptOrRejectChanges(cursor_, Text::ACCEPT);
 		break;
 
 	case LFUN_ALL_CHANGES_REJECT:
 		// select complete document
-		cursor_.reset(buffer_->inset());
+		cursor_.reset(buffer_.inset());
 		cursor_.selHandle(true);
-		buffer_->text().cursorBottom(cursor_);
+		buffer_.text().cursorBottom(cursor_);
 		// reject everything in a single step to support atomic undo
 		// Note: reject does not work recursively; the user may have to repeat the operation
-		buffer_->text().acceptOrRejectChanges(cursor_, Text::REJECT);
+		buffer_.text().acceptOrRejectChanges(cursor_, Text::REJECT);
 		break;
 
 	case LFUN_WORD_FIND:
@@ -945,7 +822,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 						Inset::BIBTEX_CODE);
 		if (inset) {
 			if (inset->addDatabase(to_utf8(cmd.argument())))
-				buffer_->updateBibfilesCache();
+				buffer_.updateBibfilesCache();
 		}
 		break;
 	}
@@ -957,7 +834,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 						Inset::BIBTEX_CODE);
 		if (inset) {
 			if (inset->delDatabase(to_utf8(cmd.argument())))
-				buffer_->updateBibfilesCache();
+				buffer_.updateBibfilesCache();
 		}
 		break;
 	}
@@ -968,8 +845,8 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			from = cur.selectionBegin();
 			to = cur.selectionEnd();
 		} else {
-			from = doc_iterator_begin(buffer_->inset());
-			to = doc_iterator_end(buffer_->inset());
+			from = doc_iterator_begin(buffer_.inset());
+			to = doc_iterator_end(buffer_.inset());
 		}
 		int const count = countWords(from, to);
 		docstring message;
@@ -994,7 +871,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BUFFER_TOGGLE_COMPRESSION:
 		// turn compression on/off
-		buffer_->params().compressed = !buffer_->params().compressed;
+		buffer_.params().compressed = !buffer_.params().compressed;
 		break;
 
 	case LFUN_NEXT_INSET_TOGGLE: {
@@ -1031,9 +908,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 docstring const BufferView::requestSelection()
 {
-	if (!buffer_)
-		return docstring();
-
 	Cursor & cur = cursor_;
 
 	if (!cur.selection()) {
@@ -1056,17 +930,15 @@ docstring const BufferView::requestSelection()
 
 void BufferView::clearSelection()
 {
-	if (buffer_) {
-		cursor_.clearSelection();
-		// Clear the selection buffer. Otherwise a subsequent
-		// middle-mouse-button paste would use the selection buffer,
-		// not the more current external selection.
-		cap::clearSelection();
-		xsel_cache_.set = false;
-		// The buffer did not really change, but this causes the
-		// redraw we need because we cleared the selection above.
-		buffer_->changed();
-	}
+	cursor_.clearSelection();
+	// Clear the selection buffer. Otherwise a subsequent
+	// middle-mouse-button paste would use the selection buffer,
+	// not the more current external selection.
+	cap::clearSelection();
+	xsel_cache_.set = false;
+	// The buffer did not really change, but this causes the
+	// redraw we need because we cleared the selection above.
+	buffer_.changed();
 }
 
 
@@ -1078,9 +950,7 @@ void BufferView::workAreaResize(int width, int height)
 
 	// The complete text metrics will be redone.
 	text_metrics_.clear();
-
-	if (buffer_)
-		resize();
+	updateMetrics(false);
 }
 
 
@@ -1140,12 +1010,8 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	// LFUN_FILE_OPEN generated by drag-and-drop.
 	FuncRequest cmd = cmd0;
 
-	// E.g. Qt mouse press when no buffer
-	if (!buffer_)
-		return false;
-
 	Cursor cur(*this);
-	cur.push(buffer_->inset());
+	cur.push(buffer_.inset());
 	cur.selection() = cursor_.selection();
 
 	// Either the inset under the cursor or the
@@ -1158,7 +1024,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 
 		// Get inset under mouse, if there is one.
 		Inset const * covering_inset =
-			getCoveringInset(buffer_->text(), cmd.x, cmd.y);
+			getCoveringInset(buffer_.text(), cmd.x, cmd.y);
 		if (covering_inset == last_inset_)
 			// Same inset, no need to do anything...
 			return false;
@@ -1208,7 +1074,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	}
 
 	// Build temporary cursor.
-	Inset * inset = buffer_->text().editXY(cur, cmd.x, cmd.y);
+	Inset * inset = buffer_.text().editXY(cur, cmd.x, cmd.y);
 
 	// Put anchor at the same position.
 	cur.resetAnchor();
@@ -1239,10 +1105,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 
 void BufferView::scroll(int /*lines*/)
 {
-//	if (!buffer_)
-//		return;
-//
-//	Text const * t = &buffer_->text();
+//	Text const * t = buffer_.text();
 //	int const line_height = defaultRowHeight();
 //
 //	// The new absolute coordinate
@@ -1262,21 +1125,21 @@ void BufferView::setCursorFromRow(int row)
 	int tmpid = -1;
 	int tmppos = -1;
 
-	buffer_->texrow().getIdFromRow(row, tmpid, tmppos);
+	buffer_.texrow().getIdFromRow(row, tmpid, tmppos);
 
-	cursor_.reset(buffer_->inset());
+	cursor_.reset(buffer_.inset());
 	if (tmpid == -1)
-		buffer_->text().setCursor(cursor_, 0, 0);
+		buffer_.text().setCursor(cursor_, 0, 0);
 	else
-		buffer_->text().setCursor(cursor_, buffer_->getParFromID(tmpid).pit(), tmppos);
+		buffer_.text().setCursor(cursor_, buffer_.getParFromID(tmpid).pit(), tmppos);
 }
 
 
 void BufferView::gotoLabel(docstring const & label)
 {
-	for (InsetIterator it = inset_iterator_begin(buffer_->inset()); it; ++it) {
+	for (InsetIterator it = inset_iterator_begin(buffer_.inset()); it; ++it) {
 		vector<docstring> labels;
-		it->getLabelList(*buffer_, labels);
+		it->getLabelList(buffer_, labels);
 		if (std::find(labels.begin(), labels.end(), label) != labels.end()) {
 			setCursor(it);
 			update();
@@ -1343,10 +1206,10 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 	if (!changed)
 		return false;
 
-	updateLabels(*buffer_);
+	updateLabels(buffer_);
 
 	updateMetrics(false);
-	buffer_->changed();
+	buffer_.changed();
 	return true;
 }
 
@@ -1442,7 +1305,7 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 // FIXME: We should split-up updateMetrics() for the singlepar case.
 void BufferView::updateMetrics(bool singlepar)
 {
-	Text & buftext = buffer_->text();
+	Text & buftext = buffer_.text();
 	TextMetrics & tm = textMetrics(&buftext);
 	pit_type size = int(buftext.paragraphs().size());
 
@@ -1571,13 +1434,10 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		// Launch a file browser
 		// FIXME UNICODE
 		string initpath = lyxrc.document_path;
-
-		if (buffer_) {
-			string const trypath = buffer_->filePath();
-			// If directory is writeable, use this as default.
-			if (isDirWriteable(FileName(trypath)))
-				initpath = trypath;
-		}
+		string const trypath = buffer_.filePath();
+		// If directory is writeable, use this as default.
+		if (isDirWriteable(FileName(trypath)))
+			initpath = trypath;
 
 		// FIXME UNICODE
 		FileDialog fileDlg(_("Select LyX document to insert"),
@@ -1617,7 +1477,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 	docstring res;
 	Buffer buf("", false);
 	if (lyx::loadLyXFile(&buf, FileName(filename))) {
-		ErrorList & el = buffer_->errorList("Parse");
+		ErrorList & el = buffer_.errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");
 		recordUndo(cursor_);
@@ -1629,8 +1489,8 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 
 	// emit message signal.
 	message(bformat(res, disp_fn));
-	buffer_->errors("Parse");
-	resize();
+	buffer_.errors("Parse");
+	updateMetrics(false);
 }
 
 } // namespace lyx

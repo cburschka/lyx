@@ -17,26 +17,27 @@
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
-
-#include "FuncRequest.h"
-#include "LyXFunc.h"
+#include "frontends/LyXView.h"
 
 #include "BufferView.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Color.h"
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "debug.h"
-#include "Language.h"
-#include "Color.h"
 #include "Font.h"
+#include "FuncRequest.h"
+#include "Language.h"
+#include "LyX.h"
+#include "LyXFunc.h"
 #include "LyXRC.h"
-#include "Text.h"
-#include "LyXView.h"
 #include "MetricsInfo.h"
+#include "Text.h"
 
 #include "gettext.h"
 #include "support/ForkedcallsController.h"
+#include "support/FileName.h"
 
 #include <boost/utility.hpp>
 #include <boost/bind.hpp>
@@ -64,39 +65,54 @@ boost::signals::connection timecon;
 namespace lyx {
 namespace frontend {
 
-WorkArea::WorkArea(int id, LyXView & lyx_view)
-	: buffer_view_(0), lyx_view_(lyx_view), greyed_out_(true),
-	  id_(id), cursor_visible_(false), cursor_timeout_(400)
+WorkArea::WorkArea(Buffer & buffer, LyXView & lv)
+	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
+	cursor_visible_(false), cursor_timeout_(400)
 {
-	// Start loading the pixmap as soon as possible
-	//if (lyxrc.show_banner) {
-	//	showBanner();
-	//}
-
 	// Setup the signals
 	timecon = cursor_timeout_.timeout
 		.connect(boost::bind(&WorkArea::toggleCursor, this));
+
+	bufferChangedConnection_ =
+		buffer.changed.connect(
+			boost::bind(&WorkArea::redraw, this));
+
+	bufferClosingConnection_ =
+		buffer.closing.connect(
+		boost::bind(&WorkArea::close, this));
 
 	cursor_timeout_.start();
 }
 
 
-void WorkArea::setBufferView(BufferView * buffer_view)
+WorkArea::~WorkArea()
 {
-	if (buffer_view_) {
-		message_connection_.disconnect();
-		lyx_view_.disconnectBufferView();
-	}
+	bufferChangedConnection_.disconnect();
+	bufferClosingConnection_.disconnect();
 
-	hideCursor();
-	buffer_view_ = buffer_view;
-	toggleCursor();
+	// current buffer is going to be switched-off, save cursor pos
+	// Ideally, the whole cursor stack should be saved, but session
+	// currently can only handle bottom (whole document) level pit and pos.
+	// That is to say, if a cursor is in a nested inset, it will be
+	// restore to the left of the top level inset.
+	Cursor & cur = buffer_view_->cursor();
+	LyX::ref().session().lastFilePos().save(
+		support::FileName(buffer_view_->buffer()->fileName()),
+		boost::tie(cur.bottom().pit(), cur.bottom().pos()) );
 
-	message_connection_ = buffer_view_->message.connect(
-			boost::bind(&WorkArea::displayMessage, this, _1));
-
-	lyx_view_.connectBufferView(*buffer_view);
+	delete buffer_view_;
 }
+
+
+void WorkArea::close()
+{
+	lyx_view_->removeWorkArea(this);
+}
+
+//void WorkArea::setLyXView(LyXView * lyx_view)
+//{
+//	lyx_view_ = lyx_view;
+//}
 
 
 BufferView & WorkArea::bufferView()
@@ -127,16 +143,13 @@ void WorkArea::startBlinkingCursor()
 
 void WorkArea::redraw()
 {
-	if (!buffer_view_ || !buffer_view_->buffer()) {
-		greyed_out_ = true;
-		// The argument here are meaningless.
-		expose(1,1,1,1);
+	if (!isVisible())
+		// No need to redraw in this case.
 		return;
-	}
 
 	// No need to do anything if this is the current view. The BufferView
 	// metrics are already up to date.
-	if (&lyx_view_ != theApp()->currentView()) {
+	if (lyx_view_ != theApp()->currentView()) {
 		// FIXME: it would be nice to optimize for the off-screen case.
 		buffer_view_->updateMetrics(false);
 		buffer_view_->cursor().fixIfBroken();
@@ -152,7 +165,6 @@ void WorkArea::redraw()
 	}
 	
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
-	greyed_out_ = false;
 
 	LYXERR(Debug::WORKAREA) << "WorkArea::redraw screen" << endl;
 
@@ -176,13 +188,8 @@ void WorkArea::processKeySym(KeySymbolPtr key, key_modifier::state state)
 	// the blinking cursor.
 	stopBlinkingCursor();
 
-	theLyXFunc().setLyXView(&lyx_view_);
+	theLyXFunc().setLyXView(lyx_view_);
 	theLyXFunc().processKeySym(key, state);
-
-	/* When we move around, or type, it's nice to be able to see
-	 * the cursor immediately after the keypress.
-	 */
-	startBlinkingCursor();
 }
 
 
@@ -190,11 +197,11 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 {
 	// Handle drag&drop
 	if (cmd0.action == LFUN_FILE_OPEN) {
-		lyx_view_.dispatch(cmd0);
+		lyx_view_->dispatch(cmd0);
 		return;
 	}
 
-	theLyXFunc().setLyXView(&lyx_view_);
+	theLyXFunc().setLyXView(lyx_view_);
 
 	FuncRequest cmd;
 
@@ -222,9 +229,9 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
-		lyx_view_.updateLayoutChoice();
-		lyx_view_.updateMenubar();
-		lyx_view_.updateToolbars();
+		lyx_view_->updateLayoutChoice();
+		lyx_view_->updateMenubar();
+		lyx_view_->updateToolbars();
 	}
 
 	// GUI tweaks except with mouse motion with no button pressed.
@@ -233,7 +240,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 		// Slight hack: this is only called currently when we
 		// clicked somewhere, so we force through the display
 		// of the new status here.
-		lyx_view_.clearMessage();
+		lyx_view_->clearMessage();
 
 		// Show the cursor immediately after any operation.
 		startBlinkingCursor();
@@ -243,12 +250,12 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 
 void WorkArea::resizeBufferView()
 {
-	lyx_view_.busy(true);
-	lyx_view_.message(_("Formatting document..."));
+	lyx_view_->busy(true);
+	lyx_view_->message(_("Formatting document..."));
 	buffer_view_->workAreaResize(width(), height());
-	lyx_view_.updateLayoutChoice();
-	lyx_view_.clearMessage();
-	lyx_view_.busy(false);
+	lyx_view_->updateLayoutChoice();
+	lyx_view_->clearMessage();
+	lyx_view_->busy(false);
 }
 
 
@@ -268,7 +275,7 @@ void WorkArea::scrollBufferView(int position)
 	redraw();
 	if (lyxrc.cursor_follows_scrollbar) {
 		buffer_view_->setCursorFromScrollbar();
-		lyx_view_.updateLayoutChoice();
+		lyx_view_->updateLayoutChoice();
 	}
 	// Show the cursor immediately after any operation.
 	startBlinkingCursor();
@@ -278,9 +285,6 @@ void WorkArea::scrollBufferView(int position)
 void WorkArea::showCursor()
 {
 	if (cursor_visible_)
-		return;
-
-	if (!buffer_view_->buffer())
 		return;
 
 	CursorShape shape = BAR_SHAPE;
@@ -332,27 +336,18 @@ void WorkArea::hideCursor()
 
 void WorkArea::toggleCursor()
 {
-	if (buffer_view_->buffer()) {
+	if (cursor_visible_)
+		hideCursor();
+	else
+		showCursor();
 
-		if (cursor_visible_)
-			hideCursor();
-		else
-			showCursor();
-
-		// Use this opportunity to deal with any child processes that
-		// have finished but are waiting to communicate this fact
-		// to the rest of LyX.
-		ForkedcallsController & fcc = ForkedcallsController::get();
-		fcc.handleCompletedProcesses();
-	}
+	// Use this opportunity to deal with any child processes that
+	// have finished but are waiting to communicate this fact
+	// to the rest of LyX.
+	ForkedcallsController & fcc = ForkedcallsController::get();
+	fcc.handleCompletedProcesses();
 
 	cursor_timeout_.restart();
-}
-
-
-void WorkArea::displayMessage(lyx::docstring const & message)
-{
-	lyx_view_.message(message);
 }
 
 } // namespace frontend

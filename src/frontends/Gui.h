@@ -52,11 +52,6 @@ public:
 		return view_ids_;
 	}
 
-
-	virtual int newWorkArea(unsigned int width, unsigned int height, int view_id) = 0;
-	///
-	virtual WorkArea & workArea(int id) = 0;
-
 protected:
 
 	std::vector<int> view_ids_;

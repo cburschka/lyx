@@ -12,21 +12,11 @@
 
 #include <config.h>
 
-// This include must be declared before everything else because
-// of boost/Qt/LyX clash...
+#include "GuiImplementation.h"
+
 #include "GuiView.h"
 
-#include "GuiImplementation.h"
-#include "GuiWorkArea.h"
-
-#include "BufferView.h"
-#include "BufferList.h"
-#include "FuncRequest.h"
-#include "LyXFunc.h"
-
 #include <QApplication>
-
-using boost::shared_ptr;
 
 
 namespace
@@ -49,7 +39,6 @@ namespace frontend {
 GuiImplementation::GuiImplementation()
 {
 	view_ids_.clear();
-	work_area_ids_.clear();
 }
 
 
@@ -74,9 +63,6 @@ bool GuiImplementation::unregisterView(int id)
 	std::map<int, GuiView *>::iterator it;
 	for (it = views_.begin(); it != views_.end(); ++it) {
 		if (it->first == id) {
-			std::vector<int> const & wa_ids = it->second->workAreaIds();
-			for (size_t i = 0; i < wa_ids.size(); ++i)
-				work_areas_.erase(wa_ids[i]);
 			views_.erase(id);
 			break;
 		}
@@ -108,9 +94,7 @@ bool GuiImplementation::closeAllViews()
 	}
 
 	views_.clear();
-	work_areas_.clear();
 	view_ids_.clear();
-	work_area_ids_.clear();
 	return true;
 }
 
@@ -119,43 +103,6 @@ LyXView& GuiImplementation::view(int id) const
 {
 	BOOST_ASSERT(views_.find(id) != views_.end());
 	return *views_.find(id)->second;
-}
-
-
-std::vector<int> const & GuiImplementation::workAreaIds()
-{
-	updateIds(work_areas_, work_area_ids_);
-	return work_area_ids_;
-}
-
-
-int GuiImplementation::newWorkArea(unsigned int w, unsigned int h, int view_id)
-{
-	updateIds(views_, view_ids_);
-	int id = 0;
-	while (work_areas_.find(id) != work_areas_.end())
-		id++;
-
-	GuiView * view = views_[view_id];
-
-	work_areas_.insert(std::pair<int, GuiWorkArea *>
-					(id, new GuiWorkArea(w, h, id, *view)));
-
-	// FIXME BufferView creation should be independant of WorkArea creation
-	buffer_views_[id].reset(new BufferView);
-	work_areas_[id]->setBufferView(buffer_views_[id].get());
-
-	view->setWorkArea(work_areas_[id]);
-	view->initTab(work_areas_[id]);
-
-	return id;
-}
-
-
-WorkArea& GuiImplementation::workArea(int id)
-{
-	BOOST_ASSERT(work_areas_.find(id) != work_areas_.end());
-	return *work_areas_[id];
 }
 
 

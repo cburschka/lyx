@@ -88,10 +88,11 @@ class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 
 public:
 	///
-	GuiWorkArea(int width, int height, int id, LyXView & lyx_view);
+	GuiWorkArea(Buffer & buffer, LyXView & lv);
 
 	///
 	bool hasFocus() const { return QAbstractScrollArea::hasFocus(); }
+	bool isVisible() const { return QAbstractScrollArea::isVisible(); }
 
 	/// return the width of the content pane
 	virtual int width() const { return viewport()->width(); }

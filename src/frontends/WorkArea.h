@@ -25,7 +25,7 @@
 #undef CursorShape
 
 namespace lyx {
-
+class Buffer;
 class BufferView;
 class FuncRequest;
 
@@ -53,13 +53,13 @@ enum CursorShape {
  */
 class WorkArea : public boost::signals::trackable {
 public:
-	WorkArea(int id, LyXView & lyx_view);
+	///
+	WorkArea(Buffer & buffer, LyXView & lv);
 
-	virtual ~WorkArea() {}
+	virtual ~WorkArea();
 
-	int const id() const { return id_; }
-
-	void setBufferView(BufferView * buffer_view);
+	///
+	void setLyXView(LyXView & lv) { lyx_view_ = &lv; }
 
 	///
 	BufferView & bufferView();
@@ -68,6 +68,9 @@ public:
 
 	/// \return true if has the keyboard input focus.
 	virtual bool hasFocus() const = 0;
+
+	/// \return true if has this WorkArea is visible.
+	virtual bool isVisible() const = 0;
 
 	/// return the width of the work area in pixels
 	virtual int width() const = 0;
@@ -95,12 +98,17 @@ public:
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbolPtr key, key_modifier::state state);
+
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
 	///
 	void dispatch(FuncRequest const & cmd0,
 		key_modifier::state = key_modifier::none);
+
+	/// close this work area.
+	/// Slot for Buffer::closing boost signal.
+	void close();
 	///
 	void resizeBufferView();
 	///
@@ -120,25 +128,20 @@ protected:
 
 	///
 	BufferView * buffer_view_;
-
 	///
-	LyXView & lyx_view_;
-	///
-	bool greyed_out_;
+	LyXView * lyx_view_;
 
 private:
-	///
-	int id_;
-	///
-	void displayMessage(docstring const &);
-	/// buffer messages signal connection
-	boost::signals::connection message_connection_;
-
 	/// is the cursor currently displayed
 	bool cursor_visible_;
 
 	///
 	Timeout cursor_timeout_;
+
+	/// buffer changed signal connection
+	boost::signals::connection bufferChangedConnection_;
+	/// buffer closing signal connection
+	boost::signals::connection bufferClosingConnection_;
 };
 
 } // namespace frontend

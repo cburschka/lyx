@@ -173,8 +173,8 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
-	: WorkArea(id, lyx_view), need_resize_(false), schedule_redraw_(false),
+GuiWorkArea::GuiWorkArea(Buffer & buf, LyXView & lv)
+	: WorkArea(buf, lv), need_resize_(false), schedule_redraw_(false),
 	  preedit_lines_(1)
 {
 	screen_ = QPixmap(viewport()->width(), viewport()->height());
@@ -195,8 +195,6 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	setFocusPolicy(Qt::WheelFocus);
 
 	viewport()->setCursor(Qt::IBeamCursor);
-
-	resize(w, h);
 
 	synthetic_mouse_event_.timeout.timeout.connect(
 		boost::bind(&GuiWorkArea::generateSyntheticMouseEvent,
@@ -258,16 +256,12 @@ void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 //	if (theApp() == 0 || &lyx_view_ == theApp()->currentView())
 //		return;
 
-	theApp()->setCurrentView(lyx_view_);
+	theApp()->setCurrentView(*lyx_view_);
 
 	// Repaint the whole screen.
 	// Note: this is different from redraw() as only the backing pixmap
 	// will be redrawn, which is cheap.
 	viewport()->repaint();
-
-	// FIXME: it would be better to send a signal "newBuffer()"
-	// in BufferList that could be connected to the different tabbars.
-	lyx_view_.updateTab();
 
 	startBlinkingCursor();
 }
@@ -459,49 +453,6 @@ void GuiWorkArea::update(int x, int y, int w, int h)
 }
 
 
-void GuiWorkArea::doGreyOut(QLPainter & pain)
-{
-	pain.fillRectangle(0, 0, width(), height(),
-		Color::bottomarea);
-
-	//if (!lyxrc.show_banner)
-	//	return;
-	LYXERR(Debug::GUI) << "show banner: " << lyxrc.show_banner << endl;
-	/// The text to be written on top of the pixmap
-	QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
-	FileName const file = support::libFileSearch("images", "banner", "png");
-	if (file.empty())
-		return;
-
-	QPixmap pm(toqstr(file.absFilename()));
-	if (!pm) {
-		lyxerr << "could not load splash screen: '" << file << "'" << endl;
-		return;
-	}
-
-	QFont font;
-	// The font used to display the version info
-	font.setStyleHint(QFont::SansSerif);
-	font.setWeight(QFont::Bold);
-	font.setPointSize(convert<int>(lyxrc.font_sizes[Font::SIZE_LARGE]));
-
-	int const w = pm.width();
-	int const h = pm.height();
-
-	int x = (width() - w) / 2;
-	int y = (height() - h) / 2;
-
-	pain.drawPixmap(x, y, pm);
-
-	x += 260;
-	y += 270;
-
-	pain.setPen(QColor(255, 255, 0));
-	pain.setFont(font);
-	pain.drawText(x, y, text);
-}
-
-
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
 	QRect const rc = ev->rect();
@@ -538,14 +489,6 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 void GuiWorkArea::updateScreen()
 {
 	QLPainter pain(&screen_);
-
-	if (greyed_out_) {
-		LYXERR(Debug::GUI) << "splash screen requested" << endl;
-		verticalScrollBar()->hide();
-		doGreyOut(pain);
-		return;
-	}
-
 	verticalScrollBar()->show();
 	paintText(*buffer_view_, pain);
 }
@@ -554,11 +497,9 @@ void GuiWorkArea::updateScreen()
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
 	if (schedule_redraw_) {
-		if (buffer_view_ && buffer_view_->buffer()) {
-			buffer_view_->update(Update::Force);
-			updateScreen();
-			viewport()->update(QRect(0, 0, viewport()->width(), viewport()->height()));
-		}
+		buffer_view_->update(Update::Force);
+		updateScreen();
+		viewport()->update(QRect(0, 0, viewport()->width(), viewport()->height()));
 		schedule_redraw_ = false;
 		// Show the cursor immediately after the update.
 		hideCursor();
@@ -585,11 +526,6 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	QString const & commit_string = e->commitString();
 	docstring const & preedit_string
 		= qstring_to_ucs4(e->preeditString());
-
-	if(greyed_out_) {
-		e->ignore();
-		return;
-	}
 
 	if (!commit_string.isEmpty()) {
 

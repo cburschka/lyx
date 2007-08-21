@@ -435,11 +435,12 @@ int LyX::exec(int & argc, char * argv[])
 		}
 
 		BufferList::iterator begin = pimpl_->buffer_list_.begin();
-		BufferList::iterator end = pimpl_->buffer_list_.end();
 
 		bool final_success = false;
-		for (BufferList::iterator I = begin; I != end; ++I) {
+		for (BufferList::iterator I = begin; I != pimpl_->buffer_list_.end(); ++I) {
 			Buffer * buf = *I;
+			if (buf != buf->getMasterBuffer())
+				continue;
 			bool success = false;
 			buf->dispatch(batch_command, &success);
 			final_success |= success;
@@ -634,25 +635,36 @@ void LyX::restoreGuiSession()
 	if (!pimpl_->files_to_load_.empty()) {
 		for_each(pimpl_->files_to_load_.begin(),
 			pimpl_->files_to_load_.end(),
-			bind(&LyXView::loadLyXFile, view, _1, true, false, false));
+			bind(&LyXView::loadLyXFile, view, _1, true));
 		// clear this list to save a few bytes of RAM
 		pimpl_->files_to_load_.clear();
 		pimpl_->session_->lastOpened().clear();
-		return;
+
+	} else if (lyxrc.load_session) {
+		vector<FileName> const & lastopened = pimpl_->session_->lastOpened().getfiles();
+		// do not add to the lastfile list since these files are restored from
+		// last session, and should be already there (regular files), or should
+		// not be added at all (help files).
+		for_each(lastopened.begin(), lastopened.end(),
+			bind(&LyXView::loadLyXFile, view, _1, false));
+
+		// clear this list to save a few bytes of RAM
+		pimpl_->session_->lastOpened().clear();
 	}
 
-	if (!lyxrc.load_session)
-		return;
+	BufferList::iterator I = pimpl_->buffer_list_.begin();
+	BufferList::iterator end = pimpl_->buffer_list_.end();
+	for (; I != end; ++I) {
+		Buffer * buf = *I;
+		if (buf != buf->getMasterBuffer())
+			continue;
+		updateLabels(*buf);
+	}
 
-	vector<FileName> const & lastopened = pimpl_->session_->lastOpened().getfiles();
-	// do not add to the lastfile list since these files are restored from
-	// last session, and should be already there (regular files), or should
-	// not be added at all (help files).
-	for_each(lastopened.begin(), lastopened.end(),
-		bind(&LyXView::loadLyXFile, view, _1, false, false, false));
-
-	// clear this list to save a few bytes of RAM
-	pimpl_->session_->lastOpened().clear();
+	// FIXME: Switch to the last loaded Buffer. This must not be the first one
+	// because the Buffer won't be connected in this case. The correct solution
+	// would be to avoid the manual connection of the current Buffer in LyXView.
+	view->setBuffer(pimpl_->buffer_list_.last());
 }
 
 

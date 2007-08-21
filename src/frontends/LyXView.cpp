@@ -70,8 +70,7 @@ namespace frontend {
 docstring current_layout;
 
 LyXView::LyXView(int id)
-	: work_area_(0),
-	  toolbars_(new Toolbars(*this)),
+	: toolbars_(new Toolbars(*this)),
 	  autosave_timeout_(new Timeout(5000)),
 	  dialogs_(new Dialogs(*this)),
 	  controlcommand_(new ControlCommandBuffer(*this)), id_(id)
@@ -88,177 +87,95 @@ LyXView::LyXView(int id)
 LyXView::~LyXView()
 {
 	disconnectBuffer();
+	disconnectBufferView();
 }
 
 
-// FIXME, there's only one WorkArea per LyXView possible for now.
-void LyXView::setWorkArea(WorkArea * work_area)
+Buffer * LyXView::buffer()
 {
-	BOOST_ASSERT(work_area);
-	work_area_ = work_area;
-	work_area_ids_.clear();
-	work_area_ids_.push_back(work_area_->id());
+	WorkArea * work_area = currentWorkArea();
+	if (work_area)
+		return work_area->bufferView().buffer();
+	return 0;
 }
 
 
-// FIXME, there's only one WorkArea per LyXView possible for now.
-WorkArea const * LyXView::currentWorkArea() const
+Buffer const * LyXView::buffer() const
 {
-	return work_area_;
+	WorkArea const * work_area = currentWorkArea();
+	if (work_area)
+		return work_area->bufferView().buffer();
+	return 0;
 }
 
 
-// FIXME, there's only one WorkArea per LyXView possible for now.
-WorkArea * LyXView::currentWorkArea()
-{
-	return work_area_;
-}
-
-
-Buffer * LyXView::buffer() const
-{
-	BOOST_ASSERT(work_area_);
-	return work_area_->bufferView().buffer();
-}
-
-
-void LyXView::setBuffer(Buffer * b, bool child_document)
+void LyXView::setBuffer(Buffer * newBuffer)
 {
 	busy(true);
 
-	BOOST_ASSERT(work_area_);
-	Buffer * oldBuffer = work_area_->bufferView().buffer();
+	Buffer * oldBuffer = buffer();
+	if (oldBuffer == newBuffer) {
+		busy(false);
+		return;
+	}
+
 	// parentfilename will be used in case when we switch to a child
 	// document (hence when child_document is true)
 	string parentfilename;
 	if (oldBuffer)
 		parentfilename = oldBuffer->fileName();
 
-	if (!b && theBufferList().empty())
-		getDialogs().hideBufferDependent();
-
-	Buffer * newBuffer = work_area_->bufferView().setBuffer(b);
-
-	if (newBuffer) {
-		//Are we closing an oldBuffer which was a child document?
-		if (!b && oldBuffer && oldBuffer->getMasterBuffer() != oldBuffer)
-			// Update the labels and section numbering of its master Buffer.
-			updateLabels(*oldBuffer->getMasterBuffer());
-		//Are we opening a new child document?
-		else if (child_document && newBuffer->getMasterBuffer() != oldBuffer) {
-			// Set the parent name of the child document.
-			// This makes insertion of citations and references in the child work,
-			// when the target is in the parent or another child document.
-			newBuffer->setParentName(parentfilename);
-			// Update the labels and section numbering to the new master Buffer.
-			updateLabels(*newBuffer->getMasterBuffer());
-		}
-		//Now that all the updating of the old buffer has been done, we can
-		//connect the new buffer. Note that this will also disconnect the old 
-		//buffer, if such there is.
-		//FIXME Is it clear that this should go right here? Or should it go
-		//earlier before the previous if (in which case we'd remove the "else")?
-		connectBuffer(*newBuffer);
-
-		/* FIXME: We need to rebuild the Toc dialog before the others even
-		if it will be rebuilt again in the next line. This avoid a crash when
-		other dialogs are rebuilt before the Toc dialog. The reason is
-		that closing a Buffer triggers an update of all opened dialogs
-		when dispatching LFUN_DIALOG_UPDATE (hence the patch).
-		The path is as following:
-			setBuffer() -> updateBufferDependent() -> RestoreButton() -> LFUN
-		The problem here is that the Toc dialog has not been
-		reconstructed (because it comes after in the list of dialogs). */
-		updateToc();
-
-		// Buffer-dependent dialogs should be updated or
-		// hidden. This should go here because some dialogs (eg ToC)
-		// require bv_->text.
-		getDialogs().updateBufferDependent(true);
+	WorkArea * wa = workArea(*newBuffer);
+	if (wa == 0) {
+		updateLabels(*newBuffer->getMasterBuffer());
+		wa = addWorkArea(*newBuffer);
 	} else
 		//Disconnect the old buffer...there's no new one.
 		disconnectBuffer();
+	connectBuffer(*newBuffer);
+	connectBufferView(wa->bufferView());
+	setCurrentWorkArea(wa);
 
-	if (quitting)
-		return;
-
-	updateMenubar();
-	updateToolbars();
-	updateLayoutChoice();
-	updateWindowTitle();
-	updateStatusBar();
-	updateTab();
 	busy(false);
-	work_area_->redraw();
 }
 
 
-bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles,
-		bool child_document, bool auto_open)
+Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 {
 	busy(true);
-
-	BOOST_ASSERT(work_area_);
 	string parentfilename;
-	Buffer * oldBuffer = work_area_->bufferView().buffer();
+	Buffer * oldBuffer = buffer();
 	if (oldBuffer)
 		parentfilename = oldBuffer->fileName();
 
-	bool alreadyLoaded = checkIfLoaded(filename);
 	Buffer * newBuffer = checkAndLoadLyXFile(filename);
 
 	if (!newBuffer) {
 		message(_("Document not loaded."));
 		updateStatusBar();
 		busy(false);
-		work_area_->redraw();
-		return false;
+		return 0;
 	}
 
-	if (child_document && newBuffer != oldBuffer) {
-		// Set the parent name of the child document.
-		// This makes insertion of citations and references in the child work,
-		// when the target is in the parent or another child document.
-		newBuffer->setParentName(parentfilename);
-		message(bformat(_("Opening child document %1$s..."),
-			makeDisplayPath(filename.absFilename())));
-	}
+	WorkArea * wa = addWorkArea(*newBuffer);
 
-	// Update the labels and section numbering.
-	updateLabels(*newBuffer->getMasterBuffer());
-
-	bool const parse_error = !newBuffer->errorList("Parse").empty();
-	bool const need_switch = parse_error || !auto_open;
-	if (need_switch) {
-		setBuffer(newBuffer, child_document);
-		if (!alreadyLoaded) {
-			if (parse_error)
-				showErrorList("Parse");
-			// scroll to the position when the file was last closed
-			if (lyxrc.use_lastfilepos) {
-				pit_type pit;
-				pos_type pos;
-				boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
-				// if successfully move to pit (returned par_id is not zero),
-				// update metrics and reset font
-				if (work_area_->bufferView().moveToPosition(pit, pos, 0, 0).get<1>()) {
-					if (work_area_->bufferView().fitCursor())
-						work_area_->bufferView().updateMetrics(false);
-					newBuffer->text().setCurrentFont(work_area_->bufferView().cursor());
-					updateMenubar();
-					updateToolbars();
-					updateLayoutChoice();
-					updateStatusBar();
-					work_area_->redraw();
-				}
-			}
-		if (tolastfiles)
-			LyX::ref().session().lastFiles().add(filename);
+	// scroll to the position when the file was last closed
+	if (lyxrc.use_lastfilepos) {
+		pit_type pit;
+		pos_type pos;
+		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
+		// if successfully move to pit (returned par_id is not zero),
+		// update metrics and reset font
+		BufferView & bv = wa->bufferView();
+		if (bv.moveToPosition(pit, pos, 0, 0).get<1>()) {
+			if (bv.fitCursor())
+				bv.updateMetrics(false);
+			newBuffer->text().setCurrentFont(bv.cursor());
 		}
 	}
 
 	busy(false);
-	return true;
+	return newBuffer;
 }
 
 
@@ -266,11 +183,6 @@ void LyXView::connectBuffer(Buffer & buf)
 {
 	if (errorsConnection_.connected())
 		disconnectBuffer();
-
-	BOOST_ASSERT(work_area_);
-	bufferChangedConnection_ =
-		buf.changed.connect(
-			boost::bind(&WorkArea::redraw, work_area_));
 
 	bufferStructureChangedConnection_ =
 		buf.getMasterBuffer()->structureChanged.connect(
@@ -299,30 +211,26 @@ void LyXView::connectBuffer(Buffer & buf)
 	readonlyConnection_ =
 		buf.readonly.connect(
 			boost::bind(&LyXView::showReadonly, this, _1));
-
-	closingConnection_ =
-		buf.closing.connect(
-			boost::bind(&LyXView::setBuffer, this, (Buffer *)0, false));
 }
 
 
 void LyXView::disconnectBuffer()
 {
 	errorsConnection_.disconnect();
-	bufferChangedConnection_.disconnect();
 	bufferStructureChangedConnection_.disconnect();
 	messageConnection_.disconnect();
 	busyConnection_.disconnect();
 	titleConnection_.disconnect();
 	timerConnection_.disconnect();
 	readonlyConnection_.disconnect();
-	closingConnection_.disconnect();
 	layout_changed_connection_.disconnect();
 }
 
 
 void LyXView::connectBufferView(BufferView & bv)
 {
+	message_connection_ = bv.message.connect(
+			boost::bind(&LyXView::message, this, _1));
 	show_dialog_connection_ = bv.showDialog.connect(
 			boost::bind(&LyXView::showDialog, this, _1));
 	show_dialog_with_data_connection_ = bv.showDialogWithData.connect(
@@ -338,6 +246,7 @@ void LyXView::connectBufferView(BufferView & bv)
 
 void LyXView::disconnectBufferView()
 {
+	message_connection_.disconnect();
 	show_dialog_connection_.disconnect();
 	show_dialog_with_data_connection_.disconnect();
 	show_inset_dialog_connection_.disconnect();
@@ -387,10 +296,10 @@ void LyXView::showReadonly(bool)
 }
 
 
-BufferView * LyXView::view() const
+BufferView * LyXView::view()
 {
-	BOOST_ASSERT(work_area_);
-	return &work_area_->bufferView();
+	WorkArea * wa = currentWorkArea();
+	return wa? &wa->bufferView() : 0;
 }
 
 
@@ -402,16 +311,20 @@ void LyXView::updateToc()
 
 void LyXView::updateToolbars()
 {
-	BOOST_ASSERT(work_area_);
-	bool const math =
-		work_area_->bufferView().cursor().inMathed();
-	bool const table =
-		lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
-	bool const review =
-		lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled() &&
-		lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onoff(true);
+	WorkArea * wa = currentWorkArea();
+	if (wa) {
+		bool const math =
+			wa->bufferView().cursor().inMathed();
+		bool const table =
+			lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
+		bool const review =
+			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled() &&
+			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onoff(true);
 
-	toolbars_->update(math, table, review);
+		toolbars_->update(math, table, review);
+	} else
+		toolbars_->update(false, false, false);
+
 	// update redaonly status of open dialogs. This could also be in
 	// updateMenubar(), but since updateToolbars() and updateMenubar()
 	// are always called together it is only here.
@@ -449,7 +362,7 @@ void LyXView::autoSave()
 {
 	LYXERR(Debug::INFO) << "Running autoSave()" << endl;
 
-	if (view()->buffer())
+	if (buffer())
 		lyx::autoSave(view());
 }
 
@@ -464,7 +377,7 @@ void LyXView::resetAutosaveTimer()
 void LyXView::updateLayoutChoice()
 {
 	// Don't show any layouts without a buffer
-	if (!view()->buffer()) {
+	if (!buffer()) {
 		toolbars_->clearLayoutList();
 		return;
 	}
@@ -474,8 +387,7 @@ void LyXView::updateLayoutChoice()
 		current_layout = buffer()->params().getTextClass().defaultLayoutName();
 	}
 
-	BOOST_ASSERT(work_area_);
-	docstring const & layout = work_area_->bufferView().cursor().
+	docstring const & layout = currentWorkArea()->bufferView().cursor().
 		innerParagraph().layout()->name();
 
 	if (layout != current_layout) {
@@ -490,42 +402,50 @@ void LyXView::updateWindowTitle()
 	docstring maximize_title = lyx::from_ascii("LyX");
 	docstring minimize_title = lyx::from_ascii("LyX");
 
-	if (view()->buffer()) {
-		string const cur_title = buffer()->fileName();
+	Buffer * buf = buffer();
+	if (buf) {
+		string const cur_title = buf->fileName();
 		if (!cur_title.empty()) {
 			maximize_title += ": " + makeDisplayPath(cur_title, 30);
 			minimize_title = lyx::from_utf8(onlyFilename(cur_title));
-			if (!buffer()->isClean()) {
+			if (!buf->isClean()) {
 				maximize_title += _(" (changed)");
 				minimize_title += lyx::char_type('*');
 			}
-			if (buffer()->isReadonly())
+			if (buf->isReadonly())
 				maximize_title += _(" (read only)");
 		}
 	}
 
 	setWindowTitle(maximize_title, minimize_title);
-	updateTab();
 }
 
 
 void LyXView::dispatch(FuncRequest const & cmd)
 {
-	theLyXFunc().setLyXView(this);
-	lyx::dispatch(cmd);
+	string const argument = to_utf8(cmd.argument());
+	switch(cmd.action) {
+		case LFUN_BUFFER_SWITCH:
+			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
+			break;
+		default:
+			theLyXFunc().setLyXView(this);
+			lyx::dispatch(cmd);
+	}
 }
 
 
-Buffer const * const LyXView::updateInset(Inset const * inset) const
+Buffer const * const LyXView::updateInset(Inset const * inset)
 {
-	Buffer const * buffer_ptr = 0;
-	if (inset) {
-		BOOST_ASSERT(work_area_);
-		work_area_->scheduleRedraw();
+	WorkArea * work_area = currentWorkArea();
+	if (!work_area)
+		return 0;
 
-		buffer_ptr = work_area_->bufferView().buffer();
+	if (inset) {
+		BOOST_ASSERT(work_area);
+		work_area->scheduleRedraw();
 	}
-	return buffer_ptr;
+	return work_area->bufferView().buffer();
 }
 
 } // namespace frontend
