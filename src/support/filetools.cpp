@@ -50,6 +50,9 @@
 #include <fstream>
 #include <sstream>
 
+// FIXME Availability?
+#include <utime.h>  // for utimbuf
+
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -1313,7 +1316,7 @@ uLong filetime(const char * f, tm_zip * tmzip, uLong * dt)
 
 #else
 #ifdef unix
-uLong filetime(const char * f, tm_zip * tmzip, uLong * dt)
+uLong filetime(const char * f, tm_zip * tmzip, uLong * /*dt*/)
 {
 	int ret=0;
 	struct stat s;								  /* results of stat() */
@@ -1481,8 +1484,8 @@ void change_file_date(const char * filename, uLong dosdate, tm_unz tmu_date)
 	CloseHandle(hFile);
 #else
 #ifdef unix
-	struct utimbuf ut;
-	struct tm newdate;
+	utimbuf ut;
+	tm newdate;
 
 	newdate.tm_sec = tmu_date.tm_sec;
 	newdate.tm_min=tmu_date.tm_min;
