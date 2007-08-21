@@ -1505,7 +1505,7 @@ int do_extract_currentfile(unzFile uf,
 	uInt size_buf;
 
 	unz_file_info file_info;
-	uLong ratio=0;
+	//uLong ratio=0;
 	err = unzGetCurrentFileInfo(uf,&file_info,filename_inzip,sizeof(filename_inzip),NULL,0,NULL,0);
 
 	if (err!=UNZ_OK) {
@@ -1630,7 +1630,7 @@ bool unzipToDir(string const & zipfile, string const & dirname)
 	uLong i;
 	unz_global_info gi;
 	int err;
-	FILE* fout=NULL;
+	//FILE* fout=NULL;
 	int opt_extract_without_path = 0;
 	int opt_overwrite = 1;
 	char * password = NULL;
@@ -1657,6 +1657,7 @@ bool unzipToDir(string const & zipfile, string const & dirname)
 	}
 
 	unzCloseCurrentFile(uf);
+    return true;
 }
 
 } //namespace support
