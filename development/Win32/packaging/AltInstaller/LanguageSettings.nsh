@@ -518,6 +518,11 @@
 
 !macro GetLangCode LangCde Name LangEnc
 
+  ${if} ${Name} == "Català"
+   StrCpy ${LangCde} "ca_ES"
+   StrCpy ${LangEnc} "cp-1252"
+  ${endif}
+
   ${if} ${Name} == "Ceština"
    StrCpy ${LangCde} "cs_CZ"
    StrCpy ${LangEnc} "cp-1250"
