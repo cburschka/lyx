@@ -50,14 +50,26 @@
 #include <fstream>
 #include <sstream>
 
-#ifdef unix
+#ifdef HAVE_UNISTD_H
 # include <unistd.h>
-# include <utime.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-#else
+#endif
+#ifdef HAVE_DIRECT_H
 # include <direct.h>
+#endif
+#ifdef HAVE_SYS_TYPES_H
+# include <sys/types.h>
+#endif
+#ifdef HAVE_SYS_STAT_H
+# include <sys/stat.h>
+#endif
+#ifdef HAVE_IO_H
 # include <io.h>
+#endif
+#ifdef HAVE_SYS_UTIME_H
+# include <sys/utime.h>
+#endif
+#ifdef HAVE_UTIME_H
+# include <utime.h>
 #endif
 
 #include "zip.h"
