@@ -76,6 +76,8 @@ What's new
 - Fix crash when a user removes a formula when its preview is being generated.
   (gcc 3 only).
 
+- Fix crash when using down cursor in an empty math subscript (Bug 4117).
+
 * DOCUMENTATION
 
 - Embedded Objects manual: section about longtable alignment added

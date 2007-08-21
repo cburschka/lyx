@@ -179,8 +179,9 @@ public:
 	 * Not using noUpdate() should never be wrong.
 	 */
 	void noUpdate();
-	/// fix cursor in circumstances that should never happen
-	void fixIfBroken();
+	/// fix cursor in circumstances that should never happen.
+	/// \retval true if a fix occured.
+	bool fixIfBroken();
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, Cursor const & cur);

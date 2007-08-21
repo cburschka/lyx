@@ -568,8 +568,16 @@ goto_char_backwards:
 			// notify left insets and give them chance to set update flags
 			lyx::notifyCursorLeaves(cur.beforeDispatchCursor(), cur);
 			cur.fixIfBroken();
-		}	else
-			cur.undispatched();
+			break;
+		}
+		
+		if (cur.fixIfBroken())
+			// FIXME: Something bad happened. We pass the corrected Cursor
+			// instead of letting things go worse.
+			break;
+
+		// We did not manage to move the cursor.
+		cur.undispatched();
 		break;
 	}
 
