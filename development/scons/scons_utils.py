@@ -228,7 +228,7 @@ int main()
 }
 '''
     conf.Message('Checking for the use of global cstd... ')
-    ret = conf.TryLink(check_global_cstd_source, '.c')
+    ret = conf.TryLink(check_global_cstd_source, '.cpp')
     conf.Result(ret)
     return ret
 
@@ -407,7 +407,7 @@ int main() {
 }
 '''
     conf.Message('Checking if the declaration of iconv needs const... ')
-    ret = conf.TryLink(check_iconv_const, '.c')
+    ret = conf.TryLink(check_iconv_const, '.cpp')
     conf.Result(ret)
     return ret
 
