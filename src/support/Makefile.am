@@ -13,7 +13,11 @@ liblyxsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)
 BUILT_SOURCES = $(PCH_FILE) Package.cpp
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
-AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
+AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) -I$(srcdir)/minizip
+
+# force the use of C++ compiler for minizip/*.c files, because
+# gcc can not go through the included boost files.
+liblyxsupport_la_CFLAGS = -x c++
 
 liblyxsupport_la_SOURCES = \
 	FileMonitor.h \
@@ -88,8 +92,20 @@ liblyxsupport_la_SOURCES = \
 	userinfo.h \
 	unicode.cpp \
 	unicode.h \
-	unlink.cpp
+	unlink.cpp \
+	minizip/crypt.h \
+	minizip/ioapi.c \
+	minizip/ioapi.h \
+	minizip/unzip.c \
+	minizip/unzip.h \
+	minizip/zip.c \
+	minizip/zip.h
 
+# FIXME: the following two files are for windows only. I do not know
+# how to add them conditionally. autotools are rarely used under windows 
+# anyway.
+#    minizip/iowin32.c
+#    minizip/iowin32.h
 
 Package.cpp: build_package
 
