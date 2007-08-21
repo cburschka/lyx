@@ -97,7 +97,7 @@ WorkArea::~WorkArea()
 	// restore to the left of the top level inset.
 	Cursor & cur = buffer_view_->cursor();
 	LyX::ref().session().lastFilePos().save(
-		support::FileName(buffer_view_->buffer()->fileName()),
+		support::FileName(buffer_view_->buffer().fileName()),
 		boost::tie(cur.bottom().pit(), cur.bottom().pos()) );
 
 	delete buffer_view_;
@@ -291,7 +291,7 @@ void WorkArea::showCursor()
 
 	Text const & text = *buffer_view_->cursor().innerText();
 	Font const & realfont = text.real_current_font;
-	BufferParams const & bp = buffer_view_->buffer()->params();
+	BufferParams const & bp = buffer_view_->buffer().params();
 	bool const samelang = realfont.language() == bp.language;
 	bool const isrtl = realfont.isVisibleRightToLeft();
 

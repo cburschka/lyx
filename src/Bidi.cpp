@@ -227,14 +227,14 @@ bool reverseDirectionNeeded(Cursor const & cur)
 	 * cursor gets stuck.
 	 */
 	return cur.bottom().paragraph().isRightToLeftPar(
-			cur.bv().buffer()->params());
+			cur.bv().buffer().params());
 }
 
 
 bool isWithinRtlParagraph(Cursor const & cur)
 {
 	return cur.innerParagraph().isRightToLeftPar(
-		cur.bv().buffer()->params());
+		cur.bv().buffer().params());
 }
 
 } // namespace lyx

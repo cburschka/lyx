@@ -49,9 +49,7 @@ void Kernel::disconnect(string const & name) const
 
 bool Kernel::isBufferAvailable() const
 {
-	if (!lyxview_.view())
-		return false;
-	return lyxview_.view()->buffer() != 0;
+	return lyxview_.buffer() != 0;
 }
 
 

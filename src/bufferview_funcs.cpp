@@ -175,7 +175,7 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 		// of xx:yy
 		if (sl.text()) {
 			bool boundary_i = boundary && i + 1 == dit.depth();
-			bool rtl = sl.text()->isRTL(*bv.buffer(), sl, boundary_i);
+			bool rtl = sl.text()->isRTL(bv.buffer(), sl, boundary_i);
 			if (rtl)
 				x -= lastw;
 		}
@@ -217,7 +217,7 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 	// In the RTL case place the nested inset at the left of the cursor in 
 	// the outer paragraph
 	bool boundary_1 = boundary && 1 == dit.depth();
-	bool rtl = dit.bottom().text()->isRTL(*bv.buffer(), dit.bottom(), boundary_1);
+	bool rtl = dit.bottom().text()->isRTL(bv.buffer(), dit.bottom(), boundary_1);
 	if (rtl)
 		x -= lastw;
 	

@@ -54,7 +54,7 @@ docstring const ControlViewSource::updateContent(bool fullSource)
 	if (par_begin > par_end)
 		std::swap(par_begin, par_end);
 	lyx::odocstringstream ostr;
-	view->buffer()->getSourceCode(ostr, par_begin, par_end + 1, fullSource);
+	view->buffer().getSourceCode(ostr, par_begin, par_end + 1, fullSource);
 	return ostr.str();
 }
 
@@ -65,11 +65,11 @@ std::pair<int, int> ControlViewSource::getRows() const
 	CursorSlice beg = view->cursor().selectionBegin().bottom();
 	CursorSlice end = view->cursor().selectionEnd().bottom();
 
-	int begrow = view->buffer()->texrow().
+	int begrow = view->buffer().texrow().
 		getRowFromIdPos(beg.paragraph().id(), beg.pos());
-	int endrow = view->buffer()->texrow().
+	int endrow = view->buffer().texrow().
 		getRowFromIdPos(end.paragraph().id(), end.pos());
-	int nextendrow = view->buffer()->texrow().
+	int nextendrow = view->buffer().texrow().
 		getRowFromIdPos(end.paragraph().id(), end.pos() + 1);
 	return std::make_pair(begrow, endrow == nextendrow ? endrow : (nextendrow - 1));
 }

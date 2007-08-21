@@ -115,7 +115,7 @@ TextMetrics::TextMetrics(BufferView * bv, Text * text)
 	dim_.asc = 10;
 	dim_.des = 10;
 
-	//text_->updateLabels(*bv->buffer());
+	//text_->updateLabels(bv->buffer());
 }
 
 
@@ -172,13 +172,13 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 
 int TextMetrics::rightMargin(ParagraphMetrics const & pm) const
 {
-	return main_text_? pm.rightMargin(*bv_->buffer()) : 0;
+	return main_text_? pm.rightMargin(bv_->buffer()) : 0;
 }
 
 
 int TextMetrics::rightMargin(pit_type const pit) const
 {
-	return main_text_? par_metrics_[pit].rightMargin(*bv_->buffer()) : 0;
+	return main_text_? par_metrics_[pit].rightMargin(bv_->buffer()) : 0;
 }
 
 
@@ -191,7 +191,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// reinitialize paragraph dimension.
 	pm.dim() = Dimension();
 	Paragraph & par = text_->getPar(pit);
-	Buffer & buffer = *bv_->buffer();
+	Buffer & buffer = bv_->buffer();
 	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
 
@@ -275,7 +275,7 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 		Row const & row) const
 {
 	RowMetrics result;
-	Buffer & buffer = *bv_->buffer();
+	Buffer & buffer = bv_->buffer();
 	Paragraph const & par = text_->getPar(pit);
 
 	double w = dim_.wid - row.width();
@@ -397,7 +397,7 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 
 int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 {
-	Buffer & buffer = *bv_->buffer();
+	Buffer & buffer = bv_->buffer();
 	Paragraph const & par = text_->getPar(pit);
 
 	pos_type last = par.beginOfBody();
@@ -448,14 +448,14 @@ int TextMetrics::labelEnd(pit_type const pit) const
 	if (text_->getPar(pit).layout()->margintype != MARGIN_MANUAL)
 		return 0;
 	// return the beginning of the body
-	return text_->leftMargin(*bv_->buffer(), max_width_, pit);
+	return text_->leftMargin(bv_->buffer(), max_width_, pit);
 }
 
 
 void TextMetrics::rowBreakPoint(int width, pit_type const pit,
 		Row & row) const
 {
-	Buffer & buffer = *bv_->buffer();
+	Buffer & buffer = bv_->buffer();
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
@@ -571,7 +571,7 @@ void TextMetrics::rowBreakPoint(int width, pit_type const pit,
 void TextMetrics::setRowWidth(int right_margin,
 		pit_type const pit, Row & row) const
 {
-	Buffer & buffer = *bv_->buffer();
+	Buffer & buffer = bv_->buffer();
 	// get the pure distance
 	pos_type const end = row.endpos();
 	ParagraphMetrics const & pm = par_metrics_[pit];
@@ -628,7 +628,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	// increase but not decrease the height. Just some point to
 	// start with so we don't have to do the assignment below too
 	// often.
-	Buffer const & buffer = *bv_->buffer();
+	Buffer const & buffer = bv_->buffer();
 	Font font = text_->getFont(buffer, par, row.pos());
 	Font::FONT_SIZE const tmpsize = font.size();
 	font = text_->getLayoutFont(buffer, pit);
@@ -808,7 +808,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		Row const & row, int & x, bool & boundary) const
 {
-	Buffer const & buffer = *bv_->buffer();
+	Buffer const & buffer = bv_->buffer();
 
 	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
@@ -957,7 +957,7 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 
 int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
 {
-	Buffer const & buffer = *bv_->buffer();
+	Buffer const & buffer = bv_->buffer();
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
 	return pm.singleWidth(pos, text_->getFont(buffer, text_->getPar(pit), pos));

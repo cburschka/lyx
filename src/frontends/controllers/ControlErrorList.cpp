@@ -44,18 +44,18 @@ void ControlErrorList::clearParams()
 
 ErrorList const & ControlErrorList::errorList() const
 {
-	return kernel().bufferview()->buffer()->errorList(error_type_);
+	return kernel().bufferview()->buffer().errorList(error_type_);
 }
 
 
 bool ControlErrorList::initialiseParams(string const & error_type)
 {
 	error_type_ = error_type;
-	Buffer * buf = kernel().bufferview()->buffer();
+	Buffer const & buf = kernel().bufferview()->buffer();
 	// FIXME UNICODE
 	docstring const title = bformat(_("%1$s Errors (%2$s)"),
 				     _(error_type),
-				     lyx::from_utf8(buf->fileName()));
+				     lyx::from_utf8(buf.fileName()));
 	name_ = lyx::to_utf8(title);
 	return true;
 }

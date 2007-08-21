@@ -206,7 +206,7 @@ namespace {
 		//	<< " xlow: " << xlow << " xhigh: " << xhigh
 		//	<< " ylow: " << ylow << " yhigh: " << yhigh
 		//	<< endl;
-		Inset & inset = bv.buffer()->inset();
+		Inset & inset = bv.buffer().inset();
 		DocIterator it = doc_iterator_begin(inset);
 		it.pit() = from;
 		DocIterator et = doc_iterator_end(inset);
@@ -351,8 +351,7 @@ BufferView & Cursor::bv() const
 Buffer & Cursor::buffer() const
 {
 	BOOST_ASSERT(bv_);
-	BOOST_ASSERT(bv_->buffer());
-	return *bv_->buffer();
+	return bv_->buffer();
 }
 
 
@@ -1336,7 +1335,7 @@ docstring Cursor::selectionAsString(bool label) const
 		return docstring();
 
 	if (inTexted()) {
-		Buffer const & buffer = *bv().buffer();
+		Buffer const & buffer = bv().buffer();
 		ParagraphList const & pars = text()->paragraphs();
 
 		// should be const ...
@@ -1398,8 +1397,6 @@ Encoding const * Cursor::getEncoding() const
 {
 	if (empty())
 		return 0;
-	if (!bv().buffer())
-		return 0;
 	int s = 0;
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
@@ -1409,7 +1406,7 @@ Encoding const * Cursor::getEncoding() const
 	CursorSlice const & sl = operator[](s);
 	Text const & text = *sl.text();
 	Font font = text.getPar(sl.pit()).getFont(
-		bv().buffer()->params(), sl.pos(), outerFont(sl.pit(), text.paragraphs()));
+		bv().buffer().params(), sl.pos(), outerFont(sl.pit(), text.paragraphs()));
 	return font.language()->encoding();
 }
 
@@ -1469,7 +1466,7 @@ Font Cursor::getFont() const
 	}
 	
 	// get font at the position
-	Font font = par.getFont(bv().buffer()->params(), pos,
+	Font font = par.getFont(bv().buffer().params(), pos,
 		outerFont(sl.pit(), text.paragraphs()));
 
 	return font;

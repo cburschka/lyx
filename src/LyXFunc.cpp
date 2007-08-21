@@ -764,7 +764,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 bool LyXFunc::ensureBufferClean(BufferView * bv)
 {
-	Buffer & buf = *bv->buffer();
+	Buffer & buf = bv->buffer();
 	if (buf.isClean())
 		return true;
 

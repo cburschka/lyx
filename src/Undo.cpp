@@ -133,7 +133,7 @@ void recordUndo(Undo::undo_kind kind,
 	BOOST_ASSERT(last_pit <= cur.lastpit());
 
 	doRecordUndo(kind, cur, first_pit, last_pit, cur,
-		cur.bv().buffer()->params(), false, stack);
+		cur.bv().buffer().params(), false, stack);
 }
 
 
@@ -154,8 +154,8 @@ bool textUndoOrRedo(BufferView & bv,
 	stack.pop();
 
 	// We will store in otherstack the part of the document under 'undo'
-	Buffer * buf = bv.buffer();
-	DocIterator cell_dit = undo.cell.asDocIterator(&buf->inset());
+	Buffer & buf = bv.buffer();
+	DocIterator cell_dit = undo.cell.asDocIterator(&buf.inset());
 
 	doRecordUndo(Undo::ATOMIC, cell_dit,
 		   undo.from, cell_dit.lastpit() - undo.end, bv.cursor(),
@@ -165,13 +165,13 @@ bool textUndoOrRedo(BufferView & bv,
 	// This does the actual undo/redo.
 	//lyxerr << "undo, performing: " << undo << std::endl;
 	bool labelsUpdateNeeded = false;
-	DocIterator dit = undo.cell.asDocIterator(&buf->inset());
+	DocIterator dit = undo.cell.asDocIterator(&buf.inset());
 	if (undo.isFullBuffer) {
 		BOOST_ASSERT(undo.pars);
 		// This is a full document
-		otherstack.top().bparams = buf->params();
-		buf->params() = undo.bparams;
-		std::swap(buf->paragraphs(), *undo.pars);
+		otherstack.top().bparams = buf.params();
+		buf.params() = undo.bparams;
+		std::swap(buf.paragraphs(), *undo.pars);
 		delete undo.pars;
 		undo.pars = 0;
 	} else if (dit.inMathed()) {
@@ -217,13 +217,13 @@ bool textUndoOrRedo(BufferView & bv,
 
 	// Set cursor
 	Cursor & cur = bv.cursor();
-	cur.setCursor(undo.cursor.asDocIterator(&buf->inset()));
+	cur.setCursor(undo.cursor.asDocIterator(&buf.inset()));
 	cur.selection() = false;
 	cur.resetAnchor();
 	cur.fixIfBroken();
 	
 	if (labelsUpdateNeeded)
-		updateLabels(*buf);
+		updateLabels(buf);
 	finishUndo();
 	return true;
 }
@@ -240,27 +240,27 @@ void finishUndo()
 
 bool textUndo(BufferView & bv)
 {
-	return textUndoOrRedo(bv, bv.buffer()->undostack(),
-			      bv.buffer()->redostack());
+	return textUndoOrRedo(bv, bv.buffer().undostack(),
+			      bv.buffer().redostack());
 }
 
 
 bool textRedo(BufferView & bv)
 {
-	return textUndoOrRedo(bv, bv.buffer()->redostack(),
-			      bv.buffer()->undostack());
+	return textUndoOrRedo(bv, bv.buffer().redostack(),
+			      bv.buffer().undostack());
 }
 
 
 void recordUndo(Undo::undo_kind kind,
 	Cursor & cur, pit_type first, pit_type last)
 {
-	Buffer * buf = cur.bv().buffer();
-	recordUndo(kind, cur, first, last, buf->undostack());
-	buf->redostack().clear();
+	Buffer & buf = cur.bv().buffer();
+	recordUndo(kind, cur, first, last, buf.undostack());
+	buf.redostack().clear();
 	//lyxerr << "undostack:\n";
-	//for (size_t i = 0, n = buf->undostack().size(); i != n && i < 6; ++i)
-	//	lyxerr << "  " << i << ": " << buf->undostack()[i] << std::endl;
+	//for (size_t i = 0, n = buf.undostack().size(); i != n && i < 6; ++i)
+	//	lyxerr << "  " << i << ": " << buf.undostack()[i] << std::endl;
 }
 
 
@@ -274,9 +274,9 @@ void recordUndoInset(Cursor & cur, Undo::undo_kind kind)
 {
 	Cursor c = cur;
 	c.pop();
-	Buffer * buf = cur.bv().buffer();
+	Buffer & buf = cur.bv().buffer();
 	doRecordUndo(kind, c, c.pit(), c.pit(),	cur,
-		     buf->params(), false, buf->undostack());
+		     buf.params(), false, buf.undostack());
 }
 
 
@@ -301,15 +301,15 @@ void recordUndo(Cursor & cur, Undo::undo_kind kind,
 
 void recordUndoFullDocument(BufferView * bv)
 {
-	Buffer * buf = bv->buffer();
+	Buffer & buf = bv->buffer();
 	doRecordUndo(
 		Undo::ATOMIC,
-		doc_iterator_begin(buf->inset()),
-		0, buf->paragraphs().size() - 1,
+		doc_iterator_begin(buf.inset()),
+		0, buf.paragraphs().size() - 1,
 		bv->cursor(),
-		buf->params(),
+		buf.params(),
 		true,
-		buf->undostack()
+		buf.undostack()
 	);
 	undo_finished = false;
 }

@@ -144,7 +144,7 @@ bool searchAllowed(BufferView * bv, docstring const & str)
 					    _("Search string is empty"));
 		return false;
 	}
-	return bv->buffer();
+	return true;
 }
 
 
@@ -172,7 +172,7 @@ int replaceAll(BufferView * bv,
 	       docstring const & searchstr, docstring const & replacestr,
 	       bool cs, bool mw)
 {
-	Buffer & buf = *bv->buffer();
+	Buffer & buf = bv->buffer();
 
 	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
 		return 0;
@@ -227,7 +227,7 @@ bool stringSelected(BufferView * bv, docstring const & searchstr,
 int replace(BufferView * bv, docstring const & searchstr,
 	    docstring const & replacestr, bool cs, bool mw, bool fw)
 {
-	if (!searchAllowed(bv, searchstr) || bv->buffer()->isReadonly())
+	if (!searchAllowed(bv, searchstr) || bv->buffer().isReadonly())
 		return 0;
 
 	if (!stringSelected(bv, searchstr, cs, mw, fw))
@@ -235,7 +235,7 @@ int replace(BufferView * bv, docstring const & searchstr,
 
 	Cursor & cur = bv->cursor();
 	cap::replaceSelectionWithString(cur, replacestr, fw);
-	bv->buffer()->markDirty();
+	bv->buffer().markDirty();
 	find(bv, searchstr, cs, mw, fw, false);
 	bv->update();
 
@@ -317,25 +317,24 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 	bool all           = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	Buffer * buf = bv->buffer();
-
 	if (!has_deleted) {
 		int const replace_count = all
 			? replaceAll(bv, search, rplc, casesensitive, matchword)
 			: replace(bv, search, rplc, casesensitive, matchword, forward);
 	
+		Buffer & buf = bv->buffer();
 		if (replace_count == 0) {
 			// emit message signal.
-			buf->message(_("String not found!"));
+			buf.message(_("String not found!"));
 		} else {
 			if (replace_count == 1) {
 				// emit message signal.
-				buf->message(_("String has been replaced."));
+				buf.message(_("String has been replaced."));
 			} else {
 				docstring str = convert<docstring>(replace_count);
 				str += _(" strings have been replaced.");
 				// emit message signal.
-				buf->message(str);
+				buf.message(str);
 			}
 		}
 	} else {
@@ -353,9 +352,6 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 
 bool findNextChange(BufferView * bv)
 {
-	if (!bv->buffer())
-		return false;
-
 	DocIterator cur = bv->cursor();
 
 	if (!findChange(cur))

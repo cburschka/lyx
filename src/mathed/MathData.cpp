@@ -258,7 +258,7 @@ void MathData::metrics(MetricsInfo & mi) const
 	dim_.wid = 0;
 	Dimension d;
 	//BufferView & bv  = *mi.base.bv;
-	//Buffer const & buf = *bv.buffer();
+	//Buffer const & buf = bv.buffer();
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
 #if 0

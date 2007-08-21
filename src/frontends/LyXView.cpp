@@ -95,7 +95,7 @@ Buffer * LyXView::buffer()
 {
 	WorkArea * work_area = currentWorkArea();
 	if (work_area)
-		return work_area->bufferView().buffer();
+		return &work_area->bufferView().buffer();
 	return 0;
 }
 
@@ -104,7 +104,7 @@ Buffer const * LyXView::buffer() const
 {
 	WorkArea const * work_area = currentWorkArea();
 	if (work_area)
-		return work_area->bufferView().buffer();
+		return &work_area->bufferView().buffer();
 	return 0;
 }
 
@@ -445,7 +445,7 @@ Buffer const * const LyXView::updateInset(Inset const * inset)
 		BOOST_ASSERT(work_area);
 		work_area->scheduleRedraw();
 	}
-	return work_area->bufferView().buffer();
+	return &work_area->bufferView().buffer();
 }
 
 } // namespace frontend

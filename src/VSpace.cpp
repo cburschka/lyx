@@ -519,7 +519,7 @@ int VSpace::inPixels(BufferView const & bv) const
 	switch (kind_) {
 
 	case DEFSKIP:
-		return bv.buffer()->params().getDefSkip().inPixels(bv);
+		return bv.buffer().params().getDefSkip().inPixels(bv);
 
 	// This is how the skips are normally defined by LateX.
 	// But there should be some way to change this per document.

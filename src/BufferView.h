@@ -85,8 +85,8 @@ public:
 	~BufferView();
 
 	/// return the buffer being viewed.
-	Buffer * buffer();
-	Buffer const * buffer() const;
+	Buffer & buffer();
+	Buffer const & buffer() const;
 
 	/// perform pending metrics updates.
 	/** \c Update::FitCursor means first to do a FitCursor, and to

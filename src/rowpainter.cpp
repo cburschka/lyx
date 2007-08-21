@@ -145,7 +145,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
 	RowMetrics m = text_metrics_.computeRowMetrics(pit_, row_);
-	bidi_.computeTables(par_, *bv_.buffer(), row_);
+	bidi_.computeTables(par_, bv_.buffer(), row_);
 	x_ = m.x + xo_;
 
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
@@ -162,13 +162,13 @@ RowPainter::RowPainter(PainterInfo & pi,
 
 Font const RowPainter::getLabelFont() const
 {
-	return text_.getLabelFont(*bv_.buffer(), par_);
+	return text_.getLabelFont(bv_.buffer(), par_);
 }
 
 
 int RowPainter::leftMargin() const
 {
-	return text_.leftMargin(*bv_.buffer(), max_width_, pit_, row_.pos());
+	return text_.leftMargin(bv_.buffer(), max_width_, pit_, row_.pos());
 }
 
 
@@ -185,7 +185,7 @@ void RowPainter::paintInset(pos_type const pos, Font const & font)
 	// FIXME: We should always use font, see documentation of
 	// noFontChange() in Inset.h.
 	pi.base.font = inset->noFontChange() ?
-		bv_.buffer()->params().getFont() :
+		bv_.buffer().params().getFont() :
 		font;
 	pi.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || par_.isDeleted(pos);
@@ -257,7 +257,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, Font const & font)
 		if (!Encodings::isComposeChar_hebrew(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
-					text_.getFont(*bv_.buffer(), par_, i));
+					text_.getFont(bv_.buffer(), par_, i));
 				dx = (c == 0x05e8 || // resh
 				      c == 0x05d3)   // dalet
 					? width2 - width
@@ -291,7 +291,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, Font const & font)
 		if (!Encodings::isComposeChar_arabic(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
-						text_.getFont(*bv_.buffer(), par_, i));
+						text_.getFont(bv_.buffer(), par_, i));
 				dx = (width2 - width) / 2;
 			}
 			break;
@@ -400,7 +400,7 @@ void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
 		return;
 	if (font.language() == latex_language)
 		return;
-	if (font.language() == bv_.buffer()->params().language)
+	if (font.language() == bv_.buffer().params().language)
 		return;
 
 	int const y = yo_ + 1 + desc;
@@ -411,7 +411,7 @@ void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
 void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = bidi_.vis2log(vpos);
-	Font orig_font = text_.getFont(*bv_.buffer(), par_, pos);
+	Font orig_font = text_.getFont(bv_.buffer(), par_, pos);
 
 	double const orig_x = x_;
 
@@ -472,7 +472,7 @@ void RowPainter::paintChangeBar()
 void RowPainter::paintAppendix()
 {
 	// only draw the appendix frame once (for the main text)
-	if (!par_.params().appendix() || !text_.isMainText(*bv_.buffer()))
+	if (!par_.params().appendix() || !text_.isMainText(bv_.buffer()))
 		return;
 
 	int y = yo_ - row_.ascent();
@@ -512,7 +512,7 @@ void RowPainter::paintDepthBar()
 		int const w = nestMargin() / 5;
 		int x = int(xo_) + w * i;
 		// only consider the changebar space if we're drawing outermost text
-		if (text_.isMainText(*bv_.buffer()))
+		if (text_.isMainText(bv_.buffer()))
 			x += changebarMargin();
 
 		int const starty = yo_ - row_.ascent();
@@ -563,7 +563,7 @@ void RowPainter::paintFirst()
 	if (parparams.startOfAppendix())
 		y_top += paintAppendixStart(yo_ - row_.ascent() + 2 * defaultRowHeight());
 
-	Buffer const & buffer = *bv_.buffer();
+	Buffer const & buffer = bv_.buffer();
 
 	Layout_ptr const & layout = par_.layout();
 
@@ -676,13 +676,13 @@ void RowPainter::paintFirst()
 
 void RowPainter::paintLast()
 {
-	bool const is_rtl = text_.isRTL(*bv_.buffer(), par_);
+	bool const is_rtl = text_.isRTL(bv_.buffer(), par_);
 	int const endlabel = getEndLabel(pit_, text_.paragraphs());
 
 	// paint imaginary end-of-paragraph character
 
 	if (par_.isInserted(par_.size()) || par_.isDeleted(par_.size())) {
-		FontMetrics const & fm = theFontMetrics(bv_.buffer()->params().getFont());
+		FontMetrics const & fm = theFontMetrics(bv_.buffer().params().getFont());
 		int const length = fm.maxAscent() / 2;
 		Color::color col = par_.isInserted(par_.size()) ? Color::addedtext : Color::deletedtext;
 
@@ -754,7 +754,7 @@ void RowPainter::paintText()
 	// Use font span to speed things up, see below
 	FontSpan font_span;
 	Font font;
-	Buffer const & buffer = *bv_.buffer();
+	Buffer const & buffer = bv_.buffer();
 
 	// If the last logical character is a separator, don't paint it, unless
 	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
@@ -807,7 +807,7 @@ void RowPainter::paintText()
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
 			// Calculate 1/3 height of the buffer's default font
 			FontMetrics const & fm
-				= theFontMetrics(bv_.buffer()->params().getFont());
+				= theFontMetrics(bv_.buffer().params().getFont());
 			int const middle = yo_ - fm.maxAscent() / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
 				Color::deletedtext, Painter::line_solid, Painter::line_thin);
@@ -848,7 +848,7 @@ void RowPainter::paintText()
 			x_ += 2;
 			++vpos;
 		} else if (par_.isSeparator(pos)) {
-			Font orig_font = text_.getFont(*bv_.buffer(), par_, pos);
+			Font orig_font = text_.getFont(bv_.buffer(), par_, pos);
 			double const orig_x = x_;
 			x_ += width_pos;
 			if (pos >= body_pos)
@@ -864,7 +864,7 @@ void RowPainter::paintText()
 	if (running_strikeout) {
 		// calculate 1/3 height of the buffer's default font
 		FontMetrics const & fm
-			= theFontMetrics(bv_.buffer()->params().getFont());
+			= theFontMetrics(bv_.buffer().params().getFont());
 		int const middle = yo_ - fm.maxAscent() / 3;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
 			Color::deletedtext, Painter::line_solid, Painter::line_thin);
@@ -1018,7 +1018,7 @@ void paintPar
 			// Instrumentation for testing row cache (see also
 			// 12 lines lower):
 			if (lyxerr.debugging(Debug::PAINTING)) {
-				if (text.isMainText(*pi.base.bv->buffer()))
+				if (text.isMainText(pi.base.bv->buffer()))
 					LYXERR(Debug::PAINTING) << "#";
 				else
 					LYXERR(Debug::PAINTING) << "[" <<
@@ -1050,8 +1050,7 @@ void paintPar
 void paintText(BufferView & bv,
 	       Painter & pain)
 {
-	BOOST_ASSERT(bv.buffer());
-	Buffer const & buffer = *bv.buffer();
+	Buffer const & buffer = bv.buffer();
 	Text & text = buffer.text();
 	bool const select = bv.cursor().selection();
 	ViewMetricsInfo const & vi = bv.viewMetricsInfo();

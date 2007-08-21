@@ -148,7 +148,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 				if (par_old.getParamValue("label") !=
 				    par_new.getParamValue("label")
 				    && !par_new.getParamValue("label").empty())
-					cur.bv().buffer()->changeRefsIfUnique(
+					cur.bv().buffer().changeRefsIfUnique(
 						from_utf8(par_old.getParamValue("label")),
 						from_utf8(par_new.getParamValue("label")),
 						Inset::REF_CODE);
@@ -770,7 +770,7 @@ bool InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
 		graphics::PreviewImage const * pimage =
-			preview_->getPreviewImage(*mi.base.bv->buffer());
+			preview_->getPreviewImage(mi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
 	}
 
@@ -779,7 +779,7 @@ bool InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		if (!set_label_) {
 			set_label_ = true;
-			button_.update(getScreenLabel(*mi.base.bv->buffer()),
+			button_.update(getScreenLabel(mi.base.bv->buffer()),
 				       true);
 		}
 		button_.metrics(mi, dim);
@@ -803,7 +803,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
 		graphics::PreviewImage const * pimage =
-			preview_->getPreviewImage(*pi.base.bv->buffer());
+			preview_->getPreviewImage(pi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
 	}
 

@@ -31,9 +31,9 @@ namespace toc {
 
 void outline(OutlineOp mode,  Cursor & cur)
 {
-	Buffer * buf = & cur.buffer();
+	Buffer & buf = cur.buffer();
 	pit_type & pit = cur.pit();
-	ParagraphList & pars = buf->text().paragraphs();
+	ParagraphList & pars = buf.text().paragraphs();
 	ParagraphList::iterator bgn = pars.begin();
 	// The first paragraph of the area to be copied:
 	ParagraphList::iterator start = boost::next(bgn, pit);
@@ -42,9 +42,9 @@ void outline(OutlineOp mode,  Cursor & cur)
 	ParagraphList::iterator end = pars.end();
 
 	TextClass::const_iterator lit =
-		buf->params().getTextClass().begin();
+		buf.params().getTextClass().begin();
 	TextClass::const_iterator const lend =
-		buf->params().getTextClass().end();
+		buf.params().getTextClass().end();
 
 	int const thistoclevel = start->layout()->toclevel;
 	int toclevel;

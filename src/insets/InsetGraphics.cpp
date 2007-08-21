@@ -181,7 +181,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_GRAPHICS_EDIT: {
-		Buffer const & buffer = *cur.bv().buffer();
+		Buffer const & buffer = cur.bv().buffer();
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, p);
 		editGraphics(p, buffer);

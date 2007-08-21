@@ -253,7 +253,7 @@ int AutoSaveBuffer::generateChild()
 
 		FileName const tmp_ret(tempName(FileName(), "lyxauto"));
 		if (!tmp_ret.empty()) {
-			bv_.buffer()->writeFile(tmp_ret);
+			bv_.buffer().writeFile(tmp_ret);
 			// assume successful write of tmp_ret
 			if (!rename(tmp_ret, fname_)) {
 				failed = true;
@@ -269,12 +269,11 @@ int AutoSaveBuffer::generateChild()
 
 		if (failed) {
 			// failed to write/rename tmp_ret so try writing direct
-			if (!bv_.buffer()->writeFile(fname_)) {
+			if (!bv_.buffer().writeFile(fname_)) {
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1) // emit message signal.
-					bv_.buffer()
-					  ->message(_("Autosave failed!"));
+					bv_.buffer().message(_("Autosave failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -291,29 +290,26 @@ void autoSave(BufferView * bv)
 	// should probably be moved into BufferList (Lgb)
 	// Perfect target for a thread...
 {
-	if (!bv->buffer())
-		return;
-
-	if (bv->buffer()->isBakClean() || bv->buffer()->isReadonly()) {
+	if (bv->buffer().isBakClean() || bv->buffer().isReadonly()) {
 		// We don't save now, but we'll try again later
-		bv->buffer()->resetAutosaveTimers();
+		bv->buffer().resetAutosaveTimers();
 		return;
 	}
 
 	// emit message signal.
-	bv->buffer()->message(_("Autosaving current document..."));
+	bv->buffer().message(_("Autosaving current document..."));
 
 	// create autosave filename
-	string fname = bv->buffer()->filePath();
+	string fname = bv->buffer().filePath();
 	fname += '#';
-	fname += onlyFilename(bv->buffer()->fileName());
+	fname += onlyFilename(bv->buffer().fileName());
 	fname += '#';
 
 	AutoSaveBuffer autosave(*bv, FileName(fname));
 	autosave.start();
 
-	bv->buffer()->markBakClean();
-	bv->buffer()->resetAutosaveTimers();
+	bv->buffer().markBakClean();
+	bv->buffer().resetAutosaveTimers();
 }
 
 
@@ -342,9 +338,6 @@ void newFile(LyXView & lv, string const & filename)
 // Insert plain text file (if filename is empty, prompt for one)
 void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 {
-	if (!bv->buffer())
-		return;
-
 	docstring const tmpstr =
 	  getContentsOfPlaintextFile(bv, f, asParagraph);
 
@@ -373,7 +366,7 @@ docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
 				     : LFUN_FILE_INSERT_PLAINTEXT) );
 
 		FileDialog::Result result =
-			fileDlg.open(from_utf8(bv->buffer()->filePath()),
+			fileDlg.open(from_utf8(bv->buffer().filePath()),
 				     FileFilterList(), docstring());
 
 		if (result.first == FileDialog::Later)

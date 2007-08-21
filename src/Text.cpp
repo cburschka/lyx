@@ -1313,7 +1313,7 @@ bool Text::backspace(Cursor & cur)
 bool Text::dissolveInset(Cursor & cur) {
 	BOOST_ASSERT(this == cur.text());
 
-	if (isMainText(*cur.bv().buffer()) || cur.inset().nargs() != 1)
+	if (isMainText(cur.bv().buffer()) || cur.inset().nargs() != 1)
 		return false;
 
 	recordUndoInset(cur);
@@ -1449,7 +1449,7 @@ void Text::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 														bool drawOnBegMargin, bool drawOnEndMargin) const
 {
 	BufferView & bv = *pi.base.bv;
-	Buffer & buffer = *bv.buffer();
+	Buffer & buffer = bv.buffer();
 	TextMetrics const & tm = bv.textMetrics(this);
 	DocIterator cur = beg;
 	int x1 = cursorX(bv, beg.top(), beg.boundary());
@@ -1662,7 +1662,7 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 
 	pos_type cursor_vpos = 0;
 
-	Buffer const & buffer = *bv.buffer();
+	Buffer const & buffer = bv.buffer();
 	RowMetrics const m = tm.computeRowMetrics(pit, row);
 	double x = m.x;
 	Bidi bidi;

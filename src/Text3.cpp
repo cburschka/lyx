@@ -820,15 +820,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
 		if (cmd.argument().empty() && !theClipboard().isInternal())
-			pasteClipboard(cur, bv->buffer()->errorList("Paste"));
+			pasteClipboard(cur, bv->buffer().errorList("Paste"));
 		else {
 			string const arg(to_utf8(cmd.argument()));
-			pasteFromStack(cur, bv->buffer()->errorList("Paste"),
+			pasteFromStack(cur, bv->buffer().errorList("Paste"),
 					isStrUnsignedInt(arg) ?
 						convert<unsigned int>(arg) :
 						0);
 		}
-		bv->buffer()->errors("Paste");
+		bv->buffer().errors("Paste");
 		cur.clearSelection(); // bug 393
 		finishUndo();
 		break;
@@ -881,7 +881,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
-		TextClass const & tclass = bv->buffer()->params().getTextClass();
+		TextClass const & tclass = bv->buffer().params().getTextClass();
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
 		bool hasLayout = tclass.hasLayout(layout);
@@ -925,9 +925,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CLIPBOARD_PASTE:
 		cur.clearSelection();
-		pasteClipboard(cur, bv->buffer()->errorList("Paste"),
+		pasteClipboard(cur, bv->buffer().errorList("Paste"),
 			       cmd.argument() == "paragraph");
-		bv->buffer()->errors("Paste");
+		bv->buffer().errors("Paste");
 		break;
 
 	case LFUN_PRIMARY_SELECTION_PASTE:
@@ -953,7 +953,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_QUOTE_INSERT: {
 		Paragraph & par = cur.paragraph();
 		pos_type pos = cur.pos();
-		BufferParams const & bufparams = bv->buffer()->params();
+		BufferParams const & bufparams = bv->buffer().params();
 		Layout_ptr const & style = par.layout();
 		if (!style->pass_thru
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
@@ -1031,9 +1031,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cap::copySelectionToStack();
 
 				cap::pasteSelection(bv->cursor(), 
-						    bv->buffer()->errorList("Paste"));
-				bv->buffer()->errors("Paste");
-				bv->buffer()->markDirty();
+						    bv->buffer().errorList("Paste"));
+				bv->buffer().errors("Paste");
+				bv->buffer().markDirty();
 				finishUndo();
 			} else {
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
@@ -1212,7 +1212,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
-		updateLabels(*bv->buffer());
+		updateLabels(bv->buffer());
 		break;
 	case LFUN_NOTE_INSERT:
 	case LFUN_CHARSTYLE_INSERT:
@@ -1249,7 +1249,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.posRight();
 		ParagraphList & pars = cur.text()->paragraphs();
 
-		TextClass const & tclass = bv->buffer()->params().getTextClass();
+		TextClass const & tclass = bv->buffer().params().getTextClass();
 
 		// add a separate paragraph for the caption inset
 		pars.push_back(Paragraph());
@@ -1516,7 +1516,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FLOAT_LIST: {
-		TextClass const & tclass = bv->buffer()->params().getTextClass();
+		TextClass const & tclass = bv->buffer().params().getTextClass();
 		if (tclass.floats().typeExist(to_utf8(cmd.argument()))) {
 			recordUndo(cur);
 			if (cur.selection())
@@ -1896,7 +1896,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_INSET_DISSOLVE:
-		enable = !isMainText(*cur.bv().buffer()) && cur.inset().nargs() == 1;
+		enable = !isMainText(cur.bv().buffer()) && cur.inset().nargs() == 1;
 		break;
 
 	case LFUN_CHANGE_ACCEPT:

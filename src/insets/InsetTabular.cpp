@@ -1098,14 +1098,14 @@ void toggleFixedWidth(Cursor & cur, InsetText * inset, bool fixedWidth)
 		return;
 
 	// merge all paragraphs to one
-	BufferParams const & bp = cur.bv().buffer()->params();
+	BufferParams const & bp = cur.bv().buffer().params();
 	while (inset->paragraphs().size() > 1)
 		mergeParagraph(bp, inset->paragraphs(), 0);
 
 	// reset layout
 	cur.push(*inset);
 	// undo information has already been recorded
-	inset->getText(0)->setLayout(*cur.bv().buffer(), 0, cur.lastpit() + 1,
+	inset->getText(0)->setLayout(cur.bv().buffer(), 0, cur.lastpit() + 1,
 			bp.getTextClass().defaultLayoutName());
 	cur.pop();
 }
@@ -4167,12 +4167,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::APPEND_ROW:
 		// append the row into the tabular
-		tabular.appendRow(bv.buffer()->params(), cur.idx());
+		tabular.appendRow(bv.buffer().params(), cur.idx());
 		break;
 
 	case Tabular::APPEND_COLUMN:
 		// append the column into the tabular
-		tabular.appendColumn(bv.buffer()->params(), cur.idx());
+		tabular.appendColumn(bv.buffer().params(), cur.idx());
 		cur.idx() = tabular.getCellNumber(row, column);
 		break;
 
@@ -4199,11 +4199,11 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::COPY_ROW:
-		tabular.copyRow(bv.buffer()->params(), row);
+		tabular.copyRow(bv.buffer().params(), row);
 		break;
 
 	case Tabular::COPY_COLUMN:
-		tabular.copyColumn(bv.buffer()->params(), column);
+		tabular.copyColumn(bv.buffer().params(), column);
 		cur.idx() = tabular.getCellNumber(row, column);
 		break;
 
@@ -4302,14 +4302,14 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			if (tabular.isMultiColumn(cur.idx()))
 				tabular.unsetMultiColumn(cur.idx());
 			else
-				tabular.setMultiColumn(bv.buffer(), cur.idx(), 1);
+				tabular.setMultiColumn(&bv.buffer(), cur.idx(), 1);
 			break;
 		}
 		// we have a selection so this means we just add all this
 		// cells to form a multicolumn cell
 		idx_type const s_start = cur.selBegin().idx();
 		idx_type const s_end = cur.selEnd().idx();
-		tabular.setMultiColumn(bv.buffer(), s_start, s_end - s_start + 1);
+		tabular.setMultiColumn(&bv.buffer(), s_start, s_end - s_start + 1);
 		cur.idx() = s_start;
 		cur.pit() = 0;
 		cur.pos() = 0;
@@ -4619,7 +4619,7 @@ bool InsetTabular::isRightToLeft(Cursor & cur) const
 	BOOST_ASSERT(cur.depth() > 1);
 	Paragraph const & parentpar = cur[cur.depth() - 2].paragraph();
 	pos_type const parentpos = cur[cur.depth() - 2].pos();
-	return parentpar.getFontSettings(cur.bv().buffer()->params(),
+	return parentpar.getFontSettings(cur.bv().buffer().params(),
 					 parentpos).language()->rightToLeft();
 }
 
@@ -4684,7 +4684,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	if (buf.length() <= 0)
 		return true;
 
-	Buffer const & buffer = *bv.buffer();
+	Buffer const & buffer = bv.buffer();
 
 	col_type cols = 1;
 	row_type rows = 1;

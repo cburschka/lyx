@@ -277,7 +277,7 @@ bool InsetMathHull::previewState(BufferView * bv) const
 {
 	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		graphics::PreviewImage const * pimage =
-			preview_->getPreviewImage(*bv->buffer());
+			preview_->getPreviewImage(bv->buffer());
 		return pimage && pimage->image();
 	}
 	return false;
@@ -1060,7 +1060,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (type_ == hullSimple || type_ == hullEquation) {
 			recordUndoInset(cur);
 			bool const align =
-				cur.bv().buffer()->params().use_amsmath == BufferParams::package_on;
+				cur.bv().buffer().params().use_amsmath == BufferParams::package_on;
 			mutate(align ? hullAlign : hullEqnArray);
 			cur.idx() = 0;
 			cur.pos() = cur.lastpos();
@@ -1129,7 +1129,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 				numbered(r, true);
 			docstring old = label(r);
 			if (str != old) {
-				cur.bv().buffer()->changeRefsIfUnique(old, str,
+				cur.bv().buffer().changeRefsIfUnique(old, str,
 							Inset::REF_CODE);
 				label(r, str);
 			}

@@ -82,7 +82,7 @@ using support::compare_ascii_no_case;
 
 Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 {
-	BufferParams const & params = bv->buffer()->params();
+	BufferParams const & params = bv->buffer().params();
 
 	try {
 
@@ -207,7 +207,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				r = 2;
 			if (c <= 0)
 				c = 2;
-			return new InsetTabular(*bv->buffer(), r, c);
+			return new InsetTabular(bv->buffer(), r, c);
 		}
 
 		case LFUN_CAPTION_INSERT: {
@@ -270,7 +270,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				return new InsetListings(params, par);
 
 			} else if (name == "external") {
-				Buffer const & buffer = *bv->buffer();
+				Buffer const & buffer = bv->buffer();
 				InsetExternalParams iep;
 				InsetExternalMailer::string2params(to_utf8(cmd.argument()),
 					buffer, iep);
@@ -279,7 +279,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				return inset.release();
 
 			} else if (name == "graphics") {
-				Buffer const & buffer = *bv->buffer();
+				Buffer const & buffer = bv->buffer();
 				InsetGraphicsParams igp;
 				InsetGraphicsMailer::string2params(to_utf8(cmd.argument()),
 					buffer, igp);
@@ -314,7 +314,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				InsetCommandParams icp(name);
 				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 					icp);
-				return new InsetRef(icp, *bv->buffer());
+				return new InsetRef(icp, bv->buffer());
 
 			} else if (name == "toc") {
 				InsetCommandParams icp("tableofcontents");

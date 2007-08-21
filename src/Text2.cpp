@@ -371,7 +371,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	BOOST_ASSERT(this == cur.text());
 	// special handling of new environment insets
 	BufferView & bv = cur.bv();
-	BufferParams const & params = bv.buffer()->params();
+	BufferParams const & params = bv.buffer().params();
 	Layout_ptr const & lyxlayout = params.getTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset

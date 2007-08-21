@@ -148,7 +148,7 @@ bool isLetter(DocIterator const & dit)
 
 WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 {
-	BufferParams const & bp = cur.bv().buffer()->params();
+	BufferParams const & bp = cur.bv().buffer().params();
 	bool inword = false;
 	bool ignoreword = false;
 	cur.resetAnchor();

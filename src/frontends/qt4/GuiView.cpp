@@ -647,7 +647,7 @@ void GuiView::currentTabChanged(int i)
 	BOOST_ASSERT(wa);
 	BufferView & bv = wa->bufferView();
 	connectBufferView(bv);
-	connectBuffer(*bv.buffer());
+	connectBuffer(bv.buffer());
 	bv.updateMetrics(false);
 	bv.cursor().fixIfBroken();
 	wa->setUpdatesEnabled(true);
@@ -666,7 +666,7 @@ void GuiView::currentTabChanged(int i)
 	updateStatusBar();
 
 	lyxerr << "currentTabChanged " << i
-		<< "File" << wa->bufferView().buffer()->fileName() << endl;
+		<< "File" << bv.buffer().fileName() << endl;
 }
 
 
@@ -846,7 +846,7 @@ WorkArea * GuiView::workArea(Buffer & buffer)
 	for (int i = 0; i != d.tab_widget_->count(); ++i) {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(i));
 		BOOST_ASSERT(wa);
-		if (wa->bufferView().buffer() == &buffer)
+		if (&wa->bufferView().buffer() == &buffer)
 			return wa;
 	}
 	return 0;

@@ -86,9 +86,9 @@ graphics::PreviewLoader & getPreviewLoader(Buffer const & buffer)
 
 docstring const statusMessage(BufferView const * bv, string const & snippet)
 {
-	BOOST_ASSERT(bv && bv->buffer());
+	BOOST_ASSERT(bv);
 
-	Buffer const & buffer = *bv->buffer();
+	Buffer const & buffer = bv->buffer();
 	graphics::PreviewLoader const & loader = getPreviewLoader(buffer);
 	graphics::PreviewLoader::Status const status = loader.status(snippet);
 
@@ -122,10 +122,10 @@ RenderPreview::getPreviewImage(Buffer const & buffer) const
 
 bool RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
+	BOOST_ASSERT(mi.base.bv);
 
 	graphics::PreviewImage const * const pimage =
-		getPreviewImage(*mi.base.bv->buffer());
+		getPreviewImage(mi.base.bv->buffer());
 
 	if (pimage) {
 		dim.asc = pimage->ascent();
@@ -150,10 +150,10 @@ bool RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
+	BOOST_ASSERT(pi.base.bv);
 
 	graphics::PreviewImage const * const pimage =
-		getPreviewImage(*pi.base.bv->buffer());
+		getPreviewImage(pi.base.bv->buffer());
 	graphics::Image const * const image = pimage ? pimage->image() : 0;
 
 	if (image) {

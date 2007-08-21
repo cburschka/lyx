@@ -145,15 +145,15 @@ BufferView::~BufferView()
 }
 
 
-Buffer * BufferView::buffer()
+Buffer & BufferView::buffer()
 {
-	return &buffer_;
+	return buffer_;
 }
 
 
-Buffer const * BufferView::buffer() const
+Buffer const & BufferView::buffer() const
 {
-	return &buffer_;
+	return buffer_;
 }
 
 
