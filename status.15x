@@ -70,6 +70,8 @@ What's new
 
 - Fix crash when a user removes the underlying figure of a graphic inset
   that has been copied and pasted (Bug 4108).
+  
+- Fix crash when closing LyX window with document tabs (Bug 4123).
 
 - Fix crash when a user removes a formula when its preview is being generated.
   (gcc 3 only).

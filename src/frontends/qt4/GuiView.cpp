@@ -295,12 +295,13 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	theApp()->gui().unregisterView(id());
 	if (!theApp()->gui().viewIds().empty()) {
-		quitting = true;
 		// Just close the window and do nothing else if this is not the
 		// last window.
 		close_event->accept();
 		return;
 	}
+
+	quitting = true;
 
 	if (view()->buffer()) {
 		// save cursor position for opened files to .lyx/session
@@ -566,6 +567,9 @@ void GuiView::focus_command_widget()
 
 void GuiView::update_view_state_qt()
 {
+	if (!hasFocus())
+		return;
+	theLyXFunc().setLyXView(this);
 	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
 	statusbar_timer_.stop();
 }
