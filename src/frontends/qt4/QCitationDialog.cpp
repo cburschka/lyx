@@ -520,7 +520,7 @@ void QCitationDialog::findText(QString const & text, bool reset)
 	vector<docstring> const & fields = form_->availableFields();
 	docstring field;
 	
-	if (index <= -1 || index >= fields.size())
+	if (index <= -1 || index >= int(fields.size()))
 		//either "All Fields" or "Keys" or an invalid value
 		field = from_ascii("");
 	else
@@ -533,7 +533,7 @@ void QCitationDialog::findText(QString const & text, bool reset)
 	index = entriesCO->currentIndex() - 1; 
 	vector<docstring> const & entries = form_->availableEntries();
 	docstring entryType;
-	if (index < 0 || index >= entries.size())
+	if (index < 0 || index >= int(entries.size()))
 		entryType = from_ascii("");
 	else 
 		entryType = entries[index];
