@@ -13,8 +13,8 @@
  * re-invent the wheel.
  */
 
-#ifndef SPACING_H
-#define SPACING_H
+#ifndef TEX2LYX_SPACING_H
+#define TEX2LYX_SPACING_H
 
 #include <string>
 
@@ -40,4 +40,4 @@ public:
 
 } // namespace lyx
 
-#endif // NOT SPACING_H
+#endif // TEX2LYX_SPACING_H

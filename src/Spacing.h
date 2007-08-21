@@ -12,6 +12,10 @@
 #ifndef SPACING_H
 #define SPACING_H
 
+#ifdef TEX2LYX
+#include "tex2lyx/Spacing.h"
+#else
+
 #include <iosfwd>
 #include <string>
 
@@ -88,8 +92,9 @@ inline
 bool operator!=(Spacing const & a, Spacing const & b)
 {
 	return !(a == b);
-
+}
 
 } // namespace lyx
-}
-#endif
+
+#endif // TEX2LYX
+#endif // SPACING_H

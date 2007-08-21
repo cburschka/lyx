@@ -14,8 +14,8 @@
  *
  */
 
-#ifndef LYXFONT_H
-#define LYXFONT_H
+#ifndef TEX2LYX_FONT_H
+#define TEX2LYX_FONT_H
 
 namespace lyx {
 
@@ -40,4 +40,4 @@ public:
 
 } // namespace lyx
 
-#endif // NOT LYXFONT_H
+#endif // TEX2LYX_FONT_H

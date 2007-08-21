@@ -15,6 +15,10 @@
 #ifndef FONT_H
 #define FONT_H
 
+#ifdef TEX2LYX
+#include "tex2lyx/Font.h"
+#else
+
 #include "Color.h"
 #include "support/docstream.h"
 
@@ -422,4 +426,5 @@ bool operator!=(Font const & font1, Font const & font2)
 
 } // namespace lyx
 
+#endif // TEX2LYX
 #endif
