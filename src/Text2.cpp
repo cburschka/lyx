@@ -314,25 +314,16 @@ void Text::setInsetFont(Buffer const & buffer, pit_type pit,
 		     pars_[pit].getInset(pos)->noFontChange());
 
 	Inset * const inset = pars_[pit].getInset(pos);
-	DocIterator dit = doc_iterator_begin(*inset);
-	// start of the last cell
-	DocIterator end = dit;
-	end.idx() = end.lastidx();
-
-	while (true) {
-		Text * text = dit.text();
-		Inset * cell = dit.realInset();
-		if (text && cell) {
-			DocIterator cellbegin = doc_iterator_begin(*cell);
+	CursorSlice::idx_type endidx = inset->nargs();
+	for (CursorSlice cs(*inset); cs.idx() != endidx; ++cs.idx()) {
+		Text * text = cs.text();
+		if (text) {
 			// last position of the cell
-			DocIterator cellend = cellbegin;
+			CursorSlice cellend = cs;
 			cellend.pit() = cellend.lastpit();
 			cellend.pos() = cellend.lastpos();
-			text->setFont(buffer, cellbegin.top(), cellend.top(), font, toggleall);
+			text->setFont(buffer, cs, cellend, font, toggleall);
 		}
-		if (dit == end)
-			break;
-		dit.forwardIdx();
 	}
 }
 
