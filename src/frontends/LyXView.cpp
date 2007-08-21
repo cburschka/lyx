@@ -119,12 +119,6 @@ void LyXView::setBuffer(Buffer * newBuffer)
 		return;
 	}
 
-	// parentfilename will be used in case when we switch to a child
-	// document (hence when child_document is true)
-	string parentfilename;
-	if (oldBuffer)
-		parentfilename = oldBuffer->fileName();
-
 	WorkArea * wa = workArea(*newBuffer);
 	if (wa == 0) {
 		updateLabels(*newBuffer->getMasterBuffer());
@@ -143,10 +137,6 @@ void LyXView::setBuffer(Buffer * newBuffer)
 Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 {
 	busy(true);
-	string parentfilename;
-	Buffer * oldBuffer = buffer();
-	if (oldBuffer)
-		parentfilename = oldBuffer->fileName();
 
 	Buffer * newBuffer = checkAndLoadLyXFile(filename);
 
