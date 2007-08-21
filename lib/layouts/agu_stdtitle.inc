@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 4
+Format 5
 Input stdtitle.inc
 
 
@@ -318,7 +318,9 @@ End
 
 # Inside AGU-journal:
 
-CharStyle ISSN
+InsetLayout CharStyle:ISSN
+	LyXType charstyle
+	LabelString ISSN
 	LatexType             Command
 	LatexName             ISSN
 	LabelFont
@@ -327,7 +329,9 @@ CharStyle ISSN
 End
 
 
-CharStyle CODEN
+InsetLayout CharStyle:CODEN
+	LyXType charstyle
+	LabelString CODEN
 	LatexType             Command
 	LatexName             CODEN
 	LabelFont
@@ -337,7 +341,9 @@ End
 
 # Inside Special-section:
 
-CharStyle SS-Code
+InsetLayout CharStyle:SS-Code
+	LyXType charstyle
+	LabelString SS-Code
 	LatexType             Command
 	LatexName             ss-code
 	LabelFont
@@ -346,7 +352,9 @@ CharStyle SS-Code
 End
 
 
-CharStyle SS-Title
+InsetLayout CharStyle:SS-Title
+	LyXType charstyle
+	LabelString SS-Title
 	LatexType             Command
 	LatexName             ss-title
 	LabelFont
@@ -356,7 +364,9 @@ End
 
 # Inside Copyright:
 
-CharStyle CCC-Code
+InsetLayout CharStyle:CCC-Code
+	LyXType charstyle
+	LabelString CCC-Code
 	LatexType             Command
 	LatexName             CCCcode
 	LabelFont
@@ -367,7 +377,9 @@ End
 
 # Inside Index-term:
 
-CharStyle Code
+InsetLayout CharStyle:Code
+	LyXType charstyle
+	LabelString Code
 	LatexType             Command
 	LatexName             code
 	LabelFont
@@ -376,7 +388,9 @@ CharStyle Code
 End
 
 
-CharStyle Dscr
+InsetLayout CharStyle:Dscr
+	LyXType charstyle
+	LabelString Dscr
 	LatexType             Command
 	LatexName             dscr
 	LabelFont
@@ -386,7 +400,9 @@ End
 
 # Inside Keywords:
 
-CharStyle Keyword
+InsetLayout CharStyle:Keyword
+	LyXType charstyle
+	LabelString Keyword
 	LatexType             Command
 	LatexName             keyword
 	LabelFont
@@ -396,7 +412,9 @@ End
 
 #inside Affiliation:
 
-CharStyle Orgdiv
+InsetLayout CharStyle:Orgdiv
+	LyXType charstyle
+	LabelString Orgdiv
 	LatexType             Command
 	LatexName             orgdiv
 	LabelFont
@@ -405,7 +423,9 @@ CharStyle Orgdiv
 End
 
 
-CharStyle Orgname
+InsetLayout CharStyle:Orgname
+	LyXType charstyle
+	LabelString Orgname
 	LatexType             Command
 	LatexName             orgname
 	LabelFont
@@ -414,7 +434,9 @@ CharStyle Orgname
 End
 
 
-CharStyle Street
+InsetLayout CharStyle:Street
+	LyXType charstyle
+	LabelString Street
 	LatexType             Command
 	LatexName             street
 	LabelFont
@@ -423,7 +445,9 @@ CharStyle Street
 End
 
 
-CharStyle City
+InsetLayout CharStyle:City
+	LyXType charstyle
+	LabelString City
 	LatexType             Command
 	LatexName             city
 	LabelFont
@@ -432,7 +456,9 @@ CharStyle City
 End
 
 
-CharStyle State
+InsetLayout CharStyle:State
+	LyXType charstyle
+	LabelString State
 	LatexType             Command
 	LatexName             state
 	LabelFont
@@ -441,7 +467,9 @@ CharStyle State
 End
 
 
-CharStyle Postcode
+InsetLayout CharStyle:Postcode
+	LyXType charstyle
+	LabelString Postcode
 	LatexType             Command
 	LatexName             postcode
 	LabelFont
@@ -450,7 +478,9 @@ CharStyle Postcode
 End
 
 
-CharStyle Country
+InsetLayout CharStyle:Country
+	LyXType charstyle
+	LabelString Country
 	LatexType             Command
 	LatexName             country
 	LabelFont

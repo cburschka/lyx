@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 4
+Format 5
 OutputType              docbook
 
 Columns                 1
@@ -32,7 +32,9 @@ Style Standard
 End
 
 
-CharStyle Firstname
+InsetLayout CharStyle:Firstname
+	LyXType charstyle
+	LabelString Firstname
 	LatexType             Command
 	LatexName             firstname
 	Font
@@ -44,7 +46,9 @@ CharStyle Firstname
 	EndFont
 End
 
-CharStyle Fname
+InsetLayout CharStyle:Fname
+	LyXType charstyle
+	LabelString Fname
 	LatexType             Command
 	LatexName             fname
 	Font
@@ -57,7 +61,9 @@ CharStyle Fname
 End
 
 
-CharStyle Surname
+InsetLayout CharStyle:Surname
+	LyXType charstyle
+	LabelString Surname
 	LatexType             Command
 	LatexName             surname
 	Font
@@ -70,7 +76,9 @@ CharStyle Surname
 End
 
 
-CharStyle Filename
+InsetLayout CharStyle:Filename
+	LyXType charstyle
+	LabelString Filename
 	LatexType             Command
 	LatexName             filename
 	Font
@@ -83,7 +91,9 @@ CharStyle Filename
 End
 
 
-CharStyle Literal
+InsetLayout CharStyle:Literal
+	LyXType charstyle
+	LabelString Literal
 	LatexType             Command
 	LatexName             literal
 	Font
@@ -96,7 +106,9 @@ CharStyle Literal
 End
 
 
-CharStyle Emph
+InsetLayout CharStyle:Emph
+	LyXType charstyle
+	LabelString Emph
 	LatexType             Command
 	LatexName             emph
 	LatexParam            "type=<italic>"
@@ -110,7 +122,9 @@ CharStyle Emph
 End
 
 
-CharStyle Abbrev
+InsetLayout CharStyle:Abbrev
+	LyXType charstyle
+	LabelString Abbrev
 	LatexType             Command
 	LatexName             abbrev
 	LabelFont
@@ -119,7 +133,9 @@ CharStyle Abbrev
 End
 
 
-CharStyle Citation-number
+InsetLayout CharStyle:Citation-number
+	LyXType charstyle
+	LabelString Citation-number
 	LatexType             Command
 	LatexName             citation-number
 	LabelFont
@@ -128,7 +144,9 @@ CharStyle Citation-number
 End
 
 
-CharStyle Volume
+InsetLayout CharStyle:Volume
+	LyXType charstyle
+	LabelString Volume
 	LatexType             Command
 	LatexName             volume
 	LabelFont
@@ -137,7 +155,9 @@ CharStyle Volume
 End
 
 
-CharStyle Day
+InsetLayout CharStyle:Day
+	LyXType charstyle
+	LabelString Day
 	LatexType             Command
 	LatexName             day
 	LabelFont
@@ -146,7 +166,9 @@ CharStyle Day
 End
 
 
-CharStyle Month
+InsetLayout CharStyle:Month
+	LyXType charstyle
+	LabelString Month
 	LatexType             Command
 	LatexName             month
 	LabelFont
@@ -155,7 +177,9 @@ CharStyle Month
 End
 
 
-CharStyle Year
+InsetLayout CharStyle:Year
+	LyXType charstyle
+	LabelString Year
 	LatexType             Command
 	LatexName             year
 	LabelFont
@@ -164,7 +188,9 @@ CharStyle Year
 End
 
 
-CharStyle Issue-number
+InsetLayout CharStyle:Issue-number
+	LyXType charstyle
+	LabelString Issue-number
 	LatexType             Command
 	LatexName             issue-number
 	LabelFont
@@ -173,7 +199,9 @@ CharStyle Issue-number
 End
 
 
-CharStyle Issue-day
+InsetLayout CharStyle:Issue-day
+	LyXType charstyle
+	LabelString Issue-day
 	LatexType             Command
 	LatexName             issue-day
 	LabelFont
@@ -182,7 +210,9 @@ CharStyle Issue-day
 End
 
 
-CharStyle Issue-months
+InsetLayout CharStyle:Issue-months
+	LyXType charstyle
+	LabelString Issue-months
 	LatexType             Command
 	LatexName             issue-months
 	LabelFont
