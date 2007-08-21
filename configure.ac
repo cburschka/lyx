@@ -236,7 +236,7 @@ AC_LANG_POP(C)
 # some standard header files
 AC_HEADER_DIRENT
 AC_HEADER_MAJOR
-AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h io.h process.h NewAPIs.h)
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h io.h process.h NewAPIs.h utime.h sys/utime.h)
 
 # some standard structures
 AC_HEADER_STAT

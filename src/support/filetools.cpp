@@ -50,9 +50,6 @@
 #include <fstream>
 #include <sstream>
 
-// FIXME Availability?
-#include <utime.h>  // for utimbuf
-
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
