@@ -1642,7 +1642,9 @@ if build_support:
 
     support = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
-        source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files] + Package_cpp,
+        source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files] + Package_cpp + \
+            ['$BUILDDIR/common/support/minizip/%s' % x for x in src_support_minizip_files] + \
+            ['$BUILDDIR/common/support/minizip/%s' % x for x in src_support_minizip_windows_files if platform_name == 'win32'],
         CCFLAGS =  [
             '$CCFLAGS',
             '-DHAVE_CONFIG_H',
@@ -1650,8 +1652,8 @@ if build_support:
             '-DQT_GENUINE_STR',
             '-DQT_NO_STL',
             '-DQT_NO_KEYWORDS',
-        ]
-
+        ],
+        CPPPATH = ['$CPPPATH', '$TOP_SRCDIR/src/support/minizip']
     )
     Alias('support', support)
 
