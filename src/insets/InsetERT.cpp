@@ -53,11 +53,7 @@ using std::string;
 void InsetERT::init()
 {
 	setButtonLabel();
-	Font font(Font::ALL_SANE);
-	font.decSize();
-	font.decSize();
-	font.setColor(Color::latex);
-	setLabelFont(font);
+	setLabelFont(layout_.labelfont);
 	text_.current_font.setLanguage(latex_language);
 	text_.real_current_font.setLanguage(latex_language);
 }
@@ -66,6 +62,7 @@ void InsetERT::init()
 InsetERT::InsetERT(BufferParams const & bp, CollapseStatus status)
 	: InsetCollapsable(bp, status)
 {
+	setLayout(bp);
 	init();
 }
 
@@ -413,6 +410,7 @@ void InsetERT::draw(PainterInfo & pi, int x, int y) const
 	Font tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
 	pi.base.font.realize(tmpfont);
+	const_cast<InsetERT &>(*this).setButtonLabel();
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
 }
@@ -428,8 +426,7 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 void InsetERT::getDrawFont(Font & font) const
 {
 	font = Font(Font::ALL_INHERIT, latex_language);
-	font.setFamily(Font::TYPEWRITER_FAMILY);
-	font.setColor(Color::latex);
+	font.realize(layout_.font);
 }
 
 

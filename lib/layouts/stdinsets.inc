@@ -75,4 +75,15 @@ InsetLayout Note:Shaded
 	EndFont
 End
 
+InsetLayout ERT
+	LabelString           ERT
+	Font
+	  Color               latex
+	  Family              typewriter
+	EndFont
+	LabelFont
+	  Color               latex
+	  Size                Small
+	EndFont
+End
 
