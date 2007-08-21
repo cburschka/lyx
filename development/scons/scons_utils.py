@@ -416,7 +416,7 @@ int main() {
 }
 '''
     conf.Message('Checking if the declaration of iconv needs const... ')
-    ret = conf.TryLink(check_iconv_const, '.c')
+    ret = conf.TryLink(check_iconv_const, '.cpp')
     conf.Result(ret)
     return ret
 
