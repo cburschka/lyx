@@ -236,7 +236,8 @@ int main()
 }
 '''
     conf.Message('Checking for the use of global cstd... ')
-    ret = conf.TryLink(check_global_cstd_source, '.c')
+    # if can not compile, define CXX_GLOBAL_CSTD
+    ret = not conf.TryLink(check_global_cstd_source, '.c')
     conf.Result(ret)
     return ret
 

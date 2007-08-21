@@ -448,11 +448,10 @@ C_COMPILER = env.subst('$CC')
 C_CCFLAGS = env.subst('$CCFLAGS').split()
 # if we use ms vc, the commands are fine (cl.exe and link.exe)
 if use_vc:
-    # /TP treat all source code as C++
     # C4819: The file contains a character that cannot be represented
     #   in the current code page (number)
     # C4996: foo was decleared deprecated
-    CCFLAGS_required.extend(['/TP', '/EHsc'])
+    CCFLAGS_required.append('/EHsc')
     if mode == 'debug':
         CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MDd'])
         # the flags are also needed in C mode (for intl lib)
