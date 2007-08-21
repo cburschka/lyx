@@ -19,6 +19,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc\es"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" # must be here when another \doc file has been changed
+ SetOutPath "$INSTDIR\Resources\examples\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\buffer-update_ps.xpm"
  SetOutPath "$INSTDIR\Resources\ui"
