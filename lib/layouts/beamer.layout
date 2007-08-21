@@ -5,7 +5,7 @@
 # $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
 
 # Includes
-Format 4
+Format 5
 Input stdcounters.inc
 
 # local counters
@@ -1054,7 +1054,9 @@ End
 
 # Charstyles:
 
-CharStyle Alert
+InsetLayout CharStyle:Alert
+	LyXType charstyle
+	LabelString Alert
   LatexType        Command
   LatexName        alert
   Font
@@ -1063,7 +1065,9 @@ CharStyle Alert
 End
 
 
-CharStyle Structure
+InsetLayout CharStyle:Structure
+	LyXType charstyle
+	LabelString Structure
   LatexType        Command
   LatexName        structure
   Font
