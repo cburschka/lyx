@@ -1664,83 +1664,70 @@ msgid "Use esint package &automatically"
 msgstr "Ota sint -pakkaus k‰yttˆˆn automaattisesti"
 
 #: src/frontends/qt4/ui/MathsUi.ui:55
-#, fuzzy
 msgid "Use &esint package"
 msgstr "K‰yt‰ esintia"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:31
-#, fuzzy
 msgid "Sort &as:"
-msgstr "Katu"
+msgstr "Lajittele seuraavasti:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:41
-#, fuzzy
 msgid "&Description:"
 msgstr "Kuvausluettelo"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:51
-#, fuzzy
 msgid "&Symbol:"
 msgstr "Symboli"
 
 #: src/frontends/qt4/ui/NoteUi.ui:51
-#, fuzzy
 msgid "Type"
 msgstr "&Tyyppi"
 
 #: src/frontends/qt4/ui/NoteUi.ui:63
 msgid "LyX internal only"
-msgstr ""
+msgstr "Vain LyXin sis‰ll‰"
 
 #: src/frontends/qt4/ui/NoteUi.ui:66
-#, fuzzy
 msgid "LyX &Note"
 msgstr "Muistiinpano"
 
 #: src/frontends/qt4/ui/NoteUi.ui:73
 msgid "Export to LaTeX/Docbook but don't print"
-msgstr ""
+msgstr "Vie LaTeXiin/Docbookiin, ei tulostu"
 
 #: src/frontends/qt4/ui/NoteUi.ui:76
-#, fuzzy
 msgid "&Comment"
 msgstr "Huomautus"
 
 #: src/frontends/qt4/ui/NoteUi.ui:83
-#, fuzzy
 msgid "Print as grey text"
-msgstr "Tulosta joka sivu"
+msgstr "Tulosta harmaana tekstina"
 
 #: src/frontends/qt4/ui/NoteUi.ui:86
 msgid "&Greyed out"
-msgstr ""
+msgstr "Harmaana"
 
 #: src/frontends/qt4/ui/NoteUi.ui:93
 msgid "Framed in box"
-msgstr ""
+msgstr "Kehyksess‰"
 
 #: src/frontends/qt4/ui/NoteUi.ui:96
-#, fuzzy
 msgid "&Framed"
-msgstr "Etunimi"
+msgstr "Kehyksess‰"
 
 #: src/frontends/qt4/ui/NoteUi.ui:103
-#, fuzzy
 msgid "Box with shaded background"
-msgstr "muistiinpanon tausta"
+msgstr "Kehys varjostetulla taustalla"
 
 #: src/frontends/qt4/ui/NoteUi.ui:106
-#, fuzzy
 msgid "&Shaded"
-msgstr "Ta&llenna"
+msgstr "Varjostettu"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:63
-#, fuzzy
 msgid "&List in Table of Contents"
-msgstr "Sis‰llysluettelo"
+msgstr "Sis‰ll‰ Sis‰llysluetteloon"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:73
-#, fuzzy
 msgid "&Numbering"
 msgstr "Numerointi"
 
@@ -1750,7 +1737,7 @@ msgstr "Paperikoko"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:74
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr ""
+msgstr "Valitse tietty paperikoko, tai aseta omasi: \"M‰‰r. oma\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
 msgid "Orientation"
@@ -1770,11 +1757,11 @@ msgstr "&Sivutyyli:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:186
 msgid "Style used for the page header and footer"
-msgstr ""
+msgstr "Sivuotsikoissa k‰ytetty tyyli"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:195
 msgid "Lay out the page for double-sided printing"
-msgstr ""
+msgstr "Sivun asettelu molemminpuolista tulostusta varten"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:198
 msgid "&Two-sided document"
@@ -1787,39 +1774,33 @@ msgstr "Nimikeleveys"
 #: src/frontends/qt4/ui/ParagraphUi.ui:147
 #: src/frontends/qt4/ui/ParagraphUi.ui:154
 msgid "This text defines the width of the paragraph label"
-msgstr ""
+msgstr "T‰m‰ teksti m‰‰rittelee kappaleen nimikkeen leveys"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:157
-#, fuzzy
 msgid "&Longest label"
 msgstr "&Pisin nimike"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:195
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
+msgstr "K‰yt‰ t‰m‰n kappaleen oletustasaus, mik‰ lieneek‰‰n."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:198 src/frontends/qt4/QParagraph.cpp:86
-#, fuzzy
 msgid "Use Paragraph's Default Alignment"
-msgstr "Kappaletyyli asetettu"
+msgstr "K‰yt‰ kappaleen oletustasaus"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:205
-#, fuzzy
 msgid "&Right"
 msgstr "Oikea"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:212
-#, fuzzy
 msgid "&Left"
 msgstr "Vasen"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219
-#, fuzzy
 msgid "&Center"
 msgstr "Keskell‰"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:226
-#, fuzzy
 msgid "&Justified"
 msgstr "Tasattu"
 
@@ -1846,12 +1827,11 @@ msgstr "Kaksink."
 #: src/frontends/qt4/ui/TabularUi.ui:779 src/frontends/qt4/ui/VSpaceUi.ui:110
 #: src/frontends/qt4/QDocument.cpp:251 src/frontends/qt4/QDocument.cpp:352
 msgid "Custom"
-msgstr "Muu"
+msgstr "M‰‰r. oma"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:300
-#, fuzzy
 msgid "Indent &Paragraph"
-msgstr "yht‰ kappaletta"
+msgstr "Sisenn‰ kappale"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:25
 msgid "&Colors"
@@ -1870,14 +1850,12 @@ msgid "E&xtra flag:"
 msgstr "Lis‰li&ppu:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
-#, fuzzy
 msgid "&From format:"
-msgstr "&Muoto:"
+msgstr "Muodosta:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
-#, fuzzy
 msgid "&To format:"
-msgstr "&P‰iv‰ysmuoto:"
+msgstr "Muotoon:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
@@ -1891,60 +1869,50 @@ msgid "&Modify"
 msgstr "Muu&ta"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
-#, fuzzy
 msgid "Remo&ve"
 msgstr "&Poista"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:239
-#, fuzzy
 msgid "Converter Defi&nitions"
-msgstr "M‰‰ritelm‰"
+msgstr "Muuntimien m‰‰ritelm‰t"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:252
-#, fuzzy
 msgid "Converter File Cache"
-msgstr "Lis‰‰ tiedosto|‰"
+msgstr "Muuntimen tiedostov‰limuisti"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
-#, fuzzy
 msgid "&Enabled"
-msgstr "Pitk‰ &taulukko"
+msgstr "P‰‰ll‰"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-#, fuzzy
 msgid "&Maximum Age (in days):"
-msgstr "Vii&meisimpi‰ enint‰‰n:"
+msgstr "Maksimi-ik‰ (p‰iviss‰):"
 
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
 msgid "&Format:"
 msgstr "&Muoto:"
 
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:57
-#, fuzzy
 msgid "&Copier:"
-msgstr "Kopioita:"
+msgstr "Kopiointimuunnin:"
 
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:67
-#, fuzzy
 msgid "C&opiers"
-msgstr "Kopiot"
+msgstr "Kopiointimuuntimet"
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:44
-#, fuzzy
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Valitse tuottaako LyX Cygwin-tyylisi‰ polkunimi‰ vai Windows-tyylisi‰. T‰m‰ "
-"on hyˆdyllist‰ jos k‰yt‰t Cygwinin Tetexi‰ Windowsissa toimivan Miktexin "
-"sijaan. Huomaa kuitenkin, ett‰ joudut kirjoittamaan komentojonok‰‰reet "
-"kaikille muuntimillesi."
+"Valitse tuottaako LyX Windows-tyylisi‰ polkunimi‰ vai Posix-tyylisi‰. T‰m‰ "
+"on hyˆdyllist‰ jos k‰yt‰t Windowsin natiivi-MikTeXi‰ CygWin teTeXin "
+"sijaan."
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:47
-#, fuzzy
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "&K‰yt‰ Cygwin-tyylisi‰ polkuja"
+msgstr "&K‰yt‰ Windows-tyylisi‰ polkuja LaTeX -tiedostoissa"
 
 #: src/frontends/qt4/ui/PrefDateUi.ui:36
 msgid "&Date format:"
@@ -1963,9 +1931,8 @@ msgid "Off"
 msgstr "Pois p‰‰lt‰"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:52
-#, fuzzy
 msgid "No math"
-msgstr "matematiikka"
+msgstr "Ei matematiikka"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:57 src/Font.cpp:73
 msgid "On"
@@ -1976,7 +1943,6 @@ msgid "Do not display"
 msgstr "ƒl‰ n‰yt‰"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:89
-#, fuzzy
 msgid "Instant &Preview:"
 msgstr "&Esikatselu heti"
 
@@ -1985,14 +1951,12 @@ msgid "&File formats"
 msgstr "&Tiedostomuodot"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:100
-#, fuzzy
 msgid "&Document format"
-msgstr "Asiakirjan tyyli"
+msgstr "Asiakirjan formaatti"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:107
-#, fuzzy
 msgid "Vector graphi&cs format"
-msgstr "Valitse kuvatiedosto"
+msgstr "vektorikuvaformaatti"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "F&ormat:"
@@ -2015,19 +1979,16 @@ msgid "E&xtension:"
 msgstr "P‰‰t&e:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:211
-#, fuzzy
 msgid "Ed&itor:"
-msgstr "Huomautus toimittajalle"
+msgstr "Editori:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:36
-#, fuzzy
 msgid "&E-mail:"
 msgstr "S‰hkˆposti"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:46
-#, fuzzy
 msgid "Your name"
-msgstr "Sukunimi"
+msgstr "Nimesi"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:53 src/frontends/qt4/ui/RefUi.ui:119
 #: src/frontends/qt4/ui/URLUi.ui:47
@@ -2036,7 +1997,7 @@ msgstr "&Nimi:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:63
 msgid "Your E-mail address"
-msgstr ""
+msgstr "S‰hkˆpostiosoite"
 
 #: src/frontends/qt4/ui/PrefKeyboardUi.ui:58
 #: src/frontends/qt4/ui/PrefUi.ui:114
@@ -2081,7 +2042,6 @@ msgid "Auto &begin"
 msgstr "Automaattinen al&ku"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
-#, fuzzy
 msgid "Use b&abel"
 msgstr "K‰yt‰ &Babelia"
 
@@ -2158,23 +2118,20 @@ msgid "Chec&kTeX command:"
 msgstr "&CheckTeX-komento:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:166
-#, fuzzy
 msgid "BibTeX command and options"
-msgstr "LaTeX-paketit ja valinnat"
+msgstr "BibTeX-komento ja optiot"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:173
-#, fuzzy
 msgid "&BibTeX command:"
-msgstr "&CheckTeX-komento:"
+msgstr "BibTeX-komento:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:183
 msgid "Index command and options (makeindex, xindy)"
-msgstr ""
+msgstr "Hakemistokomento ja optiot (makeindex, xindy)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:190
-#, fuzzy
 msgid "Index command:"
-msgstr "Seuraava komento"
+msgstr "Luo hakemisto -komento:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:200
 msgid "DVI viewer paper size options:"
@@ -2201,9 +2158,8 @@ msgid "&PATH prefix:"
 msgstr "&PATH-etuliite:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:97
-#, fuzzy
 msgid "&Temporary directory:"
-msgstr "&K‰yt‰ v‰liaikaishakemistoa"
+msgstr "V‰liaikaishakemistoa:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:107
 msgid "&Backup directory:"
@@ -2227,109 +2183,102 @@ msgid ""
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
+"Vietyjen teksti/LaTeX/SGML tiedostojen maksimirivinpituus. Jos 0,"
+"kappaleet tulostetaan yhten‰ rivin‰; jos > 0, kappaleiden v‰lill‰"
+"on tyhj‰ rivi."
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:82
 msgid "Output &line length:"
 msgstr "Tuotettava rivi&pituus:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:92
-#, fuzzy
 msgid "External app for formating tables in plain text output"
-msgstr "Erillinen ohjelma taulukoiden muotoilemista ASCII-muotoon"
+msgstr "Erillinen ohjelma taulukoiden muotoilemista perustekstimuotoon"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:25
-#, fuzzy
 msgid "Printer Command Options"
-msgstr "Komentovalinnat"
+msgstr "Tulostuskomennon optiot"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:66
 msgid "Extension to be used when printing to file."
-msgstr ""
+msgstr "Tiedostolle tulostamisen tiedostop‰‰te."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:69
 msgid "File ex&tension:"
 msgstr "Tiedosto&p‰‰te:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:82
-#, fuzzy
 msgid "Option used to print to a file."
 msgstr "Valitsin, jolla tulostusohjelma saadaan tulostamaan tiedostoon."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:85
-#, fuzzy
 msgid "Print to &file:"
 msgstr "Tulosta tiedostoon"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:95
-#, fuzzy
 msgid "Option used to print to non-default printer."
 msgstr ""
 "Valitsin, joka m‰‰r‰‰ tulostusohjelman tulostamaan tietyll‰ tulostimella."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
-#, fuzzy
 msgid "Set p&rinter:"
 msgstr "Kohdetul&ostin:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:111
 msgid "Option used with spool command to set printer."
-msgstr ""
+msgstr "Jonotuskomennon optio jolla valitaan tulostin."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
-#, fuzzy
 msgid "Spool pr&inter:"
-msgstr "&Jonon etuliite:"
+msgstr "&Jonotuskirjoitin:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:127
 msgid ""
 "Setting causes printer command to print to file and then use this actually "
 "to print."
-msgstr ""
+msgstr "Jos t‰m‰ on p‰‰ll‰, tulostetaan ensin tiedostoon ja sitten "
+"tulostetaan oikeasti."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:133
 msgid "Spool &command:"
-msgstr "&Jonokomento:"
+msgstr "&Jonotuskomento:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:150
-#, fuzzy
 msgid "Option used to reverse page order."
 msgstr "Tulosta k‰‰nteisess‰ j‰rjestyksess‰"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
-#, fuzzy
 msgid "Re&verse pages:"
-msgstr "&K‰‰nteinen:"
+msgstr "&K‰‰nn‰ sivuj‰rjestys:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:166
 msgid "Lan&dscape:"
 msgstr "&Vaakasuuntainen:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:179
-#, fuzzy
 msgid "Number of Co&pies:"
 msgstr "Kopioiden m‰‰r‰"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:189
-#, fuzzy
 msgid "Option used to set number of copies."
 msgstr "Valitsin, jolla asetetaan tulostettavien kopioiden m‰‰r‰."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:196
 #, fuzzy
 msgid "Option used to print a range of pages."
-msgstr "Valitsin, jolla saadaan vain parittomat sivut tulostumaan."
+msgstr "Valitsin, jolla saadaan m‰‰r‰ per‰kk‰isi‰ sivuja tulostumaan."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:203
 msgid "Co&llated:"
-msgstr "&J‰rjestetty:"
+msgstr "Lajiteltu sidontaj‰rjestykseen:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:213
 msgid "Pa&ge range:"
-msgstr "&Sivualue:"
+msgstr "&Sivut v‰lill‰:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:223
 msgid "Option used to collate multiple copies."
-msgstr ""
+msgstr "T‰ll‰ saadaan useita kopioita sidontaj‰rjestykseen."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:230
 msgid "&Odd pages:"
@@ -2349,16 +2298,15 @@ msgstr "Paperik&oko:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
+msgstr "Mahdolliset muut asetukset tulostinkomennon kanssa k‰ytett‰viksi."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
 msgstr "Lis&‰asetukset:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:308
-#, fuzzy
 msgid "Customizes output to a given printer. Expert option."
-msgstr "Syˆt‰ tuloste annetulle tulostimelle"
+msgstr "Syˆt‰ tuloste annetulle tulostimelle. Vain osaajille."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid ""
@@ -2366,16 +2314,16 @@ msgid ""
 "printer command and you have config.<printer> files installed for all your "
 "printers."
 msgstr ""
+"Tavallisesti vain p‰‰ll‰, jos tulostat dvips-komennon avulla ja olet"
+"installoinut config.<tulostin> -tiedostot kaikille tulostimillesi."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:314
-#, fuzzy
 msgid "Adapt output to printer"
-msgstr "Syˆt‰ tuloste tulostimelle"
+msgstr "Sovella tuloste tulostimelle"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:329
-#, fuzzy
 msgid "Default &printer:"
-msgstr "Oletuspaperi&koko:"
+msgstr "Oletustulostin:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:339
 msgid "Name of the default printer"
@@ -2446,13 +2394,12 @@ msgid "Large:"
 msgstr "Suuri:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:36
-#, fuzzy
 msgid "Spellchec&ker executable:"
-msgstr "&Oikolukuohjelma:"
+msgstr "&Oikolukuohjelman bin‰‰ri:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:65
 msgid "Override the language used for the spellchecker"
-msgstr ""
+msgstr "Pakota toinen kieli oikolukuohjelman k‰yttˆˆn"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:72
 msgid "Al&ternative language:"
@@ -2460,10 +2407,9 @@ msgstr "&Vaihtoehtoinen kieli:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:89
 msgid "Escape cha&racters:"
-msgstr "L&is‰merkit:"
+msgstr "Poikkeamamerkit:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:115
-#, fuzzy
 msgid "Specify a personal dictionary file other than the default"
 msgstr ""
 "Anna vaihtoehtoinen henkilˆkohtainen sanasto. Esimerkiksi \".ispell_english"
@@ -2475,7 +2421,7 @@ msgstr "Oma sa&nasto:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:153
 msgid "Accept words such as \"diskdrive\""
-msgstr ""
+msgstr "Hyv‰ksi sanat tyyppi \"saippuakauppias\""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:156
 msgid "Accept compound &words"
@@ -2487,10 +2433,9 @@ msgstr "K‰yt‰ syˆtteen &merkistˆ‰"
 
 #: src/frontends/qt4/ui/PrefUi.ui:33
 msgid "Scrolling"
-msgstr ""
+msgstr "Vieritys"
 
 #: src/frontends/qt4/ui/PrefUi.ui:48
-#, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "Koh&distin seuraa vierityspalkkia"
 
@@ -2507,32 +2452,28 @@ msgid "&Bind file:"
 msgstr "&N‰pp‰intiedosto:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:132
-#, fuzzy
 msgid "Session"
-msgstr "Versio"
+msgstr "Istunto"
 
 #: src/frontends/qt4/ui/PrefUi.ui:144
-#, fuzzy
 msgid "Save/restore window size, or use fixed size"
-msgstr "Nykyisen rivin sijainti"
+msgstr "Muistaa ikkunan koko tai k‰yt‰ vakiokoko"
 
 #: src/frontends/qt4/ui/PrefUi.ui:167
 msgid "Load opened files from last session"
-msgstr ""
+msgstr "Lataa edellisen istunnun avoimet tiedostot"
 
 #: src/frontends/qt4/ui/PrefUi.ui:174
-#, fuzzy
 msgid "Restore cursor positions"
-msgstr "Nykyisen rivin sijainti"
+msgstr "Palauta kohdistinpaikat"
 
 #: src/frontends/qt4/ui/PrefUi.ui:184
 msgid "Restore to cursor position when the file was last closed"
-msgstr ""
+msgstr "Muista kohdistinpaikka kun tiedosto viimeksi suljettiin"
 
 #: src/frontends/qt4/ui/PrefUi.ui:187
-#, fuzzy
 msgid "Save/restore window position"
-msgstr "Nykyisen rivin sijainti"
+msgstr "Muista ikkunan sijainti"
 
 #: src/frontends/qt4/ui/PrefUi.ui:221
 #: src/frontends/controllers/ControlBox.cpp:83 src/frontends/qt4/QBox.cpp:292
@@ -2543,7 +2484,6 @@ msgstr "Leveys"
 #: src/frontends/qt4/ui/PrefUi.ui:247
 #: src/frontends/controllers/ControlBox.cpp:80 src/frontends/qt4/QBox.cpp:283
 #: src/frontends/qt4/QBox.cpp:317
-#, fuzzy
 msgid "Height"
 msgstr "&Korkeus"
 
@@ -2582,7 +2522,7 @@ msgstr "Sivu, josta tulostus alkaa"
 
 #: src/frontends/qt4/ui/PrintUi.ui:69
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr ""
+msgstr "Sivu, johon tulostus loppuu"
 
 #: src/frontends/qt4/ui/PrintUi.ui:82
 msgid "Page number to print to"
@@ -2594,7 +2534,7 @@ msgstr "Tulosta joka sivu"
 
 #: src/frontends/qt4/ui/PrintUi.ui:94
 msgid "Fro&m"
-msgstr "Si&vut:"
+msgstr "Sivusta"
 
 #: src/frontends/qt4/ui/PrintUi.ui:107
 msgid "&All"
@@ -2626,11 +2566,11 @@ msgstr "Kopioiden m‰‰r‰"
 
 #: src/frontends/qt4/ui/PrintUi.ui:180
 msgid "Collate copies"
-msgstr "J‰rjest‰ kopiot"
+msgstr "Kopiot sidontaj‰rjestykseen"
 
 #: src/frontends/qt4/ui/PrintUi.ui:183
 msgid "&Collate"
-msgstr "J‰&rjest‰"
+msgstr "Sidontaj‰rjestykseen"
 
 #: src/frontends/qt4/ui/PrintUi.ui:233
 msgid "&Print"
@@ -2662,7 +2602,6 @@ msgid "La&bels in:"
 msgstr "Otsikoitu kappale"
 
 #: src/frontends/qt4/ui/RefUi.ui:166
-#, fuzzy
 msgid "Cross-reference as it appears in output"
 msgstr "Viite sellaisena kuin se on tulosteessa"
 
@@ -2671,9 +2610,8 @@ msgid "<reference>"
 msgstr "<viite>"
 
 #: src/frontends/qt4/ui/RefUi.ui:175
-#, fuzzy
 msgid "(<reference>)"
-msgstr "<viite>"
+msgstr "(<viite>)"
 
 #: src/frontends/qt4/ui/RefUi.ui:180
 msgid "<page>"
@@ -2696,7 +2634,6 @@ msgid "Sort labels in alphabetical order"
 msgstr "J‰rjest‰ nimikkeet aakkosj‰rjestykseen"
 
 #: src/frontends/qt4/ui/RefUi.ui:209
-#, fuzzy
 msgid "&Sort"
 msgstr "J‰rjest‰"
 
@@ -2705,12 +2642,10 @@ msgid "Update the label list"
 msgstr "P‰ivit‰ nimikeluettelo"
 
 #: src/frontends/qt4/ui/RefUi.ui:250
-#, fuzzy
 msgid "Jump to the label"
 msgstr "Siirry nimikkeeseen"
 
 #: src/frontends/qt4/ui/RefUi.ui:253 src/frontends/qt4/QRef.cpp:293
-#, fuzzy
 msgid "&Go to Label"
 msgstr "Siirry nimikkeeseen"
 
@@ -2782,7 +2717,6 @@ msgid "&Ignore"
 msgstr "&Ohita"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:78
-#, fuzzy
 msgid "Ignore this word throughout this session"
 msgstr "Hyv‰ksy sana t‰ss‰ istunnossa"
 
@@ -2840,28 +2774,24 @@ msgid "Justified"
 msgstr "Tasattu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:182
-#, fuzzy
 msgid "Rotate the table by 90 degrees"
-msgstr "Kierr‰ taulukkoa 90∞"
+msgstr "Kierr‰ taulukkoa 90 astetta"
 
 #: src/frontends/qt4/ui/TabularUi.ui:185
-#, fuzzy
 msgid "&Rotate table 90 degrees"
-msgstr "Kierr‰ taulukkoa 90∞"
+msgstr "Kierr‰ taulukkoa 90 astetta"
 
 #: src/frontends/qt4/ui/TabularUi.ui:192
-#, fuzzy
 msgid "Rotate this cell by 90 degrees"
-msgstr "Kierr‰ t‰t‰ solua 90∞"
+msgstr "Kierr‰ t‰t‰ solua 90 astetta"
 
 #: src/frontends/qt4/ui/TabularUi.ui:195
-#, fuzzy
 msgid "Rotate &cell 90 degrees"
-msgstr "Kierr‰ t‰t‰ solua 90∞"
+msgstr "Kierr‰ t‰t‰ solua 90 astetta"
 
 #: src/frontends/qt4/ui/TabularUi.ui:202
 msgid "Merge cells"
-msgstr "Yhdist‰ sarakkeet"
+msgstr "Yhdist‰ solut"
 
 #: src/frontends/qt4/ui/TabularUi.ui:205
 msgid "&Multicolumn"
@@ -2884,19 +2814,16 @@ msgid "All Borders"
 msgstr "Kaikki reunukset"
 
 #: src/frontends/qt4/ui/TabularUi.ui:262
-#, fuzzy
 msgid "Set all borders of the current (selected) cell(s)"
-msgstr "Palauta nykyisen luokan oletusasetukset"
+msgstr "Valittujen solujen kaikki reunukset p‰‰lle"
 
 #: src/frontends/qt4/ui/TabularUi.ui:265
-#, fuzzy
 msgid "&Set"
-msgstr "Ta&llenna"
+msgstr "P‰‰lle"
 
 #: src/frontends/qt4/ui/TabularUi.ui:272
-#, fuzzy
 msgid "Unset all borders of the current (selected) cell(s)"
-msgstr "Palauta nykyisen luokan oletusasetukset"
+msgstr "Valittujen solujen kaikki reunukset pois p‰‰lt‰"
 
 #: src/frontends/qt4/ui/TabularUi.ui:275
 msgid "C&lear"
@@ -2904,19 +2831,17 @@ msgstr "&Tyhjenn‰"
 
 #: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr ""
+msgstr "K‰yt‰ ns. booktabs -reunustyyli (ei pystyreunuksia)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:316
-#, fuzzy
 msgid "Fo&rmal"
-msgstr "Tavallinen"
+msgstr "booktabs-tyyli"
 
 #: src/frontends/qt4/ui/TabularUi.ui:326
 msgid "Use default (grid-like) border style"
-msgstr ""
+msgstr "K‰yt‰ oletus (hila) -reunustyyli"
 
 #: src/frontends/qt4/ui/TabularUi.ui:329
-#, fuzzy
 msgid "De&fault"
 msgstr "Oletus"
 
@@ -2925,27 +2850,24 @@ msgid "Set Borders"
 msgstr "Aseta reunukset"
 
 #: src/frontends/qt4/ui/TabularUi.ui:660
-#, fuzzy
 msgid "Set borders of the current (selected) cell(s)"
-msgstr "Palauta nykyisen luokan oletusasetukset"
+msgstr "Valittujen solujen reunukset p‰‰lle"
 
 #: src/frontends/qt4/ui/TabularUi.ui:673
-#, fuzzy
 msgid "Additional Space"
-msgstr "LaTeX-lis‰asetukset"
+msgstr "Lis‰‰ valkoista"
 
 #: src/frontends/qt4/ui/TabularUi.ui:685
 msgid "T&op of row:"
-msgstr ""
+msgstr "Rivin yl‰reuna"
 
 #: src/frontends/qt4/ui/TabularUi.ui:745
-#, fuzzy
 msgid "Botto&m of row:"
-msgstr "Sivun &alaosaan"
+msgstr "Rivin alareuna"
 
 #: src/frontends/qt4/ui/TabularUi.ui:758
 msgid "Bet&ween rows:"
-msgstr ""
+msgstr "Rivien v‰lill‰"
 
 #: src/frontends/qt4/ui/TabularUi.ui:796
 msgid "&Longtable"
@@ -12890,34 +12812,28 @@ msgid ""
 msgstr "Ei tietoa, miten muuntaa muodosta %1$s muotoon %2$s"
 
 #: src/Converter.cpp:431 src/Format.cpp:320 src/Format.cpp:379
-#, fuzzy
 msgid "Executing command: "
 msgstr "Komento on k‰ynniss‰:"
 
 #: src/Converter.cpp:473
-#, fuzzy
 msgid "Build errors"
-msgstr "K‰‰nnˆsohjelma"
+msgstr "K‰‰nnˆsvirheet"
 
 #: src/Converter.cpp:474
-#, fuzzy
 msgid "There were errors during the build process."
 msgstr "K‰‰nnˆsprosessin aikana tapahtui virheit‰."
 
 #: src/Converter.cpp:479 src/Format.cpp:327 src/Format.cpp:386
-#, fuzzy, c-format
 msgid "An error occurred whilst running %1$s"
-msgstr "Muunnoskriptin suorittaminen ep‰onnistui."
+msgstr "Muunnosskriptin %1$s suorittaminen ep‰onnistui."
 
 #: src/Converter.cpp:502
-#, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
-msgstr "V‰liaikaisen hakemiston luominen kohteeseen\n"
+msgstr "V‰liaikaisen hakemiston siiro paikasta %1$s paikkaan %1$s ep‰onnistui."
 
 #: src/Converter.cpp:548
-#, fuzzy, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
-msgstr "V‰liaikaisen hakemiston luominen kohteeseen\n"
+msgstr "V‰liaikaisen tiedoston kopiointi paikasta %1$s paikkaan %2$s."
 
 #: src/Converter.cpp:549
 #, fuzzy, c-format
