@@ -664,7 +664,8 @@ void LyX::restoreGuiSession()
 	// FIXME: Switch to the last loaded Buffer. This must not be the first one
 	// because the Buffer won't be connected in this case. The correct solution
 	// would be to avoid the manual connection of the current Buffer in LyXView.
-	view->setBuffer(pimpl_->buffer_list_.last());
+	if (!pimpl_->buffer_list_.empty())
+		view->setBuffer(pimpl_->buffer_list_.last());
 }
 
 
