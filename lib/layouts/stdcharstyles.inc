@@ -2,7 +2,7 @@
 # Author : Martin vermeer <amrtin.vermeer@hut.fi>
 # Character Styles definition
 
-Format 4
+Format 5
 InsetLayout CharStyle:Noun
 	LyxType               charstyle
 	LabelString           noun
@@ -11,6 +11,9 @@ InsetLayout CharStyle:Noun
 	Font
 	  Shape               Smallcaps
 	EndFont
+	Preamble
+	\newcommand{\noun}[1]{\textsc{#1}}
+	EndPreamble
 End
 
 

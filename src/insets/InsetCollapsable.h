@@ -133,6 +133,8 @@ public:
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
+	///
+	void validate(LaTeXFeatures &) const;
 
 protected:
 	///

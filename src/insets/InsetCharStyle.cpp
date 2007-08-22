@@ -22,7 +22,6 @@
 #include "FuncStatus.h"
 #include "Cursor.h"
 #include "gettext.h"
-#include "LaTeXFeatures.h"
 #include "Color.h"
 #include "Lexer.h"
 #include "Text.h"
@@ -239,14 +238,6 @@ int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
 void InsetCharStyle::textString(Buffer const & buf, odocstream & os) const
 {
 	os << paragraphs().begin()->asString(buf, true);
-}
-
-
-void InsetCharStyle::validate(LaTeXFeatures & features) const
-{
-	// Force inclusion of preamble snippet in layout file
-	features.require(layout_.latexname);
-	InsetText::validate(features);
 }
 
 

@@ -76,8 +76,6 @@ public:
 		    OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void textString(Buffer const &, odocstream &) const;
-	///
-	void validate(LaTeXFeatures &) const;
 
 	///
 	InsetCharStyleParams const & params() const { return params_; }

@@ -24,6 +24,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "Color.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "FuncRequest.h"
 #include "MetricsInfo.h"
@@ -648,6 +649,14 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 			i += 4;
 		}
 	return i;
+}
+
+
+void InsetCollapsable::validate(LaTeXFeatures & features) const
+{
+	// Force inclusion of preamble snippet in layout file
+	features.addPreambleSnippet(layout_.preamble);
+	InsetText::validate(features);
 }
 
 
