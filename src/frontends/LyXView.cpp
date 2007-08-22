@@ -159,6 +159,9 @@ Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		}
 	}
 
+	if (tolastfiles)
+		LyX::ref().session().lastFiles().add(filename);
+
 	busy(false);
 	return newBuffer;
 }
