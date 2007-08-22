@@ -111,13 +111,8 @@ Buffer const * LyXView::buffer() const
 
 void LyXView::setBuffer(Buffer * newBuffer)
 {
+	BOOST_ASSERT(newBuffer);
 	busy(true);
-
-	Buffer * oldBuffer = buffer();
-	if (oldBuffer == newBuffer) {
-		busy(false);
-		return;
-	}
 
 	WorkArea * wa = workArea(*newBuffer);
 	if (wa == 0) {

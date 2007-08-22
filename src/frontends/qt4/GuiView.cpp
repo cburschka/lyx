@@ -892,7 +892,12 @@ void GuiView::setCurrentWorkArea(WorkArea * work_area)
 
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(work_area);
 	BOOST_ASSERT(wa);
-	d.tab_widget_->setCurrentWidget(wa);
+	if (wa != d.tab_widget_->currentWidget())
+		// Switch to the work area.
+		d.tab_widget_->setCurrentWidget(wa);
+	else
+		// Make sure the work area is up to date.
+		currentTabChanged(d.tab_widget_->currentIndex());
 	wa->setFocus();
 }
 
