@@ -83,7 +83,7 @@ Building with GCC/Linux
 ------------------------
 
     * create a build directory, e.g. .../trunk/../build
-    * call in the build directory 'cmake ..\trunk\development\cmake'
+    * call in the build directory 'cmake ../trunk/development/cmake'
     * compiler and linker options could be suppressd by '-Dquiet=1' 
 
 
