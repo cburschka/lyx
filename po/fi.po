@@ -1365,7 +1365,6 @@ msgid "Program Listing"
 msgstr "Ohjelmalistaus"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:336
-#, fuzzy
 msgid "Edit the file"
 msgstr "Lataa tiedosto"
 
@@ -1394,9 +1393,8 @@ msgid "&Quote Style:"
 msgstr "Lainausmerkkien tyyli"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetListings.cpp:251
-#, fuzzy
 msgid "Listing"
-msgstr "Lista"
+msgstr "Listaus"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:43
 msgid "&Main Settings"
@@ -1576,7 +1574,6 @@ msgid "Use the margin settings provided by the document class"
 msgstr "Käytä dokumenttiluokan antamia marginaaliasetuksia"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
-#, fuzzy
 msgid "&Default Margins"
 msgstr "&Oletusmarginaalit"
 
@@ -2265,7 +2262,6 @@ msgid "Option used to set number of copies."
 msgstr "Valitsin, jolla asetetaan tulostettavien kopioiden määrä."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:196
-#, fuzzy
 msgid "Option used to print a range of pages."
 msgstr "Valitsin, jolla saadaan määrä peräkkäisiä sivuja tulostumaan."
 
@@ -2929,18 +2925,16 @@ msgid "on"
 msgstr "päällä"
 
 #: src/frontends/qt4/ui/TabularUi.ui:915
-#, fuzzy
 msgid "This row is the header of the first page"
-msgstr "Käänteinen tulostusjärjestys."
+msgstr "Tämä rivi on ensimmäisen sivun sivuotsikko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:928
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
+msgstr "Toista tämä rivi alaotsikkona kaikilla sivuilla paitsi viimeinen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:938
-#, fuzzy
 msgid "This row is the footer of the last page"
-msgstr "Käänteinen tulostusjärjestys."
+msgstr "Tämä rivi on viimeisen sivun alaotsikko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:951 src/frontends/qt4/ui/TabularUi.ui:958
 #: src/frontends/qt4/ui/TabularUi.ui:965 src/frontends/qt4/ui/TabularUi.ui:972
@@ -2951,9 +2945,8 @@ msgid "double"
 msgstr "kaksinkertainen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1007
-#, fuzzy
 msgid "Don't output the last footer"
-msgstr "Ei voinut muotoilla "
+msgstr "Älä tulosta viimeinen alaotsikko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1010
 #: src/frontends/qt4/ui/TabularUi.ui:1020
@@ -2961,9 +2954,8 @@ msgid "is empty"
 msgstr "on tyhjä"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1017
-#, fuzzy
 msgid "Don't output the first header"
-msgstr "Syötä tuloste tulostimelle"
+msgstr "Älä tulosta ensimmäinen yläotsikko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1030
 msgid "Select for tables that span multiple pages"
@@ -3033,47 +3025,40 @@ msgid "Show &path"
 msgstr "Näytä p&olku"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:25
-#, fuzzy
 msgid "Separate Paragraphs With"
-msgstr "Kappaleina|K"
+msgstr "Käytä kappale-erottimina"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:101
-#, fuzzy
 msgid "&Vertical space"
 msgstr "Pystyväli:|#P"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:108
-#, fuzzy
 msgid "Indent consecutive paragraphs"
-msgstr "Valitse seuraava kappale"
+msgstr "Sisennä peräkkäisert kappaleet"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:111
-#, fuzzy
 msgid "&Indentation"
 msgstr "Sise&nnys"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:121
-#, fuzzy
 msgid "Spacing"
-msgstr "R&iviväli"
+msgstr "Väli"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:149
 msgid "&Line spacing:"
 msgstr "&Rivivälit:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:191
-#, fuzzy
 msgid "Format text into two columns"
-msgstr "Asiakirja muotoutuu..."
+msgstr "Muotoile teksti kahdeksi palstaksi"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:194
 msgid "Two-&column document"
 msgstr "Kaksi&palstainen asiakirja"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
-#, fuzzy
 msgid "Listing settings"
-msgstr "Tulostusasetukset"
+msgstr "Listauksen asetukset"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
@@ -3102,41 +3087,41 @@ msgstr "Korvaa kohta valinnalla"
 
 #: src/frontends/qt4/ui/TocUi.ui:48
 msgid "Update navigation tree"
-msgstr ""
+msgstr "Päivitä navigointipuu"
 
 #: src/frontends/qt4/ui/TocUi.ui:51 src/frontends/qt4/ui/TocUi.ui:83
 #: src/frontends/qt4/ui/TocUi.ui:102 src/frontends/qt4/ui/TocUi.ui:121
 #: src/frontends/qt4/ui/TocUi.ui:140
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/frontends/qt4/ui/TocUi.ui:80
 msgid "Decrease nesting depth of selected item"
-msgstr ""
+msgstr "Vähennä valitun kohteen sisäkkäisyyssyvyys"
 
 #: src/frontends/qt4/ui/TocUi.ui:99
 msgid "Increase nesting depth of selected item"
-msgstr ""
+msgstr "Lisää valitun kohteen sisäkkäisyyssyvyys"
 
 #: src/frontends/qt4/ui/TocUi.ui:118
-#, fuzzy
 msgid "Move selected item down by one"
-msgstr "Siirrä valittua lähdeviitettä alas"
+msgstr "Siirrä valittua kohtaa alas yhdellä"
 
 #: src/frontends/qt4/ui/TocUi.ui:137
-#, fuzzy
 msgid "Move selected item up by one"
-msgstr "Siirrä valittua lähdeviitettä ylös"
+msgstr "Siirrä valittua kohtaa ylös yhdellä"
 
 #: src/frontends/qt4/ui/TocUi.ui:166
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
 msgstr ""
+"Vaihda sisällysluottelon, kuvien luentellon tai taulukoiden luettelon "
+"välillä, mikäli olemassa"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
-msgstr ""
+msgstr "Säätä navigointipuun syvyyttä"
 
 #: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
 #: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:187
@@ -3161,7 +3146,6 @@ msgid "&Generate hyperlink"
 msgstr "&Luo hyperlinkki"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:28
-#, fuzzy
 msgid "&Spacing:"
 msgstr "R&iviväli"
 
@@ -3170,22 +3154,20 @@ msgid "&Value:"
 msgstr "&Arvo:"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:51
-#, fuzzy
 msgid "&Protect:"
-msgstr "P&ikanäppäin:"
+msgstr "Suojaa:"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:61
-#, fuzzy
 msgid "Insert the spacing even after a page break"
-msgstr "Lisää yhdyskirjasinkatko"
+msgstr "Lisää pystyväli jopa sivunvaihdon jälkeen"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:74
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr ""
+msgstr "Räätälöity arvo. Tarvitsee \"Custom\" -tyyppistä väliä."
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Supported spacing types"
-msgstr ""
+msgstr "Tuetut välityypit"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:85
 msgid "DefSkip"
@@ -3209,11 +3191,11 @@ msgstr "Pystytäyttö"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:36
 msgid "Complete source"
-msgstr ""
+msgstr "Koko lähdekoodi"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:43
 msgid "Automatic update"
-msgstr ""
+msgstr "Automaattinen päivitys"
 
 #: src/frontends/qt4/ui/WrapUi.ui:53
 msgid "Default (outer)"
@@ -3270,9 +3252,8 @@ msgid "Proof"
 msgstr "Todistus"
 
 #: lib/layouts/IEEEtran.layout:67 lib/layouts/heb-article.layout:110
-#, fuzzy
 msgid "Proof:"
-msgstr "Todistus"
+msgstr "Todistus:"
 
 #: lib/layouts/IEEEtran.layout:72 lib/layouts/amsart-plain.layout:26
 #: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:962
@@ -3286,9 +3267,8 @@ msgid "Theorem"
 msgstr "Lause"
 
 #: lib/layouts/IEEEtran.layout:75
-#, fuzzy
 msgid "Theorem #:"
-msgstr "Lause"
+msgstr "Lause #:"
 
 #: lib/layouts/IEEEtran.layout:82 lib/layouts/amsart-plain.layout:37
 #: lib/layouts/amsart-seq.layout:149 lib/layouts/elsart.layout:318
@@ -3301,9 +3281,8 @@ msgid "Lemma"
 msgstr "Lemma"
 
 #: lib/layouts/IEEEtran.layout:85
-#, fuzzy
 msgid "Lemma #:"
-msgstr "Lemma"
+msgstr "Lemma #:"
 
 #: lib/layouts/IEEEtran.layout:92 lib/layouts/amsart-plain.layout:31
 #: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:893
@@ -3317,9 +3296,8 @@ msgid "Corollary"
 msgstr "Seurauslause"
 
 #: lib/layouts/IEEEtran.layout:95
-#, fuzzy
 msgid "Corollary #:"
-msgstr "Seurauslause"
+msgstr "Seurauslause #:"
 
 #: lib/layouts/IEEEtran.layout:102 lib/layouts/amsart-plain.layout:43
 #: lib/layouts/amsart-seq.layout:155 lib/layouts/elsart.layout:332
@@ -3332,9 +3310,8 @@ msgid "Proposition"
 msgstr "Väittämä"
 
 #: lib/layouts/IEEEtran.layout:105
-#, fuzzy
 msgid "Proposition #:"
-msgstr "Väittämä"
+msgstr "Väittämä #:"
 
 #: lib/layouts/IEEEtran.layout:112 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
@@ -3346,9 +3323,8 @@ msgid "Conjecture"
 msgstr "Otaksuma"
 
 #: lib/layouts/IEEEtran.layout:115
-#, fuzzy
 msgid "Conjecture #:"
-msgstr "Otaksuma"
+msgstr "Otaksuma #:"
 
 #: lib/layouts/IEEEtran.layout:122 lib/layouts/amsart-plain.layout:55
 #: lib/layouts/amsart-seq.layout:167 lib/layouts/elsart.layout:339
@@ -3358,9 +3334,8 @@ msgid "Criterion"
 msgstr "Kriteeri"
 
 #: lib/layouts/IEEEtran.layout:125
-#, fuzzy
 msgid "Criterion #:"
-msgstr "Kriteeri"
+msgstr "Kriteeri #:"
 
 #: lib/layouts/IEEEtran.layout:132 lib/layouts/amsart-plain.layout:67
 #: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:950
@@ -3370,9 +3345,8 @@ msgid "Fact"
 msgstr "Fakta"
 
 #: lib/layouts/IEEEtran.layout:135
-#, fuzzy
 msgid "Fact #:"
-msgstr "Fakta"
+msgstr "Fakta #:"
 
 #: lib/layouts/IEEEtran.layout:142 lib/layouts/amsart-plain.layout:73
 #: lib/layouts/amsart-seq.layout:185 lib/layouts/amsmaths-plain.inc:113
@@ -3381,9 +3355,8 @@ msgid "Axiom"
 msgstr "Aksiooma"
 
 #: lib/layouts/IEEEtran.layout:145
-#, fuzzy
 msgid "Axiom #:"
-msgstr "Aksiooma"
+msgstr "Aksiooma #:"
 
 #: lib/layouts/IEEEtran.layout:152 lib/layouts/amsart-plain.layout:79
 #: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:920
@@ -3397,9 +3370,8 @@ msgid "Definition"
 msgstr "Määritelmä"
 
 #: lib/layouts/IEEEtran.layout:155
-#, fuzzy
 msgid "Definition #:"
-msgstr "Määritelmä"
+msgstr "Määritelmä #:"
 
 #: lib/layouts/IEEEtran.layout:162 lib/layouts/amsart-plain.layout:85
 #: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:932
@@ -3412,9 +3384,8 @@ msgid "Example"
 msgstr "Esimerkki"
 
 #: lib/layouts/IEEEtran.layout:165
-#, fuzzy
 msgid "Example #:"
-msgstr "Esimerkki"
+msgstr "Esimerkki #:"
 
 #: lib/layouts/IEEEtran.layout:172 lib/layouts/amsart-plain.layout:91
 #: lib/layouts/amsart-seq.layout:203 lib/layouts/amsmaths-plain.inc:143
@@ -3423,9 +3394,8 @@ msgid "Condition"
 msgstr "Ehto"
 
 #: lib/layouts/IEEEtran.layout:175
-#, fuzzy
 msgid "Condition #:"
-msgstr "Ehto"
+msgstr "Ehto #:"
 
 #: lib/layouts/IEEEtran.layout:182 lib/layouts/amsart-plain.layout:97
 #: lib/layouts/amsart-seq.layout:209 lib/layouts/elsart.layout:381
@@ -3436,9 +3406,8 @@ msgid "Problem"
 msgstr "Ongelma"
 
 #: lib/layouts/IEEEtran.layout:185
-#, fuzzy
 msgid "Problem #:"
-msgstr "Ongelma"
+msgstr "Ongelma #:"
 
 #: lib/layouts/IEEEtran.layout:192 lib/layouts/amsart-plain.layout:103
 #: lib/layouts/amsart-seq.layout:215 lib/layouts/llncs.layout:347
@@ -3448,9 +3417,8 @@ msgid "Exercise"
 msgstr "Harjoitus"
 
 #: lib/layouts/IEEEtran.layout:195
-#, fuzzy
 msgid "Exercise #:"
-msgstr "Harjoitus"
+msgstr "Harjoitus #:"
 
 #: lib/layouts/IEEEtran.layout:202 lib/layouts/amsart-plain.layout:109
 #: lib/layouts/amsart-seq.layout:221 lib/layouts/elsart.layout:388
@@ -3462,9 +3430,8 @@ msgid "Remark"
 msgstr "Huomautus"
 
 #: lib/layouts/IEEEtran.layout:205
-#, fuzzy
 msgid "Remark #:"
-msgstr "Huomautus"
+msgstr "Huomautus #:"
 
 #: lib/layouts/IEEEtran.layout:212 lib/layouts/amsart-plain.layout:115
 #: lib/layouts/amsart-seq.layout:227 lib/layouts/elsart.layout:402
@@ -3476,9 +3443,8 @@ msgid "Claim"
 msgstr "Väite"
 
 #: lib/layouts/IEEEtran.layout:215
-#, fuzzy
 msgid "Claim #:"
-msgstr "Väite"
+msgstr "Väite #:"
 
 #: lib/layouts/IEEEtran.layout:222 lib/layouts/amsart-plain.layout:121
 #: lib/layouts/amsart-seq.layout:233 lib/layouts/apa.layout:213
@@ -3491,9 +3457,8 @@ msgid "Note"
 msgstr "Muistiinpano"
 
 #: lib/layouts/IEEEtran.layout:225
-#, fuzzy
 msgid "Note #:"
-msgstr "Muistiinpano"
+msgstr "Muistiinpano #:"
 
 #: lib/layouts/IEEEtran.layout:232 lib/layouts/amsart-plain.layout:127
 #: lib/layouts/amsart-seq.layout:239 lib/layouts/ijmpc.layout:195
@@ -3503,9 +3468,8 @@ msgid "Notation"
 msgstr "Merkintätapa"
 
 #: lib/layouts/IEEEtran.layout:235
-#, fuzzy
 msgid "Notation #:"
-msgstr "Merkintätapa"
+msgstr "Merkintätapa #:"
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/amsart-plain.layout:145
 #: lib/layouts/amsart-seq.layout:257 lib/layouts/elsart.layout:417
@@ -3515,9 +3479,8 @@ msgid "Case"
 msgstr "Tapaus"
 
 #: lib/layouts/IEEEtran.layout:245
-#, fuzzy
 msgid "Case #:"
-msgstr "Tapaus"
+msgstr "Tapaus #:"
 
 #: lib/layouts/IEEEtran.layout:270 lib/layouts/aa.layout:37
 #: lib/layouts/aa.layout:216 lib/layouts/aapaper.layout:64
@@ -3626,9 +3589,8 @@ msgid "Abstract"
 msgstr "Tiivistelmä"
 
 #: lib/layouts/IEEEtran.layout:335
-#, fuzzy
 msgid "Abstract---"
-msgstr "Tiivistelmä"
+msgstr "Tiivistelmä---"
 
 #: lib/layouts/IEEEtran.layout:349 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
@@ -3642,9 +3604,8 @@ msgid "Keywords"
 msgstr "Avainsanat"
 
 #: lib/layouts/IEEEtran.layout:360
-#, fuzzy
 msgid "Index Terms---"
-msgstr "Hakemistoviite"
+msgstr "Hakemistoviitteet---"
 
 #: lib/layouts/IEEEtran.layout:372 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
@@ -3685,9 +3646,8 @@ msgid "Biography"
 msgstr "Elämäkerta"
 
 #: lib/layouts/IEEEtran.layout:422
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Elämäkerta"
+msgstr "ElämäkertaIlmanKuvaa"
 
 #: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
 msgid "Footernote"
@@ -3695,7 +3655,7 @@ msgstr "Alareunamuistiinpano"
 
 #: lib/layouts/IEEEtran.layout:465
 msgid "MarkBoth"
-msgstr "Merkitse molemmat"
+msgstr "MerkitseMolemmat"
 
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
@@ -3836,17 +3796,15 @@ msgid "Acknowledgement"
 msgstr "Kiitos"
 
 #: lib/layouts/aa.layout:153 lib/layouts/aapaper.inc:74
-#, fuzzy
 msgid "Offprint Requests to:"
-msgstr "Eripainokset"
+msgstr "Eripainokset pyydetään:"
 
 #: lib/layouts/aa.layout:176
 msgid "Correspondence to:"
-msgstr ""
+msgstr "Kirjeenvaihto:"
 
 #: lib/layouts/aa.layout:202 lib/layouts/egs.layout:527
 #: lib/layouts/svjour.inc:308
-#, fuzzy
 msgid "Acknowledgements."
 msgstr "Kiitokset"
 
@@ -3948,49 +3906,40 @@ msgid "Dataset"
 msgstr "Datajoukko"
 
 #: lib/layouts/aastex.layout:293
-#, fuzzy
 msgid "Subject headings:"
-msgstr "yläotsikot"
+msgstr "Aiheotsikot:"
 
 #: lib/layouts/aastex.layout:336
-#, fuzzy
 msgid "[Acknowledgements]"
-msgstr "Kiitokset"
+msgstr "[Kiitokset]"
 
 #: lib/layouts/aastex.layout:357
-#, fuzzy
 msgid "and"
-msgstr "Maa"
+msgstr "ja"
 
 #: lib/layouts/aastex.layout:378
-#, fuzzy
 msgid "Place Figure here:"
-msgstr "Kuvan paikka"
+msgstr "Laita kuva tähän:"
 
 #: lib/layouts/aastex.layout:399
-#, fuzzy
 msgid "Place Table here:"
-msgstr "Taulukon paikka"
+msgstr "Laita taulukko tähän:"
 
 #: lib/layouts/aastex.layout:419
-#, fuzzy
 msgid "[Appendix]"
-msgstr "Liite"
+msgstr "[Liite]"
 
 #: lib/layouts/aastex.layout:479
-#, fuzzy
 msgid "Note to Editor:"
 msgstr "Huomautus toimittajalle"
 
 #: lib/layouts/aastex.layout:500
-#, fuzzy
 msgid "References. ---"
-msgstr "Viitteet: "
+msgstr "Viitteet. ---"
 
 #: lib/layouts/aastex.layout:520
-#, fuzzy
 msgid "Note. ---"
-msgstr "Muistiinpano"
+msgstr "Muistiinpano. ---"
 
 #: lib/layouts/aastex.layout:530
 msgid "FigCaption"
@@ -3998,7 +3947,7 @@ msgstr "Kuvateksti"
 
 #: lib/layouts/aastex.layout:540
 msgid "Fig. ---"
-msgstr ""
+msgstr "Fig. ---"
 
 #: lib/layouts/aastex.layout:557
 #, fuzzy
@@ -4010,48 +3959,41 @@ msgid "Obj:"
 msgstr ""
 
 #: lib/layouts/aastex.layout:610
-#, fuzzy
 msgid "Dataset:"
-msgstr "Datajoukko"
+msgstr "Datajoukko:"
 
 #: lib/layouts/amsart-plain.layout:27 lib/layouts/beamer.layout:965
 #: lib/layouts/foils.layout:300 lib/layouts/siamltex.layout:270
 #: lib/layouts/amsmaths-plain.inc:35 lib/layouts/amsmaths.inc:95
-#, fuzzy
 msgid "Theorem."
-msgstr "Lause"
+msgstr "Lause."
 
 #: lib/layouts/amsart-plain.layout:33 lib/layouts/beamer.layout:903
 #: lib/layouts/foils.layout:314 lib/layouts/siamltex.layout:284
 #: lib/layouts/amsmaths-plain.inc:45 lib/layouts/amsmaths.inc:117
-#, fuzzy
 msgid "Corollary."
-msgstr "Seurauslause"
+msgstr "Seurauslause."
 
 #: lib/layouts/amsart-plain.layout:39 lib/layouts/foils.layout:307
 #: lib/layouts/siamltex.layout:277 lib/layouts/amsmaths-plain.inc:55
 #: lib/layouts/amsmaths.inc:139
-#, fuzzy
 msgid "Lemma."
-msgstr "Lemma"
+msgstr "Lemma."
 
 #: lib/layouts/amsart-plain.layout:45 lib/layouts/foils.layout:321
 #: lib/layouts/siamltex.layout:291 lib/layouts/amsmaths-plain.inc:65
 #: lib/layouts/amsmaths.inc:161
-#, fuzzy
 msgid "Proposition."
-msgstr "Väittämä"
+msgstr "Väittämä."
 
 #: lib/layouts/amsart-plain.layout:51 lib/layouts/amsmaths-plain.inc:75
 #: lib/layouts/amsmaths.inc:183
-#, fuzzy
 msgid "Conjecture."
-msgstr "Otaksuma"
+msgstr "Otaksuma."
 
 #: lib/layouts/amsart-plain.layout:57 lib/layouts/amsmaths-plain.inc:85
-#, fuzzy
 msgid "Criterion."
-msgstr "Kriteeri"
+msgstr "Kriteeri."
 
 #: lib/layouts/amsart-plain.layout:61 lib/layouts/amsart-seq.layout:173
 #: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:385
@@ -4061,76 +4003,64 @@ msgid "Algorithm"
 msgstr "Algoritmi"
 
 #: lib/layouts/amsart-plain.layout:63
-#, fuzzy
 msgid "Algorithm."
-msgstr "Algoritmi"
+msgstr "Algoritmi."
 
 #: lib/layouts/amsart-plain.layout:69 lib/layouts/beamer.layout:953
 #: lib/layouts/amsmaths-plain.inc:105 lib/layouts/amsmaths.inc:227
-#, fuzzy
 msgid "Fact."
-msgstr "Fakta"
+msgstr "Fakta."
 
 #: lib/layouts/amsart-plain.layout:75 lib/layouts/amsmaths-plain.inc:115
-#, fuzzy
 msgid "Axiom."
-msgstr "Aksiooma"
+msgstr "Aksiooma."
 
 #: lib/layouts/amsart-plain.layout:81 lib/layouts/beamer.layout:923
 #: lib/layouts/foils.layout:328 lib/layouts/siamltex.layout:297
 #: lib/layouts/amsmaths-plain.inc:125 lib/layouts/amsmaths.inc:268
-#, fuzzy
 msgid "Definition."
-msgstr "Määritelmä"
+msgstr "Määritelmä."
 
 #: lib/layouts/amsart-plain.layout:87 lib/layouts/beamer.layout:935
 #: lib/layouts/amsmaths-plain.inc:135 lib/layouts/amsmaths.inc:290
-#, fuzzy
 msgid "Example."
-msgstr "Esimerkki"
+msgstr "Esimerkki."
 
 #: lib/layouts/amsart-plain.layout:93 lib/layouts/amsmaths-plain.inc:145
 #: lib/layouts/amsmaths.inc:312
-#, fuzzy
 msgid "Condition."
-msgstr "Ehto"
+msgstr "Ehto."
 
 #: lib/layouts/amsart-plain.layout:99 lib/layouts/amsmaths-plain.inc:155
 #: lib/layouts/amsmaths.inc:334
-#, fuzzy
 msgid "Problem."
-msgstr "Ongelma"
+msgstr "Ongelma."
 
 #: lib/layouts/amsart-plain.layout:105 lib/layouts/amsmaths-plain.inc:165
 #: lib/layouts/amsmaths.inc:357
-#, fuzzy
 msgid "Exercise."
-msgstr "Harjoitus"
+msgstr "Harjoitus."
 
 #: lib/layouts/amsart-plain.layout:111 lib/layouts/amsmaths-plain.inc:175
 #: lib/layouts/amsmaths.inc:388
-#, fuzzy
 msgid "Remark."
-msgstr "Huomautus"
+msgstr "Huomautus."
 
 #: lib/layouts/amsart-plain.layout:117 lib/layouts/llncs.layout:308
 #: lib/layouts/amsmaths-plain.inc:185 lib/layouts/amsmaths.inc:410
 #: lib/layouts/svjour.inc:362
-#, fuzzy
 msgid "Claim."
-msgstr "Väite"
+msgstr "Väite."
 
 #: lib/layouts/amsart-plain.layout:123 lib/layouts/amsmaths-plain.inc:195
 #: lib/layouts/amsmaths.inc:432
-#, fuzzy
 msgid "Note."
-msgstr "Muistiinpano"
+msgstr "Muistiinpano."
 
 #: lib/layouts/amsart-plain.layout:129 lib/layouts/amsmaths-plain.inc:205
 #: lib/layouts/amsmaths.inc:454
-#, fuzzy
 msgid "Notation."
-msgstr "Merkintätapa"
+msgstr "Merkintätapa."
 
 #: lib/layouts/amsart-plain.layout:133 lib/layouts/amsart-seq.layout:245
 #: lib/layouts/elsart.layout:409 lib/layouts/amsmaths-plain.inc:213
@@ -4139,21 +4069,18 @@ msgid "Summary"
 msgstr "Yhteenveto"
 
 #: lib/layouts/amsart-plain.layout:135 lib/layouts/amsmaths-plain.inc:215
-#, fuzzy
 msgid "Summary."
-msgstr "Yhteenveto"
+msgstr "Yhteenveto."
 
 #: lib/layouts/amsart-plain.layout:141 lib/layouts/egs.layout:552
 #: lib/layouts/amsmaths-plain.inc:225 lib/layouts/amsmaths.inc:487
 #: lib/layouts/svjour.inc:322
-#, fuzzy
 msgid "Acknowledgement."
-msgstr "Kiitos"
+msgstr "Kiitos."
 
 #: lib/layouts/amsart-plain.layout:147 lib/layouts/amsmaths-plain.inc:235
-#, fuzzy
 msgid "Case."
-msgstr "Tapaus"
+msgstr "Tapaus."
 
 #: lib/layouts/amsart-plain.layout:151 lib/layouts/amsart-seq.layout:263
 #: lib/layouts/amsmaths-plain.inc:243 lib/layouts/amsmaths-seq.inc:200
@@ -4172,7 +4099,7 @@ msgstr "Väittämä \\arabic{theorem}."
 
 #: lib/layouts/amsart-seq.layout:145 lib/layouts/ijmpc.layout:251
 msgid "Corollary \\arabic{corollary}."
-msgstr ""
+msgstr "Seurauslause \\arabic{corollary}"
 
 #: lib/layouts/amsart-seq.layout:151 lib/layouts/ijmpc.layout:261
 msgid "Lemma \\arabic{lemma}."
@@ -4269,23 +4196,20 @@ msgid "RightHeader"
 msgstr "Oikea yläotsikko"
 
 #: lib/layouts/apa.layout:59
-#, fuzzy
 msgid "Right header:"
-msgstr "Oikea yläotsikko"
+msgstr "Oikea yläotsikko:"
 
 #: lib/layouts/apa.layout:83
-#, fuzzy
 msgid "Abstract:"
-msgstr "Tiivistelmä: "
+msgstr "Tiivistelmä:"
 
 #: lib/layouts/apa.layout:92
 msgid "ShortTitle"
 msgstr "Lyhyt teoksen nimi"
 
 #: lib/layouts/apa.layout:100
-#, fuzzy
 msgid "Short title:"
-msgstr "Lyhyt teoksen nimi"
+msgstr "Lyhyt teoksen nimi:"
 
 #: lib/layouts/apa.layout:129
 msgid "TwoAuthors"
@@ -4301,9 +4225,8 @@ msgstr "Neljä tekijää"
 
 #: lib/layouts/apa.layout:162 lib/layouts/revtex4.layout:145
 #: lib/layouts/agu_stdtitle.inc:131
-#, fuzzy
 msgid "Affiliation:"
-msgstr "Järjestö"
+msgstr "Järjestö:"
 
 #: lib/layouts/apa.layout:171
 msgid "TwoAffiliations"
@@ -4326,9 +4249,8 @@ msgid "CopNum"
 msgstr "Kopiomäärä"
 
 #: lib/layouts/apa.layout:234
-#, fuzzy
 msgid "Acknowledgements:"
-msgstr "Kiitokset"
+msgstr "Kiitokset:"
 
 #: lib/layouts/apa.layout:243 lib/layouts/iopart.layout:233
 #: lib/layouts/iopart.layout:247 lib/layouts/revtex4.layout:212
@@ -4346,9 +4268,8 @@ msgstr "Keskitetty_kuvateksti"
 
 #: lib/layouts/apa.layout:269 lib/layouts/scrclass.inc:242
 #: lib/layouts/scrclass.inc:262
-#, fuzzy
 msgid "Senseless!"
-msgstr "Järjetöntä: "
+msgstr "Järjetöntä!"
 
 #: lib/layouts/apa.layout:280
 msgid "FitFigure"
@@ -4375,24 +4296,20 @@ msgid "(\\alph{enumii})"
 msgstr ""
 
 #: lib/layouts/armenian-article.layout:9
-#, fuzzy
 msgid "LatinOn"
-msgstr "latvia"
+msgstr "Latinalaiset päälle"
 
 #: lib/layouts/armenian-article.layout:18
-#, fuzzy
 msgid "Latin on"
-msgstr "Sijainti"
+msgstr "Latinalaiset päälle"
 
 #: lib/layouts/armenian-article.layout:25
-#, fuzzy
 msgid "LatinOff"
-msgstr "latvia"
+msgstr "Latinalaiset pois"
 
 #: lib/layouts/armenian-article.layout:34
-#, fuzzy
 msgid "Latin off"
-msgstr "latvia"
+msgstr "Latinalaiset pois"
 
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
@@ -4416,74 +4333,64 @@ msgid "MM"
 msgstr ""
 
 #: lib/layouts/beamer.layout:159
-#, fuzzy
 msgid "Section \\arabic{section}"
-msgstr "Alikappale"
+msgstr "Kappale \\arabic{section}"
 
 #: lib/layouts/beamer.layout:171 lib/layouts/powerdot.layout:223
 #: lib/layouts/numarticle.inc:17
-#, fuzzy
 msgid "\\Alph{section}"
-msgstr "valinta"
+msgstr ""
 
 #: lib/layouts/beamer.layout:200
-#, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "Alialikappale"
+msgstr "Alialikappale \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:213
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "Alialikappale"
+msgstr ""
 
 #: lib/layouts/beamer.layout:227
 msgid "BeginFrame"
-msgstr ""
+msgstr "RuudunAlku"
 
 #: lib/layouts/beamer.layout:244
-#, fuzzy
 msgid "Frame"
-msgstr "Parametrit"
+msgstr "Ruutu"
 
 #: lib/layouts/beamer.layout:270
 msgid "BeginPlainFrame"
-msgstr ""
+msgstr "PerusRuudunAlku"
 
 #: lib/layouts/beamer.layout:286
 msgid "Frame (no head/foot/sidebars)"
-msgstr ""
+msgstr "Ruutu (ilman ylä/ala/sivuots.)"
 
 #: lib/layouts/beamer.layout:309
-#, fuzzy
 msgid "AgainFrame"
 msgstr "ToistaRuutu"
 
 #: lib/layouts/beamer.layout:326
 msgid "Again frame with label"
-msgstr ""
+msgstr "Toista ruutu nimikkeellä"
 
 #: lib/layouts/beamer.layout:350
-#, fuzzy
 msgid "EndFrame"
-msgstr "Tulostimen &nimi:"
+msgstr "LoppuRuutu"
 
 #: lib/layouts/beamer.layout:364
 msgid "________________________________"
 msgstr ""
 
 #: lib/layouts/beamer.layout:379
-#, fuzzy
 msgid "FrameSubtitle"
-msgstr "Alaotsikko"
+msgstr "RuudunAlaotsikko"
 
 #: lib/layouts/beamer.layout:402
-#, fuzzy
 msgid "Column"
-msgstr "Palstoja"
+msgstr "Palsta"
 
-#: lib/layouts/beamer.layout:414
 msgid "Start column (increase depth!), width:"
-msgstr ""
+msgstr "Aloita palsta (lisää sis.!), leveys:"
 
 #: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 msgid "Columns"
@@ -4491,7 +4398,7 @@ msgstr "Palstoja"
 
 #: lib/layouts/beamer.layout:454
 msgid "ColumnsCenterAligned"
-msgstr ""
+msgstr "PalstojaTasattuKeskellä"
 
 #: lib/layouts/beamer.layout:465
 msgid "Columns (center aligned)"
@@ -4626,14 +4533,12 @@ msgid "LyX-Code"
 msgstr "LyX-koodi"
 
 #: lib/layouts/beamer.layout:1030
-#, fuzzy
 msgid "NoteItem"
-msgstr "Uusi kohta"
+msgstr "Muistiinpanokohta"
 
 #: lib/layouts/beamer.layout:1041 lib/layouts/powerdot.layout:199
-#, fuzzy
 msgid "Note:"
-msgstr "Muistiinpano"
+msgstr "Muistiinpano:"
 
 #: lib/layouts/beamer.layout:1077 lib/layouts/powerdot.layout:365
 #: lib/layouts/stdfloats.inc:10 lib/ui/stdtoolbars.inc:113
@@ -4642,9 +4547,8 @@ msgstr "Taulukko"
 
 #: lib/layouts/beamer.layout:1082 lib/layouts/powerdot.layout:369
 #: lib/layouts/stdfloats.inc:15
-#, fuzzy
 msgid "List of Tables"
-msgstr "Luettelo: "
+msgstr "Taulukoiden luettelo"
 
 #: lib/layouts/beamer.layout:1088 lib/layouts/powerdot.layout:375
 #: lib/layouts/stdfloats.inc:22
@@ -4653,9 +4557,8 @@ msgstr "Kuva"
 
 #: lib/layouts/beamer.layout:1093 lib/layouts/powerdot.layout:379
 #: lib/layouts/stdfloats.inc:27
-#, fuzzy
 msgid "List of Figures"
-msgstr "Luettelo: "
+msgstr "Kuvien luettelo"
 
 #: lib/layouts/broadway.layout:32 lib/layouts/hollywood.layout:40
 msgid "Dialogue"
@@ -4671,7 +4574,7 @@ msgstr "NÄYTÖS"
 
 #: lib/layouts/broadway.layout:74
 msgid "ACT \\arabic{act}"
-msgstr ""
+msgstr "NÄYTÖS \\arabic{act}"
 
 #: lib/layouts/broadway.layout:78 lib/layouts/broadway.layout:107
 msgid "SCENE"
@@ -4679,7 +4582,7 @@ msgstr "KOHTAUS"
 
 #: lib/layouts/broadway.layout:91
 msgid "SCENE \\arabic{scene}"
-msgstr ""
+msgstr "KOHTAUS \\arabic{scene}"
 
 #: lib/layouts/broadway.layout:95
 msgid "SCENE*"
@@ -4719,81 +4622,72 @@ msgid "Mainline"
 msgstr "Pelin kulku"
 
 #: lib/layouts/chess.layout:40
-#, fuzzy
 msgid "Mainline:"
-msgstr "Pelin kulku"
+msgstr "Pelin kulku:"
 
 #: lib/layouts/chess.layout:58
 msgid "Variation"
 msgstr "Muunnelma"
 
 #: lib/layouts/chess.layout:62
-#, fuzzy
 msgid "Variation:"
-msgstr "Muunnelma"
+msgstr "Muunnelma:"
 
 #: lib/layouts/chess.layout:68
 msgid "SubVariation"
 msgstr "Alimuunnelma"
 
 #: lib/layouts/chess.layout:71
-#, fuzzy
 msgid "Subvariation:"
-msgstr "Alimuunnelma"
+msgstr "Alimuunnelma:"
 
 #: lib/layouts/chess.layout:77
 msgid "SubVariation2"
-msgstr "Alimuunnelma 2"
+msgstr "Alimuunnelma2"
 
 #: lib/layouts/chess.layout:80
-#, fuzzy
 msgid "Subvariation(2):"
-msgstr "Alimuunnelma 2"
+msgstr "Alimuunnelma(2):"
 
 #: lib/layouts/chess.layout:86
 msgid "SubVariation3"
-msgstr "Alimuunnelma 3"
+msgstr "Alimuunnelma3"
 
 #: lib/layouts/chess.layout:89
-#, fuzzy
 msgid "Subvariation(3):"
-msgstr "Alimuunnelma 3"
+msgstr "Alimuunnelma(3):"
 
 #: lib/layouts/chess.layout:95
 msgid "SubVariation4"
 msgstr "Alimuunnelma 4"
 
 #: lib/layouts/chess.layout:98
-#, fuzzy
 msgid "Subvariation(4):"
-msgstr "Alimuunnelma 4"
+msgstr "Alimuunnelma(4):"
 
 #: lib/layouts/chess.layout:104
 msgid "SubVariation5"
-msgstr "Alimuunnelma 5"
+msgstr "Alimuunnelma5"
 
 #: lib/layouts/chess.layout:107
-#, fuzzy
 msgid "Subvariation(5):"
-msgstr "Alimuunnelma 5"
+msgstr "Alimuunnelma(5):"
 
 #: lib/layouts/chess.layout:114
 msgid "HideMoves"
 msgstr "Piilosiirrot"
 
 #: lib/layouts/chess.layout:119
-#, fuzzy
 msgid "HideMoves:"
-msgstr "Piilosiirrot"
+msgstr "Piilosiirrot:"
 
 #: lib/layouts/chess.layout:124
 msgid "ChessBoard"
 msgstr "Shakkilauta"
 
 #: lib/layouts/chess.layout:128
-#, fuzzy
 msgid "[chessboard]"
-msgstr "Shakkilauta"
+msgstr "[shakkilauta]"
 
 #: lib/layouts/chess.layout:137
 msgid "BoardCentered"
@@ -4801,34 +4695,31 @@ msgstr "Lauta keskellä"
 
 #: lib/layouts/chess.layout:142
 msgid "[centered board]"
-msgstr ""
+msgstr "[lauta keskellä]"
 
 #: lib/layouts/chess.layout:152
 msgid "HighLight"
 msgstr "Korostus"
 
 #: lib/layouts/chess.layout:157
-#, fuzzy
 msgid "Highlights:"
-msgstr "Korostus"
+msgstr "Korostukset:"
 
 #: lib/layouts/chess.layout:172
 msgid "Arrow"
 msgstr "Nuoli"
 
 #: lib/layouts/chess.layout:177
-#, fuzzy
 msgid "Arrow:"
-msgstr "Nuoli"
+msgstr "Nuoli:"
 
 #: lib/layouts/chess.layout:183
 msgid "KnightMove"
 msgstr "Ratsun siirto"
 
 #: lib/layouts/chess.layout:188
-#, fuzzy
 msgid "KnightMove:"
-msgstr "Ratsun siirto"
+msgstr "Ratsun siirto:"
 
 #: lib/layouts/dinbrief.layout:13 lib/layouts/heb-letter.layout:10
 #: lib/layouts/stdletter.inc:24
@@ -4837,7 +4728,7 @@ msgstr "Osoitteeni"
 
 #: lib/layouts/dinbrief.layout:17
 msgid "Briefkopf:"
-msgstr ""
+msgstr "Kirjeotsikko:"
 
 #: lib/layouts/dinbrief.layout:29 lib/layouts/heb-letter.layout:15
 #: lib/layouts/stdletter.inc:36
@@ -4845,9 +4736,9 @@ msgid "Send To Address"
 msgstr "Lähetysosoite"
 
 #: lib/layouts/dinbrief.layout:34 lib/layouts/g-brief-de.layout:184
-#, fuzzy
 msgid "Adresse:"
-msgstr "Osoite"
+msgstr "Osoite:"
+
 
 #: lib/layouts/dinbrief.layout:46 lib/layouts/g-brief-en.layout:204
 #: lib/layouts/g-brief2.layout:843 lib/layouts/scrlettr.layout:61
@@ -4856,9 +4747,8 @@ msgid "Opening"
 msgstr "Aloitus"
 
 #: lib/layouts/dinbrief.layout:48 lib/layouts/g-brief-de.layout:209
-#, fuzzy
 msgid "Anrede:"
-msgstr "Puhuttelu"
+msgstr "Puhuttelu:"
 
 #: lib/layouts/dinbrief.layout:59 lib/layouts/g-brief-en.layout:53
 #: lib/layouts/g-brief2.layout:891 lib/layouts/scrlettr.layout:137
@@ -4867,9 +4757,8 @@ msgid "Signature"
 msgstr "Allekirjoitus"
 
 #: lib/layouts/dinbrief.layout:61 lib/layouts/g-brief-de.layout:56
-#, fuzzy
 msgid "Unterschrift:"
-msgstr "Allekirjoitus"
+msgstr "Allekirjoitus:"
 
 #: lib/layouts/dinbrief.layout:72 lib/layouts/g-brief-en.layout:230
 #: lib/layouts/g-brief2.layout:865 lib/layouts/scrlettr.layout:71
@@ -4878,9 +4767,8 @@ msgid "Closing"
 msgstr "Lopuksi"
 
 #: lib/layouts/dinbrief.layout:74 lib/layouts/g-brief-de.layout:235
-#, fuzzy
 msgid "Gruss:"
-msgstr "Lopuksi"
+msgstr "Tervehdys:"
 
 #: lib/layouts/dinbrief.layout:85 lib/layouts/stdletter.inc:118
 msgid "encl"
@@ -4896,9 +4784,8 @@ msgid "ps"
 msgstr "ps"
 
 #: lib/layouts/dinbrief.layout:110
-#, fuzzy
 msgid "PS:"
-msgstr "PS"
+msgstr "PS:"
 
 #: lib/layouts/dinbrief.layout:120 lib/layouts/g-brief-en.layout:221
 #: lib/layouts/g-brief2.layout:932 lib/layouts/stdletter.inc:101
@@ -4907,36 +4794,32 @@ msgid "cc"
 msgstr "jakelu"
 
 #: lib/layouts/dinbrief.layout:121 lib/layouts/g-brief-de.layout:226
-#, fuzzy
 msgid "Verteiler:"
-msgstr "Jakelija"
+msgstr "Jakelija:"
 
 #: lib/layouts/dinbrief.layout:133 lib/layouts/g-brief-de.layout:195
 msgid "Betreff"
 msgstr "Aihe"
 
 #: lib/layouts/dinbrief.layout:146 lib/layouts/g-brief-de.layout:200
-#, fuzzy
 msgid "Betreff:"
-msgstr "Aihe"
+msgstr "Aihe:"
 
 #: lib/layouts/dinbrief.layout:158
 msgid "Stadt"
 msgstr "Kaupunki"
 
 #: lib/layouts/dinbrief.layout:169
-#, fuzzy
 msgid "Stadt:"
-msgstr "Kaupunki"
+msgstr "Kaupunki:"
 
 #: lib/layouts/dinbrief.layout:178 lib/layouts/g-brief-de.layout:188
 msgid "Datum"
 msgstr "Päiväys"
 
 #: lib/layouts/dinbrief.layout:189 lib/layouts/g-brief-de.layout:191
-#, fuzzy
 msgid "Datum:"
-msgstr "Päiväys"
+msgstr "Päiväys:"
 
 #: lib/layouts/egs.layout:86 lib/layouts/kluwer.layout:93
 #: lib/layouts/llncs.layout:77 lib/layouts/memoir.layout:71
@@ -4971,32 +4854,28 @@ msgid "LaTeX Title"
 msgstr "LaTeX-teoksen nimi"
 
 #: lib/layouts/egs.layout:304
-#, fuzzy
 msgid "Author:"
-msgstr "Tekijä"
+msgstr "Tekijä:"
 
 #: lib/layouts/egs.layout:313
 msgid "Affil"
 msgstr "Järjestö"
 
 #: lib/layouts/egs.layout:327
-#, fuzzy
 msgid "Affilation:"
-msgstr "Järjestö"
+msgstr "Järjestö:"
 
 #: lib/layouts/egs.layout:350
-#, fuzzy
 msgid "Journal:"
-msgstr "Lehti"
+msgstr "Lehti:"
 
 #: lib/layouts/egs.layout:359
 msgid "msnumber"
 msgstr "msnumero"
 
 #: lib/layouts/egs.layout:374
-#, fuzzy
 msgid "MS_number:"
-msgstr "msnumero"
+msgstr "MS_numero:"
 
 #: lib/layouts/egs.layout:384
 msgid "FirstAuthor"
@@ -5013,9 +4892,8 @@ msgstr "Vastaanotettu"
 
 #: lib/layouts/egs.layout:421 lib/layouts/agu_stdtitle.inc:201
 #: lib/layouts/aguplus.inc:111
-#, fuzzy
 msgid "Received:"
-msgstr "Vastaanotettu"
+msgstr "Vastaanotettu:"
 
 #: lib/layouts/egs.layout:430 lib/layouts/agu_stdtitle.inc:214
 #: lib/layouts/aguplus.inc:123
@@ -5024,9 +4902,8 @@ msgstr "Hyväksytty"
 
 #: lib/layouts/egs.layout:444 lib/layouts/agu_stdtitle.inc:217
 #: lib/layouts/aguplus.inc:127
-#, fuzzy
 msgid "Accepted:"
-msgstr "Hyväksytty"
+msgstr "Hyväksytty:"
 
 # Now this wasn't very obvious.
 #: lib/layouts/egs.layout:453
@@ -5041,9 +4918,8 @@ msgstr ""
 #: lib/layouts/llncs.layout:254 lib/layouts/siamltex.layout:156
 #: lib/layouts/svglobal.layout:44 lib/layouts/svjog.layout:49
 #: lib/layouts/amsdefs.inc:140 lib/layouts/svjour.inc:266
-#, fuzzy
 msgid "Abstract."
-msgstr "Tiivistelmä"
+msgstr "Tiivistelmä."
 
 #: lib/layouts/elsart.layout:132
 msgid "Author Address"
@@ -5053,18 +4929,16 @@ msgstr "Tekijän osoite"
 #: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:128
 #: lib/layouts/revtex4.layout:167 lib/layouts/scrlettr.layout:147
 #: lib/layouts/scrlttr2.layout:56 lib/layouts/amsdefs.inc:164
-#, fuzzy
 msgid "Address:"
-msgstr "Osoite"
+msgstr "Osoite:"
 
 #: lib/layouts/elsart.layout:149 lib/layouts/revtex4.layout:178
 msgid "Author Email"
 msgstr "Tekijän sähköposti"
 
 #: lib/layouts/elsart.layout:159 lib/layouts/llncs.layout:236
-#, fuzzy
 msgid "Email:"
-msgstr "Sähköposti"
+msgstr "Sähköposti:"
 
 #: lib/layouts/elsart.layout:170 lib/layouts/revtex4.layout:193
 msgid "Author URL"
@@ -5072,9 +4946,8 @@ msgstr "Tekijän URL"
 
 #: lib/layouts/elsart.layout:181 lib/layouts/revtex4.layout:198
 #: lib/layouts/amsdefs.inc:191
-#, fuzzy
 msgid "URL:"
-msgstr "&URL:"
+msgstr "URL:"
 
 #: lib/layouts/elsart.layout:193 lib/layouts/revtex4.layout:171
 #: lib/layouts/amsdefs.inc:202
@@ -5083,11 +4956,11 @@ msgstr "Kiitokset"
 
 #: lib/layouts/elsart.layout:278
 msgid "Theorem \\arabic{theorem}"
-msgstr ""
+msgstr "Väittämä \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:307
 msgid "PROOF."
-msgstr ""
+msgstr "TODISTUS."
 
 #: lib/layouts/elsart.layout:321
 msgid "Lemma \\arabic{theorem}"
@@ -9646,51 +9519,42 @@ msgid "Superscript"
 msgstr "Yläindeksi"
 
 #: lib/ui/stdtoolbars.inc:144
-#, fuzzy
 msgid "Insert square root"
-msgstr "Lisää juuri"
+msgstr "Lisää neliöjuuri"
 
 #: lib/ui/stdtoolbars.inc:145
 msgid "Insert root"
 msgstr "Lisää juuri"
 
 #: lib/ui/stdtoolbars.inc:146
-#, fuzzy
 msgid "Insert standard fraction"
-msgstr "Lisää osamäärä"
+msgstr "Lisää standardimurtoluku"
 
 #: lib/ui/stdtoolbars.inc:147
-#, fuzzy
 msgid "Insert sum"
-msgstr "Lisää lainausmerkki"
+msgstr "Lisää summa"
 
 #: lib/ui/stdtoolbars.inc:148
-#, fuzzy
 msgid "Insert integral"
-msgstr "Lisää taulukko"
+msgstr "Lisää integraali"
 
 #: lib/ui/stdtoolbars.inc:149
-#, fuzzy
 msgid "Insert product"
-msgstr "Lisää juuri"
+msgstr "Lisää tulo"
 
 #: lib/ui/stdtoolbars.inc:151
-#, fuzzy
 msgid "Insert ( )"
-msgstr "&Lisää"
+msgstr "Lisää ( )"
 
 #: lib/ui/stdtoolbars.inc:152
-#, fuzzy
 msgid "Insert [ ]"
-msgstr "&Lisää"
+msgstr "Lisää [ ]"
 
 #: lib/ui/stdtoolbars.inc:153
-#, fuzzy
 msgid "Insert { }"
-msgstr "&Lisää"
+msgstr "Lisää { }"
 
 #: lib/ui/stdtoolbars.inc:154
-#, fuzzy
 msgid "Insert delimiters"
 msgstr "Lisää erottimet"
 
@@ -9719,101 +9583,83 @@ msgid "Show changes in output"
 msgstr "Kuvan leveys tulosteessa"
 
 #: lib/ui/stdtoolbars.inc:174
-#, fuzzy
 msgid "Next change"
-msgstr "Ei muutosta"
+msgstr "Seuraava muutos"
 
 #: lib/ui/stdtoolbars.inc:175
-#, fuzzy
 msgid "Accept change"
-msgstr "Kirjasimen vaihto|v"
+msgstr "Hyväksy muutos"
 
 #: lib/ui/stdtoolbars.inc:176
-#, fuzzy
 msgid "Reject change"
-msgstr "Päivitä|#P"
+msgstr "Kumoa muutos"
 
 #: lib/ui/stdtoolbars.inc:178
-#, fuzzy
 msgid "Merge changes"
-msgstr "Yhdistä sarakkeet"
+msgstr "Yhdistä muutokset"
 
 #: lib/ui/stdtoolbars.inc:179
-#, fuzzy
 msgid "Accept all changes"
-msgstr "Kirjasimen vaihto|v"
+msgstr "Hyväksy kaikki muutokset"
 
 #: lib/ui/stdtoolbars.inc:180
-#, fuzzy
 msgid "Reject all changes"
-msgstr "Päivitä|#P"
+msgstr "Kumoa kaikki muutokset"
 
 #: lib/ui/stdtoolbars.inc:183
-#, fuzzy
 msgid "Next note"
-msgstr "Muistiinpano|i"
+msgstr "Seuraava muistiinpano"
 
 #: lib/ui/stdtoolbars.inc:186
-#, fuzzy
 msgid "View/Update"
-msgstr "Haluatko tallentaa asiakirjan?"
+msgstr "Katsele/Päivitä"
 
 #: lib/ui/stdtoolbars.inc:187
-#, fuzzy
 msgid "View DVI"
-msgstr "Näytä|N"
+msgstr "Katsele DVI"
 
 #: lib/ui/stdtoolbars.inc:188
-#, fuzzy
 msgid "Update DVI"
-msgstr "Päi&vitä"
+msgstr "Päi&vitä DVI"
 
 #: lib/ui/stdtoolbars.inc:189
 msgid "View PDF (pdflatex)"
-msgstr ""
+msgstr "Katsele PDF (pdflatex)"
 
 #: lib/ui/stdtoolbars.inc:190
 msgid "Update PDF (pdflatex)"
-msgstr ""
+msgstr "Päivitä PDF (pdflatex)"
 
 #: lib/ui/stdtoolbars.inc:191
-#, fuzzy
 msgid "View PostScript"
-msgstr "PostS&cript-ajuri:"
+msgstr "Katsele PostScript"
 
 #: lib/ui/stdtoolbars.inc:192
-#, fuzzy
 msgid "Update PostScript"
-msgstr "PostS&cript-ajuri:"
+msgstr "Päivitä PostScript"
 
 #: lib/ui/stdtoolbars.inc:195
-#, fuzzy
 msgid "Math Panels"
-msgstr "Matematiikkapaneeli"
+msgstr "Matematiikkapaneelit"
 
 #: lib/ui/stdtoolbars.inc:196
-#, fuzzy
 msgid "Math Spacings"
 msgstr "Matematiikkavälit"
 
 #: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:266
-#, fuzzy
 msgid "Styles"
-msgstr "Tyyli"
+msgstr "Tyylet"
 
 #: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:273
-#, fuzzy
 msgid "Fractions"
-msgstr "LyX: Matematiikkapaneeli"
+msgstr "Murtoluvut"
 
 #: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:282
 #: src/frontends/qt4/QDocument.cpp:581
-#, fuzzy
 msgid "Fonts"
-msgstr "Kirjasin: "
+msgstr "Kirjasimet"
 
 #: lib/ui/stdtoolbars.inc:200 lib/ui/stdtoolbars.inc:216
-#, fuzzy
 msgid "Functions"
 msgstr "&Funktiot"
 
@@ -9822,19 +9668,16 @@ msgid "arccos"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:218
-#, fuzzy
 msgid "arcsin"
-msgstr "reunahuomautus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:219
-#, fuzzy
 msgid "arctan"
-msgstr "katalaani"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:220
-#, fuzzy
 msgid "arg"
-msgstr "Suuri"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:221
 msgid "bmod"
@@ -9845,43 +9688,36 @@ msgid "cos"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:223
-#, fuzzy
 msgid "cosh"
-msgstr "gaeli (Skotlanti)"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:224
-#, fuzzy
 msgid "cot"
-msgstr "valinn"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:225
-#, fuzzy
 msgid "coth"
-msgstr "gaeli (Skotlanti)"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:226
-#, fuzzy
 msgid "csc"
-msgstr "jakelu"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:227
 msgid "deg"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:228
-#, fuzzy
 msgid "det"
-msgstr "oletus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:229
-#, fuzzy
 msgid "dim"
-msgstr "Keskivahva"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:230
-#, fuzzy
 msgid "exp"
-msgstr "ex"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:231
 msgid "gcd"
@@ -9920,7 +9756,6 @@ msgid "ln"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:240
-#, fuzzy
 msgid "log"
 msgstr ""
 
@@ -9929,187 +9764,154 @@ msgid "max"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:242
-#, fuzzy
 msgid "min"
-msgstr "\""
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:243
-#, fuzzy
 msgid "sec"
-msgstr "Lisäkappale"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:244
-#, fuzzy
 msgid "sin"
-msgstr "\""
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:245
-#, fuzzy
 msgid "sinh"
-msgstr "\""
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:246
-#, fuzzy
 msgid "sup"
-msgstr "sp"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:247
-#, fuzzy
 msgid "tan"
-msgstr "Maa"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:248
-#, fuzzy
 msgid "tanh"
-msgstr "Varmuuskopiohak.:|#k"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:249
-#, fuzzy
 msgid "Pr"
-msgstr "Kopioi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:252
-#, fuzzy
 msgid "Spacings"
-msgstr "R&iviväli"
+msgstr "Välit"
 
 #: lib/ui/stdtoolbars.inc:253
-#, fuzzy
 msgid "Thin space\t\\,"
 msgstr "Ohut väli\t\\,"
 
 #: lib/ui/stdtoolbars.inc:254
-#, fuzzy
 msgid "Medium space\t\\:"
 msgstr "Keskileveä väli\t\\:"
 
 #: lib/ui/stdtoolbars.inc:255
-#, fuzzy
 msgid "Thick space\t\\;"
 msgstr "Leveä väli\t\\;"
 
 #: lib/ui/stdtoolbars.inc:256
-#, fuzzy
 msgid "Quadratin space\t\\quad"
-msgstr "Kvadraatin väli\t\\quad"
+msgstr "Kvadratinin väli\t\\quad"
 
 #: lib/ui/stdtoolbars.inc:257
-#, fuzzy
 msgid "Double quadratin space\t\\qquad"
-msgstr "Kahden kvadraatin väli\t\\qquad"
+msgstr "Kaksoiskvadratiinin väli\t\\qquad"
 
 #: lib/ui/stdtoolbars.inc:258
-#, fuzzy
 msgid "Negative space\t\\!"
 msgstr "Negatiivinen väli\t\\!"
 
 #: lib/ui/stdtoolbars.inc:261
-#, fuzzy
 msgid "Roots"
-msgstr "alaviite"
+msgstr "Juuret"
 
 #: lib/ui/stdtoolbars.inc:262
-#, fuzzy
 msgid "Square root\t\\sqrt"
 msgstr "Neliöjuuri\t\\sqrt"
 
 #: lib/ui/stdtoolbars.inc:263
-#, fuzzy
 msgid "Other root\t\\root"
 msgstr "Muu juuri\t\\root"
 
 #: lib/ui/stdtoolbars.inc:267
-#, fuzzy
 msgid "Display style\t\\displaystyle"
 msgstr "Esitystyyli\t\\displaystyle"
 
 #: lib/ui/stdtoolbars.inc:268
-#, fuzzy
 msgid "Normal text style\t\\textstyle"
 msgstr "Tavallinen tekstityyli\t\\textstyle"
 
 #: lib/ui/stdtoolbars.inc:269
-#, fuzzy
 msgid "Script (small) style\t\\scriptstyle"
-msgstr "Indeksityyli\t\\scriptstyle"
+msgstr "Indeksityyli (pieni)\t\\scriptstyle"
 
 #: lib/ui/stdtoolbars.inc:270
-#, fuzzy
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Indeksi-indeksityyli (pienempi)\t\\scriptscriptstyle"
 
 #: lib/ui/stdtoolbars.inc:274
-#, fuzzy
 msgid "Standard\t\\frac"
-msgstr "Perusteksti"
+msgstr "Perusmurtoluku\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:275
-#, fuzzy
 msgid "No hor. line\t\\atop"
-msgstr "Ei muita muistiinpanoja"
+msgstr "Ilman jakoviivaa\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:276
 msgid "Nice\t\\nicefrac"
-msgstr ""
+msgstr "Kaunis murtoluku\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:277
 msgid "Text frac (amsmath)\t\\tfrac"
-msgstr ""
+msgstr "Teksti-murtoluku (amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:278
 msgid "Display frac (amsmath)\t\\dfrac"
-msgstr ""
+msgstr "Esitys-murtoluku (masmath)\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:279
 msgid "Binomial\t\\choose"
-msgstr ""
+msgstr "Binomiaali\t\\choose"
 
 #: lib/ui/stdtoolbars.inc:283
-#, fuzzy
 msgid "Roman\t\\mathrm"
 msgstr "Pysty\t\\mathrm"
 
 #: lib/ui/stdtoolbars.inc:284
-#, fuzzy
 msgid "Bold\t\\mathbf"
 msgstr "Lihava\t\\mathbf"
 
 #: lib/ui/stdtoolbars.inc:285
 msgid "Bold symbol\t\\boldsymbol"
-msgstr ""
+msgstr "Lihava symboli\t\\boldsymbol"
 
 #: lib/ui/stdtoolbars.inc:286
-#, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Sans serif\t\\mathsf"
 
 #: lib/ui/stdtoolbars.inc:287
-#, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "Kursiivi\t\\mathit"
 
 #: lib/ui/stdtoolbars.inc:288
-#, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Kirjoituskone\t\\mathtt"
 
 #: lib/ui/stdtoolbars.inc:289
-#, fuzzy
 msgid "Blackboard\t\\mathbb"
 msgstr "Liitutaulu\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:290
-#, fuzzy
 msgid "Fraktur\t\\mathfrak"
 msgstr "Fraktuura\t\\mathfrak"
 
 #: lib/ui/stdtoolbars.inc:291
-#, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "Kauno\t\\mathcal"
 
 #: lib/ui/stdtoolbars.inc:292
-#, fuzzy
 msgid "Normal text mode\t\\textrm"
 msgstr "Tavallinen teksti\t\\textrm"
 
@@ -10133,38 +9935,32 @@ msgid "vdots"
 msgstr "Pisteet"
 
 #: lib/ui/stdtoolbars.inc:299
-#, fuzzy
 msgid "ddots"
-msgstr "Pisteet"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:302
-#, fuzzy
 msgid "Frame Decorations"
 msgstr "Kehyskoristeet"
 
 #: lib/ui/stdtoolbars.inc:303
-#, fuzzy
 msgid "hat"
-msgstr "Luku"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:304
-#, fuzzy
 msgid "tilde"
-msgstr "Tiedosto"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:305
 msgid "bar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:306
-#, fuzzy
 msgid "grave"
-msgstr "vihreä"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:307
-#, fuzzy
 msgid "dot"
-msgstr "valinn"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:308
 msgid "check"
@@ -10183,33 +9979,28 @@ msgid "vec"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:312
-#, fuzzy
 msgid "acute"
-msgstr "Päiväys"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:313
-#, fuzzy
 msgid "ddot"
-msgstr "dd"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:314
-#, fuzzy
 msgid "breve"
-msgstr "Esikatselu|#E"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:315
-#, fuzzy
 msgid "overline"
-msgstr "sloveeni"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:316
 msgid "overbrace"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:317
-#, fuzzy
 msgid "overleftarrow"
-msgstr "Poista rivi|r"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:318
 msgid "overrightarrow"
@@ -10220,19 +10011,16 @@ msgid "overleftrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:320
-#, fuzzy
 msgid "overset"
-msgstr "Palauta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:321
-#, fuzzy
 msgid "underline"
-msgstr "Alleviivaus %1$s, "
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:322
-#, fuzzy
 msgid "underbrace"
-msgstr "Alleviivaus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:323
 msgid "underleftarrow"
@@ -10247,18 +10035,16 @@ msgid "underleftrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:326
-#, fuzzy
 msgid "underset"
-msgstr "Säe"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:329
 msgid "Arrows"
 msgstr "Nuolet"
 
 #: lib/ui/stdtoolbars.inc:330
-#, fuzzy
 msgid "leftarrow"
-msgstr "Poista rivi|r"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:331
 msgid "rightarrow"
@@ -10269,9 +10055,8 @@ msgid "downarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:333
-#, fuzzy
 msgid "uparrow"
-msgstr "Nuoli"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:334
 msgid "updownarrow"
@@ -10282,23 +10067,20 @@ msgid "leftrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:336
-#, fuzzy
 msgid "Leftarrow"
-msgstr "Vasen"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:337
-#, fuzzy
 msgid "Rightarrow"
-msgstr "Oikea yläotsikko"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:338
 msgid "Downarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:339
-#, fuzzy
 msgid "Uparrow"
-msgstr "Nuoli"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:340
 msgid "Updownarrow"
@@ -10341,23 +10123,20 @@ msgid "rightharpoondown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:350
-#, fuzzy
 msgid "mapsto"
-msgstr "Kuvateksti"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:351
 msgid "longmapsto"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:352
-#, fuzzy
 msgid "nwarrow"
-msgstr "Nuoli"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:353
-#, fuzzy
 msgid "nearrow"
-msgstr "Nuoli"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:354
 msgid "leftharpoonup"
@@ -10376,14 +10155,12 @@ msgid "hookrightarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:358
-#, fuzzy
 msgid "swarrow"
-msgstr "Nuoli"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:359
-#, fuzzy
 msgid "searrow"
-msgstr "Nuoli"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:360 lib/ui/stdtoolbars.inc:631
 msgid "rightleftharpoons"
@@ -10398,24 +10175,20 @@ msgid "pm"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:365
-#, fuzzy
 msgid "cap"
-msgstr "Koodinpätkä"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:366
-#, fuzzy
 msgid "diamond"
-msgstr "Maa"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:367
-#, fuzzy
 msgid "oplus"
-msgstr "Palstoja"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:368
-#, fuzzy
 msgid "mp"
-msgstr "Korostus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:369
 msgid "cup"
@@ -10444,28 +10217,24 @@ msgid "bigtriangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:375
-#, fuzzy
 msgid "otimes"
-msgstr "Kopiot"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:376
 msgid "div"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:377
-#, fuzzy
 msgid "sqcap"
-msgstr "Koodinpätkä"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:378
-#, fuzzy
 msgid "triangleright"
-msgstr "Yläoikealla"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:379
-#, fuzzy
 msgid "oslash"
-msgstr "puola"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:380
 msgid "cdot"
@@ -10480,61 +10249,52 @@ msgid "triangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:383
-#, fuzzy
 msgid "odot"
-msgstr "alaviite"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:384
 msgid "star"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:385
-#, fuzzy
 msgid "vee"
-msgstr "sloveeni"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:386
-#, fuzzy
 msgid "amalg"
-msgstr "Sähköposti"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:387
 msgid "bigcirc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:388
-#, fuzzy
 msgid "setminus"
-msgstr "minuutti"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:389
 msgid "wedge"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:390
-#, fuzzy
 msgid "dagger"
-msgstr "Suurempi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:391
-#, fuzzy
 msgid "circ"
-msgstr "jakelu"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:392
-#, fuzzy
 msgid "bullet"
-msgstr "Merkit"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:393
-#, fuzzy
 msgid "wr"
-msgstr "kelluva: "
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:394
-#, fuzzy
 msgid "ddagger"
-msgstr "Suurempi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:397
 msgid "Relations"
@@ -10553,19 +10313,16 @@ msgid "equiv"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:401
-#, fuzzy
 msgid "models"
-msgstr "Koodi"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:402
-#, fuzzy
 msgid "prec"
-msgstr "pc"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:403
-#, fuzzy
 msgid "succ"
-msgstr "jakelu"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:404
 msgid "sim"
@@ -10825,24 +10582,20 @@ msgid "omega"
 msgstr "Antiikva"
 
 #: lib/ui/stdtoolbars.inc:465
-#, fuzzy
 msgid "Gamma"
-msgstr "Lemma"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:466
-#, fuzzy
 msgid "Delta"
-msgstr "P&oista"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:467
-#, fuzzy
 msgid "Theta"
-msgstr "thai"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:468
-#, fuzzy
 msgid "Lambda"
-msgstr "Maa"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:469
 msgid "Xi"
@@ -10853,9 +10606,8 @@ msgid "Pi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Sigma"
-msgstr "Pieni"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "Upsilon"
@@ -10878,142 +10630,120 @@ msgid "Miscellaneous"
 msgstr "Sekalaiset"
 
 #: lib/ui/stdtoolbars.inc:479
-#, fuzzy
 msgid "nabla"
-msgstr "Pitkä &taulukko"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:480
-#, fuzzy
 msgid "partial"
-msgstr "taulukkorivi"
+msgstr "osittais-"
 
 #: lib/ui/stdtoolbars.inc:481
-#, fuzzy
 msgid "infty"
-msgstr "Pikkuruinen"
+msgstr "äärettömmyys"
 
 #: lib/ui/stdtoolbars.inc:482
 msgid "prime"
-msgstr ""
+msgstr "primi"
 
 #: lib/ui/stdtoolbars.inc:483
-#, fuzzy
 msgid "ell"
-msgstr "Hspell"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:484
-#, fuzzy
 msgid "emptyset"
-msgstr "tyhjä"
+msgstr "tyhjä joukko"
 
 #: lib/ui/stdtoolbars.inc:485
-#, fuzzy
 msgid "exists"
-msgstr "Kiitokset"
+msgstr "on olemassa"
 
 #: lib/ui/stdtoolbars.inc:486
-#, fuzzy
 msgid "forall"
-msgstr "Tavallinen"
+msgstr "kaikille"
 
 #: lib/ui/stdtoolbars.inc:487
-#, fuzzy
 msgid "imath"
-msgstr "matematiikka"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:488
-#, fuzzy
 msgid "jmath"
-msgstr "matematiikka"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:489
-#, fuzzy
 msgid "Re"
-msgstr "Punainen"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:490
-#, fuzzy
 msgid "Im"
-msgstr "Luettelo"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:491
-#, fuzzy
 msgid "aleph"
-msgstr ", Syvyys: "
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:492
-#, fuzzy
 msgid "wp"
-msgstr "kelluva: "
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:493 lib/ui/stdtoolbars.inc:575
-#, fuzzy
 msgid "hbar"
-msgstr "syvyyspalkki"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:494 lib/ui/stdtoolbars.inc:582
-#, fuzzy
 msgid "angle"
-msgstr "Yksink."
+msgstr "kulma"
 
 #: lib/ui/stdtoolbars.inc:495
-#, fuzzy
 msgid "top"
-msgstr "valinn"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:496
-#, fuzzy
 msgid "bot"
-msgstr "valinn"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:497
-#, fuzzy
 msgid "Vert"
-msgstr "Säe"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:498
 msgid "neg"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:499
-#, fuzzy
 msgid "flat"
-msgstr "irrallinen: "
+msgstr "molli"
 
 #: lib/ui/stdtoolbars.inc:500
-#, fuzzy
 msgid "natural"
-msgstr "Allekirjoitus"
+msgstr "luonnollinen"
 
 #: lib/ui/stdtoolbars.inc:501
 msgid "sharp"
-msgstr ""
+msgstr "duuri"
 
 #: lib/ui/stdtoolbars.inc:502
 msgid "surd"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:503
-#, fuzzy
 msgid "triangle"
-msgstr "Yksink."
+msgstr "kolmio"
 
 #: lib/ui/stdtoolbars.inc:504
 msgid "diamondsuit"
-msgstr ""
+msgstr "ruudut"
 
 #: lib/ui/stdtoolbars.inc:505
-#, fuzzy
 msgid "heartsuit"
-msgstr "peri"
+msgstr "hertat"
 
 #: lib/ui/stdtoolbars.inc:506
 msgid "clubsuit"
-msgstr ""
+msgstr "ristit"
 
 #: lib/ui/stdtoolbars.inc:507
 msgid "spadesuit"
-msgstr ""
+msgstr "padat"
 
 #: lib/ui/stdtoolbars.inc:508
 msgid "textrm \\AA"
@@ -11093,32 +10823,28 @@ msgid "Big Operators"
 msgstr "Suuret operaattorit"
 
 #: lib/ui/stdtoolbars.inc:529
-#, fuzzy
 msgid "intop"
-msgstr "Pystytasaa ylös|ö"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:530
-#, fuzzy
 msgid "int"
-msgstr "\""
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:531
-#, fuzzy
 msgid "iintop"
-msgstr "Pystytasaa ylös|ö"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:532
 msgid "iint"
-msgstr "kaksoisintegraali"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:533
-#, fuzzy
 msgid "iiintop"
-msgstr "Pystytasaa ylös|ö"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:534
 msgid "iiint"
-msgstr "kolmoisintegraali"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:535
 msgid "iiiintop"
@@ -11126,7 +10852,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:536
 msgid "iiiint"
-msgstr "neloisintegraali"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:537
 msgid "dotsintop"
@@ -11137,22 +10863,20 @@ msgid "dotsint"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:539
-#, fuzzy
 msgid "ointop"
-msgstr "Tili"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:540
 msgid "oint"
-msgstr "rengasintegraali"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:541
-#, fuzzy
 msgid "oiintop"
-msgstr "Tili"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:542
 msgid "oiint"
-msgstr "kaksoisrengasintegraali"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:543
 msgid "ointctrclockwiseop"
@@ -11160,7 +10884,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:544
 msgid "ointctrclockwise"
-msgstr "rengasint,vastpäivään"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:545
 msgid "ointclockwiseop"
@@ -11168,12 +10892,11 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:546
 msgid "ointclockwise"
-msgstr "rengasint,myötäpäivään"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:547
-#, fuzzy
 msgid "sqintop"
-msgstr "Pystytasaa ylös|ö"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:548
 msgid "sqint"
@@ -11189,12 +10912,12 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:551
 msgid "sum"
-msgstr "summa"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:552
 #, fuzzy
 msgid "prod"
-msgstr "Kova välilyönti|K"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:553
 msgid "coprod"
@@ -11249,12 +10972,10 @@ msgid "varkappa"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:568
-#, fuzzy
 msgid "beth"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:569
-#, fuzzy
 msgid "daleth"
 msgstr ""
 
@@ -11271,7 +10992,6 @@ msgid "urcorner"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:573
-#, fuzzy
 msgid "llcorner"
 msgstr ""
 
@@ -11292,7 +11012,6 @@ msgid "triangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:579
-#, fuzzy
 msgid "square"
 msgstr ""
 
@@ -11309,23 +11028,20 @@ msgid "measuredangle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:584
-#, fuzzy
 msgid "nexists"
-msgstr "Hakemisto|H"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "mho"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:586
-#, fuzzy
 msgid "Finv"
-msgstr "\""
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:587
-#, fuzzy
 msgid "Game"
-msgstr "Nimi"
+msgstr "Pakka"
 
 #: lib/ui/stdtoolbars.inc:588
 msgid "Bbbk"
@@ -11348,9 +11064,8 @@ msgid "blacktriangledown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:593
-#, fuzzy
 msgid "blacksquare"
-msgstr "musta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:594
 msgid "blacklozenge"
@@ -11365,14 +11080,12 @@ msgid "sphericalangle"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:597
-#, fuzzy
 msgid "complement"
-msgstr "Huomautus"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:598
-#, fuzzy
 msgid "eth"
-msgstr ", Syvyys: "
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:599
 msgid "diagup"
@@ -11383,7 +11096,6 @@ msgid "diagdown"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:603
-#, fuzzy
 msgid "AMS Arrows"
 msgstr "AMS-nuolet"
 
@@ -11412,14 +11124,12 @@ msgid "rightleftarrows"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:610
-#, fuzzy
 msgid "Lleftarrow"
-msgstr "Poista rivi|r"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:611
-#, fuzzy
 msgid "Rrightarrow"
-msgstr "Oikea yläotsikko"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:612
 msgid "twoheadleftarrow"
@@ -11442,9 +11152,8 @@ msgid "looparrowleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:617
-#, fuzzy
 msgid "looparrowright"
-msgstr "Copyright"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:618
 msgid "curvearrowleft"
@@ -11471,9 +11180,8 @@ msgid "Rsh"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:624
-#, fuzzy
 msgid "upuparrows"
-msgstr "Nuolet"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:625
 msgid "downdownarrows"
@@ -11508,9 +11216,8 @@ msgid "leftrightsquigarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:634
-#, fuzzy
 msgid "nleftarrow"
-msgstr "Poista rivi|r"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:635
 msgid "nrightarrow"
@@ -11525,9 +11232,8 @@ msgid "nLeftarrow"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:638
-#, fuzzy
 msgid "nRightarrow"
-msgstr "Oikea yläotsikko"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:639
 msgid "nLeftrightarrow"
@@ -11538,7 +11244,6 @@ msgid "multimap"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:643
-#, fuzzy
 msgid "AMS Relations"
 msgstr "AMS-relaatiot"
 
@@ -11587,9 +11292,8 @@ msgid "approxeq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:655
-#, fuzzy
 msgid "triangleq"
-msgstr "Yksink."
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:656
 msgid "lessdot"
@@ -11612,27 +11316,24 @@ msgid "lessgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:661
-#, fuzzy
 msgid "gtrless"
-msgstr "Parametrit"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:662
 msgid "lesseqgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:663
-#, fuzzy
 msgid "gtreqless"
-msgstr "Parametrit"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:664
 msgid "lesseqqgtr"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:665
-#, fuzzy
 msgid "gtreqqless"
-msgstr "Parametrit"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:666
 msgid "eqcirc"
@@ -11651,9 +11352,8 @@ msgid "thickapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:670
-#, fuzzy
 msgid "backsim"
-msgstr "musta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:671
 msgid "backsimeq"
@@ -11668,14 +11368,12 @@ msgid "supseteqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:674
-#, fuzzy
 msgid "Subset"
-msgstr "Aihe"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:675
-#, fuzzy
 msgid "Supset"
-msgstr "Alikappale"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:676
 msgid "sqsubset"
@@ -11722,9 +11420,8 @@ msgid "vartriangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:687
-#, fuzzy
 msgid "vartriangleright"
-msgstr "Viiva oikealla|o"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:688
 msgid "trianglelefteq"
@@ -11735,14 +11432,12 @@ msgid "trianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:690
-#, fuzzy
 msgid "bumpeq"
-msgstr "sininen"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:691
-#, fuzzy
 msgid "Bumpeq"
-msgstr "Sininen"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:692
 msgid "doteqdot"
@@ -11757,9 +11452,8 @@ msgid "fallingdotseq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:695
-#, fuzzy
 msgid "vDash"
-msgstr "tanska"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:696
 msgid "Vvdash"
@@ -11778,9 +11472,8 @@ msgid "shortparallel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:700
-#, fuzzy
 msgid "smallsmile"
-msgstr "Pieni väli"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:701
 msgid "smallfrown"
@@ -11795,14 +11488,12 @@ msgid "blacktriangleright"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:704
-#, fuzzy
 msgid "because"
-msgstr "Pienennä"
+msgstr "koska"
 
 #: lib/ui/stdtoolbars.inc:705
-#, fuzzy
 msgid "therefore"
-msgstr "lause"
+msgstr "siis"
 
 #: lib/ui/stdtoolbars.inc:706
 msgid "backepsilon"
@@ -11821,29 +11512,24 @@ msgid "pitchfork"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:712
-#, fuzzy
 msgid "AMS Negative Relations"
 msgstr "AMS-negaatiorelaatiot"
 
 #: lib/ui/stdtoolbars.inc:713
-#, fuzzy
 msgid "nless"
-msgstr "Järjetöntä: "
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:714
-#, fuzzy
 msgid "ngtr"
-msgstr "Kohta"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:715
-#, fuzzy
 msgid "nleq"
-msgstr "Yksink."
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:716
-#, fuzzy
 msgid "ngeq"
-msgstr "Yksink."
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:717
 msgid "nleqslant"
@@ -11866,9 +11552,8 @@ msgid "lneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:722
-#, fuzzy
 msgid "gneq"
-msgstr "Ohita"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:723
 msgid "lneqq"
@@ -11879,18 +11564,16 @@ msgid "gneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:725
-#, fuzzy
 msgid "lvertneqq"
-msgstr "sloveeni"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:726
 msgid "gvertneqq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:727
-#, fuzzy
 msgid "lnsim"
-msgstr "Väite"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:728
 msgid "gnsim"
@@ -11913,9 +11596,8 @@ msgid "nsucc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:733
-#, fuzzy
 msgid "npreceq"
-msgstr "Kova välilyönti|K"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:734
 msgid "nsucceq"
@@ -11938,18 +11620,16 @@ msgid "succnapprox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:739
-#, fuzzy
 msgid "subsetneq"
-msgstr "Alialikappale"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:740
 msgid "supsetneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:741
-#, fuzzy
 msgid "subsetneqq"
-msgstr "Alialikappale"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:742
 msgid "supsetneqq"
@@ -11972,14 +11652,12 @@ msgid "nvdash"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:747
-#, fuzzy
 msgid "nvDash"
-msgstr "tanska"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:748
-#, fuzzy
 msgid "nVDash"
-msgstr "tanska"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:749
 msgid "varsubsetneq"
@@ -12002,9 +11680,8 @@ msgid "ntriangleleft"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:754
-#, fuzzy
 msgid "ntriangleright"
-msgstr "Yläoikealla"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:755
 msgid "ntrianglelefteq"
@@ -12015,9 +11692,8 @@ msgid "ntrianglerighteq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:757
-#, fuzzy
 msgid "ncong"
-msgstr "ei mikään"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:758
 msgid "nsim"
@@ -12040,7 +11716,6 @@ msgid "nshortparallel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:765
-#, fuzzy
 msgid "AMS Operators"
 msgstr "AMS-operaattorit"
 
@@ -12053,60 +11728,52 @@ msgid "smallsetminus"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:768
-#, fuzzy
 msgid "Cap"
-msgstr "Kuvateksti"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:769
-#, fuzzy
 msgid "Cup"
-msgstr "Leikkaa"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:770
-#, fuzzy
 msgid "barwedge"
-msgstr "Suuri"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:771
 msgid "veebar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:772
-#, fuzzy
 msgid "doublebarwedge"
-msgstr "kaksinkertainen"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:773
-#, fuzzy
 msgid "boxminus"
-msgstr "minuutti"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:774
 msgid "boxtimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:775
-#, fuzzy
 msgid "boxdot"
-msgstr "alaviite"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:776
 msgid "boxplus"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:777
-#, fuzzy
 msgid "divideontimes"
-msgstr "Kalvon sisältö*"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:778
 msgid "ltimes"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:779
-#, fuzzy
 msgid "rtimes"
-msgstr "brittienglanti"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:780
 msgid "leftthreetimes"
@@ -12137,49 +11804,44 @@ msgid "circledcirc"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:787
-#, fuzzy
 msgid "centerdot"
-msgstr "Keskellä"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:788
-#, fuzzy
 msgid "intercal"
-msgstr "Sanatarkasti"
+msgstr ""
 
 #: lib/external_templates:37
 msgid "RasterImage"
-msgstr ""
+msgstr "Pikselikuva"
 
 #: lib/external_templates:40 lib/external_templates:46
 msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
-msgstr ""
+msgstr "Bittikuva: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:45
 msgid "A bitmap file.\n"
-msgstr ""
+msgstr "Bittikuvatiedosto.\n"
 
 #: lib/external_templates:102
-#, fuzzy
 msgid "XFig"
-msgstr "Kuva"
+msgstr ""
 
 #: lib/external_templates:103 lib/external_templates:106
 msgid "Xfig: $$AbsOrRelPathParent$$Basename"
 msgstr ""
 
 #: lib/external_templates:105
-#, fuzzy
 msgid "An Xfig figure.\n"
-msgstr "\"configure\" käynnissä..."
+msgstr "Xfig-kuva.\n"
 
 #: lib/external_templates:154
-#, fuzzy
 msgid "ChessDiagram"
 msgstr "Shakkilauta"
 
 #: lib/external_templates:155 lib/external_templates:174
 msgid "Chess: $$AbsOrRelPathParent$$Basename"
-msgstr ""
+msgstr "Shakki: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:157
 msgid ""
@@ -12201,6 +11863,17 @@ msgid ""
 "that TeX will find it, and you will need\n"
 "to install the skak package from CTAN.\n"
 msgstr ""
+"Shakkilautakuvio.\n"
+"Tämä sjabloona käyttää XBoardia tilanteen\n"
+"editoimiseksi. Käytä 'Tiedosto->Tallenna tilanne'\n"
+" XBoardissa näytettävän tilanteen tallentamiseksi.\n"
+"Anna sille '.fen'-pääte ja muista antaa\n"
+"suhteelista polkua LyX-asiakirjan paikan suhteen.\n"
+"Tutki myös optio 'Optiot->Tutki onko sallittu', ja\n"
+"keski- ja oike hiiri materiaalin lisäämiseksi\n"
+"Tämä vaatii mukana tulleen lyxskak.sty:n\n"
+"installoiminen TeX:in hakemistopuuhun,\n"
+"sekä skak-pakkaus CTANilta.\n"
 
 #: lib/external_templates:199
 msgid "LilyPond"
@@ -12208,7 +11881,7 @@ msgstr ""
 
 #: lib/external_templates:200 lib/external_templates:206
 msgid "Lilypond typeset music"
-msgstr ""
+msgstr "Lilypond nuottien ladonta"
 
 #: lib/external_templates:202
 msgid ""
@@ -12225,9 +11898,8 @@ msgid ""
 msgstr ""
 
 #: src/Buffer.cpp:236
-#, fuzzy
 msgid "Could not remove temporary directory"
-msgstr "Väliaikaisen hakemiston luominen epäonnistui"
+msgstr "Väliaikaisen hakemiston poistaminen epäonnistui"
 
 #: src/Buffer.cpp:237
 #, fuzzy, c-format
@@ -12235,9 +11907,8 @@ msgid "Could not remove the temporary directory %1$s"
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
 #: src/Buffer.cpp:408
-#, fuzzy
 msgid "Unknown document class"
-msgstr "valituksi asiakirjaluokaksi"
+msgstr "Tuntematon asiakirjaluokka"
 
 #: src/Buffer.cpp:409
 #, c-format
@@ -12250,22 +11921,20 @@ msgid "Unknown token: %1$s %2$s\n"
 msgstr "Tuntematon merkintä: %1$s %2$s\n"
 
 #: src/Buffer.cpp:473 src/Buffer.cpp:480 src/Buffer.cpp:500
-#, fuzzy
 msgid "Document header error"
-msgstr "Asiakirja nimetty uudelleen: '"
+msgstr "Asiakirjan alkuosa virheellinen"
 
 #: src/Buffer.cpp:479
 msgid "\\begin_header is missing"
-msgstr ""
+msgstr "\\begin_header puuttuu"
 
 #: src/Buffer.cpp:499
 msgid "\\begin_document is missing"
-msgstr ""
+msgstr "\\begin_document puuttuu"
 
 #: src/Buffer.cpp:510
-#, fuzzy
 msgid "Can't load document class"
-msgstr "Tekstiluokkaa ei voi ladata "
+msgstr "Tekstiluokkaa ei voi ladata"
 
 #: src/Buffer.cpp:511
 #, c-format
@@ -12276,7 +11945,7 @@ msgstr ""
 #: src/Buffer.cpp:522 src/Buffer.cpp:528 src/BufferView.cpp:849
 #: src/BufferView.cpp:855
 msgid "Changes not shown in LaTeX output"
-msgstr ""
+msgstr "Muutokset eivät näy LaTeX-tulosteessa"
 
 #: src/Buffer.cpp:523 src/BufferView.cpp:850
 msgid ""
@@ -12295,19 +11964,16 @@ msgid ""
 msgstr ""
 
 #: src/Buffer.cpp:664 src/Buffer.cpp:673
-#, fuzzy
 msgid "Document could not be read"
-msgstr "Asiakirjan tallentaminen epäonnistui!"
+msgstr "Asiakirjaa ei voitu lukea"
 
 #: src/Buffer.cpp:665 src/Buffer.cpp:674
-#, fuzzy, c-format
 msgid "%1$s could not be read."
-msgstr "%1$s kappaletta ei muuntunut"
+msgstr "%1$s ei voitu lukea"
 
 #: src/Buffer.cpp:682 src/Buffer.cpp:754
-#, fuzzy
 msgid "Document format failure"
-msgstr "Asiakirjan tyyli"
+msgstr "Asiakirjan muotoilu epäonnistui"
 
 #: src/Buffer.cpp:683
 #, fuzzy, c-format
@@ -12315,9 +11981,8 @@ msgid "%1$s is not a LyX document."
 msgstr "LyXissä käytettävä avainsana."
 
 #: src/Buffer.cpp:707
-#, fuzzy
 msgid "Conversion failed"
-msgstr "Muuntaminen"
+msgstr "Muuntaminen epäonnistui"
 
 #: src/Buffer.cpp:708
 #, fuzzy, c-format
@@ -12325,10 +11990,10 @@ msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
-"Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
+"%1$s on tehty aiemmalla LyXin versiolla ja väliaikaistiedosto muuntamista "
+"varten ei voitu luoda."
 
 #: src/Buffer.cpp:717
-#, fuzzy
 msgid "Conversion script not found"
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
