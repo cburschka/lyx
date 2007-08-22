@@ -489,26 +489,20 @@ int BufferView::workWidth() const
 
 void BufferView::updateOffsetRef()
 {
+	// No need to update offset_ref_ in this case.
 	if (!need_centering_)
 		return;
 
+	// We are not properly started yet, delay until resizing is
+	// done.
 	if (height_ == 0)
 		return;
 
 	CursorSlice & bot = cursor_.bottom();
 	TextMetrics & tm = text_metrics_[bot.text()];
-	pit_type const pit = bot.pit();
-	ParagraphMetrics const & pm = tm.parMetrics(pit);
-	anchor_ref_ = pit;
-	//DocIterator dit;
-	//dit.push_back(bot);
-	//dit.pos() = 0;
-
+	ParagraphMetrics const & pm = tm.parMetrics(bot.pit());
 	Point p = bv_funcs::coordOffset(*this, cursor_, cursor_.boundary());
 	offset_ref_ = p.y_ + pm.ascent() - height_ / 2;
-
-	lyxerr << "p.y_ " << p.y_ << "  pm.ascent() " << pm.ascent() << "  h/2 " << height_/2
-		<< "  offset_ref_ " << offset_ref_ << endl;
 
 	need_centering_ = false;
 }
