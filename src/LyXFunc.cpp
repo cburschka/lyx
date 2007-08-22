@@ -265,29 +265,32 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 			return;
 	}
 	// open may fail, so we need to test it again
-	if (theBufferList().exists(file)) {
-		// if the current buffer is not that one, switch to it.
-		if (lyx_view_->buffer()->fileName() != file) {
-			if (switchToBuffer)
-				dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
-			else
-				return;
-		}
-		// moveToPosition try paragraph id first and then paragraph (pit, pos).
-		if (!view()->moveToPosition(bm.bottom_pit, bm.bottom_pos,
-				bm.top_id, bm.top_pos))
+	if (!theBufferList().exists(file))
+		return;
+
+	// if the current buffer is not that one, switch to it.
+	if (lyx_view_->buffer()->fileName() != file) {
+		if (!switchToBuffer)
 			return;
+		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
+	}
+	// moveToPosition try paragraph id first and then paragraph (pit, pos).
+	if (!view()->moveToPosition(bm.bottom_pit, bm.bottom_pos,
+		bm.top_id, bm.top_pos))
+		return;
 
-		// Cursor jump succeeded!
-		Cursor const & cur = view()->cursor();
-		pit_type new_pit = cur.pit();
-		pos_type new_pos = cur.pos();
-		int new_id = cur.paragraph().id();
+	// Cursor jump succeeded!
+	Cursor const & cur = view()->cursor();
+	pit_type new_pit = cur.pit();
+	pos_type new_pos = cur.pos();
+	int new_id = cur.paragraph().id();
 
-		// if bottom_pit, bottom_pos or top_id has been changed, update bookmark
-		// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
-		if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos || bm.top_id != new_id )
-			const_cast<BookmarksSection::Bookmark &>(bm).updatePos(new_pit, new_pos, new_id);
+	// if bottom_pit, bottom_pos or top_id has been changed, update bookmark
+	// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
+	if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos 
+		|| bm.top_id != new_id) {
+		const_cast<BookmarksSection::Bookmark &>(bm).updatePos(
+			new_pit, new_pos, new_id);
 	}
 }
 
