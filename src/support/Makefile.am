@@ -101,11 +101,11 @@ liblyxsupport_la_SOURCES = \
 	minizip/zip.c \
 	minizip/zip.h
 
-# FIXME: the following two files are for windows only. I do not know
-# how to add them conditionally. autotools are rarely used under windows 
-# anyway.
-#    minizip/iowin32.c
-#    minizip/iowin32.h
+if INSTALL_WINDOWS
+liblyxsupport_la_SOURCES += \
+	minizip/iowin32.c \
+	minizip/iowin32.h
+endif
 
 Package.cpp: build_package
 
