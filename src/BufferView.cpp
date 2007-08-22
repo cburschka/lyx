@@ -142,6 +142,14 @@ BufferView::BufferView(Buffer & buf)
 
 BufferView::~BufferView()
 {
+	// current buffer is going to be switched-off, save cursor pos
+	// Ideally, the whole cursor stack should be saved, but session
+	// currently can only handle bottom (whole document) level pit and pos.
+	// That is to say, if a cursor is in a nested inset, it will be
+	// restore to the left of the top level inset.
+	LyX::ref().session().lastFilePos().save(
+		support::FileName(buffer_.fileName()),
+		boost::tie(cursor_.bottom().pit(), cursor_.bottom().pos()) );
 }
 
 

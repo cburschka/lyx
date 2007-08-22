@@ -29,7 +29,6 @@
 #include "Font.h"
 #include "FuncRequest.h"
 #include "Language.h"
-#include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -89,16 +88,6 @@ WorkArea::~WorkArea()
 {
 	bufferChangedConnection_.disconnect();
 	bufferClosingConnection_.disconnect();
-
-	// current buffer is going to be switched-off, save cursor pos
-	// Ideally, the whole cursor stack should be saved, but session
-	// currently can only handle bottom (whole document) level pit and pos.
-	// That is to say, if a cursor is in a nested inset, it will be
-	// restore to the left of the top level inset.
-	Cursor & cur = buffer_view_->cursor();
-	LyX::ref().session().lastFilePos().save(
-		support::FileName(buffer_view_->buffer().fileName()),
-		boost::tie(cur.bottom().pit(), cur.bottom().pos()) );
 
 	delete buffer_view_;
 }
