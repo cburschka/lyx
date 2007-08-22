@@ -435,8 +435,8 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 					doc_it.resize(i);
 					break;
 				}
+			success = true;
 		}
-		success = true;
 	}
 
 	// if top_id == 0, or searching through top_id failed
