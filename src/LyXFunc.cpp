@@ -273,11 +273,17 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 			else
 				return;
 		}
-		// moveToPosition use par_id, and par_pit and return new par_id.
-		pit_type new_pit;
-		pos_type new_pos;
-		int new_id;
-		boost::tie(new_pit, new_pos, new_id) = view()->moveToPosition(bm.bottom_pit, bm.bottom_pos, bm.top_id, bm.top_pos);
+		// moveToPosition try paragraph id first and then paragraph (pit, pos).
+		if (!view()->moveToPosition(bm.bottom_pit, bm.bottom_pos,
+				bm.top_id, bm.top_pos))
+			return;
+
+		// Cursor jump succeeded!
+		Cursor const & cur = view()->cursor();
+		pit_type new_pit = cur.pit();
+		pos_type new_pos = cur.pos();
+		int new_id = cur.paragraph().id();
+
 		// if bottom_pit, bottom_pos or top_id has been changed, update bookmark
 		// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
 		if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos || bm.top_id != new_id )

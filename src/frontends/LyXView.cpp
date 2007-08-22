@@ -151,12 +151,7 @@ Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
 		// if successfully move to pit (returned par_id is not zero),
 		// update metrics and reset font
-		BufferView & bv = wa->bufferView();
-		if (bv.moveToPosition(pit, pos, 0, 0).get<1>()) {
-			if (bv.fitCursor())
-				bv.updateMetrics(false);
-			newBuffer->text().setCurrentFont(bv.cursor());
-		}
+		wa->bufferView().moveToPosition(pit, pos, 0, 0);
 	}
 
 	if (tolastfiles)

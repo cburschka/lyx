@@ -107,9 +107,9 @@ public:
 	/// Save the current position as bookmark.
 	/// if idx == 0, save to temp_bookmark
 	void saveBookmark(unsigned int idx);
-	/// goto a specified position, try top_id first, and then bottom_pit
-	/// return the bottom_pit and top_id of the new paragraph
-	boost::tuple<pit_type, pos_type, int> moveToPosition(
+	/// goto a specified position, try top_id first, and then bottom_pit.
+	/// \return true if success
+	bool moveToPosition(
 		pit_type bottom_pit, ///< Paragraph pit, used when par_id is zero or invalid.
 		pos_type bottom_pos, ///< Paragraph pit, used when par_id is zero or invalid.
 		int top_id, ///< Paragraph ID, \sa Paragraph

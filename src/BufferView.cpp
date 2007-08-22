@@ -408,9 +408,12 @@ void BufferView::saveBookmark(unsigned int idx)
 }
 
 
-boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
+bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 	int top_id, pos_type top_pos)
 {
+	bool success = false;
+	DocIterator doc_it;
+
 	cursor_.clearSelection();
 
 	// if a valid par_id is given, try it first
@@ -419,24 +422,23 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 	if (top_id > 0) {
 		ParIterator par = buffer_.getParFromID(top_id);
 		if (par != buffer_.par_iterator_end()) {
-			DocIterator dit = makeDocIterator(par, min(par->size(), top_pos));
+			doc_it = makeDocIterator(par, min(par->size(), top_pos));
 			// Some slices of the iterator may not be
 			// reachable (e.g. closed collapsable inset)
 			// so the dociterator may need to be
 			// shortened. Otherwise, setCursor may crash
 			// lyx when the cursor can not be set to these
 			// insets.
-			size_t const n = dit.depth();
+			size_t const n = doc_it.depth();
 			for (size_t i = 0; i < n; ++i)
-				if (dit[i].inset().editable() != Inset::HIGHLY_EDITABLE) {
-					dit.resize(i);
+				if (doc_it[i].inset().editable() != Inset::HIGHLY_EDITABLE) {
+					doc_it.resize(i);
 					break;
 				}
-			setCursor(dit);
-			// Note: return bottom (document) level pit.
-			return boost::make_tuple(cursor_.bottom().pit(), cursor_.bottom().pos(), top_id);
 		}
+		success = true;
 	}
+
 	// if top_id == 0, or searching through top_id failed
 	// This is the case for a 'restored' bookmark when only bottom
 	// (document level) pit was saved. Because of this, bookmark
@@ -444,15 +446,22 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 	// it will be restored to the left of the outmost inset that contains
 	// the bookmark.
 	if (static_cast<size_t>(bottom_pit) < buffer_.paragraphs().size()) {
-		DocIterator it = doc_iterator_begin(buffer_.inset());
-		it.pit() = bottom_pit;
-		it.pos() = min(bottom_pos, it.paragraph().size());
-		setCursor(it);
-		return boost::make_tuple(it.pit(), it.pos(),
-					 it.paragraph().id());
+		doc_it = doc_iterator_begin(buffer_.inset());
+		doc_it.pit() = bottom_pit;
+		doc_it.pos() = min(bottom_pos, doc_it.paragraph().size());
+		success = true;
 	}
-	// both methods fail
-	return boost::make_tuple(pit_type(0), pos_type(0), 0);
+
+	if (success) {
+		// Note: only bottom (document) level pit is set.
+		setCursor(doc_it);
+		// set the current font.
+		buffer_.text().setCurrentFont(cursor_);
+		// center the screen on this new position.
+		center();
+	}
+
+	return success;
 }
 
 
