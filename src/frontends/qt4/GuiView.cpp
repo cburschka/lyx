@@ -65,6 +65,7 @@
 
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/current_function.hpp>
 
 using std::endl;
 using std::string;
