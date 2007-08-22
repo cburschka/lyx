@@ -164,8 +164,6 @@ Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		}
 	}
 
-	wa->redraw();
-
 	busy(false);
 	return newBuffer;
 }
