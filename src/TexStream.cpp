@@ -4,6 +4,9 @@
  * Licence details can be found in the file COPYING.
  *
  * Full author contact details are available in file CREDITS.
+ *
+ * Inspired by Dietmar Kuehl's prefix iostreams found on
+ * http://www.inf.uni-konstanz.de/~kuehl/
  */
 
 #include <config.h>
