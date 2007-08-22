@@ -126,7 +126,7 @@ BufferView::BufferView(Buffer & buf)
 	: width_(0), height_(0), buffer_(buf), wh_(0),
 	  cursor_(*this),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
-	  intl_(new Intl), last_inset_(0)
+	  need_centering_(false), intl_(new Intl), last_inset_(0)
 {
 	xsel_cache_.set = false;
 	intl_->initKeyMapper(lyxrc.use_kbmap);
@@ -478,16 +478,37 @@ int BufferView::workWidth() const
 }
 
 
-void BufferView::center()
+void BufferView::updateOffsetRef()
 {
+	if (!need_centering_)
+		return;
+
+	if (height_ == 0)
+		return;
+
 	CursorSlice & bot = cursor_.bottom();
 	TextMetrics & tm = text_metrics_[bot.text()];
 	pit_type const pit = bot.pit();
-	tm.redoParagraph(pit);
 	ParagraphMetrics const & pm = tm.parMetrics(pit);
 	anchor_ref_ = pit;
-	offset_ref_ = bv_funcs::coordOffset(*this, cursor_, cursor_.boundary()).y_
-		+ pm.ascent() - height_ / 2;
+	//DocIterator dit;
+	//dit.push_back(bot);
+	//dit.pos() = 0;
+
+	Point p = bv_funcs::coordOffset(*this, cursor_, cursor_.boundary());
+	offset_ref_ = p.y_ + pm.ascent() - height_ / 2;
+
+	lyxerr << "p.y_ " << p.y_ << "  pm.ascent() " << pm.ascent() << "  h/2 " << height_/2
+		<< "  offset_ref_ " << offset_ref_ << endl;
+
+	need_centering_ = false;
+}
+
+
+void BufferView::center()
+{
+	anchor_ref_ = cursor_.bottom().pit();
+	need_centering_ = true;
 }
 
 
@@ -1349,6 +1370,8 @@ void BufferView::updateMetrics(bool singlepar)
 	// Rebreak anchor paragraph.
 	if (!singlepar)
 		tm.redoParagraph(pit);
+
+	updateOffsetRef();
 
 	int y0 = tm.parMetrics(pit).ascent() - offset_ref_;
 
