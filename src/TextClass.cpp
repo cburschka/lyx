@@ -68,7 +68,7 @@ private:
 };
 
 
-int const FORMAT = 4;
+int const FORMAT = 5;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -598,12 +598,12 @@ void TextClass::readClassOptions(Lexer & lexrc)
 
 enum InsetLayoutTags {
 	IL_FONT = 1,
-	IL_LYXTYPE,
 	IL_LABELFONT,
 	IL_LABELSTRING,
-	IL_LATEXTYPE,
 	IL_LATEXNAME,
 	IL_LATEXPARAM,
+	IL_LATEXTYPE,
+	IL_LYXTYPE,
 	IL_PREAMBLE,
 	IL_END
 };
@@ -620,7 +620,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		{ "latexparam", IL_LATEXPARAM },
 		{ "latextype", IL_LATEXTYPE },
 		{ "lyxtype", IL_LYXTYPE },
-		{ "preamble", IL_PREAMBLE}
+		{ "preamble", IL_PREAMBLE }
 	};
 
 	lexrc.pushTable(elementTags, IL_END);
@@ -694,7 +694,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.latexparam = latexparam;
 		il.font = font;
 		il.labelfont = labelfont;
-		il.preamble = from_utf8(preamble);
+		il.preamble = preamble;
 		insetlayoutlist_[name] = il;
 
 		// test name for CS:

@@ -80,6 +80,7 @@ def convert(lines):
     re_NoStyle = re.compile(r'^(\s*)(NoStyle)(\s+)(\S+)', re.IGNORECASE)
     re_End = re.compile(r'^(\s*)(End)(\s*)$', re.IGNORECASE)
     re_Provides = re.compile(r'^(\s*)Provides(\S+)(\s+)(\S+)', re.IGNORECASE)
+    re_CharStyle = re.compile(r'^(\s*)CharStyle(\s+)(\S+)$', re.IGNORECASE)
 
     # counters for sectioning styles (hardcoded in 1.3)
     counters = {"part"          : "\\Roman{part}",
@@ -126,7 +127,7 @@ def convert(lines):
 
         # Skip comments and empty lines
         if re_Comment.match(lines[i]) or re_Empty.match(lines[i]):
-            i = i + 1
+            i += 1
             continue
 
         # insert file format if not already there
@@ -134,10 +135,10 @@ def convert(lines):
                 match = re_Format.match(lines[i])
                 if match:
                         format = int(match.group(4))
-                        if format > 1 and format < 4:
+                        if format > 1 and format < 5:
                             lines[i] = "Format %d" % (format + 1)
                             only_comment = 0
-                        elif format == 4:
+                        elif format == 5:
                                 # nothing to do
                                 return format
                         else:
@@ -149,9 +150,22 @@ def convert(lines):
 
         # Don't get confused by LaTeX code
         if re_Preamble.match(lines[i]):
-            i = i + 1
+            i += 1
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
-                i = i + 1
+                i += 1
+            continue
+
+        if format == 4:
+            # Handle conversion to long CharStyle names
+            match = re_CharStyle.match(lines[i])
+            if match:
+                lines[i] = "InsetLayout CharStyle:%s" % (match.group(3))
+                i += 1
+                lines.insert(i, "\tLyXType charstyle")
+                i += 1
+                lines.insert(i, "")
+                lines[i] = "\tLabelString %s" % (match.group(3))
+            i += 1
             continue
 
         if format == 3:
@@ -162,7 +176,7 @@ def convert(lines):
             if match:
                 lines[i] = "%sProvides %s%s%s" % (match.group(1), match.group(2).lower(),
                                                   match.group(3), match.group(4))
-            i = i + 1
+            i += 1
             continue
 
         if format == 2:
@@ -219,7 +233,7 @@ def convert(lines):
                                         '	  Series              Bold',
                                         '	EndFont']
 
-            i = i + 1
+            i += 1
             continue
 
         # Delete MaxCounter and remember the value of it
@@ -308,7 +322,7 @@ def convert(lines):
             if string.lower(label) == "bibliography":
                 if (latextype_line < 0):
                     lines.insert(i, "%sLatexType Bib_Environment" % space1)
-                    i = i + 1
+                    i += 1
                 else:
                     lines[latextype_line] = re_LatexType.sub(r'\1\2\3Bib_Environment', lines[latextype_line])
 
@@ -337,7 +351,7 @@ def convert(lines):
                 if counters.has_key(style):
                     if labelstring_line < 0:
                         lines.insert(i, '%sLabelString "%s"' % (space1, counters[style]))
-                        i = i + 1
+                        i += 1
                     else:
                         new_labelstring = concatenate_label(labelstring, counters[style])
                         lines[labelstring_line] = re_LabelString.sub(
@@ -346,7 +360,7 @@ def convert(lines):
                 if appendixcounters.has_key(style):
                     if labelstringappendix_line < 0:
                         lines.insert(i, '%sLabelStringAppendix "%s"' % (space1, appendixcounters[style]))
-                        i = i + 1
+                        i += 1
                     else:
                         new_labelstring = concatenate_label(labelstring, appendixcounters[style])
                         lines[labelstringappendix_line] = re_LabelStringAppendix.sub(
@@ -355,14 +369,14 @@ def convert(lines):
 
                 # Now we can safely add the LabelCounter line
                 lines.insert(labeltype_line + 1, "%sLabelCounter %s" % (space1, counter))
-                i = i + 1
+                i += 1
 
             # Add the TocLevel setting for sectioning styles
             if toclevels.has_key(style) and maxcounter <= toclevels[style]:
                 lines.insert(i, '%sTocLevel %d' % (space1, toclevels[style]))
-                i = i + 1
+                i += 1
 
-        i = i + 1
+        i += 1
 
     return format + 1
 
