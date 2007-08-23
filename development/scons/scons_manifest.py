@@ -698,7 +698,6 @@ src_frontends_header_files = Split('''
     Gui.h
     KeySymbol.h
     LyXView.h
-    Menubar.h
     NoGuiFontLoader.h
     NoGuiFontMetrics.h
     Painter.h
