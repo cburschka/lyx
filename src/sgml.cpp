@@ -205,7 +205,7 @@ void sgml::closeTag(odocstream & os, string const & name)
 void sgml::openTag(Buffer const & buf, odocstream & os,
 	OutputParams const & runparams, Paragraph const & par)
 {
-	Layout_ptr const & style = par.layout();
+	LayoutPtr const & style = par.layout();
 	string const & name = style->latexname();
 	string param = style->latexparam();
 	Counters & counters = buf.params().getTextClass().counters();
@@ -240,7 +240,7 @@ void sgml::openTag(Buffer const & buf, odocstream & os,
 
 void sgml::closeTag(odocstream & os, Paragraph const & par)
 {
-	Layout_ptr const & style = par.layout();
+	LayoutPtr const & style = par.layout();
 	closeTag(os, style->latexname());
 }
 

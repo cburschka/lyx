@@ -150,7 +150,7 @@ Font Text::getFont(Buffer const & buffer, Paragraph const & par,
 {
 	BOOST_ASSERT(pos >= 0);
 
-	Layout_ptr const & layout = par.layout();
+	LayoutPtr const & layout = par.layout();
 	// FIXME: broken?
 	BufferParams const & params = buffer.params();
 	pos_type const body_pos = par.beginOfBody();
@@ -228,7 +228,7 @@ void Text::applyOuterFont(Buffer const & buffer, Font & font) const {
 
 Font Text::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 {
-	Layout_ptr const & layout = pars_[pit].layout();
+	LayoutPtr const & layout = pars_[pit].layout();
 
 	if (!pars_[pit].getDepth())  {
 		Font lf = layout->resfont;
@@ -249,7 +249,7 @@ Font Text::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 
 Font Text::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 {
-	Layout_ptr const & layout = par.layout();
+	LayoutPtr const & layout = par.layout();
 
 	if (!par.getDepth()) {
 		Font lf = layout->reslabelfont;
@@ -271,7 +271,7 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 		pos_type pos, Font const & fnt)
 {
 	Font font = fnt;
-	Layout_ptr const & layout = pars_[pit].layout();
+	LayoutPtr const & layout = pars_[pit].layout();
 
 	// Get concrete layout font to reduce against
 	Font layoutfont;
@@ -353,7 +353,7 @@ void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 	BOOST_ASSERT(start != end);
 
 	BufferParams const & bufparams = buffer.params();
-	Layout_ptr const & lyxlayout = bufparams.getTextClass()[layout];
+	LayoutPtr const & lyxlayout = bufparams.getTextClass()[layout];
 
 	for (pit_type pit = start; pit != end; ++pit) {
 		Paragraph & par = pars_[pit];
@@ -372,7 +372,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	// special handling of new environment insets
 	BufferView & bv = cur.bv();
 	BufferParams const & params = bv.buffer().params();
-	Layout_ptr const & lyxlayout = params.getTextClass()[layout];
+	LayoutPtr const & lyxlayout = params.getTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
 		LYXERR(Debug::DEBUG) << "setting layout " << to_utf8(layout) << endl;

@@ -20,7 +20,7 @@ namespace lyx {
 class Layout;
 
 /// Global typedef
-typedef boost::shared_ptr<Layout> Layout_ptr;
+typedef boost::shared_ptr<Layout> LayoutPtr;
 
 
 } // namespace lyx

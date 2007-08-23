@@ -221,7 +221,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// FIXME: Change only the pasted paragraphs
 
 		BufferParams const & bp = cur.buffer().params();
-		Layout_ptr const layout =
+		LayoutPtr const layout =
 			bp.getTextClass().defaultLayout();
 		Font font = layout->font;
 		// ERT contents has always latex_language

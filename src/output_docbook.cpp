@@ -61,11 +61,11 @@ ParagraphList::const_iterator searchCommand(
 		ParagraphList::const_iterator const & par,
 		ParagraphList::const_iterator const & pend)
 {
-	Layout_ptr const & bstyle = par->layout();
+	LayoutPtr const & bstyle = par->layout();
 	ParagraphList::const_iterator p = boost::next(par);
 
 	for ( ; p != pend; ++p) {
-		Layout_ptr const & style = p->layout();
+		LayoutPtr const & style = p->layout();
 		if (style->latextype == LATEX_COMMAND
 				&& style->commanddepth <= bstyle->commanddepth)
 			return p;
@@ -78,10 +78,10 @@ ParagraphList::const_iterator searchEnvironment(
 		ParagraphList::const_iterator const & par,
 		ParagraphList::const_iterator const & pend)
 {
-	Layout_ptr const & bstyle = par->layout();
+	LayoutPtr const & bstyle = par->layout();
 	ParagraphList::const_iterator p = boost::next(par);
 	for (; p != pend; ++p) {
-		Layout_ptr const & style = p->layout();
+		LayoutPtr const & style = p->layout();
 		if (style->latextype == LATEX_COMMAND)
 			return p;
 
@@ -109,7 +109,7 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 					    ParagraphList::const_iterator const & pbegin,
 					    ParagraphList::const_iterator const & pend)
 {
-	Layout_ptr const & defaultstyle =
+	LayoutPtr const & defaultstyle =
 		buf.params().getTextClass().defaultLayout();
 	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
 		if (par != pbegin)
@@ -134,8 +134,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      ParagraphList::const_iterator const & pend) {
 	ParagraphList::const_iterator par = pbegin;
 
-	Layout_ptr const & defaultstyle = buf.params().getTextClass().defaultLayout();
-	Layout_ptr const & bstyle = par->layout();
+	LayoutPtr const & defaultstyle = buf.params().getTextClass().defaultLayout();
+	LayoutPtr const & bstyle = par->layout();
 	string item_tag;
 
 	// Opening outter tag
@@ -145,7 +145,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		os << "<![CDATA[";
 
 	while (par != pend) {
-		Layout_ptr const & style = par->layout();
+		LayoutPtr const & style = par->layout();
 		ParagraphList::const_iterator send;
 		string id = par->getID(buf, runparams);
 		string wrapper = "";
@@ -247,7 +247,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 					  ParagraphList::const_iterator const & pend)
 {
 	ParagraphList::const_iterator par = pbegin;
-	Layout_ptr const & bstyle = par->layout();
+	LayoutPtr const & bstyle = par->layout();
 
 	//Open outter tag
 	sgml::openTag(buf, os, runparams, *pbegin);
@@ -269,7 +269,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 
 	++par;
 	while (par != pend) {
-		Layout_ptr const & style = par->layout();
+		LayoutPtr const & style = par->layout();
 		ParagraphList::const_iterator send;
 
 		switch (style->latextype) {
@@ -321,7 +321,7 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 	}
 
 	while (par != pend) {
-		Layout_ptr const & style = par->layout();
+		LayoutPtr const & style = par->layout();
 		ParagraphList::const_iterator lastpar = par;
 		ParagraphList::const_iterator send;
 

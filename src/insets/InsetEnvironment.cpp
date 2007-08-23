@@ -90,7 +90,7 @@ int InsetEnvironment::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-Layout_ptr const & InsetEnvironment::layout() const
+LayoutPtr const & InsetEnvironment::layout() const
 {
 	return layout_;
 }

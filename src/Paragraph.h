@@ -172,9 +172,9 @@ public:
 	bool empty() const { return text_.empty(); }
 
 	///
-	Layout_ptr const & layout() const;
+	LayoutPtr const & layout() const;
 	///
-	void layout(Layout_ptr const & new_layout);
+	void layout(LayoutPtr const & new_layout);
 
 	/// This is the item depth, only used by enumerate and itemize
 	signed char itemdepth;
@@ -236,7 +236,7 @@ public:
 	docstring const translateIfPossible(docstring const & label,
 		BufferParams const & bparams) const;
 	/// Expand the counters for the labelstring of \c layout
-	docstring expandLabel(Layout_ptr const &, BufferParams const &,
+	docstring expandLabel(LayoutPtr const &, BufferParams const &,
 		bool process_appendix = true) const;
 	/// Actual paragraph alignment used
 	char getAlign() const;
@@ -245,7 +245,7 @@ public:
 	/// The maximal possible depth of a paragraph after this one
 	depth_type getMaxDepthAfter() const;
 	///
-	void applyLayout(Layout_ptr const & new_layout);
+	void applyLayout(LayoutPtr const & new_layout);
 
 	/// (logically) erase the char at pos; return true if it was actually erased
 	bool eraseChar(pos_type pos, bool trackChanges);
@@ -379,7 +379,7 @@ public:
 private:
 
 	///
-	Layout_ptr layout_;
+	LayoutPtr layout_;
 	/**
 	 * Keeping this here instead of in the pimpl makes LyX >10% faster
 	 * for average tasks as buffer loading/switching etc.

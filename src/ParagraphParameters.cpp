@@ -316,7 +316,7 @@ void params2string(Paragraph const & par, string & data)
 	ostringstream os;
 	params.write(os);
 
-	Layout_ptr const & layout = par.layout();
+	LayoutPtr const & layout = par.layout();
 
 	// Is alignment possible
 	os << "\\alignpossible " << layout->alignpossible << '\n';

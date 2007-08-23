@@ -258,7 +258,7 @@ int getEndLabel(pit_type p, ParagraphList const & pars)
 	pit_type pit = p;
 	depth_type par_depth = pars[p].getDepth();
 	while (pit != pit_type(pars.size())) {
-		Layout_ptr const & layout = pars[pit].layout();
+		LayoutPtr const & layout = pars[pit].layout();
 		int const endlabeltype = layout->endlabeltype;
 
 		if (endlabeltype != END_LABEL_NO_LABEL) {

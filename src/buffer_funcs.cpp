@@ -410,7 +410,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 {
 	TextClass const & textclass = buf.params().getTextClass();
 	Paragraph & par = it.paragraph();
-	Layout_ptr const & layout = par.layout();
+	LayoutPtr const & layout = par.layout();
 	Counters & counters = textclass.counters();
 
 	if (par.params().startOfAppendix()) {

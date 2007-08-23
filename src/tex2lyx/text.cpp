@@ -433,10 +433,10 @@ void handle_comment(ostream & os, string const & s, Context & context)
 }
 
 
-class isLayout : public std::unary_function<Layout_ptr, bool> {
+class isLayout : public std::unary_function<LayoutPtr, bool> {
 public:
 	isLayout(string const name) : name_(name) {}
-	bool operator()(Layout_ptr const & ptr) const {
+	bool operator()(LayoutPtr const & ptr) const {
 		return ptr->latexname() == name_;
 	}
 private:
@@ -444,7 +444,7 @@ private:
 };
 
 
-Layout_ptr findLayout(TextClass const & textclass,
+LayoutPtr findLayout(TextClass const & textclass,
 			 string const & name)
 {
 	TextClass::const_iterator beg = textclass.begin();
@@ -453,7 +453,7 @@ Layout_ptr findLayout(TextClass const & textclass,
 	TextClass::const_iterator
 		it = std::find_if(beg, end, isLayout(name));
 
-	return (it == end) ? Layout_ptr() : *it;
+	return (it == end) ? LayoutPtr() : *it;
 }
 
 
@@ -462,7 +462,7 @@ void eat_whitespace(Parser &, ostream &, Context &, bool);
 
 void output_command_layout(ostream & os, Parser & p, bool outer,
 			   Context & parent_context,
-			   Layout_ptr newlayout)
+			   LayoutPtr newlayout)
 {
 	parent_context.check_end_layout(os);
 	Context context(true, parent_context.textclass, newlayout,
@@ -718,7 +718,7 @@ void parse_unknown_environment(Parser & p, string const & name, ostream & os,
 void parse_environment(Parser & p, ostream & os, bool outer,
 		       Context & parent_context)
 {
-	Layout_ptr newlayout;
+	LayoutPtr newlayout;
 	string const name = p.getArg('{', '}');
 	const bool is_starred = suffixIs(name, '*');
 	string const unstarred_name = rtrim(name, "*");
@@ -1104,7 +1104,7 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
-	Layout_ptr newlayout;
+	LayoutPtr newlayout;
 	// Store the latest bibliographystyle (needed for bibtex inset)
 	string bibliographystyle;
 	bool const use_natbib = used_packages.find("natbib") != used_packages.end();

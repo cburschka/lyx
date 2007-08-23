@@ -122,7 +122,7 @@ void InsetText::clear()
 	ParagraphList & pars = paragraphs();
 
 	// This is a gross hack...
-	Layout_ptr old_layout = pars.begin()->layout();
+	LayoutPtr old_layout = pars.begin()->layout();
 
 	pars.clear();
 	pars.push_back(Paragraph());

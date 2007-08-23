@@ -277,7 +277,7 @@ void LaTeXFeatures::useLayout(docstring const & layoutname)
 				return;
 		}
 
-		Layout_ptr const & lyt = tclass[layoutname];
+		LayoutPtr const & lyt = tclass[layoutname];
 		if (!lyt->depends_on().empty()) {
 			++level;
 			useLayout(lyt->depends_on());

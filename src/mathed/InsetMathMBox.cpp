@@ -41,7 +41,7 @@ InsetMathMBox::InsetMathMBox()
 }
 
 
-InsetMathMBox::InsetMathMBox(Layout_ptr const & layout)
+InsetMathMBox::InsetMathMBox(LayoutPtr const & layout)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());

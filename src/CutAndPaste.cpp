@@ -148,7 +148,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// If we are in an inset which returns forceDefaultParagraphs,
 	// set the paragraphs to default
 	if (cur.inset().forceDefaultParagraphs(cur.idx())) {
-		Layout_ptr const layout =
+		LayoutPtr const layout =
 			buffer.params().getTextClass().defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
 		for (ParagraphList::iterator par = insertion.begin();

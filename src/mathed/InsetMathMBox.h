@@ -31,7 +31,7 @@ class InsetMathMBox : public InsetMath {
 public:
 	///
 	explicit InsetMathMBox();
-	explicit InsetMathMBox(Layout_ptr const & layout);
+	explicit InsetMathMBox(LayoutPtr const & layout);
 
 	/// this stores metrics information in cache_
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;

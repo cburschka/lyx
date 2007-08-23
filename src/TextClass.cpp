@@ -54,12 +54,12 @@ using std::ostream;
 
 namespace {
 
-class LayoutNamesEqual : public std::unary_function<Layout_ptr, bool> {
+class LayoutNamesEqual : public std::unary_function<LayoutPtr, bool> {
 public:
 	LayoutNamesEqual(docstring const & name)
 		: name_(name)
 	{}
-	bool operator()(Layout_ptr const & c) const
+	bool operator()(LayoutPtr const & c) const
 	{
 		return c->name() == name_;
 	}
@@ -926,7 +926,7 @@ bool TextClass::hasLayout(docstring const & n) const
 
 
 
-Layout_ptr const & TextClass::operator[](docstring const & name) const
+LayoutPtr const & TextClass::operator[](docstring const & name) const
 {
 	BOOST_ASSERT(!name.empty());
 
@@ -1046,7 +1046,7 @@ docstring const & TextClass::defaultLayoutName() const
 }
 
 
-Layout_ptr const & TextClass::defaultLayout() const
+LayoutPtr const & TextClass::defaultLayout() const
 {
 	return operator[](defaultLayoutName());
 }

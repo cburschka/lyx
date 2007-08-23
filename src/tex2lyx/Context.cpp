@@ -25,7 +25,7 @@ using std::string;
 
 namespace {
 
-void begin_layout(ostream & os, Layout_ptr layout, TeXFont const & font,
+void begin_layout(ostream & os, LayoutPtr layout, TeXFont const & font,
 		  TeXFont const & normalfont)
 {
 	os << "\n\\begin_layout " << to_utf8(layout->name()) << "\n";
@@ -85,7 +85,7 @@ bool Context::empty = true;
 
 Context::Context(bool need_layout_,
 		 TextClass const & textclass_,
-		 Layout_ptr layout_, Layout_ptr parent_layout_,
+		 LayoutPtr layout_, LayoutPtr parent_layout_,
 		 TeXFont font_)
 	: need_layout(need_layout_),
 	  need_end_layout(false), need_end_deeper(false),

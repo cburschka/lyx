@@ -1647,7 +1647,7 @@ docstring const Paragraph::translateIfPossible(docstring const & s,
 }
 
 
-docstring Paragraph::expandLabel(Layout_ptr const & layout,
+docstring Paragraph::expandLabel(LayoutPtr const & layout,
 		BufferParams const & bparams, bool process_appendix) const
 {
 	TextClass const & tclass = bparams.getTextClass();
@@ -1681,7 +1681,7 @@ docstring Paragraph::expandLabel(Layout_ptr const & layout,
 }
 
 
-void Paragraph::applyLayout(Layout_ptr const & new_layout)
+void Paragraph::applyLayout(LayoutPtr const & new_layout)
 {
 	layout(new_layout);
 	LyXAlignment const oldAlign = params().align();
@@ -1958,7 +1958,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 	bool return_value = false;
 
-	Layout_ptr style;
+	LayoutPtr style;
 
 	// well we have to check if we are in an inset with unlimited
 	// length (all in one row) if that is true then we don't allow
@@ -2322,7 +2322,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 {
 	bool emph_flag = false;
 
-	Layout_ptr const & style = layout();
+	LayoutPtr const & style = layout();
 	Font font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
@@ -2529,13 +2529,13 @@ int Paragraph::id() const
 }
 
 
-Layout_ptr const & Paragraph::layout() const
+LayoutPtr const & Paragraph::layout() const
 {
 	return layout_;
 }
 
 
-void Paragraph::layout(Layout_ptr const & new_layout)
+void Paragraph::layout(LayoutPtr const & new_layout)
 {
 	layout_ = new_layout;
 }

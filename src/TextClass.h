@@ -53,7 +53,7 @@ typedef std::map<docstring, InsetLayout> InsetLayouts;
 class TextClass {
 public:
 	/// The individual styles comprising the document class
-	typedef std::vector<Layout_ptr> LayoutList;
+	typedef std::vector<LayoutPtr> LayoutList;
 	/// Enumerate the paragraph styles.
 	typedef LayoutList::const_iterator const_iterator;
 	/// Construct a layout with default values. Actual values loaded later.
@@ -93,7 +93,7 @@ public:
 	bool hasLayout(docstring const & name) const;
 
 	///
-	Layout_ptr const & operator[](docstring const & vname) const;
+	LayoutPtr const & operator[](docstring const & vname) const;
 
 	/// Sees to that the textclass structure has been loaded
 	bool load(std::string const & path = std::string()) const;
@@ -115,7 +115,7 @@ public:
 	///
 	docstring const & defaultLayoutName() const;
 	///
-	Layout_ptr const & defaultLayout() const;
+	LayoutPtr const & defaultLayout() const;
 	///
 	std::string const & name() const;
 	///

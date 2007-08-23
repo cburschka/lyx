@@ -287,7 +287,7 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 		result.x = text_->leftMargin(buffer, max_width_, pit, row.pos());
 
 	// is there a manual margin with a manual label
-	Layout_ptr const & layout = par.layout();
+	LayoutPtr const & layout = par.layout();
 
 	if (layout->margintype == MARGIN_MANUAL
 	    && layout->labeltype == LABEL_MANUAL) {
@@ -470,7 +470,7 @@ void TextMetrics::rowBreakPoint(int width, pit_type const pit,
 		return;
 	}
 
-	Layout_ptr const & layout = par.layout();
+	LayoutPtr const & layout = par.layout();
 
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
 		row.endpos(addressBreakPoint(pos, par));
@@ -622,7 +622,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	// ok, let us initialize the maxasc and maxdesc value.
 	// Only the fontsize count. The other properties
 	// are taken from the layoutfont. Nicer on the screen :)
-	Layout_ptr const & layout = par.layout();
+	LayoutPtr const & layout = par.layout();
 
 	// as max get the first character of this row then it can
 	// increase but not decrease the height. Just some point to
@@ -823,7 +823,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	pos_type vc = row.pos();
 	pos_type end = row.endpos();
 	pos_type c = 0;
-	Layout_ptr const & layout = par.layout();
+	LayoutPtr const & layout = par.layout();
 
 	bool left_side = false;
 

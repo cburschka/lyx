@@ -68,7 +68,7 @@ using support::isFileReadable;
 
 namespace fs = boost::filesystem;
 
-Layout_ptr captionlayout;
+LayoutPtr captionlayout;
 
 // Hacks to allow the thing to link in the lyxlayout stuff
 LyXErr lyxerr(std::cerr.rdbuf());
@@ -428,7 +428,7 @@ void tex2lyx(std::istream &is, std::ostream &os)
 
 	stringstream ss;
 	TextClass textclass = parse_preamble(p, ss, documentclass);
-	captionlayout = Layout_ptr(Layout::forCaption());
+	captionlayout = LayoutPtr(Layout::forCaption());
 
 	active_environments.push_back("document");
 	Context context(true, textclass);
