@@ -121,6 +121,12 @@ private:
 };
 
 
+class TabWidget: public QTabWidget {
+public:
+	void showBar(bool show) { tabBar()->setVisible(show); }
+};
+
+
 } // namespace anon
 
 
@@ -131,7 +137,7 @@ struct GuiView::GuiViewPrivate
 	int posx_offset;
 	int posy_offset;
 
-	QTabWidget * tab_widget_;
+	TabWidget * tab_widget_;
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
 
@@ -227,7 +233,7 @@ GuiView::GuiView(int id)
 		setWindowIcon(QPixmap(toqstr(iconname.absFilename())));
 #endif
 
-	d.tab_widget_ = new QTabWidget;
+	d.tab_widget_ = new TabWidget;
 
 	QPushButton * closeTabButton = new QPushButton(this);
 	FileName const file = support::libFileSearch("images", "closetab", "xpm");
@@ -861,6 +867,8 @@ WorkArea * GuiView::addWorkArea(Buffer & buffer)
 	wa->bufferView().updateMetrics(false);
 	if (d.stack_widget_)
 		d.stack_widget_->setCurrentWidget(d.tab_widget_);
+	// Hide tabbar if there's only one tab.
+	d.tab_widget_->showBar(d.tab_widget_->count() > 1);
 	return wa;
 }
 
@@ -925,6 +933,8 @@ void GuiView::removeWorkArea(WorkArea * work_area)
 	if (d.tab_widget_->count()) {
 		// make sure the next work area is enabled.
 		d.tab_widget_->currentWidget()->setUpdatesEnabled(true);
+		// Hide tabbar if there's only one tab.
+		d.tab_widget_->showBar(d.tab_widget_->count() > 1);
 		return;
 	}
 
