@@ -50,13 +50,7 @@ MathData & CursorSlice::cell() const
 }
 
 
-Paragraph & CursorSlice::paragraph()
-{
-	return text()->getPar(pit_);
-}
-
-
-Paragraph const & CursorSlice::paragraph() const
+Paragraph & CursorSlice::paragraph() const
 {
 	return text()->getPar(pit_);
 }

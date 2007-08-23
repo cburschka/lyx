@@ -103,13 +103,9 @@ public:
 	/// texted specific stuff
 	///
 	/// returns text corresponding to this position
-	Text * text() { return inset_->getText(idx_); }
-	/// returns text corresponding to this position
-	Text const * text() const { return inset_->getText(idx_); }
+	Text * text() const { return inset_->getText(idx_); }
 	/// paragraph in this cell
-	Paragraph & paragraph();
-	/// paragraph in this cell
-	Paragraph const & paragraph() const;
+	Paragraph & paragraph() const;
 
 	///
 	/// mathed specific stuff
