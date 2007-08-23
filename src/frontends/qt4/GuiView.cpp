@@ -140,6 +140,8 @@ struct GuiView::GuiViewPrivate
 	TabWidget * tab_widget_;
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
+	/// view's menubar
+	QLMenubar * menubar_;
 
 	GuiViewPrivate() : posx_offset(0), posy_offset(0)
 	{}
@@ -278,7 +280,7 @@ GuiView::GuiView(int id)
 
 GuiView::~GuiView()
 {
-	menubar_.reset();
+	delete d.menubar_;
 	delete &d;
 }
 
@@ -306,7 +308,7 @@ QMenu* GuiView::createPopupMenu()
 
 void GuiView::init()
 {
-	menubar_.reset(new QLMenubar(this, menubackend));
+	d.menubar_ = new QLMenubar(this, menubackend);
 	QObject::connect(menuBar(), SIGNAL(triggered(QAction *)),
 		this, SLOT(updateMenu(QAction *)));
 
@@ -561,7 +563,7 @@ void GuiView::setGeometry(unsigned int width,
 
 void GuiView::updateMenu(QAction * /*action*/)
 {
-	menubar_->update();
+	d.menubar_->update();
 }
 
 
@@ -658,7 +660,6 @@ void GuiView::currentTabChanged(int i)
 	// hidden. This should go here because some dialogs (eg ToC)
 	// require bv_->text.
 	getDialogs().updateBufferDependent(true);
-	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();
 	updateWindowTitle();
@@ -945,6 +946,12 @@ void GuiView::showMiniBuffer(bool visible)
 
 	toolbars_->display("minibuffer", visible);
 	commandbuffer_->focus_command();
+}
+
+
+void GuiView::openMenu(docstring const & name)
+{
+	d.menubar_->openByName(name);
 }
 
 } // namespace frontend

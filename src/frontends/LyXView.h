@@ -41,7 +41,6 @@ namespace frontend {
 
 class ControlCommandBuffer;
 class Dialogs;
-class Menubar;
 class WorkArea;
 
 /**
@@ -130,11 +129,7 @@ public:
 	bool isToolbarVisible(std::string const & id);
 	///
 	virtual void showMiniBuffer(bool visible) = 0;
-
-	/// return the menubar for this view
-	Menubar & getMenubar() { return *menubar_.get(); }
-	///
-	Menubar const & getMenubar() const { return *menubar_.get(); }
+	virtual void openMenu(docstring const & name) = 0;
 
 	/// get access to the dialogs
 	Dialogs & getDialogs() { return *dialogs_.get(); }
@@ -159,8 +154,6 @@ public:
 	ToolbarInfo * getToolbarInfo(std::string const & name);
 	/// toggle toolbar state
 	void toggleToolbarState(std::string const & name, bool allowauto);
-	/// update the menubar
-	void updateMenubar();
 	/// update the status bar
 	virtual void updateStatusBar() = 0;
 
@@ -200,8 +193,6 @@ protected:
 	/// disconnect from signals in the given buffer
 	void disconnectBuffer();
 
-	/// view's menubar
-	boost::scoped_ptr<Menubar> menubar_;
 	/// view's toolbar
 	boost::scoped_ptr<Toolbars> toolbars_;
 

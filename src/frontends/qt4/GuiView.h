@@ -72,6 +72,7 @@ public:
 	virtual void clearMessage();
 	virtual bool hasFocus() const;
 	void showMiniBuffer(bool);
+	void openMenu(docstring const &);
 
 	/// show - display the top-level window
 	void show();

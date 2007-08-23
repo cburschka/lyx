@@ -308,9 +308,7 @@ void LyXView::updateToolbars()
 	} else
 		toolbars_->update(false, false, false);
 
-	// update redaonly status of open dialogs. This could also be in
-	// updateMenubar(), but since updateToolbars() and updateMenubar()
-	// are always called together it is only here.
+	// update redaonly status of open dialogs.
 	getDialogs().checkStatus();
 }
 
@@ -332,12 +330,6 @@ void LyXView::toggleToolbarState(string const & name, bool allowauto)
 	toolbars_->toggleToolbarState(name, allowauto);
 	// update toolbar
 	updateToolbars();
-}
-
-
-void LyXView::updateMenubar()
-{
-	menubar_->update();
 }
 
 

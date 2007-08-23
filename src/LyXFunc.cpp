@@ -1298,7 +1298,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_MENU_OPEN:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->getMenubar().openByName(from_utf8(argument));
+			lyx_view_->openMenu(from_utf8(argument));
 			break;
 
 		// --- lyxserver commands ----------------------------
@@ -1927,7 +1927,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 	}
 	if (!quitting && lyx_view_) {
-		lyx_view_->updateMenubar();
 		lyx_view_->updateToolbars();
 		// Some messages may already be translated, so we cannot use _()
 		sendDispatchMessage(translateIfPossible(getMessage()), cmd);
