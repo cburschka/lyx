@@ -115,11 +115,9 @@ public:
 	/// return the last column of the top grid
 	col_type lastcol() const { return ncols() - 1; }
 	/// the inset just behind the cursor
-	Inset * nextInset();
+	Inset * nextInset() const;
 	/// the inset just in front of the cursor
-	Inset * prevInset();
-	/// the inset just in front of the cursor
-	Inset const * prevInset() const;
+	Inset * prevInset() const;
 	///
 	bool boundary() const { return boundary_; }
 	///
@@ -138,42 +136,29 @@ public:
 	// math-specific part
 	//
 	/// return the mathed cell this cursor is in
-	MathData const & cell() const;
-	/// return the mathed cell this cursor is in
-	MathData & cell();
+	MathData & cell() const;
 	/// the mathatom left of the cursor
-	MathAtom const & prevAtom() const;
-	/// the mathatom left of the cursor
-	MathAtom & prevAtom();
+	MathAtom & prevAtom() const;
 	/// the mathatom right of the cursor
-	MathAtom const & nextAtom() const;
-	/// the mathatom right of the cursor
-	MathAtom & nextAtom();
+	MathAtom & nextAtom() const;
 
-	//
 	// text-specific part
 	//
-	/// the paragraph we're in
-	Paragraph & paragraph();
 	/// the paragraph we're in in text mode.
 	/// \warning only works within text!
-	Paragraph const & paragraph() const;
+	Paragraph & paragraph() const;
 	/// the paragraph we're in in any case.
 	/// This method will give the containing paragraph if
 	/// in not in text mode (ex: in mathed).
-	Paragraph const & innerParagraph() const;
+	Paragraph & innerParagraph() const;
 	///
-	Text * text();
-	///
-	Text const * text() const;
+	Text * text() const;
 	/// the containing inset or the cell, respectively
 	Inset * realInset() const;
 	///
 	Inset * innerInsetOfType(int code) const;
 	///
-	Text * innerText();
-	///
-	Text const * innerText() const;
+	Text * innerText() const;
 
 	//
 	// elementary moving

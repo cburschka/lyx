@@ -58,7 +58,7 @@ DocIterator doc_iterator_end(Inset & inset)
 }
 
 
-Inset * DocIterator::nextInset()
+Inset * DocIterator::nextInset() const
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == lastpos())
@@ -73,24 +73,7 @@ Inset * DocIterator::nextInset()
 }
 
 
-Inset * DocIterator::prevInset()
-{
-	BOOST_ASSERT(!empty());
-	if (pos() == 0)
-		return 0;
-	if (inMathed())
-		if (cell().empty())
-			// FIXME: this should not happen but it does.
-			// See bug 3189
-			// http://bugzilla.lyx.org/show_bug.cgi?id=3189
-			return 0;
-		else
-			return prevAtom().nucleus();
-	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
-}
-
-
-Inset const * DocIterator::prevInset() const
+Inset * DocIterator::prevInset() const
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == 0)
@@ -119,7 +102,7 @@ Inset * DocIterator::realInset() const
 }
 
 
-MathAtom const & DocIterator::prevAtom() const
+MathAtom & DocIterator::prevAtom() const
 {
 	BOOST_ASSERT(!empty());
 	BOOST_ASSERT(pos() > 0);
@@ -127,15 +110,7 @@ MathAtom const & DocIterator::prevAtom() const
 }
 
 
-MathAtom & DocIterator::prevAtom()
-{
-	BOOST_ASSERT(!empty());
-	BOOST_ASSERT(pos() > 0);
-	return cell()[pos() - 1];
-}
-
-
-MathAtom const & DocIterator::nextAtom() const
+MathAtom & DocIterator::nextAtom() const
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
@@ -144,29 +119,14 @@ MathAtom const & DocIterator::nextAtom() const
 }
 
 
-MathAtom & DocIterator::nextAtom()
-{
-	BOOST_ASSERT(!empty());
-	//lyxerr << "lastpos: " << lastpos() << " next atom:\n" << *this << endl;
-	BOOST_ASSERT(pos() < lastpos());
-	return cell()[pos()];
-}
-
-
-Text * DocIterator::text()
-{
-	BOOST_ASSERT(!empty());
-	return top().text();
-}
-
-Text const * DocIterator::text() const
+Text * DocIterator::text() const
 {
 	BOOST_ASSERT(!empty());
 	return top().text();
 }
 
 
-Paragraph & DocIterator::paragraph()
+Paragraph & DocIterator::paragraph() const
 {
 	if (!inTexted())
 		lyxerr << *this << endl;
@@ -175,14 +135,7 @@ Paragraph & DocIterator::paragraph()
 }
 
 
-Paragraph const & DocIterator::paragraph() const
-{
-	BOOST_ASSERT(inTexted());
-	return top().paragraph();
-}
-
-
-Paragraph const & DocIterator::innerParagraph() const
+Paragraph & DocIterator::innerParagraph() const
 {
 	BOOST_ASSERT(!empty());
 	// go up until first non-0 text is hit
@@ -249,32 +202,14 @@ DocIterator::col_type DocIterator::col() const
 }
 
 
-MathData const & DocIterator::cell() const
+MathData & DocIterator::cell() const
 {
 //	BOOST_ASSERT(inMathed());
 	return top().cell();
 }
 
 
-MathData & DocIterator::cell()
-{
-//	BOOST_ASSERT(inMathed());
-	return top().cell();
-}
-
-
-Text * DocIterator::innerText()
-{
-	BOOST_ASSERT(!empty());
-	// Go up until first non-0 text is hit
-	// (innermost text is 0 in mathed)
-	for (int i = depth() - 1; i >= 0; --i)
-		if (slices_[i].text())
-			return slices_[i].text();
-	return 0;
-}
-
-Text const * DocIterator::innerText() const
+Text * DocIterator::innerText() const
 {
 	BOOST_ASSERT(!empty());
 	// go up until first non-0 text is hit
