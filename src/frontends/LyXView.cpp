@@ -38,8 +38,6 @@
 #include "MenuBackend.h"
 #include "Paragraph.h"
 
-#include "controllers/ControlCommandBuffer.h"
-
 #include "support/lstrings.h"
 #include "support/filetools.h" // OnlyFilename()
 #include "support/Timeout.h"
@@ -72,7 +70,7 @@ LyXView::LyXView(int id)
 	: toolbars_(new Toolbars(*this)),
 	  autosave_timeout_(new Timeout(5000)),
 	  dialogs_(new Dialogs(*this)),
-	  controlcommand_(new ControlCommandBuffer(*this)), id_(id)
+	  id_(id)
 {
 	// Start autosave timer
 	if (lyxrc.autosave) {

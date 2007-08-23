@@ -572,7 +572,7 @@ void GuiView::setWindowTitle(docstring const & t, docstring const & it)
 
 void GuiView::addCommandBuffer(QToolBar * toolbar)
 {
-	commandbuffer_ = new QCommandBuffer(this, *controlcommand_);
+	commandbuffer_ = new QCommandBuffer(this);
 	toolbar->addWidget(commandbuffer_);
 }
 

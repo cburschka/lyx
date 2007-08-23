@@ -12,6 +12,8 @@
 #ifndef QCOMMANDBUFFER_H
 #define QCOMMANDBUFFER_H
 
+#include "controllers/ControlCommandBuffer.h"
+
 #include <QWidget>
 
 class QListWidgetItem;
@@ -21,12 +23,11 @@ namespace frontend {
 
 class QCommandEdit;
 class GuiView;
-class ControlCommandBuffer;
 
 class QCommandBuffer : public QWidget {
 	Q_OBJECT
 public:
-	QCommandBuffer(GuiView * view, ControlCommandBuffer & control);
+	QCommandBuffer(GuiView * view);
 
 	/// focus the edit widget
 	void focus_command();
@@ -50,7 +51,7 @@ private:
 	GuiView * view_;
 
 	/// controller
-	ControlCommandBuffer & controller_;
+	ControlCommandBuffer controller_;
 
 	/// command widget
 	QCommandEdit * edit_;

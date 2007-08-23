@@ -18,8 +18,6 @@
 #include "QCommandEdit.h"
 #include "qt_helpers.h"
 
-#include "controllers/ControlCommandBuffer.h"
-
 #include "support/filetools.h"
 
 #include <QHBoxLayout>
@@ -77,8 +75,8 @@ protected:
 } // end of anon
 
 
-QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control)
-	: view_(view), controller_(control)
+QCommandBuffer::QCommandBuffer(GuiView * view)
+	: view_(view), controller_(*view)
 {
 	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm").absFilename()));
 	QPixmap qpdown(toqstr(libFileSearch("images", "down", "xpm").absFilename()));

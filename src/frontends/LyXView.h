@@ -39,7 +39,6 @@ class Timeout;
 
 namespace frontend {
 
-class ControlCommandBuffer;
 class Dialogs;
 class WorkArea;
 
@@ -256,14 +255,6 @@ private:
 protected:
 	///
 	void updateToc();
-
-	/// view's command buffer controller
-	// this has to be declared _after_ lyxfunc_ as its initialization depends
-	// on it!
-	typedef boost::scoped_ptr<ControlCommandBuffer>
-	CommandBufferPtr;
-
-	CommandBufferPtr const controlcommand_;
 
 private:
 	int id_;
