@@ -102,15 +102,11 @@ void CursorSlice::forwardPos()
 		return;
 	}
 
-	// otherwise try to move on one cell if possible
-	if (idx() < lastidx()) {
-		//lyxerr << "... next idx" << endl;
-		++idx();
-		pit() = 0;
-		pos() = 0;
-		return;
-	}
-	BOOST_ASSERT(false);
+	// otherwise move on one cell
+	//lyxerr << "... next idx" << endl;
+	++idx();
+	pit() = 0;
+	pos() = 0;
 }
 
 
