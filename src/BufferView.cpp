@@ -1516,7 +1516,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		el = buf.errorList("Parse");
 		recordUndo(cursor_);
 		cap::pasteParagraphList(cursor_, buf.paragraphs(),
-					     buf.params().textclass, el);
+					     buf.params().getTextClass_ptr(), el);
 		res = _("Document %1$s inserted.");
 	} else
 		res = _("Could not insert document %1$s");

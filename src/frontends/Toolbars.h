@@ -23,6 +23,7 @@
 #ifndef TOOLBARS_H
 #define TOOLBARS_H
 
+#include "TextClass_ptr.h"
 #include "ToolbarBackend.h"
 #include "Session.h"
 
@@ -115,7 +116,7 @@ public:
 	/** Populate the layout combox - returns whether we did a full
 	 *  update or not
 	 */
-	bool updateLayoutList(int textclass);
+	bool updateLayoutList(TextClass_ptr textclass);
 
 	/// Drop down the layout list.
 	void openLayoutList();
@@ -150,7 +151,7 @@ private:
 	ToolbarsMap toolbars_;
 
 	/// The last textclass layout list in the layout choice selector
-	int last_textclass_;
+	TextClass_ptr last_textclass_;
 
 	// load flags with saved values
 	void initFlags(ToolbarInfo & tbinfo);

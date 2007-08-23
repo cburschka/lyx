@@ -834,12 +834,12 @@ void QDocumentDialog::classChanged()
 	textclass_type const tc = latexModule->classCO->currentIndex();
 
 	if (form_->controller().loadTextclass(tc)) {
-		params.textclass = tc;
+		params.setJustBaseClass(tc);
 		if (lyxrc.auto_reset_options)
 			params.useClassDefaults();
 		form_->update_contents();
 	} else {
-		latexModule->classCO->setCurrentIndex(params.textclass);
+		latexModule->classCO->setCurrentIndex(params.getBaseClass());
 	}
 }
 
@@ -969,8 +969,7 @@ void QDocumentDialog::apply(BufferParams & params)
 	}
 
 	// text layout
-	params.textclass =
-		latexModule->classCO->currentIndex();
+	params.setJustBaseClass(latexModule->classCO->currentIndex());
 
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		params.pagestyle = "default";
@@ -1255,7 +1254,7 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 	}
 
 	// text layout
-	latexModule->classCO->setCurrentIndex(params.textclass);
+	latexModule->classCO->setCurrentIndex(params.getBaseClass());
 
 	updatePagestyle(form_->controller().textClass().opt_pagestyle(),
 				 params.pagestyle);
@@ -1454,8 +1453,7 @@ void QDocument::useClassDefaults()
 {
 	BufferParams & params = controller().params();
 
-	///\todo verify the use of below with lyx-devel:
-	params.textclass = dialog_->latexModule->classCO->currentIndex();
+	params.setJustBaseClass(dialog_->latexModule->classCO->currentIndex());
 
 	params.useClassDefaults();
 	update_contents();

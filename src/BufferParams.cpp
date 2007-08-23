@@ -19,6 +19,7 @@
 
 #include "Author.h"
 #include "BranchList.h"
+#include "buffer_funcs.h"
 #include "Bullet.h"
 #include "debug.h"
 #include "Encoding.h"
@@ -268,15 +269,6 @@ SpaceTranslator const & spacetranslator()
 }
 
 
-textclass_type defaultTextclass()
-{
-	// Initialize textclass to point to article. if `first' is
-	// true in the returned pair, then `second' is the textclass
-	// number; if it is false, second is 0. In both cases, second
-	// is what we want.
-	return textclasslist.numberOfClass("article").second;
-}
-
 } // anon namespace
 
 
@@ -322,8 +314,9 @@ void BufferParams::MemoryTraits::destroy(BufferParams::Impl * ptr)
 
 
 BufferParams::BufferParams()
-	: textclass(defaultTextclass()), pimpl_(new Impl)
+	: pimpl_(new Impl)
 {
+	setBaseClass(defaultTextclass());
 	paragraph_separation = PARSEP_INDENT;
 	quotes_language = InsetQuotes::EnglishQ;
 	fontsize = "default";
@@ -458,20 +451,17 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 		pair<bool, lyx::textclass_type> pp =
 			textclasslist.numberOfClass(classname);
 		if (pp.first) {
-			textclass = pp.second;
+			setBaseClass(pp.second);
 		} else {
 			// if text class does not exist, try to load it from filepath
 			pp = textclasslist.addTextClass(classname, filepath);
 			if (pp.first) {
-				textclass = pp.second;
+				setBaseClass(pp.second);
 			} else {
-				textclass = defaultTextclass();
+				setBaseClass(defaultTextclass());
 				return classname;
 			}
 		}
-		// FIXME: isTeXClassAvailable will try to load the layout file, but will
-		// fail because of the lack of path info. Warnings will be given although
-		// the layout file will be correctly loaded later.
 		if (!getTextClass().isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
@@ -648,7 +638,7 @@ void BufferParams::writeFile(ostream & os) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the textclass
-	os << "\\textclass " << textclasslist[textclass].name() << '\n';
+	os << "\\textclass " << textclasslist[baseClass_].name() << '\n';
 
 	// then the preamble
 	if (!preamble.empty()) {
@@ -1172,7 +1162,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 void BufferParams::useClassDefaults()
 {
-	TextClass const & tclass = textclasslist[textclass];
+	TextClass const & tclass = textclasslist[baseClass_];
 
 	sides = tclass.sides();
 	columns = tclass.columns();
@@ -1188,7 +1178,7 @@ void BufferParams::useClassDefaults()
 
 bool BufferParams::hasClassDefaults() const
 {
-	TextClass const & tclass = textclasslist[textclass];
+	TextClass const & tclass = textclasslist[baseClass_];
 
 	return (sides == tclass.sides()
 		&& columns == tclass.columns()
@@ -1201,7 +1191,42 @@ bool BufferParams::hasClassDefaults() const
 
 TextClass const & BufferParams::getTextClass() const
 {
-	return textclasslist[textclass];
+	return *textClass_;
+}
+
+
+TextClass_ptr BufferParams::getTextClass_ptr() const {
+	return textClass_;
+}
+
+
+void BufferParams::setTextClass(TextClass_ptr tc) {
+	textClass_ = tc;
+}
+
+
+void BufferParams::setBaseClass(textclass_type tc)
+{
+	baseClass_ = tc;
+	makeTextClass();
+}
+
+
+void BufferParams::setJustBaseClass(textclass_type tc)
+{ 
+	baseClass_ = tc; 
+}
+
+
+textclass_type BufferParams::getBaseClass() const
+{
+	return baseClass_;
+}
+
+
+void BufferParams::makeTextClass()
+{
+	textClass_.reset(new TextClass(textclasslist[getBaseClass()]));
 }
 
 

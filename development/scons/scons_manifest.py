@@ -107,6 +107,7 @@ src_header_files = Split('''
     TexRow.h
     Text.h
     TextClass.h
+    TextClass_ptr.h
     TextClassList.h
     TextMetrics.h
     Thesaurus.h

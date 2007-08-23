@@ -35,7 +35,7 @@ namespace frontend {
 Toolbars::Toolbars(LyXView & owner)
 	: owner_(owner),
 	  layout_(0),
-	  last_textclass_(-1)
+	  last_textclass_(TextClass_ptr())
 {}
 
 #define TurnOnFlag(x)   flags |= ToolbarInfo::x
@@ -286,7 +286,7 @@ void Toolbars::setLayout(docstring const & layout)
 }
 
 
-bool Toolbars::updateLayoutList(int textclass)
+bool Toolbars::updateLayoutList(TextClass_ptr textclass)
 {
 	// update the layout display
 	if (last_textclass_ != textclass) {
@@ -308,7 +308,7 @@ void Toolbars::openLayoutList()
 
 void Toolbars::clearLayoutList()
 {
-	last_textclass_ = -1;
+	last_textclass_ = TextClass_ptr();
 	if (layout_)
 		layout_->clear();
 }

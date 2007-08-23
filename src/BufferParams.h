@@ -17,17 +17,18 @@
 
 #include "BiblioInfo.h"
 #include "TextClass.h"
+#include "TextClass_ptr.h"
 #include "paper.h"
 
 #include "insets/InsetQuotes.h"
 
 #include "support/copied_ptr.h"
+#include "support/FileName.h"
 #include "support/types.h"
 
 #include "frontends/controllers/frontend_helpers.h"
 
 #include <vector>
-
 
 namespace lyx {
 
@@ -42,9 +43,8 @@ class TexRow;
 class VSpace;
 class Language;
 
-
 /** Buffer parameters.
- *  This class contains all the parameters for this a buffer uses. Some
+ *  This class contains all the parameters for this buffer's use. Some
  *  work needs to be done on this class to make it nice. Now everything
  *  is in public.
  */
@@ -88,7 +88,7 @@ public:
 	///
 	void setDefSkip(VSpace const & vs);
 
-	/** Wether paragraphs are separated by using a indent like in
+	/** Whether paragraphs are separated by using a indent like in
 	 *  articles or by using a little skip like in letters.
 	 */
 	PARSEP paragraph_separation;
@@ -98,10 +98,30 @@ public:
 	InsetQuotes::quote_times quotes_times;
 	///
 	std::string fontsize;
-	///
-	textclass_type textclass;
-	///
+	///Get the LyX TextClass (that is, the layout file) this document is using.
+	textclass_type getBaseClass() const;
+	///Set the LyX TextClass (that is, the layout file) this document is using.
+	///NOTE This also calls makeTextClass(), to update the local
+	///TextClass.
+	void setBaseClass(textclass_type);
+	///Returns the TextClass currently in use: the BaseClass as modified
+	///by modules.
 	TextClass const & getTextClass() const;
+	///Returns a pointer to the TextClass currently in use: the BaseClass 
+	///as modified by modules. (See \file TextClass_ptr.h for the typedef.)
+	TextClass_ptr getTextClass_ptr() const;
+	///Set the LyX TextClass---layout file---this document is using.
+	///This does NOT call makeTextClass() and so should be used with
+	///care. This is most likely not what you want if you are operating on 
+	///BufferParams that are actually associatd with a Buffer. If, on the
+	///other hand, you are using a temporary set of BufferParams---say, in
+	///a controller, it may well be, since in that case the local TextClass
+	///has nothing to do.
+	void setJustBaseClass(textclass_type);
+	/// This bypasses the baseClass and sets the textClass directly.
+	/// Should be called with care and would be better not being here,
+	/// but it seems to be needed by CutAndPaste::putClipboard().
+	void setTextClass(TextClass_ptr);
 
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;
@@ -202,16 +222,6 @@ public:
 	/// \param index should lie in the range 0 <= \c index <= 3.
 	Bullet & user_defined_bullet(size_type index);
 	Bullet const & user_defined_bullet(size_type index) const;
-	///
-	void readPreamble(Lexer &);
-	///
-	void readLanguage(Lexer &);
-	///
-	void readGraphicsDriver(Lexer &);
-	///
-	void readBullets(Lexer &);
-	///
-	void readBulletsLaTeX(Lexer &);
 
 	/// Whether to load a package such as amsmath or esint.
 	/// The enum values must not be changed (file format!)
@@ -271,6 +281,27 @@ public:
 	void setCiteEngine(biblio::CiteEngine const);
 
 private:
+	///
+	void readPreamble(Lexer &);
+	///
+	void readLanguage(Lexer &);
+	///
+	void readGraphicsDriver(Lexer &);
+	///
+	void readBullets(Lexer &);
+	///
+	void readBulletsLaTeX(Lexer &);
+	/// create our local TextClass.
+	void makeTextClass();
+
+	
+	/// for use with natbib
+	biblio::CiteEngine cite_engine_;
+	/// the base TextClass associated with the document
+	textclass_type baseClass_;
+	/// the possibly modular TextClass actually in use
+	TextClass_ptr textClass_;
+
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.
 	 */
@@ -282,8 +313,6 @@ private:
 	};
 	support::copied_ptr<Impl, MemoryTraits> pimpl_;
 
-	///
-	biblio::CiteEngine cite_engine_;
 };
 
 } // namespace lyx

@@ -28,6 +28,7 @@
 #include "LaTeX.h"
 #include "LyX.h"
 #include "TextClass.h"
+#include "TextClassList.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphList.h"
@@ -632,6 +633,15 @@ void checkBufferStructure(Buffer & buffer, ParIterator const & par_it)
 	}
 }
 
+textclass_type defaultTextclass()
+{
+	// We want to return the article class. if `first' is
+	// true in the returned pair, then `second' is the textclass
+	// number; if it is false, second is 0. In both cases, second
+	// is what we want.
+	return textclasslist.numberOfClass("article").second;
+}
+
 
 void loadChildDocuments(Buffer const & buf)
 {
@@ -652,5 +662,4 @@ void loadChildDocuments(Buffer const & buf)
 	if (use_gui && buf.getMasterBuffer() == &buf)
 		updateLabels(buf);
 }
-
 } // namespace lyx

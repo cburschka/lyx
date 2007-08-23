@@ -482,7 +482,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 		Buffer * tmp = theBufferList().getBuffer(included_file.absFilename());
 
-		if (tmp->params().textclass != m_buffer->params().textclass) {
+		if (tmp->params().getBaseClass() != m_buffer->params().getBaseClass()) {
 			// FIXME UNICODE
 			docstring text = bformat(_("Included file `%1$s'\n"
 						"has textclass `%2$s'\n"

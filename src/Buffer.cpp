@@ -49,6 +49,7 @@
 #include "ParIterator.h"
 #include "sgml.h"
 #include "TexRow.h"
+#include "TextClassList.h"
 #include "TexStream.h"
 #include "TocBackend.h"
 #include "Undo.h"
@@ -439,6 +440,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().headsep.erase();
 	params().footskip.erase();
 	params().listings_params.clear();
+	
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];
 		params().temp_bullet(i) = ITEMIZE_DEFAULTS[i];
@@ -515,7 +517,7 @@ bool Buffer::readDocument(Lexer & lex)
 		Alert::error(_("Can't load document class"), bformat(
 			_("Using the default document class, because the "
 				     "class %1$s could not be loaded."), from_utf8(theclass)));
-		params().textclass = 0;
+		params().setBaseClass(defaultTextclass());
 	}
 
 	if (params().outputChanges) {

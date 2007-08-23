@@ -87,7 +87,7 @@ BufferId ControlDocument::id() const
 
 TextClass const & ControlDocument::textClass() const
 {
-	return textclasslist[bp_->textclass];
+	return textclasslist[bp_->getBaseClass()];
 }
 
 
@@ -113,8 +113,8 @@ void ControlDocument::dispatchParams()
 
 	// Set the document class.
 	textclass_type const old_class =
-		kernel().buffer().params().textclass;
-	textclass_type const new_class = bp_->textclass;
+		kernel().buffer().params().getBaseClass();
+	textclass_type const new_class = bp_->getBaseClass();
 	if (new_class != old_class) {
 		string const name = textclasslist[new_class].name();
 		kernel().dispatch(FuncRequest(LFUN_TEXTCLASS_APPLY, name));

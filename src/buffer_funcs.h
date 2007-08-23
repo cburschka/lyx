@@ -72,6 +72,9 @@ void updateLabels(Buffer const &, ParIterator &);
 void checkBufferStructure(Buffer &, ParIterator const &);
 
 ///
+textclass_type defaultTextclass();
+
+///
 void loadChildDocuments(Buffer const & buffer);
 
 } // namespace lyx

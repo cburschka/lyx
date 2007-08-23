@@ -816,10 +816,10 @@ void loadTextclass(string const & name)
 	textclass_type const tc = tc_pair.second;
 
 	if (!textclasslist[tc].load()) {
-		docstring s = bformat(_("The document could not be converted\n"
-						  "into the document class %1$s."),
+		docstring s = bformat(_("The document class %1$s."
+				   "could not be loaded."),
 				   from_utf8(textclasslist[tc].name()));
-		Alert::error(_("Could not change class"), s);
+		Alert::error(_("Could not load class"), s);
 	}
 }
 
@@ -1777,9 +1777,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 
-			textclass_type const old_class =
-				buffer->params().textclass;
-
 			loadTextclass(argument);
 
 			std::pair<bool, textclass_type> const tc_pair =
@@ -1788,18 +1785,23 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (!tc_pair.first)
 				break;
 
+			textclass_type const old_class = buffer->params().getBaseClass();
 			textclass_type const new_class = tc_pair.second;
+
 			if (old_class == new_class)
 				// nothing to do
 				break;
 
 			lyx_view_->message(_("Converting document to new document class..."));
 			recordUndoFullDocument(view());
-			buffer->params().textclass = new_class;
+			//Save the old, possibly modular, layout for use in conversion.
+			TextClass_ptr oldClass = buffer->params().getTextClass_ptr();
+			buffer->params().setBaseClass(new_class);
+			
 			StableDocIterator backcur(view()->cursor());
 			ErrorList & el = buffer->errorList("Class Switch");
 			cap::switchBetweenClasses(
-				old_class, new_class,
+				oldClass, buffer->params().getTextClass_ptr(),
 				static_cast<InsetText &>(buffer->inset()), el);
 
 			view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
