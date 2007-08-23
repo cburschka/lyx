@@ -15,9 +15,6 @@
 #ifndef GUI_VIEW_H
 #define GUI_VIEW_H
 
-// Must be here because of moc.
-#include <config.h>
-
 #include "frontends/LyXView.h"
 #include "FuncRequest.h"
 
