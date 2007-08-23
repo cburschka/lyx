@@ -13,8 +13,6 @@
 #ifndef QLMENUBAR_H
 #define QLMENUBAR_H
 
-#include "frontends/Menubar.h"
-
 #include "QLPopupMenu.h"
 
 #include <map>
@@ -34,7 +32,7 @@ namespace frontend {
 class GuiView;
 class LyXView;
 
-class QLMenubar : public QObject, public Menubar {
+class QLMenubar : public QObject {
 	Q_OBJECT
 public:
 	QLMenubar(LyXView *, MenuBackend &);
@@ -53,10 +51,6 @@ public:
 
 	/// update the state of the menuitems - not needed
 	void update();
-
-public Q_SLOTS:
-	/// populate a toplevel menu and all its children on demand
-//	void updateMenu();
 
 private:
 	/// Initialize specific MACOS X menubar

@@ -28,7 +28,6 @@ liblyxfrontends_la_SOURCES = \
 	KeySymbol.h \
 	LyXView.cpp \
 	LyXView.h \
-	Menubar.h \
 	Painter.cpp \
 	Painter.h \
 	Toolbars.cpp \

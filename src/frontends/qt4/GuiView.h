@@ -92,9 +92,6 @@ public Q_SLOTS:
 	/// idle timeout
 	void update_view_state_qt();
 
-	/// populate a toplevel menu and all its children on demand
-	void updateMenu(QAction *);
-
 	void currentTabChanged(int index);
 	void closeCurrentTab();
 

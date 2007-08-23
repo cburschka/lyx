@@ -309,8 +309,6 @@ QMenu* GuiView::createPopupMenu()
 void GuiView::init()
 {
 	d.menubar_ = new QLMenubar(this, menubackend);
-	QObject::connect(menuBar(), SIGNAL(triggered(QAction *)),
-		this, SLOT(updateMenu(QAction *)));
 
 	toolbars_->init();
 
@@ -558,12 +556,6 @@ void GuiView::setGeometry(unsigned int width,
 #endif
 #endif
 		}
-}
-
-
-void GuiView::updateMenu(QAction * /*action*/)
-{
-	d.menubar_->update();
 }
 
 

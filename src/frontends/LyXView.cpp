@@ -15,7 +15,6 @@
 
 #include "Dialogs.h"
 #include "Toolbars.h"
-#include "Menubar.h"
 #include "WorkArea.h"
 #include "Gui.h"
 

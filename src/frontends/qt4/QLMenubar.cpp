@@ -111,9 +111,6 @@ void QLMenubar::openByName(docstring const & name)
 }
 
 
-void QLMenubar::update()
-{ }
-
 GuiView * QLMenubar::view()
 {
 	return owner_;

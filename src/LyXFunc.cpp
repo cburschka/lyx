@@ -84,9 +84,7 @@
 #include "frontends/Gui.h"
 #include "frontends/KeySymbol.h"
 #include "frontends/LyXView.h"
-#include "frontends/Menubar.h"
 #include "frontends/Selection.h"
-#include "frontends/Toolbars.h"
 #include "frontends/WorkArea.h"
 
 #include "support/environment.h"
