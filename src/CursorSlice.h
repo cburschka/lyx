@@ -121,6 +121,10 @@ public:
 	void forwardPos();
 	/// move to previous position
 	void backwardPos();
+	/// move to next cell
+	void forwardIdx();
+	/// move to previous cell
+	void backwardIdx();
 	/// are we at the end of this slice
 	bool at_end() const;
 	/// are we at the start of this slice

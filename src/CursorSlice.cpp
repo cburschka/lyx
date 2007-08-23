@@ -104,6 +104,19 @@ void CursorSlice::forwardPos()
 
 	// otherwise move on one cell
 	//lyxerr << "... next idx" << endl;
+
+	BOOST_ASSERT(idx() < nargs());
+
+	++idx();
+	pit() = 0;
+	pos() = 0;
+}
+
+
+void CursorSlice::forwardIdx()
+{
+	BOOST_ASSERT(idx() < nargs());
+
 	++idx();
 	pit() = 0;
 	pos() = 0;

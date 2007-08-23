@@ -172,8 +172,6 @@ public:
 	void forwardChar();
 	/// move on one paragraph
 	void forwardPar();
-	/// move on one cell
-	void forwardIdx();
 	/// move on one inset
 	void forwardInset();
 	/// move backward one logical position
@@ -182,8 +180,6 @@ public:
 	void backwardChar();
 	/// move backward one paragraph
 	void backwardPar();
-	/// move backward one cell
-	void backwardIdx();
 	/// move backward one inset
 	/// FIXME: This is not implemented!
 	//void backwardInset();
