@@ -59,6 +59,7 @@
 #include <QPushButton>
 #include <QStackedWidget>
 #include <QStatusBar>
+#include <QTabBar>
 #include <QToolBar>
 #include <QTabWidget>
 #include <QUrl>
