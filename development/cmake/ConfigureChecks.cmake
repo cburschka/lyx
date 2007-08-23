@@ -16,11 +16,11 @@ include(CheckCXXSourceCompiles)
 
 check_include_file_cxx(aspell.h HAVE_ASPELL_H)
 check_include_file_cxx(aspell/aspell.h HAVE_ASPELL_ASPELL_H)
-check_include_file_cxx(istream HAVE_ISTREAM)
-check_include_file_cxx(ostream HAVE_OSTREAM)
-check_include_file_cxx(ios HAVE_IOS)
-check_include_file_cxx(sstream HAVE_SSTREAM)
-check_include_file_cxx(locale HAVE_LOCALE)
+#check_include_file_cxx(istream HAVE_ISTREAM)
+#check_include_file_cxx(ostream HAVE_OSTREAM)
+#check_include_file_cxx(ios HAVE_IOS)
+#check_include_file_cxx(sstream HAVE_SSTREAM)
+#check_include_file_cxx(locale HAVE_LOCALE)
 
 check_include_files(io.h HAVE_IO_H)
 check_include_files(limits.h HAVE_LIMITS_H)
@@ -93,34 +93,34 @@ check_type_size(wchar_t HAVE_WCHAR_T)
 check_type_size(wint_t  HAVE_WINT_T)
 
 
-check_cxx_source_compiles(
-	"
-	#include <algorithm>
-	using std::count;
-	int countChar(char * b, char * e, char const c)
-	{
-		return count(b, e, c);
-	}
-	int main(){return 0;}
-	"
-HAVE_STD_COUNT)
+#check_cxx_source_compiles(
+#	"
+#	#include <algorithm>
+#	using std::count;
+#	int countChar(char * b, char * e, char const c)
+#	{
+#		return count(b, e, c);
+#	}
+#	int main(){return 0;}
+#	"
+#HAVE_STD_COUNT)
 
-check_cxx_source_compiles(
-	"
-	#include <streambuf>
-	#include <istream>
-	typedef std::istreambuf_iterator<char> type;
-	int main(){return 0;}
-	"
-HAVE_DECL_ISTREAMBUF_ITERATOR)
+#check_cxx_source_compiles(
+#	"
+#	#include <streambuf>
+#	#include <istream>
+#	typedef std::istreambuf_iterator<char> type;
+#	int main(){return 0;}
+#	"
+#HAVE_DECL_ISTREAMBUF_ITERATOR)
 
-check_cxx_source_compiles(
-	"
-	#include <cctype>
-	using std::tolower;
-	int main(){return 0;}
-	"
-CXX_GLOBAL_CSTD)
+#check_cxx_source_compiles(
+#	"
+#	#include <cctype>
+#	using std::tolower;
+#	int main(){return 0;}
+#	"
+#CXX_GLOBAL_CSTD)
 
 check_cxx_source_compiles(
 	"
