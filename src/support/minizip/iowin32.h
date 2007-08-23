@@ -7,6 +7,8 @@
    Copyright (C) 1998-2005 Gilles Vollant
 */
 
+#ifdef WIN32
+
 #include <windows.h>
 
 
@@ -18,4 +20,6 @@ void fill_win32_filefunc OF((zlib_filefunc_def* pzlib_filefunc_def));
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif
