@@ -666,7 +666,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_TOOLBAR_TOGGLE: {
-		bool const current = lyx_view_->getToolbars().visible(cmd.getArg(0));
+		bool const current = lyx_view_->isToolbarVisible(cmd.getArg(0));
 		flag.setOnOff(current);
 		break;
 	}
@@ -888,8 +888,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_COMMAND_EXECUTE:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->getToolbars().display("minibuffer", true);
-			lyx_view_->focus_command_buffer();
+			lyx_view_->showMiniBuffer(true);
 			break;
 
 		case LFUN_CANCEL:
@@ -1294,7 +1293,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DROP_LAYOUTS_CHOICE:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->getToolbars().openLayoutList();
+			lyx_view_->openLayoutList();
 			break;
 
 		case LFUN_MENU_OPEN:

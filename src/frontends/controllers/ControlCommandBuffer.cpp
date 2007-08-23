@@ -87,7 +87,7 @@ docstring const ControlCommandBuffer::getCurrentState() const
 
 void ControlCommandBuffer::hide() const
 {
-	lv_.getToolbars().display("minibuffer", false);
+	lv_.showMiniBuffer(false);
 }
 
 

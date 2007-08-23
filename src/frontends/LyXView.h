@@ -124,10 +124,12 @@ public:
 	Buffer * buffer();
 	Buffer const * buffer() const;
 
-	/// return the toolbar for this view
-	Toolbars & getToolbars() { return *toolbars_.get(); }
 	///
-	Toolbars const & getToolbars() const { return *toolbars_.get(); }
+	void openLayoutList();
+	///
+	bool isToolbarVisible(std::string const & id);
+	///
+	virtual void showMiniBuffer(bool visible) = 0;
 
 	/// return the menubar for this view
 	Menubar & getMenubar() { return *menubar_.get(); }
@@ -161,9 +163,6 @@ public:
 	void updateMenubar();
 	/// update the status bar
 	virtual void updateStatusBar() = 0;
-
-	/// focus the command buffer (minibuffer)
-	boost::signal<void()> focus_command_buffer;
 
 	/// display a message in the view
 	virtual void message(docstring const &) = 0;
@@ -203,6 +202,8 @@ protected:
 
 	/// view's menubar
 	boost::scoped_ptr<Menubar> menubar_;
+	/// view's toolbar
+	boost::scoped_ptr<Toolbars> toolbars_;
 
 private:
 	/**
@@ -215,8 +216,6 @@ private:
 	/// called on timeout
 	void autoSave();
 
-	/// view's toolbar
-	boost::scoped_ptr<Toolbars> toolbars_;
 	/// auto-saving of buffers
 	boost::scoped_ptr<Timeout> const autosave_timeout_;
 	/// our function handler

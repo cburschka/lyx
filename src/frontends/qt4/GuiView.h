@@ -71,6 +71,7 @@ public:
 	virtual void message(docstring const & str);
 	virtual void clearMessage();
 	virtual bool hasFocus() const;
+	void showMiniBuffer(bool);
 
 	/// show - display the top-level window
 	void show();
@@ -129,9 +130,6 @@ private:
 	void dragEnterEvent(QDragEnterEvent * ev);
 	///
 	void dropEvent(QDropEvent * ev);
-
-	/// focus the command buffer widget
-	void focus_command_widget();
 
 	/**
 	 * setWindowTitle - set title of window

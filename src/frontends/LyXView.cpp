@@ -431,5 +431,17 @@ Buffer const * const LyXView::updateInset(Inset const * inset)
 	return &work_area->bufferView().buffer();
 }
 
+
+void LyXView::openLayoutList()
+{
+	toolbars_->openLayoutList();
+}
+
+
+bool LyXView::isToolbarVisible(std::string const & id)
+{
+	return toolbars_->visible(id);
+}
+
 } // namespace frontend
 } // namespace lyx

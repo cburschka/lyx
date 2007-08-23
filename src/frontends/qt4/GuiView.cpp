@@ -310,7 +310,7 @@ void GuiView::init()
 	QObject::connect(menuBar(), SIGNAL(triggered(QAction *)),
 		this, SLOT(updateMenu(QAction *)));
 
-	getToolbars().init();
+	toolbars_->init();
 
 	statusBar()->setSizeGripEnabled(true);
 
@@ -445,7 +445,7 @@ void GuiView::saveGeometry()
 		session.sessionInfo().save("WindowPosX", convert<string>(normal_geometry.x() + d.posx_offset));
 		session.sessionInfo().save("WindowPosY", convert<string>(normal_geometry.y() + d.posy_offset));
 	}
-	getToolbars().saveToolbarInfo();
+	toolbars_->saveToolbarInfo();
 }
 
 
@@ -579,7 +579,6 @@ void GuiView::setWindowTitle(docstring const & t, docstring const & it)
 void GuiView::addCommandBuffer(QToolBar * toolbar)
 {
 	commandbuffer_ = new QCommandBuffer(this, *controlcommand_);
-	focus_command_buffer.connect(boost::bind(&GuiView::focus_command_widget, this));
 	toolbar->addWidget(commandbuffer_);
 }
 
@@ -620,13 +619,6 @@ void GuiView::normalSizedIcons()
 void GuiView::bigSizedIcons()
 {
 	setIconSize(d.bigIconSize);
-}
-
-
-void GuiView::focus_command_widget()
-{
-	if (commandbuffer_)
-		commandbuffer_->focus_command();
 }
 
 
@@ -945,6 +937,15 @@ void GuiView::removeWorkArea(WorkArea * work_area)
 	}
 }
 
+
+void GuiView::showMiniBuffer(bool visible)
+{
+	if (!commandbuffer_)
+		return;
+
+	toolbars_->display("minibuffer", visible);
+	commandbuffer_->focus_command();
+}
 
 } // namespace frontend
 } // namespace lyx
