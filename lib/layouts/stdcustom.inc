@@ -11,9 +11,9 @@ InsetLayout Custom:Endnote
    Font
      Size	Small
    EndFont
-   LabelString	foot
+   LabelString	endnote
    Preamble
-     \usepackage{endnote}
+     \usepackage{endnotes}
    EndPreamble
 End
 
