@@ -139,7 +139,9 @@ Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		return 0;
 	}
 
-	WorkArea * wa = addWorkArea(*newBuffer);
+	WorkArea * wa = workArea(*newBuffer);
+	if (wa == 0)
+		wa = addWorkArea(*newBuffer);
 
 	// scroll to the position when the file was last closed
 	if (lyxrc.use_lastfilepos) {
