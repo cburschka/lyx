@@ -244,7 +244,6 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles,
 		if (work_area_->bufferView().moveToPosition(pit, pos, 0, 0).get<1>()) {
 			if (work_area_->bufferView().fitCursor())
 				work_area_->bufferView().updateMetrics(false);
-			newBuffer->text().setCurrentFont(work_area_->bufferView().cursor());
 			updateMenubar();
 			updateToolbars();
 			updateLayoutChoice();
