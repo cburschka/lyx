@@ -153,10 +153,9 @@ public:
 	/// clear the X11 selection.
 	void clearSelection();
 
-	/// resize method helper for \c WorkArea
+	/// resize the BufferView.
 	/// \sa WorkArea
-	/// \sa resise
-	void workAreaResize(int width, int height);
+	void resize(int width, int height);
 
 	/// dispatch method helper for \c WorkArea
 	/// \sa WorkArea

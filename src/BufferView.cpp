@@ -974,7 +974,7 @@ void BufferView::clearSelection()
 }
 
 
-void BufferView::workAreaResize(int width, int height)
+void BufferView::resize(int width, int height)
 {
 	// Update from work area
 	width_ = width;
