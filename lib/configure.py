@@ -350,19 +350,22 @@ def checkConverterEntries():
     #
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
-    #
-    path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
+    # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
+    path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i', \
+        '/usr/share/tex4ht/htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
         'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
         rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
-    if htmlconv == 'htlatex' or htmlconv == 'latex2html':
+    if htmlconv.find('htlatex') >= 0 or htmlconv == 'latex2html':
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
     else:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
 
-    #
-    path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
+    # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
+    path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'", \
+        "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'", \
+	"/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
         rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
-    if htmlconv == 'htlatex':
+    if htmlconv.find('htlatex') >= 0:
       addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
     #
     checkProg('an OpenOffice.org -> LaTeX converter', ['w2l -clean $$i'],
@@ -370,8 +373,11 @@ def checkConverterEntries():
     #
     checkProg('an OpenDocument -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter odt        latex      "%%"	""' ])
-    #
-    checkProg('a LaTeX -> Open Document converter', ['oolatex $$i', 'oolatex.sh $$i', 'htlatex $$i \'xhtml,ooffice\' \'ooffice/! -cmozhtf\' \'-coo\' \'-cvalidate\''],
+    # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
+    # Both SuSE and debian have oolatex
+    checkProg('a LaTeX -> Open Document converter', ['oolatex $$i', 'oolatex.sh $$i', \
+        '/usr/share/tex4ht/oolatex $$i', \
+        'htlatex $$i \'xhtml,ooffice\' \'ooffice/! -cmozhtf\' \'-coo\' \'-cvalidate\''],
         rc_entry = [ r'\converter latex      odt        "%%"	"needaux"' ])
     # On windows it is called latex2rt.exe
     checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
