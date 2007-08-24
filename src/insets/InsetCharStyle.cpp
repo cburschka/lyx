@@ -138,11 +138,11 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (status() == Open) {
 		// FIXME UNICODE
 		docstring s(from_utf8(params_.name));
-		if (undefined())
-			s = _("Undef: ") + s;
 		// Chop off prefix:
 		if (s.find(':') != string::npos)
 			s = s.substr(s.find(':'));
+		if (undefined())
+			s = _("Undef: ") + s;
 		layout_.labelstring = s;
 	}
 	return changed;
@@ -164,11 +164,11 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	if (status() == Open) {
 		// FIXME UNICODE
 		docstring s(from_utf8(params_.name));
-		if (undefined())
-			s = _("Undef: ") + s;
 		// Chop off prefix:
 		if (s.find(':') != string::npos)
 			s = s.substr(s.find(':'));
+		if (undefined())
+			s = _("Undef: ") + s;
 		layout_.labelstring = s;
 	}
 }
