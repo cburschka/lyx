@@ -96,16 +96,12 @@ liblyxsupport_la_SOURCES = \
 	minizip/crypt.h \
 	minizip/ioapi.c \
 	minizip/ioapi.h \
+	minizip/iowin32.c \
+	minizip/iowin32.h \
 	minizip/unzip.c \
 	minizip/unzip.h \
 	minizip/zip.c \
 	minizip/zip.h
-
-if INSTALL_WINDOWS
-liblyxsupport_la_SOURCES += \
-	minizip/iowin32.c \
-	minizip/iowin32.h
-endif
 
 Package.cpp: build_package
 
