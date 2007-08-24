@@ -841,6 +841,7 @@ WorkArea * GuiView::workArea(Buffer & buffer)
 WorkArea * GuiView::addWorkArea(Buffer & buffer)
 {
 	GuiWorkArea * wa = new GuiWorkArea(buffer, *this);
+	wa->setUpdatesEnabled(false);
 	d.tab_widget_->addTab(wa, toqstr(makeDisplayPath(buffer.fileName(), 30)));
 	wa->bufferView().updateMetrics(false);
 	if (d.stack_widget_)
@@ -902,6 +903,7 @@ void GuiView::removeWorkArea(WorkArea * work_area)
 	updateToc();
 
 	GuiWorkArea * gwa = dynamic_cast<GuiWorkArea *>(work_area);
+	gwa->setUpdatesEnabled(false);
 	BOOST_ASSERT(gwa);
 	int index = d.tab_widget_->indexOf(gwa);
 	d.tab_widget_->removeTab(index);
