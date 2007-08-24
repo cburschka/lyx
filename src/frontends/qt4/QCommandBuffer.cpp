@@ -110,13 +110,7 @@ QCommandBuffer::QCommandBuffer(GuiView * view)
 	layout->setMargin(0);
 	top->addLayout(layout);
 	top->setMargin(0);
-}
-
-
-
-void QCommandBuffer::focus_command()
-{
-	edit_->setFocus();
+	setFocusProxy(edit_);
 }
 
 

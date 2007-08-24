@@ -29,8 +29,6 @@ class QCommandBuffer : public QWidget {
 public:
 	QCommandBuffer(GuiView * view);
 
-	/// focus the edit widget
-	void focus_command();
 public Q_SLOTS:
 	/// cancel command compose
 	void cancel();

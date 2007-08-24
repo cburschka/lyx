@@ -24,6 +24,7 @@
 #include "IconPalette.h"
 
 #include "GuiView.h"
+#include "QCommandBuffer.h"
 #include "QLToolbar.h"
 #include "LyXAction.h"
 #include "Action.h"
@@ -159,7 +160,7 @@ void QLayoutBox::selected(const QString & str)
 
 
 QLToolbar::QLToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
-	: QToolBar(qt_(tbinfo.gui_name), &owner), owner_(owner)
+	: QToolBar(qt_(tbinfo.gui_name), &owner), command_buffer_(0), owner_(owner)
 {
 	// give visual separation between adjacent toolbars
 	addSeparator();
@@ -174,6 +175,13 @@ QLToolbar::QLToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 }
 
 
+void QLToolbar::focusCommandBuffer()
+{
+	if (command_buffer_)
+		command_buffer_->setFocus();
+}
+
+
 void QLToolbar::add(ToolbarItem const & item)
 {
 	switch (item.type_) {
@@ -184,7 +192,8 @@ void QLToolbar::add(ToolbarItem const & item)
 		layout_.reset(new QLayoutBox(this, owner_));
 		break;
 	case ToolbarItem::MINIBUFFER:
-		owner_.addCommandBuffer(this);
+		command_buffer_ = new QCommandBuffer(&owner_);
+		addWidget(command_buffer_);
 		/// \todo find a Qt4 equivalent to setHorizontalStretchable(true);
 		//setHorizontalStretchable(true);
 		break;

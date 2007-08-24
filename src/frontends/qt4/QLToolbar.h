@@ -31,6 +31,7 @@ namespace lyx {
 class FuncRequest;
 namespace frontend {
 
+class QCommandBuffer;
 class QLayoutBox;
 class GuiView;
 class Action;
@@ -75,13 +76,14 @@ public:
 	void saveInfo(ToolbarSection::ToolbarInfo & info);
 	void update();
 	LayoutBox * layout() const { return layout_.get(); }
-
-
+	///
+	void focusCommandBuffer();
 
 Q_SIGNALS:
 	void updated();
 
 private:
+	QCommandBuffer * command_buffer_;
 
 	std::vector<Action *> ActionVector;
 	GuiView & owner_;

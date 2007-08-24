@@ -20,7 +20,6 @@
 #include "QKeySymbol.h"
 #include "QLMenubar.h"
 #include "QLToolbar.h"
-#include "QCommandBuffer.h"
 #include "qt_helpers.h"
 
 #include "frontends/Application.h"
@@ -216,7 +215,7 @@ unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
 
 
 GuiView::GuiView(int id)
-	: QMainWindow(), LyXView(id), commandbuffer_(0), quitting_by_menu_(false),
+	: QMainWindow(), LyXView(id), quitting_by_menu_(false),
 	  d(*new GuiViewPrivate)
 {
 	// Qt bug? signal lastWindowClosed does not work
@@ -568,13 +567,6 @@ void GuiView::setWindowTitle(docstring const & t, docstring const & it)
 		QMainWindow::setWindowTitle(new_title);
 		QMainWindow::setWindowIconText(toqstr(it));
 	}
-}
-
-
-void GuiView::addCommandBuffer(QToolBar * toolbar)
-{
-	commandbuffer_ = new QCommandBuffer(this);
-	toolbar->addWidget(commandbuffer_);
 }
 
 
@@ -934,11 +926,9 @@ void GuiView::removeWorkArea(WorkArea * work_area)
 
 void GuiView::showMiniBuffer(bool visible)
 {
-	if (!commandbuffer_)
-		return;
-
-	toolbars_->display("minibuffer", visible);
-	commandbuffer_->focus_command();
+	Toolbar * t = toolbars_->display("minibuffer", visible);
+	if (t)
+		t->focusCommandBuffer();
 }
 
 

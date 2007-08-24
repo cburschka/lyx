@@ -144,7 +144,7 @@ void Toolbars::init()
 }
 
 
-void Toolbars::display(string const & name, bool show)
+Toolbar * Toolbars::display(string const & name, bool show)
 {
 	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
@@ -160,13 +160,13 @@ void Toolbars::display(string const & name, bool show)
 			else
 				TurnOnFlag(OFF);
 			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
-			displayToolbar(*cit, show);
-			return;
+			return displayToolbar(*cit, show);
 		}
 	}
 
 	LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
 		<< name << endl;
+	return 0;
 }
 
 
@@ -329,7 +329,7 @@ void Toolbars::add(ToolbarInfo const & tbinfo, bool newline)
 }
 
 
-void Toolbars::displayToolbar(ToolbarInfo const & tbinfo,
+Toolbar * Toolbars::displayToolbar(ToolbarInfo const & tbinfo,
 			      bool show_it)
 {
 	ToolbarsMap::iterator it = toolbars_.find(tbinfo.name);
@@ -339,6 +339,8 @@ void Toolbars::displayToolbar(ToolbarInfo const & tbinfo,
 		it->second->show(true);
 	else
 		it->second->hide(true);
+
+	return it->second.get();
 }
 
 

@@ -79,6 +79,9 @@ public:
 	virtual void update() = 0;
 	/// Accessor to the layout combox, if any.
 	virtual LayoutBox * layout() const = 0;
+
+	/// Set the focus on the command buffer, if any.
+	virtual void focusCommandBuffer() = 0;
 };
 
 
@@ -91,7 +94,7 @@ public:
 	void init();
 
 	/// Show/hide the named toolbar.
-	void display(std::string const & name, bool show);
+	Toolbar * display(std::string const & name, bool show);
 
 	/// get toolbar info
 	ToolbarInfo * getToolbarInfo(std::string const & name);
@@ -130,7 +133,7 @@ private:
 	/// Add a new toolbar. if newline==true, start from a new line
 	void add(ToolbarInfo const & tbinfo, bool newline);
 	/// Show or hide a toolbar.
-	void displayToolbar(ToolbarInfo const & tbinfo, bool show);
+	Toolbar * displayToolbar(ToolbarInfo const & tbinfo, bool show);
 	/// Update the state of the icons
 	void update();
 

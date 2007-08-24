@@ -32,8 +32,6 @@ class QToolBar;
 namespace lyx {
 namespace frontend {
 
-class QCommandBuffer;
-
 QWidget* mainWindow();
 
 /**
@@ -76,9 +74,6 @@ public:
 
 	/// show - display the top-level window
 	void show();
-
-	/// add the command buffer
-	void addCommandBuffer(QToolBar * toolbar);
 
 	/// menu item has been selected
 	void activated(FuncRequest const &);
@@ -141,9 +136,6 @@ private:
 	bool focusNextPrevChild(bool);
 
 	QTimer statusbar_timer_;
-
-	/// command buffer
-	QCommandBuffer * commandbuffer_;
 
 	/// are we quitting by the menu?
 	bool quitting_by_menu_;
