@@ -295,6 +295,7 @@ Menuset
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
 		Submenu "Branch|B" "insert_branches"
+		Submenu "Custom insets" "insert_custom"
 		Submenu "File|e" "insert_file"
 		Item "Box" "box-insert Frameless"
 		Separator
@@ -402,6 +403,10 @@ Menuset
 
 	Menu "insert_branches"
 		Branches
+	End
+
+	Menu "insert_custom"
+		Custom
 	End
 
 #

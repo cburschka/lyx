@@ -63,6 +63,9 @@ public:
 		/** This is the list of elements available
 		 * for insertion into document. */
 		CharStyles,
+		/** This is the list of user-configurable
+		insets to insert into document */
+		Custom,
 		/** This is the list of floats that we can
 		    insert a list for. */
 		FloatListInsert,

@@ -698,7 +698,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		insetlayoutlist_[name] = il;
 
 		// test name for CS:
-		if (il.lyxtype == "charstyle") {
+		if (il.lyxtype == "charstyle" || il.lyxtype == "custom") {
 			charstyles().push_back(il);
 		}
 	}

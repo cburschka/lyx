@@ -218,6 +218,7 @@ Menu & Menu::read(Lexer & lex)
 		md_documents,
 		md_bookmarks,
 		md_charstyles,
+		md_custom,
 		md_endmenu,
 		md_exportformats,
 		md_importformats,
@@ -240,6 +241,7 @@ Menu & Menu::read(Lexer & lex)
 		{ "bookmarks", md_bookmarks },
 		{ "branches", md_branches },
 		{ "charstyles", md_charstyles },
+		{ "custom", md_custom },
 		{ "documents", md_documents },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
@@ -292,6 +294,10 @@ Menu & Menu::read(Lexer & lex)
 
 		case md_charstyles:
 			add(MenuItem(MenuItem::CharStyles));
+			break;
+
+		case md_custom:
+			add(MenuItem(MenuItem::Custom));
 			break;
 
 		case md_documents:
@@ -613,7 +619,7 @@ void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 }
 
 
-void expandCharStyleInsert(Menu & tomenu, Buffer const * buf)
+void expandCharStyleInsert(Menu & tomenu, Buffer const * buf, std::string s)
 {
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
@@ -627,8 +633,9 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf)
 	CharStyles::iterator end = charstyles.end();
 	for (; cit != end; ++cit) {
 		docstring const label = from_utf8(cit->name);
-		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
-				    FuncRequest(LFUN_CHARSTYLE_INSERT,
+		if (cit->lyxtype == s)
+			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, 
+				label, FuncRequest(LFUN_CHARSTYLE_INSERT,
 						label)));
 	}
 }
@@ -877,7 +884,11 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			break;
 
 		case MenuItem::CharStyles:
-			expandCharStyleInsert(tomenu, buf);
+			expandCharStyleInsert(tomenu, buf, "charstyle");
+			break;
+
+		case MenuItem::Custom:
+			expandCharStyleInsert(tomenu, buf, "custom");
 			break;
 
 		case MenuItem::FloatListInsert:
