@@ -25,9 +25,6 @@
 
 #include <fstream>
 
-#ifndef CXX_GLOBAL_CSTD
-using std::time;
-#endif
 using std::endl;
 using std::flush;
 using std::getline;
