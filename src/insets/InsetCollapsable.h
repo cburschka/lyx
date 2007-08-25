@@ -108,7 +108,7 @@ public:
 		Conglomerate
 	};
 	/// Default looks
-	virtual Decoration decoration() const { return Classic;  }
+	virtual Decoration decoration() const;
 	///
 	enum Geometry {
 		TopButton,

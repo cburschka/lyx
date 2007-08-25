@@ -620,6 +620,19 @@ docstring InsetCollapsable::floatName(string const & type, BufferParams const & 
 }
 
 
+InsetCollapsable::Decoration InsetCollapsable::decoration() const
+{
+	if (layout_.decoration == "classic")
+		return Classic;
+	if (layout_.decoration == "minimalistic")
+		return Minimalistic;
+	if (layout_.decoration == "conglomerate")
+		return Conglomerate;
+	if (name() == from_ascii("CharStyle"))
+		return Conglomerate;
+	return Classic;
+}
+
 
 int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 			  OutputParams const & runparams) const
