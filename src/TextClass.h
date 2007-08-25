@@ -34,6 +34,7 @@ public:
 	std::string name;
 	std::string lyxtype;
 	docstring labelstring;
+	std::string decoration;
 	std::string latextype;
 	std::string latexname;
 	std::string latexparam;

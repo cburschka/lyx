@@ -598,6 +598,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 
 enum InsetLayoutTags {
 	IL_FONT = 1,
+	IL_DECORATION,
 	IL_LABELFONT,
 	IL_LABELSTRING,
 	IL_LATEXNAME,
@@ -612,6 +613,7 @@ enum InsetLayoutTags {
 void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 {
 	keyword_item elementTags[] = {
+		{ "decoration", IL_DECORATION },
 		{ "end", IL_END },
 		{ "font", IL_FONT },
 		{ "labelfont", IL_LABELFONT },
@@ -628,6 +630,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	string lyxtype;
 	docstring labelstring;
 	string latextype;
+	string decoration;
 	string latexname;
 	string latexparam;
 	Font font(Font::ALL_INHERIT);
@@ -655,6 +658,10 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		case IL_LABELSTRING:
 			lexrc.next();
 			labelstring = lexrc.getDocString();
+			break;
+		case IL_DECORATION:
+			lexrc.next();
+			decoration = lexrc.getString();
 			break;
 		case IL_LATEXNAME:
 			lexrc.next();
@@ -689,6 +696,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.name = to_ascii(name);
 		il.lyxtype = lyxtype;
 		il.labelstring = labelstring;
+		il.decoration = decoration;
 		il.latextype = latextype;
 		il.latexname = latexname;
 		il.latexparam = latexparam;

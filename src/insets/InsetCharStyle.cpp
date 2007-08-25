@@ -203,6 +203,18 @@ bool InsetCharStyle::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
+InsetCollapsable::Decoration InsetCharStyle::decoration() const
+{
+	if (layout_.decoration == "classic")
+		return Classic;
+	if (layout_.decoration == "minimalistic")
+		return Minimalistic;
+	if (layout_.decoration == "conglomerate")
+		return Conglomerate;
+	return Conglomerate;
+}
+
+
 int InsetCharStyle::plaintext(Buffer const & buf, odocstream & os,
 			      OutputParams const & runparams) const
 {

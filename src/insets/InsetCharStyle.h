@@ -66,7 +66,7 @@ public:
 	///
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 	///
-	virtual Decoration decoration() const { return Conglomerate; }
+	virtual Decoration decoration() const;
 
 	///
 	int plaintext(Buffer const &, odocstream &,
