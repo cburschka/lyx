@@ -152,8 +152,6 @@ private:
 	idx_type idx_;
 	/// paragraph in this cell (used by texted)
 	pit_type pit_;
-	/// true if 'pit' was properly initialized
-	bool pit_valid_;
 	/// position in this cell
 	pos_type pos_;
 };
