@@ -627,10 +627,10 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf, std::string s)
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
-	InsetLayouts & insetlayouts =
+	InsetLayouts const & insetlayouts =
 		buf->params().getTextClass().insetlayouts();
-	InsetLayouts::iterator cit = insetlayouts.begin();
-	InsetLayouts::iterator end = insetlayouts.end();
+	InsetLayouts::const_iterator cit = insetlayouts.begin();
+	InsetLayouts::const_iterator end = insetlayouts.end();
 	for (; cit != end; ++cit) {
 		docstring const label = cit->first;
 		if (cit->second.lyxtype == s)
