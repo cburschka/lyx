@@ -1766,7 +1766,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_CHARSTYLE_INSERT:
 		code = Inset::CHARSTYLE_CODE;
-		if (cur.buffer().params().getTextClass().charstyles().empty())
+		if (cur.buffer().params().getTextClass().insetlayouts().empty())
 			enable = false;
 		break;
 	case LFUN_BOX_INSERT:

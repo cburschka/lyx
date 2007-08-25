@@ -704,11 +704,6 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.labelfont = labelfont;
 		il.preamble = preamble;
 		insetlayoutlist_[name] = il;
-
-		// test name for CS:
-		if (il.lyxtype == "charstyle" || il.lyxtype == "custom") {
-			charstyles().push_back(il);
-		}
 	}
 
 	lexrc.popTable();
