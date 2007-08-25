@@ -627,13 +627,13 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf, std::string s)
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
-	CharStyles & charstyles =
-		buf->params().getTextClass().charstyles();
-	CharStyles::iterator cit = charstyles.begin();
-	CharStyles::iterator end = charstyles.end();
+	InsetLayouts & insetlayouts =
+		buf->params().getTextClass().insetlayouts();
+	InsetLayouts::iterator cit = insetlayouts.begin();
+	InsetLayouts::iterator end = insetlayouts.end();
 	for (; cit != end; ++cit) {
-		docstring const label = from_utf8(cit->name);
-		if (cit->lyxtype == s)
+		docstring const label = cit->first;
+		if (cit->second.lyxtype == s)
 			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, 
 				label, FuncRequest(LFUN_CHARSTYLE_INSERT,
 						label)));

@@ -108,7 +108,9 @@ public:
 	Counters & counters() const;
 	/// CharStyles of this doc class
 	CharStyles & charstyles() const { return charstylelist_; };
-	///  Inset layouts of this doc class
+	/// Inset layouts of this doc class
+	InsetLayouts & insetlayouts() const { return insetlayoutlist_; };
+	///
 	InsetLayout const & insetlayout(docstring const & name) const;
 	/// Retrieve element of name s:
 	CharStyles::iterator charstyle(std::string const & s) const;
