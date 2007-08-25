@@ -30,7 +30,9 @@ What's new
 - Embedded Objects manual: new section about longtable alignment
 
 - Add support for translating the menus in Finnish.
+
 - Add support for translating the menus in Portuguese.
+
 - Add support for translating the menus in Simplified Chinese.
 
 
@@ -58,33 +60,35 @@ What's new
   mechanism triggers (bug 4133).
 
 - Fix loading non-lyx child documents with relative path names, change 
-  'Load' to 'Edit' in the child document dialog (Bugs 4107 and 4111)
+  'Load' to 'Edit' in the child document dialog (bugs 4107 and 4111)
 
-- Allow roman numerals beyond 20 (Bug 4112)
+- Allow roman numerals beyond 20 (bug 4112)
 
-- Render malformed tables correctly (Bug 580)
+- Render malformed tables correctly (bug 580)
 
 - Enable File -> Revert when the file is externally modified, and rename
-  this menu item to File -> Revert to saved. (Bugs 3766 and 4114)
+  this menu item to File -> Revert to saved. (bugs 3766 and 4114)
 
 - Update when leaving a 'wide' inset using up- and down-arrows.
 
-- Fix bug related to citation dialog (Bug 4121)
+- Fix problem where the delete button in the citation dialog was erroneously
+  disabled (bug 4121)
 
 - Fix crash when using the LFUN 'buffer-write-as' with an argument
-  that is not an absolute path (Bug 4135).
+  that is not an absolute path (bug 4135).
 
 - Fix crash when a user removes the underlying figure of a graphic inset
-  that has been copied and pasted (Bug 4108).
-  
-- Fix crash when closing LyX window with document tabs (Bug 4123).
+  that has been copied and pasted (bug 4108).
+
+- Fix crash when closing LyX window with document tabs (bug 4123).
 
 - Fix crash when a user removes a formula when its preview is being generated.
   (gcc 3 only).
 
-- Fix crash when using down cursor in an empty math subscript (Bug 4117).
+- Fix crash when using down cursor in an empty math subscript (bug 4117).
 
 - Reset current cursor font when going to a bookmark.
+
 
 * DOCUMENTATION
 
