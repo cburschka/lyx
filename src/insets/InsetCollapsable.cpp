@@ -246,6 +246,8 @@ bool InsetCollapsable::setMouseHover(bool mouse_hover)
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
+	autoOpen_ = pi.base.bv->cursor().isInside(this);
+
 	const int xx = x + TEXT_TO_INSET_OFFSET;
 
 	// Draw button first -- top, left or only
@@ -497,7 +499,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			if (decoration() == Conglomerate) {
-
 				if (internalStatus() == Open)
 					setStatus(cur, Collapsed);
 				else

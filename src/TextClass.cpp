@@ -1014,6 +1014,14 @@ Counters & TextClass::counters() const
 	return *counters_.get();
 }
 
+
+// Return the layout object of an inset given by name. If the name
+// is not found as such, the part after the ':' is stripped off, and
+// searched again. In this way, an error fallback can be provided:
+// An erroneous 'CharStyle:badname' (e.g., after a documentclass switch)
+// will invoke the layout object defined by name = 'CharStyle'.
+// If that doesn't work either, an empty object returns (shouldn't
+// happen).  -- Idea JMarc, comment MV
 InsetLayout const & TextClass::insetlayout(docstring const & name) const 
 {
 	docstring n = name;
@@ -1025,20 +1033,9 @@ InsetLayout const & TextClass::insetlayout(docstring const & name) const
 			break;
 		n = n.substr(0,i);
 	}
-	static const InsetLayout empty;
+	static InsetLayout empty;
+	empty.labelstring = from_utf8("UNDEFINED");
 	return empty;
-}
-
-
-CharStyles::iterator TextClass::charstyle(string const & s) const
-{
-	CharStyles::iterator cs = charstyles().begin();
-	CharStyles::iterator csend = charstyles().end();
-	for (; cs != csend; ++cs) {
-		if (cs->name == s)
-			return cs;
-	}
-	return csend;
 }
 
 

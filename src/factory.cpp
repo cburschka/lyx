@@ -105,11 +105,8 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 		case LFUN_CHARSTYLE_INSERT: {
 			string s = cmd.getArg(0);
 			TextClass tclass = params.getTextClass();
-			CharStyles::iterator found_cs = tclass.charstyle(s);
-			if (found_cs != tclass.charstyles().end())
-				return new InsetCharStyle(params, found_cs);
-			else
-				return new InsetCharStyle(params, s);
+			InsetLayout il = tclass.insetlayout(from_utf8(s));
+			return new InsetCharStyle(params, il);
 		}
 
 		case LFUN_NOTE_INSERT: {
@@ -476,13 +473,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "CharStyle") {
 			lex.next();
 			string s = lex.getString();
-			CharStyles::iterator found_cs = tclass.charstyle(s);
-			if (found_cs != tclass.charstyles().end())
-				inset.reset(new InsetCharStyle(buf.params(), found_cs));
-			else {
-				// "Undefined" inset
-				inset.reset(new InsetCharStyle(buf.params(), s));
-			}
+			InsetLayout il = tclass.insetlayout(from_utf8(s));
+			inset.reset(new InsetCharStyle(buf.params(), il));
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf.params(),
 						    InsetBranchParams()));

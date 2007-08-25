@@ -48,34 +48,26 @@ using std::ostream;
 using std::ostringstream;
 
 
-void InsetCharStyle::init()
-{}
-
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
 	: InsetCollapsable(bp, Collapsed)
 {
 	params_.name = s;
-	setUndefined();
-	init();
 }
 
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp,
-				CharStyles::iterator cs)
+				InsetLayout il)
 	: InsetCollapsable(bp, Collapsed)
 {
-	params_.name = cs->name;
-	setDefined(cs);
-	init();
+	params_.name = il.name;
+	setLayout(il);
 }
 
 
 InsetCharStyle::InsetCharStyle(InsetCharStyle const & in)
 	: InsetCollapsable(in), params_(in.params_)
-{
-	init();
-}
+{}
 
 
 auto_ptr<Inset> InsetCharStyle::doClone() const
@@ -86,24 +78,13 @@ auto_ptr<Inset> InsetCharStyle::doClone() const
 
 bool InsetCharStyle::undefined() const
 {
-	return layout_.latexname.empty();
+	return layout_.labelstring == from_utf8("UNDEFINED");
 }
 
 
-void InsetCharStyle::setUndefined()
+void InsetCharStyle::setLayout(InsetLayout il)
 {
-	layout_.latextype.clear();
-	layout_.latexname.clear();
-	layout_.latexparam.clear();
-	layout_.font = Font(Font::ALL_INHERIT);
-	layout_.labelfont = Font(Font::ALL_INHERIT);
-	layout_.labelfont.setColor(Color::error);
-}
-
-
-void InsetCharStyle::setDefined(CharStyles::iterator cs)
-{
-	layout_ = *cs;
+	layout_ = il;
 }
 
 
@@ -135,16 +116,6 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.font.realize(tmpfont);
 	bool changed = InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
-	if (status() == Open) {
-		// FIXME UNICODE
-		docstring s(from_utf8(params_.name));
-		// Chop off prefix:
-		if (s.find(':') != string::npos)
-			s = s.substr(s.find(':'));
-		if (undefined())
-			s = _("Undef: ") + s;
-		layout_.labelstring = s;
-	}
 	return changed;
 }
 
@@ -159,18 +130,6 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	//needed, or even wanted, here. It just works. -- MV 10.04.2005
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
-
-	// the name of the charstyle. Can be toggled.
-	if (status() == Open) {
-		// FIXME UNICODE
-		docstring s(from_utf8(params_.name));
-		// Chop off prefix:
-		if (s.find(':') != string::npos)
-			s = s.substr(s.find(':'));
-		if (undefined())
-			s = _("Undef: ") + s;
-		layout_.labelstring = s;
-	}
 }
 
 

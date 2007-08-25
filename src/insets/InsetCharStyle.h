@@ -39,16 +39,14 @@ public:
 	/// Construct an undefined character style
 	InsetCharStyle(BufferParams const &, std::string const);
 	///
-	InsetCharStyle(BufferParams const &, CharStyles::iterator);
+	InsetCharStyle(BufferParams const &, InsetLayout);
 	///
 	docstring name() const { return from_ascii("CharStyle"); }
 	/// Is this character style defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;
-	/// Set the character style to "undefined"
-	void setUndefined();
-	/// (Re-)set the character style parameters from \p cs
-	void setDefined(CharStyles::iterator cs);
+	/// (Re-)set the character style parameters from \p il
+	void setLayout(InsetLayout il);
 	///
 	virtual docstring const editMessage() const;
 	///
@@ -94,8 +92,6 @@ private:
 
 	virtual std::auto_ptr<Inset> doClone() const;
 
-	/// used by the constructors
-	void init();
 	///
 	InsetCharStyleParams params_;
 };

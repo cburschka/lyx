@@ -113,8 +113,6 @@ public:
 	InsetLayouts & insetlayouts() const { return insetlayoutlist_; };
 	///
 	InsetLayout const & insetlayout(docstring const & name) const;
-	/// Retrieve element of name s:
-	CharStyles::iterator charstyle(std::string const & s) const;
 	///
 	docstring const & defaultLayoutName() const;
 	///

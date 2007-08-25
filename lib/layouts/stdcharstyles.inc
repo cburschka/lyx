@@ -27,3 +27,13 @@ InsetLayout CharStyle:Emph
 	EndFont
 End
 
+
+# Error fallback:
+InsetLayout CharStyle
+	LyxType               end
+	LabelString           "UNDEFINED"
+	Font
+	  Color               error
+	EndFont
+End
+

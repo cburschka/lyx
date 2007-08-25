@@ -455,11 +455,11 @@ void switchBetweenClasses(TextClass_ptr const & c1,
 			InsetCharStyle & inset =
 				static_cast<InsetCharStyle &>(*it);
 			string const name = inset.params().name;
-			CharStyles::iterator const found_cs =
-				tclass2.charstyle(name);
-			if (found_cs == tclass2.charstyles().end()) {
+			InsetLayout const il = 
+				tclass2.insetlayout(from_utf8(name));
+			inset.setLayout(il);
+			if (il.labelstring == from_utf8("UNDEFINED")) {
 				// The character style is undefined in tclass2
-				inset.setUndefined();
 				docstring const s = bformat(_(
 					"Character style %1$s is "
 					"undefined because of class "
@@ -470,11 +470,7 @@ void switchBetweenClasses(TextClass_ptr const & c1,
 				errorlist.push_back(ErrorItem(
 					_("Undefined character style"),
 					s, it.paragraph().id(),	it.pos(), it.pos() + 1));
-			} else if (inset.undefined()) {
-				// The character style is undefined in
-				// tclass1 and is defined in tclass2
-				inset.setDefined(found_cs);
-			}
+			} 
 		}
 	}
 }
