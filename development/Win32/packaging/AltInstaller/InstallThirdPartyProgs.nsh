@@ -109,11 +109,11 @@ FunctionEnd
     ExecWait "$INSTDIR\${JabRefInstall}"
     # test if JabRef is installed
     StrCpy $BibTeXEditorPath ""
-    ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "UninstallString"    
+    ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"    
     ${if} $BibTeXEditorPath == ""
      MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
     ${else}
-     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
+     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
     ${endif}
    ${endif}
   ${endif}
