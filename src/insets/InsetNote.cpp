@@ -187,30 +187,6 @@ void InsetNote::setButtonLabel()
 }
 
 
-Color_color InsetNote::backgroundColor() const
-{
-	Color_color c;
-	switch (params_.type) {
-	case InsetNoteParams::Note:
-		c = Color::notebg;
-		break;
-	case InsetNoteParams::Comment:
-		c = Color::commentbg;
-		break;
-	case InsetNoteParams::Greyedout:
-		c = Color::greyedoutbg;
-		break;
-	case InsetNoteParams::Framed:
-		c = Color::greyedoutbg;
-		break;
-	case InsetNoteParams::Shaded:
-		c = Color::shadedbg;
-		break;
-	}
-	return c;
-}
-
-
 bool InsetNote::showInsetDialog(BufferView * bv) const
 {
 	InsetNoteMailer(const_cast<InsetNote &>(*this)).showDialog(bv);

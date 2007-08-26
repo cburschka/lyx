@@ -28,6 +28,7 @@ InsetLayout Note:Comment
 	LabelString           comment
 	LatexType             environment
 	LatexName             comment
+	BgColor               commentbg
 	LabelFont
 	  Color               comment
 	  Size                Small
@@ -39,6 +40,7 @@ InsetLayout Note:Note
 	LabelString           note
 	LatexType             command
 	LatexName             note
+	BgColor               notebg
 	LabelFont
 	  Color               note
 	  Size                Small
@@ -49,6 +51,7 @@ InsetLayout Note:Greyedout
 	LabelString           greyedout
 	LatexType             environment
 	LatexName             lyxgreyedout
+	BgColor               greyedoutbg
 	LabelFont
 	  Color               greyedout
 	  Size                Small
@@ -59,6 +62,7 @@ InsetLayout Note:Framed
 	LabelString           framed
 	LatexType             environment
 	LatexName             framed
+	BgColor               greyedoutbg
 	LabelFont
 	  Color               greyedout
 	  Size                Small
@@ -69,6 +73,7 @@ InsetLayout Note:Shaded
 	LabelString           shaded
 	LatexType             environment
 	LatexName             shaded
+	BgColor               shaded
 	LabelFont
 	  Color               greyedout
 	  Size                Small

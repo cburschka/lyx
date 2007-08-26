@@ -40,6 +40,7 @@ public:
 	std::string latexparam;
 	Font font;
 	Font labelfont;
+	Color::color bgcolor;
 	std::string preamble;
 };
 

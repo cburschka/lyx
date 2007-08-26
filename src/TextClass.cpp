@@ -598,6 +598,7 @@ void TextClass::readClassOptions(Lexer & lexrc)
 
 enum InsetLayoutTags {
 	IL_FONT = 1,
+	IL_BGCOLOR,
 	IL_DECORATION,
 	IL_LABELFONT,
 	IL_LABELSTRING,
@@ -613,6 +614,7 @@ enum InsetLayoutTags {
 void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 {
 	keyword_item elementTags[] = {
+		{ "bgcolor", IL_BGCOLOR },
 		{ "decoration", IL_DECORATION },
 		{ "end", IL_END },
 		{ "font", IL_FONT },
@@ -635,6 +637,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	string latexparam;
 	Font font(Font::ALL_INHERIT);
 	Font labelfont(Font::ALL_INHERIT);
+	Color::color bgcolor(Color::background);
 	string preamble;
 
 	bool getout = false;
@@ -680,6 +683,12 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			font.realize(defaultfont());
 			labelfont = font;
 			break;
+		case IL_BGCOLOR: {
+			lexrc.next();
+			string const token = lexrc.getString();
+			bgcolor = lcolor.getFromLyXName(token);
+			break;
+		}
 		case IL_PREAMBLE:
 			preamble = lexrc.getLongString("EndPreamble");
 			break;
@@ -702,6 +711,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.latexparam = latexparam;
 		il.font = font;
 		il.labelfont = labelfont;
+		il.bgcolor = bgcolor;		
 		il.preamble = preamble;
 		insetlayoutlist_[name] = il;
 	}

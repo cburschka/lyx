@@ -131,6 +131,8 @@ public:
 	///
 	bool setMouseHover(bool mouse_hover);
 	///
+	virtual Color_color backgroundColor() const {return layout_.bgcolor; }
+
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
