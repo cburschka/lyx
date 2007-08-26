@@ -8,7 +8,7 @@
 \usepackage{ifpdf}
 \ifpdf
 
-% Fonts fuer huebschere PDF-Ansichten
+% Schriften für bessere PDF-Ansichten
 \IfFileExists{lmodern.sty}
  {\usepackage{lmodern}} % wenn vorhanden
  {% wenn nicht vorhanden
@@ -36,16 +36,16 @@
 
 \fi % Ende von: wenn pdflatex benutzt wird
 
-% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% Setzt den Link fuer Sprünge zu Gleitabbildungen
 % auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
 
-% Die Seiten des Inhaltsverzeichnisses werden roemisch numeriert,
-% ein PDF-Lesezeichen fuer das Inhaltsverzeichnis wird hinzugefuegt
+% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
+% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Contents}{}
+ \pdfbookmark[1]{Inhaltsverzeichnis}{}
  \myTOC
  \cleardoublepage
  \pagenumbering{arabic}}
@@ -74,14 +74,14 @@
  \let\figure\MyFigure
  \let\endfigure\MyEndfigure}
 
-% ermoeglicht das Berechnen von Werten
+% ermöglicht das Berechnen von Werten
 \usepackage{calc}
 
-% Ermoeglicht besondere Tabellenzellen-Ausrichtungen
+% Ermöglicht besondere Tabellenzellen-Ausrichtungen
 \usepackage{dcolumn}
 
-%Vergroessert den Teil der Seite, in dem Gleitobjekte
-% unten angeordnet werden duerfen
+%Vergrößert den Teil der Seite, in dem Gleitobjekte
+% unten angeordnet werden dürfen
 \renewcommand{\bottomfraction}{0.5}
 
 % Vermeidet, dass Gleitobjekte vor ihrem Abschnitt gedruckt werden
@@ -93,18 +93,25 @@
 % wird bei farbigen Tabellen benutzt
 \@ifundefined{textcolor}
  {\usepackage{color}}{}
-\usepackage{colortbl}
 \definecolor{dunkelgruen}{cmyk}{0.5, 0, 1, 0}
 \definecolor{hellgrau}{gray}{0.8}
 
-% wird fuer Mehrfachzeilen benutzt
+% testen ob paket colortbl installiert ist
+% wird für farbige Tabellenzellen benutzt
+\newboolean{colortbl}
+\IfFileExists{colortbl.sty}
+ {\usepackage{colortbl}
+  \setboolean{colortbl}{true}}
+ {\setboolean{colortbl}{false}}
+
+% wird für Mehrfachzeilen benutzt
 \usepackage{multirow}
 %\renewcommand{\multirowsetup}{\centering}
 
 % wird fuer Tabellen im Buchstil benutzt
 \usepackage{booktabs}
 
-% wird benutzt, um Tabellenzellen zu vergroessern
+% wird benutzt, um Tabellenzellen zu vergrößern
 \@ifundefined{extrarowheight}
  {\usepackage{array}}{}
 \setlength{\extrarowheight}{2pt}
@@ -145,19 +152,19 @@
  {\textcolor{blue}\bgroup}{\egroup}
 
 % ------------------------------------
-% Pruefung auf benoetigte LaTeXPakete
+% Prüfung auf benötigte LaTeXPakete
 \usepackage{ifthen}
 
 % Pruefung auf arydshln
-% fuer Tabellen mit gestrichelten Linien
+% für Tabellen mit gestrichelten Linien
 \newboolean{arydshln}
 \IfFileExists{arydshln.sty}
  {\usepackage{arydshln}
   \setboolean{arydshln}{true}}
  {\setboolean{arydshln}{false}}
 
-% Pruefung auf marginnote
-% fuer Randnotizen
+% Prüfung auf marginnote
+% für Randnotizen
 \newboolean{marginnote}
 \IfFileExists{marginnote.sty}
  {\usepackage{marginnote}
@@ -165,14 +172,14 @@
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
 
-% Damit der Index den Namen "Stichwortverzeichnis" erhält
-\usepackage[ngerman]{babel}
-\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
-% redefine the \LyX macro for PDF bookmarks
+% Umdefinieren des Makros \LyX für PDF-Lesezeichen
 \def\LyX{\texorpdfstring{%
   L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
   {LyX }}
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language ngerman
@@ -297,7 +304,7 @@ Version 1.5.2-0
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 6.
+letzte Änderung: 26.
  August 2007
 \end_layout
 
@@ -335,6 +342,10 @@ Um alle Teile diese Handbuches als DVI, HTML, PDF, PostScript oder Rich
  
 \series bold
 arydshln
+\series default
+, 
+\series bold
+colortbl
 \series default
  und 
 \series bold
@@ -14632,7 +14643,7 @@ name "Farbe ! für Text"
 \end_inset
 
  benötigen, markieren Sie diesen und ändern die Farbe durch einen Klick
- auf 
+ auf den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.xpm
 	scale 70
@@ -14641,7 +14652,7 @@ name "Farbe ! für Text"
 
 \end_inset
 
- oder 
+ oder über das Menü 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Textstil\SpecialChar \menuseparator
@@ -14666,6 +14677,36 @@ colortbl
  benutzen.
 \begin_inset LatexCommand index
 name "LaTeX-Pakete ! colortbl"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifcolortbl
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Die folgende Teil wird nur gedruckt, wenn das LaTeX-Paket 
+\series bold
+colortbl
+\series default
+ installiert ist.
+\end_layout
 
 \end_inset
 
@@ -15191,6 +15232,60 @@ i
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Die folgende Teil wird gedruckt, wenn das LaTeX-Paket 
+\series bold
+colortbl
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie müssen das LaTeX-Paket 
+\series bold
+colortbl
+\series default
+ installiert haben um den Inhalt dieses Abschnitts zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
@@ -18237,7 +18332,7 @@ ifarydshln
 status open
 
 \begin_layout Standard
-Die folgende Tabelle wird nur gedruckt, wenn das LaTeX-Paket 
+Die folgende Teil wird nur gedruckt, wenn das LaTeX-Paket 
 \series bold
 arydshln
 \series default
@@ -18763,7 +18858,7 @@ else
 status open
 
 \begin_layout Standard
-Die folgende Tabelle wird gedruckt, wenn das LaTeX-Paket 
+Die folgende Teil wird gedruckt, wenn das LaTeX-Paket 
 \series bold
 arydshln
 \series default
