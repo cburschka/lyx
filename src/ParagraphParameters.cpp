@@ -253,8 +253,7 @@ void ParagraphParameters::apply(
 {
 	spacing(p.spacing());
 	// does the layout allow the new alignment?
-	if ((p.align() == LYX_ALIGN_LAYOUT) || 
-	    (p.align() & layout.alignpossible))
+	if (p.align() & layout.alignpossible)
 		align(p.align());
 	labelWidthString(p.labelWidthString());
 	noindent(p.noindent());

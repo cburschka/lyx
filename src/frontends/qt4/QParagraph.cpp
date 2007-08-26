@@ -117,11 +117,7 @@ void QParagraphDialog::checkAlignmentRadioButtons() {
 	QPRadioMap::iterator it = radioMap.begin();
 	for (; it != radioMap.end(); ++it) {
 		LyXAlignment const align = it->first;
-		//FIXME The reason we need the second check is because
-		//LYX_ALIGN_LAYOUT isn't required to be possible. It
-		//should be...and will be.
-		it->second->setEnabled((align & alignPossible) ||
-		                       (align == LYX_ALIGN_LAYOUT));
+		it->second->setEnabled(align & alignPossible);
 	}
 	docstring label = labelMap[LYX_ALIGN_LAYOUT];
 	if (!form_->controller().haveMulitParSelection())

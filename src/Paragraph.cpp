@@ -1685,10 +1685,8 @@ void Paragraph::applyLayout(Layout_ptr const & new_layout)
 {
 	layout(new_layout);
 	LyXAlignment const oldAlign = params().align();
-	// FIXME The first check is due to the fact that LYX_ALIGN_LAYOUT
-	// is not required to be possible. A fix is on the way.
-	if ((oldAlign != LYX_ALIGN_LAYOUT) && 
-	    !(oldAlign & layout()->alignpossible)) {
+	
+	if (!(oldAlign & layout()->alignpossible)) {
 		frontend::Alert::warning(_("Alignment not permitted"), 
 			_("The new layout does not permit the alignment previously used.\nSetting to default."));
 		params().align(LYX_ALIGN_LAYOUT);
