@@ -95,9 +95,16 @@
 % used for colored tables
 \@ifundefined{textcolor}
  {\usepackage{color}}{}
-\usepackage{colortbl}
 \definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
 \definecolor{lightgrey}{gray}{0.8}
+
+% check for package colortbl
+% used for colored table cells
+\newboolean{colortbl}
+\IfFileExists{colortbl.sty}
+ {\usepackage{colortbl}
+  \setboolean{colortbl}{true}}
+ {\setboolean{colortbl}{false}}
 
 % used for multirows
 \usepackage{multirow}
@@ -293,7 +300,11 @@ To export all parts of this document to PDF, PS, or DVI the LaTeX-packages
 \series bold
 arydshln
 \series default
- and 
+, 
+\series bold
+colortbl
+\series default
+, and 
 \series bold
 marginnote
 \series default
@@ -13943,6 +13954,37 @@ name "LaTeX-packages ! colortbl"
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifcolortbl
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following section part will only be displayed when you have the LaTeX-packag
+e 
+\series bold
+colortbl
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 To create colored tables, 
 \series bold
 colortbl
@@ -14422,6 +14464,60 @@ i
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following will be displayed when the LaTeX-package 
+\series bold
+colortbl
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the package 
+\series bold
+colortbl
+\series default
+ to see the content of this section in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
@@ -17867,7 +17963,7 @@ You need to install the package
 \series bold
 arydshln
 \series default
- to see the contents of this section in the output.
+ to see the content of this section in the output.
 \end_layout
 
 \begin_layout Standard

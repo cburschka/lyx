@@ -85,9 +85,16 @@
 % used for colored tables
 \@ifundefined{textcolor}
  {\usepackage{color}}{}
-\usepackage{colortbl}
 \definecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}
 \definecolor{grisclaro}{gray}{0.8}
+
+% check for package colortbl
+% used for colored table cells
+\newboolean{colortbl}
+\IfFileExists{colortbl.sty}
+ {\usepackage{colortbl}
+  \setboolean{colortbl}{true}}
+ {\setboolean{colortbl}{false}}
 
 % used for multirows
 \usepackage{multirow}
@@ -303,6 +310,10 @@ Para exportar todas las partes de este documento a PDF, PS, o DVI, deben
 \series bold
 arydshln
 \series default
+, 
+\series bold
+colortbl
+\series default
  y 
 \series bold
 marginnote
@@ -375,8 +386,7 @@ Para insertar una imagen en un documento, sitúa el cursor en el lugar del
  o en el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Imagen\SpecialChar \ldots{}
-
+Imagen
 \family default
  Aparecerá un diálogo para escoger el archivo a cargar.
  La imagen aparecerá en el archivo de salida exactamente en la misma posición
@@ -13952,6 +13962,37 @@ name "LaTeX-paquetes ! colortbl"
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifcolortbl
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+La siguiente sección sólo se mostrará en pantalla si está instalado el paquete
+ LaTeX 
+\series bold
+colortbl
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Para crear tablas coloreadas, 
 \series bold
 colortbl
@@ -14429,6 +14470,61 @@ i
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Lo siguiente se mostrará en pantalla si no está instalado el paquete LaTeX
+ 
+\series bold
+colortbl
+\series default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debes instalar el paquete LaTeX 
+\series bold
+colortbl
+\series default
+ para ver la parte siguiente en la salida.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
