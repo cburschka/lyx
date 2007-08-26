@@ -4,24 +4,41 @@ DISTCLEANFILES += $(tocfiles)
 
 EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE) $(docfiles)
 
+bibliodocdir = $(pkgdatadir)/doc/biblio
+dist_bibliodoc_DATA = \
+	biblio/alphadin.bst \
+	biblio/LyXDocs.bib
+
 clipartdocdir = $(pkgdatadir)/doc/clipart
 dist_clipartdoc_DATA = \
 	clipart/escher-lsd.eps \
 	clipart/mobius.eps \
 	clipart/platypus.eps \
+	clipart/Abstract.pdf \
 	clipart/BoxInsetDefaultQt4.png \
+	clipart/ChangesToolbar.png \
 	clipart/ChildDocumentQt4.png \
 	clipart/CommentNoteImageQt4.png \
 	clipart/endnotes.pdf \
+	clipart/ERT.png \
 	clipart/ExternalMaterialQt4.png \
+	clipart/ExtraToolbar.png \
 	clipart/floatQt4.png \
 	clipart/footnoteQt4.png \
 	clipart/FramedNoteImageQt4.png \
 	clipart/GreyedOutNoteImageQt4.png \
 	clipart/labelQt4.png \
+	clipart/LaTeX.png \
 	clipart/LyXNoteImageQt4.png \
+	clipart/macrobox.png \
+	clipart/macrouse.png \
+	clipart/mbox.png \
 	clipart/referenceQt4.png \
 	clipart/ShadedNoteImageQt4.png \
+	clipart/SpaceMarker.png \
+	clipart/StandardToolbar.png \
+	clipart/ToolbarEnvBox.png \
+	clipart/ViewToolbar.png \
 	clipart/without_fntright.pdf \
 	clipart/with_fntright.pdf
 

@@ -9,14 +9,22 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\doc"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\doc\biblio"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\doc\clipart"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\DummyDocument1.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\DummyDocument2.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" # must be here when another \doc file has been changed
  File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\DummyDocument1.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\de\DummyDocument2.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\Extended.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\doc\es"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\DummyDocument1.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\DummyDocument2.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\es\TOC.lyx" # must be here when another \doc file has been changed
  SetOutPath "$INSTDIR\Resources\examples\de"
