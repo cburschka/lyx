@@ -18,7 +18,7 @@
 # see www.springer.de/author/tex/help-journals.html for class files
 
 
-Format 4
+Format 5
 Columns                 2
 Sides                   1
 PageStyle               Plain
@@ -36,6 +36,7 @@ Style Standard
 End
 
 
+Input stdinsets.inc
 Input stdsections.inc
 Input stdstarsections.inc
 Input stdlayouts.inc

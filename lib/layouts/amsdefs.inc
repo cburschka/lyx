@@ -3,7 +3,7 @@
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 
 # Including the maths stuff
-Format 4
+Format 5
 Input amsmaths.inc
 
 # The AMS documentclasses use the package amsmath and provide the

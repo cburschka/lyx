@@ -14,7 +14,7 @@
 # 2003-03-03  Updated for lyx 1.3.0.
 
 
-Format 4
+Format 5
 Columns                 1
 Sides                   2
 SecNumDepth             4
@@ -42,6 +42,7 @@ Style Standard
 End
 
 
+Input stdinsets.inc
 Input stdsections.inc
 Input stdstruct.inc
 Input stdlists.inc

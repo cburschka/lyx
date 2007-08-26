@@ -8,7 +8,7 @@
 # a document, like abstract, bibliography and such.
 
 
-Format 4
+Format 5
 Style Abstract
 	Margin                Static
 	LatexType             Environment

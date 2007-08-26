@@ -29,7 +29,7 @@
 # - Conclusion
 
 
-Format 4
+Format 5
 Style Theorem
 	LatexName             thm*
 	LabelString           "Theorem."

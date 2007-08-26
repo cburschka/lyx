@@ -2,7 +2,7 @@
 #  \DeclareLaTeXClass[apa,apacite.sty]{article (APA)}
 # Author: Randy Gobbel <gobbel@andrew.cmu.edu>
 
-Format 4
+Format 5
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -292,6 +292,7 @@ End
 Input stdsections.inc
 Input stdstarsections.inc
 
+Input stdinsets.inc
 Input stdfloats.inc
 Input stdcounters.inc
 

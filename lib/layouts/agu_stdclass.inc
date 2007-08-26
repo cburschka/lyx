@@ -221,6 +221,7 @@ InsetLayout CharStyle:Issue-months
 End
 
 
+Input stdinsets.inc
 Input agu_stdlists.inc
 Input agu_stdsections.inc
 Input db_stdstarsections.inc

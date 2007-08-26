@@ -8,7 +8,7 @@
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 
 
-Format 4
+Format 5
 Columns                 1
 Sides                   2
 PageStyle               Headers
@@ -40,6 +40,7 @@ Preamble
 EndPreamble
 
 
+Input stdinsets.inc
 Input stdsections.inc
 Input numreport.inc
 

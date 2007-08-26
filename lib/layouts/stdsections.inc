@@ -7,7 +7,7 @@
 # commands that are useful for article-like document classes, but not
 # for letters.
 
-Format 4
+Format 5
 Style Part
 	Margin                Dynamic
 	LabelString	      "Part \thepart"
