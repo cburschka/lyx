@@ -167,9 +167,8 @@ msgid "&Key:"
 msgstr "&Avain:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
-#, fuzzy
 msgid "Citation Style"
-msgstr "Viitet&yyli:"
+msgstr "Viitetyyli:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:40
 msgid "Use the jurabib styles for law and humanities"
@@ -184,9 +183,8 @@ msgid "Use the natbib styles for natural sciences and arts"
 msgstr "Käyta natbib-järjestelmä luonnontieteisiin ja taiteisiin"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:53
-#, fuzzy
 msgid "&Natbib"
-msgstr "Käytä &Natbibia"
+msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:60
 msgid "Use BibTeX's default numerical styles"
@@ -209,7 +207,6 @@ msgid "S&ectioned bibliography"
 msgstr "BibTeX-lähdeviitteet kappalekohtaiseksi"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:24
-#, fuzzy
 msgid "LyX: Add BibTeX Database"
 msgstr "LyX: Lisää BiBTeX-tietokanta"
 
@@ -583,9 +580,8 @@ msgid "Huger"
 msgstr "Valtavin"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
-#, fuzzy
 msgid "&Custom Bullet:"
-msgstr "Räätälöyty ransk. viiva"
+msgstr "Räätälöyty ransk. viiva:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 msgid "&Level:"
@@ -893,9 +889,8 @@ msgid "Edit the file externally"
 msgstr "Muokkaa tiedostoa ulkoisesti"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:89
-#, fuzzy
 msgid "&Edit File..."
-msgstr "&Muokkaa tiedostoa"
+msgstr "&Muokkaa tiedostoa..."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:96 src/frontends/qt4/ui/IncludeUi.ui:326
 msgid "Select a file"
@@ -1186,7 +1181,6 @@ msgid "File name of image"
 msgstr "Kuvan tiedostonimi"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:98
-#, fuzzy
 msgid "Output Size"
 msgstr "Tulostuskoko"
 
@@ -1575,7 +1569,6 @@ msgid "Use the margin settings provided by the document class"
 msgstr "Käytä dokumenttiluokan antamia marginaaliasetuksia"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
-#, fuzzy
 msgid "&Default Margins"
 msgstr "&Oletusmarginaalit"
 
@@ -2264,7 +2257,6 @@ msgid "Option used to set number of copies."
 msgstr "Valitsin, jolla asetetaan tulostettavien kopioiden määrä."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:196
-#, fuzzy
 msgid "Option used to print a range of pages."
 msgstr "Valitsin, jolla saadaan määrä peräkkäisiä sivuja tulostumaan."
 
@@ -2928,18 +2920,16 @@ msgid "on"
 msgstr "päällä"
 
 #: src/frontends/qt4/ui/TabularUi.ui:915
-#, fuzzy
 msgid "This row is the header of the first page"
-msgstr "Käänteinen tulostusjärjestys."
+msgstr "Tämä rivi on ensimmäisen sivun yläotsikko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:928
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
+msgstr "Toista tämä rivi alaotsikkona jokaisella paitsi viimeisellä sivulla"
 
 #: src/frontends/qt4/ui/TabularUi.ui:938
-#, fuzzy
 msgid "This row is the footer of the last page"
-msgstr "Käänteinen tulostusjärjestys."
+msgstr "Tämä rivi on viimeisen sivun alaotsikko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:951 src/frontends/qt4/ui/TabularUi.ui:958
 #: src/frontends/qt4/ui/TabularUi.ui:965 src/frontends/qt4/ui/TabularUi.ui:972
@@ -2950,9 +2940,8 @@ msgid "double"
 msgstr "kaksinkertainen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1007
-#, fuzzy
 msgid "Don't output the last footer"
-msgstr "Ei voinut muotoilla "
+msgstr "Älä tulosta viimeinen alaotsikko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1010
 #: src/frontends/qt4/ui/TabularUi.ui:1020
@@ -2960,9 +2949,8 @@ msgid "is empty"
 msgstr "on tyhjä"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1017
-#, fuzzy
 msgid "Don't output the first header"
-msgstr "Syötä tuloste tulostimelle"
+msgstr "Älä tulosta ensimmäinen yläotsikko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1030
 msgid "Select for tables that span multiple pages"
@@ -3037,22 +3025,18 @@ msgid "Separate Paragraphs With"
 msgstr "Kappaleina|K"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:101
-#, fuzzy
 msgid "&Vertical space"
-msgstr "Pystyväli:|#P"
+msgstr "Pystyväli"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:108
-#, fuzzy
 msgid "Indent consecutive paragraphs"
-msgstr "Valitse seuraava kappale"
+msgstr "Sisennä peräkkäiset kappaleet"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:111
-#, fuzzy
 msgid "&Indentation"
 msgstr "Sise&nnys"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:121
-#, fuzzy
 msgid "Spacing"
 msgstr "R&iviväli"
 
@@ -3061,18 +3045,16 @@ msgid "&Line spacing:"
 msgstr "&Rivivälit:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:191
-#, fuzzy
 msgid "Format text into two columns"
-msgstr "Asiakirja muotoutuu..."
+msgstr "Muotoile teksti kahdeksi palstaksi"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:194
 msgid "Two-&column document"
 msgstr "Kaksi&palstainen asiakirja"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
-#, fuzzy
 msgid "Listing settings"
-msgstr "Tulostusasetukset"
+msgstr "Listausasetukset"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
@@ -3101,7 +3083,7 @@ msgstr "Korvaa kohta valinnalla"
 
 #: src/frontends/qt4/ui/TocUi.ui:48
 msgid "Update navigation tree"
-msgstr ""
+msgstr "Päivitä navigointipuu"
 
 #: src/frontends/qt4/ui/TocUi.ui:51 src/frontends/qt4/ui/TocUi.ui:83
 #: src/frontends/qt4/ui/TocUi.ui:102 src/frontends/qt4/ui/TocUi.ui:121
@@ -3111,31 +3093,31 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TocUi.ui:80
 msgid "Decrease nesting depth of selected item"
-msgstr ""
+msgstr "Vähennä valinnan sisäkkäisyyssyvyys"
 
 #: src/frontends/qt4/ui/TocUi.ui:99
 msgid "Increase nesting depth of selected item"
-msgstr ""
+msgstr "Lisää valinnan sisäkkäisyyssyvyys"
 
 #: src/frontends/qt4/ui/TocUi.ui:118
-#, fuzzy
 msgid "Move selected item down by one"
-msgstr "Siirrä valittua lähdeviitettä alas"
+msgstr "Siirrä valittua kohdetta yksi pykälä alas"
 
 #: src/frontends/qt4/ui/TocUi.ui:137
-#, fuzzy
 msgid "Move selected item up by one"
-msgstr "Siirrä valittua lähdeviitettä ylös"
+msgstr "Siirrä valittua kohdetta yksi pykälä ylös"
 
 #: src/frontends/qt4/ui/TocUi.ui:166
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
 msgstr ""
+"Vaihda välillä sisällys- , kuvien ja taulukoiden luetteloja, mikäli niitä "
+"on"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
-msgstr ""
+msgstr "Viritä oikeaksi hakemistopuun syyvyyttä"
 
 #: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
 #: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:187
@@ -3160,23 +3142,20 @@ msgid "&Generate hyperlink"
 msgstr "&Luo hyperlinkki"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:28
-#, fuzzy
 msgid "&Spacing:"
-msgstr "R&iviväli"
+msgstr "R&iviväli:"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:38
 msgid "&Value:"
 msgstr "&Arvo:"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:51
-#, fuzzy
 msgid "&Protect:"
-msgstr "P&ikanäppäin:"
+msgstr "Suojaa:"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:61
-#, fuzzy
 msgid "Insert the spacing even after a page break"
-msgstr "Lisää yhdyskirjasinkatko"
+msgstr "Lisää väli sivunvaihdon jälkeenkin"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:74
 msgid "Custom value. Needs spacing type \"Custom\"."
@@ -3184,7 +3163,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Supported spacing types"
-msgstr ""
+msgstr "Tuetut välityypit"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:85
 msgid "DefSkip"
@@ -3208,11 +3187,11 @@ msgstr "Pystytäyttö"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:36
 msgid "Complete source"
-msgstr ""
+msgstr "Koko lähdekoodi"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:43
 msgid "Automatic update"
-msgstr ""
+msgstr "Automaattinen päivitys"
 
 #: src/frontends/qt4/ui/WrapUi.ui:53
 msgid "Default (outer)"
@@ -3269,9 +3248,8 @@ msgid "Proof"
 msgstr "Todistus"
 
 #: lib/layouts/IEEEtran.layout:67 lib/layouts/heb-article.layout:110
-#, fuzzy
 msgid "Proof:"
-msgstr "Todistus"
+msgstr "Todistus:"
 
 #: lib/layouts/IEEEtran.layout:72 lib/layouts/amsart-plain.layout:26
 #: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:962
@@ -3285,9 +3263,8 @@ msgid "Theorem"
 msgstr "Lause"
 
 #: lib/layouts/IEEEtran.layout:75
-#, fuzzy
 msgid "Theorem #:"
-msgstr "Lause"
+msgstr "Lause #:"
 
 #: lib/layouts/IEEEtran.layout:82 lib/layouts/amsart-plain.layout:37
 #: lib/layouts/amsart-seq.layout:149 lib/layouts/elsart.layout:318
@@ -3300,9 +3277,8 @@ msgid "Lemma"
 msgstr "Lemma"
 
 #: lib/layouts/IEEEtran.layout:85
-#, fuzzy
 msgid "Lemma #:"
-msgstr "Lemma"
+msgstr "Lemma #:"
 
 #: lib/layouts/IEEEtran.layout:92 lib/layouts/amsart-plain.layout:31
 #: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:893
@@ -3316,9 +3292,8 @@ msgid "Corollary"
 msgstr "Seurauslause"
 
 #: lib/layouts/IEEEtran.layout:95
-#, fuzzy
 msgid "Corollary #:"
-msgstr "Seurauslause"
+msgstr "Seurauslause #:"
 
 #: lib/layouts/IEEEtran.layout:102 lib/layouts/amsart-plain.layout:43
 #: lib/layouts/amsart-seq.layout:155 lib/layouts/elsart.layout:332
@@ -3331,9 +3306,8 @@ msgid "Proposition"
 msgstr "Väittämä"
 
 #: lib/layouts/IEEEtran.layout:105
-#, fuzzy
 msgid "Proposition #:"
-msgstr "Väittämä"
+msgstr "Väittämä #:"
 
 #: lib/layouts/IEEEtran.layout:112 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:367
@@ -3345,9 +3319,8 @@ msgid "Conjecture"
 msgstr "Otaksuma"
 
 #: lib/layouts/IEEEtran.layout:115
-#, fuzzy
 msgid "Conjecture #:"
-msgstr "Otaksuma"
+msgstr "Otaksuma #:"
 
 #: lib/layouts/IEEEtran.layout:122 lib/layouts/amsart-plain.layout:55
 #: lib/layouts/amsart-seq.layout:167 lib/layouts/elsart.layout:339
@@ -3357,9 +3330,8 @@ msgid "Criterion"
 msgstr "Kriteeri"
 
 #: lib/layouts/IEEEtran.layout:125
-#, fuzzy
 msgid "Criterion #:"
-msgstr "Kriteeri"
+msgstr "Kriteeri #:"
 
 #: lib/layouts/IEEEtran.layout:132 lib/layouts/amsart-plain.layout:67
 #: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:950
@@ -3369,9 +3341,8 @@ msgid "Fact"
 msgstr "Fakta"
 
 #: lib/layouts/IEEEtran.layout:135
-#, fuzzy
 msgid "Fact #:"
-msgstr "Fakta"
+msgstr "Fakta #:"
 
 #: lib/layouts/IEEEtran.layout:142 lib/layouts/amsart-plain.layout:73
 #: lib/layouts/amsart-seq.layout:185 lib/layouts/amsmaths-plain.inc:113
@@ -3380,9 +3351,8 @@ msgid "Axiom"
 msgstr "Aksiooma"
 
 #: lib/layouts/IEEEtran.layout:145
-#, fuzzy
 msgid "Axiom #:"
-msgstr "Aksiooma"
+msgstr "Aksiooma #:"
 
 #: lib/layouts/IEEEtran.layout:152 lib/layouts/amsart-plain.layout:79
 #: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:920
@@ -3396,9 +3366,8 @@ msgid "Definition"
 msgstr "Määritelmä"
 
 #: lib/layouts/IEEEtran.layout:155
-#, fuzzy
 msgid "Definition #:"
-msgstr "Määritelmä"
+msgstr "Määritelmä #"
 
 #: lib/layouts/IEEEtran.layout:162 lib/layouts/amsart-plain.layout:85
 #: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:932
@@ -3411,9 +3380,8 @@ msgid "Example"
 msgstr "Esimerkki"
 
 #: lib/layouts/IEEEtran.layout:165
-#, fuzzy
 msgid "Example #:"
-msgstr "Esimerkki"
+msgstr "Esimerkki #:"
 
 #: lib/layouts/IEEEtran.layout:172 lib/layouts/amsart-plain.layout:91
 #: lib/layouts/amsart-seq.layout:203 lib/layouts/amsmaths-plain.inc:143
@@ -3422,9 +3390,8 @@ msgid "Condition"
 msgstr "Ehto"
 
 #: lib/layouts/IEEEtran.layout:175
-#, fuzzy
 msgid "Condition #:"
-msgstr "Ehto"
+msgstr "Ehto #:"
 
 #: lib/layouts/IEEEtran.layout:182 lib/layouts/amsart-plain.layout:97
 #: lib/layouts/amsart-seq.layout:209 lib/layouts/elsart.layout:381
@@ -3435,9 +3402,8 @@ msgid "Problem"
 msgstr "Ongelma"
 
 #: lib/layouts/IEEEtran.layout:185
-#, fuzzy
 msgid "Problem #:"
-msgstr "Ongelma"
+msgstr "Ongelma #:"
 
 #: lib/layouts/IEEEtran.layout:192 lib/layouts/amsart-plain.layout:103
 #: lib/layouts/amsart-seq.layout:215 lib/layouts/llncs.layout:347
@@ -3447,9 +3413,8 @@ msgid "Exercise"
 msgstr "Harjoitus"
 
 #: lib/layouts/IEEEtran.layout:195
-#, fuzzy
 msgid "Exercise #:"
-msgstr "Harjoitus"
+msgstr "Harjoitus #:"
 
 #: lib/layouts/IEEEtran.layout:202 lib/layouts/amsart-plain.layout:109
 #: lib/layouts/amsart-seq.layout:221 lib/layouts/elsart.layout:388
@@ -3461,9 +3426,8 @@ msgid "Remark"
 msgstr "Huomautus"
 
 #: lib/layouts/IEEEtran.layout:205
-#, fuzzy
 msgid "Remark #:"
-msgstr "Huomautus"
+msgstr "Huomautus #:"
 
 #: lib/layouts/IEEEtran.layout:212 lib/layouts/amsart-plain.layout:115
 #: lib/layouts/amsart-seq.layout:227 lib/layouts/elsart.layout:402
@@ -3475,9 +3439,8 @@ msgid "Claim"
 msgstr "Väite"
 
 #: lib/layouts/IEEEtran.layout:215
-#, fuzzy
 msgid "Claim #:"
-msgstr "Väite"
+msgstr "Väite #:"
 
 #: lib/layouts/IEEEtran.layout:222 lib/layouts/amsart-plain.layout:121
 #: lib/layouts/amsart-seq.layout:233 lib/layouts/apa.layout:213
@@ -3490,9 +3453,8 @@ msgid "Note"
 msgstr "Muistiinpano"
 
 #: lib/layouts/IEEEtran.layout:225
-#, fuzzy
 msgid "Note #:"
-msgstr "Muistiinpano"
+msgstr "Muistiinpano #:"
 
 #: lib/layouts/IEEEtran.layout:232 lib/layouts/amsart-plain.layout:127
 #: lib/layouts/amsart-seq.layout:239 lib/layouts/ijmpc.layout:195
@@ -3502,9 +3464,8 @@ msgid "Notation"
 msgstr "Merkintätapa"
 
 #: lib/layouts/IEEEtran.layout:235
-#, fuzzy
 msgid "Notation #:"
-msgstr "Merkintätapa"
+msgstr "Merkintätapa #:"
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/amsart-plain.layout:145
 #: lib/layouts/amsart-seq.layout:257 lib/layouts/elsart.layout:417
@@ -3514,9 +3475,8 @@ msgid "Case"
 msgstr "Tapaus"
 
 #: lib/layouts/IEEEtran.layout:245
-#, fuzzy
 msgid "Case #:"
-msgstr "Tapaus"
+msgstr "Tapaus #:"
 
 #: lib/layouts/IEEEtran.layout:270 lib/layouts/aa.layout:37
 #: lib/layouts/aa.layout:216 lib/layouts/aapaper.layout:64
@@ -3625,9 +3585,8 @@ msgid "Abstract"
 msgstr "Tiivistelmä"
 
 #: lib/layouts/IEEEtran.layout:335
-#, fuzzy
 msgid "Abstract---"
-msgstr "Tiivistelmä"
+msgstr "Tiivistelmä---"
 
 #: lib/layouts/IEEEtran.layout:349 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
@@ -3641,9 +3600,8 @@ msgid "Keywords"
 msgstr "Avainsanat"
 
 #: lib/layouts/IEEEtran.layout:360
-#, fuzzy
 msgid "Index Terms---"
-msgstr "Hakemistoviite"
+msgstr "Hakemistoviitteet---"
 
 #: lib/layouts/IEEEtran.layout:372 lib/layouts/aa.layout:86
 #: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
@@ -3684,9 +3642,8 @@ msgid "Biography"
 msgstr "Elämäkerta"
 
 #: lib/layouts/IEEEtran.layout:422
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Elämäkerta"
+msgstr "ElämäkertaIlmanKuvaa"
 
 #: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
 msgid "Footernote"
@@ -3835,19 +3792,17 @@ msgid "Acknowledgement"
 msgstr "Kiitos"
 
 #: lib/layouts/aa.layout:153 lib/layouts/aapaper.inc:74
-#, fuzzy
 msgid "Offprint Requests to:"
-msgstr "Eripainokset"
+msgstr "Eripainokset:"
 
 #: lib/layouts/aa.layout:176
 msgid "Correspondence to:"
-msgstr ""
+msgstr "Kirjeenvaihto:"
 
 #: lib/layouts/aa.layout:202 lib/layouts/egs.layout:527
 #: lib/layouts/svjour.inc:308
-#, fuzzy
 msgid "Acknowledgements."
-msgstr "Kiitokset"
+msgstr "Kiitokset."
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
 #: src/frontends/qt4/QPrefs.cpp:303
@@ -3947,49 +3902,40 @@ msgid "Dataset"
 msgstr "Datajoukko"
 
 #: lib/layouts/aastex.layout:293
-#, fuzzy
 msgid "Subject headings:"
-msgstr "yläotsikot"
+msgstr "Aiheotsikot:"
 
 #: lib/layouts/aastex.layout:336
-#, fuzzy
 msgid "[Acknowledgements]"
-msgstr "Kiitokset"
+msgstr "[Kiitokset]"
 
 #: lib/layouts/aastex.layout:357
-#, fuzzy
 msgid "and"
-msgstr "Maa"
+msgstr "ja"
 
 #: lib/layouts/aastex.layout:378
-#, fuzzy
 msgid "Place Figure here:"
-msgstr "Kuvan paikka"
+msgstr "Kuvan paikka:"
 
 #: lib/layouts/aastex.layout:399
-#, fuzzy
 msgid "Place Table here:"
-msgstr "Taulukon paikka"
+msgstr "Taulukon paikka:"
 
 #: lib/layouts/aastex.layout:419
-#, fuzzy
 msgid "[Appendix]"
-msgstr "Liite"
+msgstr "[Liite]"
 
 #: lib/layouts/aastex.layout:479
-#, fuzzy
 msgid "Note to Editor:"
-msgstr "Huomautus toimittajalle"
+msgstr "Huomautus toimittajalle:"
 
 #: lib/layouts/aastex.layout:500
-#, fuzzy
 msgid "References. ---"
-msgstr "Viitteet: "
+msgstr "Viitteet. ---"
 
 #: lib/layouts/aastex.layout:520
-#, fuzzy
 msgid "Note. ---"
-msgstr "Muistiinpano"
+msgstr "Muistiinpano. ---"
 
 #: lib/layouts/aastex.layout:530
 msgid "FigCaption"
@@ -3997,7 +3943,7 @@ msgstr "Kuvateksti"
 
 #: lib/layouts/aastex.layout:540
 msgid "Fig. ---"
-msgstr ""
+msgstr "Kuva ---"
 
 #: lib/layouts/aastex.layout:557
 #, fuzzy
@@ -4009,48 +3955,41 @@ msgid "Obj:"
 msgstr ""
 
 #: lib/layouts/aastex.layout:610
-#, fuzzy
 msgid "Dataset:"
-msgstr "Datajoukko"
+msgstr "Datajoukko:"
 
 #: lib/layouts/amsart-plain.layout:27 lib/layouts/beamer.layout:965
 #: lib/layouts/foils.layout:300 lib/layouts/siamltex.layout:270
 #: lib/layouts/amsmaths-plain.inc:35 lib/layouts/amsmaths.inc:95
-#, fuzzy
 msgid "Theorem."
-msgstr "Lause"
+msgstr "Lause."
 
 #: lib/layouts/amsart-plain.layout:33 lib/layouts/beamer.layout:903
 #: lib/layouts/foils.layout:314 lib/layouts/siamltex.layout:284
 #: lib/layouts/amsmaths-plain.inc:45 lib/layouts/amsmaths.inc:117
-#, fuzzy
 msgid "Corollary."
-msgstr "Seurauslause"
+msgstr "Seurauslause."
 
 #: lib/layouts/amsart-plain.layout:39 lib/layouts/foils.layout:307
 #: lib/layouts/siamltex.layout:277 lib/layouts/amsmaths-plain.inc:55
 #: lib/layouts/amsmaths.inc:139
-#, fuzzy
 msgid "Lemma."
-msgstr "Lemma"
+msgstr "Lemma."
 
 #: lib/layouts/amsart-plain.layout:45 lib/layouts/foils.layout:321
 #: lib/layouts/siamltex.layout:291 lib/layouts/amsmaths-plain.inc:65
 #: lib/layouts/amsmaths.inc:161
-#, fuzzy
 msgid "Proposition."
-msgstr "Väittämä"
+msgstr "Väittämä."
 
 #: lib/layouts/amsart-plain.layout:51 lib/layouts/amsmaths-plain.inc:75
 #: lib/layouts/amsmaths.inc:183
-#, fuzzy
 msgid "Conjecture."
-msgstr "Otaksuma"
+msgstr "Otaksuma."
 
 #: lib/layouts/amsart-plain.layout:57 lib/layouts/amsmaths-plain.inc:85
-#, fuzzy
 msgid "Criterion."
-msgstr "Kriteeri"
+msgstr "Kriteeri."
 
 #: lib/layouts/amsart-plain.layout:61 lib/layouts/amsart-seq.layout:173
 #: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:385
@@ -4060,76 +3999,64 @@ msgid "Algorithm"
 msgstr "Algoritmi"
 
 #: lib/layouts/amsart-plain.layout:63
-#, fuzzy
 msgid "Algorithm."
-msgstr "Algoritmi"
+msgstr "Algoritmi."
 
 #: lib/layouts/amsart-plain.layout:69 lib/layouts/beamer.layout:953
 #: lib/layouts/amsmaths-plain.inc:105 lib/layouts/amsmaths.inc:227
-#, fuzzy
 msgid "Fact."
-msgstr "Fakta"
+msgstr "Fakta."
 
 #: lib/layouts/amsart-plain.layout:75 lib/layouts/amsmaths-plain.inc:115
-#, fuzzy
 msgid "Axiom."
-msgstr "Aksiooma"
+msgstr "Aksiooma."
 
 #: lib/layouts/amsart-plain.layout:81 lib/layouts/beamer.layout:923
 #: lib/layouts/foils.layout:328 lib/layouts/siamltex.layout:297
 #: lib/layouts/amsmaths-plain.inc:125 lib/layouts/amsmaths.inc:268
-#, fuzzy
 msgid "Definition."
-msgstr "Määritelmä"
+msgstr "Määritelmä."
 
 #: lib/layouts/amsart-plain.layout:87 lib/layouts/beamer.layout:935
 #: lib/layouts/amsmaths-plain.inc:135 lib/layouts/amsmaths.inc:290
-#, fuzzy
 msgid "Example."
-msgstr "Esimerkki"
+msgstr "Esimerkki."
 
 #: lib/layouts/amsart-plain.layout:93 lib/layouts/amsmaths-plain.inc:145
 #: lib/layouts/amsmaths.inc:312
-#, fuzzy
 msgid "Condition."
-msgstr "Ehto"
+msgstr "Ehto."
 
 #: lib/layouts/amsart-plain.layout:99 lib/layouts/amsmaths-plain.inc:155
 #: lib/layouts/amsmaths.inc:334
-#, fuzzy
 msgid "Problem."
-msgstr "Ongelma"
+msgstr "Ongelma."
 
 #: lib/layouts/amsart-plain.layout:105 lib/layouts/amsmaths-plain.inc:165
 #: lib/layouts/amsmaths.inc:357
-#, fuzzy
 msgid "Exercise."
-msgstr "Harjoitus"
+msgstr "Harjoitus."
 
 #: lib/layouts/amsart-plain.layout:111 lib/layouts/amsmaths-plain.inc:175
 #: lib/layouts/amsmaths.inc:388
-#, fuzzy
 msgid "Remark."
-msgstr "Huomautus"
+msgstr "Huomautus."
 
 #: lib/layouts/amsart-plain.layout:117 lib/layouts/llncs.layout:308
 #: lib/layouts/amsmaths-plain.inc:185 lib/layouts/amsmaths.inc:410
 #: lib/layouts/svjour.inc:362
-#, fuzzy
 msgid "Claim."
-msgstr "Väite"
+msgstr "Väite."
 
 #: lib/layouts/amsart-plain.layout:123 lib/layouts/amsmaths-plain.inc:195
 #: lib/layouts/amsmaths.inc:432
-#, fuzzy
 msgid "Note."
-msgstr "Muistiinpano"
+msgstr "Muistiinpano."
 
 #: lib/layouts/amsart-plain.layout:129 lib/layouts/amsmaths-plain.inc:205
 #: lib/layouts/amsmaths.inc:454
-#, fuzzy
 msgid "Notation."
-msgstr "Merkintätapa"
+msgstr "Merkintätapa."
 
 #: lib/layouts/amsart-plain.layout:133 lib/layouts/amsart-seq.layout:245
 #: lib/layouts/elsart.layout:409 lib/layouts/amsmaths-plain.inc:213
@@ -4138,21 +4065,18 @@ msgid "Summary"
 msgstr "Yhteenveto"
 
 #: lib/layouts/amsart-plain.layout:135 lib/layouts/amsmaths-plain.inc:215
-#, fuzzy
 msgid "Summary."
-msgstr "Yhteenveto"
+msgstr "Yhteenveto."
 
 #: lib/layouts/amsart-plain.layout:141 lib/layouts/egs.layout:552
 #: lib/layouts/amsmaths-plain.inc:225 lib/layouts/amsmaths.inc:487
 #: lib/layouts/svjour.inc:322
-#, fuzzy
 msgid "Acknowledgement."
-msgstr "Kiitos"
+msgstr "Kiitos."
 
 #: lib/layouts/amsart-plain.layout:147 lib/layouts/amsmaths-plain.inc:235
-#, fuzzy
 msgid "Case."
-msgstr "Tapaus"
+msgstr "Tapaus."
 
 #: lib/layouts/amsart-plain.layout:151 lib/layouts/amsart-seq.layout:263
 #: lib/layouts/amsmaths-plain.inc:243 lib/layouts/amsmaths-seq.inc:200
@@ -4171,7 +4095,7 @@ msgstr "Väittämä \\arabic{theorem}."
 
 #: lib/layouts/amsart-seq.layout:145 lib/layouts/ijmpc.layout:251
 msgid "Corollary \\arabic{corollary}."
-msgstr ""
+msgstr "Seurauslause \\arabic{corollary}."
 
 #: lib/layouts/amsart-seq.layout:151 lib/layouts/ijmpc.layout:261
 msgid "Lemma \\arabic{lemma}."
@@ -4179,27 +4103,27 @@ msgstr ""
 
 #: lib/layouts/amsart-seq.layout:157 lib/layouts/ijmpc.layout:271
 msgid "Proposition \\arabic{proposition}."
-msgstr ""
+msgstr "Väittämä \\arabic{proposition}."
 
 #: lib/layouts/amsart-seq.layout:163 lib/layouts/ijmpc.layout:311
 msgid "Conjecture \\arabic{conjecture}."
-msgstr ""
+msgstr "Otaksuma \\arabic{conjecture}."
 
 #: lib/layouts/amsart-seq.layout:169
 msgid "Criterion \\arabic{criterion}."
-msgstr ""
+msgstr "Kriteeri \\arabic{criterion}."
 
 #: lib/layouts/amsart-seq.layout:175
 msgid "Algorithm \\arabic{algorithm}."
-msgstr ""
+msgstr "Algoritmi \\arabic{algorithm}."
 
 #: lib/layouts/amsart-seq.layout:181
 msgid "Fact \\arabic{fact}."
-msgstr ""
+msgstr "Fakta \\arabic{fact}."
 
 #: lib/layouts/amsart-seq.layout:187
 msgid "Axiom \\arabic{axiom}."
-msgstr ""
+msgstr "Aksiooma \\arabic{axiom}."
 
 #: lib/layouts/amsart-seq.layout:193 lib/layouts/ijmpc.layout:150
 msgid "Definition \\arabic{definition}."
@@ -4211,53 +4135,52 @@ msgstr ""
 
 #: lib/layouts/amsart-seq.layout:205
 msgid "Condition \\arabic{condition}."
-msgstr ""
+msgstr "Ehto \\arabic{condition}."
 
 #: lib/layouts/amsart-seq.layout:211
 msgid "Problem \\arabic{problem}."
-msgstr ""
+msgstr "Ongelma \\arabic{problem}."
 
 #: lib/layouts/amsart-seq.layout:217
 msgid "Exercise \\arabic{exercise}."
-msgstr ""
+msgstr "Harjoitus \\arabic{exercise}."
 
 #: lib/layouts/amsart-seq.layout:223 lib/layouts/ijmpc.layout:189
 msgid "Remark \\arabic{remark}."
-msgstr ""
+msgstr "Huomautus \\arabic{remark}."
 
 #: lib/layouts/amsart-seq.layout:229 lib/layouts/ijmpc.layout:301
 msgid "Claim \\arabic{claim}."
-msgstr ""
+msgstr "Väittämä \\arabic{claim}."
 
 #: lib/layouts/amsart-seq.layout:235
 msgid "Note \\arabic{note}."
-msgstr ""
+msgstr "Muistiinpano \\arabic{note}."
 
 #: lib/layouts/amsart-seq.layout:241 lib/layouts/ijmpc.layout:199
 msgid "Notation \\arabic{notation}."
-msgstr ""
+msgstr "Merkintätapa \\arabic{notation}."
 
 #: lib/layouts/amsart-seq.layout:247
 msgid "Summary \\arabic{summary}."
-msgstr ""
+msgstr "Yhteenveto \\arabic{summary}."
 
 #: lib/layouts/amsart-seq.layout:253
 msgid "Acknowledgement \\arabic{acknowledgement}."
-msgstr ""
+msgstr "Kitos \\arabic{acknowledgement}."
 
 #: lib/layouts/amsart-seq.layout:259
 msgid "Case \\arabic{case}."
-msgstr ""
+msgstr "Tapaus \\arabic{case}."
 
 #: lib/layouts/amsart-seq.layout:265
 msgid "Conclusion \\arabic{conclusion}."
-msgstr ""
+msgstr "Päätelmä \\arabic{conclusion}."
 
 #: lib/layouts/amsbook.layout:96 lib/layouts/amsbook.layout:97
 #: lib/layouts/powerdot.layout:217 lib/layouts/numarticle.inc:16
-#, fuzzy
 msgid "\\arabic{section}"
-msgstr "Alikappale"
+msgstr ""
 
 #: lib/layouts/amsbook.layout:109
 msgid "Chapter Exercises"
@@ -4268,23 +4191,20 @@ msgid "RightHeader"
 msgstr "Oikea yläotsikko"
 
 #: lib/layouts/apa.layout:59
-#, fuzzy
 msgid "Right header:"
-msgstr "Oikea yläotsikko"
+msgstr "Oikea yläotsikko:"
 
 #: lib/layouts/apa.layout:83
-#, fuzzy
 msgid "Abstract:"
-msgstr "Tiivistelmä: "
+msgstr "Tiivistelmä:"
 
 #: lib/layouts/apa.layout:92
 msgid "ShortTitle"
 msgstr "Lyhyt teoksen nimi"
 
 #: lib/layouts/apa.layout:100
-#, fuzzy
 msgid "Short title:"
-msgstr "Lyhyt teoksen nimi"
+msgstr "Lyhyt teoksen nimi:"
 
 #: lib/layouts/apa.layout:129
 msgid "TwoAuthors"
@@ -4300,9 +4220,8 @@ msgstr "Neljä tekijää"
 
 #: lib/layouts/apa.layout:162 lib/layouts/revtex4.layout:145
 #: lib/layouts/agu_stdtitle.inc:131
-#, fuzzy
 msgid "Affiliation:"
-msgstr "Järjestö"
+msgstr "Järjestö:"
 
 #: lib/layouts/apa.layout:171
 msgid "TwoAffiliations"
@@ -7343,18 +7262,16 @@ msgid "Condition @Section@.\\arabic{theorem}."
 msgstr ""
 
 #: lib/layouts/amsmaths.inc:309
-#, fuzzy
 msgid "Condition*"
-msgstr "Ehto"
+msgstr "Ehto*"
 
 #: lib/layouts/amsmaths.inc:323
 msgid "Problem @Section@.\\arabic{theorem}."
 msgstr ""
 
 #: lib/layouts/amsmaths.inc:331
-#, fuzzy
 msgid "Problem*"
-msgstr "Ongelma"
+msgstr "Ongelma*"
 
 #: lib/layouts/amsmaths.inc:345
 msgid "Exercise @Section@.\\arabic{theorem}."
@@ -7391,20 +7308,19 @@ msgstr "Muistiinpano*"
 
 #: lib/layouts/amsmaths.inc:443
 msgid "Notation @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Merkintätapa @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:451
-#, fuzzy
 msgid "Notation*"
-msgstr "Merkintätapa"
+msgstr "Merkintätapa*"
 
 #: lib/layouts/amsmaths.inc:465
 msgid "Summary @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Yhteenveto @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:476
 msgid "Acknowledgement @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Kiitos @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:484
 msgid "Acknowledgement*"
@@ -7412,11 +7328,11 @@ msgstr "Kiitos*"
 
 #: lib/layouts/amsmaths.inc:498
 msgid "Case @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Tapaus @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:509
 msgid "Conclusion @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Päätelmä @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:517
 msgid "Conclusion*"
@@ -7443,7 +7359,6 @@ msgid "RevisionHistory"
 msgstr "Versiohistoriikki"
 
 #: lib/layouts/db_stdtitle.inc:59
-#, fuzzy
 msgid "Revision History"
 msgstr "Versiohistoriikki"
 
@@ -7509,17 +7424,15 @@ msgstr ""
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
-msgstr ""
+msgstr "Liite \\Alph{section}:"
 
 #: lib/layouts/numrevtex.inc:18
-#, fuzzy
 msgid "\\Alph{subsection}."
-msgstr "Alialikappale"
+msgstr ""
 
 #: lib/layouts/numrevtex.inc:19
-#, fuzzy
 msgid "\\arabic{subsection}."
-msgstr "Alialikappale"
+msgstr ""
 
 #: lib/layouts/numrevtex.inc:27
 #, fuzzy
