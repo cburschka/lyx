@@ -3948,7 +3948,7 @@ msgstr "Kuva ---"
 #: lib/layouts/aastex.layout:557
 #, fuzzy
 msgid "Facility:"
-msgstr "&Perhe:"
+msgstr ""
 
 #: lib/layouts/aastex.layout:583
 msgid "Obj:"
@@ -4244,9 +4244,8 @@ msgid "CopNum"
 msgstr "Kopiomäärä"
 
 #: lib/layouts/apa.layout:234
-#, fuzzy
 msgid "Acknowledgements:"
-msgstr "Kiitokset"
+msgstr "Kiitokset:"
 
 #: lib/layouts/apa.layout:243 lib/layouts/iopart.layout:233
 #: lib/layouts/iopart.layout:247 lib/layouts/revtex4.layout:212
@@ -4264,9 +4263,8 @@ msgstr "Keskitetty_kuvateksti"
 
 #: lib/layouts/apa.layout:269 lib/layouts/scrclass.inc:242
 #: lib/layouts/scrclass.inc:262
-#, fuzzy
 msgid "Senseless!"
-msgstr "Järjetöntä: "
+msgstr "Järjetöntä!"
 
 #: lib/layouts/apa.layout:280
 msgid "FitFigure"
@@ -4293,24 +4291,20 @@ msgid "(\\alph{enumii})"
 msgstr ""
 
 #: lib/layouts/armenian-article.layout:9
-#, fuzzy
 msgid "LatinOn"
-msgstr "latvia"
+msgstr "Latinalaiset päälle"
 
 #: lib/layouts/armenian-article.layout:18
-#, fuzzy
 msgid "Latin on"
-msgstr "Sijainti"
+msgstr "Latinalaiset päälle"
 
 #: lib/layouts/armenian-article.layout:25
-#, fuzzy
 msgid "LatinOff"
-msgstr "latvia"
+msgstr "Latinalaiset pois"
 
 #: lib/layouts/armenian-article.layout:34
-#, fuzzy
 msgid "Latin off"
-msgstr "latvia"
+msgstr "Latinalaiset pois"
 
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:114
 #: lib/layouts/beamer.layout:129 lib/layouts/mwart.layout:23
@@ -4424,46 +4418,40 @@ msgid "Columns (top aligned)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:515
-#, fuzzy
 msgid "Pause"
-msgstr "Liitä"
+msgstr "Tauko"
 
 #: lib/layouts/beamer.layout:531
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
 #: lib/layouts/beamer.layout:541 lib/layouts/beamer.layout:551
-#, fuzzy
 msgid "Overprint"
-msgstr "Eripainos"
+msgstr "Päälletulostus"
 
 #: lib/layouts/beamer.layout:567
-#, fuzzy
 msgid "OverlayArea"
-msgstr "Kalvokerros"
+msgstr "KalvoKerros"
 
 #: lib/layouts/beamer.layout:577
-#, fuzzy
 msgid "Overlayarea"
 msgstr "Kalvokerros"
 
 #: lib/layouts/beamer.layout:592
-#, fuzzy
 msgid "Uncover"
-msgstr "&Poista"
+msgstr "Tuo näkyviin"
 
 #: lib/layouts/beamer.layout:602
 msgid "Uncovered on slides"
-msgstr ""
+msgstr "Näkyvä kalvoissa"
 
 #: lib/layouts/beamer.layout:617
-#, fuzzy
 msgid "Only"
-msgstr "Päällä"
+msgstr "Vain"
 
 #: lib/layouts/beamer.layout:627
 msgid "Only on slides"
-msgstr ""
+msgstr "Vain kalvoissa"
 
 #: lib/layouts/beamer.layout:643
 msgid "Block"
@@ -4471,25 +4459,23 @@ msgstr "Lohko"
 
 #: lib/layouts/beamer.layout:653
 msgid "Block ( ERT[{title}] body ):"
-msgstr ""
+msgstr "Lohko ( ERT[{nimi}] sisältö ):"
 
 #: lib/layouts/beamer.layout:668
-#, fuzzy
 msgid "ExampleBlock"
-msgstr "Esimerkki"
+msgstr "EsimerkkiLohko"
 
 #: lib/layouts/beamer.layout:678
 msgid "Block ( ERT[{title}] example text ):"
-msgstr ""
+msgstr "Lohko ( ERT[{nimi}] esimerkki teksti ):"
 
 #: lib/layouts/beamer.layout:697
-#, fuzzy
 msgid "AlertBlock"
-msgstr "Lohko"
+msgstr "HuomioLohko"
 
 #: lib/layouts/beamer.layout:707
 msgid "Block ( ERT[{title}] alert text ):"
-msgstr ""
+msgstr "Lohko ( ERT[{nimi}] huomio teksti ):"
 
 #: lib/layouts/beamer.layout:799 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
@@ -4502,35 +4488,29 @@ msgid "TitleGraphic"
 msgstr "Kuva"
 
 #: lib/layouts/beamer.layout:926
-#, fuzzy
 msgid "Definitions"
-msgstr "Määritelmä"
+msgstr "Määritelmät"
 
 #: lib/layouts/beamer.layout:929
-#, fuzzy
 msgid "Definitions."
-msgstr "Määritelmä"
+msgstr "Määritelmät."
 
 #: lib/layouts/beamer.layout:943
-#, fuzzy
 msgid "Examples"
-msgstr "Esimerkki"
+msgstr "Esimerkit"
 
 #: lib/layouts/beamer.layout:946
-#, fuzzy
 msgid "Examples."
-msgstr "Esimerkki"
+msgstr "Esimerkit."
 
 #: lib/layouts/beamer.layout:959 lib/layouts/foils.layout:286
 #: lib/layouts/ijmpc.layout:236 lib/layouts/ijmpd.layout:236
 #: lib/layouts/llncs.layout:377 lib/layouts/siamltex.layout:255
 #: lib/layouts/amsdefs.inc:43 lib/layouts/svjour.inc:439
-#, fuzzy
 msgid "Proof."
-msgstr "Todistus"
+msgstr "Todistus."
 
 #: lib/layouts/beamer.layout:970
-#, fuzzy
 msgid "Separator"
 msgstr "Kappaleväli"
 
@@ -5013,15 +4993,15 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:328
 msgid "Corollary \\arabic{theorem}"
-msgstr ""
+msgstr "Seurauslause \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:335
 msgid "Proposition \\arabic{theorem}"
-msgstr ""
+msgstr "Väittämä \\arabic{theorem}."
 
 #: lib/layouts/elsart.layout:342
 msgid "Criterion \\arabic{theorem}"
-msgstr ""
+msgstr "Kriteeri \\arabic{theorem]."
 
 #: lib/layouts/elsart.layout:349
 msgid "Algorithm \\arabic{theorem}"
@@ -5029,23 +5009,23 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:356
 msgid "Definition \\arabic{theorem}"
-msgstr ""
+msgstr "Määritelmä \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:370
 msgid "Conjecture \\arabic{theorem}"
-msgstr ""
+msgstr "Otaksuma \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:377
 msgid "Example \\arabic{theorem}"
-msgstr ""
+msgstr "Esimerkki \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:384
 msgid "Problem \\arabic{theorem}"
-msgstr ""
+msgstr "Ongelma \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:391
 msgid "Remark \\arabic{theorem}"
-msgstr ""
+msgstr "Huomautus \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:398
 msgid "Note \\arabic{theorem}"
@@ -5057,7 +5037,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:413
 msgid "Summary \\arabic{summ}"
-msgstr ""
+msgstr "Yhteenveto \\arabic{summ}"
 
 #: lib/layouts/elsart.layout:421
 msgid "Case \\arabic{case}"
@@ -5072,19 +5052,16 @@ msgid "Keyword"
 msgstr "Avainsana"
 
 #: lib/layouts/entcs.layout:109 lib/layouts/svjour.inc:287
-#, fuzzy
 msgid "Key words:"
-msgstr "Avainsanat"
+msgstr "Avainsanat:"
 
 #: lib/layouts/europecv.layout:48 lib/layouts/moderncv.layout:77
-#, fuzzy
 msgid "Item"
-msgstr "Luettelo"
+msgstr "Kohta"
 
 #: lib/layouts/europecv.layout:57 lib/layouts/moderncv.layout:86
-#, fuzzy
 msgid "Item:"
-msgstr "Luettelo"
+msgstr "Kohta:"
 
 #: lib/layouts/europecv.layout:64
 #, fuzzy
@@ -5102,7 +5079,7 @@ msgstr ""
 
 #: lib/layouts/europecv.layout:80
 msgid "Begin of CV"
-msgstr ""
+msgstr "CV:n alku"
 
 #: lib/layouts/europecv.layout:87
 msgid "PersonalInfo"
@@ -5114,11 +5091,11 @@ msgstr ""
 
 #: lib/layouts/europecv.layout:94
 msgid "MotherTongue"
-msgstr ""
+msgstr "Äidinkieli"
 
 #: lib/layouts/europecv.layout:103
 msgid "Mother Tongue:"
-msgstr ""
+msgstr "Aidin kieli:"
 
 #: lib/layouts/europecv.layout:110
 #, fuzzy
@@ -5131,9 +5108,8 @@ msgid "Language Header:"
 msgstr "Vasen yläotsikko"
 
 #: lib/layouts/europecv.layout:120 lib/layouts/moderncv.layout:114
-#, fuzzy
 msgid "Language:"
-msgstr "&Kieli:"
+msgstr "Kieli:"
 
 #: lib/layouts/europecv.layout:123
 #, fuzzy
@@ -5201,18 +5177,16 @@ msgid "My Logo"
 msgstr "Logoni"
 
 #: lib/layouts/foils.layout:173
-#, fuzzy
 msgid "My Logo:"
-msgstr "Logoni"
+msgstr "Logoni:"
 
 #: lib/layouts/foils.layout:182
 msgid "Restriction"
 msgstr "Rajoitus"
 
 #: lib/layouts/foils.layout:186
-#, fuzzy
 msgid "Restriction:"
-msgstr "Rajoitus"
+msgstr "Rajoitus:"
 
 #: lib/layouts/foils.layout:190 lib/layouts/simplecv.layout:95
 #: lib/layouts/aguplus.inc:75
@@ -5220,9 +5194,8 @@ msgid "Left Header"
 msgstr "Vasen yläotsikko"
 
 #: lib/layouts/foils.layout:194 lib/layouts/aguplus.inc:89
-#, fuzzy
 msgid "Left Header:"
-msgstr "Vasen yläotsikko"
+msgstr "Vasen yläotsikko:"
 
 #: lib/layouts/foils.layout:198 lib/layouts/simplecv.layout:112
 #: lib/layouts/aguplus.inc:99
@@ -5230,52 +5203,45 @@ msgid "Right Header"
 msgstr "Oikea yläotsikko"
 
 #: lib/layouts/foils.layout:202 lib/layouts/aguplus.inc:103
-#, fuzzy
 msgid "Right Header:"
-msgstr "Oikea yläotsikko"
+msgstr "Oikea yläotsikko:"
 
 #: lib/layouts/foils.layout:206
 msgid "Right Footer"
 msgstr "Oikea alaotsikko"
 
 #: lib/layouts/foils.layout:210
-#, fuzzy
 msgid "Right Footer:"
-msgstr "Oikea alaotsikko"
+msgstr "Oikea alaotsikko:"
 
 #: lib/layouts/foils.layout:237 lib/layouts/heb-article.layout:33
 #: lib/layouts/llncs.layout:418 lib/layouts/siamltex.layout:206
 #: lib/layouts/svjour.inc:481
-#, fuzzy
 msgid "Theorem #."
-msgstr "Lause"
+msgstr "Lause #."
 
 #: lib/layouts/foils.layout:251 lib/layouts/heb-article.layout:48
 #: lib/layouts/llncs.layout:357 lib/layouts/siamltex.layout:220
 #: lib/layouts/svjour.inc:418
-#, fuzzy
 msgid "Lemma #."
-msgstr "Lemma"
+msgstr "Lemma #."
 
 #: lib/layouts/foils.layout:258 lib/layouts/heb-article.layout:58
 #: lib/layouts/llncs.layout:322 lib/layouts/siamltex.layout:227
 #: lib/layouts/svjour.inc:379
-#, fuzzy
 msgid "Corollary #."
-msgstr "Seurauslause"
+msgstr "Seurauslause #."
 
 #: lib/layouts/foils.layout:265 lib/layouts/llncs.layout:391
 #: lib/layouts/siamltex.layout:234 lib/layouts/svjour.inc:453
-#, fuzzy
 msgid "Proposition #."
-msgstr "Väittämä"
+msgstr "Väittämä #."
 
 #: lib/layouts/foils.layout:272 lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:336 lib/layouts/siamltex.layout:241
 #: lib/layouts/svjour.inc:393
-#, fuzzy
 msgid "Definition #."
-msgstr "Määritelmä"
+msgstr "Määritelmä #."
 
 #: lib/layouts/foils.layout:297 lib/layouts/siamltex.layout:267
 #: lib/layouts/amsmaths.inc:91
@@ -5307,9 +5273,8 @@ msgid "Brieftext"
 msgstr "Kirjeteksti"
 
 #: lib/layouts/g-brief-de.layout:25
-#, fuzzy
 msgid "Text:"
-msgstr "Teksti"
+msgstr "Teksti:"
 
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
 #: lib/layouts/g-brief2.layout:57 lib/layouts/scrlettr.layout:116
@@ -5332,117 +5297,104 @@ msgid "Strasse"
 msgstr "Katu"
 
 #: lib/layouts/g-brief-de.layout:63
-#, fuzzy
 msgid "Strasse:"
-msgstr "Katu"
+msgstr "Katu:"
 
 #: lib/layouts/g-brief-de.layout:67
 msgid "Zusatz"
 msgstr "Lisäys"
 
 #: lib/layouts/g-brief-de.layout:70
-#, fuzzy
 msgid "Zusatz:"
-msgstr "Lisäys"
+msgstr "Lisäys:"
 
 #: lib/layouts/g-brief-de.layout:74
 msgid "Ort"
 msgstr "Postitoimipaikka"
 
 #: lib/layouts/g-brief-de.layout:77
-#, fuzzy
 msgid "Ort:"
-msgstr "Postitoimipaikka"
+msgstr "Postitoimipaikka:"
 
 #: lib/layouts/g-brief-de.layout:81
 msgid "Land"
 msgstr "Maa"
 
 #: lib/layouts/g-brief-de.layout:84
-#, fuzzy
 msgid "Land:"
-msgstr "Maa"
+msgstr "Maa:"
 
 #: lib/layouts/g-brief-de.layout:88
 msgid "RetourAdresse"
 msgstr "Palautusosoite"
 
 #: lib/layouts/g-brief-de.layout:91
-#, fuzzy
 msgid "RetourAdresse:"
-msgstr "Palautusosoite"
+msgstr "Palautusosoite:"
 
 #: lib/layouts/g-brief-de.layout:95
 msgid "MeinZeichen"
-msgstr "MeinZeichen"
+msgstr "Merkintöni"
 
 #: lib/layouts/g-brief-de.layout:98
-#, fuzzy
 msgid "MeinZeichen:"
-msgstr "MeinZeichen"
+msgstr "Merkintöni:"
 
 #: lib/layouts/g-brief-de.layout:102
 msgid "IhrZeichen"
-msgstr "IhrZeichen"
+msgstr "Merkintönne"
 
 #: lib/layouts/g-brief-de.layout:105
-#, fuzzy
 msgid "IhrZeichen:"
-msgstr "IhrZeichen"
+msgstr "Merkintönne:"
 
 #: lib/layouts/g-brief-de.layout:109
 msgid "IhrSchreiben"
-msgstr "IhrSchreiben"
+msgstr "Kirjoituksenne"
 
 #: lib/layouts/g-brief-de.layout:112
-#, fuzzy
 msgid "IhrSchreiben:"
-msgstr "IhrSchreiben"
+msgstr "Kirjoituksenne:"
 
 #: lib/layouts/g-brief-de.layout:116
 msgid "Telefon"
 msgstr "Puhelin"
 
 #: lib/layouts/g-brief-de.layout:119
-#, fuzzy
 msgid "Telefon:"
-msgstr "Puhelin"
+msgstr "Puhelin:"
 
 #: lib/layouts/g-brief-de.layout:123 lib/layouts/g-brief-en.layout:123
 msgid "Telefax"
 msgstr "Faksi"
 
 #: lib/layouts/g-brief-de.layout:126 lib/layouts/g-brief-en.layout:126
-#, fuzzy
 msgid "Telefax:"
-msgstr "Faksi"
+msgstr "Faksi:"
 
 #: lib/layouts/g-brief-de.layout:130 lib/layouts/g-brief-en.layout:130
 msgid "Telex"
 msgstr "Telex"
 
 #: lib/layouts/g-brief-de.layout:133 lib/layouts/g-brief-en.layout:133
-#, fuzzy
 msgid "Telex:"
-msgstr "Telex"
+msgstr "Telex:"
 
 #: lib/layouts/g-brief-de.layout:137 lib/layouts/g-brief-en.layout:137
 msgid "EMail"
 msgstr "Sähköposti"
 
 #: lib/layouts/g-brief-de.layout:140 lib/layouts/g-brief-en.layout:140
-#, fuzzy
 msgid "EMail:"
-msgstr "Sähköposti"
+msgstr "Sähköposti:"
 
 #: lib/layouts/g-brief-de.layout:144 lib/layouts/g-brief-en.layout:144
 msgid "HTTP"
 msgstr "HTTP"
 
 #: lib/layouts/g-brief-de.layout:147 lib/layouts/g-brief-en.layout:147
-#, fuzzy
 msgid "HTTP:"
-msgstr "HTTP"
+msgstr "HTTP:"
 
 #: lib/layouts/g-brief-de.layout:151 lib/layouts/g-brief-en.layout:151
 #: lib/layouts/scrlttr2.layout:215
@@ -5451,36 +5403,33 @@ msgstr "Pankki"
 
 #: lib/layouts/g-brief-de.layout:154 lib/layouts/g-brief-en.layout:154
 #: lib/layouts/scrlttr2.layout:219
-#, fuzzy
 msgid "Bank:"
-msgstr "Pankki"
+msgstr "Pankki:"
 
 #: lib/layouts/g-brief-de.layout:158
 msgid "BLZ"
-msgstr "BLZ"
+msgstr ""
 
 #: lib/layouts/g-brief-de.layout:161
 #, fuzzy
 msgid "BLZ:"
-msgstr "BLZ"
+msgstr ""
 
 #: lib/layouts/g-brief-de.layout:165
 msgid "Konto"
 msgstr "Tili"
 
 #: lib/layouts/g-brief-de.layout:168
-#, fuzzy
 msgid "Konto:"
-msgstr "Tili"
+msgstr "Tili:"
 
 #: lib/layouts/g-brief-de.layout:172
 msgid "Postvermerk"
 msgstr "Postimerkintä"
 
 #: lib/layouts/g-brief-de.layout:175
-#, fuzzy
 msgid "Postvermerk:"
-msgstr "Postimerkintä"
+msgstr "Postimerkintä:"
 
 #: lib/layouts/g-brief-de.layout:179
 msgid "Adresse"
@@ -5492,7 +5441,7 @@ msgstr "Puhuttelu"
 
 #: lib/layouts/g-brief-de.layout:213
 msgid "Anlagen"
-msgstr "Laitos"
+msgstr ""
 
 #: lib/layouts/g-brief-de.layout:221
 msgid "Verteiler"
@@ -5508,242 +5457,213 @@ msgid "Letter"
 msgstr "Kirje"
 
 #: lib/layouts/g-brief-en.layout:25 lib/layouts/g-brief2.layout:48
-#, fuzzy
 msgid "Letter:"
-msgstr "Kirje"
+msgstr "Kirje:"
 
 #: lib/layouts/g-brief-en.layout:56 lib/layouts/g-brief2.layout:901
 #: lib/layouts/scrlettr.layout:140 lib/layouts/scrlttr2.layout:171
 #: lib/layouts/stdletter.inc:84
-#, fuzzy
 msgid "Signature:"
-msgstr "Allekirjoitus"
+msgstr "Allekirjoitus:"
 
 #: lib/layouts/g-brief-en.layout:60
 msgid "Street"
 msgstr "Katu"
 
 #: lib/layouts/g-brief-en.layout:63
-#, fuzzy
 msgid "Street:"
-msgstr "Katu"
+msgstr "Katu:"
 
 #: lib/layouts/g-brief-en.layout:67
 msgid "Addition"
 msgstr "Lisäys"
 
 #: lib/layouts/g-brief-en.layout:70
-#, fuzzy
 msgid "Addition:"
-msgstr "Lisäys"
+msgstr "Lisäys:"
 
 #: lib/layouts/g-brief-en.layout:74
 msgid "Town"
 msgstr "Kaupunki"
 
 #: lib/layouts/g-brief-en.layout:77
-#, fuzzy
 msgid "Town:"
-msgstr "Kaupunki"
+msgstr "Kaupunki:"
 
 #: lib/layouts/g-brief-en.layout:81
 msgid "State"
 msgstr "Maa"
 
 #: lib/layouts/g-brief-en.layout:84
-#, fuzzy
 msgid "State:"
-msgstr "Maa"
+msgstr "Maa:"
 
 #: lib/layouts/g-brief-en.layout:88 lib/layouts/g-brief2.layout:674
 msgid "ReturnAddress"
 msgstr "Palautusosoite"
 
 #: lib/layouts/g-brief-en.layout:91 lib/layouts/g-brief2.layout:685
-#, fuzzy
 msgid "ReturnAddress:"
-msgstr "Palautusosoite"
+msgstr "Palautusosoite:"
 
 #: lib/layouts/g-brief-en.layout:95 lib/layouts/g-brief2.layout:736
 msgid "MyRef"
 msgstr "Viitteeni"
 
 #: lib/layouts/g-brief-en.layout:98 lib/layouts/g-brief2.layout:747
-#, fuzzy
 msgid "MyRef:"
-msgstr "Viitteeni"
+msgstr "Viitteeni:"
 
 #: lib/layouts/g-brief-en.layout:102 lib/layouts/g-brief2.layout:757
 msgid "YourRef"
 msgstr "Viitteesi"
 
 #: lib/layouts/g-brief-en.layout:105 lib/layouts/g-brief2.layout:768
-#, fuzzy
 msgid "YourRef:"
-msgstr "Viitteesi"
+msgstr "Viitteesi:"
 
 #: lib/layouts/g-brief-en.layout:109 lib/layouts/g-brief2.layout:779
 msgid "YourMail"
 msgstr "Vastaanottajan osoite"
 
 #: lib/layouts/g-brief-en.layout:112 lib/layouts/g-brief2.layout:789
-#, fuzzy
 msgid "YourMail:"
-msgstr "Vastaanottajan osoite"
+msgstr "Vastaanottajan osoite:"
 
 #: lib/layouts/g-brief-en.layout:116
 msgid "Phone"
 msgstr "Puhelin"
 
 #: lib/layouts/g-brief-en.layout:119
-#, fuzzy
 msgid "Phone:"
-msgstr "Puhelin"
+msgstr "Puhelin:"
 
 #: lib/layouts/g-brief-en.layout:158
 msgid "BankCode"
 msgstr "Pankkikoodi"
 
 #: lib/layouts/g-brief-en.layout:161
-#, fuzzy
 msgid "BankCode:"
-msgstr "Pankkikoodi"
+msgstr "Pankkikoodi:"
 
 #: lib/layouts/g-brief-en.layout:165
 msgid "BankAccount"
 msgstr "Pankkitili"
 
 #: lib/layouts/g-brief-en.layout:168
-#, fuzzy
 msgid "BankAccount:"
-msgstr "Pankkitili"
+msgstr "Pankkitili:"
 
 #: lib/layouts/g-brief-en.layout:172 lib/layouts/g-brief2.layout:695
 msgid "PostalComment"
 msgstr "Postihuomautus"
 
 #: lib/layouts/g-brief-en.layout:175 lib/layouts/g-brief2.layout:705
-#, fuzzy
 msgid "PostalComment:"
-msgstr "Postihuomautus"
+msgstr "Postihuomautus:"
 
 #: lib/layouts/g-brief-en.layout:191 lib/layouts/g-brief2.layout:810
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
 #: lib/layouts/scrlettr.layout:168 lib/layouts/scrlttr2.layout:243
 #: lib/layouts/amsdefs.inc:115
-#, fuzzy
 msgid "Date:"
-msgstr "Päiväys"
+msgstr "Päiväys:"
 
 #: lib/layouts/g-brief-en.layout:195 lib/layouts/g-brief2.layout:820
 msgid "Reference"
 msgstr "Viite"
 
 #: lib/layouts/g-brief-en.layout:200 lib/layouts/g-brief2.layout:832
-#, fuzzy
 msgid "Reference:"
-msgstr "&Viite:"
+msgstr "Viite:"
 
 #: lib/layouts/g-brief-en.layout:209 lib/layouts/g-brief2.layout:855
 #: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:63
-#, fuzzy
 msgid "Opening:"
-msgstr "Aloitus"
+msgstr "Aloitus:"
 
 #: lib/layouts/g-brief-en.layout:213 lib/layouts/g-brief2.layout:911
 msgid "Encl."
 msgstr "Liitteet"
 
 #: lib/layouts/g-brief-en.layout:217 lib/layouts/g-brief2.layout:922
-#, fuzzy
 msgid "Encl.:"
-msgstr "Liitteet"
+msgstr "Liitteet:"
 
 #: lib/layouts/g-brief-en.layout:226 lib/layouts/g-brief2.layout:943
 #: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:133
 #: lib/layouts/stdletter.inc:114
-#, fuzzy
 msgid "cc:"
-msgstr "jakelu"
+msgstr "jakelu:"
 
 #: lib/layouts/g-brief-en.layout:235 lib/layouts/g-brief2.layout:876
 #: lib/layouts/scrlttr2.layout:117 lib/layouts/stdletter.inc:97
-#, fuzzy
 msgid "Closing:"
-msgstr "Lopuksi"
+msgstr "Lopuksi:"
 
 #: lib/layouts/g-brief2.layout:77
 msgid "NameRowA"
 msgstr "Nimirivi A"
 
 #: lib/layouts/g-brief2.layout:88
-#, fuzzy
 msgid "NameRowA:"
-msgstr "Nimirivi A"
+msgstr "Nimirivi A:"
 
 #: lib/layouts/g-brief2.layout:97
 msgid "NameRowB"
 msgstr "Nimirivi B"
 
 #: lib/layouts/g-brief2.layout:107
-#, fuzzy
 msgid "NameRowB:"
-msgstr "Nimirivi B"
+msgstr "Nimirivi B:"
 
 #: lib/layouts/g-brief2.layout:116
 msgid "NameRowC"
 msgstr "Nimirivi C"
 
 #: lib/layouts/g-brief2.layout:126
-#, fuzzy
 msgid "NameRowC:"
-msgstr "Nimirivi C"
+msgstr "Nimirivi C:"
 
 #: lib/layouts/g-brief2.layout:135
 msgid "NameRowD"
 msgstr "Nimirivi D"
 
 #: lib/layouts/g-brief2.layout:145
-#, fuzzy
 msgid "NameRowD:"
-msgstr "Nimirivi D"
+msgstr "Nimirivi D:"
 
 #: lib/layouts/g-brief2.layout:154
 msgid "NameRowE"
 msgstr "Nimirivi E"
 
 #: lib/layouts/g-brief2.layout:164
-#, fuzzy
 msgid "NameRowE:"
-msgstr "Nimirivi E"
+msgstr "Nimirivi E:"
 
 #: lib/layouts/g-brief2.layout:173
 msgid "NameRowF"
 msgstr "Nimirivi F"
 
 #: lib/layouts/g-brief2.layout:183
-#, fuzzy
 msgid "NameRowF:"
-msgstr "Nimirivi F"
+msgstr "Nimirivi F:"
 
 #: lib/layouts/g-brief2.layout:192
 msgid "NameRowG"
 msgstr "Nimirivi G"
 
 #: lib/layouts/g-brief2.layout:202
-#, fuzzy
 msgid "NameRowG:"
-msgstr "Nimirivi G"
+msgstr "Nimirivi G:"
 
 #: lib/layouts/g-brief2.layout:212
-#, fuzzy
 msgid "AddressRowA"
 msgstr "Osoiterivi A"
 
 #: lib/layouts/g-brief2.layout:223
-#, fuzzy
 msgid "AddressRowA:"
-msgstr "Osoiterivi A"
+msgstr "Osoiterivi A:"
 
 #: lib/layouts/g-brief2.layout:232
 #, fuzzy
@@ -5751,225 +5671,196 @@ msgid "AddressRowB"
 msgstr "Osoiterivi B"
 
 #: lib/layouts/g-brief2.layout:242
-#, fuzzy
 msgid "AddressRowB:"
-msgstr "Osoiterivi B"
+msgstr "Osoiterivi B:"
 
 #: lib/layouts/g-brief2.layout:251
-#, fuzzy
 msgid "AddressRowC"
 msgstr "Osoiterivi C"
 
 #: lib/layouts/g-brief2.layout:261
-#, fuzzy
 msgid "AddressRowC:"
-msgstr "Osoiterivi C"
+msgstr "Osoiterivi C:"
 
 #: lib/layouts/g-brief2.layout:270
-#, fuzzy
 msgid "AddressRowD"
 msgstr "Osoiterivi D"
 
 #: lib/layouts/g-brief2.layout:280
-#, fuzzy
 msgid "AddressRowD:"
-msgstr "Osoiterivi D"
+msgstr "Osoiterivi D:"
 
 #: lib/layouts/g-brief2.layout:289
-#, fuzzy
 msgid "AddressRowE"
 msgstr "Osoiterivi E"
 
 #: lib/layouts/g-brief2.layout:299
-#, fuzzy
 msgid "AddressRowE:"
-msgstr "Osoiterivi E"
+msgstr "Osoiterivi E:"
 
 #: lib/layouts/g-brief2.layout:308
-#, fuzzy
 msgid "AddressRowF"
 msgstr "Osoiterivi F"
 
 #: lib/layouts/g-brief2.layout:318
-#, fuzzy
 msgid "AddressRowF:"
-msgstr "Osoiterivi F"
+msgstr "Osoiterivi F:"
 
 #: lib/layouts/g-brief2.layout:327
 msgid "TelephoneRowA"
 msgstr "Puhelinrivi A"
 
 #: lib/layouts/g-brief2.layout:338
-#, fuzzy
 msgid "TelephoneRowA:"
-msgstr "Puhelinrivi A"
+msgstr "Puhelinrivi A:"
 
 #: lib/layouts/g-brief2.layout:347
 msgid "TelephoneRowB"
 msgstr "Puhelinrivi B"
 
 #: lib/layouts/g-brief2.layout:357
-#, fuzzy
 msgid "TelephoneRowB:"
-msgstr "Puhelinrivi B"
+msgstr "Puhelinrivi B:"
 
 #: lib/layouts/g-brief2.layout:366
 msgid "TelephoneRowC"
 msgstr "Puhelinrivi C"
 
 #: lib/layouts/g-brief2.layout:376
-#, fuzzy
 msgid "TelephoneRowC:"
-msgstr "Puhelinrivi C"
+msgstr "Puhelinrivi C:"
 
 #: lib/layouts/g-brief2.layout:385
 msgid "TelephoneRowD"
 msgstr "Puhelinrivi D"
 
 #: lib/layouts/g-brief2.layout:395
-#, fuzzy
 msgid "TelephoneRowD:"
-msgstr "Puhelinrivi D"
+msgstr "Puhelinrivi D:"
 
 #: lib/layouts/g-brief2.layout:404
 msgid "TelephoneRowE"
 msgstr "Puhelinrivi E"
 
 #: lib/layouts/g-brief2.layout:414
-#, fuzzy
 msgid "TelephoneRowE:"
-msgstr "Puhelinrivi E"
+msgstr "Puhelinrivi E:"
 
 #: lib/layouts/g-brief2.layout:423
 msgid "TelephoneRowF"
 msgstr "Puhelinrivi F"
 
 #: lib/layouts/g-brief2.layout:433
-#, fuzzy
 msgid "TelephoneRowF:"
-msgstr "Puhelinrivi F"
+msgstr "Puhelinrivi F:"
 
 #: lib/layouts/g-brief2.layout:442
 msgid "InternetRowA"
 msgstr "Internetrivi A"
 
 #: lib/layouts/g-brief2.layout:453
-#, fuzzy
 msgid "InternetRowA:"
-msgstr "Internetrivi A"
+msgstr "Internetrivi A:"
 
 #: lib/layouts/g-brief2.layout:462
 msgid "InternetRowB"
 msgstr "Internetrivi B"
 
 #: lib/layouts/g-brief2.layout:472
-#, fuzzy
 msgid "InternetRowB:"
-msgstr "Internetrivi B"
+msgstr "Internetrivi B:"
 
 #: lib/layouts/g-brief2.layout:481
 msgid "InternetRowC"
 msgstr "Internetrivi C"
 
 #: lib/layouts/g-brief2.layout:491
-#, fuzzy
 msgid "InternetRowC:"
-msgstr "Internetrivi C"
+msgstr "Internetrivi C:"
 
 #: lib/layouts/g-brief2.layout:500
 msgid "InternetRowD"
 msgstr "Internetrivi D"
 
 #: lib/layouts/g-brief2.layout:510
-#, fuzzy
 msgid "InternetRowD:"
-msgstr "Internetrivi D"
+msgstr "Internetrivi D:"
 
 #: lib/layouts/g-brief2.layout:519
 msgid "InternetRowE"
 msgstr "Internetrivi E"
 
 #: lib/layouts/g-brief2.layout:529
-#, fuzzy
 msgid "InternetRowE:"
-msgstr "Internetrivi E"
+msgstr "Internetrivi E:"
 
 #: lib/layouts/g-brief2.layout:538
 msgid "InternetRowF"
 msgstr "Internetrivi F"
 
 #: lib/layouts/g-brief2.layout:548
-#, fuzzy
 msgid "InternetRowF:"
-msgstr "Internetrivi F"
+msgstr "Internetrivi F:"
 
 #: lib/layouts/g-brief2.layout:557
 msgid "BankRowA"
 msgstr "Pankkirivi A"
 
 #: lib/layouts/g-brief2.layout:568
-#, fuzzy
 msgid "BankRowA:"
-msgstr "Pankkirivi A"
+msgstr "Pankkirivi A:"
 
 #: lib/layouts/g-brief2.layout:577
 msgid "BankRowB"
 msgstr "Pankkirivi B"
 
 #: lib/layouts/g-brief2.layout:587
-#, fuzzy
 msgid "BankRowB:"
-msgstr "Pankkirivi B"
+msgstr "Pankkirivi B:"
 
 #: lib/layouts/g-brief2.layout:596
 msgid "BankRowC"
 msgstr "Pankkirivi C"
 
 #: lib/layouts/g-brief2.layout:606
-#, fuzzy
 msgid "BankRowC:"
-msgstr "Pankkirivi C"
+msgstr "Pankkirivi C:"
 
 #: lib/layouts/g-brief2.layout:615
 msgid "BankRowD"
 msgstr "Pankkirivi D"
 
 #: lib/layouts/g-brief2.layout:625
-#, fuzzy
 msgid "BankRowD:"
-msgstr "Pankkirivi D"
+msgstr "Pankkirivi D:"
 
 #: lib/layouts/g-brief2.layout:634
 msgid "BankRowE"
 msgstr "Pankkirivi E"
 
 #: lib/layouts/g-brief2.layout:644
-#, fuzzy
 msgid "BankRowE:"
-msgstr "Pankkirivi E"
+msgstr "Pankkirivi E:"
 
 #: lib/layouts/g-brief2.layout:653
 msgid "BankRowF"
 msgstr "Pankkirivi F"
 
 #: lib/layouts/g-brief2.layout:663
-#, fuzzy
 msgid "BankRowF:"
-msgstr "Pankkirivi F"
+msgstr "Pankkirivi F:"
 
 #: lib/layouts/heb-article.layout:68
-#, fuzzy
 msgid "Claim #."
-msgstr "Väite"
+msgstr "Väite #."
 
 #: lib/layouts/heb-article.layout:85
 msgid "Remarks"
 msgstr "Huomautukset"
 
 #: lib/layouts/heb-article.layout:88
-#, fuzzy
 msgid "Remarks #."
-msgstr "Huomautukset"
+msgstr "Huomautukset #."
 
 #: lib/layouts/hollywood.layout:56
 msgid "More"
@@ -5977,7 +5868,7 @@ msgstr "Lisää"
 
 #: lib/layouts/hollywood.layout:68
 msgid "(MORE)"
-msgstr ""
+msgstr "(LISÄÄ)"
 
 #: lib/layouts/hollywood.layout:81 lib/layouts/hollywood.layout:93
 msgid "FADE IN:"
@@ -5996,9 +5887,8 @@ msgid "Continuing"
 msgstr "Jatkoa"
 
 #: lib/layouts/hollywood.layout:205
-#, fuzzy
 msgid "(continuing)"
-msgstr "Jatkoa"
+msgstr "(Jatkoa)"
 
 #: lib/layouts/hollywood.layout:232
 msgid "Transition"
@@ -6033,23 +5923,20 @@ msgstr "Kohtaus"
 #: lib/layouts/iopart.layout:204 lib/layouts/kluwer.layout:290
 #: lib/layouts/paper.layout:177 lib/layouts/revtex4.layout:246
 #: lib/layouts/spie.layout:46 lib/layouts/agu_stdtitle.inc:123
-#, fuzzy
 msgid "Keywords:"
-msgstr "Avainsanat"
+msgstr "Avainsanat:"
 
 #: lib/layouts/ijmpc.layout:92
 msgid "Classification Codes"
-msgstr ""
+msgstr "Luokittelukoodit"
 
 #: lib/layouts/ijmpc.layout:161 lib/layouts/ijmpd.layout:158
-#, fuzzy
 msgid "Step"
-msgstr "Maa"
+msgstr "Askel"
 
 #: lib/layouts/ijmpc.layout:165 lib/layouts/ijmpd.layout:162
-#, fuzzy
 msgid "Step \\arabic{step}."
-msgstr "Alikappale"
+msgstr "Askel \\arabic{step}."
 
 #: lib/layouts/ijmpc.layout:277 lib/layouts/ijmpd.layout:284
 #, fuzzy
@@ -6066,39 +5953,36 @@ msgid "Question"
 msgstr "Kysymys"
 
 #: lib/layouts/ijmpc.layout:291
-#, fuzzy
 msgid "Question \\arabic{question}."
-msgstr "Alialikappale"
+msgstr "Kysymys \\arabic{question}."
 
 #: lib/layouts/ijmpc.layout:314 lib/layouts/ijmpd.layout:324
-#, fuzzy
 msgid "Appendices Section"
 msgstr "Liitteet"
 
 #: lib/layouts/ijmpc.layout:324 lib/layouts/ijmpd.layout:334
-#, fuzzy
 msgid "--- Appendices ---"
-msgstr "Liitteet"
+msgstr "--- Liitteet ---"
 
 #: lib/layouts/ijmpc.layout:346 lib/layouts/ijmpd.layout:357
 msgid "Appendix \\Alph{appendix}."
-msgstr ""
+msgstr "Liite \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:147
 msgid "Definition @Section@.\\arabic{definition}."
-msgstr ""
+msgstr "Määritelmä @Section@.\\arabic{definition}."
 
 #: lib/layouts/ijmpd.layout:176
 msgid "Example @Section@.\\arabic{example}."
-msgstr ""
+msgstr "Esimerkki @Section@.\arabic{example}."
 
 #: lib/layouts/ijmpd.layout:187
 msgid "Remark @Section@.\\arabic{remark}."
-msgstr ""
+msgstr "Huomautus @Section@.\\arabic{remark}."
 
 #: lib/layouts/ijmpd.layout:198
 msgid "Notation @Section@.\\arabic{notation}."
-msgstr ""
+msgstr "Merkintätapa @Section@.\\arabic{notation}."
 
 #: lib/layouts/ijmpd.layout:219 lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
@@ -6106,7 +5990,7 @@ msgstr "Väittämä @Section@.\\arabic{theorem}."
 
 #: lib/layouts/ijmpd.layout:252
 msgid "Corollary @Section@.\\arabic{corollary}."
-msgstr ""
+msgstr "Seurauslause @Section@.\\arabic{corollary}."
 
 #: lib/layouts/ijmpd.layout:266
 msgid "Lemma @Section@.\\arabic{lemma}."
@@ -6114,7 +5998,7 @@ msgstr ""
 
 #: lib/layouts/ijmpd.layout:277
 msgid "Proposition @Section@.\\arabic{proposition}."
-msgstr ""
+msgstr "Väittämä @Section@.\\arabic{proposition}."
 
 #: lib/layouts/ijmpd.layout:288
 msgid "Prop @Section@.\\arabic{prop}."
@@ -6122,7 +6006,7 @@ msgstr ""
 
 #: lib/layouts/ijmpd.layout:299
 msgid "Question @Section@.\\arabic{question}."
-msgstr ""
+msgstr "Kysymys @Section@.\\arabic{question}."
 
 #: lib/layouts/ijmpd.layout:310
 msgid "Claim @Section@.\\arabic{claim}."
@@ -6130,7 +6014,7 @@ msgstr ""
 
 #: lib/layouts/ijmpd.layout:321
 msgid "Conjecture @Section@.\\arabic{conjecture}."
-msgstr ""
+msgstr "Otaksuma @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/iopart.layout:73 lib/ui/stdtoolbars.inc:170
 #, fuzzy
@@ -6162,21 +6046,19 @@ msgstr ""
 
 #: lib/layouts/iopart.layout:212 lib/layouts/revtex4.layout:230
 msgid "PACS"
-msgstr "PACS"
+msgstr ""
 
 #: lib/layouts/iopart.layout:215
 msgid "Physics and Astronomy Classification System number:"
 msgstr ""
 
 #: lib/layouts/iopart.layout:219
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr ""
 
 #: lib/layouts/iopart.layout:222
-#, fuzzy
 msgid "Mathematics Subject Classification number:"
-msgstr "LyX on käynnistettävä uudelleen."
+msgstr ""
 
 #: lib/layouts/iopart.layout:226
 msgid "submitto"
@@ -6189,38 +6071,37 @@ msgstr ""
 #: lib/layouts/iopart.layout:255
 #, fuzzy
 msgid "Bibliography (plain)"
-msgstr "Viitteet"
+msgstr "Kirjallisuusviitteet (tavallinen)"
 
 #: lib/layouts/iopart.layout:278
 #, fuzzy
 msgid "Bibliography heading"
-msgstr "Viitteet"
+msgstr "Viitteiden otsikko"
 
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
-msgstr ""
+msgstr "YHTEENVETO:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr ""
+msgstr "AVAINSANAT:"
 
 #: lib/layouts/isprs.layout:135
 #, fuzzy
 msgid "Commission"
-msgstr "Ehto"
+msgstr ""
 
 #: lib/layouts/isprs.layout:225
 msgid "ACKNOWLEDGEMENTS"
-msgstr ""
+msgstr "KIITOKSET"
 
 #: lib/layouts/kluwer.layout:194
 msgid "AddressForOffprints"
 msgstr "Eripainososoite"
 
 #: lib/layouts/kluwer.layout:203
-#, fuzzy
 msgid "Address for Offprints:"
-msgstr "Eripainososoite"
+msgstr "Eripainososoite:"
 
 #: lib/layouts/kluwer.layout:213
 msgid "RunningTitle"
@@ -6228,23 +6109,20 @@ msgstr "Teoksen nimi (jatko)"
 
 #: lib/layouts/kluwer.layout:222 lib/layouts/llncs.layout:159
 #: lib/layouts/svjour.inc:178
-#, fuzzy
 msgid "Running title:"
-msgstr "Teoksen nimi (jatko)"
+msgstr "Teoksen nimi (jatko):"
 
 #: lib/layouts/kluwer.layout:236
 msgid "RunningAuthor"
 msgstr "Tekijä (jatko)"
 
 #: lib/layouts/kluwer.layout:244
-#, fuzzy
 msgid "Running author:"
-msgstr "Tekijä (jatko)"
+msgstr "Tekijä (jatko):"
 
 #: lib/layouts/latex8.layout:70
-#, fuzzy
 msgid "E-mail:"
-msgstr "Sähköposti"
+msgstr "Sähköposti:"
 
 #: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:46
 #: lib/layouts/scrbook.layout:16 lib/layouts/agu_stdsections.inc:21
@@ -6262,85 +6140,72 @@ msgid "TOC Title"
 msgstr "SIS Otsikko"
 
 #: lib/layouts/llncs.layout:172
-#, fuzzy
 msgid "TOC title:"
-msgstr "SIS Otsikko"
+msgstr "SIS Otsikko:"
 
 #: lib/layouts/llncs.layout:197 lib/layouts/svjour.inc:203
 msgid "Author Running"
 msgstr "Tekijä (jatko)"
 
 #: lib/layouts/llncs.layout:201 lib/layouts/svjour.inc:207
-#, fuzzy
 msgid "Author Running:"
-msgstr "Tekijä (jatko)"
+msgstr "Tekijä (jatko):"
 
 #: lib/layouts/llncs.layout:205
 msgid "TOC Author"
 msgstr "SIS Tekijä"
 
 #: lib/layouts/llncs.layout:209
-#, fuzzy
 msgid "TOC Author:"
-msgstr "SIS Tekijä"
+msgstr "SIS Tekijä:"
 
 #: lib/layouts/llncs.layout:298
-#, fuzzy
 msgid "Case #."
-msgstr "Tapaus"
+msgstr "Tapaus #."
 
 #: lib/layouts/llncs.layout:315 lib/layouts/svjour.inc:372
-#, fuzzy
 msgid "Conjecture #."
-msgstr "Otaksuma"
+msgstr "Otaksuma #."
 
 #: lib/layouts/llncs.layout:343 lib/layouts/svjour.inc:400
-#, fuzzy
 msgid "Example #."
-msgstr "Esimerkki"
+msgstr "Esimerkki #."
 
 #: lib/layouts/llncs.layout:350 lib/layouts/svjour.inc:407
-#, fuzzy
 msgid "Exercise #."
-msgstr "Harjoitus"
+msgstr "Harjoitus #."
 
 #: lib/layouts/llncs.layout:363 lib/layouts/svjour.inc:425
-#, fuzzy
 msgid "Note #."
-msgstr "Muistiinpano"
+msgstr "Muistiinpano #"
 
 #: lib/layouts/llncs.layout:370 lib/layouts/svjour.inc:432
-#, fuzzy
 msgid "Problem #."
-msgstr "Ongelma"
+msgstr "Ongelma #."
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
 msgid "Property"
 msgstr "Ominaisuus"
 
 #: lib/layouts/llncs.layout:384 lib/layouts/svjour.inc:446
-#, fuzzy
 msgid "Property #."
-msgstr "Ominaisuus"
+msgstr "Ominaisuus #."
 
 #: lib/layouts/llncs.layout:397 lib/layouts/svjour.inc:460
-#, fuzzy
 msgid "Question #."
-msgstr "Kysymys"
+msgstr "Kysymys #."
 
 #: lib/layouts/llncs.layout:404 lib/layouts/svjour.inc:467
-#, fuzzy
 msgid "Remark #."
-msgstr "Huomautus"
+msgstr "Huomautus #."
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
 msgid "Solution"
 msgstr "Ratkaisu"
 
 #: lib/layouts/llncs.layout:411 lib/layouts/svjour.inc:474
-#, fuzzy
 msgid "Solution #."
-msgstr "Ratkaisu"
+msgstr "Ratkaisu #."
 
 #: lib/layouts/manpage.layout:145 lib/layouts/db_lyxmacros.inc:11
 msgid "Code"
@@ -6367,74 +6232,60 @@ msgid "Poemtitle*"
 msgstr "Runon otsikko*"
 
 #: lib/layouts/memoir.layout:151
-#, fuzzy
 msgid "Legend"
-msgstr "Maa"
+msgstr "Legenda"
 
 #: lib/layouts/moderncv.layout:70
-#, fuzzy
 msgid "Entry:"
-msgstr "Kohta"
+msgstr "Kohta:"
 
 #: lib/layouts/moderncv.layout:93
-#, fuzzy
 msgid "ListItem"
-msgstr "Lista"
+msgstr "Listan kohta"
 
 #: lib/layouts/moderncv.layout:96
-#, fuzzy
 msgid "List Item:"
-msgstr "Viim. alaotsikko:"
+msgstr "Listan kohta:"
 
 #: lib/layouts/moderncv.layout:99
-#, fuzzy
 msgid "DoubleItem"
-msgstr "Kaksink."
+msgstr "Kaksink. kohta"
 
 #: lib/layouts/moderncv.layout:102
-#, fuzzy
 msgid "Double Item:"
-msgstr "Kaksink."
+msgstr "Kaksink. kohta:"
 
 #: lib/layouts/moderncv.layout:105
-#, fuzzy
 msgid "Space"
-msgstr "Ko&rvaa"
+msgstr "Väli"
 
 #: lib/layouts/moderncv.layout:108
-#, fuzzy
 msgid "Space:"
-msgstr "Ko&rvaa"
+msgstr "Vali:"
 
 #: lib/layouts/moderncv.layout:117
-#, fuzzy
 msgid "Computer"
-msgstr "Kopiot"
+msgstr "Tietokone"
 
 #: lib/layouts/moderncv.layout:120
-#, fuzzy
 msgid "Computer:"
-msgstr "Kopioita:"
+msgstr "Tietokone:"
 
 #: lib/layouts/moderncv.layout:123
-#, fuzzy
 msgid "EmptySection"
-msgstr "Kappale"
+msgstr "TyhjäKappale"
 
 #: lib/layouts/moderncv.layout:132
-#, fuzzy
 msgid "Empty Section"
-msgstr "Kappale"
+msgstr "Tyhjä Kappale"
 
 #: lib/layouts/moderncv.layout:139
-#, fuzzy
 msgid "CloseSection"
-msgstr "valinta"
+msgstr "SuljeKappale"
 
 #: lib/layouts/moderncv.layout:142
-#, fuzzy
 msgid "Close Section"
-msgstr "valinta"
+msgstr "Sulje kappale"
 
 #: lib/layouts/paper.layout:152
 msgid "SubTitle"
@@ -6454,72 +6305,60 @@ msgid "    "
 msgstr ""
 
 #: lib/layouts/powerdot.layout:142
-#, fuzzy
 msgid "EndSlide"
-msgstr "Kalvo"
+msgstr "LoppuKalvo"
 
 #: lib/layouts/powerdot.layout:154
 msgid "~=~"
 msgstr ""
 
 #: lib/layouts/powerdot.layout:167
-#, fuzzy
 msgid "WideSlide"
-msgstr "Kalvo"
+msgstr "LeveäKalvo"
 
 #: lib/layouts/powerdot.layout:179
-#, fuzzy
 msgid "EmptySlide"
-msgstr "Kalvo"
+msgstr "TyhjäKalvo"
 
 #: lib/layouts/powerdot.layout:183
-#, fuzzy
 msgid "Empty slide:"
-msgstr "tyhjä"
+msgstr "Tyhjä kalvo"
 
 #: lib/layouts/powerdot.layout:246
-#, fuzzy
 msgid "ItemizeType1"
-msgstr "Luettelo"
+msgstr "LuetteloTyyppi1"
 
 #: lib/layouts/powerdot.layout:271
-#, fuzzy
 msgid "EnumerateType1"
-msgstr "Numeroitu luettelo"
+msgstr "NumeroituluetteloTyyppi1"
 
 #: lib/layouts/powerdot.layout:389 lib/layouts/stdfloats.inc:39
-#, fuzzy
 msgid "List of Algorithms"
-msgstr "Algoritmi"
+msgstr "Algoritmien taulukko"
 
 #: lib/layouts/revtex4.layout:94
 msgid "Preprint"
 msgstr "Esipainos"
 
 #: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "AltAffiliation"
-msgstr "Järjestö"
+msgstr "Vaiht. järjestö"
 
 #: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:205
-#, fuzzy
 msgid "Thanks:"
-msgstr "Kiitokset"
+msgstr "Kiitokset:"
 
 #: lib/layouts/revtex4.layout:183
-#, fuzzy
 msgid "Electronic Address:"
-msgstr "Palautusosoite"
+msgstr "S-postiosoite"
 
 #: lib/layouts/revtex4.layout:220
-#, fuzzy
 msgid "acknowledgments"
 msgstr "Kiitokset"
 
 #: lib/layouts/revtex4.layout:237
-#, fuzzy
 msgid "PACS number:"
-msgstr "Sivunumero"
+msgstr "PACS-sivunumero:"
 
 #: lib/layouts/scrbook.layout:17
 msgid "\\arabic{chapter}"
@@ -6532,16 +6371,15 @@ msgstr ""
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:25
 #: lib/layouts/scrclass.inc:32
 msgid "Labeling"
-msgstr "Otsikoitu kappale"
+msgstr "Nimekkeet"
 
 #: lib/layouts/scrlettr.layout:51
 msgid "L"
 msgstr ""
 
 #: lib/layouts/scrlettr.layout:64
-#, fuzzy
 msgid "O"
-msgstr "Päällä"
+msgstr ""
 
 #: lib/layouts/scrlettr.layout:83 lib/layouts/scrlttr2.layout:121
 msgid "PS"
@@ -6557,9 +6395,8 @@ msgstr "Liitteet"
 
 #: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:140
 #: lib/layouts/stdletter.inc:122
-#, fuzzy
 msgid "encl:"
-msgstr "liitteet"
+msgstr "liitteet:"
 
 #: lib/layouts/scrlettr.layout:151 lib/layouts/scrlttr2.layout:183
 #: lib/layouts/stdletter.inc:135
@@ -6567,36 +6404,32 @@ msgid "Telephone"
 msgstr "Puhelin"
 
 #: lib/layouts/scrlettr.layout:154 lib/layouts/stdletter.inc:139
-#, fuzzy
 msgid "Telephone:"
-msgstr "Puhelin"
+msgstr "Puhelin:"
 
 #: lib/layouts/scrlettr.layout:158 lib/layouts/scrlttr2.layout:231
 msgid "Place"
 msgstr "Paikka"
 
 #: lib/layouts/scrlettr.layout:161 lib/layouts/scrlttr2.layout:235
-#, fuzzy
 msgid "Place:"
-msgstr "Paikka"
+msgstr "Paikka:"
 
 #: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:247
 msgid "Backaddress"
 msgstr "Palautusosoite"
 
 #: lib/layouts/scrlettr.layout:175 lib/layouts/scrlttr2.layout:251
-#, fuzzy
 msgid "Backaddress:"
-msgstr "Palautusosoite"
+msgstr "Palautusosoite:"
 
 #: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:255
 msgid "Specialmail"
 msgstr "Erikoisposti"
 
 #: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:259
-#, fuzzy
 msgid "Specialmail:"
-msgstr "Erikoisposti"
+msgstr "Erikoisposti:"
 
 #: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:263
 #: lib/layouts/stdletter.inc:127
@@ -6605,14 +6438,12 @@ msgstr "Sijainti"
 
 #: lib/layouts/scrlettr.layout:189 lib/layouts/scrlttr2.layout:267
 #: lib/layouts/stdletter.inc:131
-#, fuzzy
 msgid "Location:"
-msgstr "Sijainti"
+msgstr "Sijainti:"
 
 #: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:275
-#, fuzzy
 msgid "Title:"
-msgstr "Teoksen nimi"
+msgstr "Teoksen nimi:"
 
 #: lib/layouts/scrlettr.layout:200 lib/layouts/scrlttr2.layout:279
 #: lib/layouts/scrclass.inc:168
@@ -6620,18 +6451,16 @@ msgid "Subject"
 msgstr "Aihe"
 
 #: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:283
-#, fuzzy
 msgid "Subject:"
-msgstr "Aihe"
+msgstr "Aihe:"
 
 #: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:287
 msgid "Yourref"
 msgstr "Viitteesi"
 
 #: lib/layouts/scrlettr.layout:210 lib/layouts/scrlttr2.layout:291
-#, fuzzy
 msgid "Your ref.:"
-msgstr "Viitteesi"
+msgstr "Viitteesi:"
 
 #: lib/layouts/scrlettr.layout:221 lib/layouts/scrlttr2.layout:303
 msgid "Yourmail"
@@ -6639,66 +6468,59 @@ msgstr "Vastaanottajan osoite"
 
 #: lib/layouts/scrlettr.layout:224 lib/layouts/scrlttr2.layout:307
 msgid "Your letter of:"
-msgstr ""
+msgstr "Kirjeesi päivältä:"
 
 #: lib/layouts/scrlettr.layout:228 lib/layouts/scrlttr2.layout:311
 msgid "Myref"
 msgstr "Viitteeni"
 
 #: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:315
-#, fuzzy
 msgid "Our ref.:"
-msgstr "Viitteesi"
+msgstr "Viitteemme:"
 
 #: lib/layouts/scrlettr.layout:235 lib/layouts/scrlttr2.layout:319
 msgid "Customer"
 msgstr "Asiakas"
 
 #: lib/layouts/scrlettr.layout:238 lib/layouts/scrlttr2.layout:323
-#, fuzzy
 msgid "Customer no.:"
-msgstr "Asiakas"
+msgstr "Asiakas nro:"
 
 #: lib/layouts/scrlettr.layout:242 lib/layouts/scrlttr2.layout:327
 msgid "Invoice"
 msgstr "Lasku"
 
 #: lib/layouts/scrlettr.layout:245 lib/layouts/scrlttr2.layout:331
-#, fuzzy
 msgid "Invoice no.:"
-msgstr "Lasku"
+msgstr "Lasku nro:"
 
 #: lib/layouts/scrlttr2.layout:68
 msgid "NextAddress"
 msgstr "Seuraava osoite"
 
 #: lib/layouts/scrlttr2.layout:80
-#, fuzzy
 msgid "Next Address:"
-msgstr "Seuraava osoite"
+msgstr "Seuraava osoite:"
 
 #: lib/layouts/scrlttr2.layout:125
-#, fuzzy
 msgid "Post Scriptum:"
-msgstr "PostS&cript-ajuri:"
+msgstr "Jalkikirjoitus:"
 
 #: lib/layouts/scrlttr2.layout:157
-#, fuzzy
 msgid "Sender Name:"
-msgstr "Tulostimen &nimi:"
+msgstr "Lähettäjän nimi:"
 
 #: lib/layouts/scrlttr2.layout:175
 msgid "SenderAddress"
 msgstr "Lähettäjän osoite"
 
 #: lib/layouts/scrlttr2.layout:179
-#, fuzzy
 msgid "Sender Address:"
-msgstr "Lähettäjän osoite"
+msgstr "Lähettäjän osoite:"
 
 #: lib/layouts/scrlttr2.layout:187
 msgid "Sender Phone:"
-msgstr ""
+msgstr "Lähettäjän puh.:"
 
 #: lib/layouts/scrlttr2.layout:191
 msgid "Fax"
@@ -6706,37 +6528,33 @@ msgstr "Faksi"
 
 #: lib/layouts/scrlttr2.layout:195
 msgid "Sender Fax:"
-msgstr ""
+msgstr "Lähettäjän faksi:"
 
 #: lib/layouts/scrlttr2.layout:199
 msgid "E-Mail"
 msgstr "Sähköposti"
 
 #: lib/layouts/scrlttr2.layout:203
-#, fuzzy
 msgid "Sender E-Mail:"
-msgstr "Sähköposti"
+msgstr "Läh. sähköposti:"
 
 #: lib/layouts/scrlttr2.layout:211
-#, fuzzy
 msgid "Sender URL:"
-msgstr "Lisää URL"
+msgstr "Läh. URL"
 
 #: lib/layouts/scrlttr2.layout:223
 msgid "Logo"
 msgstr "Logo"
 
 #: lib/layouts/scrlttr2.layout:227
-#, fuzzy
 msgid "Logo:"
-msgstr "Logo"
+msgstr "Logo:"
 
 #: lib/layouts/seminar.layout:46
 msgid "LandscapeSlide"
 msgstr "Vaakakalvo"
 
 #: lib/layouts/seminar.layout:52
-#, fuzzy
 msgid "Landscape Slide"
 msgstr "Vaakakalvo"
 
@@ -6745,7 +6563,6 @@ msgid "PortraitSlide"
 msgstr "Pystykalvo"
 
 #: lib/layouts/seminar.layout:63
-#, fuzzy
 msgid "Portrait Slide"
 msgstr "Pystykalvo"
 
@@ -6766,25 +6583,22 @@ msgid "ListOfSlides"
 msgstr "Kalvoluettelo"
 
 #: lib/layouts/seminar.layout:95
-#, fuzzy
 msgid "List Of Slides"
 msgstr "Kalvoluettelo"
 
 #: lib/layouts/seminar.layout:99
 msgid "SlideContents"
-msgstr "Kalvon sisältö*"
+msgstr "Kalvon sisältö"
 
 #: lib/layouts/seminar.layout:105
-#, fuzzy
 msgid "Slidecontents"
-msgstr "Kalvon sisältö*"
+msgstr "Kalvon sisältö"
 
 #: lib/layouts/seminar.layout:109
 msgid "ProgressContents"
 msgstr "Esityksen etenemisluettelo"
 
 #: lib/layouts/seminar.layout:115
-#, fuzzy
 msgid "Progress Contents"
 msgstr "Esityksen etenemisluettelo"
 
@@ -6798,18 +6612,16 @@ msgid "Paragraph*"
 msgstr "Osakappale*"
 
 #: lib/layouts/siamltex.layout:172
-#, fuzzy
 msgid "Key words."
-msgstr "Avainsanat"
+msgstr "Avainsanat."
 
 #: lib/layouts/siamltex.layout:176
 msgid "AMS"
 msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:179
-#, fuzzy
 msgid "AMS subject classifications."
-msgstr "LyX on käynnistettävä uudelleen."
+msgstr "AMS aihekategoriat."
 
 #: lib/layouts/simplecv.layout:55
 msgid "Topic"
@@ -6820,152 +6632,132 @@ msgid "MMMMM"
 msgstr ""
 
 #: lib/layouts/slides.layout:104
-#, fuzzy
 msgid "New Slide:"
-msgstr "Kalvo"
+msgstr "Uusi kalvo"
 
 #: lib/layouts/slides.layout:126
 msgid "Overlay"
 msgstr "Kalvokerros"
 
 #: lib/layouts/slides.layout:142
-#, fuzzy
 msgid "New Overlay:"
-msgstr "Kalvokerros"
+msgstr "uusi kalvokerros"
 
 #: lib/layouts/slides.layout:183
-#, fuzzy
 msgid "New Note:"
-msgstr "Uusi kohta"
+msgstr "Uusi muistiinpano:"
 
 #: lib/layouts/slides.layout:208
 msgid "InvisibleText"
 msgstr "Näkymätön_teksti"
 
 #: lib/layouts/slides.layout:216
-#, fuzzy
 msgid "<Invisible Text Follows>"
-msgstr "Näkymätön_teksti"
+msgstr "<Näkymätön teksti seuraa>"
 
 #: lib/layouts/slides.layout:233
 msgid "VisibleText"
 msgstr "Näkyvä teksti"
 
 #: lib/layouts/slides.layout:241
-#, fuzzy
 msgid "<Visible Text Follows>"
-msgstr "Näkyvä teksti"
+msgstr "<Näkyvä teksti seuraa>"
 
 #: lib/layouts/spie.layout:53
 msgid "Authorinfo"
 msgstr "Tekijätiedot"
 
 #: lib/layouts/spie.layout:65
-#, fuzzy
 msgid "Authorinfo:"
-msgstr "Tekijätiedot"
+msgstr "Tekijätiedot:"
 
 #: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
-msgstr ""
+msgstr "YHTEENVETO"
 
 #: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
-msgstr ""
+msgstr "KIITOKSET"
 
 #: lib/layouts/aapaper.inc:56
-#, fuzzy
 msgid "email:"
-msgstr "Sähköposti"
+msgstr "Sähköposti:"
 
 #: lib/layouts/aapaper.inc:118
 msgid "Thesaurus not supported in recent A&A:"
-msgstr ""
+msgstr "Thesaurusta ei tueta uusimmassa A&A:ssa:"
 
 #: lib/layouts/agu_stdsections.inc:79
-#, fuzzy
 msgid "Subsubparagraph"
-msgstr "Aliosakappale"
+msgstr "Alialiosakappale"
 
 #: lib/layouts/agu_stdtitle.inc:13
 msgid "Header"
 msgstr "Yläotsikko"
 
 #: lib/layouts/agu_stdtitle.inc:19
-#, fuzzy
 msgid "-- Header --"
-msgstr "Yläotsikko"
+msgstr "-- Yläotsikko --"
 
 #: lib/layouts/agu_stdtitle.inc:31
-#, fuzzy
 msgid "Special-section"
-msgstr "&Valinta:"
+msgstr "Erikoiskappale"
 
 #: lib/layouts/agu_stdtitle.inc:37
-#, fuzzy
 msgid "Special-section:"
-msgstr "&Valinta:"
+msgstr "Erikoiskappale:"
 
 #: lib/layouts/agu_stdtitle.inc:47
-#, fuzzy
 msgid "AGU-journal"
-msgstr "Lehti"
+msgstr "AGU-lehti"
 
 #: lib/layouts/agu_stdtitle.inc:51
-#, fuzzy
 msgid "AGU-journal:"
-msgstr "Lehti"
+msgstr "AGU-lehti:"
 
 #: lib/layouts/agu_stdtitle.inc:56
-#, fuzzy
 msgid "Citation-number"
-msgstr "Lähdeviite"
+msgstr "Lähdeviitteen nro"
 
 #: lib/layouts/agu_stdtitle.inc:59
-#, fuzzy
 msgid "Citation-number:"
-msgstr "Lähdeviite"
+msgstr "Lähdeviitteen nro:"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
-msgstr ""
+msgstr "AGU-sidos"
 
 #: lib/layouts/agu_stdtitle.inc:68
 msgid "AGU-volume:"
-msgstr ""
+msgstr "AGU-sidos:"
 
 #: lib/layouts/agu_stdtitle.inc:73
 msgid "AGU-issue"
-msgstr ""
+msgstr "AGU-numero"
 
 #: lib/layouts/agu_stdtitle.inc:76
 msgid "AGU-issue:"
-msgstr ""
+msgstr "AGU-numero:"
 
 #: lib/layouts/agu_stdtitle.inc:84
-#, fuzzy
 msgid "Copyright:"
-msgstr "Copyright"
+msgstr "Copyright:"
 
 #: lib/layouts/agu_stdtitle.inc:89
-#, fuzzy
 msgid "Index-terms"
-msgstr "Hakemistoviite"
+msgstr "Hakemistoviitteet"
 
 #: lib/layouts/agu_stdtitle.inc:93
-#, fuzzy
 msgid "Index-terms..."
-msgstr "Hakemistoviite...|H"
+msgstr "Hakemistoviittteet..."
 
 #: lib/layouts/agu_stdtitle.inc:102
-#, fuzzy
 msgid "Index-term"
 msgstr "Hakemistoviite"
 
 #: lib/layouts/agu_stdtitle.inc:106
-#, fuzzy
 msgid "Index-term:"
-msgstr "Hakemistoviite"
+msgstr "Hakemistoviite:"
 
 #: lib/layouts/agu_stdtitle.inc:111
 #, fuzzy
@@ -7010,9 +6802,8 @@ msgid "Revised"
 msgstr "Tarkastettu"
 
 #: lib/layouts/agu_stdtitle.inc:209 lib/layouts/aguplus.inc:119
-#, fuzzy
 msgid "Revised:"
-msgstr "Tarkastettu"
+msgstr "Tarkastettu:"
 
 #: lib/layouts/agu_stdtitle.inc:222
 #, fuzzy
@@ -7027,24 +6818,23 @@ msgstr "Tekstin &seassa"
 #: lib/layouts/agu_stdtitle.inc:230
 #, fuzzy
 msgid "Runhead"
-msgstr "Punainen"
+msgstr "Juokseva otsikko"
 
 #: lib/layouts/agu_stdtitle.inc:233
 msgid "Runhead:"
-msgstr ""
+msgstr "Juokseva otsikko:"
 
 #: lib/layouts/agu_stdtitle.inc:241
 msgid "Published-online:"
-msgstr ""
+msgstr "Julkaistu-verkkoon:"
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.cpp:41
 msgid "Citation"
 msgstr "Lähdeviite"
 
 #: lib/layouts/agu_stdtitle.inc:266
-#, fuzzy
 msgid "Citation:"
-msgstr "Lähdeviite"
+msgstr "Lähdeviite:"
 
 #: lib/layouts/agu_stdtitle.inc:271
 msgid "Posting-order"
@@ -7056,79 +6846,67 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
-msgstr ""
+msgstr "AGU-sivut"
 
 #: lib/layouts/agu_stdtitle.inc:282
-#, fuzzy
 msgid "AGU-pages:"
-msgstr "Parittomat sivut:"
+msgstr "AGU-sivut:"
 
 #: lib/layouts/agu_stdtitle.inc:287
-#, fuzzy
 msgid "Words"
-msgstr "Reunukset"
+msgstr "Sanat"
 
 #: lib/layouts/agu_stdtitle.inc:290
-#, fuzzy
 msgid "Words:"
-msgstr "Reunukset"
+msgstr "Sanat:"
 
 #: lib/layouts/agu_stdtitle.inc:295
-#, fuzzy
 msgid "Figures"
-msgstr "Kuva"
+msgstr "Kuvat"
 
 #: lib/layouts/agu_stdtitle.inc:298
-#, fuzzy
 msgid "Figures:"
-msgstr "Kuva"
+msgstr "Kuvat:"
 
 #: lib/layouts/agu_stdtitle.inc:303
-#, fuzzy
 msgid "Tables"
-msgstr "Taulukko"
+msgstr "Taulukot"
 
 #: lib/layouts/agu_stdtitle.inc:306
-#, fuzzy
 msgid "Tables:"
-msgstr "Taulukko"
+msgstr "Taulukot:"
 
 #: lib/layouts/agu_stdtitle.inc:311
-#, fuzzy
 msgid "Datasets"
-msgstr "Datajoukko"
+msgstr "Datajoukot"
 
 #: lib/layouts/agu_stdtitle.inc:314
-#, fuzzy
 msgid "Datasets:"
-msgstr "Datajoukko"
+msgstr "Datajoukot:"
 
 #: lib/layouts/aguplus.inc:131
 msgid "CCC"
 msgstr "CCC"
 
 #: lib/layouts/aguplus.inc:135
-#, fuzzy
 msgid "CCC code:"
-msgstr "Koodi"
+msgstr "CCC-koodi:"
 
 #: lib/layouts/aguplus.inc:144
 msgid "PaperId"
 msgstr "Julkaisutunniste"
 
 #: lib/layouts/aguplus.inc:148
-#, fuzzy
 msgid "Paper Id:"
-msgstr "Julkaisutunniste"
+msgstr "Julkaisutunniste:"
 
 #: lib/layouts/aguplus.inc:152
 msgid "AuthorAddr"
 msgstr "Tekijän osoite"
 
 #: lib/layouts/aguplus.inc:156
-#, fuzzy
 msgid "Author Address:"
-msgstr "Tekijän osoite"
+msgstr "Tekijän osoite:"
 
 #: lib/layouts/aguplus.inc:160
 msgid "SlugComment"
@@ -7141,18 +6919,17 @@ msgstr "Huomautus"
 
 #: lib/layouts/aguplus.inc:180
 msgid "Plate"
-msgstr ""
+msgstr "Kiiltokuva"
 
 #: lib/layouts/aguplus.inc:190
 msgid "Planotable"
-msgstr ""
+msgstr "Kokosivutaulukko"
 
 #: lib/layouts/aguplus.inc:201
 msgid "Table Caption"
 msgstr "Taulukon_teksti"
 
 #: lib/layouts/aguplus.inc:212
-#, fuzzy
 msgid "TableCaption"
 msgstr "Taulukon_teksti"
 
@@ -7161,36 +6938,32 @@ msgid "Current Address"
 msgstr "Nykyinen osoite"
 
 #: lib/layouts/amsdefs.inc:175
-#, fuzzy
 msgid "Current address:"
-msgstr "Nykyinen osoite"
+msgstr "Nykyinen osoite:"
 
 #: lib/layouts/amsdefs.inc:183
-#, fuzzy
 msgid "E-mail address:"
-msgstr "Palautusosoite"
+msgstr "Palautusosoite:"
 
 #: lib/layouts/amsdefs.inc:198
 msgid "Key words and phrases:"
-msgstr ""
+msgstr "Avainsanat ja -virkkeet:"
 
 #: lib/layouts/amsdefs.inc:209
 msgid "Dedicatory"
 msgstr "Omistuskirjoitus"
 
 #: lib/layouts/amsdefs.inc:212 lib/layouts/svjour.inc:125
-#, fuzzy
 msgid "Dedication:"
-msgstr "Omistuskirjoitus"
+msgstr "Omistuskirjoitus:"
 
 #: lib/layouts/amsdefs.inc:216
 msgid "Translator"
 msgstr "Kääntäjä"
 
 #: lib/layouts/amsdefs.inc:219
-#, fuzzy
 msgid "Translator:"
-msgstr "Kääntäjä"
+msgstr "Kääntäjä:"
 
 #: lib/layouts/amsdefs.inc:223
 msgid "Subjectclass"
@@ -7198,16 +6971,15 @@ msgstr "Aiheluokka"
 
 #: lib/layouts/amsdefs.inc:226
 msgid "1991 Mathematics Subject Classification:"
-msgstr ""
+msgstr "1991 Matematiikan aihekategoriat:"
 
 #: lib/layouts/amsmaths-plain.inc:95
-#, fuzzy
 msgid "Algorithm #."
-msgstr "Algoritmi"
+msgstr "Algoritmi #."
 
 #: lib/layouts/amsmaths.inc:106
 msgid "Corollary @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Seurauslause @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:128
 msgid "Lemma @Section@.\\arabic{theorem}."
@@ -7215,11 +6987,11 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:150
 msgid "Proposition @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Väittämä @Section@.\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:172
 msgid "Conjecture @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Otaksuma @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:180
 msgid "Conjecture*"
@@ -7227,7 +6999,7 @@ msgstr "Otaksuma*"
 
 #: lib/layouts/amsmaths.inc:194
 msgid "Criterion @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Kriteeri @Section@.\\arabic{theorem}"
 
 #: lib/layouts/amsmaths.inc:205
 msgid "Algorithm @Section@.\\arabic{theorem}."
@@ -7235,7 +7007,7 @@ msgstr ""
 
 #: lib/layouts/amsmaths.inc:216
 msgid "Fact @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Fakta @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:224
 msgid "Fact*"
@@ -7243,11 +7015,11 @@ msgstr "Fakta*"
 
 #: lib/layouts/amsmaths.inc:238
 msgid "Axiom @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Aksiooma @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:249
 msgid "Definition @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Määritelmä @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:279
 msgid "Example @Section@.\\arabic{theorem}."
@@ -7435,19 +7207,16 @@ msgid "\\arabic{subsection}."
 msgstr ""
 
 #: lib/layouts/numrevtex.inc:27
-#, fuzzy
 msgid "\\arabic{subsubsection}."
-msgstr "Alialikappale"
+msgstr ""
 
 #: lib/layouts/numrevtex.inc:28
-#, fuzzy
 msgid "\\alph{subsubsection}."
-msgstr "Alialikappale"
+msgstr ""
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
-#, fuzzy
 msgid "\\alph{paragraph}."
-msgstr " kappaletta"
+msgstr ""
 
 #: lib/layouts/scrclass.inc:98
 msgid "Addpart"
@@ -7510,14 +7279,12 @@ msgid "Dictum"
 msgstr "Lausunto"
 
 #: lib/layouts/stdlayouts.inc:64
-#, fuzzy
 msgid "--Separator--"
-msgstr "Kappaleväli"
+msgstr "--Kappaleväli--"
 
 #: lib/layouts/stdlayouts.inc:73
-#, fuzzy
 msgid "--- Separate Environment ---"
-msgstr "Koontiympäristö"
+msgstr "--- Koontiympäristö ---"
 
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
@@ -7525,21 +7292,19 @@ msgstr "Yläreunamuistiinpano"
 
 #: lib/layouts/svjour.inc:112
 msgid "Headnote (optional):"
-msgstr ""
+msgstr "Yläreunamuistiinpano (valinnainen):"
 
 #: lib/layouts/svjour.inc:240
-#, fuzzy
 msgid "Corr Author:"
-msgstr "SIS Tekijä"
+msgstr "Kirjeenvaihtajatekijä:"
 
 #: lib/layouts/svjour.inc:244
 msgid "Offprints"
 msgstr "Eripainokset"
 
 #: lib/layouts/svjour.inc:248
-#, fuzzy
 msgid "Offprints:"
-msgstr "Eripainokset"
+msgstr "Eripainokset:"
 
 #: lib/languages:2
 msgid "Afrikaans"
@@ -7551,12 +7316,11 @@ msgstr "amerikanenglanti"
 
 #: lib/languages:5
 msgid "Arabic (ArabTeX)"
-msgstr ""
+msgstr "arabia (ArabTeX)"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Arabic (Arabi)"
-msgstr "arabia"
+msgstr "arabia (Arabi)"
 
 #: lib/languages:7
 #, fuzzy
@@ -7614,11 +7378,11 @@ msgstr "katalaani"
 
 #: lib/languages:20
 msgid "Chinese (simplified)"
-msgstr ""
+msgstr "kiina (yksinkert.)"
 
 #: lib/languages:21
 msgid "Chinese (traditional)"
-msgstr ""
+msgstr "kiina (perinteinen)"
 
 #: lib/languages:22
 msgid "Croatian"
@@ -7649,9 +7413,8 @@ msgid "Estonian"
 msgstr "viro"
 
 #: lib/languages:31
-#, fuzzy
 msgid "Farsi"
-msgstr "reunahuomautus"
+msgstr "farsi"
 
 #: lib/languages:32
 msgid "Finnish"
@@ -7691,7 +7454,7 @@ msgstr "italia"
 
 #: lib/languages:43
 msgid "Japanese"
-msgstr ""
+msgstr "japani"
 
 #: lib/languages:44
 msgid "Kazakh"
@@ -7699,7 +7462,7 @@ msgstr "kazakh"
 
 #: lib/languages:46
 msgid "Korean"
-msgstr ""
+msgstr "korea"
 
 #: lib/languages:48
 msgid "Lithuanian"
@@ -7730,7 +7493,6 @@ msgid "Polish"
 msgstr "puola"
 
 #: lib/languages:55
-#, fuzzy
 msgid "Portuguese"
 msgstr "portugali"
 
@@ -7783,9 +7545,8 @@ msgid "Ukrainian"
 msgstr "ukraina"
 
 #: lib/languages:68
-#, fuzzy
 msgid "Upper Sorbian"
-msgstr "serbia"
+msgstr "ylisorbia"
 
 #: lib/languages:69
 msgid "Welsh"
@@ -7970,12 +7731,10 @@ msgid "Reconfigure|R"
 msgstr "Konfiguroi uudelleen|n"
 
 #: lib/ui/classic.ui:115
-#, fuzzy
 msgid "Selection as Lines|L"
 msgstr "Riveinä|R"
 
 #: lib/ui/classic.ui:116
-#, fuzzy
 msgid "Selection as Paragraphs|P"
 msgstr "Kappaleina|K"
 
@@ -8000,7 +7759,6 @@ msgid "Line Right|R"
 msgstr "Viiva oikealla|o"
 
 #: lib/ui/classic.ui:127
-#, fuzzy
 msgid "Alignment|i"
 msgstr "Tasaus|T"
 
@@ -8168,7 +7926,6 @@ msgid "AlignAt Environment"
 msgstr "AlignAt-ympäristö"
 
 #: lib/ui/classic.ui:204
-#, fuzzy
 msgid "Flalign Environment|F"
 msgstr "Flalign-ympäristö|F"
 
@@ -8193,7 +7950,6 @@ msgid "Citation...|C"
 msgstr "Lähdeviite...|L"
 
 #: lib/ui/classic.ui:218
-#, fuzzy
 msgid "Cross-reference...|r"
 msgstr "Viittaus...|V"
 
@@ -8214,13 +7970,12 @@ msgid "Short Title"
 msgstr "Lyhyt teoksen nimi"
 
 #: lib/ui/classic.ui:223
-#, fuzzy
 msgid "Index Entry|I"
 msgstr "Hakemistoviite...|H"
 
 #: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.cpp:230
 msgid "Nomenclature Entry"
-msgstr ""
+msgstr "Termistöviite"
 
 #: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
 msgid "URL...|U"
@@ -8235,9 +7990,8 @@ msgid "Lists & TOC|O"
 msgstr "Luettelo|o"
 
 #: lib/ui/classic.ui:229
-#, fuzzy
 msgid "TeX Code|T"
-msgstr "TeX|X"
+msgstr "TeX-koodi"
 
 #: lib/ui/classic.ui:230
 msgid "Minipage|p"
@@ -8276,7 +8030,6 @@ msgid "Subscript|u"
 msgstr "Alaindeksi|A"
 
 #: lib/ui/classic.ui:243
-#, fuzzy
 msgid "Horizontal Fill|H"
 msgstr "Vaakatasaus:|#V"
 
@@ -8289,7 +8042,6 @@ msgid "Ligature Break|k"
 msgstr "Yhdyskirjasinkatko|h"
 
 #: lib/ui/classic.ui:246
-#, fuzzy
 msgid "Protected Space|r"
 msgstr "Kova välilyönti|K"
 
@@ -8326,7 +8078,6 @@ msgid "Single Quote|Q"
 msgstr "Tavallinen lainausmerkki (\")|l"
 
 #: lib/ui/classic.ui:254
-#, fuzzy
 msgid "Ordinary Quote|O"
 msgstr "Tavallinen lainausmerkki (\")|l"
 
@@ -8335,14 +8086,13 @@ msgid "Menu Separator|M"
 msgstr "Valikkoerotinmerkki|m"
 
 #: lib/ui/classic.ui:256
-#, fuzzy
 msgid "Horizontal Line"
-msgstr "&Vaakatasaus:"
+msgstr "Vaakaviiva"
 
 #: lib/ui/classic.ui:257 src/insets/InsetPagebreak.h:49
 #, fuzzy
 msgid "Page Break"
-msgstr "&Sivunvaihdot"
+msgstr "Sivunvaihto"
 
 #: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:349
 msgid "Display Formula|D"
@@ -9358,7 +9108,7 @@ msgstr "Luettelo"
 #: lib/ui/stdtoolbars.inc:90
 #, fuzzy
 msgid "Increase depth"
-msgstr "Suurenna"
+msgstr "Lisää "
 
 #: lib/ui/stdtoolbars.inc:91
 #, fuzzy
@@ -9374,12 +9124,10 @@ msgid "Insert table float"
 msgstr "Lisää kelluva taulukko-upote"
 
 #: lib/ui/stdtoolbars.inc:95
-#, fuzzy
 msgid "Insert label"
 msgstr "Lisää nimike"
 
 #: lib/ui/stdtoolbars.inc:96
-#, fuzzy
 msgid "Insert cross-reference"
 msgstr "Lisää viittaus"
 
@@ -9388,17 +9136,14 @@ msgid "Insert citation"
 msgstr "Lisää lähdeviite"
 
 #: lib/ui/stdtoolbars.inc:98
-#, fuzzy
 msgid "Insert index entry"
 msgstr "Lisää hakemistoviite"
 
 #: lib/ui/stdtoolbars.inc:99
-#, fuzzy
 msgid "Insert nomenclature entry"
-msgstr "Lisää hakemistoviite"
+msgstr "Lisää termistöviite"
 
 #: lib/ui/stdtoolbars.inc:101
-#, fuzzy
 msgid "Insert footnote"
 msgstr "Lisää alaviite"
 
@@ -9407,137 +9152,112 @@ msgid "Insert margin note"
 msgstr "Lisää reunahuomautus"
 
 #: lib/ui/stdtoolbars.inc:103 lib/ui/stdtoolbars.inc:182
-#, fuzzy
 msgid "Insert note"
-msgstr "Lisää lainausmerkki"
+msgstr "Lisää muistiinpano"
 
 #: lib/ui/stdtoolbars.inc:104
 msgid "Insert URL"
 msgstr "Lisää URL"
 
 #: lib/ui/stdtoolbars.inc:105
-#, fuzzy
 msgid "Insert TeX code"
-msgstr "Lisää Bibtex"
+msgstr "Lisää TeX-koodi"
 
 #: lib/ui/stdtoolbars.inc:106
 msgid "Include file"
 msgstr "Sisällytä tiedosto"
 
 #: lib/ui/stdtoolbars.inc:108
-#, fuzzy
 msgid "Text style"
-msgstr "LaTeX-tyylit"
+msgstr "Tekstityyli"
 
 #: lib/ui/stdtoolbars.inc:109
-#, fuzzy
 msgid "Paragraph settings"
-msgstr "Tulostusasetukset"
+msgstr "Kappaleasetukset"
 
 #: lib/ui/stdtoolbars.inc:114 lib/ui/stdtoolbars.inc:158
-#, fuzzy
 msgid "Add row"
-msgstr "Lisää rivi|L"
+msgstr "Lisää rivi"
 
 #: lib/ui/stdtoolbars.inc:115 lib/ui/stdtoolbars.inc:159
-#, fuzzy
 msgid "Add column"
-msgstr "Lisää sarake|ä"
+msgstr "Lisää sarake"
 
 #: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:160
-#, fuzzy
 msgid "Delete row"
-msgstr "Poista rivi|r"
+msgstr "Poista rivi"
 
 #: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:161
-#, fuzzy
 msgid "Delete column"
-msgstr "Poista sarake|e"
+msgstr "Poista sarake"
 
 #: lib/ui/stdtoolbars.inc:119
-#, fuzzy
 msgid "Set top line"
-msgstr "Valitse seuraava rivi"
+msgstr "Yläviiva päälle"
 
 #: lib/ui/stdtoolbars.inc:120
-#, fuzzy
 msgid "Set bottom line"
-msgstr "ylä/alarivi"
+msgstr "Alaviiva päälle"
 
 #: lib/ui/stdtoolbars.inc:121
-#, fuzzy
 msgid "Set left line"
-msgstr "Valitse seuraava rivi"
+msgstr "Viiva vasemmalla päälle"
 
 #: lib/ui/stdtoolbars.inc:122
-#, fuzzy
 msgid "Set right line"
-msgstr "Valitse seuraava rivi"
+msgstr "Viiva oikealla päälle"
 
 #: lib/ui/stdtoolbars.inc:123
-#, fuzzy
 msgid "Set all lines"
-msgstr "Aseta kaikki reunat"
+msgstr "Kaikki viivat päälle"
 
 #: lib/ui/stdtoolbars.inc:124
-#, fuzzy
 msgid "Unset all lines"
-msgstr "Poista kaikki reunat"
+msgstr "Kaikki viivat pois"
 
 #: lib/ui/stdtoolbars.inc:126
-#, fuzzy
 msgid "Align left"
-msgstr "Tasaa vasemmalle|m"
+msgstr "Tasaa vasemmalle"
 
 #: lib/ui/stdtoolbars.inc:127
-#, fuzzy
 msgid "Align center"
-msgstr "Keskitä|K"
+msgstr "Keskitä"
 
 #: lib/ui/stdtoolbars.inc:128
-#, fuzzy
 msgid "Align right"
-msgstr "Tasaa oikealle|T"
+msgstr "Tasaa oikealle"
 
 #: lib/ui/stdtoolbars.inc:130
-#, fuzzy
 msgid "Align top"
-msgstr "Pystytasaa ylös|ö"
+msgstr "Pystytasaa ylös"
 
 #: lib/ui/stdtoolbars.inc:131
-#, fuzzy
 msgid "Align middle"
-msgstr "Tasaus"
+msgstr "Pystyasaus keskelle"
 
 #: lib/ui/stdtoolbars.inc:132
-#, fuzzy
 msgid "Align bottom"
 msgstr "Pystytasaa alas"
 
 #: lib/ui/stdtoolbars.inc:134
-#, fuzzy
 msgid "Rotate cell"
-msgstr "Kierrä &solua"
+msgstr "Kierrä solua"
 
 #: lib/ui/stdtoolbars.inc:135
-#, fuzzy
 msgid "Rotate table"
-msgstr "Kie&rrä taulukkoa"
+msgstr "Kierrä taulukkoa"
 
 #: lib/ui/stdtoolbars.inc:136
-#, fuzzy
 msgid "Set multi-column"
-msgstr "Erityinen monisarake"
+msgstr "Monisarake päälle"
 
 #: lib/ui/stdtoolbars.inc:139
-#, fuzzy
 msgid "Math"
-msgstr "Polut"
+msgstr "Matematiikka"
 
 #: lib/ui/stdtoolbars.inc:140
-#, fuzzy
 msgid "Set display mode"
-msgstr "Vaihda tavallisen ja esitystilan välillä"
+msgstr "esitystila päälle"
 
 #: lib/ui/stdtoolbars.inc:142
 msgid "Subscript"
@@ -9601,24 +9321,20 @@ msgid "Insert matrix"
 msgstr "Lisää matriisi"
 
 #: lib/ui/stdtoolbars.inc:157
-#, fuzzy
 msgid "Insert cases environment"
-msgstr "Tapausympäristö|p"
+msgstr "lisää 'cases'-ympäristö"
 
 #: lib/ui/stdtoolbars.inc:166
-#, fuzzy
 msgid "Command Buffer"
-msgstr "Kome&nnon loppu:"
+msgstr "Komentopuskuri"
 
 #: lib/ui/stdtoolbars.inc:171
-#, fuzzy
 msgid "Track changes"
-msgstr "Kirjaa muutokset...|K"
+msgstr "Kirjaa muutokset..."
 
 #: lib/ui/stdtoolbars.inc:172
-#, fuzzy
 msgid "Show changes in output"
-msgstr "Kuvan leveys tulosteessa"
+msgstr "Näytä muutosmerkinnät tulosteessa"
 
 #: lib/ui/stdtoolbars.inc:174
 #, fuzzy
