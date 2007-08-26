@@ -13,9 +13,8 @@ add_subdirectory(graphics)
 add_subdirectory(insets) 
 add_subdirectory(mathed) 
 add_subdirectory(support) 
-if(NOT MERGE_FILES)
-	add_subdirectory(tex2lyx) 
-endif(NOT MERGE_FILES)
+add_subdirectory(tex2lyx) 
+
 
 
 file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})

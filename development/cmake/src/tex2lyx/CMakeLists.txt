@@ -8,7 +8,7 @@ project(tex2lyx)
 
 
 
-set(LINKED_FILES
+set(LINKED_sources
 	${TOP_SRC_DIR}/src/FloatList.cpp
 	${TOP_SRC_DIR}/src/Floating.cpp
 	${TOP_SRC_DIR}/src/Counters.cpp
@@ -17,12 +17,17 @@ set(LINKED_FILES
 	${TOP_SRC_DIR}/src/Lexer.cpp
 )
 
+set(LINKED_headers
+	${TOP_SRC_DIR}/src/Layout.h
+	${TOP_SRC_DIR}/src/TextClass.h
+)
+
 set(tex2lyx_sources
 	${TOP_SRC_DIR}/src/tex2lyx/boost.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/Context.cpp
+	${TOP_SRC_DIR}/src/tex2lyx/Font.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/gettext.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/lengthcommon.cpp
-	${TOP_SRC_DIR}/src/tex2lyx/Font.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/Parser.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/preamble.cpp
@@ -32,8 +37,6 @@ set(tex2lyx_sources
 )
 
 set(tex2lyx_headers
-	${TOP_SRC_DIR}/src/Layout.h
-	${TOP_SRC_DIR}/src/TextClass.h
 	${TOP_SRC_DIR}/src/tex2lyx/Spacing.h
 	${TOP_SRC_DIR}/src/tex2lyx/Context.h
 	${TOP_SRC_DIR}/src/tex2lyx/Font.h
@@ -41,18 +44,17 @@ set(tex2lyx_headers
 	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.h
 )
 
-include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx)
+include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx ${TOP_SRC_DIR}/src/support/minizip ${ZLIB_INCLUDE_DIR})
 
 add_definitions(-DTEX2LYX)
 
-#TODO
-#if(NOT MERGE_FILES)
-	add_executable(tex2lyx ${tex2lyx_sources} ${LINKED_FILES} ${tex2lyx_headers})
-#else(NOT MERGE_FILES)
-#	set(tex2lyx_sources_all ${tex2lyx_sources} ${LINKED_FILES})
-#	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/tex2lyx_allinone.C tex2lyx_sources_all)
-#	add_executable(tex2lyx ${CMAKE_CURRENT_BINARY_DIR}/tex2lyx_allinone.C)
-#endif(NOT MERGE_FILES)
+if(NOT MERGE_FILES)
+	add_executable(tex2lyx ${tex2lyx_sources} ${LINKED_sources} ${tex2lyx_headers} ${LINKED_headers})
+else(NOT MERGE_FILES)
+	lyx_const_touched_files(_allinone  tex2lyx_sources)
+	lyx_const_touched_files(_allinone_linked  LINKED_sources)
+	add_executable(tex2lyx  ${_allinone_files} ${_allinone_linked_files})
+endif(NOT MERGE_FILES)
 
 
 target_link_libraries(tex2lyx  
