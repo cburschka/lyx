@@ -458,13 +458,6 @@ if use_vc:
     else:
         CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
         C_CCFLAGS.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
-else:
-    if env.has_key('CXX') and env['CXX']:
-        env['CC'] = env.subst('$CXX')
-        env['LINK'] = env.subst('$CXX')
-    else:
-        env['CC'] = 'g++'
-        env['LINK'] = 'g++'
 
 # for debug/release mode
 if env.has_key('optimization') and env['optimization'] is not None:
@@ -1465,6 +1458,7 @@ env.SConsignFile(os.path.join(Dir(env['BUILDDIR']).abspath, '.sconsign'))
 # this usage needs further investigation.
 #env.CacheDir('%s/Cache/%s' % (env['BUILDDIR'], frontend))
 env.BuildDir('$BUILDDIR/boost', '$TOP_SRCDIR/boost/libs', duplicate = 0)
+env.BuildDir('$BUILDDIR/intl', '$TOP_SRCDIR/intl', duplicate = 0)
 env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
 frontend_env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
 
@@ -1477,18 +1471,15 @@ def libExists(libname):
 
 if (included_boost and not libExists('included_boost_regex')) or 'boost' in BUILD_TARGETS:
     #
-    # boost libraries
-    boostenv = env.Copy()
+    # boost/libs
     #
-    # boost use its own config.h
-    boostenv['CPPPATH'] = ['$BUILDDIR/boost'] + extra_inc_paths
-    boostenv['CCFLAGS'] = ['$INCPREFIX$TOP_SRCDIR/boost']
-    boostenv.AppendUnique(CCFLAGS = ['-DBOOST_USER_CONFIG="<config.h>"'])
-
     for lib in boost_libs:
-        boostlib = boostenv.StaticLibrary(
+        boostlib = env.StaticLibrary(
             target = '$LOCALLIBPATH/included_boost_%s' % lib,
-            source = ['$BUILDDIR/boost/%s/src/%s' % (lib, x) for x in eval('boost_libs_%s_src_files' % lib)]
+            source = ['$BUILDDIR/boost/%s/src/%s' % (lib, x) for x in eval('boost_libs_%s_src_files' % lib)],
+            # do not use global CPPPATH because src/config.h will mess up with boost/config.h
+            CPPPATH = ['$BUILDDIR/boost'] + extra_inc_paths,
+            CCFLAGS = ['$CCFLAGS', '$INCPREFIX$TOP_SRCDIR/boost', '-DBOOST_USER_CONFIG="<config.h>"']
         )
         Alias('boost', boostlib)
 
@@ -1497,17 +1488,7 @@ if (included_gettext and not libExists('included_intl')) or 'intl' in BUILD_TARG
     #
     # intl
     #
-    intlenv = env.Copy()
-
-    # we need the original C compiler for these files
-    intlenv['CC'] = C_COMPILER
-    intlenv['CCFLAGS'] = C_CCFLAGS
-    if use_vc:
-        intlenv.Append(CCFLAGS=['/Dinline#', '/D__attribute__(x)#', '/Duintmax_t=UINT_MAX'])
-    # intl does not use global config.h
-    intlenv['CPPPATH'] = ['$BUILDDIR/intl'] + extra_inc_paths
-
-    intlenv.Append(CCFLAGS = [
+    INTL_CCFLAGS =  [
         r'-DLOCALEDIR=\"' + env['LOCALEDIR'].replace('\\', '\\\\') + r'\"',
         r'-DLOCALE_ALIAS_PATH=\"' + env['LOCALEDIR'].replace('\\', '\\\\') + r'\"',
         r'-DLIBDIR=\"' + env['TOP_SRCDIR'].replace('\\', '\\\\') + r'/lib\"',
@@ -1521,11 +1502,15 @@ if (included_gettext and not libExists('included_intl')) or 'intl' in BUILD_TARG
         '-DDEPENDS_ON_LIBICONV=1',
         '-DHAVE_CONFIG_H'
         ]
-    )
+    if use_vc:
+        INTL_CCFLAGS.extend(['/Dinline#', '/D__attribute__(x)#', '/Duintmax_t=UINT_MAX'])
 
-    intl = intlenv.StaticLibrary(
+    intl = env.StaticLibrary(
         target = '$LOCALLIBPATH/included_intl',
         LIBS = ['c'],
+        CCFLAGS = INTL_CCFLAGS,
+        # do not use global CPPPATH because src/config.h will mess up with intl/config.h
+        CPPPATH =  ['$BUILDDIR/intl'] + extra_inc_paths,
         source = ['$BUILDDIR/intl/%s' % x for x in intl_files]
     )
     Alias('intl', intl)
