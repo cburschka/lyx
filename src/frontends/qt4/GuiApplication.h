@@ -26,6 +26,8 @@
 #include <QApplication>
 #include <QTranslator>
 
+class QSessionManager;
+
 namespace lyx {
 
 class BufferView;
@@ -74,9 +76,10 @@ public:
 	void unregisterSocketCallback(int fd);
 	//@}
 
-	/// Methods inherited from \c Application class
+	/// Methods inherited from \c QApplication class
 	//@{
-	virtual bool notify(QObject * receiver, QEvent * event);
+	bool notify(QObject * receiver, QEvent * event);
+	void commitData(QSessionManager & sm);
 	//@}
 
 	///

@@ -50,6 +50,8 @@ What's new
 - Add paragraph-params LFUN, used for updating paragraph parameters
   (Bug 2714).
 
+- Add "Save all on log-out or cancel" feature (Bug 1656).
+
 
 ** Bug fixes:
 *************
@@ -93,6 +95,8 @@ What's new
 - Fix crash when using down cursor in an empty math subscript (bug 4117).
 
 - Reset current cursor font when going to a bookmark.
+
+- Fix crash when login out from within Gnome desktop (Bug 1656).
 
 
 * DOCUMENTATION

@@ -27,6 +27,7 @@
 #include "support/os.h"
 #include "support/Package.h"
 
+#include "BufferList.h"
 #include "BufferView.h"
 #include "Color.h"
 #include "debug.h"
@@ -42,6 +43,7 @@
 #include <QFileOpenEvent>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QSessionManager>
 #include <QTextCodec>
 #include <QTimer>
 #include <QTranslator>
@@ -312,6 +314,20 @@ void GuiApplication::unregisterSocketCallback(int fd)
 {
 	socket_callbacks_.erase(fd);
 }
+
+
+void GuiApplication::commitData(QSessionManager & sm)
+{
+	/// The implementation is required to avoid an application exit
+	/// when session state save is triggered by session manager.
+	/// The default implementation sends a close event to all
+	/// visible top level widgets when session managment allows
+	/// interaction.
+	/// We are changing that to write all unsaved buffers...
+	if (sm.allowsInteraction() && !theBufferList().quitWriteAll())
+ 		sm.cancel();
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // X11 specific stuff goes here...
