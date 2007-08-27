@@ -422,7 +422,7 @@ msgstr "&Rimuovi"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:90
 msgid "Toggle the selected branch"
-msgstr "Attiva/Disattiva il ramo selezionato"
+msgstr "Commuta il ramo selezionato"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:93
 msgid "(&De)activate"
@@ -530,15 +530,15 @@ msgstr "&Livello:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:31
 msgid "Change:"
-msgstr "Cambia:"
+msgstr "Modifica:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
 msgid "Go to next change"
-msgstr "Vai alla prossima modifica"
+msgstr "Vai alla modifica successiva"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
 msgid "&Next change"
-msgstr "&Prossima modifica"
+msgstr "&Modifica successiva"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:95
 msgid "Accept this change"
@@ -607,7 +607,7 @@ msgstr "&Colore:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:212
 msgid "Never Toggled"
-msgstr "Mai Attivati/Disattivati"
+msgstr "Mai commutati"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:224
 #: src/frontends/qt4/ui/CharacterUi.ui:245
@@ -621,7 +621,7 @@ msgstr "Altre impostazioni del carattere"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:261
 msgid "Always Toggled"
-msgstr "Sempre Attivati/Disattivati"
+msgstr "Sempre commutati"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "&Misc:"
@@ -629,11 +629,11 @@ msgstr "&Varie:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "toggle font on all of the above"
-msgstr "attiva/disattiva caratteri su tutto il precedente"
+msgstr "commuta carattere per tutto il precedente"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:311
 msgid "&Toggle all"
-msgstr "&Attiva/Disattiva tutto"
+msgstr "&Commuta tutto"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:318
 msgid "Apply each change automatically"
@@ -1108,7 +1108,7 @@ msgstr "&Dimensione base:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
-msgstr "&Grafici"
+msgstr "&Immagine"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:55 src/frontends/qt4/ui/IncludeUi.ui:339
 msgid "&Edit"
@@ -1148,7 +1148,8 @@ msgstr "&Larghezza:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:207
 msgid "Scale image to maximum size not exceeding width and height"
-msgstr ""
+msgstr "Scala l'immagine alla dimensione massima non eccedente larghezza ed "
+"altezza"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:220
 msgid "Rotate Graphics"
@@ -1674,7 +1675,7 @@ msgstr "Formato carta"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:74
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
-"Scegli un tipo di carta particolare o impostane uno tuo proprio con "
+"Scegliere un tipo di carta particolare o impostarne uno proprio con "
 "\"Personalizzato\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
@@ -1695,7 +1696,7 @@ msgstr "&Stile pagina:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:186
 msgid "Style used for the page header and footer"
-msgstr "E' lo stile usato per l'intestazione e le note a piè di pagina"
+msgstr "Stile usato per l'intestazione e il piè di pagina"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:195
 msgid "Lay out the page for double-sided printing"
@@ -1862,7 +1863,7 @@ msgstr "Formato della data per l'output strftime"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:36
 msgid "Display &Graphics:"
-msgstr "Mostra &grafici:"
+msgstr "Visualizzazione &grafica:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:73
 msgid "Off"
@@ -2125,10 +2126,13 @@ msgid ""
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
+"Larghezza massima della riga per file esportati come testo/LaTeX/SGML."
+"Se impostata a 0, ogni paragrafo è esportato su una singola riga, "
+"altrimenti i paragrafi vengono separati da una riga vuota."
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:82
 msgid "Output &line length:"
-msgstr "Lunghezza della &linea prodotta:"
+msgstr "Larghezza della &riga prodotta:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:92
 msgid "External app for formating tables in plain text output"
@@ -2540,7 +2544,7 @@ msgstr "Etichett&e in:"
 
 #: src/frontends/qt4/ui/RefUi.ui:166
 msgid "Cross-reference as it appears in output"
-msgstr "È il riferimento incrociato come appare nell'output"
+msgstr "È il riferimento come appare nell'output"
 
 #: src/frontends/qt4/ui/RefUi.ui:170
 msgid "<reference>"
@@ -2600,7 +2604,7 @@ msgstr "&Maiuscolo/minuscolo"
 
 #: src/frontends/qt4/ui/SearchUi.ui:115
 msgid "Match whole words onl&y"
-msgstr "Combacia sol&o parole intere"
+msgstr "Sol&o parole intere"
 
 #: src/frontends/qt4/ui/SearchUi.ui:173
 msgid "Find &Next"
@@ -2767,7 +2771,7 @@ msgstr "C&ancella"
 
 #: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr ""
+msgstr "Usa stile formale per i bordi (senza linee verticali)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:316
 msgid "Fo&rmal"
@@ -2775,7 +2779,7 @@ msgstr "Fo&rmale"
 
 #: src/frontends/qt4/ui/TabularUi.ui:326
 msgid "Use default (grid-like) border style"
-msgstr ""
+msgstr "Usa lo stile predefinito (a griglia) per i bordi"
 
 #: src/frontends/qt4/ui/TabularUi.ui:329
 msgid "De&fault"
@@ -2787,7 +2791,7 @@ msgstr "Imposta bordi"
 
 #: src/frontends/qt4/ui/TabularUi.ui:660
 msgid "Set borders of the current (selected) cell(s)"
-msgstr "Importa i bordi della cella corrente (selezionata)"
+msgstr "Importa i bordi della cella corrente (o per quelle selezionate)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:673
 msgid "Additional Space"
@@ -2933,7 +2937,7 @@ msgstr "&Riesamina"
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
-"Mostra i contenuti del file segnato. E' possibile solo quando i file sono "
+"Mostra i contenuti del file selezionato. Possibile solo quando i file sono "
 "mostrati con il loro percorso."
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
@@ -3027,7 +3031,7 @@ msgstr "Sostituisci la voce scelta con quella selezionata"
 
 #: src/frontends/qt4/ui/TocUi.ui:48
 msgid "Update navigation tree"
-msgstr ""
+msgstr "Aggiorna l'albero di navigazione"
 
 #: src/frontends/qt4/ui/TocUi.ui:51 src/frontends/qt4/ui/TocUi.ui:83
 #: src/frontends/qt4/ui/TocUi.ui:102 src/frontends/qt4/ui/TocUi.ui:121
@@ -3037,11 +3041,11 @@ msgstr "..."
 
 #: src/frontends/qt4/ui/TocUi.ui:80
 msgid "Decrease nesting depth of selected item"
-msgstr ""
+msgstr "Decrementa la nidificazione dell'elemento selezionato"
 
 #: src/frontends/qt4/ui/TocUi.ui:99
 msgid "Increase nesting depth of selected item"
-msgstr ""
+msgstr "Incrementa la nidificazione dell'elemento selezionato"
 
 #: src/frontends/qt4/ui/TocUi.ui:118
 msgid "Move selected item down by one"
@@ -4208,7 +4212,7 @@ msgstr "Didascalia centrata"
 #: lib/layouts/apa.layout:269 lib/layouts/scrclass.inc:242
 #: lib/layouts/scrclass.inc:262
 msgid "Senseless!"
-msgstr "Insensato!"
+msgstr "Non ha senso!"
 
 #: lib/layouts/apa.layout:280
 msgid "FitFigure"
@@ -5953,7 +5957,7 @@ msgstr "Congettura @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/iopart.layout:73 lib/ui/stdtoolbars.inc:170
 msgid "Review"
-msgstr "Revisione"
+msgstr "Revisioni"
 
 #: lib/layouts/iopart.layout:79
 #, fuzzy
@@ -7263,7 +7267,7 @@ msgstr "Americano"
 
 #: lib/languages:5
 msgid "Arabic (ArabTeX)"
-msgstr ""
+msgstr "Arabo (ArabTeX)"
 
 #: lib/languages:6
 msgid "Arabic (Arabi)"
@@ -7323,11 +7327,11 @@ msgstr "Catalano"
 
 #: lib/languages:20
 msgid "Chinese (simplified)"
-msgstr ""
+msgstr "Cinese (semplificato)"
 
 #: lib/languages:21
 msgid "Chinese (traditional)"
-msgstr ""
+msgstr "Cinese (tradizionale)"
 
 #: lib/languages:22
 msgid "Croatian"
@@ -7399,7 +7403,7 @@ msgstr "Italiano"
 
 #: lib/languages:43
 msgid "Japanese"
-msgstr ""
+msgstr "Giapponese"
 
 #: lib/languages:44
 msgid "Kazakh"
@@ -7407,7 +7411,7 @@ msgstr "Kazakho"
 
 #: lib/languages:46
 msgid "Korean"
-msgstr ""
+msgstr "Coreano"
 
 #: lib/languages:48
 msgid "Lithuanian"
@@ -7583,7 +7587,7 @@ msgstr "Esci|E"
 
 #: lib/ui/classic.ui:68 lib/ui/stdmenus.inc:63
 msgid "Register...|R"
-msgstr "Registro...|g"
+msgstr "Registrazione...|g"
 
 #: lib/ui/classic.ui:69 lib/ui/stdmenus.inc:64
 msgid "Check In Changes...|I"
@@ -7763,11 +7767,11 @@ msgstr "Inferiore|I"
 
 #: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:184
 msgid "Toggle Numbering|N"
-msgstr "Attiva/Disattiva numerazione|n"
+msgstr "Commuta numerazione|n"
 
 #: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:185
 msgid "Toggle Numbering of Line|u"
-msgstr "Attiva/Disattiva la numerazione di linea|z"
+msgstr "Commuta numerazione di riga|z"
 
 #: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:186
 msgid "Change Limits Type|L"
@@ -7803,15 +7807,15 @@ msgstr "Elimina colonna|E"
 
 #: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:208
 msgid "Default|t"
-msgstr "Predefinito|t"
+msgstr "Posizionamento predefinito|t"
 
 #: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:209
 msgid "Display|D"
-msgstr "Display|D"
+msgstr "Limiti sopra e sotto|s"
 
 #: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:210
 msgid "Inline|I"
-msgstr "In linea|I"
+msgstr "Limiti a lato|l"
 
 #: lib/ui/classic.ui:188
 msgid "Octave"
@@ -7888,7 +7892,7 @@ msgstr "Citazione...|C"
 
 #: lib/ui/classic.ui:218
 msgid "Cross-reference...|r"
-msgstr "Riferimento incrociato...|R"
+msgstr "Riferimento...|R"
 
 #: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:303
 msgid "Label...|L"
@@ -7936,7 +7940,7 @@ msgstr "Minipagina|p"
 
 #: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:309
 msgid "Graphics...|G"
-msgstr "Grafici...|G"
+msgstr "Immagine...|g"
 
 #: lib/ui/classic.ui:232
 msgid "Tabular Material...|b"
@@ -8076,63 +8080,63 @@ msgstr "Carattere matematico normale"
 
 #: lib/ui/classic.ui:282
 msgid "Math Calligraphic Family"
-msgstr "Famiglia calligrafico per matematica"
+msgstr "Famiglia calligrafica di matematica"
 
 #: lib/ui/classic.ui:283
 msgid "Math Fraktur Family"
-msgstr "Famiglia gotico per matematica"
+msgstr "Famiglia gotica di matematica"
 
 #: lib/ui/classic.ui:284
 msgid "Math Roman Family"
-msgstr "Famiglia romano per matematica"
+msgstr "Famiglia romana di matematica"
 
 #: lib/ui/classic.ui:285
 msgid "Math Sans Serif Family"
-msgstr "Famiglia senza grazie per matematica"
+msgstr "Famiglia senza grazie di matematica"
 
 #: lib/ui/classic.ui:287
 msgid "Math Bold Series"
-msgstr "Serie grassetto per matematica"
+msgstr "Serie grassetta di matematica"
 
 #: lib/ui/classic.ui:289
 msgid "Text Normal Font"
-msgstr "Carattere normale per testo"
+msgstr "Carattere normale di testo"
 
 #: lib/ui/classic.ui:291 lib/ui/stdmenus.inc:225
 msgid "Text Roman Family"
-msgstr "Famiglia romano per testo"
+msgstr "Famiglia romana di testo"
 
 #: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:226
 msgid "Text Sans Serif Family"
-msgstr "Famiglia senza grazie per testo"
+msgstr "Famiglia senza grazie di testo"
 
 #: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:227
 msgid "Text Typewriter Family"
-msgstr "Famiglia monospazio per testo"
+msgstr "Famiglia monospazio di testo"
 
 #: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:229
 msgid "Text Bold Series"
-msgstr "Serie grassetto per testo"
+msgstr "Serie grassetta di testo"
 
 #: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:230
 msgid "Text Medium Series"
-msgstr "Serie media per testo"
+msgstr "Serie media di testo"
 
 #: lib/ui/classic.ui:298 lib/ui/stdmenus.inc:232
 msgid "Text Italic Shape"
-msgstr "Formato corsivo per testo"
+msgstr "Forma corsiva di testo"
 
 #: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:233
 msgid "Text Small Caps Shape"
-msgstr "Formato maiuscoletto per testo"
+msgstr "Forma maiuscoletta di testo"
 
 #: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:234
 msgid "Text Slanted Shape"
-msgstr "Formato obliquo per testo"
+msgstr "Forma obliqua di testo"
 
 #: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:235
 msgid "Text Upright Shape"
-msgstr "Formato dritto per testo"
+msgstr "Forma dritta di testo"
 
 #: lib/ui/classic.ui:306
 msgid "Floatflt Figure"
@@ -8144,7 +8148,7 @@ msgstr "Indice generale|g"
 
 #: lib/ui/classic.ui:312 lib/ui/stdmenus.inc:381
 msgid "Index List|I"
-msgstr "Elenco indice|i"
+msgstr "Indice analitico|I"
 
 #: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:382
 msgid "Nomenclature|N"
@@ -8160,15 +8164,15 @@ msgstr "Documento di LyX...|X"
 
 #: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:388
 msgid "Plain Text...|T"
-msgstr "Testo semplice...|T"
+msgstr "Testo semplice, per linee...|T"
 
 #: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:389
 msgid "Plain Text, Join Lines...|J"
-msgstr "Testo semplice, linee unite...|l"
+msgstr "Testo semplice, per paragrafi...|l"
 
 #: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:423
 msgid "Track Changes|T"
-msgstr "Traccia Modifiche|T"
+msgstr "Attivato|t"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:424
 msgid "Merge Changes...|M"
@@ -8180,11 +8184,11 @@ msgstr "Accetta tutte le modifiche|u"
 
 #: lib/ui/classic.ui:327
 msgid "Reject All Changes|R"
-msgstr "Rigetta tutte le modifiche|g"
+msgstr "Rifiuta tutte le modifiche|g"
 
 #: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:429
 msgid "Show Changes in Output|S"
-msgstr "Mostra modifiche nel risultato|s"
+msgstr "Mostra modifiche nell'output|s"
 
 #: lib/ui/classic.ui:335
 msgid "Character...|C"
@@ -8240,7 +8244,7 @@ msgstr "Registro di LaTeX|R"
 
 #: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:415
 msgid "Outline|O"
-msgstr "Profilo del documento|o"
+msgstr "Profilo|o"
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8248,7 +8252,7 @@ msgstr "Informazioni TeX|X"
 
 #: lib/ui/classic.ui:374 lib/ui/stdmenus.inc:437
 msgid "Next Note|N"
-msgstr "Prossima nota|n"
+msgstr "Nota successiva|N"
 
 #: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:440
 msgid "Go to Label|L"
@@ -8439,15 +8443,15 @@ msgstr "Righe e colonne|C"
 
 #: lib/ui/stdmenus.inc:114
 msgid "Increase List Depth|I"
-msgstr "Aumenta il rientro del contesto|u"
+msgstr "Aumenta il rientro dell'elenco|u"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Decrease List Depth|D"
-msgstr "Diminuisci il rientro del contesto|m"
+msgstr "Diminuisci il rientro dell'elenco|m"
 
 #: lib/ui/stdmenus.inc:116
 msgid "Dissolve Inset|l"
-msgstr ""
+msgstr "Dissolvi l'inserto"
 
 #: lib/ui/stdmenus.inc:117
 msgid "TeX Code Settings...|C"
@@ -8459,7 +8463,7 @@ msgstr "Impostazioni degli oggetti mobili...|a"
 
 #: lib/ui/stdmenus.inc:120
 msgid "Text Wrap Settings...|W"
-msgstr "Impostazioni rientro testo...|R"
+msgstr "Impostazioni figura immersa nel testo...|f"
 
 #: lib/ui/stdmenus.inc:121
 msgid "Note Settings...|N"
@@ -8479,19 +8483,19 @@ msgstr "Impostazioni tabella...|t"
 
 #: lib/ui/stdmenus.inc:131
 msgid "Plain Text|T"
-msgstr "Testo semplice|T"
+msgstr "Testo semplice, per linee|T"
 
 #: lib/ui/stdmenus.inc:132
 msgid "Plain Text, Join Lines|J"
-msgstr "Testo semplice, linee unite"
+msgstr "Testo semplice, per paragrafi"
 
 #: lib/ui/stdmenus.inc:134
 msgid "Selection|S"
-msgstr "Selezione|S"
+msgstr "Selezione, per linee|S"
 
 #: lib/ui/stdmenus.inc:135
 msgid "Selection, Join Lines|i"
-msgstr "Selezione, linee unite|l"
+msgstr "Selezione, per paragrafi|l"
 
 #: lib/ui/stdmenus.inc:145
 msgid "Customized...|C"
@@ -8587,23 +8591,23 @@ msgstr "Carattere matematico normale|n"
 
 #: lib/ui/stdmenus.inc:216
 msgid "Math Calligraphic Family|C"
-msgstr "Famiglia calligrafico matematico|c"
+msgstr "Famiglia calligrafica di matematica|c"
 
 #: lib/ui/stdmenus.inc:217
 msgid "Math Fraktur Family|F"
-msgstr "Famiglia gotico matematico|F"
+msgstr "Famiglia gotica di matematica|F"
 
 #: lib/ui/stdmenus.inc:218
 msgid "Math Roman Family|R"
-msgstr "Famiglia romano matematico|r"
+msgstr "Famiglia romana di matematica|r"
 
 #: lib/ui/stdmenus.inc:219
 msgid "Math Sans Serif Family|S"
-msgstr "Famiglia senza grazie matematico|s"
+msgstr "Famiglia senza grazie di matematica|s"
 
 #: lib/ui/stdmenus.inc:221
 msgid "Math Bold Series|B"
-msgstr "Serie grassetto matematico"
+msgstr "Serie grassetta di matematica"
 
 #: lib/ui/stdmenus.inc:223
 msgid "Text Normal Font|T"
@@ -8623,11 +8627,11 @@ msgstr "Mathematica|a"
 
 #: lib/ui/stdmenus.inc:243
 msgid "Maple, simplify|s"
-msgstr "Maple, semplifica|s"
+msgstr "Maple, simplify|s"
 
 #: lib/ui/stdmenus.inc:244
 msgid "Maple, factor|f"
-msgstr "Maple, fattore|f"
+msgstr "Maple, factor|f"
 
 #: lib/ui/stdmenus.inc:245
 msgid "Maple, evalm|e"
@@ -8683,7 +8687,7 @@ msgstr "Casella"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Cross-Reference...|R"
-msgstr "Riferimento incrociato...|R"
+msgstr "Riferimento...|R"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Caption"
@@ -8787,11 +8791,11 @@ msgstr "Matrice matematica"
 
 #: lib/ui/stdmenus.inc:369 lib/ui/stdtoolbars.inc:163
 msgid "Toggle Math Panels"
-msgstr "Attiva/Disattiva pannelli matematici"
+msgstr "Commuta pannelli matematici"
 
 #: lib/ui/stdmenus.inc:375
 msgid "Text Wrap Float|W"
-msgstr "Figura contornabile dal testo|c"
+msgstr "Figura immersa nel testo|g"
 
 #: lib/ui/stdmenus.inc:391
 msgid "External Material...|M"
@@ -8823,7 +8827,7 @@ msgstr "Evidenziata"
 
 #: lib/ui/stdmenus.inc:412
 msgid "Change Tracking|C"
-msgstr "Cambia Tracciamento|C"
+msgstr "Tracciamento modifiche|c"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Start Appendix Here|A"
@@ -8851,7 +8855,7 @@ msgstr "Accetta tutte le modifiche|u"
 
 #: lib/ui/stdmenus.inc:428
 msgid "Reject All Changes|e"
-msgstr "Rigetta tutte le modifiche|g"
+msgstr "Rifiuta tutte le modifiche|f"
 
 #: lib/ui/stdmenus.inc:438
 msgid "Next Change|C"
@@ -8859,7 +8863,7 @@ msgstr "Modifica successiva|c"
 
 #: lib/ui/stdmenus.inc:439
 msgid "Next Cross-Reference|R"
-msgstr "Prossimo riferimento incrociato"
+msgstr "Riferimento successivo"
 
 #: lib/ui/stdmenus.inc:451
 msgid "Clear Bookmarks|C"
@@ -8907,11 +8911,11 @@ msgstr "Trova e sostituisci"
 
 #: lib/ui/stdtoolbars.inc:71
 msgid "Toggle emphasis"
-msgstr "Attiva/Disattiva lo stile enfasi"
+msgstr "Commuta lo stile enfasi"
 
 #: lib/ui/stdtoolbars.inc:72
 msgid "Toggle noun"
-msgstr "Attiva/Disattiva lo stile sostantivo"
+msgstr "Commuta lo stile sostantivo"
 
 #: lib/ui/stdtoolbars.inc:73
 msgid "Apply last"
@@ -8923,7 +8927,7 @@ msgstr "Inserisci matematica"
 
 #: lib/ui/stdtoolbars.inc:76
 msgid "Insert graphics"
-msgstr "Inserisci grafici"
+msgstr "Inserisci immagine"
 
 #: lib/ui/stdtoolbars.inc:77
 msgid "Insert table"
@@ -8931,15 +8935,15 @@ msgstr "Inserisci tabella"
 
 #: lib/ui/stdtoolbars.inc:79
 msgid "Toggle Outline"
-msgstr "Attiva/Disattiva profilo del documento"
+msgstr "Commuta profilo del documento"
 
 #: lib/ui/stdtoolbars.inc:80
 msgid "Toggle Math Toolbar"
-msgstr "Attiva/Disattiva barra strumenti matematici"
+msgstr "Commuta barra strumenti matematici"
 
 #: lib/ui/stdtoolbars.inc:81
 msgid "Toggle Table Toolbar"
-msgstr "Attiva/Disattiva barra strumenti per tabelle"
+msgstr "Commuta barra strumenti per tabelle"
 
 #: lib/ui/stdtoolbars.inc:84
 msgid "Extra"
@@ -8947,11 +8951,11 @@ msgstr "Extra"
 
 #: lib/ui/stdtoolbars.inc:86
 msgid "Numbered list"
-msgstr "Lista numerata"
+msgstr "Elenco numerato"
 
 #: lib/ui/stdtoolbars.inc:87
 msgid "Itemized list"
-msgstr "Lista puntata"
+msgstr "Elenco puntato"
 
 #: lib/ui/stdtoolbars.inc:90
 msgid "Increase depth"
@@ -8975,7 +8979,7 @@ msgstr "Inserisci etichetta"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Insert cross-reference"
-msgstr "Inserisci riferimento incrociato"
+msgstr "Inserisci riferimento"
 
 #: lib/ui/stdtoolbars.inc:97
 msgid "Insert citation"
@@ -9163,19 +9167,19 @@ msgstr "Inserisci contesto casi"
 
 #: lib/ui/stdtoolbars.inc:166
 msgid "Command Buffer"
-msgstr "Comand buffer"
+msgstr "Linea di comando"
 
 #: lib/ui/stdtoolbars.inc:171
 msgid "Track changes"
-msgstr "Traccia Modifiche|T"
+msgstr "Tracciamento modifiche"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Show changes in output"
-msgstr "Mostra modifiche nel risultato|s"
+msgstr "Mostra modifiche nell'output"
 
 #: lib/ui/stdtoolbars.inc:174
 msgid "Next change"
-msgstr "Prossima modifica"
+msgstr "Modifica successiva"
 
 #: lib/ui/stdtoolbars.inc:175
 msgid "Accept change"
@@ -9195,11 +9199,11 @@ msgstr "Accetta tutte le modifiche"
 
 #: lib/ui/stdtoolbars.inc:180
 msgid "Reject all changes"
-msgstr "Rigetta tutte le modifiche"
+msgstr "Rifiuta tutte le modifiche"
 
 #: lib/ui/stdtoolbars.inc:183
 msgid "Next note"
-msgstr "Prossima nota"
+msgstr "Nota successiva"
 
 #: lib/ui/stdtoolbars.inc:186
 msgid "View/Update"
@@ -9223,11 +9227,11 @@ msgstr "Aggiorna PDF (pdflatex)"
 
 #: lib/ui/stdtoolbars.inc:191
 msgid "View PostScript"
-msgstr "Mostra PostScript"
+msgstr "Mostra Postscript"
 
 #: lib/ui/stdtoolbars.inc:192
 msgid "Update PostScript"
-msgstr "Aggiorna PostScript"
+msgstr "Aggiorna Postscript"
 
 #: lib/ui/stdtoolbars.inc:195
 msgid "Math Panels"
@@ -9452,7 +9456,7 @@ msgstr "Senza linea\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:276
 msgid "Nice\t\\nicefrac"
-msgstr "Diagonale\t\\nicefrac"
+msgstr "Con linea diagonale\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:277
 msgid "Text frac (amsmath)\t\\tfrac"
@@ -9464,7 +9468,7 @@ msgstr "Stile display (amsmath)\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:279
 msgid "Binomial\t\\choose"
-msgstr "Coeff. binomiale\t\\choose"
+msgstr "Coefficiente binomiale\t\\choose"
 
 #: lib/ui/stdtoolbars.inc:283
 msgid "Roman\t\\mathrm"
@@ -9528,7 +9532,7 @@ msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:302
 msgid "Frame Decorations"
-msgstr "Decorazioni a cornice"
+msgstr "Decorazioni"
 
 #: lib/ui/stdtoolbars.inc:303
 msgid "hat"
@@ -10492,7 +10496,7 @@ msgstr "bigotimes"
 
 #: lib/ui/stdtoolbars.inc:556
 msgid "bigodot"
-msgstr ""
+msgstr "bigodot"
 
 #: lib/ui/stdtoolbars.inc:557
 msgid "bigoplus"
@@ -10816,7 +10820,7 @@ msgstr "geqq"
 
 #: lib/ui/stdtoolbars.inc:646
 msgid "leqslant"
-msgstr ""
+msgstr "leqslant"
 
 #: lib/ui/stdtoolbars.inc:647
 msgid "geqslant"
@@ -11116,7 +11120,7 @@ msgstr "gneq"
 
 #: lib/ui/stdtoolbars.inc:723
 msgid "lneqq"
-msgstr ""
+msgstr "lneqq"
 
 #: lib/ui/stdtoolbars.inc:724
 msgid "gneqq"
@@ -11220,7 +11224,7 @@ msgstr "nVDash"
 
 #: lib/ui/stdtoolbars.inc:749
 msgid "varsubsetneq"
-msgstr ""
+msgstr "varsubsetneq"
 
 #: lib/ui/stdtoolbars.inc:750
 msgid "varsupsetneq"
@@ -11371,8 +11375,8 @@ msgid "intercal"
 msgstr "intercal"
 
 #: lib/external_templates:37
-msgid "Immagine Raster"
-msgstr ""
+msgid "RasterImage"
+msgstr "Immagine Raster"
 
 #: lib/external_templates:40 lib/external_templates:46
 msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
@@ -11422,6 +11426,23 @@ msgid ""
 "that TeX will find it, and you will need\n"
 "to install the skak package from CTAN.\n"
 msgstr ""
+"Diagramma per il posizionamento degli scacchi.\n"
+"Questo modello usa XBoard per modificare gli schemi.\n"
+"Usare 'File->Save Position' in XBoard per\n"
+"salvare lo schema che si vuole realizzare.\n"
+"Assicurarsi di usare l'estensione '.fen'\n"
+"e ricordarsi di inserire un percorso relativo\n"
+"alla posizione del documento LyX.\n"
+"In XBoard, usare 'Edit->Edit Position' per\n"
+"abilitare la modifica generale della scacchiera.\n"
+"Potreste anche controllare l'opzione\n"
+"'Options->Test legality', e ricordare di\n"
+"cliccare coi tasti centrale e destro per\n"
+"per inserire nuovi pezzi nella scacchiera.\n"
+"Affinché tutto ciò funzioni, dovete copiare\n"
+"il file lyxskak.sty incluso in LyX in una\n"
+"cartella dove TeX lo possa trovare, oltre ad\n"
+"installare il pacchetto skak da CTAN.\n"
 
 #: lib/external_templates:199
 msgid "LilyPond"
@@ -11438,6 +11459,10 @@ msgid ""
 "Using .eps requires at least lilypond 2.6\n"
 "Using .pdf requires at least lilypond 2.9\n"
 msgstr ""
+"Spartito musicale generato da GNU LilyPond,\n"
+"convertito in .pdf o .eps per l'inclusione.\n"
+"L'uso di .eps richiede lilypond 2.6, come minimo.\n"
+"L'uso di .pdf richiede lilypond 2.9, come minimo.\n"
 
 #: lib/external_templates:251
 msgid ""
@@ -11943,7 +11968,7 @@ msgstr "Matematica (sfondo)"
 
 #: src/Color.cpp:298
 msgid "graphics background"
-msgstr "Grafici (sfondo)"
+msgstr "Immagine (sfondo)"
 
 #: src/Color.cpp:299
 msgid "Math macro background"
@@ -12260,7 +12285,7 @@ msgstr "Dritto"
 
 #: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:932
 msgid "Italic"
-msgstr "Italico"
+msgstr "Corsivo"
 
 #: src/Font.cpp:64 src/frontends/controllers/frontend_helpers.cpp:936
 msgid "Slanted"
@@ -12280,7 +12305,7 @@ msgstr "Riduci"
 
 #: src/Font.cpp:73
 msgid "Toggle"
-msgstr "Attiva/Disattiva"
+msgstr "Commuta"
 
 #: src/Font.cpp:513
 #, c-format
@@ -12527,12 +12552,12 @@ msgstr "Non è stato possibile creare la cartella. Esco."
 
 #: src/LyX.cpp:1303
 msgid "List of supported debug flags:"
-msgstr "Elenco delle opzioni di debug supportate:"
+msgstr "Elenco delle opzioni di verifica supportate:"
 
 #: src/LyX.cpp:1307
 #, c-format
 msgid "Setting debug level to %1$s"
-msgstr "Livello di debug impostato a %1$s"
+msgstr "Livello di verifica impostato a %1$s"
 
 #: src/LyX.cpp:1318
 msgid ""
@@ -12562,7 +12587,7 @@ msgstr ""
 "\t-sysdir dir        imposta come cartella di sistema quella indicata.\n"
 "\t-geometry WxH+X+Y  imposta la geometria della finestra principale.\n"
 "\t-dbg caratteristica[,caratteristica]...\n"
-"                  seleziona le caratteristiche da debuggare.\n"
+"                  seleziona le caratteristiche da verificare.\n"
 "                  Digita `lyx -dbg' per vedere un elenco di "
 "caratteristiche.\n"
 "\t-x [--execute] comando\n"
@@ -13251,10 +13276,13 @@ msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
+"Specifica la geometri della finestra principale in larghezza x altezza "
+"(se si specificano valori diversi da zero, non verranno usati i valori "
+"dell'ultima sessione)."
 
 #: src/LyXRC.cpp:2391
 msgid "Allow session manager to save and restore windows position."
-msgstr ""
+msgstr "Consente di salvare e ripristinare la posizione delle finestre."
 
 #: src/LyXRC.cpp:2395
 msgid ""
@@ -13277,7 +13305,7 @@ msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
-"LyX porrà le sue cartelle temporanee in questo percorso. Saranno tutte "
+"LyX creerà le sue cartelle temporanee in questo percorso. Saranno tutte "
 "eliminate quando chiuderete LyX."
 
 #: src/LyXRC.cpp:2414
@@ -13285,15 +13313,15 @@ msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
-"E' il percorso che LyX imposterà quando offrirà di scegliere un modello. Un "
-"valore vuoto seleziona la cartella da cui LyX fu avviato."
+"È il percorso che LyX imposta quando offre di scegliere un modello. Un "
+"valore vuoto seleziona la cartella da cui LyX è stato avviato."
 
 #: src/LyXRC.cpp:2424
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
-"E' il file UI (Interfaccia Utente). E' possibile specificare un percorso "
+"È il file UI (Interfaccia Utente). È possibile specificare un percorso "
 "assoluto oppure LyX cercherà nelle sue cartelle ui/ sia locali che globali."
 
 #: src/LyXRC.cpp:2437
@@ -13309,8 +13337,8 @@ msgstr ""
 #: src/LyXRC.cpp:2444
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
-"Specifica il comando carta al visualizzatore DVI (lascia vuoto o usa \"-paper"
-"\")."
+"Specifica il comando carta al visualizzatore DVI (lasciare vuoto oppure "
+"usare \"-paper\")."
 
 #: src/LyXVC.cpp:100
 msgid "Document not saved"
@@ -13344,14 +13372,14 @@ msgid ""
 "\n"
 "Do you want to revert to the saved version?"
 msgstr ""
-"Tornare alla versione salvata del documento %1$s comporta la perdita di "
+"Ripristinare la versione salvata del documento %1$s comporta la perdita di "
 "tutte le modifiche correnti.\n"
 "\n"
-"Vuoi tornare alla versione salvata?"
+"Vuoi ripristinare la versione salvata?"
 
 #: src/LyXVC.cpp:174
 msgid "Revert to stored version of document?"
-msgstr "Torno alla versione salvata del documento?"
+msgstr "Ripristino la versione salvata del documento?"
 
 #: src/MenuBackend.cpp:476
 msgid "No Documents Open!"
@@ -13364,11 +13392,11 @@ msgstr "Nessun documento aperto!"
 
 #: src/MenuBackend.cpp:543
 msgid "Plain Text"
-msgstr "Tasto semplice"
+msgstr "Tasto semplice, per linee"
 
 #: src/MenuBackend.cpp:545
 msgid "Plain Text, Join Lines"
-msgstr "Testo semplice, linee unite"
+msgstr "Testo semplice, per paragrafi"
 
 #: src/MenuBackend.cpp:721
 msgid "Master Document"
@@ -13388,7 +13416,7 @@ msgstr "Nessun indice generale"
 
 #: src/MenuBackend.cpp:810
 msgid " (auto)"
-msgstr ""
+msgstr " (auto)"
 
 #: src/MenuBackend.cpp:829
 msgid "No Branch in Document!"
@@ -13464,11 +13492,11 @@ msgstr ""
 
 #: src/Text.cpp:1822
 msgid "[Change Tracking] "
-msgstr "[Cambia Tracciamento] "
+msgstr "[Tracciamento modifiche] "
 
 #: src/Text.cpp:1828
 msgid "Change: "
-msgstr "Cambia: "
+msgstr "Modifica: "
 
 #: src/Text.cpp:1832
 msgid " at "
@@ -13567,7 +13595,7 @@ msgid ""
 "\n"
 "%1$s."
 msgstr ""
-"Aiksaurus ha ritornato il seguente error:\n"
+"Aiksaurus ha ritornato il seguente errore:\n"
 "\n"
 "%1$s."
 
@@ -13604,7 +13632,7 @@ msgid ""
 msgstr ""
 "Il documento specificato\n"
 "%1$s\n"
-"potrebbe non essere letto."
+"non ha potuto essere letto."
 
 #: src/buffer_funcs.cpp:83
 msgid "Could not read document"
@@ -13678,7 +13706,7 @@ msgid ""
 msgstr ""
 "Il documento %1$s è già stato caricato.\n"
 "\n"
-"Vuoi tornare alla versione salvata?"
+"Vuoi ripristinare la versione salvata?"
 
 #: src/buffer_funcs.cpp:193
 msgid "&Switch to document"
@@ -13712,7 +13740,7 @@ msgid ""
 msgstr ""
 "Il modello specificato di documento\n"
 "%1$s\n"
-"non può essere letto."
+"non ha potuto essere letto."
 
 #: src/buffer_funcs.cpp:245
 msgid "Could not read template"
@@ -13806,7 +13834,7 @@ msgstr "Non riesco ad aprire il file"
 
 #: src/callback.cpp:420
 msgid "Reading not UTF-8 encoded file"
-msgstr ""
+msgstr "Lettura di un file non codificato UTF-8"
 
 #: src/callback.cpp:421
 msgid ""
@@ -13816,6 +13844,11 @@ msgid ""
 "then please change the encoding of the file\n"
 "to UTF-8 with a program other than LyX.\n"
 msgstr ""
+"Il file non è codificato in UTF-8.\n"
+"Verrà letto come se fosse in codifica locale a 8 bit.\n"
+"Se ciò non dovesse produrre il risultato corretto,\n"
+"siete pregati di cambiare la codifica del file in\n"
+"UTF-8 usando un programma esterno a LyX.\n"
 
 #: src/callback.cpp:438
 msgid "Running configure..."
@@ -13836,29 +13869,29 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 "Il sistema è stato riconfigurato.\n"
-"Devi riavviare LyX per poter usare ogni\n"
+"Occorre riavviare LyX per poter usare ogni\n"
 "specifica aggiornata della classe del documento."
 
 #: src/client/debug.cpp:44 src/debug.cpp:44
 msgid "No debugging message"
-msgstr "Nessun messaggio di correzione"
+msgstr "Nessun messaggio di verifica"
 
 #: src/client/debug.cpp:45 src/debug.cpp:45
 msgid "General information"
-msgstr "Informazione generale"
+msgstr "Informazioni generali"
 
 #: src/client/debug.cpp:46 src/debug.cpp:70
 msgid "Developers' general debug messages"
-msgstr "Messaggi di debug generale degli sviluppatori"
+msgstr "Messaggi di verifica generale degli sviluppatori"
 
 #: src/client/debug.cpp:47 src/debug.cpp:71
 msgid "All debugging messages"
-msgstr "Tutti i messaggi di correzione"
+msgstr "Tutti i messaggi di verifica"
 
 #: src/client/debug.cpp:91 src/debug.cpp:115
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
-msgstr "Sto correggendo `%1$s' (%2$s)"
+msgstr "Sto verificando `%1$s' (%2$s)"
 
 #: src/debug.cpp:46
 msgid "Program initialisation"
@@ -13898,7 +13931,7 @@ msgstr "Gestione caratteri"
 
 #: src/debug.cpp:55
 msgid "Textclass files reading"
-msgstr "So leggendo i file delle classi di testo"
+msgstr "Sto leggendo i file delle classi di testo"
 
 #: src/debug.cpp:56
 msgid "Version control"
@@ -13910,7 +13943,7 @@ msgstr "Interfaccia esterna di controllo"
 
 #: src/debug.cpp:58
 msgid "Keep *roff temporary files"
-msgstr "Conserva file temporanei tipo *roff"
+msgstr "Conserva i file temporanei tipo *roff"
 
 #: src/debug.cpp:59
 msgid "User commands"
@@ -13918,7 +13951,7 @@ msgstr "Comandi utente"
 
 #: src/debug.cpp:60
 msgid "The LyX Lexxer"
-msgstr "E' il Lexxer di LyX"
+msgstr "Il Lexxer di LyX"
 
 #: src/debug.cpp:61
 msgid "Dependency information"
@@ -13926,7 +13959,7 @@ msgstr "Informazioni sulle dipendenze"
 
 #: src/debug.cpp:62
 msgid "LyX Insets"
-msgstr "Aggiunte di LyX"
+msgstr "Inserti di LyX"
 
 #: src/debug.cpp:63
 msgid "Files used by LyX"
@@ -13942,15 +13975,15 @@ msgstr "Messaggi Insettext/tabulari"
 
 #: src/debug.cpp:66
 msgid "Graphics conversion and loading"
-msgstr "Conversione grafici e caricamento"
+msgstr "Conversione grafica e caricamento"
 
 #: src/debug.cpp:67
 msgid "Change tracking"
-msgstr "Modifica tracciamento"
+msgstr "Tracciamento modifiche"
 
 #: src/debug.cpp:68
 msgid "External template/inset messages"
-msgstr "Modello esterno/inserisci messaggi"
+msgstr "Messaggi modello esterno/inserto"
 
 #: src/debug.cpp:69
 msgid "RowPainter profiling"
@@ -14238,7 +14271,7 @@ msgstr "Stampa su file"
 
 #: src/frontends/controllers/ControlPrint.cpp:74
 msgid "PostScript files (*.ps)"
-msgstr "File PostScript (*.ps)"
+msgstr "File Postscript (*.ps)"
 
 #: src/frontends/controllers/ControlSpellchecker.cpp:117
 msgid "Spellchecker error"
@@ -14422,7 +14455,7 @@ msgstr "Sorgente LaTeX"
 
 #: src/frontends/qt4/Dialogs.cpp:311 src/frontends/qt4/Dialogs.cpp:314
 msgid "Outline"
-msgstr "Profilo del documento"
+msgstr "Profilo"
 
 #: src/frontends/qt4/FileDialog.cpp:169
 msgid "Directories"
@@ -14511,7 +14544,7 @@ msgid ""
 "Change by %1$s\n"
 "\n"
 msgstr ""
-"Modificato da %1$s\n"
+"Autore della modifica: %1$s\n"
 "\n"
 
 #: src/frontends/qt4/QChanges.cpp:109
@@ -14533,19 +14566,19 @@ msgstr "Comando successivo"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:46
 msgid "big[[delimiter size]]"
-msgstr "big"
+msgstr "Fissa (big)"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:46
 msgid "Big[[delimiter size]]"
-msgstr "Big"
+msgstr "Fissa (Big)"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:47
 msgid "bigg[[delimiter size]]"
-msgstr "bigg"
+msgstr "Fissa (bigg)"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:47
 msgid "Bigg[[delimiter size]]"
-msgstr "Bigg"
+msgstr "Fissa (Bigg)"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:69
 msgid "Math Delimiter"
@@ -14815,7 +14848,7 @@ msgstr "Materiale esterno"
 
 #: src/frontends/qt4/QExternal.cpp:556
 msgid "Scale%"
-msgstr "Riscala %"
+msgstr "Scala %"
 
 #: src/frontends/qt4/QFloat.cpp:31
 msgid "Float Settings"
@@ -14823,7 +14856,7 @@ msgstr "Impostazioni oggetti mobili"
 
 #: src/frontends/qt4/QGraphics.cpp:62 src/frontends/qt4/QPrefs.cpp:641
 msgid "Graphics"
-msgstr "Grafici"
+msgstr "Grafica"
 
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
@@ -15001,7 +15034,7 @@ msgstr "Stampa documento"
 
 #: src/frontends/qt4/QRef.cpp:189
 msgid "Cross-reference"
-msgstr "Riferimento incrociato"
+msgstr "Riferimento"
 
 #: src/frontends/qt4/QRef.cpp:285
 msgid "&Go Back"
@@ -15045,7 +15078,7 @@ msgstr "Impostazioni spazio verticale"
 
 #: src/frontends/qt4/QWrap.cpp:83
 msgid "Text Wrap Settings"
-msgstr "Impostazioni testo a contorno"
+msgstr "Impostazioni figura immersa nel testo"
 
 #: src/frontends/qt4/Validator.cpp:153
 msgid "space"
@@ -15160,7 +15193,7 @@ msgstr "È stato aperto l'inserto Didascalia"
 
 #: src/insets/InsetCaption.cpp:298
 msgid "Senseless!!! "
-msgstr "Insensato!!! "
+msgstr "Non ha senso!!! "
 
 #: src/insets/InsetCharStyle.cpp:122
 msgid "Opened CharStyle Inset"
@@ -15588,16 +15621,15 @@ msgstr "Spazio verticale"
 
 #: src/insets/InsetWrap.cpp:48
 msgid "wrap: "
-msgstr "rientro: "
+msgstr "immerso: "
 
 #: src/insets/InsetWrap.cpp:176
 msgid "Opened Wrap Inset"
-msgstr "E' stato aperto l'inserto Rientro"
+msgstr "È stato aperto l'inserto figura immersa nel testo"
 
 #: src/insets/InsetWrap.cpp:196
-#, fuzzy
 msgid "wrap"
-msgstr "rientro: "
+msgstr "immerso"
 
 #: src/insets/RenderGraphic.cpp:90 src/insets/RenderGraphic.cpp:94
 msgid "Not shown."
@@ -15694,27 +15726,27 @@ msgstr "em"
 
 #: src/lengthcommon.cpp:39
 msgid "Text Width %"
-msgstr "Larghezza testo %"
+msgstr "Larghezza Testo %"
 
 #: src/lengthcommon.cpp:39
 msgid "Column Width %"
-msgstr "Larghezza colonna %"
+msgstr "Larghezza Colonna %"
 
 #: src/lengthcommon.cpp:39
 msgid "Page Width %"
-msgstr "Larghezza pagina %"
+msgstr "Larghezza Pagina %"
 
 #: src/lengthcommon.cpp:39
 msgid "Line Width %"
-msgstr "Larghezza linea %"
+msgstr "Larghezza Riga %"
 
 #: src/lengthcommon.cpp:40
 msgid "Text Height %"
-msgstr "Altezza testo %"
+msgstr "Altezza Testo %"
 
 #: src/lengthcommon.cpp:40
 msgid "Page Height %"
-msgstr "Altezza pagina %"
+msgstr "Altezza Pagina %"
 
 #: src/lyxfind.cpp:143
 msgid "Search error"
@@ -16019,7 +16051,7 @@ msgstr "Utente sconosciuto"
 #~ msgstr "Listati"
 
 #~ msgid "Toggle Table of Contents"
-#~ msgstr "(Dis)Attiva Indice generale"
+#~ msgstr "Commuta Indice generale"
 
 #~ msgid "Toc"
 #~ msgstr "Toc"
