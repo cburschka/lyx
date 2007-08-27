@@ -189,11 +189,8 @@ opts.AddOptions(
     PathOption('extra_inc_path1', 'Extra include path', None),
     #
     PathOption('extra_lib_path1', 'Extra library path', None),
-    # rebuild only specifed, comma separated targets
-    ('rebuild', '''rebuild only specifed, comma separated targets.
-        yes or all (default): rebuild everything
-        no or none: rebuild nothing (usually used for installation)
-        comp1,comp2,...: rebuild specified targets''', None),
+    #
+    ('rebuild', 'Obsolete option', None),
     # can be set to a non-existing directory
     ('prefix', 'install architecture-independent files in PREFIX', default_prefix),
     # replace the default name and location of the windows installer
@@ -1473,17 +1470,6 @@ frontend_env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
 
 print "Building all targets recursively"
 
-if env.has_key('rebuild'):
-    rebuild_targets = env['rebuild'].split(',')
-    if 'none' in rebuild_targets or 'no' in rebuild_targets:
-        rebuild_targets = []
-    elif 'all' in rebuild_targets or 'yes' in rebuild_targets:
-        # None: let scons decide which components to build
-        # Forcing all components to be rebuilt is in theory not necessary
-        rebuild_targets = None    
-else:
-    rebuild_targets = None
-
 def libExists(libname):
     ''' Check whether or not lib $LOCALLIBNAME/libname already exists'''
     return os.path.isfile(File(env.subst('$LOCALLIBPATH/${LIBPREFIX}%s$LIBSUFFIX'%libname)).abspath)
@@ -1517,43 +1503,6 @@ build_po = 'po' in targets or build_install or 'all' in targets
 build_qt4 = (build_lyx and frontend == 'qt4') or 'qt4' in targets
 build_msvs_projects = use_vc and 'msvs_projects' in targets
 
-
-# now, if rebuild_targets is specified, do not rebuild some targets
-if rebuild_targets is not None:
-    #
-    def ifBuildLib(name, libname, old_value):
-        # explicitly asked to rebuild
-        if name in rebuild_targets:
-            return True
-        # else if not rebuild, and if the library already exists
-        elif libExists(libname):
-            return False
-        # do not change the original value
-        else:
-            return old_value
-    build_boost = ifBuildLib('boost', 'included_boost_filesystem', build_boost)
-    build_intl = ifBuildLib('intl', 'included_intl', build_intl)
-    build_support = ifBuildLib('support', 'support', build_support)
-    build_mathed = ifBuildLib('mathed', 'mathed', build_mathed)
-    build_insets = ifBuildLib('insets', 'insets', build_insets)
-    build_frontends = ifBuildLib('frontends', 'frontends', build_frontends)
-    build_graphics = ifBuildLib('graphics', 'graphics', build_graphics)
-    build_controllers = ifBuildLib('controllers', 'controllers', build_controllers)
-    build_lyxbase = ifBuildLib('lyxbase', 'lyxbase_pre', build_lyxbase)
-    build_qt4 = ifBuildLib('qt4', 'qt4', build_qt4)
-    #
-    def ifBuildApp(name, appname, old_value):
-        # explicitly asked to rebuild
-        if name in rebuild_targets:
-            return True
-        # else if not rebuild, and if the library already exists
-        elif appExists(name, appname):
-            return False
-        # do not change the original value
-        else:
-            return old_value
-    build_tex2lyx = ifBuildApp('tex2lyx', 'tex2lyx', build_tex2lyx)
-    build_client = ifBuildApp('client', 'lyxclient', build_client)
 
 # sync frontend and frontend (?)
 if build_qt4:
@@ -1877,23 +1826,19 @@ else:
 
 if build_msvs_projects:
     def build_project(target, full_target = None,
-        src = [], inc = [], res = [], rebuildTargetOnly = True):
+        src = [], inc = [], res = []):
         ''' build mavs project files
             target:      alias (correspond to directory name)
             full_target: full path/filename of the target
             src:         source files
             inc:         include files
             res:         resource files
-            rebuildTargetOnly:     whether or not only rebuild this target
 
         For non-debug-able targets like static libraries, target (alias) is
         enough to build the target. For executable targets, msvs need to know
         the full path to start debug them.
         '''
-        if rebuildTargetOnly:
-            cmds = 'rebuild='+target
-        else:
-            cmds = ''
+        cmds = ''
         if full_target is None:
             build_target = target
         else:
@@ -1914,12 +1859,10 @@ if build_msvs_projects:
     #
     build_project('client', src = ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_files],
         inc = ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_header_files],
-        rebuildTargetOnly = False,
         full_target = File(env.subst('$BUILDDIR/src/client/lyxclient$PROGSUFFIX')).abspath)
     #
     build_project('tex2lyx', src = ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files],
         inc = ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files],
-        rebuildTargetOnly = False,
         full_target = File(env.subst('$BUILDDIR/src/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
     #
     build_project('lyx', 
@@ -1940,7 +1883,6 @@ if build_msvs_projects:
             ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files] + \
             ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files],
         res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
-        rebuildTargetOnly = False,
         full_target = File(env.subst('$BUILDDIR/lyx$PROGSUFFIX')).abspath)
 
 
