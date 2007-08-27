@@ -61,8 +61,6 @@ public:
 	// Update the counters of this inset and of its contents
 	virtual void updateLabels(Buffer const &, ParIterator const &);
 	///
-	virtual bool wide() const { return false; }
-	///
 	int latex(Buffer const & buf, odocstream & os,
 		  OutputParams const &) const;
 	///

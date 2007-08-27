@@ -202,7 +202,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		int const a = tm.ascent() + border_;
 		int const h = a + tm.descent() + border_;
 		pi.pain.rectangle(x, y - a,
-				  ((wide() || hasFixedWidth()) ? tm.maxWidth() : w),
+				  (hasFixedWidth() ? tm.maxWidth() : w),
 				  h, frameColor());
 	}
 }
@@ -216,21 +216,9 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 	int const a = tm.ascent() + border_;
 	int const h = a + tm.descent() + border_;
 	pi.pain.fillRectangle(x, y - a,
-			      ((wide() || hasFixedWidth()) ? tm.maxWidth() : w),
+			      (hasFixedWidth() ? tm.maxWidth() : w),
 			      h, backgroundColor());
 	text_.drawSelection(pi, x + border_, y);
-}
-
-
-bool InsetText::covers(BufferView const & bv, int x, int y) const
-{
-	TextMetrics const & tm = bv.textMetrics(&text_);
-
-	return bv.coordCache().getInsets().has(this)
-			&& x >= xo(bv)
-			&& x <= xo(bv) + width() + (wide() ? tm.maxWidth() : 0)
-			&& y >= yo(bv) - ascent()
-			&& y <= yo(bv) + descent();
 }
 
 
@@ -344,14 +332,6 @@ void InsetText::validate(LaTeXFeatures & features) const
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 bind(&Paragraph::validate, _1, ref(features)));
 }
-
-
-bool InsetText::notifyCursorLeaves(Cursor & cur)
-{ 
-	if (wide()) 
-		cur.updateFlags(cur.disp_.update() | Update::Force); 
-	return false; 
-} 
 
 
 void InsetText::cursorPos(BufferView const & bv,
