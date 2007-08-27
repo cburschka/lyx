@@ -915,9 +915,11 @@ void paintPar
 			pi.pain.setDrawingEnabled(inside);
 			RowPainter rp(pi, text, pit, *rit, bidi, x, y);
 			// Clear background of this row
-			pi.pain.fillRectangle(x, y - rit->ascent(),
-				tm.width(), rit->height(),
-				text.backgroundColor());
+			// (if paragraph background was not cleared)
+			if (!repaintAll && row_has_changed)
+				pi.pain.fillRectangle(x, y - rit->ascent(),
+					tm.width(), rit->height(),
+					text.backgroundColor());
 
 			// Instrumentation for testing row cache (see also
 			// 12 lines lower):
