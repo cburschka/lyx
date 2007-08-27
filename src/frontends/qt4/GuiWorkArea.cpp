@@ -490,7 +490,7 @@ void GuiWorkArea::updateScreen()
 {
 	QLPainter pain(&screen_);
 	verticalScrollBar()->show();
-	paintText(*buffer_view_, pain);
+	buffer_view_->draw(pain);
 }
 
 
@@ -559,7 +559,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	QLPainter pain(&screen_);
 	buffer_view_->updateMetrics(false);
-	paintText(*buffer_view_, pain);
+	buffer_view_->draw(pain);
 	Font font = buffer_view_->cursor().getFont();
 	FontMetrics const & fm = theFontMetrics(font);
 	int height = fm.maxHeight();

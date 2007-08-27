@@ -950,49 +950,4 @@ void paintPar
 	LYXERR(Debug::PAINTING) << "." << endl;
 }
 
-
-void paintText(BufferView & bv,
-	       Painter & pain)
-{
-	Buffer const & buffer = bv.buffer();
-	Text & text = buffer.text();
-	bool const select = bv.cursor().selection();
-	ViewMetricsInfo const & vi = bv.viewMetricsInfo();
-
-	PainterInfo pi(const_cast<BufferView *>(&bv), pain);
-	// Should the whole screen, including insets, be refreshed?
-	// FIXME: We should also distinguish DecorationUpdate to avoid text
-	// drawing if possible. This is not possible to do easily right now
-	// because of the single backing pixmap.
-	bool repaintAll = select || vi.update_strategy != SingleParUpdate;
-
-	if (repaintAll) {
-		// Clear background (if not delegated to rows)
-		pain.fillRectangle(0, vi.y1, bv.workWidth(), vi.y2 - vi.y1,
-			text.backgroundColor());
-	}
-	if (select) {
-		text.drawSelection(pi, 0, 0);
-	}
-
-	int yy = vi.y1;
-	// draw contents
-	for (pit_type pit = vi.p1; pit <= vi.p2; ++pit) {
-		ParagraphMetrics const & pm = bv.parMetrics(&text, pit);
-		yy += pm.ascent();
-		paintPar(pi, text, pit, 0, yy, repaintAll);
-		yy += pm.descent();
-	}
-
-	// and grey out above (should not happen later)
-//	lyxerr << "par ascent: " << text.getPar(vi.p1).ascent() << endl;
-	if (vi.y1 > 0 && vi.update_strategy == FullScreenUpdate)
-		pain.fillRectangle(0, 0, bv.workWidth(), vi.y1, Color::bottomarea);
-
-	// and possibly grey out below
-//	lyxerr << "par descent: " << text.getPar(vi.p1).ascent() << endl;
-	if (vi.y2 < bv.workHeight() && vi.update_strategy == FullScreenUpdate)
-		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, Color::bottomarea);
-}
-
 } // namespace lyx

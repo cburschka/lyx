@@ -21,6 +21,7 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "bufferview_funcs.h"
+#include "callback.h" // added for Dispatch functions
 #include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -35,25 +36,25 @@
 #include "InsetIterator.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "callback.h" // added for Dispatch functions
 #include "LyX.h"
 #include "lyxfind.h"
 #include "LyXFunc.h"
 #include "Layout.h"
-#include "Text.h"
-#include "TextClass.h"
 #include "LyXRC.h"
-#include "Session.h"
+#include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
+#include "rowpainter.h"
+#include "Session.h"
 #include "TexRow.h"
+#include "Text.h"
+#include "TextClass.h"
 #include "toc.h"
 #include "Undo.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"
-#include "MetricsInfo.h"
 
 #include "insets/InsetBibtex.h"
 #include "insets/InsetCommand.h" // ChangeRefs
@@ -63,6 +64,7 @@
 #include "frontends/alert.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontMetrics.h"
+#include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
 #include "graphics/Previews.h"
@@ -1085,7 +1087,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 			//metrics_info_.y1 = ymin of button;
 			//metrics_info_.y2 = ymax of button;
 			//
-			// Unfortunately, rowpainter.cpp:paintText() does not distinguish
+			// Unfortunately, BufferView::draw() does not distinguish
 			// between background updates and text updates. So we use the hammer
 			// solution for now. We could also avoid the updateMetrics() below
 			// by using the first and last pit of the CoordCache. Have a look
@@ -1525,6 +1527,51 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 	message(bformat(res, disp_fn));
 	buffer_.errors("Parse");
 	updateMetrics(false);
+}
+
+
+void BufferView::draw(frontend::Painter & pain)
+{
+	Text & text = buffer_.text();
+	bool const select = cursor_.selection();
+
+	PainterInfo pi(this, pain);
+	// Should the whole screen, including insets, be refreshed?
+	// FIXME: We should also distinguish DecorationUpdate to avoid text
+	// drawing if possible. This is not possible to do easily right now
+	// because of the single backing pixmap.
+	bool repaintAll = select 
+		|| metrics_info_.update_strategy != SingleParUpdate;
+
+	if (repaintAll)
+		// Clear background (if not delegated to rows)
+		pain.fillRectangle(0, metrics_info_.y1, width_,
+			metrics_info_.y2 - metrics_info_.y1, text.backgroundColor());
+
+	if (select)
+		text.drawSelection(pi, 0, 0);
+
+	int yy = metrics_info_.y1;
+	// draw contents
+	for (pit_type pit = metrics_info_.p1; pit <= metrics_info_.p2; ++pit) {
+		ParagraphMetrics const & pm = parMetrics(&text, pit);
+		yy += pm.ascent();
+		paintPar(pi, text, pit, 0, yy, repaintAll);
+		yy += pm.descent();
+	}
+
+	// and grey out above (should not happen later)
+//	lyxerr << "par ascent: " << text.getPar(metrics_info_.p1).ascent() << endl;
+	if (metrics_info_.y1 > 0 
+		&& metrics_info_.update_strategy == FullScreenUpdate)
+		pain.fillRectangle(0, 0, width_, metrics_info_.y1, Color::bottomarea);
+
+	// and possibly grey out below
+//	lyxerr << "par descent: " << text.getPar(metrics_info_.p1).ascent() << endl;
+	if (metrics_info_.y2 < height_ 
+		&& metrics_info_.update_strategy == FullScreenUpdate)
+		pain.fillRectangle(0, metrics_info_.y2, width_,
+			height_ - metrics_info_.y2, Color::bottomarea);
 }
 
 } // namespace lyx

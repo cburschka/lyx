@@ -25,9 +25,6 @@ class ViewMetricsInfo;
 
 namespace frontend { class Painter; }
 
-/// paint visible paragraph of main text
-void paintText(BufferView & bv, frontend::Painter & painter);
-
 /// paint paragraph.
 void paintPar
 	(PainterInfo & pi, Text const & text, pit_type pit, int x, int y,

@@ -35,6 +35,8 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+namespace frontend { class Painter; }
+
 class Buffer;
 class Change;
 class DocIterator;
@@ -211,6 +213,10 @@ public:
 	CoordCache const & coordCache() const {
 		return coord_cache_;
 	}
+
+	///
+	void draw(frontend::Painter & pain);
+
 	/// get this view's keyboard map handler.
 	Intl & getIntl() { return *intl_.get(); }
 	///
