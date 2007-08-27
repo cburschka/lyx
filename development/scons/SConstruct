@@ -36,10 +36,6 @@ import scons_utils as utils
 # import all file lists
 from scons_manifest import *
 
-#----------------------------------------------------------
-# Required runtime environment
-#----------------------------------------------------------
-
 # scons asks for 1.5.2, lyx requires 2.3
 EnsurePythonVersion(2, 3)
 # Please use at least 0.96.92 (not 0.96.1)
@@ -426,13 +422,6 @@ CCFLAGS_required = []
 LINKFLAGS_required = []
 CCFLAGS_default = []
 
-# under windows, scons is confused by .C/.c and uses gcc instead of
-# g++. I am forcing the use of g++ here. This is expected to change
-# after lyx renames all .C files to .cpp
-#
-# save the old c compiler and CCFLAGS (used by libintl)
-C_COMPILER = env.subst('$CC')
-C_CCFLAGS = env.subst('$CCFLAGS').split()
 # if we use ms vc, the commands are fine (cl.exe and link.exe)
 if use_vc:
     # C4819: The file contains a character that cannot be represented
@@ -1407,8 +1396,6 @@ if frontend == 'qt4':
 #
 # Report results
 #
-
-
 print env['VERSION_INFO']
 
 #
@@ -1434,7 +1421,6 @@ if logfile != '' or platform_name == 'win32':
 #
 # -h will print out help info
 Help(opts.GenerateHelpText(env))
-
 
 
 #----------------------------------------------------------
@@ -1503,10 +1489,6 @@ if (included_gettext and not libExists('included_intl')) or 'intl' in BUILD_TARG
     )
     Alias('intl', intl)
 
-
-#
-# Now, src code under src/
-#
 #
 # src/support
 #
@@ -2068,8 +2050,6 @@ if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
         postinstall_path = os.path.join(dest_dir, 'etc', 'postinstall')
         env.Install(postinstall_path, tmp_script)
         Alias('install', postinstall_path)
-
-
     # man
     env.InstallAs(os.path.join(man_dest_dir, 'lyx' + version_suffix + '.1'),
         env.subst('$TOP_SRCDIR/lyx.man'))
