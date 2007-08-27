@@ -756,7 +756,7 @@ if platform_name == 'win32' and mode == 'debug' and use_vc:
     aspell_lib = 'aspelld'
 
 # check the existence of config.h
-config_h = os.path.join(env.Dir('$BUILDDIR/common').path, 'config.h')
+config_h = os.path.join(env.Dir('$BUILDDIR/src').path, 'config.h')
 boost_config_h = os.path.join(env.Dir('$BUILDDIR/boost').path, 'config.h')
 #
 print "Creating %s..." % boost_config_h
@@ -1281,10 +1281,10 @@ if env['X11']:
 
 #
 # boost: for boost header files
-# BUILDDIR/common: for config.h
+# BUILDDIR/src: for config.h
 # TOP_SRCDIR/src: for support/* etc
 #
-env['CPPPATH'] += ['$BUILDDIR/common', '$TOP_SRCDIR/src']
+env['CPPPATH'] += ['$BUILDDIR/src', '$TOP_SRCDIR/src']
 #
 # Separating boost directories from CPPPATH stops scons from building
 # the dependency tree for boost header files, and effectively reduce
@@ -1467,6 +1467,9 @@ Help(opts.GenerateHelpText(env))
 env.SConsignFile(os.path.join(Dir(env['BUILDDIR']).abspath, '.sconsign'))
 # this usage needs further investigation.
 #env.CacheDir('%s/Cache/%s' % (env['BUILDDIR'], frontend))
+env.BuildDir('$BUILDDIR/boost', '$TOP_SRCDIR/boost/libs', duplicate = 0)
+env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
+frontend_env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
 
 print "Building all targets recursively"
 
@@ -1487,7 +1490,7 @@ def libExists(libname):
 
 def appExists(apppath, appname):
     ''' Check whether or not application already exists'''
-    return os.path.isfile(File(env.subst('$BUILDDIR/common/%s/${PROGPREFIX}%s$PROGSUFFIX' % (apppath, appname))).abspath)
+    return os.path.isfile(File(env.subst('$BUILDDIR/src/%s/${PROGPREFIX}%s$PROGSUFFIX' % (apppath, appname))).abspath)
 
 targets = BUILD_TARGETS
 build_install = 'install' in targets or 'installer' in targets
@@ -1562,7 +1565,6 @@ if build_boost:
     # boost libraries
     #
     # special builddir
-    env.BuildDir('$BUILDDIR/boost', '$TOP_SRCDIR/boost/libs', duplicate = 0)
 
     boostenv = env.Copy()
     #
@@ -1588,7 +1590,6 @@ if build_intl:
 
     print "Processing files in intl..."
 
-    env.BuildDir('$BUILDDIR/intl', '$TOP_SRCDIR/intl', duplicate = 0)
 
     # we need the original C compiler for these files
     intlenv['CC'] = C_COMPILER
@@ -1625,7 +1626,6 @@ if build_intl:
 #
 # Now, src code under src/
 #
-env.BuildDir('$BUILDDIR/common', '$TOP_SRCDIR/src', duplicate = 0)
 
 
 if build_support:
@@ -1634,14 +1634,14 @@ if build_support:
     #
     print "Processing files in src/support..."
 
-    frontend_env.Depends('$BUILDDIR/common/support/Package.cpp', '$BUILDDIR/common/config.h')
-    Package_cpp = env.substFile('$BUILDDIR/common/support/Package.cpp', '$TOP_SRCDIR/src/support/Package.cpp.in')
+    frontend_env.Depends('$BUILDDIR/src/support/Package.cpp', '$BUILDDIR/src/config.h')
+    Package_cpp = env.substFile('$BUILDDIR/src/support/Package.cpp', '$TOP_SRCDIR/src/support/Package.cpp.in')
 
     support = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
-        source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files] + Package_cpp + \
-            ['$BUILDDIR/common/support/minizip/%s' % x for x in src_support_minizip_files] + \
-            ['$BUILDDIR/common/support/minizip/%s' % x for x in src_support_minizip_windows_files if platform_name == 'win32'],
+        source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files] + Package_cpp + \
+            ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_files] + \
+            ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_windows_files if platform_name == 'win32'],
         CCFLAGS =  [
             '$CCFLAGS',
             '-DHAVE_CONFIG_H',
@@ -1663,7 +1663,7 @@ if build_mathed:
     #
     mathed = env.StaticLibrary(
         target = '$LOCALLIBPATH/mathed',
-        source = ['$BUILDDIR/common/mathed/%s' % x for x in src_mathed_files]
+        source = ['$BUILDDIR/src/mathed/%s' % x for x in src_mathed_files]
     )
     Alias('mathed', mathed)
 
@@ -1676,7 +1676,7 @@ if build_insets:
     #
     insets = env.StaticLibrary(
         target = '$LOCALLIBPATH/insets',
-        source = ['$BUILDDIR/common/insets/%s' % x for x in src_insets_files]
+        source = ['$BUILDDIR/src/insets/%s' % x for x in src_insets_files]
     )
     Alias('insets', insets)
 
@@ -1689,7 +1689,7 @@ if build_frontends:
 
     frontends = env.StaticLibrary(
         target = '$LOCALLIBPATH/frontends',
-        source = ['$BUILDDIR/common/frontends/%s' % x for x in src_frontends_files]
+        source = ['$BUILDDIR/src/frontends/%s' % x for x in src_frontends_files]
     )
     Alias('frontends', frontends)
 
@@ -1702,7 +1702,7 @@ if build_graphics:
 
     graphics = env.StaticLibrary(
         target = '$LOCALLIBPATH/graphics',
-        source = ['$BUILDDIR/common/graphics/%s' % x for x in src_graphics_files]
+        source = ['$BUILDDIR/src/graphics/%s' % x for x in src_graphics_files]
     )
     Alias('graphics', graphics)
 
@@ -1715,7 +1715,7 @@ if build_controllers:
 
     controllers = env.StaticLibrary(
         target = '$LOCALLIBPATH/controllers',
-        source = ['$BUILDDIR/common/frontends/controllers/%s' % x for x in src_frontends_controllers_files]
+        source = ['$BUILDDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files]
     )
     Alias('controllers', controllers)
 
@@ -1723,7 +1723,6 @@ if build_controllers:
 # src/frontend/qt4
 #
 if build_qt4:
-    env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRCDIR/src/frontend/$frontend', duplicate = 0)
 
     print "Processing files in src/frontends/qt4..."
     frontend_env['QT4_MOCHPREFIX'] = ''
@@ -1731,9 +1730,9 @@ if build_qt4:
 
     # tells scons how to get these moced files, although not all moced files are needed
     # (or are actually generated).
-    qt4_moced_files = [frontend_env.Moc4('$BUILDDIR/common/frontends/qt4/%s' % x)
+    qt4_moced_files = [frontend_env.Moc4('$BUILDDIR/src/frontends/qt4/%s' % x)
         for x in src_frontends_qt4_header_files ]
-    resources = [frontend_env.Uic4('$BUILDDIR/common/frontends/qt4/ui/%s' % x.split('.')[0])
+    resources = [frontend_env.Uic4('$BUILDDIR/src/frontends/qt4/ui/%s' % x.split('.')[0])
         for x in src_frontends_qt4_ui_files]
 
     #
@@ -1741,15 +1740,15 @@ if build_qt4:
     #
     qt4 = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/qt4',
-        source = ['$BUILDDIR/common/frontends/qt4/%s' % x for x in src_frontends_qt4_files],
+        source = ['$BUILDDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files],
         CPPPATH = [
             '$CPPPATH',
-            '$BUILDDIR/common',
-            '$BUILDDIR/common/images',
-            '$BUILDDIR/common/frontends',
-            '$BUILDDIR/common/frontends/qt4',
-            '$BUILDDIR/common/frontends/qt4/ui',
-            '$BUILDDIR/common/frontends/controllers'
+            '$BUILDDIR/src',
+            '$BUILDDIR/src/images',
+            '$BUILDDIR/src/frontends',
+            '$BUILDDIR/src/frontends/qt4',
+            '$BUILDDIR/src/frontends/qt4/ui',
+            '$BUILDDIR/src/frontends/controllers'
         ],
         CCFLAGS =  [
             '$CCFLAGS',
@@ -1767,16 +1766,15 @@ if build_client:
     #
     # src/client
     #
-    frontend_env.BuildDir('$BUILDDIR/common', '$TOP_SRCDIR/src', duplicate = 0)
 
     print "Processing files in src/client..."
 
     if env['HAVE_FCNTL']:
         client = frontend_env.Program(
-            target = '$BUILDDIR/common/client/lyxclient',
+            target = '$BUILDDIR/src/client/lyxclient',
             LIBS = ['support'] + intl_libs + system_libs +
                 socket_libs + boost_libraries + qtcore_lib,
-            source = ['$BUILDDIR/common/client/%s' % x for x in src_client_files] + \
+            source = ['$BUILDDIR/src/client/%s' % x for x in src_client_files] + \
                 utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/client.rc')
         )
         Alias('client', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
@@ -1787,7 +1785,7 @@ if build_client:
 else:
     if env['HAVE_FCNTL']:
         # define client even if lyxclient is not built with rebuild=no
-        client = [env.subst('$BUILDDIR/common/client/${PROGPREFIX}lyxclient$PROGSUFFIX')]
+        client = [env.subst('$BUILDDIR/src/client/${PROGPREFIX}lyxclient$PROGSUFFIX')]
     else:
         client = None
 
@@ -1800,15 +1798,15 @@ if build_tex2lyx:
 
     #
     for file in src_tex2lyx_copied_files + src_tex2lyx_copied_header_files:
-        frontend_env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
+        frontend_env.Command('$BUILDDIR/src/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
             [Copy('$TARGET', '$SOURCE')])
 
     tex2lyx = frontend_env.Program(
-        target = '$BUILDDIR/common/tex2lyx/tex2lyx',
+        target = '$BUILDDIR/src/tex2lyx/tex2lyx',
         LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
-        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files + src_tex2lyx_copied_files] + \
+        source = ['$BUILDDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files + src_tex2lyx_copied_files] + \
             utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/tex2lyx.rc'),
-        CPPPATH = ['$BUILDDIR/common/tex2lyx', '$CPPPATH'],
+        CPPPATH = ['$BUILDDIR/src/tex2lyx', '$CPPPATH'],
         LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
     )
     Alias('tex2lyx', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
@@ -1816,7 +1814,7 @@ if build_tex2lyx:
     Alias('tex2lyx', tex2lyx)
 else:
     # define tex2lyx even if tex2lyx is not built with rebuild=no
-    tex2lyx = [frontend_env.subst('$BUILDDIR/common/tex2lyx/${PROGPREFIX}tex2lyx$PROGSUFFIX')]
+    tex2lyx = [frontend_env.subst('$BUILDDIR/src/tex2lyx/${PROGPREFIX}tex2lyx$PROGSUFFIX')]
 
 
 if build_lyxbase:
@@ -1836,11 +1834,11 @@ if build_lyxbase:
     # so I exclude main.cpp from lyxbase
     lyxbase_pre = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_pre',
-        source = ['$BUILDDIR/common/%s' % x for x in src_pre_files]
+        source = ['$BUILDDIR/src/%s' % x for x in src_pre_files]
     )
     lyxbase_post = env.StaticLibrary(
         target = '$LOCALLIBPATH/lyxbase_post',
-        source = ["$BUILDDIR/common/%s" % x for x in src_post_files]
+        source = ["$BUILDDIR/src/%s" % x for x in src_post_files]
     )
     Alias('lyxbase', lyxbase_pre)
     Alias('lyxbase', lyxbase_post)
@@ -1852,7 +1850,7 @@ if build_lyx:
     #
     lyx = frontend_env.Program(
         target = '$BUILDDIR/lyx',
-        source = ['$BUILDDIR/common/main.cpp'] + \
+        source = ['$BUILDDIR/src/main.cpp'] + \
             utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/lyx.rc'),
         LIBS = [
             'lyxbase_pre',
@@ -1917,12 +1915,12 @@ if build_msvs_projects:
     build_project('client', src = ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_files],
         inc = ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_header_files],
         rebuildTargetOnly = False,
-        full_target = File(env.subst('$BUILDDIR/common/client/lyxclient$PROGSUFFIX')).abspath)
+        full_target = File(env.subst('$BUILDDIR/src/client/lyxclient$PROGSUFFIX')).abspath)
     #
     build_project('tex2lyx', src = ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files],
         inc = ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files],
         rebuildTargetOnly = False,
-        full_target = File(env.subst('$BUILDDIR/common/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
+        full_target = File(env.subst('$BUILDDIR/src/tex2lyx/tex2lyx$PROGSUFFIX')).abspath)
     #
     build_project('lyx', 
         src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files + ['version.cpp']] + \
@@ -2267,7 +2265,7 @@ if build_install:
     Alias('install', dirs)
 
     # subst and install lyx2lyx_version.py which is not in scons_manifest.py
-    env.Depends(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py', '$BUILDDIR/common/config.h')
+    env.Depends(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py', '$BUILDDIR/src/config.h')
     env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
         '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
     Alias('install', share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
