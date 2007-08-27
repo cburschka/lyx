@@ -84,6 +84,8 @@ InsetCollapsable::InsetCollapsable
 	setDrawFrame(true);
 	setFrameColor(Color::collapsableframe);
 	setButtonLabel();
+	// Fallback for lacking inset layout item
+	layout_.bgcolor = Color::background;
 }
 
 
@@ -247,7 +249,7 @@ bool InsetCollapsable::setMouseHover(bool mouse_hover)
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
 	autoOpen_ = pi.base.bv->cursor().isInside(this);
-
+	text_.background_color_ = backgroundColor();
 	const int xx = x + TEXT_TO_INSET_OFFSET;
 
 	// Draw button first -- top, left or only

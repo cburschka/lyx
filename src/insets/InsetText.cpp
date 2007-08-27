@@ -194,7 +194,6 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 
-	text_.background_color_ = backgroundColor();
 	text_.draw(pi, x + border_, y);
 
 	if (drawFrame_) {
