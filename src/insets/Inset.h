@@ -474,6 +474,8 @@ public:
 	/// reject the changes within the inset
 	virtual void rejectChanges(BufferParams const &) {};
 
+	/// FIXME: move dim_ out of Inset!
+	Dimension const & dimension() { return dim_; }
 	/// inset width.
 	int width() const { return dim_.wid; }
 	/// inset ascent.
