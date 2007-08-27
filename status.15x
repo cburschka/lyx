@@ -52,7 +52,9 @@ What's new
 
 - Add "Save all on log-out or cancel" feature (Bug 1656).
 
-- Fix crash when inserting float.
+- Add a pixmap cache to speed up text drawing on screen. This cache is
+  enabled on Mac and Windows platform using a version of Qt greater
+  than 4.2.
 
 
 ** Bug fixes:
@@ -99,6 +101,8 @@ What's new
 - Reset current cursor font when going to a bookmark.
 
 - Fix crash when login out from within Gnome desktop (Bug 1656).
+
+- Fix crash when inserting float.
 
 
 * DOCUMENTATION

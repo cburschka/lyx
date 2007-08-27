@@ -43,6 +43,7 @@
 #include <QFileOpenEvent>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QPixmapCache>
 #include <QSessionManager>
 #include <QTextCodec>
 #include <QTimer>
@@ -149,6 +150,10 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	LoaderQueue::setPriority(10,100);
 
 	guiApp = this;
+
+	// Set the cache to 5120 kilobytes which corresponds to screen size of
+	// 1280 by 1024 pixels with a color depth of 32 bits.
+	QPixmapCache::setCacheLimit(5120);
 }
 
 
