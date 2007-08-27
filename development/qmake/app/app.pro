@@ -21,7 +21,6 @@ LIBS += -lAiksaurus
 
 LIBS += -L../lib
 
-LIBS += ../support/$(OBJECTS_DIR)/Package.o
 LIBS += -Wl,--start-group
 LIBS += -llyxmathed$${DEBUGSUFFIX}
 LIBS += -llyxinsets$${DEBUGSUFFIX}

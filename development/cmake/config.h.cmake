@@ -116,6 +116,10 @@
 #cmakedefine LYX_DATE "${LYX_DATE}"
 #cmakedefine VERSION_INFO "${VERSION_INFO}"
 
+#cmakedefine PROGRAM_SUFFIX "${PPROGRAM_SUFFIX}"
+#cmakedefine LYX_ABS_INSTALLED_DATADIR "${LYX_DIR}"
+#cmakedefine LYX_ABS_INSTALLED_LOCALEDIR "${LOCALEDIR}"
+#cmakedefine LYX_ABS_TOP_SRCDIR "${TOP_SRCDIR}"
 
 #cmakedefine USE_POSIX_PACKAGING 1
 #cmakedefine USE_WINDOWS_PACKAGING 1

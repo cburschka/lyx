@@ -350,10 +350,11 @@ env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 # 3. compiler commands and flags like CCFLAGS.
 #     MSGFMT used to process po files
 # 4. Variables that will be used to replace variables in some_file.in
-#     src/support/Package.cpp.in:
-#       TOP_SRCDIR, LOCALEDIR, LYX_DIR, PROGRAM_SUFFIX
 #     lib/lyx2lyx/lyx2lyx_version.py.in
 #       PACKAGE_VERSION
+# FIXME Bo: Please look here, that's not needed anymore (Andre')
+#     src/support/Package.cpp.in:
+#       TOP_SRCDIR, LOCALEDIR, LYX_DIR, PROGRAM_SUFFIX
 
 # full path name is used to build msvs project files
 # and to replace TOP_SRCDIR in package.C
@@ -383,6 +384,8 @@ if env.has_key('version_suffix'):
         program_suffix = env['version_suffix']
 else:
     program_suffix = ''
+
+# FIXME Bo: Please look here, can this be simplified? (Andre')
 # used by Package.cpp.in
 env['PROGRAM_SUFFIX'] = program_suffix
 
@@ -1042,6 +1045,14 @@ result = utils.createConfigFile(conf,
             'Full version info'),
         ('#define LYX_DATE "%s"' % lyx_date,
             'Date of release'),
+        ('#define PROGRAM_SUFFIX "%s"' % '$PROGRAM_SUFFIX',
+            'Program version suffix'),
+        ('#define LYX_ABS_INSTALLED_DATADIR "%s"' % '$LYX_DIR',
+            'Hard coded system support directory'),
+        ('#define LYX_ABS_INSTALLED_LOCALEDIR "%s"' % '$LOCALEDIR',
+            'Hard coded locale directory'),
+        ('#define LYX_ABS_TOP_SRCDIR "%s"' % '$TOP_SRCDIR',
+            'Top source directory'),
         ('#define BOOST_ALL_NO_LIB 1',
             'disable automatic linking of boost libraries.'),
         ('#define USE_%s_PACKAGING 1' % packaging_method.upper(),

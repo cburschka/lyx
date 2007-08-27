@@ -32,7 +32,6 @@ src/callback.cpp
 src/client/debug.cpp
 src/debug.cpp
 src/frontends/LyXView.cpp
-src/frontends/WorkArea.cpp
 src/frontends/controllers/ControlAboutlyx.cpp
 src/frontends/controllers/ControlBibtex.cpp
 src/frontends/controllers/ControlBox.cpp
@@ -144,7 +143,6 @@ src/output.cpp
 src/output_plaintext.cpp
 src/rowpainter.cpp
 src/support/FileFilterList.cpp
-src/support/Package.cpp.in
 src/support/filetools.cpp
 src/support/os_win32.cpp
 src/support/userinfo.cpp

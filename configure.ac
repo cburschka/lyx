@@ -312,19 +312,12 @@ ${FRONTEND_INFO}\
   LyX binary dir:               ${real_bindir}\n\
   LyX files dir:                ${real_pkgdatadir}\n"
 
-MSYS_AC_CANONICAL_PATH(LYX_ABS_TOP_SRCDIR, ${srcdir})
-MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_LOCALEDIR, ${real_localedir})
-MSYS_AC_CANONICAL_PATH(LYX_ABS_INSTALLED_DATADIR, ${real_pkgdatadir})
-
 AC_SUBST(VERSION_INFO)
 AC_SUBST(RPM_FRONTEND)
 AC_SUBST(AM_CPPFLAGS)
 AC_SUBST(AM_CXXFLAGS)
 AC_SUBST(AM_CFLAGS)
 AC_SUBST(AM_LDFLAGS)
-AC_SUBST(LYX_ABS_TOP_SRCDIR)
-AC_SUBST(LYX_ABS_INSTALLED_LOCALEDIR)
-AC_SUBST(LYX_ABS_INSTALLED_DATADIR)
 
 ## Some config.h stuff
 
@@ -454,13 +447,25 @@ AC_ARG_ENABLE(monolithic-frontend-qt4,
   [enable_monolithic_frontend_qt4=no])
 AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT4, test "$enable_monolithic_frontend_qt4" = "yes")
 
+MSYS_AC_CANONICAL_PATH(lyx_abs_top_srcdir, ${srcdir})
+MSYS_AC_CANONICAL_PATH(lyx_abs_installed_localedir, ${real_localedir})
+MSYS_AC_CANONICAL_PATH(lyx_abs_installed_datadir, ${real_pkgdatadir})
+
+AC_DEFINE_UNQUOTED([LYX_ABS_TOP_SRCDIR],
+	"${lyx_abs_top_srcdir}", [Top source directory])
+AC_DEFINE_UNQUOTED([LYX_ABS_INSTALLED_LOCALEDIR],
+	"${lyx_abs_installed_localedir}",[Hard coded locale directory])
+AC_DEFINE_UNQUOTED([LYX_ABS_INSTALLED_DATADIR],
+	"${lyx_abs_installed_datadir}",[Hard system support directory])
+AC_DEFINE_UNQUOTED([PROGRAM_SUFFIX],
+	"${version_suffix}",[Program version suffix])
+
 AC_DEFINE_UNQUOTED([LYX_DATE],"$LYX_DATE",[Date of release])
 AC_DEFINE_UNQUOTED([VERSION_INFO],"$VERSION_INFO",[Full version info])
 AC_DEFINE_UNQUOTED([LYX_MAJOR_VERSION],$lyx_major,[Major version number])
 AC_DEFINE_UNQUOTED([LYX_MINOR_VERSION],$lyx_minor,[Minor version number])
 AC_DEFINE_UNQUOTED([LYX_RELEASE_LEVEL],$lyx_release,[Release version number])
 AC_DEFINE_UNQUOTED([LYX_RELEASE_PATCH],$lyx_patch,[Patch version number])
-
 
 AC_CONFIG_FILES([Makefile
       boost/Makefile \
@@ -472,7 +477,7 @@ AC_CONFIG_FILES([Makefile
       development/MacOSX/spotlight/Makefile \
       development/lyx.spec \
       intl/Makefile \
-      lib/Makefile \
+     lib/Makefile \
       lib/doc/Makefile \
       lib/lyx2lyx/lyx2lyx_version.py \
       lib/lyx2lyx/Makefile \

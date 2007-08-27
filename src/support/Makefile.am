@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 CLEANFILES += $(BUILT_SOURCES)
 
-EXTRA_DIST = Package.cpp.in pch.h \
+EXTRA_DIST = pch.h \
 	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h
 
 pkglib_LTLIBRARIES = liblyxsupport.la
@@ -10,7 +10,7 @@ pkglib_LTLIBRARIES = liblyxsupport.la
 liblyxsupport_la_LIBADD = $(LIBSHLWAPI) $(QT4_CORE_LIB) $(BOOST_SIGNALS)
 liblyxsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)
 
-BUILT_SOURCES = $(PCH_FILE) Package.cpp
+BUILT_SOURCES = $(PCH_FILE)
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) -I$(srcdir)/minizip
@@ -102,24 +102,6 @@ liblyxsupport_la_SOURCES = \
 	minizip/unzip.h \
 	minizip/zip.c \
 	minizip/zip.h
-
-Package.cpp: build_package
-
-# Solaris sed does not like spaces bewteen the ;-delimited commands
-build_package: Package.cpp.in
-	@rm -f tmp_package ;\
-	sed "s,@LYX_DIR@,$(LYX_ABS_INSTALLED_DATADIR),;\
-s,@LOCALEDIR@,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
-s,@TOP_SRCDIR@,$(LYX_ABS_TOP_SRCDIR),;\
-s,@PROGRAM_SUFFIX@,$(program_suffix)," \
-		$(srcdir)/Package.cpp.in > tmp_package ;\
-	if cmp -s tmp_package Package.cpp ; then \
-		rm -f tmp_package ;\
-	else \
-		rm -f Package.cpp ;\
-		mv tmp_package Package.cpp ;\
-	fi
-
 
 ############################## Tests ##################################
 

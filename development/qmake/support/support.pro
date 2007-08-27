@@ -55,6 +55,7 @@ CPP += FileName.cpp
 CPP += ForkedCallQueue.cpp
 CPP += Forkedcall.cpp
 CPP += ForkedcallsController.cpp
+CPP += Package.cpp
 CPP += Path.cpp
 CPP += Systemcall.cpp
 CPP += Timeout.cpp
@@ -83,63 +84,6 @@ CPP += textutils.cpp
 CPP += unicode.cpp
 CPP += unlink.cpp
 CPP += userinfo.cpp
-
-
-QMAKE_RUN_CXX1  = $(CXX) -c $(CXXFLAGS) $(INCPATH)
-
-#packagetarget.target = Package.cpp
-#packagetarget.commands = \
-#	@rm -f tmp_package ;\
-#	sed \'s,@LYX_DIR@,$(LYX_ABS_INSTALLED_DATADIR),;\
-#s,@LOCALEDIR@,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
-#s,@TOP_SRCDIR@,$(LYX_ABS_TOP_SRCDIR),;\
-#s,@PROGRAM_SUFFIX@,$(program_suffix),\' \
-#		$${BUILD_BASE_SOURCE_DIR}/src/support/Package.cpp.in > tmp_package ;\
-#	if cmp -s tmp_package Package.cpp ; then \
-#		rm -f tmp_package ;\
-#	else \
-#		rm -f Package.cpp ;\
-#		cp tmp_package Package.cpp ;\
-#	fi
-#packagetarget.depends = config.h
-#packagetarget.variable_out = SOURCES
-#packagetarget.CONFIG = no_link
-##SOURCES += $${BUILD_BASE_TARGET_DIR}/src/Package.cpp
-#QMAKE_EXTRA_TARGETS += packagetarget
-#
-##OBJECTS += $(OBJECTS_DIR)/Package.o 
-#POST_TARGETDEPS += $(OBJECTS_DIR)/Package.o 
-
-packagetarget.target = Package.cpp
-packagetarget.commands = \
-	@rm -f tmp_package ;\
-	sed \'s,@LYX_DIR@,$(LYX_ABS_INSTALLED_DATADIR),;\
-s,@LOCALEDIR@,$(LYX_ABS_INSTALLED_LOCALEDIR),;\
-s,@TOP_SRCDIR@,$(LYX_ABS_TOP_SRCDIR),;\
-s,@PROGRAM_SUFFIX@,$(program_suffix),\' \
-		$${BUILD_BASE_SOURCE_DIR}/src/support/Package.cpp.in > tmp_package ;\
-	if cmp -s tmp_package Package.cpp ; then \
-		rm -f tmp_package ;\
-	else \
-		rm -f Package.cpp ;\
-		cp tmp_package Package.cpp ;\
-	fi
-#packagetarget.depends = config.h
-packagetarget.CONFIG = no_link
-#SOURCES += $${BUILD_BASE_TARGET_DIR}/src/Package.cpp
- 
-packagetarget2.target = $(OBJECTS_DIR)/Package.o
-packagetarget2.commands = $${QMAKE_RUN_CXX1} -c Package.cpp \
-	-o $(OBJECTS_DIR)/Package.o
-packagetarget2.depends = Package.cpp
- 
-QMAKE_EXTRA_TARGETS += packagetarget packagetarget2
- 
-QMAKE_CLEAN += $(OBJECTS_DIR)/Package.o Package.cpp
-
-PRE_TARGETDEPS += $(OBJECTS_DIR)/Package.o 
-
-LIBS += $(OBJECTS_DIR)/Package.o
 
 for(FILE,CPP) { SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/support/$${FILE} }
 for(FILE,HPP) { HEADERS += $${BUILD_BASE_SOURCE_DIR}/src/support/$${FILE} }

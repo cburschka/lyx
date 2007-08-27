@@ -340,6 +340,7 @@ src_support_files = Split('''
     ForkedCallQueue.cpp
     Forkedcall.cpp
     ForkedcallsController.cpp
+    Package.cpp
     Path.cpp
     Systemcall.cpp
     Timeout.cpp
@@ -377,7 +378,6 @@ src_support_extra_header_files = Split('''
 
 
 src_support_extra_src_files = Split('''
-    Package.cpp.in
     atexit.c
     os_cygwin.cpp
     os_unix.cpp
