@@ -1277,7 +1277,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// reposition the cursor to the caption
 		cur.pit() = cap_pit;
 		cur.pos() = 0;
-		cur.dispatch(FuncRequest(LFUN_CAPTION_INSERT));
+		// FIXME: This Text/Cursor dispatch handling is a mess!
+		// We cannot use Cursor::dispatch here it needs access to up to
+		// date metrics.
+		cur.text()->dispatch(cur, FuncRequest(LFUN_CAPTION_INSERT));
+		cur.updateFlags(Update::Force);
 		// FIXME: When leaving the Float (or Wrap) inset we should
 		// delete any empty paragraph left above or below the
 		// caption.
