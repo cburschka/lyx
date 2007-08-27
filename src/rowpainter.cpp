@@ -876,6 +876,8 @@ bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 	return false;
 }
 
+} // namespace anon
+
 
 void paintPar
 	(PainterInfo & pi, Text const & text, pit_type pit, int x, int y,
@@ -948,8 +950,6 @@ void paintPar
 	LYXERR(Debug::PAINTING) << "." << endl;
 }
 
-} // namespace anon
-
 
 void paintText(BufferView & bv,
 	       Painter & pain)
@@ -994,21 +994,5 @@ void paintText(BufferView & bv,
 	if (vi.y2 < bv.workHeight() && vi.update_strategy == FullScreenUpdate)
 		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, Color::bottomarea);
 }
-
-
-void paintTextInset(Text const & text, PainterInfo & pi, int x, int y)
-{
-//	lyxerr << "  paintTextInset: y: " << y << endl;
-
-	y -= pi.base.bv->parMetrics(&text, 0).ascent();
-	for (int pit = 0; pit < int(text.paragraphs().size()); ++pit) {
-		ParagraphMetrics const & pmi
-			= pi.base.bv->parMetrics(&text, pit);
-		y += pmi.ascent();
-		paintPar(pi, text, pit, x, y, true);
-		y += pmi.descent();
-	}
-}
-
 
 } // namespace lyx

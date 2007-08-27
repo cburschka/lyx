@@ -28,8 +28,10 @@ namespace frontend { class Painter; }
 /// paint visible paragraph of main text
 void paintText(BufferView & bv, frontend::Painter & painter);
 
-/// paint the rows of a text inset
-void paintTextInset(Text const & text, PainterInfo & pi, int x, int y);
+/// paint paragraph.
+void paintPar
+	(PainterInfo & pi, Text const & text, pit_type pit, int x, int y,
+	 bool repaintAll);
 
 /// some space for drawing the 'nested' markers (in pixel)
 inline int nestMargin() { return 15; }

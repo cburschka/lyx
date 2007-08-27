@@ -1355,13 +1355,6 @@ bool Text::dissolveInset(Cursor & cur) {
 
 
 // only used for inset right now. should also be used for main text
-void Text::draw(PainterInfo & pi, int x, int y) const
-{
-	paintTextInset(*this, pi, x, y);
-}
-
-
-// only used for inset right now. should also be used for main text
 void Text::drawSelection(PainterInfo & pi, int x, int) const
 {
 	Cursor & cur = pi.base.bv->cursor();

@@ -22,18 +22,19 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "paragraph_funcs.h"
-#include "ParIterator.h"
+#include "Color.h"
 #include "CoordCache.h"
 #include "debug.h"
-#include "FuncRequest.h"
 #include "FontIterator.h"
-#include "Color.h"
+#include "FuncRequest.h"
 #include "Length.h"
 #include "LyXRC.h"
-#include "Text.h"
 #include "MetricsInfo.h"
+#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "ParIterator.h"
+#include "rowpainter.h"
+#include "Text.h"
 #include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
@@ -960,6 +961,21 @@ int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
 	return pm.singleWidth(pos, text_->getFont(buffer, text_->getPar(pit), pos));
+}
+
+
+// only used for inset right now. should also be used for main text
+void TextMetrics::draw(PainterInfo & pi, int x, int y) const
+{
+	ParMetricsCache::const_iterator it = par_metrics_.begin();
+	ParMetricsCache::const_iterator const end = par_metrics_.end();
+	y -= it->second.ascent();
+	for (; it != end; ++it) {
+		ParagraphMetrics const & pmi = it->second;
+		y += pmi.ascent();
+		paintPar(pi, *text_, it->first, x, y, true);
+		y += pmi.descent();
+	}
 }
 
 
