@@ -36,7 +36,9 @@ LINKED_FILES = \
 	../Layout.cpp \
 	../TextClass.cpp \
 	../TextClass.h \
-	../Lexer.cpp 
+	../Lexer.cpp \
+	../Color.cpp \
+	../Color.h
 
 BUILT_SOURCES = $(PCH_FILE)
 

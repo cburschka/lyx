@@ -10,6 +10,7 @@
 #ifndef LYXTEXTCLASS_H
 #define LYXTEXTCLASS_H
 
+#include "Color.h"
 #include "Layout.h"
 #include "lyxlayout_ptr_fwd.h"
 
