@@ -184,13 +184,13 @@ int TextMetrics::rightMargin(pit_type const pit) const
 
 bool TextMetrics::redoParagraph(pit_type const pit)
 {
+	Paragraph & par = text_->getPar(pit);
 	// IMPORTANT NOTE: We pass 'false' explicitely in order to not call
 	// redoParagraph() recursively inside parMetrics.
 	Dimension old_dim = parMetrics(pit, false).dim();
 	ParagraphMetrics & pm = par_metrics_[pit];
-	// reinitialize paragraph dimension.
-	pm.dim() = Dimension();
-	Paragraph & par = text_->getPar(pit);
+	pm.reset(par);
+
 	Buffer & buffer = bv_->buffer();
 	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
@@ -229,9 +229,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		MetricsInfo mi(bv_, font, w);
 		changed |= ii->inset->metrics(mi, dim);
 	}
-
-	// rebreak the paragraph
-	pm.rows().clear();
 
 	par.setBeginOfBody();
 	pos_type z = 0;

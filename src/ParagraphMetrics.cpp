@@ -88,6 +88,14 @@ ParagraphMetrics & ParagraphMetrics::operator=(
 }
 
 
+void ParagraphMetrics::reset(Paragraph const & par)
+{
+	par_ = &par;
+	dim_ = Dimension();
+	rows_.clear();
+}
+
+
 size_type ParagraphMetrics::calculateRowSignature(Row const & row)
 {
 	boost::crc_32_type crc;

@@ -45,6 +45,8 @@ public:
 	/// \c updateRowChangeStatus() in TextMetrics::redoParagraph().
 	ParagraphMetrics & operator=(ParagraphMetrics const &);
 
+	void reset(Paragraph const & par);
+
 	///
 	Row & getRow(pos_type pos, bool boundary);
 	///
