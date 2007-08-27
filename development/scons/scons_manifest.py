@@ -425,12 +425,10 @@ src_support_minizip_header_files = Split('''
 
 src_support_minizip_files = Split('''
     ioapi.c
+    iowin32.c
     zip.c
     unzip.c
 ''')
-
-
-src_support_minizip_windows_files = ['iowin32.c']
 
 
 src_graphics_header_files = Split('''

@@ -1516,8 +1516,7 @@ Package_cpp = env.substFile('$BUILDDIR/src/support/Package.cpp', '$TOP_SRCDIR/sr
 support = frontend_env.StaticLibrary(
     target = '$LOCALLIBPATH/support',
     source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files] + Package_cpp + \
-        ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_files] + \
-        ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_windows_files if platform_name == 'win32'],
+        ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_files],
     CCFLAGS =  [
         '$CCFLAGS',
         '-DHAVE_CONFIG_H',
@@ -1759,7 +1758,7 @@ if use_vc and 'msvs_projects' in BUILD_TARGETS:
             ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files] + \
             ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_files] + \
             ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files] + \
-            ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files + src_frontends_qt4_moc_files],
+            ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files],
         inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files] + \
             ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files] + \
             ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_header_files] + \
