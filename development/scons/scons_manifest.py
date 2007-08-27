@@ -659,19 +659,13 @@ src_tex2lyx_files = Split('''
 
 
 src_tex2lyx_copied_files = Split('''
+    Color.cpp
     Counters.cpp
     FloatList.cpp
     Floating.cpp
     Layout.cpp
     Lexer.cpp
     TextClass.cpp
-''')
-
-
-src_tex2lyx_copied_header_files = Split('''
-    Layout.h
-    Lexer.h
-    TextClass.h
 ''')
 
 
