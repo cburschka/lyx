@@ -1474,47 +1474,10 @@ def libExists(libname):
     ''' Check whether or not lib $LOCALLIBNAME/libname already exists'''
     return os.path.isfile(File(env.subst('$LOCALLIBPATH/${LIBPREFIX}%s$LIBSUFFIX'%libname)).abspath)
 
-def appExists(apppath, appname):
-    ''' Check whether or not application already exists'''
-    return os.path.isfile(File(env.subst('$BUILDDIR/src/%s/${PROGPREFIX}%s$PROGSUFFIX' % (apppath, appname))).abspath)
 
-targets = BUILD_TARGETS
-build_install = 'install' in targets or 'installer' in targets
-build_installer = 'installer' in targets
-# msvc need to pass full target name, so I have to look for path/lyx etc
-build_lyx = build_installer or targets == [] or True in ['lyx' in x for x in targets] \
-    or build_install or 'all' in targets
-build_boost = (included_boost and not libExists('boost_regex')) or 'boost' in targets
-build_intl = (included_gettext and not libExists('included_intl')) or 'intl' in targets
-build_support = build_lyx or True in [x in targets for x in ['support', 'client', 'tex2lyx']]
-build_mathed = build_lyx or 'mathed' in targets
-build_insets = build_lyx or 'insets' in targets
-build_frontends = build_lyx or 'frontends' in targets
-build_graphics = build_lyx or 'graphics' in targets
-build_controllers = build_lyx or 'controllers' in targets
-build_client = True in ['client' in x for x in targets] \
-    or build_install or 'all' in targets or build_installer
-build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
-    or build_install or 'all' in targets or build_installer
-build_lyxbase = build_lyx or 'lyxbase' in targets
-update_po = 'update_po' in targets
-update_manifest = 'update_manifest' in targets
-build_po = 'po' in targets or build_install or 'all' in targets
-build_qt4 = (build_lyx and frontend == 'qt4') or 'qt4' in targets
-build_msvs_projects = use_vc and 'msvs_projects' in targets
-
-
-# sync frontend and frontend (?)
-if build_qt4:
-    frontend = 'qt4'
-
-
-if build_boost:
+if (included_boost and not libExists('included_boost_regex')) or 'boost' in BUILD_TARGETS:
     #
     # boost libraries
-    #
-    # special builddir
-
     boostenv = env.Copy()
     #
     # boost use its own config.h
@@ -1523,7 +1486,6 @@ if build_boost:
     boostenv.AppendUnique(CCFLAGS = ['-DBOOST_USER_CONFIG="<config.h>"'])
 
     for lib in boost_libs:
-        print 'Processing files in boost/libs/%s/src...' % lib
         boostlib = boostenv.StaticLibrary(
             target = '$LOCALLIBPATH/included_boost_%s' % lib,
             source = ['$BUILDDIR/boost/%s/src/%s' % (lib, x) for x in eval('boost_libs_%s_src_files' % lib)]
@@ -1531,14 +1493,11 @@ if build_boost:
         Alias('boost', boostlib)
 
 
-if build_intl:
+if (included_gettext and not libExists('included_intl')) or 'intl' in BUILD_TARGETS:
     #
     # intl
     #
     intlenv = env.Copy()
-
-    print "Processing files in intl..."
-
 
     # we need the original C compiler for these files
     intlenv['CC'] = C_COMPILER
@@ -1575,256 +1534,210 @@ if build_intl:
 #
 # Now, src code under src/
 #
+#
+# src/support
+#
+frontend_env.Depends('$BUILDDIR/src/support/Package.cpp', '$BUILDDIR/src/config.h')
+Package_cpp = env.substFile('$BUILDDIR/src/support/Package.cpp', '$TOP_SRCDIR/src/support/Package.cpp.in')
+
+support = frontend_env.StaticLibrary(
+    target = '$LOCALLIBPATH/support',
+    source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files] + Package_cpp + \
+        ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_files] + \
+        ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_windows_files if platform_name == 'win32'],
+    CCFLAGS =  [
+        '$CCFLAGS',
+        '-DHAVE_CONFIG_H',
+        '-DQT_CLEAN_NAMESPACE',
+        '-DQT_GENUINE_STR',
+        '-DQT_NO_STL',
+        '-DQT_NO_KEYWORDS',
+    ],
+    CPPPATH = ['$CPPPATH', '$TOP_SRCDIR/src/support/minizip']
+)
+Alias('support', support)
 
 
-if build_support:
-    #
-    # src/support
-    #
-    print "Processing files in src/support..."
-
-    frontend_env.Depends('$BUILDDIR/src/support/Package.cpp', '$BUILDDIR/src/config.h')
-    Package_cpp = env.substFile('$BUILDDIR/src/support/Package.cpp', '$TOP_SRCDIR/src/support/Package.cpp.in')
-
-    support = frontend_env.StaticLibrary(
-        target = '$LOCALLIBPATH/support',
-        source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files] + Package_cpp + \
-            ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_files] + \
-            ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_windows_files if platform_name == 'win32'],
-        CCFLAGS =  [
-            '$CCFLAGS',
-            '-DHAVE_CONFIG_H',
-            '-DQT_CLEAN_NAMESPACE',
-            '-DQT_GENUINE_STR',
-            '-DQT_NO_STL',
-            '-DQT_NO_KEYWORDS',
-        ],
-        CPPPATH = ['$CPPPATH', '$TOP_SRCDIR/src/support/minizip']
-    )
-    Alias('support', support)
+#
+# src/mathed
+#
+mathed = env.StaticLibrary(
+    target = '$LOCALLIBPATH/mathed',
+    source = ['$BUILDDIR/src/mathed/%s' % x for x in src_mathed_files]
+)
+Alias('mathed', mathed)
 
 
-if build_mathed:
-    #
-    # src/mathed
-    #
-    print "Processing files in src/mathed..."
-    #
-    mathed = env.StaticLibrary(
-        target = '$LOCALLIBPATH/mathed',
-        source = ['$BUILDDIR/src/mathed/%s' % x for x in src_mathed_files]
-    )
-    Alias('mathed', mathed)
+#
+# src/insets
+#
+insets = env.StaticLibrary(
+    target = '$LOCALLIBPATH/insets',
+    source = ['$BUILDDIR/src/insets/%s' % x for x in src_insets_files]
+)
+Alias('insets', insets)
 
 
-if build_insets:
-    #
-    # src/insets
-    #
-    print "Processing files in src/insets..."
-    #
-    insets = env.StaticLibrary(
-        target = '$LOCALLIBPATH/insets',
-        source = ['$BUILDDIR/src/insets/%s' % x for x in src_insets_files]
-    )
-    Alias('insets', insets)
+#
+# src/frontends
+#
+frontends = env.StaticLibrary(
+    target = '$LOCALLIBPATH/frontends',
+    source = ['$BUILDDIR/src/frontends/%s' % x for x in src_frontends_files]
+)
+Alias('frontends', frontends)
 
 
-if build_frontends:
-    #
-    # src/frontends
-    #
-    print "Processing files in src/frontends..."
-
-    frontends = env.StaticLibrary(
-        target = '$LOCALLIBPATH/frontends',
-        source = ['$BUILDDIR/src/frontends/%s' % x for x in src_frontends_files]
-    )
-    Alias('frontends', frontends)
+#
+# src/graphics
+#
+graphics = env.StaticLibrary(
+    target = '$LOCALLIBPATH/graphics',
+    source = ['$BUILDDIR/src/graphics/%s' % x for x in src_graphics_files]
+)
+Alias('graphics', graphics)
 
 
-if build_graphics:
-    #
-    # src/graphics
-    #
-    print "Processing files in src/graphics..."
+#
+# src/frontends/controllers
+#
+controllers = env.StaticLibrary(
+    target = '$LOCALLIBPATH/controllers',
+    source = ['$BUILDDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files]
+)
+Alias('controllers', controllers)
 
-    graphics = env.StaticLibrary(
-        target = '$LOCALLIBPATH/graphics',
-        source = ['$BUILDDIR/src/graphics/%s' % x for x in src_graphics_files]
-    )
-    Alias('graphics', graphics)
-
-
-if build_controllers:
-    #
-    # src/frontends/controllers
-    #
-    print "Processing files in src/frontends/controllers..."
-
-    controllers = env.StaticLibrary(
-        target = '$LOCALLIBPATH/controllers',
-        source = ['$BUILDDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files]
-    )
-    Alias('controllers', controllers)
 
 #
 # src/frontend/qt4
 #
-if build_qt4:
+frontend_env['QT4_MOCHPREFIX'] = ''
+frontend_env['QT4_MOCHSUFFIX'] = '_moc.cpp'
 
-    print "Processing files in src/frontends/qt4..."
-    frontend_env['QT4_MOCHPREFIX'] = ''
-    frontend_env['QT4_MOCHSUFFIX'] = '_moc.cpp'
+# tells scons how to get these moced files, although not all moced files are needed
+# (or are actually generated).
+qt4_moced_files = [frontend_env.Moc4('$BUILDDIR/src/frontends/qt4/%s' % x)
+    for x in src_frontends_qt4_header_files ]
+resources = [frontend_env.Uic4('$BUILDDIR/src/frontends/qt4/ui/%s' % x.split('.')[0])
+    for x in src_frontends_qt4_ui_files]
 
-    # tells scons how to get these moced files, although not all moced files are needed
-    # (or are actually generated).
-    qt4_moced_files = [frontend_env.Moc4('$BUILDDIR/src/frontends/qt4/%s' % x)
-        for x in src_frontends_qt4_header_files ]
-    resources = [frontend_env.Uic4('$BUILDDIR/src/frontends/qt4/ui/%s' % x.split('.')[0])
-        for x in src_frontends_qt4_ui_files]
+#
+# moc qt4_moc_files, the moced files are included in the original files
+#
+qt4 = frontend_env.StaticLibrary(
+    target = '$LOCALLIBPATH/qt4',
+    source = ['$BUILDDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files],
+    CPPPATH = [
+        '$CPPPATH',
+        '$BUILDDIR/src',
+        '$BUILDDIR/src/images',
+        '$BUILDDIR/src/frontends',
+        '$BUILDDIR/src/frontends/qt4',
+        '$BUILDDIR/src/frontends/qt4/ui',
+        '$BUILDDIR/src/frontends/controllers'
+    ],
+    CCFLAGS =  [
+        '$CCFLAGS',
+        '-DHAVE_CONFIG_H',
+        '-DQT_CLEAN_NAMESPACE',
+        '-DQT_GENUINE_STR',
+        '-DQT_NO_STL',
+        '-DQT_NO_KEYWORDS',
+    ]
+)
+Alias('qt4', qt4)
 
-    #
-    # moc qt4_moc_files, the moced files are included in the original files
-    #
-    qt4 = frontend_env.StaticLibrary(
-        target = '$LOCALLIBPATH/qt4',
-        source = ['$BUILDDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files],
-        CPPPATH = [
-            '$CPPPATH',
-            '$BUILDDIR/src',
-            '$BUILDDIR/src/images',
-            '$BUILDDIR/src/frontends',
-            '$BUILDDIR/src/frontends/qt4',
-            '$BUILDDIR/src/frontends/qt4/ui',
-            '$BUILDDIR/src/frontends/controllers'
-        ],
-        CCFLAGS =  [
-            '$CCFLAGS',
-            '-DHAVE_CONFIG_H',
-            '-DQT_CLEAN_NAMESPACE',
-            '-DQT_GENUINE_STR',
-            '-DQT_NO_STL',
-            '-DQT_NO_KEYWORDS',
-        ]
+
+#
+# src/client
+#
+if env['HAVE_FCNTL']:
+    client = frontend_env.Program(
+        target = '$BUILDDIR/src/client/lyxclient',
+        LIBS = ['support'] + intl_libs + system_libs +
+            socket_libs + boost_libraries + qtcore_lib,
+        source = ['$BUILDDIR/src/client/%s' % x for x in src_client_files] + \
+            utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/client.rc')
     )
-    Alias('qt4', qt4)
-
-
-if build_client:
-    #
-    # src/client
-    #
-
-    print "Processing files in src/client..."
-
-    if env['HAVE_FCNTL']:
-        client = frontend_env.Program(
-            target = '$BUILDDIR/src/client/lyxclient',
-            LIBS = ['support'] + intl_libs + system_libs +
-                socket_libs + boost_libraries + qtcore_lib,
-            source = ['$BUILDDIR/src/client/%s' % x for x in src_client_files] + \
-                utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/client.rc')
-        )
-        Alias('client', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
-            client, [Copy('$TARGET', '$SOURCE')]))
-    else:
-        client = None
-    Alias('client', client)
+    Alias('client', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
+        client, [Copy('$TARGET', '$SOURCE')]))
 else:
-    if env['HAVE_FCNTL']:
-        # define client even if lyxclient is not built with rebuild=no
-        client = [env.subst('$BUILDDIR/src/client/${PROGPREFIX}lyxclient$PROGSUFFIX')]
-    else:
-        client = None
+    client = None
+Alias('client', client)
 
 
-if build_tex2lyx:
-    #
-    # tex2lyx
-    #
-    print "Processing files in src/tex2lyx..."
+#
+# tex2lyx
+#
+for file in src_tex2lyx_copied_files + src_tex2lyx_copied_header_files:
+    frontend_env.Command('$BUILDDIR/src/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
+        [Copy('$TARGET', '$SOURCE')])
 
-    #
-    for file in src_tex2lyx_copied_files + src_tex2lyx_copied_header_files:
-        frontend_env.Command('$BUILDDIR/src/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
-            [Copy('$TARGET', '$SOURCE')])
-
-    tex2lyx = frontend_env.Program(
-        target = '$BUILDDIR/src/tex2lyx/tex2lyx',
-        LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
-        source = ['$BUILDDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files + src_tex2lyx_copied_files] + \
-            utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/tex2lyx.rc'),
-        CPPPATH = ['$BUILDDIR/src/tex2lyx', '$CPPPATH'],
-        LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
-    )
-    Alias('tex2lyx', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
-        tex2lyx, [Copy('$TARGET', '$SOURCE')]))
-    Alias('tex2lyx', tex2lyx)
-else:
-    # define tex2lyx even if tex2lyx is not built with rebuild=no
-    tex2lyx = [frontend_env.subst('$BUILDDIR/src/tex2lyx/${PROGPREFIX}tex2lyx$PROGSUFFIX')]
+tex2lyx = frontend_env.Program(
+    target = '$BUILDDIR/src/tex2lyx/tex2lyx',
+    LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
+    source = ['$BUILDDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files + src_tex2lyx_copied_files] + \
+        utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/tex2lyx.rc'),
+    CPPPATH = ['$BUILDDIR/src/tex2lyx', '$CPPPATH'],
+    LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
+)
+Alias('tex2lyx', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
+    tex2lyx, [Copy('$TARGET', '$SOURCE')]))
+Alias('tex2lyx', tex2lyx)
 
 
-if build_lyxbase:
-    #
-    # src/
-    #
-    print "Processing files in src..."
+#
+# src/
+#
+if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
+    src_post_files.append('ASpell.cpp')
+elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
+    src_post_files.append('PSpell.cpp')
+elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
+    src_post_files.append('ISpell.cpp')
 
-    if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-        src_post_files.append('ASpell.cpp')
-    elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-        src_post_files.append('PSpell.cpp')
-    elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-        src_post_files.append('ISpell.cpp')
-
-    # msvc requires at least one source file with main()
-    # so I exclude main.cpp from lyxbase
-    lyxbase_pre = env.StaticLibrary(
-        target = '$LOCALLIBPATH/lyxbase_pre',
-        source = ['$BUILDDIR/src/%s' % x for x in src_pre_files]
-    )
-    lyxbase_post = env.StaticLibrary(
-        target = '$LOCALLIBPATH/lyxbase_post',
-        source = ["$BUILDDIR/src/%s" % x for x in src_post_files]
-    )
-    Alias('lyxbase', lyxbase_pre)
-    Alias('lyxbase', lyxbase_post)
+# msvc requires at least one source file with main()
+# so I exclude main.cpp from lyxbase
+lyxbase_pre = env.StaticLibrary(
+    target = '$LOCALLIBPATH/lyxbase_pre',
+    source = ['$BUILDDIR/src/%s' % x for x in src_pre_files]
+)
+lyxbase_post = env.StaticLibrary(
+    target = '$LOCALLIBPATH/lyxbase_post',
+    source = ["$BUILDDIR/src/%s" % x for x in src_post_files]
+)
+Alias('lyxbase', lyxbase_pre)
+Alias('lyxbase', lyxbase_post)
 
 
-if build_lyx:
-    #
-    # Build lyx with given frontend
-    #
-    lyx = frontend_env.Program(
-        target = '$BUILDDIR/lyx',
-        source = ['$BUILDDIR/src/main.cpp'] + \
-            utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/lyx.rc'),
-        LIBS = [
-            'lyxbase_pre',
-            'mathed',
-            'insets',
-            'frontends',
-            frontend,
-            'controllers',
-            'graphics',
-            'support',
-            'lyxbase_post',
-            ] +
-            boost_libraries +
-            frontend_libs +
-            intl_libs +
-            socket_libs +
-            system_libs
-    )
-    Alias('lyx', lyx)
-else:
-    # define lyx even if lyx is not built with rebuild=no
-    lyx = [frontend_env.subst('$BUILDDIR/${PROGPREFIX}lyx$PROGSUFFIX')]
+#
+# Build lyx with given frontend
+#
+lyx = frontend_env.Program(
+    target = '$BUILDDIR/lyx',
+    source = ['$BUILDDIR/src/main.cpp'] + \
+        utils.createResFromIcon(frontend_env, 'lyx_32x32.ico', '$LOCALLIBPATH/lyx.rc'),
+    LIBS = [
+        'lyxbase_pre',
+        'mathed',
+        'insets',
+        'frontends',
+        frontend,
+        'controllers',
+        'graphics',
+        'support',
+        'lyxbase_post',
+        ] +
+        boost_libraries +
+        frontend_libs +
+        intl_libs +
+        socket_libs +
+        system_libs
+)
+Alias('lyx', lyx)
 
 
-if build_msvs_projects:
+if use_vc and 'msvs_projects' in BUILD_TARGETS:
     def build_project(target, full_target = None,
         src = [], inc = [], res = []):
         ''' build mavs project files
@@ -1886,74 +1799,7 @@ if build_msvs_projects:
         full_target = File(env.subst('$BUILDDIR/lyx$PROGSUFFIX')).abspath)
 
 
-if update_manifest:
-    #
-    # update scons_manifest.py
-    #
-    # When you run 'scons update_manifest', it tells you which files are missing
-    # and which files are not in the source tree. It also generates a 
-    # scons_manifest.py.new file with all the missing files added to 
-    # XXX_extra_files. It will *not* change other sections of existing
-    # manifest.py
-    #
-    print 'Validating development/scons/scons_manifest.py...'
-    #
-    manifest = open(env.File('$TOP_SRCDIR/development/scons/scons_manifest.py.new').abspath, 'w')
-    print >> manifest, 'from SCons.Util import Split\n'
-    #
-    ignore_dirs = ['boost/boost', 'm4', 'development', 
-        utils.relativePath(env.Dir('$BUILDDIR').abspath, env.Dir('$TOP_SRCDIR').abspath)]
-    ignore_types = ['.svn', '.deps', '.cache', '.tmp', '.bak', '.gmo', '.pot',
-        '.pyc', '.pyo', '.o', '_moc.cpp', 'Makefile.in', 'config.h.in',
-        'LaTeXConfig.lyx', 'version.cpp', 'Package.cpp']
-    ext_types = ['_header_files', '_files', '_pre_files', '_post_files', '_moc_files', '_inc_files',
-        '_copied_files', '_copied_header_files', '_extra_header_files', '_extra_src_files', '_extra_files']
-    for root,path,files in os.walk(env.Dir('$TOP_SRCDIR').abspath):
-        if os.path.split(root)[-1][0] == '.' \
-            or True in [x in root for x in ignore_types] \
-            or True in [utils.isSubDir(root, x) for x in ignore_dirs]:
-            continue
-        dirname = utils.relativePath(root, env.subst('$TOP_SRCDIR')).replace(os.sep, '_')
-        if dirname == '':
-            dirname = 'TOP'
-        # files in the current manifest.py
-        cur_files = []
-        for ext in ext_types:
-            if 'copied' not in ext and dirname + ext in locals():
-                cur_files.extend(eval(dirname + ext))
-        cur_files.sort()
-        # compare files with cur_files
-        files = [x for x in files if x[0] != '.' and True not in [len(x) >= len(y) and x[-len(y):] == y for y in ignore_types]]
-        files.sort()
-        if cur_files != files:
-            missing = []
-            for f in files:
-                if f not in cur_files:
-                    missing.append(f)
-            extra = []
-            for f in cur_files:
-                if f not in files:
-                    extra.append(f)
-            if len(missing) > 0:
-                print 'Missing: %s in %s' % (', '.join(missing), root)
-                if dirname + '_extra_files' in locals():
-                    exec('%s_extra_files.extend(missing)' % dirname)
-                else:
-                    exec('%s_extra_files = missing' % dirname)
-            if len(extra) > 0:
-                print 'Extra: %s in %s' % (', '.join(extra), root)
-        # write to a new manifest file
-        for ext in ext_types:
-            if dirname + ext in locals():
-                exec('%s%s.sort()' % (dirname, ext))
-                print >> manifest, "%s%s = Split('''\n   " % (dirname, ext),
-                print >> manifest, eval(r"'\n    '.join(%s%s)" % (dirname, ext))
-                print >> manifest, "''')\n\n"
-    manifest.close()
-    Alias('update_manifest', None)
-
-
-if update_po:
+if 'update_po' in BUILD_TARGETS:
     #
     # update po files
     #
@@ -2041,12 +1887,16 @@ if update_po:
             Alias('update_po', po)
 
 
-if build_po:
+# if 'install' is not in the target, do not process this
+if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
+    #
+    # this part is a bit messy right now. Since scons will provide
+    # --DESTDIR option soon, at least the dest_dir handling can be 
+    # removed later.
+    #
     #
     # po/
     #
-    print 'Processing files in po...'
-
     import glob
     # handle po files
     #
@@ -2072,14 +1922,6 @@ if build_po:
             #
             if not languages or country in languages:
                 gmo_files.extend(env.Transfiles(f))
-
-
-if build_install:
-    #
-    # this part is a bit messy right now. Since scons will provide
-    # --DESTDIR option soon, at least the dest_dir handling can be 
-    # removed later.
-    #
     # how to join dest_dir and prefix
     def joinPaths(path1, path2):
         ''' join path1 and path2, do not use os.path.join because
@@ -2274,7 +2116,7 @@ if build_install:
         Alias('install', dest_file)
 
 
-if build_installer:
+if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
     #
     # build windows installer using NSIS
     #
