@@ -46,7 +46,6 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
-#include "rowpainter.h"
 #include "Session.h"
 #include "TexRow.h"
 #include "Text.h"
