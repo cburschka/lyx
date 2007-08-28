@@ -73,7 +73,11 @@ public:
 	 * the cursor and when creating a visible row */
 	RowMetrics computeRowMetrics(pit_type pit, Row const & row) const;
 
+	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	
+	void drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
+		bool repaintAll) const;
 
 private:
 	///

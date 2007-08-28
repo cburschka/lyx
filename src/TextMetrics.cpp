@@ -973,11 +973,100 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 	for (; it != end; ++it) {
 		ParagraphMetrics const & pmi = it->second;
 		y += pmi.ascent();
-		paintPar(pi, *text_, it->first, x, y, true);
+		drawParagraph(pi, it->first, x, y, true);
 		y += pmi.descent();
 	}
 }
 
+namespace {
+
+bool CursorOnRow(PainterInfo & pi, pit_type const pit,
+	RowList::const_iterator rit, Text const & text)
+{
+	// Is there a cursor on this row (or inside inset on row)
+	Cursor & cur = pi.base.bv->cursor();
+	for (size_type d = 0; d < cur.depth(); ++d) {
+		CursorSlice const & sl = cur[d];
+		if (sl.text() == &text
+		    && sl.pit() == pit
+		    && sl.pos() >= rit->pos()
+		    && sl.pos() <= rit->endpos())
+			return true;
+	}
+	return false;
+}
+
+} // namespace anon
+
+
+void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
+	 bool repaintAll) const
+{
+//	lyxerr << "  paintPar: pit: " << pit << " at y: " << y << endl;
+	int const ww = bv_->workHeight();
+
+	bv_->coordCache().parPos()[text_][pit] = Point(x, y);
+
+	ParagraphMetrics const & pm = par_metrics_[pit];
+	if (pm.rows().empty())
+		return;
+
+	RowList::const_iterator const rb = pm.rows().begin();
+	RowList::const_iterator const re = pm.rows().end();
+
+	Bidi bidi;
+
+	y -= rb->ascent();
+	size_type rowno = 0;
+	for (RowList::const_iterator rit = rb; rit != re; ++rit, ++rowno) {
+		y += rit->ascent();
+		// Row signature; has row changed since last paint?
+		bool row_has_changed = pm.rowChangeStatus()[rowno];
+
+		bool cursor_on_row = CursorOnRow(pi, pit, rit, *text_);
+
+		// If selection is on, the current row signature differs
+		// from cache, or cursor is inside an inset _on this row_,
+		// then paint the row
+		if (repaintAll || row_has_changed || cursor_on_row) {
+			bool const inside = (y + rit->descent() >= 0
+				&& y - rit->ascent() < ww);
+			// it is not needed to draw on screen if we are not inside.
+			pi.pain.setDrawingEnabled(inside);
+			RowPainter rp(pi, *text_, pit, *rit, bidi, x, y);
+			// Clear background of this row
+			// (if paragraph background was not cleared)
+			if (!repaintAll && row_has_changed)
+				pi.pain.fillRectangle(x, y - rit->ascent(),
+					width(), rit->height(),
+					text_->backgroundColor());
+
+			// Instrumentation for testing row cache (see also
+			// 12 lines lower):
+			if (lyxerr.debugging(Debug::PAINTING)) {
+				if (text_->isMainText(bv_->buffer()))
+					LYXERR(Debug::PAINTING) << "#";
+				else
+					LYXERR(Debug::PAINTING) << "[" <<
+						repaintAll << row_has_changed <<
+						cursor_on_row << "]";
+			}
+			rp.paintAppendix();
+			rp.paintDepthBar();
+			rp.paintChangeBar();
+			if (rit == rb)
+				rp.paintFirst();
+			rp.paintText();
+			if (rit + 1 == re)
+				rp.paintLast();
+		}
+		y += rit->descent();
+	}
+	// Re-enable screen drawing for future use of the painter.
+	pi.pain.setDrawingEnabled(true);
+
+	LYXERR(Debug::PAINTING) << "." << endl;
+}
 
 //int Text::pos2x(pit_type pit, pos_type pos) const
 //{

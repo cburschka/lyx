@@ -1548,15 +1548,17 @@ void BufferView::draw(frontend::Painter & pain)
 		pain.fillRectangle(0, metrics_info_.y1, width_,
 			metrics_info_.y2 - metrics_info_.y1, text.backgroundColor());
 
+	TextMetrics const & tm = text_metrics_[&text];
+
 	if (select)
 		text.drawSelection(pi, 0, 0);
 
 	int yy = metrics_info_.y1;
 	// draw contents
 	for (pit_type pit = metrics_info_.p1; pit <= metrics_info_.p2; ++pit) {
-		ParagraphMetrics const & pm = parMetrics(&text, pit);
+		ParagraphMetrics const & pm = tm.parMetrics(pit);
 		yy += pm.ascent();
-		paintPar(pi, text, pit, 0, yy, repaintAll);
+		tm.drawParagraph(pi, pit, 0, yy, repaintAll);
 		yy += pm.descent();
 	}
 
