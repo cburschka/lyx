@@ -161,7 +161,7 @@ message("----- LYX_ABS_INSTALLED_LOCALEDIR : ${LYX_ABS_INSTALLED_LOCALEDIR}")
 message("")
 
 if(MSVC)
-	ADD_DEFINITIONS(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)	
+	add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)	
  	# disable checked iterators for msvc release builds to get maximum speed
 	set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} /D_SECURE_SCL=0")
 endif()
@@ -169,17 +169,25 @@ endif()
 add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 	
 if(MSVC AND NOT disable-pch)
-	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h    ${CMAKE_BINARY_DIR}/pcheaders.h)
-	configure_file(${CMAKE_SOURCE_DIR}/config.C.cmake ${CMAKE_BINARY_DIR}/config_pch.C)
+	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h
+		${CMAKE_BINARY_DIR}/pcheaders.h)
+	configure_file(${CMAKE_SOURCE_DIR}/config.C.cmake
+		${CMAKE_BINARY_DIR}/config_pch.C)
 	macro(lyx_add_msvc_pch name_)
-		SET_SOURCE_FILES_PROPERTIES(${${name_}_sources} PROPERTIES COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
-		SET_SOURCE_FILES_PROPERTIES(${CMAKE_BINARY_DIR}/config_pch.C PROPERTIES COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
-		set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.C ${CMAKE_BINARY_DIR}/pcheaders.h)
+		set_source_files_properties(${${name_}_sources} PROPERTIES
+			COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
+		set_source_files_properties(${CMAKE_BINARY_DIR}/config_pch.C PROPERTIES
+			COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
+		set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.C
+			${CMAKE_BINARY_DIR}/pcheaders.h)
 		add_definitions(/DLYX_ENABLE_PCH)
 	endmacro(lyx_add_msvc_pch)
-	set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
-	set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
-	set(CMAKE_CXX_FLAGS_MINSIZEREL  "${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")
+	set(CMAKE_CXX_FLAGS_DEBUG
+		"${CMAKE_CXX_FLAGS_DEBUG} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
+	set(CMAKE_CXX_FLAGS_RELEASE
+		"${CMAKE_CXX_FLAGS_RELEASE} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
+	set(CMAKE_CXX_FLAGS_MINSIZEREL
+		"${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")
 else()
 	set(disable-pch TRUE CACHE TYPE STRING)
 	macro(lyx_add_msvc_pch)
@@ -229,9 +237,12 @@ if(MSVC)
 		# add here warnings which should be disabled /wdXXXX
 		set(MSVC_W_DISABLE "/wd4800 /wd4996 /wd4267 /wd4180")
 		
-		set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		set(CMAKE_CXX_FLAGS_MINSIZEREL  "${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_DEBUG
+			"${CMAKE_CXX_FLAGS_DEBUG} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_RELEASE
+			"${CMAKE_CXX_FLAGS_RELEASE} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_MINSIZEREL
+			"${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		
 	endif()
 	
@@ -244,7 +255,7 @@ endif()
 
 # create config.h
 include(ConfigureChecks.cmake)
-configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
+configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 find_package(ICONV REQUIRED)
 add_definitions(-DHAVE_ICONV=1)
@@ -257,8 +268,7 @@ configure_file(${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py.in
 include_directories( 
 	${CMAKE_BINARY_DIR} 
 	${TOP_SRC_DIR}/src 
-	${TOP_SRC_DIR}/boost 
-	${QT_INCLUDES})
+	${TOP_SRC_DIR}/boost)
 
 add_subdirectory(boost)
 add_subdirectory(intl)

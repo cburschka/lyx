@@ -6,9 +6,6 @@
 
 project(support)
 
-#configure_file(${TOP_SRC_DIR}/src/support/Package.cpp.in 
-#               ${CMAKE_CURRENT_BINARY_DIR}/package.C)
-
 file(GLOB support_sources ${TOP_SRC_DIR}/src/support/${LYX_CPP_FILES})
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})
 
@@ -25,12 +22,12 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/minizip/iowin32.h
 	${TOP_SRC_DIR}/src/support/minizip/iowin32.c)
 
-#set(support_sources ${support_sources} ${CMAKE_CURRENT_BINARY_DIR}/package.C)
-
 lyx_add_msvc_pch(support)
 	
 include_directories(${TOP_SRC_DIR}/src/support
-	${TOP_SRC_DIR}/src/support/minizip ${ICONV_INCLUDE_DIR})
+	${TOP_SRC_DIR}/src/support/minizip
+	${QT_INCLUDE_DIR} ${QT_INCLUDE_DIR}/QtCore
+	${ICONV_INCLUDE_DIR})
 
 
 if(NOT MERGE_FILES)
