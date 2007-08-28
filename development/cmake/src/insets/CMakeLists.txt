@@ -18,10 +18,10 @@ include_directories(${TOP_SRC_DIR}/src/insets)
 
 if(NOT MERGE_FILES)
 	add_library(insets ${library_type} ${insets_sources} ${insets_headers})
-else(NOT MERGE_FILES)
+else()
 	lyx_const_touched_files(_allinone  insets_sources)
 	add_library(insets ${library_type} ${_allinone_files})
-endif(NOT MERGE_FILES)
+endif()
 
 
 project_source_group("${GROUP_CODE}" insets_sources insets_headers)

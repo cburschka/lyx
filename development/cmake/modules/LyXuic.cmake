@@ -36,7 +36,7 @@ set(KDE_UIC_CPP_FILE ${KDE_UIC_H_FILE})
 
 if(WIN32)
     STRING(REGEX REPLACE "\r" "" _uic_CONTENTS "${_uic_CONTENTS}" )
-endif(WIN32)
+endif()
 
 FILE(WRITE ${KDE_UIC_CPP_FILE} "${_uic_CONTENTS}\n")
 

@@ -16,10 +16,10 @@ include_directories(${TOP_SRC_DIR}/src/graphics)
 
 if(NOT MERGE_FILES)
 	add_library(graphics ${library_type} ${graphics_sources} ${graphics_headers})
-else(NOT MERGE_FILES)
+else()
 	lyx_const_touched_files(_allinone  graphics_sources)
 	add_library(graphics ${library_type} ${_allinone_files})
-endif(NOT MERGE_FILES)
+endif()
 
 project_source_group("${GROUP_CODE}" graphics_sources graphics_headers)
 

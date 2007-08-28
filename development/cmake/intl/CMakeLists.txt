@@ -20,24 +20,21 @@ add_definitions(
     -DNO_XMALLOC
     -Dset_relocation_prefix=libintl_set_relocation_prefix
     -Drelocate=libintl_relocate
-    -DDEPENDS_ON_LIBICONV=1
-    )
+    -DDEPENDS_ON_LIBICONV=1)
     
-if (NOT APPLE)    
-add_definitions(
-		-DLOCALEDIR=\\"${LOACLE_DIR}\\" 
-		-DLOCALE_ALIAS_PATH=\\"${LOACLE_DIR}\\"
-		-DLIBDIR=\\"${TOP_SRC_DIR}\\"
-		-DINSTALLDIR=\\"${PREFIX}\\" 
-		)
-else (NOT APPLE) 
-add_definitions(
-		-DLOCALEDIR='\"${LOCALE_DIR}\"' 
-		-DLOCALE_ALIAS_PATH='\"${LOCALE_DIR}\"'
-		-DLIBDIR='\"${TOP_SRC_DIR}\"'
-		-DINSTALLDIR='\"${PREFIX}\"' 
-		)
-endif (NOT APPLE)
+if(NOT APPLE)    
+	add_definitions(
+			-DLOCALEDIR=\\"${LOACLE_DIR}\\" 
+			-DLOCALE_ALIAS_PATH=\\"${LOACLE_DIR}\\"
+			-DLIBDIR=\\"${TOP_SRC_DIR}\\"
+			-DINSTALLDIR=\\"${PREFIX}\\" )
+else()
+	add_definitions(
+			-DLOCALEDIR='\"${LOCALE_DIR}\"' 
+			-DLOCALE_ALIAS_PATH='\"${LOCALE_DIR}\"'
+			-DLIBDIR='\"${TOP_SRC_DIR}\"'
+			-DINSTALLDIR='\"${PREFIX}\"' )
+endif()
 
 file(GLOB intl_headers ${TOP_SRC_DIR}/intl/*.h)
 
@@ -73,13 +70,13 @@ include_directories(${TOP_SRC_DIR}/intl ${CMAKE_CURRENT_BINARY_DIR})
 
 if(ICONV_FOUND)
 	include_directories(${ICONV_INCLUDE_DIR})
-endif(ICONV_FOUND)
+endif()
 
 add_library(intl STATIC ${intl_sources} ${intl_headers})
 
 if(ICONV_FOUND)
 	target_link_libraries(intl ${ICONV_LIBRARY})
-endif(ICONV_FOUND)
+endif()
 
 project_source_group("${GROUP_CODE}" intl_sources intl_headers)
 

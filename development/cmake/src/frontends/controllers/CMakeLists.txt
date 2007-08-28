@@ -15,10 +15,10 @@ include_directories(${TOP_SRC_DIR}/src/frontends/controllers)
 
 if(NOT MERGE_FILES)
 	add_library(controllers ${library_type} ${controllers_sources} ${controllers_headers})
-else(NOT MERGE_FILES)
+else()
 	lyx_const_touched_files(_allinone  controllers_sources)
 	add_library(controllers ${library_type} ${_allinone_files})
-endif(NOT MERGE_FILES)
+endif()
 
 target_link_libraries(controllers boost_regex boost_filesystem)
 

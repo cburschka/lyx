@@ -6,8 +6,6 @@
 
 project(tex2lyx)
 
-
-
 set(LINKED_sources
 	${TOP_SRC_DIR}/src/FloatList.cpp
 	${TOP_SRC_DIR}/src/Floating.cpp
@@ -15,12 +13,11 @@ set(LINKED_sources
 	${TOP_SRC_DIR}/src/Layout.cpp
 	${TOP_SRC_DIR}/src/TextClass.cpp
 	${TOP_SRC_DIR}/src/Lexer.cpp
-)
+	${TOP_SRC_DIR}/src/Color.cpp)
 
 set(LINKED_headers
 	${TOP_SRC_DIR}/src/Layout.h
-	${TOP_SRC_DIR}/src/TextClass.h
-)
+	${TOP_SRC_DIR}/src/TextClass.h)
 
 set(tex2lyx_sources
 	${TOP_SRC_DIR}/src/tex2lyx/boost.cpp
@@ -33,28 +30,28 @@ set(tex2lyx_sources
 	${TOP_SRC_DIR}/src/tex2lyx/preamble.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/math.cpp
 	${TOP_SRC_DIR}/src/tex2lyx/table.cpp
-	${TOP_SRC_DIR}/src/tex2lyx/text.cpp
-)
+	${TOP_SRC_DIR}/src/tex2lyx/text.cpp)
 
 set(tex2lyx_headers
 	${TOP_SRC_DIR}/src/tex2lyx/Spacing.h
 	${TOP_SRC_DIR}/src/tex2lyx/Context.h
 	${TOP_SRC_DIR}/src/tex2lyx/Font.h
 	${TOP_SRC_DIR}/src/tex2lyx/Parser.h
-	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.h
-)
+	${TOP_SRC_DIR}/src/tex2lyx/tex2lyx.h)
 
-include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx ${TOP_SRC_DIR}/src/support/minizip ${ZLIB_INCLUDE_DIR})
+include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx
+	${TOP_SRC_DIR}/src/support/minizip ${ZLIB_INCLUDE_DIR})
 
 add_definitions(-DTEX2LYX)
 
 if(NOT MERGE_FILES)
-	add_executable(tex2lyx ${tex2lyx_sources} ${LINKED_sources} ${tex2lyx_headers} ${LINKED_headers})
-else(NOT MERGE_FILES)
+	add_executable(tex2lyx ${tex2lyx_sources} ${LINKED_sources}
+		${tex2lyx_headers} ${LINKED_headers})
+else()
 	lyx_const_touched_files(_allinone  tex2lyx_sources)
 	lyx_const_touched_files(_allinone_linked  LINKED_sources)
 	add_executable(tex2lyx  ${_allinone_files} ${_allinone_linked_files})
-endif(NOT MERGE_FILES)
+endif()
 
 
 target_link_libraries(tex2lyx  
@@ -63,16 +60,15 @@ target_link_libraries(tex2lyx
 	boost_filesystem
 	boost_regex
 	${QT_QTCORE_LIBRARY} 
-	intl
-	)
+	intl)
 	
 if(WIN32)
 	target_link_libraries(tex2lyx shlwapi)
-endif(WIN32)
+endif()
 
 if(APPLE)
 	target_link_libraries(tex2lyx "-framework Carbon")
-endif(APPLE)
+endif()
 
 project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)
 

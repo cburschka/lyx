@@ -19,11 +19,10 @@ include_directories(${TOP_SRC_DIR}/src/mathed)
 
 if(NOT MERGE_FILES)
 	add_library(mathed ${library_type} ${mathed_sources} ${mathed_headers})
-else(NOT MERGE_FILES)
+else()
 	lyx_const_touched_files(_allinone  mathed_sources)
 	add_library(mathed ${library_type} ${_allinone_files})
-endif(NOT MERGE_FILES)
-
+endif()
 
 project_source_group("${GROUP_CODE}" mathed_sources mathed_headers)
 

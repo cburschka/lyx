@@ -16,7 +16,6 @@ add_subdirectory(support)
 add_subdirectory(tex2lyx) 
 
 
-
 file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
 

@@ -10,16 +10,15 @@ set(boost_filesystem_sources
 	exception.cpp
 	operations.cpp
 	path.cpp
-	portability.cpp
-)
+	portability.cpp)
 
 lyx_add_path(boost_filesystem_sources ${TOP_SRC_DIR}/boost/libs/filesystem/src)
 
 if(NOT MERGE_FILES)
 	add_library(boost_filesystem STATIC ${boost_filesystem_sources})
-else(NOT MERGE_FILES)
+else()
 	add_definitions(-D_WIN32_WINNT=0x500)
 	lyx_const_touched_files(_allinone  boost_filesystem_sources)
 	add_library(boost_filesystem STATIC ${_allinone_files})
-endif(NOT MERGE_FILES)
+endif()
 
