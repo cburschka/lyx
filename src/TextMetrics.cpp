@@ -1003,9 +1003,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 		// Row signature; has row changed since last paint?
 		bool row_has_changed = pm.rowChangeStatus()[rowno];
 
-		// If selection is on, the current row signature differs
-		// from cache, or cursor is inside an inset _on this row_,
-		// then paint the row
+		// Paint the row if a full repaint has been requested or it has
+		// changed.
 		if (repaintAll || row_has_changed) {
 			bool const inside = (y + rit->descent() >= 0
 				&& y - rit->ascent() < ww);
