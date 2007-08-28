@@ -4,7 +4,7 @@
 # Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
 #
 
-project(lyx-${qt_postfix})
+project(lyx)
 
 include_directories(${TOP_SRC_DIR}/src)
 
@@ -30,7 +30,7 @@ list(REMOVE_ITEM lyx_sources
 if(ASPELL_FOUND)
 	include_directories(${ASPELL_INCLUDE_DIR})
 	set(lyx_sources ${lyx_sources} ${TOP_SRC_DIR}/src/ASpell.cpp)
-endif(ASPELL_FOUND)
+endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
@@ -39,22 +39,22 @@ lyx_add_msvc_pch(lyx)
 
 if(NOT MERGE_FILES)
 	set(lyx_sources ${lyx_sources})
-else(NOT MERGE_FILES)
+else()
 	lyx_const_touched_files(_allinone  lyx_sources)
 	set(lyx_sources ${_allinone_files})
-endif(NOT MERGE_FILES)
+endif()
 
-add_executable(lyx-${qt_postfix}
+add_executable(lyx
 	${WIN32_CONSOLE}
 	${lyx_sources} 
 	${lyx_headers}
 	)
 
-target_link_libraries(lyx-${qt_postfix}
+target_link_libraries(lyx
 	mathed
 	insets
 	frontends
-	frontend_${qt_postfix}
+	frontend_qt4
 	graphics
 	support
 	intl
@@ -63,15 +63,15 @@ target_link_libraries(lyx-${qt_postfix}
 )
 
 if(ASPELL_FOUND)
-	target_link_libraries(lyx-${qt_postfix} ${ASPELL_LIBRARY})
-endif(ASPELL_FOUND)
+	target_link_libraries(lyx ${ASPELL_LIBRARY})
+endif()
 
 if(APPLE)
-  target_link_libraries(lyx-${qt_postfix} "-bind_at_load" ) 
-  target_link_libraries(lyx-${qt_postfix} "-framework Carbon" ) 
-endif(APPLE)
+  target_link_libraries(lyx "-bind_at_load" ) 
+  target_link_libraries(lyx "-framework Carbon" ) 
+endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
-install(TARGETS lyx-${qt_postfix} DESTINATION bin)
+install(TARGETS lyx DESTINATION bin)
 
