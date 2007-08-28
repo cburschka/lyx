@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-19 21:22+0200\n"
+"POT-Creation-Date: 2007-08-28 20:28+0200\n"
 "PO-Revision-Date: 2007-07-09 23:15+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -8044,7 +8044,7 @@ msgstr "Horizontale Linie"
 
 #: lib/ui/classic.ui:257 src/insets/InsetPagebreak.h:49
 msgid "Page Break"
-msgstr "Seitenumbruch"
+msgstr "Neue Seite"
 
 #: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:350
 msgid "Display Formula|D"
@@ -8773,15 +8773,15 @@ msgstr "Zeilenumbruch|Z"
 
 #: lib/ui/stdmenus.inc:343
 msgid "Page Break|a"
-msgstr "Seitenumbruch|u"
+msgstr "Neue Seite|S"
 
 #: lib/ui/stdmenus.inc:344
 msgid "Clear Page|C"
-msgstr "Seite leeren|S"
+msgstr "Neue Seite (Gleitobjekte ausgeben)|e"
 
 #: lib/ui/stdmenus.inc:345
 msgid "Clear Double Page|D"
-msgstr "Doppelseite leeren|D"
+msgstr "Neue ungerade Seite (Gleitobjekte ausgeben)|u"
 
 #: lib/ui/stdmenus.inc:351
 msgid "Numbered Formula|N"
@@ -8915,11 +8915,11 @@ msgstr "Dokument drucken"
 msgid "Check spelling"
 msgstr "Rechtschreibung prüfen"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:716
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:718
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:725
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:727
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -11519,12 +11519,12 @@ msgstr ""
 "Verwende die Standard-Dokumentenklasse, da die Klasse %1$s nicht geladen "
 "werden konnte."
 
-#: src/Buffer.cpp:522 src/Buffer.cpp:528 src/BufferView.cpp:849
-#: src/BufferView.cpp:855
+#: src/Buffer.cpp:522 src/Buffer.cpp:528 src/BufferView.cpp:851
+#: src/BufferView.cpp:857
 msgid "Changes not shown in LaTeX output"
 msgstr "Änderungen nicht in der LaTeX-Ausgabe angezeigt"
 
-#: src/Buffer.cpp:523 src/BufferView.cpp:850
+#: src/Buffer.cpp:523 src/BufferView.cpp:852
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11536,7 +11536,7 @@ msgstr ""
 "Bitte installieren Sie diese Pakete oder definieren Sie \\lyxadded und "
 "\\lyxdeleted in der LaTeX-Präambel neu."
 
-#: src/Buffer.cpp:529 src/BufferView.cpp:856
+#: src/Buffer.cpp:529 src/BufferView.cpp:858
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11629,8 +11629,8 @@ msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
-"Das Dokument %1$s wurde extern verändert. Sind Sie sicher, dass Sie diese Datei "
-"überschreiben möchten?"
+"Das Dokument %1$s wurde extern verändert. Sind Sie sicher, dass Sie diese "
+"Datei überschreiben möchten?"
 
 #: src/Buffer.cpp:807
 msgid "Overwrite modified file?"
@@ -11747,57 +11747,57 @@ msgstr "LyX wird keine Ausgabe erzeugen können."
 msgid "Save bookmark"
 msgstr "Lesezeichen speichern"
 
-#: src/BufferView.cpp:719
+#: src/BufferView.cpp:721
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.cpp:728
+#: src/BufferView.cpp:730
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:915
+#: src/BufferView.cpp:917
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:922
+#: src/BufferView.cpp:924
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:929
+#: src/BufferView.cpp:931
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:932
+#: src/BufferView.cpp:934
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:978
+#: src/BufferView.cpp:980
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d Wörter in der Auswahl."
 
-#: src/BufferView.cpp:981
+#: src/BufferView.cpp:983
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d Wörter im Dokument."
 
-#: src/BufferView.cpp:986
+#: src/BufferView.cpp:988
 msgid "One word in selection."
 msgstr "Ein Wort in der Auswahl."
 
-#: src/BufferView.cpp:988
+#: src/BufferView.cpp:990
 msgid "One word in document."
 msgstr "Ein Wort im Dokument."
 
-#: src/BufferView.cpp:991
+#: src/BufferView.cpp:993
 msgid "Count words"
 msgstr "Wörter zählen"
 
-#: src/BufferView.cpp:1583
+#: src/BufferView.cpp:1585
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView.cpp:1585 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
+#: src/BufferView.cpp:1587 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
 #: src/LyXFunc.cpp:2095 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11807,31 +11807,31 @@ msgstr "Wählen Sie das einzufügende LyX-Dokument"
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView.cpp:1586 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
+#: src/BufferView.cpp:1588 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView.cpp:1592 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1594 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView.cpp:1604 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
+#: src/BufferView.cpp:1606 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
 #: src/LyXFunc.cpp:2131 src/LyXFunc.cpp:2147
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/BufferView.cpp:1615
+#: src/BufferView.cpp:1617
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1628
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1630
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
@@ -12750,7 +12750,7 @@ msgstr "&Wieder herstellen"
 msgid "Exiting."
 msgstr "LyX wird beendet."
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1341
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1346
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -13449,15 +13449,15 @@ msgstr " (automatisch)"
 msgid "No Branch in Document!"
 msgstr "Kein Zweig im Dokument!"
 
-#: src/Paragraph.cpp:1632 src/frontends/qt4/QParagraph.cpp:237
+#: src/Paragraph.cpp:1632 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/Paragraph.cpp:1692
+#: src/Paragraph.cpp:1690
 msgid "Alignment not permitted"
 msgstr "Ausrichtung nicht erlaubt"
 
-#: src/Paragraph.cpp:1693
+#: src/Paragraph.cpp:1691
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -13604,11 +13604,11 @@ msgstr "Format "
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:1452 src/Text3.cpp:1464
+#: src/Text3.cpp:1457 src/Text3.cpp:1469
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:1581 src/Text3.cpp:1592
+#: src/Text3.cpp:1586 src/Text3.cpp:1597
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -14026,11 +14026,11 @@ msgstr "Dokument nicht geladen."
 msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
-#: src/frontends/LyXView.cpp:498
+#: src/frontends/LyXView.cpp:497
 msgid " (changed)"
 msgstr " (geändert)"
 
-#: src/frontends/LyXView.cpp:502
+#: src/frontends/LyXView.cpp:501
 msgid " (read only)"
 msgstr " (schreibgeschützt)"
 
@@ -14488,19 +14488,19 @@ msgstr "Gliederung"
 msgid "Directories"
 msgstr "Verzeichnisse"
 
-#: src/frontends/qt4/GuiApplication.cpp:369
+#: src/frontends/qt4/GuiApplication.cpp:390
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:369 src/frontends/qt4/QPrefs.cpp:2031
+#: src/frontends/qt4/GuiApplication.cpp:390 src/frontends/qt4/QPrefs.cpp:2031
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/frontends/qt4/GuiApplication.cpp:370
+#: src/frontends/qt4/GuiApplication.cpp:391
 msgid "Reconfigure"
 msgstr "Neu konfigurieren"
 
-#: src/frontends/qt4/GuiApplication.cpp:370
+#: src/frontends/qt4/GuiApplication.cpp:391
 msgid "Quit %1"
 msgstr "%1 beenden"
 
@@ -14516,7 +14516,7 @@ msgstr "Normale Symbole"
 msgid "Big-sized icons"
 msgstr "Große Symbole"
 
-#: src/frontends/qt4/GuiView.cpp:729
+#: src/frontends/qt4/GuiView.cpp:733
 msgid "LyX"
 msgstr "LyX"
 
@@ -14937,7 +14937,7 @@ msgstr ""
 "Normalerweise müssen Sie diese Breite nicht festlegen, da die maximale "
 "Breite aller Punkte verwendet wird."
 
-#: src/frontends/qt4/QParagraph.cpp:175
+#: src/frontends/qt4/QParagraph.cpp:171
 msgid "Paragraph Settings"
 msgstr "Absatz-Einstellungen"
 
@@ -15567,11 +15567,11 @@ msgstr "Einfügung für optionales Argument geöffnet"
 
 #: src/insets/InsetPagebreak.h:65
 msgid "Clear Page"
-msgstr "Seite leeren"
+msgstr "Neue Seite (Gleitobjekte ausgeben)"
 
 #: src/insets/InsetPagebreak.h:81
 msgid "Clear Double Page"
-msgstr "Doppelseite leeren"
+msgstr "Neue ungerade Seite (Gleitobjekte ausgeben)"
 
 #: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
 msgid "Ref: "
@@ -15705,15 +15705,15 @@ msgstr "Fehler beim Generieren der Pixmap"
 msgid "No image"
 msgstr "Kein Bild"
 
-#: src/insets/RenderPreview.cpp:92
+#: src/insets/RenderPreview.cpp:99
 msgid "Preview loading"
 msgstr "Laden der Vorschau"
 
-#: src/insets/RenderPreview.cpp:95
+#: src/insets/RenderPreview.cpp:102
 msgid "Preview ready"
 msgstr "Vorschau bereit"
 
-#: src/insets/RenderPreview.cpp:98
+#: src/insets/RenderPreview.cpp:105
 msgid "Preview failed"
 msgstr "Die Vorschau ist fehlgeschlagen"
 
@@ -15852,11 +15852,11 @@ msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
 
-#: src/mathed/InsetMathNest.cpp:859
+#: src/mathed/InsetMathNest.cpp:867
 msgid "create new math text environment ($...$)"
 msgstr "Neue Mathe-Textumgebung erzeugen ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:862
+#: src/mathed/InsetMathNest.cpp:870
 msgid "entered math text mode (textrm)"
 msgstr "Mathe-Textmodus betreten (textrm)"
 
