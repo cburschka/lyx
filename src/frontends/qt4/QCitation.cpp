@@ -1,4 +1,4 @@
-/*
+/**
  * \file QCitation.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
@@ -6,6 +6,7 @@
  * \author Angus Leeming
  * \author Kalle Dalheimer
  * \author Abdelrazak Younes
+ * \author Richard Heck (adapted to QSelectionManager)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -190,36 +191,6 @@ QStringList QCitation::getEntriesAsQStringList() {
 }
 
 
-void QCitation::addKey(QModelIndex const & index)
-{
-	cited_keys_.append(index.data().toString());
-	selected_model_.setStringList(cited_keys_);
-}
-
-
-void QCitation::deleteKey(QModelIndex const & index)
-{
-	cited_keys_.removeAt(index.row());
-	selected_model_.setStringList(cited_keys_);
-}
-
-
-void QCitation::upKey(QModelIndex const & index)
-{
-	int pos = index.row();
-	cited_keys_.swap(pos, pos - 1);
-	selected_model_.setStringList(cited_keys_);
-}
-
-
-void QCitation::downKey(QModelIndex const & index)
-{
-	int pos = index.row();
-	cited_keys_.swap(pos, pos + 1);
-	selected_model_.setStringList(cited_keys_);
-}
-
-
 QStringList QCitation::citationStyles(int sel)
 {
 	docstring const key = qstring_to_ucs4(cited_keys_[sel]);
@@ -230,6 +201,11 @@ QStringList QCitation::citationStyles(int sel)
 QString QCitation::getKeyInfo(QString const & sel)
 {
 	return toqstr(getInfo(qstring_to_ucs4(sel)));
+}
+
+void QCitation::setCitedKeys() 
+{
+	cited_keys_ = selected_model_.stringList();
 }
 
 

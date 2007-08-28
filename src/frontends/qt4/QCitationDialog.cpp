@@ -7,6 +7,7 @@
  * \author John Levon
  * \author Jürgen Spitzmüller
  * \author Abdelrazak Younes
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -19,6 +20,7 @@
 
 #include "frontends/controllers/frontend_helpers.h"
 #include "frontends/controllers/ControlCitation.h"
+#include "qt_helpers.h"
 
 #include "support/docstring.h"
 
@@ -48,9 +50,6 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 
 	setWindowTitle(toqstr("LyX: " + getTitle()));
 
-	selectedLV->setModel(form_->selected());
-	availableLV->setModel(form_->available());
-
 	connect(citationStyleCO, SIGNAL(activated(int)),
 		this, SLOT(changed()));
 	connect(fulllistCB, SIGNAL(clicked()),
@@ -63,76 +62,24 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 		this, SLOT(changed()));
 	connect(clearPB, SIGNAL(clicked()),
 		findLE, SLOT(clear()));
-	connect(availableLV->selectionModel(),
-		SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
-		this, SLOT(availableChanged(const QModelIndex &, const QModelIndex &)));
-	connect(selectedLV->selectionModel(),
-		SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
-		this, SLOT(selectedChanged(const QModelIndex &, const QModelIndex &)));
 	connect(this, SIGNAL(rejected()), this, SLOT(cleanUp()));
-	availableLV->installEventFilter(this);
-	selectedLV->installEventFilter(this);
-	availableFocused_ = true;
+
+	selectionManager = 
+		new QSelectionManager(availableLV, selectedLV, 
+		                      addPB, deletePB, upPB, downPB, 
+		                      form_->available(), form_->selected());
+	connect(selectionManager, SIGNAL(selectionChanged()),
+		this, SLOT(setCitedKeys()));
+	connect(selectionManager, SIGNAL(updateHook()),
+		this, SLOT(updateDialog()));
+	connect(selectionManager, SIGNAL(okHook()),
+					this, SLOT(on_okPB_clicked()));
+
 }
 
 
 QCitationDialog::~QCitationDialog()
-{
-}
-
-
-bool QCitationDialog::eventFilter(QObject * obj, QEvent * event) 
-{
-	if (obj == availableLV) {
-		if (event->type() != QEvent::KeyPress)
-			return QObject::eventFilter(obj, event);
-		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
-		int const keyPressed = keyEvent->key();
-		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
-		//Enter key without modifier will add current item.
-		//Ctrl-Enter will add it and close the dialog.
-		//This is designed to work both with the main enter key
-		//and the one on the numeric keypad.
-		if ((keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) &&
-				//We want one or both of Control and Keypad, and nothing else
-				//(KeypadModifier is what you get if you use the Enter key on the
-				//numeric keypad.)
-				(!keyModifiers || 
-				 (keyModifiers == Qt::ControlModifier) ||
-				 (keyModifiers == Qt::KeypadModifier)  ||
-				 (keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier))
-				)
-			) {
-				if (addPB->isEnabled())
-					on_addPB_clicked();
-				if (keyModifiers & Qt::ControlModifier)
-					on_okPB_clicked();
-				event->accept();
-				return true;
-		} 
-	} else if (obj == selectedLV) {
-		//Delete or backspace key will delete current item
-		//...with control modifier will clear the list
-		if (event->type() != QEvent::KeyPress)
-			return QObject::eventFilter(obj, event);
-		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
-		int const keyPressed = keyEvent->key();
-		Qt::KeyboardModifiers const keyModifiers = keyEvent->modifiers();
-		if (keyPressed == Qt::Key_Delete || keyPressed == Qt::Key_Backspace) {
-			if (keyModifiers == Qt::NoModifier && deletePB->isEnabled())
-				on_deletePB_clicked();
-			else if (keyModifiers == Qt::ControlModifier) {
-				form_->clearSelection();
-				updateDialog();
-			} else
-				//ignore it otherwise
-				return QObject::eventFilter(obj, event);
-			event->accept();
-			return true;
-		}
-	}
-	return QObject::eventFilter(obj, event);
-}
+{}
 
 
 void QCitationDialog::cleanUp() 
@@ -232,15 +179,17 @@ void QCitationDialog::update()
 //two methods, though they should be divisible.
 void QCitationDialog::updateDialog()
 {
-	if (availableFocused_ || 
-	    selectedLV->selectionModel()->selectedIndexes().isEmpty()) {
-		if (availableLV->selectionModel()->selectedIndexes().isEmpty()
-					&& availableLV->model()->rowCount() > 0)
-			availableLV->setCurrentIndex(availableLV->model()->index(0,0));
-		updateInfo(availableLV);
-	} else
-		updateInfo(selectedLV);
-
+	if (selectionManager->selectedFocused()) { 
+		if (selectedLV->selectionModel()->selectedIndexes().isEmpty())
+			updateInfo(availableLV->currentIndex());
+		else
+			updateInfo(selectedLV->currentIndex());
+	} else {
+		if (availableLV->selectionModel()->selectedIndexes().isEmpty())
+			updateInfo(QModelIndex());
+		else
+			updateInfo(availableLV->currentIndex());
+	}
 	setButtons();
 
 	textBeforeED->setText(form_->textBefore());
@@ -376,26 +325,15 @@ bool QCitationDialog::isSelected(const QModelIndex & idx)
 
 void QCitationDialog::setButtons()
 {
-	int const arows = availableLV->model()->rowCount();
-	QModelIndexList const availSels = 
-			availableLV->selectionModel()->selectedIndexes();
-	addPB->setEnabled(arows > 0 &&
-			!availSels.isEmpty() &&
-			!isSelected(availSels.first()));
-
+	selectionManager->update();
 	int const srows = selectedLV->model()->rowCount();
-	QModelIndexList const selSels = 
-			selectedLV->selectionModel()->selectedIndexes();
-	int const sel_nr = 	selSels.empty() ? -1 : selSels.first().row();
-	deletePB->setEnabled(sel_nr >= 0);
-	upPB->setEnabled(sel_nr > 0);
-	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
+	applyPB->setEnabled(srows > 0);
+	okPB->setEnabled(srows > 0);
 }
 
 
-void QCitationDialog::updateInfo(QListView const * const qlv)
+void QCitationDialog::updateInfo(QModelIndex const & idx)
 {
-	QModelIndex idx = qlv->currentIndex();
 	if (idx.isValid()) {
 		QString const keytxt = form_->getKeyInfo(idx.data().toString());
 		infoML->document()->setPlainText(keytxt);
@@ -404,112 +342,9 @@ void QCitationDialog::updateInfo(QListView const * const qlv)
 }
 
 
-void QCitationDialog::on_selectedLV_clicked(const QModelIndex &)
+void QCitationDialog::setCitedKeys() 
 {
-	availableFocused_ = false;
-	updateDialog();
-}
-
-
-void QCitationDialog::selectedChanged(const QModelIndex & idx, const QModelIndex &)
-{
-	if (!idx.isValid())
-		return;
-	updateDialog();
-}
-
-
-void QCitationDialog::on_availableLV_clicked(const QModelIndex &)
-{
-	availableFocused_ = true;
-	updateDialog();
-}
-
-
-void QCitationDialog::availableChanged(const QModelIndex & idx, const QModelIndex &)
-{
-	if (!idx.isValid())
-		return;
-	availableFocused_ = true;
-	updateDialog();
-}
-
-
-void QCitationDialog::on_availableLV_doubleClicked(const QModelIndex & idx)
-{
-	if (isSelected(idx))
-		return;
-	availableFocused_ = true;
-	on_addPB_clicked();
-}
-
-
-namespace {
-//helper function for next two
-QModelIndex getSelectedIndex(QListView * lv) {
-	//Encourage compiler to use NRVO
-	QModelIndex retval = QModelIndex();
-	QModelIndexList selIdx = 
-		lv->selectionModel()->selectedIndexes();
-	if (!selIdx.empty())
-		retval = selIdx.first();
-	return retval;
-}
-}//anonymous namespace
-
-
-void QCitationDialog::on_addPB_clicked()
-{
-	QModelIndex const idxToAdd = getSelectedIndex(availableLV);
-	if (!idxToAdd.isValid())
-		return;
-	QModelIndex idx = selectedLV->currentIndex();
-	form_->addKey(idxToAdd);
-	if (idx.isValid())
-		selectedLV->setCurrentIndex(idx);
-	availableFocused_ = true;
-	updateDialog();
-}
-
-
-void QCitationDialog::on_deletePB_clicked()
-{
-	QModelIndex idx = getSelectedIndex(selectedLV);
-	if (!idx.isValid())
-		return;
-	int nrows = selectedLV->model()->rowCount();
-
-	form_->deleteKey(idx);
-
-	if (idx.row() == nrows - 1)
-		idx = idx.sibling(idx.row() - 1, idx.column());
-
-	if (nrows>1)
-		selectedLV->setCurrentIndex(idx);
-	availableFocused_ = true;
-	updateDialog();
-}
-
-
-void QCitationDialog::on_upPB_clicked()
-{
-	QModelIndex idx = selectedLV->currentIndex();
-	form_->upKey(idx);
-	selectedLV->setCurrentIndex(idx.sibling(idx.row() - 1, idx.column()));
-	availableLV->selectionModel()->reset();
-	availableFocused_ = false;
-	updateDialog();
-}
-
-
-void QCitationDialog::on_downPB_clicked()
-{
-	QModelIndex idx = selectedLV->currentIndex();
-	form_->downKey(idx);
-	selectedLV->setCurrentIndex(idx.sibling(idx.row() + 1, idx.column()));
-	availableLV->selectionModel()->reset();
-	availableFocused_ = false;
-	updateDialog();
+	form_->setCitedKeys();
 }
 
 

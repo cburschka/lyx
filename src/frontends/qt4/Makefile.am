@@ -103,6 +103,7 @@ SOURCEFILES = \
 	QPrefs.cpp \
 	QRef.cpp \
 	QSearch.cpp \
+	QSelectionManager.cpp \
 	QSendto.cpp \
 	QSetBorder.cpp \
 	QShowFile.cpp \
@@ -189,6 +190,7 @@ MOCHEADER = \
 	QPrefs.h \
 	QRef.h \
 	QSearch.h \
+	QSelectionManager.h \
 	QSendto.h \
 	QSetBorder.h \
 	QShowFile.h \

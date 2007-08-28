@@ -7,6 +7,7 @@
  * \author Angus Leeming
  * \author Kalle Dalheimer
  * \author Abdelrazak Younes
+ * \author Richard Heck (adapted to QSelectionManager)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -69,24 +70,14 @@ public:
 		bool reset = false //< whether to reset and search all keys
 		);
 
-	/// Add key to selected keys
-	void addKey(QModelIndex const &);
-
-	/// Delete key from selected keys
-	void deleteKey(QModelIndex const &);
-
-	/// Move selected key one place up
-	void upKey(QModelIndex const &);
-
-	/// Move selected key one place down
-	void downKey(QModelIndex const &);
-
 	/// List of example cite strings
 	QStringList citationStyles(int);
 
 	/// Set the Params variable for the Controller.
 	virtual void apply(int const choice, bool const full, bool const force,
 					  QString before, QString after);
+	
+	void setCitedKeys();
 
 private:
 	/// available keys.
