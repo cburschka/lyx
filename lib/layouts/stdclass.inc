@@ -36,8 +36,8 @@ Style Standard
 	LabelType             No_Label
 End
 
-Input stdcharstyles.inc
-Input stdcustom.inc
+#Input stdcharstyles.inc
+#Input stdcustom.inc
 Input stdfloats.inc
 Input stdcounters.inc
 Input stdinsets.inc
