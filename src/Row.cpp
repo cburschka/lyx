@@ -23,13 +23,8 @@
 namespace lyx {
 
 
-RowMetrics::RowMetrics()
-	: separator(0), hfill(0), label_hfill(0), x(0)
-{}
-
-
 Row::Row()
-	: pos_(0), end_(0)
+	: pos_(0), end_(0), separator(0), hfill(0), label_hfill(0), x(0)
 {}
 
 

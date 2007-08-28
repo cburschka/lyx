@@ -60,19 +60,6 @@ public:
 	/// current debugging only
 	void dump(const char * = "") const;
 
-private:
-	/// first pos covered by this row
-	pos_type pos_;
-	/// one behind last pos covered by this row
-	pos_type end_;
-	/// Row dimension.
-	Dimension dim_;
-};
-
-
-class RowMetrics {
-public:
-	RowMetrics();
 	/// width of a separator (i.e. space)
 	double separator;
 	/// width of hfills in the body
@@ -81,8 +68,15 @@ public:
 	double label_hfill;
 	/// the x position of the row
 	double x;
-};
 
+private:
+	/// first pos covered by this row
+	pos_type pos_;
+	/// one behind last pos covered by this row
+	pos_type end_;
+	/// Row dimension.
+	Dimension dim_;
+};
 
 
 } // namespace lyx

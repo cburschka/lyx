@@ -63,16 +63,11 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  bidi_(bidi), erased_(pi.erased_),
 	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
-	RowMetrics m = text_metrics_.computeRowMetrics(pit_, row_);
 	bidi_.computeTables(par_, bv_.buffer(), row_);
-	x_ = m.x + xo_;
+	x_ = row_.x + xo_;
 
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
 	//row_.dump();
-
-	separator_ = m.separator;
-	hfill_ = m.hfill;
-	label_hfill_ = m.label_hfill;
 
 	BOOST_ASSERT(pit >= 0);
 	BOOST_ASSERT(pit < int(text.paragraphs().size()));
@@ -731,7 +726,7 @@ void RowPainter::paintText()
 			int const lwidth = theFontMetrics(getLabelFont())
 				.width(layout->labelsep);
 
-			x_ += label_hfill_ + lwidth - width_pos;
+			x_ += row_.label_hfill + lwidth - width_pos;
 		}
 
 		if (par_.isHfill(pos)) {
@@ -746,15 +741,15 @@ void RowPainter::paintText()
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {
-					pain_.line(int(x_), y2, int(x_ + hfill_), y2,
+					pain_.line(int(x_), y2, int(x_ + row_.hfill), y2,
 						  Color::added_space,
 						  Painter::line_onoffdash);
-					x_ += hfill_;
+					x_ += row_.hfill;
 				} else {
-					pain_.line(int(x_), y2, int(x_ + label_hfill_), y2,
+					pain_.line(int(x_), y2, int(x_ + row_.label_hfill), y2,
 						  Color::added_space,
 						  Painter::line_onoffdash);
-					x_ += label_hfill_;
+					x_ += row_.label_hfill;
 				}
 				pain_.line(int(x_), y1, int(x_), y0, Color::added_space);
 			}
@@ -765,7 +760,7 @@ void RowPainter::paintText()
 			double const orig_x = x_;
 			x_ += width_pos;
 			if (pos >= body_pos)
-				x_ += separator_;
+				x_ += row_.separator;
 			++vpos;
 			paintForeignMark(orig_x, orig_font);
 		} else {

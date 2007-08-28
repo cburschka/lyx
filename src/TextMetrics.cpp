@@ -242,6 +242,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		rowBreakPoint(width, pit, row);
 		setRowWidth(right_margin, pit, row);
 		setHeightOfRow(pit, row);
+		computeRowMetrics(pit, row);
 		pm.rows().push_back(row);
 		pm.dim().wid = std::max(pm.dim().wid, row.width());
 		pm.dim().des += row.height();
@@ -255,6 +256,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.endpos(z);
 		setRowWidth(right_margin, pit, row);
 		setHeightOfRow(pit, row);
+		computeRowMetrics(pit, row);
 		pm.rows().push_back(row);
 		pm.dim().des += row.height();
 	}
@@ -271,10 +273,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	return changed;
 }
 
-RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
-		Row const & row) const
+void TextMetrics::computeRowMetrics(pit_type const pit,
+		Row & row) const
 {
-	RowMetrics result;
 	Buffer & buffer = bv_->buffer();
 	Paragraph const & par = text_->getPar(pit);
 
@@ -282,9 +283,9 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 
 	bool const is_rtl = text_->isRTL(buffer, par);
 	if (is_rtl)
-		result.x = rightMargin(pit);
+		row.x = rightMargin(pit);
 	else
-		result.x = text_->leftMargin(buffer, max_width_, pit, row.pos());
+		row.x = text_->leftMargin(buffer, max_width_, pit, row.pos());
 
 	// is there a manual margin with a manual label
 	LayoutPtr const & layout = par.layout();
@@ -303,7 +304,7 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 			++nlh;
 
 		if (nlh && !par.getLabelWidthString().empty())
-			result.label_hfill = labelFill(pit, row) / double(nlh);
+			row.label_hfill = labelFill(pit, row) / double(nlh);
 	}
 
 	// are there any hfills in the row?
@@ -311,7 +312,7 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 
 	if (nh) {
 		if (w > 0)
-			result.hfill = w / nh;
+			row.hfill = w / nh;
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
 	// we force the LEFT_ALIGN'edness!
@@ -362,17 +363,17 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 			    && !par.isNewline(row.endpos() - 1)
 			    && !disp_inset
 				) {
-				result.separator = w / ns;
+				row.separator = w / ns;
 			} else if (is_rtl) {
-				result.x += w;
+				row.x += w;
 			}
 			break;
 		}
 		case LYX_ALIGN_RIGHT:
-			result.x += w;
+			row.x += w;
 			break;
 		case LYX_ALIGN_CENTER:
-			result.x += w / 2;
+			row.x += w / 2;
 			break;
 		}
 	}
@@ -384,14 +385,12 @@ RowMetrics TextMetrics::computeRowMetrics(pit_type const pit,
 		if (body_pos > 0
 		    && (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		{
-			result.x += theFontMetrics(text_->getLabelFont(buffer, par)).
+			row.x += theFontMetrics(text_->getLabelFont(buffer, par)).
 				width(layout->labelsep);
 			if (body_pos <= end)
-				result.x += result.label_hfill;
+				row.x += row.label_hfill;
 		}
 	}
-
-	return result;
 }
 
 
@@ -815,7 +814,6 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	/// x Paragraph coordinate is always 0 for main text anyway.
 	int const xo = main_text_? 0 : bv_->coordCache().get(text_, pit).x_;
 	x -= xo;
-	RowMetrics const r = computeRowMetrics(pit, row);
 	Paragraph const & par = text_->getPar(pit);
 	Bidi bidi;
 	bidi.computeTables(par, buffer, row);
@@ -829,7 +827,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 	pos_type body_pos = par.beginOfBody();
 
-	double tmpx = r.x;
+	double tmpx = row.x;
 	double last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
@@ -848,7 +846,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		if (body_pos > 0 && c == body_pos - 1) {
 			FontMetrics const & fm = theFontMetrics(
 				text_->getLabelFont(buffer, par));
-			tmpx += r.label_hfill + fm.width(layout->labelsep);
+			tmpx += row.label_hfill + fm.width(layout->labelsep);
 			if (par.isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(pit, body_pos - 1);
 		}
@@ -856,13 +854,13 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		if (par.hfillExpansion(row, c)) {
 			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
-				tmpx += r.hfill;
+				tmpx += row.hfill;
 			else
-				tmpx += r.label_hfill;
+				tmpx += row.label_hfill;
 		} else if (par.isSeparator(c)) {
 			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
-				tmpx += r.separator;
+				tmpx += row.separator;
 		} else {
 			tmpx += singleWidth(pit, c);
 		}

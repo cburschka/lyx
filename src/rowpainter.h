@@ -99,9 +99,6 @@ private:
 	int const yo_;    // current baseline
 	double x_;
 	int width_;
-	double separator_;
-	double hfill_;
-	double label_hfill_;
 };
 
 } // namespace lyx

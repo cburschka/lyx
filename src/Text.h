@@ -39,7 +39,6 @@ class Color_color;
 class Cursor;
 class PainterInfo;
 class Row;
-class RowMetrics;
 class Spacing;
 
 

@@ -48,7 +48,6 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "rowpainter.h"
 #include "Undo.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"
@@ -1656,8 +1655,7 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 	pos_type cursor_vpos = 0;
 
 	Buffer const & buffer = bv.buffer();
-	RowMetrics const m = tm.computeRowMetrics(pit, row);
-	double x = m.x;
+	double x = row.x;
 	Bidi bidi;
 	bidi.computeTables(par, buffer, row);
 
@@ -1705,7 +1703,7 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 		if (body_pos > 0 && pos == body_pos - 1) {
 			FontMetrics const & labelfm = theFontMetrics(
 				getLabelFont(buffer, par));
-			x += m.label_hfill + labelfm.width(par.layout()->labelsep);
+			x += row.label_hfill + labelfm.width(par.layout()->labelsep);
 			if (par.isLineSeparator(body_pos - 1))
 				x -= tm.singleWidth(pit, body_pos - 1);
 		}
@@ -1719,9 +1717,9 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 		x += pm.singleWidth(pos, font);
 
 		if (par.hfillExpansion(row, pos))
-			x += (pos >= body_pos) ? m.hfill : m.label_hfill;
+			x += (pos >= body_pos) ? row.hfill : row.label_hfill;
 		else if (par.isSeparator(pos) && pos >= body_pos)
-			x += m.separator;
+			x += row.separator;
 	}
 
 	// see correction above
