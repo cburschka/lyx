@@ -37,7 +37,6 @@
 #include "output_latex.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "rowpainter.h"
 #include "sgml.h"
 #include "TexRow.h"
 #include "VSpace.h"
