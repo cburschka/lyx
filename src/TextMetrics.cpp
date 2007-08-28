@@ -965,6 +965,8 @@ int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
 // only used for inset right now. should also be used for main text
 void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 {
+	if (par_metrics_.empty())
+		return;
 	ParMetricsCache::const_iterator it = par_metrics_.begin();
 	ParMetricsCache::const_iterator const end = par_metrics_.end();
 	y -= it->second.ascent();
