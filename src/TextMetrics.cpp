@@ -976,26 +976,6 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 	}
 }
 
-namespace {
-
-bool CursorOnRow(PainterInfo & pi, pit_type const pit,
-	RowList::const_iterator rit, Text const & text)
-{
-	// Is there a cursor on this row (or inside inset on row)
-	Cursor & cur = pi.base.bv->cursor();
-	for (size_type d = 0; d < cur.depth(); ++d) {
-		CursorSlice const & sl = cur[d];
-		if (sl.text() == &text
-		    && sl.pit() == pit
-		    && sl.pos() >= rit->pos()
-		    && sl.pos() <= rit->endpos())
-			return true;
-	}
-	return false;
-}
-
-} // namespace anon
-
 
 void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 	 bool repaintAll) const
@@ -1021,12 +1001,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 		// Row signature; has row changed since last paint?
 		bool row_has_changed = pm.rowChangeStatus()[rowno];
 
-		bool cursor_on_row = CursorOnRow(pi, pit, rit, *text_);
-
 		// If selection is on, the current row signature differs
 		// from cache, or cursor is inside an inset _on this row_,
 		// then paint the row
-		if (repaintAll || row_has_changed || cursor_on_row) {
+		if (repaintAll || row_has_changed) {
 			bool const inside = (y + rit->descent() >= 0
 				&& y - rit->ascent() < ww);
 			// it is not needed to draw on screen if we are not inside.
@@ -1046,8 +1024,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 					LYXERR(Debug::PAINTING) << "#";
 				else
 					LYXERR(Debug::PAINTING) << "[" <<
-						repaintAll << row_has_changed <<
-						cursor_on_row << "]";
+						repaintAll << row_has_changed << "]";
 			}
 			rp.paintAppendix();
 			rp.paintDepthBar();
