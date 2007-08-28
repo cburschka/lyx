@@ -40,7 +40,6 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
-#include "rowpainter.h"
 #include "Row.h"
 #include "sgml.h"
 #include "TexRow.h"
