@@ -28,7 +28,7 @@ Row::Row()
 {}
 
 
-Row::Row(pos_type pos)
+Row::Row(pos_type pos), separator(0), hfill(0), label_hfill(0), x(0)
 	: pos_(pos), end_(0)
 {}
 
