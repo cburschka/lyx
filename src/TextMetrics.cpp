@@ -229,7 +229,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		Font const & font = ii->inset->noFontChange() ?
 			bufferfont : text_->getFont(buffer, par, ii->pos);
 		MetricsInfo mi(bv_, font, w);
-		ii->inset->metrics(mi, dim);
+		changed |= ii->inset->metrics(mi, dim);
 		changed |= (old_dim != dim);
 	}
 
