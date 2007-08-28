@@ -18143,6 +18143,12 @@ name "Floats ! Algorithms"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "sub:Algorithm-Floats"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18284,11 +18290,11 @@ after
 hyperref
 \series default
 :
-\series bold
-
 \begin_inset VSpace defskip
 \end_inset
 
+
+\series bold
 
 \newline
 
@@ -18330,7 +18336,39 @@ hphantom{ }
 begin{Xalgorithm}[#1]}{
 \backslash
 end{Xalgorithm}}
+\series default
+
 \begin_inset VSpace defskip
+\end_inset
+
+
+\newline
+To insert the list of algorithms you can in this case not use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+List\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+TOC\SpecialChar \menuseparator
+List of Algorithms
+\family default
+ but have to use this command in ERT instead:
+\newline
+
+\series bold
+
+\backslash
+listof{Xalgorithm}{List of Algorithms}
+\series default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+
+\series medium
+is used at the end of this document
+\end_layout
+
 \end_inset
 
 
@@ -30747,11 +30785,11 @@ status collapsed
 
 \end_inset
 
- about new LyX-features planned for the release 
+ about new features in 
 \family sans
-LyX 1.5
+LyX 1.5.0
 \family default
-.0.
+.
 \end_layout
 
 \begin_layout Standard
@@ -30772,6 +30810,39 @@ LyX 1.5
 
 \begin_layout Standard
 \begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+listof{Xalgorithm}{List of Algorithms}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Algorithm-Floats"
+
+\end_inset
+
+ for a description
+\end_layout
 
 \end_inset
 

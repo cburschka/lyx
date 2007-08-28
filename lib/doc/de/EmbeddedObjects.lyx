@@ -304,28 +304,12 @@ Version 1.5.2-0
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 26.
+letzte Änderung: 29.
  August 2007
 \end_layout
 
 \begin_layout Standard
 \begin_inset LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
 
 \end_inset
 
@@ -19082,6 +19066,12 @@ name "Gleitobjekte ! Algorithmen"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "uab:Gleitobjekt-Algorithmen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -19209,11 +19199,11 @@ nach
 hyperref
 \series default
  folgende Befehle einfügen:
-\series bold
-
 \begin_inset VSpace defskip
 \end_inset
 
+
+\series bold
 
 \newline
 
@@ -19255,7 +19245,39 @@ hphantom{ }
 begin{Xalgorithm}[#1]}{
 \backslash
 end{Xalgorithm}}
+\series default
+
 \begin_inset VSpace defskip
+\end_inset
+
+
+\newline
+Um das Algorithmenverzeichnis einzufügen, kann in diesem Fall nicht das
+ Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Liste\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+Inhaltsverzeichnis\SpecialChar \menuseparator
+Algorithmenverzeichnis
+\family default
+ nicht verwendet werden.
+ Stattdessen wird dieser Befehl als ERT eingefügt:
+\newline
+
+\series bold
+
+\backslash
+listof{Xalgorithm}{Algorithmenverzeichnis}
+\series default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+wird am Ende dieses Dokuments verwendet
+\end_layout
+
 \end_inset
 
 
@@ -31828,15 +31850,64 @@ status collapsed
 
 \end_inset
 
- über neue LyX-Funktionen für 
+ über neue Funktionen in 
 \family sans
-LyX 1.5
+LyX 1.5.0
 \family default
 .
 \end_layout
 
 \begin_layout Standard
 \begin_inset LatexCommand printindex
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+listof{Xalgorithm}{Algorithmenverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+siehe Abschnitt\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "uab:Gleitobjekt-Algorithmen"
+
+\end_inset
+
+ für eine Beschreibung
+\end_layout
 
 \end_inset
 

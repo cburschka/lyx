@@ -18180,6 +18180,12 @@ name "Flotantes ! Algoritmos"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "sub:Algoritmos-Flotantes"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18316,10 +18322,14 @@ después
 \emph default
  de cargar el comando 
 \series bold
-hyperref:
+hyperref
+\series default
+:
 \begin_inset VSpace defskip
 \end_inset
 
+
+\series bold
 
 \newline
 
@@ -18360,11 +18370,11 @@ hphantom{ }
 begin{Xalgorithm}[#1]}{
 \backslash
 end{Xalgorithm}}
+\series default
+
 \begin_inset VSpace defskip
 \end_inset
 
-
-\series default
 
 \newline
 Donde 
@@ -18384,6 +18394,42 @@ algorithm
 \end_inset
 
  en el lenguaje deseado.
+\newline
+
+\lang english
+To insert the list of algorithms you can in this case not use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+List\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+TOC\SpecialChar \menuseparator
+List of Algorithms
+\family default
+ but have to use this command in ERT instead:
+\lang spanish
+
+\newline
+
+\series bold
+
+\backslash
+listof{Xalgorithm}{Lista de algoritmos}
+\series default
+\lang english
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+
+\series medium
+\lang english
+is used at the end of this document
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -30998,10 +31044,10 @@ status collapsed
 
 \end_inset
 
- sobre características nuevas previstas para la versión 
+ sobre características nuevas para la versión 
 \family sans
 LyX\InsetSpace ~
-1.5
+1.5.0
 \family default
 .
 \end_layout
@@ -31024,6 +31070,43 @@ LyX\InsetSpace ~
 
 \begin_layout Standard
 \begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+listof{Xalgorithm}{Lista de algoritmos}
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+
+\lang english
+see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Algoritmos-Flotantes"
+
+\end_inset
+
+ for a description
+\end_layout
 
 \end_inset
 
