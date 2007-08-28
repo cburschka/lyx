@@ -268,7 +268,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 	// Update the row change statuses. The painter will need that info
 	// in order to know which row has to be repainted.
-	pm.updateRowChangeStatus();
+	pm.updateRowChangeStatus(bv_->buffer().params());
 
 	return changed;
 }
