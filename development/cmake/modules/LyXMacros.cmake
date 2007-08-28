@@ -25,6 +25,8 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  
 
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+
 macro(lyx_add_path _list _prefix)
 	set(_tmp)
    	foreach(_current ${${_list}})
@@ -35,9 +37,10 @@ macro(lyx_add_path _list _prefix)
 endmacro(lyx_add_path _out _prefix)
 
 
-#create the implementation files from the ui files and add them to the list of sources
+#create the implementation files from the ui files and add them
+# to the list of sources
 #usage: LYX_ADD_QT4_UI_FILES(foo_SRCS ${ui_files})
-macro (LYX_ADD_UI_FILES _sources _ui)
+macro(LYX_ADD_UI_FILES _sources _ui)
    foreach (_current_FILE ${ARGN})
 
       get_filename_component(_tmp_FILE ${_current_FILE} ABSOLUTE)
@@ -59,11 +62,11 @@ macro (LYX_ADD_UI_FILES _sources _ui)
       )
       set(${_ui} ${${_ui}} ${_header})
    endforeach (_current_FILE)
-endmacro (LYX_ADD_UI_FILES)
+endmacro(LYX_ADD_UI_FILES)
 
 
 
-MACRO (LYX_AUTOMOC)
+macro(LYX_AUTOMOC)
    if(QT4_GET_MOC_INC_DIRS)
       QT4_GET_MOC_INC_DIRS(_moc_INCS)
    endif()
@@ -102,11 +105,9 @@ MACRO (LYX_AUTOMOC)
           
           #message(STATUS "moc : ${_header}")
 
-
-
-               #set(_header ${CMAKE_CURRENT_SOURCE_DIR}/${_basename}.h)
-               #set(_header ${_abs_PATH}/${_basename}.h)
-               set(_moc    ${CMAKE_CURRENT_BINARY_DIR}/${_current_MOC})
+					 #set(_header ${CMAKE_CURRENT_SOURCE_DIR}/${_basename}.h)
+					 #set(_header ${_abs_PATH}/${_basename}.h)
+					 set(_moc    ${CMAKE_CURRENT_BINARY_DIR}/${_current_MOC})
                
    #set(_moc    ${_abs_PATH}/${_current_MOC})
        add_custom_command(OUTPUT ${_moc}

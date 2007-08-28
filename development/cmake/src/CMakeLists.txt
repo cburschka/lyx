@@ -58,8 +58,7 @@ target_link_libraries(lyx
 	support
 	intl
 	${QT_QTMAIN_LIBRARY}
-	boost_iostreams
-)
+	boost_iostreams)
 
 if(ASPELL_FOUND)
 	target_link_libraries(lyx ${ASPELL_LIBRARY})

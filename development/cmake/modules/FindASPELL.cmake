@@ -33,6 +33,8 @@
 #	ASPELL_DEFINITIONS - Compiler switches required for using ASPELL
 #
 
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+
 if(WIN32)
 	file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _program_FILES_DIR)
 endif()

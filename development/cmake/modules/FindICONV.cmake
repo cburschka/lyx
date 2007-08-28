@@ -25,31 +25,29 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  
 
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+
 if (ICONV_INCLUDE_DIR)
   # Already in cache, be silent
   set(ICONV_FIND_QUIETLY TRUE)
 endif()
 
-FIND_PATH(ICONV_INCLUDE_DIR iconv.h
+find_path(ICONV_INCLUDE_DIR iconv.h
  /usr/include
- /usr/local/include
-)
+ /usr/local/include)
 
 set(POTENTIAL_ICONV_LIBS iconv libiconv libiconv2)
 
-FIND_LIBRARY(ICONV_LIBRARY NAMES ${POTENTIAL_ICONV_LIBS}
-PATHS
- /usr/lib
- /usr/local/lib
-)
+find_library(ICONV_LIBRARY NAMES ${POTENTIAL_ICONV_LIBS}
+	PATHS /usr/lib /usr/local/lib)
 
 if(WIN32)
 	set(ICONV_DLL_NAMES iconv.dll  libiconv.dll libiconv2.dll)
-	FIND_FILE(ICONV_DLL   
+	find_file(ICONV_DLL   
 					NAMES ${ICONV_DLL_NAMES}
 					PATHS ENV PATH
 					NO_DEFAULT_PATH)
-	FIND_FILE(ICONV_DLL_HELP   
+	find_file(ICONV_DLL_HELP   
 					NAMES ${ICONV_DLL_NAMES}
 					PATHS ENV PATH
 					${ICONV_INCLUDE_DIR}/../bin)
@@ -58,7 +56,7 @@ if(WIN32)
 			message(FATAL_ERROR "Could not find iconv.dll, please add correct your PATH environment variable")
 		endif()
 		if(NOT ICONV_DLL AND ICONV_DLL_HELP)
-			GET_FILENAME_COMPONENT(ICONV_DLL_HELP ${ICONV_DLL_HELP} PATH)
+			get_filename_component(ICONV_DLL_HELP ${ICONV_DLL_HELP} PATH)
 			message(STATUS)
 			message(STATUS "Could not find iconv.dll in standard search path, please add ")
 			message(STATUS "${ICONV_DLL_HELP}")
@@ -98,4 +96,4 @@ else()
    endif()
 endif()
 
-MARK_AS_ADVANCED(ICONV_LIBRARY ICONV_INCLUDE_DIR)
+mark_as_advanced(ICONV_LIBRARY ICONV_INCLUDE_DIR)

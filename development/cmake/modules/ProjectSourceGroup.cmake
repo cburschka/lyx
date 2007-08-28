@@ -26,9 +26,11 @@
 #  
 
 # folders in the msvc projects
-# mode==flat  : headers and ourses in no folders
+# mode==flat  : headers and sources not in folders
 # mode==split : standard behavior of cmake, split headers and sources
-# mode== <other values" : code is in this folder
+# mode==<other values> : code is in this folder
+
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 macro(project_source_group mode sources headers)
 	#message(STATUS ${mode})

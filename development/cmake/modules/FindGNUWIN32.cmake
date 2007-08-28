@@ -2,6 +2,8 @@
 #  from kdelibs
 #
 
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+
 if(WIN32)
 
 	# check if GNUWIN32_DIR is already set 
