@@ -104,15 +104,6 @@ private:
 	double label_hfill_;
 };
 
-/// some space for drawing the 'nested' markers (in pixel)
-inline int nestMargin() { return 15; }
-
-/// margin for changebar
-inline int changebarMargin() { return 12; }
-
-/// right margin
-inline int rightMargin() { return 10; }
-
 } // namespace lyx
 
 #endif // ROWPAINTER_H
