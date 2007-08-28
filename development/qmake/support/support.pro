@@ -7,6 +7,7 @@ QT = core
 
 INC += boost
 INC += src
+INC += src/support/minizip
 
 HPP += ExceptionMessage.h
 HPP += FileFilterList.h
@@ -49,6 +50,12 @@ HPP += types.h
 HPP += unicode.h
 HPP += userinfo.h
 
+HPP += minizip/crypt.h
+HPP += minizip/ioapi.h
+HPP += minizip/iowin32.h
+HPP += minizip/unzip.h
+HPP += minizip/zip.h
+
 CPP += FileFilterList.cpp
 CPP += FileMonitor.cpp
 CPP += FileName.cpp
@@ -84,6 +91,11 @@ CPP += textutils.cpp
 CPP += unicode.cpp
 CPP += unlink.cpp
 CPP += userinfo.cpp
+
+CPP += minizip/ioapi.c
+CPP += minizip/iowin32.c
+CPP += minizip/unzip.c
+CPP += minizip/zip.c
 
 for(FILE,CPP) { SOURCES += $${BUILD_BASE_SOURCE_DIR}/src/support/$${FILE} }
 for(FILE,HPP) { HEADERS += $${BUILD_BASE_SOURCE_DIR}/src/support/$${FILE} }
