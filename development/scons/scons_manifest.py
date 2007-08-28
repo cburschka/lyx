@@ -899,6 +899,7 @@ src_frontends_qt4_header_files = Split('''
     QPrint.h
     QRef.h
     QSearch.h
+    QSelectionManager.h
     QSendto.h
     QSetBorder.h
     QShowFile.h
@@ -988,6 +989,7 @@ src_frontends_qt4_files = Split('''
     QPrint.cpp
     QRef.cpp
     QSearch.cpp
+    QSelectionManager.cpp
     QSendto.cpp
     QSetBorder.cpp
     QShowFile.cpp
