@@ -352,9 +352,6 @@ env.AppendUnique(LIBPATH = ['$LOCALLIBPATH'])
 # 4. Variables that will be used to replace variables in some_file.in
 #     lib/lyx2lyx/lyx2lyx_version.py.in
 #       PACKAGE_VERSION
-# FIXME Bo: Please look here, that's not needed anymore (Andre')
-#     src/support/Package.cpp.in:
-#       TOP_SRCDIR, LOCALEDIR, LYX_DIR, PROGRAM_SUFFIX
 
 # full path name is used to build msvs project files
 # and to replace TOP_SRCDIR in package.C
@@ -385,9 +382,6 @@ if env.has_key('version_suffix'):
 else:
     program_suffix = ''
 
-# FIXME Bo: Please look here, can this be simplified? (Andre')
-# used by Package.cpp.in
-env['PROGRAM_SUFFIX'] = program_suffix
 
 # whether or not add suffix to file and directory names
 add_suffix = packaging_method != 'windows'
@@ -870,7 +864,6 @@ env['VERSION_INFO'] = '''Configuration
   Linker user flags:              %s
 Build info:
   Builing directory:              %s
-  Local library directory:        %s
   Libraries paths:                %s
   Boost libraries:                %s
   include search path:            %s
@@ -885,9 +878,9 @@ Frontend:
     env.subst('$CXX'), env.subst('$CXXFLAGS'),
     env.subst('$CPPFLAGS'), env.subst('$CXXFLAGS'),
     env.subst('$LINKFLAGS'), env.subst('$LINKFLAGS'),
-    env.subst('$BUILDDIR'), env.subst('$LOCALLIBPATH'),
-    str(env['LIBPATH']), str(boost_libraries),
-    str(env['CPPPATH']),
+    env.subst('$LOCALLIBPATH'),
+    env.subst('$LIBPATH'), str(boost_libraries),
+    env.subst('$CPPPATH'),
     frontend, packaging_method,
     prefix, env['LYX_DIR'])
 
@@ -1045,13 +1038,13 @@ result = utils.createConfigFile(conf,
             'Full version info'),
         ('#define LYX_DATE "%s"' % lyx_date,
             'Date of release'),
-        ('#define PROGRAM_SUFFIX "%s"' % '$PROGRAM_SUFFIX',
+        ('#define PROGRAM_SUFFIX "%s"' % program_suffix,
             'Program version suffix'),
-        ('#define LYX_ABS_INSTALLED_DATADIR "%s"' % '$LYX_DIR',
+        ('#define LYX_ABS_INSTALLED_DATADIR "%s"' % env.subst('$LYX_DIR'),
             'Hard coded system support directory'),
-        ('#define LYX_ABS_INSTALLED_LOCALEDIR "%s"' % '$LOCALEDIR',
+        ('#define LYX_ABS_INSTALLED_LOCALEDIR "%s"' % env.subst('$LOCALEDIR'),
             'Hard coded locale directory'),
-        ('#define LYX_ABS_TOP_SRCDIR "%s"' % '$TOP_SRCDIR',
+        ('#define LYX_ABS_TOP_SRCDIR "%s"' % env.subst('$TOP_SRCDIR'),
             'Top source directory'),
         ('#define BOOST_ALL_NO_LIB 1',
             'disable automatic linking of boost libraries.'),
@@ -1503,12 +1496,9 @@ if (included_gettext and not libExists('included_intl')) or 'intl' in BUILD_TARG
 #
 # src/support
 #
-frontend_env.Depends('$BUILDDIR/src/support/Package.cpp', '$BUILDDIR/src/config.h')
-Package_cpp = env.substFile('$BUILDDIR/src/support/Package.cpp', '$TOP_SRCDIR/src/support/Package.cpp.in')
-
 support = frontend_env.StaticLibrary(
     target = '$LOCALLIBPATH/support',
-    source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files] + Package_cpp + \
+    source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files] + \
         ['$BUILDDIR/src/support/minizip/%s' % x for x in src_support_minizip_files],
     CCFLAGS =  [
         '$CCFLAGS',
