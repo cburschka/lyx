@@ -29,12 +29,12 @@ RowMetrics::RowMetrics()
 
 
 Row::Row()
-	: pos_(0), end_(0), ascent_(0), descent_(0), width_(0)
+	: pos_(0), end_(0)
 {}
 
 
 Row::Row(pos_type pos)
-	: pos_(pos), end_(0), ascent_(0), descent_(0), width_(0)
+	: pos_(pos), end_(0)
 {}
 
 
@@ -62,36 +62,12 @@ pos_type Row::endpos() const
 }
 
 
-void Row::width(int w)
-{
-	width_ = w;
-}
-
-
-int Row::width() const
-{
-	return width_;
-}
-
-
-void Row::ascent(int b)
-{
-	ascent_ = b;
-}
-
-
-int Row::ascent() const
-{
-	return ascent_;
-}
-
-
 void Row::dump(const char * s) const
 {
 	lyxerr << s << " pos: " << pos_ << " end: " << end_
-		<< " width: " << width_
-		<< " ascent: " << ascent_
-		<< " descent: " << descent_
+		<< " width: " << dim_.wid
+		<< " ascent: " << dim_.asc
+		<< " descent: " << dim_.des
 		<< std::endl;
 }
 

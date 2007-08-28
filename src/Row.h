@@ -17,6 +17,8 @@
 
 #include "support/types.h"
 
+#include "Dimension.h"
+
 
 namespace lyx {
 
@@ -40,19 +42,21 @@ public:
 	///
 	pos_type endpos() const;
 	///
-	int height() const { return ascent_ + descent_; }
+	Dimension const & dimension() const { return dim_; }
 	///
-	void width(int w);
+	int height() const { return dim_.height(); }
 	///
-	int width() const;
+	void width(int w) { dim_.wid = w; }
 	///
-	void ascent(int b);
+	int width() const { return dim_.wid; }
 	///
-	int ascent() const;
+	void ascent(int a) { dim_.asc = a; }
 	///
-	void descent(int b) { descent_ = b; }
+	int ascent() const { return dim_.asc; }
 	///
-	int descent() const { return descent_; }
+	void descent(int d) { dim_.des = d; }
+	///
+	int descent() const { return dim_.des; }
 	/// current debugging only
 	void dump(const char * = "") const;
 
@@ -61,12 +65,8 @@ private:
 	pos_type pos_;
 	/// one behind last pos covered by this row
 	pos_type end_;
-	///
-	int ascent_;
-	///
-	int descent_;
-	///
-	int width_;
+	/// Row dimension.
+	Dimension dim_;
 };
 
 
