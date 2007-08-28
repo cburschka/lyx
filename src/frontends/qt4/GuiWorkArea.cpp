@@ -25,7 +25,6 @@
 #include "debug.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
-#include "rowpainter.h"
 #include "version.h"
 
 #include "support/filetools.h" // LibFileSearch
