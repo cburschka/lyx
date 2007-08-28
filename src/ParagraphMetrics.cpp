@@ -21,6 +21,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "Counters.h"
 #include "Encoding.h"
 #include "debug.h"
@@ -32,9 +33,6 @@
 #include "Row.h"
 #include "OutputParams.h"
 #include "paragraph_funcs.h"
-
-#include "rowpainter.h"
-
 #include "sgml.h"
 #include "TexRow.h"
 #include "VSpace.h"
