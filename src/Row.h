@@ -34,29 +34,30 @@ public:
 	///
 	Row(pos_type pos);
 	///
+	bool changed() const { return changed_; }
+	///
+	void setCrc(size_type crc);
+	///
 	void pos(pos_type p);
 	///
-	pos_type pos() const;
+	pos_type pos() const { return pos_; }
 	///
 	void endpos(pos_type p);
 	///
-	pos_type endpos() const;
+	pos_type endpos() const { return end_; }
+	///
+	void setDimension(Dimension const & dim);
 	///
 	Dimension const & dimension() const { return dim_; }
 	///
 	int height() const { return dim_.height(); }
 	///
-	void width(int w) { dim_.wid = w; }
-	///
 	int width() const { return dim_.wid; }
-	///
-	void ascent(int a) { dim_.asc = a; }
 	///
 	int ascent() const { return dim_.asc; }
 	///
-	void descent(int d) { dim_.des = d; }
-	///
 	int descent() const { return dim_.des; }
+
 	/// current debugging only
 	void dump(const char * = "") const;
 
@@ -70,6 +71,10 @@ public:
 	double x;
 
 private:
+	/// has the Row appearance changed since last drawing?
+	bool changed_;
+	/// CRC of row contents.
+	size_type crc_;
 	/// first pos covered by this row
 	pos_type pos_;
 	/// one behind last pos covered by this row

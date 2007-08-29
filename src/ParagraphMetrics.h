@@ -40,9 +40,6 @@ public:
 	ParagraphMetrics(Paragraph const & par);
 
 	/// Copy operator.
-	/// Important note: We don't copy \c row_change_status_ and
-	/// \c row_signature_ because those are updated externally with
-	/// \c updateRowChangeStatus() in TextMetrics::redoParagraph().
 	ParagraphMetrics & operator=(ParagraphMetrics const &);
 
 	void reset(Paragraph const & par);
@@ -69,11 +66,6 @@ public:
 	RowList & rows() { return rows_; }
 	/// The painter and others use this
 	RowList const & rows() const { return rows_; }
-	/// The painter and others use this
-	std::vector<bool> const & rowChangeStatus() const
-	{ return row_change_status_; }
-	///
-	void updateRowChangeStatus(BufferParams const & bparams);
 	///
 	int rightMargin(Buffer const & buffer) const;
 	///
@@ -81,18 +73,12 @@ public:
 
 	/// dump some information to lyxerr
 	void dump() const;
+	/// 
+	void computeRowSignature(Row &, BufferParams const & bparams);
 
 private:
 	///
-	typedef std::vector<size_type> RowSignature;
-	///
-	size_type calculateRowSignature(Row const &, BufferParams const & bparams);
-	///
 	mutable RowList rows_;
-	///
-	RowSignature row_signature_;
-	///
-	std::vector<bool> row_change_status_;
 	/// cached dimensions of paragraph
 	Dimension dim_;
 	///

@@ -18,6 +18,9 @@
 
 #include "support/types.h"
 
+#include <boost/utility.hpp>
+#include <boost/tuple/tuple.hpp>
+
 #include <map>
 
 
@@ -91,13 +94,26 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	void rowBreakPoint(int width, pit_type const pit, Row & row) const;
+	pit_type rowBreakPoint(
+		int width,
+		pit_type const pit,
+		pit_type first
+		) const;
 
 	/// sets row.width to the minimum space a row needs on the screen in pixel
-	void setRowWidth(int right_margin, pit_type const pit, Row & row) const;
+	int rowWidth(
+		int right_margin,
+		pit_type const pit,
+		pos_type const first,
+		pos_type const end
+		) const;
 
 	/// Calculate and set the height of the row
-	void setHeightOfRow(pit_type, Row & row);
+	boost::tuple<int, int> rowHeight(
+		pit_type const pit,
+		pos_type const first,
+		pos_type const end
+		) const;
 
 // Temporary public:
 public:

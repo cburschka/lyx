@@ -24,36 +24,42 @@ namespace lyx {
 
 
 Row::Row()
-	: pos_(0), end_(0), separator(0), hfill(0), label_hfill(0), x(0)
+	: changed_(false), crc_(0), pos_(0), end_(0), separator(0), hfill(0),
+	label_hfill(0), x(0)
 {}
 
 
 Row::Row(pos_type pos)
-	: pos_(pos), end_(0), separator(0), hfill(0), label_hfill(0), x(0)
+	: changed_(false), crc_(0), pos_(pos), end_(0), separator(0), hfill(0),
+	label_hfill(0), x(0)
 {}
+
+
+void Row::setCrc(size_type crc)
+{
+	changed_ |= crc != crc_;
+	crc_ = crc;
+}
+
+
+void Row::setDimension(Dimension const & dim)
+{
+	changed_ |= dim != dim_;
+	dim_ = dim;
+}
 
 
 void Row::pos(pos_type p)
 {
+	changed_ |= p != pos_;
 	pos_ = p;
-}
-
-
-pos_type Row::pos() const
-{
-	return pos_;
 }
 
 
 void Row::endpos(pos_type p)
 {
+	changed_ |= p != end_;
 	end_ = p;
-}
-
-
-pos_type Row::endpos() const
-{
-	return end_;
 }
 
 

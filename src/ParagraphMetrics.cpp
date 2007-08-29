@@ -94,7 +94,7 @@ void ParagraphMetrics::reset(Paragraph const & par)
 }
 
 
-size_type ParagraphMetrics::calculateRowSignature(Row const & row,
+void ParagraphMetrics::computeRowSignature(Row & row,
 		BufferParams const & bparams)
 {
 	boost::crc_32_type crc;
@@ -107,22 +107,7 @@ size_type ParagraphMetrics::calculateRowSignature(Row const & row,
 			crc.process_bytes(b, 1);
 		}			
 	}
-	return crc.checksum();
-}
-
-
-void ParagraphMetrics::updateRowChangeStatus(BufferParams const & bparams)
-{
-	size_t const size = rows_.size();
-	row_change_status_.resize(size);
-	row_signature_.resize(size);
-
-	for (size_t i = 0; i != size; ++i) {
-		// Row signature; has row changed since last update?
-		size_type const row_sig = calculateRowSignature(rows_[i], bparams);
-		row_change_status_[i] = row_signature_[i] != row_sig;
-		row_signature_[i] = row_sig;
-	}
+	row.setCrc(crc.checksum());
 }
 
 

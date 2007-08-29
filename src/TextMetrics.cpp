@@ -193,6 +193,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	pm.reset(par);
 
 	Buffer & buffer = bv_->buffer();
+	BufferParams const & bparams = buffer.params();
 	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
 
@@ -234,41 +235,51 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	}
 
 	par.setBeginOfBody();
-	pos_type z = 0;
+	pos_type first = 0;
+	size_t row_index = 0;
 	// maximum pixel width of a row
 	int width = max_width_ - right_margin; // - leftMargin(buffer, max_width_, pit, row);
 	do {
-		Row row(z);
-		rowBreakPoint(width, pit, row);
-		setRowWidth(right_margin, pit, row);
-		setHeightOfRow(pit, row);
+		Dimension dim;
+		pos_type end = rowBreakPoint(width, pit, first);
+		dim.wid = rowWidth(right_margin, pit, first, end);
+		boost::tie(dim.asc, dim.des) = rowHeight(pit, first, end);
+		if (row_index == pm.rows().size())
+			pm.rows().push_back(Row());
+		Row & row = pm.rows()[row_index];
+		row.pos(first);
+		row.endpos(end);
+		row.setDimension(dim);
 		computeRowMetrics(pit, row);
-		pm.rows().push_back(row);
-		pm.dim().wid = std::max(pm.dim().wid, row.width());
-		pm.dim().des += row.height();
-		z = row.endpos();
-	} while (z < par.size());
+		pm.computeRowSignature(row, bparams);
+		first = end;
+		++row_index;
+
+		pm.dim().wid = std::max(pm.dim().wid, dim.wid);
+		pm.dim().des += dim.height();
+	} while (first < par.size());
 
 	// Make sure that if a par ends in newline, there is one more row
 	// under it
-	if (z > 0 && par.isNewline(z - 1)) {
-		Row row(z);
-		row.endpos(z);
-		setRowWidth(right_margin, pit, row);
-		setHeightOfRow(pit, row);
+	if (first > 0 && par.isNewline(first - 1)) {
+		Dimension dim;
+		dim.wid = rowWidth(right_margin, pit, first, first);
+		boost::tie(dim.asc, dim.des) = rowHeight(pit, first, first);
+		if (row_index == pm.rows().size())
+			pm.rows().push_back(Row());
+		Row & row = pm.rows()[row_index];
+		row.pos(first);
+		row.endpos(first);
+		row.setDimension(dim);
 		computeRowMetrics(pit, row);
-		pm.rows().push_back(row);
-		pm.dim().des += row.height();
+		pm.computeRowSignature(row, bparams);
+		pm.dim().des += dim.height();
 	}
 
 	pm.dim().asc += pm.rows()[0].ascent();
 	pm.dim().des -= pm.rows()[0].ascent();
 
 	changed |= old_dim.height() != pm.dim().height();
-
-	// Update the row change statuses. The painter will need that info
-	// in order to know which row has to be repainted.
-	pm.updateRowChangeStatus(bv_->buffer().params());
 
 	return changed;
 }
@@ -451,30 +462,20 @@ int TextMetrics::labelEnd(pit_type const pit) const
 }
 
 
-void TextMetrics::rowBreakPoint(int width, pit_type const pit,
-		Row & row) const
+pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
+		pit_type pos) const
 {
 	Buffer & buffer = bv_->buffer();
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
-	pos_type const pos = row.pos();
-	if (pos == end) {
-		row.endpos(end);
-		return;
-	}
-
-	if (width < 0) {
-		row.endpos(end);
-		return;
-	}
+	if (pos == end || width < 0)
+		return end;
 
 	LayoutPtr const & layout = par.layout();
 
-	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		row.endpos(addressBreakPoint(pos, par));
-		return;
-	}
+	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX)
+		return addressBreakPoint(pos, par);
 
 	pos_type const body_pos = par.beginOfBody();
 
@@ -563,23 +564,22 @@ void TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	if (body_pos && point < body_pos)
 		point = body_pos;
 
-	row.endpos(point);
+	return point;
 }
 
 
-void TextMetrics::setRowWidth(int right_margin,
-		pit_type const pit, Row & row) const
+int TextMetrics::rowWidth(int right_margin, pit_type const pit,
+		pos_type const first, pos_type const end) const
 {
 	Buffer & buffer = bv_->buffer();
 	// get the pure distance
-	pos_type const end = row.endpos();
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	Paragraph const & par = text_->getPar(pit);
-	int w = text_->leftMargin(buffer, max_width_, pit, row.pos());
+	int w = text_->leftMargin(buffer, max_width_, pit, first);
 	int label_end = labelEnd(pit);
 
 	pos_type const body_pos = par.beginOfBody();
-	pos_type i = row.pos();
+	pos_type i = first;
 
 	if (i < end) {
 		FontIterator fi = FontIterator(buffer, *text_, par, i);
@@ -605,12 +605,12 @@ void TextMetrics::setRowWidth(int right_margin,
 		w = max(w, label_end);
 	}
 
-	row.width(w + right_margin);
+	return w + right_margin;
 }
 
 
-void TextMetrics::setHeightOfRow(pit_type const pit,
-		Row & row)
+boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const first,
+		pos_type const end) const
 {
 	Paragraph const & par = text_->getPar(pit);
 	// get the maximum ascent and the maximum descent
@@ -628,7 +628,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	// start with so we don't have to do the assignment below too
 	// often.
 	Buffer const & buffer = bv_->buffer();
-	Font font = text_->getFont(buffer, par, row.pos());
+	Font font = text_->getFont(buffer, par, first);
 	Font::FONT_SIZE const tmpsize = font.size();
 	font = text_->getLayoutFont(buffer, pit);
 	Font::FONT_SIZE const size = font.size();
@@ -650,7 +650,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	InsetList::const_iterator ii = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();
 	for ( ; ii != iend; ++ii) {
-		if (ii->pos >= row.pos() && ii->pos < row.endpos()) {
+		if (ii->pos >= first && ii->pos < end) {
 			maxasc  = max(maxasc,  ii->inset->ascent());
 			maxdesc = max(maxdesc, ii->inset->descent());
 		}
@@ -660,10 +660,9 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	// This is not completely correct, but we can live with the small,
 	// cosmetic error for now.
 	int labeladdon = 0;
-	pos_type const pos_end = row.endpos();
 
 	Font::FONT_SIZE maxsize =
-		par.highestFontInRange(row.pos(), pos_end, size);
+		par.highestFontInRange(first, end, size);
 	if (maxsize > font.size()) {
 		// use standard paragraph font with the maximal size
 		Font maxfont = font;
@@ -677,11 +676,10 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	++maxasc;
 	++maxdesc;
 
-	row.ascent(maxasc);
 	ParagraphList const & pars = text_->paragraphs();
 
 	// is it a top line?
-	if (row.pos() == 0) {
+	if (first == 0) {
 		BufferParams const & bufparams = buffer.params();
 		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation
@@ -734,7 +732,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 		    && prevpar.getLabelWidthString()
 					== par.getLabelWidthString()) {
 			layoutasc = layout->itemsep * dh;
-		} else if (pit != 0 || row.pos() != 0) {
+		} else if (pit != 0 || first != 0) {
 			if (layout->topsep > 0)
 				layoutasc = layout->topsep * dh;
 		}
@@ -752,7 +750,7 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	}
 
 	// is it a bottom line?
-	if (row.endpos() >= par.size()) {
+	if (end >= par.size()) {
 		// add the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
@@ -788,16 +786,15 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 	// main Text. The following test is thus bogus.
 	// Top and bottom margin of the document (only at top-level)
 	if (main_text_) {
-		if (pit == 0 && row.pos() == 0)
+		if (pit == 0 && first == 0)
 			maxasc += 20;
 		if (pit + 1 == pit_type(pars.size()) &&
-		    row.endpos() == par.size() &&
-				!(row.endpos() > 0 && par.isNewline(row.endpos() - 1)))
+		    end == par.size() &&
+				!(end > 0 && par.isNewline(end - 1)))
 			maxdesc += 20;
 	}
 
-	row.ascent(maxasc + labeladdon);
-	row.descent(maxdesc);
+	return boost::make_tuple(maxasc + labeladdon, maxdesc);
 }
 
 
@@ -997,11 +994,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 	Bidi bidi;
 
 	y -= rb->ascent();
-	size_type rowno = 0;
-	for (RowList::const_iterator rit = rb; rit != re; ++rit, ++rowno) {
+	for (RowList::const_iterator rit = rb; rit != re; ++rit) {
 		y += rit->ascent();
 		// Row signature; has row changed since last paint?
-		bool row_has_changed = pm.rowChangeStatus()[rowno];
+		bool row_has_changed = rit->changed();
 
 		// Paint the row if a full repaint has been requested or it has
 		// changed.
