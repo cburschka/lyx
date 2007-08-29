@@ -102,9 +102,11 @@ What's new
 
 - Reset current cursor font when going to a bookmark.
 
-- Fix crash when login out from within Gnome desktop (Bug 1656).
+- Fix crash when login out from within Gnome desktop (bug 1656).
 
 - Fix crash when inserting float.
+
+- Fix wrong handling of spaces in change tracking mode (bug 3961).
 
 
 * DOCUMENTATION
