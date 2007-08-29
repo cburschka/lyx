@@ -34,9 +34,9 @@ namespace lyx {
 		/// a short description for use in the ui
 		std::string description;
 		/// the LaTeX packages on which this depends, if any (not implemented)
-		//std::vector<std::string> packageList;
+		std::vector<std::string> packageList;
 		/// whether those packages are available (not implemented yet)
-		//bool available;
+		bool available;
 	};
 	
 	typedef std::vector<LyXModule> LyXModuleList;
@@ -51,7 +51,8 @@ namespace lyx {
 			bool load();
 			/// add a module to the list
 			void addLayoutModule(std::string name, std::string filename, 
-			                     std::string description);
+			                     std::string description,
+			                     std::vector<std::string> packages);
 			///
 			LyXModuleList::const_iterator begin() const;
 			///

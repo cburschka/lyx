@@ -765,7 +765,7 @@ def processModuleFile(file, bool_docbook, bool_linuxdoc):
         Declare lines look like this:
           \DeclareLyXModule[LaTeX Packages]{Description}{ModuleName}...
         We expect output:
-          "ModuleName" "filename" "Description"
+          "ModuleName" "filename" "Description" "Packages"
         "
     '''
     p = re.compile(r'\DeclareLyXModule\s*(?:\[([^]]*)\])?{(.*)}{(.*)}')
@@ -774,17 +774,14 @@ def processModuleFile(file, bool_docbook, bool_linuxdoc):
         if res != None:
             (packages, desc, modname) = res.groups()
             #check availability...need to add that
-            if modname == None:
-              modname = desc
-              desc = packages
+            if packages == None:
               packages = ""
-            elif packages != None:
+            else:
               pkgs = [s.strip() for s in packages.split(",")]
               packages = ",".join(pkgs)
 
             filename = file.split(os.sep)[-1]
-            #return '"%s" "%s" "%s" "%s"\n' % (modname, filename, desc, '.'.join(pkgs))
-            return '"%s" "%s" "%s"\n' % (modname, filename, desc)
+            return '"%s" "%s" "%s" "%s"\n' % (modname, filename, desc, packages)
     print "Module file without \DeclareLyXModule line. "
     sys.exit(2)
 

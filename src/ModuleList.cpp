@@ -13,8 +13,9 @@
 #include "debug.h"
 #include "Lexer.h"
 #include "ModuleList.h"
-#include "support/filetools.h"
 #include "support/docstring.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
 
 	
 namespace lyx{
@@ -93,10 +94,20 @@ bool ModuleList::load() {
 				if (lex.next()) {
 					string const desc = lex.getString();
 					LYXERR(Debug::TCLASS) << "Description: " << desc << endl;
-					//FIXME Add package read, and availability
-					// This code is run when we have
-					// modName, fname, and desc
-					addLayoutModule(modName, fname, desc);
+					//FIXME Add packages
+					if (lex.next()) {
+						string packages = lex.getString();
+						LYXERR(Debug::TCLASS) << "Packages: " << packages << endl;
+						vector<string> pkgs;
+						while (!packages.empty()) {
+							string p;
+							packages = support::split(packages, p, ',');
+							pkgs.push_back(p);
+						}
+						// This code is run when we have
+						// modName, fname, desc, and pkgs
+						addLayoutModule(modName, fname, desc, pkgs);
+					}
 				}
 			}
 		} // end switch
@@ -111,11 +122,12 @@ bool ModuleList::load() {
 
 
 void ModuleList::addLayoutModule(string moduleName, 
-		string filename, string description) {
+		string filename, string description, vector<string> pkgs) {
 	LyXModule lm;
 	lm.name = moduleName;
 	lm.filename = filename;
 	lm.description = description;
+	lm.packageList = pkgs;
 	modlist_.push_back(lm);
 }
 
