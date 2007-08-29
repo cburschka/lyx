@@ -88,6 +88,7 @@ src_header_files = Split('''
     MenuBackend.h
     Messages.h
     MetricsInfo.h
+    ModuleList.h
     Mover.h
     OutputParams.h
     PSpell.h
@@ -244,6 +245,7 @@ src_pre_files = Split('''
 src_post_files = Split('''
     Box.cpp
     Dimension.cpp
+    ModuleList.cpp
     PrinterParams.cpp
     SpellBase.cpp
     Thesaurus.cpp
@@ -2707,6 +2709,17 @@ lib_layouts_inc_files = Split('''
     svjour.inc
 ''')
 
+
+lib_layouts_module_files = Split('''
+    lib/layouts/url.module
+    lib/layouts/endnotes.module
+    lib/layouts/foottoend.module
+    lib/layouts/theorems-ams-withinsec.module
+    lib/layouts/theorems-ams.module
+    lib/layouts/theorems-withinsec.module
+    lib/layouts/theorems-withinchap.module
+    lib/layouts/theorems-std.module
+''')
 
 lib_scripts_files = Split('''
     TeXFiles.py

@@ -1790,7 +1790,7 @@ if 'update_po' in BUILD_TARGETS:
                 ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
                 '$LYX_POT -b $TOP_SRCDIR -t qt4 -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/layouts_l10n.pot', 
-                ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files + lib_layouts_inc_files],
+                ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files + lib_layouts_inc_files + lib_layouts_module_files],
                 '$LYX_POT -b $TOP_SRCDIR -t layouts -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/languages_l10n.pot', '$TOP_SRCDIR/lib/languages',
                 '$LYX_POT -b $TOP_SRCDIR -t languages -o $TARGET $SOURCES'),
