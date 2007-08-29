@@ -226,14 +226,10 @@ bool BufferList::close(Buffer * buf, bool const ask)
 				return false;
 		} else if (!menuWrite(buf))
 			return false;
-		else
-			return false;
 	} else if (ret == 2)
 		return false;
-
-	if (buf->isUnnamed()) {
-		removeAutosaveFile(buf->fileName());
-	}
+		
+	removeAutosaveFile(buf->fileName());
 
 	release(buf);
 	return true;
