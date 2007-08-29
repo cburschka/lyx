@@ -1,0 +1,16 @@
+#\DeclareLyXModule[endnotes.sty]{Adds an endnote command, in addition to footnotes. You will need to add \theendnotes in ERT where you want the endnotes to appear.}{Endnote}
+
+Format 5
+
+InsetLayout Custom:Endnote
+   LyXType	custom
+   LatexName	endnote
+   LatexType	command
+   Font
+     Size	Small
+   EndFont
+   LabelString	endnote
+   Preamble
+     \usepackage{endnotes}
+   EndPreamble
+End

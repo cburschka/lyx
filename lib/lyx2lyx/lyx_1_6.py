@@ -31,6 +31,7 @@ def find_end_of_inset(lines, i):
     " Find end of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
+
 ####################################################################
 
 def fix_wrong_tables(document):
@@ -142,6 +143,17 @@ def revert_show_label(document):
                 document.warning("Malformed LyX document: no legal status line in CharStyle.")
         i += 1
 
+def revert_begin_modules(document):
+    i = 0
+    while True:
+        i = find_token(document.header, "\\begin_modules", i)
+        if i == -1:
+            return
+        j = find_end_of(document.header, i, "\\begin_modules", "\\end_modules")
+        if j == -1:
+            # this should not happen
+            break
+        document.header[i : j + 1] = []
 
 
 ##
@@ -153,10 +165,12 @@ convert = [
            [277, [fix_wrong_tables]],
            [278, [close_begin_deeper]],
            [279, [long_charstyle_names]],
-           [280, [axe_show_label]]
+           [280, [axe_show_label]],
+           [281, []]
           ]
 
 revert =  [
+           [280, [revert_begin_modules]],
            [279, [revert_show_label]],
            [278, [revert_long_charstyle_names]],
            [277, []],

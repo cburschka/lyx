@@ -493,6 +493,26 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
+		
+		// Make sure modules used in child are all included in master
+		//FIXME It might be worth loading the children's modules into the master
+		//over in BufferParams rather than doing this check.
+		vector<string> const masterModules = m_buffer->params().getModules();
+		vector<string> const childModules = tmp->params().getModules();
+		vector<string>::const_iterator it = childModules.begin();
+		vector<string>::const_iterator end = childModules.end();
+		for (; it != end; ++it) {
+			string const module = *it;
+			vector<string>::const_iterator found = 
+				find(masterModules.begin(), masterModules.end(), module);
+			if (found != masterModules.end()) {
+				docstring text = bformat(_("Included file `%1$s'\n"
+							"uses module `%2$s'\n"
+							"which is not used in parent file."),
+			 	       makeDisplayPath(included_file.absFilename()), from_utf8(module));
+				Alert::warning(_("Module not found"), text);
+			}
+		}
 
 		tmp->markDepClean(m_buffer->temppath());
 

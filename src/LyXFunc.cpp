@@ -729,6 +729,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_TEXTCLASS_LOAD:
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
 	case LFUN_BUFFER_PARAMS_APPLY:
+	case LFUN_LAYOUT_MODULES_CLEAR:
+	case LFUN_LAYOUT_MODULE_ADD:
 	case LFUN_LYXRC_APPLY:
 	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
@@ -1770,6 +1772,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			for (; it != end; ++it)
 				if (it->lyxCode() == Inset::CITE_CODE)
 					it->dispatch(cur, fr);
+			break;
+		}
+		
+		case LFUN_LAYOUT_MODULES_CLEAR: {
+			BOOST_ASSERT(lyx_view_);
+			lyx_view_->buffer()->params().clearLayoutModules();
+			updateFlags = Update::Force;
+			break;
+		}
+		
+		case LFUN_LAYOUT_MODULE_ADD: {
+			BOOST_ASSERT(lyx_view_);
+			lyx_view_->buffer()->params().addLayoutModule(argument);
+			updateFlags = Update::Force;
 			break;
 		}
 

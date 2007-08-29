@@ -372,6 +372,8 @@ void LyXAction::init()
 		{ LFUN_CLEARPAGE_INSERT, "clearpage-insert", Noop },
 		{ LFUN_CLEARDOUBLEPAGE_INSERT, "cleardoublepage-insert", Noop },
 		{ LFUN_LISTING_INSERT, "listing-insert", Noop },
+		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", Noop },
+		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop },
 
 		{ LFUN_NOACTION, "", Noop }
 	};

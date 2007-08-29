@@ -1012,7 +1012,15 @@ dist_layouts_DATA =\
 	layouts/agu_stdsections.inc \
 	layouts/agu_stdtitle.inc \
 	layouts/g-brief2.layout \
-	layouts/svglobal.layout
+	layouts/svglobal.layout \
+	layouts/endnotes.module \
+	layouts/foottoend.module \
+	layouts/theorems-ams.module \
+	layouts/theorems-ams-withinsec.module \
+	layouts/theorems-std.module \
+	layouts/theorems-withinchap.module \
+	layouts/theorems-withinsec.module \
+	layouts/url.module
 
 scriptsdir = $(pkgdatadir)/scripts
 # Note that we "chmod 755" manually these files in install-data-hook.

@@ -36,6 +36,7 @@
 #include "LyXFunc.h"
 #include "Lexer.h"
 #include "LyXRC.h"
+#include "ModuleList.h"
 #include "Server.h"
 #include "ServerSocket.h"
 #include "TextClassList.h"
@@ -925,6 +926,8 @@ bool LyX::init()
 	LYXERR(Debug::INIT) << "Reading layouts..." << endl;
 	if (!LyXSetStyle())
 		return false;
+	//...and the modules
+	moduleList.load();
 
 	if (use_gui) {
 		// Set the language defined by the user.
@@ -1114,6 +1117,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		first_start = false;
 
 		return needsUpdate("lyxrc.defaults")
+			|| needsUpdate("lyxmodules.lst")
 			|| needsUpdate("textclass.lst")
 			|| needsUpdate("packages.lst");
 	}

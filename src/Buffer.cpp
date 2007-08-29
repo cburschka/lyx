@@ -139,7 +139,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 280;
+int const LYX_FORMAT = 281;
 
 } // namespace anon
 
@@ -440,6 +440,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().headsep.erase();
 	params().footskip.erase();
 	params().listings_params.clear();
+	params().clearLayoutModules();
 	
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];

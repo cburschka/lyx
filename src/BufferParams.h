@@ -122,6 +122,16 @@ public:
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().
 	void setTextClass(TextClass_ptr);
+	/// List of modules in use
+	std::vector<std::string> const & getModules() const;
+	/// Add a module to the list of modules in use.
+	/// Returns true if module was successfully added.
+	bool addLayoutModule(std::string modName, bool makeClass = true);
+	/// Add a list of modules.
+	/// Returns true if all modules were successfully added.
+	bool addLayoutModules(std::vector<std::string>modNames);
+	/// Clear the list
+	void clearLayoutModules();
 
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;
@@ -291,6 +301,9 @@ private:
 	void readBullets(Lexer &);
 	///
 	void readBulletsLaTeX(Lexer &);
+	///
+	void readModules(Lexer &);
+	/// Adds the module information to the baseClass information to
 	/// create our local TextClass.
 	void makeTextClass();
 
@@ -301,6 +314,10 @@ private:
 	textclass_type baseClass_;
 	/// the possibly modular TextClass actually in use
 	TextClass_ptr textClass_;
+	///
+	typedef std::vector<std::string> LayoutModuleList;
+	/// 
+	LayoutModuleList layoutModules_;
 
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.

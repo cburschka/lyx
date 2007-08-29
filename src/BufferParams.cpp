@@ -27,6 +27,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Messages.h"
+#include "ModuleList.h"
 #include "Color.h"
 #include "Font.h"
 #include "Lexer.h"
@@ -41,6 +42,7 @@
 #include "insets/InsetListingsParams.h"
 
 #include "support/convert.h"
+#include "support/filetools.h"
 #include "support/Translator.h"
 
 #include <boost/array.hpp>
@@ -55,7 +57,9 @@ using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 using std::pair;
-
+using std::string;
+using lyx::support::FileName;
+using lyx::support::libFileSearch;
 using lyx::support::bformat;
 using lyx::support::rtrim;
 using lyx::support::tokenPos;
@@ -472,9 +476,13 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 						 "for more information.\n"), from_utf8(classname));
 			frontend::Alert::warning(_("Document class not available"),
 				       msg + _("LyX will not be able to produce output."));
-		}
+		} 
+		
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
+	} else if (token == "\\begin_modules") {
+		readModules(lex);
+		makeTextClass();
 	} else if (token == "\\options") {
 		lex.eatLine();
 		options = lex.getString();
@@ -625,6 +633,8 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 	} else if (token == "\\float_placement") {
 		lex >> float_placement;
 	} else {
+		lyxerr << "BufferParams::readToken(): Unknown token: " << 
+			token << endl;
 		return token;
 	}
 
@@ -652,6 +662,15 @@ void BufferParams::writeFile(ostream & os) const
 	// the options
 	if (!options.empty()) {
 		os << "\\options " << options << '\n';
+	}
+	
+	//the modules
+	if (!layoutModules_.empty()) {
+		os << "\\begin_modules" << '\n';
+		LayoutModuleList::const_iterator it = layoutModules_.begin();
+		for (; it != layoutModules_.end(); it++)
+			os << *it << '\n';
+		os << "\\end_modules" << '\n';
 	}
 
 	// then the text parameters
@@ -1227,6 +1246,68 @@ textclass_type BufferParams::getBaseClass() const
 void BufferParams::makeTextClass()
 {
 	textClass_.reset(new TextClass(textclasslist[getBaseClass()]));
+	//FIXME It might be worth loading the children's modules here,
+	//instead of just doing a check in InsetInclude.
+	LayoutModuleList::const_iterator it = layoutModules_.begin();
+	for (; it != layoutModules_.end(); it++) {
+		string const modName = *it;
+		LyXModule * lm = moduleList[modName];
+		if (!lm) {
+			docstring const msg =
+						bformat(_("The module %1$s has been requested by\n"
+						"this document but has not been found in the list of\n"
+						"available modules. If you recently installed it, you\n"
+						"probalby need to reconfigure LyX.\n"), from_utf8(modName));
+			frontend::Alert::warning(_("Module not available"),
+															 msg + _("Some layouts may not be available."));
+			lyxerr << "BufferParams::makeTextClass(): Module " <<
+					modName << " requested but not found in module list." <<
+					endl;
+			continue;
+		}
+		FileName layout_file = libFileSearch("layouts", lm->filename);
+		textClass_->read(layout_file, TextClass::MODULE);
+	}
+}
+
+
+std::vector<string> const & BufferParams::getModules() const {
+	return layoutModules_;
+}
+
+
+
+bool BufferParams::addLayoutModule(string modName, bool makeClass) {
+	LayoutModuleList::const_iterator it = layoutModules_.begin();
+	LayoutModuleList::const_iterator end = layoutModules_.end();
+	for (; it != end; it++) {
+		if (*it == modName) 
+			break;
+	}
+	if (it != layoutModules_.end())
+		return false;
+	layoutModules_.push_back(modName);
+	if (makeClass)
+		makeTextClass();
+	return true;
+}
+
+
+bool BufferParams::addLayoutModules(std::vector<string>modNames)
+{
+	bool retval = true;
+	std::vector<string>::const_iterator it = modNames.begin();
+	std::vector<string>::const_iterator end = modNames.end();
+	for (; it != end; ++it)
+		retval &= addLayoutModule(*it, false);
+	makeTextClass();
+	return retval;
+}
+
+
+void BufferParams::clearLayoutModules() {
+	layoutModules_.clear();
+	makeTextClass();
 }
 
 
@@ -1324,6 +1405,23 @@ void BufferParams::readBulletsLaTeX(Lexer & lex)
 
 	user_defined_bullet(index).setText(temp_str);
 	temp_bullet(index).setText(temp_str);
+}
+
+
+void BufferParams::readModules(Lexer & lex)
+{
+	if (!lex.eatLine()) {
+		lyxerr << "Error (BufferParams::readModules):"
+				"Unexpected end of input." << endl;
+		return;
+	}
+	while (true) {
+		string mod = lex.getString();
+		if (mod == "\\end_modules")
+			break;
+		addLayoutModule(mod);
+		lex.eatLine();
+	}
 }
 
 

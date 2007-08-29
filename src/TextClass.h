@@ -64,8 +64,8 @@ public:
 	TextClass(std::string const & = std::string(),
 		     std::string const & = std::string(),
 		     std::string const & = std::string(),
-		     bool = false);
-
+		     bool texClassAvail = false);
+	
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const;
 
@@ -74,8 +74,14 @@ public:
 	/// paragraph styles end iterator
 	const_iterator end() const { return layoutlist_.end(); }
 
+	///Enum used with TextClass::read
+	enum ReadType { 
+		BASECLASS, //>This is a base class, i.e., top-level layout file
+		MERGE, //>This is a file included in a layout file
+		MODULE //>This is a layout module
+	};
 	/// Performs the read of the layout file.
-	bool read(support::FileName const & filename, bool merge = false);
+	bool read(support::FileName const & filename, ReadType rt = BASECLASS);
 	///
 	void readOutputType(Lexer &);
 	///
@@ -127,6 +133,11 @@ public:
 	std::string const & latexname() const;
 	///
 	std::string const & description() const;
+	///
+	bool isModular() const { return modular_; }
+	/// Sets the layout as a modular one. There is never any
+	/// need to reset this.
+	void markAsModular() { modular_ = true; }
 	///
 	std::string const & opt_fontsize() const;
 	///
@@ -195,11 +206,14 @@ private:
 	std::string latexname_;
 	/// document class description
 	std::string description_;
-	/// Specific class options
+	/// whether this is a modular layout, i.e., whether it has been
+	/// modified by loading of layout modules.
+	bool modular_;
+	///
 	std::string opt_fontsize_;
 	///
 	std::string opt_pagestyle_;
-	///
+	/// Specific class options
 	std::string options_;
 	///
 	std::string pagestyle_;

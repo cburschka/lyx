@@ -107,6 +107,7 @@ TextClass::TextClass(string const & fn, string const & cln,
 	  floatlist_(new FloatList), counters_(new Counters),
 	  texClassAvail_(texClassAvail)
 {
+	modular_ = false;
 	outputType_ = LATEX;
 	columns_ = 1;
 	sides_ = OneSide;
@@ -173,7 +174,7 @@ enum TextClassTags {
 
 
 // Reads a textclass structure from file.
-bool TextClass::read(FileName const & filename, bool merge)
+bool TextClass::read(FileName const & filename, ReadType rt)
 {
 	if (!support::isFileReadable(filename)) {
 		lyxerr << "Cannot read layout file `" << filename << "'."
@@ -208,14 +209,21 @@ bool TextClass::read(FileName const & filename, bool merge)
 		{ "tocdepth",        TC_TOCDEPTH }
 	};
 
-	if (!merge)
-		LYXERR(Debug::TCLASS) << "Reading textclass "
-				      << to_utf8(makeDisplayPath(filename.absFilename()))
-				      << endl;
-	else
-		LYXERR(Debug::TCLASS) << "Reading input file "
-				      << to_utf8(makeDisplayPath(filename.absFilename()))
-				      << endl;
+	switch (rt) {
+	case BASECLASS:
+		LYXERR(Debug::TCLASS) << "Reading textclass ";
+		break;
+	case MERGE:
+		LYXERR(Debug::TCLASS) << "Reading input file ";
+	  break;
+	case MODULE:
+		LYXERR(Debug::TCLASS) << "Reading module file ";
+		break;
+	default:
+		BOOST_ASSERT(false);
+	}
+	LYXERR(Debug::TCLASS) << to_utf8(makeDisplayPath(filename.absFilename()))
+		<< endl;
 
 	Lexer lexrc(textClassTags,
 		sizeof(textClassTags) / sizeof(textClassTags[0]));
@@ -264,7 +272,7 @@ bool TextClass::read(FileName const & filename, bool merge)
 					lexrc.printError("Could not find input"
 							 "file: " + inc);
 					error = true;
-				} else if (read(tmp, true)) {
+				} else if (read(tmp, MERGE)) {
 					lexrc.printError("Error reading input"
 							 "file: " + tmp.absFilename());
 					error = true;
@@ -441,12 +449,20 @@ bool TextClass::read(FileName const & filename, bool merge)
 		FileName const tempfile(support::tempName());
 		error = !layout2layout(filename, tempfile);
 		if (!error)
-			error = read(tempfile, merge);
+			error = read(tempfile, rt);
 		support::unlink(tempfile);
 		return error;
 	}
 
-	if (!merge) { // we are at top level here.
+	if (rt == MODULE) 
+		LYXERR(Debug::TCLASS) << "Finished reading module file "
+				<< to_utf8(makeDisplayPath(filename.absFilename()))
+				<< endl;
+	else if (rt == MERGE)
+		LYXERR(Debug::TCLASS) << "Finished reading input file "
+				<< to_utf8(makeDisplayPath(filename.absFilename()))
+				<< endl;
+	else { // we are at top level here.
 		LYXERR(Debug::TCLASS) << "Finished reading textclass "
 				      << to_utf8(makeDisplayPath(filename.absFilename()))
 				      << endl;
@@ -476,10 +492,7 @@ bool TextClass::read(FileName const & filename, bool merge)
 			<< "Minimum TocLevel is " << min_toclevel_
 			<< ", maximum is " << max_toclevel_ <<endl;
 
-	} else
-		LYXERR(Debug::TCLASS) << "Finished reading input file "
-				      << to_utf8(makeDisplayPath(filename.absFilename()))
-				      << endl;
+	}
 
 	return error;
 }

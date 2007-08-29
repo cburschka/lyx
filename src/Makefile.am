@@ -205,6 +205,8 @@ liblyxcore_la_SOURCES = \
 	Messages.h \
 	MetricsInfo.cpp \
 	MetricsInfo.h \
+	ModuleList.cpp \
+	ModuleList.h \
 	Mover.cpp \
 	Mover.h \
 	output.cpp \

@@ -1,0 +1,8 @@
+#\DeclareLyXModule[endnotes.sty]{Sets all footnotes as endnotes. You will need to add \theendnotes in ERT where you want the endnotes to appear.}{Foot to End}
+
+Format 5
+
+Preamble
+  \usepackage{endnotes}
+  \let\footnote=\endnote
+EndPreamble
