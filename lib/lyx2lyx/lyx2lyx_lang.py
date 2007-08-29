@@ -73,7 +73,7 @@ lang = {'afrikaans': ['afrikaans', 'Afrikaans', 'false', 'iso8859-1', 'af_ZA', '
  'polish': ['polish', 'Polish', 'false', 'iso8859-2', 'pl_PL', ''],
  'portuges': ['portuges', 'Portugese', 'false', 'iso8859-1', 'pt_PT', ''],
  'romanian': ['romanian', 'Romanian', 'false', 'iso8859-2', 'ro_RO', ''],
- 'russian': ['russian', 'Russian', 'false', 'koi8', 'ru_RU', ''],
+ 'russian': ['russian', 'Russian', 'false', 'koi8-r', 'ru_RU', ''],
  'scottish': ['scottish', 'Scottish', 'false', 'iso8859-1', 'gd_GB', ''],
  'serbian': ['croatian', 'Serbian', 'false', 'iso8859-5', 'sr_HR', ''],
  'serbocroatian': ['croatian',
