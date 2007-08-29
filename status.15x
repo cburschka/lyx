@@ -66,6 +66,8 @@ What's new
 
 - Check if the .lyx file has been externally modified when a buffer is saved.
 
+- Conversion from older documents failed if koi8 was used as the
+  document encoding (Bug 4158).
 
 * USER INTERFACE:
 
