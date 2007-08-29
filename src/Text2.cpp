@@ -1148,7 +1148,8 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		    && old.pos() < oldpar.size()
 		    && oldpar.isLineSeparator(old.pos())
 		    && oldpar.isLineSeparator(old.pos() - 1)
-		    && !oldpar.isDeleted(old.pos() - 1)) {
+		    && !oldpar.isDeleted(old.pos() - 1)
+		    && !oldpar.isDeleted(old.pos())) {
 			oldpar.eraseChar(old.pos() - 1, cur.buffer().params().trackChanges);
 // FIXME: This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
