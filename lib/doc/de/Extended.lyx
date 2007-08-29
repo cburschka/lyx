@@ -143,7 +143,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 9.
+letzte Änderung: 28.
  August 2007
 \end_layout
 
@@ -3582,7 +3582,13 @@ german
 \end_layout
 
 \begin_layout Section
-Glossare
+Nomenklatur
+\begin_inset LatexCommand index
+name "Nomenklatur"
+
+\end_inset
+
+/Glossar
 \begin_inset LatexCommand index
 name "Glossar"
 
@@ -6212,15 +6218,19 @@ name "Dateiformat!Import!Einfacher Text"
 \end_layout
 
 \begin_layout Standard
-Es gibt es zwei Methoden, um ASCII-Text zu importieren.
- Importiert man ihn als 
+
 \family sans
+Datei\SpecialChar \menuseparator
+Importieren\SpecialChar \menuseparator
 Einfacher\InsetSpace \space{}
-Text
+Text\SpecialChar \ldots{}
+
 \family default
-, so werden alle Zeilenumbrüche beibehalten.
- Für LyX sieht dann jede Zeile wie ein Absatz aus.
- 
+ erzeugt aus jeder Zeile der Datei einen eigenen Absatz im LyX-Dokument.
+ Dies ist praktisch, wenn Sie beispielsweise eine einfache Liste übernehmen
+ wollen.
+ Wenn die ASCII-Datei jedoch bereits selber eine Absatzstruktur aufweist,
+ wird LyX diese bei dieser Form der Einbindung durcheinanderbringen.
 \end_layout
 
 \begin_layout Subsection
@@ -6228,16 +6238,26 @@ Einfacher Text, Zeilen verbinden
 \end_layout
 
 \begin_layout Standard
-Importiert man den ASCII-Text als 
+
 \family sans
+Datei\SpecialChar \menuseparator
+Importieren\SpecialChar \menuseparator
 Einfacher\InsetSpace \space{}
-Text,\InsetSpace \space{}
-Zeilen\InsetSpace \space{}
-verbinden
+Text, Zeilen\InsetSpace \space{}
+verbinden\SpecialChar \ldots{}
+
 \family default
-, bilden Zeilen, die nur durch einen Zeilenumbruch getrennt sind, einen
- Absatz.
- Mehrere Zeilenumbrüche ohne Text dazwischen trennen die Absätze.
+ erhält die in der Datei vorhandene Absatzstruktur.
+ Oft sind in einer ASCII-Datei die Absätze nicht jeweils in einer eigenen
+ Zeile enthalten, sondern durch Zeilenumbrüche formatiert.
+ Diese Methode fasst allen Text zwischen zwei Leerzeilen in einem eigenen
+ Absatz zusammen.
+ Aber beachten Sie bitte: Die Zeile zwischen zwei Absätzen muss 
+\emph on
+vollständig leer
+\emph default
+ sein.
+ Ist sie das nicht, fasst LyX sie zu einem einzigen Absatz zusammen.
 \end_layout
 
 \begin_layout Standard
@@ -6560,6 +6580,15 @@ nen 1.3.x bearbeiten können.
 \end_layout
 
 \begin_layout Subsection
+OpenDocument
+\end_layout
+
+\begin_layout Standard
+Hiermit können Sie Ihre LyX-Dokumente in ein Format exportieren, das von
+ OpenOffice gelesen werden kann.
+\end_layout
+
+\begin_layout Subsection
 MS Word (HTML)
 \begin_inset LatexCommand index
 name "Dateiformat!Import!MS Word (HTML)"
@@ -6571,7 +6600,7 @@ name "Dateiformat!Import!MS Word (HTML)"
 
 \begin_layout Standard
 Hiermit können Sie Ihre LyX-Dokumente in ein HTML-Format exportieren, das
- von MS Word gelesen werden kann.b
+ von MS Word gelesen werden kann.
 \end_layout
 
 \begin_layout Subsection
@@ -7106,14 +7135,6 @@ dvips
 -r
 \family default
  setzen.
-\end_layout
-
-\begin_layout Subsection
-Rich Text Format
-\end_layout
-
-\begin_layout Standard
-Das ist das in der Windows-Welt weitverbreitete RTF-Format.
 \end_layout
 
 \begin_layout Subsection
