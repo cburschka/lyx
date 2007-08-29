@@ -259,6 +259,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		pm.dim().des += dim.height();
 	} while (first < par.size());
 
+	if (row_index < pm.rows().size())
+		pm.rows().resize(row_index);
+
 	// Make sure that if a par ends in newline, there is one more row
 	// under it
 	if (first > 0 && par.isNewline(first - 1)) {

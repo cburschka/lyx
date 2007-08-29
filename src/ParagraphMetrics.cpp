@@ -90,7 +90,6 @@ void ParagraphMetrics::reset(Paragraph const & par)
 {
 	par_ = &par;
 	dim_ = Dimension();
-	rows_.clear();
 }
 
 
