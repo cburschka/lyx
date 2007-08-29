@@ -51,14 +51,12 @@ void Row::setDimension(Dimension const & dim)
 
 void Row::pos(pos_type p)
 {
-	changed_ |= p != pos_;
 	pos_ = p;
 }
 
 
 void Row::endpos(pos_type p)
 {
-	changed_ |= p != end_;
 	end_ = p;
 }
 

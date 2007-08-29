@@ -247,6 +247,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		if (row_index == pm.rows().size())
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
+		row.setChanged(false);
 		row.pos(first);
 		row.endpos(end);
 		row.setDimension(dim);
@@ -271,6 +272,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		if (row_index == pm.rows().size())
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
+		row.setChanged(false);
 		row.pos(first);
 		row.endpos(first);
 		row.setDimension(dim);
@@ -1021,7 +1023,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 			// 12 lines lower):
 			if (lyxerr.debugging(Debug::PAINTING)) {
 				if (text_->isMainText(bv_->buffer()))
-					LYXERR(Debug::PAINTING) << "#";
+					LYXERR(Debug::PAINTING) << "#" <<
+						repaintAll << row_has_changed;
 				else
 					LYXERR(Debug::PAINTING) << "[" <<
 						repaintAll << row_has_changed << "]";

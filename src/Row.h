@@ -36,6 +36,8 @@ public:
 	///
 	bool changed() const { return changed_; }
 	///
+	void setChanged(bool c) { changed_ = c; }
+	///
 	void setCrc(size_type crc);
 	///
 	void pos(pos_type p);
