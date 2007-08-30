@@ -955,21 +955,21 @@ string const getFormatFromContents(FileName const & filename)
 		else if (contains(str,"EPSF"))
 			// dummy, if we have wrong file description like
 			// %!PS-Adobe-2.0EPSF"
-			format =  "eps";
+			format = "eps";
 
-		else if (contains(str,"Grace"))
-			format =  "agr";
+		else if (contains(str, "Grace"))
+			format = "agr";
 
-		else if (contains(str,"JFIF"))
-			format =  "jpg";
+		else if (contains(str, "JFIF"))
+			format = "jpg";
 
-		else if (contains(str,"%PDF"))
-			format =  "pdf";
+		else if (contains(str, "%PDF"))
+			format = "pdf";
 
-		else if (contains(str,"PNG"))
-			format =  "png";
+		else if (contains(str, "PNG"))
+			format = "png";
 
-		else if (contains(str,"%!PS-Adobe")) {
+		else if (contains(str, "%!PS-Adobe")) {
 			// eps or ps
 			ifs >> str;
 			if (contains(str,"EPSF"))
@@ -978,13 +978,13 @@ string const getFormatFromContents(FileName const & filename)
 			    format = "ps";
 		}
 
-		else if (contains(str,"_bits[]"))
+		else if (contains(str, "_bits[]"))
 			format = "xbm";
 
-		else if (contains(str,"XPM") || contains(str, "static char *"))
+		else if (contains(str, "XPM") || contains(str, "static char *"))
 			format = "xpm";
 
-		else if (contains(str,"BITPIX"))
+		else if (contains(str, "BITPIX"))
 			format = "fits";
 	}
 

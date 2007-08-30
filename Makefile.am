@@ -35,14 +35,14 @@ lyx.1:
 	cp -p $(srcdir)/lyx.man lyx.1
 
 rpmdist: dist
-	$(LN_S) $(srcdir)/lib/images/lyx.xpm . ; \
+	$(LN_S) $(srcdir)/lib/images/lyx.png . ; \
 	if [ -z "`type -path rpmbuild`" ]; \
 	then \
 		RPMBUILD=rpm; \
 	else \
 		RPMBUILD=rpmbuild; \
 	fi; $$RPMBUILD -ta $(PACKAGE)-$(VERSION).tar.gz ; saved_status=$$?; \
-	rm lyx.xpm; exit $$saved_status
+	rm lyx.png; exit $$saved_status
 
 bindist:
 	rm -f $(bindistfile)

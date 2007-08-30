@@ -12,7 +12,6 @@
 
 #include "IconPalette.h"
 #include "qt_helpers.h"
-#include "controllers/ControlMath.h" // for find_xpm
 
 #include <QPixmap>
 #include <QGridLayout>

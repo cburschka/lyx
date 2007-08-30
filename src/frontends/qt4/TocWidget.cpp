@@ -50,15 +50,15 @@ TocWidget::TocWidget(QToc * form, QWidget * parent)
 	connect(form, SIGNAL(modelReset()),
 		SLOT(updateGui()));
 
-	FileName icon_path = libFileSearch("images", "promote.xpm");
+	FileName icon_path = libFileSearch("images", "promote.png");
 	moveOutTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path = libFileSearch("images", "demote.xpm");
+	icon_path = libFileSearch("images", "demote.png");
 	moveInTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path = libFileSearch("images", "up.xpm");
+	icon_path = libFileSearch("images", "up.png");
 	moveUpTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path = libFileSearch("images", "down.xpm");
+	icon_path = libFileSearch("images", "down.png");
 	moveDownTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path = libFileSearch("images", "reload.xpm");
+	icon_path = libFileSearch("images", "reload.png");
 	updateTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 
 	// avoid flickering

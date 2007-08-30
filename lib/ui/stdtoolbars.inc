@@ -42,8 +42,8 @@
 #
 #
 # The icons are found in the lib/images/ direcory under the name
-# action.xpm or action_parameter.xpm, except for math-insert, which
-# is e.g. lib/image/math/sum.xpm. Note that some characters are
+# action.png or action_parameter.png, except for math-insert, which
+# is e.g. lib/image/math/sum.png. Note that some characters are
 # replaced (e.g. ')' -> rbracket).
 #
 #  All other lyx commands will get a "unknown" icon.

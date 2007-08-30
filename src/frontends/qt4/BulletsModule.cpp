@@ -67,7 +67,7 @@ void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
 	bulletpaneCO->addItem(panelname);
 
 	// get pixmap with bullets
-	QPixmap pixmap = QPixmap(toqstr(libFileSearch("images", fname, "xpm").absFilename()));
+	QPixmap pixmap = QPixmap(toqstr(libFileSearch("images", fname, "png").absFilename()));
 
 	int const w = pixmap.width() / 6;
 	int const h = pixmap.height() / 6;

@@ -11,7 +11,7 @@ URL: http://www.lyx.org/
 Packager: Kayvan A. Sylvan <kayvan@sylvan.com>
 Source: ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-Icon: %{name}.xpm
+Icon: %{name}.png
 Prefix: %{_prefix}
 Obsoletes: tetex-lyx
 
@@ -63,8 +63,8 @@ mv ${RPM_BUILD_ROOT}%{_datadir}/%{name}/tex \
 #
 # Miscellaneous files
 #
-# Don't use %{name}.xpm, this will not work with --version-suffix
-cp -a lib/images/lyx.xpm ${RPM_BUILD_ROOT}%{_datadir}/%{name}/images/
+# Don't use %{name}.png, this will not work with --version-suffix
+cp -a lib/images/lyx.png ${RPM_BUILD_ROOT}%{_datadir}/%{name}/images/
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}

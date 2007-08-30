@@ -49,21 +49,12 @@ using support::FileName;
 using support::libFileSearch;
 using support::subst;
 
-
-using support::libFileSearch;
-using support::subst;
-
 namespace frontend {
 
-namespace {
-
-TextClass const & getTextClass(LyXView const & lv)
+static TextClass const & textClass(LyXView const & lv)
 {
-	return lv.buffer()->params().getTextClass();
+	return lv.buffer()->params().textClass();
 }
-
-
-} // namespace anon
 
 
 QLayoutBox::QLayoutBox(QToolBar * toolbar, GuiView & owner)
@@ -84,7 +75,7 @@ QLayoutBox::QLayoutBox(QToolBar * toolbar, GuiView & owner)
 
 void QLayoutBox::set(docstring const & layout)
 {
-	TextClass const & tc = getTextClass(owner_);
+	TextClass const & tc = textClass(owner_);
 
 	QString const & name = toqstr(translateIfPossible(tc[layout]->name()));
 
@@ -106,7 +97,7 @@ void QLayoutBox::set(docstring const & layout)
 
 void QLayoutBox::update()
 {
-	TextClass const & tc = getTextClass(owner_);
+	TextClass const & tc = textClass(owner_);
 
 	combo_->setUpdatesEnabled(false);
 
@@ -253,7 +244,7 @@ void QLToolbar::add(ToolbarItem const & item)
 		tb->setToolTip(qt_(to_ascii(item.label_)));
 		tb->setStatusTip(qt_(to_ascii(item.label_)));
 		tb->setText(qt_(to_ascii(item.label_)));
-		FileName icon_path = libFileSearch("images/math", item.name_, "xpm");
+		FileName icon_path = libFileSearch("images/math", item.name_, "png");
 		tb->setIcon(QIcon(toqstr(icon_path.absFilename())));
 		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
 			tb, SLOT(setIconSize(const QSize &)));
@@ -365,31 +356,31 @@ void QLToolbar::update()
 
 string const getIcon(FuncRequest const & f, bool unknown)
 {
-	using frontend::find_xpm;
+	using frontend::find_png;
 
 	string fullname;
 
 	switch (f.action) {
 	case LFUN_MATH_INSERT:
 		if (!f.argument().empty())
-			fullname = find_xpm(to_utf8(f.argument()).substr(1));
+			fullname = find_png(to_utf8(f.argument()).substr(1));
 		break;
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
-		fullname = find_xpm(to_utf8(f.argument()));
+		fullname = find_png(to_utf8(f.argument()));
 		break;
 	default:
 		string const name = lyxaction.getActionName(f.action);
-		string xpm_name(name);
+		string png_name = name;
 
 		if (!f.argument().empty())
-			xpm_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
+			png_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
 
-		fullname = libFileSearch("images", xpm_name, "xpm").absFilename();
+		fullname = libFileSearch("images", png_name, "png").absFilename();
 
 		if (fullname.empty()) {
 			// try without the argument
-			fullname = libFileSearch("images", name, "xpm").absFilename();
+			fullname = libFileSearch("images", name, "png").absFilename();
 		}
 	}
 
@@ -403,7 +394,7 @@ string const getIcon(FuncRequest const & f, bool unknown)
 			   << lyxaction.getActionName(f.action)
 			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
 	if (unknown)
-		return libFileSearch("images", "unknown", "xpm").absFilename();
+		return libFileSearch("images", "unknown", "png").absFilename();
 	else
 		return string();
 }

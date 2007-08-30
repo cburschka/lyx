@@ -228,9 +228,9 @@ GuiView::GuiView(int id)
 	d.bigIconSize = 26;		// better for some math icons
 
 #ifndef Q_WS_MACX
-	//  assign an icon to main form. We do not do it under Qt/Mac,
-	//  since the icon is provided in the application bundle.
-	FileName const iconname = libFileSearch("images", "lyx", "xpm");
+	// assign an icon to main form. We do not do it under Qt/Mac,
+	// since the icon is provided in the application bundle.
+	FileName const iconname = libFileSearch("images", "lyx", "png");
 	if (!iconname.empty())
 		setWindowIcon(QPixmap(toqstr(iconname.absFilename())));
 #endif
@@ -238,7 +238,7 @@ GuiView::GuiView(int id)
 	d.tab_widget_ = new TabWidget;
 
 	QPushButton * closeTabButton = new QPushButton(this);
-	FileName const file = support::libFileSearch("images", "closetab", "xpm");
+	FileName const file = support::libFileSearch("images", "closetab", "png");
 	if (!file.empty()) {
 		QPixmap pm(toqstr(file.absFilename()));
 		closeTabButton->setIcon(QIcon(pm));

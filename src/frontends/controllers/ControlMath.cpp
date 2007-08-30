@@ -18,8 +18,6 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
-#include <functional>
-
 using std::string;
 using std::map;
 
@@ -415,22 +413,22 @@ int const nr_latex_delimiters = sizeof(latex_delimiters) / sizeof(char const *);
 
 namespace {
 
-struct XPMmap {
+struct PngMap {
 	char const * key;
 	char const * value;
 };
 
 
-bool operator<(XPMmap const & lhs, XPMmap const & rhs)
+bool operator<(PngMap const & lhs, PngMap const & rhs)
 {
 		return compare(lhs.key, rhs.key) < 0;
 }
 
 
-class CompareKey : public std::unary_function<XPMmap, bool> {
+class CompareKey {
 public:
 	CompareKey(string const & name) : name_(name) {}
-	bool operator()(XPMmap const & other) const {
+	bool operator()(PngMap const & other) const {
 		return other.key == name_;
 	}
 private:
@@ -438,7 +436,7 @@ private:
 };
 
 
-XPMmap sorted_xpm_map[] = {
+PngMap sorted_png_map[] = {
 	{ "Bumpeq", "bumpeq2" },
 	{ "Cap", "cap2" },
 	{ "Cup", "cup2" },
@@ -475,46 +473,46 @@ XPMmap sorted_xpm_map[] = {
 	{ "vDash", "vdash2" }
 };
 
-size_t const nr_sorted_xpm_map = sizeof(sorted_xpm_map) / sizeof(XPMmap);
+size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
 
 } // namespace anon
 
 
-string const find_xpm(string const & name)
+string const find_png(string const & name)
 {
-	XPMmap const * const begin = sorted_xpm_map;
-	XPMmap const * const end = begin + nr_sorted_xpm_map;
+	PngMap const * const begin = sorted_png_map;
+	PngMap const * const end = begin + nr_sorted_png_map;
 	BOOST_ASSERT(sorted(begin, end));
 
-	XPMmap const * const it =
+	PngMap const * const it =
 		std::find_if(begin, end, CompareKey(name));
 
-	string xpm_name;
+	string png_name;
 	if (it != end)
-		xpm_name = it->value;
+		png_name = it->value;
 	else {
-		xpm_name = subst(name, "_", "underscore");
-		xpm_name = subst(xpm_name, ' ', '_');
+		png_name = subst(name, "_", "underscore");
+		png_name = subst(png_name, ' ', '_');
 
 		// This way we can have "math-delim { }" on the toolbar.
-		xpm_name = subst(xpm_name, "(", "lparen");
-		xpm_name = subst(xpm_name, ")", "rparen");
-		xpm_name = subst(xpm_name, "[", "lbracket");
-		xpm_name = subst(xpm_name, "]", "rbracket");
-		xpm_name = subst(xpm_name, "{", "lbrace");
-		xpm_name = subst(xpm_name, "}", "rbrace");
-		xpm_name = subst(xpm_name, "|", "bars");
-		xpm_name = subst(xpm_name, ",", "thinspace");
-		xpm_name = subst(xpm_name, ":", "mediumspace");
-		xpm_name = subst(xpm_name, ";", "thickspace");
-		xpm_name = subst(xpm_name, "!", "negthinspace");
+		png_name = subst(png_name, "(", "lparen");
+		png_name = subst(png_name, ")", "rparen");
+		png_name = subst(png_name, "[", "lbracket");
+		png_name = subst(png_name, "]", "rbracket");
+		png_name = subst(png_name, "{", "lbrace");
+		png_name = subst(png_name, "}", "rbrace");
+		png_name = subst(png_name, "|", "bars");
+		png_name = subst(png_name, ",", "thinspace");
+		png_name = subst(png_name, ":", "mediumspace");
+		png_name = subst(png_name, ";", "thickspace");
+		png_name = subst(png_name, "!", "negthinspace");
 	}
 
-	LYXERR(Debug::GUI) << "find_xpm(" << name << ")\n"
-			   << "Looking for math XPM called \""
-			   << xpm_name << '"' << std::endl;
+	LYXERR(Debug::GUI) << "find_png(" << name << ")\n"
+			   << "Looking for math PNG called \""
+			   << png_name << '"' << std::endl;
 
-	return libFileSearch("images/math/", xpm_name, "xpm").absFilename();
+	return libFileSearch("images/math/", png_name, "png").absFilename();
 }
 
 } // namespace frontend

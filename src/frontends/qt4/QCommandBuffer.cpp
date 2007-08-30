@@ -78,8 +78,8 @@ protected:
 QCommandBuffer::QCommandBuffer(GuiView * view)
 	: view_(view), controller_(*view)
 {
-	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm").absFilename()));
-	QPixmap qpdown(toqstr(libFileSearch("images", "down", "xpm").absFilename()));
+	QPixmap qpup(toqstr(libFileSearch("images", "up", "png").absFilename()));
+	QPixmap qpdown(toqstr(libFileSearch("images", "down", "png").absFilename()));
 
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * layout = new QHBoxLayout(0);
