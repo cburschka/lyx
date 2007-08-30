@@ -177,7 +177,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 28.
+letzte Änderung: 29.
  August 2007
 \end_layout
 
@@ -2898,7 +2898,7 @@ name "Dokument!-klassen"
 
 \family sans
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="5">
+<lyxtabular version="3" rows="8" columns="5">
 <features>
 <column alignment="left" valignment="top" leftline="true" rightline="true" width="0pt">
 <column alignment="left" valignment="top" leftline="true" width="0pt">
@@ -3342,53 +3342,6 @@ Einseitig
 
 \family sans
 Abschnitt
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
 \end_layout
 
 \end_inset
@@ -27279,7 +27232,13 @@ reference "Zeichentabellen"
 \end_layout
 
 \begin_layout Standard
-LyX unterstützt auch die Ausgabe von unicode-kodiertem Text.
+LyX unterstützt auch die Ausgabe von Unicode
+\begin_inset LatexCommand index
+name "Unicode"
+
+\end_inset
+
+-kodiertem Text.
  Dies ist insbesondere dann nützlich, wenn Sie viele Sonderzeichen oder
  nicht-alphabetische Schriften verwenden.
  Wenn Sie Unicode-Ausgabe erzeugen wollen (Voraussetzung dafür ist allerdings,
@@ -27303,7 +27262,17 @@ utf8x
 utf8-plain
 \family default
  für die Verwendung von LyX mit XeTeX, einem TeX-System, das Unicode direkt
- (ohne Zuhilfenahme des imputenc-Paketes) verarbeitet.
+ (ohne Zuhilfenahme des 
+\family typewriter
+imputenc
+\family default
+-Paketes
+\begin_inset LatexCommand index
+name "LaTeX-Paket!inputenc"
+
+\end_inset
+
+) verarbeitet.
 \end_layout
 
 \begin_layout Standard
@@ -27340,47 +27309,6 @@ OK
 \family default
 .
  Die Änderungen werden im Dokument gespeichert.
-\end_layout
-
-\begin_layout Standard
-LyX unterstützt auch Unicode
-\begin_inset LatexCommand index
-name "Unicode"
-
-\end_inset
-
-, der besonders dann nützlich ist, wenn Sie viele besondere Symbole oder
- nicht-alphabetische Skripte benötigen.
- Wenn Sie Unicode benutzen wollen und Ihre LaTeX-Installation das unterstützt,
- ist die 
-\family typewriter
-utf8
-\family default
--Kodierung die richtige Wahl.
- Außerdem gibt es alternative Unicode-Kodierungen wie 
-\family typewriter
-UTF8
-\family default
- und 
-\family typewriter
-utf8x
-\family default
- für chinesisch, japanisch und koreanisch.
- Und schleißlich noch 
-\family typewriter
-utf8-plain
-\family default
- für XeTeX, das Unicode direkt benutzt, ohne Hilfe des LaTeX-Paketes 
-\family typewriter
-inputenc
-\family default
-
-\begin_inset LatexCommand index
-name "LaTeX-Paket!inputenc"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
