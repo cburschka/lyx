@@ -704,6 +704,14 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	int const file_format = convert<int>(tmp_format);
 	//lyxerr << "format: " << file_format << endl;
 
+	// save timestamp and checksum of the original disk file, making sure
+	// to not overwrite them with those of the file created in the tempdir
+	// when it has to be converted to the current format.
+	if (!pimpl_->checksum_) {
+		pimpl_->timestamp_ = fs::last_write_time(filename.toFilesystemEncoding());
+		pimpl_->checksum_ = sum(filename);
+	}
+
 	if (file_format != LYX_FORMAT) {
 
 		if (fromstring)
@@ -770,9 +778,6 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	//MacroTable::localMacros().clear();
 
 	pimpl_->file_fully_loaded = true;
-	// save the timestamp and checksum of disk file
-	pimpl_->timestamp_ = fs::last_write_time(filename.toFilesystemEncoding());
-	pimpl_->checksum_ = sum(filename);
 	return success;
 }
 
