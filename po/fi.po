@@ -3228,12 +3228,9 @@ msgstr "&Yksiköt:"
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
 #: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.cpp:46
-msgid "Standard"
-msgstr "Perusteksti"
-
 #: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
 msgid "Standard"
-msgstr "Tavallinen viite"
+msgstr "Perusteksti"
 
 #: lib/layouts/IEEEtran.layout:48
 msgid "TheoremTemplate"
@@ -13509,7 +13506,9 @@ msgid ""
 "The specified document\n"
 "%1$s\n"
 "could not be read."
-msgstr "Asiakirjan %2$s\n lukeminen epäonnistui"
+msgstr ""
+"Asiakirjan %1$s\n"
+"lukeminen epäonnistui"
 
 #: src/buffer_funcs.cpp:83
 msgid "Could not read document"
@@ -14153,7 +14152,7 @@ msgstr ""
 
 #: src/frontends/controllers/ControlSpellchecker.cpp:279
 msgid "The spellchecker has failed.\n"
-msgstr "Oikoluku epäonnistui."
+msgstr "Oikoluku epäonnistui.\n"
 
 #: src/frontends/controllers/ControlSpellchecker.cpp:283
 msgid "The spellchecker has failed"
@@ -15323,7 +15322,7 @@ msgstr "Tuntematon listausparametrin nimi: %1$s"
 #: src/insets/InsetListingsParams.cpp:676
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
-msgstr "Parametrit alkaen '%1$s': %2$s""
+msgstr "Parametrit alkaen '%1$s': %2$s"
 
 #: src/insets/InsetMarginal.cpp:33 src/insets/InsetMarginal.cpp:40
 #: src/insets/InsetMarginal.cpp:69
