@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -1386,8 +1386,8 @@ description "Meta or Alt key"
 
  in the documentation files) This is the Alt key on many keyboards, unless
  your keyboard has a distinct Meta key.
- If you have you have both keys, you will need to try out which one actually
- performs the 
+ If you have both keys, you will need to try out which one actually performs
+ the 
 \family sans
 Meta-
 \family default
@@ -12454,11 +12454,15 @@ Tools\SpecialChar \menuseparator
 Check\InsetSpace ~
 TeX
 \family default
- feature described in 
+ feature described in section 
 \emph on
-Extended Editing
+Checking TeX
 \emph default
-.
+ of the 
+\emph on
+Extended Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsubsection
@@ -12524,36 +12528,6 @@ name "Document ! Settings"
 \end_inset
 
  dialog.
- Selecting the button 
-\family sans
-Double
-\family default
- makes the 
-\family sans
-"
-\family default
- key produce the sequence: 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- The button 
-\family sans
-Single
-\family default
-, in contrast, makes the 
-\family sans
-"
-\family default
- key produce: 
-\begin_inset Quotes els
-\end_inset
-
-'.
 \end_layout
 
 \begin_layout Standard
@@ -12754,25 +12728,11 @@ this
 \end_layout
 
 \begin_layout Standard
-These options affects what character the 
+These settings affects what character the 
 \family sans
 "
 \family default
  key produces.
-\end_layout
-
-\begin_layout Standard
-On the other hand, if you want to produce a plain text quote character,
- type 
-\family sans
-C-"
-\family default
-.
- This produces: 
-\family typewriter
-"
-\family default
- in any cases.
 \end_layout
 
 \begin_layout Subsection
@@ -14349,12 +14309,6 @@ You can alter a table by clicking on it with the right mouse button, which
  Most of the dialog options also work on selections.
  This means that if you select more cells, columns or rows the action is
  done on all of your selection.
- Note that there is a difference between selecting the 
-\emph on
-contents
-\emph default
- of the cell, and the cell itself.
- If you can see a red border inside a cell, you only selected the cell content.
 \end_layout
 
 \begin_layout Standard
@@ -17299,8 +17253,8 @@ Figure\InsetSpace ~
 \end_inset
 
 .
- Set the cursor behind this label, press enter and insert the image as described
- above to get the caption printed below the image.
+ Set the cursor above this label (or before it and press enter) and insert
+ the image as described above to get the caption printed below the image.
  This is what we did for Figure\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -18142,9 +18096,7 @@ sideways
 \begin_layout Standard
 Rotated floats are always placed on its own page (or column, when you have
  a two-column document).
- They are normally rotated so that you can read them from the outside margin
- (They are rotated to the left in a two-sided document when they are on
- a page with an even number).
+ They are rotated so that you can read them from the outside margin.
  Forcing the rotation direction is explained in the 
 \emph on
 Embedded Objects
@@ -22238,22 +22190,6 @@ You can only use the style
 <page>
 \family default
  is always possible.
- Note that the style <page> won't print the page number if the label is
- on the previous, same, or next page.
- You will e.g.
- see the text 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family sans
-on this page
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- instead.
 \end_layout
 
 \begin_layout Standard

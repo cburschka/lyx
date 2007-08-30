@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -19554,8 +19554,7 @@ floats
 \series bold
 
 \backslash
-f\SpecialChar \textcompwordmark{}
-loatpagefraction
+floatpagefraction
 \series default
 )
 \end_layout
@@ -19626,8 +19625,7 @@ Sometimes you have the problem that a float is placed at the top of a page
 \series bold
 
 \backslash
-suppressf\SpecialChar \textcompwordmark{}
-loats
+suppressfloats
 \series default
  can be used.
  It suppresses a given float placement for the page where it is inserted
@@ -19653,8 +19651,7 @@ renewcommand{
 \backslash
 section}{
 \backslash
-suppressf\SpecialChar \textcompwordmark{}
-loats[t]
+suppressfloats[t]
 \backslash
 mySection}
 \end_layout
@@ -19674,8 +19671,7 @@ In some cases it is required to have all figures/tables at the end of the
  document.
  For this purpose the LaTeX-package 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
 
 \begin_inset LatexCommand index
@@ -19708,16 +19704,14 @@ name "LaTeX-packages ! endfloat"
 \series bold
 
 \backslash
-usepackage[options]{endf\SpecialChar \textcompwordmark{}
-loat}
+usepackage[options]{endfloat}
 \end_layout
 
 \begin_layout Standard
 There are various package options to format the created figure/table sections.
  For more information we refer to the 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
  documentation 
 \begin_inset LatexCommand cite
@@ -19734,8 +19728,7 @@ status open
 \begin_layout Standard
 
 \series bold
-Note: endf\SpecialChar \textcompwordmark{}
-loat
+Note: endfloat
 \series default
  doesn't provide an automatic translation for the text hint, you have to
  do this manually, see section\InsetSpace ~
@@ -19763,8 +19756,7 @@ Note:
 \series default
  There is currently a bug in 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
  when the caption contains a German 
 \begin_inset Quotes eld
@@ -19848,18 +19840,15 @@ sideways
 \begin_layout Standard
 Rotated floats are always placed on its own page (or column, when you have
  a two-column document).
- They are normally rotated so that you can read them from the outside margin
- -- to the left on even pages, to the right on odd pages.
+ They are rotated so that you can read them from the outside margin.
  To force a certain rotation direction for all pages, you can add either
  the option 
 \series bold
-f\SpecialChar \textcompwordmark{}
-iguresleft
+figuresleft
 \series default
  or 
 \series bold
-f\SpecialChar \textcompwordmark{}
-iguresright
+figuresright
 \series default
  to the document class options.
 \end_layout

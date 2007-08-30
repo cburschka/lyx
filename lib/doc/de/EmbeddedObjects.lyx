@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -20530,8 +20530,7 @@ Gleitobjekten versuche das Gleitobjekt auf einer eigenen Seite zu
 \series bold
 
 \backslash
-f\SpecialChar \textcompwordmark{}
-loatpagefraction 
+floatpagefraction 
 \series default
 im LaTeX-Vorspann überschrieben werden.
 \end_layout
@@ -20598,8 +20597,7 @@ r Abschnitt erst auf der Seitenmitte beginnt, was den Eindruck erweckt,
 \series bold
  
 \backslash
-suppressf\SpecialChar \textcompwordmark{}
-loats
+suppressfloats
 \series default
  verhindert werden.
  Er unterdrückt eine Gleitobjekt-Platzierung für die Seite, auf der er steht,
@@ -20625,8 +20623,7 @@ renewcommand{
 \backslash
 section}{
 \backslash
-suppressf\SpecialChar \textcompwordmark{}
-loats[t]
+suppressfloats[t]
 \backslash
 meinAbschnitt}
 \end_layout
@@ -20661,8 +20658,7 @@ name "LaTeX-Pakete ! flafter"
 Manchmal möchte man alle Abbildungen und Tabellen am Dokumentende haben.
  Dafür gibt es das LaTeX-Paket 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
 
 \begin_inset LatexCommand index
@@ -20689,8 +20685,7 @@ name "LaTeX-Pakete ! endf\\/loat"
  finden.
  Das 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
 -Paket wird mit folgendem Befehl in den LaTeX-Vorspann eingefügt:
 \end_layout
@@ -20700,16 +20695,14 @@ loat
 \series bold
 
 \backslash
-usepackage[Optionen]{endf\SpecialChar \textcompwordmark{}
-loat}
+usepackage[Optionen]{endfloat}
 \end_layout
 
 \begin_layout Standard
 Es gibt verschiedene Optionen für die Formatierung der Abbildungen- und
  Tabellen-Abschnitt, die Sie in der 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
 -Dokumentation 
 \begin_inset LatexCommand cite
@@ -20727,8 +20720,7 @@ status open
 
 \series bold
 Bemerkung\InsetSpace ~
-1: endf\SpecialChar \textcompwordmark{}
-loat
+1: endfloat
 \series default
  übersetzt den Hinweistext nicht automatisch.
  Abschnitt\InsetSpace ~
@@ -20758,8 +20750,7 @@ Bemerkung\InsetSpace ~
 \series default
 Die aktuelle Version von 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
  hat einen Fehler, wenn die Überschrift ein 
 \begin_inset Quotes gld
@@ -20830,18 +20821,15 @@ drehen
 Gedrehte Gleitobjekte werden immer auf einer neuen Seite (oder Spalte bei
  zweispaltigen Dokumenten) gedruckt.
  Gleitobjekte werden immer so gedreht, dass sie vom äußeren Rand her gelesen
- werden können -- nach links auf geraden Seiten, nach rechts auf ungeraden
- Seiten.
+ werden können.
  Um eine Drehrichtung für alle Seiten zu erzwingen, fügen Sie entweder die
  Option 
 \series bold
-f\SpecialChar \textcompwordmark{}
-iguresleft
+figuresleft
 \series default
  oder 
 \series bold
-f\SpecialChar \textcompwordmark{}
-iguresright
+figuresright
 \series default
  zu den Dokumentklassen-Optionen hinzu.
 \end_layout
