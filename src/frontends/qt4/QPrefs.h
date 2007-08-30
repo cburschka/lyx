@@ -56,19 +56,17 @@ class PrefModule : public QWidget
 {
 	Q_OBJECT
 public:
-	PrefModule(docstring const & cat, docstring const & t,
+	PrefModule(docstring const & t,
 			QPrefs * form = 0, QWidget * parent = 0)
-		: QWidget(parent), category_(cat), title_(t), form_(form)
+		: QWidget(parent), title_(t), form_(form)
 	{}
 
 	virtual void apply(LyXRC & rc) const = 0;
 	virtual void update(LyXRC const & rc) = 0;
 
-	docstring const & category() const { return category_; }
 	docstring const & title() const { return title_; }
 
 protected:
-	docstring category_;
 	docstring title_;
 	QPrefs * form_;
 

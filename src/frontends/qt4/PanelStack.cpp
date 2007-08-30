@@ -41,6 +41,7 @@ PanelStack::PanelStack(QWidget * parent)
 	stack_ = new QStackedWidget(this);
 
 	list_->setColumnCount(1);
+	list_->setRootIsDecorated(false);
 	// Hide the pointless list header
 	list_->header()->hide();
 //	QStringList HeaderLabels;

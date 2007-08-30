@@ -71,11 +71,6 @@ namespace frontend {
 //
 /////////////////////////////////////////////////////////////////////
 
-string const LookAndFeel = N_("Look and feel");
-string const LanguageSettings = N_("Language settings");
-string const Outputs = N_("Outputs");
-
-
 // FIXME: move to frontend_helpers.h
 
 template<class A>
@@ -171,7 +166,7 @@ static void setComboxFont(QComboBox * cb, string const & family,
 /////////////////////////////////////////////////////////////////////
 
 PrefPlaintext::PrefPlaintext(QWidget * parent)
-	: PrefModule(_(Outputs), _("Plain text"), 0, parent)
+	: PrefModule(_("Plain text"), 0, parent)
 {
 	setupUi(this);
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
@@ -202,7 +197,7 @@ void PrefPlaintext::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefDate::PrefDate(QWidget * parent)
-	: PrefModule(_(Outputs), _("Date format"), 0, parent)
+	: PrefModule(_("Date format"), 0, parent)
 {
 	setupUi(this);
 	connect(DateED, SIGNAL(textChanged(const QString &)),
@@ -229,7 +224,7 @@ void PrefDate::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefKeyboard::PrefKeyboard(QPrefs * form, QWidget * parent)
-	: PrefModule(_(LookAndFeel), _("Keyboard"), form, parent)
+	: PrefModule(_("Keyboard"), form, parent)
 {
 	setupUi(this);
 
@@ -300,7 +295,7 @@ void PrefKeyboard::on_keymapCB_toggled(bool keymap)
 /////////////////////////////////////////////////////////////////////
 
 PrefLatex::PrefLatex(QPrefs * form, QWidget * parent)
-	: PrefModule(_(Outputs), _("LaTeX"), form, parent)
+	: PrefModule(_("LaTeX"), form, parent)
 {
 	setupUi(this);
 	connect(latexEncodingED, SIGNAL(textChanged(const QString&)),
@@ -353,7 +348,7 @@ void PrefLatex::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefScreenFonts::PrefScreenFonts(QPrefs * form, QWidget * parent)
-	: PrefModule(_(LookAndFeel), _("Screen fonts"), form, parent)
+	: PrefModule(_("Screen fonts"), form, parent)
 {
 	setupUi(this);
 
@@ -511,7 +506,7 @@ void PrefScreenFonts::select_typewriter(const QString& name)
 /////////////////////////////////////////////////////////////////////
 
 PrefColors::PrefColors(QPrefs * form, QWidget * parent)
-	: PrefModule(_(LookAndFeel), _("Colors"), form, parent)
+	: PrefModule( _("Colors"), form, parent)
 {
 	setupUi(this);
 
@@ -612,7 +607,7 @@ void PrefColors::change_lyxObjects_selection()
 /////////////////////////////////////////////////////////////////////
 
 PrefCygwinPath::PrefCygwinPath(QWidget * parent)
-	: PrefModule(_(Outputs), _("Paths"), 0, parent)
+	: PrefModule(_("Paths"), 0, parent)
 {
 	setupUi(this);
 	connect(pathCB, SIGNAL(clicked()), this, SIGNAL(changed()));
@@ -638,7 +633,7 @@ void PrefCygwinPath::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefDisplay::PrefDisplay(QWidget * parent)
-	: PrefModule(_(LookAndFeel), _("Graphics"), 0, parent)
+	: PrefModule(_("Graphics"), 0, parent)
 {
 	setupUi(this);
 	connect(instantPreviewCO, SIGNAL(activated(int)),
@@ -709,7 +704,7 @@ void PrefDisplay::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefPaths::PrefPaths(QPrefs * form, QWidget * parent)
-	: PrefModule(docstring(), _("Paths"), form, parent)
+	: PrefModule(_("Paths"), form, parent)
 {
 	setupUi(this);
 	connect(templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
@@ -813,7 +808,7 @@ void PrefPaths::select_lyxpipe()
 /////////////////////////////////////////////////////////////////////
 
 PrefSpellchecker::PrefSpellchecker(QPrefs * form, QWidget * parent)
-	: PrefModule(_(LanguageSettings), _("Spellchecker"), form, parent)
+	: PrefModule(_("Spellchecker"), form, parent)
 {
 	setupUi(this);
 
@@ -923,7 +918,7 @@ void PrefSpellchecker::select_dict()
 
 
 PrefConverters::PrefConverters(QPrefs * form, QWidget * parent)
-	: PrefModule(docstring(), _("Converters"), form, parent)
+	: PrefModule(_("Converters"), form, parent)
 {
 	setupUi(this);
 
@@ -1121,7 +1116,7 @@ void PrefConverters::on_cacheCB_stateChanged(int state)
 /////////////////////////////////////////////////////////////////////
 
 PrefCopiers::PrefCopiers(QPrefs * form, QWidget * parent)
-	: PrefModule(docstring(), _("Copiers"), form, parent)
+	: PrefModule(_("Copiers"), form, parent)
 {
 	setupUi(this);
 
@@ -1374,7 +1369,7 @@ void PrefCopiers::remove_copier()
 /////////////////////////////////////////////////////////////////////
 
 PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
-	: PrefModule(docstring(), _("File formats"), form, parent)
+	: PrefModule(_("File formats"), form, parent)
 {
 	setupUi(this);
 
@@ -1588,7 +1583,7 @@ void PrefFileformats::remove_format()
 /////////////////////////////////////////////////////////////////////
 
 PrefLanguage::PrefLanguage(QWidget * parent)
-	: PrefModule(_(LanguageSettings), _("Language"), 0, parent)
+	: PrefModule(_("Language"), 0, parent)
 {
 	setupUi(this);
 
@@ -1668,7 +1663,7 @@ void PrefLanguage::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefPrinter::PrefPrinter(QWidget * parent)
-	: PrefModule(_(Outputs), _("Printer"), 0, parent)
+	: PrefModule(_("Printer"), 0, parent)
 {
 	setupUi(this);
 
@@ -1766,7 +1761,7 @@ void PrefPrinter::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 PrefUserInterface::PrefUserInterface(QPrefs * form, QWidget * parent)
-	: PrefModule(_(LookAndFeel), _("User interface"), form, parent)
+	: PrefModule(_("User interface"), form, parent)
 {
 	setupUi(this);
 
@@ -1884,7 +1879,7 @@ void PrefUserInterface::on_loadWindowSizeCB_toggled(bool loadwindowsize)
 
 
 PrefIdentity::PrefIdentity(QWidget * parent)
-: PrefModule(docstring(), _("Identity"), 0, parent)
+: PrefModule(_("Identity"), 0, parent)
 {
 	setupUi(this);
 
@@ -1978,10 +1973,7 @@ void QPrefsDialog::add(PrefModule * module)
 {
 	BOOST_ASSERT(module);
 
-//	if (module->category().empty())
-//		prefsPS->addPanel(module, module->title());
-//	else
-		prefsPS->addPanel(module, module->title(), module->category());
+	prefsPS->addPanel(module, module->title());
 
 	connect(module, SIGNAL(changed()), this, SLOT(change_adaptor()));
 
