@@ -88,12 +88,15 @@ int RowPainter::leftMargin() const
 
 
 // If you want to debug inset metrics uncomment the following line:
-// #define DEBUG_METRICS
+//#define DEBUG_METRICS
 // This draws green lines around each inset.
 
 
-void RowPainter::paintInset(pos_type const pos, Font const & font)
+void RowPainter::paintInset(pos_type & vpos)
 {
+	pos_type const pos = bidi_.vis2log(vpos);
+	Font font = text_.getFont(bv_.buffer(), par_, pos);
+
 	Inset const * inset = par_.getInset(pos);
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
@@ -104,15 +107,18 @@ void RowPainter::paintInset(pos_type const pos, Font const & font)
 		font;
 	pi.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || par_.isDeleted(pos);
-#ifdef DEBUG_METRICS
-	int const x1 = int(x_);
-#endif
 	bv_.coordCache().insets().add(inset, int(x_), yo_);
 	// insets are painted completely. Recursive
 	inset->drawSelection(pi, int(x_), yo_);
 	inset->draw(pi, int(x_), yo_);
+
+	++vpos;
+	paintForeignMark(x_, font, inset->descent());
+
 	x_ += inset->width();
+
 #ifdef DEBUG_METRICS
+	int const x1 = int(x_ - inset->width());
 	Dimension dim;
 	BOOST_ASSERT(max_witdh_ > 0);
 	int right_margin = text_metrics_.rightMargin(pm_);
@@ -319,17 +325,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = bidi_.vis2log(vpos);
 	Font orig_font = text_.getFont(bv_.buffer(), par_, pos);
-
 	double const orig_x = x_;
-
-	if (par_.isInset(pos)) {
-		// If outer row has changed, nested insets are repaint completely.
-		paintInset(pos, orig_font);
-		++vpos;
-		paintForeignMark(orig_x, orig_font,
-			par_.getInset(pos)->descent());
-		return;
-	}
 
 	// usual characters, no insets
 	char_type const c = par_.getChar(pos);
@@ -755,6 +751,7 @@ void RowPainter::paintText()
 			}
 			x_ += 2;
 			++vpos;
+
 		} else if (par_.isSeparator(pos)) {
 			Font orig_font = text_.getFont(bv_.buffer(), par_, pos);
 			double const orig_x = x_;
@@ -763,6 +760,11 @@ void RowPainter::paintText()
 				x_ += row_.separator;
 			++vpos;
 			paintForeignMark(orig_x, orig_font);
+
+		} else if (par_.isInset(pos)) {
+			// If outer row has changed, nested insets are repaint completely.
+			paintInset(vpos);
+
 		} else {
 			paintFromPos(vpos);
 		}

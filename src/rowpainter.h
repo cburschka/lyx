@@ -59,7 +59,7 @@ private:
 			bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
 	void paintFromPos(pos_type & vpos);
-	void paintInset(pos_type const pos, Font const & font);
+	void paintInset(pos_type & vpos);
 
 	/// return left margin
 	int leftMargin() const;
