@@ -1539,10 +1539,10 @@ void BufferView::draw(frontend::Painter & pain)
 	// FIXME: We should also distinguish DecorationUpdate to avoid text
 	// drawing if possible. This is not possible to do easily right now
 	// because of the single backing pixmap.
-	bool repaintAll = select 
+	pi.full_repaint = select 
 		|| metrics_info_.update_strategy != SingleParUpdate;
 
-	if (repaintAll)
+	if (pi.full_repaint)
 		// Clear background (if not delegated to rows)
 		pain.fillRectangle(0, metrics_info_.y1, width_,
 			metrics_info_.y2 - metrics_info_.y1, text.backgroundColor());
@@ -1557,7 +1557,7 @@ void BufferView::draw(frontend::Painter & pain)
 	for (pit_type pit = metrics_info_.p1; pit <= metrics_info_.p2; ++pit) {
 		ParagraphMetrics const & pm = tm.parMetrics(pit);
 		yy += pm.ascent();
-		tm.drawParagraph(pi, pit, 0, yy, repaintAll);
+		tm.drawParagraph(pi, pit, 0, yy);
 		yy += pm.descent();
 	}
 

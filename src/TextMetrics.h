@@ -79,8 +79,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	
-	void drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
-		bool repaintAll) const;
+	void drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const;
 
 private:
 	///

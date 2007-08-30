@@ -208,8 +208,10 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
+	if (!pi.base.bv->cursor().selection())
+		return;
 
+	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 	int const w = tm.width() + 2 * border_;
 	int const a = tm.ascent() + border_;
 	int const h = a + tm.descent() + border_;

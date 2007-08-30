@@ -975,14 +975,13 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 	for (; it != end; ++it) {
 		ParagraphMetrics const & pmi = it->second;
 		y += pmi.ascent();
-		drawParagraph(pi, it->first, x, y, true);
+		drawParagraph(pi, it->first, x, y);
 		y += pmi.descent();
 	}
 }
 
 
-void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
-	 bool repaintAll) const
+void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const
 {
 //	lyxerr << "  paintPar: pit: " << pit << " at y: " << y << endl;
 	int const ww = bv_->workHeight();
@@ -1011,7 +1010,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 		// Row signature; has row changed since last paint?
 		bool row_has_changed = rit->changed();
 		
-		if (!repaintAll && !row_has_changed) {
+		if (!pi.full_repaint && !row_has_changed) {
 			// Paint the only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
@@ -1023,7 +1022,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 		// changed.
 		// Clear background of this row
 		// (if paragraph background was not cleared)
-		if (!repaintAll && row_has_changed)
+		if (!pi.full_repaint && row_has_changed)
 			pi.pain.fillRectangle(x, y - rit->ascent(),
 			width(), rit->height(),
 			text_->backgroundColor());
@@ -1032,11 +1031,11 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING)) {
 			if (text_->isMainText(bv_->buffer()))
-				LYXERR(Debug::PAINTING) << "#" <<
-				repaintAll << row_has_changed << "#";
+				LYXERR(Debug::PAINTING) << "{" <<
+				pi.full_repaint << row_has_changed << "}";
 			else
 				LYXERR(Debug::PAINTING) << "[" <<
-				repaintAll << row_has_changed << "]";
+				pi.full_repaint << row_has_changed << "]";
 		}
 		rp.paintAppendix();
 		rp.paintDepthBar();
