@@ -1001,43 +1001,51 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y,
 	y -= rb->ascent();
 	for (RowList::const_iterator rit = rb; rit != re; ++rit) {
 		y += rit->ascent();
+
+		bool const inside = (y + rit->descent() >= 0
+			&& y - rit->ascent() < ww);
+		// it is not needed to draw on screen if we are not inside.
+		pi.pain.setDrawingEnabled(inside);
+		RowPainter rp(pi, *text_, pit, *rit, bidi, x, y);
+
 		// Row signature; has row changed since last paint?
 		bool row_has_changed = rit->changed();
+		
+		if (!repaintAll && !row_has_changed) {
+			// Paint the only the insets if the text itself is
+			// unchanged.
+			rp.paintOnlyInsets();
+			y += rit->descent();
+			continue;
+		}
 
 		// Paint the row if a full repaint has been requested or it has
 		// changed.
-		if (repaintAll || row_has_changed) {
-			bool const inside = (y + rit->descent() >= 0
-				&& y - rit->ascent() < ww);
-			// it is not needed to draw on screen if we are not inside.
-			pi.pain.setDrawingEnabled(inside);
-			RowPainter rp(pi, *text_, pit, *rit, bidi, x, y);
-			// Clear background of this row
-			// (if paragraph background was not cleared)
-			if (!repaintAll && row_has_changed)
-				pi.pain.fillRectangle(x, y - rit->ascent(),
-					width(), rit->height(),
-					text_->backgroundColor());
+		// Clear background of this row
+		// (if paragraph background was not cleared)
+		if (!repaintAll && row_has_changed)
+			pi.pain.fillRectangle(x, y - rit->ascent(),
+			width(), rit->height(),
+			text_->backgroundColor());
 
-			// Instrumentation for testing row cache (see also
-			// 12 lines lower):
-			if (lyxerr.debugging(Debug::PAINTING)) {
-				if (text_->isMainText(bv_->buffer()))
-					LYXERR(Debug::PAINTING) << "#" <<
-						repaintAll << row_has_changed;
-				else
-					LYXERR(Debug::PAINTING) << "[" <<
-						repaintAll << row_has_changed << "]";
-			}
-			rp.paintAppendix();
-			rp.paintDepthBar();
-			rp.paintChangeBar();
-			if (rit == rb)
-				rp.paintFirst();
-			rp.paintText();
-			if (rit + 1 == re)
-				rp.paintLast();
+		// Instrumentation for testing row cache (see also
+		// 12 lines lower):
+		if (lyxerr.debugging(Debug::PAINTING)) {
+			if (text_->isMainText(bv_->buffer()))
+				LYXERR(Debug::PAINTING) << "#" <<
+				repaintAll << row_has_changed << "#";
+			else
+				LYXERR(Debug::PAINTING) << "[" <<
+				repaintAll << row_has_changed << "]";
 		}
+		rp.paintAppendix();
+		rp.paintDepthBar();
+		rp.paintChangeBar();
+		if (rit == rb)
+			rp.paintFirst();
+		rp.paintText();
+		if (rit + 1 == re)
+			rp.paintLast();
 		y += rit->descent();
 	}
 	// Re-enable screen drawing for future use of the painter.

@@ -87,17 +87,44 @@ int RowPainter::leftMargin() const
 }
 
 
+void RowPainter::paintHfill(pos_type const pos, pos_type const body_pos)
+{
+	x_ += 1;
+
+	int const y0 = yo_;
+	int const y1 = y0 - defaultRowHeight() / 2;
+
+	pain_.line(int(x_), y1, int(x_), y0, Color::added_space);
+
+	if (par_.hfillExpansion(row_, pos)) {
+		int const y2 = (y0 + y1) / 2;
+
+		if (pos >= body_pos) {
+			pain_.line(int(x_), y2, int(x_ + row_.hfill), y2,
+				Color::added_space,
+				Painter::line_onoffdash);
+			x_ += row_.hfill;
+		} else {
+			pain_.line(int(x_), y2, int(x_ + row_.label_hfill), y2,
+				Color::added_space,
+				Painter::line_onoffdash);
+			x_ += row_.label_hfill;
+		}
+		pain_.line(int(x_), y1, int(x_), y0, Color::added_space);
+	}
+	x_ += 2;
+}
+
+
 // If you want to debug inset metrics uncomment the following line:
 //#define DEBUG_METRICS
 // This draws green lines around each inset.
 
 
-void RowPainter::paintInset(pos_type & vpos)
+void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 {
-	pos_type const pos = bidi_.vis2log(vpos);
 	Font font = text_.getFont(bv_.buffer(), par_, pos);
 
-	Inset const * inset = par_.getInset(pos);
 	BOOST_ASSERT(inset);
 	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
 	// FIXME: We should always use font, see documentation of
@@ -107,12 +134,10 @@ void RowPainter::paintInset(pos_type & vpos)
 		font;
 	pi.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || par_.isDeleted(pos);
-	bv_.coordCache().insets().add(inset, int(x_), yo_);
 	// insets are painted completely. Recursive
 	inset->drawSelection(pi, int(x_), yo_);
 	inset->draw(pi, int(x_), yo_);
 
-	++vpos;
 	paintForeignMark(x_, font, inset->descent());
 
 	x_ += inset->width();
@@ -634,6 +659,25 @@ void RowPainter::paintLast()
 }
 
 
+void RowPainter::paintOnlyInsets()
+{
+	pos_type const end = row_.endpos();
+	for (pos_type pos = row_.pos(); pos != end; ++pos) {
+		if (!par_.isInset(pos))
+			continue;
+
+		// If outer row has changed, nested insets are repaint completely.
+		Inset const * inset = par_.getInset(pos);
+
+		if (x_ > bv_.workWidth())
+			continue;
+
+		x_ = bv_.coordCache().getInsets().x(inset);
+		paintInset(inset, pos);
+	}
+}
+
+
 void RowPainter::paintText()
 {
 	pos_type const end = row_.endpos();
@@ -726,46 +770,27 @@ void RowPainter::paintText()
 		}
 
 		if (par_.isHfill(pos)) {
-			x_ += 1;
-
-			int const y0 = yo_;
-			int const y1 = y0 - defaultRowHeight() / 2;
-
-			pain_.line(int(x_), y1, int(x_), y0, Color::added_space);
-
-			if (par_.hfillExpansion(row_, pos)) {
-				int const y2 = (y0 + y1) / 2;
-
-				if (pos >= body_pos) {
-					pain_.line(int(x_), y2, int(x_ + row_.hfill), y2,
-						  Color::added_space,
-						  Painter::line_onoffdash);
-					x_ += row_.hfill;
-				} else {
-					pain_.line(int(x_), y2, int(x_ + row_.label_hfill), y2,
-						  Color::added_space,
-						  Painter::line_onoffdash);
-					x_ += row_.label_hfill;
-				}
-				pain_.line(int(x_), y1, int(x_), y0, Color::added_space);
-			}
-			x_ += 2;
+			paintHfill(pos, body_pos);
 			++vpos;
 
 		} else if (par_.isSeparator(pos)) {
-			Font orig_font = text_.getFont(bv_.buffer(), par_, pos);
+			Font orig_font = text_.getFont(buffer, par_, pos);
 			double const orig_x = x_;
 			x_ += width_pos;
 			if (pos >= body_pos)
 				x_ += row_.separator;
-			++vpos;
 			paintForeignMark(orig_x, orig_font);
+			++vpos;
 
 		} else if (par_.isInset(pos)) {
 			// If outer row has changed, nested insets are repaint completely.
-			paintInset(vpos);
+			Inset const * inset = par_.getInset(pos);
+			bv_.coordCache().insets().add(inset, int(x_), yo_);
+			paintInset(inset, pos);
+			++vpos;
 
 		} else {
+			// paint as many characters as possible.
 			paintFromPos(vpos);
 		}
 	}

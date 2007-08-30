@@ -21,6 +21,7 @@ namespace lyx {
 class Bidi;
 class BufferView;
 class Font;
+class Inset;
 class PainterInfo;
 class Paragraph;
 class ParagraphList;
@@ -50,6 +51,7 @@ public:
 	void paintFirst();
 	void paintLast();
 	void paintText();
+	void paintOnlyInsets();
 
 private:
 	void paintForeignMark(double orig_x, Font const & font, int desc = 0);
@@ -59,7 +61,8 @@ private:
 			bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
 	void paintFromPos(pos_type & vpos);
-	void paintInset(pos_type & vpos);
+	void paintInset(Inset const * inset, pos_type const pos);
+	void paintHfill(pos_type const pos, pos_type const body_pos);
 
 	/// return left margin
 	int leftMargin() const;
