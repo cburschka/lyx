@@ -34,7 +34,6 @@ What's new
 
 - Embedded Objects manual:
   - new section about longtable alignmentrry 
-  - corrected description of list of algorithms
 
 - Add support for translating the menus in Finnish.
 
@@ -110,7 +109,7 @@ What's new
 
 - Fix wrong handling of spaces in change tracking mode (bug 3961).
 
-- Fix failure to close window when dirty document is saved (bug 4170).
+- Fix failure to close window when modified document is saved (bug 4170).
 
 - Highlight search text (bug 3999).
 
@@ -118,6 +117,8 @@ What's new
 * DOCUMENTATION
 
 - Fix installation links for Hebrew (bug 4165)
+
+- EmbeddedObjects manual: corrected description of list of algorithms
 
 
 * BUILD/INSTALLATION:
