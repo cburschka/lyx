@@ -202,23 +202,13 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		if (drawFrame_)
 			pi.pain.rectangle(x, y - a, w, h, frameColor());
 	}
+	text_.drawSelection(pi, x + border_, y);
 	tm.draw(pi, x + border_, y);
 }
 
 
 void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	if (!pi.base.bv->cursor().selection())
-		return;
-
-	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
-	int const w = tm.width() + 2 * border_;
-	int const a = tm.ascent() + border_;
-	int const h = a + tm.descent() + border_;
-	pi.pain.fillRectangle(x, y - a,
-			      (hasFixedWidth() ? tm.maxWidth() : w),
-			      h, backgroundColor());
-	text_.drawSelection(pi, x + border_, y);
 }
 
 
