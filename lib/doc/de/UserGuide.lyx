@@ -115,7 +115,7 @@ vom LyX-Team
 \size normal
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -137,7 +137,7 @@ Uwe Stöhr
 \size default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 \noindent
@@ -177,7 +177,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 29.
+letzte Änderung: 30.
  August 2007
 \end_layout
 
@@ -285,7 +285,7 @@ X?
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
@@ -467,7 +467,7 @@ name "WYSIWYG"
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -2638,7 +2638,7 @@ unnumbered
 \series default
  verzichtet vollständig auf die Nummerierung.
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -2869,7 +2869,7 @@ reference "Dokumentklassen"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -3768,7 +3768,7 @@ name "Dokument!doppelseitig"
  benutzen.
  Wenn Sie einen Drucker mit Duplexdruck
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Das heißt beide Seiten eines Blattes werden bedruckt.
@@ -5325,7 +5325,7 @@ name "Titel!kurze"
 
  mit optionalen Argumenten definieren
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Kurztitel
@@ -9296,7 +9296,7 @@ name "Schachtelungs!-beispiele"
 
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Beispiel 3: Marken, Stufen \SpecialChar \ldots{}
@@ -10195,7 +10195,7 @@ Dies ist eine Zeile mit
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -10301,7 +10301,7 @@ phantom{Herr Meier }
 .
  Ob das Leerzeichen im ERT oder danach steht, spielt keine Rolle.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Es gibt noch die Befehle 
@@ -11121,7 +11121,7 @@ Befehl
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -11759,7 +11759,7 @@ guillemets
 
 ,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wenn Sie im LaTeX-Vorspann das LaTeX-Paket 
@@ -11827,7 +11827,7 @@ status collapsed
 
 .
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 Der LaTeX-Befehl 
@@ -12278,7 +12278,7 @@ Zurücksetzen
 \family default
 ) sind:
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -13610,7 +13610,7 @@ kdvi
 \begin_layout Subsubsection
 Die PostScript®-Version anschauen
 \begin_inset LatexCommand label
-name "Die-PostScript-Version-anschauen"
+name "PostScript-Version-anschauen"
 
 \end_inset
 
@@ -13708,7 +13708,7 @@ PostScript® kann nur
 \begin_layout Subsubsection
 Die PDF-Version anschauen
 \begin_inset LatexCommand label
-name "Die-PDF-Version-anschauen"
+name "PDF-Version-anschauen"
 
 \end_inset
 
@@ -14991,7 +14991,7 @@ X-Notiz:
 \family default
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 LyX-Notiz
@@ -15015,7 +15015,7 @@ Kommentar:
 \family default
  
 \begin_inset Note Comment
-status open
+status collapsed
 
 \begin_layout Standard
 Kommentar
@@ -15045,7 +15045,7 @@ Grauschrift:
 \family default
  wird, wie der Name sagt, als 
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Standard
 grauer
@@ -15069,7 +15069,7 @@ Eingerahmt:
 \family default
  wird, wie der Name sagt, als 
 \begin_inset Note Framed
-status open
+status collapsed
 
 \begin_layout Standard
 eingerahmter
@@ -15093,7 +15093,7 @@ Schattiert:
 \family default
  wird, anders als der Name sagt, als 
 \begin_inset Note Shaded
-status open
+status collapsed
 
 \begin_layout Standard
 Text mit farbigem Hintergrund
@@ -15303,7 +15303,7 @@ Rand
  in Ihrem Text.
  
 \begin_inset Marginal
-status open
+status collapsed
 
 \begin_layout Standard
 Dies ist eine solche Randnotiz.
@@ -16136,13 +16136,13 @@ ImageMagick
  In den Abschnitten\InsetSpace \space{}
 
 \begin_inset LatexCommand vref
-reference "Die-PostScript-Version-anschauen"
+reference "PostScript-Version-anschauen"
 
 \end_inset
 
  und 
 \begin_inset LatexCommand vref
-reference "Die-PDF-Version-anschauen"
+reference "PDF-Version-anschauen"
 
 \end_inset
 
@@ -16370,7 +16370,7 @@ reference "Abbildungen"
 placement htbp
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -16645,7 +16645,7 @@ möglich LyX versucht, das Gleitobjekt genau an der Stelle einzufügen,
  an der es im Text steht.
  Ist dort nicht ausreichend Platz, versucht es eine der anderen drei Positionen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -20857,7 +20857,7 @@ iche Größen:
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Wie in Abschnitt 
@@ -22309,7 +22309,7 @@ reference "Akzente"
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -23199,7 +23199,7 @@ Mathe
  hinzufügen oder löschen.
  Hier ist ein anderes Beispiel mit unterschiedlichen Ausrichtungen:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Das 
@@ -25425,7 +25425,7 @@ nummerierte
  sie ebenso wie für nichtnummerierte Abschnitte eigentlich keine Marken
  benutzen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Nun, man 
@@ -25906,6 +25906,18 @@ reference "LyX-Einstellungen"
 
 \begin_layout Section
 Zweige
+\begin_inset LatexCommand index
+name "Zweige"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "Zweige"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -26403,7 +26415,7 @@ name "Wörterbuch"
 
 
 \begin_inset LatexCommand label
-name "-Rechtschreibprogramm"
+name "Rechtschreibprogramm"
 
 \end_inset
 
@@ -27440,7 +27452,7 @@ T1
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
@@ -30380,6 +30392,11 @@ T1
 Die restlichen Befehle
 \end_layout
 
+\begin_layout Standard
+Außer den Werkzeugleisten werden hier Befehle beschrieben, die im Dokument
+ noch nicht vorkamen.
+\end_layout
+
 \begin_layout Section
 Die Werkzeugleisten
 \begin_inset LatexCommand index
@@ -31524,11 +31541,7 @@ reference "Tabellen-Einstellungen"
 \begin_layout Section
 
 \family sans
-Datei\SpecialChar \menuseparator
-
-\family default
- \SpecialChar \ldots{}
-
+Datei
 \end_layout
 
 \begin_layout Subsection
@@ -31656,21 +31669,13 @@ Dieser Befehl schließt eines von mehreren LyX-Fenstern.
 \begin_layout Section
 
 \family sans
-Bearbeiten\SpecialChar \menuseparator
-
-\family default
- \SpecialChar \ldots{}
-
+Bearbeiten
 \end_layout
 
 \begin_layout Subsection
 
 \family sans
-Einfügen (vorige Auswahl)\SpecialChar \menuseparator
-
-\family default
-\SpecialChar \ldots{}
-
+Einfügen (vorherige Auswahl)
 \end_layout
 
 \begin_layout Standard
@@ -31685,11 +31690,7 @@ Strg+C
 \begin_layout Subsection
 
 \family sans
-Einfügen ( speziell)\SpecialChar \menuseparator
-
-\family default
-\SpecialChar \ldots{}
-
+Einfügen ( speziell)
 \end_layout
 
 \begin_layout Subsubsection
@@ -31725,6 +31726,14 @@ Eingebettet Objekte
 \end_layout
 
 \begin_layout Subsection
+Alles auswählen (Strg+A)
+\end_layout
+
+\begin_layout Standard
+Markiert wie üblich das ganze Dokument.
+\end_layout
+
+\begin_layout Subsection
 
 \family sans
 Absatz nach oben/unten verschieben (Alt+Hoch/Runter)
@@ -31757,19 +31766,48 @@ Das ist das Gleiche, als wenn Sie auf
 \end_layout
 
 \begin_layout Subsubsection
-Große Anfangsbuchstaben (Alt+Z Rechts)
-\end_layout
+Große Anfangsbuchstaben (Alt+Z 
+\begin_inset Formula $\rightarrow$
+\end_inset
 
-\begin_layout Subsubsection
-Großbuchstaben (Alt+Z Hoch)
-\end_layout
-
-\begin_layout Subsubsection
-Kleinbuchstaben (Alt+Z Runter)
+)
 \end_layout
 
 \begin_layout Standard
-Die letzten drei Befehle bewirken zur Zeit nichts.
+Wenn der Cursor am Anfang eines Wortes oder in einem Wort steht, wird der
+ Buchstabe rechts davon groß geschrieben.
+ Wenn Sie mehrere Worte markiert haben.
+ werden alle Anfangsbuchstaben groß geschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+Großbuchstaben (Alt+Z 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Wenn der Cursor am Anfang eines Wortes oder in einem Wort steht, werden
+ alle Buchstaben rechts davon groß geschrieben.
+ Wenn Sie mehrere Worte markiert haben.
+ wird alles Markierte groß geschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+Kleinbuchstaben (Alt+Z Runter 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Wenn der Cursor am Anfang eines Wortes oder in einem Wort steht, werden
+ alle Buchstaben rechts davon klein geschrieben.
+ Wenn Sie mehrere Worte markiert haben.
+ wird alles Markierte klein geschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -31788,11 +31826,7 @@ Ans
 \family default
 i
 \family sans
-cht\SpecialChar \menuseparator
-
-\family default
- \SpecialChar \ldots{}
-
+cht
 \end_layout
 
 \begin_layout Subsection
@@ -31800,7 +31834,7 @@ Alle Einfügungen öffnen/schließen
 \end_layout
 
 \begin_layout Standard
-Das ist selbsterklärend, funktioniert aber zur Zeit noch nicht.
+Das ist selbsterklärend.
 \end_layout
 
 \begin_layout Subsection
@@ -31826,11 +31860,7 @@ lyx
 \begin_layout Subsection
 
 \family sans
-Aktualisieren\SpecialChar \menuseparator
-
-\family default
-\SpecialChar \ldots{}
-
+Aktualisieren
 \end_layout
 
 \begin_layout Subsubsection
@@ -31986,6 +32016,16 @@ Außerdem werden unten alle geöffneten Dokumente aufgelistet, und das gerade
  bearbeitete ist angekreuzt.
 \end_layout
 
+\begin_layout Subsection
+Werkzeugleisten
+\end_layout
+
+\begin_layout Standard
+Hier können Sie ankreuzen, welche der Werkeugleisten Standard, Ansicht/Aktualisi
+erung, Extra, Überarbeitung, Tabelle, Mathe-Kontrollflächen, Mathe und Befehlspu
+ffer Sie sehen wollen.
+\end_layout
+
 \begin_layout Section
 
 \family sans
@@ -32105,6 +32145,22 @@ Umflossenes Gleitobjekt
 Siehe 
 \emph on
 Handbuchergänzungen.
+\end_layout
+
+\begin_layout Subsection
+Zweig
+\end_layout
+
+\begin_layout Standard
+Dies geht nur, wenn Sie für Ihr Dokument mindestens einen Zweig definiert
+ haben (siehe Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Zweige"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -32337,6 +32393,7 @@ name "Box"
 Siehe 
 \emph on
 Handbuchergänzungen.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -32436,7 +32493,7 @@ font dargestellt und ohne Zeilenumbrüche gesperrt gedruckt, sofern Sie in
 \begin_layout Standard
 \begin_inset listings
 inline false
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -32452,6 +32509,24 @@ wird in LyX mit dem Schreibmaschinenfont dargestellt und ohne Zeilenumbrüche
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Datum
+\end_layout
+
+\begin_layout Standard
+Das eingefügte Datum wird so erscheinen, wie Sie es festgelegt haben (siehe
+ Anhang\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Datumsformat"
+
+\end_inset
+
+).
+ Beispiel: Mittwoch, 29.
+ August 2007.
 \end_layout
 
 \begin_layout Section
@@ -32503,7 +32578,19 @@ Nächste Änderung
 \end_layout
 
 \begin_layout Standard
-Dieser Menüpunkt ist noch nirgends näher beschrieben.
+Damit gelangen Sie von einer Änderung zur nächsten, wenn Sie die Änderungsverfol
+gung entsprechend Abschnitt\InsetSpace \space{}
+
+\family sans
+
+\begin_inset LatexCommand vref
+reference "Aenderungsverfolgung"
+
+\end_inset
+
+
+\family default
+ aktiviert haben.
 \end_layout
 
 \begin_layout Subsection
@@ -32525,13 +32612,14 @@ Gehe zur Marke (Strg+>)
 \begin_layout Standard
 Wenn Sie mit 
 \family sans
-Nächster Querverweis
+Nächster\InsetSpace \space{}
+Querverweis
 \family default
  bei einem gelandet sind, können Sie hiermit zur Marke gelangen.
 \end_layout
 
 \begin_layout Subsection
-Verzeichnisse
+Abbildungs-, Tabellen-, Inhaltsverzeichnis
 \end_layout
 
 \begin_layout Standard
@@ -32836,6 +32924,19 @@ gen
 \family default
  geöffnet.
  Der Baum im linken Teilfenster zeigt, was alles eingestellt werden kann.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -32914,7 +33015,8 @@ Höhe
 \begin_layout Description
 Fensterposition\InsetSpace ~
 speichern/wieder\InsetSpace ~
-herstellen Wenn dieser Parameter angekreuzt
+herstellen Wenn dieser Parameter ange\SpecialChar \-
+kreuzt
  ist, wird das LyX-Fenster dort geöffnet, wo es beim letzten Mal war.
 \end_layout
 
@@ -33231,7 +33333,7 @@ X-Fehler ???
 \begin_layout Description
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -33383,6 +33485,12 @@ Zeilenende-Markierung ist die Farbe, mit der ein manueller Zeilenumbruch
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Description
+Grafik
+\end_layout
+
+\begin_deeper
 \begin_layout Description
 Grafik\InsetSpace ~
 anzeigen Hier legen Sie fest, wie Grafiken in LyX dargestellt werden
@@ -33597,7 +33705,19 @@ s.
 
 \end_deeper
 \begin_layout Description
-Datumsformat Legt fest, wie das Datum ausgegeben werden soll.
+Datumsformat
+\begin_inset LatexCommand index
+name "Datumsformat"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "Datumsformat"
+
+\end_inset
+
+ Legt fest, wie das Datum ausgegeben werden soll.
  Die Parameter gelten für die 
 \family typewriter
 date
@@ -34227,7 +34347,7 @@ Sprache
 \begin_layout Description
 Sprache siehe 
 \begin_inset LatexCommand vref
-reference "-Rechtschreibprogramm"
+reference "Rechtschreibprogramm"
 
 \end_inset
 
@@ -34289,7 +34409,7 @@ reference "Aendern-der-Nummerierung"
 
  und 
 \begin_inset LatexCommand vref
-reference "sub:Das-Inhaltsverzeichnis"
+reference "Inhaltsverzeichnis"
 
 \end_inset
 
@@ -34403,6 +34523,22 @@ status collapsed
 X-Vorspann Er enthält LaTeX-Befehle, die nicht zum Klassenstandard gehören.
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+end{sloppypar}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 In 
 \begin_inset ERT
@@ -34502,7 +34638,7 @@ reference "Maßeinheiten"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Caption
