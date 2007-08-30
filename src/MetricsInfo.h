@@ -96,6 +96,8 @@ public:
 	bool ltr_pos;
 	/// Whether the parent is deleted (change tracking)
 	bool erased_;
+	///
+	bool full_repaint;
 };
 
 class TextMetricsInfo {};

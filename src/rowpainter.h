@@ -70,11 +70,8 @@ private:
 	/// return the label font for this row
 	Font const getLabelFont() const;
 
-	/// bufferview to paint on
-	BufferView & bv_;
-
-	/// Painter to use
-	frontend::Painter & pain_;
+	/// contains painting related information.
+	PainterInfo & pi_;
 
 	/// Text for the row
 	Text const & text_;
