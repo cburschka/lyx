@@ -53,7 +53,7 @@ namespace frontend {
 
 static TextClass const & textClass(LyXView const & lv)
 {
-	return lv.buffer()->params().textClass();
+	return lv.buffer()->params().getTextClass();
 }
 
 
