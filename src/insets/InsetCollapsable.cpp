@@ -212,6 +212,9 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 			openinlined_ = !hasFixedWidth()
 				&& textdim_.wid < 0.5 * mi.base.bv->workWidth();
 			if (openinlined_) {
+				// FIXME: this is not ideal but we need to clear it
+				// out because the Row::changed() status is reset.
+				mi.base.bv->textMetrics(&text_).clear();
 				// Correct for button width, and re-fit
 				mi.base.textwidth -= dim.wid;
 				InsetText::metrics(mi, textdim_);
