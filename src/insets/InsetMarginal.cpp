@@ -37,7 +37,7 @@ InsetMarginal::InsetMarginal(InsetMarginal const & in)
 
 Inset * InsetMarginal::clone() const
 {
-	new InsetMarginal(*this);
+	return new InsetMarginal(*this);
 }
 
 
