@@ -96,6 +96,7 @@ void QSearchDialog::findClicked()
 		wordsCB->isChecked(),
 		backwardsCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
+	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
 }
 
 
