@@ -55,7 +55,7 @@ using frontend::FontMetrics;
 
 RowPainter::RowPainter(PainterInfo & pi,
 	Text const & text, pit_type pit, Row const & row, Bidi & bidi, int x, int y)
-	: pi_(pi_), text_(text),
+	: pi_(pi), text_(text),
 	  text_metrics_(pi_.base.bv->textMetrics(&text)),
 	  pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
