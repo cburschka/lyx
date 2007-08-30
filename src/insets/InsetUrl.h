@@ -50,8 +50,8 @@ public:
 	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const {
-		return std::auto_ptr<Inset>(new InsetUrl(params()));
+	virtual Inset * clone() const {
+		return new InsetUrl(params());
 	}
 };
 

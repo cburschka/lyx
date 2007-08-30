@@ -54,7 +54,7 @@ public:
 	///
 	int kerning() const { return kerning_; }
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	docstring name_;
 	/// are we finished creating the name?

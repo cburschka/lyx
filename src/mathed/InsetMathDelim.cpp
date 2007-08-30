@@ -19,13 +19,8 @@
 
 #include "frontends/FontMetrics.h"
 
+
 namespace lyx {
-
-
-using std::string;
-using std::max;
-using std::auto_ptr;
-
 
 static docstring convertDelimToLatexName(docstring const & name)
 {
@@ -52,9 +47,9 @@ InsetMathDelim::InsetMathDelim
 }
 
 
-auto_ptr<Inset> InsetMathDelim::doClone() const
+Inset * InsetMathDelim::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathDelim(*this));
+	return new InsetMathDelim(*this);
 }
 
 
@@ -74,6 +69,7 @@ void InsetMathDelim::normalize(NormalStream & os) const
 
 bool InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	using std::max;
 	cell(0).metrics(mi);
 	Dimension t = theFontMetrics(mi.base.font).dimension('I');
 	int h0 = (t.asc + t.des) / 2;

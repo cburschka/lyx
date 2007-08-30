@@ -19,10 +19,6 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
-
-
 InsetMathComment::InsetMathComment()
 	: InsetMathNest(1)
 {}
@@ -36,9 +32,9 @@ InsetMathComment::InsetMathComment(docstring const & str)
 }
 
 
-auto_ptr<Inset> InsetMathComment::doClone() const
+Inset * InsetMathComment::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathComment(*this));
+	return new InsetMathComment(*this);
 }
 
 

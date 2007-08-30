@@ -57,9 +57,9 @@ using support::subst;
 
 using frontend::function_names;
 
+using std::auto_ptr;
 using std::endl;
 using std::find_if;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::swap;
@@ -361,7 +361,7 @@ void splitScripts(MathData & ar)
 
 		// create extra script inset and move superscript over
 		InsetMathScript * p = ar[i].nucleus()->asScriptInset();
-		auto_ptr<InsetMathScript> q(new InsetMathScript(true));
+		std::auto_ptr<InsetMathScript> q(new InsetMathScript(true));
 		swap(q->up(), p->up());
 		p->removeScript(true);
 
@@ -563,7 +563,7 @@ void extractFunctions(MathData & ar)
 		extractScript(exp, jt, ar.end(), true);
 
 		// create a proper inset as replacement
-		auto_ptr<InsetMathExFunc> p(new InsetMathExFunc(name));
+		std::auto_ptr<InsetMathExFunc> p(new InsetMathExFunc(name));
 
 		// jt points to the "argument". Get hold of this.
 		MathData::iterator st = extractArgument(p->cell(0), jt, ar.end(), true);
@@ -815,7 +815,7 @@ void extractDiff(MathData & ar)
 		}
 
 		// create a proper diff inset
-		auto_ptr<InsetMathDiff> diff(new InsetMathDiff);
+		std::auto_ptr<InsetMathDiff> diff(new InsetMathDiff);
 
 		// collect function, let jt point behind last used item
 		MathData::iterator jt = it + 1;

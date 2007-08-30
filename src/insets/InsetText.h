@@ -30,6 +30,7 @@ class CursorSlice;
 class Dimension;
 class Color_color;
 class ParagraphList;
+class InsetTabular;
 
 
 /**
@@ -135,14 +136,14 @@ public:
 
 	// Update the counters of this inset and of its contents
 	virtual void updateLabels(Buffer const &, ParIterator const &);
+	///
+	virtual Inset * clone() const;
 
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 
 private:
-	///
-	virtual std::auto_ptr<Inset> doClone() const;
 	///
 	void init();
 

@@ -18,21 +18,17 @@
 
 #include "frontends/FontMetrics.h"
 
+
 namespace lyx {
-
-
-using std::string;
-using std::auto_ptr;
-
 
 InsetMathDots::InsetMathDots(latexkeys const * key)
 	: key_(key)
 {}
 
 
-auto_ptr<Inset> InsetMathDots::doClone() const
+Inset * InsetMathDots::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathDots(*this));
+	return new InsetMathDots(*this);
 }
 
 

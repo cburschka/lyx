@@ -36,7 +36,7 @@ protected:
 	///
 	latexkeys const * key_;
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 };
 
 } // namespace lyx

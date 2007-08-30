@@ -28,17 +28,15 @@ namespace lyx {
 using support::bformat;
 
 using std::string;
-using std::auto_ptr;
-
 
 InsetMathSubstack::InsetMathSubstack()
 	: InsetMathGrid(1, 1)
 {}
 
 
-auto_ptr<Inset> InsetMathSubstack::doClone() const
+Inset * InsetMathSubstack::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathSubstack(*this));
+	return new InsetMathSubstack(*this);
 }
 
 
@@ -68,11 +66,12 @@ bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		string const name("substack");
+		string const name = "substack";
 		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
-				from_utf8(N_("Can't add vertical grid lines in '%1$s'")), lyx::from_utf8(name)));
+				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
+				from_utf8(name)));
 			flag.enabled(false);
 			return true;
 		}

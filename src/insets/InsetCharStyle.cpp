@@ -41,12 +41,7 @@
 namespace lyx {
 
 using std::string;
-using std::auto_ptr;
-using std::istringstream;
-using std::max;
 using std::ostream;
-using std::ostringstream;
-
 
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
@@ -70,9 +65,9 @@ InsetCharStyle::InsetCharStyle(InsetCharStyle const & in)
 {}
 
 
-auto_ptr<Inset> InsetCharStyle::doClone() const
+Inset * InsetCharStyle::clone() const
 {
-	return auto_ptr<Inset>(new InsetCharStyle(*this));
+	return new InsetCharStyle(*this);
 }
 
 

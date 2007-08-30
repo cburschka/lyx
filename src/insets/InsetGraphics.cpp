@@ -112,7 +112,6 @@ using support::unzippedFileName;
 
 using std::endl;
 using std::string;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -165,9 +164,9 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 }
 
 
-auto_ptr<Inset> InsetGraphics::doClone() const
+Inset * InsetGraphics::clone() const
 {
-	return auto_ptr<Inset>(new InsetGraphics(*this));
+	return new InsetGraphics(*this);
 }
 
 

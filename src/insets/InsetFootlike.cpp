@@ -17,7 +17,9 @@
 #include "BufferParams.h"
 #include "MetricsInfo.h"
 
+
 namespace lyx {
+
 
 InsetFootlike::InsetFootlike(BufferParams const & bp)
 	: InsetCollapsable(bp)

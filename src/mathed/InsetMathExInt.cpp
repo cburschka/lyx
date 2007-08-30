@@ -22,9 +22,6 @@
 
 namespace lyx {
 
-
-using std::string;
-using std::auto_ptr;
 using std::endl;
 
 
@@ -38,9 +35,9 @@ InsetMathExInt::InsetMathExInt(docstring const & name)
 // 3 - upper
 
 
-auto_ptr<Inset> InsetMathExInt::doClone() const
+Inset * InsetMathExInt::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathExInt(*this));
+	return new InsetMathExInt(*this);
 }
 
 

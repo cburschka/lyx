@@ -39,7 +39,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	///
 	mutable unsigned int center_indent_;

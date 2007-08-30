@@ -105,7 +105,7 @@ public:
 	bool isChar() const { return true; }
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	///
 	quote_language language_;

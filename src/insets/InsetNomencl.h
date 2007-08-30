@@ -41,8 +41,8 @@ public:
 	///
 	int docbookGlossary(odocstream &) const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const {
-		return std::auto_ptr<Inset>(new InsetNomencl(params()));
+	virtual Inset * clone() const {
+		return new InsetNomencl(params());
 	}
 	/// unique id for this nomenclature entry for docbook export
 	docstring nomenclature_entry_id;
@@ -71,8 +71,8 @@ public:
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const {
-		return std::auto_ptr<Inset>(new InsetPrintNomencl(params()));
+	virtual Inset * clone() const {
+		return new InsetPrintNomencl(params());
 	}
 };
 

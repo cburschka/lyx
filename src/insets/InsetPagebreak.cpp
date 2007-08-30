@@ -28,9 +28,6 @@ namespace lyx {
 
 using frontend::Painter;
 
-using std::endl;
-using std::ostream;
-
 
 void InsetPagebreak::read(Buffer const &, Lexer &)
 {
@@ -38,7 +35,7 @@ void InsetPagebreak::read(Buffer const &, Lexer &)
 }
 
 
-void InsetPagebreak::write(Buffer const &, ostream & os) const
+void InsetPagebreak::write(Buffer const &, std::ostream & os) const
 {
 	os << "\n" << getCmdName() << '\n';
 }

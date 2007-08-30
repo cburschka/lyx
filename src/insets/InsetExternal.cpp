@@ -44,9 +44,7 @@
 
 #include <sstream>
 
-using std::endl;
 using std::string;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -413,9 +411,9 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 {}
 
 
-auto_ptr<Inset> InsetExternal::doClone() const
+Inset * InsetExternal::clone() const
 {
-	return auto_ptr<Inset>(new InsetExternal(*this));
+	return new InsetExternal(*this);
 }
 
 

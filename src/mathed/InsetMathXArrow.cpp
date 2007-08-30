@@ -21,18 +21,15 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
-
 
 InsetMathXArrow::InsetMathXArrow(docstring const & name)
 	: InsetMathFracBase(), name_(name)
 {}
 
 
-auto_ptr<Inset> InsetMathXArrow::doClone() const
+Inset * InsetMathXArrow::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathXArrow(*this));
+	return new InsetMathXArrow(*this);
 }
 
 

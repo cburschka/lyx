@@ -30,10 +30,6 @@ namespace lyx {
 using support::bformat;
 
 using std::endl;
-using std::max;
-using std::min;
-using std::swap;
-using std::auto_ptr;
 
 
 InsetMathCases::InsetMathCases(row_type n)
@@ -41,9 +37,9 @@ InsetMathCases::InsetMathCases(row_type n)
 {}
 
 
-auto_ptr<Inset> InsetMathCases::doClone() const
+Inset * InsetMathCases::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathCases(*this));
+	return new InsetMathCases(*this);
 }
 
 

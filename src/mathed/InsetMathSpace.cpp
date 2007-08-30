@@ -20,8 +20,6 @@
 #include "frontends/Painter.h"
 
 using std::string;
-using std::auto_ptr;
-
 
 namespace lyx {
 
@@ -75,9 +73,9 @@ InsetMathSpace::InsetMathSpace(docstring const & name)
 }
 
 
-auto_ptr<Inset> InsetMathSpace::doClone() const
+Inset * InsetMathSpace::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathSpace(*this));
+	return new InsetMathSpace(*this);
 }
 
 

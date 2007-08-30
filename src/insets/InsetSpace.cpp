@@ -29,7 +29,6 @@ namespace lyx {
 
 using std::string;
 using std::max;
-using std::auto_ptr;
 using std::ostream;
 
 
@@ -235,9 +234,9 @@ int InsetSpace::textString(Buffer const & buf, odocstream & os,
 }
 
 
-auto_ptr<Inset> InsetSpace::doClone() const
+Inset * InsetSpace::clone() const
 {
-	return auto_ptr<Inset>(new InsetSpace(kind_));
+	return new InsetSpace(kind_);
 }
 
 

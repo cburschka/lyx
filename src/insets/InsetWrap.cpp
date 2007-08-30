@@ -37,7 +37,6 @@ namespace lyx {
 
 using std::string;
 using std::endl;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -181,9 +180,9 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<Inset> InsetWrap::doClone() const
+Inset * InsetWrap::clone() const
 {
-	return auto_ptr<Inset>(new InsetWrap(*this));
+	return new InsetWrap(*this);
 }
 
 

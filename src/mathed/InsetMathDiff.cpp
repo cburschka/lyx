@@ -18,7 +18,6 @@
 
 namespace lyx {
 
-using std::auto_ptr;
 using std::endl;
 
 
@@ -27,9 +26,9 @@ InsetMathDiff::InsetMathDiff()
 {}
 
 
-auto_ptr<Inset> InsetMathDiff::doClone() const
+Inset * InsetMathDiff::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathDiff(*this));
+	return new InsetMathDiff(*this);
 }
 
 

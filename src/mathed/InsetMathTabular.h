@@ -47,7 +47,7 @@ public:
 	void maple(MapleStream &) const;
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	docstring name_;
 };

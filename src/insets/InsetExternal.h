@@ -153,7 +153,7 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.

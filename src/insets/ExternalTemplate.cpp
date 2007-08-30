@@ -565,3 +565,6 @@ void Template::Format::readFormat(Lexer & lex)
 
 } // namespace external
 } // namespace lyx
+
+
+

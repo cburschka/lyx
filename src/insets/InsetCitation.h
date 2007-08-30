@@ -52,9 +52,9 @@ public:
 	void replaceContents(std::string const & from, std::string const & to);
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const
+	virtual Inset * clone() const
 	{
-		return std::auto_ptr<Inset>(new InsetCitation(params()));
+		return new InsetCitation(params());
 	}
 
 	/// This function does the donkey work of creating the pretty label

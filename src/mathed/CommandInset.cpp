@@ -21,7 +21,6 @@
 
 namespace lyx {
 
-using std::auto_ptr;
 using std::string;
 
 CommandInset::CommandInset(docstring const & name)
@@ -31,9 +30,9 @@ CommandInset::CommandInset(docstring const & name)
 }
 
 
-auto_ptr<Inset> CommandInset::doClone() const
+Inset * CommandInset::clone() const
 {
-	return auto_ptr<Inset>(new CommandInset(*this));
+	return new CommandInset(*this);
 }
 
 

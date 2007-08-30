@@ -33,8 +33,6 @@
 
 namespace lyx {
 
-using support::ascii_lowercase;
-using support::contains;
 using support::FileName;
 using support::getStringFromVector;
 using support::getVectorFromString;
@@ -45,11 +43,8 @@ using support::split;
 using support::tokenPos;
 
 using std::endl;
-using std::replace;
 using std::string;
-using std::ostream;
 using std::vector;
-using std::map;
 
 namespace fs = boost::filesystem;
 
@@ -371,6 +366,8 @@ docstring const getNatbibLabel(Buffer const & buffer,
 
 docstring const getBasicLabel(docstring const & keyList, docstring const & after)
 {
+	using support::contains;
+
 	docstring keys(keyList);
 	docstring label;
 
@@ -548,7 +545,7 @@ void InsetCitation::replaceContents(string const & from, string const & to)
 {
 	if (tokenPos(getContents(), ',', from) != -1) {
 		vector<string> items = getVectorFromString(getContents());
-		replace(items.begin(), items.end(), from, to);
+		std::replace(items.begin(), items.end(), from, to);
 		setContents(getStringFromVector(items));
 	}
 }

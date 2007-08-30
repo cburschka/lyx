@@ -123,14 +123,6 @@ Inset::Inset()
 {}
 
 
-std::auto_ptr<Inset> Inset::clone() const
-{
-	std::auto_ptr<Inset> b = doClone();
-	BOOST_ASSERT(typeid(*b) == typeid(*this));
-	return b;
-}
-
-
 Inset::Code Inset::translate(std::string const & name)
 {
 	static TranslatorMap const translator = build_translator();

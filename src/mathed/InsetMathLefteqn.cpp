@@ -17,19 +17,14 @@
 
 namespace lyx {
 
-
-using std::string;
-using std::auto_ptr;
-
-
 InsetMathLefteqn::InsetMathLefteqn()
 	: InsetMathNest(1)
 {}
 
 
-auto_ptr<Inset> InsetMathLefteqn::doClone() const
+Inset * InsetMathLefteqn::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathLefteqn(*this));
+	return new InsetMathLefteqn(*this);
 }
 
 

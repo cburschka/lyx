@@ -35,7 +35,6 @@ namespace lyx {
 using support::onlyFilename;
 
 using std::string;
-using std::auto_ptr;
 
 
 RenderGraphic::RenderGraphic(Inset const * inset)
@@ -56,9 +55,9 @@ RenderGraphic::RenderGraphic(RenderGraphic const & other,
 }
 
 
-auto_ptr<RenderBase> RenderGraphic::clone(Inset const * inset) const
+RenderBase * RenderGraphic::clone(Inset const * inset) const
 {
-	return auto_ptr<RenderBase>(new RenderGraphic(*this, inset));
+	return new RenderGraphic(*this, inset);
 }
 
 

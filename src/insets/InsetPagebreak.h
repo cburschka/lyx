@@ -51,9 +51,9 @@ public:
 	virtual std::string getCmdName() const { return "\\newpage"; }
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const
+	virtual Inset * clone() const
 	{
-		return std::auto_ptr<Inset>(new InsetPagebreak);
+		return new InsetPagebreak;
 	}
 };
 
@@ -67,9 +67,9 @@ public:
 	std::string getCmdName() const { return "\\clearpage"; }
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const
+	virtual Inset * clone() const
 	{
-		return std::auto_ptr<Inset>(new InsetClearPage);
+		return new InsetClearPage;
 	}
 };
 
@@ -83,9 +83,9 @@ public:
 	std::string getCmdName() const { return "\\cleardoublepage"; }
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const
+	virtual Inset * clone() const
 	{
-		return std::auto_ptr<Inset>(new InsetClearDoublePage);
+		return new InsetClearDoublePage;
 	}
 };
 

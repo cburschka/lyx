@@ -777,7 +777,7 @@ protected:
 	int scroll() const { return scx_; }
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	///
 	void drawCellLines(frontend::Painter &, int x, int y, row_type row,

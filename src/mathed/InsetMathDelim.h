@@ -63,7 +63,7 @@ public:
 	///
 	docstring right_;
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	mutable int dw_;
 };

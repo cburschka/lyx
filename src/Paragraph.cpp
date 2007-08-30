@@ -1083,7 +1083,7 @@ Paragraph::Paragraph(Paragraph const & par)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it)
-		it->inset = it->inset->clone().release();
+		it->inset = it->inset->clone();
 }
 
 
@@ -1097,7 +1097,7 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 		InsetList::iterator it = insetlist.begin();
 		InsetList::iterator end = insetlist.end();
 		for (; it != end; ++it)
-			it->inset = it->inset->clone().release();
+			it->inset = it->inset->clone();
 
 		layout_ = par.layout();
 		text_ = par.text_;

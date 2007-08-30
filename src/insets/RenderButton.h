@@ -25,7 +25,7 @@ class RenderButton : public RenderBase
 public:
 	RenderButton();
 
-	std::auto_ptr<RenderBase> clone(Inset const *) const;
+	RenderBase * clone(Inset const *) const;
 
 	/// compute the size of the object returned in dim
 	virtual bool metrics(MetricsInfo & mi, Dimension & dim) const;

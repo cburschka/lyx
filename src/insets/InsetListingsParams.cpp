@@ -30,8 +30,7 @@ using std::ostream;
 using std::string;
 using std::exception;
 
-namespace lyx
-{
+namespace lyx {
 
 using support::bformat;
 using support::trim;

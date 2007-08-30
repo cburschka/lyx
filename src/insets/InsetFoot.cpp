@@ -45,9 +45,9 @@ InsetFoot::InsetFoot(InsetFoot const & in)
 {}
 
 
-auto_ptr<Inset> InsetFoot::doClone() const
+Inset * InsetFoot::clone() const
 {
-	return auto_ptr<Inset>(new InsetFoot(*this));
+	return new InsetFoot(*this);
 }
 
 
@@ -73,6 +73,7 @@ void InsetFoot::updateLabels(Buffer const & buf, ParIterator const & it)
 	}
 	InsetCollapsable::updateLabels(buf, it);
 }
+
 
 int InsetFoot::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams_in) const

@@ -26,11 +26,9 @@
 #include "TexRow.h"
 #include "TextMetrics.h"
 
+
 namespace lyx {
 
-//using support::odocstream;
-
-using std::auto_ptr;
 using std::endl;
 
 
@@ -49,9 +47,9 @@ InsetMathMBox::InsetMathMBox(LayoutPtr const & layout)
 }
 
 
-auto_ptr<Inset> InsetMathMBox::doClone() const
+Inset * InsetMathMBox::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathMBox(*this));
+	return new InsetMathMBox(*this);
 }
 
 

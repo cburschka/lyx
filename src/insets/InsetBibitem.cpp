@@ -31,15 +31,12 @@
 
 namespace lyx {
 
-using support::prefixIs;
-
-using std::max;
-using std::string;
-using std::auto_ptr;
-using std::ostream;
 
 int InsetBibitem::key_counter = 0;
+
+
 docstring const key_prefix = from_ascii("key-");
+
 
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 	: InsetCommand(p, "bibitem")
@@ -49,11 +46,11 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 }
 
 
-auto_ptr<Inset> InsetBibitem::doClone() const
+Inset * InsetBibitem::clone() const
 {
-	auto_ptr<InsetBibitem> b(new InsetBibitem(params()));
+	InsetBibitem * b = new InsetBibitem(params());
 	b->autolabel_ = autolabel_;
-	return auto_ptr<Inset>(b);
+	return b;
 }
 
 
@@ -85,9 +82,9 @@ void InsetBibitem::read(Buffer const & buf, Lexer & lex)
 {
 	InsetCommand::read(buf, lex);
 
-	if (prefixIs(getParam("key"), key_prefix)) {
+	if (support::prefixIs(getParam("key"), key_prefix)) {
 		int const key = convert<int>(getParam("key").substr(key_prefix.length()));
-		key_counter = max(key_counter, key);
+		key_counter = std::max(key_counter, key);
 	}
 }
 

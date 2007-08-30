@@ -18,10 +18,6 @@
 
 namespace lyx {
 
-
-using std::auto_ptr;
-
-
 InsetMathPar::InsetMathPar(MathData const & ar)
 {
 	cells_[0] = ar;
@@ -60,9 +56,9 @@ void InsetMathPar::infoize(odocstream & os) const
 }
 
 
-auto_ptr<Inset> InsetMathPar::doClone() const
+Inset * InsetMathPar::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathPar(*this));
+	return new InsetMathPar(*this);
 }
 
 

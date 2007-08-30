@@ -32,11 +32,6 @@ InsetIndex::InsetIndex(InsetCommandParams const & p)
 {}
 
 
-// InsetIndex::InsetIndex(InsetCommandParams const & p, bool)
-//	: InsetCommand(p, false)
-// {}
-
-
 docstring const InsetIndex::getScreenLabel(Buffer const &) const
 {
 	return _("Idx");
@@ -63,11 +58,6 @@ Inset::Code InsetIndex::lyxCode() const
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 	: InsetCommand(p, string())
 {}
-
-
-// InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
-//	: InsetCommand(p, false)
-// {}
 
 
 docstring const InsetPrintIndex::getScreenLabel(Buffer const &) const

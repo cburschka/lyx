@@ -22,17 +22,14 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-
-
 InsetMathBoxed::InsetMathBoxed()
 	: InsetMathNest(1)
 {}
 
 
-auto_ptr<Inset> InsetMathBoxed::doClone() const
+Inset * InsetMathBoxed::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathBoxed(*this));
+	return new InsetMathBoxed(*this);
 }
 
 

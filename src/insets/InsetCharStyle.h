@@ -88,7 +88,7 @@ protected:
 private:
 	friend class InsetCharStyleParams;
 
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	///
 	InsetCharStyleParams params_;

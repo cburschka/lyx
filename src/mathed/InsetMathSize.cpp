@@ -21,17 +21,14 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-
-
 InsetMathSize::InsetMathSize(latexkeys const * l)
 	: InsetMathNest(1), key_(l), style_(Styles(convert<int>(l->extra)))
 {}
 
 
-auto_ptr<Inset> InsetMathSize::doClone() const
+Inset * InsetMathSize::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathSize(*this));
+	return new InsetMathSize(*this);
 }
 
 

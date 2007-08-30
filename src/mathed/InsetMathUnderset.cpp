@@ -20,14 +20,9 @@
 
 namespace lyx {
 
-using std::max;
-using std::auto_ptr;
-
-
-
-auto_ptr<Inset> InsetMathUnderset::doClone() const
+Inset * InsetMathUnderset::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathUnderset(*this));
+	return new InsetMathUnderset(*this);
 }
 
 
@@ -36,7 +31,7 @@ bool InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
-	dim.wid = max(cell(0).width(), cell(1).width()) + 4;
+	dim.wid = std::max(cell(0).width(), cell(1).width()) + 4;
 	dim.asc = cell(1).ascent();
 	dim.des = cell(1).descent() + cell(0).height() + 4;
 	metricsMarkers(dim);

@@ -20,17 +20,14 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-
-
 InsetMathMakebox::InsetMathMakebox()
 	: InsetMathNest(3)
 {}
 
 
-auto_ptr<Inset> InsetMathMakebox::doClone() const
+Inset * InsetMathMakebox::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathMakebox(*this));
+	return new InsetMathMakebox(*this);
 }
 
 

@@ -23,11 +23,8 @@
 
 #include "support/textutils.h"
 
+
 namespace lyx {
-
-using std::string;
-using std::auto_ptr;
-
 
 InsetMathSymbol::InsetMathSymbol(latexkeys const * l)
 	: sym_(l), h_(0), scriptable_(false)
@@ -44,9 +41,9 @@ InsetMathSymbol::InsetMathSymbol(docstring const & name)
 {}
 
 
-auto_ptr<Inset> InsetMathSymbol::doClone() const
+Inset * InsetMathSymbol::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathSymbol(*this));
+	return new InsetMathSymbol(*this);
 }
 
 

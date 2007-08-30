@@ -62,7 +62,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 public:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	Kind kind_;
 };

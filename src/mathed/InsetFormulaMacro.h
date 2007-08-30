@@ -54,8 +54,6 @@ public:
 		    OutputParams const &) const;
 
 	///
-	std::auto_ptr<Inset> clone() const;
-	///
 	Inset::Code lyxCode() const { return MATHMACRO_CODE; }
 	///
 	docstring const & getInsetName() const { return name_; }
@@ -70,6 +68,8 @@ private:
 	docstring prefix() const;
 	///
 	docstring name_;
+	///
+	Inset * clone() const;
 };
 
 

@@ -28,9 +28,6 @@ namespace lyx {
 
 using std::string;
 using std::max;
-using std::auto_ptr;
-using std::endl;
-using std::vector;
 
 
 /// This class is the value of a macro argument, technically
@@ -48,15 +45,15 @@ public:
 	int kerning() const { return mathMacro_.cell(idx_).kerning(); }
 
 private:
-	std::auto_ptr<Inset> doClone() const;
+	Inset * clone() const;
 	MathMacro const & mathMacro_;
 	size_t idx_;
 };
 
 
-auto_ptr<Inset> MathMacroArgumentValue::doClone() const
+Inset * MathMacroArgumentValue::clone() const
 {
-	return auto_ptr<Inset>(new MathMacroArgumentValue(*this));
+	return new MathMacroArgumentValue(*this);
 }
 
 
@@ -89,12 +86,12 @@ MathMacro::MathMacro(docstring const & name, int numargs)
 {}
 
 
-auto_ptr<Inset> MathMacro::doClone() const
+Inset * MathMacro::clone() const
 {
 	MathMacro * x = new MathMacro(*this);
 	x->expanded_ = MathData();
 	x->macroBackup_ = MacroData();
-	return auto_ptr<Inset>(x);
+	return x;
 }
 
 
@@ -304,7 +301,7 @@ void MathMacro::updateExpansion() const
 	MacroData const & macro = MacroTable::globalMacros().get(name());
 
 	// create MathMacroArgumentValue object pointing to the cells of the macro
-	vector<MathData> values(nargs());
+	std::vector<MathData> values(nargs());
 	for (size_t i = 0; i != nargs(); ++i)
 				values[i].insert(0, MathAtom(new MathMacroArgumentValue(*this, i)));
 	macro.expand(values, expanded_);

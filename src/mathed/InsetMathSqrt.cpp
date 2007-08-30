@@ -20,17 +20,14 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-
-
 InsetMathSqrt::InsetMathSqrt()
 	: InsetMathNest(1)
 {}
 
 
-auto_ptr<Inset> InsetMathSqrt::doClone() const
+Inset * InsetMathSqrt::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathSqrt(*this));
+	return new InsetMathSqrt(*this);
 }
 
 

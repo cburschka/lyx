@@ -40,7 +40,7 @@ public:
 	static bool isBigInsetDelim(docstring const &);
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	size_type size() const;
 	///

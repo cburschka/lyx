@@ -68,7 +68,7 @@ public:
 	Inset::Code lyxCode() const { return MATHMACRO_CODE; }
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	/// prefix in inset
 	docstring prefix() const;
 

@@ -31,7 +31,6 @@
 namespace lyx {
 
 using std::string;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -64,9 +63,9 @@ InsetBranch::~InsetBranch()
 }
 
 
-auto_ptr<Inset> InsetBranch::doClone() const
+Inset * InsetBranch::clone() const
 {
-	return auto_ptr<Inset>(new InsetBranch(*this));
+	return new InsetBranch(*this);
 }
 
 

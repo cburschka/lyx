@@ -43,7 +43,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 };
 
 

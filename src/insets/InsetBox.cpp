@@ -34,7 +34,6 @@
 
 namespace lyx {
 
-using std::auto_ptr;
 using std::string;
 using std::istringstream;
 using std::ostream;
@@ -113,9 +112,9 @@ InsetBox::~InsetBox()
 }
 
 
-auto_ptr<Inset> InsetBox::doClone() const
+Inset * InsetBox::clone() const
 {
-	return auto_ptr<Inset>(new InsetBox(*this));
+	return new InsetBox(*this);
 }
 
 

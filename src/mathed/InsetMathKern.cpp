@@ -19,10 +19,6 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
-
-
 InsetMathKern::InsetMathKern()
 {
 }
@@ -40,9 +36,9 @@ InsetMathKern::InsetMathKern(docstring const & s)
 }
 
 
-auto_ptr<Inset> InsetMathKern::doClone() const
+Inset * InsetMathKern::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathKern(*this));
+	return new InsetMathKern(*this);
 }
 
 

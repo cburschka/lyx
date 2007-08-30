@@ -35,12 +35,8 @@
 
 namespace lyx {
 
-using graphics::PreviewLoader;
-
 using std::endl;
 using std::string;
-using std::max;
-using std::min;
 using std::ostream;
 
 
@@ -176,6 +172,8 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 
 bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	using std::max;
+
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
 	mi.base.textwidth -= (int) (1.5 * TEXT_TO_INSET_OFFSET);
 
@@ -423,7 +421,7 @@ docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 	docstring label;
 	pos_type const max_length = 15;
 	pos_type const p_siz = paragraphs().begin()->size();
-	pos_type const n = min(max_length, p_siz);
+	pos_type const n = std::min(max_length, p_siz);
 	pos_type i = 0;
 	pos_type j = 0;
 	for (; i < n && j < p_siz; ++j) {

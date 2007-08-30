@@ -85,7 +85,7 @@ protected:
 private:
 	friend class InsetGraphicsMailer;
 
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	/// Read the inset native format
 	void readInsetGraphics(Lexer & lex, std::string const & bufpath);

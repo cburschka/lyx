@@ -32,7 +32,6 @@ namespace lyx {
 
 using support::bformat;
 
-using std::auto_ptr;
 using std::ostream;
 using std::endl;
 
@@ -73,9 +72,9 @@ MathMacroTemplate::MathMacroTemplate(docstring const & str)
 }
 
 
-auto_ptr<Inset> MathMacroTemplate::doClone() const
+Inset * MathMacroTemplate::clone() const
 {
-	return auto_ptr<Inset>(new MathMacroTemplate(*this));
+	return new MathMacroTemplate(*this);
 }
 
 

@@ -58,14 +58,14 @@ void Inset.heorem::write(Buffer const * buf, ostream & os) const
 }
 
 
-auto_ptr<Inset> Inset.heorem::doClone() const
+Inset * InsetTheorem::clone() const
 {
 	// FIXME: Is this inset used? If YES this is WRONG!!! (Jug)
-	auto_ptr<Inset.heorem> result(new InsetTheorem);
+	InsetTheorem * result = new InsetTheorem;
 	result->setCollapsed(!isOpen());
-
 	return result;
 }
+
 
 bool Inset.heorem::metrics(MetricsInfo & mi, Dimension & dim) const
 {

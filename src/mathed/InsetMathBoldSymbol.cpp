@@ -19,17 +19,14 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-
-
 InsetMathBoldSymbol::InsetMathBoldSymbol()
 	: InsetMathNest(1)
 {}
 
 
-auto_ptr<Inset> InsetMathBoldSymbol::doClone() const
+Inset * InsetMathBoldSymbol::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathBoldSymbol(*this));
+	return new InsetMathBoldSymbol(*this);
 }
 
 

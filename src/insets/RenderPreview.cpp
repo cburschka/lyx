@@ -39,7 +39,6 @@ namespace lyx {
 using support::FileName;
 
 using std::string;
-using std::auto_ptr;
 
 
 LyXRC_PreviewStatus RenderPreview::status()
@@ -69,9 +68,9 @@ RenderPreview::~RenderPreview()
 }
 
 
-auto_ptr<RenderBase> RenderPreview::clone(Inset const * inset) const
+RenderBase * RenderPreview::clone(Inset const * inset) const
 {
-	return auto_ptr<RenderBase>(new RenderPreview(*this, inset));
+	return new RenderPreview(*this, inset);
 }
 
 

@@ -40,7 +40,6 @@
 namespace lyx {
 
 using std::string;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -134,9 +133,9 @@ InsetNote::~InsetNote()
 }
 
 
-auto_ptr<Inset> InsetNote::doClone() const
+Inset * InsetNote::clone() const
 {
-	return auto_ptr<Inset>(new InsetNote(*this));
+	return new InsetNote(*this);
 }
 
 

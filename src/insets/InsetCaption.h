@@ -88,7 +88,7 @@ public:
 
 private:
 	///
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	mutable docstring full_label_;
 	///

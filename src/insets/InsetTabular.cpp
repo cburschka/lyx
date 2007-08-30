@@ -59,7 +59,6 @@
 #include <limits>
 
 using std::abs;
-using std::auto_ptr;
 using std::endl;
 using std::getline;
 using std::istream;
@@ -515,20 +514,18 @@ Tabular::cellstruct::cellstruct(cellstruct const & cs)
 	  rotate(cs.rotate),
 	  align_special(cs.align_special),
 	  p_width(cs.p_width),
-	  inset(dynamic_cast<InsetText*>(cs.inset->clone().release()))
+	  inset(dynamic_cast<InsetText*>(cs.inset->clone()))
 {}
 
 
-Tabular::cellstruct &
-Tabular::cellstruct::operator=(cellstruct cs)
+Tabular::cellstruct & Tabular::cellstruct::operator=(cellstruct cs)
 {
 	swap(cs);
 	return *this;
 }
 
 
-void
-Tabular::cellstruct::swap(cellstruct & rhs)
+void Tabular::cellstruct::swap(cellstruct & rhs)
 {
 	std::swap(cellno, rhs.cellno);
 	std::swap(width_of_cell, rhs.width_of_cell);
@@ -2902,9 +2899,9 @@ InsetTabular::~InsetTabular()
 }
 
 
-auto_ptr<Inset> InsetTabular::doClone() const
+Inset * InsetTabular::clone() const
 {
-	return auto_ptr<Inset>(new InsetTabular(*this));
+	return new InsetTabular(*this);
 }
 
 

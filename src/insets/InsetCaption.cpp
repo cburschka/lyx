@@ -40,7 +40,6 @@
 #include <sstream>
 
 
-using std::auto_ptr;
 using std::endl;
 using std::string;
 using std::ostream;
@@ -48,7 +47,6 @@ using std::ostream;
 
 namespace lyx {
 
-using support::bformat;
 
 InsetCaption::InsetCaption(InsetCaption const & ic)
 	: InsetText(ic), textclass_(ic.textclass_)
@@ -288,6 +286,7 @@ int InsetCaption::getOptArg(Buffer const & buf, odocstream & os,
 
 void InsetCaption::updateLabels(Buffer const & buf, ParIterator const & it)
 {
+	using support::bformat;
 	TextClass const & tclass = buf.params().getTextClass();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();
@@ -315,9 +314,9 @@ void InsetCaption::updateLabels(Buffer const & buf, ParIterator const & it)
 }
 
 
-auto_ptr<Inset> InsetCaption::doClone() const
+Inset * InsetCaption::clone() const
 {
-	return auto_ptr<Inset>(new InsetCaption(*this));
+	return new InsetCaption(*this);
 }
 
 

@@ -36,8 +36,8 @@ public:
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const {
-		return std::auto_ptr<Inset>(new InsetIndex(params()));
+	virtual Inset * clone() const {
+		return new InsetIndex(params());
 	}
 };
 
@@ -57,8 +57,8 @@ public:
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const {
-		return std::auto_ptr<Inset>(new InsetPrintIndex(params()));
+	virtual Inset * clone() const {
+		return new InsetPrintIndex(params());
 	}
 };
 

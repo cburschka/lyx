@@ -43,7 +43,6 @@ using support::token;
 using std::endl;
 using std::min;
 
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -74,9 +73,9 @@ InsetERT::InsetERT(InsetERT const & in)
 }
 
 
-auto_ptr<Inset> InsetERT::doClone() const
+Inset * InsetERT::clone() const
 {
-	return auto_ptr<Inset>(new InsetERT(*this));
+	return new InsetERT(*this);
 }
 
 

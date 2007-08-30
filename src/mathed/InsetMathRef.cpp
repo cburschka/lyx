@@ -32,7 +32,6 @@
 namespace lyx {
 
 using std::string;
-using std::auto_ptr;
 using std::endl;
 
 
@@ -46,9 +45,9 @@ InsetMathRef::InsetMathRef(docstring const & data)
 {}
 
 
-auto_ptr<Inset> InsetMathRef::doClone() const
+Inset * InsetMathRef::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathRef(*this));
+	return new InsetMathRef(*this);
 }
 
 

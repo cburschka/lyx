@@ -23,11 +23,6 @@
 
 namespace lyx {
 
-
-using std::string;
-using std::auto_ptr;
-
-
 InsetMathTabular::InsetMathTabular(docstring const & name, int m, int n)
 	: InsetMathGrid(m, n), name_(name)
 {}
@@ -45,9 +40,9 @@ InsetMathTabular::InsetMathTabular(docstring const & name, char valign,
 {}
 
 
-auto_ptr<Inset> InsetMathTabular::doClone() const
+Inset * InsetMathTabular::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathTabular(*this));
+	return new InsetMathTabular(*this);
 }
 
 

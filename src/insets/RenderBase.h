@@ -32,7 +32,7 @@ class RenderBase {
 public:
 	virtual ~RenderBase() {}
 
-	virtual std::auto_ptr<RenderBase> clone(Inset const *) const = 0;
+	virtual RenderBase * clone(Inset const *) const = 0;
 
 	/// compute the size of the object returned in dim.
 	/// \retval true if the metrics has changed.

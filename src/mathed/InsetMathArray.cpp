@@ -25,7 +25,6 @@
 namespace lyx {
 
 using std::getline;
-using std::auto_ptr;
 using std::istringstream;
 using std::istream_iterator;
 using std::vector;
@@ -73,9 +72,9 @@ InsetMathArray::InsetMathArray(docstring const & name, docstring const & str)
 }
 
 
-auto_ptr<Inset> InsetMathArray::doClone() const
+Inset * InsetMathArray::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathArray(*this));
+	return new InsetMathArray(*this);
 }
 
 

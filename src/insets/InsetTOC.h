@@ -38,7 +38,7 @@ public:
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 };
 
 

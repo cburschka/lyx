@@ -43,7 +43,6 @@ using std::min;
 using std::swap;
 
 using std::string;
-using std::auto_ptr;
 using std::istream;
 using std::istringstream;
 using std::vector;
@@ -157,9 +156,9 @@ InsetMathGrid::InsetMathGrid(col_type m, row_type n, char v, docstring const & h
 }
 
 
-auto_ptr<Inset> InsetMathGrid::doClone() const
+Inset * InsetMathGrid::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathGrid(*this));
+	return new InsetMathGrid(*this);
 }
 
 

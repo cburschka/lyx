@@ -22,10 +22,6 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
-using std::ostream;
-
 
 InsetMarginal::InsetMarginal(BufferParams const & bp)
 	: InsetFootlike(bp)
@@ -39,9 +35,9 @@ InsetMarginal::InsetMarginal(InsetMarginal const & in)
 {}
 
 
-auto_ptr<Inset> InsetMarginal::doClone() const
+Inset * InsetMarginal::clone() const
 {
-	return auto_ptr<Inset>(new InsetMarginal(*this));
+	new InsetMarginal(*this);
 }
 
 

@@ -21,9 +21,6 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-using std::string;
-
 InsetMathColor::InsetMathColor(bool oldstyle, Color_color const & color)
 	: InsetMathNest(1), oldstyle_(oldstyle),
 	  color_(from_utf8(lcolor.getLaTeXName(color)))
@@ -35,9 +32,9 @@ InsetMathColor::InsetMathColor(bool oldstyle, docstring const & color)
 {}
 
 
-auto_ptr<Inset> InsetMathColor::doClone() const
+Inset * InsetMathColor::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathColor(*this));
+	return new InsetMathColor(*this);
 }
 
 

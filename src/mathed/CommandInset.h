@@ -44,7 +44,7 @@ public:
 	bool isActive() const { return false; }
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	///
 	docstring name_;

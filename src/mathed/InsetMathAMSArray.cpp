@@ -24,7 +24,6 @@
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 
-using std::auto_ptr;
 
 namespace lyx {
 
@@ -41,9 +40,9 @@ InsetMathAMSArray::InsetMathAMSArray(docstring const & name)
 {}
 
 
-auto_ptr<Inset> InsetMathAMSArray::doClone() const
+Inset * InsetMathAMSArray::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathAMSArray(*this));
+	return new InsetMathAMSArray(*this);
 }
 
 

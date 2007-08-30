@@ -63,8 +63,8 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<Inset> doClone() const {
-		return std::auto_ptr<Inset>(new InsetRef(*this));
+	virtual Inset * clone() const {
+		return new InsetRef(*this);
 	}
 	///
 	bool isLatex;

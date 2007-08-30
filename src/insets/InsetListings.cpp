@@ -34,13 +34,13 @@ using support::token;
 using support::contains;
 using support::subst;
 
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 using std::string;
 
-char const lstinline_delimiters[] = "!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
+char const lstinline_delimiters[] =
+	"!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
 void InsetListings::init()
 {
@@ -69,9 +69,9 @@ InsetListings::InsetListings(InsetListings const & in)
 }
 
 
-auto_ptr<Inset> InsetListings::doClone() const
+Inset * InsetListings::clone() const
 {
-	return auto_ptr<Inset>(new InsetListings(*this));
+	return new InsetListings(*this);
 }
 
 

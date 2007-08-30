@@ -29,10 +29,7 @@ namespace lyx {
 
 using std::string;
 using std::max;
-using std::auto_ptr;
 using std::endl;
-
-
 
 InsetMathScript::InsetMathScript()
 	: InsetMathNest(1), cell_1_is_up_(false), limits_(0)
@@ -52,9 +49,9 @@ InsetMathScript::InsetMathScript(MathAtom const & at, bool up)
 }
 
 
-auto_ptr<Inset> InsetMathScript::doClone() const
+Inset * InsetMathScript::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathScript(*this));
+	return new InsetMathScript(*this);
 }
 
 

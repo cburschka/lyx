@@ -250,7 +250,7 @@ protected:
 	///
 	char v_align_; // add approp. type
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 };
 
 

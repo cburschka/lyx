@@ -18,7 +18,6 @@
 
 namespace lyx {
 
-using std::auto_ptr;
 using std::endl;
 
 
@@ -32,9 +31,9 @@ InsetMathLim::InsetMathLim
 }
 
 
-auto_ptr<Inset> InsetMathLim::doClone() const
+Inset * InsetMathLim::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathLim(*this));
+	return new InsetMathLim(*this);
 }
 
 

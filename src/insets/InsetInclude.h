@@ -108,7 +108,7 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	/** Slot receiving a signal that the external file has changed
 	 *  and the preview should be regenerated.

@@ -81,7 +81,6 @@ using support::sum;
 
 using std::endl;
 using std::string;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -279,9 +278,9 @@ void InsetInclude::set(InsetCommandParams const & p, Buffer const & buffer)
 }
 
 
-auto_ptr<Inset> InsetInclude::doClone() const
+Inset * InsetInclude::clone() const
 {
-	return auto_ptr<Inset>(new InsetInclude(*this));
+	return new InsetInclude(*this);
 }
 
 

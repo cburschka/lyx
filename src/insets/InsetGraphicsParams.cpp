@@ -289,7 +289,7 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 			unsigned int const bb_orig_yb = convert<int>(token(tmp, ' ', 1));
 
 			// new pars.bb values must be >= zero
-			if  (pars.bb.xl > bb_orig_xl)
+			if (pars.bb.xl > bb_orig_xl)
 				pars.bb.xl -= bb_orig_xl;
 			else
 				pars.bb.xl = 0;

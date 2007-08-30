@@ -34,7 +34,6 @@ using support::prefixIs;
 
 using std::endl;
 using std::string;
-using std::auto_ptr;
 using std::ostream;
 
 
@@ -384,9 +383,9 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<Inset> InsetQuotes::doClone() const
+Inset * InsetQuotes::clone() const
 {
-	return auto_ptr<Inset>(new InsetQuotes(language_, side_, times_));
+	return new InsetQuotes(language_, side_, times_);
 }
 
 

@@ -35,11 +35,8 @@
 
 namespace lyx {
 
-using support::contains;
-
 using std::endl;
 using std::string;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -267,7 +264,7 @@ void InsetFloat::read(Buffer const & buf, Lexer & lex)
 
 void InsetFloat::validate(LaTeXFeatures & features) const
 {
-	if (contains(params_.placement, 'H')) {
+	if (support::contains(params_.placement, 'H')) {
 		features.require("float");
 	}
 
@@ -279,9 +276,9 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-auto_ptr<Inset> InsetFloat::doClone() const
+Inset * InsetFloat::clone() const
 {
-	return auto_ptr<Inset>(new InsetFloat(*this));
+	return new InsetFloat(*this);
 }
 
 

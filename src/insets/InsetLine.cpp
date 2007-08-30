@@ -26,7 +26,6 @@ namespace lyx {
 
 using frontend::Painter;
 
-using std::endl;
 using std::ostream;
 
 

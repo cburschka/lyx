@@ -29,7 +29,6 @@ namespace lyx {
 using support::bformat;
 
 using std::string;
-using std::auto_ptr;
 
 
 InsetMathSplit::InsetMathSplit(docstring const & name, char valign)
@@ -38,9 +37,9 @@ InsetMathSplit::InsetMathSplit(docstring const & name, char valign)
 }
 
 
-auto_ptr<Inset> InsetMathSplit::doClone() const
+Inset * InsetMathSplit::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathSplit(*this));
+	return new InsetMathSplit(*this);
 }
 
 

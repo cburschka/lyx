@@ -18,17 +18,15 @@
 
 namespace lyx {
 
-using std::ostream;
-
 
 InsetHFill::InsetHFill()
 	: InsetCommand(InsetCommandParams("hfill"), std::string())
 {}
 
 
-std::auto_ptr<Inset> InsetHFill::doClone() const
+Inset * InsetHFill::clone() const
 {
-	return std::auto_ptr<Inset>(new InsetHFill);
+	return new InsetHFill;
 }
 
 
@@ -65,7 +63,7 @@ int InsetHFill::docbook(Buffer const &, odocstream & os,
 }
 
 
-void InsetHFill::write(Buffer const &, ostream & os) const
+void InsetHFill::write(Buffer const &, std::ostream & os) const
 {
 	os << "\n\\hfill\n";
 }

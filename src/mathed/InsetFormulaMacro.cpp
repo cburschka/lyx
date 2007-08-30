@@ -31,7 +31,6 @@
 #include <sstream>
 
 using std::string;
-using std::auto_ptr;
 using std::ostream;
 using std::endl;
 
@@ -61,9 +60,9 @@ InsetFormulaMacro::InsetFormulaMacro(string const & s)
 }
 
 
-auto_ptr<Inset> InsetFormulaMacro::clone() const
+Inset * InsetFormulaMacro::clone() const
 {
-	return auto_ptr<Inset>(new InsetFormulaMacro(*this));
+	return new InsetFormulaMacro(*this);
 }
 
 

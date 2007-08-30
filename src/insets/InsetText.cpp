@@ -70,7 +70,6 @@ using std::endl;
 using std::for_each;
 using std::max;
 using std::string;
-using std::auto_ptr;
 using std::ostream;
 using std::vector;
 
@@ -130,9 +129,9 @@ void InsetText::clear()
 }
 
 
-auto_ptr<Inset> InsetText::doClone() const
+Inset * InsetText::clone() const
 {
-	return auto_ptr<Inset>(new InsetText(*this));
+	return new InsetText(*this);
 }
 
 

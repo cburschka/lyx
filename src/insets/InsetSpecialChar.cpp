@@ -27,7 +27,6 @@
 namespace lyx {
 
 using std::string;
-using std::auto_ptr;
 using std::ostream;
 
 
@@ -240,17 +239,16 @@ int InsetSpecialChar::textString(Buffer const & buf, odocstream & os,
 }
 
 
-auto_ptr<Inset> InsetSpecialChar::doClone() const
+Inset * InsetSpecialChar::clone() const
 {
-	return auto_ptr<Inset>(new InsetSpecialChar(kind_));
+	return new InsetSpecialChar(kind_);
 }
 
 
 void InsetSpecialChar::validate(LaTeXFeatures & features) const
 {
-	if (kind_ == MENU_SEPARATOR) {
+	if (kind_ == MENU_SEPARATOR)
 		features.require("lyxarrow");
-	}
 }
 
 

@@ -133,7 +133,7 @@ protected:
 	docstring eolString(row_type row, bool emptyline, bool fragile) const;
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	void setType(HullType type);
 	///

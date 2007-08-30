@@ -22,8 +22,6 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-
 
 InsetMathBig::InsetMathBig(docstring const & name, docstring const & delim)
 	: name_(name), delim_(delim)
@@ -36,9 +34,9 @@ docstring InsetMathBig::name() const
 }
 
 
-auto_ptr<Inset> InsetMathBig::doClone() const
+Inset * InsetMathBig::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathBig(*this));
+	return new InsetMathBig(*this);
 }
 
 

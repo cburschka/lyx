@@ -114,7 +114,7 @@ protected:
 private:
 	friend class InsetBoxParams;
 
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	/// used by the constructors
 	void init();

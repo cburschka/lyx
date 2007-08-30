@@ -81,7 +81,7 @@ public:
 	// should we break lines after this inset?
 	bool isLineSeparator() const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	/// And which kind is this?
 	Kind kind_;

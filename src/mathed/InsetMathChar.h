@@ -50,7 +50,7 @@ public:
 	bool isRelOp() const;
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	/// the character
 	char_type char_;
 	/// cached kerning for superscript

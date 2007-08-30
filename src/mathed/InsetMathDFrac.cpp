@@ -20,20 +20,14 @@
 
 namespace lyx {
 
-
-using std::string;
-using std::max;
-using std::auto_ptr;
-
-
 InsetMathDFrac::InsetMathDFrac()
 	: InsetMathFrac()
 {}
 
 
-auto_ptr<Inset> InsetMathDFrac::doClone() const
+Inset * InsetMathDFrac::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathDFrac(*this));
+	return new InsetMathDFrac(*this);
 }
 
 
@@ -41,7 +35,7 @@ bool InsetMathDFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim.wid = max(cell(0).width(), cell(1).width()) + 2;
+	dim.wid = std::max(cell(0).width(), cell(1).width()) + 2;
 	dim.asc = cell(0).height() + 2 + 5;
 	dim.des = cell(1).height() + 2 - 5;
 	if (dim_ == dim)

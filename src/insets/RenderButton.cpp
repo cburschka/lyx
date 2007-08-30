@@ -21,18 +21,15 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
-
 
 RenderButton::RenderButton()
 	: editable_(false)
 {}
 
 
-auto_ptr<RenderBase> RenderButton::clone(Inset const *) const
+RenderBase * RenderButton::clone(Inset const *) const
 {
-	return auto_ptr<RenderBase>(new RenderButton(*this));
+	return new RenderButton(*this);
 }
 
 

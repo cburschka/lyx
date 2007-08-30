@@ -25,20 +25,15 @@
 
 namespace lyx {
 
-using support::escape;
-
-using std::string;
-using std::vector;
-
 
 InsetLabel::InsetLabel(InsetCommandParams const & p)
 	: InsetCommand(p, "label")
 {}
 
 
-std::auto_ptr<Inset> InsetLabel::doClone() const
+Inset * InsetLabel::clone() const
 {
-	return std::auto_ptr<Inset>(new InsetLabel(params()));
+	return new InsetLabel(params());
 }
 
 
@@ -83,7 +78,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 int InsetLabel::latex(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
-	os << escape(getCommand());
+	os << support::escape(getCommand());
 	return 0;
 }
 

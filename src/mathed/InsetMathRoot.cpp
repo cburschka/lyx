@@ -22,24 +22,21 @@
 
 namespace lyx {
 
-using std::max;
-using std::auto_ptr;
-
-
 
 InsetMathRoot::InsetMathRoot()
 	: InsetMathNest(2)
 {}
 
 
-auto_ptr<Inset> InsetMathRoot::doClone() const
+Inset * InsetMathRoot::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathRoot(*this));
+	return new InsetMathRoot(*this);
 }
 
 
 bool InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	using std::max;
 	InsetMathNest::metrics(mi);
 	dim.asc = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
 	dim.des = max(cell(0).descent() - 5, cell(1).descent()) + 2;

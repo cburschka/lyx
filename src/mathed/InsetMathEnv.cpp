@@ -19,19 +19,14 @@
 
 namespace lyx {
 
-
-using std::string;
-using std::auto_ptr;
-
-
 InsetMathEnv::InsetMathEnv(docstring const & name)
 	: InsetMathNest(1), name_(name)
 {}
 
 
-auto_ptr<Inset> InsetMathEnv::doClone() const
+Inset * InsetMathEnv::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathEnv(*this));
+	return new InsetMathEnv(*this);
 }
 
 

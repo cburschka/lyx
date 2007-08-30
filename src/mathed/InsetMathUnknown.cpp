@@ -19,19 +19,14 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
-using std::vector;
-
-
 InsetMathUnknown::InsetMathUnknown(docstring const & nm, bool final, bool black)
 	: name_(nm), final_(final), black_(black)
 {}
 
 
-auto_ptr<Inset> InsetMathUnknown::doClone() const
+Inset * InsetMathUnknown::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathUnknown(*this));
+	return new InsetMathUnknown(*this);
 }
 
 

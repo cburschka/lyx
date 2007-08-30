@@ -79,7 +79,7 @@ protected:
 	///
 	virtual docstring name() const { return name_; }
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 
 	///
 	InsetWrapParams params_;

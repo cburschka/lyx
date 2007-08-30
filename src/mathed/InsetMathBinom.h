@@ -37,7 +37,7 @@ public:
 	///
 	bool extraBraces() const;
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	int dw() const;
 	///

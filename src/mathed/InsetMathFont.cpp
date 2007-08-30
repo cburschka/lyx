@@ -20,17 +20,14 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-
-
 InsetMathFont::InsetMathFont(latexkeys const * key)
 	: InsetMathNest(1), key_(key)
 {}
 
 
-auto_ptr<Inset> InsetMathFont::doClone() const
+Inset * InsetMathFont::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathFont(*this));
+	return new InsetMathFont(*this);
 }
 
 

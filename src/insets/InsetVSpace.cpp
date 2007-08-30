@@ -57,9 +57,9 @@ InsetVSpace::~InsetVSpace()
 }
 
 
-std::auto_ptr<Inset> InsetVSpace::doClone() const
+Inset * InsetVSpace::clone() const
 {
-	return std::auto_ptr<Inset>(new InsetVSpace(*this));
+	return new InsetVSpace(*this);
 }
 
 

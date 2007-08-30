@@ -21,10 +21,6 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
-using std::ostream;
-
 
 InsetEnvironment::InsetEnvironment
 		(BufferParams const & bp, docstring const & name)
@@ -40,13 +36,13 @@ InsetEnvironment::InsetEnvironment(InsetEnvironment const & in)
 {}
 
 
-auto_ptr<Inset> InsetEnvironment::doClone() const
+Inset * InsetEnvironment::clone() const
 {
-	return auto_ptr<Inset>(new InsetEnvironment(*this));
+	return new InsetEnvironment(*this);
 }
 
 
-void InsetEnvironment::write(Buffer const & buf, ostream & os) const
+void InsetEnvironment::write(Buffer const & buf, std::ostream & os) const
 {
 	os << "Environment " << to_utf8(name()) << "\n";
 	InsetText::write(buf, os);

@@ -26,8 +26,6 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-
 extern bool has_math_fonts;
 
 namespace {
@@ -52,9 +50,9 @@ InsetMathChar::InsetMathChar(char_type c)
 
 
 
-auto_ptr<Inset> InsetMathChar::doClone() const
+Inset * InsetMathChar::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathChar(*this));
+	return new InsetMathChar(*this);
 }
 
 

@@ -18,19 +18,14 @@
 
 namespace lyx {
 
-
-using std::max;
-using std::auto_ptr;
-
-
 InsetMathBinom::InsetMathBinom(bool choose)
 	: choose_(choose)
 {}
 
 
-auto_ptr<Inset> InsetMathBinom::doClone() const
+Inset * InsetMathBinom::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathBinom(*this));
+	return new InsetMathBinom(*this);
 }
 
 
@@ -52,7 +47,7 @@ bool InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi);
 	dim.asc = cell(0).height() + 4 + 5;
 	dim.des = cell(1).height() + 4 - 5;
-	dim.wid = max(cell(0).width(), cell(1).width()) + 2 * dw() + 4;
+	dim.wid = std::max(cell(0).width(), cell(1).width()) + 2 * dw() + 4;
 	metricsMarkers2(dim);
 	bool const changed = dim_ != dim;
 	dim_ = dim;

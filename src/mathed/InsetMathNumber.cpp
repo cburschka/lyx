@@ -18,8 +18,6 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
 using std::vector;
 
 InsetMathNumber::InsetMathNumber(docstring const & s)
@@ -27,9 +25,9 @@ InsetMathNumber::InsetMathNumber(docstring const & s)
 {}
 
 
-auto_ptr<Inset> InsetMathNumber::doClone() const
+Inset * InsetMathNumber::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathNumber(*this));
+	return new InsetMathNumber(*this);
 }
 
 

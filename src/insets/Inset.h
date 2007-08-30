@@ -15,8 +15,6 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
-//#include "BiblioInfo.h"
-#include "Changes.h"
 #include "Dimension.h"
 
 #include "support/docstream.h"
@@ -30,24 +28,26 @@ class BiblioInfo;
 class Buffer;
 class BufferParams;
 class BufferView;
-class ParIterator;
-class ParConstIterator;
+class Change;
+class Color_color;
+class Cursor;
 class CursorSlice;
-class InsetIterator;
 class FuncRequest;
 class FuncStatus;
+class InsetIterator;
 class InsetLayout;
 class InsetMath;
 class InsetText;
 class LaTeXFeatures;
-class Color_color;
-class Cursor;
 class Lexer;
-class Text;
+class MathAtom;
 class MetricsInfo;
-class Dimension;
-class PainterInfo;
 class OutputParams;
+class PainterInfo;
+class Paragraph;
+class ParConstIterator;
+class ParIterator;
+class Text;
 class TocList;
 
 
@@ -77,8 +77,6 @@ public:
 
 	/// virtual base class destructor
 	virtual ~Inset() {}
-	/// replicate ourselves
-	std::auto_ptr<Inset> clone() const;
 
 	/// identification as math inset
 	virtual InsetMath * asInsetMath() { return 0; }
@@ -499,6 +497,11 @@ public:
 protected:
 	Inset();
 
+	/// replicate ourselves
+	friend class Paragraph;
+	friend class MathAtom;
+	virtual Inset * clone() const = 0;
+
 	/** The real dispatcher.
 	 *  Gets normally called from Cursor::dispatch(). Cursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.
@@ -514,8 +517,6 @@ protected:
 
 	/// Cached dimensions of the inset.
 	mutable Dimension dim_;
-private:
-	virtual std::auto_ptr<Inset> doClone() const = 0;
 };
 
 

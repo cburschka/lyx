@@ -17,18 +17,13 @@
 
 namespace lyx {
 
-
-using std::max;
-using std::auto_ptr;
-
-
 InsetMathStackrel::InsetMathStackrel()
 {}
 
 
-auto_ptr<Inset> InsetMathStackrel::doClone() const
+Inset * InsetMathStackrel::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathStackrel(*this));
+	return new InsetMathStackrel(*this);
 }
 
 
@@ -37,7 +32,7 @@ bool InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
-	dim.wid = max(cell(0).width(), cell(1).width()) + 4;
+	dim.wid = std::max(cell(0).width(), cell(1).width()) + 4;
 	dim.asc = cell(1).ascent() + cell(0).height() + 4;
 	dim.des = cell(1).descent();
 	metricsMarkers(dim);

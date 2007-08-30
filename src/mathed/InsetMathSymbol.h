@@ -72,7 +72,7 @@ public:
 	void infoize2(odocstream & os) const;
 
 private:
-	virtual std::auto_ptr<Inset> doClone() const;
+	virtual Inset * clone() const;
 	///
 	latexkeys const * sym_;
 	///

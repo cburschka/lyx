@@ -71,10 +71,8 @@ using support::subst;
 using std::endl;
 using std::max;
 using std::ostream;
-using std::auto_ptr;
 using std::istringstream;
 using std::ostringstream;
-using std::pair;
 using std::swap;
 using std::vector;
 
@@ -190,9 +188,9 @@ InsetMathHull::~InsetMathHull()
 {}
 
 
-auto_ptr<Inset> InsetMathHull::doClone() const
+Inset * InsetMathHull::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathHull(*this));
+	new InsetMathHull(*this);
 }
 
 

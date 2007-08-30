@@ -20,9 +20,7 @@
 namespace lyx {
 
 using std::endl;
-using std::auto_ptr;
 using std::size_t;
-using std::vector;
 
 
 MathMacroArgument::MathMacroArgument(size_t n)
@@ -42,9 +40,9 @@ MathMacroArgument::MathMacroArgument(size_t n)
 }
 
 
-auto_ptr<Inset> MathMacroArgument::doClone() const
+Inset * MathMacroArgument::clone() const
 {
-	return auto_ptr<Inset>(new MathMacroArgument(*this));
+	new MathMacroArgument(*this);
 }
 
 

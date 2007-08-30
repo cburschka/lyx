@@ -19,8 +19,6 @@
 
 namespace lyx {
 
-using std::auto_ptr;
-using std::vector;
 using std::string;
 
 
@@ -36,9 +34,9 @@ InsetMathExFunc::InsetMathExFunc(docstring const & name, MathData const & ar)
 }
 
 
-auto_ptr<Inset> InsetMathExFunc::doClone() const
+Inset * InsetMathExFunc::clone() const
 {
-	return auto_ptr<Inset>(new InsetMathExFunc(*this));
+	return new InsetMathExFunc(*this);
 }
 
 

@@ -18,10 +18,6 @@
 
 namespace lyx {
 
-using std::string;
-using std::auto_ptr;
-using std::ostream;
-
 
 InsetOptArg::InsetOptArg(BufferParams const & ins)
 	: InsetCollapsable(ins)
@@ -43,9 +39,9 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 }
 
 
-auto_ptr<Inset> InsetOptArg::doClone() const
+Inset * InsetOptArg::clone() const
 {
-	return auto_ptr<Inset>(new InsetOptArg(*this));
+	return new InsetOptArg(*this);
 }
 
 
@@ -55,7 +51,7 @@ docstring const InsetOptArg::editMessage() const
 }
 
 
-void InsetOptArg::write(Buffer const & buf, ostream & os) const
+void InsetOptArg::write(Buffer const & buf, std::ostream & os) const
 {
 	os << "OptArg" << "\n";
 	InsetCollapsable::write(buf, os);

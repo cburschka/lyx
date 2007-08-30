@@ -28,7 +28,7 @@ public:
 	///
 	InsetMathXYArrow();
 	///
-	virtual std::auto_ptr<Inset> clone() const;
+	virtual Inset * clone() const;
 	///
 	bool metrics(MetricsInfo & mi) const;
 	///
