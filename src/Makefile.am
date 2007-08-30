@@ -127,6 +127,8 @@ liblyxcore_la_SOURCES = \
 	DispatchResult.h \
 	DocIterator.cpp \
 	DocIterator.h \
+	EmbeddedFiles.h \
+	EmbeddedFiles.cpp \
 	Encoding.cpp \
 	Encoding.h \
 	ErrorList.cpp \

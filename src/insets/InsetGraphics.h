@@ -78,6 +78,8 @@ public:
 	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	/// all graphics can be embedded
+	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &, ParConstIterator const &) const;
 protected:
 	InsetGraphics(InsetGraphics const &);
 	///

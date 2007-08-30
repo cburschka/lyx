@@ -71,6 +71,7 @@ TODO
 #include "Mover.h"
 #include "OutputParams.h"
 #include "sgml.h"
+#include "EmbeddedFiles.h"
 
 #include "frontends/alert.h"
 
@@ -227,6 +228,14 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return Inset::getStatus(cur, cmd, flag);
 	}
+}
+
+
+void InsetGraphics::registerEmbeddedFiles(Buffer const &,
+	EmbeddedFiles & files, ParConstIterator const & pit) const
+{
+	files.registerFile(params().filename.absFilename(), 
+		EmbeddedFile::AUTO, pit);
 }
 
 

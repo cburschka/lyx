@@ -18,6 +18,7 @@
 #include "RenderButton.h"
 #include "MailInset.h"
 #include "Counters.h"
+#include "EmbeddedFiles.h"
 
 #include "support/FileName.h"
 
@@ -103,6 +104,9 @@ public:
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	void updateLabels(Buffer const & buffer, ParIterator const &);
+	/// child document can be embedded
+	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &,
+			ParConstIterator const &) const;
 protected:
 	InsetInclude(InsetInclude const &);
 	///

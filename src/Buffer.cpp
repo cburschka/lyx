@@ -54,6 +54,7 @@
 #include "TocBackend.h"
 #include "Undo.h"
 #include "version.h"
+#include "EmbeddedFiles.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"
@@ -98,6 +99,7 @@ using std::map;
 using std::ostream;
 using std::ostringstream;
 using std::ofstream;
+using std::ifstream;
 using std::pair;
 using std::stack;
 using std::vector;
@@ -132,6 +134,7 @@ using support::subst;
 using support::tempName;
 using support::trim;
 using support::sum;
+using support::unzipToDir;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
@@ -194,6 +197,9 @@ public:
 	/// Container for all sort of Buffer dependant errors.
 	map<string, ErrorList> errorLists;
 
+	/// all embedded files of this buffer
+	EmbeddedFiles embedded_files;
+
 	/// timestamp and checksum used to test if the file has been externally
 	/// modified. (Used to properly enable 'File->Revert to saved', bug 4114).
 	time_t timestamp_;
@@ -204,7 +210,7 @@ public:
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), file_fully_loaded(false), inset(params),
-	  toc_backend(&parent), timestamp_(0), checksum_(0)
+	  toc_backend(&parent), embedded_files(&parent), timestamp_(0), checksum_(0)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
@@ -348,6 +354,18 @@ TocBackend & Buffer::tocBackend()
 TocBackend const & Buffer::tocBackend() const
 {
 	return pimpl_->toc_backend;
+}
+
+
+EmbeddedFiles & Buffer::embeddedFiles()
+{
+	return pimpl_->embedded_files;
+}
+
+
+EmbeddedFiles const & Buffer::embeddedFiles() const
+{
+	return pimpl_->embedded_files;
 }
 
 
@@ -634,8 +652,32 @@ bool Buffer::readString(std::string const & s)
 
 bool Buffer::readFile(FileName const & filename)
 {
+	FileName fname(filename);
 	// Check if the file is compressed.
-	string const format = getFormatFromContents(filename);
+	string format = getFormatFromContents(filename);
+	if (format == "zip") {
+		// decompress to a temp directory
+		LYXERR(Debug::FILES) << filename << " is in zip format. Unzip to " << temppath() << endl;
+		unzipToDir(filename.toFilesystemEncoding(), temppath());
+		//
+		FileName manifest(addName(temppath(), "manifest.txt"));
+		FileName lyxfile(addName(temppath(), 
+			onlyFilename(filename.toFilesystemEncoding())));
+		// if both manifest.txt and file.lyx exist, this is am embedded file
+		if (fs::exists(manifest.toFilesystemEncoding()) &&
+			fs::exists(lyxfile.toFilesystemEncoding())) {
+			params().embedded = true;
+			fname = lyxfile;
+			// read manifest file
+			ifstream is(manifest.toFilesystemEncoding().c_str());
+			is >> pimpl_->embedded_files;
+			is.close();
+			LYXERR(Debug::FILES) << filename << " is a embedded file. Its manifest is:\n"
+					<< pimpl_->embedded_files;
+		}
+	}
+	// The embedded lyx file can also be compressed, for backward compatibility
+	format = getFormatFromContents(fname);
 	if (format == "gzip" || format == "zip" || format == "compress") {
 		params().compressed = true;
 	}
@@ -643,8 +685,8 @@ bool Buffer::readFile(FileName const & filename)
 	// remove dummy empty par
 	paragraphs().clear();
 	Lexer lex(0, 0);
-	lex.setFile(filename);
-	if (readFile(lex, filename) != success)
+	lex.setFile(fname);
+	if (readFile(lex, fname) != success)
 		return false;
 
 	return true;
@@ -845,20 +887,34 @@ bool Buffer::writeFile(FileName const & fname) const
 
 	bool retval = false;
 
+	FileName content;
+	if (params().embedded)
+		// first write the .lyx file to the temporary directory
+		content = FileName(addName(temppath(), 
+			onlyFilename(fname.toFilesystemEncoding())));
+	else
+		content = fname;
+	
 	if (params().compressed) {
-		gz::ogzstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
+		gz::ogzstream ofs(content.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
 		if (!ofs)
 			return false;
 
 		retval = write(ofs);
 	} else {
-		ofstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
+		ofstream ofs(content.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
 		if (!ofs)
 			return false;
 
 		retval = write(ofs);
 	}
 
+	if (retval && params().embedded) {
+		// write file.lyx and all the embedded files to the zip file fname
+		// if embedding is enabled, and there is any embedded file
+		pimpl_->embedded_files.update();
+		return pimpl_->embedded_files.write(fname);
+	}
 	return retval;
 }
 

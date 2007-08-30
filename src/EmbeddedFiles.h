@@ -1,0 +1,239 @@
+// -*- C++ -*-
+/**
+ * \file EmbeddedFiles.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Bo Peng
+ *
+ * Full author contact details are available in file CREDITS.
+ *
+ */
+
+#ifndef EMBEDDEDFILES_H
+#define EMBEDDEDFILES_H
+
+#include "support/FileName.h"
+
+#include <vector>
+#include <utility>
+
+#include "ParIterator.h"
+#include "Paragraph.h"
+
+/**
+
+This file, and the embedding dialog implemented in src/frontends, implements
+an 'Embedded Files' feature of lyx.
+
+
+Expected features:
+=========================
+
+1. With embedding enabled (disabled by default), .lyx file can embed graphics,
+listings, bib file etc.
+
+2. Embedding of certain files are automatic (graphics, bib etc), and
+other files can be embedded manually.
+
+3. Embedded file.lyx file is a zip file, with file.lyx, manifest.txt
+and embedded files. 
+
+4. Embedded files can be "EMBEDDED", "EXTERNAL", or "AUTO". In the
+"AUTO" mode, external files will be used if available; otherwise the
+embedded version will be used. In this way, users can work as usual by
+modifying external listings, graphics, and do not have to worry about
+embedding. "EMBEDDED" and "EXTERNAL" modes ignore or use external files
+respectively.
+
+5. An embedding dialog is provided to change embedding status (buffer
+level or individual embedded files), manually embed, extract, view
+or edit files.
+
+Overall, this feature allows two ways of editing a .lyx file
+
+a. The continuous use of the pure-text .lyx file format with external
+files. This is the default file format, and allows external editing
+of .lyx file and better use of version control systems.
+
+b. The embedded way. Figures etc are inserted to .lyx file and will
+be embedded. These embedded files can be viewed or edited through
+the embedding dialog. This file can be shared with others more
+easily. The advantage of lyx' embedding approach is that external files
+will be automatically used and embedded if the file is in "AUTO" mode.
+
+
+Implementation:
+======================
+
+1. An EmbeddedFiles class is implemented to keep the embedded files (
+class EmbeddedFile). (c.f. src/EmbeddedFiles.[h|cpp])
+This class keeps a manifest that has
+  a. external relative filename
+  b. inzip filename. It is the relative path name if the embedded file is
+    in or under the document directory, or file name otherwise. Name aliasing
+    is used if two external files share the same name.
+  c. embedding mode.
+It also provides functions to
+  a. manipulate manifest
+  b. scan a buffer for embeddable files
+  c. look up inzipname from external filename
+  d. look up external filename from inzipname
+
+2. When a file is saved, it is scanned for embedded files. (c.f.
+EmbeddedFiles::update(), Inset::registerEmbeddedFiles()).
+
+3. When a lyx file file.lyx is saved, it is save to tmppath() first.
+Embedded files are compressed along with file.lyx and a manifest.txt. 
+If embedding is disabled, file.lyx is saved in the usual pure-text form.
+(c.f. Buffer::writeFile(), EmbeddedFiles::write())
+
+4. When a lyx file.lyx file is opened, if it is a zip file, it is
+decompressed to tmppath(). If manifest.txt and file.lyx exists in
+tmppath(), the manifest is read to buffer, and tmppath()/file.lyx is
+read as usual. If file.lyx is not a zip file, it is read as usual.
+(c.f. bool Buffer::readFile())
+
+5. A menu item Document -> Embedded Files is provided to open
+a embedding dialog. It handles a EmbddedFiles point directly.
+From this dialog, a user can disable embedding, change embedding status,
+or embed other files, extract, view, edit files.
+
+6. When a lyx file is loaded, Embedded files can have
+  a. both external and internal copy
+  b. only external copy (filename())
+  c. only embedded copy (temppath()/inzipname)
+And each can have "AUTO", "EXTERNAL", "EMBEDDED" status. Proper
+handling of each case is required.
+
+7. If embedding of a .lyx file with embedded files is disabled, all its
+embedded files are copied to their respective external filenames. This
+is why external filename will exist even if a file is at "EMBEDDED" status.
+
+8. Individual embeddable insets should find ways to handle embedded files.
+InsetGraphics replace params().filename with its temppath()/inzipname version
+when the inset is created. The filename appears as /tmp/..../inzipname
+when lyx runs. When params().filename is saved, lyx checks if this is an
+embedded file (check path == temppath()), if so, save filename() instead.
+(c.f. InsetGraphic::read(), InsetGraphics::edit(), InsetGraphicsParams::write())
+
+
+*/
+
+namespace lyx {
+
+class Buffer;
+
+class EmbeddedFile : public support::DocFileName
+{
+public:
+	/**
+		Embedding status of this DocFileName.
+	 */
+	enum STATUS {
+		// uninitialized/invalid status
+		NONE,
+		// If the external version of the file is available, it will be used
+		// to generate output, and be embedded to the saved lyx file.
+		// Otherwise, embedded version will be used.
+		AUTO,
+		// Always use embedded version.
+		EMBEDDED,
+		// Do not embed this file, always use external version.
+		EXTERNAL
+	};
+
+	EmbeddedFile(std::string const & file, std::string const & inzip_name,
+		STATUS status, ParConstIterator const & pit);
+
+	/// filename in the zip file, usually the relative path
+	std::string inzipName() const { return inzip_name_; }
+	/// embedded file, equals to temppath()/inzipName()
+	std::string embeddedFile(Buffer const * buf) const;
+
+	/// paragraph id
+	void setParIter(ParConstIterator const & pit);
+	int const parID() const { return par_it_->id(); }
+
+	/// embedding status of this file
+	bool embedded() const { return status_ != EXTERNAL; }
+	STATUS status() const { return status_; }
+	void setStatus(STATUS status) {	status_ = status; }
+
+	// A flag indicating whether or not this filename is valid.
+	// When lyx runs, InsetGraphics etc may be added or removed so filename
+	// maybe obsolete. In Buffer::updateEmbeddedFiles, the EmbeddedFiles is first
+	// invalidated (c.f. invalidate()), and all insets are asked to register
+	// embedded files. In this way, EmbeddedFileList will be refreshed, with
+	// status setting untouched.
+	bool valid() const { return valid_; }
+	void validate() { valid_ = true; }
+	void invalidate() {	valid_ = false;	}
+
+private:
+	/// filename in zip file
+	std::string inzip_name_;
+	/// the status of this docfile
+	STATUS status_;
+	///
+	bool valid_;
+	/// Current position of the item, used to locate the files
+	/// A figure may be referred by several items. In this case
+	/// only the last location is recorded.
+	ParConstIterator par_it_;
+};
+
+
+class EmbeddedFiles {
+public:
+	typedef std::vector<EmbeddedFile> EmbeddedFileList;
+public:
+	///
+	EmbeddedFiles(Buffer * buffer = NULL): file_list_(), buffer_(buffer) {}
+	///
+	~EmbeddedFiles() {}
+
+	/// return buffer params embedded flag
+	bool enabled() const;
+	/// set buffer params embedded flag
+	void enable(bool flag);
+
+	/// add a file item
+	void registerFile(std::string const & filename,
+		EmbeddedFile::STATUS status=EmbeddedFile::AUTO,
+		ParConstIterator const & pit = ParConstIterator());
+
+	/// scan the buffer and get a list of EmbeddedFile
+	void update();
+
+	/// write a zip file
+	bool write(support::DocFileName const & filename);
+
+	void clear() { file_list_.clear(); }
+
+	///
+	EmbeddedFileList::iterator begin() { return file_list_.begin(); }
+	EmbeddedFileList::iterator end() { return file_list_.end(); }
+	EmbeddedFileList::const_iterator begin() const { return file_list_.begin(); }
+	EmbeddedFileList::const_iterator end() const { return file_list_.end(); }
+
+	///
+	friend std::istream & operator>> (std::istream & is, EmbeddedFiles &);
+
+	friend std::ostream & operator<< (std::ostream & os, EmbeddedFiles const &);
+private:
+	/// if a inzip name already exists
+	bool validInzipName(std::string const & name);
+	/// list of embedded files
+	EmbeddedFileList file_list_;
+	///
+	Buffer * buffer_;
+};
+
+
+std::istream & operator>> (std::istream & is, EmbeddedFiles &);
+
+std::ostream & operator<< (std::ostream & os, EmbeddedFiles const &);
+
+}
+#endif

@@ -958,6 +958,16 @@ void InsetInclude::updateLabels(Buffer const & buffer,
 }
 
 
+void InsetInclude::registerEmbeddedFiles(Buffer const & buffer,
+	EmbeddedFiles & files, ParConstIterator const & pit) const
+{
+	// include and input are temprarily not considered.
+	if (isVerbatim(params_) || isListings(params_))
+		files.registerFile(includedFilename(buffer, params_).absFilename(),
+			EmbeddedFile::AUTO, pit);
+}
+
+
 string const InsetIncludeMailer::name_("include");
 
 InsetIncludeMailer::InsetIncludeMailer(InsetInclude & inset)

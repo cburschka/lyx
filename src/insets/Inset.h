@@ -49,6 +49,7 @@ class ParConstIterator;
 class ParIterator;
 class Text;
 class TocList;
+class EmbeddedFiles;
 
 
 namespace graphics { class PreviewLoader; }
@@ -438,6 +439,9 @@ public:
 	/// Add an entry to the TocList
 	/// pit is the ParConstIterator of the paragraph containing the inset
 	virtual void addToToc(TocList &, Buffer const &, ParConstIterator const &) const {}
+	/// report files that can be embedded with the lyx file
+	virtual void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &,
+			ParConstIterator const &) const {};
 	/// Fill keys with BibTeX information
 	virtual void fillWithBibKeys(Buffer const &,
 		BiblioInfo &, InsetIterator const &) const { return; }

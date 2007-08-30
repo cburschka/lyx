@@ -14,6 +14,7 @@
 
 #include "Inset.h"
 #include "ExternalTransforms.h"
+#include "EmbeddedFiles.h"
 
 #include "support/FileName.h"
 #include "support/Translator.h"
@@ -147,6 +148,9 @@ public:
 	void edit(Cursor & cur, bool left);
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	/// external file can be embedded
+	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &,
+			ParConstIterator const &) const;
 
 protected:
 	InsetExternal(InsetExternal const &);

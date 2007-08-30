@@ -396,6 +396,11 @@ public:
 	TocBackend & tocBackend();
 	TocBackend const & tocBackend() const;
 	//@}
+	
+	//@{
+	EmbeddedFiles & embeddedFiles();
+	EmbeddedFiles const & embeddedFiles() const;
+	//@}
 
 private:
 	/** Inserts a file into a document

@@ -261,6 +261,8 @@ public:
 	std::string parentname;
 	///
 	bool compressed;
+	///
+	bool embedded;
 
 	/// the author list for the document
 	AuthorList & authors();
