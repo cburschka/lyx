@@ -200,7 +200,7 @@ public:
 
 	/// add a file item
 	void registerFile(std::string const & filename,
-		EmbeddedFile::STATUS status=EmbeddedFile::AUTO,
+		EmbeddedFile::STATUS status = EmbeddedFile::AUTO,
 		ParConstIterator const & pit = ParConstIterator());
 
 	/// scan the buffer and get a list of EmbeddedFile

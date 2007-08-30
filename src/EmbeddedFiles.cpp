@@ -65,7 +65,7 @@ using support::zipFiles;
 EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,
 	STATUS status, ParConstIterator const & pit)
 	: DocFileName(file, true), inzip_name_(inzip_name), status_(status),
-	  par_it_(pit), valid_(true)
+		valid_(true), par_it_(pit)
 {}
 
 
