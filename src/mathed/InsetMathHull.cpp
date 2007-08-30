@@ -190,7 +190,7 @@ InsetMathHull::~InsetMathHull()
 
 Inset * InsetMathHull::clone() const
 {
-	new InsetMathHull(*this);
+	return new InsetMathHull(*this);
 }
 
 

@@ -42,7 +42,7 @@ MathMacroArgument::MathMacroArgument(size_t n)
 
 Inset * MathMacroArgument::clone() const
 {
-	new MathMacroArgument(*this);
+	return new MathMacroArgument(*this);
 }
 
 

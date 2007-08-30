@@ -27,7 +27,7 @@ InsetMathXYMatrix::InsetMathXYMatrix(Length const & s, char c)
 
 Inset * InsetMathXYMatrix::clone() const
 {
-	new InsetMathXYMatrix(*this);
+	return new InsetMathXYMatrix(*this);
 }
 
 
