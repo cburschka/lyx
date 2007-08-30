@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -19736,8 +19736,7 @@ A veces surge el problema de que un flotante se sitúa al principio de la
 \series bold
 
 \backslash
-suppressf\SpecialChar \textcompwordmark{}
-loats
+suppressfloats
 \series default
 , que suprime la ubicación de un flotante dado en la página donde se inserta
  y además puede servir para evitar que el flotante se coloque antes del
@@ -19762,8 +19761,7 @@ renewcommand{
 \backslash
 section}{
 \backslash
-suppressf\SpecialChar \textcompwordmark{}
-loats[t]
+suppressfloats[t]
 \backslash
 mySection}
 \end_layout
@@ -19783,8 +19781,7 @@ En ciertos casos se quieren tener todas las figuras/tablas al final del
  documento.
  Para estos casos está el paquete LaTeX 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
 
 \begin_inset LatexCommand index
@@ -19811,8 +19808,7 @@ name "LaTeX-paquetes ! endfloat"
 .
  El paquete 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
  se carga en el preámbulo con la línea
 \end_layout
@@ -19822,8 +19818,7 @@ loat
 \series bold
 
 \backslash
-usepackage[options]{endf\SpecialChar \textcompwordmark{}
-loat}
+usepackage[options]{endfloat}
 \end_layout
 
 \begin_layout Standard
@@ -19843,8 +19838,7 @@ status open
 \begin_layout Standard
 
 \series bold
-Nota: endf\SpecialChar \textcompwordmark{}
-loat
+Nota: endfloat
 \series default
  no traduce automáticamente la indicación, hay que hacerlo manualmente,
  ver sección\InsetSpace ~
@@ -19872,8 +19866,7 @@ Nota:
 \series default
  Actualmente hay un error en 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
  cuando el encabezado contiene el carácter alemán 
 \begin_inset Quotes eld
@@ -19959,18 +19952,15 @@ lado
 \begin_layout Standard
 Los flotantes girados son puestos siempre en su propia página (o columna
  si el documento es de dos columnas).
- Normalmente se rotan de forma que puedes leerlos desde el margen externo
- --a la izquierda en páginas impares, a la derecha en pares--.
+ Se rotan de forma que puedes leerlos desde el margen externo.
  Para forzar determinada dirección de rotación para todas las páginas, puedes
  añadir una de las opciones 
 \series bold
-f\SpecialChar \textcompwordmark{}
-iguresleft
+figuresleft
 \series default
  o 
 \series bold
-f\SpecialChar \textcompwordmark{}
-iguresright
+figuresright
 \series default
  a las opciones de clase del documento.
 \end_layout
