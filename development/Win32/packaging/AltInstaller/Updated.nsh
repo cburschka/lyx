@@ -31,6 +31,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\buffer-update_ps.xpm"
+ SetOutPath "$INSTDIR\Resources\lyx2lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_lang.py"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
 
