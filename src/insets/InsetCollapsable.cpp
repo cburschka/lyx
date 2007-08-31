@@ -175,7 +175,7 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	using std::max;
 
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
-	mi.base.textwidth -= (int) (1.5 * TEXT_TO_INSET_OFFSET);
+	mi.base.textwidth -= int(1.5 * TEXT_TO_INSET_OFFSET);
 
 	switch (geometry()) {
 	case NoButton:
@@ -234,8 +234,8 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += (int) (1.5 * TEXT_TO_INSET_OFFSET);
-	mi.base.textwidth += (int) (1.5 * TEXT_TO_INSET_OFFSET);
+	dim.wid += int(1.5 * TEXT_TO_INSET_OFFSET);
+	mi.base.textwidth += int(1.5 * TEXT_TO_INSET_OFFSET);
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;
