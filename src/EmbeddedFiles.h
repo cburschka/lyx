@@ -211,10 +211,9 @@ public:
 
 	void clear() { file_list_.clear(); }
 
-	/// FIXME: I am wondering if we should use index or filename (a std::map)
-	std::string filename(size_t idx) const;
-	EmbeddedFile::STATUS status(size_t idx) const;
-	void setStatus(size_t idx, EmbeddedFile::STATUS status);
+	///
+	EmbeddedFile & operator[](size_t idx) { return *(file_list_.begin() + idx); }
+	EmbeddedFile const & operator[](size_t idx) const { return *(file_list_.begin() + idx); }
 	///
 	EmbeddedFileList::iterator begin() { return file_list_.begin(); }
 	EmbeddedFileList::iterator end() { return file_list_.end(); }

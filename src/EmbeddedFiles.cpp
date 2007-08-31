@@ -221,28 +221,6 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 }
 
 
-string EmbeddedFiles::filename(size_t idx) const
-{
-	return (file_list_.begin() + idx)->absFilename();
-}
-
-
-EmbeddedFile::STATUS EmbeddedFiles::status(size_t idx) const
-{
-	return (file_list_.begin() + idx)->status();
-}
-
-
-void EmbeddedFiles::setStatus(size_t idx, EmbeddedFile::STATUS status)
-{
-	if ((file_list_.begin() + idx)->status() != status) {
-		// file will be changed
-		buffer_->markDirty();
-		(file_list_.begin() + idx)->setStatus(status);
-	}
-}
-
-
 bool EmbeddedFiles::validInzipName(string const & name)
 {
 	EmbeddedFileList::iterator it = file_list_.begin();

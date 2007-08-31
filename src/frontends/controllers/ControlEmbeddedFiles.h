@@ -26,8 +26,8 @@ public:
 	///
 	virtual ~ControlEmbeddedFiles() {}
 	///
-	EmbeddedFiles const * embeddedFiles() const { return embedded_files; }
-	EmbeddedFiles * embeddedFiles() { return embedded_files; }
+	EmbeddedFiles const & embeddedFiles() const { return *embedded_files; }
+	EmbeddedFiles & embeddedFiles() { return *embedded_files; }
 	///
 	virtual bool initialiseParams(std::string const &);
 	/// obtain embedded files from buffer
@@ -44,7 +44,11 @@ public:
 	void setMessage(std::string const & msg) { message_ = msg; }
 	///
 	void dispatchParams();
-	
+	///
+	void goTo(EmbeddedFile const & item);
+	///
+	void view(EmbeddedFile const & item);
+
 protected:
 	// directly handle buffer embedded files
 	EmbeddedFiles * embedded_files;

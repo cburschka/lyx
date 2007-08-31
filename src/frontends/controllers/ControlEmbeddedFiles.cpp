@@ -17,7 +17,10 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "debug.h"
+#include "Format.h"
 
+#include "frontends/LyXView.h"
+#include "support/convert.h"
 
 using std::string;
 
@@ -49,6 +52,18 @@ void ControlEmbeddedFiles::dispatchParams()
 	kernel().dispatch(FuncRequest(LFUN_MESSAGE, message_));
 }
 
+
+void ControlEmbeddedFiles::goTo(EmbeddedFile const & item)
+{
+	string const tmp = convert<string>(item.parID());
+	kernel().lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
+}
+
+
+void ControlEmbeddedFiles::view(EmbeddedFile const & item)
+{
+	formats.view(kernel().buffer(), item, formats.getFormatFromFile(item));
+}
 
 } // namespace frontend
 } // namespace lyx

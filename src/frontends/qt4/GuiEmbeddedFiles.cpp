@@ -39,10 +39,10 @@ GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(GuiEmbeddedFiles * form)
 	
 	form_->updateEmbeddedFiles();
 	
-	EmbeddedFiles const * files = form_->embeddedFiles();
-	enableCB->setChecked(files->enabled());
-	EmbeddedFiles::EmbeddedFileList::const_iterator it = files->begin();
-	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files->end();
+	EmbeddedFiles const & files = form_->embeddedFiles();
+	enableCB->setChecked(files.enabled());
+	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
+	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
 	for (; it != it_end; ++it) {
 		QListWidgetItem * item = new QListWidgetItem(toqstr(it->inzipName()));
 		if (!it->valid())
@@ -71,7 +71,7 @@ GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(GuiEmbeddedFiles * form)
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 {
-	EmbeddedFiles * files = form_->embeddedFiles();
+	EmbeddedFiles & files = form_->embeddedFiles();
 
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	fullpathLE->setEnabled(selection.size() == 1);
@@ -81,12 +81,12 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it) {
 		if (selection.size() == 1)
-			fullpathLE->setText(toqstr(files->filename(filesLW->row(*it))));
+			fullpathLE->setText(toqstr(files[filesLW->row(*it)].absFilename()));
 		if (mode == EmbeddedFile::NONE) {
-			mode = files->status(filesLW->row(*it));
+			mode = files[filesLW->row(*it)].status();
 			continue;
 		}
-		if (mode != files->status(filesLW->row(*it))) {
+		if (mode != files[filesLW->row(*it)].status()) {
 			mode = EmbeddedFile::NONE;
 			break;
 		}
@@ -95,20 +95,24 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 	autoRB->setChecked(mode == EmbeddedFile::AUTO);
 	embeddedRB->setChecked(mode == EmbeddedFile::EMBEDDED);
 	externalRB->setChecked(mode == EmbeddedFile::EXTERNAL);
+	// go to the first selected item
+	form_->goTo(files[filesLW->row(*selection.begin())]);
 }
 
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked()
 {
-	// FIXME: view or edit file
+	EmbeddedFiles & files = form_->embeddedFiles();
+	QList<QListWidgetItem *> selection = filesLW->selectedItems();
+	form_->view(files[filesLW->row(*selection.begin())]);
 }
 
 
 void GuiEmbeddedFilesDialog::update()
 {
-	EmbeddedFiles const * files = form_->embeddedFiles();
+	EmbeddedFiles const & files = form_->embeddedFiles();
 
-	bool enabled = files->enabled();
+	bool enabled = files.enabled();
 	enableCB->setChecked(enabled);
 	statusGB->setEnabled(enabled);
 	filesLW->setEnabled(enabled);
@@ -150,7 +154,7 @@ void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
 	// When a embedded file is turned to disabled, it should save its
 	// embedded files. Otherwise, embedded files will be lost!!!
 	//
-	form_->embeddedFiles()->enable(enable);
+	form_->embeddedFiles().enable(enable);
 	update();
 	// immediately post the change to buffer (and bufferView)
 	if (enable)
@@ -164,11 +168,14 @@ void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
 
 void GuiEmbeddedFilesDialog::set_embedding_status(EmbeddedFile::STATUS status)
 {
-	EmbeddedFiles * files = form_->embeddedFiles();
+	EmbeddedFiles & files = form_->embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it) {
-		files->setStatus(filesLW->row(*it), status);	
+		int row = filesLW->row(*it);
+		// FIXME: mark buffer dirty
+		if (status != files[row].status())
+			files[row].setStatus(status);			
 		if(status == EmbeddedFile::AUTO)
 			(*it)->setTextColor(AUTO_COLOR);
 		else if(status == EmbeddedFile::EMBEDDED)
