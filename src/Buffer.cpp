@@ -142,7 +142,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 281;
+int const LYX_FORMAT = 282;
 
 } // namespace anon
 

@@ -166,10 +166,12 @@ convert = [
            [278, [close_begin_deeper]],
            [279, [long_charstyle_names]],
            [280, [axe_show_label]],
-           [281, []]
+           [281, []],
+           [282, []]
           ]
 
 revert =  [
+           [281, []],
            [280, [revert_begin_modules]],
            [279, [revert_show_label]],
            [278, [revert_long_charstyle_names]],
