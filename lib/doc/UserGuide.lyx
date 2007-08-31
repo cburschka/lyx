@@ -1,4 +1,4 @@
-#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -25090,8 +25090,12 @@ reference "sub:Settings"
 
 \end_inset
 
- Enable this if you can't spell check words with international letters in
- them.
+ Enable this if you use 
+\family typewriter
+ispell
+\family default
+ (this option is not needed by and does not work with any other spell checker)
+ and can't spell check words with international letters in them.
  There have been reports that this does not work with all dictionaries,
  so this is disabled by default.
 \end_layout
@@ -25759,25 +25763,14 @@ The
 \family sans
 Encoding
 \family default
- box lets you choose the character encoding map you want to use.
- When you select the encoding 
+ box lets you choose the character encoding map you want to use for LaTeX
+ export.
+ The option 
 \family sans
-LaTeX\InsetSpace ~
-default
+use language's default encoding
 \family default
- or the option 
-\family sans
-Use language's default encoding
-\family default
-, the encoding is used that LaTeX uses by default for the selected language,
- e.\InsetSpace \thinspace{}
-g.\InsetSpace ~
-for English it is 
-\family sans
-latin9
-\family default
-.
- The different encodings are explained in section\InsetSpace ~
+ is the preferred choice and works well in most cases.
+ For details abhout the different encoding options see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Settings"
@@ -25785,62 +25778,6 @@ reference "sub:Settings"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-LyX also supports Unicode output, which is particularly useful if you need
- lots of special symbols or non-alphabetic scripts, respectively.
- If you want to use this (and your LaTeX installation supports Unicode,
- for that matter), the 
-\family typewriter
-utf8
-\family default
- encoding is the right choice for most purposes.
- Besides this, you will find some alternative Unicode encodings for specific
- purposes: 
-\family typewriter
-UTF8
-\family default
- and 
-\family typewriter
-utf8x
-\family default
- are provided for CJK languages (Chinese, Japanese, Korean), 
-\family typewriter
-utf8-plain
-\family default
-, finally, should be chosen for 
-\family sans
-XeTeX
-\family default
-, which uses Unicode directly, without the help of the LaTeX-package 
-\series bold
-inputenc
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-packages ! inputenc"
-
-\end_inset
-
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-See section\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sub:Settings"
-
-\end_inset
-
- for details.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -32368,11 +32305,23 @@ name "Language ! Encoding"
 
 \begin_layout Standard
 The document language and quote styles are set here.
- The encoding is necessary to be able to enter characters in the document
- language.
- E.g.
- you want to enter the æ-ligature directly with the keyboard and not by
- using LaTeX-commands.
+ The encoding specifies how the document content is exported to LaTeX (the
+ LyX file is always encoded in utf8).
+ All characters that can not be encoded using the specified encoding will
+ be exported as LaTeX-commands (this can fail if a LaTeX-command is not
+ known for a particular character).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+The known commands are defined in a text file.
+ You can add commands for unknown symbols to that file yourself, see the
+ Customization Guide for details.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -32380,7 +32329,52 @@ If you use the option
 \family sans
 use language's default encoding
 \family default
-, the default encoding for the selected language is used.
+, LyX determines the encoding of a portion of text from the language of
+ this text.
+ If the document contains text in more than one language you may get more
+ than one encoding in the LaTeX file.
+ If you do not use this option then the complete document will always use
+ exactly one encoding.
+ Checking this option is the preferred setting unless you use 
+\family sans
+XeTeX
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+XeTeX is a TeX typesetting engine, an alternative for LaTeX.
+ It natively supports Unicode while its input file is assumed to be in UTF-8
+ encoding.
+ More about using LyX with XeTeX can be found here: 
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/XeTeX"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ (see below).
+\end_layout
+
+\begin_layout Standard
+LyX also supports Unicode output, which is particularly useful if you need
+ lots of special symbols or non-alphabetic scripts, respectively.
+ If you want to use this (and your LaTeX installation supports Unicode,
+ for that matter), choose one of the four utf8 variants from the list below.
+ Unfortunately the unicode support of standard LaTeX is quite incomplete,
+ so it is not uncommon that a file with lots of unicode symbols works fine
+ with 
+\family sans
+use language's default encoding
+\family default
+ (when LyX uses it's list of known LaTeX-commands), but does not work with
+ a fixed utf8 encoding (when the list of known LaTeX-commands is ot used,
+ because all unicode symbols can be encoded in utf8).
 \end_layout
 
 \begin_layout Standard
@@ -32388,7 +32382,32 @@ Here is a list with the important encodings:
 \end_layout
 
 \begin_layout Description
+LaTeX\InsetSpace ~
+default Same as 
+\family sans
+use language's default encoding
+\family default
+, but the LaTeX-package 
+\series bold
+inputenc
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! inputenc"
+
+\end_inset
+
+ is not used.
+ You probably need to load some other packages manually in the preamble.
+\end_layout
+
+\begin_layout Description
 amscii8 encoding for Armenian
+\end_layout
+
+\begin_layout Description
+ascii Pure US-ASCII (7bit, may result in a big file because lots of LaTeX-comman
+ds may be needed)
 \end_layout
 
 \begin_layout Description
@@ -32487,37 +32506,53 @@ pt154 Cyrillic for Kazakh
 \end_layout
 
 \begin_layout Description
-utf8 code page for Unicode utf8
+utf8 Unicode utf8 with the LaTeX-package 
+\series bold
+inputenc
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! inputenc"
+
+\end_inset
+
+ (first variant, for latin symbols and some others).
 \end_layout
 
 \begin_layout Description
-UTF8 code page provided for CJK languages (Chinese, Japanese, Korean)
+utf8x Unicode utf8 with the LaTeX-package 
+\series bold
+inputenc
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! inputenc"
+
+\end_inset
+
+ (second variant, for greek and CJK symbols and some others).
 \end_layout
 
 \begin_layout Description
-utf8-plain code page provided to be used with for 
+UTF8 Unicode utf8 with the LaTeX-package 
+\series bold
+CJK
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! CJK"
+
+\end_inset
+
+ (mainly for the Chinese, Japanese and Korean language, but might work with
+ other unicode symbols, too)
+\end_layout
+
+\begin_layout Description
+utf8-plain Unicode utf8 to be used with 
 \family sans
 XeTeX
 \family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-XeTeX is a TeX typesetting engine, an alternative for LaTeX.
- It natively supports Unicode while its input file is assumed to be in UTF-8
- encoding.
- More about using LyX with XeTeX can be found here: 
-\begin_inset LatexCommand url
-target "http://wiki.lyx.org/LyX/XeTeX"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 , which uses Unicode directly, without the help of the LaTeX-package 
 \series bold
 inputenc
@@ -32528,11 +32563,7 @@ name "LaTeX-packages ! inputenc"
 
 \end_inset
 
-.
-\end_layout
 
-\begin_layout Description
-utf8x code page provided for CJK languages
 \end_layout
 
 \begin_layout Subsubsection*
