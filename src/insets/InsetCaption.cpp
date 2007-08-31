@@ -128,24 +128,22 @@ void InsetCaption::addToToc(TocList & toclist, Buffer const & buf, ParConstItera
 bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int const width_offset = TEXT_TO_INSET_OFFSET / 2;
-	mi.base.textwidth -= width_offset;
 
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
 	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
 	dim.wid = labelwidth_;
 	Dimension textdim;
-	InsetText::metrics(mi, textdim);
-	// Correct for button width, and re-fit
+	dim.wid += width_offset;
+	// Correct for button and label width
 	mi.base.textwidth -= dim.wid;
 	InsetText::metrics(mi, textdim);
+	mi.base.textwidth += dim.wid;
 	dim.des = std::max(dim.des - textdim.asc + dim.asc, textdim.des);
 	dim.asc = textdim.asc;
 	dim.wid += textdim.wid;
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += width_offset;
-	mi.base.textwidth += width_offset;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;

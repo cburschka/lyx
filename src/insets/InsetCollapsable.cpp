@@ -219,6 +219,7 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 				// Correct for button width, and re-fit
 				mi.base.textwidth -= dim.wid;
 				InsetText::metrics(mi, textdim_);
+				mi.base.textwidth += dim.wid;
 				dim.wid += textdim_.wid;
 				dim.des = max(dim.des - textdim_.asc + dim.asc, textdim_.des);
 				dim.asc = textdim_.asc;
