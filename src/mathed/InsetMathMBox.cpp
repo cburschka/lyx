@@ -67,7 +67,7 @@ bool InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathMBox::draw(PainterInfo & pi, int x, int y) const
 {
-	text_.draw(pi, x + 1, y);
+	pi.base.bv->textMetrics(&text_).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
 
