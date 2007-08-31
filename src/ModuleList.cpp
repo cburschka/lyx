@@ -10,20 +10,24 @@
  */
 
 #include <config.h>
+
 #include "debug.h"
 #include "Lexer.h"
 #include "ModuleList.h"
+
 #include "support/docstring.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+#include <algorithm>
 	
-namespace lyx{
-
+using std::endl;
 using std::map;
 using std::string;
 using std::vector;
-using std::endl;
+
+namespace lyx{
+
 using support::FileName;
 using support::libFileSearch;
 using support::makeDisplayPath;
@@ -116,7 +120,7 @@ bool ModuleList::load() {
 	LYXERR(Debug::TCLASS) << "End of parsing of lyxmodules.lst" << endl;
 
 	if (!moduleList.empty())
-		sort(moduleList.begin(), moduleList.end(), moduleSorter());
+		std::sort(moduleList.begin(), moduleList.end(), moduleSorter());
 	return true;
 }
 
