@@ -125,9 +125,6 @@ public:
 	/// FIXME: replace Cursor with DocIterator.
 	void insertInset(Cursor & cur, Inset * inset);
 
-	/// draw text (only used for insets)
-	void draw(PainterInfo & pi, int x, int y) const;
-
 	/// try to handle that request
 	/// FIXME: replace Cursor with DocIterator.
 	void dispatch(Cursor & cur, FuncRequest & cmd);
