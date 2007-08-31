@@ -43,7 +43,7 @@ BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
 	levelLW->addItem("4");
 
 	// insert pixmaps
-	setupPanel(new QListWidget(bulletpaneSW), qt_("Standard"), "standard");
+	setupPanel(new QListWidget(bulletpaneSW), qt_("Standard[[Bullets]]"), "standard");
 	setupPanel(new QListWidget(bulletpaneSW), qt_("Maths"), "amssymb");
 	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 1"), "psnfss1");
 	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 2"), "psnfss2");
