@@ -3013,6 +3013,10 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 	BufferView * bv = pi.base.bv;
 
+	// FIXME: As the full backrgound is painted in drawSelection(),
+	// we have no choice but to do a full repaint for the Text cells.
+	pi.full_repaint = true;
+
 	resetPos(bv->cursor());
 
 	x += scx_;
@@ -3062,6 +3066,9 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 	Cursor & cur = pi.base.bv->cursor();
 
 	x += scx_ + ADD_TO_TABULAR_WIDTH;
+
+	// FIXME: it is wrong to completely paint the background
+	// if we want to do single row painting.
 
 	// Paint background of current tabular
 	int const w = tabular.getWidthOfTabular();
