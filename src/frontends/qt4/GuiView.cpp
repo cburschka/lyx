@@ -17,9 +17,9 @@
 
 #include "GuiImplementation.h"
 #include "GuiWorkArea.h"
-#include "QKeySymbol.h"
-#include "QLMenubar.h"
-#include "QLToolbar.h"
+#include "GuiKeySymbol.h"
+#include "GuiMenubar.h"
+#include "GuiToolbar.h"
 #include "qt_helpers.h"
 
 #include "frontends/Application.h"
@@ -83,7 +83,7 @@ namespace {
 
 int const statusbar_timer_value = 3000;
 
-class BackgroundWidget: public QWidget
+class BackgroundWidget : public QWidget
 {
 public:
 	BackgroundWidget(QString const & file, QString const & text)
@@ -105,7 +105,7 @@ public:
 		pain.drawText(260, 270, text);
 	}
 
-	void paintEvent(QPaintEvent * ev)
+	void paintEvent(QPaintEvent *)
 	{
 		if (!splash_)
 			return;
@@ -121,7 +121,7 @@ private:
 };
 
 
-class TabWidget: public QTabWidget {
+class TabWidget : public QTabWidget {
 public:
 	void showBar(bool show) { tabBar()->setVisible(show); }
 };
@@ -130,7 +130,7 @@ public:
 } // namespace anon
 
 
-struct GuiView::GuiViewPrivate
+struct GuiViewBase::GuiViewPrivate
 {
 	string cur_title;
 
@@ -141,10 +141,9 @@ struct GuiView::GuiViewPrivate
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
 	/// view's menubar
-	QLMenubar * menubar_;
+	GuiMenubar * menubar_;
 
-	GuiViewPrivate() : posx_offset(0), posy_offset(0)
-	{}
+	GuiViewPrivate() : posx_offset(0), posy_offset(0) {}
 
 	unsigned int smallIconSize;
 	unsigned int normalIconSize;
@@ -152,25 +151,25 @@ struct GuiView::GuiViewPrivate
 	// static needed by "New Window"
 	static unsigned int lastIconSize;
 
-	QMenu* toolBarPopup(GuiView *parent)
+	QMenu * toolBarPopup(GuiViewBase * parent)
 	{
 		// FIXME: translation
-		QMenu* menu = new QMenu(parent);
-		QActionGroup *iconSizeGroup = new QActionGroup(parent);
+		QMenu * menu = new QMenu(parent);
+		QActionGroup * iconSizeGroup = new QActionGroup(parent);
 
-		QAction *smallIcons = new QAction(iconSizeGroup);
+		QAction * smallIcons = new QAction(iconSizeGroup);
 		smallIcons->setText(qt_("Small-sized icons"));
 		smallIcons->setCheckable(true);
 		QObject::connect(smallIcons, SIGNAL(triggered()), parent, SLOT(smallSizedIcons()));
 		menu->addAction(smallIcons);
 
-		QAction *normalIcons = new QAction(iconSizeGroup);
+		QAction * normalIcons = new QAction(iconSizeGroup);
 		normalIcons->setText(qt_("Normal-sized icons"));
 		normalIcons->setCheckable(true);
 		QObject::connect(normalIcons, SIGNAL(triggered()), parent, SLOT(normalSizedIcons()));
 		menu->addAction(normalIcons);
 
-		QAction *bigIcons = new QAction(iconSizeGroup);
+		QAction * bigIcons = new QAction(iconSizeGroup);
 		bigIcons->setText(qt_("Big-sized icons"));
 		bigIcons->setCheckable(true);
 		QObject::connect(bigIcons, SIGNAL(triggered()), parent, SLOT(bigSizedIcons()));
@@ -211,10 +210,10 @@ struct GuiView::GuiViewPrivate
 };
 
 
-unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
+unsigned int GuiViewBase::GuiViewPrivate::lastIconSize = 0;
 
 
-GuiView::GuiView(int id)
+GuiViewBase::GuiViewBase(int id)
 	: QMainWindow(), LyXView(id), quitting_by_menu_(false),
 	  d(*new GuiViewPrivate)
 {
@@ -278,14 +277,14 @@ GuiView::GuiView(int id)
 }
 
 
-GuiView::~GuiView()
+GuiViewBase::~GuiViewBase()
 {
 	delete d.menubar_;
 	delete &d;
 }
 
 
-void GuiView::close()
+void GuiViewBase::close()
 {
 	quitting_by_menu_ = true;
 	QMainWindow::close();
@@ -293,22 +292,22 @@ void GuiView::close()
 }
 
 
-void GuiView::setFocus()
+void GuiViewBase::setFocus()
 {
 	if (d.tab_widget_->count())
 		d.tab_widget_->currentWidget()->setFocus();
 }
 
 
-QMenu* GuiView::createPopupMenu()
+QMenu* GuiViewBase::createPopupMenu()
 {
 	return d.toolBarPopup(this);
 }
 
 
-void GuiView::init()
+void GuiViewBase::init()
 {
-	d.menubar_ = new QLMenubar(this, menubackend);
+	d.menubar_ = new GuiMenubar(this, menubackend);
 
 	toolbars_->init();
 
@@ -322,7 +321,7 @@ void GuiView::init()
 }
 
 
-void GuiView::closeEvent(QCloseEvent * close_event)
+void GuiViewBase::closeEvent(QCloseEvent * close_event)
 {
 	// we may have been called through the close window button
 	// which bypasses the LFUN machinery.
@@ -357,7 +356,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 }
 
 
-void GuiView::dragEnterEvent(QDragEnterEvent * event)
+void GuiViewBase::dragEnterEvent(QDragEnterEvent * event)
 {
 	if (event->mimeData()->hasUrls())
 		event->accept();
@@ -367,7 +366,7 @@ void GuiView::dragEnterEvent(QDragEnterEvent * event)
 }
 
 
-void GuiView::dropEvent(QDropEvent* event)
+void GuiViewBase::dropEvent(QDropEvent* event)
 {
 	QList<QUrl> files = event->mimeData()->urls();
 	if (files.isEmpty())
@@ -375,7 +374,7 @@ void GuiView::dropEvent(QDropEvent* event)
 
 	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
 		<< " got URLs!" << endl;
-	for (int i = 0; i!=files.size(); ++i) {
+	for (int i = 0; i != files.size(); ++i) {
 		string const file = support::os::internal_path(fromqstr(
 			files.at(i).toLocalFile()));
 		if (!file.empty())
@@ -384,7 +383,7 @@ void GuiView::dropEvent(QDropEvent* event)
 }
 
 
-void GuiView::saveGeometry()
+void GuiViewBase::saveGeometry()
 {
 	static bool done = false;
 	if (done)
@@ -398,7 +397,7 @@ void GuiView::saveGeometry()
 	// http://www.trolltech.com/developer/task-tracker/index_html?id=119684+&method=entry
 	// Then also the moveEvent, resizeEvent, and the
 	// code for floatingGeometry_ can be removed;
-	// adjust GuiView::setGeometry()
+	// adjust GuiViewBase::setGeometry()
 
 	QRect normal_geometry;
 	int maximized;
@@ -449,7 +448,7 @@ void GuiView::saveGeometry()
 }
 
 
-void GuiView::setGeometry(unsigned int width,
+void GuiViewBase::setGeometry(unsigned int width,
 			  unsigned int height,
 			  int posx, int posy,
 			  int maximized,
@@ -559,7 +558,7 @@ void GuiView::setGeometry(unsigned int width,
 }
 
 
-void GuiView::setWindowTitle(docstring const & t, docstring const & it)
+void GuiViewBase::setWindowTitle(docstring const & t, docstring const & it)
 {
 	QString title = windowTitle();
 	QString new_title = toqstr(t);
@@ -570,7 +569,7 @@ void GuiView::setWindowTitle(docstring const & t, docstring const & it)
 }
 
 
-void GuiView::message(docstring const & str)
+void GuiViewBase::message(docstring const & str)
 {
 	statusBar()->showMessage(toqstr(str));
 	statusbar_timer_.stop();
@@ -578,38 +577,38 @@ void GuiView::message(docstring const & str)
 }
 
 
-void GuiView::clearMessage()
+void GuiViewBase::clearMessage()
 {
 	update_view_state_qt();
 }
 
 
-void GuiView::setIconSize(unsigned int size)
+void GuiViewBase::setIconSize(unsigned int size)
 {
 	d.lastIconSize = size;
 	QMainWindow::setIconSize(QSize(size, size));
 }
 
 
-void GuiView::smallSizedIcons()
+void GuiViewBase::smallSizedIcons()
 {
 	setIconSize(d.smallIconSize);
 }
 
 
-void GuiView::normalSizedIcons()
+void GuiViewBase::normalSizedIcons()
 {
 	setIconSize(d.normalIconSize);
 }
 
 
-void GuiView::bigSizedIcons()
+void GuiViewBase::bigSizedIcons()
 {
 	setIconSize(d.bigIconSize);
 }
 
 
-void GuiView::update_view_state_qt()
+void GuiViewBase::update_view_state_qt()
 {
 	if (!hasFocus())
 		return;
@@ -619,13 +618,13 @@ void GuiView::update_view_state_qt()
 }
 
 
-void GuiView::closeCurrentTab()
+void GuiViewBase::closeCurrentTab()
 {
 	dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
 }
 
 
-void GuiView::currentTabChanged(int i)
+void GuiViewBase::currentTabChanged(int i)
 {
 	disconnectBuffer();
 	disconnectBufferView();
@@ -655,7 +654,7 @@ void GuiView::currentTabChanged(int i)
 }
 
 
-void GuiView::updateStatusBar()
+void GuiViewBase::updateStatusBar()
 {
 	// let the user see the explicit message
 	if (statusbar_timer_.isActive())
@@ -665,19 +664,19 @@ void GuiView::updateStatusBar()
 }
 
 
-void GuiView::activated(FuncRequest const & func)
+void GuiViewBase::activated(FuncRequest const & func)
 {
 	dispatch(func);
 }
 
 
-bool GuiView::hasFocus() const
+bool GuiViewBase::hasFocus() const
 {
 	return qApp->activeWindow() == this;
 }
 
 
-QRect  GuiView::updateFloatingGeometry()
+QRect  GuiViewBase::updateFloatingGeometry()
 {
 	QDesktopWidget& dw = *qApp->desktop();
 	QRect desk = dw.availableGeometry(dw.primaryScreen());
@@ -689,19 +688,19 @@ QRect  GuiView::updateFloatingGeometry()
 }
 
 
-void GuiView::resizeEvent(QResizeEvent *)
+void GuiViewBase::resizeEvent(QResizeEvent *)
 {
 	updateFloatingGeometry();
 }
 
 
-void GuiView::moveEvent(QMoveEvent *)
+void GuiViewBase::moveEvent(QMoveEvent *)
 {
 	updateFloatingGeometry();
 }
 
 
-bool GuiView::event(QEvent * e)
+bool GuiViewBase::event(QEvent * e)
 {
 	switch (e->type())
 	{
@@ -725,14 +724,14 @@ bool GuiView::event(QEvent * e)
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		if (d.tab_widget_->count() == 0) {
 			theLyXFunc().setLyXView(this);
-			boost::shared_ptr<QKeySymbol> sym(new QKeySymbol);
+			boost::shared_ptr<GuiKeySymbol> sym(new GuiKeySymbol);
 			sym->set(ke);
 			theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
 			e->accept();
 			return true;
 		}
 		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
-			boost::shared_ptr<QKeySymbol> sym(new QKeySymbol);
+			boost::shared_ptr<GuiKeySymbol> sym(new GuiKeySymbol);
 			sym->set(ke);
 			currentWorkArea()->processKeySym(sym, key_modifier::none);
 			e->accept();
@@ -745,14 +744,14 @@ bool GuiView::event(QEvent * e)
 }
 
 
-bool GuiView::focusNextPrevChild(bool /*next*/)
+bool GuiViewBase::focusNextPrevChild(bool /*next*/)
 {
 	setFocus();
 	return true;
 }
 
 
-void GuiView::show()
+void GuiViewBase::show()
 {
 	QMainWindow::setWindowTitle(qt_("LyX"));
 	QMainWindow::show();
@@ -760,7 +759,7 @@ void GuiView::show()
 }
 
 
-void GuiView::busy(bool yes)
+void GuiViewBase::busy(bool yes)
 {
 	if (d.tab_widget_->count()) {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
@@ -779,14 +778,14 @@ void GuiView::busy(bool yes)
 }
 
 
-Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
+Toolbars::ToolbarPtr GuiViewBase::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
 {
-	QLToolbar * Tb = new QLToolbar(tbinfo, *this);
+	GuiToolbar * toolBar = new GuiToolbar(tbinfo, *this);
 
 	if (tbinfo.flags & ToolbarInfo::TOP) {
 		if (newline)
 			addToolBarBreak(Qt::TopToolBarArea);
-		addToolBar(Qt::TopToolBarArea, Tb);
+		addToolBar(Qt::TopToolBarArea, toolBar);
 	}
 
 	if (tbinfo.flags & ToolbarInfo::BOTTOM) {
@@ -795,7 +794,7 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newli
 		if (newline)
 			addToolBarBreak(Qt::BottomToolBarArea);
 #endif
-		addToolBar(Qt::BottomToolBarArea, Tb);
+		addToolBar(Qt::BottomToolBarArea, toolBar);
 	}
 
 	if (tbinfo.flags & ToolbarInfo::LEFT) {
@@ -804,7 +803,7 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newli
 		if (newline)
 			addToolBarBreak(Qt::LeftToolBarArea);
 #endif
-		addToolBar(Qt::LeftToolBarArea, Tb);
+		addToolBar(Qt::LeftToolBarArea, toolBar);
 	}
 
 	if (tbinfo.flags & ToolbarInfo::RIGHT) {
@@ -813,20 +812,20 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newli
 		if (newline)
 			addToolBarBreak(Qt::RightToolBarArea);
 #endif
-		addToolBar(Qt::RightToolBarArea, Tb);
+		addToolBar(Qt::RightToolBarArea, toolBar);
 	}
 
 	// The following does not work so I cannot restore to exact toolbar location
 	/*
 	ToolbarSection::ToolbarInfo & tbinfo = LyX::ref().session().toolbars().load(tbinfo.name);
-	Tb->move(tbinfo.posx, tbinfo.posy);
+	toolBar->move(tbinfo.posx, tbinfo.posy);
 	*/
 
-	return Toolbars::ToolbarPtr(Tb);
+	return Toolbars::ToolbarPtr(toolBar);
 }
 
 
-WorkArea * GuiView::workArea(Buffer & buffer)
+WorkArea * GuiViewBase::workArea(Buffer & buffer)
 {
 	for (int i = 0; i != d.tab_widget_->count(); ++i) {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(i));
@@ -838,7 +837,7 @@ WorkArea * GuiView::workArea(Buffer & buffer)
 }
 
 
-WorkArea * GuiView::addWorkArea(Buffer & buffer)
+WorkArea * GuiViewBase::addWorkArea(Buffer & buffer)
 {
 	GuiWorkArea * wa = new GuiWorkArea(buffer, *this);
 	wa->setUpdatesEnabled(false);
@@ -852,7 +851,7 @@ WorkArea * GuiView::addWorkArea(Buffer & buffer)
 }
 
 
-WorkArea * GuiView::currentWorkArea()
+WorkArea * GuiViewBase::currentWorkArea()
 {
 	if (d.tab_widget_->count() == 0)
 		return 0;
@@ -861,7 +860,7 @@ WorkArea * GuiView::currentWorkArea()
 }
 
 
-WorkArea const * GuiView::currentWorkArea() const
+WorkArea const * GuiViewBase::currentWorkArea() const
 {
 	if (d.tab_widget_->count() == 0)
 		return 0;
@@ -870,7 +869,7 @@ WorkArea const * GuiView::currentWorkArea() const
 }
 
 
-void GuiView::setCurrentWorkArea(WorkArea * work_area)
+void GuiViewBase::setCurrentWorkArea(WorkArea * work_area)
 {
 	BOOST_ASSERT(work_area);
 
@@ -890,7 +889,7 @@ void GuiView::setCurrentWorkArea(WorkArea * work_area)
 }
 
 
-void GuiView::removeWorkArea(WorkArea * work_area)
+void GuiViewBase::removeWorkArea(WorkArea * work_area)
 {
 	BOOST_ASSERT(work_area);
 	if (work_area == currentWorkArea()) {
@@ -926,7 +925,7 @@ void GuiView::removeWorkArea(WorkArea * work_area)
 }
 
 
-void GuiView::showMiniBuffer(bool visible)
+void GuiViewBase::showMiniBuffer(bool visible)
 {
 	Toolbar * t = toolbars_->display("minibuffer", visible);
 	if (t)
@@ -934,7 +933,7 @@ void GuiView::showMiniBuffer(bool visible)
 }
 
 
-void GuiView::openMenu(docstring const & name)
+void GuiViewBase::openMenu(docstring const & name)
 {
 	d.menubar_->openByName(name);
 }

@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 
-Action::Action(GuiView & lyxView, docstring const & text,
+Action::Action(GuiViewBase & lyxView, docstring const & text,
 		FuncRequest const & func, docstring const & tooltip)
 	: QAction(&lyxView), func_(func), lyxView_(lyxView)
 {
@@ -46,7 +46,7 @@ Action::Action(GuiView & lyxView, docstring const & text,
 	update();
 }
 
-Action::Action(GuiView & lyxView, string const & icon, docstring const & text,
+Action::Action(GuiViewBase & lyxView, string const & icon, docstring const & text,
 		FuncRequest const & func, docstring const & tooltip)
 		: QAction(&lyxView), func_(func), lyxView_(lyxView)
 {

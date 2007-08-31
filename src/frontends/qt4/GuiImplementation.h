@@ -22,13 +22,13 @@
 namespace lyx {
 namespace frontend {
 
-class GuiView;
+class GuiViewBase;
 class LyXView;
 
 /**
  * The GuiImplementation class is the interface to all Qt4 components.
  */
-class GuiImplementation: public QObject, public Gui
+class GuiImplementation : public QObject, public Gui
 {
 	Q_OBJECT
 
@@ -51,7 +51,7 @@ private:
 	* object is handled by Qt when the view is closed
 	* \sa Qt::WA_DeleteOnClose attribute.
 	*/
-	std::map<int, GuiView *> views_;
+	std::map<int, GuiViewBase *> views_;
 };
 
 } // namespace frontend

@@ -847,76 +847,76 @@ src_frontends_qt4_header_files = Split('''
     DockView.h
     EmptyTable.h
     FloatPlacement.h
+    GuiAbout.h
     GuiApplication.h
+    GuiBibitem.h
+    GuiBibtex.h
+    GuiBox.h
+    GuiBranches.h
+    GuiBranch.h
+    GuiChanges.h
+    GuiCharacter.h
+    GuiCharacter.h
+    GuiCitationDialog.h
+    GuiCitation.h
     GuiClipboard.h
+    GuiCommandBuffer.h
+    GuiCommandEdit.h
+    GuiDelimiterDialog.h
+    GuiDialogView.h
+    GuiDocument.h
+    GuiErrorList.h
+    GuiERT.h
+    GuiExternal.h
+    GuiFloatDialog.h
+    GuiFloat.h
+    GuiFontExample.h
     GuiFontLoader.h
+    GuiGraphicsDialog.h
+    GuiGraphics.h
+    GuiGraphicsUi.h
+    GuiImage.h
     GuiImplementation.h
+    GuiInclude.h
+    GuiIndex.h
+    GuiKeySymbol.h
+    GuiListings.h
+    GuiLog.h
+    GuiMathMatrixDialog.h
+    GuiMenubar.h
+    GuiNomencl.h
+    GuiNote.h
+    GuiPainter.h
+    GuiParagraph.h
+    GuiPopupMenu.h
+    GuiPrefs.h
+    GuiPrintDialog.h
+    GuiPrint.h
+    GuiRef.h
+    GuiSearch.h
     GuiSelection.h
+    GuiSelectionManager.h
+    GuiSendto.h
+    GuiSetBorder.h
+    GuiShowFile.h
+    GuiSpellchecker.h
+    GuiTabularCreate.h
+    GuiTabular.h
+    GuiTexinfo.h
+    GuiThesaurus.h
+    GuiToc.h
+    GuiToolbar.h
+    GuiURLDialog.h
     GuiView.h
+    GuiViewSource.h
+    GuiVSpace.h
     GuiWorkArea.h
+    GuiWrap.h
     IconPalette.h
     InsertTableWidget.h
     LengthCombo.h
     LyXFileDialog.h
     PanelStack.h
-    QAbout.h
-    QBibitem.h
-    QBibtex.h
-    QBox.h
-    QBranch.h
-    QBranches.h
-    QChanges.h
-    QCharacter.h
-    QCharacter.h
-    QCitation.h
-    QCitationDialog.h
-    QCommandBuffer.h
-    QCommandEdit.h
-    QDelimiterDialog.h
-    QDialogView.h
-    QDocument.h
-    QERT.h
-    QErrorList.h
-    QExternal.h
-    QFloat.h
-    QFloatDialog.h
-    QFontExample.h
-    QGraphics.h
-    QGraphicsDialog.h
-    QGraphicsUi.h
-    QInclude.h
-    QIndex.h
-    QKeySymbol.h
-    QListings.h
-    QLImage.h
-    QLMenubar.h
-    QLPainter.h
-    QLPopupMenu.h
-    QLPrintDialog.h
-    QLToolbar.h
-    QLog.h
-    QMathMatrixDialog.h
-    QNomencl.h
-    QNote.h
-    QParagraph.h
-    QPrefs.h
-    QPrint.h
-    QRef.h
-    QSearch.h
-    QSelectionManager.h
-    QSendto.h
-    QSetBorder.h
-    QShowFile.h
-    QSpellchecker.h
-    QTabular.h
-    QTabularCreate.h
-    QTexinfo.h
-    QThesaurus.h
-    QToc.h
-    QURLDialog.h
-    QVSpace.h
-    QViewSource.h
-    QWrap.h
     Qt2BC.h
     TocModel.h
     TocWidget.h
@@ -937,76 +937,76 @@ src_frontends_qt4_files = Split('''
     EmptyTable.cpp
     FileDialog.cpp
     FloatPlacement.cpp
+    GuiAbout.cpp
     GuiApplication.cpp
+    GuiBibitem.cpp
+    GuiBibtex.cpp
+    GuiBox.cpp
+    GuiBranch.cpp
+    GuiBranches.cpp
+    GuiChanges.cpp
+    GuiCharacter.cpp
+    GuiCitation.cpp
+    GuiCitationDialog.cpp
     GuiClipboard.cpp
+    GuiCommandBuffer.cpp
+    GuiCommandEdit.cpp
+    GuiDelimiterDialog.cpp
+    GuiDialogView.cpp
+    GuiDocument.cpp
+    GuiErrorList.cpp
+    GuiERT.cpp
+    GuiExternal.cpp
+    GuiFloat.cpp
+    GuiFloatDialog.cpp
+    GuiFontExample.cpp
     GuiFontLoader.cpp
     GuiFontMetrics.cpp
+    GuiGraphics.cpp
+    GuiGraphicsDialog.cpp
+    GuiImage.cpp
     GuiImplementation.cpp
+    GuiInclude.cpp
+    GuiIndex.cpp
+    GuiKeySymbol.cpp
+    GuiListings.cpp
+    GuiLog.cpp
+    GuiMathMatrixDialog.cpp
+    GuiMenubar.cpp
+    GuiNomencl.cpp
+    GuiNote.cpp
+    GuiPainter.cpp
+    GuiParagraph.cpp
+    GuiPopupMenu.cpp
+    GuiPrefs.cpp
+    GuiPrint.cpp
+    GuiPrintDialog.cpp
+    GuiRef.cpp
+    GuiSearch.cpp
     GuiSelection.cpp
+    GuiSelectionManager.cpp
+    GuiSendto.cpp
+    GuiSetBorder.cpp
+    GuiShowFile.cpp
+    GuiSpellchecker.cpp
+    GuiTabular.cpp
+    GuiTabularCreate.cpp
+    GuiTexinfo.cpp
+    GuiThesaurus.cpp
+    GuiToc.cpp
+    GuiToolbar.cpp
+    GuiURLDialog.cpp
     GuiView.cpp
+    GuiViewSource.cpp
+    GuiVSpace.cpp
     GuiWorkArea.cpp
+    GuiWrap.cpp
     IconPalette.cpp
     InsertTableWidget.cpp
     KeySymbol.cpp
     LengthCombo.cpp
     LyXFileDialog.cpp
     PanelStack.cpp
-    QAbout.cpp
-    QBibitem.cpp
-    QBibtex.cpp
-    QBox.cpp
-    QBranch.cpp
-    QBranches.cpp
-    QChanges.cpp
-    QCharacter.cpp
-    QCitation.cpp
-    QCitationDialog.cpp
-    QCommandBuffer.cpp
-    QCommandEdit.cpp
-    QDelimiterDialog.cpp
-    QDialogView.cpp
-    QDocument.cpp
-    QERT.cpp
-    QErrorList.cpp
-    QExternal.cpp
-    QFloat.cpp
-    QFloatDialog.cpp
-    QFontExample.cpp
-    QGraphics.cpp
-    QGraphicsDialog.cpp
-    QInclude.cpp
-    QIndex.cpp
-    QKeySymbol.cpp
-    QListings.cpp
-    QLImage.cpp
-    QLMenubar.cpp
-    QLPainter.cpp
-    QLPopupMenu.cpp
-    QLPrintDialog.cpp
-    QLToolbar.cpp
-    QLog.cpp
-    QMathMatrixDialog.cpp
-    QNomencl.cpp
-    QNote.cpp
-    QParagraph.cpp
-    QPrefs.cpp
-    QPrint.cpp
-    QRef.cpp
-    QSearch.cpp
-    QSelectionManager.cpp
-    QSendto.cpp
-    QSetBorder.cpp
-    QShowFile.cpp
-    QSpellchecker.cpp
-    QTabular.cpp
-    QTabularCreate.cpp
-    QTexinfo.cpp
-    QThesaurus.cpp
-    QToc.cpp
-    QURLDialog.cpp
-    QVSpace.cpp
-    QViewSource.cpp
-    QWrap.cpp
     Qt2BC.cpp
     TocModel.cpp
     TocWidget.cpp

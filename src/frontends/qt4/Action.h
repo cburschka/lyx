@@ -22,7 +22,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiView;
+class GuiViewBase;
 
 /**
  * Action - Qt interface with LyX' FuncRequest.
@@ -33,10 +33,10 @@ class Action : public QAction {
 	Q_OBJECT
 public:
 
-	Action(GuiView & lyxView, docstring const & text,
+	Action(GuiViewBase & lyxView, docstring const & text,
 		FuncRequest const & func, docstring const & tooltip = docstring());
 
-	Action(GuiView & lyxView, std::string const & icon, docstring const & text,
+	Action(GuiViewBase & lyxView, std::string const & icon, docstring const & text,
 		FuncRequest const & func, docstring const & tooltip = docstring());
 
 	void update();
@@ -52,7 +52,7 @@ private Q_SLOTS:
 
 private:
 	FuncRequest const & func_ ;
-	GuiView & lyxView_;
+	GuiViewBase & lyxView_;
 };
 
 

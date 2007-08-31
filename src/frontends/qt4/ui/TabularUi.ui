@@ -1,9 +1,6 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
- <class>QTabularUi</class>
- <widget class="QDialog" name="QTabularUi" >
+ <class>TabularUi</class>
+ <widget class="QDialog" name="TabularUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -647,7 +644,7 @@
                 <number>6</number>
                </property>
                <item row="0" column="0" >
-                <widget class="QSetBorder" name="borders" >
+                <widget class="GuiSetBorder" name="borders" >
                  <property name="sizePolicy" >
                   <sizepolicy>
                    <hsizetype>1</hsizetype>
@@ -1152,9 +1149,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>QSetBorder</class>
+   <class>GuiSetBorder</class>
    <extends>QWidget</extends>
-   <header>QSetBorder.h</header>
+   <header>GuiSetBorder.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

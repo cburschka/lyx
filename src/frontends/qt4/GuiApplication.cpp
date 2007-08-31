@@ -15,7 +15,7 @@
 #include "GuiApplication.h"
 
 #include "qt_helpers.h"
-#include "QLImage.h"
+#include "GuiImage.h"
 #include "socket_callback.h"
 
 #include "frontends/LyXView.h"

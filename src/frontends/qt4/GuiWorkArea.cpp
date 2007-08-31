@@ -14,8 +14,8 @@
 #include "GuiWorkArea.h"
 
 #include "GuiApplication.h"
-#include "QLPainter.h"
-#include "QKeySymbol.h"
+#include "GuiPainter.h"
+#include "GuiKeySymbol.h"
 #include "qt_helpers.h"
 
 #include "frontends/LyXView.h"
@@ -418,14 +418,17 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 		<< " key=" << e->key()
 		<< endl;
 
-	boost::shared_ptr<QKeySymbol> sym(new QKeySymbol);
+	boost::shared_ptr<GuiKeySymbol> sym(new GuiKeySymbol);
 	sym->set(e);
 	processKeySym(sym, q_key_state(e->modifiers()));
 }
 
-void GuiWorkArea::doubleClickTimeout() {
+
+void GuiWorkArea::doubleClickTimeout()
+{
 	dc_event_.active = false;
 }
+
 
 void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 {

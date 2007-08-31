@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "UrlView.h"
-#include "QURLDialog.h"
+#include "GuiURLDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -27,7 +27,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController< ControlCommand, QView<QURLDialog> > urlview_base_class;
+typedef QController< ControlCommand, GuiView<GuiURLDialog> > urlview_base_class;
 
 UrlView::UrlView(Dialog & parent)
 	: urlview_base_class(parent, _("URL"))
@@ -37,7 +37,7 @@ UrlView::UrlView(Dialog & parent)
 
 void UrlView::build_dialog()
 {
-	dialog_.reset(new QURLDialog(this));
+	dialog_.reset(new GuiURLDialog(this));
 
 	bcview().setOK(dialog_->okPB);
 	bcview().setCancel(dialog_->closePB);

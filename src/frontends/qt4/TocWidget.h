@@ -20,12 +20,12 @@
 namespace lyx {
 namespace frontend {
 
-class QToc;
+class GuiToc;
 
-class TocWidget : public QWidget, public Ui::QTocUi {
+class TocWidget : public QWidget, public Ui::TocUi {
 	Q_OBJECT
 public:
-	TocWidget(QToc * form, QWidget * parent = 0);
+	TocWidget(GuiToc * form, QWidget * parent = 0);
 
 	/// Update the display of the dialog whilst it is still visible.
 	void update();
@@ -64,7 +64,7 @@ private:
 	//This is a workaround for a problem of signals blocking.
 	void disconnectSelectionModel();
 
-	QToc * form_;
+	GuiToc * form_;
 
 	/// depth of list shown
 	int depth_;

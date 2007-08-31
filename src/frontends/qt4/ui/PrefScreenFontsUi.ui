@@ -1,9 +1,6 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
- <class>QPrefScreenFontsUi</class>
- <widget class="QWidget" name="QPrefScreenFontsUi" >
+ <class>PrefScreenFontsUi</class>
+ <widget class="QWidget" name="PrefScreenFontsUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -46,7 +43,7 @@
         </widget>
        </item>
        <item row="1" column="2" >
-        <widget class="QFontExample" name="screenSansFE" >
+        <widget class="GuiFontExample" name="screenSansFE" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>3</hsizetype>
@@ -74,7 +71,7 @@
         </widget>
        </item>
        <item row="0" column="2" >
-        <widget class="QFontExample" name="screenRomanFE" >
+        <widget class="GuiFontExample" name="screenRomanFE" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>3</hsizetype>
@@ -119,7 +116,7 @@
         </widget>
        </item>
        <item row="2" column="2" >
-        <widget class="QFontExample" name="screenTypewriterFE" >
+        <widget class="GuiFontExample" name="screenTypewriterFE" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>3</hsizetype>
@@ -380,9 +377,9 @@
  </includes>
  <customwidgets>
   <customwidget>
-   <class>QFontExample</class>
+   <class>GuiFontExample</class>
    <extends>QWidget</extends>
-   <header>QFontExample.h</header>
+   <header>GuiFontExample.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

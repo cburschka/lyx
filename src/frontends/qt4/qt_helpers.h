@@ -52,7 +52,7 @@ void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
 //determines what text is to be written for "auto". But making
 //that work involves more extensive revisions than we now want
 //to make, since "auto" also appears in update_contents() (see
-//QGraphics.cpp).
+//GuiGraphics.cpp).
 //The right way to do this, I think, would be to define a class
 //checkedLengthSet (and a partnering labeledLengthSete) that encapsulated
 //the checkbox, line edit, and length combo together, and then made e.g.

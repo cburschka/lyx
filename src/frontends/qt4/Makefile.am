@@ -35,91 +35,91 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src/frontends/controllers
 
 SOURCEFILES = \
+	Action.cpp \
 	alert_pimpl.cpp \
+	BulletsModule.cpp \
 	CheckedLineEdit.cpp \
+	ColorCache.cpp \
 	Dialogs.cpp \
+	EmptyTable.cpp \
 	FileDialog.cpp \
+	FloatPlacement.cpp \
+	GuiAbout.cpp \
+	GuiApplication.cpp \
+	GuiBibitem.cpp \
+	GuiBibtex.cpp \
+	GuiBox.cpp \
+	GuiBranch.cpp \
+	GuiBranches.cpp \
+	GuiChanges.cpp \
+	GuiCharacter.cpp \
+	GuiCitation.cpp \
+	GuiCitationDialog.cpp \
 	GuiClipboard.cpp \
+	GuiCommandBuffer.cpp \
+	GuiCommandEdit.cpp \
+	GuiDelimiterDialog.cpp \
+	GuiDialogView.cpp \
+	GuiDocument.cpp \
+	GuiErrorList.cpp \
+	GuiERT.cpp \
+	GuiExternal.cpp \
+	GuiFloat.cpp \
+	GuiFloatDialog.cpp \
+	GuiFontExample.cpp \
 	GuiFontLoader.cpp \
 	GuiFontMetrics.cpp \
-	GuiSelection.cpp \
-	KeySymbol.cpp \
-	QCitation.cpp \
-	QFloat.cpp \
-	QFontExample.cpp \
-	QLImage.cpp \
-	QLPainter.cpp \
-	QPrint.cpp \
-	Qt2BC.cpp \
-	qt_helpers.cpp \
-	UrlView.cpp \
-	Action.cpp \
-	BulletsModule.cpp \
-	ColorCache.cpp \
-	EmptyTable.cpp \
-	FloatPlacement.cpp \
-	GuiApplication.cpp \
+	GuiGraphics.cpp \
+	GuiGraphicsDialog.cpp \
+	GuiImage.cpp \
 	GuiImplementation.cpp \
+	GuiInclude.cpp \
+	GuiIndex.cpp \
+	GuiKeySymbol.cpp \
+	GuiKeySymbol.cpp \
+	GuiListings.cpp \
+	GuiLog.cpp \
+	GuiMathMatrixDialog.cpp \
+	GuiMenubar.cpp \
+	GuiNomencl.cpp \
+	GuiNote.cpp \
+	GuiPainter.cpp \
+	GuiParagraph.cpp \
+	GuiPopupMenu.cpp \
+	GuiPrefs.cpp \
+	GuiPrint.cpp \
+	GuiPrintDialog.cpp \
+	GuiRef.cpp \
+	GuiSearch.cpp \
+	GuiSelection.cpp \
+	GuiSelectionManager.cpp \
+	GuiSendto.cpp \
+	GuiSetBorder.cpp \
+	GuiShowFile.cpp \
+	GuiSpellchecker.cpp \
+	GuiTabular.cpp \
+	GuiTabularCreate.cpp \
+	GuiTexinfo.cpp \
+	GuiThesaurus.cpp \
+	GuiToc.cpp \
+	GuiToolbar.cpp \
+	GuiURLDialog.cpp \
 	GuiView.cpp \
+	GuiViewSource.cpp \
+	GuiVSpace.cpp \
 	GuiWorkArea.cpp \
+	GuiWrap.cpp \
 	IconPalette.cpp \
 	InsertTableWidget.cpp \
 	LengthCombo.cpp \
 	LyXFileDialog.cpp \
 	PanelStack.cpp \
-	QAbout.cpp \
-	QBibitem.cpp \
-	QBibtex.cpp \
-	QBox.cpp \
-	QBranch.cpp \
-	QBranches.cpp \
-	QChanges.cpp \
-	QCharacter.cpp \
-	QCitationDialog.cpp \
-	QCommandBuffer.cpp \
-	QCommandEdit.cpp \
-	QDelimiterDialog.cpp \
-	QDialogView.cpp \
-	QDocument.cpp \
-	QErrorList.cpp \
-	QERT.cpp \
-	QExternal.cpp \
-	QFloatDialog.cpp \
-	QGraphics.cpp \
-	QGraphicsDialog.cpp \
-	QInclude.cpp \
-	QIndex.cpp \
-	QKeySymbol.cpp \
-	QListings.cpp \
-	QLMenubar.cpp \
-	QLog.cpp \
-	QLPopupMenu.cpp \
-	QLPrintDialog.cpp \
-	QLToolbar.cpp \
-	QMathMatrixDialog.cpp \
-	QNomencl.cpp \
-	QNote.cpp \
-	QParagraph.cpp \
-	QPrefs.cpp \
-	QRef.cpp \
-	QSearch.cpp \
-	QSelectionManager.cpp \
-	QSendto.cpp \
-	QSetBorder.cpp \
-	QShowFile.cpp \
-	QSpellchecker.cpp \
-	QTabular.cpp \
-	QTabularCreate.cpp \
-	QTexinfo.cpp \
-	QThesaurus.cpp \
-	QToc.cpp \
-	QURLDialog.cpp \
-	QViewSource.cpp \
-	QVSpace.cpp \
-	QWrap.cpp \
+	Qt2BC.cpp \
+	qt_helpers.cpp \
 	socket_callback.cpp \
 	TocModel.cpp \
 	TocWidget.cpp \
+	UrlView.cpp \
 	Validator.cpp 
 
 NOMOCHEADER = \
@@ -128,10 +128,10 @@ NOMOCHEADER = \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
 	GuiSelection.h \
-	QGraphics.h \
-	QLImage.h \
-	QLPainter.h \
-	QPrint.h \
+	GuiGraphics.h \
+	GuiImage.h \
+	GuiPainter.h \
+	GuiPrint.h \
 	Qt2BC.h \
 	qt_helpers.h
 
@@ -142,68 +142,68 @@ MOCHEADER = \
 	DockView.h \
 	EmptyTable.h \
 	FloatPlacement.h \
+	GuiAbout.h \
 	GuiApplication.h \
+	GuiBibitem.h \
+	GuiBibtex.h \
+	GuiBox.h \
+	GuiBranches.h \
+	GuiBranch.h \
+	GuiChanges.h \
+	GuiCharacter.h \
+	GuiCitationDialog.h \
+	GuiCitation.h \
+	GuiCommandBuffer.h \
+	GuiCommandEdit.h \
+	GuiDelimiterDialog.h \
+	GuiDialogView.h \
+	GuiDocument.h \
+	GuiErrorList.h \
+	GuiERT.h \
+	GuiExternal.h \
+	GuiFloatDialog.h \
+	GuiFloat.h \
+	GuiFontExample.h \
+	GuiGraphicsDialog.h \
 	GuiImplementation.h \
+	GuiInclude.h \
+	GuiIndex.h \
+	GuiKeySymbol.h \
+	GuiListings.h \
+	GuiLog.h \
+	GuiMathMatrixDialog.h \
+	GuiMenubar.h \
+	GuiNomencl.h \
+	GuiNote.h \
+	GuiParagraph.h \
+	GuiPopupMenu.h \
+	GuiPrefs.h \
+	GuiPrintDialog.h \
+	GuiRef.h \
+	GuiSearch.h \
+	GuiSelectionManager.h \
+	GuiSendto.h \
+	GuiSetBorder.h \
+	GuiShowFile.h \
+	GuiSpellchecker.h \
+	GuiTabularCreate.h \
+	GuiTabular.h \
+	GuiTexinfo.h \
+	GuiThesaurus.h \
+	GuiToc.h \
+	GuiToolbar.h \
+	GuiURLDialog.h \
 	GuiView.h \
+	GuiViewSource.h \
+	GuiVSpace.h \
 	GuiWorkArea.h \
+	GuiWrap.h \
 	IconPalette.h \
 	InsertTableWidget.h \
 	LengthCombo.h \
 	LyXFileDialog.h \
 	PanelStack.h \
-	QAbout.h \
-	QBibitem.h \
-	QBibtex.h \
-	QBox.h \
-	QBranches.h \
-	QBranch.h \
-	QChanges.h \
-	QCharacter.h \
-	QCitationDialog.h \
-	QCitation.h \
-	QCommandBuffer.h \
-	QCommandEdit.h \
-	QDelimiterDialog.h \
-	QDialogView.h \
-	QDocument.h \
-	QErrorList.h \
-	QERT.h \
-	QExternal.h \
-	QFloatDialog.h \
-	QFloat.h \
-	QFontExample.h \
-	QGraphicsDialog.h \
-	QInclude.h \
-	QIndex.h \
-	QKeySymbol.h \
-	QListings.h \
 	qlkey.h \
-	QLMenubar.h \
-	QLog.h \
-	QLPopupMenu.h \
-	QLPrintDialog.h \
-	QLToolbar.h \
-	QMathMatrixDialog.h \
-	QNomencl.h \
-	QNote.h \
-	QParagraph.h \
-	QPrefs.h \
-	QRef.h \
-	QSearch.h \
-	QSelectionManager.h \
-	QSendto.h \
-	QSetBorder.h \
-	QShowFile.h \
-	QSpellchecker.h \
-	QTabularCreate.h \
-	QTabular.h \
-	QTexinfo.h \
-	QThesaurus.h \
-	QToc.h \
-	QURLDialog.h \
-	QViewSource.h \
-	QVSpace.h \
-	QWrap.h \
 	socket_callback.h \
 	TocModel.h \
 	TocWidget.h \

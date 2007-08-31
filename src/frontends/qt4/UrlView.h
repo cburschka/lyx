@@ -12,8 +12,8 @@
 #ifndef QT4_URL_VIEW_H
 #define QT4_URL_VIEW_H
 
-#include "QDialogView.h"
-#include "QURLDialog.h"
+#include "GuiDialogView.h"
+#include "GuiURLDialog.h"
 
 namespace lyx {
 namespace frontend {
@@ -21,7 +21,7 @@ namespace frontend {
 class ControlCommand;
 
 class UrlView :
-	public QController<ControlCommand, QView<QURLDialog> >
+	public QController<ControlCommand, GuiView<GuiURLDialog> >
 {
 public:
 	friend class QURLDialog;

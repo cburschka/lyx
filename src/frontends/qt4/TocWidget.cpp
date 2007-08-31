@@ -13,7 +13,7 @@
 
 #include "TocWidget.h"
 
-#include "QToc.h"
+#include "GuiToc.h"
 #include "qt_helpers.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -42,7 +42,7 @@ using support::libFileSearch;
 
 namespace frontend {
 
-TocWidget::TocWidget(QToc * form, QWidget * parent)
+TocWidget::TocWidget(GuiToc * form, QWidget * parent)
 	: QWidget(parent), form_(form), depth_(0)
 {
 	setupUi(this);
