@@ -27,8 +27,9 @@
 namespace lyx {
 
 class BufferView;
-class Text;
+class DocIterator;
 class MetricsInfo;
+class Text;
 
 /// A map from a Text to the map of paragraphs metrics
 class TextMetrics
@@ -78,6 +79,8 @@ public:
 
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	/// draw textselection
+	void drawSelection(PainterInfo & pi, int x, int y) const;
 	
 	void drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const;
 
@@ -113,6 +116,11 @@ private:
 		pos_type const first,
 		pos_type const end
 		) const;
+
+	/// draw selection for a single row
+	void drawRowSelection(PainterInfo & pi, int x, Row const & row,
+		DocIterator const & beg, DocIterator const & end, 
+		bool drawOnBegMargin, bool drawOnEndMargin) const;
 
 // Temporary public:
 public:

@@ -127,8 +127,6 @@ public:
 
 	/// draw text (only used for insets)
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// draw textselection
-	void drawSelection(PainterInfo & pi, int x, int y) const;
 
 	/// try to handle that request
 	/// FIXME: replace Cursor with DocIterator.
@@ -406,10 +404,6 @@ private:
 	void charInserted();
 	/// set 'number' font property
 	void number(Cursor & cur);
-	/// draw selection for a single row
-	void drawRowSelection(PainterInfo & pi, int x, Row const & row,
-		DocIterator const & beg, DocIterator const & end, 
-		bool drawOnBegMargin, bool drawOnEndMargin) const;
 
 	/// paste plain text at current cursor.
 	/// \param str string to paste

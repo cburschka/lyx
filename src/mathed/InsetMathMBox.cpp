@@ -124,7 +124,7 @@ void InsetMathMBox::cursorPos(BufferView const & bv,
 
 void InsetMathMBox::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	text_.drawSelection(pi, x, y);
+	pi.base.bv->textMetrics(&text_).drawSelection(pi, x, y);
 }
 
 

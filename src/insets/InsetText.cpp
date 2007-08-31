@@ -202,7 +202,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		if (drawFrame_)
 			pi.pain.rectangle(x, y - a, w, h, frameColor());
 	}
-	text_.drawSelection(pi, x + border_, y);
+	tm.drawSelection(pi, x + border_, y);
 	tm.draw(pi, x + border_, y);
 }
 

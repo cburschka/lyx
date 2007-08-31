@@ -1550,7 +1550,7 @@ void BufferView::draw(frontend::Painter & pain)
 	TextMetrics const & tm = text_metrics_[&text];
 
 	if (select)
-		text.drawSelection(pi, 0, 0);
+		tm.drawSelection(pi, 0, 0);
 
 	int yy = metrics_info_.y1;
 	// draw contents
