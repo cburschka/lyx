@@ -79,8 +79,6 @@ public:
 	///
 	bool isOpen() const { return geometry() != ButtonOnly; }
 	///
-	bool inlined() const { return decoration() == Minimalistic|| decoration() == Conglomerate; }
-	///
 	CollapseStatus status() const;
 	/** Of the old CollapseStatus we only keep the values  
 	 *  Open and Collapsed.

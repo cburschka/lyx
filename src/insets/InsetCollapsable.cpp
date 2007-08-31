@@ -50,7 +50,7 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 {
 	switch (decoration()) {
 	case Classic:
-		if (status_ == Open || autoOpen_) {
+		if (status() == Open) {
 			if (openinlined_)
 				return LeftButton;
 			else
@@ -177,11 +177,12 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
 	mi.base.textwidth -= (int) (1.5 * TEXT_TO_INSET_OFFSET);
 
-	switch (decoration()) {
-	case Minimalistic:
+	switch (geometry()) {
+	case NoButton:
 		InsetText::metrics(mi, dim);
 		break;
-	case Conglomerate:
+	case SubLabel:
+	case Corners:
 		InsetText::metrics(mi, dim);
 		if (status() == Open) {
 			// consider width of the inset label
@@ -203,7 +204,9 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.asc -= 3;
 		}
 		break;
-	case Classic:
+	case TopButton:
+	case LeftButton:
+	case ButtonOnly:
 		dim = dimensionCollapsed();
 		if (geometry() == TopButton
 		 || geometry() == LeftButton) {
@@ -469,7 +472,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_PRESS:
 		if (cmd.button() == mouse_button::button1 
 		 && hitButton(cmd) 
-		 && decoration() != Minimalistic) {
+		 && geometry() != NoButton) {
 			// reset selection if necessary (see bug 3060)
 			if (cur.selection())
 				cur.bv().cursor().clearSelection();
@@ -478,7 +481,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.dispatched();
 			break;
 		}
-		if (decoration() == Minimalistic)
+		if (geometry() == NoButton)
 			InsetText::doDispatch(cur, cmd);
 		else if (geometry() != ButtonOnly 
 		     && !hitButton(cmd))
@@ -515,7 +518,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 
-		if (decoration() == Minimalistic) {
+		if (geometry() == NoButton) {
 			// The mouse click has to be within the inset!
 			InsetText::doDispatch(cur, cmd);
 			break;
