@@ -2709,18 +2709,20 @@ lib_layouts_inc_files = Split('''
     stdstruct.inc
     stdtitle.inc
     svjour.inc
+    theorems.inc
+    theorems-ams.inc
 ''')
 
 
 lib_layouts_module_files = Split('''
-    lib/layouts/url.module
     lib/layouts/endnotes.module
     lib/layouts/foottoend.module
-    lib/layouts/theorems-ams-withinsec.module
     lib/layouts/theorems-ams.module
+    lib/layouts/theorems-ams-withinsec.module
+    lib/layouts/theorems-std.module
     lib/layouts/theorems-withinsec.module
     lib/layouts/theorems-withinchap.module
-    lib/layouts/theorems-std.module
+    lib/layouts/url.module
 ''')
 
 lib_scripts_files = Split('''
