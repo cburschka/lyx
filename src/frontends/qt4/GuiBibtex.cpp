@@ -24,8 +24,6 @@
 #include "controllers/ControlBibtex.h"
 #include "controllers/ButtonPolicy.h"
 
-#include "controllers/ControlBibtex.h"
-
 #include "support/filetools.h" // changeExtension
 #include "support/lstrings.h"
 
@@ -35,20 +33,20 @@
 #include <QCloseEvent>
 #include <QLineEdit>
 
-using lyx::support::changeExtension;
-using lyx::support::split;
-using lyx::support::trim;
-
-using std::vector;
-using std::string;
-
 #include "debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+using std::vector;
+using std::string;
+
 
 namespace lyx {
 namespace frontend {
+
+using support::changeExtension;
+using support::split;
+using support::trim;
 
 
 /////////////////////////////////////////////////////////////////////
@@ -253,10 +251,8 @@ void GuiBibtexDialog::closeEvent(QCloseEvent *e)
 /////////////////////////////////////////////////////////////////////
 
 
-typedef QController<ControlBibtex, GuiView<GuiBibtexDialog> > BibtexBase;
-
 GuiBibtex::GuiBibtex(Dialog & parent)
-	: BibtexBase(parent, _("BibTeX Bibliography"))
+	: GuiView<GuiBibtexDialog>(parent, _("BibTeX Bibliography"))
 {
 }
 

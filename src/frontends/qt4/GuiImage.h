@@ -10,20 +10,18 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QLIMAGE_H
-#define QLIMAGE_H
-
+#ifndef GUIIMAGE_H
+#define GUIIMAGE_H
 
 #include "graphics/GraphicsImage.h"
 
-#include <qimage.h>
-//Added by qt3to4:
+#include <QImage>
 #include <QPixmap>
 
 namespace lyx {
 namespace graphics {
 
-class QLImage : public Image {
+class GuiImage : public Image {
 public:
 	/// Access to this class is through this static method.
 	static ImagePtr newImage();
@@ -66,9 +64,9 @@ private:
 	virtual void scale_impl(Params const & params);
 
 	/// Access to the class is through newImage() and clone.
-	QLImage();
+	GuiImage() {}
 	///
-	QLImage(QLImage const &);
+	GuiImage(GuiImage const &);
 
 	/// The original loaded image.
 	QImage original_;
@@ -82,4 +80,4 @@ private:
 } // namespace graphics
 } // namespace lyx
 
-#endif // QLIMAGE_H
+#endif // GUIIMAGE_H

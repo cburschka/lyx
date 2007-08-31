@@ -9,20 +9,15 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QPREFS_H
-#define QPREFS_H
+#ifndef GUIPREFS_H
+#define GUIPREFS_H
 
 #include "GuiDialogView.h"
-
+#include "ControlPrefs.h"
 #include "Color.h"
 #include "LyXRC.h"
 
 #include "ui_PrefsUi.h"
-
-#include <vector>
-
-#include <QDialog>
-#include <QCloseEvent>
 
 #include "ui_PrefPlaintextUi.h"
 #include "ui_PrefDateUi.h"
@@ -41,6 +36,10 @@
 #include "ui_PrefPrinterUi.h"
 #include "ui_PrefUi.h"
 #include "ui_PrefIdentityUi.h"
+
+#include <QDialog>
+
+#include <vector>
 
 namespace lyx {
 
@@ -371,10 +370,7 @@ private:
 };
 
 
-class ControlPrefs;
-
-class GuiPrefs
-	: public QController<ControlPrefs, GuiView<GuiPrefsDialog> >
+class GuiPrefs : public GuiView<GuiPrefsDialog>
 {
 public:
 	GuiPrefs(Dialog &);
@@ -382,7 +378,12 @@ public:
 	Converters & converters();
 	Formats & formats();
 	Movers & movers();
-
+	/// parent controller
+	ControlPrefs & controller()
+	{ return static_cast<ControlPrefs &>(this->getController()); }
+	/// parent controller
+	ControlPrefs const & controller() const
+	{ return static_cast<ControlPrefs const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply();
@@ -398,4 +399,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QPREFS_H
+#endif // GUIPREFS_H

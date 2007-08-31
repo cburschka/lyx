@@ -18,6 +18,7 @@
 #include "GuiNomencl.h"
 #include "Qt2BC.h"
 #include "ButtonController.h"
+
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -84,11 +85,8 @@ void GuiNomenclDialog::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-typedef QController<ControlCommand, GuiView<GuiNomenclDialog> > NomenBase;
-
-
 GuiNomencl::GuiNomencl(Dialog & parent, docstring const & title)
-	: NomenBase(parent, title)
+	: GuiView<GuiNomenclDialog>(parent, title)
 {
 }
 

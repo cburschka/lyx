@@ -13,12 +13,10 @@
 #define GUILOG_H
 
 #include "GuiDialogView.h"
-
-
+#include "ControlLog.h"
 #include "ui_LogUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 #include <QSyntaxHighlighter>
 
 namespace lyx {
@@ -43,14 +41,19 @@ class ControlLog;
 class LogHighlighter;
 
 ///
-class GuiLog
-	: public QController<ControlLog, GuiView<GuiLogDialog> >
+class GuiLog : public GuiView<GuiLogDialog>
 {
 public:
 	///
 	friend class GuiLogDialog;
 	///
 	GuiLog(Dialog &);
+	/// parent controller
+	ControlLog & controller()
+	{ return static_cast<ControlLog &>(this->getController()); }
+	/// parent controller
+	ControlLog const & controller() const
+	{ return static_cast<ControlLog const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply() {}

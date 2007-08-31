@@ -86,7 +86,7 @@
 #include "GuiTexinfo.h"
 #include "GuiToc.h"
 #include "TocWidget.h"
-#include "UrlView.h"
+#include "GuiURLDialog.h"
 #include "GuiVSpace.h"
 #include "GuiWrap.h"
 
@@ -255,7 +255,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "mathdelimiter") {
 		dialog->setController(new ControlMath(*dialog));
-		dialog->setView(new GuiMathDelimiter(*dialog));
+		dialog->setView(new GuiDelimiter(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "mathmatrix") {
 		dialog->setController(new ControlMath(*dialog));

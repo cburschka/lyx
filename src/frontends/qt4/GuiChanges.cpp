@@ -17,9 +17,6 @@
 
 #include "support/lstrings.h"
 
-#include "controllers/ControlChanges.h"
-
-#include <QPushButton>
 #include <QCloseEvent>
 #include <QTextBrowser>
 
@@ -78,11 +75,9 @@ void GuiChangesDialog::closeEvent(QCloseEvent *e)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlChanges, GuiView<GuiChangesDialog> > ChangesBase;
-
 
 GuiChanges::GuiChanges(Dialog & parent)
-	: ChangesBase(parent, _("Merge Changes"))
+	: GuiView<GuiChangesDialog>(parent, _("Merge Changes"))
 {
 }
 

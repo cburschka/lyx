@@ -13,18 +13,19 @@
 #define QSHOWFILE_H
 
 #include "GuiDialogView.h"
-
+#include "ControlShowFile.h"
 #include "ui_ShowFileUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
+
 
 namespace lyx {
 namespace frontend {
 
 class GuiShowFile;
 
-class GuiShowFileDialog : public QDialog, public Ui::ShowFileUi {
+class GuiShowFileDialog : public QDialog, public Ui::ShowFileUi
+{
 	Q_OBJECT
 public:
 	GuiShowFileDialog(GuiShowFile * form);
@@ -35,15 +36,18 @@ private:
 };
 
 
-class ControlShowFile;
-
-class GuiShowFile
-	: public QController<ControlShowFile, GuiView<GuiShowFileDialog> >
+class GuiShowFile : public GuiView<GuiShowFileDialog>
 {
 public:
 	friend class GuiShowFileDialog;
 
 	GuiShowFile(Dialog &);
+	/// parent controller
+	ControlShowFile & controller()
+	{ return static_cast<ControlShowFile &>(this->getController()); }
+	/// parent controller
+	ControlShowFile const & controller() const
+	{ return static_cast<ControlShowFile const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply() {}

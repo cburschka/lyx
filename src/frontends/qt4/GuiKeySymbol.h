@@ -10,14 +10,12 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QLYXKEYSYM_H
-#define QLYXKEYSYM_H
+#ifndef GUIKEYSYM_H
+#define GUIKEYSYM_H
 
 #include "frontends/KeySymbol.h"
 
 #include <QString>
-#include <QKeyEvent>
-
 
 class QKeyEvent;
 
@@ -85,4 +83,4 @@ key_modifier::state q_key_state(Qt::KeyboardModifiers state);
 
 } // namespace lyx
 
-#endif // QLYXKEYSYM_H
+#endif // GUIKEYSYM_H

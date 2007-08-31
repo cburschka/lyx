@@ -9,11 +9,12 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QDOCUMENT_H
-#define QDOCUMENT_H
+#ifndef GUIDOCUMENT_H
+#define GUIDOCUMENT_H
 
 #include "GuiDialogView.h"
 #include "BulletsModule.h"
+#include "ControlDocument.h"
 
 #include "ui_DocumentUi.h"
 #include "ui_FontUi.h"
@@ -25,11 +26,8 @@
 #include "ui_BiblioUi.h"
 #include "ui_NumberingUi.h"
 #include "ui_MarginsUi.h"
-
-// For the Preamble module
 #include "ui_PreambleUi.h"
 
-#include <QCloseEvent>
 #include <QDialog>
 
 #include <vector>
@@ -38,7 +36,7 @@
 class FloatPlacement;
 
 template<class UI>
-class UiWidget: public QWidget, public UI
+class UiWidget : public QWidget, public UI
 {
 public:
 	UiWidget(QWidget * parent = 0) : QWidget(parent)
@@ -119,10 +117,7 @@ private:
 };
 
 
-class ControlDocument;
-
-class GuiDocument
-	: public QController<ControlDocument, GuiView<GuiDocumentDialog> >
+class GuiDocument : public GuiView<GuiDocumentDialog>
 {
 public:
 
@@ -131,7 +126,12 @@ public:
 	GuiDocument(Dialog &);
 
 	void showPreamble();
-
+	/// parent controller
+	ControlDocument & controller()
+	{ return static_cast<ControlDocument &>(this->getController()); }
+	/// parent controller
+	ControlDocument const & controller() const
+	{ return static_cast<ControlDocument const &>(this->getController()); }
 private:
 	/// Apply changes
 	void apply();
@@ -175,8 +175,7 @@ private:
 };
 
 
-
 } // namespace frontend
 } // namespace lyx
 
-#endif // QDOCUMENT_H
+#endif // GUIDOCUMENT_H

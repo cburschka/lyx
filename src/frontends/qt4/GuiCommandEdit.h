@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QCOMMANDEDIT_H
-#define QCOMMANDEDIT_H
+#ifndef GUICOMMANDEDIT_H
+#define GUICOMMANDEDIT_H
 
 #include <QLineEdit>
 #include <QKeyEvent>
@@ -21,8 +21,10 @@ namespace frontend {
 
 class GuiCommandEdit : public QLineEdit {
 	Q_OBJECT
+
 public:
 	GuiCommandEdit(QWidget * parent);
+
 Q_SIGNALS:
 	/// cancel
 	void escapePressed();
@@ -45,4 +47,4 @@ protected:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QCOMMANDEDIT_H
+#endif // GUICOMMANDEDIT_H

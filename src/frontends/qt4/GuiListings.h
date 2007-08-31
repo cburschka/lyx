@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file QListings.h
+ * \file GuiListings.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,14 +9,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QLISTINGS_H
-#define QLISTINGS_H
+#ifndef GUILISTINGS_H
+#define GUILISTINGS_H
 
 #include "GuiDialogView.h"
+#include "ControlListings.h"
 #include "ui_ListingsUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
@@ -53,13 +53,17 @@ private:
 };
 
 
-class ControlListings;
-
-class GuiListings : public QController<ControlListings, GuiView<GuiListingsDialog> > {
+class GuiListings : public GuiView<GuiListingsDialog> {
 public:
 	friend class GuiListingsDialog;
 
 	GuiListings(Dialog &);
+	/// parent controller
+	ControlListings & controller()
+	{ return static_cast<ControlListings &>(this->getController()); }
+	/// parent controller
+	ControlListings const & controller() const
+	{ return static_cast<ControlListings const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply();
@@ -75,4 +79,4 @@ protected:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QLISTINGS_H
+#endif // GUILISTINGS_H

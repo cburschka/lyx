@@ -15,10 +15,7 @@
 #include "GuiApplication.h"
 #include "GuiView.h"
 
-
 #include "qt_helpers.h"
-#include "controllers/ControlMath.h"
-
 #include "gettext.h"
 
 #include <QPixmap>
@@ -63,14 +60,12 @@ QString fix_name(QString const & str, bool big)
 } // namespace anon
 
 
-typedef QController<ControlMath, GuiView<GuiDelimiterDialog> > delimiter_base;
-
-GuiMathDelimiter::GuiMathDelimiter(Dialog & parent)
-	: delimiter_base(parent, _("Math Delimiter"))
+GuiDelimiter::GuiDelimiter(Dialog & parent)
+	: GuiView<GuiDelimiterDialog>(parent, _("Math Delimiter"))
 {}
 
 
-void GuiMathDelimiter::build_dialog()
+void GuiDelimiter::build_dialog()
 {
 	dialog_.reset(new GuiDelimiterDialog(this,
 		static_cast<GuiViewBase *>(controller().view())));
@@ -102,7 +97,7 @@ char_type GuiDelimiterDialog::doMatch(char_type const symbol) const
 }
 
 
-GuiDelimiterDialog::GuiDelimiterDialog(GuiMathDelimiter * form, QWidget * parent)
+GuiDelimiterDialog::GuiDelimiterDialog(GuiDelimiter * form, QWidget * parent)
 	: QDialog(parent), form_(form)
 {
 	setupUi(this);

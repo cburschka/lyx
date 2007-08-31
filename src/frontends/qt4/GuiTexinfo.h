@@ -13,12 +13,10 @@
 #define QTEXINFO_H
 
 #include "GuiDialogView.h"
-
 #include "ControlTexinfo.h"
 #include "ui_TexinfoUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
 #include <map>
 #include <vector>
@@ -28,7 +26,8 @@ namespace frontend {
 
 class GuiTexinfo;
 
-class GuiTexinfoDialog : public QDialog, public Ui::TexinfoUi {
+class GuiTexinfoDialog : public QDialog, public Ui::TexinfoUi
+{
 	Q_OBJECT
 public:
 	GuiTexinfoDialog(GuiTexinfo * form);
@@ -47,13 +46,19 @@ private:
 
 
 ///
-class GuiTexinfo
-	 : public QController<ControlTexinfo, GuiView<GuiTexinfoDialog> > {
+class GuiTexinfo : public GuiView<GuiTexinfoDialog>
+{
 public:
 	///
 	friend class GuiTexinfoDialog;
 	///
 	GuiTexinfo(Dialog &);
+	/// parent controller
+	ControlTexinfo & controller()
+	{ return static_cast<ControlTexinfo &>(this->getController()); }
+	/// parent controller
+	ControlTexinfo const & controller() const
+	{ return static_cast<ControlTexinfo const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply() {}

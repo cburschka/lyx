@@ -9,11 +9,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QINCLUDE_H
-#define QINCLUDE_H
+#ifndef GUIINCLUDE_H
+#define GUIINCLUDE_H
 
 #include "GuiDialogView.h"
-
+#include "ControlInclude.h"
 #include "ui_IncludeUi.h"
 
 #include <QDialog>
@@ -50,16 +50,19 @@ private:
 };
 
 
-class ControlInclude;
-
-///
-class GuiInclude : public QController<ControlInclude, GuiView<GuiIncludeDialog> >
+class GuiInclude : public GuiView<GuiIncludeDialog>
 {
 public:
 	///
 	friend class GuiIncludeDialog;
 	///
 	GuiInclude(Dialog &);
+	/// parent controller
+	ControlInclude & controller()
+	{ return static_cast<ControlInclude &>(this->getController()); }
+	/// parent controller
+	ControlInclude const & controller() const
+	{ return static_cast<ControlInclude const &>(this->getController()); }
 protected:
 	virtual bool isValid();
 private:
@@ -81,4 +84,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QINCLUDE_H
+#endif // GUIINCLUDE_H

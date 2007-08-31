@@ -14,8 +14,6 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
-#include "controllers/ControlSpellchecker.h"
-
 #include <QProgressBar>
 #include <QLineEdit>
 #include <QPushButton>
@@ -128,11 +126,9 @@ void GuiSpellcheckerDialog::reject()
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlSpellchecker, GuiView<GuiSpellcheckerDialog> >
-	SpellcheckerBase;
 
 GuiSpellchecker::GuiSpellchecker(Dialog & parent)
-	: SpellcheckerBase(parent, _("Spellchecker"))
+	: GuiView<GuiSpellcheckerDialog>(parent, _("Spellchecker"))
 {}
 
 

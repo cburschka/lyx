@@ -9,17 +9,15 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QBIBTEX_H
-#define QBIBTEX_H
+#ifndef GUIBIBTEX_H
+#define GUIBIBTEX_H
 
 #include "GuiDialogView.h"
-
+#include "ButtonController.h"
+#include "ControlBibtex.h"
 #include "ui_BibtexUi.h"
 #include "ui_BibtexAddUi.h"
 
-#include "ButtonController.h"
-
-#include <QCloseEvent>
 #include <QDialog>
 
 namespace lyx {
@@ -68,15 +66,18 @@ private:
 };
 
 
-class ControlBibtex;
-
-class GuiBibtex
-	: public QController<ControlBibtex, GuiView<GuiBibtexDialog> >
+class GuiBibtex : public GuiView<GuiBibtexDialog>
 {
 public:
 	friend class GuiBibtexDialog;
 
 	GuiBibtex(Dialog &);
+	/// parent controller
+	ControlBibtex & controller()
+	{ return static_cast<ControlBibtex &>(this->getController()); }
+	/// parent controller
+	ControlBibtex const & controller() const
+	{ return static_cast<ControlBibtex const &>(this->getController()); }
 protected:
 	virtual bool isValid();
 private:
@@ -91,4 +92,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QBIBTEX_H
+#endif // GUIBIBTEX_H

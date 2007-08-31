@@ -10,16 +10,17 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QSPELLCHECKER_H
-#define QSPELLCHECKER_H
+#ifndef GUISPELLCHECKER_H
+#define GUISPELLCHECKER_H
 
 #include "GuiDialogView.h"
+#include "ControlSpellchecker.h"
 #include "ui_SpellcheckerUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
 class QListWidgetItem;
+
 
 namespace lyx {
 namespace frontend {
@@ -49,10 +50,7 @@ private:
 };
 
 
-class ControlSpellchecker;
-
-class GuiSpellchecker
-	: public QController<ControlSpellchecker, GuiView<GuiSpellcheckerDialog> >
+class GuiSpellchecker : public GuiView<GuiSpellcheckerDialog>
 {
 public:
 	friend class GuiSpellcheckerDialog;
@@ -61,6 +59,12 @@ public:
 
 	/// update from controller
 	void partialUpdate(int id);
+	/// parent controller
+	ControlSpellchecker & controller()
+	{ return static_cast<ControlSpellchecker &>(this->getController()); }
+	/// parent controller
+	ControlSpellchecker const & controller() const
+	{ return static_cast<ControlSpellchecker const &>(this->getController()); }
 private:
 	void accept();
 	void add();
@@ -78,4 +82,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QSPELLCHECKER_H
+#endif // GUISPELLCHECKER_H

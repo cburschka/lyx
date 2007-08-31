@@ -12,8 +12,10 @@
 
 #include <config.h>
 
-#include "CheckedLineEdit.h"
 #include "GuiTabular.h"
+
+#include "CheckedLineEdit.h"
+#include "GuiSetBorder.h"
 #include "Qt2BC.h"
 
 #include "LengthCombo.h"
@@ -21,7 +23,6 @@
 #include "qt_helpers.h"
 
 #include "controllers/ButtonController.h"
-#include "controllers/ControlTabular.h"
 
 #include "support/convert.h"
 
@@ -30,8 +31,6 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include <QLineEdit>
-
-#include "GuiSetBorder.h"
 
 using std::string;
 
@@ -517,10 +516,9 @@ void GuiTabularDialog::ltLastFooterEmpty_clicked()
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlTabular, GuiView<GuiTabularDialog> > tabular_base_class;
 
 GuiTabular::GuiTabular(Dialog & parent)
-	: tabular_base_class(parent, _("Table Settings"))
+	: GuiView<GuiTabularDialog>(parent, _("Table Settings"))
 {
 }
 

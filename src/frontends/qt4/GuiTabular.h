@@ -12,22 +12,22 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QTABULAR_H
-#define QTABULAR_H
+#ifndef GUITABULAR_H
+#define GUITABULAR_H
 
 #include "GuiDialogView.h"
-
+#include "ControlTabular.h"
 #include "ui_TabularUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
 
 class GuiTabular;
 
-class GuiTabularDialog : public QDialog, public Ui::TabularUi {
+class GuiTabularDialog : public QDialog, public Ui::TabularUi
+{
 	Q_OBJECT
 public:
 	GuiTabularDialog(GuiTabular * form);
@@ -78,16 +78,19 @@ private:
 };
 
 
-class ControlTabular;
-
-class GuiTabular :
-	public QController<ControlTabular, GuiView<GuiTabularDialog> >
+class GuiTabular : public GuiView<GuiTabularDialog> 
 {
 public:
 	friend class GuiTabularDialog;
 
 	GuiTabular(Dialog &);
 
+	/// parent controller
+	ControlTabular & controller()
+	{ return static_cast<ControlTabular &>(this->getController()); }
+	/// parent controller
+	ControlTabular const & controller() const
+	{ return static_cast<ControlTabular const &>(this->getController()); }
 protected:
 	virtual bool isValid();
 
@@ -107,4 +110,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QTABULAR_H
+#endif // GUITABULAR_H

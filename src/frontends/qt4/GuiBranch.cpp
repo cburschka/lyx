@@ -16,8 +16,6 @@
 
 #include "BranchList.h"
 
-#include "controllers/ControlBranch.h"
-
 #include "insets/InsetBranch.h"
 
 #include <QPushButton>
@@ -64,11 +62,9 @@ void GuiBranchDialog::change_adaptor()
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlBranch, GuiView<GuiBranchDialog> > branch_base_class;
-
 
 GuiBranch::GuiBranch(Dialog & parent)
-	: branch_base_class(parent, _("Branch Settings"))
+	: GuiView<GuiBranchDialog>(parent, _("Branch Settings"))
 {}
 
 

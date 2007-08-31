@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file qt4/GuiMenubar.h
+ * \file GuiMenubar.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QLMENUBAR_H
-#define QLMENUBAR_H
+#ifndef GUIMENUBAR_H
+#define GUIMENUBAR_H
 
 #include "GuiPopupMenu.h"
 
@@ -74,4 +74,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QLMENUBAR_H
+#endif // GUIMENUBAR_H

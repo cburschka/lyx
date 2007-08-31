@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-31 20:10+0200\n"
+"POT-Creation-Date: 2007-08-31 20:14+0200\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -15263,31 +15263,6 @@ msgstr "Rekonfiguruj|R"
 msgid "Quit %1"
 msgstr "Zamknij LyX-a"
 
-#: src/frontends/qt4/GuiView.cpp:161
-msgid "Small-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:167
-msgid "Normal-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:173
-msgid "Big-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:194
-#, fuzzy
-msgid "unknown version"
-msgstr "Nieznane polecenie"
-
-#: src/frontends/qt4/GuiView.cpp:756
-msgid "LyX"
-msgstr "LyX"
-
-#: src/frontends/qt4/IconPalette.cpp:39
-msgid "Click to detach"
-msgstr ""
-
 #: src/frontends/qt4/GuiBibitem.cpp:69
 msgid "Bibliography Entry Settings"
 msgstr "Ustawienia pozycji bibliografii"
@@ -15863,9 +15838,34 @@ msgstr "Konfiguracja TeX-a"
 msgid "Vertical Space Settings"
 msgstr "Ustawienia odstêpów pionowych"
 
+#: src/frontends/qt4/GuiView.cpp:161
+msgid "Small-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:167
+msgid "Normal-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:173
+msgid "Big-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:194
+#, fuzzy
+msgid "unknown version"
+msgstr "Nieznane polecenie"
+
+#: src/frontends/qt4/GuiView.cpp:756
+msgid "LyX"
+msgstr "LyX"
+
 #: src/frontends/qt4/GuiWrap.cpp:83
 msgid "Text Wrap Settings"
 msgstr "Ustawienia oblewania tekstem"
+
+#: src/frontends/qt4/IconPalette.cpp:39
+msgid "Click to detach"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:153
 msgid "space"

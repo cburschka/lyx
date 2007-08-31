@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-31 20:10+0200\n"
+"POT-Creation-Date: 2007-08-31 20:14+0200\n"
 "PO-Revision-Date: 2007-08-13 22:59+0100\n"
 "Last-Translator: Susana Barbosa <susana.barbosa@fc.up.pt>\n"
 "Language-Team:  <en@li.org>\n"
@@ -15208,30 +15208,6 @@ msgstr "Reconfigurar"
 msgid "Quit %1"
 msgstr "Sair do LyX"
 
-#: src/frontends/qt4/GuiView.cpp:161
-msgid "Small-sized icons"
-msgstr "Ícons de tamanho pequeno"
-
-#: src/frontends/qt4/GuiView.cpp:167
-msgid "Normal-sized icons"
-msgstr "Ícons de tamanho normal"
-
-#: src/frontends/qt4/GuiView.cpp:173
-msgid "Big-sized icons"
-msgstr "Ícons de tamanho grande"
-
-#: src/frontends/qt4/GuiView.cpp:194
-msgid "unknown version"
-msgstr "versão desconhecida"
-
-#: src/frontends/qt4/GuiView.cpp:756
-msgid "LyX"
-msgstr "LyX"
-
-#: src/frontends/qt4/IconPalette.cpp:39
-msgid "Click to detach"
-msgstr "Clicar para destacar"
-
 #: src/frontends/qt4/GuiBibitem.cpp:69
 msgid "Bibliography Entry Settings"
 msgstr "Configurações de Ítem Bibliográfico"
@@ -15810,9 +15786,33 @@ msgstr "Informação TeX"
 msgid "Vertical Space Settings"
 msgstr "Configurações de Espaço Vertical"
 
+#: src/frontends/qt4/GuiView.cpp:161
+msgid "Small-sized icons"
+msgstr "Ícons de tamanho pequeno"
+
+#: src/frontends/qt4/GuiView.cpp:167
+msgid "Normal-sized icons"
+msgstr "Ícons de tamanho normal"
+
+#: src/frontends/qt4/GuiView.cpp:173
+msgid "Big-sized icons"
+msgstr "Ícons de tamanho grande"
+
+#: src/frontends/qt4/GuiView.cpp:194
+msgid "unknown version"
+msgstr "versão desconhecida"
+
+#: src/frontends/qt4/GuiView.cpp:756
+msgid "LyX"
+msgstr "LyX"
+
 #: src/frontends/qt4/GuiWrap.cpp:83
 msgid "Text Wrap Settings"
 msgstr "Configurações de Repartição de Texto"
+
+#: src/frontends/qt4/IconPalette.cpp:39
+msgid "Click to detach"
+msgstr "Clicar para destacar"
 
 #: src/frontends/qt4/Validator.cpp:153
 msgid "space"

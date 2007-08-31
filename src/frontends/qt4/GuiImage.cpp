@@ -46,16 +46,16 @@ namespace lyx {
 namespace graphics {
 
 /// Access to this class is through this static method.
-Image::ImagePtr QLImage::newImage()
+Image::ImagePtr GuiImage::newImage()
 {
 	ImagePtr ptr;
-	ptr.reset(new QLImage);
+	ptr.reset(new GuiImage);
 	return ptr;
 }
 
 
 /// Return the list of loadable formats.
-Image::FormatList QLImage::loadableFormats()
+Image::FormatList GuiImage::loadableFormats()
 {
 	static FormatList fmts;
 
@@ -122,38 +122,32 @@ Image::FormatList QLImage::loadableFormats()
 }
 
 
-QLImage::QLImage()
-	: Image()
-{
-}
-
-
-QLImage::QLImage(QLImage const & other)
+GuiImage::GuiImage(GuiImage const & other)
 	: Image(other), original_(other.original_),
 	  transformed_(other.transformed_),
 	  transformed_pixmap_(other.transformed_pixmap_)
 {}
 
 
-Image * QLImage::clone_impl() const
+Image * GuiImage::clone_impl() const
 {
-	return new QLImage(*this);
+	return new GuiImage(*this);
 }
 
 
-unsigned int QLImage::getWidth_impl() const
+unsigned int GuiImage::getWidth_impl() const
 {
 	return transformed_.width();
 }
 
 
-unsigned int QLImage::getHeight_impl() const
+unsigned int GuiImage::getHeight_impl() const
 {
 	return transformed_.height();
 }
 
 
-void QLImage::load_impl(support::FileName const & filename)
+void GuiImage::load_impl(support::FileName const & filename)
 {
 	if (!original_.isNull()) {
 		LYXERR(Debug::GRAPHICS)
@@ -198,7 +192,7 @@ QImage & toGray(QImage & img)
 } // namespace anon
 
 
-bool QLImage::setPixmap_impl(Params const & params)
+bool GuiImage::setPixmap_impl(Params const & params)
 {
 	if (original_.isNull() || params.display == NoDisplay)
 		return false;
@@ -223,7 +217,7 @@ bool QLImage::setPixmap_impl(Params const & params)
 }
 
 
-void QLImage::clip_impl(Params const & params)
+void GuiImage::clip_impl(Params const & params)
 {
 	if (transformed_.isNull())
 		return;
@@ -254,7 +248,7 @@ void QLImage::clip_impl(Params const & params)
 }
 
 
-void QLImage::rotate_impl(Params const & params)
+void GuiImage::rotate_impl(Params const & params)
 {
 	if (transformed_.isNull())
 		return;
@@ -269,7 +263,7 @@ void QLImage::rotate_impl(Params const & params)
 }
 
 
-void QLImage::scale_impl(Params const & params)
+void GuiImage::scale_impl(Params const & params)
 {
 	if (transformed_.isNull())
 		return;

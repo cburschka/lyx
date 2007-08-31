@@ -15,12 +15,9 @@
 
 #include "frontends/Application.h"
 
-#include "controllers/ControlLog.h"
-
-#include <sstream>
-
+#include <QCloseEvent>
 #include <QTextBrowser>
-#include <QPushButton>
+#include <QTextBrowser>
 
 namespace lyx {
 namespace frontend {
@@ -107,10 +104,9 @@ void LogHighlighter::highlightBlock(QString const & text)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlLog, GuiView<GuiLogDialog> > LogBase;
 
 GuiLog::GuiLog(Dialog & parent)
-	: LogBase(parent, docstring())
+	:  GuiView<GuiLogDialog>(parent, docstring())
 {}
 
 

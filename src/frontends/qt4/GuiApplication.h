@@ -1,5 +1,5 @@
 /**
- * \file qt4/GuiApplication.h
+ * \file GuiApplication.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QT4_APPLICATION_H
-#define QT4_APPLICATION_H
+#ifndef GUIAPPLICATION_H
+#define GUIAPPLICATION_H
 
 #include "ColorCache.h"
 #include "GuiFontLoader.h"
@@ -57,8 +57,8 @@ public:
 
 	/// Method inherited from \c Application class
 	//@{
-	virtual Clipboard& clipboard();
-	virtual Selection& selection();
+	virtual Clipboard & clipboard();
+	virtual Selection & selection();
 	virtual FontLoader & fontLoader() { return font_loader_; }
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
@@ -127,4 +127,4 @@ extern GuiApplication * guiApp;
 } // namespace lyx
 
 
-#endif // QT4_APPLICATION_H
+#endif // GUIAPPLICATION_H

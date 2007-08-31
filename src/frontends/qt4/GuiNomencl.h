@@ -11,15 +11,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QNOMENCL_H
-#define QNOMENCL_H
+#ifndef GUINOMENCL_H
+#define GUINOMENCL_H
 
 #include "GuiDialogView.h"
+#include "ControlCommand.h"
 #include "ui_NomenclUi.h"
 
 #include <QDialog>
-
-class QCloseEvent;
 
 
 namespace lyx {
@@ -42,15 +41,18 @@ private:
 };
 
 
-class ControlCommand;
-
-class GuiNomencl :
-	public QController<ControlCommand, GuiView<GuiNomenclDialog> >
+class GuiNomencl : public GuiView<GuiNomenclDialog>
 {
 public:
 	friend class GuiNomenclDialog;
 
 	GuiNomencl(Dialog &, docstring const & title);
+	/// parent controller
+	ControlCommand & controller()
+	{ return static_cast<ControlCommand &>(this->getController()); }
+	/// parent controller
+	ControlCommand const & controller() const
+	{ return static_cast<ControlCommand const &>(this->getController()); }
 protected:
 	virtual bool isValid();
 private:
@@ -65,4 +67,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QNOMENCL_H
+#endif // GUINOMENCL_H

@@ -16,8 +16,6 @@
 
 #include "Format.h"
 
-#include "controllers/ControlSendto.h"
-
 #include <QListWidget>
 #include <QPushButton>
 #include <QCloseEvent>
@@ -77,11 +75,9 @@ void GuiSendtoDialog::closeEvent(QCloseEvent * e)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlSendto, GuiView<GuiSendtoDialog> > SendtoBase;
-
 
 GuiSendto::GuiSendto(Dialog & parent)
-	: SendtoBase(parent, _("Send Document to Command"))
+	: GuiView<GuiSendtoDialog>(parent, _("Send Document to Command"))
 {
 }
 

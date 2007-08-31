@@ -9,12 +9,13 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QCHANGES_H
-#define QCHANGES_H
+#ifndef GUICHANGES_H
+#define GUICHANGES_H
 
 #include "GuiDialogView.h"
+#include "ControlChanges.h"
 #include "ui_ChangesUi.h"
-#include <QCloseEvent>
+
 #include <QDialog>
 
 namespace lyx {
@@ -41,15 +42,18 @@ private:
 	GuiChanges * form_;
 };
 
-class ControlChanges;
 
-class GuiChanges
-	: public QController<ControlChanges, GuiView<GuiChangesDialog> >
+class GuiChanges : public GuiView<GuiChangesDialog>
 {
 public:
-	friend class GuiChangesDialog;
-
+	///
 	GuiChanges(Dialog &);
+	/// parent controller
+	ControlChanges & controller()
+	{ return static_cast<ControlChanges &>(this->getController()); }
+	/// parent controller
+	ControlChanges const & controller() const
+	{ return static_cast<ControlChanges const &>(this->getController()); }
 
 	void accept();
 
@@ -58,6 +62,7 @@ public:
 	void next();
 
 private:
+	friend class GuiChangesDialog;
 	/// Apply changes
 	virtual void apply() {};
 	/// update
@@ -69,4 +74,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QCHANGES_H
+#endif // GUICHANGES_H

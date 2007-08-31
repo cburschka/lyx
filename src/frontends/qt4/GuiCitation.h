@@ -7,15 +7,15 @@
  * \author Angus Leeming
  * \author Kalle Dalheimer
  * \author Abdelrazak Younes
- * \author Richard Heck (adapted to QSelectionManager)
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QCITATION_H
-#define QCITATION_H
+#ifndef GUICITATION_H
+#define GUICITATION_H
 
-#include "frontends/controllers/ControlCitation.h"
+#include "ControlCitation.h"
 #include "support/docstring.h"
 
 #include <QStringList>
@@ -82,13 +82,10 @@ public:
 private:
 	/// available keys.
 	QStringListModel available_model_;
-
 	/// selected keys.
 	QStringListModel selected_model_;
-
 	/// All keys.
 	QStringList all_keys_;
-	
 	/// Cited keys.
 	QStringList cited_keys_;
 };
@@ -97,4 +94,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QCITATION_H
+#endif // GUICITATION_H

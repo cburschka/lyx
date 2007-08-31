@@ -141,8 +141,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	using namespace lyx::graphics;
 
-	Image::newImage = boost::bind(&QLImage::newImage);
-	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);
+	Image::newImage = boost::bind(&GuiImage::newImage);
+	Image::loadableFormats = boost::bind(&GuiImage::loadableFormats);
 
 	// needs to be done before reading lyxrc
 	lyxrc.dpi = getDPI();

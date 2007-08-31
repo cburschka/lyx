@@ -10,16 +10,15 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QPARAGRAPH_H
-#define QPARAGRAPH_H
+#ifndef GUIPARAGRAPH_H
+#define GUIPARAGRAPH_H
 
 #include "GuiDialogView.h"
-
+#include "ControlParagraph.h"
 #include "Layout.h"
 #include "ui_ParagraphUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
 #include <map>
 
@@ -55,15 +54,18 @@ protected Q_SLOTS:
 };
 
 
-class ControlParagraph;
-
-class GuiParagraph
-	: public QController<ControlParagraph, GuiView<GuiParagraphDialog> >
+class GuiParagraph : public GuiView<GuiParagraphDialog>
 {
 public:
 	friend class GuiParagraphDialog;
 
 	GuiParagraph(Dialog &);
+	/// parent controller
+	ControlParagraph & controller()
+	{ return static_cast<ControlParagraph &>(this->getController()); }
+	/// parent controller
+	ControlParagraph const & controller() const
+	{ return static_cast<ControlParagraph const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply();

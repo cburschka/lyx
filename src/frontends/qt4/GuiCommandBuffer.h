@@ -9,10 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QCOMMANDBUFFER_H
-#define QCOMMANDBUFFER_H
+#ifndef GUICOMMANDBUFFER_H
+#define GUICOMMANDBUFFER_H
 
-#include "controllers/ControlCommandBuffer.h"
+#include "ControlCommandBuffer.h"
 
 #include <QWidget>
 
@@ -47,10 +47,8 @@ public Q_SLOTS:
 private:
 	/// owning view
 	GuiViewBase * view_;
-
 	/// controller
 	ControlCommandBuffer controller_;
-
 	/// command widget
 	GuiCommandEdit * edit_;
 };
@@ -58,4 +56,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QCOMMANDBUFFER_H
+#endif // GUICOMMANDBUFFER_H

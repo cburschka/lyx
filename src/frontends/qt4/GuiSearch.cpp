@@ -15,8 +15,6 @@
 #include "qt_helpers.h"
 #include "Qt2BC.h"
 
-#include "controllers/ControlSearch.h"
-
 #include <QLineEdit>
 #include <QCloseEvent>
 
@@ -132,11 +130,8 @@ void GuiSearchDialog::replaceallClicked()
 /////////////////////////////////////////////////////////////////////
 
 
-typedef QController<ControlSearch, GuiView<GuiSearchDialog> > SearchBase;
-
-
 GuiSearch::GuiSearch(Dialog & parent)
-	: SearchBase(parent, _("Find and Replace"))
+	: GuiView<GuiSearchDialog>(parent, _("Find and Replace"))
 {
 }
 

@@ -9,15 +9,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QBIBITEM_CONTROLLER_H
-#define QBIBITEM_CONTROLLER_H
+#ifndef GUIBIBITEM_H
+#define GUIBIBITEM_H
 
 #include "GuiDialogView.h"
-
+#include "ControlCommand.h"
 #include "ui_BibitemUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
 
 namespace lyx {
@@ -39,19 +38,21 @@ private:
 };
 
 
-class ControlCommand;
-
-class GuiBibitem
-	: public QController<ControlCommand, GuiView<GuiBibitemDialog> >
+class GuiBibitem : public GuiView<GuiBibitemDialog>
 {
 public:
-	friend class GuiBibitemDialog;
-
+	///
 	GuiBibitem(Dialog &);
-
+	/// parent controller
+	ControlCommand & controller()
+	{ return static_cast<ControlCommand &>(this->getController()); }
+	/// parent controller
+	ControlCommand const & controller() const
+	{ return static_cast<ControlCommand const &>(this->getController()); }
 protected:
 	virtual bool isValid();
 private:
+	friend class GuiBibitemDialog;
 	/// Apply changes
 	virtual void apply();
 	/// update
@@ -63,4 +64,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QBIBITEM_H
+#endif // GUIBIBITEM_H

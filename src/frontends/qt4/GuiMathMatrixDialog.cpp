@@ -14,16 +14,13 @@
 
 #include "EmptyTable.h"
 #include "qt_helpers.h"
-
-#include "controllers/ControlMath.h"
+#include "gettext.h"
 
 #include <sstream>
 
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qspinbox.h>
-
-#include "gettext.h"
+#include <QLineEdit>
+#include <QPushButton>
+#include <QSpinBox>
 
 using std::ostringstream;
 using std::string;
@@ -31,19 +28,8 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-namespace {
-
-char h_align_str[80] = "c";
-char v_align_c[] = "tcb";
-
-} // namespace anon
-
-
-typedef QController<ControlMath, GuiView<GuiMathMatrixDialog> > matrix_base;
-
-
 GuiMathMatrix::GuiMathMatrix(Dialog & parent)
-	: matrix_base(parent, _("Math Matrix"))
+	: GuiView<GuiMathMatrixDialog>(parent, _("Math Matrix"))
 {}
 
 
@@ -89,6 +75,7 @@ GuiMathMatrixDialog::GuiMathMatrixDialog(GuiMathMatrix * form)
 
 void GuiMathMatrixDialog::columnsChanged(int)
 {
+	char h_align_str[80] = "c";
 	int const nx = int(columnsSB->value());
 	for (int i = 0; i < nx; ++i)
 		h_align_str[i] = 'c';
@@ -111,6 +98,7 @@ void GuiMathMatrixDialog::change_adaptor()
 
 void GuiMathMatrixDialog::slotOK()
 {
+	char v_align_c[] = "tcb";
 	char const c = v_align_c[valignCO->currentIndex()];
 	string const sh = fromqstr(halignED->text());
 	int const nx = int(columnsSB->value());

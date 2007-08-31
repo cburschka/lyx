@@ -10,13 +10,10 @@
 
 #include <config.h>
 
-
 #include "GuiEmbeddedFiles.h"
 #include "Qt2BC.h"
 
 #include "debug.h"
-
-using std::string;
 
 namespace lyx {
 namespace frontend {
@@ -27,10 +24,11 @@ namespace frontend {
 // GuiEmbeddedFilesDialog
 //
 /////////////////////////////////////////////////////////////////////
-#define INVALID_COLOR "gray"
-#define AUTO_COLOR "green"
-#define EMBEDDED_COLOR "black"
-#define EXTERNAL_COLOR "blue"
+
+static QString const INVALID_COLOR = "gray";
+static QString const AUTO_COLOR = "green";
+static QString const EMBEDDED_COLOR = "black";
+static QString const EXTERNAL_COLOR = "blue";
 
 GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(GuiEmbeddedFiles * form)
 	: form_(form)
@@ -127,7 +125,7 @@ void GuiEmbeddedFilesDialog::on_actionPB_clicked()
 	// FIXME.
 	
 	// ACTION
-	string action = fromqstr(actionCB->currentText());
+	QString action = actionCB->currentText();
 	if (action == "Add file") {
 	} else if (action == "Extract file") {
 	} else if (action == "Extract all") {

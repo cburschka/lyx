@@ -13,8 +13,6 @@
 #include "GuiNote.h"
 #include "Qt2BC.h"
 
-#include "controllers/ControlNote.h"
-
 #include "insets/InsetNote.h"
 
 #include <QCloseEvent>
@@ -63,11 +61,9 @@ void GuiNoteDialog::change_adaptor()
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlNote, GuiView<GuiNoteDialog> > NoteBase;
-
 
 GuiNote::GuiNote(Dialog & parent)
-	: NoteBase(parent, _("Note Settings"))
+	: GuiView<GuiNoteDialog>(parent, _("Note Settings"))
 {}
 
 

@@ -18,11 +18,10 @@
 #include "debug.h"
 #include "ParagraphParameters.h"
 #include "Spacing.h"
-
-#include "controllers/ControlParagraph.h"
-#include "controllers/frontend_helpers.h"
+#include "frontend_helpers.h"
 
 #include <QCheckBox>
+#include <QCloseEvent>
 #include <QLineEdit>
 #include <QPushButton>
 
@@ -163,12 +162,9 @@ LyXAlignment GuiParagraphDialog::getAlignmentFromDialog()
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlParagraph, GuiView<GuiParagraphDialog> >
-	ParagraphBase;
-
 
 GuiParagraph::GuiParagraph(Dialog & parent)
-	: ParagraphBase(parent, _("Paragraph Settings"))
+	: GuiView<GuiParagraphDialog>(parent, _("Paragraph Settings"))
 {}
 
 

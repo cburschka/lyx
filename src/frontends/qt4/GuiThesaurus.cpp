@@ -15,8 +15,7 @@
 #include "qt_helpers.h"
 #include "debug.h"
 
-#include "controllers/ControlThesaurus.h"
-
+#include <QCloseEvent>
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QPushButton>
@@ -138,14 +137,12 @@ void GuiThesaurusDialog::updateLists()
 
 /////////////////////////////////////////////////////////////////////
 //
-// GuiThesuarus
+// GuiThesaurus
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlThesaurus, GuiView<GuiThesaurusDialog> > ThesaurusBase;
-
 GuiThesaurus::GuiThesaurus(Dialog & parent)
-	: ThesaurusBase(parent, _("Thesaurus"))
+	: GuiView<GuiThesaurusDialog>(parent, _("Thesaurus"))
 {
 }
 

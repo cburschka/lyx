@@ -15,22 +15,18 @@
 #define QVSPACE_H
 
 #include "GuiDialogView.h"
-
+#include "ControlVSpace.h"
 #include "ui_VSpaceUi.h"
 
 #include <QDialog>
 
-class QCloseEvent;
-
 namespace lyx {
 namespace frontend {
 
-class ControlVSpace;
-
 class GuiVSpace;
 
-
-class GuiVSpaceDialog : public QDialog, public Ui::VSpaceUi {
+class GuiVSpaceDialog : public QDialog, public Ui::VSpaceUi
+{
 	Q_OBJECT
 
 public:
@@ -48,15 +44,19 @@ private:
 };
 
 
-
-class GuiVSpace
-	: public QController<ControlVSpace, GuiView<GuiVSpaceDialog> >
+class GuiVSpace : public GuiView<GuiVSpaceDialog>
 {
 public:
 	///
 	friend class GuiVSpaceDialog;
 	///
 	GuiVSpace(Dialog &);
+	/// parent controller
+	ControlVSpace & controller()
+	{ return static_cast<ControlVSpace &>(this->getController()); }
+	/// parent controller
+	ControlVSpace const & controller() const
+	{ return static_cast<ControlVSpace const &>(this->getController()); }
 private:
 	/// Build the dialog
 	virtual void build_dialog();

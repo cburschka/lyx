@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "debug.h"
-#include "ControlCommand.h"
 #include "qt_helpers.h"
 
 #include "GuiIndex.h"
@@ -21,7 +20,6 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
-#include <QWhatsThis>
 #include <QCloseEvent>
 
 
@@ -43,7 +41,7 @@ GuiIndexDialog::GuiIndexDialog(GuiIndex * form)
 
 	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
-	connect( keywordED, SIGNAL(textChanged(const QString &)),
+	connect(keywordED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 
 	setFocusProxy(keywordED);
@@ -92,10 +90,8 @@ void GuiIndexDialog::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-typedef QController<ControlCommand, GuiView<GuiIndexDialog> > IndexBase;
-
 GuiIndex::GuiIndex(Dialog & parent, docstring const & title, QString const & label)
-	: IndexBase(parent, title), label_(label)
+	: GuiView<GuiIndexDialog>(parent, title), label_(label)
 {
 }
 

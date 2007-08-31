@@ -9,17 +9,17 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef FORMABOUT_H
-#define FORMABOUT_H
+#ifndef GUIABOUT_H
+#define GUIABOUT_H
 
 #include "GuiDialogView.h"
+#include "ControlAboutlyx.h"
 #include "ui_AboutUi.h"
+
 #include <QDialog>
 
 namespace lyx {
 namespace frontend {
-
-class ControlAboutlyx;
 
 class GuiAboutDialog : public QDialog, public Ui::AboutUi {
 	Q_OBJECT
@@ -33,11 +33,16 @@ public:
 };
 
 
-class GuiAbout
-	: public QController<ControlAboutlyx, GuiView<GuiAboutDialog> >
+class GuiAbout : public GuiView<GuiAboutDialog>
 {
 public:
 	GuiAbout(Dialog &);
+	/// parent controller
+	ControlAboutlyx & controller()
+	{ return static_cast<ControlAboutlyx &>(this->getController()); }
+	/// parent controller
+	ControlAboutlyx const & controller() const
+	{ return static_cast<ControlAboutlyx const &>(this->getController()); }
 private:
 	/// not needed
 	virtual void apply() {}
@@ -50,4 +55,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // FORMABOUT_H
+#endif // GUIABOUT_H

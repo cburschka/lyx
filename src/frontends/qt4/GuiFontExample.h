@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QT_QFONTEXAMPLE_H
-#define QT_QFONTEXAMPLE_H
+#ifndef GUIFONTEXAMPLE_H
+#define GUIFONTEXAMPLE_H
 
 #include <QWidget>
 #include <QFont>
@@ -42,4 +42,4 @@ private:
 
 //} // namespace lyx
 
-#endif
+#endif // GUIFONTEXAMPLE_H

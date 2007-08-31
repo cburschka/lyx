@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-31 20:10+0200\n"
+"POT-Creation-Date: 2007-08-31 20:14+0200\n"
 "PO-Revision-Date: 2007-06-26 21:34+0200\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -14772,30 +14772,6 @@ msgstr "Set opp på nytt|n"
 msgid "Quit %1"
 msgstr "Skru av LyX"
 
-#: src/frontends/qt4/GuiView.cpp:161
-msgid "Small-sized icons"
-msgstr "Små ikon"
-
-#: src/frontends/qt4/GuiView.cpp:167
-msgid "Normal-sized icons"
-msgstr "Normale ikon"
-
-#: src/frontends/qt4/GuiView.cpp:173
-msgid "Big-sized icons"
-msgstr "Store ikon"
-
-#: src/frontends/qt4/GuiView.cpp:194
-msgid "unknown version"
-msgstr "ukjent versjon"
-
-#: src/frontends/qt4/GuiView.cpp:756
-msgid "LyX"
-msgstr "LyX"
-
-#: src/frontends/qt4/IconPalette.cpp:39
-msgid "Click to detach"
-msgstr ""
-
 #: src/frontends/qt4/GuiBibitem.cpp:69
 msgid "Bibliography Entry Settings"
 msgstr "Val for litteraturnøkkel"
@@ -15362,9 +15338,33 @@ msgstr "TeX informasjon"
 msgid "Vertical Space Settings"
 msgstr "Val for loddrettmellomrom"
 
+#: src/frontends/qt4/GuiView.cpp:161
+msgid "Small-sized icons"
+msgstr "Små ikon"
+
+#: src/frontends/qt4/GuiView.cpp:167
+msgid "Normal-sized icons"
+msgstr "Normale ikon"
+
+#: src/frontends/qt4/GuiView.cpp:173
+msgid "Big-sized icons"
+msgstr "Store ikon"
+
+#: src/frontends/qt4/GuiView.cpp:194
+msgid "unknown version"
+msgstr "ukjent versjon"
+
+#: src/frontends/qt4/GuiView.cpp:756
+msgid "LyX"
+msgstr "LyX"
+
 #: src/frontends/qt4/GuiWrap.cpp:83
 msgid "Text Wrap Settings"
 msgstr "Tekst brekkingval"
+
+#: src/frontends/qt4/IconPalette.cpp:39
+msgid "Click to detach"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:153
 msgid "space"

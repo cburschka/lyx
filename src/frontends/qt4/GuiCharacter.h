@@ -10,21 +10,18 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QCHARACTER_H_CONTROLLER
-#define QCHARACTER_H_CONTROLLER
+#ifndef GUICHARACTER_H
+#define GUICHARACTER_H
 
 #include "GuiDialogView.h"
+#include "ControlCharacter.h"
 #include "ui_CharacterUi.h"
-#include <QDialog>
 
-#include "controllers/frontend_helpers.h"
+#include <QDialog>
 
 #include <vector>
 
 namespace lyx {
-
-class Font;
-
 namespace frontend {
 
 class GuiCharacter;
@@ -42,15 +39,18 @@ protected Q_SLOTS:
 };
 
 
-class ControlCharacter;
-
-class GuiCharacter
-	: public QController<ControlCharacter, GuiView<GuiCharacterDialog> >
+class GuiCharacter : public GuiView<GuiCharacterDialog>
 {
 public:
 	friend class GuiCharacterDialog;
 
 	GuiCharacter(Dialog &);
+	/// parent controller
+	ControlCharacter & controller()
+	{ return static_cast<ControlCharacter &>(this->getController()); }
+	/// parent controller
+	ControlCharacter const & controller() const
+	{ return static_cast<ControlCharacter const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply();
@@ -71,4 +71,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QCHARACTER_H
+#endif // GUICHARACTER_H

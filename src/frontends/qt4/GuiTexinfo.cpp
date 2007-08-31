@@ -16,6 +16,7 @@
 
 #include "support/filetools.h"
 
+#include <QCloseEvent>
 #include <QCheckBox>
 #include <QListWidget>
 #include <QPushButton>
@@ -114,18 +115,15 @@ void GuiTexinfoDialog::enableViewPB()
 }
 
 
-
 /////////////////////////////////////////////////////////////////////
 //
 // GuiTexinfo
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlTexinfo, GuiView<GuiTexinfoDialog> >
-	texinfo_base_class;
 
 GuiTexinfo::GuiTexinfo(Dialog & parent)
-	: texinfo_base_class(parent, _("TeX Information")),
+	: GuiView<GuiTexinfoDialog>(parent, _("TeX Information")),
 	  warningPosted(false), activeStyle(ControlTexinfo::cls)
 {
 }

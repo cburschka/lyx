@@ -50,10 +50,8 @@ src/frontends/controllers/frontend_helpers.cpp
 src/frontends/qt4/BulletsModule.cpp
 src/frontends/qt4/Dialogs.cpp
 src/frontends/qt4/FileDialog.cpp
-src/frontends/qt4/GuiApplication.cpp
-src/frontends/qt4/GuiView.cpp
-src/frontends/qt4/IconPalette.cpp
 src/frontends/qt4/GuiAbout.cpp
+src/frontends/qt4/GuiApplication.cpp
 src/frontends/qt4/GuiBibitem.cpp
 src/frontends/qt4/GuiBibtex.cpp
 src/frontends/qt4/GuiBox.cpp
@@ -86,7 +84,9 @@ src/frontends/qt4/GuiTabularCreate.cpp
 src/frontends/qt4/GuiTexinfo.cpp
 src/frontends/qt4/GuiThesaurus.cpp
 src/frontends/qt4/GuiVSpace.cpp
+src/frontends/qt4/GuiView.cpp
 src/frontends/qt4/GuiWrap.cpp
+src/frontends/qt4/IconPalette.cpp
 src/frontends/qt4/Qt2BC.h
 src/frontends/qt4/UrlView.cpp
 src/frontends/qt4/Validator.cpp

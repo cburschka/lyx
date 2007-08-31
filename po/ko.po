@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-31 20:10+0200\n"
+"POT-Creation-Date: 2007-08-31 20:14+0200\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -14566,30 +14566,6 @@ msgstr "재구성(Reconfigure)|R"
 msgid "Quit %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:161
-msgid "Small-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:167
-msgid "Normal-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:173
-msgid "Big-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:194
-msgid "unknown version"
-msgstr "모르는 판(version)"
-
-#: src/frontends/qt4/GuiView.cpp:756
-msgid "LyX"
-msgstr ""
-
-#: src/frontends/qt4/IconPalette.cpp:39
-msgid "Click to detach"
-msgstr ""
-
 #: src/frontends/qt4/GuiBibitem.cpp:69
 msgid "Bibliography Entry Settings"
 msgstr "참고 문헌 목록 기재 사항 구성(Bibliography Entry Settings)"
@@ -15146,9 +15122,33 @@ msgstr "TeX 정보"
 msgid "Vertical Space Settings"
 msgstr ""
 
+#: src/frontends/qt4/GuiView.cpp:161
+msgid "Small-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:167
+msgid "Normal-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:173
+msgid "Big-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:194
+msgid "unknown version"
+msgstr "모르는 판(version)"
+
+#: src/frontends/qt4/GuiView.cpp:756
+msgid "LyX"
+msgstr ""
+
 #: src/frontends/qt4/GuiWrap.cpp:83
 msgid "Text Wrap Settings"
 msgstr "본문 감싸기 구성(Text Wrap Settings)"
+
+#: src/frontends/qt4/IconPalette.cpp:39
+msgid "Click to detach"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:153
 msgid "space"

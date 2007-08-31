@@ -9,13 +9,13 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QBRANCH_H
-#define QBRANCH_H
+#ifndef GUIBRANCH_H
+#define GUIBRANCH_H
 
 #include "GuiDialogView.h"
+#include "ControlBranch.h"
 #include "ui_BranchUi.h"
 
-#include <QCloseEvent>
 #include <QDialog>
 
 namespace lyx {
@@ -35,18 +35,23 @@ private:
 	GuiBranch * form_;
 };
 
-class ControlBranch;
 
 /** This class provides a QT implementation of the Branch Dialog.
  */
-class GuiBranch : public QController<ControlBranch, GuiView<GuiBranchDialog> >
+class GuiBranch : public GuiView<GuiBranchDialog> 
 {
 public:
-	friend class GuiBranchDialog;
-
 	/// Constructor
 	GuiBranch(Dialog &);
+	/// parent controller
+	ControlBranch & controller()
+	{ return static_cast<ControlBranch &>(this->getController()); }
+	/// parent controller
+	ControlBranch const & controller() const
+	{ return static_cast<ControlBranch const &>(this->getController()); }
 private:
+	friend class GuiBranchDialog;
+
 	///  Apply changes
 	virtual void apply();
 	/// Build the dialog
@@ -58,4 +63,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QBRANCH_H
+#endif // GUIBRANCH_H

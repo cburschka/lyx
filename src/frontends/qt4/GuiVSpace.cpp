@@ -182,10 +182,8 @@ static VSpace setVSpaceFromWidgets(int spacing,
 }
 
 
-typedef QController<ControlVSpace, GuiView<GuiVSpaceDialog> > VSpaceBase;
-
 GuiVSpace::GuiVSpace(Dialog & parent)
-	: VSpaceBase(parent, _("Vertical Space Settings"))
+	: GuiView<GuiVSpaceDialog>(parent, _("Vertical Space Settings"))
 {}
 
 

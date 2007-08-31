@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QBRANCHES_H
-#define QBRANCHES_H
+#ifndef GUIBRANCHES_H
+#define GUIBRANCHES_H
 
 #include "ui_BranchesUi.h"
 #include "GuiDocument.h"
@@ -29,7 +29,6 @@ namespace lyx {
 class BufferParams;
 
 namespace frontend {
-
 
 class GuiBranches: public QWidget, public Ui::BranchesUi
 {
@@ -56,13 +55,11 @@ protected Q_SLOTS:
 	void on_colorPB_clicked();
 
 private:
-
 	/// Contains all legal branches for this doc
 	BranchList branchlist_;
-
 };
 
 } // namespace frontend
 } // namespace lyx
 
-#endif // DOCUMENTDIALOG_H
+#endif // GUIBRANCHES

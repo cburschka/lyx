@@ -9,10 +9,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GuiERT_H
-#define GuiERT_H
+#ifndef GUIERT_H
+#define GUIERT_H
 
 #include "GuiDialogView.h"
+#include "ControlERT.h"
 #include "ui_ERTUi.h"
 
 #include <QCloseEvent>
@@ -23,7 +24,8 @@ namespace frontend {
 
 class GuiERT;
 
-class GuiERTDialog : public QDialog, public Ui::ERTUi {
+class GuiERTDialog : public QDialog, public Ui::ERTUi
+{
 	Q_OBJECT
 public:
 	GuiERTDialog(GuiERT * form);
@@ -36,16 +38,19 @@ private:
 };
 
 
-
-class ControlERT;
-
-class GuiERT : public QController<ControlERT, GuiView<GuiERTDialog> >
+class GuiERT : public GuiView<GuiERTDialog>
 {
 public:
-	friend class GuiERTDialog;
-
+	/// constructor
 	GuiERT(Dialog &);
+	/// parent controller
+	ControlERT & controller()
+	{ return static_cast<ControlERT &>(this->getController()); }
+	/// parent controller
+	ControlERT const & controller() const
+	{ return static_cast<ControlERT const &>(this->getController()); }
 private:
+	friend class GuiERTDialog;
 	/// Apply changes
 	virtual void apply();
 	/// update
@@ -57,4 +62,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // GuiERT_H
+#endif // GUIERT_H

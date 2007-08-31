@@ -2015,10 +2015,9 @@ void GuiPrefsDialog::updateRc(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlPrefs, GuiView<GuiPrefsDialog> > PrefsBase;
 
 GuiPrefs::GuiPrefs(Dialog & parent)
-	: PrefsBase(parent, _("Preferences"))
+	: GuiView<GuiPrefsDialog>(parent, _("Preferences"))
 {
 }
 

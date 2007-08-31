@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QCITATIONDIALOG_H
-#define QCITATIONDIALOG_H
+#ifndef GUICITATIONDIALOG_H
+#define GUICITATIONDIALOG_H
 
 #include "Dialog.h"
 #include "GuiSelectionManager.h"
@@ -105,4 +105,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QCITATIOINDIALOG_H
+#endif // GUICITATIOINDIALOG_H

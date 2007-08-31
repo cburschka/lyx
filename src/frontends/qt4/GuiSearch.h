@@ -9,19 +9,19 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QSEARCH_H
-#define QSEARCH_H
+#ifndef GUISEARCH_H
+#define GUISEARCH_H
 
 #include "GuiDialogView.h"
+#include "ControlSearch.h"
 #include "ui_SearchUi.h"
+
 #include <string>
 
 #include <QDialog>
 
 namespace lyx {
 namespace frontend {
-
-class ControlSearch;
 
 class GuiSearch;
 
@@ -40,21 +40,23 @@ protected:
 	virtual void closeEvent(QCloseEvent * e);
 
 private:
-	// add a string to the combo if needed
-	void remember(std::string const & find, QComboBox & combo);
-
 	GuiSearch * form_;
 };
 
 
-class GuiSearch
-	: public QController<ControlSearch, GuiView<GuiSearchDialog> >
+class GuiSearch : public GuiView<GuiSearchDialog>
 {
 public:
 	///
 	friend class GuiSearchDialog;
 	///
 	GuiSearch(Dialog &);
+	/// parent controller
+	ControlSearch & controller()
+	{ return static_cast<ControlSearch &>(this->getController()); }
+	/// parent controller
+	ControlSearch const & controller() const
+	{ return static_cast<ControlSearch const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply() {}
@@ -74,4 +76,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QSEARCH_H
+#endif // GUISEARCH_H

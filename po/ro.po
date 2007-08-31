@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-31 20:10+0200\n"
+"POT-Creation-Date: 2007-08-31 20:14+0200\n"
 "PO-Revision-Date: 2007-02-20 21:33-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -15361,31 +15361,6 @@ msgstr "Reconfigureazã|R"
 msgid "Quit %1"
 msgstr "Despre LyX"
 
-#: src/frontends/qt4/GuiView.cpp:161
-msgid "Small-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:167
-msgid "Normal-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:173
-msgid "Big-sized icons"
-msgstr ""
-
-#: src/frontends/qt4/GuiView.cpp:194
-#, fuzzy
-msgid "unknown version"
-msgstr "necunoscut"
-
-#: src/frontends/qt4/GuiView.cpp:756
-msgid "LyX"
-msgstr ""
-
-#: src/frontends/qt4/IconPalette.cpp:39
-msgid "Click to detach"
-msgstr ""
-
 #: src/frontends/qt4/GuiBibitem.cpp:69
 #, fuzzy
 msgid "Bibliography Entry Settings"
@@ -16017,10 +15992,35 @@ msgstr "Informaþii TeX|X"
 msgid "Vertical Space Settings"
 msgstr "Spaþiere verticalã:|#e"
 
+#: src/frontends/qt4/GuiView.cpp:161
+msgid "Small-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:167
+msgid "Normal-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:173
+msgid "Big-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.cpp:194
+#, fuzzy
+msgid "unknown version"
+msgstr "necunoscut"
+
+#: src/frontends/qt4/GuiView.cpp:756
+msgid "LyX"
+msgstr ""
+
 #: src/frontends/qt4/GuiWrap.cpp:83
 #, fuzzy
 msgid "Text Wrap Settings"
 msgstr "Setãri tabel"
+
+#: src/frontends/qt4/IconPalette.cpp:39
+msgid "Click to detach"
+msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:153
 #, fuzzy

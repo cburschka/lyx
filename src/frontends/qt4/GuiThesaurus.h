@@ -9,14 +9,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QTHESAURUS_H
-#define QTHESAURUS_H
+#ifndef GUITHESAURUS_H
+#define GUITHESAURUS_H
 
 #include "GuiDialogView.h"
+#include "ControlThesaurus.h"
 #include "ui_ThesaurusUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
 
 class QTreeWidgetItem;
@@ -28,7 +28,8 @@ class ControlThesaurus;
 
 class GuiThesaurus;
 
-class GuiThesaurusDialog : public QDialog, public Ui::ThesaurusUi {
+class GuiThesaurusDialog : public QDialog, public Ui::ThesaurusUi
+{
 	Q_OBJECT
 public:
 	GuiThesaurusDialog(GuiThesaurus * form);
@@ -49,14 +50,19 @@ private:
 
 
 ///
-class GuiThesaurus
-	: public QController<ControlThesaurus, GuiView<GuiThesaurusDialog> >
+class GuiThesaurus : public GuiView<GuiThesaurusDialog>
 {
 public:
 	///
 	friend class GuiThesaurusDialog;
 	///
 	GuiThesaurus(Dialog &);
+	/// parent controller
+	ControlThesaurus & controller()
+	{ return static_cast<ControlThesaurus &>(this->getController()); }
+	/// parent controller
+	ControlThesaurus const & controller() const
+	{ return static_cast<ControlThesaurus const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply() {}
@@ -72,4 +78,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QTHESAURUS_H
+#endif // GUITHESAURUS_H

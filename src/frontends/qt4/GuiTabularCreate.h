@@ -9,10 +9,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QTABULARCREATE_H
-#define QTABULARCREATE_H
+#ifndef GUITABULARCREATE_H
+#define GUITABULARCREATE_H
 
 #include "GuiDialogView.h"
+#include "ControlTabularCreate.h"
 #include "ui_TabularCreateUi.h"
 
 #include <QDialog>
@@ -22,7 +23,8 @@ namespace frontend {
 
 class GuiTabularCreate;
 
-class GuiTabularCreateDialog : public QDialog, public Ui::TabularCreateUi {
+class GuiTabularCreateDialog : public QDialog, public Ui::TabularCreateUi
+{
 	Q_OBJECT
 public:
 	GuiTabularCreateDialog(GuiTabularCreate * form);
@@ -34,16 +36,19 @@ private:
 };
 
 
-class ControlTabularCreate;
-
-class GuiTabularCreate
-	: public QController<ControlTabularCreate, GuiView<GuiTabularCreateDialog> >
+class GuiTabularCreate : public GuiView<GuiTabularCreateDialog>
 {
 public:
 	///
 	friend class GuiTabularCreateDialog;
 	///
 	GuiTabularCreate(Dialog &);
+	/// parent controller
+	ControlTabularCreate & controller()
+	{ return static_cast<ControlTabularCreate &>(this->getController()); }
+	/// parent controller
+	ControlTabularCreate const & controller() const
+	{ return static_cast<ControlTabularCreate const &>(this->getController()); }
 private:
 	/// Apply changes
 	virtual void apply();
@@ -56,4 +61,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QTABULARCREATE_H
+#endif // GUITABULARCREATE_H

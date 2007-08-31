@@ -12,13 +12,10 @@
 #include <config.h>
 
 #include "GuiPrint.h"
-#include "GuiPrintDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "PrinterParams.h"
-
-#include "controllers/ControlPrint.h"
 
 #include "support/os.h"
 
@@ -28,16 +25,87 @@
 #include <QSpinBox>
 #include <QPushButton>
 
-using lyx::support::os::internal_path;
-
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlPrint, GuiView<GuiPrintDialog> > print_base_class;
+GuiPrintDialog::GuiPrintDialog(GuiPrint * f)
+	: form_(f)
+{
+	setupUi(this);
+
+	connect(printPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+
+	connect(copiesSB, SIGNAL(valueChanged(int)), this, SLOT(copiesChanged(int)));
+	connect(printerED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(printerChanged()));
+	connect(fileED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(fileChanged() ));
+	connect(browsePB, SIGNAL(clicked()), this, SLOT(browseClicked()));
+	connect(allRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(reverseCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(collateCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(fromED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(pagerangeChanged()));
+	connect(fromED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(toED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(pagerangeChanged()));
+	connect(toED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(fileRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(printerRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(rangeRB, SIGNAL(toggled(bool)), fromED, SLOT(setEnabled(bool)));
+	connect(rangeRB, SIGNAL(toggled(bool)), toED, SLOT(setEnabled(bool)));
+}
+
+
+void GuiPrintDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void GuiPrintDialog::browseClicked()
+{
+	QString file = toqstr(form_->controller().browse(docstring()));
+	if (!file.isNull()) {
+		fileED->setText(file);
+		form_->changed();
+	}
+}
+
+
+void GuiPrintDialog::fileChanged()
+{
+	if (!fileED->text().isEmpty())
+		fileRB->setChecked(true);
+	form_->changed();
+}
+
+
+void GuiPrintDialog::copiesChanged(int i)
+{
+	collateCB->setEnabled(i != 1);
+	form_->changed();
+}
+
+
+void GuiPrintDialog::printerChanged()
+{
+	printerRB->setChecked(true);
+	form_->changed();
+}
+
+
+void GuiPrintDialog::pagerangeChanged()
+{
+	form_->changed();
+}
 
 
 GuiPrint::GuiPrint(Dialog & parent)
-	: print_base_class(parent, _("Print Document"))
+	: GuiView<GuiPrintDialog>(parent, _("Print Document"))
 {
 }
 
@@ -98,7 +166,7 @@ void GuiPrint::apply()
 
 	PrinterParams const pp(t,
 		fromqstr(dialog_->printerED->text()),
-		internal_path(fromqstr(dialog_->fileED->text())),
+		support::os::internal_path(fromqstr(dialog_->fileED->text())),
 		dialog_->allRB->isChecked(),
 		dialog_->fromED->text().toUInt(),
 		dialog_->toED->text().toUInt(),
@@ -113,3 +181,5 @@ void GuiPrint::apply()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "GuiPrint_moc.cpp"

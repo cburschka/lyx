@@ -22,7 +22,6 @@
 #include "LyXRC.h"
 
 #include "insets/InsetListingsParams.h"
-#include "controllers/ControlInclude.h"
 
 #include <QPushButton>
 #include <QCheckBox>
@@ -187,11 +186,8 @@ void GuiIncludeDialog::browseClicked()
 /////////////////////////////////////////////////////////////////////
 
 
-typedef QController<ControlInclude, GuiView<GuiIncludeDialog> > IncludeBase;
-
-
 GuiInclude::GuiInclude(Dialog & parent)
-	: IncludeBase(parent, _("Child Document"))
+	: GuiView<GuiIncludeDialog>(parent, _("Child Document"))
 {}
 
 

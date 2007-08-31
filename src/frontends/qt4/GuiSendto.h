@@ -9,17 +9,17 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QSENDTO_H
-#define QSENDTO_H
+#ifndef GUISENDTO_H
+#define GUISENDTO_H
 
 #include "GuiDialogView.h"
+#include "ControlSendto.h"
 #include "ui_SendtoUi.h"
 
 #include <QDialog>
 
 #include <vector>
 
-class QCloseEvent;
 class QListWidgetItem;
 
 namespace lyx {
@@ -45,18 +45,21 @@ private:
 };
 
 
-class ControlSendto;
-
 /** This class provides a Qt implementation of the Custom Export Dialog.
  */
-class GuiSendto
-	: public QController<ControlSendto, GuiView<GuiSendtoDialog> >
+class GuiSendto : public GuiView<GuiSendtoDialog>
 {
 public:
 	///
 	friend class GuiSendtoDialog;
 	///
 	GuiSendto(Dialog &);
+	/// parent controller
+	ControlSendto & controller()
+	{ return static_cast<ControlSendto &>(this->getController()); }
+	/// parent controller
+	ControlSendto const & controller() const
+	{ return static_cast<ControlSendto const &>(this->getController()); }
 protected:
 	virtual bool isValid();
 private:
@@ -73,4 +76,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QSENDTO_H
+#endif // GUISENDTO_H

@@ -14,7 +14,6 @@
 #include "GuiListings.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "controllers/ControlListings.h"
 #include "insets/InsetListingsParams.h"
 #include "debug.h"
 
@@ -408,10 +407,9 @@ void GuiListingsDialog::on_languageCO_currentIndexChanged(int index)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlListings, GuiView<GuiListingsDialog> > listings_wrap_base_class;
 
 GuiListings::GuiListings(Dialog & parent)
-	: listings_wrap_base_class(parent, _("Program Listing Settings"))
+	: GuiView<GuiListingsDialog>(parent, _("Program Listing Settings"))
 {
 }
 

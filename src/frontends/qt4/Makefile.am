@@ -66,12 +66,10 @@ SOURCEFILES = \
 	GuiERT.cpp \
 	GuiExternal.cpp \
 	GuiFloat.cpp \
-	GuiFloatDialog.cpp \
 	GuiFontExample.cpp \
 	GuiFontLoader.cpp \
 	GuiFontMetrics.cpp \
 	GuiGraphics.cpp \
-	GuiGraphicsDialog.cpp \
 	GuiImage.cpp \
 	GuiImplementation.cpp \
 	GuiInclude.cpp \
@@ -89,7 +87,6 @@ SOURCEFILES = \
 	GuiPopupMenu.cpp \
 	GuiPrefs.cpp \
 	GuiPrint.cpp \
-	GuiPrintDialog.cpp \
 	GuiRef.cpp \
 	GuiSearch.cpp \
 	GuiSelection.cpp \
@@ -120,7 +117,6 @@ SOURCEFILES = \
 	socket_callback.cpp \
 	TocModel.cpp \
 	TocWidget.cpp \
-	UrlView.cpp \
 	Validator.cpp 
 
 NOMOCHEADER = \
@@ -129,10 +125,8 @@ NOMOCHEADER = \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
 	GuiSelection.h \
-	GuiGraphics.h \
 	GuiImage.h \
 	GuiPainter.h \
-	GuiPrint.h \
 	Qt2BC.h \
 	qt_helpers.h
 
@@ -163,10 +157,9 @@ MOCHEADER = \
 	GuiErrorList.h \
 	GuiERT.h \
 	GuiExternal.h \
-	GuiFloatDialog.h \
 	GuiFloat.h \
 	GuiFontExample.h \
-	GuiGraphicsDialog.h \
+	GuiGraphics.h \
 	GuiImplementation.h \
 	GuiInclude.h \
 	GuiIndex.h \
@@ -180,7 +173,7 @@ MOCHEADER = \
 	GuiParagraph.h \
 	GuiPopupMenu.h \
 	GuiPrefs.h \
-	GuiPrintDialog.h \
+	GuiPrint.h \
 	GuiRef.h \
 	GuiSearch.h \
 	GuiSelectionManager.h \

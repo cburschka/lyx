@@ -16,7 +16,6 @@
 #include "lengthcommon.h"
 #include "LyXRC.h"
 
-#include "controllers/ControlExternal.h"
 #include "controllers/ButtonController.h"
 
 #include "insets/ExternalTemplate.h"
@@ -489,11 +488,8 @@ void getExtra(external::ExtraData & data,
 } // namespace anon
 
 
-typedef QController<ControlExternal, GuiView<GuiExternalDialog> >
-	ExternalBase;
-
 GuiExternal::GuiExternal(Dialog & parent)
-	: ExternalBase(parent, _("External Material"))
+	: GuiView<GuiExternalDialog>(parent, _("External Material"))
 {}
 
 

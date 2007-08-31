@@ -11,11 +11,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QVIEWSOURCE_H
-#define QVIEWSOURCE_H
+#ifndef GUIVIEWSOURCE_H
+#define GUIVIEWSOURCE_H
 
-#include "frontends/controllers/ControlViewSource.h"
-#include "frontends/Application.h"
+#include "ControlViewSource.h"
+#include "Application.h"
 #include "ui_ViewSourceUi.h"
 
 #include <QWidget>
@@ -41,7 +41,6 @@ private:
 	QTextCharFormat keywordFormat;
 	QTextCharFormat mathFormat;
 };
-
 
 
 class GuiViewSource;
@@ -81,4 +80,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QVIEWSOURCE_H
+#endif // GUIVIEWSOURCE_H

@@ -60,7 +60,7 @@ QString generateStringSignature(QString const & str, Font const & f)
 
 } // anon namespace
 
-QLPainter::QLPainter(QPaintDevice * device)
+GuiPainter::GuiPainter(QPaintDevice * device)
 	: QPainter(device), Painter()
 {
 	// new QPainter has default QPen:
@@ -70,14 +70,14 @@ QLPainter::QLPainter(QPaintDevice * device)
 }
 
 
-QLPainter::~QLPainter()
+GuiPainter::~GuiPainter()
 {
 	QPainter::end();
-	//lyxerr << "QLPainter::end()" << endl;
+	//lyxerr << "GuiPainter::end()" << endl;
 }
 
 
-void QLPainter::setQPainterPen(Color_color col,
+void GuiPainter::setQPainterPen(Color_color col,
 	Painter::line_style ls, Painter::line_width lw)
 {
 	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
@@ -105,7 +105,7 @@ void QLPainter::setQPainterPen(Color_color col,
 }
 
 
-void QLPainter::point(int x, int y, Color_color col)
+void GuiPainter::point(int x, int y, Color_color col)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -115,7 +115,7 @@ void QLPainter::point(int x, int y, Color_color col)
 }
 
 
-void QLPainter::line(int x1, int y1, int x2, int y2,
+void GuiPainter::line(int x1, int y1, int x2, int y2,
 	Color_color col,
 	line_style ls,
 	line_width lw)
@@ -132,7 +132,7 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 }
 
 
-void QLPainter::lines(int const * xp, int const * yp, int np,
+void GuiPainter::lines(int const * xp, int const * yp, int np,
 	Color_color col,
 	line_style ls,
 	line_width lw)
@@ -160,7 +160,7 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 }
 
 
-void QLPainter::rectangle(int x, int y, int w, int h,
+void GuiPainter::rectangle(int x, int y, int w, int h,
 	Color_color col,
 	line_style ls,
 	line_width lw)
@@ -173,13 +173,13 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 }
 
 
-void QLPainter::fillRectangle(int x, int y, int w, int h, Color_color col)
+void GuiPainter::fillRectangle(int x, int y, int w, int h, Color_color col)
 {
 	fillRect(x, y, w, h, guiApp->colorCache().get(col));
 }
 
 
-void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
+void GuiPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, Color_color col)
 {
 	if (!isDrawingEnabled())
@@ -194,10 +194,10 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 }
 
 
-void QLPainter::image(int x, int y, int w, int h, graphics::Image const & i)
+void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 {
-	graphics::QLImage const & qlimage =
-		static_cast<graphics::QLImage const &>(i);
+	graphics::GuiImage const & qlimage =
+		static_cast<graphics::GuiImage const &>(i);
 
 	fillRectangle(x, y, w, h, Color::graphicsbg);
 
@@ -208,14 +208,14 @@ void QLPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 }
 
 
-int QLPainter::text(int x, int y, char_type c, Font const & f)
+int GuiPainter::text(int x, int y, char_type c, Font const & f)
 {
 	docstring s(1, c);
 	return text(x, y, s, f);
 }
 
 
-int QLPainter::smallCapsText(int x, int y,
+int GuiPainter::smallCapsText(int x, int y,
 	QString const & s, Font const & f)
 {
 	Font smallfont(f);
@@ -242,7 +242,7 @@ int QLPainter::smallCapsText(int x, int y,
 }
 
 
-int QLPainter::text(int x, int y, docstring const & s,
+int GuiPainter::text(int x, int y, docstring const & s,
 		Font const & f)
 {
 	/* Caution: The following ucs4 to QString conversions work for symbol fonts
@@ -339,7 +339,7 @@ int QLPainter::text(int x, int y, docstring const & s,
 		int const h = mA + mD;
 		pm = QPixmap(w, h);
 		pm.fill(Qt::transparent);
-		QLPainter p(&pm);
+		GuiPainter p(&pm);
 		p.setQPainterPen(f.realColor());
 		if (p.font() != fi.font)
 			p.setFont(fi.font);

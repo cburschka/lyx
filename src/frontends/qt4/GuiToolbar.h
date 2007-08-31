@@ -13,8 +13,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QLTOOLBAR_H
-#define QLTOOLBAR_H
+#ifndef GUITOOLBAR_H
+#define GUITOOLBAR_H
 
 #include "frontends/Toolbars.h"
 #include "Session.h"
@@ -99,4 +99,4 @@ std::string const getIcon(FuncRequest const & f, bool unknown = true);
 } // namespace frontend
 } // namespace lyx
 
-#endif // NOT QLTOOLBAR_H
+#endif // GUITOOLBAR_H

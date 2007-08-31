@@ -871,11 +871,9 @@ src_frontends_qt4_header_files = Split('''
     GuiErrorList.h
     GuiERT.h
     GuiExternal.h
-    GuiFloatDialog.h
     GuiFloat.h
     GuiFontExample.h
     GuiFontLoader.h
-    GuiGraphicsDialog.h
     GuiGraphics.h
     GuiGraphicsUi.h
     GuiImage.h
@@ -923,7 +921,6 @@ src_frontends_qt4_header_files = Split('''
     Qt2BC.h
     TocModel.h
     TocWidget.h
-    UrlView.h
     Validator.h
     qlkey.h
     qt_helpers.h
@@ -962,12 +959,10 @@ src_frontends_qt4_files = Split('''
     GuiERT.cpp
     GuiExternal.cpp
     GuiFloat.cpp
-    GuiFloatDialog.cpp
     GuiFontExample.cpp
     GuiFontLoader.cpp
     GuiFontMetrics.cpp
     GuiGraphics.cpp
-    GuiGraphicsDialog.cpp
     GuiImage.cpp
     GuiImplementation.cpp
     GuiInclude.cpp
@@ -1013,7 +1008,6 @@ src_frontends_qt4_files = Split('''
     Qt2BC.cpp
     TocModel.cpp
     TocWidget.cpp
-    UrlView.cpp
     Validator.cpp
     alert_pimpl.cpp
     qt_helpers.cpp

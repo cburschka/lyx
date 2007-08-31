@@ -9,11 +9,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QEXTERNAL_H
-#define QEXTERNAL_H
+#ifndef GUIEXTERNAL_H
+#define GUIEXTERNAL_H
 
 #include "GuiDialogView.h"
-
+#include "ControlExternal.h"
 #include "ui_ExternalUi.h"
 
 #include <QCloseEvent>
@@ -26,7 +26,8 @@ namespace frontend {
 
 class GuiExternal;
 
-class GuiExternalDialog : public QDialog, public Ui::ExternalUi {
+class GuiExternalDialog : public QDialog, public Ui::ExternalUi
+{
 	Q_OBJECT
 public:
 	GuiExternalDialog(GuiExternal * form);
@@ -52,18 +53,20 @@ private:
 };
 
 
-class ControlExternal;
-
-class GuiExternal
-	: public QController<ControlExternal, GuiView<GuiExternalDialog> >
+class GuiExternal : public GuiView<GuiExternalDialog>
 {
 public:
 	friend class GuiExternalDialog;
 
 	GuiExternal(Dialog &);
-
+	/// parent controller
+	ControlExternal & controller()
+	{ return static_cast<ControlExternal &>(this->getController()); }
+	/// parent controller
+	ControlExternal const & controller() const
+	{ return static_cast<ControlExternal const &>(this->getController()); }
+	///
 	typedef std::map<std::string, QString> MapType;
-
 private:
 	/// Apply changes
 	virtual void apply();
@@ -83,4 +86,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QEXTERNAL_H
+#endif // GUIEXTERNAL_H

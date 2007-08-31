@@ -12,12 +12,10 @@
 #include <config.h>
 
 #include "GuiCharacter.h"
-#include "ControlCharacter.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-
+#include "frontend_helpers.h"
 #include "Color.h"
-
 
 #include <QCloseEvent>
 
@@ -86,10 +84,9 @@ void GuiCharacterDialog::closeEvent(QCloseEvent * e)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlCharacter, GuiView<GuiCharacterDialog> > CharacterBase;
 
 GuiCharacter::GuiCharacter(Dialog & parent)
-	: CharacterBase(parent, _("Text Style"))
+	: GuiView<GuiCharacterDialog>(parent, _("Text Style"))
 {
 }
 

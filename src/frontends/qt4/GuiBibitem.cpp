@@ -14,8 +14,7 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
-#include "controllers/ControlCommand.h"
-
+#include <QCloseEvent>
 #include <QLineEdit>
 #include <QPushButton>
 
@@ -25,7 +24,7 @@ namespace frontend {
 
 /////////////////////////////////////////////////////////////////////
 //
-// QBibItemDialog
+// GuiBibItemDialog
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -58,15 +57,13 @@ void GuiBibitemDialog::closeEvent(QCloseEvent *e)
 
 /////////////////////////////////////////////////////////////////////
 //
-// QBibItem
+// GuiBibItem
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlCommand, GuiView<GuiBibitemDialog> > BibItemBase;
-
 
 GuiBibitem::GuiBibitem(Dialog & parent)
-	: BibItemBase(parent, _("Bibliography Entry Settings"))
+	: GuiView<GuiBibitemDialog>(parent, _("Bibliography Entry Settings"))
 {
 }
 

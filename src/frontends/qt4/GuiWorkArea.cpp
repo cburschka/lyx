@@ -490,7 +490,7 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 
 void GuiWorkArea::updateScreen()
 {
-	QLPainter pain(&screen_);
+	GuiPainter pain(&screen_);
 	verticalScrollBar()->show();
 	buffer_view_->draw(pain);
 }
@@ -559,7 +559,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		return;
 	}
 
-	QLPainter pain(&screen_);
+	GuiPainter pain(&screen_);
 	buffer_view_->updateMetrics(false);
 	buffer_view_->draw(pain);
 	Font font = buffer_view_->cursor().getFont();

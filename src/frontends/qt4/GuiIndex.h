@@ -10,14 +10,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QINDEX_H
-#define QINDEX_H
+#ifndef GUIINDEX_H
+#define GUIINDEX_H
 
 #include "GuiDialogView.h"
+#include "ControlCommand.h"
 #include "ui_IndexUi.h"
 
 #include <QDialog>
-#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
@@ -39,15 +39,18 @@ private:
 };
 
 
-class ControlCommand;
-
-class GuiIndex :
-	public QController<ControlCommand, GuiView<GuiIndexDialog> >
+class GuiIndex : public GuiView<GuiIndexDialog>
 {
 public:
 	friend class GuiIndexDialog;
 
 	GuiIndex(Dialog &, docstring const & title, QString const & label);
+	/// parent controller
+	ControlCommand & controller()
+	{ return static_cast<ControlCommand &>(this->getController()); }
+	/// parent controller
+	ControlCommand const & controller() const
+	{ return static_cast<ControlCommand const &>(this->getController()); }
 protected:
 	virtual bool isValid();
 private:
@@ -65,4 +68,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QINDEX_H
+#endif // GUIINDEX_H

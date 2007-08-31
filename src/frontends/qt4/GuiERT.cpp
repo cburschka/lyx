@@ -13,8 +13,6 @@
 #include "GuiERT.h"
 #include "Qt2BC.h"
 
-#include "controllers/ControlERT.h"
-
 #include <QRadioButton>
 #include <QPushButton>
 #include <QCloseEvent>
@@ -60,11 +58,8 @@ void GuiERTDialog::change_adaptor()
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlERT, GuiView<GuiERTDialog> > ERTBase;
-
-
 GuiERT::GuiERT(Dialog & parent)
-	: ERTBase(parent, _("TeX Code Settings"))
+	: GuiView<GuiERTDialog>(parent, _("TeX Code Settings"))
 {
 }
 

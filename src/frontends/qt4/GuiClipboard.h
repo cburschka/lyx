@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file qt4/GuiClipboard.h
+ * \file GuiClipboard.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef CLIPBOARD_H
-#define CLIPBOARD_H
+#ifndef GUICLIPBOARD_H
+#define GUICLIPBOARD_H
 
 #include "frontends/Clipboard.h"
 
@@ -22,7 +22,7 @@ namespace frontend {
 /**
  * The Qt4 version of the Clipboard.
  */
-class GuiClipboard: public Clipboard
+class GuiClipboard : public Clipboard
 {
 public:
 	virtual ~GuiClipboard() {}
@@ -42,4 +42,4 @@ public:
 } // namespace frontend
 } // namespace lyx
 
-#endif // CLIPBOARD_H
+#endif // GUICLIPBOARD_H

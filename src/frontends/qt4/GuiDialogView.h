@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QDIALOGVIEW_H
-#define QDIALOGVIEW_H
+#ifndef GUIDIALOGVIEW_H
+#define GUIDIALOGVIEW_H
 
 #include "Dialog.h"
 
@@ -121,25 +121,7 @@ protected:
 	boost::scoped_ptr<GUIDialog> dialog_;
 };
 
-
-template <class Controller, class Base>
-class QController: public Base
-{
-protected:
-	///
-	QController(Dialog & p, docstring const & t): Base(p, t)
-	{}
-public:
-	/// The parent controller
-	Controller & controller()
-	{ return static_cast<Controller &>(this->getController()); }
-
-	/// The parent controller
-	Controller const & controller() const
-	{ return static_cast<Controller const &>(this->getController()); }
-};
-
 } // namespace frontend
 } // namespace lyx
 
-#endif // QDIALOGVIEW_H
+#endif // GUIDIALOGVIEW_H

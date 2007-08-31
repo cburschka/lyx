@@ -142,10 +142,9 @@ void GuiBoxDialog::restoreClicked()
 //
 //////////////////////////////////////////////////////////////////
 
-typedef QController<ControlBox, GuiView<GuiBoxDialog> > box_base_class;
 
 GuiBox::GuiBox(Dialog & parent)
-	: box_base_class(parent, _("Box Settings"))
+	: GuiView<GuiBoxDialog>(parent, _("Box Settings"))
 {}
 
 

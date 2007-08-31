@@ -15,8 +15,7 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
-#include "controllers/ButtonController.h"
-#include "controllers/ControlRef.h"
+#include "ButtonController.h"
 
 #include "insets/InsetRef.h"
 
@@ -181,12 +180,9 @@ void GuiRefDialog::closeEvent(QCloseEvent * e)
 //
 /////////////////////////////////////////////////////////////////////
 
-// full qualification because qt4 has also a ControlRef type
-typedef QController<lyx::frontend::ControlRef, GuiView<GuiRefDialog> > RefBase;
-
 
 GuiRef::GuiRef(Dialog & parent)
-	: RefBase(parent, _("Cross-reference")),
+	: GuiView<GuiRefDialog>(parent, _("Cross-reference")),
 	sort_(false), at_ref_(false)
 {
 }

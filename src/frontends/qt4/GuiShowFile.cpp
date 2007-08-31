@@ -14,10 +14,9 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
-#include "controllers/ControlShowFile.h"
-
 #include <QTextBrowser>
 #include <QPushButton>
+#include <QCloseEvent>
 
 namespace lyx {
 namespace frontend {
@@ -49,12 +48,9 @@ void GuiShowFileDialog::closeEvent(QCloseEvent * e)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlShowFile, GuiView<GuiShowFileDialog> >
-	ShowFileBase;
-
 
 GuiShowFile::GuiShowFile(Dialog & parent)
-	: ShowFileBase(parent, _("Show File"))
+	: GuiView<GuiShowFileDialog>(parent, _("Show File"))
 {
 }
 

@@ -11,24 +11,56 @@
 #include <config.h>
 
 #include "GuiFloat.h"
-#include "GuiFloatDialog.h"
 #include "Qt2BC.h"
 #include "FloatPlacement.h"
 
-#include "controllers/ControlFloat.h"
-
 #include "insets/InsetFloat.h"
 
+#include <QCloseEvent>
 #include <QPushButton>
 
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlFloat, GuiView<GuiFloatDialog> > float_base_class;
+GuiFloatDialog::GuiFloatDialog(GuiFloat * form)
+	: form_(form)
+{
+	setupUi(this);
+	connect(restorePB, SIGNAL(clicked()),
+		form, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()),
+		form, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()),
+		form, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()),
+		form, SLOT(slotClose()));
+
+	// enable span columns checkbox
+	floatFP->useWide();
+
+	// enable sideways checkbox
+	floatFP->useSideways();
+
+	connect(floatFP, SIGNAL(changed()),
+		this, SLOT(change_adaptor()));
+}
+
+
+void GuiFloatDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+
+void GuiFloatDialog::closeEvent(QCloseEvent * e)
+{
+	form_->slotWMHide();
+	e->accept();
+}
 
 
 GuiFloat::GuiFloat(Dialog & parent)
-	: float_base_class(parent, _("Float Settings"))
+	:  GuiView<GuiFloatDialog>(parent, _("Float Settings"))
 {
 }
 
@@ -61,3 +93,5 @@ void GuiFloat::apply()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "GuiFloat_moc.cpp"

@@ -14,8 +14,6 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
-#include "controllers/ControlErrorList.h"
-
 #include <QListWidget>
 #include <QTextBrowser>
 #include <QPushButton>
@@ -71,11 +69,8 @@ void GuiErrorListDialog::showEvent(QShowEvent *e)
 /////////////////////////////////////////////////////////////////////
 
 
-typedef QController<ControlErrorList, GuiView<GuiErrorListDialog> >
-	ErrorListBase;
-
 GuiErrorList::GuiErrorList(Dialog & parent)
-	: ErrorListBase(parent, docstring())
+	:  GuiView<GuiErrorListDialog>(parent, docstring())
 {}
 
 

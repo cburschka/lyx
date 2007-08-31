@@ -10,14 +10,13 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QBOX_H
-#define QBOX_H
+#ifndef GUIBOX_H
+#define GUIBOX_H
 
 #include "GuiDialogView.h"
-
+#include "ControlBox.h"
 #include "ui_BoxUi.h"
 
-#include <QCloseEvent>
 #include <QDialog>
 
 #include <vector>
@@ -26,7 +25,6 @@
 namespace lyx {
 namespace frontend {
 
-class ControlBox;
 class GuiBox;
 
 class GuiBoxDialog : public QDialog, public Ui::BoxUi {
@@ -45,20 +43,24 @@ private:
 };
 
 
-///
-class GuiBox
-	: public QController<ControlBox, GuiView<GuiBoxDialog> >
+class GuiBox : public GuiView<GuiBoxDialog>
 {
 public:
 	///
-	friend class GuiBoxDialog;
-	///
 	GuiBox(Dialog &);
+	/// parent controller
+	ControlBox & controller()
+	{ return static_cast<ControlBox &>(this->getController()); }
+	/// parent controller
+	ControlBox const & controller() const
+	{ return static_cast<ControlBox const &>(this->getController()); }
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items
 	void setInnerType(bool frameless, int i);
 private:
+	///
+	friend class GuiBoxDialog;
 	/// Apply changes
 	virtual void apply();
 	/// update
@@ -78,4 +80,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QBOX_H
+#endif // GUIBOX_H

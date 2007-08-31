@@ -9,14 +9,15 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QNOTE_H
-#define QNOTE_H
+#ifndef GUINOTE_H
+#define GUINOTE_H
 
 #include "GuiDialogView.h"
+#include "ControlNote.h"
 #include "ui_NoteUi.h"
 
 #include <QDialog>
-class QCloseEvent;
+
 
 namespace lyx {
 namespace frontend {
@@ -36,17 +37,21 @@ private:
 };
 
 
-class ControlNote;
-
 /** This class provides a QT implementation of the Note Dialog.
  */
-class GuiNote : public QController<ControlNote, GuiView<GuiNoteDialog> >
+class GuiNote : public GuiView<GuiNoteDialog>
 {
 public:
 	friend class GuiNoteDialog;
 
 	/// Constructor
 	GuiNote(Dialog &);
+	/// parent controller
+	ControlNote & controller()
+	{ return static_cast<ControlNote &>(this->getController()); }
+	/// parent controller
+	ControlNote const & controller() const
+	{ return static_cast<ControlNote const &>(this->getController()); }
 private:
 	///  Apply changes
 	virtual void apply();
@@ -59,4 +64,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QNOTE_H
+#endif // GUINOTE_H

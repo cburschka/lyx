@@ -11,11 +11,11 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QMATHMATRIXDIALOG_H
-#define QMATHMATRIXDIALOG_H
+#ifndef GUIMATHMATRIXDIALOG_H
+#define GUIMATHMATRIXDIALOG_H
 
 #include "GuiDialogView.h"
-
+#include "ControlMath.h"
 #include "ui_MathMatrixUi.h"
 
 #include <QDialog>
@@ -43,12 +43,17 @@ private:
 };
 
 
-class GuiMathMatrix : public QController<ControlMath, GuiView<GuiMathMatrixDialog> > {
+class GuiMathMatrix : public GuiView<GuiMathMatrixDialog> {
 public:
 	friend class GuiMathMatrixDialog;
 
 	GuiMathMatrix(Dialog &);
-
+	/// parent controller
+	ControlMath & controller()
+	{ return static_cast<ControlMath &>(this->getController()); }
+	/// parent controller
+	ControlMath const & controller() const
+	{ return static_cast<ControlMath const &>(this->getController()); }
 private:
 	virtual void apply() {}
 	virtual void update_contents() {}
@@ -60,4 +65,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QMATHMATRIXDIALOG_H
+#endif // GUIMATHMATRIXDIALOG_H

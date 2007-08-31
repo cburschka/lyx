@@ -9,14 +9,12 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QDELIMITERDIALOG_H
-#define QDELIMITERDIALOG_H
+#ifndef GUIDELIMITERDIALOG_H
+#define GUIDELIMITERDIALOG_H
 
 #include "GuiDialogView.h"
-
+#include "ControlMath.h"
 #include "ui_DelimiterUi.h"
-
-#include <string>
 
 class QListWidgetItem;
 
@@ -24,12 +22,13 @@ namespace lyx {
 namespace frontend {
 
 class ControlMath;
-class GuiMathDelimiter;
+class GuiDelimiter;
 
-class GuiDelimiterDialog : public QDialog, public Ui::DelimiterUi {
+class GuiDelimiterDialog : public QDialog, public Ui::DelimiterUi
+{
 	Q_OBJECT
 public:
-	GuiDelimiterDialog(GuiMathDelimiter * form, QWidget * parent);
+	GuiDelimiterDialog(GuiDelimiter * form, QWidget * parent);
 public Q_SLOTS:
 	void on_leftLW_itemActivated(QListWidgetItem *);
 	void on_rightLW_itemActivated(QListWidgetItem *);
@@ -44,18 +43,24 @@ private:
 	///
 	void updateTeXCode(int size);
 	/// owning form
-	GuiMathDelimiter * form_;
+	GuiDelimiter * form_;
 	/// TeX code that will be inserted.
 	QString tex_code_;
 };
 
 
-class GuiMathDelimiter : public QController<ControlMath, GuiView<GuiDelimiterDialog> > {
+class GuiDelimiter : public GuiView<GuiDelimiterDialog>
+{
 public:
 	friend class GuiDelimiterDialog;
-
-	GuiMathDelimiter(Dialog &);
-
+	///
+	GuiDelimiter(Dialog &);
+	/// parent controller
+	ControlMath & controller()
+	{ return static_cast<ControlMath &>(this->getController()); }
+	/// parent controller
+	ControlMath const & controller() const
+	{ return static_cast<ControlMath const &>(this->getController()); }
 private:
 	virtual void apply() {}
 	virtual void update_contents() {}
@@ -67,4 +72,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QDELIMITERDIALOG_H
+#endif // GUIDELIMITERDIALOG_H

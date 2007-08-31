@@ -25,8 +25,6 @@
 
 #include "GuiViewSource.h" // For latexHighlighter use in the preamble.
 
-#include "controllers/ControlDocument.h"
-
 #include "BufferParams.h"
 #include "Encoding.h"
 #include "gettext.h"
@@ -37,7 +35,6 @@
 #include "Spacing.h"
 
 #include "insets/InsetListingsParams.h"
-#include "controllers/ControlDocument.h"
 
 #include "support/lstrings.h"
 
@@ -1399,16 +1396,13 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 
 /////////////////////////////////////////////////////////////////////
 //
-// Document
+// GuiDocument
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlDocument, GuiView<GuiDocumentDialog> >
-	DocumentBase;
-
 
 GuiDocument::GuiDocument(Dialog & parent)
-	: DocumentBase(parent, _("Document Settings"))
+	: GuiView<GuiDocumentDialog>(parent, _("Document Settings"))
 {}
 
 

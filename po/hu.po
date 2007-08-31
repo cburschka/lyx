@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-31 20:10+0200\n"
+"POT-Creation-Date: 2007-08-31 20:14+0200\n"
 "PO-Revision-Date: 2007-07-24 18:18+0100\n"
 "Last-Translator: Alex <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -14773,30 +14773,6 @@ msgstr "Újrakonfigurálás|r"
 msgid "Quit %1"
 msgstr "Kilépés LyX-bõl"
 
-#: src/frontends/qt4/GuiView.cpp:161
-msgid "Small-sized icons"
-msgstr "Kis-méretû ikonok"
-
-#: src/frontends/qt4/GuiView.cpp:167
-msgid "Normal-sized icons"
-msgstr "Normál-méretû ikonok"
-
-#: src/frontends/qt4/GuiView.cpp:173
-msgid "Big-sized icons"
-msgstr "Nagy-méretû ikonok"
-
-#: src/frontends/qt4/GuiView.cpp:194
-msgid "unknown version"
-msgstr "ismeretlen verzió"
-
-#: src/frontends/qt4/GuiView.cpp:756
-msgid "LyX"
-msgstr "LyX"
-
-#: src/frontends/qt4/IconPalette.cpp:39
-msgid "Click to detach"
-msgstr "Kattintson ide a leválasztáshoz"
-
 #: src/frontends/qt4/GuiBibitem.cpp:69
 msgid "Bibliography Entry Settings"
 msgstr "Irodalomjegyzék elem beállítások"
@@ -15366,9 +15342,33 @@ msgstr "TeX információ"
 msgid "Vertical Space Settings"
 msgstr "Függõleges kitöltés beállításai"
 
+#: src/frontends/qt4/GuiView.cpp:161
+msgid "Small-sized icons"
+msgstr "Kis-méretû ikonok"
+
+#: src/frontends/qt4/GuiView.cpp:167
+msgid "Normal-sized icons"
+msgstr "Normál-méretû ikonok"
+
+#: src/frontends/qt4/GuiView.cpp:173
+msgid "Big-sized icons"
+msgstr "Nagy-méretû ikonok"
+
+#: src/frontends/qt4/GuiView.cpp:194
+msgid "unknown version"
+msgstr "ismeretlen verzió"
+
+#: src/frontends/qt4/GuiView.cpp:756
+msgid "LyX"
+msgstr "LyX"
+
 #: src/frontends/qt4/GuiWrap.cpp:83
 msgid "Text Wrap Settings"
 msgstr "Körbefuttatás beállításai"
+
+#: src/frontends/qt4/IconPalette.cpp:39
+msgid "Click to detach"
+msgstr "Kattintson ide a leválasztáshoz"
 
 #: src/frontends/qt4/Validator.cpp:153
 msgid "space"

@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QLPAINTER_H
-#define QLPAINTER_H
+#ifndef GUIPAINTER_H
+#define GUIPAINTER_H
 
 #include "frontends/Painter.h"
 
@@ -28,12 +28,12 @@ class Font;
 namespace frontend {
 
 /**
- * QLPainter - a painter implementation for Qt4
+ * GuiPainter - a painter implementation for Qt4
  */
-class QLPainter : public QPainter, public Painter {
+class GuiPainter : public QPainter, public Painter {
 public:
-	QLPainter(QPaintDevice *);
-	virtual ~QLPainter();
+	GuiPainter(QPaintDevice *);
+	virtual ~GuiPainter();
 
 	/// draw a line from point to point
 	virtual void line(
@@ -116,4 +116,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QLPAINTER_H
+#endif // GUIPAINTER_H

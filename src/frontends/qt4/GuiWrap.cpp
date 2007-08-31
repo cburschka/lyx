@@ -16,8 +16,6 @@
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 
-#include "controllers/ControlWrap.h"
-
 #include "insets/InsetWrap.h"
 
 #include "support/convert.h"
@@ -77,10 +75,8 @@ void GuiWrapDialog::change_adaptor()
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlWrap, GuiView<GuiWrapDialog> > wrap_base_class;
-
 GuiWrap::GuiWrap(Dialog & parent)
-	: wrap_base_class(parent, _("Text Wrap Settings"))
+	: GuiView<GuiWrapDialog>(parent, _("Text Wrap Settings"))
 {
 }
 

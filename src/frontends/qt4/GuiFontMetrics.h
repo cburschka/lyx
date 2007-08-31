@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FontMetrics.h
+ * \file GuiFontMetrics.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QT4_FONT_METRICS_H
-#define QT4_FONT_METRICS_H
+#ifndef GUI_FONT_METRICS_H
+#define GUI_FONT_METRICS_H
 
 #include "frontends/FontMetrics.h"
 
@@ -23,10 +23,9 @@
 namespace lyx {
 namespace frontend {
 
-class GuiFontMetrics: public FontMetrics
+class GuiFontMetrics : public FontMetrics
 {
 public:
-
 	GuiFontMetrics(QFont const & font);
 	GuiFontMetrics(QFont const & font, QFont const & smallcaps_font);
 
@@ -83,4 +82,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QT4_FONT_METRICS_H
+#endif // GUI_FONT_METRICS_H

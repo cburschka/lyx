@@ -38,10 +38,8 @@ namespace lyx {
 namespace frontend {
 
 
-typedef QController<ControlAboutlyx, GuiView<GuiAboutDialog> > AboutBase;
-
 GuiAbout::GuiAbout(Dialog & parent)
-	: AboutBase(parent, _("About LyX"))
+	: GuiView<GuiAboutDialog>(parent, _("About LyX"))
 {
 }
 

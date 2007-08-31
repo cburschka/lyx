@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QTOC_H
-#define QTOC_H
+#ifndef GUITOC_H
+#define GUITOC_H
 
 #include "ControlToc.h"
 
@@ -63,4 +63,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QTOC_H
+#endif // GUITOC_H

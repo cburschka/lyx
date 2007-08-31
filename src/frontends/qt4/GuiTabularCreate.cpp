@@ -14,8 +14,7 @@
 #include "Qt2BC.h"
 #include "EmptyTable.h"
 
-#include "controllers/ControlTabularCreate.h"
-
+#include <QCloseEvent>
 #include <QSpinBox>
 #include <QPushButton>
 
@@ -64,12 +63,9 @@ void GuiTabularCreateDialog::rowsChanged(int)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef QController<ControlTabularCreate, GuiView<GuiTabularCreateDialog> >
-	TabularCreateBase;
-
 
 GuiTabularCreate::GuiTabularCreate(Dialog & parent)
-	: TabularCreateBase(parent, _("Insert Table"))
+	: GuiView<GuiTabularCreateDialog>(parent, _("Insert Table"))
 {
 }
 
