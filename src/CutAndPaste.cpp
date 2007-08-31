@@ -287,7 +287,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 PitPosPair eraseSelectionHelper(BufferParams const & params,
 	ParagraphList & pars,
 	pit_type startpit, pit_type endpit,
-	int startpos, int endpos, bool doclear)
+	int startpos, int endpos)
 {
 	// Start of selection is really invalid.
 	if (startpit == pit_type(pars.size()) ||
@@ -303,12 +303,6 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 	for (pit_type pit = startpit; pit != endpit + 1;) {
 		pos_type const left  = (pit == startpit ? startpos : 0);
 		pos_type right = (pit == endpit ? endpos : pars[pit].size() + 1);
-		// FIXME: this is a quick fix for bug 3600. It stops a crash but the problem
-		// still remains unsolved (e.g. the second example in the bug report).
-		// c.f. http://bugzilla.lyx.org/show_bug.cgi?id=3600
-		if (right > pars[pit].size() + 1)
-			right = pars[pit].size() + 1;
-
 		bool const merge = pars[pit].isMergedOnEndOfParDeletion(params.trackChanges);
 
 		// Logically erase only, including the end-of-paragraph character
@@ -316,14 +310,11 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 
 		// Separate handling of paragraph break:
 		if (merge && pit != endpit &&
-		    (pit + 1 != endpit || pars[pit].hasSameLayout(pars[pit + 1]))) {
-			pos_type const thissize = pars[pit].size();
-			if (doclear)
-				pars[pit + 1].stripLeadingSpaces(params.trackChanges);
+		    (pit + 1 != endpit || pars[pit].hasSameLayout(pars[endpit]))) {
+			if (pit + 1 == endpit)
+				endpos += pars[pit].size();
 			mergeParagraph(params, pars, pit);
 			--endpit;
-			if (pit == endpit)
-				endpos += thissize;
 		} else
 			++pit;
 	}
@@ -553,8 +544,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 			eraseSelectionHelper(bp,
 				text->paragraphs(),
 				begpit, endpit,
-				cur.selBegin().pos(), endpos,
-				doclear);
+				cur.selBegin().pos(), endpos);
 
 		// cutSelection can invalidate the cursor so we need to set
 		// it anew. (Lgb)
