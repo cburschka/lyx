@@ -62,7 +62,7 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 		return NoButton;
 
 	case Conglomerate:
-		return status_ == Open ? SubLabel : Corners;
+		return status() == Open ? SubLabel : Corners;
 	}
 
 	// dummy return value to shut down a warning,
@@ -181,29 +181,27 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	case NoButton:
 		InsetText::metrics(mi, dim);
 		break;
-	case SubLabel:
 	case Corners:
 		InsetText::metrics(mi, dim);
-		if (status() == Open) {
-			// consider width of the inset label
-			Font font(layout_.labelfont);
-			font.realize(Font(Font::ALL_SANE));
-			font.decSize();
-			font.decSize();
-			int w = 0;
-			int a = 0;
-			int d = 0;
-			docstring s = layout_.labelstring;
-			theFontMetrics(font).rectText(s, w, a, d);
-			dim.wid = max(dim.wid, w);
-		}
-		if (status() == Open)
-			dim.des += ascent();
-		else {
-			dim.des -= 3;
-			dim.asc -= 3;
-		}
+		dim.des -= 3;
+		dim.asc -= 3;
 		break;
+	case SubLabel: {
+		InsetText::metrics(mi, dim);
+		// consider width of the inset label
+		Font font(layout_.labelfont);
+		font.realize(Font(Font::ALL_SANE));
+		font.decSize();
+		font.decSize();
+		int w = 0;
+		int a = 0;
+		int d = 0;
+		docstring s = layout_.labelstring;
+		theFontMetrics(font).rectText(s, w, a, d);
+		dim.wid = max(dim.wid, w);
+		dim.des += ascent();
+		break;
+		}
 	case TopButton:
 	case LeftButton:
 	case ButtonOnly:
@@ -259,7 +257,9 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	// Draw button first -- top, left or only
 	Dimension dimc = dimensionCollapsed();
 	int const top  = y - ascent() + TEXT_TO_INSET_OFFSET;
-	if (decoration() == Classic) {
+	if (geometry() == TopButton ||
+	    geometry() == LeftButton ||
+	    geometry() == ButtonOnly) {
 		button_dim.x1 = xx + 0;
 		button_dim.x2 = xx + dimc.width();
 		button_dim.y1 = top;
@@ -456,7 +456,7 @@ Inset * InsetCollapsable::editXY(Cursor & cur, int x, int y)
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (geometry() == ButtonOnly
 	 || (button_dim.contains(x, y) 
-	  && decoration() != Minimalistic))
+	  && geometry() != NoButton))
 		return this;
 	cur.push(*this);
 	return InsetText::editXY(cur, x, y);
@@ -493,7 +493,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
-		if (decoration() == Minimalistic)
+		if (geometry() == NoButton)
 			InsetText::doDispatch(cur, cmd);
 		else if (geometry() != ButtonOnly
 		     && !hitButton(cmd))
@@ -504,7 +504,10 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
-			if (decoration() == Conglomerate) {
+			// There is no button to right click:
+			if (geometry() == Corners ||
+			    geometry() == SubLabel ||
+			    geometry() == NoButton)  {
 				if (internalStatus() == Open)
 					setStatus(cur, Collapsed);
 				else
