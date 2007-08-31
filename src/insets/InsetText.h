@@ -54,8 +54,6 @@ public:
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// draw inset selection
-	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
 	virtual docstring const editMessage() const;
 	///

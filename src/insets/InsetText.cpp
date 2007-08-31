@@ -207,11 +207,6 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
-{
-}
-
-
 docstring const InsetText::editMessage() const
 {
 	return _("Opened Text Inset");
