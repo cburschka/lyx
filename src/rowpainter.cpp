@@ -96,7 +96,7 @@ void RowPainter::paintHfill(pos_type const pos, pos_type const body_pos)
 
 	pi_.pain.line(int(x_), y1, int(x_), y0, Color::added_space);
 
-	if (par_.hfillExpansion(row_, pos)) {
+	if (pm_.hfillExpansion(row_, pos)) {
 		int const y2 = (y0 + y1) / 2;
 
 		if (pos >= body_pos) {

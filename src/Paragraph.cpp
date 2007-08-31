@@ -2624,42 +2624,6 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 }
 
 
-bool Paragraph::hfillExpansion(Row const & row, pos_type pos) const
-{
-	if (!isHfill(pos))
-		return false;
-
-	BOOST_ASSERT(pos >= row.pos() && pos < row.endpos());
-
-	// expand at the end of a row only if there is another hfill on the same row
-	if (pos == row.endpos() - 1) {
-		for (pos_type i = row.pos(); i < pos; i++) {
-			if (isHfill(i))
-				return true;
-		}
-		return false;
-	}
-
-	// expand at the beginning of a row only if it is the first row of a paragraph
-	if (pos == row.pos()) {
-		return pos == 0;
-	}
-
-	// do not expand in some labels
-	if (layout()->margintype != MARGIN_MANUAL && pos < beginOfBody())
-		return false;
-
-	// if there is anything between the first char of the row and
-	// the specified position that is neither a newline nor an hfill,
-	// the hfill will be expanded, otherwise it won't
-	for (pos_type i = row.pos(); i < pos; i++) {
-		if (!isNewline(i) && !isHfill(i))
-			return true;
-	}
-	return false;
-}
-
-
 int Paragraph::checkBiblio(bool track_changes)
 {
 	//FIXME From JS:

@@ -17,10 +17,8 @@
 #define PARAGRAPH_H
 
 #include "Changes.h"
-#include "Dimension.h"
 #include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
-#include "Row.h"
 
 #include "insets/Inset.h" // only for Inset::Code
 
@@ -356,8 +354,6 @@ public:
 	ParagraphParameters & params();
 	///
 	ParagraphParameters const & params() const;
-	///
-	bool hfillExpansion(Row const & row, pos_type pos) const;
 
 	/// Check if we are in a Biblio environment and insert or
 	/// delete InsetBibitems as necessary.

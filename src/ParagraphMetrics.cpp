@@ -213,4 +213,39 @@ int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 }
 
 
+bool ParagraphMetrics::hfillExpansion(Row const & row, pos_type pos) const
+{
+	if (!par_->isHfill(pos))
+		return false;
+
+	BOOST_ASSERT(pos >= row.pos() && pos < row.endpos());
+
+	// expand at the end of a row only if there is another hfill on the same row
+	if (pos == row.endpos() - 1) {
+		for (pos_type i = row.pos(); i < pos; i++) {
+			if (par_->isHfill(i))
+				return true;
+		}
+		return false;
+	}
+
+	// expand at the beginning of a row only if it is the first row of a paragraph
+	if (pos == row.pos()) {
+		return pos == 0;
+	}
+
+	// do not expand in some labels
+	if (par_->layout()->margintype != MARGIN_MANUAL && pos < par_->beginOfBody())
+		return false;
+
+	// if there is anything between the first char of the row and
+	// the specified position that is neither a newline nor an hfill,
+	// the hfill will be expanded, otherwise it won't
+	for (pos_type i = row.pos(); i < pos; i++) {
+		if (!par_->isNewline(i) && !par_->isHfill(i))
+			return true;
+	}
+	return false;
+}
+
 } // namespace lyx

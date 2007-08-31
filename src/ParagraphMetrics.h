@@ -17,7 +17,9 @@
 #ifndef PARAGRAPH_METRICS_H
 #define PARAGRAPH_METRICS_H
 
+#include "Dimension.h"
 #include "Paragraph.h"
+#include "Row.h"
 
 namespace lyx {
 
@@ -73,6 +75,10 @@ public:
 
 	/// dump some information to lyxerr
 	void dump() const;
+
+	///
+	bool hfillExpansion(Row const & row, pos_type pos) const;
+
 	/// 
 	void computeRowSignature(Row &, BufferParams const & bparams);
 

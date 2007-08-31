@@ -820,6 +820,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	int const xo = main_text_? 0 : bv_->coordCache().get(text_, pit).x_;
 	x -= xo;
 	Paragraph const & par = text_->getPar(pit);
+	ParagraphMetrics const & pm = par_metrics_[pit];
 	Bidi bidi;
 	bidi.computeTables(par, buffer, row);
 
@@ -856,7 +857,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 				tmpx -= singleWidth(pit, body_pos - 1);
 		}
 
-		if (par.hfillExpansion(row, c)) {
+		if (pm.hfillExpansion(row, c)) {
 			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
 				tmpx += row.hfill;
@@ -1054,7 +1055,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	// Re-enable screen drawing for future use of the painter.
 	pi.pain.setDrawingEnabled(true);
 
-	LYXERR(Debug::PAINTING) << "." << endl;
+	//LYXERR(Debug::PAINTING) << "." << endl;
 }
 
 

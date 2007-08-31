@@ -1553,7 +1553,7 @@ int Text::cursorX(BufferView const & bv, CursorSlice const & sl,
 
 		x += pm.singleWidth(pos, font);
 
-		if (par.hfillExpansion(row, pos))
+		if (pm.hfillExpansion(row, pos))
 			x += (pos >= body_pos) ? row.hfill : row.label_hfill;
 		else if (par.isSeparator(pos) && pos >= body_pos)
 			x += row.separator;
