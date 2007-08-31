@@ -739,6 +739,7 @@ src_frontends_controllers_header_files = Split('''
     ControlCommand.h
     ControlCommandBuffer.h
     ControlDocument.h
+    ControlEmbeddedFiles.h
     ControlERT.h
     ControlErrorList.h
     ControlExternal.h
@@ -785,6 +786,7 @@ src_frontends_controllers_files = Split('''
     ControlCommand.cpp
     ControlCommandBuffer.cpp
     ControlDocument.cpp
+    ControlEmbeddedFiles.cpp
     ControlERT.cpp
     ControlErrorList.cpp
     ControlExternal.cpp
@@ -865,6 +867,7 @@ src_frontends_qt4_header_files = Split('''
     GuiDelimiterDialog.h
     GuiDialogView.h
     GuiDocument.h
+    GuiEmbeddedFiles.h
     GuiErrorList.h
     GuiERT.h
     GuiExternal.h
@@ -954,6 +957,7 @@ src_frontends_qt4_files = Split('''
     GuiDelimiterDialog.cpp
     GuiDialogView.cpp
     GuiDocument.cpp
+    GuiEmbeddedFiles.cpp
     GuiErrorList.cpp
     GuiERT.cpp
     GuiExternal.cpp
@@ -1003,7 +1007,6 @@ src_frontends_qt4_files = Split('''
     GuiWrap.cpp
     IconPalette.cpp
     InsertTableWidget.cpp
-    KeySymbol.cpp
     LengthCombo.cpp
     LyXFileDialog.cpp
     PanelStack.cpp
@@ -1043,6 +1046,7 @@ src_frontends_qt4_ui_files = Split('''
     CitationUi.ui
     DelimiterUi.ui
     DocumentUi.ui
+    EmbeddedFilesUi.ui
     ERTUi.ui
     ErrorListUi.ui
     ExternalUi.ui

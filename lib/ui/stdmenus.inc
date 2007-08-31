@@ -420,6 +420,7 @@ Menuset
 		Item "Outline|O" "dialog-toggle toc"
 		Item "Start Appendix Here|A" "appendix"
 		Separator
+		Item "Embedded Files|E" "dialog-show embedding"
 		Item "Compressed|m" "buffer-toggle-compression"
 		Item "Settings...|S" "dialog-show document"
 	End

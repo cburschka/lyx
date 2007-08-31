@@ -1,0 +1,140 @@
+<ui version="4.0" >
+ <class>GuiEmbeddedFilesUi</class>
+ <widget class="QWidget" name="GuiEmbeddedFilesUi" >
+  <property name="windowModality" >
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>100</width>
+    <height>390</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QCheckBox" name="enableCB" >
+     <property name="text" >
+      <string>Enable embedding</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListWidget" name="filesLW" >
+     <property name="toolTip" >
+      <string>List of embedded files</string>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::ExtendedSelection</enum>
+     </property>
+     <property name="currentRow" >
+      <number>-1</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="pathLBL" >
+     <property name="text" >
+      <string>External FIle Name:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="fullpathLE" />
+   </item>
+   <item>
+    <widget class="QGroupBox" name="statusGB" >
+     <property name="title" >
+      <string>Status</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="autoRB" >
+        <property name="toolTip" >
+         <string>Automatic inclusion</string>
+        </property>
+        <property name="text" >
+         <string>Automatic</string>
+        </property>
+        <property name="autoExclusive" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="embeddedRB" >
+        <property name="text" >
+         <string>Embedded</string>
+        </property>
+        <property name="autoExclusive" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="externalRB" >
+        <property name="text" >
+         <string>External</string>
+        </property>
+        <property name="autoExclusive" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QComboBox" name="actionCB" >
+       <property name="toolTip" >
+        <string>Actions to perform</string>
+       </property>
+       <property name="currentIndex" >
+        <number>-1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="actionPB" >
+       <property name="toolTip" >
+        <string>Extract this file to disk</string>
+       </property>
+       <property name="text" >
+        <string>Action!</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

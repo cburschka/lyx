@@ -19,6 +19,7 @@
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
 #include "ControlDocument.h"
+#include "ControlEmbeddedFiles.h"
 #include "ControlErrorList.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
@@ -58,6 +59,7 @@
 #include "GuiCitationDialog.h"
 #include "GuiDelimiterDialog.h"
 #include "GuiDocument.h"
+#include "GuiEmbeddedFiles.h"
 #include "GuiErrorList.h"
 #include "GuiERT.h"
 #include "GuiExternal.h"
@@ -106,7 +108,7 @@ namespace {
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "document", "errorlist", "ert", "external", "file",
+"citation", "document", "embedding", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
 "mathdelimiter", "mathmatrix", "note", "paragraph",
 "prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
@@ -185,6 +187,13 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setController(new ControlDocument(*dialog));
 		dialog->setView(new GuiDocument(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "embedding") {
+		GuiViewBase & gui_view = static_cast<GuiViewBase &>(lyxview_);
+		GuiEmbeddedFiles * qef = new GuiEmbeddedFiles(*dialog);
+		dialog->setController(qef);
+		dialog->setView(new DockView<GuiEmbeddedFiles, GuiEmbeddedFilesDialog>(
+			*dialog, qef, &gui_view, _("Embedded Files"), Qt::RightDockWidgetArea));
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "errorlist") {
 		dialog->setController(new ControlErrorList(*dialog));
 		dialog->setView(new GuiErrorList(*dialog));

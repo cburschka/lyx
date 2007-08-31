@@ -22,6 +22,7 @@ SOURCEFILES = \
 	ControlCommand.cpp \
 	ControlCommandBuffer.cpp \
 	ControlDocument.cpp \
+	ControlEmbeddedFiles.cpp \
 	ControlErrorList.cpp \
 	ControlERT.cpp \
 	ControlExternal.cpp \
@@ -66,6 +67,7 @@ HEADERFILES = \
 	ControlDocument.h \
 	ControlErrorList.h \
 	ControlERT.h \
+	ControlEmbedded.h \
 	ControlExternal.h \
 	ControlFloat.h \
 	ControlGraphics.h \

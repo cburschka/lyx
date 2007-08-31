@@ -89,6 +89,11 @@ bool EmbeddedFiles::enabled() const
 
 void EmbeddedFiles::enable(bool flag)
 {
+	// FIXME: there are much more to do here. 
+	// If we enable embedding, it is maybe a good idea to copy embedded files
+	// to temppath()
+	// if we disable embedding, embedded files need to be copied to their
+	// original positions.
 	if (enabled() != flag) {
 		// file will be changed
 		buffer_->markDirty();
@@ -213,6 +218,28 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 		LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 	}
 	return true;
+}
+
+
+string EmbeddedFiles::filename(size_t idx) const
+{
+	return (file_list_.begin() + idx)->absFilename();
+}
+
+
+EmbeddedFile::STATUS EmbeddedFiles::status(size_t idx) const
+{
+	return (file_list_.begin() + idx)->status();
+}
+
+
+void EmbeddedFiles::setStatus(size_t idx, EmbeddedFile::STATUS status)
+{
+	if ((file_list_.begin() + idx)->status() != status) {
+		// file will be changed
+		buffer_->markDirty();
+		(file_list_.begin() + idx)->setStatus(status);
+	}
 }
 
 
