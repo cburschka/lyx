@@ -1,5 +1,5 @@
 /**
- * \file GuiDelimiterDialog.cpp
+ * \file GuiDelimiter.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "GuiDelimiterDialog.h"
+#include "GuiDelimiter.h"
 
 #include "GuiApplication.h"
 #include "GuiView.h"
@@ -21,8 +21,6 @@
 #include <QPixmap>
 #include <QCheckBox>
 #include <QListWidgetItem>
-
-#include <sstream>
 
 // Set to zero if unicode symbols are preferred.
 #define USE_PIXMAP 1
@@ -248,4 +246,4 @@ void GuiDelimiterDialog::on_matchCB_stateChanged(int state)
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiDelimiterDialog_moc.cpp"
+#include "GuiDelimiter_moc.cpp"

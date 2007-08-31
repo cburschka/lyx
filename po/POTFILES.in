@@ -59,9 +59,9 @@ src/frontends/qt4/GuiBranch.cpp
 src/frontends/qt4/GuiBranches.cpp
 src/frontends/qt4/GuiChanges.cpp
 src/frontends/qt4/GuiCharacter.cpp
-src/frontends/qt4/GuiCitationDialog.cpp
+src/frontends/qt4/GuiCitation.cpp
 src/frontends/qt4/GuiCommandBuffer.cpp
-src/frontends/qt4/GuiDelimiterDialog.cpp
+src/frontends/qt4/GuiDelimiter.cpp
 src/frontends/qt4/GuiDocument.cpp
 src/frontends/qt4/GuiERT.cpp
 src/frontends/qt4/GuiExternal.cpp
@@ -69,7 +69,7 @@ src/frontends/qt4/GuiFloat.cpp
 src/frontends/qt4/GuiGraphics.cpp
 src/frontends/qt4/GuiInclude.cpp
 src/frontends/qt4/GuiListings.cpp
-src/frontends/qt4/GuiMathMatrixDialog.cpp
+src/frontends/qt4/GuiMathMatrix.cpp
 src/frontends/qt4/GuiNote.cpp
 src/frontends/qt4/GuiParagraph.cpp
 src/frontends/qt4/GuiPrefs.cpp
@@ -83,12 +83,12 @@ src/frontends/qt4/GuiTabular.cpp
 src/frontends/qt4/GuiTabularCreate.cpp
 src/frontends/qt4/GuiTexinfo.cpp
 src/frontends/qt4/GuiThesaurus.cpp
+src/frontends/qt4/GuiUrl.cpp
 src/frontends/qt4/GuiVSpace.cpp
 src/frontends/qt4/GuiView.cpp
 src/frontends/qt4/GuiWrap.cpp
 src/frontends/qt4/IconPalette.cpp
 src/frontends/qt4/Qt2BC.h
-src/frontends/qt4/UrlView.cpp
 src/frontends/qt4/Validator.cpp
 src/frontends/qt4/alert_pimpl.cpp
 src/gettext.h

@@ -1,5 +1,5 @@
 /**
- * \file GuiMathMatrixDialog.cpp
+ * \file GuiMathMatrix.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "GuiMathMatrixDialog.h"
+#include "GuiMathMatrix.h"
 
 #include "EmptyTable.h"
 #include "qt_helpers.h"
@@ -121,4 +121,4 @@ void GuiMathMatrixDialog::slotClose()
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiMathMatrixDialog_moc.cpp"
+#include "GuiMathMatrix_moc.cpp"

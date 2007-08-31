@@ -54,11 +54,10 @@ SOURCEFILES = \
 	GuiChanges.cpp \
 	GuiCharacter.cpp \
 	GuiCitation.cpp \
-	GuiCitationDialog.cpp \
 	GuiClipboard.cpp \
 	GuiCommandBuffer.cpp \
 	GuiCommandEdit.cpp \
-	GuiDelimiterDialog.cpp \
+	GuiDelimiter.cpp \
 	GuiDialogView.cpp \
 	GuiDocument.cpp \
 	GuiEmbeddedFiles.cpp \
@@ -78,7 +77,7 @@ SOURCEFILES = \
 	GuiKeySymbol.cpp \
 	GuiListings.cpp \
 	GuiLog.cpp \
-	GuiMathMatrixDialog.cpp \
+	GuiMathMatrix.cpp \
 	GuiMenubar.cpp \
 	GuiNomencl.cpp \
 	GuiNote.cpp \
@@ -101,7 +100,7 @@ SOURCEFILES = \
 	GuiThesaurus.cpp \
 	GuiToc.cpp \
 	GuiToolbar.cpp \
-	GuiURLDialog.cpp \
+	GuiURL.cpp \
 	GuiView.cpp \
 	GuiViewSource.cpp \
 	GuiVSpace.cpp \
@@ -146,11 +145,10 @@ MOCHEADER = \
 	GuiBranch.h \
 	GuiChanges.h \
 	GuiCharacter.h \
-	GuiCitationDialog.h \
 	GuiCitation.h \
 	GuiCommandBuffer.h \
 	GuiCommandEdit.h \
-	GuiDelimiterDialog.h \
+	GuiDelimiter.h \
 	GuiDialogView.h \
 	GuiDocument.h \
 	GuiEmbeddedFiles.h \
@@ -166,7 +164,7 @@ MOCHEADER = \
 	GuiKeySymbol.h \
 	GuiListings.h \
 	GuiLog.h \
-	GuiMathMatrixDialog.h \
+	GuiMathMatrix.h \
 	GuiMenubar.h \
 	GuiNomencl.h \
 	GuiNote.h \
@@ -187,7 +185,7 @@ MOCHEADER = \
 	GuiThesaurus.h \
 	GuiToc.h \
 	GuiToolbar.h \
-	GuiURLDialog.h \
+	GuiURL.h \
 	GuiView.h \
 	GuiViewSource.h \
 	GuiVSpace.h \

@@ -1,5 +1,5 @@
 /**
- * \file GuiURLDialog.cpp
+ * \file GuiURL.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "GuiURLDialog.h"
+#include "GuiURL.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "ButtonController.h"
@@ -111,4 +111,5 @@ bool UrlView::isValid()
 } // namespace frontend
 } // namespace lyx
 
-#include "GuiURLDialog_moc.cpp"
+
+#include "GuiURL_moc.cpp"

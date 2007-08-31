@@ -859,12 +859,11 @@ src_frontends_qt4_header_files = Split('''
     GuiChanges.h
     GuiCharacter.h
     GuiCharacter.h
-    GuiCitationDialog.h
     GuiCitation.h
     GuiClipboard.h
     GuiCommandBuffer.h
     GuiCommandEdit.h
-    GuiDelimiterDialog.h
+    GuiDelimiter.h
     GuiDialogView.h
     GuiDocument.h
     GuiEmbeddedFiles.h
@@ -883,7 +882,7 @@ src_frontends_qt4_header_files = Split('''
     GuiKeySymbol.h
     GuiListings.h
     GuiLog.h
-    GuiMathMatrixDialog.h
+    GuiMathMatrix.h
     GuiMenubar.h
     GuiNomencl.h
     GuiNote.h
@@ -891,7 +890,6 @@ src_frontends_qt4_header_files = Split('''
     GuiParagraph.h
     GuiPopupMenu.h
     GuiPrefs.h
-    GuiPrintDialog.h
     GuiPrint.h
     GuiRef.h
     GuiSearch.h
@@ -907,7 +905,7 @@ src_frontends_qt4_header_files = Split('''
     GuiThesaurus.h
     GuiToc.h
     GuiToolbar.h
-    GuiURLDialog.h
+    GuiURL.h
     GuiView.h
     GuiViewSource.h
     GuiVSpace.h
@@ -947,11 +945,10 @@ src_frontends_qt4_files = Split('''
     GuiChanges.cpp
     GuiCharacter.cpp
     GuiCitation.cpp
-    GuiCitationDialog.cpp
     GuiClipboard.cpp
     GuiCommandBuffer.cpp
     GuiCommandEdit.cpp
-    GuiDelimiterDialog.cpp
+    GuiDelimiter.cpp
     GuiDialogView.cpp
     GuiDocument.cpp
     GuiEmbeddedFiles.cpp
@@ -970,7 +967,7 @@ src_frontends_qt4_files = Split('''
     GuiKeySymbol.cpp
     GuiListings.cpp
     GuiLog.cpp
-    GuiMathMatrixDialog.cpp
+    GuiMathMatrix.cpp
     GuiMenubar.cpp
     GuiNomencl.cpp
     GuiNote.cpp
@@ -979,7 +976,6 @@ src_frontends_qt4_files = Split('''
     GuiPopupMenu.cpp
     GuiPrefs.cpp
     GuiPrint.cpp
-    GuiPrintDialog.cpp
     GuiRef.cpp
     GuiSearch.cpp
     GuiSelection.cpp
@@ -994,7 +990,7 @@ src_frontends_qt4_files = Split('''
     GuiThesaurus.cpp
     GuiToc.cpp
     GuiToolbar.cpp
-    GuiURLDialog.cpp
+    GuiURL.cpp
     GuiView.cpp
     GuiViewSource.cpp
     GuiVSpace.cpp
