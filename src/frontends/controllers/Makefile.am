@@ -67,7 +67,7 @@ HEADERFILES = \
 	ControlDocument.h \
 	ControlErrorList.h \
 	ControlERT.h \
-	ControlEmbedded.h \
+	ControlEmbeddedFiles.h \
 	ControlExternal.h \
 	ControlFloat.h \
 	ControlGraphics.h \
