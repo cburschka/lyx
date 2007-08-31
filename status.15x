@@ -68,6 +68,9 @@ What's new
 - Conversion from older documents failed if koi8 was used as the
   document encoding (Bug 4158).
 
+- Handle array column specifiers @{decl.}, p{width} and the extenions by
+  array.sty in mathed (Bug 4132).
+
 * USER INTERFACE:
 
 - Fix crash when clicking in a tabular cell and the "delete empty paragraph"
