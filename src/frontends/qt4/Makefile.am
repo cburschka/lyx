@@ -301,6 +301,8 @@ BUILT_SOURCES += liblyxqt4.cpp
 
 else
 
+liblyxqt4.cpp:
+	touch $@
 
 liblyxqt4_la_SOURCES = \
 	$(SOURCEFILES) \
