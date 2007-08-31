@@ -92,28 +92,28 @@ bool ModuleList::load() {
 		default:
 			string const modName = lex.getString();
 			LYXERR(Debug::TCLASS) << "Module name: " << modName << endl;
-			if (lex.next()) {
-				string const fname = lex.getString();
-				LYXERR(Debug::TCLASS) << "Filename: " << fname << endl;
-				if (lex.next()) {
-					string const desc = lex.getString();
-					LYXERR(Debug::TCLASS) << "Description: " << desc << endl;
-					//FIXME Add packages
-					if (lex.next()) {
-						string packages = lex.getString();
-						LYXERR(Debug::TCLASS) << "Packages: " << packages << endl;
-						vector<string> pkgs;
-						while (!packages.empty()) {
-							string p;
-							packages = support::split(packages, p, ',');
-							pkgs.push_back(p);
-						}
-						// This code is run when we have
-						// modName, fname, desc, and pkgs
-						addLayoutModule(modName, fname, desc, pkgs);
-					}
-				}
+			if (!lex.next())
+				break;
+			string const fname = lex.getString();
+			LYXERR(Debug::TCLASS) << "Filename: " << fname << endl;
+			if (!lex.next())
+				break;
+			string const desc = lex.getString();
+			LYXERR(Debug::TCLASS) << "Description: " << desc << endl;
+			//FIXME Add packages
+			if (!lex.next())
+				break;
+			string packages = lex.getString();
+			LYXERR(Debug::TCLASS) << "Packages: " << packages << endl;
+			vector<string> pkgs;
+			while (!packages.empty()) {
+				string p;
+				packages = support::split(packages, p, ',');
+				pkgs.push_back(p);
 			}
+			// This code is run when we have
+			// modName, fname, desc, and pkgs
+			addLayoutModule(modName, fname, desc, pkgs);
 		} // end switch
 	} //end while
 	
