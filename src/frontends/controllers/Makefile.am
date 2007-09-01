@@ -1,8 +1,8 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = BCView.tmpl
-
 AM_CPPFLAGS += -I$(top_srcdir)/src $(BOOST_INCLUDES)
+
+EXTRA_DIST =
 
 pkglib_LTLIBRARIES = liblyxcontrollers.la
 

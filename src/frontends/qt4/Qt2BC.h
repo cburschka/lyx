@@ -29,21 +29,44 @@ namespace frontend {
     the activation policy and which buttons correspond to which output of the
     state machine.
 */
-class Qt2BC : public GuiBC<QPushButton, QWidget> {
+
+class Qt2BC : public BCView
+{
 public:
 	///
-	Qt2BC(ButtonController const &,
-	      docstring const & = _("Cancel"),
-	      docstring const & = _("Close"));
-private:
-	/// Updates the button sensitivity (enabled/disabled)
-	void setButtonEnabled(QPushButton *, bool enabled) const;
+	Qt2BC(ButtonController const & parent);
 
+	//@{
+	/** Store pointers to these widgets.
+	 */
+	void setOK(QPushButton * obj) { okay_ = obj; }
+	void setApply(QPushButton * obj) { apply_ = obj; }
+	void setCancel(QPushButton * obj) { cancel_ = obj; }
+	void setRestore(QPushButton * obj) { restore_ = obj; }
+	//@}
+
+	/** Add a pointer to the list of widgets whose activation
+	 *  state is dependent upon the read-only status of the
+	 *  underlying buffer.
+	 */
+	void addReadOnly(QWidget * obj) { read_only_.push_back(obj); }
+
+	/// Refresh the status of the Ok, Apply, Restore, Cancel buttons.
+	virtual void refresh() const;
+	/// Refresh the status of any widgets in the read_only list
+	virtual void refreshReadOnly() const;
+
+private:
 	/// Updates the widget sensitivity (enabled/disabled)
 	void setWidgetEnabled(QWidget *, bool enabled) const;
 
-	/// Set the label on the button
-	void setButtonLabel(QPushButton *, docstring const & label) const;
+	QPushButton * okay_;
+	QPushButton * apply_;
+	QPushButton * cancel_;
+	QPushButton * restore_;
+
+	typedef std::list<QWidget *> Widgets;
+	Widgets read_only_;
 };
 
 } // namespace frontend

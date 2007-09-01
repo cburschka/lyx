@@ -15,7 +15,6 @@
 #ifndef BUTTONPOLICY_H
 #define BUTTONPOLICY_H
 
-
 #include <vector>
 #include <boost/utility.hpp>
 
@@ -60,7 +59,7 @@ namespace frontend {
 	without requiring a change of the dialog contents.  If no repeating is
 	allowed the Ok+Apply buttons are deactivated.  The Preferences dialog
 	has its own special version of repeated apply handling because its Ok
-	button is actually a Save button -- its always reasonable to Save the
+	button is actually a Save button -- it is always reasonable to Save the
 	preferences if the dialog has changed since the last save.
 
     The IgnorantPolicy is a special case that allows anything.
@@ -205,9 +204,7 @@ public:
 		return button & outputs_[state_];
 	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly() const {
-		return false;
-	}
+	virtual bool isReadOnly() const { return false; }
 private:
 	/// Current state.
 	State state_;
@@ -320,8 +317,6 @@ class OkApplyCancelReadOnlyPolicy : public ButtonPolicy {
 public:
 	///
 	OkApplyCancelReadOnlyPolicy();
-	///
-	//virtual ~OkApplyCancelReadOnlyPolicy() {}
 
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -356,8 +351,6 @@ class OkApplyCancelPolicy : public ButtonPolicy {
 public:
 	///
 	OkApplyCancelPolicy();
-	///
-	//virtual ~OkApplyCancelPolicy() {}
 
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -366,9 +359,7 @@ public:
 		return button & outputs_[state_];
 	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly() const {
-		return false;
-	}
+	virtual bool isReadOnly() const { return false; }
 private:
 	/// Current state.
 	State state_;
@@ -389,8 +380,6 @@ class NoRepeatedApplyPolicy : public ButtonPolicy {
 public:
 	///
 	NoRepeatedApplyPolicy();
-	///
-	//virtual ~NoRepeatedApplyPolicy() {}
 
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -399,9 +388,7 @@ public:
 		return button & outputs_[state_];
 	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly() const {
-		return false;
-	}
+	virtual bool isReadOnly() const { return false; }
 private:
 	/// Current state.
 	State state_;
@@ -423,8 +410,6 @@ class PreferencesPolicy : public ButtonPolicy {
 public:
 	///
 	PreferencesPolicy();
-	///
-	//virtual ~PreferencesPolicy() {}
 
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
@@ -433,9 +418,7 @@ public:
 		return button & outputs_[state_];
 	}
 	/// Are we in a read-only state?
-	virtual bool isReadOnly() const {
-		return false;
-	}
+	virtual bool isReadOnly() const { return false; }
 private:
 	/// Current state.
 	State state_;
@@ -454,18 +437,12 @@ private:
  */
 class IgnorantPolicy : public ButtonPolicy {
 public:
-	//virtual ~IgnorantPolicy() {}
-
 	/// Trigger a transition with this input.
 	virtual void input(SMInput) {}
 	/// Activation status of a button.
-	virtual bool buttonStatus(Button) const {
-		return true;
-	}
+	virtual bool buttonStatus(Button) const { return true; }
 	/// Are we in a read-only state?
-	virtual bool isReadOnly() const {
-		return false;
-	}
+	virtual bool isReadOnly() const { return false; }
 };
 
 } // namespace frontend

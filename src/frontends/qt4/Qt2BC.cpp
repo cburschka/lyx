@@ -12,7 +12,9 @@
 #include <config.h>
 
 #include "Qt2BC.h"
-#include "qt_helpers.h"
+#include "BCView.h"
+#include "ButtonPolicy.h"
+#include "debug.h"
 
 #include <QPushButton>
 #include <QLineEdit>
@@ -20,33 +22,65 @@
 namespace lyx {
 namespace frontend {
 
-Qt2BC::Qt2BC(ButtonController const & parent,
-	     docstring const & cancel, docstring const & close)
-	: GuiBC<QPushButton, QWidget>(parent, cancel, close)
+
+Qt2BC::Qt2BC(ButtonController const & parent)
+	: BCView(parent), okay_(0), apply_(0), cancel_(0), restore_(0)
 {}
 
 
-void Qt2BC::setButtonEnabled(QPushButton * obj, bool enabled) const
+void Qt2BC::refresh() const
 {
-	obj->setEnabled(enabled);
+	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl;
+
+	bool const all_valid = checkWidgets();
+
+	if (okay_) {
+		bool const enabled =
+			all_valid && bp().buttonStatus(ButtonPolicy::OKAY);
+		okay_->setEnabled(enabled);
+	}
+	if (apply_) {
+		bool const enabled =
+			all_valid && bp().buttonStatus(ButtonPolicy::APPLY);
+		apply_->setEnabled(enabled);
+	}
+	if (restore_) {
+		bool const enabled =
+			all_valid && bp().buttonStatus(ButtonPolicy::RESTORE);
+		restore_->setEnabled(enabled);
+	}
+	if (cancel_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::CANCEL);
+		if (enabled)
+			cancel_->setText(toqstr(_("Cancel")));
+		else
+			cancel_->setText(toqstr(_("Close")));
+	}
+}
+
+
+void Qt2BC::refreshReadOnly() const
+{
+	if (read_only_.empty()) return;
+
+	bool const enable = !bp().isReadOnly();
+
+	Widgets::const_iterator end = read_only_.end();
+	Widgets::const_iterator iter = read_only_.begin();
+	for (; iter != end; ++iter) {
+		setWidgetEnabled(*iter, enable);
+	}
 }
 
 
 void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled) const
 {
-	// yuck, rtti, but the user comes first
 	if (QLineEdit * le = qobject_cast<QLineEdit*>(obj))
 		le->setReadOnly(!enabled);
 	else
 		obj->setEnabled(enabled);
 
 	obj->setFocusPolicy(enabled ? Qt::StrongFocus : Qt::NoFocus);
-}
-
-
-void Qt2BC::setButtonLabel(QPushButton * obj, docstring const & label) const
-{
-	obj->setText(toqstr(label));
 }
 
 } // namespace frontend

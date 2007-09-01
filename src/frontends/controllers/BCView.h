@@ -87,60 +87,7 @@ private:
 };
 
 
-/** A templatised instantiation of the ButtonController's View requiring the
- *  gui-frontend widgets.
- */
-template <class Button, class Widget>
-class GuiBC : public BCView {
-public:
-	///
-	GuiBC(ButtonController const & parent,
-	      docstring const & cancel, docstring const & close);
-
-	//@{
-	/** Store pointers to these widgets. The pointers are _not_
-	 *  owned by GuiBC.
-	 */
-	void setOK(Button * obj) { okay_ = obj; }
-	void setApply(Button * obj) { apply_ = obj; }
-	void setCancel(Button * obj) { cancel_ = obj; }
-	void setRestore(Button * obj) { restore_ = obj; }
-	//@}
-
-	/** Add a pointer to the list of widgets whose activation
-	 *  state is dependent upon the read-only status of the
-	 *  underlying buffer.
-	 */
-	void addReadOnly(Widget * obj) { read_only_.push_back(obj); }
-
-	/// Refresh the status of the Ok, Apply, Restore, Cancel buttons.
-	virtual void refresh() const;
-	/// Refresh the status of any widgets in the read_only list
-	virtual void refreshReadOnly() const;
-
-private:
-	/// Enable/Disable a widget
-	virtual void setWidgetEnabled(Widget * obj, bool enable) const = 0;
-	/// Enable/Disable a button
-	virtual void setButtonEnabled(Button * obj, bool enable) const = 0;
-	/// Set the Label on the button
-	virtual void setButtonLabel(Button * obj, docstring const & label) const = 0;
-
-	docstring const cancel_label_;
-	docstring const close_label_;
-
-	Button * okay_;
-	Button * apply_;
-	Button * cancel_;
-	Button * restore_;
-
-	typedef std::list<Widget *> Widgets;
-	Widgets read_only_;
-};
-
 } // namespace frontend
 } // namespace lyx
-
-#include "BCView.tmpl"
 
 #endif // BCVIEW_H

@@ -12,6 +12,7 @@
 
 #include "ButtonController.h"
 #include "BCView.h"
+#include "debug.h"
 
 namespace lyx {
 namespace frontend {

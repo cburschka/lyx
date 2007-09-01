@@ -110,7 +110,8 @@ void nextState(ButtonPolicy::State & state,
 	       ButtonPolicy::StateMachine const & s_m,
 	       char const * function_name = "nextState")
 {
-	if (ButtonPolicy::SMI_NOOP == in) return;
+	if (ButtonPolicy::SMI_NOOP == in)
+	return;
 
 	ButtonPolicy::State tmp = s_m[state][in];
 
@@ -191,15 +192,11 @@ void PreferencesPolicy::input(SMInput input)
 {
 	// The APPLIED state is persistent. Next time the dialog is opened,
 	// the user will be able to press 'Save'.
-	if (SMI_CANCEL == input
-	    || SMI_HIDE == input) {
+	if (SMI_CANCEL == input || SMI_HIDE == input) {
 		if (state_ != APPLIED)
 			state_ = INITIAL;
 	} else {
-		nextState(state_,
-			  input,
-			  state_machine_,
-			  "PreferencesPolicy");
+		nextState(state_, input, state_machine_, "PreferencesPolicy");
 	}
 }
 
@@ -250,8 +247,7 @@ void OkCancelPolicy::input(SMInput input)
 	//lyxerr << "OkCancelPolicy::input" << endl;
 
 	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input
-	    || SMI_HIDE == input) {
+	if (SMI_CANCEL == input || SMI_HIDE == input) {
 		state_ = INITIAL;
 	} else {
 		nextState(state_, input, state_machine_, "OkCancelPolicy");
@@ -324,13 +320,10 @@ void OkCancelReadOnlyPolicy::input(SMInput input)
 	//lyxerr << "OkCancelReadOnlyPolicy::input" << endl;
 
 	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input
-	    || SMI_HIDE == input) {
+	if (SMI_CANCEL == input || SMI_HIDE == input) {
 		state_ = INITIAL;
 	} else {
-		nextState(state_,
-			  input,
-			  state_machine_,
+		nextState(state_, input, state_machine_,
 			  "OkCancelReadOnlyPolicy");
 	}
 }
@@ -402,13 +395,10 @@ void NoRepeatedApplyReadOnlyPolicy::input(SMInput input)
 	//lyxerr << "NoReapeatedApplyReadOnlyPolicy::input" << endl;
 
 	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input
-	    || SMI_HIDE == input) {
+	if (SMI_CANCEL == input || SMI_HIDE == input) {
 		state_ = INITIAL;
 	} else {
-		nextState(state_,
-			  input,
-			  state_machine_,
+		nextState(state_, input, state_machine_,
 			  "NoRepeatedApplyReadOnlyPolicy");
 	}
 }
@@ -494,13 +484,10 @@ void OkApplyCancelReadOnlyPolicy::input(SMInput input)
 	//lyxerr << "OkApplyCancelReadOnlyPolicy::input" << endl;
 
 	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input
-	    || SMI_HIDE == input) {
+	if (SMI_CANCEL == input || SMI_HIDE == input) {
 		state_ = INITIAL;
 	} else {
-		nextState(state_,
-			  input,
-			  state_machine_,
+		nextState(state_, input, state_machine_,
 			  "OkApplyCancelReadOnlyPolicy");
 	}
 }
@@ -560,13 +547,10 @@ void OkApplyCancelPolicy::input(SMInput input)
 	//lyxerr << "OkApplyCancelPolicy::input" << endl;
 
 	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input
-	    || SMI_HIDE == input) {
+	if (SMI_CANCEL == input || SMI_HIDE == input) {
 		state_ = INITIAL;
 	} else {
-		nextState(state_,
-			  input,
-			  state_machine_,
+		nextState(state_, input, state_machine_,
 			  "OkApplyCancelPolicy");
 	}
 }
@@ -618,13 +602,10 @@ void NoRepeatedApplyPolicy::input(SMInput input)
 	//lyxerr << "NoRepeatedApplyPolicy::input" << endl;
 
 	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input
-	    || SMI_HIDE == input) {
+	if (SMI_CANCEL == input || SMI_HIDE == input) {
 		state_ = INITIAL;
 	} else {
-		nextState(state_,
-			  input,
-			  state_machine_,
+		nextState(state_, input, state_machine_,
 			  "NoRepeatedApplyPolicy");
 	}
 }
