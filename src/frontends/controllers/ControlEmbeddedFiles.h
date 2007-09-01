@@ -48,6 +48,8 @@ public:
 	void goTo(EmbeddedFile const & item);
 	///
 	void view(EmbeddedFile const & item);
+	///
+	docstring const browseFile();
 
 protected:
 	// directly handle buffer embedded files

@@ -127,6 +127,7 @@ void GuiEmbeddedFilesDialog::on_actionPB_clicked()
 	// ACTION
 	QString action = actionCB->currentText();
 	if (action == "Add file") {
+		addFile();
 	} else if (action == "Extract file") {
 	} else if (action == "Extract all") {
 	} else if (action == "Embed all") {
@@ -135,6 +136,16 @@ void GuiEmbeddedFilesDialog::on_actionPB_clicked()
 	} else if (action == "Edit file") {
 	} else {
 	}	
+}
+
+
+void GuiEmbeddedFilesDialog::addFile()
+{
+	docstring const file = form_->browseFile();
+	if (!file.empty()) {
+		EmbeddedFiles & files = form_->embeddedFiles();
+		files.registerFile(to_utf8(file), EmbeddedFile::EMBEDDED);
+	}		
 }
 
 

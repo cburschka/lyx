@@ -60,6 +60,7 @@ using support::makeRelPath;
 using support::changeExtension;
 using support::bformat;
 using support::zipFiles;
+using support::prefixIs;
 
 
 EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,
@@ -72,6 +73,13 @@ EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,
 string EmbeddedFile::embeddedFile(Buffer const * buf) const
 {
 	return addName(buf->temppath(), inzip_name_);
+}
+
+
+int const EmbeddedFile::parID() const
+{
+	// some embedded file do not have a valid par iterator
+	return par_it_ == ParConstIterator() ? 0 : par_it_->id();
 }
 
 
@@ -119,23 +127,8 @@ void EmbeddedFiles::registerFile(string const & filename,
 		it->validate();
 		return;
 	}
-	// register a new one, using relative file path as inzip_name
-	string inzip_name = to_utf8(makeRelPath(from_utf8(abs_filename),
-		from_utf8(buffer_->fileName())));
-	// if inzip_name is an absolute path, use filename only to avoid
-	// leaking of filesystem information in inzip_name
-	if (absolutePath(inzip_name))
-		inzip_name = onlyFilename(inzip_name);
-	// if this name has been used...
-	// use _1_name, _2_name etc
-	if (!validInzipName(inzip_name)) {
-		size_t i = 1;
-		string tmp = inzip_name;
-		do {
-			inzip_name = convert<string>(i) + "_" + tmp;
-		} while (!validInzipName(inzip_name));
-	}
-	file_list_.push_back(EmbeddedFile(abs_filename, inzip_name, status, pit));
+	file_list_.push_back(EmbeddedFile(abs_filename, 
+		getInzipName(abs_filename), status, pit));
 }
 
 
@@ -148,7 +141,10 @@ void EmbeddedFiles::update()
 	EmbeddedFileList::iterator it = file_list_.begin();
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it)
-		it->invalidate();
+		// if the status of a file is EMBEDDED, it will be there
+		// even if it is not referred by a document.
+		if (it->status() != EmbeddedFile::EMBEDDED)
+			it->invalidate();
 
 	ParIterator pit = buffer_->par_iterator_begin();
 	ParIterator pit_end = buffer_->par_iterator_end();
@@ -187,14 +183,25 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it) {
 		if (it->valid() && it->embedded()) {
-			// use external file if possible
-			if (it->status() != EmbeddedFile::EMBEDDED && fs::exists(it->absFilename()))
-				filenames.push_back(make_pair(it->absFilename(), it->inzipName()));
-			// use embedded file (AUTO or EMBEDDED mode)
-			else if(fs::exists(it->embeddedFile(buffer_)))
-				filenames.push_back(make_pair(it->embeddedFile(buffer_), it->inzipName()));
-			else
-				lyxerr << "File " << it->absFilename() << " does not exist. Skip embedding it. " << endl;
+			string ext_file = it->absFilename();
+			string emb_file = it->embeddedFile(buffer_);
+			if (it->status() == EmbeddedFile::AUTO) {
+				// use external file first
+				if (fs::exists(ext_file))
+					filenames.push_back(make_pair(ext_file, it->inzipName()));
+				else if (fs::exists(emb_file))
+					filenames.push_back(make_pair(emb_file, it->inzipName()));
+				else
+					lyxerr << "File " << ext_file << " does not exist. Skip embedding it. " << endl;
+			} else if (it->status() == EmbeddedFile::EMBEDDED) {
+				// use embedded file first
+				if (fs::exists(emb_file))
+					filenames.push_back(make_pair(emb_file, it->inzipName()));
+				else if (fs::exists(ext_file))
+					filenames.push_back(make_pair(ext_file, it->inzipName()));
+				else
+					lyxerr << "File " << ext_file << " does not exist. Skip embedding it. " << endl;
+			}
 		}
 	}
 	// add filename (.lyx) and manifest to filenames
@@ -221,14 +228,35 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 }
 
 
-bool EmbeddedFiles::validInzipName(string const & name)
+string const EmbeddedFiles::getInzipName(string const & abs_filename)
 {
-	EmbeddedFileList::iterator it = file_list_.begin();
+	// register a new one, using relative file path as inzip_name
+	string inzip_name = to_utf8(makeRelPath(from_utf8(abs_filename),
+		from_utf8(buffer_->fileName())));
+	// if inzip_name is an absolute path, use filename only to avoid
+	// leaking of filesystem information in inzip_name
+	if (absolutePath(inzip_name) || prefixIs(inzip_name, ".."))
+		inzip_name = onlyFilename(inzip_name);
+	// if this name has been used...
+	// use _1_name, _2_name etc
+	string tmp = inzip_name;
+	EmbeddedFileList::iterator it;
 	EmbeddedFileList::iterator it_end = file_list_.end();
-	for (; it != it_end; ++it)
-			if (it->inzipName() == name)
-				return false;
-	return true;
+	bool unique_name = false;
+	while (!unique_name) {
+		unique_name = true;
+		size_t i = 0;
+		if (i > 0)
+			inzip_name = convert<string>(i) + "_" + tmp;
+		it = file_list_.begin();
+		for (; it != it_end; ++it)
+			if (it->inzipName() == inzip_name) {
+				unique_name = false;
+				++i;
+				break;
+			}
+	}
+	return inzip_name;
 }
 
 

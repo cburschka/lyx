@@ -18,13 +18,20 @@
 #include "gettext.h"
 #include "debug.h"
 #include "Format.h"
+#include "LyXRC.h"
 
+#include "frontend_helpers.h"
 #include "frontends/LyXView.h"
+
+#include "support/FileFilterList.h"
 #include "support/convert.h"
 
 using std::string;
 
 namespace lyx {
+
+using support::FileFilterList;
+
 namespace frontend {
 
 ControlEmbeddedFiles::ControlEmbeddedFiles(Dialog & parent)
@@ -55,8 +62,11 @@ void ControlEmbeddedFiles::dispatchParams()
 
 void ControlEmbeddedFiles::goTo(EmbeddedFile const & item)
 {
-	string const tmp = convert<string>(item.parID());
-	kernel().lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
+	int id = item.parID();
+	if (id != 0) {
+		string const tmp = convert<string>(item.parID());
+		kernel().lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
+	}
 }
 
 
@@ -64,6 +74,18 @@ void ControlEmbeddedFiles::view(EmbeddedFile const & item)
 {
 	formats.view(kernel().buffer(), item, formats.getFormatFromFile(item));
 }
+
+
+docstring const ControlEmbeddedFiles::browseFile()
+{
+	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),
+				  lyx::from_utf8(lyxrc.document_path));
+	FileFilterList const filter(_("All file (*.*)"));
+	return browseRelFile(docstring(), lyx::from_utf8(kernel().bufferFilepath()),
+			     _("Select a file to embed"),
+			     filter, false, dir1);
+}
+
 
 } // namespace frontend
 } // namespace lyx

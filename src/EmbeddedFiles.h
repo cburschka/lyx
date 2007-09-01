@@ -137,7 +137,8 @@ public:
 		// to generate output, and be embedded to the saved lyx file.
 		// Otherwise, embedded version will be used.
 		AUTO,
-		// Always use embedded version.
+		// Always use embedded version. The file will be embedded even
+		// if the file is no longer referred by the document.
 		EMBEDDED,
 		// Do not embed this file, always use external version.
 		EXTERNAL
@@ -153,7 +154,7 @@ public:
 
 	/// paragraph id
 	void setParIter(ParConstIterator const & pit);
-	int const parID() const { return par_it_->id(); }
+	int const parID() const;
 
 	/// embedding status of this file
 	bool embedded() const { return status_ != EXTERNAL; }
@@ -225,8 +226,8 @@ public:
 
 	friend std::ostream & operator<< (std::ostream & os, EmbeddedFiles const &);
 private:
-	/// if a inzip name already exists
-	bool validInzipName(std::string const & name);
+	/// get a unique inzip name
+	std::string const getInzipName(std::string const & name);
 	/// list of embedded files
 	EmbeddedFileList file_list_;
 	///
