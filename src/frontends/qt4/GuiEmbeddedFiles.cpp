@@ -55,14 +55,6 @@ GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(GuiEmbeddedFiles * form)
 	}
 	filesLW->setCurrentRow(0);
 	//
-	actionCB->addItem("No action");
-	actionCB->addItem("Add file");
-	actionCB->addItem("Extract file");
-	actionCB->addItem("Extract all");
-	actionCB->addItem("Embed all");
-	actionCB->addItem("Embed layout file");
-	actionCB->addItem("View file");
-	actionCB->addItem("Edit file");
 	update();
 }
 
@@ -115,33 +107,10 @@ void GuiEmbeddedFilesDialog::update()
 	statusGB->setEnabled(enabled);
 	filesLW->setEnabled(enabled);
 	fullpathLE->setEnabled(enabled);
-	actionCB->setEnabled(enabled);
-	actionPB->setEnabled(enabled);
 }
 
 
-void GuiEmbeddedFilesDialog::on_actionPB_clicked()
-{
-	// FIXME.
-	
-	// ACTION
-	QString action = actionCB->currentText();
-	if (action == "Add file") {
-		addFile();
-	} else if (action == "Extract file") {
-		extractFile();
-	} else if (action == "Extract all") {
-		extractAll();
-	} else if (action == "Embed all") {
-	} else if (action == "Embed layout file") {
-	} else if (action == "View file") {
-	} else if (action == "Edit file") {
-	} else {
-	}	
-}
-
-
-void GuiEmbeddedFilesDialog::addFile()
+void GuiEmbeddedFilesDialog::on_addPB_clicked()
 {
 	docstring const file = form_->browseFile();
 	if (!file.empty()) {
@@ -151,25 +120,13 @@ void GuiEmbeddedFilesDialog::addFile()
 }
 
 
-bool GuiEmbeddedFilesDialog::extractFile()
+void GuiEmbeddedFilesDialog::on_extractPB_clicked()
 {
 	EmbeddedFiles const & files = form_->embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
-	form_->extract(files[filesLW->row(*selection.begin())]);
-}
-
-
-bool GuiEmbeddedFilesDialog::extractAll()
-{
-	EmbeddedFiles const & files = form_->embeddedFiles();
-	files.extractAll();
-}
-
-
-void GuiEmbeddedFilesDialog::on_actionCB_stateChanged(int idx)
-{
-	// valid action, enable action button
-	actionPB->setEnabled(idx != 0);
+	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
+		it != selection.end(); ++it)
+		form_->extract(files[filesLW->row(*it)]);
 }
 
 

@@ -34,19 +34,15 @@ public Q_SLOTS:
 	///
 	void update();
 	///
-	void on_actionPB_clicked();
-	///
-	void on_actionCB_stateChanged(int);
-	///
 	void on_enableCB_toggled(bool enable);
 	///
 	void on_autoRB_clicked();
 	void on_embeddedRB_clicked();
 	void on_externalRB_clicked();
 	///
-	void addFile();
-	bool extractFile();
-	bool extractAll();
+	void on_addPB_clicked();
+	//
+	void on_extractPB_clicked();
 private:
 	void set_embedding_status(EmbeddedFile::STATUS);
 	///
