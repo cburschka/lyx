@@ -15,6 +15,7 @@
 #include "BCView.h"
 #include "ButtonPolicy.h"
 #include "debug.h"
+#include "qt_helpers.h"
 
 #include <QPushButton>
 #include <QLineEdit>
