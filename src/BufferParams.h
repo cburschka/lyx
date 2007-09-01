@@ -103,7 +103,7 @@ public:
 	///Set the LyX TextClass (that is, the layout file) this document is using.
 	///NOTE This also calls makeTextClass(), to update the local
 	///TextClass.
-	void setBaseClass(textclass_type);
+	bool setBaseClass(textclass_type);
 	///Returns the TextClass currently in use: the BaseClass as modified
 	///by modules.
 	TextClass const & getTextClass() const;

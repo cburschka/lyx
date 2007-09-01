@@ -111,24 +111,11 @@ void ControlDocument::dispatchParams()
 	// This must come first so that a language change is correctly noticed
 	setLanguage();
 
-	// Set the document class.
-	textclass_type const old_class =
-		kernel().buffer().params().getBaseClass();
-	textclass_type const new_class = bp_->getBaseClass();
-	if (new_class != old_class) {
-		string const name = textclasslist[new_class].name();
-		kernel().dispatch(FuncRequest(LFUN_TEXTCLASS_APPLY, name));
-	}
-
-	int const old_secnumdepth = kernel().buffer().params().secnumdepth;
-	int const new_secnumdepth = bp_->secnumdepth;
-
-	// Apply the BufferParams.
+	// Apply the BufferParams. Note that this will set the base class
+	// and then update the buffer's layout.
+	//FIXME Could this be done last? Then, I think, we'd get the automatic
+	//update mentioned in the next FIXME...
 	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_PARAMS_APPLY);
-
-	// redo the numbering if necessary
-	if (new_secnumdepth != old_secnumdepth)
-		updateLabels(kernel().buffer());
 
 	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();
@@ -163,17 +150,6 @@ void ControlDocument::setLanguage() const
 
 	string const lang_name = newL->lang();
 	kernel().dispatch(FuncRequest(LFUN_BUFFER_LANGUAGE, lang_name));
-}
-
-
-bool ControlDocument::loadTextclass(textclass_type tc) const
-{
-	string const name = textclasslist[tc].name();
-	kernel().dispatch(FuncRequest(LFUN_TEXTCLASS_LOAD, name));
-
-	// Report back whether we were able to change the class.
-	bool const success = textclasslist[tc].loaded();
-	return success;
 }
 
 

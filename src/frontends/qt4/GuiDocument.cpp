@@ -825,19 +825,12 @@ void GuiDocumentDialog::updatePagestyle(string const & items, string const & sel
 
 void GuiDocumentDialog::classChanged()
 {
-	ControlDocument & cntrl = form_->controller();
-	BufferParams & params = cntrl.params();
-
+	BufferParams & params = form_->controller().params();
 	textclass_type const tc = latexModule->classCO->currentIndex();
-
-	if (form_->controller().loadTextclass(tc)) {
-		params.setJustBaseClass(tc);
-		if (lyxrc.auto_reset_options)
-			params.useClassDefaults();
-		form_->update_contents();
-	} else {
-		latexModule->classCO->setCurrentIndex(params.getBaseClass());
-	}
+	params.setJustBaseClass(tc);
+	if (lyxrc.auto_reset_options)
+		params.useClassDefaults();
+	form_->update_contents();
 }
 
 

@@ -59,8 +59,6 @@ public:
 	///
 	void saveAsDefault() const;
 	///
-	bool loadTextclass(textclass_type tc) const;
-	///
 	bool const isFontAvailable(std::string const & font) const;
 	/// does this font provide Old Style figures?
 	bool const providesOSF(std::string const & font) const;
