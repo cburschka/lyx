@@ -10,6 +10,8 @@
 
 #include <config.h>
 
+#include <sstream>
+
 #include "GuiLog.h"
 #include "qt_helpers.h"
 
