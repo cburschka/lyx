@@ -1027,21 +1027,27 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// changed.
 		// Clear background of this row
 		// (if paragraph background was not cleared)
-		if (!pi.full_repaint && row_has_changed)
+		if (!pi.full_repaint && row_has_changed) {
 			pi.pain.fillRectangle(x, y - rit->ascent(),
 			width(), rit->height(),
 			text_->backgroundColor());
+		}
 
 		// Instrumentation for testing row cache (see also
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING)) {
 			if (text_->isMainText(bv_->buffer()))
-				LYXERR(Debug::PAINTING) << "{" <<
-				pi.full_repaint << row_has_changed << "}";
+				LYXERR(Debug::PAINTING) << "\n{" <<
+				pi.full_repaint << row_has_changed << "}  ";
 			else
 				LYXERR(Debug::PAINTING) << "[" <<
 				pi.full_repaint << row_has_changed << "]";
 		}
+
+		// Backup full_repaint status and force full repaint
+		// for inner insets as the Row has been cleared out.
+		bool tmp = pi.full_repaint;
+		pi.full_repaint = true;
 		rp.paintAppendix();
 		rp.paintDepthBar();
 		rp.paintChangeBar();
@@ -1051,6 +1057,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		if (rit + 1 == re)
 			rp.paintLast();
 		y += rit->descent();
+		// Restore full_repaint status.
+		pi.full_repaint = tmp;
 	}
 	// Re-enable screen drawing for future use of the painter.
 	pi.pain.setDrawingEnabled(true);

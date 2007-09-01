@@ -213,13 +213,7 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 			openinlined_ = !hasFixedWidth()
 				&& textdim_.wid < 0.5 * mi.base.bv->workWidth();
 			if (openinlined_) {
-				// FIXME: this is not ideal but we need to clear it
-				// out because the Row::changed() status is reset.
-				mi.base.bv->textMetrics(&text_).clear();
-				// Correct for button width, and re-fit
-				mi.base.textwidth -= dim.wid;
-				InsetText::metrics(mi, textdim_);
-				mi.base.textwidth += dim.wid;
+				// Correct for button width.
 				dim.wid += textdim_.wid;
 				dim.des = max(dim.des - textdim_.asc + dim.asc, textdim_.des);
 				dim.asc = textdim_.asc;
@@ -336,7 +330,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 				s, font, Color::none, Color::none);
 		}
 
-		// a visual cue when the cursor is inside the inset
+		// a visual clue when the cursor is inside the inset
 		Cursor & cur = pi.base.bv->cursor();
 		if (cur.isInside(this)) {
 			y -= ascent();
