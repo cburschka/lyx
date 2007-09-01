@@ -151,6 +151,9 @@ public:
 	std::string inzipName() const { return inzip_name_; }
 	/// embedded file, equals to temppath()/inzipName()
 	std::string embeddedFile(Buffer const * buf) const;
+	/// embeddedFile() or absFilename() depending on status_ and 
+	/// file availability
+	std::string availableFile(Buffer const * buf) const;
 
 	/// paragraph id
 	void setParIter(ParConstIterator const & pit);
@@ -170,6 +173,8 @@ public:
 	bool valid() const { return valid_; }
 	void validate() { valid_ = true; }
 	void invalidate() {	valid_ = false;	}
+	///
+	bool extract(Buffer const * buf) const;
 
 private:
 	/// filename in zip file
@@ -220,7 +225,8 @@ public:
 	EmbeddedFileList::iterator end() { return file_list_.end(); }
 	EmbeddedFileList::const_iterator begin() const { return file_list_.begin(); }
 	EmbeddedFileList::const_iterator end() const { return file_list_.end(); }
-
+	///
+	bool extractAll() const;
 	///
 	friend std::istream & operator>> (std::istream & is, EmbeddedFiles &);
 

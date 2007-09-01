@@ -129,7 +129,9 @@ void GuiEmbeddedFilesDialog::on_actionPB_clicked()
 	if (action == "Add file") {
 		addFile();
 	} else if (action == "Extract file") {
+		extractFile();
 	} else if (action == "Extract all") {
+		extractAll();
 	} else if (action == "Embed all") {
 	} else if (action == "Embed layout file") {
 	} else if (action == "View file") {
@@ -146,6 +148,21 @@ void GuiEmbeddedFilesDialog::addFile()
 		EmbeddedFiles & files = form_->embeddedFiles();
 		files.registerFile(to_utf8(file), EmbeddedFile::EMBEDDED);
 	}		
+}
+
+
+bool GuiEmbeddedFilesDialog::extractFile()
+{
+	EmbeddedFiles const & files = form_->embeddedFiles();
+	QList<QListWidgetItem *> selection = filesLW->selectedItems();
+	form_->extract(files[filesLW->row(*selection.begin())]);
+}
+
+
+bool GuiEmbeddedFilesDialog::extractAll()
+{
+	EmbeddedFiles const & files = form_->embeddedFiles();
+	files.extractAll();
 }
 
 

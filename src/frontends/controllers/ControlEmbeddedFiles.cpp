@@ -87,5 +87,11 @@ docstring const ControlEmbeddedFiles::browseFile()
 }
 
 
+bool ControlEmbeddedFiles::extract(EmbeddedFile const & item)
+{
+	return item.extract(&kernel().buffer());
+}
+
+
 } // namespace frontend
 } // namespace lyx

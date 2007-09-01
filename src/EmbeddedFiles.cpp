@@ -28,6 +28,8 @@
 #include "support/filetools.h"
 #include "support/fs_extras.h"
 #include "support/convert.h"
+#include "support/lyxlib.h"
+#include "support/lstrings.h"
 
 #include <sstream>
 #include <fstream>
@@ -61,6 +63,7 @@ using support::changeExtension;
 using support::bformat;
 using support::zipFiles;
 using support::prefixIs;
+using support::sum;
 
 
 EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,
@@ -89,6 +92,61 @@ void EmbeddedFile::setParIter(ParConstIterator const & pit)
 }
 
 
+string EmbeddedFile::availableFile(Buffer const * buf) const
+{
+	string ext_file = absFilename();
+	string emb_file = embeddedFile(buf);
+	if (status_ == AUTO) {
+		// use external file first
+		if (fs::exists(ext_file))
+			return ext_file;
+		else if (fs::exists(emb_file))
+			return emb_file;
+		else
+			return string();
+	} else if (status_ == EMBEDDED) {
+		// use embedded file first
+		if (fs::exists(emb_file))
+			return emb_file;
+		else if (fs::exists(ext_file))
+			return ext_file;
+		else
+			return string();
+	} else
+		return string();
+}
+
+
+bool EmbeddedFile::extract(Buffer const * buf) const
+{
+	string ext_file = absFilename();
+	string emb_file = embeddedFile(buf);
+	bool copyFile = false;
+	// both files exist, are different, and in EMBEDDED status
+	if (fs::exists(ext_file) && fs::exists(emb_file) && status_ == EMBEDDED
+		&& sum(*this) != sum(FileName(emb_file))) {
+		int const ret = Alert::prompt(
+			_("Overwrite external file?"),
+			bformat(_("External file %1$s already exists, do you want to overwrite it"),
+				from_utf8(ext_file)), 1, 1, _("&Overwrite"), _("&Cancel"));
+		copyFile = ret == 0;
+	}
+	// copy file in the previous case, and a new case
+	if (copyFile || (!fs::exists(ext_file) && fs::exists(emb_file))) {
+		try {
+			fs::copy_file(emb_file, ext_file, false);
+			return true;
+		} catch (fs::filesystem_error const & fe) {
+			Alert::error(_("Copy file failure"),
+				 bformat(_("Cannot copy file %1$s to %2$s.\n"
+					   "Please check whether the directory exists and is writeable."),
+						from_utf8(emb_file), from_utf8(ext_file)));
+			LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
+		}
+	}
+}
+
+ 
 bool EmbeddedFiles::enabled() const
 {
 	return buffer_->params().embedded;
@@ -97,15 +155,13 @@ bool EmbeddedFiles::enabled() const
 
 void EmbeddedFiles::enable(bool flag)
 {
-	// FIXME: there are much more to do here. 
-	// If we enable embedding, it is maybe a good idea to copy embedded files
-	// to temppath()
-	// if we disable embedding, embedded files need to be copied to their
-	// original positions.
 	if (enabled() != flag) {
-		// file will be changed
-		buffer_->markDirty();
-		buffer_->params().embedded = flag;
+		// if disable embedding, first extract all embedded files
+		if (flag || (!flag && extractAll())) {
+			// file will be changed
+			buffer_->markDirty();
+			buffer_->params().embedded = flag;
+		}
 	}
 }
 
@@ -141,9 +197,9 @@ void EmbeddedFiles::update()
 	EmbeddedFileList::iterator it = file_list_.begin();
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it)
-		// if the status of a file is EMBEDDED, it will be there
-		// even if it is not referred by a document.
-		if (it->status() != EmbeddedFile::EMBEDDED)
+		// Only AUTO files will be updated. If the status of a file is EMBEDDED, 
+		// it will be embedded even if it is not referred by a document.
+		if (it->status() == EmbeddedFile::AUTO)
 			it->invalidate();
 
 	ParIterator pit = buffer_->par_iterator_begin();
@@ -183,25 +239,11 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it) {
 		if (it->valid() && it->embedded()) {
-			string ext_file = it->absFilename();
-			string emb_file = it->embeddedFile(buffer_);
-			if (it->status() == EmbeddedFile::AUTO) {
-				// use external file first
-				if (fs::exists(ext_file))
-					filenames.push_back(make_pair(ext_file, it->inzipName()));
-				else if (fs::exists(emb_file))
-					filenames.push_back(make_pair(emb_file, it->inzipName()));
-				else
-					lyxerr << "File " << ext_file << " does not exist. Skip embedding it. " << endl;
-			} else if (it->status() == EmbeddedFile::EMBEDDED) {
-				// use embedded file first
-				if (fs::exists(emb_file))
-					filenames.push_back(make_pair(emb_file, it->inzipName()));
-				else if (fs::exists(ext_file))
-					filenames.push_back(make_pair(ext_file, it->inzipName()));
-				else
-					lyxerr << "File " << ext_file << " does not exist. Skip embedding it. " << endl;
-			}
+			string file = it->availableFile(buffer_);
+			if (file.empty())
+				lyxerr << "File " << it->absFilename() << " does not exist. Skip embedding it. " << endl;
+			else
+				filenames.push_back(make_pair(file, it->inzipName()));
 		}
 	}
 	// add filename (.lyx) and manifest to filenames
@@ -224,6 +266,20 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 					 from_utf8(filename.absFilename())));
 		LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 	}
+	return true;
+}
+
+
+bool EmbeddedFiles::extractAll() const
+{
+	EmbeddedFileList::const_iterator it = file_list_.begin();
+	EmbeddedFileList::const_iterator it_end = file_list_.end();
+	// FIXME: the logic here is hard to decide, we should allow cancel for
+	// 'do not overwrite' this file, and cancel for 'cancel extract all files'.
+	// I am not sure how to do this now.
+	for (; it != it_end; ++it)
+		if (it->valid() && it->status() != EmbeddedFile::EXTERNAL)
+			it->extract(buffer_);
 	return true;
 }
 

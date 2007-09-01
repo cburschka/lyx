@@ -45,6 +45,8 @@ public Q_SLOTS:
 	void on_externalRB_clicked();
 	///
 	void addFile();
+	bool extractFile();
+	bool extractAll();
 private:
 	void set_embedding_status(EmbeddedFile::STATUS);
 	///

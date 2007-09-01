@@ -50,6 +50,8 @@ public:
 	void view(EmbeddedFile const & item);
 	///
 	docstring const browseFile();
+	///
+	bool extract(EmbeddedFile const & item);
 
 protected:
 	// directly handle buffer embedded files
