@@ -1745,47 +1745,66 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_PARAMS_APPLY: {
 			BOOST_ASSERT(lyx_view_);
-			biblio::CiteEngine const engine =
-				lyx_view_->buffer()->params().getEngine();
+			biblio::CiteEngine const oldEngine =
+					lyx_view_->buffer()->params().getEngine();
+			
+			Buffer * buffer = lyx_view_->buffer();
 
+			TextClass_ptr oldClass = buffer->params().getTextClass_ptr();
+			recordUndoFullDocument(view());
+			
 			istringstream ss(argument);
 			Lexer lex(0,0);
 			lex.setStream(ss);
-			int const unknown_tokens =
-				lyx_view_->buffer()->readHeader(lex);
+			int const unknown_tokens = buffer->readHeader(lex);
 
 			if (unknown_tokens != 0) {
 				lyxerr << "Warning in LFUN_BUFFER_PARAMS_APPLY!\n"
-				       << unknown_tokens << " unknown token"
-				       << (unknown_tokens == 1 ? "" : "s")
-				       << endl;
+						<< unknown_tokens << " unknown token"
+						<< (unknown_tokens == 1 ? "" : "s")
+						<< endl;
 			}
-			if (engine == lyx_view_->buffer()->params().getEngine())
-				break;
-
-			Cursor & cur = view()->cursor();
-			FuncRequest fr(LFUN_INSET_REFRESH);
-
-			Inset & inset = lyx_view_->buffer()->inset();
-			InsetIterator it  = inset_iterator_begin(inset);
-			InsetIterator const end = inset_iterator_end(inset);
-			for (; it != end; ++it)
-				if (it->lyxCode() == Inset::CITE_CODE)
-					it->dispatch(cur, fr);
+			
+			updateLayout(oldClass, buffer);
+			
+			biblio::CiteEngine const newEngine =
+					lyx_view_->buffer()->params().getEngine();
+			
+			if (oldEngine != newEngine) {
+				Cursor & cur = view()->cursor();
+				FuncRequest fr(LFUN_INSET_REFRESH);
+	
+				Inset & inset = lyx_view_->buffer()->inset();
+				InsetIterator it  = inset_iterator_begin(inset);
+				InsetIterator const end = inset_iterator_end(inset);
+				for (; it != end; ++it)
+					if (it->lyxCode() == Inset::CITE_CODE)
+						it->dispatch(cur, fr);
+			}
+			
+			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
 		
 		case LFUN_LAYOUT_MODULES_CLEAR: {
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->buffer()->params().clearLayoutModules();
-			updateFlags = Update::Force;
+			Buffer * buffer = lyx_view_->buffer();
+			TextClass_ptr oldClass = buffer->params().getTextClass_ptr();
+			recordUndoFullDocument(view());
+			buffer->params().clearLayoutModules();
+			updateLayout(oldClass, buffer);
+			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
 		
 		case LFUN_LAYOUT_MODULE_ADD: {
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->buffer()->params().addLayoutModule(argument);
-			updateFlags = Update::Force;
+			Buffer * buffer = lyx_view_->buffer();
+			TextClass_ptr oldClass = buffer->params().getTextClass_ptr();
+			recordUndoFullDocument(view());
+			buffer->params().addLayoutModule(argument);
+			updateLayout(oldClass, buffer);
+			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
 
@@ -1808,22 +1827,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// nothing to do
 				break;
 
-			lyx_view_->message(_("Converting document to new document class..."));
-			recordUndoFullDocument(view());
 			//Save the old, possibly modular, layout for use in conversion.
 			TextClass_ptr oldClass = buffer->params().getTextClass_ptr();
+			recordUndoFullDocument(view());
 			buffer->params().setBaseClass(new_class);
-			
-			StableDocIterator backcur(view()->cursor());
-			ErrorList & el = buffer->errorList("Class Switch");
-			cap::switchBetweenClasses(
-				oldClass, buffer->params().getTextClass_ptr(),
-				static_cast<InsetText &>(buffer->inset()), el);
-
-			view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
-
-			buffer->errors("Class Switch");
-			updateLabels(*buffer);
+			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
@@ -2282,6 +2290,24 @@ BufferView * LyXFunc::view() const
 bool LyXFunc::wasMetaKey() const
 {
 	return (meta_fake_bit != key_modifier::none);
+}
+
+
+void LyXFunc::updateLayout(TextClass_ptr const & oldlayout,
+                           Buffer * buffer)
+{
+	lyx_view_->message(_("Converting document to new document class..."));
+	
+	StableDocIterator backcur(view()->cursor());
+	ErrorList & el = buffer->errorList("Class Switch");
+	cap::switchBetweenClasses(
+			oldlayout, buffer->params().getTextClass_ptr(),
+			static_cast<InsetText &>(buffer->inset()), el);
+
+	view()->setCursor(backcur.asDocIterator(&(buffer->inset())));
+
+	buffer->errors("Class Switch");
+	updateLabels(*buffer);
 }
 
 

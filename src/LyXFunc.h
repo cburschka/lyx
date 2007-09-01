@@ -17,6 +17,7 @@
 
 #include "KeySequence.h"
 #include "lfuns.h"
+#include "TextClass_ptr.h"
 
 #include "support/docstring.h"
 
@@ -25,6 +26,7 @@
 
 namespace lyx {
 
+class Buffer;
 class BufferView;
 class FuncRequest;
 class FuncStatus;
@@ -125,6 +127,8 @@ private:
 	void reloadBuffer();
 	///
 	bool ensureBufferClean(BufferView * bv);
+	///
+	void updateLayout(TextClass_ptr const & oldlayout, Buffer * buffer);
 };
 
 /// Implementation is in LyX.cpp
