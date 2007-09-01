@@ -46,6 +46,7 @@ InsetBranch::InsetBranch(BufferParams const & bp,
 			 InsetBranchParams const & params)
 	: InsetCollapsable(bp), params_(params)
 {
+	setLayout(bp);
 	init();
 }
 

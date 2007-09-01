@@ -82,6 +82,7 @@ End
 
 InsetLayout ERT
 	LabelString           ERT
+	Decoration            minimalistic
 	Font
 	  Color               latex
 	  Family              typewriter
@@ -91,4 +92,13 @@ InsetLayout ERT
 	  Size                Small
 	EndFont
 End
+
+InsetLayout Branch
+	Decoration            minimalistic
+	LabelFont
+	  Color               Red
+	  Size                Small
+	EndFont
+End
+
 

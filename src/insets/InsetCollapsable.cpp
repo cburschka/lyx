@@ -59,10 +59,10 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 			return ButtonOnly;
 
 	case Minimalistic:
-		return NoButton;
+		return status() == Open ? NoButton : ButtonOnly ;
 
 	case Conglomerate:
-		return status() == Open ? SubLabel : Corners;
+		return status() == Open ? SubLabel : Corners ;
 	}
 
 	// dummy return value to shut down a warning,
@@ -261,6 +261,11 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y2 = top + dimc.height();
 
 		pi.pain.buttonText(xx, top + dimc.asc, layout_.labelstring, layout_.labelfont, mouse_hover_);
+	} else {
+		button_dim.x1 = 0;
+		button_dim.y1 = 0;
+		button_dim.x2 = 0;
+		button_dim.y2 = 0;
 	}
 
 	int textx, texty;
