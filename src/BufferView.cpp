@@ -1554,12 +1554,14 @@ void BufferView::draw(frontend::Painter & pain)
 
 	int yy = metrics_info_.y1;
 	// draw contents
+	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
 	for (pit_type pit = metrics_info_.p1; pit <= metrics_info_.p2; ++pit) {
 		ParagraphMetrics const & pm = tm.parMetrics(pit);
 		yy += pm.ascent();
 		tm.drawParagraph(pi, pit, 0, yy);
 		yy += pm.descent();
 	}
+	LYXERR(Debug::PAINTING) << "\n\t\t*** END DRAWING  ***" << endl;
 
 	// and grey out above (should not happen later)
 //	lyxerr << "par ascent: " << text.getPar(metrics_info_.p1).ascent() << endl;
