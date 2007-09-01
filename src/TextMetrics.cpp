@@ -148,29 +148,37 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 {
 	BOOST_ASSERT(mi.base.textwidth);
 	max_width_ = mi.base.textwidth;
-	dim_.wid = max_width_;
+	// backup old dimension.
+	Dimension const old_dim = dim_;
+	// reset dimension.
+	dim_ = Dimension();
+	size_t npar = text_->paragraphs().size();
+	if (npar > 1)
+		// If there is more than one row, expand the text to 
+		// the full allowable width.
+		dim_.wid = max_width_;
 
-	lyxerr << "Text::metrics: width: " << mi.base.textwidth
-		<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
+	//lyxerr << "Text::metrics: width: " << mi.base.textwidth
+	//	<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
 
 	bool changed = false;
-
 	unsigned int h = 0;
-	unsigned int w = 0;
-	for (pit_type pit = 0, n = text_->paragraphs().size(); pit != n; ++pit) {
+	for (pit_type pit = 0; pit != npar; ++pit) {
 		changed |= redoParagraph(pit);
 		ParagraphMetrics const & pm = par_metrics_[pit];
 		h += pm.height();
-		if (w < pm.width())
-			w = pm.width();
+		if (dim_.wid < pm.width())
+			dim_.wid = pm.width();
 	}
 
-	dim.wid = w;
-	dim.asc = par_metrics_[0].ascent();
-	dim.des = h - dim.asc;
+	dim_.asc = par_metrics_[0].ascent();
+	dim_.des = h - dim_.asc;
+	//lyxerr << "dim_.wid " << dim_.wid << endl;
+	//lyxerr << "dim_.asc " << dim_.asc << endl;
+	//lyxerr << "dim_.des " << dim_.des << endl;
 
-	changed |= dim_ != dim;
-	dim_ = dim;
+	changed |= dim_ != old_dim;
+	dim = dim_;
 	return changed;
 }
 
@@ -246,6 +254,12 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	do {
 		Dimension dim;
 		pos_type end = rowBreakPoint(width, pit, first);
+		if (row_index || end < par.size())
+			// If there is more than one row, expand the text to 
+			// the full allowable width. This setting here is needed
+			// for the computeRowMetrics below().
+			dim_.wid = max_width_;
+
 		dim.wid = rowWidth(right_margin, pit, first, end);
 		boost::tie(dim.asc, dim.des) = rowHeight(pit, first, end);
 		if (row_index == pm.rows().size())
@@ -293,6 +307,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	return changed;
 }
 
+
 void TextMetrics::computeRowMetrics(pit_type const pit,
 		Row & row) const
 {
@@ -300,6 +315,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	Paragraph const & par = text_->getPar(pit);
 
 	double w = dim_.wid - row.width();
+	BOOST_ASSERT(w >= 0);
 	//lyxerr << "\ndim_.wid " << dim_.wid << endl;
 	//lyxerr << "row.width() " << row.width() << endl;
 	//lyxerr << "w " << w << endl;
