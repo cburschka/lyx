@@ -301,19 +301,23 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		else
 			desc -= 3;
 
-		pi.pain.line(x, y + desc - 4, x, y + desc, 
+		const int xx1 = xx + border_ - 1;
+		const int xx2 = x + dim_.wid - border_ 
+			- TEXT_TO_INSET_OFFSET + 1;
+		pi.pain.line(xx1, y + desc - 4, 
+			     xx1, y + desc, 
 			layout_.labelfont.color());
 		if (internalStatus() == Open)
-			pi.pain.line(x, y + desc, 
-				x + dim_.wid - 3, y + desc,
+			pi.pain.line(xx1, y + desc, 
+				xx2, y + desc,
 				layout_.labelfont.color());
 		else {
 			// Make status_ value visible:
-			pi.pain.line(x, y + desc,
-				x + 4, y + desc,
+			pi.pain.line(xx1, y + desc,
+				xx1 + 4, y + desc,
 				layout_.labelfont.color());
-			pi.pain.line(x + dim_.wid - 7, y + desc,
-				x + dim_.wid -3, y + desc,
+			pi.pain.line(xx2 - 4, y + desc,
+				xx2, y + desc,
 				layout_.labelfont.color());
 		}
 		pi.pain.line(x + dim_.wid - 3, y + desc, x + dim_.wid - 3, y + desc - 4,
@@ -340,11 +344,11 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		if (cur.isInside(this)) {
 			y -= ascent();
 			y += 3;
-			pi.pain.line(x, y + 4, x, y, layout_.labelfont.color());
-			pi.pain.line(x + 4, y, x, y, layout_.labelfont.color());
-			pi.pain.line(x + dim_.wid - 3, y + 4, x + dim_.wid - 3, y,
+			pi.pain.line(xx1, y + 4, xx1, y, layout_.labelfont.color());
+			pi.pain.line(xx1 + 4, y, xx1, y, layout_.labelfont.color());
+			pi.pain.line(xx2, y + 4, x + dim_.wid - 3, y,
 				layout_.labelfont.color());
-			pi.pain.line(x + dim_.wid - 7, y, x + dim_.wid - 3, y,
+			pi.pain.line(xx2 - 4, y, xx2, y,
 				layout_.labelfont.color());
 		}
 		break;
