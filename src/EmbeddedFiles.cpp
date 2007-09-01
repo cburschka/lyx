@@ -144,6 +144,7 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 			LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 		}
 	}
+	return false;
 }
 
  
