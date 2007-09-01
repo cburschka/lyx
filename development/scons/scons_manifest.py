@@ -820,7 +820,6 @@ src_frontends_controllers_files = Split('''
 
 
 src_frontends_controllers_extra_files = Split('''
-    BCView.tmpl
     ChangeLog
     Makefile.am
     pch.h
