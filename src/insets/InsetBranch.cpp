@@ -87,16 +87,13 @@ void InsetBranch::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
+	setLayout(buf.params());
 	setButtonLabel();
 }
 
 
 void InsetBranch::setButtonLabel()
 {
-	Font font(Font::ALL_SANE);
-	font.decSize();
-	font.decSize();
-
 	docstring s = _("Branch: ") + params_.branch;
 	if (!params_.branch.empty()) {
 		// FIXME UNICODE
@@ -105,9 +102,7 @@ void InsetBranch::setButtonLabel()
 			s = _("Undef: ") + s;
 		}
 	}
-	font.setColor(Color::foreground);
 	setLabel(isOpen() ? s : getNewLabel(s) );
-	setLabelFont(font);
 }
 
 
@@ -139,6 +134,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetBranchParams params;
 		InsetBranchMailer::string2params(to_utf8(cmd.argument()), params);
 		params_.branch = params.branch;
+		setLayout(cur.buffer().params());
 		setButtonLabel();
 		break;
 	}

@@ -296,7 +296,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
 
 		int desc = InsetText::descent();
-		if (status() == Open)
+		if (geometry() == SubLabel)
 			desc -= ascent();
 		else
 			desc -= 3;
@@ -319,8 +319,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.line(x + dim_.wid - 3, y + desc, x + dim_.wid - 3, y + desc - 4,
 			layout_.labelfont.color());
 
-		// the label of the charstyle. Can be toggled.
-		if (status() == Open) {
+		// the label below the text. Can be toggled.
+		if (geometry() == SubLabel) {
 			Font font(layout_.labelfont);
 			font.realize(Font(Font::ALL_SANE));
 			font.decSize();
