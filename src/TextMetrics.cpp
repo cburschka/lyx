@@ -148,9 +148,10 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 {
 	BOOST_ASSERT(mi.base.textwidth);
 	max_width_ = mi.base.textwidth;
+	dim_.wid = max_width_;
 
-	//lyxerr << "Text::metrics: width: " << mi.base.textwidth
-	//	<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
+	lyxerr << "Text::metrics: width: " << mi.base.textwidth
+		<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
 
 	bool changed = false;
 
@@ -299,6 +300,9 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	Paragraph const & par = text_->getPar(pit);
 
 	double w = dim_.wid - row.width();
+	//lyxerr << "\ndim_.wid " << dim_.wid << endl;
+	//lyxerr << "row.width() " << row.width() << endl;
+	//lyxerr << "w " << w << endl;
 
 	bool const is_rtl = text_->isRTL(buffer, par);
 	if (is_rtl)
@@ -383,6 +387,8 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			    && !disp_inset
 				) {
 				row.separator = w / ns;
+				//lyxerr << "row.separator " << row.separator << endl;
+				//lyxerr << "ns " << ns << endl;
 			} else if (is_rtl) {
 				row.x += w;
 			}
