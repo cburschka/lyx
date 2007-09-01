@@ -57,13 +57,13 @@ public:
 	Dimension const & dim() const { return dim_; }
 	Dimension & dim() { return dim_; }
 	/// total height of paragraph
-	unsigned int height() const { return dim_.height(); }
+	int height() const { return dim_.height(); }
 	/// total width of paragraph, may differ from workwidth
-	unsigned int width() const { return dim_.width(); }
+	int width() const { return dim_.width(); }
 	/// ascend of paragraph above baseline
-	unsigned int ascent() const { return dim_.ascent(); }
+	int ascent() const { return dim_.ascent(); }
 	/// descend of paragraph below baseline
-	unsigned int descent() const { return dim_.descent(); }
+	int descent() const { return dim_.descent(); }
 	/// Text updates the rows using this access point
 	RowList & rows() { return rows_; }
 	/// The painter and others use this
