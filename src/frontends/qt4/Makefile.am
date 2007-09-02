@@ -242,7 +242,6 @@ UIFILES = \
 	PrefColorsUi.ui \
 	PrefConvertersUi.ui \
 	PrefCopiersUi.ui \
-	PrefCygwinPathUi.ui \
 	PrefDateUi.ui \
 	PrefDisplayUi.ui \
 	PrefFileformatsUi.ui \

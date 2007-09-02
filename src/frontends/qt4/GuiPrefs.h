@@ -25,7 +25,6 @@
 #include "ui_PrefLatexUi.h"
 #include "ui_PrefScreenFontsUi.h"
 #include "ui_PrefColorsUi.h"
-#include "ui_PrefCygwinPathUi.h"
 #include "ui_PrefDisplayUi.h"
 #include "ui_PrefPathsUi.h"
 #include "ui_PrefSpellcheckerUi.h"
@@ -163,17 +162,6 @@ private:
 	std::vector<QString> curcolors_;
 	std::vector<QString> newcolors_;
 
-};
-
-
-class PrefCygwinPath :  public PrefModule, public Ui::PrefCygwinPathUi
-{
-	Q_OBJECT
-public:
-	PrefCygwinPath(QWidget * parent = 0);
-
-	void apply(LyXRC & rc) const;
-	void update(LyXRC const & rc);
 };
 
 

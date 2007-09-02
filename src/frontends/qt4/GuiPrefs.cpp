@@ -312,6 +312,15 @@ PrefLatex::PrefLatex(GuiPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(latexPaperSizeCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
+
+#if defined(__CYGWIN__) || defined(_WIN32)
+	pathCB->setVisible(true);
+	connect(pathCB, SIGNAL(clicked()), 
+		this, SIGNAL(changed()));
+#else
+	pathCB->setVisible(false);
+#endif
+
 }
 
 
@@ -325,6 +334,9 @@ void PrefLatex::apply(LyXRC & rc) const
 	rc.view_dvi_paper_option = fromqstr(latexDviPaperED->text());
 	rc.default_papersize =
 		form_->controller().toPaperSize(latexPaperSizeCO->currentIndex());
+#if defined(__CYGWIN__) || defined(_WIN32)
+	rc.windows_style_tex_paths = pathCB->isChecked();
+#endif
 }
 
 
@@ -338,6 +350,9 @@ void PrefLatex::update(LyXRC const & rc)
 	latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
 	latexPaperSizeCO->setCurrentIndex(
 		form_->controller().fromPaperSize(rc.default_papersize));
+#if defined(__CYGWIN__) || defined(_WIN32)
+	pathCB->setChecked(rc.windows_style_tex_paths);
+#endif
 }
 
 
@@ -597,32 +612,6 @@ void PrefColors::change_color()
 void PrefColors::change_lyxObjects_selection()
 {
 	colorChangePB->setDisabled(lyxObjectsLW->currentRow() < 0);
-}
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// PrefCygwinPath
-//
-/////////////////////////////////////////////////////////////////////
-
-PrefCygwinPath::PrefCygwinPath(QWidget * parent)
-	: PrefModule(_("Paths"), 0, parent)
-{
-	setupUi(this);
-	connect(pathCB, SIGNAL(clicked()), this, SIGNAL(changed()));
-}
-
-
-void PrefCygwinPath::apply(LyXRC & rc) const
-{
-	rc.windows_style_tex_paths = pathCB->isChecked();
-}
-
-
-void PrefCygwinPath::update(LyXRC const & rc)
-{
-	pathCB->setChecked(rc.windows_style_tex_paths);
 }
 
 
@@ -948,7 +937,7 @@ PrefConverters::PrefConverters(GuiPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 
 	maxAgeLE->setValidator(new QDoubleValidator(maxAgeLE));
-	converterDefGB->setFocusProxy(convertersLW);
+	//converterDefGB->setFocusProxy(convertersLW);
 }
 
 
@@ -1939,11 +1928,6 @@ GuiPrefsDialog::GuiPrefsDialog(GuiPrefs * form)
 	add(new PrefDate);
 	add(new PrefPlaintext);
 	add(new PrefLatex(form_));
-
-#if defined(__CYGWIN__) || defined(_WIN32)
-	add(new PrefCygwinPath);
-#endif
-
 
 	PrefConverters * converters = new PrefConverters(form_);
 	PrefFileformats * formats = new PrefFileformats(form_);
