@@ -1703,6 +1703,11 @@ void TextMetrics::drawSelection(PainterInfo & pi, int x, int) const
 	    || bv_funcs::status(bv_, end) == bv_funcs::CUR_ABOVE)
 		return;
 
+	if (beg.pit() < par_metrics_.begin()->first)
+		beg.pit() = par_metrics_.begin()->first;
+	if (end.pit() > par_metrics_.rbegin()->first)
+		end.pit() = par_metrics_.rbegin()->first;
+
 	ParagraphMetrics const & pm1 = par_metrics_[beg.pit()];
 	ParagraphMetrics const & pm2 = par_metrics_[end.pit()];
 	Row const & row1 = pm1.getRow(beg.pos(), beg.boundary());
