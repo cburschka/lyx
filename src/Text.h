@@ -38,7 +38,6 @@ class Inset;
 class Color_color;
 class Cursor;
 class PainterInfo;
-class Row;
 class Spacing;
 
 
