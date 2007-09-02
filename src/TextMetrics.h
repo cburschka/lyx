@@ -54,7 +54,7 @@ public:
 	/// The difference is that this one is used for displaying, and thus we
 	/// are allowed to make cosmetic improvements. For instance make footnotes
 	/// smaller. (Asger)
-	Font getDisplayFont(Paragraph const & par,
+	Font getDisplayFont(pit_type pit,
 		pos_type pos) const;
 
 	/// There are currently two font mechanisms in LyX:
@@ -69,10 +69,10 @@ public:
 	/// is this position in the paragraph right-to-left?
 	bool isRTL(CursorSlice const & sl, bool boundary) const;
 	/// is between pos-1 and pos an RTL<->LTR boundary?
-	bool isRTLBoundary(Paragraph const & par,
+	bool isRTLBoundary(pit_type pit,
 	  pos_type pos) const;
 	/// would be a RTL<->LTR boundary between pos and the given font?
-	bool isRTLBoundary(Paragraph const & par,
+	bool isRTLBoundary(pit_type pit,
 	  pos_type pos, Font const & font) const;
 
 

@@ -102,9 +102,8 @@ namespace {
 
 		if (font.language() != ignore_language ||
 				font.number() != Font::IGNORE) {
-			Paragraph & par = cur.paragraph();
 			TextMetrics const & tm = cur.bv().textMetrics(text);
-			if (cur.boundary() != tm.isRTLBoundary(par,
+			if (cur.boundary() != tm.isRTLBoundary(cur.pit(),
 			                        cur.pos(), cur.real_current_font))
 				text->setCursor(cur, cur.pit(), cur.pos(),
 				                false, !cur.boundary());

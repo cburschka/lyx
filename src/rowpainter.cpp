@@ -123,7 +123,7 @@ void RowPainter::paintHfill(pos_type const pos, pos_type const body_pos)
 
 void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 {
-	Font font = text_metrics_.getDisplayFont(par_, pos);
+	Font font = text_metrics_.getDisplayFont(pit_, pos);
 
 	BOOST_ASSERT(inset);
 	// FIXME: We should always use font, see documentation of
@@ -194,7 +194,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, Font const & font)
 		if (!Encodings::isComposeChar_hebrew(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
-					text_metrics_.getDisplayFont(par_, i));
+					text_metrics_.getDisplayFont(pit_, i));
 				dx = (c == 0x05e8 || // resh
 				      c == 0x05d3)   // dalet
 					? width2 - width
@@ -228,7 +228,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, Font const & font)
 		if (!Encodings::isComposeChar_arabic(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
-						text_metrics_.getDisplayFont(par_, i));
+						text_metrics_.getDisplayFont(pit_, i));
 				dx = (width2 - width) / 2;
 			}
 			break;
@@ -348,7 +348,7 @@ void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
 void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = bidi_.vis2log(vpos);
-	Font orig_font = text_metrics_.getDisplayFont(par_, pos);
+	Font orig_font = text_metrics_.getDisplayFont(pit_, pos);
 	double const orig_x = x_;
 
 	// usual characters, no insets
@@ -727,7 +727,7 @@ void RowPainter::paintText()
 		// Use font span to speed things up, see above
 		if (vpos < font_span.first || vpos > font_span.last) {
 			font_span = par_.fontSpan(vpos);
-			font = text_metrics_.getDisplayFont(par_, vpos);
+			font = text_metrics_.getDisplayFont(pit_, vpos);
 		}
 
 		const int width_pos = pm_.singleWidth(pos, font);
@@ -772,7 +772,7 @@ void RowPainter::paintText()
 			++vpos;
 
 		} else if (par_.isSeparator(pos)) {
-			Font orig_font = text_metrics_.getDisplayFont(par_, pos);
+			Font orig_font = text_metrics_.getDisplayFont(pit_, pos);
 			double const orig_x = x_;
 			x_ += width_pos;
 			if (pos >= body_pos)

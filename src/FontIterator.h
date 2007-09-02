@@ -36,7 +36,7 @@ class FontIterator : std::iterator<std::forward_iterator_tag, Font>
 public:
 	///
 	FontIterator(TextMetrics const & tm,
-		Paragraph const & par, pos_type pos);
+		Paragraph const & par, pit_type pit, pos_type pos);
 	///
 	Font const & operator*() const;
 	///
@@ -49,6 +49,8 @@ private:
 	TextMetrics const & tm_;
 	///
 	Paragraph const & par_;
+	///
+	pit_type pit_;
 	///
 	pos_type pos_;
 	///

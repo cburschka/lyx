@@ -208,11 +208,12 @@ void TextMetrics::applyOuterFont(Font & font) const
 }
 
 
-Font TextMetrics::getDisplayFont(Paragraph const & par,
-		pos_type const pos) const
+Font TextMetrics::getDisplayFont(pit_type pit, pos_type pos) const
 {
 	BOOST_ASSERT(pos >= 0);
 
+	ParagraphList const & pars = text_->paragraphs();
+	Paragraph const & par = pars[pit];
 	LayoutPtr const & layout = par.layout();
 	Buffer const & buffer = bv_->buffer();
 	// FIXME: broken?
@@ -252,18 +253,6 @@ Font TextMetrics::getDisplayFont(Paragraph const & par,
 	if (!text_->isMainText(buffer))
 		applyOuterFont(font);
 
-	// Find the pit value belonging to paragraph. This will not break
-	// even if pars_ would not be a vector anymore.
-	// Performance appears acceptable.
-
-	ParagraphList const & pars = text_->paragraphs();
-
-	pit_type pit = pars.size();
-	for (pit_type it = 0; it < pit; ++it)
-		if (&pars[it] == &par) {
-			pit = it;
-			break;
-		}
 	// Realize against environment font information
 	// NOTE: the cast to pit_type should be removed when pit_type
 	// changes to a unsigned integer.
@@ -286,13 +275,11 @@ bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 	if (boundary && sl.pos() > 0)
 		correction = -1;
 		
-	Paragraph const & par = text_->getPar(sl.pit());
-	return getDisplayFont(par, sl.pos() + correction).isVisibleRightToLeft();
+	return getDisplayFont(sl.pit(), sl.pos() + correction).isVisibleRightToLeft();
 }
 
 
-bool TextMetrics::isRTLBoundary(Paragraph const & par,
-                         pos_type pos) const
+bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 {
 	if (!lyxrc.rtl_support)
 		return false;
@@ -301,28 +288,31 @@ bool TextMetrics::isRTLBoundary(Paragraph const & par,
 	if (pos == 0)
 		return false;
 
-	bool left = getDisplayFont(par, pos - 1).isVisibleRightToLeft();
+	Paragraph const & par = text_->getPar(pit);
+
+	bool left = getDisplayFont(pit, pos - 1).isVisibleRightToLeft();
 	bool right;
 	if (pos == par.size())
 		right = par.isRightToLeftPar(bv_->buffer().params());
 	else
-		right = getDisplayFont(par, pos).isVisibleRightToLeft();
+		right = getDisplayFont(pit, pos).isVisibleRightToLeft();
 	return left != right;
 }
 
 
-bool TextMetrics::isRTLBoundary(Paragraph const & par,
-                         pos_type pos, Font const & font) const
+bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
+		Font const & font) const
 {
 	if (!lyxrc.rtl_support)
 		return false;
 
+	Paragraph const & par = text_->getPar(pit);
 	bool left = font.isVisibleRightToLeft();
 	bool right;
 	if (pos == par.size())
 		right = par.isRightToLeftPar(bv_->buffer().params());
 	else
-		right = getDisplayFont(par, pos).isVisibleRightToLeft();
+		right = getDisplayFont(pit, pos).isVisibleRightToLeft();
 	return left != right;
 }
 
@@ -372,7 +362,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		int const w = max_width_ - leftMargin(max_width_, pit, ii->pos)
 			- right_margin;
 		Font const & font = ii->inset->noFontChange() ?
-			bufferfont : getDisplayFont(par, ii->pos);
+			bufferfont : getDisplayFont(pit, ii->pos);
 		MetricsInfo mi(bv_, font, w);
 		changed |= ii->inset->metrics(mi, dim);
 		changed |= (old_dim != dim);
@@ -660,7 +650,7 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	// pixel width since last breakpoint
 	int chunkwidth = 0;
 
-	FontIterator fi = FontIterator(*this, par, pos);
+	FontIterator fi = FontIterator(*this, par, pit, pos);
 	pos_type point = end;
 	pos_type i = pos;
 	for ( ; i < end; ++i, ++fi) {
@@ -751,7 +741,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 	pos_type i = first;
 
 	if (i < end) {
-		FontIterator fi = FontIterator(*this, par, i);
+		FontIterator fi = FontIterator(*this, par, pit, i);
 		for ( ; i < end; ++i, ++fi) {
 			if (body_pos > 0 && i == body_pos) {
 				FontMetrics const & fm = theFontMetrics(
@@ -797,7 +787,7 @@ boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const
 	// start with so we don't have to do the assignment below too
 	// often.
 	Buffer const & buffer = bv_->buffer();
-	Font font = getDisplayFont(par, first);
+	Font font = getDisplayFont(pit, first);
 	Font::FONT_SIZE const tmpsize = font.size();
 	font = text_->getLayoutFont(buffer, pit);
 	Font::FONT_SIZE const size = font.size();
@@ -1062,7 +1052,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		bool const rtl = (bidi.level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = isRTLBoundary(par, c);
+			boundary = isRTLBoundary(pit, c);
 		}
 	}
 
@@ -1448,7 +1438,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		// Use font span to speed things up, see above
 		if (pos < font_span.first || pos > font_span.last) {
 			font_span = par.fontSpan(pos);
-			font = getDisplayFont(par, pos);
+			font = getDisplayFont(pit, pos);
 		}
 
 		x += pm.singleWidth(pos, font);
@@ -1779,7 +1769,7 @@ int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
-	return pm.singleWidth(pos, getDisplayFont(text_->getPar(pit), pos));
+	return pm.singleWidth(pos, getDisplayFont(pit, pos));
 }
 
 
@@ -2014,7 +2004,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 		// but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
 		if (cur.boundary()) {
 			cur.boundary(false);
-		}	else if (isRTLBoundary(cur.paragraph(), cur.pos() + 1)) {
+		}	else if (isRTLBoundary(cur.pit(), cur.pos() + 1)) {
 			// in front of RTL boundary -> Stay on this side of the boundary because:
 			//   ab|cDDEEFFghi -> abc|DDEEFFghi
 			++cur.pos();

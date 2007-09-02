@@ -22,9 +22,9 @@ namespace lyx {
 
 
 FontIterator::FontIterator(TextMetrics const & tm,
-		Paragraph const & par, pos_type pos)
-	: tm_(tm), par_(par), pos_(pos),
-	  font_(tm.getDisplayFont(par, pos)),
+		Paragraph const & par, pit_type pit, pos_type pos)
+	: tm_(tm), par_(par), pit_(pit), pos_(pos),
+	  font_(tm.getDisplayFont(pit, pos)),
 	  endspan_(par.fontSpan(pos).last),
 	  bodypos_(par.beginOfBody())
 {}
@@ -46,7 +46,7 @@ FontIterator & FontIterator::operator++()
 {
 	++pos_;
 	if (pos_ > endspan_ || pos_ == bodypos_) {
-		font_ = tm_.getDisplayFont(par_, pos_);
+		font_ = tm_.getDisplayFont(pit_, pos_);
 		endspan_ = par_.fontSpan(pos_).last;
 	}
 	return *this;

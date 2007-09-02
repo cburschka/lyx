@@ -367,7 +367,7 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 				// of noFontChange in Inset.h
 				setInsetFont(bv, pit, pos, font, toggleall);
 			TextMetrics const & tm = bv.textMetrics(this);
-			Font f = tm.getDisplayFont(dit.paragraph(), pos);
+			Font f = tm.getDisplayFont(pit, pos);
 			f.update(font, language, toggleall);
 			setCharFont(buffer, pit, pos, f, tm.font_);
 		}
@@ -655,7 +655,7 @@ bool Text::cursorRight(Cursor & cur)
 		TextMetrics const & tm = cur.bv().textMetrics(this);
 		// if left of boundary -> just jump to right side
 		// but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
-		if (cur.boundary() && !tm.isRTLBoundary(cur.paragraph(), cur.pos()))
+		if (cur.boundary() && !tm.isRTLBoundary(cur.pit(), cur.pos()))
 			return setCursor(cur, cur.pit(), cur.pos(), true, false);
 
 		// next position is left of boundary, 
@@ -684,7 +684,7 @@ bool Text::cursorRight(Cursor & cur)
 		
 		// in front of RTL boundary? Stay on this side of the boundary because:
 		//   ab|cDDEEFFghi -> abc|DDEEFFghi
-		if (tm.isRTLBoundary(cur.paragraph(), cur.pos() + 1))
+		if (tm.isRTLBoundary(cur.pit(), cur.pos() + 1))
 			return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
 		
 		// move right

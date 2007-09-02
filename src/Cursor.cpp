@@ -1461,8 +1461,8 @@ Font Cursor::getFont() const
 	if (pos > 0) {
 		TextMetrics const & tm = bv().textMetrics(&text);
 		if (pos == sl.lastpos()
-				|| (par.isSeparator(pos) &&
-						!tm.isRTLBoundary(par, pos)))
+			|| (par.isSeparator(pos) 
+			&& !tm.isRTLBoundary(sl.pit(), pos)))
 			--pos;
 	}
 	
@@ -1526,7 +1526,7 @@ void Cursor::setCurrentFont()
 			// abc| def -> font of c
 			// abc |[WERBEH], i.e. boundary==true -> font of c
 			// abc [WERBEH]| def, font of the space
-			if (!tm.isRTLBoundary(par, cpos))
+			if (!tm.isRTLBoundary(pit(), cpos))
 				--cpos;
 		}
 	}
@@ -1534,11 +1534,11 @@ void Cursor::setCurrentFont()
 	// get font
 	BufferParams const & bufparams = buffer().params();
 	current_font = par.getFontSettings(bufparams, cpos);
-	real_current_font = tm.getDisplayFont(par, cpos);
+	real_current_font = tm.getDisplayFont(pit(), cpos);
 
 	// special case for paragraph end
 	if (pos() == lastpos()
-	    && tm.isRTLBoundary(par, pos())
+	    && tm.isRTLBoundary(pit(), pos())
 	    && !boundary()) {
 		Language const * lang = par.getParLanguage(bufparams);
 		current_font.setLanguage(lang);
