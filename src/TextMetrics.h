@@ -136,6 +136,60 @@ public:
 	// FIXME: is there a need for this?
 	//int pos2x(pit_type pit, pos_type pos) const;
 
+	/** returns row near the specified
+	  * y-coordinate in given paragraph (relative to the screen).
+	  */
+	Row const & getRowNearY(int y,
+		pit_type pit) const;
+
+	/// returns the paragraph number closest to screen y-coordinate.
+	/// This method uses the BufferView CoordCache to locate the
+	/// paragraph. The y-coodinate is allowed to be off-screen and
+	/// the CoordCache will be automatically updated if needed. This is
+	/// the reason why we need a non const BufferView.
+	pit_type getPitNearY(int y);
+
+	/// sets cursor recursively descending into nested editable insets
+	/**
+	\return the inset pointer if x,y is covering that inset
+	\param x,y are absolute screen coordinates.
+	\retval inset is non-null if the cursor is positionned inside
+	*/
+	/// FIXME: cleanup to use BufferView::getCoveringInset() and
+	/// setCursorFromCoordinates() instead of checkInsetHit().
+	Inset * editXY(Cursor & cur, int x, int y);
+
+	/// sets cursor only within this Text.
+	/// x,y are screen coordinates
+	void setCursorFromCoordinates(Cursor & cur, int x, int y);
+
+	///
+	int cursorX(CursorSlice const & cursor,
+		bool boundary) const;
+	///
+	int cursorY(CursorSlice const & cursor,
+		bool boundary) const;
+
+	///
+	void cursorPrevious(Cursor & cur);
+	///
+	void cursorNext(Cursor & cur);
+
+	/// Returns an inset if inset was hit, or 0 if not.
+	/// \warning This method is not recursive! It will return the
+	/// outermost inset within this Text.
+	/// \sa BufferView::getCoveringInset() to get the innermost inset.
+	Inset * checkInsetHit(int x, int y);
+
+	/**
+	 * Returns the left beginning of the text.
+	 * This information cannot be taken from the layout object, because
+	 * in LaTeX the beginning of the text fits in some cases
+	 * (for example sections) exactly the label-width.
+	 */
+	int leftMargin(int max_width, pit_type pit, pos_type pos) const;
+	int leftMargin(int max_width, pit_type pit) const;
+
 private:
 
 	/// The BufferView owner.

@@ -117,8 +117,8 @@ Text * InsetMathMBox::getText(int) const
 void InsetMathMBox::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = text_.cursorX(bv, sl, boundary);
-	y = text_.cursorY(bv, sl, boundary);
+	x = bv.textMetrics(&text_).cursorX(sl, boundary);
+	y = bv.textMetrics(&text_).cursorY(sl, boundary);
 }
 
 

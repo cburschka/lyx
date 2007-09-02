@@ -193,44 +193,6 @@ string const freefont2string()
 
 }
 
-void Text::cursorPrevious(Cursor & cur)
-{
-	pos_type cpos = cur.pos();
-	pit_type cpar = cur.pit();
-
-	int x = cur.x_target();
-	setCursorFromCoordinates(cur, x, 0);
-	cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
-
-	if (cpar == cur.pit() && cpos == cur.pos())
-		// we have a row which is taller than the workarea. The
-		// simplest solution is to move to the previous row instead.
-		cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
-
-	finishUndo();
-	cur.updateFlags(Update::Force | Update::FitCursor);
-}
-
-
-void Text::cursorNext(Cursor & cur)
-{
-	pos_type cpos = cur.pos();
-	pit_type cpar = cur.pit();
-
-	int x = cur.x_target();
-	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
-	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
-
-	if (cpar == cur.pit() && cpos == cur.pos())
-		// we have a row which is taller than the workarea. The
-		// simplest solution is to move to the next row instead.
-		cur.dispatch(
-			FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
-
-	finishUndo();
-	cur.updateFlags(Update::Force | Update::FitCursor);
-}
-
 
 namespace {
 
@@ -352,6 +314,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	BOOST_ASSERT(cur.text() == this);
 	BufferView * bv = &cur.bv();
+	TextMetrics & tm = cur.bv().textMetrics(this);
 	CursorSlice oldTopSlice = cur.top();
 	bool oldBoundary = cur.boundary();
 	bool sel = cur.selection();
@@ -535,7 +498,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.pit() == 0 && cur.textRow().pos() == 0)
 			cur.undispatched();
 		else {
-			cursorPrevious(cur);
+			tm.cursorPrevious(cur);
 		}
 		break;
 
@@ -546,7 +509,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			  && cur.textRow().endpos() == cur.lastpos())
 			cur.undispatched();
 		else {
-			cursorNext(cur);
+			tm.cursorNext(cur);
 		}
 		break;
 
@@ -845,8 +808,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SERVER_GET_XY:
 		cur.message(from_utf8(
-			convert<string>(cursorX(cur.bv(), cur.top(), cur.boundary()))
-			+ ' ' + convert<string>(cursorY(cur.bv(), cur.top(), cur.boundary()))));
+			convert<string>(tm.cursorX(cur.top(), cur.boundary()))
+			+ ' ' + convert<string>(tm.cursorY(cur.top(), cur.boundary()))));
 		break;
 
 	case LFUN_SERVER_SET_XY: {
@@ -858,7 +821,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			lyxerr << "SETXY: Could not parse coordinates in '"
 			       << to_utf8(cmd.argument()) << std::endl;
 		else
-			setCursorFromCoordinates(cur, x, y);
+			tm.setCursorFromCoordinates(cur, x, y);
 		break;
 	}
 
@@ -1062,7 +1025,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			int const wh = bv->workHeight();
 			int const y = std::max(0, std::min(wh - 1, cmd.y));
 
-			setCursorFromCoordinates(cur, cmd.x, y);
+			tm.setCursorFromCoordinates(cur, cmd.x, y);
 			cur.setTargetX(cmd.x);
 			if (cmd.y >= wh)
 				lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));

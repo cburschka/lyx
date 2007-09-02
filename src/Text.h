@@ -140,21 +140,6 @@ public:
 	/// FIXME: replace Cursor with DocIterator.
 	docstring currentState(Cursor & cur);
 
-	/** returns row near the specified
-	  * y-coordinate in given paragraph (relative to the screen).
-	  */
-	/// FIXME: move to TextMetrics.
-	Row const & getRowNearY(BufferView const & bv, int y,
-		pit_type pit) const;
-
-	/// returns the paragraph number closest to screen y-coordinate.
-	/// This method uses the BufferView CoordCache to locate the
-	/// paragraph. The y-coodinate is allowed to be off-screen and
-	/// the CoordCache will be automatically updated if needed. This is
-	/// the reason why we need a non const BufferView.
-	/// FIXME: move to TextMetrics.
-	pit_type getPitNearY(BufferView & bv, int y) const;
-
 	/** Find the word under \c from in the relative location
 	 *  defined by \c word_location.
 	 *  @param from return here the start of the word
@@ -192,21 +177,6 @@ public:
 	///
 	void recUndo(Cursor & cur, pit_type first) const;
 
-	/// sets cursor only within this Text.
-	/// x,y are screen coordinates
-	void setCursorFromCoordinates(Cursor & cur, int x, int y);
-
-	/// sets cursor recursively descending into nested editable insets
-	/**
-	\return the inset pointer if x,y is covering that inset
-	\param x,y are absolute screen coordinates.
-	\retval inset is non-null if the cursor is positionned inside
-	*/
-	/// FIXME: move to TextMetrics.
-	/// FIXME: cleanup to use BufferView::getCoveringInset() and
-	/// setCursorFromCoordinates() instead of checkInsetHit().
-	Inset * editXY(Cursor & cur, int x, int y);
-
 	/// Move cursor one position left
 	/**
 	 * Returns true if an update is needed after the move.
@@ -231,10 +201,6 @@ public:
 	///
 	/// FIXME: move to TextMetrics.
 	bool cursorEnd(Cursor & cur);
-	///
-	void cursorPrevious(Cursor & cur);
-	///
-	void cursorNext(Cursor & cur);
 	///
 	bool cursorTop(Cursor & cur);
 	///
@@ -283,24 +249,8 @@ public:
 	/// FIXME: replace Cursor with DocIterator.
 	void insertStringAsParagraphs(Cursor & cur, docstring const & str);
 
-	/// Returns an inset if inset was hit, or 0 if not.
-	/// \warning This method is not recursive! It will return the
-	/// outermost inset within this Text.
-	/// \sa BufferView::getCoveringInset() to get the innermost inset.
-	Inset * checkInsetHit(BufferView &, int x, int y);
-
 	/// return the color of the canvas
 	Color_color backgroundColor() const;
-
-	/**
-	 * Returns the left beginning of the text.
-	 * This information cannot be taken from the layout object, because
-	 * in LaTeX the beginning of the text fits in some cases
-	 * (for example sections) exactly the label-width.
-	 */
-	/// FIXME: move to TextMetrics.
-	int leftMargin(Buffer const &, int max_width, pit_type pit, pos_type pos) const;
-	int leftMargin(Buffer const &, int max_width, pit_type pit) const;
 
 	/// access to our paragraphs
 	ParagraphList const & paragraphs() const { return pars_; }
@@ -338,15 +288,6 @@ public:
 	void write(Buffer const & buf, std::ostream & os) const;
 	/// returns whether we've seen our usual 'end' marker
 	bool read(Buffer const & buf, Lexer & lex, ErrorList & errorList);
-
-	///
-	/// FIXME: move to TextMetrics.
-	int cursorX(BufferView const &, CursorSlice const & cursor,
-		bool boundary) const;
-	///
-	/// FIXME: move to TextMetrics.
-	int cursorY(BufferView const & bv, CursorSlice const & cursor,
-		bool boundary) const;
 
 	/// delete double spaces, leading spaces, and empty paragraphs around old cursor.
 	/// \retval true if a change has happened and we need a redraw.

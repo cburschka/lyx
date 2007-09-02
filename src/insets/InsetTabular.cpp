@@ -3912,14 +3912,14 @@ Inset * InsetTabular::editXY(Cursor & cur, int x, int y)
 	cur.push(*this);
 	cur.idx() = getNearestCell(cur.bv(), x, y);
 	resetPos(cur);
-	return cell(cur.idx())->text_.editXY(cur, x, y);
+	return cur.bv().textMetrics(&cell(cur.idx())->text_).editXY(cur, x, y);
 }
 
 
 void InsetTabular::setCursorFromCoordinates(Cursor & cur, int x, int y) const
 {
 	cur.idx() = getNearestCell(cur.bv(), x, y);
-	cell(cur.idx())->text_.setCursorFromCoordinates(cur, x, y);
+	cur.bv().textMetrics(&cell(cur.idx())->text_).setCursorFromCoordinates(cur, x, y);
 }
 
 

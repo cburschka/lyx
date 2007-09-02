@@ -189,7 +189,8 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 
 	// Add contribution of initial rows of outermost paragraph
 	CursorSlice const & sl = dit[0];
-	ParagraphMetrics const & pm = bv.parMetrics(sl.text(), sl.pit());
+	TextMetrics const & tm = bv.textMetrics(sl.text());
+	ParagraphMetrics const & pm = tm.parMetrics(sl.pit());
 	BOOST_ASSERT(!pm.rows().empty());
 	y -= pm.rows()[0].ascent();
 #if 1
@@ -211,7 +212,8 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 	y += pm.rows()[rend].ascent();
 	
 	// Make relative position from the nested inset now bufferview absolute.
-	int xx = dit.bottom().text()->cursorX(bv, dit.bottom(), boundary && dit.depth() == 1);
+	int xx = bv.textMetrics(dit.bottom().text()).cursorX(
+		dit.bottom(), boundary && dit.depth() == 1);
 	x += xx;
 	
 	// In the RTL case place the nested inset at the left of the cursor in 

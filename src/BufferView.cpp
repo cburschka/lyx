@@ -344,7 +344,7 @@ void BufferView::scrollDocView(int value)
 
 void BufferView::setCursorFromScrollbar()
 {
-	Text & t = buffer_.text();
+	TextMetrics & tm = text_metrics_[&buffer_.text()];
 
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
@@ -358,14 +358,14 @@ void BufferView::setCursorFromScrollbar()
 		// We reset the cursor because bv_funcs::status() does not
 		// work when the cursor is within mathed.
 		cur.reset(buffer_.inset());
-		t.setCursorFromCoordinates(cur, 0, first);
+		tm.setCursorFromCoordinates(cur, 0, first);
 		cur.clearSelection();
 		break;
 	case bv_funcs::CUR_BELOW:
 		// We reset the cursor because bv_funcs::status() does not
 		// work when the cursor is within mathed.
 		cur.reset(buffer_.inset());
-		t.setCursorFromCoordinates(cur, 0, last);
+		tm.setCursorFromCoordinates(cur, 0, last);
 		cur.clearSelection();
 		break;
 	case bv_funcs::CUR_INSIDE:
@@ -373,7 +373,7 @@ void BufferView::setCursorFromScrollbar()
 		int const newy = min(last, max(y, first));
 		if (y != newy) {
 			cur.reset(buffer_.inset());
-			t.setCursorFromCoordinates(cur, 0, newy);
+			tm.setCursorFromCoordinates(cur, 0, newy);
 		}
 	}
 }
@@ -987,7 +987,7 @@ void BufferView::resize(int width, int height)
 
 Inset const * BufferView::getCoveringInset(Text const & text, int x, int y)
 {
-	pit_type pit = text.getPitNearY(*this, y);
+	pit_type pit = text_metrics_[&text].getPitNearY(y);
 	BOOST_ASSERT(pit != -1);
 	Paragraph const & par = text.getPar(pit);
 
@@ -1105,7 +1105,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	}
 
 	// Build temporary cursor.
-	Inset * inset = buffer_.text().editXY(cur, cmd.x, cmd.y);
+	Inset * inset = text_metrics_[&buffer_.text()].editXY(cur, cmd.x, cmd.y);
 
 	// Put anchor at the same position.
 	cur.resetAnchor();

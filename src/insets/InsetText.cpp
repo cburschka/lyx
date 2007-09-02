@@ -226,7 +226,7 @@ void InsetText::edit(Cursor & cur, bool left)
 
 Inset * InsetText::editXY(Cursor & cur, int x, int y)
 {
-	return text_.editXY(cur, x, y);
+	return cur.bv().textMetrics(&text_).editXY(cur, x, y);
 }
 
 
@@ -322,8 +322,8 @@ void InsetText::validate(LaTeXFeatures & features) const
 void InsetText::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = text_.cursorX(bv, sl, boundary) + border_;
-	y = text_.cursorY(bv, sl, boundary);
+	x = bv.textMetrics(&text_).cursorX(sl, boundary) + border_;
+	y = bv.textMetrics(&text_).cursorY(sl, boundary);
 }
 
 

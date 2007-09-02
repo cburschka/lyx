@@ -1213,7 +1213,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		xo = targetX();
 		
 	// first get the current line
-	TextMetrics const & tm = bv_->textMetrics(text());
+	TextMetrics & tm = bv_->textMetrics(text());
 	ParagraphMetrics const & pm = tm.parMetrics(pit());
 	int row;
 	if (pos() && boundary())
@@ -1237,9 +1237,9 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		Cursor old = *this;
 		// To next/previous row
 		if (up)
-			text()->editXY(*this, xo, yo - textRow().ascent() - 1);
+			tm.editXY(*this, xo, yo - textRow().ascent() - 1);
 		else
-			text()->editXY(*this, xo, yo + textRow().descent() + 1);
+			tm.editXY(*this, xo, yo + textRow().descent() + 1);
 		clearSelection();
 		
 		// This happens when you move out of an inset.

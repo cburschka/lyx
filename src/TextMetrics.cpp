@@ -36,6 +36,7 @@
 #include "ParIterator.h"
 #include "rowpainter.h"
 #include "Text.h"
+#include "Undo.h"
 #include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
@@ -158,7 +159,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 		// the full allowable width.
 		dim_.wid = max_width_;
 
-	//lyxerr << "Text::metrics: width: " << mi.base.textwidth
+	//lyxerr << "TextMetrics::metrics: width: " << mi.base.textwidth
 	//	<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
 
 	bool changed = false;
@@ -237,7 +238,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	for (; ii != iend; ++ii) {
 		Dimension old_dim = ii->inset->dimension();
 		Dimension dim;
-		int const w = max_width_ - text_->leftMargin(buffer, max_width_, pit, ii->pos)
+		int const w = max_width_ - leftMargin(max_width_, pit, ii->pos)
 			- right_margin;
 		Font const & font = ii->inset->noFontChange() ?
 			bufferfont : text_->getFont(buffer, par, ii->pos);
@@ -250,7 +251,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	pos_type first = 0;
 	size_t row_index = 0;
 	// maximum pixel width of a row
-	int width = max_width_ - right_margin; // - leftMargin(buffer, max_width_, pit, row);
+	int width = max_width_ - right_margin; // - leftMargin(max_width_, pit, row);
 	do {
 		Dimension dim;
 		pos_type end = rowBreakPoint(width, pit, first);
@@ -331,7 +332,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	if (is_rtl)
 		row.x = rightMargin(pit);
 	else
-		row.x = text_->leftMargin(buffer, max_width_, pit, row.pos());
+		row.x = leftMargin(max_width_, pit, row.pos());
 
 	// is there a manual margin with a manual label
 	LayoutPtr const & layout = par.layout();
@@ -495,7 +496,7 @@ int TextMetrics::labelEnd(pit_type const pit) const
 	if (text_->getPar(pit).layout()->margintype != MARGIN_MANUAL)
 		return 0;
 	// return the beginning of the body
-	return text_->leftMargin(bv_->buffer(), max_width_, pit);
+	return leftMargin(max_width_, pit);
 }
 
 
@@ -522,7 +523,7 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	// nearest that.
 
 	int label_end = labelEnd(pit);
-	int const left = text_->leftMargin(buffer, max_width_, pit, pos);
+	int const left = leftMargin(max_width_, pit, pos);
 	int x = left;
 
 	// pixel width since last breakpoint
@@ -612,7 +613,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 	// get the pure distance
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	Paragraph const & par = text_->getPar(pit);
-	int w = text_->leftMargin(buffer, max_width_, pit, first);
+	int w = leftMargin(max_width_, pit, first);
 	int label_end = labelEnd(pit);
 
 	pos_type const body_pos = par.beginOfBody();
@@ -988,6 +989,590 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 }
 
 
+// y is screen coordinate
+pit_type TextMetrics::getPitNearY(int y)
+{
+	BOOST_ASSERT(!text_->paragraphs().empty());
+	BOOST_ASSERT(bv_->coordCache().getParPos().find(text_) != bv_->coordCache().getParPos().end());
+	CoordCache::InnerParPosCache const & cc = bv_->coordCache().getParPos().find(text_)->second;
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< ": y: " << y << " cache size: " << cc.size()
+		<< endl;
+
+	// look for highest numbered paragraph with y coordinate less than given y
+	pit_type pit = 0;
+	int yy = -1;
+	CoordCache::InnerParPosCache::const_iterator it = cc.begin();
+	CoordCache::InnerParPosCache::const_iterator et = cc.end();
+	CoordCache::InnerParPosCache::const_iterator last = et; last--;
+
+	ParagraphMetrics const & pm = par_metrics_[it->first];
+
+	// If we are off-screen (before the visible part)
+	if (y < 0
+		// and even before the first paragraph in the cache.
+		&& y < it->second.y_ - int(pm.ascent())) {
+		//  and we are not at the first paragraph in the inset.
+		if (it->first == 0)
+			return 0;
+		// then this is the paragraph we are looking for.
+		pit = it->first - 1;
+		// rebreak it and update the CoordCache.
+		redoParagraph(pit);
+		bv_->coordCache().parPos()[text_][pit] =
+			Point(0, it->second.y_ - pm.descent());
+		return pit;
+	}
+
+	ParagraphMetrics const & pm_last = par_metrics_[last->first];
+
+	// If we are off-screen (after the visible part)
+	if (y > bv_->workHeight()
+		// and even after the first paragraph in the cache.
+		&& y >= last->second.y_ + int(pm_last.descent())) {
+		pit = last->first + 1;
+		//  and we are not at the last paragraph in the inset.
+		if (pit == int(text_->paragraphs().size()))
+			return last->first;
+		// then this is the paragraph we are looking for.
+		// rebreak it and update the CoordCache.
+		redoParagraph(pit);
+		bv_->coordCache().parPos()[text_][pit] =
+			Point(0, last->second.y_ + pm_last.ascent());
+		return pit;
+	}
+
+	for (; it != et; ++it) {
+		LYXERR(Debug::DEBUG)
+			<< BOOST_CURRENT_FUNCTION
+			<< "  examining: pit: " << it->first
+			<< " y: " << it->second.y_
+			<< endl;
+
+		ParagraphMetrics const & pm = par_metrics_[it->first];
+
+		if (it->first >= pit && int(it->second.y_) - int(pm.ascent()) <= y) {
+			pit = it->first;
+			yy = it->second.y_;
+		}
+	}
+
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< ": found best y: " << yy << " for pit: " << pit
+		<< endl;
+
+	return pit;
+}
+
+
+Row const & TextMetrics::getRowNearY(int y, pit_type pit) const
+{
+	ParagraphMetrics const & pm = par_metrics_[pit];
+
+	int yy = bv_->coordCache().get(text_, pit).y_ - pm.ascent();
+	BOOST_ASSERT(!pm.rows().empty());
+	RowList::const_iterator rit = pm.rows().begin();
+	RowList::const_iterator const rlast = boost::prior(pm.rows().end());
+	for (; rit != rlast; yy += rit->height(), ++rit)
+		if (yy + rit->height() > y)
+			break;
+	return *rit;
+}
+
+
+// x,y are absolute screen coordinates
+// sets cursor recursively descending into nested editable insets
+Inset * TextMetrics::editXY(Cursor & cur, int x, int y)
+{
+	if (lyxerr.debugging(Debug::WORKAREA)) {
+		lyxerr << "TextMetrics::editXY(cur, " << x << ", " << y << ")" << std::endl;
+		cur.bv().coordCache().dump();
+	}
+	pit_type pit = getPitNearY(y);
+	BOOST_ASSERT(pit != -1);
+
+	Row const & row = getRowNearY(y, pit);
+	bool bound = false;
+
+	int xx = x; // is modified by getColumnNearX
+	pos_type const pos = row.pos()
+		+ getColumnNearX(pit, row, xx, bound);
+	cur.pit() = pit;
+	cur.pos() = pos;
+	cur.boundary(bound);
+	cur.setTargetX(x);
+
+	// try to descend into nested insets
+	Inset * inset = checkInsetHit(x, y);
+	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
+	if (!inset) {
+		// Either we deconst editXY or better we move current_font
+		// and real_current_font to Cursor
+		text_->setCurrentFont(cur);
+		return 0;
+	}
+
+	ParagraphList const & pars = text_->paragraphs();
+	Inset const * insetBefore = pos? pars[pit].getInset(pos - 1): 0;
+	//Inset * insetBehind = pars[pit].getInset(pos);
+
+	// This should be just before or just behind the
+	// cursor position set above.
+	BOOST_ASSERT((pos != 0 && inset == insetBefore)
+		|| inset == pars[pit].getInset(pos));
+
+	// Make sure the cursor points to the position before
+	// this inset.
+	if (inset == insetBefore) {
+		--cur.pos();
+		cur.boundary(false);
+	}
+
+	// Try to descend recursively inside the inset.
+	inset = inset->editXY(cur, x, y);
+
+	if (cur.top().text() == text_)
+		text_->setCurrentFont(cur);
+	return inset;
+}
+
+
+void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const y)
+{
+	BOOST_ASSERT(text_ == cur.text());
+	pit_type pit = getPitNearY(y);
+
+	ParagraphMetrics const & pm = par_metrics_[pit];
+
+	int yy = bv_->coordCache().get(text_, pit).y_ - pm.ascent();
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< ": x: " << x
+		<< " y: " << y
+		<< " pit: " << pit
+		<< " yy: " << yy << endl;
+
+	int r = 0;
+	BOOST_ASSERT(pm.rows().size());
+	for (; r < int(pm.rows().size()) - 1; ++r) {
+		Row const & row = pm.rows()[r];
+		if (int(yy + row.height()) > y)
+			break;
+		yy += row.height();
+	}
+
+	Row const & row = pm.rows()[r];
+
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< ": row " << r
+		<< " from pos: " << row.pos()
+		<< endl;
+
+	bool bound = false;
+	int xx = x;
+	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
+
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< ": setting cursor pit: " << pit
+		<< " pos: " << pos
+		<< endl;
+
+	text_->setCursor(cur, pit, pos, true, bound);
+	// remember new position.
+	cur.setTargetX();
+}
+
+
+//takes screen x,y coordinates
+Inset * TextMetrics::checkInsetHit(int x, int y)
+{
+	pit_type pit = getPitNearY(y);
+	BOOST_ASSERT(pit != -1);
+
+	Paragraph const & par = text_->paragraphs()[pit];
+
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< ": x: " << x
+		<< " y: " << y
+		<< "  pit: " << pit
+		<< endl;
+	InsetList::const_iterator iit = par.insetlist.begin();
+	InsetList::const_iterator iend = par.insetlist.end();
+	for (; iit != iend; ++iit) {
+		Inset * inset = iit->inset;
+#if 1
+		LYXERR(Debug::DEBUG)
+			<< BOOST_CURRENT_FUNCTION
+			<< ": examining inset " << inset << endl;
+
+		if (bv_->coordCache().getInsets().has(inset))
+			LYXERR(Debug::DEBUG)
+				<< BOOST_CURRENT_FUNCTION
+				<< ": xo: " << inset->xo(*bv_) << "..."
+				<< inset->xo(*bv_) + inset->width()
+				<< " yo: " << inset->yo(*bv_) - inset->ascent()
+				<< "..."
+				<< inset->yo(*bv_) + inset->descent()
+				<< endl;
+		else
+			LYXERR(Debug::DEBUG)
+				<< BOOST_CURRENT_FUNCTION
+				<< ": inset has no cached position" << endl;
+#endif
+		if (inset->covers(*bv_, x, y)) {
+			LYXERR(Debug::DEBUG)
+				<< BOOST_CURRENT_FUNCTION
+				<< ": Hit inset: " << inset << endl;
+			return inset;
+		}
+	}
+	LYXERR(Debug::DEBUG)
+		<< BOOST_CURRENT_FUNCTION
+		<< ": No inset hit. " << endl;
+	return 0;
+}
+
+
+int TextMetrics::cursorX(CursorSlice const & sl,
+		bool boundary) const
+{
+	BOOST_ASSERT(sl.text() == text_);
+	pit_type const pit = sl.pit();
+	Paragraph const & par = text_->paragraphs()[pit];
+	ParagraphMetrics const & pm = par_metrics_[pit];
+	if (pm.rows().empty())
+		return 0;
+
+	pos_type ppos = sl.pos();
+	// Correct position in front of big insets
+	bool const boundary_correction = ppos != 0 && boundary;
+	if (boundary_correction)
+		--ppos;
+
+	Row const & row = pm.getRow(sl.pos(), boundary);
+
+	pos_type cursor_vpos = 0;
+
+	Buffer const & buffer = bv_->buffer();
+	double x = row.x;
+	Bidi bidi;
+	bidi.computeTables(par, buffer, row);
+
+	pos_type const row_pos  = row.pos();
+	pos_type const end      = row.endpos();
+	// Spaces at logical line breaks in bidi text must be skipped during 
+	// cursor positioning. However, they may appear visually in the middle
+	// of a row; they must be skipped, wherever they are...
+	// * logically "abc_[HEBREW_\nHEBREW]"
+	// * visually "abc_[_WERBEH\nWERBEH]"
+	pos_type skipped_sep_vpos = -1;
+
+	if (end <= row_pos)
+		cursor_vpos = row_pos;
+	else if (ppos >= end)
+		cursor_vpos = text_->isRTL(buffer, par) ? row_pos : end;
+	else if (ppos > row_pos && ppos >= end)
+		// Place cursor after char at (logical) position pos - 1
+		cursor_vpos = (bidi.level(ppos - 1) % 2 == 0)
+			? bidi.log2vis(ppos - 1) + 1 : bidi.log2vis(ppos - 1);
+	else
+		// Place cursor before char at (logical) position ppos
+		cursor_vpos = (bidi.level(ppos) % 2 == 0)
+			? bidi.log2vis(ppos) : bidi.log2vis(ppos) + 1;
+
+	pos_type body_pos = par.beginOfBody();
+	if (body_pos > 0 &&
+	    (body_pos > end || !par.isLineSeparator(body_pos - 1)))
+		body_pos = 0;
+
+	// Use font span to speed things up, see below
+	FontSpan font_span;
+	Font font;
+
+	// If the last logical character is a separator, skip it, unless
+	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
+	if (end > 0 && end < par.size() && par.isSeparator(end - 1))
+		skipped_sep_vpos = bidi.log2vis(end - 1);
+	
+	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
+		// Skip the separator which is at the logical end of the row
+		if (vpos == skipped_sep_vpos)
+			continue;
+		pos_type pos = bidi.vis2log(vpos);
+		if (body_pos > 0 && pos == body_pos - 1) {
+			FontMetrics const & labelfm = theFontMetrics(
+				text_->getLabelFont(buffer, par));
+			x += row.label_hfill + labelfm.width(par.layout()->labelsep);
+			if (par.isLineSeparator(body_pos - 1))
+				x -= singleWidth(pit, body_pos - 1);
+		}
+
+		// Use font span to speed things up, see above
+		if (pos < font_span.first || pos > font_span.last) {
+			font_span = par.fontSpan(pos);
+			font = text_->getFont(buffer, par, pos);
+		}
+
+		x += pm.singleWidth(pos, font);
+
+		if (pm.hfillExpansion(row, pos))
+			x += (pos >= body_pos) ? row.hfill : row.label_hfill;
+		else if (par.isSeparator(pos) && pos >= body_pos)
+			x += row.separator;
+	}
+
+	// see correction above
+	if (boundary_correction) {
+		if (text_->isRTL(buffer, sl, boundary))
+			x -= singleWidth(pit, ppos);
+		else
+			x += singleWidth(pit, ppos);
+	}
+
+	return int(x);
+}
+
+
+int TextMetrics::cursorY(CursorSlice const & sl, bool boundary) const
+{
+	//lyxerr << "TextMetrics::cursorY: boundary: " << boundary << std::endl;
+	ParagraphMetrics const & pm = par_metrics_[sl.pit()];
+	if (pm.rows().empty())
+		return 0;
+
+	int h = 0;
+	h -= par_metrics_[0].rows()[0].ascent();
+	for (pit_type pit = 0; pit < sl.pit(); ++pit) {
+		h += par_metrics_[pit].height();
+	}
+	int pos = sl.pos();
+	if (pos && boundary)
+		--pos;
+	size_t const rend = pm.pos2row(pos);
+	for (size_t rit = 0; rit != rend; ++rit)
+		h += pm.rows()[rit].height();
+	h += pm.rows()[rend].ascent();
+	return h;
+}
+
+
+void TextMetrics::cursorPrevious(Cursor & cur)
+{
+	pos_type cpos = cur.pos();
+	pit_type cpar = cur.pit();
+
+	int x = cur.x_target();
+	setCursorFromCoordinates(cur, x, 0);
+	cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
+
+	if (cpar == cur.pit() && cpos == cur.pos())
+		// we have a row which is taller than the workarea. The
+		// simplest solution is to move to the previous row instead.
+		cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
+
+	finishUndo();
+	cur.updateFlags(Update::Force | Update::FitCursor);
+}
+
+
+void TextMetrics::cursorNext(Cursor & cur)
+{
+	pos_type cpos = cur.pos();
+	pit_type cpar = cur.pit();
+
+	int x = cur.x_target();
+	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
+	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
+
+	if (cpar == cur.pit() && cpos == cur.pos())
+		// we have a row which is taller than the workarea. The
+		// simplest solution is to move to the next row instead.
+		cur.dispatch(
+			FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
+
+	finishUndo();
+	cur.updateFlags(Update::Force | Update::FitCursor);
+}
+
+
+int TextMetrics::leftMargin(int max_width, pit_type pit) const
+{
+	BOOST_ASSERT(pit >= 0);
+	BOOST_ASSERT(pit < int(text_->paragraphs().size()));
+	return leftMargin(max_width, pit, text_->paragraphs()[pit].size());
+}
+
+
+int TextMetrics::leftMargin(int max_width,
+		pit_type const pit, pos_type const pos) const
+{
+	ParagraphList const & pars = text_->paragraphs();
+
+	BOOST_ASSERT(pit >= 0);
+	BOOST_ASSERT(pit < int(pars.size()));
+	Paragraph const & par = pars[pit];
+	BOOST_ASSERT(pos >= 0);
+	BOOST_ASSERT(pos <= par.size());
+	Buffer const & buffer = bv_->buffer();
+	//lyxerr << "TextMetrics::leftMargin: pit: " << pit << " pos: " << pos << endl;
+	TextClass const & tclass = buffer.params().getTextClass();
+	LayoutPtr const & layout = par.layout();
+
+	docstring parindent = layout->parindent;
+
+	int l_margin = 0;
+
+	if (text_->isMainText(buffer))
+		l_margin += changebarMargin();
+
+	l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
+		tclass.leftmargin());
+
+	if (par.getDepth() != 0) {
+		// find the next level paragraph
+		pit_type newpar = outerHook(pit, pars);
+		if (newpar != pit_type(pars.size())) {
+			if (pars[newpar].layout()->isEnvironment()) {
+				l_margin = leftMargin(max_width, newpar);
+			}
+			if (par.layout() == tclass.defaultLayout()) {
+				if (pars[newpar].params().noindent())
+					parindent.erase();
+				else
+					parindent = pars[newpar].layout()->parindent;
+			}
+		}
+	}
+
+	// This happens after sections in standard classes. The 1.3.x
+	// code compared depths too, but it does not seem necessary
+	// (JMarc)
+	if (par.layout() == tclass.defaultLayout()
+	    && pit > 0 && pars[pit - 1].layout()->nextnoindent)
+		parindent.erase();
+
+	Font const labelfont = text_->getLabelFont(buffer, par);
+	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
+
+	switch (layout->margintype) {
+	case MARGIN_DYNAMIC:
+		if (!layout->leftmargin.empty()) {
+			l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
+				layout->leftmargin);
+		}
+		if (!par.getLabelstring().empty()) {
+			l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+			l_margin += labelfont_metrics.width(par.getLabelstring());
+			l_margin += labelfont_metrics.width(layout->labelsep);
+		}
+		break;
+
+	case MARGIN_MANUAL: {
+		l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+		// The width of an empty par, even with manual label, should be 0
+		if (!par.empty() && pos >= par.beginOfBody()) {
+			if (!par.getLabelWidthString().empty()) {
+				docstring labstr = par.getLabelWidthString();
+				l_margin += labelfont_metrics.width(labstr);
+				l_margin += labelfont_metrics.width(layout->labelsep);
+			}
+		}
+		break;
+	}
+
+	case MARGIN_STATIC: {
+		l_margin += theFontMetrics(buffer.params().getFont()).
+			signedWidth(layout->leftmargin) * 4	/ (par.getDepth() + 4);
+		break;
+	}
+
+	case MARGIN_FIRST_DYNAMIC:
+		if (layout->labeltype == LABEL_MANUAL) {
+			if (pos >= par.beginOfBody()) {
+				l_margin += labelfont_metrics.signedWidth(layout->leftmargin);
+			} else {
+				l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+			}
+		} else if (pos != 0
+			   // Special case to fix problems with
+			   // theorems (JMarc)
+			   || (layout->labeltype == LABEL_STATIC
+			       && layout->latextype == LATEX_ENVIRONMENT
+			       && !isFirstInSequence(pit, pars))) {
+			l_margin += labelfont_metrics.signedWidth(layout->leftmargin);
+		} else if (layout->labeltype != LABEL_TOP_ENVIRONMENT
+			   && layout->labeltype != LABEL_BIBLIO
+			   && layout->labeltype !=
+			   LABEL_CENTERED_TOP_ENVIRONMENT) {
+			l_margin += labelfont_metrics.signedWidth(layout->labelindent);
+			l_margin += labelfont_metrics.width(layout->labelsep);
+			l_margin += labelfont_metrics.width(par.getLabelstring());
+		}
+		break;
+
+	case MARGIN_RIGHT_ADDRESS_BOX: {
+#if 0
+		// ok, a terrible hack. The left margin depends on the widest
+		// row in this paragraph.
+		RowList::iterator rit = par.rows().begin();
+		RowList::iterator end = par.rows().end();
+		// FIXME: This is wrong.
+		int minfill = max_width;
+		for ( ; rit != end; ++rit)
+			if (rit->fill() < minfill)
+				minfill = rit->fill();
+		l_margin += theFontMetrics(params.getFont()).signedWidth(layout->leftmargin);
+		l_margin += minfill;
+#endif
+		// also wrong, but much shorter.
+		l_margin += max_width / 2;
+		break;
+	}
+	}
+
+	if (!par.params().leftIndent().zero())
+		l_margin += par.params().leftIndent().inPixels(max_width);
+
+	LyXAlignment align;
+
+	if (par.params().align() == LYX_ALIGN_LAYOUT)
+		align = layout->align;
+	else
+		align = par.params().align();
+
+	// set the correct parindent
+	if (pos == 0
+	    && (layout->labeltype == LABEL_NO_LABEL
+	       || layout->labeltype == LABEL_TOP_ENVIRONMENT
+	       || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
+	       || (layout->labeltype == LABEL_STATIC
+		   && layout->latextype == LATEX_ENVIRONMENT
+		   && !isFirstInSequence(pit, pars)))
+	    && align == LYX_ALIGN_BLOCK
+	    && !par.params().noindent()
+	    // in some insets, paragraphs are never indented
+	    && !(par.inInset() && par.inInset()->neverIndent(buffer))
+	    // display style insets are always centered, omit indentation
+	    && !(!par.empty()
+		    && par.isInset(pos)
+		    && par.getInset(pos)->display())
+	    && (par.layout() != tclass.defaultLayout()
+		|| buffer.params().paragraph_separation ==
+		   BufferParams::PARSEP_INDENT))
+	{
+		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
+			parindent);
+	}
+
+	return l_margin;
+}
+
+
 int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
 {
 	Buffer const & buffer = bv_->buffer();
@@ -1181,8 +1766,8 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 {
 	Buffer & buffer = bv_->buffer();
 	DocIterator cur = beg;
-	int x1 = text_->cursorX(*bv_, beg.top(), beg.boundary());
-	int x2 = text_->cursorX(*bv_, end.top(), end.boundary());
+	int x1 = cursorX(beg.top(), beg.boundary());
+	int x2 = cursorX(end.top(), end.boundary());
 	int y1 = bv_funcs::getPos(*bv_, cur, cur.boundary()).y_ - row.ascent();
 	int y2 = y1 + row.height();
 	
@@ -1236,11 +1821,11 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 			
 		if (x1 == -1) {
 			// the previous segment was just drawn, now the next starts
-			x1 = text_->cursorX(*bv_, cur.top(), cur.boundary());
+			x1 = cursorX(cur.top(), cur.boundary());
 		}
 		
 		if (!(cur < end) || drawNow) {
-			x2 = text_->cursorX(*bv_, cur.top(), cur.boundary());
+			x2 = cursorX(cur.top(), cur.boundary());
 			pi.pain.fillRectangle(x + min(x1,x2), y1, abs(x2 - x1), y2 - y1,
 				Color::selection);
 			
@@ -1251,7 +1836,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 	}
 }
 
-//int Text::pos2x(pit_type pit, pos_type pos) const
+//int TextMetrics::pos2x(pit_type pit, pos_type pos) const
 //{
 //	ParagraphMetrics const & pm = par_metrics_[pit];
 //	Row const & r = pm.rows()[row];

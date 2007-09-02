@@ -82,7 +82,7 @@ Font const RowPainter::getLabelFont() const
 
 int RowPainter::leftMargin() const
 {
-	return text_.leftMargin(pi_.base.bv->buffer(), text_metrics_.width(), pit_,
+	return text_metrics_.leftMargin(text_metrics_.width(), pit_,
 		row_.pos());
 }
 
