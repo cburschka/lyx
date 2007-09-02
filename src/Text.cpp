@@ -810,7 +810,6 @@ void Text::rejectChanges(BufferParams const & bparams)
 }
 
 
-// Delete from cursor up to the end of the current or next word.
 void Text::deleteWordForward(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
@@ -827,7 +826,6 @@ void Text::deleteWordForward(Cursor & cur)
 }
 
 
-// Delete from cursor to start of current or prior word.
 void Text::deleteWordBackward(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
@@ -845,27 +843,6 @@ void Text::deleteWordBackward(Cursor & cur)
 
 
 // Kill to end of line.
-void Text::deleteLineForward(Cursor & cur)
-{
-	BOOST_ASSERT(this == cur.text());
-	if (cur.lastpos() == 0) {
-		// Paragraph is empty, so we just go to the right
-		cursorRight(cur);
-	} else {
-		cur.resetAnchor();
-		cur.selection() = true; // to avoid deletion
-		cursorEnd(cur);
-		cur.setSelection();
-		// What is this test for ??? (JMarc)
-		if (!cur.selection())
-			deleteWordForward(cur);
-		else
-			cutSelection(cur, true, false);
-		checkBufferStructure(cur.buffer(), cur);
-	}
-}
-
-
 void Text::changeCase(Cursor & cur, Text::TextCase action)
 {
 	BOOST_ASSERT(this == cur.text());

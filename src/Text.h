@@ -191,16 +191,14 @@ public:
 	bool cursorLeftOneWord(Cursor & cur);
 	///
 	bool cursorRightOneWord(Cursor & cur);
+	/// Delete from cursor up to the end of the current or next word.
+	void deleteWordForward(Cursor & cur);
+	/// Delete from cursor to start of current or prior word.
+	void deleteWordBackward(Cursor & cur);
 	///
 	bool cursorUpParagraph(Cursor & cur);
 	///
 	bool cursorDownParagraph(Cursor & cur);
-	///
-	/// FIXME: move to TextMetrics.
-	bool cursorHome(Cursor & cur);
-	///
-	/// FIXME: move to TextMetrics.
-	bool cursorEnd(Cursor & cur);
 	///
 	bool cursorTop(Cursor & cur);
 	///
@@ -331,13 +329,6 @@ private:
 	bool backspacePos0(Cursor & cur);
 	/// handle the case where bibitems were deleted
 	bool handleBibitems(Cursor & cur);
-
-	///
-	void deleteWordForward(Cursor & cur);
-	///
-	void deleteWordBackward(Cursor & cur);
-	///
-	void deleteLineForward(Cursor & cur);
 	///
 	void charInserted();
 	/// set 'number' font property

@@ -398,7 +398,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selection()) {
 			cutSelection(cur, true, false);
 		} else
-			deleteLineForward(cur);
+			tm.deleteLineForward(cur);
 		finishChange(cur, false);
 		break;
 
@@ -516,13 +516,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_LINE_BEGIN:
 	case LFUN_LINE_BEGIN_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_BEGIN_SELECT);
-		needsUpdate |= cursorHome(cur);
+		needsUpdate |= tm.cursorHome(cur);
 		break;
 
 	case LFUN_LINE_END:
 	case LFUN_LINE_END_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_END_SELECT);
-		needsUpdate |= cursorEnd(cur);
+		needsUpdate |= tm.cursorEnd(cur);
 		break;
 
 	case LFUN_WORD_FORWARD:
@@ -959,9 +959,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_TRIPLE:
 		if (cmd.button() == mouse_button::button1) {
-			cursorHome(cur);
+			tm.cursorHome(cur);
 			cur.resetAnchor();
-			cursorEnd(cur);
+			tm.cursorEnd(cur);
 			cur.setSelection();
 			bv->cursor() = cur;
 		}

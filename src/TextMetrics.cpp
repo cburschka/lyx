@@ -20,11 +20,13 @@
 #include "TextMetrics.h"
 
 #include "Buffer.h"
+#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
 #include "Color.h"
 #include "CoordCache.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "FontIterator.h"
 #include "FuncRequest.h"
@@ -1397,6 +1399,61 @@ void TextMetrics::cursorNext(Cursor & cur)
 
 	finishUndo();
 	cur.updateFlags(Update::Force | Update::FitCursor);
+}
+
+
+// the cursor set functions have a special mechanism. When they
+// realize you left an empty paragraph, they will delete it.
+
+bool TextMetrics::cursorHome(Cursor & cur)
+{
+	BOOST_ASSERT(text_ == cur.text());
+	ParagraphMetrics const & pm = par_metrics_[cur.pit()];
+	Row const & row = pm.getRow(cur.pos(),cur.boundary());
+	return text_->setCursor(cur, cur.pit(), row.pos());
+}
+
+
+bool TextMetrics::cursorEnd(Cursor & cur)
+{
+	BOOST_ASSERT(text_ == cur.text());
+	// if not on the last row of the par, put the cursor before
+	// the final space exept if I have a spanning inset or one string
+	// is so long that we force a break.
+	pos_type end = cur.textRow().endpos();
+	if (end == 0)
+		// empty text, end-1 is no valid position
+		return false;
+	bool boundary = false;
+	if (end != cur.lastpos()) {
+		if (!cur.paragraph().isLineSeparator(end-1)
+		    && !cur.paragraph().isNewline(end-1))
+			boundary = true;
+		else
+			--end;
+	}
+	return text_->setCursor(cur, cur.pit(), end, true, boundary);
+}
+
+
+void TextMetrics::deleteLineForward(Cursor & cur)
+{
+	BOOST_ASSERT(text_ == cur.text());
+	if (cur.lastpos() == 0) {
+		// Paragraph is empty, so we just go to the right
+		text_->cursorRight(cur);
+	} else {
+		cur.resetAnchor();
+		cur.selection() = true; // to avoid deletion
+		cursorEnd(cur);
+		cur.setSelection();
+		// What is this test for ??? (JMarc)
+		if (!cur.selection())
+			text_->deleteWordForward(cur);
+		else
+			cap::cutSelection(cur, true, false);
+		checkBufferStructure(cur.buffer(), cur);
+	}
 }
 
 

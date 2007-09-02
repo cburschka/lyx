@@ -465,40 +465,6 @@ void Text::setFont(Buffer const & buffer, CursorSlice const & begin,
 }
 
 
-// the cursor set functions have a special mechanism. When they
-// realize you left an empty paragraph, they will delete it.
-
-bool Text::cursorHome(Cursor & cur)
-{
-	BOOST_ASSERT(this == cur.text());
-	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
-	Row const & row = pm.getRow(cur.pos(),cur.boundary());
-	return setCursor(cur, cur.pit(), row.pos());
-}
-
-
-bool Text::cursorEnd(Cursor & cur)
-{
-	BOOST_ASSERT(this == cur.text());
-	// if not on the last row of the par, put the cursor before
-	// the final space exept if I have a spanning inset or one string
-	// is so long that we force a break.
-	pos_type end = cur.textRow().endpos();
-	if (end == 0)
-		// empty text, end-1 is no valid position
-		return false;
-	bool boundary = false;
-	if (end != cur.lastpos()) {
-		if (!cur.paragraph().isLineSeparator(end-1)
-		    && !cur.paragraph().isNewline(end-1))
-			boundary = true;
-		else
-			--end;
-	}
-	return setCursor(cur, cur.pit(), end, true, boundary);
-}
-
-
 bool Text::cursorTop(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());

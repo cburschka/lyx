@@ -174,6 +174,12 @@ public:
 	void cursorPrevious(Cursor & cur);
 	///
 	void cursorNext(Cursor & cur);
+	///
+	bool cursorHome(Cursor & cur);
+	///
+	bool cursorEnd(Cursor & cur);
+	///
+	void deleteLineForward(Cursor & cur);
 
 	/// Returns an inset if inset was hit, or 0 if not.
 	/// \warning This method is not recursive! It will return the
