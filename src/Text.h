@@ -244,9 +244,6 @@ public:
 	/// FIXME: replace Cursor with DocIterator.
 	void insertStringAsParagraphs(Cursor & cur, docstring const & str);
 
-	/// return the color of the canvas
-	Color_color backgroundColor() const;
-
 	/// access to our paragraphs
 	ParagraphList const & paragraphs() const { return pars_; }
 	ParagraphList & paragraphs() { return pars_; }
@@ -289,9 +286,6 @@ public:
 	void deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges);
 
 public:
-	///
-	int background_color_;
-
 	///
 	ParagraphList pars_;
 

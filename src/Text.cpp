@@ -356,12 +356,6 @@ double Text::spacing(Buffer const & buffer,
 }
 
 
-Color_color Text::backgroundColor() const
-{
-	return Color_color(Color::color(background_color_));
-}
-
-
 void Text::breakParagraph(Cursor & cur, bool keep_layout)
 {
 	BOOST_ASSERT(this == cur.text());

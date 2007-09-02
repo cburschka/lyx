@@ -1545,7 +1545,8 @@ void BufferView::draw(frontend::Painter & pain)
 	if (pi.full_repaint)
 		// Clear background (if not delegated to rows)
 		pain.fillRectangle(0, metrics_info_.y1, width_,
-			metrics_info_.y2 - metrics_info_.y1, text.backgroundColor());
+			metrics_info_.y2 - metrics_info_.y1,
+			buffer_.inset().backgroundColor());
 
 	TextMetrics const & tm = text_metrics_[&text];
 

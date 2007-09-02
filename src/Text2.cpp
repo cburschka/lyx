@@ -71,8 +71,7 @@ using std::istringstream;
 namespace lyx {
 
 Text::Text()
-	: background_color_(Color::background),
-	  autoBreakRows_(false)
+	: autoBreakRows_(false)
 {}
 
 

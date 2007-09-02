@@ -98,6 +98,8 @@ public:
 	bool erased_;
 	///
 	bool full_repaint;
+	///
+	int background_color;
 };
 
 class TextMetricsInfo {};
