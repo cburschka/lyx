@@ -27,10 +27,8 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "bufferview_funcs.h"
 #include "Bullet.h"
 #include "Color.h"
-#include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -63,15 +61,14 @@
 
 #include <sstream>
 
-
-namespace lyx {
-
 using std::endl;
 using std::ostringstream;
 using std::string;
 using std::max;
 using std::min;
 using std::istringstream;
+
+namespace lyx {
 
 Text::Text()
 	: current_font(Font::ALL_INHERIT),
