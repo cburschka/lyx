@@ -155,7 +155,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 	Dimension const old_dim = dim_;
 	// reset dimension.
 	dim_ = Dimension();
-	size_t npar = text_->paragraphs().size();
+	pit_type const npar = text_->paragraphs().size();
 	if (npar > 1)
 		// If there is more than one row, expand the text to 
 		// the full allowable width.
@@ -1776,10 +1776,14 @@ void TextMetrics::drawSelection(PainterInfo & pi, int x, int) const
 	    || bv_funcs::status(bv_, end) == bv_funcs::CUR_ABOVE)
 		return;
 
-	if (beg.pit() < par_metrics_.begin()->first)
+	if (beg.pit() < par_metrics_.begin()->first) {
 		beg.pit() = par_metrics_.begin()->first;
-	if (end.pit() > par_metrics_.rbegin()->first)
+		beg.pos() = 0;
+	}
+	if (end.pit() > par_metrics_.rbegin()->first) {
 		end.pit() = par_metrics_.rbegin()->first;
+		end.pos() = end.lastpos();
+	}
 
 	ParagraphMetrics const & pm1 = par_metrics_[beg.pit()];
 	ParagraphMetrics const & pm2 = par_metrics_[end.pit()];
