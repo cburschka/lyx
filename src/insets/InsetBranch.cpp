@@ -102,7 +102,10 @@ void InsetBranch::setButtonLabel()
 			s = _("Undef: ") + s;
 		}
 	}
-	setLabel(isOpen() ? s : getNewLabel(s) );
+	if (decoration() == Classic)
+		setLabel(isOpen() ? s : getNewLabel(s) );
+	else
+		setLabel(params_.branch + ": " + getNewLabel(s));
 }
 
 

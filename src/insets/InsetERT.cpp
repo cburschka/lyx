@@ -198,6 +198,15 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 
+	case LFUN_MOUSE_PRESS:
+		if (cmd.button() != mouse_button::button3)
+			InsetCollapsable::doDispatch(cur, cmd);
+		else
+			// This makes the cursor leave the
+			// inset when it collapses on mouse-3
+			cur.undispatched();
+		break;
+
 	case LFUN_QUOTE_INSERT: {
 		// We need to bypass the fancy quotes in Text
 		FuncRequest f(LFUN_SELF_INSERT, "\"");
@@ -381,7 +390,10 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetERT::setButtonLabel()
 {
 	// FIXME UNICODE
-	setLabel(isOpen() ?  _("ERT") : getNewLabel(_("ERT")));
+	if (decoration() == Classic)
+		setLabel(isOpen() ? _("ERT") : getNewLabel(_("ERT")));
+	else
+		setLabel(getNewLabel(_("ERT")));
 }
 
 
