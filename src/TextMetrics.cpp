@@ -225,15 +225,11 @@ Font TextMetrics::getDisplayFont(pit_type pit, pos_type pos) const
 		Font f = par.getFontSettings(params, pos);
 		if (!text_->isMainText(buffer))
 			applyOuterFont(f);
-		Font lf;
-		Font rlf;
-		if (layout->labeltype == LABEL_MANUAL && pos < body_pos) {
-			lf = layout->labelfont;
-			rlf = layout->reslabelfont;
-		} else {
-			lf = layout->font;
-			rlf = layout->resfont;
-		}
+		bool lab = layout->labeltype == LABEL_MANUAL && pos < body_pos;
+
+		Font const & lf = lab ? layout->labelfont : layout->font;
+		Font rlf = lab ? layout->reslabelfont : layout->resfont;
+		
 		// In case the default family has been customized
 		if (lf.family() == Font::INHERIT_FAMILY)
 			rlf.setFamily(params.getFont().family());
@@ -241,11 +237,8 @@ Font TextMetrics::getDisplayFont(pit_type pit, pos_type pos) const
 	}
 
 	// The uncommon case need not be optimized as much
-	Font layoutfont;
-	if (pos < body_pos)
-		layoutfont = layout->labelfont;
-	else
-		layoutfont = layout->font;
+	Font const & layoutfont = pos < body_pos ? 
+		layout->labelfont : layout->font;
 
 	Font font = par.getFontSettings(params, pos);
 	font.realize(layoutfont);
