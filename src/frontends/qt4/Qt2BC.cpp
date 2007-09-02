@@ -152,7 +152,7 @@ bool CheckedLineEdit::check() const
 	else
 		setWarningColor(input_);
 
-	if (!label_) {
+	if (label_) {
 		if (valid)
 			label_->setPalette(QPalette());
 		else
