@@ -181,6 +181,11 @@ public:
 	///
 	void deleteLineForward(Cursor & cur);
 
+	/// is this row the last in the text?
+	bool isLastRow(pit_type pit, Row const & row) const;
+	/// is this row the first in the text?
+	bool isFirstRow(pit_type pit, Row const & row) const;
+
 	/// Returns an inset if inset was hit, or 0 if not.
 	/// \warning This method is not recursive! It will return the
 	/// outermost inset within this Text.

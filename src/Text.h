@@ -256,13 +256,6 @@ public:
 	/// return true if this is the main text
 	bool isMainText(Buffer const &) const;
 
-	/// is this row the last in the text?
-	/// FIXME: move to TextMetrics.
-	bool isLastRow(pit_type pit, Row const & row) const;
-	/// is this row the first in the text?
-	/// FIXME: move to TextMetrics.
-	bool isFirstRow(pit_type pit, Row const & row) const;
-
 	///
 	double spacing(Buffer const & buffer, Paragraph const & par) const;
 	/// make a suggestion for a label

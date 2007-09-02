@@ -1160,19 +1160,6 @@ bool Text::dissolveInset(Cursor & cur) {
 }
 
 
-bool Text::isLastRow(pit_type pit, Row const & row) const
-{
-	return row.endpos() >= pars_[pit].size()
-		&& pit + 1 == pit_type(paragraphs().size());
-}
-
-
-bool Text::isFirstRow(pit_type pit, Row const & row) const
-{
-	return row.pos() == 0 && pit == 0;
-}
-
-
 void Text::getWord(CursorSlice & from, CursorSlice & to,
 	word_location const loc)
 {

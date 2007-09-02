@@ -1457,6 +1457,20 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 }
 
 
+bool TextMetrics::isLastRow(pit_type pit, Row const & row) const
+{
+	ParagraphList const & pars = text_->paragraphs();
+	return row.endpos() >= pars[pit].size()
+		&& pit + 1 == pit_type(pars.size());
+}
+
+
+bool TextMetrics::isFirstRow(pit_type pit, Row const & row) const
+{
+	return row.pos() == 0 && pit == 0;
+}
+
+
 int TextMetrics::leftMargin(int max_width, pit_type pit) const
 {
 	BOOST_ASSERT(pit >= 0);

@@ -389,7 +389,7 @@ void RowPainter::paintChangeBar()
 	if (start == end || !par_.isChanged(start, end))
 		return;
 
-	int const height = text_.isLastRow(pit_, row_)
+	int const height = text_metrics_.isLastRow(pit_, row_)
 		? row_.ascent()
 		: row_.height();
 
@@ -421,7 +421,7 @@ void RowPainter::paintDepthBar()
 		return;
 
 	depth_type prev_depth = 0;
-	if (!text_.isFirstRow(pit_, row_)) {
+	if (!text_metrics_.isFirstRow(pit_, row_)) {
 		pit_type pit2 = pit_;
 		if (row_.pos() == 0)
 			--pit2;
@@ -429,7 +429,7 @@ void RowPainter::paintDepthBar()
 	}
 
 	depth_type next_depth = 0;
-	if (!text_.isLastRow(pit_, row_)) {
+	if (!text_metrics_.isLastRow(pit_, row_)) {
 		pit_type pit2 = pit_;
 		if (row_.endpos() >= pars_[pit2].size())
 			++pit2;
