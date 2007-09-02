@@ -50,8 +50,9 @@ void InsetListings::init()
 	font.decSize();
 	font.setColor(Color::none);
 	setLabelFont(font);
-	text_.current_font.setLanguage(latex_language);
-	text_.real_current_font.setLanguage(latex_language);
+	// FIXME: what to do with those?
+	//text_.current_font.setLanguage(latex_language);
+	//text_.real_current_font.setLanguage(latex_language);
 }
 
 

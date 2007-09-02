@@ -134,7 +134,7 @@ BufferView::BufferView(Buffer & buf)
 
 	cursor_.push(buffer_.inset());
 	cursor_.resetAnchor();
-	buffer_.text().setCurrentFont(cursor_);
+	cursor_.setCurrentFont();
 
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(buffer_);
@@ -457,7 +457,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		// Note: only bottom (document) level pit is set.
 		setCursor(doc_it);
 		// set the current font.
-		buffer_.text().setCurrentFont(cursor_);
+		cursor_.setCurrentFont();
 		// center the screen on this new position.
 		center();
 	}
@@ -469,7 +469,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 void BufferView::translateAndInsert(char_type c, Text * t, Cursor & cur)
 {
 	if (lyxrc.rtl_support) {
-		if (cursor_.innerText()->real_current_font.isRightToLeft()) {
+		if (cursor_.real_current_font.isRightToLeft()) {
 			if (intl_->keymap == Intl::PRIMARY)
 				intl_->keyMapSec();
 		} else {

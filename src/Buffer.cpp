@@ -1530,9 +1530,6 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 	for_each(par_iterator_begin(),
 		 par_iterator_end(),
 		 bind(&Paragraph::changeLanguage, _1, params(), from, to));
-
-	text().current_font.setLanguage(to);
-	text().real_current_font.setLanguage(to);
 }
 
 

@@ -53,8 +53,9 @@ void InsetERT::init()
 {
 	setButtonLabel();
 	setLabelFont(layout_.labelfont);
-	text_.current_font.setLanguage(latex_language);
-	text_.real_current_font.setLanguage(latex_language);
+	// FIXME: what to do with those?
+	//text_.current_font.setLanguage(latex_language);
+	//text_.real_current_font.setLanguage(latex_language);
 }
 
 
@@ -254,8 +255,9 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// start of an existing paragraph get the buffer language
 		// and not latex_language, so we take this brute force
 		// approach.
-		text_.current_font.setLanguage(latex_language);
-		text_.real_current_font.setLanguage(latex_language);
+		// FIXME: what to do with those?
+		//text_.current_font.setLanguage(latex_language);
+		//text_.real_current_font.setLanguage(latex_language);
 
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;

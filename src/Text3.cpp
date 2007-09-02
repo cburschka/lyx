@@ -104,7 +104,7 @@ namespace {
 				font.number() != Font::IGNORE) {
 			Paragraph & par = cur.paragraph();
 			if (cur.boundary() != text->isRTLBoundary(cur.buffer(), par,
-			                        cur.pos(), text->real_current_font))
+			                        cur.pos(), cur.real_current_font))
 				text->setCursor(cur, cur.pit(), cur.pos(),
 				                false, !cur.boundary());
 		}
@@ -824,9 +824,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_SERVER_GET_FONT:
-		if (current_font.shape() == Font::ITALIC_SHAPE)
+		if (cur.current_font.shape() == Font::ITALIC_SHAPE)
 			cur.message(from_ascii("E"));
-		else if (current_font.shape() == Font::SMALLCAPS_SHAPE)
+		else if (cur.current_font.shape() == Font::SMALLCAPS_SHAPE)
 			cur.message(from_ascii("N"));
 		else
 			cur.message(from_ascii("0"));
@@ -1096,7 +1096,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		cur.clearSelection();
-		Font const old_font = real_current_font;
+		Font const old_font = cur.real_current_font;
 
 		docstring::const_iterator cit = cmd.argument().begin();
 		docstring::const_iterator end = cmd.argument().end();
@@ -1625,7 +1625,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	BOOST_ASSERT(cur.text() == this);
 
-	Font const & font = real_current_font;
+	Font const & font = cur.real_current_font;
 	bool enable = true;
 	Inset::Code code = Inset::NO_CODE;
 

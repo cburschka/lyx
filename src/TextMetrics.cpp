@@ -1112,7 +1112,9 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y)
 	if (!inset) {
 		// Either we deconst editXY or better we move current_font
 		// and real_current_font to Cursor
-		text_->setCurrentFont(cur);
+		// FIXME: what is needed now that current_font and real_current_font
+		// are transferred?
+		cur.setCurrentFont();
 		return 0;
 	}
 
@@ -1136,7 +1138,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y)
 	inset = inset->editXY(cur, x, y);
 
 	if (cur.top().text() == text_)
-		text_->setCurrentFont(cur);
+		cur.setCurrentFont();
 	return inset;
 }
 

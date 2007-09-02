@@ -14,6 +14,7 @@
 
 #include "DispatchResult.h"
 #include "DocIterator.h"
+#include "Font.h"
 
 #include <iosfwd>
 #include <vector>
@@ -25,7 +26,6 @@ class Buffer;
 class BufferView;
 class FuncStatus;
 class FuncRequest;
-class Font;
 class Row;
 
 // these should go
@@ -60,6 +60,9 @@ public:
 	void leaveInset(Inset const & inset);
 	/// sets cursor part
 	void setCursor(DocIterator const & it);
+
+	///
+	void setCurrentFont();
 
 	//
 	// selection
@@ -229,6 +232,13 @@ private:
 	int beforeDispY_;
 	/// position before dispatch started
 	DocIterator beforeDispatchCursor_;
+
+// FIXME: make them private.
+public:
+	/// the current font settings
+	Font current_font;
+	/// the current font
+	Font real_current_font;
 
 private:
 

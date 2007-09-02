@@ -266,7 +266,7 @@ namespace {
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
 	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1), textTargetOffset_(0),
-	  selection_(false), mark_(false), logicalpos_(false)
+	  selection_(false), mark_(false), logicalpos_(false), current_font(Font::ALL_INHERIT)
 {}
 
 
@@ -1437,7 +1437,7 @@ void Cursor::noUpdate()
 
 Font Cursor::getFont() const
 {
-	// The logic here should more or less match to the Text::setCurrentFont
+	// The logic here should more or less match to the Cursor::setCurrentFont
 	// logic, i.e. the cursor height should give a hint what will happen
 	// if a character is entered.
 	
@@ -1503,5 +1503,47 @@ bool notifyCursorLeaves(DocIterator const & old, Cursor & cur)
 	return false;
 }
 
+
+void Cursor::setCurrentFont()
+{
+	pos_type cpos = pos();
+	Paragraph & par = paragraph();
+	Text const & ctext = *text();
+
+	// are we behind previous char in fact? -> go to that char
+	if (cpos > 0 && boundary())
+		--cpos;
+
+	// find position to take the font from
+	if (cpos != 0) {
+		// paragraph end? -> font of last char
+		if (cpos == lastpos())
+			--cpos;
+		// on space? -> look at the words in front of space
+		else if (cpos > 0 && par.isSeparator(cpos))	{
+			// abc| def -> font of c
+			// abc |[WERBEH], i.e. boundary==true -> font of c
+			// abc [WERBEH]| def, font of the space
+			if (!ctext.isRTLBoundary(buffer(), par, cpos))
+				--cpos;
+		}
+	}
+
+	// get font
+	BufferParams const & bufparams = buffer().params();
+	current_font = par.getFontSettings(bufparams, cpos);
+	real_current_font = ctext.getFont(buffer(), par, cpos);
+
+	// special case for paragraph end
+	if (pos() == lastpos()
+	    && ctext.isRTLBoundary(buffer(), par, pos())
+	    && !boundary()) {
+		Language const * lang = par.getParLanguage(bufparams);
+		current_font.setLanguage(lang);
+		current_font.setNumber(Font::OFF);
+		real_current_font.setLanguage(lang);
+		real_current_font.setNumber(Font::OFF);
+	}
+}
 
 } // namespace lyx

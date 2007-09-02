@@ -71,8 +71,7 @@ using std::istringstream;
 namespace lyx {
 
 Text::Text()
-	: current_font(Font::ALL_INHERIT),
-	  background_color_(Color::background),
+	: background_color_(Color::background),
 	  autoBreakRows_(false)
 {}
 
@@ -410,15 +409,15 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 		layoutfont = getLayoutFont(cur.buffer(), pit);
 
 	// Update current font
-	real_current_font.update(font,
+	cur.real_current_font.update(font,
 					cur.buffer().params().language,
 					toggleall);
 
 	// Reduce to implicit settings
-	current_font = real_current_font;
-	current_font.reduce(layoutfont);
+	cur.current_font = cur.real_current_font;
+	cur.current_font.reduce(layoutfont);
 	// And resolve it completely
-	real_current_font.realize(layoutfont);
+	cur.real_current_font.realize(layoutfont);
 
 	// if there is no selection that's all we need to do
 	if (!cur.selection())
@@ -574,7 +573,7 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
-	cur.paragraph().insertInset(cur.pos(), inset, current_font,
+	cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
 				    Change(cur.buffer().params().trackChanges ?
 					   Change::INSERTED : Change::UNCHANGED));
 }
@@ -584,7 +583,7 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 void Text::insertStringAsLines(Cursor & cur, docstring const & str)
 {
 	cur.buffer().insertStringAsLines(pars_, cur.pit(), cur.pos(),
-					 current_font, str, autoBreakRows_);
+					 cur.current_font, str, autoBreakRows_);
 }
 
 
@@ -655,50 +654,7 @@ void Text::setCursorIntern(Cursor & cur,
 	cur.boundary(boundary);
 	setCursor(cur.top(), par, pos);
 	if (setfont)
-		setCurrentFont(cur);
-}
-
-
-void Text::setCurrentFont(Cursor & cur)
-{
-	BOOST_ASSERT(this == cur.text());
-	pos_type pos = cur.pos();
-	Paragraph & par = cur.paragraph();
-
-	// are we behind previous char in fact? -> go to that char
-	if (pos > 0 && cur.boundary())
-		--pos;
-
-	// find position to take the font from
-	if (pos != 0) {
-		// paragraph end? -> font of last char
-		if (pos == cur.lastpos())
-			--pos;
-		// on space? -> look at the words in front of space
-		else if (pos > 0 && par.isSeparator(pos))	{
-			// abc| def -> font of c
-			// abc |[WERBEH], i.e. boundary==true -> font of c
-			// abc [WERBEH]| def, font of the space
-			if (!isRTLBoundary(cur.buffer(), par, pos))
-				--pos;
-		}
-	}
-
-	// get font
-	BufferParams const & bufparams = cur.buffer().params();
-	current_font = par.getFontSettings(bufparams, pos);
-	real_current_font = getFont(cur.buffer(), par, pos);
-
-	// special case for paragraph end
-	if (cur.pos() == cur.lastpos()
-	    && isRTLBoundary(cur.buffer(), par, cur.pos())
-	    && !cur.boundary()) {
-		Language const * lang = par.getParLanguage(bufparams);
-		current_font.setLanguage(lang);
-		current_font.setNumber(Font::OFF);
-		real_current_font.setLanguage(lang);
-		real_current_font.setNumber(Font::OFF);
-	}
+		cur.setCurrentFont();
 }
 
 

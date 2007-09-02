@@ -168,8 +168,6 @@ public:
 	///
 	void setCursorIntern(Cursor & cur, pit_type par,
 		 pos_type pos, bool setfont = true, bool boundary = false);
-	///
-	void setCurrentFont(Cursor & cur);
 
 	///
 	void recUndo(Cursor & cur, pit_type first, pit_type last) const;
@@ -291,10 +289,6 @@ public:
 	void deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges);
 
 public:
-	/// the current font settings
-	Font current_font;
-	/// the current font
-	Font real_current_font;
 	///
 	int background_color_;
 

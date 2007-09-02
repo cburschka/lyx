@@ -459,7 +459,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 		static docstring const number_unary_operators = from_ascii("+-");
 		static docstring const number_seperators = from_ascii(".,:");
 
-		if (current_font.number() == Font::ON) {
+		if (cur.current_font.number() == Font::ON) {
 			if (!isDigit(c) && !contains(number_operators, c) &&
 			    !(contains(number_seperators, c) &&
 			      cur.pos() != 0 &&
@@ -469,7 +469,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 			   )
 				number(cur); // Set current_font.number to OFF
 		} else if (isDigit(c) &&
-			   real_current_font.isVisibleRightToLeft()) {
+			   cur.real_current_font.isVisibleRightToLeft()) {
 			number(cur); // Set current_font.number to ON
 
 			if (cur.pos() != 0) {
@@ -479,11 +479,11 @@ void Text::insertChar(Cursor & cur, char_type c)
 				     || par.isSeparator(cur.pos() - 2)
 				     || par.isNewline(cur.pos() - 2))
 				  ) {
-					setCharFont(buffer, pit, cur.pos() - 1, current_font);
+					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font);
 				} else if (contains(number_seperators, c)
 				     && cur.pos() >= 2
 				     && getFont(buffer, par, cur.pos() - 2).number() == Font::ON) {
-					setCharFont(buffer, pit, cur.pos() - 1, current_font);
+					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font);
 				}
 			}
 		}
@@ -515,7 +515,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 		// get font in front and behind the space in question. But do NOT 
 		// use getFont(cur.pos()) because the character c is not inserted yet
 		Font const & pre_space_font  = getFont(buffer, par, cur.pos() - 2);
-		Font const & post_space_font = real_current_font;
+		Font const & post_space_font = cur.real_current_font;
 		bool pre_space_rtl  = pre_space_font.isVisibleRightToLeft();
 		bool post_space_rtl = post_space_font.isVisibleRightToLeft();
 		
@@ -564,7 +564,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 		}
 	}
 
-	par.insertChar(cur.pos(), c, current_font, cur.buffer().params().trackChanges);
+	par.insertChar(cur.pos(), c, cur.current_font, cur.buffer().params().trackChanges);
 	checkBufferStructure(cur.buffer(), cur);
 
 //		cur.updateFlags(Update::Force);
@@ -1100,7 +1100,7 @@ bool Text::backspace(Cursor & cur)
 	}
 
 	if (cur.pos() == cur.lastpos())
-		setCurrentFont(cur);
+		cur.setCurrentFont();
 
 	needsUpdate |= handleBibitems(cur);
 
@@ -1287,7 +1287,7 @@ docstring Text::currentState(Cursor & cur)
 	// I think we should only show changes from the default
 	// font. (Asger)
 	// No, from the document font (MV)
-	Font font = real_current_font;
+	Font font = cur.real_current_font;
 	font.reduce(buf.params().getFont());
 
 	os << bformat(_("Font: %1$s"), font.stateText(&buf.params()));
