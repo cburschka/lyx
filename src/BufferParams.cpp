@@ -1257,7 +1257,8 @@ void BufferParams::makeTextClass()
 {
 	textClass_.reset(new TextClass(textclasslist[getBaseClass()]));
 	//FIXME It might be worth loading the children's modules here,
-	//instead of just doing a check in InsetInclude.
+	//just as we load their bibliographies and such, instead of just 
+	//doing a check in InsetInclude.
 	LayoutModuleList::const_iterator it = layoutModules_.begin();
 	for (; it != layoutModules_.end(); it++) {
 		string const modName = *it;
