@@ -53,11 +53,6 @@ public:
 	bool empty() const;
 
 	///
-	Font getFont(Buffer const & buffer, Paragraph const & par,
-		pos_type pos) const;
-	///
-	void applyOuterFont(Buffer const & buffer, Font &) const;
-	///
 	Font getLayoutFont(Buffer const & buffer, pit_type pit) const;
 	///
 	Font getLabelFont(Buffer const & buffer,
@@ -67,7 +62,7 @@ public:
 	 *  and the inset is not allowed inside a font change (see below).
 	 */
 	void setCharFont(Buffer const & buffer, pit_type pit, pos_type pos,
-		Font const & font);
+		Font const & font, Font const & display_font);
 
 	/** Needed to propagate font changes to all text cells of insets
 	 *  that are not allowed inside a font change (bug 1973).
@@ -76,7 +71,7 @@ public:
 	 *  FIXME: This should be removed, see documentation of noFontChange
 	 *  in insetbase.h
 	 */
-	void setInsetFont(Buffer const & buffer, pit_type pit, pos_type pos,
+	void setInsetFont(BufferView const & bv, pit_type pit, pos_type pos,
 		Font const & font, bool toggleall = false);
 
 	/// what you expect when pressing \<enter\> at cursor position
@@ -106,7 +101,7 @@ public:
 	/// FIXME: replace Cursor with DocIterator.
 	void setFont(Cursor & cur, Font const &, bool toggleall = false);
 	/// Set font from \p begin to \p end and rebreak.
-	void setFont(Buffer const & buffer, CursorSlice const & begin,
+	void setFont(BufferView const & bv, CursorSlice const & begin,
 		CursorSlice const & end, Font const &,
 		bool toggleall = false);
 
@@ -257,14 +252,6 @@ public:
 	docstring getPossibleLabel(Cursor & cur) const;
 	/// is this paragraph right-to-left?
 	bool isRTL(Buffer const &, Paragraph const & par) const;
-	/// is this position in the paragraph right-to-left?
-	bool isRTL(Buffer const & buffer, CursorSlice const & sl, bool boundary) const;
-	/// is between pos-1 and pos an RTL<->LTR boundary?
-	bool isRTLBoundary(Buffer const & buffer, Paragraph const & par,
-	  pos_type pos) const;
-	/// would be a RTL<->LTR boundary between pos and the given font?
-	bool isRTLBoundary(Buffer const & buffer, Paragraph const & par,
-	  pos_type pos, Font const & font) const;
 
 	///
 	bool checkAndActivateInset(Cursor & cur, bool front);
@@ -288,14 +275,6 @@ public:
 public:
 	///
 	ParagraphList pars_;
-
-	/// FIXME: this font_ member has nothing to do here!
-	/// It is used in applyOuterFont() and setCharFont() for reasons 
-	/// that are not clear... to hand hand the outermost language and
-	/// also for char style apparently.
-	/// our 'outermost' font. This is handed down from the surrounding
-	/// inset through the pi/mi parameter (pi.base.font)
-	Font font_;
 
 	///
 	bool autoBreakRows_;

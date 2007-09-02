@@ -14,6 +14,7 @@
 #ifndef TEXT_METRICS_H
 #define TEXT_METRICS_H
 
+#include "Font.h"
 #include "ParagraphMetrics.h"
 
 #include "support/types.h"
@@ -47,6 +48,33 @@ public:
 
 	/// compute text metrics.
 	bool metrics(MetricsInfo & mi, Dimension & dim);
+
+	/// Gets the fully instantiated font at a given position in a paragraph
+	/// Basically the same routine as Paragraph::getFont() in Paragraph.cpp.
+	/// The difference is that this one is used for displaying, and thus we
+	/// are allowed to make cosmetic improvements. For instance make footnotes
+	/// smaller. (Asger)
+	Font getDisplayFont(Paragraph const & par,
+		pos_type pos) const;
+
+	/// There are currently two font mechanisms in LyX:
+	/// 1. The font attributes in a lyxtext, and
+	/// 2. The inset-specific font properties, defined in an inset's
+	/// metrics() and draw() methods and handed down the inset chain through
+	/// the pi/mi parameters, and stored locally in a lyxtext in font_.
+	/// This is where the two are integrated in the final fully realized
+	/// font.
+	void applyOuterFont(Font &) const;
+
+	/// is this position in the paragraph right-to-left?
+	bool isRTL(CursorSlice const & sl, bool boundary) const;
+	/// is between pos-1 and pos an RTL<->LTR boundary?
+	bool isRTLBoundary(Paragraph const & par,
+	  pos_type pos) const;
+	/// would be a RTL<->LTR boundary between pos and the given font?
+	bool isRTLBoundary(Paragraph const & par,
+	  pos_type pos, Font const & font) const;
+
 
 	/// Rebreaks the given paragraph.
 	/// \retval true if a full screen redraw is needed.
@@ -227,6 +255,16 @@ private:
 	/// Paragraph grouped by owning text
 	ParPosCache pars_;
 	*/
+
+// temporary public:
+public:
+	/// our 'outermost' font.
+	/// This is handed down from the surrounding
+	/// inset through the pi/mi parameter (pi.base.font)
+	/// It is used in applyOuterFont() and setCharFont() for reasons 
+	/// that are not clear... to hand hand the outermost language and
+	/// also for char style apparently.
+	Font font_;
 };
 
 /// return the default height of a row in pixels, considering font zoom

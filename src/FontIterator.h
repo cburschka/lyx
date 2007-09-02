@@ -27,16 +27,15 @@
 
 namespace lyx {
 
-class Buffer;
-class Text;
 class Paragraph;
+class TextMetrics;
 
 
 class FontIterator : std::iterator<std::forward_iterator_tag, Font>
 {
 public:
 	///
-	FontIterator(Buffer const & buffer, Text const & text,
+	FontIterator(TextMetrics const & tm,
 		Paragraph const & par, pos_type pos);
 	///
 	Font const & operator*() const;
@@ -47,9 +46,7 @@ public:
 
 private:
 	///
-	Buffer const & buffer_;
-	///
-	Text const & text_;
+	TextMetrics const & tm_;
 	///
 	Paragraph const & par_;
 	///

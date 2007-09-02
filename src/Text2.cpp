@@ -81,92 +81,6 @@ bool Text::isMainText(Buffer const & buffer) const
 }
 
 
-// Gets the fully instantiated font at a given position in a paragraph
-// Basically the same routine as Paragraph::getFont() in Paragraph.cpp.
-// The difference is that this one is used for displaying, and thus we
-// are allowed to make cosmetic improvements. For instance make footnotes
-// smaller. (Asger)
-Font Text::getFont(Buffer const & buffer, Paragraph const & par,
-		pos_type const pos) const
-{
-	BOOST_ASSERT(pos >= 0);
-
-	LayoutPtr const & layout = par.layout();
-	// FIXME: broken?
-	BufferParams const & params = buffer.params();
-	pos_type const body_pos = par.beginOfBody();
-
-	// We specialize the 95% common case:
-	if (!par.getDepth()) {
-		Font f = par.getFontSettings(params, pos);
-		if (!isMainText(buffer))
-			applyOuterFont(buffer, f);
-		Font lf;
-		Font rlf;
-		if (layout->labeltype == LABEL_MANUAL && pos < body_pos) {
-			lf = layout->labelfont;
-			rlf = layout->reslabelfont;
-		} else {
-			lf = layout->font;
-			rlf = layout->resfont;
-		}
-		// In case the default family has been customized
-		if (lf.family() == Font::INHERIT_FAMILY)
-			rlf.setFamily(params.getFont().family());
-		return f.realize(rlf);
-	}
-
-	// The uncommon case need not be optimized as much
-	Font layoutfont;
-	if (pos < body_pos)
-		layoutfont = layout->labelfont;
-	else
-		layoutfont = layout->font;
-
-	Font font = par.getFontSettings(params, pos);
-	font.realize(layoutfont);
-
-	if (!isMainText(buffer))
-		applyOuterFont(buffer, font);
-
-	// Find the pit value belonging to paragraph. This will not break
-	// even if pars_ would not be a vector anymore.
-	// Performance appears acceptable.
-
-	pit_type pit = pars_.size();
-	for (pit_type it = 0; it < pit; ++it)
-		if (&pars_[it] == &par) {
-			pit = it;
-			break;
-		}
-	// Realize against environment font information
-	// NOTE: the cast to pit_type should be removed when pit_type
-	// changes to a unsigned integer.
-	if (pit < pit_type(pars_.size()))
-		font.realize(outerFont(pit, pars_));
-
-	// Realize with the fonts of lesser depth.
-	font.realize(params.getFont());
-
-	return font;
-}
-
-// There are currently two font mechanisms in LyX:
-// 1. The font attributes in a lyxtext, and
-// 2. The inset-specific font properties, defined in an inset's
-// metrics() and draw() methods and handed down the inset chain through
-// the pi/mi parameters, and stored locally in a lyxtext in font_.
-// This is where the two are integrated in the final fully realized
-// font.
-void Text::applyOuterFont(Buffer const & buffer, Font & font) const {
-	Font lf(font_);
-	lf.reduce(buffer.params().getFont());
-	lf.realize(font);
-	lf.setLanguage(font.language());
-	font = lf;
-}
-
-
 Font Text::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 {
 	LayoutPtr const & layout = pars_[pit].layout();
@@ -209,7 +123,7 @@ Font Text::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 
 
 void Text::setCharFont(Buffer const & buffer, pit_type pit,
-		pos_type pos, Font const & fnt)
+		pos_type pos, Font const & fnt, Font const & display_font)
 {
 	Font font = fnt;
 	LayoutPtr const & layout = pars_[pit].layout();
@@ -237,7 +151,7 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 	// Inside inset, apply the inset's font attributes if any
 	// (charstyle!)
 	if (!isMainText(buffer))
-		layoutfont.realize(font_);
+		layoutfont.realize(display_font);
 
 	layoutfont.realize(buffer.params().getFont());
 
@@ -248,7 +162,7 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 }
 
 
-void Text::setInsetFont(Buffer const & buffer, pit_type pit,
+void Text::setInsetFont(BufferView const & bv, pit_type pit,
 		pos_type pos, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(pars_[pit].isInset(pos) &&
@@ -263,7 +177,7 @@ void Text::setInsetFont(Buffer const & buffer, pit_type pit,
 			CursorSlice cellend = cs;
 			cellend.pit() = cellend.lastpit();
 			cellend.pos() = cellend.lastpos();
-			text->setFont(buffer, cs, cellend, font, toggleall);
+			text->setFont(bv, cs, cellend, font, toggleall);
 		}
 	}
 }
@@ -425,15 +339,17 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	// Ok, we have a selection.
 	recordUndoSelection(cur);
 
-	setFont(cur.buffer(), cur.selectionBegin().top(), 
+	setFont(cur.bv(), cur.selectionBegin().top(), 
 		cur.selectionEnd().top(), font, toggleall);
 }
 
 
-void Text::setFont(Buffer const & buffer, CursorSlice const & begin,
+void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 		CursorSlice const & end, Font const & font,
 		bool toggleall)
 {
+	Buffer const & buffer = bv.buffer();
+
 	// Don't use forwardChar here as ditend might have
 	// pos() == lastpos() and forwardChar would miss it.
 	// Can't use forwardPos either as this descends into
@@ -449,10 +365,11 @@ void Text::setFont(Buffer const & buffer, CursorSlice const & begin,
 				// text cells of the inset (bug 1973).
 				// FIXME: This should change, see documentation
 				// of noFontChange in Inset.h
-				setInsetFont(buffer, pit, pos, font, toggleall);
-			Font f = getFont(buffer, dit.paragraph(), pos);
+				setInsetFont(bv, pit, pos, font, toggleall);
+			TextMetrics const & tm = bv.textMetrics(this);
+			Font f = tm.getDisplayFont(dit.paragraph(), pos);
 			f.update(font, language, toggleall);
-			setCharFont(buffer, pit, pos, f);
+			setCharFont(buffer, pit, pos, f, tm.font_);
 		}
 	}
 }
@@ -735,10 +652,10 @@ bool Text::cursorRight(Cursor & cur)
 		if (checkAndActivateInset(cur, true))
 			return false;
 
+		TextMetrics const & tm = cur.bv().textMetrics(this);
 		// if left of boundary -> just jump to right side
-	  // but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
-	  if (cur.boundary() && 
-				!isRTLBoundary(cur.buffer(), cur.paragraph(), cur.pos()))
+		// but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
+		if (cur.boundary() && !tm.isRTLBoundary(cur.paragraph(), cur.pos()))
 			return setCursor(cur, cur.pit(), cur.pos(), true, false);
 
 		// next position is left of boundary, 
@@ -767,7 +684,7 @@ bool Text::cursorRight(Cursor & cur)
 		
 		// in front of RTL boundary? Stay on this side of the boundary because:
 		//   ab|cDDEEFFghi -> abc|DDEEFFghi
-		if (isRTLBoundary(cur.buffer(), cur.paragraph(), cur.pos() + 1))
+		if (tm.isRTLBoundary(cur.paragraph(), cur.pos() + 1))
 			return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
 		
 		// move right

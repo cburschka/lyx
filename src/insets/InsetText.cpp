@@ -165,7 +165,7 @@ bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
 
 	// Hand font through to contained lyxtext:
-	text_.font_ = mi.base.font;
+	tm.font_ = mi.base.font;
 	mi.base.textwidth -= 2 * border_;
 	tm.metrics(mi, dim);
 	mi.base.textwidth += 2 * border_;

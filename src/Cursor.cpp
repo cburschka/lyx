@@ -1459,9 +1459,10 @@ Font Cursor::getFont() const
 	
 	// on space? Take the font before (only for RTL boundary stay)
 	if (pos > 0) {
+		TextMetrics const & tm = bv().textMetrics(&text);
 		if (pos == sl.lastpos()
 				|| (par.isSeparator(pos) &&
-						!text.isRTLBoundary(buffer(), par, pos)))
+						!tm.isRTLBoundary(par, pos)))
 			--pos;
 	}
 	
@@ -1509,6 +1510,7 @@ void Cursor::setCurrentFont()
 	pos_type cpos = pos();
 	Paragraph & par = paragraph();
 	Text const & ctext = *text();
+	TextMetrics const & tm = bv().textMetrics(&ctext);
 
 	// are we behind previous char in fact? -> go to that char
 	if (cpos > 0 && boundary())
@@ -1524,7 +1526,7 @@ void Cursor::setCurrentFont()
 			// abc| def -> font of c
 			// abc |[WERBEH], i.e. boundary==true -> font of c
 			// abc [WERBEH]| def, font of the space
-			if (!ctext.isRTLBoundary(buffer(), par, cpos))
+			if (!tm.isRTLBoundary(par, cpos))
 				--cpos;
 		}
 	}
@@ -1532,11 +1534,11 @@ void Cursor::setCurrentFont()
 	// get font
 	BufferParams const & bufparams = buffer().params();
 	current_font = par.getFontSettings(bufparams, cpos);
-	real_current_font = ctext.getFont(buffer(), par, cpos);
+	real_current_font = tm.getDisplayFont(par, cpos);
 
 	// special case for paragraph end
 	if (pos() == lastpos()
-	    && ctext.isRTLBoundary(buffer(), par, pos())
+	    && tm.isRTLBoundary(par, pos())
 	    && !boundary()) {
 		Language const * lang = par.getParLanguage(bufparams);
 		current_font.setLanguage(lang);

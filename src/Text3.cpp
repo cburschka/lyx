@@ -103,7 +103,8 @@ namespace {
 		if (font.language() != ignore_language ||
 				font.number() != Font::IGNORE) {
 			Paragraph & par = cur.paragraph();
-			if (cur.boundary() != text->isRTLBoundary(cur.buffer(), par,
+			TextMetrics const & tm = cur.bv().textMetrics(text);
+			if (cur.boundary() != tm.isRTLBoundary(par,
 			                        cur.pos(), cur.real_current_font))
 				text->setCursor(cur, cur.pit(), cur.pos(),
 				                false, !cur.boundary());
@@ -248,56 +249,6 @@ void Text::number(Cursor & cur)
 bool Text::isRTL(Buffer const & buffer, Paragraph const & par) const
 {
 	return par.isRightToLeftPar(buffer.params());
-}
-
-
-bool Text::isRTL(Buffer const & buffer, CursorSlice const & sl, bool boundary) const
-{
-	if (!lyxrc.rtl_support && !sl.text())
-		return false;
-
-	int correction = 0;
-	if (boundary && sl.pos() > 0)
-		correction = -1;
-		
-	Paragraph const & par = getPar(sl.pit());
-	return getFont(buffer, par, sl.pos() + correction).isVisibleRightToLeft();
-}
-
-
-bool Text::isRTLBoundary(Buffer const & buffer, Paragraph const & par,
-                         pos_type pos) const
-{
-	if (!lyxrc.rtl_support)
-		return false;
-
-	// no RTL boundary at line start
-	if (pos == 0)
-		return false;
-
-	bool left = getFont(buffer, par, pos - 1).isVisibleRightToLeft();
-	bool right;
-	if (pos == par.size())
-		right = par.isRightToLeftPar(buffer.params());
-	else
-		right = getFont(buffer, par, pos).isVisibleRightToLeft();
-	return left != right;
-}
-
-
-bool Text::isRTLBoundary(Buffer const & buffer, Paragraph const & par,
-                         pos_type pos, Font const & font) const
-{
-	if (!lyxrc.rtl_support)
-		return false;
-
-	bool left = font.isVisibleRightToLeft();
-	bool right;
-	if (pos == par.size())
-		right = par.isRightToLeftPar(buffer.params());
-	else
-		right = getFont(buffer, par, pos).isVisibleRightToLeft();
-	return left != right;
 }
 
 

@@ -14,18 +14,17 @@
 
 #include "FontIterator.h"
 
-#include "Buffer.h"
-#include "Text.h"
+#include "TextMetrics.h"
 #include "Paragraph.h"
 
 
 namespace lyx {
 
 
-FontIterator::FontIterator(Buffer const & buffer, Text const & text,
+FontIterator::FontIterator(TextMetrics const & tm,
 		Paragraph const & par, pos_type pos)
-	: buffer_(buffer), text_(text), par_(par), pos_(pos),
-	  font_(text.getFont(buffer, par, pos)),
+	: tm_(tm), par_(par), pos_(pos),
+	  font_(tm.getDisplayFont(par, pos)),
 	  endspan_(par.fontSpan(pos).last),
 	  bodypos_(par.beginOfBody())
 {}
@@ -47,7 +46,7 @@ FontIterator & FontIterator::operator++()
 {
 	++pos_;
 	if (pos_ > endspan_ || pos_ == bodypos_) {
-		font_ = text_.getFont(buffer_, par_, pos_);
+		font_ = tm_.getDisplayFont(par_, pos_);
 		endspan_ = par_.fontSpan(pos_).last;
 	}
 	return *this;

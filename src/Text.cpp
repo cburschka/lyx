@@ -440,6 +440,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 
 	recordUndo(cur, Undo::INSERT);
 
+	TextMetrics const & tm = cur.bv().textMetrics(this);
 	Buffer const & buffer = cur.buffer();
 	Paragraph & par = cur.paragraph();
 	// try to remove this
@@ -458,8 +459,8 @@ void Text::insertChar(Cursor & cur, char_type c)
 			    !(contains(number_seperators, c) &&
 			      cur.pos() != 0 &&
 			      cur.pos() != cur.lastpos() &&
-			      getFont(buffer, par, cur.pos()).number() == Font::ON &&
-			      getFont(buffer, par, cur.pos() - 1).number() == Font::ON)
+			      tm.getDisplayFont(par, cur.pos()).number() == Font::ON &&
+			      tm.getDisplayFont(par, cur.pos() - 1).number() == Font::ON)
 			   )
 				number(cur); // Set current_font.number to OFF
 		} else if (isDigit(c) &&
@@ -473,11 +474,13 @@ void Text::insertChar(Cursor & cur, char_type c)
 				     || par.isSeparator(cur.pos() - 2)
 				     || par.isNewline(cur.pos() - 2))
 				  ) {
-					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font);
+					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font,
+						tm.font_);
 				} else if (contains(number_seperators, c)
 				     && cur.pos() >= 2
-				     && getFont(buffer, par, cur.pos() - 2).number() == Font::ON) {
-					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font);
+				     && tm.getDisplayFont(par, cur.pos() - 2).number() == Font::ON) {
+					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font,
+						tm.font_);
 				}
 			}
 		}
@@ -508,7 +511,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 	if ((cur.pos() >= 2) && (par.isLineSeparator(cur.pos() - 1))) {
 		// get font in front and behind the space in question. But do NOT 
 		// use getFont(cur.pos()) because the character c is not inserted yet
-		Font const & pre_space_font  = getFont(buffer, par, cur.pos() - 2);
+		Font const & pre_space_font  = tm.getDisplayFont(par, cur.pos() - 2);
 		Font const & post_space_font = cur.real_current_font;
 		bool pre_space_rtl  = pre_space_font.isVisibleRightToLeft();
 		bool post_space_rtl = post_space_font.isVisibleRightToLeft();
@@ -521,7 +524,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 				(pre_space_rtl == par.isRightToLeftPar(buffer.params())) ?
 				pre_space_font.language() : post_space_font.language();
 
-			Font space_font = getFont(buffer, par, cur.pos() - 1);
+			Font space_font = tm.getDisplayFont(par, cur.pos() - 1);
 			space_font.setLanguage(lang);
 			par.setFont(cur.pos() - 1, space_font);
 		}
