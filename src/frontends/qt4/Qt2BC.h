@@ -17,6 +17,8 @@
 #include "BCView.h"
 #include "gettext.h"
 
+#include <list>
+
 class QWidget;
 class QPushButton;
 class QLineEdit;
