@@ -31,7 +31,6 @@
 #include "Length.h"
 #include "Font.h"
 #include "LyXRC.h"
-#include "Row.h"
 #include "Messages.h"
 #include "OutputParams.h"
 #include "output_latex.h"
