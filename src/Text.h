@@ -295,8 +295,12 @@ public:
 	///
 	ParagraphList pars_;
 
+	/// FIXME: this font_ member has nothing to do here!
+	/// It is used in applyOuterFont() and setCharFont() for reasons 
+	/// that are not clear... to hand hand the outermost language and
+	/// also for char style apparently.
 	/// our 'outermost' font. This is handed down from the surrounding
-	// inset through the pi/mi parameter (pi.base.font)
+	/// inset through the pi/mi parameter (pi.base.font)
 	Font font_;
 
 	///
