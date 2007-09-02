@@ -16,6 +16,7 @@
 #include "BCView.h"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/noncopyable.hpp>
 
 namespace lyx {
 namespace frontend {
