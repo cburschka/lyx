@@ -146,7 +146,7 @@ void GuiTabularDialog::topspace_changed()
 			if (!topspaceED->text().isEmpty())
 				form_->controller().set(Tabular::SET_TOP_SPACE,
 					widgetsToLength(topspaceED, topspaceUnit));
-			if (!form_->bc().bp().isReadOnly()) {
+			if (!form_->bc().policy().isReadOnly()) {
 				topspaceED->setEnabled(true);
 				topspaceUnit->setEnabled(true);
 			}
@@ -176,7 +176,7 @@ void GuiTabularDialog::bottomspace_changed()
 			if (!bottomspaceED->text().isEmpty())
 				form_->controller().set(Tabular::SET_BOTTOM_SPACE,
 					widgetsToLength(bottomspaceED, bottomspaceUnit));
-			if (!form_->bc().bp().isReadOnly()) {
+			if (!form_->bc().policy().isReadOnly()) {
 				bottomspaceED->setEnabled(true);
 				bottomspaceUnit->setEnabled(true);
 			}
@@ -206,7 +206,7 @@ void GuiTabularDialog::interlinespace_changed()
 			if (!interlinespaceED->text().isEmpty())
 				form_->controller().set(Tabular::SET_INTERLINE_SPACE,
 					widgetsToLength(interlinespaceED, interlinespaceUnit));
-			if (!form_->bc().bp().isReadOnly()) {
+			if (!form_->bc().policy().isReadOnly()) {
 				interlinespaceED->setEnabled(true);
 				interlinespaceUnit->setEnabled(true);
 			}
@@ -666,7 +666,7 @@ void GuiTabular::update_contents()
 
 	dialog_->specialAlignmentED->setText(toqstr(special));
 
-	bool const isReadonly = bc().bp().isReadOnly();
+	bool const isReadonly = bc().policy().isReadOnly();
 	dialog_->specialAlignmentED->setEnabled(!isReadonly);
 
 	Length::UNIT default_unit = controller().useMetricUnits() ? Length::CM : Length::IN;

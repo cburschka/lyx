@@ -16,14 +16,12 @@
 #define BUTTONPOLICY_H
 
 #include <vector>
-#include <boost/utility.hpp>
-
-#include "support/std_ostream.h"
+#include <iostream>
 
 namespace lyx {
 namespace frontend {
 
-/** An abstract base class for button policies.
+/** A class for button policies.
     A state machine implementation of the various button policies used by the
     dialogs. Only the policy is implemented here.  Separate ButtonController
     classes are needed for each GUI implementation.
@@ -64,10 +62,103 @@ namespace frontend {
 
     The IgnorantPolicy is a special case that allows anything.
  */
-class ButtonPolicy : boost::noncopyable {
+
+class ButtonPolicy {
 public:
-	///
-	virtual ~ButtonPolicy() {}
+
+	// The various poicies
+	enum Policy { 
+		/** Ok and Cancel buttons for dialogs with read-only operation.
+			Note: This scheme supports the relabelling of Cancel to Close and
+			vice versa.
+			This is based on the value of the bool state of the Button::CANCEL.
+			true == Cancel, false == Close
+		 */
+    OkCancelPolicy,
+
+
+		/** Ok and Cancel buttons for dialogs where read-only operation is blocked.
+			The state machine design for this policy allows changes to occur within
+			the dialog while a file is read-only -- the okay button is disabled until
+			a read-write input is given.  When the file is made read-write the dialog
+			will then be in the correct state (as if the file had always been
+			read-write).
+			Note: This scheme supports the relabelling of Cancel to Close
+			and vice versa.
+			This is based on the value of the bool state of the Button::CANCEL.
+			true == Cancel, false == Close
+		 */
+		OkCancelReadOnlyPolicy,
+
+		/** Ok, Apply and Cancel buttons for dialogs where read-only operation
+			is blocked.
+			Repeated Apply are not allowed.  Likewise,  Ok cannot follow Apply without
+			some valid input. That is, the dialog contents must change between
+			each Apply or Apply and Ok.
+			The state machine design for this policy allows changes to occur within
+			the dialog while a file is read-only -- the Ok+Apply buttons are disabled
+			until a read-write input is given.  When the file is made read-write the
+			dialog will then be in the correct state (as if the file had always been
+			read-write).
+			Note: This scheme supports the relabelling of Cancel to Close
+			and vice versa.
+			This is based on the value of the bool state of the Button::CANCEL.
+			true == Cancel, false == Close
+		 */
+		NoRepeatedApplyReadOnlyPolicy,
+
+		/** Ok, Apply and Cancel buttons for dialogs where read-only
+			operation is blocked.
+			Repeated Apply is allowed.  Likewise,  Ok can follow Apply.
+			The state machine design for this policy allows changes to occur within
+			the dialog while a file is read-only -- the Ok+Apply buttons are disabled
+			until a read-write input is given.  When the file is made read-write the
+			dialog will then be in the correct state (as if the file had always been
+			read-write).
+			Note: This scheme supports the relabelling of Cancel to Close
+			and vice versa.
+			This is based on the value of the bool state of the Button::CANCEL.
+			true == Cancel, false == Close
+		 */
+		OkApplyCancelReadOnlyPolicy,
+
+		/** Ok, Apply and Cancel buttons for dialogs where repeated
+ *    Apply is allowed.
+			Note: This scheme supports the relabelling of Cancel to Close
+			and vice versa.
+			This is based on the value of the bool state of the Button::CANCEL.
+			true == Cancel, false == Close
+		 */
+		OkApplyCancelPolicy,
+
+		/** Ok, Apply and Cancel buttons for dialogs with no repeated Apply.
+			Note: This scheme supports the relabelling of Cancel to Close
+			and vice versa.
+			This is based on the value of the bool state of the Button::CANCEL.
+			true == Cancel, false == Close
+		 */
+		NoRepeatedApplyPolicy,
+
+		/** Defines the policy used by the Preferences dialog.
+			Four buttons: Ok (Save), Apply, Cancel/Close, Restore.
+			Note: This scheme supports the relabelling of Cancel to Close
+			and vice versa.
+			This is based on the value of the bool state of the Button::CANCEL.
+			true == Cancel, false == Close
+		 */
+		PreferencesPolicy,
+
+		/** Defines the policy used by dialogs that are forced to support a button
+			controller when they either don't have a use for one or are not ready to
+			use one.  This may be useful when testing a new button policy but wishing
+			to minimise problems to users by supplying an anything-goes policy via a
+			preprocessor directive.
+		 */
+		IgnorantPolicy,
+	};
+
+	/// Constructor
+	explicit ButtonPolicy(Policy policy);
 
 	/** The various possible state names.
 	    Not all state-machines have this many states.  However, we need
@@ -105,7 +196,7 @@ public:
 		///
 		CANCEL   = 4,
 		///
-		RESTORE = 8
+		RESTORE  = 8
 	};
 	///
 	static const Button ALL_BUTTONS =
@@ -145,54 +236,7 @@ public:
 	};
 
 	/// Trigger a transition with this input.
-	virtual void input(SMInput) = 0;
-	/// Activation status of a button
-	virtual bool buttonStatus(Button) const = 0;
-	/// Are we in a read-only state?
-	virtual bool isReadOnly() const = 0;
-
-	/// Transition map of the state machine.
-	typedef std::vector<State> StateArray;
-	///
-	typedef std::vector<StateArray> StateMachine;
-	/// The state outputs are the status of the buttons.
-	typedef std::vector<int> StateOutputs;
-};
-
-
-inline
-std::ostream & operator<<(std::ostream & os, ButtonPolicy::State st)
-{
-	os << int(st);
-	return os;
-}
-
-
-inline
-std::ostream & operator<<(std::ostream & os, ButtonPolicy::SMInput smi)
-{
-	os << int(smi);
-	return os;
-}
-
-
-//--------------------- Actual Policy Classes -----------------------------
-
-/** Ok and Cancel buttons for dialogs with read-only operation.
-    Note: This scheme supports the relabelling of Cancel to Close and
-    vice versa.
-    This is based on the value of the bool state of the Button::CANCEL.
-    true == Cancel, false == Close
- */
-class OkCancelPolicy : public ButtonPolicy {
-public:
-	///
-	OkCancelPolicy();
-	///
-	//virtual ~OkCancelPolicy() {}
-
-	/// Trigger a transition with this input.
-	virtual void input(SMInput);
+	void input(SMInput);
 	/** Activation status of a button.
 	    We assume that we haven't gotten into an undefined state.
 	    This is reasonable since we can only reach states defined
@@ -200,250 +244,55 @@ public:
 	    the outputs_ variable.  Perhaps we can do something at compile
 	    time to check that all the states have corresponding outputs.
 	 */
-	virtual bool buttonStatus(Button button) const {
-		return button & outputs_[state_];
-	}
+	bool buttonStatus(Button) const;
 	/// Are we in a read-only state?
-	virtual bool isReadOnly() const { return false; }
+	bool isReadOnly() const;
+
 private:
+	///
+	Policy policy_;
+
+	/// Transition map of the state machine.
+	typedef std::vector<State> StateArray;
+	///
+	typedef std::vector<StateArray> StateMachine;
+	/// The state outputs are the status of the buttons.
+	typedef std::vector<int> StateOutputs;
+
 	/// Current state.
 	State state_;
 	/// Which buttons are active for a given state.
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
-};
 
-/** Ok and Cancel buttons for dialogs where read-only operation is blocked.
-    The state machine design for this policy allows changes to occur within
-    the dialog while a file is read-only -- the okay button is disabled until
-    a read-write input is given.  When the file is made read-write the dialog
-    will then be in the correct state (as if the file had always been
-    read-write).
-    Note: This scheme supports the relabelling of Cancel to Close
-    and vice versa.
-    This is based on the value of the bool state of the Button::CANCEL.
-    true == Cancel, false == Close
- */
-class OkCancelReadOnlyPolicy : public ButtonPolicy {
-public:
-	///
-	OkCancelReadOnlyPolicy();
-	///
-	//virtual ~OkCancelReadOnlyPolicy() {}
-
-	/// Trigger a transition with this input.
-	virtual void input(SMInput);
-	/// Activation status of a button.
-	virtual bool buttonStatus(Button button) const {
-		return button & outputs_[state_];
-	}
-	/// Are we in a read-only state?
-	virtual bool isReadOnly() const {
-		return RO_INITIAL == state_
-			|| RO_VALID == state_
-			|| RO_INVALID == state_
-			|| RO_APPLIED == state_;
-	}
 private:
-	/// Current state.
-	State state_;
-	/// Which buttons are active for a given state.
-	StateOutputs outputs_;
-	///
-	StateMachine state_machine_;
+	// Helpers
+	void nextState(SMInput input);
+
+	void initOkCancel();
+	void initOkCancelReadOnly();
+	void initNoRepeatedApplyReadOnly();
+	void initOkApplyCancelReadOnly();
+	void initOkApplyCancel();
+	void initNoRepeatedApply();
+	void initPreferences();
 };
 
 
-/** Ok, Apply and Cancel buttons for dialogs where read-only operation
-    is blocked.
-    Repeated Apply are not allowed.  Likewise,  Ok cannot follow Apply without
-    some valid input. That is, the dialog contents must change between
-    each Apply or Apply and Ok.
-    The state machine design for this policy allows changes to occur within
-    the dialog while a file is read-only -- the Ok+Apply buttons are disabled
-    until a read-write input is given.  When the file is made read-write the
-    dialog will then be in the correct state (as if the file had always been
-    read-write).
-    Note: This scheme supports the relabelling of Cancel to Close
-    and vice versa.
-    This is based on the value of the bool state of the Button::CANCEL.
-    true == Cancel, false == Close
- */
-class NoRepeatedApplyReadOnlyPolicy : public ButtonPolicy {
-public:
-	///
-	NoRepeatedApplyReadOnlyPolicy();
-	///
-	//virtual ~NoRepeatedApplyReadOnlyPolicy() {}
-
-	/// Trigger a transition with this input.
-	virtual void input(SMInput);
-	/// Activation status of a button.
-	virtual bool buttonStatus(Button button) const {
-		return button & outputs_[state_];
-	}
-	/// Are we in a read-only state?
-	virtual bool isReadOnly() const {
-		return RO_INITIAL == state_
-			|| RO_VALID == state_
-			|| RO_INVALID == state_
-			|| RO_APPLIED == state_;
-	}
-private:
-	/// Current state.
-	State state_;
-	/// Which buttons are active for a given state.
-	StateOutputs outputs_;
-	///
-	StateMachine state_machine_;
-};
+inline
+std::ostream & operator<<(std::ostream & os, ButtonPolicy::State st)
+{
+	return os << int(st);
+}
 
 
-/** Ok, Apply and Cancel buttons for dialogs where read-only
-    operation is blocked.
-    Repeated Apply is allowed.  Likewise,  Ok can follow Apply.
-    The state machine design for this policy allows changes to occur within
-    the dialog while a file is read-only -- the Ok+Apply buttons are disabled
-    until a read-write input is given.  When the file is made read-write the
-    dialog will then be in the correct state (as if the file had always been
-    read-write).
-    Note: This scheme supports the relabelling of Cancel to Close
-    and vice versa.
-    This is based on the value of the bool state of the Button::CANCEL.
-    true == Cancel, false == Close
- */
-class OkApplyCancelReadOnlyPolicy : public ButtonPolicy {
-public:
-	///
-	OkApplyCancelReadOnlyPolicy();
+inline
+std::ostream & operator<<(std::ostream & os, ButtonPolicy::SMInput smi)
+{
+	return os << int(smi);
+}
 
-	/// Trigger a transition with this input.
-	virtual void input(SMInput);
-	/// Activation status of a button.
-	virtual bool buttonStatus(Button button) const {
-		return button & outputs_[state_];
-	}
-	/// Are we in a read-only state?
-	virtual bool isReadOnly() const {
-		return RO_INITIAL == state_
-			|| RO_VALID == state_
-			|| RO_INVALID == state_
-			|| RO_APPLIED == state_;
-	}
-private:
-	/// Current state.
-	State state_;
-	/// Which buttons are active for a given state.
-	StateOutputs outputs_;
-	///
-	StateMachine state_machine_;
-};
-
-
-/** Ok, Apply and Cancel buttons for dialogs where repeated Apply is allowed.
-    Note: This scheme supports the relabelling of Cancel to Close
-    and vice versa.
-    This is based on the value of the bool state of the Button::CANCEL.
-    true == Cancel, false == Close
- */
-class OkApplyCancelPolicy : public ButtonPolicy {
-public:
-	///
-	OkApplyCancelPolicy();
-
-	/// Trigger a transition with this input.
-	virtual void input(SMInput);
-	/// Activation status of a button.
-	virtual bool buttonStatus(Button button) const {
-		return button & outputs_[state_];
-	}
-	/// Are we in a read-only state?
-	virtual bool isReadOnly() const { return false; }
-private:
-	/// Current state.
-	State state_;
-	/// Which buttons are active for a given state.
-	StateOutputs outputs_;
-	///
-	StateMachine state_machine_;
-};
-
-
-/** Ok, Apply and Cancel buttons for dialogs with no repeated Apply.
-    Note: This scheme supports the relabelling of Cancel to Close
-    and vice versa.
-    This is based on the value of the bool state of the Button::CANCEL.
-    true == Cancel, false == Close
- */
-class NoRepeatedApplyPolicy : public ButtonPolicy {
-public:
-	///
-	NoRepeatedApplyPolicy();
-
-	/// Trigger a transition with this input.
-	virtual void input(SMInput);
-	/// Activation status of a button.
-	virtual bool buttonStatus(Button button) const {
-		return button & outputs_[state_];
-	}
-	/// Are we in a read-only state?
-	virtual bool isReadOnly() const { return false; }
-private:
-	/// Current state.
-	State state_;
-	/// Which buttons are active for a given state.
-	StateOutputs outputs_;
-	///
-	StateMachine state_machine_;
-};
-
-
-/** Defines the policy used by the Preferences dialog.
-    Four buttons: Ok (Save), Apply, Cancel/Close, Restore.
-    Note: This scheme supports the relabelling of Cancel to Close
-    and vice versa.
-    This is based on the value of the bool state of the Button::CANCEL.
-    true == Cancel, false == Close
- */
-class PreferencesPolicy : public ButtonPolicy {
-public:
-	///
-	PreferencesPolicy();
-
-	/// Trigger a transition with this input.
-	virtual void input(SMInput);
-	/// Activation status of a button.
-	virtual bool buttonStatus(Button button) const {
-		return button & outputs_[state_];
-	}
-	/// Are we in a read-only state?
-	virtual bool isReadOnly() const { return false; }
-private:
-	/// Current state.
-	State state_;
-	/// Which buttons are active for a given state.
-	StateOutputs outputs_;
-	///
-	StateMachine state_machine_;
-};
-
-
-/** Defines the policy used by dialogs that are forced to support a button
-    controller when they either don't have a use for one or are not ready to
-    use one.  This may be useful when testing a new button policy but wishing
-    to minimise problems to users by supplying an anything-goes policy via a
-    preprocessor directive.
- */
-class IgnorantPolicy : public ButtonPolicy {
-public:
-	/// Trigger a transition with this input.
-	virtual void input(SMInput) {}
-	/// Activation status of a button.
-	virtual bool buttonStatus(Button) const { return true; }
-	/// Are we in a read-only state?
-	virtual bool isReadOnly() const { return false; }
-};
 
 } // namespace frontend
 } // namespace lyx

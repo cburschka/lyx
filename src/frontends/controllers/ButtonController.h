@@ -13,12 +13,12 @@
 #define BUTTONCONTROLLER_H
 
 #include "ButtonPolicy.h"
+#include "BCView.h"
+
 #include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 namespace frontend {
-
-class BCView;
 
 /** \c ButtonController controls the activation of the OK, Apply and
  *  Cancel buttons.
@@ -30,6 +30,7 @@ class BCView;
 
 class ButtonController : boost::noncopyable {
 public:
+	ButtonController() : policy_(ButtonPolicy::IgnorantPolicy) {}
 	//@{
 	/** Methods to set and get the GUI view (containing the actual
 	 *   button widgets.
@@ -43,23 +44,24 @@ public:
 	/** Methods to set and get the ButtonPolicy.
 	 *  \param ptr is owned by the ButtonController.
 	 */
-	void bp(ButtonPolicy * ptr);
-	ButtonPolicy & bp() const;
+	void setPolicy(ButtonPolicy::Policy policy);
+	ButtonPolicy const & policy() const { return policy_; }
+	ButtonPolicy & policy() { return policy_; }
 	//@}
 
 	///
-	void input(ButtonPolicy::SMInput) const;
+	void input(ButtonPolicy::SMInput);
 
 	//@{
 	/// Tell the BC that a particular button has been pressed.
-	void ok() const;
-	void apply() const;
-	void cancel() const;
-	void restore() const;
+	void ok();
+	void apply();
+	void cancel();
+	void restore();
 	//@}
 
 	/// Tell the BC that the dialog is being hidden
-	void hide() const;
+	void hide();
 
 	/**Refresh the activation state of the Ok, Apply, Close and
 	 * Restore buttons.
@@ -74,15 +76,15 @@ public:
 	/** Passthrough function -- returns its input value
 	 *  Tell the BC about the read-only status of the underlying buffer.
 	 */
-	bool readOnly(bool = true) const;
+	bool readOnly(bool = true);
 
 	/** \param validity Tell the BC that the data is, or is not, valid.
 	 *  Sets the activation state of the buttons immediately.
 	 */
-	void valid(bool = true) const;
+	void valid(bool = true);
 
 private:
-	boost::scoped_ptr<ButtonPolicy> bp_;
+	ButtonPolicy policy_;
 	boost::scoped_ptr<BCView> view_;
 };
 

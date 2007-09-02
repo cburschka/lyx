@@ -12,26 +12,24 @@
 #ifndef CHECKEDLINEEDIT_H
 #define CHECKEDLINEEDIT_H
 
-#include "BCView.h"
-
 class QWidget;
 class QLineEdit;
 
 namespace lyx {
 namespace frontend {
 
+class BCView;
+
 void addCheckedLineEdit(BCView & bcview,
 	QLineEdit * input, QWidget * label = 0);
 
-class CheckedLineEdit : public CheckedWidget {
+class CheckedLineEdit
+{
 public:
 	CheckedLineEdit(QLineEdit * input, QWidget * label = 0);
+	bool check() const;
 
 private:
-	///
-	virtual bool check() const;
-
-	///
 	QLineEdit * input_;
 	QWidget * label_;
 };

@@ -24,14 +24,14 @@ namespace lyx {
 namespace frontend {
 
 
-Qt2BC::Qt2BC(ButtonController const & parent)
+Qt2BC::Qt2BC(ButtonController & parent)
 	: BCView(parent), okay_(0), apply_(0), cancel_(0), restore_(0)
 {}
 
 
 void Qt2BC::refresh() const
 {
-	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl;
+	LYXERR(Debug::GUI) << "Calling BC refresh()" << std::endl;
 
 	bool const all_valid = checkWidgets();
 
@@ -62,15 +62,15 @@ void Qt2BC::refresh() const
 
 void Qt2BC::refreshReadOnly() const
 {
-	if (read_only_.empty()) return;
+	if (read_only_.empty())
+		return;
 
 	bool const enable = !bp().isReadOnly();
 
 	Widgets::const_iterator end = read_only_.end();
 	Widgets::const_iterator iter = read_only_.begin();
-	for (; iter != end; ++iter) {
+	for (; iter != end; ++iter)
 		setWidgetEnabled(*iter, enable);
-	}
 }
 
 
@@ -83,6 +83,29 @@ void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled) const
 
 	obj->setFocusPolicy(enabled ? Qt::StrongFocus : Qt::NoFocus);
 }
+
+
+void Qt2BC::addCheckedWidget(CheckedLineEdit * ptr)
+{
+	if (ptr)
+		checked_widgets.push_back(CheckedWidgetPtr(ptr));
+}
+
+
+bool Qt2BC::checkWidgets() const
+{
+	bool valid = true;
+
+	CheckedWidgetList::const_iterator it  = checked_widgets.begin();
+	CheckedWidgetList::const_iterator end = checked_widgets.end();
+
+	for (; it != end; ++it)
+		valid &= (*it)->check();
+
+	// return valid status after checking ALL widgets
+	return valid;
+}
+
 
 } // namespace frontend
 } // namespace lyx

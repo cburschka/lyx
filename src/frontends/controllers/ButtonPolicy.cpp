@@ -12,138 +12,207 @@
 
 #include "ButtonPolicy.h"
 #include "debug.h"
-#include <string>
 
-using std::endl;
-using std::string;
 
 namespace lyx {
 namespace frontend {
 
-namespace {
 
-string const printState(ButtonPolicy::State const & state)
+ButtonPolicy::ButtonPolicy(Policy policy)
 {
-	string output;
+	policy_ = policy;
+	state_ = INITIAL;
 
-	switch(state) {
-	case ButtonPolicy::INITIAL:
-		output = "INITIAL";
-		break;
-	case ButtonPolicy::VALID:
-		output = "VALID";
-		break;
-	case ButtonPolicy::INVALID:
-		output = "INVALID";
-		break;
-	case ButtonPolicy::APPLIED:
-		output = "APPLIED";
-		break;
-	case ButtonPolicy::RO_INITIAL:
-		output = "RO_INITIAL";
-		break;
-	case ButtonPolicy::RO_VALID:
-		output = "RO_VALID";
-		break;
-	case ButtonPolicy::RO_INVALID:
-		output = "RO_INVALID";
-		break;
-	case ButtonPolicy::RO_APPLIED:
-		output = "RO_APPLIED";
-		break;
-	case ButtonPolicy::BOGUS:
-		output = "BOGUS";
-		break;
+	switch (policy_) {
+		case OkCancelPolicy:
+			initOkCancel();
+			break;
+		case OkCancelReadOnlyPolicy:
+			initOkCancelReadOnly();
+			break;
+		case OkApplyCancelPolicy:
+			initOkApplyCancel();
+			break;
+		case OkApplyCancelReadOnlyPolicy:
+			initOkApplyCancelReadOnly();
+			break;
+		case NoRepeatedApplyPolicy:
+			initNoRepeatedApply();
+			break;
+		case NoRepeatedApplyReadOnlyPolicy:
+			initNoRepeatedApplyReadOnly();
+			break;
+		case PreferencesPolicy:
+			initPreferences();
+			break;
+		case IgnorantPolicy:
+			break;
 	}
-
-	return output;
 }
 
 
-string const printInput(ButtonPolicy::SMInput const & input)
+char const * functionName(ButtonPolicy::Policy policy)
 {
-	string output;
+	switch (policy) {
+		case ButtonPolicy::PreferencesPolicy:
+			return "PreferencesPolicy";
+		case ButtonPolicy::OkCancelPolicy:
+			return "OkCancelPolicy";
+		case ButtonPolicy::OkCancelReadOnlyPolicy:
+			return "OkCancelReadOnlyPolicy";
+		case ButtonPolicy::OkApplyCancelPolicy:
+			return "OkApplyCancelPolicy";
+		case ButtonPolicy::OkApplyCancelReadOnlyPolicy:
+			return "OkApplyCancelReadOnlyPolicy";
+		case ButtonPolicy::NoRepeatedApplyPolicy:
+			return "NoRepeatedApplyPolicy";
+		case ButtonPolicy::NoRepeatedApplyReadOnlyPolicy:
+			return "NoRepeatedApplyReadOnlyPolicy";
+		case ButtonPolicy::IgnorantPolicy:
+			return "IgnorantPolicy";
+		default:
+			return "Unknown policy";
+	}
+}
 
+
+void ButtonPolicy::input(SMInput input)
+{
+	switch (policy_) {
+		case PreferencesPolicy:
+			// The APPLIED state is persistent. Next time the dialog is opened,
+			// the user will be able to press 'Save'.
+			if (SMI_CANCEL == input || SMI_HIDE == input) {
+				if (state_ != APPLIED)
+					state_ = INITIAL;
+			} else {
+				nextState(input);
+			}
+			break;
+		case IgnorantPolicy:
+			break;
+		default:
+			// CANCEL and HIDE always take us to INITIAL for all cases
+			if (SMI_CANCEL == input || SMI_HIDE == input)
+				state_ = INITIAL;
+			else
+				nextState(input);
+			break;
+	}
+}
+
+
+bool ButtonPolicy::buttonStatus(Button button) const
+{
+	return policy_ == IgnorantPolicy ? true : button & outputs_[state_];
+}
+
+
+bool ButtonPolicy::isReadOnly() const
+{
+	switch(policy_) {
+		case NoRepeatedApplyReadOnlyPolicy:
+		case OkCancelReadOnlyPolicy:
+		case OkApplyCancelReadOnlyPolicy:
+			return RO_INITIAL == state_
+				|| RO_VALID == state_
+				|| RO_INVALID == state_
+				|| RO_APPLIED == state_;
+		default:
+			return false;
+	}
+}
+
+
+static char const * const printState(ButtonPolicy::State const & state)
+{
+	switch (state) {
+		case ButtonPolicy::INITIAL:
+			return "INITIAL";
+		case ButtonPolicy::VALID:
+			return "VALID";
+		case ButtonPolicy::INVALID:
+			return "INVALID";
+		case ButtonPolicy::APPLIED:
+			return "APPLIED";
+		case ButtonPolicy::RO_INITIAL:
+			return "RO_INITIAL";
+		case ButtonPolicy::RO_VALID:
+			return "RO_VALID";
+		case ButtonPolicy::RO_INVALID:
+			return "RO_INVALID";
+		case ButtonPolicy::RO_APPLIED:
+			return "RO_APPLIED";
+		case ButtonPolicy::BOGUS:
+			return "BOGUS";
+		default:
+			return "";
+	}
+}
+
+
+static char const * const printInput(ButtonPolicy::SMInput const & input)
+{
 	switch (input) {
-	case ButtonPolicy::SMI_VALID:
-		output = "SMI_VALID";
-		break;
-	case ButtonPolicy::SMI_INVALID:
-		output = "SMI_INVALID";
-		break;
-	case ButtonPolicy::SMI_OKAY:
-		output = "SMI_OKAY";
-		break;
-	case ButtonPolicy::SMI_APPLY:
-		output = "SMI_APPLY";
-		break;
-	case ButtonPolicy::SMI_CANCEL:
-		output = "SMI_CANCEL";
-		break;
-	case ButtonPolicy::SMI_RESTORE:
-		output = "SMI_RESTORE";
-		break;
-	case ButtonPolicy::SMI_HIDE:
-		output = "SMI_HIDE";
-		break;
-	case ButtonPolicy::SMI_READ_ONLY:
-		output = "SMI_READ_ONLY";
-		break;
-	case ButtonPolicy::SMI_READ_WRITE:
-		output = "SMI_READ_WRITE";
-		break;
-	case ButtonPolicy::SMI_NOOP:
-		output = "SMI_NOOP";
-		break;
-	case ButtonPolicy::SMI_TOTAL:
-		output = "SMI_TOTAL";
-		break;
+		case ButtonPolicy::SMI_VALID:
+			return "SMI_VALID";
+		case ButtonPolicy::SMI_INVALID:
+			return "SMI_INVALID";
+		case ButtonPolicy::SMI_OKAY:
+			return "SMI_OKAY";
+		case ButtonPolicy::SMI_APPLY:
+			return "SMI_APPLY";
+		case ButtonPolicy::SMI_CANCEL:
+			return "SMI_CANCEL";
+		case ButtonPolicy::SMI_RESTORE:
+			return "SMI_RESTORE";
+		case ButtonPolicy::SMI_HIDE:
+			return "SMI_HIDE";
+		case ButtonPolicy::SMI_READ_ONLY:
+			return "SMI_READ_ONLY";
+		case ButtonPolicy::SMI_READ_WRITE:
+			return "SMI_READ_WRITE";
+		case ButtonPolicy::SMI_NOOP:
+			return "SMI_NOOP";
+		case ButtonPolicy::SMI_TOTAL:
+			return "SMI_TOTAL";
+		default:
+			return "";
 	}
-
-	return output;
 }
 
 
-/// Helper function
-void nextState(ButtonPolicy::State & state,
-	       ButtonPolicy::SMInput in,
-	       ButtonPolicy::StateMachine const & s_m,
-	       char const * function_name = "nextState")
+void ButtonPolicy::nextState(SMInput input)
 {
-	if (ButtonPolicy::SMI_NOOP == in)
-	return;
+	if (SMI_NOOP == input)
+		return;
 
-	ButtonPolicy::State tmp = s_m[state][in];
+	State tmp = state_machine_[state_][input];
 
 	LYXERR(Debug::GUI) << "Transition from state "
-			   << printState(state) << " to state "
+			   << printState(state_) << " to state "
 			   << printState(tmp) << " after input "
-			   << printInput(in) << std::endl;
+			   << printInput(input) << std::endl;
 
-	if (ButtonPolicy::BOGUS != tmp) {
-		state = tmp;
+	if (tmp != BOGUS) {
+		state_ = tmp;
 	} else {
-		lyxerr << function_name
+		lyxerr << functionName(policy_)
 		       << ": No transition for input "
-		       << printInput(in)
+		       << printInput(input)
 		       << " from state "
-		       << printState(state)
-		       << endl;
+		       << printState(state_)
+		       << std::endl;
 	}
 }
 
-} // namespace anon
 
-
-/*-----------------------------PreferencesPolicy-----------------------------*/
-
-
-PreferencesPolicy::PreferencesPolicy()
-	: state_(INITIAL),
-	  outputs_(APPLIED + 1, ButtonPolicy::ALL_BUTTONS),
-	  state_machine_(APPLIED + 1,
-			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
+void ButtonPolicy::initPreferences()
 {
+	outputs_ = StateOutputs(APPLIED + 1, ButtonPolicy::ALL_BUTTONS);
+	state_machine_ = StateMachine(APPLIED + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS));
+
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
 	outputs_[VALID] = RESTORE | OKAY | APPLY | CANCEL;
@@ -188,28 +257,12 @@ PreferencesPolicy::PreferencesPolicy()
 }
 
 
-void PreferencesPolicy::input(SMInput input)
+void ButtonPolicy::initOkCancel()
 {
-	// The APPLIED state is persistent. Next time the dialog is opened,
-	// the user will be able to press 'Save'.
-	if (SMI_CANCEL == input || SMI_HIDE == input) {
-		if (state_ != APPLIED)
-			state_ = INITIAL;
-	} else {
-		nextState(state_, input, state_machine_, "PreferencesPolicy");
-	}
-}
+	outputs_ = StateOutputs(INVALID + 1, ButtonPolicy::ALL_BUTTONS);
+	state_machine_ = StateMachine(INVALID + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS));
 
-
-/*-------------------------------OkCancelPolicy------------------------------*/
-
-
-OkCancelPolicy::OkCancelPolicy()
-	: state_(INITIAL),
-	  outputs_(INVALID + 1, ButtonPolicy::ALL_BUTTONS),
-	  state_machine_(INVALID + 1,
-			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
-{
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
 	outputs_[VALID] = RESTORE | OKAY | CANCEL;
@@ -241,29 +294,12 @@ OkCancelPolicy::OkCancelPolicy()
 }
 
 
-
-void OkCancelPolicy::input(SMInput input)
+void ButtonPolicy::initOkCancelReadOnly()
 {
-	//lyxerr << "OkCancelPolicy::input" << endl;
+	outputs_ = StateOutputs(RO_INVALID + 1, ButtonPolicy::ALL_BUTTONS);
+	state_machine_ = StateMachine(RO_INVALID + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS));
 
-	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input || SMI_HIDE == input) {
-		state_ = INITIAL;
-	} else {
-		nextState(state_, input, state_machine_, "OkCancelPolicy");
-	}
-}
-
-
-/*---------------------------OkCancelReadOnlyPolicy-------------------------*/
-
-
-OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
-	: state_(INITIAL),
-	  outputs_(RO_INVALID + 1, ButtonPolicy::ALL_BUTTONS),
-	  state_machine_(RO_INVALID + 1,
-			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
-{
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
 	outputs_[VALID] = RESTORE | OKAY | CANCEL;
@@ -315,29 +351,12 @@ OkCancelReadOnlyPolicy::OkCancelReadOnlyPolicy()
 }
 
 
-void OkCancelReadOnlyPolicy::input(SMInput input)
+void ButtonPolicy::initNoRepeatedApplyReadOnly()
 {
-	//lyxerr << "OkCancelReadOnlyPolicy::input" << endl;
+	outputs_ = StateOutputs(RO_INVALID + 1, ButtonPolicy::ALL_BUTTONS);
+	state_machine_ = StateMachine(RO_INVALID + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS));
 
-	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input || SMI_HIDE == input) {
-		state_ = INITIAL;
-	} else {
-		nextState(state_, input, state_machine_,
-			  "OkCancelReadOnlyPolicy");
-	}
-}
-
-
-/*--------------------------NoRepeatedApplyReadOnlyPolicy----------------------*/
-
-
-NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
-	: state_(INITIAL),
-	  outputs_(RO_INVALID + 1, ButtonPolicy::ALL_BUTTONS),
-	  state_machine_(RO_INVALID + 1,
-			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
-{
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
 	outputs_[VALID] = RESTORE | OKAY | APPLY | CANCEL;
@@ -390,29 +409,12 @@ NoRepeatedApplyReadOnlyPolicy::NoRepeatedApplyReadOnlyPolicy()
 }
 
 
-void NoRepeatedApplyReadOnlyPolicy::input(SMInput input)
+void ButtonPolicy::initOkApplyCancelReadOnly()
 {
-	//lyxerr << "NoReapeatedApplyReadOnlyPolicy::input" << endl;
+	outputs_ = StateOutputs(RO_APPLIED + 1, ButtonPolicy::ALL_BUTTONS);
+	state_machine_ = StateMachine(RO_APPLIED + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS));
 
-	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input || SMI_HIDE == input) {
-		state_ = INITIAL;
-	} else {
-		nextState(state_, input, state_machine_,
-			  "NoRepeatedApplyReadOnlyPolicy");
-	}
-}
-
-
-/*--------------------------OkApplyCancelReadOnlyPolicy----------------------*/
-
-
-OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
-	: state_(INITIAL),
-	  outputs_(RO_APPLIED + 1, ButtonPolicy::ALL_BUTTONS),
-	  state_machine_(RO_APPLIED + 1,
-			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
-{
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
 	outputs_[VALID] = RESTORE | OKAY | APPLY | CANCEL;
@@ -479,29 +481,12 @@ OkApplyCancelReadOnlyPolicy::OkApplyCancelReadOnlyPolicy()
 }
 
 
-void OkApplyCancelReadOnlyPolicy::input(SMInput input)
+void ButtonPolicy::initOkApplyCancel()
 {
-	//lyxerr << "OkApplyCancelReadOnlyPolicy::input" << endl;
+	outputs_ = StateOutputs(APPLIED + 1, ButtonPolicy::ALL_BUTTONS);
+	state_machine_ = StateMachine(APPLIED + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS));
 
-	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input || SMI_HIDE == input) {
-		state_ = INITIAL;
-	} else {
-		nextState(state_, input, state_machine_,
-			  "OkApplyCancelReadOnlyPolicy");
-	}
-}
-
-
-/*--------------------------OkApplyCancelPolicy----------------------*/
-
-
-OkApplyCancelPolicy::OkApplyCancelPolicy()
-	: state_(INITIAL),
-	  outputs_(APPLIED + 1, ButtonPolicy::ALL_BUTTONS),
-	  state_machine_(APPLIED + 1,
-			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
-{
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
 	outputs_[VALID] = RESTORE | OKAY | APPLY | CANCEL;
@@ -542,29 +527,12 @@ OkApplyCancelPolicy::OkApplyCancelPolicy()
 }
 
 
-void OkApplyCancelPolicy::input(SMInput input)
+void ButtonPolicy::initNoRepeatedApply()
 {
-	//lyxerr << "OkApplyCancelPolicy::input" << endl;
+	outputs_ = StateOutputs(INVALID + 1, ButtonPolicy::ALL_BUTTONS);
+	state_machine_ = StateMachine(INVALID + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS));
 
-	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input || SMI_HIDE == input) {
-		state_ = INITIAL;
-	} else {
-		nextState(state_, input, state_machine_,
-			  "OkApplyCancelPolicy");
-	}
-}
-
-
-/*--------------------------NoRepeatedApplyPolicy----------------------*/
-
-
-NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
-	: state_(INITIAL),
-	  outputs_(INVALID + 1, ButtonPolicy::ALL_BUTTONS),
-	  state_machine_(INVALID + 1,
-			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
-{
 	// Build the state output map
 	outputs_[INITIAL] = CLOSE;
 	outputs_[VALID] = RESTORE | OKAY | APPLY | CANCEL;
@@ -596,19 +564,6 @@ NoRepeatedApplyPolicy::NoRepeatedApplyPolicy()
 	state_machine_[INVALID][SMI_RESTORE] = INITIAL;
 }
 
-
-void NoRepeatedApplyPolicy::input(SMInput input)
-{
-	//lyxerr << "NoRepeatedApplyPolicy::input" << endl;
-
-	// CANCEL and HIDE always take us to INITIAL for all cases
-	if (SMI_CANCEL == input || SMI_HIDE == input) {
-		state_ = INITIAL;
-	} else {
-		nextState(state_, input, state_machine_,
-			  "NoRepeatedApplyPolicy");
-	}
-}
 
 } // namespace frontend
 } // namespace lyx

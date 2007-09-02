@@ -120,160 +120,160 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	if (name == "aboutlyx") {
 		dialog->setController(new ControlAboutlyx(*dialog));
 		dialog->setView(new GuiAbout(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	} else if (name == "bibitem") {
 		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new GuiBibitem(*dialog));
-		dialog->bc().bp(new OkCancelReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelReadOnlyPolicy);
 	} else if (name == "bibtex") {
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new GuiBibtex(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "box") {
 		dialog->setController(new ControlBox(*dialog));
 		dialog->setView(new GuiBox(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 	} else if (name == "branch") {
 		dialog->setController(new ControlBranch(*dialog));
 		dialog->setView(new GuiBranch(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "changes") {
 		dialog->setController(new ControlChanges(*dialog));
 		dialog->setView(new GuiChanges(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "character") {
 		dialog->setController(new ControlCharacter(*dialog));
 		dialog->setView(new GuiCharacter(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 	} else if (name == "citation") {
 		GuiCitation * ci = new GuiCitation(*dialog);
 		dialog->setController(ci);
 		dialog->setView(new GuiCitationDialog(*dialog, ci));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "document") {
 		dialog->setController(new ControlDocument(*dialog));
 		dialog->setView(new GuiDocument(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "embedding") {
 		GuiViewBase & gui_view = static_cast<GuiViewBase &>(lyxview_);
 		GuiEmbeddedFiles * qef = new GuiEmbeddedFiles(*dialog);
 		dialog->setController(qef);
 		dialog->setView(new DockView<GuiEmbeddedFiles, GuiEmbeddedFilesDialog>(
 			*dialog, qef, &gui_view, _("Embedded Files"), Qt::RightDockWidgetArea));
-		dialog->bc().bp(new OkCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	} else if (name == "errorlist") {
 		dialog->setController(new ControlErrorList(*dialog));
 		dialog->setView(new GuiErrorList(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	} else if (name == "ert") {
 		dialog->setController(new ControlERT(*dialog));
 		dialog->setView(new GuiERT(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "external") {
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new GuiExternal(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "file") {
 		dialog->setController(new ControlShowFile(*dialog));
 		dialog->setView(new GuiShowFile(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	} else if (name == "findreplace") {
 		dialog->setController(new ControlSearch(*dialog));
 		dialog->setView(new GuiSearch(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new GuiFloat(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "graphics") {
 		dialog->setController(new ControlGraphics(*dialog));
 		dialog->setView(new GuiGraphics(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "include") {
 		dialog->setController(new ControlInclude(*dialog));
 		dialog->setView(new GuiInclude(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 	} else if (name == "index") {
 		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new GuiIndex(*dialog,
 					   _("Index Entry"),
 					   qt_("&Keyword:")));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "nomenclature") {
 		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new GuiNomencl(*dialog, _("Nomenclature Entry")));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new GuiIndex(*dialog,
 					   _("Label"),
 					   qt_("&Label:")));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "log") {
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new GuiLog(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	} else if (name == "view-source") {
 		GuiViewSource * qvs = new GuiViewSource(*dialog);
 		dialog->setController(qvs);
 		GuiViewBase & gui_view = static_cast<GuiViewBase &>(lyxview_);
 		dialog->setView(new DockView<GuiViewSource, GuiViewSourceDialog>(
 			*dialog, qvs, &gui_view, _("LaTeX Source"), Qt::BottomDockWidgetArea));
-		dialog->bc().bp(new OkCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	} else if (name == "mathdelimiter") {
 		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new GuiDelimiter(*dialog));
-		dialog->bc().bp(new IgnorantPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::IgnorantPolicy);
 	} else if (name == "mathmatrix") {
 		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new GuiMathMatrix(*dialog));
-		dialog->bc().bp(new IgnorantPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::IgnorantPolicy);
 	} else if (name == "note") {
 		dialog->setController(new ControlNote(*dialog));
 		dialog->setView(new GuiNote(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "paragraph") {
 		dialog->setController(new ControlParagraph(*dialog));
 		dialog->setView(new GuiParagraph(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 	} else if (name == "prefs") {
 		dialog->setController(new ControlPrefs(*dialog));
 		dialog->setView(new GuiPrefs(*dialog));
-		dialog->bc().bp(new PreferencesPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::PreferencesPolicy);
 	} else if (name == "print") {
 		dialog->setController(new ControlPrint(*dialog));
 		dialog->setView(new GuiPrint(*dialog));
-		dialog->bc().bp(new OkApplyCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
 	} else if (name == "ref") {
 		// full qualification because qt4 has also a ControlRef type
 		dialog->setController(new ControlRef(*dialog));
 		dialog->setView(new GuiRef(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "sendto") {
 		dialog->setController(new ControlSendto(*dialog));
 		dialog->setView(new GuiSendto(*dialog));
-		dialog->bc().bp(new OkApplyCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
 	} else if (name == "spellchecker") {
 		dialog->setController(new ControlSpellchecker(*dialog));
 		dialog->setView(new GuiSpellchecker(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new GuiTabular(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabularcreate") {
 		dialog->setController(new ControlTabularCreate(*dialog));
 		dialog->setView(new GuiTabularCreate(*dialog));
-		dialog->bc().bp(new IgnorantPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::IgnorantPolicy);
 	} else if (name == "texinfo") {
 		dialog->setController(new ControlTexinfo(*dialog));
 		dialog->setView(new GuiTexinfo(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 #ifdef HAVE_LIBAIKSAURUS
 	} else if (name == "thesaurus") {
 		dialog->setController(new ControlThesaurus(*dialog));
 		dialog->setView(new GuiThesaurus(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 #endif
 	} else if (name == "toc") {
 		GuiViewBase & gui_view = static_cast<GuiViewBase &>(lyxview_);
@@ -287,23 +287,23 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new DockView<GuiToc, TocWidget>(
 			*dialog, qtoc, &gui_view, _("Outline")));
 #endif
-		dialog->bc().bp(new OkCancelPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new UrlView(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "vspace") {
 		dialog->setController(new ControlVSpace(*dialog));
 		dialog->setView(new GuiVSpace(*dialog));
-		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new GuiWrap(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "listings") {
 		dialog->setController(new ControlListings(*dialog));
 		dialog->setView(new GuiListings(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	}
 
 	return dialog;

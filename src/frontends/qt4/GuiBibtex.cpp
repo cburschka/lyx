@@ -84,7 +84,7 @@ GuiBibtexDialog::GuiBibtexDialog(GuiBibtex * form)
 
 	Qt2BC * bcview = new Qt2BC(add_bc_);
 	add_bc_.view(bcview);
-	add_bc_.bp(new OkCancelPolicy);
+	add_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
 
 	bcview->setOK(add_->addPB);
 	bcview->setCancel(add_->closePB);

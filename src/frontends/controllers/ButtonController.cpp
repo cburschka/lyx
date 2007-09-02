@@ -29,15 +29,9 @@ void ButtonController::view(BCView * view)
 }
 
 
-ButtonPolicy & ButtonController::bp() const
+void ButtonController::setPolicy(ButtonPolicy::Policy policy)
 {
-	BOOST_ASSERT(bp_.get());
-	return *bp_.get();
-}
-
-void ButtonController::bp(ButtonPolicy * bp)
-{
-	bp_.reset(bp);
+	policy_ = ButtonPolicy(policy);
 }
 
 
@@ -53,46 +47,46 @@ void ButtonController::refreshReadOnly() const
 }
 
 
-void ButtonController::ok() const
+void ButtonController::ok()
 {
 	input(ButtonPolicy::SMI_OKAY);
 }
 
 
-void ButtonController::input(ButtonPolicy::SMInput in) const
+void ButtonController::input(ButtonPolicy::SMInput in)
 {
 	if (ButtonPolicy::SMI_NOOP == in)
 		return;
-	bp().input(in);
+	policy_.input(in);
 	view().refresh();
 }
 
 
-void ButtonController::apply() const
+void ButtonController::apply()
 {
 	input(ButtonPolicy::SMI_APPLY);
 }
 
 
-void ButtonController::cancel() const
+void ButtonController::cancel()
 {
 	input(ButtonPolicy::SMI_CANCEL);
 }
 
 
-void ButtonController::restore() const
+void ButtonController::restore()
 {
 	input(ButtonPolicy::SMI_RESTORE);
 }
 
 
-void ButtonController::hide() const
+void ButtonController::hide()
 {
 	input(ButtonPolicy::SMI_HIDE);
 }
 
 
-void ButtonController::valid(bool v) const
+void ButtonController::valid(bool v)
 {
 	if (v) {
 		input(ButtonPolicy::SMI_VALID);
@@ -102,14 +96,14 @@ void ButtonController::valid(bool v) const
 }
 
 
-bool ButtonController::readOnly(bool ro) const
+bool ButtonController::readOnly(bool ro)
 {
 	LYXERR(Debug::GUI) << "Setting controller ro: " << ro << std::endl;
 
 	if (ro) {
-		bp().input(ButtonPolicy::SMI_READ_ONLY);
+		policy_.input(ButtonPolicy::SMI_READ_ONLY);
 	} else {
-		bp().input(ButtonPolicy::SMI_READ_WRITE);
+		policy_.input(ButtonPolicy::SMI_READ_WRITE);
 	}
 	view().refreshReadOnly();
 	view().refresh();

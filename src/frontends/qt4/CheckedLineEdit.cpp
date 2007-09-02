@@ -1,5 +1,5 @@
 /**
- * \file qt4/CheckedLineEdit.cpp
+ * \file CheckedLineEdit.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "CheckedLineEdit.h"
+#include "Qt2BC.h"
 
 #include <QLabel>
 #include <QLineEdit>
@@ -19,10 +20,10 @@
 namespace lyx {
 namespace frontend {
 
-void addCheckedLineEdit(BCView & bcview,
-			QLineEdit * input, QWidget * label)
+void addCheckedLineEdit(BCView & bcview, QLineEdit * input, QWidget * label)
 {
-	bcview.addCheckedWidget(new CheckedLineEdit(input, label));
+	Qt2BC * bc = static_cast<Qt2BC *>(&bcview);
+	bc->addCheckedWidget(new CheckedLineEdit(input, label));
 }
 
 
@@ -30,13 +31,8 @@ namespace {
 
 void setWarningColor(QWidget * widget)
 {
-	// Qt 2.3 does not have
-	// widget->setPaletteForegroundColor(QColor(255, 0, 0));
-	// So copy the appropriate parts of the function here:
 	QPalette pal = widget->palette();
-	pal.setColor(QPalette::Active,
-		     QPalette::Foreground,
-		     QColor(255, 0, 0));
+	pal.setColor(QPalette::Active, QPalette::Foreground, QColor(255, 0, 0));
 	widget->setPalette(pal);
 }
 

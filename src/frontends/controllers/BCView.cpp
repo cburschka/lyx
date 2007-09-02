@@ -16,38 +16,9 @@
 namespace lyx {
 namespace frontend {
 
-BCView::BCView(ButtonController const & p)
-	: parent(p)
-{}
+ButtonPolicy const & BCView::bp() const { return parent.policy(); }
+ButtonPolicy & BCView::bp() { return parent.policy(); }
 
-
-ButtonPolicy & BCView::bp() const
-{
-	return parent.bp();
-}
-
-
-void BCView::addCheckedWidget(CheckedWidget * ptr)
-{
-	if (ptr)
-		checked_widgets.push_back(checked_widget_ptr(ptr));
-}
-
-
-bool BCView::checkWidgets() const
-{
-	bool valid = true;
-
-	checked_widget_list::const_iterator it  = checked_widgets.begin();
-	checked_widget_list::const_iterator end = checked_widgets.end();
-
-	for (; it != end; ++it) {
-		valid &= (*it)->check();
-	}
-
-	// return valid status after checking ALL widgets
-	return valid;
-}
 
 } // namespace frontend
 } // namespace lyx

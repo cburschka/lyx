@@ -16,6 +16,7 @@
 
 #include "BCView.h"
 #include "gettext.h"
+#include "CheckedLineEdit.h"
 
 class QWidget;
 class QPushButton;
@@ -34,7 +35,7 @@ class Qt2BC : public BCView
 {
 public:
 	///
-	Qt2BC(ButtonController const & parent);
+	Qt2BC(ButtonController & parent);
 
 	//@{
 	/** Store pointers to these widgets.
@@ -55,6 +56,20 @@ public:
 	virtual void refresh() const;
 	/// Refresh the status of any widgets in the read_only list
 	virtual void refreshReadOnly() const;
+
+	/** Add a widget to the list of all widgets whose validity should
+	 *  be checked explicitly when the buttons are refreshed.
+	 */
+	void addCheckedWidget(CheckedLineEdit * ptr);
+
+protected:
+	/// \return true if all CheckedWidgets are in a valid state.
+	bool checkWidgets() const;
+
+private:
+	typedef boost::shared_ptr<CheckedLineEdit> CheckedWidgetPtr;
+	typedef std::list<CheckedWidgetPtr> CheckedWidgetList;
+	CheckedWidgetList checked_widgets;
 
 private:
 	/// Updates the widget sensitivity (enabled/disabled)
