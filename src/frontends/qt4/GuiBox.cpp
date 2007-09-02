@@ -14,7 +14,6 @@
 
 #include "GuiBox.h"
 
-#include "CheckedLineEdit.h"
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Qt2BC.h"

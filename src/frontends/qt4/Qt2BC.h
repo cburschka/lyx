@@ -16,13 +16,29 @@
 
 #include "BCView.h"
 #include "gettext.h"
-#include "CheckedLineEdit.h"
 
 class QWidget;
 class QPushButton;
+class QLineEdit;
 
 namespace lyx {
 namespace frontend {
+
+
+void addCheckedLineEdit(BCView & bcview,
+	QLineEdit * input, QWidget * label = 0);
+
+class CheckedLineEdit
+{
+public:
+	CheckedLineEdit(QLineEdit * input, QWidget * label = 0);
+	bool check() const;
+
+private:
+	// non-owned
+	QLineEdit * input_;
+	QWidget * label_;
+};
 
 /** General purpose button controller for up to four buttons.
     Controls the activation of the OK, Apply and Cancel buttons.
@@ -60,15 +76,14 @@ public:
 	/** Add a widget to the list of all widgets whose validity should
 	 *  be checked explicitly when the buttons are refreshed.
 	 */
-	void addCheckedWidget(CheckedLineEdit * ptr);
+	void addCheckedLineEdit(QLineEdit * input, QWidget * label = 0);
 
 protected:
 	/// \return true if all CheckedWidgets are in a valid state.
 	bool checkWidgets() const;
 
 private:
-	typedef boost::shared_ptr<CheckedLineEdit> CheckedWidgetPtr;
-	typedef std::list<CheckedWidgetPtr> CheckedWidgetList;
+	typedef std::list<CheckedLineEdit> CheckedWidgetList;
 	CheckedWidgetList checked_widgets;
 
 private:

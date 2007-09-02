@@ -18,7 +18,6 @@
 #include "GuiVSpace.h"
 #include "Qt2BC.h"
 
-#include "CheckedLineEdit.h"
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Validator.h"

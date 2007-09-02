@@ -19,7 +19,6 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 #include "LyXRC.h"
-#include "CheckedLineEdit.h"
 
 #include "controllers/ControlBibtex.h"
 #include "controllers/ButtonPolicy.h"
@@ -88,8 +87,7 @@ GuiBibtexDialog::GuiBibtexDialog(GuiBibtex * form)
 
 	bcview->setOK(add_->addPB);
 	bcview->setCancel(add_->closePB);
-
-	addCheckedLineEdit(add_bc_.view(), add_->bibED, 0);
+	bcview->addCheckedLineEdit(add_->bibED, 0);
 
 	connect(add_->bibED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(bibEDChanged()));

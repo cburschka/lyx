@@ -12,7 +12,6 @@
 
 #include "GuiDocument.h"
 
-#include "CheckedLineEdit.h"
 #include "FloatPlacement.h"
 #include "LengthCombo.h"
 #include "PanelStack.h"

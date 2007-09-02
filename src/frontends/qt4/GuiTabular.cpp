@@ -14,7 +14,6 @@
 
 #include "GuiTabular.h"
 
-#include "CheckedLineEdit.h"
 #include "GuiSetBorder.h"
 #include "Qt2BC.h"
 

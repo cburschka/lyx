@@ -15,10 +15,8 @@
 
 #include "GuiInclude.h"
 
-#include "CheckedLineEdit.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
-
 #include "LyXRC.h"
 
 #include "insets/InsetListingsParams.h"

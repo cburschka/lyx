@@ -15,7 +15,6 @@
 
 #include "GuiGraphics.h"
 
-#include "CheckedLineEdit.h"
 #include "debug.h"
 #include "LengthCombo.h"
 #include "lengthcommon.h"
@@ -295,6 +294,7 @@ void GuiGraphicsDialog::on_WidthCB_toggled(bool setWidth)
 	setAutoText();
 }
 
+
 void GuiGraphicsDialog::on_HeightCB_toggled(bool setHeight)
 {
 	Height->setEnabled(setHeight);
@@ -375,15 +375,12 @@ void GuiGraphics::build_dialog()
 }
 
 
-namespace {
-
 // returns the number of the string s in the vector v
-int getItemNo(vector<string> v, string const & s) {
+static int getItemNo(const vector<string> & v, string const & s)
+{
 	vector<string>::const_iterator cit =
 		    find(v.begin(), v.end(), s);
 	return (cit != v.end()) ? int(cit - v.begin()) : 0;
-}
-
 }
 
 

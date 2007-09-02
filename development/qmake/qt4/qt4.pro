@@ -16,7 +16,6 @@ INC += src/frontends/qt4
 
 HPP += Action.h
 HPP += BulletsModule.h
-HPP += CheckedLineEdit.h
 HPP += ColorCache.h
 HPP += DockView.h
 HPP += EmptyTable.h
@@ -97,7 +96,6 @@ HPP += Validator.h
 CPP += Action.cpp
 CPP += alert_pimpl.cpp
 CPP += BulletsModule.cpp
-CPP += CheckedLineEdit.cpp
 CPP += ColorCache.cpp
 CPP += Dialogs.cpp
 CPP += EmptyTable.cpp

@@ -843,7 +843,6 @@ src_frontends_controllers_tests_regfiles_extra_files = Split('''
 src_frontends_qt4_header_files = Split('''
     Action.h
     BulletsModule.h
-    CheckedLineEdit.h
     ColorCache.h
     DockView.h
     EmptyTable.h
@@ -928,7 +927,6 @@ src_frontends_qt4_header_files = Split('''
 src_frontends_qt4_files = Split('''
     Action.cpp
     BulletsModule.cpp
-    CheckedLineEdit.cpp
     ColorCache.cpp
     Dialogs.cpp
     EmptyTable.cpp

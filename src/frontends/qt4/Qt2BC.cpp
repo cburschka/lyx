@@ -19,6 +19,9 @@
 
 #include <QPushButton>
 #include <QLineEdit>
+#include <QLabel>
+#include <QValidator>
+
 
 namespace lyx {
 namespace frontend {
@@ -85,10 +88,9 @@ void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled) const
 }
 
 
-void Qt2BC::addCheckedWidget(CheckedLineEdit * ptr)
+void Qt2BC::addCheckedLineEdit(QLineEdit * input, QWidget * label)
 {
-	if (ptr)
-		checked_widgets.push_back(CheckedWidgetPtr(ptr));
+	checked_widgets.push_back(CheckedLineEdit(input, label));
 }
 
 
@@ -100,12 +102,65 @@ bool Qt2BC::checkWidgets() const
 	CheckedWidgetList::const_iterator end = checked_widgets.end();
 
 	for (; it != end; ++it)
-		valid &= (*it)->check();
+		valid &= it->check();
 
 	// return valid status after checking ALL widgets
 	return valid;
 }
 
+
+//////////////////////////////////////////////////////////////
+//
+// CheckedLineEdit
+//
+//////////////////////////////////////////////////////////////
+
+void addCheckedLineEdit(BCView & bcview, QLineEdit * input, QWidget * label)
+{
+	Qt2BC * bc = static_cast<Qt2BC *>(&bcview);
+	bc->addCheckedLineEdit(input, label);
+}
+
+
+static void setWarningColor(QWidget * widget)
+{
+	QPalette pal = widget->palette();
+	pal.setColor(QPalette::Active, QPalette::Foreground, QColor(255, 0, 0));
+	widget->setPalette(pal);
+}
+
+
+
+CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QWidget * label)
+	: input_(input), label_(label)
+{}
+
+
+bool CheckedLineEdit::check() const
+{
+	QValidator const * validator = input_->validator();
+	if (!validator)
+		return true;
+
+	QString t = input_->text();
+	int p = 0;
+	bool const valid = validator->validate(t, p) == QValidator::Acceptable;
+
+	// Visual feedback.
+	if (valid)
+		input_->setPalette(QPalette());
+	else
+		setWarningColor(input_);
+
+	if (!label_) {
+		if (valid)
+			label_->setPalette(QPalette());
+		else
+			setWarningColor(label_);
+	}
+
+	return valid;
+}
 
 } // namespace frontend
 } // namespace lyx

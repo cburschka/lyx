@@ -38,7 +38,6 @@ SOURCEFILES = \
 	Action.cpp \
 	alert_pimpl.cpp \
 	BulletsModule.cpp \
-	CheckedLineEdit.cpp \
 	ColorCache.cpp \
 	Dialogs.cpp \
 	EmptyTable.cpp \
@@ -119,7 +118,6 @@ SOURCEFILES = \
 	Validator.cpp 
 
 NOMOCHEADER = \
-	CheckedLineEdit.h \
 	GuiClipboard.h \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \

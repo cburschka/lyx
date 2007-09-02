@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-// Qt defines a macro 'signals' that clashes with a boost namespace.
-// All is well if the namespace is visible first.
 #include "lengthcommon.h"
 #include "LyXRC.h"
 
@@ -29,7 +27,6 @@
 #include "GuiExternal.h"
 #include "Qt2BC.h"
 
-#include "CheckedLineEdit.h"
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Validator.h"
@@ -185,7 +182,7 @@ void GuiExternalDialog::browseClicked()
 	docstring const str =
 		form_->controller().browse(qstring_to_ucs4(fileED->text()),
 					   template_name);
-	if(!str.empty()) {
+	if (!str.empty()) {
 		fileED->setText(toqstr(str));
 		form_->changed();
 	}
