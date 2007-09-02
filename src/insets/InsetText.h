@@ -158,8 +158,6 @@ public:
 	///
 	mutable Text text_;
 	///
-	mutable Font font_;
-	///
 	static int border_;
 };
 
