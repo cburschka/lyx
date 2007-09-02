@@ -209,7 +209,7 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (geometry() == TopButton
 		 || geometry() == LeftButton) {
 			InsetText::metrics(mi, textdim_);
-			openinlined_ = (textdim_.wid + 2 * dim.wid) <= mi.base.textwidth;
+			openinlined_ = (textdim_.wid + dim.wid) < mi.base.textwidth;
 			if (openinlined_) {
 				// Correct for button width.
 				dim.wid += textdim_.wid;
