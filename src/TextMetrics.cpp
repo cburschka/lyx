@@ -311,6 +311,11 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 void TextMetrics::computeRowMetrics(pit_type const pit,
 		Row & row) const
 {
+
+	row.label_hfill = 0;
+	row.hfill = 0;
+	row.separator = 0;
+
 	Buffer & buffer = bv_->buffer();
 	Paragraph const & par = text_->getPar(pit);
 
