@@ -64,19 +64,28 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 	EmbeddedFiles & files = form_->embeddedFiles();
 
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
+
 	fullpathLE->setEnabled(selection.size() == 1);
-		
-	EmbeddedFile::STATUS mode = EmbeddedFile::NONE;
+
 	// try to find a common mode, otherwise return NONE.
-	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
-		it != selection.end(); ++it) {
-		if (selection.size() == 1)
-			fullpathLE->setText(toqstr(files[filesLW->row(*it)].absFilename()));
+	QList<QListWidgetItem*>::iterator it = selection.begin(); 
+	QList<QListWidgetItem*>::iterator it_end = selection.end(); 
+	// if the selection is not empty
+	if (it != it_end) {
+		int idx = filesLW->row(*it);
+		fullpathLE->setText(toqstr(files[idx].absFilename()));
+		// go to the first selected item
+		form_->goTo(files[idx]);
+	}
+
+	EmbeddedFile::STATUS mode = EmbeddedFile::NONE;
+	for (; it != it_end; ++it) {
+		int idx = filesLW->row(*it);
 		if (mode == EmbeddedFile::NONE) {
-			mode = files[filesLW->row(*it)].status();
+			mode = files[idx].status();
 			continue;
 		}
-		if (mode != files[filesLW->row(*it)].status()) {
+		if (mode != files[idx].status()) {
 			mode = EmbeddedFile::NONE;
 			break;
 		}
@@ -85,8 +94,6 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 	autoRB->setChecked(mode == EmbeddedFile::AUTO);
 	embeddedRB->setChecked(mode == EmbeddedFile::EMBEDDED);
 	externalRB->setChecked(mode == EmbeddedFile::EXTERNAL);
-	// go to the first selected item
-	form_->goTo(files[filesLW->row(*selection.begin())]);
 }
 
 

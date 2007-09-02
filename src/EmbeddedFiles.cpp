@@ -64,6 +64,7 @@ using support::bformat;
 using support::zipFiles;
 using support::prefixIs;
 using support::sum;
+using support::makedir;
 
 
 EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,
@@ -134,6 +135,10 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	// copy file in the previous case, and a new case
 	if (copyFile || (!fs::exists(ext_file) && fs::exists(emb_file))) {
 		try {
+			// need to make directory?
+			string path = onlyPath(ext_file);
+			if (!fs::is_directory(path))
+				makedir(const_cast<char*>(path.c_str()), 0755);
 			fs::copy_file(emb_file, ext_file, false);
 			return true;
 		} catch (fs::filesystem_error const & fe) {
