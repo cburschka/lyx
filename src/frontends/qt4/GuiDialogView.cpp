@@ -73,6 +73,15 @@ void GuiDialogView::hide()
 }
 
 
+void GuiDialogView::build()
+{
+	// protect the BC from unwarranted state transitions
+	updating_ = true;
+	build_dialog();
+	updating_ = false;
+}
+
+
 bool GuiDialogView::isValid()
 {
 	return true;

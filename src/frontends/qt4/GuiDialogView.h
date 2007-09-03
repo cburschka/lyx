@@ -45,8 +45,8 @@ public:
 protected:
 	/// build the actual dialog
 	virtual void build_dialog() = 0;
-	///
-	virtual void build() = 0;
+	/// Build the dialog
+	virtual void build();
 	/// Hide the dialog.
 	virtual void hide();
 	/// Create the dialog if necessary, update it and display it.
@@ -55,30 +55,26 @@ protected:
 	virtual void update_contents() = 0;
 	///
 	virtual bool isVisible() const;
-
 	/// is the dialog currently valid ?
 	virtual bool isValid();
 
 	/// are we updating ?
 	bool updating_;
-
+	///
 	GuiDialog & parent_;
 
 public Q_SLOTS:
 	// dialog closed from WM
 	void slotWMHide();
-
 	// Restore button clicked
 	void slotRestore();
-
 	// OK button clicked
 	void slotOK();
-
 	// Apply button clicked
 	void slotApply();
-
 	// Close button clicked
 	void slotClose();
+
 private:
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QWidget * form() const = 0;
@@ -105,14 +101,6 @@ protected:
 
 		dialog_->setUpdatesEnabled(true);
 		dialog_->update();
-	}
-
-	/// Build the dialog
-	virtual void build() {
-		// protect the BC from unwarranted state transitions
-		updating_ = true;
-		build_dialog();
-		updating_ = false;
 	}
 
 	/// Pointer to the actual instantiation of the Qt dialog
