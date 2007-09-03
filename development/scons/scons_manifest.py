@@ -726,8 +726,6 @@ src_frontends_extra_files = Split('''
 
 
 src_frontends_controllers_header_files = Split('''
-    BCView.h
-    ButtonController.h
     ButtonPolicy.h
     ControlAboutlyx.h
     ControlBibtex.h
@@ -773,8 +771,6 @@ src_frontends_controllers_header_files = Split('''
 
 
 src_frontends_controllers_files = Split('''
-    BCView.cpp
-    ButtonController.cpp
     ButtonPolicy.cpp
     ControlAboutlyx.cpp
     ControlBibtex.cpp
@@ -843,6 +839,7 @@ src_frontends_controllers_tests_regfiles_extra_files = Split('''
 src_frontends_qt4_header_files = Split('''
     Action.h
     BulletsModule.h
+    ButtonController.h
     ColorCache.h
     DockView.h
     EmptyTable.h
@@ -862,6 +859,7 @@ src_frontends_qt4_header_files = Split('''
     GuiCommandBuffer.h
     GuiCommandEdit.h
     GuiDelimiter.h
+    GuiDialog.h
     GuiDialogView.h
     GuiDocument.h
     GuiEmbeddedFiles.h
@@ -914,7 +912,6 @@ src_frontends_qt4_header_files = Split('''
     LengthCombo.h
     LyXFileDialog.h
     PanelStack.h
-    Qt2BC.h
     TocModel.h
     TocWidget.h
     Validator.h
@@ -927,6 +924,7 @@ src_frontends_qt4_header_files = Split('''
 src_frontends_qt4_files = Split('''
     Action.cpp
     BulletsModule.cpp
+    ButtonController.cpp
     ColorCache.cpp
     Dialogs.cpp
     EmptyTable.cpp
@@ -946,6 +944,7 @@ src_frontends_qt4_files = Split('''
     GuiCommandBuffer.cpp
     GuiCommandEdit.cpp
     GuiDelimiter.cpp
+    GuiDialog.cpp
     GuiDialogView.cpp
     GuiDocument.cpp
     GuiEmbeddedFiles.cpp
@@ -998,7 +997,6 @@ src_frontends_qt4_files = Split('''
     LengthCombo.cpp
     LyXFileDialog.cpp
     PanelStack.cpp
-    Qt2BC.cpp
     TocModel.cpp
     TocWidget.cpp
     Validator.cpp
