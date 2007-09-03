@@ -1873,6 +1873,10 @@ void TextMetrics::drawSelection(PainterInfo & pi, int x, int) const
 		return;
 	if (!ptr_cmp(cur.text(), text_))
 		return;
+	
+	//if the anchor is outside, this is not our selection 
+	if (!ptr_cmp(cur.anchor().text(), text_))		
+		return;
 
 	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
