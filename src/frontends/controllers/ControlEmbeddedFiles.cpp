@@ -35,8 +35,14 @@ using support::FileFilterList;
 namespace frontend {
 
 ControlEmbeddedFiles::ControlEmbeddedFiles(Dialog & parent)
-	: Dialog::Controller(parent), embedded_files(NULL)
+	: Dialog::Controller(parent)
 {}
+
+
+EmbeddedFiles & ControlEmbeddedFiles::embeddedFiles()
+{
+	return kernel().buffer().embeddedFiles();
+}
 
 
 bool ControlEmbeddedFiles::initialiseParams(string const &)
@@ -49,7 +55,7 @@ void ControlEmbeddedFiles::updateEmbeddedFiles()
 {
 	// copy buffer embeddedFiles to a local copy
 	kernel().buffer().embeddedFiles().update();
-	embedded_files = &kernel().buffer().embeddedFiles();
+	kernel().buffer().embeddingChanged();
 }
 
 

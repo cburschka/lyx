@@ -26,8 +26,7 @@ public:
 	///
 	virtual ~ControlEmbeddedFiles() {}
 	///
-	EmbeddedFiles const & embeddedFiles() const { return *embedded_files; }
-	EmbeddedFiles & embeddedFiles() { return *embedded_files; }
+	EmbeddedFiles & embeddedFiles();
 	///
 	virtual bool initialiseParams(std::string const &);
 	/// obtain embedded files from buffer
@@ -54,8 +53,6 @@ public:
 	bool extract(EmbeddedFile const & item);
 
 protected:
-	// directly handle buffer embedded files
-	EmbeddedFiles * embedded_files;
 	//
 	std::string message_;
 };

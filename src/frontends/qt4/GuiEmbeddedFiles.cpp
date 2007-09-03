@@ -34,26 +34,6 @@ GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(GuiEmbeddedFiles * form)
 	: form_(form)
 {
 	setupUi(this);
-	
-	form_->updateEmbeddedFiles();
-	
-	EmbeddedFiles const & files = form_->embeddedFiles();
-	enableCB->setChecked(files.enabled());
-	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
-	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
-	for (; it != it_end; ++it) {
-		QListWidgetItem * item = new QListWidgetItem(toqstr(it->inzipName()));
-		if (!it->valid())
-			item->setTextColor(INVALID_COLOR);
-		else if(it->status() == EmbeddedFile::AUTO)
-			item->setTextColor(AUTO_COLOR);
-		else if(it->status() == EmbeddedFile::EMBEDDED)
-			item->setTextColor(EMBEDDED_COLOR);
-		else
-			item->setTextColor(EXTERNAL_COLOR);
-		filesLW->addItem(item);
-	}
-	filesLW->setCurrentRow(0);
 	//
 	update();
 }
@@ -107,12 +87,28 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked()
 
 void GuiEmbeddedFilesDialog::update()
 {
+	filesLW->clear();
+	
+	//
 	EmbeddedFiles const & files = form_->embeddedFiles();
-
+	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
+	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
+	for (; it != it_end; ++it) {
+		QListWidgetItem * item = new QListWidgetItem(toqstr(it->inzipName()));
+		if (!it->valid())
+			item->setTextColor(INVALID_COLOR);
+		else if(it->status() == EmbeddedFile::AUTO)
+			item->setTextColor(AUTO_COLOR);
+		else if(it->status() == EmbeddedFile::EMBEDDED)
+			item->setTextColor(EMBEDDED_COLOR);
+		else
+			item->setTextColor(EXTERNAL_COLOR);
+		filesLW->addItem(item);
+	}
+	//
 	bool enabled = files.enabled();
 	enableCB->setChecked(enabled);
 	statusGB->setEnabled(enabled);
-	filesLW->setEnabled(enabled);
 	fullpathLE->setEnabled(enabled);
 }
 
@@ -145,7 +141,6 @@ void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
 	// embedded files. Otherwise, embedded files will be lost!!!
 	//
 	form_->embeddedFiles().enable(enable);
-	update();
 	// immediately post the change to buffer (and bufferView)
 	if (enable)
 		form_->setMessage("Enable file embedding");
