@@ -56,7 +56,7 @@ public:
 	///
 	friend class GuiIncludeDialog;
 	///
-	GuiInclude(Dialog &);
+	GuiInclude(GuiDialog &);
 	/// parent controller
 	ControlInclude & controller()
 	{ return static_cast<ControlInclude &>(this->getController()); }

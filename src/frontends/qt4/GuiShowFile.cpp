@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiShowFile.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include <QTextBrowser>
@@ -49,7 +48,7 @@ void GuiShowFileDialog::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiShowFile::GuiShowFile(Dialog & parent)
+GuiShowFile::GuiShowFile(GuiDialog & parent)
 	: GuiView<GuiShowFileDialog>(parent, _("Show File"))
 {
 }
@@ -59,7 +58,7 @@ void GuiShowFile::build_dialog()
 {
 	dialog_.reset(new GuiShowFileDialog(this));
 
-	bcview().setCancel(dialog_->closePB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

@@ -12,9 +12,6 @@
 
 #include "Dialog.h"
 
-#include "ButtonController.h"
-#include "BCView.h"
-
 #include "frontends/LyXView.h"
 
 #include "debug.h"
@@ -29,43 +26,16 @@ namespace lyx {
 namespace frontend {
 
 Dialog::Dialog(LyXView & lv, string const & name)
-	: is_closing_(false), kernel_(lv), name_(name),
-	  bc_ptr_(new ButtonController)
+	: is_closing_(false), kernel_(lv), name_(name)
 {}
 
 
-void Dialog::ApplyButton()
-{
-	apply();
-	bc().apply();
-}
+Dialog::~Dialog()
+{}
 
 
-void Dialog::OKButton()
-{
-	is_closing_ = true;
-	apply();
-	is_closing_ = false;
-	hide();
-	bc().ok();
-}
-
-
-void Dialog::CancelButton()
-{
-	hide();
-	bc().cancel();
-}
-
-
-void Dialog::RestoreButton()
-{
-	// Tell the kernel that a request to refresh the dialog's contents
-	// has been received. It's up to the kernel to supply the necessary
-	// info by calling Dialog::update().
-	kernel().updateDialog(name_);
-	bc().restore();
-}
+void Dialog::setButtonsValid(bool valid)
+{}
 
 
 void Dialog::show(string const & data)
@@ -80,11 +50,9 @@ void Dialog::show(string const & data)
 		return;
 	}
 
-	bc().readOnly(kernel().isBufferReadonly());
+	preShow();
 	view().show();
-
-	// The widgets may not be valid, so refresh the button controller
-	bc().refresh();
+	postShow();
 }
 
 
@@ -99,11 +67,14 @@ void Dialog::update(string const & data)
 		return;
 	}
 
-	bc().readOnly(kernel().isBufferReadonly());
+	preUpdate();
 	view().update();
+	postUpdate();
+}
 
-	// The widgets may not be valid, so refresh the button controller
-	bc().refresh();
+
+void Dialog::checkStatus()
+{
 }
 
 
@@ -150,13 +121,6 @@ void Dialog::redraw()
 }
 
 
-ButtonController & Dialog::bc() const
-{
-	BOOST_ASSERT(bc_ptr_.get());
-	return *bc_ptr_.get();
-}
-
-
 void Dialog::setController(Controller * i)
 {
 	BOOST_ASSERT(i && !controller_ptr_.get());
@@ -170,31 +134,6 @@ void Dialog::setView(View * v)
 	view_ptr_.reset(v);
 }
 
-
-void Dialog::checkStatus()
-{
-	// buffer independant dialogs are always active.
-	// This check allows us leave canApply unimplemented for some dialogs.
-	if (!controller().isBufferDependent())
-		return;
-
-	// deactivate the dialog if we have no buffer
-	if (!kernel().isBufferAvailable()) {
-		bc().readOnly(true);
-		return;
-	}
-
-	// check whether this dialog may be active
-	if (controller().canApply()) {
-		bool const readonly = kernel().isBufferReadonly();
-		bc().readOnly(readonly);
-		// refreshReadOnly() is too generous in _enabling_ widgets
-		// update dialog to disable disabled widgets again
-		if (!readonly || controller().canApplyToReadOnly())
-			view().update();
-	} else
-		bc().readOnly(true);
-}
 
 
 Dialog::Controller::Controller(Dialog & parent)

@@ -10,12 +10,10 @@
 
 #include <config.h>
 
+#include "GuiIndex.h"
+
 #include "debug.h"
 #include "qt_helpers.h"
-
-#include "GuiIndex.h"
-#include "Qt2BC.h"
-#include "ButtonController.h"
 
 #include <QLabel>
 #include <QPushButton>
@@ -90,7 +88,8 @@ void GuiIndexDialog::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiIndex::GuiIndex(Dialog & parent, docstring const & title, QString const & label)
+GuiIndex::GuiIndex(GuiDialog & parent, docstring const & title,
+		QString const & label)
 	: GuiView<GuiIndexDialog>(parent, title), label_(label)
 {
 }
@@ -102,9 +101,9 @@ void GuiIndex::build_dialog()
 
 	dialog_->keywordLA->setText(label_);
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->keywordED);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->keywordED);
 }
 
 
@@ -113,7 +112,7 @@ void GuiIndex::update_contents()
 	docstring const contents = controller().params()["name"];
 	dialog_->keywordED->setText(toqstr(contents));
 
-	bc().valid(!contents.empty());
+	bc().setValid(!contents.empty());
 }
 
 

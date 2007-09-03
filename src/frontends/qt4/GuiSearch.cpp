@@ -13,7 +13,6 @@
 
 #include "GuiSearch.h"
 #include "qt_helpers.h"
-#include "Qt2BC.h"
 
 #include <QLineEdit>
 #include <QCloseEvent>
@@ -130,7 +129,7 @@ void GuiSearchDialog::replaceallClicked()
 /////////////////////////////////////////////////////////////////////
 
 
-GuiSearch::GuiSearch(Dialog & parent)
+GuiSearch::GuiSearch(GuiDialog & parent)
 	: GuiView<GuiSearchDialog>(parent, _("Find and Replace"))
 {
 }
@@ -140,10 +139,10 @@ void GuiSearch::build_dialog()
 {
 	dialog_.reset(new GuiSearchDialog(this));
 
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->replaceCO);
-	bcview().addReadOnly(dialog_->replacePB);
-	bcview().addReadOnly(dialog_->replaceallPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->replaceCO);
+	bc().addReadOnly(dialog_->replacePB);
+	bc().addReadOnly(dialog_->replaceallPB);
 
 	dialog_->replacePB->setEnabled(false);
 	dialog_->replaceallPB->setEnabled(false);

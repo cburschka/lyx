@@ -42,7 +42,7 @@ class GuiWrap : public GuiView<GuiWrapDialog>
 public:
 	friend class GuiWrapDialog;
 
-	GuiWrap(Dialog &);
+	GuiWrap(GuiDialog &);
 	/// parent controller
 	ControlWrap & controller()
 	{ return static_cast<ControlWrap &>(this->getController()); }

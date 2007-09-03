@@ -56,7 +56,7 @@ public:
 	///
 	friend class GuiThesaurusDialog;
 	///
-	GuiThesaurus(Dialog &);
+	GuiThesaurus(GuiDialog &);
 	/// parent controller
 	ControlThesaurus & controller()
 	{ return static_cast<ControlThesaurus &>(this->getController()); }

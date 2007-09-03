@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiBibitem.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include <QCloseEvent>
@@ -62,7 +61,7 @@ void GuiBibitemDialog::closeEvent(QCloseEvent *e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiBibitem::GuiBibitem(Dialog & parent)
+GuiBibitem::GuiBibitem(GuiDialog & parent)
 	: GuiView<GuiBibitemDialog>(parent, _("Bibliography Entry Settings"))
 {
 }
@@ -72,10 +71,10 @@ void GuiBibitem::build_dialog()
 {
 	dialog_.reset(new GuiBibitemDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->keyED);
-	bcview().addReadOnly(dialog_->labelED);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->keyED);
+	bc().addReadOnly(dialog_->labelED);
 }
 
 

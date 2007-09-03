@@ -44,7 +44,7 @@ Dialog * Dialogs::find_or_build(string const & name)
 	if (it != dialogs_.end())
 		return it->second.get();
 
-	dialogs_[name] = build(name);
+	dialogs_[name].reset(build(name));
 	return dialogs_[name].get();
 }
 

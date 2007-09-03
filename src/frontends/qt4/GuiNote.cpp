@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiNote.h"
-#include "Qt2BC.h"
 
 #include "insets/InsetNote.h"
 
@@ -62,7 +61,7 @@ void GuiNoteDialog::change_adaptor()
 /////////////////////////////////////////////////////////////////////
 
 
-GuiNote::GuiNote(Dialog & parent)
+GuiNote::GuiNote(GuiDialog & parent)
 	: GuiView<GuiNoteDialog>(parent, _("Note Settings"))
 {}
 
@@ -71,8 +70,8 @@ void GuiNote::build_dialog()
 {
 	dialog_.reset(new GuiNoteDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

@@ -14,8 +14,6 @@
 #include "lengthcommon.h"
 #include "LyXRC.h"
 
-#include "controllers/ButtonController.h"
-
 #include "insets/ExternalTemplate.h"
 #include "insets/InsetExternal.h"
 
@@ -25,7 +23,6 @@
 #include "support/lyxlib.h"
 
 #include "GuiExternal.h"
-#include "Qt2BC.h"
 
 #include "LengthCombo.h"
 #include "qt_helpers.h"
@@ -485,7 +482,7 @@ void getExtra(external::ExtraData & data,
 } // namespace anon
 
 
-GuiExternal::GuiExternal(Dialog & parent)
+GuiExternal::GuiExternal(GuiDialog & parent)
 	: GuiView<GuiExternalDialog>(parent, _("External Material"))
 {}
 
@@ -494,43 +491,43 @@ void GuiExternal::build_dialog()
 {
 	dialog_.reset(new GuiExternalDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
 
-	bcview().addReadOnly(dialog_->fileED);
-	bcview().addReadOnly(dialog_->browsePB);
-	bcview().addReadOnly(dialog_->editPB);
-	bcview().addReadOnly(dialog_->externalCO);
-	bcview().addReadOnly(dialog_->draftCB);
-	bcview().addReadOnly(dialog_->displayscaleED);
-	bcview().addReadOnly(dialog_->showCO);
-	bcview().addReadOnly(dialog_->displayCB);
-	bcview().addReadOnly(dialog_->angleED);
-	bcview().addReadOnly(dialog_->originCO);
-	bcview().addReadOnly(dialog_->heightUnitCO);
-	bcview().addReadOnly(dialog_->heightED);
-	bcview().addReadOnly(dialog_->aspectratioCB);
-	bcview().addReadOnly(dialog_->widthUnitCO);
-	bcview().addReadOnly(dialog_->widthED);
-	bcview().addReadOnly(dialog_->clipCB);
-	bcview().addReadOnly(dialog_->getbbPB);
-	bcview().addReadOnly(dialog_->ytED);
-	bcview().addReadOnly(dialog_->xlED);
-	bcview().addReadOnly(dialog_->xrED);
-	bcview().addReadOnly(dialog_->ybED);
-	bcview().addReadOnly(dialog_->extraFormatCO);
-	bcview().addReadOnly(dialog_->extraED);
+	bc().addReadOnly(dialog_->fileED);
+	bc().addReadOnly(dialog_->browsePB);
+	bc().addReadOnly(dialog_->editPB);
+	bc().addReadOnly(dialog_->externalCO);
+	bc().addReadOnly(dialog_->draftCB);
+	bc().addReadOnly(dialog_->displayscaleED);
+	bc().addReadOnly(dialog_->showCO);
+	bc().addReadOnly(dialog_->displayCB);
+	bc().addReadOnly(dialog_->angleED);
+	bc().addReadOnly(dialog_->originCO);
+	bc().addReadOnly(dialog_->heightUnitCO);
+	bc().addReadOnly(dialog_->heightED);
+	bc().addReadOnly(dialog_->aspectratioCB);
+	bc().addReadOnly(dialog_->widthUnitCO);
+	bc().addReadOnly(dialog_->widthED);
+	bc().addReadOnly(dialog_->clipCB);
+	bc().addReadOnly(dialog_->getbbPB);
+	bc().addReadOnly(dialog_->ytED);
+	bc().addReadOnly(dialog_->xlED);
+	bc().addReadOnly(dialog_->xrED);
+	bc().addReadOnly(dialog_->ybED);
+	bc().addReadOnly(dialog_->extraFormatCO);
+	bc().addReadOnly(dialog_->extraED);
 
-	addCheckedLineEdit(bcview(), dialog_->angleED, dialog_->angleLA);
-	addCheckedLineEdit(bcview(), dialog_->displayscaleED, dialog_->scaleLA);
-	addCheckedLineEdit(bcview(), dialog_->heightED, dialog_->heightLA);
-	addCheckedLineEdit(bcview(), dialog_->widthED, dialog_->widthLA);
-	addCheckedLineEdit(bcview(), dialog_->xlED, dialog_->lbLA);
-	addCheckedLineEdit(bcview(), dialog_->ybED, dialog_->lbLA);
-	addCheckedLineEdit(bcview(), dialog_->xrED, dialog_->rtLA);
-	addCheckedLineEdit(bcview(), dialog_->ytED, dialog_->rtLA);
-	addCheckedLineEdit(bcview(), dialog_->fileED, dialog_->fileLA);
+	bc().addCheckedLineEdit(dialog_->angleED, dialog_->angleLA);
+	bc().addCheckedLineEdit(dialog_->displayscaleED, dialog_->scaleLA);
+	bc().addCheckedLineEdit(dialog_->heightED, dialog_->heightLA);
+	bc().addCheckedLineEdit(dialog_->widthED, dialog_->widthLA);
+	bc().addCheckedLineEdit(dialog_->xlED, dialog_->lbLA);
+	bc().addCheckedLineEdit(dialog_->ybED, dialog_->lbLA);
+	bc().addCheckedLineEdit(dialog_->xrED, dialog_->rtLA);
+	bc().addCheckedLineEdit(dialog_->ytED, dialog_->rtLA);
+	bc().addCheckedLineEdit(dialog_->fileED, dialog_->fileLA);
 
 	std::vector<string> templates(controller().getTemplates());
 

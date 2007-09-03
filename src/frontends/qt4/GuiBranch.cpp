@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiBranch.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "BranchList.h"
@@ -63,7 +62,7 @@ void GuiBranchDialog::change_adaptor()
 /////////////////////////////////////////////////////////////////////
 
 
-GuiBranch::GuiBranch(Dialog & parent)
+GuiBranch::GuiBranch(GuiDialog & parent)
 	: GuiView<GuiBranchDialog>(parent, _("Branch Settings"))
 {}
 
@@ -72,8 +71,8 @@ void GuiBranch::build_dialog()
 {
 	dialog_.reset(new GuiBranchDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

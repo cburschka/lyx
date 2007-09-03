@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlCharacter.h"
-#include "ButtonController.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -46,7 +45,7 @@ bool ControlCharacter::initialiseParams(string const &)
 	    getBar()      != IGNORE ||
 	    getColor()    != Color::ignore ||
 	    font_->language() != ignore_language)
-		dialog().bc().valid();
+		dialog().setButtonsValid(true);
 
 	return true;
 }

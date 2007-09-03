@@ -57,7 +57,7 @@ class GuiListings : public GuiView<GuiListingsDialog> {
 public:
 	friend class GuiListingsDialog;
 
-	GuiListings(Dialog &);
+	GuiListings(GuiDialog &);
 	/// parent controller
 	ControlListings & controller()
 	{ return static_cast<ControlListings &>(this->getController()); }

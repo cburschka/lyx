@@ -45,7 +45,7 @@ public:
 	friend class GuiNoteDialog;
 
 	/// Constructor
-	GuiNote(Dialog &);
+	GuiNote(GuiDialog &);
 	/// parent controller
 	ControlNote & controller()
 	{ return static_cast<ControlNote &>(this->getController()); }

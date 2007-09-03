@@ -50,7 +50,7 @@ public:
 	///
 	friend class GuiVSpaceDialog;
 	///
-	GuiVSpace(Dialog &);
+	GuiVSpace(GuiDialog &);
 	/// parent controller
 	ControlVSpace & controller()
 	{ return static_cast<ControlVSpace &>(this->getController()); }

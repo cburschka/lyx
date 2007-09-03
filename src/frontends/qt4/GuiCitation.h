@@ -15,7 +15,7 @@
 #ifndef GUICITATION_H
 #define GUICITATION_H
 
-#include "Dialog.h"
+#include "GuiDialog.h"
 #include "GuiSelectionManager.h"
 #include "ui_CitationUi.h"
 #include "ControlCitation.h"
@@ -109,7 +109,7 @@ class GuiCitation : public ControlCitation
 {
 public:
 	///
-	GuiCitation(Dialog &);
+	GuiCitation(GuiDialog &);
 	virtual ~GuiCitation() {}
 	virtual bool initialiseParams(std::string const & data);
 

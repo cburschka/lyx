@@ -462,7 +462,7 @@ void GuiCitationDialog::changed()
 //
 ///////////////////////////////////////////////////////////////////////
 
-GuiCitation::GuiCitation(Dialog & parent)
+GuiCitation::GuiCitation(GuiDialog & parent)
 	: ControlCitation(parent)
 {
 }

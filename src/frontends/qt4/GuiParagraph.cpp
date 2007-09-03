@@ -12,13 +12,12 @@
 #include <config.h>
 
 #include "GuiParagraph.h"
-#include "Qt2BC.h"
-#include "qt_helpers.h"
 
 #include "debug.h"
-#include "ParagraphParameters.h"
-#include "Spacing.h"
 #include "frontend_helpers.h"
+#include "ParagraphParameters.h"
+#include "qt_helpers.h"
+#include "Spacing.h"
 
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -163,7 +162,7 @@ LyXAlignment GuiParagraphDialog::getAlignmentFromDialog()
 /////////////////////////////////////////////////////////////////////
 
 
-GuiParagraph::GuiParagraph(Dialog & parent)
+GuiParagraph::GuiParagraph(GuiDialog & parent)
 	: GuiView<GuiParagraphDialog>(parent, _("Paragraph Settings"))
 {}
 
@@ -174,10 +173,10 @@ void GuiParagraph::build_dialog()
 	dialog_.reset(new GuiParagraphDialog(this));
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().setRestore(dialog_->restorePB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
+	bc().setRestore(dialog_->restorePB);
 }
 
 

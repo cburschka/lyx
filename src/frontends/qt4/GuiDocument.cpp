@@ -15,7 +15,6 @@
 #include "FloatPlacement.h"
 #include "LengthCombo.h"
 #include "PanelStack.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
@@ -41,7 +40,7 @@
 #include <QScrollBar>
 #include <QTextCursor>
 
-#include <map>
+#include <algorithm>
 
 using lyx::support::token;
 using lyx::support::bformat;
@@ -171,9 +170,18 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 //
 /////////////////////////////////////////////////////////////////////
 
+template<class Pair>
+std::vector<typename Pair::second_type> const
+getSecond(std::vector<Pair> const & pr)
+{
+	std::vector<typename Pair::second_type> tmp(pr.size());
+	std::transform(pr.begin(), pr.end(), tmp.begin(),
+								boost::bind(&Pair::second, _1));
+	return tmp;
+}
+
 GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
-	: form_(form),
-	lang_(getSecond(getLanguageData(false)))
+	: form_(form), lang_(getSecond(getLanguageData(false)))
 {
 	setupUi(this);
 
@@ -186,10 +194,10 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 	connect(defaultPB, SIGNAL(clicked()), this, SLOT(useDefaultsClicked()));
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
-	form_->bcview().setOK(okPB);
-	form_->bcview().setApply(applyPB);
-	form_->bcview().setCancel(closePB);
-	form_->bcview().setRestore(restorePB);
+	form_->bc().setOK(okPB);
+	form_->bc().setApply(applyPB);
+	form_->bc().setCancel(closePB);
+	form_->bc().setRestore(restorePB);
 
 
 	textLayoutModule = new UiWidget<Ui::TextLayoutUi>;
@@ -247,7 +255,7 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 		Spacing::Other, qt_("Custom"));
 
 	// initialize the length validator
-	addCheckedLineEdit(form_->bcview(), textLayoutModule->skipLE);
+	form_->bc().addCheckedLineEdit(textLayoutModule->skipLE);
 
 	fontModule = new UiWidget<Ui::FontUi>;
 	// fonts
@@ -337,9 +345,9 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 	pageLayoutModule->pagestyleCO->addItem(qt_("plain"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("headings"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("fancy"));
-	addCheckedLineEdit(form_->bcview(), pageLayoutModule->paperheightLE,
+	form_->bc().addCheckedLineEdit(pageLayoutModule->paperheightLE,
 		pageLayoutModule->paperheightL);
-	addCheckedLineEdit(form_->bcview(), pageLayoutModule->paperwidthLE,
+	form_->bc().addCheckedLineEdit(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthL);
 
 	// paper
@@ -415,19 +423,19 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 	marginsModule->footskipLE->setValidator(unsignedLengthValidator(
 		marginsModule->footskipLE));
 
-	addCheckedLineEdit(form_->bcview(), marginsModule->topLE,
+	form_->bc().addCheckedLineEdit(marginsModule->topLE,
 		marginsModule->topL);
-	addCheckedLineEdit(form_->bcview(), marginsModule->bottomLE,
+	form_->bc().addCheckedLineEdit(marginsModule->bottomLE,
 		marginsModule->bottomL);
-	addCheckedLineEdit(form_->bcview(), marginsModule->innerLE,
+	form_->bc().addCheckedLineEdit(marginsModule->innerLE,
 		marginsModule->innerL);
-	addCheckedLineEdit(form_->bcview(), marginsModule->outerLE,
+	form_->bc().addCheckedLineEdit(marginsModule->outerLE,
 		marginsModule->outerL);
-	addCheckedLineEdit(form_->bcview(), marginsModule->headsepLE,
+	form_->bc().addCheckedLineEdit(marginsModule->headsepLE,
 		marginsModule->headsepL);
-	addCheckedLineEdit(form_->bcview(), marginsModule->headheightLE,
+	form_->bc().addCheckedLineEdit(marginsModule->headheightLE,
 		marginsModule->headheightL);
-	addCheckedLineEdit(form_->bcview(), marginsModule->footskipLE,
+	form_->bc().addCheckedLineEdit(marginsModule->footskipLE,
 		marginsModule->footskipL);
 
 
@@ -507,7 +515,6 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
 	biblioModule->citeStyleCO->setCurrentIndex(0);
-
 
 
 	mathsModule = new UiWidget<Ui::MathsUi>;
@@ -1393,7 +1400,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiDocument::GuiDocument(Dialog & parent)
+GuiDocument::GuiDocument(GuiDialog & parent)
 	: GuiView<GuiDocumentDialog>(parent, _("Document Settings"))
 {}
 

@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiThesaurus.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "debug.h"
 
@@ -141,7 +140,7 @@ void GuiThesaurusDialog::updateLists()
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiThesaurus::GuiThesaurus(Dialog & parent)
+GuiThesaurus::GuiThesaurus(GuiDialog & parent)
 	: GuiView<GuiThesaurusDialog>(parent, _("Thesaurus"))
 {
 }
@@ -151,10 +150,10 @@ void GuiThesaurus::build_dialog()
 {
 	dialog_.reset(new GuiThesaurusDialog(this));
 
-	bcview().setCancel(dialog_->closePB);
-	bcview().setApply(dialog_->replacePB);
-	bcview().addReadOnly(dialog_->replaceED);
-	bcview().addReadOnly(dialog_->replacePB);
+	bc().setCancel(dialog_->closePB);
+	bc().setApply(dialog_->replacePB);
+	bc().addReadOnly(dialog_->replaceED);
+	bc().addReadOnly(dialog_->replacePB);
 }
 
 

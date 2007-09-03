@@ -123,7 +123,7 @@ public:
 
 	friend class GuiDocumentDialog;
 
-	GuiDocument(Dialog &);
+	GuiDocument(GuiDialog &);
 
 	void showPreamble();
 	/// parent controller

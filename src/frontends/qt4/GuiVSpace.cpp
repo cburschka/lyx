@@ -16,7 +16,6 @@
 #include <config.h>
 
 #include "GuiVSpace.h"
-#include "Qt2BC.h"
 
 #include "LengthCombo.h"
 #include "qt_helpers.h"
@@ -26,8 +25,8 @@
 #include "Spacing.h"
 #include "VSpace.h"
 
-#include "controllers/ControlVSpace.h"
-#include "controllers/frontend_helpers.h"
+#include "ControlVSpace.h"
+#include "frontend_helpers.h"
 
 #include "support/lstrings.h"
 
@@ -181,7 +180,7 @@ static VSpace setVSpaceFromWidgets(int spacing,
 }
 
 
-GuiVSpace::GuiVSpace(Dialog & parent)
+GuiVSpace::GuiVSpace(GuiDialog & parent)
 	: GuiView<GuiVSpaceDialog>(parent, _("Vertical Space Settings"))
 {}
 
@@ -192,18 +191,18 @@ void GuiVSpace::build_dialog()
 	dialog_.reset(new GuiVSpaceDialog(this));
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
 
 	// disable for read-only documents
-	bcview().addReadOnly(dialog_->spacingCO);
-	bcview().addReadOnly(dialog_->valueLE);
-	bcview().addReadOnly(dialog_->unitCO);
-	bcview().addReadOnly(dialog_->keepCB);
+	bc().addReadOnly(dialog_->spacingCO);
+	bc().addReadOnly(dialog_->valueLE);
+	bc().addReadOnly(dialog_->unitCO);
+	bc().addReadOnly(dialog_->keepCB);
 
 	// initialize the length validator
-	addCheckedLineEdit(bcview(), dialog_->valueLE, dialog_->valueL);
+	bc().addCheckedLineEdit(dialog_->valueLE, dialog_->valueL);
 
 	// remove the %-items from the unit choice
 	dialog_->unitCO->noPercents();

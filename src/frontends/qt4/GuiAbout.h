@@ -36,7 +36,7 @@ public:
 class GuiAbout : public GuiView<GuiAboutDialog>
 {
 public:
-	GuiAbout(Dialog &);
+	GuiAbout(GuiDialog &);
 	/// parent controller
 	ControlAboutlyx & controller()
 	{ return static_cast<ControlAboutlyx &>(this->getController()); }

@@ -47,7 +47,7 @@ class GuiChanges : public GuiView<GuiChangesDialog>
 {
 public:
 	///
-	GuiChanges(Dialog &);
+	GuiChanges(GuiDialog &);
 	/// parent controller
 	ControlChanges & controller()
 	{ return static_cast<ControlChanges &>(this->getController()); }

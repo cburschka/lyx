@@ -12,7 +12,7 @@
 #ifndef GUIDIALOGVIEW_H
 #define GUIDIALOGVIEW_H
 
-#include "Dialog.h"
+#include "GuiDialog.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -23,15 +23,14 @@
 namespace lyx {
 namespace frontend {
 
-class Qt2BC;
-
 /** This class is an Qt2 GUI base class.
  */
-class GuiDialogView : public QObject, public Dialog::View {
+class GuiDialogView : public QObject, public Dialog::View
+{
 	Q_OBJECT
 public:
 	///
-	GuiDialogView(Dialog &, docstring const &);
+	GuiDialogView(GuiDialog &, docstring const &);
 	///
 	virtual ~GuiDialogView() {}
 	///
@@ -41,7 +40,7 @@ public:
 	virtual void changed();
 
 	///
-	Qt2BC & bcview();
+	ButtonController & bc();
 
 protected:
 	/// build the actual dialog
@@ -62,6 +61,8 @@ protected:
 
 	/// are we updating ?
 	bool updating_;
+
+	GuiDialog & parent_;
 
 public Q_SLOTS:
 	// dialog closed from WM
@@ -87,7 +88,7 @@ private:
 template <class GUIDialog>
 class GuiView : public GuiDialogView {
 protected:
-	GuiView(Dialog & p, docstring const & t)
+	GuiView(GuiDialog & p, docstring const & t)
 		: GuiDialogView(p, t)
 	{}
 

@@ -53,7 +53,7 @@ public:
 	///
 	friend class GuiSendtoDialog;
 	///
-	GuiSendto(Dialog &);
+	GuiSendto(GuiDialog &);
 	/// parent controller
 	ControlSendto & controller()
 	{ return static_cast<ControlSendto &>(this->getController()); }

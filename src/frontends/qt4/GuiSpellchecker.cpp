@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiSpellchecker.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include <QProgressBar>
@@ -127,7 +126,7 @@ void GuiSpellcheckerDialog::reject()
 /////////////////////////////////////////////////////////////////////
 
 
-GuiSpellchecker::GuiSpellchecker(Dialog & parent)
+GuiSpellchecker::GuiSpellchecker(GuiDialog & parent)
 	: GuiView<GuiSpellcheckerDialog>(parent, _("Spellchecker"))
 {}
 
@@ -136,7 +135,7 @@ void GuiSpellchecker::build_dialog()
 {
 	dialog_.reset(new GuiSpellcheckerDialog(this));
 
-	bcview().setCancel(dialog_->closePB);
+	bc().setCancel(dialog_->closePB);
 	dialog_->wordED->setReadOnly(true);
 }
 

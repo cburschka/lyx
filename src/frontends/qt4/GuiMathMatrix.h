@@ -47,7 +47,7 @@ class GuiMathMatrix : public GuiView<GuiMathMatrixDialog> {
 public:
 	friend class GuiMathMatrixDialog;
 
-	GuiMathMatrix(Dialog &);
+	GuiMathMatrix(GuiDialog &);
 	/// parent controller
 	ControlMath & controller()
 	{ return static_cast<ControlMath &>(this->getController()); }

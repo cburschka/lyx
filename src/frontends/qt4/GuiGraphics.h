@@ -59,7 +59,7 @@ public:
 	///
 	friend class GuiGraphicsDialog;
 	///
-	GuiGraphics(Dialog &);
+	GuiGraphics(GuiDialog &);
 	/// parent controller
 	ControlGraphics & controller()
 	{ return static_cast<ControlGraphics &>(this->getController()); }

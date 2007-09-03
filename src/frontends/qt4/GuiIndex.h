@@ -44,7 +44,7 @@ class GuiIndex : public GuiView<GuiIndexDialog>
 public:
 	friend class GuiIndexDialog;
 
-	GuiIndex(Dialog &, docstring const & title, QString const & label);
+	GuiIndex(GuiDialog &, docstring const & title, QString const & label);
 	/// parent controller
 	ControlCommand & controller()
 	{ return static_cast<ControlCommand &>(this->getController()); }

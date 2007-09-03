@@ -19,17 +19,14 @@
 #include <utility>
 #include <vector>
 #include <string>
-#include <boost/bind.hpp>
-#include <algorithm>
-#include <utility>
-#include <map>
-
-class Buffer;
 
 class Color_color;
 
 /** Functions of use to the character GUI controller and view */
 namespace lyx {
+
+namespace support { class FileFilterList; }
+
 namespace frontend {
 
 ///
@@ -82,14 +79,6 @@ typedef std::pair<docstring, std::string> LanguagePair;
 std::vector<LanguagePair> const getLanguageData(bool character_dlg);
 /// sort colors for the gui
 std::vector<Color_color> const getSortedColors(std::vector<Color_color> colors);
-
-} // namespace frontend
-
-
-namespace support { class FileFilterList; }
-
-
-namespace frontend {
 
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.
@@ -156,29 +145,6 @@ browseDir(docstring const & pathname,
 /// Returns a vector of units that can be used to create a valid LaTeX length.
 std::vector<docstring> const getLatexUnits();
 
-
-/** Functions to extract vectors of the first and second elems from a
-    vector<pair<A,B> >
-*/
-template<class Pair>
-std::vector<typename Pair::first_type> const
-getFirst(std::vector<Pair> const & pr)
-{
-	std::vector<typename Pair::first_type> tmp(pr.size());
-	std::transform(pr.begin(), pr.end(), tmp.begin(),
-		       boost::bind(&Pair::first, _1));
-	return tmp;
-}
-
-template<class Pair>
-std::vector<typename Pair::second_type> const
-getSecond(std::vector<Pair> const & pr)
-{
-	std::vector<typename Pair::second_type> tmp(pr.size());
-	std::transform(pr.begin(), pr.end(), tmp.begin(),
-		       boost::bind(&Pair::second, _1));
-	return tmp;
-}
 
 /** Build filelists of all availabe bst/cls/sty-files. Done through
  *  kpsewhich and an external script, saved in *Files.lst.

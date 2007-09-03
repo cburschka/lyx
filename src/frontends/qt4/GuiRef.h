@@ -57,7 +57,7 @@ class GuiRef : public GuiView<GuiRefDialog>
 public:
 	friend class GuiRefDialog;
 
-	GuiRef(Dialog &);
+	GuiRef(GuiDialog &);
 
 	/// parent controller
 	ControlRef & controller()

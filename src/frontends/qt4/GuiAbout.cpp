@@ -11,11 +11,8 @@
 #include <config.h>
 
 #include "GuiAbout.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
-
-#include "controllers/ButtonController.h"
-#include "controllers/ControlAboutlyx.h"
+#include "gettext.h"
 
 #include "support/lstrings.h"
 
@@ -38,7 +35,7 @@ namespace lyx {
 namespace frontend {
 
 
-GuiAbout::GuiAbout(Dialog & parent)
+GuiAbout::GuiAbout(GuiDialog & parent)
 	: GuiView<GuiAboutDialog>(parent, _("About LyX"))
 {
 }
@@ -112,8 +109,8 @@ void GuiAbout::build_dialog()
 	dialog_->setMinimumSize(dialog_->sizeHint());
 
 	// Manage the cancel/close button
-	bcview().setCancel(dialog_->closePB);
-	bc().refresh();
+	bc().setCancel(dialog_->closePB);
+	//FIXME bc().refresh();
 }
 
 } // namespace frontend

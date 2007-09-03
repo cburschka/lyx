@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiSendto.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "Format.h"
@@ -76,7 +75,7 @@ void GuiSendtoDialog::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiSendto::GuiSendto(Dialog & parent)
+GuiSendto::GuiSendto(GuiDialog & parent)
 	: GuiView<GuiSendtoDialog>(parent, _("Send Document to Command"))
 {
 }
@@ -87,9 +86,9 @@ void GuiSendto::build_dialog()
 	dialog_.reset(new GuiSendtoDialog(this));
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

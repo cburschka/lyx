@@ -55,7 +55,7 @@ class GuiSpellchecker : public GuiView<GuiSpellcheckerDialog>
 public:
 	friend class GuiSpellcheckerDialog;
 
-	GuiSpellchecker(Dialog &);
+	GuiSpellchecker(GuiDialog &);
 
 	/// update from controller
 	void partialUpdate(int id);

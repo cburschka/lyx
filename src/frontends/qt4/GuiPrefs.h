@@ -361,7 +361,7 @@ private:
 class GuiPrefs : public GuiView<GuiPrefsDialog>
 {
 public:
-	GuiPrefs(Dialog &);
+	GuiPrefs(GuiDialog &);
 
 	Converters & converters();
 	Formats & formats();

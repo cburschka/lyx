@@ -11,8 +11,8 @@
 #include <config.h>
 
 #include "Dialogs.h"
+#include "GuiDialog.h"
 
-#include "Qt2BC.h"
 #include "ButtonController.h"
 #include "DockView.h"
 #include "GuiView.h"
@@ -110,12 +110,11 @@ bool Dialogs::isValidName(string const & name) const
 }
 
 
-Dialogs::DialogPtr Dialogs::build(string const & name)
+Dialog * Dialogs::build(string const & name)
 {
 	BOOST_ASSERT(isValidName(name));
 
-	DialogPtr dialog(new Dialog(lyxview_, name));
-	dialog->bc().view(new Qt2BC(dialog->bc()));
+	GuiDialog * dialog = new GuiDialog(lyxview_, name);
 
 	if (name == "aboutlyx") {
 		dialog->setController(new ControlAboutlyx(*dialog));

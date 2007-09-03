@@ -15,7 +15,6 @@
 #include "GuiBibtex.h"
 
 #include "ui_BibtexAddUi.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 #include "LyXRC.h"
@@ -80,14 +79,10 @@ GuiBibtexDialog::GuiBibtexDialog(GuiBibtex * form)
 		this, SLOT(addPressed()));
 
 	add_ = new UiDialog<Ui::BibtexAddUi>(this, true);
-
-	Qt2BC * bcview = new Qt2BC(add_bc_);
-	add_bc_.view(bcview);
 	add_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
-
-	bcview->setOK(add_->addPB);
-	bcview->setCancel(add_->closePB);
-	bcview->addCheckedLineEdit(add_->bibED, 0);
+	add_bc_.setOK(add_->addPB);
+	add_bc_.setCancel(add_->closePB);
+	add_bc_.addCheckedLineEdit(add_->bibED, 0);
 
 	connect(add_->bibED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(bibEDChanged()));
@@ -105,7 +100,6 @@ GuiBibtexDialog::GuiBibtexDialog(GuiBibtex * form)
 		this, SLOT(browseBibPressed()));
 	connect(add_->closePB, SIGNAL(clicked()),
 		add_, SLOT(reject()));
-
 }
 
 
@@ -114,7 +108,7 @@ void GuiBibtexDialog::bibEDChanged()
 	// Indicate to the button controller that the contents have
 	// changed. The actual test of validity is carried out by
 	// the checkedLineEdit.
-	add_bc_.valid(true);
+	add_bc_.setValid(true);
 }
 
 
@@ -176,7 +170,7 @@ void GuiBibtexDialog::browseBibPressed()
 
 void GuiBibtexDialog::addPressed()
 {
-	add_bc_.valid(false);
+	add_bc_.setValid(false);
 	add_->exec();
 }
 
@@ -231,7 +225,7 @@ void GuiBibtexDialog::databaseChanged()
 
 void GuiBibtexDialog::availableChanged()
 {
-	add_bc_.valid(true);
+	add_bc_.setValid(true);
 }
 
 
@@ -244,12 +238,12 @@ void GuiBibtexDialog::closeEvent(QCloseEvent *e)
 
 /////////////////////////////////////////////////////////////////////
 //
-// QBibTex
+// GuiBibTex
 //
 /////////////////////////////////////////////////////////////////////
 
 
-GuiBibtex::GuiBibtex(Dialog & parent)
+GuiBibtex::GuiBibtex(GuiDialog & parent)
 	: GuiView<GuiBibtexDialog>(parent, _("BibTeX Bibliography"))
 {
 }
@@ -259,14 +253,14 @@ void GuiBibtex::build_dialog()
 {
 	dialog_.reset(new GuiBibtexDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->databaseLW);
-	bcview().addReadOnly(dialog_->stylePB);
-	bcview().addReadOnly(dialog_->styleCB);
-	bcview().addReadOnly(dialog_->bibtocCB);
-	bcview().addReadOnly(dialog_->addBibPB);
-	bcview().addReadOnly(dialog_->deletePB);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->databaseLW);
+	bc().addReadOnly(dialog_->stylePB);
+	bc().addReadOnly(dialog_->styleCB);
+	bc().addReadOnly(dialog_->bibtocCB);
+	bc().addReadOnly(dialog_->addBibPB);
+	bc().addReadOnly(dialog_->deletePB);
 }
 
 

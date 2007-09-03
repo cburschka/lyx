@@ -15,6 +15,7 @@
 #define GUIVIEWSOURCE_H
 
 #include "ControlViewSource.h"
+#include "GuiDialog.h"
 #include "Application.h"
 #include "ui_ViewSourceUi.h"
 
@@ -63,7 +64,7 @@ private:
 class GuiViewSource : public QObject, public ControlViewSource {
 public:
 	///
-	GuiViewSource(Dialog &);
+	GuiViewSource(GuiDialog &);
 	///
 	QTextDocument * document() { return document_; }
 	///

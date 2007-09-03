@@ -58,7 +58,7 @@ QString fix_name(QString const & str, bool big)
 } // namespace anon
 
 
-GuiDelimiter::GuiDelimiter(Dialog & parent)
+GuiDelimiter::GuiDelimiter(GuiDialog & parent)
 	: GuiView<GuiDelimiterDialog>(parent, _("Math Delimiter"))
 {}
 

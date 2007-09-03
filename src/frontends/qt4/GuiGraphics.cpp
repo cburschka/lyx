@@ -19,7 +19,6 @@
 #include "LengthCombo.h"
 #include "lengthcommon.h"
 #include "LyXRC.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
@@ -32,10 +31,6 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 
-#include <cmath>
-
-#include "insets/InsetGraphicsParams.h"
-
 #include <QCheckBox>
 #include <QCloseEvent>
 #include <QLabel>
@@ -43,6 +38,8 @@
 #include <QPushButton>
 #include <QValidator>
 
+#include <algorithm>
+#include <cmath>
 
 using lyx::support::float_equal;
 using lyx::support::token;
@@ -60,6 +57,16 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
+
+template<class Pair>
+std::vector<typename Pair::first_type> const
+getFirst(std::vector<Pair> const & pr)
+{
+	std::vector<typename Pair::first_type> tmp(pr.size());
+	std::transform(pr.begin(), pr.end(), tmp.begin(),
+		       boost::bind(&Pair::first, _1));
+	return tmp;
+}
 
 GuiGraphicsDialog::GuiGraphicsDialog(GuiGraphics * form)
 	: form_(form)
@@ -329,7 +336,7 @@ void GuiGraphicsDialog::on_angle_textChanged(const QString & filename)
 }
 
 
-GuiGraphics::GuiGraphics(Dialog & parent)
+GuiGraphics::GuiGraphics(GuiDialog & parent)
 	: GuiView<GuiGraphicsDialog>(parent, _("Graphics"))
 {
 }
@@ -339,39 +346,39 @@ void GuiGraphics::build_dialog()
 {
 	dialog_.reset(new GuiGraphicsDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setRestore(dialog_->restorePB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setRestore(dialog_->restorePB);
+	bc().setCancel(dialog_->closePB);
 
-	bcview().addReadOnly(dialog_->latexoptions);
-	bcview().addReadOnly(dialog_->subfigure);
-	bcview().addReadOnly(dialog_->filenameL);
-	bcview().addReadOnly(dialog_->filename);
-	bcview().addReadOnly(dialog_->browsePB);
-	bcview().addReadOnly(dialog_->unzipCB);
-	bcview().addReadOnly(dialog_->bbFrame);
-	bcview().addReadOnly(dialog_->draftCB);
-	bcview().addReadOnly(dialog_->clip);
-	bcview().addReadOnly(dialog_->unzipCB);
-	bcview().addReadOnly(dialog_->displayGB);
-	bcview().addReadOnly(dialog_->sizeGB);
-	bcview().addReadOnly(dialog_->rotationGB);
-	bcview().addReadOnly(dialog_->latexoptions);
-	bcview().addReadOnly(dialog_->getPB);
-	bcview().addReadOnly(dialog_->rotateOrderCB);
+	bc().addReadOnly(dialog_->latexoptions);
+	bc().addReadOnly(dialog_->subfigure);
+	bc().addReadOnly(dialog_->filenameL);
+	bc().addReadOnly(dialog_->filename);
+	bc().addReadOnly(dialog_->browsePB);
+	bc().addReadOnly(dialog_->unzipCB);
+	bc().addReadOnly(dialog_->bbFrame);
+	bc().addReadOnly(dialog_->draftCB);
+	bc().addReadOnly(dialog_->clip);
+	bc().addReadOnly(dialog_->unzipCB);
+	bc().addReadOnly(dialog_->displayGB);
+	bc().addReadOnly(dialog_->sizeGB);
+	bc().addReadOnly(dialog_->rotationGB);
+	bc().addReadOnly(dialog_->latexoptions);
+	bc().addReadOnly(dialog_->getPB);
+	bc().addReadOnly(dialog_->rotateOrderCB);
 
 	// initialize the length validator
-	addCheckedLineEdit(bcview(), dialog_->Scale, dialog_->scaleCB);
-	addCheckedLineEdit(bcview(), dialog_->Width, dialog_->WidthCB);
-	addCheckedLineEdit(bcview(), dialog_->Height, dialog_->HeightCB);
-	addCheckedLineEdit(bcview(), dialog_->displayscale, dialog_->scaleLA);
-	addCheckedLineEdit(bcview(), dialog_->angle, dialog_->angleL);
-	addCheckedLineEdit(bcview(), dialog_->lbX, dialog_->xL);
-	addCheckedLineEdit(bcview(), dialog_->lbY, dialog_->yL);
-	addCheckedLineEdit(bcview(), dialog_->rtX, dialog_->xL_2);
-	addCheckedLineEdit(bcview(), dialog_->rtY, dialog_->yL_2);
-	addCheckedLineEdit(bcview(), dialog_->filename, dialog_->filenameL);
+	bc().addCheckedLineEdit(dialog_->Scale, dialog_->scaleCB);
+	bc().addCheckedLineEdit(dialog_->Width, dialog_->WidthCB);
+	bc().addCheckedLineEdit(dialog_->Height, dialog_->HeightCB);
+	bc().addCheckedLineEdit(dialog_->displayscale, dialog_->scaleLA);
+	bc().addCheckedLineEdit(dialog_->angle, dialog_->angleL);
+	bc().addCheckedLineEdit(dialog_->lbX, dialog_->xL);
+	bc().addCheckedLineEdit(dialog_->lbY, dialog_->yL);
+	bc().addCheckedLineEdit(dialog_->rtX, dialog_->xL_2);
+	bc().addCheckedLineEdit(dialog_->rtY, dialog_->yL_2);
+	bc().addCheckedLineEdit(dialog_->filename, dialog_->filenameL);
 }
 
 
@@ -381,6 +388,16 @@ static int getItemNo(const vector<string> & v, string const & s)
 	vector<string>::const_iterator cit =
 		    find(v.begin(), v.end(), s);
 	return (cit != v.end()) ? int(cit - v.begin()) : 0;
+}
+
+template<class Pair>
+std::vector<typename Pair::second_type> const
+getSecond(std::vector<Pair> const & pr)
+{
+	 std::vector<typename Pair::second_type> tmp(pr.size());
+	 std::transform(pr.begin(), pr.end(), tmp.begin(),
+					 boost::bind(&Pair::second, _1));
+	 return tmp;
 }
 
 

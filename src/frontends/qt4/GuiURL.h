@@ -41,7 +41,7 @@ class UrlView : public GuiView<GuiURLDialog>
 {
 public:
 	friend class QURLDialog;
-	UrlView(Dialog &);
+	UrlView(GuiDialog &);
 	/// parent controller
 	ControlCommand & controller()
 	{ return static_cast<ControlCommand &>(this->getController()); }

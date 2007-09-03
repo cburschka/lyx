@@ -38,6 +38,7 @@ SOURCEFILES = \
 	Action.cpp \
 	alert_pimpl.cpp \
 	BulletsModule.cpp \
+	ButtonController.cpp \
 	ColorCache.cpp \
 	Dialogs.cpp \
 	EmptyTable.cpp \
@@ -57,6 +58,7 @@ SOURCEFILES = \
 	GuiCommandBuffer.cpp \
 	GuiCommandEdit.cpp \
 	GuiDelimiter.cpp \
+	GuiDialog.cpp \
 	GuiDialogView.cpp \
 	GuiDocument.cpp \
 	GuiEmbeddedFiles.cpp \
@@ -110,7 +112,6 @@ SOURCEFILES = \
 	LengthCombo.cpp \
 	LyXFileDialog.cpp \
 	PanelStack.cpp \
-	Qt2BC.cpp \
 	qt_helpers.cpp \
 	socket_callback.cpp \
 	TocModel.cpp \
@@ -118,13 +119,13 @@ SOURCEFILES = \
 	Validator.cpp 
 
 NOMOCHEADER = \
+	ButtonController.h \
 	GuiClipboard.h \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
 	GuiSelection.h \
 	GuiImage.h \
 	GuiPainter.h \
-	Qt2BC.h \
 	qt_helpers.h
 
 MOCHEADER = \
@@ -147,6 +148,7 @@ MOCHEADER = \
 	GuiCommandBuffer.h \
 	GuiCommandEdit.h \
 	GuiDelimiter.h \
+	GuiDialog.h \
 	GuiDialogView.h \
 	GuiDocument.h \
 	GuiEmbeddedFiles.h \

@@ -12,9 +12,8 @@
 #include <config.h>
 
 #include "GuiPrint.h"
-#include "Qt2BC.h"
-#include "qt_helpers.h"
 
+#include "qt_helpers.h"
 #include "PrinterParams.h"
 
 #include "support/os.h"
@@ -104,7 +103,7 @@ void GuiPrintDialog::pagerangeChanged()
 }
 
 
-GuiPrint::GuiPrint(Dialog & parent)
+GuiPrint::GuiPrint(GuiDialog & parent)
 	: GuiView<GuiPrintDialog>(parent, _("Print Document"))
 {
 }
@@ -114,8 +113,8 @@ void GuiPrint::build_dialog()
 {
 	dialog_.reset(new GuiPrintDialog(this));
 
-	bcview().setOK(dialog_->printPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->printPB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

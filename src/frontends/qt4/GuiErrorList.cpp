@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiErrorList.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include <QListWidget>
@@ -69,7 +68,7 @@ void GuiErrorListDialog::showEvent(QShowEvent *e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiErrorList::GuiErrorList(Dialog & parent)
+GuiErrorList::GuiErrorList(GuiDialog & parent)
 	:  GuiView<GuiErrorListDialog>(parent, docstring())
 {}
 
@@ -77,7 +76,7 @@ GuiErrorList::GuiErrorList(Dialog & parent)
 void GuiErrorList::build_dialog()
 {
 	dialog_.reset(new GuiErrorListDialog(this));
-	bcview().setCancel(dialog_->closePB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

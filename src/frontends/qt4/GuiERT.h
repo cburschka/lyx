@@ -16,7 +16,6 @@
 #include "ControlERT.h"
 #include "ui_ERTUi.h"
 
-#include <QCloseEvent>
 #include <QDialog>
 
 namespace lyx {
@@ -42,7 +41,7 @@ class GuiERT : public GuiView<GuiERTDialog>
 {
 public:
 	/// constructor
-	GuiERT(Dialog &);
+	GuiERT(GuiDialog &);
 	/// parent controller
 	ControlERT & controller()
 	{ return static_cast<ControlERT &>(this->getController()); }

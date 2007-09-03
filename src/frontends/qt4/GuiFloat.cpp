@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiFloat.h"
-#include "Qt2BC.h"
 #include "FloatPlacement.h"
 
 #include "insets/InsetFloat.h"
@@ -59,7 +58,7 @@ void GuiFloatDialog::closeEvent(QCloseEvent * e)
 }
 
 
-GuiFloat::GuiFloat(Dialog & parent)
+GuiFloat::GuiFloat(GuiDialog & parent)
 	:  GuiView<GuiFloatDialog>(parent, _("Float Settings"))
 {
 }
@@ -69,12 +68,12 @@ void GuiFloat::build_dialog()
 {
 	dialog_.reset(new GuiFloatDialog(this));
 
-	bcview().setCancel(dialog_->closePB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setOK(dialog_->okPB);
-	bcview().setRestore(dialog_->restorePB);
+	bc().setCancel(dialog_->closePB);
+	bc().setApply(dialog_->applyPB);
+	bc().setOK(dialog_->okPB);
+	bc().setRestore(dialog_->restorePB);
 
-	bcview().addReadOnly(dialog_->floatFP);
+	bc().addReadOnly(dialog_->floatFP);
 }
 
 

@@ -11,23 +11,20 @@
 #include <config.h>
 
 #include "GuiDialogView.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
-
-#include "controllers/ButtonController.h"
 
 
 namespace lyx {
 namespace frontend {
 
-GuiDialogView::GuiDialogView(Dialog & parent, docstring const & t)
-	: Dialog::View(parent,t), updating_(false)
+GuiDialogView::GuiDialogView(GuiDialog & parent, docstring const & t)
+	: Dialog::View(parent, t), updating_(false), parent_(parent)
 {}
 
 
-Qt2BC & GuiDialogView::bcview()
+ButtonController & GuiDialogView::bc()
 {
-	return static_cast<Qt2BC &>(dialog().bc().view());
+	return parent_.bc();
 }
 
 
@@ -45,9 +42,8 @@ bool GuiDialogView::readOnly() const
 
 void GuiDialogView::show()
 {
-	if (!form()) {
+	if (!form())
 		build();
-	}
 
 	QSize const sizeHint = form()->sizeHint();
 	if (sizeHint.height() >= 0 && sizeHint.width() >= 0)
@@ -87,37 +83,37 @@ void GuiDialogView::changed()
 {
 	if (updating_)
 		return;
-	bc().valid(isValid());
+	parent_.bc().setValid(isValid());
 }
 
 
 void GuiDialogView::slotWMHide()
 {
-	dialog().CancelButton();
+	parent_.CancelButton();
 }
 
 
 void GuiDialogView::slotApply()
 {
-	dialog().ApplyButton();
+	parent_.ApplyButton();
 }
 
 
 void GuiDialogView::slotOK()
 {
-	dialog().OKButton();
+	parent_.OKButton();
 }
 
 
 void GuiDialogView::slotClose()
 {
-	dialog().CancelButton();
+	parent_.CancelButton();
 }
 
 
 void GuiDialogView::slotRestore()
 {
-	dialog().RestoreButton();
+	parent_.RestoreButton();
 }
 
 } // namespace frontend

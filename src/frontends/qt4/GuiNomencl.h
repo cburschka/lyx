@@ -26,7 +26,8 @@ namespace frontend {
 
 class GuiNomencl;
 
-class GuiNomenclDialog : public QDialog, public Ui::NomenclUi {
+class GuiNomenclDialog : public QDialog, public Ui::NomenclUi
+{
 	Q_OBJECT
 public:
 	GuiNomenclDialog(GuiNomencl * form);
@@ -46,7 +47,7 @@ class GuiNomencl : public GuiView<GuiNomenclDialog>
 public:
 	friend class GuiNomenclDialog;
 
-	GuiNomencl(Dialog &, docstring const & title);
+	GuiNomencl(GuiDialog &, docstring const & title);
 	/// parent controller
 	ControlCommand & controller()
 	{ return static_cast<ControlCommand &>(this->getController()); }

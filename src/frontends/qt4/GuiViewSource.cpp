@@ -160,7 +160,7 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 }
 
 
-GuiViewSource::GuiViewSource(Dialog & parent)
+GuiViewSource::GuiViewSource(GuiDialog & parent)
 	: ControlViewSource(parent)
 {
 	document_ = new QTextDocument(this);

@@ -58,7 +58,7 @@ class GuiExternal : public GuiView<GuiExternalDialog>
 public:
 	friend class GuiExternalDialog;
 
-	GuiExternal(Dialog &);
+	GuiExternal(GuiDialog &);
 	/// parent controller
 	ControlExternal & controller()
 	{ return static_cast<ControlExternal &>(this->getController()); }

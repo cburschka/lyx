@@ -12,7 +12,6 @@
 
 #include "GuiPrefs.h"
 
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "GuiApplication.h"
 
@@ -45,8 +44,11 @@
 #include <QCloseEvent>
 
 #include <boost/tuple/tuple.hpp>
+#include <boost/bind.hpp>
+
 #include <iomanip>
 #include <sstream>
+#include <algorithm>
 
 using namespace Ui;
 
@@ -1571,6 +1573,17 @@ void PrefFileformats::remove_format()
 //
 /////////////////////////////////////////////////////////////////////
 
+template<class Pair>
+std::vector<typename Pair::second_type> const
+getSecond(std::vector<Pair> const & pr)
+{
+	std::vector<typename Pair::second_type> tmp(pr.size());
+	std::transform(pr.begin(), pr.end(), tmp.begin(),
+		       boost::bind(&Pair::second, _1));
+	return tmp;
+}
+
+
 PrefLanguage::PrefLanguage(QWidget * parent)
 	: PrefModule(_("Language"), 0, parent)
 {
@@ -1946,10 +1959,10 @@ GuiPrefsDialog::GuiPrefsDialog(GuiPrefs * form)
 	prefsPS->updateGeometry();
 #endif
 
-	form_->bcview().setOK(savePB);
-	form_->bcview().setApply(applyPB);
-	form_->bcview().setCancel(closePB);
-	form_->bcview().setRestore(restorePB);
+	form_->bc().setOK(savePB);
+	form_->bc().setApply(applyPB);
+	form_->bc().setCancel(closePB);
+	form_->bc().setRestore(restorePB);
 }
 
 
@@ -2000,7 +2013,7 @@ void GuiPrefsDialog::updateRc(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiPrefs::GuiPrefs(Dialog & parent)
+GuiPrefs::GuiPrefs(GuiDialog & parent)
 	: GuiView<GuiPrefsDialog>(parent, _("Preferences"))
 {
 }

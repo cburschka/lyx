@@ -104,7 +104,7 @@ private:
 	///
 	typedef boost::shared_ptr<Dialog> DialogPtr;
 	///
-	DialogPtr build(std::string const & name);
+	Dialog * build(std::string const & name);
 
 	///
 	LyXView & lyxview_;

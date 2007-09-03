@@ -12,7 +12,6 @@
 
 #include "ControlPrint.h"
 
-#include "ButtonController.h"
 #include "frontend_helpers.h"
 
 #include "Buffer.h"
@@ -49,7 +48,7 @@ bool ControlPrint::initialiseParams(std::string const &)
 	params_.reset(new PrinterParams(PrinterParams::PRINTER,
 					lyxrc.printer, name));
 
-	dialog().bc().valid(); // so that the user can press Ok
+	dialog().setButtonsValid(true); // so that the user can press Ok
 	return true;
 }
 

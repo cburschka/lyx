@@ -83,7 +83,7 @@ class GuiTabular : public GuiView<GuiTabularDialog>
 public:
 	friend class GuiTabularDialog;
 
-	GuiTabular(Dialog &);
+	GuiTabular(GuiDialog &);
 
 	/// parent controller
 	ControlTabular & controller()

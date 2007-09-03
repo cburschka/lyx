@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "GuiCharacter.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "frontend_helpers.h"
 #include "Color.h"
@@ -85,7 +84,7 @@ void GuiCharacterDialog::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiCharacter::GuiCharacter(Dialog & parent)
+GuiCharacter::GuiCharacter(GuiDialog & parent)
 	: GuiView<GuiCharacterDialog>(parent, _("Text Style"))
 {
 }
@@ -133,18 +132,18 @@ void GuiCharacter::build_dialog()
 		dialog_->langCO->addItem(toqstr(cit->first));
 	}
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->familyCO);
-	bcview().addReadOnly(dialog_->seriesCO);
-	bcview().addReadOnly(dialog_->sizeCO);
-	bcview().addReadOnly(dialog_->shapeCO);
-	bcview().addReadOnly(dialog_->miscCO);
-	bcview().addReadOnly(dialog_->langCO);
-	bcview().addReadOnly(dialog_->colorCO);
-	bcview().addReadOnly(dialog_->toggleallCB);
-	bcview().addReadOnly(dialog_->autoapplyCB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->familyCO);
+	bc().addReadOnly(dialog_->seriesCO);
+	bc().addReadOnly(dialog_->sizeCO);
+	bc().addReadOnly(dialog_->shapeCO);
+	bc().addReadOnly(dialog_->miscCO);
+	bc().addReadOnly(dialog_->langCO);
+	bc().addReadOnly(dialog_->colorCO);
+	bc().addReadOnly(dialog_->toggleallCB);
+	bc().addReadOnly(dialog_->autoapplyCB);
 
 // FIXME: hack to work around resizing bug in Qt >= 4.2
 // bug verified with Qt 4.2.{0-3} (JSpitzm)

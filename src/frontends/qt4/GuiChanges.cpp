@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "GuiChanges.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "support/lstrings.h"
@@ -76,7 +75,7 @@ void GuiChangesDialog::closeEvent(QCloseEvent *e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiChanges::GuiChanges(Dialog & parent)
+GuiChanges::GuiChanges(GuiDialog & parent)
 	: GuiView<GuiChangesDialog>(parent, _("Merge Changes"))
 {
 }
@@ -86,9 +85,9 @@ void GuiChanges::build_dialog()
 {
 	dialog_.reset(new GuiChangesDialog(this));
 
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->acceptPB);
-	bcview().addReadOnly(dialog_->rejectPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->acceptPB);
+	bc().addReadOnly(dialog_->rejectPB);
 }
 
 

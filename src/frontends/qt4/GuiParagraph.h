@@ -59,7 +59,7 @@ class GuiParagraph : public GuiView<GuiParagraphDialog>
 public:
 	friend class GuiParagraphDialog;
 
-	GuiParagraph(Dialog &);
+	GuiParagraph(GuiDialog &);
 	/// parent controller
 	ControlParagraph & controller()
 	{ return static_cast<ControlParagraph &>(this->getController()); }

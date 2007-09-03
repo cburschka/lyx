@@ -42,7 +42,7 @@ class GuiBranch : public GuiView<GuiBranchDialog>
 {
 public:
 	/// Constructor
-	GuiBranch(Dialog &);
+	GuiBranch(GuiDialog &);
 	/// parent controller
 	ControlBranch & controller()
 	{ return static_cast<ControlBranch &>(this->getController()); }

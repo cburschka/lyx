@@ -12,10 +12,7 @@
 #include <config.h>
 
 #include "GuiRef.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
-
-#include "ButtonController.h"
 
 #include "insets/InsetRef.h"
 
@@ -181,7 +178,7 @@ void GuiRefDialog::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiRef::GuiRef(Dialog & parent)
+GuiRef::GuiRef(GuiDialog & parent)
 	: GuiView<GuiRefDialog>(parent, _("Cross-reference")),
 	sort_(false), at_ref_(false)
 {
@@ -192,15 +189,15 @@ void GuiRef::build_dialog()
 {
 	dialog_.reset(new GuiRefDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->refsLW);
-	bcview().addReadOnly(dialog_->sortCB);
-	bcview().addReadOnly(dialog_->nameED);
-	bcview().addReadOnly(dialog_->referenceED);
-	bcview().addReadOnly(dialog_->typeCO);
-	bcview().addReadOnly(dialog_->bufferCO);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->refsLW);
+	bc().addReadOnly(dialog_->sortCB);
+	bc().addReadOnly(dialog_->nameED);
+	bc().addReadOnly(dialog_->referenceED);
+	bc().addReadOnly(dialog_->typeCO);
+	bc().addReadOnly(dialog_->bufferCO);
 
 	restored_buffer_ = -1;
 }
@@ -243,7 +240,7 @@ void GuiRef::update_contents()
 		dialog_->bufferCO->setCurrentIndex(controller().getBufferNum());
 
 	updateRefs();
-	bc().valid(false);
+	bc().setValid(false);
 }
 
 

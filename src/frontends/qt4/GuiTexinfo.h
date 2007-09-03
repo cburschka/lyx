@@ -52,7 +52,7 @@ public:
 	///
 	friend class GuiTexinfoDialog;
 	///
-	GuiTexinfo(Dialog &);
+	GuiTexinfo(GuiDialog &);
 	/// parent controller
 	ControlTexinfo & controller()
 	{ return static_cast<ControlTexinfo &>(this->getController()); }

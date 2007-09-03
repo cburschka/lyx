@@ -47,7 +47,7 @@ public:
 	///
 	friend class GuiLogDialog;
 	///
-	GuiLog(Dialog &);
+	GuiLog(GuiDialog &);
 	/// parent controller
 	ControlLog & controller()
 	{ return static_cast<ControlLog &>(this->getController()); }

@@ -45,7 +45,7 @@ public:
 	///
 	friend class GuiFloatDialog;
 	///
-	GuiFloat(Dialog &);
+	GuiFloat(GuiDialog &);
 	/// parent controller
 	ControlFloat & controller()
 	{ return static_cast<ControlFloat &>(this->getController()); }

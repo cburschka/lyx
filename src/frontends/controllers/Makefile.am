@@ -8,9 +8,8 @@ pkglib_LTLIBRARIES = liblyxcontrollers.la
 
 SOURCEFILES = \
 	Dialog.cpp \
+	Dialog.cpp \
 	Kernel.cpp \
-	BCView.cpp \
-	ButtonController.cpp \
 	ButtonPolicy.cpp \
 	ControlAboutlyx.cpp \
 	ControlBibtex.cpp \
@@ -53,7 +52,6 @@ SOURCEFILES = \
 
 HEADERFILES = \
 	Kernel.h \
-	ButtonController.h \
 	ButtonPolicy.h \
 	ControlAboutlyx.h \
 	ControlBibtex.h \

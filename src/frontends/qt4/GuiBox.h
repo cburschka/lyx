@@ -47,7 +47,7 @@ class GuiBox : public GuiView<GuiBoxDialog>
 {
 public:
 	///
-	GuiBox(Dialog &);
+	GuiBox(GuiDialog &);
 	/// parent controller
 	ControlBox & controller()
 	{ return static_cast<ControlBox &>(this->getController()); }

@@ -45,7 +45,7 @@ class GuiErrorList : public GuiView<GuiErrorListDialog>
 public:
 	friend class GuiErrorListDialog;
 
-	GuiErrorList(Dialog &);
+	GuiErrorList(GuiDialog &);
 	/// parent controller
 	ControlErrorList & controller()
 	{ return static_cast<ControlErrorList &>(this->getController()); }

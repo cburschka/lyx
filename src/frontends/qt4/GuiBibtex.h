@@ -71,7 +71,7 @@ class GuiBibtex : public GuiView<GuiBibtexDialog>
 public:
 	friend class GuiBibtexDialog;
 
-	GuiBibtex(Dialog &);
+	GuiBibtex(GuiDialog &);
 	/// parent controller
 	ControlBibtex & controller()
 	{ return static_cast<ControlBibtex &>(this->getController()); }

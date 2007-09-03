@@ -42,7 +42,7 @@ public:
 	///
 	friend class GuiTabularCreateDialog;
 	///
-	GuiTabularCreate(Dialog &);
+	GuiTabularCreate(GuiDialog &);
 	/// parent controller
 	ControlTabularCreate & controller()
 	{ return static_cast<ControlTabularCreate &>(this->getController()); }

@@ -23,7 +23,6 @@
 namespace lyx {
 namespace frontend {
 
-class ButtonController;
 class LyXView;
 
 /** \c Dialog collects the different parts of a Model-Controller-View
@@ -35,22 +34,12 @@ public:
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
 	Dialog(LyXView & lv, std::string const & name);
+	virtual ~Dialog();
 
 	/** The Dialog's name is the means by which a dialog identifies
 	 *  itself to the kernel.
 	 */
 	std::string const & name() const { return name_; }
-
-	/** \name Buttons
-	 *  These methods are publicly accessible because they are invoked
-	 *  by the View when the user presses... guess what ;-)
-	 */
-	//@{
-	void ApplyButton();
-	void OKButton();
-	void CancelButton();
-	void RestoreButton();
-	//@}
 
 	/** \name Container Access
 	 *  These methods are publicly accessible because they are invoked
@@ -64,6 +53,17 @@ public:
 
 	void hide();
 	bool isVisible() const;
+
+	// Override in GuiDialog
+	virtual void preShow() {}
+	virtual void postShow() {}
+	virtual void preUpdate() {}
+	virtual void postUpdate() {}
+
+	virtual void OkButton() {}
+	virtual void ApplyButton() {}
+	virtual void CancelButton() {}
+	virtual void RestoreButton() {}
 
 	/** This function is called, for example, if the GUI colours
 	 *  have been changed.
@@ -112,17 +112,17 @@ public:
 	 */
 	//@{
 	Controller & controller() const;
-	ButtonController & bc() const;
 	View & view() const;
 	//@}
 
-private:
+
+	virtual void setButtonsValid(bool valid);
+protected:
 	void apply();
 
 	bool is_closing_;
 	Kernel kernel_;
 	std::string name_;
-	boost::scoped_ptr<ButtonController> bc_ptr_;
 	boost::scoped_ptr<Controller> controller_ptr_;
 	boost::scoped_ptr<View> view_ptr_;
 };
@@ -286,9 +286,6 @@ protected:
 
 	Controller & getController() { return p_.controller(); }
 	Controller const & getController() const { return p_.controller(); }
-
-	ButtonController & bc() { return p_.bc(); }
-	ButtonController const & bc() const { return p_.bc(); }
 	//@}
 
 private:

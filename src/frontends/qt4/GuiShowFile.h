@@ -41,7 +41,7 @@ class GuiShowFile : public GuiView<GuiShowFileDialog>
 public:
 	friend class GuiShowFileDialog;
 
-	GuiShowFile(Dialog &);
+	GuiShowFile(GuiDialog &);
 	/// parent controller
 	ControlShowFile & controller()
 	{ return static_cast<ControlShowFile &>(this->getController()); }

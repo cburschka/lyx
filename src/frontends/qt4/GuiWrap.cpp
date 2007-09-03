@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiWrap.h"
-#include "Qt2BC.h"
 
 #include "LengthCombo.h"
 #include "qt_helpers.h"
@@ -75,7 +74,7 @@ void GuiWrapDialog::change_adaptor()
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiWrap::GuiWrap(Dialog & parent)
+GuiWrap::GuiWrap(GuiDialog & parent)
 	: GuiView<GuiWrapDialog>(parent, _("Text Wrap Settings"))
 {
 }
@@ -85,14 +84,14 @@ void GuiWrap::build_dialog()
 {
 	dialog_.reset(new GuiWrapDialog(this));
 
-	bcview().setRestore(dialog_->restorePB);
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setRestore(dialog_->restorePB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
 
-	bcview().addReadOnly(dialog_->widthED);
-	bcview().addReadOnly(dialog_->unitsLC);
-	bcview().addReadOnly(dialog_->valignCO);
+	bc().addReadOnly(dialog_->widthED);
+	bc().addReadOnly(dialog_->unitsLC);
+	bc().addReadOnly(dialog_->valignCO);
 }
 
 

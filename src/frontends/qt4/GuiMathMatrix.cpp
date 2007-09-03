@@ -28,7 +28,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiMathMatrix::GuiMathMatrix(Dialog & parent)
+GuiMathMatrix::GuiMathMatrix(GuiDialog & parent)
 	: GuiView<GuiMathMatrixDialog>(parent, _("Math Matrix"))
 {}
 

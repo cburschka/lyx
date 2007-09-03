@@ -54,7 +54,7 @@ class GuiDelimiter : public GuiView<GuiDelimiterDialog>
 public:
 	friend class GuiDelimiterDialog;
 	///
-	GuiDelimiter(Dialog &);
+	GuiDelimiter(GuiDialog &);
 	/// parent controller
 	ControlMath & controller()
 	{ return static_cast<ControlMath &>(this->getController()); }

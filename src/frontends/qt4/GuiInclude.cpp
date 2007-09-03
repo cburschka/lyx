@@ -15,7 +15,6 @@
 
 #include "GuiInclude.h"
 
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "LyXRC.h"
 
@@ -184,7 +183,7 @@ void GuiIncludeDialog::browseClicked()
 /////////////////////////////////////////////////////////////////////
 
 
-GuiInclude::GuiInclude(Dialog & parent)
+GuiInclude::GuiInclude(GuiDialog & parent)
 	: GuiView<GuiIncludeDialog>(parent, _("Child Document"))
 {}
 
@@ -193,15 +192,15 @@ void GuiInclude::build_dialog()
 {
 	dialog_.reset(new GuiIncludeDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->filenameED);
-	bcview().addReadOnly(dialog_->browsePB);
-	bcview().addReadOnly(dialog_->visiblespaceCB);
-	bcview().addReadOnly(dialog_->typeCO);
-	bcview().addReadOnly(dialog_->listingsED);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->filenameED);
+	bc().addReadOnly(dialog_->browsePB);
+	bc().addReadOnly(dialog_->visiblespaceCB);
+	bc().addReadOnly(dialog_->typeCO);
+	bc().addReadOnly(dialog_->listingsED);
 
-	addCheckedLineEdit(bcview(), dialog_->filenameED, dialog_->filenameLA);
+	bc().addCheckedLineEdit(dialog_->filenameED, dialog_->filenameLA);
 }
 
 

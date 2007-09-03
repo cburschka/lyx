@@ -44,7 +44,7 @@ class GuiCharacter : public GuiView<GuiCharacterDialog>
 public:
 	friend class GuiCharacterDialog;
 
-	GuiCharacter(Dialog &);
+	GuiCharacter(GuiDialog &);
 	/// parent controller
 	ControlCharacter & controller()
 	{ return static_cast<ControlCharacter &>(this->getController()); }

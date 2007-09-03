@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiTabularCreate.h"
-#include "Qt2BC.h"
 #include "EmptyTable.h"
 
 #include <QCloseEvent>
@@ -64,7 +63,7 @@ void GuiTabularCreateDialog::rowsChanged(int)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiTabularCreate::GuiTabularCreate(Dialog & parent)
+GuiTabularCreate::GuiTabularCreate(GuiDialog & parent)
 	: GuiView<GuiTabularCreateDialog>(parent, _("Insert Table"))
 {
 }
@@ -74,8 +73,8 @@ void GuiTabularCreate::build_dialog()
 {
 	dialog_.reset(new GuiTabularCreateDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

@@ -14,12 +14,11 @@
 #include "GuiToc.h"
 
 #include "TocModel.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "debug.h"
 
-#include "controllers/ControlToc.h"
+#include "ControlToc.h"
 
 #include <algorithm>
 

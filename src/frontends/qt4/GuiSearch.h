@@ -50,7 +50,7 @@ public:
 	///
 	friend class GuiSearchDialog;
 	///
-	GuiSearch(Dialog &);
+	GuiSearch(GuiDialog &);
 	/// parent controller
 	ControlSearch & controller()
 	{ return static_cast<ControlSearch &>(this->getController()); }

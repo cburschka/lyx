@@ -11,13 +11,11 @@
 
 #include <config.h>
 
+#include "GuiNomencl.h"
+
 #include "debug.h"
 #include "ControlCommand.h"
 #include "qt_helpers.h"
-
-#include "GuiNomencl.h"
-#include "Qt2BC.h"
-#include "ButtonController.h"
 
 #include <QLabel>
 #include <QLineEdit>
@@ -85,7 +83,7 @@ void GuiNomenclDialog::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiNomencl::GuiNomencl(Dialog & parent, docstring const & title)
+GuiNomencl::GuiNomencl(GuiDialog & parent, docstring const & title)
 	: GuiView<GuiNomenclDialog>(parent, title)
 {
 }
@@ -95,11 +93,11 @@ void GuiNomencl::build_dialog()
 {
 	dialog_.reset(new GuiNomenclDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->symbolED);
-	bcview().addReadOnly(dialog_->descriptionTE);
-	bcview().addReadOnly(dialog_->prefixED);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->symbolED);
+	bc().addReadOnly(dialog_->descriptionTE);
+	bc().addReadOnly(dialog_->prefixED);
 }
 
 
@@ -111,7 +109,7 @@ void GuiNomencl::update_contents()
 	description.replace("\\\\","\n");
 	dialog_->descriptionTE->setPlainText(description);
 
-	bc().valid(isValid());
+	bc().setValid(isValid());
 }
 
 

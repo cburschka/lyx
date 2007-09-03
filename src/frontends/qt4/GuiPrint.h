@@ -46,7 +46,7 @@ public:
 	///
 	friend class GuiPrintDialog;
 	///
-	GuiPrint(Dialog &);
+	GuiPrint(GuiDialog &);
 	/// parent controller
 	ControlPrint & controller()
 	{ return static_cast<ControlPrint &>(this->getController()); }

@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "GuiERT.h"
-#include "Qt2BC.h"
+#include "gettext.h"
 
 #include <QRadioButton>
 #include <QPushButton>
@@ -58,7 +58,7 @@ void GuiERTDialog::change_adaptor()
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiERT::GuiERT(Dialog & parent)
+GuiERT::GuiERT(GuiDialog & parent)
 	: GuiView<GuiERTDialog>(parent, _("TeX Code Settings"))
 {
 }
@@ -68,8 +68,8 @@ void GuiERT::build_dialog()
 {
 	dialog_.reset(new GuiERTDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

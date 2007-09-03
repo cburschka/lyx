@@ -11,8 +11,6 @@
 #include <config.h>
 
 #include "GuiEmbeddedFiles.h"
-#include "Qt2BC.h"
-
 #include "debug.h"
 
 namespace lyx {

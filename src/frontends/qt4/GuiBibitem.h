@@ -42,7 +42,7 @@ class GuiBibitem : public GuiView<GuiBibitemDialog>
 {
 public:
 	///
-	GuiBibitem(Dialog &);
+	GuiBibitem(GuiDialog &);
 	/// parent controller
 	ControlCommand & controller()
 	{ return static_cast<ControlCommand &>(this->getController()); }

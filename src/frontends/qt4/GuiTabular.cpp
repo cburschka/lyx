@@ -15,13 +15,9 @@
 #include "GuiTabular.h"
 
 #include "GuiSetBorder.h"
-#include "Qt2BC.h"
-
 #include "LengthCombo.h"
 #include "Validator.h"
 #include "qt_helpers.h"
-
-#include "controllers/ButtonController.h"
 
 #include "support/convert.h"
 
@@ -516,7 +512,7 @@ void GuiTabularDialog::ltLastFooterEmpty_clicked()
 /////////////////////////////////////////////////////////////////////
 
 
-GuiTabular::GuiTabular(Dialog & parent)
+GuiTabular::GuiTabular(GuiDialog & parent)
 	: GuiView<GuiTabularDialog>(parent, _("Table Settings"))
 {
 }
@@ -526,57 +522,53 @@ void GuiTabular::build_dialog()
 {
 	dialog_.reset(new GuiTabularDialog(this));
 
-	bcview().setCancel(dialog_->closePB);
+	bc().setCancel(dialog_->closePB);
 
-	bcview().addReadOnly(dialog_->topspaceED);
-	bcview().addReadOnly(dialog_->topspaceUnit);
-	bcview().addReadOnly(dialog_->topspaceCO);
-	bcview().addReadOnly(dialog_->bottomspaceED);
-	bcview().addReadOnly(dialog_->bottomspaceUnit);
-	bcview().addReadOnly(dialog_->bottomspaceCO);
-	bcview().addReadOnly(dialog_->interlinespaceED);
-	bcview().addReadOnly(dialog_->interlinespaceUnit);
-	bcview().addReadOnly(dialog_->interlinespaceCO);
-	bcview().addReadOnly(dialog_->borderDefaultRB);
-	bcview().addReadOnly(dialog_->booktabsRB);
+	bc().addReadOnly(dialog_->topspaceED);
+	bc().addReadOnly(dialog_->topspaceUnit);
+	bc().addReadOnly(dialog_->topspaceCO);
+	bc().addReadOnly(dialog_->bottomspaceED);
+	bc().addReadOnly(dialog_->bottomspaceUnit);
+	bc().addReadOnly(dialog_->bottomspaceCO);
+	bc().addReadOnly(dialog_->interlinespaceED);
+	bc().addReadOnly(dialog_->interlinespaceUnit);
+	bc().addReadOnly(dialog_->interlinespaceCO);
+	bc().addReadOnly(dialog_->borderDefaultRB);
+	bc().addReadOnly(dialog_->booktabsRB);
 
-	bcview().addReadOnly(dialog_->multicolumnCB);
-	bcview().addReadOnly(dialog_->rotateCellCB);
-	bcview().addReadOnly(dialog_->rotateTabularCB);
-	bcview().addReadOnly(dialog_->specialAlignmentED);
-	bcview().addReadOnly(dialog_->widthED);
-	bcview().addReadOnly(dialog_->widthUnit);
-	bcview().addReadOnly(dialog_->hAlignCB);
-	bcview().addReadOnly(dialog_->vAlignCB);
-	bcview().addReadOnly(dialog_->borderSetPB);
-	bcview().addReadOnly(dialog_->borderUnsetPB);
-	bcview().addReadOnly(dialog_->borders);
-	bcview().addReadOnly(dialog_->longTabularCB);
-	bcview().addReadOnly(dialog_->headerStatusCB);
-	bcview().addReadOnly(dialog_->headerBorderAboveCB);
-	bcview().addReadOnly(dialog_->headerBorderBelowCB);
-	bcview().addReadOnly(dialog_->firstheaderStatusCB);
-	bcview().addReadOnly(dialog_->firstheaderBorderAboveCB);
-	bcview().addReadOnly(dialog_->firstheaderBorderBelowCB);
-	bcview().addReadOnly(dialog_->firstheaderNoContentsCB);
-	bcview().addReadOnly(dialog_->footerStatusCB);
-	bcview().addReadOnly(dialog_->footerBorderAboveCB);
-	bcview().addReadOnly(dialog_->footerBorderBelowCB);
-	bcview().addReadOnly(dialog_->lastfooterStatusCB);
-	bcview().addReadOnly(dialog_->lastfooterBorderAboveCB);
-	bcview().addReadOnly(dialog_->lastfooterBorderBelowCB);
-	bcview().addReadOnly(dialog_->lastfooterNoContentsCB);
-	bcview().addReadOnly(dialog_->newpageCB);
+	bc().addReadOnly(dialog_->multicolumnCB);
+	bc().addReadOnly(dialog_->rotateCellCB);
+	bc().addReadOnly(dialog_->rotateTabularCB);
+	bc().addReadOnly(dialog_->specialAlignmentED);
+	bc().addReadOnly(dialog_->widthED);
+	bc().addReadOnly(dialog_->widthUnit);
+	bc().addReadOnly(dialog_->hAlignCB);
+	bc().addReadOnly(dialog_->vAlignCB);
+	bc().addReadOnly(dialog_->borderSetPB);
+	bc().addReadOnly(dialog_->borderUnsetPB);
+	bc().addReadOnly(dialog_->borders);
+	bc().addReadOnly(dialog_->longTabularCB);
+	bc().addReadOnly(dialog_->headerStatusCB);
+	bc().addReadOnly(dialog_->headerBorderAboveCB);
+	bc().addReadOnly(dialog_->headerBorderBelowCB);
+	bc().addReadOnly(dialog_->firstheaderStatusCB);
+	bc().addReadOnly(dialog_->firstheaderBorderAboveCB);
+	bc().addReadOnly(dialog_->firstheaderBorderBelowCB);
+	bc().addReadOnly(dialog_->firstheaderNoContentsCB);
+	bc().addReadOnly(dialog_->footerStatusCB);
+	bc().addReadOnly(dialog_->footerBorderAboveCB);
+	bc().addReadOnly(dialog_->footerBorderBelowCB);
+	bc().addReadOnly(dialog_->lastfooterStatusCB);
+	bc().addReadOnly(dialog_->lastfooterBorderAboveCB);
+	bc().addReadOnly(dialog_->lastfooterBorderBelowCB);
+	bc().addReadOnly(dialog_->lastfooterNoContentsCB);
+	bc().addReadOnly(dialog_->newpageCB);
 
 	// initialize the length validator
-	addCheckedLineEdit(bcview(), dialog_->widthED,
-		dialog_->fixedWidthColLA);
-	addCheckedLineEdit(bcview(), dialog_->topspaceED,
-		dialog_->topspaceLA);
-	addCheckedLineEdit(bcview(), dialog_->bottomspaceED,
-		dialog_->bottomspaceLA);
-	addCheckedLineEdit(bcview(), dialog_->interlinespaceED,
-		dialog_->interlinespaceLA);
+	bc().addCheckedLineEdit(dialog_->widthED, dialog_->fixedWidthColLA);
+	bc().addCheckedLineEdit(dialog_->topspaceED, dialog_->topspaceLA);
+	bc().addCheckedLineEdit(dialog_->bottomspaceED, dialog_->bottomspaceLA);
+	bc().addCheckedLineEdit(dialog_->interlinespaceED, dialog_->interlinespaceLA);
 }
 
 
@@ -668,7 +660,8 @@ void GuiTabular::update_contents()
 	bool const isReadonly = bc().policy().isReadOnly();
 	dialog_->specialAlignmentED->setEnabled(!isReadonly);
 
-	Length::UNIT default_unit = controller().useMetricUnits() ? Length::CM : Length::IN;
+	Length::UNIT default_unit =
+		controller().useMetricUnits() ? Length::CM : Length::IN;
 
 	dialog_->borderDefaultRB->setChecked(!tabular.useBookTabs());
 	dialog_->booktabsRB->setChecked(tabular.useBookTabs());

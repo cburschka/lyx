@@ -15,7 +15,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "ButtonController.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "Lexer.h"
@@ -117,7 +116,7 @@ bool ControlParagraph::initialiseParams(string const & data)
 	// If "update", then set the activation status of the button controller
 	if (action > 0) {
 		bool const accept = action == 1;
-		dialog().bc().valid(accept);
+		dialog().setButtonsValid(accept);
 	}
 	return true;
 }

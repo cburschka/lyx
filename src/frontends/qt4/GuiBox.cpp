@@ -16,7 +16,6 @@
 
 #include "LengthCombo.h"
 #include "qt_helpers.h"
-#include "Qt2BC.h"
 #include "lengthcommon.h"
 #include "LyXRC.h" // to set the default length values
 #include "Validator.h"
@@ -142,7 +141,7 @@ void GuiBoxDialog::restoreClicked()
 //////////////////////////////////////////////////////////////////
 
 
-GuiBox::GuiBox(Dialog & parent)
+GuiBox::GuiBox(GuiDialog & parent)
 	: GuiView<GuiBoxDialog>(parent, _("Box Settings"))
 {}
 
@@ -162,24 +161,24 @@ void GuiBox::build_dialog()
 	for (unsigned int i = 1; i < gui_names_spec_.size(); ++i)
 		dialog_->heightUnitsLC->addItem(toqstr(gui_names_spec_[i]));
 
-	bcview().addReadOnly(dialog_->typeCO);
-	bcview().addReadOnly(dialog_->innerBoxCO);
-	bcview().addReadOnly(dialog_->valignCO);
-	bcview().addReadOnly(dialog_->ialignCO);
-	bcview().addReadOnly(dialog_->halignCO);
-	bcview().addReadOnly(dialog_->widthED);
-	bcview().addReadOnly(dialog_->heightED);
-	bcview().addReadOnly(dialog_->widthUnitsLC);
-	bcview().addReadOnly(dialog_->heightUnitsLC);
+	bc().addReadOnly(dialog_->typeCO);
+	bc().addReadOnly(dialog_->innerBoxCO);
+	bc().addReadOnly(dialog_->valignCO);
+	bc().addReadOnly(dialog_->ialignCO);
+	bc().addReadOnly(dialog_->halignCO);
+	bc().addReadOnly(dialog_->widthED);
+	bc().addReadOnly(dialog_->heightED);
+	bc().addReadOnly(dialog_->widthUnitsLC);
+	bc().addReadOnly(dialog_->heightUnitsLC);
 
-	bcview().setRestore(dialog_->restorePB);
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setRestore(dialog_->restorePB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
 
 	// initialize the length validator
-	addCheckedLineEdit(bcview(), dialog_->widthED, dialog_->widthLA);
-	addCheckedLineEdit(bcview(), dialog_->heightED, dialog_->heightLA);
+	bc().addCheckedLineEdit(dialog_->widthED, dialog_->widthLA);
+	bc().addCheckedLineEdit(dialog_->heightED, dialog_->heightLA);
 }
 
 

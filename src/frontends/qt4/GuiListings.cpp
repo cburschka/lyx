@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "GuiListings.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "insets/InsetListingsParams.h"
 #include "debug.h"
@@ -408,7 +407,7 @@ void GuiListingsDialog::on_languageCO_currentIndexChanged(int index)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiListings::GuiListings(Dialog & parent)
+GuiListings::GuiListings(GuiDialog & parent)
 	: GuiView<GuiListingsDialog>(parent, _("Program Listing Settings"))
 {
 }
@@ -418,9 +417,9 @@ void GuiListings::build_dialog()
 {
 	dialog_.reset(new GuiListingsDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setApply(dialog_->applyPB);
-	bcview().setCancel(dialog_->closePB);
+	bc().setOK(dialog_->okPB);
+	bc().setApply(dialog_->applyPB);
+	bc().setCancel(dialog_->closePB);
 	dialog_->listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 

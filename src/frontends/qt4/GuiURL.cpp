@@ -11,9 +11,7 @@
 #include <config.h>
 
 #include "GuiURL.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "ButtonController.h"
 
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -56,7 +54,7 @@ void GuiURLDialog::closeEvent(QCloseEvent * e)
 
 
 
-UrlView::UrlView(Dialog & parent)
+UrlView::UrlView(GuiDialog & parent)
 	: GuiView<GuiURLDialog>(parent, _("URL"))
 {
 }
@@ -66,11 +64,11 @@ void UrlView::build_dialog()
 {
 	dialog_.reset(new GuiURLDialog(this));
 
-	bcview().setOK(dialog_->okPB);
-	bcview().setCancel(dialog_->closePB);
-	bcview().addReadOnly(dialog_->urlED);
-	bcview().addReadOnly(dialog_->nameED);
-	bcview().addReadOnly(dialog_->hyperlinkCB);
+	bc().setOK(dialog_->okPB);
+	bc().setCancel(dialog_->closePB);
+	bc().addReadOnly(dialog_->urlED);
+	bc().addReadOnly(dialog_->nameED);
+	bc().addReadOnly(dialog_->hyperlinkCB);
 }
 
 
@@ -82,7 +80,7 @@ void UrlView::update_contents()
 	dialog_->nameED->setText(toqstr(params["name"]));
 	dialog_->hyperlinkCB->setChecked(params.getCmdName() != "url");
 
-	bc().valid(isValid());
+	bc().setValid(isValid());
 }
 
 

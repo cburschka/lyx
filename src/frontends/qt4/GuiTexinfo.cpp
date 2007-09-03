@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "GuiTexinfo.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "support/filetools.h"
@@ -122,7 +121,7 @@ void GuiTexinfoDialog::enableViewPB()
 /////////////////////////////////////////////////////////////////////
 
 
-GuiTexinfo::GuiTexinfo(Dialog & parent)
+GuiTexinfo::GuiTexinfo(GuiDialog & parent)
 	: GuiView<GuiTexinfoDialog>(parent, _("TeX Information")),
 	  warningPosted(false), activeStyle(ControlTexinfo::cls)
 {
@@ -135,7 +134,7 @@ void GuiTexinfo::build_dialog()
 
 	updateStyles(ControlTexinfo::cls);
 
-	bcview().setCancel(dialog_->closePB);
+	bc().setCancel(dialog_->closePB);
 }
 
 

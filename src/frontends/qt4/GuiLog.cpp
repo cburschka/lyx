@@ -107,7 +107,7 @@ void LogHighlighter::highlightBlock(QString const & text)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiLog::GuiLog(Dialog & parent)
+GuiLog::GuiLog(GuiDialog & parent)
 	:  GuiView<GuiLogDialog>(parent, docstring())
 {}
 
