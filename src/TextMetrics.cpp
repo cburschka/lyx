@@ -261,7 +261,7 @@ Font TextMetrics::getDisplayFont(pit_type pit, pos_type pos) const
 
 bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 {
-	if (!lyxrc.rtl_support && !sl.text())
+	if (!lyxrc.rtl_support || !sl.text())
 		return false;
 
 	int correction = 0;
