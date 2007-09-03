@@ -55,7 +55,7 @@ public:
 	ControlMath const & controller() const
 	{ return static_cast<ControlMath const &>(this->getController()); }
 private:
-	virtual void apply() {}
+	virtual void applyView() {}
 	virtual void update_contents() {}
 	/// Build the dialog.
 	virtual void build_dialog();

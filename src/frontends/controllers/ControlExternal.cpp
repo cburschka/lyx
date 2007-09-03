@@ -92,7 +92,7 @@ void ControlExternal::editExternal()
 {
 	BOOST_ASSERT(params_.get());
 
-	dialog().view().apply();
+	dialog().view().applyView();
 	string const lfun =
 		InsetExternalMailer::params2string(params(), kernel().buffer());
 	kernel().dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));

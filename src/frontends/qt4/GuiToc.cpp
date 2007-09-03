@@ -114,13 +114,13 @@ bool GuiToc::initialiseParams(std::string const & data)
 {
 	if (!ControlToc::initialiseParams(data))
 		return false;
-	update();
+	updateView();
 	modelReset();
 	return true;
 }
 
 
-void GuiToc::update()
+void GuiToc::updateView()
 {
 	toc_models_.clear();
 	TocList::const_iterator it = tocs().begin();

@@ -22,7 +22,8 @@ namespace frontend {
 
 class GuiToc;
 
-class TocWidget : public QWidget, public Ui::TocUi {
+class TocWidget : public QWidget, public Ui::TocUi
+{
 	Q_OBJECT
 public:
 	TocWidget(GuiToc * form, QWidget * parent = 0);

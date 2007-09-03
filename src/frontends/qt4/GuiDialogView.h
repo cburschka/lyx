@@ -48,13 +48,13 @@ protected:
 	/// Build the dialog
 	virtual void build();
 	/// Hide the dialog.
-	virtual void hide();
+	virtual void hideView();
 	/// Create the dialog if necessary, update it and display it.
-	virtual void show();
+	virtual void showView();
 	/// update the dialog's contents
 	virtual void update_contents() = 0;
 	///
-	virtual bool isVisible() const;
+	virtual bool isVisibleView() const;
 	/// is the dialog currently valid ?
 	virtual bool isValid();
 
@@ -91,7 +91,7 @@ protected:
 	virtual ~GuiView() {}
 
 	/// update the dialog
-	virtual void update() {
+	virtual void updateView() {
 		dialog_->setUpdatesEnabled(false);
 
 		// protect the BC from unwarranted state transitions

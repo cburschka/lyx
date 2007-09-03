@@ -48,10 +48,10 @@ GuiBranches::GuiBranches(QWidget * parent, Qt::WFlags f)
 void GuiBranches::update(BufferParams const & params)
 {
 	branchlist_ = params.branchlist();
-	update();
+	updateView();
 }
 
-void GuiBranches::update()
+void GuiBranches::updateView()
 {
 	// store the selected branch
 	QTreeWidgetItem * item = branchesTW->currentItem();
@@ -100,7 +100,7 @@ void GuiBranches::on_addBranchPB_pressed()
 	if (!new_branch.isEmpty()) {
 		branchlist_.add(qstring_to_ucs4(new_branch));
 		newBranchLE->clear();
-		update();
+		updateView();
 	}
 }
 
@@ -115,7 +115,7 @@ void GuiBranches::on_removePB_pressed()
 	if (!sel_branch.isEmpty()) {
 		branchlist_.remove(qstring_to_ucs4(sel_branch));
 		newBranchLE->clear();
-		update();
+		updateView();
 	}
 }
 
@@ -146,7 +146,7 @@ void GuiBranches::toggleBranch(QTreeWidgetItem * item)
 		Branch * branch = branchlist_.find(qstring_to_ucs4(sel_branch));
 		if (branch && branch->setSelected(!selected)) {
 			newBranchLE->clear();
-			update();
+			updateView();
 		}
 	}
 }
@@ -177,7 +177,7 @@ void GuiBranches::toggleColor(QTreeWidgetItem * item)
 			// add the color to the branchlist
 			branch->setColor(fromqstr(ncol.name()));
 			newBranchLE->clear();
-			update();
+			updateView();
 		}
 	}
 }

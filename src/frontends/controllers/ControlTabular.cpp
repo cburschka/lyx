@@ -142,14 +142,14 @@ void ControlTabular::setWidth(string const & width)
 	else
 		set(Tabular::SET_PWIDTH, width);
 
-	dialog().view().update();
+	dialog().view().updateView();
 }
 
 
 void ControlTabular::toggleMultiColumn()
 {
 	set(Tabular::MULTICOLUMN);
-	dialog().view().update();
+	dialog().view().updateView();
 }
 
 

@@ -78,7 +78,7 @@ void GuiTabularCreate::build_dialog()
 }
 
 
-void GuiTabularCreate::apply()
+void GuiTabularCreate::applyView()
 {
 	controller().params().first = dialog_->rowsSB->value();
 	controller().params().second = dialog_->columnsSB->value();

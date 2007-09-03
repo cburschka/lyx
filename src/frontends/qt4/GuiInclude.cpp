@@ -68,7 +68,7 @@ GuiIncludeDialog::GuiIncludeDialog(GuiInclude * form)
 }
 
 
-void GuiIncludeDialog::show()
+void GuiIncludeDialog::showView()
 {
 	QDialog::show();
 }
@@ -275,7 +275,7 @@ void GuiInclude::update_contents()
 }
 
 
-void GuiInclude::apply()
+void GuiInclude::applyView()
 {
 	InsetCommandParams params = controller().params();
 

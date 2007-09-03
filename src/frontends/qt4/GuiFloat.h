@@ -54,7 +54,7 @@ public:
 	{ return static_cast<ControlFloat const &>(this->getController()); }
 private:
 	/// Apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// update
 	virtual void update_contents();
 	/// build the dialog

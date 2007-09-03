@@ -243,22 +243,22 @@ public:
 	 *  accompanying Controller in preparation for their dispatch to
 	 *  the LyX kernel.
 	 */
-	virtual void apply() = 0;
+	virtual void applyView() = 0;
 
 	/// Hide the dialog from sight
-	virtual void hide() = 0;
+	virtual void hideView() = 0;
 
 	/// Redraw the dialog (e.g. if the colors have been remapped).
-	virtual void redraw() {}
+	virtual void redrawView() {}
 
 	/// Create the dialog if necessary, update it and display it.
-	virtual void show() = 0;
+	virtual void showView() = 0;
 
 	/// Update the display of the dialog whilst it is still visible.
-	virtual void update() = 0;
+	virtual void updateView() = 0;
 
 	/// \return true if the dialog is visible.
-	virtual bool isVisible() const = 0;
+	virtual bool isVisibleView() const = 0;
 	//@}
 
 	/** Defaults to nothing. Can be used by the Controller, however, to
@@ -266,12 +266,12 @@ public:
 	 *  dialog therefore needs updating.
 	 *  \param id identifies what should be updated.
 	 */
-	virtual void partialUpdate(int id);
+	virtual void partialUpdateView(int id);
 
 	/// sets the title of the dialog (window caption)
-	void setTitle(docstring const &);
+	void setViewTitle(docstring const &);
 	/// gets the title of the dialog (window caption)
-	docstring const & getTitle() const;
+	docstring const & getViewTitle() const;
 
 	/** \name View Access
 	 *  Enable the derived classes to access the other parts of the whole.

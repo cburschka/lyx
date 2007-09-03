@@ -331,7 +331,7 @@ void GuiBibtex::update_contents()
 }
 
 
-void GuiBibtex::apply()
+void GuiBibtex::applyView()
 {
 	docstring dbs(qstring_to_ucs4(dialog_->databaseLW->item(0)->text()));
 

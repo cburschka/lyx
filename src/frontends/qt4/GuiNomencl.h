@@ -31,7 +31,7 @@ class GuiNomenclDialog : public QDialog, public Ui::NomenclUi
 	Q_OBJECT
 public:
 	GuiNomenclDialog(GuiNomencl * form);
-	virtual void show();
+	virtual void showView();
 protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void reject();
@@ -58,7 +58,7 @@ protected:
 	virtual bool isValid();
 private:
 	/// Apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// update
 	virtual void update_contents();
 	/// build the dialog

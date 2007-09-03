@@ -83,7 +83,7 @@ void GuiFloat::update_contents()
 }
 
 
-void GuiFloat::apply()
+void GuiFloat::applyView()
 {
 	InsetFloatParams & params = controller().params();
 

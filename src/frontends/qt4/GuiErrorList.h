@@ -56,7 +56,7 @@ private:
 	/// select an entry
 	void select(QListWidgetItem *);
 	/// required apply
-	virtual void apply() {}
+	virtual void applyView() {}
 	/// build dialog
 	virtual void build_dialog();
 	/// update contents

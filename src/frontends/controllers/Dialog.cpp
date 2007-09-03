@@ -34,7 +34,7 @@ Dialog::~Dialog()
 {}
 
 
-void Dialog::setButtonsValid(bool valid)
+void Dialog::setButtonsValid(bool /*valid*/)
 {}
 
 
@@ -51,7 +51,7 @@ void Dialog::show(string const & data)
 	}
 
 	preShow();
-	view().show();
+	view().showView();
 	postShow();
 }
 
@@ -68,7 +68,7 @@ void Dialog::update(string const & data)
 	}
 
 	preUpdate();
-	view().update();
+	view().updateView();
 	postUpdate();
 }
 
@@ -80,11 +80,11 @@ void Dialog::checkStatus()
 
 void Dialog::hide()
 {
-	if (!view().isVisible())
+	if (!view().isVisibleView())
 		return;
 
 	controller().clearParams();
-	view().hide();
+	view().hideView();
 	kernel().disconnect(name());
 }
 
@@ -98,26 +98,26 @@ void Dialog::apply()
 			return;
 	}
 
-	view().apply();
+	view().applyView();
 	controller().dispatchParams();
 
 	if (controller().disconnectOnApply() && !is_closing_) {
 		kernel().disconnect(name());
 		controller().initialiseParams(string());
-		view().update();
+		view().updateView();
 	}
 }
 
 
 bool Dialog::isVisible() const
 {
-	return view().isVisible();
+	return view().isVisibleView();
 }
 
 
 void Dialog::redraw()
 {
-	view().redraw();
+	view().redrawView();
 }
 
 
@@ -168,19 +168,19 @@ Dialog::View & Dialog::view() const
 }
 
 
-void Dialog::View::setTitle(docstring const & newtitle)
+void Dialog::View::setViewTitle(docstring const & newtitle)
 {
 	title_ = newtitle;
 }
 
 
-docstring const & Dialog::View::getTitle() const
+docstring const & Dialog::View::getViewTitle() const
 {
 	return title_;
 }
 
 
-void Dialog::View::partialUpdate(int)
+void Dialog::View::partialUpdateView(int)
 {}
 
 } // namespace frontend

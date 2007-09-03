@@ -242,7 +242,7 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-	void update();
+	void updateView();
 
 private Q_SLOTS:
 	void switch_copierLB(int nr);
@@ -266,7 +266,7 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-	void update();
+	void updateView();
 Q_SIGNALS:
 	void formatsChanged();
 private:
@@ -374,7 +374,7 @@ public:
 	{ return static_cast<ControlPrefs const &>(this->getController()); }
 private:
 	/// Apply changes
-	virtual void apply();
+	virtual void applyView();
 
 	/// update (do we need this?)
 	virtual void update_contents();

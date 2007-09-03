@@ -56,7 +56,7 @@ public:
 	{ return static_cast<ControlLog const &>(this->getController()); }
 private:
 	/// Apply changes
-	virtual void apply() {}
+	virtual void applyView() {}
 	/// update
 	virtual void update_contents();
 	/// build the dialog

@@ -751,7 +751,7 @@ bool GuiViewBase::focusNextPrevChild(bool /*next*/)
 }
 
 
-void GuiViewBase::show()
+void GuiViewBase::showView()
 {
 	QMainWindow::setWindowTitle(qt_("LyX"));
 	QMainWindow::show();

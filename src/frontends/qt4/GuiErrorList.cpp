@@ -90,7 +90,7 @@ void GuiErrorList::select(QListWidgetItem * wi)
 
 void GuiErrorList::update_contents()
 {
-	setTitle(from_utf8(controller().name()));
+	setViewTitle(from_utf8(controller().name()));
 	dialog_->errorsLW->clear();
 	dialog_->descriptionTB->setPlainText(QString());
 

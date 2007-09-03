@@ -72,7 +72,7 @@ private:
 	void replace();
 
 	/// Apply changes
-	virtual void apply() {}
+	virtual void applyView() {}
 	///
 	virtual void update_contents();
 	/// build the dialog

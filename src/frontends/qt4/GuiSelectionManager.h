@@ -49,7 +49,7 @@ class GuiSelectionManager : public QObject {
 		/// Sets the state of the various push buttons, depending upon the
 		/// state of the widgets. (E.g., "delete" is enabled only if the
 		/// selection is non-empty.)
-		virtual void update();
+		virtual void updateView();
 		
 		/// Not strictly a matter of focus, which may be elsewhere, but
 		/// whether selectedLV is `more focused' than availableLV. Intended
@@ -65,9 +65,9 @@ class GuiSelectionManager : public QObject {
 		///dialog to want to update---the focused subwidget or selected item.
 		///(Specifically, it is emitted by *_PB_clicked() and *_LV_clicked.)
 		///NOTE: No automatic update of the button state is done here. If you
-		///just want to do that, connect updateHook() to update(). Much of the
+		///just want to do that, connect updateHook() to updateView(). Much of the
 		///time, though, you will want to do a bit more processing first, so
-		///you can connect to some other function that itself calls update().
+		///you can connect to some other function that itself calls updateView().
 		void updateHook();
 		///Emitted on Ctrl-Enter in the availableLV. Intended to be connected 
 		///to an "OK" event in the parent dialog.

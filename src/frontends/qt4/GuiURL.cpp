@@ -84,7 +84,7 @@ void UrlView::update_contents()
 }
 
 
-void UrlView::apply()
+void UrlView::applyView()
 {
 	InsetCommandParams & params = controller().params();
 

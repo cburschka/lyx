@@ -120,7 +120,7 @@ void GuiSendto::update_contents()
 }
 
 
-void GuiSendto::apply()
+void GuiSendto::applyView()
 {
 	int const line(dialog_->formatLW->currentRow());
 

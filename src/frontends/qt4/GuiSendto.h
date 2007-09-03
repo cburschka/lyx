@@ -64,7 +64,7 @@ protected:
 	virtual bool isValid();
 private:
 	/// Apply from dialog
-	virtual void apply();
+	virtual void applyView();
 	/// Update the dialog
 	virtual void update_contents();
 	/// Build the dialog

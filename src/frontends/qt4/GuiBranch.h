@@ -53,7 +53,7 @@ private:
 	friend class GuiBranchDialog;
 
 	///  Apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// Build the dialog
 	virtual void build_dialog();
 	/// Update dialog before showing it

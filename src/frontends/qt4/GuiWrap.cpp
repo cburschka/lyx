@@ -95,7 +95,7 @@ void GuiWrap::build_dialog()
 }
 
 
-void GuiWrap::apply()
+void GuiWrap::applyView()
 {
 	double const value = convert<double>(fromqstr(dialog_->widthED->text()));
 	Length::UNIT unit = dialog_->unitsLC->currentLengthItem();

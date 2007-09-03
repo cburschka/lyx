@@ -45,7 +45,7 @@ public:
 	{ return static_cast<ControlAboutlyx const &>(this->getController()); }
 private:
 	/// not needed
-	virtual void apply() {}
+	virtual void applyView() {}
 	/// not needed
 	virtual void update_contents() {}
 	// build the dialog

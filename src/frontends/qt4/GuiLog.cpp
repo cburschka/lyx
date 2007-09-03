@@ -129,7 +129,7 @@ void GuiLog::build_dialog()
 
 void GuiLog::update_contents()
 {
-	setTitle(controller().title());
+	setViewTitle(controller().title());
 
 	std::ostringstream ss;
 	controller().getContents(ss);

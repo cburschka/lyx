@@ -32,7 +32,7 @@ class GuiRefDialog : public QDialog, public Ui::RefUi {
 public:
 	GuiRefDialog(GuiRef * form);
 
-	virtual void show();
+	virtual void showView();
 
 public Q_SLOTS:
 	void changed_adaptor();
@@ -70,7 +70,7 @@ protected:
 
 private:
 	/// apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// build dialog
 	virtual void build_dialog();
 	/// update dialog

@@ -142,7 +142,7 @@ void GuiSpellchecker::build_dialog()
 
 void GuiSpellchecker::update_contents()
 {
-	if (isVisible() || controller().exitEarly())
+	if (isVisibleView() || controller().exitEarly())
 		controller().check();
 }
 

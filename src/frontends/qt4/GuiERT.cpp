@@ -73,7 +73,7 @@ void GuiERT::build_dialog()
 }
 
 
-void GuiERT::apply()
+void GuiERT::applyView()
 {
 	if (dialog_->openRB->isChecked())
 		controller().setStatus(Inset::Open);

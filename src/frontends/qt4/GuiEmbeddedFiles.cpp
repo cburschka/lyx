@@ -83,7 +83,7 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked()
 }
 
 
-void GuiEmbeddedFilesDialog::update()
+void GuiEmbeddedFilesDialog::updateView()
 {
 	filesLW->clear();
 	

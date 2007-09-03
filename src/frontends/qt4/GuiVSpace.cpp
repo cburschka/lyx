@@ -209,7 +209,7 @@ void GuiVSpace::build_dialog()
 }
 
 
-void GuiVSpace::apply()
+void GuiVSpace::applyView()
 {
 	// spacing
 	// If a vspace choice is "Length" but there's no text in

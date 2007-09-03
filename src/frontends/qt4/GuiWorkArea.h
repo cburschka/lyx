@@ -36,9 +36,6 @@ class QPaintEvent;
 namespace lyx {
 namespace frontend {
 
-class GuiView;
-class QLPainter;
-
 /// for emulating triple click
 class double_click {
 public:
@@ -116,7 +113,6 @@ public:
 	virtual void removeCursor();
 
 private:
-	void doGreyOut(QLPainter & pain);
 	///
 	void focusInEvent(QFocusEvent *);
 	///

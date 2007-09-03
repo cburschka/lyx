@@ -88,7 +88,7 @@ void GuiTexinfoDialog::viewClicked()
 }
 
 
-void GuiTexinfoDialog::update()
+void GuiTexinfoDialog::updateView()
 {
 	switch (whatStyleCO->currentIndex()) {
 	case 0:

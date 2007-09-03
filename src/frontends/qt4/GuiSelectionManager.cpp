@@ -67,7 +67,7 @@ GuiSelectionManager::GuiSelectionManager(
 }
 
 
-void GuiSelectionManager::update()
+void GuiSelectionManager::updateView()
 {
 	int const arows = availableLV->model()->rowCount();
 	QModelIndexList const availSels = 

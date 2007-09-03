@@ -54,7 +54,7 @@ public:
 	{ return static_cast<ControlNote const &>(this->getController()); }
 private:
 	///  Apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// Build the dialog
 	virtual void build_dialog();
 	/// Update dialog before showing it

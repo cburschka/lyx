@@ -37,7 +37,7 @@ public:
 	/// \c ControlToc inherited method.
 	virtual bool initialiseParams(std::string const & data);
 	///
-	void update();
+	void updateView();
 	///
 	bool canOutline(int type) const;
 

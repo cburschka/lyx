@@ -56,7 +56,7 @@ void GuiDialog::RestoreButton()
 {
 	// Tell the kernel that a request to refresh the dialog's contents
 	// has been received. It's up to the kernel to supply the necessary
-	// info by calling GuiDialog::update().
+	// info by calling GuiDialog::updateView().
 	kernel().updateDialog(name_);
 	bc().restore();
 }

@@ -30,7 +30,7 @@ public:
 
 	void updateLists();
 
-	virtual void show();
+	virtual void showView();
 	/// validate listings parameters and return an error message, if any
 	docstring validate_listings_params();
 protected Q_SLOTS:
@@ -67,7 +67,7 @@ protected:
 	virtual bool isValid();
 private:
 	/// Apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// update
 	virtual void update_contents();
 	/// build the dialog

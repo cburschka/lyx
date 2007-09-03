@@ -134,7 +134,7 @@ public:
 	{ return static_cast<ControlDocument const &>(this->getController()); }
 private:
 	/// Apply changes
-	void apply();
+	void applyView();
 	/// update
 	void update_contents();
 	/// build the dialog

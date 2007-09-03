@@ -40,23 +40,23 @@ public:
 
 	virtual ~GuiCitationDialog();
 
-	virtual void apply();
+	virtual void applyView();
 
 	/// Hide the dialog from sight
-	void hide();
+	void hideView();
 
 	/// Redraw the dialog (e.g. if the colors have been remapped).
-	void redraw() {}
+	void redrawView() {}
 
 	/// Create the dialog if necessary, update it and display it.
-	void show();
+	void showView();
 
 	/// \return true if the dialog is visible.
-	bool isVisible() const;
+	bool isVisibleView() const;
 
 public Q_SLOTS:
 	/// Update the display of the dialog whilst it is still visible.
-	void update();
+	void updateView();
 
 protected:
 	void closeEvent(QCloseEvent * e);

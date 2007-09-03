@@ -1417,7 +1417,7 @@ void GuiDocument::showPreamble()
 }
 
 
-void GuiDocument::apply()
+void GuiDocument::applyView()
 {
 	if (!dialog_.get())
 		return;
@@ -1437,7 +1437,7 @@ void GuiDocument::update_contents()
 void GuiDocument::saveDocDefault()
 {
 	// we have to apply the params first
-	apply();
+	applyView();
 	controller().saveAsDefault();
 }
 

@@ -100,7 +100,7 @@ void GuiBranch::update_contents()
 }
 
 
-void GuiBranch::apply()
+void GuiBranch::applyView()
 {
 	docstring const type = qstring_to_ucs4(dialog_->branchCO->currentText());
 	controller().params().branch = type;

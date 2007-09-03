@@ -79,7 +79,7 @@ GuiCitationDialog::GuiCitationDialog(Dialog & dialog, GuiCitation * form)
 {
 	setupUi(this);
 
-	setWindowTitle(toqstr("LyX: " + getTitle()));
+	setWindowTitle(toqstr("LyX: " + getViewTitle()));
 
 	connect(citationStyleCO, SIGNAL(activated(int)),
 		this, SLOT(changed()));
@@ -129,7 +129,7 @@ void GuiCitationDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void GuiCitationDialog::apply()
+void GuiCitationDialog::applyView()
 {
 	int  const choice = std::max(0, citationStyleCO->currentIndex());
 	style_ = choice;
@@ -143,14 +143,14 @@ void GuiCitationDialog::apply()
 }
 
 
-void GuiCitationDialog::hide()
+void GuiCitationDialog::hideView()
 {
 	form_->clearParams();
 	accept();
 }
 
 
-void GuiCitationDialog::show()
+void GuiCitationDialog::showView()
 {
 	findLE->clear();
 	availableLV->setFocus();
@@ -160,7 +160,7 @@ void GuiCitationDialog::show()
 }
 
 
-bool GuiCitationDialog::isVisible() const
+bool GuiCitationDialog::isVisibleView() const
 {
 	return QDialog::isVisible();
 }
@@ -168,9 +168,9 @@ bool GuiCitationDialog::isVisible() const
 
 void GuiCitationDialog::on_okPB_clicked()
 {
-	apply();
+	applyView();
 	form_->clearSelection();
-	hide();
+	hideView();
 }
 
 
@@ -183,7 +183,7 @@ void GuiCitationDialog::on_cancelPB_clicked()
 
 void GuiCitationDialog::on_applyPB_clicked()
 {
-	apply();
+	applyView();
 }
 
 
@@ -194,7 +194,7 @@ void GuiCitationDialog::on_restorePB_clicked()
 }
 
 
-void GuiCitationDialog::update()
+void GuiCitationDialog::updateView()
 {
 	fillFields();
 	fillEntries();
@@ -356,7 +356,7 @@ bool GuiCitationDialog::isSelected(const QModelIndex & idx)
 
 void GuiCitationDialog::setButtons()
 {
-	selectionManager->update();
+	selectionManager->updateView();
 	int const srows = selectedLV->model()->rowCount();
 	applyPB->setEnabled(srows > 0);
 	okPB->setEnabled(srows > 0);

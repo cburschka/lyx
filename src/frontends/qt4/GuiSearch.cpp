@@ -57,7 +57,7 @@ GuiSearchDialog::GuiSearchDialog(GuiSearch * form)
 }
 
 
-void GuiSearchDialog::show()
+void GuiSearchDialog::showView()
 {
 	QDialog::show();
 	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());

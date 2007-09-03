@@ -233,7 +233,7 @@ void ControlSpellchecker::check()
 			LYXERR(Debug::GUI) << "Updating spell progress." << endl;
 			oldval_ = newvalue_;
 			// set progress bar
-			dialog().view().partialUpdate(SPELL_PROGRESSED);
+			dialog().view().partialUpdateView(SPELL_PROGRESSED);
 		}
 
 		// speller might be dead ...
@@ -261,7 +261,7 @@ void ControlSpellchecker::check()
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
 		LYXERR(Debug::GUI) << "Found a word needing checking." << endl;
-		dialog().view().partialUpdate(SPELL_FOUND_WORD);
+		dialog().view().partialUpdateView(SPELL_FOUND_WORD);
 	}
 }
 

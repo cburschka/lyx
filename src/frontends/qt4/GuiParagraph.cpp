@@ -180,7 +180,7 @@ void GuiParagraph::build_dialog()
 }
 
 
-void GuiParagraph::apply()
+void GuiParagraph::applyView()
 {
 	ParagraphParameters & params = controller().params();
 

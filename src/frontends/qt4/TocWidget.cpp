@@ -231,7 +231,7 @@ void TocWidget::enableControls(bool enable)
 
 void TocWidget::update()
 {
-	LYXERR(Debug::GUI) << "In TocWidget::update()" << endl;
+	LYXERR(Debug::GUI) << "In TocWidget::updateView()" << endl;
 	select(form_->getCurrentIndex(typeCO->currentIndex()));
 	QWidget::update();
 }

@@ -28,7 +28,7 @@ ButtonController & GuiDialogView::bc()
 }
 
 
-bool GuiDialogView::isVisible() const
+bool GuiDialogView::isVisibleView() const
 {
 	return form() && form()->isVisible();
 }
@@ -40,7 +40,7 @@ bool GuiDialogView::readOnly() const
 }
 
 
-void GuiDialogView::show()
+void GuiDialogView::showView()
 {
 	if (!form())
 		build();
@@ -49,11 +49,11 @@ void GuiDialogView::show()
 	if (sizeHint.height() >= 0 && sizeHint.width() >= 0)
 		form()->setMinimumSize(sizeHint);
 
-	update();  // make sure its up-to-date
+	updateView();  // make sure its up-to-date
 	if (dialog().controller().exitEarly())
 		return;
 
-	form()->setWindowTitle(toqstr("LyX: " + getTitle()));
+	form()->setWindowTitle(toqstr("LyX: " + getViewTitle()));
 
 	if (form()->isVisible()) {
 		form()->raise();
@@ -66,7 +66,7 @@ void GuiDialogView::show()
 }
 
 
-void GuiDialogView::hide()
+void GuiDialogView::hideView()
 {
 	if (form() && form()->isVisible())
 		form()->hide();

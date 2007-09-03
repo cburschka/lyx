@@ -256,7 +256,7 @@ void GuiBox::update_contents()
 }
 
 
-void GuiBox::apply()
+void GuiBox::applyView()
 {
 	controller().params().type =
 		ids_[dialog_->typeCO->currentIndex()];

@@ -37,7 +37,7 @@ public:
 
 public Q_SLOTS:
 	/// populate the toplevel menu and all children
-	void update();
+	void updateView();
 
 private:
 	/// Get a Menu item label from the menu backend

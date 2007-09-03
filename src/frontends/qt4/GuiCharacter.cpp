@@ -192,7 +192,7 @@ void GuiCharacter::update_contents()
 }
 
 
-void GuiCharacter::apply()
+void GuiCharacter::applyView()
 {
 	ControlCharacter & ctrl = controller();
 

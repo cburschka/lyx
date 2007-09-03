@@ -52,7 +52,7 @@ protected:
 	virtual bool isValid();
 private:
 	/// apply dialog
-	virtual void apply();
+	virtual void applyView();
 	/// build dialog
 	virtual void build_dialog();
 	/// update dialog

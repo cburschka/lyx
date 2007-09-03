@@ -32,7 +32,7 @@ public Q_SLOTS:
 	///
 	void on_filesLW_itemDoubleClicked();
 	///
-	void update();
+	void updateView();
 	///
 	void on_enableCB_toggled(bool enable);
 	///

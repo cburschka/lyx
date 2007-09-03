@@ -199,13 +199,14 @@ GuiFontLoader::GuiFontLoader()
 
 void GuiFontLoader::update()
 {
-	for (int i1 = 0; i1 < Font::NUM_FAMILIES; ++i1)
+	for (int i1 = 0; i1 < Font::NUM_FAMILIES; ++i1) {
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3)
 				for (int i4 = 0; i4 < 10; ++i4) {
 					delete fontinfo_[i1][i2][i3][i4];
 					fontinfo_[i1][i2][i3][i4] = 0;
 				}
+	}
 }
 
 

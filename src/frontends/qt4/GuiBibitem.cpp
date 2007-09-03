@@ -85,7 +85,7 @@ void GuiBibitem::update_contents()
 }
 
 
-void GuiBibitem::apply()
+void GuiBibitem::applyView()
 {
 	controller().params()["key"] = qstring_to_ucs4(dialog_->keyED->text());
 	controller().params()["label"] = qstring_to_ucs4(dialog_->labelED->text());

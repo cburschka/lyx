@@ -157,7 +157,7 @@ void GuiPrint::update_contents()
 }
 
 
-void GuiPrint::apply()
+void GuiPrint::applyView()
 {
 	PrinterParams::Target t = PrinterParams::PRINTER;
 	if (dialog_->fileRB->isChecked())

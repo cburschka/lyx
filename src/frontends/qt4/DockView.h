@@ -50,13 +50,12 @@ public:
 
 	/// Dialog::View inherited methods
 	//@{
-	void apply() {}
-	void hide()	{ QDockWidget::hide(); }
-	void show()	{ QDockWidget::show(); }
-	bool isVisible() const
-	{ return QDockWidget::isVisible(); }
-	void redraw() {}
-	void update()
+	void applyView() {}
+	void hideView()	{ QDockWidget::hide(); }
+	void showView()	{ QDockWidget::show(); }
+	bool isVisibleView() const { return QDockWidget::isVisible(); }
+	void redrawView() {}
+	void updateView()
 	{
 		widget_->update();
 		QDockWidget::update();

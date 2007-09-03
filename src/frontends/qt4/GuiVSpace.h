@@ -61,7 +61,7 @@ private:
 	/// Build the dialog
 	virtual void build_dialog();
 	/// Apply from dialog
-	virtual void apply();
+	virtual void applyView();
 	/// Update the dialog
 	virtual void update_contents();
 };

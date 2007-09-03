@@ -101,7 +101,7 @@ void GuiNote::update_contents()
 }
 
 
-void GuiNote::apply()
+void GuiNote::applyView()
 {
 	InsetNoteParams::Type type;
 

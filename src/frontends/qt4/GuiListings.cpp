@@ -427,7 +427,7 @@ void GuiListings::build_dialog()
 }
 
 
-void GuiListings::apply()
+void GuiListings::applyView()
 {
 	InsetListingsParams & params = controller().params();
 	params.setInline(dialog_->inlineCB->isChecked());

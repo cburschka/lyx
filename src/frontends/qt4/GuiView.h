@@ -73,7 +73,7 @@ public:
 	void openMenu(docstring const &);
 
 	/// show - display the top-level window
-	void show();
+	void showView();
 
 	/// menu item has been selected
 	void activated(FuncRequest const &);

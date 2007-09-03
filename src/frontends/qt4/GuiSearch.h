@@ -30,7 +30,7 @@ class GuiSearchDialog : public QDialog, public Ui::SearchUi {
 public:
 	GuiSearchDialog(GuiSearch * form);
 
-	virtual void show();
+	virtual void showView();
 protected Q_SLOTS:
 	void findChanged();
 	void findClicked();
@@ -59,7 +59,7 @@ public:
 	{ return static_cast<ControlSearch const &>(this->getController()); }
 private:
 	/// Apply changes
-	virtual void apply() {}
+	virtual void applyView() {}
 	/// update
 	virtual void update_contents() {}
 	/// build the dialog

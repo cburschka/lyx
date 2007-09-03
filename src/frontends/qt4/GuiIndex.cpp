@@ -116,7 +116,7 @@ void GuiIndex::update_contents()
 }
 
 
-void GuiIndex::apply()
+void GuiIndex::applyView()
 {
 	controller().params()["name"] = qstring_to_ucs4(dialog_->keywordED->text());
 }

@@ -129,11 +129,10 @@ GuiExternalDialog::GuiExternalDialog(GuiExternal * form)
 }
 
 
-void GuiExternalDialog::show()
+void GuiExternalDialog::showView()
 {
 	QDialog::show();
 }
-
 
 
 bool GuiExternalDialog::activateAspectratio() const
@@ -651,7 +650,7 @@ void GuiExternal::updateTemplate()
 }
 
 
-void GuiExternal::apply()
+void GuiExternal::applyView()
 {
 	InsetExternalParams params = controller().params();
 

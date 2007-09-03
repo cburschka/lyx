@@ -176,7 +176,7 @@ GuiGraphicsDialog::GuiGraphicsDialog(GuiGraphics * form)
 }
 
 
-void GuiGraphicsDialog::show()
+void GuiGraphicsDialog::showView()
 {
 	QDialog::show();
 }
@@ -576,7 +576,7 @@ void GuiGraphics::update_contents()
 }
 
 
-void GuiGraphics::apply()
+void GuiGraphics::applyView()
 {
 	InsetGraphicsParams & igp = controller().params();
 

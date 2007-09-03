@@ -73,7 +73,7 @@ GuiRefDialog::GuiRefDialog(GuiRef * form)
 	setFocusProxy(refsLW);
 }
 
-void GuiRefDialog::show()
+void GuiRefDialog::showView()
 {
 	QDialog::show();
 }
@@ -244,7 +244,7 @@ void GuiRef::update_contents()
 }
 
 
-void GuiRef::apply()
+void GuiRef::applyView()
 {
 	InsetCommandParams & params = controller().params();
 

@@ -32,7 +32,7 @@ class GuiTexinfoDialog : public QDialog, public Ui::TexinfoUi
 public:
 	GuiTexinfoDialog(GuiTexinfo * form);
 public Q_SLOTS:
-	virtual void update();
+	virtual void updateView();
 protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void rescanClicked();
@@ -61,7 +61,7 @@ public:
 	{ return static_cast<ControlTexinfo const &>(this->getController()); }
 private:
 	/// Apply changes
-	virtual void apply() {}
+	virtual void applyView() {}
 	/// update (do we need this?)
 	virtual void update_contents() {}
 	/// build the dialog

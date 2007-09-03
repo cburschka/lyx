@@ -53,7 +53,7 @@ public:
 
 public Q_SLOTS:
 	// update content
-	void update();
+	void updateView();
 
 private:
 	GuiViewSource * form_;

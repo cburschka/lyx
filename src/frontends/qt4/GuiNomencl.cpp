@@ -51,7 +51,7 @@ GuiNomenclDialog::GuiNomenclDialog(GuiNomencl * form)
 }
 
 
-void GuiNomenclDialog::show()
+void GuiNomenclDialog::showView()
 {
 	QDialog::show();
 }
@@ -113,7 +113,7 @@ void GuiNomencl::update_contents()
 }
 
 
-void GuiNomencl::apply()
+void GuiNomencl::applyView()
 {
 	controller().params()["prefix"] = qstring_to_ucs4(dialog_->prefixED->text());
 	controller().params()["symbol"] = qstring_to_ucs4(dialog_->symbolED->text());

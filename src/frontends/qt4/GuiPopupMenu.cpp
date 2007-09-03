@@ -49,7 +49,7 @@ GuiPopupMenu::GuiPopupMenu(GuiMenubar * owner,
 }
 
 
-void GuiPopupMenu::update()
+void GuiPopupMenu::updateView()
 {
 	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION << endl;
 	LYXERR(Debug::GUI) << "\tTriggered menu: " << to_utf8(name_) << endl;

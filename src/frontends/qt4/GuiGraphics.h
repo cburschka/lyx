@@ -34,7 +34,7 @@ class GuiGraphicsDialog : public QDialog, public Ui::GraphicsUi
 public:
 	GuiGraphicsDialog(GuiGraphics * form);
 	virtual void setAutoText();
-	virtual void show();
+	virtual void showView();
 protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void change_bb();
@@ -70,7 +70,7 @@ protected:
 	virtual bool isValid();
 private:
 	/// Apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// update
 	virtual void update_contents();
 	/// build the dialog

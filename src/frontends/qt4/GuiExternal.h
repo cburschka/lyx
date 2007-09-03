@@ -32,7 +32,7 @@ class GuiExternalDialog : public QDialog, public Ui::ExternalUi
 public:
 	GuiExternalDialog(GuiExternal * form);
 
-	virtual void show();
+	virtual void showView();
 protected Q_SLOTS:
 	virtual void bbChanged();
 	virtual void browseClicked();
@@ -69,7 +69,7 @@ public:
 	typedef std::map<std::string, QString> MapType;
 private:
 	/// Apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// update
 	virtual void update_contents();
 	/// build the dialog

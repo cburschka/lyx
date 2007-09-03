@@ -59,7 +59,7 @@ GuiViewSourceDialog::GuiViewSourceDialog(GuiViewSource * form)
 }
 
 
-void GuiViewSourceDialog::update()
+void GuiViewSourceDialog::updateView()
 {
 	if (autoUpdateCB->isChecked())
 		form_->update(viewFullSourceCB->isChecked());

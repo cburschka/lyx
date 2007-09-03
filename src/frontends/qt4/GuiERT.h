@@ -51,7 +51,7 @@ public:
 private:
 	friend class GuiERTDialog;
 	/// Apply changes
-	virtual void apply();
+	virtual void applyView();
 	/// update
 	virtual void update_contents();
 	/// build the dialog

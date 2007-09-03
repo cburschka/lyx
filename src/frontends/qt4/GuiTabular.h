@@ -96,7 +96,7 @@ protected:
 
 private:
 	/// We can't use this ...
-	virtual void apply() {}
+	virtual void applyView() {}
 	/// update borders
 	virtual void update_borders();
 	/// update

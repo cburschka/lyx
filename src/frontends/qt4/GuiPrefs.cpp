@@ -1138,11 +1138,11 @@ void PrefCopiers::apply(LyXRC & /*rc*/) const
 
 void PrefCopiers::update(LyXRC const & /*rc*/)
 {
-	update();
+	updateView();
 }
 
 
-void PrefCopiers::update()
+void PrefCopiers::updateView()
 {
 	// The choice widget
 	// save current selection
@@ -1312,7 +1312,7 @@ void PrefCopiers::new_copier()
 
 	form_->movers().set(fmt->name(), command);
 
-	update();
+	updateView();
 	int const last = AllCopiersLW->count() - 1;
 	AllCopiersLW->setCurrentRow(last);
 
@@ -1331,7 +1331,7 @@ void PrefCopiers::modify_copier()
 	string const command = fromqstr(copierED->text());
 	form_->movers().set(fmt->name(), command);
 
-	update();
+	updateView();
 	updateButtons();
 }
 
@@ -1347,7 +1347,7 @@ void PrefCopiers::remove_copier()
 	string const & fmt_name = fmt->name();
 	form_->movers().set(fmt_name, string());
 
-	update();
+	updateView();
 	updateButtons();
 }
 
@@ -1404,11 +1404,11 @@ void PrefFileformats::apply(LyXRC & /*rc*/) const
 
 void PrefFileformats::update(LyXRC const & /*rc*/)
 {
-	update();
+	updateView();
 }
 
 
-void PrefFileformats::update()
+void PrefFileformats::updateView()
 {
 	// save current selection
 	QString current = guiNameED->text();
@@ -1531,7 +1531,7 @@ void PrefFileformats::new_format()
 	form_->formats().sort();
 	form_->converters().update(form_->formats());
 
-	update();
+	updateView();
 	updateButtons();
 	formatsChanged();
 }
@@ -1561,7 +1561,7 @@ void PrefFileformats::remove_format()
 	form_->formats().erase(current_text);
 	form_->converters().update(form_->formats());
 
-	update();
+	updateView();
 	updateButtons();
 	formatsChanged();
 }
@@ -2038,7 +2038,7 @@ void GuiPrefs::build_dialog()
 	dialog_.reset(new GuiPrefsDialog(this));
 }
 
-void GuiPrefs::apply()
+void GuiPrefs::applyView()
 {
 	dialog_->apply(controller().rc());
 }

@@ -50,7 +50,7 @@ public:
 	QMenuBar * menuBar() const;
 
 	/// update the state of the menuitems - not needed
-	void update();
+	void updateView();
 
 private:
 	/// Initialize specific MACOS X menubar
