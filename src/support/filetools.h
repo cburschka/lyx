@@ -314,13 +314,17 @@ typedef std::pair<int, std::string> cmd_ret;
 
 cmd_ret const runCommand(std::string const & cmd);
 
+} // namespace support
+} // namespace lyx
+
+/// The following functions are implemented in minizip/zipunzip.cpp, and are not in
+/// the lyx::support namespace
+
 /// zip several files to a zipfile. In-zip filenames are also specified
-bool zipFiles(DocFileName const & zipfile, std::vector<std::pair<std::string, std::string> > const & files);
+bool zipFiles(std::string const & zipfile, std::vector<std::pair<std::string, std::string> > const & files);
 
 /// Unzip a zip file to a directory
 bool unzipToDir(std::string const & zipfile, std::string const & path);
 
-} // namespace support
-} // namespace lyx
 
 #endif

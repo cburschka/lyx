@@ -61,7 +61,6 @@ using support::onlyFilename;
 using support::makeRelPath;
 using support::changeExtension;
 using support::bformat;
-using support::zipFiles;
 using support::prefixIs;
 using support::sum;
 using support::makedir;
@@ -261,7 +260,7 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 		onlyFilename(changeExtension(
 			filename.toFilesystemEncoding(), ".zip"))));
 
-	zipFiles(zipfile, filenames);
+	::zipFiles(zipfile.toFilesystemEncoding(), filenames);
 	// copy file back
 	try {
 		fs::copy_file(zipfile.toFilesystemEncoding(), filename.toFilesystemEncoding(), false);

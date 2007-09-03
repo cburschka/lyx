@@ -431,6 +431,7 @@ src_support_minizip_files = Split('''
     ioapi.c
     iowin32.c
     zip.c
+    zipunzip.cpp
     unzip.c
 ''')
 

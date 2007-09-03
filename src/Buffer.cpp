@@ -134,7 +134,6 @@ using support::subst;
 using support::tempName;
 using support::trim;
 using support::sum;
-using support::unzipToDir;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
@@ -658,7 +657,7 @@ bool Buffer::readFile(FileName const & filename)
 	if (format == "zip") {
 		// decompress to a temp directory
 		LYXERR(Debug::FILES) << filename << " is in zip format. Unzip to " << temppath() << endl;
-		unzipToDir(filename.toFilesystemEncoding(), temppath());
+		::unzipToDir(filename.toFilesystemEncoding(), temppath());
 		//
 		FileName manifest(addName(temppath(), "manifest.txt"));
 		FileName lyxfile(addName(temppath(), 

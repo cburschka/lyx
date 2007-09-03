@@ -101,7 +101,8 @@ liblyxsupport_la_SOURCES = \
 	minizip/unzip.c \
 	minizip/unzip.h \
 	minizip/zip.c \
-	minizip/zip.h
+	minizip/zip.h \
+	minizip/zipunzip.cpp
 
 ############################## Tests ##################################
 
