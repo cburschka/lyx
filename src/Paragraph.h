@@ -91,7 +91,7 @@ public:
 	///
 	Language const * getParLanguage(BufferParams const &) const;
 	///
-	bool isRightToLeftPar(BufferParams const &) const;
+	bool isRTL(BufferParams const &) const;
 	///
 	void changeLanguage(BufferParams const & bparams,
 			    Language const * from, Language const * to);

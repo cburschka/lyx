@@ -2394,7 +2394,7 @@ Paragraph::getParLanguage(BufferParams const & bparams) const
 }
 
 
-bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
+bool Paragraph::isRTL(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
 		&& getParLanguage(bparams)->rightToLeft()

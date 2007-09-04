@@ -2282,7 +2282,7 @@ int Tabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 		shared_ptr<InsetText> inset = getCellInset(cell);
 
 		Paragraph const & par = inset->paragraphs().front();
-		bool rtl = par.isRightToLeftPar(buf.params())
+		bool rtl = par.isRTL(buf.params())
 			&& !par.empty()
 			&& getPWidth(cell).zero();
 

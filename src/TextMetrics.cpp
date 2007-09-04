@@ -286,7 +286,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 	bool left = getDisplayFont(pit, pos - 1).isVisibleRightToLeft();
 	bool right;
 	if (pos == par.size())
-		right = par.isRightToLeftPar(bv_->buffer().params());
+		right = par.isRTL(bv_->buffer().params());
 	else
 		right = getDisplayFont(pit, pos).isVisibleRightToLeft();
 	return left != right;
@@ -303,7 +303,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	bool left = font.isVisibleRightToLeft();
 	bool right;
 	if (pos == par.size())
-		right = par.isRightToLeftPar(bv_->buffer().params());
+		right = par.isRTL(bv_->buffer().params());
 	else
 		right = getDisplayFont(pit, pos).isVisibleRightToLeft();
 	return left != right;

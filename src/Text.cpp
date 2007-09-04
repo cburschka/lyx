@@ -521,7 +521,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 			// adjacent character whose direction is the paragraph's
 			// direction; don't touch other properties of the font
 			Language const * lang = 
-				(pre_space_rtl == par.isRightToLeftPar(buffer.params())) ?
+				(pre_space_rtl == par.isRTL(buffer.params())) ?
 				pre_space_font.language() : post_space_font.language();
 
 			Font space_font = tm.getDisplayFont(cur.pit(), cur.pos() - 1);

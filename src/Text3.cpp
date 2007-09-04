@@ -247,7 +247,7 @@ void Text::number(Cursor & cur)
 
 bool Text::isRTL(Buffer const & buffer, Paragraph const & par) const
 {
-	return par.isRightToLeftPar(buffer.params());
+	return par.isRTL(buffer.params());
 }
 
 

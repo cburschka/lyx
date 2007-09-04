@@ -88,7 +88,7 @@ void Bidi::computeTables(Paragraph const & par,
 
 	BufferParams const & bufparams = buf.params();
 	pos_type stack[2];
-	bool const rtl_par = par.isRightToLeftPar(bufparams);
+	bool const rtl_par = par.isRTL(bufparams);
 	int lev = 0;
 	bool rtl = false;
 	bool rtl0 = false;
@@ -198,7 +198,7 @@ bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 	bool const rtl = level(pos - 1) % 2;
 	bool const rtl2 = inRange(pos)
 		? level(pos) % 2
-		: par.isRightToLeftPar(buf.params());
+		: par.isRTL(buf.params());
 	return rtl != rtl2;
 }
 
@@ -212,7 +212,7 @@ bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 	bool const rtl = font.isVisibleRightToLeft();
 	bool const rtl2 = inRange(pos)
 		? level(pos) % 2
-		: par.isRightToLeftPar(buf.params());
+		: par.isRTL(buf.params());
 	return rtl != rtl2;
 }
 
@@ -226,15 +226,13 @@ bool reverseDirectionNeeded(Cursor const & cur)
 	 * within a paragraph, and thus avoid situations in which the
 	 * cursor gets stuck.
 	 */
-	return cur.bottom().paragraph().isRightToLeftPar(
-			cur.bv().buffer().params());
+	return cur.bottom().paragraph().isRTL(cur.bv().buffer().params());
 }
 
 
 bool isWithinRtlParagraph(Cursor const & cur)
 {
-	return cur.innerParagraph().isRightToLeftPar(
-		cur.bv().buffer().params());
+	return cur.innerParagraph().isRTL(cur.bv().buffer().params());
 }
 
 } // namespace lyx
