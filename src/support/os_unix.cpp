@@ -13,14 +13,19 @@
 #include <config.h>
 
 #include "support/os.h"
+#include "debug.h"
 
 #ifdef __APPLE__
-#include "debug.h"
 #include <Carbon/Carbon.h>
 #include <ApplicationServices/ApplicationServices.h>
-using std::endl;
+#elif defined(HAVE_FONTCONFIG_FONTCONFIG_H)
+#include "support/filetools.h"
+#include "support/Package.h"
+#include <fontconfig/fontconfig.h>
+using lyx::support::addPath;
 #endif
 
+using std::endl;
 using std::string;
 
 
@@ -224,12 +229,22 @@ void addFontResources()
 			       kFMLocalActivationContext);
 	if (err)
 		lyxerr << "FMActivateFonts err = " << err << endl;
+#elif defined(HAVE_FONTCONFIG_FONTCONFIG_H)
+	// Register BaKoMa truetype fonts with fontconfig
+	string const fonts_dir =
+		addPath(package().system_support().absFilename(), "fonts");
+	if (!FcConfigAppFontAddDir(0, (FcChar8 const *)fonts_dir.c_str()))
+		lyxerr << "Unable to register fonts with fontconfig." << endl;
 #endif
 }
 
 
 void restoreFontResources()
-{}
+{
+#if defined(HAVE_FONTCONFIG_FONTCONFIG_H) && !defined(__APPLE__)
+	FcConfigAppFontClear(0);
+#endif
+}
 
 } // namespace os
 } // namespace support
