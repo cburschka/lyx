@@ -16,10 +16,34 @@
 #ifndef CONVERT_H
 #define CONVERT_H
 
+#include "support/docstring.h"
+
 namespace lyx {
 
 template <class Target, class Source>
 Target convert(Source arg);
+
+
+template<> std::string convert<std::string>(bool b);
+template<> std::string convert<std::string>(char c);
+template<> std::string convert<std::string>(short unsigned int sui);
+template<> std::string convert<std::string>(int i);
+template<> docstring convert<docstring>(int i);
+template<> std::string convert<std::string>(unsigned int ui);
+template<> docstring convert<lyx::docstring>(unsigned int ui);
+template<> std::string convert<std::string>(unsigned long ul);
+template<> docstring convert<lyx::docstring>(unsigned long ul);
+template<> std::string convert<std::string>(long l);
+template<> docstring convert<lyx::docstring>(long l);
+template<> std::string convert<std::string>(float f);
+template<> std::string convert<std::string>(double d);
+template<> int convert<int>(std::string const s);
+template<> int convert<int>(lyx::docstring const s);
+template<> unsigned int convert<unsigned int>(std::string const s);
+template<> unsigned long convert<unsigned long>(std::string const s);
+template<> double convert<double>(std::string const s);
+template<> int convert<int>(char const * cptr);
+template<> double convert<double>(char const * cptr);
 
 } // namespace lyx
 
