@@ -749,8 +749,14 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	// to not overwrite them with those of the file created in the tempdir
 	// when it has to be converted to the current format.
 	if (!pimpl_->checksum_) {
-		pimpl_->timestamp_ = fs::last_write_time(filename.toFilesystemEncoding());
-		pimpl_->checksum_ = sum(filename);
+		// Save the timestamp and checksum of disk file. If filename is an
+		// emergency file, save the timestamp and sum of the original lyx file
+		// because isExternallyModified will check for this file. (BUG4193)
+		string diskfile = filename.toFilesystemEncoding();
+		if (suffixIs(diskfile, ".emergency"))
+			diskfile = diskfile.substr(0, diskfile.size() - 10);
+		pimpl_->timestamp_ = fs::last_write_time(diskfile);
+		pimpl_->checksum_ = sum(FileName(diskfile));
 	}
 
 	if (file_format != LYX_FORMAT) {
