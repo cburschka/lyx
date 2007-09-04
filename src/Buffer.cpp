@@ -134,6 +134,7 @@ using support::subst;
 using support::tempName;
 using support::trim;
 using support::sum;
+using support::suffixIs;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
