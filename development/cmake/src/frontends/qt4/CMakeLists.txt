@@ -28,15 +28,6 @@ include_directories(
 	${CMAKE_CURRENT_BINARY_DIR})
 
 if(MERGE_FILES)
-	list(REMOVE_ITEM frontends_qt4_sources
-		${TOP_SRC_DIR}/src/frontends/qt4/QCommandEdit.cpp)
-	list(APPEND frontends_qt4_sources
-		${TOP_SRC_DIR}/src/frontends/qt4/QCommandEdit.cpp)
-	list(REVERSE frontends_qt4_sources)
-	list(REMOVE_ITEM frontends_qt4_sources
-		${TOP_SRC_DIR}/src/frontends/qt4/GuiApplication.cpp)
-	list(APPEND frontends_qt4_sources
-		${TOP_SRC_DIR}/src/frontends/qt4/GuiApplication.cpp)
 	lyx_const_touched_files(_allinone frontends_qt4_sources)
 	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})
 	set_source_files_properties(_allinone_const.C

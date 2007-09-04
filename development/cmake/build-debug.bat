@@ -4,10 +4,11 @@
 cmake ..\trunk\development\cmake -Dmerge=1
 
 :: clean
-devenv lyx-qt4.sln /clean Debug
+devenv lyx.sln /clean Debug
 
 :: rebuild all generated files
 cmake ..\trunk\development\cmake -Dmerge_rebuild=1
 
 :: build release version
-devenv lyx-qt4.sln /build Debug
+devenv lyx.sln /build Debug
+
