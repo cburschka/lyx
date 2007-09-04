@@ -1573,17 +1573,6 @@ void PrefFileformats::remove_format()
 //
 /////////////////////////////////////////////////////////////////////
 
-template<class Pair>
-std::vector<typename Pair::second_type> const
-getSecond(std::vector<Pair> const & pr)
-{
-	std::vector<typename Pair::second_type> tmp(pr.size());
-	std::transform(pr.begin(), pr.end(), tmp.begin(),
-		       boost::bind(&Pair::second, _1));
-	return tmp;
-}
-
-
 PrefLanguage::PrefLanguage(QWidget * parent)
 	: PrefModule(_("Language"), 0, parent)
 {

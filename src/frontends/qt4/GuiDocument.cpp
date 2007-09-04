@@ -170,15 +170,6 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 //
 /////////////////////////////////////////////////////////////////////
 
-template<class Pair>
-std::vector<typename Pair::second_type> const
-getSecond(std::vector<Pair> const & pr)
-{
-	std::vector<typename Pair::second_type> tmp(pr.size());
-	std::transform(pr.begin(), pr.end(), tmp.begin(),
-								boost::bind(&Pair::second, _1));
-	return tmp;
-}
 
 GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 	: form_(form), lang_(getSecond(getLanguageData(false)))

@@ -69,6 +69,16 @@ std::vector<BarPair>      const getBarData();
 ///
 std::vector<ColorPair>    const getColorData();
 
+///
+template<class Pair>
+std::vector<typename Pair::second_type> const
+getSecond(std::vector<Pair> const & pr)
+{
+	 std::vector<typename Pair::second_type> tmp(pr.size());
+	 std::transform(pr.begin(), pr.end(), tmp.begin(),
+					 boost::bind(&Pair::second, _1));
+	 return tmp;
+}
 
 ///
 typedef std::pair<docstring, std::string> LanguagePair;

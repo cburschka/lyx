@@ -390,16 +390,6 @@ static int getItemNo(const vector<string> & v, string const & s)
 	return (cit != v.end()) ? int(cit - v.begin()) : 0;
 }
 
-template<class Pair>
-std::vector<typename Pair::second_type> const
-getSecond(std::vector<Pair> const & pr)
-{
-	 std::vector<typename Pair::second_type> tmp(pr.size());
-	 std::transform(pr.begin(), pr.end(), tmp.begin(),
-					 boost::bind(&Pair::second, _1));
-	 return tmp;
-}
-
 
 void GuiGraphics::update_contents()
 {
