@@ -627,8 +627,8 @@ void GuiTabular::update_contents()
 	Tabular const & tabular(controller().tabular());
 	Tabular::idx_type const cell = controller().getActiveCell();
 
-	Tabular::row_type const row(tabular.row_of_cell(cell));
-	Tabular::col_type const col(tabular.column_of_cell(cell));
+	Tabular::row_type const row(tabular.cellRow(cell));
+	Tabular::col_type const col(tabular.cellColumn(cell));
 
 	dialog_->tabularRowED->setText(toqstr(convert<string>(row + 1)));
 	dialog_->tabularColumnED->setText(toqstr(convert<string>(col + 1)));

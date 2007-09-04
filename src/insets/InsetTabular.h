@@ -266,21 +266,21 @@ public:
 
 	/* returns the maximum over all rows */
 	///
-	int getWidthOfColumn(idx_type cell) const;
+	int columnWidth(idx_type cell) const;
 	///
-	int getWidthOfTabular() const;
+	int width() const;
 	///
-	int getAscentOfRow(row_type row) const;
+	int height() const;
 	///
-	int getDescentOfRow(row_type row) const;
+	int rowAscent(row_type row) const;
 	///
-	int getHeightOfTabular() const;
+	int rowDescent(row_type row) const;
 	///
-	void setAscentOfRow(row_type row, int height);
+	void setRowAscent(row_type row, int height);
 	///
-	void setDescentOfRow(row_type row, int height);
+	void setRowDescent(row_type row, int height);
 	///
-	void setWidthOfCell(idx_type cell, int new_width);
+	void setCellWidth(idx_type cell, int new_width);
 	///
 	void setAllLines(idx_type cell, bool line);
 	///
@@ -319,7 +319,7 @@ public:
 	///
 	docstring const getAlignSpecial(idx_type cell, int what) const;
 	///
-	int getWidthOfCell(idx_type cell) const;
+	int cellWidth(idx_type cell) const;
 	///
 	int getBeginningOfTextInCell(idx_type cell) const;
 	///
@@ -343,7 +343,7 @@ public:
 	///
 	idx_type getLastCellInRow(row_type row) const;
 	///
-	idx_type getNumberOfCells() const;
+	idx_type cellCount() const;
 	///
 	idx_type numberOfCellsInRow(idx_type cell) const;
 	///
@@ -369,11 +369,11 @@ public:
 	///
 	bool isPartOfMultiColumn(row_type row, col_type column) const;
 	///
-	row_type row_of_cell(idx_type cell) const;
+	row_type cellRow(idx_type cell) const;
 	///
-	col_type column_of_cell(idx_type cell) const;
+	col_type cellColumn(idx_type cell) const;
 	///
-	col_type right_column_of_cell(idx_type cell) const;
+	col_type cellRightColumn(idx_type cell) const;
 	///
 	void setBookTabs(bool);
 	///
@@ -403,7 +403,7 @@ public:
 	///
 	idx_type getLastCellBelow(idx_type cell) const;
 	///
-	idx_type getCellNumber(row_type row, col_type column) const;
+	idx_type cellIndex(row_type row, col_type column) const;
 	///
 	void setUsebox(idx_type cell, BoxType);
 	///
@@ -450,9 +450,9 @@ public:
 	///
 	idx_type getCellFromInset(Inset const * inset) const;
 	///
-	row_type rows() const { return rows_; }
+	row_type rowCount() const { return row_info.size(); }
 	///
-	col_type columns() const { return columns_;}
+	col_type columnCount() const { return column_info.size();}
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -471,7 +471,7 @@ public:
 		///
 		idx_type cellno;
 		///
-		int width_of_cell;
+		int width;
 		///
 		int multicolumn;
 		///
@@ -509,9 +509,9 @@ public:
 		///
 		rowstruct();
 		///
-		int ascent_of_row;
+		int ascent;
 		///
-		int descent_of_row;
+		int descent;
 		///
 		bool top_line;
 		///
@@ -557,7 +557,7 @@ public:
 		///
 		bool right_line;
 		///
-		int  width_of_column;
+		int width;
 		///
 		Length p_width;
 		///
@@ -566,10 +566,6 @@ public:
 	///
 	typedef std::vector<columnstruct> column_vector;
 
-	///
-	row_type rows_;
-	///
-	col_type columns_;
 	///
 	idx_type numberofcells;
 	///
@@ -582,8 +578,6 @@ public:
 	column_vector column_info;
 	///
 	mutable cell_vvector cell_info;
-	///
-	int width_of_tabular;
 	///
 	bool use_booktabs;
 	///
@@ -614,10 +608,6 @@ public:
 	void calculate_width_of_column(col_type column);
 	///
 	bool calculate_width_of_column_NMC(col_type column); // no multi cells
-	///
-	void calculate_width_of_tabular();
-	///
-	void delete_column(col_type column);
 	///
 	idx_type cells_in_multicolumn(idx_type cell) const;
 	///
@@ -724,7 +714,7 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	/// number of cells
-	size_t nargs() const { return tabular.getNumberOfCells(); }
+	size_t nargs() const { return tabular.cellCount(); }
 	///
 	boost::shared_ptr<InsetText const> cell(idx_type) const;
 	///
