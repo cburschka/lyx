@@ -18,3 +18,12 @@ InsetLayout Custom:Endnote
    EndPreamble
 End
 
+# Error fallback:
+InsetLayout Custom
+   LyxType	end
+   LabelString	"UNDEFINED"
+   Font
+     Color	error
+   EndFont
+End
+
