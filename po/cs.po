@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-08-19 21:04+0200\n"
-"PO-Revision-Date: 2007-07-09 04:42+0200\n"
+"PO-Revision-Date: 2007-08-31 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1309,12 +1309,11 @@ msgstr "Verbatim"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:354
 msgid "Program Listing"
-msgstr "Výpis zdrojového kódu|i"
+msgstr "Výpis zdrojového kódu"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:336
-#, fuzzy
 msgid "Edit the file"
-msgstr "Naèíst soubor"
+msgstr "Editovat soubor"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:58
 msgid "Document &class:"
@@ -1684,7 +1683,7 @@ msgstr "Velikost stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:74
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Vyber velikost stránky nebo nastav vlastní \"Vlastní\""
+msgstr "Vybrat velikost stránky nebo nastavit vlastní \"Vlastní\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
 msgid "Orientation"
@@ -7484,7 +7483,7 @@ msgstr "Správa verzí|S"
 
 #: lib/ui/classic.ui:57 lib/ui/stdmenus.inc:47
 msgid "Import|I"
-msgstr "Import|I"
+msgstr "Import|m"
 
 #: lib/ui/classic.ui:58 lib/ui/stdmenus.inc:48
 msgid "Export|E"
@@ -8288,14 +8287,12 @@ msgid "Open Recent|t"
 msgstr "Otevøít poslední|l"
 
 #: lib/ui/stdmenus.inc:43
-#, fuzzy
 msgid "Save All|l"
-msgstr "Ulo¾it jako|j"
+msgstr "Ulo¾it v¹e|i"
 
 #: lib/ui/stdmenus.inc:44
-#, fuzzy
 msgid "Revert to Saved|R"
-msgstr "Vrátit se k pùvodnímu dokumentu ?"
+msgstr "Vrátit se k pùvodní verzi|r"
 
 #: lib/ui/stdmenus.inc:52
 msgid "New Window|W"
@@ -8633,7 +8630,6 @@ msgid "TeX Code|X"
 msgstr "TeX-ový kód|X"
 
 #: lib/ui/stdmenus.inc:315
-#, fuzzy
 msgid "Program Listing[[Menu]]"
 msgstr "Výpis zdrojového kódu|i"
 
@@ -11300,7 +11296,7 @@ msgstr "Rastrový obrázek"
 
 #: lib/external_templates:40 lib/external_templates:46
 msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
-msgstr "Bitmap: $$AbsOrRelPathParent$$Basename"
+msgstr "Bitmapa: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:45
 msgid "A bitmap file.\n"
@@ -11324,7 +11320,7 @@ msgstr "©achový Diagram"
 
 #: lib/external_templates:155 lib/external_templates:174
 msgid "Chess: $$AbsOrRelPathParent$$Basename"
-msgstr "Chess: $$AbsOrRelPathParent$$Basename"
+msgstr "Diagram: $$AbsOrRelPathParent$$Basename"
 
 #: lib/external_templates:157
 msgid ""
@@ -11523,7 +11519,7 @@ msgstr "%1$s je z odli¹né verze LyX-u, ale skript lyx2lyx selhal pøi konverzi."
 #: src/Buffer.cpp:755
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
-msgstr "%1$s skonèil neoèekávanì, co¾ znamená, ¾e je pravdìpodobnì po¹kozen."
+msgstr "%1$s konèí neoèekávanì, co¾ znamená, ¾e je pravdìpodobnì po¹kozen."
 
 #: src/Buffer.cpp:794
 msgid "Backup failure"
@@ -11539,19 +11535,16 @@ msgstr ""
 "Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
 
 #: src/Buffer.cpp:805
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
-"Dokument %1$s ji¾ existuje.\n"
-"\n"
-"Chcete jej pøepsat ?"
+"Dokument %1$s byl externì modifikován. Opravdu chcete tento soubor pøepsat?"
 
 #: src/Buffer.cpp:807
-#, fuzzy
 msgid "Overwrite modified file?"
-msgstr "Pøepsat soubor?"
+msgstr "Pøepsat modifikovaný soubor?"
 
 #: src/Buffer.cpp:808 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
 #: src/LyXFunc.cpp:2144 src/callback.cpp:186
@@ -12492,9 +12485,9 @@ msgstr ""
 "Pou¾ití: lyx [ pøepínaèe ] [ dokument.lyx ... ]\n"
 "Pøepínaèe (rozli¹uje se velikost písmen):\n"
 "\t-help              tato stránka\n"
-"\t-userdir dir       nastav u¾ivatelský adresáø na dir\n"
-"\t-sysdir dir        nastav systémový adresáø na dir\n"
-"\t-geometry WxH+X+Y  nastavení pozice hlavního okna\n"
+"\t-userdir dir       nastavit u¾ivatelský adresáø na dir\n"
+"\t-sysdir dir        nastavit systémový adresáø na dir\n"
+"\t-geometry WxH+X+Y  nastavit pozici hlavního okna\n"
 "\t-dbg feature[,feature]...\n"
 "                  vyber patøiènou èást k ladìní.\n"
 "                  Pøíkaz `lyx -dbg' vypí¹e seznam laditelných èástí\n"
@@ -12619,14 +12612,12 @@ msgid " done."
 msgstr " hotovo."
 
 #: src/LyXFunc.cpp:938
-#, fuzzy
 msgid "Saving all documents..."
-msgstr "Ukládá se %1$s..."
+msgstr "Ukládají se v¹echny dokumenty..."
 
 #: src/LyXFunc.cpp:951
-#, fuzzy
 msgid "All documents saved."
-msgstr "Dokument neulo¾en"
+msgstr "V¹echny dokumenty ulo¾eny."
 
 #: src/LyXFunc.cpp:961
 #, c-format
@@ -12635,7 +12626,7 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 "V¹echny zmìny budou ztraceny. Opravdu se chcete vrátit k pùvodní verzi "
-"dokumentu %1$s?"
+"dokumentu %1$s ?"
 
 #: src/LyXFunc.cpp:963 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
@@ -12682,9 +12673,9 @@ msgid "Converting document to new document class..."
 msgstr "Konverze dokumentu do nové tøídy dokumentu..."
 
 #: src/LyXFunc.cpp:1840
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown toolbar \"%1$s\""
-msgstr "Neznámá vlastnost tabulky '%1$s'"
+msgstr "Neznámý panel nástrojù \"%1$s\""
 
 #: src/LyXFunc.cpp:1848
 msgid "off"
@@ -13264,7 +13255,6 @@ msgid "Revert to stored version of document?"
 msgstr "Návrat k ulo¾ené verzi dokumentu ?"
 
 #: src/MenuBackend.cpp:476
-#, fuzzy
 msgid "No Documents Open!"
 msgstr "®ádné otevøené dokumenty !"
 
@@ -13312,13 +13302,15 @@ msgstr "Nesmyslné v tomto rozvr¾ení !"
 
 #: src/Paragraph.cpp:1692
 msgid "Alignment not permitted"
-msgstr ""
+msgstr "Zarovnání nepovoleno"
 
 #: src/Paragraph.cpp:1693
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
+"Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
+"Pøepnuto na standardní."
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
@@ -14340,23 +14332,20 @@ msgid "Directories"
 msgstr "Adresáøe"
 
 #: src/frontends/qt4/GuiApplication.cpp:369
-#, fuzzy
 msgid "About %1"
-msgstr "O programu LyX"
+msgstr "O programu %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:369 src/frontends/qt4/QPrefs.cpp:2031
 msgid "Preferences"
 msgstr "Nastavení"
 
 #: src/frontends/qt4/GuiApplication.cpp:370
-#, fuzzy
 msgid "Reconfigure"
-msgstr "Rekonfigurovat|R"
+msgstr "Rekonfigurovat"
 
 #: src/frontends/qt4/GuiApplication.cpp:370
-#, fuzzy
 msgid "Quit %1"
-msgstr "Ukonèit LyX"
+msgstr "Ukonèit %1"
 
 #: src/frontends/qt4/GuiView.cpp:172
 msgid "Small-sized icons"
