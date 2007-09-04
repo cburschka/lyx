@@ -20,6 +20,8 @@
 #include <vector>
 #include <string>
 
+#include <boost/bind.hpp>
+
 class Color_color;
 
 /** Functions of use to the character GUI controller and view */
