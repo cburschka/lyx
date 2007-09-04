@@ -619,7 +619,7 @@ void Tabular::fixCellNums()
 		cell_info[i].back().right_line = true;
 	}
 
-	set_row_column_number_info();
+	updateIndexes();
 }
 
 
@@ -650,7 +650,7 @@ void Tabular::appendRow(BufferParams const & bp, idx_type const cell)
 		for (col_type j = 0; j < ncols; ++j)
 			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
 
-	set_row_column_number_info();
+	updateIndexes();
 }
 
 
@@ -675,7 +675,7 @@ void Tabular::copyRow(BufferParams const & bp, row_type const row)
 		for (col_type j = 0; j < columnCount(); ++j)
 			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
 
-	set_row_column_number_info();
+	updateIndexes();
 }
 
 
@@ -743,7 +743,7 @@ void Tabular::copyColumn(BufferParams const & bp, col_type const column)
 }
 
 
-void Tabular::set_row_column_number_info()
+void Tabular::updateIndexes()
 {
 	numberofcells = 0;
 	// Count only non-multicol cells plus begin multicol
@@ -1573,7 +1573,7 @@ void Tabular::read(Buffer const & buf, Lexer & lex)
 	while (!prefixIs(line, "</lyxtabular>")) {
 		l_getline(is, line);
 	}
-	set_row_column_number_info();
+	updateIndexes();
 }
 
 
@@ -1612,7 +1612,7 @@ void Tabular::setMultiColumn(Buffer * buffer, idx_type cell,
 		cs.inset->appendParagraphs(buffer, cs1.inset->paragraphs());
 		cs1.inset->clear();
 	}
-	set_row_column_number_info();
+	updateIndexes();
 }
 
 
@@ -1650,7 +1650,7 @@ Tabular::idx_type Tabular::unsetMultiColumn(idx_type cell)
 			++result;
 		}
 	}
-	set_row_column_number_info();
+	updateIndexes();
 	return result;
 }
 

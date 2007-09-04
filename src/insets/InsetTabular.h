@@ -599,7 +599,7 @@ public:
 	void init(BufferParams const &, row_type rows_arg,
 		  col_type columns_arg);
 	///
-	void set_row_column_number_info();
+	void updateIndexes();
 	/// Returns true if a complete update is necessary, otherwise false
 	bool setWidthOfMulticolCell(idx_type cell, int new_width);
 	///
