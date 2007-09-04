@@ -22,7 +22,6 @@ namespace lyx {
 namespace frontend {
 
 class GuiCommandEdit;
-class GuiView;
 
 class GuiCommandBuffer : public QWidget {
 	Q_OBJECT
