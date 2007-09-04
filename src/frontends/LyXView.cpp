@@ -170,6 +170,10 @@ void LyXView::connectBuffer(Buffer & buf)
 		buf.getMasterBuffer()->structureChanged.connect(
 			boost::bind(&LyXView::updateToc, this));
 
+	bufferEmbeddingChangedConnection_ =
+		buf.embeddingChanged.connect(
+			boost::bind(&LyXView::updateEmbeddedFiles, this));
+
 	errorsConnection_ =
 		buf.errors.connect(
 			boost::bind(&LyXView::showErrorList, this, _1));
@@ -200,6 +204,7 @@ void LyXView::disconnectBuffer()
 {
 	errorsConnection_.disconnect();
 	bufferStructureChangedConnection_.disconnect();
+	bufferEmbeddingChangedConnection_.disconnect();
 	messageConnection_.disconnect();
 	busyConnection_.disconnect();
 	titleConnection_.disconnect();
@@ -288,6 +293,12 @@ BufferView * LyXView::view()
 void LyXView::updateToc()
 {
 	updateDialog("toc", "");
+}
+
+
+void LyXView::updateEmbeddedFiles()
+{
+	updateDialog("embedding", "");
 }
 
 

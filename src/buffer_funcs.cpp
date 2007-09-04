@@ -621,6 +621,11 @@ void updateLabels(Buffer const & buf, bool childonly)
 	cbuf.tocBackend().update();
 	if (!childonly)
 		cbuf.structureChanged();
+	// FIXME
+	// the embedding signal is emitted with structureChanged signal
+	// this is inaccurate so these two will be separated later.
+	cbuf.embeddedFiles().update();
+	cbuf.embeddingChanged();
 }
 
 

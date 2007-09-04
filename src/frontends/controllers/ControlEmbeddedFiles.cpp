@@ -55,7 +55,7 @@ void ControlEmbeddedFiles::updateEmbeddedFiles()
 {
 	// copy buffer embeddedFiles to a local copy
 	kernel().buffer().embeddedFiles().update();
-	//kernel().buffer().embeddingChanged();
+	kernel().buffer().embeddingChanged();
 }
 
 

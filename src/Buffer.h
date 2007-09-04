@@ -144,6 +144,8 @@ public:
 	boost::signal<void()> changed;
 	/// This signal is emitted when the buffer structure is changed.
 	boost::signal<void()> structureChanged;
+	/// This signal is emitted when an embedded file is changed
+	boost::signal<void()> embeddingChanged;
 	/// This signal is emitted when some parsing error shows up.
 	boost::signal<void(std::string)> errors;
 	/// This signal is emitted when some message shows up.

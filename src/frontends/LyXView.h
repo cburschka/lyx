@@ -215,6 +215,8 @@ private:
 
 	/// buffer structure changed signal connection
 	boost::signals::connection bufferStructureChangedConnection_;
+	/// embedded file change signal connection
+	boost::signals::connection bufferEmbeddingChangedConnection_;
 	/// buffer errors signal connection
 	boost::signals::connection errorsConnection_;
 	/// buffer messages signal connection
@@ -255,6 +257,8 @@ private:
 protected:
 	///
 	void updateToc();
+	///
+	void updateEmbeddedFiles();
 
 private:
 	int id_;
