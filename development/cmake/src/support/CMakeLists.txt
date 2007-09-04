@@ -9,9 +9,9 @@ project(support)
 file(GLOB support_sources ${TOP_SRC_DIR}/src/support/${LYX_CPP_FILES})
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})
 
-file(GLOB support_minzip_sources ${TOP_SRC_DIR}/src/support/minizip/*.c)
-file(GLOB support_minzip_cpp_sources ${TOP_SRC_DIR}/src/support/minizip/*.cpp)
-file(GLOB support_min_zip_headers ${TOP_SRC_DIR}/src/support/minizip/*.h)
+file(GLOB support_minizip_sources ${TOP_SRC_DIR}/src/support/minizip/*.c)
+file(GLOB support_minizip_cpp_sources ${TOP_SRC_DIR}/src/support/minizip/*.cpp)
+file(GLOB support_minizip_headers ${TOP_SRC_DIR}/src/support/minizip/*.h)
 
 list(REMOVE_ITEM support_sources 	
 	${TOP_SRC_DIR}/src/support/os_win32.cpp
@@ -32,13 +32,13 @@ include_directories(${TOP_SRC_DIR}/src/support
 
 
 if(NOT MERGE_FILES)
-	set(support_sources ${support_sources} ${support_minzip_sources})
-	set(support_headers ${support_headers} ${support_minzip_headers})
+	set(support_sources ${support_sources} ${support_minizip_sources} ${support_minizip_cpp_sources})
+	set(support_headers ${support_headers} ${support_minizip_headers})
 	add_library(support ${library_type} ${support_sources} ${support_headers})
 else()
 	lyx_const_touched_files(_allinone  support_sources)
 	add_library(support ${library_type} ${_allinone_files}
-		${support_minzip_sources} ${support_minzip_cpp_sources})
+		${support_minizip_sources} ${support_minizip_cpp_sources})
 endif()
 
 
