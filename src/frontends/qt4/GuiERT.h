@@ -12,50 +12,31 @@
 #ifndef GUIERT_H
 #define GUIERT_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlERT.h"
 #include "ui_ERTUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiERT;
-
-class GuiERTDialog : public QDialog, public Ui::ERTUi
+class GuiERTDialog : public GuiDialog, public Ui::ERTUi
 {
 	Q_OBJECT
-public:
-	GuiERTDialog(GuiERT * form);
-protected Q_SLOTS:
-	virtual void change_adaptor();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
-private:
-	GuiERT * form_;
-};
 
-
-class GuiERT : public GuiView<GuiERTDialog>
-{
 public:
-	/// constructor
-	GuiERT(GuiDialog &);
-	/// parent controller
-	ControlERT & controller()
-	{ return static_cast<ControlERT &>(this->getController()); }
-	/// parent controller
-	ControlERT const & controller() const
-	{ return static_cast<ControlERT const &>(this->getController()); }
+	GuiERTDialog(LyXView & lv);
+
+private Q_SLOTS:
+	void change_adaptor();
+
 private:
-	friend class GuiERTDialog;
+	void closeEvent(QCloseEvent * e);
+	/// parent controller
+	ControlERT & controller() const;
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 };
 
 } // namespace frontend
