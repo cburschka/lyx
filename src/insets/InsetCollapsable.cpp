@@ -283,7 +283,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		break;
 	case NoButton:
 		textx = xx;
-		texty = y;
+		texty = top;
 		InsetText::draw(pi, textx, texty);
 		break;
 	case SubLabel:
