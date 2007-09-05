@@ -728,7 +728,6 @@ src_frontends_extra_files = Split('''
 
 src_frontends_controllers_header_files = Split('''
     ButtonPolicy.h
-    ControlAboutlyx.h
     ControlBibtex.h
     ControlBox.h
     ControlBranch.h
@@ -773,7 +772,6 @@ src_frontends_controllers_header_files = Split('''
 
 src_frontends_controllers_files = Split('''
     ButtonPolicy.cpp
-    ControlAboutlyx.cpp
     ControlBibtex.cpp
     ControlBox.cpp
     ControlBranch.cpp
