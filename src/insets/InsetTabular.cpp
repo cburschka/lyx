@@ -3015,6 +3015,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 		int const a = tabular.rowAscent(i);
 		int const d = tabular.rowDescent(i);
 		idx = tabular.cellIndex(i, 0);
+		int const cy = y - a;
 		for (col_type j = 0; j < tabular.columnCount(); ++j) {
 			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
@@ -3027,11 +3028,11 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			    || y + d < 0
 			    || y - a > bv->workHeight()) {
 				pi.pain.setDrawingEnabled(false);
-				cell(idx)->draw(pi, cx, y);
+				cell(idx)->draw(pi, cx, cy);
 				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);
 				pi.pain.setDrawingEnabled(true);
 			} else {
-				cell(idx)->draw(pi, cx, y);
+				cell(idx)->draw(pi, cx, cy);
 				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);
 			}
 			nx += tabular.columnWidth(idx);
