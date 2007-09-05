@@ -40,6 +40,9 @@ public:
 	///
 	void setCrc(size_type crc);
 	///
+	void setSelection(pos_type sel_beg, pos_type sel_end);
+
+	///
 	void pos(pos_type p);
 	///
 	pos_type pos() const { return pos_; }
@@ -71,6 +74,11 @@ public:
 	double label_hfill;
 	/// the x position of the row
 	double x;
+	///
+	pos_type sel_beg;
+	///
+	pos_type sel_end;
+
 
 private:
 	/// has the Row appearance changed since last drawing?

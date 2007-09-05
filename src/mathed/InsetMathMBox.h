@@ -38,8 +38,6 @@ public:
 	/// draw according to cached metrics
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	void drawSelection(PainterInfo & pi, int x, int y) const;
-	///
 	bool inMathed() const { return false; }
 	///
 	bool isActive() const { return true; }

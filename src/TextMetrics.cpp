@@ -361,6 +361,28 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		changed |= (old_dim != dim);
 	}
 
+	Cursor const & cur = bv_->cursor();
+	DocIterator sel_beg = cur.selectionBegin();
+	DocIterator sel_end = cur.selectionEnd();
+	bool selection = cur.selection()
+		// This is out text.
+		&& cur.text() == text_
+		// if the anchor is outside, this is not our selection 
+		&& cur.anchor().text() == text_
+		&& pit >= sel_beg.pit() && pit <= sel_end.pit();
+
+	// We care only about visible selection.
+	if (selection) {
+		if (pit != sel_beg.pit()) {
+			sel_beg.pit() = pit;
+			sel_beg.pos() = 0;
+		}
+		if (pit != sel_end.pit()) {
+			sel_end.pit() = pit;
+			sel_end.pos() = sel_end.lastpos();
+		}
+	}
+
 	par.setBeginOfBody();
 	pos_type first = 0;
 	size_t row_index = 0;
@@ -383,6 +405,10 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.setChanged(false);
 		row.pos(first);
 		row.endpos(end);
+		if (selection)
+			row.setSelection(sel_beg.pos(), sel_end.pos());
+		else
+			row.setSelection(-1, -1);
 		row.setDimension(dim);
 		computeRowMetrics(pit, row);
 		pm.computeRowSignature(row, bparams);
@@ -1094,8 +1120,12 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 {
-	ParagraphMetrics const & pm = par_metrics_[pit];
-	BOOST_ASSERT(!pm.rows().empty());
+	// We play safe and use parMetrics(pit) to make sure the
+	// ParagraphMetrics will be redone and OK to use if needed.
+	// Otherwise we would use an empty ParagraphMetrics in
+	// upDownInText() while in selection mode.
+	ParagraphMetrics const & pm = parMetrics(pit);
+
 	BOOST_ASSERT(row < int(pm.rows().size()));
 	bool bound = false;
 	Row const & r = pm.rows()[row];
@@ -1772,13 +1802,18 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 	if (par_metrics_.empty())
 		return;
 
+	CoordCache::InnerParPosCache & ppcache = bv_->coordCache().parPos()[text_];
+
 	ParMetricsCache::const_iterator it = par_metrics_.begin();
-	ParMetricsCache::const_iterator const end = par_metrics_.end();
+	ParMetricsCache::const_iterator const pm_end = par_metrics_.end();
 	y -= it->second.ascent();
-	for (; it != end; ++it) {
+	for (; it != pm_end; ++it) {
 		ParagraphMetrics const & pmi = it->second;
 		y += pmi.ascent();
-		drawParagraph(pi, it->first, x, y);
+		pit_type const pit = it->first;
+		// Save the paragraph position in the cache.
+		ppcache[pit] = Point(x, y);
+		drawParagraph(pi, pit, x, y);
 		y += pmi.descent();
 	}
 }
@@ -1788,8 +1823,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 {
 //	lyxerr << "  paintPar: pit: " << pit << " at y: " << y << endl;
 	int const ww = bv_->workHeight();
-
-	bv_->coordCache().parPos()[text_][pit] = Point(x, y);
 
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	if (pm.rows().empty())
@@ -1813,7 +1846,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// Row signature; has row changed since last paint?
 		bool row_has_changed = rit->changed();
 		
-		if (!pi.full_repaint && !row_has_changed) {
+		bool row_selection = rit->sel_beg != -1 && rit->sel_end != -1;
+
+		if (!row_selection && !pi.full_repaint && !row_has_changed) {
 			// Paint the only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
@@ -1825,10 +1860,24 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// changed.
 		// Clear background of this row
 		// (if paragraph background was not cleared)
-		if (!pi.full_repaint && row_has_changed) {
+		if (row_selection || (!pi.full_repaint && row_has_changed)) {
 			pi.pain.fillRectangle(x, y - rit->ascent(),
 				width(), rit->height(),
 				Color_color(Color::color(pi.background_color)));
+		}
+		if (row_selection) {
+			lyxerr << "row selected" << endl;
+			DocIterator beg = bv_->cursor().selectionBegin();
+			DocIterator end = bv_->cursor().selectionEnd();
+			beg.pit() = pit;
+			beg.pos() = rit->sel_beg;
+			if (pit == end.pit()) {
+				end.pos() = rit->sel_end;
+			} else {
+				end.pit() = pit + 1;
+				end.pos() = 0;
+			}
+			drawSelection(pi, beg, end, x);
 		}
 
 		// Instrumentation for testing row cache (see also
@@ -1866,40 +1915,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 
 
 // only used for inset right now. should also be used for main text
-void TextMetrics::drawSelection(PainterInfo & pi, int x, int) const
+void TextMetrics::drawSelection(PainterInfo & pi,
+	DocIterator const & beg, DocIterator const & end, int x) const
 {
-	Cursor & cur = bv_->cursor();
-	if (!cur.selection())
-		return;
-	if (!ptr_cmp(cur.text(), text_))
-		return;
-	
-	//if the anchor is outside, this is not our selection 
-	if (!ptr_cmp(cur.anchor().text(), text_))		
-		return;
-
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< "draw selection at " << x
-		<< endl;
-
-	DocIterator beg = cur.selectionBegin();
-	DocIterator end = cur.selectionEnd();
-
-	// the selection doesn't touch the visible screen?
-	if (bv_funcs::status(bv_, beg) == bv_funcs::CUR_BELOW
-	    || bv_funcs::status(bv_, end) == bv_funcs::CUR_ABOVE)
-		return;
-
-	if (beg.pit() < par_metrics_.begin()->first) {
-		beg.pit() = par_metrics_.begin()->first;
-		beg.pos() = 0;
-	}
-	if (end.pit() > par_metrics_.rbegin()->first) {
-		end.pit() = par_metrics_.rbegin()->first;
-		end.pos() = end.lastpos();
-	}
-
 	ParagraphMetrics const & pm1 = par_metrics_[beg.pit()];
 	ParagraphMetrics const & pm2 = par_metrics_[end.pit()];
 	Row const & row1 = pm1.getRow(beg.pos(), beg.boundary());

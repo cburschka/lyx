@@ -1539,8 +1539,7 @@ void BufferView::draw(frontend::Painter & pain)
 	// FIXME: We should also distinguish DecorationUpdate to avoid text
 	// drawing if possible. This is not possible to do easily right now
 	// because of the single backing pixmap.
-	pi.full_repaint = select 
-		|| metrics_info_.update_strategy != SingleParUpdate;
+	pi.full_repaint = metrics_info_.update_strategy != SingleParUpdate;
 
 	if (pi.full_repaint)
 		// Clear background (if not delegated to rows)
@@ -1548,20 +1547,13 @@ void BufferView::draw(frontend::Painter & pain)
 			metrics_info_.y2 - metrics_info_.y1,
 			buffer_.inset().backgroundColor());
 
-	TextMetrics const & tm = text_metrics_[&text];
-
-	if (select)
-		tm.drawSelection(pi, 0, 0);
-
-	int yy = metrics_info_.y1;
-	// draw contents
 	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
-	for (pit_type pit = metrics_info_.p1; pit <= metrics_info_.p2; ++pit) {
-		ParagraphMetrics const & pm = tm.parMetrics(pit);
-		yy += pm.ascent();
-		tm.drawParagraph(pi, pit, 0, yy);
-		yy += pm.descent();
-	}
+	TextMetrics const & tm = text_metrics_[&text];
+	if (!pi.full_repaint)
+		tm.drawParagraph(pi, metrics_info_.p1, 0,
+		metrics_info_.y1 + tm.parMetrics(metrics_info_.p1).ascent());
+	else
+		tm.draw(pi, 0, metrics_info_.y1 + tm.parMetrics(metrics_info_.p1).ascent());
 	LYXERR(Debug::PAINTING) << "\n\t\t*** END DRAWING  ***" << endl;
 
 	// and grey out above (should not happen later)
