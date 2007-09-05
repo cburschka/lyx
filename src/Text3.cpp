@@ -1126,7 +1126,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		updateLabels(bv->buffer());
 		break;
 	case LFUN_NOTE_INSERT:
-	case LFUN_CHARSTYLE_INSERT:
+	case LFUN_FLEX_INSERT:
 	case LFUN_BOX_INSERT:
 	case LFUN_BRANCH_INSERT:
 	case LFUN_BIBITEM_INSERT:
@@ -1680,7 +1680,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_NOTE_INSERT:
 		code = Inset::NOTE_CODE;
 		break;
-	case LFUN_CHARSTYLE_INSERT:
+	case LFUN_FLEX_INSERT:
 		code = Inset::FLEX_CODE;
 		if (cur.buffer().params().getTextClass().insetlayouts().empty())
 			enable = false;

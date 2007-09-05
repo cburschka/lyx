@@ -619,7 +619,7 @@ void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 }
 
 
-void expandCharStyleInsert(Menu & tomenu, Buffer const * buf, std::string s)
+void expandFlexInsert(Menu & tomenu, Buffer const * buf, std::string s)
 {
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
@@ -635,7 +635,7 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf, std::string s)
 		docstring const label = cit->first;
 		if (cit->second.lyxtype == s)
 			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, 
-				label, FuncRequest(LFUN_CHARSTYLE_INSERT,
+				label, FuncRequest(LFUN_FLEX_INSERT,
 						label)));
 	}
 }
@@ -884,11 +884,11 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			break;
 
 		case MenuItem::CharStyles:
-			expandCharStyleInsert(tomenu, buf, "charstyle");
+			expandFlexInsert(tomenu, buf, "charstyle");
 			break;
 
 		case MenuItem::Custom:
-			expandCharStyleInsert(tomenu, buf, "custom");
+			expandFlexInsert(tomenu, buf, "custom");
 			break;
 
 		case MenuItem::FloatListInsert:

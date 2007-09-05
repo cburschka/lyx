@@ -238,7 +238,7 @@ void LyXAction::init()
 		{ LFUN_MENU_SEPARATOR_INSERT, "menu-separator-insert", Noop },
 		{ LFUN_META_PREFIX, "meta-prefix", NoBuffer },
 		{ LFUN_BRANCH_INSERT, "branch-insert", Noop },
-		{ LFUN_CHARSTYLE_INSERT, "charstyle-insert", Noop },
+		{ LFUN_FLEX_INSERT, "flex-insert", Noop },
 		{ LFUN_NOTE_INSERT, "note-insert", Noop },
 		{ LFUN_BOX_INSERT, "box-insert", Noop },
 		{ LFUN_NOTE_NEXT, "note-next", ReadOnly },

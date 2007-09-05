@@ -102,7 +102,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 		case LFUN_CLEARDOUBLEPAGE_INSERT:
 			return new InsetClearDoublePage;
 
-		case LFUN_CHARSTYLE_INSERT: {
+		case LFUN_FLEX_INSERT: {
 			string s = cmd.getArg(0);
 			TextClass tclass = params.getTextClass();
 			InsetLayout il = tclass.insetlayout(from_utf8(s));

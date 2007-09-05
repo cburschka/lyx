@@ -340,7 +340,7 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_MENU_OPEN:
 		case LFUN_MENU_SEPARATOR_INSERT:
 		case LFUN_BRANCH_INSERT:
-		case LFUN_CHARSTYLE_INSERT:
+		case LFUN_FLEX_INSERT:
 		case LFUN_NOTE_INSERT:
 		case LFUN_BOX_INSERT:
 		case LFUN_NOTE_NEXT:
