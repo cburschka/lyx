@@ -1,4 +1,4 @@
-#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -18262,7 +18262,7 @@ mm al final para tener la línea inferior exactamente bajo
 
 \begin_layout Standard
 La etiqueta de flotante no se traduce automáticamente al lenguaje del documento.
- Si tu documento no es en Inglés, tienes que hacerlo manualmente añadiendo
+ Si tu documento no es en inglés, tienes que hacerlo manualmente añadiendo
  la siguiente línea al preámbulo del documento
 \series bold
 :
@@ -18395,19 +18395,16 @@ algorithm
 
  en el lenguaje deseado.
 \newline
-
-\lang english
-To insert the list of algorithms you can in this case not use the menu 
+Para insertar la lista de algoritmos no puedes usar
+ en este caso el menú
 \family sans
-Insert\SpecialChar \menuseparator
-List\InsetSpace \thinspace{}
+ Insertar\SpecialChar \menuseparator
+Índice\InsetSpace \thinspace{}
 /\InsetSpace \thinspace{}
-TOC\SpecialChar \menuseparator
-List of Algorithms
+IG\SpecialChar \menuseparator
+Lista de algoritmos
 \family default
- but have to use this command in ERT instead:
-\lang spanish
-
+, sino que has de usar el comando en ERT:
 \newline
 
 \series bold
@@ -18415,16 +18412,12 @@ List of Algorithms
 \backslash
 listof{Xalgorithm}{Lista de algoritmos}
 \series default
-\lang english
 
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-
-\series medium
-\lang english
-is used at the end of this document
+Usado al final de este documento
 \end_layout
 
 \end_inset
@@ -30597,8 +30590,7 @@ status collapsed
 
  del paquete LaTeX 
 \series bold
-endf\SpecialChar \textcompwordmark{}
-loat
+endfloat
 \series default
 
 \begin_inset LatexCommand index
@@ -30642,9 +30634,7 @@ status collapsed
 
  del paquete LaTeX 
 \series bold
-f\SpecialChar \textcompwordmark{}
-loatf\SpecialChar \textcompwordmark{}
-lt
+floatflt
 \series default
 
 \begin_inset LatexCommand index
@@ -30937,7 +30927,7 @@ href{http://tug.org/PSTricks/main.cgi/}{
 
 \end_inset
 
-Página Web
+Página web
 \begin_inset ERT
 status collapsed
 
@@ -31023,7 +31013,7 @@ href{http://wiki.lyx.org/LyX/NewInLyX15}{
 
 \end_inset
 
-Página Wiki
+Página wiki
 \begin_inset ERT
 status collapsed
 
@@ -31068,7 +31058,7 @@ LyX\InsetSpace ~
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -31080,22 +31070,18 @@ listof{Xalgorithm}{Lista de algoritmos}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Standard
-
-\lang english
-see section\InsetSpace ~
+Véase la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Algoritmos-Flotantes"
 
 \end_inset
 
- for a description
+ para una descripción.
 \end_layout
 
 \end_inset
