@@ -177,8 +177,8 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 30.
- August 2007
+letzte Änderung: 3.
+ September 2007
 \end_layout
 
 \begin_layout Standard
@@ -11460,6 +11460,12 @@ name "horizontale Linien"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "Horizontale-Linien"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13703,6 +13709,22 @@ PostScript® kann nur
 .eps
 \family default
 -Versionen im Dokument zu verwenden.
+ 
+\end_layout
+
+\begin_layout Standard
+Sie können aber auch den 
+\family sans
+Konverter-Datei-Cache
+\family default
+ aktivieren, siehe Anhang\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Konverter-Datei-Cache"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -13763,6 +13785,21 @@ PDF-Dateien können Abbildungen im PDF-eigenen Grafikformat,
  Andere Grafikformate müssen von LyX zunächst konvertiert werden.
  Deswegen sollten Sie Ihre Abbildungen vorher in eines der drei Formate
  konvertieren und diese dann in Ihrem Dokument verwenden.
+\end_layout
+
+\begin_layout Standard
+Sie können aber auch den 
+\family sans
+Konverter-Datei-Cache
+\family default
+ aktivieren, siehe Anhang\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Konverter-Datei-Cache"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -15502,7 +15539,7 @@ r auch, wenn Sie mit der linken Maustaste in die Abbildung klicken.
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset Caption
@@ -16187,9 +16224,9 @@ name "GIF"
 \end_layout
 
 \begin_layout Itemize
-JP[E]G
+JPEG
 \begin_inset LatexCommand index
-name "G"
+name "JPEG"
 
 \end_inset
 
@@ -33132,6 +33169,8 @@ Farben Hier können Sie die Farben der verschiedenen LyX-Elemente ändern.
  Dabei wird nur die erste Änderung mit Übernehmen durchgeführt.
  Ab der zweiten müssen Sie die Änderung speichern und LyX neu starten.
  In der Dokumentation wird aber immer auf die Standardfarben Bezug genommen.
+\hfill
+x
 \end_layout
 
 \begin_deeper
@@ -33142,7 +33181,18 @@ Farben In diesem Unterfenster werden die von LyX verwendeten Farben für
 
 \begin_deeper
 \begin_layout Description
-Abstandsmarkierungen ???
+Abstandsmarkierungen ist die Farbe, in der zum Beispiel ein 
+\family sans
+HFill
+\family default
+ dargestellt wird, siehe Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "HFill"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -33184,17 +33234,21 @@ verfolgen
 \end_layout
 
 \begin_layout Description
-Befehlseinfügung ???
+Befehlseinfügung Wenn Sie zum Beispiel einen URL einfügen, können Sie hiermit
+ die Farbe der Beschriftung ändern.
 \end_layout
 
 \begin_layout Description
 Befehlseinfügung\InsetSpace ~
-(Hintergrund) ???
+(Hintergrund) Wenn Sie zum Beispiel einen URL einfügen,
+ können Sie hiermit die Farbe des Hintergrundes ändern, falls das zusehen
+ ist.
 \end_layout
 
 \begin_layout Description
 Befehlseinfügung\InsetSpace ~
-(Rahmen) ???
+(Rahmen) Wenn Sie zum Beispiel einen URL einfügen, können
+ Sie hiermit die Farbe des Rahmens ändern, falls das zusehen ist.
 \end_layout
 
 \begin_layout Description
@@ -33203,7 +33257,7 @@ Cursor ist die Cursorfarbe.
 
 \begin_layout Description
 Einfügung\InsetSpace ~
-(Hintergrund) ???
+(Hintergrund) wird nicht benutzt
 \end_layout
 
 \begin_layout Description
@@ -33214,13 +33268,19 @@ Einfügung\InsetSpace ~
 \begin_layout Description
 Einklappbare\InsetSpace ~
 Einfügung\InsetSpace ~
-(Rahmen) ???
+(Rahmen) ist die Farbe, mit der der Text einer einklappbare
+n Einfügung -- zum Beispiel eine Fußnote -- umrahmt wird.
 \end_layout
 
 \begin_layout Description
 Einklappbare\InsetSpace ~
 Einfügung\InsetSpace ~
-(Text) ???
+(Text) ist die Farbe, mit der der Name einer einklappbaren
+ Einfügung -- zum Beispiel eine 
+\family sans
+Fußnote
+\family default
+ -- geschrieben wird.
 \end_layout
 
 \begin_layout Description
@@ -33241,7 +33301,8 @@ verfolgen
 
 \begin_layout Description
 Grafik\InsetSpace ~
-(Hintergrund) ???
+(Hintergrund) ist die Farbe, mit der zum Beispiel der Hintergrund
+ von Schaltköpfen in LyX dargestellt wird.
 \end_layout
 
 \begin_layout Description
@@ -33285,17 +33346,22 @@ verfolgen
 Knopf\InsetSpace ~
 (Hintergrund\InsetSpace ~
 bei\InsetSpace ~
-Fokus) ???
+Fokus) ist die Farbe, mit der zum Beispiel der Hintergrund
+ von Einfügungen wie LyX-Code oder URL dargestellt wird, wenn der Cursor
+ darauf zeigt.
 \end_layout
 
 \begin_layout Description
 Knopf\InsetSpace ~
-(Hintergrund) ???
+(Hintergrund) ist die Farbe, mit der zum Beispiel der Hintergrund von
+ Einfügungen wie LyX-Code oder URL dargestellt wird, wenn der Cursor nicht
+ darauf zeigt.
 \end_layout
 
 \begin_layout Description
 Knopf\InsetSpace ~
-(Rahmen) ???
+(Rahmen) ist die Farbe, mit der der Rahmen solcher Einfügungen gezeichnet
+ wird.
 \end_layout
 
 \begin_layout Description
@@ -33360,31 +33426,64 @@ ERT
 
 \begin_layout Description
 Legende\InsetSpace ~
-(Rahmen) ???
+(Rahmen) ist die Farbe, mit der eine Legende (siehe Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Legende,-Legende-oben-unten"
+
+\end_inset
+
+) umrandet wird.
 \end_layout
 
 \begin_layout Description
-Mathe ???
-\end_layout
-
-\begin_layout Description
-Mathe\InsetSpace ~
-(Ecken) ???
-\end_layout
-
-\begin_layout Description
-Mathe\InsetSpace ~
-(Hintergrund) ???
-\end_layout
-
-\begin_layout Description
-Mathe\InsetSpace ~
-(Linie) ???
+Mathe ist die Farbe, mit der ein mathematischer Ausdruck geschrieben wird.
 \end_layout
 
 \begin_layout Description
 Mathe\InsetSpace ~
-(Rahmen) ???
+(Ecken) ist die Farbe, mit der ein mathematischer Ausdruck an den Ecken
+ 
+\emph on
+eingerahmt
+\emph default
+ wird, wenn der Cursor 
+\emph on
+nicht im Ausdruck
+\emph default
+ steht.
+ Wenn Sie mathematische Ausdrück in LyX leichter erkennen wollen, sollten
+ Sie diese Farbe ändern.
+\end_layout
+
+\begin_layout Description
+Mathe\InsetSpace ~
+(Hintergrund) ist die Hintergrundfarbe eines mathematischen Ausdrucks,
+ wenn der Cursor 
+\emph on
+nicht im Ausdruck
+\emph default
+ steht.
+\end_layout
+
+\begin_layout Description
+Mathe\InsetSpace ~
+(Linie) ist die Farbe, mit der das Rechteck umrahmt ist, in das Sie
+ etwas schreiben können.
+\end_layout
+
+\begin_layout Description
+Mathe\InsetSpace ~
+(Rahmen) ist die Farbe, mit der ein mathematischer Ausdruck an den
+ Ecken 
+\emph on
+eingerahmt
+\emph default
+ wird, wenn der Cursor 
+\emph on
+im Ausdruck
+\emph default
+ steht.
 \end_layout
 
 \begin_layout Description
@@ -33429,7 +33528,15 @@ X-Notiz.
 
 \begin_layout Description
 Obere/untere\InsetSpace ~
-Linie ???
+Linie ist die Farbe, in der zum Beispiel eine horizontale Linie
+ wie in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Horizontale-Linien"
+
+\end_inset
+
+ dargestellt wird
 \end_layout
 
 \begin_layout Description
@@ -33457,6 +33564,25 @@ Sprache ist die Farbe, mit der Textteile unterstrichen werden, der Sie eine
 Tabelle\InsetSpace ~
 (Linie) ist die Farbe, mit der die Trennlinien zwischen Tabellenzellen
  gezeichnet werden.
+\begin_inset Box Shadowbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+text
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -33547,7 +33673,7 @@ Vorlage\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Description
-Sicherungsverzeichnis ???
+Sicherungsverzeichnis In diesem Verzeichnis werden Backups gespeichert.
 \end_layout
 
 \begin_layout Description
@@ -33562,7 +33688,54 @@ status collapsed
 
 \end_inset
 
-X-Server-Weiterleitung ???
+X-Server-Weiterleitung Hier wird der Name einer Unix-Pipe angegeben.
+ Über diese werden Daten aus externen Programmen an LyX gesendet.
+\newline
+
+\series bold
+Beispiel
+\series default
+: Sie fügen eine Literatur-DB test.bib dem Dokument hinzu.
+ Diese test.bib können Sie per 
+\family sans
+JabRef
+\family default
+ bearbeiten.
+ In 
+\family sans
+JabRef
+\family default
+ ist unter 
+\family sans
+Einstellungen\SpecialChar \menuseparator
+Optionen\SpecialChar \menuseparator
+Externe Programme\SpecialChar \menuseparator
+Pfad\InsetSpace \space{}
+zur\InsetSpace \space{}
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Pipe
+\family default
+ der gleiche Eintrag wie hier einzutragen.
+\newline
+Wollen Sie sich jetzt auf einen
+ Eintrag aus der DB beziehen, wählen Sie den in JabRef aus und klicken auf
+ das LyX-Symbol.
+ Es wird in aktuellen LyX-Dokument an der Cursor-Position der Literaturverweis
+ eingefügt.
+\newline
+JabRef und LyX müssen natürlich beide laufen.
+ Unter Linux funktioniert das so, beim Mac sicher auch, bei MS -- keine
+ Ahnung, da gibt es glaube ich den Pipe-Mechanismus nicht.
 \end_layout
 
 \begin_layout Description
@@ -33681,7 +33854,15 @@ Ausgabe\InsetSpace ~
 an\InsetSpace ~
 den\InsetSpace ~
 Drucker\InsetSpace ~
-anpassen ???
+anpassen Diese Option, die für Experten da ist, aktiviert
+ eine Konfigurationsdatei für dvips.
+ Mehr darüber erfahren Sie mit dem Befehl 
+\family typewriter
+info dvips
+\family default
+.
+ Wenn Sie nicht verstehen, was dort gemacht wird, benötigen Sie diese Option
+ nicht.
 \end_layout
 
 \begin_layout Description
@@ -33925,9 +34106,39 @@ Zusatz-Flag manche Konvertierungsprogramme erlauben zusätzliche Flags (siehe
 \end_layout
 
 \begin_layout Description
-Konverter-Datei-Cache ???
+Konverter-Datei-Cache 
+\begin_inset LatexCommand label
+name "Konverter-Datei-Cache"
+
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Description
+Aktiv Wenn Sie dies ankreuzen, werden Konversionen solange zwischengespeichert,
+ wie in 
+\family sans
+Maximales\InsetSpace ~
+Alter\InsetSpace ~
+(in\InsetSpace ~
+Tagen)
+\family default
+ angegeben.
+ Das bedeutet zum Beispiel, dass Grafiken nicht jedesmal konvertiert werden
+ müssen, wenn Sie ein Dokument öffnen.
+ Sie werden einfach aus dem Cache gelesen.
+\end_layout
+
+\begin_layout Description
+Maximales\InsetSpace ~
+Alter\InsetSpace ~
+(in\InsetSpace ~
+Tagen) Aufbewahreungszeit
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 Damit eine Änderung wirksam wird, müssen Sie auf Ä
 \family sans
@@ -33986,27 +34197,60 @@ Entfernen Hiermit entfernen Sie das Element aus der Liste
 \end_layout
 
 \begin_layout Description
-Dokumentenformat ???
+Dokumentenformat Wenn dies angekreuzt ist, kann dieer Typ Dokumente enthalten.
 \end_layout
 
 \begin_layout Description
-Vektorgrafik-Format ???
+Vektorgrafik-Format Wenn dies angekreuzt ist, kann dieer Typ Vektorgrafiken
+ enthalten.
 \end_layout
 
 \begin_layout Description
-Format ???
+Format ist das Kürzel für das Dateiformat und oft mit 
+\family sans
+\series bold
+Dateiendung
+\family default
+\emph on
+ 
+\series default
+\emph default
+identisch.
 \end_layout
 
 \begin_layout Description
-GUI-Name ???
+GUI-Name ist der Name, der in den Menüs 
+\family sans
+Datei\SpecialChar \menuseparator
+Exportieren
+\family default
+, 
+\family sans
+Ansicht\SpecialChar \menuseparator
+\SpecialChar \ldots{}
+
+\family default
+ usw.\InsetSpace \space{}
+zu sehen ist.
 \end_layout
 
 \begin_layout Description
-Kürzel ???
+Kürzel ist der Buchstabe, mit der der zugehörige Befehl in den entsprechenden
+ Menüs gestartet werden kann -- zum Beispiel 
+\family sans
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+H
+\family default
+ für den Dateiexport nach HTML.
 \end_layout
 
 \begin_layout Description
-Dateiendung ???
+Dateiendung wie üblich das, was nach dem Komma steht (zm Beispiel Datei.
+\family typewriter
+lyx
+\family default
+).
 \end_layout
 
 \begin_layout Description
@@ -34020,7 +34264,15 @@ reference "Tipp-für-xdvi"
 \end_layout
 
 \begin_layout Description
-Bearbeiter ???
+Bearbeiter ist der Name des Programms, mit dem Sie dieses Dateiformat aus
+ LyX heraus bearbeiten können.
+ Dies gilt auch für 
+\family sans
+\series bold
+Betrachter
+\family default
+\series default
+.
 \end_layout
 
 \begin_layout Standard
@@ -34069,7 +34321,18 @@ Entfernen Hiermit entfernen Sie das Element aus der Liste
 \end_layout
 
 \begin_layout Description
-Format ???
+Format enthält eine Liste von Dateiformaten, für die ein 
+\family sans
+\series bold
+Kopierer
+\family default
+\series default
+ definiert werden kann.
+ Siehe auch 
+\emph on
+Anpassung
+\emph default
+-Handbuch.
 \end_layout
 
 \begin_layout Description
@@ -34171,7 +34434,7 @@ Standard-Familie
 
 \begin_deeper
 \begin_layout Description
-Basisgröße ???
+Basisgröße ist die Fontgröße in Punkten, die das Dokument verwendet.
 \end_layout
 
 \end_deeper
@@ -34186,7 +34449,9 @@ Serifenfrei
 \begin_deeper
 \begin_layout Description
 Skalierung\InsetSpace ~
-% ???
+(%) Wenn Sie zum Beispiel den benutzten 11pt-Palatino-Font durch
+ Helvetica ersetzen, sieht das Ergebnis wahrscheinlich zu groß aus.
+ Wenn Sie es dann auf 95% herunterskalieren, wird es richtig aussehen.
 \end_layout
 
 \end_deeper
@@ -34197,19 +34462,34 @@ Schreibmaschine
 \begin_deeper
 \begin_layout Description
 Skalierung\InsetSpace ~
-% ???
+(%) siehe oben.
 \end_layout
 
 \end_deeper
 \begin_layout Description
 Echte\InsetSpace ~
 Kapitälchen\InsetSpace ~
-verwenden ???
+verwenden bedeutet, einen echten Font zu benutzen, anstatt
+ Kapitälchen durch herunterskalieren von Großbuchstaben zu simulieren.
 \end_layout
 
 \begin_layout Description
 Mediävalziffern\InsetSpace ~
-verwenden ???
+verwenden bedeutet, Ziffern zu verwenden die unter die Grundlinie
+ reichen wie zum Beispiel die 3.
+ Weitere Erkärungen hierzu finden Sie hier: 
+\begin_inset LatexCommand url
+target "http://de.wikipedia.org/wiki/Mediävalziffer"
+
+\end_inset
+
+ und 
+\begin_inset LatexCommand url
+target "http://www.fonts.com/AboutFonts/Articles/fyti/OldstyleFigs.htm"
+
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
@@ -34232,7 +34512,7 @@ reference "Absatz-einrücken"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
@@ -34242,7 +34522,7 @@ reference "Dokument-Einstellungen"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
