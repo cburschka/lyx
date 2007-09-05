@@ -94,7 +94,6 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 		status_(rhs.status_),
 		openinlined_(rhs.openinlined_),
 		autoOpen_(rhs.autoOpen_),
-		textdim_(rhs.textdim_),
 		// the sole purpose of this copy constructor
 		mouse_hover_(false)
 {
@@ -208,16 +207,17 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = dimensionCollapsed();
 		if (geometry() == TopButton
 		 || geometry() == LeftButton) {
-			InsetText::metrics(mi, textdim_);
-			openinlined_ = (textdim_.wid + dim.wid) < mi.base.textwidth;
+			Dimension textdim;
+			InsetText::metrics(mi, textdim);
+			openinlined_ = (textdim.wid + dim.wid) < mi.base.textwidth;
 			if (openinlined_) {
 				// Correct for button width.
-				dim.wid += textdim_.wid;
-				dim.des = max(dim.des - textdim_.asc + dim.asc, textdim_.des);
-				dim.asc = textdim_.asc;
+				dim.wid += textdim.wid;
+				dim.des = max(dim.des - textdim.asc + dim.asc, textdim.des);
+				dim.asc = textdim.asc;
 			} else {
-				dim.des += textdim_.height() + TEXT_TO_BOTTOM_OFFSET;
-				dim.wid = max(dim.wid, textdim_.wid);
+				dim.des += textdim.height() + TEXT_TO_BOTTOM_OFFSET;
+				dim.wid = max(dim.wid, textdim.wid);
 				if (hasFixedWidth())
 					dim.wid = max(dim.wid, mi.base.textwidth);
 			}
@@ -270,25 +270,25 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	switch (geometry()) {
 	case LeftButton:
 		textx = xx + dimc.width();
-		texty = top + textdim_.asc;
+		texty = top;
 		InsetText::draw(pi, textx, texty);
 		break;
 	case TopButton:
 		textx = xx;
-		texty = top + dimc.height() + textdim_.asc;
+		texty = top + dimc.height();
 		InsetText::draw(pi, textx, texty);
 		break;
 	case ButtonOnly:
 		break;
 	case NoButton:
 		textx = xx;
-		texty = y + textdim_.asc;
+		texty = y;
 		InsetText::draw(pi, textx, texty);
 		break;
 	case SubLabel:
 	case Corners:
 		textx = xx;
-		texty = y + textdim_.asc;
+		texty = y;
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(false);
 		InsetText::draw(pi, textx, texty);
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
@@ -364,7 +364,7 @@ void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
 		InsetText::drawSelection(pi, x, y);
 		break;
 	case TopButton:
-		y += dimensionCollapsed().des + textdim_.asc;
+		y += dimensionCollapsed().des;
 		InsetText::drawSelection(pi, x, y);
 		break;
 	case ButtonOnly:
@@ -391,7 +391,7 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 		break;
 	case TopButton:
 		y += dimensionCollapsed().height() - ascent()
-			+ TEXT_TO_INSET_OFFSET + textdim_.asc;
+			+ TEXT_TO_INSET_OFFSET;
 		break;
 	case NoButton:
 	case SubLabel:

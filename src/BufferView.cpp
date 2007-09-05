@@ -1551,7 +1551,7 @@ void BufferView::draw(frontend::Painter & pain)
 		tm.drawParagraph(pi, metrics_info_.p1, 0,
 		metrics_info_.y1 + tm.parMetrics(metrics_info_.p1).ascent());
 	else
-		tm.draw(pi, 0, metrics_info_.y1 + tm.parMetrics(metrics_info_.p1).ascent());
+		tm.draw(pi, 0, metrics_info_.y1);
 	LYXERR(Debug::PAINTING) << "\n\t\t*** END DRAWING  ***" << endl;
 
 	// and grey out above (should not happen later)

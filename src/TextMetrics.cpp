@@ -1806,7 +1806,6 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 
 	ParMetricsCache::const_iterator it = par_metrics_.begin();
 	ParMetricsCache::const_iterator const pm_end = par_metrics_.end();
-	y -= it->second.ascent();
 	for (; it != pm_end; ++it) {
 		ParagraphMetrics const & pmi = it->second;
 		y += pmi.ascent();

@@ -168,8 +168,6 @@ private:
 	mutable bool openinlined_;
 	/// the inset will automatically open when the cursor is inside
 	mutable bool autoOpen_;
-	///
-	mutable Dimension textdim_;
 	/// changes color when mouse enters/leaves this inset
 	bool mouse_hover_;
 };
