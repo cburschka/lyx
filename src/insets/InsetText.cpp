@@ -188,8 +188,8 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	if (drawFrame_ || pi.full_repaint) {
 		int const w = hasFixedWidth() ? 
 			tm.maxWidth() : tm.width() + 2 * border_;
-		int const a = tm.ascent() + border_;
-		int const h = a + tm.descent() + border_;
+		int const a = border_;
+		int const h = a + tm.height() + border_;
 		if (pi.full_repaint)
 			pi.pain.fillRectangle(x, y - a, w, h, backgroundColor());
 		if (drawFrame_)
