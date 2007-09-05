@@ -1681,7 +1681,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = Inset::NOTE_CODE;
 		break;
 	case LFUN_CHARSTYLE_INSERT:
-		code = Inset::CHARSTYLE_CODE;
+		code = Inset::FLEX_CODE;
 		if (cur.buffer().params().getTextClass().insetlayouts().empty())
 			enable = false;
 		break;

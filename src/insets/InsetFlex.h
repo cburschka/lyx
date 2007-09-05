@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file InsetCharStyle.h
+ * \file InsetFlex.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,8 +10,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef INSETCHARSTYLE_H
-#define INSETCHARSTYLE_H
+#ifndef INSETFLEX_H
+#define INSETFLEX_H
 
 #include "InsetCollapsable.h"
 #include "TextClass.h"
@@ -20,7 +20,7 @@
 namespace lyx {
 
 
-class InsetCharStyleParams {
+class InsetFlexParams {
 public:
 	///
 	void write(std::ostream & os) const;
@@ -31,17 +31,15 @@ public:
 };
 
 
-/** The CharStyle inset, also XML short element
+/** The Flex inset, e.g., CharStyle, Custom inset or XML short element
 
 */
-class InsetCharStyle : public InsetCollapsable {
+class InsetFlex : public InsetCollapsable {
 public:
-	/// Construct an undefined character style
-	InsetCharStyle(BufferParams const &, std::string const);
 	///
-	InsetCharStyle(BufferParams const &, InsetLayout);
+	InsetFlex(BufferParams const &, InsetLayout);
 	///
-	docstring name() const { return from_ascii("CharStyle"); }
+	docstring name() const { return from_ascii("Flex"); }
 	/// Is this character style defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;
@@ -50,7 +48,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	Inset::Code lyxCode() const { return Inset::CHARSTYLE_CODE; }
+	Inset::Code lyxCode() const { return Inset::FLEX_CODE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
@@ -74,24 +72,24 @@ public:
 	virtual void textString(Buffer const &, odocstream &) const;
 
 	///
-	InsetCharStyleParams const & params() const { return params_; }
+	InsetFlexParams const & params() const { return params_; }
 
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
 
 protected:
-	InsetCharStyle(InsetCharStyle const &);
+	InsetFlex(InsetFlex const &);
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 private:
-	friend class InsetCharStyleParams;
+	friend class InsetFlexParams;
 
 	virtual Inset * clone() const;
 
 	///
-	InsetCharStyleParams params_;
+	InsetFlexParams params_;
 };
 
 

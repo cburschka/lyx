@@ -38,7 +38,7 @@
 #include "ParIterator.h"
 #include "Undo.h"
 
-#include "insets/InsetCharStyle.h"
+#include "insets/InsetFlex.h"
 #include "insets/InsetTabular.h"
 
 #include "mathed/MathData.h"
@@ -442,24 +442,24 @@ void switchBetweenClasses(TextClass_ptr const & c1,
 	// character styles
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		if (it->lyxCode() == Inset::CHARSTYLE_CODE) {
-			InsetCharStyle & inset =
-				static_cast<InsetCharStyle &>(*it);
+		if (it->lyxCode() == Inset::FLEX_CODE) {
+			InsetFlex & inset =
+				static_cast<InsetFlex &>(*it);
 			string const name = inset.params().name;
 			InsetLayout const il = 
 				tclass2.insetlayout(from_utf8(name));
 			inset.setLayout(il);
 			if (il.labelstring == from_utf8("UNDEFINED")) {
-				// The character style is undefined in tclass2
+				// The flex inset is undefined in tclass2
 				docstring const s = bformat(_(
-					"Character style %1$s is "
+					"Flex inset %1$s is "
 					"undefined because of class "
 					"conversion from\n%2$s to %3$s"),
 					 from_utf8(name), from_utf8(tclass1.name()),
 					 from_utf8(tclass2.name()));
 				// To warn the user that something had to be done.
 				errorlist.push_back(ErrorItem(
-					_("Undefined character style"),
+					_("Undefined flex inset"),
 					s, it.paragraph().id(),	it.pos(), it.pos() + 1));
 			} 
 		}

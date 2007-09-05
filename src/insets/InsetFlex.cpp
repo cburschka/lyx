@@ -1,5 +1,5 @@
 /**
- * \file InsetCharStyle.cpp
+ * \file InsetFlex.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "InsetCharStyle.h"
+#include "InsetFlex.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -44,14 +44,7 @@ using std::string;
 using std::ostream;
 
 
-InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
-	: InsetCollapsable(bp, Collapsed)
-{
-	params_.name = s;
-}
-
-
-InsetCharStyle::InsetCharStyle(BufferParams const & bp,
+InsetFlex::InsetFlex(BufferParams const & bp,
 				InsetLayout il)
 	: InsetCollapsable(bp, Collapsed)
 {
@@ -60,50 +53,50 @@ InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 }
 
 
-InsetCharStyle::InsetCharStyle(InsetCharStyle const & in)
+InsetFlex::InsetFlex(InsetFlex const & in)
 	: InsetCollapsable(in), params_(in.params_)
 {}
 
 
-Inset * InsetCharStyle::clone() const
+Inset * InsetFlex::clone() const
 {
-	return new InsetCharStyle(*this);
+	return new InsetFlex(*this);
 }
 
 
-bool InsetCharStyle::undefined() const
+bool InsetFlex::undefined() const
 {
 	return layout_.labelstring == from_utf8("UNDEFINED");
 }
 
 
-void InsetCharStyle::setLayout(InsetLayout il)
+void InsetFlex::setLayout(InsetLayout il)
 {
 	layout_ = il;
 }
 
 
-docstring const InsetCharStyle::editMessage() const
+docstring const InsetFlex::editMessage() const
 {
 	return _("Opened CharStyle Inset");
 }
 
 
-void InsetCharStyle::write(Buffer const & buf, ostream & os) const
+void InsetFlex::write(Buffer const & buf, ostream & os) const
 {
 	params_.write(os);
 	InsetCollapsable::write(buf, os);
 }
 
 
-void InsetCharStyle::read(Buffer const & buf, Lexer & lex)
+void InsetFlex::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
 }
 
 
-bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetFlex::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Font tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
@@ -115,7 +108,7 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
+void InsetFlex::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 
@@ -128,19 +121,19 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCharStyle::getDrawFont(Font & font) const
+void InsetFlex::getDrawFont(Font & font) const
 {
 	font = layout_.font;
 }
 
 
-void InsetCharStyle::doDispatch(Cursor & cur, FuncRequest & cmd)
+void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	InsetCollapsable::doDispatch(cur, cmd);
 }
 
 
-bool InsetCharStyle::getStatus(Cursor & cur, FuncRequest const & cmd,
+bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
@@ -157,14 +150,14 @@ bool InsetCharStyle::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetCharStyle::plaintext(Buffer const & buf, odocstream & os,
+int InsetFlex::plaintext(Buffer const & buf, odocstream & os,
 			      OutputParams const & runparams) const
 {
 	return InsetText::plaintext(buf, os, runparams);
 }
 
 
-int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
+int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 			    OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
@@ -189,19 +182,19 @@ int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-void InsetCharStyle::textString(Buffer const & buf, odocstream & os) const
+void InsetFlex::textString(Buffer const & buf, odocstream & os) const
 {
 	os << paragraphs().begin()->asString(buf, true);
 }
 
 
-void InsetCharStyleParams::write(ostream & os) const
+void InsetFlexParams::write(ostream & os) const
 {
 	os << "CharStyle " << name << "\n";
 }
 
 
-void InsetCharStyleParams::read(Lexer & lex)
+void InsetFlexParams::read(Lexer & lex)
 {
 	while (lex.isOK()) {
 		lex.next();

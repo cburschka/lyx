@@ -639,7 +639,7 @@ InsetCollapsable::Decoration InsetCollapsable::decoration() const
 		return Minimalistic;
 	if (layout_.decoration == "conglomerate")
 		return Conglomerate;
-	if (name() == from_ascii("CharStyle"))
+	if (name() == from_ascii("Flex"))
 		return Conglomerate;
 	return Classic;
 }
@@ -680,7 +680,7 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
 	// Force inclusion of preamble snippet in layout file
-	features.addPreambleSnippet(layout_.preamble);
+	features.require(layout_.name);
 	InsetText::validate(features);
 }
 

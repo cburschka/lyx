@@ -352,7 +352,7 @@ public:
 		///
 		BOX_CODE,
 		///
-		CHARSTYLE_CODE,
+		FLEX_CODE,
 		///
 		VSPACE_CODE,
 		///

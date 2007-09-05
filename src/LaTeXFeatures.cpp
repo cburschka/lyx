@@ -719,11 +719,13 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 		tcpreamble << tclass[*cit]->preamble();
 	}
 
-	CharStyles::iterator cs = tclass.charstyles().begin();
-	CharStyles::iterator csend = tclass.charstyles().end();
-	for (; cs != csend; ++cs) {
-		if (isRequired(cs->name))
-			tcpreamble << cs->preamble;
+	InsetLayouts const & insetlayouts = tclass.insetlayouts();
+	InsetLayouts::const_iterator cit2 = insetlayouts.begin();
+	InsetLayouts::const_iterator end2 = insetlayouts.end();
+	for (; cit2 != end2; ++cit2) {
+		if (isRequired(to_utf8(cit2->first))) {
+			tcpreamble << from_utf8(cit2->second.preamble);
+		}
 	}
 
 	return tcpreamble.str();

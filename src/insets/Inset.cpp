@@ -98,7 +98,7 @@ static TranslatorMap const build_translator()
 		InsetName("line", Inset::LINE_CODE),
 		InsetName("branch", Inset::BRANCH_CODE),
 		InsetName("box", Inset::BOX_CODE),
-		InsetName("charstyle", Inset::CHARSTYLE_CODE),
+		InsetName("flex", Inset::FLEX_CODE),
 		InsetName("vspace", Inset::VSPACE_CODE),
 		InsetName("mathmacroarg", Inset::MATHMACROARG_CODE),
 		InsetName("listings", Inset::LISTINGS_CODE),

@@ -46,9 +46,6 @@ public:
 };
 
 
-/// List of semantically defined character style insets
-typedef std::vector<InsetLayout> CharStyles;
-
 /// List of inset layouts
 typedef std::map<docstring, InsetLayout> InsetLayouts;
 
@@ -115,8 +112,6 @@ public:
 	FloatList const & floats() const;
 	/// The Counters present in this document class.
 	Counters & counters() const;
-	/// CharStyles of this doc class
-	CharStyles & charstyles() const { return charstylelist_; };
 	/// Inset layouts of this doc class
 	InsetLayouts & insetlayouts() const { return insetlayoutlist_; };
 	///
@@ -254,8 +249,6 @@ private:
 
 	/// Paragraph styles used in this layout
 	LayoutList layoutlist_;
-	/// CharStyles available to this layout
-	mutable CharStyles charstylelist_;
 
 	/// Input layouts available to this layout
 	mutable InsetLayouts insetlayoutlist_;

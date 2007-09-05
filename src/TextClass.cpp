@@ -694,6 +694,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		case IL_FONT:
 			font.lyxRead(lexrc);
 			font.realize(defaultfont());
+			// So: define font before labelfont
 			labelfont = font;
 			break;
 		case IL_BGCOLOR: {

@@ -26,7 +26,7 @@
 #include "insets/InsetBibtex.h"
 #include "insets/InsetCaption.h"
 #include "insets/InsetCitation.h"
-#include "insets/InsetCharStyle.h"
+#include "insets/InsetFlex.h"
 #include "insets/InsetEnvironment.h"
 #include "insets/InsetERT.h"
 #include "insets/InsetListings.h"
@@ -106,7 +106,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			string s = cmd.getArg(0);
 			TextClass tclass = params.getTextClass();
 			InsetLayout il = tclass.insetlayout(from_utf8(s));
-			return new InsetCharStyle(params, il);
+			return new InsetFlex(params, il);
 		}
 
 		case LFUN_NOTE_INSERT: {
@@ -474,7 +474,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			lex.next();
 			string s = lex.getString();
 			InsetLayout il = tclass.insetlayout(from_utf8(s));
-			inset.reset(new InsetCharStyle(buf.params(), il));
+			inset.reset(new InsetFlex(buf.params(), il));
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf.params(),
 						    InsetBranchParams()));
