@@ -427,11 +427,8 @@ if use_vc:
     CCFLAGS_required.append('/EHsc')
     if mode == 'debug':
         CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MDd'])
-        # the flags are also needed in C mode (for intl lib)
-        C_CCFLAGS.extend(['/wd4819', '/wd4996', '/nologo', '/MDd'])
     else:
         CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
-        C_CCFLAGS.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
 
 # for debug/release mode
 if env.has_key('optimization') and env['optimization'] is not None:
