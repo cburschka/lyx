@@ -12,6 +12,7 @@
 #ifndef GUIEMBEDDEDFILES_H
 #define GUIEMBEDDEDFILES_H
 
+#include "GuiDialog.h"
 #include "EmbeddedFiles.h"
 #include "ControlEmbeddedFiles.h"
 #include "ui_EmbeddedFilesUi.h"
@@ -19,12 +20,12 @@
 namespace lyx {
 namespace frontend {
 
-class GuiEmbeddedFiles;
-
-class GuiEmbeddedFilesDialog : public QWidget, public Ui::GuiEmbeddedFilesUi {
+class GuiEmbeddedFilesDialog : public GuiDialog, public Ui::GuiEmbeddedFilesUi
+{
 	Q_OBJECT
+
 public:
-	GuiEmbeddedFilesDialog(GuiEmbeddedFiles * form);
+	GuiEmbeddedFilesDialog(LyXView & lv);
 
 public Q_SLOTS:
 	///
@@ -43,22 +44,10 @@ public Q_SLOTS:
 	void on_addPB_clicked();
 	//
 	void on_extractPB_clicked();
+
 private:
+	ControlEmbeddedFiles & controller() const;
 	void set_embedding_status(EmbeddedFile::STATUS);
-	///
-	GuiEmbeddedFiles * form_;
-};
-
-
-class GuiEmbeddedFiles : public QObject, public ControlEmbeddedFiles
-{
-	Q_OBJECT
-public:
-	/// Constructor
-	GuiEmbeddedFiles(Dialog & dialog)
-		: ControlEmbeddedFiles(dialog) {}
-	///
-	virtual ~GuiEmbeddedFiles() {}
 };
 
 } // namespace frontend

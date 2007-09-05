@@ -12,7 +12,7 @@
 #ifndef GUIPREFS_H
 #define GUIPREFS_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlPrefs.h"
 #include "Color.h"
 #include "LyXRC.h"
@@ -48,14 +48,14 @@ class Movers;
 
 namespace frontend {
 
-class GuiPrefs;
+class GuiPrefsDialog;
 
 class PrefModule : public QWidget
 {
 	Q_OBJECT
 public:
 	PrefModule(docstring const & t,
-			GuiPrefs * form = 0, QWidget * parent = 0)
+			GuiPrefsDialog * form = 0, QWidget * parent = 0)
 		: QWidget(parent), title_(t), form_(form)
 	{}
 
@@ -66,14 +66,14 @@ public:
 
 protected:
 	docstring title_;
-	GuiPrefs * form_;
+	GuiPrefsDialog * form_;
 
 Q_SIGNALS:
 	void changed();
 };
 
 
-class PrefPlaintext :  public PrefModule, public Ui::PrefPlaintextUi
+class PrefPlaintext : public PrefModule, public Ui::PrefPlaintextUi
 {
 	Q_OBJECT
 public:
@@ -84,7 +84,7 @@ public:
 };
 
 
-class PrefDate :  public PrefModule, public Ui::PrefDateUi
+class PrefDate : public PrefModule, public Ui::PrefDateUi
 {
 	Q_OBJECT
 public:
@@ -95,11 +95,11 @@ public:
 };
 
 
-class PrefKeyboard :  public PrefModule, public Ui::PrefKeyboardUi
+class PrefKeyboard : public PrefModule, public Ui::PrefKeyboardUi
 {
 	Q_OBJECT
 public:
-	PrefKeyboard(GuiPrefs * form, QWidget * parent = 0);
+	PrefKeyboard(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
@@ -114,22 +114,22 @@ private:
 };
 
 
-class PrefLatex :  public PrefModule, public Ui::PrefLatexUi
+class PrefLatex : public PrefModule, public Ui::PrefLatexUi
 {
 	Q_OBJECT
 public:
-	PrefLatex(GuiPrefs * form, QWidget * parent = 0);
+	PrefLatex(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
 };
 
 
-class PrefScreenFonts :  public PrefModule, public Ui::PrefScreenFontsUi
+class PrefScreenFonts : public PrefModule, public Ui::PrefScreenFontsUi
 {
 	Q_OBJECT
 public:
-	PrefScreenFonts(GuiPrefs * form, QWidget * parent = 0);
+	PrefScreenFonts(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
@@ -141,11 +141,11 @@ private Q_SLOTS:
 };
 
 
-class PrefColors :  public PrefModule, public Ui::PrefColorsUi
+class PrefColors : public PrefModule, public Ui::PrefColorsUi
 {
 	Q_OBJECT
 public:
-	PrefColors(GuiPrefs * form, QWidget * parent = 0);
+	PrefColors(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -165,7 +165,7 @@ private:
 };
 
 
-class PrefDisplay :  public PrefModule, public Ui::PrefDisplayUi
+class PrefDisplay : public PrefModule, public Ui::PrefDisplayUi
 {
 	Q_OBJECT
 public:
@@ -176,11 +176,11 @@ public:
 };
 
 
-class PrefPaths :  public PrefModule, public Ui::PrefPathsUi
+class PrefPaths : public PrefModule, public Ui::PrefPathsUi
 {
 	Q_OBJECT
 public:
-	PrefPaths(GuiPrefs * form, QWidget * parent = 0);
+	PrefPaths(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -195,11 +195,11 @@ private Q_SLOTS:
 };
 
 
-class PrefSpellchecker :  public PrefModule, public Ui::PrefSpellcheckerUi
+class PrefSpellchecker : public PrefModule, public Ui::PrefSpellcheckerUi
 {
 	Q_OBJECT
 public:
-	PrefSpellchecker(GuiPrefs * form, QWidget * parent = 0);
+	PrefSpellchecker(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -209,11 +209,11 @@ private Q_SLOTS:
 };
 
 
-class PrefConverters :  public PrefModule, public Ui::PrefConvertersUi
+class PrefConverters : public PrefModule, public Ui::PrefConvertersUi
 {
 	Q_OBJECT
 public:
-	PrefConverters(GuiPrefs * form, QWidget * parent = 0);
+	PrefConverters(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -233,11 +233,11 @@ private:
 };
 
 
-class PrefCopiers :  public PrefModule, public Ui::PrefCopiersUi
+class PrefCopiers : public PrefModule, public Ui::PrefCopiersUi
 {
 	Q_OBJECT
 public:
-	PrefCopiers(GuiPrefs * form, QWidget * parent = 0);
+	PrefCopiers(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -257,11 +257,11 @@ private:
 };
 
 
-class PrefFileformats :  public PrefModule, public Ui::PrefFileformatsUi
+class PrefFileformats : public PrefModule, public Ui::PrefFileformatsUi
 {
 	Q_OBJECT
 public:
-	PrefFileformats(GuiPrefs * form, QWidget * parent = 0);
+	PrefFileformats(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -281,7 +281,7 @@ private Q_SLOTS:
 };
 
 
-class PrefLanguage :  public PrefModule, public Ui::PrefLanguageUi
+class PrefLanguage : public PrefModule, public Ui::PrefLanguageUi
 {
 	Q_OBJECT
 public:
@@ -295,7 +295,7 @@ private:
 };
 
 
-class PrefPrinter :  public PrefModule, public Ui::PrefPrinterUi
+class PrefPrinter : public PrefModule, public Ui::PrefPrinterUi
 {
 	Q_OBJECT
 public:
@@ -306,11 +306,11 @@ public:
 };
 
 
-class PrefUserInterface :  public PrefModule, public Ui::PrefUi
+class PrefUserInterface : public PrefModule, public Ui::PrefUi
 {
 	Q_OBJECT
 public:
-	PrefUserInterface(GuiPrefs * form, QWidget * parent = 0);
+	PrefUserInterface(GuiPrefsDialog * form, QWidget * parent = 0);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
@@ -323,7 +323,7 @@ public Q_SLOTS:
 };
 
 
-class PrefIdentity :  public PrefModule, public Ui::PrefIdentityUi
+class PrefIdentity : public PrefModule, public Ui::PrefIdentityUi
 {
 	Q_OBJECT
 public:
@@ -334,11 +334,11 @@ public:
 };
 
 ///
-class GuiPrefsDialog : public QDialog, public Ui::PrefsUi
+class GuiPrefsDialog : public GuiDialog, public Ui::PrefsUi
 {
 	Q_OBJECT
 public:
-	GuiPrefsDialog(GuiPrefs *);
+	GuiPrefsDialog(LyXView & lv);
 
 	void apply(LyXRC & rc) const;
 	void updateRc(LyXRC const & rc);
@@ -346,43 +346,27 @@ public:
 public Q_SLOTS:
 	void change_adaptor();
 
-protected:
+public:
+	//
 	void closeEvent(QCloseEvent * e);
-
-private:
+	///
 	void add(PrefModule * module);
+	///
+	Converters & converters();
+	///
+	Formats & formats();
+	///
+	Movers & movers();
+	/// parent controller
+	ControlPrefs & controller() const;
+	/// Apply changes
+	void applyView();
+	/// update (do we need this?)
+	void update_contents();
 
-private:
-	GuiPrefs * form_;
 	std::vector<PrefModule *> modules_;
 };
 
-
-class GuiPrefs : public GuiView<GuiPrefsDialog>
-{
-public:
-	GuiPrefs(GuiDialog &);
-
-	Converters & converters();
-	Formats & formats();
-	Movers & movers();
-	/// parent controller
-	ControlPrefs & controller()
-	{ return static_cast<ControlPrefs &>(this->getController()); }
-	/// parent controller
-	ControlPrefs const & controller() const
-	{ return static_cast<ControlPrefs const &>(this->getController()); }
-private:
-	/// Apply changes
-	virtual void applyView();
-
-	/// update (do we need this?)
-	virtual void update_contents();
-
-	/// build the dialog
-	virtual void build_dialog();
-
-};
 
 } // namespace frontend
 } // namespace lyx

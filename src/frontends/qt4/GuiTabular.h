@@ -15,96 +15,71 @@
 #ifndef GUITABULAR_H
 #define GUITABULAR_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlTabular.h"
 #include "ui_TabularUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiTabular;
-
-class GuiTabularDialog : public QDialog, public Ui::TabularUi
+class GuiTabularDialog : public GuiDialog, public Ui::TabularUi
 {
 	Q_OBJECT
+
 public:
-	GuiTabularDialog(GuiTabular * form);
+	GuiTabularDialog(LyXView & lv);
 
-protected Q_SLOTS:
-	virtual void change_adaptor();
+private Q_SLOTS:
+	void change_adaptor();
 
-	virtual void topspace_changed();
-	virtual void bottomspace_changed();
-	virtual void interlinespace_changed();
-	virtual void booktabsChanged(bool);
-	virtual void close_clicked();
-	virtual void borderSet_clicked();
-	virtual void borderUnset_clicked();
-	virtual void leftBorder_changed();
-	virtual void rightBorder_changed();
-	virtual void topBorder_changed();
-	virtual void bottomBorder_changed();
-	virtual void multicolumn_clicked();
-	virtual void rotateTabular();
-	virtual void rotateCell();
-	virtual void hAlign_changed(int align);
-	virtual void vAlign_changed(int align);
-	virtual void specialAlignment_changed();
-	virtual void width_changed();
-	virtual void longTabular();
-	virtual void ltNewpage_clicked();
-	virtual void ltHeaderStatus_clicked();
-	virtual void ltHeaderBorderAbove_clicked();
-	virtual void ltHeaderBorderBelow_clicked();
-	virtual void ltFirstHeaderStatus_clicked();
-	virtual void ltFirstHeaderBorderAbove_clicked();
-	virtual void ltFirstHeaderBorderBelow_clicked();
-	virtual void ltFirstHeaderEmpty_clicked();
-	virtual void ltFooterStatus_clicked();
-	virtual void ltFooterBorderAbove_clicked();
-	virtual void ltFooterBorderBelow_clicked();
-	virtual void ltLastFooterStatus_clicked();
-	virtual void ltLastFooterBorderAbove_clicked();
-	virtual void ltLastFooterBorderBelow_clicked();
-	virtual void ltLastFooterEmpty_clicked();
-
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+	void topspace_changed();
+	void bottomspace_changed();
+	void interlinespace_changed();
+	void booktabsChanged(bool);
+	void close_clicked();
+	void borderSet_clicked();
+	void borderUnset_clicked();
+	void leftBorder_changed();
+	void rightBorder_changed();
+	void topBorder_changed();
+	void bottomBorder_changed();
+	void multicolumn_clicked();
+	void rotateTabular();
+	void rotateCell();
+	void hAlign_changed(int align);
+	void vAlign_changed(int align);
+	void specialAlignment_changed();
+	void width_changed();
+	void longTabular();
+	void ltNewpage_clicked();
+	void ltHeaderStatus_clicked();
+	void ltHeaderBorderAbove_clicked();
+	void ltHeaderBorderBelow_clicked();
+	void ltFirstHeaderStatus_clicked();
+	void ltFirstHeaderBorderAbove_clicked();
+	void ltFirstHeaderBorderBelow_clicked();
+	void ltFirstHeaderEmpty_clicked();
+	void ltFooterStatus_clicked();
+	void ltFooterBorderAbove_clicked();
+	void ltFooterBorderBelow_clicked();
+	void ltLastFooterStatus_clicked();
+	void ltLastFooterBorderAbove_clicked();
+	void ltLastFooterBorderBelow_clicked();
+	void ltLastFooterEmpty_clicked();
 
 private:
-	GuiTabular * form_;
-};
-
-
-class GuiTabular : public GuiView<GuiTabularDialog> 
-{
-public:
-	friend class GuiTabularDialog;
-
-	GuiTabular(GuiDialog &);
-
+	///
+	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlTabular & controller()
-	{ return static_cast<ControlTabular &>(this->getController()); }
-	/// parent controller
-	ControlTabular const & controller() const
-	{ return static_cast<ControlTabular const &>(this->getController()); }
-protected:
-	virtual bool isValid();
-
-private:
-	/// We can't use this ...
-	virtual void applyView() {}
+	ControlTabular & controller() const;
+	///
+	bool isValid() { return true; }
 	/// update borders
-	virtual void update_borders();
+	void update_borders();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 	/// save some values before closing the gui
-	virtual void closeGUI();
+	void closeGUI();
 };
 
 } // namespace frontend

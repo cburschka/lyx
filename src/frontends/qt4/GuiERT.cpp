@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "GuiERT.h"
+#include "ControlERT.h"
 #include "gettext.h"
 
 #include <QRadioButton>
@@ -21,77 +22,58 @@
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiERTDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiERTDialog::GuiERTDialog(GuiERT * form)
-	: form_(form)
+GuiERTDialog::GuiERTDialog(LyXView & lv)
+	: GuiDialog(lv, "ert")
 {
 	setupUi(this);
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	setViewTitle(_("TeX Code Settings"));
+	setController(new ControlERT(*this));
+
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(collapsedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(openRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+}
+
+
+ControlERT & GuiERTDialog::controller() const
+{
+	return static_cast<ControlERT &>(Dialog::controller());
 }
 
 
 void GuiERTDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiERTDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiERT
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiERT::GuiERT(GuiDialog & parent)
-	: GuiView<GuiERTDialog>(parent, _("TeX Code Settings"))
+void GuiERTDialog::applyView()
 {
-}
-
-
-void GuiERT::build_dialog()
-{
-	dialog_.reset(new GuiERTDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiERT::applyView()
-{
-	if (dialog_->openRB->isChecked())
+	if (openRB->isChecked())
 		controller().setStatus(Inset::Open);
 	else
 		controller().setStatus(Inset::Collapsed);
 }
 
 
-void GuiERT::update_contents()
+void GuiERTDialog::update_contents()
 {
-	QRadioButton * rb = 0;
-
 	switch (controller().status()) {
-		case InsetERT::Open: rb = dialog_->openRB; break;
-		case InsetERT::Collapsed: rb = dialog_->collapsedRB; break;
+		case InsetERT::Open: openRB->setChecked(true); break;
+		case InsetERT::Collapsed: collapsedRB->setChecked(true); break;
 	}
-
-	rb->setChecked(true);
 }
 
 } // namespace frontend

@@ -38,6 +38,9 @@ using std::vector;
 using std::string;
 
 
+namespace lyx {
+namespace frontend {
+
 template<typename String>
 static QStringList to_qstring_list(vector<String> const & v)
 {
@@ -64,20 +67,12 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 }
 
 
-namespace lyx {
-namespace frontend {
-
-///////////////////////////////////////////////////////////////////////
-//
-// GuiCitationDialog
-//
-///////////////////////////////////////////////////////////////////////
-
-
-GuiCitationDialog::GuiCitationDialog(Dialog & dialog, GuiCitation * form)
-	: Dialog::View(dialog, _("Citation")), form_(form)
+GuiCitationDialog::GuiCitationDialog(LyXView & lv)
+	: GuiDialog(lv, "citation")
 {
 	setupUi(this);
+	setViewTitle(_("Citation"));
+	setController(new ControlCitation(*this));
 
 	setWindowTitle(toqstr("LyX: " + getViewTitle()));
 
@@ -97,8 +92,7 @@ GuiCitationDialog::GuiCitationDialog(Dialog & dialog, GuiCitation * form)
 
 	selectionManager = 
 		new GuiSelectionManager(availableLV, selectedLV, 
-		                      addPB, deletePB, upPB, downPB, 
-		                      form_->available(), form_->selected());
+			addPB, deletePB, upPB, downPB, available(), selected());
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(setCitedKeys()));
 	connect(selectionManager, SIGNAL(updateHook()),
@@ -106,25 +100,28 @@ GuiCitationDialog::GuiCitationDialog(Dialog & dialog, GuiCitation * form)
 	connect(selectionManager, SIGNAL(okHook()),
 					this, SLOT(on_okPB_clicked()));
 
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 }
 
 
-GuiCitationDialog::~GuiCitationDialog()
-{}
+ControlCitation & GuiCitationDialog::controller() const
+{
+	return static_cast<ControlCitation &>(Dialog::controller());
+}
 
 
 void GuiCitationDialog::cleanUp() 
 {
-	form_->clearSelection();
-	form_->clearParams();
+	clearSelection();
+	controller().clearParams();
 	close();
 }
 
 
 void GuiCitationDialog::closeEvent(QCloseEvent * e)
 {
-	form_->clearSelection();
-	form_->clearParams();
+	clearSelection();
+	controller().clearParams();
 	e->accept();
 }
 
@@ -139,13 +136,13 @@ void GuiCitationDialog::applyView()
 	QString const before = textBeforeED->text();
 	QString const after = textAfterED->text();
 
-	form_->apply(choice, full, force, before, after);
+	apply(choice, full, force, before, after);
 }
 
 
 void GuiCitationDialog::hideView()
 {
-	form_->clearParams();
+	controller().clearParams();
 	accept();
 }
 
@@ -169,15 +166,15 @@ bool GuiCitationDialog::isVisibleView() const
 void GuiCitationDialog::on_okPB_clicked()
 {
 	applyView();
-	form_->clearSelection();
+	clearSelection();
 	hideView();
 }
 
 
 void GuiCitationDialog::on_cancelPB_clicked()
 {
-	form_->clearSelection();
-	hide();
+	clearSelection();
+	hideView();
 }
 
 
@@ -189,8 +186,8 @@ void GuiCitationDialog::on_applyPB_clicked()
 
 void GuiCitationDialog::on_restorePB_clicked()
 {
-	form_->init();
-	update();
+	init();
+	updateView();
 }
 
 
@@ -202,12 +199,12 @@ void GuiCitationDialog::updateView()
 }
 
 
-//The main point of separating this out is that the fill*() methods
-//called in update() do not need to be called for INTERNAL updates,
-//such as when addPB is pressed, as the list of fields, entries, etc,
-//will not have changed. At the moment, however, the division between
-//fillStyles() and updateStyles() doesn't lend itself to dividing the
-//two methods, though they should be divisible.
+// The main point of separating this out is that the fill*() methods
+// called in update() do not need to be called for INTERNAL updates,
+// such as when addPB is pressed, as the list of fields, entries, etc,
+// will not have changed. At the moment, however, the division between
+// fillStyles() and updateStyles() doesn't lend itself to dividing the
+// two methods, though they should be divisible.
 void GuiCitationDialog::updateDialog()
 {
 	if (selectionManager->selectedFocused()) { 
@@ -223,8 +220,8 @@ void GuiCitationDialog::updateDialog()
 	}
 	setButtons();
 
-	textBeforeED->setText(form_->textBefore());
-	textAfterED->setText(form_->textAfter());
+	textBeforeED->setText(textBefore());
+	textAfterED->setText(textAfter());
 	fillStyles();
 	updateStyle();
 }
@@ -232,7 +229,7 @@ void GuiCitationDialog::updateDialog()
 
 void GuiCitationDialog::updateStyle()
 {
-	biblio::CiteEngine const engine = form_->getEngine();
+	biblio::CiteEngine const engine = controller().getEngine();
 	bool const natbib_engine =
 		engine == biblio::ENGINE_NATBIB_AUTHORYEAR ||
 		engine == biblio::ENGINE_NATBIB_NUMERICAL;
@@ -249,7 +246,7 @@ void GuiCitationDialog::updateStyle()
 	citationStyleCO->setEnabled(!basic_engine && haveSelection);
 	citationStyleLA->setEnabled(!basic_engine && haveSelection);
 
-	string const & command = form_->params().getCmdName();
+	string const & command = controller().params().getCmdName();
 
 	// Find the style of the citekeys
 	vector<biblio::CiteStyle> const & styles =
@@ -286,7 +283,7 @@ void GuiCitationDialog::fillStyles()
 
 	citationStyleCO->clear();
 
-	QStringList selected_keys = form_->selected()->stringList();
+	QStringList selected_keys = selected()->stringList();
 	if (selected_keys.empty()) {
 		citationStyleCO->setEnabled(false);
 		citationStyleLA->setEnabled(false);
@@ -300,10 +297,10 @@ void GuiCitationDialog::fillStyles()
 	if (!selectedLV->selectionModel()->selectedIndexes().empty())
 		curr = selectedLV->selectionModel()->selectedIndexes()[0].row();
 
-	QStringList sty = form_->citationStyles(curr);
+	QStringList sty = citationStyles(curr);
 
 	bool const basic_engine =
-			(form_->getEngine() == biblio::ENGINE_BASIC);
+			(controller().getEngine() == biblio::ENGINE_BASIC);
 
 	citationStyleCO->setEnabled(!sty.isEmpty() && !basic_engine);
 	citationStyleLA->setEnabled(!sty.isEmpty() && !basic_engine);
@@ -323,7 +320,7 @@ void GuiCitationDialog::fillFields()
 	fieldsCO->blockSignals(true);
 	int const oldIndex = fieldsCO->currentIndex();
 	fieldsCO->clear();
-	QStringList const & fields = form_->getFieldsAsQStringList();
+	QStringList const & fields = getFieldsAsQStringList();
 	fieldsCO->insertItem(0, qt_("All Fields"));
 	fieldsCO->insertItem(1, qt_("Keys"));
 	fieldsCO->insertItems(2, fields);
@@ -338,7 +335,7 @@ void GuiCitationDialog::fillEntries()
 	entriesCO->blockSignals(true);
 	int const oldIndex = entriesCO->currentIndex();
 	entriesCO->clear();
-	QStringList const & entries = form_->getEntriesAsQStringList();
+	QStringList const & entries = getEntriesAsQStringList();
 	entriesCO->insertItem(0, qt_("All Entry Types"));
 	entriesCO->insertItems(1, entries);
 	if (oldIndex != -1 && oldIndex < entriesCO->count())
@@ -350,7 +347,7 @@ void GuiCitationDialog::fillEntries()
 bool GuiCitationDialog::isSelected(const QModelIndex & idx)
 {
 	QString const str = idx.data().toString();
-	return form_->selected()->stringList().contains(str);
+	return selected()->stringList().contains(str);
 }
 
 
@@ -366,16 +363,10 @@ void GuiCitationDialog::setButtons()
 void GuiCitationDialog::updateInfo(QModelIndex const & idx)
 {
 	if (idx.isValid()) {
-		QString const keytxt = form_->getKeyInfo(idx.data().toString());
+		QString const keytxt = getKeyInfo(idx.data().toString());
 		infoML->document()->setPlainText(keytxt);
 	} else
 		infoML->document()->clear();
-}
-
-
-void GuiCitationDialog::setCitedKeys() 
-{
-	form_->setCitedKeys();
 }
 
 
@@ -383,7 +374,7 @@ void GuiCitationDialog::findText(QString const & text, bool reset)
 {
 	//"All Fields" and "Keys" are the first two
 	int index = fieldsCO->currentIndex() - 2; 
-	vector<docstring> const & fields = form_->availableFields();
+	vector<docstring> const & fields = controller().availableFields();
 	docstring field;
 	
 	if (index <= -1 || index >= int(fields.size()))
@@ -397,7 +388,7 @@ void GuiCitationDialog::findText(QString const & text, bool reset)
 	
 	//"All Entry Types" is first.
 	index = entriesCO->currentIndex() - 1; 
-	vector<docstring> const & entries = form_->availableEntries();
+	vector<docstring> const & entries = controller().availableEntries();
 	docstring entryType;
 	if (index < 0 || index >= int(entries.size()))
 		entryType = from_ascii("");
@@ -406,7 +397,7 @@ void GuiCitationDialog::findText(QString const & text, bool reset)
 	
 	bool const case_sentitive = caseCB->checkState();
 	bool const reg_exp = regexCB->checkState();
-	form_->findKey(text, onlyKeys, field, entryType, 
+	findKey(text, onlyKeys, field, entryType, 
 	               case_sentitive, reg_exp, reset);
 	//FIXME
 	//It'd be nice to save and restore the current selection in 
@@ -456,20 +447,10 @@ void GuiCitationDialog::changed()
 	setButtons();
 }
 
-///////////////////////////////////////////////////////////////////////
-//
-// GuiCitation
-//
-///////////////////////////////////////////////////////////////////////
 
-GuiCitation::GuiCitation(GuiDialog & parent)
-	: ControlCitation(parent)
-{
-}
-
-
-void GuiCitation::apply(int const choice, bool const full, bool const force,
-		      QString before, QString after)
+void GuiCitationDialog::apply(int const choice,
+	bool const full, bool const force,
+	QString before, QString after)
 {
 	if (cited_keys_.isEmpty())
 		return;
@@ -481,50 +462,50 @@ void GuiCitation::apply(int const choice, bool const full, bool const force,
 		biblio::CitationStyle(styles[choice], full, force)
 		.asLatexStr();
 
-	params().setCmdName(command);
-	params()["key"] = qstring_to_ucs4(cited_keys_.join(","));
-	params()["before"] = qstring_to_ucs4(before);
-	params()["after"] = qstring_to_ucs4(after);
-	dispatchParams();
+	controller().params().setCmdName(command);
+	controller().params()["key"] = qstring_to_ucs4(cited_keys_.join(","));
+	controller().params()["before"] = qstring_to_ucs4(before);
+	controller().params()["after"] = qstring_to_ucs4(after);
+	controller().dispatchParams();
 }
 
 
-void GuiCitation::clearSelection()
+void GuiCitationDialog::clearSelection()
 {
 	cited_keys_.clear();
 	selected_model_.setStringList(cited_keys_);
 }
 
 
-QString GuiCitation::textBefore()
+QString GuiCitationDialog::textBefore()
 {
-	return toqstr(params()["before"]);
+	return toqstr(controller().params()["before"]);
 }
 
 
-QString GuiCitation::textAfter()
+QString GuiCitationDialog::textAfter()
 {
-	return toqstr(params()["after"]);
+	return toqstr(controller().params()["after"]);
 }
 
 
-bool GuiCitation::initialiseParams(std::string const & data)
+bool GuiCitationDialog::initialiseParams(std::string const & data)
 {
-	if (!ControlCitation::initialiseParams(data))
+	if (!controller().initialiseParams(data))
 		return false;
 	init();
 	return true;
 }
 
 
-void GuiCitation::init()
+void GuiCitationDialog::init()
 {
 	// Make the list of all available bibliography keys
-	all_keys_ = to_qstring_list(availableKeys());
+	all_keys_ = to_qstring_list(controller().availableKeys());
 	available_model_.setStringList(all_keys_);
 
 	// Ditto for the keys cited in this inset
-	QString str = toqstr(params()["key"]);
+	QString str = toqstr(controller().params()["key"]);
 	if (str.isEmpty())
 		cited_keys_.clear();
 	else
@@ -533,7 +514,7 @@ void GuiCitation::init()
 }
 
 
-void GuiCitation::findKey(QString const & str, bool only_keys,
+void GuiCitationDialog::findKey(QString const & str, bool only_keys,
 	docstring field, docstring entryType,
 	bool case_sensitive, bool reg_exp, bool reset)
 {
@@ -573,43 +554,44 @@ void GuiCitation::findKey(QString const & str, bool only_keys,
 	// First, filter by entryType, which will be faster than 
 	// what follows, so we may get to do that on less.
 	vector<docstring> keyVector = to_docstring_vector(keys);
-	filterByEntryType(keyVector, entryType);
+	controller().filterByEntryType(keyVector, entryType);
 	
 	if (str.isEmpty())
 		result = to_qstring_list(keyVector);
 	else
-		result = to_qstring_list(searchKeys(keyVector, only_keys, 
+		result = to_qstring_list(controller().searchKeys(keyVector, only_keys, 
 			qstring_to_ucs4(str), field, case_sensitive, reg_exp));
 	
 	available_model_.setStringList(result);
 }
 
 
-QStringList GuiCitation::getFieldsAsQStringList()
+QStringList GuiCitationDialog::getFieldsAsQStringList()
 {
-	return to_qstring_list(availableFields());
+	return to_qstring_list(controller().availableFields());
 }
 
 
-QStringList GuiCitation::getEntriesAsQStringList()
+QStringList GuiCitationDialog::getEntriesAsQStringList()
 {
-	return to_qstring_list(availableEntries());
+	return to_qstring_list(controller().availableEntries());
 }
 
 
-QStringList GuiCitation::citationStyles(int sel)
+QStringList GuiCitationDialog::citationStyles(int sel)
 {
 	docstring const key = qstring_to_ucs4(cited_keys_[sel]);
-	return to_qstring_list(getCiteStrings(key));
+	return to_qstring_list(controller().getCiteStrings(key));
 }
 
 
-QString GuiCitation::getKeyInfo(QString const & sel)
+QString GuiCitationDialog::getKeyInfo(QString const & sel)
 {
-	return toqstr(getInfo(qstring_to_ucs4(sel)));
+	return toqstr(controller().getInfo(qstring_to_ucs4(sel)));
 }
 
-void GuiCitation::setCitedKeys() 
+
+void GuiCitationDialog::setCitedKeys() 
 {
 	cited_keys_ = selected_model_.stringList();
 }

@@ -29,25 +29,33 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiNomenclDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiNomenclDialog::GuiNomenclDialog(GuiNomencl * form)
-	: form_(form)
+GuiNomenclDialog::GuiNomenclDialog(LyXView & lv)
+	: GuiDialog(lv, "nomenclature")
 {
 	setupUi(this);
+	setController(new ControlCommand(*this, "nomenclature", "nomenclature"));
 
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(symbolED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
 	connect(descriptionTE, SIGNAL(textChanged()),
 		this, SLOT(change_adaptor()));
 
 	setFocusProxy(descriptionTE);
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+	bc().addReadOnly(symbolED);
+	bc().addReadOnly(descriptionTE);
+	bc().addReadOnly(prefixED);
+}
+
+
+ControlCommand & GuiNomenclDialog::controller() const
+{
+	return static_cast<ControlCommand &>(Dialog::controller());
 }
 
 
@@ -59,74 +67,49 @@ void GuiNomenclDialog::showView()
 
 void GuiNomenclDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiNomenclDialog::reject()
 {
-	form_->slotClose();
+	slotClose();
 }
 
 
 void GuiNomenclDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiNomencl
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiNomencl::GuiNomencl(GuiDialog & parent, docstring const & title)
-	: GuiView<GuiNomenclDialog>(parent, title)
+void GuiNomenclDialog::update_contents()
 {
-}
-
-
-void GuiNomencl::build_dialog()
-{
-	dialog_.reset(new GuiNomenclDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->symbolED);
-	bc().addReadOnly(dialog_->descriptionTE);
-	bc().addReadOnly(dialog_->prefixED);
-}
-
-
-void GuiNomencl::update_contents()
-{
-	dialog_->prefixED->setText(toqstr(controller().params()["prefix"]));
-	dialog_->symbolED->setText(toqstr(controller().params()["symbol"]));
+	prefixED->setText(toqstr(controller().params()["prefix"]));
+	symbolED->setText(toqstr(controller().params()["symbol"]));
 	QString description = toqstr(controller().params()["description"]);
 	description.replace("\\\\","\n");
-	dialog_->descriptionTE->setPlainText(description);
+	descriptionTE->setPlainText(description);
 
 	bc().setValid(isValid());
 }
 
 
-void GuiNomencl::applyView()
+void GuiNomenclDialog::applyView()
 {
-	controller().params()["prefix"] = qstring_to_ucs4(dialog_->prefixED->text());
-	controller().params()["symbol"] = qstring_to_ucs4(dialog_->symbolED->text());
-	QString description = dialog_->descriptionTE->toPlainText();
+	controller().params()["prefix"] = qstring_to_ucs4(prefixED->text());
+	controller().params()["symbol"] = qstring_to_ucs4(symbolED->text());
+	QString description = descriptionTE->toPlainText();
 	description.replace('\n',"\\\\");
 	controller().params()["description"] = qstring_to_ucs4(description);
 }
 
 
-bool GuiNomencl::isValid()
+bool GuiNomenclDialog::isValid()
 {
-	QString const description = dialog_->descriptionTE->toPlainText();
-	return !dialog_->symbolED->text().isEmpty() && !description.isEmpty();
+	QString const description = descriptionTE->toPlainText();
+	return !symbolED->text().isEmpty() && !description.isEmpty();
 }
 
 } // namespace frontend

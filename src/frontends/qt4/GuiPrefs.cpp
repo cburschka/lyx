@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "GuiPrefs.h"
+#include "ControlPrefs.h"
 
 #include "qt_helpers.h"
 #include "GuiApplication.h"
@@ -27,8 +28,7 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
-#include "controllers/ControlPrefs.h"
-#include "controllers/frontend_helpers.h"
+#include "frontend_helpers.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -225,7 +225,7 @@ void PrefDate::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefKeyboard::PrefKeyboard(GuiPrefs * form, QWidget * parent)
+PrefKeyboard::PrefKeyboard(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("Keyboard"), form, parent)
 {
 	setupUi(this);
@@ -296,7 +296,7 @@ void PrefKeyboard::on_keymapCB_toggled(bool keymap)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefLatex::PrefLatex(GuiPrefs * form, QWidget * parent)
+PrefLatex::PrefLatex(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("LaTeX"), form, parent)
 {
 	setupUi(this);
@@ -364,7 +364,7 @@ void PrefLatex::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefScreenFonts::PrefScreenFonts(GuiPrefs * form, QWidget * parent)
+PrefScreenFonts::PrefScreenFonts(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("Screen fonts"), form, parent)
 {
 	setupUi(this);
@@ -522,7 +522,7 @@ void PrefScreenFonts::select_typewriter(const QString& name)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefColors::PrefColors(GuiPrefs * form, QWidget * parent)
+PrefColors::PrefColors(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule( _("Colors"), form, parent)
 {
 	setupUi(this);
@@ -694,7 +694,7 @@ void PrefDisplay::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefPaths::PrefPaths(GuiPrefs * form, QWidget * parent)
+PrefPaths::PrefPaths(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("Paths"), form, parent)
 {
 	setupUi(this);
@@ -798,7 +798,7 @@ void PrefPaths::select_lyxpipe()
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefSpellchecker::PrefSpellchecker(GuiPrefs * form, QWidget * parent)
+PrefSpellchecker::PrefSpellchecker(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("Spellchecker"), form, parent)
 {
 	setupUi(this);
@@ -908,7 +908,7 @@ void PrefSpellchecker::select_dict()
 /////////////////////////////////////////////////////////////////////
 
 
-PrefConverters::PrefConverters(GuiPrefs * form, QWidget * parent)
+PrefConverters::PrefConverters(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("Converters"), form, parent)
 {
 	setupUi(this);
@@ -1106,7 +1106,7 @@ void PrefConverters::on_cacheCB_stateChanged(int state)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefCopiers::PrefCopiers(GuiPrefs * form, QWidget * parent)
+PrefCopiers::PrefCopiers(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("Copiers"), form, parent)
 {
 	setupUi(this);
@@ -1359,7 +1359,7 @@ void PrefCopiers::remove_copier()
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefFileformats::PrefFileformats(GuiPrefs * form, QWidget * parent)
+PrefFileformats::PrefFileformats(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("File formats"), form, parent)
 {
 	setupUi(this);
@@ -1751,7 +1751,7 @@ void PrefPrinter::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefUserInterface::PrefUserInterface(GuiPrefs * form, QWidget * parent)
+PrefUserInterface::PrefUserInterface(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("User interface"), form, parent)
 {
 	setupUi(this);
@@ -1902,43 +1902,46 @@ void PrefIdentity::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiPrefsDialog::GuiPrefsDialog(GuiPrefs * form)
-	: form_(form)
+GuiPrefsDialog::GuiPrefsDialog(LyXView & lv)
+	: GuiDialog(lv, "prefs")
 {
 	setupUi(this);
+	setViewTitle(_("Preferences"));
+	setController(new ControlPrefs(*this));
+
 	QDialog::setModal(false);
 
-	connect(savePB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()), form, SLOT(slotRestore()));
+	connect(savePB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
-	add(new PrefUserInterface(form_));
-	add(new PrefScreenFonts(form_));
-	add(new PrefColors(form_));
+	add(new PrefUserInterface(this));
+	add(new PrefScreenFonts(this));
+	add(new PrefColors(this));
 	add(new PrefDisplay);
-	add(new PrefKeyboard(form_));
+	add(new PrefKeyboard(this));
 
-	add(new PrefPaths(form_));
+	add(new PrefPaths(this));
 
 	add(new PrefIdentity);
 
 	add(new PrefLanguage);
-	add(new PrefSpellchecker(form_));
+	add(new PrefSpellchecker(this));
 
 	add(new PrefPrinter);
 	add(new PrefDate);
 	add(new PrefPlaintext);
-	add(new PrefLatex(form_));
+	add(new PrefLatex(this));
 
-	PrefConverters * converters = new PrefConverters(form_);
-	PrefFileformats * formats = new PrefFileformats(form_);
+	PrefConverters * converters = new PrefConverters(this);
+	PrefFileformats * formats = new PrefFileformats(this);
 	connect(formats, SIGNAL(formatsChanged()),
 			converters, SLOT(updateGui()));
 	add(converters);
 	add(formats);
 
-	add(new PrefCopiers(form_));
+	add(new PrefCopiers(this));
 
 
 	prefsPS->setCurrentPanel(_("User interface"));
@@ -1948,34 +1951,39 @@ GuiPrefsDialog::GuiPrefsDialog(GuiPrefs * form)
 	prefsPS->updateGeometry();
 #endif
 
-	form_->bc().setOK(savePB);
-	form_->bc().setApply(applyPB);
-	form_->bc().setCancel(closePB);
-	form_->bc().setRestore(restorePB);
+	bc().setPolicy(ButtonPolicy::PreferencesPolicy);
+	bc().setOK(savePB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+	bc().setRestore(restorePB);
+}
+
+
+ControlPrefs & GuiPrefsDialog::controller() const
+{
+	return static_cast<ControlPrefs &>(Dialog::controller());
 }
 
 
 void GuiPrefsDialog::add(PrefModule * module)
 {
 	BOOST_ASSERT(module);
-
 	prefsPS->addPanel(module, module->title());
-
 	connect(module, SIGNAL(changed()), this, SLOT(change_adaptor()));
-
 	modules_.push_back(module);
 }
 
+
 void GuiPrefsDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiPrefsDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
@@ -1995,46 +2003,29 @@ void GuiPrefsDialog::updateRc(LyXRC const & rc)
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiPrefs
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiPrefs::GuiPrefs(GuiDialog & parent)
-	: GuiView<GuiPrefsDialog>(parent, _("Preferences"))
-{
-}
-
-Converters & GuiPrefs::converters()
+Converters & GuiPrefsDialog::converters()
 {
 	return controller().converters();
 }
 
-Formats & GuiPrefs::formats()
+Formats & GuiPrefsDialog::formats()
 {
 	return controller().formats();
 }
 
-Movers & GuiPrefs::movers()
+Movers & GuiPrefsDialog::movers()
 {
 	return controller().movers();
 }
 
-void GuiPrefs::build_dialog()
+void GuiPrefsDialog::applyView()
 {
-	dialog_.reset(new GuiPrefsDialog(this));
+	apply(controller().rc());
 }
 
-void GuiPrefs::applyView()
+void GuiPrefsDialog::update_contents()
 {
-	dialog_->apply(controller().rc());
-}
-
-void GuiPrefs::update_contents()
-{
-	dialog_->updateRc(controller().rc());
+	updateRc(controller().rc());
 }
 
 } // namespace frontend

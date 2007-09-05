@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "GuiSpellchecker.h"
+
+#include "ControlSpellchecker.h"
 #include "qt_helpers.h"
 
 #include <QProgressBar>
@@ -29,19 +31,14 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiSpellCheckerDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiSpellcheckerDialog::GuiSpellcheckerDialog(GuiSpellchecker * form)
-	: form_(form)
+GuiSpellcheckerDialog::GuiSpellcheckerDialog(LyXView & lv)
+	: GuiDialog(lv, "spellchecker")
 {
 	setupUi(this);
+	setViewTitle(_("Spellchecker"));
+	setController(new ControlSpellchecker(*this));
 
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(replaceCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(replaceChanged(const QString &)));
@@ -57,28 +54,43 @@ GuiSpellcheckerDialog::GuiSpellcheckerDialog(GuiSpellchecker * form)
 		this, SLOT(replaceClicked() ) );
 	connect(suggestionsLW, SIGNAL(itemClicked(QListWidgetItem*)),
 		this, SLOT(suggestionChanged(QListWidgetItem*)));
+
+	wordED->setReadOnly(true);
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setCancel(closePB);
+}
+
+
+ControlSpellchecker & GuiSpellcheckerDialog::controller() const
+{
+	return static_cast<ControlSpellchecker &>(Dialog::controller());
 }
 
 
 void GuiSpellcheckerDialog::acceptClicked()
 {
-	form_->accept();
+	accept();
 }
+
 
 void GuiSpellcheckerDialog::addClicked()
 {
-	form_->add();
+	add();
 }
+
 
 void GuiSpellcheckerDialog::replaceClicked()
 {
-	form_->replace();
+	replace();
 }
+
 
 void GuiSpellcheckerDialog::ignoreClicked()
 {
-	form_->ignore();
+	ignore();
 }
+
 
 void GuiSpellcheckerDialog::suggestionChanged(QListWidgetItem * item)
 {
@@ -89,6 +101,7 @@ void GuiSpellcheckerDialog::suggestionChanged(QListWidgetItem * item)
 
 	replaceCO->setCurrentIndex(0);
 }
+
 
 void GuiSpellcheckerDialog::replaceChanged(const QString & str)
 {
@@ -106,101 +119,72 @@ void GuiSpellcheckerDialog::replaceChanged(const QString & str)
 
 void GuiSpellcheckerDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiSpellcheckerDialog::reject()
 {
-	form_->slotWMHide();
+	slotWMHide();
 	QDialog::reject();
 }
 
 
-
-/////////////////////////////////////////////////////////////////////
-//
-// GuiSpellChecker
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiSpellchecker::GuiSpellchecker(GuiDialog & parent)
-	: GuiView<GuiSpellcheckerDialog>(parent, _("Spellchecker"))
-{}
-
-
-void GuiSpellchecker::build_dialog()
-{
-	dialog_.reset(new GuiSpellcheckerDialog(this));
-
-	bc().setCancel(dialog_->closePB);
-	dialog_->wordED->setReadOnly(true);
-}
-
-
-void GuiSpellchecker::update_contents()
+void GuiSpellcheckerDialog::update_contents()
 {
 	if (isVisibleView() || controller().exitEarly())
 		controller().check();
 }
 
 
-void GuiSpellchecker::accept()
+void GuiSpellcheckerDialog::accept()
 {
 	controller().ignoreAll();
 }
 
 
-void GuiSpellchecker::add()
+void GuiSpellcheckerDialog::add()
 {
 	controller().insert();
 }
 
 
-void GuiSpellchecker::ignore()
+void GuiSpellcheckerDialog::ignore()
 {
 	controller().check();
 }
 
 
-void GuiSpellchecker::replace()
+void GuiSpellcheckerDialog::replace()
 {
-	controller().replace(qstring_to_ucs4(dialog_->replaceCO->currentText()));
+	controller().replace(qstring_to_ucs4(replaceCO->currentText()));
 }
 
 
-void GuiSpellchecker::partialUpdate(int s)
+void GuiSpellcheckerDialog::partialUpdate(int state)
 {
-	ControlSpellchecker::State const state =
-		static_cast<ControlSpellchecker::State>(s);
-
 	switch (state) {
+		case ControlSpellchecker::SPELL_PROGRESSED:
+			spellcheckPR->setValue(controller().getProgress());
+			break;
 
-	case ControlSpellchecker::SPELL_PROGRESSED:
-		dialog_->spellcheckPR->setValue(controller().getProgress());
-		break;
+		case ControlSpellchecker::SPELL_FOUND_WORD: {
+			wordED->setText(toqstr(controller().getWord()));
+			suggestionsLW->clear();
 
-	case ControlSpellchecker::SPELL_FOUND_WORD: {
-		dialog_->wordED->setText(toqstr(controller().getWord()));
-		dialog_->suggestionsLW->clear();
+			docstring w;
+			while (!(w = controller().getSuggestion()).empty())
+				suggestionsLW->addItem(toqstr(w));
 
-		docstring w;
-		while (!(w = controller().getSuggestion()).empty()) {
-			dialog_->suggestionsLW->addItem(toqstr(w));
+			if (suggestionsLW->count() == 0)
+				suggestionChanged(new QListWidgetItem(wordED->text()));
+			else
+				suggestionChanged(suggestionsLW->item(0));
+
+			suggestionsLW->setCurrentRow(0);
+			break;
 		}
-
-		if (dialog_->suggestionsLW->count() == 0) {
-			dialog_->suggestionChanged(new QListWidgetItem(dialog_->wordED->text()));
-		} else {
-			dialog_->suggestionChanged(dialog_->suggestionsLW->item(0));
-		}
-
-		dialog_->suggestionsLW->setCurrentRow(0);
-	}
-		break;
-
 	}
 }
 

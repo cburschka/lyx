@@ -51,7 +51,7 @@ void Dialog::show(string const & data)
 	}
 
 	preShow();
-	view().showView();
+	showView();
 	postShow();
 }
 
@@ -68,7 +68,7 @@ void Dialog::update(string const & data)
 	}
 
 	preUpdate();
-	view().updateView();
+	updateView();
 	postUpdate();
 }
 
@@ -80,11 +80,11 @@ void Dialog::checkStatus()
 
 void Dialog::hide()
 {
-	if (!view().isVisibleView())
+	if (!isVisibleView())
 		return;
 
 	controller().clearParams();
-	view().hideView();
+	hideView();
 	kernel().disconnect(name());
 }
 
@@ -93,31 +93,30 @@ void Dialog::apply()
 {
 	if (controller().isBufferDependent()) {
 		if (!kernel().isBufferAvailable() ||
-		    (kernel().isBufferReadonly() &&
-		     !controller().canApplyToReadOnly()))
+		    (kernel().isBufferReadonly() && !controller().canApplyToReadOnly()))
 			return;
 	}
 
-	view().applyView();
+	applyView();
 	controller().dispatchParams();
 
 	if (controller().disconnectOnApply() && !is_closing_) {
 		kernel().disconnect(name());
 		controller().initialiseParams(string());
-		view().updateView();
+		updateView();
 	}
 }
 
 
 bool Dialog::isVisible() const
 {
-	return view().isVisibleView();
+	return isVisibleView();
 }
 
 
 void Dialog::redraw()
 {
-	view().redrawView();
+	redrawView();
 }
 
 
@@ -126,14 +125,6 @@ void Dialog::setController(Controller * i)
 	BOOST_ASSERT(i && !controller_ptr_.get());
 	controller_ptr_.reset(i);
 }
-
-
-void Dialog::setView(View * v)
-{
-	BOOST_ASSERT(v && !view_ptr_.get());
-	view_ptr_.reset(v);
-}
-
 
 
 Dialog::Controller::Controller(Dialog & parent)
@@ -156,32 +147,17 @@ Dialog::Controller & Dialog::controller() const
 }
 
 
-Dialog::View::View(Dialog & parent, docstring title) :
-	p_(parent), title_(title)
-{}
-
-
-Dialog::View & Dialog::view() const
-{
-	BOOST_ASSERT(view_ptr_.get());
-	return *view_ptr_.get();
-}
-
-
-void Dialog::View::setViewTitle(docstring const & newtitle)
+void Dialog::setViewTitle(docstring const & newtitle)
 {
 	title_ = newtitle;
 }
 
 
-docstring const & Dialog::View::getViewTitle() const
+docstring const & Dialog::getViewTitle() const
 {
 	return title_;
 }
 
-
-void Dialog::View::partialUpdateView(int)
-{}
 
 } // namespace frontend
 } // namespace lyx

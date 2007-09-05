@@ -12,7 +12,7 @@
 
 #include "GuiDialog.h"
 #include "debug.h"
-
+#include "qt_helpers.h"
 
 namespace lyx {
 namespace frontend {
@@ -40,14 +40,14 @@ void GuiDialog::OKButton()
 	is_closing_ = true;
 	apply();
 	is_closing_ = false;
-	hide();
+	QDialog::hide();
 	bc().ok();
 }
 
 
 void GuiDialog::CancelButton()
 {
-	hide();
+	QDialog::hide();
 	bc().cancel();
 }
 
@@ -117,5 +117,104 @@ void GuiDialog::checkStatus()
 	}	
 }
 
+
+bool GuiDialog::isVisibleView() const
+{
+	return QDialog::isVisible();
+}
+
+
+bool GuiDialog::readOnly() const
+{
+	return kernel().isBufferReadonly();
+}
+
+
+void GuiDialog::showView()
+{
+	QSize const hint = sizeHint();
+	if (hint.height() >= 0 && hint.width() >= 0)
+		setMinimumSize(hint);
+
+	updateView();  // make sure its up-to-date
+	if (controller().exitEarly())
+		return;
+
+	setWindowTitle(toqstr("LyX: " + getViewTitle()));
+
+	if (QWidget::isVisible()) {
+		raise();
+		activateWindow();
+	} else {
+		QWidget::show();
+	}
+	setFocus();
+}
+
+
+void GuiDialog::hideView()
+{
+	QDialog::hide();
+}
+
+
+bool GuiDialog::isValid()
+{
+	return true;
+}
+
+
+void GuiDialog::changed()
+{
+	if (updating_)
+		return;
+	bc().setValid(isValid());
+}
+
+
+void GuiDialog::slotWMHide()
+{
+	CancelButton();
+}
+
+
+void GuiDialog::slotApply()
+{
+	ApplyButton();
+}
+
+
+void GuiDialog::slotOK()
+{
+	OKButton();
+}
+
+
+void GuiDialog::slotClose()
+{
+	CancelButton();
+}
+
+
+void GuiDialog::slotRestore()
+{
+	RestoreButton();
+}
+
+void GuiDialog::updateView()
+{
+	setUpdatesEnabled(false);
+
+	// protect the BC from unwarranted state transitions
+	updating_ = true;
+	update_contents();
+	updating_ = false;
+
+	setUpdatesEnabled(true);
+	QDialog::update();
+}
+
 } // namespace frontend
 } // namespace lyx
+
+#include "GuiDialog_moc.cpp"

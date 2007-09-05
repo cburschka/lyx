@@ -12,71 +12,51 @@
 #ifndef GUIINCLUDE_H
 #define GUIINCLUDE_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlInclude.h"
 #include "ui_IncludeUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiInclude;
-
-class GuiIncludeDialog : public QDialog, public Ui::IncludeUi {
+class GuiIncludeDialog : public GuiDialog, public Ui::IncludeUi
+{
 	Q_OBJECT
+
 public:
-	GuiIncludeDialog(GuiInclude * form);
+	GuiIncludeDialog(LyXView & lv);
 
-	void updateLists();
-
-	virtual void showView();
-	/// validate listings parameters and return an error message, if any
-	docstring validate_listings_params();
-protected Q_SLOTS:
-	virtual void change_adaptor();
-	virtual void editClicked();
-	virtual void browseClicked();
-	virtual void typeChanged(int v);
+private Q_SLOTS:
+	void change_adaptor();
+	void editClicked();
+	void browseClicked();
+	void typeChanged(int v);
 	/// AFAIK, QValidator only works for QLineEdit so
 	/// I have to validate listingsED (QTextEdit) manually.
 	/// This function displays a hint or error message returned by
 	/// validate_listings_params
 	void set_listings_msg();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
-private:
-	GuiInclude * form_;
-};
 
-
-class GuiInclude : public GuiView<GuiIncludeDialog>
-{
-public:
-	///
-	friend class GuiIncludeDialog;
-	///
-	GuiInclude(GuiDialog &);
-	/// parent controller
-	ControlInclude & controller()
-	{ return static_cast<ControlInclude &>(this->getController()); }
-	/// parent controller
-	ControlInclude const & controller() const
-	{ return static_cast<ControlInclude const &>(this->getController()); }
-protected:
-	virtual bool isValid();
 private:
+	void closeEvent(QCloseEvent * e);
+	/// parent controller
+	ControlInclude & controller() const;
+	///
+	void updateLists();
+	///
+	void showView();
+	/// validate listings parameters and return an error message, if any
+	docstring validate_listings_params();
+
+	///
+	bool isValid();
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
-
+	void update_contents();
 	/// edit the child document, .lyx file will be opened in lyx
 	/// other formats will be edited by external applications.
 	void edit();
-
 	/// browse for a file
 	void browse();
 };

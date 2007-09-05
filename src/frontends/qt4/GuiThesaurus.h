@@ -12,67 +12,38 @@
 #ifndef GUITHESAURUS_H
 #define GUITHESAURUS_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlThesaurus.h"
 #include "ui_ThesaurusUi.h"
-
-#include <QDialog>
-
 
 class QTreeWidgetItem;
 
 namespace lyx {
 namespace frontend {
 
-class ControlThesaurus;
-
-class GuiThesaurus;
-
-class GuiThesaurusDialog : public QDialog, public Ui::ThesaurusUi
+class GuiThesaurusDialog : public GuiDialog, public Ui::ThesaurusUi
 {
 	Q_OBJECT
+
 public:
-	GuiThesaurusDialog(GuiThesaurus * form);
+	GuiThesaurusDialog(LyXView & lv);
 
-	void updateLists();
-protected Q_SLOTS:
-	virtual void change_adaptor();
-	virtual void entryChanged();
-	virtual void replaceClicked();
-	virtual void selectionChanged();
-	virtual void selectionClicked(QTreeWidgetItem *, int);
-	virtual void itemClicked(QTreeWidgetItem *, int);
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+private Q_SLOTS:
+	void change_adaptor();
+	void entryChanged();
+	void replaceClicked();
+	void selectionChanged();
+	void selectionClicked(QTreeWidgetItem *, int);
+	void itemClicked(QTreeWidgetItem *, int);
+
 private:
-	GuiThesaurus * form_;
-};
-
-
-///
-class GuiThesaurus : public GuiView<GuiThesaurusDialog>
-{
-public:
-	///
-	friend class GuiThesaurusDialog;
-	///
-	GuiThesaurus(GuiDialog &);
+	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlThesaurus & controller()
-	{ return static_cast<ControlThesaurus &>(this->getController()); }
-	/// parent controller
-	ControlThesaurus const & controller() const
-	{ return static_cast<ControlThesaurus const &>(this->getController()); }
-private:
-	/// Apply changes
-	virtual void applyView() {}
+	ControlThesaurus & controller() const;
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
-
-	/// replace the word
-	void replace();
+	void update_contents();
+	///
+	void updateLists();
 };
 
 } // namespace frontend

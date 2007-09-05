@@ -13,51 +13,33 @@
 #ifndef GUICHARACTER_H
 #define GUICHARACTER_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlCharacter.h"
 #include "ui_CharacterUi.h"
-
-#include <QDialog>
 
 #include <vector>
 
 namespace lyx {
 namespace frontend {
 
-class GuiCharacter;
-
-class GuiCharacterDialog : public QDialog, public Ui::CharacterUi {
+class GuiCharacterDialog : public GuiDialog, public Ui::CharacterUi
+{
 	Q_OBJECT
+
 public:
-	GuiCharacterDialog(GuiCharacter * form);
-protected:
-	void closeEvent(QCloseEvent * e);
-private:
-	GuiCharacter * form_;
+	GuiCharacterDialog(LyXView & lv);
+
 protected Q_SLOTS:
 	void change_adaptor();
-};
 
-
-class GuiCharacter : public GuiView<GuiCharacterDialog>
-{
-public:
-	friend class GuiCharacterDialog;
-
-	GuiCharacter(GuiDialog &);
-	/// parent controller
-	ControlCharacter & controller()
-	{ return static_cast<ControlCharacter &>(this->getController()); }
-	/// parent controller
-	ControlCharacter const & controller() const
-	{ return static_cast<ControlCharacter const &>(this->getController()); }
 private:
+	void closeEvent(QCloseEvent * e);
+	/// parent controller
+	ControlCharacter & controller() const;
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 
 	std::vector<FamilyPair> family;
 	std::vector<SeriesPair> series;

@@ -16,9 +16,9 @@
 #define GUICITATION_H
 
 #include "GuiDialog.h"
+#include "ControlCitation.h"
 #include "GuiSelectionManager.h"
 #include "ui_CitationUi.h"
-#include "ControlCitation.h"
 #include "support/docstring.h"
 
 #include <QKeyEvent>
@@ -28,29 +28,22 @@
 namespace lyx {
 namespace frontend {
 
-class GuiCitation;
-
-class GuiCitationDialog : public QDialog,
-	public Ui::CitationUi, public Dialog::View
+class GuiCitationDialog : public GuiDialog, public Ui::CitationUi
 {
 	Q_OBJECT
 
 public:
-	GuiCitationDialog(Dialog &, GuiCitation * form );
+	///
+	GuiCitationDialog(LyXView & lv);
 
-	virtual ~GuiCitationDialog();
-
-	virtual void applyView();
-
+	///
+	void applyView();
 	/// Hide the dialog from sight
 	void hideView();
-
 	/// Redraw the dialog (e.g. if the colors have been remapped).
 	void redrawView() {}
-
 	/// Create the dialog if necessary, update it and display it.
 	void showView();
-
 	/// \return true if the dialog is visible.
 	bool isVisibleView() const;
 
@@ -58,7 +51,10 @@ public Q_SLOTS:
 	/// Update the display of the dialog whilst it is still visible.
 	void updateView();
 
-protected:
+private:
+	///
+	ControlCitation & controller() const;
+	///
 	void closeEvent(QCloseEvent * e);
 	/// prepares a call to GuiCitation::searchKeys when we
 	/// are ready to search the BibTeX entries
@@ -68,7 +64,7 @@ protected:
 	/// update the display of BibTeX information
 	void updateInfo(QModelIndex const &);
 
-protected Q_SLOTS:
+private Q_SLOTS:
 	void cleanUp();
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();
@@ -79,7 +75,7 @@ protected Q_SLOTS:
 	void on_entriesCO_currentIndexChanged(int index);
 	void on_caseCB_stateChanged(int);
 	void on_regexCB_stateChanged(int);
-	virtual void changed();
+	void changed();
 	///
 	void setCitedKeys();
 	/// performs a limited update, suitable for internal call
@@ -99,19 +95,10 @@ private:
 	/// last used citation style
 	int style_;
 	
-	GuiCitation * form_;
-
 	GuiSelectionManager * selectionManager;
-};
 
-
-class GuiCitation : public ControlCitation
-{
-public:
 	///
-	GuiCitation(GuiDialog &);
-	virtual ~GuiCitation() {}
-	virtual bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & data);
 
 	///
 	void init();
@@ -155,10 +142,8 @@ public:
 	QStringList citationStyles(int);
 
 	/// Set the Params variable for the Controller.
-	virtual void apply(int const choice, bool const full, bool const force,
+	void apply(int const choice, bool const full, bool const force,
 					  QString before, QString after);
-	
-	void setCitedKeys();
 
 private:
 	/// available keys.

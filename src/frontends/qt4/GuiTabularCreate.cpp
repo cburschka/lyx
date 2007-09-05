@@ -11,77 +11,64 @@
 #include <config.h>
 
 #include "GuiTabularCreate.h"
+
+#include "ControlTabularCreate.h"
 #include "EmptyTable.h"
 
 #include <QCloseEvent>
 #include <QSpinBox>
 #include <QPushButton>
 
+
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiTabularCreateDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiTabularCreateDialog::GuiTabularCreateDialog(GuiTabularCreate * form)
-	: form_(form)
+GuiTabularCreateDialog::GuiTabularCreateDialog(LyXView & lv)
+	: GuiDialog(lv, "tabularcreate")
 {
 	setupUi(this);
+	setViewTitle(_("Insert Table"));
+	setController(new ControlTabularCreate(*this));
 
 	rowsSB->setValue(5);
 	columnsSB->setValue(5);
 
-	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(rowsSB, SIGNAL(valueChanged(int)),
 		this, SLOT(rowsChanged(int)));
 	connect(columnsSB, SIGNAL(valueChanged(int)),
 		this, SLOT(columnsChanged(int)));
+
+	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+}
+
+
+ControlTabularCreate & GuiTabularCreateDialog::controller() const
+{
+	return static_cast<ControlTabularCreate &>(Dialog::controller());
 }
 
 
 void GuiTabularCreateDialog::columnsChanged(int)
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiTabularCreateDialog::rowsChanged(int)
 {
-	form_->changed();
+	changed();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiTabularCreate
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiTabularCreate::GuiTabularCreate(GuiDialog & parent)
-	: GuiView<GuiTabularCreateDialog>(parent, _("Insert Table"))
+void GuiTabularCreateDialog::applyView()
 {
-}
-
-
-void GuiTabularCreate::build_dialog()
-{
-	dialog_.reset(new GuiTabularCreateDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiTabularCreate::applyView()
-{
-	controller().params().first = dialog_->rowsSB->value();
-	controller().params().second = dialog_->columnsSB->value();
+	controller().params().first = rowsSB->value();
+	controller().params().second = columnsSB->value();
 }
 
 } // namespace frontend

@@ -13,9 +13,10 @@
 #ifndef TOC_WIDGET_H
 #define TOC_WIDGET_H
 
+#include "GuiDialog.h"
+#include "ControlToc.h"
 #include "ui_TocUi.h"
 
-#include <QWidget>
 
 namespace lyx {
 namespace frontend {
@@ -26,7 +27,7 @@ class TocWidget : public QWidget, public Ui::TocUi
 {
 	Q_OBJECT
 public:
-	TocWidget(GuiToc * form, QWidget * parent = 0);
+	TocWidget(GuiToc * form, QWidget * parent);
 
 	/// Update the display of the dialog whilst it is still visible.
 	void update();
@@ -65,10 +66,10 @@ private:
 	//This is a workaround for a problem of signals blocking.
 	void disconnectSelectionModel();
 
-	GuiToc * form_;
-
 	/// depth of list shown
 	int depth_;
+	///
+	GuiToc * form_;
 };
 
 } // namespace frontend

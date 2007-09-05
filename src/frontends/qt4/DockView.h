@@ -23,6 +23,7 @@
 namespace lyx {
 namespace frontend {
 
+/*
 /// Dock Widget container for LyX dialogs.
 /// This template class that encapsulates a given Widget inside a
 /// DockWidget and presents a Dialog::View interface
@@ -65,6 +66,7 @@ private:
 	/// The encapsulated widget.
 	boost::scoped_ptr<Widget> widget_;
 };
+*/
 
 } // frontend
 } // lyx

@@ -13,60 +13,43 @@
 #ifndef GUIBOX_H
 #define GUIBOX_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlBox.h"
 #include "ui_BoxUi.h"
 
-#include <QDialog>
-
 #include <vector>
-
 
 namespace lyx {
 namespace frontend {
 
-class GuiBox;
-
-class GuiBoxDialog : public QDialog, public Ui::BoxUi {
-	Q_OBJECT
-public:
-	GuiBoxDialog(GuiBox * form);
-protected Q_SLOTS:
-	virtual void change_adaptor();
-	virtual void innerBoxChanged(const QString &);
-	virtual void typeChanged(int);
-	virtual void restoreClicked();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
-private:
-	GuiBox * form_;
-};
-
-
-class GuiBox : public GuiView<GuiBoxDialog>
+class GuiBoxDialog : public GuiDialog, public Ui::BoxUi
 {
+	Q_OBJECT
+
 public:
-	///
-	GuiBox(GuiDialog &);
+	GuiBoxDialog(LyXView & lv);
+
+private Q_SLOTS:
+	void change_adaptor();
+	void innerBoxChanged(const QString &);
+	void typeChanged(int);
+	void restoreClicked();
+
+private:
+	void closeEvent(QCloseEvent * e);
+
 	/// parent controller
-	ControlBox & controller()
-	{ return static_cast<ControlBox &>(this->getController()); }
-	/// parent controller
-	ControlBox const & controller() const
-	{ return static_cast<ControlBox const &>(this->getController()); }
+	ControlBox & controller() const;
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items
 	void setInnerType(bool frameless, int i);
-private:
-	///
-	friend class GuiBoxDialog;
+
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
+
 	///
 	std::vector<std::string> ids_;
 	///

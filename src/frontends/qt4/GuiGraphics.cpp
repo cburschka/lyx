@@ -15,6 +15,7 @@
 
 #include "GuiGraphics.h"
 
+#include "ControlGraphics.h"
 #include "debug.h"
 #include "LengthCombo.h"
 #include "lengthcommon.h"
@@ -68,19 +69,18 @@ getFirst(std::vector<Pair> const & pr)
 	return tmp;
 }
 
-GuiGraphicsDialog::GuiGraphicsDialog(GuiGraphics * form)
-	: form_(form)
+GuiGraphicsDialog::GuiGraphicsDialog(LyXView & lv)
+	: GuiDialog(lv, "graphics")
 {
 	setupUi(this);
+	setViewTitle(_("Graphics"));
+	setController(new ControlGraphics(*this));
+
 	//main buttons
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()),
-		form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()),
-		form, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
 	//graphics pane
 	connect(filename, SIGNAL(textChanged(const QString &)),
@@ -173,6 +173,47 @@ GuiGraphicsDialog::GuiGraphicsDialog(GuiGraphics * form)
 	connect(displayscale, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
 	displayscale->setValidator(new QIntValidator(displayscale));
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setRestore(restorePB);
+	bc().setCancel(closePB);
+
+	bc().addReadOnly(latexoptions);
+	bc().addReadOnly(subfigure);
+	bc().addReadOnly(filenameL);
+	bc().addReadOnly(filename);
+	bc().addReadOnly(browsePB);
+	bc().addReadOnly(unzipCB);
+	bc().addReadOnly(bbFrame);
+	bc().addReadOnly(draftCB);
+	bc().addReadOnly(clip);
+	bc().addReadOnly(unzipCB);
+	bc().addReadOnly(displayGB);
+	bc().addReadOnly(sizeGB);
+	bc().addReadOnly(rotationGB);
+	bc().addReadOnly(latexoptions);
+	bc().addReadOnly(getPB);
+	bc().addReadOnly(rotateOrderCB);
+
+	// initialize the length validator
+	bc().addCheckedLineEdit(Scale, scaleCB);
+	bc().addCheckedLineEdit(Width, WidthCB);
+	bc().addCheckedLineEdit(Height, HeightCB);
+	bc().addCheckedLineEdit(displayscale, scaleLA);
+	bc().addCheckedLineEdit(angle, angleL);
+	bc().addCheckedLineEdit(lbX, xL);
+	bc().addCheckedLineEdit(lbY, yL);
+	bc().addCheckedLineEdit(rtX, xL_2);
+	bc().addCheckedLineEdit(rtY, yL_2);
+	bc().addCheckedLineEdit(filename, filenameL);
+}
+
+
+ControlGraphics & GuiGraphicsDialog::controller() const
+{
+	return static_cast<ControlGraphics &>(GuiDialog::controller());
 }
 
 
@@ -184,22 +225,22 @@ void GuiGraphicsDialog::showView()
 
 void GuiGraphicsDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiGraphicsDialog::change_bb()
 {
-	form_->controller().bbChanged = true;
+	controller().bbChanged = true;
 	LYXERR(Debug::GRAPHICS)
 		<< "[controller().bb_Changed set to true]\n";
-	form_->changed();
+	changed();
 }
 
 
 void GuiGraphicsDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
@@ -207,23 +248,23 @@ void GuiGraphicsDialog::closeEvent(QCloseEvent * e)
 void GuiGraphicsDialog::on_browsePB_clicked()
 {
 	docstring const str =
-		form_->controller().browse(qstring_to_ucs4(filename->text()));
+		controller().browse(qstring_to_ucs4(filename->text()));
 	if(!str.empty()){
 		filename->setText(toqstr(str));
-		form_->changed();
+		changed();
 	}
 }
 
 
 void GuiGraphicsDialog::on_getPB_clicked()
 {
-	form_->getBB();
+	getBB();
 }
 
 
 void GuiGraphicsDialog::on_editPB_clicked()
 {
-	form_->controller().editGraphics();
+	controller().editGraphics();
 }
 
 
@@ -235,7 +276,8 @@ void GuiGraphicsDialog::on_filename_textChanged(const QString & filename)
 
 void GuiGraphicsDialog::setAutoText()
 {
-	if (scaleCB->isChecked()) return;
+	if (scaleCB->isChecked())
+		return;
 	if (!Scale->isEnabled() && Scale->text() != "100")
 		Scale->setText(QString("auto"));
 
@@ -276,6 +318,7 @@ void GuiGraphicsDialog::on_scaleCB_toggled(bool setScale)
 
 	setAutoText();
 }
+
 
 void GuiGraphicsDialog::on_WidthCB_toggled(bool setWidth)
 {
@@ -335,53 +378,6 @@ void GuiGraphicsDialog::on_angle_textChanged(const QString & filename)
 				 (filename != "0"));
 }
 
-
-GuiGraphics::GuiGraphics(GuiDialog & parent)
-	: GuiView<GuiGraphicsDialog>(parent, _("Graphics"))
-{
-}
-
-
-void GuiGraphics::build_dialog()
-{
-	dialog_.reset(new GuiGraphicsDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setRestore(dialog_->restorePB);
-	bc().setCancel(dialog_->closePB);
-
-	bc().addReadOnly(dialog_->latexoptions);
-	bc().addReadOnly(dialog_->subfigure);
-	bc().addReadOnly(dialog_->filenameL);
-	bc().addReadOnly(dialog_->filename);
-	bc().addReadOnly(dialog_->browsePB);
-	bc().addReadOnly(dialog_->unzipCB);
-	bc().addReadOnly(dialog_->bbFrame);
-	bc().addReadOnly(dialog_->draftCB);
-	bc().addReadOnly(dialog_->clip);
-	bc().addReadOnly(dialog_->unzipCB);
-	bc().addReadOnly(dialog_->displayGB);
-	bc().addReadOnly(dialog_->sizeGB);
-	bc().addReadOnly(dialog_->rotationGB);
-	bc().addReadOnly(dialog_->latexoptions);
-	bc().addReadOnly(dialog_->getPB);
-	bc().addReadOnly(dialog_->rotateOrderCB);
-
-	// initialize the length validator
-	bc().addCheckedLineEdit(dialog_->Scale, dialog_->scaleCB);
-	bc().addCheckedLineEdit(dialog_->Width, dialog_->WidthCB);
-	bc().addCheckedLineEdit(dialog_->Height, dialog_->HeightCB);
-	bc().addCheckedLineEdit(dialog_->displayscale, dialog_->scaleLA);
-	bc().addCheckedLineEdit(dialog_->angle, dialog_->angleL);
-	bc().addCheckedLineEdit(dialog_->lbX, dialog_->xL);
-	bc().addCheckedLineEdit(dialog_->lbY, dialog_->yL);
-	bc().addCheckedLineEdit(dialog_->rtX, dialog_->xL_2);
-	bc().addCheckedLineEdit(dialog_->rtY, dialog_->yL_2);
-	bc().addCheckedLineEdit(dialog_->filename, dialog_->filenameL);
-}
-
-
 // returns the number of the string s in the vector v
 static int getItemNo(const vector<string> & v, string const & s)
 {
@@ -391,20 +387,20 @@ static int getItemNo(const vector<string> & v, string const & s)
 }
 
 
-void GuiGraphics::update_contents()
+void GuiGraphicsDialog::update_contents()
 {
 	// clear and fill in the comboboxes
 	vector<string> const bb_units = frontend::getBBUnits();
-	dialog_->lbXunit->clear();
-	dialog_->lbYunit->clear();
-	dialog_->rtXunit->clear();
-	dialog_->rtYunit->clear();
+	lbXunit->clear();
+	lbYunit->clear();
+	rtXunit->clear();
+	rtYunit->clear();
 	for (vector<string>::const_iterator it = bb_units.begin();
 	    it != bb_units.end(); ++it) {
-		dialog_->lbXunit->addItem(toqstr(*it));
-		dialog_->lbYunit->addItem(toqstr(*it));
-		dialog_->rtXunit->addItem(toqstr(*it));
-		dialog_->rtYunit->addItem(toqstr(*it));
+		lbXunit->addItem(toqstr(*it));
+		lbYunit->addItem(toqstr(*it));
+		rtXunit->addItem(toqstr(*it));
+		rtYunit->addItem(toqstr(*it));
 	}
 
 	InsetGraphicsParams & igp = controller().params();
@@ -423,20 +419,20 @@ void GuiGraphics::update_contents()
 
 	string const name =
 		igp.filename.outputFilename(kernel().bufferFilepath());
-	dialog_->filename->setText(toqstr(name));
+	filename->setText(toqstr(name));
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
 		string const bb = controller().readBB(igp.filename.absFilename());
 		// the values from the file always have the bigpoint-unit bp
-		dialog_->lbX->setText(toqstr(token(bb, ' ', 0)));
-		dialog_->lbY->setText(toqstr(token(bb, ' ', 1)));
-		dialog_->rtX->setText(toqstr(token(bb, ' ', 2)));
-		dialog_->rtY->setText(toqstr(token(bb, ' ', 3)));
-		dialog_->lbXunit->setCurrentIndex(0);
-		dialog_->lbYunit->setCurrentIndex(0);
-		dialog_->rtXunit->setCurrentIndex(0);
-		dialog_->rtYunit->setCurrentIndex(0);
+		lbX->setText(toqstr(token(bb, ' ', 0)));
+		lbY->setText(toqstr(token(bb, ' ', 1)));
+		rtX->setText(toqstr(token(bb, ' ', 2)));
+		rtY->setText(toqstr(token(bb, ' ', 3)));
+		lbXunit->setCurrentIndex(0);
+		lbYunit->setCurrentIndex(0);
+		rtXunit->setCurrentIndex(0);
+		rtYunit->setCurrentIndex(0);
 		controller().bbChanged = false;
 	} else {
 		// get the values from the inset
@@ -446,44 +442,44 @@ void GuiGraphics::update_contents()
 		string const xr(token(igp.bb, ' ', 2));
 		string const yr(token(igp.bb, ' ', 3));
 		if (isValidLength(xl, &anyLength)) {
-			dialog_->lbX->setText(toqstr(convert<string>(anyLength.value())));
+			lbX->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
-			dialog_->lbXunit->setCurrentIndex(getItemNo(bb_units, unit));
+			lbXunit->setCurrentIndex(getItemNo(bb_units, unit));
 		} else {
-			dialog_->lbX->setText(toqstr(xl));
+			lbX->setText(toqstr(xl));
 		}
 		if (isValidLength(yl, &anyLength)) {
-			dialog_->lbY->setText(toqstr(convert<string>(anyLength.value())));
+			lbY->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
-			dialog_->lbYunit->setCurrentIndex(getItemNo(bb_units, unit));
+			lbYunit->setCurrentIndex(getItemNo(bb_units, unit));
 		} else {
-			dialog_->lbY->setText(toqstr(xl));
+			lbY->setText(toqstr(xl));
 		}
 		if (isValidLength(xr, &anyLength)) {
-			dialog_->rtX->setText(toqstr(convert<string>(anyLength.value())));
+			rtX->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
-			dialog_->rtXunit->setCurrentIndex(getItemNo(bb_units, unit));
+			rtXunit->setCurrentIndex(getItemNo(bb_units, unit));
 		} else {
-			dialog_->rtX->setText(toqstr(xl));
+			rtX->setText(toqstr(xl));
 		}
 		if (isValidLength(yr, &anyLength)) {
-			dialog_->rtY->setText(toqstr(convert<string>(anyLength.value())));
+			rtY->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
-			dialog_->rtYunit->setCurrentIndex(getItemNo(bb_units, unit));
+			rtYunit->setCurrentIndex(getItemNo(bb_units, unit));
 		} else {
-			dialog_->rtY->setText(toqstr(xl));
+			rtY->setText(toqstr(xl));
 		}
 		controller().bbChanged = true;
 	}
 
 	// Update the draft and clip mode
-	dialog_->draftCB->setChecked(igp.draft);
-	dialog_->clip->setChecked(igp.clip);
-	dialog_->unzipCB->setChecked(igp.noUnzip);
+	draftCB->setChecked(igp.draft);
+	clip->setChecked(igp.clip);
+	unzipCB->setChecked(igp.noUnzip);
 
 	// Update the subcaption check button and input field
-	dialog_->subfigure->setChecked(igp.subcaption);
-	dialog_->subcaption->setText(toqstr(igp.subcaptionText));
+	subfigure->setChecked(igp.subcaption);
+	subcaption->setText(toqstr(igp.subcaptionText));
 
 	int item = 0;
 	switch (igp.display) {
@@ -493,124 +489,122 @@ void GuiGraphics::update_contents()
 		case graphics::ColorDisplay: item = 3; break;
 		case graphics::NoDisplay: item = 0; break;
 	}
-	dialog_->showCB->setCurrentIndex(item);
-	dialog_->displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
-	dialog_->displayGB->setChecked(igp.display != graphics::NoDisplay);
+	showCB->setCurrentIndex(item);
+	displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
+	displayGB->setChecked(igp.display != graphics::NoDisplay);
 
 	// the output section (width/height)
 
-	dialog_->Scale->setText(toqstr(igp.scale));
+	Scale->setText(toqstr(igp.scale));
 	//igp.scale defaults to 100, so we treat it as empty
 	bool const scaleChecked = !igp.scale.empty() && igp.scale != "100";
-	dialog_->scaleCB->blockSignals(true);
-	dialog_->scaleCB->setChecked(scaleChecked);
-	dialog_->scaleCB->blockSignals(false);
-	dialog_->Scale->setEnabled(scaleChecked);
+	scaleCB->blockSignals(true);
+	scaleCB->setChecked(scaleChecked);
+	scaleCB->blockSignals(false);
+	Scale->setEnabled(scaleChecked);
 
-	lengthAutoToWidgets(dialog_->Width, dialog_->widthUnit, igp.width,
+	lengthAutoToWidgets(Width, widthUnit, igp.width,
 		unitDefault);
-	bool const widthChecked = !dialog_->Width->text().isEmpty() &&
-		dialog_->Width->text() != "auto";
-	dialog_->WidthCB->blockSignals(true);
-	dialog_->WidthCB->setChecked(widthChecked);
-	dialog_->WidthCB->blockSignals(false);
-	dialog_->Width->setEnabled(widthChecked);
-	dialog_->widthUnit->setEnabled(widthChecked);
+	bool const widthChecked = !Width->text().isEmpty() &&
+		Width->text() != "auto";
+	WidthCB->blockSignals(true);
+	WidthCB->setChecked(widthChecked);
+	WidthCB->blockSignals(false);
+	Width->setEnabled(widthChecked);
+	widthUnit->setEnabled(widthChecked);
 
-	lengthAutoToWidgets(dialog_->Height, dialog_->heightUnit, igp.height,
+	lengthAutoToWidgets(Height, heightUnit, igp.height,
 		unitDefault);
-	bool const heightChecked = !dialog_->Height->text().isEmpty()
-		&& dialog_->Height->text() != "auto";
-	dialog_->HeightCB->blockSignals(true);
-	dialog_->HeightCB->setChecked(heightChecked);
-	dialog_->HeightCB->blockSignals(false);
-	dialog_->Height->setEnabled(heightChecked);
-	dialog_->heightUnit->setEnabled(heightChecked);
+	bool const heightChecked = !Height->text().isEmpty()
+		&& Height->text() != "auto";
+	HeightCB->blockSignals(true);
+	HeightCB->setChecked(heightChecked);
+	HeightCB->blockSignals(false);
+	Height->setEnabled(heightChecked);
+	heightUnit->setEnabled(heightChecked);
 
-	dialog_->scaleCB->setEnabled(!widthChecked && !heightChecked);
-	dialog_->WidthCB->setEnabled(!scaleChecked);
-	dialog_->HeightCB->setEnabled(!scaleChecked);
-	dialog_->aspectratio->setEnabled(widthChecked && heightChecked);
+	scaleCB->setEnabled(!widthChecked && !heightChecked);
+	WidthCB->setEnabled(!scaleChecked);
+	HeightCB->setEnabled(!scaleChecked);
+	aspectratio->setEnabled(widthChecked && heightChecked);
 
-	dialog_->setAutoText();
+	setAutoText();
 
-	dialog_->angle->setText(toqstr(igp.rotateAngle));
-	dialog_->rotateOrderCB->setChecked(igp.scaleBeforeRotation);
+	angle->setText(toqstr(igp.rotateAngle));
+	rotateOrderCB->setChecked(igp.scaleBeforeRotation);
 
-	dialog_->rotateOrderCB->setEnabled((widthChecked ||
-					   heightChecked ||
-					   scaleChecked) &&
-					   (igp.rotateAngle != "0"));
+	rotateOrderCB->setEnabled( (widthChecked || heightChecked || scaleChecked)
+		&& igp.rotateAngle != "0");
 
-	dialog_->origin->clear();
+	origin->clear();
 
 	vector<RotationOriginPair> origindata = getRotationOriginData();
 	vector<docstring> const origin_lang = getFirst(origindata);
-	GuiGraphics::origin_ltx = getSecond(origindata);
+	origin_ltx = getSecond(origindata);
 
 	for (vector<docstring>::const_iterator it = origin_lang.begin();
 	    it != origin_lang.end(); ++it)
-		dialog_->origin->addItem(toqstr(*it));
+		origin->addItem(toqstr(*it));
 
 	if (!igp.rotateOrigin.empty())
-		dialog_->origin->setCurrentIndex(
+		origin->setCurrentIndex(
 			getItemNo(origin_ltx, igp.rotateOrigin));
 	else
-		dialog_->origin->setCurrentIndex(0);
+		origin->setCurrentIndex(0);
 
 	// disable edit button when no filename is present
-	dialog_->editPB->setDisabled(dialog_->filename->text().isEmpty());
+	editPB->setDisabled(filename->text().isEmpty());
 
 	//// latex section
-	dialog_->latexoptions->setText(toqstr(igp.special));
+	latexoptions->setText(toqstr(igp.special));
 }
 
 
-void GuiGraphics::applyView()
+void GuiGraphicsDialog::applyView()
 {
 	InsetGraphicsParams & igp = controller().params();
 
-	igp.filename.set(internal_path(fromqstr(dialog_->filename->text())),
+	igp.filename.set(internal_path(fromqstr(filename->text())),
 			 kernel().bufferFilepath());
 
 	// the bb section
 	igp.bb.erase();
 	if (controller().bbChanged) {
 		string bb;
-		string lbX(fromqstr(dialog_->lbX->text()));
-		string lbY(fromqstr(dialog_->lbY->text()));
-		string rtX(fromqstr(dialog_->rtX->text()));
-		string rtY(fromqstr(dialog_->rtY->text()));
+		string lbXs = fromqstr(lbX->text());
+		string lbYs = fromqstr(lbY->text());
+		string rtXs = fromqstr(rtX->text());
+		string rtYs = fromqstr(rtY->text());
 		int bb_sum =
-			convert<int>(lbX) + convert<int>(lbY) +
-			convert<int>(rtX) + convert<int>(rtX);
+			convert<int>(lbXs) + convert<int>(lbYs) +
+			convert<int>(rtXs) + convert<int>(rtXs);
 		if (bb_sum) {
-			if (lbX.empty())
+			if (lbXs.empty())
 				bb = "0 ";
 			else
-				bb = lbX + fromqstr(dialog_->lbXunit->currentText()) + ' ';
-			if (lbY.empty())
+				bb = lbXs + fromqstr(lbXunit->currentText()) + ' ';
+			if (lbYs.empty())
 				bb += "0 ";
 			else
-				bb += (lbY + fromqstr(dialog_->lbYunit->currentText()) + ' ');
-			if (rtX.empty())
+				bb += (lbYs + fromqstr(lbYunit->currentText()) + ' ');
+			if (rtXs.empty())
 				bb += "0 ";
 			else
-				bb += (rtX + fromqstr(dialog_->rtXunit->currentText()) + ' ');
-			if (rtY.empty())
+				bb += (rtXs + fromqstr(rtXunit->currentText()) + ' ');
+			if (rtYs.empty())
 				bb += '0';
 			else
-				bb += (rtY + fromqstr(dialog_->rtYunit->currentText()));
+				bb += (rtYs + fromqstr(rtYunit->currentText()));
 			igp.bb = bb;
 		}
 	}
 
-	igp.draft = dialog_->draftCB->isChecked();
-	igp.clip = dialog_->clip->isChecked();
-	igp.subcaption = dialog_->subfigure->isChecked();
-	igp.subcaptionText = fromqstr(dialog_->subcaption->text());
+	igp.draft = draftCB->isChecked();
+	igp.clip = clip->isChecked();
+	igp.subcaption = subfigure->isChecked();
+	igp.subcaptionText = fromqstr(subcaption->text());
 
-	switch (dialog_->showCB->currentIndex()) {
+	switch (showCB->currentIndex()) {
 		case 0: igp.display = graphics::DefaultDisplay; break;
 		case 1: igp.display = graphics::MonochromeDisplay; break;
 		case 2: igp.display = graphics::GrayscaleDisplay; break;
@@ -618,35 +612,33 @@ void GuiGraphics::applyView()
 		default:;
 	}
 
-	if (!dialog_->displayGB->isChecked())
+	if (!displayGB->isChecked())
 		igp.display = graphics::NoDisplay;
 
 	//the graphics section
-	if (dialog_->scaleCB->isChecked()	&& !dialog_->Scale->text().isEmpty()) {
-		igp.scale = fromqstr(dialog_->Scale->text());
+	if (scaleCB->isChecked() && !Scale->text().isEmpty()) {
+		igp.scale = fromqstr(Scale->text());
 		igp.width = Length("0pt");
 		igp.height = Length("0pt");
 		igp.keepAspectRatio = false;
 	} else {
 		igp.scale = string();
-		igp.width = dialog_->WidthCB->isChecked() ?
-			//Note that this works even if dialog_->Width is "auto", since in
+		igp.width = WidthCB->isChecked() ?
+			//Note that this works even if Width is "auto", since in
 			//that case we get "0pt".
-			Length(widgetsToLength(dialog_->Width, dialog_->widthUnit)):
+			Length(widgetsToLength(Width, widthUnit)):
 			Length("0pt");
-		igp.height = dialog_->HeightCB->isChecked() ?
-			Length(widgetsToLength(dialog_->Height, dialog_->heightUnit)) :
+		igp.height = HeightCB->isChecked() ?
+			Length(widgetsToLength(Height, heightUnit)) :
 			Length("0pt");
-		igp.keepAspectRatio = dialog_->aspectratio->isEnabled() &&
-			dialog_->aspectratio->isChecked() &&
+		igp.keepAspectRatio = aspectratio->isEnabled() &&
+			aspectratio->isChecked() &&
 			igp.width.value() > 0 && igp.height.value() > 0;
 	}
 
-	igp.noUnzip = dialog_->unzipCB->isChecked();
-
-	igp.lyxscale = convert<int>(fromqstr(dialog_->displayscale->text()));
-
-	igp.rotateAngle = fromqstr(dialog_->angle->text());
+	igp.noUnzip = unzipCB->isChecked();
+	igp.lyxscale = displayscale->text().toInt();
+	igp.rotateAngle = fromqstr(angle->text());
 
 	double rotAngle = convert<double>(igp.rotateAngle);
 	if (std::abs(rotAngle) > 360.0) {
@@ -656,41 +648,39 @@ void GuiGraphics::applyView()
 
 	// save the latex name for the origin. If it is the default
 	// then origin_ltx returns ""
-	igp.rotateOrigin =
-		GuiGraphics::origin_ltx[dialog_->origin->currentIndex()];
-
-	igp.scaleBeforeRotation = dialog_->rotateOrderCB->isChecked();
+	igp.rotateOrigin = origin_ltx[origin->currentIndex()];
+	igp.scaleBeforeRotation = rotateOrderCB->isChecked();
 
 	// more latex options
-	igp.special = fromqstr(dialog_->latexoptions->text());
+	igp.special = fromqstr(latexoptions->text());
 }
 
 
-void GuiGraphics::getBB()
+void GuiGraphicsDialog::getBB()
 {
-	string const filename(fromqstr(dialog_->filename->text()));
-	if (!filename.empty()) {
-		string const bb(controller().readBB(filename));
+	string const fn = fromqstr(filename->text());
+	if (!fn.empty()) {
+		string const bb = controller().readBB(fn);
 		if (!bb.empty()) {
-			dialog_->lbX->setText(toqstr(token(bb, ' ', 0)));
-			dialog_->lbY->setText(toqstr(token(bb, ' ', 1)));
-			dialog_->rtX->setText(toqstr(token(bb, ' ', 2)));
-			dialog_->rtY->setText(toqstr(token(bb, ' ', 3)));
+			lbX->setText(toqstr(token(bb, ' ', 0)));
+			lbY->setText(toqstr(token(bb, ' ', 1)));
+			rtX->setText(toqstr(token(bb, ' ', 2)));
+			rtY->setText(toqstr(token(bb, ' ', 3)));
 			// the default units for the bb values when reading
 			// it from the file
-			dialog_->lbXunit->setCurrentIndex(0);
-			dialog_->lbYunit->setCurrentIndex(0);
-			dialog_->rtXunit->setCurrentIndex(0);
-			dialog_->rtYunit->setCurrentIndex(0);
+			lbXunit->setCurrentIndex(0);
+			lbYunit->setCurrentIndex(0);
+			rtXunit->setCurrentIndex(0);
+			rtYunit->setCurrentIndex(0);
 		}
 		controller().bbChanged = false;
 	}
 }
 
 
-bool GuiGraphics::isValid()
+bool GuiGraphicsDialog::isValid()
 {
-	return !dialog_->filename->text().isEmpty();
+	return !filename->text().isEmpty();
 }
 
 } // namespace frontend

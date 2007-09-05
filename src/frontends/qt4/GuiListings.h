@@ -12,27 +12,24 @@
 #ifndef GUILISTINGS_H
 #define GUILISTINGS_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlListings.h"
 #include "ui_ListingsUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiListings;
-
-class GuiListingsDialog : public QDialog, public Ui::ListingsUi {
+class GuiListingsDialog : public GuiDialog, public Ui::ListingsUi
+{
 	Q_OBJECT
 public:
-	GuiListingsDialog(GuiListings * form);
+	GuiListingsDialog(LyXView & lv);
 	/// get values from all the widgets and form a string
 	std::string construct_params();
 	/// validate listings parameters and return an error message, if any
 	docstring validate_listings_params();
-protected Q_SLOTS:
-	virtual void change_adaptor();
+private Q_SLOTS:
+	void change_adaptor();
 	/// AFAIK, QValidator only works for QLineEdit so
 	/// I have to validate listingsED (QTextEdit) manually.
 	/// This function displays a hint or error message returned by
@@ -46,34 +43,16 @@ protected Q_SLOTS:
 	void on_numberSideCO_currentIndexChanged(int);
 	/// show dialect when language is chosen
 	void on_languageCO_currentIndexChanged(int);
-protected:
-	virtual void closeEvent(QCloseEvent * e);
 private:
-	GuiListings * form_;
-};
-
-
-class GuiListings : public GuiView<GuiListingsDialog> {
-public:
-	friend class GuiListingsDialog;
-
-	GuiListings(GuiDialog &);
+	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlListings & controller()
-	{ return static_cast<ControlListings &>(this->getController()); }
-	/// parent controller
-	ControlListings const & controller() const
-	{ return static_cast<ControlListings const &>(this->getController()); }
-private:
-	/// Apply changes
-	virtual void applyView();
-	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
-protected:
+	ControlListings & controller() const;
 	/// return false if validate_listings_params returns error
-	virtual bool isValid();
+	bool isValid();
+	/// Apply changes
+	void applyView();
+	/// update
+	void update_contents();
 };
 
 } // namespace frontend

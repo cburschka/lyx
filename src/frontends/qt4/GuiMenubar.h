@@ -32,7 +32,8 @@ namespace frontend {
 class GuiViewBase;
 class LyXView;
 
-class GuiMenubar : public QObject {
+class GuiMenubar : public QObject
+{
 	Q_OBJECT
 public:
 	GuiMenubar(LyXView *, MenuBackend &);

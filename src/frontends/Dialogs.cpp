@@ -181,7 +181,7 @@ void Dialogs::updateBufferDependent(bool switched) const
 		Dialog * dialog =  it->second.get();
 		if (switched && dialog->controller().isBufferDependent()) {
 			if (dialog->isVisible() && dialog->controller().initialiseParams(""))
-				dialog->view().updateView();
+				dialog->updateView();
 			else
 				dialog->hide();
 		} else {

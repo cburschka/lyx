@@ -12,63 +12,29 @@
 #ifndef GUICHANGES_H
 #define GUICHANGES_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlChanges.h"
 #include "ui_ChangesUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiChanges;
-
-class GuiChangesDialog : public QDialog, public Ui::ChangesUi {
+class GuiChangesDialog : public GuiDialog, public Ui::ChangesUi
+{
 	Q_OBJECT
-public:
 
-	GuiChangesDialog(GuiChanges * form);
+public:
+	GuiChangesDialog(LyXView & lv);
 
 protected Q_SLOTS:
-
-	virtual void nextPressed();
-	virtual void acceptPressed();
-	virtual void rejectPressed();
-
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+	void nextPressed();
+	void acceptPressed();
+	void rejectPressed();
 
 private:
-	GuiChanges * form_;
-};
-
-
-class GuiChanges : public GuiView<GuiChangesDialog>
-{
-public:
-	///
-	GuiChanges(GuiDialog &);
-	/// parent controller
-	ControlChanges & controller()
-	{ return static_cast<ControlChanges &>(this->getController()); }
-	/// parent controller
-	ControlChanges const & controller() const
-	{ return static_cast<ControlChanges const &>(this->getController()); }
-
-	void accept();
-
-	void reject();
-
-	void next();
-
-private:
-	friend class GuiChangesDialog;
-	/// Apply changes
-	virtual void applyView() {};
-	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void closeEvent(QCloseEvent * e);
+	ControlChanges & controller() const;
+	void update_contents();
 };
 
 } // namespace frontend

@@ -59,7 +59,6 @@ SOURCEFILES = \
 	GuiCommandEdit.cpp \
 	GuiDelimiter.cpp \
 	GuiDialog.cpp \
-	GuiDialogView.cpp \
 	GuiDocument.cpp \
 	GuiEmbeddedFiles.cpp \
 	GuiErrorList.cpp \
@@ -149,7 +148,6 @@ MOCHEADER = \
 	GuiCommandEdit.h \
 	GuiDelimiter.h \
 	GuiDialog.h \
-	GuiDialogView.h \
 	GuiDocument.h \
 	GuiEmbeddedFiles.h \
 	GuiErrorList.h \

@@ -12,50 +12,30 @@
 #ifndef GUITABULARCREATE_H
 #define GUITABULARCREATE_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlTabularCreate.h"
 #include "ui_TabularCreateUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiTabularCreate;
-
-class GuiTabularCreateDialog : public QDialog, public Ui::TabularCreateUi
+class GuiTabularCreateDialog : public GuiDialog, public Ui::TabularCreateUi
 {
 	Q_OBJECT
-public:
-	GuiTabularCreateDialog(GuiTabularCreate * form);
-protected Q_SLOTS:
-	virtual void columnsChanged(int);
-	virtual void rowsChanged(int);
-private:
-	GuiTabularCreate * form_;
-};
 
-
-class GuiTabularCreate : public GuiView<GuiTabularCreateDialog>
-{
 public:
-	///
-	friend class GuiTabularCreateDialog;
-	///
-	GuiTabularCreate(GuiDialog &);
+	GuiTabularCreateDialog(LyXView & lv);
+
+private Q_SLOTS:
+	void columnsChanged(int);
+	void rowsChanged(int);
+
 	/// parent controller
-	ControlTabularCreate & controller()
-	{ return static_cast<ControlTabularCreate &>(this->getController()); }
-	/// parent controller
-	ControlTabularCreate const & controller() const
-	{ return static_cast<ControlTabularCreate const &>(this->getController()); }
+	ControlTabularCreate & controller() const;
+
 private:
 	/// Apply changes
-	virtual void applyView();
-	/// update
-	virtual void update_contents() {}
-	/// build the dialog
-	virtual void build_dialog();
+	void applyView();
 };
 
 } // namespace frontend

@@ -31,29 +31,30 @@ using std::istringstream;
 using std::ostringstream;
 using std::string;
 
+
 namespace lyx {
 namespace frontend {
 
-
-GuiAbout::GuiAbout(GuiDialog & parent)
-	: GuiView<GuiAboutDialog>(parent, _("About LyX"))
+GuiAboutDialog::GuiAboutDialog(LyXView & lv)
+	: GuiDialog(lv, "aboutlyx")
 {
-}
+	setupUi(this);
+	setViewTitle(_("About LyX"));
 
+	setController(new ControlAboutlyx(*this));
 
-void GuiAbout::build_dialog()
-{
-	dialog_.reset(new GuiAboutDialog);
-	connect(dialog_.get()->closePB, SIGNAL(clicked()),
+	connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
+
+	connect(closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
 
-	dialog_->copyrightTB->setPlainText(toqstr(controller().getCopyright()));
-	dialog_->copyrightTB->append("");
-	dialog_->copyrightTB->append(toqstr(controller().getLicense()));
-	dialog_->copyrightTB->append("");
-	dialog_->copyrightTB->append(toqstr(controller().getDisclaimer()));
+	copyrightTB->setPlainText(toqstr(controller().getCopyright()));
+	copyrightTB->append("");
+	copyrightTB->append(toqstr(controller().getLicense()));
+	copyrightTB->append("");
+	copyrightTB->append(toqstr(controller().getDisclaimer()));
 
-	dialog_->versionLA->setText(toqstr(controller().getVersion()));
+	versionLA->setText(toqstr(controller().getVersion()));
 
 	// The code below should depend on a autoconf test. (Lgb)
 #if 1
@@ -100,17 +101,24 @@ void GuiAbout::build_dialog()
 	}
 #endif
 
-	dialog_->creditsTB->setHtml(toqstr(out.str()));
+	creditsTB->setHtml(toqstr(out.str()));
 
 	// try to resize to a good size
-	dialog_->copyrightTB->hide();
-	dialog_->setMinimumSize(dialog_->copyrightTB->sizeHint());
-	dialog_->copyrightTB->show();
-	dialog_->setMinimumSize(dialog_->sizeHint());
+	copyrightTB->hide();
+	setMinimumSize(copyrightTB->sizeHint());
+	copyrightTB->show();
+	setMinimumSize(sizeHint());
 
 	// Manage the cancel/close button
-	bc().setCancel(dialog_->closePB);
-	//FIXME bc().refresh();
+	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+	bc().setCancel(closePB);
+	bc().refresh();
+}
+
+
+ControlAboutlyx & GuiAboutDialog::controller() const
+{
+	return static_cast<ControlAboutlyx &>(Dialog::controller());
 }
 
 } // namespace frontend

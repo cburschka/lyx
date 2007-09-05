@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "GuiBibitem.h"
+#include "ControlCommand.h"
 #include "qt_helpers.h"
 
 #include <QCloseEvent>
@@ -21,80 +22,66 @@
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiBibItemDialog
-//
-/////////////////////////////////////////////////////////////////////
 
-GuiBibitemDialog::GuiBibitemDialog(GuiBibitem * form)
-	: form_(form)
+GuiBibitemDialog::GuiBibitemDialog(LyXView & lv)
+	: GuiDialog(lv, "bibitem")
 {
 	setupUi(this);
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	setViewTitle(_("Bibliography Entry Settings"));
+	setController(new ControlCommand(*this, "bibitem", "bibitem"));
+
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(keyED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(labelED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
+
+	bc().setPolicy(ButtonPolicy::OkCancelReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+	bc().addReadOnly(keyED);
+	bc().addReadOnly(labelED);
+}
+
+
+ControlCommand & GuiBibitemDialog::controller() const
+{
+	return static_cast<ControlCommand &>(Dialog::controller());
 }
 
 
 void GuiBibitemDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiBibitemDialog::closeEvent(QCloseEvent *e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiBibItem
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiBibitem::GuiBibitem(GuiDialog & parent)
-	: GuiView<GuiBibitemDialog>(parent, _("Bibliography Entry Settings"))
+void GuiBibitemDialog::update_contents()
 {
+	keyED->setText(toqstr(controller().params()["key"]));
+	labelED->setText(toqstr(controller().params()["label"]));
 }
 
 
-void GuiBibitem::build_dialog()
+void GuiBibitemDialog::applyView()
 {
-	dialog_.reset(new GuiBibitemDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->keyED);
-	bc().addReadOnly(dialog_->labelED);
+	controller().params()["key"] = qstring_to_ucs4(keyED->text());
+	controller().params()["label"] = qstring_to_ucs4(labelED->text());
 }
 
 
-void GuiBibitem::update_contents()
+bool GuiBibitemDialog::isValid()
 {
-	dialog_->keyED->setText(toqstr(controller().params()["key"]));
-	dialog_->labelED->setText(toqstr(controller().params()["label"]));
-}
-
-
-void GuiBibitem::applyView()
-{
-	controller().params()["key"] = qstring_to_ucs4(dialog_->keyED->text());
-	controller().params()["label"] = qstring_to_ucs4(dialog_->labelED->text());
-}
-
-
-bool GuiBibitem::isValid()
-{
-	return !dialog_->keyED->text().isEmpty();
+	return !keyED->text().isEmpty();
 }
 
 } // namespace frontend

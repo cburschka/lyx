@@ -39,7 +39,8 @@ class GuiViewBase;
 class Action;
 
 
-class GuiLayoutBox : public QObject, public LayoutBox {
+class GuiLayoutBox : public QObject, public LayoutBox
+{
 	Q_OBJECT
 public:
 	GuiLayoutBox(QToolBar *, GuiViewBase &);
@@ -64,7 +65,8 @@ private:
 };
 
 
-class GuiToolbar : public QToolBar, public Toolbar {
+class GuiToolbar : public QToolBar, public Toolbar
+{
 	Q_OBJECT
 public:
 	GuiToolbar(ToolbarInfo const &, GuiViewBase &);

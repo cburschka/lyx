@@ -20,19 +20,20 @@
 #include <QTextCursor>
 #include <QTextDocument>
 
+
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiViewSourceDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiViewSourceDialog::GuiViewSourceDialog(GuiViewSource * form)
-	: form_(form)
+GuiViewSourceDialog::GuiViewSourceDialog(LyXView & lv)
+	: GuiDialog(lv, "view-source"),
+		document_(new QTextDocument(this)),
+		highlighter_(new LaTeXHighlighter(document_))
 {
 	setupUi(this);
+	setController(new ControlViewSource(*this));
+
+	//	GuiViewBase & gui_view = static_cast<GuiViewBase &>(lyxview_);
+	//		*dialog, qvs, &gui_view, _("LaTeX Source"), Qt::BottomDockWidgetArea));
 
 	connect(viewFullSourceCB, SIGNAL(clicked()),
 		this, SLOT(update()));
@@ -43,9 +44,9 @@ GuiViewSourceDialog::GuiViewSourceDialog(GuiViewSource * form)
 
 	// setting a document at this point trigger an assertion in Qt
 	// so we disable the signals here:
-	form_->document()->blockSignals(true);
-	viewSourceTV->setDocument(form_->document());
-	form_->document()->blockSignals(false);
+	document()->blockSignals(true);
+	viewSourceTV->setDocument(document());
+	document()->blockSignals(false);
 	viewSourceTV->setReadOnly(true);
 	///dialog_->viewSourceTV->setAcceptRichText(false);
 	// this is personal. I think source code should be in fixed-size font
@@ -56,16 +57,24 @@ GuiViewSourceDialog::GuiViewSourceDialog(GuiViewSource * form)
 	viewSourceTV->setFont(font);
 	// again, personal taste
 	viewSourceTV->setWordWrapMode(QTextOption::NoWrap);
+
+	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+}
+
+
+ControlViewSource & GuiViewSourceDialog::controller() const
+{
+	return static_cast<ControlViewSource &>(Dialog::controller());
 }
 
 
 void GuiViewSourceDialog::updateView()
 {
 	if (autoUpdateCB->isChecked())
-		form_->update(viewFullSourceCB->isChecked());
+		update(viewFullSourceCB->isChecked());
 
 	int beg, end;
-	boost::tie(beg, end) = form_->getRows();
+	boost::tie(beg, end) = controller().getRows();
 	QTextCursor c = QTextCursor(viewSourceTV->document());
 	c.movePosition(QTextCursor::NextBlock, QTextCursor::MoveAnchor, beg);
 	c.select(QTextCursor::BlockUnderCursor);
@@ -73,6 +82,13 @@ void GuiViewSourceDialog::updateView()
 	viewSourceTV->setTextCursor(c);
 	QWidget::update();
 }
+
+
+void GuiViewSourceDialog::update(bool full_source)
+{
+	document_->setPlainText(toqstr(controller().updateContent(full_source)));
+}
+
 
 
 /////////////////////////////////////////////////////////////////////
@@ -157,26 +173,6 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		setFormat(index, length, commentFormat);
 		index = text.indexOf(exprComment, index + length);
 	}
-}
-
-
-GuiViewSource::GuiViewSource(GuiDialog & parent)
-	: ControlViewSource(parent)
-{
-	document_ = new QTextDocument(this);
-	highlighter_ = new LaTeXHighlighter(document_);
-}
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// GuiViewSource
-//
-/////////////////////////////////////////////////////////////////////
-
-void GuiViewSource::update(bool full_source)
-{
-	document_->setPlainText(toqstr(updateContent(full_source)));
 }
 
 

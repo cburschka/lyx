@@ -12,7 +12,7 @@
 #ifndef GUIDOCUMENT_H
 #define GUIDOCUMENT_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "BulletsModule.h"
 #include "ControlDocument.h"
 
@@ -52,12 +52,13 @@ class GuiBranches;
 class GuiDocument;
 class PreambleModule;
 
-class GuiDocumentDialog : public QDialog, public Ui::DocumentUi {
+class GuiDocumentDialog : public GuiDialog, public Ui::DocumentUi
+{
 	Q_OBJECT
 public:
 	friend class GuiDocument;
 
-	GuiDocumentDialog(GuiDocument *);
+	GuiDocumentDialog(LyXView & lv);
 
 	void updateParams(BufferParams const & params);
 	void apply(BufferParams & params);
@@ -76,7 +77,7 @@ public Q_SLOTS:
 	void saveDefaultClicked();
 	void useDefaultsClicked();
 
-protected Q_SLOTS:
+private Q_SLOTS:
 	void setLSpacing(int);
 	void setMargins(bool);
 	void setCustomPapersize(int);
@@ -89,11 +90,10 @@ protected Q_SLOTS:
 	void portraitChanged();
 	void classChanged();
 
-protected:
+private:
 	void closeEvent(QCloseEvent * e);
 
 private:
-
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;
 	UiWidget<Ui::FontUi> *fontModule;
 	UiWidget<Ui::PageLayoutUi> *pageLayoutModule;
@@ -110,42 +110,22 @@ private:
 	BulletsModule * bulletsModule;
 	FloatPlacement * floatModule;
 
-	GuiDocument * form_;
-
 	/// FIXME
 	std::vector<std::string> lang_;
-};
 
-
-class GuiDocument : public GuiView<GuiDocumentDialog>
-{
-public:
-
-	friend class GuiDocumentDialog;
-
-	GuiDocument(GuiDialog &);
-
-	void showPreamble();
 	/// parent controller
-	ControlDocument & controller()
-	{ return static_cast<ControlDocument &>(this->getController()); }
-	/// parent controller
-	ControlDocument const & controller() const
-	{ return static_cast<ControlDocument const &>(this->getController()); }
+	ControlDocument & controller() const;
 private:
 	/// Apply changes
 	void applyView();
 	/// update
 	void update_contents();
-	/// build the dialog
-	void build_dialog();
 	/// save as default template
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
-protected:
 	/// return false if validate_listings_params returns error
-	virtual bool isValid();
+	bool isValid();
 };
 
 
@@ -164,7 +144,7 @@ Q_SIGNALS:
 	/// signal that something's changed in the Widget.
 	void changed();
 
-protected:
+private:
 	void closeEvent(QCloseEvent *);
 	void on_preambleTE_textChanged() { changed(); }
 

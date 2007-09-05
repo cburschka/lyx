@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "GuiURL.h"
+
+#include "ControlCommand.h"
 #include "qt_helpers.h"
 
 #include <QCheckBox>
@@ -22,13 +24,15 @@
 namespace lyx {
 namespace frontend {
 
-GuiURLDialog::GuiURLDialog(UrlView * form)
-	: form_(form)
+GuiURLDialog::GuiURLDialog(LyXView & lv)
+	: GuiDialog(lv, "url")
 {
 	setupUi(this);
+	setViewTitle( _("URL"));
+	setController(new ControlCommand(*this, "url", "url"));
 
-	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(urlED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changed_adaptor()));
 	connect(hyperlinkCB, SIGNAL(clicked()),
@@ -37,71 +41,66 @@ GuiURLDialog::GuiURLDialog(UrlView * form)
 		this, SLOT(changed_adaptor()));
 
 	setFocusProxy(urlED);
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+	bc().addReadOnly(urlED);
+	bc().addReadOnly(nameED);
+	bc().addReadOnly(hyperlinkCB);
+}
+
+
+ControlCommand & GuiURLDialog::controller() const
+{
+	return static_cast<ControlCommand &>(Dialog::controller());
 }
 
 
 void GuiURLDialog::changed_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiURLDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 
-UrlView::UrlView(GuiDialog & parent)
-	: GuiView<GuiURLDialog>(parent, _("URL"))
-{
-}
-
-
-void UrlView::build_dialog()
-{
-	dialog_.reset(new GuiURLDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->urlED);
-	bc().addReadOnly(dialog_->nameED);
-	bc().addReadOnly(dialog_->hyperlinkCB);
-}
-
-
-void UrlView::update_contents()
+void GuiURLDialog::update_contents()
 {
 	InsetCommandParams const & params = controller().params();
 
-	dialog_->urlED->setText(toqstr(params["target"]));
-	dialog_->nameED->setText(toqstr(params["name"]));
-	dialog_->hyperlinkCB->setChecked(params.getCmdName() != "url");
+	urlED->setText(toqstr(params["target"]));
+	nameED->setText(toqstr(params["name"]));
+	hyperlinkCB->setChecked(params.getCmdName() != "url");
 
 	bc().setValid(isValid());
 }
 
 
-void UrlView::applyView()
+void GuiURLDialog::applyView()
 {
 	InsetCommandParams & params = controller().params();
 
-	params["target"] = qstring_to_ucs4(dialog_->urlED->text());
-	params["name"] = qstring_to_ucs4(dialog_->nameED->text());
+	params["target"] = qstring_to_ucs4(urlED->text());
+	params["name"] = qstring_to_ucs4(nameED->text());
 
-	if (dialog_->hyperlinkCB->isChecked())
+	if (hyperlinkCB->isChecked())
 		params.setCmdName("htmlurl");
 	else
 		params.setCmdName("url");
 }
 
 
-bool UrlView::isValid()
+bool GuiURLDialog::isValid()
 {
-	QString const u = dialog_->urlED->text();
-	QString const n = dialog_->nameED->text();
+	QString const u = urlED->text();
+	QString const n = nameED->text();
 
 	return !u.isEmpty() || !n.isEmpty();
 }

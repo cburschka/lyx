@@ -12,53 +12,31 @@
 #ifndef GUIFLOAT_H
 #define GUIFLOAT_H
 
-#include "GuiDialogView.h"
-#include "ui_FloatUi.h"
+#include "GuiDialog.h"
 #include "ControlFloat.h"
-
-#include <QDialog>
+#include "ui_FloatUi.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiFloat;
-
-class GuiFloatDialog : public QDialog, public Ui::FloatUi {
+class GuiFloatDialog : public GuiDialog, public Ui::FloatUi
+{
 	Q_OBJECT
+
 public:
-	GuiFloatDialog(GuiFloat * form);
+	GuiFloatDialog(LyXView & lv);
 
-protected Q_SLOTS:
-	virtual void change_adaptor();
-
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+private Q_SLOTS:
+	void change_adaptor();
 
 private:
-	GuiFloat * form_;
-};
-
-
-///
-class GuiFloat : public GuiView<GuiFloatDialog> {
-public:
-	///
-	friend class GuiFloatDialog;
-	///
-	GuiFloat(GuiDialog &);
+	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlFloat & controller()
-	{ return static_cast<ControlFloat &>(this->getController()); }
-	/// parent controller
-	ControlFloat const & controller() const
-	{ return static_cast<ControlFloat const &>(this->getController()); }
-private:
+	ControlFloat & controller() const;
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 };
 
 } // namespace frontend

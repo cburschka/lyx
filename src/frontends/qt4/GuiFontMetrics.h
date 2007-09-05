@@ -19,7 +19,6 @@
 #include <QFontMetrics>
 #include <QHash>
 
-
 namespace lyx {
 namespace frontend {
 

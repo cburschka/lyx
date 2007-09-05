@@ -18,14 +18,12 @@
 
 class QPaintEvent;
 
-
 //namespace lyx {
 
-class GuiFontExample : public QWidget {
-
+class GuiFontExample : public QWidget
+{
 public:
-	GuiFontExample(QWidget * parent)
-		: QWidget(parent) {}
+	GuiFontExample(QWidget * parent) : QWidget(parent) {}
 
 	void set(QFont const & font, QString const & text);
 

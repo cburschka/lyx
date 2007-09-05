@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "GuiTexinfo.h"
+
+#include "ControlTexinfo.h"
 #include "qt_helpers.h"
 
 #include "support/filetools.h"
@@ -23,22 +25,21 @@
 using std::string;
 using std::vector;
 
+
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiTexinfoDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiTexinfoDialog::GuiTexinfoDialog(GuiTexinfo * form)
-	: form_(form)
+GuiTexinfoDialog::GuiTexinfoDialog(LyXView & lv)
+	: GuiDialog(lv, "texinfo")
 {
 	setupUi(this);
+	setViewTitle(_("TeX Information"));
+	setController(new ControlTexinfo(*this));
 
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	warningPosted = false;
+	activeStyle = ControlTexinfo::cls;
+
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(viewPB, SIGNAL(clicked()), this, SLOT(viewClicked()));
 	connect(whatStyleCO, SIGNAL(activated(const QString &)),
@@ -48,21 +49,32 @@ GuiTexinfoDialog::GuiTexinfoDialog(GuiTexinfo * form)
 	connect(rescanPB, SIGNAL(clicked()), this, SLOT(enableViewPB()));
 	connect(rescanPB, SIGNAL(clicked()), this, SLOT(rescanClicked()));
 	connect(fileListLW, SIGNAL(itemClicked(QListWidgetItem *)),
-		this, SLOT( enableViewPB() ) );
+		this, SLOT(enableViewPB()));
 	connect(fileListLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(enableViewPB()));
+
+	updateStyles(ControlTexinfo::cls);
+
+	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+	bc().setCancel(closePB);
+}
+
+
+ControlTexinfo & GuiTexinfoDialog::controller() const
+{
+	return static_cast<ControlTexinfo &>(Dialog::controller());
 }
 
 
 void GuiTexinfoDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiTexinfoDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
@@ -71,7 +83,7 @@ void GuiTexinfoDialog::rescanClicked()
 {
 	// build new *Files.lst
 	rescanTexStyles();
-	form_->updateStyles();
+	updateStyles();
 	enableViewPB();
 }
 
@@ -79,29 +91,29 @@ void GuiTexinfoDialog::rescanClicked()
 void GuiTexinfoDialog::viewClicked()
 {
 	size_t const fitem = fileListLW->currentRow();
-	vector<string> const & data = form_->texdata_[form_->activeStyle];
+	vector<string> const & data = texdata_[activeStyle];
 	string file = data[fitem];
 	if (!pathCB->isChecked())
 		file = getTexFileFromList(data[fitem],
-			form_->controller().getFileType(form_->activeStyle));
-	form_->controller().viewFile(file);
+			controller().getFileType(activeStyle));
+	controller().viewFile(file);
 }
 
 
 void GuiTexinfoDialog::updateView()
 {
 	switch (whatStyleCO->currentIndex()) {
-	case 0:
-		form_->updateStyles(ControlTexinfo::cls);
-		break;
-	case 1:
-		form_->updateStyles(ControlTexinfo::sty);
-		break;
-	case 2:
-		form_->updateStyles(ControlTexinfo::bst);
-		break;
-	default:
-		break;
+		case 0:
+			updateStyles(ControlTexinfo::cls);
+			break;
+		case 1:
+			updateStyles(ControlTexinfo::sty);
+			break;
+		case 2:
+			updateStyles(ControlTexinfo::bst);
+			break;
+		default:
+			break;
 	}
 
 	enableViewPB();
@@ -114,48 +126,24 @@ void GuiTexinfoDialog::enableViewPB()
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiTexinfo
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiTexinfo::GuiTexinfo(GuiDialog & parent)
-	: GuiView<GuiTexinfoDialog>(parent, _("TeX Information")),
-	  warningPosted(false), activeStyle(ControlTexinfo::cls)
-{
-}
-
-
-void GuiTexinfo::build_dialog()
-{
-	dialog_.reset(new GuiTexinfoDialog(this));
-
-	updateStyles(ControlTexinfo::cls);
-
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
+void GuiTexinfoDialog::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
 	ContentsType & data = texdata_[whichStyle];
-	bool const withFullPath = dialog_->pathCB->isChecked();
+	bool const withFullPath = pathCB->isChecked();
 
 	getTexFileList(whichStyle, data, withFullPath);
 
-	dialog_->fileListLW->clear();
+	fileListLW->clear();
 	ContentsType::const_iterator it  = data.begin();
 	ContentsType::const_iterator end = data.end();
 	for (; it != end; ++it)
-		dialog_->fileListLW->addItem(toqstr(*it));
+		fileListLW->addItem(toqstr(*it));
 
 	activeStyle = whichStyle;
 }
 
 
-void GuiTexinfo::updateStyles()
+void GuiTexinfoDialog::updateStyles()
 {
 	updateStyles(activeStyle);
 }

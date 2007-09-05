@@ -6,8 +6,8 @@ General rules
 Every editable field that affects the state of the dialog contents
 from LyX's point of view should connect its xxxChanged() signal to
 a the dialog's changed_adaptor() slot, which in turn should call
-form_->changed(). If you are using a more complicated thing anyway,
-then remember to call form_->changed() at the end (if it has changed !)
+changed(). If you are using a more complicated thing anyway,
+then remember to call changed() at the end (if it has changed!)
 
 Every non-trivial widget should have a tooltip. If you don't know
 what to write, write "FIXME", and it can fixed later. Don't be afraid
@@ -15,39 +15,43 @@ to use QWhatsThis too, but this must be done in the derived class's
 constructor, and use _("..."). Non-trivial means that things like "OK"
 /must not/ have a tooltip.
 
-moc is incredibly stupid and sometimes you need a fully qualified
-"std::string" for .connect() statements to work. Be very, very careful.
+moc needs a fully qualified "std::string" for .connect() statements
+to work. Be very, very careful.
 
-Remember to check tab order on a dialog (third icon, with blue bars in designer).
+Remember to check tab order on a dialog (third icon, with blue bars in
+designer).
 
-Remember to check sensible resizing behaviour on a dialog.
+Remember to check sensible resizing behaviour on a dialog. This is
+usually done by adding a top-level layout to the dialog in Designer.
 
 Remember to use Edit->Check Accelerators
 
-If necessary, you should override Qt2Base::isValid() for determining the validity
-of the current dialog's contents.
+If necessary, you should override Qt2Base::isValid() for determining the
+validity of the current dialog's contents.
 
-OK/Apply/Restore/Close should be connected in the derived class's constructor
-to call form_->slotOK() etc. Refer to close/cancel as close in the source.
+OK/Apply/Restore/Close should be connected in the derived class's
+constructor to call slotOK() etc. Refer to close/cancel as close in the
+source.
 
-Override update_contents() to update the dialog, not update(), and build_dialog(),
-not build(). Only these functions may change dialog widgets that may emit changed()
-during initialisation, to prevent the button controller from changing its state.
+Override update_contents() to update the dialog, not update().  Only
+these functions may change dialog widgets that may emit changed() during
+initialisation, to prevent the button controller from changing its
+state.
 
-Never call buttoncontroller functions directly from dialogs. In general, you
-should use Qt2Base::changed() in all circumstances. However, if you must call
-the buttoncontroller, make sure to respect Qt2Base::updating_
+Never call buttoncontroller functions directly from dialogs. In general,
+you should use Qt2Base::changed() in all circumstances. However, if you
+must call the buttoncontroller, make sure to respect Qt2Base::updating_
 
 Naming conventions
 ------------------
 
-QFoo.[Ch]              The file that interacts with the controller
-QFooDialog.[Ch]        The implementation of the dialog, derived from the generated files
-ui/FooDialog.ui       The designer file
-ui/FooDialogBase.[Ch] Generated files from FooDialog.ui
+QFoo.{cpp,h}     The file that interacts with the controller _and_
+the implementation of the dialog, derived from the generated files
+ui/FooDialog.ui  The designer file
+ui_FooDialog.h   Generated files from FooDialog.ui
 
-slots should be named e.g. slotFooClicked(), slotFooSelected(), where foo is the name
-of the widget.
+slots should be named e.g. slotFooClicked(), slotFooSelected(), where
+foo is the name of the widget.
 
 Widgets should be named like "fooXX", where XX is one of the following
 widget types :
@@ -68,30 +72,11 @@ TE - text edit
 TW - tree widget (FIXME: also TV in some files)
 
 
-Stuff to be aware of
---------------------
-
-The connect statement in Qt is a macro and its arguments does not follow
-the C++ standard as it should. Using the construct "Type const &" as
-argument will lead to runtime-errors, use "const Type &" instead.
-
-ex.
-
---right--
-
-	connect(list, SIGNAL(selected(const QString &)),
-		this, SLOT(complete_selected(const QString &)));
-
---wrong--
-
-	connect(list, SIGNAL(selected(QString const &)),
-		this, SLOT(complete_selected(QString const &)));
-
 Qt, Unicode, and LyX
 --------------------
 
 LyX uses a different encoding (UCS4) than Qt (UTF16), therefore there are a
-number of conversion functions in qt_helpers.[Ch]. Read the doxygen
+number of conversion functions in qt_helpers.{cpp,h}. Read the doxygen
 documentation for details when to use which function.
 
 Additionally, you should follow these simple rules :

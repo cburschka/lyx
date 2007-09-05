@@ -43,12 +43,12 @@ using support::libFileSearch;
 namespace frontend {
 
 TocWidget::TocWidget(GuiToc * form, QWidget * parent)
-	: QWidget(parent), form_(form), depth_(0)
+	: QWidget(parent), depth_(0)
 {
 	setupUi(this);
+	form_ = form;
 
-	connect(form, SIGNAL(modelReset()),
-		SLOT(updateGui()));
+	connect(form_, SIGNAL(modelReset()), SLOT(updateGui()));
 
 	FileName icon_path = libFileSearch("images", "promote.png");
 	moveOutTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
@@ -94,7 +94,7 @@ void TocWidget::on_updateTB_clicked()
 	// The backend update can take some time so we disable
 	// the controls while waiting.
 	enableControls(false);
-	form_->updateBackend();
+	form_->controller().updateBackend();
 }
 
 /* FIXME (Ugras 17/11/06):
@@ -106,8 +106,8 @@ depth calculation.
 int TocWidget::getIndexDepth(QModelIndex const & index, int depth)
 {
 	++depth;
-	return (index.parent() ==
-		QModelIndex())? depth : getIndexDepth(index.parent(),depth);
+	return (index.parent() == QModelIndex())
+		? depth : getIndexDepth(index.parent(),depth);
 }
 
 
@@ -154,7 +154,7 @@ void TocWidget::on_moveUpTB_clicked()
 	if (!list.isEmpty()) {
 		enableControls(false);
 		form_->goTo(typeCO->currentIndex(), list[0]);
-		form_->outlineUp();
+		form_->controller().outlineUp();
 		enableControls(true);
 	}
 }
@@ -167,7 +167,7 @@ void TocWidget::on_moveDownTB_clicked()
 	if (!list.isEmpty()) {
 		enableControls(false);
 		form_->goTo(typeCO->currentIndex(), list[0]);
-		form_->outlineDown();
+		form_->controller().outlineDown();
 		enableControls(true);
 	}
 }
@@ -180,7 +180,7 @@ void TocWidget::on_moveInTB_clicked()
 	if (!list.isEmpty()) {
 		enableControls(false);
 		form_->goTo(typeCO->currentIndex(), list[0]);
-		form_->outlineIn();
+		form_->controller().outlineIn();
 		enableControls(true);
 	}
 }
@@ -192,7 +192,7 @@ void TocWidget::on_moveOutTB_clicked()
 	if (!list.isEmpty()) {
 		enableControls(false);
 		form_->goTo(typeCO->currentIndex(), list[0]);
-		form_->outlineOut();
+		form_->controller().outlineOut();
 		enableControls(true);
 	}
 }
@@ -239,7 +239,7 @@ void TocWidget::update()
 
 void TocWidget::updateGui()
 {
-	vector<docstring> const & type_names = form_->typeNames();
+	vector<docstring> const & type_names = form_->controller().typeNames();
 	if (type_names.empty()) {
 		enableControls(false);
 		typeCO->clear();
@@ -262,7 +262,7 @@ void TocWidget::updateGui()
 	if (current_type != -1)
 		typeCO->setCurrentIndex(current_type);
 	else
-		typeCO->setCurrentIndex(form_->selectedType());
+		typeCO->setCurrentIndex(form_->controller().selectedType());
 	typeCO->blockSignals(false);
 
 	setTocModel(typeCO->currentIndex());
@@ -294,7 +294,7 @@ void TocWidget::setTocModel(size_t type)
 
 	if (toc_model) {
 		LYXERR(Debug::GUI)
-		<< "form_->tocModel()->rowCount "
+		<< "tocModel()->rowCount "
 			<< toc_model->rowCount()
 			<< "\nform_->tocModel()->columnCount "
 			<< toc_model->columnCount()

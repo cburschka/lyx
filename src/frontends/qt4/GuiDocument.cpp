@@ -54,45 +54,62 @@ using std::vector;
 using std::string;
 
 
-char const * const tex_graphics[] = {"default", "dvips", "dvitops", "emtex",
-		      "ln", "oztex", "textures", "none", ""
+char const * const tex_graphics[] =
+{
+	"default", "dvips", "dvitops", "emtex",
+	"ln", "oztex", "textures", "none", ""
 };
 
 
-char const * const tex_graphics_gui[] = {N_("Default"), "Dvips", "DVItoPS", "EmTeX",
-		      "LN", "OzTeX", "Textures", N_("None"), ""
+char const * const tex_graphics_gui[] =
+{
+	N_("Default"), "Dvips", "DVItoPS", "EmTeX",
+	"LN", "OzTeX", "Textures", N_("None"), ""
 };
 
 
-char const * const tex_fonts_roman[] = {"default", "cmr", "lmodern", "ae", "times", "palatino",
-			    "charter", "newcent", "bookman", "utopia", "beraserif", "ccfonts", "chancery", ""
+char const * const tex_fonts_roman[] =
+{
+	"default", "cmr", "lmodern", "ae", "times", "palatino",
+	"charter", "newcent", "bookman", "utopia", "beraserif",
+	"ccfonts", "chancery", ""
 };
 
 
-char const * tex_fonts_roman_gui[] = { N_("Default"), N_("Computer Modern Roman"), N_("Latin Modern Roman"),
-			    N_("AE (Almost European)"), N_("Times Roman"), N_("Palatino"), N_("Bitstream Charter"),
-			    N_("New Century Schoolbook"), N_("Bookman"), N_("Utopia"),  N_("Bera Serif"),
-			    N_("Concrete Roman"), N_("Zapf Chancery"), ""
+char const * tex_fonts_roman_gui[] =
+{
+	N_("Default"), N_("Computer Modern Roman"), N_("Latin Modern Roman"),
+	N_("AE (Almost European)"), N_("Times Roman"), N_("Palatino"),
+	N_("Bitstream Charter"), N_("New Century Schoolbook"), N_("Bookman"),
+	N_("Utopia"),  N_("Bera Serif"), N_("Concrete Roman"), N_("Zapf Chancery"),
+	""
 };
 
 
-char const * const tex_fonts_sans[] = {"default", "cmss", "lmss", "helvet", "avant", "berasans", "cmbr", ""
+char const * const tex_fonts_sans[] =
+{
+	"default", "cmss", "lmss", "helvet", "avant", "berasans", "cmbr", ""
 };
 
 
-char const * tex_fonts_sans_gui[] = { N_("Default"), N_("Computer Modern Sans"), N_("Latin Modern Sans"),
-			    N_("Helvetica"), N_("Avant Garde"), N_("Bera Sans"), N_("CM Bright"), ""
+char const * tex_fonts_sans_gui[] =
+{
+	N_("Default"), N_("Computer Modern Sans"), N_("Latin Modern Sans"),
+	N_("Helvetica"), N_("Avant Garde"), N_("Bera Sans"), N_("CM Bright"), ""
 };
 
 
-char const * const tex_fonts_monospaced[] = {"default", "cmtt", "lmtt", "courier", "beramono",
-			    "luximono", "cmtl", ""
+char const * const tex_fonts_monospaced[] =
+{
+	"default", "cmtt", "lmtt", "courier", "beramono", "luximono", "cmtl", ""
 };
 
 
-char const * tex_fonts_monospaced_gui[] = { N_("Default"), N_("Computer Modern Typewriter"),
-			    N_("Latin Modern Typewriter"), N_("Courier"), N_("Bera Mono"), N_("LuxiMono"),
-			    N_("CM Typewriter Light"), ""
+char const * tex_fonts_monospaced_gui[] =
+{
+	N_("Default"), N_("Computer Modern Typewriter"),
+	N_("Latin Modern Typewriter"), N_("Courier"), N_("Bera Mono"),
+	N_("LuxiMono"), N_("CM Typewriter Light"), ""
 };
 
 
@@ -171,25 +188,30 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
-	: form_(form), lang_(getSecond(getLanguageData(false)))
+
+GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
+	: GuiDialog(lv, "document")
 {
 	setupUi(this);
+	setController(new ControlDocument(*this));
+	setViewTitle(_("Document Settings"));
 
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()), form, SLOT(slotRestore()));
+	lang_ = getSecond(getLanguageData(false));
+
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
 	connect(savePB, SIGNAL(clicked()), this, SLOT(saveDefaultClicked()));
 	connect(defaultPB, SIGNAL(clicked()), this, SLOT(useDefaultsClicked()));
 
 	// Manage the restore, ok, apply, restore and cancel/close buttons
-	form_->bc().setOK(okPB);
-	form_->bc().setApply(applyPB);
-	form_->bc().setCancel(closePB);
-	form_->bc().setRestore(restorePB);
-
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+	bc().setRestore(restorePB);
 
 	textLayoutModule = new UiWidget<Ui::TextLayoutUi>;
 	// text layout
@@ -246,7 +268,7 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 		Spacing::Other, qt_("Custom"));
 
 	// initialize the length validator
-	form_->bc().addCheckedLineEdit(textLayoutModule->skipLE);
+	bc().addCheckedLineEdit(textLayoutModule->skipLE);
 
 	fontModule = new UiWidget<Ui::FontUi>;
 	// fonts
@@ -277,19 +299,19 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 
 	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
 		QString font = qt_(tex_fonts_roman_gui[n]);
-		if (!form_->controller().isFontAvailable(tex_fonts_roman[n]))
+		if (!controller().isFontAvailable(tex_fonts_roman[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsRomanCO->addItem(font);
 	}
 	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
 		QString font = qt_(tex_fonts_sans_gui[n]);
-		if (!form_->controller().isFontAvailable(tex_fonts_sans[n]))
+		if (!controller().isFontAvailable(tex_fonts_sans[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsSansCO->addItem(font);
 	}
 	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
 		QString font = qt_(tex_fonts_monospaced_gui[n]);
-		if (!form_->controller().isFontAvailable(tex_fonts_monospaced[n]))
+		if (!controller().isFontAvailable(tex_fonts_monospaced[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsTypewriterCO->addItem(font);
 	}
@@ -336,9 +358,9 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 	pageLayoutModule->pagestyleCO->addItem(qt_("plain"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("headings"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("fancy"));
-	form_->bc().addCheckedLineEdit(pageLayoutModule->paperheightLE,
+	bc().addCheckedLineEdit(pageLayoutModule->paperheightLE,
 		pageLayoutModule->paperheightL);
-	form_->bc().addCheckedLineEdit(pageLayoutModule->paperwidthLE,
+	bc().addCheckedLineEdit(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthL);
 
 	// paper
@@ -361,8 +383,6 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 		pageLayoutModule->paperheightLE));
 	pageLayoutModule->paperwidthLE->setValidator(unsignedLengthValidator(
 		pageLayoutModule->paperwidthLE));
-
-
 
 
 	marginsModule = new UiWidget<Ui::MarginsUi>;
@@ -414,19 +434,19 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 	marginsModule->footskipLE->setValidator(unsignedLengthValidator(
 		marginsModule->footskipLE));
 
-	form_->bc().addCheckedLineEdit(marginsModule->topLE,
+	bc().addCheckedLineEdit(marginsModule->topLE,
 		marginsModule->topL);
-	form_->bc().addCheckedLineEdit(marginsModule->bottomLE,
+	bc().addCheckedLineEdit(marginsModule->bottomLE,
 		marginsModule->bottomL);
-	form_->bc().addCheckedLineEdit(marginsModule->innerLE,
+	bc().addCheckedLineEdit(marginsModule->innerLE,
 		marginsModule->innerL);
-	form_->bc().addCheckedLineEdit(marginsModule->outerLE,
+	bc().addCheckedLineEdit(marginsModule->outerLE,
 		marginsModule->outerL);
-	form_->bc().addCheckedLineEdit(marginsModule->headsepLE,
+	bc().addCheckedLineEdit(marginsModule->headsepLE,
 		marginsModule->headsepL);
-	form_->bc().addCheckedLineEdit(marginsModule->headheightLE,
+	bc().addCheckedLineEdit(marginsModule->headheightLE,
 		marginsModule->headheightL);
-	form_->bc().addCheckedLineEdit(marginsModule->footskipLE,
+	bc().addCheckedLineEdit(marginsModule->footskipLE,
 		marginsModule->footskipL);
 
 
@@ -449,8 +469,7 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 	vector<LanguagePair>::const_iterator lit  = langs.begin();
 	vector<LanguagePair>::const_iterator lend = langs.end();
 	for (; lit != lend; ++lit) {
-		langModule->languageCO->addItem(
-			toqstr(lit->first));
+		langModule->languageCO->addItem(toqstr(lit->first));
 	}
 
 	// Always put the default encoding in the first position.
@@ -593,6 +612,12 @@ GuiDocumentDialog::GuiDocumentDialog(GuiDocument * form)
 }
 
 
+ControlDocument & GuiDocumentDialog::controller() const
+{
+	return static_cast<ControlDocument &>(Dialog::controller());
+}
+
+
 void GuiDocumentDialog::showPreamble()
 {
 	docPS->setCurrentPanel(_("LaTeX Preamble"));
@@ -601,19 +626,19 @@ void GuiDocumentDialog::showPreamble()
 
 void GuiDocumentDialog::saveDefaultClicked()
 {
-	form_->saveDocDefault();
+	saveDocDefault();
 }
 
 
 void GuiDocumentDialog::useDefaultsClicked()
 {
-	form_->useClassDefaults();
+	useClassDefaults();
 }
 
 
 void GuiDocumentDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
@@ -657,7 +682,7 @@ void GuiDocumentDialog::set_listings_msg()
 
 void GuiDocumentDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
@@ -764,18 +789,15 @@ void GuiDocumentDialog::updateFontsize(string const & items, string const & sel)
 void GuiDocumentDialog::romanChanged(int item)
 {
 	string const font = tex_fonts_roman[item];
-
-	fontModule->fontScCB->setEnabled(
-		form_->controller().providesSC(font));
-	fontModule->fontOsfCB->setEnabled(
-		form_->controller().providesOSF(font));
+	fontModule->fontScCB->setEnabled(controller().providesSC(font));
+	fontModule->fontOsfCB->setEnabled(controller().providesOSF(font));
 }
 
 
 void GuiDocumentDialog::sansChanged(int item)
 {
 	string const font = tex_fonts_sans[item];
-	bool scaleable = form_->controller().providesScale(font);
+	bool scaleable = controller().providesScale(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
 	fontModule->scaleSansLA->setEnabled(scaleable);
 }
@@ -784,7 +806,7 @@ void GuiDocumentDialog::sansChanged(int item)
 void GuiDocumentDialog::ttChanged(int item)
 {
 	string const font = tex_fonts_monospaced[item];
-	bool scaleable = form_->controller().providesScale(font);
+	bool scaleable = controller().providesScale(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
 	fontModule->scaleTypewriterLA->setEnabled(scaleable);
 }
@@ -822,19 +844,18 @@ void GuiDocumentDialog::updatePagestyle(string const & items, string const & sel
 
 void GuiDocumentDialog::classChanged()
 {
-	BufferParams & params = form_->controller().params();
+	BufferParams & params = controller().params();
 	textclass_type const tc = latexModule->classCO->currentIndex();
 	params.setJustBaseClass(tc);
 	if (lyxrc.auto_reset_options)
 		params.useClassDefaults();
-	form_->update_contents();
+	update_contents();
 }
 
 
 void GuiDocumentDialog::updateNumbering()
 {
-	TextClass const & tclass =
-		form_->controller().params().getTextClass();
+	TextClass const & tclass = controller().params().getTextClass();
 
 	numberingModule->tocTW->setUpdatesEnabled(false);
 	numberingModule->tocTW->clear();
@@ -1104,14 +1125,12 @@ void GuiDocumentDialog::apply(BufferParams & params)
 	branchesModule->apply(params);
 }
 
-namespace {
 
 /** Return the position of val in the vector if found.
     If not found, return 0.
  */
 template<class A>
-typename std::vector<A>::size_type
-findPos(std::vector<A> const & vec, A const & val)
+static size_t findPos(std::vector<A> const & vec, A const & val)
 {
 	typename std::vector<A>::const_iterator it =
 		std::find(vec.begin(), vec.end(), val);
@@ -1119,8 +1138,6 @@ findPos(std::vector<A> const & vec, A const & val)
 		return 0;
 	return distance(vec.begin(), it);
 }
-
-} // namespace anom
 
 
 void GuiDocumentDialog::updateParams(BufferParams const & params)
@@ -1150,7 +1167,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	}
 
 	// preamble
-	preambleModule->update(params, form_->controller().id());
+	preambleModule->update(params, controller().id());
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
@@ -1195,9 +1212,9 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	}
 
 	// numbering
-	int const min_toclevel = form_->controller().textClass().min_toclevel();
-	int const max_toclevel = form_->controller().textClass().max_toclevel();
-	if (form_->controller().textClass().hasTocLevels()) {
+	int const min_toclevel = controller().textClass().min_toclevel();
+	int const max_toclevel = controller().textClass().max_toclevel();
+	if (controller().textClass().hasTocLevels()) {
 		numberingModule->setEnabled(true);
 		numberingModule->depthSL->setMinimum(min_toclevel - 1);
 		numberingModule->depthSL->setMaximum(max_toclevel);
@@ -1243,7 +1260,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	// text layout
 	latexModule->classCO->setCurrentIndex(params.getBaseClass());
 
-	updatePagestyle(form_->controller().textClass().opt_pagestyle(),
+	updatePagestyle(controller().textClass().opt_pagestyle(),
 				 params.pagestyle);
 
 	textLayoutModule->lspacingCO->setCurrentIndex(nitem);
@@ -1299,13 +1316,13 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 		latexModule->optionsLE->setText(
 			toqstr(params.options));
 	} else {
-		latexModule->optionsLE->setText("");
+		latexModule->optionsLE->setText(QString());
 	}
 
 	floatModule->set(params.float_placement);
 
-	//fonts
-	updateFontsize(form_->controller().textClass().opt_fontsize(),
+	// Fonts
+	updateFontsize(controller().textClass().opt_fontsize(),
 			params.fontsize);
 
 	int n = findToken(tex_fonts_roman, params.fontsRoman);
@@ -1384,48 +1401,19 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiDocument
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiDocument::GuiDocument(GuiDialog & parent)
-	: GuiView<GuiDocumentDialog>(parent, _("Document Settings"))
-{}
-
-
-void GuiDocument::build_dialog()
+void GuiDocumentDialog::applyView()
 {
-	dialog_.reset(new GuiDocumentDialog(this));
+	apply(controller().params());
 }
 
 
-void GuiDocument::showPreamble()
+void GuiDocumentDialog::update_contents()
 {
-	dialog_->showPreamble();
+	updateParams(controller().params());
 }
 
 
-void GuiDocument::applyView()
-{
-	if (!dialog_.get())
-		return;
-
-	dialog_->apply(controller().params());
-}
-
-
-void GuiDocument::update_contents()
-{
-	if (!dialog_.get())
-		return;
-
-	dialog_->updateParams(controller().params());
-}
-
-void GuiDocument::saveDocDefault()
+void GuiDocumentDialog::saveDocDefault()
 {
 	// we have to apply the params first
 	applyView();
@@ -1433,20 +1421,20 @@ void GuiDocument::saveDocDefault()
 }
 
 
-void GuiDocument::useClassDefaults()
+void GuiDocumentDialog::useClassDefaults()
 {
 	BufferParams & params = controller().params();
 
-	params.setJustBaseClass(dialog_->latexModule->classCO->currentIndex());
+	params.setJustBaseClass(latexModule->classCO->currentIndex());
 
 	params.useClassDefaults();
 	update_contents();
 }
 
 
-bool GuiDocument::isValid()
+bool GuiDocumentDialog::isValid()
 {
-	return dialog_->validate_listings_params().empty();
+	return validate_listings_params().empty();
 }
 
 

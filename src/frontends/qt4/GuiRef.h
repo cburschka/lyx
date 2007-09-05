@@ -12,11 +12,9 @@
 #ifndef GUIREF_H
 #define GUIREF_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlRef.h"
 #include "ui_RefUi.h"
-
-#include <QDialog>
 
 #include <vector>
 
@@ -25,16 +23,14 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiRef;
-
-class GuiRefDialog : public QDialog, public Ui::RefUi {
+class GuiRefDialog : public GuiDialog, public Ui::RefUi
+{
 	Q_OBJECT
+
 public:
-	GuiRefDialog(GuiRef * form);
+	GuiRefDialog(LyXView & lv);
 
-	virtual void showView();
-
-public Q_SLOTS:
+private Q_SLOTS:
 	void changed_adaptor();
 	void gotoClicked();
 	void refHighlighted(QListWidgetItem *);
@@ -42,39 +38,21 @@ public Q_SLOTS:
 	void refSelected(QListWidgetItem *);
 	void sortToggled(bool);
 	void updateClicked();
-
-protected Q_SLOTS:
 	void reset_dialog();
-protected:
+
+private:
+	///
+	void showView();
+	///
 	void closeEvent(QCloseEvent * e);
-private:
-	GuiRef * form_;
-};
-
-
-class GuiRef : public GuiView<GuiRefDialog>
-{
-public:
-	friend class GuiRefDialog;
-
-	GuiRef(GuiDialog &);
-
 	/// parent controller
-	ControlRef & controller()
-	{ return static_cast<ControlRef &>(this->getController()); }
-	/// parent controller
-	ControlRef const & controller() const
-	{ return static_cast<ControlRef const &>(this->getController()); }
-protected:
-	virtual bool isValid();
-
-private:
+	ControlRef & controller() const;
+	///
+	bool isValid();
 	/// apply changes
-	virtual void applyView();
-	/// build dialog
-	virtual void build_dialog();
+	void applyView();
 	/// update dialog
-	virtual void update_contents();
+	void update_contents();
 
 	/// is name allowed for this ?
 	bool nameAllowed();

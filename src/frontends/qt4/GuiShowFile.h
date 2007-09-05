@@ -9,55 +9,33 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QSHOWFILE_H
-#define QSHOWFILE_H
+#ifndef GUISHOWFILE_H
+#define GUISHOWFILE_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlShowFile.h"
 #include "ui_ShowFileUi.h"
-
-#include <QDialog>
-
 
 namespace lyx {
 namespace frontend {
 
-class GuiShowFile;
-
-class GuiShowFileDialog : public QDialog, public Ui::ShowFileUi
+class GuiShowFileDialog : public GuiDialog, public Ui::ShowFileUi
 {
 	Q_OBJECT
+
 public:
-	GuiShowFileDialog(GuiShowFile * form);
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+	GuiShowFileDialog(LyXView & lv);
+
 private:
-	GuiShowFile * form_;
-};
-
-
-class GuiShowFile : public GuiView<GuiShowFileDialog>
-{
-public:
-	friend class GuiShowFileDialog;
-
-	GuiShowFile(GuiDialog &);
+	///
+	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlShowFile & controller()
-	{ return static_cast<ControlShowFile &>(this->getController()); }
-	/// parent controller
-	ControlShowFile const & controller() const
-	{ return static_cast<ControlShowFile const &>(this->getController()); }
-private:
-	/// Apply changes
-	virtual void applyView() {}
+	ControlShowFile & controller() const;
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 };
 
 } // namespace frontend
 } // namespace lyx
 
-#endif // QSHOWFILE_H
+#endif // GUISHOWFILE_H

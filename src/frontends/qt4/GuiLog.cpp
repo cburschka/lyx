@@ -10,57 +10,45 @@
 
 #include <config.h>
 
-#include <sstream>
-
 #include "GuiLog.h"
+
+#include "ControlLog.h"
 #include "qt_helpers.h"
 
 #include "frontends/Application.h"
 
 #include <QCloseEvent>
 #include <QTextBrowser>
-#include <QTextBrowser>
+#include <QSyntaxHighlighter>
+
+#include <sstream>
+
 
 namespace lyx {
 namespace frontend {
-
-/////////////////////////////////////////////////////////////////////
-//
-// GuiLogDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiLogDialog::GuiLogDialog(GuiLog * form)
-	: form_(form)
-{
-	setupUi(this);
-
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
-	connect( updatePB, SIGNAL( clicked() ),
-		this, SLOT( updateClicked() ) );
-}
-
-
-void GuiLogDialog::closeEvent(QCloseEvent * e)
-{
-	form_->slotWMHide();
-	e->accept();
-}
-
-
-void GuiLogDialog::updateClicked()
-{
-	form_->update_contents();
-}
 
 
 /////////////////////////////////////////////////////////////////////
 //
 // LogHighlighter
 //
-/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+class LogHighlighter : public QSyntaxHighlighter
+{
+public:
+	LogHighlighter(QTextDocument * parent);
+
+private:
+	void highlightBlock(QString const & text);
+
+private:
+	QTextCharFormat infoFormat;
+	QTextCharFormat warningFormat;
+	QTextCharFormat errorFormat;
+};
+
+
 
 LogHighlighter::LogHighlighter(QTextDocument * parent)
 	: QSyntaxHighlighter(parent)
@@ -106,35 +94,56 @@ void LogHighlighter::highlightBlock(QString const & text)
 //
 /////////////////////////////////////////////////////////////////////
 
-
-GuiLog::GuiLog(GuiDialog & parent)
-	:  GuiView<GuiLogDialog>(parent, docstring())
-{}
-
-
-void GuiLog::build_dialog()
+GuiLogDialog::GuiLogDialog(LyXView & lv)
+	: GuiDialog(lv, "log")
 {
-	dialog_.reset(new GuiLogDialog(this));
+	setupUi(this);
+	setController(new ControlLog(*this));
+
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(updatePB, SIGNAL(clicked()), this, SLOT(updateClicked()));
+
+	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+
 	// set syntax highlighting
-	highlighter = new LogHighlighter(dialog_->logTB->document());
-	//
-	dialog_->logTB->setReadOnly(true);
+	highlighter = new LogHighlighter(logTB->document());
+
+	logTB->setReadOnly(true);
 	QFont font(toqstr(theApp()->typewriterFontName()));
 	font.setKerning(false);
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);
-	dialog_->logTB->setFont(font);
+	logTB->setFont(font);
 }
 
 
-void GuiLog::update_contents()
+ControlLog & GuiLogDialog::controller() const
+{
+	return static_cast<ControlLog &>(Dialog::controller());
+}
+
+
+void GuiLogDialog::closeEvent(QCloseEvent * e)
+{
+	slotWMHide();
+	e->accept();
+}
+
+
+void GuiLogDialog::updateClicked()
+{
+	update_contents();
+}
+
+
+void GuiLogDialog::update_contents()
 {
 	setViewTitle(controller().title());
 
 	std::ostringstream ss;
 	controller().getContents(ss);
 
-	dialog_->logTB->setPlainText(toqstr(ss.str()));
+	logTB->setPlainText(toqstr(ss.str()));
 }
 
 } // namespace frontend

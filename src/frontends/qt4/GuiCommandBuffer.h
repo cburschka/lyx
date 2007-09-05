@@ -23,8 +23,10 @@ namespace frontend {
 
 class GuiCommandEdit;
 
-class GuiCommandBuffer : public QWidget {
+class GuiCommandBuffer : public QWidget
+{
 	Q_OBJECT
+
 public:
 	GuiCommandBuffer(GuiViewBase * view);
 

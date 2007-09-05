@@ -12,6 +12,7 @@
 
 #include "GuiMathMatrix.h"
 
+#include "ControlMath.h"
 #include "EmptyTable.h"
 #include "qt_helpers.h"
 #include "gettext.h"
@@ -28,21 +29,12 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiMathMatrix::GuiMathMatrix(GuiDialog & parent)
-	: GuiView<GuiMathMatrixDialog>(parent, _("Math Matrix"))
-{}
-
-
-void GuiMathMatrix::build_dialog()
-{
-	dialog_.reset(new GuiMathMatrixDialog(this));
-}
-
-
-GuiMathMatrixDialog::GuiMathMatrixDialog(GuiMathMatrix * form)
-	: form_(form)
+GuiMathMatrixDialog::GuiMathMatrixDialog(LyXView & lv)
+	: GuiDialog(lv, "mathmatrix")
 {
 	setupUi(this);
+	setViewTitle(_("Math Matrix"));
+	setController(new ControlMath(*this));
 
 	setWindowTitle(qt_("LyX: Insert Matrix"));
 
@@ -70,6 +62,14 @@ GuiMathMatrixDialog::GuiMathMatrixDialog(GuiMathMatrix * form)
 		this, SLOT(change_adaptor()));
 	connect(halignED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
+
+	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
+}
+
+
+ControlMath & GuiMathMatrixDialog::controller() const
+{
+	return static_cast<ControlMath &>(Dialog::controller());
 }
 
 
@@ -106,7 +106,7 @@ void GuiMathMatrixDialog::slotOK()
 
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
-	form_->controller().dispatchMatrix(os.str().c_str());
+	controller().dispatchMatrix(os.str().c_str());
 
 	// close the dialog
 	close();

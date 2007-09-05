@@ -12,6 +12,8 @@
 
 #include "GuiIndex.h"
 
+#include "ControlCommand.h"
+
 #include "debug.h"
 #include "qt_helpers.h"
 
@@ -20,29 +22,29 @@
 #include <QLineEdit>
 #include <QCloseEvent>
 
-
 using std::string;
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiIndexDialog
-//
-/////////////////////////////////////////////////////////////////////
 
 namespace lyx {
 namespace frontend {
 
-GuiIndexDialog::GuiIndexDialog(GuiIndex * form)
-	: form_(form)
+GuiIndexDialogBase::GuiIndexDialogBase(LyXView & lv,
+		docstring const & title, QString const & label)
+	: GuiDialog(lv, "index")
 {
+	label_ = label;
 	setupUi(this);
+	setViewTitle(title);
+	setController(new ControlCommand(*this, "index", "index"));
 
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(keywordED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 
 	setFocusProxy(keywordED);
+
+	keywordLA->setText(label_);
 
 	keywordED->setWhatsThis( qt_(
 		"The format of the entry in the index.\n"
@@ -59,72 +61,56 @@ GuiIndexDialog::GuiIndexDialog(GuiIndex * form)
 		"For further details refer to the local LaTeX\n"
 		"documentation.\n")
 	);
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+	bc().addReadOnly(keywordED);
 }
 
 
-void GuiIndexDialog::change_adaptor()
+ControlCommand & GuiIndexDialogBase::controller() const
 {
-	form_->changed();
+	return static_cast<ControlCommand &>(Dialog::controller());
 }
 
 
-void GuiIndexDialog::reject()
+void GuiIndexDialogBase::change_adaptor()
 {
-	form_->slotClose();
+	changed();
 }
 
 
-void GuiIndexDialog::closeEvent(QCloseEvent * e)
+void GuiIndexDialogBase::reject()
 {
-	form_->slotWMHide();
+	slotClose();
+}
+
+
+void GuiIndexDialogBase::closeEvent(QCloseEvent * e)
+{
+	slotWMHide();
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiIndex
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiIndex::GuiIndex(GuiDialog & parent, docstring const & title,
-		QString const & label)
-	: GuiView<GuiIndexDialog>(parent, title), label_(label)
-{
-}
-
-
-void GuiIndex::build_dialog()
-{
-	dialog_.reset(new GuiIndexDialog(this));
-
-	dialog_->keywordLA->setText(label_);
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->keywordED);
-}
-
-
-void GuiIndex::update_contents()
+void GuiIndexDialogBase::update_contents()
 {
 	docstring const contents = controller().params()["name"];
-	dialog_->keywordED->setText(toqstr(contents));
-
+	keywordED->setText(toqstr(contents));
 	bc().setValid(!contents.empty());
 }
 
 
-void GuiIndex::applyView()
+void GuiIndexDialogBase::applyView()
 {
-	controller().params()["name"] = qstring_to_ucs4(dialog_->keywordED->text());
+	controller().params()["name"] = qstring_to_ucs4(keywordED->text());
 }
 
 
-bool GuiIndex::isValid()
+bool GuiIndexDialogBase::isValid()
 {
-	return !dialog_->keywordED->text().isEmpty();
+	return !keywordED->text().isEmpty();
 }
 
 } // namespace frontend

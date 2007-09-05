@@ -12,6 +12,7 @@
 
 #include "GuiNote.h"
 
+#include "ControlNote.h"
 #include "insets/InsetNote.h"
 
 #include <QCloseEvent>
@@ -19,81 +20,66 @@
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiNoteDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiNoteDialog::GuiNoteDialog(GuiNote * form)
-	: form_(form)
+GuiNoteDialog::GuiNoteDialog(LyXView & lv)
+	: GuiDialog(lv, "note")
 {
 	setupUi(this);
+	setController(new ControlNote(*this));
+	setViewTitle(_("Note Settings"));
 
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(noteRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(greyedoutRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(commentRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(framedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(shadedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+}
+
+
+ControlNote & GuiNoteDialog::controller() const
+{
+	return static_cast<ControlNote &>(Dialog::controller());
 }
 
 
 void GuiNoteDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiNoteDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiNote
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiNote::GuiNote(GuiDialog & parent)
-	: GuiView<GuiNoteDialog>(parent, _("Note Settings"))
-{}
-
-
-void GuiNote::build_dialog()
-{
-	dialog_.reset(new GuiNoteDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiNote::update_contents()
+void GuiNoteDialog::update_contents()
 {
 	QRadioButton * rb = 0;
 
 	switch (controller().params().type) {
 	case InsetNoteParams::Note:
-		rb = dialog_->noteRB;
+		rb = noteRB;
 		break;
 	case InsetNoteParams::Comment:
-		rb = dialog_->commentRB;
+		rb = commentRB;
 		break;
 	case InsetNoteParams::Greyedout:
-		rb = dialog_->greyedoutRB;
+		rb = greyedoutRB;
 		break;
 	case InsetNoteParams::Framed:
-		rb = dialog_->framedRB;
+		rb = framedRB;
 		break;
 	case InsetNoteParams::Shaded:
-		rb = dialog_->shadedRB;
+		rb = shadedRB;
 		break;
 	}
 
@@ -101,17 +87,17 @@ void GuiNote::update_contents()
 }
 
 
-void GuiNote::applyView()
+void GuiNoteDialog::applyView()
 {
 	InsetNoteParams::Type type;
 
-	if (dialog_->greyedoutRB->isChecked())
+	if (greyedoutRB->isChecked())
 		type = InsetNoteParams::Greyedout;
-	else if (dialog_->commentRB->isChecked())
+	else if (commentRB->isChecked())
 		type = InsetNoteParams::Comment;
-	else if (dialog_->framedRB->isChecked())
+	else if (framedRB->isChecked())
 		type = InsetNoteParams::Framed;
-	else if (dialog_->shadedRB->isChecked())
+	else if (shadedRB->isChecked())
 		type = InsetNoteParams::Shaded;
 	else
 		type = InsetNoteParams::Note;

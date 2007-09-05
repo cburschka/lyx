@@ -14,6 +14,7 @@
 #ifndef GUITOC_H
 #define GUITOC_H
 
+#include "GuiDialog.h"
 #include "ControlToc.h"
 
 #include <QObject>
@@ -23,16 +24,15 @@
 namespace lyx {
 namespace frontend {
 
-class ControlToc;
 class TocModel;
 
-class GuiToc : public QObject, public ControlToc
+class GuiToc : public GuiDialog
 {
 	Q_OBJECT
-public:
 
-	GuiToc(Dialog &, QObject * parent = 0);
-	virtual ~GuiToc() {}
+public:
+	///
+	GuiToc(LyXView & lv);
 
 	/// \c ControlToc inherited method.
 	virtual bool initialiseParams(std::string const & data);
@@ -50,6 +50,8 @@ public:
 	int getType();
 	///
 	int getTocDepth(int type);
+
+	ControlToc & controller() const;
 
 Q_SIGNALS:
 	/// Signal that the internal toc_models_ has been reset.

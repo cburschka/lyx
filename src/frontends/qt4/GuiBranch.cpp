@@ -11,8 +11,10 @@
 #include <config.h>
 
 #include "GuiBranch.h"
-#include "qt_helpers.h"
 
+#include "ControlBranch.h"
+
+#include "qt_helpers.h"
 #include "BranchList.h"
 
 #include "insets/InsetBranch.h"
@@ -20,70 +22,54 @@
 #include <QPushButton>
 #include <QCloseEvent>
 
+
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiBranchDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiBranchDialog::GuiBranchDialog(GuiBranch * form)
-	: form_(form)
+GuiBranchDialog::GuiBranchDialog(LyXView & lv)
+	: GuiDialog(lv, "branch")
 {
 	setupUi(this);
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
-	connect(branchCO, SIGNAL( activated(int) ),
-		this, SLOT( change_adaptor() ) );
+	setController(new ControlBranch(*this));
+	setViewTitle(_("Branch Settings"));
+
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(branchCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+}
+
+
+ControlBranch & GuiBranchDialog::controller() const
+{
+	return static_cast<ControlBranch &>(Dialog::controller());
 }
 
 
 void GuiBranchDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiBranchDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiBranch
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiBranch::GuiBranch(GuiDialog & parent)
-	: GuiView<GuiBranchDialog>(parent, _("Branch Settings"))
-{}
-
-
-void GuiBranch::build_dialog()
-{
-	dialog_.reset(new GuiBranchDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiBranch::update_contents()
+void GuiBranchDialog::update_contents()
 {
 	typedef BranchList::const_iterator const_iterator;
 
 	BranchList const & branchlist = controller().branchlist();
 	docstring const cur_branch = controller().params().branch;
 
-	dialog_->branchCO->clear();
+	branchCO->clear();
 
 	const_iterator const begin = branchlist.begin();
 	const_iterator const end = branchlist.end();
@@ -91,18 +77,18 @@ void GuiBranch::update_contents()
 	int count = 0;
 	for (const_iterator it = begin; it != end; ++it, ++count) {
 		docstring const & branch = it->getBranch();
-		dialog_->branchCO->addItem(toqstr(branch));
+		branchCO->addItem(toqstr(branch));
 
 		if (cur_branch == branch)
 			id = count;
 	}
-	dialog_->branchCO->setCurrentIndex(id);
+	branchCO->setCurrentIndex(id);
 }
 
 
-void GuiBranch::applyView()
+void GuiBranchDialog::applyView()
 {
-	docstring const type = qstring_to_ucs4(dialog_->branchCO->currentText());
+	docstring const type = qstring_to_ucs4(branchCO->currentText());
 	controller().params().branch = type;
 }
 

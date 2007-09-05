@@ -26,7 +26,8 @@ namespace lyx {
  *
  * This is some really sick stuff.
  */
-class GuiKeySymbol : public KeySymbol {
+class GuiKeySymbol : public KeySymbol
+{
 public:
 	GuiKeySymbol();
 

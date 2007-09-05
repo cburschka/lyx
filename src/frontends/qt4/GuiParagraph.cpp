@@ -13,6 +13,8 @@
 
 #include "GuiParagraph.h"
 
+#include "ControlParagraph.h"
+
 #include "debug.h"
 #include "frontend_helpers.h"
 #include "ParagraphParameters.h"
@@ -24,30 +26,25 @@
 #include <QLineEdit>
 #include <QPushButton>
 
+#include <boost/current_function.hpp>
+
 using std::string;
 using std::endl;
-
-/////////////////////////////////////////////////////////////////////
-//
-// GuiParagraphDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-
-#include <boost/current_function.hpp>
 
 namespace lyx {
 namespace frontend {
 
-GuiParagraphDialog::GuiParagraphDialog(GuiParagraph * form)
-	: form_(form)
+GuiParagraphDialog::GuiParagraphDialog(LyXView & lv)
+	: GuiDialog(lv, "paragraph")
 {
 	setupUi(this);
+	setViewTitle(_("Paragraph Settings"));
+	setController(new ControlParagraph(*this));
 
-	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()), form_, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(alignDefaultRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(alignJustRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(alignLeftRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -86,19 +83,31 @@ GuiParagraphDialog::GuiParagraphDialog(GuiParagraph * form)
 	labelMap[LYX_ALIGN_LEFT]   = _("Left");
 	labelMap[LYX_ALIGN_RIGHT]  = _("Right");
 	labelMap[LYX_ALIGN_CENTER] = _("Center");
+
+	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+	bc().setRestore(restorePB);
+}
+
+
+ControlParagraph & GuiParagraphDialog::controller() const
+{
+	return static_cast<ControlParagraph &>(Dialog::controller());
 }
 
 
 void GuiParagraphDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiParagraphDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
@@ -110,23 +119,23 @@ void GuiParagraphDialog::enableLinespacingValue(int)
 
 
 void GuiParagraphDialog::checkAlignmentRadioButtons() {
-	LyXAlignment const alignPossible = form_->controller().alignPossible();
+	LyXAlignment const alignPossible = controller().alignPossible();
 
-	QPRadioMap::iterator it = radioMap.begin();
+	RadioMap::iterator it = radioMap.begin();
 	for (; it != radioMap.end(); ++it) {
 		LyXAlignment const align = it->first;
 		it->second->setEnabled(align & alignPossible);
 	}
 	docstring label = labelMap[LYX_ALIGN_LAYOUT];
-	if (!form_->controller().haveMulitParSelection())
-		label += (" (" + labelMap[form_->controller().alignDefault()] + ")");
+	if (!controller().haveMulitParSelection())
+		label += (" (" + labelMap[controller().alignDefault()] + ")");
 	alignDefaultRB->setText(toqstr(label));
 }
 
 
 void GuiParagraphDialog::alignmentToRadioButtons(LyXAlignment align)
 {
-	QPRadioMap::const_iterator it = radioMap.begin();
+	RadioMap::const_iterator it = radioMap.begin();
 	for (;it != radioMap.end(); ++it) {
 		if (align == it->first) {
 			it->second->blockSignals(true);
@@ -144,7 +153,7 @@ void GuiParagraphDialog::alignmentToRadioButtons(LyXAlignment align)
 LyXAlignment GuiParagraphDialog::getAlignmentFromDialog()
 {
 	LyXAlignment alignment = LYX_ALIGN_NONE;
-	QPRadioMap::const_iterator it = radioMap.begin();
+	RadioMap::const_iterator it = radioMap.begin();
 	for (; it != radioMap.end(); ++it) {
 		if (it->second->isChecked()) {
 			alignment = it->first;
@@ -155,70 +164,45 @@ LyXAlignment GuiParagraphDialog::getAlignmentFromDialog()
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiParagraph
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiParagraph::GuiParagraph(GuiDialog & parent)
-	: GuiView<GuiParagraphDialog>(parent, _("Paragraph Settings"))
-{}
-
-
-void GuiParagraph::build_dialog()
-{
-	// the dialog
-	dialog_.reset(new GuiParagraphDialog(this));
-
-	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().setRestore(dialog_->restorePB);
-}
-
-
-void GuiParagraph::applyView()
+void GuiParagraphDialog::applyView()
 {
 	ParagraphParameters & params = controller().params();
 
-	params.align(dialog_->getAlignmentFromDialog());
+	params.align(getAlignmentFromDialog());
 
 	// get spacing
-	Spacing::Space linespacing = Spacing::Default;
+	Spacing::Space ls = Spacing::Default;
 	string other;
-	switch (dialog_->linespacing->currentIndex()) {
+	switch (linespacing->currentIndex()) {
 	case 0:
-		linespacing = Spacing::Default;
+		ls = Spacing::Default;
 		break;
 	case 1:
-		linespacing = Spacing::Single;
+		ls = Spacing::Single;
 		break;
 	case 2:
-		linespacing = Spacing::Onehalf;
+		ls = Spacing::Onehalf;
 		break;
 	case 3:
-		linespacing = Spacing::Double;
+		ls = Spacing::Double;
 		break;
 	case 4:
-		linespacing = Spacing::Other;
-		other = fromqstr(dialog_->linespacingValue->text());
+		ls = Spacing::Other;
+		other = fromqstr(linespacingValue->text());
 		break;
 	}
 
-	Spacing const spacing(linespacing, other);
+	Spacing const spacing(ls, other);
 	params.spacing(spacing);
 
 	// label width
-	params.labelWidthString(qstring_to_ucs4(dialog_->labelWidth->text()));
+	params.labelWidthString(qstring_to_ucs4(labelWidth->text()));
 	// indendation
-	params.noindent(!dialog_->indentCB->isChecked());
+	params.noindent(!indentCB->isChecked());
 }
 
 
-void GuiParagraph::update_contents()
+void GuiParagraphDialog::update_contents()
 {
 	ParagraphParameters const & params = controller().params();
 
@@ -226,49 +210,49 @@ void GuiParagraph::update_contents()
 	docstring const & labelwidth = params.labelWidthString();
 	// FIXME We should not compare translated strings
 	if (labelwidth != _("Senseless with this layout!")) {
-		dialog_->labelwidthGB->setEnabled(true);
-		dialog_->labelWidth->setText(toqstr(labelwidth));
+		labelwidthGB->setEnabled(true);
+		labelWidth->setText(toqstr(labelwidth));
 	} else {
-		dialog_->labelwidthGB->setEnabled(false);
-		dialog_->labelWidth->setText("");
+		labelwidthGB->setEnabled(false);
+		labelWidth->setText("");
 	}
 
 	// alignment
-	dialog_->checkAlignmentRadioButtons();
-	dialog_->alignmentToRadioButtons(params.align());
+	checkAlignmentRadioButtons();
+	alignmentToRadioButtons(params.align());
 
 	//indentation
 	bool const canindent = controller().canIndent();
-	dialog_->indentCB->setEnabled(canindent);
-	dialog_->indentCB->setChecked(canindent && !params.noindent());
+	indentCB->setEnabled(canindent);
+	indentCB->setChecked(canindent && !params.noindent());
 
 	// linespacing
-	int linespacing;
+	int ls;
 	Spacing const & space = params.spacing();
 	switch (space.getSpace()) {
 	case Spacing::Single:
-		linespacing = 1;
+		ls = 1;
 		break;
 	case Spacing::Onehalf:
-		linespacing = 2;
+		ls = 2;
 		break;
 	case Spacing::Double:
-		linespacing = 3;
+		ls = 3;
 		break;
 	case Spacing::Other:
-		linespacing = 4;
+		ls = 4;
 		break;
 	default:
-		linespacing = 0;
+		ls = 0;
 		break;
 	}
-	dialog_->linespacing->setCurrentIndex(linespacing);
+	linespacing->setCurrentIndex(ls);
 	if (space.getSpace() == Spacing::Other) {
-		dialog_->linespacingValue->setText(toqstr(space.getValueAsString()));
-		dialog_->linespacingValue->setEnabled(true);
+		linespacingValue->setText(toqstr(space.getValueAsString()));
+		linespacingValue->setEnabled(true);
 	} else {
-		dialog_->linespacingValue->setText("");
-		dialog_->linespacingValue->setEnabled(false);
+		linespacingValue->setText(QString());
+		linespacingValue->setEnabled(false);
 	}
 }
 

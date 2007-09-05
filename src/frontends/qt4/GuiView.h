@@ -28,11 +28,10 @@ class QDropEvent;
 class QMenu;
 class QToolBar;
 
-
 namespace lyx {
 namespace frontend {
 
-QWidget* mainWindow();
+QWidget * mainWindow();
 
 /**
  * GuiView - Qt4 implementation of LyXView
@@ -43,7 +42,8 @@ QWidget* mainWindow();
  * is deleted. This might be useful for closing other dialogs
  * depending on a given GuiView.
  */
-class GuiViewBase : public QMainWindow, public LyXView {
+class GuiViewBase : public QMainWindow, public LyXView
+{
 	Q_OBJECT
 public:
 	/// create a main window of the given dimensions
@@ -98,10 +98,8 @@ public Q_SLOTS:
 protected:
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
-
 	///
 	virtual void resizeEvent(QResizeEvent * e);
-
 	///
 	virtual void moveEvent(QMoveEvent * e);
 

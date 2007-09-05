@@ -19,7 +19,8 @@
 namespace lyx {
 namespace frontend {
 
-class GuiCommandEdit : public QLineEdit {
+class GuiCommandEdit : public QLineEdit
+{
 	Q_OBJECT
 
 public:

@@ -12,11 +12,9 @@
 #ifndef GUISENDTO_H
 #define GUISENDTO_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlSendto.h"
 #include "ui_SendtoUi.h"
-
-#include <QDialog>
 
 #include <vector>
 
@@ -28,47 +26,29 @@ class Format;
 
 namespace frontend {
 
-class GuiSendto;
-
-class GuiSendtoDialog : public QDialog, public Ui::SendtoUi {
-	Q_OBJECT
-public:
-	GuiSendtoDialog(GuiSendto * form);
-protected Q_SLOTS:
-	virtual void changed_adaptor();
-	virtual void slotFormatHighlighted(QListWidgetItem *) {}
-	virtual void slotFormatSelected(QListWidgetItem *) {}
-protected:
-	virtual void closeEvent(QCloseEvent * e);
-private:
-	GuiSendto * form_;
-};
-
-
-/** This class provides a Qt implementation of the Custom Export Dialog.
- */
-class GuiSendto : public GuiView<GuiSendtoDialog>
+class GuiSendtoDialog : public GuiDialog, public Ui::SendtoUi
 {
+	Q_OBJECT
+
 public:
-	///
-	friend class GuiSendtoDialog;
-	///
-	GuiSendto(GuiDialog &);
-	/// parent controller
-	ControlSendto & controller()
-	{ return static_cast<ControlSendto &>(this->getController()); }
-	/// parent controller
-	ControlSendto const & controller() const
-	{ return static_cast<ControlSendto const &>(this->getController()); }
-protected:
-	virtual bool isValid();
+	GuiSendtoDialog(LyXView & lv);
+
+private Q_SLOTS:
+	void changed_adaptor();
+	void slotFormatHighlighted(QListWidgetItem *) {}
+	void slotFormatSelected(QListWidgetItem *) {}
+
 private:
+	void closeEvent(QCloseEvent * e);
+	/// parent controller
+	ControlSendto & controller() const;
+	///
+	bool isValid();
 	/// Apply from dialog
-	virtual void applyView();
+	void applyView();
 	/// Update the dialog
-	virtual void update_contents();
-	/// Build the dialog
-	virtual void build_dialog();
+	void update_contents();
+
 	///
 	std::vector<Format const *> all_formats_;
 };

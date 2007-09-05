@@ -12,81 +12,61 @@
 #ifndef GUIBIBTEX_H
 #define GUIBIBTEX_H
 
-#include "GuiDialogView.h"
-#include "ButtonController.h"
+#include "GuiDialog.h"
 #include "ControlBibtex.h"
+#include "ButtonController.h"
 #include "ui_BibtexUi.h"
 #include "ui_BibtexAddUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiBibtex;
-
-template<class UI>
-class UiDialog : public QDialog, public UI
+class GuiBibtexAddDialog : public QDialog, public Ui::BibtexAddUi
 {
 public:
-	UiDialog(QWidget * parent=0, bool modal=false, Qt::WFlags f=0)
-		: QDialog(parent, f)
+	GuiBibtexAddDialog(QWidget * parent) : QDialog(parent)
 	{
-		UI::setupUi(this);
-		QDialog::setModal(modal);
+		Ui::BibtexAddUi::setupUi(this);
+		QDialog::setModal(true);
 	}
 };
 
 
-class GuiBibtexDialog : public QDialog, public Ui::BibtexUi {
+class GuiBibtexDialog : public GuiDialog, public Ui::BibtexUi
+{
 	Q_OBJECT
 
 public:
-	GuiBibtexDialog(GuiBibtex * form);
+	GuiBibtexDialog(LyXView & lv);
 
-	UiDialog<Ui::BibtexAddUi> * add_;
-
-protected Q_SLOTS:
-	virtual void change_adaptor();
-	virtual void browsePressed();
-	virtual void browseBibPressed();
-	virtual void addPressed();
-	virtual void addDatabase();
-	virtual void deletePressed();
-	virtual void databaseChanged();
-	virtual void availableChanged();
+private Q_SLOTS:
+	void change_adaptor();
+	void browsePressed();
+	void browseBibPressed();
+	void addPressed();
+	void addDatabase();
+	void deletePressed();
+	void databaseChanged();
+	void availableChanged();
 	void bibEDChanged();
 
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+private:
+	void closeEvent(QCloseEvent * e);
 
 private:
-	GuiBibtex * form_;
-	ButtonController add_bc_;
-};
-
-
-class GuiBibtex : public GuiView<GuiBibtexDialog>
-{
-public:
-	friend class GuiBibtexDialog;
-
-	GuiBibtex(GuiDialog &);
 	/// parent controller
-	ControlBibtex & controller()
-	{ return static_cast<ControlBibtex &>(this->getController()); }
-	/// parent controller
-	ControlBibtex const & controller() const
-	{ return static_cast<ControlBibtex const &>(this->getController()); }
-protected:
+	ControlBibtex & controller() const;
+	///
 	virtual bool isValid();
-private:
 	/// Apply changes
 	virtual void applyView();
 	/// update
 	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+
+	///
+	GuiBibtexAddDialog * add_;
+	///
+	ButtonController add_bc_;
 };
 
 } // namespace frontend

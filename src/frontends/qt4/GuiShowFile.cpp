@@ -11,67 +11,55 @@
 #include <config.h>
 
 #include "GuiShowFile.h"
+
+#include "ControlShowFile.h"
 #include "qt_helpers.h"
 
 #include <QTextBrowser>
 #include <QPushButton>
 #include <QCloseEvent>
 
+
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiShowFileDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiShowFileDialog::GuiShowFileDialog(GuiShowFile * form)
-	: form_(form)
+GuiShowFileDialog::GuiShowFileDialog(LyXView & lv)
+	: GuiDialog(lv, "file")
 {
 	setupUi(this);
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	setViewTitle(_("Show File"));
+	setController(new ControlShowFile(*this));
+
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
+
+	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+	bc().setCancel(closePB);
+}
+
+
+ControlShowFile & GuiShowFileDialog::controller() const
+{
+	return static_cast<ControlShowFile &>(Dialog::controller());
 }
 
 
 void GuiShowFileDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiShowFile
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiShowFile::GuiShowFile(GuiDialog & parent)
-	: GuiView<GuiShowFileDialog>(parent, _("Show File"))
+void GuiShowFileDialog::update_contents()
 {
-}
-
-
-void GuiShowFile::build_dialog()
-{
-	dialog_.reset(new GuiShowFileDialog(this));
-
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiShowFile::update_contents()
-{
-	dialog_->setWindowTitle(toqstr(controller().getFileName()));
+	setWindowTitle(toqstr(controller().getFileName()));
 
 	std::string contents = controller().getFileContents();
 	if (contents.empty()) {
 		contents = "Error -> Cannot load file!";
 	}
 
-	dialog_->textTB->setPlainText(toqstr(contents));
+	textTB->setPlainText(toqstr(contents));
 }
 
 } // namespace frontend

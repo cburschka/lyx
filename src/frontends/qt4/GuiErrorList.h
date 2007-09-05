@@ -12,55 +12,34 @@
 #ifndef GUIERRORLIST_H
 #define GUIERRORLIST_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlErrorList.h"
 #include "ui_ErrorListUi.h"
-
-#include <QDialog>
 
 class QListWidgetItem;
 
 namespace lyx {
 namespace frontend {
 
-class GuiErrorList;
-
-class GuiErrorListDialog : public QDialog, public Ui::ErrorListUi {
+class GuiErrorListDialog : public GuiDialog, public Ui::ErrorListUi
+{
 	Q_OBJECT
+
 public:
-	GuiErrorListDialog(GuiErrorList * form);
+	GuiErrorListDialog(LyXView & lv);
 
 public Q_SLOTS:
 	void select_adaptor(QListWidgetItem *);
-protected:
+
+private:
 	void closeEvent(QCloseEvent *);
 	void showEvent(QShowEvent *);
-private:
-	GuiErrorList * form_;
-};
-
-
-class GuiErrorList : public GuiView<GuiErrorListDialog>
-{
-public:
-	friend class GuiErrorListDialog;
-
-	GuiErrorList(GuiDialog &);
 	/// parent controller
-	ControlErrorList & controller()
-	{ return static_cast<ControlErrorList &>(this->getController()); }
-	/// parent controller
-	ControlErrorList const & controller() const
-	{ return static_cast<ControlErrorList const &>(this->getController()); }
-private:
+	ControlErrorList & controller() const;
 	/// select an entry
 	void select(QListWidgetItem *);
-	/// required apply
-	virtual void applyView() {}
-	/// build dialog
-	virtual void build_dialog();
 	/// update contents
-	virtual void update_contents();
+	void update_contents();
 };
 
 } // namespace frontend

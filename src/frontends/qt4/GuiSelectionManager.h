@@ -9,17 +9,17 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QSELECTIONMANAGER_H
-#define QSELECTIONMANAGER_H
+#ifndef GUISELECTIONMANAGER_H
+#define GUISELECTIONMANAGER_H
 
 #include "Dialog.h"
+
 #include <QObject>
 #include <QKeyEvent>
 #include <QStringList>
 #include <QStringListModel>
 #include <QListView>
 #include <QPushButton>
-
 
 namespace lyx {
 namespace frontend {
@@ -32,90 +32,91 @@ namespace frontend {
  *  of them---should be created independently, and then passed to the
  *  constructor.
  */
-class GuiSelectionManager : public QObject {
-	Q_OBJECT
+class GuiSelectionManager : public QObject
+{
+Q_OBJECT
 
-	public:
-		///
-		GuiSelectionManager(
-			QListView * availableLV, 
-			QListView * selectedLV,
-			QPushButton * addPB, 
-			QPushButton * delPB, 
-			QPushButton * upPB, 
-			QPushButton * downPB,
-			QStringListModel * availableModel,
-			QStringListModel * selectedModel);
-		/// Sets the state of the various push buttons, depending upon the
-		/// state of the widgets. (E.g., "delete" is enabled only if the
-		/// selection is non-empty.)
-		virtual void updateView();
-		
-		/// Not strictly a matter of focus, which may be elsewhere, but
-		/// whether selectedLV is `more focused' than availableLV. Intended
-		/// to be used, for example, in displaying information about a
-		/// highlighted item: should it be the highlighted available item
-		/// or the highlighted selected item that is displayed?
-		bool selectedFocused() { return selectedHasFocus_; };
-
-	Q_SIGNALS:
-		///Emitted when the list of selected items has changed. 
-		void selectionChanged();
-		///Emitted when something has changed that might lead the containing 
-		///dialog to want to update---the focused subwidget or selected item.
-		///(Specifically, it is emitted by *_PB_clicked() and *_LV_clicked.)
-		///NOTE: No automatic update of the button state is done here. If you
-		///just want to do that, connect updateHook() to updateView(). Much of the
-		///time, though, you will want to do a bit more processing first, so
-		///you can connect to some other function that itself calls updateView().
-		void updateHook();
-		///Emitted on Ctrl-Enter in the availableLV. Intended to be connected 
-		///to an "OK" event in the parent dialog.
-		void okHook();
-
+public:
+	///
+	GuiSelectionManager(
+		QListView * availableLV, 
+		QListView * selectedLV,
+		QPushButton * addPB, 
+		QPushButton * delPB, 
+		QPushButton * upPB, 
+		QPushButton * downPB,
+		QStringListModel * availableModel,
+		QStringListModel * selectedModel);
+	/// Sets the state of the various push buttons, depending upon the
+	/// state of the widgets. (E.g., "delete" is enabled only if the
+	/// selection is non-empty.)
+	virtual void updateView();
 	
-	protected:
-		///Given a QModelIndex from availableLV, determines whether it has
-		///been selected (i.e., is also in selectedLV).
-		bool isSelected(const QModelIndex & idx);
+	/// Not strictly a matter of focus, which may be elsewhere, but
+	/// whether selectedLV is `more focused' than availableLV. Intended
+	/// to be used, for example, in displaying information about a
+	/// highlighted item: should it be the highlighted available item
+	/// or the highlighted selected item that is displayed?
+	bool selectedFocused() { return selectedHasFocus_; };
 
-	protected Q_SLOTS:
-		///
-		void availableChanged(const QModelIndex & idx, const QModelIndex &);
-		///
-		void selectedChanged(const QModelIndex & idx, const QModelIndex &);
-		///
-		void addPB_clicked();
-		///
-		void deletePB_clicked();
-		///
-		void upPB_clicked();
-		///
-		void downPB_clicked();
-		///
-		void availableLV_clicked(const QModelIndex &);
-		///
-		void availableLV_doubleClicked(const QModelIndex &);
-		///
-		void selectedLV_clicked(const QModelIndex &);
-		///
-		bool eventFilter(QObject *, QEvent *);
+Q_SIGNALS:
+	///Emitted when the list of selected items has changed. 
+	void selectionChanged();
+	///Emitted when something has changed that might lead the containing 
+	///dialog to want to update---the focused subwidget or selected item.
+	///(Specifically, it is emitted by *_PB_clicked() and *_LV_clicked.)
+	///NOTE: No automatic update of the button state is done here. If you
+	///just want to do that, connect updateHook() to updateView(). Much of the
+	///time, though, you will want to do a bit more processing first, so
+	///you can connect to some other function that itself calls updateView().
+	void updateHook();
+	///Emitted on Ctrl-Enter in the availableLV. Intended to be connected 
+	///to an "OK" event in the parent dialog.
+	void okHook();
 
-	private:
-		QListView * availableLV;
-		QListView * selectedLV;
-		QPushButton * addPB;
-		QPushButton * deletePB; 
-		QPushButton * upPB;
-		QPushButton * downPB;
-		QStringListModel * availableModel;
-		QStringListModel * selectedModel;
-		Dialog::View * dialog;
-		
-		bool selectedHasFocus_;
+
+protected:
+	///Given a QModelIndex from availableLV, determines whether it has
+	///been selected (i.e., is also in selectedLV).
+	bool isSelected(const QModelIndex & idx);
+
+protected Q_SLOTS:
+	///
+	void availableChanged(const QModelIndex & idx, const QModelIndex &);
+	///
+	void selectedChanged(const QModelIndex & idx, const QModelIndex &);
+	///
+	void addPB_clicked();
+	///
+	void deletePB_clicked();
+	///
+	void upPB_clicked();
+	///
+	void downPB_clicked();
+	///
+	void availableLV_clicked(const QModelIndex &);
+	///
+	void availableLV_doubleClicked(const QModelIndex &);
+	///
+	void selectedLV_clicked(const QModelIndex &);
+	///
+	bool eventFilter(QObject *, QEvent *);
+
+private:
+	QListView * availableLV;
+	QListView * selectedLV;
+	QPushButton * addPB;
+	QPushButton * deletePB; 
+	QPushButton * upPB;
+	QPushButton * downPB;
+	QStringListModel * availableModel;
+	QStringListModel * selectedModel;
+	//Dialog::View * dialog;
+	
+	bool selectedHasFocus_;
 };
 
 } // namespace frontend
 } // namespace lyx
 
-#endif
+#endif  // GUISELECTIONMANAGER

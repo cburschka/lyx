@@ -13,33 +13,41 @@
 #include "GuiEmbeddedFiles.h"
 #include "debug.h"
 
+
 namespace lyx {
 namespace frontend {
-
-
-/////////////////////////////////////////////////////////////////////
-//
-// GuiEmbeddedFilesDialog
-//
-/////////////////////////////////////////////////////////////////////
 
 static QString const INVALID_COLOR = "gray";
 static QString const AUTO_COLOR = "green";
 static QString const EMBEDDED_COLOR = "black";
 static QString const EXTERNAL_COLOR = "blue";
 
-GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(GuiEmbeddedFiles * form)
-	: form_(form)
+
+GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(LyXView & lv)
+	: GuiDialog(lv, "embedding")
 {
 	setupUi(this);
-	//
-	update();
+	setController(new ControlEmbeddedFiles(*this));
+	setViewTitle(_("Embedded Files"));
+
+	//setView(new DockView<GuiEmbeddedFiles, GuiEmbeddedFilesDialog>(
+	//		*dialog, qef, &gui_view, _("Embedded Files"), Qt::RightDockWidgetArea));
+	
+	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+
+	updateView();
+}
+
+
+ControlEmbeddedFiles & GuiEmbeddedFilesDialog::controller() const
+{
+	return static_cast<ControlEmbeddedFiles &>(Dialog::controller());
 }
 
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 {
-	EmbeddedFiles & files = form_->embeddedFiles();
+	EmbeddedFiles & files = controller().embeddedFiles();
 
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 
@@ -53,7 +61,7 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 		int idx = filesLW->row(*it);
 		fullpathLE->setText(toqstr(files[idx].absFilename()));
 		// go to the first selected item
-		form_->goTo(files[idx]);
+		controller().goTo(files[idx]);
 	}
 
 	EmbeddedFile::STATUS mode = EmbeddedFile::NONE;
@@ -77,9 +85,9 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked()
 {
-	EmbeddedFiles & files = form_->embeddedFiles();
+	EmbeddedFiles & files = controller().embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
-	form_->view(files[filesLW->row(*selection.begin())]);
+	controller().view(files[filesLW->row(*selection.begin())]);
 }
 
 
@@ -88,7 +96,7 @@ void GuiEmbeddedFilesDialog::updateView()
 	filesLW->clear();
 	
 	//
-	EmbeddedFiles const & files = form_->embeddedFiles();
+	EmbeddedFiles const & files = controller().embeddedFiles();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
 	for (; it != it_end; ++it) {
@@ -113,9 +121,9 @@ void GuiEmbeddedFilesDialog::updateView()
 
 void GuiEmbeddedFilesDialog::on_addPB_clicked()
 {
-	docstring const file = form_->browseFile();
+	docstring const file = controller().browseFile();
 	if (!file.empty()) {
-		EmbeddedFiles & files = form_->embeddedFiles();
+		EmbeddedFiles & files = controller().embeddedFiles();
 		files.registerFile(to_utf8(file), EmbeddedFile::EMBEDDED);
 	}		
 }
@@ -123,11 +131,11 @@ void GuiEmbeddedFilesDialog::on_addPB_clicked()
 
 void GuiEmbeddedFilesDialog::on_extractPB_clicked()
 {
-	EmbeddedFiles const & files = form_->embeddedFiles();
+	EmbeddedFiles const & files = controller().embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it)
-		form_->extract(files[filesLW->row(*it)]);
+		controller().extract(files[filesLW->row(*it)]);
 }
 
 
@@ -138,20 +146,20 @@ void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
 	// When a embedded file is turned to disabled, it should save its
 	// embedded files. Otherwise, embedded files will be lost!!!
 	//
-	form_->embeddedFiles().enable(enable);
+	controller().embeddedFiles().enable(enable);
 	// immediately post the change to buffer (and bufferView)
 	if (enable)
-		form_->setMessage("Enable file embedding");
+		controller().setMessage("Enable file embedding");
 	else
-		form_->setMessage("Disable file embedding");
+		controller().setMessage("Disable file embedding");
 	// update bufferView
-	form_->dispatchParams();
+	controller().dispatchParams();
 }
 
 
 void GuiEmbeddedFilesDialog::set_embedding_status(EmbeddedFile::STATUS status)
 {
-	EmbeddedFiles & files = form_->embeddedFiles();
+	EmbeddedFiles & files = controller().embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it) {
@@ -167,16 +175,16 @@ void GuiEmbeddedFilesDialog::set_embedding_status(EmbeddedFile::STATUS status)
 			(*it)->setTextColor(EXTERNAL_COLOR);
 	}
 	if (status == EmbeddedFile::AUTO)
-		form_->setMessage("Switch to auto embedding");
+		controller().setMessage("Switch to auto embedding");
 	else if (status == EmbeddedFile::EMBEDDED)
-		form_->setMessage("Switch to always embedding");
+		controller().setMessage("Switch to always embedding");
 	else
-		form_->setMessage("Switch to never embedding");
+		controller().setMessage("Switch to never embedding");
 	autoRB->setChecked(status == EmbeddedFile::AUTO);
 	embeddedRB->setChecked(status == EmbeddedFile::EMBEDDED);
 	externalRB->setChecked(status == EmbeddedFile::EXTERNAL);
 	// update bufferView
-	form_->dispatchParams();
+	controller().dispatchParams();
 }
 
 

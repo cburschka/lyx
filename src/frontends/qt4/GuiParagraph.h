@@ -13,66 +13,48 @@
 #ifndef GUIPARAGRAPH_H
 #define GUIPARAGRAPH_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlParagraph.h"
 #include "Layout.h"
 #include "ui_ParagraphUi.h"
-
-#include <QDialog>
 
 #include <map>
 
 namespace lyx {
 namespace frontend {
 
-class GuiParagraph;
-
-class GuiParagraphDialog : public QDialog, public Ui::ParagraphUi {
+class GuiParagraphDialog : public GuiDialog, public Ui::ParagraphUi
+{
 	Q_OBJECT
 public:
-	GuiParagraphDialog(GuiParagraph * form);
+	GuiParagraphDialog(LyXView & lv);
 	///
 	void checkAlignmentRadioButtons();
 	///
 	void alignmentToRadioButtons(LyXAlignment align = LYX_ALIGN_LAYOUT);
 	///
 	LyXAlignment getAlignmentFromDialog();
-protected:
-	void closeEvent (QCloseEvent * e);
 private:
-	GuiParagraph * form_;
-	typedef std::map<LyXAlignment, QRadioButton *> QPRadioMap;
-	QPRadioMap radioMap;
-	typedef std::map<LyXAlignment, docstring> QPAlignmentLabels;
-	QPAlignmentLabels labelMap;
+	///
+	void closeEvent(QCloseEvent * e);
+	///
+	typedef std::map<LyXAlignment, QRadioButton *> RadioMap;
+	RadioMap radioMap;
+	///
+	typedef std::map<LyXAlignment, docstring> AlignmentLabels;
+	AlignmentLabels labelMap;
 		
-protected Q_SLOTS:
+private Q_SLOTS:
 	///
 	void change_adaptor();
 	///
 	void enableLinespacingValue(int);
-};
-
-
-class GuiParagraph : public GuiView<GuiParagraphDialog>
-{
-public:
-	friend class GuiParagraphDialog;
-
-	GuiParagraph(GuiDialog &);
 	/// parent controller
-	ControlParagraph & controller()
-	{ return static_cast<ControlParagraph &>(this->getController()); }
-	/// parent controller
-	ControlParagraph const & controller() const
-	{ return static_cast<ControlParagraph const &>(this->getController()); }
-private:
+	ControlParagraph & controller() const;
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 };
 
 } // namespace frontend

@@ -10,10 +10,11 @@
 
 #include <config.h>
 
+#include "GuiInclude.h"
+#include "ControlInclude.h"
+
 #include "support/os.h"
 #include "support/lstrings.h"
-
-#include "GuiInclude.h"
 
 #include "qt_helpers.h"
 #include "LyXRC.h"
@@ -33,21 +34,19 @@ using lyx::support::prefixIs;
 using lyx::support::getStringFromVector;
 using lyx::support::getVectorFromString;
 
+
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiIncludeDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiIncludeDialog::GuiIncludeDialog(GuiInclude * form)
-	: form_(form)
+GuiIncludeDialog::GuiIncludeDialog(LyXView & lv)
+	: GuiDialog(lv, "include")
 {
 	setupUi(this);
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	setViewTitle(_("Child Document"));
+	setController(new ControlInclude(*this));
+
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(visiblespaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(filenameED, SIGNAL(textChanged(const QString &)),
@@ -65,6 +64,23 @@ GuiIncludeDialog::GuiIncludeDialog(GuiInclude * form)
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(set_listings_msg()));
 
 	setFocusProxy(filenameED);
+
+	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+	bc().addReadOnly(filenameED);
+	bc().addReadOnly(browsePB);
+	bc().addReadOnly(visiblespaceCB);
+	bc().addReadOnly(typeCO);
+	bc().addReadOnly(listingsED);
+
+	bc().addCheckedLineEdit(filenameED, filenameLA);
+}
+
+
+ControlInclude & GuiIncludeDialog::controller() const
+{
+	return static_cast<ControlInclude &>(Dialog::controller());
 }
 
 
@@ -76,7 +92,7 @@ void GuiIncludeDialog::showView()
 
 void GuiIncludeDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
@@ -118,7 +134,7 @@ void GuiIncludeDialog::set_listings_msg()
 
 void GuiIncludeDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
@@ -166,59 +182,31 @@ void GuiIncludeDialog::typeChanged(int v)
 
 void GuiIncludeDialog::editClicked()
 {
-	form_->edit();
+	edit();
 }
 
 
 void GuiIncludeDialog::browseClicked()
 {
-	form_->browse();
+	browse();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiInclude
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiInclude::GuiInclude(GuiDialog & parent)
-	: GuiView<GuiIncludeDialog>(parent, _("Child Document"))
-{}
-
-
-void GuiInclude::build_dialog()
-{
-	dialog_.reset(new GuiIncludeDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->filenameED);
-	bc().addReadOnly(dialog_->browsePB);
-	bc().addReadOnly(dialog_->visiblespaceCB);
-	bc().addReadOnly(dialog_->typeCO);
-	bc().addReadOnly(dialog_->listingsED);
-
-	bc().addCheckedLineEdit(dialog_->filenameED, dialog_->filenameLA);
-}
-
-
-void GuiInclude::update_contents()
+void GuiIncludeDialog::update_contents()
 {
 	InsetCommandParams const & params = controller().params();
 
-	dialog_->filenameED->setText(toqstr(params["filename"]));
+	filenameED->setText(toqstr(params["filename"]));
 
-	dialog_->visiblespaceCB->setChecked(false);
-	dialog_->visiblespaceCB->setEnabled(false);
-	dialog_->previewCB->setChecked(false);
-	dialog_->previewCB->setEnabled(false);
-	dialog_->listingsGB->setEnabled(false);
-	dialog_->captionLE->clear();
-	dialog_->labelLE->clear();
-	dialog_->listingsED->clear();
-	dialog_->listingsTB->setPlainText(
+	visiblespaceCB->setChecked(false);
+	visiblespaceCB->setEnabled(false);
+	previewCB->setChecked(false);
+	previewCB->setEnabled(false);
+	listingsGB->setEnabled(false);
+	captionLE->clear();
+	labelLE->clear();
+	listingsED->clear();
+	listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 
 	string cmdname = controller().params().getCmdName();
@@ -229,26 +217,26 @@ void GuiInclude::update_contents()
 		cmdname = "input";
 
 	if (cmdname == "include") {
-		dialog_->typeCO->setCurrentIndex(0);
+		typeCO->setCurrentIndex(0);
 
 	} else if (cmdname == "input") {
-		dialog_->typeCO->setCurrentIndex(1);
-		dialog_->previewCB->setEnabled(true);
-		dialog_->previewCB->setChecked(params.preview());
+		typeCO->setCurrentIndex(1);
+		previewCB->setEnabled(true);
+		previewCB->setChecked(params.preview());
 
 	} else if (cmdname == "verbatiminput*") {
-		dialog_->typeCO->setCurrentIndex(2);
-		dialog_->visiblespaceCB->setEnabled(true);
-		dialog_->visiblespaceCB->setChecked(true);
+		typeCO->setCurrentIndex(2);
+		visiblespaceCB->setEnabled(true);
+		visiblespaceCB->setChecked(true);
 
 	} else if (cmdname == "verbatiminput") {
-		dialog_->typeCO->setCurrentIndex(2);
-		dialog_->visiblespaceCB->setEnabled(true);
+		typeCO->setCurrentIndex(2);
+		visiblespaceCB->setEnabled(true);
 
 	} else if (cmdname == "lstinputlisting") {
-		dialog_->typeCO->setCurrentIndex(3);
-		dialog_->listingsGB->setEnabled(true);
-		dialog_->listingsED->setEnabled(true);
+		typeCO->setCurrentIndex(3);
+		listingsGB->setEnabled(true);
+		listingsED->setEnabled(true);
 		InsetListingsParams par(params.getOptions());
 		// extract caption and label and put them into their respective editboxes
 		vector<string> pars = getVectorFromString(par.separatedParams(), "\n");
@@ -257,32 +245,32 @@ void GuiInclude::update_contents()
 			if (prefixIs(*it, "caption=")) {
 				string cap = it->substr(8);
 				if (cap[0] == '{' && cap[cap.size()-1] == '}') {
-					dialog_->captionLE->setText(toqstr(cap.substr(1, cap.size()-2)));
+					captionLE->setText(toqstr(cap.substr(1, cap.size()-2)));
 					*it = "";
 				} 
 			} else if (prefixIs(*it, "label=")) {
 				string lbl = it->substr(6);
 				if (lbl[0] == '{' && lbl[lbl.size()-1] == '}') {
-					dialog_->labelLE->setText(toqstr(lbl.substr(1, lbl.size()-2)));
+					labelLE->setText(toqstr(lbl.substr(1, lbl.size()-2)));
 					*it = "";
 				}
 			}
 		}
 		// the rest is put to the extra edit box.
 		string extra = getStringFromVector(pars);
-		dialog_->listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
+		listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
 	}
 }
 
 
-void GuiInclude::applyView()
+void GuiIncludeDialog::applyView()
 {
 	InsetCommandParams params = controller().params();
 
-	params["filename"] = from_utf8(internal_path(fromqstr(dialog_->filenameED->text())));
-	params.preview(dialog_->previewCB->isChecked());
+	params["filename"] = from_utf8(internal_path(fromqstr(filenameED->text())));
+	params.preview(previewCB->isChecked());
 
-	int const item = dialog_->typeCO->currentIndex();
+	int const item = typeCO->currentIndex();
 	if (item == 0) {
 		params.setCmdName("include");
 	} else if (item == 1) {
@@ -290,16 +278,16 @@ void GuiInclude::applyView()
 	} else if (item == 3) {
 		params.setCmdName("lstinputlisting");
 		// the parameter string should have passed validation
-		InsetListingsParams par(fromqstr(dialog_->listingsED->toPlainText()));
-		string caption = fromqstr(dialog_->captionLE->text());
-		string label = fromqstr(dialog_->labelLE->text());
+		InsetListingsParams par(fromqstr(listingsED->toPlainText()));
+		string caption = fromqstr(captionLE->text());
+		string label = fromqstr(labelLE->text());
 		if (!caption.empty())
 			par.addParam("caption", "{" + caption + "}");
 		if (!label.empty())
 			par.addParam("label", "{" + label + "}");
 		params.setOptions(par.params());
 	} else {
-		if (dialog_->visiblespaceCB->isChecked())
+		if (visiblespaceCB->isChecked())
 			params.setCmdName("verbatiminput*");
 		else
 			params.setCmdName("verbatiminput");
@@ -308,11 +296,11 @@ void GuiInclude::applyView()
 }
 
 
-void GuiInclude::browse()
+void GuiIncludeDialog::browse()
 {
 	ControlInclude::Type type;
 
-	int const item = dialog_->typeCO->currentIndex();
+	int const item = typeCO->currentIndex();
 	if (item == 0)
 		type = ControlInclude::INCLUDE;
 	else if (item == 1)
@@ -323,26 +311,26 @@ void GuiInclude::browse()
 		type = ControlInclude::LISTINGS;
 
 	docstring const & name =
-		controller().browse(qstring_to_ucs4(dialog_->filenameED->text()), type);
+		controller().browse(qstring_to_ucs4(filenameED->text()), type);
 	if (!name.empty())
-		dialog_->filenameED->setText(toqstr(name));
+		filenameED->setText(toqstr(name));
 }
 
 
-void GuiInclude::edit()
+void GuiIncludeDialog::edit()
 {
 	if (isValid()) {
-		string const file = fromqstr(dialog_->filenameED->text());
+		string const file = fromqstr(filenameED->text());
 		slotOK();
 		controller().edit(file);
 	}
 }
 
 
-bool GuiInclude::isValid()
+bool GuiIncludeDialog::isValid()
 {
-	return !dialog_->filenameED->text().isEmpty() &&
-		dialog_->validate_listings_params().empty();
+	return !filenameED->text().isEmpty() &&
+		validate_listings_params().empty();
 }
 
 } // namespace frontend

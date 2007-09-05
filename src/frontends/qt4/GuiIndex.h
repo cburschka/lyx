@@ -13,56 +13,57 @@
 #ifndef GUIINDEX_H
 #define GUIINDEX_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlCommand.h"
 #include "ui_IndexUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiIndex;
-
-class GuiIndexDialog : public QDialog, public Ui::IndexUi {
+class GuiIndexDialogBase : public GuiDialog, public Ui::IndexUi
+{
 	Q_OBJECT
-public:
-	GuiIndexDialog(GuiIndex * form);
 
-protected Q_SLOTS:
-	virtual void change_adaptor();
-	virtual void reject();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+public:
+	GuiIndexDialogBase(LyXView & lv, docstring const & title,
+		QString const & label);
+
+private Q_SLOTS:
+	void change_adaptor();
+	void reject();
+
 private:
-	GuiIndex * form_;
+	///
+	void closeEvent(QCloseEvent * e);
+	/// parent controller
+	ControlCommand & controller() const;
+	///
+	bool isValid();
+	/// Apply changes
+	void applyView();
+	/// update
+	void update_contents();
+
+	///
+	QString label_;
 };
 
 
-class GuiIndex : public GuiView<GuiIndexDialog>
+class GuiIndexDialog : public GuiIndexDialogBase
 {
 public:
-	friend class GuiIndexDialog;
+	GuiIndexDialog(LyXView & lv)
+		: GuiIndexDialogBase(lv, _("Index Entry"), qt_("&Keyword:")) 
+	{}
+};
 
-	GuiIndex(GuiDialog &, docstring const & title, QString const & label);
-	/// parent controller
-	ControlCommand & controller()
-	{ return static_cast<ControlCommand &>(this->getController()); }
-	/// parent controller
-	ControlCommand const & controller() const
-	{ return static_cast<ControlCommand const &>(this->getController()); }
-protected:
-	virtual bool isValid();
-private:
-	/// Apply changes
-	virtual void applyView();
-	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
 
-	///
-	QString const label_;
+class GuiLabelDialog : public GuiIndexDialogBase
+{
+public:
+	GuiLabelDialog(LyXView & lv)
+		: GuiIndexDialogBase(lv, _("Label"), qt_("&Label:"))
+	{}
 };
 
 } // namespace frontend

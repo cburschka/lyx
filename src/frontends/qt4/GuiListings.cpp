@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include "GuiListings.h"
+
+#include "ControlListings.h"
 #include "qt_helpers.h"
 #include "insets/InsetListingsParams.h"
 #include "debug.h"
@@ -161,36 +163,58 @@ char const * font_styles_gui[] =
 
 
 
-GuiListingsDialog::GuiListingsDialog(GuiListings * form)
-	: form_(form)
+GuiListingsDialog::GuiListingsDialog(LyXView & lv)
+	: GuiDialog(lv, "listings")
 {
 	setupUi(this);
+	setViewTitle(_("Program Listing Settings"));
+	setController(new ControlListings(*this));
 
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-	connect(languageCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(dialectCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(inlineCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(floatCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(placementLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(numberSideCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(numberStepLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(numberFontSizeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(firstlineLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(lastlineLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(fontsizeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(fontstyleCO, SIGNAL(currentIndexChanged(int)), this, SLOT(change_adaptor()));
-	connect(breaklinesCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(spaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(spaceInStringCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(extendedcharsCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(languageCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(dialectCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(inlineCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(floatCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(placementLE, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(numberSideCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(numberStepLE, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(numberFontSizeCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(firstlineLE, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(lastlineLE, SIGNAL(textChanged(const QString&)),
+		this, SLOT(change_adaptor()));
+	connect(fontsizeCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontstyleCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(change_adaptor()));
+	connect(breaklinesCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(spaceCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(spaceInStringCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(extendedcharsCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
-	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(change_adaptor()));
-	connect(listingsED,  SIGNAL(textChanged()), this, SLOT(set_listings_msg()));
-	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(bypassCB, SIGNAL(clicked()), this, SLOT(set_listings_msg()));
+	connect(listingsED,  SIGNAL(textChanged()),
+		this, SLOT(change_adaptor()));
+	connect(listingsED,  SIGNAL(textChanged()),
+		this, SLOT(set_listings_msg()));
+	connect(bypassCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(bypassCB, SIGNAL(clicked()),
+		this, SLOT(set_listings_msg()));
 
 	for (int n = 0; languages[n][0]; ++n)
 		languageCO->addItem(qt_(languages_gui[n]));
@@ -209,19 +233,34 @@ GuiListingsDialog::GuiListingsDialog(GuiListings * form)
 	firstlineLE->setValidator(new QIntValidator(0, 1000000, this));
 	lastlineLE->setValidator(new QIntValidator(0, 1000000, this));
 	placementLE->setValidator(new QRegExpValidator(QRegExp("[\\*tbph]*"), this));
+
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+	listingsTB->setPlainText(
+		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
+
+	update_contents();
+
+}
+
+
+ControlListings & GuiListingsDialog::controller() const
+{
+	return static_cast<ControlListings &>(Dialog::controller());
 }
 
 
 void GuiListingsDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiListingsDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
@@ -400,45 +439,16 @@ void GuiListingsDialog::on_languageCO_currentIndexChanged(int index)
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiListings
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiListings::GuiListings(GuiDialog & parent)
-	: GuiView<GuiListingsDialog>(parent, _("Program Listing Settings"))
-{
-}
-
-
-void GuiListings::build_dialog()
-{
-	dialog_.reset(new GuiListingsDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	dialog_->listingsTB->setPlainText(
-		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
-
-	update_contents();
-}
-
-
-void GuiListings::applyView()
+void GuiListingsDialog::applyView()
 {
 	InsetListingsParams & params = controller().params();
-	params.setInline(dialog_->inlineCB->isChecked());
-	params.setParams(dialog_->construct_params());
+	params.setInline(inlineCB->isChecked());
+	params.setParams(construct_params());
 	controller().setParams(params);
 }
 
 
-namespace {
-
-string plainParam(std::string const & par)
+static string plainParam(std::string const & par)
 {
 	// remove enclosing braces
 	if (prefixIs(par, "{") && suffixIs(par, "}"))
@@ -446,36 +456,34 @@ string plainParam(std::string const & par)
 	return par;
 }
 
-} //namespace anon
 
-
-void GuiListings::update_contents()
+void GuiListingsDialog::update_contents()
 {
 	// set default values
-	dialog_->listingsTB->setPlainText(
+	listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
-	dialog_->languageCO->setCurrentIndex(findToken(languages, "no language"));
-	dialog_->dialectCO->setCurrentIndex(0);
-	dialog_->floatCB->setChecked(false);
-	dialog_->placementLE->clear();
-	dialog_->numberSideCO->setCurrentIndex(0);
-	dialog_->numberStepLE->clear();
-	dialog_->numberFontSizeCO->setCurrentIndex(findToken(font_sizes, "default"));
-	dialog_->firstlineLE->clear();
-	dialog_->lastlineLE->clear();
-	dialog_->fontstyleCO->setCurrentIndex(findToken(font_styles, "default"));
-	dialog_->fontsizeCO->setCurrentIndex(findToken(font_sizes, "default"));
-	dialog_->breaklinesCB->setChecked(false);
-	dialog_->spaceCB->setChecked(false);
-	dialog_->spaceInStringCB->setChecked(true);
-	dialog_->extendedcharsCB->setChecked(false);
+	languageCO->setCurrentIndex(findToken(languages, "no language"));
+	dialectCO->setCurrentIndex(0);
+	floatCB->setChecked(false);
+	placementLE->clear();
+	numberSideCO->setCurrentIndex(0);
+	numberStepLE->clear();
+	numberFontSizeCO->setCurrentIndex(findToken(font_sizes, "default"));
+	firstlineLE->clear();
+	lastlineLE->clear();
+	fontstyleCO->setCurrentIndex(findToken(font_styles, "default"));
+	fontsizeCO->setCurrentIndex(findToken(font_sizes, "default"));
+	breaklinesCB->setChecked(false);
+	spaceCB->setChecked(false);
+	spaceInStringCB->setChecked(true);
+	extendedcharsCB->setChecked(false);
 
 	// set values from param string
 	InsetListingsParams & params = controller().params();
-	dialog_->inlineCB->setChecked(params.isInline());
+	inlineCB->setChecked(params.isInline());
 	if (params.isInline()) {
-		dialog_->floatCB->setChecked(false);
-		dialog_->placementLE->setEnabled(false);
+		floatCB->setChecked(false);
+		placementLE->setEnabled(false);
 	}
 	// break other parameters and set values
 	vector<string> pars = getVectorFromString(params.separatedParams(), "\n");
@@ -496,7 +504,7 @@ void GuiListings::update_contents()
 				language = arg;
 			int n = findToken(languages, language);
 			if (n >= 0) {
-				dialog_->languageCO->setCurrentIndex(n);
+				languageCO->setCurrentIndex(n);
 				in_gui = true;
 			}
 			// on_languageCO_currentIndexChanged should have set dialects
@@ -509,23 +517,23 @@ void GuiListings::update_contents()
 						break;
 					}
 				}
-				n = dialog_->dialectCO->findText(qt_(dialect_gui));
+				n = dialectCO->findText(qt_(dialect_gui));
 				if (n >= 0)
-					dialog_->dialectCO->setCurrentIndex(n);
+					dialectCO->setCurrentIndex(n);
 				else
 					in_gui = false;
 			}
 			if (in_gui)
 				*it = "";
-			dialog_->languageCO->setEnabled(in_gui);
-			dialog_->dialectCO->setEnabled(
-				in_gui && dialog_->dialectCO->count() > 1);
+			languageCO->setEnabled(in_gui);
+			dialectCO->setEnabled(
+				in_gui && dialectCO->count() > 1);
 		} else if (prefixIs(*it, "float")) {
-			dialog_->floatCB->setChecked(true);
-			dialog_->inlineCB->setChecked(false);
-			dialog_->placementLE->setEnabled(true);
+			floatCB->setChecked(true);
+			inlineCB->setChecked(false);
+			placementLE->setEnabled(true);
 			if (prefixIs(*it, "float="))
-				dialog_->placementLE->setText(
+				placementLE->setText(
 					toqstr(plainParam(it->substr(6))));
 			*it = "";
 		} else if (prefixIs(*it, "numbers=")) {
@@ -535,24 +543,24 @@ void GuiListings::update_contents()
 				n = 1;
 			else if (s == "right")
 				n = 2;
-			dialog_->numberSideCO->setCurrentIndex(n);
+			numberSideCO->setCurrentIndex(n);
 			*it = "";
 		} else if (prefixIs(*it, "stepnumber=")) {
-			dialog_->numberStepLE->setText(
+			numberStepLE->setText(
 				toqstr(plainParam(it->substr(11))));
 			*it = "";
 		} else if (prefixIs(*it, "numberstyle=")) {
 			string par = plainParam(it->substr(12));
 			int n = findToken(font_sizes, par.substr(1));
 			if (n >= 0)
-				dialog_->numberFontSizeCO->setCurrentIndex(n);
+				numberFontSizeCO->setCurrentIndex(n);
 			*it = "";
 		} else if (prefixIs(*it, "firstline=")) {
-			dialog_->firstlineLE->setText(
+			firstlineLE->setText(
 				toqstr(plainParam(it->substr(10))));
 			*it = "";
 		} else if (prefixIs(*it, "lastline=")) {
-			dialog_->lastlineLE->setText(
+			lastlineLE->setText(
 				toqstr(plainParam(it->substr(9))));
 			*it = "";
 		} else if (prefixIs(*it, "basicstyle=")) {
@@ -577,42 +585,42 @@ void GuiListings::update_contents()
 				if (!style.empty()) {
 					int n = findToken(font_styles, style.substr(1));
 					if (n >= 0)
-						dialog_->fontstyleCO->setCurrentIndex(n);
+						fontstyleCO->setCurrentIndex(n);
 				}
 				if (!size.empty()) {
 					int n = findToken(font_sizes, size.substr(1));
 					if (n >= 0)
-						dialog_->fontsizeCO->setCurrentIndex(n);
+						fontsizeCO->setCurrentIndex(n);
 				}
 				*it = "";
 			}
 		} else if (prefixIs(*it, "breaklines=")) {
-			dialog_->breaklinesCB->setChecked(contains(*it, "true"));
+			breaklinesCB->setChecked(contains(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "showspaces=")) {
-			dialog_->spaceCB->setChecked(contains(*it, "true"));
+			spaceCB->setChecked(contains(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "showstringspaces=")) {
-			dialog_->spaceInStringCB->setChecked(contains(*it, "true"));
+			spaceInStringCB->setChecked(contains(*it, "true"));
 			*it = "";
 		} else if (prefixIs(*it, "extendedchars=")) {
-			dialog_->extendedcharsCB->setChecked(contains(*it, "true"));
+			extendedcharsCB->setChecked(contains(*it, "true"));
 			*it = "";
 		}
 	}
 
-	dialog_->numberStepLE->setEnabled(dialog_->numberSideCO->currentIndex() > 0);
-	dialog_->numberFontSizeCO->setEnabled(dialog_->numberSideCO->currentIndex() > 0);
+	numberStepLE->setEnabled(numberSideCO->currentIndex() > 0);
+	numberFontSizeCO->setEnabled(numberSideCO->currentIndex() > 0);
 	// parameters that can be handled by widgets are cleared
 	// the rest is put to the extra edit box.
 	string extra = getStringFromVector(pars);
-	dialog_->listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
+	listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
 }
 
 
-bool GuiListings::isValid()
+bool GuiListingsDialog::isValid()
 {
-	return dialog_->validate_listings_params().empty();
+	return validate_listings_params().empty();
 }
 
 

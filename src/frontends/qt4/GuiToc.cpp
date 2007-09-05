@@ -32,9 +32,26 @@ namespace lyx {
 namespace frontend {
 
 
-GuiToc::GuiToc(Dialog & dialog, QObject * parent)
-	: QObject(parent), ControlToc(dialog)
+GuiToc::GuiToc(LyXView & lv)
+	: GuiDialog(lv, "toc")
 {
+	setViewTitle(_("Outline"));
+	setController(new ControlToc(*this));
+#ifdef Q_WS_MACX
+		// On Mac show as a drawer at the right
+	//setView(new DockView<GuiToc, TocWidget>(
+	//		*dialog, qtoc, &gui_view, _("Outline"), Qt::RightDockWidgetArea, Qt::Drawer));
+#else
+	//setView(new DockView<GuiToc, TocWidget>(
+//			*dialog, qtoc, &gui_view, _("Outline")));
+#endif
+	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+}
+
+
+ControlToc & GuiToc::controller() const
+{
+	return static_cast<ControlToc &>(Dialog::controller());
 }
 
 
@@ -43,7 +60,7 @@ bool GuiToc::canOutline(int type) const
 	if (type < 0)
 		return false;
 
-	return ControlToc::canOutline(type);
+	return controller().canOutline(type);
 }
 
 
@@ -86,7 +103,7 @@ QModelIndex const GuiToc::getCurrentIndex(int type) const
 	if(!canOutline(type))
 		return QModelIndex();
 
-	return toc_models_[type]->modelIndex(getCurrentTocItem(type));
+	return toc_models_[type]->modelIndex(controller().getCurrentTocItem(type));
 }
 
 
@@ -106,13 +123,13 @@ void GuiToc::goTo(int type, QModelIndex const & index)
 
 	LYXERR(Debug::GUI) << "GuiToc::goTo " << to_utf8(it->str()) << endl;
 
-	ControlToc::goTo(*it);
+	controller().goTo(*it);
 }
 
 
 bool GuiToc::initialiseParams(std::string const & data)
 {
-	if (!ControlToc::initialiseParams(data))
+	if (!controller().initialiseParams(data))
 		return false;
 	updateView();
 	modelReset();
@@ -123,8 +140,8 @@ bool GuiToc::initialiseParams(std::string const & data)
 void GuiToc::updateView()
 {
 	toc_models_.clear();
-	TocList::const_iterator it = tocs().begin();
-	TocList::const_iterator end = tocs().end();
+	TocList::const_iterator it = controller().tocs().begin();
+	TocList::const_iterator end = controller().tocs().end();
 	for (; it != end; ++it)
 		toc_models_.push_back(new TocModel(it->second));
 }

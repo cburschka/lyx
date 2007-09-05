@@ -14,7 +14,7 @@
 #ifndef GUIMATHMATRIXDIALOG_H
 #define GUIMATHMATRIXDIALOG_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlMath.h"
 #include "ui_MathMatrixUi.h"
 
@@ -23,44 +23,23 @@
 namespace lyx {
 namespace frontend {
 
-class GuiMathMatrix;
-class ControlMath;
-
-
-class GuiMathMatrixDialog : public QDialog, public Ui::MathMatrixUi {
+class GuiMathMatrixDialog : public GuiDialog, public Ui::MathMatrixUi
+{
 	Q_OBJECT
+
 public:
-	GuiMathMatrixDialog(GuiMathMatrix * form);
+	GuiMathMatrixDialog(LyXView & lv);
+
 public Q_SLOTS:
 	void slotOK();
 	void slotClose();
-protected Q_SLOTS:
-	virtual void columnsChanged(int);
-	virtual void rowsChanged(int);
-	virtual void change_adaptor();
-private:
-	GuiMathMatrix * form_;
-};
+	void columnsChanged(int);
+	void rowsChanged(int);
+	void change_adaptor();
 
-
-class GuiMathMatrix : public GuiView<GuiMathMatrixDialog> {
-public:
-	friend class GuiMathMatrixDialog;
-
-	GuiMathMatrix(GuiDialog &);
 	/// parent controller
-	ControlMath & controller()
-	{ return static_cast<ControlMath &>(this->getController()); }
-	/// parent controller
-	ControlMath const & controller() const
-	{ return static_cast<ControlMath const &>(this->getController()); }
-private:
-	virtual void applyView() {}
-	virtual void update_contents() {}
-	/// Build the dialog.
-	virtual void build_dialog();
+	ControlMath & controller() const;
 };
-
 
 } // namespace frontend
 } // namespace lyx

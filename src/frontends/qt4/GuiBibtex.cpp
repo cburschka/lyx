@@ -19,8 +19,8 @@
 #include "Validator.h"
 #include "LyXRC.h"
 
-#include "controllers/ControlBibtex.h"
-#include "controllers/ButtonPolicy.h"
+#include "ControlBibtex.h"
+#include "ButtonPolicy.h"
 
 #include "support/filetools.h" // changeExtension
 #include "support/lstrings.h"
@@ -47,27 +47,25 @@ using support::split;
 using support::trim;
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiBibtexDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiBibtexDialog::GuiBibtexDialog(GuiBibtex * form)
-	: form_(form)
+GuiBibtexDialog::GuiBibtexDialog(LyXView & lv)
+	: GuiDialog(lv, "bibtex")
 {
 	setupUi(this);
+
+	setViewTitle( _("BibTeX Bibliography"));
+	setController(new ControlBibtex(*this));
+
 	QDialog::setModal(true);
 
 	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
+		this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
+		this, SLOT(slotClose()));
 	connect(stylePB, SIGNAL(clicked()),
 		this, SLOT(browsePressed()));
 	connect(deletePB, SIGNAL(clicked()),
 		this, SLOT(deletePressed()));
-	connect(styleCB, SIGNAL(editTextChanged (const QString &)),
+	connect(styleCB, SIGNAL(editTextChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(databaseLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(databaseChanged()));
@@ -78,7 +76,7 @@ GuiBibtexDialog::GuiBibtexDialog(GuiBibtex * form)
 	connect(addBibPB, SIGNAL(clicked()),
 		this, SLOT(addPressed()));
 
-	add_ = new UiDialog<Ui::BibtexAddUi>(this, true);
+	add_ = new GuiBibtexAddDialog(this);
 	add_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
 	add_bc_.setOK(add_->addPB);
 	add_bc_.setCancel(add_->closePB);
@@ -100,6 +98,22 @@ GuiBibtexDialog::GuiBibtexDialog(GuiBibtex * form)
 		this, SLOT(browseBibPressed()));
 	connect(add_->closePB, SIGNAL(clicked()),
 		add_, SLOT(reject()));
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setCancel(closePB);
+	bc().addReadOnly(databaseLW);
+	bc().addReadOnly(stylePB);
+	bc().addReadOnly(styleCB);
+	bc().addReadOnly(bibtocCB);
+	bc().addReadOnly(addBibPB);
+	bc().addReadOnly(deletePB);
+}
+
+
+ControlBibtex & GuiBibtexDialog::controller() const
+{
+	return static_cast<ControlBibtex &>(Dialog::controller());
 }
 
 
@@ -114,13 +128,13 @@ void GuiBibtexDialog::bibEDChanged()
 
 void GuiBibtexDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiBibtexDialog::browsePressed()
 {
-	docstring const file = form_->controller().browseBst(docstring());
+	docstring const file = controller().browseBst(docstring());
 
 	if (!file.empty()) {
 		// FIXME UNICODE
@@ -139,14 +153,14 @@ void GuiBibtexDialog::browsePressed()
 			styleCB->insertItem(0, toqstr(filen));
 
 		styleCB->setCurrentIndex(pres);
-		form_->changed();
+		changed();
 	}
 }
 
 
 void GuiBibtexDialog::browseBibPressed()
 {
-	docstring const file = trim(form_->controller().browseBib(docstring()));
+	docstring const file = trim(controller().browseBib(docstring()));
 
 	if (!file.empty()) {
 		// FIXME UNICODE
@@ -160,7 +174,7 @@ void GuiBibtexDialog::browseBibPressed()
 
 		if (!present) {
 			add_->bibLW->addItem(f);
-			form_->changed();
+			changed();
 		}
 
 		add_->bibED->setText(f);
@@ -205,21 +219,21 @@ void GuiBibtexDialog::addDatabase()
 			databaseLW->addItem(f);
 	}
 
-	form_->changed();
+	changed();
 }
 
 
 void GuiBibtexDialog::deletePressed()
 {
 	databaseLW->takeItem(databaseLW->currentRow());
-	form_->changed();
+	changed();
 }
 
 
 
 void GuiBibtexDialog::databaseChanged()
 {
-	deletePB->setEnabled(!form_->readOnly() && databaseLW->currentRow() != -1);
+	deletePB->setEnabled(!readOnly() && databaseLW->currentRow() != -1);
 }
 
 
@@ -231,44 +245,16 @@ void GuiBibtexDialog::availableChanged()
 
 void GuiBibtexDialog::closeEvent(QCloseEvent *e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiBibTex
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiBibtex::GuiBibtex(GuiDialog & parent)
-	: GuiView<GuiBibtexDialog>(parent, _("BibTeX Bibliography"))
-{
-}
-
-
-void GuiBibtex::build_dialog()
-{
-	dialog_.reset(new GuiBibtexDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->databaseLW);
-	bc().addReadOnly(dialog_->stylePB);
-	bc().addReadOnly(dialog_->styleCB);
-	bc().addReadOnly(dialog_->bibtocCB);
-	bc().addReadOnly(dialog_->addBibPB);
-	bc().addReadOnly(dialog_->deletePB);
-}
-
-
-void GuiBibtex::update_contents()
+void GuiBibtexDialog::update_contents()
 {
 	bool bibtopic = controller().usingBibtopic();
 
-	dialog_->databaseLW->clear();
+	databaseLW->clear();
 
 	docstring bibs(controller().params()["bibfiles"]);
 	docstring bib;
@@ -277,23 +263,23 @@ void GuiBibtex::update_contents()
 		bibs = split(bibs, bib, ',');
 		bib = trim(bib);
 		if (!bib.empty())
-			dialog_->databaseLW->addItem(toqstr(bib));
+			databaseLW->addItem(toqstr(bib));
 	}
 
-	dialog_->add_->bibLW->clear();
+	add_->bibLW->clear();
 
 	vector<string> bib_str;
 	controller().getBibFiles(bib_str);
 	for (vector<string>::const_iterator it = bib_str.begin();
 		it != bib_str.end(); ++it) {
 		string bibItem(changeExtension(*it, ""));
-		dialog_->add_->bibLW->addItem(toqstr(bibItem));
+		add_->bibLW->addItem(toqstr(bibItem));
 	}
 
 	string bibstyle(controller().getStylefile());
 
-	dialog_->bibtocCB->setChecked(controller().bibtotoc() && !bibtopic);
-	dialog_->bibtocCB->setEnabled(!bibtopic);
+	bibtocCB->setChecked(controller().bibtotoc() && !bibtopic);
+	bibtocCB->setEnabled(!bibtopic);
 
 	docstring btprint(controller().params()["btprint"]);
 	int btp = 0;
@@ -302,10 +288,10 @@ void GuiBibtex::update_contents()
 	else if (btprint == "btPrintAll")
 		btp = 2;
 
-	dialog_->btPrintCO->setCurrentIndex(btp);
-	dialog_->btPrintCO->setEnabled(bibtopic);
+	btPrintCO->setCurrentIndex(btp);
+	btPrintCO->setEnabled(bibtopic);
 
-	dialog_->styleCB->clear();
+	styleCB->clear();
 
 	int item_nr(-1);
 
@@ -316,35 +302,35 @@ void GuiBibtex::update_contents()
 		string item(changeExtension(*it, ""));
 		if (item == bibstyle)
 			item_nr = int(it - str.begin());
-		dialog_->styleCB->addItem(toqstr(item));
+		styleCB->addItem(toqstr(item));
 	}
 
 	if (item_nr == -1 && !bibstyle.empty()) {
-		dialog_->styleCB->addItem(toqstr(bibstyle));
-		item_nr = dialog_->styleCB->count() - 1;
+		styleCB->addItem(toqstr(bibstyle));
+		item_nr = styleCB->count() - 1;
 	}
 
 	if (item_nr != -1)
-		dialog_->styleCB->setCurrentIndex(item_nr);
+		styleCB->setCurrentIndex(item_nr);
 	else
-		dialog_->styleCB->clearEditText();
+		styleCB->clearEditText();
 }
 
 
-void GuiBibtex::applyView()
+void GuiBibtexDialog::applyView()
 {
-	docstring dbs(qstring_to_ucs4(dialog_->databaseLW->item(0)->text()));
+	docstring dbs = qstring_to_ucs4(databaseLW->item(0)->text());
 
-	unsigned int maxCount = dialog_->databaseLW->count();
+	unsigned int maxCount = databaseLW->count();
 	for (unsigned int i = 1; i < maxCount; i++) {
 		dbs += ',';
-		dbs += qstring_to_ucs4(dialog_->databaseLW->item(i)->text());
+		dbs += qstring_to_ucs4(databaseLW->item(i)->text());
 	}
 
 	controller().params()["bibfiles"] = dbs;
 
-	docstring const bibstyle(qstring_to_ucs4(dialog_->styleCB->currentText()));
-	bool const bibtotoc(dialog_->bibtocCB->isChecked());
+	docstring const bibstyle(qstring_to_ucs4(styleCB->currentText()));
+	bool const bibtotoc(bibtocCB->isChecked());
 
 	if (bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
@@ -363,7 +349,7 @@ void GuiBibtex::applyView()
 	// 1. sections that include all cited references of the database(s)
 	// 2. sections that include all uncited references of the database(s)
 	// 3. sections that include all references of the database(s), cited or not
-	int btp = dialog_->btPrintCO->currentIndex();
+	int btp = btPrintCO->currentIndex();
 
 	switch (btp) {
 	case 0:
@@ -382,9 +368,9 @@ void GuiBibtex::applyView()
 }
 
 
-bool GuiBibtex::isValid()
+bool GuiBibtexDialog::isValid()
 {
-	return dialog_->databaseLW->count() != 0;
+	return databaseLW->count() != 0;
 }
 
 } // namespace frontend

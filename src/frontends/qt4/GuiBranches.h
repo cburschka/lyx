@@ -12,8 +12,8 @@
 #ifndef GUIBRANCHES_H
 #define GUIBRANCHES_H
 
-#include "ui_BranchesUi.h"
 #include "GuiDocument.h"
+#include "ui_BranchesUi.h"
 #include "BranchList.h"
 
 #include <QWidget>
@@ -30,7 +30,7 @@ class BufferParams;
 
 namespace frontend {
 
-class GuiBranches: public QWidget, public Ui::BranchesUi
+class GuiBranches : public QWidget, public Ui::BranchesUi
 {
 	Q_OBJECT
 public:

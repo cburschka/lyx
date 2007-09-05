@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include "GuiRef.h"
+
+#include "ControlRef.h"
 #include "qt_helpers.h"
 
 #include "insets/InsetRef.h"
@@ -32,20 +34,19 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiRefDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiRefDialog::GuiRefDialog(GuiRef * form)
-	: form_(form)
+GuiRefDialog::GuiRefDialog(LyXView & lv)
+	: GuiDialog(lv, "ref")
 {
 	setupUi(this);
+	setController(new ControlRef(*this));
+	setViewTitle(_("Cross-reference"));
 
-	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+	sort_ = false;
+	at_ref_ = false;
+
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(reset_dialog()));
 	connect(this, SIGNAL(rejected()), this, SLOT(reset_dialog()));
 
@@ -71,7 +72,27 @@ GuiRefDialog::GuiRefDialog(GuiRef * form)
 		this, SLOT(updateClicked()));
 
 	setFocusProxy(refsLW);
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+	bc().addReadOnly(refsLW);
+	bc().addReadOnly(sortCB);
+	bc().addReadOnly(nameED);
+	bc().addReadOnly(referenceED);
+	bc().addReadOnly(typeCO);
+	bc().addReadOnly(bufferCO);
+
+	restored_buffer_ = -1;
 }
+
+
+ControlRef & GuiRefDialog::controller() const
+{
+	return static_cast<ControlRef &>(Dialog::controller());
+}
+
 
 void GuiRefDialog::showView()
 {
@@ -81,18 +102,18 @@ void GuiRefDialog::showView()
 
 void GuiRefDialog::changed_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiRefDialog::gotoClicked()
 {
-	form_->gotoRef();
+	gotoRef();
 }
 
 void GuiRefDialog::selectionChanged()
 {
-	if (form_->readOnly())
+	if (readOnly())
 		return;
 
 	QList<QListWidgetItem *> selections = refsLW->selectedItems();
@@ -106,7 +127,7 @@ void GuiRefDialog::selectionChanged()
 
 void GuiRefDialog::refHighlighted(QListWidgetItem * sel)
 {
-	if (form_->readOnly())
+	if (readOnly())
 		return;
 
 /*	int const cur_item = refsLW->currentRow();
@@ -117,19 +138,19 @@ void GuiRefDialog::refHighlighted(QListWidgetItem * sel)
 	if (cur_item_selected)
 		referenceED->setText(sel->text());
 
-	if (form_->at_ref_)
-		form_->gotoRef();
+	if (at_ref_)
+		gotoRef();
 	gotoPB->setEnabled(true);
-	if (form_->typeAllowed())
+	if (typeAllowed())
 		typeCO->setEnabled(true);
-	if (form_->nameAllowed())
+	if (nameAllowed())
 		nameED->setEnabled(true);
 }
 
 
 void GuiRefDialog::refSelected(QListWidgetItem * sel)
 {
-	if (form_->readOnly())
+	if (readOnly())
 		return;
 
 /*	int const cur_item = refsLW->currentRow();
@@ -140,125 +161,94 @@ void GuiRefDialog::refSelected(QListWidgetItem * sel)
 	if (cur_item_selected)
 		referenceED->setText(sel->text());
 	// <enter> or double click, inserts ref and closes dialog
-	form_->slotOK();
+	slotOK();
 }
 
 
 void GuiRefDialog::sortToggled(bool on)
 {
-	form_->sort_ = on;
-	form_->redoRefs();
+	sort_ = on;
+	redoRefs();
 }
 
 
 void GuiRefDialog::updateClicked()
 {
-	form_->updateRefs();
+	updateRefs();
 }
 
 
-void GuiRefDialog::reset_dialog() {
-	form_->at_ref_ = false;
-	form_->setGotoRef();
+void GuiRefDialog::reset_dialog()
+{
+	at_ref_ = false;
+	setGotoRef();
 }
 
 
 void GuiRefDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	reset_dialog();
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiRef
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiRef::GuiRef(GuiDialog & parent)
-	: GuiView<GuiRefDialog>(parent, _("Cross-reference")),
-	sort_(false), at_ref_(false)
-{
-}
-
-
-void GuiRef::build_dialog()
-{
-	dialog_.reset(new GuiRefDialog(this));
-
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->refsLW);
-	bc().addReadOnly(dialog_->sortCB);
-	bc().addReadOnly(dialog_->nameED);
-	bc().addReadOnly(dialog_->referenceED);
-	bc().addReadOnly(dialog_->typeCO);
-	bc().addReadOnly(dialog_->bufferCO);
-
-	restored_buffer_ = -1;
-}
-
-
-void GuiRef::update_contents()
+void GuiRefDialog::update_contents()
 {
 	InsetCommandParams const & params = controller().params();
 
-	int orig_type = dialog_->typeCO->currentIndex();
+	int orig_type = typeCO->currentIndex();
 
-	dialog_->referenceED->setText(toqstr(params["reference"]));
+	referenceED->setText(toqstr(params["reference"]));
 
-	dialog_->nameED->setText(toqstr(params["name"]));
-	dialog_->nameED->setReadOnly(!nameAllowed() && !readOnly());
+	nameED->setText(toqstr(params["name"]));
+	nameED->setReadOnly(!nameAllowed() && !readOnly());
 
 	// restore type settings for new insets
 	if (params["reference"].empty())
-		dialog_->typeCO->setCurrentIndex(orig_type);
+		typeCO->setCurrentIndex(orig_type);
 	else
-		dialog_->typeCO->setCurrentIndex(InsetRef::getType(params.getCmdName()));
-	dialog_->typeCO->setEnabled(typeAllowed() && !readOnly());
+		typeCO->setCurrentIndex(InsetRef::getType(params.getCmdName()));
+	typeCO->setEnabled(typeAllowed() && !readOnly());
 	if (!typeAllowed())
-		dialog_->typeCO->setCurrentIndex(0);
+		typeCO->setCurrentIndex(0);
 
-	dialog_->sortCB->setChecked(sort_);
+	sortCB->setChecked(sort_);
 
 	// insert buffer list
-	dialog_->bufferCO->clear();
+	bufferCO->clear();
 	vector<string> const buffers = controller().getBufferList();
 	for (vector<string>::const_iterator it = buffers.begin();
 		it != buffers.end(); ++it) {
-		dialog_->bufferCO->addItem(toqstr(*it));
+		bufferCO->addItem(toqstr(*it));
 	}
 	// restore the buffer combo setting for new insets
 	if (params["reference"].empty() && restored_buffer_ != -1
-	&& restored_buffer_ < dialog_->bufferCO->count())
-		dialog_->bufferCO->setCurrentIndex(restored_buffer_);
+	&& restored_buffer_ < bufferCO->count())
+		bufferCO->setCurrentIndex(restored_buffer_);
 	else
-		dialog_->bufferCO->setCurrentIndex(controller().getBufferNum());
+		bufferCO->setCurrentIndex(controller().getBufferNum());
 
 	updateRefs();
 	bc().setValid(false);
 }
 
 
-void GuiRef::applyView()
+void GuiRefDialog::applyView()
 {
 	InsetCommandParams & params = controller().params();
 
-	last_reference_ = dialog_->referenceED->text();
+	last_reference_ = referenceED->text();
 
-	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentIndex()));
+	params.setCmdName(InsetRef::getName(typeCO->currentIndex()));
 	params["reference"] = qstring_to_ucs4(last_reference_);
-	params["name"] = qstring_to_ucs4(dialog_->nameED->text());
+	params["name"] = qstring_to_ucs4(nameED->text());
 
-	restored_buffer_ = dialog_->bufferCO->currentIndex();
+	restored_buffer_ = bufferCO->currentIndex();
 }
 
 
-bool GuiRef::nameAllowed()
+bool GuiRefDialog::nameAllowed()
 {
 	Kernel::DocType const doc_type = kernel().docType();
 	return doc_type != Kernel::LATEX &&
@@ -266,32 +256,32 @@ bool GuiRef::nameAllowed()
 }
 
 
-bool GuiRef::typeAllowed()
+bool GuiRefDialog::typeAllowed()
 {
 	Kernel::DocType const doc_type = kernel().docType();
 	return doc_type != Kernel::DOCBOOK;
 }
 
 
-void GuiRef::setGoBack()
+void GuiRefDialog::setGoBack()
 {
-	dialog_->gotoPB->setText(qt_("&Go Back"));
-	dialog_->gotoPB->setToolTip("");
-	dialog_->gotoPB->setToolTip(qt_("Jump back"));
+	gotoPB->setText(qt_("&Go Back"));
+	gotoPB->setToolTip("");
+	gotoPB->setToolTip(qt_("Jump back"));
 }
 
 
-void GuiRef::setGotoRef()
+void GuiRefDialog::setGotoRef()
 {
-	dialog_->gotoPB->setText(qt_("&Go to Label"));
-	dialog_->gotoPB->setToolTip("");
-	dialog_->gotoPB->setToolTip(qt_("Jump to label"));
+	gotoPB->setText(qt_("&Go to Label"));
+	gotoPB->setToolTip("");
+	gotoPB->setToolTip(qt_("Jump to label"));
 }
 
 
-void GuiRef::gotoRef()
+void GuiRefDialog::gotoRef()
 {
-	string ref(fromqstr(dialog_->referenceED->text()));
+	string ref(fromqstr(referenceED->text()));
 
 	if (at_ref_) {
 		// go back
@@ -306,29 +296,29 @@ void GuiRef::gotoRef()
 }
 
 
-void GuiRef::redoRefs()
+void GuiRefDialog::redoRefs()
 {
 	// Prevent these widgets from emitting any signals whilst
 	// we modify their state.
-	dialog_->refsLW->blockSignals(true);
-	dialog_->referenceED->blockSignals(true);
-	dialog_->refsLW->setUpdatesEnabled(false);
+	refsLW->blockSignals(true);
+	referenceED->blockSignals(true);
+	refsLW->setUpdatesEnabled(false);
 
-	dialog_->refsLW->clear();
+	refsLW->clear();
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
-	QString const oldSelection(dialog_->referenceED->text());
+	QString const oldSelection(referenceED->text());
 
 	for (std::vector<docstring>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {
-		dialog_->refsLW->addItem(toqstr(*iter));
+		refsLW->addItem(toqstr(*iter));
 	}
 
 	if (sort_)
-		dialog_->refsLW->sortItems();
+		refsLW->sortItems();
 
-	dialog_->referenceED->setText(oldSelection);
+	referenceED->setText(oldSelection);
 
 	// restore the last selection or, for new insets, highlight
 	// the previous selection
@@ -336,13 +326,13 @@ void GuiRef::redoRefs()
 		bool const newInset = oldSelection.isEmpty();
 		QString textToFind = newInset ? last_reference_ : oldSelection;
 		bool foundItem = false;
-		for (int i = 0; !foundItem && i < dialog_->refsLW->count(); ++i) {
-			QListWidgetItem * item = dialog_->refsLW->item(i);
+		for (int i = 0; !foundItem && i < refsLW->count(); ++i) {
+			QListWidgetItem * item = refsLW->item(i);
 			if (textToFind == item->text()) {
-				dialog_->refsLW->setCurrentItem(item);
-				dialog_->refsLW->setItemSelected(item, !newInset);
+				refsLW->setCurrentItem(item);
+				refsLW->setItemSelected(item, !newInset);
 				//Make sure selected item is visible
-				dialog_->refsLW->scrollToItem(item);
+				refsLW->scrollToItem(item);
 				foundItem = true;
 			}
 		}
@@ -350,29 +340,30 @@ void GuiRef::redoRefs()
 			last_reference_ = textToFind;
 		else last_reference_ = "";
 	}
-	dialog_->refsLW->setUpdatesEnabled(true);
-	dialog_->refsLW->update();
+	refsLW->setUpdatesEnabled(true);
+	refsLW->update();
 
 	// Re-activate the emission of signals by these widgets.
-	dialog_->refsLW->blockSignals(false);
-	dialog_->referenceED->blockSignals(false);
+	refsLW->blockSignals(false);
+	referenceED->blockSignals(false);
 }
 
 
-void GuiRef::updateRefs()
+void GuiRefDialog::updateRefs()
 {
 	refs_.clear();
-	string const name = controller().getBufferName(dialog_->bufferCO->currentIndex());
+	string const name = controller().getBufferName(bufferCO->currentIndex());
 	refs_ = controller().getLabelList(name);
-	dialog_->sortCB->setEnabled(!refs_.empty());
-	dialog_->refsLW->setEnabled(!refs_.empty());
-	dialog_->gotoPB->setEnabled(!refs_.empty());
+	sortCB->setEnabled(!refs_.empty());
+	refsLW->setEnabled(!refs_.empty());
+	gotoPB->setEnabled(!refs_.empty());
 	redoRefs();
 }
 
-bool GuiRef::isValid()
+
+bool GuiRefDialog::isValid()
 {
-	return !dialog_->referenceED->text().isEmpty();
+	return !referenceED->text().isEmpty();
 }
 
 } // namespace frontend

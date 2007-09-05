@@ -12,53 +12,36 @@
 #ifndef GUIBIBITEM_H
 #define GUIBIBITEM_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlCommand.h"
 #include "ui_BibitemUi.h"
-
-#include <QDialog>
-
 
 namespace lyx {
 namespace frontend {
 
-class GuiBibitem;
-
-class GuiBibitemDialog : public QDialog, public Ui::BibitemUi {
-	Q_OBJECT
-public:
-
-	GuiBibitemDialog(GuiBibitem * form);
-protected Q_SLOTS:
-	virtual void change_adaptor();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
-private:
-	GuiBibitem * form_;
-};
-
-
-class GuiBibitem : public GuiView<GuiBibitemDialog>
+class GuiBibitemDialog : public GuiDialog, public Ui::BibitemUi
 {
+	Q_OBJECT
+
 public:
-	///
-	GuiBibitem(GuiDialog &);
-	/// parent controller
-	ControlCommand & controller()
-	{ return static_cast<ControlCommand &>(this->getController()); }
-	/// parent controller
-	ControlCommand const & controller() const
-	{ return static_cast<ControlCommand const &>(this->getController()); }
-protected:
-	virtual bool isValid();
+	GuiBibitemDialog(LyXView & lv);
+
+private Q_SLOTS:
+	void change_adaptor();
+
 private:
-	friend class GuiBibitemDialog;
+	///
+	void closeEvent(QCloseEvent * e);
+	/// parent controller
+	ControlCommand & controller() const;
+
+private:
+	///
+	bool isValid();
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 };
 
 } // namespace frontend

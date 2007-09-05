@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "GuiErrorList.h"
+#include "ControlErrorList.h"
+
 #include "qt_helpers.h"
 
 #include <QListWidget>
@@ -18,37 +20,44 @@
 #include <QPushButton>
 #include <QCloseEvent>
 
+
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiErrorListDialog
-//
-/////////////////////////////////////////////////////////////////////
 
-GuiErrorListDialog::GuiErrorListDialog(GuiErrorList * form)
-	: form_(form)
+GuiErrorListDialog::GuiErrorListDialog(LyXView & lv)
+	: GuiDialog(lv, "errorlist")
 {
 	setupUi(this);
+	setController(new ControlErrorList(*this));
+
 	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
-	connect(errorsLW, SIGNAL( itemActivated(QListWidgetItem *)),
-		form, SLOT(slotClose()));
-	connect( errorsLW, SIGNAL( itemClicked(QListWidgetItem *)),
+		this, SLOT(slotClose()));
+	connect(errorsLW, SIGNAL(itemActivated(QListWidgetItem *)),
+		this, SLOT(slotClose()));
+	connect( errorsLW, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(select_adaptor(QListWidgetItem *)));
+
+	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+	bc().setCancel(closePB);
+}
+
+
+ControlErrorList & GuiErrorListDialog::controller() const
+{
+	return static_cast<ControlErrorList &>(Dialog::controller());
 }
 
 
 void GuiErrorListDialog::select_adaptor(QListWidgetItem * item)
 {
-	form_->select(item);
+	select(item);
 }
 
 
 void GuiErrorListDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
@@ -56,49 +65,29 @@ void GuiErrorListDialog::closeEvent(QCloseEvent * e)
 void GuiErrorListDialog::showEvent(QShowEvent *e)
 {
 	errorsLW->setCurrentRow(0);
-	form_->select(errorsLW->item(0));
+	select(errorsLW->item(0));
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiErrorList
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiErrorList::GuiErrorList(GuiDialog & parent)
-	:  GuiView<GuiErrorListDialog>(parent, docstring())
-{}
-
-
-void GuiErrorList::build_dialog()
+void GuiErrorListDialog::select(QListWidgetItem * wi)
 {
-	dialog_.reset(new GuiErrorListDialog(this));
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiErrorList::select(QListWidgetItem * wi)
-{
-	int const item = dialog_->errorsLW->row(wi);
+	int const item = errorsLW->row(wi);
 	controller().goTo(item);
-	dialog_->descriptionTB->setPlainText(toqstr(controller().errorList()[item].description));
+	descriptionTB->setPlainText(toqstr(controller().errorList()[item].description));
 }
 
 
-void GuiErrorList::update_contents()
+void GuiErrorListDialog::update_contents()
 {
 	setViewTitle(from_utf8(controller().name()));
-	dialog_->errorsLW->clear();
-	dialog_->descriptionTB->setPlainText(QString());
+	errorsLW->clear();
+	descriptionTB->setPlainText(QString());
 
 	ErrorList::const_iterator it = controller().errorList().begin();
 	ErrorList::const_iterator end = controller().errorList().end();
-	for(; it != end; ++it) {
-		dialog_->errorsLW->addItem(toqstr(it->error));
-	}
+	for (; it != end; ++it)
+		errorsLW->addItem(toqstr(it->error));
 }
 
 } // namespace frontend

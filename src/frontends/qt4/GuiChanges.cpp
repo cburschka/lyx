@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include "GuiChanges.h"
+#include "ControlChanges.h"
+
 #include "qt_helpers.h"
 
 #include "support/lstrings.h"
@@ -25,73 +27,39 @@ using lyx::support::bformat;
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiChangesDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiChangesDialog::GuiChangesDialog(GuiChanges * form)
-	: form_(form)
+GuiChangesDialog::GuiChangesDialog(LyXView & lv)
+	: GuiDialog(lv, "changes")
 {
 	setupUi(this);
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	setController(new ControlChanges(*this));
+	setViewTitle(_("Merge Changes"));
+
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(nextPB, SIGNAL(clicked()), this, SLOT(nextPressed()));
 	connect(rejectPB, SIGNAL(clicked()), this, SLOT(rejectPressed()));
 	connect(acceptPB, SIGNAL(clicked()), this, SLOT(acceptPressed()));
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setCancel(closePB);
+	bc().addReadOnly(acceptPB);
+	bc().addReadOnly(rejectPB);
 }
 
 
-void GuiChangesDialog::nextPressed()
+ControlChanges & GuiChangesDialog::controller() const
 {
-	form_->next();
-}
-
-
-void GuiChangesDialog::acceptPressed()
-{
-	form_->accept();
-}
-
-
-void GuiChangesDialog::rejectPressed()
-{
-	form_->reject();
+	return static_cast<ControlChanges &>(Dialog::controller());
 }
 
 
 void GuiChangesDialog::closeEvent(QCloseEvent *e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
-
-/////////////////////////////////////////////////////////////////////
-//
-// GuiChanges
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiChanges::GuiChanges(GuiDialog & parent)
-	: GuiView<GuiChangesDialog>(parent, _("Merge Changes"))
-{
-}
-
-
-void GuiChanges::build_dialog()
-{
-	dialog_.reset(new GuiChangesDialog(this));
-
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->acceptPB);
-	bc().addReadOnly(dialog_->rejectPB);
-}
-
-
-void GuiChanges::update_contents()
+void GuiChangesDialog::update_contents()
 {
 	docstring text;
 	docstring author = controller().getChangeAuthor();
@@ -102,23 +70,23 @@ void GuiChanges::update_contents()
 	if (!date.empty())
 		text += bformat(_("Change made at %1$s\n"), date);
 
-	dialog_->changeTB->setPlainText(toqstr(text));
+	changeTB->setPlainText(toqstr(text));
 }
 
 
-void GuiChanges::next()
+void GuiChangesDialog::nextPressed()
 {
 	controller().next();
 }
 
 
-void GuiChanges::accept()
+void GuiChangesDialog::acceptPressed()
 {
 	controller().accept();
 }
 
 
-void GuiChanges::reject()
+void GuiChangesDialog::rejectPressed()
 {
 	controller().reject();
 }

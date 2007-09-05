@@ -11,62 +11,38 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QVSPACE_H
-#define QVSPACE_H
+#ifndef GUIVSPACE_H
+#define GUIVSPACE_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlVSpace.h"
 #include "ui_VSpaceUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiVSpace;
-
-class GuiVSpaceDialog : public QDialog, public Ui::VSpaceUi
+class GuiVSpaceDialog : public GuiDialog, public Ui::VSpaceUi
 {
 	Q_OBJECT
 
 public:
-	GuiVSpaceDialog(GuiVSpace * form);
+	GuiVSpaceDialog(LyXView & lv);
 
-public Q_SLOTS:
+private Q_SLOTS:
 	void change_adaptor();
-
-protected Q_SLOTS:
 	void closeEvent(QCloseEvent *);
 	void enableCustom(int);
 
 private:
-	GuiVSpace * form_;
-};
-
-
-class GuiVSpace : public GuiView<GuiVSpaceDialog>
-{
-public:
-	///
-	friend class GuiVSpaceDialog;
-	///
-	GuiVSpace(GuiDialog &);
 	/// parent controller
-	ControlVSpace & controller()
-	{ return static_cast<ControlVSpace &>(this->getController()); }
-	/// parent controller
-	ControlVSpace const & controller() const
-	{ return static_cast<ControlVSpace const &>(this->getController()); }
-private:
-	/// Build the dialog
-	virtual void build_dialog();
+	ControlVSpace & controller() const;
 	/// Apply from dialog
-	virtual void applyView();
+	void applyView();
 	/// Update the dialog
-	virtual void update_contents();
+	void update_contents();
 };
 
 } // namespace frontend
 } // namespace lyx
 
-#endif //QVSPACE_H
+#endif // GUIVSPACE_H

@@ -12,74 +12,54 @@
 #ifndef GUIEXTERNAL_H
 #define GUIEXTERNAL_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlExternal.h"
 #include "ui_ExternalUi.h"
-
-#include <QCloseEvent>
-#include <QDialog>
 
 #include <map>
 
 namespace lyx {
 namespace frontend {
 
-class GuiExternal;
-
-class GuiExternalDialog : public QDialog, public Ui::ExternalUi
+class GuiExternalDialog : public GuiDialog, public Ui::ExternalUi
 {
 	Q_OBJECT
+
 public:
-	GuiExternalDialog(GuiExternal * form);
+	GuiExternalDialog(LyXView & lv);
 
-	virtual void showView();
-protected Q_SLOTS:
-	virtual void bbChanged();
-	virtual void browseClicked();
-	virtual void change_adaptor();
-	virtual void editClicked();
-	virtual void extraChanged(const QString&);
-	virtual void formatChanged(const QString&);
-	virtual void getbbClicked();
-	virtual void sizeChanged();
-	virtual void templateChanged();
-	virtual void widthUnitChanged();
+private Q_SLOTS:
+	void bbChanged();
+	void browseClicked();
+	void change_adaptor();
+	void editClicked();
+	void extraChanged(const QString&);
+	void formatChanged(const QString&);
+	void getbbClicked();
+	void sizeChanged();
+	void templateChanged();
+	void widthUnitChanged();
 
-protected:
-	virtual void closeEvent(QCloseEvent * e);
 private:
+public:
+	void showView();
+	void closeEvent(QCloseEvent * e);
+	//
 	bool activateAspectratio() const;
-	GuiExternal * form_;
-};
-
-
-class GuiExternal : public GuiView<GuiExternalDialog>
-{
-public:
-	friend class GuiExternalDialog;
-
-	GuiExternal(GuiDialog &);
 	/// parent controller
-	ControlExternal & controller()
-	{ return static_cast<ControlExternal &>(this->getController()); }
-	/// parent controller
-	ControlExternal const & controller() const
-	{ return static_cast<ControlExternal const &>(this->getController()); }
-	///
-	typedef std::map<std::string, QString> MapType;
-private:
+	ControlExternal & controller() const;
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
-
+	void update_contents();
 	/// Helper function called when the template is changed.
 	void updateTemplate();
 	/// get bounding box from file
 	void getBB();
 
+	///
+	typedef std::map<std::string, QString> MapType;
+	///
 	MapType extra_;
 };
 

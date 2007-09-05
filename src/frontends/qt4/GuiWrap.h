@@ -12,50 +12,31 @@
 #ifndef GUIWRAP_H
 #define GUIWRAP_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlWrap.h"
 #include "ui_WrapUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiWrap;
-
-class GuiWrapDialog : public QDialog, public Ui::WrapUi
+class GuiWrapDialog : public GuiDialog, public Ui::WrapUi
 {
 	Q_OBJECT
+
 public:
-	GuiWrapDialog(GuiWrap * form);
-protected Q_SLOTS:
-	virtual void change_adaptor();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+	GuiWrapDialog(LyXView & lv);
+
+private Q_SLOTS:
+	void change_adaptor();
+
 private:
-	GuiWrap * form_;
-};
-
-
-class GuiWrap : public GuiView<GuiWrapDialog>
-{
-public:
-	friend class GuiWrapDialog;
-
-	GuiWrap(GuiDialog &);
+	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlWrap & controller()
-	{ return static_cast<ControlWrap &>(this->getController()); }
-	/// parent controller
-	ControlWrap const & controller() const
-	{ return static_cast<ControlWrap const &>(this->getController()); }
-private:
+	ControlWrap & controller() const;
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 };
 
 } // namespace frontend

@@ -17,6 +17,7 @@
 
 #include "GuiVSpace.h"
 
+#include "ControlVSpace.h"
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Validator.h"
@@ -36,28 +37,22 @@
 #include <QPushButton>
 #include <QValidator>
 
-
 using std::string;
+
 
 namespace lyx {
 namespace frontend {
 
-
-/////////////////////////////////////////////////////////////////////
-//
-// GuiVSpaceDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiVSpaceDialog::GuiVSpaceDialog(GuiVSpace * form)
-	: form_(form)
+GuiVSpaceDialog::GuiVSpaceDialog(LyXView & lv)
+	: GuiDialog(lv, "vspace")
 {
 	setupUi(this);
+	setViewTitle(_("Vertical Space Settings"));
+	setController(new ControlVSpace(*this));
 
-	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(spacingCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(change_adaptor()));
@@ -71,19 +66,43 @@ GuiVSpaceDialog::GuiVSpaceDialog(GuiVSpace * form)
 		this, SLOT(change_adaptor()));
 
 	valueLE->setValidator(unsignedLengthValidator(valueLE));
+
+	// Manage the ok, apply, restore and cancel/close buttons
+	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+
+	// disable for read-only documents
+	bc().addReadOnly(spacingCO);
+	bc().addReadOnly(valueLE);
+	bc().addReadOnly(unitCO);
+	bc().addReadOnly(keepCB);
+
+	// initialize the length validator
+	bc().addCheckedLineEdit(valueLE, valueL);
+
+	// remove the %-items from the unit choice
+	unitCO->noPercents();
+}
+
+
+ControlVSpace & GuiVSpaceDialog::controller() const
+{
+	return static_cast<ControlVSpace &>(Dialog::controller());
 }
 
 
 void GuiVSpaceDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiVSpaceDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
@@ -95,12 +114,6 @@ void GuiVSpaceDialog::enableCustom(int selection)
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiVSpace
-//
-/////////////////////////////////////////////////////////////////////
-
 static void setWidgetsFromVSpace(VSpace const & space,
 			  QComboBox * spacing,
 			  QLineEdit * value,
@@ -109,24 +122,12 @@ static void setWidgetsFromVSpace(VSpace const & space,
 {
 	int item = 0;
 	switch (space.kind()) {
-	case VSpace::DEFSKIP:
-		item = 0;
-		break;
-	case VSpace::SMALLSKIP:
-		item = 1;
-		break;
-	case VSpace::MEDSKIP:
-		item = 2;
-		break;
-	case VSpace::BIGSKIP:
-		item = 3;
-		break;
-	case VSpace::VFILL:
-		item = 4;
-		break;
-	case VSpace::LENGTH:
-		item = 5;
-		break;
+		case VSpace::DEFSKIP:   item = 0; break;
+		case VSpace::SMALLSKIP: item = 1; break;
+		case VSpace::MEDSKIP:   item = 2; break;
+		case VSpace::BIGSKIP:   item = 3; break;
+		case VSpace::VFILL:     item = 4; break;
+		case VSpace::LENGTH:    item = 5; break;
 	}
 	spacing->setCurrentIndex(item);
 	keep->setChecked(space.keep());
@@ -148,31 +149,17 @@ static void setWidgetsFromVSpace(VSpace const & space,
 
 
 static VSpace setVSpaceFromWidgets(int spacing,
-			    QLineEdit * value,
-			    LengthCombo * unit,
-			    bool keep)
+	QLineEdit * value, LengthCombo * unit, bool keep)
 {
 	VSpace space;
 
 	switch (spacing) {
-	case 0:
-		space = VSpace(VSpace::DEFSKIP);
-		break;
-	case 1:
-		space = VSpace(VSpace::SMALLSKIP);
-		break;
-	case 2:
-		space = VSpace(VSpace::MEDSKIP);
-		break;
-	case 3:
-		space = VSpace(VSpace::BIGSKIP);
-		break;
-	case 4:
-		space = VSpace(VSpace::VFILL);
-		break;
-	case 5:
-		space = VSpace(GlueLength(widgetsToLength(value, unit)));
-		break;
+		case 0: space = VSpace(VSpace::DEFSKIP); break;
+		case 1: space = VSpace(VSpace::SMALLSKIP); break;
+		case 2: space = VSpace(VSpace::MEDSKIP); break;
+		case 3: space = VSpace(VSpace::BIGSKIP); break;
+		case 4: space = VSpace(VSpace::VFILL); break;
+		case 5: space = VSpace(GlueLength(widgetsToLength(value, unit))); break;
 	}
 
 	space.setKeep(keep);
@@ -180,61 +167,24 @@ static VSpace setVSpaceFromWidgets(int spacing,
 }
 
 
-GuiVSpace::GuiVSpace(GuiDialog & parent)
-	: GuiView<GuiVSpaceDialog>(parent, _("Vertical Space Settings"))
-{}
-
-
-void GuiVSpace::build_dialog()
+void GuiVSpaceDialog::applyView()
 {
-	// the tabbed folder
-	dialog_.reset(new GuiVSpaceDialog(this));
-
-	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-
-	// disable for read-only documents
-	bc().addReadOnly(dialog_->spacingCO);
-	bc().addReadOnly(dialog_->valueLE);
-	bc().addReadOnly(dialog_->unitCO);
-	bc().addReadOnly(dialog_->keepCB);
-
-	// initialize the length validator
-	bc().addCheckedLineEdit(dialog_->valueLE, dialog_->valueL);
-
-	// remove the %-items from the unit choice
-	dialog_->unitCO->noPercents();
-}
-
-
-void GuiVSpace::applyView()
-{
-	// spacing
 	// If a vspace choice is "Length" but there's no text in
 	// the input field, do not insert a vspace at all.
-	if (dialog_->spacingCO->currentIndex() == 5
-	    && dialog_->valueLE->text().isEmpty())
+	if (spacingCO->currentIndex() == 5 && valueLE->text().isEmpty())
 		return;
 
-	VSpace const space =
-		setVSpaceFromWidgets(dialog_->spacingCO->currentIndex(),
-				     dialog_->valueLE,
-				     dialog_->unitCO,
-				     dialog_->keepCB->isChecked());
+	VSpace const space = setVSpaceFromWidgets(spacingCO->currentIndex(),
+			valueLE, unitCO, keepCB->isChecked()); 
 
 	controller().params() = space;
 }
 
 
-void GuiVSpace::update_contents()
+void GuiVSpaceDialog::update_contents()
 {
 	setWidgetsFromVSpace(controller().params(),
-			     dialog_->spacingCO,
-			     dialog_->valueLE,
-			     dialog_->unitCO,
-			     dialog_->keepCB);
+		spacingCO, valueLE, unitCO, keepCB);
 }
 
 } // namespace frontend

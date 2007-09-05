@@ -28,7 +28,8 @@ namespace frontend {
  * Qt font loader for LyX. Matches Fonts against
  * actual QFont instances, and also caches metrics.
  */
-class QLFontInfo {
+class QLFontInfo
+{
 public:
 	QLFontInfo(Font const & f);
 

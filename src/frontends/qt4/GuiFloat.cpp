@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "GuiFloat.h"
+
+#include "ControlFloat.h"
 #include "FloatPlacement.h"
 
 #include "insets/InsetFloat.h"
@@ -18,76 +20,69 @@
 #include <QCloseEvent>
 #include <QPushButton>
 
+
 namespace lyx {
 namespace frontend {
 
-GuiFloatDialog::GuiFloatDialog(GuiFloat * form)
-	: form_(form)
+GuiFloatDialog::GuiFloatDialog(LyXView & lv)
+	: GuiDialog(lv, "float")
 {
+	setController(new ControlFloat(*this));
+	setViewTitle(_("Float Settings"));
+
 	setupUi(this);
-	connect(restorePB, SIGNAL(clicked()),
-		form, SLOT(slotRestore()));
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()),
-		form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	// enable span columns checkbox
 	floatFP->useWide();
-
 	// enable sideways checkbox
 	floatFP->useSideways();
 
-	connect(floatFP, SIGNAL(changed()),
-		this, SLOT(change_adaptor()));
+	connect(floatFP, SIGNAL(changed()), this, SLOT(change_adaptor()));
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+
+	bc().setCancel(closePB);
+	bc().setApply(applyPB);
+	bc().setOK(okPB);
+	bc().setRestore(restorePB);
+
+	bc().addReadOnly(floatFP);
+}
+
+
+ControlFloat & GuiFloatDialog::controller() const
+{
+	return static_cast<ControlFloat &>(Dialog::controller());
 }
 
 
 void GuiFloatDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiFloatDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
-GuiFloat::GuiFloat(GuiDialog & parent)
-	:  GuiView<GuiFloatDialog>(parent, _("Float Settings"))
+void GuiFloatDialog::update_contents()
 {
+	floatFP->set(controller().params());
 }
 
 
-void GuiFloat::build_dialog()
-{
-	dialog_.reset(new GuiFloatDialog(this));
-
-	bc().setCancel(dialog_->closePB);
-	bc().setApply(dialog_->applyPB);
-	bc().setOK(dialog_->okPB);
-	bc().setRestore(dialog_->restorePB);
-
-	bc().addReadOnly(dialog_->floatFP);
-}
-
-
-void GuiFloat::update_contents()
-{
-	dialog_->floatFP->set(controller().params());
-}
-
-
-void GuiFloat::applyView()
+void GuiFloatDialog::applyView()
 {
 	InsetFloatParams & params = controller().params();
-
-	params.placement = dialog_->floatFP->get(params.wide, params.sideways);
+	params.placement = floatFP->get(params.wide, params.sideways);
 }
 
 } // namespace frontend

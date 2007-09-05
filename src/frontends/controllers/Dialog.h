@@ -87,13 +87,13 @@ public:
 	 *  show() and update() methods.
 	 */
 	Kernel & kernel() { return kernel_; }
+	Kernel const & kernel() const { return kernel_; }
 
 	/** Different dialogs will have different Controllers and Views.
 	 *  deriving from these base classes.
 	 */
 	//@{
 	class Controller;
-	class View;
 	//@}
 
 	/** \name Dialog Specialization
@@ -103,20 +103,60 @@ public:
 	//@{
 	/// \param ptr is stored and destroyed by \c Dialog.
 	void setController(Controller * ptr);
-	/// \param ptr is stored and destroyed by \c Dialog.
-	void setView(View * ptr);
 	//@}
 
 	/** \name Dialog Components
 	 *  Methods to access the various components making up a dialog.
 	 */
 	//@{
-	Controller & controller() const;
-	View & view() const;
+	virtual Controller & controller() const;
 	//@}
 
-
+	/** \c Button controller part
+	 */
 	virtual void setButtonsValid(bool valid);
+
+
+	/** \c View part
+	 *  of a Model-Controller-View split of a generic dialog.
+	 *  These few methods are all that a generic dialog needs of a
+	 *  view.
+	 */
+	//@{
+	/** A request to modify the data structures stored by the
+	 *  accompanying Controller in preparation for their dispatch to
+	 *  the LyX kernel.
+	 */
+	virtual void applyView() = 0;
+
+	/// Hide the dialog from sight
+	virtual void hideView() = 0;
+
+	/// Redraw the dialog (e.g. if the colors have been remapped).
+	virtual void redrawView() {}
+
+	/// Create the dialog if necessary, update it and display it.
+	virtual void showView() = 0;
+
+	/// Update the display of the dialog whilst it is still visible.
+	virtual void updateView() = 0;
+
+	/// \return true if the dialog is visible.
+	virtual bool isVisibleView() const = 0;
+	//@}
+
+	/** Defaults to nothing. Can be used by the Controller, however, to
+	 *  indicate to the View that something has changed and that the
+	 *  dialog therefore needs updating.
+	 *  \param id identifies what should be updated.
+	 */
+	virtual void partialUpdateView(int /*id*/) {}
+
+	/// sets the title of the dialog (window caption)
+	void setViewTitle(docstring const &);
+	/// gets the title of the dialog (window caption)
+	docstring const & getViewTitle() const;
+
 protected:
 	void apply();
 
@@ -124,7 +164,8 @@ protected:
 	Kernel kernel_;
 	std::string name_;
 	boost::scoped_ptr<Controller> controller_ptr_;
-	boost::scoped_ptr<View> view_ptr_;
+
+	docstring title_;
 };
 
 
@@ -223,75 +264,6 @@ private:
 };
 
 
-/** \c Dialog::View is an abstract base class to the View
- *  of a Model-Controller-View split of a generic dialog.
- */
-class Dialog::View : boost::noncopyable {
-public:
-	/** \param parent Dialog owning this Controller.
-	 *  \param title  is the dialog title displayed by the WM.
-	 */
-	View(Dialog & parent, docstring title);
-	virtual ~View() {}
-
-	/** \name Generic View
-	 *  These few methods are all that a generic dialog needs of a
-	 *  view.
-	 */
-	//@{
-	/** A request to modify the data structures stored by the
-	 *  accompanying Controller in preparation for their dispatch to
-	 *  the LyX kernel.
-	 */
-	virtual void applyView() = 0;
-
-	/// Hide the dialog from sight
-	virtual void hideView() = 0;
-
-	/// Redraw the dialog (e.g. if the colors have been remapped).
-	virtual void redrawView() {}
-
-	/// Create the dialog if necessary, update it and display it.
-	virtual void showView() = 0;
-
-	/// Update the display of the dialog whilst it is still visible.
-	virtual void updateView() = 0;
-
-	/// \return true if the dialog is visible.
-	virtual bool isVisibleView() const = 0;
-	//@}
-
-	/** Defaults to nothing. Can be used by the Controller, however, to
-	 *  indicate to the View that something has changed and that the
-	 *  dialog therefore needs updating.
-	 *  \param id identifies what should be updated.
-	 */
-	virtual void partialUpdateView(int id);
-
-	/// sets the title of the dialog (window caption)
-	void setViewTitle(docstring const &);
-	/// gets the title of the dialog (window caption)
-	docstring const & getViewTitle() const;
-
-	/** \name View Access
-	 *  Enable the derived classes to access the other parts of the whole.
-	 */
-	//@{
-	Dialog & dialog() { return p_; }
-	Dialog const & dialog() const { return p_; }
-
-protected:
-	Kernel & kernel() { return p_.kernel(); }
-	Kernel const & kernel() const { return p_.kernel(); }
-
-	Controller & getController() { return p_.controller(); }
-	Controller const & getController() const { return p_.controller(); }
-	//@}
-
-private:
-	Dialog & p_;
-	docstring title_;
-};
 
 } // namespace frontend
 } // namespace lyx

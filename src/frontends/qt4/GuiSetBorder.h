@@ -9,8 +9,9 @@
  *
  * Full author contact details are available in file CREDITS.
  */
-#ifndef QSETBORDER_H
-#define QSETBORDER_H
+
+#ifndef GUISETBORDER_H
+#define GUISETBORDER_H
 
 #include <QWidget>
 #include <QPixmap>
@@ -87,4 +88,4 @@ private:
 
 //} // namespace lyx
 
-#endif // QSETBORDER_H
+#endif // GUISETBORDER_H

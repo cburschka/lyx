@@ -123,8 +123,6 @@ public:
 extern GuiApplication * guiApp;
 
 } // namespace frontend
-
 } // namespace lyx
-
 
 #endif // GUIAPPLICATION_H

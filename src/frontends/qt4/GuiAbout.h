@@ -12,7 +12,7 @@
 #ifndef GUIABOUT_H
 #define GUIABOUT_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlAboutlyx.h"
 #include "ui_AboutUi.h"
 
@@ -21,35 +21,15 @@
 namespace lyx {
 namespace frontend {
 
-class GuiAboutDialog : public QDialog, public Ui::AboutUi {
-	Q_OBJECT
-public:
-	GuiAboutDialog(QWidget * parent = 0)
-		: QDialog(parent)
-	{
-		setupUi(this);
-		connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
-	}
-};
-
-
-class GuiAbout : public GuiView<GuiAboutDialog>
+class GuiAboutDialog : public GuiDialog, public Ui::AboutUi
 {
+	Q_OBJECT
+
 public:
-	GuiAbout(GuiDialog &);
+	// Constructor
+	GuiAboutDialog(LyXView & lv);
 	/// parent controller
-	ControlAboutlyx & controller()
-	{ return static_cast<ControlAboutlyx &>(this->getController()); }
-	/// parent controller
-	ControlAboutlyx const & controller() const
-	{ return static_cast<ControlAboutlyx const &>(this->getController()); }
-private:
-	/// not needed
-	virtual void applyView() {}
-	/// not needed
-	virtual void update_contents() {}
-	// build the dialog
-	virtual void build_dialog();
+	ControlAboutlyx & controller() const;
 };
 
 } // namespace frontend

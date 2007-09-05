@@ -12,51 +12,33 @@
 #ifndef GUIURLDIALOG_H
 #define GUIURLDIALOG_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlCommand.h"
 #include "ui_URLUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class UrlView;
-
-class GuiURLDialog : public QDialog, public Ui::URLUi
+class GuiURLDialog : public GuiDialog, public Ui::URLUi
 {
 	Q_OBJECT
+
 public:
-	GuiURLDialog(UrlView * form);
+	GuiURLDialog(LyXView & lv);
+
 public Q_SLOTS:
 	void changed_adaptor();
-protected:
+
+private:
 	void closeEvent(QCloseEvent *);
-private:
-	UrlView * form_;
-};
-
-
-class UrlView : public GuiView<GuiURLDialog> 
-{
-public:
-	friend class QURLDialog;
-	UrlView(GuiDialog &);
 	/// parent controller
-	ControlCommand & controller()
-	{ return static_cast<ControlCommand &>(this->getController()); }
-	/// parent controller
-	ControlCommand const & controller() const
-	{ return static_cast<ControlCommand const &>(this->getController()); }
-protected:
-	virtual bool isValid();
-private:
+	ControlCommand & controller() const;
+	///
+	bool isValid();
 	/// apply dialog
-	virtual void applyView();
-	/// build dialog
-	virtual void build_dialog();
+	void applyView();
 	/// update dialog
-	virtual void update_contents();
+	void update_contents();
 };
 
 } // namespace frontend

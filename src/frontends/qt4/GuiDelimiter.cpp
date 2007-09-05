@@ -30,21 +30,22 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-namespace {
+static QString const bigleft[]  = {"", "bigl", "Bigl", "biggl", "Biggl"};
 
-QString const bigleft[]  = {"", "bigl", "Bigl", "biggl", "Biggl"};
+static QString const bigright[] = {"", "bigr", "Bigr", "biggr", "Biggr"};
 
-
-QString const bigright[] = {"", "bigr", "Bigr", "biggr", "Biggr"};
-
-
-char const * const biggui[]   = {N_("big[[delimiter size]]"), N_("Big[[delimiter size]]"),
-	N_("bigg[[delimiter size]]"), N_("Bigg[[delimiter size]]"), ""};
+static char const * const biggui[] = {
+	N_("big[[delimiter size]]"),
+	N_("Big[[delimiter size]]"),
+	N_("bigg[[delimiter size]]"),
+	N_("Bigg[[delimiter size]]"),
+	""
+};
 
 
 // FIXME: It might be better to fix the big delim LFUN to not require
 // additional '\' prefix.
-QString fix_name(QString const & str, bool big)
+static QString fix_name(QString const & str, bool big)
 {
 	if (str.isEmpty())
 		return ".";
@@ -55,24 +56,70 @@ QString fix_name(QString const & str, bool big)
 	return "\\" + str;
 }
 
-} // namespace anon
 
-
-GuiDelimiter::GuiDelimiter(GuiDialog & parent)
-	: GuiView<GuiDelimiterDialog>(parent, _("Math Delimiter"))
-{}
-
-
-void GuiDelimiter::build_dialog()
+GuiDelimiterDialog::GuiDelimiterDialog(LyXView & lv)
+	: GuiDialog(lv, "mathdelimiter")
 {
-	dialog_.reset(new GuiDelimiterDialog(this,
-		static_cast<GuiViewBase *>(controller().view())));
+	setupUi(this);
+	setViewTitle(_("Math Delimiter"));
+	setController(new ControlMath(*this));
+
+	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
+
+	setWindowTitle(qt_("LyX: Delimiters"));
+	setFocusProxy(leftLW);
+
+	leftLW->setViewMode(QListView::IconMode);
+	rightLW->setViewMode(QListView::IconMode);
+
+	typedef std::map<char_type, QListWidgetItem *> ListItems;
+	ListItems list_items;
+	// The last element is the empty one.
+	int const end = nr_latex_delimiters - 1;
+	for (int i = 0; i < end; ++i) {
+		string const delim = latex_delimiters[i];
+		MathSymbol const & ms =	controller().mathSymbol(delim);
+		QString symbol(ms.fontcode?
+			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
+		QListWidgetItem * lwi = new QListWidgetItem(symbol);
+		lwi->setToolTip(toqstr(delim));
+		Font lyxfont;
+		lyxfont.setFamily(ms.fontfamily);
+		QFont const & symbol_font = guiApp->guiFontLoader().get(lyxfont);
+		lwi->setFont(symbol_font);
+		list_items[ms.unicode] = lwi;
+		leftLW->addItem(lwi);
+	}
+
+	for (int i = 0; i != leftLW->count(); ++i) {
+		MathSymbol const & ms =	controller().mathSymbol(
+			fromqstr(leftLW->item(i)->toolTip()));
+		rightLW->addItem(list_items[doMatch(ms.unicode)]->clone());
+	}
+
+	// The last element is the empty one.
+	leftLW->addItem(qt_("(None)"));
+	rightLW->addItem(qt_("(None)"));
+
+	sizeCO->addItem(qt_("Variable"));
+
+	for (int i = 0; *biggui[i]; ++i)
+		sizeCO->addItem(qt_(biggui[i]));
+
+	on_leftLW_currentRowChanged(0);
+	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
+}
+
+
+ControlMath & GuiDelimiterDialog::controller() const
+{
+	return static_cast<ControlMath &>(GuiDialog::controller()); 
 }
 
 
 char_type GuiDelimiterDialog::doMatch(char_type const symbol) const
 {
-	string const & str = form_->controller().texName(symbol);
+	string const & str = controller().texName(symbol);
 	string match;
 	if (str == "(") match = ")";
 	else if (str == ")") match = "(";
@@ -91,58 +138,7 @@ char_type GuiDelimiterDialog::doMatch(char_type const symbol) const
 	else if (str == "/") match = "backslash";
 	else return symbol;
 
-	return form_->controller().mathSymbol(match).unicode;
-}
-
-
-GuiDelimiterDialog::GuiDelimiterDialog(GuiDelimiter * form, QWidget * parent)
-	: QDialog(parent), form_(form)
-{
-	setupUi(this);
-
-	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
-
-	setWindowTitle(qt_("LyX: Delimiters"));
-	setFocusProxy(leftLW);
-
-	leftLW->setViewMode(QListView::IconMode);
-	rightLW->setViewMode(QListView::IconMode);
-
-	typedef std::map<char_type, QListWidgetItem *> ListItems;
-	ListItems list_items;
-	// The last element is the empty one.
-	int const end = nr_latex_delimiters - 1;
-	for (int i = 0; i < end; ++i) {
-		string const delim = latex_delimiters[i];
-		MathSymbol const & ms =	form_->controller().mathSymbol(delim);
-		QString symbol(ms.fontcode?
-			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
-		QListWidgetItem * lwi = new QListWidgetItem(symbol);
-		lwi->setToolTip(toqstr(delim));
-		Font lyxfont;
-		lyxfont.setFamily(ms.fontfamily);
-		QFont const & symbol_font = guiApp->guiFontLoader().get(lyxfont);
-		lwi->setFont(symbol_font);
-		list_items[ms.unicode] = lwi;
-		leftLW->addItem(lwi);
-	}
-
-	for (int i = 0; i != leftLW->count(); ++i) {
-		MathSymbol const & ms =	form_->controller().mathSymbol(
-			fromqstr(leftLW->item(i)->toolTip()));
-		rightLW->addItem(list_items[doMatch(ms.unicode)]->clone());
-	}
-
-	// The last element is the empty one.
-	leftLW->addItem(qt_("(None)"));
-	rightLW->addItem(qt_("(None)"));
-
-	sizeCO->addItem(qt_("Variable"));
-
-	for (int i = 0; *biggui[i]; ++i)
-		sizeCO->addItem(qt_(biggui[i]));
-
-	on_leftLW_currentRowChanged(0);
+	return controller().mathSymbol(match).unicode;
 }
 
 
@@ -187,11 +183,11 @@ void GuiDelimiterDialog::updateTeXCode(int size)
 void GuiDelimiterDialog::on_insertPB_clicked()
 {
 	if (sizeCO->currentIndex() == 0)
-		form_->controller().dispatchDelim(fromqstr(tex_code_));
+		controller().dispatchDelim(fromqstr(tex_code_));
 	else {
 		QString command = '"' + tex_code_ + '"';
 		command.replace(' ', "\" \"");
-		form_->controller().dispatchBigDelim(fromqstr(command));
+		controller().dispatchBigDelim(fromqstr(command));
 	}
  }
 

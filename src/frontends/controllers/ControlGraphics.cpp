@@ -142,7 +142,7 @@ void ControlGraphics::editGraphics()
 {
 	BOOST_ASSERT(params_.get());
 
-	dialog().view().applyView();
+	dialog().applyView();
 	string const lfun =
 		InsetGraphicsMailer::params2string(params(), kernel().buffer());
 	kernel().dispatch(FuncRequest(LFUN_GRAPHICS_EDIT, lfun));

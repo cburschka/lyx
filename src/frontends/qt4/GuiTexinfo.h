@@ -9,14 +9,12 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QTEXINFO_H
-#define QTEXINFO_H
+#ifndef GUITEXINFO_H
+#define GUITEXINFO_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlTexinfo.h"
 #include "ui_TexinfoUi.h"
-
-#include <QDialog>
 
 #include <map>
 #include <vector>
@@ -24,48 +22,27 @@
 namespace lyx {
 namespace frontend {
 
-class GuiTexinfo;
-
-class GuiTexinfoDialog : public QDialog, public Ui::TexinfoUi
+class GuiTexinfoDialog : public GuiDialog, public Ui::TexinfoUi
 {
 	Q_OBJECT
+
 public:
-	GuiTexinfoDialog(GuiTexinfo * form);
+	GuiTexinfoDialog(LyXView & lv);
+
 public Q_SLOTS:
-	virtual void updateView();
-protected Q_SLOTS:
-	virtual void change_adaptor();
-	virtual void rescanClicked();
-	virtual void viewClicked();
-	virtual void enableViewPB();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
-private:
-	GuiTexinfo * form_;
-};
+	void updateView();
 
+private Q_SLOTS:
+	void change_adaptor();
+	void rescanClicked();
+	void viewClicked();
+	void enableViewPB();
 
-///
-class GuiTexinfo : public GuiView<GuiTexinfoDialog>
-{
-public:
-	///
-	friend class GuiTexinfoDialog;
-	///
-	GuiTexinfo(GuiDialog &);
-	/// parent controller
-	ControlTexinfo & controller()
-	{ return static_cast<ControlTexinfo &>(this->getController()); }
-	/// parent controller
-	ControlTexinfo const & controller() const
-	{ return static_cast<ControlTexinfo const &>(this->getController()); }
 private:
-	/// Apply changes
-	virtual void applyView() {}
-	/// update (do we need this?)
-	virtual void update_contents() {}
-	/// build the dialog
-	virtual void build_dialog();
+	///
+	void closeEvent(QCloseEvent * e);
+	///
+	ControlTexinfo & controller() const;
 	///
 	void updateStyles(ControlTexinfo::texFileSuffix);
 	///
@@ -82,4 +59,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QTEXINFO_H
+#endif // GUITEXINFO_H

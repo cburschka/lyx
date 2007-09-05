@@ -12,53 +12,28 @@
 #ifndef GUINOTE_H
 #define GUINOTE_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlNote.h"
 #include "ui_NoteUi.h"
-
-#include <QDialog>
-
 
 namespace lyx {
 namespace frontend {
 
-class GuiNote;
-
-class GuiNoteDialog : public QDialog, public Ui::NoteUi {
+class GuiNoteDialog : public GuiDialog, public Ui::NoteUi
+{
 	Q_OBJECT
 public:
-	GuiNoteDialog(GuiNote * form);
-protected Q_SLOTS:
-	virtual void change_adaptor();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+	GuiNoteDialog(LyXView & lv);
+private Q_SLOTS:
+	void change_adaptor();
 private:
-	GuiNote * form_;
-};
-
-
-/** This class provides a QT implementation of the Note Dialog.
- */
-class GuiNote : public GuiView<GuiNoteDialog>
-{
-public:
-	friend class GuiNoteDialog;
-
-	/// Constructor
-	GuiNote(GuiDialog &);
+	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlNote & controller()
-	{ return static_cast<ControlNote &>(this->getController()); }
-	/// parent controller
-	ControlNote const & controller() const
-	{ return static_cast<ControlNote const &>(this->getController()); }
-private:
-	///  Apply changes
-	virtual void applyView();
-	/// Build the dialog
-	virtual void build_dialog();
+	ControlNote & controller() const;
+	/// Apply changes
+	void applyView();
 	/// Update dialog before showing it
-	virtual void update_contents();
+	void update_contents();
 };
 
 } // namespace frontend

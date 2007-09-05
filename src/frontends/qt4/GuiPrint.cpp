@@ -13,6 +13,7 @@
 
 #include "GuiPrint.h"
 
+#include "ControlPrint.h"
 #include "qt_helpers.h"
 #include "PrinterParams.h"
 
@@ -24,16 +25,19 @@
 #include <QSpinBox>
 #include <QPushButton>
 
+
 namespace lyx {
 namespace frontend {
 
-GuiPrintDialog::GuiPrintDialog(GuiPrint * f)
-	: form_(f)
+GuiPrintDialog::GuiPrintDialog(LyXView & lv)
+	: GuiDialog(lv, "print")
 {
 	setupUi(this);
+	setController(new ControlPrint(*this));
+	setViewTitle(_("Print Document"));
 
-	connect(printPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+	connect(printPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(copiesSB, SIGNAL(valueChanged(int)), this, SLOT(copiesChanged(int)));
 	connect(printerED, SIGNAL(textChanged(const QString&)),
@@ -56,21 +60,31 @@ GuiPrintDialog::GuiPrintDialog(GuiPrint * f)
 	connect(printerRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(rangeRB, SIGNAL(toggled(bool)), fromED, SLOT(setEnabled(bool)));
 	connect(rangeRB, SIGNAL(toggled(bool)), toED, SLOT(setEnabled(bool)));
+
+	bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
+	bc().setOK(printPB);
+	bc().setCancel(closePB);
+}
+
+
+ControlPrint & GuiPrintDialog::controller() const
+{
+	return static_cast<ControlPrint &>(Dialog::controller());
 }
 
 
 void GuiPrintDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiPrintDialog::browseClicked()
 {
-	QString file = toqstr(form_->controller().browse(docstring()));
+	QString file = toqstr(controller().browse(docstring()));
 	if (!file.isNull()) {
 		fileED->setText(file);
-		form_->changed();
+		changed();
 	}
 }
 
@@ -79,101 +93,81 @@ void GuiPrintDialog::fileChanged()
 {
 	if (!fileED->text().isEmpty())
 		fileRB->setChecked(true);
-	form_->changed();
+	changed();
 }
 
 
 void GuiPrintDialog::copiesChanged(int i)
 {
 	collateCB->setEnabled(i != 1);
-	form_->changed();
+	changed();
 }
 
 
 void GuiPrintDialog::printerChanged()
 {
 	printerRB->setChecked(true);
-	form_->changed();
+	changed();
 }
 
 
 void GuiPrintDialog::pagerangeChanged()
 {
-	form_->changed();
+	changed();
 }
 
 
-GuiPrint::GuiPrint(GuiDialog & parent)
-	: GuiView<GuiPrintDialog>(parent, _("Print Document"))
-{
-}
-
-
-void GuiPrint::build_dialog()
-{
-	dialog_.reset(new GuiPrintDialog(this));
-
-	bc().setOK(dialog_->printPB);
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiPrint::update_contents()
+void GuiPrintDialog::update_contents()
 {
 	PrinterParams & pp = controller().params();
 
 	// only reset params if a different buffer
-	if (!pp.file_name.empty() && pp.file_name == fromqstr(dialog_->fileED->text()))
+	if (!pp.file_name.empty() && pp.file_name == fromqstr(fileED->text()))
 		return;
 
-	dialog_->printerED->setText(toqstr(pp.printer_name));
-	dialog_->fileED->setText(toqstr(pp.file_name));
+	printerED->setText(toqstr(pp.printer_name));
+	fileED->setText(toqstr(pp.file_name));
 
-	dialog_->printerRB->setChecked(true);
+	printerRB->setChecked(true);
 	if (pp.target == PrinterParams::FILE)
-		dialog_->fileRB->setChecked(true);
+		fileRB->setChecked(true);
 
-	dialog_->reverseCB->setChecked(pp.reverse_order);
+	reverseCB->setChecked(pp.reverse_order);
 
-	dialog_->copiesSB->setValue(pp.count_copies);
+	copiesSB->setValue(pp.count_copies);
 
-	dialog_->oddCB->setChecked(pp.odd_pages);
-	dialog_->evenCB->setChecked(pp.even_pages);
+	oddCB->setChecked(pp.odd_pages);
+	evenCB->setChecked(pp.even_pages);
 
-	dialog_->collateCB->setChecked(pp.sorted_copies);
+	collateCB->setChecked(pp.sorted_copies);
 
 	if (pp.all_pages) {
-		dialog_->allRB->setChecked(true);
-		return;
+		allRB->setChecked(true);
+	} else {
+		rangeRB->setChecked(true);
+		fromED->setText(QString::number(pp.from_page));
+		toED->setText(QString::number(pp.to_page));
 	}
-
-	dialog_->rangeRB->setChecked(true);
-
-	QString s;
-	s.setNum(pp.from_page);
-	dialog_->fromED->setText(s);
-	s.setNum(pp.to_page);
-	dialog_->toED->setText(s);
 }
 
 
-void GuiPrint::applyView()
+void GuiPrintDialog::applyView()
 {
 	PrinterParams::Target t = PrinterParams::PRINTER;
-	if (dialog_->fileRB->isChecked())
+	if (fileRB->isChecked())
 		t = PrinterParams::FILE;
 
 	PrinterParams const pp(t,
-		fromqstr(dialog_->printerED->text()),
-		support::os::internal_path(fromqstr(dialog_->fileED->text())),
-		dialog_->allRB->isChecked(),
-		dialog_->fromED->text().toUInt(),
-		dialog_->toED->text().toUInt(),
-		dialog_->oddCB->isChecked(),
-		dialog_->evenCB->isChecked(),
-		dialog_->copiesSB->text().toUInt(),
-		dialog_->collateCB->isChecked(),
-		dialog_->reverseCB->isChecked());
+		fromqstr(printerED->text()),
+		support::os::internal_path(fromqstr(fileED->text())),
+		allRB->isChecked(),
+		fromED->text().toUInt(),
+		toED->text().toUInt(),
+		oddCB->isChecked(),
+		evenCB->isChecked(),
+		copiesSB->text().toUInt(),
+		collateCB->isChecked(),
+		reverseCB->isChecked());
 
 	controller().params() = pp;
 }

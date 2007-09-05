@@ -21,7 +21,8 @@
 namespace lyx {
 namespace graphics {
 
-class GuiImage : public Image {
+class GuiImage : public Image
+{
 public:
 	/// Access to this class is through this static method.
 	static ImagePtr newImage();

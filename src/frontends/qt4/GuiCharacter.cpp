@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include "GuiCharacter.h"
+
+#include "ControlCharacter.h"
 #include "qt_helpers.h"
 #include "frontend_helpers.h"
 #include "Color.h"
@@ -23,19 +25,16 @@ using std::vector;
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiCharacterDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiCharacterDialog::GuiCharacterDialog(GuiCharacter * form)
-	: form_(form)
+GuiCharacterDialog::GuiCharacterDialog(LyXView & lv)
+	: GuiDialog(lv, "character")
 {
 	setupUi(this);
-	connect(okPB, SIGNAL(clicked()), form_, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), form_, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
+	setController(new ControlCharacter(*this));
+	setViewTitle(_("Text Style"));
+
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(miscCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(sizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
@@ -45,12 +44,77 @@ GuiCharacterDialog::GuiCharacterDialog(GuiCharacter * form)
 	connect(colorCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(toggleallCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+
+	family = getFamilyData();
+	series = getSeriesData();
+	shape  = getShapeData();
+	size   = getSizeData();
+	bar    = getBarData();
+	color  = getColorData();
+	language = getLanguageData(true);
+
+	for (vector<FamilyPair>::const_iterator cit = family.begin();
+		cit != family.end(); ++cit) {
+		familyCO->addItem(toqstr(cit->first));
+	}
+
+	for (vector<SeriesPair>::const_iterator cit = series.begin();
+		cit != series.end(); ++cit) {
+		seriesCO->addItem(toqstr(cit->first));
+	}
+	for (vector<ShapePair>::const_iterator cit = shape.begin();
+		cit != shape.end(); ++cit) {
+		shapeCO->addItem(toqstr(cit->first));
+	}
+	for (vector<SizePair>::const_iterator cit = size.begin();
+		cit != size.end(); ++cit) {
+		sizeCO->addItem(toqstr(cit->first));
+	}
+	for (vector<BarPair>::const_iterator cit = bar.begin();
+		cit != bar.end(); ++cit) {
+		miscCO->addItem(toqstr(cit->first));
+	}
+	for (vector<ColorPair>::const_iterator cit = color.begin();
+		cit != color.end(); ++cit) {
+		colorCO->addItem(toqstr(cit->first));
+	}
+	for (vector<LanguagePair>::const_iterator cit = language.begin();
+		cit != language.end(); ++cit) {
+		langCO->addItem(toqstr(cit->first));
+	}
+
+	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+	bc().addReadOnly(familyCO);
+	bc().addReadOnly(seriesCO);
+	bc().addReadOnly(sizeCO);
+	bc().addReadOnly(shapeCO);
+	bc().addReadOnly(miscCO);
+	bc().addReadOnly(langCO);
+	bc().addReadOnly(colorCO);
+	bc().addReadOnly(toggleallCB);
+	bc().addReadOnly(autoapplyCB);
+
+// FIXME: hack to work around resizing bug in Qt >= 4.2
+// bug verified with Qt 4.2.{0-3} (JSpitzm)
+#if QT_VERSION >= 0x040200
+	// qt resizes the comboboxes only after show(), so ...
+	QDialog::show();
+#endif
+}
+
+
+ControlCharacter & GuiCharacterDialog::controller() const
+{
+	return static_cast<ControlCharacter &>(Dialog::controller());
 }
 
 
 void GuiCharacterDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 
 	if (!autoapplyCB->isChecked())
 		return;
@@ -59,7 +123,7 @@ void GuiCharacterDialog::change_adaptor()
 	// the current text, and make it appear as "no change" if the values
 	// stay the same between applys. Might be difficult though wrt to a
 	// moved cursor - jbl
-	form_->slotApply();
+	slotApply();
 	familyCO->setCurrentIndex(0);
 	seriesCO->setCurrentIndex(0);
 	sizeCO->setCurrentIndex(0);
@@ -72,92 +136,13 @@ void GuiCharacterDialog::change_adaptor()
 
 void GuiCharacterDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiCharacter
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiCharacter::GuiCharacter(GuiDialog & parent)
-	: GuiView<GuiCharacterDialog>(parent, _("Text Style"))
-{
-}
-
-
-void GuiCharacter::build_dialog()
-{
-	dialog_.reset(new GuiCharacterDialog(this));
-
-	family = getFamilyData();
-	series = getSeriesData();
-	shape  = getShapeData();
-	size   = getSizeData();
-	bar    = getBarData();
-	color  = getColorData();
-	language = getLanguageData(true);
-
-	for (vector<FamilyPair>::const_iterator cit = family.begin();
-		cit != family.end(); ++cit) {
-		dialog_->familyCO->addItem(toqstr(cit->first));
-	}
-
-	for (vector<SeriesPair>::const_iterator cit = series.begin();
-		cit != series.end(); ++cit) {
-		dialog_->seriesCO->addItem(toqstr(cit->first));
-	}
-	for (vector<ShapePair>::const_iterator cit = shape.begin();
-		cit != shape.end(); ++cit) {
-		dialog_->shapeCO->addItem(toqstr(cit->first));
-	}
-	for (vector<SizePair>::const_iterator cit = size.begin();
-		cit != size.end(); ++cit) {
-		dialog_->sizeCO->addItem(toqstr(cit->first));
-	}
-	for (vector<BarPair>::const_iterator cit = bar.begin();
-		cit != bar.end(); ++cit) {
-		dialog_->miscCO->addItem(toqstr(cit->first));
-	}
-	for (vector<ColorPair>::const_iterator cit = color.begin();
-		cit != color.end(); ++cit) {
-		dialog_->colorCO->addItem(toqstr(cit->first));
-	}
-	for (vector<LanguagePair>::const_iterator cit = language.begin();
-		cit != language.end(); ++cit) {
-		dialog_->langCO->addItem(toqstr(cit->first));
-	}
-
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-	bc().addReadOnly(dialog_->familyCO);
-	bc().addReadOnly(dialog_->seriesCO);
-	bc().addReadOnly(dialog_->sizeCO);
-	bc().addReadOnly(dialog_->shapeCO);
-	bc().addReadOnly(dialog_->miscCO);
-	bc().addReadOnly(dialog_->langCO);
-	bc().addReadOnly(dialog_->colorCO);
-	bc().addReadOnly(dialog_->toggleallCB);
-	bc().addReadOnly(dialog_->autoapplyCB);
-
-// FIXME: hack to work around resizing bug in Qt >= 4.2
-// bug verified with Qt 4.2.{0-3} (JSpitzm)
-#if QT_VERSION >= 0x040200
-	// qt resizes the comboboxes only after show(), so ...
-	dialog_->show();
-#endif
-}
-
-
-namespace {
-
 template<class A, class B>
-int findPos2nd(vector<std::pair<A,B> > const & vec, B const & val)
+static int findPos2nd(vector<std::pair<A,B> > const & vec, B const & val)
 {
 	typedef typename vector<std::pair<A, B> >::const_iterator
 		const_iterator;
@@ -170,41 +155,39 @@ int findPos2nd(vector<std::pair<A,B> > const & vec, B const & val)
 	return 0;
 }
 
-} // namespace anon
 
-
-void GuiCharacter::update_contents()
+void GuiCharacterDialog::update_contents()
 {
 	ControlCharacter const & ctrl = controller();
 
-	dialog_->familyCO->setCurrentIndex(findPos2nd(family,
+	familyCO->setCurrentIndex(findPos2nd(family,
 						     ctrl.getFamily()));
-	dialog_->seriesCO->setCurrentIndex(findPos2nd(series,
+	seriesCO->setCurrentIndex(findPos2nd(series,
 						     ctrl.getSeries()));
-	dialog_->shapeCO->setCurrentIndex(findPos2nd(shape, ctrl.getShape()));
-	dialog_->sizeCO->setCurrentIndex(findPos2nd(size, ctrl.getSize()));
-	dialog_->miscCO->setCurrentIndex(findPos2nd(bar, ctrl.getBar()));
-	dialog_->colorCO->setCurrentIndex(findPos2nd(color, ctrl.getColor()));
-	dialog_->langCO->setCurrentIndex(findPos2nd(language,
+	shapeCO->setCurrentIndex(findPos2nd(shape, ctrl.getShape()));
+	sizeCO->setCurrentIndex(findPos2nd(size, ctrl.getSize()));
+	miscCO->setCurrentIndex(findPos2nd(bar, ctrl.getBar()));
+	colorCO->setCurrentIndex(findPos2nd(color, ctrl.getColor()));
+	langCO->setCurrentIndex(findPos2nd(language,
 						   ctrl.getLanguage()));
 
-	dialog_->toggleallCB->setChecked(ctrl.getToggleAll());
+	toggleallCB->setChecked(ctrl.getToggleAll());
 }
 
 
-void GuiCharacter::applyView()
+void GuiCharacterDialog::applyView()
 {
 	ControlCharacter & ctrl = controller();
 
-	ctrl.setFamily(family[dialog_->familyCO->currentIndex()].second);
-	ctrl.setSeries(series[dialog_->seriesCO->currentIndex()].second);
-	ctrl.setShape(shape[dialog_->shapeCO->currentIndex()].second);
-	ctrl.setSize(size[dialog_->sizeCO->currentIndex()].second);
-	ctrl.setBar(bar[dialog_->miscCO->currentIndex()].second);
-	ctrl.setColor(color[dialog_->colorCO->currentIndex()].second);
-	ctrl.setLanguage(language[dialog_->langCO->currentIndex()].second);
+	ctrl.setFamily(family[familyCO->currentIndex()].second);
+	ctrl.setSeries(series[seriesCO->currentIndex()].second);
+	ctrl.setShape(shape[shapeCO->currentIndex()].second);
+	ctrl.setSize(size[sizeCO->currentIndex()].second);
+	ctrl.setBar(bar[miscCO->currentIndex()].second);
+	ctrl.setColor(color[colorCO->currentIndex()].second);
+	ctrl.setLanguage(language[langCO->currentIndex()].second);
 
-	ctrl.setToggleAll(dialog_->toggleallCB->isChecked());
+	ctrl.setToggleAll(toggleallCB->isChecked());
 }
 
 } // namespace frontend

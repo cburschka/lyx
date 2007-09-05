@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "GuiThesaurus.h"
+
+#include "ControlThesaurus.h"
 #include "qt_helpers.h"
 #include "debug.h"
 
@@ -23,25 +25,22 @@
 
 using std::string;
 
+
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// QTheasurusDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiThesaurusDialog::GuiThesaurusDialog(GuiThesaurus * form)
-	: form_(form)
+GuiThesaurusDialog::GuiThesaurusDialog(LyXView & lv)
+	: GuiDialog(lv, "thesaurus")
 {
 	setupUi(this);
+	setViewTitle(_("Thesaurus"));
+	setController(new ControlThesaurus(*this));
 
 	meaningsTV->setColumnCount(1);
 	meaningsTV->header()->hide();
 
 	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
+		this, SLOT(slotClose()));
 	connect(replaceED, SIGNAL(returnPressed()),
 		this, SLOT(replaceClicked()));
 	connect(replaceED, SIGNAL(textChanged(const QString &)),
@@ -56,18 +55,29 @@ GuiThesaurusDialog::GuiThesaurusDialog(GuiThesaurus * form)
 		this, SLOT(selectionChanged()));
 	connect(meaningsTV, SIGNAL(itemActivated(QTreeWidgetItem *, int)),
 		this, SLOT(selectionClicked(QTreeWidgetItem *, int)));
+
+	bc().setCancel(closePB);
+	bc().setApply(replacePB);
+	bc().addReadOnly(replaceED);
+	bc().addReadOnly(replacePB);
+	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
 }
 
 
+ControlThesaurus & GuiThesaurusDialog::controller() const
+{
+	return static_cast<ControlThesaurus &>(Dialog::controller());
+}
+
 void GuiThesaurusDialog::change_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiThesaurusDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
@@ -78,21 +88,15 @@ void GuiThesaurusDialog::entryChanged()
 }
 
 
-void GuiThesaurusDialog::replaceClicked()
-{
-	form_->replace();
-}
-
-
 void GuiThesaurusDialog::selectionChanged()
 {
 	int const col = meaningsTV->currentColumn();
-	if (col<0 || form_->readOnly())
+	if (col<0 || readOnly())
 		return;
 
 	replaceED->setText(meaningsTV->currentItem()->text(col));
 	replacePB->setEnabled(true);
-	form_->changed();
+	changed();
 }
 
 
@@ -115,7 +119,7 @@ void GuiThesaurusDialog::updateLists()
 	meaningsTV->clear();
 	meaningsTV->setUpdatesEnabled(false);
 
-	Thesaurus::Meanings meanings = form_->controller().getMeanings(qstring_to_ucs4(entryED->text()));
+	Thesaurus::Meanings meanings = controller().getMeanings(qstring_to_ucs4(entryED->text()));
 
 	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
 		cit != meanings.end(); ++cit) {
@@ -134,40 +138,17 @@ void GuiThesaurusDialog::updateLists()
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiThesaurus
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiThesaurus::GuiThesaurus(GuiDialog & parent)
-	: GuiView<GuiThesaurusDialog>(parent, _("Thesaurus"))
+void GuiThesaurusDialog::update_contents()
 {
+	entryED->setText(toqstr(controller().text()));
+	replaceED->setText("");
+	updateLists();
 }
 
 
-void GuiThesaurus::build_dialog()
+void GuiThesaurusDialog::replaceClicked()
 {
-	dialog_.reset(new GuiThesaurusDialog(this));
-
-	bc().setCancel(dialog_->closePB);
-	bc().setApply(dialog_->replacePB);
-	bc().addReadOnly(dialog_->replaceED);
-	bc().addReadOnly(dialog_->replacePB);
-}
-
-
-void GuiThesaurus::update_contents()
-{
-	dialog_->entryED->setText(toqstr(controller().text()));
-	dialog_->replaceED->setText("");
-	dialog_->updateLists();
-}
-
-
-void GuiThesaurus::replace()
-{
-	controller().replace(qstring_to_ucs4(dialog_->replaceED->text()));
+	controller().replace(qstring_to_ucs4(replaceED->text()));
 }
 
 } // namespace frontend

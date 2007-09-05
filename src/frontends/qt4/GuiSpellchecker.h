@@ -13,70 +13,47 @@
 #ifndef GUISPELLCHECKER_H
 #define GUISPELLCHECKER_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlSpellchecker.h"
 #include "ui_SpellcheckerUi.h"
 
-#include <QDialog>
-
 class QListWidgetItem;
-
 
 namespace lyx {
 namespace frontend {
 
-class GuiSpellchecker;
-
-class GuiSpellcheckerDialog: public QDialog, public Ui::SpellcheckerUi {
+class GuiSpellcheckerDialog : public GuiDialog, public Ui::SpellcheckerUi
+{
 	Q_OBJECT
+
 public:
-	GuiSpellcheckerDialog(GuiSpellchecker * form);
+	GuiSpellcheckerDialog(LyXView & lv);
+
 public Q_SLOTS:
-	virtual void suggestionChanged(QListWidgetItem *);
+	void suggestionChanged(QListWidgetItem *);
 
-protected Q_SLOTS:
-	virtual void acceptClicked();
-	virtual void addClicked();
-	virtual void replaceClicked();
-	virtual void ignoreClicked();
-	virtual void replaceChanged(const QString &);
-	virtual void reject();
-
-protected:
-	virtual void closeEvent(QCloseEvent * e);
+private Q_SLOTS:
+	void acceptClicked();
+	void addClicked();
+	void replaceClicked();
+	void ignoreClicked();
+	void replaceChanged(const QString &);
+	void reject();
 
 private:
-	GuiSpellchecker * form_;
-};
-
-
-class GuiSpellchecker : public GuiView<GuiSpellcheckerDialog>
-{
-public:
-	friend class GuiSpellcheckerDialog;
-
-	GuiSpellchecker(GuiDialog &);
-
+	///
+	void closeEvent(QCloseEvent * e);
 	/// update from controller
 	void partialUpdate(int id);
 	/// parent controller
-	ControlSpellchecker & controller()
-	{ return static_cast<ControlSpellchecker &>(this->getController()); }
-	/// parent controller
-	ControlSpellchecker const & controller() const
-	{ return static_cast<ControlSpellchecker const &>(this->getController()); }
-private:
+	ControlSpellchecker & controller() const;
+	////
 	void accept();
 	void add();
 	void ignore();
 	void replace();
-
-	/// Apply changes
-	virtual void applyView() {}
 	///
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 };
 
 } // namespace frontend

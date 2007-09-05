@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "GuiSendto.h"
+
+#include "ControlSendto.h"
 #include "qt_helpers.h"
 
 #include "Format.h"
@@ -26,73 +28,53 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiSendtoDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiSendtoDialog::GuiSendtoDialog(GuiSendto * form)
-	: form_(form)
+GuiSendtoDialog::GuiSendtoDialog(LyXView & lv)
+	: GuiDialog(lv, "sendto")
 {
 	setupUi(this);
+	setViewTitle(_("Send Document to Command"));
+	setController(new ControlSendto(*this));
 
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()),
-		form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ),
-		this, SLOT( slotFormatHighlighted(QListWidgetItem *) ) );
-	connect( formatLW, SIGNAL( itemActivated(QListWidgetItem *) ),
-		this, SLOT( slotFormatSelected(QListWidgetItem *) ) );
-	connect( formatLW, SIGNAL( itemClicked(QListWidgetItem *) ),
-		this, SLOT( changed_adaptor() ) );
-	connect( commandCO, SIGNAL( textChanged(const QString&) ),
-		this, SLOT( changed_adaptor() ) );
+	connect(formatLW, SIGNAL(itemClicked(QListWidgetItem *)),
+		this, SLOT(slotFormatHighlighted(QListWidgetItem *)));
+	connect(formatLW, SIGNAL(itemActivated(QListWidgetItem *)),
+		this, SLOT(slotFormatSelected(QListWidgetItem *)));
+	connect(formatLW, SIGNAL(itemClicked(QListWidgetItem *)),
+		this, SLOT(changed_adaptor()));
+	connect(commandCO, SIGNAL(textChanged(const QString&)),
+		this, SLOT(changed_adaptor()));
+
+	bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+}
+
+
+ControlSendto & GuiSendtoDialog::controller() const
+{
+	return static_cast<ControlSendto &>(Dialog::controller());
 }
 
 
 void GuiSendtoDialog::changed_adaptor()
 {
-	form_->changed();
+	changed();
 }
 
 
 void GuiSendtoDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiSendto
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiSendto::GuiSendto(GuiDialog & parent)
-	: GuiView<GuiSendtoDialog>(parent, _("Send Document to Command"))
-{
-}
-
-
-void GuiSendto::build_dialog()
-{
-	dialog_.reset(new GuiSendtoDialog(this));
-
-	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-}
-
-
-void GuiSendto::update_contents()
+void GuiSendtoDialog::update_contents()
 {
 	all_formats_ = controller().allFormats();
 
@@ -104,45 +86,42 @@ void GuiSendto::update_contents()
 	vector<string>::iterator result = keys.begin();
 	vector<Format const *>::const_iterator it  = all_formats_.begin();
 	vector<Format const *>::const_iterator end = all_formats_.end();
-	for (; it != end; ++it, ++result) {
+	for (; it != end; ++it, ++result)
 		*result = (*it)->prettyname();
-	}
 
 	// Reload the browser
-	dialog_->formatLW->clear();
+	formatLW->clear();
 
 	for (vector<string>::const_iterator it = keys.begin();
-	     it < keys.end(); ++it) {
-		dialog_->formatLW->addItem(toqstr(*it));
+	     it != keys.end(); ++it) {
+		formatLW->addItem(toqstr(*it));
 	}
 
-	dialog_->commandCO->addItem(toqstr(controller().getCommand()));
+	commandCO->addItem(toqstr(controller().getCommand()));
 }
 
 
-void GuiSendto::applyView()
+void GuiSendtoDialog::applyView()
 {
-	int const line(dialog_->formatLW->currentRow());
+	int const line = formatLW->currentRow();
 
-	if (line < 0 || line > int(dialog_->formatLW->count()))
+	if (line < 0 || line > int(formatLW->count()))
 		return;
 
-	string const cmd(fromqstr(dialog_->commandCO->currentText()));
-
 	controller().setFormat(all_formats_[line]);
-	controller().setCommand(cmd);
+	controller().setCommand(fromqstr(commandCO->currentText()));
 }
 
 
-bool GuiSendto::isValid()
+bool GuiSendtoDialog::isValid()
 {
-	int const line(dialog_->formatLW->currentRow());
+	int const line = formatLW->currentRow();
 
-	if (line < 0 || line > int(dialog_->formatLW->count()))
+	if (line < 0 || line > int(formatLW->count()))
 		return false;
 
-	else return dialog_->formatLW->count() != 0 &&
-		!dialog_->commandCO->currentText().isEmpty();
+	return formatLW->count() != 0 &&
+		!commandCO->currentText().isEmpty();
 }
 
 } // namespace frontend

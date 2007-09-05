@@ -14,8 +14,8 @@
 #ifndef GUIVIEWSOURCE_H
 #define GUIVIEWSOURCE_H
 
-#include "ControlViewSource.h"
 #include "GuiDialog.h"
+#include "ControlViewSource.h"
 #include "Application.h"
 #include "ui_ViewSourceUi.h"
 
@@ -44,33 +44,24 @@ private:
 };
 
 
-class GuiViewSource;
-
-class GuiViewSourceDialog : public QWidget, public Ui::ViewSourceUi {
+class GuiViewSourceDialog : public GuiDialog, public Ui::ViewSourceUi
+{
 	Q_OBJECT
+
 public:
-	GuiViewSourceDialog(GuiViewSource * form);
+	GuiViewSourceDialog(LyXView & lv);
 
 public Q_SLOTS:
 	// update content
 	void updateView();
-
-private:
-	GuiViewSource * form_;
-};
-
-
-///
-class GuiViewSource : public QObject, public ControlViewSource {
-public:
-	///
-	GuiViewSource(GuiDialog &);
 	///
 	QTextDocument * document() { return document_; }
 	///
 	void update(bool full_source);
 
 private:
+	///
+	ControlViewSource & controller() const;	
 	///
 	QTextDocument * document_;
 	/// LaTeX syntax highlighter

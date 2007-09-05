@@ -12,53 +12,34 @@
 #ifndef GUIBRANCH_H
 #define GUIBRANCH_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlBranch.h"
 #include "ui_BranchUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiBranch;
-
-class GuiBranchDialog : public QDialog, public Ui::BranchUi {
-	Q_OBJECT
-public:
-	GuiBranchDialog(GuiBranch * form);
-protected Q_SLOTS:
-	virtual void change_adaptor();
-protected:
-	virtual void closeEvent(QCloseEvent * e);
-private:
-	GuiBranch * form_;
-};
-
-
-/** This class provides a QT implementation of the Branch Dialog.
- */
-class GuiBranch : public GuiView<GuiBranchDialog> 
+class GuiBranchDialog : public GuiDialog, public Ui::BranchUi
 {
-public:
-	/// Constructor
-	GuiBranch(GuiDialog &);
-	/// parent controller
-	ControlBranch & controller()
-	{ return static_cast<ControlBranch &>(this->getController()); }
-	/// parent controller
-	ControlBranch const & controller() const
-	{ return static_cast<ControlBranch const &>(this->getController()); }
-private:
-	friend class GuiBranchDialog;
+	Q_OBJECT
 
+public:
+	GuiBranchDialog(LyXView & lv);
+
+private Q_SLOTS:
+	void change_adaptor();
+
+private:
+	///
+	void closeEvent(QCloseEvent * e);
+	/// parent controller
+	ControlBranch & controller() const;
 	///  Apply changes
-	virtual void applyView();
-	/// Build the dialog
-	virtual void build_dialog();
+	void applyView();
 	/// Update dialog before showing it
-	virtual void update_contents();
+	void update_contents();
 };
+
 
 } // namespace frontend
 } // namespace lyx

@@ -12,6 +12,7 @@
 
 #include "GuiWrap.h"
 
+#include "ControlWrap.h"
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 
@@ -24,28 +25,23 @@
 #include <QCloseEvent>
 #include <QPushButton>
 
-
 using std::string;
+
 
 namespace lyx {
 namespace frontend {
 
-/////////////////////////////////////////////////////////////////////
-//
-// GuiWrapDialog
-//
-/////////////////////////////////////////////////////////////////////
-
-
-GuiWrapDialog::GuiWrapDialog(GuiWrap * form)
-	: form_(form)
+GuiWrapDialog::GuiWrapDialog(LyXView & lv)
+	: GuiDialog(lv, "wrap")
 {
 	setupUi(this);
+	setViewTitle(_("Text Wrap Settings"));
+	setController(new ControlWrap(*this));
 
-	connect(restorePB, SIGNAL(clicked()), form, SLOT(slotRestore()));
-	connect(okPB, SIGNAL(clicked()), form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(widthED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
@@ -53,60 +49,50 @@ GuiWrapDialog::GuiWrapDialog(GuiWrap * form)
 		this, SLOT(change_adaptor()));
 	connect(valignCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(change_adaptor()));
+
+	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
+	bc().setRestore(restorePB);
+	bc().setOK(okPB);
+	bc().setApply(applyPB);
+	bc().setCancel(closePB);
+
+	bc().addReadOnly(widthED);
+	bc().addReadOnly(unitsLC);
+	bc().addReadOnly(valignCO);
+}
+
+
+ControlWrap & GuiWrapDialog::controller() const
+{
+	return static_cast<ControlWrap &>(Dialog::controller());
 }
 
 
 void GuiWrapDialog::closeEvent(QCloseEvent * e)
 {
-	form_->slotWMHide();
+	slotWMHide();
 	e->accept();
 }
 
 
 void GuiWrapDialog::change_adaptor()
 {
-	form_->changed();
-}
-
-/////////////////////////////////////////////////////////////////////
-//
-// GuiWrap
-//
-/////////////////////////////////////////////////////////////////////
-
-GuiWrap::GuiWrap(GuiDialog & parent)
-	: GuiView<GuiWrapDialog>(parent, _("Text Wrap Settings"))
-{
+	changed();
 }
 
 
-void GuiWrap::build_dialog()
+void GuiWrapDialog::applyView()
 {
-	dialog_.reset(new GuiWrapDialog(this));
-
-	bc().setRestore(dialog_->restorePB);
-	bc().setOK(dialog_->okPB);
-	bc().setApply(dialog_->applyPB);
-	bc().setCancel(dialog_->closePB);
-
-	bc().addReadOnly(dialog_->widthED);
-	bc().addReadOnly(dialog_->unitsLC);
-	bc().addReadOnly(dialog_->valignCO);
-}
-
-
-void GuiWrap::applyView()
-{
-	double const value = convert<double>(fromqstr(dialog_->widthED->text()));
-	Length::UNIT unit = dialog_->unitsLC->currentLengthItem();
-	if (dialog_->widthED->text().isEmpty())
+	double const value = widthED->text().toDouble();
+	Length::UNIT unit = unitsLC->currentLengthItem();
+	if (widthED->text().isEmpty())
 		unit = Length::UNIT_NONE;
 
 	InsetWrapParams & params = controller().params();
 
 	params.width = Length(value, unit);
 
-	switch (dialog_->valignCO->currentIndex()) {
+	switch (valignCO->currentIndex()) {
 	case 0:
 		params.placement.erase();
 		break;
@@ -133,13 +119,13 @@ static string const numtostr(double val)
 }
 
 
-void GuiWrap::update_contents()
+void GuiWrapDialog::update_contents()
 {
 	InsetWrapParams & params = controller().params();
 
 	Length len(params.width);
-	dialog_->widthED->setText(toqstr(numtostr(len.value())));
-	dialog_->unitsLC->setCurrentItem(len.unit());
+	widthED->setText(toqstr(numtostr(len.value())));
+	unitsLC->setCurrentItem(len.unit());
 
 	int item = 0;
 	if (params.placement == "l")
@@ -149,7 +135,7 @@ void GuiWrap::update_contents()
 	else if (params.placement == "p")
 		item = 3;
 
-	dialog_->valignCO->setCurrentIndex(item);
+	valignCO->setCurrentIndex(item);
 }
 
 } // namespace frontend

@@ -13,12 +13,13 @@
 
 #include "GuiBranches.h"
 
+#include "ControlBranch.h"
+#include "ControlDocument.h"
 #include "GuiApplication.h"
 #include "Validator.h"
 #include "qt_helpers.h"
 
 #include "BufferParams.h"
-#include "controllers/ControlDocument.h"
 
 #include "support/lstrings.h"
 

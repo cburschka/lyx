@@ -13,53 +13,35 @@
 #ifndef GUIPRINT_H
 #define GUIPRINT_H
 
-#include "GuiDialogView.h"
+#include "GuiDialog.h"
 #include "ControlPrint.h"
 #include "ui_PrintUi.h"
-
-#include <QDialog>
 
 namespace lyx {
 namespace frontend {
 
-class GuiPrint;
-
-class GuiPrintDialog : public QDialog, public Ui::PrintUi {
-	Q_OBJECT
-public:
-	GuiPrintDialog(GuiPrint * f);
-protected Q_SLOTS:
-	virtual void change_adaptor();
-	virtual void browseClicked();
-	virtual void fileChanged();
-	virtual void copiesChanged(int);
-	virtual void printerChanged();
-	virtual void pagerangeChanged();
-private:
-	GuiPrint * form_;
-};
-
-
-class GuiPrint : public GuiView<GuiPrintDialog>
+class GuiPrintDialog : public GuiDialog, public Ui::PrintUi
 {
+	Q_OBJECT
+
 public:
-	///
-	friend class GuiPrintDialog;
-	///
-	GuiPrint(GuiDialog &);
+	GuiPrintDialog(LyXView & lv);
+
+private Q_SLOTS:
+	void change_adaptor();
+	void browseClicked();
+	void fileChanged();
+	void copiesChanged(int);
+	void printerChanged();
+	void pagerangeChanged();
 	/// parent controller
-	ControlPrint & controller()
-	{ return static_cast<ControlPrint &>(this->getController()); }
-	/// parent controller
-	ControlPrint const & controller() const
-	{ return static_cast<ControlPrint const &>(this->getController()); }
+	ControlPrint & controller() const;
+
 private:
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void update_contents();
-	/// build the dialog
-	virtual void build_dialog();
+	void update_contents();
 };
 
 } // namespace frontend
