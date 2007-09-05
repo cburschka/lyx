@@ -1913,12 +1913,12 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 }
 
 
-// only used for inset right now. should also be used for main text
+// FIXME: only take care of one row!
 void TextMetrics::drawSelection(PainterInfo & pi,
 	DocIterator const & beg, DocIterator const & end, int x) const
 {
-	ParagraphMetrics const & pm1 = par_metrics_[beg.pit()];
-	ParagraphMetrics const & pm2 = par_metrics_[end.pit()];
+	ParagraphMetrics const & pm1 = parMetrics(beg.pit());
+	ParagraphMetrics const & pm2 = parMetrics(end.pit());
 	Row const & row1 = pm1.getRow(beg.pos(), beg.boundary());
 	Row const & row2 = pm2.getRow(end.pos(), end.boundary());
 
