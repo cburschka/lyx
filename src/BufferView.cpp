@@ -1531,9 +1531,6 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 
 void BufferView::draw(frontend::Painter & pain)
 {
-	Text & text = buffer_.text();
-	bool const select = cursor_.selection();
-
 	PainterInfo pi(this, pain);
 	// Should the whole screen, including insets, be refreshed?
 	// FIXME: We should also distinguish DecorationUpdate to avoid text
@@ -1548,6 +1545,7 @@ void BufferView::draw(frontend::Painter & pain)
 			buffer_.inset().backgroundColor());
 
 	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
+	Text & text = buffer_.text();
 	TextMetrics const & tm = text_metrics_[&text];
 	if (!pi.full_repaint)
 		tm.drawParagraph(pi, metrics_info_.p1, 0,
