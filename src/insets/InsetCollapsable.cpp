@@ -391,10 +391,12 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 	case LeftButton:
 		x += dimensionCollapsed().wid;
 		break;
-	case TopButton:
+	case TopButton: {
+		TextMetrics const & tm = bv.textMetrics(&text_);
 		y += dimensionCollapsed().height() - ascent()
-			+ TEXT_TO_INSET_OFFSET;
+			+ TEXT_TO_INSET_OFFSET + tm.ascent();
 		break;
+	}
 	case NoButton:
 	case SubLabel:
 	case Corners:
