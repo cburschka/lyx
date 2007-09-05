@@ -275,6 +275,17 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 }
 
 
+EmbeddedFiles::EmbeddedFileList::const_iterator EmbeddedFiles::find(std::string filename) const
+{
+	EmbeddedFileList::const_iterator it = file_list_.begin();
+	EmbeddedFileList::const_iterator it_end = file_list_.end();
+	for (; it != it_end; ++it)
+		if (it->absFilename() == filename || it->embeddedFile(buffer_) == filename)	
+			return it;
+	return file_list_.end();
+}
+
+
 bool EmbeddedFiles::extractAll() const
 {
 	EmbeddedFileList::const_iterator it = file_list_.begin();

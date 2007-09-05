@@ -17,6 +17,8 @@
 #include "LyX.h" // for use_gui
 #include "Lexer.h"
 #include "LyXRC.h"
+#include "Buffer.h"
+#include "EmbeddedFiles.h"
 
 #include "graphics/GraphicsParams.h"
 
@@ -32,6 +34,7 @@ namespace lyx {
 using support::float_equal;
 using support::readBB_from_PSFile;
 using support::token;
+using support::DocFileName;
 
 using std::string;
 using std::ostream;
@@ -148,12 +151,18 @@ bool operator!=(InsetGraphicsParams const & left,
 }
 
 
-void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
+void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 {
 	// Do not write the default values
 
 	if (!filename.empty()) {
-		os << "\tfilename " << filename.outputFilename(bufpath) << '\n';
+		// when we save, we still use the original filename
+		EmbeddedFiles::EmbeddedFileList::const_iterator it = 
+			buffer.embeddedFiles().find(filename.toFilesystemEncoding());
+		if (it != buffer.embeddedFiles().end())
+			os << "\tfilename " << DocFileName(it->absFilename()).outputFilename(buffer.filePath()) << '\n';
+		else
+			os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
 	}
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';

@@ -270,7 +270,7 @@ Inset::EDITABLE InsetGraphics::editable() const
 void InsetGraphics::write(Buffer const & buf, ostream & os) const
 {
 	os << "Graphics\n";
-	params().Write(os, buf.filePath());
+	params().Write(os, buf);
 }
 
 
@@ -283,6 +283,13 @@ void InsetGraphics::read(Buffer const & buf, Lexer & lex)
 	else
 		LYXERR(Debug::GRAPHICS) << "Not a Graphics inset!" << endl;
 
+	// InsetGraphics is read, with filename in params_. We do not know if this file actually
+	// exists or is embedded so we need to get the 'availableFile' from buf.embeddedFiles()
+	EmbeddedFiles::EmbeddedFileList::const_iterator it = buf.embeddedFiles().find(params_.filename.toFilesystemEncoding());
+	if (it != buf.embeddedFiles().end())
+		// using available file, embedded or external, depending on file availability and
+		// embedding status.
+		params_.filename = DocFileName(it->availableFile(&buf));
 	graphic_->update(params().as_grfxParams());
 }
 
@@ -1016,7 +1023,7 @@ InsetGraphicsMailer::params2string(InsetGraphicsParams const & params,
 {
 	ostringstream data;
 	data << name_ << ' ';
-	params.Write(data, buffer.filePath());
+	params.Write(data, buffer);
 	data << "\\end_inset\n";
 	return data.str();
 }

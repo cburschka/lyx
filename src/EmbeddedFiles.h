@@ -225,6 +225,8 @@ public:
 	EmbeddedFileList::iterator end() { return file_list_.end(); }
 	EmbeddedFileList::const_iterator begin() const { return file_list_.begin(); }
 	EmbeddedFileList::const_iterator end() const { return file_list_.end(); }
+	// try to locate filename, using either absFilename() or embeddedFile()
+	EmbeddedFileList::const_iterator find(std::string filename) const;
 	///
 	bool extractAll() const;
 	///
