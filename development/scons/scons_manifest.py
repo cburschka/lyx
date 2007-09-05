@@ -1108,7 +1108,6 @@ src_insets_header_files = Split('''
     InsetBox.h
     InsetBranch.h
     InsetCaption.h
-    InsetCharStyle.h
     InsetCitation.h
     InsetCollapsable.h
     InsetCommand.h
@@ -1116,6 +1115,7 @@ src_insets_header_files = Split('''
     InsetERT.h
     InsetEnvironment.h
     InsetExternal.h
+    InsetFlex.h
     InsetFloat.h
     InsetFloatList.h
     InsetFoot.h
@@ -1163,7 +1163,6 @@ src_insets_files = Split('''
     InsetBox.cpp
     InsetBranch.cpp
     InsetCaption.cpp
-    InsetCharStyle.cpp
     InsetCitation.cpp
     InsetCollapsable.cpp
     InsetCommand.cpp
@@ -1171,6 +1170,7 @@ src_insets_files = Split('''
     InsetERT.cpp
     InsetEnvironment.cpp
     InsetExternal.cpp
+    InsetFlex.cpp
     InsetFloat.cpp
     InsetFloatList.cpp
     InsetFoot.cpp
