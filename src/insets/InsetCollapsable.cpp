@@ -250,7 +250,9 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 
 	// Draw button first -- top, left or only
 	Dimension dimc = dimensionCollapsed();
-	int const top  = y - ascent() + TEXT_TO_INSET_OFFSET;
+	TextMetrics const & tm = pi.base.bv->textMetrics(&text_);
+	int const top = y - tm.ascent();
+
 	if (geometry() == TopButton ||
 	    geometry() == LeftButton ||
 	    geometry() == ButtonOnly) {
