@@ -494,8 +494,6 @@ liblyxinsets_la_SOURCES = \
 	insets/InsetBranch.h \
 	insets/InsetCaption.cpp \
 	insets/InsetCaption.h \
-	insets/InsetCharStyle.cpp \
-	insets/InsetCharStyle.h \
 	insets/InsetCitation.cpp \
 	insets/InsetCitation.h \
 	insets/InsetCollapsable.cpp \
@@ -510,6 +508,8 @@ liblyxinsets_la_SOURCES = \
 	insets/InsetERT.h \
 	insets/InsetExternal.cpp \
 	insets/InsetExternal.h \
+	insets/InsetFlex.h \
+	insets/InsetFlex.cpp \
 	insets/InsetFloat.h \
 	insets/InsetFloat.cpp \
 	insets/InsetFloatList.cpp \
