@@ -45,7 +45,7 @@ GuiPopupMenu::GuiPopupMenu(GuiMenubar * owner,
 	setTitle(toqstr(getLabel(mi)));
 
 	if (topLevelMenu)
-		connect(this, SIGNAL(aboutToShow()), this, SLOT(update()));
+		connect(this, SIGNAL(aboutToShow()), this, SLOT(updateView()));
 }
 
 
