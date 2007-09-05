@@ -11,7 +11,6 @@ SOURCEFILES = \
 	Dialog.cpp \
 	Kernel.cpp \
 	ButtonPolicy.cpp \
-	ControlAboutlyx.cpp \
 	ControlBibtex.cpp \
 	ControlBox.cpp \
 	ControlBranch.cpp \
@@ -53,7 +52,6 @@ SOURCEFILES = \
 HEADERFILES = \
 	Kernel.h \
 	ButtonPolicy.h \
-	ControlAboutlyx.h \
 	ControlBibtex.h \
 	ControlBox.h \
 	ControlBranch.h \
