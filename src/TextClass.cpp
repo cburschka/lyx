@@ -1059,6 +1059,7 @@ InsetLayout const & TextClass::insetlayout(docstring const & name) const
 	}
 	static InsetLayout empty;
 	empty.labelstring = from_utf8("UNDEFINED");
+	empty.bgcolor = Color::error;
 	return empty;
 }
 
