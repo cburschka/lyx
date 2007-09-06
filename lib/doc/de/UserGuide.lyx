@@ -64,6 +64,11 @@
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 \end_preamble
 \options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
@@ -32961,19 +32966,6 @@ gen
 \family default
  geöffnet.
  Der Baum im linken Teilfenster zeigt, was alles eingestellt werden kann.
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -34803,37 +34795,8 @@ status collapsed
 X-Vorspann Er enthält LaTeX-Befehle, die nicht zum Klassenstandard gehören.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Standard
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
-In 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-Ly
+In Ly
 \begin_inset ERT
 status collapsed
 
@@ -34844,18 +34807,7 @@ status collapsed
 
 \end_inset
 
-X
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- verfügbare Maßeinheiten
+X verfügbare Maßeinheiten
 \begin_inset LatexCommand label
 name "LyX-Maßeinheiten"
 
@@ -34864,37 +34816,6 @@ name "LyX-Maßeinheiten"
 
 \begin_inset LatexCommand index
 name "Einheiten"
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Den Befehl
-\family typewriter
- 
-\family default
-\series bold
-
-\backslash
-texorpdfstring
-\series default
- stellt das LaTeX-Paket 
-\series bold
-hyperref
-\series default
- bereit, um zu verhindern, dass Ligaturen in PDF-Lesezeichen falsch dargestellt
- werden.
- Weitere Informationen finden Sie in 
-\begin_inset LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
-\end_layout
 
 \end_inset
 
