@@ -100,7 +100,7 @@ What's new
 
 - Fix crash when closing LyX window with document tabs (bug 4123).
 
-- Fix crash when a user removes a formula when its preview is being generated.
+- Fix crash when a user removes a formula when its preview is being generated
   (gcc 3 only).
 
 - Fix crash when using down cursor in an empty math subscript (bug 4117).
@@ -118,6 +118,9 @@ What's new
 - Highlight search text (bug 3999).
 
 - Fix deletion of pars with leading spaces (bug 3600).
+
+- Fix that Revert and Save As were treated as "file is externally modified"
+  (bug 4193)
 
 
 * DOCUMENTATION
