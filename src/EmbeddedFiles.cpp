@@ -179,7 +179,7 @@ void EmbeddedFiles::registerFile(string const & filename,
 	EmbeddedFileList::iterator it = file_list_.begin();
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it)
-		if (it->absFilename() == abs_filename)
+		if (it->absFilename() == abs_filename || it->embeddedFile(buffer_) == abs_filename)
 			break;
 	// find this filename
 	if (it != file_list_.end()) {
@@ -316,9 +316,9 @@ string const EmbeddedFiles::getInzipName(string const & abs_filename)
 	EmbeddedFileList::iterator it;
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	bool unique_name = false;
+	size_t i = 0;
 	while (!unique_name) {
 		unique_name = true;
-		size_t i = 0;
 		if (i > 0)
 			inzip_name = convert<string>(i) + "_" + tmp;
 		it = file_list_.begin();
