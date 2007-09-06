@@ -291,7 +291,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	case SubLabel:
 	case Corners:
 		textx = xx;
-		texty = top;
+		texty = baseline;
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(false);
 		InsetText::draw(pi, textx, texty);
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
