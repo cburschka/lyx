@@ -756,8 +756,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		string diskfile = filename.toFilesystemEncoding();
 		if (suffixIs(diskfile, ".emergency"))
 			diskfile = diskfile.substr(0, diskfile.size() - 10);
-		pimpl_->timestamp_ = fs::last_write_time(diskfile);
-		pimpl_->checksum_ = sum(FileName(diskfile));
+		saveCheckSum(diskfile);
 	}
 
 	if (file_format != LYX_FORMAT) {
@@ -874,8 +873,7 @@ bool Buffer::save() const
 	if (writeFile(pimpl_->filename)) {
 		markClean();
 		removeAutosaveFile(fileName());
-		pimpl_->timestamp_ = fs::last_write_time(pimpl_->filename.toFilesystemEncoding());
-		pimpl_->checksum_ = sum(pimpl_->filename);
+		saveCheckSum(pimpl_->filename.toFilesystemEncoding());
 		return true;
 	} else {
 		// Saving failed, so backup is not backup
@@ -1631,6 +1629,19 @@ bool Buffer::isExternallyModified(CheckMethod method) const
 	return (method == checksum_method 
 		|| pimpl_->timestamp_ != fs::last_write_time(pimpl_->filename.toFilesystemEncoding()))
 		&& pimpl_->checksum_ != sum(pimpl_->filename);
+}
+
+
+void Buffer::saveCheckSum(string const & file) const
+{
+	if (fs::exists(file)) {
+		pimpl_->timestamp_ = fs::last_write_time(file);
+		pimpl_->checksum_ = sum(FileName(file));
+	} else {
+		// in the case of save to a new file.
+		pimpl_->timestamp_ = 0;
+		pimpl_->checksum_ = 0;
+	}
 }
 
 

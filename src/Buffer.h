@@ -229,6 +229,9 @@ public:
 	/// whether or not disk file has been externally modified
 	bool isExternallyModified(CheckMethod method) const;
 
+	/// save timestamp and checksum of the given file.
+	void saveCheckSum(std::string const & file) const;
+
 	/// mark the main lyx file as not needing saving
 	void markClean() const;
 
