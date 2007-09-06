@@ -1,4 +1,4 @@
-#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -9050,14 +9050,14 @@ name "Document ! Settings"
 
  dialog.
  There you can specify which font should be used for the three different
- font shapes Roman, 
+ font shapes roman (serif), 
 \family sans
-Sans\InsetSpace ~
-Serif
+sans\InsetSpace ~
+serif
 \family default
 , and 
 \family typewriter
-Typewriter
+typewriter
 \family default
  and its scalings.
 \end_layout
@@ -24693,10 +24693,10 @@ to the preamble and the problem is solved.
 Note that some document classes have built-in solutions for well known problems
  like your case.
  For example if you use a 
-\family typewriter
-koma-scrip
+\family sans
+koma-script
 \family default
-t class, you don't need the package 
+ class, you don't need the package 
 \series bold
 caption
 \series default
@@ -34708,78 +34708,91 @@ name "sec:ui"
 \end_inset
 
 
+\begin_inset LatexCommand index
+name "User Interface File"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-At first a note: You have to restart LyX before changes in .ui and .bind-files
- take effect.
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ You have to restart LyX before changes in ui- and bind-files take effect.
 \end_layout
 
-\begin_layout Subsubsection*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 User Interface File
 \end_layout
 
 \begin_layout Standard
-The appearance of both the menu and toolbar can both be changed by choosing
- another 
-\family typewriter
-.ui
-\family default
--file.
- For the moment, only one file exists, the 
-\family typewriter
-default.ui
-\family default
-.
- A .ui-file is a text file where the menu and toolbar entries are listed.
- To create a new .ui-file, start with a copy of the default.ui from the folder
- lyx/share/lyx/ui and edit the entries.
+The appearance of the menus and toolbars can be changed by choosing an user
+ interface (ui) file.
+ An ui-file is a textfile where the toolbars and menus are listed.
+ The toolbar buttons and menu entries are specified in the files 
+\shape italic
+stdtoolbars.inc
+\shape default
+ and 
+\shape italic
+stdmenus.inc
+\shape default
+, respectively.
+ To create your own menu and toolbar layout, start with a copy of these
+ files and edit the entries.
 \end_layout
 
 \begin_layout Standard
-The syntax of the 
-\family typewriter
-.ui
-\family default
- files is straightforward.
- 
-\family typewriter
-The Menubar
+The syntax of the .inc-files is straightforward: The 
+\family sans
+Menubar
 \family default
 , 
-\family typewriter
+\family sans
 Menu
 \family default
  and 
-\family typewriter
+\family sans
 Toolbar
 \family default
  entries must be ended with an explicit 
-\family typewriter
+\family sans
 End
 \family default
 .
  They may contain 
-\family typewriter
-Submenu
+\family sans
+Submenus
 \family default
-s, 
-\family typewriter
-Item
+, 
+\family sans
+Items
 \family default
-s, 
-\family typewriter
-OptItem
+, 
+\family sans
+OptItems
 \family default
-s, 
-\family typewriter
-Separator
+, 
+\family sans
+Separators
 \family default
-s, 
-\family typewriter
-Icon
+, 
+\family sans
+Icons
 \family default
-s and in the case of the 
+ and in the case of the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -34788,60 +34801,90 @@ file
 \end_inset
 
  menus, a 
-\family typewriter
+\family sans
 Lastfiles
 \family default
  entry.
- One small word of warning.
- 
-\family typewriter
-Submenu
-\family default
-s may be inserted in a 
-\family typewriter
-Menubar
-\family default
- or 
-\family typewriter
-Menu
-\family default
-, but they are defined as 
-\family typewriter
-Menu
-\family default
-s, not as 
-\family typewriter
-Submenu
-\family default
-s.
+ The syntax for the entries is:
 \end_layout
 
 \begin_layout Standard
-Now an example: Assuming you use the menu 
+\begin_inset VSpace smallskip*
+\end_inset
+
+
+\series bold
+Item 
+\begin_inset Quotes erd
+\end_inset
+
+menu / button name
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes erd
+\end_inset
+
+LyX-function
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace smallskip*
+\end_inset
+
+All LyX-functions are listed in 
+\begin_inset LatexCommand cite
+key "LyX-func"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An example: Assuming you use the menu 
 \family sans
 Navigate\SpecialChar \menuseparator
 Bookmarks
 \family default
- quite often and therefore want four available bookmarks, you can simply
- add the lines
-\newline
-
-\newline
-Item "Save Bookmark 4" "bookmark-save 4"
-\newline
-Item "Goto Bookmark
- 4" "bookmark-goto 4"
-\newline
-
-\newline
-to the navigate menu section in the .ui-file to have
- the fourth bookmark.
+ quite often and therefore want six available bookmarks, you can add the
+ line
 \end_layout
 
-\begin_layout Subsubsection*
-Bind File
-\begin_inset LatexCommand label
-name "sec:bindings"
+\begin_layout Standard
+\begin_inset VSpace smallskip*
+\end_inset
+
+
+\series bold
+Item "Save Bookmark 6" "bookmark-save 6"
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace smallskip*
+\end_inset
+
+to the navigate menu section in the .inc-file to have the sixth bookmark.
+\end_layout
+
+\begin_layout Subsubsection
+Bind-File
+\begin_inset LatexCommand index
+name "Bindings"
 
 \end_inset
 
@@ -34850,11 +34893,11 @@ name "sec:bindings"
 
 \begin_layout Standard
 Bindings are used to bind a function to a key.
- Several prepackaged binding files are available:
+ Several binding files are available:
 \end_layout
 
 \begin_layout Description
-cua.bind set of bindings (as the typical set of PC keyboard shortcuts)
+cua.bind typical set of PC keyboard shortcuts
 \end_layout
 
 \begin_layout Description
@@ -34870,17 +34913,17 @@ XEmacs
 \end_layout
 
 \begin_layout Description
-mac.bind set of bindings for Mac
-\begin_inset Formula $\,$
-\end_inset
-
+mac.bind set of bindings for Mac\InsetSpace \thinspace{}
 OS systems.
 \end_layout
 
 \begin_layout Standard
-There are also bind file for designed to them with special document classes,
- like broadway.bind) and bind files for special languages.
- The language bind file names begin with a language code, e.g.
+There are also bind-files designed for special document classes, like 
+\shape italic
+broadway.bind
+\shape default
+, and bind files for special languages.
+ The name of language bind-files begin with a language code, e.g.
  
 \begin_inset Quotes eld
 \end_inset
@@ -34890,55 +34933,143 @@ pt
 \end_inset
 
  for Portuguese.
- LyX supports internationalization of the user interface, see section\InsetSpace ~
+ If you use LyX in a certain language, LyX will try to use the appropriate
+ bind-file.
+\end_layout
 
-\begin_inset LatexCommand ref
-reference "sec:Selecting-an-alternative"
+\begin_layout Standard
+Some bind-files, like 
+\emph on
+math.bind
+\emph default
+, have only a small scope.
+ When looking at the the end of the file 
+\shape italic
+cua.bind
+\shape default
+, you can see that they are included to keep the overview in the bind-file.
+\end_layout
+
+\begin_layout Standard
+If you like to customize the keybindings to your own taste, modify the bind-file
+s with a text editor.
+ The syntax of the entries is:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+bind 
+\begin_inset Quotes erd
+\end_inset
+
+key combination
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes erd
+\end_inset
+
+LyX-function
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All LyX-functions are listed in 
+\begin_inset LatexCommand cite
+key "LyX-func"
 
 \end_inset
 
 .
- If you use LyX in a certain language, LyX will try to use the appropriate
- bind files.
+\end_layout
+
+\begin_layout Subsubsection
+Session
 \end_layout
 
 \begin_layout Standard
-Some bind files, like math.bind, have only a small scope.
- When looking at the the end of the file cua.bind, you can see that they
- are included to keep the overview in the bind file.
-\end_layout
-
-\begin_layout Standard
-If you like to customize the keybindings to your own taste, modify the .bind-file
-s with a text editor and don't forget to load the modified files into LyX
- using the 
+When the option 
 \family sans
-Preferences
+Save\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+restore window size, or use fixed size
 \family default
- dialog.
- The syntax of the 
-\family typewriter
-.bind
+ is not checked, you can specify the window size of LyX's main window when
+ LyX is started.
+\end_layout
+
+\begin_layout Standard
+With the option 
+\family sans
+Save\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+restore window position
 \family default
- files is straightforward:
+ LyX will be opened with its main window at the last used position.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Restore cursor positions
+\family default
+ sets the cursor to the position in the file where it has been the last
+ time.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Load opened files from last session
+\family default
+ opens all files that were opened in the last LyX session.
+\end_layout
+
+\begin_layout Subsubsection
+Documents
+\end_layout
+
+\begin_layout Standard
+When the option 
+\family sans
+Backup documents
+\family default
+ is set, you can specify the time between backup saves.
 \end_layout
 
 \begin_layout Standard
 
-\family typewriter
-
-\backslash
-bind <key combination> <lyx-function>
-\end_layout
-
-\begin_layout Standard
-Both key combination and lyx-function (including any arguments) must be
- enclosed in "double quotes".
- All the LyX functions are listed in the 
-\emph on
-Reference Manual
-\emph default
+\family sans
+Maximum last files
+\family default
+ is the number of last opened files that LyX should display in the menu
+ 
+\family sans
+File\SpecialChar \menuseparator
+Open\InsetSpace ~
+Recent
+\family default
 .
+\end_layout
+
+\begin_layout Subsubsection
+Scrolling
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Cursor follows scrollbar
+\family default
+ sets the cursor to the top of the currently displayed document part when
+ scrolling.
 \end_layout
 
 \begin_layout Subsection
@@ -34947,20 +35078,13 @@ Screen Fonts
 
 \begin_layout Standard
 These fonts are used to display your documents on the screen.
- Notice that this section only deals with the fonts 
+ Note that this section only deals with the fonts 
 \emph on
 inside
 \emph default
  the LyX window.
- The fonts that appear on the 
-\emph on
-paper
-\emph default
- 
-\emph on
-output
-\emph default
- are independent from these fonts, and are set in the menu 
+ The fonts that appear on the output are independent from these fonts, and
+ set in the menu 
 \family sans
 Layout\SpecialChar \menuseparator
 Document
@@ -34970,22 +35094,39 @@ Document
 
 \begin_layout Standard
 By default, LyX uses 
-\emph on
-times
-\emph default
- as serif font, 
-\emph on
-Aral
-\emph default
+\family typewriter
+Times
+\family default
+ as roman (serif) font, 
+\family typewriter
+Arial
+\family default
  or 
-\emph on
+\family typewriter
 Helvetica
-\emph default
- (depends on the system) as sans serif font, and 
-\emph on
-courier
-\emph default
- as monospaced/typewriter font.
+\family default
+ (depends on the system) as 
+\family sans
+sans\InsetSpace ~
+serif
+\family default
+ font, and 
+\family typewriter
+Courier
+\family default
+ as 
+\family typewriter
+typewriter
+\family default
+ font.
+\end_layout
+
+\begin_layout Standard
+You can change the font size with the 
+\family sans
+Zoom
+\family default
+ setting.
 \end_layout
 
 \begin_layout Standard
@@ -34994,10 +35135,7 @@ courier
 Screen DPI
 \family default
  is the screen resolution in dpi (dots per inch).
-\end_layout
-
-\begin_layout Standard
-The Font Sizes are adjusted as letter height in units of points.
+ The Font Sizes are adjusted as letter height in units of points.
  72\InsetSpace \thinspace{}
 points have the size of 1\InsetSpace \thinspace{}
 inch, see Appendix\InsetSpace ~
@@ -35008,12 +35146,19 @@ reference "cha:Units-available-in"
 \end_inset
 
 .
- The font sizes are the same as used for a document font size of 10
+\end_layout
+
+\begin_layout Standard
+The default 
+\family sans
+Font Sizes
+\family default
+ are the same as if a document font size of 10
 \begin_inset Formula $\,$
 \end_inset
 
-pt.
- They are explained in detail in section\InsetSpace ~
+pt would be used.
+ The sizes are explained in detail in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Document-Font"
@@ -35029,7 +35174,7 @@ Colors
 
 \begin_layout Standard
 You can here change all colors used by LyX.
- Just choose an item in the list and use the 
+ Choose an item in the list and use the 
 \family sans
 Alter
 \family default
@@ -35041,12 +35186,15 @@ Graphics
 \end_layout
 
 \begin_layout Standard
-Here could you specify how graphics inside LyX are displayed.
+Here you can specify how graphics inside LyX are displayed.
 \end_layout
 
 \begin_layout Standard
-The button instant preview is used to enable previewing snippets of your
- document.
+
+\family sans
+Instant Preview
+\family default
+ enables previewing snippets of your document.
  This feature is described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -35062,17 +35210,32 @@ Keyboard Map
 \end_layout
 
 \begin_layout Standard
-If you have e.g.
+Normally keyboard settings have to be done in a menu of your operating system.
+ For the case that this is not possible, LyX provides keyboard maps.
+ If you have e.g.
  a Czech keyboard but want to write with it like with a Romanian one, you
  can use the keyboard map file named 
 \family sans
 romanian.kmap
 \family default
 .
- Normally keyboard settings have to be done in a menu of your operating
- system.
- These keyboard maps are only provided as makeshift and doesn't work on
- all systems.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Keyboard maps are only provided as makeshift and doesn't work on all systems.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Section
@@ -36751,6 +36914,39 @@ status collapsed
 \end_inset
 
  how to set up LyX for Hebrew
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "LyX-func"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://wiki.lyx.org/LyX/LyxFunctionList1-5-1}{
+\end_layout
+
+\end_inset
+
+Wiki-page
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ with a list of all available LyX-functions
 \end_layout
 
 \begin_layout Standard
