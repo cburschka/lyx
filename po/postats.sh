@@ -13,12 +13,12 @@
 # and generates a PHP web page.
 #
 # Invocation:
-#    postats.sh po_files > "pathToWebPages"/i18n.php
+#    postats.sh po_files > "pathToWebPages"/i18n.inc
 
-# modifiy this when you change version
-# Note that an empty lyx_branch variable (ie cvs HEAD)
+# modify this when you change version
+# Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
-lyx_version=1.5.0svn
+lyx_version=1.6.0svn
 lyx_branch=
 
 
@@ -154,24 +154,20 @@ run_msgfmt () {
 
 # The head of the generated php file.
 dump_head () {
+test "$lyx_branch" = "" && {
+	branch_tag="trunk"
+} || {
+	branch_tag="branches/$lyx_branch"
+}
+
 cat <<EOF
-<?
-	// What's the title of the page?
-	\$title = "LyX i18n";
-	// What's the short name of the page in the navigation bar?
-	\$item="i18n";
-	// Who is the author?
-	\$author="Michael Gerz";
-	// Full name of the file (relative path from LyX home page -- i.e., it should
-	// be "foo.php" or "bar/foo.php")
-	\$file_full="devel/i18n.php";
+<?php
+// The current version
+\$lyx_version = "$lyx_version";
+// The branch tag
+\$branch_tag = "$branch_tag";
 
-	include("start.php");
-
-	error_reporting(E_ALL);
-?>
-
-<?
+// The data itself
 \$podata = array (
 EOF
 }
@@ -180,139 +176,7 @@ EOF
 # The foot of the generated php file.
 dump_tail () {
 
-test "$lyx_branch" = "" && {
-	branch_tag="trunk"
-} || {
-	branch_tag="branches/$lyx_branch"
-}
-
 cat <<EOF
-<?
-\$lang = array(
-	'bg' => 'Bulgarian',
-	'ca' => 'Catalan',
-	'cs' => 'Czech',
-	'da' => 'Danish',
-	'de' => 'German',
-	'es' => 'Spanish',
-	'eu' => 'Basque',
-	'fi' => 'Finnish',
-	'fr' => 'French',
-	'gl' => 'Galician',
-	'he' => 'Hebrew',
-	'hu' => 'Hungarian',
-	'it' => 'Italian',
-	'ja' => 'Japanese',
-	'ko' => 'Korean',
-	'nl' => 'Dutch',
-	'nn' => 'Nynorsk',
-	'nb' => 'Norwegian',
-	'pl' => 'Polish',
-	'pt' => 'Portuguese',
-	'ro' => 'Romanian',
-	'ru' => 'Russian',
-	'sk' => 'Slovak',
-	'sl' => 'Slovenian',
-	'sv' => 'Swedish',
-	'tr' => 'Turkish',
-	'wa' => 'Walloon',
-	'zh_CN' => 'Simplified Chinese',
-	'zh_TW' => 'Traditional Chinese'
-);
-
-\$noOfMsg = \$podata[0]['msg_tr'] + \$podata[0]['msg_fu'] + \$podata[0]['msg_nt'];
-
-function cmp (\$a, \$b) {
-	if (\$a['msg_tr'] == \$b['msg_tr']) {
-		return 0;
-	}
-	return (\$a['msg_tr'] > \$b['msg_tr']) ? -1 : 1;
-}
-
-usort (\$podata, "cmp");
-?>
-
-<p>
-	The following table details the current state of the translations of the
-	LyX GUI for the LyX development branch (currently $lyx_version).
-	Unfortunately, only a few languages are well-supported. The LyX team may,
-	therefore, decide to exclude some of the translations from a formal
-	release in order not to confuse the user with a strongly mixed-language
-	interface.
-</p>
-<p>
-	Explanation:
-</p>
-<ul>
-	<li><i>Translated:</i> The number of translated messages</li>
-	<li><i>Fuzzy:</i> The number of fuzzy messages; these are not considered
-	    for LyX output but solely serve as a hint for the translators</li>
-	<li><i>Untranslated:</i> The number of untranslated messages; the
-	    default language (i.e., English) will be used in the LyX outputs</li>
-</ul>
-<table class="center" frame="box" rules="all" border="2" cellpadding="5">
-<thead>
-	<tr>
-		<td>Language</td>
-		<td>Translated</td>
-		<td>Fuzzy</td>
-		<td>Untranslated</td>
-		<td>Revision Date</td>
-		<td>Translator</td>
-	</tr>
-</thead>
-<tbody>
-<?
-while (list(\$foo,\$info) = each(\$podata)) {
-	print "<tr>";
-
-	if ( \$info['msg_tr'] > \$noOfMsg * 2 / 3 ) {
-		\$style="style='background:#009900'";
-	} else if ( \$info['msg_tr'] > \$noOfMsg / 2 ) {
-		\$style="style='background:#AAAA00'";
-	} else {
-		\$style="style='background:#AA3333'";
-	}
-	print "<td \$style>" ;
-
-	print "<a href=\"http://www.lyx.org/trac/browser/lyx-devel/$branch_tag/po/" . \$info['langcode'] . ".po?format=raw\">" . \$lang[\$info['langcode']] . "</a></td>";
-
-	print "<td \$style align=\"right\">" . \$info['msg_tr'] . "</td>";
-
-	print "<td \$style align=\"right\">";
-	if (isset(\$info['msg_fu'])) {
-		print \$info['msg_fu'];
-	} else {
-		print "0";
-	}
-	print "</td>";
-
-	print "<td \$style align=\"right\">";
-	if (isset(\$info['msg_nt'])) {
-		print \$info['msg_nt'];
-	} else {
-		print "0";
-	}
-	print "</td>";
-
-	print "<td \$style align=\"center\">" . \$info['date'] . "</td>";
-
-	print "<td \$style>";
-	if (\$info['email'] == "") {
-		print \$info['translator'];
-	} else {
-		print "<a href=\"mailto:" . \$info['email'] . "\">" .
-			\$info['translator'] . "</a>";
-	}
-	print "</td>";
-
-	print "</tr>\n";
-}
-?>
-</tbody>
-</table>
-<?
-include("end.php");
 ?>
 EOF
 }
@@ -330,7 +194,6 @@ do
 	shift
 	if [ $# -eq 0 ]; then
 		echo "${output});"
-		echo '?>'
 	else
 		echo "${output},"
 		echo

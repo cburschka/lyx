@@ -413,7 +413,7 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui $(top_srcdir)/lib/ui/*.inc
 	LC_ALL=C ; export LC_ALL ; \
 	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t ui ${top_srcdir}/lib/ui/*.ui ${top_srcdir}/lib/ui/*.inc
 
-i18n.php: $(POFILES) postats.sh
+i18n.inc: $(POFILES) postats.sh
 	(cd $(srcdir) ; ./postats.sh $(POFILES)) >$@
 
 external_l10n.pot: $(top_srcdir)/lib/external_templates
