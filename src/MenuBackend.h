@@ -66,6 +66,9 @@ public:
 		/** This is the list of user-configurable
 		insets to insert into document */
 		Custom,
+		/** This is the list of XML elements to
+		insert into the document */
+		Elements,
 		/** This is the list of floats that we can
 		    insert a list for. */
 		FloatListInsert,
