@@ -250,18 +250,16 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 
 	// Draw button first -- top, left or only
 	Dimension dimc = dimensionCollapsed();
-	TextMetrics const & tm = pi.base.bv->textMetrics(&text_);
-	int const baseline = y - tm.ascent();
 
 	if (geometry() == TopButton ||
 	    geometry() == LeftButton ||
 	    geometry() == ButtonOnly) {
 		button_dim.x1 = xx + 0;
 		button_dim.x2 = xx + dimc.width();
-		button_dim.y1 = baseline;
-		button_dim.y2 = baseline + dimc.height();
+		button_dim.y1 = y - dimc.asc;
+		button_dim.y2 = y + dimc.des;
 
-		pi.pain.buttonText(xx, baseline + dimc.asc, layout_.labelstring, layout_.labelfont, mouse_hover_);
+		pi.pain.buttonText(xx, y, layout_.labelstring, layout_.labelfont, mouse_hover_);
 	} else {
 		button_dim.x1 = 0;
 		button_dim.y1 = 0;
@@ -269,6 +267,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y2 = 0;
 	}
 
+	TextMetrics const & tm = pi.base.bv->textMetrics(&text_);
+	int const baseline = y - tm.ascent();
 	int textx, texty;
 	switch (geometry()) {
 	case LeftButton:
