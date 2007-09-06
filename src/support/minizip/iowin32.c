@@ -7,7 +7,7 @@
    Copyright (C) 1998-2005 Gilles Vollant
 */
 
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32)
 
 #include <stdlib.h>
 
