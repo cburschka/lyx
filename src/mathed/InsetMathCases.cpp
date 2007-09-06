@@ -95,7 +95,7 @@ bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.enabled(false);
 			flag.message(bformat(
-				from_utf8(N_("No vertical grid lines in '%1$s'")),
+				from_utf8(N_("No vertical grid lines in 'cases': feature %1$s")),
 				s));
 			return true;
 		}
