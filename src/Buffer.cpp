@@ -133,6 +133,7 @@ using support::subst;
 using support::tempName;
 using support::trim;
 using support::sum;
+using support::suffixIs;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
@@ -696,6 +697,19 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	int const file_format = convert<int>(tmp_format);
 	//lyxerr << "format: " << file_format << endl;
 
+	// save timestamp and checksum of the original disk file, making sure
+	// to not overwrite them with those of the file created in the tempdir
+	// when it has to be converted to the current format.
+	if (!pimpl_->checksum_) {
+		// Save the timestamp and checksum of disk file. If filename is an
+		// emergency file, save the timestamp and sum of the original lyx file
+		// because isExternallyModified will check for this file. (BUG4193)
+		string diskfile = filename.toFilesystemEncoding();
+		if (suffixIs(diskfile, ".emergency"))
+			diskfile = diskfile.substr(0, diskfile.size() - 10);
+		saveCheckSum(diskfile);
+	}
+
 	if (file_format != LYX_FORMAT) {
 
 		if (fromstring)
@@ -762,9 +776,6 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	//MacroTable::localMacros().clear();
 
 	pimpl_->file_fully_loaded = true;
-	// save the timestamp and checksum of disk file
-	pimpl_->timestamp_ = fs::last_write_time(filename.toFilesystemEncoding());
-	pimpl_->checksum_ = sum(filename);
 	return success;
 }
 
@@ -813,8 +824,7 @@ bool Buffer::save() const
 	if (writeFile(pimpl_->filename)) {
 		markClean();
 		removeAutosaveFile(fileName());
-		pimpl_->timestamp_ = fs::last_write_time(pimpl_->filename.toFilesystemEncoding());
-		pimpl_->checksum_ = sum(pimpl_->filename);
+		saveCheckSum(pimpl_->filename.toFilesystemEncoding());
 		return true;
 	} else {
 		// Saving failed, so backup is not backup
@@ -1586,6 +1596,19 @@ bool Buffer::isExternallyModified(CheckMethod method) const
 	return (method == checksum_method 
 		|| pimpl_->timestamp_ != fs::last_write_time(pimpl_->filename.toFilesystemEncoding()))
 		&& pimpl_->checksum_ != sum(pimpl_->filename);
+}
+
+
+void Buffer::saveCheckSum(string const & file) const
+{
+	if (fs::exists(file)) {
+		pimpl_->timestamp_ = fs::last_write_time(file);
+		pimpl_->checksum_ = sum(FileName(file));
+	} else {
+		// in the case of save to a new file.
+		pimpl_->timestamp_ = 0;
+		pimpl_->checksum_ = 0;
+	}
 }
 
 
