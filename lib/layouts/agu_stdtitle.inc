@@ -319,7 +319,7 @@ End
 # Inside AGU-journal:
 
 InsetLayout CharStyle:ISSN
-	LyXType charstyle
+	LyXType element
 	LabelString ISSN
 	LatexType             Command
 	LatexName             ISSN
@@ -330,7 +330,7 @@ End
 
 
 InsetLayout CharStyle:CODEN
-	LyXType charstyle
+	LyXType element
 	LabelString CODEN
 	LatexType             Command
 	LatexName             CODEN
@@ -342,7 +342,7 @@ End
 # Inside Special-section:
 
 InsetLayout CharStyle:SS-Code
-	LyXType charstyle
+	LyXType element
 	LabelString SS-Code
 	LatexType             Command
 	LatexName             ss-code
@@ -353,7 +353,7 @@ End
 
 
 InsetLayout CharStyle:SS-Title
-	LyXType charstyle
+	LyXType element
 	LabelString SS-Title
 	LatexType             Command
 	LatexName             ss-title
@@ -365,7 +365,7 @@ End
 # Inside Copyright:
 
 InsetLayout CharStyle:CCC-Code
-	LyXType charstyle
+	LyXType element
 	LabelString CCC-Code
 	LatexType             Command
 	LatexName             CCCcode
@@ -378,7 +378,7 @@ End
 # Inside Index-term:
 
 InsetLayout CharStyle:Code
-	LyXType charstyle
+	LyXType element
 	LabelString Code
 	LatexType             Command
 	LatexName             code
@@ -389,7 +389,7 @@ End
 
 
 InsetLayout CharStyle:Dscr
-	LyXType charstyle
+	LyXType element
 	LabelString Dscr
 	LatexType             Command
 	LatexName             dscr
@@ -401,7 +401,7 @@ End
 # Inside Keywords:
 
 InsetLayout CharStyle:Keyword
-	LyXType charstyle
+	LyXType element
 	LabelString Keyword
 	LatexType             Command
 	LatexName             keyword
@@ -413,7 +413,7 @@ End
 #inside Affiliation:
 
 InsetLayout CharStyle:Orgdiv
-	LyXType charstyle
+	LyXType element
 	LabelString Orgdiv
 	LatexType             Command
 	LatexName             orgdiv
@@ -424,7 +424,7 @@ End
 
 
 InsetLayout CharStyle:Orgname
-	LyXType charstyle
+	LyXType element
 	LabelString Orgname
 	LatexType             Command
 	LatexName             orgname
@@ -435,7 +435,7 @@ End
 
 
 InsetLayout CharStyle:Street
-	LyXType charstyle
+	LyXType element
 	LabelString Street
 	LatexType             Command
 	LatexName             street
@@ -446,7 +446,7 @@ End
 
 
 InsetLayout CharStyle:City
-	LyXType charstyle
+	LyXType element
 	LabelString City
 	LatexType             Command
 	LatexName             city
@@ -457,7 +457,7 @@ End
 
 
 InsetLayout CharStyle:State
-	LyXType charstyle
+	LyXType element
 	LabelString State
 	LatexType             Command
 	LatexName             state
@@ -468,7 +468,7 @@ End
 
 
 InsetLayout CharStyle:Postcode
-	LyXType charstyle
+	LyXType element
 	LabelString Postcode
 	LatexType             Command
 	LatexName             postcode
@@ -479,7 +479,7 @@ End
 
 
 InsetLayout CharStyle:Country
-	LyXType charstyle
+	LyXType element
 	LabelString Country
 	LatexType             Command
 	LatexName             country

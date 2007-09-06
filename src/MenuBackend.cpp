@@ -219,6 +219,7 @@ Menu & Menu::read(Lexer & lex)
 		md_bookmarks,
 		md_charstyles,
 		md_custom,
+		md_elements,
 		md_endmenu,
 		md_exportformats,
 		md_importformats,
@@ -243,6 +244,7 @@ Menu & Menu::read(Lexer & lex)
 		{ "charstyles", md_charstyles },
 		{ "custom", md_custom },
 		{ "documents", md_documents },
+		{ "elements", md_elements },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
 		{ "floatinsert", md_floatinsert },
@@ -298,6 +300,10 @@ Menu & Menu::read(Lexer & lex)
 
 		case md_custom:
 			add(MenuItem(MenuItem::Custom));
+			break;
+
+		case md_elements:
+			add(MenuItem(MenuItem::Elements));
 			break;
 
 		case md_documents:
@@ -889,6 +895,10 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 
 		case MenuItem::Custom:
 			expandFlexInsert(tomenu, buf, "custom");
+			break;
+
+		case MenuItem::Elements:
+			expandFlexInsert(tomenu, buf, "element");
 			break;
 
 		case MenuItem::FloatListInsert:

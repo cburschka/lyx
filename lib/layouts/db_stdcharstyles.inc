@@ -4,7 +4,7 @@
 
 Format 5
 InsetLayout CharStyle:Filename
-	LyXType charstyle
+	LyXType element
 	LabelString Filename
 	LatexType             Command
 	LatexName             filename
@@ -18,7 +18,7 @@ InsetLayout CharStyle:Filename
 End
 
 InsetLayout CharStyle:Directory
-	LyXType charstyle
+	LyXType element
 	LabelString Directory
 	LatexType             Command
 	LatexName             filename
@@ -33,7 +33,7 @@ InsetLayout CharStyle:Directory
 End
 
 InsetLayout CharStyle:Firstname
-	LyXType charstyle
+	LyXType element
 	LabelString Firstname
 	LatexType             Command
 	LatexName             firstname
@@ -44,7 +44,7 @@ InsetLayout CharStyle:Firstname
 End
 
 InsetLayout CharStyle:Surname
-	LyXType charstyle
+	LyXType element
 	LabelString Surname
 	LatexType             Command
 	LatexName             surname
@@ -55,7 +55,7 @@ InsetLayout CharStyle:Surname
 End
 
 InsetLayout CharStyle:Literal
-	LyXType charstyle
+	LyXType element
 	LabelString Literal
 	LatexType             Command
 	LatexName             literal
@@ -69,7 +69,7 @@ InsetLayout CharStyle:Literal
 End
 
 InsetLayout CharStyle:Email
-	LyXType charstyle
+	LyXType element
 	LabelString Email
         LatexType             Command
         LatexName             email
@@ -83,7 +83,7 @@ InsetLayout CharStyle:Email
 End
 
 InsetLayout CharStyle:KeyCombo
-	LyXType charstyle
+	LyXType element
 	LabelString KeyCombo
         LatexType             Command
         LatexName             keycombo
@@ -97,7 +97,7 @@ InsetLayout CharStyle:KeyCombo
 End
 
 InsetLayout CharStyle:KeyCap
-	LyXType charstyle
+	LyXType element
 	LabelString KeyCap
         LatexType             Command
         LatexName             keycap
@@ -111,7 +111,7 @@ InsetLayout CharStyle:KeyCap
 End
 
 InsetLayout CharStyle:GuiMenu
-	LyXType charstyle
+	LyXType element
 	LabelString GuiMenu
         LatexType             Command
         LatexName             guimenu
@@ -125,7 +125,7 @@ InsetLayout CharStyle:GuiMenu
 End
 
 InsetLayout CharStyle:GuiMenuItem
-	LyXType charstyle
+	LyXType element
 	LabelString GuiMenuItem
         LatexType             Command
         LatexName             guimenuitem
@@ -139,7 +139,7 @@ InsetLayout CharStyle:GuiMenuItem
 End
 
 InsetLayout CharStyle:GuiButton
-	LyXType charstyle
+	LyXType element
 	LabelString GuiButton
         LatexType             Command
         LatexName             guibutton
@@ -153,7 +153,7 @@ InsetLayout CharStyle:GuiButton
 End
 
 InsetLayout CharStyle:MenuChoice
-	LyXType charstyle
+	LyXType element
 	LabelString MenuChoice
         LatexType             Command
         LatexName             menuchoice

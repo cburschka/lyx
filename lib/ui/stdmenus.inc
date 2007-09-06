@@ -141,6 +141,7 @@ Menuset
 
 	Menu "edit_textstyles"
 		CharStyles
+		Elements
 		Separator
 		Item "Customized...|C" "dialog-show character"
 		Separator
