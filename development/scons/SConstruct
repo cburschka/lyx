@@ -385,11 +385,16 @@ else:
 
 # whether or not add suffix to file and directory names
 add_suffix = packaging_method != 'windows'
-# LYX_DIR are different (used in Package.cpp.in)
-if add_suffix:
-    env['LYX_DIR'] = Dir(os.path.join(prefix, share_dir + program_suffix)).abspath
+# Absolute data directory
+if mode == 'release':
+    if add_suffix:
+        env['LYX_DATA_DIR'] = Dir(os.path.join(prefix, share_dir + program_suffix)).abspath
+    else:
+        env['LYX_DATA_DIR'] = Dir(os.path.join(prefix, share_dir)).abspath
 else:
-    env['LYX_DIR'] = Dir(os.path.join(prefix, share_dir)).abspath
+    # in the debug mode, use $TOP_SRCDIR/lib to make sure lyx can be started from anyway
+    # by using this directory as data directory
+    env['LYX_DATA_DIR'] = os.path.join(env.subst('$TOP_SRCDIR'), 'lib')
 # we need absolute path for package.C
 env['LOCALEDIR'] = Dir(os.path.join(prefix, locale_dir)).abspath
 
@@ -879,7 +884,7 @@ Frontend:
     env.subst('$LIBPATH'), str(boost_libraries),
     env.subst('$CPPPATH'),
     frontend, packaging_method,
-    prefix, env['LYX_DIR'])
+    prefix, env['LYX_DATA_DIR'])
 
 #
 # create config.h
@@ -1037,7 +1042,7 @@ result = utils.createConfigFile(conf,
             'Date of release'),
         ('#define PROGRAM_SUFFIX "%s"' % program_suffix,
             'Program version suffix'),
-        ('#define LYX_ABS_INSTALLED_DATADIR "%s"' % env.subst('$LYX_DIR'),
+        ('#define LYX_ABS_INSTALLED_DATADIR "%s"' % env.subst('$LYX_DATA_DIR'),
             'Hard coded system support directory'),
         ('#define LYX_ABS_INSTALLED_LOCALEDIR "%s"' % env.subst('$LOCALEDIR'),
             'Hard coded locale directory'),
@@ -1691,8 +1696,7 @@ Alias('lyx', lyx)
 
 
 if use_vc and 'msvs_projects' in BUILD_TARGETS:
-    def build_project(target, full_target = None,
-        src = [], inc = [], res = []):
+    def build_project(target, full_target = None, src = [], inc = [], res = []):
         ''' build mavs project files
             target:      alias (correspond to directory name)
             full_target: full path/filename of the target
@@ -1704,11 +1708,6 @@ if use_vc and 'msvs_projects' in BUILD_TARGETS:
         enough to build the target. For executable targets, msvs need to know
         the full path to start debug them.
         '''
-        cmds = ''
-        if full_target is None:
-            build_target = target
-        else:
-            build_target = full_target
         # project
         proj = env.MSVSProject(
             target = target + env['MSVSPROJECTSUFFIX'],
@@ -1717,8 +1716,7 @@ if use_vc and 'msvs_projects' in BUILD_TARGETS:
             incs = [env.subst('$TOP_SRCDIR/src/config.h')],
             localincs = [env.subst(x) for x in inc],
             resources = [env.subst(x) for x in res],
-            buildtarget = build_target,
-            cmdargs = cmds,
+            buildtarget = full_target,
             variant = 'Debug'
         )
         Alias('msvs_projects', proj)
