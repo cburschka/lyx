@@ -109,19 +109,6 @@ bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode = VIEW);
  */
 bool autoOpenFile(std::string const & filename, auto_open_mode const mode = VIEW);
 
-/** General font utilities.
- *  FIXME: only MAC and WIN32 for now but it would be nice to convince
- *  fontconfig to do the same for linux.
- */
-
-/// Add fonts to the font subsystem, must be called before Application
-/// is initialized.
-void addFontResources();
-
-/// Restore original font resources, must be called after Application
-/// is destroyed.
-void restoreFontResources();
-
 } // namespace os
 } // namespace support
 } // namespace lyx

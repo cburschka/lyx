@@ -32,24 +32,6 @@ using std::string;
 
 using lyx::support::contains;
 
-#ifdef X_DISPLAY_MISSING
-#include "support/filetools.h"
-#include "support/Package.h"
-#include "support/Path.h"
-using lyx::support::addName;
-using lyx::support::addPath;
-using lyx::support::package;
-
-// API definition for manually calling font functions on Windows 2000 and later
-typedef int (WINAPI *FONTAPI)(LPCSTR, DWORD, PVOID);
-#define FR_PRIVATE     0x10
-
-// Names of TrueType fonts to load
-string const win_fonts_truetype[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
-	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
-const int num_fonts_truetype = sizeof(win_fonts_truetype) / sizeof(*win_fonts_truetype);
-#endif
-
 
 namespace lyx {
 namespace support {
@@ -292,59 +274,6 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	return reinterpret_cast<int>(ShellExecute(NULL, action,
 		win_path.c_str(), NULL, NULL, 1)) > 32;
-}
-
-
-void addFontResources()
-{
-#ifdef X_DISPLAY_MISSING
-	// Windows only: Add BaKoMa TrueType font resources
-	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
-
-	HMODULE hDLL = LoadLibrary("gdi32");
-	FONTAPI pAddFontResourceEx =
-		(FONTAPI) GetProcAddress(hDLL, "AddFontResourceExA");
-
-	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = to_local8bit(from_utf8(convert_path(
-			addName(fonts_dir, win_fonts_truetype[i] + ".ttf"),
-			PathStyle(windows))));
-		if (pAddFontResourceEx) {
-			// Windows 2000 and later: Use AddFontResourceEx
-			pAddFontResourceEx(font_current.c_str(), FR_PRIVATE, 0);
-		} else {
-			// Older Windows versions: Use AddFontResource
-			AddFontResource(font_current.c_str());
-		}
-	}
-	FreeLibrary(hDLL);
-#endif
-}
-
-
-void restoreFontResources()
-{
-#ifdef X_DISPLAY_MISSING
-	// Windows only: Remove BaKoMa TrueType font resources
-	string const fonts_dir = addPath(package().system_support().absFilename(), "fonts");
-
-	HMODULE hDLL = LoadLibrary("gdi32");
-	FONTAPI pRemoveFontResourceEx = (FONTAPI) GetProcAddress(hDLL, "RemoveFontResourceExA");
-
-	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = to_local8bit(from_utf8(convert_path(
-			addName(fonts_dir, win_fonts_truetype[i] + ".ttf"),
-			PathStyle(windows))));
-		if (pRemoveFontResourceEx) {
-			// Windows 2000 and later: Use RemoveFontResourceEx
-			pRemoveFontResourceEx(font_current.c_str(), FR_PRIVATE, 0);
-		} else {
-			// Older Windows versions: Use RemoveFontResource
-			RemoveFontResource(font_current.c_str());
-		}
-	}
-	FreeLibrary(hDLL);
-#endif
 }
 
 } // namespace os
