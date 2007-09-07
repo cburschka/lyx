@@ -817,7 +817,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		plist.erase(boost::next(plist.begin(), old.pit()));
 		// do not lose start of appendix marker (bug 4212)
 		if (soa)
-			boost::next(plist.begin(), old.pit())->params().startOfAppendix(true);
+			plist[old.pit()].params().startOfAppendix(true);
 
 		// see #warning (FIXME?) above 
 		if (cur.depth() >= old.depth()) {
