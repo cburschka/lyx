@@ -121,6 +121,9 @@ What's new
 
 - Fix deletion of pars with leading spaces (bug 3600).
 
+- Fix loss of start-of-appendix information when creating/deleting an
+  empty paragraph (bug 4212).
+
 - Fix that Revert and Save As were treated as "file is externally modified"
   (bug 4193)
 
