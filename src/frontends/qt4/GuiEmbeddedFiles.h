@@ -37,9 +37,6 @@ public Q_SLOTS:
 	///
 	void on_enableCB_toggled(bool enable);
 	///
-	void on_embeddedRB_clicked();
-	void on_externalRB_clicked();
-	///
 	void on_addPB_clicked();
 	//
 	void on_extractPB_clicked();

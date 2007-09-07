@@ -104,7 +104,6 @@ void GuiEmbeddedFilesDialog::updateView()
 	//
 	bool enabled = files.enabled();
 	enableCB->setChecked(enabled);
-	statusGB->setEnabled(enabled);
 	fullpathLE->setEnabled(enabled);
 }
 
@@ -166,18 +165,6 @@ void GuiEmbeddedFilesDialog::set_embedding_status(bool embed)
 		controller().setMessage("Extract file");
 	// update bufferView
 	controller().dispatchParams();
-}
-
-
-void GuiEmbeddedFilesDialog::on_embeddedRB_clicked()
-{
-	set_embedding_status(true);
-}
-
-
-void GuiEmbeddedFilesDialog::on_externalRB_clicked()
-{
-	set_embedding_status(false);
 }
 
 
