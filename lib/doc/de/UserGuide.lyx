@@ -182,7 +182,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 3.
+letzte Änderung: 7.
  September 2007
 \end_layout
 
@@ -2643,7 +2643,7 @@ unnumbered
 \series default
  verzichtet vollständig auf die Nummerierung.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -2693,7 +2693,7 @@ article\InsetSpace ~
 \end_layout
 
 \begin_layout Description
-rticle\InsetSpace ~
+article\InsetSpace ~
 (paper) für die 
 \begin_inset Quotes gld
 \end_inset
@@ -3500,9 +3500,57 @@ Serifenfrei: Hier legen Sie den Font für den serifenfreien Zeichensatz fest.
 Schreibmaschine Hier legen Sie den Schreibmaschinen-Font fest.
 \end_layout
 
+\begin_layout Description
+Echte\InsetSpace ~
+Kapitälchen\InsetSpace ~
+verwenden Manche Fonts erlauben auch, echte Kapitälchen
+ (was auch der Unterschied sein mag) zu verwenden.
+\end_layout
+
+\begin_layout Description
+Mediävalziffern\InsetSpace ~
+verwenden
+\begin_inset LatexCommand label
+name "Mediävalziffern-verwenden"
+
+\end_inset
+
+ Manche Fonts erlauben auch, Mediävalziffern (in Antiqua gesetzt) zu verwenden.
+ 
+\emph on
+Computer Modern
+\emph default
+ und 
+\emph on
+Palatino
+\emph default
+ sind zwei Beispiele.
+ Sie müssen dann so einen Font für 
+\family sans
+\series bold
+Roman
+\family default
+\series default
+ wählen.
+ Eine weitere Möglichkeit, bei der Sie keinen Font kennen müssen, ist, den
+ Befehl 
+\backslash
+usepackage[osf]{mathpazo} In den 
+\family sans
+LaTe
+\begin_inset ERT
+status collapsed
+
 \begin_layout Standard
-Manche Fonts erlauben auch, echte Kapitälchen (was auch der Unterschied
- sein mag) und Mediävalziffern (in Antiqua gesetzt) zu verwenden-
+
+{}
+\end_layout
+
+\end_inset
+
+X-Vorspann
+\family default
+ Ihres Dokumentes zu schreiben.
 \end_layout
 
 \end_deeper
@@ -15066,12 +15114,6 @@ Kommentar
 \end_inset
 
  wird auch beim Exportieren nach LaTeX und plain text mit exportiert.
-\begin_inset LatexCommand index
-name "Notiz!Kommentar"
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -15101,7 +15143,17 @@ name "Notiz!Grauschrift"
 
 \end_inset
 
+ 
+\begin_inset LatexCommand index
+name "Notiz!Kommentar"
 
+\end_inset
+
+ Wenn Ihnen das Standardgrau zu hell ist, können Sie es ändern, wie in 
+\emph on
+Eingebettete Objekte
+\emph default
+ beschrieben.
 \end_layout
 
 \begin_layout Itemize
@@ -15207,7 +15259,7 @@ Fußnote
 \begin_inset Graphics
 	filename clipart/FussnoteQt4.png
 	display none
-	scale 60
+	scale 50
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 116bp 39bp
 
@@ -32966,6 +33018,19 @@ gen
 \family default
  geöffnet.
  Der Baum im linken Teilfenster zeigt, was alles eingestellt werden kann.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{sloppypar}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -34482,6 +34547,14 @@ target "http://www.fonts.com/AboutFonts/Articles/fyti/OldstyleFigs.htm"
 \end_inset
 
 .
+ Siehe auch Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Mediävalziffern-verwenden"
+
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
@@ -34795,19 +34868,24 @@ status collapsed
 X-Vorspann Er enthält LaTeX-Befehle, die nicht zum Klassenstandard gehören.
 \end_layout
 
-\begin_layout Chapter
-In Ly
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
+
+\backslash
+end{sloppypar}
 \end_layout
 
 \end_inset
 
-X verfügbare Maßeinheiten
+
+\end_layout
+
+\begin_layout Chapter
+In LyX verfügbare Maßeinheiten
 \begin_inset LatexCommand label
 name "LyX-Maßeinheiten"
 
