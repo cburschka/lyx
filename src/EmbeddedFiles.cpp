@@ -139,7 +139,7 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 }
 
 
-bool EmbeddedFile::embed(Buffer const * buf)
+bool EmbeddedFile::update(Buffer const * buf) const
 {
 	string ext_file = absFilename();
 	string emb_file = embeddedFile(buf);
@@ -161,17 +161,16 @@ bool EmbeddedFile::embed(Buffer const * buf)
 			if (!fs::is_directory(path))
 				makedir(const_cast<char*>(path.c_str()), 0755);
 			fs::copy_file(ext_file, emb_file, false);
-			embedded_ = true;
 		} catch (fs::filesystem_error const & fe) {
 			Alert::error(_("Copy file failure"),
 				 bformat(_("Cannot copy file %1$s to %2$s.\n"
 					   "Please check whether the directory exists and is writeable."),
 						from_utf8(ext_file), from_utf8(emb_file)));
 			LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
-			embedded_ = false;
+			return false;
 		}
 	}
-	return embedded_;
+	return true;
 }
 
 
@@ -207,7 +206,8 @@ void EmbeddedFiles::registerFile(string const & filename,
 	// find this filename
 	if (it != file_list_.end()) {
 		it->setParIter(pit);
-		it->embed(buffer_);
+		it->update(buffer_);
+		it->setEmbed(true);
 		it->validate();
 		return;
 	}

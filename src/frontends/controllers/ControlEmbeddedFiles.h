@@ -40,17 +40,21 @@ public:
 	///
 	virtual bool canApplyToReadOnly() const { return true; }
 	///
-	void setMessage(std::string const & msg) { message_ = msg; }
+	void dispatchMessage(std::string const & msg);
 	///
-	void dispatchParams();
+	void dispatchParams() {};
 	///
 	void goTo(EmbeddedFile const & item);
 	///
 	void view(EmbeddedFile const & item);
 	///
+	void setEmbed(EmbeddedFile & item, bool embed);
+	///
 	docstring const browseFile();
 	///
 	bool extract(EmbeddedFile const & item);
+	///
+	bool update(EmbeddedFile const & item);
 
 protected:
 	//

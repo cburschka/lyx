@@ -127,6 +127,9 @@ public:
 
 	/// embedding status of this file
 	bool embedded() const { return embedded_; }
+	/// set embedding status. update() should be called before this
+	/// to sync the embedded file with external one.
+	bool setEmbed(bool embed) { embedded_ = embed; }
 
 	// A flag indicating whether or not this filename is valid.
 	// When lyx runs, InsetGraphics etc may be added or removed so filename
@@ -137,10 +140,11 @@ public:
 	bool valid() const { return valid_; }
 	void validate() { valid_ = true; }
 	void invalidate() {	valid_ = false;	}
-	///
+
+	/// extract file, does not change embedding status
 	bool extract(Buffer const * buf) const;
-	///
-	bool embed(Buffer const * buf);
+	/// update embedded file from external file, does not change embedding status
+	bool update(Buffer const * buf) const;
 
 private:
 	/// filename in zip file

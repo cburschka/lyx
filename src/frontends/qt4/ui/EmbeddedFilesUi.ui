@@ -8,7 +8,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>145</width>
+    <width>199</width>
     <height>390</height>
    </rect>
   </property>
@@ -25,7 +25,14 @@
    <item>
     <widget class="QCheckBox" name="enableCB" >
      <property name="text" >
-      <string>Enable embedding</string>
+      <string>Save file in bundled format</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>Embedding status</string>
      </property>
     </widget>
    </item>
@@ -61,6 +68,44 @@
       <number>6</number>
      </property>
      <item>
+      <widget class="QToolButton" name="selectPB" >
+       <property name="toolTip" >
+        <string>Embed selected files</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset>../../../../lib/images/tabular-feature_set-all-lines.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="unselectPB" >
+       <property name="toolTip" >
+        <string>Do not embed selected files</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset>../../../../lib/images/tabular-feature_set-all-lines.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QToolButton" name="addPB" >
        <property name="toolTip" >
         <string>Add embedded file</string>
@@ -82,7 +127,7 @@
      <item>
       <widget class="QToolButton" name="extractPB" >
        <property name="toolTip" >
-        <string>Extract selected file.</string>
+        <string>Extract selected file, without changing embedding status.</string>
        </property>
        <property name="text" >
         <string>...</string>
@@ -107,7 +152,7 @@
         <string>...</string>
        </property>
        <property name="icon" >
-        <iconset>../../../../lib/images/copy.png</iconset>
+        <iconset>../../../../lib/images/depth-decrement.png</iconset>
        </property>
        <property name="iconSize" >
         <size>

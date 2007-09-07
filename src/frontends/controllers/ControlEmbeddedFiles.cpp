@@ -59,10 +59,11 @@ void ControlEmbeddedFiles::updateEmbeddedFiles()
 }
 
 
-void ControlEmbeddedFiles::dispatchParams()
+void ControlEmbeddedFiles::dispatchMessage(string const & msg)
 {
+	// FIXME: the right thing to do? QT guys?
 	// lyx view will only be updated if we do something to the main window. :-)
-	kernel().dispatch(FuncRequest(LFUN_MESSAGE, message_));
+	kernel().dispatch(FuncRequest(LFUN_MESSAGE, msg));
 }
 
 
@@ -82,6 +83,16 @@ void ControlEmbeddedFiles::view(EmbeddedFile const & item)
 }
 
 
+void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed)
+{
+	if (embed)
+		item.update(&kernel().buffer());
+	else
+		item.extract(&kernel().buffer());
+	item.setEmbed(embed);
+}
+
+
 docstring const ControlEmbeddedFiles::browseFile()
 {
 	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),
@@ -98,6 +109,11 @@ bool ControlEmbeddedFiles::extract(EmbeddedFile const & item)
 	return item.extract(&kernel().buffer());
 }
 
+
+bool ControlEmbeddedFiles::update(EmbeddedFile const & item)
+{
+	return item.update(&kernel().buffer());
+}
 
 } // namespace frontend
 } // namespace lyx

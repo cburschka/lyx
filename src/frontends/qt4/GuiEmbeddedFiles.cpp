@@ -17,10 +17,6 @@
 namespace lyx {
 namespace frontend {
 
-static QString const INVALID_COLOR = "gray";
-static QString const EMBEDDED_COLOR = "black";
-static QString const EXTERNAL_COLOR = "blue";
-
 
 GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(LyXView & lv)
 	: GuiDialog(lv, "embedding")
@@ -44,34 +40,56 @@ ControlEmbeddedFiles & GuiEmbeddedFilesDialog::controller() const
 }
 
 
+void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
+{
+	EmbeddedFiles & files = controller().embeddedFiles();
+	if (item->checkState() == Qt::Checked) {
+		controller().setEmbed(files[filesLW->row(item)], true);
+		controller().dispatchMessage("Embed file " + fromqstr(item->text()));
+	} else {
+		controller().setEmbed(files[filesLW->row(item)], false);
+		controller().dispatchMessage("Stop embedding file " + fromqstr(item->text()));
+	}
+}
+
+
 void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 {
 	EmbeddedFiles & files = controller().embeddedFiles();
 
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 
+	if (selection.empty()) {
+		fullpathLE->setEnabled(false);
+		selectPB->setEnabled(false);
+		unselectPB->setEnabled(false);
+		extractPB->setEnabled(false);
+		updatePB->setEnabled(false);
+		return;
+	}
+	
 	fullpathLE->setEnabled(selection.size() == 1);
 
-	// try to find a common mode, otherwise return NONE.
+	// try to find a common embedding status
 	QList<QListWidgetItem*>::iterator it = selection.begin(); 
 	QList<QListWidgetItem*>::iterator it_end = selection.end(); 
 	// if the selection is not empty
 	if (it != it_end) {
 		int idx = filesLW->row(*it);
 		fullpathLE->setText(toqstr(files[idx].absFilename()));
-		// go to the first selected item
 		controller().goTo(files[idx]);
 	}
-
-	bool mode = false;
+	// are the items all selected or unselected?
+	bool hasSelected = false;
+	bool hasUnselected = false;
 	for (; it != it_end; ++it) {
-		int idx = filesLW->row(*it);
-		if (mode) {
-			mode = true;
-			continue;
-		}
+		if ((*it)->checkState() == Qt::Checked)
+			hasSelected = true;
+		else
+			hasUnselected = true;
 	}
-			
+	selectPB->setEnabled(hasUnselected);
+	unselectPB->setEnabled(hasSelected);
 }
 
 
@@ -86,25 +104,48 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked()
 void GuiEmbeddedFilesDialog::updateView()
 {
 	filesLW->clear();
-	
 	//
 	EmbeddedFiles const & files = controller().embeddedFiles();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
 	for (; it != it_end; ++it) {
 		QListWidgetItem * item = new QListWidgetItem(toqstr(it->inzipName()));
-		if (!it->valid())
-			item->setTextColor(INVALID_COLOR);
-		else if(it->embedded())
-			item->setTextColor(EMBEDDED_COLOR);
+		Qt::ItemFlags flag = Qt::ItemIsUserCheckable | Qt::ItemIsSelectable;
+		if (it->valid())
+			flag |= Qt::ItemIsEnabled;
+		item->setFlags(flag);
+		if(it->embedded())
+			item->setCheckState(Qt::Checked);
 		else
-			item->setTextColor(EXTERNAL_COLOR);
+			item->setCheckState(Qt::Unchecked);
 		filesLW->addItem(item);
 	}
-	//
-	bool enabled = files.enabled();
-	enableCB->setChecked(enabled);
-	fullpathLE->setEnabled(enabled);
+}
+
+
+void GuiEmbeddedFilesDialog::on_selectPB_clicked()
+{
+	EmbeddedFiles & files = controller().embeddedFiles();
+	QList<QListWidgetItem *> selection = filesLW->selectedItems();
+	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
+		it != selection.end(); ++it) {
+		(*it)->setCheckState(Qt::Checked);
+		controller().setEmbed(files[filesLW->row(*it)], true);
+	}
+	controller().dispatchMessage("Embedding files");
+}
+
+
+void GuiEmbeddedFilesDialog::on_unselectPB_clicked()
+{
+	EmbeddedFiles & files = controller().embeddedFiles();
+	QList<QListWidgetItem *> selection = filesLW->selectedItems();
+	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
+		it != selection.end(); ++it) {
+		(*it)->setCheckState(Qt::Checked);
+		controller().setEmbed(files[filesLW->row(*it)], false);
+	}
+	controller().dispatchMessage("Stop embedding files");
 }
 
 
@@ -114,7 +155,8 @@ void GuiEmbeddedFilesDialog::on_addPB_clicked()
 	if (!file.empty()) {
 		EmbeddedFiles & files = controller().embeddedFiles();
 		files.registerFile(to_utf8(file), true);
-	}		
+	}
+	controller().dispatchMessage("Add an embedded file");
 }
 
 
@@ -125,46 +167,33 @@ void GuiEmbeddedFilesDialog::on_extractPB_clicked()
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it)
 		controller().extract(files[filesLW->row(*it)]);
+	// FIXME: collect extraction status and display a dialog
+	controller().dispatchMessage("Extract embedded files");
 }
+
+
+void GuiEmbeddedFilesDialog::on_updatePB_clicked()
+{
+	EmbeddedFiles const & files = controller().embeddedFiles();
+	QList<QListWidgetItem *> selection = filesLW->selectedItems();
+	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
+		it != selection.end(); ++it)
+		controller().update(files[filesLW->row(*it)]);
+	// FIXME: collect update status and display a dialog
+	controller().dispatchMessage("Update embedded files from external file");
+}
+
 
 
 void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
 {
-	// FIXME:
-	//
-	// When a embedded file is turned to disabled, it should save its
-	// embedded files. Otherwise, embedded files will be lost!!!
 	//
 	controller().embeddedFiles().enable(enable);
 	// immediately post the change to buffer (and bufferView)
 	if (enable)
-		controller().setMessage("Enable file embedding");
+		controller().dispatchMessage("Enable file embedding");
 	else
-		controller().setMessage("Disable file embedding");
-	// update bufferView
-	controller().dispatchParams();
-}
-
-
-void GuiEmbeddedFilesDialog::set_embedding_status(bool embed)
-{
-	EmbeddedFiles & files = controller().embeddedFiles();
-	QList<QListWidgetItem *> selection = filesLW->selectedItems();
-	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
-		it != selection.end(); ++it) {
-		int row = filesLW->row(*it);
-		// FIXME: mark buffer dirty
-		if(embed)
-			(*it)->setTextColor(EMBEDDED_COLOR);
-		else
-			(*it)->setTextColor(EXTERNAL_COLOR);
-	}
-	if (embed)
-		controller().setMessage("Embed file");
-	else
-		controller().setMessage("Extract file");
-	// update bufferView
-	controller().dispatchParams();
+		controller().dispatchMessage("Disable file embedding");
 }
 
 

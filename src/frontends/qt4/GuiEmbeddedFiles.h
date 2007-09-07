@@ -29,17 +29,19 @@ public:
 
 public Q_SLOTS:
 	///
+	void on_filesLW_itemChanged(QListWidgetItem* item);
 	void on_filesLW_itemSelectionChanged();
-	///
 	void on_filesLW_itemDoubleClicked();
 	///
 	void updateView();
 	///
 	void on_enableCB_toggled(bool enable);
 	///
+	void on_selectPB_clicked();
+	void on_unselectPB_clicked();
 	void on_addPB_clicked();
-	//
 	void on_extractPB_clicked();
+	void on_updatePB_clicked();
 
 private:
 	ControlEmbeddedFiles & controller() const;
