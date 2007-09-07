@@ -18,7 +18,6 @@ namespace lyx {
 namespace frontend {
 
 static QString const INVALID_COLOR = "gray";
-static QString const AUTO_COLOR = "green";
 static QString const EMBEDDED_COLOR = "black";
 static QString const EXTERNAL_COLOR = "blue";
 
@@ -64,22 +63,15 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 		controller().goTo(files[idx]);
 	}
 
-	EmbeddedFile::STATUS mode = EmbeddedFile::NONE;
+	bool mode = false;
 	for (; it != it_end; ++it) {
 		int idx = filesLW->row(*it);
-		if (mode == EmbeddedFile::NONE) {
-			mode = files[idx].status();
+		if (mode) {
+			mode = true;
 			continue;
-		}
-		if (mode != files[idx].status()) {
-			mode = EmbeddedFile::NONE;
-			break;
 		}
 	}
 			
-	autoRB->setChecked(mode == EmbeddedFile::AUTO);
-	embeddedRB->setChecked(mode == EmbeddedFile::EMBEDDED);
-	externalRB->setChecked(mode == EmbeddedFile::EXTERNAL);
 }
 
 
@@ -103,9 +95,7 @@ void GuiEmbeddedFilesDialog::updateView()
 		QListWidgetItem * item = new QListWidgetItem(toqstr(it->inzipName()));
 		if (!it->valid())
 			item->setTextColor(INVALID_COLOR);
-		else if(it->status() == EmbeddedFile::AUTO)
-			item->setTextColor(AUTO_COLOR);
-		else if(it->status() == EmbeddedFile::EMBEDDED)
+		else if(it->embedded())
 			item->setTextColor(EMBEDDED_COLOR);
 		else
 			item->setTextColor(EXTERNAL_COLOR);
@@ -124,7 +114,7 @@ void GuiEmbeddedFilesDialog::on_addPB_clicked()
 	docstring const file = controller().browseFile();
 	if (!file.empty()) {
 		EmbeddedFiles & files = controller().embeddedFiles();
-		files.registerFile(to_utf8(file), EmbeddedFile::EMBEDDED);
+		files.registerFile(to_utf8(file), true);
 	}		
 }
 
@@ -157,7 +147,7 @@ void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
 }
 
 
-void GuiEmbeddedFilesDialog::set_embedding_status(EmbeddedFile::STATUS status)
+void GuiEmbeddedFilesDialog::set_embedding_status(bool embed)
 {
 	EmbeddedFiles & files = controller().embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
@@ -165,44 +155,29 @@ void GuiEmbeddedFilesDialog::set_embedding_status(EmbeddedFile::STATUS status)
 		it != selection.end(); ++it) {
 		int row = filesLW->row(*it);
 		// FIXME: mark buffer dirty
-		if (status != files[row].status())
-			files[row].setStatus(status);			
-		if(status == EmbeddedFile::AUTO)
-			(*it)->setTextColor(AUTO_COLOR);
-		else if(status == EmbeddedFile::EMBEDDED)
+		if(embed)
 			(*it)->setTextColor(EMBEDDED_COLOR);
 		else
 			(*it)->setTextColor(EXTERNAL_COLOR);
 	}
-	if (status == EmbeddedFile::AUTO)
-		controller().setMessage("Switch to auto embedding");
-	else if (status == EmbeddedFile::EMBEDDED)
-		controller().setMessage("Switch to always embedding");
+	if (embed)
+		controller().setMessage("Embed file");
 	else
-		controller().setMessage("Switch to never embedding");
-	autoRB->setChecked(status == EmbeddedFile::AUTO);
-	embeddedRB->setChecked(status == EmbeddedFile::EMBEDDED);
-	externalRB->setChecked(status == EmbeddedFile::EXTERNAL);
+		controller().setMessage("Extract file");
 	// update bufferView
 	controller().dispatchParams();
 }
 
 
-void GuiEmbeddedFilesDialog::on_autoRB_clicked()
-{
-	set_embedding_status(EmbeddedFile::AUTO);
-}
-
-
 void GuiEmbeddedFilesDialog::on_embeddedRB_clicked()
 {
-	set_embedding_status(EmbeddedFile::EMBEDDED);
+	set_embedding_status(true);
 }
 
 
 void GuiEmbeddedFilesDialog::on_externalRB_clicked()
 {
-	set_embedding_status(EmbeddedFile::EXTERNAL);
+	set_embedding_status(false);
 }
 
 

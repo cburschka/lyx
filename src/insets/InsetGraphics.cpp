@@ -235,7 +235,7 @@ void InsetGraphics::registerEmbeddedFiles(Buffer const &,
 	EmbeddedFiles & files, ParConstIterator const & pit) const
 {
 	files.registerFile(params().filename.absFilename(), 
-		EmbeddedFile::AUTO, pit);
+		false, pit);
 }
 
 

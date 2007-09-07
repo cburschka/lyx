@@ -964,7 +964,7 @@ void InsetInclude::registerEmbeddedFiles(Buffer const & buffer,
 	// include and input are temprarily not considered.
 	if (isVerbatim(params_) || isListings(params_))
 		files.registerFile(includedFilename(buffer, params_).absFilename(),
-			EmbeddedFile::AUTO, pit);
+			false, pit);
 }
 
 

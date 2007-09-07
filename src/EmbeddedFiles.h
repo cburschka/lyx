@@ -33,20 +33,10 @@ Expected features:
 1. With embedding enabled (disabled by default), .lyx file can embed graphics,
 listings, bib file etc.
 
-2. Embedding of certain files are automatic (graphics, bib etc), and
-other files can be embedded manually.
-
-3. Embedded file.lyx file is a zip file, with file.lyx, manifest.txt
+2. Embedded file.lyx file is a zip file, with file.lyx, manifest.txt
 and embedded files. 
 
-4. Embedded files can be "EMBEDDED", "EXTERNAL", or "AUTO". In the
-"AUTO" mode, external files will be used if available; otherwise the
-embedded version will be used. In this way, users can work as usual by
-modifying external listings, graphics, and do not have to worry about
-embedding. "EMBEDDED" and "EXTERNAL" modes ignore or use external files
-respectively.
-
-5. An embedding dialog is provided to change embedding status (buffer
+3. An embedding dialog is provided to change embedding status (buffer
 level or individual embedded files), manually embed, extract, view
 or edit files.
 
@@ -59,9 +49,11 @@ of .lyx file and better use of version control systems.
 b. The embedded way. Figures etc are inserted to .lyx file and will
 be embedded. These embedded files can be viewed or edited through
 the embedding dialog. This file can be shared with others more
-easily. The advantage of lyx' embedding approach is that external files
-will be automatically used and embedded if the file is in "AUTO" mode.
+easily. 
 
+Format a anb b can be converted easily, by enable/disable embedding. Diabling
+embedding is also called unpacking because all embedded files will be copied
+to their original locations.
 
 Implementation:
 ======================
@@ -73,12 +65,11 @@ This class keeps a manifest that has
   b. inzip filename. It is the relative path name if the embedded file is
     in or under the document directory, or file name otherwise. Name aliasing
     is used if two external files share the same name.
-  c. embedding mode.
+  c. embedding status.
 It also provides functions to
   a. manipulate manifest
   b. scan a buffer for embeddable files
-  c. look up inzipname from external filename
-  d. look up external filename from inzipname
+  c. determine which file to use according to embedding status
 
 2. When a file is saved, it is scanned for embedded files. (c.f.
 EmbeddedFiles::update(), Inset::registerEmbeddedFiles()).
@@ -99,18 +90,11 @@ a embedding dialog. It handles a EmbddedFiles point directly.
 From this dialog, a user can disable embedding, change embedding status,
 or embed other files, extract, view, edit files.
 
-6. When a lyx file is loaded, Embedded files can have
-  a. both external and internal copy
-  b. only external copy (filename())
-  c. only embedded copy (temppath()/inzipname)
-And each can have "AUTO", "EXTERNAL", "EMBEDDED" status. Proper
-handling of each case is required.
-
-7. If embedding of a .lyx file with embedded files is disabled, all its
+6. If embedding of a .lyx file with embedded files is disabled, all its
 embedded files are copied to their respective external filenames. This
 is why external filename will exist even if a file is at "EMBEDDED" status.
 
-8. Individual embeddable insets should find ways to handle embedded files.
+7. Individual embeddable insets should find ways to handle embedded files.
 InsetGraphics replace params().filename with its temppath()/inzipname version
 when the inset is created. The filename appears as /tmp/..../inzipname
 when lyx runs. When params().filename is saved, lyx checks if this is an
@@ -127,32 +111,14 @@ class Buffer;
 class EmbeddedFile : public support::DocFileName
 {
 public:
-	/**
-		Embedding status of this DocFileName.
-	 */
-	enum STATUS {
-		// uninitialized/invalid status
-		NONE,
-		// If the external version of the file is available, it will be used
-		// to generate output, and be embedded to the saved lyx file.
-		// Otherwise, embedded version will be used.
-		AUTO,
-		// Always use embedded version. The file will be embedded even
-		// if the file is no longer referred by the document.
-		EMBEDDED,
-		// Do not embed this file, always use external version.
-		EXTERNAL
-	};
-
 	EmbeddedFile(std::string const & file, std::string const & inzip_name,
-		STATUS status, ParConstIterator const & pit);
+		bool embedded, ParConstIterator const & pit);
 
 	/// filename in the zip file, usually the relative path
 	std::string inzipName() const { return inzip_name_; }
 	/// embedded file, equals to temppath()/inzipName()
 	std::string embeddedFile(Buffer const * buf) const;
-	/// embeddedFile() or absFilename() depending on status_ and 
-	/// file availability
+	/// embeddedFile() or absFilename() depending on embedding status
 	std::string availableFile(Buffer const * buf) const;
 
 	/// paragraph id
@@ -160,9 +126,7 @@ public:
 	int const parID() const;
 
 	/// embedding status of this file
-	bool embedded() const { return status_ != EXTERNAL; }
-	STATUS status() const { return status_; }
-	void setStatus(STATUS status) {	status_ = status; }
+	bool embedded() const { return embedded_; }
 
 	// A flag indicating whether or not this filename is valid.
 	// When lyx runs, InsetGraphics etc may be added or removed so filename
@@ -175,12 +139,14 @@ public:
 	void invalidate() {	valid_ = false;	}
 	///
 	bool extract(Buffer const * buf) const;
+	///
+	bool embed(Buffer const * buf);
 
 private:
 	/// filename in zip file
 	std::string inzip_name_;
 	/// the status of this docfile
-	STATUS status_;
+	bool embedded_;
 	///
 	bool valid_;
 	/// Current position of the item, used to locate the files
@@ -205,8 +171,7 @@ public:
 	void enable(bool flag);
 
 	/// add a file item
-	void registerFile(std::string const & filename,
-		EmbeddedFile::STATUS status = EmbeddedFile::AUTO,
+	void registerFile(std::string const & filename, bool embed = false,
 		ParConstIterator const & pit = ParConstIterator());
 
 	/// scan the buffer and get a list of EmbeddedFile

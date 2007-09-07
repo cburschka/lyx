@@ -67,8 +67,8 @@ using support::makedir;
 
 
 EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,
-	STATUS status, ParConstIterator const & pit)
-	: DocFileName(file, true), inzip_name_(inzip_name), status_(status),
+	bool embed, ParConstIterator const & pit)
+	: DocFileName(file, true), inzip_name_(inzip_name), embedded_(embed),
 		valid_(true), par_it_(pit)
 {}
 
@@ -94,36 +94,23 @@ void EmbeddedFile::setParIter(ParConstIterator const & pit)
 
 string EmbeddedFile::availableFile(Buffer const * buf) const
 {
-	string ext_file = absFilename();
-	string emb_file = embeddedFile(buf);
-	if (status_ == AUTO) {
-		// use external file first
-		if (fs::exists(ext_file))
-			return ext_file;
-		else if (fs::exists(emb_file))
-			return emb_file;
-		else
-			return string();
-	} else if (status_ == EMBEDDED) {
-		// use embedded file first
-		if (fs::exists(emb_file))
-			return emb_file;
-		else if (fs::exists(ext_file))
-			return ext_file;
-		else
-			return string();
-	} else
-		return string();
+	if (embedded_)
+		return embeddedFile(buf);
+	else
+		return absFilename();
 }
 
 
 bool EmbeddedFile::extract(Buffer const * buf) const
 {
+	if (!embedded_)
+		return true;
+
 	string ext_file = absFilename();
 	string emb_file = embeddedFile(buf);
 	bool copyFile = false;
-	// both files exist, are different, and in EMBEDDED status
-	if (fs::exists(ext_file) && fs::exists(emb_file) && status_ == EMBEDDED
+	// both files exist, are different
+	if (fs::exists(ext_file) && fs::exists(emb_file)
 		&& sum(*this) != sum(FileName(emb_file))) {
 		int const ret = Alert::prompt(
 			_("Overwrite external file?"),
@@ -151,7 +138,43 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	return false;
 }
 
- 
+
+bool EmbeddedFile::embed(Buffer const * buf)
+{
+	string ext_file = absFilename();
+	string emb_file = embeddedFile(buf);
+	bool copyFile = false;
+	// both files exist, are different
+	if (fs::exists(ext_file) && fs::exists(emb_file)
+		&& sum(*this) != sum(FileName(emb_file))) {
+		int const ret = Alert::prompt(
+			_("Update embedded file?"),
+			bformat(_("Embeddedl file %1$s already exists, do you want to overwrite it"),
+				from_utf8(ext_file)), 1, 1, _("&Overwrite"), _("&Cancel"));
+		copyFile = ret == 0;
+	}
+	// copy file in the previous case, and a new case
+	if (copyFile || (fs::exists(ext_file) && !fs::exists(emb_file))) {
+		try {
+			// need to make directory?
+			string path = onlyPath(emb_file);
+			if (!fs::is_directory(path))
+				makedir(const_cast<char*>(path.c_str()), 0755);
+			fs::copy_file(ext_file, emb_file, false);
+			embedded_ = true;
+		} catch (fs::filesystem_error const & fe) {
+			Alert::error(_("Copy file failure"),
+				 bformat(_("Cannot copy file %1$s to %2$s.\n"
+					   "Please check whether the directory exists and is writeable."),
+						from_utf8(ext_file), from_utf8(emb_file)));
+			LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
+			embedded_ = false;
+		}
+	}
+	return embedded_;
+}
+
+
 bool EmbeddedFiles::enabled() const
 {
 	return buffer_->params().embedded;
@@ -172,7 +195,7 @@ void EmbeddedFiles::enable(bool flag)
 
 
 void EmbeddedFiles::registerFile(string const & filename,
-	EmbeddedFile::STATUS status, ParConstIterator const & pit)
+	bool embed, ParConstIterator const & pit)
 {
 	string abs_filename = makeAbsPath(filename, buffer_->filePath()).absFilename();
 	// try to find this file from the list
@@ -184,12 +207,12 @@ void EmbeddedFiles::registerFile(string const & filename,
 	// find this filename
 	if (it != file_list_.end()) {
 		it->setParIter(pit);
-		it->setStatus(status);
+		it->embed(buffer_);
 		it->validate();
 		return;
 	}
 	file_list_.push_back(EmbeddedFile(abs_filename, 
-		getInzipName(abs_filename), status, pit));
+		getInzipName(abs_filename), embed, pit));
 }
 
 
@@ -202,10 +225,7 @@ void EmbeddedFiles::update()
 	EmbeddedFileList::iterator it = file_list_.begin();
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it)
-		// Only AUTO files will be updated. If the status of a file is EMBEDDED, 
-		// it will be embedded even if it is not referred by a document.
-		if (it->status() == EmbeddedFile::AUTO)
-			it->invalidate();
+		it->invalidate();
 
 	ParIterator pit = buffer_->par_iterator_begin();
 	ParIterator pit_end = buffer_->par_iterator_end();
@@ -294,7 +314,7 @@ bool EmbeddedFiles::extractAll() const
 	// 'do not overwrite' this file, and cancel for 'cancel extract all files'.
 	// I am not sure how to do this now.
 	for (; it != it_end; ++it)
-		if (it->valid() && it->status() != EmbeddedFile::EXTERNAL)
+		if (it->valid() && it->embedded())
 			it->extract(buffer_);
 	return true;
 }
@@ -366,8 +386,8 @@ istream & operator>> (istream & is, EmbeddedFiles & files)
 		getline(is, inzip_name);
 		getline(is, tmp);
 		istringstream itmp(tmp);
-		int status;
-		itmp >> status;
+		int embed;
+		itmp >> embed;
 
 		getline(is, tmp);
 		if (tmp != "</file>") {
@@ -375,7 +395,7 @@ istream & operator>> (istream & is, EmbeddedFiles & files)
 			break;
 		}
 
-		files.registerFile(fname, static_cast<EmbeddedFile::STATUS>(status));
+		files.registerFile(fname, embed);
 	};
 	// the last line must be </manifest>
 	if (tmp != "</manifest>") {
@@ -403,7 +423,7 @@ ostream & operator<< (ostream & os, EmbeddedFiles const & files)
 			<< to_utf8(makeRelPath(from_utf8(it->absFilename()),
 				from_utf8(files.buffer_->filePath()))) << '\n'
 			<< it->inzipName() << '\n'
-			<< it->status() << '\n'
+			<< it->embedded() << '\n'
 			<< "</file>\n";
 	}
 	os << "</manifest>\n";

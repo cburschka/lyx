@@ -37,7 +37,6 @@ public Q_SLOTS:
 	///
 	void on_enableCB_toggled(bool enable);
 	///
-	void on_autoRB_clicked();
 	void on_embeddedRB_clicked();
 	void on_externalRB_clicked();
 	///
@@ -47,7 +46,7 @@ public Q_SLOTS:
 
 private:
 	ControlEmbeddedFiles & controller() const;
-	void set_embedding_status(EmbeddedFile::STATUS);
+	void set_embedding_status(bool embed);
 };
 
 } // namespace frontend
