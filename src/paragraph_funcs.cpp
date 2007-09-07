@@ -134,7 +134,10 @@ void breakParagraph(BufferParams const & bparams,
 	}
 
 	if (!isempty) {
+		bool const soa = par.params().startOfAppendix();
 		par.params().clear();
+		// do not lose start of appendix marker (bug 4212)
+		par.params().startOfAppendix(soa);
 		par.layout(bparams.getTextClass().defaultLayout());
 	}
 
