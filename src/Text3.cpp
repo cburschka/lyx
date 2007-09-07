@@ -294,7 +294,7 @@ bool Text::isRTL(Buffer const & buffer, Paragraph const & par) const
 
 bool Text::isRTL(Buffer const & buffer, CursorSlice const & sl, bool boundary) const
 {
-	if (!lyxrc.rtl_support && !sl.text())
+	if (!lyxrc.rtl_support || !sl.text())
 		return false;
 
 	int correction = 0;
