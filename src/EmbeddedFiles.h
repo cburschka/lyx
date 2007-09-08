@@ -134,7 +134,7 @@ public:
 	bool embedded() const { return embedded_; }
 	/// set embedding status. updateFromExternal() should be called before this
 	/// to copy or sync the embedded file with external one.
-	bool setEmbed(bool embed) { embedded_ = embed; }
+	void setEmbed(bool embed) { embedded_ = embed; }
 
 	// A flag indicating whether or not this filename is valid.
 	// When lyx runs, InsetGraphics etc may be added or removed so filename
