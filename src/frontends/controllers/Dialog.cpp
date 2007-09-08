@@ -85,7 +85,7 @@ void Dialog::hide()
 
 	controller().clearParams();
 	hideView();
-	kernel().disconnect(name());
+	kernel().disconnect(name_);
 }
 
 
@@ -101,7 +101,7 @@ void Dialog::apply()
 	controller().dispatchParams();
 
 	if (controller().disconnectOnApply() && !is_closing_) {
-		kernel().disconnect(name());
+		kernel().disconnect(name_);
 		controller().initialiseParams(string());
 		updateView();
 	}
@@ -134,7 +134,7 @@ Dialog::Controller::Controller(Dialog & parent)
 
 bool Dialog::Controller::canApply() const
 {
-	FuncRequest const fr(getLfun(), dialog().name());
+	FuncRequest const fr(getLfun(), dialog().name_);
 	FuncStatus const fs(getStatus(fr));
 	return fs.enabled();
 }

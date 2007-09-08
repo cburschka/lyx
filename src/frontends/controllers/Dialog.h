@@ -36,11 +36,6 @@ public:
 	Dialog(LyXView & lv, std::string const & name);
 	virtual ~Dialog();
 
-	/** The Dialog's name is the means by which a dialog identifies
-	 *  itself to the kernel.
-	 */
-	std::string const & name() const { return name_; }
-
 	/** \name Container Access
 	 *  These methods are publicly accessible because they are invoked
 	 *  by the parent container acting on commands from the LyX kernel.
@@ -162,6 +157,9 @@ protected:
 
 	bool is_closing_;
 	Kernel kernel_;
+	/** The Dialog's name is the means by which a dialog identifies
+	 *  itself to the kernel.
+	 */
 	std::string name_;
 	boost::scoped_ptr<Controller> controller_ptr_;
 
