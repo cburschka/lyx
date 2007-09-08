@@ -1227,18 +1227,17 @@ void BufferParams::setTextClass(TextClass_ptr tc) {
 
 bool BufferParams::setBaseClass(textclass_type tc)
 {
-	bool retVal = true;
-	if (textclasslist[tc].load())
-		baseClass_ = tc;
-	else {
-		docstring s = 
-			bformat(_("The document class %1$s could not be loaded."),
+	if (!textclasslist[tc].load()) {
+		docstring s = bformat(_("The document class %1$s."
+					"could not be loaded."),
 		 from_utf8(textclasslist[tc].name()));
 		frontend::Alert::error(_("Could not load class"), s);
-		retVal = false;
+		return false;
 	}
+	
+	baseClass_ = tc;
 	makeTextClass();
-	return retVal;
+	return true;
 }
 
 

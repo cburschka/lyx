@@ -66,12 +66,11 @@ TextClassList::numberOfClass(string const & textclass) const
 TextClass const &
 TextClassList::operator[](textclass_type textclass) const
 {
-	if (textclass >= classlist_.size())
-		return classlist_[0];
-	
-	//FIXME I don't believe the following line is actually necessary (rgh)
 	classlist_[textclass].load();
-	return classlist_[textclass];
+	if (textclass < classlist_.size())
+		return classlist_[textclass];
+	else
+		return classlist_[0];
 }
 
 
@@ -173,16 +172,6 @@ bool TextClassList::read()
 	// Ok everything loaded ok, now sort the list.
 	sort(classlist_.begin(), classlist_.end(), less_textclass_avail_desc());
 	return true;
-}
-
-
-void TextClassList::reset(textclass_type const textclass) {
-	if (textclass >= classlist_.size())
-		return;
-	TextClass const & tc = classlist_[textclass];
-	TextClass tmpl(tc.name(), tc.latexname(), tc.description(), 
-	               tc.isTeXClassAvailable());
-	classlist_[textclass] = tmpl;
 }
 
 

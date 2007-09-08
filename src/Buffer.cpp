@@ -531,9 +531,8 @@ bool Buffer::readDocument(Lexer & lex)
 	BOOST_ASSERT(paragraphs().empty());
 
 	readHeader(lex);
-	TextClass const & baseClass = textclasslist[params().getBaseClass()];
-	if (!baseClass.load(filePath())) {
-		string theclass = baseClass.name();
+	if (!params().getTextClass().load(filePath())) {
+		string theclass = params().getTextClass().name();
 		Alert::error(_("Can't load document class"), bformat(
 			_("Using the default document class, because the "
 				     "class %1$s could not be loaded."), from_utf8(theclass)));
