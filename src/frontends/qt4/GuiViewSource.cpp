@@ -29,6 +29,7 @@ GuiViewSourceDialog::GuiViewSourceDialog(ControlViewSource & controller)
 		highlighter_(new LaTeXHighlighter(document_))
 {
 	setupUi(this);
+	setWindowTitle();
 
 	connect(viewFullSourceCB, SIGNAL(clicked()),
 		this, SLOT(update()));

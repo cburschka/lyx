@@ -6,6 +6,7 @@
  * \author John Levon
  * \author Angus Leeming
  * \author Bo Peng
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
