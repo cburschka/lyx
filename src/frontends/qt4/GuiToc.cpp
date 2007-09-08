@@ -18,15 +18,9 @@
 
 #include "debug.h"
 
-#include "ControlToc.h"
-
 #include <algorithm>
 
 using std::endl;
-
-using std::pair;
-using std::vector;
-using std::string;
 
 namespace lyx {
 namespace frontend {
@@ -35,14 +29,6 @@ namespace frontend {
 GuiToc::GuiToc(Dialog & dialog)
 	: ControlToc(dialog)
 {
-#ifdef Q_WS_MACX
-		// On Mac show as a drawer at the right
-	//setView(new DockView<GuiToc, TocWidget>(
-	//		*dialog, qtoc, &gui_view, _("Outline"), Qt::RightDockWidgetArea, Qt::Drawer));
-#else
-	//setView(new DockView<GuiToc, TocWidget>(
-//			*dialog, qtoc, &gui_view, _("Outline")));
-#endif
 }
 
 
