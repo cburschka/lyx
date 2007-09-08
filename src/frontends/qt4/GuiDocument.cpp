@@ -830,14 +830,14 @@ void GuiDocumentDialog::updatePagestyle(string const & items, string const & sel
 		return;
 	}
 
-	int n = 0;
+	int nn = 0;
 
 	for (size_t i = 0; i < pagestyles.size(); ++i)
 		if (pagestyles[i].first == sel)
-			n = pageLayoutModule->pagestyleCO->findText(
+			nn = pageLayoutModule->pagestyleCO->findText(
 					toqstr(pagestyles[i].second));
 
-	if (n > 0)
+	if (nn > 0)
 		pageLayoutModule->pagestyleCO->setCurrentIndex(n);
 }
 

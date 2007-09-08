@@ -50,8 +50,6 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 {
-	EmbeddedFiles & files = controller_.embeddedFiles();
-
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 
 	if (selection.empty()) {
