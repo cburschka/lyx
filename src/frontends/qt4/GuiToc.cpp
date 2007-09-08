@@ -36,8 +36,7 @@ bool GuiToc::canOutline(int type) const
 {
 	if (type < 0)
 		return false;
-
-	return canOutline(type);
+	return ControlToc::canOutline(type);
 }
 
 
