@@ -155,6 +155,25 @@ def revert_begin_modules(document):
             break
         document.header[i : j + 1] = []
 
+def convert_flex(document):
+    "Convert CharStyle to Flex"
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CharStyle", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_inset CharStyle', '\\begin_inset Flex')
+
+def revert_flex(document):
+    "Convert Flex to CharStyle"
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_inset Flex', '\\begin_inset CharStyle')
+
+
 
 ##
 # Conversion hub
@@ -167,10 +186,12 @@ convert = [
            [279, [long_charstyle_names]],
            [280, [axe_show_label]],
            [281, []],
-           [282, []]
+           [282, []],
+           [283, [convert_flex]]
           ]
 
 revert =  [
+           [282, [revert_flex]],
            [281, []],
            [280, [revert_begin_modules]],
            [279, [revert_show_label]],

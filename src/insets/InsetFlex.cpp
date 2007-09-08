@@ -78,7 +78,7 @@ void InsetFlex::setLayout(InsetLayout il)
 
 docstring const InsetFlex::editMessage() const
 {
-	return _("Opened CharStyle Inset");
+	return _("Opened Flex Inset");
 }
 
 
@@ -137,7 +137,7 @@ bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
-		// paragraph breaks not allowed in charstyle insets
+		// paragraph breaks not allowed in flex insets
 		case LFUN_BREAK_PARAGRAPH:
 		case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 		case LFUN_BREAK_PARAGRAPH_SKIP:
@@ -190,7 +190,7 @@ void InsetFlex::textString(Buffer const & buf, odocstream & os) const
 
 void InsetFlexParams::write(ostream & os) const
 {
-	os << "CharStyle " << name << "\n";
+	os << "Flex " << name << "\n";
 }
 
 
@@ -200,7 +200,7 @@ void InsetFlexParams::read(Lexer & lex)
 		lex.next();
 		string token = lex.getString();
 
-		if (token == "CharStyle") {
+		if (token == "Flex") {
 			lex.next();
 			name = lex.getString();
 		}
