@@ -19,7 +19,7 @@
 
 #include <QTextCursor>
 #include <QTextDocument>
-
+#include <boost/tuple/tuple.hpp>
 
 namespace lyx {
 namespace frontend {
