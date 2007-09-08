@@ -35,7 +35,7 @@ using support::FileFilterList;
 namespace frontend {
 
 ControlEmbeddedFiles::ControlEmbeddedFiles(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

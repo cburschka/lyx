@@ -24,7 +24,7 @@ namespace lyx {
 namespace frontend {
 
 ControlTabular::ControlTabular(Dialog & parent)
-	: Dialog::Controller(parent), active_cell_(Tabular::npos)
+	: Controller(parent), active_cell_(Tabular::npos)
 {}
 
 

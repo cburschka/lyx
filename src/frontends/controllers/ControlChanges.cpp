@@ -31,7 +31,7 @@ namespace frontend {
 
 
 ControlChanges::ControlChanges(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

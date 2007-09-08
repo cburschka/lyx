@@ -21,7 +21,7 @@ class ParagraphParameters;
 
 namespace frontend {
 
-class ControlParagraph : public Dialog::Controller {
+class ControlParagraph : public Controller {
 public:
 	///
 	ControlParagraph(Dialog &);

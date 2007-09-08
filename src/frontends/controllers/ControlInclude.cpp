@@ -43,7 +43,7 @@ using support::onlyPath;
 namespace frontend {
 
 ControlInclude::ControlInclude(Dialog & parent)
-	: Dialog::Controller(parent), params_("include")
+	: Controller(parent), params_("include")
 {}
 
 

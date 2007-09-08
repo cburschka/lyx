@@ -46,7 +46,7 @@ namespace frontend {
 
 
 ControlExternal::ControlExternal(Dialog & parent)
-	: Dialog::Controller(parent),
+	: Controller(parent),
 	  bb_changed_(false)
 {}
 

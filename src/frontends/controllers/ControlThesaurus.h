@@ -21,7 +21,7 @@ namespace frontend {
 
 /** A controller for Thesaurus dialogs.
  */
-class ControlThesaurus : public Dialog::Controller {
+class ControlThesaurus : public Controller {
 public:
 	///
 	ControlThesaurus(Dialog &);

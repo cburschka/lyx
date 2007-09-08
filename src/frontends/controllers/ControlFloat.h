@@ -20,7 +20,7 @@ class InsetFloatParams;
 
 namespace frontend {
 
-class ControlFloat : public Dialog::Controller {
+class ControlFloat : public Controller {
 public:
 	///
 	ControlFloat(Dialog &);

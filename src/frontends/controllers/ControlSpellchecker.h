@@ -24,7 +24,7 @@ namespace frontend {
 
 /** A controller for Spellchecker dialogs.
  */
-class ControlSpellchecker : public Dialog::Controller {
+class ControlSpellchecker : public Controller {
 public:
 	enum State {
 		SPELL_PROGRESSED, //< update progress bar

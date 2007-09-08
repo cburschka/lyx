@@ -22,7 +22,7 @@
 namespace lyx {
 namespace frontend {
 
-class ControlCommand : public Dialog::Controller {
+class ControlCommand : public Controller {
 public:
 	/** LFUN_INSET_APPLY requires a name, "citation", "ref" etc so that
 	    it knows what to do with the rest of the contents.

@@ -26,7 +26,7 @@ namespace lyx {
 namespace frontend {
 
 ControlCharacter::ControlCharacter(Dialog & parent)
-	: Dialog::Controller(parent),
+	: Controller(parent),
 	  font_(0), toggleall_(false), reset_lang_(false)
 {}
 

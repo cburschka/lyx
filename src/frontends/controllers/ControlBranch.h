@@ -23,7 +23,7 @@ class InsetBranchParams;
 
 namespace frontend {
 
-class ControlBranch : public Dialog::Controller {
+class ControlBranch : public Controller {
 public:
 	///
 	ControlBranch(Dialog &);

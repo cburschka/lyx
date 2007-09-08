@@ -59,7 +59,7 @@ namespace frontend {
 
 
 ControlSpellchecker::ControlSpellchecker(Dialog & parent)
-	: Dialog::Controller(parent), exitEarly_(false),
+	: Controller(parent), exitEarly_(false),
 	  oldval_(0), newvalue_(0), count_(0)
 {
 }

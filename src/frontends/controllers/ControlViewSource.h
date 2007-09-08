@@ -22,7 +22,7 @@ namespace frontend {
 /**
  * A controller for a read-only text browser.
  */
-class ControlViewSource : public Dialog::Controller {
+class ControlViewSource : public Controller {
 public:
 	///
 	ControlViewSource(Dialog &);

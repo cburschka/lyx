@@ -30,7 +30,7 @@ using support::subst;
 namespace frontend {
 
 ControlMath::ControlMath(Dialog & dialog)
-	: Dialog::Controller(dialog)
+	: Controller(dialog)
 {
 	// FIXME: Ideally, those unicode codepoints would be defined
 	// in "lib/symbols". Unfortunately, some of those are already

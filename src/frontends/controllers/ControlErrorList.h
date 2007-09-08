@@ -20,7 +20,7 @@ namespace frontend {
 
 /** A controller for the ErrorList dialog.
  */
-class ControlErrorList : public Dialog::Controller {
+class ControlErrorList : public Controller {
 public:
 	///
 	ControlErrorList(Dialog & parent);

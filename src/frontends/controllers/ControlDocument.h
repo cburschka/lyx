@@ -28,7 +28,7 @@ typedef void const * BufferId;
 
 /** A controller for Document dialogs.
  */
-class ControlDocument : public Dialog::Controller {
+class ControlDocument : public Controller {
 public:
 	/// font family names for BufferParams::fontsDefaultFamily
 	static char const * const fontfamilies[5];

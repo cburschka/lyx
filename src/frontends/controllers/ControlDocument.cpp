@@ -50,7 +50,7 @@ char const * ControlDocument::fontfamilies_gui[5] = {
 
 
 ControlDocument::ControlDocument(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

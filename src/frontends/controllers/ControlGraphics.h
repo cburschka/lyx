@@ -33,7 +33,7 @@ class LyXView;
 
 /** A controller for Graphics dialogs.
  */
-class ControlGraphics : public Dialog::Controller {
+class ControlGraphics : public Controller {
 public:
 	///
 	ControlGraphics(Dialog &);

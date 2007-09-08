@@ -95,10 +95,10 @@ static QString version()
 }
 
 
-class ControlAbout : public Dialog::Controller
+class ControlAbout : public Controller
 {
 public:
-	ControlAbout(Dialog & parent) : Dialog::Controller(parent) {}
+	ControlAbout(Dialog & parent) : Controller(parent) {}
 	bool initialiseParams(std::string const &) { return true; }
 	void clearParams() {}
 	void dispatchParams() {}

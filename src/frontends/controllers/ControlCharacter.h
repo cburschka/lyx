@@ -23,7 +23,7 @@ class Color_color;
 
 namespace frontend {
 
-class ControlCharacter : public Dialog::Controller {
+class ControlCharacter : public Controller {
 public:
 	///
 	ControlCharacter(Dialog &);

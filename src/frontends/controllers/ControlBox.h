@@ -22,7 +22,7 @@ class InsetBoxParams;
 
 namespace frontend {
 
-class ControlBox : public Dialog::Controller {
+class ControlBox : public Controller {
 public:
 	///
 	ControlBox(Dialog &);

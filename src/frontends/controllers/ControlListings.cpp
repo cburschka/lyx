@@ -22,7 +22,7 @@ namespace lyx {
 namespace frontend {
 
 ControlListings::ControlListings(Dialog & parent)
-	: Dialog::Controller(parent), params_()
+	: Controller(parent), params_()
 {}
 
 

@@ -27,7 +27,7 @@ namespace frontend {
 
 /** A controller for Print dialogs.
  */
-class ControlPrint : public Dialog::Controller {
+class ControlPrint : public Controller {
 public:
 	///
 	ControlPrint(Dialog &);

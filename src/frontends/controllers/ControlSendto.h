@@ -24,7 +24,7 @@ namespace frontend {
 
 /** A controller for the Custom Export dialogs.
  */
-class ControlSendto : public Dialog::Controller {
+class ControlSendto : public Controller {
 public:
 	///
 	ControlSendto(Dialog &);

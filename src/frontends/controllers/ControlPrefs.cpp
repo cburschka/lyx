@@ -37,7 +37,7 @@ namespace frontend {
 
 
 ControlPrefs::ControlPrefs(Dialog & parent)
-	: Dialog::Controller(parent),
+	: Controller(parent),
 	  update_screen_font_(false)
 {}
 

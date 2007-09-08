@@ -27,7 +27,7 @@ class Color_color;
 
 namespace frontend {
 
-class ControlPrefs : public Dialog::Controller {
+class ControlPrefs : public Controller {
 public:
 	ControlPrefs(Dialog &);
 	///

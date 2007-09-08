@@ -32,7 +32,7 @@ struct MathSymbol {
 	Font::FONT_FAMILY fontfamily;
 };
 
-class ControlMath : public Dialog::Controller {
+class ControlMath : public Controller {
 public:
 	ControlMath(Dialog &);
 

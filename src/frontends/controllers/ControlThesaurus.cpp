@@ -21,7 +21,7 @@ namespace lyx {
 namespace frontend {
 
 ControlThesaurus::ControlThesaurus(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

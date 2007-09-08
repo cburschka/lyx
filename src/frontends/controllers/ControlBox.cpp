@@ -23,7 +23,7 @@ namespace lyx {
 namespace frontend {
 
 ControlBox::ControlBox(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

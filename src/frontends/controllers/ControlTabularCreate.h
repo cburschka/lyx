@@ -20,7 +20,7 @@ namespace frontend {
 
 /** A controller for the TabularCreate Dialog.
  */
-class ControlTabularCreate : public Dialog::Controller {
+class ControlTabularCreate : public Controller {
 public:
 	///
 	ControlTabularCreate(Dialog &);

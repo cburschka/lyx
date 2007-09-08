@@ -21,7 +21,7 @@ namespace frontend {
 
 /** A controller for Texinfo dialogs. */
 
-class ControlTexinfo : public Dialog::Controller {
+class ControlTexinfo : public Controller {
 public:
 	///
 	ControlTexinfo(Dialog &);

@@ -19,7 +19,7 @@ namespace frontend {
 
 /** A controller for Search dialogs.
  */
-class ControlSearch : public Dialog::Controller {
+class ControlSearch : public Controller {
 public:
 	ControlSearch(Dialog &);
 

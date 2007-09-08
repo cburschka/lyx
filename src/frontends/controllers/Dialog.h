@@ -17,18 +17,23 @@
 
 #include "support/docstring.h"
 
-#include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
-
 namespace lyx {
 namespace frontend {
 
 class LyXView;
 
+/** Different dialogs will have different Controllers and Views.
+ *  deriving from these base classes.
+ */
+//@{
+class Controller;
+//@}
+
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
  */
-class Dialog /*: boost::noncopyable*/ {
+class Dialog 
+{
 public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
@@ -84,13 +89,6 @@ public:
 	Kernel & kernel() { return kernel_; }
 	Kernel const & kernel() const { return kernel_; }
 
-	/** Different dialogs will have different Controllers and Views.
-	 *  deriving from these base classes.
-	 */
-	//@{
-	class Controller;
-	//@}
-
 	/** \name Dialog Specialization
 	 *  Methods to set the Controller and View and so specialise
 	 *  to a particular dialog.
@@ -109,7 +107,7 @@ public:
 
 	/** \c Button controller part
 	 */
-	virtual void setButtonsValid(bool valid);
+	virtual void setButtonsValid(bool /*valid*/) {}
 
 
 	/** \c View part
@@ -151,6 +149,13 @@ public:
 	void setViewTitle(docstring const &);
 	/// gets the title of the dialog (window caption)
 	docstring const & getViewTitle() const;
+	///
+	std::string name() const { return name_; }
+
+private:
+	/// intentionally unimplemented, therefore uncopiable
+	Dialog(Dialog const &);
+	void operator=(Dialog const &);
 
 protected:
 	void apply();
@@ -161,16 +166,17 @@ protected:
 	 *  itself to the kernel.
 	 */
 	std::string name_;
-	boost::scoped_ptr<Controller> controller_ptr_;
+	Controller * controller_;
 
 	docstring title_;
 };
 
 
-/** \c Dialog::Controller is an abstract base class for the Controller
+/** \c Controller is an abstract base class for the Controller
  *  of a Model-Controller-View split of a generic dialog.
  */
-class Dialog::Controller : boost::noncopyable {
+class Controller 
+{
 public:
 	/// \param parent Dialog owning this Controller.
 	Controller(Dialog & parent);
@@ -256,6 +262,11 @@ protected:
 	Kernel & kernel() { return parent_.kernel(); }
 	Kernel const & kernel() const { return parent_.kernel(); }
 	//@}
+
+private:
+	/// intentionally unimplemented, therefore uncopiable
+	Controller(Controller const &);
+	void operator=(Controller const &);
 
 private:
 	Dialog & parent_;

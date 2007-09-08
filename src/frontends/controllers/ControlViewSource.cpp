@@ -28,7 +28,7 @@ namespace lyx {
 namespace frontend {
 
 ControlViewSource::ControlViewSource(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

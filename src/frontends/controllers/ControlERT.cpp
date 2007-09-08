@@ -21,7 +21,7 @@ namespace lyx {
 namespace frontend {
 
 ControlERT::ControlERT(Dialog & parent)
-	: Dialog::Controller(parent), status_(InsetERT::Collapsed)
+	: Controller(parent), status_(InsetERT::Collapsed)
 {}
 
 

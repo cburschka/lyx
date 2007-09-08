@@ -23,7 +23,7 @@ namespace frontend {
 /**
  * A controller for a read-only text browser.
  */
-class ControlLog : public Dialog::Controller {
+class ControlLog : public Controller {
 public:
 	///
 	ControlLog(Dialog &);

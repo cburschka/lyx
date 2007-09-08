@@ -22,7 +22,7 @@ namespace lyx {
 namespace frontend {
 
 ControlNote::ControlNote(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

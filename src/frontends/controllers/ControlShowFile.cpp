@@ -25,7 +25,7 @@ namespace frontend {
 
 
 ControlShowFile::ControlShowFile(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

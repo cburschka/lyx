@@ -30,7 +30,7 @@ using support::FileName;
 namespace frontend {
 
 ControlLog::ControlLog(Dialog & parent)
-	: Dialog::Controller(parent),
+	: Controller(parent),
 	  type_(LatexLog)
 {}
 

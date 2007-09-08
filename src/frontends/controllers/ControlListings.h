@@ -21,7 +21,7 @@ class InsetListingsParams;
 
 namespace frontend {
 
-class ControlListings : public Dialog::Controller  {
+class ControlListings : public Controller  {
 public:
 	///
 	ControlListings(Dialog &);

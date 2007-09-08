@@ -35,7 +35,7 @@ namespace frontend {
 
 
 ControlPrint::ControlPrint(Dialog & parent)
-	: Dialog::Controller(parent),
+	: Controller(parent),
 	  params_(0)
 {}
 

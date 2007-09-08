@@ -24,7 +24,7 @@ namespace lyx {
 namespace frontend {
 
 ControlVSpace::ControlVSpace(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

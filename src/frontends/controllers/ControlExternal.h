@@ -38,7 +38,7 @@ class RotationDataType;
 
 namespace frontend {
 
-class ControlExternal : public Dialog::Controller {
+class ControlExternal : public Controller {
 public:
 	///
 	ControlExternal(Dialog &);

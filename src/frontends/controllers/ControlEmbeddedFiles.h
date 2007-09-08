@@ -19,7 +19,7 @@ namespace lyx {
 
 namespace frontend {
 
-class ControlEmbeddedFiles : public Dialog::Controller {
+class ControlEmbeddedFiles : public Controller {
 public:
 	///
 	ControlEmbeddedFiles(Dialog &);

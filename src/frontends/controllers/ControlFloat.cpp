@@ -21,7 +21,7 @@ namespace lyx {
 namespace frontend {
 
 ControlFloat::ControlFloat(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

@@ -27,7 +27,7 @@ namespace lyx {
 namespace frontend {
 
 ControlBranch::ControlBranch(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

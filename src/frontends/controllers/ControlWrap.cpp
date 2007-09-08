@@ -21,7 +21,7 @@ namespace lyx {
 namespace frontend {
 
 ControlWrap::ControlWrap(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

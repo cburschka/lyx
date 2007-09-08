@@ -22,7 +22,7 @@
 namespace lyx {
 namespace frontend {
 
-class ControlTabular : public Dialog::Controller {
+class ControlTabular : public Controller {
 public:
 
 	ControlTabular(Dialog &);

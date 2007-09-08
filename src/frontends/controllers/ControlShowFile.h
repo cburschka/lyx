@@ -21,7 +21,7 @@ namespace frontend {
 
 /** A controller for the ShowFile dialog. */
 
-class ControlShowFile : public Dialog::Controller {
+class ControlShowFile : public Controller {
 public:
 	///
 	ControlShowFile(Dialog &);

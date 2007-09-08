@@ -32,7 +32,7 @@ namespace frontend {
 
 
 ControlSendto::ControlSendto(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

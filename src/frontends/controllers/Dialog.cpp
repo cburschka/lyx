@@ -26,16 +26,14 @@ namespace lyx {
 namespace frontend {
 
 Dialog::Dialog(LyXView & lv, string const & name)
-	: is_closing_(false), kernel_(lv), name_(name)
+	: is_closing_(false), kernel_(lv), name_(name), controller_(0)
 {}
 
 
 Dialog::~Dialog()
-{}
-
-
-void Dialog::setButtonsValid(bool /*valid*/)
-{}
+{
+	delete controller_;
+}
 
 
 void Dialog::show(string const & data)
@@ -120,30 +118,31 @@ void Dialog::redraw()
 }
 
 
-void Dialog::setController(Controller * i)
+void Dialog::setController(Controller * controller)
 {
-	BOOST_ASSERT(i && !controller_ptr_.get());
-	controller_ptr_.reset(i);
+	BOOST_ASSERT(controller);
+	BOOST_ASSERT(!controller_);
+	controller_ = controller;
 }
 
 
-Dialog::Controller::Controller(Dialog & parent)
+Controller::Controller(Dialog & parent)
 	: parent_(parent)
 {}
 
 
-bool Dialog::Controller::canApply() const
+bool Controller::canApply() const
 {
-	FuncRequest const fr(getLfun(), dialog().name_);
+	FuncRequest const fr(getLfun(), dialog().name());
 	FuncStatus const fs(getStatus(fr));
 	return fs.enabled();
 }
 
 
-Dialog::Controller & Dialog::controller() const
+Controller & Dialog::controller() const
 {
-	BOOST_ASSERT(controller_ptr_.get());
-	return *controller_ptr_.get();
+	BOOST_ASSERT(controller_);
+	return *controller_;
 }
 
 

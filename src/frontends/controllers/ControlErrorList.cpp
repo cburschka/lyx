@@ -34,7 +34,7 @@ namespace lyx {
 namespace frontend {
 
 ControlErrorList::ControlErrorList(Dialog & d)
-	: Dialog::Controller(d)
+	: Controller(d)
 {}
 
 

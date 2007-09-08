@@ -22,7 +22,7 @@ namespace lyx {
 namespace frontend {
 
 ControlTabularCreate::ControlTabularCreate(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

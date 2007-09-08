@@ -54,7 +54,7 @@ namespace frontend {
 
 
 ControlGraphics::ControlGraphics(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

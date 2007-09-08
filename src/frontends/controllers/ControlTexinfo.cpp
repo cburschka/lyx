@@ -62,7 +62,7 @@ void getTexFileList(ControlTexinfo::texFileSuffix type,
 
 
 ControlTexinfo::ControlTexinfo(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

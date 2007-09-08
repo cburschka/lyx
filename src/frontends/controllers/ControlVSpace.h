@@ -19,7 +19,7 @@
 namespace lyx {
 namespace frontend {
 
-class ControlVSpace : public Dialog::Controller {
+class ControlVSpace : public Controller {
 public:
 	///
 	ControlVSpace(Dialog &);

@@ -22,7 +22,7 @@ class InsetNoteParams;
 
 namespace frontend {
 
-class ControlNote : public Dialog::Controller {
+class ControlNote : public Controller {
 public:
 	///
 	ControlNote(Dialog &);

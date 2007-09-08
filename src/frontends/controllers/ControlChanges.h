@@ -23,7 +23,7 @@ namespace frontend {
 /**
  * A controller for the merge changes dialog.
  */
-class ControlChanges : public Dialog::Controller {
+class ControlChanges : public Controller {
 public:
 	///
 	ControlChanges(Dialog &);

@@ -20,7 +20,7 @@
 namespace lyx {
 namespace frontend {
 
-class ControlERT : public Dialog::Controller {
+class ControlERT : public Controller {
 public:
 	///
 	ControlERT(Dialog &);

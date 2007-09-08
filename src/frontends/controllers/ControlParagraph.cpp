@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 ControlParagraph::ControlParagraph(Dialog & parent)
-	: Dialog::Controller(parent), ininset_(false)
+	: Controller(parent), ininset_(false)
 {}
 
 

@@ -25,7 +25,7 @@ namespace frontend {
 
 /** A controller for the Include file dialog.
  */
-class ControlInclude : public Dialog::Controller {
+class ControlInclude : public Controller {
 public:
 	///
 	enum Type {

@@ -19,7 +19,7 @@ namespace lyx {
 namespace frontend {
 
 ControlSearch::ControlSearch(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Controller(parent)
 {}
 
 

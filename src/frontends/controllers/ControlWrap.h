@@ -21,7 +21,7 @@ class InsetWrapParams;
 
 namespace frontend {
 
-class ControlWrap : public Dialog::Controller  {
+class ControlWrap : public Controller  {
 public:
 	///
 	ControlWrap(Dialog &);
