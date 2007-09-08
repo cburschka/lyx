@@ -31,7 +31,8 @@ public Q_SLOTS:
 	///
 	void on_filesLW_itemChanged(QListWidgetItem* item);
 	void on_filesLW_itemSelectionChanged();
-	void on_filesLW_itemDoubleClicked();
+	void on_filesLW_itemClicked(QListWidgetItem* item);
+	void on_filesLW_itemDoubleClicked(QListWidgetItem* item);
 	///
 	void updateView();
 	///

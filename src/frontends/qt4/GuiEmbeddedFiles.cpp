@@ -12,9 +12,12 @@
 
 #include "GuiEmbeddedFiles.h"
 #include "debug.h"
+#include "support/convert.h"
 
+using std::string;
 
 namespace lyx {
+
 namespace frontend {
 
 
@@ -44,9 +47,13 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
 {
 	EmbeddedFiles & files = controller().embeddedFiles();
 	if (item->checkState() == Qt::Checked) {
+		if (files[filesLW->row(item)].embedded())
+			return;
 		controller().setEmbed(files[filesLW->row(item)], true);
 		controller().dispatchMessage("Embed file " + fromqstr(item->text()));
 	} else {
+		if (!files[filesLW->row(item)].embedded())
+			return;
 		controller().setEmbed(files[filesLW->row(item)], false);
 		controller().dispatchMessage("Stop embedding file " + fromqstr(item->text()));
 	}
@@ -71,17 +78,10 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 	fullpathLE->setEnabled(selection.size() == 1);
 
 	// try to find a common embedding status
-	QList<QListWidgetItem*>::iterator it = selection.begin(); 
-	QList<QListWidgetItem*>::iterator it_end = selection.end(); 
-	// if the selection is not empty
-	if (it != it_end) {
-		int idx = filesLW->row(*it);
-		fullpathLE->setText(toqstr(files[idx].absFilename()));
-		controller().goTo(files[idx]);
-	}
-	// are the items all selected or unselected?
 	bool hasSelected = false;
 	bool hasUnselected = false;
+	QList<QListWidgetItem*>::iterator it = selection.begin(); 
+	QList<QListWidgetItem*>::iterator it_end = selection.end(); 
 	for (; it != it_end; ++it) {
 		if ((*it)->checkState() == Qt::Checked)
 			hasSelected = true;
@@ -93,11 +93,32 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 }
 
 
-void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked()
+void GuiEmbeddedFilesDialog::on_filesLW_itemClicked(QListWidgetItem* item)
 {
 	EmbeddedFiles & files = controller().embeddedFiles();
-	QList<QListWidgetItem *> selection = filesLW->selectedItems();
-	controller().view(files[filesLW->row(*selection.begin())]);
+	int idx = filesLW->row(item);
+	fullpathLE->setText(toqstr(files[idx].absFilename()));
+	if (files[idx].refCount() > 1) {
+		// if multiple insets are referred, click again will move
+		// to another inset
+		int k = item->data(Qt::UserRole).toInt();
+		controller().goTo(files[idx], k);
+		k = (k + 1) % files[idx].refCount();
+		item->setData(Qt::UserRole, k);
+		// update label
+		string label = files[idx].inzipName() + " ("
+			+ convert<string>(k + 1)  + "/"
+			+ convert<string>(files[idx].refCount()) + ")";
+		item->setText(toqstr(label));
+	} else
+		controller().goTo(files[idx], 0);
+}
+
+
+void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked(QListWidgetItem* item)
+{
+	EmbeddedFiles & files = controller().embeddedFiles();
+	controller().view(files[filesLW->row(item)]);
 }
 
 
@@ -109,7 +130,10 @@ void GuiEmbeddedFilesDialog::updateView()
 	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
 	for (; it != it_end; ++it) {
-		QListWidgetItem * item = new QListWidgetItem(toqstr(it->inzipName()));
+		string label = it->inzipName();
+		if (it->refCount() > 1)
+			label += " (1/" + convert<string>(it->refCount()) + ")";
+		QListWidgetItem * item = new QListWidgetItem(toqstr(label));
 		Qt::ItemFlags flag = Qt::ItemIsUserCheckable | Qt::ItemIsSelectable;
 		if (it->valid())
 			flag |= Qt::ItemIsEnabled;
@@ -118,6 +142,8 @@ void GuiEmbeddedFilesDialog::updateView()
 			item->setCheckState(Qt::Checked);
 		else
 			item->setCheckState(Qt::Unchecked);
+		// index of the currently used ParConstIterator
+		item->setData(Qt::UserRole, 0);
 		filesLW->addItem(item);
 	}
 }

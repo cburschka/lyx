@@ -122,13 +122,18 @@ public:
 	std::string availableFile(Buffer const * buf) const;
 
 	/// paragraph id
-	void setParIter(ParConstIterator const & pit);
-	int const parID() const;
+	void addParIter(ParConstIterator const & pit);
+	int parID(int idx) const;
+	/// Number of Insets this file item is referred
+	/// If refCount() == 0, this file must be manually inserted.
+	/// This fact is used by the update() function to skip updating
+	/// such items.
+	int refCount() const { return par_it_.size(); }
 
 	/// embedding status of this file
 	bool embedded() const { return embedded_; }
-	/// set embedding status. update() should be called before this
-	/// to sync the embedded file with external one.
+	/// set embedding status. updateFromExternal() should be called before this
+	/// to copy or sync the embedded file with external one.
 	bool setEmbed(bool embed) { embedded_ = embed; }
 
 	// A flag indicating whether or not this filename is valid.
@@ -139,12 +144,12 @@ public:
 	// status setting untouched.
 	bool valid() const { return valid_; }
 	void validate() { valid_ = true; }
-	void invalidate() {	valid_ = false;	}
+	void invalidate();
 
 	/// extract file, does not change embedding status
 	bool extract(Buffer const * buf) const;
 	/// update embedded file from external file, does not change embedding status
-	bool update(Buffer const * buf) const;
+	bool updateFromExternalFile(Buffer const * buf) const;
 
 private:
 	/// filename in zip file
@@ -153,10 +158,9 @@ private:
 	bool embedded_;
 	///
 	bool valid_;
-	/// Current position of the item, used to locate the files
-	/// A figure may be referred by several items. In this case
-	/// only the last location is recorded.
-	ParConstIterator par_it_;
+	/// Current position of the item, used to locate the files. Because one
+	/// file item can be referred by several Insets, a vector is used.
+	std::vector<ParConstIterator> par_it_;
 };
 
 
@@ -171,10 +175,16 @@ public:
 
 	/// return buffer params embedded flag
 	bool enabled() const;
-	/// set buffer params embedded flag
-	void enable(bool flag);
+	/// set buffer params embedded flag. Files will be updated or extracted
+	/// if such an operation fails, enable will fail.
+	bool enable(bool flag);
 
-	/// add a file item
+	/// add a file item. 
+	/* \param filename filename to add
+	 * \param embed embedding status. For a new file item, this is always true.
+	 *    If the file already exists, this parameter is ignored.
+	 * \param pit paragraph id.
+	 */
 	void registerFile(std::string const & filename, bool embed = false,
 		ParConstIterator const & pit = ParConstIterator());
 
@@ -196,8 +206,10 @@ public:
 	EmbeddedFileList::const_iterator end() const { return file_list_.end(); }
 	// try to locate filename, using either absFilename() or embeddedFile()
 	EmbeddedFileList::const_iterator find(std::string filename) const;
-	///
-	bool extractAll() const;
+	/// extract all file items, used when disable embedding
+	bool extract() const;
+	/// update all files from external, used when enable embedding
+	bool updateFromExternalFile() const;
 	///
 	friend std::istream & operator>> (std::istream & is, EmbeddedFiles &);
 

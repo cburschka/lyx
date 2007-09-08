@@ -67,13 +67,11 @@ void ControlEmbeddedFiles::dispatchMessage(string const & msg)
 }
 
 
-void ControlEmbeddedFiles::goTo(EmbeddedFile const & item)
+void ControlEmbeddedFiles::goTo(EmbeddedFile const & item, int idx)
 {
-	int id = item.parID();
-	if (id != 0) {
-		string const tmp = convert<string>(item.parID());
-		kernel().lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
-	}
+	BOOST_ASSERT(idx < item.refCount());
+	string const tmp = convert<string>(item.parID(idx));
+	kernel().lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
 }
 
 
@@ -85,8 +83,9 @@ void ControlEmbeddedFiles::view(EmbeddedFile const & item)
 
 void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed)
 {
+	// FIXME: updateFromExternalFile() or extract() may fail...
 	if (embed)
-		item.update(&kernel().buffer());
+		item.updateFromExternalFile(&kernel().buffer());
 	else
 		item.extract(&kernel().buffer());
 	item.setEmbed(embed);
@@ -106,13 +105,19 @@ docstring const ControlEmbeddedFiles::browseFile()
 
 bool ControlEmbeddedFiles::extract(EmbeddedFile const & item)
 {
-	return item.extract(&kernel().buffer());
+	if (item.embedded())
+		return item.extract(&kernel().buffer());
+	else
+		return false;
 }
 
 
 bool ControlEmbeddedFiles::update(EmbeddedFile const & item)
 {
-	return item.update(&kernel().buffer());
+	if (item.embedded())
+		return item.updateFromExternalFile(&kernel().buffer());
+	else
+		return false;
 }
 
 } // namespace frontend

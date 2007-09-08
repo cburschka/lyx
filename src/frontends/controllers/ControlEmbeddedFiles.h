@@ -44,7 +44,7 @@ public:
 	///
 	void dispatchParams() {};
 	///
-	void goTo(EmbeddedFile const & item);
+	void goTo(EmbeddedFile const & item, int idx);
 	///
 	void view(EmbeddedFile const & item);
 	///
