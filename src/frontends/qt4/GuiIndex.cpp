@@ -28,14 +28,20 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
+/////////////////////////////////////////////////////////////////
+//
+// Base implementation
+//
+/////////////////////////////////////////////////////////////////
+
 GuiIndexDialogBase::GuiIndexDialogBase(LyXView & lv,
-		docstring const & title, QString const & label)
-	: GuiDialog(lv, "index")
+		docstring const & title, QString const & label, std::string const & name)
+	: GuiDialog(lv, name)
 {
 	label_ = label;
 	setupUi(this);
 	setViewTitle(title);
-	setController(new ControlCommand(*this, "index", "index"));
+	setController(new ControlCommand(*this, name, name));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -112,6 +118,46 @@ bool GuiIndexDialogBase::isValid()
 {
 	return !keywordED->text().isEmpty();
 }
+
+
+/////////////////////////////////////////////////////////////////
+//
+// Index Dialog
+//
+/////////////////////////////////////////////////////////////////
+
+
+GuiIndexDialog::GuiIndexDialog(LyXView & lv)
+	: GuiIndexDialogBase(lv, _("Index Entry"), qt_("&Keyword:"), "index") 
+{
+	keywordED->setWhatsThis( qt_(
+		"The format of the entry in the index.\n"
+		"\n"
+		"An entry can be specified as a sub-entry of\n"
+		"another with \"!\":\n"
+		"\n"
+		"cars!mileage\n"
+		"\n"
+		"You can cross-refer to another entry like so:\n"
+		"\n"
+		"cars!mileage|see{economy}\n"
+		"\n"
+		"For further details refer to the local LaTeX\n"
+		"documentation.\n")
+	);
+}
+
+
+/////////////////////////////////////////////////////////////////
+//
+// Label Dialog
+//
+/////////////////////////////////////////////////////////////////
+
+GuiLabelDialog::GuiLabelDialog(LyXView & lv)
+	: GuiIndexDialogBase(lv, _("Label"), qt_("&Label:"), "label")
+{}
+
 
 } // namespace frontend
 } // namespace lyx

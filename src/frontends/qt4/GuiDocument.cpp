@@ -838,7 +838,7 @@ void GuiDocumentDialog::updatePagestyle(string const & items, string const & sel
 					toqstr(pagestyles[i].second));
 
 	if (nn > 0)
-		pageLayoutModule->pagestyleCO->setCurrentIndex(n);
+		pageLayoutModule->pagestyleCO->setCurrentIndex(nn);
 }
 
 

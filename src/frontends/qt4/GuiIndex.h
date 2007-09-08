@@ -26,7 +26,7 @@ class GuiIndexDialogBase : public GuiDialog, public Ui::IndexUi
 
 public:
 	GuiIndexDialogBase(LyXView & lv, docstring const & title,
-		QString const & label);
+		QString const & label, std::string const & name);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -52,19 +52,16 @@ private:
 class GuiIndexDialog : public GuiIndexDialogBase
 {
 public:
-	GuiIndexDialog(LyXView & lv)
-		: GuiIndexDialogBase(lv, _("Index Entry"), qt_("&Keyword:")) 
-	{}
+	GuiIndexDialog(LyXView & lv);
 };
 
 
 class GuiLabelDialog : public GuiIndexDialogBase
 {
 public:
-	GuiLabelDialog(LyXView & lv)
-		: GuiIndexDialogBase(lv, _("Label"), qt_("&Label:"))
-	{}
+	GuiLabelDialog(LyXView & lv);
 };
+
 
 } // namespace frontend
 } // namespace lyx
