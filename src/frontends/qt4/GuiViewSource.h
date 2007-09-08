@@ -14,10 +14,9 @@
 #ifndef GUIVIEWSOURCE_H
 #define GUIVIEWSOURCE_H
 
-#include "GuiDialog.h"
-#include "ControlViewSource.h"
-#include "Application.h"
 #include "ui_ViewSourceUi.h"
+
+#include "ControlViewSource.h"
 
 #include <QWidget>
 #include <QSyntaxHighlighter>

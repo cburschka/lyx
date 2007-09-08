@@ -15,7 +15,7 @@
 #include "GuiViewSource.h"
 #include "qt_helpers.h"
 
-#include <boost/tuple/tuple.hpp>
+#include "Application.h"
 
 #include <QTextCursor>
 #include <QTextDocument>
