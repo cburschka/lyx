@@ -8,7 +8,6 @@ pkglib_LTLIBRARIES = liblyxcontrollers.la
 
 SOURCEFILES = \
 	Dialog.cpp \
-	Dialog.cpp \
 	Kernel.cpp \
 	ButtonPolicy.cpp \
 	ControlBibtex.cpp \
