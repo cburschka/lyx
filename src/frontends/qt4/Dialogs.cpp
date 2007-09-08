@@ -136,7 +136,8 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "document") {
 		dialog = new GuiDocumentDialog(lyxview_);
 	} else if (name == "embedding") {
-		dialog = new GuiEmbeddedFilesDialog(lyxview_);
+		dialog = new DockView<ControlEmbeddedFiles, GuiEmbeddedFilesDialog>(
+			guiview, name, Qt::RightDockWidgetArea);
 	} else if (name == "errorlist") {
 		dialog = new GuiErrorListDialog(lyxview_);
 	} else if (name == "ert") {

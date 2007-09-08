@@ -20,12 +20,12 @@
 namespace lyx {
 namespace frontend {
 
-class GuiEmbeddedFilesDialog : public GuiDialog, public Ui::GuiEmbeddedFilesUi
+class GuiEmbeddedFilesDialog : public QWidget, public Ui::GuiEmbeddedFilesUi
 {
 	Q_OBJECT
 
 public:
-	GuiEmbeddedFilesDialog(LyXView & lv);
+	GuiEmbeddedFilesDialog(ControlEmbeddedFiles &);
 
 public Q_SLOTS:
 	///
@@ -45,7 +45,7 @@ public Q_SLOTS:
 	void on_updatePB_clicked();
 
 private:
-	ControlEmbeddedFiles & controller() const;
+	ControlEmbeddedFiles & controller_;
 	void set_embedding_status(bool embed);
 };
 

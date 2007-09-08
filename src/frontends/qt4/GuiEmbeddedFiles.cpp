@@ -21,48 +21,36 @@ namespace lyx {
 namespace frontend {
 
 
-GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(LyXView & lv)
-	: GuiDialog(lv, "embedding")
+GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(ControlEmbeddedFiles & controller)
+	: controller_(controller)
 {
 	setupUi(this);
-	setController(new ControlEmbeddedFiles(*this));
-	setViewTitle(_("Embedded Files"));
-
-	//setView(new DockView<GuiEmbeddedFiles, GuiEmbeddedFilesDialog>(
-	//		*dialog, qef, &gui_view, _("Embedded Files"), Qt::RightDockWidgetArea));
-	
-	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
+	setWindowTitle(qt_("Embedded Files"));
 
 	updateView();
 }
 
 
-ControlEmbeddedFiles & GuiEmbeddedFilesDialog::controller() const
-{
-	return static_cast<ControlEmbeddedFiles &>(Dialog::controller());
-}
-
-
 void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
 {
-	EmbeddedFiles & files = controller().embeddedFiles();
+	EmbeddedFiles & files = controller_.embeddedFiles();
 	if (item->checkState() == Qt::Checked) {
 		if (files[filesLW->row(item)].embedded())
 			return;
-		controller().setEmbed(files[filesLW->row(item)], true);
-		controller().dispatchMessage("Embed file " + fromqstr(item->text()));
+		controller_.setEmbed(files[filesLW->row(item)], true);
+		controller_.dispatchMessage("Embed file " + fromqstr(item->text()));
 	} else {
 		if (!files[filesLW->row(item)].embedded())
 			return;
-		controller().setEmbed(files[filesLW->row(item)], false);
-		controller().dispatchMessage("Stop embedding file " + fromqstr(item->text()));
+		controller_.setEmbed(files[filesLW->row(item)], false);
+		controller_.dispatchMessage("Stop embedding file " + fromqstr(item->text()));
 	}
 }
 
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 {
-	EmbeddedFiles & files = controller().embeddedFiles();
+	EmbeddedFiles & files = controller_.embeddedFiles();
 
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 
@@ -95,14 +83,14 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemClicked(QListWidgetItem* item)
 {
-	EmbeddedFiles & files = controller().embeddedFiles();
+	EmbeddedFiles & files = controller_.embeddedFiles();
 	int idx = filesLW->row(item);
 	fullpathLE->setText(toqstr(files[idx].absFilename()));
 	if (files[idx].refCount() > 1) {
 		// if multiple insets are referred, click again will move
 		// to another inset
 		int k = item->data(Qt::UserRole).toInt();
-		controller().goTo(files[idx], k);
+		controller_.goTo(files[idx], k);
 		k = (k + 1) % files[idx].refCount();
 		item->setData(Qt::UserRole, k);
 		// update label
@@ -111,14 +99,14 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemClicked(QListWidgetItem* item)
 			+ convert<string>(files[idx].refCount()) + ")";
 		item->setText(toqstr(label));
 	} else
-		controller().goTo(files[idx], 0);
+		controller_.goTo(files[idx], 0);
 }
 
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked(QListWidgetItem* item)
 {
-	EmbeddedFiles & files = controller().embeddedFiles();
-	controller().view(files[filesLW->row(item)]);
+	EmbeddedFiles & files = controller_.embeddedFiles();
+	controller_.view(files[filesLW->row(item)]);
 }
 
 
@@ -126,7 +114,7 @@ void GuiEmbeddedFilesDialog::updateView()
 {
 	filesLW->clear();
 	//
-	EmbeddedFiles const & files = controller().embeddedFiles();
+	EmbeddedFiles const & files = controller_.embeddedFiles();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
 	for (; it != it_end; ++it) {
@@ -151,62 +139,62 @@ void GuiEmbeddedFilesDialog::updateView()
 
 void GuiEmbeddedFilesDialog::on_selectPB_clicked()
 {
-	EmbeddedFiles & files = controller().embeddedFiles();
+	EmbeddedFiles & files = controller_.embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it) {
 		(*it)->setCheckState(Qt::Checked);
-		controller().setEmbed(files[filesLW->row(*it)], true);
+		controller_.setEmbed(files[filesLW->row(*it)], true);
 	}
-	controller().dispatchMessage("Embedding files");
+	controller_.dispatchMessage("Embedding files");
 }
 
 
 void GuiEmbeddedFilesDialog::on_unselectPB_clicked()
 {
-	EmbeddedFiles & files = controller().embeddedFiles();
+	EmbeddedFiles & files = controller_.embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it) {
 		(*it)->setCheckState(Qt::Checked);
-		controller().setEmbed(files[filesLW->row(*it)], false);
+		controller_.setEmbed(files[filesLW->row(*it)], false);
 	}
-	controller().dispatchMessage("Stop embedding files");
+	controller_.dispatchMessage("Stop embedding files");
 }
 
 
 void GuiEmbeddedFilesDialog::on_addPB_clicked()
 {
-	docstring const file = controller().browseFile();
+	docstring const file = controller_.browseFile();
 	if (!file.empty()) {
-		EmbeddedFiles & files = controller().embeddedFiles();
+		EmbeddedFiles & files = controller_.embeddedFiles();
 		files.registerFile(to_utf8(file), true);
 	}
-	controller().dispatchMessage("Add an embedded file");
+	controller_.dispatchMessage("Add an embedded file");
 }
 
 
 void GuiEmbeddedFilesDialog::on_extractPB_clicked()
 {
-	EmbeddedFiles const & files = controller().embeddedFiles();
+	EmbeddedFiles const & files = controller_.embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it)
-		controller().extract(files[filesLW->row(*it)]);
+		controller_.extract(files[filesLW->row(*it)]);
 	// FIXME: collect extraction status and display a dialog
-	controller().dispatchMessage("Extract embedded files");
+	controller_.dispatchMessage("Extract embedded files");
 }
 
 
 void GuiEmbeddedFilesDialog::on_updatePB_clicked()
 {
-	EmbeddedFiles const & files = controller().embeddedFiles();
+	EmbeddedFiles const & files = controller_.embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it)
-		controller().update(files[filesLW->row(*it)]);
+		controller_.update(files[filesLW->row(*it)]);
 	// FIXME: collect update status and display a dialog
-	controller().dispatchMessage("Update embedded files from external file");
+	controller_.dispatchMessage("Update embedded files from external file");
 }
 
 
@@ -214,12 +202,12 @@ void GuiEmbeddedFilesDialog::on_updatePB_clicked()
 void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
 {
 	//
-	controller().embeddedFiles().enable(enable);
+	controller_.embeddedFiles().enable(enable);
 	// immediately post the change to buffer (and bufferView)
 	if (enable)
-		controller().dispatchMessage("Enable file embedding");
+		controller_.dispatchMessage("Enable file embedding");
 	else
-		controller().dispatchMessage("Disable file embedding");
+		controller_.dispatchMessage("Disable file embedding");
 }
 
 
