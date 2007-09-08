@@ -15,7 +15,6 @@
 
 #include "ButtonController.h"
 #include "DockView.h"
-#include "GuiView.h"
 #include "GuiAbout.h"
 #include "GuiBibitem.h"
 #include "GuiBibtex.h"
@@ -38,7 +37,6 @@
 #include "GuiNomencl.h"
 #include "GuiListings.h"
 #include "GuiLog.h"
-#include "GuiViewSource.h"
 #include "GuiNote.h"
 #include "GuiParagraph.h"
 #include "GuiPrefs.h"
@@ -52,6 +50,8 @@
 #include "GuiTabularCreate.h"
 #include "GuiTexinfo.h"
 #include "GuiToc.h"
+#include "GuiView.h"
+#include "GuiViewSource.h"
 #include "TocWidget.h"
 #include "GuiURL.h"
 #include "GuiVSpace.h"
@@ -115,6 +115,7 @@ Dialog * Dialogs::build(string const & name)
 	BOOST_ASSERT(isValidName(name));
 
 	Dialog * dialog = 0;
+	GuiViewBase & guiview = static_cast<GuiViewBase &>(lyxview_);
 
 	if (name == "aboutlyx") {
 		dialog = new GuiAboutDialog(lyxview_);
@@ -161,7 +162,8 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "log") {
 		dialog = new GuiLogDialog(lyxview_);
 	} else if (name == "view-source") {
-		dialog = new GuiViewSourceDialog(lyxview_);
+		dialog = new DockView<ControlViewSource, GuiViewSourceDialog>(
+			guiview, name, Qt::BottomDockWidgetArea);
 	} else if (name == "mathdelimiter") {
 		dialog = new GuiDelimiterDialog(lyxview_);
 	} else if (name == "mathmatrix") {

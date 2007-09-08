@@ -44,12 +44,12 @@ private:
 };
 
 
-class GuiViewSourceDialog : public GuiDialog, public Ui::ViewSourceUi
+class GuiViewSourceDialog : public QWidget, public Ui::ViewSourceUi
 {
 	Q_OBJECT
 
 public:
-	GuiViewSourceDialog(LyXView & lv);
+	GuiViewSourceDialog(ControlViewSource &);
 
 public Q_SLOTS:
 	// update content
@@ -61,7 +61,7 @@ public Q_SLOTS:
 
 private:
 	///
-	ControlViewSource & controller() const;	
+	ControlViewSource & controller_;	
 	///
 	QTextDocument * document_;
 	/// LaTeX syntax highlighter

@@ -24,16 +24,11 @@
 namespace lyx {
 namespace frontend {
 
-GuiViewSourceDialog::GuiViewSourceDialog(LyXView & lv)
-	: GuiDialog(lv, "view-source"),
-		document_(new QTextDocument(this)),
+GuiViewSourceDialog::GuiViewSourceDialog(ControlViewSource & controller)
+	:	controller_(controller), document_(new QTextDocument(this)),
 		highlighter_(new LaTeXHighlighter(document_))
 {
 	setupUi(this);
-	setController(new ControlViewSource(*this));
-
-	//	GuiViewBase & gui_view = static_cast<GuiViewBase &>(lyxview_);
-	//		*dialog, qvs, &gui_view, _("LaTeX Source"), Qt::BottomDockWidgetArea));
 
 	connect(viewFullSourceCB, SIGNAL(clicked()),
 		this, SLOT(update()));
@@ -57,14 +52,6 @@ GuiViewSourceDialog::GuiViewSourceDialog(LyXView & lv)
 	viewSourceTV->setFont(font);
 	// again, personal taste
 	viewSourceTV->setWordWrapMode(QTextOption::NoWrap);
-
-	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
-}
-
-
-ControlViewSource & GuiViewSourceDialog::controller() const
-{
-	return static_cast<ControlViewSource &>(Dialog::controller());
 }
 
 
@@ -74,7 +61,7 @@ void GuiViewSourceDialog::updateView()
 		update(viewFullSourceCB->isChecked());
 
 	int beg, end;
-	boost::tie(beg, end) = controller().getRows();
+	boost::tie(beg, end) = controller_.getRows();
 	QTextCursor c = QTextCursor(viewSourceTV->document());
 	c.movePosition(QTextCursor::NextBlock, QTextCursor::MoveAnchor, beg);
 	c.select(QTextCursor::BlockUnderCursor);
@@ -86,7 +73,7 @@ void GuiViewSourceDialog::updateView()
 
 void GuiViewSourceDialog::update(bool full_source)
 {
-	document_->setPlainText(toqstr(controller().updateContent(full_source)));
+	document_->setPlainText(toqstr(controller_.updateContent(full_source)));
 }
 
 
