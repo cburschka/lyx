@@ -1680,11 +1680,16 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_NOTE_INSERT:
 		code = Inset::NOTE_CODE;
 		break;
-	case LFUN_FLEX_INSERT:
+	case LFUN_FLEX_INSERT: {
 		code = Inset::FLEX_CODE;
-		if (cur.buffer().params().getTextClass().insetlayouts().empty())
+		string s = cmd.getArg(0);
+		InsetLayout il =  cur.buffer().params().getTextClass().insetlayout(from_utf8(s));
+		if (il.lyxtype != "charstyle" &&
+		    il.lyxtype != "custom" &&
+		    il.lyxtype != "element")
 			enable = false;
 		break;
+		}
 	case LFUN_BOX_INSERT:
 		code = Inset::BOX_CODE;
 		break;
