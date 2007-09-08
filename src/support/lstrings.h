@@ -219,15 +219,18 @@ docstring const rtrim(docstring const & a, char const * p = " ");
 std::string const ltrim(std::string const & a, char const * p = " ");
 docstring const ltrim(docstring const & a, char const * p = " ");
 
-/** Splits the string by the first delim.
-    Splits the string by the first appearance of delim.
-    The leading string up to delim is returned in piece (not including
-    delim), while the original string is cut from after the delimiter.
-    Example:
+/** Splits the string given in the first argument at the first occurence 
+    of the third argumnent, delim.
+    What precedes delim is returned in the second argument, piece; this
+    will be the whole of the string if no delimiter is found.
+    The return value is what follows delim, if anything. So the return
+    value is the null string if no delimiter is found.
+    Examples:
     \code
-    s1= ""; s2= "a;bc".split(s1, ';') -> s1 == "a"; s2 == "bc";
+    s1= "a;bc"; s2= ""
+    ret = split(s1, s2, ';') -> ret = "bc", s2 == "a"
     \endcode
-*/
+ */
 std::string const split(std::string const & a, std::string & piece, char delim);
 docstring const split(docstring const & a, docstring & piece, char_type delim);
 
