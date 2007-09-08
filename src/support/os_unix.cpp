@@ -13,19 +13,11 @@
 #include <config.h>
 
 #include "support/os.h"
-#include "debug.h"
 
 #ifdef __APPLE__
 #include <Carbon/Carbon.h>
-#include <ApplicationServices/ApplicationServices.h>
-#elif defined(HAVE_FONTCONFIG_FONTCONFIG_H)
-#include "support/filetools.h"
-#include "support/Package.h"
-#include <fontconfig/fontconfig.h>
-using lyx::support::addPath;
 #endif
 
-using std::endl;
 using std::string;
 
 
@@ -197,52 +189,6 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	// currently, no default viewer is tried for non-windows system
 	// support for KDE/Gnome/Macintosh may be added later
 	return false;
-#endif
-}
-
-
-void addFontResources()
-{
-#ifdef __APPLE__
-	CFBundleRef  myAppBundle = CFBundleGetMainBundle();
-	CFURLRef  myAppResourcesURL, FontsURL;
-	FSRef  fontDirRef;
-	FSSpec  fontDirSpec;
-	CFStringRef  filePath = CFStringCreateWithBytes(kCFAllocatorDefault,
-					(UInt8 *) "fonts", strlen("fonts"),
-					kCFStringEncodingISOLatin1, false);
-
-	myAppResourcesURL = CFBundleCopyResourcesDirectoryURL(myAppBundle);
-	FontsURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault,
-			myAppResourcesURL, filePath, true);
-	if (lyxerr.debugging(Debug::FONT)) {
-		UInt8  buf[255];
-		if (CFURLGetFileSystemRepresentation(FontsURL, true, buf, 255))
-			lyxerr << "Adding Fonts directory: " << buf << endl;
-	}
-	CFURLGetFSRef (FontsURL, &fontDirRef);
-	OSStatus err = FSGetCatalogInfo (&fontDirRef, kFSCatInfoNone,
-					 NULL, NULL, &fontDirSpec, NULL);
-	if (err)
-		lyxerr << "FSGetCatalogInfo err = " << err << endl;
-	err = FMActivateFonts (&fontDirSpec, NULL, NULL,
-			       kFMLocalActivationContext);
-	if (err)
-		lyxerr << "FMActivateFonts err = " << err << endl;
-#elif defined(HAVE_FONTCONFIG_FONTCONFIG_H)
-	// Register BaKoMa truetype fonts with fontconfig
-	string const fonts_dir =
-		addPath(package().system_support().absFilename(), "fonts");
-	if (!FcConfigAppFontAddDir(0, (FcChar8 const *)fonts_dir.c_str()))
-		lyxerr << "Unable to register fonts with fontconfig." << endl;
-#endif
-}
-
-
-void restoreFontResources()
-{
-#if defined(HAVE_FONTCONFIG_FONTCONFIG_H) && !defined(__APPLE__)
-	FcConfigAppFontClear(0);
 #endif
 }
 

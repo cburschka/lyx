@@ -446,9 +446,6 @@ int LyX::exec(int & argc, char * argv[])
 		return !final_success;
 	}
 
-	// Force adding of font path _before_ Application is initialized
-	support::os::addFontResources();
-
 	// Let the frontend parse and remove all arguments that it knows
 	pimpl_->application_.reset(createApplication(argc, argv));
 
@@ -482,9 +479,6 @@ int LyX::exec(int & argc, char * argv[])
 	exit_status = pimpl_->application_->exec();
 
 	prepareExit();
-
-	// Restore original font resources after Application is destroyed.
-	support::os::restoreFontResources();
 
 	return exit_status;
 }
