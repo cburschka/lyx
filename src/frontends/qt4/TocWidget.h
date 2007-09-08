@@ -27,10 +27,10 @@ class TocWidget : public QWidget, public Ui::TocUi
 {
 	Q_OBJECT
 public:
-	TocWidget(GuiToc * form, QWidget * parent);
+	TocWidget(GuiToc & form, QWidget * parent = 0);
 
 	/// Update the display of the dialog whilst it is still visible.
-	void update();
+	void updateView();
 
 protected Q_SLOTS:
 	/// Update Gui of the display.
@@ -69,7 +69,7 @@ private:
 	/// depth of list shown
 	int depth_;
 	///
-	GuiToc * form_;
+	GuiToc & form_;
 };
 
 } // namespace frontend
