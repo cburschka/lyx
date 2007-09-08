@@ -470,7 +470,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetNote(buf.params(), tmptok));
 		} else if (tmptok == "Box") {
 			inset.reset(new InsetBox(buf.params(), tmptok));
-		} else if (tmptok == "CharStyle") {
+		} else if (tmptok == "Flex") {
 			lex.next();
 			string s = lex.getString();
 			InsetLayout il = tclass.insetlayout(from_utf8(s));
