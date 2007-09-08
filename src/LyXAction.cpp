@@ -374,6 +374,7 @@ void LyXAction::init()
 		{ LFUN_LISTING_INSERT, "listing-insert", Noop },
 		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", Noop },
 		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop },
+		{ LFUN_LAYOUT_RELOAD, "layout-reload", Noop },
 
 		{ LFUN_NOACTION, "", Noop }
 	};

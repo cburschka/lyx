@@ -402,6 +402,7 @@ enum kb_action {
 	LFUN_PARAGRAPH_PARAMS,           // rgh, 200708XX
 	LFUN_LAYOUT_MODULES_CLEAR,       // rgh, 20070825
 	LFUN_LAYOUT_MODULE_ADD,          // rgh, 20070825
+	LFUN_LAYOUT_RELOAD,              // rgh, 20070903
 
 	LFUN_LASTACTION                  // end of the table
 };
