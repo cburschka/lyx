@@ -4042,7 +4042,7 @@ Standard
  If you want to keep both the current nesting depth and paragraph environment,
  you should use 
 \family sans
-M-Return
+C-Return
 \family default
  to break paragraphs.
 \end_layout
@@ -9050,14 +9050,14 @@ name "Document ! Settings"
 
  dialog.
  There you can specify which font should be used for the three different
- font shapes Roman, 
+ font shapes roman (serif), 
 \family sans
-Sans\InsetSpace ~
-Serif
+sans\InsetSpace ~
+serif
 \family default
 , and 
 \family typewriter
-Typewriter
+typewriter
 \family default
  and its scalings.
 \end_layout
@@ -9461,7 +9461,14 @@ not
 Tools\SpecialChar \menuseparator
 Preferences
 \family default
- dialog.
+ dialog, see Appendix\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "cha:The-Preferences-dialog"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -11840,7 +11847,14 @@ dvips
 dvips
 \family default
  has to be configured for this printer name.
- The default printer can be set in LyX's preferences dialog.
+ The default printer can be set in LyX's preferences dialog, see chapter\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "cha:The-Preferences-dialog"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -19421,7 +19435,13 @@ The
 Math\InsetSpace ~
 Panel
 \family default
- contains a number of functions, such as 
+ contains under the button 
+\begin_inset Graphics
+	filename ../images/math/functions.xpm
+
+\end_inset
+
+ a number of functions, such as 
 \begin_inset Formula $\sin$
 \end_inset
 
@@ -20146,8 +20166,14 @@ You can choose one of the accents by selecting an item from the
 Frame\InsetSpace ~
 decorations
 \family default
- symbol set in the math panel; this will apply to any selection you have
- made within a formula too.
+ symbol set button 
+\begin_inset Graphics
+	filename ../images/math/hat.xpm
+
+\end_inset
+
+ in the math panel ; this will apply to any selection you have made within
+ a formula too.
 \end_layout
 
 \begin_layout Section
@@ -24359,7 +24385,7 @@ Here is an example, where only the question text appears, the answer branch
 status open
 
 \begin_layout Standard
-Question: Who was the first Physics Nobel prize winner?
+Question: Who was the first physics Nobel prize winner?
 \end_layout
 
 \end_inset
@@ -24369,7 +24395,7 @@ Question: Who was the first Physics Nobel prize winner?
 
 \begin_layout Standard
 \begin_inset Branch Answer
-status collapsed
+status open
 
 \begin_layout Standard
 Answer: Wilhelm Conrad Röntgen
@@ -24673,16 +24699,36 @@ usepackage[labelfont=bf]{caption}
 
 \begin_layout Standard
 to the preamble and the problem is solved.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+For more commands provided by the 
+\series bold
+caption
+\series default
+ package, have a look at its documentation, 
+\begin_inset LatexCommand cite
+key "caption"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Note that some document classes have built-in solutions for well known problems
  like your case.
  For example if you use a 
-\family typewriter
-koma-scrip
+\family sans
+koma-script
 \family default
-t class, you don't need the package 
+ class, you don't need the package 
 \series bold
 caption
 \series default
@@ -24703,8 +24749,7 @@ bfseries}
 in the preamble and the problem is solved.
  So if you plan to write a large document, you should have a look at the
  documentation of the document class you want to use.
- (Btw.
- 
+ (
 \series bold
 
 \backslash
@@ -25090,11 +25135,10 @@ reference "sub:Settings"
 
 \end_inset
 
- Enable this if you use 
+ Only enable this if you use 
 \family typewriter
 ispell
 \family default
- (this option is not needed by and does not work with any other spell checker)
  and can't spell check words with international letters in them.
  There have been reports that this does not work with all dictionaries,
  so this is disabled by default.
@@ -25744,18 +25788,12 @@ Choose your language in the
 \family sans
 Language
 \family default
- section of the 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
- dialog.
+ section of this dialog.
  The default is 
 \family sans
 English
 \family default
 .
- Scroll to find the language you want and then click on your choice.
 \end_layout
 
 \begin_layout Standard
@@ -31145,9 +31183,15 @@ name "Reconfiguration of LyX"
 
 \begin_layout Standard
 Invoking a menu will start a viewer program.
- The viewer can be set in the preferences.
- The default viewers are set by LyX while it is first configured or later
- reconfigured.
+ The viewer can be set or changed in the preferences, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "cha:The-Preferences-dialog"
+
+\end_inset
+
+.
+ The default viewers are set by LyX while it is first configured.
 \end_layout
 
 \begin_layout Standard
@@ -31912,7 +31956,7 @@ Short Title
 Inserts a short title, see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:Footnotes"
+reference "sec:Short-Titles"
 
 \end_inset
 
@@ -32307,7 +32351,7 @@ name "Language ! Encoding"
 The document language and quote styles are set here.
  The encoding specifies how the document content is exported to LaTeX (the
  LyX file is always encoded in utf8).
- All characters that can not be encoded using the specified encoding will
+ All characters that cannot be encoded using the specified encoding will
  be exported as LaTeX-commands (this can fail if a LaTeX-command is not
  known for a particular character).
 \begin_inset Foot
@@ -32316,7 +32360,11 @@ status collapsed
 \begin_layout Standard
 The known commands are defined in a text file.
  You can add commands for unknown symbols to that file yourself, see the
- Customization Guide for details.
+ 
+\emph on
+Customization
+\emph default
+ manual for details.
 \end_layout
 
 \end_inset
@@ -32347,13 +32395,13 @@ status collapsed
 XeTeX is a TeX typesetting engine, an alternative for LaTeX.
  It natively supports Unicode while its input file is assumed to be in UTF-8
  encoding.
- More about using LyX with XeTeX can be found here: 
-\begin_inset LatexCommand url
-target "http://wiki.lyx.org/LyX/XeTeX"
+ More about using LyX with XeTeX can be found in 
+\begin_inset LatexCommand cite
+key "XeTeX"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -32402,12 +32450,12 @@ name "LaTeX-packages ! inputenc"
 \end_layout
 
 \begin_layout Description
-amscii8 encoding for Armenian
+armscii8 encoding for Armenian
 \end_layout
 
 \begin_layout Description
-ascii Pure US-ASCII (7bit, may result in a big file because lots of LaTeX-comman
-ds may be needed)
+ascii the ASCII encoding, covers only plain English, may result in a big
+ file because lots of LaTeX-commands may be needed
 \end_layout
 
 \begin_layout Description
@@ -32524,12 +32572,6 @@ utf8x Unicode utf8 with the LaTeX-package
 \series bold
 inputenc
 \series default
-
-\begin_inset LatexCommand index
-name "LaTeX-packages ! inputenc"
-
-\end_inset
-
  (second variant, for greek and CJK symbols and some others).
 \end_layout
 
@@ -32544,8 +32586,7 @@ name "LaTeX-packages ! CJK"
 
 \end_inset
 
- (mainly for the Chinese, Japanese and Korean language, but might work with
- other unicode symbols, too)
+ (for the languages Chinese, Japanese and Korean)
 \end_layout
 
 \begin_layout Description
@@ -32557,9 +32598,19 @@ XeTeX
 \series bold
 inputenc
 \series default
+ 
+\begin_inset Foot
+status collapsed
 
-\begin_inset LatexCommand index
-name "LaTeX-packages ! inputenc"
+\begin_layout Standard
+More about using LyX with XeTeX can be found in 
+\begin_inset LatexCommand cite
+key "XeTeX"
+
+\end_inset
+
+.
+\end_layout
 
 \end_inset
 
@@ -32856,6 +32907,20 @@ reference "sec:Basic-LyX-Setup"
 
 \begin_layout Subsection
 Preferences
+\end_layout
+
+\begin_layout Standard
+The preferences dialog is described in detail in chapter
+\begin_inset Formula $\,$
+\end_inset
+
+
+\begin_inset LatexCommand ref
+reference "cha:The-Preferences-dialog"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -34667,6 +34732,907 @@ Embedded Objects
 \end_layout
 
 \begin_layout Chapter
+The 
+\family sans
+Preferences
+\family default
+ Dialog
+\begin_inset LatexCommand label
+name "cha:The-Preferences-dialog"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Dialogs ! Preferences"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The preferences dialog is called with the menu Tools\SpecialChar \menuseparator
+Preferences.
+ It consists of submenus explained in the following.
+\end_layout
+
+\begin_layout Section
+Look and Feel
+\end_layout
+
+\begin_layout Subsection
+User Interface
+\begin_inset LatexCommand label
+name "sec:ui"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Customization ! of toolbars"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Customization ! of menus"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ You have to restart LyX before changes in ui- and bind-files take effect.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+User Interface File
+\begin_inset LatexCommand index
+name "Customization ! of toolbars"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Customization ! of menus"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The appearance of the menus and toolbars can be changed by choosing an user
+ interface (ui) file.
+ An ui-file is a textfile where the toolbars and menus are listed.
+ The toolbar buttons and menu entries are specified in the files 
+\shape italic
+stdtoolbars.inc
+\shape default
+ and 
+\shape italic
+stdmenus.inc
+\shape default
+, respectively.
+ To create your own menu and toolbar layout, start with a copy of these
+ files and edit the entries.
+\end_layout
+
+\begin_layout Standard
+The syntax of the .inc-files is straightforward: The 
+\family sans
+Menubar
+\family default
+, 
+\family sans
+Menu
+\family default
+ and 
+\family sans
+Toolbar
+\family default
+ entries must be ended with an explicit 
+\family sans
+End
+\family default
+.
+ They may contain 
+\family sans
+Submenus
+\family default
+, 
+\family sans
+Items
+\family default
+, 
+\family sans
+OptItems
+\family default
+, 
+\family sans
+Separators
+\family default
+, 
+\family sans
+Icons,
+\family default
+ and in the case of the 
+\begin_inset Quotes eld
+\end_inset
+
+file
+\begin_inset Quotes erd
+\end_inset
+
+ menus a 
+\family sans
+Lastfiles
+\family default
+ entry.
+ The syntax for the entries is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip*
+\end_inset
+
+
+\series bold
+Item 
+\begin_inset Quotes erd
+\end_inset
+
+menu or button name
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes erd
+\end_inset
+
+LyX-function
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace smallskip*
+\end_inset
+
+All LyX-functions are listed in 
+\begin_inset LatexCommand cite
+key "LyX-func"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An example: Assuming you use the menu 
+\family sans
+Navigate\SpecialChar \menuseparator
+Bookmarks
+\family default
+ quite often and therefore want six available bookmarks, you can add the
+ line
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip*
+\end_inset
+
+
+\series bold
+Item "Save Bookmark 6" "bookmark-save 6"
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace smallskip*
+\end_inset
+
+to the navigate menu section in the .inc-file to have the sixth bookmark.
+\end_layout
+
+\begin_layout Subsubsection
+Bind-File
+\begin_inset LatexCommand index
+name "Bindings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bindings are used to bind a function to a key.
+ Several binding files are available:
+\end_layout
+
+\begin_layout Description
+cua.bind typical set of PC keyboard shortcuts
+\end_layout
+
+\begin_layout Description
+(x)emacs.bind set of bindings like they are used in the editor programs 
+\family sans
+Emacs
+\family default
+ (
+\family sans
+XEmacs
+\family default
+)
+\end_layout
+
+\begin_layout Description
+mac.bind set of bindings for Mac\InsetSpace \thinspace{}
+OS systems.
+\end_layout
+
+\begin_layout Standard
+There are also bind-files designed for special document classes, like 
+\shape italic
+broadway.bind
+\shape default
+, and bind files for special languages.
+ The name of language bind-files begin with a language code, e.g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+pt
+\begin_inset Quotes erd
+\end_inset
+
+ for Portuguese.
+ If you use LyX in a certain language, LyX will try to use the appropriate
+ bind-file.
+\end_layout
+
+\begin_layout Standard
+Some bind-files, like 
+\emph on
+math.bind
+\emph default
+, have only a small scope.
+ When looking at the the end of the file 
+\shape italic
+cua.bind
+\shape default
+, you can see that they are included to keep the overview in the bind-file.
+\end_layout
+
+\begin_layout Standard
+If you like to customize the keybindings to your own taste, modify the bind-file
+s with a text editor.
+ The syntax of the entries is:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+bind 
+\begin_inset Quotes erd
+\end_inset
+
+key combination
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes erd
+\end_inset
+
+LyX-function
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All LyX-functions are listed in 
+\begin_inset LatexCommand cite
+key "LyX-func"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Session
+\end_layout
+
+\begin_layout Standard
+When the option 
+\family sans
+Save\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+restore window size, or use fixed size
+\family default
+ is not checked, you can specify the size of LyX's main window when LyX
+ is started.
+\end_layout
+
+\begin_layout Standard
+With the option 
+\family sans
+Save\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+restore window position
+\family default
+ LyX will be opened with its main window at the last used position.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Restore cursor positions
+\family default
+ sets the cursor to the position in the file where it has been the last
+ time.
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Load opened files from last session
+\family default
+ opens all files that were opened in the last LyX session.
+\end_layout
+
+\begin_layout Subsubsection
+Documents
+\end_layout
+
+\begin_layout Standard
+When the option 
+\family sans
+Backup documents
+\family default
+ is set, you can specify the time between backup saves.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Maximum last files
+\family default
+ is the number of last opened files that LyX should display in the menu
+ 
+\family sans
+File\SpecialChar \menuseparator
+Open\InsetSpace ~
+Recent
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Scrolling
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Cursor follows scrollbar
+\family default
+ sets the cursor to the top of the currently displayed document part when
+ scrolling.
+\end_layout
+
+\begin_layout Subsection
+Screen Fonts
+\begin_inset LatexCommand index
+name "Font ! Screen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These fonts are used to display your documents on the screen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ This section only deals with the fonts 
+\emph on
+inside
+\emph default
+ the LyX window.
+ The fonts that appear on the output are independent from these fonts, and
+ set in the menu 
+\family sans
+Layout\SpecialChar \menuseparator
+Document
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By default, LyX uses 
+\family typewriter
+Times
+\family default
+ as roman (serif) font, 
+\family typewriter
+Arial
+\family default
+ or 
+\family typewriter
+Helvetica
+\family default
+ (depends on the system) as 
+\family sans
+sans\InsetSpace ~
+serif
+\family default
+ font, and 
+\family typewriter
+Courier
+\family default
+ as 
+\family typewriter
+typewriter
+\family default
+ font.
+\end_layout
+
+\begin_layout Standard
+You can change the font size with the 
+\family sans
+Zoom
+\family default
+ setting.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Screen DPI
+\family default
+ is the screen resolution in dpi (dots per inch).
+ The Font Sizes are calculated as letter height in units of points.
+ 72\InsetSpace \thinspace{}
+points have the size of 1\InsetSpace \thinspace{}
+inch, see Appendix\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "cha:Units-available-in"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The default 
+\family sans
+Font Sizes
+\family default
+ are the same as if a document font size of 10
+\begin_inset Formula $\,$
+\end_inset
+
+pt would be used.
+ The sizes are explained in detail in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Document-Font"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Colors
+\end_layout
+
+\begin_layout Standard
+You can here change all colors used by LyX.
+ Choose an item in the list and use the 
+\family sans
+Alter
+\family default
+ button.
+\end_layout
+
+\begin_layout Subsection
+Graphics
+\end_layout
+
+\begin_layout Standard
+Here you can specify how graphics inside LyX are displayed.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Instant Preview
+\family default
+ enables previewing snippets of your document.
+ This feature is described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Previewing-snippets-of"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Keyboard Map
+\begin_inset LatexCommand index
+name "Keyboard Map"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Normally keyboard settings have to be done in a menu of your operating system.
+ For the case that this is not possible, LyX provides keyboard maps.
+ If you have e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+a Czech keyboard but want to write with it like with a Romanian
+ one, you can use the keyboard map file named 
+\emph on
+romanian.kmap
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Keyboard maps are only provided as makeshift and don't work on all systems.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Paths
+\end_layout
+
+\begin_layout Section
+Identity
+\end_layout
+
+\begin_layout Section
+Language Settings
+\end_layout
+
+\begin_layout Subsection
+Language
+\end_layout
+
+\begin_layout Subsection
+Spellchecker
+\end_layout
+
+\begin_layout Standard
+The spellchecker setting are explained in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Spellchecking"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Outputs
+\end_layout
+
+\begin_layout Subsection
+Printer
+\end_layout
+
+\begin_layout Subsection
+Date Format
+\end_layout
+
+\begin_layout Standard
+%a locale's abbreviated weekday name (Sun..Sat)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%A locale's full weekday name, variable length (Sunday..Saturday)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%b locale's abbreviated month name (Jan..Dec)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%B locale's full month name, variable length (January..December)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%c locale's date and time (Sat Nov 04 12:02:33 EST 1989)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%C century (year divided by 100 and truncated to an integer) [00-99]
+\end_layout
+
+\begin_layout Standard
+\noindent
+%d day of month (01..31)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%D date (mm/dd/yy)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%e day of month, blank padded ( 1..31)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%F same as %Y-%m-%d
+\end_layout
+
+\begin_layout Standard
+\noindent
+%g the 2-digit year corresponding to the %V week number
+\end_layout
+
+\begin_layout Standard
+\noindent
+%G the 4-digit year corresponding to the %V week number
+\end_layout
+
+\begin_layout Standard
+\noindent
+%h same as %b
+\end_layout
+
+\begin_layout Standard
+\noindent
+%H hour (00..23)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%I hour (01..12)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%j day of year (001..366)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%k hour ( 0..23)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%l hour ( 1..12)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%m month (01..12)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%M minute (00..59)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%n a newline
+\end_layout
+
+\begin_layout Standard
+\noindent
+%N nanoseconds (000000000..999999999)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%p locale's upper case AM or PM indicator (blank in many locales)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%P locale's lower case am or pm indicator (blank in many locales)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%r time, 12-hour (hh:mm:ss [AP]M)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%R time, 24-hour (hh:mm)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%s seconds since `00:00:00 1970-01-01 UTC' (a GNU extension)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%S second (00..60); the 60 is necessary to accommodate a leap second
+\end_layout
+
+\begin_layout Standard
+\noindent
+%t a horizontal tab
+\end_layout
+
+\begin_layout Standard
+\noindent
+%T time, 24-hour (hh:mm:ss)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%u day of week (1..7); 1 represents Monday
+\end_layout
+
+\begin_layout Standard
+\noindent
+%U week number of year with Sunday as first day of week (00..53)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%V week number of year with Monday as first day of week (01..53)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%w day of week (0..6); 0 represents Sunday
+\end_layout
+
+\begin_layout Standard
+\noindent
+%W week number of year with Monday as first day of week (00..53)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%x locale's date representation (mm/dd/yy)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%X locale's time representation (%H:%M:%S)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%y last two digits of year (00..99)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%Y year (1970...)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%z RFC-822 style numeric timezone (-0500) (a nonstandard extension)
+\end_layout
+
+\begin_layout Standard
+\noindent
+%Z time zone (e.g., EDT), or nothing if no time zone is determinable
+\end_layout
+
+\begin_layout Subsection
+Plain Text
+\end_layout
+
+\begin_layout Subsection
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+eX
+\end_layout
+
+\begin_layout Subsection
+Paths
+\end_layout
+
+\begin_layout Section
+Converters
+\end_layout
+
+\begin_layout Section
+File Formats
+\end_layout
+
+\begin_layout Section
+Copiers
+\end_layout
+
+\begin_layout Section
+BibTeX and makeindex
+\end_layout
+
+\begin_layout Chapter
 Units available in LyX
 \begin_inset LatexCommand index
 name "Units"
@@ -35392,11 +36358,19 @@ href
 \series default
  is explained in the 
 \emph on
-Extended Features
+Embedded Objects
 \emph default
  manual.
  It creates a hyperlink.
 \end_layout
+
+\end_inset
+
+:
+\newline
+
+\begin_inset LatexCommand url
+target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS"
 
 \end_inset
 
@@ -35487,8 +36461,59 @@ key "LaTeXFAQ"
 
 
 \begin_inset LatexCommand url
-name "LaTeX FAQ"
+name "The LaTeX FAQ:"
 target "http://www.tex.ac.uk/cgi-bin/texfaq2html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "caption"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf}{
+\end_layout
+
+\end_inset
+
+Documentation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+caption
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! caption"
+
+\end_inset
+
+:
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf"
 
 \end_inset
 
@@ -35536,6 +36561,14 @@ name "LaTeX-packages ! fancyhdr"
 
 \end_inset
 
+:
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
+
+\end_inset
+
 
 \end_layout
 
@@ -35577,6 +36610,14 @@ floatflt
 
 \begin_inset LatexCommand index
 name "LaTeX-packages ! floatflt"
+
+\end_inset
+
+:
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf"
 
 \end_inset
 
@@ -35623,6 +36664,14 @@ name "LaTeX-packages ! nomencl"
 
 \end_inset
 
+:
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
+
+\end_inset
+
 
 \end_layout
 
@@ -35666,6 +36715,55 @@ name "LaTeX-packages ! tipa"
 
 \end_inset
 
+:
+\newline
+
+\begin_inset LatexCommand url
+target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "XeTeX"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://wiki.lyx.org/LyX/XeTeX}{
+\end_layout
+
+\end_inset
+
+Wiki-page
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ how to use LyX with XeTeX:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/XeTeX"
+
+\end_inset
+
 
 \end_layout
 
@@ -35699,7 +36797,15 @@ status collapsed
 
 \end_inset
 
- how to set up LyX for Arabic
+ how to set up LyX for Arabic:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Arabic"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -35732,7 +36838,15 @@ status collapsed
 
 \end_inset
 
- how to set up LyX for Armenian
+ how to set up LyX for Armenian:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Armenian"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -35765,7 +36879,15 @@ status collapsed
 
 \end_inset
 
- how to set up LyX for Farsi
+ how to set up LyX for Farsi:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Farsi"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -35798,7 +36920,56 @@ status collapsed
 
 \end_inset
 
- how to set up LyX for Hebrew
+ how to set up LyX for Hebrew:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Hebrew"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "LyX-func"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://wiki.lyx.org/LyX/LyxFunctionList1-5-1}{
+\end_layout
+
+\end_inset
+
+Wiki-page
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ with a list of all available LyX-functions:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/LyxFunctionList1-5-1"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
