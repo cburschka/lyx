@@ -4042,7 +4042,7 @@ Standard
  If you want to keep both the current nesting depth and paragraph environment,
  you should use 
 \family sans
-M-Return
+C-Return
 \family default
  to break paragraphs.
 \end_layout
@@ -24385,7 +24385,7 @@ Here is an example, where only the question text appears, the answer branch
 status open
 
 \begin_layout Standard
-Question: Who was the first Physics Nobel prize winner?
+Question: Who was the first physics Nobel prize winner?
 \end_layout
 
 \end_inset
@@ -24395,7 +24395,7 @@ Question: Who was the first Physics Nobel prize winner?
 
 \begin_layout Standard
 \begin_inset Branch Answer
-status collapsed
+status open
 
 \begin_layout Standard
 Answer: Wilhelm Conrad Röntgen
@@ -24729,8 +24729,7 @@ bfseries}
 in the preamble and the problem is solved.
  So if you plan to write a large document, you should have a look at the
  documentation of the document class you want to use.
- (Btw.
- 
+ (
 \series bold
 
 \backslash
