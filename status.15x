@@ -150,3 +150,6 @@ What's new
 - Remove /TP (force to use C++ compiler) option from scons/msvc.
 
 - Allow the use of a snapshot version of scons.
+
+- On all supported platforms, let Qt 4.2 or higher use the math fonts in
+  <sysdir>/fonts without the need of installing them.
