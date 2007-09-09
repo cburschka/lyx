@@ -541,7 +541,7 @@ class LyX_Base:
                     k = k + 1
 
             # trim empty lines in the end.
-            while par and par[-1].strip():
+            while par and par[-1].strip() == '':
                 par.pop()
 
             toc_par.append(Paragraph(section, par))
