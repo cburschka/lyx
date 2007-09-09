@@ -23880,7 +23880,7 @@ The nomenclature entries are sorted alphabetically by the LaTeX-code of
 a
 \begin_inset LatexCommand nomenclature
 symbol "a"
-description "dummy entry for the character \"a\"\\nomnorefpage"
+description "dummy entry for the character \"a\""
 
 \end_inset
 
@@ -24188,24 +24188,6 @@ nomnorefpage,\InsetSpace ~
 
 \backslash
 nomnorefeqpage Turns off the corresponding options
-\end_layout
-
-\begin_layout Standard
-The option 
-\series bold
-
-\backslash
-nomnorefpage
-\series default
- was used in this document in the nomenclature entry for the 
-\begin_inset Quotes eld
-\end_inset
-
-a
-\begin_inset Quotes erd
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
@@ -36975,7 +36957,7 @@ target "http://wiki.lyx.org/LyX/LyxFunctionList1-5-1"
 \begin_layout Standard
 
 \newpage
-Bibliography created from a BibTeX-database:
+
 \begin_inset LatexCommand bibtex
 options "biblio/alphadin"
 bibfiles "biblio/LyXDocs"
@@ -36983,6 +36965,13 @@ bibfiles "biblio/LyXDocs"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The above bibliography is created from a BibTeX-database.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
