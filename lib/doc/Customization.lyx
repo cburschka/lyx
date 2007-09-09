@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 278
+\lyxformat 283
 \begin_document
 \begin_header
 \textclass book
@@ -3256,7 +3256,7 @@ xx
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3404,7 +3404,7 @@ xx
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3837,7 +3837,7 @@ underbar (underb)
 \hfill
 
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3862,7 +3862,7 @@ underdot (underd)
 \hfill
 
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3893,7 +3893,7 @@ tie (tie)
 \hfill
 
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3912,7 +3912,7 @@ breve (bre)
 \hfill
 ă
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3949,7 +3949,7 @@ dot (dot)
 \hfill
 ż
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -6054,7 +6054,7 @@ These are the general parameters which describe the form of the entire document:
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -6449,11 +6449,13 @@ NoFloat
 
 \family typewriter
 \series medium
-CharStyle\SpecialChar \ldots{}
+InsetLayout\SpecialChar \ldots{}
 End
 \family default
 \series default
- This section defines a new character style.
+ This section (re-)defines the layout of an inset.
+ It can be applied to an existing inset of to a new, user-defined inset,
+ e.g., a new character style.
  See Section\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -6485,7 +6487,7 @@ reference "sec:counter"
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -6638,7 +6640,7 @@ where the following commands are allowed:
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -7992,7 +7994,7 @@ Note that, besides that functionality, there is no way to ensure any ordering
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -8347,7 +8349,7 @@ type
 \end_layout
 
 \begin_layout Subsection
-Character styles
+Inset layouts and Flex insets
 \end_layout
 
 \begin_layout Standard
@@ -8356,12 +8358,156 @@ name "sec:charstyle"
 
 \end_inset
 
-You can define character styles since version 1.4.0 of LyX.
- The 
+You can define character styles since version 1.4.0 of LyX; since version
+ 1.6.0 these are called Flex insets.
+ 
+\end_layout
+
+\begin_layout Standard
+Furthermore it is possible to define the general layout of many different
+ types of insets.
+ Currently layout parameters can be defined for footnotes, marginal notes,
+ note insets, ERT insets, branch insets, and Flex insets.
+ The latter are definable from the user GUI and come in three different
+ kinds: character style (
 \family typewriter
 CharStyle
 \family default
+) , user custom (
+\family typewriter
+Custom
+\family default
+), and XML element (
+\family typewriter
+Element
+\family default
+) insets.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+InsetLayout
+\family default
+ definition starting line is of the form
+\end_layout
+
+\begin_layout LyX-Code
+InsetLayout <Type> <Name>
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+<type>
+\family default
+ can be 
+\family typewriter
+Foot, Margin, Note, Flex
+\family default
+, and 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+<Name>
+\family default
+ can be empty (for foot- and marginal notes, branches and ERT) or one of
+ types 
+\family typewriter
+CharStyle:Noun
+\family default
+, 
+\family typewriter
+Note:Comment
+\family default
+, 
+\family typewriter
+Custom:Endnote
+\family default
+, 
+\family typewriter
+Element:Filename
+\family default
+, etc.
+ Here, the second part of the name can be chosen freely (for CharStyle,
+ Custom and Element), or from a predefined list (for Note).
+\end_layout
+
+\begin_layout Standard
+The following 
+\family typewriter
+InsetLayout
+\family default
  section can contain the following entries:
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LyxType 
+\family default
+\series default
+can be 
+\family typewriter
+charstyle
+\family default
+, 
+\family typewriter
+custom
+\family default
+, 
+\family typewriter
+element
+\family default
+, 
+\family typewriter
+end
+\family default
+ (indicating a dummy definition ending definitions of charstyles etc.).
+ This entry is only meaningful for Flex (user definable) insets, the three
+ types of which are CharStyle, Custom and Element.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Decoration
+\family default
+\series default
+ can be 
+\family typewriter
+\series medium
+Classic
+\family default
+\series default
+,
+\family typewriter
+\series medium
+ Minimalistic or Conglomerate
+\family default
+\series default
+, describing the rendering style used for the inset's frame and buttons.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelString
+\family default
+\series default
+ defines what will be displayed on the button or elsewhere as the inset
+ label.
+ Some inset types (ERT and Branch) modify this label on the fly.
 \end_layout
 
 \begin_layout Description
@@ -8407,6 +8553,11 @@ reference "sec:fonts"
 \end_inset
 
 .
+ Note that this definition can never appear before 
+\family typewriter
+Font
+\family default
+, lest it be ineffective (see above)
 \end_layout
 
 \begin_layout Description
@@ -8433,7 +8584,11 @@ LatexParam
 LatexName
 \family default
 \series default
- stuff.
+ stuff, including possible bracket pairs like 
+\family typewriter
+[]
+\family default
+.
  This parameter cannot be changed from within LyX.
 \end_layout
 
