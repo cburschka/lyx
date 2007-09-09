@@ -32,11 +32,11 @@ GuiViewSourceDialog::GuiViewSourceDialog(ControlViewSource & controller)
 	setWindowTitle(qt_("LaTeX Source"));
 
 	connect(viewFullSourceCB, SIGNAL(clicked()),
-		this, SLOT(update()));
+		this, SLOT(updateView()));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		updatePB, SLOT(setDisabled(bool)));
 	connect(updatePB, SIGNAL(clicked()),
-		this, SLOT(update()));
+		this, SLOT(updateView()));
 
 	// setting a document at this point trigger an assertion in Qt
 	// so we disable the signals here:

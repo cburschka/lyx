@@ -44,8 +44,8 @@ GuiTexinfoDialog::GuiTexinfoDialog(LyXView & lv)
 	connect(viewPB, SIGNAL(clicked()), this, SLOT(viewClicked()));
 	connect(whatStyleCO, SIGNAL(activated(const QString &)),
 		this, SLOT(enableViewPB()));
-	connect(whatStyleCO, SIGNAL(activated(int)), this, SLOT(update()));
-	connect(pathCB, SIGNAL(stateChanged(int)), this, SLOT(update()));
+	connect(whatStyleCO, SIGNAL(activated(int)), this, SLOT(updateView()));
+	connect(pathCB, SIGNAL(stateChanged(int)), this, SLOT(updateView()));
 	connect(rescanPB, SIGNAL(clicked()), this, SLOT(enableViewPB()));
 	connect(rescanPB, SIGNAL(clicked()), this, SLOT(rescanClicked()));
 	connect(fileListLW, SIGNAL(itemClicked(QListWidgetItem *)),
