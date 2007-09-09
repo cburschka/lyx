@@ -25010,7 +25010,6 @@ programar
  tablas y figuras en negrita.
  Pero tu documento tiene más de cien de ellos, por tanto es imposible cambiarlos
  todos a mano en poco tiempo.
- 
 \end_layout
 
 \begin_layout Standard
@@ -25084,6 +25083,30 @@ usepackage[labelfont=bf]{caption}
 
 \begin_layout Standard
 y problema resuelto.
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\lang english
+For more commands provided by the 
+\series bold
+caption
+\series default
+ package, have a look at its documentation, 
+\begin_inset LatexCommand cite
+key "caption"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -25514,8 +25537,15 @@ reference "sub:Configuración"
 
 \end_inset
 
- Habilita esta opción si la revisión no funciona con palabras que tienen
- letras internacionales.
+ 
+\lang english
+Only enable this if you use 
+\family typewriter
+ispell
+\family default
+ and can't spell check words with international letters in them.
+
+\lang spanish
  Ha habido informes de que no trabaja con todos los diccionarios, por eso
  está desmarcado por defecto.
 \end_layout
@@ -26132,43 +26162,37 @@ Configuración
 \end_layout
 
 \begin_layout Standard
-Elige idioma en el cuadro desplegable 
-\family sans
-Idioma.
 
+\lang english
+Choose your language in the 
+\family sans
+Language
 \family default
- Por defecto es inglés.
- Puedes deslizar la lista hasta encontrar el que busques.
+ section of this dialog.
+ The default is 
+\family sans
+English
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-El cuadro 
+
+\lang english
+The 
 \family sans
-Codificación
+Encoding
 \family default
- permite seleccionar el mapa de caracteres.
- Si seleccionas 
+ box lets you choose the character encoding map you want to use for LaTeX
+ export.
+ The option 
 \family sans
-LaTeX\InsetSpace ~
-default 
+use language's default encoding
 \family default
-o 
-\family sans
-Usar\InsetSpace ~
-codificación\InsetSpace ~
-predefinida\InsetSpace ~
-del\InsetSpace ~
-idioma
-\family default
-, se escoge la codificación que LaTeX usa por defecto para el idioma elegido,
- p.\InsetSpace \thinspace{}
-e.
- para inglés es 
-\family sans
-latin9
-\family default
-.
- Las distintas codificaciones se explican en la sección\InsetSpace ~
+ is the preferred choice and works well in most cases.
+ For details abhout the different encoding options see section
+\lang spanish
+\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Configuración"
@@ -26176,62 +26200,6 @@ reference "sub:Configuración"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-LyX también soporta salida Unicode, que es particularmente útil si necesitas
- muchos símbolos especiales o caracteres no alfabéticos.
- Si quieres usar esto (y tu instalación LaTeX soporta Unicode), la codificación
- 
-\family typewriter
-utf8
-\family default
- es la más adecuada.
- Hay algunas codificaciones Unicode adicionales para propósitos concretos:
- 
-\family typewriter
-UTF8
-\family default
- y 
-\family typewriter
-utf8x
-\family default
- para idiomas CJK (chino, japonés, coreano), y 
-\family typewriter
-utf8-plain
-\family default
- para 
-\family sans
-XeTeX
-\family default
-, que usa directamente Unicode, sin ayuda del paquete LaTeX 
-\series bold
-inputenc
-\series default
-
-\begin_inset LatexCommand index
-name "LaTeX-paquetes ! inputenc"
-
-\end_inset
-
-.
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-Véase la sección\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sub:Configuración"
-
-\end_inset
-
- para los detalles.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -32856,30 +32824,131 @@ name "Idioma ! Codificación"
 
 \begin_layout Standard
 Aquí se determina el idioma del documento y estilo de las comillas.
- La codificación es necesaria para poder escribir caracteres en el idioma
- del documento.
- Por ejemplo, caracteres acentuados sin tener que usar comandos LaTeX.
+ 
+\lang english
+The encoding specifies how the document content is exported to LaTeX (the
+ LyX file is always encoded in utf8).
+ All characters that cannot be encoded using the specified encoding will
+ be exported as LaTeX-commands (this can fail if a LaTeX-command is not
+ known for a particular character).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\lang english
+The known commands are defined in a text file.
+ You can add commands for unknown symbols to that file yourself, see the
+ 
+\emph on
+Customization
+\emph default
+ manual for details.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-La codificación predefinida debería funcionar bien en casi todos los casos.
- LyX escogerá la correcta automáticamente.
+
+\lang english
+If you use the option 
+\family sans
+use language's default encoding
+\family default
+, LyX determines the encoding of a portion of text from the language of
+ this text.
+ If the document contains text in more than one language you may get more
+ than one encoding in the LaTeX file.
+ If you do not use this option then the complete document will always use
+ exactly one encoding.
+ Checking this option is the preferred setting unless you use 
+\family sans
+XeTeX
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\lang english
+XeTeX is a TeX typesetting engine, an alternative for LaTeX.
+ It natively supports Unicode while its input file is assumed to be in UTF-8
+ encoding.
+ More about using LyX with XeTeX can be found in 
+\begin_inset LatexCommand cite
+key "XeTeX"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ (see below).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX also supports Unicode output, which is particularly useful if you need
+ lots of special symbols or non-alphabetic scripts, respectively.
+ If you want to use this (and your LaTeX installation supports Unicode,
+ for that matter), choose one of the four utf8 variants from the list below.
+ Unfortunately the unicode support of standard LaTeX is quite incomplete,
+ so it is not uncommon that a file with lots of unicode symbols works fine
+ with 
+\family sans
+use language's default encoding
+\family default
+ (when LyX uses it's list of known LaTeX-commands), but does not work with
+ a fixed utf8 encoding (when the list of known LaTeX-commands is ot used,
+ because all unicode symbols can be encoded in utf8).
 \end_layout
 
 \begin_layout Standard
 Las codificaciones disponibles son las siguientes:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 
-\end_layout
+\lang english
+LaTeX\InsetSpace ~
+default Same as 
+\family sans
+use language's default encoding
+\family default
+, but the LaTeX-package
+\lang spanish
+ 
+\series bold
+inputenc
+\series default
 
-\begin_layout Standard
+\begin_inset LatexCommand index
+name "LaTeX-paquetes ! inputenc"
 
+\end_inset
+
+ 
+\lang english
+is not used.
+ You probably need to load some other packages manually in the preamble.
 \end_layout
 
 \begin_layout Description
-amscii8 para armenio
+armscii8 para armenio
+\end_layout
+
+\begin_layout Description
+ascii
+\lang english
+ the ASCII encoding, covers only plain English, may result in a big file
+ because lots of LaTeX-commands may be needed
 \end_layout
 
 \begin_layout Description
@@ -32979,38 +33048,11 @@ pt154 cirílico para kazajo
 \end_layout
 
 \begin_layout Description
-utf8 código para unicode utf8
-\end_layout
-
-\begin_layout Description
-UTF8 código para los idiomas CJK (chino, japonés, coreano)
-\end_layout
-
-\begin_layout Description
-utf8-plain código para ser usado con 
-\family sans
-XeTeX
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-XeTeX es un programa de tipografía alternativo a LaTeX.
- Soporta Unicode de forma nativa y asume que el archivo de entrada está
- en UTF-8.
- Más información sobre el uso de LyX con XeTeX en: 
-\begin_inset LatexCommand url
-target "http://wiki.lyx.org/LyX/XeTeX"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, que usa Unicode directamente, sin necesidad del paquete LaTeX 
+utf8
+\lang english
+ Unicode utf8 with the LaTeX-package
+\lang spanish
+ 
 \series bold
 inputenc
 \series default
@@ -33020,11 +33062,79 @@ name "LaTeX-paquetes ! inputenc"
 
 \end_inset
 
-.
+
+\lang english
+ (first variant, for latin symbols and some others).
 \end_layout
 
 \begin_layout Description
-utf8x código para los idiomas CJK
+utf8x
+\lang english
+ Unicode utf8 with the LaTeX-package
+\lang spanish
+ 
+\series bold
+inputenc
+\series default
+ 
+\lang english
+(second variant, for greek and CJK symbols and some others).
+\end_layout
+
+\begin_layout Description
+UTF8
+\lang english
+ Unicode utf8 with the LaTeX-package
+\lang spanish
+ 
+\series bold
+CJK
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-paquetes ! CJK"
+
+\end_inset
+
+ 
+\lang english
+(for the languages Chinese, Japanese and Korean)
+\end_layout
+
+\begin_layout Description
+utf8-plain
+\lang english
+ Unicode utf8 to be used with 
+\family sans
+XeTeX
+\family default
+, which uses Unicode directly, without the help of the LaTeX-package
+\lang spanish
+ 
+\series bold
+inputenc
+\series default
+ 
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\lang english
+More about using LyX with XeTeX can be found in 
+\begin_inset LatexCommand cite
+key "XeTeX"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -33146,10 +33256,6 @@ reference "sub:Colocación-de-flotantes"
 .
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsubsection*
 Marcas
 \end_layout
@@ -33176,10 +33282,6 @@ reference "fn:N.-del-t.1:"
 \end_inset
 
 )
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -33229,14 +33331,6 @@ reference "sub:Latex-Sintaxis"
 \end_inset
 
  hay una introducción a la sintaxis de LaTeX.
-\end_layout
-
-\begin_layout Subsubsection*
-
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Section
@@ -37762,6 +37856,57 @@ target "http://www.tex.ac.uk/cgi-bin/texfaq2html"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
+key "caption"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf}{
+\end_layout
+
+\end_inset
+
+Documentación
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ del paquete LaTeX 
+\series bold
+caption
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-paquetes ! caption"
+
+\end_inset
+
+:
+\newline
+
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
 key "fancyhdr"
 
 \end_inset
@@ -37968,6 +38113,55 @@ target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
 
 \begin_layout Bibliography
 \begin_inset LatexCommand bibitem
+key "XeTeX"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://wiki.lyx.org/LyX/XeTeX}{
+\end_layout
+
+\end_inset
+
+Página Wiki
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+how to use LyX with
+\lang spanish
+ 
+\family sans
+XeTeX
+\family default
+:
+\newline
+
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/XeTeX"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
 key "Arabic"
 
 \end_inset
@@ -38160,9 +38354,9 @@ status collapsed
 
 \end_inset
 
-
+ 
 \lang english
- with a list of all available LyX-functions
+with a list of all available LyX-functions
 \lang spanish
 :
 \newline
