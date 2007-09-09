@@ -80,8 +80,8 @@ dist_declipartdoc_DATA = \
 
 esdocdir = $(pkgdatadir)/doc/es
 dist_esdoc_DATA = \
-        es/DocumentoPostizo1.lyx \
-        es/DocumentoPostizo2.lyx \
+	es/DocumentoPostizo1.lyx \
+	es/DocumentoPostizo2.lyx \
 	es/DocumentoTextoPostizo.txt \
 	es/EmbeddedObjects.lyx \
 	es/Extended.lyx \
