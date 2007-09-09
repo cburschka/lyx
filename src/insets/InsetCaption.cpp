@@ -163,8 +163,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	labelwidth_ = pi.pain.text(x, y, full_label_, pi.base.font);
 	// add some space to separate the label from the inset text
 	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
-	int const ty  = y - ascent() + TEXT_TO_INSET_OFFSET;
-	InsetText::draw(pi, x + labelwidth_, ty);
+	InsetText::draw(pi, x + labelwidth_, y);
 	setPosCache(pi, x, y);
 }
 

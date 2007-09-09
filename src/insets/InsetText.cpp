@@ -191,9 +191,9 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		int const a = border_;
 		int const h = a + tm.height() + border_;
 		if (pi.full_repaint)
-			pi.pain.fillRectangle(x, y - a, w, h, backgroundColor());
+			pi.pain.fillRectangle(x, y - a - tm.ascent(), w, h, backgroundColor());
 		if (drawFrame_)
-			pi.pain.rectangle(x, y - a, w, h, frameColor());
+			pi.pain.rectangle(x, y - a - tm.ascent(), w, h, frameColor());
 	}
 	tm.draw(pi, x + border_, y);
 }

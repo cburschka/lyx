@@ -1547,11 +1547,11 @@ void BufferView::draw(frontend::Painter & pain)
 	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
 	Text & text = buffer_.text();
 	TextMetrics const & tm = text_metrics_[&text];
+	int y = metrics_info_.y1 + tm.parMetrics(metrics_info_.p1).ascent();
 	if (!pi.full_repaint)
-		tm.drawParagraph(pi, metrics_info_.p1, 0,
-		metrics_info_.y1 + tm.parMetrics(metrics_info_.p1).ascent());
+		tm.drawParagraph(pi, metrics_info_.p1, 0, y);
 	else
-		tm.draw(pi, 0, metrics_info_.y1);
+		tm.draw(pi, 0, y);
 	LYXERR(Debug::PAINTING) << "\n\t\t*** END DRAWING  ***" << endl;
 
 	// and grey out above (should not happen later)

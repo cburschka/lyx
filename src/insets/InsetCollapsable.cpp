@@ -267,8 +267,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y2 = 0;
 	}
 
-	TextMetrics const & tm = pi.base.bv->textMetrics(&text_);
-	int const baseline = y - tm.ascent();
+	int const baseline = y;
 	int textx, texty;
 	switch (geometry()) {
 	case LeftButton:
