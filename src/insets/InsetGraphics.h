@@ -79,7 +79,7 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	/// all graphics can be embedded
-	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &, ParConstIterator const &) const;
+	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
 protected:
 	InsetGraphics(InsetGraphics const &);
 	///

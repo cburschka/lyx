@@ -440,8 +440,7 @@ public:
 	/// pit is the ParConstIterator of the paragraph containing the inset
 	virtual void addToToc(TocList &, Buffer const &, ParConstIterator const &) const {}
 	/// report files that can be embedded with the lyx file
-	virtual void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &,
-			ParConstIterator const &) const {};
+	virtual void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const {};
 	/// Fill keys with BibTeX information
 	virtual void fillWithBibKeys(Buffer const &,
 		BiblioInfo &, InsetIterator const &) const { return; }

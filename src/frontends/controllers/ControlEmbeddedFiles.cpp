@@ -70,8 +70,8 @@ void ControlEmbeddedFiles::dispatchMessage(string const & msg)
 void ControlEmbeddedFiles::goTo(EmbeddedFile const & item, int idx)
 {
 	BOOST_ASSERT(idx < item.refCount());
-	string const tmp = convert<string>(item.parID(idx));
-	kernel().lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
+	item.saveBookmark(&kernel().buffer(), idx);
+	kernel().lyxview().dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
 }
 
 

@@ -105,8 +105,7 @@ public:
 	///
 	void updateLabels(Buffer const & buffer, ParIterator const &);
 	/// child document can be embedded
-	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &,
-			ParConstIterator const &) const;
+	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
 protected:
 	InsetInclude(InsetInclude const &);
 	///

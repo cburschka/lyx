@@ -231,11 +231,11 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetGraphics::registerEmbeddedFiles(Buffer const &,
-	EmbeddedFiles & files, ParConstIterator const & pit) const
+void InsetGraphics::registerEmbeddedFiles(Buffer const &, 
+	EmbeddedFiles & files) const
 {
 	files.registerFile(params().filename.absFilename(), 
-		false, pit);
+		false, this);
 }
 
 

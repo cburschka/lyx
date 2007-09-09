@@ -112,7 +112,7 @@ class EmbeddedFile : public support::DocFileName
 {
 public:
 	EmbeddedFile(std::string const & file, std::string const & inzip_name,
-		bool embedded, ParConstIterator const & pit);
+		bool embedded, Inset const * inset);
 
 	/// filename in the zip file, usually the relative path
 	std::string inzipName() const { return inzip_name_; }
@@ -121,14 +121,17 @@ public:
 	/// embeddedFile() or absFilename() depending on embedding status
 	std::string availableFile(Buffer const * buf) const;
 
-	/// paragraph id
-	void addParIter(ParConstIterator const & pit);
-	int parID(int idx) const;
+	/// add an inset that refers to this file
+	void addInset(Inset const * inset);
+	Inset const * inset(int idx) const;
+	/// save the location of this inset as bookmark so that
+	/// it can be located using LFUN_BOOKMARK_GOTO
+	void saveBookmark(Buffer const * buf, int idx) const;
 	/// Number of Insets this file item is referred
 	/// If refCount() == 0, this file must be manually inserted.
 	/// This fact is used by the update() function to skip updating
 	/// such items.
-	int refCount() const { return par_it_.size(); }
+	int refCount() const { return inset_list_.size(); }
 
 	/// embedding status of this file
 	bool embedded() const { return embedded_; }
@@ -160,7 +163,7 @@ private:
 	bool valid_;
 	/// Current position of the item, used to locate the files. Because one
 	/// file item can be referred by several Insets, a vector is used.
-	std::vector<ParConstIterator> par_it_;
+	std::vector<Inset const *> inset_list_;
 };
 
 
@@ -186,7 +189,7 @@ public:
 	 * \param pit paragraph id.
 	 */
 	void registerFile(std::string const & filename, bool embed = false,
-		ParConstIterator const & pit = ParConstIterator());
+		Inset const * inset = NULL);
 
 	/// scan the buffer and get a list of EmbeddedFile
 	void update();
