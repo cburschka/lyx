@@ -24336,7 +24336,7 @@ Las entradas de la nomenclatura se ordenan alfabéticamente según el código
 a
 \begin_inset LatexCommand nomenclature
 symbol "a"
-description "entrada postiza para el carácter \"a\"\\nomnorefpage"
+description "entrada postiza para el carácter \"a\""
 
 \end_inset
 
@@ -24602,16 +24602,6 @@ nomnorefpage,\InsetSpace ~
 
 \backslash
 nomnorefeqpage Deshabilita las opciones correspondientes
-\end_layout
-
-\begin_layout Standard
-La opción 
-\series bold
-
-\backslash
-nomnorefpage
-\series default
- se ha utilizado en este documento en la entrada de «a».
 \end_layout
 
 \begin_layout Subsection
@@ -38372,7 +38362,7 @@ target "http://wiki.lyx.org/LyX/LyxFunctionList1-5-1"
 \begin_layout Standard
 
 \newpage
-Bibliografía creada a partir de una base de datos de BibTeX:
+
 \begin_inset LatexCommand bibtex
 options "biblio/alphadin"
 bibfiles "biblio/LyXDocs"
@@ -38380,6 +38370,17 @@ bibfiles "biblio/LyXDocs"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The above
+\lang spanish
+ bibliografía creada a partir de una base de datos de BibTeX.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
