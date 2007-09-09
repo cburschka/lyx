@@ -16,6 +16,7 @@
 #include "lfuns.h"
 
 #include "support/docstring.h"
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 namespace frontend {
