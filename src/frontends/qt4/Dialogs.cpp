@@ -194,9 +194,13 @@ Dialog * Dialogs::build(string const & name)
 		dialog = new GuiThesaurusDialog(lyxview_);
 #endif
 	} else if (name == "toc") {
+#ifdef Q_WS_MACX
 		// On Mac show as a drawer at the right
-		dialog = new DockView<GuiToc, TocWidget>(
-			guiview, name, Qt::RightDockWidgetArea, Qt::Drawer);
+		dialog = new DockView<GuiToc, TocWidget>(guiview, name,
+			Qt::RightDockWidgetArea, Qt::Drawer);
+#else
+		dialog = new DockView<GuiToc, TocWidget>(guiview, name);
+#endif
 	} else if (name == "url") {
 		dialog = new GuiURLDialog(lyxview_);
 	} else if (name == "vspace") {
