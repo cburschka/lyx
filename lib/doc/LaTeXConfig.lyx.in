@@ -1,5 +1,5 @@
-#LyX 1.5.0rc1 created this file. For more info see http://www.lyx.org/
-\lyxformat 271
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass article
@@ -33,9 +33,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author "Jürgen Spitzmüller" 
-\author "usti" 
-\author "Jean-Marc Lasgouttes" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -2936,11 +2935,8 @@ floatflt
 \family sans
 floatfig
 \family default
-) is used by LyX if you select the ``floatflt'' type in 
-\family sans
-Layout->Paragraph->ExtraOpt
-\family default
- in the paragraph of a figure float.
+) is used by LyX if you insert text wrap floats (menu Insert\SpecialChar \menuseparator
+Float).
  It allows you to create a figure float which is narrower than the full
  page and wrap the text around it.
 \end_layout

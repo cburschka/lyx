@@ -15,6 +15,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\DummyDocument1.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\DummyDocument2.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx.in"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\TOC.lyx" # must be here when another \doc file has been changed
  File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
