@@ -88,11 +88,17 @@ dist_esdoc_DATA = \
 	es/Intro.lyx \
 	es/Tutorial.lyx
 
+esbibliodocdir = $(pkgdatadir)/doc/es/biblio
+dist_esbibliodoc_DATA = \
+	es/biblio/alphadin.bst \
+	es/biblio/LyXDocs.bib
+
 esclipartdocdir = $(pkgdatadir)/doc/es/clipart
 dist_esclipartdoc_DATA = \
 	es/clipart/ComentNotaImagenQt4.png \
 	es/clipart/CuadroMinipagQt4.png \
 	es/clipart/DocumentoHijoQt4.png \
+	es/clipart/es_ERT.png \
 	es/clipart/etiquetaQt4.png \
 	es/clipart/flotanteQt4.png \
 	es/clipart/GrisNotaImagenQt4.png \
@@ -101,7 +107,8 @@ dist_esclipartdoc_DATA = \
 	es/clipart/NotaLyXImagenQt4.png \
 	es/clipart/notapieQt4.png \
 	es/clipart/NotaSombreadaImg.png \
-	es/clipart/referenciaQt4.png
+	es/clipart/referenciaQt4.png \
+	es/clipart/Resumen.pdf
 
 eudocdir = $(pkgdatadir)/doc/eu
 dist_eudoc_DATA = \
