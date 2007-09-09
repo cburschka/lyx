@@ -42,7 +42,6 @@ private Q_SLOTS:
 
 private:
 public:
-	void showView();
 	void closeEvent(QCloseEvent * e);
 	//
 	bool activateAspectratio() const;

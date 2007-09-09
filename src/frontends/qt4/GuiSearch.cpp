@@ -71,8 +71,8 @@ ControlSearch & GuiSearchDialog::controller() const
 
 void GuiSearchDialog::showView()
 {
-	QDialog::show();
 	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
+	GuiDialog::showView();
 }
 
 

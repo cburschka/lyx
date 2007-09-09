@@ -34,8 +34,6 @@ private Q_SLOTS:
 
 private:
 	///
-	void showView();
-	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
 	ControlCommand & controller() const;

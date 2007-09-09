@@ -217,12 +217,6 @@ ControlGraphics & GuiGraphicsDialog::controller() const
 }
 
 
-void GuiGraphicsDialog::showView()
-{
-	QDialog::show();
-}
-
-
 void GuiGraphicsDialog::change_adaptor()
 {
 	changed();

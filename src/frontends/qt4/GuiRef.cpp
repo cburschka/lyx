@@ -94,12 +94,6 @@ ControlRef & GuiRefDialog::controller() const
 }
 
 
-void GuiRefDialog::showView()
-{
-	QDialog::show();
-}
-
-
 void GuiRefDialog::changed_adaptor()
 {
 	changed();

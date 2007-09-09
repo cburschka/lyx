@@ -84,12 +84,6 @@ ControlInclude & GuiIncludeDialog::controller() const
 }
 
 
-void GuiIncludeDialog::showView()
-{
-	QDialog::show();
-}
-
-
 void GuiIncludeDialog::change_adaptor()
 {
 	changed();

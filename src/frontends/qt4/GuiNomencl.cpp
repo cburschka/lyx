@@ -59,12 +59,6 @@ ControlCommand & GuiNomenclDialog::controller() const
 }
 
 
-void GuiNomenclDialog::showView()
-{
-	QDialog::show();
-}
-
-
 void GuiNomenclDialog::change_adaptor()
 {
 	changed();

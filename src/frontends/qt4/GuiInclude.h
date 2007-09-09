@@ -43,8 +43,6 @@ private:
 	ControlInclude & controller() const;
 	///
 	void updateLists();
-	///
-	void showView();
 	/// validate listings parameters and return an error message, if any
 	docstring validate_listings_params();
 

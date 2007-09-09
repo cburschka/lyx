@@ -190,12 +190,6 @@ ControlExternal & GuiExternalDialog::controller() const
 }
 
 
-void GuiExternalDialog::showView()
-{
-	QDialog::show();
-}
-
-
 bool GuiExternalDialog::activateAspectratio() const
 {
 	if (widthUnitCO->currentIndex() == 0)

@@ -30,7 +30,6 @@ class GuiGraphicsDialog : public GuiDialog, public Ui::GraphicsUi
 public:
 	GuiGraphicsDialog(LyXView & lv);
 	void setAutoText();
-	void showView();
 private Q_SLOTS:
 	void change_adaptor();
 	void change_bb();
