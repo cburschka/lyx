@@ -397,7 +397,7 @@ char const * simplefeatures[] = {
 	"latexsym",
 	"pifont",
 	"subfigure",
-	"floatflt",
+	"wrapfig",
 	"varioref",
 	"prettyref",
 	"float",

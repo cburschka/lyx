@@ -173,7 +173,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			string const argument = to_utf8(cmd.argument());
 			if (argument == "figure")
 				return new InsetWrap(params, argument);
-			lyxerr << "Non-existent floatflt type: " << argument << endl;
+			lyxerr << "Non-existent wrapfig type: " << argument << endl;
 			return 0;
 		}
 

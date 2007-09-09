@@ -1,6 +1,14 @@
 LyX file-format changes
 -----------------------
 
+2007-09-09 Helge Hafting
+	* Format incremented to 284: LyX now implements wrapped figures
+	  using wrapfig.sty instead of floatflt.sty. The latter
+	  is rather buggy, the former also has more options.
+	  No conversion as the .lyx doesn't change.
+	  The .tex export is slightly different, necessitating the
+	  format increase.
+
 2007-09-08 Martin Vermeer
 
 	* format incremented to 283: CharStyle insets are now 
@@ -829,5 +837,6 @@ renamed as "size_kind" and "lyxsize_kind" respectively.
 	lyxwidth 4cm
 
  \end_inset
+
 
 

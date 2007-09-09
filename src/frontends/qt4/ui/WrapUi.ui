@@ -47,7 +47,12 @@
        </property>
        <item>
         <property name="text" >
-         <string>Default (outer)</string>
+         <string>Outer (default)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>Inner</string>
         </property>
        </item>
        <item>
@@ -58,11 +63,6 @@
        <item>
         <property name="text" >
          <string>Right</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>Outer</string>
         </property>
        </item>
       </widget>
@@ -78,7 +78,7 @@
       </widget>
      </item>
      <item row="1" column="1" >
-      <widget class="LengthCombo" name="unitsLC" >
+      <widget class="LengthCombo" native="1" name="unitsLC" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>3</hsizetype>
@@ -221,17 +221,11 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>LengthCombo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -243,6 +237,9 @@
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

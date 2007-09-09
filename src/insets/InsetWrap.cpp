@@ -175,7 +175,7 @@ void InsetWrap::read(Buffer const & buf, Lexer & lex)
 
 void InsetWrap::validate(LaTeXFeatures & features) const
 {
-	features.require("floatflt");
+	features.require("wrapfig");
 	InsetCollapsable::validate(features);
 }
 
@@ -195,12 +195,13 @@ docstring const InsetWrap::editMessage() const
 int InsetWrap::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
-	os << "\\begin{floating" << from_ascii(params_.type) << '}';
+	os << "\\begin{wrap" << from_ascii(params_.type) << '}';
 	if (!params_.placement.empty())
-		os << '[' << from_ascii(params_.placement) << ']';
+		os << '{' << from_ascii(params_.placement) << '}';
+		else os << "{o}"; //Outer is default in the current UI
 	os << '{' << from_ascii(params_.width.asLatexString()) << "}%\n";
 	int const i = InsetText::latex(buf, os, runparams);
-	os << "\\end{floating" << from_ascii(params_.type) << "}%\n";
+	os << "\\end{wrap" << from_ascii(params_.type) << "}%\n";
 	return i + 2;
 }
 

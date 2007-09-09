@@ -1,5 +1,5 @@
-#LyX 1.5.0rc1 created this file. For more info see http://www.lyx.org/
-\lyxformat 271
+#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 284
 \begin_document
 \begin_header
 \textclass article
@@ -33,9 +33,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author "Jürgen Spitzmüller" 
-\author "usti" 
-\author "Jean-Marc Lasgouttes" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -2914,38 +2913,6 @@ fancy
 \end_layout
 
 \begin_layout Subsection
-floatflt
-\end_layout
-
-\begin_layout Description
-Found: @chk_floatflt@
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/floatflt/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-floatflt
-\family default
- (an extension of 
-\family sans
-floatfig
-\family default
-) is used by LyX if you select the ``floatflt'' type in 
-\family sans
-Layout->Paragraph->ExtraOpt
-\family default
- in the paragraph of a figure float.
- It allows you to create a figure float which is narrower than the full
- page and wrap the text around it.
-\end_layout
-
-\begin_layout Subsection
 jurabib
 \end_layout
 
@@ -3228,6 +3195,35 @@ Notes: The package
 url
 \family default
  is needed by LyX to be able to output url's corrently.
+\end_layout
+
+\begin_layout Subsection
+wrapfig
+\end_layout
+
+\begin_layout Description
+Found: @chk_wrapfig@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/wrapfig/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family typewriter
+wrapfig
+\family default
+ is used by LyX if you insert text wrap floats (menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Float)
+\family default
+.
+ It allows you to create a figure float which is narrower than the full
+ page and wrap the text around it.
 \end_layout
 
 \begin_layout Subsection

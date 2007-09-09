@@ -35,7 +35,7 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 	: GuiDialog(lv, "wrap")
 {
 	setupUi(this);
-	setViewTitle(_("Text Wrap Settings"));
+	setViewTitle(_("Wrap Float Settings"));
 	setController(new ControlWrap(*this));
 
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
@@ -94,16 +94,16 @@ void GuiWrapDialog::applyView()
 
 	switch (valignCO->currentIndex()) {
 	case 0:
-		params.placement.erase();
+		params.placement = "o";
 		break;
 	case 1:
-		params.placement = "l";
+		params.placement = "i";
 		break;
 	case 2:
-		params.placement = "r";
+		params.placement = "l";
 		break;
 	case 3:
-		params.placement = "p";
+		params.placement = "r";
 		break;
 	}
 }
@@ -112,10 +112,9 @@ void GuiWrapDialog::applyView()
 static string const numtostr(double val)
 {
 	string a = convert<string>(val);
-	// FIXME: Will this test ever trigger? (Lgb)
-	if (a == "0")
-		a.erase();
 	return a;
+	//0pt is a legal width now, it yields a
+	//wrapfloat just wide enough for the contents.
 }
 
 
@@ -128,11 +127,11 @@ void GuiWrapDialog::update_contents()
 	unitsLC->setCurrentItem(len.unit());
 
 	int item = 0;
-	if (params.placement == "l")
+	if (params.placement == "i")
 		item = 1;
-	else if (params.placement == "r")
+	else if (params.placement == "l")
 		item = 2;
-	else if (params.placement == "p")
+	else if (params.placement == "r")
 		item = 3;
 
 	valignCO->setCurrentIndex(item);
