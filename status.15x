@@ -133,6 +133,9 @@ What's new
 - Fix bug where the cursor was largely off-screen on document opening
  (bug 3427).
 
+- The dialogs of "editable" insets (such as index entries, urls or citations)
+  are now opened by "next-inset-toggle", i.e. C-i (bug 2907).
+
 
 * DOCUMENTATION
 
