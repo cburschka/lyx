@@ -74,7 +74,6 @@ SOURCEFILES = \
 	GuiInclude.cpp \
 	GuiIndex.cpp \
 	GuiKeySymbol.cpp \
-	GuiKeySymbol.cpp \
 	GuiListings.cpp \
 	GuiLog.cpp \
 	GuiMathMatrix.cpp \
