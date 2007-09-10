@@ -66,7 +66,6 @@ GuiDelimiterDialog::GuiDelimiterDialog(LyXView & lv)
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
 
-	setWindowTitle(qt_("LyX: Delimiters"));
 	setFocusProxy(leftLW);
 
 	leftLW->setViewMode(QListView::IconMode);

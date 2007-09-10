@@ -21,12 +21,12 @@ namespace lyx {
 namespace frontend {
 
 
-GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog(ControlEmbeddedFiles & controller)
+GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog
+		(ControlEmbeddedFiles & controller)
 	: controller_(controller)
 {
 	setupUi(this);
-	setWindowTitle(qt_("Embedded Files"));
-
+	setWindowTitle("LyX: " + qt_("Embedded Files"));
 	updateView();
 }
 

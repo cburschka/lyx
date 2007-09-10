@@ -74,8 +74,6 @@ GuiCitationDialog::GuiCitationDialog(LyXView & lv)
 	setViewTitle(_("Citation"));
 	setController(new ControlCitation(*this));
 
-	setWindowTitle(toqstr("LyX: " + getViewTitle()));
-
 	connect(citationStyleCO, SIGNAL(activated(int)),
 		this, SLOT(changed()));
 	connect(fulllistCB, SIGNAL(clicked()),

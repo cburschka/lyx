@@ -27,11 +27,12 @@ using std::string;
 namespace lyx {
 
 /// return the Qt form of the label
-static docstring const getLabel(docstring const & ucs4str) {
+static docstring const getLabel(docstring const & ucs4str)
+{
 	// FIXME UNICODE
 	string str = to_utf8(ucs4str);
 	string label;
-	string sc(split(str, label, '|'));
+	string sc = split(str, label, '|');
 	if (sc.length() < 2)
 		return from_utf8(label);
 	string::size_type pos = label.find(sc[1]);

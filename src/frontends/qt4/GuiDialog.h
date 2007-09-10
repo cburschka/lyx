@@ -79,6 +79,8 @@ public:
 	void preUpdate();
 	void postUpdate();
 
+	void setViewTitle(docstring const & title);
+
 	///
 	bool readOnly() const;
 

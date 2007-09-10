@@ -36,8 +36,6 @@ GuiMathMatrixDialog::GuiMathMatrixDialog(LyXView & lv)
 	setViewTitle(_("Math Matrix"));
 	setController(new ControlMath(*this));
 
-	setWindowTitle(qt_("LyX: Insert Matrix"));
-
 	table->setMinimumSize(100, 100);
 	rowsSB->setValue(5);
 	columnsSB->setValue(5);

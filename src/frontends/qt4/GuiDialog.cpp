@@ -22,6 +22,12 @@ GuiDialog::GuiDialog(LyXView & lv, std::string const & name)
 {}
 
 
+void GuiDialog::setViewTitle(docstring const & title)
+{
+	setWindowTitle("LyX: " + toqstr(title));
+}
+
+
 void GuiDialog::setButtonsValid(bool valid)
 {
 	bc().setValid(valid);
@@ -139,8 +145,6 @@ void GuiDialog::showView()
 	updateView();  // make sure its up-to-date
 	if (controller().exitEarly())
 		return;
-
-	setWindowTitle(toqstr("LyX: " + getViewTitle()));
 
 	if (QWidget::isVisible()) {
 		raise();

@@ -125,6 +125,12 @@ void Dialog::setController(Controller * controller)
 	controller_ = controller;
 }
 
+Controller & Dialog::controller() const
+{
+	BOOST_ASSERT(controller_);
+	return *controller_;
+}
+
 
 Controller::Controller(Dialog & parent)
 	: parent_(parent)
@@ -136,25 +142,6 @@ bool Controller::canApply() const
 	FuncRequest const fr(getLfun(), dialog().name());
 	FuncStatus const fs(getStatus(fr));
 	return fs.enabled();
-}
-
-
-Controller & Dialog::controller() const
-{
-	BOOST_ASSERT(controller_);
-	return *controller_;
-}
-
-
-void Dialog::setViewTitle(docstring const & newtitle)
-{
-	title_ = newtitle;
-}
-
-
-docstring const & Dialog::getViewTitle() const
-{
-	return title_;
 }
 
 

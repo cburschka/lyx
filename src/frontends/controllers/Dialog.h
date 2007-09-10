@@ -146,10 +146,6 @@ public:
 	 */
 	virtual void partialUpdateView(int /*id*/) {}
 
-	/// sets the title of the dialog (window caption)
-	void setViewTitle(docstring const &);
-	/// gets the title of the dialog (window caption)
-	docstring const & getViewTitle() const;
 	///
 	std::string name() const { return name_; }
 
@@ -168,8 +164,6 @@ protected:
 	 */
 	std::string name_;
 	Controller * controller_;
-
-	docstring title_;
 };
 
 
