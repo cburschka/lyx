@@ -26,6 +26,7 @@ class GuiEmbeddedFilesDialog : public QWidget, public Ui::GuiEmbeddedFilesUi
 
 public:
 	GuiEmbeddedFilesDialog(ControlEmbeddedFiles &);
+	std::string name() const { return "embedding"; }
 
 public Q_SLOTS:
 	///

@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlDocument.h"
-#include "Kernel.h"
 
 #include "BranchList.h"
 #include "Buffer.h"
@@ -61,7 +60,7 @@ ControlDocument::~ControlDocument()
 bool ControlDocument::initialiseParams(std::string const &)
 {
 	bp_.reset(new BufferParams);
-	*bp_ = kernel().buffer().params();
+	*bp_ = buffer().params();
 	return true;
 }
 
@@ -81,7 +80,7 @@ BufferParams & ControlDocument::params() const
 
 BufferId ControlDocument::id() const
 {
-	return &kernel().buffer();
+	return &buffer();
 }
 
 
@@ -91,19 +90,15 @@ TextClass const & ControlDocument::textClass() const
 }
 
 
-namespace {
-
-void dispatch_bufferparams(Kernel const & kernel, BufferParams const & bp,
-			   kb_action lfun)
+static void dispatch_bufferparams(Controller const & controller,
+	BufferParams const & bp, kb_action lfun)
 {
 	ostringstream ss;
 	ss << "\\begin_header\n";
 	bp.writeFile(ss);
 	ss << "\\end_header\n";
-	kernel.dispatch(FuncRequest(lfun, ss.str()));
+	controller.dispatch(FuncRequest(lfun, ss.str()));
 }
-
-} // namespace anon
 
 
 void ControlDocument::dispatchParams()
@@ -115,7 +110,7 @@ void ControlDocument::dispatchParams()
 	// and then update the buffer's layout.
 	//FIXME Could this be done last? Then, I think, we'd get the automatic
 	//update mentioned in the next FIXME...
-	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_PARAMS_APPLY);
+	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY);
 
 	// Generate the colours requested by each new branch.
 	BranchList & branchlist = params().branchlist();
@@ -129,33 +124,33 @@ void ControlDocument::dispatchParams()
 					lyx::X11hexname(branch->getColor());
 			// display the new color
 			docstring const str = current_branch + ' ' + from_ascii(x11hexname);
-			kernel().dispatch(FuncRequest(LFUN_SET_COLOR, str));
+			dispatch(FuncRequest(LFUN_SET_COLOR, str));
 		}
 
 		// Open insets of selected branches, close deselected ones
-		kernel().dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE,
+		dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE,
 			"assign branch"));
 	}
 	// FIXME: If we used an LFUN, we would not need those two lines:
-	kernel().bufferview()->update();
-	kernel().lyxview().currentWorkArea()->redraw();
+	bufferview()->update();
+	lyxview().currentWorkArea()->redraw();
 }
 
 
 void ControlDocument::setLanguage() const
 {
 	Language const * const newL = bp_->language;
-	if (kernel().buffer().params().language == newL)
+	if (buffer().params().language == newL)
 		return;
 
 	string const lang_name = newL->lang();
-	kernel().dispatch(FuncRequest(LFUN_BUFFER_LANGUAGE, lang_name));
+	dispatch(FuncRequest(LFUN_BUFFER_LANGUAGE, lang_name));
 }
 
 
 void ControlDocument::saveAsDefault() const
 {
-	dispatch_bufferparams(kernel(), params(), LFUN_BUFFER_SAVE_AS_DEFAULT);
+	dispatch_bufferparams(*this, params(), LFUN_BUFFER_SAVE_AS_DEFAULT);
 }
 
 

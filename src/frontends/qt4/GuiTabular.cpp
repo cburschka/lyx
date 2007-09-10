@@ -150,7 +150,7 @@ GuiTabularDialog::GuiTabularDialog(LyXView & lv)
 
 ControlTabular & GuiTabularDialog::controller() const
 {
-	return static_cast<ControlTabular &>(Dialog::controller());
+	return static_cast<ControlTabular &>(GuiDialog::controller());
 }
 
 

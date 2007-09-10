@@ -114,7 +114,7 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 
 ControlBox & GuiBoxDialog::controller() const
 {
-	return static_cast<ControlBox &>(Dialog::controller());
+	return static_cast<ControlBox &>(GuiDialog::controller());
 }
 
 

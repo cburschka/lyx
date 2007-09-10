@@ -37,13 +37,13 @@ ControlChanges::ControlChanges(Dialog & parent)
 
 void ControlChanges::next()
 {
-	kernel().dispatch(FuncRequest(LFUN_CHANGE_NEXT));
+	dispatch(FuncRequest(LFUN_CHANGE_NEXT));
 }
 
 
 docstring const ControlChanges::getChangeDate()
 {
-	Change const & c = kernel().bufferview()->getCurrentChange();
+	Change const & c = bufferview()->getCurrentChange();
 	if (c.type == Change::UNCHANGED)
 		return docstring();
 
@@ -54,17 +54,16 @@ docstring const ControlChanges::getChangeDate()
 
 docstring const ControlChanges::getChangeAuthor()
 {
-	Change const & c = kernel().bufferview()->getCurrentChange();
+	Change const & c = bufferview()->getCurrentChange();
 	if (c.type == Change::UNCHANGED)
 		return docstring();
 
-	Author const & a = kernel().buffer().params().authors().get(c.author);
+	Author const & a = buffer().params().authors().get(c.author);
 
-	docstring author(a.name());
+	docstring author = a.name();
 
-	if (!a.email().empty()) {
+	if (!a.email().empty())
 		author += " (" + a.email() + ")";
-	}
 
 	return author;
 }
@@ -72,14 +71,14 @@ docstring const ControlChanges::getChangeAuthor()
 
 void ControlChanges::accept()
 {
-	kernel().dispatch(FuncRequest(LFUN_CHANGE_ACCEPT));
+	dispatch(FuncRequest(LFUN_CHANGE_ACCEPT));
 	next();
 }
 
 
 void ControlChanges::reject()
 {
-	kernel().dispatch(FuncRequest(LFUN_CHANGE_REJECT));
+	dispatch(FuncRequest(LFUN_CHANGE_REJECT));
 	next();
 }
 

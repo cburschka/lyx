@@ -12,128 +12,30 @@
 
 #include "Dialog.h"
 
-#include "frontends/LyXView.h"
-
-#include "debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyXFunc.h"
 
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h" // FIXME
 
-using std::string;
+#include "Buffer.h"
+
 
 namespace lyx {
 namespace frontend {
 
-Dialog::Dialog(LyXView & lv, string const & name)
-	: is_closing_(false), kernel_(lv), name_(name), controller_(0)
+
+Dialog::~Dialog()
 {}
 
 
-Dialog::~Dialog()
-{
-	delete controller_;
-}
-
-
-void Dialog::show(string const & data)
-{
-	if (controller().isBufferDependent() && !kernel().isBufferAvailable())
-		return;
-
-	if (!controller().initialiseParams(data)) {
-		lyxerr << "Dialog \"" << name_
-		       << "\" failed to translate the data "
-			"string passed to show()" << std::endl;
-		return;
-	}
-
-	preShow();
-	showView();
-	postShow();
-}
-
-
-void Dialog::update(string const & data)
-{
-	if (controller().isBufferDependent() && !kernel().isBufferAvailable())
-		return;
-
-	if (!controller().initialiseParams(data)) {
-		lyxerr << "Dialog \"" << name_
-		       << "\" could not be initialized" << std::endl;
-		return;
-	}
-
-	preUpdate();
-	updateView();
-	postUpdate();
-}
-
-
-void Dialog::checkStatus()
-{
-}
-
-
-void Dialog::hide()
-{
-	if (!isVisibleView())
-		return;
-
-	controller().clearParams();
-	hideView();
-	kernel().disconnect(name_);
-}
-
-
-void Dialog::apply()
-{
-	if (controller().isBufferDependent()) {
-		if (!kernel().isBufferAvailable() ||
-		    (kernel().isBufferReadonly() && !controller().canApplyToReadOnly()))
-			return;
-	}
-
-	applyView();
-	controller().dispatchParams();
-
-	if (controller().disconnectOnApply() && !is_closing_) {
-		kernel().disconnect(name_);
-		controller().initialiseParams(string());
-		updateView();
-	}
-}
-
-
-bool Dialog::isVisible() const
-{
-	return isVisibleView();
-}
-
-
-void Dialog::redraw()
-{
-	redrawView();
-}
-
-
-void Dialog::setController(Controller * controller)
-{
-	BOOST_ASSERT(controller);
-	BOOST_ASSERT(!controller_);
-	controller_ = controller;
-}
-
-Controller & Dialog::controller() const
-{
-	BOOST_ASSERT(controller_);
-	return *controller_;
-}
-
-
 Controller::Controller(Dialog & parent)
-	: parent_(parent)
+	: parent_(parent), lyxview_(0)
+{}
+
+
+Controller::~Controller()
 {}
 
 
@@ -144,6 +46,80 @@ bool Controller::canApply() const
 	return fs.enabled();
 }
 
+
+void Controller::dispatch(FuncRequest const & fr) const
+{
+	lyxview_->dispatch(fr);
+}
+
+
+void Controller::updateDialog(std::string const & name) const
+{
+	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, name));
+}
+
+
+void Controller::disconnect(std::string const & name) const
+{
+	lyxview_->getDialogs().disconnect(name);
+}
+
+
+bool Controller::isBufferAvailable() const
+{
+	return lyxview_->buffer() != 0;
+}
+
+
+bool Controller::isBufferReadonly() const
+{
+	if (!lyxview_->buffer())
+		return true;
+	return lyxview_->buffer()->isReadonly();
+}
+
+
+std::string const Controller::bufferFilepath() const
+{
+	return buffer().filePath();
+}
+
+
+KernelDocType Controller::docType() const
+{
+	if (buffer().isLatex())
+		return LATEX;
+	if (buffer().isLiterate())
+		return LITERATE;
+
+	return DOCBOOK;
+}
+
+
+BufferView * Controller::bufferview()
+{
+	return lyxview_->view();
+}
+
+
+BufferView const * Controller::bufferview() const
+{
+	return lyxview_->view();
+}
+
+
+Buffer & Controller::buffer()
+{
+	BOOST_ASSERT(lyxview_->buffer());
+	return *lyxview_->buffer();
+}
+
+
+Buffer const & Controller::buffer() const
+{
+	BOOST_ASSERT(lyxview_->buffer());
+	return *lyxview_->buffer();
+}
 
 } // namespace frontend
 } // namespace lyx

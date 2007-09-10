@@ -48,7 +48,7 @@ GuiChangesDialog::GuiChangesDialog(LyXView & lv)
 
 ControlChanges & GuiChangesDialog::controller() const
 {
-	return static_cast<ControlChanges &>(Dialog::controller());
+	return static_cast<ControlChanges &>(GuiDialog::controller());
 }
 
 

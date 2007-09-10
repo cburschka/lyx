@@ -50,7 +50,7 @@ void ControlThesaurus::replace(docstring const & newstr)
 				     true,  // match word
 				     false, // all words
 				     true); // forward
-	kernel().dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }
 
 

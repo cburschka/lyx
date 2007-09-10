@@ -31,7 +31,7 @@ ControlTabular::ControlTabular(Dialog & parent)
 bool ControlTabular::initialiseParams(string const & data)
 {
 	// try to get the current cell
-	BufferView const * const bv = kernel().bufferview();
+	BufferView const * const bv = bufferview();
 	InsetTabular const * current_inset = 0;
 	if (bv) {
 		Cursor const & cur = bv->cursor();
@@ -50,7 +50,7 @@ bool ControlTabular::initialiseParams(string const & data)
 		return true;
 	}
 
-	InsetTabular tmp(kernel().buffer());
+	InsetTabular tmp(buffer());
 	InsetTabularMailer::string2params(data, tmp);
 	params_.reset(new Tabular(tmp.tabular));
 	return true;
@@ -80,7 +80,7 @@ Tabular const & ControlTabular::tabular() const
 void ControlTabular::set(Tabular::Feature f, string const & arg)
 {
 	string const data = featureAsString(f) + ' ' + arg;
-	kernel().dispatch(FuncRequest(getLfun(), data));
+	dispatch(FuncRequest(getLfun(), data));
 }
 
 

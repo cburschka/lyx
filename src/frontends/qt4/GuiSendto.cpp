@@ -57,7 +57,7 @@ GuiSendtoDialog::GuiSendtoDialog(LyXView & lv)
 
 ControlSendto & GuiSendtoDialog::controller() const
 {
-	return static_cast<ControlSendto &>(Dialog::controller());
+	return static_cast<ControlSendto &>(GuiDialog::controller());
 }
 
 

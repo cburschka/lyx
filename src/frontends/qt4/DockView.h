@@ -19,10 +19,6 @@
 
 #include <QDockWidget>
 
-#include <boost/scoped_ptr.hpp>
-
-#include <string>
-
 namespace lyx {
 namespace frontend {
 
@@ -38,19 +34,20 @@ public:
 		std::string const & name, ///< dialog identifier.
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0
-		)
-		: QDockWidget(&parent, flags),
-		Dialog(parent, name)
+	)
+		: QDockWidget(&parent, flags), name_(name)
 	{
 		if (flags & Qt::Drawer)
 			setFeatures(QDockWidget::NoDockWidgetFeatures);
-		MyController * controller = new MyController(*this);
-		setController(controller);
-		widget_.reset(new MyWidget(*controller));
-		setWidget(widget_.get());
+		MyController * c = new MyController(*this);
+		controller_ = c;
+		controller_->setLyXView(parent);
+		widget_ = new MyWidget(*c);
+		setWidget(widget_);
 		setWindowTitle(widget_->windowTitle());
 		parent.addDockWidget(area, this);
 	}
+	~DockView() { delete widget_; delete controller_; }
 
 	/// Dialog inherited methods
 	//@{
@@ -58,16 +55,24 @@ public:
 	void hideView()	{ QDockWidget::hide(); }
 	void showView()	{ QDockWidget::show(); }
 	bool isVisibleView() const { return QDockWidget::isVisible(); }
+	void checkStatus() {}
+	void redraw() { redrawView(); }
 	void redrawView() {}
 	void updateView()
 	{
 		widget_->updateView();
 		QDockWidget::update();
 	}
+	bool isClosing() const { return false; }
+	void partialUpdateView(int /*id*/) {}
+	Controller & controller() const { return *controller_; }
+	std::string name() const { return name_; }
 	//@}
 private:
 	/// The encapsulated widget.
-	boost::scoped_ptr<MyWidget> widget_;
+	MyWidget * widget_;
+	Controller * controller_;
+	std::string name_;
 };
 
 } // frontend

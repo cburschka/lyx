@@ -31,8 +31,6 @@ ControlVSpace::ControlVSpace(Dialog & parent)
 bool ControlVSpace::initialiseParams(string const & data)
 {
 	InsetVSpaceMailer::string2params(data, params_);
-
-	// so that the user can press Ok
 	dialog().setButtonsValid(true);
 
 	return true;
@@ -48,7 +46,7 @@ void ControlVSpace::clearParams()
 void ControlVSpace::dispatchParams()
 {
 	string const str = InsetVSpaceMailer::params2string(params_);
-	kernel().dispatch(FuncRequest(getLfun(), str));
+	dispatch(FuncRequest(getLfun(), str));
 }
 
 

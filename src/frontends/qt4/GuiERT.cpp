@@ -42,7 +42,7 @@ GuiERTDialog::GuiERTDialog(LyXView & lv)
 
 ControlERT & GuiERTDialog::controller() const
 {
-	return static_cast<ControlERT &>(Dialog::controller());
+	return static_cast<ControlERT &>(GuiDialog::controller());
 }
 
 

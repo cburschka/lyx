@@ -28,7 +28,7 @@ void ControlSearch::find(docstring const & search, bool casesensitive,
 {
 	docstring const data = find2string(search, casesensitive,
 					      matchword, forward);
-	kernel().dispatch(FuncRequest(LFUN_WORD_FIND, data));
+	dispatch(FuncRequest(LFUN_WORD_FIND, data));
 }
 
 
@@ -39,7 +39,7 @@ void ControlSearch::replace(docstring const & search, docstring const & replace,
 	docstring const data =
 		replace2string(search, replace, casesensitive,
 				     matchword, all, forward);
-	kernel().dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }
 
 } // namespace frontend

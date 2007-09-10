@@ -44,7 +44,7 @@ GuiNoteDialog::GuiNoteDialog(LyXView & lv)
 
 ControlNote & GuiNoteDialog::controller() const
 {
-	return static_cast<ControlNote &>(Dialog::controller());
+	return static_cast<ControlNote &>(GuiDialog::controller());
 }
 
 

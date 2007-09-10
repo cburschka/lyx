@@ -247,7 +247,7 @@ GuiListingsDialog::GuiListingsDialog(LyXView & lv)
 
 ControlListings & GuiListingsDialog::controller() const
 {
-	return static_cast<ControlListings &>(Dialog::controller());
+	return static_cast<ControlListings &>(GuiDialog::controller());
 }
 
 

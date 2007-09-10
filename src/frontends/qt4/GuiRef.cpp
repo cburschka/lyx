@@ -90,7 +90,7 @@ GuiRefDialog::GuiRefDialog(LyXView & lv)
 
 ControlRef & GuiRefDialog::controller() const
 {
-	return static_cast<ControlRef &>(Dialog::controller());
+	return static_cast<ControlRef &>(GuiDialog::controller());
 }
 
 
@@ -244,16 +244,14 @@ void GuiRefDialog::applyView()
 
 bool GuiRefDialog::nameAllowed()
 {
-	Kernel::DocType const doc_type = kernel().docType();
-	return doc_type != Kernel::LATEX &&
-		doc_type != Kernel::LITERATE;
+	KernelDocType const doc_type = controller().docType();
+	return doc_type != LATEX && doc_type != LITERATE;
 }
 
 
 bool GuiRefDialog::typeAllowed()
 {
-	Kernel::DocType const doc_type = kernel().docType();
-	return doc_type != Kernel::DOCBOOK;
+	return controller().docType() != DOCBOOK;
 }
 
 
@@ -275,7 +273,7 @@ void GuiRefDialog::setGotoRef()
 
 void GuiRefDialog::gotoRef()
 {
-	string ref(fromqstr(referenceED->text()));
+	string ref = fromqstr(referenceED->text());
 
 	if (at_ref_) {
 		// go back

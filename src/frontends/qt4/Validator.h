@@ -26,6 +26,7 @@
 #define VALIDATOR_H
 
 #include "Length.h"
+#include "Dialog.h"
 
 #include <QValidator>
 
@@ -115,9 +116,6 @@ class DoubleAutoValidator : public QDoubleValidator {
 
 // Forward declarations
 class LyXRC;
-
-namespace frontend { class KernelDocType; }
-
 
 /** A class to ascertain whether the data passed to the @c validate()
  *  member function is a valid file path.

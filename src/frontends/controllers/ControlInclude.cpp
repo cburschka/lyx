@@ -14,7 +14,6 @@
 
 #include "ControlInclude.h"
 #include "frontend_helpers.h"
-#include "Kernel.h"
 
 #include "Buffer.h"
 #include "Format.h"
@@ -63,7 +62,7 @@ void ControlInclude::clearParams()
 void ControlInclude::dispatchParams()
 {
 	string const lfun = InsetIncludeMailer::params2string(params_);
-	kernel().dispatch(FuncRequest(getLfun(), lfun));
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 
@@ -91,9 +90,9 @@ docstring const ControlInclude::browse(docstring const & in_name, Type in_type) 
 	}
 
 	pair<docstring, docstring> dir1(_("Documents|#o#O"),
-		lyx::from_utf8(lyxrc.document_path));
+		from_utf8(lyxrc.document_path));
 
-	docstring const docpath = lyx::from_utf8(onlyPath(kernel().buffer().fileName()));
+	docstring const docpath = from_utf8(onlyPath(buffer().fileName()));
 
 	return browseRelFile(in_name, docpath, title,
 			     filters, false, dir1);
@@ -104,11 +103,11 @@ void ControlInclude::edit(string const & file)
 {
 	string const ext = support::getExtension(file);
 	if (ext == "lyx")
-		kernel().dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN, file));
+		dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN, file));
 	else
 		// tex file or other text file in verbatim mode
-		formats.edit(kernel().buffer(), 
-			FileName(makeAbsPath(file, onlyPath(kernel().buffer().fileName()))),
+		formats.edit(buffer(), 
+			FileName(makeAbsPath(file, onlyPath(buffer().fileName()))),
 			"text");
 }
 
@@ -116,7 +115,7 @@ void ControlInclude::edit(string const & file)
 bool ControlInclude::fileExists(string const & file)
 {
 	FileName const fileWithAbsPath(
-		makeAbsPath(file, onlyPath(kernel().buffer().fileName())));
+		makeAbsPath(file, onlyPath(buffer().fileName())));
 
 	if (isFileReadable(fileWithAbsPath))
 		return true;

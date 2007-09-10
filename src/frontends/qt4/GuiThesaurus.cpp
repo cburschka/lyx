@@ -66,7 +66,7 @@ GuiThesaurusDialog::GuiThesaurusDialog(LyXView & lv)
 
 ControlThesaurus & GuiThesaurusDialog::controller() const
 {
-	return static_cast<ControlThesaurus &>(Dialog::controller());
+	return static_cast<ControlThesaurus &>(GuiDialog::controller());
 }
 
 void GuiThesaurusDialog::change_adaptor()

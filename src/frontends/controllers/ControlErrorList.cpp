@@ -44,14 +44,14 @@ void ControlErrorList::clearParams()
 
 ErrorList const & ControlErrorList::errorList() const
 {
-	return kernel().bufferview()->buffer().errorList(error_type_);
+	return bufferview()->buffer().errorList(error_type_);
 }
 
 
 bool ControlErrorList::initialiseParams(string const & error_type)
 {
 	error_type_ = error_type;
-	Buffer const & buf = kernel().bufferview()->buffer();
+	Buffer const & buf = bufferview()->buffer();
 	// FIXME UNICODE
 	docstring const title = bformat(_("%1$s Errors (%2$s)"),
 				     _(error_type),
@@ -74,7 +74,7 @@ void ControlErrorList::goTo(int item)
 	if (err.par_id == -1)
 		return;
 
-	Buffer & buf = kernel().buffer();
+	Buffer & buf = buffer();
 	ParIterator pit = buf.getParFromID(err.par_id);
 
 	if (pit == buf.par_iterator_end()) {
@@ -90,10 +90,10 @@ void ControlErrorList::goTo(int item)
 	pos_type const start = std::min(err.pos_start, end);
 	pos_type const range = end - start;
 	DocIterator const dit = makeDocIterator(pit, start);
-	kernel().bufferview()->putSelectionAt(dit, range, false);
+	bufferview()->putSelectionAt(dit, range, false);
 	// FIXME: If we used an LFUN, we would not need those two lines:
-	kernel().bufferview()->update();
-	kernel().lyxview().currentWorkArea()->redraw();
+	bufferview()->update();
+	lyxview().currentWorkArea()->redraw();
 }
 
 } // namespace frontend

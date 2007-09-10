@@ -41,7 +41,7 @@ void ControlERT::clearParams()
 void ControlERT::dispatchParams()
 {
 	string const lfun = InsetERTMailer::params2string(status_);
-	kernel().dispatch(FuncRequest(getLfun(), lfun));
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 } // namespace frontend

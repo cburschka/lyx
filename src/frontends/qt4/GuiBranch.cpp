@@ -45,7 +45,7 @@ GuiBranchDialog::GuiBranchDialog(LyXView & lv)
 
 ControlBranch & GuiBranchDialog::controller() const
 {
-	return static_cast<ControlBranch &>(Dialog::controller());
+	return static_cast<ControlBranch &>(GuiDialog::controller());
 }
 
 

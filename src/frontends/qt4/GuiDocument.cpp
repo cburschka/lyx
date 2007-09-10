@@ -614,7 +614,7 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 
 ControlDocument & GuiDocumentDialog::controller() const
 {
-	return static_cast<ControlDocument &>(Dialog::controller());
+	return static_cast<ControlDocument &>(GuiDialog::controller());
 }
 
 

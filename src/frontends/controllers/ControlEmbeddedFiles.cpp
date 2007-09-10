@@ -41,7 +41,7 @@ ControlEmbeddedFiles::ControlEmbeddedFiles(Dialog & parent)
 
 EmbeddedFiles & ControlEmbeddedFiles::embeddedFiles()
 {
-	return kernel().buffer().embeddedFiles();
+	return buffer().embeddedFiles();
 }
 
 
@@ -54,8 +54,8 @@ bool ControlEmbeddedFiles::initialiseParams(string const &)
 void ControlEmbeddedFiles::updateEmbeddedFiles()
 {
 	// copy buffer embeddedFiles to a local copy
-	kernel().buffer().embeddedFiles().update();
-	kernel().buffer().embeddingChanged();
+	buffer().embeddedFiles().update();
+	buffer().embeddingChanged();
 }
 
 
@@ -63,21 +63,21 @@ void ControlEmbeddedFiles::dispatchMessage(string const & msg)
 {
 	// FIXME: the right thing to do? QT guys?
 	// lyx view will only be updated if we do something to the main window. :-)
-	kernel().dispatch(FuncRequest(LFUN_MESSAGE, msg));
+	dispatch(FuncRequest(LFUN_MESSAGE, msg));
 }
 
 
 void ControlEmbeddedFiles::goTo(EmbeddedFile const & item, int idx)
 {
 	BOOST_ASSERT(idx < item.refCount());
-	item.saveBookmark(&kernel().buffer(), idx);
-	kernel().lyxview().dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
+	item.saveBookmark(&buffer(), idx);
+	lyxview().dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
 }
 
 
 void ControlEmbeddedFiles::view(EmbeddedFile const & item)
 {
-	formats.view(kernel().buffer(), item, formats.getFormatFromFile(item));
+	formats.view(buffer(), item, formats.getFormatFromFile(item));
 }
 
 
@@ -85,9 +85,9 @@ void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed)
 {
 	// FIXME: updateFromExternalFile() or extract() may fail...
 	if (embed)
-		item.updateFromExternalFile(&kernel().buffer());
+		item.updateFromExternalFile(&buffer());
 	else
-		item.extract(&kernel().buffer());
+		item.extract(&buffer());
 	item.setEmbed(embed);
 }
 
@@ -95,9 +95,9 @@ void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed)
 docstring const ControlEmbeddedFiles::browseFile()
 {
 	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),
-				  lyx::from_utf8(lyxrc.document_path));
+				  from_utf8(lyxrc.document_path));
 	FileFilterList const filter(_("All file (*.*)"));
-	return browseRelFile(docstring(), lyx::from_utf8(kernel().bufferFilepath()),
+	return browseRelFile(docstring(), from_utf8(bufferFilepath()),
 			     _("Select a file to embed"),
 			     filter, false, dir1);
 }
@@ -106,7 +106,7 @@ docstring const ControlEmbeddedFiles::browseFile()
 bool ControlEmbeddedFiles::extract(EmbeddedFile const & item)
 {
 	if (item.embedded())
-		return item.extract(&kernel().buffer());
+		return item.extract(&buffer());
 	else
 		return false;
 }
@@ -115,7 +115,7 @@ bool ControlEmbeddedFiles::extract(EmbeddedFile const & item)
 bool ControlEmbeddedFiles::update(EmbeddedFile const & item)
 {
 	if (item.embedded())
-		return item.updateFromExternalFile(&kernel().buffer());
+		return item.updateFromExternalFile(&buffer());
 	else
 		return false;
 }

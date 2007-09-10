@@ -102,7 +102,7 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 {
 	LYXERR(Debug::GUI) << "Spellchecker::initialiseParams" << endl;
 
-	speller_.reset(getSpeller(kernel().buffer().params()));
+	speller_.reset(getSpeller(buffer().params()));
 	if (!speller_.get())
 		return false;
 
@@ -199,13 +199,13 @@ void ControlSpellchecker::check()
 
 	SpellBase::Result res = SpellBase::OK;
 
-	Cursor cur = kernel().bufferview()->cursor();
+	Cursor cur = bufferview()->cursor();
 	while (cur && cur.pos() && isLetter(cur)) {
 		cur.backwardPos();
 	}
 
 	ptrdiff_t start = 0, total = 0;
-	DocIterator it = DocIterator(kernel().buffer().inset());
+	DocIterator it = DocIterator(buffer().inset());
 	for (start = 0; it != cur; it.forwardPos())
 		++start;
 
@@ -251,12 +251,12 @@ void ControlSpellchecker::check()
 
 	int const size = cur.selEnd().pos() - cur.selBegin().pos();
 	cur.pos() -= size;
-	kernel().bufferview()->putSelectionAt(cur, size, false);
+	bufferview()->putSelectionAt(cur, size, false);
 	// FIXME: if we used a lfun like in find/replace, dispatch would do
 	// that for us
-	kernel().bufferview()->update();
+	bufferview()->update();
 	// FIXME: this Controller is very badly designed...
-	kernel().lyxview().currentWorkArea()->redraw();
+	lyxview().currentWorkArea()->redraw();
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
@@ -307,11 +307,10 @@ void ControlSpellchecker::replace(docstring const & replacement)
 {
 	LYXERR(Debug::GUI) << "ControlSpellchecker::replace("
 			   << to_utf8(replacement) << ")" << std::endl;
-	BufferView & bufferview = *kernel().bufferview();
-	cap::replaceSelectionWithString(bufferview.cursor(), replacement, true);
-	kernel().buffer().markDirty();
+	cap::replaceSelectionWithString(bufferview()->cursor(), replacement, true);
+	buffer().markDirty();
 	// If we used an LFUN, we would not need that
-	bufferview.update();
+	bufferview()->update();
 	// fix up the count
 	--count_;
 	check();

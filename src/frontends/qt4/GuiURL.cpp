@@ -53,7 +53,7 @@ GuiURLDialog::GuiURLDialog(LyXView & lv)
 
 ControlCommand & GuiURLDialog::controller() const
 {
-	return static_cast<ControlCommand &>(Dialog::controller());
+	return static_cast<ControlCommand &>(GuiDialog::controller());
 }
 
 

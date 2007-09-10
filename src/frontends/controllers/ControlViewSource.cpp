@@ -20,7 +20,7 @@
 #include "Buffer.h"
 #include "Cursor.h"
 #include "TexRow.h"
-#include <sstream>
+
 
 using std::string;
 
@@ -37,14 +37,15 @@ bool ControlViewSource::initialiseParams(string const & /*source*/)
 	return true;
 }
 
+
 docstring const ControlViewSource::updateContent(bool fullSource)
 {
 	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
-	lyx::pit_type par_begin;
-	lyx::pit_type par_end;
+	pit_type par_begin;
+	pit_type par_end;
 
-	BufferView * view = kernel().bufferview();
+	BufferView * view = bufferview();
 	if (!view->cursor().selection()) {
 		par_begin = view->cursor().bottom().pit();
 		par_end = par_begin;
@@ -54,7 +55,7 @@ docstring const ControlViewSource::updateContent(bool fullSource)
 	}
 	if (par_begin > par_end)
 		std::swap(par_begin, par_end);
-	lyx::odocstringstream ostr;
+	odocstringstream ostr;
 	view->buffer().getSourceCode(ostr, par_begin, par_end + 1, fullSource);
 	return ostr.str();
 }
@@ -62,7 +63,7 @@ docstring const ControlViewSource::updateContent(bool fullSource)
 
 std::pair<int, int> ControlViewSource::getRows() const
 {
-	BufferView const * view = kernel().bufferview();
+	BufferView const * view = bufferview();
 	CursorSlice beg = view->cursor().selectionBegin().bottom();
 	CursorSlice end = view->cursor().selectionEnd().bottom();
 
@@ -83,22 +84,17 @@ void ControlViewSource::clearParams()
 
 docstring const ControlViewSource::title() const
 {
-	string source_type;
-
-	Kernel::DocType doctype = kernel().docType();
-	switch (doctype) {
-	case Kernel::LATEX:
-		source_type = "LaTeX";
-		break;
-	case Kernel::DOCBOOK:
-		source_type = "DocBook";
-		break;
-	case Kernel::LITERATE:
-		source_type = "Literate";
-	default:
-		BOOST_ASSERT(false);
+	switch (docType()) {
+		case LATEX:
+			return _("LaTeX Source");
+		case DOCBOOK:
+			return _("DocBook Source");
+		case LITERATE:
+			return _("Literate Source");
+		default:
+			BOOST_ASSERT(false);
+			return docstring();
 	}
-	return _(source_type + " Source");
 }
 
 } // namespace frontend

@@ -94,7 +94,7 @@ GuiParagraphDialog::GuiParagraphDialog(LyXView & lv)
 
 ControlParagraph & GuiParagraphDialog::controller() const
 {
-	return static_cast<ControlParagraph &>(Dialog::controller());
+	return static_cast<ControlParagraph &>(GuiDialog::controller());
 }
 
 

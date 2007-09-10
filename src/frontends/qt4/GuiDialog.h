@@ -32,8 +32,8 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	GuiDialog(LyXView & lv, std::string const & name);
-	//GuiDialog(GuiDialog &, docstring const &);
+	explicit GuiDialog(LyXView & lv, std::string const & name);
+	~GuiDialog();
 
 public Q_SLOTS:
 	// dialog closed from WM
@@ -74,11 +74,6 @@ public:
 	ButtonController & bc() { return bc_; }
 	//@}
 
-	void preShow();
-	void postShow();
-	void preUpdate();
-	void postUpdate();
-
 	void setViewTitle(docstring const & title);
 
 	///
@@ -100,15 +95,76 @@ protected:
 	///
 	virtual bool isVisibleView() const;
 	/// is the dialog currently valid ?
-	virtual bool isValid();
+	virtual bool isValid() { return true; }
+
+public:
+	/** \name Container Access
+	 *  These methods are publicly accessible because they are invoked
+	 *  by the parent container acting on commands from the LyX kernel.
+	 */
+	//@{
+	/// \param data is a string encoding of the data to be displayed.
+	/// It is passed to the Controller to be translated into a useable form.
+	void showData(std::string const & data);
+	void updateData(std::string const & data);
+
+	void hide();
+
+	/** This function is called, for example, if the GUI colours
+	 *  have been changed.
+	 */
+	void redraw() { redrawView(); }
+	//@}
+
+	/** When applying, it's useful to know whether the dialog is about
+	 *  to close or not (no point refreshing the display for example).
+	 */
+	bool isClosing() const { return is_closing_; }
+
+	/** \name Dialog Specialization
+	 *  Methods to set the Controller and View and so specialise
+	 *  to a particular dialog.
+	 */
+	//@{
+	/// \param ptr is stored and destroyed by \c Dialog.
+	void setController(Controller * ptr);
+	//@}
+
+	/** \name Dialog Components
+	 *  Methods to access the various components making up a dialog.
+	 */
+	//@{
+	virtual Controller & controller() const { return *controller_; }
+	//@}
+
+	/** Defaults to nothing. Can be used by the Controller, however, to
+	 *  indicate to the View that something has changed and that the
+	 *  dialog therefore needs updating.
+	 *  \param id identifies what should be updated.
+	 */
+	virtual void partialUpdateView(int /*id*/) {}
+
+	///
+	std::string name() const { return name_; }
+
+	void apply();
+	void redrawView() {}
 
 private:
-	/// update the dialog
+	/// Update the display of the dialog whilst it is still visible.
 	virtual void updateView();
 
 	ButtonController bc_;
 	/// are we updating ?
 	bool updating_;
+
+	bool is_closing_;
+	/** The Dialog's name is the means by which a dialog identifies
+	 *  itself to the kernel.
+	 */
+	std::string name_;
+	Controller * controller_;
+	LyXView * lyxview_; // FIXME: replace by moving to constructor
 };
 
 } // namespace frontend

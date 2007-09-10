@@ -39,7 +39,7 @@ GuiShowFileDialog::GuiShowFileDialog(LyXView & lv)
 
 ControlShowFile & GuiShowFileDialog::controller() const
 {
-	return static_cast<ControlShowFile &>(Dialog::controller());
+	return static_cast<ControlShowFile &>(GuiDialog::controller());
 }
 
 

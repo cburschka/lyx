@@ -108,7 +108,7 @@ GuiCharacterDialog::GuiCharacterDialog(LyXView & lv)
 
 ControlCharacter & GuiCharacterDialog::controller() const
 {
-	return static_cast<ControlCharacter &>(Dialog::controller());
+	return static_cast<ControlCharacter &>(GuiDialog::controller());
 }
 
 

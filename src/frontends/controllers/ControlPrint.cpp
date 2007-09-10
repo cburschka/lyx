@@ -43,7 +43,7 @@ ControlPrint::ControlPrint(Dialog & parent)
 bool ControlPrint::initialiseParams(std::string const &)
 {
 	/// get global printer parameters
-	string const name =  changeExtension(kernel().buffer().fileName(),
+	string const name =  changeExtension(buffer().fileName(),
 					lyxrc.print_file_extension);
 	params_.reset(new PrinterParams(PrinterParams::PRINTER,
 					lyxrc.printer, name));
@@ -68,7 +68,7 @@ PrinterParams & ControlPrint::params() const
 
 docstring const ControlPrint::browse(docstring const & in_name) const
 {
-	return browseRelFile(in_name, lyx::from_utf8(kernel().buffer().filePath()),
+	return browseRelFile(in_name, lyx::from_utf8(buffer().filePath()),
 			     _("Print to file"),
 			     FileFilterList(_("PostScript files (*.ps)")),
 			     true);
@@ -128,7 +128,7 @@ void ControlPrint::dispatchParams()
 		command += lyxrc.print_extra_options + ' ';
 	}
 
-	command += kernel().buffer().params().dvips_options();
+	command += buffer().params().dvips_options();
 
 	string const target = (pp.target == PrinterParams::PRINTER) ?
 		"printer" : "file";
@@ -138,7 +138,7 @@ void ControlPrint::dispatchParams()
 		pp.file_name;
 
 	string const data = target + " \"" + target_name + "\" \"" + command + '"';
-	kernel().dispatch(FuncRequest(getLfun(), data));
+	dispatch(FuncRequest(getLfun(), data));
 }
 
 } // namespace frontend

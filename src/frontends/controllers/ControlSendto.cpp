@@ -50,7 +50,7 @@ void ControlSendto::dispatchParams()
 		return;
 
 	string const data = format_->name() + " " + command_;
-	kernel().dispatch(FuncRequest(getLfun(), data));
+	dispatch(FuncRequest(getLfun(), data));
 }
 
 
@@ -61,13 +61,11 @@ vector<Format const *> const ControlSendto::allFormats() const
 	exports.push_back("lyx");
 	exports.push_back("text");
 
-	Buffer const & buffer = kernel().buffer();
-
-	if (buffer.isLatex())
+	if (buffer().isLatex())
 		exports.push_back("latex");
-	else if (buffer.isDocBook())
+	else if (buffer().isDocBook())
 		exports.push_back("docbook");
-	else if (buffer.isLiterate())
+	else if (buffer().isLiterate())
 		exports.push_back("literate");
 
 	// Loop over these native formats and ascertain what formats we

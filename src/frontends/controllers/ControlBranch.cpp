@@ -49,13 +49,13 @@ void ControlBranch::clearParams()
 void ControlBranch::dispatchParams()
 {
 	string const lfun = InsetBranchMailer::params2string(params());
-	kernel().dispatch(FuncRequest(getLfun(), lfun));
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 
 BranchList const & ControlBranch::branchlist() const
 {
-	return kernel().buffer().params().branchlist();
+	return buffer().params().branchlist();
 }
 
 } // namespace frontend

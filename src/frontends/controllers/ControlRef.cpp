@@ -47,14 +47,14 @@ vector<docstring> const ControlRef::getLabelList(string const & name) const
 
 void ControlRef::gotoRef(string const & ref)
 {
-	kernel().dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
-	kernel().dispatch(FuncRequest(LFUN_LABEL_GOTO, ref));
+	dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
+	dispatch(FuncRequest(LFUN_LABEL_GOTO, ref));
 }
 
 
 void ControlRef::gotoBookmark()
 {
-	kernel().dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
+	dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
 }
 
 
@@ -73,7 +73,7 @@ vector<string> const ControlRef::getBufferList() const
 int ControlRef::getBufferNum() const
 {
 	vector<string> buffers = theBufferList().getFileNames();
-	string const name = kernel().buffer().fileName();
+	string const name = buffer().fileName();
 	vector<string>::const_iterator cit =
 		find(buffers.begin(), buffers.end(), name);
 	if (cit == buffers.end())

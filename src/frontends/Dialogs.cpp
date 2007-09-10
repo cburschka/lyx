@@ -29,8 +29,7 @@ namespace frontend {
 
 Dialogs::Dialogs(LyXView & lyxview)
 	: lyxview_(lyxview), in_show_(false)
-{
-}
+{}
 
 
 Dialog * Dialogs::find_or_build(string const & name)
@@ -51,29 +50,27 @@ Dialog * Dialogs::find_or_build(string const & name)
 
 void Dialogs::show(string const & name, string const & data)
 {
-	if (in_show_) {
+	if (in_show_)
 		return;
-	}
+
 	in_show_ = true;
 	Dialog * dialog = find_or_build(name);
-	if (dialog) {
-		// FIXME! Should check that the dialog is NOT an inset dialog.
-		dialog->show(data);
-	}
+	if (dialog)
+		dialog->showData(data);
+
 	in_show_ = false;
 }
 
 
 void Dialogs::show(string const & name, string const & data, Inset * inset)
 {
-	if (in_show_) {
+	if (in_show_)
 		return;
-	}
+
 	in_show_ = true;
 	Dialog * dialog = find_or_build(name);
 	if (dialog) {
-		// FIXME! Should check that the dialog IS an inset dialog.
-		dialog->show(data);
+		dialog->showData(data);
 		open_insets_[name] = inset;
 	}
 	in_show_ = false;
@@ -86,7 +83,7 @@ bool Dialogs::visible(string const & name) const
 		dialogs_.find(name);
 	if (it == dialogs_.end())
 		return false;
-	return it->second.get()->isVisible();
+	return it->second.get()->isVisibleView();
 }
 
 
@@ -98,8 +95,8 @@ void Dialogs::update(string const & name, string const & data)
 		return;
 
 	Dialog * const dialog = it->second.get();
-	if (dialog->isVisible())
-		dialog->update(data);
+	if (dialog->isVisibleView())
+		dialog->updateData(data);
 }
 
 
@@ -121,7 +118,7 @@ void Dialogs::hide(string const & name, Inset* inset)
 		return;
 
 	Dialog * const dialog = it->second.get();
-	if (dialog->isVisible())
+	if (dialog->isVisibleView())
 		dialog->hide();
 	open_insets_[name] = 0;
 }
@@ -153,9 +150,8 @@ void Dialogs::hideAll() const
 	std::map<string, DialogPtr>::const_iterator it  = dialogs_.begin();
 	std::map<string, DialogPtr>::const_iterator end = dialogs_.end();
 
-	for(; it != end; ++it) {
+	for(; it != end; ++it)
 		it->second->hide();
-	}
 }
 
 
@@ -165,7 +161,7 @@ void Dialogs::hideBufferDependent() const
 	std::map<string, DialogPtr>::const_iterator end = dialogs_.end();
 
 	for(; it != end; ++it) {
-		Dialog * dialog =  it->second.get();
+		Dialog * dialog = it->second.get();
 		if (dialog->controller().isBufferDependent())
 			dialog->hide();
 	}
@@ -178,9 +174,9 @@ void Dialogs::updateBufferDependent(bool switched) const
 	std::map<string, DialogPtr>::const_iterator end = dialogs_.end();
 
 	for(; it != end; ++it) {
-		Dialog * dialog =  it->second.get();
+		Dialog * dialog = it->second.get();
 		if (switched && dialog->controller().isBufferDependent()) {
-			if (dialog->isVisible() && dialog->controller().initialiseParams(""))
+			if (dialog->isVisibleView() && dialog->controller().initialiseParams(""))
 				dialog->updateView();
 			else
 				dialog->hide();
@@ -199,9 +195,8 @@ void Dialogs::redraw() const
 	std::map<string, DialogPtr>::const_iterator it  = dialogs_.begin();
 	std::map<string, DialogPtr>::const_iterator end = dialogs_.end();
 
-	for(; it != end; ++it) {
+	for(; it != end; ++it)
 		it->second->redraw();
-	}
 }
 
 
@@ -212,7 +207,7 @@ void Dialogs::checkStatus()
 
 	for(; it != end; ++it) {
 		Dialog * const dialog = it->second.get();
-		if (dialog->isVisible())
+		if (dialog->isVisibleView())
 			dialog->checkStatus();
 	}
 }

@@ -412,7 +412,7 @@ void GuiGraphicsDialog::update_contents()
 	}
 
 	string const name =
-		igp.filename.outputFilename(kernel().bufferFilepath());
+		igp.filename.outputFilename(controller().bufferFilepath());
 	filename->setText(toqstr(name));
 
 	// set the bounding box values
@@ -559,7 +559,7 @@ void GuiGraphicsDialog::applyView()
 	InsetGraphicsParams & igp = controller().params();
 
 	igp.filename.set(internal_path(fromqstr(filename->text())),
-			 kernel().bufferFilepath());
+			 controller().bufferFilepath());
 
 	// the bb section
 	igp.bb.erase();

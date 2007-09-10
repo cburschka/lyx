@@ -48,7 +48,7 @@ GuiBibitemDialog::GuiBibitemDialog(LyXView & lv)
 
 ControlCommand & GuiBibitemDialog::controller() const
 {
-	return static_cast<ControlCommand &>(Dialog::controller());
+	return static_cast<ControlCommand &>(GuiDialog::controller());
 }
 
 

@@ -13,7 +13,6 @@
 #include "ControlPrefs.h"
 
 #include "frontend_helpers.h"
-#include "Kernel.h"
 
 #include "BufferList.h"
 #include "gettext.h"
@@ -60,8 +59,7 @@ void ControlPrefs::dispatchParams()
 {
 	ostringstream ss;
 	rc_.write(ss, true);
-	kernel().dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
-
+	dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str())); 
 	// FIXME: these need lfuns
 	// FIXME UNICODE
 	theBufferList().setCurrentAuthor(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
@@ -77,17 +75,17 @@ void ControlPrefs::dispatchParams()
 	vector<string>::const_iterator it = colors_.begin();
 	vector<string>::const_iterator const end = colors_.end();
 	for (; it != end; ++it)
-		kernel().dispatch(FuncRequest(LFUN_SET_COLOR, *it));
+		dispatch(FuncRequest(LFUN_SET_COLOR, *it));
 	colors_.clear();
 
 	if (update_screen_font_) {
-		kernel().dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+		dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 		update_screen_font_ = false;
 	}
 
 	// The Save button has been pressed
 	if (dialog().isClosing()) {
-		kernel().dispatch(FuncRequest(LFUN_PREFERENCES_SAVE));
+		dispatch(FuncRequest(LFUN_PREFERENCES_SAVE));
 	}
 }
 

@@ -113,7 +113,7 @@ GuiBibtexDialog::GuiBibtexDialog(LyXView & lv)
 
 ControlBibtex & GuiBibtexDialog::controller() const
 {
-	return static_cast<ControlBibtex &>(Dialog::controller());
+	return static_cast<ControlBibtex &>(GuiDialog::controller());
 }
 
 

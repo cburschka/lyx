@@ -69,7 +69,7 @@ GuiPrintDialog::GuiPrintDialog(LyXView & lv)
 
 ControlPrint & GuiPrintDialog::controller() const
 {
-	return static_cast<ControlPrint &>(Dialog::controller());
+	return static_cast<ControlPrint &>(GuiDialog::controller());
 }
 
 

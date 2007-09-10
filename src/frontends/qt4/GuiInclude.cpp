@@ -80,7 +80,7 @@ GuiIncludeDialog::GuiIncludeDialog(LyXView & lv)
 
 ControlInclude & GuiIncludeDialog::controller() const
 {
-	return static_cast<ControlInclude &>(Dialog::controller());
+	return static_cast<ControlInclude &>(GuiDialog::controller());
 }
 
 

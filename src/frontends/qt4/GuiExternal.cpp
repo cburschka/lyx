@@ -186,7 +186,7 @@ GuiExternalDialog::GuiExternalDialog(LyXView & lv)
 
 ControlExternal & GuiExternalDialog::controller() const
 {
-	return static_cast<ControlExternal &>(Dialog::controller());
+	return static_cast<ControlExternal &>(GuiDialog::controller());
 }
 
 
@@ -538,7 +538,7 @@ void GuiExternalDialog::update_contents()
 	InsetExternalParams const & params = controller().params();
 
 	string const name =
-		params.filename.outputFilename(kernel().bufferFilepath());
+		params.filename.outputFilename(controller().bufferFilepath());
 	fileED->setText(toqstr(name));
 
 	externalCO->setCurrentIndex(
@@ -617,7 +617,7 @@ void GuiExternalDialog::updateTemplate()
 
 	tab->setTabEnabled(
 		tab->indexOf(optionstab), enabled);
-	extraED->setEnabled(enabled && !kernel().isBufferReadonly());
+	extraED->setEnabled(enabled && !controller().isBufferReadonly());
 	extraFormatCO->setEnabled(enabled);
 
 	if (enabled) {
@@ -632,7 +632,7 @@ void GuiExternalDialog::applyView()
 	InsetExternalParams params = controller().params();
 
 	params.filename.set(internal_path(fromqstr(fileED->text())),
-			    kernel().bufferFilepath());
+			    controller().bufferFilepath());
 
 	params.settemplate(controller().getTemplate(
 				   externalCO->currentIndex()).lyxName);

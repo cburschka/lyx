@@ -42,7 +42,7 @@ void ControlListings::clearParams()
 void ControlListings::dispatchParams()
 {
 	string const lfun = InsetListingsMailer::params2string(params());
-	kernel().dispatch(FuncRequest(getLfun(), lfun));
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

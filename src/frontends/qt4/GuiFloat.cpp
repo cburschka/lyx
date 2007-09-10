@@ -56,7 +56,7 @@ GuiFloatDialog::GuiFloatDialog(LyXView & lv)
 
 ControlFloat & GuiFloatDialog::controller() const
 {
-	return static_cast<ControlFloat &>(Dialog::controller());
+	return static_cast<ControlFloat &>(GuiDialog::controller());
 }
 
 

@@ -54,7 +54,7 @@ ControlExternal::ControlExternal(Dialog & parent)
 bool ControlExternal::initialiseParams(string const & data)
 {
 	params_.reset(new InsetExternalParams);
-	InsetExternalMailer::string2params(data, kernel().buffer(), *params_);
+	InsetExternalMailer::string2params(data, buffer(), *params_);
 	return true;
 }
 
@@ -68,9 +68,9 @@ void ControlExternal::clearParams()
 void ControlExternal::dispatchParams()
 {
 	string const lfun = InsetExternalMailer::params2string(params(),
-							       kernel().buffer());
+							       buffer());
 
-	kernel().dispatch(FuncRequest(getLfun(), lfun));
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 
@@ -94,8 +94,8 @@ void ControlExternal::editExternal()
 
 	dialog().applyView();
 	string const lfun =
-		InsetExternalMailer::params2string(params(), kernel().buffer());
-	kernel().dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));
+		InsetExternalMailer::params2string(params(), buffer());
+	dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));
 }
 
 
@@ -162,7 +162,7 @@ docstring const ControlExternal::browse(docstring const & input,
 {
 	docstring const title =  _("Select external file");
 
-	docstring const bufpath = lyx::from_utf8(kernel().bufferFilepath());
+	docstring const bufpath = lyx::from_utf8(bufferFilepath());
 	FileFilterList const filter =
 		FileFilterList(lyx::from_utf8(getTemplateFilters(lyx::to_utf8(template_name))));
 
@@ -175,7 +175,7 @@ docstring const ControlExternal::browse(docstring const & input,
 
 string const ControlExternal::readBB(string const & file)
 {
-	FileName const abs_file(makeAbsPath(file, kernel().bufferFilepath()));
+	FileName const abs_file(makeAbsPath(file, bufferFilepath()));
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function

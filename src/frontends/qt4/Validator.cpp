@@ -53,7 +53,7 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 		GlueLength gl;
 		return (isValidGlueLength(text, &gl)) ?
 			QValidator::Acceptable : QValidator::Intermediate;
-		}
+	}
 
 	Length l;
 	bool const valid_length = isValidLength(text, &l);
@@ -192,7 +192,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 void PathValidator::setChecker(lyx::frontend::KernelDocType const & type,
 			       LyXRC const & lyxrc)
 {
-	latex_doc_ = type == lyx::frontend::Kernel::LATEX;
+	latex_doc_ = type == frontend::LATEX;
 	tex_allows_spaces_ = lyxrc.tex_allows_spaces;
 }
 

@@ -69,7 +69,7 @@ ControlTexinfo::ControlTexinfo(Dialog & parent)
 void ControlTexinfo::viewFile(string const & filename) const
 {
 	string const arg = "file " + filename;
-	kernel().dispatch(FuncRequest(LFUN_DIALOG_SHOW, arg));
+	dispatch(FuncRequest(LFUN_DIALOG_SHOW, arg));
 }
 
 

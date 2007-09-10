@@ -65,7 +65,7 @@ GuiSearchDialog::GuiSearchDialog(LyXView & lv)
 
 ControlSearch & GuiSearchDialog::controller() const
 {
-	return static_cast<ControlSearch &>(Dialog::controller());
+	return static_cast<ControlSearch &>(GuiDialog::controller());
 }
 
 

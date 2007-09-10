@@ -63,7 +63,7 @@ void ControlCharacter::dispatchParams()
 
 	string data;
 	if (font2string(*font_.get(), toggleall_, data)) {
-		kernel().dispatch(FuncRequest(getLfun(), data));
+		dispatch(FuncRequest(getLfun(), data));
 	}
 }
 
@@ -225,9 +225,10 @@ void ControlCharacter::setLanguage(string const & val)
 	else if (val == "reset") {
 		reset_lang_ = true;
 		// Ignored in getLanguage, but needed for dispatchParams
-		font_->setLanguage(kernel().buffer().params().language);
-	} else
+		font_->setLanguage(buffer().params().language);
+	} else {
 		font_->setLanguage(languages.getLanguage(val));
+	}
 }
 
 

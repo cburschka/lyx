@@ -8,7 +8,6 @@ pkglib_LTLIBRARIES = liblyxcontrollers.la
 
 SOURCEFILES = \
 	Dialog.cpp \
-	Kernel.cpp \
 	ButtonPolicy.cpp \
 	ControlBibtex.cpp \
 	ControlBox.cpp \
@@ -49,7 +48,6 @@ SOURCEFILES = \
 	frontend_helpers.cpp 
 
 HEADERFILES = \
-	Kernel.h \
 	ButtonPolicy.h \
 	ControlBibtex.h \
 	ControlBox.h \

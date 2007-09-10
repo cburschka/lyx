@@ -50,9 +50,9 @@ docstring const ControlBibtex::browseBib(docstring const & in_name) const
 {
 	// FIXME UNICODE
 	pair<docstring, docstring> dir1(_("Documents|#o#O"),
-				  lyx::from_utf8(lyxrc.document_path));
+				  from_utf8(lyxrc.document_path));
 	FileFilterList const filter(_("BibTeX Databases (*.bib)"));
-	return browseRelFile(in_name, lyx::from_utf8(kernel().bufferFilepath()),
+	return browseRelFile(in_name, from_utf8(bufferFilepath()),
 			     _("Select a BibTeX database to add"),
 			     filter, false, dir1);
 }
@@ -62,9 +62,9 @@ docstring const ControlBibtex::browseBst(docstring const & in_name) const
 {
 	// FIXME UNICODE
 	pair<docstring, docstring> dir1(_("Documents|#o#O"),
-				  lyx::from_utf8(lyxrc.document_path));
+				  from_utf8(lyxrc.document_path));
 	FileFilterList const filter(_("BibTeX Styles (*.bst)"));
-	return browseRelFile(in_name, lyx::from_utf8(kernel().bufferFilepath()),
+	return browseRelFile(in_name, from_utf8(bufferFilepath()),
 			     _("Select a BibTeX style"), filter, false, dir1);
 }
 
@@ -117,13 +117,13 @@ void ControlBibtex::rescanBibStyles() const
 
 bool ControlBibtex::usingBibtopic() const
 {
-	return kernel().buffer().params().use_bibtopic;
+	return buffer().params().use_bibtopic;
 }
 
 
 bool ControlBibtex::bibtotoc() const
 {
-	return prefixIs(lyx::to_utf8(params()["options"]), "bibtotoc");
+	return prefixIs(to_utf8(params()["options"]), "bibtotoc");
 }
 
 
@@ -131,21 +131,20 @@ string const ControlBibtex::getStylefile() const
 {
 	// the different bibtex packages have (and need) their
 	// own "plain" stylefiles
-	biblio::CiteEngine const engine =
-		kernel().buffer().params().getEngine();
+	biblio::CiteEngine const engine = buffer().params().getEngine();
 	docstring defaultstyle;
 	switch (engine) {
 	case biblio::ENGINE_BASIC:
-		defaultstyle = lyx::from_ascii("plain");
+		defaultstyle = from_ascii("plain");
 		break;
 	case biblio::ENGINE_NATBIB_AUTHORYEAR:
-		defaultstyle = lyx::from_ascii("plainnat");
+		defaultstyle = from_ascii("plainnat");
 		break;
 	case biblio::ENGINE_NATBIB_NUMERICAL:
-		defaultstyle = lyx::from_ascii("plainnat");
+		defaultstyle = from_ascii("plainnat");
 		break;
 	case biblio::ENGINE_JURABIB:
-		defaultstyle = lyx::from_ascii("jurabib");
+		defaultstyle = from_ascii("jurabib");
 		break;
 	}
 
@@ -153,7 +152,7 @@ string const ControlBibtex::getStylefile() const
 	if (bibtotoc()){
 		// bibstyle exists?
 		if (contains(bst, ',')) {
-			docstring bibtotoc = lyx::from_ascii("bibtotoc");
+			docstring bibtotoc = from_ascii("bibtotoc");
 			bst = split(bst, bibtotoc, ',');
 		} else
 			bst.erase();
@@ -166,7 +165,7 @@ string const ControlBibtex::getStylefile() const
 		bst = defaultstyle;
 
 	// FIXME UNICODE
-	return lyx::to_utf8(bst);
+	return to_utf8(bst);
 }
 
 } // namespace frontend

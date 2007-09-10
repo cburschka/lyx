@@ -67,7 +67,7 @@ GuiMathMatrixDialog::GuiMathMatrixDialog(LyXView & lv)
 
 ControlMath & GuiMathMatrixDialog::controller() const
 {
-	return static_cast<ControlMath &>(Dialog::controller());
+	return static_cast<ControlMath &>(GuiDialog::controller());
 }
 
 

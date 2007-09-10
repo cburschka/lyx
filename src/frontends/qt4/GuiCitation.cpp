@@ -104,7 +104,7 @@ GuiCitationDialog::GuiCitationDialog(LyXView & lv)
 
 ControlCitation & GuiCitationDialog::controller() const
 {
-	return static_cast<ControlCitation &>(Dialog::controller());
+	return static_cast<ControlCitation &>(GuiDialog::controller());
 }
 
 

@@ -119,7 +119,7 @@ GuiLogDialog::GuiLogDialog(LyXView & lv)
 
 ControlLog & GuiLogDialog::controller() const
 {
-	return static_cast<ControlLog &>(Dialog::controller());
+	return static_cast<ControlLog &>(GuiDialog::controller());
 }
 
 

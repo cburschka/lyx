@@ -89,7 +89,7 @@ GuiVSpaceDialog::GuiVSpaceDialog(LyXView & lv)
 
 ControlVSpace & GuiVSpaceDialog::controller() const
 {
-	return static_cast<ControlVSpace &>(Dialog::controller());
+	return static_cast<ControlVSpace &>(GuiDialog::controller());
 }
 
 

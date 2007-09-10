@@ -43,7 +43,7 @@ void ControlFloat::clearParams()
 void ControlFloat::dispatchParams()
 {
 	string const lfun = InsetFloatMailer::params2string(params());
-	kernel().dispatch(FuncRequest(getLfun(), lfun));
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 } // namespace frontend

@@ -12,16 +12,32 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 
-#include "Kernel.h"
 #include "lfuns.h"
 
 #include "support/docstring.h"
-#include <boost/scoped_ptr.hpp>
+#include <string>
 
 namespace lyx {
+
+class Buffer;
+class BufferView;
+class FuncRequest;
+
 namespace frontend {
 
 class LyXView;
+
+/** \enum KernelDocType used to flag the different kinds of buffer
+ *  without making the kernel header files available to the
+ *  dialog's Controller or View.
+ */
+enum KernelDocType
+{
+	LATEX,
+	LITERATE,
+	DOCBOOK
+};
+
 
 /** Different dialogs will have different Controllers and Views.
  *  deriving from these base classes.
@@ -39,7 +55,7 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	Dialog(LyXView & lv, std::string const & name);
+	Dialog() {}
 	virtual ~Dialog();
 
 	/** \name Container Access
@@ -49,18 +65,12 @@ public:
 	//@{
 	/// \param data is a string encoding of the data to be displayed.
 	/// It is passed to the Controller to be translated into a useable form.
-	void show(std::string const & data);
-	void update(std::string const & data);
+	virtual void showData(std::string const & /*data*/) {}
+	virtual void updateData(std::string const & /*data*/) {}
 
-	void hide();
-	bool isVisible() const;
+	virtual void hide() {}
 
 	// Override in GuiDialog
-	virtual void preShow() {}
-	virtual void postShow() {}
-	virtual void preUpdate() {}
-	virtual void postUpdate() {}
-
 	virtual void OkButton() {}
 	virtual void ApplyButton() {}
 	virtual void CancelButton() {}
@@ -69,41 +79,26 @@ public:
 	/** This function is called, for example, if the GUI colours
 	 *  have been changed.
 	 */
-	void redraw();
+	virtual void redraw() {}
 	//@}
 
 	/** Check whether we may apply our data.
 	 *
 	 *  The buttons are disabled if not and (re-)enabled if yes.
 	 */
-	void checkStatus();
+	virtual void checkStatus() {}
 
 	/** When applying, it's useful to know whether the dialog is about
 	 *  to close or not (no point refreshing the display for example).
 	 */
-	bool isClosing() const { return is_closing_; }
-
-	/** The LyX kernel is made available through this wrapper class.
-	 *  In an ideal world, it will shrink as more info is passed to the
-	 *  show() and update() methods.
-	 */
-	Kernel & kernel() { return kernel_; }
-	Kernel const & kernel() const { return kernel_; }
+	virtual bool isClosing() const { return false; }
 
 	/** \name Dialog Specialization
 	 *  Methods to set the Controller and View and so specialise
 	 *  to a particular dialog.
 	 */
 	//@{
-	/// \param ptr is stored and destroyed by \c Dialog.
-	void setController(Controller * ptr);
-	//@}
-
-	/** \name Dialog Components
-	 *  Methods to access the various components making up a dialog.
-	 */
-	//@{
-	virtual Controller & controller() const;
+	virtual Controller & controller() const = 0;
 	//@}
 
 	/** \c Button controller part
@@ -127,7 +122,7 @@ public:
 	virtual void hideView() = 0;
 
 	/// Redraw the dialog (e.g. if the colors have been remapped).
-	virtual void redrawView() {}
+	virtual void redrawView() = 0;
 
 	/// Create the dialog if necessary, update it and display it.
 	virtual void showView() = 0;
@@ -144,26 +139,18 @@ public:
 	 *  dialog therefore needs updating.
 	 *  \param id identifies what should be updated.
 	 */
-	virtual void partialUpdateView(int /*id*/) {}
+	virtual void partialUpdateView(int /*id*/) = 0;
 
 	///
-	std::string name() const { return name_; }
+	virtual std::string name() const = 0;
+
+protected:
+	virtual void apply() {}
 
 private:
 	/// intentionally unimplemented, therefore uncopiable
 	Dialog(Dialog const &);
 	void operator=(Dialog const &);
-
-protected:
-	void apply();
-
-	bool is_closing_;
-	Kernel kernel_;
-	/** The Dialog's name is the means by which a dialog identifies
-	 *  itself to the kernel.
-	 */
-	std::string name_;
-	Controller * controller_;
 };
 
 
@@ -175,7 +162,8 @@ class Controller
 public:
 	/// \param parent Dialog owning this Controller.
 	Controller(Dialog & parent);
-	virtual ~Controller() {}
+	virtual ~Controller();
+	void setLyXView(LyXView & lv) { lyxview_ = &lv; }
 
 	/** \name Generic Controller
 	 *  These few methods are all that a generic dialog needs of a
@@ -239,23 +227,70 @@ public:
 	*/
 	virtual bool exitEarly() const { return false; }
 	//@}
-
-	/// Main Window access.
-	/// This is unfortunately needed for the qt4 frontend and the \c
-	/// QDialogView framework. This permits to give a parent to the
-	/// constructed \c QDialog via a cast to \c GuiView.
-	LyXView * view() { return &parent_.kernel().lyxview(); }
-
-protected:
+public:
 	/** \name Controller Access
 	 *  Enable the derived classes to access the other parts of the whole.
 	 */
 	//@{
 	Dialog & dialog() { return parent_; }
 	Dialog const & dialog() const { return parent_; }
+	//@}
 
-	Kernel & kernel() { return parent_.kernel(); }
-	Kernel const & kernel() const { return parent_.kernel(); }
+	/** \c Kernel part: a wrapper making the LyX kernel available to the dialog.
+	 * (Ie, it provides an interface to the Model part of the Model-Controller-
+	 *  View split.
+	 *  In an ideal world, it will shrink as more info is passed to the
+	 *  Dialog::show() and Dialog::update() methods.
+	 */
+
+
+	/** This method is the primary purpose of the class. It provides
+	 *  the "gateway" by which the dialog can send a request (of a
+	 *  change in the data, for more information) to the kernel.
+	 *  \param fr is the encoding of the request.
+	 */
+	void dispatch(FuncRequest const & fr) const;
+
+	/** The dialog has received a request from the user
+	 *  (who pressed the "Restore" button) to update contents.
+	 *  It must, therefore, ask the kernel to provide this information.
+	 *  \param name is used to identify the dialog to the kernel.
+	 */
+	void updateDialog(std::string const & name) const;
+
+	/** A request from the Controller that future changes to the data
+	 *  stored by the dialog are not applied to the inset currently
+	 *  connected to the dialog. Instead, they will be used to generate
+	 *  a new inset at the cursor position.
+	 *  \param name is used to identify the dialog to the kernel.
+	 */
+	void disconnect(std::string const & name) const;
+
+	/** \name Kernel Wrappers
+	 *  Simple wrapper functions to Buffer methods.
+	 */
+	//@{
+	bool isBufferAvailable() const;
+	bool isBufferReadonly() const;
+	std::string const bufferFilepath() const;
+	//@}
+
+	/// The type of the current buffer.
+	KernelDocType docType() const;
+
+	/** \name Kernel Nasties
+	 *  Unpleasantly public internals of the LyX kernel.
+	 *  We should aim to reduce/remove these from the interface.
+	 */
+	//@{
+	LyXView & lyxview() { return *lyxview_; }
+	LyXView const & lyxview() const { return *lyxview_; }
+
+	Buffer & buffer();
+	Buffer const & buffer() const;
+
+	BufferView * bufferview();
+	BufferView const * bufferview() const;
 	//@}
 
 private:
@@ -265,8 +300,8 @@ private:
 
 private:
 	Dialog & parent_;
+	LyXView * lyxview_;
 };
-
 
 
 } // namespace frontend

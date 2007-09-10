@@ -64,7 +64,7 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 
 ControlWrap & GuiWrapDialog::controller() const
 {
-	return static_cast<ControlWrap &>(Dialog::controller());
+	return static_cast<ControlWrap &>(GuiDialog::controller());
 }
 
 

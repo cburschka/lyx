@@ -64,7 +64,7 @@ GuiSpellcheckerDialog::GuiSpellcheckerDialog(LyXView & lv)
 
 ControlSpellchecker & GuiSpellcheckerDialog::controller() const
 {
-	return static_cast<ControlSpellchecker &>(Dialog::controller());
+	return static_cast<ControlSpellchecker &>(GuiDialog::controller());
 }
 
 

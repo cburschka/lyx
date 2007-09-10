@@ -61,7 +61,7 @@ ControlGraphics::ControlGraphics(Dialog & parent)
 bool ControlGraphics::initialiseParams(string const & data)
 {
 	InsetGraphicsParams params;
-	InsetGraphicsMailer::string2params(data, kernel().buffer(), params);
+	InsetGraphicsMailer::string2params(data, buffer(), params);
 	params_.reset(new InsetGraphicsParams(params));
 	return true;
 }
@@ -77,8 +77,8 @@ void ControlGraphics::dispatchParams()
 {
 	InsetGraphicsParams tmp_params(params());
 	string const lfun =
-		InsetGraphicsMailer::params2string(tmp_params, kernel().buffer());
-	kernel().dispatch(FuncRequest(getLfun(), lfun));
+		InsetGraphicsMailer::params2string(tmp_params, buffer());
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 
@@ -95,7 +95,7 @@ docstring const ControlGraphics::browse(docstring const & in_name) const
 	pair<docstring, docstring> dir1(_("Clipart|#C#c"), from_utf8(clipdir));
 	pair<docstring, docstring> dir2(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
 	// Show the file browser dialog
-	return browseRelFile(in_name, from_utf8(kernel().bufferFilepath()),
+	return browseRelFile(in_name, from_utf8(bufferFilepath()),
 			     title,
 			     FileFilterList(),
 			     false, dir1, dir2);
@@ -104,7 +104,7 @@ docstring const ControlGraphics::browse(docstring const & in_name) const
 
 string const ControlGraphics::readBB(string const & file)
 {
-	FileName const abs_file(makeAbsPath(file, kernel().bufferFilepath()));
+	FileName const abs_file(makeAbsPath(file, bufferFilepath()));
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -133,7 +133,7 @@ string const ControlGraphics::readBB(string const & file)
 bool ControlGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	FileName const name(makeAbsPath(fname, kernel().bufferFilepath()));
+	FileName const name(makeAbsPath(fname, bufferFilepath()));
 	return isFileReadable(name);
 }
 
@@ -144,8 +144,8 @@ void ControlGraphics::editGraphics()
 
 	dialog().applyView();
 	string const lfun =
-		InsetGraphicsMailer::params2string(params(), kernel().buffer());
-	kernel().dispatch(FuncRequest(LFUN_GRAPHICS_EDIT, lfun));
+		InsetGraphicsMailer::params2string(params(), buffer());
+	dispatch(FuncRequest(LFUN_GRAPHICS_EDIT, lfun));
 }
 
 

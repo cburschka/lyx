@@ -1961,7 +1961,7 @@ GuiPrefsDialog::GuiPrefsDialog(LyXView & lv)
 
 ControlPrefs & GuiPrefsDialog::controller() const
 {
-	return static_cast<ControlPrefs &>(Dialog::controller());
+	return static_cast<ControlPrefs &>(GuiDialog::controller());
 }
 
 

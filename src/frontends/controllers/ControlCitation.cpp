@@ -43,12 +43,11 @@ bool ControlCitation::initialiseParams(string const & data)
 	if (!ControlCommand::initialiseParams(data))
 		return false;
 
-	biblio::CiteEngine const engine =
-		kernel().buffer().params().getEngine();
+	biblio::CiteEngine const engine = buffer().params().getEngine();
 
 	bool use_styles = engine != biblio::ENGINE_BASIC;
 
-	bibkeysInfo_.fillWithBibKeys(&(kernel().buffer()));
+	bibkeysInfo_.fillWithBibKeys(&buffer());
 	
 	if (citeStyles_.empty())
 		citeStyles_ = biblio::getCiteStyles(engine);
@@ -112,7 +111,7 @@ void ControlCitation::filterByEntryType(
 
 biblio::CiteEngine const ControlCitation::getEngine() const
 {
-	return kernel().buffer().params().getEngine();
+	return buffer().params().getEngine();
 }
 
 
@@ -203,7 +202,7 @@ vector<docstring> ControlCitation::searchKeys(
 
 vector<docstring> const ControlCitation::getCiteStrings(docstring const & key) const
 {
-	return bibkeysInfo_.getCiteStrings(key, kernel().buffer());
+	return bibkeysInfo_.getCiteStrings(key, buffer());
 }
 
 } // namespace frontend

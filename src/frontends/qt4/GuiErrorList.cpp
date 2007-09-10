@@ -45,7 +45,7 @@ GuiErrorListDialog::GuiErrorListDialog(LyXView & lv)
 
 ControlErrorList & GuiErrorListDialog::controller() const
 {
-	return static_cast<ControlErrorList &>(Dialog::controller());
+	return static_cast<ControlErrorList &>(GuiDialog::controller());
 }
 
 

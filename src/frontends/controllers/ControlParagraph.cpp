@@ -133,7 +133,7 @@ void ControlParagraph::dispatchParams()
 	ostringstream data;
 	params().write(data);
 	FuncRequest const fr(LFUN_PARAGRAPH_PARAMS_APPLY, data.str());
-	kernel().dispatch(fr);
+	dispatch(fr);
 }
 
 
@@ -151,23 +151,25 @@ ParagraphParameters const & ControlParagraph::params() const
 }
 
 
-bool const ControlParagraph::haveMulitParSelection() {
-	Cursor cur = kernel().bufferview()->cursor();
-	if (!cur.selection())
-		return false;
-	return (cur.selBegin().pit() != cur.selEnd().pit());
+bool const ControlParagraph::haveMulitParSelection()
+{
+	Cursor cur = bufferview()->cursor();
+	return cur.selection() && cur.selBegin().pit() != cur.selEnd().pit();
 }
+
 	
 bool ControlParagraph::inInset() const
 {
 	return ininset_;
 }
 
+
 bool ControlParagraph::canIndent() const
 {
-	return kernel().buffer().params().paragraph_separation ==
+	return buffer().params().paragraph_separation ==
 		BufferParams::PARSEP_INDENT;
 }
+
 
 LyXAlignment ControlParagraph::alignPossible() const
 {

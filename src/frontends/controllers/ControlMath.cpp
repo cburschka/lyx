@@ -73,7 +73,7 @@ ControlMath::ControlMath(Dialog & dialog)
 
 void ControlMath::dispatchFunc(kb_action action, string const & arg) const
 {
-	kernel().dispatch(FuncRequest(action, arg));
+	dispatch(FuncRequest(action, arg));
 }
 
 

@@ -55,7 +55,7 @@ GuiNomenclDialog::GuiNomenclDialog(LyXView & lv)
 
 ControlCommand & GuiNomenclDialog::controller() const
 {
-	return static_cast<ControlCommand &>(Dialog::controller());
+	return static_cast<ControlCommand &>(GuiDialog::controller());
 }
 
 
