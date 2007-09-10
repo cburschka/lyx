@@ -285,11 +285,14 @@ void InsetGraphics::read(Buffer const & buf, Lexer & lex)
 
 	// InsetGraphics is read, with filename in params_. We do not know if this file actually
 	// exists or is embedded so we need to get the 'availableFile' from buf.embeddedFiles()
-	EmbeddedFiles::EmbeddedFileList::const_iterator it = buf.embeddedFiles().find(params_.filename.toFilesystemEncoding());
-	if (it != buf.embeddedFiles().end())
-		// using available file, embedded or external, depending on file availability and
-		// embedding status.
-		params_.filename = DocFileName(it->availableFile(&buf));
+	if (buf.embeddedFiles().enabled()) {
+		EmbeddedFiles::EmbeddedFileList::const_iterator it = 
+			buf.embeddedFiles().find(params_.filename.toFilesystemEncoding());
+		if (it != buf.embeddedFiles().end())
+			// using available file, embedded or external, depending on file availability and
+			// embedding status.
+			params_.filename = DocFileName(it->availableFile(&buf));
+	}
 	graphic_->update(params().as_grfxParams());
 }
 

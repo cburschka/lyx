@@ -669,12 +669,6 @@ bool Buffer::readFile(FileName const & filename)
 			fs::exists(lyxfile.toFilesystemEncoding())) {
 			params().embedded = true;
 			fname = lyxfile;
-			// read manifest file
-			ifstream is(manifest.toFilesystemEncoding().c_str());
-			is >> pimpl_->embedded_files;
-			is.close();
-			LYXERR(Debug::FILES) << filename << " is a embedded file. Its manifest is:\n"
-					<< pimpl_->embedded_files;
 		}
 	}
 	// The embedded lyx file can also be compressed, for backward compatibility

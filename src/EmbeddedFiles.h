@@ -107,6 +107,8 @@ embedded file (check path == temppath()), if so, save filename() instead.
 namespace lyx {
 
 class Buffer;
+class Lexer;
+class ErrorList;
 
 class EmbeddedFile : public support::DocFileName
 {
@@ -186,10 +188,12 @@ public:
 	/* \param filename filename to add
 	 * \param embed embedding status. For a new file item, this is always true.
 	 *    If the file already exists, this parameter is ignored.
-	 * \param pit paragraph id.
+	 * \param inset Inset pointer
+	 * \param inzipName suggested inzipname
 	 */
 	void registerFile(std::string const & filename, bool embed = false,
-		Inset const * inset = NULL);
+		Inset const * inset = NULL,
+		std::string const & inzipName = std::string());
 
 	/// scan the buffer and get a list of EmbeddedFile
 	void update();
@@ -214,22 +218,17 @@ public:
 	/// update all files from external, used when enable embedding
 	bool updateFromExternalFile() const;
 	///
-	friend std::istream & operator>> (std::istream & is, EmbeddedFiles &);
-
-	friend std::ostream & operator<< (std::ostream & os, EmbeddedFiles const &);
+	bool readManifest(Lexer & lex, ErrorList & errorList);
+	void writeManifest(std::ostream & os) const;
 private:
-	/// get a unique inzip name
-	std::string const getInzipName(std::string const & name);
+	/// get a unique inzip name, a suggestion can be given.
+	std::string const getInzipName(std::string const & name, std::string const & inzipName);
 	/// list of embedded files
 	EmbeddedFileList file_list_;
 	///
 	Buffer * buffer_;
 };
 
-
-std::istream & operator>> (std::istream & is, EmbeddedFiles &);
-
-std::ostream & operator<< (std::ostream & os, EmbeddedFiles const &);
 
 }
 #endif

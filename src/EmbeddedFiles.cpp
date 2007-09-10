@@ -20,6 +20,8 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Format.h"
+#include "Lexer.h"
+#include "ErrorList.h"
 
 #include "frontends/alert.h"
 
@@ -244,7 +246,7 @@ bool EmbeddedFiles::enable(bool flag)
 
 
 void EmbeddedFiles::registerFile(string const & filename,
-	bool embed, Inset const * inset)
+	bool embed, Inset const * inset, string const & inzipName)
 {
 	// filename can be relative or absolute, translate to absolute filename
 	string abs_filename = makeAbsPath(filename, buffer_->filePath()).absFilename();
@@ -257,18 +259,12 @@ void EmbeddedFiles::registerFile(string const & filename,
 	// find this filename, keep the original embedding status
 	if (it != file_list_.end()) {
 		it->addInset(inset);
-		// if the file is embedded, the embedded file should have exist
-		// check for this to ensure that our logic is correct
-		if (it->embedded())
-			BOOST_ASSERT(fs::exists(it->embeddedFile(buffer_)));
 		it->validate();
 		return;
 	}
 	// try to be more careful
 	file_list_.push_back(EmbeddedFile(abs_filename, 
-		getInzipName(abs_filename), embed, inset));
-	// validate if things are OK
-	BOOST_ASSERT(fs::exists(file_list_.back().availableFile(buffer_)));
+		getInzipName(abs_filename, inzipName), embed, inset));
 }
 
 
@@ -287,10 +283,6 @@ void EmbeddedFiles::update()
 
 	for (InsetIterator it = inset_iterator_begin(buffer_->inset()); it; ++it)
 		it->registerEmbeddedFiles(*buffer_, *this);
-
-	LYXERR(Debug::FILES) << "Manifest updated: " << endl
-		<< *this
-		<< "End Manifest" << endl;
 }
 
 
@@ -298,17 +290,11 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 {
 	// file in the temporary path has the content
 	string const content = FileName(addName(buffer_->temppath(),
-		onlyFilename(filename.toFilesystemEncoding()))).toFilesystemEncoding();
+		"content.lyx")).toFilesystemEncoding();
 
-	// get a file list and write a manifest file
 	vector<pair<string, string> > filenames;
-	string const manifest = FileName(
-		addName(buffer_->temppath(), "manifest.txt")).toFilesystemEncoding();
-
-	// write a manifest file
-	ofstream os(manifest.c_str());
-	os << *this;
-	os.close();
+	// add content.lyx to filenames
+	filenames.push_back(make_pair(content, "content.lyx"));
 	// prepare list of embedded file
 	EmbeddedFileList::iterator it = file_list_.begin();
 	EmbeddedFileList::iterator it_end = file_list_.end();
@@ -321,9 +307,6 @@ bool EmbeddedFiles::write(DocFileName const & filename)
 				filenames.push_back(make_pair(file, it->inzipName()));
 		}
 	}
-	// add filename (.lyx) and manifest to filenames
-	filenames.push_back(make_pair(content, onlyFilename(filename.toFilesystemEncoding())));
-	filenames.push_back(make_pair(manifest, "manifest.txt"));
 	// write a zip file with all these files. Write to a temp file first, to
 	// avoid messing up the original file in case something goes terribly wrong.
 	DocFileName zipfile(addName(buffer_->temppath(),
@@ -380,11 +363,13 @@ bool EmbeddedFiles::updateFromExternalFile() const
 }
 
 
-string const EmbeddedFiles::getInzipName(string const & abs_filename)
+string const EmbeddedFiles::getInzipName(string const & abs_filename, string const & name)
 {
 	// register a new one, using relative file path as inzip_name
-	string inzip_name = to_utf8(makeRelPath(from_utf8(abs_filename),
-		from_utf8(buffer_->fileName())));
+	string inzip_name = name;
+	if (name.empty())
+		inzip_name = to_utf8(makeRelPath(from_utf8(abs_filename),
+			from_utf8(buffer_->filePath())));
 	// if inzip_name is an absolute path, use filename only to avoid
 	// leaking of filesystem information in inzip_name
 	// The second case covers cases '../path/file' and '.'
@@ -413,81 +398,74 @@ string const EmbeddedFiles::getInzipName(string const & abs_filename)
 }
 
 
-istream & operator>> (istream & is, EmbeddedFiles & files)
+bool EmbeddedFiles::readManifest(Lexer & lex, ErrorList & errorList)
 {
-	files.clear();
-	string tmp;
-	getline(is, tmp);
-	// get version
-	istringstream itmp(tmp);
-	int version;
-	itmp.ignore(string("# LyX manifest version ").size());
-	itmp >> version;
+	int line = -1;
+	int begin_manifest_line = -1;
 
-	if (version != 1) {
-		lyxerr << "This version of LyX can only read LyX manifest version 1" << endl;
-		return is;
-	}
+	file_list_.clear();
+	string filename = "";
+	string inzipName = "";
+	bool status = "";
 
-	getline(is, tmp);
-	if (tmp != "<manifest>") {
-		lyxerr << "Invalid manifest file, lacking <manifest>" << endl;
-		return is;
-	}
-	// manifest file may be messed up, be carefully
-	while (is.good()) {
-		getline(is, tmp);
-		if (tmp != "<file>")
+	while (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+
+		if (token.empty())
+			continue;
+
+		if (token == "\\end_manifest")
 			break;
 
-		string fname;
-		getline(is, fname);
-		string inzip_name;
-		getline(is, inzip_name);
-		getline(is, tmp);
-		istringstream itmp(tmp);
-		int embed;
-		itmp >> embed;
-
-		getline(is, tmp);
-		if (tmp != "</file>") {
-			lyxerr << "Invalid manifest file, lacking </file>" << endl;
-			break;
+		++line;
+		if (token == "\\begin_manifest") {
+			begin_manifest_line = line;
+			continue;
 		}
+		
+		LYXERR(Debug::PARSER) << "Handling document manifest token: `"
+				      << token << '\'' << endl;
 
-		files.registerFile(fname, embed);
-	};
-	// the last line must be </manifest>
-	if (tmp != "</manifest>") {
-		lyxerr << "Invalid manifest file, lacking </manifest>" << endl;
-		return is;
+		if (token == "\\filename")
+			lex >> filename;
+		else if (token == "\\inzipName")
+			lex >> inzipName;
+		else if (token == "\\status") {
+			lex >> status;
+			registerFile(filename, status, NULL, inzipName);
+			filename = "";
+			inzipName = "";
+		} else {
+			docstring const s = _("\\begin_file is missing");
+			errorList.push_back(ErrorItem(_("Manifest error"),
+				s, -1, 0, 0));
+		}
 	}
-	return is;
+	if (begin_manifest_line) {
+		docstring const s = _("\\begin_manifest is missing");
+		errorList.push_back(ErrorItem(_("Manifest error"),
+			s, -1, 0, 0));
+	}
+	return true;
 }
 
 
-ostream & operator<< (ostream & os, EmbeddedFiles const & files)
+void EmbeddedFiles::writeManifest(ostream & os) const
 {
-	// store a version so that operator >> can read later versions
-	// using version information.
-	os << "# lyx manifest version 1\n";
-	os << "<manifest>\n";
-	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
-	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
+	EmbeddedFiles::EmbeddedFileList::const_iterator it = begin();
+	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = end();
 	for (; it != it_end; ++it) {
 		if (!it->valid())
 			continue;
-		// use differnt lines to make reading easier.
-		os << "<file>\n"
-			// save the relative path
+		// save the relative path
+		os << "\\filename "
 			<< to_utf8(makeRelPath(from_utf8(it->absFilename()),
-				from_utf8(files.buffer_->filePath()))) << '\n'
-			<< it->inzipName() << '\n'
-			<< it->embedded() << '\n'
-			<< "</file>\n";
+				from_utf8(buffer_->filePath()))) << '\n'
+			<< "\\inzipName " << it->inzipName() << '\n'
+			<< "\\status " << (it->embedded() ? "true" : "false") << '\n';
 	}
-	os << "</manifest>\n";
-	return os;
 }
+
 
 }
