@@ -28,7 +28,7 @@ What's new
   http://wiki.lyx.org/LyX/DocumentationDevelopment#Status
 
 - Embedded Objects manual:
-  - new section about longtable alignmentrry 
+  * new section about longtable alignment.
 
 - Many improvements to interface translation on the Mac. In
   particular, LyX automatically uses the language of the interface for
@@ -45,14 +45,14 @@ What's new
 
 * USER INTERFACE
 
-- Add "Save all" menu entry, to save all modified files (Bug 2840).
+- Add "Save all" menu entry, to save all modified files (bug 2840).
 
-- Mark modified files in the View menu with an asterisk (Bug 2876).
+- Mark modified files in the View menu with an asterisk (bug 2876).
 
 - Add paragraph-params LFUN, used for updating paragraph parameters
-  (Bug 2714).
+  (bug 2714).
 
-- Add "Save all on log-out or cancel" feature (Bug 1656).
+- Add "Save all on log-out or cancel" feature (bug 1656).
 
 - Add a pixmap cache to speed up text drawing on screen. This cache is
   enabled on Mac and Windows platform using a version of Qt greater
@@ -68,11 +68,11 @@ What's new
 
 - Check if the .lyx file has been externally modified when a buffer is saved.
 
-- Conversion from older documents failed if koi8 was used as the
-  document encoding (Bug 4158).
+- Fix conversion from older documents if koi8 is used as the
+  document encoding (bug 4158).
 
 - Handle array column specifiers @{decl.}, p{width} and the extenions by
-  array.sty in mathed (Bug 4132).
+  array.sty in mathed (bug 4132).
 
 * USER INTERFACE:
 
@@ -117,15 +117,18 @@ What's new
 
 - Fix failure to close window when modified document is saved (bug 4170).
 
-- Highlight search text (bug 3999).
+- Highlight search text in the find dialog (bug 3999).
 
 - Fix deletion of pars with leading spaces (bug 3600).
 
 - Fix loss of start-of-appendix information when creating/deleting an
   empty paragraph (bug 4212).
 
-- Fix that Revert and Save As were treated as "file is externally modified"
-  (bug 4193)
+- "Revert" and "Save As" are no longer treated as external modifications of the
+  document (bug 4193).
+
+- Fix bug where the "longest label" widget in the paragraph dialog was disabled
+  after its content was deleted (bug 4127).
 
 
 * DOCUMENTATION
@@ -141,7 +144,7 @@ What's new
   chkconfig.ltx to the user dir using default permissions (thus avoiding a
   bug on Cygwin where python doesn't copy ACLs associated to a file).
 
-- Clarify error message for --without-included-boost
+- Clarify error message for --without-included-boost.
 
 - Upgrade to gettext 0.14.6.
 
