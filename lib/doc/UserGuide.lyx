@@ -12926,6 +12926,24 @@ eX
 \end_inset
 
 .
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+The braces in ERT are here to avoid that the 
+\begin_inset Quotes eld
+\end_inset
+
+command
+\begin_inset Quotes erd
+\end_inset
+
+ appear as proper name in the output, see the last paragraph of this section.
+ To create proper names omit the ERT.
+\end_layout
+
+\end_inset
+
  Note the order of the upper-and lowercase letters! LyX recognizes the following
  proper names:
 \end_layout
@@ -22946,14 +22964,13 @@ name "sec:Index"
 \end_layout
 
 \begin_layout Standard
-An index entry is created if you place the cursor behind the word or phrase
- that should appear in the index and then use the menu 
+An index entry is created if you use the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Index\InsetSpace ~
 Entry
 \family default
- or the toobar button 
+ or the toolbar button 
 \begin_inset Graphics
 	filename ../images/index-insert.xpm
 	BoundingBox 0bp 5bp 20bp 20bp
@@ -22973,8 +22990,9 @@ Idx
 \begin_inset Quotes erd
 \end_inset
 
- is inserted and a window pops up asking for the index entry.
- LyX propose the word before the cursor as entry.
+ is inserted containing the text that appears in the index.
+ The word where the cursor is in or the currently highlighted text is proposed
+ by LyX as index entry.
 \end_layout
 
 \begin_layout Standard
@@ -23010,8 +23028,8 @@ to an index entry field, because the
 \begin_inset Quotes erd
 \end_inset
 
- character is used in LaTeX to separate table columns so that you will get
- LaTeX-errors.
+ character is used in LaTeX to separate table columns, so that you will
+ get LaTeX-errors.
  The correct entry is
 \end_layout
 
