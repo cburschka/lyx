@@ -129,7 +129,7 @@ def build_toc(output, documents, lang=None):
     
 def main(argv):
     if len(argv) != 3:
-        usage()
+        usage(argv[0])
         sys.exit(1)
 
     lang = argv[1]
