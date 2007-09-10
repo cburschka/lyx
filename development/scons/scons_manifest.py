@@ -765,7 +765,6 @@ src_frontends_controllers_header_files = Split('''
     ControlViewSource.h
     ControlWrap.h
     Dialog.h
-    Kernel.h
     frontend_helpers.h
 ''')
 
@@ -809,7 +808,6 @@ src_frontends_controllers_files = Split('''
     ControlViewSource.cpp
     ControlWrap.cpp
     Dialog.cpp
-    Kernel.cpp
     frontend_helpers.cpp
 ''')
 
