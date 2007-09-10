@@ -290,6 +290,10 @@ private:
 	pit_type anchor_ref_;
 	///
 	int offset_ref_;
+	///
+	void updateOffsetRef();
+	///
+	bool need_centering_;
 
 	/// keyboard mapping object.
 	boost::scoped_ptr<Intl> const intl_;
