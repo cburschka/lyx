@@ -1202,12 +1202,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		recordUndo(cur);
 		cur.clearSelection();
 		insertInset(cur, inset);
-		inset->edit(cur, true);
 		// Show the dialog for the nomenclature entry, since the
 		// description entry still needs to be filled in.
 		if (cmd.action == LFUN_NOMENCL_INSERT)
-			InsetCommandMailer("nomenclature",
-				*reinterpret_cast<InsetCommand *>(inset)).showDialog(&cur.bv());
+			inset->edit(cur, true);
 		cur.posRight();
 		break;
 	}

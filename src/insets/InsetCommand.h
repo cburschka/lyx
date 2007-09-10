@@ -81,6 +81,8 @@ public:
 	{
 		return p_[name];
 	}
+	///
+	void edit(Cursor & cur, bool left);
 	/// FIXME remove
 	virtual void replaceContents(std::string const & from, std::string const & to);
 	///

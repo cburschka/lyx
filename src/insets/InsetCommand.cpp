@@ -132,8 +132,8 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MOUSE_RELEASE: {
-		if (!mailer_name_.empty() && !cur.selection())
-			InsetCommandMailer(mailer_name_, *this).showDialog(&cur.bv());
+		if (!cur.selection())
+			edit(cur, true);
 		break;
 	}
 
@@ -162,6 +162,13 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}
+}
+
+
+void InsetCommand::edit(Cursor & cur, bool)
+{
+	if (!mailer_name_.empty())
+		InsetCommandMailer(mailer_name_, *this).showDialog(&cur.bv());
 }
 
 

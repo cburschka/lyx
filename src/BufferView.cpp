@@ -913,12 +913,16 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		// if there is an inset at cursor, see whether it
 		// wants to toggle.
 		Inset * inset = cur.nextInset();
-		if (inset && inset->isActive()) {
-			Cursor tmpcur = cur;
-			tmpcur.pushLeft(*inset);
-			inset->dispatch(tmpcur, tmpcmd);
-			if (tmpcur.result().dispatched()) {
-				cur.dispatched();
+		if (inset) {
+			if (inset->isActive()) {
+				Cursor tmpcur = cur;
+				tmpcur.pushLeft(*inset);
+				inset->dispatch(tmpcur, tmpcmd);
+				if (tmpcur.result().dispatched()) {
+					cur.dispatched();
+				}
+			} else if (inset->editable() == Inset::IS_EDITABLE) {
+				inset->edit(cur, true);
 			}
 		}
 		// if it did not work, try the underlying inset.
