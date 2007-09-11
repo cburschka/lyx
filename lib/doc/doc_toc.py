@@ -41,14 +41,14 @@ import LyX
 import depend
 
 # Specific language information
-# info["isoname"] = (language, language_quotes, enconding, TOC_translated)
-info = { 'cs' : ('czech', 'german', 'latin2', "Obsah dokumentace LyXu"),
-         'da' : ('danish', 'german', 'latin1', "Indholdsfortegnelse over LyX's dokumentation"),
-         'de' : ('german', 'german', 'latin1', "Inhaltsverzeichnis LyX Dokumentation"),
-         'fr' : ('french', 'french', 'latin1', "Plan de la documentation"),
-         'ru' : ('russian', 'english', 'koi8-r', "LyX Documentation Table of Contents"),
-         'sl' : ('slovene', 'german', 'latin2', "Kazalo dokumentacije LyXa"),
-         'en' : ('english', 'english', 'latin1', "LyX Documentation Table of Contents")}
+# info["isoname"] = (language, language_quotes, TOC_translated)
+info = { 'cs' : ('czech', 'german', u"Obsah dokumentace LyXu"),
+         'da' : ('danish', 'german', u"Indholdsfortegnelse over LyX's dokumentation"),
+         'de' : ('german', 'german', u"Inhaltsverzeichnis LyX Dokumentation"),
+         'fr' : ('french', 'french', u"Plan de la documentation"),
+         'ru' : ('russian', 'english', u"LyX Documentation Table of Contents"),
+         'sl' : ('slovene', 'german', u"Kazalo dokumentacije LyXa"),
+         'en' : ('english', 'english', u"LyX Documentation Table of Contents")}
 
 def usage(pname):
     print """Usage: %s lang output
@@ -120,7 +120,7 @@ def build_toc(output, documents, lang=None):
     file.set_header(language = data[0], language_quotes = data[1], inputencoding = "auto")
     file.language = data[0]
     file.encoding = "utf-8"
-    body = [ LyX.Paragraph('Title', [data[3]])]
+    body = [ LyX.Paragraph('Title', [data[2]])]
     body.extend(build_from_toc(toc_general))
     file.set_body(body)
     file.write()
