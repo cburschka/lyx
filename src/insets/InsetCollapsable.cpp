@@ -441,10 +441,6 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 	setButtonLabel();
 	if (status_ == Collapsed)
 		cur.leaveInset(*this);
-	// Because the collapse status is part of the inset and thus an
-	// integral part of the Buffer contents a changed status must be
-	// signaled to all views of current buffer.
-	cur.bv().buffer()->changed();
 }
 
 

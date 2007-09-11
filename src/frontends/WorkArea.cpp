@@ -218,7 +218,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 	bool const needRedraw = buffer_view_->workAreaDispatch(cmd);
 
 	if (needRedraw)
-		redraw();
+		buffer_view_->buffer()->changed();
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
