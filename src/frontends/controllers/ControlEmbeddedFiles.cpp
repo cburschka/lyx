@@ -81,14 +81,15 @@ void ControlEmbeddedFiles::view(EmbeddedFile const & item)
 }
 
 
-void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed)
+void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update)
 {
-	// FIXME: updateFromExternalFile() or extract() may fail...
-	if (embed)
-		item.updateFromExternalFile(&buffer());
-	else
-		item.extract(&buffer());
 	item.setEmbed(embed);
+	if (update) {
+		if (embed)
+			item.updateFromExternalFile(&buffer());
+		else
+			item.extract(&buffer());
+	}
 }
 
 

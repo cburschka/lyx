@@ -37,12 +37,16 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
 	if (item->checkState() == Qt::Checked) {
 		if (files[filesLW->row(item)].embedded())
 			return;
-		controller_.setEmbed(files[filesLW->row(item)], true);
+		// this should not be needed after EmbeddedFiles are updated correctly.
+		files.update();
+		controller_.setEmbed(files[filesLW->row(item)], true, files.enabled());
 		controller_.dispatchMessage("Embed file " + fromqstr(item->text()));
 	} else {
 		if (!files[filesLW->row(item)].embedded())
 			return;
-		controller_.setEmbed(files[filesLW->row(item)], false);
+		// this should not be needed after EmbeddedFiles are updated correctly.
+		files.update();
+		controller_.setEmbed(files[filesLW->row(item)], false, files.enabled());
 		controller_.dispatchMessage("Stop embedding file " + fromqstr(item->text()));
 	}
 }
@@ -138,11 +142,13 @@ void GuiEmbeddedFilesDialog::updateView()
 void GuiEmbeddedFilesDialog::on_selectPB_clicked()
 {
 	EmbeddedFiles & files = controller_.embeddedFiles();
+	// this should not be needed after EmbeddedFiles are updated correctly.
+	files.update();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it) {
 		(*it)->setCheckState(Qt::Checked);
-		controller_.setEmbed(files[filesLW->row(*it)], true);
+		controller_.setEmbed(files[filesLW->row(*it)], true, files.enabled());
 	}
 	controller_.dispatchMessage("Embedding files");
 }
@@ -151,11 +157,13 @@ void GuiEmbeddedFilesDialog::on_selectPB_clicked()
 void GuiEmbeddedFilesDialog::on_unselectPB_clicked()
 {
 	EmbeddedFiles & files = controller_.embeddedFiles();
+	// this should not be needed after EmbeddedFiles are updated correctly.
+	files.update();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 	for (QList<QListWidgetItem*>::iterator it = selection.begin(); 
 		it != selection.end(); ++it) {
 		(*it)->setCheckState(Qt::Checked);
-		controller_.setEmbed(files[filesLW->row(*it)], false);
+		controller_.setEmbed(files[filesLW->row(*it)], false, files.enabled());
 	}
 	controller_.dispatchMessage("Stop embedding files");
 }

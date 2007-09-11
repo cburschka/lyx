@@ -48,7 +48,7 @@ public:
 	///
 	void view(EmbeddedFile const & item);
 	///
-	void setEmbed(EmbeddedFile & item, bool embed);
+	void setEmbed(EmbeddedFile & item, bool embed, bool update);
 	///
 	docstring const browseFile();
 	///
