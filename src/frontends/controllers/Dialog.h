@@ -71,10 +71,10 @@ public:
 	virtual void hide() {}
 
 	// Override in GuiDialog
-	virtual void OkButton() {}
-	virtual void ApplyButton() {}
-	virtual void CancelButton() {}
-	virtual void RestoreButton() {}
+	virtual void slotOK() {}
+	virtual void slotApply() {}
+	virtual void slotRestore() {}
+	virtual void slotClose() {}
 
 	/** This function is called, for example, if the GUI colours
 	 *  have been changed.

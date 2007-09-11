@@ -136,7 +136,7 @@ void GuiCharacterDialog::change_adaptor()
 
 void GuiCharacterDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

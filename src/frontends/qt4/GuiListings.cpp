@@ -253,7 +253,7 @@ ControlListings & GuiListingsDialog::controller() const
 
 void GuiListingsDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

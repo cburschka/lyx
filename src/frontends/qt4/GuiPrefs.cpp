@@ -1976,7 +1976,7 @@ void GuiPrefsDialog::add(PrefModule * module)
 
 void GuiPrefsDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

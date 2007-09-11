@@ -65,7 +65,7 @@ void GuiURLDialog::changed_adaptor()
 
 void GuiURLDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

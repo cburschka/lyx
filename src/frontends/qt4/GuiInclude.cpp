@@ -128,7 +128,7 @@ void GuiIncludeDialog::set_listings_msg()
 
 void GuiIncludeDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

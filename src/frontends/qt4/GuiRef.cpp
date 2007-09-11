@@ -181,7 +181,7 @@ void GuiRefDialog::reset_dialog()
 
 void GuiRefDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	reset_dialog();
 	e->accept();
 }

@@ -45,14 +45,14 @@ void GuiDialog::setButtonsValid(bool valid)
 }
 
 
-void GuiDialog::ApplyButton()
+void GuiDialog::slotApply()
 {
 	apply();
 	bc().apply();
 }
 
 
-void GuiDialog::OKButton()
+void GuiDialog::slotOK()
 {
 	is_closing_ = true;
 	apply();
@@ -62,14 +62,14 @@ void GuiDialog::OKButton()
 }
 
 
-void GuiDialog::CancelButton()
+void GuiDialog::slotClose()
 {
 	QDialog::hide();
 	bc().cancel();
 }
 
 
-void GuiDialog::RestoreButton()
+void GuiDialog::slotRestore()
 {
 	// Tell the controller that a request to refresh the dialog's contents
 	// has been received. It's up to the controller to supply the necessary
@@ -151,36 +151,6 @@ void GuiDialog::changed()
 	if (updating_)
 		return;
 	bc().setValid(isValid());
-}
-
-
-void GuiDialog::slotWMHide()
-{
-	CancelButton();
-}
-
-
-void GuiDialog::slotApply()
-{
-	ApplyButton();
-}
-
-
-void GuiDialog::slotOK()
-{
-	OKButton();
-}
-
-
-void GuiDialog::slotClose()
-{
-	CancelButton();
-}
-
-
-void GuiDialog::slotRestore()
-{
-	RestoreButton();
 }
 
 

@@ -45,7 +45,7 @@ ControlShowFile & GuiShowFileDialog::controller() const
 
 void GuiShowFileDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

@@ -70,7 +70,7 @@ ControlWrap & GuiWrapDialog::controller() const
 
 void GuiWrapDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

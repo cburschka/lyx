@@ -245,7 +245,7 @@ void GuiBibtexDialog::availableChanged()
 
 void GuiBibtexDialog::closeEvent(QCloseEvent *e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

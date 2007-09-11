@@ -120,7 +120,7 @@ ControlBox & GuiBoxDialog::controller() const
 
 void GuiBoxDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

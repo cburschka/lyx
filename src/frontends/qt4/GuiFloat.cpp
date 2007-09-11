@@ -68,7 +68,7 @@ void GuiFloatDialog::change_adaptor()
 
 void GuiFloatDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

@@ -50,7 +50,7 @@ ControlNote & GuiNoteDialog::controller() const
 
 void GuiNoteDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

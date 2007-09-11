@@ -95,7 +95,7 @@ void GuiIndexDialogBase::reject()
 
 void GuiIndexDialogBase::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

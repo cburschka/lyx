@@ -119,14 +119,14 @@ void GuiSpellcheckerDialog::replaceChanged(const QString & str)
 
 void GuiSpellcheckerDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 
 
 void GuiSpellcheckerDialog::reject()
 {
-	slotWMHide();
+	slotClose();
 	QDialog::reject();
 }
 

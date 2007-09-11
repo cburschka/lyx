@@ -48,7 +48,7 @@ ControlERT & GuiERTDialog::controller() const
 
 void GuiERTDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

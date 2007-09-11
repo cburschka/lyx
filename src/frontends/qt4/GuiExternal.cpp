@@ -248,7 +248,7 @@ void GuiExternalDialog::change_adaptor()
 
 void GuiExternalDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

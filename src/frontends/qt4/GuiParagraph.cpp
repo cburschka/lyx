@@ -100,7 +100,7 @@ ControlParagraph & GuiParagraphDialog::controller() const
 
 void GuiParagraphDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

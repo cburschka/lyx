@@ -234,7 +234,7 @@ void GuiGraphicsDialog::change_bb()
 
 void GuiGraphicsDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

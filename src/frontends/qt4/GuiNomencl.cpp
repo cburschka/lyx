@@ -73,7 +73,7 @@ void GuiNomenclDialog::reject()
 
 void GuiNomenclDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

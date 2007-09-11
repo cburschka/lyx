@@ -51,7 +51,7 @@ ControlBranch & GuiBranchDialog::controller() const
 
 void GuiBranchDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

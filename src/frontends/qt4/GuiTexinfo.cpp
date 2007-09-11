@@ -74,7 +74,7 @@ void GuiTexinfoDialog::change_adaptor()
 
 void GuiTexinfoDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

@@ -60,7 +60,7 @@ void GuiBibitemDialog::change_adaptor()
 
 void GuiBibitemDialog::closeEvent(QCloseEvent *e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

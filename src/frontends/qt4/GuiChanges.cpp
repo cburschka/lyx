@@ -54,7 +54,7 @@ ControlChanges & GuiChangesDialog::controller() const
 
 void GuiChangesDialog::closeEvent(QCloseEvent *e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

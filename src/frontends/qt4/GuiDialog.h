@@ -36,28 +36,20 @@ public:
 	~GuiDialog();
 
 public Q_SLOTS:
-	// dialog closed from WM
-	void slotWMHide();
+	/** \name Buttons
+	 *  These methods are publicly accessible because they are invoked
+	 *  by the View when the user presses... guess what ;-)
+	 */
 	// Restore button clicked
 	void slotRestore();
 	// OK button clicked
 	void slotOK();
 	// Apply button clicked
 	void slotApply();
-	// Close button clicked
+	// Close button clicked or closed from WindowManager
 	void slotClose();
 
 public:
-	/** \name Buttons
-	 *  These methods are publicly accessible because they are invoked
-	 *  by the View when the user presses... guess what ;-)
-	 */
-	//@{
-	void ApplyButton();
-	void OKButton();
-	void CancelButton();
-	void RestoreButton();
-	//@}
 
 	/** Check whether we may apply our data.
 	 *

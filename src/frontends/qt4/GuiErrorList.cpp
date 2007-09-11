@@ -57,7 +57,7 @@ void GuiErrorListDialog::select_adaptor(QListWidgetItem * item)
 
 void GuiErrorListDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

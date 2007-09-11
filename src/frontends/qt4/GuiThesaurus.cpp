@@ -77,7 +77,7 @@ void GuiThesaurusDialog::change_adaptor()
 
 void GuiThesaurusDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

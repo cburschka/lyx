@@ -60,18 +60,18 @@ namespace frontend {
 
 ControlSpellchecker::ControlSpellchecker(Dialog & parent)
 	: Controller(parent), exitEarly_(false),
-	  oldval_(0), newvalue_(0), count_(0)
+	  oldval_(0), newvalue_(0), count_(0), speller_(0)
 {
 }
 
 
 ControlSpellchecker::~ControlSpellchecker()
-{}
+{
+	delete speller_;
+}
 
 
-namespace {
-
-SpellBase * getSpeller(BufferParams const & bp)
+static SpellBase * getSpeller(BufferParams const & bp)
 {
 	string lang = (lyxrc.isp_use_alt_lang)
 		      ? lyxrc.isp_alt_lang
@@ -86,7 +86,7 @@ SpellBase * getSpeller(BufferParams const & bp)
 #endif
 
 #if defined(USE_ISPELL)
-	lang = (lyxrc.isp_use_alt_lang) ?
+	lang = lyxrc.isp_use_alt_lang ?
 		lyxrc.isp_alt_lang : bp.language->lang();
 
 	return new ISpell(bp, lang);
@@ -95,15 +95,13 @@ SpellBase * getSpeller(BufferParams const & bp)
 #endif
 }
 
-} // namespace anon
-
 
 bool ControlSpellchecker::initialiseParams(std::string const &)
 {
 	LYXERR(Debug::GUI) << "Spellchecker::initialiseParams" << endl;
 
-	speller_.reset(getSpeller(buffer().params()));
-	if (!speller_.get())
+	speller_ = getSpeller(buffer().params());
+	if (!speller_)
 		return false;
 
 	// reset values to initial
@@ -117,7 +115,8 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 		Alert::error(_("Spellchecker error"),
 			     _("The spellchecker could not be started\n")
 			     + speller_->error());
-		speller_.reset(0);
+		delete speller_;
+		speller_ = 0;
 	}
 
 	return success;
@@ -127,26 +126,25 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 void ControlSpellchecker::clearParams()
 {
 	LYXERR(Debug::GUI) << "Spellchecker::clearParams" << endl;
-	speller_.reset(0);
+	delete speller_;
+	speller_ = 0;
 }
 
 
-namespace {
-
-bool isLetter(DocIterator const & dit)
+static bool isLetter(DocIterator const & dit)
 {
 	return dit.inTexted()
 		&& dit.inset().allowSpellCheck()
 		&& dit.pos() != dit.lastpos()
 		&& (dit.paragraph().isLetter(dit.pos())
 		    // We want to pass the ' and escape chars to ispell
-		    || contains(lyx::from_utf8(lyxrc.isp_esc_chars + '\''),
+		    || contains(from_utf8(lyxrc.isp_esc_chars + '\''),
 				dit.paragraph().getChar(dit.pos())))
 		&& !dit.paragraph().isDeleted(dit.pos());
 }
 
 
-WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
+static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 {
 	BufferParams const & bp = cur.bv().buffer().params();
 	bool inword = false;
@@ -178,8 +176,8 @@ WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 				if (!word.empty() && !ignoreword) {
 					cur.setSelection();
 					return WordLangTuple(word, lang_code);
-				} else
-					inword = false;
+				}
+				inword = false;
 		}
 
 		cur.forwardPos();
@@ -189,9 +187,6 @@ WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 	return WordLangTuple(docstring(), string());
 }
 
-} // namespace anon
-
-
 
 void ControlSpellchecker::check()
 {
@@ -200,11 +195,11 @@ void ControlSpellchecker::check()
 	SpellBase::Result res = SpellBase::OK;
 
 	Cursor cur = bufferview()->cursor();
-	while (cur && cur.pos() && isLetter(cur)) {
+	while (cur && cur.pos() && isLetter(cur))
 		cur.backwardPos();
-	}
 
-	ptrdiff_t start = 0, total = 0;
+	ptrdiff_t start = 0;
+	ptrdiff_t total = 0;
 	DocIterator it = DocIterator(buffer().inset());
 	for (start = 0; it != cur; it.forwardPos())
 		++start;
@@ -278,7 +273,7 @@ bool ControlSpellchecker::checkAlive()
 	else
 		message = _("The spellchecker has failed.\n") + speller_->error();
 
-	dialog().CancelButton();
+	dialog().slotClose();
 
 	Alert::error(_("The spellchecker has failed"), message);
 	return false;
@@ -288,7 +283,7 @@ bool ControlSpellchecker::checkAlive()
 void ControlSpellchecker::showSummary()
 {
 	if (!checkAlive() || count_ == 0) {
-		dialog().CancelButton();
+		dialog().slotClose();
 		return;
 	}
 
@@ -298,7 +293,7 @@ void ControlSpellchecker::showSummary()
 	else
 		message = _("One word checked.");
 
-	dialog().CancelButton();
+	dialog().slotClose();
 	Alert::information(_("Spelling check completed"), message);
 }
 

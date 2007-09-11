@@ -682,7 +682,7 @@ void GuiDocumentDialog::set_listings_msg()
 
 void GuiDocumentDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

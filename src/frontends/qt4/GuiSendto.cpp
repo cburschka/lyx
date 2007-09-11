@@ -69,7 +69,7 @@ void GuiSendtoDialog::changed_adaptor()
 
 void GuiSendtoDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

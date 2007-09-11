@@ -14,7 +14,7 @@
 
 #include "Dialog.h"
 #include "WordLangTuple.h"
-#include <boost/scoped_ptr.hpp>
+
 
 namespace lyx {
 
@@ -24,7 +24,8 @@ namespace frontend {
 
 /** A controller for Spellchecker dialogs.
  */
-class ControlSpellchecker : public Controller {
+class ControlSpellchecker : public Controller
+{
 public:
 	enum State {
 		SPELL_PROGRESSED, //< update progress bar
@@ -94,7 +95,7 @@ private:
 	int count_;
 
 	/// The actual spellchecker object
-	boost::scoped_ptr<SpellBase> speller_;
+	SpellBase * speller_;
 };
 
 } // namespace frontend

@@ -95,7 +95,7 @@ ControlVSpace & GuiVSpaceDialog::controller() const
 
 void GuiVSpaceDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 

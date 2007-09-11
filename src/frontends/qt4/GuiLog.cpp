@@ -125,7 +125,7 @@ ControlLog & GuiLogDialog::controller() const
 
 void GuiLogDialog::closeEvent(QCloseEvent * e)
 {
-	slotWMHide();
+	slotClose();
 	e->accept();
 }
 
