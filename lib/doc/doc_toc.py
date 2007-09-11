@@ -41,15 +41,15 @@ import LyX
 import depend
 
 # Specific language information
-# info["isoname"] = (language, language_quotes, enconding, TOC_translated)
-info = { 'cs' : ('czech', 'german', 'latin2', u"Obsah dokumentace LyXu"),
-         'da' : ('danish', 'german', 'latin1', u"Indholdsfortegnelse over LyX's dokumentation"),
-         'de' : ('german', 'german', 'latin1', u"Inhaltsverzeichnis LyX Dokumentation"),
-         'es' : ('spanish', 'spanish', 'latin1', u"Índice general LyX documentation"),
-         'fr' : ('french', 'french', 'latin1', u"Plan de la documentation LyX"),
-         'ru' : ('russian', 'english', 'koi8-r', u"LyX Documentation Table of Contents"),
-         'sl' : ('slovene', 'german', 'latin2', u"Kazalo dokumentacije LyXa"),
-         'en' : ('english', 'english', 'latin1', u"LyX Documentation Table of Contents")}
+# info["isoname"] = (language, language_quotes, TOC_translated)
+info = { 'cs' : ('czech', 'german', u"Obsah dokumentace LyXu"),
+         'da' : ('danish', 'german', u"Indholdsfortegnelse over LyX's dokumentation"),
+         'de' : ('german', 'german', u"Inhaltsverzeichnis LyX Dokumentation"),
+         'es' : ('spanish', 'spanish', u"Índice general LyX documentation"),
+         'fr' : ('french', 'french', u"Plan de la documentation LyX"),
+         'ru' : ('russian', 'english', u"LyX Documentation Table of Contents"),
+         'sl' : ('slovene', 'german', u"Kazalo dokumentacije LyXa"),
+         'en' : ('english', 'english', u"LyX Documentation Table of Contents")}
 
 def usage(pname):
     print """Usage: %s lang output
@@ -121,7 +121,7 @@ def build_toc(output, documents, lang=None):
     file.set_header(language = data[0], language_quotes = data[1], inputencoding = "auto")
     file.language = data[0]
     file.encoding = "utf-8"
-    body = [ LyX.Paragraph('Title', [data[3]])]
+    body = [ LyX.Paragraph('Title', [data[2]])]
     body.extend(build_from_toc(toc_general))
     file.set_body(body)
     file.write()
