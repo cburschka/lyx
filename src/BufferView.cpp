@@ -1097,9 +1097,6 @@ void BufferView::workAreaResize(int width, int height)
 	width_ = width;
 	height_ = height;
 
-	// The complete text metrics will be redone.
-	text_metrics_.clear();
-
 	if (buffer_)
 		resize();
 }
@@ -1464,7 +1461,6 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 void BufferView::updateMetrics(bool singlepar)
 {
 	Text & buftext = buffer_->text();
-	TextMetrics & tm = textMetrics(&buftext);
 	pit_type size = int(buftext.paragraphs().size());
 
 	if (anchor_ref_ > int(buftext.paragraphs().size() - 1)) {
@@ -1478,8 +1474,11 @@ void BufferView::updateMetrics(bool singlepar)
 	
 		// Clear out paragraph metrics to avoid having invalid metrics
 		// in the cache from paragraphs not relayouted below
-		tm.clear();
+		// The complete text metrics will be redone.
+		text_metrics_.clear();
 	}
+
+	TextMetrics & tm = textMetrics(&buftext);
 
 	// If the paragraph metrics has changed, we can not
 	// use the singlepar optimisation.
