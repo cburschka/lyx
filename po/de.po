@@ -11671,9 +11671,9 @@ msgid "Preview source code"
 msgstr "Quellcode vorschauen"
 
 #: src/Buffer.cpp:1826
-#, fuzzy, c-format
+#, c-format
 msgid "Preview source code for paragraph %1$d"
-msgstr "Quellcode für Absatz %1$s vorschauen"
+msgstr "Quellcode für Absatz %1$d vorschauen"
 
 #: src/Buffer.cpp:1830
 #, c-format
@@ -14449,7 +14449,7 @@ msgstr "Das Skript `%s' ist fehlgeschlagen."
 
 #: src/frontends/qt4/BulletsModule.cpp:46
 msgid "Standard[[Bullets]]"
-msgstr ""
+msgstr "Standard"
 
 #: src/frontends/qt4/BulletsModule.cpp:47
 msgid "Maths"
@@ -15807,9 +15807,9 @@ msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Es können keine vertikalen Gitterlinien in '%1$s' hinzugefügt werden."
 
 #: src/mathed/InsetMathCases.cpp:98
-#, fuzzy, c-format
+#, c-format
 msgid "No vertical grid lines in 'cases': feature %1$s"
-msgstr "Keine vertikalen Gitterlinien in '%1$s'"
+msgstr "Keine vertikalen Gitterlinien in 'cases': Merkmal %1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1362
 msgid "Only one row"
@@ -15865,7 +15865,7 @@ msgstr "Mathe-Textmodus betreten (textrm)"
 
 #: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
-msgstr ""
+msgstr "Standard"
 
 #: src/mathed/MathMacroTemplate.cpp:109
 #, c-format
