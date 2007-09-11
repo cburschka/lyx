@@ -40,9 +40,9 @@
 0x00ab "\\guillemotleft"          "" "" # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
 0x00ac "\\textlnot"               "textcomp" "force" # ¬ NOT SIGN
 0x00ad "\\-"                      "" "" # SOFT HYPHEN
-0x00ae "\\textregistered"         "textcomp" "" # REGISTERED SIGN
+0x00ae "\\textregistered"         "textcomp" "force" # REGISTERED SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
 0x00af "\\textasciimacron"        "textcomp" "" # MACRON
-0x00b0 "\\textdegree"             "textcomp" "" # DEGREE SIGN
+0x00b0 "\\textdegree"             "textcomp" "force" # DEGREE SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
 0x00b1 "\\textpm"                 "textcomp" "force" # ± PLUS-MINUS SIGN
 0x00b2 "\\texttwosuperior"        "textcomp" "force" # ² SUPERSCRIPT TWO
 0x00b3 "\\textthreesuperior"      "textcomp" "force" # ³ SUPERSCRIPT THREE
