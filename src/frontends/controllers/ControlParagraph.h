@@ -14,6 +14,7 @@
 
 #include "Dialog.h"
 #include "Layout.h" // for LyXAlignment
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 

@@ -13,6 +13,7 @@
 #define CONTROLFLOAT_H
 
 #include "Dialog.h"
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 

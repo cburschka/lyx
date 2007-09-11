@@ -18,6 +18,7 @@
 
 #include "Dialog.h"
 #include "insets/InsetTabular.h"
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 namespace frontend {

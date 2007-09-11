@@ -15,6 +15,7 @@
 
 #include "Dialog.h"
 #include <vector>
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 

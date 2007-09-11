@@ -15,6 +15,7 @@
 
 #include "Dialog.h"
 #include "frontend_helpers.h"
+#include <boost/scoped_ptr.hpp>
 
 
 namespace lyx {

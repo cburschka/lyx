@@ -21,6 +21,7 @@
 
 #include <utility>
 #include <vector>
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 
