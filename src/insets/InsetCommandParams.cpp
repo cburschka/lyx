@@ -68,7 +68,7 @@ InsetCommandParams::findInfo(std::string const & name)
 
 	// InsetCitation
 	// FIXME: Use is_possible_cite_command() in
-	// src/frontends/controllers/frontend_helpers.cpp, see comment in src/factory.cpp.
+	// InsetCitation, see comment in src/factory.cpp.
 	if (name == "cite" || name == "citet" || name == "citep" || name == "citealt" ||
 	    name == "citealp" || name == "citeauthor" || name == "citeyear" ||
 	    name == "citeyearpar" || name == "citet*" || name == "citep*" ||

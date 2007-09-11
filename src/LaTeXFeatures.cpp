@@ -29,8 +29,6 @@
 #include "support/docstream.h"
 #include "support/filetools.h"
 
-#include "frontends/controllers/frontend_helpers.h"
-
 using std::endl;
 using std::find;
 using std::string;

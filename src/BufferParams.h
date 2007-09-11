@@ -26,8 +26,6 @@
 #include "support/FileName.h"
 #include "support/types.h"
 
-#include "frontends/controllers/frontend_helpers.h"
-
 #include <vector>
 
 namespace lyx {
