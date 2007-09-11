@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -36,6 +36,7 @@
    \pagenumbering{arabic} }
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
   linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
   pdfpagelayout=OneColumn, pdfnewwindow=true,
   pdfstartview=XYZ, plainpages=false, pdfpagelabels,
@@ -58,6 +59,11 @@
    \pagenumbering{arabic} }
    
 \fi
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 \end_preamble
 \language spanish
 \inputencoding auto
@@ -89,7 +95,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -106,9 +113,7 @@ status open
 \begin_layout Standard
 \noindent
 Si tienes comentarios o correcciones de errores envíalos, por favor, ala
- lista de correo de Documentación de LyX :
-\family default
- 
+ lista de correo de Documentación de LyX : 
 \family typewriter
 lyx-docs@lists.lyx.org
 \end_layout
@@ -234,15 +239,11 @@ Lo que ves es todo lo que tienes
 \begin_layout Standard
 Aquí es donde LyX difiere de un procesador de texto corriente.
  No te tienes que preocupar de que una letra vaya en un sitio determinado.
- Le dices a LyX
-\emph default
- 
+ Le dices a LyX 
 \emph on
 lo que estás haciendo
 \emph default
  y él se preocupa de todo lo demás, siguiendo un conjunto de reglas llamado
-
-\emph default
  
 \emph on
 estilo
@@ -297,8 +298,6 @@ Introducción
 
 \begin_layout Standard
 En LyX, en la lista desplegable a la izquierda de la barra de botones, eliges
-
-\family default
  
 \family sans
 Sección
@@ -348,15 +347,11 @@ Otro ejemplo.
 \end_layout
 
 \begin_layout Standard
-Así pues, la idea esencial detrás de LyX es especificar
-\emph default
- 
+Así pues, la idea esencial detrás de LyX es especificar 
 \emph on
 lo
 \emph default
- que estás haciendo, no
-\emph default
- 
+ que estás haciendo, no 
 \emph on
 cómo
 \emph default
@@ -381,14 +376,11 @@ lo que ves es lo que quieres decir
  Es una idea poderosa que simplifica mucho los mecanismos de la escritura
  de documentos.
  Y por esto es por lo que LyX no es idóneo para crear posters y volantes---en
- estos casos
-\emph default
- 
+ estos casos 
 \emph on
 sí
 \emph default
- 
-quieres especificar exactamente dónde va cada cosa porque no hay unidades
+ quieres especificar exactamente dónde va cada cosa porque no hay unidades
  funcionales como párrafos, secciones, etc.
  Esto no significa que LyX ha perdido funcionalidad, significa simplemente
  que no es la herramienta adecuada para esas tareas --- para clavar un clavo
@@ -428,15 +420,11 @@ Tabuladores
 
 \begin_layout Itemize
 Espacios en blanco adicionales (p.e.
- pulsar
-\family default
- 
+ pulsar 
 \family sans
 Intro
 \family default
- o
-\family default
- 
+ o 
 \family sans
 Espacio
 \family default
@@ -502,20 +490,15 @@ status collapsed
 Se pueden ajustar todas estas características (sólo el ajuste de unas pocas
  requiere conocimientos de LaTeX), tanto para todo el documento como para
  una parte concreta.
- Ver
-\emph default
- 
+ Ver 
 \emph on
 Guía del Usuario
 \emph default
- y/o
-\emph default
- 
+ y/o 
 \emph on
 Características estendidas
 \emph default
- 
-para más detalles.
+ para más detalles.
 \end_layout
 
 \end_inset
@@ -554,9 +537,7 @@ Por supuesto, muchos procesadores de texto modernos manejan símbolos matemátic
 se a las definiciones de estilo y al concepto WYSIWYM.
  Sin embargo, acaban de empezar a incluir estas características, mientras
  que LyX está construido sobre el sistema de proceso de documentos LaTeX.
- LaTeX lleva más de 20 años con ellas, y
-\emph default
- 
+ LaTeX lleva más de 20 años con ellas, y 
 \emph on
 funciona
 \emph default
@@ -586,9 +567,7 @@ A Guide to LaTeX2e
 \begin_inset Quotes erd
 \end_inset
 
- de Helmut Kopka y Patrick Daly, que figura en la bibliografía de la
-\emph default
- 
+ de Helmut Kopka y Patrick Daly, que figura en la bibliografía de la 
 \emph on
 Guía del usuario.
  
@@ -610,14 +589,11 @@ trucos
 
  del proceso de impresión fueron modelados por Knuth como algoritmos de
  computación e incorporados a TeX, de ahí su excelente apariencia impresa.
- La salida directa de TeX es el formato
-\emph default
- 
+ La salida directa de TeX es el formato 
 \emph on
 pdf
 \emph default
- 
-(
+ (
 \begin_inset Quotes eld
 \end_inset
 
@@ -625,9 +601,7 @@ portable document format
 \begin_inset Quotes erd
 \end_inset
 
-) o el formato llamado
-\emph default
- 
+) o el formato llamado 
 \emph on
 dvi
 \emph default
@@ -640,9 +614,7 @@ device independent
 \end_inset
 
 ).
- El formato
-\emph default
- 
+ El formato 
 \emph on
 dvi
 \emph default
@@ -683,9 +655,7 @@ Paralelamente al desarrollo y crecimiento de LaTeX, otras personas fueron
 
 \begin_layout Standard
 Hay dos formas de extender LaTeX: las clases y los estilos.
- Una
-\emph default
- 
+ Una 
 \emph on
 clase
 \emph default
@@ -694,16 +664,12 @@ clase
  Hay clases para transparencias, para publicaciones de física, matemáticas\SpecialChar \ldots{}
 ,
  ¡incluso muchas universidades tienen una clase para el diseño de sus propias
- tesis! Un
-\emph default
- 
+ tesis! Un 
 \emph on
 estilo
 \emph default
  se diferencia de una clase en que no define un tipo nuevo de documento
- sino un
-\emph default
- 
+ sino un 
 \emph on
 comportamiento
 \emph default
@@ -754,14 +720,11 @@ LaTeX es la razón por la que LyX se diferencia de otros procesadores de
 \end_layout
 
 \begin_layout Standard
-Igual que LaTeX, LyX se centra en el contexto de
-\emph default
- 
+Igual que LaTeX, LyX se centra en el contexto de 
 \emph on
 lo
 \emph default
- 
-que estás escribiendo.
+ que estás escribiendo.
  El ordenador se encarga de gestionar su apariencia.
 \end_layout
 
@@ -806,18 +769,14 @@ reference "sec:Contrib"
 También puedes hacernos un favor: si cualquier cosa de estos manuales te
  parece confusa, poco clara o errónea, ¡no dudes en hacérnoslo saber! Puedes
  ponerte en contacto con los actuales encargados de la documentación escribiendo
- a
-\family default
- 
+ a 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
 .
  Si tienes preguntas cuya respuesta no es evidente en la documentación,
  y necesitas ayuda rápidamente, hay una activa lista de correo de usuarios
- con la que puedes ponerte en contacto:
-\family default
- 
+ con la que puedes ponerte en contacto: 
 \family typewriter
 lyx-users@lists.lyx.org
 \family default
@@ -837,20 +796,17 @@ Algunos leereis los manuales en versión para imprimir.
  Ni las notas a pie de página ni el Índice de Contenidos se encuentran visibles.
  Para abrir una nota a pie de página, que aparece de esta forma: 
 \begin_inset Graphics
-	filename ../clipart/notapieQt4.png
+	filename clipart/notapieQt4.png
 	scale 75
 
 \end_inset
 
 , pulsa sobre el cuadro gris con el botón izquierdo del ratón.
- Para ver el Índice general, pulsa en su cuadro gris o en el menú
-\family default
- 
+ Para ver el Índice general, pulsa en su cuadro gris o en el menú 
 \family sans
 Navegar,
 \family default
- 
-con lo que los contenidos se despliegan automáticamente.
+ con lo que los contenidos se despliegan automáticamente.
 \end_layout
 
 \begin_layout Standard
@@ -859,7 +815,7 @@ En los manuales impresos, todas las referencias cruzadas aparecen con sus
  Sin embargo, en pantalla las referencias cruzadas se muestran como este
  cuadro gris: 
 \begin_inset Graphics
-	filename ../clipart/referenciaQt4.png
+	filename clipart/referenciaQt4.png
 	scale 75
 
 \end_inset
@@ -877,9 +833,7 @@ sec:Contrib
 
 .
  Puedes ir a dicha sección con click-derecha sobre el cuadro o pulsando
- el botón
-\family default
- 
+ el botón 
 \family sans
 
 \begin_inset Quotes eld
@@ -895,9 +849,7 @@ etiqueta
 \end_inset
 
  en el cuadro de diálogo.
- Volver a tu posición anterior es igual de fácil pulsando
-\family default
- 
+ Volver a tu posición anterior es igual de fácil pulsando 
 \family sans
 Volver
 \family default
@@ -911,14 +863,7 @@ Una vez aclaradas algunas diferencias entre las versiones de impresión y
 \end_layout
 
 \begin_layout Itemize
-El
-\emph on
-
-\emph default
- 
-estilo
-\emph default
- 
+El estilo 
 \emph on
 letra cursiva
 \emph default
@@ -927,9 +872,7 @@ letra cursiva
 \end_layout
 
 \begin_layout Itemize
-El tipo
-\family default
- 
+El tipo 
 \family typewriter
 máquina de escribir
 \family default
@@ -937,9 +880,7 @@ máquina de escribir
 \end_layout
 
 \begin_layout Itemize
-El tipo
-\family default
- 
+El tipo 
 \family sans
 Sans Serif
 \family default
@@ -960,9 +901,7 @@ estilo
 \end_layout
 
 \begin_layout Itemize
-El tipo
-\series default
- 
+El tipo 
 \series bold
 Negrita
 \series default
@@ -971,9 +910,7 @@ Negrita
 
 \begin_layout Standard
 Respecto a las teclas de menú y atajos de teclado, probablemente serás remitido
- a la sección
-\emph default
- 
+ a la sección 
 \emph on
 Combinaciones de teclas
 \emph default
@@ -989,9 +926,7 @@ Manual de Características Extendidas
 \begin_inset Quotes erd
 \end_inset
 
- (archivo
-\family default
- 
+ (archivo 
 \family typewriter
 Extended.lyx
 \family default
@@ -1012,9 +947,7 @@ C-
 \begin_inset Quotes eld
 \end_inset
 
- indica la tecla
-\family default
- 
+ indica la tecla 
 \family sans
 Control
 \family default
@@ -1033,9 +966,7 @@ S-
 \begin_inset Quotes eld
 \end_inset
 
- indica la tecla
-\family default
- 
+ indica la tecla 
 \family sans
 Mayúsculas (Shift)
 \family default
@@ -1054,15 +985,11 @@ M-
 \begin_inset Quotes eld
 \end_inset
 
- indica la tecla
-\family default
- 
+ indica la tecla 
 \family sans
 Meta
 \family default
-, que en la mayoría de los teclados será la tecla
-\family default
- 
+, que en la mayoría de los teclados será la tecla 
 \family sans
 Alt
 \family default
@@ -1293,9 +1220,7 @@ Siguiente
 \family sans
 Retorno de carro
 \family default
- e
-\family default
- 
+ e 
 \family sans
 Intro
 \family default
@@ -1317,15 +1242,11 @@ Enter,
 \end_inset
 
  incluso algunos tienen dos teclas.
- LyX trata a todas como la misma tecla, así que usaremos
-\family default
- 
+ LyX trata a todas como la misma tecla, así que usaremos 
 \family sans
 Retorno de carro
 \family default
- e
-\family default
- 
+ e 
 \family sans
 Intro
 \family default
@@ -1355,9 +1276,7 @@ Características extendidas
 
 .
  Hemos listado las posibles asociaciones de teclas predeterminadas para
- cada función en su correspondiente entrada en el manual
-\emph default
- 
+ cada función en su correspondiente entrada en el manual 
 \emph on
 
 \begin_inset Quotes eld
@@ -1860,9 +1779,7 @@ ex
 \begin_inset Text
 
 \begin_layout Standard
-altura de la letra
-\emph default
- 
+altura de la letra 
 \emph on
 x
 \emph default
@@ -1886,9 +1803,7 @@ em
 \begin_inset Text
 
 \begin_layout Standard
-anchura de la letra
-\emph default
- 
+anchura de la letra 
 \emph on
 M
 \emph default
@@ -1948,25 +1863,13 @@ La siguiente lista describe los contenidos de cada uno de los archivos de
 \end_layout
 
 \begin_layout Description
-Introducción
-\emph on
-
-\emph default
- 
-Este archivo.
+Introducción Este archivo.
 \end_layout
 
 \begin_layout Description
-Tutorial
-\emph on
-
-\emph default
- 
-Si eres novato en el uso de LyX, y nunca has usado LaTeX, deberías empezar
- aquí.
- Si ya has usado LaTeX, aún así deberías leer el
-\emph default
- 
+Tutorial Si eres novato en el uso de LyX, y nunca has usado LaTeX, deberías
+ empezar aquí.
+ Si ya has usado LaTeX, aún así deberías leer el 
 \emph on
 Tutorial
 \emph default
@@ -1993,17 +1896,10 @@ del
 \InsetSpace ~
 
 \emph default
-Usuario
-\emph on
-
-\emph default
- 
-La documentación principal.
+Usuario La documentación principal.
  Intentaremos cubrir aquí la mayor parte de las opciones y características
  básicas de LyX.
- El manual principal supone que ya has leído el
-\emph default
- 
+ El manual principal supone que ya has leído el 
 \emph on
 Tutorial
 \emph default
@@ -2012,9 +1908,7 @@ Tutorial
 
 \begin_layout Description
 Objetos\InsetSpace ~
-Empotrados Ampliación de la
-\emph default
- 
+Empotrados Ampliación de la 
 \emph on
 Guía del Usuario
 \emph default
@@ -2025,9 +1919,7 @@ Guía del Usuario
 
 \begin_layout Description
 Características\InsetSpace ~
-Extendidas Ampliación de la
-\emph default
- 
+Extendidas Ampliación de la 
 \emph on
 Guía del Usuario
 \emph default
@@ -2037,46 +1929,30 @@ s específicas de edición.
 \end_layout
 
 \begin_layout Description
-Personalización
-\emph on
-
-\emph default
- 
-Una descripción de características avanzadas de LyX, incluyendo cómo personaliza
-r el comportamiento global del programa: cosas como asociaciones de teclas,
- internacionalización y ficheros de configuración.
+Personalización Una descripción de características avanzadas de LyX, incluyendo
+ cómo personalizar el comportamiento global del programa: cosas como asociacione
+s de teclas, internacionalización y ficheros de configuración.
 \end_layout
 
 \begin_layout Description
 Configuración\InsetSpace ~
 de\InsetSpace ~
-LaTeX
-\emph on
-
-\emph default
- 
-LyX explora tu sistema durante la instalación.
+LaTeX LyX explora tu sistema durante la instalación.
  Este fichero contiene la información que LyX ha extraido de tu instalación.
  Examínalo para ver si echas en falta algo que deberías tener.
 \end_layout
 
 \begin_layout Standard
 Estos ficheros harán referencia unos a otros cuando sea necesario.
- Por ejemplo, la
-\emph default
- 
+ Por ejemplo, la 
 \emph on
 Guía del Usuario
 \emph default
- habla
-\emph default
- 
+ habla 
 \emph on
 algo
 \emph default
- sobre la instalación y personalización, pero remite al lector al
-\emph default
- 
+ sobre la instalación y personalización, pero remite al lector al 
 \emph on
 Manual de Personalización
 \emph default
@@ -2096,9 +1972,7 @@ De nuevo, destacamos un punto importante:
 
 \begin_layout Standard
 \align center
-Si eres novato en el uso de LyX, lee el
-\emph default
- 
+Si eres novato en el uso de LyX, lee el 
 \emph on
 Tutorial
 \emph default
@@ -2154,9 +2028,7 @@ Al usar LyX puede que observes comportamientos que puedes considerar como
 \end_layout
 
 \begin_layout Standard
-LyX tiene un sistema de seguimiento de errores alojado en
-\family default
- 
+LyX tiene un sistema de seguimiento de errores alojado en 
 \family typewriter
 
 \begin_inset LatexCommand url
@@ -2171,17 +2043,13 @@ target "http://bugzilla.lyx.org/"
  por si se hubiera informado ya de él.
  Si tienes algún comentario sobre un error conocido o quieres informar de
  uno nuevo, puedes usar el rastreador de errores o enviar un mensaje a la
- lista de correo de desarrollo,
-\family default
- 
+ lista de correo de desarrollo, 
 \family typewriter
 lyx-devel@lists.lyx.org
 \family default
 .
  A los archivos de esta lista se accede desde su enlace en el sitio principal
- de LyX,
-\family default
- 
+ de LyX, 
 \family typewriter
 
 \begin_inset LatexCommand url
@@ -2204,9 +2072,7 @@ Un informe de errores válido debe incluir como mínimo la versión de LyX
  Da las versiones de las bibliotecas instaladas en tu sistema, y si es relevante
 , las versiones de los programas externos que usa LyX.
  Si es un problema relacionado con la compilación o la configuración, incluye
- el archivo
-\family default
- 
+ el archivo 
 \family typewriter
 config.log
 \family default
@@ -2249,9 +2115,7 @@ Informar de Errores en los Manuales
 
 \begin_layout Standard
 Si encuentras un problema en la documentación, envía un mensaje a la lista
- de correo
-\family default
- 
+ de correo 
 \family typewriter
 
 \begin_inset ERT
@@ -2307,9 +2171,7 @@ target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc"
 
 
 \newline
-En ese directorio hay un archivo llamado
-\family default
- 
+En ese directorio hay un archivo llamado 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -2318,32 +2180,22 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Después lee el
-\emph default
- 
+Después lee el 
 \emph on
 Tutorial
 \emph default
- 
-y la
-\emph default
- 
+ y la 
 \emph on
 Guía del usuario
 \emph default
 .
 \newline
 El quid de esta cuestión es darte ideas.
- El
-\emph default
- 
+ El 
 \emph on
 Tutorial
 \emph default
- 
-y la
-\emph default
- 
+ y la 
 \emph on
 Guía del usuario
 \emph default
