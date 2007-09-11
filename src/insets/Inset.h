@@ -461,6 +461,8 @@ public:
 	/// reject the changes within the inset
 	virtual void rejectChanges(BufferParams const &) {};
 
+	/// inset dimension.
+	Dimension const & dimension() const { return dim_; }
 	/// inset width.
 	int width() const { return dim_.wid; }
 	/// inset ascent.

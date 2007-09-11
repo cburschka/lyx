@@ -216,6 +216,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	InsetList::const_iterator ii = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();
 	for (; ii != iend; ++ii) {
+		Dimension old_dim = ii->inset->dimension();
 		Dimension dim;
 		int const w = max_width_ - text_->leftMargin(buffer, max_width_, pit, ii->pos)
 			- right_margin;
@@ -223,6 +224,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			bufferfont : text_->getFont(buffer, par, ii->pos);
 		MetricsInfo mi(bv_, font, w);
 		changed |= ii->inset->metrics(mi, dim);
+		changed |= (old_dim != dim);
 	}
 
 	// rebreak the paragraph
