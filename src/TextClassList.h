@@ -50,6 +50,9 @@ public:
 
 	/// Read textclass list.  Returns false if this fails.
 	bool read();
+	
+	/// Clears the textclass so as to force it to be reloaded
+	void reset(textclass_type const textclass);
 
 	/// add a textclass from user local directory.
 	/// Return ture/false, and textclass number

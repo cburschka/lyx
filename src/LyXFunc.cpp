@@ -731,6 +731,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_PARAMS_APPLY:
 	case LFUN_LAYOUT_MODULES_CLEAR:
 	case LFUN_LAYOUT_MODULE_ADD:
+	case LFUN_LAYOUT_RELOAD:
 	case LFUN_LYXRC_APPLY:
 	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
@@ -1831,6 +1832,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			TextClass_ptr oldClass = buffer->params().getTextClass_ptr();
 			recordUndoFullDocument(view());
 			buffer->params().setBaseClass(new_class);
+			updateLayout(oldClass, buffer);
+			updateFlags = Update::Force | Update::FitCursor;
+			break;
+		}
+		
+		case LFUN_LAYOUT_RELOAD: {
+			BOOST_ASSERT(lyx_view_);
+			Buffer * buffer = lyx_view_->buffer();
+			TextClass_ptr oldClass = buffer->params().getTextClass_ptr();
+			textclass_type const tc = buffer->params().getBaseClass();
+			textclasslist.reset(tc);
+			buffer->params().setBaseClass(tc);
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
 			break;
