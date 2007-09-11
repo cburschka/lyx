@@ -33791,8 +33791,8 @@ Wollen Sie sich jetzt auf einen
  eingefügt.
 \newline
 JabRef und LyX müssen natürlich beide laufen.
- Unter Linux funktioniert das so, beim Mac sicher auch, bei MS -- keine
- Ahnung, da gibt es glaube ich den Pipe-Mechanismus nicht.
+ Unter Linux funktioniert das so, beim Mac sicher auch, bei Windows gibt
+ es den Pipe-Mechanismus nicht.
 \end_layout
 
 \begin_layout Description
@@ -33911,15 +33911,16 @@ Ausgabe\InsetSpace ~
 an\InsetSpace ~
 den\InsetSpace ~
 Drucker\InsetSpace ~
-anpassen Diese Option, die für Experten da ist, aktiviert
- eine Konfigurationsdatei für dvips.
- Mehr darüber erfahren Sie mit dem Befehl 
-\family typewriter
-info dvips
+anpassen Diese Option funktioniert nur für den 
+\family sans
+Druckbefehl
 \family default
-.
- Wenn Sie nicht verstehen, was dort gemacht wird, benötigen Sie diese Option
- nicht.
+ 
+\emph on
+dvips
+\emph default
+ und ist für Experten gedacht.
+ Sie aktiviert eine Konfigurationsdatei für dvips.
 \end_layout
 
 \begin_layout Description
@@ -33965,7 +33966,15 @@ date
 \family typewriter
 date
 \family default
--Hilfeseite nachlesen.
+-Hilfeseite nachlesen:
+\newline
+
+\begin_inset LatexCommand url
+target "http://unixhelp.ed.ac.uk/CGI/man-cgi?date"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
