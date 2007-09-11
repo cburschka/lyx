@@ -110,13 +110,13 @@ GuiDelimiterDialog::GuiDelimiterDialog(LyXView & lv)
 }
 
 
-ControlMath & GuiDelimiterDialog::controller() const
+ControlMath & GuiDelimiterDialog::controller()
 {
 	return static_cast<ControlMath &>(GuiDialog::controller()); 
 }
 
 
-char_type GuiDelimiterDialog::doMatch(char_type const symbol) const
+char_type GuiDelimiterDialog::doMatch(char_type const symbol)
 {
 	string const & str = controller().texName(symbol);
 	string match;

@@ -43,7 +43,7 @@ GuiBranchDialog::GuiBranchDialog(LyXView & lv)
 }
 
 
-ControlBranch & GuiBranchDialog::controller() const
+ControlBranch & GuiBranchDialog::controller()
 {
 	return static_cast<ControlBranch &>(GuiDialog::controller());
 }
@@ -62,7 +62,7 @@ void GuiBranchDialog::change_adaptor()
 }
 
 
-void GuiBranchDialog::update_contents()
+void GuiBranchDialog::updateContents()
 {
 	typedef BranchList::const_iterator const_iterator;
 

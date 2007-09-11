@@ -42,7 +42,7 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	///
-	ControlTexinfo & controller() const;
+	ControlTexinfo & controller();
 	///
 	void updateStyles(ControlTexinfo::texFileSuffix);
 	///

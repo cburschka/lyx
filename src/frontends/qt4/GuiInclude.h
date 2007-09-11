@@ -40,7 +40,7 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlInclude & controller() const;
+	ControlInclude & controller();
 	///
 	void updateLists();
 	/// validate listings parameters and return an error message, if any
@@ -51,7 +51,7 @@ private:
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 	/// edit the child document, .lyx file will be opened in lyx
 	/// other formats will be edited by external applications.
 	void edit();

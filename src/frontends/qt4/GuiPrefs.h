@@ -358,11 +358,11 @@ public:
 	///
 	Movers & movers();
 	/// parent controller
-	ControlPrefs & controller() const;
+	ControlPrefs & controller();
 	/// Apply changes
 	void applyView();
 	/// update (do we need this?)
-	void update_contents();
+	void updateContents();
 
 	std::vector<PrefModule *> modules_;
 };

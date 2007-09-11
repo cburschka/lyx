@@ -46,14 +46,14 @@ private:
 	/// update from controller
 	void partialUpdate(int id);
 	/// parent controller
-	ControlSpellchecker & controller() const;
+	ControlSpellchecker & controller();
 	////
 	void accept();
 	void add();
 	void ignore();
 	void replace();
 	///
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

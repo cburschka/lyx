@@ -38,7 +38,7 @@ public Q_SLOTS:
 	void change_adaptor();
 
 	/// parent controller
-	ControlMath & controller() const;
+	ControlMath & controller();
 };
 
 } // namespace frontend

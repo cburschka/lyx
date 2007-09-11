@@ -43,7 +43,7 @@ GuiErrorListDialog::GuiErrorListDialog(LyXView & lv)
 }
 
 
-ControlErrorList & GuiErrorListDialog::controller() const
+ControlErrorList & GuiErrorListDialog::controller()
 {
 	return static_cast<ControlErrorList &>(GuiDialog::controller());
 }
@@ -78,7 +78,7 @@ void GuiErrorListDialog::select(QListWidgetItem * wi)
 }
 
 
-void GuiErrorListDialog::update_contents()
+void GuiErrorListDialog::updateContents()
 {
 	setViewTitle(from_utf8(controller().name()));
 	errorsLW->clear();

@@ -46,7 +46,7 @@ GuiBibitemDialog::GuiBibitemDialog(LyXView & lv)
 }
 
 
-ControlCommand & GuiBibitemDialog::controller() const
+ControlCommand & GuiBibitemDialog::controller()
 {
 	return static_cast<ControlCommand &>(GuiDialog::controller());
 }
@@ -65,7 +65,7 @@ void GuiBibitemDialog::closeEvent(QCloseEvent *e)
 }
 
 
-void GuiBibitemDialog::update_contents()
+void GuiBibitemDialog::updateContents()
 {
 	keyED->setText(toqstr(controller().params()["key"]));
 	labelED->setText(toqstr(controller().params()["label"]));

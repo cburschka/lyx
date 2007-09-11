@@ -55,7 +55,7 @@ GuiSendtoDialog::GuiSendtoDialog(LyXView & lv)
 }
 
 
-ControlSendto & GuiSendtoDialog::controller() const
+ControlSendto & GuiSendtoDialog::controller()
 {
 	return static_cast<ControlSendto &>(GuiDialog::controller());
 }
@@ -74,7 +74,7 @@ void GuiSendtoDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void GuiSendtoDialog::update_contents()
+void GuiSendtoDialog::updateContents()
 {
 	all_formats_ = controller().allFormats();
 

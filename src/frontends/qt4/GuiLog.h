@@ -31,11 +31,11 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlLog & controller() const;
+	ControlLog & controller();
 	/// Apply changes
 	void applyView() {}
 	/// update
-	void update_contents();
+	void updateContents();
 
 	/// log syntax highlighter
 	LogHighlighter * highlighter;

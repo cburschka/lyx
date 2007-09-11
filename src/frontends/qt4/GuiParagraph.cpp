@@ -92,7 +92,7 @@ GuiParagraphDialog::GuiParagraphDialog(LyXView & lv)
 }
 
 
-ControlParagraph & GuiParagraphDialog::controller() const
+ControlParagraph & GuiParagraphDialog::controller()
 {
 	return static_cast<ControlParagraph &>(GuiDialog::controller());
 }
@@ -202,7 +202,7 @@ void GuiParagraphDialog::applyView()
 }
 
 
-void GuiParagraphDialog::update_contents()
+void GuiParagraphDialog::updateContents()
 {
 	ParagraphParameters const & params = controller().params();
 

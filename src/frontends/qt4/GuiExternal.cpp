@@ -184,7 +184,7 @@ GuiExternalDialog::GuiExternalDialog(LyXView & lv)
 }
 
 
-ControlExternal & GuiExternalDialog::controller() const
+ControlExternal & GuiExternalDialog::controller()
 {
 	return static_cast<ControlExternal &>(GuiDialog::controller());
 }
@@ -359,7 +359,7 @@ void setDisplay(QCheckBox & displayCB, QComboBox & showCO, QLineEdit & scaleED,
 	showCO.setEnabled(!no_display && !read_only);
 	displayCB.setChecked(!no_display);
 	scaleED.setEnabled(!no_display && !read_only);
-	scaleED.setText(toqstr(convert<string>(scale)));
+	scaleED.setText(QString::number(scale));
 }
 
 
@@ -390,7 +390,7 @@ void getDisplay(external::DisplayType & display,
 	if (!displayCB.isChecked())
 		display = external::NoDisplay;
 
-	scale = convert<int>(fromqstr(scaleED.text()));
+	scale = scaleED.text().toInt();
 }
 
 
@@ -429,7 +429,7 @@ void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 		widthED.setText(toqstr(scale));
 		widthUnitCO.setCurrentIndex(0);
 	} else {
-		widthED.setText(toqstr(convert<string>(data.width.value())));
+		widthED.setText(QString::number(data.width.value()));
 		// Because 'Scale' is position 0...
 		// Note also that width cannot be zero here, so
 		// we don't need to worry about the default unit.
@@ -493,10 +493,10 @@ void setCrop(QCheckBox & clipCB,
 {
 	clipCB.setChecked(data.clip);
 	graphics::BoundingBox const & bbox = data.bbox;
-	xlED.setText(toqstr(convert<string>(bbox.xl)));
-	ybED.setText(toqstr(convert<string>(bbox.yb)));
-	xrED.setText(toqstr(convert<string>(bbox.xr)));
-	ytED.setText(toqstr(convert<string>(bbox.yt)));
+	xlED.setText(QString::number(bbox.xl));
+	ybED.setText(QString::number(bbox.yb));
+	xrED.setText(QString::number(bbox.xr));
+	ytED.setText(QString::number(bbox.yt));
 }
 
 
@@ -511,10 +511,10 @@ void getCrop(external::ClipData & data,
 	if (!bb_changed)
 		return;
 
-	data.bbox.xl = convert<int>(fromqstr(xlED.text()));
-	data.bbox.yb = convert<int>(fromqstr(ybED.text()));
-	data.bbox.xr = convert<int>(fromqstr(xrED.text()));
-	data.bbox.yt = convert<int>(fromqstr(ytED.text()));
+	data.bbox.xl = xlED.text().toInt();
+	data.bbox.yb = ybED.text().toInt();
+	data.bbox.xr = xrED.text().toInt();
+	data.bbox.yt = ytED.text().toInt();
 }
 
 
@@ -522,7 +522,7 @@ void getExtra(external::ExtraData & data,
 	      GuiExternalDialog::MapType const & extra)
 {
 	typedef GuiExternalDialog::MapType MapType;
-	MapType::const_iterator it  = extra.begin();
+	MapType::const_iterator it = extra.begin();
 	MapType::const_iterator const end = extra.end();
 	for (; it != end; ++it)
 		data.set(it->first, trim(fromqstr(it->second)));
@@ -532,7 +532,7 @@ void getExtra(external::ExtraData & data,
 
 
 
-void GuiExternalDialog::update_contents()
+void GuiExternalDialog::updateContents()
 {
 	tab->setCurrentIndex(0);
 	InsetExternalParams const & params = controller().params();
@@ -549,7 +549,7 @@ void GuiExternalDialog::update_contents()
 
 	setDisplay(*displayCB, *showCO,
 		   *displayscaleED,
-		   params.display, params.lyxscale, readOnly());
+		   params.display, params.lyxscale, controller().isBufferReadonly());
 
 	setRotation(*angleED, *originCO, params.rotationdata);
 

@@ -32,13 +32,13 @@ public Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent *);
 	/// parent controller
-	ControlCommand & controller() const;
+	ControlCommand & controller();
 	///
 	bool isValid();
 	/// apply dialog
 	void applyView();
 	/// update dialog
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

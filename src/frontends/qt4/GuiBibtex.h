@@ -55,13 +55,13 @@ private:
 
 private:
 	/// parent controller
-	ControlBibtex & controller() const;
+	ControlBibtex & controller();
 	///
 	virtual bool isValid();
 	/// Apply changes
 	virtual void applyView();
 	/// update
-	virtual void update_contents();
+	virtual void updateContents();
 
 	///
 	GuiBibtexAddDialog * add_;

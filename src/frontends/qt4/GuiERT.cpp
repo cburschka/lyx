@@ -40,7 +40,7 @@ GuiERTDialog::GuiERTDialog(LyXView & lv)
 }
 
 
-ControlERT & GuiERTDialog::controller() const
+ControlERT & GuiERTDialog::controller()
 {
 	return static_cast<ControlERT &>(GuiDialog::controller());
 }
@@ -68,7 +68,7 @@ void GuiERTDialog::applyView()
 }
 
 
-void GuiERTDialog::update_contents()
+void GuiERTDialog::updateContents()
 {
 	switch (controller().status()) {
 		case InsetERT::Open: openRB->setChecked(true); break;

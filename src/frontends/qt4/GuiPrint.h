@@ -35,13 +35,13 @@ private Q_SLOTS:
 	void printerChanged();
 	void pagerangeChanged();
 	/// parent controller
-	ControlPrint & controller() const;
+	ControlPrint & controller();
 
 private:
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

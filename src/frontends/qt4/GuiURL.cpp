@@ -51,7 +51,7 @@ GuiURLDialog::GuiURLDialog(LyXView & lv)
 }
 
 
-ControlCommand & GuiURLDialog::controller() const
+ControlCommand & GuiURLDialog::controller()
 {
 	return static_cast<ControlCommand &>(GuiDialog::controller());
 }
@@ -71,7 +71,7 @@ void GuiURLDialog::closeEvent(QCloseEvent * e)
 
 
 
-void GuiURLDialog::update_contents()
+void GuiURLDialog::updateContents()
 {
 	InsetCommandParams const & params = controller().params();
 

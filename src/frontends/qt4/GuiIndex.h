@@ -36,13 +36,13 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlCommand & controller() const;
+	ControlCommand & controller();
 	///
 	bool isValid();
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 
 	///
 	QString label_;

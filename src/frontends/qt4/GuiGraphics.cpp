@@ -211,7 +211,7 @@ GuiGraphicsDialog::GuiGraphicsDialog(LyXView & lv)
 }
 
 
-ControlGraphics & GuiGraphicsDialog::controller() const
+ControlGraphics & GuiGraphicsDialog::controller()
 {
 	return static_cast<ControlGraphics &>(GuiDialog::controller());
 }
@@ -381,7 +381,7 @@ static int getItemNo(const vector<string> & v, string const & s)
 }
 
 
-void GuiGraphicsDialog::update_contents()
+void GuiGraphicsDialog::updateContents()
 {
 	// clear and fill in the comboboxes
 	vector<string> const bb_units = frontend::getBBUnits();

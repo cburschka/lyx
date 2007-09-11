@@ -148,7 +148,7 @@ GuiTabularDialog::GuiTabularDialog(LyXView & lv)
 }
 
 
-ControlTabular & GuiTabularDialog::controller() const
+ControlTabular & GuiTabularDialog::controller()
 {
 	return static_cast<ControlTabular &>(GuiDialog::controller());
 }
@@ -600,7 +600,7 @@ void GuiTabularDialog::update_borders()
 }
 
 
-void GuiTabularDialog::update_contents()
+void GuiTabularDialog::updateContents()
 {
 	controller().initialiseParams(string());
 

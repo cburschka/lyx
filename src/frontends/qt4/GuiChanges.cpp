@@ -46,7 +46,7 @@ GuiChangesDialog::GuiChangesDialog(LyXView & lv)
 }
 
 
-ControlChanges & GuiChangesDialog::controller() const
+ControlChanges & GuiChangesDialog::controller()
 {
 	return static_cast<ControlChanges &>(GuiDialog::controller());
 }
@@ -59,7 +59,7 @@ void GuiChangesDialog::closeEvent(QCloseEvent *e)
 }
 
 
-void GuiChangesDialog::update_contents()
+void GuiChangesDialog::updateContents()
 {
 	docstring text;
 	docstring author = controller().getChangeAuthor();

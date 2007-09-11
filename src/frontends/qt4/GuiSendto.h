@@ -41,13 +41,13 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlSendto & controller() const;
+	ControlSendto & controller();
 	///
 	bool isValid();
 	/// Apply from dialog
 	void applyView();
 	/// Update the dialog
-	void update_contents();
+	void updateContents();
 
 	///
 	std::vector<Format const *> all_formats_;

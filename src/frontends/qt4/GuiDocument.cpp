@@ -612,7 +612,7 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 }
 
 
-ControlDocument & GuiDocumentDialog::controller() const
+ControlDocument & GuiDocumentDialog::controller()
 {
 	return static_cast<ControlDocument &>(GuiDialog::controller());
 }
@@ -849,7 +849,7 @@ void GuiDocumentDialog::classChanged()
 	params.setJustBaseClass(tc);
 	if (lyxrc.auto_reset_options)
 		params.useClassDefaults();
-	update_contents();
+	updateContents();
 }
 
 
@@ -1407,7 +1407,7 @@ void GuiDocumentDialog::applyView()
 }
 
 
-void GuiDocumentDialog::update_contents()
+void GuiDocumentDialog::updateContents()
 {
 	updateParams(controller().params());
 }
@@ -1428,7 +1428,7 @@ void GuiDocumentDialog::useClassDefaults()
 	params.setJustBaseClass(latexModule->classCO->currentIndex());
 
 	params.useClassDefaults();
-	update_contents();
+	updateContents();
 }
 
 

@@ -106,7 +106,7 @@ GuiCharacterDialog::GuiCharacterDialog(LyXView & lv)
 }
 
 
-ControlCharacter & GuiCharacterDialog::controller() const
+ControlCharacter & GuiCharacterDialog::controller()
 {
 	return static_cast<ControlCharacter &>(GuiDialog::controller());
 }
@@ -156,7 +156,7 @@ static int findPos2nd(vector<std::pair<A,B> > const & vec, B const & val)
 }
 
 
-void GuiCharacterDialog::update_contents()
+void GuiCharacterDialog::updateContents()
 {
 	ControlCharacter const & ctrl = controller();
 

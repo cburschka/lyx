@@ -62,7 +62,7 @@ GuiSpellcheckerDialog::GuiSpellcheckerDialog(LyXView & lv)
 }
 
 
-ControlSpellchecker & GuiSpellcheckerDialog::controller() const
+ControlSpellchecker & GuiSpellcheckerDialog::controller()
 {
 	return static_cast<ControlSpellchecker &>(GuiDialog::controller());
 }
@@ -131,7 +131,7 @@ void GuiSpellcheckerDialog::reject()
 }
 
 
-void GuiSpellcheckerDialog::update_contents()
+void GuiSpellcheckerDialog::updateContents()
 {
 	if (isVisibleView() || controller().exitEarly())
 		controller().check();

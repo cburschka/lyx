@@ -39,11 +39,11 @@ public Q_SLOTS:
 
 private:
 	///
-	char_type doMatch(char_type const symbol) const;
+	char_type doMatch(char_type const symbol);
 	///
 	void updateTeXCode(int size);
 	/// parent controller
-	ControlMath & controller() const;
+	ControlMath & controller();
 
 	/// TeX code that will be inserted.
 	QString tex_code_;

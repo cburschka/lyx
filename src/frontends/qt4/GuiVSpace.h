@@ -35,11 +35,11 @@ private Q_SLOTS:
 
 private:
 	/// parent controller
-	ControlVSpace & controller() const;
+	ControlVSpace & controller();
 	/// Apply from dialog
 	void applyView();
 	/// Update the dialog
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

@@ -46,11 +46,11 @@ public:
 	//
 	bool activateAspectratio() const;
 	/// parent controller
-	ControlExternal & controller() const;
+	ControlExternal & controller();
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 	/// Helper function called when the template is changed.
 	void updateTemplate();
 	/// get bounding box from file

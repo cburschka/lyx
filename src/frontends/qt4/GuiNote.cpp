@@ -42,7 +42,7 @@ GuiNoteDialog::GuiNoteDialog(LyXView & lv)
 }
 
 
-ControlNote & GuiNoteDialog::controller() const
+ControlNote & GuiNoteDialog::controller()
 {
 	return static_cast<ControlNote &>(GuiDialog::controller());
 }
@@ -61,7 +61,7 @@ void GuiNoteDialog::change_adaptor()
 }
 
 
-void GuiNoteDialog::update_contents()
+void GuiNoteDialog::updateContents()
 {
 	QRadioButton * rb = 0;
 

@@ -62,7 +62,7 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 }
 
 
-ControlWrap & GuiWrapDialog::controller() const
+ControlWrap & GuiWrapDialog::controller()
 {
 	return static_cast<ControlWrap &>(GuiDialog::controller());
 }
@@ -118,7 +118,7 @@ static string const numtostr(double val)
 }
 
 
-void GuiWrapDialog::update_contents()
+void GuiWrapDialog::updateContents()
 {
 	InsetWrapParams & params = controller().params();
 

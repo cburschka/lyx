@@ -64,7 +64,7 @@ GuiThesaurusDialog::GuiThesaurusDialog(LyXView & lv)
 }
 
 
-ControlThesaurus & GuiThesaurusDialog::controller() const
+ControlThesaurus & GuiThesaurusDialog::controller()
 {
 	return static_cast<ControlThesaurus &>(GuiDialog::controller());
 }
@@ -91,7 +91,7 @@ void GuiThesaurusDialog::entryChanged()
 void GuiThesaurusDialog::selectionChanged()
 {
 	int const col = meaningsTV->currentColumn();
-	if (col<0 || readOnly())
+	if (col < 0 || controller().isBufferReadonly())
 		return;
 
 	replaceED->setText(meaningsTV->currentItem()->text(col));
@@ -138,7 +138,7 @@ void GuiThesaurusDialog::updateLists()
 }
 
 
-void GuiThesaurusDialog::update_contents()
+void GuiThesaurusDialog::updateContents()
 {
 	entryED->setText(toqstr(controller().text()));
 	replaceED->setText("");

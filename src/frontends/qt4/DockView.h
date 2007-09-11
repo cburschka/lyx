@@ -65,7 +65,7 @@ public:
 	}
 	bool isClosing() const { return false; }
 	void partialUpdateView(int /*id*/) {}
-	Controller & controller() const { return *controller_; }
+	Controller & controller() { return *controller_; }
 	std::string name() const { return name_; }
 	//@}
 private:

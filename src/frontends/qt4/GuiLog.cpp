@@ -117,7 +117,7 @@ GuiLogDialog::GuiLogDialog(LyXView & lv)
 }
 
 
-ControlLog & GuiLogDialog::controller() const
+ControlLog & GuiLogDialog::controller()
 {
 	return static_cast<ControlLog &>(GuiDialog::controller());
 }
@@ -132,11 +132,11 @@ void GuiLogDialog::closeEvent(QCloseEvent * e)
 
 void GuiLogDialog::updateClicked()
 {
-	update_contents();
+	updateContents();
 }
 
 
-void GuiLogDialog::update_contents()
+void GuiLogDialog::updateContents()
 {
 	setViewTitle(controller().title());
 

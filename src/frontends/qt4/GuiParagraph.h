@@ -50,11 +50,11 @@ private Q_SLOTS:
 	///
 	void enableLinespacingValue(int);
 	/// parent controller
-	ControlParagraph & controller() const;
+	ControlParagraph & controller();
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

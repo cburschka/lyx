@@ -114,12 +114,12 @@ private:
 	std::vector<std::string> lang_;
 
 	/// parent controller
-	ControlDocument & controller() const;
+	ControlDocument & controller();
 private:
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 	/// save as default template
 	void saveDocDefault();
 	/// reset to default params

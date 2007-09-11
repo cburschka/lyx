@@ -47,7 +47,7 @@ GuiTabularCreateDialog::GuiTabularCreateDialog(LyXView & lv)
 }
 
 
-ControlTabularCreate & GuiTabularCreateDialog::controller() const
+ControlTabularCreate & GuiTabularCreateDialog::controller()
 {
 	return static_cast<ControlTabularCreate &>(GuiDialog::controller());
 }

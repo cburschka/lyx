@@ -53,7 +53,7 @@ GuiNomenclDialog::GuiNomenclDialog(LyXView & lv)
 }
 
 
-ControlCommand & GuiNomenclDialog::controller() const
+ControlCommand & GuiNomenclDialog::controller()
 {
 	return static_cast<ControlCommand &>(GuiDialog::controller());
 }
@@ -78,7 +78,7 @@ void GuiNomenclDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void GuiNomenclDialog::update_contents()
+void GuiNomenclDialog::updateContents()
 {
 	prefixED->setText(toqstr(controller().params()["prefix"]));
 	symbolED->setText(toqstr(controller().params()["symbol"]));

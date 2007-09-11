@@ -240,12 +240,12 @@ GuiListingsDialog::GuiListingsDialog(LyXView & lv)
 	listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 
-	update_contents();
+	updateContents();
 
 }
 
 
-ControlListings & GuiListingsDialog::controller() const
+ControlListings & GuiListingsDialog::controller()
 {
 	return static_cast<ControlListings &>(GuiDialog::controller());
 }
@@ -457,7 +457,7 @@ static string plainParam(std::string const & par)
 }
 
 
-void GuiListingsDialog::update_contents()
+void GuiListingsDialog::updateContents()
 {
 	// set default values
 	listingsTB->setPlainText(

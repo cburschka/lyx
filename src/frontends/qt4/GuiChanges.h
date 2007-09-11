@@ -33,8 +33,8 @@ protected Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	ControlChanges & controller() const;
-	void update_contents();
+	ControlChanges & controller();
+	void updateContents();
 };
 
 } // namespace frontend

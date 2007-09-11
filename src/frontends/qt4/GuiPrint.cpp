@@ -67,7 +67,7 @@ GuiPrintDialog::GuiPrintDialog(LyXView & lv)
 }
 
 
-ControlPrint & GuiPrintDialog::controller() const
+ControlPrint & GuiPrintDialog::controller()
 {
 	return static_cast<ControlPrint &>(GuiDialog::controller());
 }
@@ -117,7 +117,7 @@ void GuiPrintDialog::pagerangeChanged()
 }
 
 
-void GuiPrintDialog::update_contents()
+void GuiPrintDialog::updateContents()
 {
 	PrinterParams & pp = controller().params();
 

@@ -75,7 +75,7 @@ GuiIndexDialogBase::GuiIndexDialogBase(LyXView & lv,
 }
 
 
-ControlCommand & GuiIndexDialogBase::controller() const
+ControlCommand & GuiIndexDialogBase::controller()
 {
 	return static_cast<ControlCommand &>(GuiDialog::controller());
 }
@@ -100,7 +100,7 @@ void GuiIndexDialogBase::closeEvent(QCloseEvent * e)
 }
 
 
-void GuiIndexDialogBase::update_contents()
+void GuiIndexDialogBase::updateContents()
 {
 	docstring const contents = controller().params()["name"];
 	keywordED->setText(toqstr(contents));

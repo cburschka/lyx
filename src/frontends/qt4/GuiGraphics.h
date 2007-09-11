@@ -44,12 +44,12 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlGraphics & controller() const;
+	ControlGraphics & controller();
 	bool isValid();
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 	/// get bounding box from file
 	void getBB();
 

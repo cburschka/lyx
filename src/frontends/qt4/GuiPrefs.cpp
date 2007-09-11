@@ -1959,7 +1959,7 @@ GuiPrefsDialog::GuiPrefsDialog(LyXView & lv)
 }
 
 
-ControlPrefs & GuiPrefsDialog::controller() const
+ControlPrefs & GuiPrefsDialog::controller()
 {
 	return static_cast<ControlPrefs &>(GuiDialog::controller());
 }
@@ -2023,7 +2023,7 @@ void GuiPrefsDialog::applyView()
 	apply(controller().rc());
 }
 
-void GuiPrefsDialog::update_contents()
+void GuiPrefsDialog::updateContents()
 {
 	updateRc(controller().rc());
 }

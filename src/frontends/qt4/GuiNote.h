@@ -29,11 +29,11 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlNote & controller() const;
+	ControlNote & controller();
 	/// Apply changes
 	void applyView();
 	/// Update dialog before showing it
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

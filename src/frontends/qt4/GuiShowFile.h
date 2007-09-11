@@ -30,9 +30,9 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlShowFile & controller() const;
+	ControlShowFile & controller();
 	/// update
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

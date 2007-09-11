@@ -31,7 +31,7 @@ private Q_SLOTS:
 	void rowsChanged(int);
 
 	/// parent controller
-	ControlTabularCreate & controller() const;
+	ControlTabularCreate & controller();
 
 private:
 	/// Apply changes

@@ -54,7 +54,7 @@ GuiFloatDialog::GuiFloatDialog(LyXView & lv)
 }
 
 
-ControlFloat & GuiFloatDialog::controller() const
+ControlFloat & GuiFloatDialog::controller()
 {
 	return static_cast<ControlFloat &>(GuiDialog::controller());
 }
@@ -73,7 +73,7 @@ void GuiFloatDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void GuiFloatDialog::update_contents()
+void GuiFloatDialog::updateContents()
 {
 	floatFP->set(controller().params());
 }

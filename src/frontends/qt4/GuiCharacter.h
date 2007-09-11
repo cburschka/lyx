@@ -35,11 +35,11 @@ protected Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlCharacter & controller() const;
+	ControlCharacter & controller();
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 
 	std::vector<FamilyPair> family;
 	std::vector<SeriesPair> series;

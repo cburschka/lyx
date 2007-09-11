@@ -39,7 +39,7 @@ private:
 	void closeEvent(QCloseEvent * e);
 
 	/// parent controller
-	ControlBox & controller() const;
+	ControlBox & controller();
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items
@@ -48,7 +48,7 @@ private:
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 
 	///
 	std::vector<std::string> ids_;

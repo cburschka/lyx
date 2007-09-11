@@ -33,7 +33,7 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlCommand & controller() const;
+	ControlCommand & controller();
 
 private:
 	///
@@ -41,7 +41,7 @@ private:
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

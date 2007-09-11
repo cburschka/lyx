@@ -44,13 +44,13 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlRef & controller() const;
+	ControlRef & controller();
 	///
 	bool isValid();
 	/// apply changes
 	void applyView();
 	/// update dialog
-	void update_contents();
+	void updateContents();
 
 	/// is name allowed for this ?
 	bool nameAllowed();

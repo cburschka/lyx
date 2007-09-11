@@ -46,13 +46,13 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlListings & controller() const;
+	ControlListings & controller();
 	/// return false if validate_listings_params returns error
 	bool isValid();
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

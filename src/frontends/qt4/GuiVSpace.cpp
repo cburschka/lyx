@@ -87,7 +87,7 @@ GuiVSpaceDialog::GuiVSpaceDialog(LyXView & lv)
 }
 
 
-ControlVSpace & GuiVSpaceDialog::controller() const
+ControlVSpace & GuiVSpaceDialog::controller()
 {
 	return static_cast<ControlVSpace &>(GuiDialog::controller());
 }
@@ -181,7 +181,7 @@ void GuiVSpaceDialog::applyView()
 }
 
 
-void GuiVSpaceDialog::update_contents()
+void GuiVSpaceDialog::updateContents()
 {
 	setWidgetsFromVSpace(controller().params(),
 		spacingCO, valueLE, unitCO, keepCB);

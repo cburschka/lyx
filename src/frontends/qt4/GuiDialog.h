@@ -50,7 +50,6 @@ public Q_SLOTS:
 	void slotClose();
 
 public:
-
 	/** Check whether we may apply our data.
 	 *
 	 *  The buttons are disabled if not and (re-)enabled if yes.
@@ -68,8 +67,6 @@ public:
 
 	void setViewTitle(docstring const & title);
 
-	///
-	bool readOnly() const;
 
 	/// the dialog has changed contents
 	virtual void changed();
@@ -77,7 +74,7 @@ public:
 	/// default: do nothing
 	virtual void applyView() {}
 	/// default: do nothing
-	virtual void update_contents() {}
+	virtual void updateContents() {}
 
 protected:
 	/// Hide the dialog.
@@ -126,7 +123,7 @@ public:
 	 *  Methods to access the various components making up a dialog.
 	 */
 	//@{
-	virtual Controller & controller() const { return *controller_; }
+	virtual Controller & controller() { return *controller_; }
 	//@}
 
 	/** Defaults to nothing. Can be used by the Controller, however, to

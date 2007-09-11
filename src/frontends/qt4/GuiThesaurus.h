@@ -39,9 +39,9 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlThesaurus & controller() const;
+	ControlThesaurus & controller();
 	/// update
-	void update_contents();
+	void updateContents();
 	///
 	void updateLists();
 };

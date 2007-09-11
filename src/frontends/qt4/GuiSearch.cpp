@@ -63,7 +63,7 @@ GuiSearchDialog::GuiSearchDialog(LyXView & lv)
 }
 
 
-ControlSearch & GuiSearchDialog::controller() const
+ControlSearch & GuiSearchDialog::controller()
 {
 	return static_cast<ControlSearch &>(GuiDialog::controller());
 }
@@ -91,8 +91,8 @@ void GuiSearchDialog::findChanged()
 		replaceallPB->setEnabled(false);
 	} else {
 		findPB->setEnabled(true);
-		replacePB->setEnabled(!readOnly());
-		replaceallPB->setEnabled(!readOnly());
+		replacePB->setEnabled(!controller().isBufferReadonly());
+		replaceallPB->setEnabled(!controller().isBufferReadonly());
 	}
 }
 

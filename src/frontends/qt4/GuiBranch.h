@@ -33,11 +33,11 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlBranch & controller() const;
+	ControlBranch & controller();
 	///  Apply changes
 	void applyView();
 	/// Update dialog before showing it
-	void update_contents();
+	void updateContents();
 };
 
 

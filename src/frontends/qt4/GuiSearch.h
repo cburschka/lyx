@@ -38,7 +38,7 @@ private:
 	void showView();
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlSearch & controller() const;
+	ControlSearch & controller();
 	///
 	void find(docstring const & str, bool casesens,
 	  bool words, bool backwards);

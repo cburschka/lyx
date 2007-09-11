@@ -114,12 +114,6 @@ bool GuiDialog::isVisibleView() const
 }
 
 
-bool GuiDialog::readOnly() const
-{
-	return controller().isBufferReadonly();
-}
-
-
 void GuiDialog::showView()
 {
 	QSize const hint = sizeHint();
@@ -160,7 +154,7 @@ void GuiDialog::updateView()
 
 	// protect the BC from unwarranted state transitions
 	updating_ = true;
-	update_contents();
+	updateContents();
 	updating_ = false;
 
 	setUpdatesEnabled(true);

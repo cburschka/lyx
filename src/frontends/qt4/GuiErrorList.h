@@ -35,11 +35,11 @@ private:
 	void closeEvent(QCloseEvent *);
 	void showEvent(QShowEvent *);
 	/// parent controller
-	ControlErrorList & controller() const;
+	ControlErrorList & controller();
 	/// select an entry
 	void select(QListWidgetItem *);
 	/// update contents
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

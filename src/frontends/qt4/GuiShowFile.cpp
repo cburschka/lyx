@@ -37,7 +37,7 @@ GuiShowFileDialog::GuiShowFileDialog(LyXView & lv)
 }
 
 
-ControlShowFile & GuiShowFileDialog::controller() const
+ControlShowFile & GuiShowFileDialog::controller()
 {
 	return static_cast<ControlShowFile &>(GuiDialog::controller());
 }
@@ -50,7 +50,7 @@ void GuiShowFileDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void GuiShowFileDialog::update_contents()
+void GuiShowFileDialog::updateContents()
 {
 	setWindowTitle(toqstr(controller().getFileName()));
 

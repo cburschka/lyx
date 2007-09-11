@@ -60,7 +60,7 @@ GuiTexinfoDialog::GuiTexinfoDialog(LyXView & lv)
 }
 
 
-ControlTexinfo & GuiTexinfoDialog::controller() const
+ControlTexinfo & GuiTexinfoDialog::controller()
 {
 	return static_cast<ControlTexinfo &>(GuiDialog::controller());
 }

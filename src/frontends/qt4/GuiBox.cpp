@@ -112,7 +112,7 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 }
 
 
-ControlBox & GuiBoxDialog::controller() const
+ControlBox & GuiBoxDialog::controller()
 {
 	return static_cast<ControlBox &>(GuiDialog::controller());
 }
@@ -172,7 +172,7 @@ void GuiBoxDialog::restoreClicked()
 }
 
 
-void GuiBoxDialog::update_contents()
+void GuiBoxDialog::updateContents()
 {
 	string type(controller().params().type);
 	for (unsigned int i = 0; i < gui_names_.size(); ++i) {

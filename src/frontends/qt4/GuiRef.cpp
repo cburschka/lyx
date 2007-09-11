@@ -88,7 +88,7 @@ GuiRefDialog::GuiRefDialog(LyXView & lv)
 }
 
 
-ControlRef & GuiRefDialog::controller() const
+ControlRef & GuiRefDialog::controller()
 {
 	return static_cast<ControlRef &>(GuiDialog::controller());
 }
@@ -107,7 +107,7 @@ void GuiRefDialog::gotoClicked()
 
 void GuiRefDialog::selectionChanged()
 {
-	if (readOnly())
+	if (controller().isBufferReadonly())
 		return;
 
 	QList<QListWidgetItem *> selections = refsLW->selectedItems();
@@ -121,7 +121,7 @@ void GuiRefDialog::selectionChanged()
 
 void GuiRefDialog::refHighlighted(QListWidgetItem * sel)
 {
-	if (readOnly())
+	if (controller().isBufferReadonly())
 		return;
 
 /*	int const cur_item = refsLW->currentRow();
@@ -144,7 +144,7 @@ void GuiRefDialog::refHighlighted(QListWidgetItem * sel)
 
 void GuiRefDialog::refSelected(QListWidgetItem * sel)
 {
-	if (readOnly())
+	if (controller().isBufferReadonly())
 		return;
 
 /*	int const cur_item = refsLW->currentRow();
@@ -187,7 +187,7 @@ void GuiRefDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void GuiRefDialog::update_contents()
+void GuiRefDialog::updateContents()
 {
 	InsetCommandParams const & params = controller().params();
 
@@ -196,14 +196,14 @@ void GuiRefDialog::update_contents()
 	referenceED->setText(toqstr(params["reference"]));
 
 	nameED->setText(toqstr(params["name"]));
-	nameED->setReadOnly(!nameAllowed() && !readOnly());
+	nameED->setReadOnly(!nameAllowed() && !controller().isBufferReadonly());
 
 	// restore type settings for new insets
 	if (params["reference"].empty())
 		typeCO->setCurrentIndex(orig_type);
 	else
 		typeCO->setCurrentIndex(InsetRef::getType(params.getCmdName()));
-	typeCO->setEnabled(typeAllowed() && !readOnly());
+	typeCO->setEnabled(typeAllowed() && !controller().isBufferReadonly());
 	if (!typeAllowed())
 		typeCO->setCurrentIndex(0);
 

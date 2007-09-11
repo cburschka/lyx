@@ -71,13 +71,13 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlTabular & controller() const;
+	ControlTabular & controller();
 	///
 	bool isValid() { return true; }
 	/// update borders
 	void update_borders();
 	/// update
-	void update_contents();
+	void updateContents();
 	/// save some values before closing the gui
 	void closeGUI();
 };

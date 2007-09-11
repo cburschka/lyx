@@ -32,11 +32,11 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlERT & controller() const;
+	ControlERT & controller();
 	/// Apply changes
 	void applyView();
 	/// update
-	void update_contents();
+	void updateContents();
 };
 
 } // namespace frontend

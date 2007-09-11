@@ -111,7 +111,7 @@ GuiBibtexDialog::GuiBibtexDialog(LyXView & lv)
 }
 
 
-ControlBibtex & GuiBibtexDialog::controller() const
+ControlBibtex & GuiBibtexDialog::controller()
 {
 	return static_cast<ControlBibtex &>(GuiDialog::controller());
 }
@@ -233,7 +233,7 @@ void GuiBibtexDialog::deletePressed()
 
 void GuiBibtexDialog::databaseChanged()
 {
-	deletePB->setEnabled(!readOnly() && databaseLW->currentRow() != -1);
+	deletePB->setEnabled(!controller().isBufferReadonly() && databaseLW->currentRow() != -1);
 }
 
 
@@ -250,7 +250,7 @@ void GuiBibtexDialog::closeEvent(QCloseEvent *e)
 }
 
 
-void GuiBibtexDialog::update_contents()
+void GuiBibtexDialog::updateContents()
 {
 	bool bibtopic = controller().usingBibtopic();
 

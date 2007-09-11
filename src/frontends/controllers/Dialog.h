@@ -98,7 +98,7 @@ public:
 	 *  to a particular dialog.
 	 */
 	//@{
-	virtual Controller & controller() const = 0;
+	virtual Controller & controller() = 0;
 	//@}
 
 	/** \c Button controller part

@@ -53,7 +53,7 @@ public Q_SLOTS:
 
 private:
 	///
-	ControlCitation & controller() const;
+	ControlCitation & controller();
 	///
 	void closeEvent(QCloseEvent * e);
 	/// prepares a call to GuiCitation::searchKeys when we

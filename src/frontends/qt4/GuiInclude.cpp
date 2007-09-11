@@ -78,7 +78,7 @@ GuiIncludeDialog::GuiIncludeDialog(LyXView & lv)
 }
 
 
-ControlInclude & GuiIncludeDialog::controller() const
+ControlInclude & GuiIncludeDialog::controller()
 {
 	return static_cast<ControlInclude &>(GuiDialog::controller());
 }
@@ -186,7 +186,7 @@ void GuiIncludeDialog::browseClicked()
 }
 
 
-void GuiIncludeDialog::update_contents()
+void GuiIncludeDialog::updateContents()
 {
 	InsetCommandParams const & params = controller().params();
 
