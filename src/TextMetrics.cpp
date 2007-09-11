@@ -25,7 +25,6 @@
 #include "BufferView.h"
 #include "bufferview_funcs.h"
 #include "Color.h"
-#include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "FontIterator.h"
@@ -46,6 +45,7 @@
 
 #include <boost/current_function.hpp>
 
+using std::make_pair;
 using std::max;
 using std::min;
 using std::endl;
@@ -126,6 +126,12 @@ TextMetrics::TextMetrics(BufferView * bv, Text * text)
 }
 
 
+bool TextMetrics::has(pit_type pit) const
+{
+	return par_metrics_.find(pit) != par_metrics_.end();
+}
+
+
 ParagraphMetrics const & TextMetrics::parMetrics(pit_type pit) const
 {
 	return const_cast<TextMetrics *>(this)->parMetrics(pit, true);
@@ -138,7 +144,7 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit,
 	ParMetricsCache::iterator pmc_it = par_metrics_.find(pit);
 	if (pmc_it == par_metrics_.end()) {
 		pmc_it = par_metrics_.insert(
-			std::make_pair(pit, ParagraphMetrics(text_->getPar(pit)))).first;
+			make_pair(pit, ParagraphMetrics(text_->getPar(pit)))).first;
 	}
 	if (pmc_it->second.rows().empty() && redo) {
 		redoParagraph(pit);
@@ -987,7 +993,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
 	/// x Paragraph coordinate is always 0 for main text anyway.
-	int const xo = main_text_? 0 : bv_->coordCache().get(text_, pit).x_;
+	int const xo = origin_.x_;
 	x -= xo;
 	Paragraph const & par = text_->getPar(pit);
 	ParagraphMetrics const & pm = par_metrics_[pit];
@@ -1137,26 +1143,24 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 pit_type TextMetrics::getPitNearY(int y)
 {
 	BOOST_ASSERT(!text_->paragraphs().empty());
-	BOOST_ASSERT(bv_->coordCache().getParPos().find(text_) != bv_->coordCache().getParPos().end());
-	CoordCache::InnerParPosCache const & cc = bv_->coordCache().getParPos().find(text_)->second;
 	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
-		<< ": y: " << y << " cache size: " << cc.size()
+		<< ": y: " << y << " cache size: " << par_metrics_.size()
 		<< endl;
 
 	// look for highest numbered paragraph with y coordinate less than given y
 	pit_type pit = 0;
 	int yy = -1;
-	CoordCache::InnerParPosCache::const_iterator it = cc.begin();
-	CoordCache::InnerParPosCache::const_iterator et = cc.end();
-	CoordCache::InnerParPosCache::const_iterator last = et; last--;
+	ParMetricsCache::const_iterator it = par_metrics_.begin();
+	ParMetricsCache::const_iterator et = par_metrics_.end();
+	ParMetricsCache::const_iterator last = et; last--;
 
-	ParagraphMetrics const & pm = par_metrics_[it->first];
+	ParagraphMetrics const & pm = it->second;
 
 	// If we are off-screen (before the visible part)
 	if (y < 0
 		// and even before the first paragraph in the cache.
-		&& y < it->second.y_ - int(pm.ascent())) {
+		&& y < it->second.position() - int(pm.ascent())) {
 		//  and we are not at the first paragraph in the inset.
 		if (it->first == 0)
 			return 0;
@@ -1164,8 +1168,7 @@ pit_type TextMetrics::getPitNearY(int y)
 		pit = it->first - 1;
 		// rebreak it and update the CoordCache.
 		redoParagraph(pit);
-		bv_->coordCache().parPos()[text_][pit] =
-			Point(0, it->second.y_ - pm.descent());
+		par_metrics_[pit].setPosition(it->second.position() - pm.descent());
 		return pit;
 	}
 
@@ -1174,7 +1177,7 @@ pit_type TextMetrics::getPitNearY(int y)
 	// If we are off-screen (after the visible part)
 	if (y > bv_->workHeight()
 		// and even after the first paragraph in the cache.
-		&& y >= last->second.y_ + int(pm_last.descent())) {
+		&& y >= last->second.position() + int(pm_last.descent())) {
 		pit = last->first + 1;
 		//  and we are not at the last paragraph in the inset.
 		if (pit == int(text_->paragraphs().size()))
@@ -1182,8 +1185,7 @@ pit_type TextMetrics::getPitNearY(int y)
 		// then this is the paragraph we are looking for.
 		// rebreak it and update the CoordCache.
 		redoParagraph(pit);
-		bv_->coordCache().parPos()[text_][pit] =
-			Point(0, last->second.y_ + pm_last.ascent());
+		par_metrics_[pit].setPosition(last->second.position() + pm_last.ascent());
 		return pit;
 	}
 
@@ -1191,14 +1193,14 @@ pit_type TextMetrics::getPitNearY(int y)
 		LYXERR(Debug::DEBUG)
 			<< BOOST_CURRENT_FUNCTION
 			<< "  examining: pit: " << it->first
-			<< " y: " << it->second.y_
+			<< " y: " << it->second.position()
 			<< endl;
 
 		ParagraphMetrics const & pm = par_metrics_[it->first];
 
-		if (it->first >= pit && int(it->second.y_) - int(pm.ascent()) <= y) {
+		if (it->first >= pit && int(it->second.position()) - int(pm.ascent()) <= y) {
 			pit = it->first;
-			yy = it->second.y_;
+			yy = it->second.position();
 		}
 	}
 
@@ -1215,7 +1217,7 @@ Row const & TextMetrics::getRowNearY(int y, pit_type pit) const
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
-	int yy = bv_->coordCache().get(text_, pit).y_ - pm.ascent();
+	int yy = pm.position() - pm.ascent();
 	BOOST_ASSERT(!pm.rows().empty());
 	RowList::const_iterator rit = pm.rows().begin();
 	RowList::const_iterator const rlast = boost::prior(pm.rows().end());
@@ -1292,7 +1294,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
-	int yy = bv_->coordCache().get(text_, pit).y_ - pm.ascent();
+	int yy = pm.position() - pm.ascent();
 	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": x: " << x
@@ -1802,17 +1804,18 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 	if (par_metrics_.empty())
 		return;
 
-	CoordCache::InnerParPosCache & ppcache = bv_->coordCache().parPos()[text_];
+	origin_.x_ = x;
+	origin_.y_ = y;
 
-	ParMetricsCache::const_iterator it = par_metrics_.begin();
-	ParMetricsCache::const_iterator const pm_end = par_metrics_.end();
+	ParMetricsCache::iterator it = par_metrics_.begin();
+	ParMetricsCache::iterator const pm_end = par_metrics_.end();
 	y -= it->second.ascent();
 	for (; it != pm_end; ++it) {
 		ParagraphMetrics const & pmi = it->second;
 		y += pmi.ascent();
 		pit_type const pit = it->first;
 		// Save the paragraph position in the cache.
-		ppcache[pit] = Point(x, y);
+		it->second.setPosition(y);
 		drawParagraph(pi, pit, x, y);
 		y += pmi.descent();
 	}
@@ -1866,7 +1869,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 				Color_color(Color::color(pi.background_color)));
 		}
 		if (row_selection) {
-			lyxerr << "row selected" << endl;
 			DocIterator beg = bv_->cursor().selectionBegin();
 			DocIterator end = bv_->cursor().selectionEnd();
 			beg.pit() = pit;

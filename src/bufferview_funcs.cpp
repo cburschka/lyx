@@ -231,19 +231,12 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary)
 {
 	CursorSlice const & bot = dit.bottom();
-	CoordCache::ParPosCache::const_iterator cache_it =
-		bv.coordCache().getParPos().find(bot.text());
-	if (cache_it == bv.coordCache().getParPos().end())
+	TextMetrics const & tm = bv.textMetrics(bot.text());
+	if (!tm.has(bot.pit()))
 		return Point(-1, -1);
 
-	CoordCache::InnerParPosCache const & cache = cache_it->second;
-	CoordCache::InnerParPosCache::const_iterator it = cache.find(bot.pit());
-	if (it == cache.end()) {
-		//lyxerr << "cursor out of view" << std::endl;
-		return Point(-1, -1);
-	}
 	Point p = coordOffset(bv, dit, boundary); // offset from outer paragraph
-	p.y_ += it->second.y_;
+	p.y_ += tm.parMetrics(bot.pit()).position();
 	return p;
 }
 
@@ -252,10 +245,8 @@ Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary)
 // FIXME: This does not work within mathed!
 CurStatus status(BufferView const * bv, DocIterator const & dit)
 {
-	CoordCache::InnerParPosCache const & cache =
-		bv->coordCache().getParPos().find(dit.bottom().text())->second;
-
-	if (cache.find(dit.bottom().pit()) != cache.end())
+	TextMetrics const & tm = bv->textMetrics(dit.bottom().text());
+	if (tm.has(dit.bottom().pit()))
 		return CUR_INSIDE;
 	else if (dit.bottom().pit() < bv->anchor_ref())
 		return CUR_ABOVE;

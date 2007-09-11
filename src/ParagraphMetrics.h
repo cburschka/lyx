@@ -82,7 +82,14 @@ public:
 	/// 
 	void computeRowSignature(Row &, BufferParams const & bparams);
 
+	///
+	int position() const { return position_; }
+	void setPosition(int position);
+
+
 private:
+	///
+	int position_;
 	///
 	mutable RowList rows_;
 	/// cached dimensions of paragraph

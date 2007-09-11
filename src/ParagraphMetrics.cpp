@@ -71,7 +71,7 @@ using std::ostream;
 using std::ostringstream;
 
 
-ParagraphMetrics::ParagraphMetrics(Paragraph const & par): par_(&par)
+ParagraphMetrics::ParagraphMetrics(Paragraph const & par): par_(&par), position_(-1)
 {
 }
 
@@ -82,6 +82,7 @@ ParagraphMetrics & ParagraphMetrics::operator=(
 	rows_ = pm.rows_;
 	dim_ = pm.dim_;
 	par_ = pm.par_;
+	position_ = pm.position_;
 	return *this;
 }
 
@@ -90,6 +91,7 @@ void ParagraphMetrics::reset(Paragraph const & par)
 {
 	par_ = &par;
 	dim_ = Dimension();
+	//position_ = -1;
 }
 
 
@@ -107,6 +109,12 @@ void ParagraphMetrics::computeRowSignature(Row & row,
 		}			
 	}
 	row.setCrc(crc.checksum());
+}
+
+
+void ParagraphMetrics::setPosition(int position)
+{
+	position_ = position;
 }
 
 

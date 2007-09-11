@@ -132,6 +132,7 @@ namespace {
 	}
 
 
+	/*
 	/// moves position closest to (x, y) in given box
 	bool bruteFind(Cursor & cursor,
 		int x, int y, int xlow, int xhigh, int ylow, int yhigh)
@@ -186,6 +187,7 @@ namespace {
 
 		return false;
 	}
+	*/
 
 
 	/// moves position closest to (x, y) in given box
@@ -683,7 +685,7 @@ bool Cursor::openable(MathAtom const & t) const
 void Cursor::setScreenPos(int x, int y)
 {
 	setTargetX(x);
-	bruteFind(*this, x, y, 0, bv().workWidth(), 0, bv().workHeight());
+	//bruteFind(*this, x, y, 0, bv().workWidth(), 0, bv().workHeight());
 }
 
 

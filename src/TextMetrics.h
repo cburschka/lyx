@@ -15,6 +15,9 @@
 #define TEXT_METRICS_H
 
 #include "Font.h"
+// FIXME: We only need Point class definition, not the full
+// CoordCache.
+#include "CoordCache.h"
 #include "ParagraphMetrics.h"
 
 #include "support/types.h"
@@ -40,12 +43,17 @@ public:
 	TextMetrics(): text_(0) {}
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
+	
+	///
+	bool has(pit_type pit) const;
 	///
 	ParagraphMetrics const & parMetrics(pit_type) const;
 
 	///
 	Dimension const & dimension() const;
-	Dimension const & dimension();
+
+	Point const & origin() const { return origin_; }
+
 
 	/// compute text metrics.
 	bool metrics(MetricsInfo & mi, Dimension & dim);
@@ -251,16 +259,7 @@ private:
 	mutable ParMetricsCache par_metrics_;
 	Dimension dim_;
 	int max_width_;
-
-	/// FIXME: transfer this code in CoordCache here.
-	/*
-	/// A map from paragraph index number to screen point
-	typedef std::map<pit_type, Point> InnerParPosCache;
-	/// A map from a Text to the map of paragraphs to screen points
-	typedef std::map<Text const *, InnerParPosCache> ParPosCache;
-	/// Paragraph grouped by owning text
-	ParPosCache pars_;
-	*/
+	mutable Point origin_;
 
 // temporary public:
 public:

@@ -1341,10 +1341,10 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 void BufferView::updateMetrics(bool singlepar)
 {
 	Text & buftext = buffer_.text();
-	pit_type size = int(buftext.paragraphs().size());
+	pit_type const npit = int(buftext.paragraphs().size());
 
-	if (anchor_ref_ > int(buftext.paragraphs().size() - 1)) {
-		anchor_ref_ = int(buftext.paragraphs().size() - 1);
+	if (anchor_ref_ > int(npit - 1)) {
+		anchor_ref_ = int(npit - 1);
 		offset_ref_ = 0;
 	}
 
@@ -1360,6 +1360,7 @@ void BufferView::updateMetrics(bool singlepar)
 
 	TextMetrics & tm = textMetrics(&buftext);
 
+	pit_type const bottom_pit = cursor_.bottom().pit();
 	// If the paragraph metrics has changed, we can not
 	// use the singlepar optimisation.
 	if (singlepar
@@ -1367,17 +1368,31 @@ void BufferView::updateMetrics(bool singlepar)
 		// the (main text, not inset!) paragraph containing the cursor.
 		// (if this paragraph contains insets etc., rebreaking will
 		// recursively descend)
-		&& tm.redoParagraph(cursor_.bottom().pit()))
-		singlepar = false;
+		&& !tm.redoParagraph(bottom_pit)) {
+
+		updateOffsetRef();
+		// collect cursor paragraph iter bounds
+		ParagraphMetrics const & pm = tm.parMetrics(bottom_pit);
+		int y1 = pm.position() - pm.ascent();
+		int y2 = pm.position() + pm.descent();
+		metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
+			SingleParUpdate, npit);
+		LYXERR(Debug::PAINTING)
+			<< BOOST_CURRENT_FUNCTION
+			<< "\ny1: " << y1
+			<< " y2: " << y2
+			<< " pit: " << bottom_pit
+			<< " singlepar: " << singlepar
+			<< endl;
+		return;
+	}
 
 	pit_type const pit = anchor_ref_;
 	int pit1 = pit;
 	int pit2 = pit;
-	size_t const npit = buftext.paragraphs().size();
 
 	// Rebreak anchor paragraph.
-	if (!singlepar)
-		tm.redoParagraph(pit);
+	tm.redoParagraph(pit);
 
 	updateOffsetRef();
 
@@ -1388,11 +1403,9 @@ void BufferView::updateMetrics(bool singlepar)
 	while (y1 > 0 && pit1 > 0) {
 		y1 -= tm.parMetrics(pit1).ascent();
 		--pit1;
-		if (!singlepar)
-			tm.redoParagraph(pit1);
+		tm.redoParagraph(pit1);
 		y1 -= tm.parMetrics(pit1).descent();
 	}
-
 
 	// Take care of ascent of first line
 	y1 -= tm.parMetrics(pit1).ascent();
@@ -1413,49 +1426,25 @@ void BufferView::updateMetrics(bool singlepar)
 	while (y2 < height_ && pit2 < int(npit) - 1) {
 		y2 += tm.parMetrics(pit2).descent();
 		++pit2;
-		if (!singlepar)
-			tm.redoParagraph(pit2);
+		tm.redoParagraph(pit2);
 		y2 += tm.parMetrics(pit2).ascent();
 	}
 
 	// Take care of descent of last line
 	y2 += tm.parMetrics(pit2).descent();
 
-	// The coordinates of all these paragraphs are correct, cache them
-	int y = y1;
-	CoordCache::InnerParPosCache & parPos = coord_cache_.parPos()[&buftext];
-	for (pit_type pit = pit1; pit <= pit2; ++pit) {
-		ParagraphMetrics const & pm = tm.parMetrics(pit);
-		y += pm.ascent();
-		parPos[pit] = Point(0, y);
-		if (singlepar && pit == cursor_.bottom().pit()) {
-			// In Single Paragraph mode, collect here the
-			// y1 and y2 of the (one) paragraph the cursor is in
-			y1 = y - pm.ascent();
-			y2 = y + pm.descent();
-		}
-		y += pm.descent();
-	}
-
-	if (singlepar) {
-		// collect cursor paragraph iter bounds
-		pit1 = cursor_.bottom().pit();
-		pit2 = cursor_.bottom().pit();
-	}
-
-	LYXERR(Debug::DEBUG)
+	LYXERR(Debug::PAINTING)
 		<< BOOST_CURRENT_FUNCTION
-		<< " y1: " << y1
+		<< "\n y1: " << y1
 		<< " y2: " << y2
 		<< " pit1: " << pit1
 		<< " pit2: " << pit2
 		<< " npit: " << npit
 		<< " singlepar: " << singlepar
-		<< "size: " << size
 		<< endl;
 
 	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2,
-		singlepar? SingleParUpdate: FullScreenUpdate, size);
+		FullScreenUpdate, npit);
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		LYXERR(Debug::WORKAREA) << "BufferView::updateMetrics" << endl;

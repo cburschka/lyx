@@ -113,12 +113,9 @@ public:
 class CoordCache {
 public:
 	void clear();
-	Point get(Text const *, pit_type) const;
 
 	/// A map from paragraph index number to screen point
 	typedef std::map<pit_type, Point> InnerParPosCache;
-	/// A map from a Text to the map of paragraphs to screen points
-	typedef std::map<Text const *, InnerParPosCache> ParPosCache;
 	/// A map from a CursorSlice to screen points
 	typedef std::map<Text const *, InnerParPosCache> SliceCache;
 
@@ -128,9 +125,6 @@ public:
 	/// A map from insets to positions on the screen
 	CoordCacheBase<Inset> & insets() { return insets_; }
 	CoordCacheBase<Inset> const & getInsets() const { return insets_; }
-	/// A map from (Text, paragraph) pair to screen positions
-	ParPosCache & parPos() { return pars_; }
-	ParPosCache const & getParPos() const { return pars_; }
 	///
 	SliceCache & slice(bool boundary)
 	{
@@ -148,8 +142,6 @@ private:
 	CoordCacheBase<MathData> arrays_;
 	// All insets
 	CoordCacheBase<Inset> insets_;
-	/// Paragraph grouped by owning text
-	ParPosCache pars_;
 	/// Used with boundary == 0
 	SliceCache slices0_;
 	/// Used with boundary == 1
