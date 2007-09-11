@@ -45,6 +45,7 @@ import depend
 info = { 'cs' : ('czech', 'german', u"Obsah dokumentace LyXu"),
          'da' : ('danish', 'german', u"Indholdsfortegnelse over LyX's dokumentation"),
          'de' : ('german', 'german', u"Inhaltsverzeichnis LyX Dokumentation"),
+         'es' : ('spanish', 'spanish', u"Índice general LyX documentation"),
          'fr' : ('french', 'french', u"Plan de la documentation"),
          'ru' : ('russian', 'english', u"LyX Documentation Table of Contents"),
          'sl' : ('slovene', 'german', u"Kazalo dokumentacije LyXa"),
