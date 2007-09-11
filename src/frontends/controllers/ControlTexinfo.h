@@ -19,8 +19,10 @@
 namespace lyx {
 namespace frontend {
 
-/** A controller for Texinfo dialogs. */
+std::string const getTexFileFromList(std::string const & file,
+	std::string const & type);
 
+/** A controller for Texinfo dialogs. */
 class ControlTexinfo : public Controller {
 public:
 	///

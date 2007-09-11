@@ -14,16 +14,11 @@
 
 #include "GuiBox.h"
 
-#include "ControlBox.h"
-
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "lengthcommon.h"
 #include "LyXRC.h" // to set the default length values
 #include "Validator.h"
-
-#include "controllers/ControlBox.h"
-#include "controllers/frontend_helpers.h"
 
 #include "insets/InsetBox.h"
 
@@ -34,15 +29,10 @@
 #include <QCloseEvent>
 
 
-using lyx::support::getStringFromVector;
-using lyx::support::isStrDbl;
-using lyx::support::subst;
 using std::string;
-
 
 namespace lyx {
 namespace frontend {
-
 
 GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 	: GuiDialog(lv, "box")
@@ -210,7 +200,7 @@ void GuiBoxDialog::updateContents()
 	lengthToWidgets(widthED, widthUnitsLC,
 		(controller().params().width).asString(), default_unit);
 
-	string const special(controller().params().special);
+	string const special = controller().params().special;
 	if (!special.empty() && special != "none") {
 		QString spc;
 		for (unsigned int i = 0; i < gui_names_spec_.size(); i++) {
@@ -226,7 +216,7 @@ void GuiBoxDialog::updateContents()
 	lengthToWidgets(heightED, heightUnitsLC,
 		(controller().params().height).asString(), default_unit);
 
-	string const height_special(controller().params().height_special);
+	string const height_special = controller().params().height_special;
 	if (!height_special.empty() && height_special != "none") {
 		QString hspc;
 		for (unsigned int i = 0; i < gui_names_spec_.size(); i++) {
@@ -366,7 +356,7 @@ void GuiBoxDialog::setInnerType(bool frameless, int i)
 		innerBoxCO->setCurrentIndex(i - 1);
 	} else {
 		if (innerBoxCO->count() == 2)
-			i += 1;
+			++i;
 		innerBoxCO->clear();
 		innerBoxCO->addItem(qt_("None"));
 		innerBoxCO->addItem(qt_("Parbox"));

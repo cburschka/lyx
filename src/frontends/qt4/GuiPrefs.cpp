@@ -70,8 +70,6 @@ namespace frontend {
 //
 /////////////////////////////////////////////////////////////////////
 
-// FIXME: move to frontend_helpers.h
-
 template<class A>
 static size_t findPos_helper(std::vector<A> const & vec, A const & val)
 {
@@ -1609,12 +1607,12 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 
 	// store the lang identifiers for later
 	std::vector<LanguagePair> const langs = frontend::getLanguageData(false);
-	lang_ = getSecond(langs);
-
 	std::vector<LanguagePair>::const_iterator lit  = langs.begin();
 	std::vector<LanguagePair>::const_iterator lend = langs.end();
+	lang_.clear();
 	for (; lit != lend; ++lit) {
 		defaultLanguageCO->addItem(toqstr(lit->first));
+		lang_.push_back(lit->second);
 	}
 }
 

@@ -23,14 +23,14 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "controllers/frontend_helpers.h"
-
 #include "insets/InsetGraphicsParams.h"
 
 #include "support/convert.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
+
+#include <boost/bind.hpp>
 
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -67,6 +67,17 @@ getFirst(std::vector<Pair> const & pr)
 	std::transform(pr.begin(), pr.end(), tmp.begin(),
 		       boost::bind(&Pair::first, _1));
 	return tmp;
+}
+
+///
+template<class Pair>
+std::vector<typename Pair::second_type> const
+getSecond(std::vector<Pair> const & pr)
+{
+	 std::vector<typename Pair::second_type> tmp(pr.size());
+	 std::transform(pr.begin(), pr.end(), tmp.begin(),
+					 boost::bind(&Pair::second, _1));
+	 return tmp;
 }
 
 GuiGraphicsDialog::GuiGraphicsDialog(LyXView & lv)

@@ -19,24 +19,11 @@
 #include <vector>
 #include <string>
 
-#include <boost/bind.hpp>
-
 namespace lyx {
 
 namespace support { class FileFilterList; }
 
 namespace frontend {
-
-///
-template<class Pair>
-std::vector<typename Pair::second_type> const
-getSecond(std::vector<Pair> const & pr)
-{
-	 std::vector<typename Pair::second_type> tmp(pr.size());
-	 std::transform(pr.begin(), pr.end(), tmp.begin(),
-					 boost::bind(&Pair::second, _1));
-	 return tmp;
-}
 
 ///
 typedef std::pair<docstring, std::string> LanguagePair;
@@ -108,10 +95,6 @@ browseDir(docstring const & pathname,
 	 std::make_pair(docstring(), docstring()));
 
 
-/// Returns a vector of units that can be used to create a valid LaTeX length.
-std::vector<docstring> const getLatexUnits();
-
-
 /** Build filelists of all availabe bst/cls/sty-files. Done through
 *  kpsewhich and an external script, saved in *Files.lst.
 */
@@ -121,9 +104,6 @@ void rescanTexStyles();
  *  Each entry in the file list is returned as a name_with_path
  */
 void getTexFileList(std::string const & filename, std::vector<std::string> & contents);
-
-/// get a class with full path from the list
-std::string const getTexFileFromList(std::string const & classname, std::string const & type);
 
 } // namespace frontend
 } // namespace lyx

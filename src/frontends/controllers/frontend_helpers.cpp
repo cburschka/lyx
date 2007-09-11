@@ -13,20 +13,13 @@
 
 #include "frontend_helpers.h"
 
-#include "Buffer.h"
-#include "BufferParams.h"
-#include "Color.h"
-#include "debug.h"
 #include "gettext.h"
 #include "Language.h"
-#include "Length.h"
 
 #include "frontends/FileDialog.h"
 #include "frontends/alert.h"
 
 #include "support/filetools.h"
-#include "support/lstrings.h"
-#include "support/Package.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/os.h"
@@ -34,7 +27,6 @@
 #include "support/Path.h"
 #include "support/Systemcall.h"
 
-#include <boost/cregex.hpp>
 #include <boost/regex.hpp>
 
 #include <algorithm>
@@ -50,7 +42,6 @@ namespace frontend {
 
 using support::addName;
 using support::bformat;
-using support::contains;
 using support::FileFilterList;
 using support::FileName;
 using support::getExtension;
@@ -212,18 +203,6 @@ docstring const browseDir(docstring const & pathname,
 }
 
 
-vector<docstring> const getLatexUnits()
-{
-	vector<docstring> units;
-	int i = 0;
-	char const * str = stringFromUnit(i);
-	for (; str != 0; ++i, str = stringFromUnit(i))
-		units.push_back(from_ascii(str));
-
-	return units;
-}
-
-
 void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
@@ -254,54 +233,12 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 	boost::RegEx regex("/{2,}");
 	std::vector<string>::iterator it  = list.begin();
 	std::vector<string>::iterator end = list.end();
-	for (; it != end; ++it) {
+	for (; it != end; ++it)
 		*it = regex.Merge((*it), "/");
-	}
 
 	// remove empty items and duplicates
 	list.erase(std::remove(list.begin(), list.end(), ""), list.end());
 	eliminate_duplicates(list);
-}
-
-
-string const getTexFileFromList(string const & file,
-			    string const & type)
-{
-	string file_ = file;
-	// do we need to add the suffix?
-	if (!(getExtension(file) == type))
-		file_ += '.' + type;
-
-	lyxerr << "Searching for file " << file_ << endl;
-
-	string lstfile;
-	if (type == "cls")
-		lstfile = "clsFiles.lst";
-	else if (type == "sty")
-		lstfile = "styFiles.lst";
-	else if (type == "bst")
-		lstfile = "bstFiles.lst";
-	else if (type == "bib")
-		lstfile = "bibFiles.lst";
-	FileName const abslstfile = libFileSearch(string(), lstfile);
-	if (abslstfile.empty()) {
-		lyxerr << "File `'" << lstfile << "' not found." << endl;
-		return string();
-	}
-	string const allClasses = getFileContents(abslstfile);
-	int entries = 0;
-	string classfile = token(allClasses, '\n', entries);
-	int count = 0;
-	while ((!contains(classfile, file) ||
-		(onlyFilename(classfile) != file)) &&
-		(++count < 1000)) {
-		classfile = token(allClasses, '\n', ++entries);
-	}
-
-	// now we have filename with full path
-	lyxerr << "with full path: " << classfile << endl;
-
-	return classfile;
 }
 
 } // namespace frontend

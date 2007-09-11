@@ -20,8 +20,6 @@
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 
-#include "frontends/controllers/frontend_helpers.h"
-
 #include "support/fs_extras.h"
 #include "support/lstrings.h"
 
@@ -53,7 +51,7 @@ namespace {
 
 vector<string> const init_possible_cite_commands()
 {
-	char const * const pos[] = {
+	char const * const possible[] = {
 		"cite", "citet", "citep", "citealt", "citealp",
 		"citeauthor", "citeyear", "citeyearpar",
 		"citet*", "citep*", "citealt*", "citealp*", "citeauthor*",
@@ -64,16 +62,16 @@ vector<string> const init_possible_cite_commands()
 		"footcitealp", "footciteauthor", "footciteyear", "footciteyearpar",
 		"citefield", "citetitle", "cite*"
 	};
-	size_t const size_pos = sizeof(pos) / sizeof(pos[0]);
+	size_t const size_possible = sizeof(possible) / sizeof(possible[0]);
 
-	return vector<string>(pos, pos + size_pos);
+	return vector<string>(possible, possible + size_possible);
 }
 
 
 vector<string> const & possible_cite_commands()
 {
-	static vector<string> const pos = init_possible_cite_commands();
-	return pos;
+	static vector<string> const possible = init_possible_cite_commands();
+	return possible;
 }
 
 
@@ -459,9 +457,7 @@ int InsetCitation::plaintext(Buffer const & buffer, odocstream & os,
 }
 
 
-namespace {
-
-docstring const cleanupWhitespace(docstring const & citelist)
+static docstring const cleanupWhitespace(docstring const & citelist)
 {
 	docstring::const_iterator it  = citelist.begin();
 	docstring::const_iterator end = citelist.end();
@@ -478,8 +474,6 @@ docstring const cleanupWhitespace(docstring const & citelist)
 	return result;
 }
 
-// end anon namyspace
-}
 
 int InsetCitation::docbook(Buffer const &, odocstream & os,
 			   OutputParams const &) const

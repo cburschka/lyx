@@ -23,10 +23,10 @@
 
 #include "GuiViewSource.h" // For latexHighlighter use in the preamble.
 
+#include "frontend_helpers.h"
 #include "BufferParams.h"
 #include "Encoding.h"
 #include "gettext.h"
-#include "frontend_helpers.h" // getSecond()
 #include "Language.h"
 #include "LyXRC.h" // defaultUnit
 #include "TextClassList.h"
@@ -35,6 +35,8 @@
 #include "insets/InsetListingsParams.h"
 
 #include "support/lstrings.h"
+
+#include <boost/bind.hpp>
 
 #include <QCloseEvent>
 #include <QScrollBar>
@@ -53,6 +55,17 @@ using std::pair;
 using std::vector;
 using std::string;
 
+
+///
+template<class Pair>
+std::vector<typename Pair::second_type> const
+getSecond(std::vector<Pair> const & pr)
+{
+	 std::vector<typename Pair::second_type> tmp(pr.size());
+	 std::transform(pr.begin(), pr.end(), tmp.begin(),
+					 boost::bind(&Pair::second, _1));
+	 return tmp;
+}
 
 char const * const tex_graphics[] =
 {
