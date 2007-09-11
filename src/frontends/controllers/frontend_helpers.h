@@ -117,9 +117,6 @@ std::vector<docstring> const getLatexUnits();
 */
 void rescanTexStyles();
 
-/// rebuild the textree
-void texhash();
-
 /** Fill \c contents from one of the three texfiles.
  *  Each entry in the file list is returned as a name_with_path
  */

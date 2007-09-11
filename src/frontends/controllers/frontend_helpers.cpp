@@ -48,6 +48,26 @@ using std::endl;
 namespace lyx {
 namespace frontend {
 
+using support::addName;
+using support::bformat;
+using support::contains;
+using support::FileFilterList;
+using support::FileName;
+using support::getExtension;
+using support::getFileContents;
+using support::getVectorFromString;
+using support::libFileSearch;
+using support::makeAbsPath;
+using support::makeRelPath;
+using support::onlyFilename;
+using support::onlyPath;
+using support::package;
+using support::prefixIs;
+using support::quoteName;
+using support::removeExtension;
+using support::Systemcall;
+using support::token;
+
 
 namespace {
 
@@ -92,22 +112,6 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 
 	return langs;
 }
-
-} // namespace frontend
-
-using support::addName;
-using support::FileFilterList;
-using support::getExtension;
-using support::libFileSearch;
-using support::makeAbsPath;
-using support::makeRelPath;
-using support::onlyFilename;
-using support::onlyPath;
-using support::package;
-using support::prefixIs;
-using support::removeExtension;
-
-namespace frontend {
 
 
 docstring const browseFile(docstring const & filename,
@@ -157,7 +161,6 @@ docstring const browseRelFile(docstring const & filename,
 }
 
 
-
 docstring const browseLibFile(docstring const & dir,
 			   docstring const & name,
 			   docstring const & ext,
@@ -166,10 +169,10 @@ docstring const browseLibFile(docstring const & dir,
 {
 	// FIXME UNICODE
 	pair<docstring, docstring> const dir1(_("System files|#S#s"),
-				       from_utf8(addName(package().system_support().absFilename(), to_utf8(dir))));
+		from_utf8(addName(package().system_support().absFilename(), to_utf8(dir))));
 
 	pair<docstring, docstring> const dir2(_("User files|#U#u"),
-				       from_utf8(addName(package().user_support().absFilename(), to_utf8(dir))));
+		from_utf8(addName(package().user_support().absFilename(), to_utf8(dir))));
 
 	docstring const result = browseFile(from_utf8(
 		libFileSearch(to_utf8(dir), to_utf8(name), to_utf8(ext)).absFilename()),
@@ -220,23 +223,6 @@ vector<docstring> const getLatexUnits()
 	return units;
 }
 
-} // namespace frontend
-
-
-using support::bformat;
-using support::contains;
-using support::FileName;
-using support::getExtension;
-using support::getFileContents;
-using support::getVectorFromString;
-using support::libFileSearch;
-using support::onlyFilename;
-using support::package;
-using support::quoteName;
-using support::Systemcall;
-using support::token;
-
-namespace frontend {
 
 void rescanTexStyles()
 {
@@ -251,18 +237,7 @@ void rescanTexStyles()
 		return;
 	// FIXME UNICODE
 	Alert::error(_("Could not update TeX information"),
-		     bformat(_("The script `%s' failed."), lyx::from_utf8(command.absFilename())));
-}
-
-
-void texhash()
-{
-	// Run texhash in user lyx directory
-	support::Path p(package().user_support());
-
-	//path to texhash through system
-	Systemcall one;
-	one.startscript(Systemcall::Wait,"texhash");
+		bformat(_("The script `%s' failed."), from_utf8(command.absFilename())));
 }
 
 
