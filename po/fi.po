@@ -2,14 +2,14 @@
 # Copyright (C) 1997-2001 The LyX Team
 #       Originally modified by Martin.Vermeer@fgi.fi
 #       Pauli Virtanen <pauli.virtanen@hut.fi>
-#	Martin Vermeer <martin.vermeer@tkk.fi>
+# 	Martin Vermeer <martin.vermeer@tkk.fi>
 #
 # Translations:
 #
 # 	collapse = laskostua
 # 	minibuffer = tilarivi
-#	branch = haara
-#	bullet = ransk. viiva
+# 	branch = haara
+# 	bullet = ransk. viiva
 #
 # LaTeX terminology: (please tell me if I have got something wrong!)
 #
@@ -35,8 +35,8 @@
 # 	citation = lainaus
 #
 # 	float = kelluva upote
-#	wrap = tykö?
-#	theorem = väittämä
+# 	wrap = tykö?
+# 	theorem = väittämä
 #       encoding = merkistö
 #
 #
@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-05 15:31+0200\n"
+"POT-Creation-Date: 2007-09-11 21:44+0200\n"
 "PO-Revision-Date: 2007-07-14 11:00+0300\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -141,7 +141,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:808
+#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:819
 #: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:767
 #: src/LyXFunc.cpp:964 src/LyXFunc.cpp:1135 src/LyXFunc.cpp:2144
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
@@ -1899,8 +1899,7 @@ msgid ""
 "rather than the Cygwin teTeX."
 msgstr ""
 "Valitse tuottaako LyX Windows-tyylisiä polkunimiä vai Posix-tyylisiä. Tämä "
-"on hyödyllistä jos käytät Windowsin natiivi-MikTeXiä CygWin teTeXin "
-"sijaan."
+"on hyödyllistä jos käytät Windowsin natiivi-MikTeXiä CygWin teTeXin sijaan."
 
 #: src/frontends/qt4/ui/PrefCygwinPathUi.ui:47
 msgid "&Use Windows-style paths in LaTeX files"
@@ -2175,9 +2174,8 @@ msgid ""
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
-"Vietyjen teksti/LaTeX/SGML tiedostojen maksimirivinpituus. Jos 0,"
-"kappaleet tulostetaan yhtenä rivinä; jos > 0, kappaleiden välillä"
-"on tyhjä rivi."
+"Vietyjen teksti/LaTeX/SGML tiedostojen maksimirivinpituus. Jos 0,kappaleet "
+"tulostetaan yhtenä rivinä; jos > 0, kappaleiden välilläon tyhjä rivi."
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:82
 msgid "Output &line length:"
@@ -2228,8 +2226,9 @@ msgstr "&Jonotuskirjoitin:"
 msgid ""
 "Setting causes printer command to print to file and then use this actually "
 "to print."
-msgstr "Jos tämä on päällä, tulostetaan ensin tiedostoon ja sitten "
-"tulostetaan oikeasti."
+msgstr ""
+"Jos tämä on päällä, tulostetaan ensin tiedostoon ja sitten tulostetaan "
+"oikeasti."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:133
 msgid "Spool &command:"
@@ -2305,8 +2304,8 @@ msgid ""
 "printer command and you have config.<printer> files installed for all your "
 "printers."
 msgstr ""
-"Tavallisesti vain päällä, jos tulostat dvips-komennon avulla ja olet"
-"installoinut config.<tulostin> -tiedostot kaikille tulostimillesi."
+"Tavallisesti vain päällä, jos tulostat dvips-komennon avulla ja "
+"oletinstalloinut config.<tulostin> -tiedostot kaikille tulostimillesi."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:314
 msgid "Adapt output to printer"
@@ -3227,8 +3226,7 @@ msgstr "&Yksiköt:"
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.cpp:46
-#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
+#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:147
 msgid "Standard"
 msgstr "Perusteksti"
 
@@ -3944,7 +3942,6 @@ msgid "Fig. ---"
 msgstr "Fig. ---"
 
 #: lib/layouts/aastex.layout:557
-#, fuzzy
 msgid "Facility:"
 msgstr ""
 
@@ -4382,6 +4379,7 @@ msgstr "RuudunAlaotsikko"
 msgid "Column"
 msgstr "Palsta"
 
+#: lib/layouts/beamer.layout:414
 msgid "Start column (increase depth!), width:"
 msgstr "Aloita palsta (lisää sis.!), leveys:"
 
@@ -4717,7 +4715,6 @@ msgstr "Lähetysosoite"
 #: lib/layouts/dinbrief.layout:34 lib/layouts/g-brief-de.layout:184
 msgid "Adresse:"
 msgstr "Osoite:"
-
 
 #: lib/layouts/dinbrief.layout:46 lib/layouts/g-brief-en.layout:204
 #: lib/layouts/g-brief2.layout:843 lib/layouts/scrlettr.layout:61
@@ -8385,7 +8382,7 @@ msgid "Copy"
 msgstr "Kopioi"
 
 #: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
-#: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
+#: src/mathed/InsetMathGrid.cpp:1257 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Liitä"
 
@@ -8881,11 +8878,11 @@ msgstr "Tulosta asiakirja"
 msgid "Check spelling"
 msgstr "Tarkista oikeinkirjoitus"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:715
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:733
 msgid "Undo"
 msgstr "Kumoa"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:724
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:742
 msgid "Redo"
 msgstr "Kumoa kumous"
 
@@ -11451,98 +11448,103 @@ msgstr ""
 "Tämän päivän päivämäärä.\n"
 "Lue 'info date' jos haluat tietää lisää.\n"
 
-#: src/Buffer.cpp:236
+#: src/Buffer.cpp:237
 msgid "Could not remove temporary directory"
 msgstr "Väliaikaisen hakemiston poistaminen epäonnistui"
 
-#: src/Buffer.cpp:237
+#: src/Buffer.cpp:238
+#, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Väliaikaisen hakemiston %1$s poistaminen epäonnistui"
 
-#: src/Buffer.cpp:408
+#: src/Buffer.cpp:409
 msgid "Unknown document class"
 msgstr "Tuntematon asiakirjaluokka"
 
-#: src/Buffer.cpp:409
+#: src/Buffer.cpp:410
+#, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Käytän oletusdokumenttiluokka, koska luokka %1$s on tuntematon."
 
-#: src/Buffer.cpp:469 src/Text.cpp:295
+#: src/Buffer.cpp:470 src/Text.cpp:295
+#, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Tuntematon merkintä: %1$s %2$s\n"
 
-#: src/Buffer.cpp:473 src/Buffer.cpp:480 src/Buffer.cpp:500
+#: src/Buffer.cpp:474 src/Buffer.cpp:481 src/Buffer.cpp:501
 msgid "Document header error"
 msgstr "Asiakirjan alkuosa virheellinen"
 
-#: src/Buffer.cpp:479
+#: src/Buffer.cpp:480
 msgid "\\begin_header is missing"
 msgstr "\\begin_header puuttuu"
 
-#: src/Buffer.cpp:499
+#: src/Buffer.cpp:500
 msgid "\\begin_document is missing"
 msgstr "\\begin_document puuttuu"
 
-#: src/Buffer.cpp:510
+#: src/Buffer.cpp:511
 msgid "Can't load document class"
 msgstr "Tekstiluokkaa ei voi ladata"
 
-#: src/Buffer.cpp:511
+#: src/Buffer.cpp:512
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
-msgstr ""
-""
-"Käytän oletusdokumenttiluokka, koska luokka %1$s ei voitu ladata."
+msgstr "Käytän oletusdokumenttiluokka, koska luokka %1$s ei voitu ladata."
 
-#: src/Buffer.cpp:522 src/Buffer.cpp:528 src/BufferView.cpp:849
-#: src/BufferView.cpp:855
+#: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:866
+#: src/BufferView.cpp:872
 msgid "Changes not shown in LaTeX output"
 msgstr "Muutokset eivät näy LaTeX-tulosteessa"
 
-#: src/Buffer.cpp:523 src/BufferView.cpp:850
+#: src/Buffer.cpp:524 src/BufferView.cpp:867
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"Muutokset ei näytetä LaTeX-tulosteessa, koska dvipost ja xcolor/soul"
-"eivät ole installoituina.\n"
+"Muutokset ei näytetä LaTeX-tulosteessa, koska dvipost ja xcolor/souleivät "
+"ole installoituina.\n"
 "Installoi ne tai määritä \\lyxadded ja \\lyxdeleted LyXin aloitusosassa."
 
-#: src/Buffer.cpp:529 src/BufferView.cpp:856
+#: src/Buffer.cpp:530 src/BufferView.cpp:873
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"Muutokset eivät näy LaTeX-tulosteessa käyttäessä pdflatex, koska"
-"dvipost ja xcolor/soul eivät ole installoituina.\n"
-"Installoi molemmat tai määritä \\lyxadded ja \\lyxdeleted LyXin aloitusosassa."
+"Muutokset eivät näy LaTeX-tulosteessa käyttäessä pdflatex, koskadvipost ja "
+"xcolor/soul eivät ole installoituina.\n"
+"Installoi molemmat tai määritä \\lyxadded ja \\lyxdeleted LyXin "
+"aloitusosassa."
 
-#: src/Buffer.cpp:664 src/Buffer.cpp:673
+#: src/Buffer.cpp:665 src/Buffer.cpp:674
 msgid "Document could not be read"
 msgstr "Asiakirjaa ei voitu lukea"
 
-#: src/Buffer.cpp:665 src/Buffer.cpp:674
+#: src/Buffer.cpp:666 src/Buffer.cpp:675
+#, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s ei voitu lukea"
 
-#: src/Buffer.cpp:682 src/Buffer.cpp:754
+#: src/Buffer.cpp:683 src/Buffer.cpp:768
 msgid "Document format failure"
 msgstr "Asiakirjan muotoilu epäonnistui"
 
-#: src/Buffer.cpp:683
+#: src/Buffer.cpp:684
+#, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s ei ole LyX-asiakirja."
 
-#: src/Buffer.cpp:707
+#: src/Buffer.cpp:721
 msgid "Conversion failed"
 msgstr "Muuntaminen epäonnistui"
 
-#: src/Buffer.cpp:708
+#: src/Buffer.cpp:722
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
@@ -11550,39 +11552,43 @@ msgstr ""
 "%1$s on tehty aiemmalla LyXin versiolla ja väliaikaistiedosto muuntamista "
 "varten ei voitu luoda."
 
-#: src/Buffer.cpp:717
+#: src/Buffer.cpp:731
 msgid "Conversion script not found"
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
-#: src/Buffer.cpp:718
+#: src/Buffer.cpp:732
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
-"Tiedosto %1$s on tehty toisella LyXin versiolla, mutta muuntamisskriptiä ei"
-"löytynyt."
+"Tiedosto %1$s on tehty toisella LyXin versiolla, mutta muuntamisskriptiä "
+"eilöytynyt."
 
-#: src/Buffer.cpp:739
+#: src/Buffer.cpp:753
 msgid "Conversion script failed"
 msgstr "Muunnoskriptiä ei löydy."
 
-#: src/Buffer.cpp:740
+#: src/Buffer.cpp:754
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"Tiedosto %1$s on tehty aiemmalla LyXin versiolla, mutta lyx2lyx-skripti"
-"epäonnistui muuntamaan sitä."
+"Tiedosto %1$s on tehty aiemmalla LyXin versiolla, mutta lyx2lyx-"
+"skriptiepäonnistui muuntamaan sitä."
 
-#: src/Buffer.cpp:755
+#: src/Buffer.cpp:769
+#, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s loppui odottamattomasti, eli se on luultavasti rikkinäinen."
 
-#: src/Buffer.cpp:794
+#: src/Buffer.cpp:805
 msgid "Backup failure"
 msgstr "Varmuuskopiointi epäonnistui"
 
-#: src/Buffer.cpp:795
+#: src/Buffer.cpp:806
+#, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
@@ -11590,62 +11596,66 @@ msgstr ""
 "En voi luoda varmuuskopiotiedostoa %1$s.\n"
 "Tarkista, onko hakemisto olemassa ja onko lupaa kirjoittaa."
 
-#: src/Buffer.cpp:805
+#: src/Buffer.cpp:816
+#, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
-"Asiakirja %1$s on ulkoisesti muutettu. Oletko varma, että haluat "
-"kirjoittaa sen tiedoston päälle?"
+"Asiakirja %1$s on ulkoisesti muutettu. Oletko varma, että haluat kirjoittaa "
+"sen tiedoston päälle?"
 
-#: src/Buffer.cpp:807
+#: src/Buffer.cpp:818
 msgid "Overwrite modified file?"
 msgstr "Kirjoitetaanko muutetun tiedoston päälle?"
 
-#: src/Buffer.cpp:808 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
+#: src/Buffer.cpp:819 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
 #: src/LyXFunc.cpp:2144 src/callback.cpp:186
 msgid "&Overwrite"
 msgstr "Päällekirjoitus"
 
-#: src/Buffer.cpp:954
+#: src/Buffer.cpp:964
 msgid "Encoding error"
 msgstr "Merkistövirhe"
 
-#: src/Buffer.cpp:955
+#: src/Buffer.cpp:965
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Asiakirjasi sisältää merkkejä, joita lienevät mahdottomia esittää valitussasi "
-"merkistössä.\n"
+"Asiakirjasi sisältää merkkejä, joita lienevät mahdottomia esittää "
+"valitussasi merkistössä.\n"
 "merkistön muuttaminen tuf8:ksi auttanee."
 
-#: src/Buffer.cpp:1233
+#: src/Buffer.cpp:1243
 msgid "Running chktex..."
 msgstr "chktex on käynnissä..."
 
-#: src/Buffer.cpp:1246
+#: src/Buffer.cpp:1256
 msgid "chktex failure"
 msgstr "chktex epäonnistui"
 
-#: src/Buffer.cpp:1247
+#: src/Buffer.cpp:1257
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo epäonnistui"
 
-#: src/Buffer.cpp:1792
+#: src/Buffer.cpp:1815
 msgid "Preview source code"
 msgstr "Lähdekoodin esikatselu"
 
-#: src/Buffer.cpp:1803
-msgid "Preview source code for paragraph %1$s"
+#: src/Buffer.cpp:1826
+#, fuzzy, c-format
+msgid "Preview source code for paragraph %1$d"
 msgstr "Kappaleen %1$s lähdekoodin esikatselu"
 
-#: src/Buffer.cpp:1807
+#: src/Buffer.cpp:1830
+#, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Lähdekoodin esikatselu, kappaleet %1$s -- %2$s"
 
 #: src/BufferList.cpp:109 src/BufferList.cpp:217
+#, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
 "\n"
@@ -11662,19 +11672,20 @@ msgstr "Tallennetaanko muutunut asiakirja?"
 msgid "&Discard"
 msgstr "Heitä pois"
 
-#: src/BufferList.cpp:347
+#: src/BufferList.cpp:343
+#, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "LyX yrittää tallentaa asiakirjaa %1$s"
 
-#: src/BufferList.cpp:358 src/BufferList.cpp:371 src/BufferList.cpp:385
+#: src/BufferList.cpp:354 src/BufferList.cpp:367 src/BufferList.cpp:381
 msgid "  Save seems successful. Phew."
 msgstr "  Tallennus ilmeisesti onnistui. Huh."
 
-#: src/BufferList.cpp:361 src/BufferList.cpp:375
+#: src/BufferList.cpp:357 src/BufferList.cpp:371
 msgid "  Save failed! Trying..."
 msgstr "  Tallennus epäonnistui! Yritän..."
 
-#: src/BufferList.cpp:388
+#: src/BufferList.cpp:384
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Tallennus epäonnistui! Voi itku. Asiakirja on hävinnyt."
 
@@ -11688,8 +11699,8 @@ msgid ""
 "available. See the Customization documentation\n"
 "for more information.\n"
 msgstr ""
-"Tämän asiakirjan pyytämä layout- tiedosto, %1$s.layout, " 
-"on kelvoton. Luultavasti koska joku sen vaatima LaTeX-\n"
+"Tämän asiakirjan pyytämä layout- tiedosto, %1$s.layout, on kelvoton. "
+"Luultavasti koska joku sen vaatima LaTeX-\n"
 "luokka- tai tyylitiedosto puuttuu. Ks. Räätälöinti-\n"
 "dokumentti jos haluat tietää lisää.\n"
 
@@ -11701,59 +11712,61 @@ msgstr "Asiakirjaluokka puuttuu"
 msgid "LyX will not be able to produce output."
 msgstr "LyX ei voi tuottaa tulostetta."
 
-#: src/BufferView.cpp:519
+#: src/BufferView.cpp:520
 msgid "Save bookmark"
 msgstr "Tallenna kirjanmerkki"
 
-#: src/BufferView.cpp:718
+#: src/BufferView.cpp:736
 msgid "No further undo information"
 msgstr "Ei enää muuta kumottavaa"
 
-#: src/BufferView.cpp:727
+#: src/BufferView.cpp:745
 msgid "No further redo information"
 msgstr "Ei muuta uudelleen tehtävää"
 
-#: src/BufferView.cpp:914
+#: src/BufferView.cpp:932
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/BufferView.cpp:921
+#: src/BufferView.cpp:939
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/BufferView.cpp:928
+#: src/BufferView.cpp:946
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/BufferView.cpp:931
+#: src/BufferView.cpp:949
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/BufferView.cpp:977
+#: src/BufferView.cpp:995
+#, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d sanaa valinnassa."
 
-#: src/BufferView.cpp:980
+#: src/BufferView.cpp:998
+#, c-format
 msgid "%1$d words in document."
 msgstr "%1$d sanaa dokumentissa."
 
-#: src/BufferView.cpp:985
+#: src/BufferView.cpp:1003
 msgid "One word in selection."
 msgstr "Yksi sana valinnassa."
 
-#: src/BufferView.cpp:987
+#: src/BufferView.cpp:1005
 msgid "One word in document."
 msgstr "Yksi sana dokumentissa"
 
-#: src/BufferView.cpp:990
+#: src/BufferView.cpp:1008
 msgid "Count words"
 msgstr "Laske sanat"
 
-#: src/BufferView.cpp:1579
+#: src/BufferView.cpp:1606
 msgid "Select LyX document to insert"
 msgstr "Valitse lisättävä LyX-asiakirja"
 
-#: src/BufferView.cpp:1585 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
+#: src/BufferView.cpp:1608 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
 #: src/LyXFunc.cpp:2095 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11763,31 +11776,31 @@ msgstr "Valitse lisättävä LyX-asiakirja"
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView.cpp:1586 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
+#: src/BufferView.cpp:1609 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView.cpp:1592 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView.cpp:1604 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
+#: src/BufferView.cpp:1627 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
 #: src/LyXFunc.cpp:2131 src/LyXFunc.cpp:2147
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView.cpp:1611
+#: src/BufferView.cpp:1638
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lisätään asiakirja %1$s..."
 
-#: src/BufferView.cpp:1622
+#: src/BufferView.cpp:1649
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView.cpp:1624
+#: src/BufferView.cpp:1651
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lisätä"
@@ -12035,6 +12048,7 @@ msgid "Cannot convert file"
 msgstr "Tiedoston muuntaminen epäonnistui"
 
 #: src/Converter.cpp:334
+#, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
@@ -12055,20 +12069,25 @@ msgid "There were errors during the build process."
 msgstr "Käännösprosessin aikana tapahtui virheitä."
 
 #: src/Converter.cpp:479 src/Format.cpp:327 src/Format.cpp:386
+#, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Muunnosskriptin %1$s suorittaminen epäonnistui."
 
 #: src/Converter.cpp:502
+#, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Väliaikaisen hakemiston siiro paikasta %1$s paikkaan %1$s epäonnistui."
 
 #: src/Converter.cpp:548
+#, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Väliaikaisen tiedoston kopiointi paikasta %1$s paikkaan %2$s."
 
 #: src/Converter.cpp:549
+#, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
-msgstr "Väliaikaisen tiedoston siirtäminen paikasta %1$s paikkaan %2$s epäonnistui."
+msgstr ""
+"Väliaikaisen tiedoston siirtäminen paikasta %1$s paikkaan %2$s epäonnistui."
 
 #: src/Converter.cpp:607
 msgid "Running LaTeX..."
@@ -12080,7 +12099,8 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX-ajo ei onnistunut. Lisäksi LyX ei löytänyt LaTeX-ajon lokitiedostoa %1$s."
+"LaTeX-ajo ei onnistunut. Lisäksi LyX ei löytänyt LaTeX-ajon lokitiedostoa %1"
+"$s."
 
 #: src/Converter.cpp:628
 msgid "LaTeX failed"
@@ -12094,7 +12114,7 @@ msgstr "tulostiedosto on tyhjä"
 msgid "An empty output file was generated."
 msgstr "Saatiin tyhjä tulostiedosto."
 
-#: src/CutAndPaste.cpp:439
+#: src/CutAndPaste.cpp:430
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -12107,11 +12127,12 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.cpp:444
+#: src/CutAndPaste.cpp:435
 msgid "Changed Layout"
 msgstr "Muotoilu vaihtoi"
 
-#: src/CutAndPaste.cpp:463
+#: src/CutAndPaste.cpp:454
+#, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
@@ -12119,7 +12140,7 @@ msgstr ""
 "Merkkityyli %1$s on määrittämätön luokkamuunnoksen johdosta \n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.cpp:470
+#: src/CutAndPaste.cpp:461
 msgid "Undefined character style"
 msgstr "Määrittämätön merkkityyli"
 
@@ -12159,6 +12180,7 @@ msgid "Couldn't export file"
 msgstr "Ei voitu viedä tiedostoa"
 
 #: src/Exporter.cpp:171
+#, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ei tietoa, miten tuoda formaattia %1$s"
 
@@ -12175,10 +12197,12 @@ msgid "Document export cancelled."
 msgstr "Asiakirja vienti peruutettu."
 
 #: src/Exporter.cpp:251
+#, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Asiakirja viety nimellä %1$s tiedostoon `%2$s'"
 
 #: src/Exporter.cpp:257
+#, c-format
 msgid "Document exported as %1$s"
 msgstr "Asiakirja viety nimellä %1$s"
 
@@ -12280,6 +12304,7 @@ msgid "Cannot view file"
 msgstr "Tiedostoa ei voi katsella"
 
 #: src/Format.cpp:270 src/Format.cpp:340
+#, c-format
 msgid "File does not exist: %1$s"
 msgstr "Tiedostoa ei ole olemassa: %1$s"
 
@@ -12289,6 +12314,7 @@ msgid "No information for viewing %1$s"
 msgstr "Ei tietoa, miten näyttää %1$s"
 
 #: src/Format.cpp:293
+#, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "Auto-katselu tiedosto %1$s epäonnistui"
 
@@ -12297,6 +12323,7 @@ msgid "Cannot edit file"
 msgstr "Tiedostoa ei voi editoida"
 
 #: src/Format.cpp:353
+#, c-format
 msgid "No information for editing %1$s"
 msgstr "Ei tietoa, miten editoida%1$s"
 
@@ -12330,29 +12357,35 @@ msgstr ""
 "Ehkäpä sen asetuksissa on vikaa?"
 
 #: src/ISpell.cpp:405
+#, c-format
 msgid ""
 "Could not check word `%1$s' because it could not be converted to encoding `%2"
 "$s'."
 msgstr ""
-"En voinut tarkistaa sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%2$s'."
+"En voinut tarkistaa sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%"
+"2$s'."
 
 #: src/ISpell.cpp:416
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr "Viestintä ispell- oikolukuohjelman prosessin kanssa epäonnistui."
 
 #: src/ISpell.cpp:476
+#, c-format
 msgid ""
 "Could not insert word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
-"En voinut lisätä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%2$s'."
+"En voinut lisätä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%2"
+"$s'."
 
 #: src/ISpell.cpp:491
+#, c-format
 msgid ""
 "Could not accept word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
-"En voinut hyväksyä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%2$s'."
+"En voinut hyväksyä sana `%1$s' koska sitä ei saatu muunnetuksi merkistöön `%2"
+"$s'."
 
 #: src/Importer.cpp:47
 #, c-format
@@ -12364,6 +12397,7 @@ msgid "Couldn't import file"
 msgstr "Ei voi tuoda tiedostoa"
 
 #: src/Importer.cpp:69
+#, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ei tietoa, miten tuoda muodosta %1$s"
 
@@ -12376,6 +12410,7 @@ msgid "   options: "
 msgstr "   valinnat: "
 
 #: src/LaTeX.cpp:94
+#, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Odotan LaTeXin %1$d. ajon loppumista"
 
@@ -12396,6 +12431,7 @@ msgid "Could not read configuration file"
 msgstr "En voinut lukea asetustiedostoa"
 
 #: src/LyX.cpp:132
+#, c-format
 msgid ""
 "Error while reading the configuration file\n"
 "%1$s.\n"
@@ -12412,27 +12448,29 @@ msgstr "LyX: Käyttäjän hakemisto konfiguroituu uudelleen"
 msgid "Done!"
 msgstr "Valmis!"
 
-#: src/LyX.cpp:509
+#: src/LyX.cpp:503
+#, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Väliaikaisen hakemiston %1$s luominen epäonnistui"
 
-#: src/LyX.cpp:511
+#: src/LyX.cpp:505
 msgid "Unable to remove temporary directory"
 msgstr "Väliaikaishakemisto poisto epäonnistui"
 
-#: src/LyX.cpp:547
+#: src/LyX.cpp:541
+#, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Virheellinen valitsin `%1$s'. Ohjelma sulkeutuu."
 
-#: src/LyX.cpp:815
+#: src/LyX.cpp:809
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:938
 msgid "Could not create temporary directory"
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:939
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12443,49 +12481,50 @@ msgstr ""
 "%1$s epäonnistui. Varmista, että hakemisto on\n"
 "olemassa ja sinne voi kirjoittaa, ja yritä uudelleen."
 
-#: src/LyX.cpp:1112
+#: src/LyX.cpp:1106
 msgid "Missing user LyX directory"
 msgstr "Käyttäjän LyX-hakemistoa ei ole"
 
-#: src/LyX.cpp:1113
+#: src/LyX.cpp:1107
+#, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
-"Kirjoitit käyttäjän LyX-hakemiston, %1$s."
-"Sitä tarvitaan omia asetuksiasi säylyttämiseen."
+"Kirjoitit käyttäjän LyX-hakemiston, %1$s.Sitä tarvitaan omia asetuksiasi "
+"säylyttämiseen."
 
-#: src/LyX.cpp:1118
+#: src/LyX.cpp:1112
 msgid "&Create directory"
 msgstr "Luo hakemiston"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1113
 msgid "&Exit LyX"
 msgstr "Lopeta LyX"
 
-#: src/LyX.cpp:1120
+#: src/LyX.cpp:1114
 msgid "No user LyX directory. Exiting."
 msgstr "Käyttäjän LyX-hakemistoa ei ole. Sulkeutuu."
 
-#: src/LyX.cpp:1124
+#: src/LyX.cpp:1118
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Luo hakemiston %1$s"
 
-#: src/LyX.cpp:1130
+#: src/LyX.cpp:1124
 msgid "Failed to create directory. Exiting."
 msgstr "Hakemiston luominen epäonnistui. Sulkeutuu."
 
-#: src/LyX.cpp:1303
+#: src/LyX.cpp:1297
 msgid "List of supported debug flags:"
 msgstr "Luettelo mahdollisista virheilmoitusasetuksista:"
 
-#: src/LyX.cpp:1307
+#: src/LyX.cpp:1301
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Virheilmoitustaso on nyt %1$s"
 
-#: src/LyX.cpp:1318
+#: src/LyX.cpp:1312
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12527,41 +12566,41 @@ msgstr ""
 "        -version           näytä yhteenveto versio- ja käännöstiedoista\n"
 "Katso lisätietoja LyXin manuaalisivulta."
 
-#: src/LyX.cpp:1354 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1348 src/support/Package.cpp.in:568
 msgid "No system directory"
 msgstr "Järjestelmähakemisto ei löydy"
 
-#: src/LyX.cpp:1355
+#: src/LyX.cpp:1349
 msgid "Missing directory for -sysdir switch"
 msgstr "Komento puuttuu -sysdir-valitsimelta"
 
-#: src/LyX.cpp:1365
+#: src/LyX.cpp:1359
 msgid "No user directory"
 msgstr "Käyttäjän hakemistoa ei löydy"
 
-#: src/LyX.cpp:1366
+#: src/LyX.cpp:1360
 msgid "Missing directory for -userdir switch"
 msgstr "Hakemistonimi puuttuu -userdir -valitsimelta"
 
-#: src/LyX.cpp:1376
+#: src/LyX.cpp:1370
 msgid "Incomplete command"
 msgstr "Epätäydellinen komento"
 
-#: src/LyX.cpp:1377
+#: src/LyX.cpp:1371
 msgid "Missing command string after --execute switch"
 msgstr "Komento puuttuu --execute -valitsimelta"
 
-#: src/LyX.cpp:1387
+#: src/LyX.cpp:1381
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --export-valitsimen jäljestä"
 
-#: src/LyX.cpp:1399
+#: src/LyX.cpp:1393
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --import-valitsimen jäljestä"
 
-#: src/LyX.cpp:1404
+#: src/LyX.cpp:1398
 msgid "Missing filename for --import"
 msgstr "Valitsimelle --import ei annettu tiedostoa"
 
@@ -12616,11 +12655,11 @@ msgid "Print document failed"
 msgstr "Asiakirjan tulostus epäonnistui"
 
 #: src/LyXFunc.cpp:802
+#, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
-msgstr ""
-"Asiakirja ei voitu muuntaa tekstiluokkaan \"%1$s\"."
+msgstr "Asiakirja ei voitu muuntaa tekstiluokkaan \"%1$s\"."
 
 #: src/LyXFunc.cpp:805
 msgid "Could not change class"
@@ -12662,7 +12701,7 @@ msgstr "Hylkää muutokset"
 msgid "Exiting."
 msgstr "Lopetan."
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1341
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1344
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
@@ -12683,6 +12722,7 @@ msgstr ""
 "määritellä uudelleen."
 
 #: src/LyXFunc.cpp:1705
+#, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Asiakirjan oletusasetukset tallennettiin tiedostoon %1$s"
 
@@ -12695,6 +12735,7 @@ msgid "Converting document to new document class..."
 msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
 
 #: src/LyXFunc.cpp:1840
+#, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Tuntematon työkalupalkki \"%1$s\""
 
@@ -12973,7 +13014,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2238
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr "Aseta pois päältä, jos et halua LyXin rullaavan sen muistamaan paikkaan."
+msgstr ""
+"Aseta pois päältä, jos et halua LyXin rullaavan sen muistamaan paikkaan."
 
 #: src/LyXRC.cpp:2242
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -12990,6 +13032,7 @@ msgid ""
 msgstr "Muuta muiden kuin asiakirjan kielellä kirjoitettujen osien merkintää."
 
 #: src/LyXRC.cpp:2254
+#, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Suurin muistettu viimeisimpien tiedostojen määrä. Enintään %1$d voi näkyä\n"
@@ -13263,8 +13306,7 @@ msgstr ""
 
 #: src/LyXVC.cpp:174
 msgid "Revert to stored version of document?"
-msgstr "Ladataanko levyllä oleva versio "
-"muistissa olevan asiakirjan päälle?"
+msgstr "Ladataanko levyllä oleva versio muistissa olevan asiakirjan päälle?"
 
 #: src/MenuBackend.cpp:476
 msgid "No Documents Open!"
@@ -13307,15 +13349,15 @@ msgstr ""
 msgid "No Branch in Document!"
 msgstr "Asiakirja ei sisällä haaroja!"
 
-#: src/Paragraph.cpp:1632 src/frontends/qt4/QParagraph.cpp:237
+#: src/Paragraph.cpp:1632 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "Järjetöntä tällä kappaletyylillä!"
 
-#: src/Paragraph.cpp:1692
+#: src/Paragraph.cpp:1690
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1693
+#: src/Paragraph.cpp:1691
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -13347,6 +13389,7 @@ msgid "Change tracking error"
 msgstr "Muutoksenseurannan virhe"
 
 #: src/Text.cpp:274
+#, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr "Tuntematon tekijätunnus lisättäväksi: %1$d\n"
 
@@ -13427,15 +13470,15 @@ msgstr ", Merkki: 0x"
 msgid ", Boundary: "
 msgstr ", Raja: "
 
-#: src/Text2.cpp:585
+#: src/Text2.cpp:576
 msgid "No font change defined."
 msgstr "Ei kirjasinvuorottelua tarjolla."
 
-#: src/Text2.cpp:626
+#: src/Text2.cpp:617
 msgid "Nothing to index!"
 msgstr "Ei mitään hakemistossa!"
 
-#: src/Text2.cpp:628
+#: src/Text2.cpp:619
 msgid "Cannot index more than one paragraph!"
 msgstr "Hakemistoon voi lisätä vain yhden kappaleen!"
 
@@ -13455,11 +13498,11 @@ msgstr "Muotoilu "
 msgid " not known"
 msgstr " tuntematon"
 
-#: src/Text3.cpp:1452 src/Text3.cpp:1464
+#: src/Text3.cpp:1455 src/Text3.cpp:1467
 msgid "Character set"
 msgstr "Merkistö"
 
-#: src/Text3.cpp:1581 src/Text3.cpp:1592
+#: src/Text3.cpp:1584 src/Text3.cpp:1595
 msgid "Paragraph layout set"
 msgstr "Kappaletyyli asetettu"
 
@@ -13515,12 +13558,14 @@ msgid "Could not read document"
 msgstr "Asiakirjan lukeminen epäonnistui"
 
 #: src/buffer_funcs.cpp:96
+#, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
 "\n"
 "Recover emergency save?"
-msgstr "Asiakirjasta %1$s on olemassa hätätallennusversio."
-"\nLadataanko hätätallennus?"
+msgstr ""
+"Asiakirjasta %1$s on olemassa hätätallennusversio.\n"
+"Ladataanko hätätallennus?"
 
 #: src/buffer_funcs.cpp:99
 msgid "Load emergency save?"
@@ -13558,6 +13603,7 @@ msgid "Load &original"
 msgstr "Lataa alkuperäinen"
 
 #: src/buffer_funcs.cpp:166
+#, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Haluatko palauttaa asiakirjan %1$s versionhallinnasta?"
 
@@ -13645,24 +13691,24 @@ msgstr "Muuta nimeä"
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/callback.cpp:234
+#: src/callback.cpp:236
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s tallentuu itsestään"
 
-#: src/callback.cpp:274
+#: src/callback.cpp:276
 msgid "Autosave failed!"
 msgstr "Automaattinen tallennus epäonnistui!"
 
-#: src/callback.cpp:301
+#: src/callback.cpp:303
 msgid "Autosaving current document..."
 msgstr "Asiakirjan automaattinen tallennus käynnissä..."
 
-#: src/callback.cpp:365
+#: src/callback.cpp:367
 msgid "Select file to insert"
 msgstr "Valitse lisättävä tiedosto"
 
-#: src/callback.cpp:384
+#: src/callback.cpp:386
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -13670,11 +13716,11 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/callback.cpp:386
+#: src/callback.cpp:388
 msgid "Could not read file"
 msgstr "Ei voitu lukea tiedostoa"
 
-#: src/callback.cpp:394
+#: src/callback.cpp:396
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -13682,15 +13728,15 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/callback.cpp:396 src/output.cpp:41
+#: src/callback.cpp:398 src/output.cpp:41
 msgid "Could not open file"
 msgstr "Ei voitu avata tiedostoa"
 
-#: src/callback.cpp:420
+#: src/callback.cpp:422
 msgid "Reading not UTF-8 encoded file"
 msgstr "Luen ei-UTF-8-koodattua tiedostoa"
 
-#: src/callback.cpp:421
+#: src/callback.cpp:423
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -13704,19 +13750,19 @@ msgstr ""
 "muuta tiedoston merkistöa UTF-8:ksi\n"
 "LyXin ulkopuolisella ohjelmalla.\n"
 
-#: src/callback.cpp:438
+#: src/callback.cpp:440
 msgid "Running configure..."
 msgstr "\"configure\" käynnissä..."
 
-#: src/callback.cpp:447
+#: src/callback.cpp:449
 msgid "Reloading configuration..."
 msgstr "Asetustiedot latautuvat uudelleen..."
 
-#: src/callback.cpp:452
+#: src/callback.cpp:454
 msgid "System reconfigured"
 msgstr "Kokoonpanoasetukset päivittyivät."
 
-#: src/callback.cpp:453
+#: src/callback.cpp:455
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -13853,11 +13899,11 @@ msgstr "Asiakirjan tallentaminen epäonnistui!"
 msgid "Opening child document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/frontends/LyXView.cpp:498
+#: src/frontends/LyXView.cpp:497
 msgid " (changed)"
 msgstr " (muutettu)"
 
-#: src/frontends/LyXView.cpp:502
+#: src/frontends/LyXView.cpp:501
 msgid " (read only)"
 msgstr " (kirjoitussuojattu)"
 
@@ -14139,8 +14185,7 @@ msgstr "Oikolukuohjelman virhe"
 
 #: src/frontends/controllers/ControlSpellchecker.cpp:118
 msgid "The spellchecker could not be started\n"
-msgstr ""
-"Oikolukuohjelma ei käynnistynyt\n"
+msgstr "Oikolukuohjelma ei käynnistynyt\n"
 
 #: src/frontends/controllers/ControlSpellchecker.cpp:276
 msgid ""
@@ -14282,8 +14327,13 @@ msgid "Could not update TeX information"
 msgstr "Ei muuta uudelleen tehtävää"
 
 #: src/frontends/controllers/frontend_helpers.cpp:1327
+#, c-format
 msgid "The script `%s' failed."
 msgstr "Skriptin '%s' ajo epäonnistui."
+
+#: src/frontends/qt4/BulletsModule.cpp:46
+msgid "Standard[[Bullets]]"
+msgstr ""
 
 #: src/frontends/qt4/BulletsModule.cpp:47
 msgid "Maths"
@@ -14325,19 +14375,19 @@ msgstr "Aktiivisisällys"
 msgid "Directories"
 msgstr "Hakemistot"
 
-#: src/frontends/qt4/GuiApplication.cpp:369
+#: src/frontends/qt4/GuiApplication.cpp:390
 msgid "About %1"
 msgstr "LyXistä %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:369 src/frontends/qt4/QPrefs.cpp:2031
+#: src/frontends/qt4/GuiApplication.cpp:390 src/frontends/qt4/QPrefs.cpp:2031
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: src/frontends/qt4/GuiApplication.cpp:370
+#: src/frontends/qt4/GuiApplication.cpp:391
 msgid "Reconfigure"
 msgstr "Konfiguroi uudelleen"
 
-#: src/frontends/qt4/GuiApplication.cpp:370
+#: src/frontends/qt4/GuiApplication.cpp:391
 msgid "Quit %1"
 msgstr "Poistu %1"
 
@@ -14353,7 +14403,7 @@ msgstr "Tavalliset ikoonit"
 msgid "Big-sized icons"
 msgstr "Isot ikoonit"
 
-#: src/frontends/qt4/GuiView.cpp:729
+#: src/frontends/qt4/GuiView.cpp:733
 msgid "LyX"
 msgstr "LyX"
 
@@ -14654,6 +14704,7 @@ msgid "Numerical"
 msgstr "Numerotyyli"
 
 #: src/frontends/qt4/QDocument.cpp:554
+#, c-format
 msgid "Unavailable: %1$s"
 msgstr "Ei saatavissa: %1$s"
 
@@ -14765,7 +14816,7 @@ msgid ""
 "the items is used."
 msgstr ""
 
-#: src/frontends/qt4/QParagraph.cpp:175
+#: src/frontends/qt4/QParagraph.cpp:171
 msgid "Paragraph Settings"
 msgstr "Kappaleasetukset"
 
@@ -14903,7 +14954,7 @@ msgstr "Palaa"
 msgid "Jump to label"
 msgstr "Siirry nimikkeeseen"
 
-#: src/frontends/qt4/QSearch.cpp:138
+#: src/frontends/qt4/QSearch.cpp:139
 msgid "Find and Replace"
 msgstr "Etsi ja korvaa"
 
@@ -14932,12 +14983,10 @@ msgid "Vertical Space Settings"
 msgstr "Pystyväliasetukset"
 
 #: src/frontends/qt4/QWrap.cpp:83
-#, fuzzy
 msgid "Text Wrap Settings"
 msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:153
-#, fuzzy
 msgid "space"
 msgstr ""
 
@@ -15125,11 +15174,13 @@ msgid "footnote"
 msgstr "alaviite"
 
 #: src/insets/InsetGraphics.cpp:484 src/insets/InsetInclude.cpp:535
+#, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
 "%1$s\n"
 "into the temporary directory."
-msgstr "Tiedoston \n"
+msgstr ""
+"Tiedoston \n"
 "%1$s\n"
 "Tiedoston %1$s kopiointi väliaikaisen\n"
 "hakemistoon %2$s epäonnistui"
@@ -15304,18 +15355,22 @@ msgid "Invalid (empty) listing parameter name."
 msgstr "Epäkelpo (tyhjä) listausparametrin nimi."
 
 #: src/insets/InsetListingsParams.cpp:646
+#, c-format
 msgid "Available listing parameters are %1$s"
 msgstr "Tarjolla listausparametrit: %1$s"
 
 #: src/insets/InsetListingsParams.cpp:649
+#, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
 msgstr "Listausparametrit jossa merkkijono \"%1$s\" ovat %2$s "
 
 #: src/insets/InsetListingsParams.cpp:660
+#, c-format
 msgid "Parameter %1$s: "
 msgstr "Parametri %s: "
 
 #: src/insets/InsetListingsParams.cpp:673
+#, c-format
 msgid "Unknown listing parameter name: %1$s"
 msgstr "Tuntematon listausparametrin nimi: %1$s"
 
@@ -15334,7 +15389,6 @@ msgid "Opened Marginal Note Inset"
 msgstr "Reunahuomautusupote avattu"
 
 #: src/insets/InsetNomencl.cpp:39
-#, fuzzy
 msgid "Nom"
 msgstr ""
 
@@ -15506,15 +15560,15 @@ msgstr "Virhe pikselikartan luomisessa"
 msgid "No image"
 msgstr "Ei kuvaa"
 
-#: src/insets/RenderPreview.cpp:92
+#: src/insets/RenderPreview.cpp:99
 msgid "Preview loading"
 msgstr "Esikatselu latautuu"
 
-#: src/insets/RenderPreview.cpp:95
+#: src/insets/RenderPreview.cpp:102
 msgid "Preview ready"
 msgstr "Esikatselu valmis"
 
-#: src/insets/RenderPreview.cpp:98
+#: src/insets/RenderPreview.cpp:105
 msgid "Preview failed"
 msgstr "Esikatselu epäonnistui"
 
@@ -15605,27 +15659,28 @@ msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "En voi lisätä pystyviivoja kohteeseen '%1$s'"
 
 #: src/mathed/InsetMathCases.cpp:98
-#, c-format
-msgid "No vertical grid lines in '%1$s'"
+#, fuzzy, c-format
+msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr "Ei ole pystyviivoja 'cases' ympäristössä: '%1$s'"
 
-#: src/mathed/InsetMathGrid.cpp:1272
+#: src/mathed/InsetMathGrid.cpp:1362
 msgid "Only one row"
 msgstr "Vain yksi rivi"
 
-#: src/mathed/InsetMathGrid.cpp:1278
+#: src/mathed/InsetMathGrid.cpp:1368
 msgid "Only one column"
 msgstr "Vain yksi sarake"
 
-#: src/mathed/InsetMathGrid.cpp:1286
+#: src/mathed/InsetMathGrid.cpp:1376
 msgid "No hline to delete"
 msgstr "Ei ole hline poistettavana"
 
-#: src/mathed/InsetMathGrid.cpp:1295
+#: src/mathed/InsetMathGrid.cpp:1385
 msgid "No vline to delete"
 msgstr "Ei ole vline poistettavana"
 
-#: src/mathed/InsetMathGrid.cpp:1313
+#: src/mathed/InsetMathGrid.cpp:1403
+#, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Tuntematon taulukon ominaisuus '%1$s'"
 
@@ -15652,15 +15707,20 @@ msgstr "En voi muuttaa sarakkeiden määrä kohteessa '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "En voi lisätä vaakaviivat kohteeseen '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:859
+#: src/mathed/InsetMathNest.cpp:867
 msgid "create new math text environment ($...$)"
 msgstr "luo uusi matematiikkatekstiympäristö ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:862
+#: src/mathed/InsetMathNest.cpp:870
 msgid "entered math text mode (textrm)"
 msgstr "siirryttiin matikkamoodiin (textrm)"
 
+#: src/mathed/InsetMathRef.cpp:187
+msgid "Standard[[mathref]]"
+msgstr ""
+
 #: src/mathed/MathMacroTemplate.cpp:109
+#, c-format
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
@@ -15669,6 +15729,7 @@ msgid "math macro"
 msgstr "matematiikamakro"
 
 #: src/output.cpp:39
+#, c-format
 msgid ""
 "Could not open the specified document\n"
 "%1$s."
@@ -15699,6 +15760,7 @@ msgstr ""
 "perusteella"
 
 #: src/support/Package.cpp.in:569
+#, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
@@ -15717,6 +15779,7 @@ msgid "File not found"
 msgstr "Tiedostoa ei löydy"
 
 #: src/support/Package.cpp.in:655
+#, c-format
 msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
@@ -15725,6 +15788,7 @@ msgstr ""
 "Hakemistossa %2$s ei ole kohdetta %3$s."
 
 #: src/support/Package.cpp.in:682
+#, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
@@ -15733,6 +15797,7 @@ msgstr ""
 "Hakemistossa %2$s ei ole kohdetta %3$s."
 
 #: src/support/Package.cpp.in:707
+#, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "%2$s is not a directory."
@@ -15748,11 +15813,11 @@ msgstr "Hakemistoa ei löydy"
 msgid "[[Replace with the code of your language]]"
 msgstr "fi"
 
-#: src/support/os_win32.cpp:340
+#: src/support/os_win32.cpp:326
 msgid "System file not found"
 msgstr "Kokoonpanotiedostoa ei löydy"
 
-#: src/support/os_win32.cpp:341
+#: src/support/os_win32.cpp:327
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -15760,11 +15825,11 @@ msgstr ""
 "En voi ladata shfolder.dll\n"
 "Ole hyvä ja installoi."
 
-#: src/support/os_win32.cpp:346
+#: src/support/os_win32.cpp:332
 msgid "System function not found"
 msgstr "Kokoonpanofunktio ei löydy"
 
-#: src/support/os_win32.cpp:347
+#: src/support/os_win32.cpp:333
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."

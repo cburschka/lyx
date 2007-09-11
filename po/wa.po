@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-08-19 21:04+0200\n"
+"POT-Creation-Date: 2007-09-11 21:44+0200\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -88,7 +88,7 @@ msgstr "I va"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:808
+#: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:819
 #: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:767
 #: src/LyXFunc.cpp:964 src/LyXFunc.cpp:1135 src/LyXFunc.cpp:2144
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
@@ -3646,8 +3646,7 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: lib/ui/stdtoolbars.inc:55 src/frontends/qt4/BulletsModule.cpp:46
-#: src/insets/InsetRef.cpp:147 src/mathed/InsetMathRef.cpp:187
+#: lib/ui/stdtoolbars.inc:55 src/insets/InsetRef.cpp:147
 #, fuzzy
 msgid "Standard"
 msgstr "Ståndard|#S"
@@ -9479,7 +9478,7 @@ msgid "Copy"
 msgstr "Copyî"
 
 #: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
-#: src/mathed/InsetMathGrid.cpp:1167 src/mathed/InsetMathNest.cpp:449
+#: src/mathed/InsetMathGrid.cpp:1257 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Aclaper"
 
@@ -10078,11 +10077,11 @@ msgstr "Abaguer on documint"
 msgid "Check spelling"
 msgstr "Waitî TeX"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:716
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:733
 msgid "Undo"
 msgstr "Disfé"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:725
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:742
 msgid "Redo"
 msgstr "Rifé"
 
@@ -12913,61 +12912,61 @@ msgid ""
 "Read 'info date' for more information.\n"
 msgstr ""
 
-#: src/Buffer.cpp:236
+#: src/Buffer.cpp:237
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/Buffer.cpp:237
+#: src/Buffer.cpp:238
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/Buffer.cpp:408
+#: src/Buffer.cpp:409
 #, fuzzy
 msgid "Unknown document class"
 msgstr "dins li classe ki vos avîz tchwezi"
 
-#: src/Buffer.cpp:409
+#: src/Buffer.cpp:410
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/Buffer.cpp:469 src/Text.cpp:295
+#: src/Buffer.cpp:470 src/Text.cpp:295
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/Buffer.cpp:473 src/Buffer.cpp:480 src/Buffer.cpp:500
+#: src/Buffer.cpp:474 src/Buffer.cpp:481 src/Buffer.cpp:501
 #, fuzzy
 msgid "Document header error"
 msgstr "Aroke dins LaTeX"
 
-#: src/Buffer.cpp:479
+#: src/Buffer.cpp:480
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/Buffer.cpp:499
+#: src/Buffer.cpp:500
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:510
+#: src/Buffer.cpp:511
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Dji n' parvén nén a tcherdjî cisse sôrte di documint"
 
-#: src/Buffer.cpp:511
+#: src/Buffer.cpp:512
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/Buffer.cpp:522 src/Buffer.cpp:528 src/BufferView.cpp:849
-#: src/BufferView.cpp:855
+#: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:866
+#: src/BufferView.cpp:872
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:523 src/BufferView.cpp:850
+#: src/Buffer.cpp:524 src/BufferView.cpp:867
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -12975,7 +12974,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:529 src/BufferView.cpp:856
+#: src/Buffer.cpp:530 src/BufferView.cpp:873
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -12983,133 +12982,133 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:664 src/Buffer.cpp:673
+#: src/Buffer.cpp:665 src/Buffer.cpp:674
 #, fuzzy
 msgid "Document could not be read"
 msgstr "L'adjinçmint do documint est metu"
 
-#: src/Buffer.cpp:665 src/Buffer.cpp:674
+#: src/Buffer.cpp:666 src/Buffer.cpp:675
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " hagnons n' ont nén stî ratoûrnés"
 
-#: src/Buffer.cpp:682 src/Buffer.cpp:754
+#: src/Buffer.cpp:683 src/Buffer.cpp:768
 #, fuzzy
 msgid "Document format failure"
 msgstr "Documint"
 
-#: src/Buffer.cpp:683
+#: src/Buffer.cpp:684
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Dji n' sai drovi li documint"
 
-#: src/Buffer.cpp:707
+#: src/Buffer.cpp:721
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:708
+#: src/Buffer.cpp:722
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:717
+#: src/Buffer.cpp:731
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Nol advertixhmint d' oyu."
 
-#: src/Buffer.cpp:718
+#: src/Buffer.cpp:732
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:739
+#: src/Buffer.cpp:753
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Dj' a aroké come dji ratoûrneve!"
 
-#: src/Buffer.cpp:740
+#: src/Buffer.cpp:754
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:755
+#: src/Buffer.cpp:769
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:794
+#: src/Buffer.cpp:805
 #, fuzzy
 msgid "Backup failure"
 msgstr "Prémetu"
 
-#: src/Buffer.cpp:795
+#: src/Buffer.cpp:806
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/Buffer.cpp:805
+#: src/Buffer.cpp:816
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
 
-#: src/Buffer.cpp:807
+#: src/Buffer.cpp:818
 #, fuzzy
 msgid "Overwrite modified file?"
 msgstr "Machine a scrîre"
 
-#: src/Buffer.cpp:808 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
+#: src/Buffer.cpp:819 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
 #: src/LyXFunc.cpp:2144 src/callback.cpp:186
 #, fuzzy
 msgid "&Overwrite"
 msgstr "Machine a scrîre"
 
-#: src/Buffer.cpp:954
+#: src/Buffer.cpp:964
 #, fuzzy
 msgid "Encoding error"
 msgstr "Ecôdaedje:|#E"
 
-#: src/Buffer.cpp:955
+#: src/Buffer.cpp:965
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1233
+#: src/Buffer.cpp:1243
 msgid "Running chktex..."
 msgstr "Dj' enonde chktex..."
 
-#: src/Buffer.cpp:1246
+#: src/Buffer.cpp:1256
 msgid "chktex failure"
 msgstr ""
 
-#: src/Buffer.cpp:1247
+#: src/Buffer.cpp:1257
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex n' a pont trové di måcules"
 
-#: src/Buffer.cpp:1792
+#: src/Buffer.cpp:1815
 #, fuzzy
 msgid "Preview source code"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:1803
-#, c-format
-msgid "Preview source code for paragraph %1$s"
-msgstr ""
+#: src/Buffer.cpp:1826
+#, fuzzy, c-format
+msgid "Preview source code for paragraph %1$d"
+msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:1807
+#: src/Buffer.cpp:1830
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
@@ -13131,20 +13130,20 @@ msgstr "Schaper li documint?"
 msgid "&Discard"
 msgstr ""
 
-#: src/BufferList.cpp:347
+#: src/BufferList.cpp:343
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "lyx: dji saye di schaper li documint"
 
-#: src/BufferList.cpp:358 src/BufferList.cpp:371 src/BufferList.cpp:385
+#: src/BufferList.cpp:354 src/BufferList.cpp:367 src/BufferList.cpp:381
 msgid "  Save seems successful. Phew."
 msgstr "Dj' a l' ideye ki ça a stî, pai-st a Diè"
 
-#: src/BufferList.cpp:361 src/BufferList.cpp:375
+#: src/BufferList.cpp:357 src/BufferList.cpp:371
 msgid "  Save failed! Trying..."
 msgstr " Dji n' a savu schaper! Dji rsaye..."
 
-#: src/BufferList.cpp:388
+#: src/BufferList.cpp:384
 msgid "  Save failed! Bummer. Document is lost."
 msgstr " Dji n' a savu schaper! Berwete, vosse documint est pierdu!"
 
@@ -13173,62 +13172,62 @@ msgstr ""
 msgid "Save bookmark"
 msgstr "Dizo|#o#B"
 
-#: src/BufferView.cpp:719
+#: src/BufferView.cpp:736
 #, fuzzy
 msgid "No further undo information"
 msgstr "Nole informåcion po disfé"
 
-#: src/BufferView.cpp:728
+#: src/BufferView.cpp:745
 msgid "No further redo information"
 msgstr " Nole informåcion po Rifé"
 
-#: src/BufferView.cpp:915
+#: src/BufferView.cpp:932
 msgid "Mark off"
 msgstr "Li rmårke est dismetuwe"
 
-#: src/BufferView.cpp:922
+#: src/BufferView.cpp:939
 msgid "Mark on"
 msgstr "Li rmårke est metuwe"
 
-#: src/BufferView.cpp:929
+#: src/BufferView.cpp:946
 msgid "Mark removed"
 msgstr "Li rmårke est waesteye"
 
-#: src/BufferView.cpp:932
+#: src/BufferView.cpp:949
 msgid "Mark set"
 msgstr "Li rmårke e-st apontieye"
 
-#: src/BufferView.cpp:978
+#: src/BufferView.cpp:995
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Dj' a trové ene måcule"
 
-#: src/BufferView.cpp:981
+#: src/BufferView.cpp:998
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Dji n' sai drovi li documint"
 
-#: src/BufferView.cpp:986
+#: src/BufferView.cpp:1003
 #, fuzzy
 msgid "One word in selection."
 msgstr "Dj' a trové ene måcule"
 
-#: src/BufferView.cpp:988
+#: src/BufferView.cpp:1005
 #, fuzzy
 msgid "One word in document."
 msgstr "Dji drove li documint efant"
 
-#: src/BufferView.cpp:991
+#: src/BufferView.cpp:1008
 #, fuzzy
 msgid "Count words"
 msgstr "Rawete:"
 
-#: src/BufferView.cpp:1583
+#: src/BufferView.cpp:1606
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/BufferView.cpp:1585 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
+#: src/BufferView.cpp:1608 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
 #: src/LyXFunc.cpp:2095 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -13239,33 +13238,33 @@ msgstr "Tchwezixhoz on documint po stitchî"
 msgid "Documents|#o#O"
 msgstr "Documints"
 
-#: src/BufferView.cpp:1586 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
+#: src/BufferView.cpp:1609 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Egzimpes"
 
-#: src/BufferView.cpp:1592 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1615 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
 #: src/callback.cpp:156
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Documint"
 
-#: src/BufferView.cpp:1604 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
+#: src/BufferView.cpp:1627 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
 #: src/LyXFunc.cpp:2131 src/LyXFunc.cpp:2147
 msgid "Canceled."
 msgstr "Vos avoz rnoncî"
 
-#: src/BufferView.cpp:1615
+#: src/BufferView.cpp:1638
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dji stitche li documint"
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1649
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documint rlomé ("
 
-#: src/BufferView.cpp:1628
+#: src/BufferView.cpp:1651
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Dji n' sai stitchî li documint"
@@ -13630,7 +13629,7 @@ msgstr ", Parfondeu: "
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:439
+#: src/CutAndPaste.cpp:430
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -13639,19 +13638,19 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:444
+#: src/CutAndPaste.cpp:435
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Ôtès tchûzes po l' arindjmint del pådje"
 
-#: src/CutAndPaste.cpp:463
+#: src/CutAndPaste.cpp:454
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:470
+#: src/CutAndPaste.cpp:461
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Tåve di caracteres:|#å#a"
@@ -13962,32 +13961,32 @@ msgstr "LyX: dji fwai li ridant "
 msgid "Done!"
 msgstr "Dj' a fwait!"
 
-#: src/LyX.cpp:509
+#: src/LyX.cpp:503
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/LyX.cpp:511
+#: src/LyX.cpp:505
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/LyX.cpp:547
+#: src/LyX.cpp:541
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:815
+#: src/LyX.cpp:809
 #, fuzzy
 msgid "LyX: "
 msgstr "Rexhe"
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:938
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/LyX.cpp:945
+#: src/LyX.cpp:939
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -13995,50 +13994,50 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:1112
+#: src/LyX.cpp:1106
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: dji fwai li ridant "
 
-#: src/LyX.cpp:1113
+#: src/LyX.cpp:1107
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:1118
+#: src/LyX.cpp:1112
 #, fuzzy
 msgid "&Create directory"
 msgstr "Aroke! Dji n' sai drovi li ridant:"
 
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1113
 msgid "&Exit LyX"
 msgstr ""
 
-#: src/LyX.cpp:1120
+#: src/LyX.cpp:1114
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1124
+#: src/LyX.cpp:1118
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr " eyèt dj' enonde l' apontiaedje ..."
 
-#: src/LyX.cpp:1130
+#: src/LyX.cpp:1124
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1303
+#: src/LyX.cpp:1297
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1307
+#: src/LyX.cpp:1301
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Livea di disbugaedje :"
 
-#: src/LyX.cpp:1318
+#: src/LyX.cpp:1312
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -14060,47 +14059,47 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1354 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1348 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr "Ridant ûzeu :"
 
-#: src/LyX.cpp:1355
+#: src/LyX.cpp:1349
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "I manke on ridant pol tchûze -sysdir!"
 
-#: src/LyX.cpp:1365
+#: src/LyX.cpp:1359
 #, fuzzy
 msgid "No user directory"
 msgstr "Ridant ûzeu :"
 
-#: src/LyX.cpp:1366
+#: src/LyX.cpp:1360
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "I manke on ridant pol tchûze -sysdir!"
 
-#: src/LyX.cpp:1376
+#: src/LyX.cpp:1370
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Enonder ene comande"
 
-#: src/LyX.cpp:1377
+#: src/LyX.cpp:1371
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "I manke on nombe pol tchûze -dbg!"
 
-#: src/LyX.cpp:1387
+#: src/LyX.cpp:1381
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/LyX.cpp:1399
+#: src/LyX.cpp:1393
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/LyX.cpp:1404
+#: src/LyX.cpp:1398
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
@@ -14210,7 +14209,7 @@ msgstr "Schaper"
 msgid "Exiting."
 msgstr "Moussî foû"
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1341
+#: src/LyXFunc.cpp:1176 src/Text3.cpp:1344
 msgid "Missing argument"
 msgstr "I manke èn årgumint"
 
@@ -14793,15 +14792,15 @@ msgstr "Prémetu"
 msgid "No Branch in Document!"
 msgstr "Documint"
 
-#: src/Paragraph.cpp:1632 src/frontends/qt4/QParagraph.cpp:237
+#: src/Paragraph.cpp:1632 src/frontends/qt4/QParagraph.cpp:233
 msgid "Senseless with this layout!"
 msgstr "Pont d' avance avou ene pådje adjinçneye come çouci"
 
-#: src/Paragraph.cpp:1692
+#: src/Paragraph.cpp:1690
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1693
+#: src/Paragraph.cpp:1691
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -14925,17 +14924,17 @@ msgstr ""
 msgid ", Boundary: "
 msgstr ""
 
-#: src/Text2.cpp:585
+#: src/Text2.cpp:576
 #, fuzzy
 msgid "No font change defined."
 msgstr "Potchî a l' aroke shûvante"
 
-#: src/Text2.cpp:626
+#: src/Text2.cpp:617
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Rén a fé"
 
-#: src/Text2.cpp:628
+#: src/Text2.cpp:619
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Les cwåreas d' on tåvleas ni polèt nén avu di pus d' on hagnon"
@@ -14957,12 +14956,12 @@ msgstr "Adjinçmint "
 msgid " not known"
 msgstr " nén cnoxhu"
 
-#: src/Text3.cpp:1452 src/Text3.cpp:1464
+#: src/Text3.cpp:1455 src/Text3.cpp:1467
 #, fuzzy
 msgid "Character set"
 msgstr "Tåve di caracteres:|#å#a"
 
-#: src/Text3.cpp:1581 src/Text3.cpp:1592
+#: src/Text3.cpp:1584 src/Text3.cpp:1595
 msgid "Paragraph layout set"
 msgstr "L' adjinçnaedje do hagnon est metu"
 
@@ -15164,26 +15163,26 @@ msgstr "No:|#N"
 msgid "Choose a filename to save document as"
 msgstr "Tapez on no po schaper eyèt lomer li fitchî"
 
-#: src/callback.cpp:234
+#: src/callback.cpp:236
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Schaper tot seu"
 
-#: src/callback.cpp:274
+#: src/callback.cpp:276
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Dj' a fwait berwete come dji sayîve di schaper tot seu !"
 
-#: src/callback.cpp:301
+#: src/callback.cpp:303
 msgid "Autosaving current document..."
 msgstr "Dji schape tot seu li documint drovu..."
 
-#: src/callback.cpp:365
+#: src/callback.cpp:367
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/callback.cpp:384
+#: src/callback.cpp:386
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15191,12 +15190,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/callback.cpp:386
+#: src/callback.cpp:388
 #, fuzzy
 msgid "Could not read file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/callback.cpp:394
+#: src/callback.cpp:396
 #, fuzzy, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -15204,16 +15203,16 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/callback.cpp:396 src/output.cpp:41
+#: src/callback.cpp:398 src/output.cpp:41
 #, fuzzy
 msgid "Could not open file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/callback.cpp:420
+#: src/callback.cpp:422
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/callback.cpp:421
+#: src/callback.cpp:423
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15222,20 +15221,20 @@ msgid ""
 "to UTF-8 with a program other than LyX.\n"
 msgstr ""
 
-#: src/callback.cpp:438
+#: src/callback.cpp:440
 msgid "Running configure..."
 msgstr "Dj' enonde l' apontiaedje..."
 
-#: src/callback.cpp:447
+#: src/callback.cpp:449
 msgid "Reloading configuration..."
 msgstr "Dji renonde l' apontiaedje..."
 
-#: src/callback.cpp:452
+#: src/callback.cpp:454
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Li sistinme est rapontyî"
 
-#: src/callback.cpp:453
+#: src/callback.cpp:455
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15385,12 +15384,12 @@ msgstr "L'adjinçmint do documint est metu"
 msgid "Opening child document %1$s..."
 msgstr "Dji drove li documint"
 
-#: src/frontends/LyXView.cpp:498
+#: src/frontends/LyXView.cpp:497
 #, fuzzy
 msgid " (changed)"
 msgstr "(Candjî)"
 
-#: src/frontends/LyXView.cpp:502
+#: src/frontends/LyXView.cpp:501
 msgid " (read only)"
 msgstr "(rén ki lere)"
 
@@ -15882,6 +15881,10 @@ msgstr ""
 "Li processus i-spell vént do mori.\n"
 "Mutwè aveut-i fwait, tot simplumint ?"
 
+#: src/frontends/qt4/BulletsModule.cpp:46
+msgid "Standard[[Bullets]]"
+msgstr ""
+
 #: src/frontends/qt4/BulletsModule.cpp:47
 #, fuzzy
 msgid "Maths"
@@ -15928,21 +15931,21 @@ msgstr "Ôte...|#Ô#O"
 msgid "Directories"
 msgstr "Ridant ûzeu :"
 
-#: src/frontends/qt4/GuiApplication.cpp:369
+#: src/frontends/qt4/GuiApplication.cpp:390
 msgid "About %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:369 src/frontends/qt4/QPrefs.cpp:2031
+#: src/frontends/qt4/GuiApplication.cpp:390 src/frontends/qt4/QPrefs.cpp:2031
 #, fuzzy
 msgid "Preferences"
 msgstr "Sititchî on rahuca"
 
-#: src/frontends/qt4/GuiApplication.cpp:370
+#: src/frontends/qt4/GuiApplication.cpp:391
 #, fuzzy
 msgid "Reconfigure"
 msgstr "Rapontyî"
 
-#: src/frontends/qt4/GuiApplication.cpp:370
+#: src/frontends/qt4/GuiApplication.cpp:391
 msgid "Quit %1"
 msgstr ""
 
@@ -15958,7 +15961,7 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:729
+#: src/frontends/qt4/GuiView.cpp:733
 #, fuzzy
 msgid "LyX"
 msgstr "Rexhe"
@@ -16430,7 +16433,7 @@ msgid ""
 "the items is used."
 msgstr ""
 
-#: src/frontends/qt4/QParagraph.cpp:175
+#: src/frontends/qt4/QParagraph.cpp:171
 #, fuzzy
 msgid "Paragraph Settings"
 msgstr "Intreye bibiografike"
@@ -16595,7 +16598,7 @@ msgstr "Noer"
 msgid "Jump to label"
 msgstr "Potchî sol rahuca|#G"
 
-#: src/frontends/qt4/QSearch.cpp:138
+#: src/frontends/qt4/QSearch.cpp:139
 #, fuzzy
 msgid "Find and Replace"
 msgstr "Trover eyèt mete el plaece"
@@ -17270,17 +17273,17 @@ msgstr "Dj' a aroké come dji sayîve do lere "
 msgid "No image"
 msgstr "(Candjî)"
 
-#: src/insets/RenderPreview.cpp:92
+#: src/insets/RenderPreview.cpp:99
 #, fuzzy
 msgid "Preview loading"
 msgstr "Comincî pal difén|#R"
 
-#: src/insets/RenderPreview.cpp:95
+#: src/insets/RenderPreview.cpp:102
 #, fuzzy
 msgid "Preview ready"
 msgstr "Comincî pal difén|#R"
 
-#: src/insets/RenderPreview.cpp:98
+#: src/insets/RenderPreview.cpp:105
 #, fuzzy
 msgid "Preview failed"
 msgstr "Dj' a fwait berwete come dji sayîve di schaper tot seu !"
@@ -17386,28 +17389,28 @@ msgstr ""
 
 #: src/mathed/InsetMathCases.cpp:98
 #, c-format
-msgid "No vertical grid lines in '%1$s'"
+msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1272
+#: src/mathed/InsetMathGrid.cpp:1362
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1278
+#: src/mathed/InsetMathGrid.cpp:1368
 #, fuzzy
 msgid "Only one column"
 msgstr "Disfacer li colone|#O"
 
-#: src/mathed/InsetMathGrid.cpp:1286
+#: src/mathed/InsetMathGrid.cpp:1376
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Rén a fé"
 
-#: src/mathed/InsetMathGrid.cpp:1295
+#: src/mathed/InsetMathGrid.cpp:1385
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1313
+#: src/mathed/InsetMathGrid.cpp:1403
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
@@ -17437,12 +17440,16 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:859
+#: src/mathed/InsetMathNest.cpp:867
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:862
+#: src/mathed/InsetMathNest.cpp:870
 msgid "entered math text mode (textrm)"
+msgstr ""
+
+#: src/mathed/InsetMathRef.cpp:187
+msgid "Standard[[mathref]]"
 msgstr ""
 
 #: src/mathed/MathMacroTemplate.cpp:109
@@ -17531,23 +17538,23 @@ msgstr "Dji n' a nén trové li pådje di caracteres !"
 msgid "[[Replace with the code of your language]]"
 msgstr "wa"
 
-#: src/support/os_win32.cpp:340
+#: src/support/os_win32.cpp:326
 #, fuzzy
 msgid "System file not found"
 msgstr "Dji n' a nén trové li pådje di caracteres !"
 
-#: src/support/os_win32.cpp:341
+#: src/support/os_win32.cpp:327
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
 msgstr ""
 
-#: src/support/os_win32.cpp:346
+#: src/support/os_win32.cpp:332
 #, fuzzy
 msgid "System function not found"
 msgstr "Dji n' a nén trové li pådje di caracteres !"
 
-#: src/support/os_win32.cpp:347
+#: src/support/os_win32.cpp:333
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
