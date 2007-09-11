@@ -174,6 +174,10 @@ def revert_flex(document):
         document.body[i] = document.body[i].replace('\\begin_inset Flex', '\\begin_inset CharStyle')
 
 
+def remove_manifest(document):
+    "Remove the manifest section"
+    document.manifest = None
+
 
 ##
 # Conversion hub
@@ -188,10 +192,12 @@ convert = [
            [281, []],
            [282, []],
            [283, [convert_flex]],
-           [284, []]
+           [284, []],
+           [285, []], # an empty manifest is automatically added
           ]
 
 revert =  [
+           [284, [remove_manifest]],
            [283, []],
            [282, [revert_flex]],
            [281, []],

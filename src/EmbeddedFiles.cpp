@@ -286,7 +286,7 @@ void EmbeddedFiles::update()
 }
 
 
-bool EmbeddedFiles::write(DocFileName const & filename)
+bool EmbeddedFiles::writeFile(DocFileName const & filename)
 {
 	// file in the temporary path has the content
 	string const content = FileName(addName(buffer_->temppath(),
@@ -404,9 +404,9 @@ bool EmbeddedFiles::readManifest(Lexer & lex, ErrorList & errorList)
 	int begin_manifest_line = -1;
 
 	file_list_.clear();
-	string filename = "";
-	string inzipName = "";
-	bool status = "";
+	string filename;
+	string inzipName;
+	bool embedded = false;
 
 	while (lex.isOK()) {
 		lex.next();
@@ -431,9 +431,9 @@ bool EmbeddedFiles::readManifest(Lexer & lex, ErrorList & errorList)
 			lex >> filename;
 		else if (token == "\\inzipName")
 			lex >> inzipName;
-		else if (token == "\\status") {
-			lex >> status;
-			registerFile(filename, status, NULL, inzipName);
+		else if (token == "\\embed") {
+			lex >> embedded;
+			registerFile(filename, embedded, NULL, inzipName);
 			filename = "";
 			inzipName = "";
 		} else {
@@ -463,7 +463,7 @@ void EmbeddedFiles::writeManifest(ostream & os) const
 			<< to_utf8(makeRelPath(from_utf8(it->absFilename()),
 				from_utf8(buffer_->filePath()))) << '\n'
 			<< "\\inzipName " << it->inzipName() << '\n'
-			<< "\\status " << (it->embedded() ? "true" : "false") << '\n';
+			<< "\\embed " << (it->embedded() ? "true" : "false") << '\n';
 	}
 }
 

@@ -142,7 +142,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 284;
+int const LYX_FORMAT = 285;
 
 } // namespace anon
 
@@ -559,7 +559,10 @@ bool Buffer::readDocument(Lexer & lex)
 					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 		}
 	}
+	// read manifest after header
+	embeddedFiles().readManifest(lex, errorList);	
 
+	// read main text
 	bool const res = text().read(*this, lex, errorList);
 	for_each(text().paragraphs().begin(),
 		 text().paragraphs().end(),
@@ -661,12 +664,9 @@ bool Buffer::readFile(FileName const & filename)
 		LYXERR(Debug::FILES) << filename << " is in zip format. Unzip to " << temppath() << endl;
 		::unzipToDir(filename.toFilesystemEncoding(), temppath());
 		//
-		FileName manifest(addName(temppath(), "manifest.txt"));
-		FileName lyxfile(addName(temppath(), 
-			onlyFilename(filename.toFilesystemEncoding())));
+		FileName lyxfile(addName(temppath(), "content.lyx"));
 		// if both manifest.txt and file.lyx exist, this is am embedded file
-		if (fs::exists(manifest.toFilesystemEncoding()) &&
-			fs::exists(lyxfile.toFilesystemEncoding())) {
+		if (fs::exists(lyxfile.toFilesystemEncoding())) {
 			params().embedded = true;
 			fname = lyxfile;
 		}
@@ -889,8 +889,7 @@ bool Buffer::writeFile(FileName const & fname) const
 	FileName content;
 	if (params().embedded)
 		// first write the .lyx file to the temporary directory
-		content = FileName(addName(temppath(), 
-			onlyFilename(fname.toFilesystemEncoding())));
+		content = FileName(addName(temppath(), "content.lyx"));
 	else
 		content = fname;
 	
@@ -910,9 +909,8 @@ bool Buffer::writeFile(FileName const & fname) const
 
 	if (retval && params().embedded) {
 		// write file.lyx and all the embedded files to the zip file fname
-		// if embedding is enabled, and there is any embedded file
-		pimpl_->embedded_files.update();
-		return pimpl_->embedded_files.write(fname);
+		// if embedding is enabled
+		return pimpl_->embedded_files.writeFile(fname);
 	}
 	return retval;
 }
@@ -950,6 +948,12 @@ bool Buffer::write(ostream & ofs) const
 	ofs << "\\begin_header\n";
 	params().writeFile(ofs);
 	ofs << "\\end_header\n";
+
+	// write the manifest after header
+	ofs << "\n\\begin_manifest\n";
+	pimpl_->embedded_files.update();
+	embeddedFiles().writeManifest(ofs);
+	ofs << "\\end_manifest\n";
 
 	// write the text
 	ofs << "\n\\begin_body\n";

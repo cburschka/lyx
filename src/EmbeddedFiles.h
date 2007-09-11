@@ -77,7 +77,7 @@ EmbeddedFiles::update(), Inset::registerEmbeddedFiles()).
 3. When a lyx file file.lyx is saved, it is save to tmppath() first.
 Embedded files are compressed along with file.lyx and a manifest.txt. 
 If embedding is disabled, file.lyx is saved in the usual pure-text form.
-(c.f. Buffer::writeFile(), EmbeddedFiles::write())
+(c.f. Buffer::writeFile(), EmbeddedFiles::writeFile())
 
 4. When a lyx file.lyx file is opened, if it is a zip file, it is
 decompressed to tmppath(). If manifest.txt and file.lyx exists in
@@ -199,7 +199,7 @@ public:
 	void update();
 
 	/// write a zip file
-	bool write(support::DocFileName const & filename);
+	bool writeFile(support::DocFileName const & filename);
 
 	void clear() { file_list_.clear(); }
 
