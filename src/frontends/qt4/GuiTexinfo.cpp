@@ -126,12 +126,40 @@ void GuiTexinfoDialog::enableViewPB()
 }
 
 
-void GuiTexinfoDialog::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
+void GuiTexinfoDialog::updateStyles(ControlTexinfo::texFileSuffix type)
 {
-	ContentsType & data = texdata_[whichStyle];
-	bool const withFullPath = pathCB->isChecked();
+	ContentsType & data = texdata_[type];
 
-	getTexFileList(whichStyle, data, withFullPath);
+	string filename;
+	switch (type) {
+	case ControlTexinfo::bst:
+		filename = "bstFiles.lst";
+		break;
+	case ControlTexinfo::cls:
+		filename = "clsFiles.lst";
+		break;
+	case ControlTexinfo::sty:
+		filename = "styFiles.lst";
+		break;
+	}
+	getTexFileList(filename, data);
+	if (data.empty()) {
+		// build filelists of all availabe bst/cls/sty-files.
+		// Done through kpsewhich and an external script,
+		// saved in *Files.lst
+		rescanTexStyles();
+		getTexFileList(filename, data);
+	}
+	bool const withFullPath = pathCB->isChecked();
+	if (withFullPath)
+		return;
+	vector<string>::iterator it1  = data.begin();
+	vector<string>::iterator end1 = data.end();
+	for (; it1 != end1; ++it1)
+		*it1 = support::onlyFilename(*it1);
+
+	// sort on filename only (no path)
+	std::sort(data.begin(), data.end());
 
 	fileListLW->clear();
 	ContentsType::const_iterator it  = data.begin();
@@ -139,7 +167,7 @@ void GuiTexinfoDialog::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 	for (; it != end; ++it)
 		fileListLW->addItem(toqstr(*it));
 
-	activeStyle = whichStyle;
+	activeStyle = type;
 }
 
 

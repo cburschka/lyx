@@ -20,7 +20,6 @@
 
 #include "support/os.h"
 #include "support/lstrings.h"
-#include "support/convert.h"
 
 #include "debug.h"
 
@@ -97,7 +96,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
                      Length const & len, Length::UNIT /*defaultUnit*/)
 {
 	combo->setCurrentItem(Length(len).unit());
-	input->setText(toqstr(convert<string>(Length(len).value())));
+	input->setText(QString::number(Length(len).value()));
 }
 
 

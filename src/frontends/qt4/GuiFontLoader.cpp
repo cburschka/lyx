@@ -24,16 +24,8 @@
 #include "support/Package.h"
 #include "support/os.h"
 
-#include <qfontinfo.h>
+#include <QFontInfo>
 #include <QFontDatabase>
-
-#include <boost/tuple/tuple.hpp>
-
-#ifdef Q_WS_X11
-#include <qwidget.h>
-//#include <X11/Xlib.h>
-#include <algorithm>
-#endif
 
 using lyx::support::contains;
 using lyx::support::package;

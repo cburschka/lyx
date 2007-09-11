@@ -23,8 +23,6 @@
 #include "support/lstrings.h"       // ascii_lowercase
 
 #include <QPainter>
-#include <QPictureIO>
-#include <QPicture>
 #include <QImage>
 #include <QImageReader>
 
@@ -39,8 +37,6 @@ using std::endl;
 using std::equal_to;
 using std::find_if;
 using std::string;
-
-QPictureIO StaticPicture;
 
 namespace lyx {
 namespace graphics {
@@ -167,10 +163,8 @@ void GuiImage::load_impl(support::FileName const & filename)
 }
 
 
-namespace {
-
 // This code is taken from KImageEffect::toGray
-QImage & toGray(QImage & img)
+static QImage & toGray(QImage & img)
 {
 	if (img.width() == 0 || img.height() == 0)
 		return img;
@@ -188,8 +182,6 @@ QImage & toGray(QImage & img)
 	}
 	return img;
 }
-
-} // namespace anon
 
 
 bool GuiImage::setPixmap_impl(Params const & params)

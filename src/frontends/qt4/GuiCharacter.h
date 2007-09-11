@@ -16,11 +16,19 @@
 #include "GuiDialog.h"
 #include "ControlCharacter.h"
 #include "ui_CharacterUi.h"
+#include "frontend_helpers.h" // for LanguagePair
 
 #include <vector>
 
 namespace lyx {
 namespace frontend {
+
+typedef std::pair<QString, Font::FONT_FAMILY> FamilyPair;
+typedef std::pair<QString, Font::FONT_SERIES> SeriesPair;
+typedef std::pair<QString, Font::FONT_SHAPE>  ShapePair;
+typedef std::pair<QString, Font::FONT_SIZE>   SizePair;
+typedef std::pair<QString, FONT_STATE> BarPair;
+typedef std::pair<QString, Color_color> ColorPair;
 
 class GuiCharacterDialog : public GuiDialog, public Ui::CharacterUi
 {

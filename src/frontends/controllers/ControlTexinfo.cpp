@@ -14,6 +14,8 @@
 #include "FuncRequest.h"
 
 #include "support/filetools.h"
+#include "support/FileName.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 
@@ -21,44 +23,12 @@ using std::string;
 using std::vector;
 
 namespace lyx {
-
-using support::onlyFilename;
-
 namespace frontend {
 
-void getTexFileList(ControlTexinfo::texFileSuffix type,
-		    std::vector<string> & list, bool withPath)
-{
-	string filename;
-	switch (type) {
-	case ControlTexinfo::bst:
-		filename = "bstFiles.lst";
-		break;
-	case ControlTexinfo::cls:
-		filename = "clsFiles.lst";
-		break;
-	case ControlTexinfo::sty:
-		filename = "styFiles.lst";
-		break;
-	}
-	getTexFileList(filename, list);
-	if (list.empty()) {
-		// build filelists of all availabe bst/cls/sty-files.
-		// Done through kpsewhich and an external script,
-		// saved in *Files.lst
-		rescanTexStyles();
-		getTexFileList(filename, list);
-	}
-	if (withPath)
-		return;
-	vector<string>::iterator it  = list.begin();
-	vector<string>::iterator end = list.end();
-	for (; it != end; ++it) {
-		*it = onlyFilename(*it);
-	}
-	// sort on filename only (no path)
-	std::sort(list.begin(), list.end());
-}
+using support::FileName;
+using support::contains;
+using support::split;
+using support::token;
 
 
 ControlTexinfo::ControlTexinfo(Dialog & parent)
@@ -73,9 +43,24 @@ void ControlTexinfo::viewFile(string const & filename) const
 }
 
 
-string const ControlTexinfo::getClassOptions(string const & filename) const
+string const ControlTexinfo::getClassOptions(string const & classname) const
 {
-	return getListOfOptions(filename, "cls");
+	FileName const filename(getTexFileFromList(classname, "cls"));
+	if (filename.empty())
+		return string();
+	string optionList = string();
+	std::ifstream is(filename.toFilesystemEncoding().c_str());
+	while (is) {
+		string s;
+		is >> s;
+		if (contains(s, "DeclareOption")) {
+			s = s.substr(s.find("DeclareOption"));
+			s = split(s, '{');		// cut front
+			s = token(s, '}', 0);		// cut end
+			optionList += (s + '\n');
+		}
+	}
+	return optionList;
 }
 
 

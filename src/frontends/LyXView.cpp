@@ -115,9 +115,10 @@ void LyXView::setBuffer(Buffer * newBuffer)
 	if (wa == 0) {
 		updateLabels(*newBuffer->getMasterBuffer());
 		wa = addWorkArea(*newBuffer);
-	} else
+	} else {
 		//Disconnect the old buffer...there's no new one.
 		disconnectBuffer();
+	}
 	connectBuffer(*newBuffer);
 	connectBufferView(wa->bufferView());
 	setCurrentWorkArea(wa);
@@ -384,8 +385,8 @@ void LyXView::updateLayoutChoice()
 
 void LyXView::updateWindowTitle()
 {
-	docstring maximize_title = lyx::from_ascii("LyX");
-	docstring minimize_title = lyx::from_ascii("LyX");
+	docstring maximize_title = from_ascii("LyX");
+	docstring minimize_title = from_ascii("LyX");
 
 	Buffer * buf = buffer();
 	if (buf) {
@@ -395,7 +396,7 @@ void LyXView::updateWindowTitle()
 			minimize_title = lyx::from_utf8(onlyFilename(cur_title));
 			if (!buf->isClean()) {
 				maximize_title += _(" (changed)");
-				minimize_title += lyx::char_type('*');
+				minimize_title += char_type('*');
 			}
 			if (buf->isReadonly())
 				maximize_title += _(" (read only)");

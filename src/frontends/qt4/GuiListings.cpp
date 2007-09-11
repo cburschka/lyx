@@ -18,7 +18,6 @@
 #include "insets/InsetListingsParams.h"
 #include "debug.h"
 
-#include "support/convert.h"
 #include "support/lstrings.h"
 
 #include <QLineEdit>

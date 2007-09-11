@@ -12,9 +12,8 @@
 #ifndef CONTROLCHARACTER_H
 #define CONTROLCHARACTER_H
 
-
 #include "Dialog.h"
-#include "frontend_helpers.h"
+#include "Font.h"
 #include <boost/scoped_ptr.hpp>
 
 
@@ -23,6 +22,19 @@ namespace lyx {
 class Color_color;
 
 namespace frontend {
+
+enum FONT_STATE {
+	///
+	IGNORE,
+	///
+	EMPH_TOGGLE,
+	///
+	UNDERBAR_TOGGLE,
+	///
+	NOUN_TOGGLE,
+	///
+	INHERIT
+};
 
 class ControlCharacter : public Controller {
 public:

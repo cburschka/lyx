@@ -20,8 +20,6 @@
 #include "Validator.h"
 #include "qt_helpers.h"
 
-#include "support/convert.h"
-
 #include <QCloseEvent>
 #include <QCheckBox>
 #include <QPushButton>
@@ -610,8 +608,8 @@ void GuiTabularDialog::updateContents()
 	Tabular::row_type const row = tabular.cellRow(cell);
 	Tabular::col_type const col = tabular.cellColumn(cell);
 
-	tabularRowED->setText(toqstr(convert<string>(row + 1)));
-	tabularColumnED->setText(toqstr(convert<string>(col + 1)));
+	tabularRowED->setText(QString::number(row + 1));
+	tabularColumnED->setText(QString::number(col + 1));
 
 	bool const multicol(tabular.isMultiColumn(cell));
 

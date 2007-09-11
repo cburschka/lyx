@@ -27,7 +27,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/Package.h"
-#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/os.h"
@@ -47,272 +46,18 @@ using std::pair;
 using std::endl;
 
 namespace lyx {
-
 namespace frontend {
-
-vector<FamilyPair> const getFamilyData()
-{
-	vector<FamilyPair> family(5);
-
-	FamilyPair pr;
-
-	pr.first = _("No change");
-	pr.second = Font::IGNORE_FAMILY;
-	family[0] = pr;
-
-	pr.first = _("Roman");
-	pr.second = Font::ROMAN_FAMILY;
-	family[1] = pr;
-
-	pr.first = _("Sans Serif");
-	pr.second = Font::SANS_FAMILY;
-	family[2] = pr;
-
-	pr.first = _("Typewriter");
-	pr.second = Font::TYPEWRITER_FAMILY;
-	family[3] = pr;
-
-	pr.first = _("Reset");
-	pr.second = Font::INHERIT_FAMILY;
-	family[4] = pr;
-
-	return family;
-}
-
-
-vector<SeriesPair> const getSeriesData()
-{
-	vector<SeriesPair> series(4);
-
-	SeriesPair pr;
-
-	pr.first = _("No change");
-	pr.second = Font::IGNORE_SERIES;
-	series[0] = pr;
-
-	pr.first = _("Medium");
-	pr.second = Font::MEDIUM_SERIES;
-	series[1] = pr;
-
-	pr.first = _("Bold");
-	pr.second = Font::BOLD_SERIES;
-	series[2] = pr;
-
-	pr.first = _("Reset");
-	pr.second = Font::INHERIT_SERIES;
-	series[3] = pr;
-
-	return series;
-}
-
-
-vector<ShapePair> const getShapeData()
-{
-	vector<ShapePair> shape(6);
-
-	ShapePair pr;
-
-	pr.first = _("No change");
-	pr.second = Font::IGNORE_SHAPE;
-	shape[0] = pr;
-
-	pr.first = _("Upright");
-	pr.second = Font::UP_SHAPE;
-	shape[1] = pr;
-
-	pr.first = _("Italic");
-	pr.second = Font::ITALIC_SHAPE;
-	shape[2] = pr;
-
-	pr.first = _("Slanted");
-	pr.second = Font::SLANTED_SHAPE;
-	shape[3] = pr;
-
-	pr.first = _("Small Caps");
-	pr.second = Font::SMALLCAPS_SHAPE;
-	shape[4] = pr;
-
-	pr.first = _("Reset");
-	pr.second = Font::INHERIT_SHAPE;
-	shape[5] = pr;
-
-	return shape;
-}
-
-
-vector<SizePair> const getSizeData()
-{
-	vector<SizePair> size(14);
-
-	SizePair pr;
-
-	pr.first = _("No change");
-	pr.second = Font::IGNORE_SIZE;
-	size[0] = pr;
-
-	pr.first = _("Tiny");
-	pr.second = Font::SIZE_TINY;
-	size[1] = pr;
-
-	pr.first = _("Smallest");
-	pr.second = Font::SIZE_SCRIPT;
-	size[2] = pr;
-
-	pr.first = _("Smaller");
-	pr.second = Font::SIZE_FOOTNOTE;
-	size[3] = pr;
-
-	pr.first = _("Small");
-	pr.second = Font::SIZE_SMALL;
-	size[4] = pr;
-
-	pr.first = _("Normal");
-	pr.second = Font::SIZE_NORMAL;
-	size[5] = pr;
-
-	pr.first = _("Large");
-	pr.second = Font::SIZE_LARGE;
-	size[6] = pr;
-
-	pr.first = _("Larger");
-	pr.second = Font::SIZE_LARGER;
-	size[7] = pr;
-
-	pr.first = _("Largest");
-	pr.second = Font::SIZE_LARGEST;
-	size[8] = pr;
-
-	pr.first = _("Huge");
-	pr.second = Font::SIZE_HUGE;
-	size[9] = pr;
-
-	pr.first = _("Huger");
-	pr.second = Font::SIZE_HUGER;
-	size[10] = pr;
-
-	pr.first = _("Increase");
-	pr.second = Font::INCREASE_SIZE;
-	size[11] = pr;
-
-	pr.first = _("Decrease");
-	pr.second = Font::DECREASE_SIZE;
-	size[12] = pr;
-
-	pr.first = _("Reset");
-	pr.second = Font::INHERIT_SIZE;
-	size[13] = pr;
-
-	return size;
-}
-
-
-vector<BarPair> const getBarData()
-{
-	vector<BarPair> bar(5);
-
-	BarPair pr;
-
-	pr.first = _("No change");
-	pr.second = IGNORE;
-	bar[0] = pr;
-
-	pr.first = _("Emph");
-	pr.second = EMPH_TOGGLE;
-	bar[1] = pr;
-
-	pr.first = _("Underbar");
-	pr.second = UNDERBAR_TOGGLE;
-	bar[2] = pr;
-
-	pr.first = _("Noun");
-	pr.second = NOUN_TOGGLE;
-	bar[3] = pr;
-
-	pr.first = _("Reset");
-	pr.second = INHERIT;
-	bar[4] = pr;
-
-	return bar;
-}
-
-
-vector<ColorPair> const getColorData()
-{
-	vector<ColorPair> color(11);
-
-	ColorPair pr;
-
-	pr.first = _("No change");
-	pr.second = Color::ignore;
-	color[0] = pr;
-
-	pr.first = _("No color");
-	pr.second = Color::none;
-	color[1] = pr;
-
-	pr.first = _("Black");
-	pr.second = Color::black;
-	color[2] = pr;
-
-	pr.first = _("White");
-	pr.second = Color::white;
-	color[3] = pr;
-
-	pr.first = _("Red");
-	pr.second = Color::red;
-	color[4] = pr;
-
-	pr.first = _("Green");
-	pr.second = Color::green;
-	color[5] = pr;
-
-	pr.first = _("Blue");
-	pr.second = Color::blue;
-	color[6] = pr;
-
-	pr.first = _("Cyan");
-	pr.second = Color::cyan;
-	color[7] = pr;
-
-	pr.first = _("Magenta");
-	pr.second = Color::magenta;
-	color[8] = pr;
-
-	pr.first = _("Yellow");
-	pr.second = Color::yellow;
-	color[9] = pr;
-
-	pr.first = _("Reset");
-	pr.second = Color::inherit;
-	color[10] = pr;
-
-	return color;
-}
-
 
 
 namespace {
 
-class Sorter
-	: public std::binary_function<LanguagePair,
-				      LanguagePair, bool>
+struct Sorter
 {
-public:
-	bool operator()(LanguagePair const & lhs,
-			LanguagePair const & rhs) const {
+	bool operator()(LanguagePair const & lhs, LanguagePair const & rhs) const {
 		return lhs.first < rhs.first;
 	}
 };
 
-
-class ColorSorter
-{
-public:
-	bool operator()(Color::color const & lhs,
-			Color::color const & rhs) const {
-		return lcolor.getGUIName(lhs) < lcolor.getGUIName(rhs);
-	}
-};
 
 } // namespace anon
 
@@ -346,14 +91,6 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	std::sort(begin, langs.end(), Sorter());
 
 	return langs;
-}
-
-
-vector<Color_color> const getSortedColors(vector<Color_color> colors)
-{
-	// sort the colors
-	std::sort(colors.begin(), colors.end(), ColorSorter());
-	return colors;
 }
 
 } // namespace frontend
@@ -496,7 +233,6 @@ using support::libFileSearch;
 using support::onlyFilename;
 using support::package;
 using support::quoteName;
-using support::split;
 using support::Systemcall;
 using support::token;
 
@@ -550,27 +286,6 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 	// remove empty items and duplicates
 	list.erase(std::remove(list.begin(), list.end(), ""), list.end());
 	eliminate_duplicates(list);
-}
-
-
-string const getListOfOptions(string const & classname, string const & type)
-{
-	FileName const filename(getTexFileFromList(classname, type));
-	if (filename.empty())
-		return string();
-	string optionList = string();
-	std::ifstream is(filename.toFilesystemEncoding().c_str());
-	while (is) {
-		string s;
-		is >> s;
-		if (contains(s,"DeclareOption")) {
-			s = s.substr(s.find("DeclareOption"));
-			s = split(s,'{');		// cut front
-			s = token(s,'}',0);		// cut end
-			optionList += (s + '\n');
-		}
-	}
-	return optionList;
 }
 
 

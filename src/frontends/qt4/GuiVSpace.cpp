@@ -26,9 +26,6 @@
 #include "Spacing.h"
 #include "VSpace.h"
 
-#include "ControlVSpace.h"
-#include "frontend_helpers.h"
-
 #include "support/lstrings.h"
 
 #include <QCheckBox>

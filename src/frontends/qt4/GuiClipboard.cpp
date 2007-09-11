@@ -23,6 +23,7 @@
 #include <QString>
 
 #include "support/lstrings.h"
+
 using lyx::support::internalLineEnding;
 using lyx::support::externalLineEnding;
 

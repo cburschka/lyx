@@ -18,7 +18,6 @@
 
 #include "insets/InsetWrap.h"
 
-#include "support/convert.h"
 #include "support/lstrings.h"
 
 #include <QLineEdit>
@@ -109,21 +108,14 @@ void GuiWrapDialog::applyView()
 }
 
 
-static string const numtostr(double val)
-{
-	string a = convert<string>(val);
-	return a;
-	//0pt is a legal width now, it yields a
-	//wrapfloat just wide enough for the contents.
-}
-
-
 void GuiWrapDialog::updateContents()
 {
 	InsetWrapParams & params = controller().params();
 
 	Length len(params.width);
-	widthED->setText(toqstr(numtostr(len.value())));
+	//0pt is a legal width now, it yields a
+	//wrapfloat just wide enough for the contents.
+	widthED->setText(QString::number(len.value()));
 	unitsLC->setCurrentItem(len.unit());
 
 	int item = 0;

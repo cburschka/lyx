@@ -12,14 +12,10 @@
 
 #include "GuiEmbeddedFiles.h"
 #include "debug.h"
-#include "support/convert.h"
 
-using std::string;
 
 namespace lyx {
-
 namespace frontend {
-
 
 GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog
 		(ControlEmbeddedFiles & controller)
@@ -96,10 +92,9 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemClicked(QListWidgetItem* item)
 		k = (k + 1) % files[idx].refCount();
 		item->setData(Qt::UserRole, k);
 		// update label
-		string label = files[idx].inzipName() + " ("
-			+ convert<string>(k + 1)  + "/"
-			+ convert<string>(files[idx].refCount()) + ")";
-		item->setText(toqstr(label));
+		QString label = toqstr(files[idx].inzipName())
+			+ QString(" (%1/%2)").arg(k + 1).arg(files[idx].refCount());
+		item->setText(label);
 	} else
 		controller_.goTo(files[idx], 0);
 }
@@ -115,15 +110,14 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked(QListWidgetItem* item)
 void GuiEmbeddedFilesDialog::updateView()
 {
 	filesLW->clear();
-	//
 	EmbeddedFiles const & files = controller_.embeddedFiles();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
 	for (; it != it_end; ++it) {
-		string label = it->inzipName();
+		QString label = toqstr(it->inzipName());
 		if (it->refCount() > 1)
-			label += " (1/" + convert<string>(it->refCount()) + ")";
-		QListWidgetItem * item = new QListWidgetItem(toqstr(label));
+			label += " (1/" + QString::number(it->refCount()) + ")";
+		QListWidgetItem * item = new QListWidgetItem(label);
 		Qt::ItemFlags flag = Qt::ItemIsUserCheckable | Qt::ItemIsSelectable;
 		if (it->valid())
 			flag |= Qt::ItemIsEnabled;

@@ -28,7 +28,6 @@
 #include "version.h"
 
 #include "support/filetools.h" // LibFileSearch
-#include "support/convert.h"
 
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"

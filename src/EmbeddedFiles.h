@@ -174,7 +174,7 @@ public:
 	typedef std::vector<EmbeddedFile> EmbeddedFileList;
 public:
 	///
-	EmbeddedFiles(Buffer * buffer = NULL): file_list_(), buffer_(buffer) {}
+	EmbeddedFiles(Buffer * buffer = 0) : file_list_(), buffer_(buffer) {}
 	///
 	~EmbeddedFiles() {}
 
@@ -182,7 +182,7 @@ public:
 	bool enabled() const;
 	/// set buffer params embedded flag. Files will be updated or extracted
 	/// if such an operation fails, enable will fail.
-	bool enable(bool flag);
+	void enable(bool flag);
 
 	/// add a file item. 
 	/* \param filename filename to add
@@ -192,7 +192,7 @@ public:
 	 * \param inzipName suggested inzipname
 	 */
 	void registerFile(std::string const & filename, bool embed = false,
-		Inset const * inset = NULL,
+		Inset const * inset = 0,
 		std::string const & inzipName = std::string());
 
 	/// scan the buffer and get a list of EmbeddedFile
@@ -229,6 +229,6 @@ private:
 	Buffer * buffer_;
 };
 
+} // namespace lyx
 
-}
 #endif

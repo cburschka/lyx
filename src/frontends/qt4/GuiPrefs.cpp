@@ -43,9 +43,6 @@
 #include <QValidator>
 #include <QCloseEvent>
 
-#include <boost/tuple/tuple.hpp>
-#include <boost/bind.hpp>
-
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
@@ -522,6 +519,17 @@ void PrefScreenFonts::select_typewriter(const QString& name)
 //
 /////////////////////////////////////////////////////////////////////
 
+namespace {
+
+struct ColorSorter
+{
+	bool operator()(Color::color const & lhs, Color::color const & rhs) const {
+		return lcolor.getGUIName(lhs) < lcolor.getGUIName(rhs);
+	}
+};
+
+} // namespace anon
+
 PrefColors::PrefColors(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule( _("Colors"), form, parent)
 {
@@ -547,13 +555,11 @@ PrefColors::PrefColors(GuiPrefsDialog * form, QWidget * parent)
 
 		lcolors_.push_back(lc);
 	}
-	lcolors_ = frontend::getSortedColors(lcolors_);
+	std::sort(lcolors_.begin(), lcolors_.end(), ColorSorter());
 	vector<Color_color>::const_iterator cit = lcolors_.begin();
 	vector<Color_color>::const_iterator const end = lcolors_.end();
-	for (; cit != end; ++cit)
-	{
-		// This is not a memory leak:
-		/*QListWidgetItem * newItem =*/ new QListWidgetItem(QIcon(icon),
+	for (; cit != end; ++cit) {
+			(void) new QListWidgetItem(QIcon(icon),
 			toqstr(lcolor.getGUIName(*cit)), lyxObjectsLW);
 	}
 	curcolors_.resize(lcolors_.size());

@@ -231,13 +231,13 @@ bool EmbeddedFiles::enabled() const
 }
 
 
-bool EmbeddedFiles::enable(bool flag)
+void EmbeddedFiles::enable(bool flag)
 {
 	if (enabled() != flag) {
 		// if enable, copy all files to temppath()
 		// if disable, extract all files
 		if ((flag && !updateFromExternalFile()) || (!flag && !extract()))
-			return false;
+			return;
 		// if operation is successful
 		buffer_->markDirty();
 		buffer_->params().embedded = flag;
