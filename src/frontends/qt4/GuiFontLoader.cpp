@@ -196,19 +196,17 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 GuiFontLoader::GuiFontLoader()
 {
 #if QT_VERSION >= 0x040200
-	fontID = new int[num_math_fonts];
-
 	string const fonts_dir =
 		addPath(package().system_support().absFilename(), "fonts");
 
 	for (int i = 0 ; i < num_math_fonts; ++i) {
 		string const font_file = lyx::support::os::external_path(
 				addName(fonts_dir, math_fonts[i] + ".ttf"));
-		fontID[i] = QFontDatabase::addApplicationFont(toqstr(font_file));
+		int fontID = QFontDatabase::addApplicationFont(toqstr(font_file));
 
 		LYXERR(Debug::FONT) << "Adding font " << font_file
 				    << static_cast<const char *>
-					(fontID[i] < 0 ? " FAIL" : " OK")
+					(fontID < 0 ? " FAIL" : " OK")
 				    << endl;
 	}
 #endif
@@ -218,19 +216,6 @@ GuiFontLoader::GuiFontLoader()
 			for (int i3 = 0; i3 < 4; ++i3)
 				for (int i4 = 0; i4 < 10; ++i4)
 					fontinfo_[i1][i2][i3][i4] = 0;
-}
-
-
-GuiFontLoader::~GuiFontLoader()
-{
-#if QT_VERSION >= 0x040200
-	for (int i = 0 ; i < num_math_fonts; ++i) {
-		if (fontID[i] >= 0)
-			QFontDatabase::removeApplicationFont(fontID[i]);
-	}
-
-	delete [] fontID;
-#endif
 }
 
 
