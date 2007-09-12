@@ -4042,7 +4042,7 @@ Standard
  If you want to keep both the current nesting depth and paragraph environment,
  you should use 
 \family sans
-C-Return
+M-Return
 \family default
  to break paragraphs.
 \end_layout
@@ -9461,10 +9461,10 @@ not
 Tools\SpecialChar \menuseparator
 Preferences
 \family default
- dialog, see Appendix\InsetSpace ~
+ dialog, see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cha:The-Preferences-dialog"
+reference "sub:Screen-Fonts"
 
 \end_inset
 
@@ -11847,10 +11847,10 @@ dvips
 dvips
 \family default
  has to be configured for this printer name.
- The default printer can be set in LyX's preferences dialog, see chapter\InsetSpace ~
+ The default printer can be set in LyX's preferences dialog, see section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "cha:The-Preferences-dialog"
+reference "sub:Printer"
 
 \end_inset
 
@@ -23581,40 +23581,31 @@ LyX uses for the index generation by default the program
 makeindex
 \family default
 .
- This programs can be controlled by options that can be set in LyX's preferences
- dialog under 
-\family sans
-Outputs
-\family default
-, 
-\family sans
-LaT
-\begin_inset ERT
-status collapsed
+ It can be controlled by options that can be set in LyX's preferences dialog,
+ see section\InsetSpace ~
 
-\begin_layout Standard
-
-{}
-\end_layout
+\begin_inset LatexCommand ref
+reference "sub:LaTeX-settings"
 
 \end_inset
 
-eX
-\family default
- in the field 
-\family sans
-Index\InsetSpace ~
-command
-\family default
 .
- You can also specify there another program to generate the index, for example
+ The available options are listed and explained in 
+\begin_inset LatexCommand cite
+key "makeindex"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+You can also specify there another program to generate the index, for example
  
 \family sans
 xindy
 \family default
 .
- Before you change something there, it is strongly recommended to read the
- manuals of the programs.
 \end_layout
 
 \begin_layout Section
@@ -25827,7 +25818,15 @@ If you have for example a U.S.-style keyboard and want to write in a different
  language than English, you can use an alternate keymap.
  For example, if you have a U.S.-style keyboard but want to write in Italian,
  you can configure LyX to use an Italian keymap.
- The preferences dialog allows you to choose up to two keyboard mappings.
+ The preferences dialog allows you to choose up to two keyboard mappings,
+ see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Keyboard-Map"
+
+\end_inset
+
+.
  You can choose primary and secondary keyboard languages and then select
  which one you want to use.
 \end_layout
@@ -35113,6 +35112,18 @@ Load opened files from last session
 
 \begin_layout Subsubsection
 Documents
+\begin_inset LatexCommand label
+name "sub:Backup documents"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Backup ! Documents"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35155,6 +35166,12 @@ Cursor follows scrollbar
 Screen Fonts
 \begin_inset LatexCommand index
 name "Font ! Screen"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sub:Screen-Fonts"
 
 \end_inset
 
@@ -35314,6 +35331,12 @@ name "Keyboard Map"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "sub:Keyboard-Map"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35348,10 +35371,145 @@ Note:
 
 \begin_layout Section
 Paths
+\begin_inset LatexCommand index
+name "Directory settings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Working\InsetSpace ~
+directory This is LyX's working directory.
+ It is the default when you 
+\family sans
+Open
+\family default
+, 
+\family sans
+Save
+\family default
+ or 
+\family sans
+Save\InsetSpace ~
+as
+\family default
+ files.
+\end_layout
+
+\begin_layout Description
+Document\InsetSpace ~
+templates This directory will be opened when you use the menu 
+\family sans
+File\SpecialChar \menuseparator
+New\InsetSpace ~
+from\InsetSpace ~
+Template
+\family default
+.
+\end_layout
+
+\begin_layout Description
+Backup\InsetSpace ~
+directory
+\begin_inset LatexCommand index
+name "Backup ! Directory"
+
+\end_inset
+
+ Backup copies will be saved to this directory.
+ When no directory is given but backups are enabled as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Backup documents"
+
+\end_inset
+
+, the 
+\family sans
+Working directory
+\family default
+ will be used to save the backups.
+\newline
+The backup files have the ending 
+\begin_inset Quotes eld
+\end_inset
+
+.lyx~
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+XServer-Pipe Here you can enter the name of a Unix-pipe.
+ This pipe is used to send data from external programs to LyX.
+\newline
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ This feature doesn't work on Windows systems.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Temporary\InsetSpace ~
+directory Temporary files will be saved in this directory.
+\end_layout
+
+\begin_layout Description
+PATH\InsetSpace ~
+prefix This field contains a list of paths to external programs.
+ When LyX needs to use an external program, it looks in this list where
+ to find it on the system.
+ The path list is automatically set up on Windows and Mac systems while
+ LyX is configured, so that you normally don't have to modify it.
+ On Unix\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+Linux systems, the path list will need to be set only if there
+ are external programs you wish to use that are not in your normal system
+ path ($PATH).
+ 
 \end_layout
 
 \begin_layout Section
 Identity
+\end_layout
+
+\begin_layout Standard
+Here you can insert your name and email address.
+ The identity will be used when you have enabled change tracking as described
+ in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Change-Tracking"
+
+\end_inset
+
+, to mark changes you make as yours.
 \end_layout
 
 \begin_layout Section
@@ -35362,32 +35520,31 @@ Language Settings
 Language
 \end_layout
 
-\begin_layout Standard
-The 
+\begin_layout Description
+Default\InsetSpace ~
+language is the language used in new documents
+\end_layout
+
+\begin_layout Description
+Language\InsetSpace ~
+package is a LaTeX-command to load a LaTeX-package that handles
+ language issues.
+ The default is the LaTeX-command 
 \family sans
-Default language
-\family default
- is the language used in new documents.
- The Language package should always be babel.
- babel translates in the background automatically text labels to the document
- language.
- A text label is for instance the word 
-\begin_inset Quotes eld
-\end_inset
-
-table
-\begin_inset Quotes erd
-\end_inset
-
- at the beginning of every table-caption.
- 
-\series bold
 
 \backslash
 usepackage{babel}
+\family default
+ that loads the package 
+\series bold
+babel
 \series default
- is a LaTeX-command to use the package babel.
- For an introduction to the LaTeX-Syntax, look at section\InsetSpace ~
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+For an introduction to the LaTeX-Syntax, have a look at section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:ERT"
@@ -35397,25 +35554,75 @@ reference "sec:ERT"
 .
 \end_layout
 
-\begin_layout Standard
+\end_inset
 
-\family sans
-Command start/end
-\family default
- ???
+
+\newline
+The 
+\series bold
+babel
+\series default
+ translates in the background automatically text labels of documents to
+ the document language.
+ A text label is for instance the word 
+\begin_inset Quotes eld
+\end_inset
+
+Table
+\begin_inset Quotes erd
+\end_inset
+
+ at the beginning of every table-caption.
 \end_layout
 
-\begin_layout Standard
-There are also the following options in the menu:
+\begin_layout Description
+Command\InsetSpace ~
+start When a special LaTeX-package is needed to write in a certain
+ document language, you can here specify the command to start the package.
+ An example is the start command 
+\family sans
+
+\backslash
+begin{arabtext}
+\family default
+ that is needed to write Arabic using the package 
+\series bold
+ArabTeX
+\series default
+, see 
+\begin_inset LatexCommand cite
+key "Arabic"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Command\InsetSpace ~
+end Counterpart to 
+\family sans
+Command start
+\family default
+.
+ Some packages, like the default, don't have an end command since the start
+ command toggles the package on and off.
 \end_layout
 
 \begin_layout Description
 Use\InsetSpace ~
-babel whether babel is used or not
+babel Whether babel is used or not.
 \end_layout
 
 \begin_layout Description
-Global ??
+Global When this option is set, the languages used in the document will
+ be added as options to the document class options, so that they can be
+ used by all LaTeX-packages.
+ Otherwise they will only be used as options for the 
+\series bold
+babel
+\series default
+ package.
 \end_layout
 
 \begin_layout Description
@@ -35425,14 +35632,19 @@ begin ??
 
 \begin_layout Description
 Auto\InsetSpace ~
-end ??
+end Counterpart to 
+\family sans
+Auto\InsetSpace ~
+begin
+\family default
+.
 \end_layout
 
 \begin_layout Description
 Mark\InsetSpace ~
 foreign\InsetSpace ~
-languages text marked formatted in a language different from
- the document language will be blue underlined
+languages Text marked formatted in a language different from
+ the document language will be underlined blue.
 \end_layout
 
 \begin_layout Description
@@ -35440,8 +35652,8 @@ Right\InsetSpace ~
 to\InsetSpace ~
 left\InsetSpace ~
 language\InsetSpace ~
-support enables the use of languages, written from right
- to left, like Arabic, Hebrew, Farsi
+support Enables the use of languages, written from right
+ to left, like Arabic, Hebrew, Farsi.
 \end_layout
 
 \begin_layout Subsection
@@ -35449,7 +35661,7 @@ Spellchecker
 \end_layout
 
 \begin_layout Standard
-The spellchecker setting are explained in section\InsetSpace ~
+The spellchecker settings are explained in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Spellchecking"
@@ -35465,244 +35677,152 @@ Outputs
 
 \begin_layout Subsection
 Printer
+\begin_inset LatexCommand label
+name "sub:Printer"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Printer Settings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Default\InsetSpace ~
+printer Here you can specify the name of your default printer.
+ The name will be used when the 
+\family sans
+Printer command
+\family default
+ is executed.
+\newline
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ You can leave this field empty on Windows systems because it has there
+ no effect.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Adapt\InsetSpace ~
+output\InsetSpace ~
+to\InsetSpace ~
+printer This option works only for the 
+\family sans
+Printer command
+\family default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+dvips
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It activates a configuration file for dvips.
+ This is an option only for dvips experts.
+\end_layout
+
+\begin_layout Description
+Printer\InsetSpace ~
+command is the command LyX\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+LaTeX uses for printing.
+ The default is on most systems 
+\family sans
+dvips
+\family default
+.
+\end_layout
+
+\begin_layout Description
+Printer\InsetSpace ~
+Command\InsetSpace ~
+Options Here you can specify printer options.
+ A list of printer options with explanations can be found in the documentation
+ of the program that provides the 
+\family sans
+Printer command
+\family default
+ you are using.
 \end_layout
 
 \begin_layout Subsection
 Date Format
+\begin_inset LatexCommand index
+name "Date Format"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-%a locale's abbreviated weekday name (Sun..Sat)
-\end_layout
+The date format can be one or a mixture of the formats listed here:
+\newline
 
-\begin_layout Standard
-\noindent
-%A locale's full weekday name, variable length (Sunday..Saturday)
-\end_layout
+\begin_inset LatexCommand url
+target "http://unixhelp.ed.ac.uk/CGI/man-cgi?date"
 
-\begin_layout Standard
-\noindent
-%b locale's abbreviated month name (Jan..Dec)
-\end_layout
+\end_inset
 
-\begin_layout Standard
-\noindent
-%B locale's full month name, variable length (January..December)
-\end_layout
 
-\begin_layout Standard
-\noindent
-%c locale's date and time (Sat Nov 04 12:02:33 EST 1989)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%C century (year divided by 100 and truncated to an integer) [00-99]
-\end_layout
-
-\begin_layout Standard
-\noindent
-%d day of month (01..31)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%D date (mm/dd/yy)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%e day of month, blank padded ( 1..31)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%F same as %Y-%m-%d
-\end_layout
-
-\begin_layout Standard
-\noindent
-%g the 2-digit year corresponding to the %V week number
-\end_layout
-
-\begin_layout Standard
-\noindent
-%G the 4-digit year corresponding to the %V week number
-\end_layout
-
-\begin_layout Standard
-\noindent
-%h same as %b
-\end_layout
-
-\begin_layout Standard
-\noindent
-%H hour (00..23)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%I hour (01..12)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%j day of year (001..366)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%k hour ( 0..23)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%l hour ( 1..12)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%m month (01..12)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%M minute (00..59)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%n a newline
-\end_layout
-
-\begin_layout Standard
-\noindent
-%N nanoseconds (000000000..999999999)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%p locale's upper case AM or PM indicator (blank in many locales)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%P locale's lower case am or pm indicator (blank in many locales)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%r time, 12-hour (hh:mm:ss [AP]M)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%R time, 24-hour (hh:mm)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%s seconds since `00:00:00 1970-01-01 UTC' (a GNU extension)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%S second (00..60); the 60 is necessary to accommodate a leap second
-\end_layout
-
-\begin_layout Standard
-\noindent
-%t a horizontal tab
-\end_layout
-
-\begin_layout Standard
-\noindent
-%T time, 24-hour (hh:mm:ss)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%u day of week (1..7); 1 represents Monday
-\end_layout
-
-\begin_layout Standard
-\noindent
-%U week number of year with Sunday as first day of week (00..53)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%V week number of year with Monday as first day of week (01..53)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%w day of week (0..6); 0 represents Sunday
-\end_layout
-
-\begin_layout Standard
-\noindent
-%W week number of year with Monday as first day of week (00..53)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%x locale's date representation (mm/dd/yy)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%X locale's time representation (%H:%M:%S)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%y last two digits of year (00..99)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%Y year (1970...)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%z RFC-822 style numeric timezone (-0500) (a nonstandard extension)
-\end_layout
-
-\begin_layout Standard
-\noindent
-%Z time zone (e.g., EDT), or nothing if no time zone is determinable
+\newline
+For example the format
+\newline
+%d/%m/%y
+\newline
+prints the date as day/month/year.
 \end_layout
 
 \begin_layout Subsection
 Plain Text
 \end_layout
 
-\begin_layout Standard
-
-\family sans
-Output line length
-\family default
- sets maximum number of characters printed in one line when using the menu
- 
+\begin_layout Description
+Output\InsetSpace ~
+line\InsetSpace ~
+length sets the maximum number of characters printed in one line
+ when using the menu 
 \family sans
 File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
-ASCII
+Plain\InsetSpace ~
+text
 \family default
 .
  Setting the line line length to 0 means all text is printed in one endless
  line.
 \end_layout
 
-\begin_layout Standard
-roff command defines an additional command used to produce better ASCII
- tables with the 
+\begin_layout Description
+roff\InsetSpace ~
+command defines an additional command used to produce better ASCII tables
+ with the 
 \family typewriter
 groff/troff/nroff
 \family default
- UNIX-commands (refer to their manpages for more information about them).
+ UNIX-commands (refer to their manuals for more information about them).
  Setting this as empty tells LyX to use the internal formatter.
 \end_layout
 
@@ -35719,10 +35839,203 @@ status collapsed
 \end_inset
 
 eX
+\begin_inset LatexCommand label
+name "sub:LaTeX-settings"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X\InsetSpace ~
+encoding This is the default encoding of the document font.
+ 
+\family sans
+T1
+\family default
+ is the default and covers western languages and symbols.
+ 
+\family sans
+T2A
+\family default
+, 
+\family sans
+T2B
+\family default
+, 
+\family sans
+T2C
+\family default
+, 
+\family sans
+LCY
+\family default
+, and 
+\family sans
+X2
+\family default
+ are for Cyrillic.
+ Combinations of the encodings are possible, like 
+\begin_inset Quotes erd
+\end_inset
+
+
+\family sans
+T1, T2B
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The font encoding is normally automatically loaded by the language packages
+ LyX sets up in the background.
+ So there is no need to change the default encoding.
+\end_layout
+
+\begin_layout Description
+Default\InsetSpace ~
+paper\InsetSpace ~
+size This is the paper size that is used for new documents.
+ The 
+\family sans
+Default
+\family default
+ value depends on your LaTeX-system setup.
+\end_layout
+
+\begin_layout Description
+Reset\InsetSpace ~
+class\InsetSpace ~
+options\InsetSpace ~
+when\InsetSpace ~
+document\InsetSpace ~
+classes\InsetSpace ~
+changes Removes all manually set document
+ class options in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+ dialog when changing the document class.
+\end_layout
+
+\begin_layout Standard
+In the 
+\family sans
+External Applications
+\family default
+ field you can specify commands with parameters for the listed applications.
+ Before you change something here, it is strongly recommended to read the
+ manuals of the applications.
+ Currently the following commands can be set:
+\end_layout
+
+\begin_layout Description
+CheckTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X\InsetSpace ~
+command ??
+\end_layout
+
+\begin_layout Description
+BibTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X\InsetSpace ~
+command Command for the program 
+\family sans
+BibTeX
+\family default
+ that generates the bibliography, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Bibliography-databases"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Index\InsetSpace ~
+command Command for the program that generates the index, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Index-Program"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+DVI\InsetSpace ~
+viewer\InsetSpace ~
+paper\InsetSpace ~
+size\InsetSpace ~
+options They only have an effect when the program 
+\family sans
+xdvi
+\family default
+ is used as DVI-viewer.
 \end_layout
 
 \begin_layout Subsection
 Paths
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Use Windows-style paths in LaTeX files
+\family default
+ uses the Windows path style:
+\end_layout
+
+\begin_layout Standard
+C:
+\backslash
+test
+\backslash
+hello
+\end_layout
+
+\begin_layout Standard
+instead of the Unix path style:
+\end_layout
+
+\begin_layout Standard
+C:/test/hello
 \end_layout
 
 \begin_layout Section
@@ -35730,64 +36043,231 @@ Converters
 \end_layout
 
 \begin_layout Standard
-LyX has a powerful mechanism to convert to and from any file format using
- external programs.
- Define a pair of formats, e.g.
- 
-\family typewriter
-LaTeX
+Here you find the list of defined converter commands to convert material
+ from one format to another.
+ You can modify them or create new ones.
+ To modify a converter, select it, change the entry of the field 
+\family sans
+Converter
 \family default
- and 
-\family typewriter
-PDF
+ and\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+or 
+\family sans
+Extra\InsetSpace ~
+flag
 \family default
-.
- Now define a converter from one format to the other.
- In our example, two possible mechanisms exist.
-\end_layout
-
-\begin_layout Enumerate
-A direct conversion, from LaTeX to PDF using pdflatex
-\end_layout
-
-\begin_layout Enumerate
-A more convoluted route using intermediate formats and converters: LaTeX
- to DVI (using latex) to PostScript® (using dvips) to PDF (using ps2pdf).
+, and press then the 
+\family sans
+Modify
+\family default
+ button.
+ To create a new converter, select an existing one, select a different format
+ in the 
+\family sans
+From\InsetSpace ~
+format
+\family default
+ and\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+or 
+\family sans
+To\InsetSpace ~
+format
+\family default
+ drop-down list, modify the 
+\family sans
+Converter
+\family default
+ field, and press the 
+\family sans
+Add
+\family default
+ button.
 \end_layout
 
 \begin_layout Standard
-LyX will always choose the shortest possible route, so you must specify
- two different Format names for 
-\family typewriter
-.pdf
-\family default
- files to be able to use either.
- Both are included by default in the 
+When the 
 \family sans
-Preferences
+Converter File Cache
+\family default
+ is enabled, conversions will be cached as long as specified in the field
+ 
+\family sans
+Maximum Age (in days
+\family default
+).
+ This means that images don't need to be converted again when you reopen
+ a document; the converted images from the cache will be used instead.
+\end_layout
+
+\begin_layout Standard
+More about converters, like the variables and flags that can be used in
+ the converter definition, is described in section 
+\emph on
+Converters
+\emph default
+ of the 
+\emph on
+Customization
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Section
+File Formats
+\end_layout
+
+\begin_layout Standard
+The first step is to define your file formats, e.g.
+ PDF, if they are not already defined.
+ To do so, open the 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences:Converters
 \family default
  dialog.
- Have a look and then invent your own!
+ Enter a new format name; a new GUI name (used in, e.g., the View and Export
+ menus); and a file extension.
+ These are required.
+ 
 \end_layout
 
 \begin_layout Standard
-Moreover, each Format can have a Viewer associated with it.
+There are also two flags that can be set using the checkboxes in the dialog.
+ The 
+\family typewriter
+document
+\family default
+ flag tells LyX that a format is suitable for document export.
+ If this flag is set for a format, and if a suitable conversion route exists,
+ then the format will appear in the 
+\family sans
+File\SpecialChar \menuseparator
+Export
+\family default
+ menu.
+ The format will also appear in the 
+\family sans
+View
+\family default
+ menu if it has a viewer associated with it.
+ (See below.) Pure image formats (e.g.\InsetSpace ~
+
+\family typewriter
+png
+\family default
+) should not have this flag set; formats that can both represent vector
+ graphics and documents (e.g.\InsetSpace ~
+
+\family typewriter
+pdf
+\family default
+) should have it set.
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+vector
+\family default
+ flag tells LyX whether a format can contain vector graphics.
+ This information is used to determine the target format of included graphics
+ for 
+\family typewriter
+pdflatex
+\family default
+ export.
+ Included graphics may need to be converted to either 
+\family typewriter
+pdf
+\family default
+, 
+\family typewriter
+png
+\family default
+ or 
+\family typewriter
+jpg
+\family default
+, since 
+\family typewriter
+pdflatex
+\family default
+ cannot handle other image formats.
+ If an included graphic is not already in 
+\family typewriter
+pdf
+\family default
+, 
+\family typewriter
+png
+\family default
+ or 
+\family typewriter
+jpg
+\family default
+ format, it is converted to 
+\family typewriter
+pdf
+\family default
+ if the 
+\family typewriter
+vector
+\family default
+ flag of the format is set, and otherwise to 
+\family typewriter
+png
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+A Format can have a Viewer associated with it.
  For example, you might want to use 
 \family typewriter
-Ghostview
+ghostview
 \family default
- to examine PostScript files, or 
+ to look at PostScript® files, or 
 \family typewriter
 xdvi
 \family default
  to preview the LaTeX output.
- You can alter the viewer to use (and what options to pass to it) via the
- 
+ You can enter the program to use as a viewer (and what options to pass
+ to it) in the Viewer field.
+ You can also modify the viewer associated with a pre-defined format simply
+ by changing what you find in this field, clicking the 
 \family sans
-Tols\SpecialChar \menuseparator
-Preferences:Converters
+Modify
 \family default
- dialog.
+ button, and then (if you're sure you want to do this) clicking the 
+\family sans
+Apply
+\family default
+ or 
+\family sans
+Save
+\family default
+ button.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Changes to the formats are kept in the 
+\family typewriter
+preferences
+\family default
+ file in you local LyX directory (for example, 
+\family typewriter
+$HOME/.lyx/
+\family default
+).
+ If you want to restore the defaults, edit this file and delete the lines
+ in the Formats and Converters sections.
+\end_layout
+
+\end_inset
+
  For example, to change the 
 \family typewriter
 dvi
@@ -35807,86 +36287,146 @@ Modify
 .
 \end_layout
 
-\begin_layout Section
-File Formats
+\begin_layout Standard
+If the operating system has a default viewer associated to a format, this
+ viewer is used instead of the one defined here in the Windows® and OS X
+ versions of LyX.
+ (It is planned to implement this feature on other platforms.)
+\end_layout
+
+\begin_layout Standard
+Editors are like viewers: Each Format can have an Editor associated to it,
+ entered in the Editor field, and the editor associated with a format can
+ be altered via the 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences:Converters
+\family default
+ dialog.
+ LyX will launch the associated editor whenever an included file
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+This can be an included 
+\family typewriter
+.tex
+\family default
+ file, a verbatim included text file, external material or an included graphics
+ file.
+\end_layout
+
+\end_inset
+
+ needs to be edited.
 \end_layout
 
 \begin_layout Section
 Copiers
 \end_layout
 
-\begin_layout Section
-BibTeX and makeindex
-\end_layout
+\begin_layout Standard
+Each Format can have a Copier associated with it.
+ These are defined in the 
+\family sans
+\bar under
+T
+\bar default
+ools\SpecialChar \menuseparator
+
+\bar under
+P
+\bar default
+references:Copiers
+\family default
+ dialog.
+ Since all conversions from one Format to another take place in LyX's temporary
+ directory, it is sometimes necessary to modify a file before copying it
+ to the temporary directory in order that the conversion may be performed.
+\begin_inset Foot
+status collapsed
 
 \begin_layout Standard
-Both the bibliography generating command (default 
-\family typewriter
-bibtex
-\family default
-) and the index generating command (default 
-\family typewriter
-makeindex
-\family default
- with options 
-\family typewriter
--c
-\family default
- and 
-\family typewriter
--q
-\family default
-) can be changed.
- As an alternative for 
-\family typewriter
-makeindex
-\family default
-, 
-\family typewriter
-xindy
-\family default
- can be recommended.
+For example, the file may refer to other files---images, for example---using
+ relative filenames, and these may become invalid when the file is copied
+ to the temporary directory.
+\end_layout
+
+\end_inset
+
+ This is done by the Copier: It copies a file to (or from) the temporary
+ directory and may modify it in the process.
  
 \end_layout
 
 \begin_layout Standard
-The command to enter is
-\end_layout
+Copiers may also be used for other purposes.
+ For example, if appropriate converters are found, LyX will automatically
+ install copiers for the html and wordhtml formats.
+ When these formats are exported, the copier sees to it that not just the
+ main HTML file but various associated files (style files, images, and the
+ like) are also copied, and all these files are written to a subdirectory
+ of the directory in which the original LyX file was found.
+ The copier may of course be customized.
+ The optional -e argument takes a comma-separated list of extensions to
+ be copied; if it is omitted, all files will be copied.
+ The -t argument determines the extension added to the generated directory.
+ By default, it is 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Quote
+LyXconv
+\begin_inset Quotes erd
+\end_inset
 
+, so HTML generated from 
 \family typewriter
-makeindex.sh -m $$lang
+/path/to/filename.lyx
+\family default
+ will end up in 
+\family typewriter
+/path/to/filename.html.LyXconv
+\family default
+.
+ 
 \end_layout
 
 \begin_layout Standard
-where the placeholder 
-\family typewriter
-$$lang
-\family default
- will be replaced by the chosen document (babel) language.
- For this, you must 
+The definitions of the copiers may use four variables:
 \end_layout
 
-\begin_layout Standard
-have installed the packages 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+$$s The LyX system directory (e.g., 
 \family typewriter
-xindy
-\family default
- and 
-\family typewriter
-make-rules
-\family default
- (
-\family typewriter
-xindy-make-rules
+/usr/share/lyx
 \family default
 ).
- Type 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+$$i The input file
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+$$o The output file
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+$$l The `LaTeX name'
+\end_layout
+
+\begin_layout Standard
+The latter is to be given in a form suitable for inclusion in a LaTeX 
 \family typewriter
-makeindex.sh
+
+\backslash
+include
 \family default
- at a shell prompt for a help page.
+ command and is relevant only when exporting files suitable for such inclusion.
 \end_layout
 
 \begin_layout Chapter
@@ -36720,6 +37260,51 @@ key "LaTeXFAQ"
 \begin_inset LatexCommand url
 name "The LaTeX FAQ:"
 target "http://www.tex.ac.uk/cgi-bin/texfaq2html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "makeindex"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi}{
+\end_layout
+
+\end_inset
+
+Documentation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ of the program 
+\family sans
+makeindex
+\family default
+:
+\newline
+
+\begin_inset LatexCommand url
+target "http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi"
 
 \end_inset
 

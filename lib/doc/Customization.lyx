@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 283
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass book
@@ -2059,33 +2059,75 @@ Converters
 \end_layout
 
 \begin_layout Standard
-To define a converter from one format to another---e.g., LaTeX to PDF---select
- the Converters panel.
- Choose the `From' and `To' formats, and then enter the program to be used
- in the conversion in the Converter field.
- 
+To define a new converter, select an existing one, select a different format
+ in the 
+\family sans
+From\InsetSpace ~
+format
+\family default
+ and\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+or 
+\family sans
+To\InsetSpace ~
+format
+\family default
+ drop-down list, modify the 
+\family sans
+Converter
+\family default
+ field, and press the 
+\family sans
+Add
+\family default
+ button.
 \end_layout
 
 \begin_layout Standard
-You do not have to define converters between all the Formats between which
+You do not have to define converters between all the formats between which
  you want to convert.
- For example, you will note that there is no `LyX to PostScript®' converter,
- but LyX will export PostScript®.
+ For example, you will note that there is no `LyX to PostScript' converter,
+ but LyX will export PostScript.
  It does so by first creating a LaTeX file (no converter needs to be defined
- for this) which it then converts to DVI using the `LaTeX to DVI' converter,
- and then it converts the resulting DVI file to PostScript®.
+ for this) which is then converted to DVI using the `LaTeX to DVI' converter,
+ and finally converts the resulting DVI file to PostScript.
  LyX finds such `chains' of converters automatically, and it will always
- choose the shortest chain possible.
+ choose the shortest possible chain.
  You can, though, still define multiple conversion methods between file
  formats.
  For example, the standard LyX configuration provides three ways to convert
- LaTeX to PDF: Directly, using pdflatex; via (DVI and) PostScript®, using
- ps2pdf; or via DVI, using dvipdfm.
+ LaTeX to PDF: Directly, using 
+\family sans
+pdflatex
+\family default
+; via (DVI and) PostScript, using 
+\family sans
+ps2pdf
+\family default
+; or via DVI, using 
+\family sans
+dvipdfm
+\family default
+.
  To define such alternate chains, you must define multiple target `file
- formats'.
- In the standard configuration, for example, formats named `pdf', `pdf2',
- and `pdf3' are defined, all of which share the extension `pdf'.
- 
+ formats', as described in the next section.
+ For example in the standard configuration the formats named 
+\family sans
+pdf
+\family default
+, 
+\family sans
+pdf2
+\family default
+, and 
+\family sans
+pdf3
+\family default
+ are defined, all of which share the extension 
+\family sans
+.pdf
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -2094,11 +2136,7 @@ Several variables can be used in the definition of converters:
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-$$s The LyX system directory (e.g., 
-\family typewriter
-/usr/share/lyx
-\family default
-).
+$$s The LyX system directory
 \end_layout
 
 \begin_layout List
@@ -2122,19 +2160,27 @@ $$p The path to the input file
 \end_layout
 
 \begin_layout Standard
-In the `Extra Flag' field you can enter as many of the following flags as
- you wish, separated by commas:
+In the 
+\family sans
+Extra\InsetSpace ~
+Flag
+\family default
+ field you can enter the following flags, separated by commas:
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
 latex This converter runs some form of LaTeX.
- (This will make LyX's LaTeX error logs available.) 
+ This will make LyX's LaTeX error logs available.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-needaux Needs the LaTeX .aux file for the conversion.
+needaux Needs the LaTeX 
+\family sans
+.aux
+\family default
+ file for the conversion.
 \end_layout
 
 \begin_layout List
@@ -2143,13 +2189,14 @@ xml Output is XML.
 \end_layout
 
 \begin_layout Standard
-The following three variables are not really flags at all but take an argument
- in the 
+The following three flags are not really flags at all because they take
+ an argument in the 
 \family sans
 key\InsetSpace ~
-= value
+=\InsetSpace ~
+value
 \family default
- format.
+ format:
 \end_layout
 
 \begin_layout List
@@ -2186,10 +2233,9 @@ Note
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-resultfile Determines the output filename and may, again, contain $$b.
+resultfile Determines the output filename and may, contain $$b.
  Sensible only with resultdir, and optional even then; if not given, it
  defaults to `index'.
- 
 \end_layout
 
 \begin_layout Standard
@@ -3256,7 +3302,7 @@ xx
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3404,7 +3450,7 @@ xx
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3837,7 +3883,7 @@ underbar (underb)
 \hfill
 
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3862,7 +3908,7 @@ underdot (underd)
 \hfill
 
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3893,7 +3939,7 @@ tie (tie)
 \hfill
 
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3912,7 +3958,7 @@ breve (bre)
 \hfill
 ă
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3949,7 +3995,7 @@ dot (dot)
 \hfill
 ż
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -6054,7 +6100,7 @@ These are the general parameters which describe the form of the entire document:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -6449,13 +6495,11 @@ NoFloat
 
 \family typewriter
 \series medium
-InsetLayout\SpecialChar \ldots{}
+CharStyle\SpecialChar \ldots{}
 End
 \family default
 \series default
- This section (re-)defines the layout of an inset.
- It can be applied to an existing inset of to a new, user-defined inset,
- e.g., a new character style.
+ This section defines a new character style.
  See Section\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -6487,7 +6531,7 @@ reference "sec:counter"
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -6640,7 +6684,7 @@ where the following commands are allowed:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -7426,36 +7470,8 @@ Settings
 LabelCounter
 \family default
 \series default
- is set, this string can be contain the special formatting commands described
+ is set, this string can be contain special formatting commands as explained
  in Section\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sec:counter"
-
-\end_inset
-
-.
- For the sake of backwards compatibility, the string 
-\family typewriter
-@
-\emph on
-style-name
-\emph default
-@
-\family default
- will be replaced by the expanded 
-\family typewriter
-LabelString
-\family default
- of style 
-\family typewriter
-\emph on
-style-name
-\family default
-\emph default
-.
- This feature is now obsolete and should be replaced by the mechanisms of
- Section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:counter"
@@ -7994,7 +8010,7 @@ Note that, besides that functionality, there is no way to ensure any ordering
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -8332,24 +8348,8 @@ string
 ] The heading used for the list of floats.
 \end_layout
 
-\begin_layout Standard
-Note that defining a float with type 
-\family typewriter
-\emph on
-type
-\family default
-\emph default
- automatically defines the corresponding counter with name 
-\family typewriter
-\emph on
-type
-\family default
-\emph default
-.
-\end_layout
-
 \begin_layout Subsection
-Inset layouts and Flex insets
+Character styles
 \end_layout
 
 \begin_layout Standard
@@ -8358,156 +8358,12 @@ name "sec:charstyle"
 
 \end_inset
 
-You can define character styles since version 1.4.0 of LyX; since version
- 1.6.0 these are called Flex insets.
- 
-\end_layout
-
-\begin_layout Standard
-Furthermore it is possible to define the general layout of many different
- types of insets.
- Currently layout parameters can be defined for footnotes, marginal notes,
- note insets, ERT insets, branch insets, and Flex insets.
- The latter are definable from the user GUI and come in three different
- kinds: character style (
+You can define character styles since version 1.4.0 of LyX.
+ The 
 \family typewriter
 CharStyle
 \family default
-) , user custom (
-\family typewriter
-Custom
-\family default
-), and XML element (
-\family typewriter
-Element
-\family default
-) insets.
- 
-\end_layout
-
-\begin_layout Standard
-The 
-\family typewriter
-InsetLayout
-\family default
- definition starting line is of the form
-\end_layout
-
-\begin_layout LyX-Code
-InsetLayout <Type> <Name>
-\end_layout
-
-\begin_layout Standard
-where
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-<type>
-\family default
- can be 
-\family typewriter
-Foot, Margin, Note, Flex
-\family default
-, and 
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-<Name>
-\family default
- can be empty (for foot- and marginal notes, branches and ERT) or one of
- types 
-\family typewriter
-CharStyle:Noun
-\family default
-, 
-\family typewriter
-Note:Comment
-\family default
-, 
-\family typewriter
-Custom:Endnote
-\family default
-, 
-\family typewriter
-Element:Filename
-\family default
-, etc.
- Here, the second part of the name can be chosen freely (for CharStyle,
- Custom and Element), or from a predefined list (for Note).
-\end_layout
-
-\begin_layout Standard
-The following 
-\family typewriter
-InsetLayout
-\family default
  section can contain the following entries:
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-LyxType 
-\family default
-\series default
-can be 
-\family typewriter
-charstyle
-\family default
-, 
-\family typewriter
-custom
-\family default
-, 
-\family typewriter
-element
-\family default
-, 
-\family typewriter
-end
-\family default
- (indicating a dummy definition ending definitions of charstyles etc.).
- This entry is only meaningful for Flex (user definable) insets, the three
- types of which are CharStyle, Custom and Element.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Decoration
-\family default
-\series default
- can be 
-\family typewriter
-\series medium
-Classic
-\family default
-\series default
-,
-\family typewriter
-\series medium
- Minimalistic or Conglomerate
-\family default
-\series default
-, describing the rendering style used for the inset's frame and buttons.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-LabelString
-\family default
-\series default
- defines what will be displayed on the button or elsewhere as the inset
- label.
- Some inset types (ERT and Branch) modify this label on the fly.
 \end_layout
 
 \begin_layout Description
@@ -8553,11 +8409,6 @@ reference "sec:fonts"
 \end_inset
 
 .
- Note that this definition can never appear before 
-\family typewriter
-Font
-\family default
-, lest it be ineffective (see above)
 \end_layout
 
 \begin_layout Description
@@ -8584,11 +8435,7 @@ LatexParam
 LatexName
 \family default
 \series default
- stuff, including possible bracket pairs like 
-\family typewriter
-[]
-\family default
-.
+ stuff.
  This parameter cannot be changed from within LyX.
 \end_layout
 
@@ -8656,7 +8503,9 @@ Input stdcounters.inc
 \end_layout
 
 \begin_layout Standard
-The following parameters can be used:
+The definition of counters is presently a bit primitive in LyX, since many
+ things are still hardcoded.
+ The following two parameters can be used:
 \end_layout
 
 \begin_layout Description
@@ -8678,7 +8527,7 @@ string
 \begin_inset Quotes erd
 \end_inset
 
-] The name of the counter.
+] The name of the counter
 \end_layout
 
 \begin_layout Description
@@ -8701,75 +8550,48 @@ string
 \end_inset
 
 ] If this is set to the name of another counter, the present counter will
- be reset everytime the other one is increased.
- For example, 
-\family typewriter
-subsection
-\family default
- is numbered inside 
-\family typewriter
-section
-\family default
-.
+ be reset everytime the other one is increased (is that unclear enough?).
 \end_layout
 
-\begin_layout Description
-
+\begin_layout Standard
+When a counter has been associated to a style, it is possible to use some
+ special constructs in 
 \family typewriter
-\series medium
-LabelString [string=""]
+LabelSt
 \family default
-\series default
- when this is defined, this string defines how the counter is displayed.
- Setting this value resets 
+r
+\family typewriter
+ing
+\family default
+ and 
 \family typewriter
 LabelStringAppendix
 \family default
- to the same value.
- The following special constructs can be used in the string:
+:
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \family typewriter
-
-\backslash
-thecounter
+@
+\emph on
+style-name
+\emph default
+@
 \family default
- will be replaced by the expansion of the 
+ will be replaced the expanded 
 \family typewriter
 LabelString
 \family default
- (or 
+ of style 
 \family typewriter
-LabelStringAppendix
+\emph on
+style-name
 \family default
-) of the counter 
-\family typewriter
-counter
-\family default
+\emph default
 .
- If these are empty, a default value is constructed as follows: if the counter
- has a master counter 
-\family typewriter
-master
-\family default
-, the string 
-\family typewriter
-
-\backslash
-themaster.
-\backslash
-arabic{counter}
-\family default
- is used; otherwise the string 
-\family typewriter
-
-\backslash
-arabic{counter}
-\family default
- is used.
+ This is used for example to define the label of a subsection in terms of
+ the label of a section.
 \end_layout
 
 \begin_layout Itemize
@@ -8906,21 +8728,6 @@ hebrew
 \end_layout
 
 \end_deeper
-\end_deeper
-\begin_layout Description
-
-\family typewriter
-\series medium
-LabelStringAppendix [string=""]
-\family default
-\series default
- the same as 
-\family typewriter
-LabelString
-\family default
-, for use in appendix.
-\end_layout
-
 \begin_layout Subsection
 Font description
 \end_layout
