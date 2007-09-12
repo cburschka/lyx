@@ -1535,7 +1535,7 @@ void TextMetrics::cursorNext(Cursor & cur)
 
 	int x = cur.x_target();
 	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
-	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
+	text_->dispatch(cur, FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
 
 	if (cpar == cur.pit() && cpos == cur.pos())
 		// we have a row which is taller than the workarea. The
