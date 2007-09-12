@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 AM_CPPFLAGS += -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
-EXTRA_DIST =
+EXTRA_DIST = tests/regfiles/biblio
 
 pkglib_LTLIBRARIES = liblyxcontrollers.la
 
