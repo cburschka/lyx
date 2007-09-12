@@ -27,7 +27,7 @@
 #include "support/Path.h"
 #include "support/Systemcall.h"
 
-#include <boost/regex.hpp>
+#include <boost/cregex.hpp>
 
 #include <algorithm>
 #include <fstream>

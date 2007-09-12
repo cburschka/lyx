@@ -24,6 +24,8 @@
 #include "support/Package.h"
 #include "support/os.h"
 
+#include <boost/tuple/tuple.hpp>
+
 #include <QFontInfo>
 #include <QFontDatabase>
 

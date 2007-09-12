@@ -19,6 +19,7 @@
 #include "support/lstrings.h"
 
 #include <algorithm>
+#include <fstream>
 
 using std::string;
 using std::vector;
