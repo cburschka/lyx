@@ -403,7 +403,7 @@ char const * simplefeatures[] = {
 	"dvipost",
 	"fancybox",
 	"calc",
-	"nicefrac",
+	"units",
 	"tipa",
 	"framed",
 	"pdfcolmk",

@@ -27,7 +27,8 @@ public:
 		FRAC,
 		OVER,
 		ATOP,
-		NICEFRAC
+		NICEFRAC,
+		UNITFRAC
 	};
 
 	///

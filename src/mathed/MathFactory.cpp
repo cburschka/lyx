@@ -370,6 +370,8 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathFrac(InsetMathFrac::OVER));
 	if (s == "nicefrac")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::NICEFRAC));
+	if (s == "unitfrac")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
 	if (s == "atop")

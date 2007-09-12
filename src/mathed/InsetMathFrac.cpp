@@ -54,6 +54,11 @@ bool InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid = cell(0).width() + cell(1).width() + 5;
 		dim.asc = cell(0).height() + 5;
 		dim.des = cell(1).height() - 5;
+	} else if (kind_ == UNITFRAC) {
+		ShapeChanger dummy2(mi.base.font, Font::UP_SHAPE);
+		dim.wid = cell(0).width() + cell(1).width() + 5;
+		dim.asc = cell(0).height() + 5;
+		dim.des = cell(1).height() - 5;
 	} else {
 		dim.wid = std::max(cell(0).width(), cell(1).width()) + 2;
 		dim.asc = cell(0).height() + 2 + 5;
@@ -77,15 +82,23 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 				y - cell(0).descent() - 5);
 		cell(1).draw(pi, x + cell(0).width() + 5,
 				y + cell(1).ascent() / 2);
-		pi.pain.line(x + cell(0).width(),
-				y + dim_.des - 2,
-				x + cell(0).width() + 5,
-				y - dim_.asc + 2, Color::math);
+	} else if (kind_ == UNITFRAC) {
+		ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
+		cell(0).draw(pi, x + 2,
+				y - cell(0).descent() - 5);
+		cell(1).draw(pi, x + cell(0).width() + 5,
+				y + cell(1).ascent() / 2);
 	} else {
 		cell(0).draw(pi, m - cell(0).width() / 2,
 				y - cell(0).descent() - 2 - 5);
 		cell(1).draw(pi, m - cell(1).width() / 2,
 				y + cell(1).ascent()  + 2 - 5);
+	}
+	if (kind_ == NICEFRAC || kind_ == UNITFRAC) {
+		pi.pain.line(x + cell(0).width(),
+				y + dim_.des - 2,
+				x + cell(0).width() + 5,
+				y - dim_.asc + 2, Color::math);
 	}
 	if (kind_ == FRAC || kind_ == OVER)
 		pi.pain.line(x + 1, y - 5,
@@ -111,7 +124,7 @@ void InsetMathFrac::drawT(TextPainter & pain, int x, int y) const
 	cell(0).drawT(pain, m - cell(0).width() / 2, y - cell(0).descent() - 1);
 	cell(1).drawT(pain, m - cell(1).width() / 2, y + cell(1).ascent());
 	// ASCII art: ignore niceties
-	if (kind_ == FRAC || kind_ == OVER || kind_ == NICEFRAC)
+	if (kind_ == FRAC || kind_ == OVER || kind_ == NICEFRAC || kind_ == UNITFRAC)
 		pain.horizontalLine(x, y, dim_.width());
 }
 
@@ -128,6 +141,7 @@ void InsetMathFrac::write(WriteStream & os) const
 		break;
 	case FRAC:
 	case NICEFRAC:
+	case UNITFRAC:
 		InsetMathNest::write(os);
 		break;
 	}
@@ -143,6 +157,8 @@ docstring InsetMathFrac::name() const
 		return from_ascii("over");
 	case NICEFRAC:
 		return from_ascii("nicefrac");
+	case UNITFRAC:
+		return from_ascii("unitfrac");
 	case ATOP:
 		return from_ascii("atop");
 	}
@@ -183,8 +199,8 @@ void InsetMathFrac::mathmlize(MathStream & os) const
 
 void InsetMathFrac::validate(LaTeXFeatures & features) const
 {
-	if (kind_ == NICEFRAC)
-		features.require("nicefrac");
+	if (kind_ == NICEFRAC || kind_ == UNITFRAC)
+		features.require("units");
 	InsetMathNest::validate(features);
 }
 
