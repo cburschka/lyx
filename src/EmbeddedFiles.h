@@ -155,6 +155,12 @@ public:
 	bool extract(Buffer const * buf) const;
 	/// update embedded file from external file, does not change embedding status
 	bool updateFromExternalFile(Buffer const * buf) const;
+	///
+	/// After the embedding status is changed, update all insets related
+	/// to this file item.
+	/// Because inset pointers may not be up to date, EmbeddedFiles::update()
+	/// would better be called before this function is called.
+	void updateInsets(Buffer const * buf) const;
 
 private:
 	/// filename in zip file
@@ -220,6 +226,8 @@ public:
 	///
 	bool readManifest(Lexer & lex, ErrorList & errorList);
 	void writeManifest(std::ostream & os) const;
+	/// update all insets to use embedded files when embedding status is changed
+	void updateInsets() const;
 private:
 	/// get a unique inzip name, a suggestion can be given.
 	std::string const getInzipName(std::string const & name, std::string const & inzipName);

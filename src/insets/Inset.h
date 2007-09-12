@@ -49,6 +49,7 @@ class ParConstIterator;
 class ParIterator;
 class Text;
 class TocList;
+class EmbeddedFile;
 class EmbeddedFiles;
 
 
@@ -441,6 +442,8 @@ public:
 	virtual void addToToc(TocList &, Buffer const &, ParConstIterator const &) const {}
 	/// report files that can be embedded with the lyx file
 	virtual void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const {};
+	/// use embedded or external file after the embedding status of a file is changed
+	virtual void updateEmbeddedFile(Buffer const &, EmbeddedFile const &) {}
 	/// Fill keys with BibTeX information
 	virtual void fillWithBibKeys(Buffer const &,
 		BiblioInfo &, InsetIterator const &) const { return; }

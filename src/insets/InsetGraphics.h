@@ -80,6 +80,8 @@ public:
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	/// all graphics can be embedded
 	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
+	///
+	void updateEmbeddedFile(Buffer const &, EmbeddedFile const &);
 protected:
 	InsetGraphics(InsetGraphics const &);
 	///

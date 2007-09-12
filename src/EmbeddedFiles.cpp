@@ -225,6 +225,15 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 }
 
 
+void EmbeddedFile::updateInsets(Buffer const * buf) const
+{
+	vector<Inset const *>::const_iterator it = inset_list_.begin();
+	vector<Inset const *>::const_iterator it_end = inset_list_.end();
+	for (; it != it_end; ++it)
+		const_cast<Inset *>(*it)->updateEmbeddedFile(*buf, *this);
+}
+
+
 bool EmbeddedFiles::enabled() const
 {
 	return buffer_->params().embedded;
@@ -241,6 +250,8 @@ void EmbeddedFiles::enable(bool flag)
 		// if operation is successful
 		buffer_->markDirty();
 		buffer_->params().embedded = flag;
+		if (flag)
+			updateInsets();
 	}
 }
 
@@ -465,6 +476,16 @@ void EmbeddedFiles::writeManifest(ostream & os) const
 			<< "\\inzipName " << it->inzipName() << '\n'
 			<< "\\embed " << (it->embedded() ? "true" : "false") << '\n';
 	}
+}
+
+
+void EmbeddedFiles::updateInsets() const
+{
+	EmbeddedFiles::EmbeddedFileList::const_iterator it = begin();
+	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = end();
+	for (; it != it_end; ++it)
+		if (it->valid() && it->refCount() > 0)
+			it->updateInsets(buffer_);
 }
 
 

@@ -89,6 +89,7 @@ void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update
 			item.updateFromExternalFile(&buffer());
 		else
 			item.extract(&buffer());
+		item.updateInsets(&buffer());
 	}
 }
 

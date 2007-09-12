@@ -239,6 +239,20 @@ void InsetGraphics::registerEmbeddedFiles(Buffer const &,
 }
 
 
+void InsetGraphics::updateEmbeddedFile(Buffer const & buf,
+	EmbeddedFile const & file)
+{
+	BOOST_ASSERT(buf.embeddedFiles().enabled());
+	LYXERR(Debug::FILES) << "Update InsetGraphics file from " 
+		<< params_.filename.toFilesystemEncoding() << std::endl;
+	params_.filename.set(file.availableFile(&buf), buf.filePath());
+	LYXERR(Debug::FILES) << " to " 
+		<< params_.filename.toFilesystemEncoding() << std::endl;
+	// FIXME: graphics dialog is not updated even if the underlying
+	// filename is updated. What should I do?
+}
+
+
 void InsetGraphics::edit(Cursor & cur, bool)
 {
 	InsetGraphicsMailer(*this).showDialog(&cur.bv());
