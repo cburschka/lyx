@@ -551,17 +551,6 @@ languages
  this file contains a list of all the languages currently supported by LyX.
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
-
-\family typewriter
-unicodesymbols
-\family default
- this contains a mapping of unicode symbols to LaTeX commands.
- The commands from this file are used whenever a particular symbol cannot
- be output with the currently active encoding.
-\end_layout
-
 \begin_layout Section
 Your local configuration directory
 \end_layout
@@ -2070,33 +2059,75 @@ Converters
 \end_layout
 
 \begin_layout Standard
-To define a converter from one format to another---e.g., LaTeX to PDF---select
- the Converters panel.
- Choose the `From' and `To' formats, and then enter the program to be used
- in the conversion in the Converter field.
- 
+To define a new converter, select an existing one, select a different format
+ in the 
+\family sans
+From\InsetSpace ~
+format
+\family default
+ and\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+or 
+\family sans
+To\InsetSpace ~
+format
+\family default
+ drop-down list, modify the 
+\family sans
+Converter
+\family default
+ field, and press the 
+\family sans
+Add
+\family default
+ button.
 \end_layout
 
 \begin_layout Standard
-You do not have to define converters between all the Formats between which
+You do not have to define converters between all the formats between which
  you want to convert.
- For example, you will note that there is no `LyX to PostScript®' converter,
- but LyX will export PostScript®.
+ For example, you will note that there is no `LyX to PostScript' converter,
+ but LyX will export PostScript.
  It does so by first creating a LaTeX file (no converter needs to be defined
- for this) which it then converts to DVI using the `LaTeX to DVI' converter,
- and then it converts the resulting DVI file to PostScript®.
+ for this) which is then converted to DVI using the `LaTeX to DVI' converter,
+ and finally converts the resulting DVI file to PostScript.
  LyX finds such `chains' of converters automatically, and it will always
- choose the shortest chain possible.
+ choose the shortest possible chain.
  You can, though, still define multiple conversion methods between file
  formats.
  For example, the standard LyX configuration provides three ways to convert
- LaTeX to PDF: Directly, using pdflatex; via (DVI and) PostScript®, using
- ps2pdf; or via DVI, using dvipdfm.
+ LaTeX to PDF: Directly, using 
+\family sans
+pdflatex
+\family default
+; via (DVI and) PostScript, using 
+\family sans
+ps2pdf
+\family default
+; or via DVI, using 
+\family sans
+dvipdfm
+\family default
+.
  To define such alternate chains, you must define multiple target `file
- formats'.
- In the standard configuration, for example, formats named `pdf', `pdf2',
- and `pdf3' are defined, all of which share the extension `pdf'.
- 
+ formats', as described in the next section.
+ For example in the standard configuration the formats named 
+\family sans
+pdf
+\family default
+, 
+\family sans
+pdf2
+\family default
+, and 
+\family sans
+pdf3
+\family default
+ are defined, all of which share the extension 
+\family sans
+.pdf
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -2105,11 +2136,7 @@ Several variables can be used in the definition of converters:
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-$$s The LyX system directory (e.g., 
-\family typewriter
-/usr/share/lyx
-\family default
-).
+$$s The LyX system directory
 \end_layout
 
 \begin_layout List
@@ -2133,19 +2160,27 @@ $$p The path to the input file
 \end_layout
 
 \begin_layout Standard
-In the `Extra Flag' field you can enter as many of the following flags as
- you wish, separated by commas:
+In the 
+\family sans
+Extra\InsetSpace ~
+Flag
+\family default
+ field you can enter the following flags, separated by commas:
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
 latex This converter runs some form of LaTeX.
- (This will make LyX's LaTeX error logs available.) 
+ This will make LyX's LaTeX error logs available.
 \end_layout
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-needaux Needs the LaTeX .aux file for the conversion.
+needaux Needs the LaTeX 
+\family sans
+.aux
+\family default
+ file for the conversion.
 \end_layout
 
 \begin_layout List
@@ -2154,13 +2189,14 @@ xml Output is XML.
 \end_layout
 
 \begin_layout Standard
-The following three variables are not really flags at all but take an argument
- in the 
+The following three flags are not really flags at all because they take
+ an argument in the 
 \family sans
 key\InsetSpace ~
-= value
+=\InsetSpace ~
+value
 \family default
- format.
+ format:
 \end_layout
 
 \begin_layout List
@@ -2197,10 +2233,9 @@ Note
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-resultfile Determines the output filename and may, again, contain $$b.
+resultfile Determines the output filename and may, contain $$b.
  Sensible only with resultdir, and optional even then; if not given, it
  defaults to `index'.
- 
 \end_layout
 
 \begin_layout Standard
