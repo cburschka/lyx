@@ -47,7 +47,7 @@ public:
 	GuiFontLoader();
 
 	/// Destructor
-	~GuiFontLoader();
+	virtual ~GuiFontLoader() {}
 
 	virtual void update();
 	virtual bool available(Font const & f);
@@ -73,9 +73,6 @@ public:
 	}
 
 private:
-#if QT_VERSION >= 0x040200
-	int * fontID;
-#endif
 	/// BUTT ugly !
 	QLFontInfo * fontinfo_[Font::NUM_FAMILIES][2][4][10];
 };
