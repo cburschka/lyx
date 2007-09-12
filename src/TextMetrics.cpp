@@ -49,6 +49,7 @@ using std::make_pair;
 using std::max;
 using std::min;
 using std::endl;
+using std::pair;
 
 namespace lyx {
 
@@ -150,6 +151,19 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit,
 		redoParagraph(pit);
 	}
 	return pmc_it->second;
+}
+
+
+int TextMetrics::parPosition(pit_type pit) const
+{
+	pair<pit_type, ParagraphMetrics> first = *par_metrics_.begin();
+	pair<pit_type, ParagraphMetrics> last = *par_metrics_.rbegin();
+	if (pit < first.first)
+			return -1000000;
+	else if (pit > last.first)
+		return +1000000;
+
+	return par_metrics_[pit].position();
 }
 
 
@@ -1535,7 +1549,7 @@ void TextMetrics::cursorNext(Cursor & cur)
 
 	int x = cur.x_target();
 	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
-	text_->dispatch(cur, FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
+	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
 
 	if (cpar == cur.pit() && cpos == cur.pos())
 		// we have a row which is taller than the workarea. The

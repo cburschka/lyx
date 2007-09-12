@@ -48,6 +48,8 @@ public:
 	bool has(pit_type pit) const;
 	///
 	ParagraphMetrics const & parMetrics(pit_type) const;
+	///
+	int parPosition(pit_type pit) const;
 
 	///
 	Dimension const & dimension() const;

@@ -247,18 +247,10 @@ CurStatus status(BufferView const * bv, DocIterator const & dit)
 {
 	// FIXME: it's be better to have something like TextMetrics::status().
 	TextMetrics const & tm = bv->textMetrics(dit.bottom().text());
-	pit_type const pit = dit.bottom().pit();
-	if (!tm.has(pit)) {
-		if (dit.bottom().pit() < bv->anchor_ref())
-			return CUR_ABOVE;
-		else
-			return CUR_BELOW;
-	}
-
-	ParagraphMetrics const & pm = tm.parMetrics(pit);
-	if (pm.position() < 0)
+	int par_pos = tm.parPosition(dit.bottom().pit());
+	if (par_pos < 0)
 		return CUR_ABOVE;
-	else if (pm.position() > bv->workHeight())
+	else if (par_pos > bv->workHeight())
 		return CUR_BELOW;
 		
 	return CUR_INSIDE;
