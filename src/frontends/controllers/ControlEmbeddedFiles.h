@@ -44,6 +44,8 @@ public:
 	///
 	void dispatchParams() {};
 	///
+	void setEmbedding(bool enable);
+	///
 	void goTo(EmbeddedFile const & item, int idx);
 	///
 	void view(EmbeddedFile const & item);

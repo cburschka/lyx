@@ -199,13 +199,7 @@ void GuiEmbeddedFilesDialog::on_updatePB_clicked()
 
 void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
 {
-	//
-	controller_.embeddedFiles().enable(enable);
-	// immediately post the change to buffer (and bufferView)
-	if (enable)
-		controller_.dispatchMessage("Enable file embedding");
-	else
-		controller_.dispatchMessage("Disable file embedding");
+	controller_.setEmbedding(enable);
 }
 
 

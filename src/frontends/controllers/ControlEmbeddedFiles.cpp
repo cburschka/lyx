@@ -67,6 +67,19 @@ void ControlEmbeddedFiles::dispatchMessage(string const & msg)
 }
 
 
+void ControlEmbeddedFiles::setEmbedding(bool enable)
+{
+	if (embeddedFiles().enabled() == enable)
+		return;
+	embeddedFiles().enable(enable);
+	buffer().markDirty();
+	if (enable)
+		dispatchMessage("Stop saving in bundled format.");
+	else
+		dispatchMessage("Save in bundled format.");
+}
+
+
 void ControlEmbeddedFiles::goTo(EmbeddedFile const & item, int idx)
 {
 	BOOST_ASSERT(idx < item.refCount());
