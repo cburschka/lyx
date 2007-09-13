@@ -1717,233 +1717,156 @@ Formats
 \end_layout
 
 \begin_layout Standard
-The first step is to define your file formats, e.g.
- PDF, if they are not already defined.
+The first step is to define your file formats if they are not already defined.
  To do so, open the 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references:Converters
+Tools\SpecialChar \menuseparator
+Preferences:Converters
 \family default
  dialog.
- Enter a new format name; a new GUI name (used in, e.g., the View and Export
+ Enter a new format name; a new GUI name (used in e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+the 
+\family sans
+View
+\family default
+ and 
+\family sans
+Export
+\family default
  menus); and a file extension.
  These are required.
  
 \end_layout
 
 \begin_layout Standard
-There are also two flags that can be set using the checkboxes in the dialog.
- The 
-\family typewriter
-document
-\family default
- flag tells LyX that a format is suitable for document export.
- If this flag is set for a format, and if a suitable conversion route exists,
- then the format will appear in the 
+The 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xport
+Document format
+\family default
+ option tells LyX that a format is suitable for document export.
+ If this is is set and if a suitable conversion route exists, the format
+ will appear in the 
+\family sans
+File\SpecialChar \menuseparator
+Export
 \family default
  menu.
  The format will also appear in the 
 \family sans
-\bar under
-V
-\bar default
-iew
+View
 \family default
- menu if it has a viewer associated with it.
- (See below.) Pure image formats (e.g.\InsetSpace ~
+ menu if it has a specified viewer.
+ Pure image formats, e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
 
 \family typewriter
 png
 \family default
-) should not have this flag set; formats that can both represent vector
- graphics and documents (e.g.\InsetSpace ~
+, should not use this option.
+ Formats that can both represent vector graphics and documents like e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
 
 \family typewriter
 pdf
 \family default
-) should have it set.
+ should use it.
 \end_layout
 
 \begin_layout Standard
-The 
-\family typewriter
-vector
+The option 
+\family sans
+Vector graphics format
 \family default
- flag tells LyX whether a format can contain vector graphics.
+ tells LyX that a format can contain vector graphics.
  This information is used to determine the target format of included graphics
  for 
-\family typewriter
+\family sans
 pdflatex
 \family default
  export.
  Included graphics may need to be converted to either 
-\family typewriter
+\family sans
 pdf
 \family default
 , 
-\family typewriter
+\family sans
 png
 \family default
- or 
-\family typewriter
+, or 
+\family sans
 jpg
 \family default
 , since 
-\family typewriter
+\family sans
 pdflatex
 \family default
  cannot handle other image formats.
  If an included graphic is not already in 
-\family typewriter
+\family sans
 pdf
 \family default
 , 
-\family typewriter
+\family sans
 png
 \family default
- or 
-\family typewriter
+, or 
+\family sans
 jpg
 \family default
  format, it is converted to 
-\family typewriter
+\family sans
 pdf
 \family default
- if the 
-\family typewriter
-vector
-\family default
- flag of the format is set, and otherwise to 
-\family typewriter
+ if the vector format option is set, and otherwise to 
+\family sans
 png
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-A Format can have a Viewer associated with it.
+A Format can have a Viewer and Editor program associated with it.
  For example, you might want to use 
-\family typewriter
-ghostview
-\family default
- to look at PostScript® files, or 
-\family typewriter
-xdvi
-\family default
- to preview the LaTeX output.
- You can enter the program to use as a viewer (and what options to pass
- to it) in the Viewer field.
- You can also modify the viewer associated with a pre-defined format simply
- by changing what you find in this field, clicking the 
 \family sans
-Modify
+Ghostview
 \family default
- button, and then (if you're sure you want to do this) clicking the 
+ to view PostScript files.
+ You can enter the program call and its options to the corresponding fields.
+ For the call you can use the four variable listed in the next section.
+ The viewer is launched when you view an image in LyX or use the 
 \family sans
-Apply
+View
 \family default
- or 
-\family sans
-Save
-\family default
- button.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Changes to the formats are kept in the 
-\family typewriter
-preferences
-\family default
- file in you local LyX directory (for example, 
-\family typewriter
-$HOME/.lyx/
-\family default
-).
- If you want to restore the defaults, edit this file and delete the lines
- in the Formats and Converters sections.
-\end_layout
-
+ menu.
+ If the operating system has a default viewer associated to a format, this
+ viewer is used instead of the one defined here when you enter in the Viewer
+ field 
+\begin_inset Quotes eld
 \end_inset
 
- For example, to change the 
-\family typewriter
-dvi
-\family default
- viewer, select the 
-\family typewriter
-DVI
-\family default
- format in the dialog, change the viewer to be 
-\family typewriter
-kdvi
-\family default
- (or whatever), and hit 
+
 \family sans
-\bar under
-M
-\bar default
-odify
+auto
 \family default
+
+\begin_inset Quotes erd
+\end_inset
+
 .
-\end_layout
-
-\begin_layout Standard
-If the operating system has a default viewer associated to a format, this
- viewer is used instead of the one defined here in the Windows® and OS X
- versions of LyX.
- (It is planned to implement this feature on other platforms.)
-\end_layout
-
-\begin_layout Standard
-Editors are like viewers: Each Format can have an Editor associated to it,
- entered in the Editor field, and the editor associated with a format can
- be altered via the 
+ The editor is for example launched when you press the 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references:Converters
+Edit
+\family default
+ button in the 
+\family sans
+Graphics
+\family default
+ or the 
+\family sans
+External material
 \family default
  dialog.
- LyX will launch the associated editor whenever an included file
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-This can be an included 
-\family typewriter
-.tex
-\family default
- file, a verbatim included text file, external material or an included graphics
- file.
-\end_layout
-
-\end_inset
-
- needs to be edited.
 \end_layout
 
 \begin_layout Subsection
@@ -1951,21 +1874,14 @@ Copiers
 \end_layout
 
 \begin_layout Standard
-Each Format can have a Copier associated with it.
+Each format can have a Copier associated with it.
  These are defined in the 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar \menuseparator
-
-\bar under
-P
-\bar default
-references:Copiers
+Tools\SpecialChar \menuseparator
+Preferences:Copiers
 \family default
  dialog.
- Since all conversions from one Format to another take place in LyX's temporary
+ Since all conversions from one format to another take place in LyX's temporary
  directory, it is sometimes necessary to modify a file before copying it
  to the temporary directory in order that the conversion may be performed.
 \begin_inset Foot
@@ -1981,35 +1897,67 @@ For example, the file may refer to other files---images, for example---using
 
  This is done by the Copier: It copies a file to (or from) the temporary
  directory and may modify it in the process.
- 
 \end_layout
 
 \begin_layout Standard
 Copiers may also be used for other purposes.
  For example, if appropriate converters are found, LyX will automatically
- install copiers for the html and wordhtml formats.
- When these formats are exported, the copier sees to it that not just the
- main HTML file but various associated files (style files, images, and the
- like) are also copied, and all these files are written to a subdirectory
- of the directory in which the original LyX file was found.
- The copier may of course be customized.
- The optional -e argument takes a comma-separated list of extensions to
- be copied; if it is omitted, all files will be copied.
- The -t argument determines the extension added to the generated directory.
+ install copiers for the 
+\family sans
+HTML
+\family default
+ and 
+\family sans
+HTML\InsetSpace ~
+(MS Word)
+\family default
+ formats.
+ When these formats are exported, the copier sees that not just the main
+ HTML file but various associated files (style files, images, etc.) are also
+ copied.
+ All these files are written to a subdirectory of the directory in which
+ the original LyX file was found.
+\end_layout
+
+\begin_layout Standard
+Copier can of course be customized.
+ The optional 
+\begin_inset Quotes eld
+\end_inset
+
+-e
+\begin_inset Quotes erd
+\end_inset
+
+ argument takes a comma-separated list of extensions to be copied; if it
+ is omitted, all files will be copied.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+-t
+\begin_inset Quotes erd
+\end_inset
+
+ argument determines the extension added to the generated directory.
  By default, it is 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family sans
 LyXconv
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
 , so HTML generated from 
-\family typewriter
+\family sans
 /path/to/filename.lyx
 \family default
  will end up in 
-\family typewriter
+\family sans
 /path/to/filename.html.LyXconv
 \family default
 .
@@ -2022,8 +1970,10 @@ The definitions of the copiers may use four variables:
 
 \begin_layout List
 \labelwidthstring 00.00.0000
-$$s The LyX system directory (e.g., 
-\family typewriter
+$$s The LyX system directory (e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+
+\family sans
 /usr/share/lyx
 \family default
 ).
@@ -2045,12 +1995,13 @@ $$l The `LaTeX name'
 \end_layout
 
 \begin_layout Standard
-The latter is to be given in a form suitable for inclusion in a LaTeX 
-\family typewriter
+The latter is to be given in a form suitable for inclusion in a LaTeX's
+ 
+\series bold
 
 \backslash
 include
-\family default
+\series default
  command and is relevant only when exporting files suitable for such inclusion.
 \end_layout
 
