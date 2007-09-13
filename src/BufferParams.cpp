@@ -1266,12 +1266,12 @@ void BufferParams::makeTextClass()
 		LyXModule * lm = moduleList[modName];
 		if (!lm) {
 			docstring const msg =
-						bformat(_("The module %1$s has been requested by\n"
-						"this document but has not been found in the list of\n"
-						"available modules. If you recently installed it, you\n"
-						"probalby need to reconfigure LyX.\n"), from_utf8(modName));
+				bformat(_("The module %1$s has been requested by\n"
+					"this document but has not been found in the list of\n"
+					"available modules. If you recently installed it, you\n"
+					"probalby need to reconfigure LyX.\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Module not available"),
-															 msg + _("Some layouts may not be available."));
+					msg + _("Some layouts may not be available."));
 			lyxerr << "BufferParams::makeTextClass(): Module " <<
 					modName << " requested but not found in module list." <<
 					endl;
