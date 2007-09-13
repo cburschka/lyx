@@ -109,6 +109,7 @@ void GuiEmbeddedFilesDialog::updateView()
 {
 	filesLW->clear();
 	EmbeddedFiles const & files = controller_.embeddedFiles();
+	enableCB->setCheckState(files.enabled() ? Qt::Checked : Qt::Unchecked);
 	EmbeddedFiles::EmbeddedFileList::const_iterator it = files.begin();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = files.end();
 	for (; it != it_end; ++it) {
