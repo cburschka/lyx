@@ -38,11 +38,13 @@ public:
 	///
 	bool canApply() const { return true; }
 	///
-	virtual bool canApplyToReadOnly() const { return true; }
+	virtual bool canApplyToReadOnly() const { return false; }
 	///
 	void dispatchMessage(std::string const & msg);
 	///
 	void dispatchParams() {};
+	///
+	bool isReadonly();
 	///
 	void setEmbedding(bool enable);
 	///

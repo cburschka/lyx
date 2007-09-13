@@ -48,6 +48,9 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
 
 void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 {
+	if (controller_.isReadonly())
+		return;
+
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
 
 	if (selection.empty()) {
@@ -107,6 +110,15 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked(QListWidgetItem* item)
 
 void GuiEmbeddedFilesDialog::updateView()
 {
+	bool readOnly = controller_.isReadonly();
+	fullpathLE->setEnabled(!readOnly);
+	selectPB->setEnabled(!readOnly);
+	unselectPB->setEnabled(!readOnly);
+	addPB->setEnabled(!readOnly);
+	extractPB->setEnabled(!readOnly);
+	updatePB->setEnabled(!readOnly);
+	enableCB->setEnabled(!readOnly);
+	
 	filesLW->clear();
 	EmbeddedFiles const & files = controller_.embeddedFiles();
 	enableCB->setCheckState(files.enabled() ? Qt::Checked : Qt::Unchecked);
@@ -117,7 +129,9 @@ void GuiEmbeddedFilesDialog::updateView()
 		if (it->refCount() > 1)
 			label += " (1/" + QString::number(it->refCount()) + ")";
 		QListWidgetItem * item = new QListWidgetItem(label);
-		Qt::ItemFlags flag = Qt::ItemIsUserCheckable | Qt::ItemIsSelectable;
+		Qt::ItemFlags flag = Qt::ItemIsSelectable;
+		if (!readOnly)
+			flag |= Qt::ItemIsUserCheckable;
 		if (it->valid())
 			flag |= Qt::ItemIsEnabled;
 		item->setFlags(flag);

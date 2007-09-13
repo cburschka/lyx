@@ -67,6 +67,12 @@ void ControlEmbeddedFiles::dispatchMessage(string const & msg)
 }
 
 
+bool ControlEmbeddedFiles::isReadonly()
+{
+	return buffer().isReadonly();
+}
+
+
 void ControlEmbeddedFiles::setEmbedding(bool enable)
 {
 	if (embeddedFiles().enabled() == enable)
