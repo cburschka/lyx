@@ -88,7 +88,7 @@ dist_esdoc_DATA = \
 	es/Intro.lyx \
 	es/Tutorial.lyx
 
-esbibliodocdir = $(pkgdatadir)/doc/es/biblio 
+esbibliodocdir = $(pkgdatadir)/doc/es/biblio
 dist_esbibliodoc_DATA = \
 	es/biblio/alphadin.bst \
 	es/biblio/LyXDocs.bib
