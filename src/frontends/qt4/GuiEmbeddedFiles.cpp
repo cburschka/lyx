@@ -36,14 +36,12 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
 		// this should not be needed after EmbeddedFiles are updated correctly.
 		files.update();
 		controller_.setEmbed(files[filesLW->row(item)], true, files.enabled());
-		controller_.dispatchMessage("Embed file " + fromqstr(item->text()));
 	} else {
 		if (!files[filesLW->row(item)].embedded())
 			return;
 		// this should not be needed after EmbeddedFiles are updated correctly.
 		files.update();
 		controller_.setEmbed(files[filesLW->row(item)], false, files.enabled());
-		controller_.dispatchMessage("Stop embedding file " + fromqstr(item->text()));
 	}
 }
 

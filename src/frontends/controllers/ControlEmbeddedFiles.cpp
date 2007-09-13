@@ -83,6 +83,8 @@ void ControlEmbeddedFiles::view(EmbeddedFile const & item)
 
 void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update)
 {
+	if (item.embedded() == embed)
+		return;
 	item.setEmbed(embed);
 	if (update) {
 		if (embed)
@@ -91,6 +93,11 @@ void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update
 			item.extract(&buffer());
 		item.updateInsets(&buffer());
 	}
+	if (embed)
+		dispatchMessage("Embed file " + item.outputFilename(buffer().filePath()));
+	else
+		dispatchMessage("Stop embedding file " + item.outputFilename(buffer().filePath()));
+	buffer().markDirty();
 }
 
 
