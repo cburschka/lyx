@@ -256,7 +256,7 @@ void EmbeddedFiles::enable(bool flag)
 }
 
 
-void EmbeddedFiles::registerFile(string const & filename,
+EmbeddedFile & EmbeddedFiles::registerFile(string const & filename,
 	bool embed, Inset const * inset, string const & inzipName)
 {
 	// filename can be relative or absolute, translate to absolute filename
@@ -271,11 +271,12 @@ void EmbeddedFiles::registerFile(string const & filename,
 	if (it != file_list_.end()) {
 		it->addInset(inset);
 		it->validate();
-		return;
+		return *it;
 	}
 	// try to be more careful
 	file_list_.push_back(EmbeddedFile(abs_filename, 
 		getInzipName(abs_filename, inzipName), embed, inset));
+	return file_list_.back();
 }
 
 

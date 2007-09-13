@@ -52,7 +52,7 @@ public:
 	///
 	void setEmbed(EmbeddedFile & item, bool embed, bool update);
 	///
-	docstring const browseFile();
+	bool browseAndAddFile();
 	///
 	bool extract(EmbeddedFile const & item);
 	///

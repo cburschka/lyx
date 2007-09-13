@@ -93,7 +93,7 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemClicked(QListWidgetItem* item)
 		QString label = toqstr(files[idx].inzipName())
 			+ QString(" (%1/%2)").arg(k + 1).arg(files[idx].refCount());
 		item->setText(label);
-	} else
+	} else if (files[idx].refCount() == 1)
 		controller_.goTo(files[idx], 0);
 }
 
@@ -164,12 +164,8 @@ void GuiEmbeddedFilesDialog::on_unselectPB_clicked()
 
 void GuiEmbeddedFilesDialog::on_addPB_clicked()
 {
-	docstring const file = controller_.browseFile();
-	if (!file.empty()) {
-		EmbeddedFiles & files = controller_.embeddedFiles();
-		files.registerFile(to_utf8(file), true);
-	}
-	controller_.dispatchMessage("Add an embedded file");
+	if (controller_.browseAndAddFile())
+		updateView();
 }
 
 

@@ -114,14 +114,23 @@ void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update
 }
 
 
-docstring const ControlEmbeddedFiles::browseFile()
+bool ControlEmbeddedFiles::browseAndAddFile()
 {
 	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),
 				  from_utf8(lyxrc.document_path));
 	FileFilterList const filter(_("All file (*.*)"));
-	return browseRelFile(docstring(), from_utf8(bufferFilepath()),
+	docstring const file = browseRelFile(docstring(), from_utf8(bufferFilepath()),
 			     _("Select a file to embed"),
 			     filter, false, dir1);
+	if (!file.empty()) {
+		EmbeddedFile & ef = embeddedFiles().registerFile(to_utf8(file), true);
+		if (embeddedFiles().enabled())
+			ef.updateFromExternalFile(&buffer());
+		buffer().markDirty();
+		dispatchMessage("Add an embedded file" + to_utf8(file));
+		return true;
+	}
+	return false;
 }
 
 

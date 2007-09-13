@@ -197,7 +197,7 @@ public:
 	 * \param inset Inset pointer
 	 * \param inzipName suggested inzipname
 	 */
-	void registerFile(std::string const & filename, bool embed = false,
+	EmbeddedFile & registerFile(std::string const & filename, bool embed = false,
 		Inset const * inset = 0,
 		std::string const & inzipName = std::string());
 
