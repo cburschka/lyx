@@ -196,6 +196,9 @@ int InsetERT::docbook(Buffer const &, odocstream & os,
 
 void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
+	BufferParams const & bp = cur.buffer().params();
+	LayoutPtr const layout =
+			bp.getTextClass().defaultLayout();
 	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 
@@ -229,9 +232,6 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// attributes.
 		// FIXME: Change only the pasted paragraphs
 
-		BufferParams const & bp = cur.buffer().params();
-		LayoutPtr const layout =
-			bp.getTextClass().defaultLayout();
 		Font font = layout->font;
 		// ERT contents has always latex_language
 		font.setLanguage(latex_language);
@@ -255,10 +255,10 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// start of an existing paragraph get the buffer language
 		// and not latex_language, so we take this brute force
 		// approach.
-		// FIXME: what to do with those?
-		//text_.current_font.setLanguage(latex_language);
-		//text_.real_current_font.setLanguage(latex_language);
-
+		cur.current_font = layout->font;
+		cur.real_current_font = layout->font;
+		cur.current_font.setLanguage(latex_language);
+		cur.real_current_font.setLanguage(latex_language);
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
