@@ -262,7 +262,7 @@ GuiViewBase::GuiViewBase(int id)
 
 	d.initBackground();
 	if (d.bg_widget_) {
-		lyxerr << "stack widget!" << endl;
+		LYXERR(Debug::GUI) << "stack widget!" << endl;
 		d.stack_widget_ = new QStackedWidget;
 		d.stack_widget_->addWidget(d.bg_widget_);
 		d.stack_widget_->addWidget(d.tab_widget_);
