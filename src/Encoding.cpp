@@ -519,7 +519,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			string const iconvname = lex.getString();
 			lex.next();
 			string const width = lex.getString();
-			bool fixedwidth;
+			bool fixedwidth = true;
 			if (width == "fixed")
 				fixedwidth = true;
 			else if (width == "variable")
@@ -529,7 +529,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 					       "Unknown width: `$$Token'");
 			lex.next();
 			string const p = lex.getString();
-			Encoding::Package package;
+			Encoding::Package package = Encoding::none;
 			if (p == "none")
 				package = Encoding::none;
 			else if (p == "inputenc")

@@ -22,7 +22,7 @@ using std::string;
 namespace lyx {
 
 
-Branch::Branch()
+Branch::Branch() : selected_(false)
 {
 	theApp()->getRgbColor(Color::background, color_);
 }
