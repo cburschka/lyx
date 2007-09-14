@@ -649,7 +649,7 @@ void GuiViewBase::currentTabChanged(int i)
 	updateWindowTitle();
 	updateStatusBar();
 
-	lyxerr << "currentTabChanged " << i
+	LYXERR(Debug::GUI) << "currentTabChanged " << i
 		<< "File" << bv.buffer().fileName() << endl;
 }
 
