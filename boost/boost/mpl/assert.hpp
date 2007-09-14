@@ -10,9 +10,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Source: /cvsroot/boost/boost/boost/mpl/assert.hpp,v $
-// $Date: 2006/11/10 21:31:19 $
-// $Revision: 1.13.14.6 $
+// $Source$
+// $Date: 2006-11-10 22:31:19 +0100 (Fri, 10 Nov 2006) $
+// $Revision: 35997 $
 
 #include <boost/mpl/not.hpp>
 #include <boost/mpl/aux_/value_wknd.hpp>

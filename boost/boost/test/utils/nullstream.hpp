@@ -6,9 +6,9 @@
 
 //  See http://www.boost.org/libs/test for the library home page.
 //
-//  File        : $RCSfile: nullstream.hpp,v $
+//  File        : $RCSfile$
 //
-//  Version     : $Revision: 1.4 $
+//  Version     : $Revision: 27444 $
 //
 //  Description : simulate /dev/null stream
 // ***************************************************************************
@@ -100,7 +100,7 @@ typedef basic_onullstream<wchar_t>  wonullstream;
 // ***************************************************************************
 //  Revision History :
 //  
-//  $Log: nullstream.hpp,v $
+//  $Log$
 //  Revision 1.4  2005/02/20 08:27:08  rogeeff
 //  This a major update for Boost.Test framework. See release docs for complete list of fixes/updates
 //

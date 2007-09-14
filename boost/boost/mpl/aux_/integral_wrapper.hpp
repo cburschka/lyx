@@ -7,9 +7,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Source: /cvsroot/boost/boost/boost/mpl/aux_/integral_wrapper.hpp,v $
-// $Date: 2006/11/08 21:44:30 $
-// $Revision: 1.10.14.1 $
+// $Source$
+// $Date: 2006-11-08 22:44:30 +0100 (Wed, 08 Nov 2006) $
+// $Revision: 35926 $
 
 // NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION!
 

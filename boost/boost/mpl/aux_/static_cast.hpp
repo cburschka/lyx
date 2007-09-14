@@ -10,9 +10,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Source: /cvsroot/boost/boost/boost/mpl/aux_/static_cast.hpp,v $
-// $Date: 2004/09/02 15:40:44 $
-// $Revision: 1.3 $
+// $Source$
+// $Date: 2004-09-02 17:41:37 +0200 (Thu, 02 Sep 2004) $
+// $Revision: 24874 $
 
 #include <boost/mpl/aux_/config/workaround.hpp>
 
