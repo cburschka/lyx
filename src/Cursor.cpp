@@ -1509,9 +1509,11 @@ bool notifyCursorLeaves(DocIterator const & old, Cursor & cur)
 
 void Cursor::setCurrentFont()
 {
-	pos_type cpos = pos();
-	Paragraph & par = paragraph();
-	Text const & ctext = *text();
+	CursorSlice const & cs = innerTextSlice();
+	Paragraph const & par = cs.paragraph();
+	pos_type cpit = cs.pit();
+	pos_type cpos = cs.pos();
+	Text const & ctext = *cs.text();
 	TextMetrics const & tm = bv().textMetrics(&ctext);
 
 	// are we behind previous char in fact? -> go to that char
@@ -1528,7 +1530,7 @@ void Cursor::setCurrentFont()
 			// abc| def -> font of c
 			// abc |[WERBEH], i.e. boundary==true -> font of c
 			// abc [WERBEH]| def, font of the space
-			if (!tm.isRTLBoundary(pit(), cpos))
+			if (!tm.isRTLBoundary(cpit, cpos))
 				--cpos;
 		}
 	}
@@ -1536,11 +1538,11 @@ void Cursor::setCurrentFont()
 	// get font
 	BufferParams const & bufparams = buffer().params();
 	current_font = par.getFontSettings(bufparams, cpos);
-	real_current_font = tm.getDisplayFont(pit(), cpos);
+	real_current_font = tm.getDisplayFont(cpit, cpos);
 
 	// special case for paragraph end
-	if (pos() == lastpos()
-	    && tm.isRTLBoundary(pit(), pos())
+	if (cs.pos() == lastpos()
+	    && tm.isRTLBoundary(cpit, cs.pos())
 	    && !boundary()) {
 		Language const * lang = par.getParLanguage(bufparams);
 		current_font.setLanguage(lang);

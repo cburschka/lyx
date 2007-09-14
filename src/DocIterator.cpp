@@ -138,16 +138,24 @@ Paragraph & DocIterator::paragraph() const
 Paragraph & DocIterator::innerParagraph() const
 {
 	BOOST_ASSERT(!empty());
+	return innerTextSlice().paragraph();
+}
+
+
+CursorSlice const & DocIterator::innerTextSlice() const
+{
+	BOOST_ASSERT(!empty());
 	// go up until first non-0 text is hit
 	// (innermost text is 0 in mathed)
 	for (int i = depth() - 1; i >= 0; --i)
 		if (slices_[i].text())
-			return slices_[i].paragraph();
+			return slices_[i];
 
 	// This case is in principe not possible. We _must_
-	// be inside a Paragraph.
+	// be inside a Text.
 	BOOST_ASSERT(false);
-	return paragraph();
+	static CursorSlice dummy;
+	return dummy;
 }
 
 

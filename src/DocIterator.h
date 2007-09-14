@@ -148,9 +148,11 @@ public:
 	/// \warning only works within text!
 	Paragraph & paragraph() const;
 	/// the paragraph we're in in any case.
-	/// This method will give the containing paragraph if
-	/// in not in text mode (ex: in mathed).
+	/// This method will give the containing paragraph even
+	/// if not in text mode (ex: in mathed).
 	Paragraph & innerParagraph() const;
+	/// return the inner text slice.
+	CursorSlice const & innerTextSlice() const;
 	///
 	Text * text() const;
 	/// the containing inset or the cell, respectively
