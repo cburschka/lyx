@@ -12,87 +12,14 @@
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <layout class="QGridLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item row="1" column="0" >
-      <widget class="QLabel" name="plaintextRoffLA" >
-       <property name="text" >
-        <string>&amp;roff command:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>plaintextRoffED</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" >
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QSpinBox" name="plaintextLinelengthSB" >
-         <property name="toolTip" >
-          <string>The maximum line length of exported plain text/LaTeX/SGML files. If set to 0, paragraphs are output in a single line; if the line length is > 0, paragraphs are separated by a blank line.</string>
-         </property>
-         <property name="maximum" >
-          <number>120</number>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item row="0" column="0" >
-      <widget class="QLabel" name="plaintextLinelengthLA" >
-       <property name="text" >
-        <string>Output &amp;line length:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>plaintextLinelengthSB</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1" >
-      <widget class="QLineEdit" name="plaintextRoffED" >
-       <property name="toolTip" >
-        <string>External app for formating tables in plain text output</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
+   <item row="2" column="0" colspan="3" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -108,9 +35,61 @@
      </property>
     </spacer>
    </item>
+   <item row="0" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QSpinBox" name="plaintextLinelengthSB" >
+     <property name="toolTip" >
+      <string>The maximum line length of exported plain text/LaTeX/SGML files. If set to 0, paragraphs are output in a single line; if the line length is > 0, paragraphs are separated by a blank line.</string>
+     </property>
+     <property name="maximum" >
+      <number>120</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="plaintextLinelengthLA" >
+     <property name="text" >
+      <string>Output &amp;line length:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>plaintextLinelengthSB</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="plaintextRoffLA" >
+     <property name="text" >
+      <string>&amp;roff command:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>plaintextRoffED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2" >
+    <widget class="QLineEdit" name="plaintextRoffED" >
+     <property name="toolTip" >
+      <string>External app for formating tables in plain text output</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <includes>
   <include location="local" >qt_helpers.h</include>
  </includes>

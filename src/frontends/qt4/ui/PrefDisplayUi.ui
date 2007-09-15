@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>264</width>
+    <width>340</width>
     <height>133</height>
    </rect>
   </property>
@@ -14,85 +14,88 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
+   <item rowspan="2" row="0" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QComboBox" name="instantPreviewCO" >
+     <item>
+      <property name="text" >
+       <string>Off</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>No math</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>On</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QComboBox" name="displayGraphicsCO" >
+     <item>
+      <property name="text" >
+       <string>Monochrome</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Grayscale</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Color</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>Do not display</string>
+      </property>
+     </item>
+    </widget>
+   </item>
    <item row="0" column="0" >
-    <layout class="QGridLayout" >
-     <property name="margin" >
-      <number>0</number>
+    <widget class="QLabel" name="displayGraphicsLA" >
+     <property name="text" >
+      <string>Display &amp;Graphics:</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="buddy" >
+      <cstring>displayGraphicsCO</cstring>
      </property>
-     <item row="0" column="0" >
-      <widget class="QLabel" name="displayGraphicsLA" >
-       <property name="text" >
-        <string>Display &amp;Graphics:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>displayGraphicsCO</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1" >
-      <widget class="QComboBox" name="instantPreviewCO" >
-       <item>
-        <property name="text" >
-         <string>Off</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>No math</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>On</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="0" column="1" >
-      <widget class="QComboBox" name="displayGraphicsCO" >
-       <item>
-        <property name="text" >
-         <string>Monochrome</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>Grayscale</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>Color</string>
-        </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>Do not display</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="1" column="0" >
-      <widget class="QLabel" name="instantPreviewLA" >
-       <property name="text" >
-        <string>Instant &amp;Preview:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>instantPreviewCO</cstring>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
    <item row="1" column="0" >
+    <widget class="QLabel" name="instantPreviewLA" >
+     <property name="text" >
+      <string>Instant &amp;Preview:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>instantPreviewCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -110,14 +113,13 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>displayGraphicsCO</tabstop>
   <tabstop>instantPreviewCO</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

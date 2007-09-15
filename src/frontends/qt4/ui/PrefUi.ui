@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>459</width>
-    <height>425</height>
+    <width>398</width>
+    <height>418</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -27,45 +27,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="3" column="2" colspan="2" >
-    <widget class="QGroupBox" name="scrollGB" >
-     <property name="title" >
-      <string>Scrolling</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>11</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
-       <widget class="QCheckBox" name="cursorFollowsCB" >
-        <property name="text" >
-         <string>Cursor follows &amp;scrollbar</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="4" column="1" >
+   <item row="5" column="1" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -78,7 +40,130 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="3" >
+   <item row="4" column="0" colspan="3" >
+    <widget class="QGroupBox" name="scrollGB" >
+     <property name="title" >
+      <string>Scrolling</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="cursorFollowsCB" >
+        <property name="text" >
+         <string>Cursor follows &amp;scrollbar</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3" >
+    <widget class="QGroupBox" name="documentsGB" >
+     <property name="title" >
+      <string>Documents</string>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="1" >
+       <widget class="QSpinBox" name="autoSaveSB" >
+        <property name="maximum" >
+         <number>300</number>
+        </property>
+        <property name="minimum" >
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="autoSaveCB" >
+        <property name="text" >
+         <string>B&amp;ackup documents, every</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLabel" name="TextLabel1" >
+        <property name="text" >
+         <string>minutes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="0" colspan="4" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="lastfilesLA" >
+          <property name="text" >
+           <string>&amp;Maximum last files:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>lastfilesSB</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="lastfilesSB" >
+          <property name="maximum" >
+           <number>9</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="2" >
     <widget class="QPushButton" name="bindFilePB" >
      <property name="text" >
       <string>B&amp;rowse...</string>
@@ -105,20 +190,20 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2" >
+   <item row="0" column="1" >
     <widget class="QLineEdit" name="uiFileED" />
    </item>
-   <item row="0" column="3" >
+   <item row="0" column="2" >
     <widget class="QPushButton" name="uiFilePB" >
      <property name="text" >
       <string>Bro&amp;wse...</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2" >
+   <item row="1" column="1" >
     <widget class="QLineEdit" name="bindFileED" />
    </item>
-   <item row="2" column="0" colspan="4" >
+   <item row="2" column="0" colspan="3" >
     <widget class="QGroupBox" name="GeometryGB" >
      <property name="sizePolicy" >
       <sizepolicy>
@@ -130,6 +215,9 @@
      </property>
      <property name="title" >
       <string>Session</string>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
@@ -279,108 +367,6 @@
            </size>
           </property>
          </spacer>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="2" >
-    <widget class="QGroupBox" name="documentsGB" >
-     <property name="title" >
-      <string>Documents</string>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>11</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
-       <widget class="QCheckBox" name="autoSaveCB" >
-        <property name="text" >
-         <string>B&amp;ackup documents </string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>21</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="autoSaveLA" >
-          <property name="text" >
-           <string> every</string>
-          </property>
-          <property name="buddy" >
-           <cstring>autoSaveSB</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="autoSaveSB" >
-          <property name="maximum" >
-           <number>300</number>
-          </property>
-          <property name="minimum" >
-           <number>1</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="TextLabel1" >
-          <property name="text" >
-           <string>minutes</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="lastfilesLA" >
-          <property name="text" >
-           <string>&amp;Maximum last files:</string>
-          </property>
-          <property name="buddy" >
-           <cstring>lastfilesSB</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="lastfilesSB" >
-          <property name="maximum" >
-           <number>9</number>
-          </property>
-         </widget>
         </item>
        </layout>
       </item>
