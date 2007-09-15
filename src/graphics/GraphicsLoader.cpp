@@ -17,8 +17,6 @@
 #include "GraphicsParams.h"
 #include "LoaderQueue.h"
 
-#include "callback.h"
-
 #include <boost/bind.hpp>
 
 
@@ -208,8 +206,7 @@ Loader::Impl::Impl()
 
 Loader::Impl::~Impl()
 {
-	if (!quitting)
-		resetFile(FileName());
+	resetFile(FileName());
 }
 
 
