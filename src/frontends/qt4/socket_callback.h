@@ -15,8 +15,9 @@
 #define SOCKET_CALLBACK_H
 
 
-#include <qobject.h>
-#include <qsocketnotifier.h>
+#include <QObject>
+#include <QSocketNotifier>
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/function.hpp>
 

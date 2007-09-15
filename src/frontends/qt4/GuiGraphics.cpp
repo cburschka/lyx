@@ -41,6 +41,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <utility>
 
 using lyx::support::float_equal;
 using lyx::support::token;
@@ -57,6 +58,34 @@ using std::string;
 
 namespace lyx {
 namespace frontend {
+
+
+//FIXME setAutoTextCB should really take an argument, as indicated, that
+//determines what text is to be written for "auto". But making
+//that work involves more extensive revisions than we now want
+//to make, since "auto" also appears in updateContents() (see
+//GuiGraphics.cpp).
+//The right way to do this, I think, would be to define a class
+//checkedLengthSet (and a partnering labeledLengthSete) that encapsulated
+//the checkbox, line edit, and length combo together, and then made e.g.
+//lengthToWidgets, widgetsToLength, etc, all public methods of that class.
+//Perhaps even the validator could be exposed through it.
+/**
+ * sets a checkbox-line edit-length combo group, using "text" if the
+ * checkbox is unchecked and clearing the line edit if it previously
+ * said "text".
+*/
+void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
+	LengthCombo * lengthCombo/*, string text = "auto"*/)
+{
+	if (!checkBox->isChecked())
+		lengthToWidgets(lineEdit, lengthCombo,
+				"auto", lengthCombo->currentLengthItem());
+	else if (lineEdit->text() == "auto")
+		lengthToWidgets(lineEdit, lengthCombo, string(),
+				lengthCombo->currentLengthItem());
+}
+
 
 
 template<class Pair>

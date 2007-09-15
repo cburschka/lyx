@@ -235,6 +235,15 @@ void GuiFontLoader::update()
 /////////////////////////////////////////////////
 
 
+static QString makeFontName(string const & family, string const & foundry)
+{
+	QString res = toqstr(family);
+	if (!foundry.empty())
+		res += " [" + toqstr(foundry) + ']';
+	return res;
+}
+
+
 QLFontInfo::QLFontInfo(Font const & f)
 {
 	font.setKerning(false);
@@ -245,8 +254,8 @@ QLFontInfo::QLFontInfo(Font const & f)
 	} else {
 		switch (f.family()) {
 		case Font::ROMAN_FAMILY: {
-			QString family = toqstr(makeFontName(lyxrc.roman_font_name,
-																					 lyxrc.roman_font_foundry)); 
+			QString family = makeFontName(lyxrc.roman_font_name,
+																		 lyxrc.roman_font_foundry); 
 			font.setFamily(family);
 #ifdef Q_WS_MACX
 #if QT_VERSION >= 0x040300
@@ -260,12 +269,12 @@ QLFontInfo::QLFontInfo(Font const & f)
 			break;
 		}
 		case Font::SANS_FAMILY:
-			font.setFamily(toqstr(makeFontName(lyxrc.sans_font_name,
-						    lyxrc.sans_font_foundry)));
+			font.setFamily(makeFontName(lyxrc.sans_font_name,
+						    lyxrc.sans_font_foundry));
 			break;
 		case Font::TYPEWRITER_FAMILY:
-			font.setFamily(toqstr(makeFontName(lyxrc.typewriter_font_name,
-						    lyxrc.typewriter_font_foundry)));
+			font.setFamily(makeFontName(lyxrc.typewriter_font_name,
+						    lyxrc.typewriter_font_foundry));
 			break;
 		default:
 			break;

@@ -36,19 +36,64 @@ using lyx::support::bformat;
 
 namespace lyx {
 
-namespace {
-
-class MessageBox: public QMessageBox
+static docstring const formatted(docstring const & text)
 {
-public:
-	MessageBox(QWidget * parent = 0) : QMessageBox(parent)
-	{
-		setAttribute(Qt::WA_DeleteOnClose, true);
-		setAttribute(Qt::WA_QuitOnClose, false);
-	}
-};
+	const int w = 80;
+	docstring sout;
 
-} // anonymous namespace
+	if (text.empty())
+		return sout;
+
+	docstring::size_type curpos = 0;
+	docstring line;
+
+	for (;;) {
+		docstring::size_type const nxtpos1 = text.find(' ',  curpos);
+		docstring::size_type const nxtpos2 = text.find('\n', curpos);
+		docstring::size_type const nxtpos = std::min(nxtpos1, nxtpos2);
+
+		docstring const word =
+			nxtpos == docstring::npos ?
+			text.substr(curpos) :
+			text.substr(curpos, nxtpos - curpos);
+
+		bool const newline = (nxtpos2 != docstring::npos &&
+				      nxtpos2 < nxtpos1);
+
+		docstring const line_plus_word =
+			line.empty() ? word : line + char_type(' ') + word;
+
+		// FIXME: make w be size_t
+		if (int(line_plus_word.length()) >= w) {
+			sout += line + char_type('\n');
+			if (newline) {
+				sout += word + char_type('\n');
+				line.erase();
+			} else {
+				line = word;
+			}
+
+		} else if (newline) {
+			sout += line_plus_word + char_type('\n');
+			line.erase();
+
+		} else {
+			if (!line.empty())
+				line += char_type(' ');
+			line += word;
+		}
+
+		if (nxtpos == docstring::npos) {
+			if (!line.empty())
+				sout += line;
+			break;
+		}
+
+		curpos = nxtpos + 1;
+	}
+
+	return sout;
+}
 
 
 int prompt_pimpl(docstring const & tit, docstring const & question,
@@ -57,7 +102,7 @@ int prompt_pimpl(docstring const & tit, docstring const & question,
 {
 	docstring const title = bformat(_("LyX: %1$s"), tit);
 
-	MessageBox mb;
+	QMessageBox mb;
 
 	// For some reason, sometimes Qt uses an hourglass or watch cursor when
 	// displaying the alert. Hence, we ask for the standard cursor shape.
@@ -65,7 +110,7 @@ int prompt_pimpl(docstring const & tit, docstring const & question,
 	qApp->changeOverrideCursor(Qt::ArrowCursor);
 
 	// FIXME replace that with theApp->gui()->currentView()
-	int res = mb.information(qApp->focusWidget(),
+	int res = QMessageBox::information(qApp->focusWidget(),
 					   toqstr(title),
 					   toqstr(formatted(question)),
 					   toqstr(b1),
@@ -93,8 +138,7 @@ void warning_pimpl(docstring const & tit, docstring const & message)
 			toqstr(formatted(message)));
 		return;
 	}
-	MessageBox mb;
-	mb.warning(qApp->focusWidget(),
+	QMessageBox::warning(qApp->focusWidget(),
 			     toqstr(title),
 			     toqstr(formatted(message)));
 }
@@ -112,8 +156,7 @@ void error_pimpl(docstring const & tit, docstring const & message)
 			toqstr(formatted(message)));
 		return;
 	}
-	MessageBox mb;
-	mb.critical(qApp->focusWidget(),
+	QMessageBox::critical(qApp->focusWidget(),
 			      toqstr(title),
 			      toqstr(formatted(message)));
 }
@@ -122,8 +165,7 @@ void error_pimpl(docstring const & tit, docstring const & message)
 void information_pimpl(docstring const & tit, docstring const & message)
 {
 	docstring const title = bformat(_("LyX: %1$s"), tit);
-	MessageBox mb;
-	mb.information(qApp->focusWidget(),
+	QMessageBox::information(qApp->focusWidget(),
 				 toqstr(title),
 				 toqstr(formatted(message)));
 }

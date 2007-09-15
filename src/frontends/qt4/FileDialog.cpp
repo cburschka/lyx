@@ -38,7 +38,7 @@
 #endif
 
 #ifdef USE_NATIVE_FILEDIALOG
-#include <qapplication.h>
+#include <QApplication>
 #include "support/filetools.h"
 
 using lyx::support::makeAbsPath;

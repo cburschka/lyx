@@ -46,6 +46,7 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#include <utility>
 
 using namespace Ui;
 
@@ -82,12 +83,25 @@ static size_t findPos_helper(std::vector<A> const & vec, A const & val)
 }
 
 
+static std::pair<string, string> parseFontName(string const & name)
+{
+	string::size_type const idx = name.find('[');
+	if (idx == string::npos || idx == 0)
+		return make_pair(name, string());
+	return make_pair(name.substr(0, idx - 1),
+			 name.substr(idx + 1, name.size() - idx - 2));
+}
+
+
 static void setComboxFont(QComboBox * cb, string const & family,
 	string const & foundry)
 {
-	string const name = makeFontName(family, foundry);
+	QString fontname = toqstr(family);
+	if (!foundry.empty())
+		fontname += " [" + toqstr(foundry) + ']';
+
 	for (int i = 0; i < cb->count(); ++i) {
-		if (fromqstr(cb->itemText(i)) == name) {
+		if (cb->itemText(i) == fontname) {
 			cb->setCurrentIndex(i);
 			return;
 		}
@@ -96,7 +110,7 @@ static void setComboxFont(QComboBox * cb, string const & family,
 	// Try matching without foundry name
 
 	// We count in reverse in order to prefer the Xft foundry
-	for (int i = cb->count() - 1; i >= 0; --i) {
+	for (int i = cb->count(); --i >= 0;) {
 		pair<string, string> tmp = parseFontName(fromqstr(cb->itemText(i)));
 		if (compare_ascii_no_case(tmp.first, family) == 0) {
 			cb->setCurrentIndex(i);
@@ -317,7 +331,6 @@ PrefLatex::PrefLatex(GuiPrefsDialog * form, QWidget * parent)
 #else
 	pathCB->setVisible(false);
 #endif
-
 }
 
 
@@ -409,26 +422,16 @@ PrefScreenFonts::PrefScreenFonts(GuiPrefsDialog * form, QWidget * parent)
 	connect(screenHugerED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
 
-	screenTinyED->setValidator(new QDoubleValidator(
-		screenTinyED));
-	screenSmallestED->setValidator(new QDoubleValidator(
-		screenSmallestED));
-	screenSmallerED->setValidator(new QDoubleValidator(
-		screenSmallerED));
-	screenSmallED->setValidator(new QDoubleValidator(
-		screenSmallED));
-	screenNormalED->setValidator(new QDoubleValidator(
-		screenNormalED));
-	screenLargeED->setValidator(new QDoubleValidator(
-		screenLargeED));
-	screenLargerED->setValidator(new QDoubleValidator(
-		screenLargerED));
-	screenLargestED->setValidator(new QDoubleValidator(
-		screenLargestED));
-	screenHugeED->setValidator(new QDoubleValidator(
-		screenHugeED));
-	screenHugerED->setValidator(new QDoubleValidator(
-		screenHugerED));
+	screenTinyED->setValidator(new QDoubleValidator(screenTinyED));
+	screenSmallestED->setValidator(new QDoubleValidator(screenSmallestED));
+	screenSmallerED->setValidator(new QDoubleValidator(screenSmallerED));
+	screenSmallED->setValidator(new QDoubleValidator(screenSmallED));
+	screenNormalED->setValidator(new QDoubleValidator(screenNormalED));
+	screenLargeED->setValidator(new QDoubleValidator(screenLargeED));
+	screenLargerED->setValidator(new QDoubleValidator(screenLargerED));
+	screenLargestED->setValidator(new QDoubleValidator(screenLargestED));
+	screenHugeED->setValidator(new QDoubleValidator(screenHugeED));
+	screenHugerED->setValidator(new QDoubleValidator(screenHugerED));
 }
 
 
@@ -575,11 +578,9 @@ PrefColors::PrefColors(GuiPrefsDialog * form, QWidget * parent)
 
 void PrefColors::apply(LyXRC & /*rc*/) const
 {
-	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
-		if (curcolors_[i] != newcolors_[i]) {
+	for (unsigned int i = 0; i < lcolors_.size(); ++i)
+		if (curcolors_[i] != newcolors_[i])
 			form_->controller().setColor(lcolors_[i], fromqstr(newcolors_[i]));
-		}
-	}
 }
 
 
@@ -600,10 +601,11 @@ void PrefColors::change_color()
 	int const row = lyxObjectsLW->currentRow();
 
 	// just to be sure
-	if (row < 0) return;
+	if (row < 0)
+		return;
 
 	QString const color = newcolors_[row];
-	QColor c(QColorDialog::getColor(QColor(color), qApp->focusWidget()));
+	QColor c = QColorDialog::getColor(QColor(color), qApp->focusWidget());
 
 	if (c.isValid() && c.name() != color) {
 		newcolors_[row] = c.name();
@@ -641,18 +643,18 @@ PrefDisplay::PrefDisplay(QWidget * parent)
 void PrefDisplay::apply(LyXRC & rc) const
 {
 	switch (instantPreviewCO->currentIndex()) {
-	case 0: rc.preview = LyXRC::PREVIEW_OFF; break;
-	case 1:	rc.preview = LyXRC::PREVIEW_NO_MATH; break;
-	case 2:	rc.preview = LyXRC::PREVIEW_ON;	break;
+		case 0: rc.preview = LyXRC::PREVIEW_OFF; break;
+		case 1:	rc.preview = LyXRC::PREVIEW_NO_MATH; break;
+		case 2:	rc.preview = LyXRC::PREVIEW_ON;	break;
 	}
 
 	lyx::graphics::DisplayType dtype;
 	switch (displayGraphicsCO->currentIndex()) {
-	case 3:	dtype = lyx::graphics::NoDisplay; break;
-	case 2:	dtype = lyx::graphics::ColorDisplay; break;
-	case 1: dtype = lyx::graphics::GrayscaleDisplay;	break;
-	case 0: dtype = lyx::graphics::MonochromeDisplay; break;
-	default: dtype = lyx::graphics::GrayscaleDisplay;
+		case 3:	dtype = lyx::graphics::NoDisplay; break;
+		case 2:	dtype = lyx::graphics::ColorDisplay; break;
+		case 1: dtype = lyx::graphics::GrayscaleDisplay;	break;
+		case 0: dtype = lyx::graphics::MonochromeDisplay; break;
+		default: dtype = lyx::graphics::GrayscaleDisplay;
 	}
 	rc.display_graphics = dtype;
 
@@ -1000,7 +1002,7 @@ void PrefConverters::updateGui()
 	if (!current.isEmpty()) {
 		QList<QListWidgetItem *> const item =
 			convertersLW->findItems(current, Qt::MatchExactly);
-		if (item.size()>0)
+		if (!item.isEmpty())
 			convertersLW->setCurrentItem(item.at(0));
 	}
 
@@ -1063,16 +1065,17 @@ void PrefConverters::updateButtons()
 // this is why we can use the same function for both new and modify
 void PrefConverters::update_converter()
 {
-	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
-	Format const & to(form_->formats().get(converterToCO->currentIndex()));
+	Format const & from = form_->formats().get(converterFromCO->currentIndex());
+	Format const & to = form_->formats().get(converterToCO->currentIndex());
 	string const flags = fromqstr(converterFlagED->text());
 	string const command = fromqstr(converterED->text());
 
-	Converter const * old = form_->converters().getConverter(from.name(), to.name());
+	Converter const * old =
+		form_->converters().getConverter(from.name(), to.name());
 	form_->converters().add(from.name(), to.name(), command, flags);
-	if (!old) {
+
+	if (!old)
 		form_->converters().updateLast(form_->formats());
-	}
 
 	updateGui();
 
@@ -1084,8 +1087,8 @@ void PrefConverters::update_converter()
 
 void PrefConverters::remove_converter()
 {
-	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
-	Format const & to(form_->formats().get(converterToCO->currentIndex()));
+	Format const & from = form_->formats().get(converterFromCO->currentIndex());
+	Format const & to = form_->formats().get(converterToCO->currentIndex());
 	form_->converters().erase(from.name(), to.name());
 
 	updateGui();
@@ -1481,34 +1484,37 @@ void PrefFileformats::updateButtons()
 	}
 
 	// assure that a gui name cannot be chosen twice
-	bool const known_otherwise = gui_name_known && (where != sel);
+	bool const known_otherwise = gui_name_known && where != sel;
 
-	bool const known = !(sel < 0);
-	bool const valid = (!formatED->text().isEmpty()
-		&& !guiNameED->text().isEmpty());
+	bool const known = sel >= 0;
+	bool const valid = !formatED->text().isEmpty()
+		&& !guiNameED->text().isEmpty();
 
 	int const ftype = formatsLW->currentItem()->type();
-	Format const & f(form_->formats().get(ftype));
-	string const old_pretty(f.prettyname());
-	string const old_shortcut(f.shortcut());
-	string const old_extension(f.extension());
-	string const old_viewer(f.viewer());
-	string const old_editor(f.editor());
-	bool const old_document(f.documentFormat());
-	bool const old_vector(f.vectorFormat());
+	Format const & f = form_->formats().get(ftype);
+	string const old_pretty = f.prettyname();
+	string const old_shortcut = f.shortcut();
+	string const old_extension = f.extension();
+	string const old_viewer = f.viewer();
+	string const old_editor = f.editor();
+	bool const old_document = f.documentFormat();
+	bool const old_vector = f.vectorFormat();
 
-	string const new_pretty(fromqstr(gui_name));
-	string const new_shortcut(fromqstr(shortcutED->text()));
-	string const new_extension(fromqstr(extensionED->text()));
-	string const new_viewer(fromqstr(viewerED->text()));
-	string const new_editor(fromqstr(editorED->text()));
-	bool const new_document(documentCB->isChecked());
-	bool const new_vector(vectorCB->isChecked());
+	string const new_pretty = fromqstr(gui_name);
+	string const new_shortcut = fromqstr(shortcutED->text());
+	string const new_extension = fromqstr(extensionED->text());
+	string const new_viewer = fromqstr(viewerED->text());
+	string const new_editor = fromqstr(editorED->text());
+	bool const new_document = documentCB->isChecked();
+	bool const new_vector = vectorCB->isChecked();
 
-	bool modified = ((old_pretty != new_pretty) || (old_shortcut != new_shortcut)
-		|| (old_extension != new_extension) || (old_viewer != new_viewer)
-		|| old_editor != new_editor || old_document != new_document
-		|| old_vector != new_vector);
+	bool modified = old_pretty != new_pretty
+		|| old_shortcut != new_shortcut
+		|| old_extension != new_extension
+		|| old_viewer != new_viewer
+		|| old_editor != new_editor
+		|| old_document != new_document
+		|| old_vector != new_vector;
 
 	formatModifyPB->setEnabled(valid && known && modified && !known_otherwise);
 	formatNewPB->setEnabled(valid && !known && !gui_name_known);
@@ -1843,12 +1849,11 @@ void PrefUserInterface::update(LyXRC const & rc)
 }
 
 
-
 void PrefUserInterface::select_ui()
 {
 	docstring const name =
 		from_utf8(internal_path(fromqstr(uiFileED->text())));
-	docstring file(form_->controller().browseUI(name));
+	docstring file = form_->controller().browseUI(name);
 	if (!file.empty())
 		uiFileED->setText(toqstr(file));
 }
@@ -1858,7 +1863,7 @@ void PrefUserInterface::select_bind()
 {
 	docstring const name =
 		from_utf8(internal_path(fromqstr(bindFileED->text())));
-	docstring file(form_->controller().browsebind(name));
+	docstring file = form_->controller().browsebind(name);
 	if (!file.empty())
 		bindFileED->setText(toqstr(file));
 }
@@ -1874,7 +1879,7 @@ void PrefUserInterface::on_loadWindowSizeCB_toggled(bool loadwindowsize)
 
 
 PrefIdentity::PrefIdentity(QWidget * parent)
-: PrefModule(_("Identity"), 0, parent)
+	: PrefModule(_("Identity"), 0, parent)
 {
 	setupUi(this);
 
@@ -2012,15 +2017,18 @@ Converters & GuiPrefsDialog::converters()
 	return controller().converters();
 }
 
+
 Formats & GuiPrefsDialog::formats()
 {
 	return controller().formats();
 }
 
+
 Movers & GuiPrefsDialog::movers()
 {
 	return controller().movers();
 }
+
 
 void GuiPrefsDialog::applyView()
 {

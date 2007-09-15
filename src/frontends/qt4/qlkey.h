@@ -12,7 +12,7 @@
 #ifndef QLKEY_H
 #define QLKEY_H
 
-#include <qnamespace.h>
+#include <Qt>
 #include <string>
 
 
