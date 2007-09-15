@@ -25,6 +25,7 @@
 
 #include <QComboBox>
 #include <QCheckBox>
+#include <QPalette>
 #include <qlineedit.h>
 #include <qtextcodec.h>
 
@@ -138,6 +139,18 @@ void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 	else if (lineEdit->text() == "auto")
 		lengthToWidgets(lineEdit, lengthCombo, string(),
 				lengthCombo->currentLengthItem());
+}
+
+
+void setValid(QWidget * widget, bool valid)
+{
+	if (valid) {
+		widget->setPalette(QPalette());
+	} else {
+		QPalette pal = widget->palette();
+		pal.setColor(QPalette::Active, QPalette::Foreground, QColor(255, 0, 0));
+		widget->setPalette(pal);
+	}
 }
 
 

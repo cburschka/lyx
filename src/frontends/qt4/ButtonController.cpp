@@ -174,14 +174,6 @@ bool ButtonController::checkWidgets() const
 //
 //////////////////////////////////////////////////////////////
 
-static void setWarningColor(QWidget * widget)
-{
-	QPalette pal = widget->palette();
-	pal.setColor(QPalette::Active, QPalette::Foreground, QColor(255, 0, 0));
-	widget->setPalette(pal);
-}
-
-
 CheckedLineEdit::CheckedLineEdit(QLineEdit * input, QWidget * label)
 	: input_(input), label_(label)
 {}
@@ -198,17 +190,9 @@ bool CheckedLineEdit::check() const
 	bool const valid = validator->validate(t, p) == QValidator::Acceptable;
 
 	// Visual feedback.
-	if (valid)
-		input_->setPalette(QPalette());
-	else
-		setWarningColor(input_);
-
-	if (label_) {
-		if (valid)
-			label_->setPalette(QPalette());
-		else
-			setWarningColor(label_);
-	}
+	setValid(input_, valid);
+	if (label_)
+		setValid(label_, valid);
 
 	return valid;
 }

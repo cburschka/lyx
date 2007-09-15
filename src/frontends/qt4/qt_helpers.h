@@ -23,6 +23,7 @@
 class QComboBox;
 class QLineEdit;
 class QCheckBox;
+class QWidget;
 
 class LengthCombo;
 
@@ -66,6 +67,8 @@ void lengthAutoToWidgets(QLineEdit * input, LengthCombo * combo,
 void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 	LengthCombo * lengthCombo/*, string text = "auto"*/);
 
+/// colors a widget red if invalid
+void setValid(QWidget * widget, bool valid);
 
 /// format a string to the given width
 docstring const formatted(docstring const & text, int w = 80);
