@@ -98,9 +98,6 @@ private:
 	GuiSelectionManager * selectionManager;
 
 	///
-	bool initialiseParams(std::string const & data);
-
-	///
 	void init();
 
 	/// Available keys

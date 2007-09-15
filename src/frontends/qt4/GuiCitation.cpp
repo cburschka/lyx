@@ -147,6 +147,7 @@ void GuiCitationDialog::hideView()
 
 void GuiCitationDialog::showView()
 {
+	init();
 	findLE->clear();
 	availableLV->setFocus();
 	QDialog::show();
@@ -191,6 +192,7 @@ void GuiCitationDialog::on_restorePB_clicked()
 
 void GuiCitationDialog::updateView()
 {
+	init();
 	fillFields();
 	fillEntries();
 	updateDialog();
@@ -351,7 +353,7 @@ bool GuiCitationDialog::isSelected(const QModelIndex & idx)
 
 void GuiCitationDialog::setButtons()
 {
-	selectionManager->updateView();
+	selectionManager->update();
 	int const srows = selectedLV->model()->rowCount();
 	applyPB->setEnabled(srows > 0);
 	okPB->setEnabled(srows > 0);
@@ -484,15 +486,6 @@ QString GuiCitationDialog::textBefore()
 QString GuiCitationDialog::textAfter()
 {
 	return toqstr(controller().params()["after"]);
-}
-
-
-bool GuiCitationDialog::initialiseParams(std::string const & data)
-{
-	if (!controller().initialiseParams(data))
-		return false;
-	init();
-	return true;
 }
 
 

@@ -67,7 +67,7 @@ selectedLV->installEventFilter(this);
 }
 
 
-void GuiSelectionManager::updateView()
+void GuiSelectionManager::update()
 {
 int const arows = availableLV->model()->rowCount();
 QModelIndexList const availSels = 

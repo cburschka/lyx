@@ -50,7 +50,7 @@ public:
 	/// Sets the state of the various push buttons, depending upon the
 	/// state of the widgets. (E.g., "delete" is enabled only if the
 	/// selection is non-empty.)
-	virtual void updateView();
+	void update();
 	
 	/// Not strictly a matter of focus, which may be elsewhere, but
 	/// whether selectedLV is `more focused' than availableLV. Intended
