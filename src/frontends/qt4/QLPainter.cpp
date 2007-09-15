@@ -245,6 +245,9 @@ int QLPainter::smallCapsText(int x, int y,
 int QLPainter::text(int x, int y, docstring const & s,
 		Font const & f)
 {
+	if (s.empty())
+		return 0;
+
 	/* Caution: The following ucs4 to QString conversions work for symbol fonts
 	only because they are no real conversions but simple casts in reality.
 	When we want to draw a symbol or calculate the metrics we pass the position
