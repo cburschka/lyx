@@ -241,9 +241,22 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 }
 
 
-void GuiWorkArea::adjustViewWithScrollBar(int)
+void GuiWorkArea::adjustViewWithScrollBar(int action)
 {
-	scrollBufferView(verticalScrollBar()->sliderPosition());
+	stopBlinkingCursor();
+	if (action == QAbstractSlider::SliderPageStepAdd)
+		buffer_view_->scrollDown(viewport()->height());
+	else if (action == QAbstractSlider::SliderPageStepSub)
+		buffer_view_->scrollUp(viewport()->height());
+	else
+		buffer_view_->scrollDocView(verticalScrollBar()->sliderPosition());
+
+	if (lyxrc.cursor_follows_scrollbar) {
+		buffer_view_->setCursorFromScrollbar();
+		lyx_view_->updateLayoutChoice();
+	}
+	// Show the cursor immediately after any operation.
+	startBlinkingCursor();
 	QApplication::syncX();
 }
 

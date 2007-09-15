@@ -111,8 +111,6 @@ protected:
 	void close();
 	///
 	void resizeBufferView();
-	///
-	void scrollBufferView(int position);
 	/// hide the visible cursor, if it is visible
 	void hideCursor();
 	/// show the cursor if it is not visible

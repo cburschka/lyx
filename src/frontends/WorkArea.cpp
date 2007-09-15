@@ -255,20 +255,6 @@ void WorkArea::updateScrollbar()
 }
 
 
-void WorkArea::scrollBufferView(int position)
-{
-	stopBlinkingCursor();
-	buffer_view_->scrollDocView(position);
-	redraw();
-	if (lyxrc.cursor_follows_scrollbar) {
-		buffer_view_->setCursorFromScrollbar();
-		lyx_view_->updateLayoutChoice();
-	}
-	// Show the cursor immediately after any operation.
-	startBlinkingCursor();
-}
-
-
 void WorkArea::showCursor()
 {
 	if (cursor_visible_)

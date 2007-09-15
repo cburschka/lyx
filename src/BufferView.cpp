@@ -339,6 +339,7 @@ void BufferView::scrollDocView(int value)
 	int const h = tm.parMetrics(anchor_ref_).height();
 	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);
 	updateMetrics(false);
+	buffer_.changed();
 }
 
 
