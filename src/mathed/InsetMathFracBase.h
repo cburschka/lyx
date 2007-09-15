@@ -21,7 +21,7 @@ namespace lyx {
 class InsetMathFracBase : public InsetMathNest {
 public:
 	///
-	InsetMathFracBase();
+	explicit InsetMathFracBase(idx_type ncells = 2);
 	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///

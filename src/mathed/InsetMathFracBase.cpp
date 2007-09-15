@@ -18,8 +18,8 @@
 namespace lyx {
 
 
-InsetMathFracBase::InsetMathFracBase()
-	: InsetMathNest(2)
+InsetMathFracBase::InsetMathFracBase(idx_type ncells)
+	: InsetMathNest(ncells)
 {}
 
 

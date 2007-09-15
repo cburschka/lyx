@@ -28,11 +28,17 @@ public:
 		OVER,
 		ATOP,
 		NICEFRAC,
-		UNITFRAC
+		UNITFRAC,
+		UNIT,
+		UNITFRAC3
 	};
 
 	///
-	explicit InsetMathFrac(Kind kind = FRAC);
+	explicit InsetMathFrac(Kind kind = FRAC, idx_type ncells = 2);
+	///
+	bool idxRight(Cursor &) const;
+	///
+	bool idxLeft(Cursor &) const;
 	///
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

@@ -17,13 +17,14 @@
 #include "TextPainter.h"
 #include "LaTeXFeatures.h"
 #include "Color.h"
+#include "Cursor.h"
 #include "frontends/Painter.h"
 
 
 namespace lyx {
 
-InsetMathFrac::InsetMathFrac(Kind kind)
-	: kind_(kind)
+InsetMathFrac::InsetMathFrac(Kind kind, InsetMath::idx_type ncells)
+	: InsetMathFracBase(ncells), kind_(kind)
 {}
 
 
@@ -45,24 +46,76 @@ InsetMathFrac const * InsetMathFrac::asFracInset() const
 }
 
 
+bool InsetMathFrac::idxRight(Cursor & cur) const
+{
+	InsetMath::idx_type target;
+	if (kind_ == UNITFRAC3)
+		target = 0;
+	else if (kind_ == UNIT) 
+		target = 1;
+	else
+        	return false;
+	if (cur.idx() == target)
+		return false;
+	cur.idx() = target;
+	cur.pos() = cell(target).x2pos(cur.x_target());
+	return true;
+}
+
+
+bool InsetMathFrac::idxLeft(Cursor & cur) const
+{
+	InsetMath::idx_type target;
+	if (kind_ == UNITFRAC3)
+		target = 2;
+	else if (kind_ == UNIT) 
+		target = 0;
+	else
+        	return false;
+	if (cur.idx() == target)
+		return false;
+	cur.idx() = target;
+	cur.pos() = cell(target).x2pos(cur.x_target());
+	return true;
+}
+
+
 bool InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FracChanger dummy(mi.base);
-	cell(0).metrics(mi);
-	cell(1).metrics(mi);
-	if (kind_ == NICEFRAC) {
-		dim.wid = cell(0).width() + cell(1).width() + 5;
-		dim.asc = cell(0).height() + 5;
-		dim.des = cell(1).height() - 5;
-	} else if (kind_ == UNITFRAC) {
+	if (kind_ == UNIT) {
+		cell(0).metrics(mi);
 		ShapeChanger dummy2(mi.base.font, Font::UP_SHAPE);
+		cell(1).metrics(mi);
 		dim.wid = cell(0).width() + cell(1).width() + 5;
-		dim.asc = cell(0).height() + 5;
-		dim.des = cell(1).height() - 5;
+		dim.asc = std::max(cell(0).ascent(), cell(1).ascent());
+		dim.des = std::max(cell(0).descent(), cell(1).descent());
+	} else if (kind_ == UNITFRAC3) {
+		cell(2).metrics(mi);
+		ShapeChanger dummy2(mi.base.font, Font::UP_SHAPE);
+		FracChanger dummy(mi.base);
+		cell(0).metrics(mi);
+		cell(1).metrics(mi);
+		dim.wid = cell(0).width() + cell(1).width() + cell(2).width() + 10;
+		dim.asc = std::max(cell(2).ascent(), cell(0).height() + 5);
+		dim.des = std::max(cell(2).descent(), cell(1).height() - 5);
 	} else {
-		dim.wid = std::max(cell(0).width(), cell(1).width()) + 2;
-		dim.asc = cell(0).height() + 2 + 5;
-		dim.des = cell(1).height() + 2 - 5;
+		FracChanger dummy(mi.base);
+		cell(0).metrics(mi);
+		cell(1).metrics(mi);
+		if (kind_ == NICEFRAC) {
+			dim.wid = cell(0).width() + cell(1).width() + 5;
+			dim.asc = cell(0).height() + 5;
+			dim.des = cell(1).height() - 5;
+		} else if (kind_ == UNITFRAC) {
+			ShapeChanger dummy2(mi.base.font, Font::UP_SHAPE);
+			dim.wid = cell(0).width() + cell(1).width() + 5;
+			dim.asc = cell(0).height() + 5;
+			dim.des = cell(1).height() - 5;
+		} else {
+			dim.wid = std::max(cell(0).width(), cell(1).width()) + 2;
+			dim.asc = cell(0).height() + 2 + 5;
+			dim.des = cell(1).height() + 2 - 5;
+		}
 	}
 	metricsMarkers(dim);
 	if (dim_ == dim)
@@ -76,28 +129,48 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 	int m = x + dim_.wid / 2;
-	FracChanger dummy(pi.base);
-	if (kind_ == NICEFRAC) {
-		cell(0).draw(pi, x + 2,
-				y - cell(0).descent() - 5);
-		cell(1).draw(pi, x + cell(0).width() + 5,
-				y + cell(1).ascent() / 2);
-	} else if (kind_ == UNITFRAC) {
+	if (kind_ == UNIT) {
+		cell(0).draw(pi, x + 1, y);
 		ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
-		cell(0).draw(pi, x + 2,
-				y - cell(0).descent() - 5);
-		cell(1).draw(pi, x + cell(0).width() + 5,
-				y + cell(1).ascent() / 2);
+		cell(1).draw(pi, x + cell(0).width() + 5, y);
+	} else if (kind_ == UNITFRAC3) {
+		cell(2).draw(pi, x + 1, y);
+		ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
+		FracChanger dummy(pi.base);
+		int xx = x + cell(2).width() + 5;
+		cell(0).draw(pi, xx + 2, 
+				 y - cell(0).descent() - 5);
+		cell(1).draw(pi, xx  + cell(0).width() + 5, 
+				 y + cell(1).ascent() / 2);
 	} else {
-		cell(0).draw(pi, m - cell(0).width() / 2,
-				y - cell(0).descent() - 2 - 5);
-		cell(1).draw(pi, m - cell(1).width() / 2,
-				y + cell(1).ascent()  + 2 - 5);
+		FracChanger dummy(pi.base);
+		if (kind_ == NICEFRAC) {
+			cell(0).draw(pi, x + 2,
+					y - cell(0).descent() - 5);
+			cell(1).draw(pi, x + cell(0).width() + 5,
+					y + cell(1).ascent() / 2);
+		} else if (kind_ == UNITFRAC) {
+			ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
+			cell(0).draw(pi, x + 2,
+					y - cell(0).descent() - 5);
+			cell(1).draw(pi, x + cell(0).width() + 5,
+					y + cell(1).ascent() / 2);
+		} else {
+			// Classical fraction
+			cell(0).draw(pi, m - cell(0).width() / 2,
+					y - cell(0).descent() - 2 - 5);
+			cell(1).draw(pi, m - cell(1).width() / 2,
+					y + cell(1).ascent()  + 2 - 5);
+		}
 	}
-	if (kind_ == NICEFRAC || kind_ == UNITFRAC) {
-		pi.pain.line(x + cell(0).width(),
+	if (kind_ == NICEFRAC || kind_ == UNITFRAC || kind_ == UNITFRAC3) {
+		// Diag line:
+		int xx = x;
+		if (kind_ == UNITFRAC3)
+			xx += cell(2).width() + 5;
+		pi.pain.line(xx + cell(0).width(),
 				y + dim_.des - 2,
-				x + cell(0).width() + 5,
+				xx + cell(0).width() + 5,
 				y - dim_.asc + 2, Color::math);
 	}
 	if (kind_ == FRAC || kind_ == OVER)
@@ -144,6 +217,12 @@ void InsetMathFrac::write(WriteStream & os) const
 	case UNITFRAC:
 		InsetMathNest::write(os);
 		break;
+	case UNIT:
+		os << "\\unit[" << cell(0) << "]{" << cell(1) << '}';
+		break;
+	case UNITFRAC3:
+		os << "\\unitfrac[" << cell(2) << "]{" << cell(0) << "}{" << cell(1) << '}';
+		break;
 	}
 }
 
@@ -159,6 +238,10 @@ docstring InsetMathFrac::name() const
 		return from_ascii("nicefrac");
 	case UNITFRAC:
 		return from_ascii("unitfrac");
+	case UNITFRAC3:
+		return from_ascii("unitfracthree");
+	case UNIT:
+		return from_ascii("unit");
 	case ATOP:
 		return from_ascii("atop");
 	}
@@ -199,7 +282,8 @@ void InsetMathFrac::mathmlize(MathStream & os) const
 
 void InsetMathFrac::validate(LaTeXFeatures & features) const
 {
-	if (kind_ == NICEFRAC || kind_ == UNITFRAC)
+	if (kind_ == NICEFRAC || kind_ == UNITFRAC 
+	 || kind_ == UNIT || kind_ == UNITFRAC3)
 		features.require("units");
 	InsetMathNest::validate(features);
 }

@@ -260,7 +260,7 @@ MathAtom createInsetMath(char const * const s)
 
 MathAtom createInsetMath(docstring const & s)
 {
-	//lyxerr << "creating inset with name: '" << s << '\'' << endl;
+	//lyxerr << "creating inset with name: '" << to_utf8(s) << '\'' << endl;
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		docstring const & inset = l->inset;
@@ -372,6 +372,10 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathFrac(InsetMathFrac::NICEFRAC));
 	if (s == "unitfrac")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC));
+	if (s == "unitfracthree")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC3, 3));
+	if (s == "unit")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
 	if (s == "atop")
