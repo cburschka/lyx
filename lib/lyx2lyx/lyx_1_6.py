@@ -179,6 +179,26 @@ def remove_manifest(document):
     document.manifest = None
 
 
+def remove_inzip_options(document):
+    "Remove inzipName and embed options from the Graphics inset"
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset Graphics", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            # should not happen
+            document.warning("Malformed LyX document: Could not find end of graphics inset.")
+        # If there's a inzip param, just remove that
+        k = find_token(document.body, "\tinzipName", i + 1, j)
+        if k != -1:
+            del document.body[k]
+            # embed option must follow the inzipName option
+            del document.body[k+1]
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -197,7 +217,7 @@ convert = [
           ]
 
 revert =  [
-           [284, [remove_manifest]],
+           [284, [remove_manifest, remove_inzip_options]],
            [283, []],
            [282, [revert_flex]],
            [281, []],

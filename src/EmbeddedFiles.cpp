@@ -468,7 +468,9 @@ void EmbeddedFiles::writeManifest(ostream & os) const
 	EmbeddedFiles::EmbeddedFileList::const_iterator it = begin();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = end();
 	for (; it != it_end; ++it) {
-		if (!it->valid())
+		// only saved 'extra' files. Other embedded files are saved
+		// with insets.
+		if (!it->valid() || it->refCount() > 0)
 			continue;
 		// save the relative path
 		os << "\\filename "

@@ -113,11 +113,14 @@ class ErrorList;
 class EmbeddedFile : public support::DocFileName
 {
 public:
+	EmbeddedFile() {};
+
 	EmbeddedFile(std::string const & file, std::string const & inzip_name,
 		bool embedded, Inset const * inset);
 
 	/// filename in the zip file, usually the relative path
 	std::string inzipName() const { return inzip_name_; }
+	void setInzipName(std::string name) { inzip_name_ = name; }
 	/// embedded file, equals to temppath()/inzipName()
 	std::string embeddedFile(Buffer const * buf) const;
 	/// embeddedFile() or absFilename() depending on embedding status

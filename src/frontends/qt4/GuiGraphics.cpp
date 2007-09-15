@@ -285,6 +285,7 @@ void GuiGraphicsDialog::on_browsePB_clicked()
 		controller().browse(qstring_to_ucs4(filename->text()));
 	if(!str.empty()){
 		filename->setText(toqstr(str));
+		embedCB->setCheckState(Qt::Unchecked);
 		changed();
 	}
 }
@@ -454,6 +455,7 @@ void GuiGraphicsDialog::updateContents()
 	string const name =
 		igp.filename.outputFilename(controller().bufferFilepath());
 	filename->setText(toqstr(name));
+    embedCB->setCheckState(igp.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
@@ -600,6 +602,7 @@ void GuiGraphicsDialog::applyView()
 
 	igp.filename.set(internal_path(fromqstr(filename->text())),
 			 controller().bufferFilepath());
+	igp.filename.setEmbed(embedCB->checkState() == Qt::Checked);
 
 	// the bb section
 	igp.bb.erase();

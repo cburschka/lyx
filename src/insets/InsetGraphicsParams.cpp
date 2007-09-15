@@ -18,7 +18,6 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "Buffer.h"
-#include "EmbeddedFiles.h"
 
 #include "graphics/GraphicsParams.h"
 
@@ -154,15 +153,10 @@ bool operator!=(InsetGraphicsParams const & left,
 void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 {
 	// Do not write the default values
-
 	if (!filename.empty()) {
-		// when we save, we still use the original filename
-		EmbeddedFiles::EmbeddedFileList::const_iterator it = 
-			buffer.embeddedFiles().find(filename.toFilesystemEncoding());
-		if (it != buffer.embeddedFiles().end())
-			os << "\tfilename " << DocFileName(it->absFilename()).outputFilename(buffer.filePath()) << '\n';
-		else
-			os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
+		os << "\tfilename " << filename.outputFilename(buffer.filePath()) << '\n';
+		os << "\tinzipName " << filename.inzipName() << '\n';
+		os << "\tembed " << (filename.embedded() ? "true" : "false") << '\n';
 	}
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
@@ -211,6 +205,12 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 	if (token == "filename") {
 		lex.eatLine();
 		filename.set(lex.getString(), bufpath);
+	} else if (token == "inzipName") {
+		lex.eatLine();
+		filename.setInzipName(lex.getString());
+	} else if (token == "embed") {
+		lex.next();
+		filename.setEmbed(lex.getBool());		
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();

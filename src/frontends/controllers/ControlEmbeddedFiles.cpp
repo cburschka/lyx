@@ -111,6 +111,9 @@ void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update
 		else
 			item.extract(&buffer());
 		item.updateInsets(&buffer());
+		// FIXME: unless we record the type of file item, we will
+		// need to update all possible dialogs (bibtex etc).
+		updateDialog("graphics");
 	}
 	if (embed)
 		dispatchMessage("Embed file " + item.outputFilename(buffer().filePath()));

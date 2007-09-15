@@ -243,13 +243,11 @@ void InsetGraphics::updateEmbeddedFile(Buffer const & buf,
 	EmbeddedFile const & file)
 {
 	BOOST_ASSERT(buf.embeddedFiles().enabled());
-	LYXERR(Debug::FILES) << "Update InsetGraphics file from " 
-		<< params_.filename.toFilesystemEncoding() << std::endl;
-	params_.filename.set(file.availableFile(&buf), buf.filePath());
-	LYXERR(Debug::FILES) << " to " 
-		<< params_.filename.toFilesystemEncoding() << std::endl;
-	// FIXME: graphics dialog is not updated even if the underlying
-	// filename is updated. What should I do?
+	params_.filename = file;
+	LYXERR(Debug::FILES) << "Update InsetGraphic with File " 
+		<< params_.filename.toFilesystemEncoding() 
+		<< ", embedding status: "
+		<< params_.filename.embedded() << std::endl;
 }
 
 
@@ -305,7 +303,7 @@ void InsetGraphics::read(Buffer const & buf, Lexer & lex)
 		if (it != buf.embeddedFiles().end())
 			// using available file, embedded or external, depending on file availability and
 			// embedding status.
-			params_.filename = DocFileName(it->availableFile(&buf));
+			params_.filename = *it;
 	}
 	graphic_->update(params().as_grfxParams());
 }
