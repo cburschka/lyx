@@ -5,253 +5,184 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>459</width>
-    <height>410</height>
+    <width>414</width>
+    <height>322</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>0</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <widget class="QLabel" name="formatsLA" >
+   <item row="8" column="1" colspan="3" >
+    <widget class="QLineEdit" name="copierED" />
+   </item>
+   <item row="6" column="1" >
+    <widget class="QLineEdit" name="editorED" />
+   </item>
+   <item row="0" column="2" >
+    <widget class="QPushButton" name="formatNewPB" >
      <property name="text" >
-      <string>&amp;File formats</string>
-     </property>
-     <property name="buddy" >
-      <cstring>formatsLW</cstring>
+      <string>&amp;New...</string>
      </property>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="0" column="3" >
+    <widget class="QPushButton" name="formatRemovePB" >
+     <property name="text" >
+      <string>&amp;Remove</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QListWidget" name="formatsLW" />
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QPushButton" name="formatNewPB" >
-         <property name="text" >
-          <string>&amp;Add</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="formatModifyPB" >
-         <property name="text" >
-          <string>&amp;Modify</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="formatRemovePB" >
-         <property name="text" >
-          <string>&amp;Remove</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-    </layout>
+    </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QCheckBox" name="documentCB" >
-       <property name="text" >
-        <string>&amp;Document format</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="vectorCB" >
-       <property name="text" >
-        <string>Vector graphi&amp;cs format</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="5" column="1" >
+    <widget class="QLineEdit" name="shortcutED" />
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="3" column="1" >
+    <widget class="QLineEdit" name="formatED" />
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLabel" name="formatLA" >
+     <property name="text" >
+      <string>S&amp;hort Name:</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="buddy" >
+      <cstring>formatED</cstring>
      </property>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="formatLA" >
-         <property name="text" >
-          <string>F&amp;ormat:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>formatED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="shortcutLA" >
-         <property name="text" >
-          <string>S&amp;hortcut:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>shortcutED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="viewerLA" >
-         <property name="text" >
-          <string>&amp;Viewer:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>viewerED</cstring>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QLineEdit" name="formatED" />
-       </item>
-       <item>
-        <widget class="QLineEdit" name="shortcutED" />
-       </item>
-       <item>
-        <widget class="QLineEdit" name="viewerED" />
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="guiNameLA" >
-         <property name="text" >
-          <string>&amp;GUI name:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>guiNameED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="extensionLA" >
-         <property name="text" >
-          <string>E&amp;xtension:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>extensionED</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="editorLA" >
-         <property name="text" >
-          <string>Ed&amp;itor:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>editorED</cstring>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <widget class="QLineEdit" name="guiNameED" />
-       </item>
-       <item>
-        <widget class="QLineEdit" name="extensionED" />
-       </item>
-       <item>
-        <widget class="QLineEdit" name="editorED" />
-       </item>
-      </layout>
-     </item>
-    </layout>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QComboBox" name="formatsCB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="editable" >
+      <bool>true</bool>
+     </property>
+     <property name="insertPolicy" >
+      <enum>QComboBox::InsertAtCurrent</enum>
+     </property>
+     <property name="minimumContentsLength" >
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="3" >
+    <widget class="QCheckBox" name="vectorCB" >
+     <property name="text" >
+      <string>Vector graphi&amp;cs format</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="formatsLA" >
+     <property name="text" >
+      <string>&amp;Format:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>formatsCB</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="3" >
+    <widget class="QCheckBox" name="documentCB" >
+     <property name="text" >
+      <string>&amp;Document format</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" >
+    <widget class="QLabel" name="viewerLA" >
+     <property name="text" >
+      <string>&amp;Viewer:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>viewerED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1" >
+    <widget class="QLineEdit" name="viewerED" />
+   </item>
+   <item row="6" column="0" >
+    <widget class="QLabel" name="editorLA" >
+     <property name="text" >
+      <string>Ed&amp;itor:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>editorED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" >
+    <widget class="QLabel" name="shortcutLA" >
+     <property name="text" >
+      <string>S&amp;hortcut:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>shortcutED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="extensionLA" >
+     <property name="text" >
+      <string>E&amp;xtension:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>extensionED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" >
+    <widget class="QLineEdit" name="extensionED" />
+   </item>
+   <item row="9" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>168</width>
+       <height>21</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="8" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>Co&amp;pier:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>copierED</cstring>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>formatsLW</tabstop>
+  <tabstop>formatsCB</tabstop>
+  <tabstop>formatNewPB</tabstop>
+  <tabstop>formatRemovePB</tabstop>
   <tabstop>documentCB</tabstop>
   <tabstop>vectorCB</tabstop>
   <tabstop>formatED</tabstop>
-  <tabstop>guiNameED</tabstop>
-  <tabstop>shortcutED</tabstop>
   <tabstop>extensionED</tabstop>
-  <tabstop>viewerED</tabstop>
+  <tabstop>shortcutED</tabstop>
   <tabstop>editorED</tabstop>
-  <tabstop>formatNewPB</tabstop>
-  <tabstop>formatModifyPB</tabstop>
+  <tabstop>viewerED</tabstop>
+  <tabstop>copierED</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>

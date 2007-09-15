@@ -16,6 +16,7 @@
 #include "ControlPrefs.h"
 #include "Color.h"
 #include "LyXRC.h"
+#include "Format.h"
 
 #include "ui_PrefsUi.h"
 
@@ -29,7 +30,6 @@
 #include "ui_PrefPathsUi.h"
 #include "ui_PrefSpellcheckerUi.h"
 #include "ui_PrefConvertersUi.h"
-#include "ui_PrefCopiersUi.h"
 #include "ui_PrefFileformatsUi.h"
 #include "ui_PrefLanguageUi.h"
 #include "ui_PrefPrinterUi.h"
@@ -37,6 +37,7 @@
 #include "ui_PrefIdentityUi.h"
 
 #include <QDialog>
+#include <QValidator>
 
 #include <vector>
 
@@ -233,27 +234,33 @@ private:
 };
 
 
-class PrefCopiers : public PrefModule, public Ui::PrefCopiersUi
+class FormatValidator : public QValidator
 {
-	Q_OBJECT
 public:
-	PrefCopiers(GuiPrefsDialog * form, QWidget * parent = 0);
-
-	void apply(LyXRC & rc) const;
-	void update(LyXRC const & rc);
-
-	void updateView();
-
-private Q_SLOTS:
-	void switch_copierLB(int nr);
-	void switch_copierCO(int nr);
-	void copiers_changed();
-	void new_copier();
-	void modify_copier();
-	void remove_copier();
-
+	FormatValidator(QWidget *, Formats const & f);
+	void fixup(QString & input) const;
+	QValidator::State validate(QString & input, int & pos) const;
 private:
-	void updateButtons();
+	virtual std::string str(Formats::const_iterator it) const = 0;
+	int nr() const;
+	Formats const & formats_;
+};
+
+
+class FormatNameValidator : public FormatValidator
+{
+public:
+	FormatNameValidator(QWidget *, Formats const & f);
+private:
+	std::string str(Formats::const_iterator it) const;
+};
+
+class FormatPrettynameValidator : public FormatValidator
+{
+public:
+	FormatPrettynameValidator(QWidget *, Formats const & f);
+private:
+	std::string str(Formats::const_iterator it) const;
 };
 
 
@@ -265,19 +272,28 @@ public:
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
-
 	void updateView();
+
 Q_SIGNALS:
 	void formatsChanged();
-private:
-	void updateButtons();
 
 private Q_SLOTS:
-	void switch_format(int);
-	void fileformat_changed();
-	void new_format();
-	void modify_format();
-	void remove_format();
+	void on_copierED_textEdited(const QString & s);
+	void on_extensionED_textEdited(const QString &);
+	void on_viewerED_textEdited(const QString &);
+	void on_editorED_textEdited(const QString &);
+	void on_shortcutED_textEdited(const QString &);
+	void on_formatED_editingFinished();
+	void on_formatED_textChanged(const QString &);
+	void on_formatsCB_currentIndexChanged(int);
+	void on_formatsCB_editTextChanged(const QString &);
+	void on_formatNewPB_clicked();
+	void on_formatRemovePB_clicked();
+	void setFlags();
+	void updatePrettyname();
+
+private:
+	Format & currentFormat();
 };
 
 

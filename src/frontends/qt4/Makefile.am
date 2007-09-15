@@ -240,7 +240,6 @@ UIFILES = \
 	PreambleUi.ui \
 	PrefColorsUi.ui \
 	PrefConvertersUi.ui \
-	PrefCopiersUi.ui \
 	PrefDateUi.ui \
 	PrefDisplayUi.ui \
 	PrefFileformatsUi.ui \

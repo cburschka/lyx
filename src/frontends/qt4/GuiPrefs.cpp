@@ -1109,297 +1109,92 @@ void PrefConverters::on_cacheCB_stateChanged(int state)
 
 /////////////////////////////////////////////////////////////////////
 //
-// PrefCopiers
-//
-/////////////////////////////////////////////////////////////////////
-
-PrefCopiers::PrefCopiers(GuiPrefsDialog * form, QWidget * parent)
-	: PrefModule(_("Copiers"), form, parent)
-{
-	setupUi(this);
-
-	connect(copierNewPB, SIGNAL(clicked()), this, SLOT(new_copier()));
-	connect(copierRemovePB, SIGNAL(clicked()), this, SLOT(remove_copier()));
-	connect(copierModifyPB, SIGNAL(clicked()), this, SLOT(modify_copier()));
-	connect(AllCopiersLW, SIGNAL(currentRowChanged(int)),
-		this, SLOT(switch_copierLB(int)));
-	connect(copierFormatCO, SIGNAL(activated(int)),
-		this, SLOT(switch_copierCO(int)));
-	connect(copierNewPB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(copierRemovePB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(copierModifyPB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(copierFormatCO, SIGNAL(activated(const QString &)),
-		this, SLOT(copiers_changed()));
-	connect(copierED, SIGNAL(textChanged(const QString &)),
-		this, SLOT(copiers_changed()));
-}
-
-
-void PrefCopiers::apply(LyXRC & /*rc*/) const
-{
-}
-
-
-void PrefCopiers::update(LyXRC const & /*rc*/)
-{
-	updateView();
-}
-
-
-void PrefCopiers::updateView()
-{
-	// The choice widget
-	// save current selection
-	QString current = copierFormatCO->currentText();
-	copierFormatCO->clear();
-
-	for (Formats::const_iterator it = form_->formats().begin(),
-		     end = form_->formats().end();
-	     it != end; ++it) {
-		copierFormatCO->addItem(toqstr(it->prettyname()));
-	}
-
-	// The browser widget
-	AllCopiersLW->clear();
-
-	for (Movers::const_iterator it = form_->movers().begin(),
-		     end = form_->movers().end();
-	     it != end; ++it) {
-		std::string const & command = it->second.command();
-		if (command.empty())
-			continue;
-		QString const pretty = toqstr(form_->formats().prettyName(it->first));
-		AllCopiersLW->addItem(pretty);
-	}
-	AllCopiersLW->sortItems(Qt::AscendingOrder);
-
-	// restore selection
-	if (!current.isEmpty()) {
-		QList<QListWidgetItem *> item =
-			AllCopiersLW->findItems(current, Qt::MatchExactly);
-		if (item.size()>0)
-			AllCopiersLW->setCurrentItem(item.at(0));
-	}
-	// select first element if restoring failed
-	if (AllCopiersLW->currentRow() == -1)
-		AllCopiersLW->setCurrentRow(0);
-}
-
-
-namespace {
-
-class SamePrettyName {
-public:
-	SamePrettyName(string const & n) : pretty_name_(n) {}
-
-	bool operator()(Format const & fmt) const {
-		return fmt.prettyname() == pretty_name_;
-	}
-
-private:
-	string const pretty_name_;
-};
-
-
-Format const * getFormat(std::string const & prettyname)
-{
-	Formats::const_iterator it = formats.begin();
-	Formats::const_iterator const end = formats.end();
-	it = std::find_if(it, end, SamePrettyName(prettyname));
-	return it == end ? 0 : &*it;
-}
-
-} // namespace anon
-
-
-void PrefCopiers::switch_copierLB(int row)
-{
-	if (row < 0)
-		return;
-
-	// FIXME UNICODE?
-	std::string const browser_text =
-		fromqstr(AllCopiersLW->currentItem()->text());
-	Format const * fmt = getFormat(browser_text);
-	if (fmt == 0)
-		return;
-
-	QString const gui_name = toqstr(fmt->prettyname());
-	QString const command = toqstr(form_->movers().command(fmt->name()));
-
-	copierED->clear();
-	int const combo_size = copierFormatCO->count();
-	for (int i = 0; i < combo_size; ++i) {
-		QString const text = copierFormatCO->itemText(i);
-		if (text == gui_name) {
-			copierFormatCO->setCurrentIndex(i);
-			copierED->setText(command);
-			break;
-		}
-	}
-	updateButtons();
-}
-
-
-void PrefCopiers::switch_copierCO(int row)
-{
-	if (row<0)
-		return;
-
-	std::string const combo_text =
-		fromqstr(copierFormatCO->currentText());
-	Format const * fmt = getFormat(combo_text);
-	if (fmt == 0)
-		return;
-
-	QString const command = toqstr(form_->movers().command(fmt->name()));
-	copierED->setText(command);
-
-	QListWidgetItem * const index = AllCopiersLW->currentItem();
-	if (index >= 0)
-		AllCopiersLW->setItemSelected(index, false);
-
-	QString const gui_name = toqstr(fmt->prettyname());
-	int const browser_size = AllCopiersLW->count();
-	for (int i = 0; i < browser_size; ++i) {
-		QString const text = AllCopiersLW->item(i)->text();
-		if (text == gui_name) {
-			QListWidgetItem * item = AllCopiersLW->item(i);
-			AllCopiersLW->setItemSelected(item, true);
-			break;
-		}
-	}
-}
-
-
-void PrefCopiers::copiers_changed()
-{
-	updateButtons();
-}
-
-
-void PrefCopiers::updateButtons()
-{
-	QString selected = copierFormatCO->currentText();
-
-	bool known = false;
-	for (int i = 0; i < AllCopiersLW->count(); ++i) {
-		if (AllCopiersLW->item(i)->text() == selected)
-			known = true;
-	}
-
-	bool const valid = !copierED->text().isEmpty();
-
-	Format const * fmt = getFormat(fromqstr(selected));
-	string const old_command = form_->movers().command(fmt->name());
-	string const new_command(fromqstr(copierED->text()));
-
-	bool modified = (old_command != new_command);
-
-	copierModifyPB->setEnabled(valid && known && modified);
-	copierNewPB->setEnabled(valid && !known);
-	copierRemovePB->setEnabled(known);
-}
-
-
-void PrefCopiers::new_copier()
-{
-	std::string const combo_text =
-		fromqstr(copierFormatCO->currentText());
-	Format const * fmt = getFormat(combo_text);
-	if (fmt == 0)
-		return;
-
-	string const command = fromqstr(copierED->text());
-	if (command.empty())
-		return;
-
-	form_->movers().set(fmt->name(), command);
-
-	updateView();
-	int const last = AllCopiersLW->count() - 1;
-	AllCopiersLW->setCurrentRow(last);
-
-	updateButtons();
-}
-
-
-void PrefCopiers::modify_copier()
-{
-	std::string const combo_text =
-		fromqstr(copierFormatCO->currentText());
-	Format const * fmt = getFormat(combo_text);
-	if (fmt == 0)
-		return;
-
-	string const command = fromqstr(copierED->text());
-	form_->movers().set(fmt->name(), command);
-
-	updateView();
-	updateButtons();
-}
-
-
-void PrefCopiers::remove_copier()
-{
-	std::string const combo_text =
-		fromqstr(copierFormatCO->currentText());
-	Format const * fmt = getFormat(combo_text);
-	if (fmt == 0)
-		return;
-
-	string const & fmt_name = fmt->name();
-	form_->movers().set(fmt_name, string());
-
-	updateView();
-	updateButtons();
-}
-
-
-
-/////////////////////////////////////////////////////////////////////
-//
 // PrefFileformats
 //
 /////////////////////////////////////////////////////////////////////
+FormatValidator::FormatValidator(QWidget * parent, Formats const & f) 
+	: QValidator(parent), formats_(f)
+{
+}
+
+
+void FormatValidator::fixup(QString & input) const
+{
+	Formats::const_iterator cit = formats_.begin();
+	Formats::const_iterator end = formats_.end();
+	for (; cit != end; ++cit) {
+		string const name = str(cit);
+		if (distance(formats_.begin(), cit) == nr()) {
+			input = toqstr(name);
+			return;
+
+		}
+	}
+}
+
+
+QValidator::State FormatValidator::validate(QString & input, int & pos) const
+{
+	Formats::const_iterator cit = formats_.begin();
+	Formats::const_iterator end = formats_.end();
+	bool unknown = true;
+	for (; unknown && cit != end; ++cit) {
+		string const name = str(cit);
+		if (distance(formats_.begin(), cit) != nr())
+			unknown = toqstr(name) != input;
+	}
+
+	if (unknown && !input.isEmpty()) 
+		return QValidator::Acceptable;
+	else
+		return QValidator::Intermediate;
+}
+
+
+int FormatValidator::nr() const
+{
+	QComboBox * p = qobject_cast<QComboBox *>(parent());
+	return p->itemData(p->currentIndex()).toInt();
+}
+
+
+FormatNameValidator::FormatNameValidator(QWidget * parent, Formats const & f) 
+	: FormatValidator(parent, f)
+{
+}
+
+std::string FormatNameValidator::str(Formats::const_iterator it) const
+{
+	return it->name();
+}
+
+
+FormatPrettynameValidator::FormatPrettynameValidator(QWidget * parent, Formats const & f) 
+	: FormatValidator(parent, f)
+{
+}
+
+
+std::string FormatPrettynameValidator::str(Formats::const_iterator it) const
+{
+	return it->prettyname();
+}
+
 
 PrefFileformats::PrefFileformats(GuiPrefsDialog * form, QWidget * parent)
 	: PrefModule(_("File formats"), form, parent)
 {
 	setupUi(this);
+	formatED->setValidator(new FormatNameValidator(formatsCB, form_->formats()));
+	formatsCB->setValidator(new FormatPrettynameValidator(formatsCB, form_->formats()));
 
-	connect(formatNewPB, SIGNAL(clicked()),
-		this, SLOT(new_format()));
-	connect(formatRemovePB, SIGNAL(clicked()),
-		this, SLOT(remove_format()));
-	connect(formatModifyPB, SIGNAL(clicked()),
-		this, SLOT(modify_format()));
-	connect(formatsLW, SIGNAL(currentRowChanged(int)),
-		this, SLOT(switch_format(int)));
-	connect(formatED, SIGNAL(textChanged(const QString&)),
-		this, SLOT(fileformat_changed()));
-	connect(guiNameED, SIGNAL(textChanged(const QString&)),
-		this, SLOT(fileformat_changed()));
-	connect(shortcutED, SIGNAL(textChanged(const QString&)),
-		this, SLOT(fileformat_changed()));
-	connect(extensionED, SIGNAL(textChanged(const QString&)),
-		this, SLOT(fileformat_changed()));
-	connect(viewerED, SIGNAL(textChanged(const QString&)),
-		this, SLOT(fileformat_changed()));
-	connect(editorED, SIGNAL(textChanged(const QString&)),
-		this, SLOT(fileformat_changed()));
 	connect(documentCB, SIGNAL(clicked()),
-		this, SLOT(fileformat_changed()));
+		this, SLOT(setFlags()));
 	connect(vectorCB, SIGNAL(clicked()),
-		this, SLOT(fileformat_changed()));
-	connect(formatNewPB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(formatRemovePB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(formatModifyPB, SIGNAL(clicked()),
+		this, SLOT(setFlags()));
+	connect(formatsCB->lineEdit(), SIGNAL(editingFinished()),
+		this, SLOT(updatePrettyname()));
+	connect(formatsCB->lineEdit(), SIGNAL(textEdited(const QString &)),
 		this, SIGNAL(changed()));
 }
 
@@ -1417,149 +1212,153 @@ void PrefFileformats::update(LyXRC const & /*rc*/)
 
 void PrefFileformats::updateView()
 {
-	// save current selection
-	QString current = guiNameED->text();
+	QString const current = formatsCB->currentText();
 
-	// update listwidget with formats
-	formatsLW->blockSignals(true);
-	formatsLW->clear();
+	// update combobox with formats
+	formatsCB->blockSignals(true);
+	formatsCB->clear();
+	form_->formats().sort();
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
-	for (; cit != end; ++cit) {
-		new QListWidgetItem(toqstr(cit->prettyname()),
-							formatsLW,
-							form_->formats().getNumber(cit->name()) );
-	}
-	formatsLW->sortItems(Qt::AscendingOrder);
-	formatsLW->blockSignals(false);
+	for (; cit != end; ++cit)
+		formatsCB->addItem(toqstr(cit->prettyname()),
+							QVariant(form_->formats().getNumber(cit->name())) );
 
 	// restore selection
-	if (!current.isEmpty()) {
-		QList<QListWidgetItem *>  item = formatsLW->findItems(current, Qt::MatchExactly);
-		if (item.size()>0)
-			formatsLW->setCurrentItem(item.at(0));
-	}
-	// select first element if restoring failed
-	if (formatsLW->currentRow() == -1)
-		formatsLW->setCurrentRow(0);
+	int const item = formatsCB->findText(current, Qt::MatchExactly);
+	formatsCB->setCurrentIndex(item < 0 ? 0 : item);
+	on_formatsCB_currentIndexChanged(item < 0 ? 0 : item);
+	formatsCB->blockSignals(false);
 }
 
 
-void PrefFileformats::switch_format(int nr)
+void PrefFileformats::on_formatsCB_currentIndexChanged(int i)
 {
-	int const ftype = formatsLW->item(nr)->type();
-	Format const f = form_->formats().get(ftype);
+	int const nr = formatsCB->itemData(i).toInt();
+	Format const f = form_->formats().get(nr);
 
 	formatED->setText(toqstr(f.name()));
-	guiNameED->setText(toqstr(f.prettyname()));
+	copierED->setText(toqstr(form_->movers().command(f.name())));
 	extensionED->setText(toqstr(f.extension()));
 	shortcutED->setText(toqstr(f.shortcut()));
 	viewerED->setText(toqstr(f.viewer()));
 	editorED->setText(toqstr(f.editor()));
 	documentCB->setChecked((f.documentFormat()));
 	vectorCB->setChecked((f.vectorFormat()));
-
-	updateButtons();
 }
 
 
-void PrefFileformats::fileformat_changed()
+void PrefFileformats::setFlags()
 {
-	updateButtons();
-}
-
-
-void PrefFileformats::updateButtons()
-{
-	QString const format = formatED->text();
-	QString const gui_name = guiNameED->text();
-	int const sel = form_->formats().getNumber(fromqstr(format));
-	bool gui_name_known = false;
-	int where = sel;
-	for (int i = 0; i < formatsLW->count(); ++i) {
-		if (formatsLW->item(i)->text() == gui_name) {
-			gui_name_known = true;
-			where = formatsLW->item(i)->type();
-		}
-	}
-
-	// assure that a gui name cannot be chosen twice
-	bool const known_otherwise = gui_name_known && where != sel;
-
-	bool const known = sel >= 0;
-	bool const valid = !formatED->text().isEmpty()
-		&& !guiNameED->text().isEmpty();
-
-	int const ftype = formatsLW->currentItem()->type();
-	Format const & f = form_->formats().get(ftype);
-	string const old_pretty = f.prettyname();
-	string const old_shortcut = f.shortcut();
-	string const old_extension = f.extension();
-	string const old_viewer = f.viewer();
-	string const old_editor = f.editor();
-	bool const old_document = f.documentFormat();
-	bool const old_vector = f.vectorFormat();
-
-	string const new_pretty = fromqstr(gui_name);
-	string const new_shortcut = fromqstr(shortcutED->text());
-	string const new_extension = fromqstr(extensionED->text());
-	string const new_viewer = fromqstr(viewerED->text());
-	string const new_editor = fromqstr(editorED->text());
-	bool const new_document = documentCB->isChecked();
-	bool const new_vector = vectorCB->isChecked();
-
-	bool modified = old_pretty != new_pretty
-		|| old_shortcut != new_shortcut
-		|| old_extension != new_extension
-		|| old_viewer != new_viewer
-		|| old_editor != new_editor
-		|| old_document != new_document
-		|| old_vector != new_vector;
-
-	formatModifyPB->setEnabled(valid && known && modified && !known_otherwise);
-	formatNewPB->setEnabled(valid && !known && !gui_name_known);
-	formatRemovePB->setEnabled(known);
-}
-
-
-void PrefFileformats::new_format()
-{
-	string const name = fromqstr(formatED->text());
-	string const prettyname = fromqstr(guiNameED->text());
-	string const extension = fromqstr(extensionED->text());
-	string const shortcut = fromqstr(shortcutED->text());
-	string const viewer = fromqstr(viewerED->text());
-	string const editor = fromqstr(editorED->text());
 	int flags = Format::none;
 	if (documentCB->isChecked())
 		flags |= Format::document;
 	if (vectorCB->isChecked())
 		flags |= Format::vector;
+	currentFormat().setFlags(flags);
+	changed();
+}
 
-	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-			     editor, flags);
-	form_->formats().sort();
+
+void PrefFileformats::on_copierED_textEdited(const QString & s)
+{
+	string const fmt = fromqstr(formatED->text());
+	form_->movers().set(fmt, fromqstr(s));
+	changed();
+}
+
+
+void PrefFileformats::on_extensionED_textEdited(const QString & s)
+{
+	currentFormat().setExtension(fromqstr(s));
+	changed();
+}
+
+void PrefFileformats::on_viewerED_textEdited(const QString & s)
+{
+	currentFormat().setViewer(fromqstr(s));
+	changed();
+}
+
+
+void PrefFileformats::on_editorED_textEdited(const QString & s)
+{
+	currentFormat().setEditor(fromqstr(s));
+	changed();
+}
+
+
+void PrefFileformats::on_shortcutED_textEdited(const QString & s)
+{
+	currentFormat().setShortcut(fromqstr(s));
+	changed();
+}
+
+
+void PrefFileformats::on_formatED_editingFinished()
+{
+	string const newname = fromqstr(formatED->displayText());
+	if (newname == currentFormat().name())
+		return;
+
+	currentFormat().setName(newname);
+	changed();
+}
+
+
+void PrefFileformats::on_formatED_textChanged(const QString &)
+{
+	QString t = formatED->text();
+	int p = 0;
+	bool valid = formatED->validator()->validate(t, p) == QValidator::Acceptable;
+	setValid(formatLA, valid);
+}
+
+
+void PrefFileformats::on_formatsCB_editTextChanged(const QString &)
+{
+	QString t = formatsCB->currentText();
+	int p = 0;
+	bool valid = formatsCB->validator()->validate(t, p) == QValidator::Acceptable;
+	setValid(formatsLA, valid);
+}
+
+
+void PrefFileformats::updatePrettyname()
+{
+	string const newname = fromqstr(formatsCB->currentText());
+	if (newname == currentFormat().prettyname())
+		return;
+
+	currentFormat().setPrettyname(newname);
 	form_->converters().update(form_->formats());
-
-	updateView();
-	updateButtons();
 	formatsChanged();
+	updateView();
+	changed();
 }
 
 
-void PrefFileformats::modify_format()
+Format & PrefFileformats::currentFormat()
 {
-	int const current_item = formatsLW->currentItem()->type();
-	Format const & oldformat = form_->formats().get(current_item);
-	form_->formats().erase(oldformat.name());
-
-	new_format();
+	int const i = formatsCB->currentIndex();
+	int const nr = formatsCB->itemData(i).toInt();
+	return form_->formats().get(nr);
 }
 
 
-void PrefFileformats::remove_format()
+void PrefFileformats::on_formatNewPB_clicked()
 {
-	int const nr = formatsLW->currentItem()->type();
+	form_->formats().add("", "", "", "", "", "", Format::none);
+	updateView();
+	formatsCB->setCurrentIndex(0);
+	formatsCB->setFocus(Qt::OtherFocusReason);
+}
+
+
+void PrefFileformats::on_formatRemovePB_clicked()
+{
+	int const i = formatsCB->currentIndex();
+	int const nr = formatsCB->itemData(i).toInt();
 	string const current_text = form_->formats().get(nr).name();
 	if (form_->converters().formatIsUsed(current_text)) {
 		Alert::error(_("Format in use"),
@@ -1570,10 +1369,10 @@ void PrefFileformats::remove_format()
 
 	form_->formats().erase(current_text);
 	form_->converters().update(form_->formats());
-
-	updateView();
-	updateButtons();
 	formatsChanged();
+	updateView();
+	on_formatsCB_editTextChanged(formatsCB->currentText());
+	changed();
 }
 
 
@@ -1767,8 +1566,6 @@ PrefUserInterface::PrefUserInterface(GuiPrefsDialog * form, QWidget * parent)
 	setupUi(this);
 
 	connect(autoSaveCB, SIGNAL(toggled(bool)),
-		autoSaveLA, SLOT(setEnabled(bool)));
-	connect(autoSaveCB, SIGNAL(toggled(bool)),
 		autoSaveSB, SLOT(setEnabled(bool)));
 	connect(autoSaveCB, SIGNAL(toggled(bool)),
 		TextLabel1, SLOT(setEnabled(bool)));
@@ -1949,9 +1746,6 @@ GuiPrefsDialog::GuiPrefsDialog(LyXView & lv)
 			converters, SLOT(updateGui()));
 	add(converters);
 	add(formats);
-
-	add(new PrefCopiers(this));
-
 
 	prefsPS->setCurrentPanel(_("User interface"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2

@@ -1051,7 +1051,6 @@ src_frontends_qt4_ui_files = Split('''
     PreambleUi.ui
     PrefColorsUi.ui
     PrefConvertersUi.ui
-    PrefCopiersUi.ui
     PrefCygwinPathUi.ui
     PrefDateUi.ui
     PrefDisplayUi.ui

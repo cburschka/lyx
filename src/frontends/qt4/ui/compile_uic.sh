@@ -33,7 +33,6 @@ uic PageLayoutUi.ui -o PageLayoutUi.h
 uic ParagraphUi.ui -o ParagraphUi.h
 uic PrefColorsUi.ui -o PrefColorsUi.h
 uic PrefConvertersUi.ui -o PrefConvertersUi.h
-uic PrefCopiersUi.ui -o PrefCopiersUi.h
 uic PrefDateUi.ui -o PrefDateUi.h
 uic PrefDisplayUi.ui -o PrefDisplayUi.h
 uic PrefFileformatsUi.ui -o PrefFileformatsUi.h

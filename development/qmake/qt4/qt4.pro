@@ -212,7 +212,6 @@ UI += ParagraphUi.ui
 UI += PreambleUi.ui
 UI += PrefColorsUi.ui
 UI += PrefConvertersUi.ui
-UI += PrefCopiersUi.ui
 UI += PrefCygwinPathUi.ui
 UI += PrefDateUi.ui
 UI += PrefDisplayUi.ui
