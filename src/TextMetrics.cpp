@@ -139,6 +139,21 @@ ParagraphMetrics const & TextMetrics::parMetrics(pit_type pit) const
 }
 
 
+
+pair<pit_type, ParagraphMetrics> const & TextMetrics::first() const
+{
+	pair<pit_type, ParagraphMetrics> const & pm = *par_metrics_.begin();
+	return pm;
+}
+
+
+pair<pit_type, ParagraphMetrics> const & TextMetrics::last() const
+{
+	pair<pit_type, ParagraphMetrics> const & pm = *par_metrics_.rbegin();
+	return pm;
+}
+
+
 ParagraphMetrics & TextMetrics::parMetrics(pit_type pit,
 		bool redo)
 {
@@ -1152,6 +1167,33 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 	return r.pos() + getColumnNearX(pit, r, x, bound);
 }
 
+
+void TextMetrics::newParMetricsDown()
+{
+	pair<pit_type, ParagraphMetrics> const & last = *par_metrics_.rbegin();
+	pit_type const pit = last.first + 1;
+	if (pit == text_->paragraphs().size())
+		return;
+
+	// do it and update its position.
+	redoParagraph(pit);
+	par_metrics_[pit].setPosition(last.second.position()
+		+ last.second.descent());
+}
+
+
+void TextMetrics::newParMetricsUp()
+{
+	pair<pit_type, ParagraphMetrics> const & first = *par_metrics_.begin();
+	if (first.first == 0)
+		return;
+
+	pit_type const pit = first.first - 1;
+	// do it and update its position.
+	redoParagraph(pit);
+	par_metrics_[pit].setPosition(first.second.position()
+		- first.second.ascent());
+}
 
 // y is screen coordinate
 pit_type TextMetrics::getPitNearY(int y)

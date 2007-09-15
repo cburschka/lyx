@@ -49,6 +49,11 @@ public:
 	///
 	ParagraphMetrics const & parMetrics(pit_type) const;
 	///
+	std::pair<pit_type, ParagraphMetrics> const & first() const;
+	///
+	std::pair<pit_type, ParagraphMetrics> const & last() const;
+
+	///
 	int parPosition(pit_type pit) const;
 
 	///
@@ -57,8 +62,14 @@ public:
 	Point const & origin() const { return origin_; }
 
 
+
 	/// compute text metrics.
 	bool metrics(MetricsInfo & mi, Dimension & dim);
+
+	///
+	void newParMetricsDown();
+	///
+	void newParMetricsUp();
 
 	/// Gets the fully instantiated font at a given position in a paragraph
 	/// Basically the same routine as Paragraph::getFont() in Paragraph.cpp.

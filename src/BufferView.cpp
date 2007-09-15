@@ -592,6 +592,18 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_SCREEN_UP:
+	case LFUN_SCREEN_DOWN:
+		flag.enabled(true);
+		break;
+
+	// FIXME: LFUN_SCREEN_DOWN_SELECT should be removed from
+	// everywhere else before this can enabled:
+	case LFUN_SCREEN_UP_SELECT:
+	case LFUN_SCREEN_DOWN_SELECT:
+		flag.enabled(false);
+		break;
+
 	default:
 		flag.enabled(false);
 	}
@@ -935,6 +947,38 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_SCREEN_UP:
+	case LFUN_SCREEN_DOWN: {
+		Point const p = bv_funcs::getPos(*this, cur, cur.boundary());
+		scroll(cmd.action == LFUN_SCREEN_UP? - height_ : height_);
+		cur.reset(buffer_.inset());
+		text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
+		//FIXME: what to do with cur.x_target()?
+		finishUndo();
+		// The metrics are already up to date. see scroll()
+		updateFlags = Update::None;
+		break;
+	}
+
+	case LFUN_SCREEN_UP_SELECT:
+	case LFUN_SCREEN_DOWN_SELECT: {
+		cur.selHandle(true);
+		size_t initial_depth = cur.depth();
+		Point const p = bv_funcs::getPos(*this, cur, cur.boundary());
+		scroll(cmd.action == LFUN_SCREEN_UP_SELECT? - height_ : height_);
+		// FIXME: We need to verify if the cursor stayed within an inset...
+		//cur.reset(buffer_.inset());
+		text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
+		finishUndo();
+		while (cur.depth() > initial_depth) {
+			cur.forwardInset();
+		}
+		// FIXME: we need to do a redraw again because of the selection
+		buffer_.changed();
+		updateFlags = Update::Force | Update::FitCursor;
+		break;
+	}
+
 	default:
 		updateFlags = Update::None;
 	}
@@ -1138,20 +1182,60 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 }
 
 
-void BufferView::scroll(int /*lines*/)
+void BufferView::scroll(int y)
 {
-//	Text const * t = buffer_.text();
-//	int const line_height = defaultRowHeight();
-//
-//	// The new absolute coordinate
-//	int new_top_y = top_y() + lines * line_height;
-//
-//	// Restrict to a valid value
-//	new_top_y = std::min(t->height() - 4 * line_height, new_top_y);
-//	new_top_y = std::max(0, new_top_y);
-//
-//	scrollDocView(new_top_y);
-//
+	if (y > 0)
+		scrollDown(y);
+	else if (y < 0)
+		scrollUp(-y);
+}
+
+
+void BufferView::scrollDown(int offset)
+{
+	Text * text = &buffer_.text();
+	TextMetrics & tm = text_metrics_[text];
+	int ymax = height_ + offset;
+	while (true) {
+		std::pair<pit_type, ParagraphMetrics> const & last = tm.last();
+		int bottom_pos = last.second.position() + last.second.descent();
+		if (last.first == text->paragraphs().size() - 1) {
+			if (bottom_pos <= height_)
+				return;
+			offset = min(offset, bottom_pos - height_);
+			break;
+		}
+		if (bottom_pos > ymax)
+			break;
+		tm.newParMetricsDown();
+	}
+	offset_ref_ += offset;
+	updateMetrics(false);
+	buffer_.changed();
+}
+
+
+void BufferView::scrollUp(int offset)
+{
+	Text * text = &buffer_.text();
+	TextMetrics & tm = text_metrics_[text];
+	int ymin = - offset;
+	while (true) {
+		std::pair<pit_type, ParagraphMetrics> const & first = tm.first();
+		int top_pos = first.second.position() - first.second.ascent();
+		if (first.first == 0) {
+			if (top_pos >= 0)
+				return;
+			offset = min(offset, - top_pos);
+			break;
+		}
+		if (top_pos < ymin)
+			break;
+		tm.newParMetricsUp();
+	}
+	offset_ref_ -= offset;
+	updateMetrics(false);
+	buffer_.changed();
 }
 
 

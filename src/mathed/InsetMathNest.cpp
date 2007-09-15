@@ -643,13 +643,11 @@ goto_char_backwards:
 		break;
 
 	case LFUN_SCREEN_UP_SELECT:
-	case LFUN_SCREEN_UP:
 		cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		cur.undispatched();
 		break;
 
 	case LFUN_SCREEN_DOWN_SELECT:
-	case LFUN_SCREEN_DOWN:
 		cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		cur.undispatched();
 		break;

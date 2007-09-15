@@ -440,9 +440,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		needsUpdate |= cursorDownParagraph(cur);
 		break;
 
-	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_UP_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action == LFUN_SCREEN_UP_SELECT);
+		needsUpdate |= cur.selHandle(true);
 		if (cur.pit() == 0 && cur.textRow().pos() == 0)
 			cur.undispatched();
 		else {
@@ -450,9 +449,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_SCREEN_DOWN:
 	case LFUN_SCREEN_DOWN_SELECT:
-		needsUpdate |= cur.selHandle(cmd.action == LFUN_SCREEN_DOWN_SELECT);
+		needsUpdate |= cur.selHandle(true);
 		if (cur.pit() == cur.lastpit()
 			  && cur.textRow().endpos() == cur.lastpos())
 			cur.undispatched();
@@ -1853,8 +1851,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_WORD_SELECT:
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:
-	case LFUN_SCREEN_UP:
-	case LFUN_SCREEN_DOWN:
 	case LFUN_LINE_BEGIN:
 	case LFUN_LINE_END:
 	case LFUN_BREAK_LINE:

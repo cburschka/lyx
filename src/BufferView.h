@@ -128,8 +128,12 @@ public:
 
 	/// center the document view around the cursor.
 	void center();
-	/// scroll document by the given number of lines of default height.
-	void scroll(int lines);
+	/// scroll down document by the given number of pixels.
+	void scrollDown(int pixels);
+	/// scroll up document by the given number of pixels.
+	void scrollUp(int pixels);
+	/// scroll document by the given number of pixels.
+	void scroll(int pixels);
 	/// Scroll the view by a number of pixels.
 	void scrollDocView(int pixels);
 	/// Set the cursor position based on the scrollbar one.
