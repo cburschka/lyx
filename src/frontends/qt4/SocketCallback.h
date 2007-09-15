@@ -14,16 +14,13 @@
 #ifndef SOCKET_CALLBACK_H
 #define SOCKET_CALLBACK_H
 
-
 #include <QObject>
 #include <QSocketNotifier>
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/function.hpp>
 
 
 namespace lyx {
-
 
 /**
  * socket_callback - a simple wrapper for asynchronous socket notification
@@ -33,16 +30,21 @@ namespace lyx {
  *
  * FIXME: this code apparently will not work on Windows.
  */
-class socket_callback : public QObject {
+
+class SocketCallback : public QObject
+{
 	Q_OBJECT
+
 public:
 	/// connect a connection notification from the LyXServerSocket
-	socket_callback(int fd, boost::function<void()> func);
+	SocketCallback(QObject * parent, int fd, boost::function<void()> func);
+
 public Q_SLOTS:
-	void data_received();
+	void dataReceived();
+
 private:
-	/// our notifier
-	boost::scoped_ptr<QSocketNotifier> sn_;
+	/// Our notifier
+	QSocketNotifier * sn_;
 	/// The callback function
 	boost::function<void()> func_;
 };

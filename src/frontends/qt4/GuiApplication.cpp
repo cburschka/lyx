@@ -16,7 +16,7 @@
 
 #include "qt_helpers.h"
 #include "GuiImage.h"
-#include "socket_callback.h"
+#include "SocketCallback.h"
 
 #include "frontends/LyXView.h"
 
@@ -62,25 +62,8 @@
 using std::string;
 using std::endl;
 
-///////////////////////////////////////////////////////////////
-// You can find other X11 specific stuff
-// at the end of this file...
-///////////////////////////////////////////////////////////////
-
-namespace {
-
-int getDPI()
-{
-	QWidget w;
-	return int(0.5 * (w.logicalDpiX() + w.logicalDpiY()));
-}
-
-} // namespace anon
-
 
 namespace lyx {
-
-using support::FileName;
 
 frontend::Application * createApplication(int & argc, char * argv[])
 {
@@ -90,17 +73,39 @@ frontend::Application * createApplication(int & argc, char * argv[])
 
 namespace frontend {
 
+////////////////////////////////////////////////////////////////////////
+// Mac specific stuff goes here...
+
+class MenuTranslator : public QTranslator
+{
+public:
+	QString translate(const char * /*context*/, 
+	  const char * sourceText, 
+	  const char * /*comment*/ = 0) 
+	{
+		string const s = sourceText;
+		if (s == N_("About %1")	|| s == N_("Preferences") 
+				|| s == N_("Reconfigure") || s == N_("Quit %1"))
+			return qt_(s);
+		else 
+			return QString();
+	}
+};
+
+
+///////////////////////////////////////////////////////////////
+// You can find more platform specific stuff
+// at the end of this file...
+///////////////////////////////////////////////////////////////
+
+
+using support::FileName;
+
 GuiApplication * guiApp;
 
 
-GuiApplication::~GuiApplication()
-{
-	socket_callbacks_.clear();
-}
-
-
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), Application(argc, argv)
+	: QApplication(argc, argv), Application(argc, argv), menu_trans_(0)
 {
 	// Qt bug? setQuitOnLastWindowClosed(true); does not work
 	setQuitOnLastWindowClosed(false);
@@ -145,7 +150,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	Image::loadableFormats = boost::bind(&GuiImage::loadableFormats);
 
 	// needs to be done before reading lyxrc
-	lyxrc.dpi = getDPI();
+	QWidget w;
+	lyxrc.dpi = (w.logicalDpiX() + w.logicalDpiY()) / 2;
 
 	LoaderQueue::setPriority(10,100);
 
@@ -157,19 +163,26 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 }
 
 
-Clipboard& GuiApplication::clipboard()
+GuiApplication::~GuiApplication()
+{
+	delete menu_trans_;
+	socket_callbacks_.clear();
+}
+
+
+Clipboard & GuiApplication::clipboard()
 {
 	return clipboard_;
 }
 
 
-Selection& GuiApplication::selection()
+Selection & GuiApplication::selection()
 {
 	return selection_;
 }
 
 
-int const GuiApplication::exec()
+int GuiApplication::exec()
 {
 	QTimer::singleShot(1, this, SLOT(execBatchCommands()));
 	return QApplication::exec();
@@ -297,7 +310,7 @@ bool GuiApplication::getRgbColor(Color_color col,
 
 string const GuiApplication::hexName(Color_color col)
 {
-	return lyx::support::ltrim(fromqstr(color_cache_.get(col).name()), "#");
+	return support::ltrim(fromqstr(color_cache_.get(col).name()), "#");
 }
 
 
@@ -310,8 +323,7 @@ void GuiApplication::updateColor(Color_color)
 
 void GuiApplication::registerSocketCallback(int fd, boost::function<void()> func)
 {
-	socket_callbacks_[fd] =
-		boost::shared_ptr<socket_callback>(new socket_callback(fd, func));
+	socket_callbacks_[fd] = new SocketCallback(this, fd, func);
 }
 
 
@@ -369,36 +381,10 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 }
 #endif
 
-
-////////////////////////////////////////////////////////////////////////
-// Mac specific stuff goes here...
-
-class MenuTranslator : public QTranslator {
-public:
-	virtual ~MenuTranslator() {};
-	virtual QString translate(const char * context, 
-				  const char * sourceText, 
-				  const char * comment = 0) const;
-};
-
-
-QString MenuTranslator::translate(const char * /*context*/, 
-				  const char * sourceText, 
-				  const char *) const
-{
-	string const s = sourceText;
-	if (s == N_("About %1")	|| s == N_("Preferences") 
-	    || s == N_("Reconfigure") || s == N_("Quit %1"))
-		return qt_(s);
-	else 
-		return QString();
-}
-
-
 void GuiApplication::addMenuTranslator()
 {
-	menu_trans_.reset(new MenuTranslator());
-	installTranslator(menu_trans_.get());
+	menu_trans_ = new MenuTranslator();
+	installTranslator(menu_trans_);
 }
 
 

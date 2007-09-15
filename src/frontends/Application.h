@@ -153,7 +153,7 @@ public:
 	/// Start the main event loop.
 	/// The batch command is programmed to be execute once
 	/// the event loop is started.
-	virtual int const exec() = 0;
+	virtual int exec() = 0;
 
 	/// Quit running LyX.
 	/**

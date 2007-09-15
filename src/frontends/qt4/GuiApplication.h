@@ -21,8 +21,6 @@
 
 #include "frontends/Application.h"
 
-#include <boost/scoped_ptr.hpp>
-
 #include <QApplication>
 #include <QTranslator>
 
@@ -31,7 +29,7 @@ class QSessionManager;
 namespace lyx {
 
 class BufferView;
-class socket_callback;
+class SocketCallback;
 
 namespace frontend {
 
@@ -60,7 +58,7 @@ public:
 	virtual Clipboard & clipboard();
 	virtual Selection & selection();
 	virtual FontLoader & fontLoader() { return font_loader_; }
-	virtual int const exec();
+	virtual int exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
 	virtual bool event(QEvent * e);
@@ -106,18 +104,18 @@ private:
 	///
 	QTranslator qt_trans_;
 	///
-	std::map<int, boost::shared_ptr<socket_callback> > socket_callbacks_;
+	std::map<int, SocketCallback *> socket_callbacks_;
 
 #ifdef Q_WS_X11
 public:
-	bool x11EventFilter (XEvent * ev);
+	bool x11EventFilter(XEvent * ev);
 #endif
 
 	/// A translator suitable for the entries in the LyX menu.
 	/// Only needed with Qt/Mac.
 	void addMenuTranslator();
 	///
-	boost::scoped_ptr<MenuTranslator> menu_trans_;
+	MenuTranslator * menu_trans_;
 }; // GuiApplication
 
 extern GuiApplication * guiApp;

@@ -12,24 +12,25 @@
 
 #include <config.h>
 
-#include "socket_callback.h"
+#include "SocketCallback.h"
 
 
 namespace lyx {
 
-socket_callback::socket_callback(int fd, boost::function<void()> func)
-	: func_(func)
+SocketCallback::SocketCallback(QObject * parent,
+		int fd, boost::function<void()> func)
+	: QObject(parent), func_(func)
 {
-	sn_.reset(new QSocketNotifier(fd, QSocketNotifier::Read, this));
-	connect(sn_.get(), SIGNAL(activated(int)), this, SLOT(data_received()));
+	sn_ = new QSocketNotifier(fd, QSocketNotifier::Read, this);
+	connect(sn_, SIGNAL(activated(int)), this, SLOT(dataReceived()));
 }
 
 
-void socket_callback::data_received()
+void SocketCallback::dataReceived()
 {
 	func_();
 }
 
 } // namespace lyx
 
-#include "socket_callback_moc.cpp"
+#include "SocketCallback_moc.cpp"
