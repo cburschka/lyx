@@ -204,7 +204,7 @@ public:
 	* @param fd socket descriptor (file/socket/etc)
 	*/
 	typedef boost::function<void()> SocketCallback;
-	virtual void registerSocketCallback( int fd, SocketCallback func) = 0;
+	virtual void registerSocketCallback(int fd, SocketCallback func) = 0;
 
 	/**
 	* remove a I/O read callback

@@ -15,7 +15,6 @@
 
 #include "ui_BulletsUi.h"
 #include "Bullet.h"
-#include <boost/array.hpp>
 
 #include <QWidget>
 
@@ -24,6 +23,7 @@ namespace lyx {
 
 class BulletsModule : public QWidget, public Ui::BulletsUi {
 	Q_OBJECT
+
 public:
 	///
 	BulletsModule(QWidget * parent = 0, const char * name = 0, Qt::WFlags fl = 0);
@@ -39,7 +39,6 @@ Q_SIGNALS:
 	void changed();
 
 protected Q_SLOTS:
-
 	void on_bulletsizeCO_activated(int level);
 	void on_customCB_clicked(bool);
 	void on_customLE_textEdited(const QString &);
@@ -52,11 +51,10 @@ private:
 		std::string const & fname);
 
 	/// store results
-	boost::array<Bullet, 4> bullets_;
+	Bullet bullets_[4];
 	int current_font_;
 	int current_char_;
 };
-
 
 } // namespace lyx
 
