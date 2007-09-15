@@ -1,12 +1,15 @@
 <ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
  <class>LaTeXUi</class>
  <widget class="QWidget" name="LaTeXUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>307</width>
-    <height>178</height>
+    <width>428</width>
+    <height>465</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,48 +22,138 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="3" column="1" >
+   <item row="5" column="2" colspan="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" >
       <size>
-       <width>20</width>
-       <height>40</height>
+       <width>84</width>
+       <height>41</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="2" column="2" >
+   <item row="4" column="3" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeHint" >
       <size>
-       <width>40</width>
-       <height>20</height>
+       <width>261</width>
+       <height>22</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="2" column="1" >
+   <item row="4" column="2" >
     <widget class="QComboBox" name="psdriverCO" >
      <property name="duplicatesEnabled" >
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="classL" >
+   <item row="4" column="0" colspan="2" >
+    <widget class="QLabel" name="psdriverL" >
      <property name="text" >
-      <string>Document &amp;class:</string>
+      <string>Postscript &amp;driver:</string>
      </property>
      <property name="buddy" >
-      <cstring>classCO</cstring>
+      <cstring>psdriverCO</cstring>
      </property>
     </widget>
+   </item>
+   <item row="3" column="0" colspan="4" >
+    <widget class="QTextBrowser" name="infoML" />
+   </item>
+   <item row="2" column="0" colspan="4" >
+    <widget class="QGroupBox" name="modulesGB" >
+     <property name="title" >
+      <string>Modules</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="availmodL" >
+        <property name="text" >
+         <string>Available Modules</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLabel" name="selmodL" >
+        <property name="text" >
+         <string>Selected Modules</string>
+        </property>
+       </widget>
+      </item>
+      <item rowspan="5" row="1" column="0" >
+       <widget class="QListView" name="availableLV" >
+        <property name="editTriggers" >
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QPushButton" name="addPB" >
+        <property name="text" >
+         <string>Add</string>
+        </property>
+       </widget>
+      </item>
+      <item rowspan="5" row="1" column="2" >
+       <widget class="QListView" name="selectedLV" >
+        <property name="editTriggers" >
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QPushButton" name="deletePB" >
+        <property name="text" >
+         <string>Delete</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" >
+       <widget class="QPushButton" name="upPB" >
+        <property name="text" >
+         <string>Up</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="QPushButton" name="downPB" >
+        <property name="text" >
+         <string>Down</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>80</width>
+          <height>46</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="3" >
+    <widget class="QLineEdit" name="optionsLE" />
    </item>
    <item row="1" column="0" >
     <widget class="QLabel" name="optionsL" >
@@ -72,27 +165,32 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="psdriverL" >
+   <item row="0" column="1" colspan="3" >
+    <widget class="QComboBox" name="classCO" />
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="classL" >
      <property name="text" >
-      <string>Postscript &amp;driver:</string>
+      <string>Document &amp;class:</string>
      </property>
      <property name="buddy" >
-      <cstring>psdriverCO</cstring>
+      <cstring>classCO</cstring>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2" >
-    <widget class="QComboBox" name="classCO" />
-   </item>
-   <item row="1" column="1" colspan="2" >
-    <widget class="QLineEdit" name="optionsLE" />
-   </item>
   </layout>
  </widget>
+ <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>classCO</tabstop>
   <tabstop>optionsLE</tabstop>
+  <tabstop>availableLV</tabstop>
+  <tabstop>addPB</tabstop>
+  <tabstop>deletePB</tabstop>
+  <tabstop>upPB</tabstop>
+  <tabstop>downPB</tabstop>
+  <tabstop>selectedLV</tabstop>
+  <tabstop>infoML</tabstop>
   <tabstop>psdriverCO</tabstop>
  </tabstops>
  <includes>

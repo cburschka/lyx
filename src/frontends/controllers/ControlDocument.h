@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Richard Heck (modules)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,8 +14,12 @@
 #define CONTROLDOCUMENT_H
 
 #include "Dialog.h"
+#include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/types.h"
 #include <boost/scoped_ptr.hpp>
+#include <map>
+#include <vector>
 
 namespace lyx {
 
@@ -22,9 +27,11 @@ class BufferParams;
 class TextClass;
 
 namespace frontend {
-
+	
 ///
 typedef void const * BufferId;
+///
+typedef std::map<std::string, support::FileName> ModuleMap;
 
 /** A controller for Document dialogs.
  */
@@ -54,6 +61,14 @@ public:
 	BufferParams & params() const;
 	///
 	BufferId id() const;
+	/// List of available modules
+	std::vector<std::string> getModuleNames();
+	/// Modules in use in current buffer
+	std::vector<std::string> const & getSelectedModules();
+	///
+	std::string getModuleDescription(std::string modName) const;
+	///
+	std::vector<std::string> getPackageList(std::string modName) const;
 	///
 	void setLanguage() const;
 	///
@@ -68,7 +83,11 @@ public:
 	bool const providesScale(std::string const & font) const;
 private:
 	///
+	void loadModuleNames();
+	///
 	boost::scoped_ptr<BufferParams> bp_;
+	/// List of names of available modules
+	std::vector<std::string> moduleNames_;
 };
 
 } // namespace frontend

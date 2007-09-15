@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Richard Heck (modules)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -565,12 +566,26 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 		this, SLOT(change_adaptor()));
 	connect(latexModule->classCO, SIGNAL(activated(int)),
 		this, SLOT(classChanged()));
-	// packages
+	
+	selectionManager = 
+		new GuiSelectionManager(latexModule->availableLV, latexModule->selectedLV, 
+			latexModule->addPB, latexModule->deletePB, 
+	 		latexModule->upPB, latexModule->downPB, 
+			availableModel(), selectedModel());
+	connect(selectionManager, SIGNAL(updateHook()),
+		this, SLOT(updateModuleInfo()));
+	connect(selectionManager, SIGNAL(updateHook()),
+		this, SLOT(change_adaptor()));
+	
+	// postscript drivers
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = qt_(tex_graphics_gui[n]);
 		latexModule->psdriverCO->addItem(enc);
 	}
-	// latex
+	// latex classes
+	//FIXME This seems too involved with the kernel. Some of this
+	//should be moved to the controller---which should perhaps just
+	//give us a list of entries or something of the sort.
 	for (TextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
 		if (cit->isTeXClassAvailable()) {
@@ -866,6 +881,44 @@ void GuiDocumentDialog::classChanged()
 }
 
 
+void GuiDocumentDialog::updateModuleInfo()
+{
+	selectionManager->update();
+	//Module description
+	QListView const * const lv = selectionManager->selectedFocused() ?
+	                             latexModule->selectedLV :
+			latexModule->availableLV;
+	if (lv->selectionModel()->selectedIndexes().isEmpty())
+		latexModule->infoML->document()->clear();
+	else {
+		QModelIndex const idx = lv->selectionModel()->currentIndex();
+		string const modName = fromqstr(idx.data().toString());
+		string desc = controller().getModuleDescription(modName);
+		vector<string> pkgList = controller().getPackageList(modName);
+		string pkgdesc;
+		//this mess formats the package list as "pkg1, pkg2, and pkg3"
+		int const pkgListSize = pkgList.size();
+		for (int i = 0; i < pkgListSize; ++i) {
+			if (i == 1) {
+				if (i == pkgListSize - 1) //last element
+					pkgdesc += " and ";
+				else
+					pkgdesc += ", ";
+			} else if (i > 1) {
+				if (i == pkgListSize - 1) //last element
+					pkgdesc += ", and ";
+				else
+					pkgdesc += ", ";
+			}
+			pkgdesc += pkgList[i];
+		}
+		if (!pkgdesc.empty())
+			desc += " Requires " + pkgdesc + ".";
+		latexModule->infoML->document()->setPlainText(toqstr(desc));
+	}
+}
+
+
 void GuiDocumentDialog::updateNumbering()
 {
 	TextClass const & tclass = controller().params().getTextClass();
@@ -970,6 +1023,13 @@ void GuiDocumentDialog::apply(BufferParams & params)
 	// packages
 	params.graphicsDriver =
 		tex_graphics[latexModule->psdriverCO->currentIndex()];
+	
+	// Modules
+	params.clearLayoutModules();
+	QStringList const selMods = selectedModel()->stringList();
+	for (int i = 0; i != selMods.size(); ++i)
+		params.addLayoutModule(lyx::fromqstr(selMods[i]));
+
 
 	if (mathsModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::package_auto;
@@ -1153,6 +1213,13 @@ static size_t findPos(std::vector<A> const & vec, A const & val)
 }
 
 
+void GuiDocumentDialog::updateParams()
+{
+	BufferParams const & params = controller().params();
+	updateParams(params);
+}
+
+
 void GuiDocumentDialog::updateParams(BufferParams const & params)
 {
 	// set the default unit
@@ -1252,7 +1319,8 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	int nitem = findToken(tex_graphics, params.graphicsDriver);
 	if (nitem >= 0)
 		latexModule->psdriverCO->setCurrentIndex(nitem);
-
+	updateModuleInfo();
+	
 	mathsModule->amsCB->setChecked(
 		params.use_amsmath == BufferParams::package_on);
 	mathsModule->amsautoCB->setChecked(
@@ -1272,7 +1340,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 
 	// text layout
 	latexModule->classCO->setCurrentIndex(params.getBaseClass());
-
+	
 	updatePagestyle(controller().textClass().opt_pagestyle(),
 				 params.pagestyle);
 
@@ -1283,12 +1351,10 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	}
 	setLSpacing(nitem);
 
-	if (params.paragraph_separation
-	    == BufferParams::PARSEP_INDENT) {
+	if (params.paragraph_separation == BufferParams::PARSEP_INDENT)
 		textLayoutModule->indentRB->setChecked(true);
-	} else {
+	else
 		textLayoutModule->skipRB->setChecked(true);
-	}
 
 	int skip = 0;
 	switch (params.getDefSkip().kind()) {
@@ -1420,12 +1486,6 @@ void GuiDocumentDialog::applyView()
 }
 
 
-void GuiDocumentDialog::updateContents()
-{
-	updateParams(controller().params());
-}
-
-
 void GuiDocumentDialog::saveDocDefault()
 {
 	// we have to apply the params first
@@ -1434,12 +1494,31 @@ void GuiDocumentDialog::saveDocDefault()
 }
 
 
+void GuiDocumentDialog::updateContents()
+{
+	//update list of available modules
+	QStringList strlist;
+	vector<string> const modNames = controller().getModuleNames();
+	vector<string>::const_iterator it = modNames.begin();
+	for (; it != modNames.end(); ++it)
+		strlist.push_back(toqstr(*it));
+	available_model_.setStringList(strlist);
+	//and selected ones, too
+	QStringList strlist2;
+	vector<string> const & selMods = controller().getSelectedModules();
+	it = selMods.begin();
+	for (; it != selMods.end(); ++it)
+		strlist2.push_back(toqstr(*it));
+	selected_model_.setStringList(strlist2);
+
+	updateParams(controller().params());
+}
+
 void GuiDocumentDialog::useClassDefaults()
 {
 	BufferParams & params = controller().params();
 
 	params.setJustBaseClass(latexModule->classCO->currentIndex());
-
 	params.useClassDefaults();
 	updateContents();
 }

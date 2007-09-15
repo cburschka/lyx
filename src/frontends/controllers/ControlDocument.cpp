@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Richard Heck (modules)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -17,11 +18,12 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "buffer_funcs.h"
+#include "Color.h"
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Color.h"
+#include "ModuleList.h"
 #include "OutputParams.h"
 #include "TextClassList.h"
 
@@ -34,6 +36,7 @@
 
 using std::ostringstream;
 using std::string;
+using std::vector;
 
 namespace lyx {
 namespace frontend {
@@ -61,6 +64,7 @@ bool ControlDocument::initialiseParams(std::string const &)
 {
 	bp_.reset(new BufferParams);
 	*bp_ = buffer().params();
+	loadModuleNames();
 	return true;
 }
 
@@ -81,6 +85,36 @@ BufferParams & ControlDocument::params() const
 BufferId ControlDocument::id() const
 {
 	return &buffer();
+}
+
+
+vector<string> ControlDocument::getModuleNames()
+{
+	return moduleNames_;
+}
+
+
+vector<string> const & ControlDocument::getSelectedModules()
+{
+	return params().getModules();
+}
+
+
+string ControlDocument::getModuleDescription(string modName) const
+{
+	LyXModule const * const mod = moduleList[modName];
+	if (!mod)
+		return string("Module unavailable!");
+	return mod->description;
+}
+
+
+std::vector<std::string> 
+	ControlDocument::getPackageList(std::string modName) const {
+	LyXModule const * const mod = moduleList[modName];
+	if (!mod) 
+		return std::vector<std::string>(); //empty such thing
+	return mod->packageList;
 }
 
 
@@ -204,6 +238,17 @@ bool const ControlDocument::providesScale(std::string const & font) const
 {
 	return (font == "helvet" || font == "luximono"
 		|| font == "berasans"  || font == "beramono");
+}
+
+
+void ControlDocument::loadModuleNames ()
+{
+	moduleNames_.clear();
+	LyXModuleList::const_iterator it = moduleList.begin();
+	for (; it != moduleList.end(); ++it)
+		moduleNames_.push_back(it->name);
+	if (!moduleNames_.empty())
+		sort(moduleNames_.begin(), moduleNames_.end());
 }
 
 

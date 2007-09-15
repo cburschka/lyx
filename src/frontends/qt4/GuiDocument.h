@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Richard Heck (modules)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -15,6 +16,7 @@
 #include "GuiDialog.h"
 #include "BulletsModule.h"
 #include "ControlDocument.h"
+#include "GuiSelectionManager.h"
 
 #include "ui_DocumentUi.h"
 #include "ui_FontUi.h"
@@ -29,6 +31,8 @@
 #include "ui_PreambleUi.h"
 
 #include <QDialog>
+#include <QStringList>
+#include <QStringListModel>
 
 #include <vector>
 #include <string>
@@ -49,15 +53,12 @@ namespace lyx {
 namespace frontend {
 
 class GuiBranches;
-class GuiDocument;
 class PreambleModule;
 
 class GuiDocumentDialog : public GuiDialog, public Ui::DocumentUi
 {
 	Q_OBJECT
 public:
-	friend class GuiDocument;
-
 	GuiDocumentDialog(LyXView & lv);
 
 	void updateParams(BufferParams const & params);
@@ -78,6 +79,7 @@ public Q_SLOTS:
 	void useDefaultsClicked();
 
 private Q_SLOTS:
+	void updateParams();
 	void setLSpacing(int);
 	void setMargins(bool);
 	void setCustomPapersize(int);
@@ -89,7 +91,8 @@ private Q_SLOTS:
 	void enableSkip(bool);
 	void portraitChanged();
 	void classChanged();
-
+	void updateModuleInfo();
+	
 private:
 	void closeEvent(QCloseEvent * e);
 
@@ -104,17 +107,23 @@ private:
 	UiWidget<Ui::MathsUi> *mathsModule;
 	UiWidget<Ui::LaTeXUi> *latexModule;
 	PreambleModule *preambleModule;
-
+	
 	GuiBranches *branchesModule;
 
 	BulletsModule * bulletsModule;
 	FloatPlacement * floatModule;
 
-	/// FIXME
+	GuiSelectionManager * selectionManager;
+
+	// FIXME
 	std::vector<std::string> lang_;
 
 	/// parent controller
 	ControlDocument & controller();
+	/// Available modules
+	QStringListModel * availableModel() { return &available_model_; }
+	/// Selected modules
+	QStringListModel * selectedModel() { return &selected_model_; }
 private:
 	/// Apply changes
 	void applyView();
@@ -124,6 +133,12 @@ private:
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
+	/// available modules
+	QStringListModel available_model_;
+	/// selected modules
+	QStringListModel selected_model_;
+
+protected:
 	/// return false if validate_listings_params returns error
 	bool isValid();
 };
@@ -158,4 +173,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUIDOCUMENT_H
+#endif // QDOCUMENT_H
