@@ -29,12 +29,12 @@ class QSessionManager;
 namespace lyx {
 
 class BufferView;
-class SocketCallback;
 
 namespace frontend {
 
 class GuiWorkArea;
 class MenuTranslator;
+class SocketNotifier;
 
 /// The Qt main application class
 /**
@@ -69,8 +69,7 @@ public:
 	virtual bool getRgbColor(Color_color col, RGBColor & rgbcol);
 	virtual std::string const hexName(Color_color col);
 	virtual void updateColor(Color_color col);
-	virtual void registerSocketCallback(
-		int fd, boost::function<void()> func);
+	virtual void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
 	//@}
 
@@ -89,6 +88,8 @@ public:
 private Q_SLOTS:
 	///
 	void execBatchCommands();
+	///
+	void socketDataReceived(int fd);
 
 private:
 	///
@@ -104,7 +105,7 @@ private:
 	///
 	QTranslator qt_trans_;
 	///
-	std::map<int, SocketCallback *> socket_callbacks_;
+	std::map<int, SocketNotifier *> socket_notifiers_;
 
 #ifdef Q_WS_X11
 public:

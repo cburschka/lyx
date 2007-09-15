@@ -111,7 +111,6 @@ SOURCEFILES = \
 	LyXFileDialog.cpp \
 	PanelStack.cpp \
 	qt_helpers.cpp \
-	SocketCallback.cpp \
 	TocModel.cpp \
 	TocWidget.cpp \
 	Validator.cpp 
@@ -194,7 +193,6 @@ MOCHEADER = \
 	LyXFileDialog.h \
 	PanelStack.h \
 	qlkey.h \
-	SocketCallback.h \
 	TocModel.h \
 	TocWidget.h \
 	Validator.h

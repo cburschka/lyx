@@ -16,7 +16,6 @@
 
 #include "qt_helpers.h"
 #include "GuiImage.h"
-#include "SocketCallback.h"
 
 #include "frontends/LyXView.h"
 
@@ -45,6 +44,7 @@
 #include <QLibraryInfo>
 #include <QPixmapCache>
 #include <QSessionManager>
+#include <QSocketNotifier>
 #include <QTextCodec>
 #include <QTimer>
 #include <QTranslator>
@@ -73,12 +73,30 @@ frontend::Application * createApplication(int & argc, char * argv[])
 
 namespace frontend {
 
+class SocketNotifier : public QSocketNotifier
+{
+public:
+	/// connect a connection notification from the LyXServerSocket
+	SocketNotifier(QObject * parent, int fd, Application::SocketCallback func)
+		: QSocketNotifier(fd, QSocketNotifier::Read, parent), func_(func)
+	{}
+
+public:
+	/// The callback function
+	Application::SocketCallback func_;
+};
+
+
 ////////////////////////////////////////////////////////////////////////
 // Mac specific stuff goes here...
 
 class MenuTranslator : public QTranslator
 {
 public:
+	MenuTranslator(QObject * parent)
+		: QTranslator(parent)
+	{}
+
 	QString translate(const char * /*context*/, 
 	  const char * sourceText, 
 	  const char * /*comment*/ = 0) 
@@ -105,7 +123,7 @@ GuiApplication * guiApp;
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), Application(argc, argv), menu_trans_(0)
+	: QApplication(argc, argv), Application(argc, argv)
 {
 	// Qt bug? setQuitOnLastWindowClosed(true); does not work
 	setQuitOnLastWindowClosed(false);
@@ -165,8 +183,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 GuiApplication::~GuiApplication()
 {
-	delete menu_trans_;
-	socket_callbacks_.clear();
+	socket_notifiers_.clear();
 }
 
 
@@ -321,15 +338,23 @@ void GuiApplication::updateColor(Color_color)
 }
 
 
-void GuiApplication::registerSocketCallback(int fd, boost::function<void()> func)
+void GuiApplication::registerSocketCallback(int fd, SocketCallback func)
 {
-	socket_callbacks_[fd] = new SocketCallback(this, fd, func);
+	SocketNotifier * sn = new SocketNotifier(this, fd, func);
+	socket_notifiers_[fd] = sn;
+	connect(sn, SIGNAL(activated(int)), this, SLOT(socketDataReceived(int)));
+}
+
+
+void GuiApplication::socketDataReceived(int fd)
+{
+	socket_notifiers_[fd]->func_();
 }
 
 
 void GuiApplication::unregisterSocketCallback(int fd)
 {
-	socket_callbacks_.erase(fd);
+	socket_notifiers_.erase(fd);
 }
 
 
@@ -383,8 +408,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 
 void GuiApplication::addMenuTranslator()
 {
-	menu_trans_ = new MenuTranslator();
-	installTranslator(menu_trans_);
+	installTranslator(new MenuTranslator(this));
 }
 
 

@@ -203,8 +203,8 @@ public:
 	* add a callback for socket read notification
 	* @param fd socket descriptor (file/socket/etc)
 	*/
-	virtual void registerSocketCallback(
-		int fd, boost::function<void()> func) = 0;
+	typedef boost::function<void()> SocketCallback;
+	virtual void registerSocketCallback( int fd, SocketCallback func) = 0;
 
 	/**
 	* remove a I/O read callback
