@@ -28,10 +28,10 @@ namespace frontend {
  * Qt font loader for LyX. Matches Fonts against
  * actual QFont instances, and also caches metrics.
  */
-class QLFontInfo
+class GuiFontInfo
 {
 public:
-	QLFontInfo(Font const & f);
+	GuiFontInfo(Font const & f);
 
 	/// The font instance
 	QFont font;
@@ -63,19 +63,19 @@ public:
 
 
 	/// Get font info (font + metrics) for the given LyX font.
-	QLFontInfo & fontinfo(Font const & f) {
-		// fi is a reference to the pointer type (QLFontInfo *) in the
+	GuiFontInfo & fontinfo(Font const & f) {
+		// fi is a reference to the pointer type (GuiFontInfo *) in the
 		// fontinfo_ table.
-		QLFontInfo * & fi =
+		GuiFontInfo * & fi =
 			fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
 		if (!fi)
-			fi = new QLFontInfo(f);
+			fi = new GuiFontInfo(f);
 		return *fi;
 	}
 
 private:
 	/// BUTT ugly !
-	QLFontInfo * fontinfo_[Font::NUM_FAMILIES][2][4][10];
+	GuiFontInfo * fontinfo_[Font::NUM_FAMILIES][2][4][10];
 };
 
 

@@ -33,7 +33,6 @@ class BufferView;
 namespace frontend {
 
 class GuiWorkArea;
-class MenuTranslator;
 class SocketNotifier;
 
 /// The Qt main application class
@@ -111,12 +110,9 @@ private:
 public:
 	bool x11EventFilter(XEvent * ev);
 #endif
-
 	/// A translator suitable for the entries in the LyX menu.
 	/// Only needed with Qt/Mac.
 	void addMenuTranslator();
-	///
-	MenuTranslator * menu_trans_;
 }; // GuiApplication
 
 extern GuiApplication * guiApp;

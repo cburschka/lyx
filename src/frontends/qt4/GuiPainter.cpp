@@ -268,7 +268,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		str = ' ' + str;
 #endif
 
-	QLFontInfo & fi = guiApp->guiFontLoader().fontinfo(f);
+	GuiFontInfo & fi = guiApp->guiFontLoader().fontinfo(f);
 
 	int textwidth;
 
