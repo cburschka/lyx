@@ -950,7 +950,16 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN: {
-		Point const p = bv_funcs::getPos(*this, cur, cur.boundary());
+		Point p = bv_funcs::getPos(*this, cur, cur.boundary());
+		if (p.y_ < 0 || p.y_ > height_) {
+			// The cursor is off-screen so recenter before proceeding.
+			center();
+			updateMetrics(false);
+			//FIXME: updateMetrics() does not update paragraph position
+			// This is done at draw() time. So we need a redraw!
+			buffer_.changed();
+			p = bv_funcs::getPos(*this, cur, cur.boundary());
+		}
 		scroll(cmd.action == LFUN_SCREEN_UP? - height_ : height_);
 		cur.reset(buffer_.inset());
 		text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
