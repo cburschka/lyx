@@ -478,7 +478,7 @@ void BufferView::translateAndInsert(char_type c, Text * t, Cursor & cur)
 				intl_->keyMapPrim();
 		}
 	}
-	
+
 	intl_->getTransManager().translateAndInsert(c, t, cur);
 }
 
@@ -1347,7 +1347,7 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 {
 	BOOST_ASSERT(&cur.bv() == this);
 
-        // this event will clear selection so we save selection for
+	// this event will clear selection so we save selection for
 	// persistent selection
 	cap::saveSelection(cursor());
 
@@ -1445,7 +1445,7 @@ void BufferView::updateMetrics(bool singlepar)
 	if (!singlepar) {
 		// Clear out the position cache in case of full screen redraw,
 		coord_cache_.clear();
-	
+
 		// Clear out paragraph metrics to avoid having invalid metrics
 		// in the cache from paragraphs not relayouted below
 		// The complete text metrics will be redone.
@@ -1643,13 +1643,13 @@ void BufferView::draw(frontend::Painter & pain)
 
 	// and grey out above (should not happen later)
 //	lyxerr << "par ascent: " << text.getPar(metrics_info_.p1).ascent() << endl;
-	if (metrics_info_.y1 > 0 
+	if (metrics_info_.y1 > 0
 		&& metrics_info_.update_strategy == FullScreenUpdate)
 		pain.fillRectangle(0, 0, width_, metrics_info_.y1, Color::bottomarea);
 
 	// and possibly grey out below
 //	lyxerr << "par descent: " << text.getPar(metrics_info_.p1).ascent() << endl;
-	if (metrics_info_.y2 < height_ 
+	if (metrics_info_.y2 < height_
 		&& metrics_info_.update_strategy == FullScreenUpdate)
 		pain.fillRectangle(0, metrics_info_.y2, width_,
 			height_ - metrics_info_.y2, Color::bottomarea);
