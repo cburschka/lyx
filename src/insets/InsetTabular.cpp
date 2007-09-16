@@ -875,7 +875,7 @@ bool Tabular::leftAlreadyDrawn(idx_type cell) const
 		row_type row = cellRow(cell);
 		while (--column &&
 			   (cell_info[row][column].multicolumn ==
-				Tabular::CELL_PART_OF_MULTICOLUMN));
+				Tabular::CELL_PART_OF_MULTICOLUMN)) { }
 		if (getAdditionalWidth(cell_info[row][column].cellno))
 			return false;
 		return rightLine(cell_info[row][column].cellno);

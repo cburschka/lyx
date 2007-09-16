@@ -72,9 +72,9 @@ public:
 	void updateScreenFonts();
 
 	/// adjust the prefs paper sizes
-	PAPER_SIZE const toPaperSize(int i) const;
+	PAPER_SIZE toPaperSize(int i) const;
 	/// adjust the prefs paper sizes
-	int const fromPaperSize(PAPER_SIZE papersize) const;
+	int fromPaperSize(PAPER_SIZE papersize) const;
 
 private:
 	/// temporary lyxrc

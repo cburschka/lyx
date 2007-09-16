@@ -77,9 +77,10 @@ Image::FormatList GuiImage::loadableFormats()
 	LYXERR(Debug::GRAPHICS)
 		<< "\nThe image loader can load the following directly:\n";
 
-	if (qt_formats.empty())
+	if (qt_formats.empty()) {
 		LYXERR(Debug::GRAPHICS)
 			<< "\nQt4 Problem: No Format available!" << endl;
+	}
 
 	for (QList<QByteArray>::const_iterator it =qt_formats.begin(); it != qt_formats.end(); ++it) {
 
@@ -107,8 +108,9 @@ Image::FormatList GuiImage::loadableFormats()
 		FormatList::const_iterator fbegin = fmts.begin();
 		FormatList::const_iterator fend   = fmts.end();
 		for (FormatList::const_iterator fit = fbegin; fit != fend; ++fit) {
-			if (fit != fbegin)
+			if (fit != fbegin) {
 				LYXERR(Debug::GRAPHICS) << ", ";
+			}
 			LYXERR(Debug::GRAPHICS) << *fit;
 		}
 		LYXERR(Debug::GRAPHICS) << '\n' << endl;

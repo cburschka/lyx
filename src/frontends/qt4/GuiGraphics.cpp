@@ -48,13 +48,15 @@ using lyx::support::token;
 
 using lyx::support::os::internal_path;
 
+using std::find;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::floor;
 #endif
 
 using std::vector;
 using std::string;
-
+using std::transform;
 
 namespace lyx {
 namespace frontend {
@@ -89,23 +91,23 @@ void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 
 
 template<class Pair>
-std::vector<typename Pair::first_type> const
-getFirst(std::vector<Pair> const & pr)
+vector<typename Pair::first_type> const
+getFirst(vector<Pair> const & pr)
 {
-	std::vector<typename Pair::first_type> tmp(pr.size());
-	std::transform(pr.begin(), pr.end(), tmp.begin(),
-		       boost::bind(&Pair::first, _1));
+	vector<typename Pair::first_type> tmp(pr.size());
+	transform(pr.begin(), pr.end(), tmp.begin(),
+		  boost::bind(&Pair::first, _1));
 	return tmp;
 }
 
 ///
 template<class Pair>
-std::vector<typename Pair::second_type> const
-getSecond(std::vector<Pair> const & pr)
+vector<typename Pair::second_type> const
+getSecond(vector<Pair> const & pr)
 {
-	 std::vector<typename Pair::second_type> tmp(pr.size());
-	 std::transform(pr.begin(), pr.end(), tmp.begin(),
-					 boost::bind(&Pair::second, _1));
+	 vector<typename Pair::second_type> tmp(pr.size());
+	 transform(pr.begin(), pr.end(), tmp.begin(),
+		   boost::bind(&Pair::second, _1));
 	 return tmp;
 }
 
@@ -283,7 +285,7 @@ void GuiGraphicsDialog::on_browsePB_clicked()
 {
 	docstring const str =
 		controller().browse(qstring_to_ucs4(filename->text()));
-	if(!str.empty()){
+	if (!str.empty()) {
 		filename->setText(toqstr(str));
 		embedCB->setCheckState(Qt::Unchecked);
 		changed();
@@ -725,4 +727,3 @@ bool GuiGraphicsDialog::isValid()
 
 
 #include "GuiGraphics_moc.cpp"
-

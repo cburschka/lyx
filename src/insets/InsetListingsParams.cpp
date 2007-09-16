@@ -759,7 +759,7 @@ void InsetListingsParams::addParam(string const & key, string const & value)
 	if (params_.find(key) != params_.end())
 		// key=value,key=value1 is allowed in listings
 		// use key_, key__, key___ etc to avoid name conflict
-		while (params_.find(keyname += '_') != params_.end());
+		while (params_.find(keyname += '_') != params_.end()) { }
 	// check onoff flag
 	// onoff parameter with value false
 	if (!par_validator)

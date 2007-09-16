@@ -28,6 +28,7 @@
 
 #include <boost/filesystem/operations.hpp>
 
+using std::find_if;
 using std::string;
 using std::distance;
 

@@ -62,7 +62,7 @@ public:
 
 	virtual ~LyXView();
 
-	int const id() const { return id_; }
+	int id() const { return id_; }
 
 	virtual void close() = 0;
 
@@ -174,7 +174,7 @@ public:
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
-	Buffer const * const updateInset(Inset const *);
+	Buffer const * updateInset(Inset const *);
 
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;

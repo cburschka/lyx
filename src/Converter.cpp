@@ -365,9 +365,10 @@ bool Converters::convert(Buffer const * buffer,
 	     cit != edgepath.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
 		bool dummy = conv.To->dummy() && conv.to != "program";
-		if (!dummy)
+		if (!dummy) {
 			LYXERR(Debug::FILES) << "Converting from  "
 			       << conv.from << " to " << conv.to << endl;
+		}
 		infile = outfile;
 		outfile = FileName(conv.result_dir.empty()
 			? changeExtension(from_file.absFilename(), conv.To->extension())

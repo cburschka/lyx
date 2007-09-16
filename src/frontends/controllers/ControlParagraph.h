@@ -39,7 +39,7 @@ public:
 	///
 	ParagraphParameters const & params() const;
 	///
-	bool const haveMulitParSelection();
+	bool haveMulitParSelection();
 	///
 	bool inInset() const;
 	///

@@ -40,13 +40,13 @@ TocItem::TocItem(ParConstIterator const & par_it, int d,
 }
 
 
-int const TocItem::id() const
+int TocItem::id() const
 {
 	return par_it_->id();
 }
 
 
-int const TocItem::depth() const
+int TocItem::depth() const
 {
 	return depth_;
 }

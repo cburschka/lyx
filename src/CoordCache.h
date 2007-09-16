@@ -45,7 +45,7 @@ public:
 		data_.clear();
 	}
 
-	bool const empty() const
+	bool empty() const
 	{
 		return data_.empty();
 	}

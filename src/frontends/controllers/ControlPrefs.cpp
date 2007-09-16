@@ -155,7 +155,7 @@ docstring const ControlPrefs::browsedir(docstring const & path,
 
 // We support less paper sizes than the document dialog
 // Therefore this adjustment is needed.
-PAPER_SIZE const ControlPrefs::toPaperSize(int i) const
+PAPER_SIZE ControlPrefs::toPaperSize(int i) const
 {
 	switch (i) {
 	case 0:
@@ -181,7 +181,7 @@ PAPER_SIZE const ControlPrefs::toPaperSize(int i) const
 }
 
 
-int const ControlPrefs::fromPaperSize(PAPER_SIZE papersize) const
+int ControlPrefs::fromPaperSize(PAPER_SIZE papersize) const
 {
 	switch (papersize) {
 	case PAPER_DEFAULT:

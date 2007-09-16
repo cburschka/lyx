@@ -109,7 +109,7 @@ void ControlCitation::filterByEntryType(
 }
 
 
-biblio::CiteEngine const ControlCitation::getEngine() const
+biblio::CiteEngine ControlCitation::getEngine() const
 {
 	return buffer().params().getEngine();
 }

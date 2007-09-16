@@ -274,9 +274,10 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
-		if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
+		if (fb_.is_open() || istream::off_type(is.tellg()) > 0) {
 			LYXERR(Debug::LYXLEX) << "Error in Lexer::setFile: "
 				"file or stream already set." << endl;
+		}
 		fb_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&fb_);
 		name = filename.absFilename();
@@ -288,9 +289,10 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 
 void Lexer::Pimpl::setStream(istream & i)
 {
-	if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
+	if (fb_.is_open() || istream::off_type(is.tellg()) > 0) {
 		LYXERR(Debug::LYXLEX)  << "Error in Lexer::setStream: "
 			"file or stream already set." << endl;
+	}
 	is.rdbuf(i.rdbuf());
 	lineno = 0;
 }

@@ -71,7 +71,7 @@ using std::ostream;
 using std::ostringstream;
 
 
-ParagraphMetrics::ParagraphMetrics(Paragraph const & par): par_(&par), position_(-1)
+ParagraphMetrics::ParagraphMetrics(Paragraph const & par): position_(-1), par_(&par)
 {
 }
 

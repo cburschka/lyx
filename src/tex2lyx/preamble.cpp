@@ -37,6 +37,7 @@ using std::string;
 using std::vector;
 using std::cerr;
 using std::endl;
+using std::find;
 
 using support::FileName;
 using support::libFileSearch;
@@ -99,7 +100,7 @@ void handle_opt(vector<string> & opts, char const * const * what, string & targe
 	if (opts.empty())
 		return;
 
-	for ( ; *what; ++what) {
+	for (; *what; ++what) {
 		vector<string>::iterator it = find(opts.begin(), opts.end(), *what);
 		if (it != opts.end()) {
 			//cerr << "### found option '" << *what << "'\n";

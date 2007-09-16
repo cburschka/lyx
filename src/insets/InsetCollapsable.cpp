@@ -667,13 +667,14 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 		}
 	}
 	int i = InsetText::latex(buf, os, runparams);
-	if (!layout_.latexname.empty())
+	if (!layout_.latexname.empty()) {
 		if (layout_.latextype == "command") {
 			os << "}";
 		} else if (layout_.latextype == "environment") {
 			os << "\n\\end{" << from_utf8(layout_.latexname) << "}\n";
 			i += 4;
 		}
+	}
 	return i;
 }
 

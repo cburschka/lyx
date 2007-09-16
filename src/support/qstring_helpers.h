@@ -60,7 +60,7 @@ inline bool is_utf16(char_type c)
  * This does only exist because of performance reasons (a real conversion
  * using iconv is too slow on windows).
  */
-inline char_type const qchar_to_ucs4(QChar const & qchar)
+inline char_type qchar_to_ucs4(QChar const & qchar)
 {
 	BOOST_ASSERT(is_utf16(static_cast<char_type>(qchar.unicode())));
 	return static_cast<char_type>(qchar.unicode());

@@ -151,7 +151,7 @@ ParagraphParameters const & ControlParagraph::params() const
 }
 
 
-bool const ControlParagraph::haveMulitParSelection()
+bool ControlParagraph::haveMulitParSelection()
 {
 	Cursor cur = bufferview()->cursor();
 	return cur.selection() && cur.selBegin().pit() != cur.selEnd().pit();

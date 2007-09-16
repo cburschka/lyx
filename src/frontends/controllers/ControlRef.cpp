@@ -21,6 +21,7 @@
 
 using lyx::docstring;
 
+using std::find;
 using std::vector;
 using std::string;
 

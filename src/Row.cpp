@@ -24,14 +24,14 @@ namespace lyx {
 
 
 Row::Row()
-	: changed_(false), crc_(0), pos_(0), end_(0), separator(0), hfill(0),
-	label_hfill(0), x(0), sel_beg(-1), sel_end(-1)
+	: separator(0), hfill(0), label_hfill(0), x(0),
+	sel_beg(-1), sel_end(-1), changed_(false), crc_(0), pos_(0), end_(0)
 {}
 
 
 Row::Row(pos_type pos)
-	: changed_(false), crc_(0), pos_(pos), end_(0), separator(0), hfill(0),
-	label_hfill(0), x(0), sel_beg(-1), sel_end(-1)
+	: separator(0), hfill(0), label_hfill(0), x(0),
+	sel_beg(-1), sel_end(-1), changed_(false), crc_(0), pos_(pos), end_(0)
 {}
 
 
@@ -89,7 +89,7 @@ void Row::setSelection(pos_type beg, pos_type end)
 }
 
 
-void Row::dump(const char * s) const
+void Row::dump(char const * s) const
 {
 	lyxerr << s << " pos: " << pos_ << " end: " << end_
 		<< " width: " << dim_.wid

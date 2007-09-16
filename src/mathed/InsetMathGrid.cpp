@@ -1402,12 +1402,12 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 				from_utf8(N_("Unknown tabular feature '%1$s'")), lyx::from_ascii(s)));
 		}
 
-		status.setOnOff(s == "align-left"    && halign(cur.col()) == 'l'
-			   || s == "align-right"   && halign(cur.col()) == 'r'
-			   || s == "align-center"  && halign(cur.col()) == 'c'
-			   || s == "valign-top"    && valign() == 't'
-			   || s == "valign-bottom" && valign() == 'b'
-			   || s == "valign-middle" && valign() == 'm');
+		status.setOnOff((s == "align-left" && halign(cur.col()) == 'l')
+			   || (s == "align-right"   && halign(cur.col()) == 'r')
+			   || (s == "align-center"  && halign(cur.col()) == 'c')
+			   || (s == "valign-top"    && valign() == 't')
+			   || (s == "valign-bottom" && valign() == 'b')
+			   || (s == "valign-middle" && valign() == 'm'));
 
 #if 0
 		// FIXME: What did this code do?

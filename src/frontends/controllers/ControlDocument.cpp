@@ -35,6 +35,7 @@
 #include <sstream>
 
 using std::ostringstream;
+using std::sort;
 using std::string;
 using std::vector;
 
@@ -60,7 +61,7 @@ ControlDocument::~ControlDocument()
 {}
 
 
-bool ControlDocument::initialiseParams(std::string const &)
+bool ControlDocument::initialiseParams(string const &)
 {
 	bp_.reset(new BufferParams);
 	*bp_ = buffer().params();
@@ -100,7 +101,7 @@ vector<string> const & ControlDocument::getSelectedModules()
 }
 
 
-string ControlDocument::getModuleDescription(string modName) const
+string ControlDocument::getModuleDescription(string const & modName) const
 {
 	LyXModule const * const mod = moduleList[modName];
 	if (!mod)
@@ -109,11 +110,12 @@ string ControlDocument::getModuleDescription(string modName) const
 }
 
 
-std::vector<std::string> 
-	ControlDocument::getPackageList(std::string modName) const {
+vector<string>
+ControlDocument::getPackageList(string const & modName) const
+{
 	LyXModule const * const mod = moduleList[modName];
-	if (!mod) 
-		return std::vector<std::string>(); //empty such thing
+	if (!mod)
+		return vector<string>(); //empty such thing
 	return mod->packageList;
 }
 
@@ -177,7 +179,7 @@ void ControlDocument::setLanguage() const
 	if (buffer().params().language == newL)
 		return;
 
-	string const lang_name = newL->lang();
+	string const & lang_name = newL->lang();
 	dispatch(FuncRequest(LFUN_BUFFER_LANGUAGE, lang_name));
 }
 
@@ -188,7 +190,7 @@ void ControlDocument::saveAsDefault() const
 }
 
 
-bool const ControlDocument::isFontAvailable(std::string const & font) const
+bool ControlDocument::isFontAvailable(string const & font) const
 {
 	if (font == "default" || font == "cmr"
 	    || font == "cmss" || font == "cmtt")
@@ -212,7 +214,7 @@ bool const ControlDocument::isFontAvailable(std::string const & font) const
 }
 
 
-bool const ControlDocument::providesOSF(std::string const & font) const
+bool ControlDocument::providesOSF(string const & font) const
 {
 	if (font == "cmr")
 		return isFontAvailable("eco");
@@ -223,7 +225,7 @@ bool const ControlDocument::providesOSF(std::string const & font) const
 }
 
 
-bool const ControlDocument::providesSC(std::string const & font) const
+bool ControlDocument::providesSC(string const & font) const
 {
 	if (font == "palatino")
 		return isFontAvailable("mathpazo");
@@ -234,7 +236,7 @@ bool const ControlDocument::providesSC(std::string const & font) const
 }
 
 
-bool const ControlDocument::providesScale(std::string const & font) const
+bool ControlDocument::providesScale(string const & font) const
 {
 	return (font == "helvet" || font == "luximono"
 		|| font == "berasans"  || font == "beramono");

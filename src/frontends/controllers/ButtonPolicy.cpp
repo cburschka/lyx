@@ -124,7 +124,7 @@ bool ButtonPolicy::isReadOnly() const
 }
 
 
-static char const * const printState(ButtonPolicy::State const & state)
+static char const * printState(ButtonPolicy::State const & state)
 {
 	switch (state) {
 		case ButtonPolicy::INITIAL:
@@ -151,7 +151,7 @@ static char const * const printState(ButtonPolicy::State const & state)
 }
 
 
-static char const * const printInput(ButtonPolicy::SMInput const & input)
+static char const * printInput(ButtonPolicy::SMInput const & input)
 {
 	switch (input) {
 		case ButtonPolicy::SMI_VALID:

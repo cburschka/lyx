@@ -296,11 +296,12 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 			item->checksum = checksum;
 		}
 		if (!mover.copy(converted_file, item->cache_name,
-		                support::onlyFilename(item->cache_name.absFilename()), 0600))
+		                support::onlyFilename(item->cache_name.absFilename()), 0600)) {
 			LYXERR(Debug::FILES) << "ConverterCache::add("
 					     << orig_from << "):\n"
 						"Could not copy file."
 					     << std::endl;
+		}
 	} else {
 		CacheItem new_item(orig_from, to_format, timestamp,
 				support::sum(orig_from));

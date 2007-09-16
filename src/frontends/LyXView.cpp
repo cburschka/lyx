@@ -421,7 +421,7 @@ void LyXView::dispatch(FuncRequest const & cmd)
 }
 
 
-Buffer const * const LyXView::updateInset(Inset const * inset)
+Buffer const * LyXView::updateInset(Inset const * inset)
 {
 	WorkArea * work_area = currentWorkArea();
 	if (!work_area)

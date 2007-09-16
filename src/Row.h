@@ -64,7 +64,7 @@ public:
 	int descent() const { return dim_.des; }
 
 	/// current debugging only
-	void dump(const char * = "") const;
+	void dump(char const * = "") const;
 
 	/// width of a separator (i.e. space)
 	double separator;
@@ -78,8 +78,6 @@ public:
 	pos_type sel_beg;
 	///
 	pos_type sel_end;
-
-
 private:
 	/// has the Row appearance changed since last drawing?
 	bool changed_;

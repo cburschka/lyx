@@ -46,7 +46,7 @@ public:
 	void filterByEntryType(
 		std::vector<docstring> & keyVector, docstring entryType);
 	///
-	biblio::CiteEngine const getEngine() const;
+	biblio::CiteEngine getEngine() const;
 
 	/// \return information for this key.
 	docstring const getInfo(docstring const & key) const;

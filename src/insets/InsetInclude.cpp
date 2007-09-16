@@ -52,7 +52,7 @@
 
 
 namespace lyx {
-  
+
 // Implementation is in LyX.cpp
 extern void dispatch(FuncRequest const & action);
 
@@ -80,6 +80,7 @@ using support::subst;
 using support::sum;
 
 using std::endl;
+using std::find;
 using std::string;
 using std::istringstream;
 using std::ostream;
@@ -461,7 +462,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		incfile = mangled;
 	else if (!isValidLaTeXFilename(incfile)) {
 		frontend::Alert::warning(_("Invalid filename"),
-				         _("The following filename is likely to cause trouble "
+					 _("The following filename is likely to cause trouble "
 					   "when running the exported file through LaTeX: ") +
 					    from_utf8(incfile));
 	}
@@ -492,7 +493,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
-		
+
 		// Make sure modules used in child are all included in master
 		//FIXME It might be worth loading the children's modules into the master
 		//over in BufferParams rather than doing this check.
@@ -502,13 +503,13 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		vector<string>::const_iterator end = childModules.end();
 		for (; it != end; ++it) {
 			string const module = *it;
-			vector<string>::const_iterator found = 
+			vector<string>::const_iterator found =
 				find(masterModules.begin(), masterModules.end(), module);
 			if (found != masterModules.end()) {
 				docstring text = bformat(_("Included file `%1$s'\n"
 							"uses module `%2$s'\n"
 							"which is not used in parent file."),
-			 	       makeDisplayPath(included_file.absFilename()), from_utf8(module));
+				       makeDisplayPath(included_file.absFilename()), from_utf8(module));
 				Alert::warning(_("Module not found"), text);
 			}
 		}
@@ -916,7 +917,7 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIt
 			Toc & toc = toclist["listing"];
 			docstring const str = convert<docstring>(toc.size() + 1)
 				+ ". " +  from_utf8(caption);
-			// This inset does not have a valid ParConstIterator 
+			// This inset does not have a valid ParConstIterator
 			// so it has to use the iterator of its parent paragraph
 			toc.push_back(TocItem(pit, 0, str));
 		}
@@ -935,7 +936,7 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIt
 }
 
 
-void InsetInclude::updateLabels(Buffer const & buffer, 
+void InsetInclude::updateLabels(Buffer const & buffer,
 				ParIterator const &)
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer, params_);

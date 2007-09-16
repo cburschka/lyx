@@ -327,11 +327,12 @@ void updateExternal(InsetExternalParams const & params,
 				   params.filename, from_format, to_format, el,
 				   Converters::try_default | Converters::try_cache);
 
-	if (!success)
+	if (!success) {
 		LYXERR(Debug::EXTERNAL)
 			<< "external::updateExternal. "
 			<< "Unable to convert from "
 			<< from_format << " to " << to_format << endl;
+	}
 
 	// return success
 }

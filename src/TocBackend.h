@@ -48,9 +48,9 @@ public:
 	///
 	~TocItem() {}
 	///
-	int const id() const;
+	int id() const;
 	///
-	int const depth() const;
+	int depth() const;
 	///
 	docstring const & str() const;
 	///

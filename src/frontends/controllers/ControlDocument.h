@@ -27,7 +27,7 @@ class BufferParams;
 class TextClass;
 
 namespace frontend {
-	
+
 ///
 typedef void const * BufferId;
 ///
@@ -66,21 +66,21 @@ public:
 	/// Modules in use in current buffer
 	std::vector<std::string> const & getSelectedModules();
 	///
-	std::string getModuleDescription(std::string modName) const;
+	std::string getModuleDescription(std::string const & modName) const;
 	///
-	std::vector<std::string> getPackageList(std::string modName) const;
+	std::vector<std::string> getPackageList(std::string const & modName) const;
 	///
 	void setLanguage() const;
 	///
 	void saveAsDefault() const;
 	///
-	bool const isFontAvailable(std::string const & font) const;
+	bool isFontAvailable(std::string const & font) const;
 	/// does this font provide Old Style figures?
-	bool const providesOSF(std::string const & font) const;
+	bool providesOSF(std::string const & font) const;
 	/// does this font provide true Small Caps?
-	bool const providesSC(std::string const & font) const;
+	bool providesSC(std::string const & font) const;
 	/// does this font provide size adjustment?
-	bool const providesScale(std::string const & font) const;
+	bool providesScale(std::string const & font) const;
 private:
 	///
 	void loadModuleNames();
