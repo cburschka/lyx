@@ -1289,21 +1289,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INDEX_INSERT:	{
-		Inset * inset = createInset(&cur.bv(), cmd);
-		if (!inset)
-			break;
-		insertInset(cur, inset);
-		inset->edit(cur, true);
-		// Show the dialog for the index entry, because it
-		// needs to be modified in most instances
-		if (cmd.action == LFUN_INDEX_INSERT)
-			InsetCommandMailer("index",
-				*reinterpret_cast<InsetCommand *>(inset)).showDialog(&cur.bv());
-		cur.posRight();
-		break;
-	}
-
+	case LFUN_INDEX_INSERT:
 	case LFUN_NOMENCL_INSERT: {
 		Inset * inset = createInset(&cur.bv(), cmd);
 		if (!inset)
