@@ -49,7 +49,9 @@ KeySymbol * createKeySymbol()
 }
 
 
-static char const encode(string const & encoding, QString const & str)
+namespace {
+
+char encode(string const & encoding, QString const & str)
 {
 	typedef map<string, QTextCodec *> EncodingMap;
 	EncodingMap encoding_map;
@@ -81,6 +83,7 @@ static char const encode(string const & encoding, QString const & str)
 	return codec->fromUnicode(str).data()[0];
 }
 
+} // anon namespace
 
 GuiKeySymbol::GuiKeySymbol()
 	: KeySymbol(), key_(0)
