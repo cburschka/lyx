@@ -913,7 +913,6 @@ src_frontends_qt4_header_files = Split('''
     Validator.h
     qlkey.h
     qt_helpers.h
-    SocketCallback.h
 ''')
 
 
@@ -997,7 +996,6 @@ src_frontends_qt4_files = Split('''
     Validator.cpp
     alert_pimpl.cpp
     qt_helpers.cpp
-    SocketCallback.cpp
 ''')
 
 
