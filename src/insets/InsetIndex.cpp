@@ -36,7 +36,7 @@ docstring const InsetIndex::getScreenLabel(Buffer const &) const
 {
 	size_t const maxLabelChars = 25;
 
-	docstring label = "Idx:" + getParam("name");
+	docstring label = _("Idx: ") + getParam("name");
 	if (label.size() > maxLabelChars) {
 		label.erase(maxLabelChars - 3);
 		label += "...";
