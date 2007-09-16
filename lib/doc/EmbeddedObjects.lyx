@@ -1,4 +1,4 @@
-#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -91,6 +91,9 @@
 
 % speed up the longtable calculation
 \setcounter{LTchunksize}{100}
+
+% used for scaled and rotated boxes
+\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 
 % used for colored tables
 \@ifundefined{textcolor}
@@ -405,12 +408,24 @@ reference "cha:Units-available-in"
 
 .
 \newline
+
+\begin_inset LatexCommand index
+name "Figures ! rotated"
+
+\end_inset
+
 You can rotate images counter-clockwise by setting a rotation angle and
  a rotation origin.
  The image will also be rotated inside LyX.
 \newline
-Images can be scaled by using
- a percentage value or by setting the width and height explicitly.
+
+\begin_inset LatexCommand index
+name "Figures ! scaled"
+
+\end_inset
+
+Images can be scaled by using a percentage value or by setting the width
+ and height explicitly.
  If you set only the width or only the height, the other size will be determined
  automatically.
  If you set both, then the image will be transformed to the given size,
@@ -4721,7 +4736,7 @@ and
 \backslash
 LTright
 \series default
- by inserting this line as ERT before the corresponding longtable:
+ by inserting this line as TeX-Code before the corresponding longtable:
 \end_layout
 
 \begin_layout Standard
@@ -5125,7 +5140,7 @@ Insert a
 \begin_inset Quotes erd
 \end_inset
 
- as ERT behind the caption.
+ as TeX-Code behind the caption.
 \end_layout
 
 \begin_layout Standard
@@ -5499,8 +5514,8 @@ Note:
 2.4 follows on Table\InsetSpace ~
 2.1 in the list of tables if there are two longtables
  without captions.
- To avoid this you can add the following command in ERT behind every longtable
- without a caption:
+ To avoid this you can add the following command in TeX-Code behind every
+ longtable without a caption:
 \end_layout
 
 \begin_layout Standard
@@ -5958,7 +5973,7 @@ LTcapwidth
  Its default value is 4\InsetSpace \thinspace{}
 in.
  To change it add the following command to your document preamble or as
- ERT into your document before the longtable that should be affected
+ TeX-Code into your document before the longtable that should be affected
 \end_layout
 
 \begin_layout Standard
@@ -8776,7 +8791,7 @@ There might be problems when a float appears on the same page where a longtable
 \backslash
 clearpage
 \series default
- as ERT before your longtable.
+ as TeX-Code before your longtable.
 \end_layout
 
 \begin_layout Subsection
@@ -8808,7 +8823,7 @@ By default tables are only broken between rows.
 \begin_inset Quotes erd
 \end_inset
 
- as ERT at this point of the cell where it should be broken.
+ as TeX-Code at this point of the cell where it should be broken.
  Before the 
 \series bold
 
@@ -8817,7 +8832,7 @@ By default tables are only broken between rows.
 \backslash
 
 \series default
- command you have to insert in ERT so many 
+ command you have to insert in TeX-Code so many 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8835,7 +8850,7 @@ By default tables are only broken between rows.
 &
 \series default
  is the character to separate table cells.
- Write in ERT after each 
+ Write in TeX-Code after each 
 \series bold
 &
 \series default
@@ -8864,7 +8879,7 @@ reference "tab:ForcedPagebreak"
 
  the cell that should be broken is in the second column followed by another
  column.
- Therefore the following command was inserted in the cell as ERT behind
+ Therefore the following command was inserted in the cell as TeX-Code behind
  
 \begin_inset Quotes eld
 \end_inset
@@ -8937,7 +8952,7 @@ illskip}{0pt}
 \end_layout
 
 \begin_layout Standard
-must be inserted as ERT at the beginning of the cell.
+must be inserted as TeX-Code at the beginning of the cell.
  This assures that the part of the cell that will be displayed on the new
  page appears with the full width.
 \end_layout
@@ -10457,7 +10472,7 @@ linebreak
 \end_layout
 
 \begin_layout Standard
-in ERT.
+in TeX-Code.
  If the text is wider than the set cell width it will automatically be broken
  to several lines.
 \end_layout
@@ -10478,7 +10493,7 @@ hspace{0pt}
 \end_layout
 
 \begin_layout Standard
-in ERT before the word.
+in TeX-Code before the word.
  As the space is zero, it doesn't change the output.
  Table\InsetSpace ~
 
@@ -11491,7 +11506,7 @@ name "LaTeX-packages ! multirow"
 
 \begin_layout Standard
 In contrary to multicolumns multirows are not yet supported by LyX so a
- bit of ERT needs to be used.
+ bit of TeX-Code needs to be used.
  To use multirows load the LaTeX-package 
 \series bold
 multirow
@@ -11699,16 +11714,16 @@ multirow{2}{2.5cm}{
 \end_layout
 
 \begin_layout Standard
-as ERT.
+as TeX-Code.
  According to the command parameters the multirow spans now two rows and
  has a width of 2.5\InsetSpace \thinspace{}
 cm.
- The content of the multirow cell follows outside the ERT box and the command
- is finished with a right brace 
+ The content of the multirow cell follows outside the TeX-Code box and the
+ command is finished with a right brace 
 \series bold
 }
 \series default
- in another ERT-box behind the text.
+ in another TeX-Code-box behind the text.
 \end_layout
 
 \begin_layout Standard
@@ -11741,10 +11756,10 @@ centering}
 \end_layout
 
 \begin_layout Standard
-in ERT in the document preamble.
+in TeX-Code in the document preamble.
  Then all entries of multirow cells in the document are centered.
  If centering is only needed for several tables, you can renew the command
- in an ERT box just before the table instead of the preamble.
+ in an TeX-Code box just before the table instead of the preamble.
  If the text should be right-aligned, replace 
 \series bold
 
@@ -12327,16 +12342,16 @@ The options of
 \backslash
 cmidrule
 \series default
- are are currently not supported by LyX so you have to use ERT to be able
- to use them.
+ are are currently not supported by LyX so you have to use TeX-Code to be
+ able to use them.
  
 \series bold
 
 \backslash
 cmidrule
 \series default
-s can manually be created by inserting the command as ERT as first cell
- entry of the first cell of a row.
+s can manually be created by inserting the command as TeX-Code as first
+ cell entry of the first cell of a row.
  The line is then drawn in the output above the current row.
 \end_layout
 
@@ -12429,7 +12444,7 @@ reference "tab:Special-booktabs-table"
 \end_inset
 
 .
- This can be achieved with the ERT command
+ This can be achieved with the TeX-Code command
 \end_layout
 
 \begin_layout Standard
@@ -13665,7 +13680,7 @@ reference "sub:Vertical-Alignment"
 
 .
  In the example above the second table in the first item is aligned using
- the ERT-command
+ the TeX-Code-command
 \end_layout
 
 \begin_layout Standard
@@ -13684,7 +13699,7 @@ before the box.
 \series bold
 }
 \series default
- is inserted as ERT.
+ is inserted as TeX-Code.
  For the second table in the last item the command
 \end_layout
 
@@ -14182,7 +14197,7 @@ cellcolor{name of color}
 \end_layout
 
 \begin_layout Standard
-Both commands are inserted at the beginning of a cell as ERT.
+Both commands are inserted at the beginning of a cell as TeX-Code.
 \end_layout
 
 \begin_layout Standard
@@ -14193,8 +14208,8 @@ Text\InsetSpace ~
 Style
 \family default
 .
- If a cell contains ERT mark only the characters, otherwise the colored
- ERT will cause LaTeX-errors.
+ If a cell contains TeX-Code mark only the characters, otherwise the colored
+ TeX-Code will cause LaTeX-errors.
 \end_layout
 
 \begin_layout Standard
@@ -14249,7 +14264,7 @@ centering}c
 
 \begin_layout Standard
 as LaTeX-argument for this column.
- The first row should be blue, therefore the ERT command
+ The first row should be blue, therefore the TeX-Code command
 \end_layout
 
 \begin_layout Standard
@@ -14263,7 +14278,8 @@ rowcolow{cyan}
 \begin_layout Standard
 is inserted to the first cell of this row.
  Note that this overwrites the column color for the first cell.
- The last cell of the last row is colored magenta by inserting the ERT command
+ The last cell of the last row is colored magenta by inserting the TeX-Code
+ command
 \end_layout
 
 \begin_layout Standard
@@ -14764,7 +14780,7 @@ reference "tab:Table-with-horizontal-colored"
 
 \end_inset
 
-, insert these commands in ERT before the table or table float:
+, insert these commands in TeX-Code before the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -14990,8 +15006,8 @@ pagebreak
 \end_layout
 
 \begin_layout Standard
-To return to the default line color black, insert this command in ERT behind
- the table or table float:
+To return to the default line color black, insert this command in TeX-Code
+ behind the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -16785,7 +16801,7 @@ arrayrulewidth}{1.5pt}
 \end_layout
 
 \begin_layout Standard
-in ERT before the table or table float.
+in TeX-Code before the table or table float.
  The changed thickness is valid for all following tables.
  To use the default value again, set 
 \series bold
@@ -16794,7 +16810,7 @@ in ERT before the table or table float.
 arrayrulewidth
 \series default
  to 0.4\InsetSpace \thinspace{}
-pt in ERT behind the table or table float.
+pt in TeX-Code behind the table or table float.
 \end_layout
 
 \begin_layout Standard
@@ -16970,7 +16986,7 @@ reference "tab:Table-with-horizontal"
 
 \end_inset
 
-, insert these commands in ERT before the table or table float:
+, insert these commands in TeX-Code before the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -17010,8 +17026,8 @@ arrayrulewidth 0.4pt}}
 \end_layout
 
 \begin_layout Standard
-To return to the default line thickness, insert this command in ERT behind
- the table or table float:
+To return to the default line thickness, insert this command in TeX-Code
+ behind the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -17760,7 +17776,7 @@ x
 \end_layout
 
 \begin_layout Standard
-LyX doesn't natively support dashed lines, so you have to use ERT.
+LyX doesn't natively support dashed lines, so you have to use TeX-Code.
  As prerequisite the LaTeX-package 
 \series bold
 arydshln
@@ -17808,7 +17824,7 @@ hdashline
 \end_layout
 
 \begin_layout Standard
-in ERT as first element of the first cell in the table row.
+in TeX-Code as first element of the first cell in the table row.
 \end_layout
 
 \begin_layout Standard
@@ -17826,7 +17842,7 @@ cdashline{line number
 \end_layout
 
 \begin_layout Standard
-in ERT as first element of the first cell in the table row.
+in TeX-Code as first element of the first cell in the table row.
  If you have for example a multicolumn spanning over columns 2 to 4 and
  you want to have a dashed line above, add the command
 \end_layout
@@ -17871,13 +17887,13 @@ reference "tab:Table-with-dashed"
 \end_inset
 
  as LaTeX-argument of the third column.
- The ERT command 
+ The TeX-Code command 
 \series bold
 
 \backslash
 hdashline
 \series default
- was inserted to the first cell of the third row and the the ERT command
+ was inserted to the first cell of the third row and the the TeX-Code command
 \newline
 
  
@@ -18351,7 +18367,7 @@ List\InsetSpace \thinspace{}
 TOC\SpecialChar \menuseparator
 List of Algorithms
 \family default
- but have to use this command in ERT instead:
+ but have to use this command in TeX-Code instead:
 \newline
 
 \series bold
@@ -19101,7 +19117,7 @@ label{fig:YourLabelName}
 
 \begin_layout Standard
 that is directly inserted into the subfigure caption field.
- To reference the label add this command in ERT
+ To reference the label add this command in TeX-Code
 \end_layout
 
 \begin_layout Standard
@@ -19781,7 +19797,7 @@ ss
 \begin_inset Quotes erd
 \end_inset
 
- in ERT instead of 
+ in TeX-Code instead of 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20989,7 +21005,7 @@ FigBesBeg
 \end_layout
 
 \begin_layout Standard
-in ERT before the float.
+in TeX-Code before the float.
  Behind the float insert the command
 \end_layout
 
@@ -21002,7 +21018,7 @@ FigBesEnd
 \end_layout
 
 \begin_layout Standard
-in ERT to get back to the original float definition.
+in TeX-Code to get back to the original float definition.
 \end_layout
 
 \begin_layout Standard
@@ -21056,7 +21072,7 @@ sidecaptionvpos{float type}{placement}
 \end_layout
 
 \begin_layout Standard
-in the document preamble or in ERT before the float.
+in the document preamble or in TeX-Code before the float.
  The float type is either 
 \family sans
 figure
@@ -22045,7 +22061,7 @@ FrameSep
 \family sans
 Framed
 \family default
- note is set with the ERT commands
+ note is set with the TeX-Code commands
 \end_layout
 
 \begin_layout Standard
@@ -22189,7 +22205,7 @@ For example the appearance of the following
 \family sans
 Shaded
 \family default
- note is set with the ERT commands
+ note is set with the TeX-Code commands
 \end_layout
 
 \begin_layout Standard
@@ -22471,7 +22487,7 @@ To create only a mark for a footnote, use the command
 \backslash
 footnotemark[number]
 \series default
- in ERT.
+ in TeX-Code.
  This is used when you have the same annotation several times in a text
  but doesn't want to print the footnote text every time.
 \newline
@@ -22479,7 +22495,7 @@ As you don't know
  the number of the repeating footnote while you are writing the text, you
  have to store its number.
  For the following footnote mark example, these commands were inserted in
- ERT behind Footnote\InsetSpace ~
+ TeX-Code behind Footnote\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "foot:This-is-an"
@@ -23184,7 +23200,7 @@ theendnotes
 \end_layout
 
 \begin_layout Standard
-in ERT at the the end of a section or chapter.
+in TeX-Code at the the end of a section or chapter.
 \end_layout
 
 \begin_layout Standard
@@ -23483,7 +23499,7 @@ reversemarginpar
 \end_layout
 
 \begin_layout Standard
-in ERT before a margin note.
+in TeX-Code before a margin note.
  The new placement is valid for all following margin notes.
 \begin_inset ERT
 status collapsed
@@ -23544,7 +23560,7 @@ normalmarginpar
 \end_layout
 
 \begin_layout Standard
-in ERT.
+in TeX-Code.
 \begin_inset ERT
 status collapsed
 
@@ -23622,7 +23638,7 @@ hspace{0pt}
 \end_layout
 
 \begin_layout Standard
-in ERT before the word
+in TeX-Code before the word
 \family roman
 \series medium
 .
@@ -23756,8 +23772,8 @@ marginnote
  has another useful feature: You can set a vertical offset for the note.
  This is often needed when too many margin notes are too close together
  or for a better page layout.
- The offset is set in LyX as ERT directly behind the margin note in the
- scheme
+ The offset is set in LyX as TeX-Code directly behind the margin note in
+ the scheme
 \end_layout
 
 \begin_layout Standard
@@ -23781,7 +23797,7 @@ reference "tab:Units"
 \series medium
 For example the margin note beside this text line is shifted up 1.5\InsetSpace \thinspace{}
 cm with
- the ERT-command 
+ the TeX-Code-command 
 \begin_inset Quotes eld
 \end_inset
 
@@ -24585,7 +24601,7 @@ Height
 \end_layout
 
 \begin_layout Description
-Width This set the width of the box as heigth: 
+Width This sets the width of the box as heigth: 
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -25148,7 +25164,7 @@ fboxrule
 \series default
  is 0.4\InsetSpace \thinspace{}
 pt.
- It can be changed with the following command in ERT to e.\InsetSpace \thinspace{}
+ It can be changed with the following command in TeX-Code to e.\InsetSpace \thinspace{}
 g.\InsetSpace ~
 2\InsetSpace \thinspace{}
 pt:
@@ -26148,7 +26164,7 @@ mbox{
 \end_layout
 
 \begin_layout Standard
-in ERT before the word.
+in TeX-Code before the word.
  Behind the word insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
@@ -26161,7 +26177,7 @@ in ERT before the word.
 \begin_inset Quotes erd
 \end_inset
 
- in ERT.
+ in TeX-Code.
 \begin_inset ERT
 status collapsed
 
@@ -26232,7 +26248,7 @@ You can alternatively set the command
 \begin_inset Quotes grd
 \end_inset
 
- as ERT directly before the word:
+ as TeX-Code directly before the word:
 \end_layout
 
 \begin_layout Standard
@@ -26407,7 +26423,7 @@ depth}{
 \end_layout
 
 \begin_layout Standard
-in ERT before the word.
+in TeX-Code before the word.
  Behind the word insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
@@ -26420,7 +26436,7 @@ in ERT before the word.
 \begin_inset Quotes erd
 \end_inset
 
- in ERT.
+ in TeX-Code.
 \newline
 This is the result:
 \end_layout
@@ -26685,8 +26701,7 @@ name "LaTeX-packages ! color"
 \series bold
 
 \backslash
-@ifundef\SpecialChar \textcompwordmark{}
-ined{textcolor}
+@ifundefined{textcolor}
 \newline
 
 \begin_inset ERT
@@ -26823,7 +26838,7 @@ colorbox{red}{
 \end_layout
 
 \begin_layout Standard
-before the word in ERT.
+before the word in TeX-Code.
  Behind the word insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
@@ -26836,7 +26851,7 @@ before the word in ERT.
 \begin_inset Quotes erd
 \end_inset
 
- in ERT.
+ in TeX-Code.
 \newline
 This is the result:
 \end_layout
@@ -27115,7 +27130,7 @@ colorbox{color}{
 \end_layout
 
 \begin_layout Standard
-in ERT.
+in TeX-Code.
  Behind the minipage insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
@@ -27128,7 +27143,7 @@ in ERT.
 \begin_inset Quotes erd
 \end_inset
 
- in ERT.
+ in TeX-Code.
 \end_layout
 
 \begin_layout Standard
@@ -27302,6 +27317,1009 @@ status collapsed
 \end_layout
 
 \begin_layout Section
+Rotated and Scaled Boxes
+\end_layout
+
+\begin_layout Standard
+To use the the commands described in this section, the LaTeX-package 
+\series bold
+graphicx
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! graphicx"
+
+\end_inset
+
+ needs to be loaded in the document preamble with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@ifundefined{rotatebox}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+usepackage{graphicx}}{}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Some DVI-viewers can't display rotated or scaled material.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Floats mustn't be inside a rotated or scaled box.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Rotated Boxes
+\begin_inset LatexCommand index
+name "Boxes ! rotated"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Rotated material"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Figures ! rotated"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Table Customization ! Rotating"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To rotate material, you can put it into a rotated box.
+ Such a box is created using the command 
+\series bold
+
+\backslash
+rotatebox
+\series default
+ in TeX-Code with the following scheme:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+rotatebox[rotation origin]{rotation angle}{box content}
+\end_layout
+
+\begin_layout Standard
+The rotation origin is specified in the form 
+\series bold
+origin=position
+\series default
+.
+ The following positions are possible: 
+\emph on
+c
+\emph default
+ (center), 
+\emph on
+l
+\emph default
+ (left), 
+\emph on
+r
+\emph default
+ (right), 
+\emph on
+b
+\emph default
+ (bottom), 
+\emph on
+t
+\emph default
+ (top), and also expedient combinations of the four base positions.
+ For example 
+\emph on
+lt
+\emph default
+ means, that the rotation origin is at the top left corner of the box.
+ When no rotation origin is specified, the position 
+\emph on
+l
+\emph default
+ will be used.
+ The rotation angle is a number that can be negative that specifies the
+ angle in degrees.
+ The rotation direction is counterclockwise.
+\end_layout
+
+\begin_layout Standard
+In the following example the command 
+\series bold
+
+\backslash
+rotatebox[origin=c]{60}{
+\series default
+ was inserted as TeX-Code before the text 
+\begin_inset Quotes eld
+\end_inset
+
+with rotated
+\begin_inset Quotes erd
+\end_inset
+
+; after the text the box was closed by a closing brace 
+\series bold
+}
+\series default
+ in TeX-Code.
+\end_layout
+
+\begin_layout Standard
+This is a line 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{60}{
+\end_layout
+
+\end_inset
+
+with rotated
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ text.
+\end_layout
+
+\begin_layout Standard
+The box content can also be another box or an inline formula:
+\end_layout
+
+\begin_layout Standard
+This is a line
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=r]{-60}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Doublebox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Standard
+with rotated
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ framed text 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=lb]{60}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\int A\,\mathrm{d}x=B$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ and a formula.
+\end_layout
+
+\begin_layout Standard
+or an image or table:
+\end_layout
+
+\begin_layout Standard
+This is a line
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=lb]{90}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename clipart/platypus.eps
+	lyxscale 50
+	width 25col%
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ with a rotated image 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=l]{-90}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+w
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+r
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ and table.
+\end_layout
+
+\begin_layout Subsection
+Scaled Boxes
+\begin_inset LatexCommand index
+name "Boxes ! scaled"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Scaled material"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Figures ! scaled"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Table Customization ! Scaling"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To scale material the commands 
+\series bold
+
+\backslash
+scalebox
+\series default
+ and 
+\series bold
+
+\backslash
+resizebox
+\series default
+ can be used as TeX-Code.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+scalebox
+\series default
+ is used with the following scheme:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+scalebox{horizontal}[vertical]{box content}
+\end_layout
+
+\begin_layout Standard
+Horizontal and vertical are the corresponding scaling factors.
+ If no vertical scaling factor is given, the horizontal factor will also
+ be used as vertical one.
+\end_layout
+
+\begin_layout Standard
+The command 
+\series bold
+
+\backslash
+scalebox{2}{Hello}
+\series default
+ creates for example a double size 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{2}{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+, compared to the document text size.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+scalebox{2}[1]{Hello}
+\series default
+ in contrary distorts the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{2}[1]{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If a the scaling factor is negative, the box content will be mirrored.
+ Therefore the command 
+\series bold
+
+\backslash
+scalebox{-1}[1]{Hello}
+\series default
+ can be used to create mirror writing: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{-1}[1]{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+scalebox{1}[-1]{Hello}
+\series default
+ reflects the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{1}[-1]{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ at the base line.
+\end_layout
+
+\begin_layout Standard
+Equivalent to 
+\series bold
+
+\backslash
+scalebox{-1}[1]{box content}
+\series default
+ there exists the command
+\newline
+
+\series bold
+
+\backslash
+reflectbox{box content}
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+The command 
+\series bold
+
+\backslash
+resizebox
+\series default
+ is used to scale the box to a defined width and height.
+ The command scheme is:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+resizebox{width}{height}{box content}
+\end_layout
+
+\begin_layout Standard
+Is one of the two command arguments given as exclamation mark 
+\series bold
+!
+\series default
+, the size is set so that the aspect ratio of the box content is kept.
+\end_layout
+
+\begin_layout Standard
+The command 
+\series bold
+
+\backslash
+resizebox{2cm}{1cm}{Hello}
+\series default
+ produces: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+resizebox{2cm}{1cm}{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\newline
+The command 
+\series bold
+
+\backslash
+resizebox{2cm}{!}{Hello}
+\series default
+ produces: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+resizebox{2cm}{!}{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ When arguments of 
+\series bold
+
+\backslash
+scalebox
+\series default
+ or 
+\series bold
+
+\backslash
+resizebox
+\series default
+ are set to zero, no LaTeX-errors occur when exporting the document but
+ the exported files can not or only partly be displayed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The boxes can be combined in any order.
+ E.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+the command
+\newline
+
+\series bold
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{Hello}}}
+\newline
+
+\series default
+produces:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Images, tables, and inline formulas are allowed as box content:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-30}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename clipart/platypus.eps
+	lyxscale 50
+	width 25col%
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+w
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+r
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\int A\,\mathrm{d}x=B$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When the global formula style 
+\series bold
+fleqn
+\series default
+ is used in the document
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+When 
+\begin_inset Quotes eld
+\end_inset
+
+fleqn
+\begin_inset Quotes erd
+\end_inset
+
+ is added to the document class options.
+\end_layout
+
+\end_inset
+
+, also display formulas can be scaled.
+\end_layout
+
+\begin_layout Section
 URLs (Uniform Resource Locators)
 \begin_inset LatexCommand index
 name "URLs"
@@ -27440,7 +28458,7 @@ href{link location}{link text}
 \end_layout
 
 \begin_layout Standard
-in ERT.
+in TeX-Code.
  To get for example a link to LyX's web page, write the command
 \end_layout
 
@@ -27453,7 +28471,7 @@ href{http://www.lyx.org}{
 \end_layout
 
 \begin_layout Standard
-in ERT.
+in TeX-Code.
  Insert after the command the link text 
 \begin_inset Quotes eld
 \end_inset
@@ -27474,7 +28492,7 @@ LyX's homepage
 \begin_inset Quotes erd
 \end_inset
 
- in ERT.
+ in TeX-Code.
  This is the result: 
 \begin_inset ERT
 status collapsed
@@ -27718,7 +28736,7 @@ Date
 \backslash
 today
 \series default
- as ERT.
+ as TeX-Code.
  The different methods are compared in Table\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -27959,7 +28977,7 @@ as date
 \begin_inset Text
 
 \begin_layout Standard
-as ERT inset box
+as TeX-Code inset box
 \end_layout
 
 \end_inset
