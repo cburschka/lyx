@@ -1,4 +1,4 @@
-#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -89,6 +89,9 @@
 
 % beschleunigt die Berechnung von langen Tabellen
 \setcounter{LTchunksize}{100}
+
+% wird für skalierte und rotierte Boxen benötigt
+\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 
 % wird bei farbigen Tabellen benutzt
 \@ifundefined{textcolor}
@@ -304,8 +307,20 @@ Version 1.5.2-0
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 29.
- August 2007
+letzte Änderung: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -461,6 +476,12 @@ reference "kap:In-LyX-verfügbare"
 
  erklärt.
 \newline
+
+\begin_inset LatexCommand index
+name "Abbildungen ! rotierte"
+
+\end_inset
+
 Sie können Abbildungen durch Angabe eines 
 \family sans
 Winkel
@@ -478,8 +499,14 @@ Drehpunktes
  Negative Winkel drehen Uhrzeigersinn.
  Die Abbildung wird auch in LyX gedreht.
 \newline
-Abbildungen können in der Größe verändert
- werden, indem man Prozentwerte oder Höhe und Breite definiert.
+
+\begin_inset LatexCommand index
+name "Abbildungen ! skalierte"
+
+\end_inset
+
+Abbildungen können in der Größe verändert werden, indem man Prozentwerte
+ oder Höhe und Breite definiert.
  Wenn man nur einen Wert angibt, wird der andere automatisch berechnet.
  Wenn Sie beide Werte angeben, wird die Abbildung an die Größe angepasst,
  wobei sie möglicherweise verzerrt wird.
@@ -4949,7 +4976,7 @@ und
 \backslash
 LTright
 \series default
- geändert werden, indem diese Zeile als ERT vor die lange Tabelle eingefügt
+ geändert werden, indem diese Zeile als TeX-Code vor die lange Tabelle eingefügt
  wird:
 \end_layout
 
@@ -5370,7 +5397,7 @@ Fügen Sie hinter dem Titel
 \begin_inset Quotes grd
 \end_inset
 
- als ERT ein.
+ als TeX-Code ein.
 \end_layout
 
 \begin_layout Standard
@@ -5777,7 +5804,7 @@ Tabellen
 lange\InsetSpace ~
 Tabelle
 \family default
- ohne Titel folgenden LaTeX-Befehl als ERT einfügen:
+ ohne Titel folgenden LaTeX-Befehl als TeX-Code einfügen:
 \end_layout
 
 \begin_layout Standard
@@ -6262,8 +6289,8 @@ Zoll (
 
 \InsetSpace \thinspace{}
 cm).
- Um das zu ändern, können Sie entweder im LaTeX-Vorspann oder als ERT vor
- der betreffenden Tabelle folgenden Befehl einsetzen:
+ Um das zu ändern, können Sie entweder im LaTeX-Vorspann oder als TeX-Code
+ vor der betreffenden Tabelle folgenden Befehl einsetzen:
 \end_layout
 
 \begin_layout Standard
@@ -9157,7 +9184,7 @@ Tabelle
 \backslash
 clearpage
 \series default
- als ERT einfügen.
+ als TeX-Code einfügen.
 \end_layout
 
 \begin_layout Subsection
@@ -9189,8 +9216,8 @@ Standardmäßig werden Tabellen nur zwischen Zeilen umgebrochen.
 \begin_inset Quotes grd
 \end_inset
 
- für einen neue Zeile als ERT an der Stelle in der Zelle ein, wo umgebrochen
- werden soll.
+ für einen neue Zeile als TeX-Code an der Stelle in der Zelle ein, wo umgebroche
+n werden soll.
  Vor dem 
 \begin_inset Quotes gld
 \end_inset
@@ -9219,7 +9246,7 @@ Standardmäßig werden Tabellen nur zwischen Zeilen umgebrochen.
 \begin_inset Quotes grd
 \end_inset
 
- als ERT einfügen wie noch Spalten in der Zeile folgen.
+ als TeX-Code einfügen wie noch Spalten in der Zeile folgen.
  Mit 
 \begin_inset Quotes gld
 \end_inset
@@ -9245,8 +9272,8 @@ Standardmäßig werden Tabellen nur zwischen Zeilen umgebrochen.
 \begin_inset Quotes grd
 \end_inset
 
- schreiben Sie ebenfalls in ERT den Inhalt der entsprechenden Zelle und
- löschen den Inhalt dieser Zellen.
+ schreiben Sie ebenfalls in TeX-Code den Inhalt der entsprechenden Zelle
+ und löschen den Inhalt dieser Zellen.
 \end_layout
 
 \begin_layout Standard
@@ -9278,7 +9305,7 @@ Hinter dem
 \begin_inset Quotes grd
 \end_inset
 
- als ERT einfügen wie Spalten vor der momentanen Spalte sind.
+ als TeX-Code einfügen wie Spalten vor der momentanen Spalte sind.
  In Tabelle\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -9342,7 +9369,7 @@ hline &
 
 \begin_layout Standard
 Wenn die Zelle, die umgebrochen werden soll, in der letzten Spalte steht,
- muss folgender Befehl als ERT am Anfang der Zelle eingefügt werden:
+ muss folgender Befehl als TeX-Code am Anfang der Zelle eingefügt werden:
 \end_layout
 
 \begin_layout Standard
@@ -10861,8 +10888,8 @@ cm gesetzt und die vertikalen und horizontalen Ausrichtungen
  Weil unser Text schmaler als 2.5\InsetSpace \thinspace{}
 cm ist, würde er in einer Zeile gedruckt
  werden.
- Um zwei Zeilen zu bekommen, wurde folgender Befehl als ERT zwischen die
- beiden Worten eingefügt:
+ Um zwei Zeilen zu bekommen, wurde folgender Befehl als TeX-Code zwischen
+ die beiden Worten eingefügt:
 \end_layout
 
 \begin_layout Standard
@@ -10904,7 +10931,7 @@ hspace{0pt}
 \end_layout
 
 \begin_layout Standard
-als ERT vor dem Wort ein.
+als TeX-Code vor dem Wort ein.
  Weil er keinen Platz belegt, ändert er die Druckausgabe nicht.
  Tabelle\InsetSpace ~
 
@@ -12143,7 +12170,7 @@ name "Tabellen ! Mehrfachzeilen"
 
 \begin_layout Standard
 Im Gegensatz zu Mehrfachspalten werden Mehrfachzeilen noch nicht durch LyX
- unterstützt, sodass etwas ERT notwendig.
+ unterstützt, sodass etwas TeX-Code notwendig.
  Damit LaTeX Mehrfachzeilen erzeugen kann, muss das Paket 
 \series bold
 multirow
@@ -12355,11 +12382,11 @@ multirow{2}{2.5cm}{
 \end_layout
 
 \begin_layout Standard
-als ERT die Mehrfachzeile definiert.
+als TeX-Code die Mehrfachzeile definiert.
  Sie besteht aus zwei Zeilen und einer Breite von 2.5\InsetSpace \thinspace{}
 cm.
- Der Inhalt steht außerhalb des ERT-Kästchens, und der Befehl wird mit der
- Klammer 
+ Der Inhalt steht außerhalb des TeX-Code-Kästchens, und der Befehl wird
+ mit der Klammer 
 \begin_inset Quotes gld
 \end_inset
 
@@ -12371,7 +12398,7 @@ cm.
 \begin_inset Quotes grd
 \end_inset
 
- in einem weiteren ERT-Kästchen abgeschlossen.
+ in einem weiteren TeX-Code-Kästchen abgeschlossen.
 \end_layout
 
 \begin_layout Standard
@@ -12398,7 +12425,7 @@ centering}
 \end_layout
 
 \begin_layout Standard
-als ERT  vor der (Gleitobjekt-)Tabelle überschrieben und durch
+als TeX-Code  vor der (Gleitobjekt-)Tabelle überschrieben und durch
 \end_layout
 
 \begin_layout Standard
@@ -12986,15 +13013,16 @@ Die
 \backslash
 cmidrule
 \series default
--Optionen werden (noch) nicht von LyX unterstützt, also müssen Sie ERT benutzen.
+-Optionen werden (noch) nicht von LyX unterstützt, also müssen Sie TeX-Code
+ benutzen.
  
 \series bold
 
 \backslash
 cmidrule
 \series default
- kann man benutzen, indem man den Befehl als ERT als erstes in die erste
- Zelle einer Zeile einfügt.
+ kann man benutzen, indem man den Befehl als TeX-Code als erstes in die
+ erste Zelle einer Zeile einfügt.
  Die Linie wird dann über der Zeile gedruckt.
 \end_layout
 
@@ -14376,7 +14404,7 @@ vor der Box ausgerichtet.
 \series bold
 }
 \series default
- als ERT eingefügt, weil der obige Befehl mit 
+ als TeX-Code eingefügt, weil der obige Befehl mit 
 \series bold
 {
 \series default
@@ -14908,7 +14936,7 @@ cellcolor{Farbname}
 \end_layout
 
 \begin_layout Standard
-Beide Befehle werden am Anfang einer Zelle als ERT eingegeben..
+Beide Befehle werden am Anfang einer Zelle als TeX-Code eingegeben..
 \end_layout
 
 \begin_layout Standard
@@ -14919,7 +14947,7 @@ reference "Wenn-Sie-nur"
 \end_inset
 
  beschrieben.
- Wenn die Zelle aber ERT zum Färben enthält, 
+ Wenn die Zelle aber TeX-Code zum Färben enthält, 
 \emph on
 markieren Sie nur den Text
 \emph default
@@ -15000,7 +15028,7 @@ centering}c
 
 \begin_layout Standard
 schreiben.
- Die erste Zeile soll türkis hinterlegt sein, deshalb wurde der ERT-Befehl
+ Die erste Zeile soll türkis hinterlegt sein, deshalb wurde der TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -15510,7 +15538,8 @@ reference "tab:Tabelle-mit-farbigen-horiz"
 
 \end_inset
 
-, müssen Sie folgenden Befehl als ERT vor der (Gleitobjekt-)Tabelle einfügen:
+, müssen Sie folgenden Befehl als TeX-Code vor der (Gleitobjekt-)Tabelle
+ einfügen:
 \end_layout
 
 \begin_layout Standard
@@ -15721,7 +15750,7 @@ sd
 
 \begin_layout Standard
 Um die schwarze Linienfarbe zurückzubekommen, müssen Sie folgenden Befehl
- als ERT hinter der Tabelle einfügen:
+ als TeX-Code hinter der Tabelle einfügen:
 \end_layout
 
 \begin_layout Standard
@@ -17646,7 +17675,7 @@ arrayrulewidth}{1.5pt}
 \end_layout
 
 \begin_layout Standard
-als ERT vor der (Gleitobjekt-)Tabelle ein.
+als TeX-Code vor der (Gleitobjekt-)Tabelle ein.
  Die geänderte Liniendicke gilt für alle folgenden Tabellen.
  Mit
 \end_layout
@@ -17840,7 +17869,8 @@ reference "tab:Tabelle-mit-1.5pt-horiz"
 
 \end_inset
 
-, müssen Sie folgende Befehle als ERT vor der (Gleitobjekt-)Tabelle einfügen:
+, müssen Sie folgende Befehle als TeX-Code vor der (Gleitobjekt-)Tabelle
+ einfügen:
 \end_layout
 
 \begin_layout Standard
@@ -17880,9 +17910,9 @@ arrayrulewidth 0.4pt}}
 \end_layout
 
 \begin_layout Standard
-Die Standarddicke erhalten Sie mit folgendem Befehl als ERT hinter der (Gleit\SpecialChar \-
-obj
-ekt-)Tabelle zurück:
+Die Standarddicke erhalten Sie mit folgendem Befehl als TeX-Code hinter
+ der (Gleit\SpecialChar \-
+objekt-)Tabelle zurück:
 \end_layout
 
 \begin_layout Standard
@@ -18635,7 +18665,7 @@ x
 
 \begin_layout Standard
 LyX unterstützt von sich aus keine gestrichelten Linien, also müssen Sie
- ERT benutzen.
+ TeX-Code benutzen.
  Zunächst müssen Sie das LaTeX-Paket 
 \series bold
 arydshln
@@ -18701,7 +18731,7 @@ hdashline
 \end_layout
 
 \begin_layout Standard
-als ERT als erstes in die erste Zelle einer Zeile einfügen.
+als TeX-Code als erstes in die erste Zelle einer Zeile einfügen.
 \end_layout
 
 \begin_layout Standard
@@ -18717,7 +18747,7 @@ cdashline{Anfangsspalte-Endspalte}
 \end_layout
 
 \begin_layout Standard
-als ERT als erstes in die erste Zelle einer Zeile eingefügt.
+als TeX-Code als erstes in die erste Zelle einer Zeile eingefügt.
  Wenn Sie z.\InsetSpace \thinspace{}
 B.
  eine Mehrfachspalte über Spalte 2 bis 4 haben und Sie möchten darüber eine
@@ -19262,7 +19292,7 @@ Inhaltsverzeichnis\SpecialChar \menuseparator
 Algorithmenverzeichnis
 \family default
  nicht verwendet werden.
- Stattdessen wird dieser Befehl als ERT eingefügt:
+ Stattdessen wird dieser Befehl als TeX-Code eingefügt:
 \newline
 
 \series bold
@@ -19585,7 +19615,7 @@ sind weder in Abschnitts-Überschriften noch in Tabellen erlaubt.
 \begin_layout Itemize
 Wenn Sie als Absatztrennung Einrückung benutzen, wird auch der Text, der
  unmittelbar auf die Abbildung folgt, eingerückt.
- Das können Sie mit dem ERT-Befehl 
+ Das können Sie mit dem TeX-Code-Befehl 
 \series bold
 
 \backslash
@@ -20767,7 +20797,7 @@ endfloat
 \backslash
 ss
 \series default
- als ERT benutzen.
+ als TeX-Code benutzen.
 \end_layout
 
 \end_inset
@@ -21947,7 +21977,7 @@ FigBesBeg
 \end_layout
 
 \begin_layout Standard
-als ERT vor und
+als TeX-Code vor und
 \end_layout
 
 \begin_layout Standard
@@ -22013,7 +22043,7 @@ sidecaptionvpos{Gleitobjekt-Typ}{Platzierung}
 \end_layout
 
 \begin_layout Standard
-im LaTeX-Vorspann oder als ERT vor dem Gleitobjekt ändern.
+im LaTeX-Vorspann oder als TeX-Code vor dem Gleitobjekt ändern.
  Der Gleitobjekt-Typ ist entweder 
 \family sans
 figure
@@ -22986,7 +23016,7 @@ FrameSep
 \series default
  geändert werden.
  Im folgenden Beispiel wurden die die Standardwerte mit folgenden Befehlen
- als ERT geändert:
+ als TeX-Code geändert:
 \end_layout
 
 \begin_layout Standard
@@ -23120,7 +23150,7 @@ reference "abs:Farbige-Boxen"
 \end_layout
 
 \begin_layout Standard
-Für das folgende Beispiel wurden folgende ERT-Befehle verwendet:
+Für das folgende Beispiel wurden folgende TeX-Code-Befehle verwendet:
 \end_layout
 
 \begin_layout Standard
@@ -23328,7 +23358,7 @@ reference "uab:Fußnoten-in-langen"
 
 \begin_layout Standard
 Wenn Sie nur eine Marke für eine Fußnote definieren wollen, können Sie den
- ERT-Befehl 
+ TeX-Code-Befehl 
 \series bold
 
 \backslash
@@ -23349,7 +23379,7 @@ reference "fuss:Fußnoten-Beispiel"
 
 \end_inset
 
- wurde das mit folgenden ERT-Befehlen gemacht:
+ wurde das mit folgenden TeX-Code-Befehlen gemacht:
 \end_layout
 
 \begin_layout Standard
@@ -23367,7 +23397,7 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-Die Fußnotenmarke wurde dann mit diesem ERT-Befehl definiert;
+Die Fußnotenmarke wurde dann mit diesem TeX-Code-Befehl definiert;
 \end_layout
 
 \begin_layout Standard
@@ -24061,7 +24091,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-Um die gesammelten Fußnoten zu drucken fügen Sie den ERT-Befehl
+Um die gesammelten Fußnoten zu drucken fügen Sie den TeX-Code-Befehl
 \series bold
  
 \backslash
@@ -24384,7 +24414,7 @@ reversemarginpar
 \end_layout
 
 \begin_layout Standard
-als ERT vor einer Randnotiz ein.
+als TeX-Code vor einer Randnotiz ein.
  Das gilt dann für alle folgenden Randnotizen.
 \begin_inset ERT
 status collapsed
@@ -24440,7 +24470,7 @@ normalmarginpar
 \end_layout
 
 \begin_layout Standard
-als ERT ein.
+als TeX-Code ein.
 \begin_inset ERT
 status collapsed
 
@@ -24501,7 +24531,7 @@ hspace{0pt}
 \end_layout
 
 \begin_layout Standard
-als ERT vor das Wort setzen, so wie hier:
+als TeX-Code vor das Wort setzen, so wie hier:
 \begin_inset Marginal
 status open
 
@@ -24637,7 +24667,8 @@ marginnote
  für Randnotizen angeben.
  Dies wird oft für ein besseres Seitenformat verwendet, wenn zu viele Randnotize
 n sind zu dicht beieinander sind.
- Der Versatz wird in LyX als ERT direkt nach der Randnotiz mit dem Schema
+ Der Versatz wird in LyX als TeX-Code direkt nach der Randnotiz mit dem
+ Schema
 \end_layout
 
 \begin_layout Standard
@@ -24659,8 +24690,8 @@ reference "tab:Maßeinheiten"
  Eine negativer Wert versetzt die Randnotiz nach oben, ein positiver Wer
  nach unten.
  Zum Beispiel ist die Randnotiz neben diesem Text um 1.5\InsetSpace \thinspace{}
-cm mit dem ERT-Befehl
-  
+cm mit dem TeX-Code-Befeh
+l  
 \begin_inset Quotes gld
 \end_inset
 
@@ -26044,7 +26075,7 @@ fboxrule
 \series default
  ist 0.4\InsetSpace \thinspace{}
 pt.
- Mit dem folgenden ERT-Befehl kann er auf 2\InsetSpace \thinspace{}
+ Mit dem folgenden TeX-Code-Befehl kann er auf 2\InsetSpace \thinspace{}
 pt gesetzt werden:
 \end_layout
 
@@ -26125,7 +26156,7 @@ pt.
 \backslash
 fboxsep
 \series default
- mit einem ERT-Befehl ändern:
+ mit einem TeX-Code-Befehl ändern:
 \end_layout
 
 \begin_layout Standard
@@ -26217,7 +26248,7 @@ Der Durchmesser der abgerundeten Ecken kann mit
 cornersize
 \series default
  gesetzt werden.
- Der ERT-Befehl
+ Der TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -26231,7 +26262,7 @@ cornersize*{1cm}
 \begin_layout Standard
 setzt den Durchmesser auf 1\InsetSpace \thinspace{}
 cm.
- Der ERT-Befehl
+ Der TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -26329,7 +26360,7 @@ Die Breite des Schattens wird mit
 shadowsize
 \series default
  festgelegt.
- Mit dem ERT-Befehl
+ Mit dem TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -26891,7 +26922,8 @@ Textformat
 \family default
  festgelegt haben.
  Wenn Sie es trotzdem wollen, müssen Sie es manuell machen.
- Eine Standardeinrückung zum Beispiel erreichen Sie mit dem ERT-Befehl 
+ Eine Standardeinrückung zum Beispiel erreichen Sie mit dem TeX-Code-Befehl
+ 
 \series bold
 
 \backslash
@@ -27052,7 +27084,7 @@ einsehrserlangeswort
 
 \begin_layout Standard
 Um das zu verhindern, fügen Sie vor dem Wort, das nicht getrennt werden
- soll, den ERT-Befehl
+ soll, den TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -27064,7 +27096,7 @@ mbox{
 \end_layout
 
 \begin_layout Standard
-ein ERT, Hinter dem Wort fügen Sie 
+ein TeX-Code, Hinter dem Wort fügen Sie 
 \series bold
 
 \begin_inset Quotes gld
@@ -27076,7 +27108,7 @@ ein ERT, Hinter dem Wort fügen Sie
 \begin_inset Quotes grd
 \end_inset
 
- als ERT ein.
+ als TeX-Code ein.
  Hier ist das Ergebnis:
 \end_layout
 
@@ -27131,7 +27163,7 @@ Alternativ dazu kann man auch den Befehl
 \begin_inset Quotes grd
 \end_inset
 
- als ERT direkt vor das Wort setzen:
+ als TeX-Code direkt vor das Wort setzen:
 \end_layout
 
 \begin_layout Standard
@@ -27297,7 +27329,7 @@ p
 \begin_inset Quotes grd
 \end_inset
 
- an der Grundlinie auszurichten, müssen Sie den ERT-Befehl
+ an der Grundlinie auszurichten, müssen Sie den TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -27323,7 +27355,7 @@ vor dem Wort einfügen und
 \begin_inset Quotes grd
 \end_inset
 
- als ERT dahinter:
+ als TeX-Code dahinter:
 \end_layout
 
 \begin_layout Standard
@@ -27546,7 +27578,7 @@ name "abs:Farbige-Boxen"
 
 
 \begin_inset LatexCommand index
-name "Boxen ! farbig"
+name "Boxen ! farbige"
 
 \end_inset
 
@@ -27730,7 +27762,7 @@ reference "abs:Farbige-Tabellen"
 
 \begin_layout Standard
 Um zum Beispiel ein Wort auf einem roten Hintergrund zu drucken, fügen sie
- den ERT-Befehl
+ den TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -27755,7 +27787,7 @@ vor dem Wort ein.
 \begin_inset Quotes grd
 \end_inset
 
- als ERT ein.
+ als TeX-Code ein.
  Hier ist das Ergebnis:
 \end_layout
 
@@ -28003,7 +28035,7 @@ name "Farbe ! für Absätze"
 \begin_layout Standard
 Um die Hintergrundfarbe für mehr als eine Textzeile zu setzen, müssen Sie
  den Text in eine Minipage stellen.
- Vor der Minipage fügen Sie den ERT-Befehl
+ Vor der Minipage fügen Sie den TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -28028,7 +28060,7 @@ ein.
 \begin_inset Quotes grd
 \end_inset
 
- als ERT ein.
+ als TeX-Code ein.
 \end_layout
 
 \begin_layout Standard
@@ -28196,6 +28228,1012 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Rotierte und skalierte Boxen
+\end_layout
+
+\begin_layout Standard
+Um die Befehle dieses Abschnitts nutzen zu können, muss das Paket 
+\series bold
+graphicx
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-Pakete ! graphicx"
+
+\end_inset
+
+ im LaTeX-Vorspann mit folgendem Befehl geladen werden:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@ifundefined{rotatebox}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+usepackage{graphicx}}{}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Die meisten DVI-Programme können keine rotierten oder skalierten Texte
+ darstellen.
+ In der PDF- oder PostScript-Ausgabe wird aber alles korrekt angezeigt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Gleitobjekte dürfen nicht in eine rotiere oder skaliere Box gesetzt werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Rotierte Boxen
+\begin_inset LatexCommand index
+name "Boxen ! rotierte"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Rotiertes Material"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Abbildungen ! rotierte"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Tabellen ! rotierte"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um Text zu drehen, verwendet man den Befehl 
+\series bold
+
+\backslash
+rotatebox
+\series default
+ im TeX-Code nach folgendem Schema:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+rotatebox[Drehpunkt]{Winkel}{Boxinhalt}
+\end_layout
+
+\begin_layout Standard
+Der Drehpunkt wird mit 
+\series bold
+origin=Position
+\series default
+ angegeben.
+ Folgende Positionen sind möglich: 
+\emph on
+c
+\emph default
+ (mittig), 
+\emph on
+l
+\emph default
+ (links), 
+\emph on
+r
+\emph default
+ (rechts), 
+\emph on
+b
+\emph default
+ (unten), 
+\emph on
+t
+\emph default
+ (oben), sowie sinnvolle Kombinationen aus den vier Grundpositionen.
+ Z.\InsetSpace \thinspace{}
+B.
+ bedeutet 
+\emph on
+lt
+\emph default
+, dass sich der Drehpunkt links oben befindet.
+ Wird kein Drehpunkt angegeben, wird die Position 
+\emph on
+l
+\emph default
+ verwendet.
+ Winkel gibt den Drehwinkel in Grad an und darf auch negativ sein.
+ Gedreht wird gegen den Uhrzeigersinn.
+\end_layout
+
+\begin_layout Standard
+Im folgenden Beispiel wurde vor dem Text der Befehl 
+\series bold
+
+\backslash
+rotatebox[origin=c]{60}{
+\series default
+ im TeX-Modus eingegeben.
+ Nach dem Text wurde die schließende Klammer 
+\series bold
+}
+\series default
+ wiederum im TeX-Modus eingegeben.
+\end_layout
+
+\begin_layout Standard
+Dies ist eine Zeile 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{60}{
+\end_layout
+
+\end_inset
+
+mit rotiertem
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ Text.
+\end_layout
+
+\begin_layout Standard
+Der Boxinhalt kann auch eine andere Box oder eine eingebettete Formel sein:
+\end_layout
+
+\begin_layout Standard
+Dies ist eine Zeile 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=r]{-60}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Doublebox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Standard
+mit rotiertem
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ umrandeten Text 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=lb]{60}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\int A\,\mathrm{d}x=B$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ und einer Formel.
+\end_layout
+
+\begin_layout Standard
+oder ein Bild oder Tabelle:
+\end_layout
+
+\begin_layout Standard
+Dies ist eine Zeile 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=lb]{90}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../clipart/platypus.eps
+	lyxscale 50
+	width 25col%
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ mit einem rotierten Bild 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=l]{-90}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+w
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+r
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ und Tabelle.
+\end_layout
+
+\begin_layout Subsection
+Skalierte Boxen
+\begin_inset LatexCommand index
+name "Boxen ! skalierte"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Skaliertes Material"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Abbildungen ! skalierte"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Tabellen ! skalierte"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um Text zu skalieren, kann man die Befehle 
+\series bold
+
+\backslash
+scalebox
+\series default
+ und 
+\series bold
+
+\backslash
+resizebox
+\series default
+ im TeX-Modus verwenden.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+scalebox
+\series default
+ wird nach folgendem Schema verwendet:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+scalebox{horizontal}[vertikal]{Boxinhalt}
+\end_layout
+
+\begin_layout Standard
+Horizontal und vertikal geben die jeweiligen Skalierungsfaktoren an.
+ Wird kein vertikaler Skalierungsfaktor angegeben, wird dafür der horizontale
+ verwendet.
+\end_layout
+
+\begin_layout Standard
+Z.\InsetSpace \thinspace{}
+B.
+ ergibt der Befehl 
+\series bold
+
+\backslash
+scalebox{2}{Hallo}
+\series default
+ ein im Vergleich zur Dokumentschriftgröße doppelt so großes 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{2}{
+\end_layout
+
+\end_inset
+
+Hallo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+scalebox{2}[1]{Hallo}
+\series default
+ verzerrt hingegen das 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{2}[1]{
+\end_layout
+
+\end_inset
+
+Hallo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Die Skalierungsfaktoren dürfen auch negativ sein.
+ In diesem Fall wird der Boxinhalt gespiegelt.
+\end_layout
+
+\begin_layout Standard
+Daher lässt sich mit dem Befehl 
+\series bold
+
+\backslash
+scalebox{-1}[1]{Hallo}
+\series default
+ Spiegelschrift erstellen: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{-1}[1]{
+\end_layout
+
+\end_inset
+
+Hallo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+scalebox{1}[-1]{Hallo}
+\series default
+ spiegelt das 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{1}[-1]{
+\end_layout
+
+\end_inset
+
+Hallo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ an der Grundlinie.
+\end_layout
+
+\begin_layout Standard
+Zu 
+\series bold
+
+\backslash
+scalebox{-1}[1]{Boxinhalt}
+\series default
+ gibt es den äquivalenten Befehl
+\newline
+
+\series bold
+
+\backslash
+ref\SpecialChar \textcompwordmark{}
+lectbox{Boxinhalt}
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\series bold
+
+\backslash
+resizebox
+\series default
+ verwendet man um den Boxinhalt auf eine bestimmte Höhe bzw.
+ Breite zu skalieren.
+ Das Befehlsschema ist folgendes:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+resizebox{Breite}{Höhe}{Boxinhalt}
+\end_layout
+
+\begin_layout Standard
+Gibt man für eines der beiden Argumente ein Ausrufezeichen 
+\series bold
+!
+\series default
+ ein, wird die Größe so gewählt, dass das Aspektverhältnis der Box beibehalten
+ wird.
+\end_layout
+
+\begin_layout Standard
+Der Befehl 
+\series bold
+
+\backslash
+resizebox{2cm}{1cm}{Hallo}
+\series default
+ ergibt: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+resizebox{2cm}{1cm}{
+\end_layout
+
+\end_inset
+
+Hallo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\newline
+Der Befehl 
+\series bold
+
+\backslash
+resizebox{2cm}{!}{Hallo}
+\series default
+ ergibt: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+resizebox{2cm}{!}{
+\end_layout
+
+\end_inset
+
+Hallo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Bemerkung:
+\series default
+ Wurde in Argumenten von 
+\series bold
+
+\backslash
+scalebox
+\series default
+ oder 
+\series bold
+
+\backslash
+resizebox
+\series default
+ eine Null angegeben, entstehen beim Exportieren zwar keine LaTeX-Fehler,
+ die erzeugten Dateien können jedoch nicht oder nur teilweise angezeigt
+ werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Alle Boxen können beliebig miteinander kombiniert werden.
+ So ergibt z.\InsetSpace \thinspace{}
+B.
+ der Befehl
+\newline
+
+\series bold
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{Hallo}}}
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+Hallo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Bilder, Tabellen und eingebettete Formeln sind als Boxinhalt erlaubt:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-30}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../clipart/platypus.eps
+	lyxscale 50
+	width 25col%
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+w
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+r
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\int A\,\mathrm{d}x=B$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hat man den globalen Formelstil 
+\series bold
+fleqn
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Wenn 
+\begin_inset Quotes gld
+\end_inset
+
+fleqn
+\begin_inset Quotes grd
+\end_inset
+
+ zu den Dokumentklassen-Optionen hinzugefügt wurde.
+\end_layout
+
+\end_inset
+
+ gewählt, kann man auch abgesetzte Formeln skalieren.
 \end_layout
 
 \begin_layout Section
@@ -28375,7 +29413,7 @@ Bemerkung:
 
 \begin_layout Standard
 Um wirkliche Hyperlinks zu erzeugen, ohne gezwungen zu sein, die Link-Adresse
- im Text angeben zu müssen, können Sie den ERT-Befehl
+ im Text angeben zu müssen, können Sie den TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -28390,7 +29428,7 @@ href{Linkadresse}{Linktext}
 benutzen.
  Um z.\InsetSpace \thinspace{}
 B.
- einen Link auf LyXs Webseite zu setzen, schreiben Sie den ERT-Befehl
+ einen Link auf LyXs Webseite zu setzen, schreiben Sie den TeX-Code-Befehl
 \end_layout
 
 \begin_layout Standard
@@ -28423,7 +29461,7 @@ LyX-Homepage
 \begin_inset Quotes grd
 \end_inset
 
- als ERT.
+ als TeX-Code.
  Dies ist das Ergebnis:
 \newline
 
@@ -28877,7 +29915,7 @@ als Datum
 \begin_inset Text
 
 \begin_layout Standard
-als ERT-Befehl
+als TeX-Code-Befehl
 \end_layout
 
 \end_inset
@@ -30627,7 +31665,7 @@ Ansicht
 \family default
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
-	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_dvi.xpm
+	filename ../../images/buffer-view_dvi.xpm
 	scale 85
 	scaleBeforeRotation
 
@@ -30768,7 +31806,7 @@ Ansicht
 \family default
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
-	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_ps.xpm
+	filename ../../images/buffer-view_ps.xpm
 	scale 85
 	scaleBeforeRotation
 
@@ -30995,7 +32033,7 @@ Ansicht
 \family default
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
-	filename D:/LyXSVN/lyx-devel/lib/images/buffer-view_pdf2.xpm
+	filename ../../images/buffer-view_pdf2.xpm
 	scale 85
 	scaleBeforeRotation
 

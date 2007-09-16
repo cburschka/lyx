@@ -411,13 +411,32 @@ reference "cha:Unidades-disponibles-en"
 
  se detallan las unidades disponibles para el tamaño del gráfico.
 \newline
-Puedes girar
- los gráficos en el sentido de las agujas de reloj estableciendo un ángulo
- y un origen de rotación.
+
+\lang english
+
+\begin_inset LatexCommand index
+name "Figuras ! rotated"
+
+\end_inset
+
+
+\lang spanish
+Puedes girar los gráficos en el sentido de las agujas de reloj estableciendo
+ un ángulo y un origen de rotación.
  La imagen también gira en LyX.
 \newline
-Las imágenes se pueden escalar mediante un
- porcentaje o fijando explícitamente la altura y la anchura.
+
+\lang english
+
+\begin_inset LatexCommand index
+name "Figuras ! scaled"
+
+\end_inset
+
+
+\lang spanish
+Las imágenes se pueden escalar mediante un porcentaje o fijando explícitamente
+ la altura y la anchura.
  Si fijas sólo la anchura o sólo la altura, la otra dimensión se establece
  automáticamente.
  Si fijas ambas dimensiones
@@ -27346,7 +27365,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 Texto con color de fondo.
@@ -27490,6 +27509,1100 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Rotated and Scaled Boxes
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To use the the commands described in this section, the LaTeX-package
+\lang spanish
+ 
+\series bold
+graphicx
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-paquetes ! graphicx"
+
+\end_inset
+
+ 
+\lang english
+needs to be loaded in the document preamble with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@ifundefined{rotatebox}
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+usepackage{graphicx}}{}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Note:
+\series default
+ Some DVI-viewers can't display rotated or scaled material.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Note:
+\series default
+ Floats mustn't be inside a rotated or scaled box.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Rotated Boxes
+\begin_inset LatexCommand index
+name "Cuadros ! rotated"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Rotated material"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Figuras ! rotated"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Table Customization ! Rotating"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To rotate material, you can put it into a rotated box.
+ Such a box is created using the command 
+\series bold
+
+\backslash
+rotatebox
+\series default
+ in TeX-Code with the following scheme:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+rotatebox[rotation origin]{rotation angle}{box content}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The rotation origin is specified in the form 
+\series bold
+origin=position
+\series default
+.
+ The following positions are possible: 
+\emph on
+c
+\emph default
+ (center), 
+\emph on
+l
+\emph default
+ (left), 
+\emph on
+r
+\emph default
+ (right), 
+\emph on
+b
+\emph default
+ (bottom), 
+\emph on
+t
+\emph default
+ (top), and also expedient combinations of the four base positions.
+ For example 
+\emph on
+lt
+\emph default
+ means, that the rotation origin is at the top left corner of the box.
+ When no rotation origin is specified, the position 
+\emph on
+l
+\emph default
+ will be used.
+ The rotation angle is a number that can be negative that specifies the
+ angle in degrees.
+ The rotation direction is counterclockwise.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the following example the command 
+\series bold
+
+\backslash
+rotatebox[origin=c]{60}{
+\series default
+ was inserted as TeX-Code before the text 
+\begin_inset Quotes eld
+\end_inset
+
+with rotated
+\begin_inset Quotes erd
+\end_inset
+
+; after the text the box was closed by a closing brace 
+\series bold
+}
+\series default
+ in TeX-Code.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This is a line 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{60}{
+\end_layout
+
+\end_inset
+
+with rotated
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ text.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The box content can also be another box or an inline formula:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This is a line
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=r]{-60}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Doublebox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Standard
+
+\lang english
+with rotated
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ framed text 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=lb]{60}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\int A\,\mathrm{d}x=B$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ and a formula.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+or an image or table:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This is a line
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=lb]{90}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../clipart/platypus.eps
+	lyxscale 50
+	width 25col%
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ with a rotated image 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=l]{-90}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+w
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+r
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ and table.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Scaled Boxes
+\begin_inset LatexCommand index
+name "Cuadros ! scaled"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Scaled material"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Figuras ! scaled"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Table Customization ! Scaling"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To scale material the commands 
+\series bold
+
+\backslash
+scalebox
+\series default
+ and 
+\series bold
+
+\backslash
+resizebox
+\series default
+ can be used as TeX-Code.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+scalebox
+\series default
+ is used with the following scheme:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+scalebox{horizontal}[vertical]{box content}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Horizontal and vertical are the corresponding scaling factors.
+ If no vertical scaling factor is given, the horizontal factor will also
+ be used as vertical one.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The command 
+\series bold
+
+\backslash
+scalebox{2}{Hello}
+\series default
+ creates for example a double size 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{2}{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+, compared to the document text size.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+scalebox{2}[1]{Hello}
+\series default
+ in contrary distorts the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{2}[1]{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If a the scaling factor is negative, the box content will be mirrored.
+ Therefore the command 
+\series bold
+
+\backslash
+scalebox{-1}[1]{Hello}
+\series default
+ can be used to create mirror writing: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{-1}[1]{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+scalebox{1}[-1]{Hello}
+\series default
+ reflects the 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+scalebox{1}[-1]{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ at the base line.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Equivalent to 
+\series bold
+
+\backslash
+scalebox{-1}[1]{box content}
+\series default
+ there exists the command
+\newline
+
+\series bold
+
+\backslash
+reflectbox{box content}
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace bigskip
+\end_inset
+
+The command 
+\series bold
+
+\backslash
+resizebox
+\series default
+ is used to scale the box to a defined width and height.
+ The command scheme is:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+resizebox{width}{height}{box content}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Is one of the two command arguments given as exclamation mark 
+\series bold
+!
+\series default
+, the size is set so that the aspect ratio of the box content is kept.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The command 
+\series bold
+
+\backslash
+resizebox{2cm}{1cm}{Hello}
+\series default
+ produces: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+resizebox{2cm}{1cm}{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\newline
+The command 
+\series bold
+
+\backslash
+resizebox{2cm}{!}{Hello}
+\series default
+ produces: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+resizebox{2cm}{!}{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Note:
+\series default
+ When arguments of 
+\series bold
+
+\backslash
+scalebox
+\series default
+ or 
+\series bold
+
+\backslash
+resizebox
+\series default
+ are set to zero, no LaTeX-errors occur when exporting the document but
+ the exported files can not or only partly be displayed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The boxes can be combined in any order.
+ E.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+the command
+\newline
+
+\series bold
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{Hello}}}
+\newline
+
+\series default
+produces:
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+Hello
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Images, tables, and inline formulas are allowed as box content:
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-30}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../clipart/platypus.eps
+	lyxscale 50
+	width 25col%
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+w
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\lang english
+r
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+rotatebox[origin=c]{-45}{
+\backslash
+resizebox{2cm}{!}{
+\backslash
+reflectbox{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\int A\,\mathrm{d}x=B$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When the global formula style 
+\series bold
+fleqn
+\series default
+ is used in the document
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\lang english
+When 
+\begin_inset Quotes eld
+\end_inset
+
+fleqn
+\begin_inset Quotes erd
+\end_inset
+
+ is added to the document class options.
+\end_layout
+
+\end_inset
+
+, also display formulas can be scaled.
 \end_layout
 
 \begin_layout Section
