@@ -114,7 +114,7 @@ void GuiKeySymbol::init(string const & symbolname)
 
 bool GuiKeySymbol::isOK() const
 {
-	bool const ok(!(text_.isEmpty() && key_ == Qt::Key_unknown));
+	bool const ok = !(text_.isEmpty() && key_ == Qt::Key_unknown);
 	LYXERR(Debug::KEY) << "isOK is " << ok << endl;
 	return ok;
 }
@@ -122,7 +122,7 @@ bool GuiKeySymbol::isOK() const
 
 bool GuiKeySymbol::isModifier() const
 {
-	bool const mod(q_is_modifier(key_));
+	bool const mod = q_is_modifier(key_);
 	LYXERR(Debug::KEY) << "isMod is " << mod << endl;
 	return mod;
 }
@@ -130,7 +130,7 @@ bool GuiKeySymbol::isModifier() const
 
 string GuiKeySymbol::getSymbolName() const
 {
-	string sym(qkey_to_string(key_));
+	string sym = qkey_to_string(key_);
 
 	// e.g. A-Za-z, and others
 	if (sym.empty())

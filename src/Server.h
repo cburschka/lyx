@@ -38,12 +38,7 @@ public:
 	typedef void (*ClientCallbackfct)(Server *, std::string const &);
 
 	/// Construct with pipe-basename and callback to receive messages
-	LyXComm(std::string const & pip, Server * cli, ClientCallbackfct ccb = 0)
-		: pipename(pip), client(cli), clientcb(ccb)
-	{
-		ready = false;
-		openConnection();
-	}
+	LyXComm(std::string const & pip, Server * cli, ClientCallbackfct ccb = 0);
 
 	///
 	~LyXComm() { closeConnection(); }
@@ -77,24 +72,23 @@ private:
 	void endPipe(int &, std::string const &, bool);
 
 	/// This is -1 if not open
-	int infd;
+	int infd_;
 
 	/// This is -1 if not open
-	int outfd;
+	int outfd_;
 
 	/// Are we up and running?
-	bool ready;
+	bool ready_;
 
 	/// Base of pipename including path
-	std::string pipename;
+	std::string pipename_;
 
 	/// The client
-	Server * client;
+	Server * client_;
 
 	/// The client callback function
-	ClientCallbackfct clientcb;
+	ClientCallbackfct clientcb_;
 };
-
 
 
 ///
@@ -111,32 +105,28 @@ public:
 	// lyxserver is using a buffer that is being edited with a bufferview.
 	// With a common buffer list this is not a problem, maybe. (Alejandro)
 	///
-	Server(LyXFunc * f, std::string const & pip)
-		: numclients(0), func(f), pipes(pip, (this), callback) {}
+	Server(LyXFunc * f, std::string const & pip);
 	///
 	~Server();
 	///
 	void notifyClient(std::string const &);
 
 	/// whilst crashing etc.
-	void emergencyCleanup() { pipes.emergencyCleanup(); }
+	void emergencyCleanup() { pipes_.emergencyCleanup(); }
+	///
+	void callback(std::string const & msg);
 
 private:
-	///
-	static void callback(Server *, std::string const & msg);
 	/// Names and number of current clients
-	enum {
-		///
-		MAX_CLIENTS = 10
-	};
+	enum { MAX_CLIENTS = 10 };
 	///
-	std::string clients[MAX_CLIENTS];
+	std::string clients_[MAX_CLIENTS];
 	///
-	int numclients;
+	int numclients_;
 	///
-	LyXFunc * func;
+	LyXFunc * func_;
 	///
-	LyXComm pipes;
+	LyXComm pipes_;
 };
 
 /// Implementation is in LyX.cpp
