@@ -75,6 +75,8 @@ void saveSelection(Cursor & cur);
 bool selection();
 /// Clear our selection buffer
 void clearSelection();
+/// Clear our cut stack.
+void clearCutStack();
 /// Paste the current selection at \p cur
 /// Does handle undo. Does only work in text, not mathed.
 void pasteSelection(Cursor & cur, ErrorList &);

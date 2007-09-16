@@ -692,6 +692,12 @@ void clearSelection()
 }
 
 
+void clearCutStack()
+{
+	theCuts.clear();
+}
+
+
 docstring getSelection(Buffer const & buf, size_t sel_index)
 {
 	return sel_index < theCuts.size()

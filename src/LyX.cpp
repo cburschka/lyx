@@ -22,6 +22,7 @@
 #include "buffer_funcs.h"
 #include "BufferList.h"
 #include "Converter.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "Encoding.h"
 #include "ErrorList.h"
@@ -486,6 +487,10 @@ int LyX::exec(int & argc, char * argv[])
 
 void LyX::prepareExit()
 {
+	// Clear the clipboard and selection stack:
+	cap::clearCutStack();
+	cap::clearSelection();
+
 	// Set a flag that we do quitting from the program,
 	// so no refreshes are necessary.
 	quitting = true;
