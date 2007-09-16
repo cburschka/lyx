@@ -682,7 +682,7 @@ bool Cursor::openable(MathAtom const & t) const
 }
 
 
-void Cursor::setScreenPos(int x, int y)
+void Cursor::setScreenPos(int x, int /*y*/)
 {
 	setTargetX(x);
 	//bruteFind(*this, x, y, 0, bv().workWidth(), 0, bv().workHeight());
