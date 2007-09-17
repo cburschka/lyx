@@ -17,8 +17,6 @@
 #include "lfuns.h"
 #include "support/docstring.h"
 
-#include <boost/scoped_ptr.hpp>
-
 #include <list>
 #include <map>
 
@@ -305,9 +303,9 @@ private:
 	///
 	Trans * active_;
 	///
-	boost::scoped_ptr<Trans> t1_;
+	Trans t1_;
 	///
-	boost::scoped_ptr<Trans> t2_;
+	Trans t2_;
 	///
 	static Trans default_;
 	///
@@ -315,8 +313,6 @@ private:
 public:
 	///
 	TransManager();
-	///
-	~TransManager();
 	///
 	int setPrimary(std::string const &);
 	///

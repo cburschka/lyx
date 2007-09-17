@@ -613,37 +613,32 @@ Trans TransManager::default_;
 
 
 TransManager::TransManager()
-	: active_(0), t1_(new Trans), t2_(new Trans)
-{}
-
-
-// For the sake of boost::scoped_ptr.
-TransManager::~TransManager()
+	: active_(0)
 {}
 
 
 int TransManager::setPrimary(string const & language)
 {
-	if (t1_->getName() == language)
+	if (t1_.getName() == language)
 		return 0;
 
-	return t1_->load(language);
+	return t1_.load(language);
 }
 
 
 int TransManager::setSecondary(string const & language)
 {
-	if (t2_->getName() == language)
+	if (t2_.getName() == language)
 		return 0;
 
-	return t2_->load(language);
+	return t2_.load(language);
 }
 
 
 void TransManager::enablePrimary()
 {
-	if (t1_->isDefined())
-		active_ = t1_.get();
+	if (t1_.isDefined())
+		active_ = &t1_;
 
 	LYXERR(Debug::KBMAP) << "Enabling primary keymap" << endl;
 }
@@ -651,8 +646,8 @@ void TransManager::enablePrimary()
 
 void TransManager::enableSecondary()
 {
-	if (t2_->isDefined())
-		active_ = t2_.get();
+	if (t2_.isDefined())
+		active_ = &t2_;
 	LYXERR(Debug::KBMAP) << "Enabling secondary keymap" << endl;
 }
 
