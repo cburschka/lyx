@@ -61,7 +61,7 @@ public:
 	docstring const viewStatusMessage();
 
 	///
-	void processKeySym(KeySymbolPtr key, key_modifier::state state);
+	void processKeySym(KeySymbol const & key, key_modifier::state state);
 
 	///
 	FuncStatus getStatus(FuncRequest const & action) const;

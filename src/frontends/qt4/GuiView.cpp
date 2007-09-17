@@ -63,8 +63,6 @@
 #include <QTabWidget>
 #include <QUrl>
 
-#include <boost/shared_ptr.hpp>
-
 using std::endl;
 using std::string;
 using std::vector;
@@ -722,15 +720,15 @@ bool GuiViewBase::event(QEvent * e)
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		if (d.tab_widget_->count() == 0) {
 			theLyXFunc().setLyXView(this);
-			boost::shared_ptr<GuiKeySymbol> sym(new GuiKeySymbol);
-			sym->set(ke);
+			KeySymbol sym;
+			setKeySymbol(&sym, ke);
 			theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
 			e->accept();
 			return true;
 		}
 		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
-			boost::shared_ptr<GuiKeySymbol> sym(new GuiKeySymbol);
-			sym->set(ke);
+			KeySymbol sym;
+			setKeySymbol(&sym, ke);
 			currentWorkArea()->processKeySym(sym, key_modifier::none);
 			e->accept();
 			return true;

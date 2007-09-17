@@ -407,32 +407,32 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 }
 
 
-void GuiWorkArea::keyPressEvent(QKeyEvent * e)
+void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 {
 	// do nothing if there are other events
 	// (the auto repeated events come too fast)
 	// \todo FIXME: remove hard coded Qt keys, process the key binding
 #ifdef Q_WS_X11
-	if (XEventsQueued(QX11Info::display(), 0) > 1 && e->isAutoRepeat() 
+	if (XEventsQueued(QX11Info::display(), 0) > 1 && ev->isAutoRepeat() 
 			&& (Qt::Key_PageDown || Qt::Key_PageUp)) {
 		LYXERR(Debug::KEY)	
 			<< BOOST_CURRENT_FUNCTION << endl
 			<< "system is busy: scroll key event ignored" << endl;
-		e->ignore();
+		ev->ignore();
 		return;
 	}
 #endif
 
 	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
-		<< " count=" << e->count()
-		<< " text=" << fromqstr(e->text())
-		<< " isAutoRepeat=" << e->isAutoRepeat()
-		<< " key=" << e->key()
+		<< " count=" << ev->count()
+		<< " text=" << fromqstr(ev->text())
+		<< " isAutoRepeat=" << ev->isAutoRepeat()
+		<< " key=" << ev->key()
 		<< endl;
 
-	boost::shared_ptr<GuiKeySymbol> sym(new GuiKeySymbol);
-	sym->set(e);
-	processKeySym(sym, q_key_state(e->modifiers()));
+	KeySymbol sym;
+	setKeySymbol(&sym, ev);
+	processKeySym(sym, q_key_state(ev->modifiers()));
 }
 
 
@@ -442,14 +442,14 @@ void GuiWorkArea::doubleClickTimeout()
 }
 
 
-void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
+void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * ev)
 {
-	dc_event_ = double_click(e);
+	dc_event_ = double_click(ev);
 	QTimer::singleShot(QApplication::doubleClickInterval(), this,
 			   SLOT(doubleClickTimeout()));
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
-			e->x(), e->y(),
-			q_button_state(e->button()));
+			ev->x(), ev->y(),
+			q_button_state(ev->button()));
 	dispatch(cmd);
 }
 

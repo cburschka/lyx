@@ -28,7 +28,7 @@ class FuncRequest;
 /// Holds a key sequence and the current and standard keymaps
 class KeySequence {
 public:
-	typedef std::vector<KeySymbolPtr> Sequence;
+	typedef std::vector<KeySymbol> Sequence;
 
 	friend class KeyMap;
 
@@ -45,7 +45,7 @@ public:
 	 * @return the action matching this key sequence or LFUN_UNKNOWN_ACTION
 	 */
 	FuncRequest const &
-	addkey(KeySymbolPtr keysym, key_modifier::state mod,
+	addkey(KeySymbol const & keysym, key_modifier::state mod,
 	       key_modifier::state nmod = key_modifier::none);
 
 	/**

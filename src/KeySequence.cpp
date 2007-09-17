@@ -26,10 +26,8 @@ using std::string;
 
 namespace lyx {
 
-
-FuncRequest const &
-KeySequence::addkey(KeySymbolPtr key,
-		    key_modifier::state mod, key_modifier::state nmod)
+FuncRequest const & KeySequence::addkey(KeySymbol const & key,
+	key_modifier::state mod, key_modifier::state nmod)
 {
 	// adding a key to a deleted sequence
 	// starts a new sequence
@@ -107,10 +105,10 @@ size_t KeySequence::parse(string const & s)
 			for (; j < s.length() && s[j] != ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
 
-			KeySymbolPtr key(createKeySymbol());
-			key->init(tbuf);
+			KeySymbol key;
+			key.init(tbuf);
 
-			if (!key->isOK())
+			if (!key.isOK())
 				return j;
 
 			i = j;
@@ -135,10 +133,10 @@ docstring const KeySequence::print(bool forgui) const
 
 	size_t const length = sequence.size();
 
-	for (size_t i = 0; i < length; ++i) {
-		buf += sequence[i]->print(modifiers[i].first, forgui);
+	for (size_t i = 0; i != length; ++i) {
+		buf += sequence[i].print(modifiers[i].first, forgui);
 		// append a blank
-		if (i + 1 < length)
+		if (i + 1 != length)
 			buf += ' ';
 	}
 	return buf;

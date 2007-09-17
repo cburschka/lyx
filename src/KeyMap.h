@@ -60,7 +60,7 @@ public:
 	 * @return the action / LFUN_COMMAND_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
 	FuncRequest const &
-	lookup(KeySymbolPtr key,
+	lookup(KeySymbol const & key,
 	       key_modifier::state mod, KeySequence * seq) const;
 
 	///
@@ -77,7 +77,7 @@ public:
 	 *  The KeySymbol pointer is 0 is no key is found.
 	 *  [only used by the Qt/Mac frontend]
 	 */
-	std::pair<KeySymbol const *, key_modifier::state>
+	std::pair<KeySymbol, key_modifier::state>
 	find1keybinding(FuncRequest const & func) const;
 
 
@@ -95,7 +95,7 @@ private:
 	///
 	struct Key {
 		/// Keysym
-		KeySymbolPtr code;
+		KeySymbol code;
 
 		/// Modifier masks
 		modifier_pair mod;

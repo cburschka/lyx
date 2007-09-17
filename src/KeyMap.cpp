@@ -170,8 +170,7 @@ bool KeyMap::read(string const & bind_file)
 }
 
 
-FuncRequest const &
-KeyMap::lookup(KeySymbolPtr key,
+FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 		  key_modifier::state mod, KeySequence * seq) const
 {
 	static FuncRequest const unknown(LFUN_UNKNOWN_ACTION);
@@ -188,7 +187,7 @@ KeyMap::lookup(KeySymbolPtr key,
 		key_modifier::state check =
 			static_cast<key_modifier::state>(mod & ~mask);
 
-		if (*(cit->code) == *key && cit->mod.first == check) {
+		if (cit->code == key && cit->mod.first == check) {
 			// match found
 			if (cit->table.get()) {
 				// this is a prefix key - set new map
@@ -217,7 +216,7 @@ docstring const KeyMap::print(bool forgui) const
 	docstring buf;
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
-		buf += cit->code->print(cit->mod.first, forgui);
+		buf += cit->code.print(cit->mod.first, forgui);
 		buf += ' ';
 	}
 	return buf;
@@ -226,8 +225,8 @@ docstring const KeyMap::print(bool forgui) const
 
 void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 {
-	KeySymbolPtr code = seq->sequence[r];
-	if (!code->isOK())
+	KeySymbol code = seq->sequence[r];
+	if (!code.isOK())
 		return;
 
 	key_modifier::state const mod1 = seq->modifiers[r].first;
@@ -236,7 +235,7 @@ void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 	// check if key is already there
 	Table::iterator end = table.end();
 	for (Table::iterator it = table.begin(); it != end; ++it) {
-		if (*(code) == *(it->code)
+		if (code == it->code
 		    && mod1 == it->mod.first
 		    && mod2 == it->mod.second) {
 			// overwrite binding
@@ -319,20 +318,6 @@ KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func,
 	}
 
 	return res;
-}
-
-
-std::pair<KeySymbol const *, key_modifier::state>
-KeyMap::find1keybinding(FuncRequest const & func) const
-{
-	Table::const_iterator end = table.end();
-	for (Table::const_iterator cit = table.begin();
-	    cit != end; ++cit) {
-		if (!cit->table.get() && cit->func == func)
-			return std::make_pair(cit->code.get(), cit->mod.first);
-	}
-
-	return std::make_pair<KeySymbol const *, key_modifier::state>(0, key_modifier::none);
 }
 
 

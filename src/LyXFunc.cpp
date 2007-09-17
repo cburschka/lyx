@@ -293,27 +293,28 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 }
 
 
-void LyXFunc::processKeySym(KeySymbolPtr keysym, key_modifier::state state)
+void LyXFunc::processKeySym(KeySymbol const & keysym,
+		key_modifier::state state)
 {
-	LYXERR(Debug::KEY) << "KeySym is " << keysym->getSymbolName() << endl;
+	LYXERR(Debug::KEY) << "KeySym is " << keysym.getSymbolName() << endl;
 
 	// Do nothing if we have nothing (JMarc)
-	if (!keysym->isOK()) {
+	if (!keysym.isOK()) {
 		LYXERR(Debug::KEY) << "Empty kbd action (probably composing)"
 				   << endl;
 		return;
 	}
 
-	if (keysym->isModifier()) {
+	if (keysym.isModifier()) {
 		LYXERR(Debug::KEY) << "isModifier true" << endl;
 		return;
 	}
 
 	//Encoding const * encoding = view()->cursor().getEncoding();
-	//encoded_last_key = keysym->getISOEncoded(encoding ? encoding->name() : "");
+	//encoded_last_key = keysym.getISOEncoded(encoding ? encoding->name() : "");
 	// FIXME: encoded_last_key shadows the member variable of the same
 	// name. Is that intended?
-	char_type encoded_last_key = keysym->getUCSEncoded();
+	char_type encoded_last_key = keysym.getUCSEncoded();
 
 	// Do a one-deep top-level lookup for
 	// cancel and meta-fake keys. RVDK_PATCH_5
@@ -371,7 +372,7 @@ void LyXFunc::processKeySym(KeySymbolPtr keysym, key_modifier::state state)
 		// Hmm, we didn't match any of the keysequences. See
 		// if it's normal insertable text not already covered
 		// by a binding
-		if (keysym->isText() && keyseq->length() == 1) {
+		if (keysym.isText() && keyseq->length() == 1) {
 			LYXERR(Debug::KEY) << "isText() is true, inserting." << endl;
 			func = FuncRequest(LFUN_SELF_INSERT,
 					   FuncRequest::KEYBOARD);
@@ -804,7 +805,7 @@ void showPrintError(string const & name)
 }
 
 
-void loadTextclass(string const & name)
+void loadTextClass(string const & name)
 {
 	std::pair<bool, textclass_type> const tc_pair =
 		textclasslist.numberOfClass(name);
@@ -1813,7 +1814,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 
-			loadTextclass(argument);
+			loadTextClass(argument);
 
 			std::pair<bool, textclass_type> const tc_pair =
 				textclasslist.numberOfClass(argument);
@@ -1850,7 +1851,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_LOAD:
-			loadTextclass(argument);
+			loadTextClass(argument);
 			break;
 
 		case LFUN_LYXRC_APPLY: {

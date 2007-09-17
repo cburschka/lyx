@@ -12,7 +12,7 @@
 
 #include "frontends/KeySymbol.h"
 
-#include "GuiKeySymbol.h"
+#include "KeySymbol.h"
 
 #include "qlkey.h"
 #include "qt_helpers.h"
@@ -41,12 +41,6 @@ using std::string;
 using std::map;
 using lyx::support::contains;
 using lyx::support::getEnv;
-
-
-KeySymbol * createKeySymbol()
-{
-	return new GuiKeySymbol;
-}
 
 
 namespace {
@@ -85,42 +79,39 @@ char encode(string const & encoding, QString const & str)
 
 } // anon namespace
 
-GuiKeySymbol::GuiKeySymbol()
-	: KeySymbol(), key_(0)
-{
-}
 
-
-void GuiKeySymbol::set(QKeyEvent * ev)
+void setKeySymbol(KeySymbol * sym, QKeyEvent * ev)
 {
-	key_ = ev->key();
+	sym->setKey(ev->key());
 	if (ev->text().isNull()) {
 		LYXERR(Debug::KEY) << "keyevent has isNull() text !" << endl;
-		text_ = "";
+		sym->setText(docstring());
 		return;
 	}
-	text_ = ev->text();
-	LYXERR(Debug::KEY) << "Setting key to " << key_ << ", " <<  fromqstr(text_) << endl;
+	sym->setText(qstring_to_ucs4(ev->text()));
+	LYXERR(Debug::KEY) << "Setting key to " << sym->key() << ", "
+		<< to_utf8(sym->text()) << endl;
 }
 
 
-void GuiKeySymbol::init(string const & symbolname)
+void KeySymbol::init(string const & symbolname)
 {
 	key_ = string_to_qkey(symbolname);
-	text_ = toqstr(symbolname);
-	LYXERR(Debug::KEY) << "Init key to " << key_ << ", " << fromqstr(text_) << endl;
+	text_ = from_utf8(symbolname);
+	LYXERR(Debug::KEY) << "Init key to " << key_ << ", "
+		<< to_utf8(text_) << endl;
 }
 
 
-bool GuiKeySymbol::isOK() const
+bool KeySymbol::isOK() const
 {
-	bool const ok = !(text_.isEmpty() && key_ == Qt::Key_unknown);
+	bool const ok = !(text_.empty() && key_ == Qt::Key_unknown);
 	LYXERR(Debug::KEY) << "isOK is " << ok << endl;
 	return ok;
 }
 
 
-bool GuiKeySymbol::isModifier() const
+bool KeySymbol::isModifier() const
 {
 	bool const mod = q_is_modifier(key_);
 	LYXERR(Debug::KEY) << "isMod is " << mod << endl;
@@ -128,21 +119,21 @@ bool GuiKeySymbol::isModifier() const
 }
 
 
-string GuiKeySymbol::getSymbolName() const
+string KeySymbol::getSymbolName() const
 {
-	string sym = qkey_to_string(key_);
+	string name = qkey_to_string(key_);
 
 	// e.g. A-Za-z, and others
-	if (sym.empty())
-		sym = fromqstr(text_);
+	if (name.empty())
+		name = to_utf8(text_);
 
-	return sym;
+	return name;
 }
 
 
-char_type GuiKeySymbol::getUCSEncoded() const
+char_type KeySymbol::getUCSEncoded() const
 {
-	if (text_.isEmpty())
+	if (text_.empty())
 		return 0;
 
 	// UTF16 has a maximum of two characters.
@@ -150,20 +141,18 @@ char_type GuiKeySymbol::getUCSEncoded() const
 
 	if (lyxerr.debugging() && text_.size() > 1) {
 		// We don't know yet how well support the full ucs4 range.
-		LYXERR(Debug::KEY) << "GuiKeySymbol::getUCSEncoded()" << endl;
-		for (int i = 0; i < text_.size(); ++i) {
+		LYXERR(Debug::KEY) << "KeySymbol::getUCSEncoded()" << endl;
+		for (int i = 0; i != int(text_.size()); ++i) {
 			LYXERR(Debug::KEY) << "char " << i << ": "
-				<< text_[i].unicode() << endl;
+				<< int(text_[i]) << endl;
 		}
 	}
 
-	// Only one UCS4 character at the end.
-	docstring ucs4_text = qstring_to_ucs4(text_);
-	return ucs4_text[0];
+	return text_[0];
 }
 
 
-docstring const GuiKeySymbol::print(key_modifier::state mod, bool forgui) const
+docstring const KeySymbol::print(key_modifier::state mod, bool forgui) const
 {
 	int tmpkey = key_;
 
@@ -181,28 +170,23 @@ docstring const GuiKeySymbol::print(key_modifier::state mod, bool forgui) const
 }
 
 
-bool GuiKeySymbol::isText() const
+bool KeySymbol::isText() const
 {
-	if (text_.isEmpty()) {
-		LYXERR(Debug::KEY) << "text_ empty, isText() == false" << endl;
-		return false;
-	}
-
-	return true;
+	if (!text_.empty())
+		return true;
+	LYXERR(Debug::KEY) << "text_ empty, isText() == false" << endl;
+	return false;
 }
 
 
-bool GuiKeySymbol::operator==(KeySymbol const & ks) const
+bool KeySymbol::operator==(KeySymbol const & ks) const
 {
-	GuiKeySymbol const & qks = static_cast<GuiKeySymbol const &>(ks);
-
 	// we do not have enough info for a fair comparison, so return
 	// false. This works out OK because unknown text from Qt will
 	// get inserted anyway after the isText() check
-	if (key_ == Qt::Key_unknown || qks.key_ == Qt::Key_unknown)
+	if (key_ == Qt::Key_unknown || ks.key_ == Qt::Key_unknown)
 		return false;
-
-	return key_ == qks.key_;
+	return key_ == ks.key_;
 }
 
 

@@ -15,7 +15,6 @@
 #define BASE_WORKAREA_H
 
 #include "frontends/key_state.h"
-#include "frontends/KeySymbol.h"
 
 #include "support/Timeout.h"
 #include "support/docstring.h"
@@ -25,9 +24,11 @@
 #undef CursorShape
 
 namespace lyx {
+
 class Buffer;
 class BufferView;
 class FuncRequest;
+class KeySymbol;
 
 namespace frontend {
 
@@ -97,7 +98,7 @@ public:
 
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
-	void processKeySym(KeySymbolPtr key, key_modifier::state state);
+	void processKeySym(KeySymbol const & key, key_modifier::state state);
 
 protected:
 	/// cause the display of the given area of the work area
