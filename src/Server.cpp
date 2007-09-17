@@ -80,7 +80,7 @@ using std::string;
 #if !defined (HAVE_MKFIFO)
 // We provide a stub class that disables the lyxserver.
 
-LyXComm(std::string const &, Server *, ClientCallbackfct)
+LyXComm::LyXComm(std::string const &, Server *, ClientCallbackfct)
 {}
 
 void LyXComm::openConnection()
