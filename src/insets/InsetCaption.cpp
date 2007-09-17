@@ -160,12 +160,6 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCaption::drawSelection(PainterInfo & pi, int x, int y) const
-{
-	InsetText::drawSelection(pi, x + labelwidth_, y);
-}
-
-
 void InsetCaption::edit(Cursor & cur, bool left)
 {
 	cur.push(*this);

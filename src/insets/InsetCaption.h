@@ -49,8 +49,6 @@ public:
 	///
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void drawSelection(PainterInfo & pi, int x, int y) const;
-	///
 	virtual void edit(Cursor & cur, bool left);
 	///
 	virtual Inset * editXY(Cursor & cur, int x, int y);
