@@ -32,6 +32,7 @@ public:
 
 	friend class KeyMap;
 
+	KeySequence() : stdmap(0), curmap(0), deleted_(true) {}
 	///
 	KeySequence(KeyMap * std, KeyMap * cur)
 		: stdmap(std), curmap(cur), deleted_(false) {}

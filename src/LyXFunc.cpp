@@ -203,18 +203,17 @@ Change::Type lookupChangeType(DocIterator const & dit, bool outer = false)
 
 }
 
+
 LyXFunc::LyXFunc()
-	: lyx_view_(0),
-	encoded_last_key(0),
-	meta_fake_bit(key_modifier::none)
+	: lyx_view_(0), encoded_last_key(0), meta_fake_bit(key_modifier::none)
 {
 }
 
 
 void LyXFunc::initKeySequences(KeyMap * kb)
 {
-	keyseq.reset(new KeySequence(kb, kb));
-	cancel_meta_seq.reset(new KeySequence(kb, kb));
+	keyseq = KeySequence(kb, kb);
+	cancel_meta_seq = KeySequence(kb, kb);
 }
 
 
@@ -232,7 +231,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 {
 	char_type c = encoded_last_key;
 
-	if (keyseq->length())
+	if (keyseq.length())
 		c = 0;
 
 	BOOST_ASSERT(lyx_view_ && lyx_view_->view());
@@ -240,7 +239,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 		c, get_accent(action).accent, view()->cursor().innerText(), view()->cursor());
 	// Need to clear, in case the minibuffer calls these
 	// actions
-	keyseq->clear();
+	keyseq.clear();
 	// copied verbatim from do_accent_char
 	view()->cursor().resetAnchor();
 	view()->update();
@@ -318,9 +317,9 @@ void LyXFunc::processKeySym(KeySymbol const & keysym,
 
 	// Do a one-deep top-level lookup for
 	// cancel and meta-fake keys. RVDK_PATCH_5
-	cancel_meta_seq->reset();
+	cancel_meta_seq.reset();
 
-	FuncRequest func = cancel_meta_seq->addkey(keysym, state);
+	FuncRequest func = cancel_meta_seq.addkey(keysym, state);
 	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 			   << " action first set to [" << func.action << ']'
 			   << endl;
@@ -330,7 +329,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym,
 	// Mostly, meta_fake_bit = key_modifier::none. RVDK_PATCH_5.
 	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
 		// remove Caps Lock and Mod2 as a modifiers
-		func = keyseq->addkey(keysym, (state | meta_fake_bit));
+		func = keyseq.addkey(keysym, (state | meta_fake_bit));
 		LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 				   << "action now set to ["
 				   << func.action << ']' << endl;
@@ -347,15 +346,15 @@ void LyXFunc::processKeySym(KeySymbol const & keysym,
 	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 	       << " Key [action="
 	       << func.action << "]["
-	       << to_utf8(keyseq->print(false)) << ']'
+	       << to_utf8(keyseq.print(false)) << ']'
 	       << endl;
 
 	// already here we know if it any point in going further
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)
 
-	if (keyseq->length() > 1) {
-		lyx_view_->message(keyseq->print(true));
+	if (keyseq.length() > 1) {
+		lyx_view_->message(keyseq.print(true));
 	}
 
 
@@ -364,7 +363,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym,
 	if (func.action == LFUN_UNKNOWN_ACTION &&
 	    state == key_modifier::shift) {
 		LYXERR(Debug::KEY) << "Trying without shift" << endl;
-		func = keyseq->addkey(keysym, key_modifier::none);
+		func = keyseq.addkey(keysym, key_modifier::none);
 		LYXERR(Debug::KEY) << "Action now " << func.action << endl;
 	}
 
@@ -372,7 +371,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym,
 		// Hmm, we didn't match any of the keysequences. See
 		// if it's normal insertable text not already covered
 		// by a binding
-		if (keysym.isText() && keyseq->length() == 1) {
+		if (keysym.isText() && keyseq.length() == 1) {
 			LYXERR(Debug::KEY) << "isText() is true, inserting." << endl;
 			func = FuncRequest(LFUN_SELF_INSERT,
 					   FuncRequest::KEYBOARD);
@@ -885,7 +884,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_COMMAND_PREFIX:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->message(keyseq->printOptions(true));
+			lyx_view_->message(keyseq.printOptions(true));
 			break;
 
 		case LFUN_COMMAND_EXECUTE:
@@ -895,7 +894,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_CANCEL:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
-			keyseq->reset();
+			keyseq.reset();
 			meta_fake_bit = key_modifier::none;
 			if (lyx_view_->buffer())
 				// cancel any selection
@@ -905,7 +904,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_META_PREFIX:
 			meta_fake_bit = key_modifier::alt;
-			setMessage(keyseq->print(true));
+			setMessage(keyseq.print(true));
 			break;
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY:
@@ -1313,7 +1312,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_SERVER_NOTIFY:
-			dispatch_buffer = keyseq->print(false);
+			dispatch_buffer = keyseq.print(false);
 			theServer().notifyClient(to_utf8(dispatch_buffer));
 			break;
 
@@ -2279,12 +2278,12 @@ docstring const LyXFunc::viewStatusMessage()
 {
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
 	if (wasMetaKey())
-		return keyseq->print(true) + "M-";
+		return keyseq.print(true) + "M-";
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
-	if (keyseq->length() > 0 && !keyseq->deleted())
-		return keyseq->printOptions(true);
+	if (keyseq.length() > 0 && !keyseq.deleted())
+		return keyseq.printOptions(true);
 
 	BOOST_ASSERT(lyx_view_);
 	if (!lyx_view_->buffer())

@@ -21,7 +21,6 @@
 
 #include "support/docstring.h"
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
 namespace lyx {
@@ -96,9 +95,9 @@ private:
 	char_type encoded_last_key;
 
 	///
-	boost::scoped_ptr<KeySequence> keyseq;
+	KeySequence keyseq;
 	///
-	boost::scoped_ptr<KeySequence> cancel_meta_seq;
+	KeySequence cancel_meta_seq;
 	///
 	key_modifier::state meta_fake_bit;
 

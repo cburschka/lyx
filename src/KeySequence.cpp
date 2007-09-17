@@ -145,9 +145,7 @@ docstring const KeySequence::print(bool forgui) const
 
 docstring const KeySequence::printOptions(bool forgui) const
 {
-	docstring buf;
-
-	buf += print(forgui);
+	docstring buf = print(forgui);
 
 	if (!curmap)
 		return buf;
@@ -169,6 +167,7 @@ void KeySequence::reset()
 	mark_deleted();
 	curmap = stdmap;
 }
+
 
 void KeySequence::clear()
 {
