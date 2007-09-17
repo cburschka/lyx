@@ -1110,6 +1110,9 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	cmd.y = min(max(cmd.y, -1), height_);
 
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
+		//FIXME: disabling mouse hover for now as it is causing funny things
+		// on screen.
+		return false;
 
 		// Get inset under mouse, if there is one.
 		Inset const * covering_inset =
