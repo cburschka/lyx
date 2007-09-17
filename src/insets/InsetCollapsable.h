@@ -57,8 +57,7 @@ public:
 	bool metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	///
-	void drawSelection(PainterInfo & pi, int x, int y) const;
+
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;

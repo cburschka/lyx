@@ -351,28 +351,6 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
-{
-	switch (geometry()) {
-	case LeftButton:
-		x += dimensionCollapsed().wid;
-		InsetText::drawSelection(pi, x, y);
-		break;
-	case TopButton:
-		y += dimensionCollapsed().des;
-		InsetText::drawSelection(pi, x, y);
-		break;
-	case ButtonOnly:
-		break;
-	case NoButton:
-	case SubLabel:
-	case Corners:
-		InsetText::drawSelection(pi, x, y);
-		break;
-	}
-}
-
-
 void InsetCollapsable::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
