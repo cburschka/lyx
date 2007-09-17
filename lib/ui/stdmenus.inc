@@ -298,7 +298,7 @@ Menuset
 		Submenu "Branch|B" "insert_branches"
 		Submenu "Custom insets" "insert_custom"
 		Submenu "File|e" "insert_file"
-		Item "Box" "box-insert Frameless"
+		Item "Box[[Menu]]" "box-insert Frameless"
 		Separator
 		Item "Citation...|C" "dialog-show-new-inset citation"
 		Item "Cross-Reference...|R" "dialog-show-new-inset ref"
