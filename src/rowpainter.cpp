@@ -133,6 +133,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 		font;
 	pi_.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	pi_.erased_ = erased_ || par_.isDeleted(pos);
+	pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
 	// insets are painted completely. Recursive
 	inset->drawSelection(pi_, int(x_), yo_);
 	inset->draw(pi_, int(x_), yo_);

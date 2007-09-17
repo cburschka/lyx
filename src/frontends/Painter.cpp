@@ -79,8 +79,8 @@ void Painter::buttonText(int x, int y, docstring const & str,
 	FontMetrics const & fm = theFontMetrics(font);
 	fm.buttonText(str, width, ascent, descent);
 
-	button(x, y - ascent, width, descent + ascent, mouseHover);
-	text(x + 3, y - 1, str, font);
+	button(x + 1, y - ascent, width - 2, descent + ascent, mouseHover);
+	text(x + 4, y - 1, str, font);
 }
 
 

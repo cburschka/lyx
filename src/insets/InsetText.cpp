@@ -74,9 +74,6 @@ using std::ostream;
 using std::vector;
 
 
-int InsetText::border_ = 2;
-
-
 InsetText::InsetText(BufferParams const & bp)
 	: drawFrame_(false), frame_color_(Color::insetframe)
 {
@@ -128,6 +125,17 @@ Inset * InsetText::clone() const
 }
 
 
+Dimension const InsetText::dimension(BufferView const & bv) const
+{
+	TextMetrics const & tm = bv.textMetrics(&text_);
+	Dimension dim = tm.dimension();
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	dim.des += TEXT_TO_INSET_OFFSET;
+	dim.asc += TEXT_TO_INSET_OFFSET;
+	return dim;
+}
+
+
 void InsetText::write(Buffer const & buf, ostream & os) const
 {
 	os << "Text\n";
@@ -166,12 +174,12 @@ bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// Hand font through to contained lyxtext:
 	tm.font_ = mi.base.font;
-	mi.base.textwidth -= 2 * border_;
+	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	tm.metrics(mi, dim);
-	mi.base.textwidth += 2 * border_;
-	dim.asc += border_;
-	dim.des += border_;
-	dim.wid += 2 * border_;
+	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
+	dim.asc += TEXT_TO_INSET_OFFSET;
+	dim.des += TEXT_TO_INSET_OFFSET;
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;
@@ -180,22 +188,19 @@ bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
-	// update our idea of where we are
-	setPosCache(pi, x, y);
-
 	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 
 	if (drawFrame_ || pi.full_repaint) {
 		int const w = hasFixedWidth() ? 
-			tm.maxWidth() : tm.width() + 2 * border_;
-		int const a = border_;
-		int const h = a + tm.height() + border_;
+			tm.maxWidth() : tm.width() + 2 * TEXT_TO_INSET_OFFSET;
+		int const yframe = y - TEXT_TO_INSET_OFFSET - tm.ascent();
+		int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
 		if (pi.full_repaint)
-			pi.pain.fillRectangle(x, y - a - tm.ascent(), w, h, backgroundColor());
+			pi.pain.fillRectangle(x, yframe, w, h, backgroundColor());
 		if (drawFrame_)
-			pi.pain.rectangle(x, y - a - tm.ascent(), w, h, frameColor());
+			pi.pain.rectangle(x, yframe, w, h, frameColor());
 	}
-	tm.draw(pi, x + border_, y);
+	tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
 }
 
 
@@ -314,7 +319,7 @@ void InsetText::validate(LaTeXFeatures & features) const
 void InsetText::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = bv.textMetrics(&text_).cursorX(sl, boundary) + border_;
+	x = bv.textMetrics(&text_).cursorX(sl, boundary) + TEXT_TO_INSET_OFFSET;
 	y = bv.textMetrics(&text_).cursorY(sl, boundary);
 }
 

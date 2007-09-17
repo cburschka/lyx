@@ -57,7 +57,7 @@ public:
 	int parPosition(pit_type pit) const;
 
 	///
-	Dimension const & dimension() const;
+	Dimension const & dimension() const { return dim_; }
 
 	Point const & origin() const { return origin_; }
 

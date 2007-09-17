@@ -44,6 +44,9 @@ public:
 	///
 	InsetText();
 
+	///
+	Dimension const dimension(BufferView const &) const;
+
 	/// empty inset to empty par
 	void clear();
 	///
@@ -157,8 +160,6 @@ private:
 public:
 	///
 	mutable Text text_;
-	///
-	static int border_;
 };
 
 } // namespace lyx

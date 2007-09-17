@@ -36,8 +36,9 @@
 namespace lyx {
 
 using std::endl;
-using std::string;
+using std::max;
 using std::ostream;
+using std::string;
 
 
 InsetCollapsable::CollapseStatus InsetCollapsable::status() const
@@ -171,10 +172,7 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 
 bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	using std::max;
-
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
-	mi.base.textwidth -= int(1.5 * TEXT_TO_INSET_OFFSET);
 
 	switch (geometry()) {
 	case NoButton:
@@ -224,10 +222,7 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 		break;
 	}
-	dim.asc += TEXT_TO_INSET_OFFSET;
-	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += int(1.5 * TEXT_TO_INSET_OFFSET);
-	mi.base.textwidth += int(1.5 * TEXT_TO_INSET_OFFSET);
+
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;
@@ -246,7 +241,6 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	autoOpen_ = pi.base.bv->cursor().isInside(this);
 	int const old_color = pi.background_color;
 	pi.background_color = backgroundColor();
-	int const xx = x + TEXT_TO_INSET_OFFSET;
 
 	// Draw button first -- top, left or only
 	Dimension dimc = dimensionCollapsed();
@@ -254,12 +248,12 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	if (geometry() == TopButton ||
 	    geometry() == LeftButton ||
 	    geometry() == ButtonOnly) {
-		button_dim.x1 = xx + 0;
-		button_dim.x2 = xx + dimc.width();
+		button_dim.x1 = x + 0;
+		button_dim.x2 = x + dimc.width();
 		button_dim.y1 = y - dimc.asc;
 		button_dim.y2 = y + dimc.des;
 
-		pi.pain.buttonText(xx, y, layout_.labelstring, layout_.labelfont, mouse_hover_);
+		pi.pain.buttonText(x, y, layout_.labelstring, layout_.labelfont, mouse_hover_);
 	} else {
 		button_dim.x1 = 0;
 		button_dim.y1 = 0;
@@ -267,29 +261,30 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y2 = 0;
 	}
 
+	Dimension const textdim = InsetText::dimension(*pi.base.bv);
 	int const baseline = y;
 	int textx, texty;
 	switch (geometry()) {
 	case LeftButton:
-		textx = xx + dimc.width();
+		textx = x + dimc.width();
 		texty = baseline;
 		InsetText::draw(pi, textx, texty);
 		break;
 	case TopButton:
-		textx = xx;
-		texty = baseline + dimc.height();
+		textx = x;
+		texty = baseline + dimc.des + textdim.asc;
 		InsetText::draw(pi, textx, texty);
 		break;
 	case ButtonOnly:
 		break;
 	case NoButton:
-		textx = xx;
+		textx = x;
 		texty = baseline;
 		InsetText::draw(pi, textx, texty);
 		break;
 	case SubLabel:
 	case Corners:
-		textx = xx;
+		textx = x;
 		texty = baseline;
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(false);
 		InsetText::draw(pi, textx, texty);
@@ -301,9 +296,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		else
 			desc -= 3;
 
-		const int xx1 = xx + border_ - 1;
-		const int xx2 = x + dim_.wid - border_ 
-			- TEXT_TO_INSET_OFFSET + 1;
+		const int xx1 = x + TEXT_TO_INSET_OFFSET - 1;
+		const int xx2 = x + dim_.wid - 2 * TEXT_TO_INSET_OFFSET - 1;
 		pi.pain.line(xx1, y + desc - 4, 
 			     xx1, y + desc, 
 			layout_.labelfont.color());
@@ -353,14 +347,12 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		}
 		break;
 	}
-	setPosCache(pi, x, y);
 	pi.background_color = old_color;
 }
 
 
 void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	x += TEXT_TO_INSET_OFFSET;
 	switch (geometry()) {
 	case LeftButton:
 		x += dimensionCollapsed().wid;
@@ -387,15 +379,14 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 	BOOST_ASSERT(geometry() != ButtonOnly);
 
 	InsetText::cursorPos(bv, sl, boundary, x, y);
+	Dimension const textdim = InsetText::dimension(bv);
 
 	switch (geometry()) {
 	case LeftButton:
 		x += dimensionCollapsed().wid;
 		break;
 	case TopButton: {
-		TextMetrics const & tm = bv.textMetrics(&text_);
-		y += dimensionCollapsed().height() - ascent()
-			+ TEXT_TO_INSET_OFFSET + tm.ascent();
+		y += dimensionCollapsed().des + textdim.asc;
 		break;
 	}
 	case NoButton:
@@ -407,7 +398,6 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 		// Cannot get here
 		break;
 	}
-	x += TEXT_TO_INSET_OFFSET;
 }
 
 

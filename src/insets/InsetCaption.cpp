@@ -127,14 +127,11 @@ void InsetCaption::addToToc(TocList & toclist, Buffer const & buf, ParConstItera
 
 bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	int const width_offset = TEXT_TO_INSET_OFFSET / 2;
-
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
 	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
 	dim.wid = labelwidth_;
 	Dimension textdim;
-	dim.wid += width_offset;
 	// Correct for button and label width
 	mi.base.textwidth -= dim.wid;
 	InsetText::metrics(mi, textdim);
@@ -142,8 +139,6 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = std::max(dim.des - textdim.asc + dim.asc, textdim.des);
 	dim.asc = textdim.asc;
 	dim.wid += textdim.wid;
-	dim.asc += TEXT_TO_INSET_OFFSET;
-	dim.des += TEXT_TO_INSET_OFFSET;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;
@@ -160,11 +155,8 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 	// Answer: the text inset (in buffer_funcs.cpp: setCaption).
 
-	labelwidth_ = pi.pain.text(x, y, full_label_, pi.base.font);
-	// add some space to separate the label from the inset text
-	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
+	pi.pain.text(x, y, full_label_, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
-	setPosCache(pi, x, y);
 }
 
 
