@@ -297,7 +297,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			desc -= 3;
 
 		const int xx1 = x + TEXT_TO_INSET_OFFSET - 1;
-		const int xx2 = x + dim_.wid - 2 * TEXT_TO_INSET_OFFSET - 1;
+		const int xx2 = x + textdim.wid - 2 * TEXT_TO_INSET_OFFSET - 1;
 		pi.pain.line(xx1, y + desc - 4, 
 			     xx1, y + desc, 
 			layout_.labelfont.color());
@@ -314,7 +314,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 				xx2, y + desc,
 				layout_.labelfont.color());
 		}
-		pi.pain.line(x + dim_.wid - 3, y + desc, x + dim_.wid - 3, y + desc - 4,
+		pi.pain.line(x + textdim.wid - 3, y + desc, x + textdim.wid - 3, y + desc - 4,
 			layout_.labelfont.color());
 
 		// the label below the text. Can be toggled.
@@ -326,10 +326,9 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			int w = 0;
 			int a = 0;
 			int d = 0;
-			// FIXME UNICODE
 			docstring s = layout_.labelstring;
 			theFontMetrics(font).rectText(s, w, a, d);
-			pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
+			pi.pain.rectText(x + (textdim.wid - w) / 2, y + desc + a,
 				s, font, Color::none, Color::none);
 		}
 
@@ -340,7 +339,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			y += 3;
 			pi.pain.line(xx1, y + 4, xx1, y, layout_.labelfont.color());
 			pi.pain.line(xx1 + 4, y, xx1, y, layout_.labelfont.color());
-			pi.pain.line(xx2, y + 4, x + dim_.wid - 3, y,
+			pi.pain.line(xx2, y + 4, x + textdim.wid - 3, y,
 				layout_.labelfont.color());
 			pi.pain.line(xx2 - 4, y, xx2, y,
 				layout_.labelfont.color());
