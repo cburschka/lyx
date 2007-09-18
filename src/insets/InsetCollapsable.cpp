@@ -295,7 +295,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			desc -= 3;
 
 		const int xx1 = x + TEXT_TO_INSET_OFFSET - 1;
-		const int xx2 = x + textdim.wid - 2 * TEXT_TO_INSET_OFFSET - 1;
+		const int xx2 = x + textdim.wid - TEXT_TO_INSET_OFFSET + 1;
 		pi.pain.line(xx1, y + desc - 4, 
 			     xx1, y + desc, 
 			layout_.labelfont.color());
@@ -330,14 +330,14 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 				s, font, Color::none, Color::none);
 		}
 
-		// a visual clue when the cursor is inside the inset
+		// a visual cue when the cursor is inside the inset
 		Cursor & cur = pi.base.bv->cursor();
 		if (cur.isInside(this)) {
 			y -= ascent();
 			y += 3;
 			pi.pain.line(xx1, y + 4, xx1, y, layout_.labelfont.color());
 			pi.pain.line(xx1 + 4, y, xx1, y, layout_.labelfont.color());
-			pi.pain.line(xx2, y + 4, x + textdim.wid - 3, y,
+			pi.pain.line(xx2, y + 4, xx2, y,
 				layout_.labelfont.color());
 			pi.pain.line(xx2 - 4, y, xx2, y,
 				layout_.labelfont.color());
