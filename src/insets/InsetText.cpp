@@ -174,7 +174,10 @@ bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	font_ = mi.base.font;
 	// Hand font through to contained lyxtext:
 	text_.font_ = mi.base.font;
-	tm.metrics(mi, dim);
+	if (hasFixedWidth())
+		tm.metrics(mi, dim, mi.base.textwidth);
+	else
+		tm.metrics(mi, dim);
 	dim.asc += border_;
 	dim.des += border_;
 	dim.wid += 2 * border_;

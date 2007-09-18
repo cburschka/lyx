@@ -178,12 +178,17 @@ bool InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 	MetricsInfo mi = m;
 	// first round in order to know the minimum size.
 	InsetCollapsable::metrics(mi, dim);
-	TextMetrics & tm = mi.base.bv->textMetrics(&text_);
 	if (hasFixedWidth())
-		mi.base.textwidth =
-			std::max(tm.width() + 2 * border_ + (int) (2.5 * TEXT_TO_INSET_OFFSET),
-				 params_.width.inPixels(m.base.textwidth));
+		mi.base.textwidth = params_.width.inPixels(m.base.textwidth);
 	InsetCollapsable::metrics(mi, dim);
+	if (hasFixedWidth()) {
+		TextMetrics & tm = mi.base.bv->textMetrics(&text_);
+		int min_size = tm.width() + 2 * border_ + (int) (1.5 * TEXT_TO_INSET_OFFSET);
+		if (min_size > mi.base.textwidth) {
+			mi.base.textwidth = min_size;
+			InsetCollapsable::metrics(mi, dim);
+		}
+	}
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;

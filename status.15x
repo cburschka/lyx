@@ -67,6 +67,8 @@ What's new
 
 - The screen label of index insets now displays their content.
 
+- Floats comes now with fixed width on screen (bug 4002).
+
 
 ** Bug fixes:
 *************
@@ -144,6 +146,8 @@ What's new
 
 - Fix bug where the cursor was largely off-screen on document opening
   (bug 3427).
+  
+- Fix bug where fixed width insets not correctly honoured (bug 4029).
 
 
 * DOCUMENTATION

@@ -42,7 +42,7 @@ public:
 	Dimension const & dimension();
 
 	/// compute text metrics.
-	bool metrics(MetricsInfo & mi, Dimension & dim);
+	bool metrics(MetricsInfo & mi, Dimension & dim, int min_width = 0);
 
 	/// Rebreaks the given paragraph.
 	/// \retval true if a full screen redraw is needed.

@@ -140,7 +140,7 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit,
 }
 
 
-bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
+bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 {
 	BOOST_ASSERT(mi.base.textwidth);
 	max_width_ = mi.base.textwidth;
@@ -151,7 +151,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 	bool changed = false;
 
 	unsigned int h = 0;
-	unsigned int w = 0;
+	unsigned int w = min_width;
 	for (pit_type pit = 0, n = text_->paragraphs().size(); pit != n; ++pit) {
 		changed |= redoParagraph(pit);
 		ParagraphMetrics const & pm = parMetrics(pit);

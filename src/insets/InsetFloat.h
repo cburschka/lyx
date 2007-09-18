@@ -49,6 +49,8 @@ public:
 	///
 	~InsetFloat();
 	///
+	bool hasFixedWidth() const { return true; }
+	///
 	docstring name() const { return name_; }
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
