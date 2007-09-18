@@ -2706,6 +2706,7 @@ lib_layouts_inc_files = Split('''
 lib_layouts_module_files = Split('''
     lib/layouts/endnotes.module
     lib/layouts/foottoend.module
+    lib/layouts/logicalmkup.module
     lib/layouts/theorems-ams.module
     lib/layouts/theorems-ams-withinsec.module
     lib/layouts/theorems-std.module
