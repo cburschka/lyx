@@ -1215,12 +1215,12 @@ TextClass const & BufferParams::getTextClass() const
 }
 
 
-TextClass_ptr BufferParams::getTextClass_ptr() const {
+TextClassPtr BufferParams::getTextClassPtr() const {
 	return textClass_;
 }
 
 
-void BufferParams::setTextClass(TextClass_ptr tc) {
+void BufferParams::setTextClass(TextClassPtr tc) {
 	textClass_ = tc;
 }
 

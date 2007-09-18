@@ -1141,7 +1141,7 @@ bool Text::dissolveInset(Cursor & cur) {
 					b.getLanguage());
 		}
 
-		pasteParagraphList(cur, plist, b.params().getTextClass_ptr(),
+		pasteParagraphList(cur, plist, b.params().getTextClassPtr(),
 				   b.errorList("Paste"));
 		// restore position
 		cur.pit() = std::min(cur.lastpit(), spit);

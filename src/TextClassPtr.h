@@ -22,7 +22,7 @@ class TextClass;
 	 *  for example, will still be able to retain the pointer, even when
 	 *  the buffer itself is closed.
  */
-typedef boost::shared_ptr<TextClass> TextClass_ptr;
+typedef boost::shared_ptr<TextClass> TextClassPtr;
 
 }
 #endif

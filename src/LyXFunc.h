@@ -17,7 +17,7 @@
 
 #include "KeySequence.h"
 #include "lfuns.h"
-#include "TextClass_ptr.h"
+#include "TextClassPtr.h"
 
 #include "support/docstring.h"
 
@@ -127,7 +127,7 @@ private:
 	///
 	bool ensureBufferClean(BufferView * bv);
 	///
-	void updateLayout(TextClass_ptr const & oldlayout, Buffer * buffer);
+	void updateLayout(TextClassPtr const & oldlayout, Buffer * buffer);
 };
 
 /// Implementation is in LyX.cpp

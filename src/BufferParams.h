@@ -17,7 +17,7 @@
 
 #include "BiblioInfo.h"
 #include "TextClass.h"
-#include "TextClass_ptr.h"
+#include "TextClassPtr.h"
 #include "paper.h"
 
 #include "insets/InsetQuotes.h"
@@ -106,8 +106,8 @@ public:
 	///by modules.
 	TextClass const & getTextClass() const;
 	///Returns a pointer to the TextClass currently in use: the BaseClass 
-	///as modified by modules. (See \file TextClass_ptr.h for the typedef.)
-	TextClass_ptr getTextClass_ptr() const;
+	///as modified by modules. (See \file TextClassPtr.h for the typedef.)
+	TextClassPtr getTextClassPtr() const;
 	///Set the LyX TextClass---layout file---this document is using.
 	///This does NOT call makeTextClass() and so should be used with
 	///care. This is most likely not what you want if you are operating on 
@@ -119,7 +119,7 @@ public:
 	/// This bypasses the baseClass and sets the textClass directly.
 	/// Should be called with care and would be better not being here,
 	/// but it seems to be needed by CutAndPaste::putClipboard().
-	void setTextClass(TextClass_ptr);
+	void setTextClass(TextClassPtr);
 	/// List of modules in use
 	std::vector<std::string> const & getModules() const;
 	/// Add a module to the list of modules in use.
@@ -313,7 +313,7 @@ private:
 	/// the base TextClass associated with the document
 	textclass_type baseClass_;
 	/// the possibly modular TextClass actually in use
-	TextClass_ptr textClass_;
+	TextClassPtr textClass_;
 	///
 	typedef std::vector<std::string> LayoutModuleList;
 	/// 

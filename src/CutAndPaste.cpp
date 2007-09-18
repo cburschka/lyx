@@ -30,7 +30,7 @@
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Text.h"
-#include "TextClass_ptr.h"
+#include "TextClassPtr.h"
 #include "TextClassList.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
@@ -72,7 +72,7 @@ namespace {
 
 typedef std::pair<pit_type, int> PitPosPair;
 
-typedef limited_stack<pair<ParagraphList, TextClass_ptr> > CutStack;
+typedef limited_stack<pair<ParagraphList, TextClassPtr> > CutStack;
 
 CutStack theCuts(10);
 // persistent selection, cleared until the next selection
@@ -108,7 +108,7 @@ bool checkPastePossible(int index)
 
 pair<PitPosPair, pit_type>
 pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
-		     TextClass_ptr textclass, ErrorList & errorlist)
+		     TextClassPtr textclass, ErrorList & errorlist)
 {
 	Buffer const & buffer = cur.buffer();
 	pit_type pit = cur.pit();
@@ -122,7 +122,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 	// Make a copy of the CaP paragraphs.
 	ParagraphList insertion = parlist;
-	TextClass_ptr const tc = buffer.params().getTextClass_ptr();
+	TextClassPtr const tc = buffer.params().getTextClassPtr();
 
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
@@ -327,7 +327,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 }
 
 
-void putClipboard(ParagraphList const & paragraphs, TextClass_ptr textclass,
+void putClipboard(ParagraphList const & paragraphs, TextClassPtr textclass,
 		  docstring const & plaintext)
 {
 	// For some strange reason gcc 3.2 and 3.3 do not accept
@@ -346,7 +346,7 @@ void putClipboard(ParagraphList const & paragraphs, TextClass_ptr textclass,
 
 void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	pit_type startpit, pit_type endpit,
-	int start, int end, TextClass_ptr tc, CutStack & cutstack)
+	int start, int end, TextClassPtr tc, CutStack & cutstack)
 {
 	BOOST_ASSERT(0 <= start && start <= pars[startpit].size());
 	BOOST_ASSERT(0 <= end && end <= pars[endpit].size());
@@ -403,8 +403,8 @@ docstring grabAndEraseSelection(Cursor & cur)
 }
 
 
-void switchBetweenClasses(TextClass_ptr const & c1, 
-	TextClass_ptr const & c2, InsetText & in, ErrorList & errorlist)
+void switchBetweenClasses(TextClassPtr const & c1, 
+	TextClassPtr const & c2, InsetText & in, ErrorList & errorlist)
 {
 	errorlist.clear();
 
@@ -530,7 +530,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 				text->paragraphs(),
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
-				bp.getTextClass_ptr(), theCuts);
+				bp.getTextClassPtr(), theCuts);
 			// Stuff what we got on the clipboard.
 			// Even if there is no selection.
 			putClipboard(theCuts[0].first, theCuts[0].second,
@@ -614,7 +614,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 
 		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), 
-			cur.buffer().params().getTextClass_ptr(), cutstack);
+			cur.buffer().params().getTextClassPtr(), cutstack);
 		dirtyTabularStack(false);
 	}
 
@@ -626,7 +626,7 @@ void copySelectionToStack(Cursor & cur, CutStack & cutstack)
 		par.layout(bp.getTextClass().defaultLayout());
 		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
-		cutstack.push(make_pair(pars, bp.getTextClass_ptr()));
+		cutstack.push(make_pair(pars, bp.getTextClassPtr()));
 	}
 }
 
@@ -653,7 +653,7 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 		par.layout(bp.getTextClass().defaultLayout());
 		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
-		theCuts.push(make_pair(pars, bp.getTextClass_ptr()));
+		theCuts.push(make_pair(pars, bp.getTextClassPtr()));
 	} else
 		copySelectionToStack(cur, theCuts);
 
@@ -705,7 +705,7 @@ docstring getSelection(Buffer const & buf, size_t sel_index)
 
 
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			TextClass_ptr textclass, ErrorList & errorList)
+			TextClassPtr textclass, ErrorList & errorList)
 {
 	if (cur.inTexted()) {
 		Text * text = cur.text();
@@ -759,7 +759,7 @@ void pasteClipboard(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 			if (buffer.readString(lyx)) {
 				recordUndo(cur);
 				pasteParagraphList(cur, buffer.paragraphs(),
-					buffer.params().getTextClass_ptr(), errorList);
+					buffer.params().getTextClassPtr(), errorList);
 				cur.setSelection();
 				return;
 			}

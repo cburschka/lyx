@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik BjÃ¸nnes
+ * \author Lars Gullik Bjønnes
  * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
@@ -23,7 +23,7 @@
 #ifndef TOOLBARS_H
 #define TOOLBARS_H
 
-#include "TextClass_ptr.h"
+#include "TextClassPtr.h"
 #include "ToolbarBackend.h"
 #include "Session.h"
 
@@ -119,7 +119,7 @@ public:
 	/** Populate the layout combox - returns whether we did a full
 	 *  update or not
 	 */
-	bool updateLayoutList(TextClass_ptr textclass);
+	bool updateLayoutList(TextClassPtr textclass);
 
 	/// Drop down the layout list.
 	void openLayoutList();
@@ -154,7 +154,7 @@ private:
 	ToolbarsMap toolbars_;
 
 	/// The last textclass layout list in the layout choice selector
-	TextClass_ptr last_textclass_;
+	TextClassPtr last_textclass_;
 
 	// load flags with saved values
 	void initFlags(ToolbarInfo & tbinfo);
