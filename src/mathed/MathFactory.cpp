@@ -260,7 +260,7 @@ MathAtom createInsetMath(char const * const s)
 
 MathAtom createInsetMath(docstring const & s)
 {
-	lyxerr << "creating inset with name: '" << to_utf8(s) << '\'' << endl;
+	//lyxerr << "creating inset with name: '" << to_utf8(s) << '\'' << endl;
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		docstring const & inset = l->inset;
