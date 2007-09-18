@@ -610,6 +610,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	LYXERR(Debug::LATEX) << "Log file: " << tmp << endl;
 	FileName const fn = FileName(makeAbsPath(tmp));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
+	bool fle_style;
+	static regex file_line_error(".+\\.\\D+:[0-9]+: (.+)");
 
 	string token;
 	while (getline(ifs, token)) {
@@ -619,11 +621,15 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 		// \r's afterwards, since we need to remove them anyway.
 		token = subst(token, '\0', '\r');
 		token = subst(token, "\r", "");
+		smatch sub;
 
 		LYXERR(Debug::LATEX) << "Log line: " << token << endl;
 
 		if (token.empty())
 			continue;
+
+		if (contains(token, "file:line:error style messages enabled"))
+			fle_style = true;
 
 		if (prefixIs(token, "LaTeX Warning:") ||
 		    prefixIs(token, "! pdfTeX warning")) {
@@ -668,12 +674,17 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					<< "We should rerun." << endl;
 				retval |= RERUN;
 			}
-		} else if (prefixIs(token, "! ")) {
-			// Ok, we have something that looks like a TeX Error
-			// but what do we really have.
+		} else if (prefixIs(token, "! ") ||
+			   fle_style && regex_match(token, sub, file_line_error)) {
+			   // Ok, we have something that looks like a TeX Error
+			   // but what do we really have.
 
 			// Just get the error description:
-			string desc(token, 2);
+			string desc;
+			if (prefixIs(token, "! "))
+				desc = string(token, 2);
+			else if (fle_style)
+				desc = sub.str();
 			if (contains(token, "LaTeX Error:"))
 				retval |= LATEX_ERROR;
 			// get the next line

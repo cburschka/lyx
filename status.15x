@@ -83,6 +83,9 @@ What's new
 - Handle array column specifiers @{decl.}, p{width} and the extensions by
   array.sty in mathed (bug 4132).
 
+- Detect (pdf)tex's file:line:error style messages that are used by some
+  distributions and that caused LyX to ignore LaTeX errors (bug 4222).
+
 * USER INTERFACE:
 
 - Fix crash when clicking in a tabular cell and the "delete empty paragraph"
