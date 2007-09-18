@@ -353,7 +353,7 @@ End
 
 Style Exercise*
 	CopyStyle             Definition*
-	LatexName             xca*
+	LatexName             xca
 	LabelString           "Exercise."
 	Preamble
 	  \theoremstyle{definition}
