@@ -181,7 +181,7 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	case Corners:
 		InsetText::metrics(mi, dim);
 		dim.des -= 3;
-		dim.asc -= 3;
+		dim.asc -= 1;
 		break;
 	case SubLabel: {
 		InsetText::metrics(mi, dim);
