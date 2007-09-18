@@ -175,7 +175,10 @@ bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	// Hand font through to contained lyxtext:
 	tm.font_ = mi.base.font;
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
-	tm.metrics(mi, dim);
+	if (hasFixedWidth())
+		tm.metrics(mi, dim, mi.base.textwidth);
+	else
+		tm.metrics(mi, dim);
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
@@ -191,8 +194,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 
 	if (drawFrame_ || pi.full_repaint) {
-		int const w = hasFixedWidth() ? 
-			tm.maxWidth() : tm.width() + 2 * TEXT_TO_INSET_OFFSET;
+		int const w = tm.width() + 2 * TEXT_TO_INSET_OFFSET;
 		int const yframe = y - TEXT_TO_INSET_OFFSET - tm.ascent();
 		int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
 		if (pi.full_repaint)

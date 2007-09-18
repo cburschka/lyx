@@ -64,7 +64,7 @@ public:
 
 
 	/// compute text metrics.
-	bool metrics(MetricsInfo & mi, Dimension & dim);
+	bool metrics(MetricsInfo & mi, Dimension & dim, int min_width = 0);
 
 	///
 	void newParMetricsDown();

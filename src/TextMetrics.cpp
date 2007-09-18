@@ -182,7 +182,7 @@ int TextMetrics::parPosition(pit_type pit) const
 }
 
 
-bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
+bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 {
 	BOOST_ASSERT(mi.base.textwidth);
 	max_width_ = mi.base.textwidth;
@@ -190,6 +190,7 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim)
 	Dimension const old_dim = dim_;
 	// reset dimension.
 	dim_ = Dimension();
+	dim_.wid = min_width;
 	pit_type const npar = text_->paragraphs().size();
 	if (npar > 1)
 		// If there is more than one row, expand the text to 

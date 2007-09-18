@@ -174,13 +174,13 @@ bool InsetBox::hasFixedWidth() const
 
 bool InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 {
-	MetricsInfo mi = m;
-	// first round in order to know the minimum size.
-	InsetCollapsable::metrics(mi, dim);
+	// back up textwidth.
+	int textwidth_backup = m.base.textwidth;
 	if (hasFixedWidth())
-		mi.base.textwidth =	std::max(dim.width(),
-			params_.width.inPixels(m.base.textwidth));
-	InsetCollapsable::metrics(mi, dim);
+		m.base.textwidth = params_.width.inPixels(m.base.textwidth);
+	InsetCollapsable::metrics(m, dim);
+	// retore textwidth.
+	m.base.textwidth = textwidth_backup;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;

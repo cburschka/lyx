@@ -216,8 +216,6 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 			} else {
 				dim.des += textdim.height() + TEXT_TO_BOTTOM_OFFSET;
 				dim.wid = max(dim.wid, textdim.wid);
-				if (hasFixedWidth())
-					dim.wid = max(dim.wid, mi.base.textwidth);
 			}
 		}
 		break;
