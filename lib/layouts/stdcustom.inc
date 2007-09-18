@@ -4,20 +4,6 @@
 
 Format 5
 
-InsetLayout Custom:Endnote
-   LyXType	custom
-   LatexName	endnote
-   LatexType	command
-   Decoration	classic
-   Font
-     Size	Small
-   EndFont
-   LabelString	endnote
-   Preamble
-     \usepackage{endnotes}
-   EndPreamble
-End
-
 # Error fallback:
 InsetLayout Custom
    LyxType	end
