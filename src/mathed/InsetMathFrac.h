@@ -29,8 +29,7 @@ public:
 		ATOP,
 		NICEFRAC,
 		UNITFRAC,
-		UNIT,
-		UNITFRAC3
+		UNIT
 	};
 
 	///

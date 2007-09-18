@@ -47,6 +47,7 @@ following hack as starting point to write some macros:
 #include "InsetMathComment.h"
 #include "InsetMathDelim.h"
 #include "InsetMathEnv.h"
+#include "InsetMathFrac.h"
 #include "InsetMathKern.h"
 #include "MathMacro.h"
 #include "InsetMathPar.h"
@@ -241,7 +242,7 @@ enum {
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
 	FLAG_BRACK_LAST = 1 << 4,  //  next closing bracket ends the parsing
 	FLAG_TEXTMODE   = 1 << 5,  //  we are in a box
-	FLAG_ITEM       = 1 << 6,  //  read a (possibly braced token)
+	FLAG_ITEM       = 1 << 6,  //  read a (possibly braced) token
 	FLAG_LEAVE      = 1 << 7,  //  leave the loop at the end
 	FLAG_SIMPLE     = 1 << 8,  //  next $ leaves the loop
 	FLAG_EQUATION   = 1 << 9,  //  next \] leaves the loop
@@ -1095,6 +1096,33 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				cell->push_back(MathAtom(new InsetMathSqrt));
 				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			}
+		}
+
+		else if (t.cs() == "unit") {
+			// Allowed formats \unit[val]{unit}
+			MathData ar;
+			parse(ar, FLAG_OPTION, mode);
+			if (ar.size()) {
+				cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::UNIT)));
+				cell->back().nucleus()->cell(0) = ar;
+				parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+			} else {
+				cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::UNIT, 1)));
+				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+			}
+		}
+		else if (t.cs() == "unitfrac") {
+			// Here allowed formats are \unitfrac[val]{num}{denom}
+			MathData ar;
+			parse(ar, FLAG_OPTION, mode);
+			if (ar.size()) {
+				cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC, 3)));
+				cell->back().nucleus()->cell(2) = ar;
+			} else {
+				cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC)));
+			}
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "xrightarrow" || t.cs() == "xleftarrow") {
