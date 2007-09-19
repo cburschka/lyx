@@ -1710,7 +1710,10 @@ Buffer * Buffer::getMasterBuffer()
 	if (!params().parentname.empty()
 	    && theBufferList().exists(params().parentname)) {
 		Buffer * buf = theBufferList().getBuffer(params().parentname);
-		if (buf)
+		//We need to check if the parent is us...
+		//FIXME RECURSIVE INCLUDE
+		//This is not sufficient, since recursive includes could be downstream.
+		if (buf && buf != this)
 			return buf->getMasterBuffer();
 	}
 
