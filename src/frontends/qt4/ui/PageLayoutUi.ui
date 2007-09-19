@@ -5,153 +5,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>388</width>
-    <height>448</height>
+    <width>287</width>
+    <height>264</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <widget class="QGroupBox" name="psizeGB" >
-     <property name="title" >
-      <string>Paper Size</string>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>11</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="paperheightL" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-        <property name="text" >
-         <string>&amp;Height:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>paperheightLE</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="paperwidthL" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-        <property name="text" >
-         <string>&amp;Width:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>paperwidthLE</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" colspan="2" >
-       <widget class="QComboBox" name="papersizeCO" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>1</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip" >
-         <string>Choose a particular paper size, or set your own with "Custom"</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLineEdit" name="paperheightLE" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QLineEdit" name="paperwidthLE" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>5</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2" >
-       <widget class="LengthCombo" name="paperheightUnitCO" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2" >
-       <widget class="LengthCombo" name="paperwidthUnitCO" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="orientationBG" >
-     <property name="title" >
-      <string>Orientation</string>
-     </property>
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>11</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
-       <widget class="QRadioButton" name="portraitRB" >
-        <property name="text" >
-         <string>&amp;Portrait</string>
-        </property>
-        <property name="checked" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="landscapeRB" >
-        <property name="text" >
-         <string>&amp;Landscape</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
+   <item row="6" column="0" colspan="4" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -160,43 +28,207 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="QLabel" name="pagestyleL" >
+      <widget class="QLabel" name="label" >
        <property name="text" >
-        <string>Page &amp;style:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>pagestyleCO</cstring>
+        <string>Page Layout</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="pagestyleCO" >
+      <widget class="QFrame" name="frame" >
        <property name="sizePolicy" >
         <sizepolicy>
-         <hsizetype>5</hsizetype>
+         <hsizetype>7</hsizetype>
          <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="toolTip" >
-        <string>Style used for the page header and footer</string>
+       <property name="frameShape" >
+        <enum>QFrame::HLine</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Sunken</enum>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item>
-    <widget class="QCheckBox" name="facingPagesCB" >
-     <property name="toolTip" >
-      <string>Lay out the page for double-sided printing</string>
+   <item row="0" column="0" colspan="4" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
      </property>
-     <property name="text" >
-      <string>&amp;Two-sided document</string>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_2" >
+       <property name="text" >
+        <string>Paper Format</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame_2" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>7</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="frameShape" >
+        <enum>QFrame::HLine</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Sunken</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1" colspan="2" >
+    <widget class="QComboBox" name="papersizeCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Choose a particular paper size, or set your own with "Custom"</string>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="7" column="1" colspan="2" >
+    <widget class="QComboBox" name="pagestyleCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip" >
+      <string>Style used for the page header and footer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" >
+    <widget class="QLabel" name="pagestyleL" >
+     <property name="text" >
+      <string>Headings &amp;style:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>pagestyleCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2" >
+    <widget class="QRadioButton" name="landscapeRB" >
+     <property name="text" >
+      <string>&amp;Landscape</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2" >
+    <widget class="QRadioButton" name="portraitRB" >
+     <property name="text" >
+      <string>&amp;Portrait</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" >
+    <widget class="LengthCombo" name="paperwidthUnitCO" />
+   </item>
+   <item row="2" column="2" >
+    <widget class="LengthCombo" name="paperheightUnitCO" />
+   </item>
+   <item row="3" column="1" >
+    <widget class="QLineEdit" name="paperwidthLE" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QLineEdit" name="paperheightLE" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="papersizeL" >
+     <property name="text" >
+      <string>&amp;Format:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>papersizeCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="paperheightL" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>&amp;Height:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>paperheightLE</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLabel" name="paperwidthL" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>&amp;Width:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>paperwidthLE</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="label_3" >
+     <property name="text" >
+      <string>&amp;Orientation:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>portraitRB</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -206,7 +238,43 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>20</width>
+       <width>51</width>
+       <height>131</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="8" column="0" colspan="3" >
+    <widget class="QCheckBox" name="facingPagesCB" >
+     <property name="toolTip" >
+      <string>Lay out the page for double-sided printing</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Two-sided document</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
        <height>20</height>
       </size>
      </property>
@@ -214,28 +282,27 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
-   <extends></extends>
-   <header>LengthCombo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
+   <extends>QComboBox</extends>
+   <header>lengthcombo.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>papersizeCO</tabstop>
   <tabstop>paperheightLE</tabstop>
+  <tabstop>paperheightUnitCO</tabstop>
   <tabstop>paperwidthLE</tabstop>
+  <tabstop>paperwidthUnitCO</tabstop>
   <tabstop>portraitRB</tabstop>
   <tabstop>landscapeRB</tabstop>
   <tabstop>pagestyleCO</tabstop>
   <tabstop>facingPagesCB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

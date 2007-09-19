@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
-    <height>379</height>
+    <width>481</width>
+    <height>354</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -50,6 +50,13 @@
         <number>6</number>
        </property>
        <item row="0" column="4" >
+        <widget class="QCheckBox" name="embedCB" >
+         <property name="text" >
+          <string>E&amp;mbed</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3" >
         <widget class="QPushButton" name="editPB" >
          <property name="text" >
           <string>&amp;Edit</string>
@@ -62,7 +69,7 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="3" >
+       <item row="0" column="2" >
         <widget class="QPushButton" name="browsePB" >
          <property name="toolTip" >
           <string>Select an image file</string>
@@ -72,40 +79,13 @@
          </property>
         </widget>
        </item>
-	    <item row="0" column="2">
-           <widget class="QCheckBox" name="embedCB" >
-            <property name="text" >
-             <string></string>
-            </property>
-           </widget>
-       </item>
-       <item row="0" column="1" >
-        <widget class="QLineEdit" name="filename" >
-         <property name="toolTip" >
-          <string>File name of image</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="filenameL" >
-         <property name="toolTip" >
-          <string>File name of image</string>
-         </property>
-         <property name="text" >
-          <string>&amp;File:</string>
-         </property>
-         <property name="buddy" >
-          <cstring>filename</cstring>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0" colspan="5" >
         <widget class="QGroupBox" name="sizeGB" >
          <property name="title" >
           <string>Output Size</string>
          </property>
          <property name="flat" >
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" >
           <property name="margin" >
@@ -227,7 +207,7 @@
           <string>Rotate Graphics</string>
          </property>
          <property name="flat" >
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <layout class="QGridLayout" >
           <property name="margin" >
@@ -295,6 +275,26 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="filenameL" >
+         <property name="toolTip" >
+          <string>File name of image</string>
+         </property>
+         <property name="text" >
+          <string>&amp;File:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>filename</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QLineEdit" name="filename" >
+         <property name="toolTip" >
+          <string>File name of image</string>
+         </property>
         </widget>
        </item>
       </layout>
@@ -474,98 +474,7 @@
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item row="3" column="1" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>21</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="6" column="2" >
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>20</width>
-           <height>41</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="0" colspan="3" >
-        <widget class="QCheckBox" name="unzipCB" >
-         <property name="toolTip" >
-          <string>Don't uncompress image before exporting to LaTeX</string>
-         </property>
-         <property name="text" >
-          <string>Don't un&amp;zip on export</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="3" >
-        <widget class="QGroupBox" name="subfigure" >
-         <property name="focusPolicy" >
-          <enum>Qt::StrongFocus</enum>
-         </property>
-         <property name="title" >
-          <string>S&amp;ubfigure</string>
-         </property>
-         <property name="flat" >
-          <bool>false</bool>
-         </property>
-         <property name="checkable" >
-          <bool>true</bool>
-         </property>
-         <property name="checked" >
-          <bool>false</bool>
-         </property>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="CaptionLA" >
-            <property name="toolTip" >
-             <string>The caption for the sub-figure</string>
-            </property>
-            <property name="text" >
-             <string>Ca&amp;ption:</string>
-            </property>
-            <property name="buddy" >
-             <cstring>subcaption</cstring>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="subcaption" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>3</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="toolTip" >
-             <string>The caption for the sub-figure</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="3" >
+       <item row="4" column="0" colspan="2" >
         <widget class="QGroupBox" name="displayGB" >
          <property name="focusPolicy" >
           <enum>Qt::StrongFocus</enum>
@@ -574,7 +483,7 @@
           <string>Sho&amp;w in LyX</string>
          </property>
          <property name="flat" >
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="checkable" >
           <bool>true</bool>
@@ -586,6 +495,19 @@
           <property name="spacing" >
            <number>6</number>
           </property>
+          <item row="0" column="4" >
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
           <item row="0" column="3" >
            <widget class="QLineEdit" name="displayscale" >
             <property name="enabled" >
@@ -660,7 +582,30 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="1" colspan="2" >
+       <item row="5" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>41</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0" colspan="2" >
+        <widget class="QCheckBox" name="unzipCB" >
+         <property name="toolTip" >
+          <string>Don't uncompress image before exporting to LaTeX</string>
+         </property>
+         <property name="text" >
+          <string>Don't un&amp;zip on export</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
         <widget class="QLineEdit" name="latexoptions" >
          <property name="sizePolicy" >
           <sizepolicy>
@@ -688,7 +633,7 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="3" >
+       <item row="1" column="0" colspan="2" >
         <widget class="QCheckBox" name="draftCB" >
          <property name="toolTip" >
           <string>Draft mode</string>
@@ -696,6 +641,61 @@
          <property name="text" >
           <string>&amp;Draft mode</string>
          </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2" >
+        <widget class="QGroupBox" name="subfigure" >
+         <property name="focusPolicy" >
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="title" >
+          <string>S&amp;ubfigure</string>
+         </property>
+         <property name="flat" >
+          <bool>true</bool>
+         </property>
+         <property name="checkable" >
+          <bool>true</bool>
+         </property>
+         <property name="checked" >
+          <bool>false</bool>
+         </property>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="CaptionLA" >
+            <property name="toolTip" >
+             <string>The caption for the sub-figure</string>
+            </property>
+            <property name="text" >
+             <string>Ca&amp;ption:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>subcaption</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="subcaption" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>3</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip" >
+             <string>The caption for the sub-figure</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
