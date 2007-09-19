@@ -85,6 +85,9 @@ LyXView::~LyXView()
 {
 	disconnectBuffer();
 	disconnectBufferView();
+	delete dialogs_;
+	delete toolbars_;
+	delete autosave_timeout_;
 }
 
 
@@ -228,7 +231,7 @@ void LyXView::connectBufferView(BufferView & bv)
 	update_dialog_connection_ = bv.updateDialog.connect(
 			boost::bind(&LyXView::updateDialog, this, _1, _2));
 	layout_changed_connection_ = bv.layoutChanged.connect(
-			boost::bind(&Toolbars::setLayout, toolbars_.get(), _1));
+			boost::bind(&Toolbars::setLayout, toolbars_, _1));
 }
 
 

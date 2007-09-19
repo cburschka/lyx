@@ -21,3 +21,6 @@
 #include <string>
 #include <utility>
 #include <vector>
+
+#include <QtCore>
+#include <QtGui>

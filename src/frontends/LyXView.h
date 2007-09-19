@@ -18,7 +18,6 @@
 
 #include "LyXFunc.h"
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/utility.hpp>
@@ -57,15 +56,15 @@ class WorkArea;
  */
 class LyXView : public boost::signals::trackable, boost::noncopyable {
 public:
-
+	///
 	LyXView(int id);
-
+	///
 	virtual ~LyXView();
-
+	///
 	int id() const { return id_; }
-
+	///
 	virtual void close() = 0;
-
+	///
 	virtual void setFocus() = 0;
 
 	///
@@ -131,9 +130,9 @@ public:
 	virtual void openMenu(docstring const & name) = 0;
 
 	/// get access to the dialogs
-	Dialogs & getDialogs() { return *dialogs_.get(); }
+	Dialogs & getDialogs() { return *dialogs_; }
 	///
-	Dialogs const & getDialogs() const { return *dialogs_.get(); }
+	Dialogs const & getDialogs() const { return *dialogs_; }
 
 	//@}
 
@@ -193,7 +192,7 @@ protected:
 	void disconnectBuffer();
 
 	/// view's toolbar
-	boost::scoped_ptr<Toolbars> toolbars_;
+	Toolbars * toolbars_;
 
 private:
 	/**
@@ -207,11 +206,9 @@ private:
 	void autoSave();
 
 	/// auto-saving of buffers
-	boost::scoped_ptr<Timeout> const autosave_timeout_;
-	/// our function handler
-	boost::scoped_ptr<LyXFunc> lyxfunc_;
+	Timeout * const autosave_timeout_;
 	/// dialogs for this view
-	boost::scoped_ptr<Dialogs> dialogs_;
+	Dialogs * dialogs_;
 
 	/// buffer structure changed signal connection
 	boost::signals::connection bufferStructureChangedConnection_;
