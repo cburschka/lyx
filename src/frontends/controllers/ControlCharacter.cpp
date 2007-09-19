@@ -26,16 +26,21 @@ namespace lyx {
 namespace frontend {
 
 ControlCharacter::ControlCharacter(Dialog & parent)
-	: Controller(parent),
-	  font_(0), toggleall_(false), reset_lang_(false)
+	: Controller(parent), font_(0), toggleall_(false), reset_lang_(false)
 {}
+
+
+ControlCharacter::~ControlCharacter()
+{
+	delete font_;
+}
 
 
 bool ControlCharacter::initialiseParams(string const &)
 {
 	// Do this the first time only.
-	if (!font_.get())
-		font_.reset(new Font(Font::ALL_IGNORE));
+	if (!font_)
+		font_ = new Font(Font::ALL_IGNORE);
 
 	// so that the user can press Ok
 	if (getFamily()   != Font::IGNORE_FAMILY ||
@@ -51,26 +56,21 @@ bool ControlCharacter::initialiseParams(string const &)
 }
 
 
-void ControlCharacter::clearParams()
-{}
-
-
 void ControlCharacter::dispatchParams()
 {
 	// Nothing to dispatch. (Can be called from the Toolbar.)
-	if (!font_.get())
+	if (!font_)
 		return;
 
 	string data;
-	if (font2string(*font_.get(), toggleall_, data)) {
+	if (font2string(*font_, toggleall_, data))
 		dispatch(FuncRequest(getLfun(), data));
-	}
 }
 
 
 Font::FONT_FAMILY ControlCharacter::getFamily() const
 {
-	if (!font_.get())
+	if (!font_)
 		return Font::IGNORE_FAMILY;
 	return font_->family();
 }
@@ -84,7 +84,7 @@ void ControlCharacter::setFamily(Font::FONT_FAMILY val)
 
 Font::FONT_SERIES ControlCharacter::getSeries() const
 {
-	if (!font_.get())
+	if (!font_)
 		return Font::IGNORE_SERIES;
 	return font_->series();
 }
@@ -98,7 +98,7 @@ void ControlCharacter::setSeries(Font::FONT_SERIES val)
 
 Font::FONT_SHAPE ControlCharacter::getShape() const
 {
-	if (!font_.get())
+	if (!font_)
 		return Font::IGNORE_SHAPE;
 	return font_->shape();
 }
@@ -112,7 +112,7 @@ void ControlCharacter::setShape(Font::FONT_SHAPE val)
 
 Font::FONT_SIZE ControlCharacter::getSize() const
 {
-	if (!font_.get())
+	if (!font_)
 		return Font::IGNORE_SIZE;
 	return font_->size();
 }
@@ -126,7 +126,7 @@ void ControlCharacter::setSize(Font::FONT_SIZE val)
 
 FONT_STATE ControlCharacter::getBar() const
 {
-	if (!font_.get())
+	if (!font_)
 		return IGNORE;
 
 	if (font_->emph() == Font::TOGGLE)
@@ -179,7 +179,7 @@ void ControlCharacter::setBar(FONT_STATE val)
 
 Color_color ControlCharacter::getColor() const
 {
-	if (!font_.get())
+	if (!font_)
 		return Color::ignore;
 
 	return font_->color();
@@ -212,7 +212,7 @@ string ControlCharacter::getLanguage() const
 {
 	if (reset_lang_)
 		return "reset";
-	if (font_.get() && font_->language())
+	if (font_ && font_->language())
 		return font_->language()->lang();
 	return "ignore";
 }

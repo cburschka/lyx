@@ -53,15 +53,14 @@ ControlExternal::ControlExternal(Dialog & parent)
 
 bool ControlExternal::initialiseParams(string const & data)
 {
-	params_.reset(new InsetExternalParams);
-	InsetExternalMailer::string2params(data, buffer(), *params_);
+	InsetExternalMailer::string2params(data, buffer(), params_);
 	return true;
 }
 
 
 void ControlExternal::clearParams()
 {
-	params_.reset();
+	params_ = InsetExternalParams();
 }
 
 
@@ -76,22 +75,18 @@ void ControlExternal::dispatchParams()
 
 void ControlExternal::setParams(InsetExternalParams const & p)
 {
-	BOOST_ASSERT(params_.get());
-	*params_ = p;
+	params_ = p;
 }
 
 
 InsetExternalParams const & ControlExternal::params() const
 {
-	BOOST_ASSERT(params_.get());
-	return *params_;
+	return params_;
 }
 
 
 void ControlExternal::editExternal()
 {
-	BOOST_ASSERT(params_.get());
-
 	dialog().applyView();
 	string const lfun =
 		InsetExternalMailer::params2string(params(), buffer());

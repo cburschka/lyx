@@ -13,16 +13,13 @@
 #define CONTROLWRAP_H
 
 #include "Dialog.h"
-#include <boost/scoped_ptr.hpp>
-
+#include "insets/InsetWrap.h"
 
 namespace lyx {
-
-class InsetWrapParams;
-
 namespace frontend {
 
-class ControlWrap : public Controller  {
+class ControlWrap : public Controller
+{
 public:
 	///
 	ControlWrap(Dialog &);
@@ -35,12 +32,12 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	InsetWrapParams & params() { return *params_.get(); }
+	InsetWrapParams & params() { return params_; }
 	///
-	InsetWrapParams const & params() const { return *params_.get(); }
+	InsetWrapParams const & params() const { return params_; }
 private:
 	///
-	boost::scoped_ptr<InsetWrapParams> params_;
+	InsetWrapParams params_;
 };
 
 } // namespace frontend

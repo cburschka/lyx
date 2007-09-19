@@ -13,18 +13,17 @@
 #ifndef CONTROLBRANCH_H
 #define CONTROLBRANCH_H
 
-
 #include "Dialog.h"
-#include <boost/scoped_ptr.hpp>
+#include "insets/InsetBranch.h"
 
 namespace lyx {
 
 class BranchList;
-class InsetBranchParams;
 
 namespace frontend {
 
-class ControlBranch : public Controller {
+class ControlBranch : public Controller
+{
 public:
 	///
 	ControlBranch(Dialog &);
@@ -37,14 +36,14 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	InsetBranchParams & params() { return *params_.get(); }
-	InsetBranchParams const & params() const { return *params_.get(); }
+	InsetBranchParams & params() { return params_; }
+	///
+	InsetBranchParams const & params() const { return params_; }
 	///
 	BranchList const & branchlist() const;
-
 private:
 	///
-	boost::scoped_ptr<InsetBranchParams> params_;
+	InsetBranchParams params_;
 };
 
 } // namespace frontend

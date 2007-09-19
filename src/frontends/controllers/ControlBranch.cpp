@@ -17,8 +17,6 @@
 #include "BufferParams.h"
 #include "BranchList.h"
 #include "FuncRequest.h"
-#include "insets/InsetBranch.h"
-
 
 using std::string;
 using std::vector;
@@ -33,17 +31,14 @@ ControlBranch::ControlBranch(Dialog & parent)
 
 bool ControlBranch::initialiseParams(string const & data)
 {
-	InsetBranchParams params;
-	InsetBranchMailer::string2params(data, params);
-	params_.reset(new InsetBranchParams(params));
-
+	InsetBranchMailer::string2params(data, params_);
 	return true;
 }
 
 
 void ControlBranch::clearParams()
 {
-	params_.reset();
+	params_ = InsetBranchParams();
 }
 
 void ControlBranch::dispatchParams()

@@ -12,7 +12,6 @@
 
 #include "ControlFloat.h"
 #include "FuncRequest.h"
-#include "insets/InsetFloat.h"
 
 
 using std::string;
@@ -27,16 +26,14 @@ ControlFloat::ControlFloat(Dialog & parent)
 
 bool ControlFloat::initialiseParams(string const & data)
 {
-	InsetFloatParams params;
-	InsetFloatMailer::string2params(data, params);
-	params_.reset(new InsetFloatParams(params));
+	InsetFloatMailer::string2params(data, params_);
 	return true;
 }
 
 
 void ControlFloat::clearParams()
 {
-	params_.reset();
+	params_ = InsetFloatParams();
 }
 
 

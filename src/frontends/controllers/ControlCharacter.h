@@ -14,8 +14,6 @@
 
 #include "Dialog.h"
 #include "Font.h"
-#include <boost/scoped_ptr.hpp>
-
 
 namespace lyx {
 
@@ -36,14 +34,17 @@ enum FONT_STATE {
 	INHERIT
 };
 
-class ControlCharacter : public Controller {
+class ControlCharacter : public Controller
+{
 public:
 	///
 	ControlCharacter(Dialog &);
 	///
+	~ControlCharacter();
+	///
 	virtual bool initialiseParams(std::string const & data);
 	///
-	virtual void clearParams();
+	virtual void clearParams() {}
 	///
 	virtual void dispatchParams();
 	///
@@ -86,7 +87,7 @@ public:
 	bool getToggleAll() const;
 private:
 	///
-	boost::scoped_ptr<Font> font_;
+	Font * font_;
 	///
 	bool toggleall_;
 	/// If true the language should be reset.

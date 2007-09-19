@@ -18,15 +18,17 @@
 
 #include "Dialog.h"
 #include "insets/InsetTabular.h"
-#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 namespace frontend {
 
-class ControlTabular : public Controller {
+class ControlTabular : public Controller
+{
 public:
-
+	///
 	ControlTabular(Dialog &);
+	///
+	~ControlTabular();
 	///
 	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
@@ -78,7 +80,7 @@ private:
 	///
 	Tabular::idx_type active_cell_;
 	///
-	boost::scoped_ptr<Tabular> params_;
+	Tabular * params_;
 };
 
 } // namespace frontend

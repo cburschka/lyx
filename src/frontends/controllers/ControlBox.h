@@ -12,15 +12,12 @@
 #ifndef CONTROLBOX_H
 #define CONTROLBOX_H
 
-
 #include "Dialog.h"
+#include "insets/InsetBox.h"
+
 #include <vector>
-#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
-
-class InsetBoxParams;
-
 namespace frontend {
 
 class ControlBox : public Controller {
@@ -36,13 +33,13 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	InsetBoxParams & params() { return *params_.get(); }
+	InsetBoxParams & params() { return params_; }
 	///
-	InsetBoxParams const & params() const { return *params_.get(); }
+	InsetBoxParams const & params() const { return params_; }
 	///
 private:
 	///
-	boost::scoped_ptr<InsetBoxParams> params_;
+	InsetBoxParams params_;
 };
 
 ///

@@ -24,8 +24,14 @@ namespace lyx {
 namespace frontend {
 
 ControlTabular::ControlTabular(Dialog & parent)
-	: Controller(parent), active_cell_(Tabular::npos)
+	: Controller(parent), active_cell_(Tabular::npos), params_(0)
 {}
+
+
+ControlTabular::~ControlTabular()
+{
+	delete params_;
+}
 
 
 bool ControlTabular::initialiseParams(string const & data)
@@ -46,20 +52,23 @@ bool ControlTabular::initialiseParams(string const & data)
 	}
 
 	if (current_inset && data.empty()) {
-		params_.reset(new Tabular(current_inset->tabular));
+		delete params_;
+		params_ = new Tabular(current_inset->tabular);
 		return true;
 	}
 
 	InsetTabular tmp(buffer());
 	InsetTabularMailer::string2params(data, tmp);
-	params_.reset(new Tabular(tmp.tabular));
+	delete params_;
+	params_ = new Tabular(tmp.tabular);
 	return true;
 }
 
 
 void ControlTabular::clearParams()
 {
-	params_.reset();
+	delete params_;
+	params_ = 0;
 	active_cell_ = Tabular::npos;
 }
 
@@ -72,8 +81,8 @@ Tabular::idx_type ControlTabular::getActiveCell() const
 
 Tabular const & ControlTabular::tabular() const
 {
-	BOOST_ASSERT(params_.get());
-	return *params_.get();
+	BOOST_ASSERT(params_);
+	return *params_;
 }
 
 

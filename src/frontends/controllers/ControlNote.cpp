@@ -28,16 +28,14 @@ ControlNote::ControlNote(Dialog & parent)
 
 bool ControlNote::initialiseParams(string const & data)
 {
-	InsetNoteParams params;
-	InsetNoteMailer::string2params(data, params);
-	params_.reset(new InsetNoteParams(params));
+	InsetNoteMailer::string2params(data, params_);
 	return true;
 }
 
 
 void ControlNote::clearParams()
 {
-	params_.reset();
+	params_ = InsetNoteParams();
 }
 
 

@@ -137,7 +137,7 @@ docstring const escape_special_chars(docstring const & expr)
 	// Note that '[' and '\' must be escaped.
 	// This is a limitation of boost::regex, but all other chars in BREs
 	// are assumed literal.
-	boost::regex reg("[].|*?+(){}^$\\[\\\\]");
+	static const boost::regex reg("[].|*?+(){}^$\\[\\\\]");
 
 	// $& is a perl-like expression that expands to all
 	// of the current match

@@ -14,10 +14,10 @@
 #define CONTROLDOCUMENT_H
 
 #include "Dialog.h"
+#include "BufferParams.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/types.h"
-#include <boost/scoped_ptr.hpp>
 #include <map>
 #include <vector>
 
@@ -35,7 +35,8 @@ typedef std::map<std::string, support::FileName> ModuleMap;
 
 /** A controller for Document dialogs.
  */
-class ControlDocument : public Controller {
+class ControlDocument : public Controller
+{
 public:
 	/// font family names for BufferParams::fontsDefaultFamily
 	static char const * const fontfamilies[5];
@@ -58,7 +59,9 @@ public:
 	///
 	TextClass const & textClass() const;
 	///
-	BufferParams & params() const;
+	BufferParams & params() { return bp_; }
+	///
+	BufferParams const & params() const { return bp_; }
 	///
 	BufferId id() const;
 	/// List of available modules
@@ -85,7 +88,7 @@ private:
 	///
 	void loadModuleNames();
 	///
-	boost::scoped_ptr<BufferParams> bp_;
+	BufferParams bp_;
 	/// List of names of available modules
 	std::vector<std::string> moduleNames_;
 };

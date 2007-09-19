@@ -13,15 +13,13 @@
 #define CONTROLFLOAT_H
 
 #include "Dialog.h"
-#include <boost/scoped_ptr.hpp>
+#include "insets/InsetFloat.h"
 
 namespace lyx {
-
-class InsetFloatParams;
-
 namespace frontend {
 
-class ControlFloat : public Controller {
+class ControlFloat : public Controller
+{
 public:
 	///
 	ControlFloat(Dialog &);
@@ -34,12 +32,12 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	InsetFloatParams & params() { return *params_.get(); }
+	InsetFloatParams & params() { return params_; }
 	///
-	InsetFloatParams const & params() const { return *params_.get(); }
+	InsetFloatParams const & params() const { return params_; }
 private:
 	///
-	boost::scoped_ptr<InsetFloatParams> params_;
+	InsetFloatParams params_;
 };
 
 } // namespace frontend

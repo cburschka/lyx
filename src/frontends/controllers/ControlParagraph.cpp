@@ -68,16 +68,13 @@ bool ControlParagraph::initialiseParams(string const & data)
 		}
 	}
 
-	ParagraphParameters * tmp = new ParagraphParameters;
-	tmp->read(lex);
+	ParagraphParameters tmp;
+	tmp.read(lex);
 
 	// For now, only reset the params on "show".
 	// Don't bother checking if the params are different on "update"
-	if (action == 0) {
-		params_.reset(tmp);
-	} else {
-		delete tmp;
-	}
+	if (action == 0)
+		params_ = tmp;
 
 	// Read the rest of the data irrespective of "show" or "update"
 	int nset = 0;
@@ -124,7 +121,7 @@ bool ControlParagraph::initialiseParams(string const & data)
 
 void ControlParagraph::clearParams()
 {
-	params_.reset();
+	params_ = ParagraphParameters();
 }
 
 
@@ -137,20 +134,6 @@ void ControlParagraph::dispatchParams()
 }
 
 
-ParagraphParameters & ControlParagraph::params()
-{
-	BOOST_ASSERT(params_.get());
-	return *params_;
-}
-
-
-ParagraphParameters const & ControlParagraph::params() const
-{
-	BOOST_ASSERT(params_.get());
-	return *params_;
-}
-
-
 bool ControlParagraph::haveMulitParSelection()
 {
 	Cursor cur = bufferview()->cursor();
@@ -158,12 +141,6 @@ bool ControlParagraph::haveMulitParSelection()
 }
 
 	
-bool ControlParagraph::inInset() const
-{
-	return ininset_;
-}
-
-
 bool ControlParagraph::canIndent() const
 {
 	return buffer().params().paragraph_separation ==

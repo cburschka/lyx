@@ -30,5 +30,4 @@ void assertion_failed(char const * /*expr*/, char const * /*function*/,
 	::abort();
 }
 
-
 }

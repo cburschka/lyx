@@ -12,7 +12,6 @@
 
 #include "ControlBox.h"
 #include "FuncRequest.h"
-#include "insets/InsetBox.h"
 #include "gettext.h"
 
 
@@ -23,16 +22,13 @@ namespace lyx {
 namespace frontend {
 
 ControlBox::ControlBox(Dialog & parent)
-	: Controller(parent)
+	: Controller(parent), params_("")
 {}
 
 
 bool ControlBox::initialiseParams(string const & data)
 {
-	InsetBoxParams params("");
-	InsetBoxMailer::string2params(data, params);
-	params_.reset(new InsetBoxParams(params));
-
+	InsetBoxMailer::string2params(data, params_);
 	return true;
 
 }
@@ -40,7 +36,7 @@ bool ControlBox::initialiseParams(string const & data)
 
 void ControlBox::clearParams()
 {
-	params_.reset();
+	params_ = InsetBoxParams("");
 }
 
 

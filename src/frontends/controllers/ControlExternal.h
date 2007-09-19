@@ -15,19 +15,13 @@
 #define CONTROLEXTERNAL_H
 
 #include "Dialog.h"
-
 #include "support/types.h"
-
-#include <boost/scoped_ptr.hpp>
+#include "insets/InsetExternal.h"
 
 #include <string>
 #include <vector>
 
-
 namespace lyx {
-
-class InsetExternalParams;
-
 namespace external {
 
 class Template;
@@ -78,7 +72,7 @@ public:
 	bool bbChanged() const { return bb_changed_; }
 private:
 	///
-	boost::scoped_ptr<InsetExternalParams> params_;
+	InsetExternalParams params_;
 	bool bb_changed_;
 };
 

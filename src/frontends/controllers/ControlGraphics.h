@@ -14,14 +14,12 @@
 #ifndef CONTROLGRAPHICS_H
 #define CONTROLGRAPHICS_H
 
-
 #include "Dialog.h"
-
 #include "support/docstring.h"
+#include "insets/InsetGraphics.h"
 
 #include <utility>
 #include <vector>
-#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 
@@ -34,7 +32,8 @@ class LyXView;
 
 /** A controller for Graphics dialogs.
  */
-class ControlGraphics : public Controller {
+class ControlGraphics : public Controller
+{
 public:
 	///
 	ControlGraphics(Dialog &);
@@ -47,9 +46,9 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	InsetGraphicsParams & params() { return *params_.get(); }
+	InsetGraphicsParams & params() { return params_; }
 	///
-	InsetGraphicsParams const & params() const { return *params_.get(); }
+	InsetGraphicsParams const & params() const { return params_; }
 
 	/// Browse for a file
 	docstring const browse(docstring const &) const;
@@ -64,7 +63,7 @@ public:
 
 private:
 	///
-	boost::scoped_ptr<InsetGraphicsParams> params_;
+	InsetGraphicsParams params_;
 };
 
 

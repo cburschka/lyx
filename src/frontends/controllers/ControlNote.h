@@ -12,18 +12,15 @@
 #ifndef CONTROLNOTE_H
 #define CONTROLNOTE_H
 
-
 #include "Dialog.h"
+#include "insets/InsetNote.h"
 #include <vector>
-#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
-
-class InsetNoteParams;
-
 namespace frontend {
 
-class ControlNote : public Controller {
+class ControlNote : public Controller
+{
 public:
 	///
 	ControlNote(Dialog &);
@@ -36,13 +33,13 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	InsetNoteParams & params() { return *params_.get(); }
+	InsetNoteParams & params() { return params_; }
 	///
-	InsetNoteParams const & params() const { return *params_.get(); }
+	InsetNoteParams const & params() const { return params_; }
 	///
 private:
 	///
-	boost::scoped_ptr<InsetNoteParams> params_;
+	InsetNoteParams params_;
 };
 
 } // namespace frontend

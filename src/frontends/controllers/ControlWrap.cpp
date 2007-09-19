@@ -12,7 +12,6 @@
 
 #include "ControlWrap.h"
 #include "FuncRequest.h"
-#include "insets/InsetWrap.h"
 
 
 using std::string;
@@ -27,16 +26,14 @@ ControlWrap::ControlWrap(Dialog & parent)
 
 bool ControlWrap::initialiseParams(string const & data)
 {
-	InsetWrapParams params;
-	InsetWrapMailer::string2params(data, params);
-	params_.reset(new InsetWrapParams(params));
+	InsetWrapMailer::string2params(data, params_);
 	return true;
 }
 
 
 void ControlWrap::clearParams()
 {
-	params_.reset();
+	params_ = InsetWrapParams();
 }
 
 

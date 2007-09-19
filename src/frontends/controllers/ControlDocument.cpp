@@ -63,8 +63,7 @@ ControlDocument::~ControlDocument()
 
 bool ControlDocument::initialiseParams(string const &)
 {
-	bp_.reset(new BufferParams);
-	*bp_ = buffer().params();
+	bp_ = buffer().params();
 	loadModuleNames();
 	return true;
 }
@@ -72,14 +71,7 @@ bool ControlDocument::initialiseParams(string const &)
 
 void ControlDocument::clearParams()
 {
-	bp_.reset();
-}
-
-
-BufferParams & ControlDocument::params() const
-{
-	BOOST_ASSERT(bp_.get());
-	return *bp_;
+	bp_ = BufferParams();
 }
 
 
@@ -122,7 +114,7 @@ ControlDocument::getPackageList(string const & modName) const
 
 TextClass const & ControlDocument::textClass() const
 {
-	return textclasslist[bp_->getBaseClass()];
+	return textclasslist[bp_.getBaseClass()];
 }
 
 
@@ -175,7 +167,7 @@ void ControlDocument::dispatchParams()
 
 void ControlDocument::setLanguage() const
 {
-	Language const * const newL = bp_->language;
+	Language const * const newL = bp_.language;
 	if (buffer().params().language == newL)
 		return;
 

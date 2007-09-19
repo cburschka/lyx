@@ -23,8 +23,6 @@
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsImage.h"
 
-#include "insets/InsetGraphics.h"
-
 #include "support/convert.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
@@ -60,16 +58,14 @@ ControlGraphics::ControlGraphics(Dialog & parent)
 
 bool ControlGraphics::initialiseParams(string const & data)
 {
-	InsetGraphicsParams params;
-	InsetGraphicsMailer::string2params(data, buffer(), params);
-	params_.reset(new InsetGraphicsParams(params));
+	InsetGraphicsMailer::string2params(data, buffer(), params_);
 	return true;
 }
 
 
 void ControlGraphics::clearParams()
 {
-	params_.reset();
+	params_ = InsetGraphicsParams();
 }
 
 
@@ -96,9 +92,7 @@ docstring const ControlGraphics::browse(docstring const & in_name) const
 	pair<docstring, docstring> dir2(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
 	// Show the file browser dialog
 	return browseRelFile(in_name, from_utf8(bufferFilepath()),
-			     title,
-			     FileFilterList(),
-			     false, dir1, dir2);
+		title, FileFilterList(), false, dir1, dir2);
 }
 
 
@@ -140,8 +134,6 @@ bool ControlGraphics::isFilenameValid(string const & fname) const
 
 void ControlGraphics::editGraphics()
 {
-	BOOST_ASSERT(params_.get());
-
 	dialog().applyView();
 	string const lfun =
 		InsetGraphicsMailer::params2string(params(), buffer());

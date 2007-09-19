@@ -14,20 +14,16 @@
 #define CONTROLPRINT_H
 
 #include "Dialog.h"
-
+#include "PrinterParams.h"
 #include "support/docstring.h"
 
-#include <boost/scoped_ptr.hpp>
-
 namespace lyx {
-
-class PrinterParams;
-
 namespace frontend {
 
 /** A controller for Print dialogs.
  */
-class ControlPrint : public Controller {
+class ControlPrint : public Controller
+{
 public:
 	///
 	ControlPrint(Dialog &);
@@ -47,10 +43,12 @@ public:
 	/// Browse for a file
 	docstring const browse(docstring const &) const;
 	///
-	PrinterParams & params() const;
+	PrinterParams & params() { return params_; }
+	///
+	PrinterParams const & params() const { return params_; }
 private:
 	///
-	boost::scoped_ptr<PrinterParams> params_;
+	PrinterParams params_;
 };
 
 } // namespace frontend

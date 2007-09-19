@@ -18,7 +18,6 @@
 #include "BufferParams.h"
 #include "FuncRequest.h"
 #include "gettext.h"
-#include "PrinterParams.h"
 
 #include "support/convert.h"
 #include "support/FileFilterList.h"
@@ -35,8 +34,7 @@ namespace frontend {
 
 
 ControlPrint::ControlPrint(Dialog & parent)
-	: Controller(parent),
-	  params_(0)
+	: Controller(parent)
 {}
 
 
@@ -45,8 +43,7 @@ bool ControlPrint::initialiseParams(std::string const &)
 	/// get global printer parameters
 	string const name =  changeExtension(buffer().fileName(),
 					lyxrc.print_file_extension);
-	params_.reset(new PrinterParams(PrinterParams::PRINTER,
-					lyxrc.printer, name));
+	params_ = PrinterParams(PrinterParams::PRINTER, lyxrc.printer, name);
 
 	dialog().setButtonsValid(true); // so that the user can press Ok
 	return true;
@@ -55,14 +52,7 @@ bool ControlPrint::initialiseParams(std::string const &)
 
 void ControlPrint::clearParams()
 {
-	params_.reset();
-}
-
-
-PrinterParams & ControlPrint::params() const
-{
-	BOOST_ASSERT(params_.get());
-	return *params_;
+	params_ = PrinterParams();
 }
 
 

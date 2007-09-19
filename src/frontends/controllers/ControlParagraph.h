@@ -14,15 +14,13 @@
 
 #include "Dialog.h"
 #include "Layout.h" // for LyXAlignment
-#include <boost/scoped_ptr.hpp>
+#include "ParagraphParameters.h"
 
 namespace lyx {
-
-class ParagraphParameters;
-
 namespace frontend {
 
-class ControlParagraph : public Controller {
+class ControlParagraph : public Controller
+{
 public:
 	///
 	ControlParagraph(Dialog &);
@@ -35,13 +33,13 @@ public:
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	ParagraphParameters & params();
+	ParagraphParameters & params() { return params_; }
 	///
-	ParagraphParameters const & params() const;
+	ParagraphParameters const & params() const { return params_; }
 	///
 	bool haveMulitParSelection();
 	///
-	bool inInset() const;
+	bool inInset() const { return ininset_; }
 	///
 	bool canIndent() const;
 	///
@@ -51,7 +49,7 @@ public:
 
 private:
 	///
-	boost::scoped_ptr<ParagraphParameters> params_;
+	ParagraphParameters params_;
 	///
 	bool ininset_;
 	///
