@@ -465,14 +465,12 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 
 
 	langModule = new UiWidget<Ui::LanguageUi>;
-	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)),
-		langModule->encodingL, SLOT(setDisabled(bool)));
-	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)),
-		langModule->encodingCO, SLOT(setDisabled(bool)));
 	// language & quote
 	connect(langModule->languageCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(langModule->defaultencodingCB, SIGNAL(clicked()),
+	connect(langModule->defaultencodingRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(langModule->otherencodingRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(langModule->encodingCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
@@ -971,7 +969,7 @@ void GuiDocumentDialog::apply(BufferParams & params)
 		biblioModule->bibtopicCB->isChecked();
 
 	// language & quotes
-	if (langModule->defaultencodingCB->isChecked()) {
+	if (langModule->defaultencodingRB->isChecked()) {
 		params.inputenc = "auto";
 	} else {
 		int i = langModule->encodingCO->currentIndex();
@@ -1274,10 +1272,9 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	langModule->quoteStyleCO->setCurrentIndex(
 		params.quotes_language);
 
-	langModule->defaultencodingCB->setChecked(true);
-
+	bool default_enc = true;
 	if (params.inputenc != "auto") {
-		langModule->defaultencodingCB->setChecked(false);
+		default_enc = false;
 		if (params.inputenc == "default") {
 			langModule->encodingCO->setCurrentIndex(0);
 		} else {
@@ -1287,9 +1284,11 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 				langModule->encodingCO->setCurrentIndex(i);
 			else
 				// unknown encoding. Set to default.
-				langModule->defaultencodingCB->setChecked(true);
+				default_enc = true;
 		}
 	}
+	langModule->defaultencodingRB->setChecked(default_enc);
+	langModule->otherencodingRB->setChecked(!default_enc);
 
 	// numbering
 	int const min_toclevel = controller().textClass().min_toclevel();
