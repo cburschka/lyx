@@ -15,7 +15,7 @@
 #define CUTANDPASTE_H
 
 #include "support/docstring.h"
-#include "TextClassPtr.h"
+#include "TextClass.h"
 
 #include <vector>
 

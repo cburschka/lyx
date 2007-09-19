@@ -774,7 +774,7 @@ void GuiViewBase::busy(bool yes)
 }
 
 
-Toolbars::ToolbarPtr GuiViewBase::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
+Toolbar * GuiViewBase::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
 {
 	GuiToolbar * toolBar = new GuiToolbar(tbinfo, *this);
 
@@ -817,7 +817,7 @@ Toolbars::ToolbarPtr GuiViewBase::makeToolbar(ToolbarInfo const & tbinfo, bool n
 	toolBar->move(tbinfo.posx, tbinfo.posy);
 	*/
 
-	return Toolbars::ToolbarPtr(toolBar);
+	return toolBar;
 }
 
 

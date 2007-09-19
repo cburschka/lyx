@@ -275,6 +275,12 @@ private:
 /// convert page sides option to text 1 or 2
 std::ostream & operator<<(std::ostream & os, TextClass::PageSides p);
 
+/** Shared pointer for possibly modular layout. Needed so that paste,
+ *  for example, will still be able to retain the pointer, even when
+ *  the buffer itself is closed.
+ */
+typedef boost::shared_ptr<TextClass> TextClassPtr;
+
 
 } // namespace lyx
 

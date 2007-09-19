@@ -30,7 +30,6 @@
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Text.h"
-#include "TextClassPtr.h"
 #include "TextClassList.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"

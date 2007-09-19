@@ -254,7 +254,6 @@ liblyxcore_la_SOURCES = \
 	Text3.cpp \
 	TextClass.cpp \
 	TextClass.h \
-	TextClass_ptr.h \
 	TextClassList.cpp \
 	TextClassList.h \
 	TextMetrics.cpp \

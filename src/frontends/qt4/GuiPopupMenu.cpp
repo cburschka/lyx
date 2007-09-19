@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-#include <boost/current_function.hpp>
-
 // Qt defines a macro 'signals' that clashes with a boost namespace.
 // All is well if the namespace is visible first.
 #include "GuiView.h"
@@ -21,6 +19,7 @@
 #include "GuiPopupMenu.h"
 #include "GuiMenubar.h"
 #include "qt_helpers.h"
+#include "LyXFunc.h"
 #include "MenuBackend.h"
 
 #include "support/lstrings.h"
@@ -51,7 +50,7 @@ GuiPopupMenu::GuiPopupMenu(GuiMenubar * owner,
 
 void GuiPopupMenu::updateView()
 {
-	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION << endl;
+	LYXERR(Debug::GUI) << "GuiPopupMenu::updateView()" << endl;
 	LYXERR(Debug::GUI) << "\tTriggered menu: " << to_utf8(name_) << endl;
 
 	clear();

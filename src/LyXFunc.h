@@ -17,7 +17,7 @@
 
 #include "KeySequence.h"
 #include "lfuns.h"
-#include "TextClassPtr.h"
+#include "TextClass.h"
 
 #include "support/docstring.h"
 

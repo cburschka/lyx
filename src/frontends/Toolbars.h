@@ -23,7 +23,7 @@
 #ifndef TOOLBARS_H
 #define TOOLBARS_H
 
-#include "TextClassPtr.h"
+#include "TextClass.h"
 #include "ToolbarBackend.h"
 #include "Session.h"
 

@@ -316,7 +316,7 @@ void Toolbars::clearLayoutList()
 
 void Toolbars::add(ToolbarInfo const & tbinfo, bool newline)
 {
-	ToolbarPtr tb_ptr = owner_.makeToolbar(tbinfo, newline);
+	ToolbarPtr tb_ptr(owner_.makeToolbar(tbinfo, newline));
 	toolbars_[tbinfo.name] = tb_ptr;
 
 	if (tbinfo.flags & ToolbarInfo::ON)

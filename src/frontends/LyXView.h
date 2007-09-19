@@ -14,9 +14,7 @@
 #define LYXVIEW_H
 
 #include "frontends/Application.h"
-#include "frontends/Toolbars.h"
-
-#include "LyXFunc.h"
+#include "support/docstring.h"
 
 #include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
@@ -33,13 +31,15 @@ class Buffer;
 class BufferView;
 class FuncRequest;
 class Inset;
-class LyXFunc;
 class Timeout;
+class ToolbarInfo;
 
 namespace frontend {
 
 class Dialogs;
 class WorkArea;
+class Toolbar;
+class Toolbars;
 
 /**
  * LyXView - main LyX window
@@ -110,7 +110,7 @@ public:
 	/// show busy cursor
 	virtual void busy(bool) = 0;
 
-	virtual Toolbars::ToolbarPtr makeToolbar(ToolbarInfo const & tbinfo, bool newline) = 0;
+	virtual Toolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline) = 0;
 
 	//@{ generic accessor functions
 

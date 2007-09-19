@@ -16,7 +16,6 @@
 
 #include "support/FileName.h"
 #include "support/socktools.h"
-#include "LyXFunc.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -27,6 +26,7 @@
 namespace lyx {
 
 class LyXDataSocket;
+class LyXFunc;
 
 
 /** Sockets can be in two states: listening and connected.

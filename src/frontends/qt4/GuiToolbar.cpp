@@ -20,8 +20,9 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "LyXFunc.h"
 #include "IconPalette.h"
+#include "LyXFunc.h"
+#include "ToolbarBackend.h"
 
 #include "GuiView.h"
 #include "GuiCommandBuffer.h"
@@ -30,10 +31,11 @@
 #include "Action.h"
 #include "qt_helpers.h"
 #include "InsertTableWidget.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h"
+
 #include "controllers/ControlMath.h"
-#include "ToolbarBackend.h"
 
 #include <QComboBox>
 #include <QToolBar>
