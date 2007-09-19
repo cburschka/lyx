@@ -931,9 +931,9 @@ PrefConverters::PrefConverters(GuiPrefsDialog * form, QWidget * parent)
 		this, SLOT(converter_changed()));
 	connect(converterToCO, SIGNAL(activated(const QString&)),
 		this, SLOT(converter_changed()));
-	connect(converterED, SIGNAL(textChanged(const QString&)),
+	connect(converterED, SIGNAL(textEdited(const QString&)),
 		this, SLOT(converter_changed()));
-	connect(converterFlagED, SIGNAL(textChanged(const QString&)),
+	connect(converterFlagED, SIGNAL(textEdited(const QString&)),
 		this, SLOT(converter_changed()));
 	connect(converterNewPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -941,7 +941,7 @@ PrefConverters::PrefConverters(GuiPrefsDialog * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(converterModifyPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(maxAgeLE, SIGNAL(textChanged(const QString&)),
+	connect(maxAgeLE, SIGNAL(textEdited(const QString&)),
 		this, SIGNAL(changed()));
 
 	maxAgeLE->setValidator(new QDoubleValidator(maxAgeLE));
@@ -968,6 +968,8 @@ void PrefConverters::update(LyXRC const & rc)
 
 void PrefConverters::updateGui()
 {
+	form_->formats().sort();
+	form_->converters().update(form_->formats());
 	// save current selection
 	QString current = converterFromCO->currentText()
 		+ " -> " + converterToCO->currentText();
@@ -1035,8 +1037,8 @@ void PrefConverters::converter_changed()
 
 void PrefConverters::updateButtons()
 {
-	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
-	Format const & to(form_->formats().get(converterToCO->currentIndex()));
+	Format const & from = form_->formats().get(converterFromCO->currentIndex());
+	Format const & to = form_->formats().get(converterToCO->currentIndex());
 	int const sel = form_->converters().getNumber(from.name(), to.name());
 	bool const known = !(sel < 0);
 	bool const valid = !(converterED->text().isEmpty()
@@ -1331,7 +1333,6 @@ void PrefFileformats::updatePrettyname()
 		return;
 
 	currentFormat().setPrettyname(newname);
-	form_->converters().update(form_->formats());
 	formatsChanged();
 	updateView();
 	changed();
@@ -1368,7 +1369,6 @@ void PrefFileformats::on_formatRemovePB_clicked()
 	}
 
 	form_->formats().erase(current_text);
-	form_->converters().update(form_->formats());
 	formatsChanged();
 	updateView();
 	on_formatsCB_editTextChanged(formatsCB->currentText());
