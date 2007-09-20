@@ -782,9 +782,8 @@ Backspace
 Cut
 \family default
  command.
- Also, if you've selected text, be careful.
- If you hit a key, LyX will completely delete the selected text and replace
- it with what you just typed.
+ Also, if you've selected text, be careful: If you hit a key, LyX will completel
+y delete the selected text and replace it with what you just typed.
  You'll have to do an 
 \family sans
 Undo
@@ -793,6 +792,11 @@ Undo
 \end_layout
 
 \begin_layout Standard
+\begin_inset LatexCommand index
+name "Paste"
+
+\end_inset
+
 You can also copy text between LyX and other programs by cut, copy and paste.
  The submenu of 
 \family sans
@@ -830,7 +834,13 @@ Lines
 
 \begin_layout Standard
 \begin_inset LatexCommand index
-name "Dialogs ! Find \\& Replace"
+name "Replace"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Find"
 
 \end_inset
 
@@ -9485,7 +9495,7 @@ name "Character Styles"
 
 
 \begin_inset LatexCommand index
-name "Dialogs ! Text Style"
+name "Text Style"
 
 \end_inset
 
@@ -9654,12 +9664,6 @@ name "sub:Fine-Tuning-with-the"
 
 \begin_inset LatexCommand index
 name "Text Style"
-
-\end_inset
-
-
-\begin_inset LatexCommand index
-name "Dialogs ! Text Style"
 
 \end_inset
 
@@ -11838,7 +11842,7 @@ Destination
 \family sans
 Printer
 \family default
- This is the name of the printer to print to
+ This is the name of the printer to print to.
 \begin_inset Foot
 status collapsed
 
@@ -11865,7 +11869,6 @@ reference "sub:Printer"
 
 \end_inset
 
-.
  The printer should understand PostScript.
 \end_layout
 
@@ -31010,12 +31013,6 @@ Selects the whole document.
 
 \begin_layout Subsection
 Find & Replace
-\begin_inset LatexCommand index
-name "Dialogs ! Find \\& Replace"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -31040,12 +31037,6 @@ This shifts the paragraph where the cursor is currently in one paragraph
 
 \begin_layout Subsection
 Text Style
-\begin_inset LatexCommand index
-name "Dialogs ! Text Style"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -34906,7 +34897,11 @@ Item
 \begin_inset Quotes erd
 \end_inset
 
-menu or button name
+menu 
+\series default
+or
+\series bold
+ button name
 \begin_inset Quotes erd
 \end_inset
 
@@ -35001,8 +34996,12 @@ XEmacs
 \end_layout
 
 \begin_layout Description
-mac.bind set of bindings for Mac\InsetSpace \thinspace{}
-OS systems.
+mac.bind set of bindings for 
+\family sans
+Mac\InsetSpace \thinspace{}
+OS
+\family default
+ systems.
 \end_layout
 
 \begin_layout Standard
@@ -35355,6 +35354,12 @@ reference "sec:Previewing-snippets-of"
 Keyboard Map
 \begin_inset LatexCommand index
 name "Keyboard Map"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Settings ! Keyboard Map"
 
 \end_inset
 
@@ -36107,7 +36112,7 @@ The submenu
 \family sans
 Paths
 \family default
- is only available with the Windows version of LyX.
+ is only available in the Windows version of LyX.
  The option 
 \family sans
 Use Windows-style paths in LaTeX files
@@ -36916,11 +36921,11 @@ key "lyxcredit"
 \begin_layout Standard
 
 \newpage
-Bibliography created with the 
+The bibliography on the following page was created with the 
 \family sans
 Bibliography
 \family default
- environment:
+ environment.
 \end_layout
 
 \begin_layout Bibliography
