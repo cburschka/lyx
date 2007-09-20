@@ -1135,7 +1135,7 @@ void FormatValidator::fixup(QString & input) const
 }
 
 
-QValidator::State FormatValidator::validate(QString & input, int & pos) const
+QValidator::State FormatValidator::validate(QString & input, int & /*pos*/) const
 {
 	Formats::const_iterator cit = formats_.begin();
 	Formats::const_iterator end = formats_.end();
