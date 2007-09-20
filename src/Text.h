@@ -14,15 +14,7 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include "Bidi.h"
-#include "DispatchResult.h"
-#include "Font.h"
-#include "Layout.h"
-#include "lyxlayout_ptr_fwd.h"
 #include "ParagraphList.h"
-
-#include <iosfwd>
-
 
 namespace lyx {
 
@@ -32,6 +24,7 @@ class BufferView;
 class CursorSlice;
 class DocIterator;
 class ErrorList;
+class Font;
 class FuncRequest;
 class FuncStatus;
 class Inset;

@@ -37,10 +37,10 @@
 #define INSETTABULAR_H
 
 #include "Inset.h"
-#include "MailInset.h"
-#include "Length.h"
 #include "InsetText.h"
-
+#include "Layout.h"
+#include "Length.h"
+#include "MailInset.h"
 
 #include <boost/shared_ptr.hpp>
 

@@ -12,7 +12,6 @@
 #ifndef BUFFER_FUNCS_H
 #define BUFFER_FUNCS_H
 
-#include "lyxlayout_ptr_fwd.h"
 #include "support/docstring.h"
 
 #include <string>

@@ -27,6 +27,7 @@
 #include "Language.h"
 #include "LaTeX.h"
 #include "LyX.h"
+#include "lyxlayout_ptr_fwd.h"
 #include "TextClass.h"
 #include "TextClassList.h"
 #include "Paragraph.h"

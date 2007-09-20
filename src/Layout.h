@@ -205,9 +205,9 @@ public:
 	///
 	std::string const & latexname() const { return latexname_; }
 	///
-	lyx::docstring const & labelstring() const { return labelstring_; }
+	docstring const & labelstring() const { return labelstring_; }
 	///
-	lyx::docstring const & endlabelstring() const { return endlabelstring_; }
+	docstring const & endlabelstring() const { return endlabelstring_; }
 	///
 	docstring const & preamble() const { return preamble_; }
 	///
@@ -219,7 +219,7 @@ public:
 	///
 	std::string const & itemtag() const { return itemtag_; }
 	///
-	lyx::docstring const & labelstring_appendix() const {
+	docstring const & labelstring_appendix() const {
 		return labelstring_appendix_;
 	}
 	/** Default font for this layout/environment.
@@ -341,7 +341,7 @@ public:
 	/// Does this layout allow for an optional parameter?
 	int optionalargs;
 	/// Which counter to step
-	lyx::docstring counter;
+	docstring counter;
 	/// Depth of XML command
 	int commanddepth;
 
@@ -369,11 +369,11 @@ private:
 	/// LaTeX name for environment
 	std::string latexname_;
 	/// Label string. "Abstract", "Reference", "Caption"...
-	lyx::docstring labelstring_;
+	docstring labelstring_;
 	///
-	lyx::docstring endlabelstring_;
+	docstring endlabelstring_;
 	/// Label string inside appendix. "Appendix", ...
-	lyx::docstring labelstring_appendix_;
+	docstring labelstring_appendix_;
 	/// LaTeX parameter for environment
 	std::string latexparam_;
 	/// Internal tag to use (e.g., <title></title> for sect header)

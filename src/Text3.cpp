@@ -17,6 +17,7 @@
 
 #include "Text.h"
 
+#include "Bidi.h"
 #include "BranchList.h"
 #include "FloatList.h"
 #include "FuncStatus.h"

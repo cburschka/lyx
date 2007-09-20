@@ -19,6 +19,7 @@
 
 #include "TextMetrics.h"
 
+#include "Bidi.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"

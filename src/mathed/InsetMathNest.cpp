@@ -33,6 +33,7 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
+#include "Bidi.h"
 #include "bufferview_funcs.h"
 #include "BufferView.h"
 #include "Color.h"
