@@ -141,3 +141,5 @@ public:
 };
 
 } // namespace lyx
+
+#endif // SPACING_H
