@@ -92,8 +92,6 @@ src_header_files = Split('''
     ModuleList.h
     Mover.h
     OutputParams.h
-    PDFOptions.h
-    PSpell.h
     ParIterator.h
     Paragraph.h
     ParagraphList.h
@@ -101,6 +99,7 @@ src_header_files = Split('''
     ParagraphParameters.h
     PDFOptions.h
     PrinterParams.h
+    PSpell.h
     Row.h
     Section.h
     Server.h
