@@ -351,6 +351,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 void InsetCollapsable::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
+	if (geometry() == ButtonOnly)
+		status_ = Open;
 	BOOST_ASSERT(geometry() != ButtonOnly);
 
 	InsetText::cursorPos(bv, sl, boundary, x, y);
