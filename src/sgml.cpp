@@ -125,8 +125,8 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 	// If you know what you are doing, you can set allowed==""
 	// to disable this mangling.
 	TextClass const & tclass = buf.params().getTextClass();
-	string const allowed =
-		runparams.flavor == OutputParams::XML? ".-_:":tclass.options();
+	docstring const allowed = from_ascii(
+		runparams.flavor == OutputParams::XML? ".-_:":tclass.options());
 
 	if (allowed.empty())
 		return orig;
@@ -150,7 +150,7 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 
 	bool mangle = false;
 	for (; it != end; ++it) {
-		char c = *it;
+		char_type c = *it;
 		if (isAlphaASCII(c) || isDigitASCII(c) || c == '-' || c == '.'
 		      || allowed.find(c) < allowed.size())
 			content += c;
