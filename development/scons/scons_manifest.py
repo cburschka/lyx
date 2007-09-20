@@ -1048,6 +1048,7 @@ src_frontends_qt4_ui_files = Split('''
     NumberingUi.ui
     PageLayoutUi.ui
     ParagraphUi.ui
+    PDFSupportUi.ui
     PreambleUi.ui
     PrefColorsUi.ui
     PrefConvertersUi.ui

@@ -6,8 +6,8 @@ uic BibtexAddUi.ui -o BibtexAddUi.h
 uic BibtexUi.ui -o BibtexUi.h
 uic BoxUi.ui -o BoxUi.h
 uic BranchesUi.ui -o BranchesUi.h
-uic PDFSupportUi.ui -o PDFSupportUi.h
 uic BranchUi.ui -o BranchUi.h
+uic BulletsUi.ui -o BulletsUi.h
 uic ChangesUi.ui -o ChangesUi.h
 uic CharacterUi.ui -o CharacterUi.h
 uic CitationFindUi.ui -o CitationFindUi.h
@@ -32,6 +32,8 @@ uic NoteUi.ui -o NoteUi.h
 uic NumberingUi.ui -o NumberingUi.h
 uic PageLayoutUi.ui -o PageLayoutUi.h
 uic ParagraphUi.ui -o ParagraphUi.h
+uic PDFSupportUi.ui -o PDFSupportUi.h
+uic PreambleUi.ui -o PreambleUi.h
 uic PrefColorsUi.ui -o PrefColorsUi.h
 uic PrefConvertersUi.ui -o PrefConvertersUi.h
 uic PrefDateUi.ui -o PrefDateUi.h
@@ -49,7 +51,6 @@ uic PrefSpellcheckerUi.ui -o PrefSpellcheckerUi.h
 uic PrefsUi.ui -o PrefsUi.h
 uic PrefUi.ui -o PrefUi.h
 uic PrintUi.ui -o PrintUi.h
-uic PreambleUi.ui -o PreambleUi.h
 uic RefUi.ui -o RefUi.h
 uic SearchUi.ui -o SearchUi.h
 uic SendtoUi.ui -o SendtoUi.h
@@ -61,7 +62,6 @@ uic TexinfoUi.ui -o TexinfoUi.h
 uic TextLayoutUi.ui -o TextLayoutUi.h
 uic ThesaurusUi.ui -o ThesaurusUi.h
 uic TocUi.ui -o TocUi.h
-uic BulletsUi.ui -o BulletsUi.h
 uic URLUi.ui -o URLUi.h
 uic VSpaceUi.ui -o VSpaceUi.h
 uic WrapUi.ui -o WrapUi.h

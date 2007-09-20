@@ -1,0 +1,390 @@
+<ui version="4.0" >
+ <class>PDFSupportUi</class>
+ <widget class="QWidget" name="PDFSupportUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>502</width>
+    <height>417</height>
+   </rect>
+  </property>
+  <widget class="QCheckBox" name="use_hyperrefCB" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="toolTip" >
+    <string>Enable clickable crossreferences and header informations</string>
+   </property>
+   <property name="text" >
+    <string>&amp;Use hyperref support</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="fullscreenCB" >
+   <property name="geometry" >
+    <rect>
+     <x>14</x>
+     <y>310</y>
+     <width>161</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="toolTip" >
+    <string>Enable fullscreen PDF presentation</string>
+   </property>
+   <property name="text" >
+    <string>Load in &amp;fullscreen mode</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="bookmarksGB" >
+   <property name="geometry" >
+    <rect>
+     <x>11</x>
+     <y>191</y>
+     <width>201</width>
+     <height>107</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Generate Bookmarks</string>
+   </property>
+   <property name="checkable" >
+    <bool>true</bool>
+   </property>
+   <property name="checked" >
+    <bool>true</bool>
+   </property>
+   <widget class="QCheckBox" name="bookmarksnumberedCB" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>19</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Numbered bookmarks</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="bookmarksopenGB" >
+    <property name="geometry" >
+     <rect>
+      <x>11</x>
+      <y>46</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="title" >
+     <string>Open bookmarks</string>
+    </property>
+    <property name="checkable" >
+     <bool>true</bool>
+    </property>
+    <property name="checked" >
+     <bool>false</bool>
+    </property>
+    <widget class="QLineEdit" name="bookmarksopenlevelLE" >
+     <property name="geometry" >
+      <rect>
+       <x>60</x>
+       <y>19</y>
+       <width>101</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="toolTip" >
+      <string>Number of levels</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label" >
+     <property name="geometry" >
+      <rect>
+       <x>21</x>
+       <y>22</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text" >
+      <string>&amp;Level:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>bookmarksopenlevelLE</cstring>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2" >
+   <property name="geometry" >
+    <rect>
+     <x>11</x>
+     <y>34</y>
+     <width>431</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Header Information</string>
+   </property>
+   <widget class="QLineEdit" name="titleLE" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>19</y>
+      <width>351</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="authorLE" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>49</y>
+      <width>351</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="subjectLE" >
+    <property name="geometry" >
+     <rect>
+      <x>70</x>
+      <y>79</y>
+      <width>351</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="keywordsL" >
+    <property name="geometry" >
+     <rect>
+      <x>8</x>
+      <y>113</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&amp;Keywords:</string>
+    </property>
+    <property name="buddy" >
+     <cstring>keywordsLE</cstring>
+    </property>
+   </widget>
+   <widget class="QLabel" name="subjectL" >
+    <property name="geometry" >
+     <rect>
+      <x>8</x>
+      <y>83</y>
+      <width>52</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&amp;Subject:</string>
+    </property>
+    <property name="buddy" >
+     <cstring>subjectLE</cstring>
+    </property>
+   </widget>
+   <widget class="QLabel" name="authorL" >
+    <property name="geometry" >
+     <rect>
+      <x>8</x>
+      <y>53</y>
+      <width>52</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&amp;Author:</string>
+    </property>
+    <property name="buddy" >
+     <cstring>authorLE</cstring>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleL" >
+    <property name="geometry" >
+     <rect>
+      <x>8</x>
+      <y>23</y>
+      <width>52</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&amp;Title:</string>
+    </property>
+    <property name="buddy" >
+     <cstring>titleLE</cstring>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>360</y>
+     <width>431</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Additional o&amp;ptions for hyperref</string>
+   </property>
+   <property name="flat" >
+    <bool>true</bool>
+   </property>
+   <property name="checkable" >
+    <bool>false</bool>
+   </property>
+   <property name="checked" >
+    <bool>false</bool>
+   </property>
+   <widget class="QLineEdit" name="optionsLE" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>421</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="toolTip" >
+     <string>eg: pdfstartview=XYZ, plainpages=false, pdfpagelabels</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="keywordsLE" >
+   <property name="geometry" >
+    <rect>
+     <x>81</x>
+     <y>144</y>
+     <width>351</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_4" >
+   <property name="geometry" >
+    <rect>
+     <x>221</x>
+     <y>191</y>
+     <width>221</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Links</string>
+   </property>
+   <widget class="QCheckBox" name="pdfborderCB" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>39</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>No frames around links</string>
+    </property>
+    <property name="tristate" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="pagebackrefCB" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>99</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="toolTip" >
+     <string>Adds "backlink" text to the end of each item in the bibliography</string>
+    </property>
+    <property name="text" >
+     <string>Backreference by pa&amp;ge number</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="backrefCB" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>79</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="toolTip" >
+     <string>Adds "backlink" text to the end of each item in the bibliography</string>
+    </property>
+    <property name="text" >
+     <string>&amp;Bibliographical backreferences</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="breaklinksCB" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>19</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="toolTip" >
+     <string>Allows link text to break across lines.</string>
+    </property>
+    <property name="text" >
+     <string>Break links over lines</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="colorlinksCB" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>59</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Color links</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>use_hyperrefCB</tabstop>
+  <tabstop>titleLE</tabstop>
+  <tabstop>authorLE</tabstop>
+  <tabstop>subjectLE</tabstop>
+  <tabstop>keywordsLE</tabstop>
+  <tabstop>bookmarksGB</tabstop>
+  <tabstop>bookmarksnumberedCB</tabstop>
+  <tabstop>bookmarksopenGB</tabstop>
+  <tabstop>bookmarksopenlevelLE</tabstop>
+  <tabstop>optionsLE</tabstop>
+  <tabstop>breaklinksCB</tabstop>
+  <tabstop>pdfborderCB</tabstop>
+  <tabstop>colorlinksCB</tabstop>
+  <tabstop>backrefCB</tabstop>
+  <tabstop>pagebackrefCB</tabstop>
+  <tabstop>fullscreenCB</tabstop>
+ </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>
