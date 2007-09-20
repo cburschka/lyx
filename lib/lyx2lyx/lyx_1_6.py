@@ -232,9 +232,11 @@ convert = [
            [283, [convert_flex]],
            [284, []],
            [285, []], # an empty manifest is automatically added
+           [286, []]
           ]
 
 revert =  [
+           [285, [revert_pdf_options]],
            [284, [remove_manifest, remove_inzip_options]],
            [283, []],
            [282, [revert_flex]],
