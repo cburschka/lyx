@@ -92,6 +92,7 @@ src_header_files = Split('''
     ModuleList.h
     Mover.h
     OutputParams.h
+    PDFOptions.h
     PSpell.h
     ParIterator.h
     Paragraph.h
@@ -201,6 +202,7 @@ src_pre_files = Split('''
     MetricsInfo.cpp
     Mover.cpp
     OutputParams.cpp
+    PDFOptions.cpp
     ParIterator.cpp
     Paragraph.cpp
     ParagraphMetrics.cpp

@@ -178,6 +178,24 @@ def remove_manifest(document):
     "Remove the manifest section"
     document.manifest = None
 
+##
+#  Discard PDF options for hyperref
+#
+
+def revert_pdf_options(document):
+    "Revert PDF options for hyperref. "
+    i = 0
+    while 1:
+        i = find_tokens(document.header, [ "\\use_hyperref", "\\pdf_title", "\\pdf_author", "\\pdf_subject",
+                                           "\\pdf_keywords", "\\pdf_bookmarks", "\\pdf_bookmarksnumbered",
+                                           "\\pdf_bookmarksopen", "\\pdf_bookmarksopenlevel", "\\pdf_breaklinks",
+                                           "\\pdf_border", "\\pdf_colorlinks", "\\pdf_backref", "\\pdf_pagebackref",
+					   "\\pdf_fullscreen", "\\pdf_quoted_options", "\\pdf_store_options" ], i)
+        if i == -1:
+            return
+        document.body[i] = ""
+        i = i + 1
+
 
 def remove_inzip_options(document):
     "Remove inzipName and embed options from the Graphics inset"
