@@ -439,6 +439,7 @@ Spacing const & BufferParams::spacing() const
 	return pimpl_->spacing;
 }
 
+
 PDFOptions & BufferParams::pdfoptions()
 {
 	return pimpl_->pdfoptions;
@@ -449,6 +450,7 @@ PDFOptions const & BufferParams::pdfoptions() const
 {
 	return pimpl_->pdfoptions;
 }
+
 
 VSpace const & BufferParams::getDefSkip() const
 {
@@ -649,8 +651,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 		lex >> float_placement;
 
 	} else if (prefixIs(token, "\\pdf_") || token == "\\use_hyperref") {
-		string toktmp;
-		toktmp = pdfoptions().readToken(lex, token);
+		string toktmp = pdfoptions().readToken(lex, token);
 		if (!toktmp.empty()) {
 			lyxerr << "PDFOptions::readToken(): Unknown token: " <<
 				toktmp << endl;
