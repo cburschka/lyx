@@ -269,7 +269,7 @@ bool findNextInset(DocIterator & dit,
 		if (inset
 		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
 		    && (contents.empty() ||
-			static_cast<InsetCommand const *>(inset)->getContents() == contents)) {
+		    static_cast<InsetCommand const *>(inset)->getContents() == contents)) {
 			dit = tmpdit;
 			return true;
 		}
