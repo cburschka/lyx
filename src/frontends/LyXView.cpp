@@ -192,6 +192,7 @@ void LyXView::setBuffer(Buffer * b, bool child_document)
 	updateTab();
 	busy(false);
 	work_area_->redraw();
+	setFocus();
 }
 
 

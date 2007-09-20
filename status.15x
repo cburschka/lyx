@@ -47,8 +47,7 @@ What's new
 * USER INTERFACE
 
 - Add a pixmap cache to speed up text drawing on screen. This cache is
-  enabled on Mac and Windows platform using a version of Qt greater
-  than 4.2.
+  enabled on Mac and Windows platforms using Qt 4.2 or higher.
 
 - Add "Save all" menu entry, to save all modified files (bug 2840).
 
@@ -148,6 +147,9 @@ What's new
   (bug 3427).
   
 - Fix bug where fixed width insets not correctly honoured (bug 4029).
+
+- Fix bug where current document was unexpectedly closed when typing space
+  after switching between 2 documents with the file->Open dialog (bug 4211).
 
 
 * DOCUMENTATION
