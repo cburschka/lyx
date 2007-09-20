@@ -263,7 +263,6 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 	} else {
 		pi.pain.text(x, y, text, pi.base.font);
 	}
-	setPosCache(pi, x, y);
 }
 
 

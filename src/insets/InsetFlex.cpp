@@ -110,8 +110,6 @@ bool InsetFlex::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetFlex::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
-
 	Font tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
 	// I don't understand why the above .reduce and .realize aren't

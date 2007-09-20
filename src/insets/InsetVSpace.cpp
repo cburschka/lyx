@@ -146,8 +146,6 @@ bool InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
-
 	x += ADD_TO_VSPACE_WIDTH;
 
 	int const start = y - dim_.asc;

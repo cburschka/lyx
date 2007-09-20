@@ -2994,8 +2994,6 @@ bool InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
-
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 	BufferView * bv = pi.base.bv;
 
@@ -3022,6 +3020,8 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				first_visible_cell = idx;
 
 			int const cx = nx + tabular.getBeginningOfTextInCell(idx);
+			// Cache the Inset position.
+			bv->coordCache().insets().add(cell(idx).get(), cx, y);
 			if (nx + tabular.columnWidth(idx) < 0
 			    || nx > bv->workWidth()
 			    || y + d < 0
@@ -3047,8 +3047,6 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 
 void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
-
 	Cursor & cur = pi.base.bv->cursor();
 
 	x += scx_ + ADD_TO_TABULAR_WIDTH;

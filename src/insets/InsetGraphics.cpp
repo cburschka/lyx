@@ -268,7 +268,6 @@ bool InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
 	graphic_->draw(pi, x, y);
 }
 

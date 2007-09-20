@@ -71,7 +71,6 @@ bool InsetCommand::setMouseHover(bool mouse_hover)
 
 void InsetCommand::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
 	button_.setRenderState(mouse_hover_);
 	button_.draw(pi, x, y);
 }

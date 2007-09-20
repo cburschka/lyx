@@ -816,8 +816,6 @@ bool InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
-
 	BOOST_ASSERT(pi.base.bv);
 
 	bool use_preview = false;

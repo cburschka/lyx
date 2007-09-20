@@ -517,7 +517,6 @@ bool InsetExternal::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
 	renderer_->draw(pi, x, y);
 }
 
