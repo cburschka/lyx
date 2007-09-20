@@ -99,6 +99,7 @@ src_header_files = Split('''
     ParagraphList.h
     ParagraphMetrics.h
     ParagraphParameters.h
+    PDFOptions.h
     PrinterParams.h
     Row.h
     Section.h
