@@ -37,7 +37,7 @@ Copyright (C) 2007 José Matos and Dekel Tsur""" % LyX.version__
 
     parser = optparse.OptionParser(**args)
 
-    parser.set_defaults(debug=LyX.default_debug__, cjk_encoding = 'auto')
+    parser.set_defaults(debug=LyX.default_debug__, cjk_encoding = '')
     parser.add_option("-d", "--debug", type="int",
                       help="level=0..2 (O_ quiet, 2_verbose) default: 1")
     parser.add_option("-q", "--quiet",
