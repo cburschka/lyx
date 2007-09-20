@@ -1110,9 +1110,6 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	cmd.y = min(max(cmd.y, -1), height_);
 
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
-		//FIXME: disabling mouse hover for now as it is causing funny things
-		// on screen.
-		return false;
 
 		// Get inset under mouse, if there is one.
 		Inset const * covering_inset =
@@ -1131,38 +1128,28 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 			// Highlighted the newly hovered inset (if any).
 			need_redraw |= inset->setMouseHover(true);
 		last_inset_ = inset;
+		if (!need_redraw)
+			return false;
 
 		// if last metrics update was in singlepar mode, WorkArea::redraw() will
 		// not expose the button for redraw. We adjust here the metrics dimension
 		// to enable a full redraw.
-		// FIXME: It is possible to redraw only the area around the button!
-		if (need_redraw
-			&& metrics_info_.update_strategy == SingleParUpdate) {
-			// FIXME: It should be possible to redraw only the area around
-			// the button by doing this:
-			//
-			//metrics_info_.singlepar = false;
-			//metrics_info_.y1 = ymin of button;
-			//metrics_info_.y2 = ymax of button;
-			//
-			// Unfortunately, BufferView::draw() does not distinguish
-			// between background updates and text updates. So we use the hammer
-			// solution for now. We could also avoid the updateMetrics() below
-			// by using the first and last pit of the CoordCache. Have a look
-			// at Text::getPitNearY() to see what I mean.
-			//
-			//metrics_info_.pit1 = first pit of CoordCache;
-			//metrics_info_.pit2 = last pit of CoordCache;
-			//metrics_info_.singlepar = false;
-			//metrics_info_.y1 = 0;
-			//metrics_info_.y2 = height_;
-			//
-			updateMetrics(false);
+		if (metrics_info_.update_strategy == SingleParUpdate) {
+			// Build temporary cursor.
+			TextMetrics & tm = text_metrics_[&buffer_.text()];
+			tm.editXY(cur, cmd.x, cmd.y);
+			// collect cursor paragraph iter bounds
+			std::pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
+			std::pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
+			int y1 = firstpm.second->position() - firstpm.second->ascent();
+			int y2 = lastpm.second->position() + lastpm.second->descent();
+			metrics_info_ = ViewMetricsInfo(firstpm.first, lastpm.first, y1, y2,
+				FullScreenUpdate, buffer_.text().paragraphs().size());
 		}
 
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
-		return need_redraw;
+		return true;
 	}
 
 	// Build temporary cursor.
@@ -1210,8 +1197,8 @@ void BufferView::scrollDown(int offset)
 	TextMetrics & tm = text_metrics_[text];
 	int ymax = height_ + offset;
 	while (true) {
-		std::pair<pit_type, ParagraphMetrics> const & last = tm.last();
-		int bottom_pos = last.second.position() + last.second.descent();
+		std::pair<pit_type, ParagraphMetrics const *> last = tm.last();
+		int bottom_pos = last.second->position() + last.second->descent();
 		if (last.first == text->paragraphs().size() - 1) {
 			if (bottom_pos <= height_)
 				return;
@@ -1234,8 +1221,8 @@ void BufferView::scrollUp(int offset)
 	TextMetrics & tm = text_metrics_[text];
 	int ymin = - offset;
 	while (true) {
-		std::pair<pit_type, ParagraphMetrics> const & first = tm.first();
-		int top_pos = first.second.position() - first.second.ascent();
+		std::pair<pit_type, ParagraphMetrics const *> first = tm.first();
+		int top_pos = first.second->position() - first.second->ascent();
 		if (first.first == 0) {
 			if (top_pos >= 0)
 				return;

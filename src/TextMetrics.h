@@ -49,9 +49,9 @@ public:
 	///
 	ParagraphMetrics const & parMetrics(pit_type) const;
 	///
-	std::pair<pit_type, ParagraphMetrics> const & first() const;
+	std::pair<pit_type, ParagraphMetrics const *> first() const;
 	///
-	std::pair<pit_type, ParagraphMetrics> const & last() const;
+	std::pair<pit_type, ParagraphMetrics const *> last() const;
 
 	///
 	int parPosition(pit_type pit) const;

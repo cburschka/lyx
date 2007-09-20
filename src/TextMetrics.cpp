@@ -140,17 +140,17 @@ ParagraphMetrics const & TextMetrics::parMetrics(pit_type pit) const
 
 
 
-pair<pit_type, ParagraphMetrics> const & TextMetrics::first() const
+pair<pit_type, ParagraphMetrics const *> TextMetrics::first() const
 {
-	pair<pit_type, ParagraphMetrics> const & pm = *par_metrics_.begin();
-	return pm;
+	ParMetricsCache::const_iterator it = par_metrics_.begin();
+	return make_pair(it->first, &it->second);
 }
 
 
-pair<pit_type, ParagraphMetrics> const & TextMetrics::last() const
+pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
 {
-	pair<pit_type, ParagraphMetrics> const & pm = *par_metrics_.rbegin();
-	return pm;
+	ParMetricsCache::const_reverse_iterator it = par_metrics_.rbegin();
+	return make_pair(it->first, &it->second);
 }
 
 
