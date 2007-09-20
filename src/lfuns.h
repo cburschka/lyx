@@ -120,7 +120,7 @@ enum kb_action {
 	LFUN_WORD_SELECT,
 	LFUN_BUFFER_BEGIN_SELECT,
 	LFUN_BUFFER_END_SELECT,
-	LFUN_SPACE_INSERT,  // JSpitzm 20030520
+	LFUN_SPACE_INSERT,               // JSpitzm 20030520
 	LFUN_MARK_TOGGLE,
 	// 60
 	LFUN_CHAR_DELETE_FORWARD,
@@ -243,7 +243,7 @@ enum kb_action {
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
 	LFUN_FLOAT_LIST,                // Lgb 20010503
 	// 160
-	LFUN_BUFFER_TOGGLE_READ_ONLY,          // Lgb 97-05-27
+	LFUN_BUFFER_TOGGLE_READ_ONLY,   // Lgb 97-05-27
 	LFUN_VC_REGISTER,               // Lgb 97-07-01
 	LFUN_VC_CHECK_IN,               // Lgb 97-07-01
 	LFUN_VC_CHECK_OUT,              // Lgb 97-07-01
@@ -253,27 +253,27 @@ enum kb_action {
 	LFUN_BUFFER_EXPORT,             // Lgb 97-07-29
 	LFUN_LABEL_GOTO,                // Ale 970806
 	LFUN_DOTS_INSERT,               // Asger 970929
-	LFUN_END_OF_SENTENCE_PERIOD_INSERT,           // Asger 970929
+	LFUN_END_OF_SENTENCE_PERIOD_INSERT,   // Asger 970929
 	// 170
-	LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR,        // ARRae 971202
-	LFUN_BUFFER_CHKTEX,                 // Asger 971030
-	LFUN_HTML_INSERT,                   // CFO-G 971121; must co-exist with URL_INSERT as of 20060905
-	LFUN_URL_INSERT,                       // CFO-G 971121
-	LFUN_WORD_FIND_FORWARD,           // Etienne 980216
+	LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR, // ARRae 971202
+	LFUN_BUFFER_CHKTEX,             // Asger 971030
+	LFUN_HTML_INSERT,               // CFO-G 971121; must co-exist with URL_INSERT as of 20060905
+	LFUN_URL_INSERT,                // CFO-G 971121
+	LFUN_WORD_FIND_FORWARD,         // Etienne 980216
 	// 175
-	LFUN_WORD_FIND_BACKWARD,          // Etienne 980220
+	LFUN_WORD_FIND_BACKWARD,        // Etienne 980220
 	LFUN_APPENDIX,                  // ettrich 980505
-	LFUN_BUFFER_IMPORT,                    // Asger 980724
-	LFUN_MENU_SEPARATOR_INSERT,            // Asger 990220
-	LFUN_COMMAND_SEQUENCE,                  // Andre' 991111
+	LFUN_BUFFER_IMPORT,             // Asger 980724
+	LFUN_MENU_SEPARATOR_INSERT,     // Asger 990220
+	LFUN_COMMAND_SEQUENCE,          // Andre' 991111
 	// 180
-	LFUN_PREFERENCES_SAVE,           // Lgb 991127
+	LFUN_PREFERENCES_SAVE,          // Lgb 991127
 	LFUN_HELP_OPEN,                 // Jug 990627
-	LFUN_DATE_INSERT,	        // jdblair 20000131
+	LFUN_DATE_INSERT,	              // jdblair 20000131
 	LFUN_LANGUAGE,                  // Dekel 20000203
-	LFUN_ERT_INSERT,	                // Jug 20000218
+	LFUN_ERT_INSERT,	              // Jug 20000218
 	// 185
-	LFUN_FOOTNOTE_INSERT,            // Jug 20000307
+	LFUN_FOOTNOTE_INSERT,           // Jug 20000307
 	LFUN_PARAGRAPH_SPACING,         // Lgb 20000411
 	LFUN_TABULAR_INSERT,            // Jug 20000412
 	LFUN_LOFVIEW,                   // Dekel 20000519
@@ -281,15 +281,15 @@ enum kb_action {
 	// 190
 	LFUN_LOAVIEW,                   // Dekel 20000519
 	LFUN_SET_COLOR,                 // SLior 20000611
-	LFUN_MARGINALNOTE_INSERT,            // Lgb 20000626
-	LFUN_FLOAT_INSERT,               // Lgb 20000627
-	LFUN_FLOAT_WIDE_INSERT,          // Lgb 20010531
+	LFUN_MARGINALNOTE_INSERT,       // Lgb 20000626
+	LFUN_FLOAT_INSERT,              // Lgb 20000627
+	LFUN_FLOAT_WIDE_INSERT,         // Lgb 20010531
 	// 195
-	LFUN_CAPTION_INSERT,             // Lgb 20000718; inactive as of 20060905
+	LFUN_CAPTION_INSERT,            // Lgb 20000718; inactive as of 20060905
 	LFUN_BUFFER_SWITCH,
 	LFUN_TABULAR_FEATURE,           // Jug 20000728
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
-	LFUN_BUFFER_UPDATE,                    // Dekel 20000805
+	LFUN_BUFFER_UPDATE,             // Dekel 20000805
 	// 200
 	LFUN_INDEX_INSERT,              // Angus 20000803
 	LFUN_SCREEN_FONT_UPDATE,        // ARRae 20000813
@@ -304,14 +304,14 @@ enum kb_action {
 	LFUN_ESCAPE,                    // Lgb 20010517
 	// 210
 	LFUN_THESAURUS_ENTRY,           // Levon 20010720
-	LFUN_OPTIONAL_INSERT,              // Martin 12 Aug 2002
+	LFUN_OPTIONAL_INSERT,           // Martin 12 Aug 2002
 	LFUN_MOUSE_PRESS,               // André 9 Aug 2002
 	LFUN_MOUSE_MOTION,              // André 9 Aug 2002
 	LFUN_MOUSE_RELEASE,             // André 9 Aug 2002
 	// 215
 	LFUN_MOUSE_DOUBLE,              // André 9 Aug 2002
 	LFUN_MOUSE_TRIPLE,              // André 9 Aug 2002
-	LFUN_WRAP_INSERT,                // Dekel 7 Apr 2002
+	LFUN_WRAP_INSERT,               // Dekel 7 Apr 2002
 	LFUN_CHANGES_TRACK,             // Levon 20021001 (cool date !)
 	LFUN_CHANGES_MERGE,             // Levon 20021016
 	// 220
@@ -325,7 +325,7 @@ enum kb_action {
 	LFUN_DIALOG_SHOW_NEW_INSET,
 	LFUN_DIALOG_UPDATE,
 	LFUN_DIALOG_HIDE,
-	LFUN_DIALOG_TOGGLE,		// JSpitzm 20070430
+	LFUN_DIALOG_TOGGLE,             // JSpitzm 20070430
 	// 230
 	LFUN_DIALOG_DISCONNECT_INSET,
 	LFUN_INSET_APPLY,
@@ -377,13 +377,13 @@ enum kb_action {
 	// 270
 	LFUN_OUTLINE_IN,
 	LFUN_OUTLINE_OUT,
-	LFUN_PARAGRAPH_MOVE_DOWN,                // Edwin 20060408
-	LFUN_PARAGRAPH_MOVE_UP,                  // Edwin 20060408
-	LFUN_BUFFER_TOGGLE_COMPRESSION,                 // bpeng 20060427
+	LFUN_PARAGRAPH_MOVE_DOWN,        // Edwin 20060408
+	LFUN_PARAGRAPH_MOVE_UP,          // Edwin 20060408
+	LFUN_BUFFER_TOGGLE_COMPRESSION,  // bpeng 20060427
 	// 275
 	LFUN_MATH_BIGDELIM,
 	LFUN_CLIPBOARD_PASTE,
-	LFUN_INSET_DISSOLVE,                 // jspitzm 20060807
+	LFUN_INSET_DISSOLVE,             // jspitzm 20060807
 	LFUN_CHANGE_NEXT,
 	LFUN_WINDOW_NEW,                 // Abdel 20061021
 	// 280
@@ -403,9 +403,9 @@ enum kb_action {
 	LFUN_LAYOUT_MODULES_CLEAR,       // rgh, 20070825
 	LFUN_LAYOUT_MODULE_ADD,          // rgh, 20070825
 	LFUN_LAYOUT_RELOAD,              // rgh, 20070903
-	LFUN_MASTER_BUFFER_VIEW,	 // Tommaso
+	LFUN_MASTER_BUFFER_VIEW,	       // Tommaso, 20070920
 	// 295
-	LFUN_MASTER_BUFFER_UPDATE,	 // Tommaso
+	LFUN_MASTER_BUFFER_UPDATE,	     // Tommaso, 20070920
 
 	LFUN_LASTACTION                  // end of the table
 };
