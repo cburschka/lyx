@@ -813,7 +813,7 @@ goto_char_backwards:
 		else
 			handleFont(cur, cmd.argument(), "mathrm");
 		break;
-	case LFUN_FONT_CODE:
+	case LFUN_FONT_TYPEWRITER:
 		if (currentMode() == TEXT_MODE)
 			handleFont(cur, cmd.argument(), "texttt");
 		else
@@ -1043,7 +1043,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_SANS:
 	case LFUN_FONT_EMPH:
-	case LFUN_FONT_CODE:
+	case LFUN_FONT_TYPEWRITER:
 	case LFUN_FONT_NOUN:
 	case LFUN_FONT_ROMAN:
 	case LFUN_FONT_DEFAULT:

@@ -169,7 +169,7 @@ void LyXAction::init()
 		{ LFUN_FLOAT_WIDE_INSERT, "float-wide-insert", Noop },
 		{ LFUN_WRAP_INSERT, "wrap-insert", Noop },
 		{ LFUN_FONT_BOLD, "font-bold", Noop },
-		{ LFUN_FONT_CODE, "font-code", Noop },
+		{ LFUN_FONT_TYPEWRITER, "font-typewriter", Noop },
 		{ LFUN_FONT_DEFAULT, "font-default", Noop },
 		{ LFUN_FONT_EMPH, "font-emph", Noop },
 		{ LFUN_FONT_FREE_APPLY, "font-free-apply", Noop },

@@ -1302,7 +1302,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_FONT_CODE: {
+	case LFUN_FONT_TYPEWRITER: {
 		Font font(Font::ALL_IGNORE);
 		font.setFamily(Font::TYPEWRITER_FAMILY); // no good
 		toggleAndShow(cur, this, font);
@@ -1770,7 +1770,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setOnOff(font.family() == Font::ROMAN_FAMILY);
 		return true;
 
-	case LFUN_FONT_CODE:
+	case LFUN_FONT_TYPEWRITER:
 		flag.setOnOff(font.family() == Font::TYPEWRITER_FAMILY);
 		return true;
 

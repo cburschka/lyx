@@ -301,7 +301,7 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_FLOAT_WIDE_INSERT:
 		case LFUN_WRAP_INSERT:
 		case LFUN_FONT_BOLD:
-		case LFUN_FONT_CODE:
+		case LFUN_FONT_TYPEWRITER:
 		case LFUN_FONT_DEFAULT:
 		case LFUN_FONT_EMPH:
 		case LFUN_FONT_FREE_APPLY:
