@@ -55,6 +55,7 @@
 #include "Undo.h"
 #include "version.h"
 #include "EmbeddedFiles.h"
+#include "PDFOptions.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"
@@ -459,6 +460,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().footskip.erase();
 	params().listings_params.clear();
 	params().clearLayoutModules();
+	params().pdfoptions().clear();
 	
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];

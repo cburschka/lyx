@@ -235,6 +235,7 @@ UIFILES = \
 	NumberingUi.ui \
 	PageLayoutUi.ui \
 	ParagraphUi.ui \
+	PDFSupportUi.ui \
 	PreambleUi.ui \
 	PrefColorsUi.ui \
 	PrefConvertersUi.ui \

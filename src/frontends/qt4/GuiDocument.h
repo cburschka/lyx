@@ -29,6 +29,7 @@
 #include "ui_NumberingUi.h"
 #include "ui_MarginsUi.h"
 #include "ui_PreambleUi.h"
+#include "ui_PDFSupportUi.h"
 
 #include <QDialog>
 #include <QStringList>
@@ -106,6 +107,7 @@ private:
 	UiWidget<Ui::BiblioUi> *biblioModule;
 	UiWidget<Ui::MathsUi> *mathsModule;
 	UiWidget<Ui::LaTeXUi> *latexModule;
+	UiWidget<Ui::PDFSupportUi> *pdfSupportModule;
 	PreambleModule *preambleModule;
 	
 	GuiBranches *branchesModule;

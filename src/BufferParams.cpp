@@ -37,6 +37,7 @@
 #include "Spacing.h"
 #include "TexRow.h"
 #include "VSpace.h"
+#include "PDFOptions.h"
 
 #include "frontends/alert.h"
 #include "insets/InsetListingsParams.h"
@@ -44,6 +45,7 @@
 #include "support/convert.h"
 #include "support/filetools.h"
 #include "support/Translator.h"
+#include "support/lstrings.h"
 
 #include <boost/array.hpp>
 
@@ -63,6 +65,7 @@ using lyx::support::libFileSearch;
 using lyx::support::bformat;
 using lyx::support::rtrim;
 using lyx::support::tokenPos;
+using lyx::support::prefixIs;
 
 
 static char const * const string_paragraph_separation[] = {
@@ -290,6 +293,7 @@ public:
 	 * and for detached paragraphs in "indented" documents.
 	 */
 	VSpace defskip;
+	PDFOptions pdfoptions;
 };
 
 
@@ -435,6 +439,16 @@ Spacing const & BufferParams::spacing() const
 	return pimpl_->spacing;
 }
 
+PDFOptions & BufferParams::pdfoptions()
+{
+	return pimpl_->pdfoptions;
+}
+
+
+PDFOptions const & BufferParams::pdfoptions() const
+{
+	return pimpl_->pdfoptions;
+}
 
 VSpace const & BufferParams::getDefSkip() const
 {
@@ -633,6 +647,15 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 		spacing().set(spacetranslator().find(nspacing), tmp_val);
 	} else if (token == "\\float_placement") {
 		lex >> float_placement;
+
+	} else if (prefixIs(token, "\\pdf_") || token == "\\use_hyperref") {
+		string toktmp;
+		toktmp = pdfoptions().readToken(lex, token);
+		if (!toktmp.empty()) {
+			lyxerr << "PDFOptions::readToken(): Unknown token: " <<
+				toktmp << endl;
+			return toktmp;
+		}
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " << 
 			token << endl;
@@ -694,6 +717,7 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\paperfontsize " << fontsize << '\n';
 
 	spacing().writeFile(os);
+	pdfoptions().writeFile(os);
 
 	os << "\\papersize " << string_papersize[papersize]
 	   << "\n\\use_geometry " << convert<string>(use_geometry)
@@ -1166,6 +1190,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
 		lyxpreamble += from_utf8(features.getBabelOptions());
 	}
+
+	// PDF support. Hypreref manual: "Make sure it comes last of your loaded
+	// packages, to give it a fighting chance of not being over-written,
+	// since its job is to redefine many LATEX commands."
+	// Has to be put into lyxpreamble (preserving line-counting for error
+	// parsing).
+	odocstringstream oss;
+	pdfoptions().writeLaTeX(oss);
+	lyxpreamble += oss.str();
 
 	lyxpreamble += "\\makeatother\n\n";
 

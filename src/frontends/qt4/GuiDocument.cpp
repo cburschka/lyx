@@ -32,6 +32,7 @@
 #include "LyXRC.h" // defaultUnit
 #include "TextClassList.h"
 #include "Spacing.h"
+#include "PDFOptions.h"
 
 #include "insets/InsetListingsParams.h"
 
@@ -610,6 +611,41 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 	connect(bulletsModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
+	// PDF support
+	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
+
+	connect(pdfSupportModule->use_hyperrefCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->titleLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->authorLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->subjectLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->keywordsLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->bookmarksGB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->bookmarksnumberedCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->bookmarksopenGB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->bookmarksopenlevelLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->breaklinksCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->pdfborderCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->colorlinksCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->backrefCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->pagebackrefCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->fullscreenCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->optionsLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
 
 	// float
 	floatModule = new FloatPlacement;
@@ -624,6 +660,7 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 	docPS->addPanel(langModule, _("Language"));
 	docPS->addPanel(numberingModule, _("Numbering & TOC"));
 	docPS->addPanel(biblioModule, _("Bibliography"));
+	docPS->addPanel(pdfSupportModule, _("PDF Properties"));
 	docPS->addPanel(mathsModule, _("Math Options"));
 	docPS->addPanel(floatModule, _("Float Placement"));
 	docPS->addPanel(bulletsModule, _("Bullets"));
@@ -946,6 +983,7 @@ void GuiDocumentDialog::updateNumbering()
 	numberingModule->tocTW->update();
 }
 
+
 void GuiDocumentDialog::apply(BufferParams & params)
 {
 	// preamble
@@ -1180,20 +1218,39 @@ void GuiDocumentDialog::apply(BufferParams & params)
 	Ui::MarginsUi const * m(marginsModule);
 
 	params.leftmargin = widgetsToLength(m->innerLE, m->innerUnit);
-
 	params.topmargin = widgetsToLength(m->topLE, m->topUnit);
-
 	params.rightmargin = widgetsToLength(m->outerLE, m->outerUnit);
-
 	params.bottommargin = widgetsToLength(m->bottomLE, m->bottomUnit);
-
 	params.headheight = widgetsToLength(m->headheightLE, m->headheightUnit);
-
 	params.headsep = widgetsToLength(m->headsepLE, m->headsepUnit);
-
 	params.footskip = widgetsToLength(m->footskipLE, m->footskipUnit);
 
 	branchesModule->apply(params);
+
+	// PDF support
+	PDFOptions & pdf = params.pdfoptions();
+	pdf.use_hyperref_ = pdfSupportModule->use_hyperrefCB->isChecked();
+	pdf.title_ = fromqstr(pdfSupportModule->titleLE->text());
+	pdf.author_ = fromqstr(pdfSupportModule->authorLE->text());
+	pdf.subject_ = fromqstr(pdfSupportModule->subjectLE->text());
+	pdf.keywords_ = fromqstr(pdfSupportModule->keywordsLE->text());
+
+	pdf.bookmarks_ = pdfSupportModule->bookmarksGB->isChecked();
+	pdf.bookmarksnumbered_ = pdfSupportModule->bookmarksnumberedCB->isChecked();
+	pdf.bookmarksopen_ = pdfSupportModule->bookmarksopenGB->isChecked();
+	pdf.bookmarksopenlevel_ =
+		fromqstr(pdfSupportModule->bookmarksopenlevelLE->text());
+
+	pdf.breaklinks_ = pdfSupportModule->breaklinksCB->isChecked();
+	pdf.pdfborder_ = pdfSupportModule->pdfborderCB->isChecked();
+	pdf.colorlinks_ = pdfSupportModule->colorlinksCB->isChecked();
+	pdf.backref_ = pdfSupportModule->backrefCB->isChecked();
+	pdf.pagebackref_	= pdfSupportModule->pagebackrefCB->isChecked();
+	if (pdfSupportModule->fullscreenCB->isChecked())
+		pdf.pagemode_ = pdf.pagemode_fullscreen_;
+	pdf.quoted_options_ = fromqstr(pdfSupportModule->optionsLE->text());
+	if (pdf.use_hyperref_ || !pdf.empty())
+		pdf.store_options_ = true;
 }
 
 
@@ -1476,6 +1533,32 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 		params.footskip, defaultUnit);
 
 	branchesModule->update(params);
+
+	// PDF support
+	PDFOptions const & pdf = params.pdfoptions();
+	pdfSupportModule->use_hyperrefCB->setChecked(pdf.use_hyperref_);
+	pdfSupportModule->titleLE->setText(toqstr(pdf.title_));
+	pdfSupportModule->authorLE->setText(toqstr(pdf.author_));
+	pdfSupportModule->subjectLE->setText(toqstr(pdf.subject_));
+	pdfSupportModule->keywordsLE->setText(toqstr(pdf.keywords_));
+
+	pdfSupportModule->bookmarksGB->setChecked(pdf.bookmarks_);
+	pdfSupportModule->bookmarksnumberedCB->setChecked(pdf.bookmarksnumbered_);
+	pdfSupportModule->bookmarksopenGB->setChecked(pdf.bookmarksopen_);
+
+	pdfSupportModule->bookmarksopenlevelLE->setText(
+		toqstr(pdf.bookmarksopenlevel_));
+
+	pdfSupportModule->breaklinksCB->setChecked(pdf.breaklinks_);
+	pdfSupportModule->pdfborderCB->setChecked(pdf.pdfborder_);
+	pdfSupportModule->colorlinksCB->setChecked(pdf.colorlinks_);
+	pdfSupportModule->backrefCB->setChecked(pdf.backref_);
+	pdfSupportModule->pagebackrefCB->setChecked(pdf.pagebackref_);
+	pdfSupportModule->fullscreenCB->setChecked
+		(pdf.pagemode_ == pdf.pagemode_fullscreen_);
+
+	pdfSupportModule->optionsLE->setText(
+		toqstr(pdf.quoted_options_));
 }
 
 

@@ -23,7 +23,6 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "debug.h"
-#include "debug.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"

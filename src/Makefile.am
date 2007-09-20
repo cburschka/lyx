@@ -233,6 +233,8 @@ liblyxcore_la_SOURCES = \
 	ParagraphParameters.h \
 	ParIterator.cpp \
 	ParIterator.h \
+	PDFOptions.cpp \
+	PDFOptions.h \
 	Row.cpp \
 	Row.h \
 	rowpainter.cpp \

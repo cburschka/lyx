@@ -39,6 +39,7 @@ class Spacing;
 class TexRow;
 class VSpace;
 class Language;
+class PDFOptions;
 
 /** Buffer parameters.
  *  This class contains all the parameters for this buffer's use. Some
@@ -288,6 +289,10 @@ public:
 
 	///
 	void setCiteEngine(biblio::CiteEngine const);
+
+	/// options for pdf output
+	PDFOptions & pdfoptions();
+	PDFOptions const & pdfoptions() const;
 
 private:
 	///
