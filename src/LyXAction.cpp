@@ -128,6 +128,8 @@ void LyXAction::init()
 		{ LFUN_BUFFER_TOGGLE_READ_ONLY, "buffer-toggle-read-only", ReadOnly },
 		{ LFUN_BUFFER_UPDATE, "buffer-update", ReadOnly },
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly },
+		{ LFUN_MASTER_BUFFER_UPDATE, "master-buffer-update", ReadOnly },
+		{ LFUN_MASTER_BUFFER_VIEW, "master-buffer-view", ReadOnly },
 		{ LFUN_BUFFER_WRITE, "buffer-write", ReadOnly },
 		{ LFUN_BUFFER_WRITE_AS, "buffer-write-as", ReadOnly },
 		{ LFUN_BUFFER_WRITE_ALL, "buffer-write-all", ReadOnly },
