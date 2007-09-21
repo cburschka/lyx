@@ -17,10 +17,12 @@
 #include "qt_helpers.h"
 #include "GuiImage.h"
 
+#include "frontends/alert.h"
 #include "frontends/LyXView.h"
 
 #include "graphics/LoaderQueue.h"
 
+#include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -283,15 +285,25 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	try {
 		return_value = QApplication::notify(receiver, event);
 	}
+	catch (support::ExceptionMessage  const & e) {
+		if (e.type_ == support::ErrorException) {
+			Alert::error(e.title_, e.details_);
+			LyX::cref().emergencyCleanup();
+			::exit(1);
+		} else if (e.type_ == support::WarningException) {
+			Alert::warning(e.title_, e.details_);
+			return return_value;
+		}
+	}
 	catch (std::exception  const & e) {
 		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
 		LyX::cref().emergencyCleanup();
-		abort();
+		::exit(1);
 	}
 	catch (...) {
 		lyxerr << "Caught some really weird exception..." << endl;
 		LyX::cref().emergencyCleanup();
-		abort();
+		::exit(1);
 	}
 
 	return return_value;
