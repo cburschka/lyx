@@ -77,7 +77,7 @@ void PDFOptions::writeFile(ostream & os) const
 	os << "\\pdf_quoted_options \"" << quoted_options << "\"\n";
 }
 
-void PDFOptions::writeLaTeX(odocstream &os) const
+void PDFOptions::writeLaTeX(odocstringstream &os) const
 {
 	if (!use_hyperref) return ;
 	
