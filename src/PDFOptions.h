@@ -142,4 +142,4 @@ public:
 
 } // namespace lyx
 
-#endif // SPACING_H
+#endif // PDFOPTIONS_H
