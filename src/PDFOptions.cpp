@@ -99,13 +99,13 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 		opt += "bookmarksopen=" + convert<string>(bookmarksopen) + ',';
 	
 		if (bookmarksopen && !bookmarksopenlevel.empty())
-			opt += "bookmarksopennumbered=" + bookmarksopenlevel + ',';
+			opt += "bookmarksopenlevel=" + bookmarksopenlevel + ',';
 	}
 	
 	opt += "breaklinks="     + convert<string>(breaklinks) + ',';
 	
 	opt += "pdfborder={0 0 " ;
-	opt += (pdfborder ?'1':'0');
+	opt += (pdfborder ?'0':'1');
 	opt += "},\n";
 	
 	opt += "colorlinks="     + convert<string>(colorlinks) + ',';
