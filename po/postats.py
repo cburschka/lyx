@@ -126,11 +126,11 @@ if __name__ == "__main__":
 
     print """<?php
 // The current version
-\$lyx_version = "%s";
+$lyx_version = "%s";
 // The branch tag
-\$branch_tag = "%s";
+$branch_tag = "%s";
 
 // The data itself
-\$podata = array (%s
+$podata = array (%s
 )?>
 """ % (lyx_version, branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[1:]]))
