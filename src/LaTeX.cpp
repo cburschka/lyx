@@ -610,7 +610,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	LYXERR(Debug::LATEX) << "Log file: " << tmp << endl;
 	FileName const fn = FileName(makeAbsPath(tmp));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
-	bool fle_style;
+	bool fle_style = false;
 	static regex file_line_error(".+\\.\\D+:[0-9]+: (.+)");
 
 	string token;
