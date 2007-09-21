@@ -477,7 +477,7 @@ AC_CONFIG_FILES([Makefile
       development/MacOSX/spotlight/Makefile \
       development/lyx.spec \
       intl/Makefile \
-     lib/Makefile \
+      lib/Makefile \
       lib/doc/Makefile \
       lib/lyx2lyx/lyx2lyx_version.py \
       lib/lyx2lyx/Makefile \
