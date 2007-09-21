@@ -8,18 +8,17 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
-#include "config.h"
+#include <config.h>
 
 #include "PDFOptions.h"
 
-#include <sstream>
-#include <string>
 #include "support/convert.h"
 #include "support/lstrings.h"
 #include "debug.h"
 #include "Lexer.h"
 
+#include <sstream>
+#include <string>
 
 namespace lyx {
 
@@ -32,30 +31,30 @@ const string PDFOptions::pagemode_fullscreen("FullScreen");
 
 bool PDFOptions::empty() const
 {
-	return
-		author.empty()  &&
-		title.empty()   &&
-		subject.empty() &&
-		keywords.empty()&&
-		pagemode.empty()&&
-		bookmarksopenlevel.empty() &&
-		quoted_options.empty();
+	return author.empty()
+		&& title.empty()
+		&& subject.empty()
+		&& keywords.empty()
+		&& pagemode.empty()
+		&& bookmarksopenlevel.empty()
+		&& quoted_options.empty();
 }
 
 void PDFOptions::writeFile(ostream & os) const
 {
 	os << "\\use_hyperref " << convert<string>(use_hyperref) << '\n';
 	os << "\\pdf_store_options " << convert<string>(store_options) << '\n';
-	if (!use_hyperref && !store_options) return;
+	if (!use_hyperref && !store_options)
+		return;
 	
 	if (!title.empty() )
-	os << "\\pdf_title \"" << title << "\"\n";
+		os << "\\pdf_title \"" << title << "\"\n";
 	if (!author.empty())
-	os << "\\pdf_author \"" << author << "\"\n";
+		os << "\\pdf_author \"" << author << "\"\n";
 	if (!subject.empty())
-	os << "\\pdf_subject \"" << subject << "\"\n";
+		os << "\\pdf_subject \"" << subject << "\"\n";
 	if (!keywords.empty())
-	os << "\\pdf_keywords \"" << keywords << "\"\n";
+		os << "\\pdf_keywords \"" << keywords << "\"\n";
 	
 	
 	os << "\\pdf_bookmarks " << convert<string>(bookmarks) << '\n';
@@ -71,15 +70,16 @@ void PDFOptions::writeFile(ostream & os) const
 	os << "\\pdf_pagebackref " << convert<string>(pagebackref) << '\n';
 	
 	if (!pagemode.empty())
-	os << "\\pdf_pagemode " << pagemode << '\n';
+		os << "\\pdf_pagemode " << pagemode << '\n';
 	
 	if (!quoted_options.empty())
-	os << "\\pdf_quoted_options \"" << quoted_options << "\"\n";
+		os << "\\pdf_quoted_options \"" << quoted_options << "\"\n";
 }
 
 void PDFOptions::writeLaTeX(odocstringstream &os) const
 {
-	if (!use_hyperref) return ;
+	if (!use_hyperref)
+		return;
 	
 	string opt;
 	
@@ -123,10 +123,11 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 	os << from_utf8(opt);
 }
 
+
 string PDFOptions::readToken(Lexer &lex, string const & token)
 {
 	if (token == "\\use_hyperref") {
-	lex >> use_hyperref;
+		lex >> use_hyperref;
 	} else if (token == "\\pdf_title") {
 		lex >> title;
 	} else if (token == "\\pdf_author") {
@@ -165,11 +166,13 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 	return string();
 }
 
+
 //prepared for check
 string PDFOptions::quoted_options_get() const
 {
 	return quoted_options;
 }
+
 
 // Keep implicit hyperref settings
 void PDFOptions::clear()
@@ -191,7 +194,6 @@ void PDFOptions::clear()
 	pagemode.clear();
 	quoted_options.clear();
 	store_options           = false;
-
 }
 
 } // namespace lyx

@@ -12,8 +12,6 @@
 #ifndef PDFOPTIONS_H
 #define PDFOPTIONS_H
 
-
-#include <string>
 #include "support/docstream.h"
 
 namespace lyx {
