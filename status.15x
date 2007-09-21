@@ -109,6 +109,9 @@ What's new
 
 - Fix crash when login out from within Gnome desktop (bug 1656).
 
+- Fix crash with View>PDF on the Mac, only when stdlib-debug extra
+  checks are on (bug 4014)
+
 - Fix loading non-lyx child documents with relative path names, change 
   'Load' to 'Edit' in the child document dialog (bugs 4107 and 4111).
 
