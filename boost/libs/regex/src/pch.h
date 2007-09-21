@@ -1,3 +1,5 @@
+#include <boost/config.hpp>
+
 #include <cctype>
 #include <climits>
 #include <clocale>
