@@ -9,13 +9,15 @@
  */
 
 
-#include "PDFOptions.h"
+#include "config.h"
 
-#include "support/convert.h"
+#include "PDFOptions.h"
 
 #include <sstream>
 #include <string>
+#include "support/convert.h"
 #include "support/lstrings.h"
+#include "debug.h"
 #include "Lexer.h"
 
 

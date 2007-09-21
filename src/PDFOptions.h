@@ -14,10 +14,7 @@
 
 
 #include <string>
-#include <debug.h>
 #include "support/docstream.h"
-
-using std::string;
 
 namespace lyx {
 
@@ -30,13 +27,13 @@ public:
     ///
     bool use_hyperref;
     ///
-    string title;
+    std::string title;
     ///
-    string author;
+    std::string author;
     ///
-    string subject;
+    std::string subject;
     ///
-    string keywords;
+    std::string keywords;
     /*!
      * A set of Acrobat bookmarks are written, in a manner similar to the
      * table of contents.
@@ -58,7 +55,7 @@ public:
      * Level (\maxdimen) to which bookmarks are open
      * bookmarksopenlevel    parameter
      */
-    string bookmarksopenlevel;
+    std::string bookmarksopenlevel;
     /*!
      * Allows link text to break across lines.
      * breaklinks        boolean false
@@ -108,17 +105,17 @@ public:
      * The only thing needed in such a case is wider Settings
      * dialog -> PDFOptions.pagemode .
      */
-    string pagemode;
+    std::string pagemode;
     ///latex string
-    static const string pagemode_fullscreen;
+    static const std::string pagemode_fullscreen;
     /*!
      * Additional parameters for hyperref given from user.
      */
-    string quoted_options;
+    std::string quoted_options;
     /*!
      * Possible syntax check of users additional parameters here.
      */
-    string quoted_options_get() const;
+    std::string quoted_options_get() const;
 
 
     /*!
@@ -134,7 +131,7 @@ public:
     /// output to tex header
     void writeLaTeX(odocstream &) const;
     /// read tokens from lyx header
-    string readToken(Lexer &lex, string const & token);
+    std::string readToken(Lexer &lex, std::string const & token);
     /// keep implicit hyperref settings
     void clear();
 
