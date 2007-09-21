@@ -12847,8 +12847,8 @@ name "sub:Ligaduras"
 \end_layout
 
 \begin_layout Standard
-Es una práctica habitual en tipografía agrupar juntas ciertas letras e imprimirl
-as como caracteres simples.
+Es una práctica habitual en tipografía agrupar ciertas letras e imprimirlas
+ como caracteres simples.
  Estos agrupamientos se conocen como 
 \emph on
 ligaduras
@@ -12884,7 +12884,7 @@ Algunos idiomas usan otras ligaduras si la fuente del documento las soporta.
 \end_layout
 
 \begin_layout Standard
-En ocasiones no quieres ligadura en una palabra.
+Puede ser que en ocasiones no te guste cómo quedan ciertas letras ligadas.
  Mientras que una ligadura puede quedar bien en una palabra como 
 \begin_inset Quotes fld
 \end_inset
@@ -12893,19 +12893,19 @@ graffiti
 \begin_inset Quotes frd
 \end_inset
 
-, puede dar una apariencia rara en otras como 
+, puede dar un aspecto raro en otras como 
+\begin_inset Quotes fld
+\end_inset
+
+conflicto
+\begin_inset Quotes frd
+\end_inset
+
+ o la inglesa 
 \begin_inset Quotes fld
 \end_inset
 
 cufflink
-\begin_inset Quotes frd
-\end_inset
-
- o la alemana 
-\begin_inset Quotes fld
-\end_inset
-
-Dorffest
 \begin_inset Quotes frd
 \end_inset
 
@@ -12920,7 +12920,7 @@ de\InsetSpace ~
 ligado.
 
 \family default
- Esto cambia 
+ Esto cambia el aspecto de 
 \begin_inset Quotes fld
 \end_inset
 
@@ -12937,20 +12937,12 @@ links
 \begin_inset Quotes frd
 \end_inset
 
- y 
+ y de «conflicto» a 
 \begin_inset Quotes fld
 \end_inset
 
-Dorffest
-\begin_inset Quotes frd
-\end_inset
-
- a 
-\begin_inset Quotes fld
-\end_inset
-
-Dorf\SpecialChar \textcompwordmark{}
-fest
+conf\SpecialChar \textcompwordmark{}
+licto
 \begin_inset Quotes frd
 \end_inset
 
@@ -14694,7 +14686,7 @@ Características extendidas
 \begin_inset Formula $\,$
 \end_inset
 
-grados como las agujas de reloj.
+grados hacia la derecha.
  Estas rotaciones no se ven en LyX, sólo en la salida.
  
 \end_layout
@@ -21151,11 +21143,7 @@ La forma general de la ecuación de segundo grado es:
 
 \end_inset
 
-La forma general de su solución es
-\lang english
-:
-\lang spanish
-
+La forma general de su solución es:
 \begin_inset Formula \[
 \lambda_{1,2}\lyxlock =-\frac{p}{2}\lyxlock\pm\sqrt{\frac{p²}{4}\lyxlock-q}\]
 
@@ -31409,7 +31397,7 @@ reference "sub:Ajuste-fino-con"
 \begin_layout Subsection
 Configuración del párrafo
 \begin_inset LatexCommand index
-name "Párrafo ! Settings"
+name "Párrafo ! Configuración"
 
 \end_inset
 
@@ -36700,15 +36688,11 @@ name "Configuración ! Rutas"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The submenu 
+El submenú 
 \family sans
-Paths
+Rutas
 \family default
- is only available in the Windows version of LyX.
-
-\lang spanish
+ sólo está disponible en la versión de LyX para Windows.
  La opción 
 \family sans
 Usar rutas estilo Windows en archivos LaTeX
@@ -37523,15 +37507,7 @@ key "lyxcredit"
 \begin_layout Standard
 
 \newpage
-
-\lang english
-The
-\lang spanish
- bibliografía 
-\lang english
-on the following page
-\lang spanish
- se ha generado con el entorno 
+ La bibliografía de la página siguiente se ha generado con el entorno 
 \family sans
 Bibliografía
 \family default
