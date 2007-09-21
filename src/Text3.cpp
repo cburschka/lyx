@@ -668,13 +668,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_BREAK_PARAGRAPH:
 		cap::replaceSelection(cur);
-		breakParagraph(cur, 0);
+		breakParagraph(cur, false);
 		cur.resetAnchor();
 		break;
 
 	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 		cap::replaceSelection(cur);
-		breakParagraph(cur, 1);
+		breakParagraph(cur, true);
 		cur.resetAnchor();
 		break;
 
@@ -685,7 +685,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.pos() == 0)
 			cur.paragraph().params().labelWidthString(docstring());
 		else
-			breakParagraph(cur, 0);
+			breakParagraph(cur, false);
 		cur.resetAnchor();
 		break;
 	}
