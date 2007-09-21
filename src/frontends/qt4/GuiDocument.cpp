@@ -1229,28 +1229,28 @@ void GuiDocumentDialog::apply(BufferParams & params)
 
 	// PDF support
 	PDFOptions & pdf = params.pdfoptions();
-	pdf.use_hyperref_ = pdfSupportModule->use_hyperrefCB->isChecked();
-	pdf.title_ = fromqstr(pdfSupportModule->titleLE->text());
-	pdf.author_ = fromqstr(pdfSupportModule->authorLE->text());
-	pdf.subject_ = fromqstr(pdfSupportModule->subjectLE->text());
-	pdf.keywords_ = fromqstr(pdfSupportModule->keywordsLE->text());
+	pdf.use_hyperref = pdfSupportModule->use_hyperrefCB->isChecked();
+	pdf.title = fromqstr(pdfSupportModule->titleLE->text());
+	pdf.author = fromqstr(pdfSupportModule->authorLE->text());
+	pdf.subject = fromqstr(pdfSupportModule->subjectLE->text());
+	pdf.keywords = fromqstr(pdfSupportModule->keywordsLE->text());
 
-	pdf.bookmarks_ = pdfSupportModule->bookmarksGB->isChecked();
-	pdf.bookmarksnumbered_ = pdfSupportModule->bookmarksnumberedCB->isChecked();
-	pdf.bookmarksopen_ = pdfSupportModule->bookmarksopenGB->isChecked();
-	pdf.bookmarksopenlevel_ =
+	pdf.bookmarks = pdfSupportModule->bookmarksGB->isChecked();
+	pdf.bookmarksnumbered = pdfSupportModule->bookmarksnumberedCB->isChecked();
+	pdf.bookmarksopen = pdfSupportModule->bookmarksopenGB->isChecked();
+	pdf.bookmarksopenlevel =
 		fromqstr(pdfSupportModule->bookmarksopenlevelLE->text());
 
-	pdf.breaklinks_ = pdfSupportModule->breaklinksCB->isChecked();
-	pdf.pdfborder_ = pdfSupportModule->pdfborderCB->isChecked();
-	pdf.colorlinks_ = pdfSupportModule->colorlinksCB->isChecked();
-	pdf.backref_ = pdfSupportModule->backrefCB->isChecked();
-	pdf.pagebackref_	= pdfSupportModule->pagebackrefCB->isChecked();
+	pdf.breaklinks = pdfSupportModule->breaklinksCB->isChecked();
+	pdf.pdfborder = pdfSupportModule->pdfborderCB->isChecked();
+	pdf.colorlinks = pdfSupportModule->colorlinksCB->isChecked();
+	pdf.backref = pdfSupportModule->backrefCB->isChecked();
+	pdf.pagebackref	= pdfSupportModule->pagebackrefCB->isChecked();
 	if (pdfSupportModule->fullscreenCB->isChecked())
-		pdf.pagemode_ = pdf.pagemode_fullscreen_;
-	pdf.quoted_options_ = fromqstr(pdfSupportModule->optionsLE->text());
-	if (pdf.use_hyperref_ || !pdf.empty())
-		pdf.store_options_ = true;
+		pdf.pagemode = pdf.pagemode_fullscreen;
+	pdf.quoted_options = fromqstr(pdfSupportModule->optionsLE->text());
+	if (pdf.use_hyperref || !pdf.empty())
+		pdf.store_options = true;
 }
 
 
@@ -1536,29 +1536,29 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 
 	// PDF support
 	PDFOptions const & pdf = params.pdfoptions();
-	pdfSupportModule->use_hyperrefCB->setChecked(pdf.use_hyperref_);
-	pdfSupportModule->titleLE->setText(toqstr(pdf.title_));
-	pdfSupportModule->authorLE->setText(toqstr(pdf.author_));
-	pdfSupportModule->subjectLE->setText(toqstr(pdf.subject_));
-	pdfSupportModule->keywordsLE->setText(toqstr(pdf.keywords_));
+	pdfSupportModule->use_hyperrefCB->setChecked(pdf.use_hyperref);
+	pdfSupportModule->titleLE->setText(toqstr(pdf.title));
+	pdfSupportModule->authorLE->setText(toqstr(pdf.author));
+	pdfSupportModule->subjectLE->setText(toqstr(pdf.subject));
+	pdfSupportModule->keywordsLE->setText(toqstr(pdf.keywords));
 
-	pdfSupportModule->bookmarksGB->setChecked(pdf.bookmarks_);
-	pdfSupportModule->bookmarksnumberedCB->setChecked(pdf.bookmarksnumbered_);
-	pdfSupportModule->bookmarksopenGB->setChecked(pdf.bookmarksopen_);
+	pdfSupportModule->bookmarksGB->setChecked(pdf.bookmarks);
+	pdfSupportModule->bookmarksnumberedCB->setChecked(pdf.bookmarksnumbered);
+	pdfSupportModule->bookmarksopenGB->setChecked(pdf.bookmarksopen);
 
 	pdfSupportModule->bookmarksopenlevelLE->setText(
-		toqstr(pdf.bookmarksopenlevel_));
+		toqstr(pdf.bookmarksopenlevel));
 
-	pdfSupportModule->breaklinksCB->setChecked(pdf.breaklinks_);
-	pdfSupportModule->pdfborderCB->setChecked(pdf.pdfborder_);
-	pdfSupportModule->colorlinksCB->setChecked(pdf.colorlinks_);
-	pdfSupportModule->backrefCB->setChecked(pdf.backref_);
-	pdfSupportModule->pagebackrefCB->setChecked(pdf.pagebackref_);
+	pdfSupportModule->breaklinksCB->setChecked(pdf.breaklinks);
+	pdfSupportModule->pdfborderCB->setChecked(pdf.pdfborder);
+	pdfSupportModule->colorlinksCB->setChecked(pdf.colorlinks);
+	pdfSupportModule->backrefCB->setChecked(pdf.backref);
+	pdfSupportModule->pagebackrefCB->setChecked(pdf.pagebackref);
 	pdfSupportModule->fullscreenCB->setChecked
-		(pdf.pagemode_ == pdf.pagemode_fullscreen_);
+		(pdf.pagemode == pdf.pagemode_fullscreen);
 
 	pdfSupportModule->optionsLE->setText(
-		toqstr(pdf.quoted_options_));
+		toqstr(pdf.quoted_options));
 }
 
 
