@@ -76,7 +76,7 @@ public:
 	///
 	docstring name() const { return from_ascii("Quotes"); }
 	///
-	bool metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 #if 0

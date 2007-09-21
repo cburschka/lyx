@@ -43,16 +43,11 @@ Inset * InsetMathCases::clone() const
 }
 
 
-bool InsetMathCases::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathCases::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	dim = dim_;
 	InsetMathGrid::metrics(mi);
 	dim_.wid += 8;
-
-	if (dim_ == dim)
-		return false;
 	dim = dim_;
-	return true;
 }
 
 

@@ -67,7 +67,7 @@ void InsetMathDelim::normalize(NormalStream & os) const
 }
 
 
-bool InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	using std::max;
 	cell(0).metrics(mi);
@@ -83,10 +83,7 @@ bool InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = cell(0).width() + 2 * dw_ + 8;
 	dim.asc = max(a0, d0) + h0;
 	dim.des = max(a0, d0) - h0;
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

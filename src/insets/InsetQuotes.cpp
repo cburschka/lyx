@@ -214,7 +214,7 @@ docstring const InsetQuotes::dispString(Language const * loclang) const
 }
 
 
-bool InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Font & font = mi.base.font;
 	frontend::FontMetrics const & fm =
@@ -232,9 +232,6 @@ bool InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 		else
 			dim.wid += fm.width(',');
 	}
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

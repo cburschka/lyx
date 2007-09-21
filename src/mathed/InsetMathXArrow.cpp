@@ -33,7 +33,7 @@ Inset * InsetMathXArrow::clone() const
 }
 
 
-bool InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -42,10 +42,7 @@ bool InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = cell(0).height() + 10;
 	dim.des = cell(1).height();
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 
@@ -54,7 +51,7 @@ void InsetMathXArrow::draw(PainterInfo & pi, int x, int y) const
 	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, x + 5, y - 10);
 	cell(1).draw(pi, x + 5, y + cell(1).height());
-	mathed_draw_deco(pi, x + 1, y - 7, width() - 2, 5, name_);
+	mathed_draw_deco(pi, x + 1, y - 7, dim_.wid - 2, 5, name_);
 	drawMarkers(pi, x, y);
 }
 

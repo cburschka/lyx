@@ -109,7 +109,7 @@ docstring MathMacroTemplate::prefix() const
 }
 
 
-bool MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
+void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	bool lockMacro = MacroTable::globalMacros().has(name_);
 	if (lockMacro)
@@ -126,10 +126,7 @@ bool MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).unlock();
 
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

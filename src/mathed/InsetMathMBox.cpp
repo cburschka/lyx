@@ -53,15 +53,11 @@ Inset * InsetMathMBox::clone() const
 }
 
 
-bool InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	TextMetrics & tm = mi.base.bv->textMetrics(&text_);
 	tm.metrics(mi, dim);
 	metricsMarkers2(dim);
-	if (dim_ == dim)
-		return false;
-	dim_ = dim;
-	return true;
 }
 
 

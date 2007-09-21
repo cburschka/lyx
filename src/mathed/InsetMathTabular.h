@@ -29,7 +29,7 @@ public:
 	///
 	InsetMathTabular(docstring const &, char valign, docstring const & halign);
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

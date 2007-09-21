@@ -46,15 +46,12 @@ Inset * InsetMathTabular::clone() const
 }
 
 
-bool InsetMathTabular::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 6;
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

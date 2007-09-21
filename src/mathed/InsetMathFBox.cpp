@@ -38,15 +38,12 @@ InsetMath::mode_type InsetMathFBox::currentMode() const
 }
 
 
-bool InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim, 3); // 1 pixel space, 1 frame, 1 space
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

@@ -40,7 +40,7 @@ void RenderButton::update(docstring const & text, bool editable)
 }
 
 
-bool RenderButton::metrics(MetricsInfo &, Dimension & dim) const
+void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 {
 	Font font(Font::ALL_SANE);
 	font.decSize();
@@ -53,10 +53,7 @@ bool RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 		fm.rectText(text_, dim.wid, dim.asc, dim.des);
 
 	dim.wid += 4;
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

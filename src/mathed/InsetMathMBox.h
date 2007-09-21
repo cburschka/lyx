@@ -34,7 +34,7 @@ public:
 	explicit InsetMathMBox(LayoutPtr const & layout);
 
 	/// this stores metrics information in cache_
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw according to cached metrics
 	void draw(PainterInfo &, int x, int y) const;
 	///

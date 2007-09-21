@@ -35,6 +35,9 @@
 
 #include "frontends/Painter.h"
 
+#include "support/convert.h"
+#include "support/ExceptionMessage.h"
+
 #include <boost/current_function.hpp>
 
 #include <map>
@@ -116,10 +119,16 @@ static TranslatorMap const build_translator()
 }
 
 
-/// pretty arbitrary dimensions
 Inset::Inset()
-	: dim_(10, 10, 10)
 {}
+
+
+Dimension const Inset::dimension(BufferView const &) const
+{
+	docstring const id = convert<docstring>(int(lyxCode())) + " " + name();
+	throw support::ExceptionMessage(support::ErrorException,
+		_("Inset::dimension(): unimplemented method"), id);
+}
 
 
 Inset::Code Inset::translate(std::string const & name)
@@ -278,8 +287,10 @@ void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 	Color::color pen_color = mouseHovered() || editing(pi.base.bv)?
 		Color::mathframe : Color::mathcorners;
 
-	int const t = x + width() - 1;
-	int const d = y + descent();
+	Dimension const dim = dimension(*pi.base.bv);
+
+	int const t = x + dim.width() - 1;
+	int const d = y + dim.descent();
 	pi.pain.line(x, d - 3, x, d, pen_color);
 	pi.pain.line(t, d - 3, t, d, pen_color);
 	pi.pain.line(x, d, x + 3, d, pen_color);
@@ -294,8 +305,9 @@ void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
 		Color::mathframe : Color::mathcorners;
 
 	drawMarkers(pi, x, y);
-	int const t = x + width() - 1;
-	int const a = y - ascent();
+	Dimension const dim = dimension(*pi.base.bv);
+	int const t = x + dim.width() - 1;
+	int const a = y - dim.ascent();
 	pi.pain.line(x, a + 3, x, a, pen_color);
 	pi.pain.line(t, a + 3, t, a, pen_color);
 	pi.pain.line(x, a, x + 3, a, pen_color);
@@ -329,11 +341,14 @@ bool Inset::covers(BufferView const & bv, int x, int y) const
 	//	<< " x1: " << xo(bv) << " x2: " << xo() + width()
 	//	<< " y1: " << yo(bv) - ascent() << " y2: " << yo() + descent()
 	//	<< std::endl;
+
+	Dimension const dim = dimension(bv);
+
 	return bv.coordCache().getInsets().has(this)
 			&& x >= xo(bv)
-			&& x <= xo(bv) + width()
-			&& y >= yo(bv) - ascent()
-			&& y <= yo(bv) + descent();
+			&& x <= xo(bv) + dim.width()
+			&& y >= yo(bv) - dim.ascent()
+			&& y <= yo(bv) + dim.descent();
 }
 
 

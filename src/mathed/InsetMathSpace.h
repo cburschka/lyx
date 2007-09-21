@@ -32,7 +32,7 @@ public:
 	///
 	void incSpace();
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 
@@ -52,6 +52,8 @@ private:
 	virtual Inset * clone() const;
 	///
 	int space_;
+	///
+	Dimension dim_;
 };
 
 

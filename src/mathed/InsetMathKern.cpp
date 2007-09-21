@@ -42,15 +42,11 @@ Inset * InsetMathKern::clone() const
 }
 
 
-bool InsetMathKern::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathKern::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = 0;
 	dim.des = 0;
 	dim.wid = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
-	if (dim == dim_)
-		return false;
-	dim_ = dim;
-	return true;
 }
 
 

@@ -40,7 +40,7 @@ public:
 	///
 	mode_type currentMode() const { return MATH_MODE; }
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 

@@ -124,16 +124,14 @@ string InsetFormulaMacro::prefix() const
 }
 
 
-bool InsetFormulaMacro::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetFormulaMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetFormulaMacro: " << this << " -- " << &tmpl() << endl;
 	tmpl()->metrics(mi, dim);
 	dim.asc += 5;
 	dim.des += 5;
 	dim.wid += 10 + theFontMetrics(mi.base.font).width(prefix());
-	bool const changed = dim_ != dim;
 	dim_ = dim;
-	return changed;
 }
 
 

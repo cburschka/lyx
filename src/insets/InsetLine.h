@@ -25,7 +25,7 @@ public:
 
 	Inset::Code lyxCode() const { return Inset::LINE_CODE; }
 
-	bool metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 
 	void draw(PainterInfo & pi, int x, int y) const;
 

@@ -120,7 +120,7 @@ public:
 
 	/// compute the size of the object returned in dim
 	/// \retval true if metrics changed.
-	virtual bool metrics(MetricsInfo & mi, Dimension & dim) const = 0;
+	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 	/// draw inset selection if necessary
@@ -478,14 +478,8 @@ public:
 	/// reject the changes within the inset
 	virtual void rejectChanges(BufferParams const &) {};
 
-	/// FIXME: move dim_ out of Inset!
-	Dimension const & dimension() { return dim_; }
-	/// inset width.
-	int width() const { return dim_.wid; }
-	/// inset ascent.
-	int ascent() const { return dim_.asc; }
-	/// inset descent.
-	int descent() const { return dim_.des; }
+	///
+	virtual Dimension const dimension(BufferView const &) const;
 	///
 	int scroll() const { return 0; }
 	///
@@ -520,9 +514,6 @@ protected:
 	 *  \sa getStatus
 	 */
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
-
-	/// Cached dimensions of the inset.
-	mutable Dimension dim_;
 };
 
 

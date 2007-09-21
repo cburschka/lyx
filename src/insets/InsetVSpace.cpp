@@ -118,7 +118,7 @@ int const arrow_size = 4;
 }
 
 
-bool InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int height = 3 * arrow_size;
 	if (space_.length().len().value() >= 0.0)
@@ -138,9 +138,7 @@ bool InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = height / 2 + (a - d) / 2; // align cursor with the
 	dim.des = height - dim.asc;         // label text
 	dim.wid = ADD_TO_VSPACE_WIDTH + 2 * arrow_size + 5 + w;
-	bool const changed = dim_ != dim;
 	dim_ = dim;
-	return changed;
 }
 
 

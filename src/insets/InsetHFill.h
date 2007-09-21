@@ -23,7 +23,7 @@ public:
 	///
 	InsetHFill();
 	///
-	bool metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 	///

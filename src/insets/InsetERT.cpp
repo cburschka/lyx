@@ -405,16 +405,13 @@ bool InsetERT::insetAllowed(Inset::Code /* code */) const
 }
 
 
-bool InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Font tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
 	mi.base.font.realize(tmpfont);
 	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

@@ -26,7 +26,7 @@ public:
 	///
 	InsetMathLim(MathData const & f, MathData const & x, MathData const & x0);
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 

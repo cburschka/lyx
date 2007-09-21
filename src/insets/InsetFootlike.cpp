@@ -31,15 +31,12 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 {}
 
 
-bool InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Font tmpfont = mi.base.font;
 	mi.base.font = mi.base.bv->buffer().params().getFont();
 	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

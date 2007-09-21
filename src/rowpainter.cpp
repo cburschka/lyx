@@ -138,33 +138,35 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	inset->drawSelection(pi_, int(x_), yo_);
 	inset->draw(pi_, int(x_), yo_);
 
-	paintForeignMark(x_, font, inset->descent());
+	Dimension const & dim = pm_.insetDimension(inset);
 
-	x_ += inset->width();
+	paintForeignMark(x_, font, dim.descent());
+
+	x_ += dim.width();
 
 #ifdef DEBUG_METRICS
-	int const x1 = int(x_ - inset->width());
-	Dimension dim;
+	int const x1 = int(x_ - dim.width());
+	Dimension dim2;
 	BOOST_ASSERT(max_witdh_ > 0);
 	int right_margin = text_metrics_.rightMargin(pm_);
 	int const w = max_witdh_ - leftMargin() - right_margin;
 	MetricsInfo mi(pi_.base.bv, font, w);
-	inset->metrics(mi, dim);
-	if (inset->width() > dim.wid)
+	inset->metrics(mi, dim2);
+	if (dim.wid != dim2.wid)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
-		       << " draw width " << inset->width()
-		       << "> metrics width " << dim.wid << "." << std::endl;
-	if (inset->ascent() > dim.asc)
+		       << " draw width " << dim.width()
+		       << "> metrics width " << dim2.wid << "." << std::endl;
+	if (dim->asc != dim2.asc)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
-		       << " draw ascent " << inset->ascent()
-		       << "> metrics ascent " << dim.asc << "." << std::endl;
-	if (inset->descent() > dim.des)
+		       << " draw ascent " << dim.ascent()
+		       << "> metrics ascent " << dim2.asc << "." << std::endl;
+	if (dim2.descent() != dim.des)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
-		       << " draw ascent " << inset->descent()
-		       << "> metrics descent " << dim.des << "." << std::endl;
-	BOOST_ASSERT(inset->width() <= dim.wid);
-	BOOST_ASSERT(inset->ascent() <= dim.asc);
-	BOOST_ASSERT(inset->descent() <= dim.des);
+		       << " draw ascent " << dim.descent()
+		       << "> metrics descent " << dim2.des << "." << std::endl;
+	BOOST_ASSERT(dim2.wid == dim.wid);
+	BOOST_ASSERT(dim2.asc == dim.asc);
+	BOOST_ASSERT(dim2.des == dim.des);
 	int const x2 = x1 + dim.wid;
 	int const y1 = yo_ + dim.des;
 	int const y2 = yo_ - dim.asc;

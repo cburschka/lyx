@@ -65,7 +65,7 @@ public:
 	InsetMath const * operator->() const { return nucleus_; }
 
 	/// width cache. Not nice...
-	//mutable int width_;
+	mutable int width_;
 
 private:
 	///

@@ -48,7 +48,7 @@ InsetCommand::~InsetCommand()
 }
 
 
-bool InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (updateButtonLabel_) {
 		updateButtonLabel_ = false;
@@ -56,9 +56,6 @@ bool InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 			       editable() != NOT_EDITABLE);
 	}
 	button_.metrics(mi, dim);
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

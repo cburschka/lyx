@@ -171,7 +171,7 @@ bool InsetBox::hasFixedWidth() const
 }
 
 
-bool InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
+void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 {
 	// back up textwidth.
 	int textwidth_backup = m.base.textwidth;
@@ -180,9 +180,6 @@ bool InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 	InsetCollapsable::metrics(m, dim);
 	// retore textwidth.
 	m.base.textwidth = textwidth_backup;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

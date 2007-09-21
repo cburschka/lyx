@@ -45,7 +45,7 @@ public:
 	///
 	bool descendable() const { return true; }
 	///
-	virtual bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///

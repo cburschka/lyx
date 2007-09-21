@@ -125,7 +125,7 @@ void InsetCaption::addToToc(TocList & toclist, Buffer const & buf, ParConstItera
 }
 
 
-bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
@@ -139,9 +139,6 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = std::max(dim.des - textdim.asc + dim.asc, textdim.des);
 	dim.asc = textdim.asc;
 	dim.wid += textdim.wid;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

@@ -282,7 +282,7 @@ bool InsetMathHull::previewState(BufferView * bv) const
 }
 
 
-bool InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
@@ -290,10 +290,8 @@ bool InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 1;
 		if (display())
 			dim.des += displayMargin();
-		if (dim_ == dim)
-			return false;
 		dim_ = dim;
-		return true;
+		return;
 	}
 
 	FontSetChanger dummy1(mi.base, standardFont());
@@ -323,11 +321,7 @@ bool InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	math_font_max_dim(mi.base.font, asc, des);
 	dim.asc = max(dim.asc, asc);
 	dim.des = max(dim.des, des);
-
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 
@@ -338,8 +332,8 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	// background of mathed under focus is not painted because
 	// selection at the top level of nested inset is difficult to handle.
 	if (!editing(pi.base.bv))
-		pi.pain.fillRectangle(x + 1, y - ascent() + 1, width() - 2,
-				ascent() + descent() - 1, Color::mathbg);
+		pi.pain.fillRectangle(x + 1, y - dim_.asc + 1, dim_.wid - 2,
+				dim_.asc + dim_.des - 1, Color::mathbg);
 
 	if (use_preview_) {
 		// one pixel gap in front

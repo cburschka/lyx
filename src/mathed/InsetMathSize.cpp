@@ -32,15 +32,12 @@ Inset * InsetMathSize::clone() const
 }
 
 
-bool InsetMathSize::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathSize::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	StyleChanger dummy(mi.base, style_);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

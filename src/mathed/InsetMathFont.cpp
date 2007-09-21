@@ -41,15 +41,12 @@ InsetMath::mode_type InsetMathFont::currentMode() const
 }
 
 
-bool InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, key_->name);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

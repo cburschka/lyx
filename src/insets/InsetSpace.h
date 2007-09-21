@@ -56,7 +56,9 @@ public:
 	///
 	Kind kind() const;
 	///
-	bool metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	Dimension const dimension(BufferView const &) const { return dim_; };
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -92,6 +94,8 @@ private:
 
 	/// And which kind is this?
 	Kind kind_;
+	///
+	mutable Dimension dim_;
 };
 
 

@@ -32,7 +32,7 @@ Inset * InsetMathDots::clone() const
 }
 
 
-bool InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim = theFontMetrics(mi.base.font).dimension('M');
 	dh_ = 0;
@@ -47,10 +47,7 @@ bool InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	else if (key_->name == "ddots")
 		dh_ = dim.asc;
-	if (dim_ == dim)
-		return false;
-	dim_ = dim;
-	return true;
+	dim = dim_;
 }
 
 

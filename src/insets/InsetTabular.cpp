@@ -2932,7 +2932,7 @@ void InsetTabular::read(Buffer const & buf, Lexer & lex)
 }
 
 
-bool InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetTabular::metrics: " << mi.base.bv << " width: " <<
 	//	mi.base.textwidth << "\n";
@@ -2986,9 +2986,6 @@ bool InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = tabular.rowAscent(0);
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

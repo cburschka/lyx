@@ -41,14 +41,11 @@ void InsetPagebreak::write(Buffer const &, std::ostream & os) const
 }
 
 
-bool InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = defaultRowHeight();
 	dim.des = defaultRowHeight();
 	dim.wid = mi.base.textwidth;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 
@@ -63,7 +60,7 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 	int d = 0;
 	theFontMetrics(font).rectText(insetLabel(), w, a, d);
 
-	int const text_start = int(x + (dim_.wid - w) / 2);
+	int const text_start = int(x + (pi.base.textwidth - w) / 2);
 	int const text_end = text_start + w;
 
 	pi.pain.rectText(text_start, y + d, insetLabel(), font,
@@ -71,7 +68,7 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 
 	pi.pain.line(x, y, text_start, y,
 		   Color::pagebreak, Painter::line_onoffdash);
-	pi.pain.line(text_end, y, int(x + dim_.wid), y,
+	pi.pain.line(text_end, y, int(x + pi.base.textwidth), y,
 		   Color::pagebreak, Painter::line_onoffdash);
 }
 

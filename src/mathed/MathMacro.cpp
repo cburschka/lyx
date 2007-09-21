@@ -38,7 +38,7 @@ public:
 	MathMacroArgumentValue(MathMacro const & mathMacro, size_t idx)
 		: mathMacro_(mathMacro), idx_(idx) {}
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
@@ -57,17 +57,13 @@ Inset * MathMacroArgumentValue::clone() const
 }
 
 
-bool MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const
+void MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// unlock outer macro in arguments, and lock it again later
 	MacroData const & macro = MacroTable::globalMacros().get(mathMacro_.name());
 	macro.unlock();
 	mathMacro_.cell(idx_).metrics(mi, dim);
 	macro.lock();
-	if (dim_ == dim)
-		return false;
-	dim_ = dim;
-	return true;
 }
 
 
@@ -110,7 +106,7 @@ void MathMacro::cursorPos(BufferView const & bv,
 }
 
 
-bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
+void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	kerning_ = 0;
 	if (!MacroTable::globalMacros().has(name())) {
@@ -146,10 +142,7 @@ bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			editing_ = false;
 		}
 	}
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

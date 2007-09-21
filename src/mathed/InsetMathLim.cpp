@@ -43,10 +43,9 @@ void InsetMathLim::normalize(NormalStream & os) const
 }
 
 
-bool InsetMathLim::metrics(MetricsInfo &, Dimension &) const
+void InsetMathLim::metrics(MetricsInfo &, Dimension &) const
 {
 	lyxerr << "should not happen" << endl;
-	return true;
 }
 
 

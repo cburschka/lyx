@@ -47,10 +47,9 @@ void InsetMathDiff::normalize(NormalStream & os) const
 }
 
 
-bool InsetMathDiff::metrics(MetricsInfo &, Dimension &) const
+void InsetMathDiff::metrics(MetricsInfo &, Dimension &) const
 {
 	lyxerr << "should not happen" << endl;
-	return true;
 }
 
 

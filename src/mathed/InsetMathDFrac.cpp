@@ -31,17 +31,14 @@ Inset * InsetMathDFrac::clone() const
 }
 
 
-bool InsetMathDFrac::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathDFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim.wid = std::max(cell(0).width(), cell(1).width()) + 2;
 	dim.asc = cell(0).height() + 2 + 5;
 	dim.des = cell(1).height() + 2 - 5;
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

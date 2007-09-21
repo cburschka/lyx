@@ -56,7 +56,7 @@ Inset * InsetMathChar::clone() const
 }
 
 
-bool InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 #if 1
 	if (char_ == '=' && has_math_fonts) {
@@ -85,12 +85,6 @@ bool InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 2 * theFontMetrics(font_).width(' ');
 	lyxerr << "InsetMathChar::metrics: " << dim << endl;
 #endif
-
-	if (dim_ == dim)
-		return false;
-
-	dim_ = dim;
-	return true;
 }
 
 

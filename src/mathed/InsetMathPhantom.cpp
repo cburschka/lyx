@@ -35,14 +35,11 @@ Inset * InsetMathPhantom::clone() const
 }
 
 
-bool InsetMathPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

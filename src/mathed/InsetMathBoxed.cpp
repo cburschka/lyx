@@ -33,14 +33,11 @@ Inset * InsetMathBoxed::clone() const
 }
 
 
-bool InsetMathBoxed::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBoxed::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers2(dim, 3); // 1 pixel space, 1 frame, 1 space
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

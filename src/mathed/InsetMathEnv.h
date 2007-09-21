@@ -32,7 +32,7 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void infoize(odocstream & os) const;
 

@@ -38,15 +38,12 @@ void InsetNewline::write(Buffer const &, ostream & os) const
 }
 
 
-bool InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 	dim.wid = fm.width('n');
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

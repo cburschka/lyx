@@ -30,14 +30,11 @@ Inset * InsetHFill::clone() const
 }
 
 
-bool InsetHFill::metrics(MetricsInfo &, Dimension & dim) const
+void InsetHFill::metrics(MetricsInfo &, Dimension & dim) const
 {
 	dim.wid = 3;
 	dim.asc = 3;
 	dim.des = 3;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

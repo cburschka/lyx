@@ -28,7 +28,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void normalize(NormalStream & os) const;
 	///

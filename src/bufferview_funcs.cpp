@@ -181,7 +181,8 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 		}
 		
 		// remember width for the case that sl.inset() is positioned in an RTL inset
-		lastw = sl.inset().width();
+		Dimension const dim = sl.inset().dimension(bv);
+		lastw = dim.wid;
 		
 		//lyxerr << "Cursor::getPos, i: "
 		// << i << " x: " << xx << " y: " << y << endl;

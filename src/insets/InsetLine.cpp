@@ -41,21 +41,18 @@ void InsetLine::write(Buffer const &, ostream & os) const
 }
 
 
-bool InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = 3;
 	dim.des = 3;
 	dim.wid = mi.base.textwidth;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
-	pi.pain.line(x, y, x + dim_.wid, y, Color::topline, Painter::line_solid,
-			Painter::line_thick);
+	pi.pain.line(x, y, x + pi.base.textwidth, y, Color::topline,
+		Painter::line_solid, Painter::line_thick);
 }
 
 

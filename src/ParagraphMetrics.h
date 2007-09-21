@@ -21,6 +21,8 @@
 #include "Paragraph.h"
 #include "Row.h"
 
+#include <map>
+
 namespace lyx {
 
 /**
@@ -86,6 +88,10 @@ public:
 	int position() const { return position_; }
 	void setPosition(int position);
 
+	///
+	Dimension const & insetDimension(Inset const * inset) const;
+	///
+	void setInsetDimension(Inset const *, Dimension const & dim);
 
 private:
 	///
@@ -96,6 +102,10 @@ private:
 	Dimension dim_;
 	///
 	Paragraph const * par_;
+	
+	typedef std::map<Inset const *, Dimension> InsetDims;
+	///
+	InsetDims inset_dims_;
 };
 
 } // namespace lyx

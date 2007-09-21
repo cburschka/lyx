@@ -117,7 +117,7 @@ public:
 	virtual EDITABLE editable() const { return IS_EDITABLE; }
 
 	///
-	bool metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

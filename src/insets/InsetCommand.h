@@ -38,7 +38,9 @@ public:
 	///
 	~InsetCommand();
 	///
-	bool metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	Dimension const dimension(BufferView const &) const { return button_.dimension(); }
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

@@ -48,15 +48,11 @@ void InsetMathUnknown::normalize(NormalStream & os) const
 }
 
 
-bool InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_string_dim(mi.base.font, name_, dim);
 	docstring::const_reverse_iterator rit = name_.rbegin();
 	kerning_ = mathed_char_kerning(mi.base.font, *rit);
-	if (dim_ == dim)
-		return false;
-	dim_ = dim;
-	return true;
 }
 
 

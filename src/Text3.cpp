@@ -385,7 +385,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-		}
+		} else
+			cur.setCurrentFont();
 		break;
 
 	case LFUN_CHAR_BACKWARD:
@@ -401,7 +402,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
-		}
+		} else
+			cur.setCurrentFont();
 		break;
 
 	case LFUN_UP_SELECT:

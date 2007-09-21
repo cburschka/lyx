@@ -40,7 +40,7 @@ int InsetMathBinom::dw() const
 }
 
 
-bool InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -49,9 +49,7 @@ bool InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = cell(1).height() + 4 - 5;
 	dim.wid = std::max(cell(0).width(), cell(1).width()) + 2 * dw() + 4;
 	metricsMarkers2(dim);
-	bool const changed = dim_ != dim;
 	dim_ = dim;
-	return changed;
 }
 
 

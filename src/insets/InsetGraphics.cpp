@@ -257,12 +257,9 @@ void InsetGraphics::edit(Cursor & cur, bool)
 }
 
 
-bool InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	graphic_->metrics(mi, dim);
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

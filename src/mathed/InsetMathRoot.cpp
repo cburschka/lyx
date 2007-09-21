@@ -34,7 +34,7 @@ Inset * InsetMathRoot::clone() const
 }
 
 
-bool InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	using std::max;
 	InsetMathNest::metrics(mi);
@@ -42,10 +42,7 @@ bool InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = max(cell(0).descent() - 5, cell(1).descent()) + 2;
 	dim.wid = cell(0).width() + cell(1).width() + 10;
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

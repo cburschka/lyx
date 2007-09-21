@@ -54,7 +54,7 @@ public:
 	///
 	void read(Buffer const & buf, Lexer & lex);
 	///
-	bool metrics(MetricsInfo &, Dimension &) const;
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo &, int, int) const;
 	///

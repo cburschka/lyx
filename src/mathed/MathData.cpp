@@ -210,14 +210,10 @@ void MathData::touch() const
 }
 
 
-bool MathData::metrics(MetricsInfo & mi, Dimension & dim) const
+void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	dim = dim_;
 	metrics(mi);
-	if (dim_ == dim)
-		return false;
 	dim = dim_;
-	return true;
 }
 
 
@@ -257,6 +253,7 @@ void MathData::metrics(MetricsInfo & mi) const
 	dim_.asc = 0;
 	dim_.wid = 0;
 	Dimension d;
+	atom_dims_.clear();
 	//BufferView & bv  = *mi.base.bv;
 	//Buffer const & buf = bv.buffer();
 	for (size_t i = 0, n = size(); i != n; ++i) {
@@ -283,6 +280,7 @@ void MathData::metrics(MetricsInfo & mi) const
 		}
 #endif
 		at->metrics(mi, d);
+		atom_dims_.push_back(d);
 		dim_ += d;
 		if (i == n - 1)
 			kerning_ = at->kerning();
@@ -330,7 +328,7 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 		bv.coordCache().insets().add(at.nucleus(), x, y);
 		at->drawSelection(pi, x, y);
 		at->draw(pi, x, y);
-		x += at->width();
+		x += atom_dims_[i].wid;
 	}
 }
 
@@ -377,7 +375,7 @@ int MathData::pos2x(size_type pos, int glue) const
 			x += glue;
 		//lyxerr << "char: " << (*it)->getChar()
 		//	<< "width: " << (*it)->width() << std::endl;
-		x += (*it)->width();
+		x += atom_dims_[i].wid;
 	}
 	return x;
 }
@@ -399,7 +397,7 @@ MathData::size_type MathData::x2pos(int targetx, int glue) const
 		lastx = currx;
 		if ((*it)->getChar() == ' ')
 			currx += glue;
-		currx += (*it)->width();
+		currx += atom_dims_[it - begin()].wid;
 	}
 
 	/**

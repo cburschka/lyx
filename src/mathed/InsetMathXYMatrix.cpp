@@ -43,15 +43,12 @@ int InsetMathXYMatrix::rowsep() const
 }
 
 
-bool InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.style == LM_ST_DISPLAY)
 		mi.base.style = LM_ST_TEXT;
 	InsetMathGrid::metrics(mi, dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

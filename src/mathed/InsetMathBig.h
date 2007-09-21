@@ -27,7 +27,9 @@ public:
 	///
 	docstring name() const;
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	Dimension const dimension(BufferView const &) const { return dim_; };
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -50,6 +52,8 @@ private:
 	docstring const name_;
 	/// ( or [ or \\Vert...
 	docstring const delim_;
+	///
+	mutable Dimension dim_;
 };
 
 

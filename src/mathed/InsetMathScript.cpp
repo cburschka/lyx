@@ -288,7 +288,7 @@ int InsetMathScript::nker() const
 }
 
 
-bool InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	ScriptChanger dummy(mi.base);
@@ -323,10 +323,7 @@ bool InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else
 		dim.des = nd;
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

@@ -29,7 +29,7 @@ public:
 	/// Create a color inset from LaTeX color name
 	explicit InsetMathColor(bool oldstyle, docstring const & color);
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// we write extra braces in any case...
 	/// FIXME Why? Are they necessary if oldstyle_ == false?
 	bool extraBraces() const { return true; }

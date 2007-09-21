@@ -78,14 +78,12 @@ char const * InsetMathAMSArray::name_right() const
 }
 
 
-bool InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ArrayChanger dummy(mi.base);
 	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 14;
-	bool const changed = dim_ != dim;
 	dim_ = dim;
-	return changed;
 }
 
 

@@ -44,15 +44,12 @@ void InsetMathBox::normalize(NormalStream & os) const
 }
 
 
-bool InsetMathBox::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

@@ -27,7 +27,7 @@ Inset * InsetMathStackrel::clone() const
 }
 
 
-bool InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
@@ -36,10 +36,7 @@ bool InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = cell(1).ascent() + cell(0).height() + 4;
 	dim.des = cell(1).descent();
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

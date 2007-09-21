@@ -28,7 +28,7 @@ public:
 	RenderBase * clone(Inset const *) const;
 
 	/// compute the size of the object returned in dim
-	virtual bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	virtual void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 

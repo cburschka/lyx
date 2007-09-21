@@ -31,17 +31,14 @@ Inset * InsetMathSqrt::clone() const
 }
 
 
-bool InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	dim.asc += 4;
 	dim.des += 2;
 	dim.wid += 12;
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

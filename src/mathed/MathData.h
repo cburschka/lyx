@@ -105,7 +105,10 @@ public:
 	/// rebuild cached metrics information
 	void metrics(MetricsInfo & mi) const;
 	/// rebuild cached metrics information
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	Dimension const & dimension(BufferView const &) const { return dim_; };
+
 	/// redraw cell using cache metrics information
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// rebuild cached metrics information
@@ -175,6 +178,9 @@ protected:
 private:
 	/// is this an exact match at this position?
 	bool find1(MathData const & ar, size_type pos) const;
+
+	///
+	mutable std::vector<Dimension> atom_dims_;
 };
 
 ///

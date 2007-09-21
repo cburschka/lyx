@@ -78,14 +78,12 @@ Inset * InsetMathArray::clone() const
 }
 
 
-bool InsetMathArray::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ArrayChanger dummy(mi.base);
 	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 6;
-	bool const changed = dim_ != dim;
 	dim_ = dim;
-	return changed;
 }
 
 

@@ -26,7 +26,7 @@ Inset * InsetMathOverset::clone() const
 }
 
 
-bool InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
@@ -35,16 +35,13 @@ bool InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = cell(1).ascent() + cell(0).height() + 4;
 	dim.des = cell(1).descent();
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 
 void InsetMathOverset::draw(PainterInfo & pi, int x, int y) const
 {
-	int m  = x + width() / 2;
+	int m  = x + dim_.wid / 2;
 	int yo = y - cell(1).ascent() - cell(0).descent() - 1;
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	FracChanger dummy(pi.base);

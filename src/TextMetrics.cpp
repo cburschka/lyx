@@ -387,14 +387,15 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	InsetList::const_iterator ii = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();
 	for (; ii != iend; ++ii) {
-		Dimension old_dim = ii->inset->dimension();
 		Dimension dim;
 		int const w = max_width_ - leftMargin(max_width_, pit, ii->pos)
 			- right_margin;
 		Font const & font = ii->inset->noFontChange() ?
 			bufferfont : getDisplayFont(pit, ii->pos);
 		MetricsInfo mi(bv_, font, w);
-		changed |= ii->inset->metrics(mi, dim);
+		ii->inset->metrics(mi, dim);
+		Dimension const old_dim = pm.insetDimension(ii->inset);
+		pm.setInsetDimension(ii->inset, dim);
 		changed |= (old_dim != dim);
 	}
 
@@ -862,12 +863,14 @@ boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const
 	int maxdesc = int(fontmetrics.maxDescent() * spacing_val);
 
 	// insets may be taller
+	ParagraphMetrics const & pm = par_metrics_[pit];
 	InsetList::const_iterator ii = par.insetlist.begin();
 	InsetList::const_iterator iend = par.insetlist.end();
 	for ( ; ii != iend; ++ii) {
+		Dimension const & dim = pm.insetDimension(ii->inset);
 		if (ii->pos >= first && ii->pos < end) {
-			maxasc  = max(maxasc,  ii->inset->ascent());
-			maxdesc = max(maxdesc, ii->inset->descent());
+			maxasc  = max(maxasc,  dim.ascent());
+			maxdesc = max(maxdesc, dim.descent());
 		}
 	}
 
@@ -1400,6 +1403,7 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 	BOOST_ASSERT(pit != -1);
 
 	Paragraph const & par = text_->paragraphs()[pit];
+	ParagraphMetrics const & pm = par_metrics_[pit];
 
 	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
@@ -1411,32 +1415,37 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 	InsetList::const_iterator iend = par.insetlist.end();
 	for (; iit != iend; ++iit) {
 		Inset * inset = iit->inset;
-#if 1
+
 		LYXERR(Debug::DEBUG)
 			<< BOOST_CURRENT_FUNCTION
 			<< ": examining inset " << inset << endl;
 
-		if (bv_->coordCache().getInsets().has(inset))
-			LYXERR(Debug::DEBUG)
-				<< BOOST_CURRENT_FUNCTION
-				<< ": xo: " << inset->xo(*bv_) << "..."
-				<< inset->xo(*bv_) + inset->width()
-				<< " yo: " << inset->yo(*bv_) - inset->ascent()
-				<< "..."
-				<< inset->yo(*bv_) + inset->descent()
-				<< endl;
-		else
+		if (!bv_->coordCache().getInsets().has(inset)) {
 			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION
 				<< ": inset has no cached position" << endl;
-#endif
-		if (inset->covers(*bv_, x, y)) {
+			return 0;
+		}
+
+		Dimension const & dim = pm.insetDimension(inset);
+		Point p = bv_->coordCache().getInsets().xy(inset);
+
+		LYXERR(Debug::DEBUG)
+			<< BOOST_CURRENT_FUNCTION
+			<< ": xo: " << p.x_ << "..." << p.x_ + dim.wid
+			<< " yo: " << p.y_ - dim.asc << "..." << p.y_ + dim.des
+			<< endl;
+
+		if (x >= p.x_ && p.x_ + dim.wid
+			&& y >= p.y_ - dim.asc
+			&& y <= p.y_ + dim.des) {
 			LYXERR(Debug::DEBUG)
 				<< BOOST_CURRENT_FUNCTION
 				<< ": Hit inset: " << inset << endl;
 			return inset;
 		}
 	}
+
 	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
 		<< ": No inset hit. " << endl;

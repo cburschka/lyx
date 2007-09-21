@@ -96,15 +96,14 @@ void InsetFlex::read(Buffer const & buf, Lexer & lex)
 }
 
 
-bool InsetFlex::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetFlex::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Font tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
 	mi.base.font.reduce(Font(Font::ALL_SANE));
 	mi.base.font.realize(tmpfont);
-	bool changed = InsetCollapsable::metrics(mi, dim);
+	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
-	return changed;
 }
 
 

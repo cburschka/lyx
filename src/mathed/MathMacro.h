@@ -37,7 +37,7 @@ public:
 	void drawDecoration(PainterInfo & pi, int x, int y) const
 	{ drawMarkers2(pi, x, y); }
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// get cursor position
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;

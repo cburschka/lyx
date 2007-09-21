@@ -166,7 +166,7 @@ void InsetText::read(Buffer const & buf, Lexer & lex)
 }
 
 
-bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	TextMetrics & tm = mi.base.bv->textMetrics(&text_);
 
@@ -183,9 +183,6 @@ bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
-	bool const changed = dim_ != dim;
-	dim_ = dim;
-	return changed;
 }
 
 

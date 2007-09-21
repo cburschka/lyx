@@ -53,7 +53,7 @@ docstring InsetMathSymbol::name() const
 }
 
 
-bool InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "metrics: symbol: '" << sym_->name
 	//	<< "' in font: '" << sym_->inset
@@ -82,12 +82,6 @@ bool InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (sym_->inset == "cmex" || sym_->inset == "esint" ||
 		    sym_->extra == "funclim")
 			scriptable_ = true;
-
-	if (dim_ == dim)
-		return false;
-
-	dim_ = dim;
-	return true;
 }
 
 

@@ -118,6 +118,24 @@ void ParagraphMetrics::setPosition(int position)
 }
 
 
+Dimension const & ParagraphMetrics::insetDimension(Inset const * inset) const
+{
+	InsetDims::const_iterator it = inset_dims_.find(inset);
+	if (it != inset_dims_.end())
+		return it->second;
+
+	static Dimension dummy;
+	return dummy;
+}
+
+
+void ParagraphMetrics::setInsetDimension(Inset const * inset,
+		Dimension const & dim)
+{
+	inset_dims_[inset] = dim;
+}
+
+
 Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
 {
 	BOOST_ASSERT(!rows().empty());
@@ -200,7 +218,7 @@ int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 
 	// The most special cases are handled first.
 	if (c == Paragraph::META_INSET)
-		return par_->getInset(pos)->width();
+		return insetDimension(par_->getInset(pos)).wid;
 
 	if (!isPrintable(c))
 		return theFontMetrics(font).width(c);

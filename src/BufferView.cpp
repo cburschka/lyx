@@ -1045,49 +1045,30 @@ void BufferView::resize(int width, int height)
 
 Inset const * BufferView::getCoveringInset(Text const & text, int x, int y)
 {
-	pit_type pit = text_metrics_[&text].getPitNearY(y);
-	BOOST_ASSERT(pit != -1);
-	Paragraph const & par = text.getPar(pit);
+	TextMetrics & tm = text_metrics_[&text];
+	Inset * inset = tm.checkInsetHit(x, y);
+	if (!inset)
+		return 0;
 
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": x: " << x
-		<< " y: " << y
-		<< "  pit: " << pit
-		<< endl;
-	InsetList::const_iterator iit = par.insetlist.begin();
-	InsetList::const_iterator iend = par.insetlist.end();
-	for (; iit != iend; ++iit) {
-		Inset * const inset = iit->inset;
-		if (inset->covers(*this, x, y)) {
-			if (!inset->descendable())
-				// No need to go further down if the inset is not
-				// descendable.
-				return inset;
+	if (!inset->descendable())
+		// No need to go further down if the inset is not
+		// descendable.
+		return inset;
 
-			size_t cell_number = inset->nargs();
-			// Check all the inner cell.
-			for (size_t i = 0; i != cell_number; ++i) {
-				Text const * inner_text = inset->getText(i);
-				if (inner_text) {
-					// Try deeper.
-					Inset const * inset_deeper =
-						getCoveringInset(*inner_text, x, y);
-					if (inset_deeper)
-						return inset_deeper;
-				}
-			}
-
-			LYXERR(Debug::DEBUG)
-				<< BOOST_CURRENT_FUNCTION
-				<< ": Hit inset: " << inset << endl;
-			return inset;
+	size_t cell_number = inset->nargs();
+	// Check all the inner cell.
+	for (size_t i = 0; i != cell_number; ++i) {
+		Text const * inner_text = inset->getText(i);
+		if (inner_text) {
+			// Try deeper.
+			Inset const * inset_deeper =
+				getCoveringInset(*inner_text, x, y);
+			if (inset_deeper)
+				return inset_deeper;
 		}
 	}
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": No inset hit. " << endl;
-	return 0;
+
+	return inset;
 }
 
 

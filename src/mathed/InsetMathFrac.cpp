@@ -82,7 +82,7 @@ bool InsetMathFrac::idxLeft(Cursor & cur) const
 }
 
 
-bool InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
@@ -128,10 +128,7 @@ bool InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 	}
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

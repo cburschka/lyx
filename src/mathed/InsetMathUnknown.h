@@ -25,7 +25,7 @@ public:
 	explicit InsetMathUnknown(docstring const & name,
 		bool final = true, bool black = false);
 	///
-	bool metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

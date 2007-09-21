@@ -79,15 +79,9 @@ Inset * InsetMathSpace::clone() const
 }
 
 
-bool InsetMathSpace::metrics(MetricsInfo &, Dimension & dim) const
+void InsetMathSpace::metrics(MetricsInfo &, Dimension & dim) const
 {
-	dim.wid = width();
-	dim.asc = ascent();
-	dim.des = descent();
-	if (dim_ == dim)
-		return false;
-	dim_ = dim;
-	return true;
+	dim = dim_;
 }
 
 
@@ -100,7 +94,7 @@ void InsetMathSpace::draw(PainterInfo & pi, int x, int y) const
 
 	int xp[4];
 	int yp[4];
-	int w = width();
+	int w = dim_.wid;
 
 	xp[0] = ++x;        yp[0] = y - 3;
 	xp[1] = x;          yp[1] = y;

@@ -41,7 +41,7 @@ Inset * InsetMathBrace::clone() const
 }
 
 
-bool InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	Dimension t = theFontMetrics(mi.base.font).dimension('{');
@@ -49,10 +49,7 @@ bool InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = std::max(cell(0).descent(), t.des);
 	dim.wid = cell(0).width() + 2 * t.wid;
 	metricsMarkers(dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 

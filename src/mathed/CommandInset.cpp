@@ -36,17 +36,14 @@ Inset * CommandInset::clone() const
 }
 
 
-bool CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!set_label_) {
 		set_label_ = true;
 		button_.update(screenLabel(), true);
 	}
 	button_.metrics(mi, dim);
-	if (dim_ == dim)
-		return false;
 	dim_ = dim;
-	return true;
 }
 
 
