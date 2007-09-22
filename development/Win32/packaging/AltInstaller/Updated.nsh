@@ -1,6 +1,6 @@
 Function UpdateModifiedFiles
 
- # list with modified files for LyX 1.5rc2 27-06-2007
+ # list with modified files for LyX 1.5.2svn 22-09-2007
  SetOutPath "$INSTDIR\bin"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
@@ -20,6 +20,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
  SetOutPath "$INSTDIR\Resources\images"
  File /r "${PRODUCT_SOURCEDIR}\Resources\images\math"
+ SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_lang.py"
  SetOutPath "$INSTDIR\Resources\ui"
