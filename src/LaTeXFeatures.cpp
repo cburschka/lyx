@@ -395,10 +395,14 @@ char const * simplefeatures[] = {
 	"latexsym",
 	"pifont",
 	"subfigure",
-	"wrapfig",
 	"varioref",
 	"prettyref",
+	/* For a successful cooperation of the `wrapfig' package with the
+	   `float' package you should load the `wrapfig' package *after*
+	   the `float' package. See the caption package documentation
+	   for explanation.*/
 	"float",
+	"wrapfig",
 	"booktabs",
 	"dvipost",
 	"fancybox",
