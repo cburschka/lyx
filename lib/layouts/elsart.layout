@@ -122,7 +122,6 @@ Style Author
 	ItemSep               0
 	ParSep                0
 	Align                 Center
-	AlignPossible         Center
 	OptionalArgs          1
 	Font
 	  Series              Bold
@@ -136,7 +135,6 @@ Style Author_Address
 	InTitle               1
 	LatexName             address
 	Align                 Center
-	AlignPossible         Center
 	Labeltype             Static
 	LabelSep              M
 	LabelString           "Address:"
@@ -154,7 +152,6 @@ Style Author_Email
 	PassThru              1
 	LatexName             ead
 	Align                 Center
-	AlignPossible         Center
 	Labeltype             Static
 	LabelSep              M
 	LabelString           "Email:"
@@ -176,7 +173,6 @@ Style Author_URL
 	LatexName             ead
 	LatexParam            "[url]"
 	Align                 Center
-	AlignPossible         Center
 	Labeltype             Static
 	LabelSep              M
 	LabelString           "URL:"
@@ -218,7 +214,6 @@ Style Abstract
 	BottomSep             0.7
 	ParSep                0
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Centered_Top_Environment
 	LabelString           "Abstract"
 	LabelBottomSep        0.5

@@ -61,7 +61,6 @@ Style Itemize
   BottomSep        0.7
   ParSep           0.3
   Align            Left
-  AlignPossible    Left
   LabelType        Itemize
   LabelString      "*"
 End
@@ -81,7 +80,6 @@ Style Enumerate
   BottomSep        0.7
   ParSep           0.3
   Align            Left
-  AlignPossible    Left
   LabelType        Enumerate
 End
 
@@ -100,7 +98,6 @@ Style Description
   BottomSep        0.7
   ParSep           0.3
   Align            Left
-  AlignPossible    Left
   LabelType        Manual
   LabelString      "MM"
 
@@ -125,7 +122,6 @@ Style Part
   BottomSep        4
   ParSep           0.8
   Align            Center
-  Alignpossible    Center
   LabelType        Static
   LabelString      "Part"
 
@@ -154,7 +150,6 @@ Style Section
   BottomSep        0.25
   ParSep           0.7
   Align            Left
-  AlignPossible    Left
   LabelType        Counter
   LabelCounter     section
   LabelString      "Section \arabic{section}"
@@ -195,7 +190,6 @@ Style Subsection
   BottomSep        0.25
   ParSep           0.5
   Align            Left
-  AlignPossible    Left
   LabelType        Counter
   LabelCounter     subsection
   LabelString      "Subsection \arabic{section}.\arabic{subsection}"
@@ -237,7 +231,6 @@ Style BeginFrame
   BottomSep        0.5
   ParSep           0
   Align            Center
-  AlignPossible    Center
   LabelType        Static
   LabelBottomSep   0
   LeftMargin       M
@@ -279,7 +272,6 @@ Style BeginPlainFrame
   BottomSep         0.5
   ParSep            0
   Align             Center
-  AlignPossible     center
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        M
@@ -319,7 +311,6 @@ Style AgainFrame
   BottomSep         3
   ParSep            0
   Align             Center
-  AlignPossible     Center
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        M
@@ -358,7 +349,6 @@ Style EndFrame
   BottomSep         3
   ParSep            0
   Align             Center
-  AlignPossible     Center
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        MMMMM
@@ -387,7 +377,6 @@ Style FrameSubtitle
   BottomSep        1
   ParSep           1
   Align            Center
-  AlignPossible    Center
   LabelType        No_Label
   OptionalArgs     1
 
@@ -525,7 +514,6 @@ Style Pause
   BottomSep         0.25
   ParSep            0
   Align             Center
-  AlignPossible     Center
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        MMMMM
@@ -737,7 +725,6 @@ Style Title
   BottomSep        1
   ParSep           1
   Align            Center
-  AlignPossible    Center
   LabelType        No_Label
   OptionalArgs     1
 
@@ -769,7 +756,6 @@ Style Subtitle
   BottomSep        1
   ParSep           1
   Align            Center
-  AlignPossible    Center
   LabelType        No_Label
   OptionalArgs     1
 
@@ -793,7 +779,6 @@ Style Author
   BottomSep        0.7
   ParSep           0.7
   Align            Center
-  AlignPossible    Center
   LabelType        No_Label
   OptionalArgs     1
 
@@ -815,7 +800,6 @@ Style Institute
   BottomSep        0.5
   ParSep           1
   Align            Center
-  AlignPossible    Center
   LabelType        No_Label
   OptionalArgs     1
 
@@ -837,7 +821,6 @@ Style Date
   BottomSep        0.5
   ParSep           1
   Align            Center
-  AlignPossible    Center
   LabelType        No_Label
   OptionalArgs     1
 
@@ -862,7 +845,6 @@ Style Bibliography
   BottomSep        0.7
   ParSep           0.5
   Align            Left
-  AlignPossible    Left
   LabelType        Bibliography
   LabelString      "References"
   LabelBottomSep   0.7
@@ -885,7 +867,6 @@ Style TitleGraphic
   BottomSep        1
   ParSep           1
   Align            Center
-  AlignPossible    Center
   LabelType        No_Label
 
   # standard font definition

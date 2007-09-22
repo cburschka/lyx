@@ -18,7 +18,6 @@ Style Subtitle
 	BottomSep             1.3
 	ParSep                1
 	Align                 Left
-	AlignPossible         Left
 	LabelType             No_Label
 	Font
 	  Size                Normal
@@ -50,7 +49,6 @@ Style Email
 	InTitle               1
 	LatexName             mail
 	Align                 Left
-	AlignPossible         Left
 	LeftMargin            email:M
 	LabelType             Static
 	LabelString           "email:"
@@ -68,7 +66,6 @@ Style Offprint
 	InTitle               1
 	LatexName             offprints
 	Align                 Left
-	AlignPossible         Left
 	LeftMargin            "Offprint Requests to:M"
 	LabelType             Static
 	LabelString           "Offprint Requests to:"
@@ -90,7 +87,6 @@ Style Acknowledgement
 	BottomSep             0
 	ParSep                0
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Top_Environment
 	LabelString           "Acknowledgements"
 	LabelSep              M

@@ -62,7 +62,6 @@ Style Title
 	BottomSep		1
 	ParSep			1
 	Align			Center
-	AlignPossible		Center
 	LabelType		No_Label
 	Font
 	  Size			Largest
@@ -130,7 +129,6 @@ Style Author
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	Font
 	  Size                Large
@@ -177,7 +175,6 @@ Style Abstract
 	BottomSep		0.7
 	ParSep			0
 	Align			Block
-	AlignPossible		Block
 	LabelType		Centered_Top_Environment
 	LabelString		"Abstract"
 	LabelBottomSep		0.5
@@ -242,7 +239,7 @@ Style Acknowledgments
 	TopSep			0.7
 	BottomSep		0.4
 	Align			Block
-	AlignPossible		Block, Left
+	AlignPossible 	Block,Left
 	LabelType		Static
 	LabelString		"Acknowledgments"
 	Font

@@ -148,7 +148,6 @@ Style Offprint
 	InTitle               1
 	LatexName             offprints
 	Align                 Left
-	AlignPossible         Left
 	LeftMargin            "Offprint Requests to:M"
 	LabelType             Static
 	LabelString           "Offprint Requests to:"
@@ -171,7 +170,6 @@ Style Mail
 	InTitle               1
 	LatexName             mail
 	Align                 Left
-	AlignPossible         Left
 	LeftMargin            "Correspondence to:M"
 	LabelType             Static
 	LabelString           "Correspondence to:"
@@ -198,7 +196,6 @@ Style Acknowledgement
 	BottomSep             0
 	ParSep                0
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Static
 	LabelString           "Acknowledgements."
 	LabelSep              M
@@ -260,7 +257,6 @@ End
 
 Style Author
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	BottomSep             1.5
 	Font
@@ -275,7 +271,6 @@ Style Date
 	LabelSep              ""
 	TopSep                1.2
 	Align                 Left
-	AlignPossible         Left
 	Font
 	  Size                Small
 	EndFont
@@ -296,7 +291,6 @@ Style Abstract
 	BottomSep             0.7
 	ParSep                0
 	Align                 Block
-	AlignPossible         Block
 	LabelType             static
 	LabelString           "Abstract"
 	LabelSep              M
@@ -314,7 +308,6 @@ End
 
 Style Bibliography
 	Align                 Left
-	AlignPossible         Left
 	LabelFont
 	  Series              Bold
 	EndFont

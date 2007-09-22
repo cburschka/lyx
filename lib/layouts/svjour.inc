@@ -108,7 +108,6 @@ Style Headnote
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Headnote (optional):"
 	LabelFont
@@ -162,7 +161,6 @@ Style Subtitle
 	BottomSep             0
 	ParSep                0
 	Align                 Left
-	AlignPossible         Left
 	LabelType             No_Label
 	Font
 	  Family              Sans
@@ -192,7 +190,6 @@ Style Author
 	ItemSep               0
 	ParSep                0
 	Align                 Left
-	AlignPossible         Left
 	LabelType             No_Label
 	Font
 	  Series              Bold
@@ -220,7 +217,6 @@ Style Institute
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Left
-	AlignPossible         Left
 	LabelType             No_Label
 	Font
 	  Size                Small

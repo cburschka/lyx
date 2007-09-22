@@ -46,7 +46,6 @@ Style Letter
 	BottomSep             1.5
 	ParSep                1.5
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelString           "L"
 	LabelFont
@@ -76,7 +75,6 @@ Style Closing
 	BottomSep             1.5
 	ParSep                1.5
 	Align                 Left
-	AlignPossible         Left
 End
 
 
@@ -87,7 +85,6 @@ Style PS
 	BottomSep             0.4
 	ParSep                0.4
 	Align                 Left
-	AlignPossible         Left
 End
 
 
@@ -100,7 +97,6 @@ Style CC
 	BottomSep             0.4
 	ParSep                0.4
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelString           "cc:"
 End
@@ -123,7 +119,6 @@ Style Name
 	BottomSep             0.4
 	ParSep                0.4
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Name:"
 	LabelFont

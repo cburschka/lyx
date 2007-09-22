@@ -97,7 +97,6 @@ Style Slide
 	BottomSep         1.0
 	ParSep            0.5
 	Align             Left
-	AlignPossible     Left
 	LabelType         Static
 	LabelBottomSep    0.5
 	LabelSep          xx
@@ -135,7 +134,6 @@ Style Overlay
 	BottomSep         1.0
 	ParSep            0.5
 	Align             Left
-	AlignPossible     Left
 	LabelType         Static
 	LabelBottomSep    0.5
 	LabelSep          xx
@@ -176,7 +174,6 @@ Style Note
 	BottomSep         1.0
 	ParSep            0.5
 	Align             Left
-	AlignPossible     Left
 	LabelType         Static
 	LabelBottomSep    0.5
 	LabelSep          xx
@@ -212,7 +209,6 @@ Style InvisibleText
 	KeepEmpty         1
 	Margin            Static
 	Align             Center
-	AlignPossible     Center
 	LabelType         Static
 	LabelString       "<Invisible Text Follows>"
 	Font
@@ -237,7 +233,6 @@ Style VisibleText
 	KeepEmpty         1
 	Margin            Static
 	Align             Center
-	AlignPossible     Center
 	LabelType         Static
 	LabelString       "<Visible Text Follows>"
 	Font

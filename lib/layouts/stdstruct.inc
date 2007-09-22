@@ -22,7 +22,6 @@ Style Abstract
 	BottomSep             0.7
 	ParSep                0
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Centered_Top_Environment
 	LabelString           "Abstract"
 	LabelBottomSep    0.5

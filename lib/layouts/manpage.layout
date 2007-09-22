@@ -21,7 +21,6 @@ Style Standard
 	ParIndent             MM
 	ParSkip               0.4
 	Align                 Block
-	AlignPossible         Block
 	LabelType             No_Label
 End
 
@@ -33,7 +32,6 @@ Style Quote
 	ParIndent             MM
 	ParSkip               0.4
 	Align                 Block
-	AlignPossible         Block
 	LabelType             No_Label
 End
 
@@ -131,7 +129,6 @@ Style Verbatim
 	BottomSep             0.7
 	ParSep                0.3
 	Align                 Block
-	AlignPossible         Block
 	LabelType             No_Label
 	Font
 	  Family              Typewriter
@@ -154,7 +151,6 @@ Style Code
 	BottomSep             0.7
 	ParSep                0.3
 	Align                 Block
-	AlignPossible         Block
 	LabelType             No_Label
 	FreeSpacing           1
 End
@@ -169,7 +165,6 @@ Style SGML
 	ParSkip               0.4
 	ParSep                0.5
 	Align                 Left
-	AlignPossible         Block
 	LabelType             No_Label
 	FreeSpacing           1
 	PassThru              1

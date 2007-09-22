@@ -87,7 +87,6 @@ Style Chapterprecis
 	BottomSep            0
 	ParSep               0.4
 	Align                Block
-	AlignPossible        Block
 	Font
 	  Shape              Italic
 	  Size               Normal
@@ -103,7 +102,6 @@ Style Epigraph
 	BottomSep             1.5
 	ParSep                1.5
 	Align                 Left
-	AlignPossible         Left
 End
 
 
@@ -117,7 +115,6 @@ Style Poemtitle
 	TopSep                0.4
 	ParSep                0.4
 	Align                 center
-	AlignPossible         center
 	OptionalArgs          1
 	Font
 	   Series             Bold
@@ -156,5 +153,4 @@ Style Legend
 	NextNoIndent        1
 	ParSkip              0.4
 	Align                   Center
-	AlignPossible      Center
 End

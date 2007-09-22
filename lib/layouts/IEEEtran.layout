@@ -413,7 +413,6 @@ Style Biography
 	LaTeXType             Environment
 	LaTeXName             biography
 	Align                 Block
-	AlignPossible         Block
 	TextFont
 	  Size                Small
 	EndFont
@@ -424,7 +423,6 @@ Style BiographyNoPhoto
 	LaTeXType             Environment
 	LaTeXName             biographynophoto
 	Align                 Block
-	AlignPossible         Block
 	TextFont
 	  Size                Small
 	EndFont
@@ -467,7 +465,6 @@ Style MarkBoth
 	LaTeXType             Command
 	LaTeXName             IEEEmarkboth
 	Align                 Center
-	AlignPossible         Center
 	Preamble
 	% protect against redefinition of \markboth by babel >= 3.6
 	\let\IEEEmarkboth=\markboth

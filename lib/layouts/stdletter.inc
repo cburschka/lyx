@@ -29,7 +29,6 @@ Style My_Address
 	BottomSep             1.5
 	ParSep                1.5
 	Align                 Left
-	AlignPossible         Left
 End
 
 

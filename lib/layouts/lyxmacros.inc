@@ -68,7 +68,6 @@ Style Right_Address
 	BottomSep             1.5
 	ParSep                1.5
 	Align                 Left
-	AlignPossible         Left
 	Preamble
 		\newcommand{\lyxrightaddress}[1]{
 			\par {\raggedleft \begin{tabular}{l}\ignorespaces

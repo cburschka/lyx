@@ -58,7 +58,6 @@ Style Address
 	LatexType             Command
 	LatexName             setaddress
 	Align                 Center
-	AlignPossible         Center
 	InTitle               1
 	Preamble
 		\newcommand{\setaddress}[1]{\def\theAddress{#1}}
@@ -97,7 +96,6 @@ End
 
 Style Keyword
 	Align                 Center
-	AlignPossible         Center
 	LatexType             Command
 	LatexName             setkeyword
 	InTitle               1

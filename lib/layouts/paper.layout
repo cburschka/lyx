@@ -31,7 +31,6 @@ Input stdsections.inc
 # All the section headings now use sans serif
 Style Part
 	Align                 Left
-	AlignPossible         Left
 	TopSep                2
 	BottomSep             1.5
 	Font
@@ -112,7 +111,6 @@ End
 # The \maketitle stuff is by default left justified.
 Style Title
 	Align                 Left
-	AlignPossible         Left
 	Font
 	  Family              Sans
 	  Series              Bold
@@ -123,8 +121,6 @@ End
 
 Style Author
 	Align                 Left
-	AlignPossible         Left
-
 	Font
 	  Size                Larger
 	  Family              Sans

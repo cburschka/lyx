@@ -35,7 +35,6 @@ End
 
 Style Title
 	Align                 Center
-	AlignPossible         Center
 	TextFont
 	  Size                Large
 	EndFont
@@ -43,7 +42,6 @@ End
 
 Style Author
 	Align                 Center
-	AlignPossible         Center
 	TextFont
 	  Series              Medium
 	  Size                Normal
@@ -57,7 +55,6 @@ Style Address
 	ParSkip               0.4
 	BottomSep             0.4
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	TextFont
 	  Series              Medium
@@ -70,7 +67,6 @@ Style Abstract
 	LatexType             Environment
 	ParIndent             ""
 	Align                 Block
-	AlignPossible         Block
 	LabelType             No_Label
 	TextFont
 	  Size                Small
@@ -94,7 +90,6 @@ End
 
 Style Section
 	Align                 Block
-	AlignPossible         Block
 	Font
 	  Size                Normal
 	EndFont
@@ -102,7 +97,6 @@ End
 
 Style Section*
 	Align                 Block
-	AlignPossible         Block
 	Font
 	  Size                Normal
 	EndFont
@@ -110,7 +104,6 @@ End
 
 Style Subsection
 	Align                 Block
-	AlignPossible         Block
 	TextFont
 	  Shape               Italic
 	  Size                Normal
@@ -119,7 +112,6 @@ End
 
 Style Subsubsection
 	Align                 Block
-	AlignPossible         Block
 	LabelFont
 	  Series              Medium
 	EndFont
@@ -141,7 +133,6 @@ Style Definition
 	TopSep                0.6
 	BottomSep             0.6
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Counter
 	LabelCounter          definition
 	LabelString           "Definition @Section@.\arabic{definition}."
@@ -212,7 +203,6 @@ Style Theorem
 	TopSep                0.6
 	BottomSep             0.6
 	Align                 Block
-	AlignPossible         Block
 	NextNoIndent          1
 	LabelType             Counter
 	LabelCounter          theorem
@@ -231,7 +221,6 @@ Style Proof
 	TopSep                0.6
 	BottomSep             0.6
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Static
 	LabelString           "Proof."
 	LabelSep              M
@@ -329,7 +318,6 @@ Style Appendices_Section
 	TopSep                0.6
 	BottomSep             0
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Centered_Top_Environment
 	LabelString           "--- Appendices ---"
 	Font
@@ -350,7 +338,6 @@ Style Appendix
 	BottomSep             0.6
 	Margin                First_Dynamic
 	Align                 Block
-	AlignPossible         Block
 	NextNoIndent          1
 	LabelType             Counter
 	LabelCounter          appendix
@@ -368,7 +355,6 @@ End
 
 Style Bibliography
 	Align                 Block
-	AlignPossible         Block
 	LabelFont
 	  Size                Normal
 	EndFont

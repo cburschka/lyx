@@ -20,7 +20,6 @@ Style Title
 	BottomSep             1
 	ParSep                1
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	Font
 	  Size                Largest
@@ -39,7 +38,6 @@ Style Author
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	Font
 	  Size                Large
@@ -58,7 +56,6 @@ Style Date
 	BottomSep             0.5
 	ParSep                1
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	Font
 	  Size                Large

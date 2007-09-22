@@ -166,7 +166,6 @@ NoStyle Bibliography
 
 Style Section
 	Align                 Center
-	AlignPossible         Center
 	NextNoIndent          0
 	TopSep                2.0
 	BottomSep             1.3
@@ -179,7 +178,6 @@ End
 
 Style Subsection
 	Align                 Center
-	AlignPossible         Center
 	NextNoIndent          0
 	TopSep                1.7
 	BottomSep             1.1
@@ -192,7 +190,6 @@ End
 
 Style Subsubsection
 	Align                 Center
-	AlignPossible         Center
 	NextNoIndent          0
 	TopSep                1.7
 	BottomSep             1.1
@@ -208,7 +205,6 @@ Style Title
 	TopSep                2
 	BottomSep             1.3
 	Align                 Center
-	AlignPossible         Center
 	InTitle               0
 	Font
 	  Series              Bold
@@ -219,7 +215,6 @@ End
 
 Style Author
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	InTitle               0
 	Font
@@ -234,7 +229,6 @@ Style Date
 	LabelSep              ""
 	TopSep                1.2
 	Align                 Center
-	AlignPossible         Center
 	InTitle               0
 	Font
 	  Size                Small
@@ -332,7 +326,6 @@ Style Acknowledgements
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelString           "[Acknowledgements]"
 	KeepEmpty             1
@@ -353,7 +346,6 @@ Style And
 	ParSkip               0.4
 	BottomSep             1.2
 	Align                 Center
-	AlignPossible         Center
 	LabelType             Static
 	LabelString           "and"
 	KeepEmpty             1
@@ -373,7 +365,6 @@ Style PlaceFigure
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelSep              M
 	LabelString           "Place Figure here:"
@@ -394,7 +385,6 @@ Style PlaceTable
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelSep              M
 	LabelString           "Place Table here:"
@@ -415,7 +405,6 @@ Style Appendix
 	ParSkip               0.4
 	BottomSep             0.8
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelString           "[Appendix]"
 	KeepEmpty             1

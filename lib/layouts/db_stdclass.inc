@@ -26,7 +26,6 @@ Style Standard
 	ParIndent             MM
 	ParSkip               0.4
 	Align                 Block
-	AlignPossible         Block
 	LabelType             No_Label
 End
 

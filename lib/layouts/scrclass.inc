@@ -188,7 +188,6 @@ Style Titlehead
 	CopyStyle             Author
 	LatexName             titlehead
 	Align                 Left
-	AlignPossible         Left
 	Font
 	  Size                Normal
 	EndFont
@@ -238,7 +237,6 @@ Style Captionabove
 	ParSkip               0.4
 	TopSep                0.5
 	Align                 Center
-	AlignPossible         Center
 	LabelType             Sensitive
 	LabelString           "Senseless!"
 	OptionalArgs          1
@@ -258,7 +256,6 @@ Style Captionbelow
 	ParSkip               0.4
 	TopSep                0.5
 	Align                 Center
-	AlignPossible         Center
 	LabelType             Sensitive
 	LabelString           "Senseless!"
 	OptionalArgs          1
@@ -277,7 +274,6 @@ Style Dictum
 	BottomSep            1.5
 	ParSep               1.5
 	Align                Left
-	AlignPossible        Left
 	OptionalArgs         1
 	Font
 	  Size               Normal

@@ -68,7 +68,6 @@ Style --Separator--
 	LatexName             dummy
 	ParIndent             MM
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Static
 	LabelString           "--- Separate Environment ---"
 	LabelFont

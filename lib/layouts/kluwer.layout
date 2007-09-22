@@ -57,7 +57,6 @@ NoStyle Verse
 
 Style Section
 	Align                 Center
-	AlignPossible         Center
 	Font
 	  Size                Large
 	EndFont
@@ -112,7 +111,6 @@ Style Title
 	BottomSep             0
 	ParSep                1
 	Align                 Left
-	AlignPossible         Left
 	LabelType             No_Label
 	Font
 	  Size                Largest
@@ -131,7 +129,6 @@ Style Subtitle
 	BottomSep             1.3
 	ParSep                1
 	Align                 Left
-	AlignPossible         Left
 	LabelType             No_Label
 	Font
 	  Family              Roman
@@ -150,7 +147,6 @@ Style Date
 	BottomSep             0.5
 	ParSep                1
 	Align                 Left
-	AlignPossible         Left
 	LabelType             No_Label
 	Font
 	  Size                Large
@@ -167,7 +163,6 @@ Style Author
 	BottomSep             0
 	ParSep                0
 	Align                 Left
-	AlignPossible         Left
 	LabelType             No_Label
 	Font
 	  Size                Normal
@@ -198,7 +193,6 @@ Style AddressForOffprints
 	NextNoIndent          1
 	Margin                First_Dynamic
 	Align                 Block
-	AlignPossible         Block
 	TopSep                1
 	LabelType             Static
 	LabelString           "Address for Offprints:"
@@ -217,7 +211,6 @@ Style RunningTitle
 	NextNoIndent          1
 	Margin                Dynamic
 	Align                 Left
-	AlignPossible         Left
 	TopSep                1
 	LabelType             Static
 	LabelString           "Running title:"
@@ -240,7 +233,6 @@ Style RunningAuthor
 	LatexName             runningauthor
 	NextNoIndent          1
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Running author:"
 	LabelSep              M
@@ -267,7 +259,6 @@ Style Abstract
 	BottomSep             1
 	ParSep                0
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Static
 	LabelString           "Abstract."
 	LabelSep              M
@@ -286,7 +277,6 @@ Style Keywords
 	LatexName             keywords
 	NextNoIndent          1
 	Align                 Left
-	AlignPossible         Left
 	LabelType             Static
 	LabelString           "Keywords:"
 	LabelSep              M
@@ -310,7 +300,6 @@ Style Acknowledgements
 	BottomSep             1
 	ParSep                0
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Centered_Top_Environment
 	LabelString           "Acknowledgements"
 	LabelBottomSep        0.5
