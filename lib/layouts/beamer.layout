@@ -750,6 +750,14 @@ Style Title
 
 End
 
+Style Title_(Plain_Frame)
+  CopyStyle        Title
+  Preamble
+     % plain title style, override default
+     \renewcommand\makebeamertitle{\frame[plain]{\maketitle}}%
+  EndPreamble
+End
+
 Style Subtitle
   Margin           Static
   LatexType        Command
@@ -1099,10 +1107,13 @@ Float
   LaTeXBuiltin     true
 End
 
-TitleLaTeXName frame{\maketitle}
-
+# to give users the choice of a title frame with and without
+# head-/footline, we define our own maketitle command
+TitleLaTeXName makebeamertitle
 
 Preamble
+  % this default might be overridden by plain title style
+  \newcommand\makebeamertitle{\frame{\maketitle}}%
   \AtBeginDocument{
     \let\origtableofcontents=\tableofcontents
     \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
