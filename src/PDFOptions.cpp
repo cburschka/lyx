@@ -60,7 +60,7 @@ void PDFOptions::writeFile(ostream & os) const
 	os << "\\pdf_bookmarks " << convert<string>(bookmarks) << '\n';
 	os << "\\pdf_bookmarksnumbered " << convert<string>(bookmarksnumbered) << '\n';
 	os << "\\pdf_bookmarksopen " << convert<string>(bookmarksopen) << '\n';
-	if (bookmarksopenlevel.empty())
+	if (!bookmarksopenlevel.empty())
 		os << "\\pdf_bookmarksopenlevel \"" << bookmarksopenlevel << "\"\n";
 	
 	os << "\\pdf_breaklinks "  << convert<string>(breaklinks)  << '\n';
@@ -141,7 +141,7 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 	} else if (token == "\\pdf_bookmarksnumbered") {
 		lex >> bookmarksnumbered;
 	} else if (token == "\\pdf_bookmarksopen") {
-		lex >> bookmarksopenlevel;
+		lex >> bookmarksopen;
 	} else if (token == "\\pdf_bookmarksopenlevel") {
 		lex >> bookmarksopenlevel;
 	} else if (token == "\\pdf_breaklinks") {

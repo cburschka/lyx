@@ -1183,15 +1183,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (!bullets_def.empty())
 		lyxpreamble += bullets_def + "}\n\n";
 
-	// We try to load babel late, in case it interferes
-	// with other packages.
-	// Jurabib has to be called after babel, though.
-	if (use_babel && !features.isRequired("jurabib")) {
-		// FIXME UNICODE
-		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
-		lyxpreamble += from_utf8(features.getBabelOptions());
-	}
-
 	// PDF support. Hypreref manual: "Make sure it comes last of your loaded
 	// packages, to give it a fighting chance of not being over-written,
 	// since its job is to redefine many LATEX commands."
@@ -1200,6 +1191,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	odocstringstream oss;
 	pdfoptions().writeLaTeX(oss);
 	lyxpreamble += oss.str();
+
+	// We try to load babel late, in case it interferes
+	// with other packages.
+	// Jurabib has to be called after babel, though.
+	if (use_babel && !features.isRequired("jurabib")) {
+		// FIXME UNICODE
+		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+		lyxpreamble += from_utf8(features.getBabelOptions());
+	}
 
 	lyxpreamble += "\\makeatother\n\n";
 
