@@ -614,7 +614,7 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 	// PDF support
 	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
 
-	connect(pdfSupportModule->use_hyperrefCB, SIGNAL(toggled(bool)),
+	connect(pdfSupportModule->use_hyperrefGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->titleLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
@@ -630,7 +630,7 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->bookmarksopenGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
-	connect(pdfSupportModule->bookmarksopenlevelLE, SIGNAL(textChanged(const QString &)),
+	connect(pdfSupportModule->bookmarksopenlevelSB, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->breaklinksCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
@@ -1229,7 +1229,7 @@ void GuiDocumentDialog::apply(BufferParams & params)
 
 	// PDF support
 	PDFOptions & pdf = params.pdfoptions();
-	pdf.use_hyperref = pdfSupportModule->use_hyperrefCB->isChecked();
+	pdf.use_hyperref = pdfSupportModule->use_hyperrefGB->isChecked();
 	pdf.title = fromqstr(pdfSupportModule->titleLE->text());
 	pdf.author = fromqstr(pdfSupportModule->authorLE->text());
 	pdf.subject = fromqstr(pdfSupportModule->subjectLE->text());
@@ -1238,8 +1238,7 @@ void GuiDocumentDialog::apply(BufferParams & params)
 	pdf.bookmarks = pdfSupportModule->bookmarksGB->isChecked();
 	pdf.bookmarksnumbered = pdfSupportModule->bookmarksnumberedCB->isChecked();
 	pdf.bookmarksopen = pdfSupportModule->bookmarksopenGB->isChecked();
-	pdf.bookmarksopenlevel =
-		fromqstr(pdfSupportModule->bookmarksopenlevelLE->text());
+	pdf.bookmarksopenlevel = pdfSupportModule->bookmarksopenlevelSB->value();
 
 	pdf.breaklinks = pdfSupportModule->breaklinksCB->isChecked();
 	pdf.pdfborder = pdfSupportModule->pdfborderCB->isChecked();
@@ -1248,6 +1247,8 @@ void GuiDocumentDialog::apply(BufferParams & params)
 	pdf.pagebackref	= pdfSupportModule->pagebackrefCB->isChecked();
 	if (pdfSupportModule->fullscreenCB->isChecked())
 		pdf.pagemode = pdf.pagemode_fullscreen;
+	else
+		pdf.pagemode.clear();
 	pdf.quoted_options = fromqstr(pdfSupportModule->optionsLE->text());
 	if (pdf.use_hyperref || !pdf.empty())
 		pdf.store_options = true;
@@ -1536,7 +1537,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 
 	// PDF support
 	PDFOptions const & pdf = params.pdfoptions();
-	pdfSupportModule->use_hyperrefCB->setChecked(pdf.use_hyperref);
+	pdfSupportModule->use_hyperrefGB->setChecked(pdf.use_hyperref);
 	pdfSupportModule->titleLE->setText(toqstr(pdf.title));
 	pdfSupportModule->authorLE->setText(toqstr(pdf.author));
 	pdfSupportModule->subjectLE->setText(toqstr(pdf.subject));
@@ -1546,8 +1547,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	pdfSupportModule->bookmarksnumberedCB->setChecked(pdf.bookmarksnumbered);
 	pdfSupportModule->bookmarksopenGB->setChecked(pdf.bookmarksopen);
 
-	pdfSupportModule->bookmarksopenlevelLE->setText(
-		toqstr(pdf.bookmarksopenlevel));
+	pdfSupportModule->bookmarksopenlevelSB->setValue(pdf.bookmarksopenlevel);
 
 	pdfSupportModule->breaklinksCB->setChecked(pdf.breaklinks);
 	pdfSupportModule->pdfborderCB->setChecked(pdf.pdfborder);
