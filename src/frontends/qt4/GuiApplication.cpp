@@ -281,7 +281,7 @@ bool GuiApplication::event(QEvent * e)
 
 bool GuiApplication::notify(QObject * receiver, QEvent * event)
 {
-	bool return_value;
+	bool return_value = false;
 	try {
 		return_value = QApplication::notify(receiver, event);
 	}
