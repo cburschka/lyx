@@ -48,7 +48,6 @@ Style Chapter
 	BottomSep             0.8
 	ParSep                0.8
 	Align                 Block
-	AlignPossible         Block, Left
 	OptionalArgs          1
 	Font
 	  Series              Bold
@@ -72,7 +71,6 @@ Style Section
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Block
-	AlignPossible         Block, Left
 	OptionalArgs          1
 	Font
 	  Series              Bold
