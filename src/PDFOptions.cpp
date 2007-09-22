@@ -36,7 +36,6 @@ bool PDFOptions::empty() const
 		&& subject.empty()
 		&& keywords.empty()
 		&& pagemode.empty()
-		&& bookmarksopenlevel.empty()
 		&& quoted_options.empty();
 }
 
@@ -60,8 +59,7 @@ void PDFOptions::writeFile(ostream & os) const
 	os << "\\pdf_bookmarks " << convert<string>(bookmarks) << '\n';
 	os << "\\pdf_bookmarksnumbered " << convert<string>(bookmarksnumbered) << '\n';
 	os << "\\pdf_bookmarksopen " << convert<string>(bookmarksopen) << '\n';
-	if (!bookmarksopenlevel.empty())
-		os << "\\pdf_bookmarksopenlevel \"" << bookmarksopenlevel << "\"\n";
+	os << "\\pdf_bookmarksopenlevel \"" << bookmarksopenlevel << "\"\n";
 	
 	os << "\\pdf_breaklinks "  << convert<string>(breaklinks)  << '\n';
 	os << "\\pdf_pdfborder "   << convert<string>(pdfborder)   << '\n';
@@ -97,8 +95,8 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 		opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
 		opt += "bookmarksopen=" + convert<string>(bookmarksopen) + ',';
 	
-		if (bookmarksopen && !bookmarksopenlevel.empty())
-			opt += "bookmarksopenlevel=" + bookmarksopenlevel + ',';
+		if (bookmarksopen)
+			opt += "bookmarksopenlevel=" + convert<string>(bookmarksopenlevel) + ',';
 	}
 	opt += "\n ";
 	opt += "breaklinks="     + convert<string>(breaklinks) + ',';
@@ -113,8 +111,10 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 	opt += "colorlinks="     + convert<string>(colorlinks) + ',';
 	if (!pagemode.empty())
 		opt += "pdfpagemode=" + pagemode + ',';
-	opt += "\n ";
-	opt += quoted_options_get();
+	if (!quoted_options.empty()){
+		opt += "\n ";
+		opt += quoted_options_get();
+	}
 	opt = support::rtrim(opt,",");
 	opt += "]\n {hyperref}\n";
 	
@@ -172,7 +172,6 @@ string PDFOptions::quoted_options_get() const
 	return quoted_options;
 }
 
-
 // Keep implicit hyperref settings
 void PDFOptions::clear()
 {
@@ -184,7 +183,7 @@ void PDFOptions::clear()
 	bookmarks               = true;
 	bookmarksnumbered       = false;
 	bookmarksopen           = false;
-	bookmarksopenlevel.clear();
+	bookmarksopenlevel	= 1;
 	breaklinks              = false;
 	pdfborder               = false;
 	colorlinks              = false;

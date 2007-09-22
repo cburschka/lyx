@@ -65,7 +65,7 @@ public:
 		* Level (\maxdimen) to which bookmarks are open
 		* bookmarksopenlevel    parameter
 		*/
-	std::string bookmarksopenlevel;
+	int bookmarksopenlevel;
 	/**
 		* Allows link text to break across lines.
 		* breaklinks        boolean false
