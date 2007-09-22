@@ -1115,7 +1115,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-		// Now insert the LyX specific LaTeX commands...
+	// Now insert the LyX specific LaTeX commands...
 
 	// The optional packages;
 	docstring lyxpreamble(from_ascii(features.getPackages()));
