@@ -1115,10 +1115,19 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	// Now insert the LyX specific LaTeX commands...
+		// Now insert the LyX specific LaTeX commands...
 
 	// The optional packages;
 	docstring lyxpreamble(from_ascii(features.getPackages()));
+
+	// PDF support. Hyperref manual: "Make sure it comes last of your loaded
+	// packages, to give it a fighting chance of not being over-written,
+	// since its job is to redefine many LATEX commands."
+	// Has to be put into lyxpreamble (preserving line-counting for error
+	// parsing).
+	odocstringstream oss;
+	pdfoptions().writeLaTeX(oss);
+	lyxpreamble += oss.str();
 
 	// this might be useful...
 	lyxpreamble += "\n\\makeatletter\n";
@@ -1182,15 +1191,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	if (!bullets_def.empty())
 		lyxpreamble += bullets_def + "}\n\n";
-
-	// PDF support. Hypreref manual: "Make sure it comes last of your loaded
-	// packages, to give it a fighting chance of not being over-written,
-	// since its job is to redefine many LATEX commands."
-	// Has to be put into lyxpreamble (preserving line-counting for error
-	// parsing).
-	odocstringstream oss;
-	pdfoptions().writeLaTeX(oss);
-	lyxpreamble += oss.str();
 
 	// We try to load babel late, in case it interferes
 	// with other packages.

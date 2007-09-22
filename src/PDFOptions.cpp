@@ -85,14 +85,13 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 	
 	opt = "\\usepackage[";
 	if (!title.empty())
-		opt += "pdftitle={"   + title + "},\n";
+		opt += "pdftitle={"   + title + "},\n ";
 	if (!author.empty())
-		opt += "pdfauthor={"  + author + "},\n";
+		opt += "pdfauthor={"  + author + "},\n ";
 	if (!subject.empty())
-		opt += "pdfsubject={" + subject + "},\n";
+		opt += "pdfsubject={" + subject + "},\n ";
 	if (!keywords.empty())
-		opt += "pdfkeywords={" + keywords + "},\n";
-	
+		opt += "pdfkeywords={" + keywords + "},\n ";
 	opt += "bookmarks=" + convert<string>(bookmarks) + ',';
 	if (bookmarks) {
 		opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
@@ -101,23 +100,23 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 		if (bookmarksopen && !bookmarksopenlevel.empty())
 			opt += "bookmarksopenlevel=" + bookmarksopenlevel + ',';
 	}
-	
+	opt += "\n ";
 	opt += "breaklinks="     + convert<string>(breaklinks) + ',';
-	
+
 	opt += "pdfborder={0 0 " ;
 	opt += (pdfborder ?'0':'1');
-	opt += "},\n";
-	
-	opt += "colorlinks="     + convert<string>(colorlinks) + ',';
+	opt += "},";
+
 	opt += "backref="        + convert<string>(backref) + ',';
 	opt += "pagebackref="    + convert<string>(pagebackref) + ',';
-	
+	opt += "\n ";
+	opt += "colorlinks="     + convert<string>(colorlinks) + ',';
 	if (!pagemode.empty())
 		opt += "pdfpagemode=" + pagemode + ',';
+	opt += "\n ";
 	opt += quoted_options_get();
-	
 	opt = support::rtrim(opt,",");
-	opt += "]{hyperref}\n";
+	opt += "]\n {hyperref}\n";
 	
 	// FIXME UNICODE
 	os << from_utf8(opt);
