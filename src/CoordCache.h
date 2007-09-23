@@ -14,6 +14,8 @@
 // It seems that MacOSX define the check macro.
 #undef check
 
+#include "Dimension.h"
+
 #include "support/types.h"
 
 #include <map>
@@ -38,6 +40,13 @@ public:
 	int x_, y_;
 };
 
+
+struct Geometry {
+	Point pos;
+	Dimension dim;
+};
+
+
 template <class T> class CoordCacheBase {
 public:
 	void clear()
@@ -52,25 +61,36 @@ public:
 
 	void add(T const * thing, int x, int y)
 	{
-		data_[thing] = Point(x, y);
+		data_[thing].pos = Point(x, y);
+	}
+
+	void add(T const * thing, Dimension const & dim)
+	{
+		data_[thing].dim = dim;
+	}
+
+	Dimension const & dim(T const * thing) const
+	{
+		//check(thing, "dim");
+		return data_.find(thing)->second.dim;
 	}
 
 	int x(T const * thing) const
 	{
 		check(thing, "x");
-		return data_.find(thing)->second.x_;
+		return data_.find(thing)->second.pos.x_;
 	}
 
 	int y(T const * thing) const
 	{
 		check(thing, "y");
-		return data_.find(thing)->second.y_;
+		return data_.find(thing)->second.pos.y_;
 	}
 
 	Point xy(T const * thing) const
 	{
 		check(thing, "xy");
-		return data_.find(thing)->second;
+		return data_.find(thing)->second.pos;
 	}
 
 	bool has(T const * thing) const
@@ -93,7 +113,7 @@ private:
 			lyxbreaker(thing, hint, data_.size());
 	}
 
-	typedef std::map<T const *, Point> cache_type;
+	typedef std::map<T const *, Geometry> cache_type;
 	cache_type data_;
 
 public:
@@ -114,26 +134,12 @@ class CoordCache {
 public:
 	void clear();
 
-	/// A map from paragraph index number to screen point
-	typedef std::map<pit_type, Point> InnerParPosCache;
-	/// A map from a CursorSlice to screen points
-	typedef std::map<Text const *, InnerParPosCache> SliceCache;
-
 	/// A map from MathData to position on the screen
 	CoordCacheBase<MathData> & arrays() { return arrays_; }
 	CoordCacheBase<MathData> const & getArrays() const { return arrays_; }
 	/// A map from insets to positions on the screen
 	CoordCacheBase<Inset> & insets() { return insets_; }
 	CoordCacheBase<Inset> const & getInsets() const { return insets_; }
-	///
-	SliceCache & slice(bool boundary)
-	{
-		return boundary ? slices1_ : slices0_;
-	}
-	SliceCache const & getSlice(bool boundary) const
-	{
-		return boundary ? slices1_ : slices0_;
-	}
 
 	/// Dump the contents of the cache to lyxerr in debugging form
 	void dump() const;
@@ -142,10 +148,6 @@ private:
 	CoordCacheBase<MathData> arrays_;
 	// All insets
 	CoordCacheBase<Inset> insets_;
-	/// Used with boundary == 0
-	SliceCache slices0_;
-	/// Used with boundary == 1
-	SliceCache slices1_;
 };
 
 } // namespace lyx

@@ -43,8 +43,6 @@ void CoordCache::clear()
 {
 	arrays_.clear();
 	insets_.clear();
-	slices0_.clear();
-	slices1_.clear();
 }
 
 
@@ -53,7 +51,7 @@ void CoordCache::dump() const
 	lyxerr << "InsetCache contains:" << std::endl;
 	for (CoordCacheBase<Inset>::cache_type::const_iterator it = getInsets().getData().begin(); it != getInsets().getData().end(); ++it) {
 		Inset const * inset = it->first;
-		Point const p = it->second;
+		Point const p = it->second.pos;
 		lyxerr << "Inset " << inset << "(" << to_utf8(inset->name())
 			<< ") has point " << p.x_ << "," << p.y_ << std::endl;
 	}

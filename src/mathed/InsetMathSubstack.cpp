@@ -48,7 +48,6 @@ void InsetMathSubstack::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		InsetMathGrid::metrics(mi, dim);
 	}
-	dim_ = dim;
 }
 
 

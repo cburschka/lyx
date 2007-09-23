@@ -47,19 +47,21 @@ void InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	else if (key_->name == "ddots")
 		dh_ = dim.asc;
-	dim = dim_;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathDots::draw(PainterInfo & pain, int x, int y) const
 {
-	mathed_draw_deco(pain, x + 2, y - dh_, dim_.width() - 2, dim_.ascent(),
+	Dimension const dim = dimension(*pain.base.bv);
+	mathed_draw_deco(pain, x + 2, y - dh_, dim.width() - 2, dim.ascent(),
 		key_->name);
 	if (key_->name == "vdots" || key_->name == "ddots")
 		++x;
 	if (key_->name != "vdots")
 		--y;
-	mathed_draw_deco(pain, x + 2, y - dh_, dim_.width() - 2, dim_.ascent(),
+	mathed_draw_deco(pain, x + 2, y - dh_, dim.width() - 2, dim.ascent(),
 		key_->name);
 	setPosCache(pain, x, y);
 }

@@ -48,7 +48,6 @@ void InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (mi.base.style == LM_ST_DISPLAY)
 		mi.base.style = LM_ST_TEXT;
 	InsetMathGrid::metrics(mi, dim);
-	dim_ = dim;
 }
 
 

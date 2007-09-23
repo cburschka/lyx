@@ -42,17 +42,19 @@ void InsetMathTFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = std::max(cell(0).width(), cell(1).width()) + 2;
 	dim.asc = cell(0).height() + 2 + 5;
 	dim.des = cell(1).height() + 2 - 5;
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathTFrac::draw(PainterInfo & pi, int x, int y) const
 {
 	StyleChanger dummy(pi.base, LM_ST_SCRIPT);
-	int m = x + dim_.wid / 2;
+	Dimension const dim = dimension(*pi.base.bv);
+	int m = x + dim.wid / 2;
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 2 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 2 - 5);
-	pi.pain.line(x + 1, y - 5, x + dim_.wid - 2, y - 5, Color::math);
+	pi.pain.line(x + 1, y - 5, x + dim.wid - 2, y - 5, Color::math);
 	setPosCache(pi, x, y);
 }
 

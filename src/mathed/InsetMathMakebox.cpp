@@ -41,7 +41,8 @@ void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim  += cell(2).dim();
 	dim.wid += 4 * w_ + 4;
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 

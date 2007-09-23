@@ -46,7 +46,8 @@ void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, key_->name);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
@@ -61,7 +62,9 @@ void InsetMathFont::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathFont::metricsT(TextMetricsInfo const & mi, Dimension &) const
 {
-	cell(0).metricsT(mi, dim_);
+	// FIXME: BROKEN!
+	Dimension dim;
+	cell(0).metricsT(mi, dim);
 }
 
 

@@ -107,7 +107,7 @@ protected:
 private:
 	virtual Inset * clone() const;
 	/// returns x offset for main part
-	int dxx() const;
+	int dxx(BufferView const & bv) const;
 	/// returns width of nucleus if any
 	int nwid() const;
 	/// returns y offset for either superscript or subscript
@@ -117,9 +117,9 @@ private:
 	/// returns y offset for subscript
 	int dy1() const;
 	/// returns x offset for superscript
-	int dx0() const;
+	int dx0(BufferView const & bv) const;
 	/// returns x offset for subscript
-	int dx1() const;
+	int dx1(BufferView const & bv) const;
 	/// returns ascent of nucleus if any
 	int nasc() const;
 	/// returns descent of nucleus if any

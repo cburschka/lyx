@@ -60,6 +60,8 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = fm.width(ds);
 	if (kind_ == HYPHENATION && dim.wid > 5)
 		dim.wid -= 2; // to make it look shorter
+	
+	setDimCache(mi, dim);
 }
 
 

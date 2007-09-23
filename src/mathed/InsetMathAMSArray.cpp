@@ -83,16 +83,24 @@ void InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
 	ArrayChanger dummy(mi.base);
 	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 14;
-	dim_ = dim;
+}
+
+
+Dimension const InsetMathAMSArray::dimension(BufferView const & bv) const
+{
+	Dimension dim = InsetMathGrid::dimension(bv);
+	dim.wid += 14;
+	return dim;
 }
 
 
 void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 {
-	int const yy = y - dim_.ascent();
+	Dimension const dim = dimension(*pi.base.bv);
+	int const yy = y - dim.ascent();
 	// Drawing the deco after an ArrayChanger does not work
-	mathed_draw_deco(pi, x + 1, yy, 5, dim_.height(), from_ascii(name_left()));
-	mathed_draw_deco(pi, x + dim_.width() - 8, yy, 5, dim_.height(), from_ascii(name_right()));
+	mathed_draw_deco(pi, x + 1, yy, 5, dim.height(), from_ascii(name_left()));
+	mathed_draw_deco(pi, x + dim.width() - 8, yy, 5, dim.height(), from_ascii(name_right()));
 	ArrayChanger dummy(pi.base);
 	InsetMathGrid::drawWithMargin(pi, x, y, 6, 8);
 }

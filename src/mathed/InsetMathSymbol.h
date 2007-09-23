@@ -35,8 +35,6 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	Dimension const dimension(BufferView const &) const { return dim_; }
-	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
 	int kerning() const { return kerning_; }
@@ -83,8 +81,6 @@ private:
 	mutable int kerning_;
 	///
 	mutable bool scriptable_;
-	/// FIXME: move this out to BufferView
-	mutable Dimension dim_;
 };
 
 } // namespace lyx

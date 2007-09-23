@@ -128,14 +128,16 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 	}
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
-	int m = x + dim_.wid / 2;
+	Dimension const dim = dimension(*pi.base.bv);
+	int m = x + dim.wid / 2;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
 			ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
@@ -181,13 +183,13 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		if (nargs() == 3)
 			xx += cell(2).width() + 5;
 		pi.pain.line(xx + cell(0).width(),
-				y + dim_.des - 2,
+				y + dim.des - 2,
 				xx + cell(0).width() + 5,
-				y - dim_.asc + 2, Color::math);
+				y - dim.asc + 2, Color::math);
 	}
 	if (kind_ == FRAC || kind_ == OVER)
 		pi.pain.line(x + 1, y - 5,
-				x + dim_.wid - 2, y - 5, Color::math);
+				x + dim.wid - 2, y - 5, Color::math);
 	drawMarkers(pi, x, y);
 }
 
@@ -199,18 +201,19 @@ void InsetMathFrac::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 	dim.wid = std::max(cell(0).width(), cell(1).width());
 	dim.asc = cell(0).height() + 1;
 	dim.des = cell(1).height();
-	//dim = dim_;
 }
 
 
 void InsetMathFrac::drawT(TextPainter & pain, int x, int y) const
 {
-	int m = x + dim_.width() / 2;
+	// FIXME: BROKEN!
+	Dimension dim;
+	int m = x + dim.width() / 2;
 	cell(0).drawT(pain, m - cell(0).width() / 2, y - cell(0).descent() - 1);
 	cell(1).drawT(pain, m - cell(1).width() / 2, y + cell(1).ascent());
 	// ASCII art: ignore niceties
 	if (kind_ == FRAC || kind_ == OVER || kind_ == NICEFRAC || kind_ == UNITFRAC)
-		pain.horizontalLine(x, y, dim_.width());
+		pain.horizontalLine(x, y, dim.width());
 }
 
 

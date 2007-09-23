@@ -240,23 +240,26 @@ int InsetMathScript::dy1() const
 }
 
 
-int InsetMathScript::dx0() const
+int InsetMathScript::dx0(BufferView const & bv) const
 {
 	BOOST_ASSERT(hasDown());
-	return hasLimits() ? (dim_.wid - down().width()) / 2 : nwid();
+	Dimension const dim = dimension(bv);
+	return hasLimits() ? (dim.wid - down().width()) / 2 : nwid();
 }
 
 
-int InsetMathScript::dx1() const
+int InsetMathScript::dx1(BufferView const & bv) const
 {
 	BOOST_ASSERT(hasUp());
-	return hasLimits() ? (dim_.wid - up().width()) / 2 : nwid() + nker();
+	Dimension const dim = dimension(bv);
+	return hasLimits() ? (dim.wid - up().width()) / 2 : nwid() + nker();
 }
 
 
-int InsetMathScript::dxx() const
+int InsetMathScript::dxx(BufferView const & bv) const
 {
-	return hasLimits() ? (dim_.wid - nwid()) / 2  :  0;
+	Dimension const dim = dimension(bv);
+	return hasLimits() ? (dim.wid - nwid()) / 2  :  0;
 }
 
 
@@ -323,24 +326,25 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else
 		dim.des = nd;
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathScript::draw(PainterInfo & pi, int x, int y) const
 {
 	if (nuc().size())
-		nuc().draw(pi, x + dxx(), y);
+		nuc().draw(pi, x + dxx(*pi.base.bv), y);
 	else {
-		nuc().setXY(*pi.base.bv, x + dxx(), y);
+		nuc().setXY(*pi.base.bv, x + dxx(*pi.base.bv), y);
 		if (editing(pi.base.bv))
-			pi.draw(x + dxx(), y, char_type('.'));
+			pi.draw(x + dxx(*pi.base.bv), y, char_type('.'));
 	}
 	ScriptChanger dummy(pi.base);
 	if (hasUp())
-		up().draw(pi, x + dx1(), y - dy1());
+		up().draw(pi, x + dx1(*pi.base.bv), y - dy1());
 	if (hasDown())
-		down().draw(pi, x + dx0(), y + dy0());
+		down().draw(pi, x + dx0(*pi.base.bv), y + dy0());
 	drawMarkers(pi, x, y);
 }
 
@@ -358,11 +362,11 @@ void InsetMathScript::metricsT(TextMetricsInfo const & mi, Dimension & dim) cons
 void InsetMathScript::drawT(TextPainter & pain, int x, int y) const
 {
 	if (nuc().size())
-		nuc().drawT(pain, x + dxx(), y);
+		nuc().drawT(pain, x + 1, y);
 	if (hasUp())
-		up().drawT(pain, x + dx1(), y - dy1());
+		up().drawT(pain, x + 1, y - dy1());
 	if (hasDown())
-		down().drawT(pain, x + dx0(), y + dy0());
+		down().drawT(pain, x + 1, y + dy0());
 }
 
 

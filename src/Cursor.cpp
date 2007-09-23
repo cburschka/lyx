@@ -97,9 +97,9 @@ namespace {
 			int xo;
 			int yo;
 			Inset const * inset = &it.inset();
-			std::map<Inset const *, Point> const & data =
+			std::map<Inset const *, Geometry> const & data =
 				c.bv().coordCache().getInsets().getData();
-			std::map<Inset const *, Point>::const_iterator I = data.find(inset);
+			std::map<Inset const *, Geometry>::const_iterator I = data.find(inset);
 
 			// FIXME: in the case where the inset is not in the cache, this
 			// means that no part of it is visible on screen. In this case
@@ -110,7 +110,7 @@ namespace {
 				return it;
 			}
 
-			Point o = I->second;
+			Point o = I->second.pos;
 			inset->cursorPos(c.bv(), it.top(), c.boundary(), xo, yo);
 			// Convert to absolute
 			xo += o.x_;

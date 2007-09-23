@@ -84,8 +84,7 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 			scriptable_ = true;
 
 	// Cache the inset dimension. 
-	// FIXME: put the resulting dim in BufferView.
-	dim_ = dim;
+	setDimCache(mi, dim);
 }
 
 

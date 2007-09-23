@@ -27,8 +27,7 @@ InsetMathPar::InsetMathPar(MathData const & ar)
 void InsetMathPar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy1(mi.base, "textnormal");
-	InsetMathGrid::metrics(mi);
-	dim = dim_;
+	InsetMathGrid::metrics(mi, dim);
 }
 
 

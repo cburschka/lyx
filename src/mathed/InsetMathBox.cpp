@@ -49,7 +49,8 @@ void InsetMathBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 

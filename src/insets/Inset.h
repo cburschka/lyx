@@ -147,6 +147,8 @@ public:
 	int yo(BufferView const & bv) const;
 	/// set x/y drawing position cache if available
 	virtual void setPosCache(PainterInfo const &, int, int) const;
+	///
+	void setDimCache(MetricsInfo const &, Dimension const &) const;
 	/// do we cover screen position x/y?
 	virtual bool covers(BufferView const & bv, int x, int y) const;
 	/// get the screen positions of the cursor (see note in Cursor.cpp)

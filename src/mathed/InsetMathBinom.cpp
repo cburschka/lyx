@@ -29,9 +29,9 @@ Inset * InsetMathBinom::clone() const
 }
 
 
-int InsetMathBinom::dw() const
+int InsetMathBinom::dw(int height) const
 {
-	int w = dim_.height() / 5;
+	int w = height / 5;
 	if (w > 15)
 		w = 15;
 	if (w < 6)
@@ -47,21 +47,23 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi);
 	dim.asc = cell(0).height() + 4 + 5;
 	dim.des = cell(1).height() + 4 - 5;
-	dim.wid = std::max(cell(0).width(), cell(1).width()) + 2 * dw() + 4;
+	dim.wid = std::max(cell(0).width(), cell(1).width()) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 {
-	int m = x + dim_.width() / 2;
+	Dimension const dim = dimension(*pi.base.bv);
+	int m = x + dim.width() / 2;
 	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 3 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 3 - 5);
-	mathed_draw_deco(pi, x, y - dim_.ascent(), dw(), dim_.height(), from_ascii("("));
-	mathed_draw_deco(pi, x + dim_.width() - dw(), y - dim_.ascent(),
-		dw(), dim_.height(), from_ascii(")"));
+	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()), dim.height(), from_ascii("("));
+	mathed_draw_deco(pi, x + dim.width() - dw(dim.height()), y - dim.ascent(),
+		dw(dim.height()), dim.height(), from_ascii(")"));
 	drawMarkers2(pi, x, y);
 }
 

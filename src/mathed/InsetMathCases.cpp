@@ -45,15 +45,23 @@ Inset * InsetMathCases::clone() const
 
 void InsetMathCases::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	InsetMathGrid::metrics(mi);
-	dim_.wid += 8;
-	dim = dim_;
+	InsetMathGrid::metrics(mi, dim);
+	dim.wid += 8;
+}
+
+
+Dimension const InsetMathCases::dimension(BufferView const & bv) const
+{
+	Dimension dim = InsetMathGrid::dimension(bv);
+	dim.wid += 8;
+	return dim;
 }
 
 
 void InsetMathCases::draw(PainterInfo & pi, int x, int y) const
 {
-	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 6, dim_.height(), from_ascii("{"));
+	Dimension const dim = dimension(*pi.base.bv);
+	mathed_draw_deco(pi, x + 1, y - dim.ascent(), 6, dim.height(), from_ascii("{"));
 	InsetMathGrid::drawWithMargin(pi, x, y, 8, 0);
 	setPosCache(pi, x, y);
 }

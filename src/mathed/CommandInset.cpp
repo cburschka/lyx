@@ -43,7 +43,8 @@ void CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
 		button_.update(screenLabel(), true);
 	}
 	button_.metrics(mi, dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 

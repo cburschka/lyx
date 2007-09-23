@@ -365,7 +365,7 @@ Length InsetMathGrid::vcrskip(row_type row) const
 }
 
 
-void InsetMathGrid::metrics(MetricsInfo & mi) const
+void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// let the cells adjust themselves
 	InsetMathNest::metrics(mi);
@@ -435,17 +435,17 @@ void InsetMathGrid::metrics(MetricsInfo & mi) const
 	}
 
 
-	dim_.wid   =   colinfo_[ncols() - 1].offset_
+	dim.wid   =   colinfo_[ncols() - 1].offset_
 		       + colinfo_[ncols() - 1].width_
 		 + vlinesep() * colinfo_[ncols()].lines_
 		       + border();
 
-	dim_.asc  = - rowinfo_[0].offset_
+	dim.asc  = - rowinfo_[0].offset_
 		       + rowinfo_[0].ascent_
 		 + hlinesep() * rowinfo_[0].lines_
 		       + border();
 
-	dim_.des =   rowinfo_[nrows() - 1].offset_
+	dim.des =   rowinfo_[nrows() - 1].offset_
 		       + rowinfo_[nrows() - 1].descent_
 		 + hlinesep() * rowinfo_[nrows()].lines_
 		       + border();
@@ -501,14 +501,9 @@ void InsetMathGrid::metrics(MetricsInfo & mi) const
 		cxrow->setBaseline(cxrow->getBaseline() - ascent);
 	}
 */
-	metricsMarkers2(dim_);
-}
-
-
-void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	metrics(mi);
-	dim = dim_;
+	metricsMarkers2(dim);
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
@@ -517,9 +512,12 @@ void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
 	drawWithMargin(pi, x, y, 0, 0);
 }
 
+
 void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 	int lmargin, int rmargin) const
 {
+	Dimension const dim = dimension(*pi.base.bv);
+
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		cell(idx).draw(pi, x + lmargin + cellXOffset(idx),
 			y + cellYOffset(idx));
@@ -529,7 +527,7 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
 			pi.pain.line(x + lmargin + 1, yy,
-				     x + dim_.width() - rmargin - 1, yy,
+				     x + dim.width() - rmargin - 1, yy,
 				     Color::foreground);
 		}
 
@@ -537,8 +535,8 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 		for (unsigned int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + lmargin + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
-			pi.pain.line(xx, y - dim_.ascent() + 1,
-				     xx, y + dim_.descent() - 1,
+			pi.pain.line(xx, y - dim.ascent() + 1,
+				     xx, y + dim.descent() - 1,
 				     Color::foreground);
 		}
 	drawMarkers2(pi, x, y);

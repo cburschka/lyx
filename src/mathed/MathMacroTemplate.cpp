@@ -126,7 +126,8 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).unlock();
 
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
@@ -138,6 +139,8 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 
 	setPosCache(p, x, y);
 
+	Dimension const dim = dimension(*p.base.bv);
+
 	// label
 	Font font = p.base.font;
 	font.setColor(Color::math);
@@ -146,9 +149,9 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	pi.base.style = LM_ST_TEXT;
 	pi.base.font  = font;
 
-	int const a = y - dim_.asc + 1;
-	int const w = dim_.wid - 2;
-	int const h = dim_.height() - 2;
+	int const a = y - dim.asc + 1;
+	int const w = dim.wid - 2;
+	int const h = dim.height() - 2;
 
 	// Color::mathbg used to be "AntiqueWhite" but is "linen" now, too
 	// the next line would overwrite the selection!
@@ -169,11 +172,11 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	int const w0 = cell(0).width();
 	int const w1 = cell(1).width();
 	cell(0).draw(pi, x + 2, y + 1);
-	pi.pain.rectangle(x, y - dim_.ascent() + 3,
-		w0 + 4, dim_.height() - 6, Color::mathline);
+	pi.pain.rectangle(x, y - dim.ascent() + 3,
+		w0 + 4, dim.height() - 6, Color::mathline);
 	cell(1).draw(pi, x + 8 + w0, y + 1);
-	pi.pain.rectangle(x + w0 + 6, y - dim_.ascent() + 3,
-		w1 + 4, dim_.height() - 6, Color::mathline);
+	pi.pain.rectangle(x + w0 + 6, y - dim.ascent() + 3,
+		w1 + 4, dim.height() - 6, Color::mathline);
 
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).unlock();

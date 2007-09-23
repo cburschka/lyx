@@ -36,7 +36,8 @@ void InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 	++dim.wid;  // for 'double stroke'
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
@@ -51,7 +52,9 @@ void InsetMathBoldSymbol::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathBoldSymbol::metricsT(TextMetricsInfo const & mi, Dimension & /*dim*/) const
 {
-	cell(0).metricsT(mi, dim_);
+	// FIXME: BROKEN!
+	Dimension dim;
+	cell(0).metricsT(mi, dim);
 }
 
 

@@ -35,7 +35,8 @@ void InsetMathLefteqn::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des += 2;
 	dim.wid = 4;
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 

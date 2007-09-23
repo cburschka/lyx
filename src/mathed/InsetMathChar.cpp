@@ -86,8 +86,7 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	lyxerr << "InsetMathChar::metrics: " << dim << endl;
 #endif
 	// Cache the inset dimension. 
-	// FIXME: put the resulting dim in BufferView.
-	dim_ = dim;
+	setDimCache(mi, dim);
 }
 
 

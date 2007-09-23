@@ -27,6 +27,8 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
+	Dimension const dimension(BufferView const &) const;
+	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

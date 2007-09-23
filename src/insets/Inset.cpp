@@ -36,7 +36,6 @@
 #include "frontends/Painter.h"
 
 #include "support/convert.h"
-#include "support/ExceptionMessage.h"
 
 #include <boost/current_function.hpp>
 
@@ -123,11 +122,9 @@ Inset::Inset()
 {}
 
 
-Dimension const Inset::dimension(BufferView const &) const
+Dimension const Inset::dimension(BufferView const & bv) const
 {
-	docstring const id = convert<docstring>(int(lyxCode())) + " " + name();
-	throw support::ExceptionMessage(support::ErrorException,
-		_("Inset::dimension(): unimplemented method"), id);
+	return bv.coordCache().getInsets().dim(this);
 }
 
 
@@ -376,6 +373,13 @@ void Inset::setPosCache(PainterInfo const & pi, int x, int y) const
 	//lyxerr << "Inset:: position cache to " << x << " " << y << std::endl;
 	pi.base.bv->coordCache().insets().add(this, x, y);
 }
+
+
+void Inset::setDimCache(MetricsInfo const & mi, Dimension const & dim) const
+{
+	mi.base.bv->coordCache().insets().add(this, dim);
+}
+
 
 
 /////////////////////////////////////////

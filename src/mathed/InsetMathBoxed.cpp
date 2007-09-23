@@ -37,14 +37,16 @@ void InsetMathBoxed::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers2(dim, 3); // 1 pixel space, 1 frame, 1 space
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathBoxed::draw(PainterInfo & pi, int x, int y) const
 {
-	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
-		dim_.width() - 2, dim_.height() - 2, Color::foreground);
+	Dimension const dim = dimension(*pi.base.bv);
+	pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
+		dim.width() - 2, dim.height() - 2, Color::foreground);
 	cell(0).draw(pi, x + 3, y);
 	setPosCache(pi, x, y);
 }

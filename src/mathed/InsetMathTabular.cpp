@@ -51,7 +51,14 @@ void InsetMathTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, "textnormal");
 	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 6;
-	dim_ = dim;
+}
+
+
+Dimension const InsetMathTabular::dimension(BufferView const & bv) const
+{
+	Dimension dim = InsetMathGrid::dimension(bv);
+	dim.wid += 6;
+	return dim;
 }
 
 

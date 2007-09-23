@@ -42,7 +42,8 @@ void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = max(cell(0).descent() - 5, cell(1).descent()) + 2;
 	dim.wid = cell(0).width() + cell(1).width() + 10;
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
@@ -53,11 +54,12 @@ void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 	cell(0).draw(pi, x, y - 5 - cell(0).descent());
 	// the "base"
 	cell(1).draw(pi, x + w + 8, y);
-	int const a = dim_.ascent();
-	int const d = dim_.descent();
+	Dimension const dim = dimension(*pi.base.bv);
+	int const a = dim.ascent();
+	int const d = dim.descent();
 	int xp[4];
 	int yp[4];
-	pi.pain.line(x + dim_.width(), y - a + 1,
+	pi.pain.line(x + dim.width(), y - a + 1,
 							 x + w + 4, y - a + 1, Color::math);
 	xp[0] = x + w + 4;         yp[0] = y - a + 1;
 	xp[1] = x + w;             yp[1] = y + d;

@@ -26,8 +26,6 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	Dimension const dimension(BufferView const &) const { return dim_; }
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;

@@ -83,17 +83,19 @@ void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = cell(0).width() + 2 * dw_ + 8;
 	dim.asc = max(a0, d0) + h0;
 	dim.des = max(a0, d0) - h0;
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathDelim::draw(PainterInfo & pi, int x, int y) const
 {
-	int const b = y - dim_.asc;
+	Dimension const dim = dimension(*pi.base.bv);
+	int const b = y - dim.asc;
 	cell(0).draw(pi, x + dw_ + 4, y);
-	mathed_draw_deco(pi, x + 4, b, dw_, dim_.height(), left_);
-	mathed_draw_deco(pi, x + dim_.width() - dw_ - 4,
-		b, dw_, dim_.height(), right_);
+	mathed_draw_deco(pi, x + 4, b, dw_, dim.height(), left_);
+	mathed_draw_deco(pi, x + dim.width() - dw_ - 4,
+		b, dw_, dim.height(), right_);
 	setPosCache(pi, x, y);
 }
 

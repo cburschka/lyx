@@ -49,7 +49,8 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = std::max(cell(0).descent(), t.des);
 	dim.wid = cell(0).width() + 2 * t.wid;
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 

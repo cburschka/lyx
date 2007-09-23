@@ -43,14 +43,16 @@ void InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim, 3); // 1 pixel space, 1 frame, 1 space
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathFBox::draw(PainterInfo & pi, int x, int y) const
 {
-	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
-		dim_.width() - 2, dim_.height() - 2, Color::foreground);
+	Dimension const dim = dimension(*pi.base.bv);
+	pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
+		dim.width() - 2, dim.height() - 2, Color::foreground);
 	FontSetChanger dummy(pi.base, "textnormal");
 	cell(0).draw(pi, x + 3, y);
 	setPosCache(pi, x, y);

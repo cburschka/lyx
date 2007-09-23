@@ -39,7 +39,8 @@ void InsetMathPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
@@ -52,6 +53,7 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 	pi.base.font.setColor(Color::special);
 	cell(0).draw(pi, x + 1, y);
 	pi.base.font.setColor(origcol);
+	Dimension const dim = dimension(*pi.base.bv);
 
 	if (kind_ == phantom || kind_ == vphantom) {
 		// y1---------
@@ -66,13 +68,13 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 		//         /  |  \.
 		//        x1  x2 x3
 
-		int const x2 = x + dim_.wid / 2;
+		int const x2 = x + dim.wid / 2;
 		int const x1 = x2 - arrow_size;
 		int const x3 = x2 + arrow_size;
 
-		int const y1 = y - dim_.asc;
+		int const y1 = y - dim.asc;
 		int const y2 = y1 + arrow_size;
-		int const y4 = y + dim_.des;
+		int const y4 = y + dim.des;
 		int const y3 = y4 - arrow_size;
 
 		// top arrow
@@ -98,10 +100,10 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 
 		int const x1 = x;
 		int const x2 = x + arrow_size;
-		int const x4 = x + dim_.wid;
+		int const x4 = x + dim.wid;
 		int const x3 = x4 - arrow_size;
 
-		int const y2 = y + (dim_.des - dim_.asc) / 2;
+		int const y2 = y + (dim.des - dim.asc) / 2;
 		int const y1 = y2 - arrow_size;
 		int const y3 = y2 + arrow_size;
 

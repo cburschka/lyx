@@ -27,6 +27,8 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
+	Dimension const dimension(BufferView const &) const;
+	///
 	void draw(PainterInfo & pain, int x, int y) const;
 	///
 	InsetMathAMSArray * asAMSArrayInset() { return this; }

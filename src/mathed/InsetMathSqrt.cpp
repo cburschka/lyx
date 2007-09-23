@@ -38,19 +38,21 @@ void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des += 2;
 	dim.wid += 12;
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathSqrt::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 10, y);
-	int const a = dim_.ascent();
-	int const d = dim_.descent();
+	Dimension const dim = dimension(*pi.base.bv);
+	int const a = dim.ascent();
+	int const d = dim.descent();
 	int xp[3];
 	int yp[3];
-	pi.pain.line(x + dim_.width(), y - a + 1,
-							 x + 8, y - a + 1, Color::math);
+	pi.pain.line(x + dim.width(), y - a + 1,
+		x + 8, y - a + 1, Color::math);
 	xp[0] = x + 8;            yp[0] = y - a + 1;
 	xp[1] = x + 5;            yp[1] = y + d - 1;
 	xp[2] = x;                yp[2] = y + (d - a)/2;

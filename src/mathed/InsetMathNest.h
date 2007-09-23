@@ -33,8 +33,6 @@ public:
 	/// the size is usually some sort of convex hull of the cells
 	/// hides inset::metrics() intentionally!
 	void metrics(MetricsInfo const & mi) const;
-	///
-	Dimension const dimension(BufferView const &) const { return dim_; };
 	/// draw background if locked
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
@@ -161,8 +159,6 @@ protected:
 	bool lock_;
 	///
 	bool mouse_hover_;
-	/// Cached dimensions of the inset.
-	mutable Dimension dim_;
 };
 
 

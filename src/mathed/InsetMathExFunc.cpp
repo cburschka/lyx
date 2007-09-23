@@ -43,7 +43,8 @@ Inset * InsetMathExFunc::clone() const
 void InsetMathExFunc::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_string_dim(mi.base.font, name_, dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 

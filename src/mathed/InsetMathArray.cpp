@@ -83,7 +83,14 @@ void InsetMathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 	ArrayChanger dummy(mi.base);
 	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 6;
-	dim_ = dim;
+}
+
+
+Dimension const InsetMathArray::dimension(BufferView const & bv) const
+{
+	Dimension dim = InsetMathGrid::dimension(bv);
+	dim.wid += 6;
+	return dim;
 }
 
 

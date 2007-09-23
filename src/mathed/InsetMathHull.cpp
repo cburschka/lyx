@@ -290,7 +290,8 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 1;
 		if (display())
 			dim.des += displayMargin();
-		dim_ = dim;
+		// Cache the inset dimension. 
+		setDimCache(mi, dim);
 		return;
 	}
 
@@ -321,19 +322,22 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	math_font_max_dim(mi.base.font, asc, des);
 	dim.asc = max(dim.asc, asc);
 	dim.des = max(dim.des, des);
-	dim_ = dim;
+	// Cache the inset dimension.
+	// FIXME: This will overwrite InsetMathGrid dimension, is that OK?
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	use_preview_ = previewState(pi.base.bv);
+	Dimension const dim = dimension(*pi.base.bv);
 
 	// background of mathed under focus is not painted because
 	// selection at the top level of nested inset is difficult to handle.
 	if (!editing(pi.base.bv))
-		pi.pain.fillRectangle(x + 1, y - dim_.asc + 1, dim_.wid - 2,
-				dim_.asc + dim_.des - 1, Color::mathbg);
+		pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
+				dim.asc + dim.des - 1, Color::mathbg);
 
 	if (use_preview_) {
 		// one pixel gap in front

@@ -35,13 +35,15 @@ void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = cell(1).ascent() + cell(0).height() + 4;
 	dim.des = cell(1).descent();
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathOverset::draw(PainterInfo & pi, int x, int y) const
 {
-	int m  = x + dim_.wid / 2;
+	Dimension const dim = dimension(*pi.base.bv);
+	int m  = x + dim.wid / 2;
 	int yo = y - cell(1).ascent() - cell(0).descent() - 1;
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	FracChanger dummy(pi.base);

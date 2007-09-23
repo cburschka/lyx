@@ -42,7 +42,8 @@ void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = cell(0).height() + 10;
 	dim.des = cell(1).height();
 	metricsMarkers(dim);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
@@ -51,7 +52,8 @@ void InsetMathXArrow::draw(PainterInfo & pi, int x, int y) const
 	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, x + 5, y - 10);
 	cell(1).draw(pi, x + 5, y + cell(1).height());
-	mathed_draw_deco(pi, x + 1, y - 7, dim_.wid - 2, 5, name_);
+	Dimension const dim = dimension(*pi.base.bv);
+	mathed_draw_deco(pi, x + 1, y - 7, dim.wid - 2, 5, name_);
 	drawMarkers(pi, x, y);
 }
 

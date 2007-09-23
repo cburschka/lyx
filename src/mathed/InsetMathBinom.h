@@ -39,7 +39,7 @@ public:
 private:
 	virtual Inset * clone() const;
 	///
-	int dw() const;
+	int dw(int height) const;
 	///
 	bool choose_;
 };

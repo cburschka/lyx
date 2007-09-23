@@ -142,7 +142,8 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			editing_ = false;
 		}
 	}
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
@@ -164,7 +165,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		} else if (editing_) {
 			Font font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
-			int h = y - dim_.ascent() + 2 + tmpl_.ascent();
+			Dimension const dim = dimension(*pi.base.bv);
+			int h = y - dim.ascent() + 2 + tmpl_.ascent();
 			pi.pain.text(x + 3, h, name(), font);
 			int const w = mathed_string_width(font, name());
 			tmpl_.draw(pi, x + w + 12, h);
