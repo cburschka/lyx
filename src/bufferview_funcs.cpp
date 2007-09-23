@@ -157,8 +157,8 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 	int y = 0;
 	int lastw = 0;
 
-	// Addup ontribution of nested insets, from inside to outside,
-	// keeping the outer paragraph for a special handling below
+	// Addup contribution of nested insets, from inside to outside,
+ 	// keeping the outer paragraph for a special handling below
 	for (size_t i = dit.depth() - 1; i >= 1; --i) {
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
@@ -179,9 +179,22 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 			if (rtl)
 				x -= lastw;
 		}
+
 		// remember width for the case that sl.inset() is positioned in an RTL inset
-		Dimension const dim = sl.inset().dimension(bv);
-		lastw = dim.wid;
+		if (i && dit[i - 1].text()) {
+			// If this Inset is inside a Text Inset, retrieve the Dimension
+			// from the containing text instead of using Inset::dimension() which
+			// might not be implemented.
+			// FIXME (Abdel 23/09/2007): this is a bit messy because of the
+			// elimination of Inset::dim_ cache. This coordOffset() method needs
+			// to be rewritten in light of the new design.
+			Dimension const & dim = bv.parMetrics(dit[i - 1].text(),
+				dit[i - 1].pit()).insetDimension(&sl.inset());
+			lastw = dim.wid;
+		} else {
+			Dimension const dim = sl.inset().dimension(bv);
+			lastw = dim.wid;
+		}
 		
 		//lyxerr << "Cursor::getPos, i: "
 		// << i << " x: " << xx << " y: " << y << endl;
