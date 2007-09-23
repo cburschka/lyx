@@ -1,16 +1,16 @@
 LyX file-format changes
 -----------------------
 
-2007-09-21 Pavel Sanda
+2007-09-21 Pavel Sanda <ps@twin.jikos.cz>
 	* Format incremented to 286: LyX now supports hyperref and some
 	  of its options.
 
-2007-09-11 Bo Peng
+2007-09-11 Bo Peng <ben.bob@gmail.com>
 	* Format incremented to 285: Tweaks to embedded file format.
 	  Add manifest to .lyx file. 
 	  Remove inzip parameter from graphics insets.
 
-2007-09-09 Helge Hafting
+2007-09-09 Helge Hafting <helge.hafting@aitel.hist.no>
 	* Format incremented to 284: LyX now implements wrapped figures
 	  using wrapfig.sty instead of floatflt.sty. The latter
 	  is rather buggy, the former also has more options.
@@ -18,37 +18,37 @@ LyX file-format changes
 	  The .tex export is slightly different, necessitating the
 	  format increase.
 
-2007-09-08 Martin Vermeer
+2007-09-08 Martin Vermeer <martin.vermeer@tkk.fi>
 
 	* format incremented to 283: CharStyle insets are now 
 	  called Flex.
 
-2007-08-31 Bo Peng
+2007-08-31 Bo Peng <ben.bob@gmail.com>
 
 	* format incremented to 282: lyx files can be zipfiles with
           embedded documents.
 
-2007-08-29 Richard Heck
+2007-08-29 Richard Heck <rgheck@bobjweil.com>
 
 	* format incremented to 281: allow modules for layout files.
 
-2007-08-17 Martin Vermeer
+2007-08-17 Martin Vermeer <martin.vermeer@tkk.fi>
 
 	* format incremented to 280: the show_label parameter
 	  is depreciated in favour of (Collapsable) status.
 
-2007-08-17 Martin Vermeer
+2007-08-17 Martin Vermeer <martin.vermeer@tkk.fi>
 
 	* format incremented to 279: CharStyle names are now
 	  expected to be of form CharStyle:Name.
 
-2007-08-12 José Matos
+2007-08-12 José Matos <jamatos@fc.up.pt>
 
 	* format incremented to 278: Close begin_deeper with a
           corresponding end_deeper (the only case where it matters is
           at the end of the body).
 
-2007-08-12 José Matos
+2007-08-12 José Matos <jamatos@fc.up.pt>
 
 	* format incremented to 277: lyx is able to create invalid
           table where a multicolumn does not have a first cell
@@ -187,7 +187,7 @@ LyX file-format changes
  	          \\par\\noindent% 
  	          \\rule[.5ex]{\\linewidth}{#1}\\par}
         The new definition is more robust, see bug 1988 and now really takes care about
-	the fontsize: \lyxline{\Huge} produces now a thicker line then \lyxline{\normalfont}
+	the fontsize: \lyxline{\Huge} produces now a thicker line than \lyxline{\normalfont}
 
 2007-01-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
