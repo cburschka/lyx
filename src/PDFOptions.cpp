@@ -31,12 +31,23 @@ const string PDFOptions::pagemode_fullscreen("FullScreen");
 
 bool PDFOptions::empty() const
 {
-	return author.empty()
-		&& title.empty()
-		&& subject.empty()
-		&& keywords.empty()
-		&& pagemode.empty()
-		&& quoted_options.empty();
+	PDFOptions x; //implicit hyperref settings
+
+	return  author == x.author
+		&& title == x.title
+		&& subject == x.subject
+		&& keywords == x.keywords
+		&& pagemode == x.pagemode
+		&& quoted_options == x.quoted_options
+		&& bookmarks == x.bookmarks
+		&& bookmarksnumbered == x.bookmarksnumbered
+		&& bookmarksopen == x.bookmarksopen
+		&& bookmarksopenlevel == x.bookmarksopenlevel
+		&& breaklinks == x.breaklinks
+		&& pdfborder == x.pdfborder
+		&& colorlinks == x.colorlinks
+		&& backref == x.backref
+		&& pagebackref == x.pagebackref ;
 }
 
 void PDFOptions::writeFile(ostream & os) const

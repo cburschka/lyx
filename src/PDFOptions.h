@@ -19,11 +19,23 @@ namespace lyx {
 class Lexer;
 
 /// Options for PDF generation
+
+/*
+  Possible cleanups, left for next fileformat change:
+  
+  - bookmarksopenlevel is stored in .lyx as string; 
+    after change to spinbox it would be appropriate
+    change to int.
+  - store_options flag can be completely replaced by
+    function store_options() doing essentialy the same
+    as empty() now.
+*/
+
 class PDFOptions {
 public:
 	///
 	PDFOptions() { clear(); }
-	/// check for string settings
+	/// check whether user added any settings for hyperref
 	bool empty() const;
 	/// output to lyx header
 	void writeFile(std::ostream &) const;
