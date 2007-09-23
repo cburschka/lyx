@@ -26,6 +26,8 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
+	Dimension const dimension(BufferView const &) const { return dim_; }
+	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
@@ -55,6 +57,8 @@ private:
 	char_type char_;
 	/// cached kerning for superscript
 	mutable int kerning_;
+	/// FIXME: move this out to BufferView
+	mutable Dimension dim_;
 };
 
 } // namespace lyx
