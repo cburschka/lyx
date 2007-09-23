@@ -1015,6 +1015,7 @@ dist_layouts_DATA =\
 	layouts/svglobal.layout \
 	layouts/endnotes.module \
 	layouts/foottoend.module \
+	layouts/hanging.module \
 	layouts/logicalmkup.module \
 	layouts/theorems.inc \
 	layouts/theorems-ams.inc \

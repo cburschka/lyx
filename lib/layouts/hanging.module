@@ -1,0 +1,45 @@
+#\DeclareLyXModule{Adds an environment for hanging paragraphs.}{Hanging}
+#Author: Richard Heck
+
+#Hanging paragraph code adapted from hanging.sty, available at:
+# http://www.ctan.org/tex-archive/macros/latex/contrib/hanging/
+#Copyright Peter R. Wilson.
+#Released under the LaTeX Project Public License.
+
+Format 5
+
+Style Hanging
+  LatexType Environment
+  LatexName hangparagraphs
+  Align Block
+  Margin Static
+  LeftMargin "MMMM"
+  ParIndent "-MMMM"
+  Preamble
+    \usepackage{ifthen}
+    \newlength{\lyxhang}
+    \IfFileExists{hanging.sty}{
+      \usepackage{hanging}
+      \newenvironment{hangparagraphs}
+        {%
+          \ifthenelse{\lengthtest{\parindent > 0pt}}%
+            {\setlength{\lyxhang}{\parindent}}%
+            {\setlength{\lyxhang}{2em}}%
+          \begin{hangparas}{\lyxhang}{1}%
+        }
+        {\end{hangparas}}
+    }{%else
+      \newenvironment{hangparagraphs}
+        {%
+          \ifthenelse{\lengthtest{\parindent > 0pt}}%
+            {\setlength{\lyxhang}{\parindent}}%
+            {\setlength{\lyxhang}{2em}}%
+          \begin{hangparas}%
+        }
+        {\end{hangparas}}
+      \newcommand{\hangpara}{\hangindent \lyxhang \hangafter 1 \noindent}
+      \newenvironment{hangparas}{\setlength{\parindent}{\z@}
+      \everypar={\hangpara}}{\par}
+    }
+  EndPreamble
+End
