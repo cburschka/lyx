@@ -125,7 +125,7 @@ public:
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void computeRowMetrics(pit_type pit, Row & row) const;
+	void computeRowMetrics(pit_type pit, Row & row, int width) const;
 
 	///
 	void draw(PainterInfo & pi, int x, int y) const;

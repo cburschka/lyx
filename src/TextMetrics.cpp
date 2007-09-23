@@ -432,7 +432,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		if (row_index || end < par.size())
 			// If there is more than one row, expand the text to 
 			// the full allowable width. This setting here is needed
-			// for the computeRowMetrics below().
+			// for the computeRowMetrics() below.
 			dim_.wid = max_width_;
 
 		dim.wid = rowWidth(right_margin, pit, first, end);
@@ -448,7 +448,8 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		else
 			row.setSelection(-1, -1);
 		row.setDimension(dim);
-		computeRowMetrics(pit, row);
+		int const max_row_width = max(dim_.wid, dim.wid);
+		computeRowMetrics(pit, row, max_row_width);
 		pm.computeRowSignature(row, bparams);
 		first = end;
 		++row_index;
@@ -473,7 +474,8 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.pos(first);
 		row.endpos(first);
 		row.setDimension(dim);
-		computeRowMetrics(pit, row);
+		int const max_row_width = max(dim_.wid, dim.wid);
+		computeRowMetrics(pit, row, max_row_width);
 		pm.computeRowSignature(row, bparams);
 		pm.dim().des += dim.height();
 	}
@@ -488,7 +490,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 
 void TextMetrics::computeRowMetrics(pit_type const pit,
-		Row & row) const
+		Row & row, int width) const
 {
 
 	row.label_hfill = 0;
@@ -498,7 +500,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	Buffer & buffer = bv_->buffer();
 	Paragraph const & par = text_->getPar(pit);
 
-	double w = dim_.wid - row.width();
+	double w = width - row.width();
 	// FIXME: put back this assertion when the crash on new doc is solved.
 	//BOOST_ASSERT(w >= 0);
 
