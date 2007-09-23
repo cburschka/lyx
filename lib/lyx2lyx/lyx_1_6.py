@@ -183,18 +183,59 @@ def remove_manifest(document):
 #
 
 def revert_pdf_options(document):
-    "Revert PDF options for hyperref. "
-    i = 0
-    while 1:
-        i = find_tokens(document.header, [ "\\use_hyperref", "\\pdf_title", "\\pdf_author", "\\pdf_subject",
-                                           "\\pdf_keywords", "\\pdf_bookmarks", "\\pdf_bookmarksnumbered",
-                                           "\\pdf_bookmarksopen", "\\pdf_bookmarksopenlevel", "\\pdf_breaklinks",
-                                           "\\pdf_border", "\\pdf_colorlinks", "\\pdf_backref", "\\pdf_pagebackref",
-					   "\\pdf_fullscreen", "\\pdf_quoted_options", "\\pdf_store_options" ], i)
-        if i == -1:
-            return
-        document.body[i] = ""
-        i = i + 1
+        "Revert PDF options for hyperref. "
+        i = 0
+        i = find_token(document.header, "\\use_hyperref", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_store_options", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_title", 0)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_author", 0)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_subject", 0)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_keywords", 0)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_bookmarks", 0)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_bookmarksnumbered", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_bookmarksopen", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_bookmarksopenlevel", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_breaklinks", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_pdfborder", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_colorlinks", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_backref", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_pagebackref", i)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_pagemode", 0)
+        if i != -1:
+            del document.header[i]
+        i = find_token(document.header, "\\pdf_quoted_options", 0)
+        if i != -1:
+            del document.header[i]
 
 
 def remove_inzip_options(document):
