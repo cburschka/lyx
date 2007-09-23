@@ -178,15 +178,10 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 			bool rtl = bv.textMetrics(sl.text()).isRTL(sl, boundary_i);
 			if (rtl)
 				x -= lastw;
-			// remember width for the case that sl.inset() is positioned in an RTL inset
-			Dimension const & dim = bv.parMetrics(sl.text(), sl.pit()).
-				insetDimension(&sl.inset());
-			lastw = dim.wid;
-		} else {
-			// remember width for the case that sl.inset() is positioned in an RTL inset
-			Dimension const dim = sl.inset().dimension(bv);
-			lastw = dim.wid;
 		}
+		// remember width for the case that sl.inset() is positioned in an RTL inset
+		Dimension const dim = sl.inset().dimension(bv);
+		lastw = dim.wid;
 		
 		//lyxerr << "Cursor::getPos, i: "
 		// << i << " x: " << xx << " y: " << y << endl;
