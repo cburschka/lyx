@@ -5,8 +5,10 @@ LyX file-format changes
 	* Format incremented to 286: LyX now supports hyperref and some
 	  of its options.
 
-2007-09-xx ???
-	* Format incremented to 285: ???
+2007-09-11 Bo Peng
+	* Format incremented to 285: Tweaks to embedded file format.
+	  Add manifest to .lyx file. 
+	  Remove inzip parameter from graphics insets.
 
 2007-09-09 Helge Hafting
 	* Format incremented to 284: LyX now implements wrapped figures
