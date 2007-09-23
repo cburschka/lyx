@@ -1436,7 +1436,8 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 			<< " yo: " << p.y_ - dim.asc << "..." << p.y_ + dim.des
 			<< endl;
 
-		if (x >= p.x_ && p.x_ + dim.wid
+		if (x >= p.x_
+			&& x <= p.x_ + dim.wid
 			&& y >= p.y_ - dim.asc
 			&& y <= p.y_ + dim.des) {
 			LYXERR(Debug::DEBUG)
