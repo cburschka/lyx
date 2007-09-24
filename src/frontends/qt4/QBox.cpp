@@ -376,7 +376,10 @@ void QBox::setInnerType(bool frameless, int i)
 		dialog_->innerBoxCO->clear();
 		dialog_->innerBoxCO->addItem(qt_("Parbox"));
 		dialog_->innerBoxCO->addItem(qt_("Minipage"));
-		dialog_->innerBoxCO->setCurrentIndex(i - 1);
+		if (i != 0)
+			dialog_->innerBoxCO->setCurrentIndex(i - 1);
+		else
+			dialog_->innerBoxCO->setCurrentIndex(i);
 	} else {
 		if (dialog_->innerBoxCO->count() == 2)
 			i += 1;
