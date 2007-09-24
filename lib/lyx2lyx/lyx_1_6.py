@@ -178,12 +178,10 @@ def remove_manifest(document):
     "Remove the manifest section"
     document.manifest = None
 
-##
-#  Discard PDF options for hyperref
-#
 
+#  Discard PDF options for hyperref
 def revert_pdf_options(document):
-        "Revert PDF options for hyperref. "
+        "Revert PDF options for hyperref."
         i = 0
         i = find_token(document.header, "\\use_hyperref", i)
         if i != -1:
@@ -258,8 +256,27 @@ def remove_inzip_options(document):
         i = i + 1
 
 
+def convert_wrapfig_options(document):
+    "Convert optional options for wrap floats (wrapfig)."
+    # adds the tokens "lines", "placement", and "overhang"
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Wrap figure", i)
+        if i == -1:
+            return
+        document.body.insert(i + 1, "lines 0")
+        j = find_token(document.body, "placement", i)
+        # placement can be already set or not; if not, set it
+        if j == i+2:
+            document.body.insert(i + 3, "overhang 0col%")
+        else:
+           document.body.insert(i + 2, "placement o")
+           document.body.insert(i + 3, "overhang 0col%")
+        i = i + 1
+
+
 def revert_wrapfig_options(document):
-    "Revert optional options for wrap floats (wrapfig). "
+    "Revert optional options for wrap floats (wrapfig)."
     i = 0
     while True:
         i = find_tokens(document.body, "lines", i)
@@ -291,7 +308,7 @@ convert = [
            [284, []],
            [285, []], # an empty manifest is automatically added
            [286, []],
-           [287, []]
+           [287, [convert_wrapfig_options]]
           ]
 
 revert =  [
