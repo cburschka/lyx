@@ -198,7 +198,13 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
                 os << code
                    << *delimiter;
 	} else {
-		docstring const caption = getCaption(buf, runparams);
+		OutputParams rp = runparams;
+		// FIXME: the line below would fix bug 4182,
+		// but real_current_font moved to cursor.
+		//rp.local_font = &text_.real_current_font;
+		rp.moving_arg = true;
+		docstring const caption = getCaption(buf, rp);
+		runparams.encoding = rp.encoding;
 		if (param_string.empty() && caption.empty())
 			os << "\n\\begingroup\n\\inputencoding{latin1}\n\\begin{lstlisting}\n";
 		else {
