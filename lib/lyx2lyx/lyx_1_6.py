@@ -258,6 +258,23 @@ def remove_inzip_options(document):
         i = i + 1
 
 
+def revert_wrapfig_options(document):
+    "Revert optional options for wrap floats (wrapfig). "
+    i = 0
+    while True:
+        i = find_tokens(document.body, "lines", i)
+        if i == -1:
+            return
+        del document.body[i]
+        j = find_tokens(document.body, "overhang", i+1)
+        if j != i + 1 and j != -1:
+            document.warning("Malformed LyX document: Couldn't find overhang parameter of wrap float.")
+        if j == -1:
+            return
+        del document.body[j]
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -273,10 +290,12 @@ convert = [
            [283, [convert_flex]],
            [284, []],
            [285, []], # an empty manifest is automatically added
-           [286, []]
+           [286, []],
+           [287, []]
           ]
 
 revert =  [
+           [286, [revert_wrapfig_options]],
            [285, [revert_pdf_options]],
            [284, [remove_manifest, remove_inzip_options]],
            [283, []],

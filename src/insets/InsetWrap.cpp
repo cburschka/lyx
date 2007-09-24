@@ -52,6 +52,9 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	font.setColor(Color::collapsable);
 	setLabelFont(font);
 	params_.type = type;
+	params_.lines = 0;
+	params_.placement = "o";
+	params_.overhang = Length(0, Length::PCW);
 	params_.width = Length(50, Length::PCW);
 }
 
@@ -68,8 +71,10 @@ void InsetWrap::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetWrapParams params;
 		InsetWrapMailer::string2params(to_utf8(cmd.argument()), params);
+		params_.lines = params.lines;
 		params_.placement = params.placement;
-		params_.width     = params.width;
+		params_.overhang = params.overhang;
+		params_.width = params.width;
 		break;
 	}
 
@@ -126,10 +131,9 @@ void InsetWrap::updateLabels(Buffer const & buf, ParIterator const & it)
 void InsetWrapParams::write(ostream & os) const
 {
 	os << "Wrap " << type << '\n';
-
-	if (!placement.empty())
-		os << "placement " << placement << "\n";
-
+	os << "lines " << lines << "\n";
+	os << "placement " << placement << "\n";
+	os << "overhang " << overhang.asString() << "\n";
 	os << "width \"" << width.asString() << "\"\n";
 }
 
@@ -137,11 +141,35 @@ void InsetWrapParams::write(ostream & os) const
 void InsetWrapParams::read(Lexer & lex)
 {
 	string token;
+
+	lex >> token;
+	if (token == "lines")
+		lex >> lines;
+	else {
+		lyxerr << "InsetWrap::Read:: Missing 'lines'-tag!"
+			<< endl;
+		// take countermeasures
+		lex.pushToken(token);
+	}
+	if (!lex)
+		return;
 	lex >> token;
 	if (token == "placement")
 		lex >> placement;
 	else {
-		// take countermeasures
+		lyxerr << "InsetWrap::Read:: Missing 'placement'-tag!"
+			<< endl;
+		lex.pushToken(token);
+	}
+	if (!lex)
+		return;
+	lex >> token;
+	if (token == "overhang") {
+		lex.next();
+		overhang = Length(lex.getString());
+	} else {
+		lyxerr << "InsetWrap::Read:: Missing 'overhang'-tag!"
+			<< endl;
 		lex.pushToken(token);
 	}
 	if (!lex)
@@ -153,7 +181,6 @@ void InsetWrapParams::read(Lexer & lex)
 	} else {
 		lyxerr << "InsetWrap::Read:: Missing 'width'-tag!"
 			<< endl;
-		// take countermeasures
 		lex.pushToken(token);
 	}
 }
@@ -196,9 +223,14 @@ int InsetWrap::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
 	os << "\\begin{wrap" << from_ascii(params_.type) << '}';
-	if (!params_.placement.empty())
-		os << '{' << from_ascii(params_.placement) << '}';
-		else os << "{o}"; //Outer is default in the current UI
+	// no optional argument when lines are zero
+	if (params_.lines != 0)
+		os << '[' << params_.lines << ']';
+	os << '{' << from_ascii(params_.placement) << '}';
+	Length over(params_.overhang);
+	// no optional argument when the value is zero
+	if (over.value() != 0)
+		os << '[' << from_ascii(params_.overhang.asLatexString()) << ']';
 	os << '{' << from_ascii(params_.width.asLatexString()) << "}%\n";
 	int const i = InsetText::latex(buf, os, runparams);
 	os << "\\end{wrap" << from_ascii(params_.type) << "}%\n";

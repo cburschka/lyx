@@ -30,7 +30,11 @@ public:
 	///
 	std::string type;
 	///
+	int lines;
+	///
 	std::string placement;
+	///
+	Length overhang;
 	///
 	Length width;
 };

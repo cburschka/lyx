@@ -15,6 +15,7 @@
 #include "ControlWrap.h"
 #include "LengthCombo.h"
 #include "qt_helpers.h"
+#include "Validator.h"
 
 #include "insets/InsetWrap.h"
 
@@ -44,10 +45,21 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 
 	connect(widthED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(unitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(widthUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(valignCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(change_adaptor()));
+	connect(overhangED, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(overhangUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SLOT(change_adaptor()));
+	connect(linesSB, SIGNAL(valueChanged(int)),
+		this, SLOT(change_adaptor()));
+
+	widthED->setValidator(unsignedLengthValidator(widthED));
+	// FIXME:
+	// overhang can be negative, but the unsignedLengthValidator allows this
+	overhangED->setValidator(unsignedLengthValidator(overhangED));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setRestore(restorePB);
@@ -56,8 +68,15 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 	bc().setCancel(closePB);
 
 	bc().addReadOnly(widthED);
-	bc().addReadOnly(unitsLC);
+	bc().addReadOnly(widthUnitLC);
 	bc().addReadOnly(valignCO);
+	bc().addReadOnly(overhangED);
+	bc().addReadOnly(overhangUnitLC);
+	bc().addReadOnly(linesSB);
+
+	// initialize the length validator
+	bc().addCheckedLineEdit(widthED, widthLA);
+	bc().addCheckedLineEdit(overhangED, overhangLA);
 }
 
 
@@ -82,14 +101,20 @@ void GuiWrapDialog::change_adaptor()
 
 void GuiWrapDialog::applyView()
 {
-	double const value = widthED->text().toDouble();
-	Length::UNIT unit = unitsLC->currentLengthItem();
+	double const width_value = widthED->text().toDouble();
+	Length::UNIT widthUnit = widthUnitLC->currentLengthItem();
 	if (widthED->text().isEmpty())
-		unit = Length::UNIT_NONE;
-
+		widthUnit = Length::UNIT_NONE;
+	double const overhang_value = overhangED->text().toDouble();
+	Length::UNIT overhangUnit = overhangUnitLC->currentLengthItem();
+	if (overhangED->text().isEmpty())
+		overhangUnit = Length::UNIT_NONE;
+	
 	InsetWrapParams & params = controller().params();
 
-	params.width = Length(value, unit);
+	params.width = Length(width_value, widthUnit);
+	params.overhang = Length(overhang_value, overhangUnit);
+	params.lines = linesSB->value();
 
 	switch (valignCO->currentIndex()) {
 	case 0:
@@ -112,11 +137,15 @@ void GuiWrapDialog::updateContents()
 {
 	InsetWrapParams & params = controller().params();
 
-	Length len(params.width);
 	//0pt is a legal width now, it yields a
 	//wrapfloat just wide enough for the contents.
-	widthED->setText(QString::number(len.value()));
-	unitsLC->setCurrentItem(len.unit());
+	Length len_w(params.width);
+	widthED->setText(QString::number(len_w.value()));
+	widthUnitLC->setCurrentItem(len_w.unit());
+	Length len_o(params.overhang);
+	overhangED->setText(QString::number(len_o.value()));
+	overhangUnitLC->setCurrentItem(len_o.unit());
+	linesSB->setValue(params.lines);
 
 	int item = 0;
 	if (params.placement == "i")
