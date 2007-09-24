@@ -397,10 +397,10 @@ char const * simplefeatures[] = {
 	"subfigure",
 	"varioref",
 	"prettyref",
-	/* For a successful cooperation of the `wrapfig' package with the
-	   `float' package you should load the `wrapfig' package *after*
-	   the `float' package. See the caption package documentation
-	   for explanation.*/
+	/*For a successful cooperation of the `wrapfig' package with the
+	  `float' package you should load the `wrapfig' package *after*
+	  the `float' package. See the caption package documentation
+	  for explanation.*/
 	"float",
 	"wrapfig",
 	"booktabs",
@@ -421,6 +421,7 @@ char const * simplefeatures[] = {
 	"txfonts",
 	"mathrsfs",
 	"ascii",
+	"url",
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
@@ -548,11 +549,6 @@ string const LaTeXFeatures::getPackages() const
 	if ((mustProvide("esint") || mustProvide("esintoramsmath")) &&
 	    params_.use_esint != BufferParams::package_off)
 		packages << "\\usepackage{esint}\n";
-
-	// url.sty
-	if (mustProvide("url"))
-		packages << "\\IfFileExists{url.sty}{\\usepackage{url}}\n"
-			    "                      {\\newcommand{\\url}{\\texttt}}\n";
 
 	// natbib.sty
 	if (mustProvide("natbib")) {
