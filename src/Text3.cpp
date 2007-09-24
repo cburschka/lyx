@@ -1375,14 +1375,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FINISHED_LEFT:
 		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_LEFT:\n" << cur << endl;
-		if (reverseDirectionNeeded(cur))
+		if (reverseDirectionNeeded(cur)) {
 			++cur.pos();
+			cur.setCurrentFont();
+		}
 		break;
 
 	case LFUN_FINISHED_RIGHT:
 		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_RIGHT:\n" << cur << endl;
-		if (!reverseDirectionNeeded(cur))
+		if (!reverseDirectionNeeded(cur)) {
 			++cur.pos();
+			cur.setCurrentFont();
+		}
 		break;
 
 	case LFUN_LAYOUT_PARAGRAPH: {

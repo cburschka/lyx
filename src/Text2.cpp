@@ -636,7 +636,7 @@ bool Text::cursorLeft(Cursor & cur)
 
 	// move to the previous paragraph or do nothing
 	if (cur.pit() > 0)
-		return setCursor(cur, cur.pit() - 1, getPar(cur.pit() - 1).size());
+		return setCursor(cur, cur.pit() - 1, getPar(cur.pit() - 1).size(), true, false);
 	return false;
 }
 
@@ -693,7 +693,7 @@ bool Text::cursorRight(Cursor & cur)
 
 	// move to next paragraph
 	if (cur.pit() != cur.lastpit())
-		return setCursor(cur, cur.pit() + 1, 0);
+		return setCursor(cur, cur.pit() + 1, 0, true, false);
 	return false;
 }
 
