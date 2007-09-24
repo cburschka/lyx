@@ -28,6 +28,10 @@ public:
 
 private Q_SLOTS:
 	void change_adaptor();
+	/// overhang checkbox
+	void overhangChecked(int);
+	/// lines checkbox
+	void linesChecked(int);
 
 private:
 	void closeEvent(QCloseEvent * e);

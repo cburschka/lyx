@@ -19,37 +19,6 @@
    <property name="geometry" >
     <rect>
      <x>10</x>
-     <y>110</y>
-     <width>221</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <widget class="QLabel" name="nlinesLA" >
-      <property name="text" >
-       <string>&amp;Number of needed lines (optional):</string>
-      </property>
-      <property name="buddy" >
-       <cstring>valignCO</cstring>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSpinBox" name="linesSB" />
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
      <y>140</y>
      <width>392</width>
      <height>45</height>
@@ -155,62 +124,13 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="valignLA" >
-   <property name="geometry" >
-    <rect>
-     <x>292</x>
-     <y>11</y>
-     <width>98</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>&amp;Placement:</string>
-   </property>
-   <property name="buddy" >
-    <cstring>valignCO</cstring>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="valignCO" >
-   <property name="geometry" >
-    <rect>
-     <x>292</x>
-     <y>32</y>
-     <width>98</width>
-     <height>18</height>
-    </rect>
-   </property>
-   <property name="toolTip" >
-    <string>Vertical alignment</string>
-   </property>
-   <item>
-    <property name="text" >
-     <string>Outer (default)</string>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Inner</string>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Left</string>
-    </property>
-   </item>
-   <item>
-    <property name="text" >
-     <string>Right</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QWidget" name="layoutWidget" >
+  <widget class="QWidget" name="" >
    <property name="geometry" >
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>271</width>
-     <height>88</height>
+     <width>281</width>
+     <height>42</height>
     </rect>
    </property>
    <layout class="QGridLayout" >
@@ -235,48 +155,13 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="0" >
-     <widget class="QLabel" name="widthLA" >
-      <property name="text" >
-       <string>&amp;Width:</string>
-      </property>
-      <property name="buddy" >
-       <cstring>widthED</cstring>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1" >
-     <widget class="QLabel" name="overhangUnitLA" >
+    <item row="0" column="1" >
+     <widget class="QLabel" name="widthUnitLA" >
       <property name="text" >
        <string>&amp;Unit:</string>
       </property>
       <property name="buddy" >
        <cstring>widthUnitLC</cstring>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0" >
-     <widget class="QLineEdit" name="overhangED" >
-      <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>1</hsizetype>
-        <vsizetype>0</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="toolTip" >
-       <string>Width value</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0" >
-     <widget class="QLabel" name="overhangLA" >
-      <property name="text" >
-       <string>&amp;Overhang (optional):</string>
-      </property>
-      <property name="buddy" >
-       <cstring>widthED</cstring>
       </property>
      </widget>
     </item>
@@ -300,12 +185,164 @@
        <enum>Qt::StrongFocus</enum>
       </property>
       <property name="toolTip" >
-       <string>Units of width value</string>
+       <string>Unit of width value</string>
       </property>
      </widget>
     </item>
+    <item row="0" column="0" >
+     <widget class="QLabel" name="widthLA" >
+      <property name="text" >
+       <string>&amp;Width:</string>
+      </property>
+      <property name="buddy" >
+       <cstring>widthED</cstring>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>303</x>
+     <y>11</y>
+     <width>100</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="valignLA" >
+      <property name="text" >
+       <string>&amp;Placement:</string>
+      </property>
+      <property name="buddy" >
+       <cstring>valignCO</cstring>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="valignCO" >
+      <property name="toolTip" >
+       <string>Vertical alignment</string>
+      </property>
+      <item>
+       <property name="text" >
+        <string>Outer (default)</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Inner</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Left</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Right</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>110</y>
+     <width>242</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
     <item row="0" column="1" >
-     <widget class="QLabel" name="widthUnitLA" >
+     <widget class="QSpinBox" name="linesSB" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="toolTip" >
+       <string>number of needed lines</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" >
+     <widget class="QCheckBox" name="linesCB" >
+      <property name="toolTip" >
+       <string>use number of lines</string>
+      </property>
+      <property name="text" >
+       <string>&amp;Number of needed lines (optional):</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>11</x>
+     <y>60</y>
+     <width>281</width>
+     <height>46</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item row="0" column="0" colspan="2" >
+     <widget class="QCheckBox" name="overhangCB" >
+      <property name="toolTip" >
+       <string>use overhang</string>
+      </property>
+      <property name="text" >
+       <string>&amp;Overhang (optional):</string>
+      </property>
+      <property name="checked" >
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" >
+     <widget class="QLineEdit" name="overhangED" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>1</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="toolTip" >
+       <string>Overhang value</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2" >
+     <widget class="QLabel" name="overhangUnitLA" >
       <property name="text" >
        <string>&amp;Unit:</string>
       </property>
@@ -314,8 +351,11 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1" >
+    <item row="1" column="1" colspan="2" >
      <widget class="LengthCombo" name="overhangUnitLC" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
       <property name="sizePolicy" >
        <sizepolicy>
         <hsizetype>13</hsizetype>
@@ -334,7 +374,7 @@
        <enum>Qt::StrongFocus</enum>
       </property>
       <property name="toolTip" >
-       <string>Units of width value</string>
+       <string>Unit of overhang value</string>
       </property>
      </widget>
     </item>
@@ -352,10 +392,15 @@
   <tabstop>widthED</tabstop>
   <tabstop>widthUnitLC</tabstop>
   <tabstop>valignCO</tabstop>
+  <tabstop>overhangCB</tabstop>
+  <tabstop>overhangED</tabstop>
+  <tabstop>overhangUnitLC</tabstop>
+  <tabstop>linesCB</tabstop>
+  <tabstop>linesSB</tabstop>
   <tabstop>restorePB</tabstop>
   <tabstop>okPB</tabstop>
-  <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
+  <tabstop>applyPB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>

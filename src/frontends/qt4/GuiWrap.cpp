@@ -49,12 +49,19 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 		this, SLOT(change_adaptor()));
 	connect(valignCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(change_adaptor()));
+	connect(overhangCB, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
 	connect(overhangED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(overhangUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
+	connect(linesCB, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
 	connect(linesSB, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
+
+	connect(overhangCB, SIGNAL(stateChanged(int)), this, SLOT(overhangChecked(int)));
+	connect(linesCB, SIGNAL(stateChanged(int)), this, SLOT(linesChecked(int)));
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	// FIXME:
@@ -70,13 +77,15 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 	bc().addReadOnly(widthED);
 	bc().addReadOnly(widthUnitLC);
 	bc().addReadOnly(valignCO);
+	bc().addReadOnly(overhangCB);
 	bc().addReadOnly(overhangED);
 	bc().addReadOnly(overhangUnitLC);
+	bc().addReadOnly(linesCB);
 	bc().addReadOnly(linesSB);
 
 	// initialize the length validator
 	bc().addCheckedLineEdit(widthED, widthLA);
-	bc().addCheckedLineEdit(overhangED, overhangLA);
+	bc().addCheckedLineEdit(overhangED, overhangCB);
 }
 
 
@@ -99,6 +108,26 @@ void GuiWrapDialog::change_adaptor()
 }
 
 
+void GuiWrapDialog::overhangChecked(int checkState)
+{
+	if (checkState == Qt::Checked) {
+		overhangED->setEnabled(true);
+		overhangUnitLC->setEnabled(true);
+	} else { 
+		overhangED->setEnabled(false);
+		overhangUnitLC->setEnabled(false);
+	}
+}
+
+void GuiWrapDialog::linesChecked(int checkState)
+{
+	if (checkState == Qt::Checked)
+		linesSB->setEnabled(true);
+	else 
+		linesSB->setEnabled(false);
+}
+
+
 void GuiWrapDialog::applyView()
 {
 	double const width_value = widthED->text().toDouble();
@@ -113,8 +142,20 @@ void GuiWrapDialog::applyView()
 	InsetWrapParams & params = controller().params();
 
 	params.width = Length(width_value, widthUnit);
-	params.overhang = Length(overhang_value, overhangUnit);
-	params.lines = linesSB->value();
+
+	if (overhangCB->checkState() == Qt::Checked)
+		params.overhang = Length(overhang_value, overhangUnit);
+	else
+		// when value is "0" the option is not set in the LaTeX-output
+		// in InsetWrap.cpp
+		params.overhang = Length("0in");
+
+	if (linesCB->checkState() == Qt::Checked)
+		params.lines = linesSB->value();
+	else
+		// when value is "0" the option is not set in the LaTeX-output
+		// in InsetWrap.cpp
+		params.lines = 0;
 
 	switch (valignCO->currentIndex()) {
 	case 0:
