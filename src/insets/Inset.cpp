@@ -333,19 +333,7 @@ int Inset::yo(BufferView const & bv) const
 
 bool Inset::covers(BufferView const & bv, int x, int y) const
 {
-	//lyxerr << "Inset::covers, x: " << x << " y: " << y
-	//	<< " xo: " << xo(bv) << " yo: " << yo()
-	//	<< " x1: " << xo(bv) << " x2: " << xo() + width()
-	//	<< " y1: " << yo(bv) - ascent() << " y2: " << yo() + descent()
-	//	<< std::endl;
-
-	Dimension const dim = dimension(bv);
-
-	return bv.coordCache().getInsets().has(this)
-			&& x >= xo(bv)
-			&& x <= xo(bv) + dim.width()
-			&& y >= yo(bv) - dim.ascent()
-			&& y <= yo(bv) + dim.descent();
+	return bv.coordCache().getInsets().covers(this, x, y);
 }
 
 

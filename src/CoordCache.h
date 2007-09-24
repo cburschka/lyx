@@ -44,6 +44,14 @@ public:
 struct Geometry {
 	Point pos;
 	Dimension dim;
+
+	bool covers(int x, int y) const
+	{
+		return x >= pos.x_
+			&& x <= pos.x_ + dim.wid
+			&& y >= pos.y_ - dim.asc
+			&& y <= pos.y_ + dim.des;
+	}
 };
 
 
@@ -71,7 +79,7 @@ public:
 
 	Dimension const & dim(T const * thing) const
 	{
-		//check(thing, "dim");
+		check(thing, "dim");
 		return data_.find(thing)->second.dim;
 	}
 
@@ -98,11 +106,11 @@ public:
 		return data_.find(thing) != data_.end();
 	}
 
-//	T * find(int x, int y) const
-//	{
-//		T *
-//		cache_type iter
-//	}
+	bool covers(T const * thing, int x, int y) const
+	{
+		cache_type::const_iterator it = data_.find(thing);
+		return it != data_.end() && it->second.covers(x, y);
+	}
 
 private:
 	friend class CoordCache;
@@ -121,14 +129,20 @@ public:
 };
 
 /**
- * A global cache that allows us to come from a paragraph in a document
- * to a position point on the screen.
+ * A BufferView dependent cache that allows us to come from an inset in
+ * a document to a position point and dimension on the screen.
  * All points cached in this cache are only valid between subsequent
  * updates. (x,y) == (0,0) is the upper left screen corner, x increases
  * to the right, y increases downwords.
- * The cache is built in BufferView::updateMetrics which is called
- * from BufferView::update. The individual points are added
- * while we paint them. See for instance paintPar in RowPainter.C.
+ * The dimension part is built in BufferView::updateMetrics() and the 
+ * diverse Inset::metrics() calls.
+ * The individual points are added at drawing time in
+ * BufferView::updateMetrics(). The math inset position are cached in
+ * the diverse InsetMathXXX::draw() calls and the in-text inset position
+ * are cached in RowPainter::paintInset().
+ * FIXME: For mathed, it would be nice if the insets did not saves their
+ * position themselves. That should be the duty of the containing math
+ * array.
  */
 class CoordCache {
 public:
