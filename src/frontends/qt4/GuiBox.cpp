@@ -353,7 +353,10 @@ void GuiBoxDialog::setInnerType(bool frameless, int i)
 		innerBoxCO->clear();
 		innerBoxCO->addItem(qt_("Parbox"));
 		innerBoxCO->addItem(qt_("Minipage"));
-		innerBoxCO->setCurrentIndex(i - 1);
+		if (i != 0)
+			innerBoxCO->setCurrentIndex(i - 1);
+		else
+			innerBoxCO->setCurrentIndex(i);
 	} else {
 		if (innerBoxCO->count() == 2)
 			++i;
