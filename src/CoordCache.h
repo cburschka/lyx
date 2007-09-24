@@ -52,6 +52,25 @@ struct Geometry {
 			&& y >= pos.y_ - dim.asc
 			&& y <= pos.y_ + dim.des;
 	}
+
+	int squareDistance(int x, int y) const
+	{
+		int xx = 0;
+		int yy = 0;
+
+		if (x < pos.x_)
+			xx = pos.x_ - x;
+		else if (x > pos.x_ + dim.wid)
+			xx = x - pos.x_ - dim.wid;
+
+		if (y < pos.y_ - dim.asc)
+			yy = pos.y_ - dim.asc - y;
+		else if (y > pos.y_ + dim.des)
+			yy = y - pos.y_ - dim.des;
+
+		// Optimisation: We avoid to compute the sqrt on purpose.
+		return xx*xx + yy*yy;
+	}
 };
 
 
@@ -75,6 +94,12 @@ public:
 	void add(T const * thing, Dimension const & dim)
 	{
 		data_[thing].dim = dim;
+	}
+
+	Geometry const & geometry(T const * thing) const
+	{
+		check(thing, "geometry");
+		return data_.find(thing)->second;
 	}
 
 	Dimension const & dim(T const * thing) const
@@ -110,6 +135,14 @@ public:
 	{
 		cache_type::const_iterator it = data_.find(thing);
 		return it != data_.end() && it->second.covers(x, y);
+	}
+
+	int squareDistance(T const * thing, int x, int y) const
+	{
+		cache_type::const_iterator it = data_.find(thing);
+		if (it == data_.end())
+			return 1000000;
+		return it->second.squareDistance(x, y);
 	}
 
 private:
