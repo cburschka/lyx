@@ -133,7 +133,7 @@ public:
 
 	bool covers(T const * thing, int x, int y) const
 	{
-		cache_type::const_iterator it = data_.find(thing);
+		typename cache_type::const_iterator it = data_.find(thing);
 		return it != data_.end() && it->second.covers(x, y);
 	}
 
