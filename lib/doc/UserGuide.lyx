@@ -35647,6 +35647,17 @@ key "Arabic"
 \end_inset
 
 .
+ The default is the 
+\series bold
+babel
+\series default
+ command 
+\family sans
+
+\backslash
+selectlanguage{$$lang}
+\family default
+.
 \end_layout
 
 \begin_layout Description
@@ -35662,7 +35673,11 @@ Command start
 
 \begin_layout Description
 Use\InsetSpace ~
-babel Whether babel is used or not.
+babel Whether 
+\series bold
+babel
+\series default
+ is used or not.
 \end_layout
 
 \begin_layout Description
@@ -35678,7 +35693,20 @@ babel
 
 \begin_layout Description
 Auto\InsetSpace ~
-begin ??
+begin When this option is set, the documents starts with the chosen
+ document language.
+ When this option is not set, the 
+\family sans
+Command\InsetSpace ~
+start
+\family default
+ is explicitly set to the beginning of the document in the LaTeX-output.
+ This assures that the correct language is used, when you use another 
+\family sans
+Command\InsetSpace ~
+start
+\family default
+ than the default.
 \end_layout
 
 \begin_layout Description
@@ -35689,6 +35717,12 @@ Auto\InsetSpace ~
 begin
 \family default
 .
+ When it is not set, the 
+\family sans
+Command\InsetSpace ~
+end
+\family default
+ is set to the end of the document.
 \end_layout
 
 \begin_layout Description
