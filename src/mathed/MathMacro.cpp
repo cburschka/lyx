@@ -129,9 +129,10 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			int ww = mathed_string_width(font, from_ascii("#1: "));
 			for (idx_type i = 0; i < nargs(); ++i) {
 				MathData const & c = cell(i);
-				c.metrics(mi);
-				dim.wid  = max(dim.wid, c.width() + ww);
-				dim.des += c.height() + 10;
+				Dimension dimc;
+				c.metrics(mi, dimc);
+				dim.wid  = max(dim.wid, dimc.width() + ww);
+				dim.des += dimc.height() + 10;
 			}
 			editing_ = true;
 		} else {
@@ -166,22 +167,24 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			Font font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			Dimension const dim = dimension(*pi.base.bv);
-			int h = y - dim.ascent() + 2 + tmpl_.ascent();
+			Dimension const & dim_tmpl = tmpl_.dimension(*pi.base.bv);
+			int h = y - dim.ascent() + 2 + dim_tmpl.ascent();
 			pi.pain.text(x + 3, h, name(), font);
 			int const w = mathed_string_width(font, name());
 			tmpl_.draw(pi, x + w + 12, h);
-			h += tmpl_.descent();
+			h += dim_tmpl.descent();
 			Dimension ldim;
 			docstring t = from_ascii("#1: ");
 			mathed_string_dim(font, t, ldim);
 			for (idx_type i = 0; i < nargs(); ++i) {
 				MathData const & c = cell(i);
-				h += max(c.ascent(), ldim.asc) + 5;
+				Dimension const & dimc = c.dimension(*pi.base.bv);
+				h += max(dimc.ascent(), ldim.asc) + 5;
 				c.draw(pi, x + ldim.wid, h);
 				char_type str[] = { '#', '1', ':', '\0' };
 				str[1] += static_cast<char_type>(i);
 				pi.pain.text(x + 3, h, str, font);
-				h += max(c.descent(), ldim.des) + 5;
+				h += max(dimc.descent(), ldim.des) + 5;
 			}
 		} else {
 			macro.lock();

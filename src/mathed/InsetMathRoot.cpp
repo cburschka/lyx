@@ -38,9 +38,11 @@ void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	using std::max;
 	InsetMathNest::metrics(mi);
-	dim.asc = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
-	dim.des = max(cell(0).descent() - 5, cell(1).descent()) + 2;
-	dim.wid = cell(0).width() + cell(1).width() + 10;
+	Dimension const & dim0 = cell(0).dimension(*mi.base.bv);
+	Dimension const & dim1 = cell(1).dimension(*mi.base.bv);
+	dim.asc = max(dim0.ascent()  + 5, dim1.ascent())  + 2;
+	dim.des = max(dim0.descent() - 5, dim1.descent()) + 2;
+	dim.wid = dim0.width() + dim1.width() + 10;
 	metricsMarkers(dim);
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
@@ -49,9 +51,10 @@ void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 {
-	int const w = cell(0).width();
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	int const w = dim0.width();
 	// the "exponent"
-	cell(0).draw(pi, x, y - 5 - cell(0).descent());
+	cell(0).draw(pi, x, y - 5 - dim0.descent());
 	// the "base"
 	cell(1).draw(pi, x + w + 8, y);
 	Dimension const dim = dimension(*pi.base.bv);

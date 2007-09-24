@@ -125,10 +125,11 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	if (wide())
-		mathed_draw_deco(pi, x + 1, y + dy_, cell(0).width(), dh_, key_->name);
+		mathed_draw_deco(pi, x + 1, y + dy_, dim0.wid, dh_, key_->name);
 	else
-		mathed_draw_deco(pi, x + 1 + (cell(0).width() - dw_) / 2,
+		mathed_draw_deco(pi, x + 1 + (dim0.wid - dw_) / 2,
 			y + dy_, dw_, dh_, key_->name);
 	drawMarkers(pi, x, y);
 	setPosCache(pi, x, y);

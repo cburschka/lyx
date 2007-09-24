@@ -109,21 +109,21 @@ private:
 	/// returns x offset for main part
 	int dxx(BufferView const & bv) const;
 	/// returns width of nucleus if any
-	int nwid() const;
+	int nwid(BufferView const &) const;
 	/// returns y offset for either superscript or subscript
-	int dy01(int asc, int des, int what) const;
+	int dy01(BufferView const &, int asc, int des, int what) const;
 	/// returns y offset for superscript
-	int dy0() const;
+	int dy0(BufferView const &) const;
 	/// returns y offset for subscript
-	int dy1() const;
+	int dy1(BufferView const &) const;
 	/// returns x offset for superscript
 	int dx0(BufferView const & bv) const;
 	/// returns x offset for subscript
 	int dx1(BufferView const & bv) const;
 	/// returns ascent of nucleus if any
-	int nasc() const;
+	int nasc(BufferView const &) const;
 	/// returns descent of nucleus if any
-	int ndes() const;
+	int ndes(BufferView const &) const;
 	/// returns superscript kerning of nucleus if any
 	int nker() const;
 	/// where do we have to draw the scripts?

@@ -115,13 +115,15 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).lock();
 
-	cell(0).metrics(mi);
-	cell(1).metrics(mi);
+	Dimension dim0;
+	cell(0).metrics(mi, dim0);
+	Dimension dim1;
+	cell(1).metrics(mi, dim1);
 	docstring dp = prefix();
-	dim.wid = cell(0).width() + cell(1).width() + 20
+	dim.wid = dim0.width() + dim1.width() + 20
 		+ theFontMetrics(mi.base.font).width(dp);
-	dim.asc = std::max(cell(0).ascent(),  cell(1).ascent())  + 7;
-	dim.des = std::max(cell(0).descent(), cell(1).descent()) + 7;
+	dim.asc = std::max(dim0.ascent(),  dim1.ascent())  + 7;
+	dim.des = std::max(dim0.descent(), dim1.descent()) + 7;
 
 	if (lockMacro)
 		MacroTable::globalMacros().get(name_).unlock();
@@ -169,8 +171,8 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	// FIXME: Painter text should retain the drawn text width
 	x += theFontMetrics(font).width(dp) + 6;
 
-	int const w0 = cell(0).width();
-	int const w1 = cell(1).width();
+	int const w0 = cell(0).dimension(*pi.base.bv).width();
+	int const w1 = cell(1).dimension(*pi.base.bv).width();
 	cell(0).draw(pi, x + 2, y + 1);
 	pi.pain.rectangle(x, y - dim.ascent() + 3,
 		w0 + 4, dim.height() - 6, Color::mathline);

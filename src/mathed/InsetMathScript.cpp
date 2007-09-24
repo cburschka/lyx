@@ -169,13 +169,14 @@ bool isAlphaSymbol(MathAtom const & at)
 } // namespace anon
 
 
-int InsetMathScript::dy01(int asc, int des, int what) const
+int InsetMathScript::dy01(BufferView const & bv, int asc, int des, int what) const
 {
 	int dasc = 0;
 	int slevel = 0;
 	bool isCharBox = nuc().size() ? isAlphaSymbol(nuc().back()) : false;
 	if (hasDown()) {
-		dasc = down().ascent();
+		Dimension const & dimdown = down().dimension(bv);
+		dasc = dimdown.ascent();
 		slevel = nuc().slevel();
 		int ascdrop = dasc - slevel;
 		int desdrop = isCharBox ? 0 : des + nuc().sshift();
@@ -184,9 +185,10 @@ int InsetMathScript::dy01(int asc, int des, int what) const
 		des = max(mindes, des);
 	}
 	if (hasUp()) {
+		Dimension const & dimup = up().dimension(bv);
 		int minasc = nuc().minasc();
 		int ascdrop = isCharBox ? 0 : asc - up().mindes();
-		int udes = up().descent();
+		int udes = dimup.descent();
 		asc = udes + nuc().sshift();
 		asc = max(ascdrop, asc);
 		asc = max(minasc, asc);
@@ -207,33 +209,33 @@ int InsetMathScript::dy01(int asc, int des, int what) const
 }
 
 
-int InsetMathScript::dy0() const
+int InsetMathScript::dy0(BufferView const & bv) const
 {
-	int nd = ndes();
+	int nd = ndes(bv);
 	if (!hasDown())
 		return nd;
-	int des = down().ascent();
+	int des = down().dimension(bv).ascent();
 	if (hasLimits())
 		des += nd + 2;
 	else {
-		int na = nasc();
-		des = dy01(na, nd, 0);
+		int na = nasc(bv);
+		des = dy01(bv, na, nd, 0);
 	}
 	return des;
 }
 
 
-int InsetMathScript::dy1() const
+int InsetMathScript::dy1(BufferView const & bv) const
 {
-	int na = nasc();
+	int na = nasc(bv);
 	if (!hasUp())
 		return na;
-	int asc = up().descent();
+	int asc = up().dimension(bv).descent();
 	if (hasLimits())
 		asc += na + 2;
 	else {
-		int nd = ndes();
-		asc = dy01(na, nd, 1);
+		int nd = ndes(bv);
+		asc = dy01(bv, na, nd, 1);
 	}
 	asc = max(asc, 5);
 	return asc;
@@ -244,7 +246,7 @@ int InsetMathScript::dx0(BufferView const & bv) const
 {
 	BOOST_ASSERT(hasDown());
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - down().width()) / 2 : nwid();
+	return hasLimits() ? (dim.wid - down().dimension(bv).width()) / 2 : nwid(bv);
 }
 
 
@@ -252,32 +254,32 @@ int InsetMathScript::dx1(BufferView const & bv) const
 {
 	BOOST_ASSERT(hasUp());
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - up().width()) / 2 : nwid() + nker();
+	return hasLimits() ? (dim.wid - up().dimension(bv).width()) / 2 : nwid(bv) + nker();
 }
 
 
 int InsetMathScript::dxx(BufferView const & bv) const
 {
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - nwid()) / 2  :  0;
+	return hasLimits() ? (dim.wid - nwid(bv)) / 2  :  0;
 }
 
 
-int InsetMathScript::nwid() const
+int InsetMathScript::nwid(BufferView const & bv) const
 {
-	return nuc().size() ? nuc().width() : 2;
+	return nuc().size() ? nuc().dimension(bv).width() : 2;
 }
 
 
-int InsetMathScript::nasc() const
+int InsetMathScript::nasc(BufferView const & bv) const
 {
-	return nuc().size() ? nuc().ascent() : 5;
+	return nuc().size() ? nuc().dimension(bv).ascent() : 5;
 }
 
 
-int InsetMathScript::ndes() const
+int InsetMathScript::ndes(BufferView const & bv) const
 {
-	return nuc().size() ? nuc().descent() : 0;
+	return nuc().size() ? nuc().dimension(bv).descent() : 0;
 }
 
 
@@ -293,35 +295,48 @@ int InsetMathScript::nker() const
 
 void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(0).metrics(mi);
+	Dimension dim0;
+	Dimension dim1;
+	Dimension dim2;
+	cell(0).metrics(mi, dim0);
 	ScriptChanger dummy(mi.base);
 	if (nargs() > 1)
-		cell(1).metrics(mi);
+		cell(1).metrics(mi, dim1);
 	if (nargs() > 2)
-		cell(2).metrics(mi);
+		cell(2).metrics(mi, dim2);
+
 	dim.wid = 0;
+	BufferView & bv = *mi.base.bv;
+	// FIXME: data copying... not very efficient.
+	Dimension dimup;
+	Dimension dimdown;
+	if (hasUp())
+		dimup = up().dimension(bv);
+	if (hasDown())
+		dimdown = down().dimension(bv);
+
 	if (hasLimits()) {
-		dim.wid = nwid();
+		dim.wid = nwid(bv);
 		if (hasUp())
-			dim.wid = max(dim.wid, up().width());
+			dim.wid = max(dim.wid, dimup.width());
 		if (hasDown())
-			dim.wid = max(dim.wid, down().width());
+			dim.wid = max(dim.wid, dimdown.width());
 	} else {
 		if (hasUp())
-			dim.wid = max(dim.wid, nker() + up().width());
+			dim.wid = max(dim.wid, nker() + dimup.width());
 		if (hasDown())
-			dim.wid = max(dim.wid, down().width());
-		dim.wid += nwid();
+			dim.wid = max(dim.wid, dimdown.width());
+		dim.wid += nwid(bv);
 	}
-	int na = nasc();
+	int na = nasc(bv);
 	if (hasUp()) {
-		int asc = dy1() + up().ascent();
+		int asc = dy1(bv) + dimup.ascent();
 		dim.asc = max(na, asc);
 	} else
 		dim.asc = na;
-	int nd = ndes();
+	int nd = ndes(bv);
 	if (hasDown()) {
-		int des = dy0() + down().descent();
+		int des = dy0(bv) + dimdown.descent();
 		dim.des = max(nd, des);
 	} else
 		dim.des = nd;
@@ -333,18 +348,19 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathScript::draw(PainterInfo & pi, int x, int y) const
 {
+	BufferView & bv = *pi.base.bv;
 	if (nuc().size())
-		nuc().draw(pi, x + dxx(*pi.base.bv), y);
+		nuc().draw(pi, x + dxx(bv), y);
 	else {
-		nuc().setXY(*pi.base.bv, x + dxx(*pi.base.bv), y);
-		if (editing(pi.base.bv))
-			pi.draw(x + dxx(*pi.base.bv), y, char_type('.'));
+		nuc().setXY(bv, x + dxx(bv), y);
+		if (editing(&bv))
+			pi.draw(x + dxx(bv), y, char_type('.'));
 	}
 	ScriptChanger dummy(pi.base);
 	if (hasUp())
-		up().draw(pi, x + dx1(*pi.base.bv), y - dy1());
+		up().draw(pi, x + dx1(bv), y - dy1(bv));
 	if (hasDown())
-		down().draw(pi, x + dx0(*pi.base.bv), y + dy0());
+		down().draw(pi, x + dx0(bv), y + dy0(bv));
 	drawMarkers(pi, x, y);
 }
 
@@ -361,12 +377,13 @@ void InsetMathScript::metricsT(TextMetricsInfo const & mi, Dimension & dim) cons
 
 void InsetMathScript::drawT(TextPainter & pain, int x, int y) const
 {
+	// FIXME: BROKEN
 	if (nuc().size())
 		nuc().drawT(pain, x + 1, y);
 	if (hasUp())
-		up().drawT(pain, x + 1, y - dy1());
+		up().drawT(pain, x + 1, y - 1 /*dy1()*/);
 	if (hasDown())
-		down().drawT(pain, x + 1, y + dy0());
+		down().drawT(pain, x + 1, y + 1 /*dy0()*/);
 }
 
 

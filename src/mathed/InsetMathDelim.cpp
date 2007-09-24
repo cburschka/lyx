@@ -70,17 +70,18 @@ void InsetMathDelim::normalize(NormalStream & os) const
 void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	using std::max;
-	cell(0).metrics(mi);
+	Dimension dim0;
+	cell(0).metrics(mi, dim0);
 	Dimension t = theFontMetrics(mi.base.font).dimension('I');
 	int h0 = (t.asc + t.des) / 2;
-	int a0 = max(cell(0).ascent(), t.asc)   - h0;
-	int d0 = max(cell(0).descent(), t.des)  + h0;
-	dw_ = cell(0).height() / 5;
+	int a0 = max(dim0.asc, t.asc)   - h0;
+	int d0 = max(dim0.des, t.des)  + h0;
+	dw_ = dim0.height() / 5;
 	if (dw_ > 8)
 		dw_ = 8;
 	if (dw_ < 4)
 		dw_ = 4;
-	dim.wid = cell(0).width() + 2 * dw_ + 8;
+	dim.wid = dim0.width() + 2 * dw_ + 8;
 	dim.asc = max(a0, d0) + h0;
 	dim.des = max(a0, d0) - h0;
 	// Cache the inset dimension. 

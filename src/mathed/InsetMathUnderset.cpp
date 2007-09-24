@@ -28,12 +28,14 @@ Inset * InsetMathUnderset::clone() const
 
 void InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(1).metrics(mi);
+	Dimension dim1;
+	cell(1).metrics(mi, dim1);
 	FracChanger dummy(mi.base);
-	cell(0).metrics(mi);
-	dim.wid = std::max(cell(0).width(), cell(1).width()) + 4;
-	dim.asc = cell(1).ascent();
-	dim.des = cell(1).descent() + cell(0).height() + 4;
+	Dimension dim0;
+	cell(0).metrics(mi, dim0);
+	dim.wid = std::max(dim0.width(), dim1.width()) + 4;
+	dim.asc = dim1.ascent();
+	dim.des = dim1.descent() + dim0.height() + 4;
 	metricsMarkers(dim);
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
@@ -43,11 +45,13 @@ void InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathUnderset::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
 	int m  = x + dim.wid / 2;
-	int yo = y + cell(1).descent() + cell(0).ascent() + 1;
-	cell(1).draw(pi, m - cell(1).width() / 2, y);
+	int yo = y + dim1.descent() + dim0.ascent() + 1;
+	cell(1).draw(pi, m - dim1.width() / 2, y);
 	FracChanger dummy(pi.base);
-	cell(0).draw(pi, m - cell(0).width() / 2, yo);
+	cell(0).draw(pi, m - dim0.width() / 2, yo);
 	drawMarkers(pi, x, y);
 }
 

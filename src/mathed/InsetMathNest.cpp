@@ -148,8 +148,10 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 void InsetMathNest::metrics(MetricsInfo const & mi) const
 {
 	MetricsInfo m = mi;
-	for (idx_type i = 0, n = nargs(); i != n; ++i)
-		cell(i).metrics(m);
+	for (idx_type i = 0, n = nargs(); i != n; ++i) {
+		Dimension dim;
+		cell(i).metrics(m, dim);
+	}
 }
 
 
@@ -256,10 +258,11 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 	//	<< " s1: " << s1 << " s2: " << s2 << endl;
 	if (s1.idx() == s2.idx()) {
 		MathData const & c = cell(s1.idx());
-		int x1 = c.xo(bv) + c.pos2x(s1.pos());
-		int y1 = c.yo(bv) - c.ascent();
-		int x2 = c.xo(bv) + c.pos2x(s2.pos());
-		int y2 = c.yo(bv) + c.descent();
+		Geometry const & g = bv.coordCache().getArrays().geometry(&c);
+		int x1 = g.pos.x_ + c.pos2x(s1.pos());
+		int y1 = g.pos.y_ - g.dim.ascent();
+		int x2 = g.pos.x_ + c.pos2x(s2.pos());
+		int y2 = g.pos.y_ + g.dim.descent();
 		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color::selection);
 	//lyxerr << "InsetMathNest::drawing selection 3: "
 	//	<< " x1: " << x1 << " x2: " << x2
@@ -268,10 +271,11 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, s1.idx(), s2.idx())) {
 				MathData const & c = cell(i);
-				int x1 = c.xo(bv);
-				int y1 = c.yo(bv) - c.ascent();
-				int x2 = c.xo(bv) + c.width();
-				int y2 = c.yo(bv) + c.descent();
+				Geometry const & g = bv.coordCache().getArrays().geometry(&c);
+				int x1 = g.pos.x_;
+				int y1 = g.pos.y_ - g.dim.ascent();
+				int x2 = g.pos.x_ + g.dim.width();
+				int y2 = g.pos.y_ + g.dim.descent();
 				pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color::selection);
 			}
 		}

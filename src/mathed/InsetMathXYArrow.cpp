@@ -91,9 +91,9 @@ bool InsetMathXYArrow::metrics(MetricsInfo & mi) const
 
 	if (editing()) {
 		int w    = mathed_string_width(mi.base.font, from_ascii("target: "));
-		width_   = w + max(cell(0).width(), cell(1).width());
-		ascent_  = cell(0).ascent();
-		descent_ = cell(0).descent() + cell(1).height() + 10;
+		width_   = w + max(dim0.width(), dim1.wid);
+		ascent_  = dim0.asc;
+		descent_ = dim0.des + dim1.height() + 10;
 	} else {
 		width_   = 0;
 		ascent_  = 0;
@@ -120,9 +120,9 @@ void InsetMathXYArrow::draw(PainterInfo & pi, int x, int y) const
 
 		cell(0).draw(pi, x + lwid, y);
 		pi.base.text(x + 3, y, "target");
-		y += max(cell(0).descent(), ldes) + 5;
+		y += max(dim0.des, ldes) + 5;
 
-		y += max(cell(1).ascent(), lasc) + 5;
+		y += max(dim1.asc, lasc) + 5;
 		cell(1).draw(pi, x + lwid, y);
 		pi.base.text(x + 3, y, "label");
 

@@ -210,13 +210,6 @@ void MathData::touch() const
 }
 
 
-void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	metrics(mi);
-	dim = dim_;
-}
-
-
 namespace {
 
 bool isInside(DocIterator const & it, MathData const & ar,
@@ -234,13 +227,13 @@ bool isInside(DocIterator const & it, MathData const & ar,
 
 
 
-void MathData::metrics(MetricsInfo & mi) const
+void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
-	dim_ = fm.dimension('I');
+	dim = fm.dimension('I');
 	int xascent = fm.dimension('x').ascent();
-	if (xascent >= dim_.asc)
-		xascent = (2 * dim_.asc) / 3;
+	if (xascent >= dim.asc)
+		xascent = (2 * dim.asc) / 3;
 	minasc_ = xascent;
 	mindes_ = (3 * xascent) / 4;
 	slevel_ = (4 * xascent) / 5;
@@ -250,8 +243,8 @@ void MathData::metrics(MetricsInfo & mi) const
 	if (empty())
 		return;
 
-	dim_.asc = 0;
-	dim_.wid = 0;
+	dim.asc = 0;
+	dim.wid = 0;
 	Dimension d;
 	atom_dims_.clear();
 	//BufferView & bv  = *mi.base.bv;
@@ -273,7 +266,7 @@ void MathData::metrics(MetricsInfo & mi) const
 				tmpl.expand(args, exp);
 				mac->setExpansion(exp, args);
 				mac->metricsExpanded(mi, d);
-				dim_.wid += mac->widthExpanded();
+				dim.wid += mac->widthExpanded();
 				i += numargs;
 				continue;
 			}
@@ -281,10 +274,12 @@ void MathData::metrics(MetricsInfo & mi) const
 #endif
 		at->metrics(mi, d);
 		atom_dims_.push_back(d);
-		dim_ += d;
+		dim += d;
 		if (i == n - 1)
 			kerning_ = at->kerning();
 	}
+	// Cache the dimension.
+	mi.base.bv->coordCache().arrays().add(this, dim);
 }
 
 
@@ -294,15 +289,17 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 	BufferView & bv  = *pi.base.bv;
 	setXY(bv, x, y);
 
+	Dimension const & dim = bv.coordCache().getArrays().dim(this);
+
 	if (empty()) {
-		pi.pain.rectangle(x, y - ascent(), width(), height(), Color::mathline);
+		pi.pain.rectangle(x, y - dim.ascent(), dim.width(), dim.height(), Color::mathline);
 		return;
 	}
 
 	// don't draw outside the workarea
-	if (y + descent() <= 0
-		|| y - ascent() >= bv.workHeight()
-		|| x + width() <= 0
+	if (y + dim.descent() <= 0
+		|| y - dim.ascent() >= bv.workHeight()
+		|| x + dim.width() <= 0
 		|| x >= bv. workWidth())
 		return;
 
@@ -422,23 +419,7 @@ MathData::size_type MathData::x2pos(int targetx, int glue) const
 
 int MathData::dist(BufferView const & bv, int x, int y) const
 {
-	int xx = 0;
-	int yy = 0;
-
-	const int xo_ = xo(bv);
-	const int yo_ = yo(bv);
-
-	if (x < xo_)
-		xx = xo_ - x;
-	else if (x > xo_ + width())
-		xx = x - xo_ - width();
-
-	if (y < yo_ - ascent())
-		yy = yo_ - ascent() - y;
-	else if (y > yo_ + descent())
-		yy = y - yo_ - descent();
-
-	return xx + yy;
+	return bv.coordCache().getArrays().squareDistance(this, x, y);
 }
 
 
@@ -446,6 +427,33 @@ void MathData::setXY(BufferView & bv, int x, int y) const
 {
 	//lyxerr << "setting position cache for MathData " << this << std::endl;
 	bv.coordCache().arrays().add(this, x, y);
+}
+
+
+Dimension const & MathData::dimension(BufferView const & bv) const
+{
+	if (empty()) {
+		static Dimension dummy;
+		return dummy;
+	}
+
+	return bv.coordCache().getArrays().dim(this);
+}
+
+
+int MathData::xm(BufferView const & bv) const
+{
+	Geometry const & g = bv.coordCache().getArrays().geometry(this);
+
+	return g.pos.x_ + g.dim.wid / 2;
+}
+
+
+int MathData::ym(BufferView const & bv) const
+{
+	Geometry const & g = bv.coordCache().getArrays().geometry(this);
+
+	return g.pos.y_ + (g.dim.des - g.dim.asc) / 2;
 }
 
 

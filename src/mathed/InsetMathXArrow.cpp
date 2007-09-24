@@ -36,11 +36,13 @@ Inset * InsetMathXArrow::clone() const
 void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ScriptChanger dummy(mi.base);
-	cell(0).metrics(mi);
-	cell(1).metrics(mi);
-	dim.wid = std::max(cell(0).width(), cell(1).width()) + 10;
-	dim.asc = cell(0).height() + 10;
-	dim.des = cell(1).height();
+	Dimension dim0;
+	cell(0).metrics(mi, dim0);
+	Dimension dim1;
+	cell(1).metrics(mi, dim1);
+	dim.wid = std::max(dim0.width(), dim1.width()) + 10;
+	dim.asc = dim0.height() + 10;
+	dim.des = dim1.height();
 	metricsMarkers(dim);
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
@@ -51,7 +53,8 @@ void InsetMathXArrow::draw(PainterInfo & pi, int x, int y) const
 {
 	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, x + 5, y - 10);
-	cell(1).draw(pi, x + 5, y + cell(1).height());
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	cell(1).draw(pi, x + 5, y + dim1.height());
 	Dimension const dim = dimension(*pi.base.bv);
 	mathed_draw_deco(pi, x + 1, y - 7, dim.wid - 2, 5, name_);
 	drawMarkers(pi, x, y);

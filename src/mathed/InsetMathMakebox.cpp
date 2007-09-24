@@ -36,9 +36,9 @@ void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, from_ascii("textnormal"));
 	w_ = mathed_char_width(mi.base.font, '[');
 	InsetMathNest::metrics(mi);
-	dim   = cell(0).dim();
-	dim  += cell(1).dim();
-	dim  += cell(2).dim();
+	dim   = cell(0).dimension(*mi.base.bv);
+	dim  += cell(1).dimension(*mi.base.bv);
+	dim  += cell(2).dimension(*mi.base.bv);
 	dim.wid += 4 * w_ + 4;
 	metricsMarkers(dim);
 	// Cache the inset dimension. 
@@ -54,14 +54,14 @@ void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
 	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w_;
 	cell(0).draw(pi, x, y);
-	x += cell(0).width();
+	x += cell(0).dimension(*pi.base.bv).width();
 	drawStrBlack(pi, x, y, from_ascii("]"));
 	x += w_ + 2;
 
 	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w_;
 	cell(1).draw(pi, x, y);
-	x += cell(1).width();
+	x += cell(1).dimension(*pi.base.bv).wid;
 	drawStrBlack(pi, x, y, from_ascii("]"));
 	x += w_ + 2;
 

@@ -370,14 +370,16 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	// let the cells adjust themselves
 	InsetMathNest::metrics(mi);
 
+	BufferView & bv = *mi.base.bv;
+
 	// compute absolute sizes of vertical structure
 	for (row_type row = 0; row < nrows(); ++row) {
 		int asc  = 0;
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
-			MathData const & c = cell(index(row, col));
-			asc  = max(asc,  c.ascent());
-			desc = max(desc, c.descent());
+			Dimension const & dimc = cell(index(row, col)).dimension(bv);
+			asc  = max(asc,  dimc.asc);
+			desc = max(desc, dimc.des);
 		}
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
@@ -418,7 +420,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
 		for (row_type row = 0; row < nrows(); ++row)
-			wid = max(wid, cell(index(row, col)).width());
+			wid = max(wid, cell(index(row, col)).dimension(bv).wid);
 		colinfo_[col].width_ = wid;
 	}
 	colinfo_[ncols()].width_  = 0;
@@ -517,9 +519,10 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 	int lmargin, int rmargin) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
+	BufferView const & bv = *pi.base.bv;
 
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx).draw(pi, x + lmargin + cellXOffset(idx),
+		cell(idx).draw(pi, x + lmargin + cellXOffset(bv, idx),
 			y + cellYOffset(idx));
 
 	for (row_type row = 0; row <= nrows(); ++row)
@@ -555,9 +558,11 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		int asc  = 0;
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
-			MathData const & c = cell(index(row, col));
-			asc  = max(asc,  c.ascent());
-			desc = max(desc, c.descent());
+			//MathData const & c = cell(index(row, col));
+			// FIXME: BROKEN!
+			Dimension dimc;
+			asc  = max(asc,  dimc.ascent());
+			desc = max(desc, dimc.descent());
 		}
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
@@ -597,8 +602,10 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 	// compute absolute sizes of horizontal structure
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
-		for (row_type row = 0; row < nrows(); ++row)
-			wid = max(wid, cell(index(row, col)).width());
+		for (row_type row = 0; row < nrows(); ++row) {
+			// FIXME: BROKEN!
+			//wid = max(wid, cell(index(row, col)).width());
+		}
 		colinfo_[col].width_ = wid;
 	}
 	colinfo_[ncols()].width_  = 0;
@@ -634,8 +641,8 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 
 void InsetMathGrid::drawT(TextPainter & pain, int x, int y) const
 {
-	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
+//	for (idx_type idx = 0; idx < nargs(); ++idx)
+//		cell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
 }
 
 
@@ -789,15 +796,16 @@ void InsetMathGrid::swapCol(col_type col)
 }
 
 
-int InsetMathGrid::cellXOffset(idx_type idx) const
+int InsetMathGrid::cellXOffset(BufferView const & bv, idx_type idx) const
 {
 	col_type c = col(idx);
 	int x = colinfo_[c].offset_;
 	char align = colinfo_[c].align_;
+	Dimension const & celldim = cell(idx).dimension(bv);
 	if (align == 'r' || align == 'R')
-		x += colinfo_[c].width_ - cell(idx).width();
+		x += colinfo_[c].width_ - celldim.wid;
 	if (align == 'c' || align == 'C')
-		x += (colinfo_[c].width_ - cell(idx).width()) / 2;
+		x += (colinfo_[c].width_ - celldim.wid) / 2;
 	return x;
 }
 

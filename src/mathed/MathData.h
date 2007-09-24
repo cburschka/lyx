@@ -103,11 +103,9 @@ public:
 	/// checked read access
 	MathAtom const & operator[](pos_type) const;
 	/// rebuild cached metrics information
-	void metrics(MetricsInfo & mi) const;
-	/// rebuild cached metrics information
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	Dimension const & dimension(BufferView const &) const { return dim_; };
+	Dimension const & dimension(BufferView const &) const;
 
 	/// redraw cell using cache metrics information
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -123,9 +121,9 @@ public:
 	/// access to cached y coordinate of last drawing
 	int yo(BufferView const & bv) const;
 	/// access to cached x coordinate of mid point of last drawing
-	int xm(BufferView const & bv) const { return xo(bv) + dim_.wid / 2; }
+	int xm(BufferView const & bv) const;
 	/// access to cached y coordinate of mid point of last drawing
-	int ym(BufferView const & bv) const { return yo(bv) + (dim_.des - dim_.asc) / 2; }
+	int ym(BufferView const & bv) const;
 	/// write access to coordinate;
 	void setXY(BufferView & bv, int x, int y) const;
 	/// returns x coordinate of given position in the array
@@ -140,18 +138,6 @@ public:
 	// assumes valid position and size cache
 	int dist(BufferView const & bv, int x, int y) const;
 
-	/// ascent of this cell above the baseline
-	int ascent() const { return dim_.asc; }
-	/// descent of this cell below the baseline
-	int descent() const { return dim_.des; }
-	/// height of the cell
-	int height() const { return dim_.asc + dim_.des; }
-	/// width of this cell
-	int width() const { return dim_.wid; }
-	/// dimensions of cell
-	Dimension const & dim() const { return dim_; }
-	/// dimensions of cell
-	void setDim(Dimension const & d) const { dim_ = d; }
 	/// minimum ascent offset for superscript
 	int minasc() const { return minasc_; }
 	/// minimum descent offset for subscript
@@ -166,8 +152,6 @@ public:
 	void swap(MathData & ar) { base_type::swap(ar); }
 
 protected:
-	/// cached dimensions of cell
-	mutable Dimension dim_;
 	/// cached values for super/subscript placement
 	mutable int minasc_;
 	mutable int mindes_;

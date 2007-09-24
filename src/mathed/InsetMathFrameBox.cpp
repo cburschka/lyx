@@ -36,9 +36,9 @@ void InsetMathFrameBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
 	InsetMathNest::metrics(mi);
-	dim  = cell(0).dim();
-	dim += cell(1).dim();
-	dim += cell(2).dim();
+	dim  = cell(0).dimension(*mi.base.bv);
+	dim += cell(1).dimension(*mi.base.bv);
+	dim += cell(2).dimension(*mi.base.bv);
 	metricsMarkers(dim);
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
@@ -52,18 +52,19 @@ void InsetMathFrameBox::draw(PainterInfo & pi, int x, int y) const
 	pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
 		dim.width() - 2, dim.height() - 2, Color::foreground);
 	x += 5;
+	BufferView const & bv = *pi.base.bv;
 
 	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w_;
 	cell(0).draw(pi, x, y);
-	x += cell(0).width();
+	x += cell(0).dimension(bv).wid;
 	drawStrBlack(pi, x, y, from_ascii("]"));
 	x += w_ + 4;
 
 	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w_;
 	cell(1).draw(pi, x, y);
-	x += cell(1).width();
+	x += cell(1).dimension(bv).wid;
 	drawStrBlack(pi, x, y, from_ascii("]"));
 	x += w_ + 4;
 

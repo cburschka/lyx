@@ -71,10 +71,13 @@ void InsetMathSqrt::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 
 void InsetMathSqrt::drawT(TextPainter & pain, int x, int y) const
 {
+	/*
 	cell(0).drawT(pain, x + 2, y);
-	pain.horizontalLine(x + 2, y - cell(0).ascent(), cell(0).width(), '_');
-	pain.verticalLine  (x + 1, y - cell(0).ascent() + 1, cell(0).height());
-	pain.draw(x, y + cell(0).descent(), '\\');
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	pain.horizontalLine(x + 2, y - dim0.ascent(), dim0.width(), '_');
+	pain.verticalLine  (x + 1, y - dim0.ascent() + 1, dim0.height());
+	pain.draw(x, y + dim0.descent(), '\\');
+	*/
 }
 
 

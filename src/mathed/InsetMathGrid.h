@@ -224,7 +224,7 @@ protected:
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const;
 	/// returns x offset of cell compared to inset
-	int cellXOffset(idx_type idx) const;
+	int cellXOffset(BufferView const &, idx_type idx) const;
 	/// returns y offset of cell compared to inset
 	int cellYOffset(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX

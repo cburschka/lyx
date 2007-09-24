@@ -43,11 +43,12 @@ Inset * InsetMathBrace::clone() const
 
 void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	cell(0).metrics(mi);
+	Dimension dim0;
+	cell(0).metrics(mi, dim0);
 	Dimension t = theFontMetrics(mi.base.font).dimension('{');
-	dim.asc = std::max(cell(0).ascent(), t.asc);
-	dim.des = std::max(cell(0).descent(), t.des);
-	dim.wid = cell(0).width() + 2 * t.wid;
+	dim.asc = std::max(dim0.asc, t.asc);
+	dim.des = std::max(dim0.des, t.des);
+	dim.wid = dim0.width() + 2 * t.wid;
 	metricsMarkers(dim);
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
@@ -61,7 +62,8 @@ void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 	Dimension t = theFontMetrics(font).dimension('{');
 	pi.pain.text(x, y, '{', font);
 	cell(0).draw(pi, x + t.wid, y);
-	pi.pain.text(x + t.wid + cell(0).width(), y, '}', font);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	pi.pain.text(x + t.wid + dim0.width(), y, '}', font);
 	drawMarkers(pi, x, y);
 }
 
