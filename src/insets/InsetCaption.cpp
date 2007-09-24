@@ -136,6 +136,8 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	computeFullLabel(*mi.base.bv->buffer());
 
+	Font tmpfont = mi.base.font;
+	mi.base.font = mi.base.bv->buffer()->params().getFont();
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
 	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
@@ -145,6 +147,7 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	// Correct for button width, and re-fit
 	mi.base.textwidth -= dim.wid;
 	InsetText::metrics(mi, textdim);
+	mi.base.font = tmpfont;
 	dim.des = std::max(dim.des - textdim.asc + dim.asc, textdim.des);
 	dim.asc = textdim.asc;
 	dim.wid += textdim.wid;
@@ -168,11 +171,14 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 	// Answer: the text inset (in buffer_funcs.cpp: setCaption).
 
+	Font tmpfont = pi.base.font;
+	pi.base.font = pi.base.bv->buffer()->params().getFont();
 	labelwidth_ = pi.pain.text(x, y, full_label_, pi.base.font);
 	// add some space to separate the label from the inset text
 	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::draw(pi, x + labelwidth_, y);
 	setPosCache(pi, x, y);
+	pi.base.font = tmpfont;
 }
 
 

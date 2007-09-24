@@ -88,6 +88,8 @@ What's new
 - Detect (pdf)tex's file:line:error style messages that are used by some
   distributions and that caused LyX to ignore LaTeX errors (bug 4222).
 
+- Fix LaTeX error with captions in Program Listings (bug 4182).
+
 * USER INTERFACE:
 
 - Fix a crash when closing a LyX window with document tabs (bug 4123).

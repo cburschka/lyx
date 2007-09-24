@@ -177,7 +177,11 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 		else
 			os << "\\lstinline[" << from_ascii(param_string) << "]" << *delimiter;
 	} else {
-		docstring const caption = getCaption(buf, runparams);
+		OutputParams rp = runparams;
+		rp.local_font = &text_.real_current_font;
+		rp.moving_arg = true;
+		docstring const caption = getCaption(buf, rp);
+		runparams.encoding = rp.encoding;
 		if (param_string.empty() && caption.empty())
 			os << "\n\\begingroup\n\\inputencoding{latin1}\n\\begin{lstlisting}\n";
 		else {
