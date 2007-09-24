@@ -139,7 +139,7 @@ public:
 
 	int squareDistance(T const * thing, int x, int y) const
 	{
-		cache_type::const_iterator it = data_.find(thing);
+		typename cache_type::const_iterator it = data_.find(thing);
 		if (it == data_.end())
 			return 1000000;
 		return it->second.squareDistance(x, y);
