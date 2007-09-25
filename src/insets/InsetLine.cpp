@@ -46,12 +46,15 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = 3;
 	dim.des = 3;
 	dim.wid = mi.base.textwidth;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
-	pi.pain.line(x, y, x + pi.base.textwidth, y, Color::topline,
+	Dimension const dim = dimension(*pi.base.bv);
+	pi.pain.line(x, y, x + dim.wid, y, Color::topline,
 		Painter::line_solid, Painter::line_thick);
 }
 
