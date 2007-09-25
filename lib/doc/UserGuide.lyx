@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 286
+\lyxformat 287
 \begin_document
 \begin_header
 \textclass scrbook
@@ -21,15 +21,7 @@
   \usepackage[scaled=0.92]{helvet}
   \usepackage{mathptmx}
   \usepackage{courier} }
-  % the pages of the TOC are numbered roman
-  % and a pdf-bookmark for the TOC is added
-  \pagenumbering{roman}
-  \let\myTOC\tableofcontents
-  \renewcommand\tableofcontents{%
-    \pdfbookmark[1]{Contents}{}
-    \myTOC
-    \cleardoublepage
-    \pagenumbering{arabic} }
+
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
@@ -44,7 +36,10 @@
  % link all cross references and URLs in dvi output
  \usepackage[ps2pdf]{hyperref}
 
+\fi % end if pdflatex is used
+
  % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
@@ -52,8 +47,6 @@
    \myTOC
    \cleardoublepage
    \pagenumbering{arabic} }
-   
-\fi 
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
@@ -81,6 +74,8 @@
 \graphics default
 \paperfontsize 12
 \spacing single
+\use_hyperref false
+\pdf_store_options false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -18019,7 +18014,9 @@ wrap
  width.
  It can be inserted using the menu 
 \begin_inset Wrap figure
+lines 0
 placement l
+overhang 0col%
 width "40col%"
 status open
 
