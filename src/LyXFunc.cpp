@@ -678,6 +678,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_WRITE_AS:
 	case LFUN_BUFFER_UPDATE:
 	case LFUN_BUFFER_VIEW:
+	case LFUN_MASTER_BUFFER_UPDATE:
+	case LFUN_MASTER_BUFFER_VIEW:
 	case LFUN_BUFFER_IMPORT:
 	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
@@ -976,6 +978,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BUFFER_VIEW:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			Exporter::preview(lyx_view_->buffer(), argument);
+			break;
+
+		case LFUN_MASTER_BUFFER_UPDATE:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer() && lyx_view_->buffer()->getMasterBuffer());
+			Exporter::Export(lyx_view_->buffer()->getMasterBuffer(), argument, true);
+			break;
+
+		case LFUN_MASTER_BUFFER_VIEW:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer() && lyx_view_->buffer()->getMasterBuffer());
+			Exporter::preview(lyx_view_->buffer()->getMasterBuffer(), argument);
 			break;
 
 		case LFUN_BUILD_PROGRAM:

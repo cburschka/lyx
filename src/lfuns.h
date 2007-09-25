@@ -379,8 +379,11 @@ enum kb_action {
 	LFUN_LISTING_INSERT,             // Herbert 20011110, bpeng 20070502
 	LFUN_TOOLBAR_TOGGLE,             // Edwin 20070521
 	LFUN_BUFFER_WRITE_ALL,           // rgh, gpothier 200707XX
-	//290
+	// 290
 	LFUN_PARAGRAPH_PARAMS,           // rgh, 200708XX
+	LFUN_MASTER_BUFFER_VIEW,	 // Tommaso
+	// 295
+	LFUN_MASTER_BUFFER_UPDATE,	 // Tommaso
 
 	LFUN_LASTACTION                  // end of the table
 };

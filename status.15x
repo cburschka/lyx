@@ -75,6 +75,11 @@ What's new
   bugs were fixed and some new styles were added (bugs 4087, 4223).
   Cf. http://wiki.lyx.org/Layouts/AMS for a detailed list of changes.
 
+- New LyX functions, master-buffer-view and master-buffer-update, have
+  been added, to view the master buffer associated with a given child
+  buffer. These are bound by default to C-M-t and C-M-d, for Postscript
+  and DVI, respectively, for view, and to C-M-S-t and C-M-S-d, for update.
+
 
 ** Bug fixes:
 *************

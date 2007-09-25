@@ -43,8 +43,12 @@
 \bind "C-p"			"dialog-show print"
 \bind "C-d"			"buffer-view dvi"	# 'd' for dvi
 \bind "C-t"			"buffer-view ps"
+\bind "C-M-t"			"master-buffer-view ps"
+\bind "C-M-d"			"master-buffer-view dvi"
 \bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
 \bind "C-S-T"			"buffer-update ps"
+\bind "C-M-S-t"			"master-buffer-update ps"
+\bind "C-M-S-d"			"master-buffer-update dvi"
 \bind "C-q"			"lyx-quit"
 \bind "C-Next"			"buffer-next"
 \bind "C-Tab"			"buffer-next"
