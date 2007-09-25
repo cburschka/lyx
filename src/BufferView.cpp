@@ -1114,22 +1114,23 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 
 		// if last metrics update was in singlepar mode, WorkArea::redraw() will
 		// not expose the button for redraw. We adjust here the metrics dimension
-		// to enable a full redraw.
-		if (metrics_info_.update_strategy == SingleParUpdate) {
-			// Build temporary cursor.
-			TextMetrics & tm = text_metrics_[&buffer_.text()];
-			tm.editXY(cur, cmd.x, cmd.y);
-			// collect cursor paragraph iter bounds
-			std::pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
-			std::pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
-			int y1 = firstpm.second->position() - firstpm.second->ascent();
-			int y2 = lastpm.second->position() + lastpm.second->descent();
-			metrics_info_ = ViewMetricsInfo(firstpm.first, lastpm.first, y1, y2,
-				FullScreenUpdate, buffer_.text().paragraphs().size());
-			// Reinitialize anchor to first pit.
-			anchor_ref_ = firstpm.first;
-			offset_ref_ = -y1;
-		}
+		// to enable a full redraw in any case as this is not costly.
+		TextMetrics & tm = text_metrics_[&buffer_.text()];
+		tm.editXY(cur, cmd.x, cmd.y);
+		// collect cursor paragraph iter bounds
+		std::pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
+		std::pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
+		int y1 = firstpm.second->position() - firstpm.second->ascent();
+		int y2 = lastpm.second->position() + lastpm.second->descent();
+		metrics_info_ = ViewMetricsInfo(firstpm.first, lastpm.first, y1, y2,
+			FullScreenUpdate, buffer_.text().paragraphs().size());
+		// Reinitialize anchor to first pit.
+		anchor_ref_ = firstpm.first;
+		offset_ref_ = -y1;
+		LYXERR(Debug::PAINTING)
+			<< "Mouse hover detected at: (" << cmd.x << ", " << cmd.y << ")"
+			<< "\nTriggering redraw: y1: " << y1 << " y2: " << y2
+			<< " pit1: " << firstpm.first << " pit2: " << lastpm.first << endl;
 
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
