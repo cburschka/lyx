@@ -1126,6 +1126,9 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 			int y2 = lastpm.second->position() + lastpm.second->descent();
 			metrics_info_ = ViewMetricsInfo(firstpm.first, lastpm.first, y1, y2,
 				FullScreenUpdate, buffer_.text().paragraphs().size());
+			// Reinitialize anchor to first pit.
+			anchor_ref_ = firstpm.first;
+			offset_ref_ = -y1;
 		}
 
 		// This event (moving without mouse click) is not passed further.
