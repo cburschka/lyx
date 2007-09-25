@@ -74,12 +74,15 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = 10;
 			break;
 	}
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
-	int const w = dim_.wid;
+	Dimension const dim = dimension(*pi.base.bv);
+	int const w = dim.wid;
 	int const h = theFontMetrics(pi.base.font)
 		.ascent('x');
 	int xp[4], yp[4];

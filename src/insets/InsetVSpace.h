@@ -31,8 +31,6 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	Dimension const dimension(BufferView const &) const { return dim_; };
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	int latex(Buffer const &, odocstream &,
@@ -63,8 +61,6 @@ private:
 
 	///
 	VSpace space_;
-	///
-	mutable Dimension dim_;
 };
 
 

@@ -67,19 +67,21 @@ void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = 6;
 	dim.asc = int(h + f * h);
 	dim.des = int(f * h);
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 {
+	Dimension const dim = dimension(*pi.base.bv);
 	// mathed_draw_deco does not use the leading backslash, so remove it
 	// (but don't use ltrim if this is the backslash delimiter).
 	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
 	// would treat it as |.
 	docstring const delim = (delim_ == "\\|") ?  from_ascii("Vert") :
 		(delim_ == "\\\\") ? from_ascii("\\") : support::ltrim(delim_, "\\");
-	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(),
+	mathed_draw_deco(pi, x + 1, y - dim.ascent(), 4, dim.height(),
 			 delim);
 	setPosCache(pi, x, y);
 }

@@ -55,8 +55,6 @@ private:
 	char_type char_;
 	/// cached kerning for superscript
 	mutable int kerning_;
-	/// FIXME: move this out to BufferView
-	mutable Dimension dim_;
 };
 
 } // namespace lyx

@@ -138,16 +138,17 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = height / 2 + (a - d) / 2; // align cursor with the
 	dim.des = height - dim.asc;         // label text
 	dim.wid = ADD_TO_VSPACE_WIDTH + 2 * arrow_size + 5 + w;
-	dim_ = dim;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
 }
 
 
 void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 {
+	Dimension const dim = dimension(*pi.base.bv);
 	x += ADD_TO_VSPACE_WIDTH;
-
-	int const start = y - dim_.asc;
-	int const end   = y + dim_.des;
+	int const start = y - dim.asc;
+	int const end   = y + dim.des;
 
 	// y-values for top arrow
 	int ty1, ty2;

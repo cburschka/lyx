@@ -50,8 +50,6 @@ private:
 	docstring const name_;
 	/// ( or [ or \\Vert...
 	docstring const delim_;
-	///
-	mutable Dimension dim_;
 };
 
 
