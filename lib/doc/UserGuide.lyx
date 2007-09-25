@@ -16,20 +16,12 @@
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
-  % set fonts for nicer pdf view
-  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
-  \usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier} }
-  % the pages of the TOC are numbered roman
-  % and a pdf-bookmark for the TOC is added
-  \pagenumbering{roman}
-  \let\myTOC\tableofcontents
-  \renewcommand\tableofcontents{%
-    \pdfbookmark[1]{Contents}{}
-    \myTOC
-    \cleardoublepage
-    \pagenumbering{arabic} }
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
+ \usepackage[scaled=0.92]{helvet}
+ \usepackage{mathptmx}
+ \usepackage{courier} }
+
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
@@ -44,7 +36,10 @@
  % link all cross references and URLs in dvi output
  \usepackage[ps2pdf]{hyperref}
 
+\fi % end if pdflatex is used
+
  % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
@@ -52,8 +47,6 @@
    \myTOC
    \cleardoublepage
    \pagenumbering{arabic} }
-   
-\fi 
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
@@ -24395,7 +24388,7 @@ Question: Who was the first physics Nobel prize winner?
 
 \begin_layout Standard
 \begin_inset Branch Answer
-status open
+status collapsed
 
 \begin_layout Standard
 Answer: Wilhelm Conrad Röntgen

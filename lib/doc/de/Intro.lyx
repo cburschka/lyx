@@ -25,16 +25,6 @@
     \usepackage{mathptmx}
     \usepackage{courier} }
 
- % the pages of the TOC are numbered roman
- % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Inhaltsverzeichnis}{}
-   \myTOC
-   \clearpage
-   \pagenumbering{arabic} }
-
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
   bookmarksopen, bookmarksopenlevel=1,
@@ -50,16 +40,17 @@
  % link all cross references and URLs in dvi output
  \usepackage[ps2pdf]{hyperref}
 
+\fi % end if pdflatex is used
+
  % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
+   \pdfbookmark[1]{Inhaltsverzeichnis}{}
    \myTOC
-   \clearpage
+   \cleardoublepage
    \pagenumbering{arabic} }
-   
-\fi
 
 % redefine the \LyX macro for PDF bookmarks
 \def\LyX{\texorpdfstring{%
@@ -100,8 +91,6 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
 \author "" 
 \author "" 
 \end_header
