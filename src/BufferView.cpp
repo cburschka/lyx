@@ -1116,8 +1116,6 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 		// not expose the button for redraw. We adjust here the metrics dimension
 		// to enable a full redraw in any case as this is not costly.
 		TextMetrics & tm = text_metrics_[&buffer_.text()];
-		tm.editXY(cur, cmd.x, cmd.y);
-		// collect cursor paragraph iter bounds
 		std::pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
 		std::pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
 		int y1 = firstpm.second->position() - firstpm.second->ascent();
