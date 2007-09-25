@@ -1,44 +1,43 @@
-********** WARNING **********
-
-This file is out-dated!
-
-Its description is based on the xforms frontend, which was dropped in
-LyX 1.5. This file should eventually be adjusted to the qt4 frontend.
-
-*****************************
-
 Here is what to do to make a binary rpm using the spec file lyx.spec.
 The description below apply only to the Intel platform, but only minor
 changes should be needed for other platforms.
 
-1) Install xforms-88 or later. You can find an xforms-0.88 rpm
-at
+1) Install qt-4.1.1 or later. If you are using RPMs, make sure to install
+   the qt-devel packages as well.
 
-ftp://moni.msci.memphis.edu/pub
+2) Install LaTeX. You can do this using RPMs from your distribution that
+   might be splitted in multiple packages (e.g. tetex-xdvi, tetex, 
+   tetex-latex), or you can install TeXLive straight from the DVD.
 
-2) Install LaTeX.  You can do this using rpms (you need tetex-xdvi,
-tetex, tetex-latex) from your RH distribution.
+3) Copy lyx.spec to the SPECS directory (on Redhat, this is located at
+   /usr/src/redhat/SPECS, on other systems at /usr/src/packages/SPECS)
 
-3) Copy lyx.spec to /usr/src/redhat/SPECS
-
-4) Copy lyx-1.0.0.tar.gz to /usr/src/redhat/SOURCES
+4) Copy lyx-1.5.2.tar.gz to your SOURCES directory (located in the same
+   path as SPECS, e.g. /usr/src/packages/SOURCES)
 
 5) Issue the command
 
-	rpm -bb /usr/src/redhat/SPECS/lyx.spec
+	rpmbuild -bb /usr/src/packages/SPECS/lyx.spec
 
-This builds the binary rpm, and puts it in /usr/src/redhat/RPMS/i386.
-Note that building lyx requires about 35M free space on your disk.
+(adjust the path if needed)
+
+This builds the binary rpm, and puts it in /usr/src/packages/RPMS/i386
+(alternatively in /i586 or /x86_64, depending on your system).
+Note that building lyx requires about 150M free space on your disk.
 
 6) Now install the package:
 
-	rpm -Uvh /usr/src/redhat/RPMS/i386/lyx-1.0.0-1.i386.rpm
+	rpm -Uvh /usr/src/redhat/RPMS/i386/lyx-1.5.2-1.i386.rpm
 
-If you get dependency errors about xforms or tetex, then you need to
-use the --nodeps option (because you installed xforms or tetex not in
+(again, adjust the path and filename if needed)
+
+If you get dependency errors about qt4 or tetex/texlive, then you need to
+use the --nodeps option (because you installed qt4 or TeX not in
 rpm form):
 
-        rpm -Uvh --nodeps /usr/src/redhat/RPMS/i386/lyx-1.0.0-1.i386.rpm
+        rpm -Uvh --nodeps /usr/src/redhat/RPMS/i386/lyx-1.5.2-1.i386.rpm
+
+(again, adjust the path and filename if needed)
 
 You should not get any more errors.
 

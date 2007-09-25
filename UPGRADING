@@ -1,23 +1,31 @@
-How do I upgrade my existing LyX system to version 1.4.x?
+How do I upgrade my existing LyX system to version 1.5.x?
 ---------------------------------------------------------
 
-The format of the preferences file has changed slightly. LyX 1.4.x is
+* Upgrading from LyX 1.4.x and earlier:
+
+The biggest change in 1.5 is the switch to Unicode. Please refer to
+the section "Document transfer" below for some things you might take
+into account before upgrading.
+
+The format of the preferences file has changed slightly. LyX 1.5.x is
 able to read old preferences files, but it will save them in the new
-format, so it is not possible to run LyX 1.3.x and 1.4.x with the same
+format, so it is not possible to run LyX 1.4.x and 1.5.x with the same
 personal configuration directory.
 
-The format of the layout files has also changed, but LyX 1.4.x uses a
+The format of the layout files has also changed, but LyX 1.5.x uses a
 converter layout2layout.py written in python that will convert old layout
-files on the fly. You can also call it manually on your layout files if
-you want to convert them to 1.4.x format permanently.
+files on the fly (see below, section "Document transfer").
 
-The format of the external template file has changed substantially.
-Automatic conversion is not available, so you need to convert your
-external templates manually. The new format of the external template
+* Upgrading from LyX 1.3.x:
+
+The format of the external template file has changed substantially with 
+LyX 1.4.0. Automatic conversion is not available, so you need to convert 
+your external templates manually. The new format of the external template
 configuration file is described in chapter 6.5 of the Customization Guide.
 
-And of course, if you upgrade from LyX 1.2.x, remember that since
-1.3.0, you have to do the following changes:
+* Upgrading from LyX 1.2.x:
+
+Since 1.3.0, you have to do the following changes:
 
 One of the perennial bug bears of LyX users in the past has been that
 they have had to run Edit->Reconfigure when starting their new version
@@ -35,8 +43,7 @@ If you have your own layout files, you may need to update them a little:
   "Counter"..."End" construct. As for floats, adding "Input
   stdfloats.inc" is probably a good idea.
 
-And of course, if you upgrade from LyX 1.1.x, remember that since
-1.2.0, you have to do the following changes:
+* Upgrading from LyX 1.1.x:
 
 - all layout files should have a "DefaultStyle" entry
 
@@ -61,6 +68,10 @@ have to update them
 Build requirements
 ------------------
 
+LyX 1.5 uses the Qt 4.x toolkit (version 4.1.1 or newer). Contrary to 
+previous versions of LyX, it won't build against Qt 2.x or 3.x.
+Furthermore, the XForms frontend was dropped.
+
 LyX's graphics handling system has changed substantially. If you
 do not have the JPEG library installed, you may need to install
 it before you can use the graphics capabilities of LyX. If you
@@ -71,32 +82,101 @@ in order to get previews of your document's graphics.
 Document transfer
 -----------------
 
-LyX 1.4.x uses an external python script, lyx2lyx, to import documents
+* Compatibility with older documents/layouts
+
+LyX 1.5.x uses an external python script, lyx2lyx, to import documents
 written using previous versions of LyX. All versions of LyX as far back as
 0.12 are supported, so any klyx users still holding out for an alternative
 to xforms will finally be able to put their dinosaur to rest ;-)
 
-Of course, this means that you must have python (at least version 1.5.2)
-installed in order to use LyX 1.4.x with your old documents.
+Of course, this means that you must have python (at least version 2.3)
+installed in order to use LyX 1.5.x with your old documents.
 
 lyx2lyx also has the framework in place to be able to convert documents
-to an earlier format. However, these converters have only been written
-for the conversion from 1.4.x to 1.3.x, so versions of LyX older than
-1.3.0 will NOT be able to read documents saved with LyX 1.4.x.
-The conversion from 1.4.x to 1.3.x is lossless as long as no new features
-are used. lyx2lyx tries hard to find something equivalent for new
-features such as boxes, but this is known to fail sometimes.
-LyX 1.3.7 contains an updated lyx2lyx that can read documents in 1.4.x
-format. LyX 1.4.x can also export to 1.3.x format for document transfer to
-older 1.3.x releases.
+to an earlier format (which requires python 2.3.4 at least). However,
+these converters have only been written for the conversion from 1.5.x 
+to 1.4.x and 1.3.x, so versions of LyX older than 1.3.0 will NOT be able 
+to read documents saved with LyX 1.5.x. The conversion from 1.5.x to 
+1.4.x/1.3.x is lossless as long as no new features are used. lyx2lyx 
+tries hard to find something equivalent for new features such as boxes, 
+but this is known to fail sometimes. LyX 1.4.5.1 contains an updated 
+lyx2lyx that can read documents in 1.5.x format. LyX 1.5.x can also 
+export to 1.4.x format for document transfer to older 1.4.x releases.
+
+Furthermore, LyX uses a converter layout2layout.py, also written in python 
+that will convert old layout files on the fly. You can also call it manually 
+on your layout files if you want to convert them to 1.5.x format permanently.
+
+* Preparing for Unicode:
+
+As of version 1.5.0, LyX uses Unicode internally. This is a major change that
+affects documents and layouts likewise. We have tried to do out best to make the
+transition as smooth as possible for you. However, there are some caveats:
+
+- User layout files must be converted to UTF-8
+
+  In previous versions, layout styles were allowed to use non-ASCII names
+  using the local encodings. LyX-1.5 now assumes that all layout files are
+  UTF-8 encoded. This means that non-ASCII style names are still allowed
+  but they must be valid UTF-8 strings. One way of doing the conversion
+  is to use iconv. Using bash, the script below should work:
+
+     #! /bin/sh
+
+     cd /path/to/layouts
+     for l in *
+     do
+       cp "$l" tmp.txt
+       iconv -f latin1 -t utf8 tmp.txt -o "$l"
+     done
+     rm -f tmp.txt
+
+- Inset encodings and Conversion from earlier LyX versions
+
+  As part of the transition to unicode, lyx2lyx (the scripts used for converting 
+  back and forth between different versions of the lyx files) converts old .lyx 
+  files, which may use a number of different encodings, to UTF-8. This conversion 
+  depends on correctly identifying the language of the text. There were previously 
+  some edge-cases (insets embedded in different-language text type scenarios) in 
+  which the language was incorrectly identified, which caused some text to 
+  appear incorrectly after having upgraded from older versions. This has now been
+  fixed. Unfortunately, however, the fix cannot be applied to files which have
+  already been converted past format 249. So if you have already converted 
+  your old files (using a development version or release candidate), this fix
+  won't help, unless you still have the originals lying around (and haven't 
+  yet made too many changes to the newer versions ;) ).
+
+Generally, it is probably wise to keep a backup of the old version of your 
+files, at least until you are sure that the upgrade went smoothly (which it 
+almost always will).
+
+* Languages/encodings and insets
+
+One of the bugs fixed in LyX 1.5.0 is that previously, there were certain 
+specific cases in which the LaTeX generated did not correctly reflect 
+language/encoding transitions in and around insets (footnotes, LyX notes).
+After much deliberation, it was decided not to change older files such that
+they will still reflect the old LaTeX output; rather, they will now correctly
+reflect the situation as it appears in the GUI. This means, however, that if 
+you mangled the text in the GUI in the older versions, in order that it
+generate the correct LaTeX output, the LaTeX will now generate the mangled 
+text. If this is problematic for you, please get in touch with us on the
+developers mailing list, we do have some possible solutions for this.
+
+The effects of this will be more pronounced for RTL (Hebrew, Arabic, Farsi) 
+users -- though they affect users of other languages as well.
+
+* Floatflt in 1.2.x and older
 
 If you were previously (in LyX 1.1.x) using the floatflt paragraph
 option to wrap text around a figure, it was necessary to modify this
 for LyX 1.2.0 manually, as described in the manuals. The feature has
-been re-implemented as "Floting figure" inset in 1.3.0. Old files will
+been re-implemented as "Floating figure" inset in 1.3.0. Old files will
 be converted automatically, but you may want to convert the
 1.2.x-style ERT constructs with the native solution (see section 3.8
 of the Extended Features manual).
+
+* Babel changes since 1.2.x
 
 Since LyX 1.2.0, the babel package is loaded after the user-defined
 preamble (because some packages really need to be loaded before
