@@ -1120,11 +1120,26 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// The optional packages;
 	docstring lyxpreamble(from_ascii(features.getPackages()));
 
-	// PDF support. Hyperref manual: "Make sure it comes last of your loaded
-	// packages, to give it a fighting chance of not being over-written,
-	// since its job is to redefine many LATEX commands."
-	// Has to be put into lyxpreamble (preserving line-counting for error
-	// parsing).
+	// We try to load babel late, in case it interferes
+	// with other packages.	But some packages also need babel to be loaded
+	// before, e.g. jurabib has to be called after babel.
+	// So load babel after the optional packages but before the user-defined
+	// preamble. This allows the users to redefine babel commands, e.g. to
+	// translate the word "Index" to the German "Stichwortverzeichnis".
+	if (use_babel && !features.isRequired("jurabib")) {
+		// FIXME UNICODE
+		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+		lyxpreamble += from_utf8(features.getBabelOptions());
+	}
+
+	// PDF support.
+	// * Hyperref manual: "Make sure it comes last of your loaded
+	//   packages, to give it a fighting chance of not being over-written,
+	//   since its job is to redefine many LATEX commands."
+	// * Email from Heiko Oberdiek: "It is usually better to load babel
+	//   before hyperref. Then hyperref has a chance to detect babel.
+	// * Has to be loaded before the "LyX specific LaTeX commands" to
+	//   avoid errors with algorithm floats.
 	odocstringstream oss;
 	pdfoptions().writeLaTeX(oss);
 	lyxpreamble += oss.str();
@@ -1191,15 +1206,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	if (!bullets_def.empty())
 		lyxpreamble += bullets_def + "}\n\n";
-
-	// We try to load babel late, in case it interferes
-	// with other packages.
-	// Jurabib has to be called after babel, though.
-	if (use_babel && !features.isRequired("jurabib")) {
-		// FIXME UNICODE
-		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
-		lyxpreamble += from_utf8(features.getBabelOptions());
-	}
 
 	lyxpreamble += "\\makeatother\n\n";
 
