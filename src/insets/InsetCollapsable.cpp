@@ -196,8 +196,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		docstring s = layout_.labelstring;
 		theFontMetrics(font).rectText(s, w, a, d);
 		dim.wid = max(dim.wid, w);
-		// FIXME
-		//dim.des += ascent();
+		dim.des += d;
 		break;
 		}
 	case TopButton:
@@ -286,9 +285,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
 
 		int desc = textdim.descent();
-		if (geometry() == SubLabel)
-			desc -= 0; // ascent();
-		else
+		if (geometry() == Corners)
 			desc -= 3;
 
 		const int xx1 = x + TEXT_TO_INSET_OFFSET - 1;
@@ -323,6 +320,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			int d = 0;
 			docstring s = layout_.labelstring;
 			theFontMetrics(font).rectText(s, w, a, d);
+			desc += d;
 			pi.pain.rectText(x + (textdim.wid - w) / 2, y + desc + a,
 				s, font, Color::none, Color::none);
 		}
@@ -330,8 +328,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		// a visual cue when the cursor is inside the inset
 		Cursor & cur = pi.base.bv->cursor();
 		if (cur.isInside(this)) {
-			// FIXME
-			//y -= ascent();
+			y -= textdim.asc;
 			y += 3;
 			pi.pain.line(xx1, y + 4, xx1, y, layout_.labelfont.color());
 			pi.pain.line(xx1 + 4, y, xx1, y, layout_.labelfont.color());
