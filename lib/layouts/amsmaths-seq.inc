@@ -1,6 +1,7 @@
 # Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 
 # These are only the theorems styles environnements
 # The environnements defined are :
@@ -24,12 +25,131 @@
 # - Notation
 # - Summary
 # - Acknowledgement
-# - Case
 # - Conclusion
-
+# - Assumption
+# - Case (regular only -- defined as an enumeration)
 
 Format 4
+
+# Use a simpler preamble.
+
+Preamble
+EndPreamble
+
+
+# but more counters
+
+# Do not restart theorem counter after section change
+Counter
+	Name                  thm
+End
+
+Counter
+	Name                  corollary
+End
+
+
+Counter
+	Name                  lemma
+End
+
+
+Counter
+	Name                  proposition
+End
+
+
+Counter
+	Name                  conjecture
+End
+
+
+Counter
+	Name                  criterion
+End
+
+
+Counter
+	Name                  algorithm
+End
+
+
+Counter
+	Name                  fact
+End
+
+
+Counter
+	Name                  axiom
+End
+
+
+Counter
+	Name                  definition
+End
+
+
+Counter
+	Name                  example
+End
+
+
+Counter
+	Name                  condition
+End
+
+
+Counter
+	Name                  problem
+End
+
+
+Counter
+	Name                  exercise
+End
+
+
+Counter
+	Name                  remark
+End
+
+
+Counter
+	Name                  claim
+End
+
+
+Counter
+	Name                  note
+End
+
+
+Counter
+	Name                  notation
+End
+
+
+Counter
+	Name                  summary
+End
+
+
+Counter
+	Name                  acknowledgement
+End
+
+
+Counter
+	Name                  conclusion
+End
+
+Counter
+	Name                  assumption
+End
+
 Style Theorem
+	LabelCounter          thm
+	LabelString           "Theorem \arabic{thm}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{thm}{Theorem}
@@ -38,6 +158,8 @@ End
 
 
 Style Corollary
+	LabelCounter          corollary
+	LabelString           "Corollary \arabic{corollary}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{cor}{Corollary}
@@ -46,6 +168,8 @@ End
 
 
 Style Lemma
+	LabelCounter          lemma
+	LabelString           "Lemma \arabic{lemma}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{lem}{Lemma}
@@ -54,6 +178,8 @@ End
 
 
 Style Proposition
+	LabelCounter          proposition
+	LabelString           "Proposition \arabic{proposition}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{prop}{Proposition}
@@ -62,6 +188,8 @@ End
 
 
 Style Conjecture
+	LabelCounter          conjecture
+	LabelString           "Conjecture \arabic{conjecture}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{conjecture}{Conjecture}
@@ -70,6 +198,8 @@ End
 
 
 Style Criterion
+	LabelCounter          criterion
+	LabelString           "Criterion \arabic{criterion}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{criterion}{Criterion}
@@ -78,6 +208,8 @@ End
 
 
 Style Algorithm
+	LabelCounter          algorithm
+	LabelString           "Algorithm \arabic{algorithm}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{algorithm}{Algorithm}
@@ -86,6 +218,8 @@ End
 
 
 Style Fact
+	LabelCounter          fact
+	LabelString           "Fact \arabic{fact}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{fact}{Fact}
@@ -94,6 +228,8 @@ End
 
 
 Style Axiom
+	LabelCounter          axiom
+	LabelString           "Axiom \arabic{axiom}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{ax}{Axiom}
@@ -102,6 +238,8 @@ End
 
 
 Style Definition
+	LabelCounter          definition
+	LabelString           "Definition \arabic{definition}."
 	Preamble
 	 \theoremstyle{definition}
 	 \newtheorem{defn}{Definition}
@@ -110,6 +248,8 @@ End
 
 
 Style Example
+	LabelCounter          example
+	LabelString           "Example \arabic{example}."
 	Preamble
 	 \theoremstyle{definition}
 	  \newtheorem{example}{Example}
@@ -118,6 +258,8 @@ End
 
 
 Style Condition
+	LabelCounter          condition
+	LabelString           "Condition \arabic{condition}."
 	Preamble
 	 \theoremstyle{definition}
 	  \newtheorem{condition}{Condition}
@@ -126,6 +268,8 @@ End
 
 
 Style Problem
+	LabelCounter          problem
+	LabelString           "Problem \arabic{problem}."
 	Preamble
 	 \theoremstyle{definition}
 	  \newtheorem{problem}{Problem}
@@ -134,6 +278,8 @@ End
 
 
 Style Exercise
+	LabelCounter          exercise
+	LabelString           "Exercise \arabic{exercise}."
 	Preamble
 	 \theoremstyle{definition}
 	  \newtheorem{xca}{Exercise}
@@ -142,6 +288,8 @@ End
 
 
 Style Remark
+	LabelCounter          remark
+	LabelString           "Remark \arabic{remark}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{rem}{Remark}
@@ -150,6 +298,8 @@ End
 
 
 Style Claim
+	LabelCounter          claim
+	LabelString           "Claim \arabic{claim}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{claim}{Claim}
@@ -158,6 +308,8 @@ End
 
 
 Style Note
+	LabelCounter          note
+	LabelString           "Note \arabic{note}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{note}{Note}
@@ -166,6 +318,8 @@ End
 
 
 Style Notation
+	LabelCounter          notation
+	LabelString           "Notation \arabic{notation}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{notation}{Notation}
@@ -174,6 +328,8 @@ End
 
 
 Style Summary
+	LabelCounter          summary
+	LabelString           "Summary \arabic{summary}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{summary}{Summary}
@@ -182,6 +338,8 @@ End
 
 
 Style Acknowledgement
+	LabelCounter          acknowledgement
+	LabelString           "Acknowledgement \arabic{acknowledgement}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{acknowledgement}{Acknowledgement}
@@ -189,15 +347,9 @@ Style Acknowledgement
 End
 
 
-Style Case
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{case}{Case}
-	EndPreamble
-End
-
-
 Style Conclusion
+	LabelCounter          conclusion
+	LabelString           "Conclusion \arabic{conclusion}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{conclusion}{Conclusion}
@@ -205,5 +357,11 @@ Style Conclusion
 End
 
 
-
-
+Style Assumption
+	LabelCounter          assumption
+	LabelString           "Assumption \arabic{assumption}."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{assumption}{Assumption}
+	EndPreamble
+End

@@ -5,57 +5,39 @@
 # numbered environments (figures as well) containing the section number.
 # (Themorem (1.1), Corollary (1.2) Theorem (1.3), etc.
 # These are only the theorems styles environnements
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 
-
-# The environnements defined are :
+# The environnements defined (regular and starred) are :
 # - Theorem
-# - Theorem*
 # - Corollary
-# - Corollary*
 # - Lemma
-# - Lemma*
 # - Proposition
-# - Proposition*
 # - Conjecture
-# - Conjecture*
 # - Criterion
 # - Algorithm
 # - Axiom
 # - Definition
-# - Definition*
 # - Example
-# - Example*
 # - Condition
-# - Condition*
 # - Problem
-# - Problem*
 # - Exercise
 # - Remark
-# - Remark*
 # - Note
-# - Note*
 # - Notation
-# - Notation*
 # - Claim
-# - Claim*
 # - Summary
 # - Acknowledgement
-# - Acknowledgement*
-# - Case
 # - Conclusion
-# - Conclusion*
 # - Fact
-# - Fact*
+# - Assumption
+# - Case (regular only -- defined as an enumeration)
 
 Format 4
-Preamble
-  \theoremstyle{plain}
-	\newtheorem{thm}{Theorem}[section]
-EndPreamble
 
 
 Counter
 	Name                 theorem
+	Within               section
 End
 
 
@@ -85,6 +67,10 @@ Style Theorem
 	  Shape               Up
 	  Series              Bold
 	EndFont
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{thm}{Theorem}[section]
+	EndPreamble
 End
 
 
@@ -198,6 +184,16 @@ Style Criterion
 	EndPreamble
 End
 
+Style Criterion*
+	CopyStyle             Theorem*
+	LatexName             criterion*
+	LabelString           "Criterion."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{criterion*}{Criterion}
+	EndPreamble
+End
+
 
 Style Algorithm
 	CopyStyle             Theorem
@@ -206,6 +202,17 @@ Style Algorithm
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{algorithm}[thm]{Algorithm}
+	EndPreamble
+End
+
+
+Style Algorithm*
+	CopyStyle             Theorem*
+	LatexName             algorithm*
+	LabelString           "Algorithm."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{algorithm*}{Algorithm}
 	EndPreamble
 End
 
@@ -239,6 +246,17 @@ Style Axiom
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{ax}[thm]{Axiom}
+	EndPreamble
+End
+
+
+Style Axiom*
+	CopyStyle             Theorem*
+	LatexName             ax*
+	LabelString           "Axiom."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{ax*}{Axiom}
 	EndPreamble
 End
 
@@ -345,15 +363,14 @@ Style Exercise
 	LabelString           "Exercise @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{definition}
-	  %%Delete [section] for sequential numbering
-	  \newtheorem{xca}[section]{Exercise}
+	  \newtheorem{xca}[thm]{Exercise}
 	EndPreamble
 End
 
 
 Style Exercise*
 	CopyStyle             Definition*
-	LatexName             xca
+	LatexName             xca*
 	LabelString           "Exercise."
 	Preamble
 	  \theoremstyle{definition}
@@ -454,7 +471,7 @@ Style Notation*
 	LabelString           "Notation."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem*{notation*}[thm]{Notation}
+	  \newtheorem*{notation*}{Notation}
 	EndPreamble
 End
 
@@ -466,6 +483,17 @@ Style Summary
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{summary}[thm]{Summary}
+	EndPreamble
+End
+
+
+Style Summary*
+	CopyStyle             Remark*
+	LatexName             summary*
+	LabelString           "Summary."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem*{summary*}{Summary}
 	EndPreamble
 End
 
@@ -492,17 +520,6 @@ Style Acknowledgement*
 End
 
 
-Style Case
-	CopyStyle             Remark
-	LatexName             case
-	LabelString           "Case @Section@.\arabic{theorem}."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{case}{Case} %%Numbering of Cases not keyed to sections
-	EndPreamble
-End
-
-
 Style Conclusion
 	CopyStyle             Remark
 	LatexName             conclusion
@@ -521,5 +538,43 @@ Style Conclusion*
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem*{conclusion*}{Conclusion}
+	EndPreamble
+End
+
+
+Style Assumption
+	CopyStyle             Theorem
+	LatexName             assumption
+	LabelString           "Assumption @Section@.\arabic{theorem}."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{assumption}[thm]{Assumption}
+	EndPreamble
+End
+
+
+Style Assumption*
+	CopyStyle             Theorem*
+	LatexName             assumption*
+	LabelString           "Assumption."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{assumption*}{Assumption}
+	EndPreamble
+End
+
+
+# Define Case as an enumeration environment
+Style Case
+	CopyStyle             Enumerate
+	LatexName             caseenv
+	LabelType             Static
+	LeftMargin            "MMMMMMN"
+	LabelString           "Case #:"
+	Preamble
+	  \newcounter{casectr}
+	  \newenvironment{caseenv}
+	  {\begin{list}{\bfseries\upshape Case \arabic{casectr}:}{}\setcounter{casectr}{0}\usecounter{casectr}}
+	  {\end{list}}
 	EndPreamble
 End

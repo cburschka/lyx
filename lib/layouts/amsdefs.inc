@@ -1,6 +1,7 @@
 # Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 
 # Including the maths stuff
 Format 4
@@ -68,7 +69,6 @@ Style Title
 	BottomSep             1
 	ParSep                1
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	OptionalArgs          1
 	Font
@@ -90,7 +90,6 @@ Style Author
 	BottomSep             0.7
 	ParSep                0.7
 	Align                 Center
-	AlignPossible         Center
 	LabelType             No_Label
 	Font
 	  Size                Large
@@ -110,7 +109,6 @@ Style Date
 	BottomSep             0.5
 	ParSep                1
 	Align                 Center
-	AlignPossible         Center
 	LabelType             Static
 	LabelString           "Date:"
 	Font
@@ -135,7 +133,6 @@ Style Abstract
 	TopSep                0.7
 	BottomSep             0.7
 	Align                 Block
-	AlignPossible         Block
 	LabelType             Static
 	LabelString           "Abstract."
 	LabelSep              M
@@ -222,8 +219,8 @@ End
 
 Style Subjectclass
 	CopyStyle             Address
-	LatexName             subjclass
-	LabelString           "1991 Mathematics Subject Classification:"
+	LatexName             subjclass[2000]
+	LabelString           "2000 Mathematics Subject Classification:"
 End
 
 

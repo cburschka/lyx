@@ -6,6 +6,7 @@
 # Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 
 Format 4
 Columns                 1
@@ -31,8 +32,6 @@ End
 
 
 Preamble
-	\theoremstyle{plain}
-	\newtheorem{thm}{Theorem}[section]
 	\numberwithin{equation}{section} %% Comment out for sequentially-numbered
 	\numberwithin{figure}{section} %% Comment out for sequentially-numbered
 EndPreamble
@@ -41,11 +40,11 @@ EndPreamble
 Input stdsections.inc
 Input stdstarsections.inc
 Input lyxmacros.inc
-Input amsdefs.inc
 Input stdlayouts.inc
 Input stdlists.inc
 Input stdfloats.inc
 Input stdcounters.inc
+Input amsdefs.inc
 
 NoStyle                 Chapter
 NoStyle                 Paragraph
@@ -55,12 +54,11 @@ NoStyle                 Chapter*
 #NoStyle                Subparagraph*
 
 NoStyle Verse    # Although mathematicians tend to be poets at times,
-	               # we don't need this.
+	             # we don't need this.
 
 
 Style Section
 	Align                 Center
-	AlignPossible         Block, Center, Left
 	Font
 	  Series              Medium
 	  Shape               Smallcaps

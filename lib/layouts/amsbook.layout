@@ -6,6 +6,7 @@
 # Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 
 
 Format 4
@@ -33,8 +34,6 @@ End
 
 Preamble
 	\numberwithin{section}{chapter}
-	\theoremstyle{plain}
-	\newtheorem{thm}{Theorem}[section]
 	\numberwithin{equation}{section} %% Comment out for sequentially-numbered
 	\numberwithin{figure}{section} %% Comment out for sequentially-numbered
 EndPreamble
@@ -46,7 +45,6 @@ Input numreport.inc
 
 Style Section
 	Align                 Center
-	AlignPossible         Block, Center, Left
 	Font
 	  Series              Medium
 	  Shape               Smallcaps
@@ -72,24 +70,17 @@ End
 
 
 Input stdstarsections.inc
-
-
 Input lyxmacros.inc
-NoStyle Address
-
-
-Input amsdefs.inc
-
-
 Input stdlayouts.inc
-NoStyle Verse
-NoStyle Abstract
-
-
 Input stdlists.inc
 Input stdfloats.inc
 Input stdcounters.inc
+Input amsdefs.inc
 
+# Unwanted styles from the includes
+NoStyle Address
+NoStyle Verse
+NoStyle Abstract
 
 # Chapter is _not_ prepended
 Style Section

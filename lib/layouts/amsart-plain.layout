@@ -7,6 +7,7 @@
 # The "unnumbered" version has all results, unnumbered
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 
 Format 4
 Input amsart.layout
@@ -14,141 +15,10 @@ Input amsart.layout
 # Change the definitions of the theorem-like environments to get unnumbered
 # results
 
-Input amsmaths-plain.inc
-
 # Use a simpler preamble.
 Preamble
 	\usepackage{amsmath,amsthm}
 	\usepackage{amsfonts}
 EndPreamble
 
-
-Style Theorem
-	LabelString           "Theorem."
-End
-
-
-Style Corollary
-	LabelType             Static
-	LabelString           "Corollary."
-End
-
-
-Style Lemma
-	LabelType             Static
-	LabelString           "Lemma."
-End
-
-
-Style Proposition
-	LabelType             Static
-	LabelString           "Proposition."
-End
-
-
-Style Conjecture
-	LabelType             Static
-	LabelString           "Conjecture."
-End
-
-
-Style Criterion
-	LabelType             Static
-	LabelString           "Criterion."
-End
-
-
-Style Algorithm
-	LabelType             Static
-	LabelString           "Algorithm."
-End
-
-
-Style Fact
-	LabelType             Static
-	LabelString           "Fact."
-End
-
-
-Style Axiom
-	LabelType             Static
-	LabelString           "Axiom."
-End
-
-
-Style Definition
-	LabelType             Static
-	LabelString           "Definition."
-End
-
-
-Style Example
-	LabelType             Static
-	LabelString           "Example."
-End
-
-
-Style Condition
-	LabelType             Static
-	LabelString           "Condition."
-End
-
-
-Style Problem
-	LabelType             Static
-	LabelString           "Problem."
-End
-
-
-Style Exercise
-	LabelType             Static
-	LabelString           "Exercise."
-End
-
-
-Style Remark
-	LabelType             Static
-	LabelString           "Remark."
-End
-
-
-Style Claim
-	LabelType             Static
-	LabelString           "Claim."
-End
-
-
-Style Note
-	LabelType             Static
-	LabelString           "Note."
-End
-
-
-Style Notation
-	LabelType             Static
-	LabelString           "Notation."
-End
-
-
-Style Summary
-	LabelType             Static
-	LabelString           "Summary."
-End
-
-
-Style Acknowledgement
-	LabelType             Static
-	LabelString           "Acknowledgement."
-End
-
-
-Style Case
-	LabelType             Static
-	LabelString           "Case."
-End
-
-
-Style Conclusion
-	LabelType             Static
-	LabelString           "Conclusion."
-End
+Input amsmaths-plain.inc
