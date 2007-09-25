@@ -1097,6 +1097,14 @@ contributers = [
                  "29 January 2007",
                  u"Various bug fixes"),
 
+     contributer(u"Paul A. Rubin",
+                 "rubin () msu ! edu",
+                 "GPL",
+                 "Re: [patch] reworked AMS classes (bugs 4087, 4223)",
+                 "m=119072721929143",
+                 "25 September 2007",
+                 u"Major rework of the AMS classes"),
+
      contributer(u"Ran Rutenberg",
                  "ran.rutenberg () gmail ! com",
                  "GPL",
