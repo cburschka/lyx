@@ -36208,13 +36208,10 @@ key "Arabic"
 \series bold
  
 \series default
-\lang english
-The default is the 
+Por defecto, es el comando de 
 \series bold
 babel
 \series default
- command
-\lang spanish
  
 \family sans
 
@@ -36257,29 +36254,21 @@ babel
 \end_layout
 
 \begin_layout Description
-Auto-iniciar 
-\lang english
-When this option is set, the documents starts with the chosen document language.
- When this option is not set, the
-\lang spanish
- 
+Auto-iniciar Con esta opción los documentos comienzan con el idioma de documento
+ elegido.Sin ella, el 
 \family sans
 Comienzo\InsetSpace ~
 del\InsetSpace ~
 comando
 \family default
- 
-\lang english
-is explicitly set to the beginning of the document in the LaTeX-output.
- This assures that the correct language is used, when you use another
+ se establece explícitamente al inicio del documento en la salida de LaTeX.
+ Esto asegura que se usa el idioma correcto cuando pongas un 
 \family sans
-\lang spanish
  Comienzo\InsetSpace ~
 del\InsetSpace ~
 comando 
 \family default
-\lang english
-than the default.
+ distinto al predeterminado.
 \end_layout
 
 \begin_layout Description
@@ -36288,16 +36277,13 @@ Auto-terminar Contrapartida a
 Auto-iniciar.
  
 \family default
-\lang english
-When it is not set, the 
+Si no está marcado, el 
 \family sans
-\lang spanish
 Fin\InsetSpace ~
 del\InsetSpace ~
 comando
 \family default
-\lang english
- is set to the end of the document.
+ se establece al final del documento.
 \end_layout
 
 \begin_layout Description
