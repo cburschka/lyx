@@ -5,57 +5,39 @@
 # numbered environments (figures as well) containing the section number.
 # (Themorem (1.1), Corollary (1.2) Theorem (1.3), etc.
 # These are only the theorems styles environnements
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 
-
-# The environnements defined are :
+# The environnements defined (regular and starred) are :
 # - Theorem
-# - Theorem*
 # - Corollary
-# - Corollary*
 # - Lemma
-# - Lemma*
 # - Proposition
-# - Proposition*
 # - Conjecture
-# - Conjecture*
 # - Criterion
 # - Algorithm
 # - Axiom
 # - Definition
-# - Definition*
 # - Example
-# - Example*
 # - Condition
-# - Condition*
 # - Problem
-# - Problem*
 # - Exercise
 # - Remark
-# - Remark*
 # - Note
-# - Note*
 # - Notation
-# - Notation*
 # - Claim
-# - Claim*
 # - Summary
 # - Acknowledgement
-# - Acknowledgement*
-# - Case
 # - Conclusion
-# - Conclusion*
 # - Fact
-# - Fact*
+# - Assumption
+# - Case (regular only -- defined as an enumeration)
 
 Format 5
-Preamble
-  \theoremstyle{plain}
-	\newtheorem{thm}{Theorem}[section]
-EndPreamble
 
 
 Counter
 	Name                 theorem
+	Within               section
 End
 
 
@@ -76,7 +58,7 @@ Style Theorem
 	AlignPossible         Block, Left
 	LabelType             Counter
 	LabelCounter          theorem
-	LabelString           "Theorem \thetheorem."
+	LabelString           "Theorem @Section@.\arabic{theorem}."
 	Font
 	  Shape               Italic
 	  Size                Normal
@@ -85,6 +67,10 @@ Style Theorem
 	  Shape               Up
 	  Series              Bold
 	EndFont
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{thm}{Theorem}[section]
+	EndPreamble
 End
 
 
@@ -103,7 +89,7 @@ End
 Style Corollary
 	CopyStyle             Theorem
 	LatexName             cor
-	LabelString           "Corollary \thetheorem."
+	LabelString           "Corollary @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{cor}[thm]{Corollary}
@@ -125,7 +111,7 @@ End
 Style Lemma
 	CopyStyle             Theorem
 	LatexName             lem
-	LabelString           "Lemma \thetheorem."
+	LabelString           "Lemma @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{lem}[thm]{Lemma}
@@ -147,7 +133,7 @@ End
 Style Proposition
 	CopyStyle             Theorem
 	LatexName             prop
-	LabelString           "Proposition \thetheorem."
+	LabelString           "Proposition @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{prop}[thm]{Proposition}
@@ -169,7 +155,7 @@ End
 Style Conjecture
 	CopyStyle             Theorem
 	LatexName             conjecture
-	LabelString           "Conjecture \thetheorem."
+	LabelString           "Conjecture @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{conjecture}[thm]{Conjecture}
@@ -191,10 +177,20 @@ End
 Style Criterion
 	CopyStyle             Theorem
 	LatexName             criterion
-	LabelString           "Criterion \thetheorem."
+	LabelString           "Criterion @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{criterion}[thm]{Criterion}
+	EndPreamble
+End
+
+Style Criterion*
+	CopyStyle             Theorem*
+	LatexName             criterion*
+	LabelString           "Criterion."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{criterion*}{Criterion}
 	EndPreamble
 End
 
@@ -202,7 +198,7 @@ End
 Style Algorithm
 	CopyStyle             Theorem
 	LatexName             algorithm
-	LabelString           "Algorithm \thetheorem."
+	LabelString           "Algorithm @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{algorithm}[thm]{Algorithm}
@@ -210,10 +206,21 @@ Style Algorithm
 End
 
 
+Style Algorithm*
+	CopyStyle             Theorem*
+	LatexName             algorithm*
+	LabelString           "Algorithm."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{algorithm*}{Algorithm}
+	EndPreamble
+End
+
+
 Style Fact
 	CopyStyle             Theorem
 	LatexName             fact
-	LabelString           "Fact \thetheorem."
+	LabelString           "Fact @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{fact}[thm]{Fact}
@@ -235,7 +242,7 @@ End
 Style Axiom
 	CopyStyle             Theorem
 	LatexName             ax
-	LabelString           "Axiom \thetheorem."
+	LabelString           "Axiom @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{plain}
 	  \newtheorem{ax}[thm]{Axiom}
@@ -243,10 +250,21 @@ Style Axiom
 End
 
 
+Style Axiom*
+	CopyStyle             Theorem*
+	LatexName             ax*
+	LabelString           "Axiom."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{ax*}{Axiom}
+	EndPreamble
+End
+
+
 Style Definition
 	CopyStyle             Theorem
 	LatexName             defn
-	LabelString           "Definition \thetheorem."
+	LabelString           "Definition @Section@.\arabic{theorem}."
 	Font
 	  Shape               Up
 	EndFont
@@ -276,7 +294,7 @@ End
 Style Example
 	CopyStyle             Definition
 	LatexName             example
-	LabelString           "Example \thetheorem."
+	LabelString           "Example @Section@.\arabic{theorem}."
 	Preamble
 	 \theoremstyle{definition}
 	  \newtheorem{example}[thm]{Example}
@@ -298,7 +316,7 @@ End
 Style Condition
 	CopyStyle             Definition
 	LatexName             condition
-	LabelString           "Condition \thetheorem."
+	LabelString           "Condition @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{definition}
 	  \newtheorem{condition}[thm]{Condition}
@@ -320,7 +338,7 @@ End
 Style Problem
 	CopyStyle             Definition
 	LatexName             problem
-	LabelString           "Problem \thetheorem."
+	LabelString           "Problem @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{definition}
 	  \newtheorem{problem}[thm]{Problem}
@@ -342,11 +360,10 @@ End
 Style Exercise
 	CopyStyle             Definition
 	LatexName             xca
-	LabelString           "Exercise \thetheorem."
+	LabelString           "Exercise @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{definition}
-	  %%Delete [section] for sequential numbering
-	  \newtheorem{xca}[section]{Exercise}
+	  \newtheorem{xca}[thm]{Exercise}
 	EndPreamble
 End
 
@@ -365,7 +382,7 @@ End
 Style Remark
 	CopyStyle             Theorem
 	LatexName             rem
-	LabelString           "Remark \thetheorem."
+	LabelString           "Remark @Section@.\arabic{theorem}."
 	Font
 	  Shape               Up
 	  Size                Normal
@@ -396,7 +413,7 @@ End
 Style Claim
 	CopyStyle             Remark
 	LatexName             claim
-	LabelString           "Claim \thetheorem."
+	LabelString           "Claim @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{claim}[thm]{Claim}
@@ -418,7 +435,7 @@ End
 Style Note
 	CopyStyle             Remark
 	LatexName             note
-	LabelString           "Note \thetheorem."
+	LabelString           "Note @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{note}[thm]{Note}
@@ -440,7 +457,7 @@ End
 Style Notation
 	CopyStyle             Remark
 	LatexName             notation
-	LabelString           "Notation \thetheorem."
+	LabelString           "Notation @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{notation}[thm]{Notation}
@@ -454,7 +471,7 @@ Style Notation*
 	LabelString           "Notation."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem*{notation*}[thm]{Notation}
+	  \newtheorem*{notation*}{Notation}
 	EndPreamble
 End
 
@@ -462,7 +479,7 @@ End
 Style Summary
 	CopyStyle             Remark
 	LatexName             summary
-	LabelString           "Summary \thetheorem."
+	LabelString           "Summary @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{summary}[thm]{Summary}
@@ -470,10 +487,21 @@ Style Summary
 End
 
 
+Style Summary*
+	CopyStyle             Remark*
+	LatexName             summary*
+	LabelString           "Summary."
+	Preamble
+	  \theoremstyle{remark}
+	  \newtheorem*{summary*}{Summary}
+	EndPreamble
+End
+
+
 Style Acknowledgement
 	CopyStyle             Remark
 	LatexName             acknowledgement
-	LabelString           "Acknowledgement \thetheorem."
+	LabelString           "Acknowledgement @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{acknowledgement}[thm]{Acknowledgement}
@@ -492,21 +520,10 @@ Style Acknowledgement*
 End
 
 
-Style Case
-	CopyStyle             Remark
-	LatexName             case
-	LabelString           "Case \thetheorem."
-	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{case}{Case} %%Numbering of Cases not keyed to sections
-	EndPreamble
-End
-
-
 Style Conclusion
 	CopyStyle             Remark
 	LatexName             conclusion
-	LabelString           "Conclusion \thetheorem."
+	LabelString           "Conclusion @Section@.\arabic{theorem}."
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem{conclusion}[thm]{Conclusion}
@@ -521,5 +538,43 @@ Style Conclusion*
 	Preamble
 	  \theoremstyle{remark}
 	  \newtheorem*{conclusion*}{Conclusion}
+	EndPreamble
+End
+
+
+Style Assumption
+	CopyStyle             Theorem
+	LatexName             assumption
+	LabelString           "Assumption @Section@.\arabic{theorem}."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{assumption}[thm]{Assumption}
+	EndPreamble
+End
+
+
+Style Assumption*
+	CopyStyle             Theorem*
+	LatexName             assumption*
+	LabelString           "Assumption."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{assumption*}{Assumption}
+	EndPreamble
+End
+
+
+# Define Case as an enumeration environment
+Style Case
+	CopyStyle             Enumerate
+	LatexName             caseenv
+	LabelType             Static
+	LeftMargin            "MMMMMMN"
+	LabelString           "Case #:"
+	Preamble
+	  \newcounter{casectr}
+	  \newenvironment{caseenv}
+	  {\begin{list}{\bfseries\upshape Case \arabic{casectr}:}{}\setcounter{casectr}{0}\usecounter{casectr}}
+	  {\end{list}}
 	EndPreamble
 End
