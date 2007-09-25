@@ -1,7 +1,8 @@
-This file lists interface changes that might affect users in 1.5.0 and
-also some known problems in LyX 1.5.0 that did not occur in
-1.4.5. Note that fixes are available for many of these, but they have
-not yet been applied because of incomplete testing.
+This file lists interface changes that might affect users in 1.6.0, some 
+known problems in LyX 1.6.0 and some things you have to take into account
+when upgrading from earlier versions to a version of the 1.6.x series.
+Note that fixes are available for some of these, but they have not yet
+been applied because of incomplete testing.
 
 
 Interface changes
@@ -10,81 +11,41 @@ Interface changes
 Some of the LyX functions have changed names :
 
 
-Known issues with version 1.5.0
+Known issues in version 1.5.2
 ------------------------------------
 
-- User layout files must be converted to UTF-8
+- LyX might crash if you switch the encoding of a document while the
+  View->Source pane is opened.
+  http://bugzilla.lyx.org/show_bug.cgi?id=3561
 
-In previous versions, layout styles were allowed to use non-ASCII names
-using the local encodings. LyX-1.5 now assumes that all layout files are
-UTF-8 encoded. This means that non-ASCII style names are still allowed
-but they must be valid UTF-8 strings. One way of doing the conversion
-is to use iconv. Using bash, the script below should work:
+- LyX might suddenly slow down when you have copied something in another
+  instance of LyX or in another application. Known workaround: Ctrl+C of
+  some text inside the active window bring the speed back.
+  http://bugzilla.lyx.org/show_bug.cgi?id=4045
 
-#! /bin/sh
+- Cursor restoration problems with Multiple-View:
+  When using multiple Windows to edit different parts of the
+  same document, the cursor position is sometimes not correctly restored
+  when you switch from one view to the other.
 
-cd /path/to/layouts
-for l in *
-do
-  cp "$l" tmp.txt
-  iconv -f latin1 -t utf8 tmp.txt -o "$l"
-done
-rm -f tmp.txt
+- RTL and keymaps:
+  Currently there is a bug where you can't use two non-RTL language keymaps if
+  the RTL preference is set (which is now the default). If you need to use two
+  non-RTL keymaps, for now you should just turn off the RTL preference (Tools -> 
+  Preferences... -> Language settings -> Language, uncheck "Right-to-left
+  language support").
+  We hope to offer more comprehensive support for multiple keymaps in the future,
+  which will solve this bug, as well as allow more than just two keymaps. If you 
+  have any input on this issue, please chime in on the developers mailing list,
+  or add your comments to http://bugzilla.lyx.org/show_bug.cgi?id=4051.
 
-- Cursor restoration problems with Multiple-View
 
-When using multiple Windows to edit different parts of the
-same document, the cursor position is sometimes not correctly restored
-when you switch from one view to the other.
+Caveats when upgrading from earlier versions to 1.5.x
+-------------------------------------------------------
 
-- Languages/encodings and insets
-
-One of the bugs fixed in LyX 1.5.0 is that previously, there were certain 
-specific cases in which the LaTeX generated did not correctly reflect 
-language/encoding transitions in and around insets (footnotes, LyX notes).
-After much deliberation, it was decided not to change older files such that
-they will still reflect the old LaTeX output; rather, they will now correctly
-reflect the situation as it appears in the GUI. This means, however, that if 
-you mangled the text in the GUI in the older versions, in order that it
-generate the correct LaTeX output, the LaTeX will now generate the mangled 
-text. If this is problematic for you, please get in touch with us on the
-developers mailing list, we do have some possible solutions for this.
-
-The effects of this will be more pronounced for RTL (Hebrew, Arabic, Farsi) 
-users --- though they affect users of other languages as well.
-
-- Inset encodings and Conversion from earlier LyX versions
-
-One of the main new features in version 1.5.0 is Unicode. As part of the
-transition, lyx2lyx (the scripts used for converting back and forth between
-different versions of the lyx files) converts old .lyx files, which may use 
-a number of different encodings, to UTF-8. This conversion depends on
-correctly identifying the language of the text. There were previously some
-edge-cases (insets embedded in different-language text type scenarios) in 
-which the language was incorrectly identified, which caused some text to 
-appear incorrectly after having upgraded from older versions. This has now been
-fixed. Unfortunately, however, the fix cannot be applied to files which have
-already been converted past format 249.  So if you have already converted 
-your old files (using a development version or release candidate), this fix
-won't help, unless you still have the originals lying around (and haven't 
-yet made too many changes to the newer versions ;) ).
-
-Generally, it is probably wise to keep a backup of the old version of your 
-files, at least until you are sure that the upgrade went smoothly (which it 
-almost always will).
-
-- RTL and keymaps
-
-Currently there is a bug where you can't use two non-RTL language keymaps if
-the RTL preference is set (which is now the default). If you need to use two
-non-RTL keymaps, for now you should just turn off the RTL preference (Tools -> 
-Preferences... -> Language settings -> Language, uncheck "Right-to-left
-language support").
-
-We hope to offer more comprehensive support for multiple keymaps in the future,
-which will solve this bug, as well as allow more than just two keymaps. If you 
-have any input on this issue, please chime in on the developers mailing list,
-or add your comments to http://bugzilla.lyx.org/show_bug.cgi?id=4051.
+Due to the change to Unicode, there are some general things you'll have to take care
+about when upgrading from an older version to LyX 1.5.0 or newer. Please refer to the
+file UPGRADING for details.
 
 
 Note: There may later be an updated list of known issues online at
