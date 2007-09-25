@@ -78,10 +78,7 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 	bc().addReadOnly(widthUnitLC);
 	bc().addReadOnly(valignCO);
 	bc().addReadOnly(overhangCB);
-	bc().addReadOnly(overhangED);
-	bc().addReadOnly(overhangUnitLC);
 	bc().addReadOnly(linesCB);
-	bc().addReadOnly(linesSB);
 
 	// initialize the length validator
 	bc().addCheckedLineEdit(widthED, widthLA);
