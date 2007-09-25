@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 284
+\lyxformat 286
 \begin_document
 \begin_header
 \textclass book
@@ -42,6 +42,9 @@
 \author "" 
 \author "" 
 \end_header
+
+\begin_manifest
+\end_manifest
 
 \begin_body
 
@@ -5563,6 +5566,11 @@ texmf.cnf
 \end_layout
 
 \begin_layout Section
+\begin_inset LatexCommand label
+name "sec:Layouts"
+
+\end_inset
+
 Layouts
 \end_layout
 
@@ -5581,17 +5589,19 @@ article
  class and how LyX should display them.
  We try to provide a thorough description of the process here; however,
  there are so many different types of documents supported by LaTeX classes
- we can't hope to cover every different possibility or problem you might
- encounter.
- 
+ that we can't hope to cover every different possibility or problem you
+ might encounter.
+ (The LyX users' list is frequented by people with lots of experience with
+ layout design who are willing to share what they've learned.)
 \end_layout
 
 \begin_layout Standard
-When you plan to write a new layout, it is extremely helpful to look at
+As you prepare to write a new layout, it is extremely helpful to look at
  the example layouts distributed with LyX.
  If you use a nice LaTeX document class that might be of interest for others,
  too, and have a nice corresponding LyX layout, feel free to contribute
  the stuff to us, so we may put it into the distribution.
+ There is also a section on the LyX wiki for this kind of material.
 \end_layout
 
 \begin_layout Standard
@@ -5645,6 +5655,95 @@ default
 \end_layout
 
 \begin_layout Subsection
+Layout modules
+\end_layout
+
+\begin_layout Standard
+Similar to layout files, and new with LyX 1.6, are layout 
+\emph on
+modules
+\emph default
+.
+ Modules are to LaTeX packages much as layouts are to LaTeX classes, and
+ some modules---such as the URL module---provide support for just such a
+ package.
+ In a sense, layout modules are similar to included files---files like stdsectio
+ns.inc---in that modules are not specific to a given document layout but
+ may be used with many different layouts.
+ The difference is that using a layout module does not require editing the
+ layout file.
+ Rather, modules are selected in the 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar \menuseparator
+
+\bar under
+S
+\bar default
+ettings
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Standard
+Building modules is the easiest way to get started with layout editing,
+ since it can be as simple as adding a single new paragraph or flex inset.
+ But modules may, in principle, contain anything a layout file can contain.
+\end_layout
+
+\begin_layout Standard
+A module must begin with a line like the following:
+\end_layout
+
+\begin_layout LyX-Code
+#
+\backslash
+DeclareLyXModule[url.sty]{Adds a character style for the 
+\backslash
+url command.}{URL} 
+\end_layout
+
+\begin_layout Standard
+The argument in square brackets is optional: It declares any LaTeX packages
+ on which the module depends.
+ The two mandatory arguments, in curly brackets, are a short description
+ of the module and the name of the module, as they should appear in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+After creating a new module, you will need to reconfigure and then restart
+ LyX for it to appear in the menu.
+ However, changes you make to the module will be seen immediately, if you
+ open 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+, make some change (or even just highlight something), and then hit 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is strongly recommended that you save your work before doing so.
+ It is, in fact, strongly recommended that you not attempt to create or
+ edit modules while simultaneously working on documents.
+ Though of course the developers strive to keep LyX stable in such situations,
+ syntax errors and the like in your module file could cause strange behavior.
+\end_layout
+
+\begin_layout Subsection
 Supporting new document classes
 \end_layout
 
@@ -5659,6 +5758,8 @@ There are two situations you are likely to encounter when wanting to support
 .sty
 \family default
 ) files.
+ Supporting a style file is usually fairly easy.
+ Supporting a new document class is a bit harder.
 \end_layout
 
 \begin_layout Subsection
@@ -5671,9 +5772,8 @@ sty
 
 \begin_layout Standard
 If your new document class is provided as a style file that is used in conjuncti
-on with an existing, supported document class, start by copying the existing
- class's layout file into your local directory.
- For the sake of example we'll assume that the style file is called 
+on with an existing, supported document class---for the sake of the example,
+ we'll assume that the style file is called 
 \family sans
 myclass.sty
 \family default
@@ -5681,7 +5781,8 @@ myclass.sty
 \family sans
 report.cls
 \family default
- which is a standard class.
+, which is a standard class---start by copying the existing class's layout
+ file into your local directory:
 \end_layout
 
 \begin_layout LyX-Code
@@ -5744,7 +5845,7 @@ R
 econfigure
 \family default
 .
- Restart LyX and try creating a new document.
+ Then restart LyX and try creating a new document.
  You should see "
 \family sans
 report (myclass)
@@ -5762,23 +5863,13 @@ S
 ettings
 \family default
  dialog.
- It is likely that some of the sectioning commands and such will differ
- from how the base class
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-
+ It is likely that some of the sectioning commands and such in your new
+ class will work differently from how they worked in the base class---
 \family typewriter
 report
 \family default
- in this example
-\end_layout
-
-\end_inset
-
- works, so you can fiddle around with the settings for the different sections
- if you wish.
+ in this example---so you can fiddle around with the settings for the different
+ sections if you wish.
  See below for more discussion on this.
 \end_layout
 
@@ -5791,7 +5882,39 @@ cls
 \end_layout
 
 \begin_layout Standard
-In this case, you will probably have to 
+There are two possibilities here.
+ One is that the class file is itself based upon an existing document class.
+ For example, many thesis classes are based upon 
+\family sans
+book.cls
+\family default
+.
+ To see whether yours is, look for a line like
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+LoadClass{book}
+\end_layout
+
+\begin_layout Standard
+in the file.
+ If so, then you may proceed largely as in the previous section, though
+ the DeclareLaTeXClass line will be different.
+ If your new class is thesis, and it is based upon book, then the line should
+ read:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+DeclareLaTeXClass[myclass, book]{thesis}
+\end_layout
+
+\begin_layout Standard
+If, on the other hand, the new class is not based upon an existing class,
+ you will probably have to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5801,7 +5924,7 @@ roll your own
 
  layout.
  We strongly suggest copying an existing layout file which uses a similar
- LaTeX class and modifying it if at all possible.
+ LaTeX class and then modifying it, if you can do so.
  At least use an existing file as a starting point so you can find out what
  items you need to worry about.
  Again, the specifics are covered below.
@@ -6011,6 +6134,49 @@ econfigure
 .
  Exit LyX and restart it; then your new text class should be available along
  with the others.
+\end_layout
+
+\begin_layout Standard
+In versions of LyX prior to 1.6, you had to restart LyX to see any changes
+ you made to your layout files.
+ As a result, editing layout files could be very time consuming.
+ Beginning with 1.6, however, you can force a reload of the layout currently
+ in use by using the LyX function 
+\family sans
+layout-reload
+\family default
+.
+ There is no default binding for this function---though, of course, you
+ can bind it to a key yourself (see section 
+\begin_inset LatexCommand ref
+reference "sec:bindings"
+
+\end_inset
+
+).
+ You should simply enter this command in the mini-buffer.
+ 
+\emph on
+Warning
+\emph default
+: This is very much an `advanced feature'.
+ It is 
+\emph on
+strongly
+\emph default
+ recommended that you save your work before using this function.
+ It is, in fact, 
+\emph on
+strongly
+\emph default
+ recommended that you not attempt to edit your layout while simultaneously
+ working on a document that you care about.
+ Use a test document.
+ Syntax errors and the like in your layout file could cause peculiar behavior.
+ In particular, such errors could cause LyX to regard the current layout
+ as invalid and to attempt to switch to some other layout.
+ The LyX team strives to keep LyX stable in such situations, but safe is
+ better than sorry.
 \end_layout
 
 \begin_layout Subsection
