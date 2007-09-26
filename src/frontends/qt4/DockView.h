@@ -62,7 +62,7 @@ public:
 	void checkStatus() {}
 	void redraw() { redrawView(); }
 	void redrawView() {}
-	void updateData(string const &) { updateView(); }
+	void updateData(std::string const &) { updateView(); }
 	void updateView()
 	{
 		widget_->updateView();
