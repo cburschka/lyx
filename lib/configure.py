@@ -591,10 +591,14 @@ def processLayoutFile(file, bool_docbook, bool_linuxdoc):
 def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
     ''' Explore the LaTeX configuration '''
     print 'checking LaTeX configuration... ',
-    # First, remove the files that we want to re-create
-    removeFiles(['textclass.lst', 'packages.lst', 'chkconfig.sed'])
-    #
-    if not check_config:
+    # if --without-latex-config is forced, or if there is no previous 
+    # version of textclass.lst, re-generate a default file.
+    if not os.path.isfile('textclass.lst') or not check_config:
+        # remove the files only if we want to regenerate
+        removeFiles(['textclass.lst', 'packages.lst', 'chkconfig.sed'])
+        #
+        # Then, generate a default textclass.lst. In case configure.py
+        # fails, we still have something to start lyx.
         print ' default values'
         print '+checking list of textclasses... '
         tx = open('textclass.lst', 'w')
@@ -624,7 +628,8 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
                 tx.write(processLayoutFile(file, bool_docbook, bool_linuxdoc))
         tx.close()
         print '\tdone'
-    else:
+    # the following will generate textclass.lst.tmp, and packages.lst.tmp
+    if check_config:
         print '\tauto'
         removeFiles(['wrap_chkconfig.ltx', 'chkconfig.vars', \
             'chkconfig.classes', 'chklayouts.tex'])
@@ -682,6 +687,12 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
             pass
         if rmcopy:   # remove the copied file
             removeFiles( [ 'chkconfig.ltx' ] )
+        # if configure successed, move textclass.lst.tmp to textclass.lst
+        # and packages.lst.tmp to packages.lst
+        if os.path.isfile('textclass.lst.tmp') and len(open('textclass.lst.tmp').read()) > 0 \
+            and os.path.isfile('packages.lst.tmp') and len(open('packages.lst.tmp').read()) > 0:
+            shutil.move('textclass.lst.tmp', 'textclass.lst')
+            shutil.move('packages.lst.tmp', 'packages.lst')
 
 
 def createLaTeXConfig():

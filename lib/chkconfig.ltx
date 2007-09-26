@@ -129,10 +129,10 @@
 
 % Initializes the files
 \typeout{\prefix Inspecting your LaTeX configuration.}
-\newwrite{\layouts} \immediate\openout \layouts = textclass.lst
+\newwrite{\layouts} \immediate\openout \layouts = textclass.lst.tmp
 \newwrite{\sed} \immediate\openout \sed  = chkconfig.sed
 \newwrite{\vars} \immediate\openout \vars = chkconfig.vars
-\newwrite{\packages} \immediate\openout \packages = packages.lst
+\newwrite{\packages} \immediate\openout \packages = packages.lst.tmp
 
 \immediate\write\layouts{%
 # This file declares layouts and their associated definition files.^^J%
