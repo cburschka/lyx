@@ -172,11 +172,9 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit,
 
 int TextMetrics::parPosition(pit_type pit) const
 {
-	pair<pit_type, ParagraphMetrics> first = *par_metrics_.begin();
-	pair<pit_type, ParagraphMetrics> last = *par_metrics_.rbegin();
-	if (pit < first.first)
-			return -1000000;
-	else if (pit > last.first)
+	if (pit < par_metrics_.begin()->first)
+		return -1000000;
+	else if (pit > par_metrics_.rbegin()->first)
 		return +1000000;
 
 	return par_metrics_[pit].position();

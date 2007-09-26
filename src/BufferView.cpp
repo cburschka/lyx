@@ -251,8 +251,13 @@ bool BufferView::update(Update::flags flags)
 	bool const single_par = !full_metrics;
 	updateMetrics(single_par);
 
-	if (flags & Update::FitCursor && fitCursor())
-		updateMetrics(false);
+	if (flags & Update::FitCursor) {
+		//FIXME: updateMetrics() does not update paragraph position
+		// This is done at draw() time. So we need a redraw!
+		buffer_.changed();
+		if (fitCursor())
+			updateMetrics(false);
+	}
 
 	// tell the frontend to update the screen.
 	return true;
