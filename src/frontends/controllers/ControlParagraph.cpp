@@ -37,6 +37,13 @@ ControlParagraph::ControlParagraph(Dialog & parent)
 
 ParagraphParameters & ControlParagraph::params()
 {
+	if (haveMulitParSelection()) {
+		multiparsel_ = ParagraphParameters();
+		// FIXME: It would be nice to initialise the parameters that
+		// are common to all paragraphs.
+		return multiparsel_;
+	}
+
 	return bufferview()->cursor().paragraph().params();
 }
 
@@ -49,6 +56,14 @@ ParagraphParameters const & ControlParagraph::params() const
 
 void ControlParagraph::dispatchParams()
 {
+	if (haveMulitParSelection()) {
+		ostringstream data;
+		multiparsel_.write(data);
+		FuncRequest const fr(LFUN_PARAGRAPH_PARAMS_APPLY, data.str());
+		dispatch(fr);
+		return;
+	}
+
 	bufferview()->updateMetrics(false);
 	bufferview()->buffer().changed();
 }

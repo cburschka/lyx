@@ -44,6 +44,9 @@ public:
 	LyXAlignment alignPossible() const;
 	///
 	LyXAlignment alignDefault() const;
+
+private:
+	ParagraphParameters multiparsel_;
 };
 
 } // namespace frontend

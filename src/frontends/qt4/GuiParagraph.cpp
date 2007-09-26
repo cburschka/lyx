@@ -166,11 +166,6 @@ LyXAlignment GuiParagraphDialog::getAlignmentFromDialog()
 
 void GuiParagraphDialog::applyView()
 {
-	// FIXME: We should not access params() at all!
-	// we should just pass the relevant GUI information
-	// and let the controller do the rest.
-	// With this architecture, only current parent paragraph will be
-	// modified when we have a multi-paragraph selection.
 	ParagraphParameters & params = controller().params();
 
 	params.align(getAlignmentFromDialog());
