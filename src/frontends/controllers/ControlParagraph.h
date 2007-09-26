@@ -25,37 +25,25 @@ public:
 	///
 	ControlParagraph(Dialog &);
 	///
-	virtual bool initialiseParams(std::string const & data);
+	virtual bool initialiseParams(std::string const & data) { return true; }
 	/// clean-up on hide.
-	virtual void clearParams();
+	virtual void clearParams() {}
 	///
 	virtual void dispatchParams();
 	///
 	virtual bool isBufferDependent() const { return true; }
 	///
-	ParagraphParameters & params() { return params_; }
+	ParagraphParameters & params();
 	///
-	ParagraphParameters const & params() const { return params_; }
+	ParagraphParameters const & params() const;
 	///
 	bool haveMulitParSelection();
-	///
-	bool inInset() const { return ininset_; }
 	///
 	bool canIndent() const;
 	///
 	LyXAlignment alignPossible() const;
 	///
 	LyXAlignment alignDefault() const;
-
-private:
-	///
-	ParagraphParameters params_;
-	///
-	bool ininset_;
-	///
-	LyXAlignment alignpossible_;
-	///
-	LyXAlignment aligndefault_;
 };
 
 } // namespace frontend
