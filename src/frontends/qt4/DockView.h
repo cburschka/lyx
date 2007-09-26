@@ -53,6 +53,11 @@ public:
 	//@{
 	void applyView() {}
 	void hideView()	{ QDockWidget::hide(); }
+	void showData(std::string const & data)
+	{
+		controller_->initialiseParams(data);
+		showView();
+	}
 	void showView()
 	{
 		widget_->updateView();  // make sure its up-to-date
@@ -62,7 +67,11 @@ public:
 	void checkStatus() { updateView(); }
 	void redraw() { redrawView(); }
 	void redrawView() {}
-	void updateData(std::string const &) { updateView(); }
+	void updateData(std::string const & data)
+	{
+		controller_->initialiseParams(data);
+		updateView();
+	}
 	void updateView()
 	{
 		widget_->updateView();
