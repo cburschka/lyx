@@ -59,7 +59,7 @@ public:
 		QDockWidget::show();
 	}
 	bool isVisibleView() const { return QDockWidget::isVisible(); }
-	void checkStatus() {}
+	void checkStatus() { updateView(); }
 	void redraw() { redrawView(); }
 	void redrawView() {}
 	void updateData(std::string const &) { updateView(); }
