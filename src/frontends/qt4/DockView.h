@@ -53,11 +53,16 @@ public:
 	//@{
 	void applyView() {}
 	void hideView()	{ QDockWidget::hide(); }
-	void showView()	{ QDockWidget::show(); }
+	void showView()
+	{
+		widget_->updateView();  // make sure its up-to-date
+		QDockWidget::show();
+	}
 	bool isVisibleView() const { return QDockWidget::isVisible(); }
 	void checkStatus() {}
 	void redraw() { redrawView(); }
 	void redrawView() {}
+	void updateData(string const &) { updateView(); }
 	void updateView()
 	{
 		widget_->updateView();
