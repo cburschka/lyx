@@ -97,11 +97,10 @@ void GuiDialog::checkStatus()
 		bc().setReadOnly(readonly);
 		// refreshReadOnly() is too generous in _enabling_ widgets
 		// update dialog to disable disabled widgets again
-/*
- * 	FIXME:
+
 		if (!readonly || controller().canApplyToReadOnly())
-			update();
-*/
+			updateView();
+
 	} else {
 		bc().setReadOnly(true);
 	}	
