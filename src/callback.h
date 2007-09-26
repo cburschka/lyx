@@ -37,7 +37,7 @@ void insertPlaintextFile(BufferView * bv, std::string const & f, bool asParagrap
 docstring const getContentsOfPlaintextFile(BufferView * bv,
 		std::string const & f, bool asParagraph);
 ///
-void reconfigure(LyXView & lv);
+void reconfigure(LyXView & lv, std::string const & option);
 
 } // namespace lyx
 

@@ -164,13 +164,15 @@ bool TextClassList::read()
 	}
 	LYXERR(Debug::TCLASS) << "End of parsing of textclass.lst" << endl;
 
-	if (classlist_.empty()) {
+	// lyx will start with an empty classlist_, but only reconfigure is allowed
+	// in this case. This gives users a second chance to configure lyx if
+	// initial configuration fails. (c.f. bug 2829)
+	if (classlist_.empty())
 		lyxerr << "TextClassList::Read: no textclasses found!"
 		       << endl;
-		return false;
-	}
-	// Ok everything loaded ok, now sort the list.
-	sort(classlist_.begin(), classlist_.end(), less_textclass_avail_desc());
+	else 
+		// Ok everything loaded ok, now sort the list.
+		sort(classlist_.begin(), classlist_.end(), less_textclass_avail_desc());
 	return true;
 }
 

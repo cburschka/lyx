@@ -611,6 +611,32 @@ void LyX::execBatchCommands()
 	// aknowledged.
 	restoreGuiSession();
 
+	// if reconfiguration is needed.
+	if (textclasslist.empty()) {
+	    switch (Alert::prompt(
+		    _("No textclass is found"),
+		    _("LyX can not continue because no textclass is found. "
+		      "You can either reconfigure normally, or reconfigure using "
+		      "default text classes, or quit lyx."),
+		    0, 2,
+		    _("&Reconfigure"),
+		    _("&Use Default"),
+		    _("&Exit LyX")))
+		{
+		case 0:
+			// regular reconfigure
+			pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_RECONFIGURE, ""));
+			break;
+		case 1:
+			// reconfigure --without-latex-config
+			pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_RECONFIGURE,
+				" --without-latex-config"));
+			break;
+		}
+		pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_LYX_QUIT));
+		return;
+	}
+	
 	// Execute batch commands if available
 	if (batch_command.empty())
 		return;
@@ -625,6 +651,10 @@ void LyX::execBatchCommands()
 void LyX::restoreGuiSession()
 {
 	LyXView * view = newLyXView();
+
+	// if there is no valid class list, do not load any file. 
+	if (textclasslist.empty())
+		return;
 
 	// if some files were specified at command-line we assume that the
 	// user wants to edit *these* files and not to restore the session.

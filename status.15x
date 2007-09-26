@@ -99,6 +99,9 @@ What's new
 
 - Fix LaTeX error with captions in Program Listings (bug 4182).
 
+- Reconfiguration failure will no longer result in empty textclass lists.
+  Lyx now starts and asks for reconfigure if no textclass is found (bug 2829).
+
 * USER INTERFACE:
 
 - Fix a crash when closing a LyX window with document tabs (bug 4123).

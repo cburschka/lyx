@@ -434,14 +434,15 @@ docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
 
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
-void reconfigure(LyXView & lv)
+void reconfigure(LyXView & lv, string const & option)
 {
 	// emit message signal.
 	lv.message(_("Running configure..."));
 
 	// Run configure in user lyx directory
 	support::Path p(package().user_support());
-	string const configure_command = package().configure_command();
+	string configure_command = package().configure_command();
+	configure_command += option;
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
