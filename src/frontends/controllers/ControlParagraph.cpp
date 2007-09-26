@@ -44,13 +44,13 @@ ParagraphParameters & ControlParagraph::params()
 		return multiparsel_;
 	}
 
-	return bufferview()->cursor().paragraph().params();
+	return bufferview()->cursor().innerParagraph().params();
 }
 
 
 ParagraphParameters const & ControlParagraph::params() const
 {
-	return bufferview()->cursor().paragraph().params();
+	return bufferview()->cursor().innerParagraph().params();
 }
 
 
@@ -85,13 +85,13 @@ bool ControlParagraph::canIndent() const
 
 LyXAlignment ControlParagraph::alignPossible() const
 {
-	return bufferview()->cursor().paragraph().layout()->alignpossible;
+	return bufferview()->cursor().innerParagraph().layout()->alignpossible;
 }
 
 
 LyXAlignment ControlParagraph::alignDefault() const
 {
-	return bufferview()->cursor().paragraph().layout()->align;
+	return bufferview()->cursor().innerParagraph().layout()->align;
 }
 
 } // namespace frontend
