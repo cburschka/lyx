@@ -172,7 +172,13 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "note") {
 		dialog = new GuiNoteDialog(lyxview_);
 	} else if (name == "paragraph") {
-		dialog = new GuiParagraphDialog(lyxview_);
+#ifdef Q_WS_MACX
+		// On Mac show as a drawer at the right
+		dialog = new DockView<ControlParagraph, GuiParagraph>(guiview, name,
+			Qt::RightDockWidgetArea, Qt::Drawer);
+#else
+		dialog = new DockView<ControlParagraph, GuiParagraph>(guiview, name);
+#endif
 	} else if (name == "prefs") {
 		dialog = new GuiPrefsDialog(lyxview_);
 	} else if (name == "print") {

@@ -13,48 +13,51 @@
 #ifndef GUIPARAGRAPH_H
 #define GUIPARAGRAPH_H
 
-#include "GuiDialog.h"
 #include "ControlParagraph.h"
 #include "Layout.h"
 #include "ui_ParagraphUi.h"
+
+#include <QWidget>
 
 #include <map>
 
 namespace lyx {
 namespace frontend {
 
-class GuiParagraphDialog : public GuiDialog, public Ui::ParagraphUi
+class GuiParagraph : public QWidget, public Ui::ParagraphUi
 {
 	Q_OBJECT
 public:
-	GuiParagraphDialog(LyXView & lv);
+	GuiParagraph(ControlParagraph & controller);
+
+	/// update
+	void updateView();
+
+private:
 	///
 	void checkAlignmentRadioButtons();
 	///
 	void alignmentToRadioButtons(LyXAlignment align = LYX_ALIGN_LAYOUT);
 	///
 	LyXAlignment getAlignmentFromDialog();
-private:
-	///
-	void closeEvent(QCloseEvent * e);
 	///
 	typedef std::map<LyXAlignment, QRadioButton *> RadioMap;
 	RadioMap radioMap;
-	///
-	typedef std::map<LyXAlignment, docstring> AlignmentLabels;
-	AlignmentLabels labelMap;
-		
+
+	ControlParagraph & controller_;
+
+	QString const alignDefaultLabel;
 private Q_SLOTS:
 	///
-	void change_adaptor();
+	void changed();
 	///
-	void enableLinespacingValue(int);
-	/// parent controller
-	ControlParagraph & controller();
+	void on_synchronizedViewCB_toggled();
+	///
+	void on_restorePB_clicked();
+	///
+	void on_linespacing_activated(int);
 	/// Apply changes
-	void applyView();
-	/// update
-	void updateContents();
+	void on_applyPB_clicked();
 };
 
 } // namespace frontend
