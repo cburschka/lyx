@@ -2,7 +2,7 @@
  <class>ParagraphUi</class>
  <widget class="QDialog" name="ParagraphUi" >
   <property name="windowModality" >
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry" >
    <rect>
