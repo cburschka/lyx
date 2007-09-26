@@ -40,6 +40,8 @@ public:
 	const_iterator begin() const { return classlist_.begin(); }
 	///
 	const_iterator end() const { return classlist_.end(); }
+	///
+	bool empty() const { return classlist_.empty(); }
 
 	/// Gets textclass number from name, -1 if textclass name does not exist
 	std::pair<bool, textclass_type> const

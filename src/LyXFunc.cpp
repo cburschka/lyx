@@ -1200,7 +1200,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_RECONFIGURE:
 			BOOST_ASSERT(lyx_view_);
-			reconfigure(*lyx_view_);
+			// argument is any additional parameter to the configure.py command
+			reconfigure(*lyx_view_, argument);
 			break;
 
 		case LFUN_HELP_OPEN: {
