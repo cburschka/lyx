@@ -615,9 +615,9 @@ void LyX::execBatchCommands()
 	if (textclasslist.empty()) {
 	    switch (Alert::prompt(
 		    _("No textclass is found"),
-		    _("LyX can not continue because no textclass is found. "
+		    _("LyX cannot continue because no textclass is found. "
 		      "You can either reconfigure normally, or reconfigure using "
-		      "default text classes, or quit lyx."),
+		      "default textclasses, or quit LyX."),
 		    0, 2,
 		    _("&Reconfigure"),
 		    _("&Use Default"),
