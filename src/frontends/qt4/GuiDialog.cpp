@@ -15,6 +15,10 @@
 #include "qt_helpers.h"
 #include "frontends/LyXView.h"
 
+#include <QCloseEvent>
+#include <QSettings>
+#include <QShowEvent>
+
 using std::string;
 
 namespace lyx {
@@ -236,6 +240,23 @@ void GuiDialog::setController(Controller * controller)
 	controller_->setLyXView(*lyxview_);
 }
 
+
+void GuiDialog::showEvent(QShowEvent * e)
+{
+	QSettings settings;
+	string key = name_ + "/geometry";
+	restoreGeometry(settings.value(key.c_str()).toByteArray());
+	QDialog::showEvent(e);
+}
+
+
+void GuiDialog::closeEvent(QCloseEvent * e)
+{
+	QSettings settings;
+	string key = name_ + "/geometry";
+	settings.setValue(key.c_str(), saveGeometry());
+	QDialog::closeEvent(e);
+}
 
 } // namespace frontend
 } // namespace lyx

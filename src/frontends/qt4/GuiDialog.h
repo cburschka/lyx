@@ -18,6 +18,9 @@
 #include <QDialog>
 #include <QObject>
 
+class QCloseEvent;
+class QShowEvent;
+
 namespace lyx {
 namespace frontend {
 
@@ -75,6 +78,10 @@ public:
 	virtual void applyView() {}
 	/// default: do nothing
 	virtual void updateContents() {}
+	///
+	void closeEvent(QCloseEvent *);
+	///
+	void showEvent(QShowEvent *);
 
 protected:
 	/// Hide the dialog.
