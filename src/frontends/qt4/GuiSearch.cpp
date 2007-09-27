@@ -79,7 +79,7 @@ void GuiSearchDialog::showView()
 void GuiSearchDialog::closeEvent(QCloseEvent * e)
 {
 	slotClose();
-	e->accept();
+	GuiDialog::closeEvent(e);
 }
 
 

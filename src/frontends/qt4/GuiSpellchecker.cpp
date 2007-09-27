@@ -120,7 +120,7 @@ void GuiSpellcheckerDialog::replaceChanged(const QString & str)
 void GuiSpellcheckerDialog::closeEvent(QCloseEvent * e)
 {
 	slotClose();
-	e->accept();
+	GuiDialog::closeEvent(e);
 }
 
 
