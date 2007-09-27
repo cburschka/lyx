@@ -5,14 +5,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>496</width>
+    <width>526</width>
     <height>176</height>
    </rect>
   </property>
   <property name="sizePolicy" >
    <sizepolicy>
-    <hsizetype>5</hsizetype>
-    <vsizetype>5</vsizetype>
+    <hsizetype>3</hsizetype>
+    <vsizetype>3</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -36,7 +36,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="0" >
+   <item rowspan="3" row="0" column="2" >
     <layout class="QGridLayout" >
      <property name="margin" >
       <number>0</number>
@@ -45,7 +45,7 @@
       <number>6</number>
      </property>
      <item row="0" column="0" >
-      <widget class="QCheckBox" name="indentCB" >
+      <widget class="QCheckBox" name="synchronizedViewCB" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -55,233 +55,256 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>&amp;Indent Paragraph</string>
+        <string>I&amp;mmediate Apply</string>
        </property>
-      </widget>
-     </item>
-     <item rowspan="3" row="0" column="1" >
-      <widget class="QGroupBox" name="aligmentGB" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="title" >
-        <string>Alignment</string>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>9</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item row="4" column="0" >
-         <widget class="QRadioButton" name="alignRightRB" >
-          <property name="text" >
-           <string>&amp;Right</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0" >
-         <widget class="QRadioButton" name="alignCenterRB" >
-          <property name="text" >
-           <string>&amp;Center</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" >
-         <widget class="QRadioButton" name="alignLeftRB" >
-          <property name="text" >
-           <string>&amp;Left</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" >
-         <widget class="QRadioButton" name="alignJustRB" >
-          <property name="text" >
-           <string>&amp;Justified</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" >
-         <widget class="QRadioButton" name="alignDefaultRB" >
-          <property name="font" >
-           <font>
-            <family>MS Shell Dlg 2</family>
-            <pointsize>8</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-            <underline>false</underline>
-            <strikeout>false</strikeout>
-           </font>
-          </property>
-          <property name="toolTip" >
-           <string>Use the default alignment for this paragraph, whatever it is.</string>
-          </property>
-          <property name="text" >
-           <string>Paragraph's &amp;Default</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </widget>
      </item>
      <item row="2" column="0" >
-      <widget class="QGroupBox" name="labelwidthGB" >
-       <property name="enabled" >
+      <widget class="QPushButton" name="applyPB" >
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+       <property name="autoDefault" >
         <bool>false</bool>
        </property>
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="title" >
-        <string>Label Width</string>
-       </property>
-       <layout class="QGridLayout" >
-        <property name="margin" >
-         <number>9</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item row="0" column="0" >
-         <widget class="QLabel" name="TextLabel2" >
-          <property name="toolTip" >
-           <string>This text defines the width of the paragraph label</string>
-          </property>
-          <property name="text" >
-           <string>&amp;Longest label</string>
-          </property>
-          <property name="buddy" >
-           <cstring>labelWidth</cstring>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" >
-         <widget class="QLineEdit" name="labelWidth" >
-          <property name="toolTip" >
-           <string>This text defines the width of the paragraph label</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </widget>
      </item>
      <item row="1" column="0" >
-      <widget class="QGroupBox" name="groupBox" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+      <widget class="QPushButton" name="restorePB" >
+       <property name="text" >
+        <string>&amp;Restore</string>
        </property>
-       <property name="title" >
-        <string>Line &amp;spacing</string>
+       <property name="autoDefault" >
+        <bool>false</bool>
        </property>
-       <layout class="QGridLayout" >
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QCheckBox" name="indentCB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>&amp;Indent Paragraph</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QGroupBox" name="labelwidthGB" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title" >
+      <string>Label Width</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="TextLabel2" >
+        <property name="toolTip" >
+         <string>This text defines the width of the paragraph label</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Longest label</string>
+        </property>
+        <property name="buddy" >
+         <cstring>labelWidth</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="labelWidth" >
+        <property name="toolTip" >
+         <string>This text defines the width of the paragraph label</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title" >
+      <string>Line &amp;spacing</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QComboBox" name="linespacing" >
+        <item>
+         <property name="text" >
+          <string>Default</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Single</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>1.5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Double</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Custom</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="linespacingValue" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item rowspan="3" row="0" column="1" >
+    <widget class="QGroupBox" name="aligmentGB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title" >
+      <string>Alignment</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>0</number>
         </property>
         <property name="spacing" >
          <number>6</number>
         </property>
-        <item row="0" column="0" >
-         <widget class="QComboBox" name="linespacing" >
-          <item>
-           <property name="text" >
-            <string>Default</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Single</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>1.5</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Double</string>
-           </property>
-          </item>
-          <item>
-           <property name="text" >
-            <string>Custom</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item row="0" column="1" >
-         <widget class="QLineEdit" name="linespacingValue" >
-          <property name="enabled" >
-           <bool>false</bool>
+        <item>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
           </property>
-         </widget>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QRadioButton" name="alignDefaultRB" >
+            <property name="font" >
+             <font>
+              <family>MS Shell Dlg 2</family>
+              <pointsize>8</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
+            <property name="toolTip" >
+             <string>Use the default alignment for this paragraph, whatever it is.</string>
+            </property>
+            <property name="text" >
+             <string>Paragraph's &amp;Default</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="alignJustRB" >
+            <property name="text" >
+             <string>&amp;Justified</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="alignLeftRB" >
+            <property name="text" >
+             <string>&amp;Left</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="alignCenterRB" >
+            <property name="text" >
+             <string>&amp;Center</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="alignRightRB" >
+            <property name="text" >
+             <string>&amp;Right</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
-      </widget>
-     </item>
-     <item rowspan="2" row="1" column="2" >
-      <layout class="QGridLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item row="0" column="0" >
-        <widget class="QCheckBox" name="synchronizedViewCB" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text" >
-          <string>I&amp;mmediate Apply</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" >
-        <widget class="QPushButton" name="applyPB" >
-         <property name="text" >
-          <string>&amp;Apply</string>
-         </property>
-         <property name="autoDefault" >
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" >
-        <widget class="QPushButton" name="restorePB" >
-         <property name="text" >
-          <string>&amp;Restore</string>
-         </property>
-         <property name="autoDefault" >
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
