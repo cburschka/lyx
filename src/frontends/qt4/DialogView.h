@@ -17,7 +17,9 @@
 #include "qt_helpers.h"
 #include "debug.h"
 
+#include <QCloseEvent>
 #include <QDialog>
+#include <QSettings>
 
 #include <string>
 
@@ -89,6 +91,22 @@ private:
 	MyWidget * widget_;
 	Controller * controller_;
 	std::string name_;
+
+	void showEvent(QShowEvent * e)
+	{
+		QSettings settings;
+		std::string key = name_ + "/geometry";
+		restoreGeometry(settings.value(key.c_str()).toByteArray());
+	    QDialog::showEvent(e);
+	}
+
+	void closeEvent(QCloseEvent * e)
+	{
+		QSettings settings;
+		std::string key = name_ + "/geometry";
+		settings.setValue(key.c_str(), saveGeometry());
+	    QDialog::closeEvent(e);
+	}
 };
 
 } // frontend

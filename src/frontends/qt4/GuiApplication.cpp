@@ -127,6 +127,10 @@ GuiApplication * guiApp;
 GuiApplication::GuiApplication(int & argc, char ** argv)
 	: QApplication(argc, argv), Application(argc, argv)
 {
+	QCoreApplication::setOrganizationName("The LyX Community");
+	QCoreApplication::setOrganizationDomain("lyx.org");
+	QCoreApplication::setApplicationName("LyX");
+
 	// Qt bug? setQuitOnLastWindowClosed(true); does not work
 	setQuitOnLastWindowClosed(false);
 
