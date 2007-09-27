@@ -289,7 +289,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 		if (e.type_ == support::ErrorException) {
 			Alert::error(e.title_, e.details_);
 			LyX::cref().emergencyCleanup();
-			::exit(1);
+			QApplication::exit(1);
 		} else if (e.type_ == support::WarningException) {
 			Alert::warning(e.title_, e.details_);
 			return return_value;
@@ -298,12 +298,12 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	catch (std::exception  const & e) {
 		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
 		LyX::cref().emergencyCleanup();
-		::exit(1);
+		QApplication::exit(1);
 	}
 	catch (...) {
 		lyxerr << "Caught some really weird exception..." << endl;
 		LyX::cref().emergencyCleanup();
-		::exit(1);
+		QApplication::exit(1);
 	}
 
 	return return_value;
