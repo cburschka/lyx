@@ -296,12 +296,18 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 		}
 	}
 	catch (std::exception  const & e) {
-		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
+		docstring s = _("LyX has caught an exception, it will now "
+			"attemp to save all unsaved documents and exit."
+			"\n\nException: ");
+		s += from_ascii(e.what());
+		Alert::error(_("Software exception Detected"), s);
 		LyX::cref().emergencyCleanup();
 		QApplication::exit(1);
 	}
 	catch (...) {
-		lyxerr << "Caught some really weird exception..." << endl;
+		docstring s = _("LyX has caught some really weird exception, it will "
+			"now attemp to save all unsaved documents and exit.");
+		Alert::error(_("Software exception Detected"), s);
 		LyX::cref().emergencyCleanup();
 		QApplication::exit(1);
 	}
