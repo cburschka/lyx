@@ -258,12 +258,10 @@ Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary)
 // FIXME: This does not work within mathed!
 CurStatus status(BufferView const * bv, DocIterator const & dit)
 {
-	// FIXME: it's be better to have something like TextMetrics::status().
-	TextMetrics const & tm = bv->textMetrics(dit.bottom().text());
-	int par_pos = tm.parPosition(dit.bottom().pit());
-	if (par_pos < 0)
+	Point const p = bv_funcs::getPos(*bv, dit, dit.boundary());
+	if (p.y_ < 0)
 		return CUR_ABOVE;
-	else if (par_pos > bv->workHeight())
+	else if (p.y_ > bv->workHeight())
 		return CUR_BELOW;
 		
 	return CUR_INSIDE;
