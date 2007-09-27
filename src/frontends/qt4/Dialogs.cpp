@@ -173,8 +173,7 @@ Dialog * Dialogs::build(string const & name)
 		dialog = new GuiNoteDialog(lyxview_);
 	} else if (name == "paragraph") {
 		DockView<ControlParagraph, GuiParagraph> * dv =
-			new DockView<ControlParagraph, GuiParagraph>(guiview,
-			name, Qt::NoDockWidgetArea);
+			new DockView<ControlParagraph, GuiParagraph>(guiview, name);
 		dv->setFloating(true);
 		dialog = dv;
 	} else if (name == "prefs") {
