@@ -333,14 +333,16 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 		os << "[" << params_.pos << "]";
 		if (params_.height_special == "none") {
 			// FIXME UNICODE
-			os << '[' << from_ascii(params_.height.asLatexString())
-			   << ']';
+			os << "[" << from_ascii(params_.height.asLatexString()) << "]";
 		} else {
 			// Special heights
-			// FIXME UNICODE
-			os << "[" << params_.height.value()
-			   << '\\' << from_utf8(params_.height_special)
-			   << ']';
+			// set no optional argument when the value is the default "1\height"
+			// (special units like \height are handled as "in")
+			if (params_.height != Length("1in")) {
+				// FIXME UNICODE
+				os << "[" << params_.height.value()
+					<< "\\" << from_utf8(params_.height_special) << "]";
+			}
 		}
 		if (params_.inner_pos != params_.pos)
 			os << "[" << params_.inner_pos << "]";

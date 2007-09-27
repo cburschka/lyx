@@ -430,7 +430,7 @@ bool getTokenValue(string const & str, char const * token, bool & flag)
 
 bool getTokenValue(string const & str, char const * token, Length & len)
 {
-	// set the lenght to be zero() as default as this it should be if not
+	// set the length to be zero() as default as this it should be if not
 	// in the file format.
 	len = Length();
 	string tmp;

@@ -33,6 +33,7 @@ private Q_SLOTS:
 	void change_adaptor();
 	void innerBoxChanged(const QString &);
 	void typeChanged(int);
+	void heightChecked(int);
 	void restoreClicked();
 
 private:

@@ -1,15 +1,12 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BoxUi</class>
  <widget class="QDialog" name="BoxUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>333</width>
-    <height>274</height>
+    <width>348</width>
+    <height>256</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,361 +15,400 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
+  <widget class="QWidget" name="layoutWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>220</y>
+     <width>328</width>
+     <height>27</height>
+    </rect>
    </property>
-   <property name="spacing" >
-    <number>6</number>
+   <layout class="QHBoxLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="restorePB" >
+      <property name="toolTip" >
+       <string/>
+      </property>
+      <property name="text" >
+       <string>&amp;Restore</string>
+      </property>
+      <property name="autoDefault" >
+       <bool>false</bool>
+      </property>
+      <property name="default" >
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer>
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType" >
+       <enum>QSizePolicy::Expanding</enum>
+      </property>
+      <property name="sizeHint" >
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="okPB" >
+      <property name="toolTip" >
+       <string/>
+      </property>
+      <property name="text" >
+       <string>&amp;OK</string>
+      </property>
+      <property name="default" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="applyPB" >
+      <property name="toolTip" >
+       <string/>
+      </property>
+      <property name="text" >
+       <string>&amp;Apply</string>
+      </property>
+      <property name="autoDefault" >
+       <bool>false</bool>
+      </property>
+      <property name="default" >
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="closePB" >
+      <property name="text" >
+       <string>&amp;Close</string>
+      </property>
+      <property name="autoDefault" >
+       <bool>false</bool>
+      </property>
+      <property name="default" >
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>321</width>
+     <height>24</height>
+    </rect>
    </property>
-   <item row="3" column="2" >
-    <widget class="LengthCombo" name="heightUnitsLC" />
-   </item>
-   <item row="1" column="1" colspan="2" >
-    <widget class="QComboBox" name="innerBoxCO" >
-     <property name="toolTip" >
-      <string>Inner box -- needed for fixed width &amp; line breaks</string>
-     </property>
-     <item>
+   <layout class="QHBoxLayout" >
+    <property name="margin" >
+     <number>1</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QCheckBox" name="heightCB" >
+      <property name="toolTip" >
+       <string/>
+      </property>
       <property name="text" >
-       <string>None</string>
+       <string>&amp;Height (optional):</string>
       </property>
-     </item>
-     <item>
+      <property name="checked" >
+       <bool>true</bool>
+      </property>
+      <property name="tristate" >
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="heightED" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>1</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="toolTip" >
+       <string>Height value</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="LengthCombo" name="heightUnitsLC" />
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>321</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item row="2" column="1" >
+     <widget class="QLineEdit" name="widthED" >
+      <property name="sizePolicy" >
+       <sizepolicy>
+        <hsizetype>1</hsizetype>
+        <vsizetype>0</vsizetype>
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="toolTip" >
+       <string>Width value</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" colspan="2" >
+     <widget class="QComboBox" name="typeCO" >
+      <property name="toolTip" >
+       <string>Supported box types</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" >
+     <widget class="QLabel" name="innerBoxLA" >
+      <property name="toolTip" >
+       <string/>
+      </property>
       <property name="text" >
-       <string>Parbox</string>
+       <string>Inner Bo&amp;x:</string>
       </property>
-     </item>
-     <item>
+      <property name="buddy" >
+       <cstring>innerBoxCO</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2" >
+     <widget class="LengthCombo" name="widthUnitsLC" />
+    </item>
+    <item row="0" column="0" >
+     <widget class="QLabel" name="typeLA" >
+      <property name="toolTip" >
+       <string/>
+      </property>
       <property name="text" >
-       <string>Minipage</string>
+       <string>&amp;Decoration:</string>
       </property>
-     </item>
-    </widget>
-   </item>
-   <item row="0" column="1" colspan="2" >
-    <widget class="QComboBox" name="typeCO" >
-     <property name="toolTip" >
-      <string>Supported box types</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="innerBoxLA" >
-     <property name="toolTip" >
-      <string>Inner box -- needed for fixed width &amp; line breaks</string>
-     </property>
-     <property name="text" >
-      <string>Inner Bo&amp;x:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>innerBoxCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="typeLA" >
-     <property name="toolTip" >
-      <string>Supported box types</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Decoration:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>typeCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" >
-    <widget class="QLineEdit" name="heightED" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Height value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" >
-    <widget class="QLineEdit" name="widthED" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Width value</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="heightLA" >
-     <property name="toolTip" >
-      <string>Height value</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Height:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>heightED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <widget class="LengthCombo" name="widthUnitsLC" />
-   </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="widthLA" >
-     <property name="toolTip" >
-      <string>Width value</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Width:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>widthED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="3" >
-    <widget class="QGroupBox" name="groupBox_2" >
-     <property name="title" >
-      <string>Alignment</string>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
+      <property name="buddy" >
+       <cstring>typeCO</cstring>
       </property>
-      <property name="spacing" >
-       <number>6</number>
+     </widget>
+    </item>
+    <item row="2" column="0" >
+     <widget class="QLabel" name="widthLA" >
+      <property name="toolTip" >
+       <string/>
       </property>
-      <item row="1" column="2" >
-       <widget class="QComboBox" name="halignCO" >
-        <property name="toolTip" >
-         <string>Horizontal alignment of the content inside the box</string>
-        </property>
-        <item>
-         <property name="text" >
-          <string>Left</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Center</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Right</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Stretch</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QLabel" name="halignLA" >
-        <property name="toolTip" >
-         <string>Horizontal alignment of the content inside the box</string>
-        </property>
-        <property name="text" >
-         <string>Horizontal</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QComboBox" name="valignCO" >
-        <property name="toolTip" >
-         <string>Vertical alignment of the box (with regard to baseline)</string>
-        </property>
-        <item>
-         <property name="text" >
-          <string>Top</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Middle</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Bottom</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="valignLA" >
-        <property name="toolTip" >
-         <string>Vertical alignment of the box (with regard to baseline)</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Box:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>valignCO</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="label" >
-        <property name="text" >
-         <string>Co&amp;ntent:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>ialignCO</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QComboBox" name="ialignCO" >
-        <property name="toolTip" >
-         <string>Vertical alignment of the content inside the box</string>
-        </property>
-        <item>
-         <property name="text" >
-          <string>Top</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Middle</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Bottom</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Stretch</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="ialignLA" >
-        <property name="toolTip" >
-         <string>Vertical alignment of the content inside the box</string>
-        </property>
-        <property name="text" >
-         <string>Vertical</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="3" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="restorePB" >
-       <property name="toolTip" >
-        <string/>
-       </property>
+      <property name="text" >
+       <string>&amp;Width:</string>
+      </property>
+      <property name="buddy" >
+       <cstring>widthED</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" colspan="2" >
+     <widget class="QComboBox" name="innerBoxCO" >
+      <property name="toolTip" >
+       <string>Inner box -- needed for fixed width &amp; line breaks</string>
+      </property>
+      <item>
        <property name="text" >
-        <string>&amp;Restore</string>
+        <string>None</string>
        </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-       <property name="default" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="toolTip" >
-        <string/>
-       </property>
+      </item>
+      <item>
        <property name="text" >
-        <string>&amp;OK</string>
+        <string>Parbox</string>
        </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB" >
-       <property name="toolTip" >
-        <string/>
-       </property>
+      </item>
+      <item>
        <property name="text" >
-        <string>&amp;Apply</string>
+        <string>Minipage</string>
        </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-       <property name="default" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>110</y>
+     <width>321</width>
+     <height>104</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Alignment</string>
+   </property>
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item row="1" column="2" >
+     <widget class="QComboBox" name="halignCO" >
+      <property name="toolTip" >
+       <string>Horizontal alignment of the content inside the box</string>
+      </property>
+      <item>
        <property name="text" >
-        <string>&amp;Close</string>
+        <string>Left</string>
        </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Center</string>
        </property>
-       <property name="default" >
-        <bool>false</bool>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Right</string>
        </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-  </layout>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Stretch</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="2" >
+     <widget class="QLabel" name="halignLA" >
+      <property name="toolTip" >
+       <string>Horizontal alignment of the content inside the box</string>
+      </property>
+      <property name="text" >
+       <string>Horizontal</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" >
+     <widget class="QComboBox" name="valignCO" >
+      <property name="toolTip" >
+       <string>Vertical alignment of the box (with regard to baseline)</string>
+      </property>
+      <item>
+       <property name="text" >
+        <string>Top</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Middle</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Bottom</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="0" >
+     <widget class="QLabel" name="valignLA" >
+      <property name="toolTip" >
+       <string>Vertical alignment of the box (with regard to baseline)</string>
+      </property>
+      <property name="text" >
+       <string>&amp;Box:</string>
+      </property>
+      <property name="buddy" >
+       <cstring>valignCO</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" >
+     <widget class="QLabel" name="label" >
+      <property name="text" >
+       <string>Co&amp;ntent:</string>
+      </property>
+      <property name="buddy" >
+       <cstring>ialignCO</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" >
+     <widget class="QComboBox" name="ialignCO" >
+      <property name="toolTip" >
+       <string>Vertical alignment of the content inside the box</string>
+      </property>
+      <item>
+       <property name="text" >
+        <string>Top</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Middle</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Bottom</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Stretch</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="1" >
+     <widget class="QLabel" name="ialignLA" >
+      <property name="toolTip" >
+       <string>Vertical alignment of the content inside the box</string>
+      </property>
+      <property name="text" >
+       <string>Vertical</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
    <extends>QComboBox</extends>
    <header>LengthCombo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -380,6 +416,7 @@
   <tabstop>innerBoxCO</tabstop>
   <tabstop>widthED</tabstop>
   <tabstop>widthUnitsLC</tabstop>
+  <tabstop>heightCB</tabstop>
   <tabstop>heightED</tabstop>
   <tabstop>heightUnitsLC</tabstop>
   <tabstop>ialignCO</tabstop>
@@ -390,6 +427,9 @@
   <tabstop>closePB</tabstop>
   <tabstop>applyPB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

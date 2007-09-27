@@ -63,6 +63,8 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 		this, SLOT(change_adaptor()));
 	connect(valignCO, SIGNAL(highlighted(const QString &)),
 		this, SLOT(change_adaptor()));
+	connect(heightCB, SIGNAL(stateChanged(int)),
+		this, SLOT(change_adaptor()));
 	connect(heightED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT) ),
@@ -70,6 +72,7 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(restoreClicked()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
+	connect(heightCB, SIGNAL(stateChanged(int)), this, SLOT(heightChecked(int)));
 	connect(halignCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(ialignCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(innerBoxCO, SIGNAL(activated(const QString&)),
@@ -87,8 +90,9 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 	bc().addReadOnly(ialignCO);
 	bc().addReadOnly(halignCO);
 	bc().addReadOnly(widthED);
-	bc().addReadOnly(heightED);
 	bc().addReadOnly(widthUnitsLC);
+	bc().addReadOnly(heightCB);
+	bc().addReadOnly(heightED);
 	bc().addReadOnly(heightUnitsLC);
 
 	bc().setRestore(restorePB);
@@ -98,7 +102,7 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 
 	// initialize the length validator
 	bc().addCheckedLineEdit(widthED, widthLA);
-	bc().addCheckedLineEdit(heightED, heightLA);
+	bc().addCheckedLineEdit(heightED, heightCB);
 }
 
 
@@ -127,8 +131,11 @@ void GuiBoxDialog::innerBoxChanged(const QString & str)
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
 	halignCO->setEnabled(!ibox);
-	heightED->setEnabled(ibox);
-	heightUnitsLC->setEnabled(ibox);
+	heightCB->setEnabled(ibox);
+	if (heightCB->checkState() == Qt::Checked && ibox) {
+		heightED->setEnabled(true);
+		heightUnitsLC->setEnabled(true);
+	}
 	setSpecial(ibox);
 }
 
@@ -140,6 +147,7 @@ void GuiBoxDialog::typeChanged(int index)
 		valignCO->setEnabled(true);
 		ialignCO->setEnabled(true);
 		halignCO->setEnabled(false);
+		heightCB->setEnabled(true);
 		heightED->setEnabled(true);
 		heightUnitsLC->setEnabled(true);
 		setSpecial(true);
@@ -149,11 +157,23 @@ void GuiBoxDialog::typeChanged(int index)
 }
 
 
+void GuiBoxDialog::heightChecked(int checkState)
+{
+	if (checkState == Qt::Unchecked) {
+		heightED->setEnabled(false);
+		heightUnitsLC->setEnabled(false);
+	} else { 
+		heightED->setEnabled(true);
+		heightUnitsLC->setEnabled(true);
+	}
+}
+
 void GuiBoxDialog::restoreClicked()
 {
 	setInnerType(true, 2);
 	widthED->setText("100");
 	widthUnitsLC->setCurrentItem(Length::PCW);
+	heightCB->setCheckState(Qt::Checked);
 	heightED->setText("1");
 	for (int j = 0; j < heightUnitsLC->count(); j++) {
 		if (heightUnitsLC->itemText(j) == qt_("Total Height"))
@@ -230,9 +250,7 @@ void GuiBoxDialog::updateContents()
 			}
 		}
 	}
-
-	heightED->setEnabled(ibox);
-	heightUnitsLC->setEnabled(ibox);
+	heightCB->setEnabled(ibox);
 }
 
 
@@ -319,7 +337,16 @@ void GuiBoxDialog::applyView()
 	} else
 		height = widgetsToLength(heightED, heightUnitsLC);
 
-	controller().params().height = Length(height);
+	// the height parameter is omitted in InsetBox.cpp when the value
+	// is "1in" and "Total Height" is used as unit.
+	// 1in + "Total Height" means "1\height" which is the LaTeX default when
+	// no height is given
+	if (heightCB->checkState() == Qt::Checked)
+		controller().params().height = Length(height);
+	else {
+		controller().params().height = Length("1in");
+		controller().params().height_special = ids_spec_[3];
+	}
 }
 
 
