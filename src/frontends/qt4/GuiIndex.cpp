@@ -41,7 +41,7 @@ GuiIndexDialogBase::GuiIndexDialogBase(LyXView & lv,
 	label_ = label;
 	setupUi(this);
 	setViewTitle(title);
-	setController(new ControlCommand(*this, name, name));
+	setController(new ControlCommand(*this, name));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

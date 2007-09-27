@@ -29,7 +29,7 @@ GuiURLDialog::GuiURLDialog(LyXView & lv)
 {
 	setupUi(this);
 	setViewTitle( _("URL"));
-	setController(new ControlCommand(*this, "url", "url"));
+	setController(new ControlCommand(*this, "url"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

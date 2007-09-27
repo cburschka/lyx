@@ -34,7 +34,7 @@ vector<biblio::CiteStyle> ControlCitation::citeStyles_;
 
 
 ControlCitation::ControlCitation(Dialog & d)
-	: ControlCommand(d, "cite", "citation")
+	: ControlCommand(d, "citation")
 {}
 
 

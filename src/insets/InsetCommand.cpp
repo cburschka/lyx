@@ -208,7 +208,7 @@ void InsetCommandMailer::string2params(string const & name,
 	// by Text::readInset
 	string id;
 	lex >> id;
-	if (!lex || id != "LatexCommand")
+	if (!lex || id != "CommandInset")
 		return print_mailer_error("InsetCommandMailer", in, 2, "LatexCommand");
 
 	params.read(lex);

@@ -24,13 +24,8 @@ namespace frontend {
 
 class ControlCommand : public Controller {
 public:
-	/** LFUN_INSET_APPLY requires a name, "citation", "ref" etc so that
-	    it knows what to do with the rest of the contents.
-	    An empty \p lfun_name indicates that no action will occur on
-	    'Apply'.
-	 */
-	ControlCommand(Dialog &, std::string const & command_name,
-		       std::string const & lfun_name);
+	/// We need to know with what sort of inset we're associated.
+	ControlCommand(Dialog &, std::string const & insetType);
 	///
 	virtual ~ControlCommand() {}
 	///
@@ -49,6 +44,9 @@ public:
 private:
 	///
 	InsetCommandParams params_;
+	//FIXME It should be possible to eliminate lfun_name_
+	//now and recover that information from params().insetType().
+	//But let's not do that quite yet.
 	/// Flags what action is taken by Kernel::dispatch()
 	std::string const lfun_name_;
 };

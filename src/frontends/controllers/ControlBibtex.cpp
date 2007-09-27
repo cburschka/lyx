@@ -42,7 +42,7 @@ namespace frontend {
 
 
 ControlBibtex::ControlBibtex(Dialog & d)
-	: ControlCommand(d, "bibtex", "bibtex")
+	: ControlCommand(d, "bibtex")
 {}
 
 

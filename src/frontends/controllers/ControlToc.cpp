@@ -32,7 +32,7 @@ namespace lyx {
 namespace frontend {
 
 ControlToc::ControlToc(Dialog & d)
-	: ControlCommand(d, "tableofcontents", "toc")
+	: ControlCommand(d, "toc")
 {
 }
 

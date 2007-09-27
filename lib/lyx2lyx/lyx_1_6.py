@@ -256,6 +256,67 @@ def remove_inzip_options(document):
         i = i + 1
 
 
+def convert_inset_command(document):
+  """
+    Convert:
+      \begin_inset LatexCommand cmd 
+    to 
+      \begin_inset CommandInset InsetType
+      LatexCommand cmd
+  """
+  i = 0
+  while 1:
+    i = find_token(document.body, "\\begin_inset LatexCommand", i)
+    if i == -1:
+      return
+    line = document.body[i]
+    r = re.compile(r'\\begin_inset LatexCommand (.*)$')
+    m = r.match(line)
+    cmdName = m.group(1)
+    insetName = ""
+    #this is adapted from factory.cpp
+    if cmdName[0:4].lower() == "cite":
+      insetName = "citation"
+    elif cmdName == "url" or cmdName == "htmlurl":
+      insetName = "url"
+    elif cmdName[-3:] == "ref":
+      insetName = "ref"
+    elif cmdName == "tableofcontents":
+      insetName = "toc"
+    elif cmdName == "printnomenclature":
+      insetName = "nomencl_print"
+    elif cmdName == "printindex":
+      insetName = "index_print"
+    else:
+      insetName = cmdName
+    insertion = ["\\begin_inset CommandInset " + insetName, "LatexCommand " + cmdName]
+    document.body[i : i+1] = insertion
+
+
+def revert_inset_command(document):
+  """
+    Convert:
+      \begin_inset CommandInset InsetType
+      LatexCommand cmd
+    to 
+      \begin_inset LatexCommand cmd 
+    Some insets may end up being converted to insets earlier versions of LyX
+    will not be able to recognize. Not sure what to do about that.
+  """
+  i = 0
+  while 1:
+    i = find_token(document.body, "\\begin_inset CommandInset", i)
+    nextline = document.body[i+1]
+    r = re.compile(r'LatexCommand\s+(.*)$')
+    m = r.match(nextline)
+    if not m:
+      document.warning("Malformed LyX document: Missing LatexCommand in " + document.body[i] + ".")
+      continue
+    cmdName = m.group(1)
+    insertion = ["\\begin_inset LatexCommand " + cmdName]
+    document.body[i : i+2] = insertion
+
+
 def convert_wrapfig_options(document):
     "Convert optional options for wrap floats (wrapfig)."
     # adds the tokens "lines", "placement", and "overhang"
@@ -308,10 +369,12 @@ convert = [
            [284, []],
            [285, []], # an empty manifest is automatically added
            [286, []],
-           [287, [convert_wrapfig_options]]
+           [287, [convert_wrapfig_options]],
+           [288, [convert_inset_command]]
           ]
 
 revert =  [
+           [287, [revert_inset_command]],
            [286, [revert_wrapfig_options]],
            [285, [revert_pdf_options]],
            [284, [remove_manifest, remove_inzip_options]],

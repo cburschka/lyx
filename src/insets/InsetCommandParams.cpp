@@ -34,23 +34,43 @@ using std::ostream;
 using support::ExceptionMessage;
 using support::WarningException;
 
-InsetCommandParams::InsetCommandParams(string const & name)
-	: name_(name), preview_(false)
+
+//FIXME There is no reason now for this to take a string argument.
+//It'd be much more robust if it took an Inset::Code, since then
+//the compiler would do some checking for us.
+InsetCommandParams::InsetCommandParams(string const & insetType)
+	: insetType_(insetType), preview_(false)
 {
-	info_ = findInfo(name);
+	cmdName_ = getDefaultCmd(insetType);
+	info_ = findInfo(insetType, cmdName_);
 	BOOST_ASSERT(info_);
 	params_.resize(info_->n);
 }
 
 
+InsetCommandParams::InsetCommandParams(string const & insetType,
+	string const & cmdName)
+	: insetType_(insetType), cmdName_(cmdName), preview_(false)
+{
+	info_ = findInfo(insetType, cmdName);
+	BOOST_ASSERT(info_);
+	params_.resize(info_->n);
+}
+
+
+//FIXME This should go into the Insets themselves...so they will tell
+//us what parameters they want.
+//Should this just vanish in favor of the two arg version, or is there
+//a reason to use it in some cases? What should happen in the single
+//arg case, then? Maybe use the default? or leave that up to the inset?
 InsetCommandParams::CommandInfo const *
-InsetCommandParams::findInfo(std::string const & name)
+InsetCommandParams::findInfo(std::string const & insetType)
 {
 	// No parameter may be named "preview", because that is a required
 	// flag for all commands.
 
 	// InsetBibitem
-	if (name == "bibitem") {
+	if (insetType == "bibitem") {
 		static const char * const paramnames[] = {"label", "key", ""};
 		static const bool isoptional[] = {true, false};
 		static const CommandInfo info = {2, paramnames, isoptional};
@@ -58,7 +78,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetBibtex
-	if (name == "bibtex") {
+	if (insetType == "bibtex") {
 		static const char * const paramnames[] =
 				{"options", "btprint", "bibfiles", ""};
 		static const bool isoptional[] = {true, true, false};
@@ -67,17 +87,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetCitation
-	// FIXME: Use is_possible_cite_command() in
-	// InsetCitation, see comment in src/factory.cpp.
-	if (name == "cite" || name == "citet" || name == "citep" || name == "citealt" ||
-	    name == "citealp" || name == "citeauthor" || name == "citeyear" ||
-	    name == "citeyearpar" || name == "citet*" || name == "citep*" ||
-	    name == "citealt*" || name == "citealp*" ||
-	    name == "citeauthor*" || name == "Citet" || name == "Citep" ||
-	    name == "Citealt" || name == "Citealp" || name == "Citeauthor" ||
-	    name == "Citet*" || name == "Citep*" || name == "Citealt*" ||
-	    name == "Citealp*" || name == "Citeauthor*" ||
-	    name == "citefield" || name == "citetitle" || name == "cite*") {
+	if (insetType == "citation") {
 		// standard cite does only take one argument if jurabib is
 		// not used, but jurabib extends this to two arguments, so
 		// we have to allow both here. InsetCitation takes care that
@@ -90,7 +100,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetFloatlist
-	if (name == "floatlist") {
+	if (insetType == "floatlist") {
 		static const char * const paramnames[] = {"type", ""};
 		static const bool isoptional[] = {false};
 		static const CommandInfo info = {1, paramnames, isoptional};
@@ -98,22 +108,17 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetHfill
-	if (name == "hfill") {
+	if (insetType == "hfill") {
 		static const char * const paramnames[] = {""};
 		static const CommandInfo info = {0, paramnames, 0};
 		return &info;
 	}
 
 	// InsetInclude
-	if (name == "include" || name == "input" || name == "verbatiminput" ||
-	    name == "verbatiminput*") {
-		static const char * const paramnames[] = {"filename", ""};
-		static const bool isoptional[] = {false};
-		static const CommandInfo info = {1, paramnames, isoptional};
-		return &info;
-	}
-
-	if (name == "lstinputlisting") {
+	//FIXME This is really correct only for lstinputlistings, but it shouldn't
+	//cause a problem before we get things sorted out. Eventually, this calls
+	//InsetInclude::getParams(cmdName_), or something of the sort.
+	if (insetType == "include") {
 		static const char * const paramnames[] = {"filename", "lstparams", ""};
 		static const bool isoptional[] = {false, true};
 		static const CommandInfo info = {2, paramnames, isoptional};
@@ -121,7 +126,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetIndex, InsetPrintIndex, InsetLabel
-	if (name == "index" || name == "printindex" || name == "label") {
+	if (insetType == "index" || insetType == "index_print" || insetType == "label") {
 		static const char * const paramnames[] = {"name", ""};
 		static const bool isoptional[] = {false};
 		static const CommandInfo info = {1, paramnames, isoptional};
@@ -129,7 +134,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetNomencl
-	if (name == "nomenclature") {
+	if (insetType == "nomenclature") {
 		static const char * const paramnames[] = {"prefix", "symbol", "description", ""};
 		static const bool isoptional[] = {true, false, false};
 		static const CommandInfo info = {3, paramnames, isoptional};
@@ -137,7 +142,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetPrintNomencl
-	if (name == "printnomenclature") {
+	if (insetType == "nomencl_print") {
 		static const char * const paramnames[] = {"labelwidth", ""};
 		static const bool isoptional[] = {true};
 		static const CommandInfo info = {1, paramnames, isoptional};
@@ -145,8 +150,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetRef
-	if (name == "eqref" || name == "pageref" || name == "vpageref" ||
-	    name == "vref" || name == "prettyref" || name == "ref") {
+	if (insetType == "ref") {
 		static const char * const paramnames[] =
 				{"name", "reference", ""};
 		static const bool isoptional[] = {true, false};
@@ -155,7 +159,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetTOC
-	if (name == "tableofcontents") {
+	if (insetType == "toc") {
 		static const char * const paramnames[] = {"type", ""};
 		static const bool isoptional[] = {false};
 		static const CommandInfo info = {1, paramnames, isoptional};
@@ -163,7 +167,7 @@ InsetCommandParams::findInfo(std::string const & name)
 	}
 
 	// InsetUrl
-	if (name == "htmlurl" || name == "url") {
+	if (insetType == "url") {
 		static const char * const paramnames[] =
 				{"name", "target", ""};
 		static const bool isoptional[] = {true, false};
@@ -175,10 +179,55 @@ InsetCommandParams::findInfo(std::string const & name)
 }
 
 
+//FIXME Will eventually call a static method, etc.
+InsetCommandParams::CommandInfo const *
+		InsetCommandParams::findInfo(std::string const & insetType,
+		                             std::string const & cmdName)
+{
+	return findInfo(insetType);
+}
+
+
+//FIXME Should call InsetBibitem::getDefaultCmd(), eg
+std::string InsetCommandParams::getDefaultCmd(std::string insetType) {
+	if (insetType == "bibitem")
+		return "bibitem";
+	if (insetType == "bibtex") 
+		return "";
+	if (insetType == "citation")
+		return "cite";
+	if (insetType == "floatlist")
+		return "";
+	if (insetType == "hfill")
+		return "hfill";
+	if (insetType == "include")
+		return "include";
+	if (insetType == "index")
+		 return "index";
+	if (insetType == "index_print")
+		return "print_index";
+	if (insetType == "label")
+		return "label";
+	if (insetType == "nomenclature")
+		return "nomenclature";
+	if (insetType == "nomencl_print")
+		return "printnomenclature";
+	if (insetType == "ref")
+		return "ref";
+	if (insetType == "toc")
+		return "tableofcontents";
+	if (insetType == "url")
+		return "url";
+	return "";	
+}
+
+
 void InsetCommandParams::setCmdName(string const & name)
 {
-	name_ = name;
-	CommandInfo const * const info = findInfo(name);
+	//FIXME Check command compatibility
+	cmdName_ = name;
+	BOOST_ASSERT(!insetType_.empty());
+	CommandInfo const * const info = findInfo(insetType_, cmdName_);
 	BOOST_ASSERT(info);
 	ParamVector params(info->n);
 	// Overtake parameters with the same name
@@ -265,18 +314,43 @@ void InsetCommandParams::scanCommand(string const & cmd)
 
 void InsetCommandParams::read(Lexer & lex)
 {
+	//FIXME
 	if (lex.isOK()) {
 		lex.next();
-		name_ = lex.getString();
-		info_ = findInfo(name_);
-		if (!info_) {
-			lex.printError("InsetCommand: Unknown inset name `$$Token'");
-			throw ExceptionMessage(WarningException,
-				_("Unknown inset name: "),
-				from_utf8(name_));
+		string insetType = lex.getString();
+		if (!insetType_.empty() && insetType != insetType_) {
+			lex.printError("InsetCommand: Attempt to change type of parameters.");
+			throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
+				from_utf8("Attempt to change type of parameters."));
 		}
+		// OK, we survived...
+		insetType_ = insetType;
 	}
 
+	if (lex.isOK()) {
+		lex.next();
+		string test = lex.getString();
+		if (test != "LatexCommand") {
+			lex.printError("InsetCommand: no LatexCommand line found.");
+			throw ExceptionMessage(WarningException, _("InsetCommand error:"),
+				from_utf8("Can't find LatexCommand line."));
+		}
+	}
+	lex.next();
+	cmdName_ = lex.getString();
+	//FIXME
+	//check that this command is ok with the inset...
+	//so that'll be some kind of static call, depending 
+	//upon what insetType_ is.
+	//it's possible that should go into InsetCommand.cpp,
+	//or maybe it's a standalone function.
+	info_ = findInfo(insetType_, cmdName_);
+	if (!info_) {
+		lex.printError("InsetCommand: Unknown inset name `$$Token'");
+		throw ExceptionMessage(WarningException,
+			_("Unknown inset name: "), from_utf8(insetType_));
+	}
+	
 	string token;
 	while (lex.isOK()) {
 		lex.next();
@@ -294,9 +368,9 @@ void InsetCommandParams::read(Lexer & lex)
 			lex.next(true);
 			params_[i] = lex.getDocString();
 		} else {
-			lex.printError("Unknown parameter name `$$Token' for command " + name_);
+			lex.printError("Unknown parameter name `$$Token' for command " + cmdName_);
 			throw ExceptionMessage(WarningException,
-				_("Inset Command: ") + from_ascii(name_),
+				_("Inset Command: ") + from_ascii(cmdName_),
 				_("Unknown parameter name: ") + from_utf8(token));
 		}
 	}
@@ -312,7 +386,8 @@ void InsetCommandParams::read(Lexer & lex)
 
 void InsetCommandParams::write(ostream & os) const
 {
-	os << "LatexCommand " << name_ << '\n';
+	os << "CommandInset " << insetType_ << '\n';
+	os << "LatexCommand " << cmdName_ << '\n';
 	for (size_t i = 0; i < info_->n; ++i)
 		if (!params_[i].empty())
 			// FIXME UNICODE
@@ -324,7 +399,7 @@ void InsetCommandParams::write(ostream & os) const
 
 docstring const InsetCommandParams::getCommand() const
 {
-	docstring s = '\\' + from_ascii(name_);
+	docstring s = '\\' + from_ascii(cmdName_);
 	bool noparam = true;
 	for (size_t i = 0; i < info_->n; ++i) {
 		if (info_->optional[i]) {
@@ -364,7 +439,7 @@ std::string const InsetCommandParams::getOptions() const
 		if (info_->optional[i])
 			return to_utf8(params_[i]);
 	lyxerr << "Programming error: get nonexisting option in "
-	       << name_ << " inset." << endl;;
+	       << insetType_ << " inset." << endl;
 	return string();
 }
 
@@ -381,7 +456,7 @@ std::string const InsetCommandParams::getSecOptions() const
 		}
 	// Happens in InsetCitation
 	lyxerr << "Programming error: get nonexisting second option in "
-	       << name_ << " inset." << endl;;
+	       << insetType_ << " inset." << endl;
 	return string();
 }
 
@@ -404,7 +479,7 @@ void InsetCommandParams::setOptions(std::string const & o)
 			return;
 		}
 	lyxerr << "Programming error: set nonexisting option in "
-	       << name_ << " inset." << endl;;
+	       << insetType_ << " inset." << endl;
 }
 
 
@@ -422,7 +497,7 @@ void InsetCommandParams::setSecOptions(std::string const & s)
 		}
 	// Happens in InsetCitation
 	lyxerr << "Programming error: set nonexisting second option in "
-	       << name_ << " inset." << endl;;
+	       << insetType_ << " inset." << endl;
 }
 
 
@@ -463,7 +538,8 @@ void InsetCommandParams::clear()
 bool operator==(InsetCommandParams const & o1,
 		InsetCommandParams const & o2)
 {
-	return o1.name_ == o2.name_ &&
+	return o1.insetType_ == o2.insetType_ &&
+	       o1.cmdName_ == o2.cmdName_ &&
 	       o1.info_ == o2.info_ &&
 	       o1.params_ == o2.params_ &&
 	       o1.preview_ == o2.preview_;

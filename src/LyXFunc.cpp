@@ -1430,7 +1430,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				InsetBranchParams p;
 				data = InsetBranchMailer::params2string(p);
 			} else if (name == "citation") {
-				InsetCommandParams p("cite");
+				InsetCommandParams p("citation");
 				data = InsetCommandMailer::params2string(name, p);
 			} else if (name == "ert") {
 				data = InsetERTMailer::params2string(InsetCollapsable::Open);
@@ -1510,7 +1510,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					arg = token(argument, '|', 0);
 					opt1 = token(argument, '|', 1);
 				}
-				InsetCommandParams icp("cite");
+				InsetCommandParams icp("citation");
 				icp["key"] = from_utf8(arg);
 				if (!opt1.empty())
 					icp["before"] = from_utf8(opt1);

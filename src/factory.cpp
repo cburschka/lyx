@@ -216,13 +216,13 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 		}
 
 		case LFUN_INDEX_PRINT:
-			return new InsetPrintIndex(InsetCommandParams("printindex"));
+			return new InsetPrintIndex(InsetCommandParams("index_print"));
 
 		case LFUN_NOMENCL_PRINT:
-			return new InsetPrintNomencl(InsetCommandParams("printnomenclature"));
+			return new InsetPrintNomencl(InsetCommandParams("nomencl_print"));
 
 		case LFUN_TOC_INSERT:
-			return new InsetTOC(InsetCommandParams("tableofcontents"));
+			return new InsetTOC(InsetCommandParams("toc"));
 
 		case LFUN_ENVIRONMENT_INSERT:
 			return new InsetEnvironment(params, cmd.argument());
@@ -251,7 +251,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				return new InsetBibtex(icp);
 
 			} else if (name == "citation") {
-				InsetCommandParams icp("cite");
+				InsetCommandParams icp("citation");
 				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 					icp);
 				return new InsetCitation(icp);
@@ -314,7 +314,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				return new InsetRef(icp, bv->buffer());
 
 			} else if (name == "toc") {
-				InsetCommandParams icp("tableofcontents");
+				InsetCommandParams icp("toc");
 				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 					icp);
 				return new InsetTOC(icp);
@@ -393,62 +393,47 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 	string tmptok = lex.getString();
 
 	// test the different insets
-	if (tmptok == "LatexCommand") {
+	if (tmptok == "CommandInset") {
 		lex.next();
-		string const cmdName = lex.getString();
-		lex.pushToken(cmdName);
+		string const insetType = lex.getString();
+		lex.pushToken(insetType);
 
-		InsetCommandParams inscmd(cmdName);
+		//FIXME 
+		//Inset::Code const code = Inset::translate(insetType);
+		//if (code == Inset::NO_CODE) { choke as below; }
+		//InsetCommandParams inscmd();
+		InsetCommandParams inscmd(insetType);
 		inscmd.read(lex);
 
-		// This strange command allows LyX to recognize "natbib" style
-		// citations: citet, citep, Citet etc.
-		// FIXME: We already have partial support for \\fullcite and
-		// the various \\footcite commands. We should increase the
-		// file format number and read these commands here, too.
-		// Then we should use is_possible_cite_command() in
-		// InsetCitation to test for valid cite commands.
-		if (compare_ascii_no_case(cmdName.substr(0,4), "cite") == 0) {
+		if (insetType == "citation") {
 			inset.reset(new InsetCitation(inscmd));
-		} else if (cmdName == "bibitem") {
+		} else if (insetType == "bibitem") {
 			inset.reset(new InsetBibitem(inscmd));
-		} else if (cmdName == "bibtex") {
+		} else if (insetType == "bibtex") {
 			inset.reset(new InsetBibtex(inscmd));
-		} else if (cmdName == "index") {
+		} else if (insetType == "index") {
 			inset.reset(new InsetIndex(inscmd));
-		} else if (cmdName == "nomenclature") {
+		} else if (insetType == "nomenclature") {
 			inset.reset(new InsetNomencl(inscmd));
-		} else if (cmdName == "include") {
+		} else if (insetType == "include") {
 			inset.reset(new InsetInclude(inscmd));
-		} else if (cmdName == "label") {
+		} else if (insetType == "label") {
 			inset.reset(new InsetLabel(inscmd));
-		} else if (cmdName == "url"
-			   || cmdName == "htmlurl") {
+		} else if (insetType == "url") {
 			inset.reset(new InsetUrl(inscmd));
-		} else if (cmdName == "ref"
-			   || cmdName == "eqref"
-			   || cmdName == "pageref"
-			   || cmdName == "vref"
-			   || cmdName == "vpageref"
-			   || cmdName == "prettyref") {
+		} else if (insetType == "ref") {
 			if (!inscmd["name"].empty()
 			    || !inscmd["reference"].empty()) {
 				inset.reset(new InsetRef(inscmd, buf));
 			}
-		} else if (cmdName == "tableofcontents") {
+		} else if (insetType == "toc") {
 			inset.reset(new InsetTOC(inscmd));
-		} else if (cmdName == "listofalgorithms") {
-			inset.reset(new InsetFloatList("algorithm"));
-		} else if (cmdName == "listoffigures") {
-			inset.reset(new InsetFloatList("figure"));
-		} else if (cmdName == "listoftables") {
-			inset.reset(new InsetFloatList("table"));
-		} else if (cmdName == "printindex") {
+		} else if (insetType == "index_print") {
 			inset.reset(new InsetPrintIndex(inscmd));
-		} else if (cmdName == "printnomenclature") {
+		} else if (insetType == "nomencl_print") {
 			inset.reset(new InsetPrintNomencl(inscmd));
 		} else {
-			lyxerr << "unknown CommandInset '" << cmdName
+			lyxerr << "unknown CommandInset '" << insetType
 			       << "'" << std::endl;
 			while (lex.isOK() && lex.getString() != "\\end_inset")
 				lex.next();

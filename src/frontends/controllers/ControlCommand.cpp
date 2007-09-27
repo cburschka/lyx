@@ -21,10 +21,8 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-ControlCommand::ControlCommand(Dialog & dialog, string const & command_name,
-			       string const & lfun_name)
-	: Controller(dialog), params_(command_name),
-	  lfun_name_(lfun_name)
+ControlCommand::ControlCommand(Dialog & dialog, string const & insetType)
+	: Controller(dialog), params_(insetType), lfun_name_(insetType)
 {}
 
 
@@ -48,8 +46,8 @@ void ControlCommand::dispatchParams()
 	if (lfun_name_.empty())
 		return;
 
-	string const lfun = InsetCommandMailer::params2string(lfun_name_,
-							      params_);
+	string const lfun = 
+		InsetCommandMailer::params2string(lfun_name_, params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 

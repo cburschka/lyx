@@ -25,8 +25,15 @@ class Lexer;
 
 class InsetCommandParams {
 public:
-	/// Construct parameters for command \p name. \p name must be known.
-	explicit InsetCommandParams(std::string const & name);
+	/// Construct parameters for inset \p insetType, using
+	/// \p insetType as default for \p cmdName_.
+	explicit InsetCommandParams(std::string const & insetType);
+	/// Construct parameters for inset \p insetType with
+	/// command name \p cmdName.
+	explicit InsetCommandParams(std::string const & insetType,
+			std::string const & cmdName);
+	///
+	std::string insetType() { return insetType_; }
 	///
 	void read(Lexer &);
 	/// Parse the command
@@ -37,13 +44,9 @@ public:
 	/// Build the complete LaTeX command
 	docstring const getCommand() const;
 	/// Return the command name
-	std::string const & getCmdName() const { return name_; }
+	std::string const & getCmdName() const { return cmdName_; }
 	/// this is used by listings package.
 	std::string const getOptions() const;
-private:
-	/// FIXME remove
-	std::string const getSecOptions() const;
-public:
 	/// FIXME remove
 	std::string const getContents() const;
 	/// Set the name to \p n. This must be a known name. All parameters
@@ -52,10 +55,6 @@ public:
 	void setCmdName(std::string const & n);
 	/// this is used by the listings package
 	void setOptions(std::string const &);
-private:
-	/// FIXME remove
-	void setSecOptions(std::string const &);
-public:
 	/// FIXME remove
 	void setContents(std::string const &);
 	/// get parameter \p name
@@ -70,6 +69,10 @@ public:
 	void clear();
 
 private:
+	/// FIXME remove
+	std::string const getSecOptions() const;
+	/// FIXME remove
+	void setSecOptions(std::string const &);
 	///
 	struct CommandInfo {
 		/// Number of parameters
@@ -79,13 +82,23 @@ private:
 		/// Tells whether a parameter is optional
 		bool const * optional;
 	};
-	/// Get information for command \p name.
-	/// Returns 0 if the command is not known.
-	static CommandInfo const * findInfo(std::string const & name);
+	/// Get information for inset type \p insetType.
+	/// Returns 0 if the inset is not known.
+	static CommandInfo const * findInfo(std::string const & insetType);
+	/// Get information for \p insetType and command \p cmdName.
+	/// Returns 0 if the combination is not known.
+	/// Don't call this without first making sure the command name is
+	/// acceptable to the inset.
+	static CommandInfo const * findInfo(std::string const & insetType,
+	                                    std::string const & cmdName);
+	///
+	std::string getDefaultCmd(std::string insetType);
 	/// Description of all command properties
 	CommandInfo const * info_;
+	/// what kind of inset we're the parameters for
+	std::string insetType_;
 	/// The name of this command as it appears in .lyx and .tex files
-	std::string name_;
+	std::string cmdName_;
 	///
 	typedef std::vector<docstring> ParamVector;
 	/// The parameters (both optional and required ones). The order is

@@ -63,7 +63,7 @@ private:
 	class Cache {
 	public:
 		///
-		Cache() : engine(biblio::ENGINE_BASIC), params("cite") {}
+		Cache() : engine(biblio::ENGINE_BASIC), params("citation") {}
 		///
 		biblio::CiteEngine engine;
 		///

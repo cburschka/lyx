@@ -28,7 +28,7 @@ GuiBibitemDialog::GuiBibitemDialog(LyXView & lv)
 {
 	setupUi(this);
 	setViewTitle(_("Bibliography Entry Settings"));
-	setController(new ControlCommand(*this, "bibitem", "bibitem"));
+	setController(new ControlCommand(*this, "bibitem"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

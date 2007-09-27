@@ -33,7 +33,7 @@ GuiNomenclDialog::GuiNomenclDialog(LyXView & lv)
 	: GuiDialog(lv, "nomenclature")
 {
 	setupUi(this);
-	setController(new ControlCommand(*this, "nomenclature", "nomenclature"));
+	setController(new ControlCommand(*this, "nomenclature"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

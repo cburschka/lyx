@@ -77,6 +77,9 @@ namespace frontend {
 
 namespace {
 
+//This list should be kept in sync with the list of insets in src/insets/Inset.cpp.
+//I.e., if a dialog goes with an inset, the dialog should have the same name as the
+//inset.
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "embedding", "errorlist", "ert", "external", "file",
