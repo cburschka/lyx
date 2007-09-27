@@ -85,7 +85,10 @@ bool ButtonController::setReadOnly(bool ro)
 
 	policy_.input(ro ?
 		ButtonPolicy::SMI_READ_ONLY : ButtonPolicy::SMI_READ_WRITE);
-	refreshReadOnly();
+	// refreshReadOnly(); This will enable all widgets in dialogs, no matter if
+	//                    they allowed to be enabled, so when you plan to
+	//                    reenable this call, read this before:
+    // http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128222.html
 	refresh();
 	return ro;
 }
