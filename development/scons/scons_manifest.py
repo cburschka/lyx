@@ -840,6 +840,7 @@ src_frontends_qt4_header_files = Split('''
     BulletsModule.h
     ButtonController.h
     ColorCache.h
+    DialogView.h
     DockView.h
     EmptyTable.h
     FloatPlacement.h
