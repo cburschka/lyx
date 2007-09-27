@@ -340,11 +340,11 @@ def revert_wrapfig_options(document):
     "Revert optional options for wrap floats (wrapfig)."
     i = 0
     while True:
-        i = find_tokens(document.body, "lines", i)
+        i = find_token(document.body, "lines", i)
         if i == -1:
             return
         del document.body[i]
-        j = find_tokens(document.body, "overhang", i+1)
+        j = find_token(document.body, "overhang", i+1)
         if j != i + 1 and j != -1:
             document.warning("Malformed LyX document: Couldn't find overhang parameter of wrap float.")
         if j == -1:
