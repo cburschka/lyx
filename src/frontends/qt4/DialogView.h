@@ -1,0 +1,97 @@
+// -*- C++ -*-
+/**
+ * \file DialogView.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Abdelrazak Younes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef DIALOG_VIEW_H
+#define DIALOG_VIEW_H
+
+#include "controllers/Dialog.h"
+#include "GuiView.h"
+#include "qt_helpers.h"
+#include "debug.h"
+
+#include <QDialog>
+
+#include <string>
+
+namespace lyx {
+namespace frontend {
+
+/// Window Dialog container for LyX dialogs.
+/// This template class that encapsulates a given Widget inside a
+/// QDialog and presents a Dialog interface
+template<class MyController, class MyWidget>
+class DialogView : public QDialog, public Dialog
+{
+public:
+	DialogView(
+		GuiViewBase & parent, ///< the main window where to dock.
+		std::string const & name, ///< dialog identifier.
+		bool modal = false, ///< Window modality.
+		Qt::WindowFlags flags = 0
+		)
+		: QDialog(&parent, flags), name_(name)
+	{
+		setModal(modal);
+		MyController * c = new MyController(*this);
+		controller_ = c;
+		controller_->setLyXView(parent);
+		widget_ = new MyWidget(*c, this);
+		setWindowTitle("LyX: " + widget_->windowTitle());
+	}
+
+	/// Dialog inherited methods
+	//@{
+	void applyView() {}
+	void hideView()
+	{
+		controller().clearParams();
+		QDialog::hide();
+	}
+	void showData(std::string const & data)
+	{
+		controller_->initialiseParams(data);
+		showView();
+	}
+	void showView()
+	{
+		widget_->updateView();  // make sure its up-to-date
+		QDialog::show();
+		raise();
+		activateWindow();
+	}
+	bool isVisibleView() const { return QDialog::isVisible(); }
+	void checkStatus() { updateView(); }
+	void redraw() { redrawView(); }
+	void redrawView() {}
+	void updateData(std::string const & data)
+	{
+		controller_->initialiseParams(data);
+		updateView();
+	}
+	void updateView()
+	{
+		widget_->updateView();
+	}
+	void partialUpdateView(int /*id*/) {}
+	Controller & controller() { return *controller_; }
+	std::string name() const { return name_; }
+	//@}
+private:
+	/// The encapsulated widget.
+	MyWidget * widget_;
+	Controller * controller_;
+	std::string name_;
+};
+
+} // frontend
+} // lyx
+
+#endif // DIALOG_VIEW_H

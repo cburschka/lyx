@@ -28,7 +28,7 @@ class GuiParagraph : public QWidget, public Ui::ParagraphUi
 {
 	Q_OBJECT
 public:
-	GuiParagraph(ControlParagraph & controller);
+	GuiParagraph(ControlParagraph & controller, QWidget * parent = 0);
 
 	/// update
 	void updateView();

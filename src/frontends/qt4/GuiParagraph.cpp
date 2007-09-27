@@ -36,8 +36,8 @@ using std::endl;
 namespace lyx {
 namespace frontend {
 
-GuiParagraph::GuiParagraph(ControlParagraph & controller)
-	: controller_(controller)
+GuiParagraph::GuiParagraph(ControlParagraph & controller, QWidget * parent)
+	: QWidget(parent), controller_(controller)
 {
 	setupUi(this);
 	setWindowTitle(qt_("Paragraph Settings"));

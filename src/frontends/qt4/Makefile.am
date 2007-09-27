@@ -129,6 +129,7 @@ MOCHEADER = \
 	Action.h \
 	BulletsModule.h \
 	ColorCache.h \
+	DialogView.h \
 	DockView.h \
 	EmptyTable.h \
 	FloatPlacement.h \

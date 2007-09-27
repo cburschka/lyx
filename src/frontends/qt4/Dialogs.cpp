@@ -14,6 +14,7 @@
 #include "GuiDialog.h"
 
 #include "ButtonController.h"
+#include "DialogView.h"
 #include "DockView.h"
 #include "GuiAbout.h"
 #include "GuiBibitem.h"
@@ -61,6 +62,9 @@
 #include "ControlThesaurus.h"
 #include "GuiThesaurus.h"
 #endif
+
+// Uncomment this if you prefer dock widget
+//#define USE_DOCK_WIDGET
 
 #include "qt_helpers.h"
 
@@ -172,9 +176,14 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "note") {
 		dialog = new GuiNoteDialog(lyxview_);
 	} else if (name == "paragraph") {
+#ifdef USE_DOCK_WIDGET
 		DockView<ControlParagraph, GuiParagraph> * dv =
-			new DockView<ControlParagraph, GuiParagraph>(guiview, name);
-		dv->setFloating(true);
+			new DockView<ControlParagraph, GuiParagraph>(guiview, name,
+				Qt::TopDockWidgetArea);
+#else
+		DialogView<ControlParagraph, GuiParagraph> * dv =
+			new DialogView<ControlParagraph, GuiParagraph>(guiview, name);
+#endif
 		dialog = dv;
 	} else if (name == "prefs") {
 		dialog = new GuiPrefsDialog(lyxview_);
