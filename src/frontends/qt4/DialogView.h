@@ -20,6 +20,7 @@
 #include <QCloseEvent>
 #include <QDialog>
 #include <QSettings>
+#include <QShowEvent>
 
 #include <string>
 
