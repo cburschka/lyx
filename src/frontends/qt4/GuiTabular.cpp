@@ -161,7 +161,7 @@ void GuiTabularDialog::change_adaptor()
 void GuiTabularDialog::closeEvent(QCloseEvent * e)
 {
 	slotClose();
-	e->accept();
+	GuiDialog::closeEvent(e);
 }
 
 

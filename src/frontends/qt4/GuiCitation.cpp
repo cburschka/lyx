@@ -120,7 +120,7 @@ void GuiCitationDialog::closeEvent(QCloseEvent * e)
 {
 	clearSelection();
 	controller().clearParams();
-	e->accept();
+	GuiDialog::closeEvent(e);
 }
 
 

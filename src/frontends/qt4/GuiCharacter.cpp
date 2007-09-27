@@ -377,7 +377,7 @@ void GuiCharacterDialog::change_adaptor()
 void GuiCharacterDialog::closeEvent(QCloseEvent * e)
 {
 	slotClose();
-	e->accept();
+	GuiDialog::closeEvent(e);
 }
 
 

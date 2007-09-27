@@ -183,7 +183,7 @@ void GuiRefDialog::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	reset_dialog();
-	e->accept();
+	GuiDialog::closeEvent(e);
 }
 
 
