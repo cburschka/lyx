@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-09-25 18:50+0200\n"
-"PO-Revision-Date: 2007-02-20 21:33-0500\n"
+"PO-Revision-Date: 2007-09-26 20:26-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -677,7 +677,6 @@ msgid "&Selected Citations:"
 msgstr "Citãri &selectate:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:136
-#, fuzzy
 msgid "A&vailable Citations:"
 msgstr "Versiuni de citare disponibile"
 
@@ -690,7 +689,6 @@ msgid "Natbib citation style to use"
 msgstr "Stil de citare Natbib de utilizat"
 
 #: src/frontends/qt4/ui/CitationUi.ui:192
-#, fuzzy
 msgid "Citation st&yle:"
 msgstr "Stil de citare:"
 
@@ -699,7 +697,6 @@ msgid "List all authors"
 msgstr "Listeazã toþi autorii"
 
 #: src/frontends/qt4/ui/CitationUi.ui:205
-#, fuzzy
 msgid "Full aut&hor list"
 msgstr "&Listã completã de autori"
 
@@ -708,9 +705,8 @@ msgid "Force upper case in citation"
 msgstr "Forþeazã la majuscule în citare"
 
 #: src/frontends/qt4/ui/CitationUi.ui:215
-#, fuzzy
 msgid "&Force upper case"
-msgstr "Forþeazã la &majuscule"
+msgstr "Forþeazã  &majuscule"
 
 #: src/frontends/qt4/ui/CitationUi.ui:222
 msgid "&Text after:"
@@ -733,12 +729,10 @@ msgid "A&pply"
 msgstr "&Aplicã"
 
 #: src/frontends/qt4/ui/CitationUi.ui:335
-#, fuzzy
 msgid "Search Citation"
-msgstr "Citare"
+msgstr "Cãutare Citare"
 
 #: src/frontends/qt4/ui/CitationUi.ui:358
-#, fuzzy
 msgid "Case Se&nsitive"
 msgstr "Senzitiv la &majuscule"
 
@@ -747,12 +741,10 @@ msgid "Regular E&xpression"
 msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:377
-#, fuzzy
 msgid "<- C&lear"
 msgstr "<- ª&terge"
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
-#, fuzzy
 msgid "F&ind:"
 msgstr "C&autã:"
 
@@ -770,9 +762,8 @@ msgstr "&Mãrime:"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
 #: src/frontends/qt4/QDelimiterDialog.cpp:190
-#, fuzzy
 msgid "TeX Code: "
-msgstr "TeX|T"
+msgstr "Cod TeX"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:289
 msgid "Match delimiter types"
@@ -1141,9 +1132,8 @@ msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
-#, fuzzy
 msgid "Set &height:"
-msgstr "Înãlþime &antet:"
+msgstr "Seteazã înãlþimeat:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:184
 msgid "&Scale Graphics (%):"
@@ -1151,16 +1141,15 @@ msgstr "Procentul de dimeniune ale &graficului"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:194
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr ""
+msgstr "Seteazã înãlþimea imaginii. Lãsaþi neselectat pentru setarea automatã"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:197
-#, fuzzy
 msgid "Set &width:"
 msgstr "&Lãþime:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:207
 msgid "Scale image to maximum size not exceeding width and height"
-msgstr ""
+msgstr "Lãrgeºte imaginea la mãrimea maximã fãrã a depãºi valoarea inãlþimii si a lãþimii."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:220
 msgid "Rotate Graphics"
@@ -1168,12 +1157,11 @@ msgstr "&Roteºte Graficul"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:235
 msgid "Check to change the order of rotating and scaling"
-msgstr ""
+msgstr "Selecteazã ca sã schimbaþi ordinea rotaþiei ºi a scalãrii imaginii"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:238
-#, fuzzy
 msgid "Ro&tate after scaling"
-msgstr "&Roteºte tabelul"
+msgstr "&Roteºte dupã scalare"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:255
 msgid "Or&igin:"
@@ -1198,9 +1186,8 @@ msgid "x:"
 msgstr "x"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:461
-#, fuzzy
 msgid "LaTe&X and LyX options"
-msgstr "&Opþiuni LaTeX:"
+msgstr "&Opþiuni LaTeX ºi LyX:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:499
 msgid "Don't uncompress image before exporting to LaTeX"
@@ -1249,33 +1236,30 @@ msgid "&Draft mode"
 msgstr "Mod &ciornã"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
-#, fuzzy
 msgid "Listing Parameters"
-msgstr "Setãri imprimantã"
+msgstr "Parametrii listã"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:66 src/frontends/qt4/ui/ListingsUi.ui:519
 #: src/frontends/qt4/ui/TextLayoutUi.ui:235
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr ""
+msgstr "Selecteazã pentru are introduce caractere care nu sunt recunoscute de LyX"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:522
 #: src/frontends/qt4/ui/TextLayoutUi.ui:238
 msgid "&Bypass validation"
-msgstr ""
+msgstr "Ignorã validarea"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
-#, fuzzy
 msgid "C&aption:"
 msgstr "&Titlu:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:99
-#, fuzzy
 msgid "La&bel:"
 msgstr "&Etichetã"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:109
 msgid "Mo&re parameters"
-msgstr ""
+msgstr "Mai mulþi parametri"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:183
 msgid "Underline spaces in generated output"
@@ -1314,14 +1298,12 @@ msgid "Verbatim"
 msgstr "Verbatim"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:302 src/insets/InsetInclude.cpp:354
-#, fuzzy
 msgid "Program Listing"
-msgstr "Setãri imprimantã"
+msgstr "Listare program"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:336
-#, fuzzy
 msgid "Edit the file"
-msgstr "Încarcã fiºierul"
+msgstr "Modificã fiºierul"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:58
 msgid "Document &class:"
@@ -1348,14 +1330,12 @@ msgid "&Quote Style:"
 msgstr "Stil de citare   "
 
 #: src/frontends/qt4/ui/ListingsUi.ui:16 src/insets/InsetListings.cpp:255
-#, fuzzy
 msgid "Listing"
-msgstr "Listã"
+msgstr "Listare"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:43
-#, fuzzy
 msgid "&Main Settings"
-msgstr "Cheie bibliograficã"
+msgstr "&Setãri principale"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
@@ -1366,7 +1346,6 @@ msgid "The content's base font size"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:91
-#, fuzzy
 msgid "F&ont size:"
 msgstr "Mãrime font"
 
@@ -1375,7 +1354,6 @@ msgid "The content's base font style"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:128
-#, fuzzy
 msgid "Font Famil&y:"
 msgstr "Familie font"
 
@@ -1384,9 +1362,8 @@ msgid "Use extended character table"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:147
-#, fuzzy
 msgid "&Extended character table"
-msgstr "Caracteristici avansate|a"
+msgstr "Tabela extinsã de caractere"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:157
 msgid "Make spaces in strings visible by a special symbol"
@@ -1410,92 +1387,80 @@ msgid "Break lines longer than the linewidth"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:186
-#, fuzzy
 msgid "&Break long lines"
-msgstr "&Utilizeazã tabel lung"
+msgstr "întrerupe liniile lungi"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:199
-#, fuzzy
 msgid "Placement"
 msgstr "&Poziþionare:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:211
 msgid "Specify placement (htbp) for floating listings"
-msgstr ""
+msgstr "Specificã locaþia (htbp) pentru obiectele de tip floating"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:218
-#, fuzzy
 msgid "Check for floating listings"
-msgstr "Alte setãri de font"
+msgstr "Selecteazã pentru listarea obiectelor de tip floating"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:221
-#, fuzzy
 msgid "&Float"
-msgstr "Flotante|F"
+msgstr "Obiecte de tip floating|F"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:228
 msgid "Check for inline listings"
-msgstr ""
+msgstr "Selecteazã pentru listarea în cadrul documentului (inline)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:231
-#, fuzzy
 msgid "&Inline listing"
-msgstr "În-&linie"
+msgstr "În cadrul documentului (inline)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:238 src/frontends/qt4/ui/WrapUi.ui:76
 msgid "&Placement:"
 msgstr "&Poziþionare:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:254
-#, fuzzy
 msgid "Line numbering"
-msgstr "&Numerotare"
+msgstr "&Numerotarea liniilor"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:266
 msgid "On which side should line numbers be printed?"
-msgstr ""
+msgstr "Pe ce parte sã tipãrim numerotarea liniilor?"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:296
-#, fuzzy
 msgid "Choose the font size for line numbers"
-msgstr "Alegeþi un fiºier de stil"
+msgstr "Alegeþi un tip de caracter (font) pentru numerotarea liniilor"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:312
-#, fuzzy
 msgid "Font si&ze:"
 msgstr "Mãrime font"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:328
-#, fuzzy
 msgid "S&tep:"
 msgstr "Etapã"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:341
 msgid "Difference between two numbered lines"
-msgstr ""
+msgstr "Diferenþe între cele doua linii numerotate"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:357
-#, fuzzy
 msgid "&Side:"
-msgstr "Slide"
+msgstr "Lateral"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:382
 msgid "Select the dialect of the programming language, if available"
-msgstr ""
+msgstr "Selecteazã dialectul limbajului de programare, dacã este disponibil"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:389
-#, fuzzy
 msgid "&Dialect:"
-msgstr "&Fiºier:"
+msgstr "&Dialect:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:399
-#, fuzzy
 msgid "Lan&guage:"
 msgstr "&Limbaj:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:409
 msgid "Select the programming language"
-msgstr ""
+msgstr "Selecteazã limbajul de programare"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:419
 #, fuzzy
@@ -1503,40 +1468,36 @@ msgid "Range"
 msgstr "Simplu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:431
-#, fuzzy
 msgid "&Last line:"
-msgstr "linie mod matematic"
+msgstr "Ultima linie"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 msgid "The last line to be printed"
-msgstr ""
+msgstr "Ultima linie pentru tipãrire"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:457
 msgid "The first line to be printed"
-msgstr ""
+msgstr "Prima linie pentru tipãrire"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:470
-#, fuzzy
 msgid "Fi&rst line:"
-msgstr "Nume"
+msgstr "Prima linie"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:487
-#, fuzzy
 msgid "Ad&vanced"
-msgstr "&Renunþã"
+msgstr "Avansat"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:507
-#, fuzzy
 msgid "More Parameters"
-msgstr "Setãri imprimantã"
+msgstr "Mai mulþi parametri"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:545
 msgid "Feedback window"
-msgstr ""
+msgstr "Fereastra de comentarii"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:570
 msgid "Input listing parameters here. Enter ? for a list of parameters."
-msgstr ""
+msgstr "Insereazã lista de parametri aici. Introdu ? pentru o listã de posibili parametri"
 
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
@@ -1765,27 +1726,23 @@ msgstr ""
 #: src/frontends/qt4/ui/ParagraphUi.ui:198 src/frontends/qt4/QParagraph.cpp:86
 #, fuzzy
 msgid "Use Paragraph's Default Alignment"
-msgstr "Paragraf"
+msgstr "Foloseºte alinierea standard a paragrafului"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:205
-#, fuzzy
 msgid "&Right"
 msgstr "Dreapta"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:212
-#, fuzzy
 msgid "&Left"
 msgstr "Stînga"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219
-#, fuzzy
 msgid "&Center"
 msgstr "Centrat"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:226
-#, fuzzy
 msgid "&Justified"
-msgstr "Bloc"
+msgstr "Aliniat"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:244
 msgid "L&ine spacing:"
@@ -1813,7 +1770,6 @@ msgid "Custom"
 msgstr "Personalizat"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:300
-#, fuzzy
 msgid "Indent &Paragraph"
 msgstr "Margine paragraf"
 
@@ -1834,14 +1790,12 @@ msgid "E&xtra flag:"
 msgstr "Opþiuni &suplimentare:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
-#, fuzzy
 msgid "&From format:"
-msgstr "&Format:"
+msgstr "&Formatul de la:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
-#, fuzzy
 msgid "&To format:"
-msgstr "&Formatul datei:"
+msgstr "&Formatul cãtre:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:61
@@ -1855,29 +1809,24 @@ msgid "&Modify"
 msgstr "&Modificã"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
-#, fuzzy
 msgid "Remo&ve"
 msgstr "&Eliminã"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:239
-#, fuzzy
 msgid "Converter Defi&nitions"
-msgstr "Definiþie"
+msgstr "Converteºte definiþiile"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:252
-#, fuzzy
 msgid "Converter File Cache"
-msgstr "Insereazã fiºier|e"
+msgstr "Converteste cache fiºier"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
-#, fuzzy
 msgid "&Enabled"
-msgstr "&Tabel lung"
+msgstr "Activat"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-#, fuzzy
 msgid "&Maximum Age (in days):"
-msgstr "&Maximul de fiºiere recente:"
+msgstr "Vîrsta &Maximã (în zile) :"
 
 #: src/frontends/qt4/ui/PrefCopiersUi.ui:38 src/frontends/qt4/ui/RefUi.ui:132
 msgid "&Format:"
@@ -1918,9 +1867,8 @@ msgid "Display &Graphics:"
 msgstr "Afiºeazã &imaginile:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:47 src/Font.cpp:73
-#, fuzzy
 msgid "Off"
-msgstr "Offsets"
+msgstr "Dezactivat"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:52
 msgid "No math"
@@ -2187,45 +2135,40 @@ msgid "External app for formating tables in plain text output"
 msgstr "Aplicaþie externã pentru formatarea tabelelor ca text ASCII"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:25
-#, fuzzy
 msgid "Printer Command Options"
-msgstr "Opþiuni comandã"
+msgstr "Opþiuni imprimantã"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:66
 msgid "Extension to be used when printing to file."
-msgstr ""
+msgstr "Extensia fiºierului folositã pentru a tipãri într-un fiºier."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:69
 msgid "File ex&tension:"
 msgstr "E&xtensie de fiºier:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:82
-#, fuzzy
 msgid "Option used to print to a file."
-msgstr "Trimite documentul în fiºier"
+msgstr "Opþiuni folosite pentru a tipãri în fiºier"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:85
-#, fuzzy
 msgid "Print to &file:"
-msgstr "Verteiler"
+msgstr "Tipãreºte în fiºier"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:95
 msgid "Option used to print to non-default printer."
-msgstr ""
+msgstr "Opþiuni foloaite pentru a tipãri la imprimanta ne-standard"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
-#, fuzzy
 msgid "Set p&rinter:"
-msgstr "&La imprimanta:"
+msgstr "Seteazã im&primanta:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:111
 msgid "Option used with spool command to set printer."
-msgstr ""
+msgstr "Opþiuni folosite cu comanda standard (spool) de tipãrire"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
-#, fuzzy
 msgid "Spool pr&inter:"
-msgstr "prefix spooler imprimantã"
+msgstr "Comanda standard (spool) imprimantã"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:127
 msgid ""
@@ -2238,31 +2181,28 @@ msgid "Spool &command:"
 msgstr "Comandã de \"&spool\":"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:150
-#, fuzzy
 msgid "Option used to reverse page order."
-msgstr "Tipãreºte în ordine inversã"
+msgstr "Opþiuni folosite pentru tipãrirea în ordine inversã"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
-#, fuzzy
 msgid "Re&verse pages:"
-msgstr "&Invers:"
+msgstr "Ordine &Inversã:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:166
 msgid "Lan&dscape:"
 msgstr "&Peisaj:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:179
-#, fuzzy
 msgid "Number of Co&pies:"
 msgstr "Numãrul de copii"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:189
 msgid "Option used to set number of copies."
-msgstr ""
+msgstr "Opþiuni folosite pentru setarea numãrului de copii"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:196
 msgid "Option used to print a range of pages."
-msgstr ""
+msgstr "Opþiuni folosite pentru a tipãri un anumit interval de pagini"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:203
 msgid "Co&llated:"
@@ -2274,7 +2214,7 @@ msgstr "&Domeniu de pagini:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:223
 msgid "Option used to collate multiple copies."
-msgstr ""
+msgstr "Opþiuni folosite pentru a uni copii multiple"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:230
 msgid "&Odd pages:"
@@ -2294,33 +2234,30 @@ msgstr "&Mãrime foaie:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
+msgstr "Alte opþiuni dorite pentru imprimare"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
 msgstr "Opþiuni s&uplimentare:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:308
-#, fuzzy
 msgid "Customizes output to a given printer. Expert option."
-msgstr "Trimite documentul la imprimanta precizatã"
+msgstr "Trimite documentul la imprimanta precizatã. Opþiuni pentru expert"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid ""
 "Normally, this needs to be checked only if you are using dvips as your "
 "printer command and you have config.<printer> files installed for all your "
 "printers."
-msgstr ""
+msgstr "În mod normal aceastã opþiune trebuie selectatã doar dacã folosiþi comanda dvips pentru tipãrire ºi aveti fiºierul config.<printer> instalat pentru toate imprimantele"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:314
-#, fuzzy
 msgid "Adapt output to printer"
 msgstr "Trimite documentul la imprimantã"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:329
-#, fuzzy
 msgid "Default &printer:"
-msgstr "Mãrime implicitã f&oaie:"
+msgstr "Imprimantã implicitã:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:339
 msgid "Name of the default printer"
@@ -3045,7 +2982,6 @@ msgid "&Indentation"
 msgstr "&Indentare"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:121
-#, fuzzy
 msgid "Spacing"
 msgstr "&Spaþiere"
 
@@ -3062,9 +2998,8 @@ msgid "Two-&column document"
 msgstr "Documentul pe &douã coloane"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:223
-#, fuzzy
 msgid "Listing settings"
-msgstr "Setãri imprimantã"
+msgstr "Setãri pentru modul listing"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "Index entry"
@@ -3110,24 +3045,22 @@ msgid "Increase nesting depth of selected item"
 msgstr ""
 
 #: src/frontends/qt4/ui/TocUi.ui:118
-#, fuzzy
 msgid "Move selected item down by one"
-msgstr "Mutã citarea selectatã mai jos"
+msgstr "Mutã celementul selectat mai jos"
 
 #: src/frontends/qt4/ui/TocUi.ui:137
-#, fuzzy
 msgid "Move selected item up by one"
-msgstr "Mutã citarea selectatã mai sus"
+msgstr "Mutã elementul selectat mai sus"
 
 #: src/frontends/qt4/ui/TocUi.ui:166
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
-msgstr ""
+msgstr "Comutã între tabla de cuprins, lista de figuri sau lista de tabele, dacã sunt disponibile"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
-msgstr ""
+msgstr "Ajusteazã adincimea copacului de navigare"
 
 #: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
 #: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:184
@@ -3196,7 +3129,6 @@ msgid "VFill"
 msgstr "VFill"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:36
-#, fuzzy
 msgid "Complete source"
 msgstr "Afiºeazã tot fiºierul sursã"
 
@@ -3591,7 +3523,6 @@ msgid "Keywords"
 msgstr "Cuvinte cheie"
 
 #: lib/layouts/IEEEtran.layout:360
-#, fuzzy
 msgid "Index Terms---"
 msgstr "Înregistrare index"
 
@@ -4126,7 +4057,6 @@ msgid "BeginFrame"
 msgstr "ÎnceputCadru"
 
 #: lib/layouts/beamer.layout:244
-#, fuzzy
 msgid "Frame"
 msgstr "Cadru"
 
@@ -4135,7 +4065,6 @@ msgid "BeginPlainFrame"
 msgstr "Început de cadru simplu"
 
 #: lib/layouts/beamer.layout:286
-#, fuzzy
 msgid "Frame (no head/foot/sidebars)"
 msgstr "Cadru (fãrã antet/subsol/bãri laterale"
 
@@ -4144,16 +4073,14 @@ msgid "AgainFrame"
 msgstr "Cadru de legendã "
 
 #: lib/layouts/beamer.layout:326
-#, fuzzy
 msgid "Again frame with label"
-msgstr "Cadru cu titlu"
+msgstr "Din nou cadru cu titlu"
 
 #: lib/layouts/beamer.layout:350
 msgid "EndFrame"
 msgstr "ªfîrºit de cadru:"
 
 #: lib/layouts/beamer.layout:364
-#, fuzzy
 msgid "________________________________"
 msgstr "________________________________"
 
@@ -4166,9 +4093,8 @@ msgid "Column"
 msgstr "Coloane"
 
 #: lib/layouts/beamer.layout:414
-#, fuzzy
 msgid "Start column (increase depth!), width:"
-msgstr "Începe o coloanã cu lãþimea de: "
+msgstr "Începe o coloanã (mãrind înãlþmea) cu lãþimea de: "
 
 #: lib/layouts/beamer.layout:426 lib/layouts/beamer.layout:437
 msgid "Columns"
@@ -4179,7 +4105,6 @@ msgid "ColumnsCenterAligned"
 msgstr "Coloane centrate"
 
 #: lib/layouts/beamer.layout:465
-#, fuzzy
 msgid "Columns (center aligned)"
 msgstr "Coloane (centrate)"
 
@@ -4188,7 +4113,6 @@ msgid "ColumnsTopAligned"
 msgstr "Coloane aliniate sus"
 
 #: lib/layouts/beamer.layout:495
-#, fuzzy
 msgid "Columns (top aligned)"
 msgstr "coloane (aliniate sus)"
 
@@ -4209,7 +4133,6 @@ msgid "OverlayArea"
 msgstr "Suprafaþa de afiºare"
 
 #: lib/layouts/beamer.layout:577
-#, fuzzy
 msgid "Overlayarea"
 msgstr "Suprafaþa de afiºare"
 
@@ -4218,7 +4141,6 @@ msgid "Uncover"
 msgstr "Aratã"
 
 #: lib/layouts/beamer.layout:602
-#, fuzzy
 msgid "Uncovered on slides"
 msgstr "Aratã pe slideuri"
 
@@ -4227,7 +4149,6 @@ msgid "Only"
 msgstr "Doar"
 
 #: lib/layouts/beamer.layout:627
-#, fuzzy
 msgid "Only on slides"
 msgstr "Doar pe slideuri"
 
@@ -4236,27 +4157,24 @@ msgid "Block"
 msgstr "Bloc"
 
 #: lib/layouts/beamer.layout:653
-#, fuzzy
 msgid "Block ( ERT[{title}] body ):"
-msgstr "Bloc cu text evidenþiat"
+msgstr "Bloc ( ERT[{titlu}] corp)"
 
 #: lib/layouts/beamer.layout:668
 msgid "ExampleBlock"
 msgstr "BlocExemplu"
 
 #: lib/layouts/beamer.layout:678
-#, fuzzy
 msgid "Block ( ERT[{title}] example text ):"
-msgstr "Bloc cu text evidenþiat"
+msgstr "Bloc ( ERT[{titlu}] exemplu text):"
 
 #: lib/layouts/beamer.layout:697
 msgid "AlertBlock"
 msgstr "BlocEvidenþiat"
 
 #: lib/layouts/beamer.layout:707
-#, fuzzy
 msgid "Block ( ERT[{title}] alert text ):"
-msgstr "Bloc cu text evidenþiat"
+msgstr "Bloc ( ERT[{titlu}] alertã text):"
 
 #: lib/layouts/beamer.layout:751
 #, fuzzy
@@ -4289,7 +4207,6 @@ msgid "Definitions"
 msgstr "Definiþie"
 
 #: lib/layouts/beamer.layout:936
-#, fuzzy
 msgid "Definitions."
 msgstr "Definiþii"
 
@@ -4303,7 +4220,6 @@ msgid "Examples"
 msgstr "Exemple"
 
 #: lib/layouts/beamer.layout:953
-#, fuzzy
 msgid "Examples."
 msgstr "Exemple."
 
@@ -4343,7 +4259,6 @@ msgid "NoteItem"
 msgstr "ItemNotã"
 
 #: lib/layouts/beamer.layout:1048 lib/layouts/powerdot.layout:199
-#, fuzzy
 msgid "Note:"
 msgstr "Notã"
 
@@ -4851,93 +4766,80 @@ msgid "Key words:"
 msgstr "Cuvinte cheie"
 
 #: lib/layouts/europecv.layout:48 lib/layouts/moderncv.layout:77
-#, fuzzy
 msgid "Item"
-msgstr "Itemize"
+msgstr "Element"
 
 #: lib/layouts/europecv.layout:57 lib/layouts/moderncv.layout:86
-#, fuzzy
 msgid "Item:"
-msgstr "Itemize"
+msgstr "Element"
 
 #: lib/layouts/europecv.layout:64
-#, fuzzy
 msgid "BulletedItem"
-msgstr "Marcheri"
+msgstr "Element cu bulinã"
 
 #: lib/layouts/europecv.layout:67
-#, fuzzy
 msgid "Bulleted Item:"
-msgstr "ªte&rge"
+msgstr "Element cu bulinã"
 
 #: lib/layouts/europecv.layout:70
-#, fuzzy
 msgid "Begin"
-msgstr "ÎnceputCadru"
+msgstr "Început"
 
 #: lib/layouts/europecv.layout:80
 msgid "Begin of CV"
-msgstr ""
+msgstr "Început de CV"
 
 #: lib/layouts/europecv.layout:87
 msgid "PersonalInfo"
-msgstr ""
+msgstr "InformaþtiiPersonale"
 
 #: lib/layouts/europecv.layout:91
 msgid "Personal Info"
-msgstr ""
+msgstr "Informaþtii Personale"
 
 #: lib/layouts/europecv.layout:94
 msgid "MotherTongue"
-msgstr ""
+msgstr "Limba maternã"
 
 #: lib/layouts/europecv.layout:103
 msgid "Mother Tongue:"
-msgstr ""
+msgstr "Limba maternã"
 
 #: lib/layouts/europecv.layout:110
-#, fuzzy
 msgid "LangHeader"
 msgstr "Antet"
 
 #: lib/layouts/europecv.layout:114
-#, fuzzy
 msgid "Language Header:"
-msgstr "Antet Stînga"
+msgstr "Antet limbaj"
 
 #: lib/layouts/europecv.layout:120 lib/layouts/moderncv.layout:114
-#, fuzzy
 msgid "Language:"
 msgstr "&Limbaj:"
 
 #: lib/layouts/europecv.layout:123
-#, fuzzy
 msgid "LastLanguage"
-msgstr "Limbaj"
+msgstr "UltimulLimbaj"
 
 #: lib/layouts/europecv.layout:126
-#, fuzzy
 msgid "Last Language:"
-msgstr "&Limbaj:"
+msgstr "Ultimul&Limbaj:"
 
 #: lib/layouts/europecv.layout:129
-#, fuzzy
 msgid "LangFooter"
 msgstr "Subsol:"
 
 #: lib/layouts/europecv.layout:133
-#, fuzzy
 msgid "Language Footer:"
-msgstr "&Limbaj:"
+msgstr "SubsolLimbaj:"
 
 #: lib/layouts/europecv.layout:136
-#, fuzzy
 msgid "End"
-msgstr "\\tEnd)"
+msgstr "Sfîrºit"
 
 #: lib/layouts/europecv.layout:146
 msgid "End of CV"
-msgstr ""
+msgstr "Sfîrºit de CV"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -5466,62 +5368,50 @@ msgid "NameRowG:"
 msgstr "NumeLiniaG"
 
 #: lib/layouts/g-brief2.layout:212
-#, fuzzy
 msgid "AddressRowA"
 msgstr "AdresãLiniaA"
 
 #: lib/layouts/g-brief2.layout:223
-#, fuzzy
 msgid "AddressRowA:"
 msgstr "AdresãLiniaA"
 
 #: lib/layouts/g-brief2.layout:232
-#, fuzzy
 msgid "AddressRowB"
 msgstr "AdresãLiniaB"
 
 #: lib/layouts/g-brief2.layout:242
-#, fuzzy
 msgid "AddressRowB:"
 msgstr "AdresãLiniaB"
 
 #: lib/layouts/g-brief2.layout:251
-#, fuzzy
 msgid "AddressRowC"
 msgstr "AdresãLiniaC"
 
 #: lib/layouts/g-brief2.layout:261
-#, fuzzy
 msgid "AddressRowC:"
 msgstr "AdresãLiniaC"
 
 #: lib/layouts/g-brief2.layout:270
-#, fuzzy
 msgid "AddressRowD"
 msgstr "AdresãLiniaD"
 
 #: lib/layouts/g-brief2.layout:280
-#, fuzzy
 msgid "AddressRowD:"
 msgstr "AdresãLiniaD"
 
 #: lib/layouts/g-brief2.layout:289
-#, fuzzy
 msgid "AddressRowE"
 msgstr "AdresãLiniaE"
 
 #: lib/layouts/g-brief2.layout:299
-#, fuzzy
 msgid "AddressRowE:"
 msgstr "AdresãLiniaE"
 
 #: lib/layouts/g-brief2.layout:308
-#, fuzzy
 msgid "AddressRowF"
 msgstr "AdresãLiniaF"
 
 #: lib/layouts/g-brief2.layout:318
-#, fuzzy
 msgid "AddressRowF:"
 msgstr "AdresãLiniaF"
 
@@ -5875,12 +5765,10 @@ msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr "Conjecturã @Secþiune@. \\arabic{conjecture}"
 
 #: lib/layouts/iopart.layout:73 lib/ui/stdtoolbars.inc:170
-#, fuzzy
 msgid "Review"
-msgstr "Previzualizeazã|#P"
+msgstr "Revizuieºte"
 
 #: lib/layouts/iopart.layout:79
-#, fuzzy
 msgid "Topical"
 msgstr "Topicã"
 
@@ -5889,18 +5777,16 @@ msgid "Comment"
 msgstr "Comentariu"
 
 #: lib/layouts/iopart.layout:97
-#, fuzzy
 msgid "Paper"
-msgstr "Id Publicaþie"
+msgstr "Publicaþie"
 
 #: lib/layouts/iopart.layout:103
-#, fuzzy
 msgid "Prelim"
-msgstr "Declaraþie"
+msgstr "Preliminar"
 
 #: lib/layouts/iopart.layout:109
 msgid "Rapid"
-msgstr ""
+msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:212 lib/layouts/revtex4.layout:230
 msgid "PACS"
@@ -5911,32 +5797,28 @@ msgid "Physics and Astronomy Classification System number:"
 msgstr ""
 
 #: lib/layouts/iopart.layout:219
-#, fuzzy
 msgid "MSC"
-msgstr "AMS"
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:222
-#, fuzzy
 msgid "Mathematics Subject Classification number:"
-msgstr "Clasificarea domeniilor matematice din 1991:"
+msgstr "Numãul din clasificarea domeniilor matematice:"
 
 #: lib/layouts/iopart.layout:226
 msgid "submitto"
-msgstr ""
+msgstr "trimitela"
 
 #: lib/layouts/iopart.layout:229
 msgid "submit to paper:"
-msgstr ""
+msgstr "trimite la articol"
 
 #: lib/layouts/iopart.layout:255
-#, fuzzy
 msgid "Bibliography (plain)"
-msgstr "Bibliografie"
+msgstr "Bibliografie (simplã)"
 
 #: lib/layouts/iopart.layout:278
-#, fuzzy
 msgid "Bibliography heading"
-msgstr "Bibliografie"
+msgstr "Antet bibliografie"
 
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
@@ -6101,69 +5983,57 @@ msgid "Legend"
 msgstr "Legendã"
 
 #: lib/layouts/moderncv.layout:70
-#, fuzzy
 msgid "Entry:"
 msgstr "Înregistrare"
 
 #: lib/layouts/moderncv.layout:93
-#, fuzzy
 msgid "ListItem"
-msgstr "Listã"
+msgstr "ElementListã"
 
 #: lib/layouts/moderncv.layout:96
-#, fuzzy
 msgid "List Item:"
-msgstr "Ultimul subsol:"
+msgstr "Element Listã:"
 
 #: lib/layouts/moderncv.layout:99
-#, fuzzy
 msgid "DoubleItem"
-msgstr "Dublu"
+msgstr "ElementDublu"
 
 #: lib/layouts/moderncv.layout:102
-#, fuzzy
 msgid "Double Item:"
-msgstr "Dublu"
+msgstr "Element Dublu:"
 
 #: lib/layouts/moderncv.layout:105
-#, fuzzy
 msgid "Space"
-msgstr "În&locuieºte"
+msgstr "Spaþiu"
 
 #: lib/layouts/moderncv.layout:108
 #, fuzzy
 msgid "Space:"
-msgstr "În&locuieºte"
+msgstr "Spaþiu"
 
 #: lib/layouts/moderncv.layout:117
-#, fuzzy
 msgid "Computer"
-msgstr "Copii"
+msgstr "Calculator"
 
 #: lib/layouts/moderncv.layout:120
-#, fuzzy
 msgid "Computer:"
-msgstr "Copii:"
+msgstr "Calculator:"
 
 #: lib/layouts/moderncv.layout:123
-#, fuzzy
 msgid "EmptySection"
-msgstr "Secþiune"
+msgstr "Secþiune goalã"
 
 #: lib/layouts/moderncv.layout:132
-#, fuzzy
 msgid "Empty Section"
-msgstr "Secþiune"
+msgstr "Secþiune goalãe"
 
 #: lib/layouts/moderncv.layout:139
-#, fuzzy
 msgid "CloseSection"
-msgstr "selecþie"
+msgstr "ÎnchideSecþiunea"
 
 #: lib/layouts/moderncv.layout:142
-#, fuzzy
 msgid "Close Section"
-msgstr "selecþie"
+msgstr "Închide Secþiunea"
 
 #: lib/layouts/paper.layout:152
 msgid "SubTitle"
@@ -6183,43 +6053,36 @@ msgid "    "
 msgstr ""
 
 #: lib/layouts/powerdot.layout:142
-#, fuzzy
 msgid "EndSlide"
-msgstr "Slide"
+msgstr "Sfãrºt de slide"
 
 #: lib/layouts/powerdot.layout:154
 msgid "~=~"
 msgstr ""
 
 #: lib/layouts/powerdot.layout:167
-#, fuzzy
 msgid "WideSlide"
-msgstr "Slide"
+msgstr "Slide lat"
 
 #: lib/layouts/powerdot.layout:179
-#, fuzzy
 msgid "EmptySlide"
-msgstr "Slide"
+msgstr "Slidegol"
 
 #: lib/layouts/powerdot.layout:183
-#, fuzzy
 msgid "Empty slide:"
-msgstr "Adîncime"
+msgstr "Slide gol"
 
 #: lib/layouts/powerdot.layout:246
-#, fuzzy
 msgid "ItemizeType1"
-msgstr "Itemize"
+msgstr "ItemizeTip1"
 
 #: lib/layouts/powerdot.layout:271
-#, fuzzy
 msgid "EnumerateType1"
-msgstr "Enumeraþie"
+msgstr "EnumeraþieTip1"
 
 #: lib/layouts/powerdot.layout:389 lib/layouts/stdfloats.inc:39
-#, fuzzy
 msgid "List of Algorithms"
-msgstr "Algoritm"
+msgstr "Listã de Algoritmi"
 
 #: lib/layouts/revtex4.layout:94
 msgid "Preprint"
@@ -7303,9 +7166,8 @@ msgid "Dictum"
 msgstr "Dictum"
 
 #: lib/layouts/stdlayouts.inc:64
-#, fuzzy
 msgid "--Separator--"
-msgstr "Separaþia"
+msgstr "--Separator--"
 
 #: lib/layouts/stdlayouts.inc:73
 #, fuzzy
@@ -7330,7 +7192,6 @@ msgid "Offprints"
 msgstr "Offprints"
 
 #: lib/layouts/svjour.inc:248
-#, fuzzy
 msgid "Offprints:"
 msgstr "Offprints"
 
@@ -7352,18 +7213,16 @@ msgid "Arabic (Arabi)"
 msgstr "Arabic"
 
 #: lib/languages:7
-#, fuzzy
 msgid "Armenian"
-msgstr "American"
+msgstr "Armenian"
 
 #: lib/languages:8
 msgid "Austrian"
 msgstr "Austriac"
 
 #: lib/languages:9
-#, fuzzy
 msgid "Austrian (new spelling)"
-msgstr "German (noua ortografie)"
+msgstr "Austriac (ortografia nouã)"
 
 #: lib/languages:10
 msgid "Bahasa"
@@ -7442,9 +7301,8 @@ msgid "Estonian"
 msgstr "Estonian"
 
 #: lib/languages:31
-#, fuzzy
 msgid "Farsi"
-msgstr "Margini"
+msgstr "Farsi"
 
 #: lib/languages:32
 msgid "Finnish"
@@ -7499,13 +7357,12 @@ msgid "Lithuanian"
 msgstr ""
 
 #: lib/languages:49
-#, fuzzy
 msgid "Latvian"
-msgstr "Locaþie"
+msgstr "Lituanian"
 
 #: lib/languages:50
 msgid "Icelandic"
-msgstr ""
+msgstr "Islanda"
 
 #: lib/languages:51
 msgid "Magyar"
@@ -7525,7 +7382,6 @@ msgid "Polish"
 msgstr "Polonez"
 
 #: lib/languages:55
-#, fuzzy
 msgid "Portuguese"
 msgstr "Portughez"
 
@@ -7743,9 +7599,8 @@ msgid "Thesaurus..."
 msgstr "Dicþionar..."
 
 #: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:463
-#, fuzzy
 msgid "Count Words|W"
-msgstr "Cuvîntul curent"
+msgstr "Numãrãtoare Cuvinte"
 
 #: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:464
 msgid "Check TeX|h"
@@ -7765,14 +7620,12 @@ msgid "Reconfigure|R"
 msgstr "Reconfigureazã|R"
 
 #: lib/ui/classic.ui:115
-#, fuzzy
 msgid "Selection as Lines|L"
-msgstr "ca linii|l"
+msgstr "Selecþa ca linii|l"
 
 #: lib/ui/classic.ui:116
-#, fuzzy
 msgid "Selection as Paragraphs|P"
-msgstr "ca paragrafe|p"
+msgstr "Selecþa ca paragrafe|p"
 
 #: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:154
 msgid "Multicolumn|M"
@@ -7795,7 +7648,6 @@ msgid "Line Right|R"
 msgstr "Linie dreapta|d"
 
 #: lib/ui/classic.ui:127
-#, fuzzy
 msgid "Alignment|i"
 msgstr "Aliniere|A"
 
@@ -7832,32 +7684,26 @@ msgid "Swap Columns"
 msgstr "Schimbã coloanele între ele"
 
 #: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:164
-#, fuzzy
 msgid "Left|L"
 msgstr "Stînga|#t"
 
 #: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:165
-#, fuzzy
 msgid "Center|C"
 msgstr "Centrat"
 
 #: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:166
-#, fuzzy
 msgid "Right|R"
 msgstr "Dreapta|#D"
 
 #: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:168
-#, fuzzy
 msgid "Top|T"
 msgstr "Sus|#S"
 
 #: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:169
-#, fuzzy
 msgid "Middle|M"
 msgstr "Mijloc"
 
 #: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:170
-#, fuzzy
 msgid "Bottom|B"
 msgstr "Jos|#J"
 
