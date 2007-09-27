@@ -97,7 +97,7 @@ private:
 	{
 		QSettings settings;
 		std::string key = name_ + "/geometry";
-		restoreGeometry(settings.value(key.c_str()).toByteArray());
+		QDialog::restoreGeometry(settings.value(key.c_str()).toByteArray());
 	    QDialog::showEvent(e);
 	}
 
@@ -105,7 +105,7 @@ private:
 	{
 		QSettings settings;
 		std::string key = name_ + "/geometry";
-		settings.setValue(key.c_str(), saveGeometry());
+		settings.setValue(key.c_str(), QDialog::saveGeometry());
 	    QDialog::closeEvent(e);
 	}
 };
