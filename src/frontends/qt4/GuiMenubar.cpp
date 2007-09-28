@@ -85,11 +85,7 @@ GuiMenubar::GuiMenubar(LyXView * view, MenuBackend & mbe)
 		GuiPopupMenu * qMenu = new GuiPopupMenu(this, *m, true);
 		owner_->menuBar()->addMenu(qMenu);
 
-		pair<NameMap::iterator, bool> I = name_map_.insert(make_pair(name, qMenu));
-		if (!I.second) {
-			LYXERR(Debug::GUI) << "\tERROR: " << to_utf8(name)
-				<< " submenu is already there!" << endl;
-		}
+		name_map_[toqstr(name)] = qMenu;
 /*
 		QObject::connect(qMenu, SIGNAL(aboutToShow()), this, SLOT(update()));
 		QObject::connect(qMenu, SIGNAL(triggered(QAction *)), this, SLOT(update()));
@@ -99,15 +95,11 @@ GuiMenubar::GuiMenubar(LyXView * view, MenuBackend & mbe)
 	//QObject::connect(owner_->menuBar(), SIGNAL(triggered()), this, SLOT(update()));
 }
 
-void GuiMenubar::openByName(docstring const & name)
-{
-	NameMap::const_iterator const cit = name_map_.find(name);
-	if (cit == name_map_.end())
-		return;
 
-	// I (Abdel) don't understand this comment:
-	// this will have to do I'm afraid.
-	cit->second->exec(QCursor::pos());
+void GuiMenubar::openByName(QString const & name)
+{
+	if (QMenu * menu = name_map_.value(name))
+		menu->exec(QCursor::pos());
 }
 
 
@@ -137,7 +129,7 @@ void GuiMenubar::openByName(docstring const & name)
 QMenuBar * GuiMenubar::menuBar() const
 {
 #ifdef Q_WS_MACX
-	return mac_menubar_.get();
+	return mac_menubar_;
 #else
 	return owner_->menuBar();
 #endif

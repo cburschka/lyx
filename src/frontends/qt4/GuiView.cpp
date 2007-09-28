@@ -52,7 +52,7 @@
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QList>
-#include <QMimeData>
+#include <QMenu>
 #include <QPainter>
 #include <QPixmap>
 #include <QPushButton>
@@ -931,7 +931,7 @@ void GuiViewBase::showMiniBuffer(bool visible)
 
 void GuiViewBase::openMenu(docstring const & name)
 {
-	d.menubar_->openByName(name);
+	d.menubar_->openByName(toqstr(name));
 }
 
 } // namespace frontend

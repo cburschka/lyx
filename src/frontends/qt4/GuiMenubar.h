@@ -13,23 +13,19 @@
 #ifndef GUIMENUBAR_H
 #define GUIMENUBAR_H
 
-#include "GuiPopupMenu.h"
-
-#include <map>
-#include <boost/scoped_ptr.hpp>
-
 #include <QObject>
-#include <QMenuBar>
+#include <QHash>
+
+class QMenuBar;
 
 namespace lyx {
 
 class MenuBackend;
-class Menu;
-class MenuItem;
 
 namespace frontend {
 
 class GuiViewBase;
+class GuiPopupMenu;
 class LyXView;
 
 class GuiMenubar : public QObject
@@ -39,7 +35,7 @@ public:
 	GuiMenubar(LyXView *, MenuBackend &);
 
 	/// opens a top-level submenu given its name
-	void openByName(docstring const &);
+	void openByName(QString const & name);
 
 	/// return the owning view
 	GuiViewBase * view() { return owner_; }
@@ -63,13 +59,13 @@ private:
 	/// menu controller
 	MenuBackend & menubackend_;
 
-	typedef std::map<docstring, GuiPopupMenu *> NameMap;
+	typedef QHash<QString, GuiPopupMenu *> NameMap;
 
 	/// name to menu for openByName
 	NameMap name_map_;
 
 	/// MACOS X special menubar.
-	boost::scoped_ptr<QMenuBar> mac_menubar_;
+	QMenuBar * mac_menubar_;
 };
 
 } // namespace frontend
