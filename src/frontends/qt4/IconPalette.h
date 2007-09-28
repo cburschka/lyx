@@ -14,9 +14,8 @@
 
 #include <QWidget>
 #include <QMenu>
-#include <QLayout>
-#include "Action.h"
 
+class QGridLayout;
 
 namespace lyx {
 namespace frontend {
@@ -82,7 +81,7 @@ private:
 class ButtonMenu : public QMenu {
 	Q_OBJECT
 public:
-	ButtonMenu(const QString & title, QWidget * parent = 0 );
+	ButtonMenu(const QString & title, QWidget * parent);
 	void add(QAction *);
 
 public Q_SLOTS:
