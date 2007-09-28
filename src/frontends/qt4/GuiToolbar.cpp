@@ -191,8 +191,9 @@ void GuiToolbar::focusCommandBuffer()
 
 Action * GuiToolbar::addItem(ToolbarItem const & item)
 {
-	Action * act = new Action(owner_, getIcon(item.func_, false),
-	                          item.label_, item.func_, item.label_);
+	Action * act = new Action(owner_,
+		getIcon(item.func_, false).c_str(),
+	  toqstr(item.label_), item.func_, toqstr(item.label_));
 	actions_.append(act);
 	return act;
 }

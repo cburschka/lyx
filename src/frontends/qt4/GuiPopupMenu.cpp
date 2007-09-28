@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-// Qt defines a macro 'signals' that clashes with a boost namespace.
-// All is well if the namespace is visible first.
 #include "GuiView.h"
 
 #include "Action.h"
@@ -35,8 +33,8 @@ using std::endl;
 namespace lyx {
 namespace frontend {
 
-GuiPopupMenu::GuiPopupMenu(GuiMenubar * owner,
-						 MenuItem const & mi, bool topLevelMenu)
+GuiPopupMenu::GuiPopupMenu(GuiMenubar * owner, MenuItem const & mi,
+		bool topLevelMenu)
 	: owner_(owner)
 {
 	name_ = mi.submenuname();
@@ -74,15 +72,13 @@ void GuiPopupMenu::updateView()
 
 void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 {
-	LYXERR(Debug::GUI) << "populating menu " << to_utf8(menu->name()) ;
+	LYXERR(Debug::GUI) << "populating menu " << to_utf8(menu->name());
 	if (menu->size() == 0) {
 		LYXERR(Debug::GUI) << "\tERROR: empty menu "
 			<< to_utf8(menu->name()) << endl;
 		return;
 	}
-	else {
-		LYXERR(Debug::GUI) << " *****  menu entries " << menu->size() << endl;
-	}
+	LYXERR(Debug::GUI) << " *****  menu entries " << menu->size() << endl;
 
 	Menu::const_iterator m = menu->begin();
 	Menu::const_iterator end = menu->end();
@@ -110,7 +106,7 @@ void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 			addBinding(label, *m);
 
 			Action * action = new Action(*(owner_->view()),
-						     label, m->func());
+				QString(), toqstr(label), m->func(), QString());
 			qMenu->addAction(action);
 		}
 	}
