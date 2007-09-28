@@ -45,7 +45,7 @@ class GuiLayoutBox : public QObject, public LayoutBox
 public:
 	GuiLayoutBox(QToolBar *, GuiViewBase &);
 
-	/// select the right layout in the combox.
+	/// select the right layout in the combobox.
 	void set(docstring const & layout);
 	/// Populate the layout combox.
 	void update();
@@ -89,7 +89,7 @@ Q_SIGNALS:
 private:
 	GuiCommandBuffer * command_buffer_;
 
-	std::vector<Action *> ActionVector;
+	std::vector<Action *> actions_;
 	GuiViewBase & owner_;
 
 	boost::scoped_ptr<GuiLayoutBox> layout_;

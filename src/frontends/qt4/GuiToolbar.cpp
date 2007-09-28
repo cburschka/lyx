@@ -229,7 +229,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 					it->func_,
 					it->label_);
 				panel->addButton(action);
-				ActionVector.push_back(action);
+				actions_.push_back(action);
 				// use the icon of first action for the toolbar button
 				if (it == tbinfo->items.begin())
 					tb->setIcon(QPixmap(getIcon(it->func_).c_str()));
@@ -270,7 +270,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 					it->func_,
 					it->label_);
 				m->add(action);
-				ActionVector.push_back(action);
+				actions_.push_back(action);
 			}
 		tb->setMenu(m);
 		addWidget(tb);
@@ -286,7 +286,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 			item.func_,
 			item.label_);
 		addAction(action);
-		ActionVector.push_back(action);
+		actions_.push_back(action);
 		break;
 		}
 	default:
@@ -348,8 +348,8 @@ void GuiToolbar::update()
 {
 	// This is a speed bottleneck because this is called on every keypress
 	// and update calls getStatus, which copies the cursor at least two times
-	for (size_t i = 0; i < ActionVector.size(); ++i)
-		ActionVector[i]->update();
+	for (size_t i = 0; i < actions_.size(); ++i)
+		actions_[i]->update();
 
 	// emit signal
 	updated();
