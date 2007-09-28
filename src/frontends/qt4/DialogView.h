@@ -21,6 +21,7 @@
 #include <QDialog>
 #include <QSettings>
 #include <QShowEvent>
+#include <QGridLayout>
 
 #include <string>
 
@@ -46,7 +47,10 @@ public:
 		MyController * c = new MyController(*this);
 		controller_ = c;
 		controller_->setLyXView(parent);
+		QGridLayout * gridLayout = new QGridLayout(this);
+		gridLayout->setMargin(0);
 		widget_ = new MyWidget(*c, this);
+		gridLayout->addWidget(widget_);
 		setWindowTitle("LyX: " + widget_->windowTitle());
 	}
 
