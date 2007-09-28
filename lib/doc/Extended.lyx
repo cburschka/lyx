@@ -468,6 +468,12 @@ ile
 
 \begin_layout Section
 Translating LaTeX files into LyX
+\begin_inset LatexCommand label
+name "sec:Translating-LaTeX-files"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -519,7 +525,8 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-If you just want to put a piece of LaTeX code into a LyX file, see Section
+If you just want to put a piece of LaTeX code into a LyX file, see Section\InsetSpace ~
+
 \begin_inset LatexCommand ref
 reference "sec:latexcodes"
 
@@ -2513,6 +2520,154 @@ every
 \emph default
  citation reference has to be inside some btUnit.
  Also, the btUnits cannot be nested.
+\end_layout
+
+\begin_layout Section
+Making an Index
+\end_layout
+
+\begin_layout Standard
+A good index is one of the hardest things to make in a lengthy document,
+ but LyX helps make things a bit simpler by interfacing to the 
+\family typewriter
+makeindex
+\family default
+ program which is found in most recent LaTeX distributions.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+In the
+\family default
+\series default
+\shape default
+\emph default
+\bar default
+ 
+\family sans
+\size default
+\noun default
+Outputs\SpecialChar \menuseparator
+LaT\SpecialChar \textcompwordmark{}
+eX
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+ section of the preferences dialog, however, you can customize the index
+ command, if you prefer an alternative program like
+\family default
+\series default
+\shape default
+\emph default
+\bar default
+ 
+\family typewriter
+\size default
+\noun default
+xindy
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+.
+\end_layout
+
+\end_inset
+
+ Inserting an index and marking words to include in it works much the same
+ way as preparing a bibliography as mentioned in the last section.
+\end_layout
+
+\begin_layout Standard
+First, go to the end of your file and select 
+\family sans
+\bar under
+I
+\bar default
+nsert\SpecialChar \menuseparator
+List
+\family default
+\InsetSpace ~
+/\InsetSpace ~
+
+\family sans
+T
+\bar under
+O
+\bar default
+C\SpecialChar \menuseparator
+
+\bar under
+I
+\bar default
+ndex
+\family default
+\InsetSpace ~
+
+\family sans
+List
+\family default
+.
+ Then, for each word you would like to include in the index, go to the end
+ of that word and click on 
+\family sans
+\bar under
+I
+\bar default
+nsert\SpecialChar \menuseparator
+
+\bar under
+I
+\bar default
+ndex
+\family default
+\InsetSpace ~
+
+\family sans
+Entry
+\family default
+.
+ This will insert a tag showing the word as it will appear in the index.
+ That's all there is to it; LyX will automatically call 
+\family typewriter
+makeindex
+\family default
+ for you and create the index itself.
+ The text in the dialog available from right-clicking on the index button
+ accepts LaTeX, so you'll need to be careful to avoid using any special
+ characters.
+ On the positive side, you can use the advanced options - have a look at
+ the documentation which comes with your LaTeX distribution to find out
+ how to do things like 
+\begin_inset Quotes eld
+\end_inset
+
+nested entries
+\begin_inset Quotes erd
+\end_inset
+
+, etc.
+\end_layout
+
+\begin_layout Standard
+Be careful not to put spaces between the word in the text and the index
+ marker; apparently the wrong page number can be produced if this happens.
 \end_layout
 
 \begin_layout Section
@@ -13272,7 +13427,7 @@ target "http://publish.aps.org/revtex4/"
 Probably the easiest way to get started is either to import a RevTeX 4 document
  using 
 \family typewriter
-reLyX
+tex2lyx
 \family default
 , or to use the 
 \family sans
@@ -13375,7 +13530,7 @@ status collapsed
 \begin_layout Standard
 In case you're curious, both were included so that 
 \family typewriter
-reLyX
+tex2lyx
 \family default
  would be able to translate both 
 \family typewriter
@@ -14282,18 +14437,17 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-Translating from LaTeX into LyX is performed by a Perl script called reLyX.
+Translating from LaTeX into LyX is performed by a Python script called tex2lyx.
  Although it is a standalone program which can be called from the command
  line, LyX will call it automatically when a LaTeX document is imported.
  See section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:reLyX"
+reference "sec:Translating-LaTeX-files"
 
 \end_inset
 
  for a complete description.
- There are no user tunable parameters for reLyX within LyX.
 \end_layout
 
 \begin_layout Subsection
