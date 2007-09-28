@@ -257,6 +257,11 @@ bool BufferView::update(Update::flags flags)
 		buffer_.changed();
 		if (fitCursor())
 			updateMetrics(false);
+		else
+			// The screen has already been updated thanks to the
+			// 'buffer_.changed()' call three line above. So no need
+			// to redraw again.
+			return false;
 	}
 
 	// tell the frontend to update the screen.
