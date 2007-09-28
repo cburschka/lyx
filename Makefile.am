@@ -17,7 +17,7 @@ endif
 
 EXTRA_DIST = ANNOUNCE INSTALL.autoconf RELEASE-NOTES UPGRADING \
 	INSTALL.Win32 INSTALL.MacOSX INSTALL.scons INSTALL.cmake \
-	README.Win32 README.Cygwin lyx.man autogen.sh
+	README.Win32 README.Cygwin README.localization lyx.man autogen.sh
 
 man_MANS = lyx.1
 
