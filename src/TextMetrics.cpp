@@ -1954,10 +1954,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING)) {
 			if (text_->isMainText(bv_->buffer()))
-				LYXERR(Debug::PAINTING) << "\n{" <<
+				LYXERR(Debug::PAINTING) << "\n{" << inside <<
 				pi.full_repaint << row_has_changed << "}";
 			else
-				LYXERR(Debug::PAINTING) << "[" <<
+				LYXERR(Debug::PAINTING) << "[" << inside <<
 				pi.full_repaint << row_has_changed << "]";
 		}
 
