@@ -22,11 +22,10 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- The LyX User Guide has been revised completely.
-  It is now up to date and describes all of LyX 1.5's main features
+- The LyX User Guide has been revised completely. It is now up to
+  date and describes all of LyX 1.5's main features (bug 3315 a.o.)
   For a detailed changelog, see
   http://wiki.lyx.org/LyX/DocumentationDevelopment#Status
-  (it now also describes the preferences settings (bug 3315) )
 
 - The LyX User Guide has been translated into Spanish.
 
@@ -87,6 +86,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Reconfiguration failure will no longer result in empty textclass lists.
+  Lyx now starts and asks for reconfigure if no textclass is found (bug 2829).
+
 - Check if the .lyx file has been externally modified when a buffer is saved.
 
 - Fix conversion from older documents if koi8 is used as the document
@@ -99,9 +101,6 @@ What's new
   distributions and that caused LyX to ignore LaTeX errors (bug 4222).
 
 - Fix LaTeX error with captions in Program Listings (bug 4182).
-
-- Reconfiguration failure will no longer result in empty textclass lists.
-  Lyx now starts and asks for reconfigure if no textclass is found (bug 2829).
 
 * USER INTERFACE:
 
