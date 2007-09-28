@@ -47,6 +47,9 @@ What's new
 
 - Add a pixmap cache to speed up text drawing on screen. This cache is
   enabled on Mac and Windows platforms using Qt 4.2 or higher.
+  
+- Add an optimization that avoids a full screen drawing when typing in a
+  non-wide inset.
 
 - Add a "Save all" menu entry, to save all modified files (bug 2840).
 

@@ -1482,13 +1482,19 @@ void BufferView::updateMetrics(bool singlepar)
 
 	// If the paragraph metrics has changed, we can not
 	// use the singlepar optimisation.
-	if (singlepar
+	if (singlepar) {
+		pit_type const bottom_pit = cursor_.bottom().pit();
+		int old_height = tm.parMetrics(bottom_pit).height();
 		// In Single Paragraph mode, rebreak only
 		// the (main text, not inset!) paragraph containing the cursor.
 		// (if this paragraph contains insets etc., rebreaking will
 		// recursively descend)
-		&& tm.redoParagraph(cursor_.bottom().pit()))
-		singlepar = false;
+		tm.redoParagraph(bottom_pit);
+		// Paragraph height has changed so we cannot proceed to
+		// the singlePar optimisation.
+		if (tm.parMetrics(bottom_pit).height() != old_height)
+			singlepar = false;
+	}
 
 	pit_type const pit = anchor_ref_;
 	int pit1 = pit;
