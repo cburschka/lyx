@@ -350,9 +350,11 @@ int QLPainter::text(int x, int y, docstring const & s,
 		p.setLayoutDirection(Qt::LeftToRight);
 		p.drawText(-lb, mA, str);
 		QPixmapCache::insert(key, pm);
+		/*
 		LYXERR(Debug::PAINTING) << "h=" << h << "  mA=" << mA << "  mD=" << mD
 			<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth 
 			<< "  rb=" << rb << endl;
+		*/
 	}
 	// Draw the cached pixmap.
 	drawPixmap(x + lb, y - mA, pm);

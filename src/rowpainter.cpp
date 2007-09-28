@@ -198,7 +198,6 @@ void RowPainter::paintInset(pos_type const pos, Font const & font)
 	bool tmp = refreshInside;
 	if (!in || !in->wide()) {
 		refreshInside = true;
-		LYXERR(Debug::PAINTING) << endl << "Paint inset fully" << endl;
 	}
 	if (refreshInside)
 		inset->drawSelection(pi, int(x_), yo_);
@@ -1023,12 +1022,13 @@ void paintPar
 			// 12 lines lower):
 			if (lyxerr.debugging(Debug::PAINTING)) {
 				if (text.isMainText(*pi.base.bv->buffer()))
-					LYXERR(Debug::PAINTING) << "#";
+					LYXERR(Debug::PAINTING) << "\n{" << inside <<
+					repaintAll << row_has_changed << "}";
 				else
-					LYXERR(Debug::PAINTING) << "[" <<
-						repaintAll << row_has_changed <<
-						cursor_on_row << "]";
+					LYXERR(Debug::PAINTING) << "[" << inside <<
+					repaintAll << row_has_changed << "]";
 			}
+
 			rp.paintAppendix();
 			rp.paintDepthBar();
 			rp.paintChangeBar();
@@ -1044,8 +1044,6 @@ void paintPar
 	}
 	// Re-enable screen drawing for future use of the painter.
 	pi.pain.setDrawingEnabled(true);
-
-	LYXERR(Debug::PAINTING) << "." << endl;
 }
 
 } // namespace anon
@@ -1054,6 +1052,7 @@ void paintPar
 void paintText(BufferView & bv,
 	       Painter & pain)
 {
+	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
 	BOOST_ASSERT(bv.buffer());
 	Buffer const & buffer = *bv.buffer();
 	Text & text = buffer.text();
@@ -1095,6 +1094,8 @@ void paintText(BufferView & bv,
 //	lyxerr << "par descent: " << text.getPar(vi.p1).ascent() << endl;
 	if (vi.y2 < bv.workHeight() && vi.update_strategy == FullScreenUpdate)
 		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, Color::bottomarea);
+
+	LYXERR(Debug::PAINTING) << "\n\t\t*** END DRAWING  ***" << endl;
 }
 
 
