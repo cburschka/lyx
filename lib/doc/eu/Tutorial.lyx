@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -36,6 +36,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -52,9 +53,7 @@ egilea: LyX taldea.
 status open
 
 \begin_layout Standard
- Fitxategi honen arduradun nagusia
-\family default
- 
+ Fitxategi honen arduradun nagusia 
 \family typewriter
 John Weiss
 \family default
@@ -77,6 +76,7 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>,
 
 \begin_layout Standard
 \begin_inset LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -132,16 +132,12 @@ Tutoretza hau zer da eta zer ez da.
 
 \begin_layout Standard
 Atal honekin serioski hasi baino lehen, gauza bat argitu nahiko genuke.
- Tutoretza honek
-\emph default
- 
+ Tutoretza honek 
 \emph on
 Sarrera
 \emph default
 -n agertzen den idazkera erabiltzen du.
- Lehenbizi eskuliburu hau irakurtzen ari bazara, hobe lehenago
-\emph default
- 
+ Lehenbizi eskuliburu hau irakurtzen ari bazara, hobe lehenago 
 \emph on
 Sarrera
 \emph default
@@ -191,15 +187,14 @@ edo, era dotoreago batean,"ezaugarriak"
  Baldin eta tutoretza osoa irakurtzeko asmorik ez baduzu, 
 \begin_inset LatexCommand ref
 reference "atal:latexerabiltzaileak"
+
 \end_inset
 
  atala begiratzea aholkatzen dizugu, LaTeX-eko adituei zuzendua baitago.
 \end_layout
 
 \begin_layout Subsection
-Aurkituko
-\emph default
- 
+Aurkituko 
 \emph on
 ez
 \emph default
@@ -212,9 +207,7 @@ LyX-en ezaugarri guztien azalpen zehatzak.
 \end_layout
 
 \begin_layout Itemize
-Zer?
-\emph default
- 
+Zer? 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -223,16 +216,12 @@ Erabiltzailearen Gida
 
 \begin_layout Itemize
 Serioski mintzatuz, zu ernatu eta tresna honekin idazten jartzea nahi dugu,
-
-\emph default
  
 \emph on
 Erabiltzailearen Gida
 \emph default
  bakarrik behar izango duzu.
- LyX-en ezaugarri guztiak hemen sartuz gero
-\emph default
- 
+ LyX-en ezaugarri guztiak hemen sartuz gero 
 \emph on
 Tutoretza
 \emph default
@@ -242,9 +231,7 @@ Tutoretza
 
 \begin_deeper
 \begin_layout Standard
-Alferrikako lan errepikakor eta aspergarria izango litzateke
-\emph default
- 
+Alferrikako lan errepikakor eta aspergarria izango litzateke 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -291,6 +278,7 @@ Lehenbiziko LyX dokumentua
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "atal:lyxlehenidazkia"
+
 \end_inset
 
  Oso ondo.
@@ -304,14 +292,10 @@ Dagoen informazio asko hemen azalduko ez dugunez, laguntzako beste fitxategi
  batzuk bilatu beharrean egongo zara.
  Zorionez, erraza da.
  Abiatu LyX.
- Aukeratu
-\emph default
- 
+ Aukeratu 
 \emph on
 Erabiltzailearen Gida
 \emph default
-
-\family default
  
 \family sans
 \bar under
@@ -320,27 +304,21 @@ L
 aguntza
 \family default
  menuan.
- Horrela baderitzozu, kargatu
-\emph default
- 
+ Horrela baderitzozu, kargatu 
 \emph on
 Tutoretza
 \emph default
  ere (une honetan pantailan irakurtzen ari ez bazara bederen).
  Horrela, zure fitxategia LyX-en ezaugarrien erabilera gisa adibide ona
  izango da, idazten ari zaren bitartean irakur baititzakezu.
- Dokumentu bat baino gehiago irekita badituzu,
-\family default
- 
+ Dokumentu bat baino gehiago irekita badituzu, 
 \family sans
 Dokumentuak
 \family default
  menua erabili hauen artean mugitzeko.
  Tutoretza honek ez ditu zehatz-mehatz azalduko beste LyX eskuliburuetan
  agertzen diren gaiak.
- Hasera batean nahiz eta zuretzako zailagoa izan,
-\emph default
- 
+ Hasera batean nahiz eta zuretzako zailagoa izan, 
 \emph on
 Tutoretza
 \emph default
@@ -350,15 +328,11 @@ Tutoretza
 
 \begin_layout Standard
 Tutoretza-n programa hauek instalatuta dauzkazula onartuko dugu: ongi baino
- hobekiago darabilen LyX-eko bertsio bat, LaTeX,
-\family default
- 
+ hobekiago darabilen LyX-eko bertsio bat, LaTeX, 
 \family typewriter
 xdvi
 \family default
- edo dvi fitxategi-ikustailea eta
-\family default
- 
+ edo dvi fitxategi-ikustailea eta 
 \family typewriter
 dvips
 \family default
@@ -371,17 +345,13 @@ dvips
 
 \begin_layout Standard
 Azkenik, zure trebezia lantzeko asmoz LyX-en fitxategi bat prestatu dugu.
- Beraren izena
-\family default
- 
+ Beraren izena 
 \family typewriter
 adibide_gordina.lyx
 \family default
  da.
  Pentsatu LyX-eko ezaugarri dotoreak ezagutzen ez dituen batek idatzi duela.
- Funtzio berriak ikasten ari zaren heinean
-\family default
- 
+ Funtzio berriak ikasten ari zaren heinean 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -399,9 +369,7 @@ Trikimailuak hori koloredun "oharretan" agertzen dira.
 \end_inset
 
 .
- Tranpa egin nahi baduzu (edo egindakoa aztertzeko asmoz),
-\family default
- 
+ Tranpa egin nahi baduzu (edo egindakoa aztertzeko asmoz), 
 \family typewriter
 adibide_lyx-atua.lyx
 \family default
@@ -410,15 +378,11 @@ adibide_lyx-atua.lyx
 \end_layout
 
 \begin_layout Standard
-Adibide-fitxategiak
-\family default
- 
+Adibide-fitxategiak 
 \family typewriter
 examples/
 \family default
- direktoriopean aurki Daiteke; hautatu
-\family default
- 
+ direktoriopean aurki Daiteke; hautatu 
 \family sans
 \bar under
 F
@@ -430,22 +394,16 @@ r
 \bar default
 eki
 \family default
- menua eta
-\family default
- 
+ menua eta 
 \family sans
 Adibideak
 \family default
  botoian klikatuz lor ditzakezu.
- Ireki Landugabeko dokumentua,
-\family default
- 
+ Ireki Landugabeko dokumentua, 
 \family typewriter
 adibide_gordina.lyx
 \family default
-, eta horren gainean idazteko
-\family default
- 
+, eta horren gainean idazteko 
 \family sans
 \bar under
 F
@@ -461,9 +419,7 @@ honela
 \end_layout
 
 \begin_layout Standard
-Gainera,
-\family default
- 
+Gainera, 
 \family typewriter
 examples/
 \family default
@@ -480,9 +436,7 @@ Idaztea, ikustea eta inprimatzea
 \end_layout
 
 \begin_layout Itemize
-Ireki fitxategi berria
-\family default
- 
+Ireki fitxategi berria 
 \family sans
 \bar under
 F
@@ -517,15 +471,11 @@ honela
 \end_layout
 
 \begin_layout Itemize
-Exekutatu LaTeX
-\family default
- 
+Exekutatu LaTeX 
 \family typewriter
 dvi
 \family default
- fitxategia sortzeko
-\family default
- 
+ fitxategia sortzeko 
 \family sans
 \bar under
 I
@@ -549,9 +499,7 @@ status open
 
 \begin_layout Standard
 xdvi atzeko planoan exekutatzen utziz denbora aurrez dezakezu.
- Ondoren,
-\family default
- 
+ Ondoren, 
 \family sans
 \bar under
 I
@@ -568,9 +516,7 @@ D
 \bar default
 VI
 \family default
- erabili eta LaTeX-en ekitaldia amaitzean
-\family default
- 
+ erabili eta LaTeX-en ekitaldia amaitzean 
 \family typewriter
 xdvi
 \family default
@@ -583,9 +529,7 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-Inprimatzeko
-\family default
- 
+Inprimatzeko 
 \family sans
 \bar under
 F
@@ -607,21 +551,15 @@ Inprimatu
 
 \begin_layout Standard
 Zorionak! Zure lehenbiziko LyX dokumentua idatzi eta inprimatu duzu.
- Beste guztia huskeriak bakarrik dira,
-\emph default
- 
+ Beste guztia huskeriak bakarrik dira, 
 \emph on
 Tutoretza
 \emph default
- ,
-\emph default
- 
+ , 
 \emph on
 Erabiltzailearen Gida
 \emph default
- eta
-\emph default
- 
+ eta 
 \emph on
 Ezaugarri hedatuak
 \emph default
@@ -640,9 +578,7 @@ LyX-ek testu-prozesadore batekin egin ditzakezun gauza gehienak egin ditzake.
 
 \begin_layout Description
 Desegin LyX-ek hainbat desegite-maila ditu, uneko dokumentua editatzen hasi
- eta orain arteko guztiak desegin ditzakezu
-\family default
- 
+ eta orain arteko guztiak desegin ditzakezu 
 \family sans
 \bar under
 E
@@ -655,9 +591,7 @@ D
 esegin
 \family default
  hautatuz behin eta berriz.
- Gehiegi desegiten baduzu, aldaketak berreskuratzeko, hautatu
-\family default
- 
+ Gehiegi desegiten baduzu, aldaketak berreskuratzeko, hautatu 
 \family sans
 \bar under
 E
@@ -683,9 +617,7 @@ Gaur egun, desegin komandoa 100 urratsetara mugatua dago.
 
 \end_deeper
 \begin_layout Description
-Ebaki/Itsatsi/Kopiatu Erabili
-\family default
- 
+Ebaki/Itsatsi/Kopiatu Erabili 
 \family sans
 \bar under
 E
@@ -697,9 +629,7 @@ E
 \bar default
 baki
 \family default
-,
-\family default
- 
+, 
 \family sans
 \bar under
 E
@@ -711,9 +641,7 @@ I
 \bar default
 tsatsi
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 \bar under
 E
@@ -731,9 +659,7 @@ opiatu
 \end_layout
 
 \begin_layout Description
-Bilatu/Ordeztu Erabili
-\family default
- 
+Bilatu/Ordeztu Erabili 
 \family sans
 \bar under
 E
@@ -745,9 +671,7 @@ ordeztu
 \family default
  esaldi edo hitzak bilatzeko.
  Elkarrizketa-koadroan, bilatu Bilatu hurrengoa botoiarekin, eta erabil
- ezazu
-\family default
- 
+ ezazu 
 \family sans
 \bar under
 O
@@ -765,22 +689,16 @@ Amaitzean leihotxoa itxi.
 \series bold
 Bilatu eta ordeztu
 \series default
-,
-\series default
- 
+, 
 \series bold
 Gaien aurkibidea
 \series default
-,
-\series default
- 
+, 
 \series bold
 Diseinua
 \series default
  edota matematikako hainbat bezala) modu honetan erabil ditzakezu.
- Elkarrizketa-koadro gutxi batzuk,
-\series default
- 
+ Elkarrizketa-koadro gutxi batzuk, 
 \series bold
 \bar under
 F
@@ -808,15 +726,11 @@ reki...
 
 \begin_layout Description
 Karaktereak\InsetSpace ~
-formateatzea Testua
-\emph default
- 
+formateatzea Testua 
 \emph on
 enfasiarekin
 \emph default
- (karaktere etzanak),
-\series default
- 
+ (karaktere etzanak), 
 \series bold
 lodia
 \series default
@@ -825,9 +739,7 @@ lodia
 Izen
 \noun default
  estiloa (normalean maiuskula txikiak izaten dira, pertsonen izenentzako)
- eran ezartzeko, erabili
-\family default
- 
+ eran ezartzeko, erabili 
 \family sans
 \bar under
 D
@@ -844,15 +756,11 @@ arakterea
 
 \begin_layout Description
 Tresna-barra Ekintza erabilgarrienak lantzeko botoiak dauzka (menuen azpian
- dago), adibidez,
-\family default
- 
+ dago), adibidez, 
 \family sans
 Itsatsi
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 Inprimatu
 \family default
@@ -873,13 +781,12 @@ WYSIWYM: zuriuneak LyX-en
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "atal:zuriuneak"
+
 \end_inset
 
 Gauza zailenetariko bat (erabiltzaile berrientzako) LyX-ek zuriuneak erabiltzeko
  modura ohitzea izaten da.
- Nahiz eta mila bider
-\family default
- 
+ Nahiz eta mila bider 
 \family sans
 lerro\InsetSpace ~
 itzulera
@@ -888,9 +795,7 @@ itzulera
 \family sans
 Enter
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 Return
 \family default
@@ -901,8 +806,6 @@ Spacebar
 \family default
  izeneko 'luuuze' hori) astindu, zuriune bakar bat besterik ez duzu lortuko.
  LyX-ek ez dizu lerro huts batean zuriune bat sartzen utziko.
-
-\family default
  
 \family sans
 Tabuladoreak
@@ -914,40 +817,30 @@ Tabuladoreak
 \begin_layout Standard
 Testu-prozesadore komertzial asko WYSIWYG izakeran oinarritzen dira: "ikusten
  duzuna lortzen duzu".
- LyX-ek, ordea, "Ikusten duzuna
-\emph default
- 
+ LyX-ek, ordea, "Ikusten duzuna 
 \emph on
 esan nahi
 \emph default
  duzu" izakeran oinarritzen da.
  Utzi LyX-en eskuetan idatzi nahi duzuna eta beste dena, konposaketa-lanak.
  Lantxo hori txukun-txukun eta polit-polita uzten bera arduratuko baita.
-
-\family default
  
 \family sans
 Lerro-itzulera
 \family default
- batek paragrafoak gramatikalki bereizten ditu,
-\family default
- 
+ batek paragrafoak gramatikalki bereizten ditu, 
 \family sans
 Zuriune
 \family default
  batek bi hitz bereizten dituen bezalaxe, eta gauzak horrela izanda, lerro-itzul
-era gehiago sartu beharrik ez dago; bestalde,
-\family default
- 
+era gehiago sartu beharrik ez dago; bestalde, 
 \family sans
 Tabuladore
 \family default
  batek gramatika-ikuspegitik zereginik ez dauka; beraz, LyX-ek ez du onartzen.
  Azken finean, LyX erabiliz denborarik gehien dokumentuaren edukian buru-belarri
  idazten igaroko duzu, eta gutxiengoa itxuran.
- WYSIWYMen esanahia hobekiago ulertzeko, ikus
-\emph default
- 
+ WYSIWYMen esanahia hobekiago ulertzeko, ikus 
 \emph on
 Sarrera
 \emph default
@@ -974,9 +867,7 @@ Inguruneak
 \end_layout
 
 \begin_layout Standard
-Dokumentu bateko zati ezberdinek xede ezberdinak dituzte: zati horiei
-\emph default
- 
+Dokumentu bateko zati ezberdinek xede ezberdinak dituzte: zati horiei 
 \emph on
 inguruneak
 \emph default
@@ -1028,15 +919,11 @@ Atalak eta azpiatalak
 \end_layout
 
 \begin_layout Standard
-Idatzi
-\family default
- 
+Idatzi 
 \family typewriter
 Sarrera
 \family default
- zure LyX-eko fitxategiko lehen lerroan, eta
-\family default
- 
+ zure LyX-eko fitxategiko lehen lerroan, eta 
 \family sans
 Ingurunea
 \family default
@@ -1055,22 +942,16 @@ Ez daukazu lerro osoa hautatu beharrik.
 \end_inset
 
 .
- Hautatu
-\family default
- 
+ Hautatu 
 \family sans
 Atala
 \family default
 .
- Ziurtatu zaitez
-\family default
- 
+ Ziurtatu zaitez 
 \family sans
 Atala
 \family default
- hautatzen duzula eta ez
-\family default
- 
+ hautatzen duzula eta ez 
 \family sans
 Atala*
 \family default
@@ -1078,9 +959,7 @@ Atala*
  LyX-ek atala "1" bezala zenbatzen du eta atalaren izenburua letra-tamaina
  handiagoz ezartzen du.
  Orain lerro-itzulera sakatu.
- Ikus dezakezuna
-\family default
- 
+ Ikus dezakezuna 
 \family sans
 Ingurunea
 \family default
@@ -1099,23 +978,17 @@ Hau nire LyX-eko lehen dokumentuaren sarrera bat da.
 \end_layout
 
 \begin_layout Standard
-Sakatu
-\family default
- 
+Sakatu 
 \family sans
 Lerro-itzulera
 \family default
- berriz, eta hautatu
-\family default
- 
+ berriz, eta hautatu 
 \family sans
 Atala
 \family default
  Ingurunea menuan.
  LyX zain dago "2" idatzi eta izenburu bat noiz idatziko.
- Idatzi
-\family default
- 
+ Idatzi 
 \family typewriter
 
 \begin_inset Quotes eld
@@ -1134,17 +1007,13 @@ gauza gehiago
 Gauzak hobetuz doaz.
  Joan 1.
  atalaren amaierara ("nire LyX-eko lehen" paragrafoaren atzera), sakatu
- lerro-itzulera, eta hautatu
-\family default
- 
+ lerro-itzulera, eta hautatu 
 \family sans
 Atala
 \family default
  Ingurunea menuan.
  LyX berriro "2" eta ataleko izenburua noiz idatziko zain egongo da.
- Idatzi
-\family default
- 
+ Idatzi 
 \family typewriter
 Dokumentu honi buruz
 \family default
@@ -1182,18 +1051,14 @@ Azpiatalak atalak baino txikiagoak dira.
 \end_layout
 
 \begin_layout Standard
-Bigarren lerroan kurtsorea kokatu eta Ingurunea menuan
-\family default
- 
+Bigarren lerroan kurtsorea kokatu eta Ingurunea menuan 
 \family sans
 Azpiatala
 \family default
  hautatu.
  LyX-ek azpiatala "2.1" zenbatuko du, eta letra-tamaina testu arruntarena
  baino handiagoa eta atalen izenburuena baino txikiagoa ezarriko dio.
- Laugarren lerroa
-\series default
- 
+ Laugarren lerroa 
 \series bold
 Azpiatala
 \series default
@@ -1205,43 +1070,31 @@ Azpiatala
 \end_layout
 
 \begin_layout Standard
-Zatitzeko maila sakonagoak
-\family default
- 
+Zatitzeko maila sakonagoak 
 \family sans
 Azpiazpiatala
 \family default
-,
-\family default
- 
+, 
 \family sans
 Paragrafo
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Azpiparagrafoak
 \family default
  dira.
  Beraiekin zure kasa jolasten utziko dizugu.
  Paragrafo eta azpiparagrafoen izenburuek jatorriz zenbatugabe eta azpiparagrafo
-ak koskatuta daudela ohartuko zara; hori aldatzeko, irakurri
-\emph default
- 
+ak koskatuta daudela ohartuko zara; hori aldatzeko, irakurri 
 \emph on
 Erabiltzailearen Gida
 \emph default
 .
- Zatitze maila-altuena
-\family default
- 
+ Zatitze maila-altuena 
 \family sans
 Kapitulua
 \family default
- izenburuak dira,
-\family default
- 
+ izenburuak dira, 
 \family sans
 Atala
 \family default
@@ -1249,6 +1102,7 @@ Atala
  ditzakezu (
 \begin_inset LatexCommand ref
 reference "atal:testuklaseak"
+
 \end_inset
 
  atala ikusi).
@@ -1257,24 +1111,18 @@ reference "atal:testuklaseak"
 \begin_layout Standard
 Azkenik, baliteke zenbatu gabeko atal eta azpiatalak nahi izatea.
  Horretarako ere badaude beste gune batzuk.
- Atalen izenburuak
-\family default
- 
+ Atalen izenburuak 
 \family sans
 Atala*
 \family default
  ingurunera (agian Ingurunea menuan beherantz mugitu beharko duzu) aldatzen
  badituzu, LyX-ek atal normaletako letra-tamaina berdina erabiliko du, baina
  ez ditu zenbatuko.
- Badaude "izardun" izenburuak
-\family default
- 
+ Badaude "izardun" izenburuak 
 \family sans
 Azpiatala
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Azpiazpiatala
 \family default
@@ -1284,9 +1132,7 @@ Azpiazpiatala
 \end_layout
 
 \begin_layout Description
-Ariketa: konpondu
-\family default
- 
+Ariketa: konpondu 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -1299,9 +1145,7 @@ Zerrendak eta azpizerrendak
 
 \begin_layout Standard
 LyX-ek zerrendak osatzeko zenbait ingurune ditu.
- Zerrenden hainbat ingurunek eskema bat idaztean,
-\family default
- 
+ Zerrenden hainbat ingurunek eskema bat idaztean, 
 \family sans
 Tabuladoreari
 \family default
@@ -1312,9 +1156,7 @@ Tabuladoreari
 status collapsed
 
 \begin_layout Standard
-Bai, badakigu hau
-\emph default
- 
+Bai, badakigu hau 
 \emph on
 Tutoretza
 \emph default
@@ -1328,9 +1170,7 @@ Tutoretza
 \end_layout
 
 \begin_layout Itemize
-Diapositiben aurkezpeneko puntu ezberdinak deskribatzeko
-\family default
- 
+Diapositiben aurkezpeneko puntu ezberdinak deskribatzeko 
 \family sans
 Elementua
 \family default
@@ -1353,9 +1193,7 @@ Bulet
 \end_layout
 
 \begin_layout Itemize
-Eskema batek
-\family default
- 
+Eskema batek 
 \family sans
 Zenbatuta
 \family default
@@ -1364,9 +1202,7 @@ Zenbatuta
 \end_layout
 
 \begin_layout Itemize
-Hainbat softwaretako paketeak azaltzen dituen dokumentu batek
-\family default
- 
+Hainbat softwaretako paketeak azaltzen dituen dokumentu batek 
 \family sans
 Azalpena
 \family default
@@ -1380,9 +1216,7 @@ Azalpena
 \family sans
 Zerrenda
 \family default
- ingurunea (LaTeX-en ez dago)
-\family default
- 
+ ingurunea (LaTeX-en ez dago) 
 \family sans
 Azalpena
 \family default
@@ -1401,15 +1235,11 @@ LyX beste testu-prozesadoreak baino hobeagoa da zeren eta:
 
 \begin_layout Standard
 eta sakatu lerro-itzulera.
- Orain
-\family default
- 
+ Orain 
 \family sans
 Ingurune
 \family default
- menuan
-\family default
- 
+ menuan 
 \family sans
 Elementua
 \family default
@@ -1432,9 +1262,7 @@ Oso erraza da zerrendak sortzea!
 \end_layout
 
 \begin_layout Standard
-Zerrenda-motako inguruneak, izenburuen ez bezala,
-\family default
- 
+Zerrenda-motako inguruneak, izenburuen ez bezala, 
 \family sans
 lerro-itzulera
 \family default
@@ -1443,22 +1271,16 @@ lerro-itzulera
  dago.
  Aurreko adibidea hiru elementuz osatutako zerrenda bat da.
  Zerrendako elementu batean paragrafo bat baino gehiago edukitzeko jauzi
- babestua erabili,
-\family default
- 
+ babestua erabili, 
 \family sans
 C-Lerro-itzulera
 \family default
  sakatuz.
- Zerrenda ingurunetik irteteko, hautatu
-\family default
- 
+ Zerrenda ingurunetik irteteko, hautatu 
 \family sans
 Estandarra
 \family default
- ingurunea (edo erabili
-\family default
- 
+ ingurunea (edo erabili 
 \family sans
 M-p s
 \family default
@@ -1483,9 +1305,7 @@ LyX-ek ez dizu lehenbiziko buleta aukeratzen utziko, zerrendaren aurreko
 
 \end_inset
 
- eta aukeratu
-\family default
- 
+ eta aukeratu 
 \family sans
 Zenbatuta
 \family default
@@ -1496,15 +1316,11 @@ Zenbatuta
 
 \begin_layout Standard
 Zerrenda hautatuta dagoen bitartean, beste bi zerrenda-ingurunetara alda
- dezakezu,
-\family default
- 
+ dezakezu, 
 \family sans
 Azalpena
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Zerrenda
 \family default
@@ -1538,8 +1354,6 @@ Zerrenda
 \family default
 ) batekin bereiztua dago.
  Zenbait hitzetako terminoa lortzeko hitzak zuriune babestuaz bereizi.
-
-\family default
  
 \family sans
 C-Zuriunea
@@ -1548,9 +1362,7 @@ C-Zuriunea
 \end_layout
 
 \begin_layout Description
-Ariketa: zuzendu
-\family default
- 
+Ariketa: zuzendu 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -1564,9 +1376,7 @@ Itxura erakargarriak osatuz, zerrenda batzuk beste batzuen barnean sar ditzakezu
  ezberdinak eduki ditzakete.
  Zerrenda-mota ezberdinen azalpenak eta habiaratze-mailari (adbz.
  azpizerrenda beste baten barruan, eta azken hau beste baten barnean) buruko
- xehetasunak
-\emph default
- 
+ xehetasunak 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -1578,50 +1388,36 @@ Beste inguruneak: Bertsoa, Zitazioa eta beste batzuk
 \end_layout
 
 \begin_layout Standard
-Zitak ezartzeko bi ingurune daude:
-\family default
- 
+Zitak ezartzeko bi ingurune daude: 
 \family sans
 Zita
 \family default
- aipamen motzentzat eta
-\family default
- 
+ aipamen motzentzat eta 
 \family sans
 Zitazioa
 \family default
  luzeentzat.
-
-\family default
  
 \family sans
 LyX-kodea
 \family default
- (tutoretza honetako adibide luzeetan erabilia)
-\family default
- 
+ (tutoretza honetako adibide luzeetan erabilia) 
 \family typewriter
 idazmakinaren
 \family default
  letra-tipoarekin idazten du; kodea koskatzeko nahi adina zuriune jarraian
  idazteko baimena eskaintzen dizun LyX-eko ingurune bakarra da.
- Olerkiak idatz ditzakezu
-\family default
- 
+ Olerkiak idatz ditzakezu 
 \family sans
 Bertsoa
 \family default
  ingurunea erabiliz, estrofak bereizteko lerro-itzulerak eta estrofa baten
- barruan lerroak banatzeko
-\family default
- 
+ barruan lerroak banatzeko 
 \family sans
 C-Lerro-itzulerak
 \family default
  erabiliz.
- LyX-ek eskaintzen dizkizun inguruneen xehetasunak ezagutzeko, ikus
-\emph default
- 
+ LyX-ek eskaintzen dizkizun inguruneen xehetasunak ezagutzeko, ikus 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -1629,21 +1425,15 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Description
-Ariketa:
-\family default
- 
+Ariketa: 
 \family sans
 Zita
 \family default
-,
-\family default
- 
+, 
 \family sans
 LyX-kodea
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Bertso
 \family default
@@ -1652,6 +1442,7 @@ Bertso
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 linebreak
@@ -1689,6 +1480,7 @@ Testu-klaseak
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "atal:testuklaseak"
+
 \end_inset
 
 Dokumentu-mota bakoitza era ezberdin batean konposatzen da.
@@ -1697,9 +1489,7 @@ Dokumentu-mota bakoitza era ezberdin batean konposatzen da.
  Gainera, dokumentu askok ingurune bereziak edukitzen dituzte: gutunak edukitzen
  duten zenbait ingurune (bidaltzailearen helbidea eta sinadura bezala) liburu
  edo artikulu batean ez daukate zentzurik.
- LyX-eko
-\emph default
- 
+ LyX-eko 
 \emph on
 testu-klaseak
 \emph default
@@ -1715,9 +1505,7 @@ LaTeX-eko erabiltzaileentzat: hau LaTeX-eko dokumentu-klasearen (documentclass)
 \end_inset
 
  hauen arteko ezberdintasunez arduratzen dira.
- Tutoretza hau, adibidez,
-\family default
- 
+ Tutoretza hau, adibidez, 
 \family sans
 liburua
 \family default
@@ -1728,9 +1516,7 @@ liburua
 \end_layout
 
 \begin_layout Standard
-Litekeena da zure dokumentua
-\family default
- 
+Litekeena da zure dokumentua 
 \family sans
 Artikulua
 \family default
@@ -1745,9 +1531,7 @@ Testu-klase lehenetsia izan ohi da.
 \end_inset
 
  idaztea.
- Saia zaitez beste testu-klase batera aldatzen (erabili
-\family default
- 
+ Saia zaitez beste testu-klase batera aldatzen (erabili 
 \family sans
 \bar under
 D
@@ -1757,29 +1541,21 @@ Dokumentua
 \family default
 ...
  menua), beraien konposaketa ezberdinak ikusteko.
- Aldatu zure dokumentua
-\family default
- 
+ Aldatu zure dokumentua 
 \family sans
 Book
 \family default
- testu-klasera, eta
-\family default
- 
+ testu-klasera, eta 
 \family sans
 Ingurunea
 \family default
  menuan begiratzen baduzu dauden ingurune gehienak berdinak izango dira.
- Orain, ordea,
-\family default
- 
+ Orain, ordea, 
 \family sans
 Kapitulua
 \family default
  ingurunea erabil dezakezu.
- Testu-klase batek zein ingurune eskaintzen dituen jakiteko,
-\family default
- 
+ Testu-klase batek zein ingurune eskaintzen dituen jakiteko, 
 \family sans
 Ingurunea
 \family default
@@ -1793,9 +1569,7 @@ Egunkariek konposaketa-mota propioa eduki ohi dute: letra-tamainak, zutabe
  LaTeX estiloko fitxategiak sortu eta idazleak beraien artikuluak ongi konposatu
 ta bidal ditzaten.
  Horretarako ere prestatuta dago LyX.
- Adibidez, LyX-ek
-\family default
- 
+ Adibidez, LyX-ek 
 \family sans
 Article\InsetSpace ~
 (AMS)
@@ -1810,9 +1584,7 @@ Jarraian zenbait testu-motari buruzko erreferentzia laburra azaltzen da.
 \emph on
 zaugarri hedatuak
 \emph default
- eskuliburuko
-\emph default
- 
+ eskuliburuko 
 \emph on
 Dokumentu-klase bereziak
 \emph default
@@ -1977,16 +1749,12 @@ Txantiloiak: eskutitza idaztea
 \end_layout
 
 \begin_layout Standard
-Testu-klase ospetsuena
-\family default
- 
+Testu-klase ospetsuena 
 \family sans
 Letter
 \family default
  (gutuna) da.
- Gutun bat idazteko orduan, ireki fitxategi berria eta
-\family default
- 
+ Gutun bat idazteko orduan, ireki fitxategi berria eta 
 \family sans
 \bar under
 D
@@ -1998,16 +1766,12 @@ D
 \bar default
 okumentua
 \family default
- elkarrizketa-koadroko
-\family default
- 
+ elkarrizketa-koadroko 
 \family sans
 Dokumentu\InsetSpace ~
 klasea
 \family default
- eremuan
-\family default
- 
+ eremuan 
 \family sans
 Letter
 \family default
@@ -2023,9 +1787,7 @@ Letter
 \end_layout
 
 \begin_layout Standard
-Ireki fitxategi berri bat
-\family default
- 
+Ireki fitxategi berri bat 
 \family sans
 \bar under
 F
@@ -2035,9 +1797,7 @@ Berria\InsetSpace ~
 (txantiloitik)
 \family default
  menua aukeratuz.
- Hautatu
-\family default
- 
+ Hautatu 
 \family typewriter
 letter.lyx
 \family default
@@ -2052,32 +1812,24 @@ letter.lyx
 Ingurunea
 \family default
  menuan begiratzen duzunean beste testu-klase batzuetan ageri ez diren hainbat
- ingurune ikusiko dituzu, adibidez,
-\family default
- 
+ ingurune ikusiko dituzu, adibidez, 
 \family sans
 Nire\InsetSpace ~
 Helbidea
 \family default
 .
-
-\family default
  
 \family sans
 Zita
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Azalpena
 \family default
  bezalako beste batzuk ezagunak egingo zaizkizu.
  Ingurune horiek nola erabiltzen diren ikusteko, beroriekin jolasten ibil
  zaitezke.
- Ohartuko zara, adibidez,
-\family default
- 
+ Ohartuko zara, adibidez, 
 \family sans
 Sinadura
 \family default
@@ -2088,16 +1840,12 @@ signature:
 " hitza testu aurretik agertzen duela.
  Fitxategia inprimatzen baduzu, ohartuko zara hitz hori ez duela erakusten.
  Sinaduraren kokapena jakiteko erabiltzen da.
- Horrez gain, jakin ezazu berdin dela
-\family default
- 
+ Horrez gain, jakin ezazu berdin dela 
 \family sans
 Signature
 \family default
  lerroa non kokatzen den.
- Gogoratu LyX programa WYSIWYM dela; nahi duzun lekuan
-\family default
- 
+ Gogoratu LyX programa WYSIWYM dela; nahi duzun lekuan 
 \family sans
 Signature
 \family default
@@ -2118,9 +1866,7 @@ status open
 
 \begin_layout Standard
 Abisu bat, txantiloitik idazten duzun kasurako.
- Ingurune bateko testua ezabatuz (zure helbidea sartzeko
-\family default
- 
+ Ingurune bateko testua ezabatuz (zure helbidea sartzeko 
 \family sans
 Nire\InsetSpace ~
 helbidea
@@ -2154,15 +1900,11 @@ Dokumentuen tituluak
 LyX-ek (LaTeX-ek bezala) titulua --- uneko izenburua, egilea, data eta laburpena
  ere barne eduki ditzake --- dokumentutik bereizitako zati bezala hartzen
  du.
- Itzul zaitez zure
-\family default
- 
+ Itzul zaitez zure 
 \family typewriter
 fitxategiberria.lyx
 \family default
- dokumentura eta ziurtatu
-\family default
- 
+ dokumentura eta ziurtatu 
 \family sans
 Article
 \family default
@@ -2171,9 +1913,7 @@ Article
 status open
 
 \begin_layout Standard
-Gutun mota ez darabilzula,
-\family default
- 
+Gutun mota ez darabilzula, 
 \family sans
 Letter
 \family default
@@ -2183,31 +1923,23 @@ Letter
 \end_inset
 
  testu-klasea erabiltzen ari dela.
- Idatzi titulua lehenbiziko lerroan eta lerroa
-\family default
- 
+ Idatzi titulua lehenbiziko lerroan eta lerroa 
 \family sans
 Titulua
 \family default
  ingurunearekin ezarri.
- Idatzi jurrengo lerroan zure izen-abizenak eta aldatu
-\family default
- 
+ Idatzi jurrengo lerroan zure izen-abizenak eta aldatu 
 \family sans
 Egilea
 \family default
  ingurunera.
- Idatzi data hirugarren lerroan
-\family default
- 
+ Idatzi data hirugarren lerroan 
 \family sans
 Data
 \family default
  ingurunea erabiliz.
  Hori egin ondoren, laburtu dokumentuaren edukia bizpahiru paragrafotan
- (edo bakar batean) eta ezarri
-\family default
- 
+ (edo bakar batean) eta ezarri 
 \family sans
 Laburpena
 \family default
@@ -2220,9 +1952,7 @@ Orain, ikusi emaitza nola inprimatuko den.
 \end_layout
 
 \begin_layout Description
-Ariketa: Zuzendu titulua, egilea eta data
-\family default
- 
+Ariketa: Zuzendu titulua, egilea eta data 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2236,6 +1966,7 @@ Etiketa eta erreferentzia gurutzatuak
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "atal:etiketak"
+
 \end_inset
 
 Dokumentuko atal bati (edo azpiatala, edo edozein testu-zati bat) etiketa
@@ -2256,9 +1987,7 @@ Zure aurreneko etiketa
 
 \begin_layout Standard
 Gure bigarren atala, "Dokumentu honi buruz" izenburua duena, markatuko dugu.
- Klikatu ataleko izenburuaren amaieran eta hautatu
-\family default
- 
+ Klikatu ataleko izenburuaren amaieran eta hautatu 
 \family sans
 \bar under
 T
@@ -2316,24 +2045,18 @@ ikus atala , orrialdean aurki
 \end_layout
 
 \begin_layout Standard
-Orain, kokatu kurtsorea "atala" hitzaren aurrean eta hautatu
-\family default
- 
+Orain, kokatu kurtsorea "atala" hitzaren aurrean eta hautatu 
 \family sans
 \bar under
 T
 \bar default
 xertatu
 \family default
- menuko
-\family default
- 
+ menuko 
 \family sans
 Erreferentzia gurutzatua
 \family default
  elementua.
-
-\family default
  
 \family sans
 Erreferentzia gurutzatua
@@ -2345,24 +2068,18 @@ Erreferentzia gurutzatua
 atal:dokumburuz
 \family default
 " bakarrik da.
- Hautatu hori (jatorriz aukeratuta egongo da) eta klikatu
-\family default
- 
+ Hautatu hori (jatorriz aukeratuta egongo da) eta klikatu 
 \family sans
 Ados
 \family default
  botoia.
  Orain jarri kurtsorea "orrialdean" hitzaren aurretik eta aldatu erreferentzi
- mota orrialde zenbakira elkarrizketa-koadroan eta klikatu
-\family default
- 
+ mota orrialde zenbakira elkarrizketa-koadroan eta klikatu 
 \family sans
 Ados
 \family default
 .
- Erabat zuzenak izateko, erreferentzia eta "atala" hitzaren artean
-\family default
- 
+ Erabat zuzenak izateko, erreferentzia eta "atala" hitzaren artean 
 \family sans
 zuriune\InsetSpace ~
 babestu
@@ -2379,9 +2096,7 @@ LyX-ek erreferentzia-kutxa batean jartzen du, kurtsorea dagoen lekuan.
 Erreferentzia gurutzatua
 \family default
  elkarrizketa-koadroan hautatutakoaren arabera) ordezten da.
- Erabili
-\family default
- 
+ Erabili 
 \family sans
 \bar under
 I
@@ -2405,8 +2120,6 @@ vi
 \begin_layout Standard
 Era probetxugarri batean, LyX-ekin dokumentua editatzen duzunean, gurutzatutako
  erreferentzia batek hiperesteka gisa dihardu; horren gainean klikatuta,
-
-\family default
  
 \family sans
 Erreferentzia gurutzatua
@@ -2439,9 +2152,7 @@ la bezala aipatuko du.
 Etiketekin aritzeko, sartu etiketa berri bat lehenbiziko erreferentzia gurutzatu
 a zegoen lekuan, eta aipatu dokumentuko edozein lekutik.
  Erreferentzia gurutzatu ugari txertatzen ibiltzen bazara (egunkarirako
- artikulua idaztean, adibidez),
-\family default
- 
+ artikulua idaztean, adibidez), 
 \family sans
 Erreferentzia gurutzatua
 \family default
@@ -2450,9 +2161,7 @@ Erreferentzia gurutzatua
 
 \begin_layout Standard
 Erreferentzia gurutzatuak dokumentu handietan ere ongi dabiltzala ziurtatu
- nahi baduzu, kopiatu
-\emph default
- 
+ nahi baduzu, kopiatu 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -2467,6 +2176,7 @@ Gauza bat, kapitulu baten izenburua kopiatzeak errore bat sor dezake, zeren
  Xehetasun gehiago 
 \begin_inset LatexCommand ref
 reference "atal:testuklaseak"
+
 \end_inset
 
  atalean.
@@ -2478,14 +2188,11 @@ reference "atal:testuklaseak"
 \end_layout
 
 \begin_layout Description
-Ariketa: zuzendu erreferentziak
-\family default
- 
+Ariketa: zuzendu erreferentziak 
 \family typewriter
 adibide_gordina.lyx
 \family default
- 
-fitxategian.
+ fitxategian.
 \end_layout
 
 \begin_layout Section
@@ -2493,9 +2200,7 @@ Oin-oharrak eta albokoak
 \end_layout
 
 \begin_layout Standard
-Oin-oharrak gehitzeko, tresna-barrako
-\family default
- 
+Oin-oharrak gehitzeko, tresna-barrako 
 \family sans
 Txertatu\InsetSpace ~
 oin-oharra
@@ -2511,9 +2216,7 @@ Botoiak beltz koloreko testuaren azpian dagoen testu gorri batera zuzendutako
 
 \end_inset
 
-, edo
-\family default
- 
+, edo 
 \family sans
 \bar under
 T
@@ -2530,9 +2233,7 @@ n
 -oharra
 \family default
  menua erabil dezakezu.
- Jarri kurtsorea dokumentuko "LyX" hitzaren atzean eta klikatu
-\family default
- 
+ Jarri kurtsorea dokumentuko "LyX" hitzaren atzean eta klikatu 
 \family sans
 Txertatu\InsetSpace ~
 oin-oharra
@@ -2581,15 +2282,11 @@ Teklatuaren bitartez errazago hautatuko duzu.
 
 \end_inset
 
-,
-\family default
- 
+, 
 \family sans
 Ebaki
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Itsatsi
 \family default
@@ -2603,8 +2300,6 @@ Itsatsi
 \family sans
 Txertatu
 \family default
-
-\family default
  
 \family sans
 oin-oharra
@@ -2614,9 +2309,7 @@ oin-oharra
 \end_inset
 
  izeneko botoia.
- Oin-oharra testu arruntera bihurtzeko, klikatu
-\family default
- 
+ Oin-oharra testu arruntera bihurtzeko, klikatu 
 \family sans
 Txertatu oin-oharra
 \family default
@@ -2624,16 +2317,12 @@ Txertatu oin-oharra
 \end_layout
 
 \begin_layout Standard
-Albo-oharrak gehitzeko, erabili
-\family default
- 
+Albo-oharrak gehitzeko, erabili 
 \family sans
 Txertatu\InsetSpace ~
 albo-oharra
 \family default
- botoia edo
-\family default
- 
+ botoia edo 
 \family sans
 \bar under
 T
@@ -2661,9 +2350,7 @@ Ez dira zenbatzen.
 \end_layout
 
 \begin_layout Description
-Ariketa: zuzendu oin-oharrak
-\family default
- 
+Ariketa: zuzendu oin-oharrak 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2677,6 +2364,7 @@ Bibliografiak
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "atal:bibliografiak"
+
 \end_inset
 
 Bibliografiak erreferentzia gurutzatuak bezalakoak dira.
@@ -2688,9 +2376,7 @@ Bibliografiak erreferentzia gurutzatuak bezalakoak dira.
 \end_layout
 
 \begin_layout Standard
-Joan dokumentu-amaierara eta aldatu
-\family default
- 
+Joan dokumentu-amaierara eta aldatu 
 \family sans
 Bibliografia
 \family default
@@ -2722,9 +2408,7 @@ LyX Tutoretza, LyX-eko dokumentazio taldea
 \family typewriter
 lyxtutoretza
 \family default
-"ra
-\family default
- 
+"ra 
 \family sans
 Gakoa
 \family default
@@ -2734,9 +2418,7 @@ Gakoa
 \begin_layout Standard
 Orain, kokatu kurtsorea dokumentuko leku batean, erreferentzia txertatu
  nahi duzun kokalekua hain zuzen.
- Hautatu
-\family default
- 
+ Hautatu 
 \family sans
 \bar under
 T
@@ -2746,8 +2428,6 @@ Zitazio\InsetSpace ~
 erreferentzia
 \family default
 .
-
-\family default
  
 \family sans
 Zitazioa
@@ -2773,9 +2453,7 @@ lyxtutoretza
 \end_layout
 
 \begin_layout Standard
-Nola erabiltzen dira beste eremuak? Zitazioa elkarrizketa-koadroko
-\family default
- 
+Nola erabiltzen dira beste eremuak? Zitazioa elkarrizketa-koadroko 
 \family sans
 Testua\InsetSpace ~
 ondoren
@@ -2786,22 +2464,16 @@ ondoren
  Inprimatzerakoan erreferentziek zenbakien ordez etiketak edukitzea nahi
  baduzu (adib.
  egunkari batzuk Sorozabal andreak 1992an idatzitako dokumentu bat aipatzeko
- "[Sor92]" idaztiko lukete)
-\family default
- 
+ "[Sor92]" idaztiko lukete) 
 \family sans
 Bibliografia-elementua
 \family default
- elkarrizketa-koadroko
-\family default
- 
+ elkarrizketa-koadroko 
 \family sans
 Etiketa
 \family default
  eremua erabili.
- Xehetasun gehiagorako, irakurri
-\emph default
- 
+ Xehetasun gehiagorako, irakurri 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -2809,9 +2481,7 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Description
-Ariketa: zuzendu bibliografia eta zitazioak
-\family default
- 
+Ariketa: zuzendu bibliografia eta zitazioak 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2826,9 +2496,7 @@ Gaien aurkibidea
 Dokumentu-hasieran gaien aurkibidea jartzeko burutazioa izango zenuen, ez?
  LyX-ekin erraz egingo duzu.
  Dokumentuko tituluaren ondoren eta testuaren aurretik lerro-itzulera sakatu
- ostean, aukeratu
-\family default
- 
+ ostean, aukeratu 
 \family sans
 \bar under
 T
@@ -2843,9 +2511,7 @@ eta\InsetSpace ~
 Aurk.
 
 \family default
- menuan
-\family default
- 
+ menuan 
 \family sans
 Gaien\InsetSpace ~
 aurkibidea
@@ -2860,18 +2526,14 @@ Gaien aurkibidea
 
 \begin_layout Standard
 Ez dirudi oso erabilkorra denik.
- Hala ere,
-\family default
- 
+ Hala ere, 
 \family typewriter
 dvi
 \family default
  fitxategian begiratzen baduzu, dokumentuko atal eta azpiatalak zerrendatzen
  dituen gaien aurkibidea ikusiko duzu.
  Ohitura den bezala, atalak berrantolatzean edo berriak sortzean, aldaketa
- horiek
-\family default
- 
+ horiek 
 \family typewriter
 dvi
 \family default
@@ -2881,9 +2543,7 @@ dvi
 \begin_layout Standard
 Dokumentua pantailan editatzerakoan, ez da gaien aurkibidea testu gisa azaltzen,
  ezinezkoa baita editatzea.
- Gaien aurkibideari dagokion botoian, edo
-\family default
- 
+ Gaien aurkibideari dagokion botoian, edo 
 \family sans
 \bar under
 I
@@ -2896,9 +2556,7 @@ aurkibidea
  Nahiz eta dokumentuan "gaien aurkibidea" ez egon txertatuta, menuaren komandoak
  funtzionatuko du.
  Hori tresna eraginkorra da.
- Dokumentuan zehar mugitzeko
-\family default
- 
+ Dokumentuan zehar mugitzeko 
 \family sans
 Gaien\InsetSpace ~
 aurkibidea
@@ -2935,9 +2593,7 @@ Aurkibidea kentzeko dagokion botoia, beste edozein testu bezala, ezabatzearekin
 \end_layout
 
 \begin_layout Description
-Ariketa: jarri gaien aurkibidea
-\family default
- 
+Ariketa: jarri gaien aurkibidea 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -2957,9 +2613,7 @@ Zientzialari askok LaTeX erabiltzen dute zeren eta ekuazioak era dotorre
  Zorionez, LyX-ek ekuazioentzako WYSIWYM izaera dauka.
  LaTeX erabiltzen baduzu, LaTeX-eko matematika komandoak bide normal batean
  idatz daitekeela ikusiko duzu, eta horiek WYSIWYM eran erakutsiko dira.
- Bestalde, LaTeX inoiz ez baduzu erabili, orduan
-\family default
- 
+ Bestalde, LaTeX inoiz ez baduzu erabili, orduan 
 \family sans
 Matematikako panela
 \family default
@@ -2992,9 +2646,7 @@ Gogoko dut Einstein-ek esandakoa, E=mc^2, hain bakuna da.
 \end_layout
 
 \begin_layout Standard
-Ekuazioak,
-\family default
- 
+Ekuazioak, 
 \family typewriter
 dvi
 \family default
@@ -3014,18 +2666,14 @@ Horren ordez, egokiro konposatua izan dadin formula bat sortu dugu.
 
  botoia.
  LyX-ek laukitxo urdin bat txertatuko du; matematika-ekuazio hutsa izango
- da, eta kurtsorea bertan kokatuko duenez, idatzi
-\family default
- 
+ da, eta kurtsorea bertan kokatuko duenez, idatzi 
 \family typewriter
 E=mc^2
 \family default
  berriro.
  Adierazpen matematikoa urdinez dago, eta laukitxo urdina ekuazioa hutsa
  izateari uzten dion unean desagertuko da.
- Sakatu
-\family default
- 
+ Sakatu 
 \family sans
 Ihes
 \family default
@@ -3039,9 +2687,7 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Exekutatu LaTeX eta begiratu
-\family default
- 
+Exekutatu LaTeX eta begiratu 
 \family typewriter
 dvi
 \family default
@@ -3057,9 +2703,7 @@ dvi
 \begin_layout Standard
 Matematika editatzeko era berri hau WYSIWYM filosofiaren beste adibide bat
  da.
- LaTeX-en, matematika espresioak testuaren eta
-\family default
- 
+ LaTeX-en, matematika espresioak testuaren eta 
 \family typewriter
 
 \backslash
@@ -3094,22 +2738,16 @@ ekuaziora.
  Adierazpen barruan mugitzeko, erabili teklatuko geziak.
  Sartzerakoan matematika-eran zaudela argitzeko markatzaile arrosa azaltzen
  dela ohartu.
- Erabili teklatuko
-\family default
- 
+ Erabili teklatuko 
 \family sans
 Ezkerra
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Eskuina
 \family default
  geziak berdintasun ikurraren mailan kurtsorea mugitzeko, idatzi eta "1+".
- Erabili geziak ekuaziotik irteteko edo sakatu
-\family default
- 
+ Erabili geziak ekuaziotik irteteko edo sakatu 
 \family sans
 Ihes
 \family default
@@ -3121,22 +2759,16 @@ Ihes
 \begin_layout Standard
 Matematika-eran idaztea testu normal bat editatzea bezala da, aurrerago
  azalduko dizkizugun tekla bereziak kontutan hartzen ez baditugu bederen.
- Ezabatzeko, erabili
-\family default
- 
+ Ezabatzeko, erabili 
 \family sans
 Ezabatu
 \family default
- (Supr) edo
-\family default
- 
+ (Supr) edo 
 \family sans
 Atzera-tekla
 \family default
  (Backspace).
  Testua hautatzeko bai teklatuko geziak bai sagua erabil ditzakezu.
-
-\family default
  
 \family sans
 \bar under
@@ -3151,22 +2783,16 @@ esegin
 \family default
  menua matematika-eran berdin erabiltzen da, gauza bera ebaki eta itsasteko.
  Kontuz ibili gauza batekin: ekuazioaren eskuinaldean eta kanpoan kurtsorea
- balego eta
-\family default
- 
+ balego eta 
 \family sans
 Ezabatu
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 Atzera-tekla
 \family default
  sakatzerakoan ekuazio osoa ezabatuko litzateke.
- Eskerrak adierazpen matematikoa berreskuratzeko
-\family default
- 
+ Eskerrak adierazpen matematikoa berreskuratzeko 
 \family sans
 Desegin
 \family default
@@ -3186,24 +2812,18 @@ Eta
  egokian.
  Nahi izanez gero, erabili teklatuko geziak.
  Kurtsorea "c" hizkiaren ondoren baina "2"-ren aurrean kokatuta balego,
- sakatu
-\family default
- 
+ sakatu 
 \family sans
 Gora
 \family default
  gezia goi-indizera igotzeko, "2"-ren aurretik kokatuko da.
  Gehitu ".5" balioa.
- Orain, sakatu
-\family default
- 
+ Orain, sakatu 
 \family sans
 Behera
 \family default
  gezia kurtsorea maila arruntera itzultzeko.
- Ekuazioko goi-indizean bazaude eta
-\family default
- 
+ Ekuazioko goi-indizean bazaude eta 
 \family sans
 Zuriunea
 \family default
@@ -3216,9 +2836,7 @@ Berretzaile eta indizeak
 \end_layout
 
 \begin_layout Standard
-Berretzaile bat
-\family default
- 
+Berretzaile bat 
 \family sans
 Matematikako\InsetSpace ~
 panela
@@ -3227,15 +2845,11 @@ panela
  da "^" erabiltzea.
  LyX-ek goi-indizean beste laukitxo urdin bat jarriko du, ondoren idazten
  duzuna goi-indizea izango da (letra-tamaina txikiagoa edukiko du).
-
-\family default
  
 \family sans
 Zuriunea
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 Ihes
 \family default
@@ -3243,9 +2857,7 @@ Ihes
 \end_layout
 
 \begin_layout Standard
-Azpindizea idazteko bidea ere erraza da:
-\family default
- 
+Azpindizea idazteko bidea ere erraza da: 
 \family sans
 Azpimarra
 \family default
@@ -3259,9 +2871,7 @@ k idazten:
 \end_layout
 
 \begin_layout Description
-Ariketa: ipini
-\family default
- 
+Ariketa: ipini 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -3276,9 +2886,7 @@ Matematikako panela
 \begin_layout Standard
 Matematikako ikur eta funtzio osatuagoak sartzeko Matematikako panela erabiltzea
  komenigarria izaten da.
- Funtzio hauetariko asko tuarekin,
-\family default
- 
+ Funtzio hauetariko asko tuarekin, 
 \family sans
 \bar under
 E
@@ -3286,9 +2894,7 @@ E
 ditatu\SpecialChar \menuseparator
 Matematika
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 \bar under
 T
@@ -3303,9 +2909,7 @@ atematika
  menuen bidez sor daiteke.
  Matematikako panela erabiltzen irakatsiko dizugu; beste eskuliburuak irakurriz
  lasterbideak erabiltzen ikasiko duzu.
- Ireki ezazu
-\family default
- 
+ Ireki ezazu 
 \family sans
 \bar under
 T
@@ -3391,15 +2995,11 @@ Itzultzailearen oharra
 \begin_layout Standard
 Parentesiak, giltzak edota kortxeteak bezalako mugatzaileak antzera erabili
  arren pitin bat zailtxoagoak dira erabiltzen.
- Sakatu
-\family default
- 
+ Sakatu 
 \family sans
 Mugatzailea
 \family default
- botoia (kortxete artean laukitxo urdina dauka) eta
-\family default
- 
+ botoia (kortxete artean laukitxo urdina dauka) eta 
 \family sans
 Mugatzaileak
 \family default
@@ -3418,9 +3018,7 @@ koteak, kortxete eta parentesiak, edo botoi hutsa "
 \end_layout
 
 \begin_layout Standard
-Alferra bazara, matematika-eran oraingo parentesiak idatz ditzakezu
-\family default
- 
+Alferra bazara, matematika-eran oraingo parentesiak idatz ditzakezu 
 \family sans
 Mugatzailea
 \family default
@@ -3435,9 +3033,7 @@ Mugatzailea
 \begin_layout Standard
 Existitzen den testu batean mugatzaileak, erroketak edo apaingarriak txerta
  ditzakezu.
- Hautatu egokitu nahi duzun ekuazioa, ondoren klikatu
-\family default
- 
+ Hautatu egokitu nahi duzun ekuazioa, ondoren klikatu 
 \family sans
 Matematikako\InsetSpace ~
 panela
@@ -3465,16 +3061,12 @@ Zatikiak
 
 \begin_layout Standard
 Matematika-eran zatikiak idaztea oso erraza da.
- Klikatu
-\family default
- 
+ Klikatu 
 \family sans
 Matematikako\InsetSpace ~
 panela
 \family default
- leihoko
-\family default
- 
+ leihoko 
 \family sans
 Zatikia
 \family default
@@ -3483,9 +3075,7 @@ Zatikia
  Uste zenuen bezala, zatiki batean zehar kurtsorea mugitzeko teklatuko geziak
  erabil ditzakezu.
  Klikatu zenbatzaileari dagokion txertatze-gunean eta idatzi "1" zenbakia.
- Orain, sakatu
-\family default
- 
+ Orain, sakatu 
 \family sans
 Behera
 \family default
@@ -3500,9 +3090,7 @@ Jakingo duzunez, bi txertatze-gunetan nahi duzuna idazteko aukera daukazu:
 \end_layout
 
 \begin_layout Description
-Ariketa: jarri
-\family default
- 
+Ariketa: jarri 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -3561,23 +3149,17 @@ rekin idatzi nahiko zenuen.
 \end_layout
 
 \begin_layout Standard
-Hautatu klik bikoitzarekin "sin"
-\family default
- 
+Hautatu klik bikoitzarekin "sin" 
 \family sans
 Matematikako panela
 \family default
- leihoko
-\family default
- 
+ leihoko 
 \family sans
 Funtzioak
 \family default
  zerrendan.
  "sin" hitza letra beltz eta erromatarrez idatziko da.
- Hitz osoa sinbolo soil baten gisa kudeatuko denez,
-\family default
- 
+ Hitz osoa sinbolo soil baten gisa kudeatuko denez, 
 \family sans
 Atzera-tekla
 \family default
@@ -3589,9 +3171,7 @@ Atzera-tekla
 \end_layout
 
 \begin_layout Standard
-TeX eran idazteko behar dituzun komando gehiago
-\family default
- 
+TeX eran idazteko behar dituzun komando gehiago 
 \family sans
 Funtzioak
 \family default
@@ -3625,9 +3205,7 @@ Funtzioak
 \end_layout
 
 \begin_layout Description
-Ariketa: jarri
-\family default
- 
+Ariketa: jarri 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -3642,32 +3220,25 @@ Matrizeak
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "atal:matrizeak"
+
 \end_inset
 
-Klikatu
-\family default
- 
+Klikatu 
 \family sans
 Matematikako panela
 \family default
- leihoko
-\family default
- 
+ leihoko 
 \family sans
 Matrizea
 \family default
  botoia.
  Izen bereko elkarrizketa-koadroa agertuko da, bi barra higikorrez osatua
  dago, matrizeko errenkada eta zutabe kopuruak zehazteko aukera eskainiz.
- Aukeratu 2 errenkada eta 3 zutabe, eta klikatu
-\family default
- 
+ Aukeratu 2 errenkada eta 3 zutabe, eta klikatu 
 \family sans
 Aplikatu
 \family default
- edo
-\family default
- 
+ edo 
 \family sans
 Ados
 \family default
@@ -3688,22 +3259,16 @@ LyX-ek
 \end_layout
 
 \begin_layout Standard
-Matrize bateko zutabeetan zehar mugitzeko
-\family default
- 
+Matrize bateko zutabeetan zehar mugitzeko 
 \family sans
 Tabuladorea
 \family default
  erabil daiteke.
- Beste aukera bat da teklatuko geziak erabiltzea: gune-amaieran
-\family default
- 
+ Beste aukera bat da teklatuko geziak erabiltzea: gune-amaieran 
 \family sans
 Eskubira
 \family default
- sakatuz kurtsorea hurrengora bidaliko du,
-\family default
- 
+ sakatuz kurtsorea hurrengora bidaliko du, 
 \family sans
 Behera
 \family default
@@ -3711,9 +3276,7 @@ Behera
 \end_layout
 
 \begin_layout Standard
-Bat-batean errenkada edo zutabe gehiago behar badituzu, erabili
-\family default
- 
+Bat-batean errenkada edo zutabe gehiago behar badituzu, erabili 
 \family sans
 \bar under
 E
@@ -3725,32 +3288,24 @@ M
 \bar default
 atematika
 \family default
- menuan
-\family default
- 
+ menuan 
 \family sans
 Gehitu\InsetSpace ~
 errenkada
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Gehitu\InsetSpace ~
 zutabea
 \family default
 .
  Uneko kokapenaren ondoren gehituko ditu.
- Gehiegi direla? Erabili menu berdineko
-\family default
- 
+ Gehiegi direla? Erabili menu berdineko 
 \family sans
 Ezabatu\InsetSpace ~
 errenkada
 \family default
- eta
-\family default
- 
+ eta 
 \family sans
 Ezabatu\InsetSpace ~
 zutabea
@@ -3759,9 +3314,7 @@ zutabea
 \end_layout
 
 \begin_layout Standard
-Ikus
-\emph default
- 
+Ikus 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -3782,9 +3335,7 @@ Orain arte idatzi ditugun ekuazioak, inguratzen zituzten testuaren lerro
  Ekuazio labur eta soilentzat ongi doa, baina gauza handiagoentzat, edo
  testutik urruntzea nahi badituzu, adierazpen eran idatzi beharko dira.
  Gainera, adierazpen erako ekuazioak etiketatu eta zenbatuak izan daiteke,
- eta lerro anitzetako ekuazioak adierazpen eran egon behar dute (ikus
-\emph default
- 
+ eta lerro anitzetako ekuazioak adierazpen eran egon behar dute (ikus 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -3793,16 +3344,12 @@ Erabiltzailearen Gida
 \end_layout
 
 \begin_layout Standard
-Klikatu
-\family default
- 
+Klikatu 
 \family sans
 Matematikako\InsetSpace ~
 panela
 \family default
- leihoko
-\family default
- 
+ leihoko 
 \family sans
 Adierazpen\InsetSpace ~
 era
@@ -3812,8 +3359,6 @@ era
  LyX-ek lerro berri batean, eta erdialdean zentratuta, txertatze-gune bat
  jartzen du.
  Orain idatzi ekuazio bat eta exekutatu LaTeX bere itxura ikusteko.
-
-\family default
  
 \family sans
 Adierazpen\InsetSpace ~
@@ -3860,9 +3405,7 @@ Azken ohar bat adierazpen era konposatzeari buruz: argi ibili ekuazioa paragrafo
 \end_layout
 
 \begin_layout Description
-Ariketa: jarri
-\family default
- 
+Ariketa: jarri 
 \family typewriter
 adibide_gordina.lyx
 \family default
@@ -3877,9 +3420,7 @@ Ariketa: atal honetan ikasitako zenbait tresnarekin, Hurrengo ekuazioa bezalako
 status open
 
 \begin_layout Standard
-Bide zailenetik aritu ondoren, zergatik ez zara
-\family default
- 
+Bide zailenetik aritu ondoren, zergatik ez zara 
 \family sans
 \bar under
 T
@@ -3919,9 +3460,7 @@ Matematikari buruzko gauza gehiago
 
 \begin_layout Standard
 Matematika-eran gauza gehiago egin daiteke.
- Oraindaino oinarrizkoa bakarrik ezagutu duzu, irakurri
-\emph default
- 
+ Oraindaino oinarrizkoa bakarrik ezagutu duzu, irakurri 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -3970,9 +3509,7 @@ LyX-en beste ezaugarri garrantzitsu batzuk
 \begin_layout Standard
 Ez ditugu aipatu LyX-ekin erabil daitezken komando guztiak, eta ez daukagu
  asmorik.
- Informazio gehiagorako irakur ezazu
-\emph default
- 
+ Informazio gehiagorako irakur ezazu 
 \emph on
 Erabiltzailearen Gida
 \emph default
@@ -3982,9 +3519,7 @@ Erabiltzailearen Gida
 
 \begin_layout Itemize
 LyX-ek taulentzako WYSIWYG euskarria dauka.
- Taula bat lortzeko, erabili
-\family default
- 
+ Taula bat lortzeko, erabili 
 \family sans
 \bar under
 T
@@ -3997,9 +3532,7 @@ T
 aula
 \family default
  menua.
- Klikatu taulan saguaren eskuineko botoiarekin eta
-\family default
- 
+ Klikatu taulan saguaren eskuineko botoiarekin eta 
 \family sans
 Editatu\InsetSpace ~
 taula
@@ -4011,9 +3544,7 @@ taula
 \begin_layout Itemize
 LyX-ek hainbat formatudun irudiak (JPEG eta bestelako bitmap formatuak,
  PostScript® eta LaTeX gordina bezalakoak barne) txertatzeko euskarria dauka.
- Asmatu duzu:
-\family default
- 
+ Asmatu duzu: 
 \family sans
 \bar under
 T
@@ -4036,9 +3567,7 @@ Bai taulek bai irudiek epigrafeak eduki ditzakete, eta LyX-ek automatikoki
 \end_layout
 
 \begin_layout Itemize
-Bertsio-kontrolaren euskarria dauka, RCS erabiliz (exekutatu
-\family default
- 
+Bertsio-kontrolaren euskarria dauka, RCS erabiliz (exekutatu 
 \family typewriter
 man rcsintro
 \family default
@@ -4049,9 +3578,7 @@ man rcsintro
 LyX oso konfigurakorra da.
  Gauza guztiak, LyX leihoen itxuratik hasita inprimatzeko irteera emaitza
  arte, hainbat eratan konfigura daitezke.
- Konfigurazio gehiena
-\family default
- 
+ Konfigurazio gehiena 
 \family sans
 \bar under
 E
@@ -4067,9 +3594,7 @@ H
 obespenak
 \family default
  menutik lantzen da.
- Argitasun gehiagorako, kontsultatu
-\family default
- 
+ Argitasun gehiagorako, kontsultatu 
 \family sans
 \bar under
 L
@@ -4098,9 +3623,7 @@ LyX bost kontinenteetako programatzaile-talde baten eskutik garatzen ari
 
 \begin_layout Itemize
 LyX-eko menuek laster- k erabiltzen dituzte.
- Hots,
-\family default
- 
+ Hots, 
 \family sans
 \bar under
 F
@@ -4112,15 +3635,11 @@ I
 \bar default
 reki
 \family default
- menua hautatzeko
-\family default
- 
+ menua hautatzeko 
 \family sans
 M-F
 \family default
- idatzi eta ondoren
-\family default
- 
+ idatzi eta ondoren 
 \family sans
 I
 \family default
@@ -4130,9 +3649,7 @@ C-O
 \family default
  lehenetsita dago).
  laster-teklak ere konfiguragarriak dira.
- Honi buruzko argitasunak
-\family default
- 
+ Honi buruzko argitasunak 
 \family sans
 \bar under
 L
@@ -4152,6 +3669,7 @@ LyX-ek LaTeX formatuko dokumentuak irakur ditzake.
  Ikus 
 \begin_inset LatexCommand ref
 reference "atal:relyx"
+
 \end_inset
 
  atala.
@@ -4177,6 +3695,7 @@ LyX LaTeX-eko erabiltzaileentzat
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "atal:latexerabiltzaileak"
+
 \end_inset
 
 LaTeX-i buruz ezer ez badakizu, atal hau irakurri beharrik ez daukazu.
@@ -4201,15 +3720,11 @@ LyX erabiltzen hasten den askori LaTeX ezaguna egingo zaio.
 Hau tutoretza bat bakarrik denez, LyX-eko erabiltzaile berriek interesa
  eduki dezaketen zenbait gauza aipatuko ditugu.
  Tutoretza hori labur gordetzearren, azalpen xumeak izango dira.
-
-\emph default
  
 \emph on
 Ezaugarri hedatuak
 \emph default
- eskuliburuak,
-\emph default
- 
+ eskuliburuak, 
 \emph on
 LaTeX adituen sekretuak
 \emph default
@@ -4224,9 +3739,7 @@ TeX era
 \begin_layout Standard
 TeX eran idatzitako guztia pantailan gorriz agertuko da, eta zuzenean LaTeX-i
  bidaliko zaio.
- TeX komandoak LyX-en erabil ditzakezu
-\family default
- 
+ TeX komandoak LyX-en erabil ditzakezu 
 \family sans
 Txertatu\SpecialChar \menuseparator
 
@@ -4250,9 +3763,7 @@ TeX-ek matematika-era zertxobait ezberdin erabiltzen du.
  (zenbaki, azpimarra, berretzaile-ikurra edo parentesi gisakoak).
  TeX eratik ateratzen zarenean LyX-ek badaki zein TeX komando idatzi duzun
  eta WYSIWYM-era bihurtuko du.
- Ekuazio batean
-\family default
- 
+ Ekuazio batean 
 \family typewriter
 
 \backslash
@@ -4275,8 +3786,6 @@ gamma
  
 \backslash
 sin bezalako funtzioak gorriz jarraituko dutela, bere WYSIWYM itxura baita).
-
-\family default
  
 \family sans
 Matematikako\InsetSpace ~
@@ -4306,9 +3815,7 @@ LyX-ek ezin ditu egin LaTeX-ekin egiten diren gauza guztiak (oraindik ez?).
 \end_layout
 
 \begin_layout Standard
-Hitzaurrean
-\family default
- 
+Hitzaurrean 
 \family typewriter
 
 \backslash
@@ -4317,6 +3824,7 @@ usepackage{pakete_izena}
  idatziz (ikus 
 \begin_inset LatexCommand ref
 reference "atal:hitzaurrea"
+
 \end_inset
 
 \InsetSpace ~
@@ -4325,116 +3833,80 @@ atala), nahi dituzun pakete guztiak erabiltzeko gaitasuna izango duzu (kontutan
 \end_layout
 
 \begin_layout Subsection
-LaTeX dokumentuak inportatzea: reLyX
+LaTeX dokumentuak inportatzea: tex2lyx
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset LatexCommand label
-name "atal:relyx"
+name "sec:tex2lyx"
+
 \end_inset
 
-LaTeX fitxategi bat inportatzeko, erabili
-\family default
- 
+You can import a LaTeX file into LyX by using the 
 \family sans
 \bar under
 F
 \bar default
-itxategia\SpecialChar \menuseparator
+ile\SpecialChar \menuseparator
 
 \bar under
 I
 \bar default
-nportatu\SpecialChar \menuseparator
-LaTeX
-\family default
- komandoa.
- Horrek
-\family default
- 
-\family typewriter
-reLyX
-\family default
- izeneko Perl programa bati deituko dio:
-\family default
- 
-\family typewriter
-fitx.tex
-\family default
- fitxategi batetik
-\family default
- 
-\family typewriter
-fitx.lyx
-\family default
- bat sortu eta irekiko du.
- Bihurketak ez badu funtzionatzen, komando lerrotik 
-\begin_inset Foot
-status open
+mport\SpecialChar \menuseparator
 
-\begin_layout Standard
-LyX instalatzen denean
+\bar under
+L
+\bar default
+aTeX
 \family default
- 
+ command in LyX.
+ This will call 
 \family typewriter
-lyx
+tex2lyx
 \family default
- programa exekutagarria dagoen direktoriopean
-\family default
- 
+ which will create a file 
 \family typewriter
-reLyX
+foo.lyx
 \family default
- izeneko programa kopiatzen du (adbz.
-
-\family default
- 
+ from the file 
 \family typewriter
-/usr/local/bin/relyx
+foo.tex
 \family default
-).
-
-\family default
- 
+ --- and then open that file.
+ If the translation doesn't work, you can try calling 
 \family typewriter
-reLyX
+tex2lyx
 \family default
- abiatzeko Perl behar da ( dokumentu hau idaztean 5.002.
- bertsioa)
-\end_layout
-
-\end_inset
-
-
-\family default
- 
-\family typewriter
-reLyX
-\family default
- exekutatzen saia zaitez, argumentu konplexuagoak erabiliz.
+ from the command line, possibly using fancier options.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-reLyX
+\lang english
+tex2lyx
 \family default
- programak LaTeX-eko legalak diren komando gehienak bihurtuko ditu, baina
- ez guztiak.
- Ulergaitz egiten zaizkionak TeX eran utziko ditu, beraz bihurtu ondoren
- gorri koloredun testuak bilatu eta eskuz konpondu beharko dituzu.
- 
+ will translate most legal LaTeX, but not everything.
+ It will leave things it doesn't understand in TeX mode, so after translating
+ a file with 
+\family typewriter
+tex2lyx
+\family default
+, you can look for red text and hand-edit it to look right.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-reLyX
+\lang english
+tex2lyx
 \family default
--ek bere eskuliburua dauka.
- Irakurri jakiteko LaTeX-eko zein komando eta ingurune ez dituen onartzen,
- dauden erroreak (nola saihestu), eta aukera ezberdinak nola erabiltzen
- diren.
+ has its own manpage.
+ Read it to find out about which LaTeX commands and environments aren't
+ supported, bugs (and how to get around them), and how to use the various
+ options.
 \end_layout
 
 \begin_layout Subsection
@@ -4446,9 +3918,7 @@ LyX dokumentu bat LaTeX formatura bihurtzea nahi izango duzu.
  Adibidez, lankide edo eginkide batek LyX programa ez eduki arren dokumentuareki
 n lan egin behar du.
  Hori egitea huskeria bat da LyX-entzako.
- Hautatu
-\family default
- 
+ Hautatu 
 \family sans
 \bar under
 F
@@ -4462,15 +3932,11 @@ sportatu\SpecialChar \menuseparator
 LaTeX
 \family default
 .
- Horrek editatzen ari zaren
-\family default
- 
+ Horrek editatzen ari zaren 
 \family typewriter
 fitxa_izena.lyx
 \family default
- fitxategia beste fitxategi honetan bihurtuko du:
-\family default
- 
+ fitxategia beste fitxategi honetan bihurtuko du: 
 \family typewriter
 fitxa_izena.tex
 \family default
@@ -4500,9 +3966,7 @@ D
 \bar default
 okumentua
 \family default
- elkarrizketa-koadroak
-\family default
- 
+ elkarrizketa-koadroak 
 \family typewriter
 
 \backslash
@@ -4510,17 +3974,13 @@ documentclass
 \family default
  komandoan sar ditzakezun hainbat aukeren gaineko ardura hartzen du.
  Hemen aldatu klasea, letra-tipoa eta paper-tamaina.
- Jarri
-\family default
- 
+ Jarri 
 \family typewriter
 
 \backslash
 documentclass
 \family default
- bidaliko zaizkion aukera-osagarriak
-\family default
- 
+ bidaliko zaizkion aukera-osagarriak 
 \family sans
 LaTeX\InsetSpace ~
 hitzaurrea
@@ -4535,13 +3995,12 @@ Hitzaurreko beste alderdi batzuk
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "atal:hitzaurrea"
+
 \end_inset
 
 Hitzaurrean komando bereziak jarri behar badituzu LaTeX fitxategi baterako,
  zuzenean LyX dokumentuan idatz ditzakezu.
- Horretarako,
-\family default
- 
+ Horretarako, 
 \family sans
 Diseinua\SpecialChar \menuseparator
 Hitzaurrea
@@ -4556,9 +4015,7 @@ status collapsed
 Itzultzailearen oharra
 \emph default
 : litekeena da LyX bertsio berrietan bide hau horrela ezin lantzea.
- Horretarako
-\family default
- 
+ Horretarako 
 \family sans
 Diseinua
 \family default
@@ -4583,9 +4040,7 @@ BibTeX
 \begin_layout Standard
 LyX-ek BibTeX euskarria du, honekin erreferentzia bibliografikoen datu-baseak
  sortu eta hainbat dokumentutan erabiltzeko aukera izango duzu.
- Hautatu
-\family default
- 
+ Hautatu 
 \family sans
 \bar under
 T
@@ -4602,9 +4057,7 @@ ibTeX\InsetSpace ~
 erreferentzia
 \family default
  menua bib motako fitxategi bat gehitzeko.
- Alde batetik,
-\family default
- 
+ Alde batetik, 
 \family sans
 BibTeX
 \family default
@@ -4616,21 +4069,15 @@ BibTeX-ek sortutako erreferentzia
 k" izeneko botoia txertatuko du.
  Elkarrizketa-koadroa ixten baduzu, sortu berri den botoian klikatuz berriro
  irekiko zaizu.
-
-\family default
  
 \family sans
 BibTeX
 \family default
- leihoan
-\family default
- 
+ leihoan 
 \family sans
 Datu-baseak
 \family default
- izeneko eremuan
-\family default
- 
+ izeneko eremuan 
 \family typewriter
 
 \backslash
@@ -4648,9 +4095,7 @@ LaTeX arruntean bezala, bereiztu bi bibliografia edo gehiago komaz, eta
 \end_inset
 
  giltzetan idatziko zenuena idatzi.
- Estiloa eremuan, berriz, idatzi
-\family default
- 
+ Estiloa eremuan, berriz, idatzi 
 \family typewriter
 
 \backslash
@@ -4666,13 +4111,12 @@ Zitazio\InsetSpace ~
 erreferentzia menua erabiliz (ikus 
 \begin_inset LatexCommand ref
 reference "atal:bibliografiak"
+
 \end_inset
 
 \InsetSpace ~
 atala).
- LyX arduratuko da
-\family default
- 
+ LyX arduratuko da 
 \family sans
 BibTeX
 \family default
