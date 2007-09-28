@@ -55,7 +55,7 @@ GuiParagraph::GuiParagraph(ControlParagraph & controller, QWidget * parent)
 		this, SLOT(changed()));
 
 
-	synchronizedViewCB->setChecked(true);
+	synchronizedViewCB->setChecked(false);
 	on_synchronizedViewCB_toggled();
 	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
 
