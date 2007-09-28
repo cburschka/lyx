@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -33,6 +33,7 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -55,6 +56,7 @@ Joacim Persson
 
 \begin_layout Standard
 \begin_inset LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -121,9 +123,7 @@ Nybörjarkursen
 
 
 \emph default
- använder de beteckningssätt som anges i
-\emph default
- 
+ använder de beteckningssätt som anges i 
 \emph on
 
 \begin_inset Quotes sld
@@ -136,9 +136,7 @@ Introduktion till LyX
 
 \emph default
 .
- Om du hamnade i den här handboken först, börja läs
-\emph default
- 
+ Om du hamnade i den här handboken först, börja läs 
 \emph on
 
 \begin_inset Quotes sld
@@ -155,9 +153,7 @@ Introduktionen
 
 \begin_layout Standard
 Nu när du vet vilka typstilar som betyder vad vill vi tala lite med dig
- om vad syftet är med denna
-\emph default
- 
+ om vad syftet är med denna 
 \emph on
 
 \begin_inset Quotes sld
@@ -171,20 +167,15 @@ Nybörjarkurs
 \end_layout
 
 \begin_layout Section
-Vad nybörjarkursen
-\emph default
- 
+Vad nybörjarkursen 
 \emph on
 är
 \emph default
- och vad den
-\emph default
- 
+ och vad den 
 \emph on
 inte
 \emph default
- 
-är.
+ är.
 \end_layout
 
 \begin_layout Subsection
@@ -209,6 +200,7 @@ Om du redan är bekant med LaTeX läser du förmodligen igenom kursen snabbare,
  läsa avsnitt 
 \begin_inset LatexCommand ref
 reference "sec:latexusers"
+
 \end_inset
 
 , som är skriven just för LaTeX-användare.
@@ -218,6 +210,7 @@ reference "sec:latexusers"
 Avsnittet 
 \begin_inset LatexCommand ref
 reference "sec:what-is-lyx"
+
 \end_inset
 
  är en kvarleva från en tidigare version av kursen och är lite mastig.
@@ -227,14 +220,11 @@ reference "sec:what-is-lyx"
 \end_layout
 
 \begin_layout Subsection
-Vad du
-\emph default
- 
+Vad du 
 \emph on
 inte
 \emph default
- 
-hittar: 
+ hittar: 
 \end_layout
 
 \begin_layout Itemize
@@ -248,9 +238,7 @@ Grundlig redogörelse för samtliga finesser i LyX.
 \begin_deeper
 \begin_layout Standard
 Målet med kursen är bara att få igång dig såpass att det enda du i stort
- sett behöver är
-\emph default
- 
+ sett behöver är 
 \emph on
 Handboken
 \emph default
@@ -276,6 +264,7 @@ Så är det dags att gå vidare.
  Du kan ta en kort utflykt i nästa avsnitt eller du kan gå vidare till 
 \begin_inset LatexCommand ref
 reference "sec:first-doc-ex"
+
 \end_inset
 
 .
@@ -285,6 +274,7 @@ reference "sec:first-doc-ex"
 Vad är LyX?
 \begin_inset LatexCommand label
 name "sec:what-is-lyx"
+
 \end_inset
 
 
@@ -332,15 +322,11 @@ Som en följd av detta har nästan varenda ordbehandlare denna filosofi.
 \begin_layout Standard
 Det är på denna punkt som LyX skiljer sig från en vanlig ordbehandlare.
  Du behöver inte befatta dig med vilka bokstäver som skall hamna var.
- Du talar om för LyX
-\emph default
- 
+ Du talar om för LyX 
 \emph on
 vad du håller på med
 \emph default
- och LyX fixar resten, enligt en uppsättning regler som kallas för en
-\emph default
- 
+ och LyX fixar resten, enligt en uppsättning regler som kallas för en 
 \emph on
 stil
 \emph default
@@ -377,9 +363,7 @@ Inledning
 \end_layout
 
 \begin_layout Standard
-I LyX drar du ned rullmenyn i vänsterkanten och väljer
-\family default
- 
+I LyX drar du ned rullmenyn i vänsterkanten och väljer 
 \family sans
 Section
 \family default
@@ -466,9 +450,7 @@ Tabulatorstoppar och linjalen som visar dig placeringen av saker på sidan
  Samma sak med extra tomrader; LyX lägger in dem där de krävs, beroende
  på sammanhanget.
  Vad gäller kägel är det bortarbetat begrepp i LyX.
- Avståndet mellan rader är
-\emph default
- 
+ Avståndet mellan rader är 
 \emph on
 variabelt
 \emph default
@@ -532,9 +514,7 @@ status collapsed
 \begin_layout Standard
 Det finns sätt att justera dessa (och i de flesta fall krävs ingen kunskap
  om LaTeX), antingen för dokumentet som helhet eller på särskilda ställen.
- Se
-\emph default
- 
+ Se 
 \emph on
 Handboken
 \emph default
@@ -588,9 +568,7 @@ LaTeX är ett system för dokumentberedning skapat av Leslie Lamport 1985.
 status collapsed
 
 \begin_layout Standard
-Källan till informationen i detta avsnitt är
-\emph default
- 
+Källan till informationen i detta avsnitt är 
 \emph on
 
 \begin_inset Quotes eld
@@ -603,8 +581,6 @@ A guide to LaTeX2e
 
 \emph default
 , av Helmut Kopka och Patrick Daly, vilken är listad i referenserna till
-
-\emph default
  
 \emph on
 Handboken
@@ -725,9 +701,7 @@ och har så varit innan LaTeX2e förresten.
 
 \begin_layout Standard
 Det finns två sätt att bygga ut LaTeX: klasser och stilar.
- En
-\emph default
- 
+ En 
 \emph on
 klass
 \emph default
@@ -735,16 +709,12 @@ klass
  typ av dokument, som en bok eller en artikel.
  Det finns klasser för fysik-- och matematiktidskrifter, för brev\SpecialChar \ldots{}
  vissa
- universitet har rent av helt egna klasser för avhandlingar! En
-\emph default
- 
+ universitet har rent av helt egna klasser för avhandlingar! En 
 \emph on
 stil
 \emph default
  skiljer sig från en klass i det att den inte definierar en ny typ av dokument,
- utan en ny
-\emph default
- 
+ utan en ny 
 \emph on
 egenskap
 \emph default
@@ -790,17 +760,13 @@ LyX: Grafisk WYSIWYM-ordbehandlare som använder LaTeX med alla sina finesser
 \end_layout
 
 \begin_layout Standard
-Tanken med detta avsnitt var att försöka förklara
-\emph default
- 
+Tanken med detta avsnitt var att försöka förklara 
 \emph on
 varför
 \emph default
  LyX fungerar något annorlunda än andra ordbehandlare.
  Orsaken är enkel: LyX använder LaTeX för grovjobbet och precis som LaTeX
- så fokuserar LyX på strukturen av det du skriver --
-\emph default
- 
+ så fokuserar LyX på strukturen av det du skriver -- 
 \emph on
 vad
 \emph default
@@ -844,14 +810,13 @@ Ditt första dokument
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec:first-doc-ex"
+
 \end_inset
 
  Sådär ja.
  Du är klar att börja skriva.
  Men innan du gör det är det några saker vi bör nämna som förhoppningsvis
- gör
-\emph default
- 
+ gör 
 \emph on
 Nybörjarkursen
 \emph default
@@ -863,15 +828,11 @@ Eftersom det är en hel del information som vi inte kommer att ge dig, så
  blir det första du skall göra att hitta de andra hjälpfilerna.
  Turligt nog är detta väldigt enkelt.
  Starta upp LyX.
- Välj
-\emph default
- 
+ Välj 
 \emph on
 Handboken
 \emph default
- från
-\family default
- 
+ från 
 \family sans
 \bar under
 H
@@ -879,9 +840,7 @@ H
 jälp
 \family default
 -menyn.
- Kanske vill du ladda
-\emph default
- 
+ Kanske vill du ladda 
 \emph on
 Nybörjarkursen
 \emph default
@@ -899,9 +858,7 @@ De fungerar också bra som bra exempel på hur man använder de många finessern
 
 .
  Märk väl att när du har flera dokument öppna samtidigt kan du använda dig
- av menyn
-\family default
- 
+ av menyn 
 \family sans
 \bar under
 D
@@ -909,16 +866,12 @@ D
 okument
 \family default
  för att växla mellan dem.
-
-\emph default
  
 \emph on
 Nybörjarkursen
 \emph default
  kommer inte att täcka ämnena i andra handböcker i detalj.
  Detta kanske gör det besvärligare för dig till en början, men det håller
-
-\emph default
  
 \emph on
 Nybörjarkursen
@@ -929,22 +882,16 @@ Nybörjarkursen
 \end_layout
 
 \begin_layout Standard
-I denna
-\emph default
- 
+I denna 
 \emph on
 Nybörjarkurs
 \emph default
  kommer vi att anta att du har en fullt fungerande version av LyX, tillika
- LaTeX,
-\family default
- 
+ LaTeX, 
 \family typewriter
 xdvi
 \family default
- eller någon annan dvi-visare,
-\family default
- 
+ eller någon annan dvi-visare, 
 \family typewriter
 dvips
 \family default
@@ -959,18 +906,14 @@ ratör) sätta upp systemet.
 \begin_layout Standard
 Slutligen har vi skrivit en fil för låta dig öva dina färdigheter i LyX
  på.
- Den heter
-\family default
- 
+ Den heter 
 \family typewriter
 example_raw.lyx
 \family default
 .
  Tänk dig att den var skriven av någon som inte visste något alls om möjligheter
 na med LyX.
- Vi förslår att du snyggar upp
-\family default
- 
+ Vi förslår att du snyggar upp 
 \family typewriter
 example_raw
 \family default
@@ -989,9 +932,7 @@ fina
 
  vinkar om hur du kan göra.
  Om du vill fuska (eller kontrollera om du gjort rätt) så finns det även
- en fil som heter
-\family default
- 
+ en fil som heter 
 \family typewriter
 example_lyxified.lyx
 \family default
@@ -1003,9 +944,7 @@ Inmatning, förhandsvisning och utskrift
 \end_layout
 
 \begin_layout Itemize
-Öppna en ny file med
-\family default
- 
+Öppna en ny file med 
 \family sans
 \bar under
 F
@@ -1018,9 +957,7 @@ y
 \end_layout
 
 \begin_layout Itemize
-Skriv in en mening som:
-\family default
- 
+Skriv in en mening som: 
 \family typewriter
 Detta är mitt första LyXdokument!
 \begin_inset Foot
@@ -1039,9 +976,7 @@ Jo ja, du kan förstås skriva vad som faller dig in.
 \end_layout
 
 \begin_layout Itemize
-Spara ditt dokument med
-\family default
- 
+Spara ditt dokument med 
 \family sans
 \bar under
 F
@@ -1057,9 +992,7 @@ m
 \end_layout
 
 \begin_layout Itemize
-Kör LaTeX för att skapa och visa en dvi-fil med
-\family default
- 
+Kör LaTeX för att skapa och visa en dvi-fil med 
 \family sans
 \bar under
 F
@@ -1072,17 +1005,13 @@ v
 i
 \family default
 .
- Du kanske får se saker skrivas ut i fönstret som du startade
-\family default
- 
+ Du kanske får se saker skrivas ut i fönstret som du startade 
 \family typewriter
 lyx
 \family default
  från.
  Detta är meddelanden från LaTeX vilka du kan strunta i just nu.
- LyX kommer att starta
-\family default
- 
+ LyX kommer att starta 
 \family typewriter
 xdvi
 \family default
@@ -1092,16 +1021,12 @@ xdvi
 status collapsed
 
 \begin_layout Standard
-Du kan spara tid genom att lämna
-\family default
- 
+Du kan spara tid genom att lämna 
 \family typewriter
 xdvi
 \family default
  igång i bakgrunden.
- Du kan då använda
-\family default
- 
+ Du kan då använda 
 \family sans
 \bar under
 F
@@ -1109,9 +1034,7 @@ F
 il->Uppdatera\InsetSpace ~
 dvi
 \family default
- för att generera om dvi-filen efter ändringar och bara klicka på
-\family default
- 
+ för att generera om dvi-filen efter ändringar och bara klicka på 
 \family typewriter
 xdvi
 \family default
@@ -1124,9 +1047,7 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-Skriv ut med
-\family default
- 
+Skriv ut med 
 \family sans
 \bar under
 F
@@ -1138,9 +1059,7 @@ k
 riv\InsetSpace ~
 ut
 \family default
- och tryck på
-\family default
- 
+ och tryck på 
 \family sans
 OK
 \family default
@@ -1149,15 +1068,11 @@ OK
 
 \begin_layout Standard
 Gratulerar! Du har skapat och skrivit ut ditt första LyX-dokument.
- Resten är bara detaljer, detaljer som täcks i resten av
-\emph default
- 
+ Resten är bara detaljer, detaljer som täcks i resten av 
 \emph on
 Nybörjarkursen, Handboken
 \emph default
-, och
-\emph default
- 
+, och 
 \emph on
 Referensmanualen
 \emph default
@@ -1180,9 +1095,7 @@ Om du är som de flesta
 \noun on
 unix
 \noun default
--användare är, gjorde du det långt innan du började läsa
-\emph default
- 
+-användare är, gjorde du det långt innan du började läsa 
 \emph on
 Nybörjarkursen.
 \end_layout
@@ -1190,12 +1103,9 @@ Nybörjarkursen.
 \end_inset
 
  och du finner att de flesta enkla kommandon (t.ex.
-
-\family default
-\emph default
  
-\emph on
 \family sans
+\emph on
 Avsluta, Klistra in, Skriv ut
 \family default
 ) har de namn du förväntar dig, ligger i den meny du förväntar dig och fungerar
@@ -1226,9 +1136,7 @@ I LyX 1.0 är ångerfunktionen för närvarande begränsad.
 \end_inset
 
 , vilket betyder att du kan ångra varje kommando du gjort sedan redigeringsomgån
-gen startade genom att välja
-\family default
- 
+gen startade genom att välja 
 \family sans
 \bar under
 R
@@ -1240,9 +1148,7 @@ n
 gra
 \family default
  om och om igen.
- Om du ångrar för mycket väljer du bara
-\family default
- 
+ Om du ångrar för mycket väljer du bara 
 \family sans
 \bar under
 R
@@ -1257,9 +1163,7 @@ G
 \end_layout
 
 \begin_layout Description
-Klipp/Klistra/Kopiera Använd
-\family default
- 
+Klipp/Klistra/Kopiera Använd 
 \family sans
 \bar under
 R
@@ -1274,10 +1178,7 @@ i
 \bar default
 stra
 \family default
- 
-och
-\family default
- 
+ och 
 \family sans
 ->K
 \bar under
@@ -1286,9 +1187,7 @@ o
 piera
 \family default
  för att klippa, klistra och kopiera.
- Eller klistra in med
-\emph default
- 
+ Eller klistra in med 
 \emph on
 mittknappen
 \emph default
@@ -1296,9 +1195,7 @@ mittknappen
 \end_layout
 
 \begin_layout Description
-Sök/Byt Använd
-\family default
- 
+Sök/Byt Använd 
 \family sans
 \bar under
 R
@@ -1313,8 +1210,6 @@ Byt
 \family default
  för att söka efter en sträng.
  Flytta mellan träffarna med pilarna i dialogen som kommer upp och använd
-
-\family default
  
 \family sans
 \bar under
@@ -1329,9 +1224,7 @@ status collapsed
 \begin_layout Standard
 Stäng fönstret när du är klar.
  Eller lämna det öppet om du föredrar det.
- De flesta dialogrutor i LyX --- som
-\family default
- 
+ De flesta dialogrutor i LyX --- som 
 \family sans
 \bar under
 S
@@ -1340,22 +1233,17 @@ S
 &\InsetSpace ~
 Byt, Innehållsförteckning
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Stil
 \family default
 -dialogerna samt ett antal matematikdialoger --- är fönster som kan förminskas
  i stället för att stängas.
- Några få dialoger som
-\family default
- 
+ Några få dialoger som 
 \family sans
 Fil->Öppna
 \family default
- 
-låter dig inte skriva i huvudfönstret för LyX förrän du stängt dialogrutan.
+ låter dig inte skriva i huvudfönstret för LyX förrän du stängt dialogrutan.
 \end_layout
 
 \end_inset
@@ -1366,27 +1254,19 @@ låter dig inte skriva i huvudfönstret för LyX förrän du stängt dialogrutan
 \begin_layout Description
 Formatering\InsetSpace ~
 av\InsetSpace ~
-tecken Du kan
-\emph default
- 
+tecken Du kan 
 \emph on
 betona
 \emph default
- 
-text (vilket vanligen ändrar till kursiv stil), sätta den till
-\series default
- 
+ text (vilket vanligen ändrar till kursiv stil), sätta den till 
 \series bold
 fetstil
 \series default
- 
-eller med 
+ eller med 
 \noun on
 Namnstil
 \noun default
  (vanligen kapitäler, används för personers namn) från växelknapparna i
-
-\family default
  
 \family sans
 \bar under
@@ -1399,15 +1279,11 @@ til
 
 \begin_layout Description
 Verktygspanelen Under menyerna ligger verktygspanelen, vilken ger dig tillgång
- till några populära funktioner som
-\family default
- 
+ till några populära funktioner som 
 \family sans
 Klistra
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Skriv\InsetSpace ~
 ut
@@ -1420,9 +1296,7 @@ ut
 \begin_layout Standard
 Nu har du förstås inte skrivit tillräckligt mycket än för att haft nytta
  av dessa funktioner.
- Pröva
-\family default
- 
+ Pröva 
 \family sans
 ångra, klistra
 \family default
@@ -1436,6 +1310,7 @@ WYSIWYM: Tomrum i LyX
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec:whitespace"
+
 \end_inset
 
 En av de saker som nya användare har svårast att vänja sig vid är sättet
@@ -1443,9 +1318,7 @@ En av de saker som nya användare har svårast att vänja sig vid är sättet
  Hur du än trycker på returtangenten får du bara en enda tom rad.
  Hur du än trycker på mellanslag få du inte mer än ett mellanrum.
  LyX låter dig inte ens skriva in ett mellanslag på en tom rad.
- Tabtangenten flyttar inte markören en tabstopp; det
-\emph default
- 
+ Tabtangenten flyttar inte markören en tabstopp; det 
 \emph on
 finns
 \emph default
@@ -1478,8 +1351,7 @@ Det du ser är det du får
 
 
 \emph default
- 
-(ö.anm)
+ (ö.anm)
 \end_layout
 
 \end_inset
@@ -1489,9 +1361,7 @@ Det du ser är det du får
 \begin_inset Quotes sld
 \end_inset
 
-What You See Is What You
-\shape default
- 
+What You See Is What You 
 \shape italic
 Mean
 \shape default
@@ -1511,8 +1381,7 @@ status collapsed
 
 Det du ser är det du
 \emph default
- 
-menar
+ menar
 \emph on
 
 \begin_inset Quotes erd
@@ -1528,35 +1397,25 @@ menar
 .
  Du skriver in vad du avser, och LyX sköter typsättningen åt dig så att
  resultatet blir bra.
- En
-\family default
- 
+ En 
 \family sans
 Retur
 \family default
- skiljer stycken åt grammatiskt och ett
-\family default
- 
+ skiljer stycken åt grammatiskt och ett 
 \family sans
 Mellanslag
 \family default
  skiljer ord åt grammatiskt så det finns ingen anledning att ha flera av
- dem i rad; en
-\family default
- 
+ dem i rad; en 
 \family sans
 Tab
 \family default
  har ingen grammatisk funktion alls, så den stöder inte LyX.
- När du använder LyX ägnar du dig åt
-\emph default
- 
+ När du använder LyX ägnar du dig åt 
 \emph on
 innehållet
 \emph default
- i dokumentet och mindre åt att bekymra dig över
-\emph default
- 
+ i dokumentet och mindre åt att bekymra dig över 
 \emph on
 formatet
 \emph default
@@ -1564,6 +1423,7 @@ formatet
  Se avsnitt 
 \begin_inset LatexCommand ref
 reference "sec:what-is-lyx"
+
 \end_inset
 
  för vidare information om begreppet WYSIWYM.
@@ -1572,23 +1432,17 @@ reference "sec:what-is-lyx"
 \begin_layout Standard
 LyX har (många) sätt att finjustera utseendet på ditt dokument.
  När allt kommer omkring så är det inte säkert att LyX sätter dokumentet
-
-\emph default
  
 \emph on
 exakt
 \emph default
  som du vill ha det.
-
-\emph default
  
 \emph on
 Handboken
 \emph default
  berättar mer om det.
- Det handlar om
-\family default
- 
+ Det handlar om 
 \family sans
 H-fyllningar
 \family default
@@ -1606,9 +1460,7 @@ Miljöer
 \end_layout
 
 \begin_layout Standard
-Olika delar av ett dokument har olika syften; dessa kallar vi
-\emph default
- 
+Olika delar av ett dokument har olika syften; dessa kallar vi 
 \emph on
 miljöer
 \emph default
@@ -1645,9 +1497,7 @@ Det du ser är det du menar
 \family sans
 Miljörutan
 \family default
- finns i vänstra ändan av verktygspanelen (strax under menyn
-\family default
- 
+ finns i vänstra ändan av verktygspanelen (strax under menyn 
 \family sans
 \bar under
 F
@@ -1667,15 +1517,11 @@ Standard
 , vilket är utgångspunktsmiljön för text.
  Du skall nu få lägga in några olika miljöer i ditt dokument så att du får
  se hur det fungerar.
- Detta gör du genom att använda
-\family default
- 
+ Detta gör du genom att använda 
 \family sans
 Miljölistan
 \family default
- vilken du öppnar genom att klicka på pilen till höger om
-\family default
- 
+ vilken du öppnar genom att klicka på pilen till höger om 
 \family sans
 Miljörutan
 \family default
@@ -1687,15 +1533,11 @@ Avsnitt och underavsnitt
 \end_layout
 
 \begin_layout Standard
-Skriv ordet
-\family default
- 
+Skriv ordet 
 \family typewriter
 Inledning
 \family default
- på den första raden i din LyX-fil, och välj
-\family default
- 
+ på den första raden i din LyX-fil, och välj 
 \family sans
 Section
 \begin_inset Foot
@@ -1706,15 +1548,12 @@ status collapsed
 \family sans
 Section
 \family default
-,
-\emph default
- 
+, 
 \emph on
 avsnitt.
 
 \emph default
- 
-I nuläget är inte dessa nyckelord översatta i LyX, de följer de namn som
+ I nuläget är inte dessa nyckelord översatta i LyX, de följer de namn som
  används i LaTeX (ö.anm)
 \end_layout
 
@@ -1725,9 +1564,7 @@ I nuläget är inte dessa nyckelord översatta i LyX, de följer de namn som
 status collapsed
 
 \begin_layout Standard
-Du behöver inte
-\emph default
- 
+Du behöver inte 
 \emph on
 markera
 \emph default
@@ -1755,16 +1592,12 @@ markera
 \family typewriter
 dvi
 \family default
---filen eller det utskrivna dokumentet.) Tryck nu på
-\family default
- 
+--filen eller det utskrivna dokumentet.) Tryck nu på 
 \family sans
 Retur
 \family default
 .
- Notera att
-\family default
- 
+ Notera att 
 \family sans
 Miljörutan
 \family default
@@ -1786,8 +1619,6 @@ Standard
 
 .
  Titlar på avsnitt antas, som de flesta miljöer, ta slut när du trycker
-
-\family default
  
 \family sans
 Retur
@@ -1797,32 +1628,23 @@ Retur
 status collapsed
 
 \begin_layout Standard
-Läs
-\emph default
- 
+Läs 
 \emph on
 Handboken
 \emph default
- 
-för att se hur man skriver titlar med två eller fler rader.
- Miljön
-\family default
- 
+ för att se hur man skriver titlar med två eller fler rader.
+ Miljön 
 \family sans
 Standard
 \family default
  kan förstås fortsätta stycke efter stycke.
  De olika miljöerna för listor (se nedan) bryts heller inte de när du trycker
- på
-\family default
- 
+ på 
 \family sans
 Retur
 \family default
 .
- Du kan alltid se vilken miljö du är i genom att titta i
-\family default
- 
+ Du kan alltid se vilken miljö du är i genom att titta i 
 \family sans
 Miljörutan
 \family default
@@ -1839,21 +1661,15 @@ Detta är inledningen i mitt första dokument med LyX.
 \end_layout
 
 \begin_layout Standard
-Tryck på
-\family default
- 
+Tryck på 
 \family sans
 Retur
 \family default
- och välj
-\family default
- 
+ och välj 
 \family sans
 Section
 \family default
- från
-\family default
- 
+ från 
 \family sans
 Miljörutan
 \family default
@@ -1867,9 +1683,7 @@ Miljörutan
 \end_inset
 
  och väntar på att du skriver en titel.
- Skriv
-\family default
- 
+ Skriv 
 \family typewriter
 Mera grejor
 \family default
@@ -1886,21 +1700,15 @@ mitt första dokument
 \begin_inset Quotes erd
 \end_inset
 
-), tryck
-\family default
- 
+), tryck 
 \family sans
 Retur
 \family default
- och välj
-\family default
- 
+ och välj 
 \family sans
 Section
 \family default
- från
-\family default
- 
+ från 
 \family sans
 Miljörutan
 \family default
@@ -1914,9 +1722,7 @@ Miljörutan
 \end_inset
 
  och väntar på att du skall skriva en titel.
- Skriv
-\family default
- 
+ Skriv 
 \family typewriter
 Om detta dokument
 \family default
@@ -1935,15 +1741,11 @@ Mera grejor
 \end_layout
 
 \begin_layout Standard
-Tryck
-\family default
- 
+Tryck 
 \family sans
 Retur
 \family default
- igen, gå tillbaka till miljön
-\family default
- 
+ igen, gå tillbaka till miljön 
 \family sans
 Standard
 \family default
@@ -1971,15 +1773,11 @@ Underavsnitt är mindre än avsnitt.
 \end_layout
 
 \begin_layout Standard
-Klicka på den andra raden och välj
-\family default
- 
+Klicka på den andra raden och välj 
 \family sans
 Subsection
 \family default
- från
-\family default
- 
+ från 
 \family sans
 Miljölistan.
 
@@ -1994,9 +1792,7 @@ Miljölistan.
 
  och sätter det i ett typsnitt som är större än vanlig text men mindre än
  avsnittstiteln.
- Ändra även fjärde raden till
-\family default
- 
+ Ändra även fjärde raden till 
 \family sans
 Subsection
 \family default
@@ -2031,15 +1827,11 @@ Subsection
 \end_layout
 
 \begin_layout Standard
-Andra nivåer av indelningar innefattar
-\family default
- 
+Andra nivåer av indelningar innefattar 
 \family sans
 Subsubsection, Paragraph
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Subparagraph
 \family default
@@ -2057,9 +1849,7 @@ Underunderavsnitt, stycke och understycke (ö.anm)
 
  Vi låter dig leka med dessa på egen hand.
  Som du kanske märker är titlar för stycken och understycken normalt inte
- numrerade, och understycken normalt inte indragna; läs i
-\emph default
- 
+ numrerade, och understycken normalt inte indragna; läs i 
 \emph on
 Handboken
 \emph default
@@ -2070,6 +1860,7 @@ Handboken
  (se avsnittet 
 \begin_inset LatexCommand ref
 reference "sec:textclasses"
+
 \end_inset
 
 ).
@@ -2078,9 +1869,7 @@ reference "sec:textclasses"
 \begin_layout Standard
 Slutligen kanske du vill ha avsnitt och underavsnitt som inte är numrerade.
  Det finns miljöer för dessa också.
- Om du ändrar en av dina avsnittstitlar till miljön
-\family default
- 
+ Om du ändrar en av dina avsnittstitlar till miljön 
 \family sans
 Section*
 \family default
@@ -2094,15 +1883,11 @@ stjärnade
 \begin_inset Quotes erd
 \end_inset
 
- miljöer för
-\family default
- 
+ miljöer för 
 \family sans
 Underavsnitt
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Underunderavsnitt.
 
@@ -2116,22 +1901,16 @@ Underunderavsnitt.
 \series bold
 Övning:
 \series default
- Rätta till avsnitt och underavsnitt i
-\family default
- 
+ Rätta till avsnitt och underavsnitt i 
 \family typewriter
 example_raw.lyx
 \family default
 .
- Denna fil hittar du i katalogen
-\family default
- 
+ Denna fil hittar du i katalogen 
 \family typewriter
 examples/
 \family default
- som du kan öppna med
-\family default
- 
+ som du kan öppna med 
 \family sans
 \bar under
 F
@@ -2142,16 +1921,12 @@ p
 \bar default
 pna
 \family default
- och sedan klicka på knappen
-\family default
- 
+ och sedan klicka på knappen 
 \family sans
 Exempel
 \family default
 .
- Öppna dokumentet och välj
-\family default
- 
+ Öppna dokumentet och välj 
 \family sans
 \bar under
 F
@@ -2172,9 +1947,7 @@ Listor och underlistor
 
 \begin_layout Standard
 LyX har flera olika miljöer för att typsätta listor.
- De många listmiljöerna befriar dig från att hamra på
-\family default
- 
+ De många listmiljöerna befriar dig från att hamra på 
 \family sans
 Tab
 \family default
@@ -2185,16 +1958,12 @@ Tab
 status collapsed
 
 \begin_layout Standard
-Ja, vi överbetonar detta genom hela
-\emph default
- 
+Ja, vi överbetonar detta genom hela 
 \emph on
 Nybörjarkursen
 \emph default
 .
- Men det
-\emph default
- 
+ Men det 
 \emph on
 är
 \emph default
@@ -2208,9 +1977,7 @@ Nybörjarkursen
 \end_layout
 
 \begin_layout Itemize
-En serie overheadbilder kanske behöver miljön
-\family default
- 
+En serie overheadbilder kanske behöver miljön 
 \family sans
 Itemize
 \family default
@@ -2218,9 +1985,7 @@ Itemize
 \end_layout
 
 \begin_layout Itemize
-En uppställning kan använda de numrerade listorna i miljön
-\family default
- 
+En uppställning kan använda de numrerade listorna i miljön 
 \family sans
 Enumerate
 \family default
@@ -2228,9 +1993,7 @@ Enumerate
 \end_layout
 
 \begin_layout Itemize
-Ett dokument som beskriver ett antal fackord kanske använder
-\family default
- 
+Ett dokument som beskriver ett antal fackord kanske använder 
 \family sans
 Description
 \family default
@@ -2238,15 +2001,11 @@ Description
 \end_layout
 
 \begin_layout Itemize
-Miljön
-\family default
- 
+Miljön 
 \family sans
 List
 \family default
- -- vilken inte finns i LaTeX -- är en variant på
-\family default
- 
+ -- vilken inte finns i LaTeX -- är en variant på 
 \family sans
 Description
 \family default
@@ -2266,16 +2025,12 @@ Lyx är så himla käckt för att:
 \end_layout
 
 \begin_layout Standard
-och tryck
-\family default
- 
+och tryck 
 \family sans
 Return
 \family default
 .
- Välj så
-\family default
- 
+ Välj så 
 \family sans
 Itemize
 \family default
@@ -2307,9 +2062,7 @@ Det är så lätt att göra uppställningar!
 
 \begin_layout Standard
 Till skillnad från titlar på stycken och liknande så avslutas inte listmiljöerna
- när du trycker
-\family default
- 
+ när du trycker 
 \family sans
 Retur
 \family default
@@ -2317,29 +2070,21 @@ Retur
  I stället räknar LyX med att du nog vill mata in fler element i uppställningen.
  Ovanstående ger därför en uppställning med tre element.
  Om du vill ha ett element i uppställningen som består av mer än ett stycke
- är ett sätt att göra det att använda en
-\family default
- 
+ är ett sätt att göra det att använda en 
 \family sans
 Skyddad\InsetSpace ~
 Retur
 \family default
-, vilket du får genom att trycka
-\family default
- 
+, vilket du får genom att trycka 
 \family sans
 C-Retur
 \family default
 .
- För att sluta mata in element i uppställningen väljer du åter miljön
-\family default
- 
+ För att sluta mata in element i uppställningen väljer du åter miljön 
 \family sans
 Standard
 \family default
- (kan göras med kommandot
-\family default
- 
+ (kan göras med kommandot 
 \family sans
 M-p\InsetSpace ~
 s
@@ -2356,9 +2101,7 @@ status collapsed
 
 \begin_layout Standard
 LyX låter dig inte markera själva bomben i det allra första elementet såvida
- du inte markerar även stycket
-\emph default
- 
+ du inte markerar även stycket 
 \emph on
 före
 \emph default
@@ -2377,15 +2120,11 @@ egen
 
 \end_inset
 
- och välj miljön
-\family default
- 
+ och välj miljön 
 \family sans
 Enumerate
 \family default
- från
-\family default
- 
+ från 
 \family sans
 Miljölistan
 \family default
@@ -2396,28 +2135,20 @@ tjoff! Och som vi nämnde tidigare så trollar LyX till numreringen om du
 
 \begin_layout Standard
 Medan uppställningen fortfarande är markerad kan du prova att välja de två
- andra typerna av uppställningar,
-\family default
- 
+ andra typerna av uppställningar, 
 \family sans
 Description
 \family default
- och
-\family default
- 
+ och 
 \family sans
 List
 \family default
 , för att se hur dessa ser ut.
- I dessa består elementen av en
-\emph default
- 
+ I dessa består elementen av en 
 \emph on
 term
 \emph default
-, första ordet i elementet, åtföljd av en
-\emph default
- 
+, första ordet i elementet, åtföljd av en 
 \emph on
 definition
 \emph default
@@ -2451,16 +2182,12 @@ Denna är smartare än tabulering på skrivmaskiner; den justeras automatiskt
 List
 \family default
 ).
- Om du vill ha termer på mer än ett ord använder du
-\family default
- 
+ Om du vill ha termer på mer än ett ord använder du 
 \family sans
 Skyddat\InsetSpace ~
 Mellanslag
 \family default
- mellan dem, vilka kan fås genom att trycka
-\family default
- 
+ mellan dem, vilka kan fås genom att trycka 
 \family sans
 C-mellanslag
 \family default
@@ -2480,9 +2207,7 @@ u:n
 \series bold
 Övning:
 \series default
- Typsätt uppställningen i
-\family default
- 
+ Typsätt uppställningen i 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -2491,15 +2216,11 @@ example_raw.lyx
 Du kan lägga listor inuti listor på alla de olika sätt.
  Numrerade listor och listor med bomber har olika system för hur numreringen/bom
 berna ser ut för underlistor.
- Se
-\emph default
- 
+ Se 
 \emph on
 Handboken
 \emph default
- för vidare detaljer om hur de används och för exempel på
-\emph default
- 
+ för vidare detaljer om hur de används och för exempel på 
 \emph on
 omfattande
 \emph default
@@ -2511,28 +2232,20 @@ Andra miljöer: Vers, Citat och annat
 \end_layout
 
 \begin_layout Standard
-Det finns två miljöer för att citera text från andra:
-\family default
- 
+Det finns två miljöer för att citera text från andra: 
 \family sans
 Quote
 \family default
- för korta citat och
-\family default
- 
+ för korta citat och 
 \family sans
 Quotation
 \family default
  för längre.
- Programkod (miljön
-\family default
- 
+ Programkod (miljön 
 \family sans
 Code
 \family default
-, vilken används här för långa exempel på inmatningar) sätts med
-\family default
- 
+, vilken används här för långa exempel på inmatningar) sätts med 
 \family typewriter
 skrivmaskinsstil
 \family default
@@ -2550,28 +2263,20 @@ den konstnärliga aspekten av poesin får du förstås sköta själv, LyX kan
 
 \end_inset
 
- med miljön
-\family default
- 
+ med miljön 
 \family sans
 Verse
 \family default
-, och då använda
-\family default
- 
+, och då använda 
 \family sans
 Retur
 \family default
- för att skilja stroferna åt, och
-\family default
- 
+ för att skilja stroferna åt, och 
 \family sans
 C-Retur
 \family default
  för radbrytning inom stroferna.
- Se vidare
-\emph default
- 
+ Se vidare 
 \emph on
 Handboken
 \emph default
@@ -2583,27 +2288,19 @@ Handboken
 \series bold
 Övning:
 \series default
- Typsätt delarna
-\family default
- 
+ Typsätt delarna 
 \family sans
 Quote
 \family default
-,
-\family default
- 
+, 
 \family sans
 LyX-Code
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Verse
 \family default
- i
-\family default
- 
+ i 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -2634,6 +2331,7 @@ Textklasser och mallar: Att skriva brev
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec:textclasses"
+
 \end_inset
 
 Olika slags dokument typsätts olika.
@@ -2642,18 +2340,14 @@ Olika slags dokument typsätts olika.
  Dessutom har många dokumenttyper särskilda miljöer: brev innehåller till
  exempel miljöer som adressat och signatur, vilka inte används i i en bok
  eller en artikel.
- För att hålla reda på dessa har LyX något som vi kallar
-\emph default
- 
+ För att hålla reda på dessa har LyX något som vi kallar 
 \emph on
 textklasser
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-I LaTeX motsvaras detta av
-\family default
- 
+I LaTeX motsvaras detta av 
 \family typewriter
 documentclass
 \end_layout
@@ -2664,10 +2358,8 @@ documentclass
  av sidorna, samt vilka miljöer som ingår i klassen.
  Denna Nybörjarkurs
 \emph default
-\family default
  
 \family typewriter
-\emph default
 är exempelvis skriven i textklassen
 \family default
  
@@ -2678,9 +2370,7 @@ Book
 \end_layout
 
 \begin_layout Standard
-Ditt dokument skrivs troligen som
-\family default
- 
+Ditt dokument skrivs troligen som 
 \family sans
 Article
 \begin_inset Foot
@@ -2688,9 +2378,7 @@ status collapsed
 
 \begin_layout Standard
 Det är normalt den textklass som nya dokument har som skönsvärde.
- Du kan sätta Skönsvärdet för detta i din
-\family default
- 
+ Du kan sätta Skönsvärdet för detta i din 
 \family typewriter
 lyxrc
 \family default
@@ -2702,37 +2390,27 @@ lyxrc
 .
  Prova att ändra till andra textklasser (med listvalet Class
 \family default
- i menyn
-\family default
- 
+ i menyn 
 \family sans
 Stil->Dokument
 \family default
 ) för att se vad de har för skillnader.
- Om du byter till textklassen
-\family default
- 
+ Om du byter till textklassen 
 \family sans
 Book
 \family default
- och tittar i
-\family default
- 
+ och tittar i 
 \family sans
 Miljömenyn
 \family default
  ser du att de flesta tillåtna miljöer är de samma, men nu har du dessutom
- miljön
-\family default
- 
+ miljön 
 \family sans
 Chapter
 \family default
 .
  Om vid något tillfälle är osäker på vilka miljöer som är tillgängliga i
- en viss textklass så kikar du bara i
-\family default
- 
+ en viss textklass så kikar du bara i 
 \family sans
 Miljölistan
 \family default
@@ -2758,15 +2436,11 @@ stilfiler
 
 \begin_layout Standard
 Här är en liten (ofullständig) tabell över några av dessa textklasser.
- Se som vanligt i
-\emph default
- 
+ Se som vanligt i 
 \emph on
 Handboken
 \emph default
- för detaljer, och i
-\family default
- 
+ för detaljer, och i 
 \family sans
 Stil->Dokument
 \family default
@@ -2952,26 +2626,22 @@ Mallar: Skriva brev
 (I skrivandes stund finns ingen mall för svenska affärsbrev, vilka kanske
  heller inte är lika formellt utformade som i engelsktalande länder.
  Det finns dock stöd för svenska beteckningar i
-\family default
 \emph default
  
-\emph on
 \family sans
+\emph on
 letter
 \family default
 \emph default
 -
 \emph on
 klassen i LaTeX, så den motsvarande textklassen
-\family default
 \emph default
  
-\emph on
 \family sans
+\emph on
 letter
 \family default
-\emph default
-
 \emph default
  
 \emph on
@@ -2980,28 +2650,20 @@ i LyX går att använda för att göra en en mall om man vill.
 \end_layout
 
 \begin_layout Standard
-En populär textklass är
-\family default
- 
+En populär textklass är 
 \family sans
 Letter
 \family default
 .
- Ett sätt att skriva ett brev är starta ett nytt dokument och välja
-\family default
- 
+ Ett sätt att skriva ett brev är starta ett nytt dokument och välja 
 \family sans
 Letter
 \family default
- från
-\family default
- 
+ från 
 \family sans
 Klass
 \family default
--listan i
-\family default
- 
+-listan i 
 \family sans
 Stil->Dokument
 \family default
@@ -3010,9 +2672,7 @@ Stil->Dokument
  blir det en del merarbete.
  Varje gång du skriver ett affärsbrev vill du ha avsändare, adressatens
  adress, en brödtext, en signatur och så vidare.
- För att göra det bekvämt har LyX
-\emph default
- 
+ För att göra det bekvämt har LyX 
 \emph on
 mallar
 \emph default
@@ -3021,24 +2681,18 @@ mallar
 \end_layout
 
 \begin_layout Standard
-Öppna en ny fil med
-\family default
- 
+Öppna en ny fil med 
 \family sans
 Fil->Ny\InsetSpace ~
 efter\InsetSpace ~
 mall
 \family default
 .
- Efter att ha valt filnamnet, välj
-\family default
- 
+ Efter att ha valt filnamnet, välj 
 \family typewriter
 latex_letter.lyx
 \family default
- från nästa dialog,
-\family default
- 
+ från nästa dialog, 
 \family sans
 Välj\InsetSpace ~
 mall
@@ -3048,37 +2702,27 @@ mall
 \end_layout
 
 \begin_layout Standard
-När du tittar i
-\family default
- 
+När du tittar i 
 \family sans
 miljörutan
 \family default
- ser du flera olika miljöer, som
-\family default
- 
+ ser du flera olika miljöer, som 
 \family sans
 My\InsetSpace ~
 Address
 \family default
 , vilken inte förekommer i andra textklasser.
- Andra, som
-\family default
- 
+ Andra, som 
 \family sans
 Quote
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Description,
 \family default
  är gamla bekanta.
  Du kan leka lite med dem ett tag för att se hur de fungerar.
- Du märker till exempel att miljön
-\family default
- 
+ Du märker till exempel att miljön 
 \family sans
 Signature
 \family default
@@ -3093,9 +2737,7 @@ Signature:
  i rött före själva signaturen.
  Detta ord kommer inte med i själva utskriften.
  Det är bara där för att markera var signaturen hamnar.
- Notera också att det inte spelar någon roll var i dokumentet
-\family default
- 
+ Notera också att det inte spelar någon roll var i dokumentet 
 \family sans
 Signature
 \family default
@@ -3121,9 +2763,7 @@ status collapsed
 
 \begin_layout Standard
 En varning om du skriver från en mall.
- Om du raderar hela texten i en miljö -- säg att du raderar hela
-\family default
- 
+ Om du raderar hela texten i en miljö -- säg att du raderar hela 
 \family sans
 My\InsetSpace ~
 Address
@@ -3131,9 +2771,7 @@ Address
  för att lägga in din egen -- och sedan flyttar markören utan att skriva
  in någon ny text så försvinner miljön.
  Det blir så för att en miljö inte kan vara tom.
- För att få tillbaka miljön igen väljer du den helt enkelt från
-\family default
- 
+ För att få tillbaka miljön igen väljer du den helt enkelt från 
 \family sans
 Miljölistan
 \family default
@@ -3156,30 +2794,22 @@ På samma vis som LaTeX betraktar LyX titeln -- vilken kan innehålla själva
 \end_layout
 
 \begin_layout Standard
-Gå tillbaka till
-\family default
- 
+Gå tillbaka till 
 \family typewriter
 newfile.lyx
 \family default
- och försäkra dig om att det använder textklassen
-\family default
- 
+ och försäkra dig om att det använder textklassen 
 \family sans
 Article
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-Du skall inte använda
-\family default
- 
+Du skall inte använda 
 \family sans
 Letter
 \family default
- längre, eftersom
-\family default
- 
+ längre, eftersom 
 \family sans
 Letter
 \family default
@@ -3192,24 +2822,18 @@ Letter
  Skriv in en titel på första raden, och ändra miljön till Title
 \family default
 .
- På nästa rad skriver du ditt namn och byter till
-\family default
- 
+ På nästa rad skriver du ditt namn och byter till 
 \family sans
 Author
 \family default
 .
- På raden därefter skriver du in dagens datum och ändrar till
-\family default
- 
+ På raden därefter skriver du in dagens datum och ändrar till 
 \family sans
 Date
 \family default
 .
  Skriv ett stycke eller två som sammanfattar innehållet i din artikel med
- miljön
-\family default
- 
+ miljön 
 \family sans
 Abstract
 \family default
@@ -3222,10 +2846,7 @@ Abstract
 \series bold
 Övning:
 \series default
- 
-Rätta till titel, datum och författare i
-\family default
- 
+ Rätta till titel, datum och författare i 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3237,6 +2858,7 @@ Märken och hänvisningar
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec:labels"
+
 \end_inset
 
 Du kan sätta ett märke i ett avsnitt (eller underavsnitt, eller mer ovanligt,
@@ -3263,18 +2885,14 @@ Om detta dokument
 \end_inset
 
 .
- Klicka vid slutet på titelraden och välj
-\family default
- 
+ Klicka vid slutet på titelraden och välj 
 \family sans
 Lägg\InsetSpace ~
 in->Referensmärke
 \family default
 .
  En dialogruta frågar dig efter ett namn på märket.
- Skriv in
-\family default
- 
+ Skriv in 
 \family typewriter
 avs:omdokumentet
 \family default
@@ -3296,9 +2914,7 @@ avs:
 \begin_inset Quotes sld
 \end_inset
 
- för
-\emph default
- 
+ för 
 \emph on
 avsnitt
 \emph default
@@ -3308,9 +2924,7 @@ avsnitt
 \end_inset
 
  vi kanske lägger in senare.
- När du klickar på
-\family default
- 
+ När du klickar på 
 \family sans
 OK
 \family default
@@ -3327,9 +2941,7 @@ Förresten kunde du ha satt märket var som helst inom avsnittet; hänvisningar
 \end_layout
 
 \begin_layout Standard
-Så långt har du inte gjort särskilt mycket --
-\family default
- 
+Så långt har du inte gjort särskilt mycket -- 
 \family typewriter
 dvi
 \family default
@@ -3365,9 +2977,7 @@ avsnitt
 \begin_inset Quotes srd
 \end_inset
 
- och välj
-\family default
- 
+ och välj 
 \family sans
 Lägg\InsetSpace ~
 in->Hänvisning
@@ -3383,9 +2993,7 @@ avs:omdokumentet
 \end_inset
 
 .
- Välj det (det kanske redan är valt) och klicka på
-\family default
- 
+ Välj det (det kanske redan är valt) och klicka på 
 \family sans
 Lägg\InsetSpace ~
 in\InsetSpace ~
@@ -3400,9 +3008,7 @@ sidan
 \begin_inset Quotes srd
 \end_inset
 
-, och klicka på
-\family default
- 
+, och klicka på 
 \family sans
 Lägg\InsetSpace ~
 in\InsetSpace ~
@@ -3418,16 +3024,12 @@ LyX lägger in hänvisningen in en ruta där markören stod.
  För din bekvämlighets skull fungerar rutan även som en så kallad hyperlänk
  under redigeringsarbetet; om du klickar på den hoppar du till den plats
  i dokumentet där märket ligger.
- Du kan hoppa tillbaka genom att trycka
-\family default
- 
+ Du kan hoppa tillbaka genom att trycka 
 \family sans
 C-<
 \family default
 .
- Kör
-\family default
- 
+ Kör 
 \family sans
 Fil->Uppdatera\InsetSpace ~
 dvi
@@ -3491,21 +3093,15 @@ avs:mittförstamärke
 
 \begin_layout Standard
 Om du vill förvissa dig om att hänvisningar fungerar även för större dokument
- kan du till exempel
-\family default
- 
+ kan du till exempel 
 \family sans
 Kopiera
 \family default
- några sidor text från
-\emph default
- 
+ några sidor text från 
 \emph on
 Handboken
 \emph default
- till klippbordet och
-\family default
- 
+ till klippbordet och 
 \family sans
 Klistra
 \family default
@@ -3514,15 +3110,11 @@ Klistra
 status collapsed
 
 \begin_layout Standard
-När man kopierar kapiteltitlar in i ett dokument av klassen
-\family default
- 
+När man kopierar kapiteltitlar in i ett dokument av klassen 
 \family sans
 Article
 \family default
- kan man få felmeddelanden eftersom kapitel inte är tillåtna i
-\family default
- 
+ kan man få felmeddelanden eftersom kapitel inte är tillåtna i 
 \family sans
 Article
 \family default
@@ -3531,6 +3123,7 @@ Article
  Om du undrar varför det blir på detta viset, se avsnitt 
 \begin_inset LatexCommand ref
 reference "sec:textclasses"
+
 \end_inset
 
 .
@@ -3546,10 +3139,7 @@ reference "sec:textclasses"
 \series bold
 Övning:
 \series default
- 
-Rätta till hänvisningarna i
-\family default
- 
+ Rätta till hänvisningarna i 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3559,9 +3149,7 @@ Fotnoter och anteckningar i marginalen
 \end_layout
 
 \begin_layout Standard
-Fotnoter kan läggas in med knappen
-\family default
- 
+Fotnoter kan läggas in med knappen 
 \family sans
 Lägg\InsetSpace ~
 in\InsetSpace ~
@@ -3577,9 +3165,7 @@ Knappen visar en pil som pekar på röd text placerad under lite svart text.
 
 \end_inset
 
- eller med
-\family default
- 
+ eller med 
 \family sans
 Lägg\InsetSpace ~
 in->Fotnot
@@ -3656,9 +3242,7 @@ foot
 \begin_layout Standard
 Du kanske undrar varför det bara är ett sånt märke och inte ett nummer.
  Svaret är att LyX fixar numreringen av fotnoternas märken i utskriften.
- Du kan se själv i
-\family default
- 
+ Du kan se själv i 
 \family typewriter
 dvi
 \family default
@@ -3682,15 +3266,11 @@ Det kan vara enklast att markera den med tangentbordet.
 
 \end_inset
 
- och
-\family default
- 
+ och 
 \family sans
 Klipp
 \family default
-a och
-\family default
- 
+a och 
 \family sans
 Klistra
 \family default
@@ -3711,9 +3291,7 @@ En marginalanteckning
 
 \end_inset
 
- kan läggas till med knappen
-\family default
- 
+ kan läggas till med knappen 
 \family sans
 Lägg\InsetSpace ~
 in\InsetSpace ~
@@ -3730,17 +3308,13 @@ Knappen visar en pil som pekar på röd text till höger om (dvs i marginalen)
 
 
 \family default
- 
-eller med
-\family default
- 
+ eller med 
 \family sans
 Lägg\InsetSpace ~
 in->Marginalanteckning\SpecialChar \@.
 
 \family default
- 
-Marginalanteckningar fungerar som fotnoter förutom att:
+ Marginalanteckningar fungerar som fotnoter förutom att:
 \end_layout
 
 \begin_layout Itemize
@@ -3787,9 +3361,7 @@ när en marginalanteckning stängs läggs ett utropstecken ut i vänsterkanten.
 \series bold
 Övning:
 \series default
- Rätta till fotnoterna i
-\family default
- 
+ Rätta till fotnoterna i 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3808,15 +3380,11 @@ Litteraturförteckning
 \begin_inset Quotes srd
 \end_inset
 
- för
-\family default
- 
+ för 
 \family sans
 Book
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Report
 \family default
@@ -3839,6 +3407,7 @@ Referenser
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec:bibliographies"
+
 \end_inset
 
 Referenser liknar hänvisningar.
@@ -3849,32 +3418,24 @@ Referenser liknar hänvisningar.
 \end_layout
 
 \begin_layout Standard
-Gå till slutet av dokumentet och slå över till miljön
-\family default
- 
+Gå till slutet av dokumentet och slå över till miljön 
 \family sans
 Bibliography
 \family default
 .
  Nu kommer varje stycke du matar in att bli en referens.
- Skriv in
-\family default
- 
+ Skriv in 
 \family typewriter
 Nybörjarkursen för LyX, av Amir Karger och dokumentationsgruppen för LyX
 \family default
  som din första referens.
  Notera att LyX automatiskt sätter ett nummer i en ruta först på raden.
- Klicka på rutan så får du upp dialogen
-\family default
- 
+ Klicka på rutan så får du upp dialogen 
 \family sans
 Referens
 \family default
 .
- Du använder det första fältet,
-\family default
- 
+ Du använder det första fältet, 
 \family sans
 Nyckel
 \family default
@@ -3894,25 +3455,19 @@ lyxkurs
 \begin_layout Standard
 Välj nu något ställe i ditt dokument där du vill ha en referens till litteratur
  inlagd.
- Detta görs med
-\family default
- 
+ Detta görs med 
 \family sans
 Lägg\InsetSpace ~
 in->Citatreferens
 \family default
 .
  LyX ritar en grå ruta med tre frågetecken inom hakparenteser.
- Klicka på denna ruta och dialogen
-\family default
- 
+ Klicka på denna ruta och dialogen 
 \family sans
 Citat
 \family default
  dyker fram.
- Det första fältet i dialogen heter
-\family default
- 
+ Det första fältet i dialogen heter 
 \family sans
 Nyckel
 \family default
@@ -3942,15 +3497,11 @@ lyxkurs
 \end_layout
 
 \begin_layout Standard
-Hur används de andra fälten då?
-\family default
- 
+Hur används de andra fälten då? 
 \family sans
 Kommentar
 \family default
- i
-\family default
- 
+ i 
 \family sans
 Citat
 \family default
@@ -3966,22 +3517,16 @@ Citat
 \end_inset
 
  för att hänvisa till en bok av Kalle Blomkvist 1954) kan du ändra det med
-
-\family default
  
 \family sans
 Märke
 \family default
- i dialogen
-\family default
- 
+ i dialogen 
 \family sans
 Citat
 \family default
 .
- Som vanligt kan du läsa om detaljerna i
-\emph default
- 
+ Som vanligt kan du läsa om detaljerna i 
 \emph on
 Handboken
 \emph default
@@ -3993,10 +3538,7 @@ Handboken
 \series bold
 Övning:
 \series default
- 
-Rätta till litteraturförteckningen och citatreferenserna i filen
-\family default
- 
+ Rätta till litteraturförteckningen och citatreferenserna i filen 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4010,9 +3552,7 @@ Innehållsförteckning
 \begin_layout Standard
 Du kanske vill lägga in en innehållsförteckning i början av dokumentet.
  I LyX är detta väldigt enkelt.
- Tryck bara
-\family default
- 
+ Tryck bara 
 \family sans
 Retur
 \family default
@@ -4026,9 +3566,7 @@ Försök inte klicka på eller ändra avsnittsnumret; det går inte.
 
 \end_inset
 
- och välj
-\family default
- 
+ och välj 
 \family sans
 Lägg\InsetSpace ~
 in->Förteckningar->Innehållsförteckning
@@ -4046,9 +3584,7 @@ Innehåll
 \end_layout
 
 \begin_layout Standard
-Detta kanske inte ser mycket ut för världen, men titta nu på
-\family default
- 
+Detta kanske inte ser mycket ut för världen, men titta nu på 
 \family typewriter
 dvi
 \family default
@@ -4056,9 +3592,7 @@ dvi
  Som du ser har du nu en innehållsförteckning som listar avsnitt och underavsnit
 t med deras nummer och sidnummer.
  Som vanligt i LyX sköter den sig själv om du tar bort eller lägger till
- avsnitt eller underavsnitt och du ser skillnaden i
-\family default
- 
+ avsnitt eller underavsnitt och du ser skillnaden i 
 \family typewriter
 dvi
 \family default
@@ -4077,25 +3611,19 @@ Innehåll
 \begin_inset Quotes srd
 \end_inset
 
- eller genom att välja
-\family default
- 
+ eller genom att välja 
 \family sans
 Redigera->Innehållsförteckning
 \family default
 .
- Du kan använda
-\family default
- 
+ Du kan använda 
 \family sans
 Innehåll
 \family default
 -fönstret för att hoppa omkring i dokumentet.
  Om du klicka på ett (under)avsnitt i listan flyttas markören i arbetsfönstret
  till det stället i dokumentet där avsnittet börjar.
- Du kan också använda piltangenterna i
-\family default
- 
+ Du kan också använda piltangenterna i 
 \family sans
 Innehåll
 \family default
@@ -4121,10 +3649,7 @@ Innehåll
 \series bold
 Övning:
 \series default
- 
-Rätta till innehållsförteckningen i
-\family default
- 
+ Rätta till innehållsförteckningen i 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -4141,15 +3666,11 @@ LaTeX används mycket inom forskarvärlden eftersom utskriften som genereras
  Lyckligtvis har LyX WYSIWYM-stöd för matematik.
  Om du är van vid LaTeX finner du att du kan skriva in LaTeX som du gör
  i en texteditor men symbolerna visas på WYSIWYM-vis på skärmen.
- Om du å andra sida inte kan ett jota om LaTeX finns
-\family default
- 
+ Om du å andra sida inte kan ett jota om LaTeX finns 
 \family sans
 Matematikpanelen
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Matematik
 \family default
@@ -4159,9 +3680,7 @@ status collapsed
 
 \begin_layout Standard
 Det ligger förstås utanför ramen för LyX att kontrollera att den matematik
- du uttrycker är
-\emph default
- 
+ du uttrycker är 
 \emph on
 korrekt!
 \end_layout
@@ -4184,9 +3703,7 @@ Jag gillar det Einstein sa, E=mc^2, för det är så enkelt.
 \end_layout
 
 \begin_layout Standard
-Det där ser ju inget vidare ut, inte ens i
-\family default
- 
+Det där ser ju inget vidare ut, inte ens i 
 \family typewriter
 dvi
 \family default
@@ -4217,24 +3734,18 @@ Matematik skriver man in med LyX i matematikläge.
  Den blåa fyrkanten är inmatningspunkten, vilken antyder att LyX vill ha
  något inmatat där, och den lila ramen indikerar att du är i matematikläge
  nu.
- LyX har satt markören i den blåa fyrkanten, så skriv bara
-\family default
- 
+ LyX har satt markören i den blåa fyrkanten, så skriv bara 
 \family typewriter
 E=mc^2
 \family default
  igen.
  Uttrycket visas i blått och den blåa fyrkanten försvinner så snart inmatningspu
 nkten inte längre är tom.
- Tryck
-\family default
- 
+ Tryck 
 \family sans
 Esc
 \family default
- för att komma ur matematikläget (Obs: att klicka på
-\family default
- 
+ för att komma ur matematikläget (Obs: att klicka på 
 \family sans
 Matematik
 \family default
@@ -4244,9 +3755,7 @@ Matematik
 \end_layout
 
 \begin_layout Standard
-Kör så LaTeX och titta på
-\family default
- 
+Kör så LaTeX och titta på 
 \family typewriter
 dvi
 \family default
@@ -4260,8 +3769,6 @@ dvi
 \begin_layout Standard
 Matematikläget är som sagt WYSIWYM.
  I LaTeX skriver du ett matematiskt uttryck i en textfil med kommandon som
-
-\family default
  
 \family typewriter
 
@@ -4278,9 +3785,7 @@ sqrt
  LaTeX sköter om den slutgiltiga typsättningen.
  I regel behöver du inte ändra på den typstorlek eller kägel som LaTeX sätter.
  På så sätt (ursäkta om jag låter tjatig) kan du ägna din uppmärksamhet
- på
-\emph default
- 
+ på 
 \emph on
 innehållet
 \emph default
@@ -4304,15 +3809,11 @@ Nu skall vi ändra uttrycket
  Använd piltangenterna för att flytta markören in i uttrycket.
  När du stegar in i uttrycket kommer den lila ramen till baka för att markera
  för dig att du nu redigerar i matematikläge.
- Du kan nu använda
-\family default
- 
+ Du kan nu använda 
 \family sans
 Vänster
 \family default
- och
-\family default
- 
+ och 
 \family sans
 Höger
 \family default
@@ -4334,50 +3835,35 @@ Höger
 \begin_layout Standard
 Förutom de särskilda knapparna som beskrivs nedan fungerar matematikläge
  som redigering av vanlig text.
- Använd
-\family default
- 
+ Använd 
 \family sans
 Delete
 \family default
- (eller
-\family default
- 
+ (eller 
 \family sans
 Backspace
 \family default
 ) för att ta bort saker.
  Markera text med piltangenterna eller med musen.
-
-\family default
  
 \family sans
 Redigera->Ångra
 \family default
  fungerar i matematikläge, och så även klippning och klistring.
- En sak bör du dock tänka på: om du står strax
-\emph default
- 
+ En sak bör du dock tänka på: om du står strax 
 \emph on
 utanför
 \emph default
- ett matematiskt uttryck och trycker
-\family default
- 
+ ett matematiskt uttryck och trycker 
 \family sans
 Delete
 \family default
- 
-(eller
-\family default
- 
+ (eller 
 \family sans
 Backspace
 \family default
 ), kommer hela uttrycket att raderas.
- Naturligtvis kan du använda
-\family default
- 
+ Naturligtvis kan du använda 
 \family sans
 Ångra
 \family default
@@ -4411,9 +3897,7 @@ c
 \begin_inset Quotes srd
 \end_inset
 
-, kommer
-\family default
- 
+, kommer 
 \family sans
 Upp
 \family default
@@ -4435,23 +3919,17 @@ Upp
 \end_inset
 
 .
- Om du nu trycker
-\family default
- 
+ Om du nu trycker 
 \family sans
 Ned
 \family default
  så flyttas markören till grundnivån.
- Du kan trycka
-\family default
- 
+ Du kan trycka 
 \family sans
 Ned
 \family default
  var som helst i exponenten för att flyttas ned till grundnivån och får
- då markören
-\emph default
- 
+ då markören 
 \emph on
 efter
 \emph default
@@ -4467,18 +3945,14 @@ efter
 \end_layout
 
 \begin_layout Standard
-Du kan också använda
-\family default
- 
+Du kan också använda 
 \family sans
 Mellanslag
 \family default
  för att förflytta dig inom uttrycken.
  Om du står inne i en matematikstruktur (ett index, en exponent, ett bråk,
  kvadratrot, matris osv.
- vilka beskrivs nedan) och trycker
-\family default
- 
+ vilka beskrivs nedan) och trycker 
 \family sans
 Mellanslag
 \family default
@@ -4489,16 +3963,12 @@ Mellanslag
 
  utan att använda vare sig musen eller piltangenterna, vilket du kanske
  finner mer lättjobbat i längden.
- Var försiktig så att du inte skriver in
-\family default
- 
+ Var försiktig så att du inte skriver in 
 \family sans
 Mellanslag
 \family default
  mellan ettan och plustecknet, för då åker du ur exponenten.
- Trycker du
-\family default
- 
+ Trycker du 
 \family sans
 Mellanslag
 \family default
@@ -4527,16 +3997,11 @@ status collapsed
 \family sans
 Mellanslag
 \family default
- 
-och
-\family default
- 
+ och 
 \family sans
 Tab
 \family default
- används
-\emph default
- 
+ används 
 \emph on
 inte
 \emph default
@@ -4545,14 +4010,13 @@ inte
  tar hand om (se avsnitt 
 \begin_inset LatexCommand ref
 reference "sec:whitespace"
+
 \end_inset
 
 ).
  Om du inte blir nöjd med hur tomrummet typsätts finns det metoder att finjuster
 a det.
- Det står mer om det i
-\emph default
- 
+ Det står mer om det i 
 \emph on
 Handboken
 \emph default
@@ -4566,36 +4030,26 @@ Handboken
 \end_layout
 
 \begin_layout Standard
-Notera att om du går ur ett matematiskt uttryck med
-\family default
- 
+Notera att om du går ur ett matematiskt uttryck med 
 \family sans
 Esc
 \family default
 , blir det inget mellanslag efter uttrycket.
  Detta är nog bra om du har tänkt dig en punkt eller ett kommatecken efter,
- men om du vill skriva ett ord efter formeln måste du trycka
-\family default
- 
+ men om du vill skriva ett ord efter formeln måste du trycka 
 \family sans
 Mellanslag
 \family default
  själv efter att du gått ur matematikläget.
- För bekvämlighets skull finns möjligheten att trycka
-\family default
- 
+ För bekvämlighets skull finns möjligheten att trycka 
 \family sans
 Mellanslag
 \family default
- i
-\emph default
- 
+ i 
 \emph on
 slutet
 \emph default
- av uttrycket för att både gå ur matematikläge och
-\emph default
- 
+ av uttrycket för att både gå ur matematikläge och 
 \emph on
 dessutom
 \emph default
@@ -4607,9 +4061,7 @@ Exponenter och index
 \end_layout
 
 \begin_layout Standard
-En exponent kan läggas in med
-\family default
- 
+En exponent kan läggas in med 
 \family sans
 Matematik
 \family default
@@ -4625,15 +4077,11 @@ Matematik
  LyX sätter då en inmatningspunkt (den där blåa rutan du vet) som är upphöjd
  över förra nivån, så att allt du matar in blir upphöjd och något mindre
  text.
- Allt du skriver in tills dess du trycker
-\family default
- 
+ Allt du skriver in tills dess du trycker 
 \family sans
 Mellanslag
 \family default
- (eller
-\family default
- 
+ (eller 
 \family sans
 Esc
 \family default
@@ -4668,9 +4116,7 @@ _
 \series bold
 Övning:
 \series default
- Gör om ekvation 1 i
-\family default
- 
+ Gör om ekvation 1 i 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4688,27 +4134,20 @@ Matematikpanelen
 \family sans
 Matematikpanelen
 \family default
- 
-är ett bekvämt verktyg för att lägga in ovanliga symboler och/eller många
+ är ett bekvämt verktyg för att lägga in ovanliga symboler och/eller många
  krångligare matematikfunktioner.
- Många av dessa är åtkomliga från tangentbordet eller
-\family default
- 
+ Många av dessa är åtkomliga från tangentbordet eller 
 \family sans
 Matematik
 \family default
 -menyn.
- Nu skall vi dock ägna oss åt
-\family default
- 
+ Nu skall vi dock ägna oss åt 
 \family sans
 Matematikpanelen
 \family default
 , bara så att du får en uppfattning om vad som finns där.
  Snabbvalen via tangentbordet kan du studera senare, i de andra manualerna.
- Öppna nu
-\family default
- 
+ Öppna nu 
 \family sans
 Matematikpanelen
 \family default
@@ -4772,31 +4211,23 @@ Vektormarkering på tecken (
 \end_inset
 
 ) görs på samma sätt.
- Tryck på
-\family default
- 
+ Tryck på 
 \family sans
 Dekoration
 \family default
 -knappen, vilken är märkt med en blå fyrkant med ett svart tildetecken\InsetSpace ~
 (~)
- ovanpå, för att öppna
-\family default
- 
+ ovanpå, för att öppna 
 \family sans
 Dekoration
 \family default
 -panelen.
  Välj en dekoration, och LyX lägger ut den med tillhörande inmatningspunkt.
- Mata in vad du vill ha under/över tecknet, och tryck
-\family default
- 
+ Mata in vad du vill ha under/över tecknet, och tryck 
 \family sans
 Mellanslag
 \family default
- eller
-\family default
- 
+ eller 
 \family sans
 Esc
 \family default
@@ -4806,38 +4237,26 @@ Esc
 \begin_layout Standard
 Skiljetecken som parenteser, hakar och klamrar fungerar på liknande sätt,
  men är något mer komplicerat.
- Tryck på
-\family default
- 
+ Tryck på 
 \family sans
 Skiljetecken
 \family default
--knappen (blå fyrkant inom hakparenteser), för att få upp
-\family default
- 
+-knappen (blå fyrkant inom hakparenteser), för att få upp 
 \family sans
 Skiljetecken
 \family default
 -panelen.
- Klicka på det tecken du vill ha till vänster med
-\emph default
- 
+ Klicka på det tecken du vill ha till vänster med 
 \emph on
 vänster
-\emph default
-
 \emph default
  
 \emph on
 musknapp
 \emph default
- och på det högra tecknet med
-\emph default
- 
+ och på det högra tecknet med 
 \emph on
 höger
-\emph default
-
 \emph default
  
 \emph on
@@ -4889,23 +4308,17 @@ tomma
 \end_layout
 
 \begin_layout Standard
-När du väl valt skiljetecken klickar du på
-\family default
- 
+När du väl valt skiljetecken klickar du på 
 \family sans
 OK
 \family default
- (eller på
-\family default
- 
+ (eller på 
 \family sans
 Använd
 \family default
  om du vill ha kvar dialogen på skärmen).
  Om du är lat kan du använda tangentbordets knappar för parenteser m.m i
- matematikläge snarare än att använda
-\family default
- 
+ matematikläge snarare än att använda 
 \family sans
 Skiljetecken
 \family default
@@ -4914,9 +4327,7 @@ Skiljetecken
  och ser inte så bra ut om du har ett uttryck som täcker en större yta (bråk,
  matriser\SpecialChar \ldots{}
 ).
- Med
-\family default
- 
+ Med 
 \family sans
 Skiljetecken
 \family default
@@ -4976,15 +4387,11 @@ Bråk
 
 \begin_layout Standard
 Bråk är enklare i matematikläge.
- Klicka bara på
-\family default
- 
+ Klicka bara på 
 \family sans
 Bråk
 \family default
--knappen i
-\family default
- 
+-knappen i 
 \family sans
 Matematikpanelen
 \family default
@@ -5001,9 +4408,7 @@ cket.
 \end_inset
 
 .
- Tryck
-\family default
- 
+ Tryck 
 \family sans
 Ned
 \family default
@@ -5026,10 +4431,7 @@ Ned
 \series bold
 Övning:
 \series default
- 
-Sätt ekvation 2 i
-\family default
- 
+ Sätt ekvation 2 i 
 \family typewriter
 example_raw.lyx
 \family default
@@ -5077,9 +4479,7 @@ x
 \begin_inset Quotes srd
 \end_inset
 
- efteråt (att trycka
-\family default
- 
+ efteråt (att trycka 
 \family sans
 Mellanslag
 \family default
@@ -5120,15 +4520,11 @@ sin
 \begin_inset Quotes srd
 \end_inset
 
- i listan
-\family default
- 
+ i listan 
 \family sans
 Funktioner
 \family default
- i
-\family default
- 
+ i 
 \family sans
 Matematikpanelen
 \family default
@@ -5142,9 +4538,7 @@ sin
 \end_inset
 
  läggs ut i röd antikva, även känt som TeX-läge.
- Hela ordet betraktas som en enda symbol, så om du trycker
-\family default
- 
+ Hela ordet betraktas som en enda symbol, så om du trycker 
 \family sans
 Backspace
 \family default
@@ -5158,9 +4552,7 @@ x
 \end_inset
 
 , vilket då läggs ut i blå kursiv som vanligt med variabler i matematikläge.
- I
-\family default
- 
+ I 
 \family typewriter
 dvi
 \family default
@@ -5169,9 +4561,7 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Andra kommandon du behöver mata in i TeX-läge med listan under
-\family default
- 
+Andra kommandon du behöver mata in i TeX-läge med listan under 
 \family sans
 Funktioner
 \family default
@@ -5199,10 +4589,7 @@ cosh
 \backslash
 log
 \family default
- 
-och
-\family default
- 
+ och 
 \family typewriter
 
 \backslash
@@ -5243,9 +4630,7 @@ lim
 \series bold
 Övning:
 \series default
- Sätt ekvation 3 i
-\family default
- 
+ Sätt ekvation 3 i 
 \family typewriter
 example_raw.lyx
 \family default
@@ -5259,32 +4644,25 @@ Matriser
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec:matrices"
+
 \end_inset
 
-Klicka på
-\family default
- 
+Klicka på 
 \family sans
 matris
 \family default
--knappen i
-\family default
- 
+-knappen i 
 \family sans
 Matematikpanelen
 \family default
 .
  Matrisdialogen har två skjutreglage med vilka du väljer hur många rader
  och kolonner du vill ha i din matris.
- Välj 2 rader och 3 kolonner och tryck
-\family default
- 
+ Välj 2 rader och 3 kolonner och tryck 
 \family sans
 OK
 \family default
- eller
-\family default
- 
+ eller 
 \family sans
 Använd
 \family default
@@ -5305,15 +4683,11 @@ Använd
 Tab
 \family default
  kan användas för att förflytta sig vågrätt mellan matrisens kolonner.
- Du kan också använda piltangenterna för förflyttningar: tryck
-\family default
- 
+ Du kan också använda piltangenterna för förflyttningar: tryck 
 \family sans
 Höger
 \family default
- i slutet av en inmatningspunkt flyttar dig till nästa fyrkant,
-\family default
- 
+ i slutet av en inmatningspunkt flyttar dig till nästa fyrkant, 
 \family sans
 Ned
 \family default
@@ -5321,9 +4695,7 @@ Ned
 \end_layout
 
 \begin_layout Standard
-Se vidare
-\emph default
- 
+Se vidare 
 \emph on
 Handboken
 \emph default
@@ -5343,24 +4715,18 @@ De uttryck vi hittills har skrivit har befunnit sig på samma rad som den
  löpande texten.
  Detta duger gott för korta enkla uttryck, men om du vill lägga ut större
  uttryck, eller om du vill att de skall ligga skiljt från brödtexten, skall
- du lägga ut det
-\family default
- 
+ du lägga ut det 
 \family sans
 på\InsetSpace ~
 egen\InsetSpace ~
 rad
 \family default
 .
- Det är dessutom bara uttryck
-\family default
- 
+ Det är dessutom bara uttryck 
 \family sans
 på egen rad
 \family default
- som kan förses med etiketter eller numreras (se
-\emph default
- 
+ som kan förses med etiketter eller numreras (se 
 \emph on
 handboken, 
 \begin_inset Quotes sld
@@ -5375,17 +4741,14 @@ display mode
 ), och ekvationer som spänner över flera rader (se avsnitt 
 \begin_inset LatexCommand ref
 reference "sec:multiline"
+
 \end_inset
 
-)
-\emph default
- 
+) 
 \emph on
 måste
 \emph default
- läggas ut
-\family default
- 
+ läggas ut 
 \family sans
 på\InsetSpace ~
 egen\InsetSpace ~
@@ -5395,17 +4758,13 @@ rad
 \end_layout
 
 \begin_layout Standard
-Klicka på knappen för formler
-\family default
- 
+Klicka på knappen för formler 
 \family sans
 på\InsetSpace ~
 egen\InsetSpace ~
 rad
 \family default
- i
-\family default
- 
+ i 
 \family sans
 Matematikpanelen
 \family default
@@ -5414,9 +4773,7 @@ Matematikpanelen
  LyX öppnar en inmatningspunkt, men den ligger ensam på en rad och är centrerad
  på den raden.
  Mata så in ett ett uttryck och kör LaTeX för att se hur det ser ut.
- Knappen
-\family default
- 
+ Knappen 
 \family sans
 på\InsetSpace ~
 egen\InsetSpace ~
@@ -5467,9 +4824,7 @@ Förutom detta är uttryck i löpande text och på egen rad ganska lika.
 \series bold
 Övning:
 \series default
- Sätt ekvationerna i
-\family default
- 
+ Sätt ekvationerna i 
 \family typewriter
 example_raw.lyx
 \family default
@@ -5504,11 +4859,10 @@ Flerradiga ekvationer
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec:multiline"
+
 \end_inset
 
-Pröva att skriva in följande ekvationer och betrakta resultatet i
-\family default
- 
+Pröva att skriva in följande ekvationer och betrakta resultatet i 
 \family typewriter
 dvi
 \family default
@@ -5558,25 +4912,19 @@ Det där ser mycket bättre ut! Likhetstecknen står i rad, och det är lite
 
 \begin_layout Standard
 För att starta en flerradig ekvation börjar du med ett matematiskt uttryck
-
-\family default
  
 \family sans
 på\InsetSpace ~
 egen\InsetSpace ~
 rad
 \family default
- och trycker
-\family default
- 
+ och trycker 
 \family sans
 C-Retur
 \family default
 .
  LyX lägger ut två rader, där varje rad har tre inmatningspunkter.
- Som med matriser kan du använda musen, piltangenterna eller
-\family default
- 
+ Som med matriser kan du använda musen, piltangenterna eller 
 \family sans
 Tab
 \family default
@@ -5605,39 +4953,32 @@ LyX kommer att lägga de andra fälten (mitten) över varandra, så vanligen
  för detta (se avsnitt 
 \begin_inset LatexCommand ref
 reference "sec:matrices"
+
 \end_inset
 
 ).
 \end_layout
 
 \begin_layout Standard
-Om du vill ha ännu fler rader använder du
-\family default
- 
+Om du vill ha ännu fler rader använder du 
 \family sans
 C-Retur
 \family default
  för att få en ny rad med tre tomma inmatningsfält.
  Om du inte står i slutet på den rad du är på, kommer det som är efter markören
  att flyttas till den nya raden.
- Om du trycker
-\family default
- 
+ Om du trycker 
 \family sans
 C-Retur
 \family default
  när du redan skrivit in en (enradig) ekvation, hamnar hela den ekvationen
  i första fältet.
- Sätt markören före likhetstecknet och tryck
-\family default
- 
+ Sätt markören före likhetstecknet och tryck 
 \family sans
 C-Tab
 \family default
  för att flytta det till andra fältet.
- Flytta så markören förbi likhetstecknet och tryck
-\family default
- 
+ Flytta så markören förbi likhetstecknet och tryck 
 \family sans
 C-Tab
 \family default
@@ -5661,9 +5002,7 @@ E & = & mc^{2}\\
 
 \begin_layout Standard
 Om du lagt ut för många rader ställer du markören i slutet på en rad och
- tryck
-\family default
- 
+ tryck 
 \family sans
 M-e\InsetSpace ~
 k
@@ -5672,9 +5011,7 @@ k
  Detta tar bort radbrytningen och slår ihop den följande raden (alla tre
  fälten) med den nuvarande.
  Om den efterföljande raden är tom raderas den helt enkelt.
- Varning: om du använder
-\family default
- 
+ Varning: om du använder 
 \family sans
 M-e\InsetSpace ~
 k
@@ -5689,14 +5026,11 @@ Mera matematik
 \begin_layout Standard
 Matematikläget kan mer än så här.
  Nu är du bekant med de grundläggande sakerna, så vi hänvisar bara till
-
-\emph default
  
 \emph on
 Handboken
 \emph default
- 
-för vidare tips om hur man:
+ för vidare tips om hur man:
 \end_layout
 
 \begin_layout Itemize
@@ -5706,17 +5040,13 @@ Märker upp och numrerar ekvationer
 \begin_layout Itemize
 Ändrar typsnitt, dvs.
  använder fetstil i ett uttryck.
- Vi bara noterar här att om man klickar på
-\family default
- 
+ Vi bara noterar här att om man klickar på 
 \family sans
 Matematik
 \family default
 -knappen i verktygspanelen när man redan är i matematikläge skriver man
  i antikva tills man matar in ett (icke skyddat) blanktecken eller klickar
- på
-\family default
- 
+ på 
 \family sans
 Matematik
 \family default
@@ -5737,9 +5067,7 @@ t och kan sedan använda dem i hela dokumentet.
 \end_layout
 
 \begin_layout Itemize
-Gör åtskilligt annat som vi inte behandlat i
-\emph default
- 
+Gör åtskilligt annat som vi inte behandlat i 
 \emph on
 Nybörjarkursen
 \emph default
@@ -5757,16 +5085,12 @@ Andra viktiga finesser i LyX
 \begin_layout Standard
 Vi har förstås inte gått igenom alla kommandon i LyX här, och det är inte
  meningen.
- Som sagt tidigare är det
-\emph default
- 
+ Som sagt tidigare är det 
 \emph on
 Handboken
 \emph default
  man först letar i efter mer information.
- Den exakta funktionen hos varje menykommando beskrivs i
-\emph default
- 
+ Den exakta funktionen hos varje menykommando beskrivs i 
 \emph on
 Referensmanualen
 \emph default
@@ -5777,23 +5101,17 @@ Referensmanualen
 
 \begin_layout Itemize
 LyX kan hantera tabeller.
- Använd
-\family default
- 
+ Använd 
 \family sans
 Lägg\InsetSpace ~
 in->Tabell
 \family default
  för att få en tabell.
- Klicka på tabellen med
-\emph default
- 
+ Klicka på tabellen med 
 \emph on
 höger knapp
 \emph default
- för att få upp
-\family default
- 
+ för att få upp 
 \family sans
 Tabellstil
 \family default
@@ -5802,16 +5120,13 @@ Tabellstil
 
 \begin_layout Itemize
 LyX stöder också bilder i PostScript® (eller rå LaTeX) i dokumenten.
- (Just precis:
-\family default
- 
+ (Just precis: 
 \family sans
 Lägg\InsetSpace ~
 in->Figur\SpecialChar \@.
  Klicka
 \family default
- 
-sedan på figuren för att välja själva filen som skall användas, rotera,
+ sedan på figuren för att välja själva filen som skall användas, rotera,
  skala om den osv.) Tabeller och figurer kan ha undertexter, och LyX skapar
  automatiskt listor över tabeller och figurer inom dokumentet.
 \end_layout
@@ -5828,9 +5143,7 @@ man rcs
 LyX kan konfigureras på alla de sätt.
  Allt från hur LyX-fönstret ser ut på skärmen till hur utskriften ser ut
  kan ställas in på ett otal sätt.
- För att se mer om detta, se
-\family default
- 
+ För att se mer om detta, se 
 \family sans
 Hjälp->Anpassning
 \family default
@@ -5850,15 +5163,14 @@ LyX kan importera LaTeX-dokument.
  Se avsnitt 
 \begin_inset LatexCommand ref
 reference "sec:relyx"
+
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Itemize
-Kontrollera din stavning med
-\family default
- 
+Kontrollera din stavning med 
 \family sans
 Redigera->Stavningskontroll\SpecialChar \@.
 
@@ -5878,6 +5190,7 @@ Observera att stavningskontroll sker bara från markörens position till slutet
 \begin_layout Section
 \begin_inset LatexCommand label
 name "sec:latexusers"
+
 \end_inset
 
 LyX för LaTeXperter
@@ -5885,14 +5198,11 @@ LyX för LaTeXperter
 
 \begin_layout Standard
 Om du inget kan om LaTeX behöver du inte läsa följande avsnitt.
- De är förstås möjligt att du vill
-\emph default
- 
+ De är förstås möjligt att du vill 
 \emph on
 lära
 \emph default
- 
-dig mer om LaTeX, och därefter läsa detta avsnitt.
+ dig mer om LaTeX, och därefter läsa detta avsnitt.
  Men det finns många som är mer eller mindre förtrogna med LaTeX redan när
  de börjar använda LyX.
  Om du är en av dessa kanske du funderar på om LyX verkligen klarar av allt
@@ -5907,15 +5217,11 @@ dig mer om LaTeX, och därefter läsa detta avsnitt.
 
 \begin_layout Standard
 Eftersom detta bara är en nybörjarkurs behandlar vi bara saker som nya användare
- av LyX kan antas vara intresserade av, och för att hålla denna
-\emph default
- 
+ av LyX kan antas vara intresserade av, och för att hålla denna 
 \emph on
 Nybörjarkurs
 \emph default
  kort ger vi bara minsta nödvändiga information här.
-
-\emph default
  
 \emph on
 Handboken
@@ -5931,9 +5237,7 @@ TeX-läge
 \begin_layout Standard
 Allt du matar in i TeX-läge skickas rakt över till LaTeX, och visas i röd
  text på skärmen.
- Du går in i TeX-läge med
-\family default
- 
+ Du går in i TeX-läge med 
 \family sans
 Stil->TeX-stil
 \family default
@@ -5945,9 +5249,7 @@ I matematikläge fungerar TeX-läge lite annorlunda.
  Där går du in i TeX-läge genom att skriva ett bakåtsnedstreck.
  Bakåtsnedstrecket självt visas inte, men all text därefter markeras med
  rött.
- Du lämnar TeX-läge genom att trycka
-\family default
- 
+ Du lämnar TeX-läge genom att trycka 
 \family sans
 Mellanslag
 \family default
@@ -5968,17 +5270,13 @@ borde testa och bekräfta detta
 
  När du lämnar TeX-läge kommer LyX att konvertera detta till WYSIWYM om
  den känner till kommandot.
- Så om du skriver
-\family default
- 
+ Så om du skriver 
 \family typewriter
 
 \backslash
 gamma
 \family default
- i matematikläge och avslutar med
-\family default
- 
+ i matematikläge och avslutar med 
 \family sans
 Mellanslag
 \family default
@@ -6004,29 +5302,22 @@ gamma
 
 .
  Detta fungerar för nästan alla enklare matematikmakron (även om matematiska
- funktioner som
-\family default
- 
+ funktioner som 
 \family typewriter
 
 \backslash
 sin
 \family default
  kvarstår i rött, eftersom det redan är i WYSIWYM).
- Detta kan gå fortare än att använda
-\family default
- 
+ Detta kan gå fortare än att använda 
 \family sans
 Matematikpanelen
 \family default
- 
-och troligen enklare för vana användare av LaTeX.
+ och troligen enklare för vana användare av LaTeX.
 \end_layout
 
 \begin_layout Standard
-LyX kan inte göra
-\emph default
- 
+LyX kan inte göra 
 \emph on
 allt
 \emph default
@@ -6036,9 +5327,7 @@ allt
  dra fördel av bekvämligheterna i LyX som WYSIWYG matematik, tabeller och
  redigering.
  LyX kan aldrig stödja vartenda paket för LaTeX.
- Men genom att lägga in
-\family default
- 
+ Men genom att lägga in 
 \family typewriter
 
 \backslash
@@ -6063,168 +5352,80 @@ Hjälp!!
 \end_layout
 
 \begin_layout Subsection
-Att konvertera LaTeX-dokument till LyX
+Att konvertera LaTeX-dokument till LyX -- tex2lyx
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset LatexCommand label
-name "sec:relyx"
+name "sec:tex2lyx"
+
 \end_inset
 
-Du kan importera en LaTeX-fil till LyX med
-\family default
- 
+You can import a LaTeX file into LyX by using the 
 \family sans
-Fil->Importera->LaTeX
-\family default
-.
- Detta anropar ett Perl-program som heter
-\family default
- 
-\family typewriter
-reLyX
-\family default
- -- vilket skapar en fil
-\family default
- 
-\family typewriter
-filnamn.lyx
-\family default
- av
-\family default
- 
-\family typewriter
-filnamn.tex
-\family default
- -- och öppnar filen.
- Om konverteringen misslyckas kan du anropa
-\family default
- 
-\family typewriter
-reLyX
-\family default
- direkt från skalet
-\begin_inset Foot
-status collapsed
+\bar under
+F
+\bar default
+ile\SpecialChar \menuseparator
 
-\begin_layout Standard
+\bar under
+I
+\bar default
+mport\SpecialChar \menuseparator
 
+\bar under
+L
+\bar default
+aTeX
+\family default
+ command in LyX.
+ This will call 
 \family typewriter
-reLyX
+tex2lyx
 \family default
- installeras i samma katalog som
-\family default
- 
+ which will create a file 
 \family typewriter
-lyx
+foo.lyx
 \family default
- (t.ex.
-
-\family default
- 
+ from the file 
 \family typewriter
-/usr/local/bin/reLyX
+foo.tex
 \family default
-).
-
-\family default
- 
+ --- and then open that file.
+ If the translation doesn't work, you can try calling 
 \family typewriter
-reLyX
+tex2lyx
 \family default
- kräver Perl (version 5.002 eller senare).
-\end_layout
-
-\end_inset
-
-, och pröva med andra flaggor.
+ from the command line, possibly using fancier options.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-reLyX
+\lang english
+tex2lyx
 \family default
- klarar det mesta av kommandona i LaTeX, men inte allt.
- De delar den inte förstår läggs in iTeX-läge i LyX-dokumentet, så efter
- att du importerat en LaTeX-fil kan du titta efter rödmarkerad TeX-kod
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Kallat ERT bland utvecklarna (
-\begin_inset Quotes sld
-\end_inset
-
-Evil Red Text
-\begin_inset Quotes srd
-\end_inset
-
- -- 
-\begin_inset Quotes sld
-\end_inset
-
-Ondskefull Röd Text
-\begin_inset Quotes srd
-\end_inset
-
-), efter ett muntert gräl en gång på utvecklarnas epostlista.
- I nästa större version av LyX är ERT eliminerat så tillvida att ohanterlig
- LaTeX göms bakom en liten knapp i arbetsfönstret.
- Arbete pågår också med att göra reLyX allt smartare samtidigt som allt
- mer knepigheter i LaTeX får WYSIWYM-stöd i LyX.
- Tiden är med oss.
-\end_layout
-
-\end_inset
-
- och snygga till det för hand.
+ will translate most legal LaTeX, but not everything.
+ It will leave things it doesn't understand in TeX mode, so after translating
+ a file with 
+\family typewriter
+tex2lyx
+\family default
+, you can look for red text and hand-edit it to look right.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-reLyX
+\lang english
+tex2lyx
 \family default
- har sin egen manualsida
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-skriv 
-\begin_inset Quotes sld
-\end_inset
-
-
-\family typewriter
-man reLyx
-\family default
-
-\begin_inset Quotes srd
-\end_inset
-
-
-\family typewriter
-
-\family default
- 
-i 
-\noun on
-unix
-\noun default
--skalet
-\end_layout
-
-\end_inset
-
-, som du skall läsa om du vill veta vilka begränsningar
-\family default
- 
-\family typewriter
-reLyX
-\family default
- har, vilka buggar det finns i den aktuella versionen (och hur man kommer
- runt dem), samt vilka parametrar som finns och hur man använder dem.
+ has its own manpage.
+ Read it to find out about which LaTeX commands and environments aren't
+ supported, bugs (and how to get around them), and how to use the various
+ options.
 \end_layout
 
 \begin_layout Subsection
@@ -6235,23 +5436,17 @@ Att konvertera LyX-dokument till LaTeX
 Du kanske vill exportera ett dokument som LaTeX.
  Kanske har du en kollega eller medförfattare som dväljs i ett LyX-löst
  mörker, vilken kanske vill läsa det du skrivit.
- Detta fixas lätt i LyX med
-\family default
- 
+ Detta fixas lätt i LyX med 
 \family sans
 Fil->Exportera->som\InsetSpace ~
 LaTeX\SpecialChar \@.
 
 \family default
- Detta skapar en
-\family default
- 
+ Detta skapar en 
 \family typewriter
 flerp.tex
 \family default
- från din
-\family default
- 
+ från din 
 \family typewriter
 flerp.lyx
 \family default
@@ -6269,9 +5464,7 @@ Dokumentklass
 \end_layout
 
 \begin_layout Standard
-Dialogen för
-\family default
- 
+Dialogen för 
 \family sans
 Stil->Dokument
 \family default
@@ -6284,9 +5477,7 @@ documentclass
 .
  Där gör du ändringar rörande dokumentklass, typsnitt för brödtext m.m.
  Om du vill ha några extra parametrar som inte stöds direkt i dialogen kan
- du lägga in det i fältet
-\family default
- 
+ du lägga in det i fältet 
 \family sans
 Extra\InsetSpace ~
 val:
@@ -6295,9 +5486,7 @@ val:
 \end_layout
 
 \begin_layout Standard
-Dialogen
-\family default
- 
+Dialogen 
 \family sans
 Stil->Papper
 \family default
@@ -6311,9 +5500,7 @@ Annat i preamblen
 \begin_layout Standard
 Om du har särskilda kommandon som du vill ha här, så går det för sig att
  använda dem i LyX med.
- Välj
-\family default
- 
+ Välj 
 \family sans
 Stil->LaTeX\InsetSpace ~
 preamble
@@ -6329,16 +5516,12 @@ BibTeX
 \begin_layout Standard
 LyX har visst men inte fullt stöd för BibTeX, vilket används för att bygga
  databaser med litteraturförteckningar att hänvisa till i flera olika dokument.
- Välj
-\family default
- 
+ Välj 
 \family sans
 Lägg\InsetSpace ~
 in->Förteckningar->BibTeX-referenser
 \family default
- för att använda dig av
-\family default
- 
+ för att använda dig av 
 \family typewriter
 bib
 \family default
@@ -6352,15 +5535,11 @@ BibTeX-genererade referenser
 \end_inset
 
  som placeras i arbetsfönstret och en dialog visas.
- I fältet
-\family default
- 
+ I fältet 
 \family sans
 Databas:
 \family default
- matar du in vad du skulle ha skrivit inom klamrarna i
-\family default
- 
+ matar du in vad du skulle ha skrivit inom klamrarna i 
 \family typewriter
 
 \backslash
@@ -6382,9 +5561,7 @@ Som i LaTeX skall flera databasnamn skiljas åt med kommatecken, och utan
 \family sans
 Stil:
 \family default
- matar du in vad du skulle ha skrivit inomklamrarna i kommandot
-\family default
- 
+ matar du in vad du skulle ha skrivit inomklamrarna i kommandot 
 \family typewriter
 
 \backslash
@@ -6395,9 +5572,7 @@ bibliographystyle{}
 
 \begin_layout Standard
 Efter detta kan du hänvisa till all litteratur i databasen (databaserna)
- i de refereringar du lägger in med
-\family default
- 
+ i de refereringar du lägger in med 
 \family sans
 Lägg\InsetSpace ~
 in->Citatreferens
@@ -6405,6 +5580,7 @@ in->Citatreferens
  (se avsnitt 
 \begin_inset LatexCommand ref
 reference "sec:bibliographies"
+
 \end_inset
 
 ).
@@ -6428,16 +5604,12 @@ visst men inte fullt stöd
 \begin_inset Quotes srd
 \end_inset
 
- beror på att LyX kan inte skapa
-\family default
- 
+ beror på att LyX kan inte skapa 
 \family typewriter
 bib
 \family default
 -filer, och du får inte en lista över giltiga referenser från databasen
- i listan i dialogen för
-\family default
- 
+ i listan i dialogen för 
 \family sans
 Citatreferenser
 \family default
@@ -6449,9 +5621,7 @@ Citatreferenser
 \end_layout
 
 \begin_layout Standard
-Ett skyddat blanktecken läggs in med
-\family default
- 
+Ett skyddat blanktecken läggs in med 
 \family sans
 C-Mellanslag
 \family default
@@ -6465,16 +5635,12 @@ u
 \end_inset
 
 .
- Det finns gott om sådana här i
-\emph default
- 
+ Det finns gott om sådana här i 
 \emph on
 Nybörjarkursen\SpecialChar \@.
 
 \emph default
- Se menyn
-\family default
- 
+ Se menyn 
 \family sans
 Lägg\InsetSpace ~
 in->Specialtecken
@@ -6490,9 +5656,7 @@ Fel!
 \begin_layout Standard
 Ibland när du kör LaTeX på ett dokument blir det felmeddelanden, saker som
  LyX eller LaTeX inte förstår.
- När detta händer lägger LyX ut en
-\emph default
- 
+ När detta händer lägger LyX ut en 
 \emph on
 felruta
 \emph default

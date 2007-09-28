@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -33,6 +33,7 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -50,6 +51,7 @@ o@host.sk)
 
 \begin_layout Standard
 \begin_inset LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -99,9 +101,7 @@ O tomto dokumente
 \begin_layout Standard
 Predtým ako začneme s touto časťou, chceli by sme zdôrazniť niečo o tomto
  dokumente.
- Predpokladáme, že vy, užívaťeľ,
-\series default
- 
+ Predpokladáme, že vy, užívaťeľ, 
 \series bold
 NIE
 \series default
@@ -163,9 +163,7 @@ Dôvod prečo vás odkazujeme na časť iného dokumentu je jednoduchý: lenivos
  LyX Team je dosť zaneprázdnený pridávaním nových vecí a opravovaním chýb.
  Nepotrebujeme si pridávať robotu staraním sa o 5 identických verzií rovnakej
  časti textu v rôznych dokumentoch.
- Tak, prečítajte si
-\emph default
- 
+ Tak, prečítajte si 
 \emph on
 
 \begin_inset Quotes gld
@@ -191,9 +189,7 @@ manuáloch.
 
 \begin_layout Standard
 Teraz, keď už viete čo ktoré písmo znamená, budeme hovoriť trochu o tom,
- na čo je tento
-\emph default
- 
+ na čo je tento 
 \emph on
 
 \begin_inset Quotes gld
@@ -209,9 +205,7 @@ Sprievodca
 \end_layout
 
 \begin_layout Section
-Čo tento Sprievodca
-\emph default
- 
+Čo tento Sprievodca 
 \emph on
 je
 \emph default
@@ -234,9 +228,7 @@ Tu je pár slov od
 \noun on
 Johna Weissa
 \noun toggle
-, ktorý je pôvodným autorom
-\emph default
- 
+, ktorý je pôvodným autorom 
 \emph on
 
 \begin_inset Quotes gld
@@ -252,9 +244,7 @@ Sprievodcu
 \end_layout
 
 \begin_layout Quotation
-Pôvodne som mal veľké plány keď som začal písať
-\emph default
- 
+Pôvodne som mal veľké plány keď som začal písať 
 \emph on
 
 \begin_inset Quotes gld
@@ -327,6 +317,7 @@ Tak som neochotne roztrhal asi 20 strán cenného materiálu, ktorý som napísa
  Jediná vec, ktorú som nechal, je teraz časť 
 \begin_inset LatexCommand ref
 reference "sec: čo-je-lyx"
+
 \end_inset
 
 .
@@ -353,6 +344,7 @@ John Weiss
 Časť 
 \begin_inset LatexCommand ref
 reference "sec: čo-je-lyx"
+
 \end_inset
 
  je pozostatok z pôvodnej verzie Sprievodcu.
@@ -361,9 +353,7 @@ reference "sec: čo-je-lyx"
 \end_layout
 
 \begin_layout Subsection
-Čo tu
-\emph default
- 
+Čo tu 
 \emph on
 ne
 \emph toggle
@@ -398,9 +388,7 @@ Vysvetlenie všetkých čŕt LyXu.
 
 \begin_deeper
 \begin_layout Standard
-Čo? Chceli by ste dvakrát
-\emph default
- 
+Čo? Chceli by ste dvakrát 
 \emph on
 Užívateľskú príručku
 \emph toggle
@@ -409,9 +397,7 @@ Užívateľskú príručku
 
 \begin_layout Standard
 Tak vážne.
- Sme tu nato, aby sme vás rozbehli a všetko čo potrebujete je v
-\emph default
- 
+ Sme tu nato, aby sme vás rozbehli a všetko čo potrebujete je v 
 \emph on
 Užívateľskej príručke
 \emph toggle
@@ -428,9 +414,7 @@ by nikdy nebol aktuálny.
 \end_layout
 
 \begin_layout Standard
-To ale neznamená, že
-\emph default
- 
+To ale neznamená, že 
 \emph on
 nikdy
 \emph default
@@ -473,6 +457,7 @@ Tak, statočná duša, je čas pohnúť sa ďalej.
  v časti 
 \begin_inset LatexCommand ref
 reference "sec: prvý-dok-ex"
+
 \end_inset
 
 .
@@ -482,6 +467,7 @@ reference "sec: prvý-dok-ex"
 Čo je LyX?
 \begin_inset LatexCommand label
 name "sec: čo-je-lyx"
+
 \end_inset
 
 
@@ -528,9 +514,7 @@ Následkom toho všetky teztové procesory majú tieto spôsoby.
 \begin_layout Standard
 Toto je to, v čom sa odlišuje LyX od bežného textového procesora.
  Nezaujímate sa ktorý znak kam ide.
- poviete LyXu
-\emph default
- 
+ poviete LyXu 
 \emph on
 čo robíte
 \emph toggle
@@ -650,9 +634,7 @@ tabulátory
 
 \begin_layout Itemize
 extra prázdne riadky (napr.
- stlačenie
-\shape default
- 
+ stlačenie 
 \shape smallcaps
 Enteru
 \shape default
@@ -666,9 +648,7 @@ Tabulátory, spolu s pravítkom ukazujúcim pozíciu vecí na stránke, sú v Ly
  Extra prázdne riadky sú podobné: LyX ich pridáva tam, kde je to potrebné,
  záleží to na kontexte.
  Tiež riadkovanie je v LyXe úplne zastaralé.
- Medzery medzi riadkami sú
-\emph default
- 
+ Medzery medzi riadkami sú 
 \emph on
 premenlivé
 \emph toggle
@@ -727,9 +707,7 @@ I keď existujú v LyXe, vo veobecnosti ich nepotrebujete.
  Jediná výnimka sú medzery medzi riadkami, kde môžete potrebovať určité
  medzery medzi odstavcami, pritom určité medzery medzi riadkami v odstavci.
  pokúsime sa popísať ako Medzery medzi riadkami v LyXe fungujú, ale väčšina
- detailov je v
-\emph default
- 
+ detailov je v 
 \emph on
 Užívateľskej príručke
 \emph toggle
@@ -766,9 +744,7 @@ Súhlasíme, veľa moderných textových procesorov môže narábať s matematic
  symbolmi, tabuľkami a rozdeľovaním.
  Avšak dokázali to len v poslednej dobe, zatiaľčo LyX je postavený nad systémom
  prípravy dokumentov LaTeX.
- Ten tu je už 10 rokov a
-\emph default
- 
+ Ten tu je už 10 rokov a 
 \emph on
 funguje
 \emph toggle
@@ -799,9 +775,7 @@ Užívateľskej príručke
 \end_layout
 
 \begin_layout Subsection
-Čo do kelu
-\emph default
- 
+Čo do kelu 
 \emph on
 je
 \emph default
@@ -817,9 +791,7 @@ LaTeX je systém prípravy dokumentov, vytvorený Lesliem Lamportom v roku
 status collapsed
 
 \begin_layout Standard
-Zdroj informácií v tejto časti je
-\emph default
- 
+Zdroj informácií v tejto časti je 
 \emph on
 
 \begin_inset Quotes gld
@@ -924,9 +896,7 @@ Teraz, paralelne s vývojom a rastom LaTeXu, ďalší ľudia vytvárajú svoje
 \end_layout
 
 \begin_layout Standard
-Sú dva spôsoby ako rozšíriť LaTeX:
-\emph default
- 
+Sú dva spôsoby ako rozšíriť LaTeX: 
 \emph on
 triedy
 \emph default
@@ -1005,9 +975,7 @@ LyX: Vizuálny, WYSIWYM textový procesor, ktorý používa LaTeX v celej jeho
 Základom tohto všetkého je starý dobrý TeX, ktorý vytvára Dvi súbory.
  Väčšina z nás konvertuje tieto Dvi súbory na PostScriptové súbory, ktoré
  môžeme vytlačiť na laserovej tlačiarni.
- Sú správy o zariadeniac, ktoré priamo
-\emph default
- 
+ Sú správy o zariadeniac, ktoré priamo 
 \emph on
 rozumejú
 \emph default
@@ -1105,14 +1073,13 @@ Váš prvý LyX dokument
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec: prvý-dok-ex"
+
 \end_inset
 
 OK.
  Takže ste pripravený začať písať.
  Predtým, ako tak urobíte, je niekoľko vecí, o ktorých sa musíme zmieniť
- a ktoré, dúfajme, spravia
-\emph default
- 
+ a ktoré, dúfajme, spravia 
 \emph on
 Sprievodcu
 \emph default
@@ -1122,28 +1089,23 @@ viac poučným, užitočnejším a zábavnejším.
 \end_layout
 
 \begin_layout Standard
-Pretože je veľa informácií, ktoré vám neposkytneme,
-\series default
- 
+Pretože je veľa informácií, ktoré vám neposkytneme, 
 \series bold
 prvá
 \series default
  vec, ktorú potrebujete urobiť, je nájsť ďalšie súbory helpu.
  Našťastie je to veľmi jednoduché.
- Spustite LyX, a vyberte položku
-\emph default
- 
+ Spustite LyX, a vyberte položku 
 \emph on
 Užívateľská príručka
 \emph default
  
 \emph toggle
 z menu
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 \bar under
 P
 \bar default
@@ -1171,9 +1133,7 @@ Tiež môžu slúžiť ako dobré príklady ako používať rôzne vlastnosti Ly
 
 .
  Všimnite si, že ak máte otvorený viac ako jeden dokument, môžete používa
- menu
-\family default
- 
+ menu 
 \family sans
 \bar under
 D
@@ -1204,38 +1164,32 @@ ostane krátky.
 \end_layout
 
 \begin_layout Standard
-V tomto
-\emph default
- 
+V tomto 
 \emph on
 Sprievodcovi
 \emph default
  
 \emph toggle
 predpokladáme, že máte plne funkčnú verziu LyXu, tiež LaTeXu,
-\family default
 \emph default
  
-\emph toggle
 \family typewriter
+\emph toggle
 xdvi
 \family default
 \emph default
  
 \emph toggle
-\family default
 prípadne iný dvi prezerač,
-\family default
 \emph default
  
-\emph toggle
 \family typewriter
+\emph toggle
 dvips
 \family default
 \emph default
  
 \emph toggle
-\family default
 alebo nejaký iný spôsob konverzie dvi dokumentov do PostScriptu a fungujúcu
  tlačiareň.
  Je to veľa predpokladov.
@@ -1246,9 +1200,7 @@ alebo nejaký iný spôsob konverzie dvi dokumentov do PostScriptu a fungujúcu
 
 \begin_layout Standard
 Nakoniec, napísali sme súbor na ktorom si môžete precvičovť LyX.
- Nazýva sa
-\family default
- 
+ Nazýva sa 
 \family typewriter
 example_raw.lyx
 \family default
@@ -1256,17 +1208,13 @@ example_raw.lyx
  Predstavte si, že bol napísaný niekým, kto nevedel o žiadnej zo schopností
  LyXu.
  Ako sa budete učiť nové funkcie LyXu, predpokladáme, že opravíte časti
- súboru
-\family default
- 
+ súboru 
 \family typewriter
 example_raw.lyx
 \family default
 .
  Súbor tiež obsahuje malé rady, ako tieto veci opraviť.
  Ak chcete podvádzať (alebo zistiť ako sa to robí), je tiež súbor nazvaný
-
-\family default
  
 \family typewriter
 example_lyxified.lyx
@@ -1279,9 +1227,7 @@ Písanie, prezeranie a tlač
 \end_layout
 
 \begin_layout Itemize
-Otvorte nový súbor príkazom
-\family default
- 
+Otvorte nový súbor príkazom 
 \family sans
 \bar under
 S
@@ -1294,9 +1240,7 @@ ový
 \end_layout
 
 \begin_layout Itemize
-Napíšte vetu, napríklad:
-\family default
- 
+Napíšte vetu, napríklad: 
 \family typewriter
 Toto je môj prvý LyX dokument!
 \begin_inset Foot
@@ -1316,9 +1260,7 @@ No dobre.
 \end_layout
 
 \begin_layout Itemize
-Uložte svoj dokument príkazom
-\family default
- 
+Uložte svoj dokument príkazom 
 \family sans
 \bar under
 S
@@ -1335,15 +1277,11 @@ ko
 \end_layout
 
 \begin_layout Itemize
-Spustite LaTeX aby vytvoril
-\family default
- 
+Spustite LaTeX aby vytvoril 
 \family typewriter
 dvi
 \family default
- súbor, príkazom
-\family default
- 
+ súbor, príkazom 
 \family sans
 \bar under
 S
@@ -1362,15 +1300,11 @@ VI
 .
  Možte vidieť zobrazovanie správ v okne, z ktorého ste spustili LyX.
  Sú to správy LaTeXu, ktoré nateraz môžete ignorovať.
- LyX spustí
-\family default
- 
+ LyX spustí 
 \family typewriter
 xdvi
 \family default
- (prípadne nejaký iný
-\family default
- 
+ (prípadne nejaký iný 
 \family typewriter
 dvi
 \family default
@@ -1380,16 +1314,12 @@ dvi
 status collapsed
 
 \begin_layout Standard
-Môžete ušetriť čas ak necháte
-\family default
- 
+Môžete ušetriť čas ak necháte 
 \family typewriter
 xdvi
 \family default
  bežať na pozadí.
- Potom stačí použiť
-\family default
- 
+ Potom stačí použiť 
 \family sans
 \bar under
 S
@@ -1405,9 +1335,7 @@ A
 ktualizovať\InsetSpace ~
  DVI
 \family default
- a jednoducho kliknúť na okno
-\family default
- 
+ a jednoducho kliknúť na okno 
 \family typewriter
 xdvi
 \family default
@@ -1420,9 +1348,7 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-Vytlačte dokument príkazom
-\family default
- 
+Vytlačte dokument príkazom 
 \family sans
 \bar under
 S
@@ -1438,9 +1364,7 @@ lačiť
 
 \begin_layout Standard
 Gratulujeme! Napísali a vytlačili ste svoj prvý LyX dokument.
- Všetko ostatné sú len detaily, ktoré sú popísané vo zvyšku
-\emph default
- 
+ Všetko ostatné sú len detaily, ktoré sú popísané vo zvyšku 
 \emph on
 Sprievodcu
 \emph toggle
@@ -1470,8 +1394,6 @@ LyX samozrejme môže robiť väčšinu vecí, ktoré ste robili v textových pr
  Bude automaticky zalamovať slová a odsadzovať odseky.
  Otvorte si neraz nejaké menu a uvidíte, že väčšina jednoduchých príkazov
  (napr.
-
-\family default
  
 \family sans
 K
@@ -1480,9 +1402,7 @@ o
 \bar default
 niec
 \family default
-,
-\family default
- 
+, 
 \family sans
 V
 \bar under
@@ -1490,9 +1410,7 @@ l
 \bar default
 ožiť
 \family default
-,
-\family default
- 
+, 
 \family sans
 \bar under
 T
@@ -1514,9 +1432,7 @@ nekonečné undo
 \end_inset
 
 , čo znamená, že môžete vrátiť späť všetko, čo ste urobili po zapnutí LyXu,
- vykonaním príkazu
-\family default
- 
+ vykonaním príkazu 
 \family sans
 \bar under
 U
@@ -1529,9 +1445,7 @@ rátiť\InsetSpace ~
 späť
 \family default
 .
- Ak sa vrátite príliš, jednoducho vyberte
-\family default
- 
+ Ak sa vrátite príliš, jednoducho vyberte 
 \family sans
 Upraviť->Opakovať\InsetSpace ~
 v
@@ -1544,9 +1458,7 @@ r
 \end_layout
 
 \begin_layout Description
-Vystrihnúť/Vložiť/kopírovať Použite
-\family default
- 
+Vystrihnúť/Vložiť/kopírovať Použite 
 \family sans
 \bar under
 U
@@ -1557,9 +1469,7 @@ y
 \bar default
 strihnúť
 \family default
-,
-\family default
- 
+, 
 \family sans
 \bar under
 U
@@ -1570,9 +1480,7 @@ l
 \bar default
 ožiť
 \family default
-,
-\family default
- 
+, 
 \family sans
 \bar under
 U
@@ -1584,9 +1492,7 @@ K
 opírovať
 \family default
 .
- Označený text môžete vložiť automaticky
-\emph default
- 
+ Označený text môžete vložiť automaticky 
 \emph on
 prostredným tlačítkom
 \emph default
@@ -1596,9 +1502,7 @@ myši.
 \end_layout
 
 \begin_layout Description
-Nájsť/Nahradiť Použite
-\family default
- 
+Nájsť/Nahradiť Použite 
 \family sans
 \bar under
 U
@@ -1613,9 +1517,7 @@ Replace
 \family default
  na hľadanie s rozlišovaním veľkých a malých písmen.
  V okne výsledkov hľadajte so šípkamy pre smer dopredu a dozadu a použite
- tlačítko
-\family default
- 
+ tlačítko 
 \family sans
 \bar under
 V
@@ -1629,9 +1531,7 @@ status collapsed
 \begin_layout Standard
 Ak ste skončili okno zatvorte, lebo ho nechajte otvorené, ak vám to viac
  vyhovuje.
- Väčšina okien v LyXe --- vrátane
-\family default
- 
+ Väčšina okien v LyXe --- vrátane 
 \family sans
 \bar under
 F
@@ -1640,9 +1540,7 @@ ind\InsetSpace ~
 &\InsetSpace ~
 Replace
 \family default
-,
-\family default
- 
+, 
 \family sans
 Štruktúra\InsetSpace ~
 
@@ -1651,9 +1549,7 @@ d
 \bar default
 okumentu
 \family default
- a okná
-\family default
- 
+ a okná 
 \family sans
 \bar under
 R
@@ -1661,9 +1557,7 @@ R
 ozloženia
 \family default
 , tak isto aj rôzne matematické okná --- môže byť znížená namiesto zatvorená.
- Niektoré, napríklad
-\family default
- 
+ Niektoré, napríklad 
 \family sans
 \bar under
 S
@@ -1684,21 +1578,17 @@ tvoriť
 
 \begin_layout Description
 Formátovanie\InsetSpace ~
-znakov Môžete
-\emph default
- 
+znakov Môžete 
 \emph on
 zvýrazniť
 \emph default
  
 \emph toggle
 text (čo vo všeobecnosti znamená napísať ho šikmým písmom), napísať ho
-
-\series default
 \emph default
  
-\emph toggle
 \series bold
+\emph toggle
 tučne
 \series default
 , alebo v 
@@ -1707,11 +1597,10 @@ tučne
 \noun toggle
  (obyčajne používaným pre mená osôb).
  To všetko pomocou prepínacích možností v menu
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 \bar under
 R
 \bar default
@@ -1723,15 +1612,11 @@ ozloženie
 \begin_layout Description
 Nástrojová\InsetSpace ~
 lišta Sú na nej tlačítka (hneď pod menu), ktoré vám dovoľujú urobiť
- niektoré používanejšie funkcie, napríklad
-\family default
- 
+ niektoré používanejšie funkcie, napríklad 
 \family sans
 Vložiť
 \family default
- a
-\family default
- 
+ a 
 \family sans
 Tlačiť
 \family default
@@ -1752,40 +1637,33 @@ WYSIWYM: Priestor v LyXe
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec: priestor"
+
 \end_inset
 
 Jedna z najťažších vecí, na ktorú si majú nový užívatelia LyXu zvyknúť,
  je ako LyX zaobchádza s dokumentom.
- Nezáleží na tm koľkokrát stlačíte
-\family default
- 
+ Nezáleží na tm koľkokrát stlačíte 
 \family sans
 Enter
 \family default
-, alebo
-\family default
- 
+, alebo 
 \family sans
 Medzeru
 \family default
 , vždy dostanete len jeden prázdny riadok, alebo jednu medzeru.
  Na prázdnom riadku vám LyX nedovolí napísať ani jednu medzeru.
- Klávesa
-\family default
- 
+ Klávesa 
 \family sans
 Tab
 \family default
- vás neposunie dopredu o jeden tabulátor, pretože
-\emph default
- 
+ vás neposunie dopredu o jeden tabulátor, pretože 
 \emph on
 žiadne
 \emph default
  
 \emph toggle
-tabulátory nie sú! Nie je ani žiadne pravítko na vrchu stránky, ktorým
- by ste mohli nastaviť tabulátory alebo okraje.
+tabulátory nie sú! Nie je ani žiadne pravítko na vrchu stránky, ktorým by
+ ste mohli nastaviť tabulátory alebo okraje.
 \end_layout
 
 \begin_layout Standard
@@ -1803,9 +1681,7 @@ What You See Is What You Get - To, čo vidíš dostaneš
 \begin_inset Quotes gld
 \end_inset
 
-What You See Is What You
-\emph default
- 
+What You See Is What You 
 \emph on
 Mean
 \emph default
@@ -1819,42 +1695,36 @@ Mean
  Napíšete čo chcete, a LyX sa za vás postará o formát dokumentu tak, aby
  výstup vyzeral pekne.
 
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Enter
 \family default
 \emph default
  
 \emph toggle
-\family default
 gramaticky oddeľuje odseky a
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Medzera
 \family default
 \emph default
  
 \emph toggle
-\family default
 gramaticky oddeľuje slová, takže nie je dôvod mať ich viac za sebou.
 
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Tabulátor
 \family default
 \emph default
  
 \emph toggle
-\family default
 nemá žiadny gramaticky význam, takže LyX ho nepodporuje.
  Používaním LyXu strávite viac času staraním sa o
 \emph default
@@ -1874,6 +1744,7 @@ formátovaním
  Pozrite s časť 
 \begin_inset LatexCommand ref
 reference "sec: čo-je-lyx"
+
 \end_inset
 
  pre viac informácií o koncepte WYSIWYM.
@@ -1881,9 +1752,7 @@ reference "sec: čo-je-lyx"
 
 \begin_layout Standard
 LyX má (veľa) spôsoby ako si jemne doladiť formátovanie dokumentu.
- Nakoniec, ani LyX nemusí vysádzať
-\emph default
- 
+ Nakoniec, ani LyX nemusí vysádzať 
 \emph on
 presne
 \emph default
@@ -1898,17 +1767,15 @@ Užívateľskej príručke
 \emph toggle
 .
  Zahrňuje
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 HFills
 \family default
 \emph default
  
 \emph toggle
-\family default
 a vertikálne medzery --- ktoré sú silnejšie a univerzálnejšie ako viacero
  medzier alebo prázdnych riadkov --- a spôsoby, ako zmeniť veľkoť písma,
  štýl znakov a zarovnanie odsekov.
@@ -1924,9 +1791,7 @@ Prostredia
 
 \begin_layout Standard
 Rôzne časti dokumentu majú rôzne účely.
- Tieto časti voláme
-\emph default
- 
+ Tieto časti voláme 
 \emph on
 prostredia
 \emph toggle
@@ -1964,9 +1829,7 @@ What You See Is What You Mean
 \family sans
 Menu prostredí
 \family default
- je v ľavej časti lišty (hneď pod menu
-\family default
- 
+ je v ľavej časti lišty (hneď pod menu 
 \family sans
 \bar under
 S
@@ -1986,9 +1849,7 @@ Standard
 , čo je štandardné prostredie pre text.
  Teraz skúste použiť niekoľko prostredí vo vašom dokumente, aby ste zistili
  akopracujú.
- Urobíte tak pomocou
-\family default
- 
+ Urobíte tak pomocou 
 \family sans
 Menu prostredí
 \family default
@@ -2000,15 +1861,11 @@ Sekcie a podsekcie
 \end_layout
 
 \begin_layout Standard
-Napíšte slovo
-\family default
- 
+Napíšte slovo 
 \family typewriter
 Úvod
 \family default
- na prvý riadok v dokumente a vyberte prostredie
-\family default
- 
+ na prvý riadok v dokumente a vyberte prostredie 
 \family sans
 Section
 \begin_inset Foot
@@ -2040,9 +1897,7 @@ Nemusíte označiť riadok.
 \family typewriter
 dvi
 \family default
-, alebo vytlačenom dokumente.) teraz stlačte
-\family default
- 
+, alebo vytlačenom dokumente.) teraz stlačte 
 \family sans
 Enter
 \family default
@@ -2057,9 +1912,7 @@ Standard
 
 .
  Nadpisy sekcií, ako aj niektoré ďalšie prostredia, sa považujú za ukončené
- pri stlačení
-\family default
- 
+ pri stlačení 
 \family sans
 Enteru
 \family default
@@ -2069,41 +1922,35 @@ Enteru
 status collapsed
 
 \begin_layout Standard
-Pozrite si
-\emph default
- 
+Pozrite si 
 \emph on
 Užívateľskú príručku
 \emph toggle
 , ak chcete vedieť ako napísať nadpisy s dvoma a viac riadkami.
  Prostredie
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Standard
 \family default
 \emph default
  
 \emph toggle
-\family default
 samozrejme môže pokračovať ďalej niekoľko odsekov.
  Rôzne prostredia zoznamov (viď nižšie) tiež nekončia stlačením
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Enteru
 \family default
 .
  V akom prostredí práve pracujete, zistíte pozrením sa na
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Menu prostredí
 \family default
 .
@@ -2119,15 +1966,11 @@ Toto je úvod môjho prvého dokumentu v LyXe.
 \end_layout
 
 \begin_layout Standard
-Znova stlačte
-\family default
- 
+Znova stlačte 
 \family sans
 Enter
 \family default
- a zase vyberte prostredie
-\family default
- 
+ a zase vyberte prostredie 
 \family sans
 Section
 \family default
@@ -2141,9 +1984,7 @@ Section
 \end_inset
 
  a vy napíšete názov.
- Napíšte
-\family default
- 
+ Napíšte 
 \family typewriter
 Ďalšie veci
 \family default
@@ -2160,14 +2001,11 @@ môj prvý dokument v LyXe
 \begin_inset Quotes grd
 \end_inset
 
-) a stlačte
-\family default
- 
+) a stlačte 
 \family sans
 Enter a znova vyberte prostredie
 \family default
- 
-Section
+ Section
 \family sans
 .
  LyX znovu napíše 
@@ -2203,15 +2041,11 @@ O tomto dokumente
 \end_layout
 
 \begin_layout Standard
-Stlačte znova
-\family default
- 
+Stlačte znova 
 \family sans
 Enter
 \family default
- aby ste sa vrátili do prostredia
-\family default
- 
+ aby ste sa vrátili do prostredia 
 \family sans
 Standard
 \family default
@@ -2239,9 +2073,7 @@ Podsekcie sú menšie ako sekcie.
 \end_layout
 
 \begin_layout Standard
-Kliknite na druhý riadok a vyberte prostredie
-\family default
- 
+Kliknite na druhý riadok a vyberte prostredie 
 \family sans
 Subsection
 \family default
@@ -2287,21 +2119,15 @@ Subsection
 \end_layout
 
 \begin_layout Standard
-Ďalšie úrovne členenia sekcií sú
-\family default
- 
+Ďalšie úrovne členenia sekcií sú 
 \family sans
 Subsubsection
 \family default
-,
-\family default
- 
+, 
 \family sans
 Paragraph
 \family default
- a
-\family default
- 
+ a 
 \family sans
 SubParagraph
 \family default
@@ -2309,25 +2135,23 @@ SubParagraph
  Ich vyskúšanie necháme na vás.
  Možte si všimnúť, že paragraph a subparagraph nie sú automaticky číslované,
  a že subparagraph je odsadený.
- Ak to chcete zmeniť, pozritesa do
-\emph default
- 
+ Ak to chcete zmeniť, pozritesa do 
 \emph on
 Užívateľskej príručky
 \emph toggle
 .
  Najvyššou úrovňou sekcií sú kapitoly (prostredie
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Chapter
 \family default
 ), ale ich použitie je dovolené len v niektorých typoch (textclass) dokumentov
  (pozri časť 
 \begin_inset LatexCommand ref
 reference "sec: textclasses"
+
 \end_inset
 
 ).
@@ -2336,9 +2160,7 @@ reference "sec: textclasses"
 \begin_layout Standard
 Nakoniec môžte chcieť mať sekcie a podsekcie, ktoré nie sú číslované.
  Aj na toto sú prostredia.
- Ak zmeníte prostredie niektorého nadpisu na
-\family default
- 
+ Ak zmeníte prostredie niektorého nadpisu na 
 \family sans
 Section*
 \family default
@@ -2364,23 +2186,17 @@ hviezdižkové
 Cvičenie:
 \family default
 \series default
- Opravte hlavičky sekcií a podsekcií v súbore
-\family default
- 
+ Opravte hlavičky sekcií a podsekcií v súbore 
 \family typewriter
 example_raw.lyx
 \family default
 .
- Nájdete ho v adresári
-\family default
- 
+ Nájdete ho v adresári 
 \family typewriter
 examples/
 \family default
 .
- Použite príkaz
-\family default
- 
+ Použite príkaz 
 \family sans
 \bar under
 S
@@ -2405,9 +2221,7 @@ LyX má niekoľko rôznych prostredí pre písanie zoznamov.
 \end_layout
 
 \begin_layout Itemize
-Prezentácia na fólii môže využiť značkové prostredie
-\family default
- 
+Prezentácia na fólii môže využiť značkové prostredie 
 \family sans
 Itemize
 \family default
@@ -2415,9 +2229,7 @@ Itemize
 \end_layout
 
 \begin_layout Itemize
-Návrh by využil číslované prostredie
-\family default
- 
+Návrh by využil číslované prostredie 
 \family sans
 Enumerate
 \family default
@@ -2425,9 +2237,7 @@ Enumerate
 \end_layout
 
 \begin_layout Itemize
-Dokument popisujúci rôzne balíky softvéru by mohol použiť prostredie
-\family default
- 
+Dokument popisujúci rôzne balíky softvéru by mohol použiť prostredie 
 \family sans
 Description
 \family default
@@ -2435,15 +2245,11 @@ Description
 \end_layout
 
 \begin_layout Itemize
-Prostredie
-\family default
- 
+Prostredie 
 \family sans
 List
 \family default
- --- nenachádzajúce sa v LaTeXe --- je trochu odlišné od
-\family default
- 
+ --- nenachádzajúce sa v LaTeXe --- je trochu odlišné od 
 \family sans
 Description
 \family default
@@ -2463,9 +2269,7 @@ LyX je lepší ako iné textové procesoty, pretože:
 
 \begin_layout Standard
 a stlačte Enter.
- Teraz vyberte prostredie
-\family default
- 
+ Teraz vyberte prostredie 
 \family sans
 Itemize
 \family default
@@ -2488,9 +2292,7 @@ Je veľmi ľahké vytvátať zoznamy!
 \end_layout
 
 \begin_layout Standard
-Prostredia zoznamov, nie ako lavičky sekcií, nekončia stlačením
-\family default
- 
+Prostredia zoznamov, nie ako lavičky sekcií, nekončia stlačením 
 \family sans
 Enteru
 \family default
@@ -2498,16 +2300,12 @@ Enteru
  LyX predpokladá, že budete písať ďalšiu položku zoznamu.
  Riadky hore preto budú tvoriť zoznam s tromi položkami.
  Ak chcete použiť viac ako jeden odsek vrámci jednej položky zoznamu, použijete
-
-\family default
  
 \family sans
 Chránený\InsetSpace ~
 Enter
 \family default
-, stlačením
-\family default
- 
+, stlačením 
 \family sans
 Ctrl+Enter
 \family default
@@ -2519,9 +2317,7 @@ von
 \begin_inset Quotes grd
 \end_inset
 
- zo zoznamu, musíte znova nastaviť prostredie
-\family default
- 
+ zo zoznamu, musíte znova nastaviť prostredie 
 \family sans
 Standard
 \family default
@@ -2538,9 +2334,7 @@ Máte pekný značkový zoznam.
 status collapsed
 
 \begin_layout Standard
-LyX vám nedovolí označiť prvú značku, kým neoznačíte aj odsek
-\emph default
- 
+LyX vám nedovolí označiť prvú značku, kým neoznačíte aj odsek 
 \emph on
 pred
 \emph default
@@ -2560,23 +2354,17 @@ zoznamom, čo asi nie je to, čo chcete.
 
 \begin_layout Standard
 Pokiaľ je zoznam stále označený, môžete vyskúšať ďalšie druhy zoznamov,
-
-\family default
  
 \family sans
 Description
 \family default
- a
-\family default
- 
+ a 
 \family sans
 List
 \family default
 .
  Pre tieto dve prostredia, každá položka sa skladá z názvu, ktorým je prvé
  slovo, a za ním nasleduje definícia, ktorú tvorí zvyšok odseku (kým nestlačíte
-
-\family default
  
 \family sans
 Enter
@@ -2610,16 +2398,12 @@ Ale sádzacím tabulátorom, ktorý sa zmení tak, aby stačil veľkosťou pre n
 List
 \family default
 ) od zvyšku odseku.
- Ak chcete mať v názve viac ako jedno slovo, oddeľte ich
-\family default
- 
+ Ak chcete mať v názve viac ako jedno slovo, oddeľte ich 
 \family sans
 Chránenými\InsetSpace ~
 medzerami
 \family default
-, ktoré sa vkladajú
-\family default
- 
+, ktoré sa vkladajú 
 \family sans
 Ctrl+medzera
 \family default
@@ -2639,9 +2423,7 @@ u
 \series bold
 Cvičenie:
 \series default
- Napíšte zoznam v
-\family default
- 
+ Napíšte zoznam v 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -2651,9 +2433,7 @@ Listy môžu byť vnorené všetkými možnými spôsobmi.
  Bežný príklad je písanie návrhu.
  Číslované a značkované zoznamy budú mať rôzne číslovanie a značky pre podzoznam
 y.
- Pozrite si
-\emph default
- 
+ Pozrite si 
 \emph on
 Užívateľskú príručku
 \emph default
@@ -2667,45 +2447,35 @@ a rôzne príklady, ktoré používajú vnorené listy.
 \end_layout
 
 \begin_layout Standard
-Sú dve prostrdia pre vysádzaie citátov oddelených od okolitého textu:
-\family default
- 
+Sú dve prostrdia pre vysádzaie citátov oddelených od okolitého textu: 
 \family sans
 Quote
 \family default
- pre krátke a
-\family default
- 
+ pre krátke a 
 \family sans
 Quotation
 \family default
  pre dlhšie citáty.
- Zdrojový kód progrmu (prostredie
-\family default
- 
+ Zdrojový kód progrmu (prostredie 
 \family sans
 LyX-Code
 \family default
-, v
-\emph default
- 
+, v 
 \emph on
 Sprievodcovi
 \emph default
  
 \emph toggle
 tiež používané na dlhšie príklady) je písaný písmom
-\family default
 \emph default
  
-\emph toggle
 \family typewriter
+\emph toggle
 písacieho stroja
 \family default
 \emph default
  
 \emph toggle
-\family default
 - toto prostredie je v LyXe jediné, kde sú povolené viaceré medzery, aby
  bolo možné kód zarovnať.
  Môžete dokonca písať poéziu
@@ -2719,21 +2489,15 @@ s predpokladom, že ste na to dosť kreatívny.
 
 \end_inset
 
- použítím prostredia
-\family default
- 
+ použítím prostredia 
 \family sans
 Verse
 \family default
- a používaním
-\family default
- 
+ a používaním 
 \family sans
 Enteru
 \family default
- na oddeľovanie strôf a
-\family default
- 
+ na oddeľovanie strôf a 
 \family sans
 Ctrl+Enter
 \family default
@@ -2752,27 +2516,19 @@ Užívateľskej príručke
 \series bold
 Cvičenie:
 \series default
- Správne naformátujte
-\family default
- 
+ Správne naformátujte 
 \family sans
 Quote
 \family default
-,
-\family default
- 
+, 
 \family sans
 LyX-Code
 \family default
- a
-\family default
- 
+ a 
 \family sans
 Verse
 \family default
- v
-\family default
- 
+ v 
 \family typewriter
 example_raw.lyx
 \family default
@@ -2802,6 +2558,7 @@ Triedy dokumentov a šablóny: písanie listov
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec: textclasses"
+
 \end_inset
 
 Rôzne typy dokumentov by mali byť rôane vysáďzané.
@@ -2810,8 +2567,6 @@ Rôzne typy dokumentov by mali byť rôane vysáďzané.
  Ďalej veľa dokumentov obsahuje špeciálne prostredia: listy obsahujú prostredia,
  ako adresa odosielateľa, ktoré v článkoch a knihách nedávajú zmysel.
  O tieto veľké rozdiely medzi rôanymi typmi dokumentov sa v LyXe starajú
-
-\emph default
  
 \emph on
 triedy dokumentov
@@ -2825,9 +2580,7 @@ textclass
 status collapsed
 
 \begin_layout Standard
-Pre používateľov LaTeXu: je to ekvivalentné LaTeXovým
-\emph default
- 
+Pre používateľov LaTeXu: je to ekvivalentné LaTeXovým 
 \emph on
 documentclass
 \end_layout
@@ -2840,11 +2593,10 @@ documentclass
  
 \emph toggle
 bol napríklad napísaný v triede dokumentu
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 Book
 \family default
 .
@@ -2853,18 +2605,14 @@ Book
 \end_layout
 
 \begin_layout Standard
-Váš dokument je pravdepodobne napísaný v triede
-\emph default
- 
+Váš dokument je pravdepodobne napísaný v triede 
 \emph on
 Article
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-To je obyčajne predvolená trieda, aj keď to môžete zmeniť v súbore
-\family default
- 
+To je obyčajne predvolená trieda, aj keď to môžete zmeniť v súbore 
 \family sans
 lyxrc
 \family default
@@ -2874,17 +2622,12 @@ lyxrc
 \end_inset
 
 .
- Skúste ju zmeniť na nejakú inú (použitím položky
-\family default
- 
+ Skúste ju zmeniť na nejakú inú (použitím položky 
 \family sans
 Trieda
 \family default
-, v menu
-\family default
- 
+, v menu 
 \family sans
-
 \bar under
 R
 \bar default
@@ -2895,16 +2638,12 @@ D
 okument
 \family default
 ), aby ste videli rozdiely vo vysádzaní.
- Ak zmeníte triedu na
-\family default
- 
+ Ak zmeníte triedu na 
 \family sans
 Book
 \family default
  a pozriete sa do menu prostredí, zistíte, že väčšina prostredí ostala rovnaká.
- Avšak pribudlo prostredie
-\family default
- 
+ Avšak pribudlo prostredie 
 \family sans
 Chapter
 \family default
@@ -2933,9 +2672,7 @@ Veľkosť písma, jeden, alebo dvojstĺpcová tlač a titulky strán, sú niekto
 
 \begin_layout Standard
 Tu je veľmi stručný prehľad niektorých tried.
- Ako obyčajne, pre viac informácií sa pozrite do
-\emph default
- 
+ Ako obyčajne, pre viac informácií sa pozrite do 
 \emph on
 Užívateľskej príručky
 \emph toggle
@@ -3116,28 +2853,20 @@ veľa extra prostredí pre adresy, podpisy\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-Jedna z najpopulárnejších tried je
-\family default
- 
+Jedna z najpopulárnejších tried je 
 \family sans
 Letter
 \family default
  (list).
- Jedna z možností ako napísať list je otvoríť Nový súbor a vybrať
-\family default
- 
+ Jedna z možností ako napísať list je otvoríť Nový súbor a vybrať 
 \family sans
 Letter
 \family default
- z menu
-\family default
- 
+ z menu 
 \family sans
 Trieda
 \family default
- v okne
-\family default
- 
+ v okne 
 \family sans
 \bar under
 R
@@ -3153,9 +2882,7 @@ okument
  naviac.
  Vždy keď píšete obchodný list, chcete tam mať svoju adresu, adresu komu
  list opsielate, telo listu, podpis, atď.
- Preto má LyX na listy
-\emph default
- 
+ Preto má LyX na listy 
 \emph on
 šablónu
 \emph toggle
@@ -3165,9 +2892,7 @@ okument
 \end_layout
 
 \begin_layout Standard
-Otvorte nový súbor príkazom
-\family default
- 
+Otvorte nový súbor príkazom 
 \family sans
 \bar under
 S
@@ -3181,9 +2906,7 @@ a
 blóny
 \family default
 .
- Potom, čo súbor pomenujete, vyberte
-\family default
- 
+ Potom, čo súbor pomenujete, vyberte 
 \family typewriter
 latex_letter.lyx
 \family default
@@ -3192,31 +2915,23 @@ latex_letter.lyx
 \end_layout
 
 \begin_layout Standard
-V menu prostredí nájdete niekoľko prostredí, ako napríklad
-\family default
- 
+V menu prostredí nájdete niekoľko prostredí, ako napríklad 
 \family sans
 My\InsetSpace ~
 Address
 \family default
 , ktoré vo väčšine ostatných triedach neexistujú.
- Iné, napríklad
-\family default
- 
+ Iné, napríklad 
 \family sans
 Quote
 \family default
- a
-\family default
- 
+ a 
 \family sans
 Description
 \family default
  sú bežné.
  Môžete si vyskúšať, ako rôzne prostredia pracujú.
- Všimnete si napríklad, že prosrtedie
-\family default
- 
+ Všimnete si napríklad, že prosrtedie 
 \family sans
 Signature
 \family default
@@ -3232,17 +2947,13 @@ Signature:
  Toto slovo sa v liste nezobrazí, čo si všimnete, keď súbor vytlačíte.
  Je tam preto, aby ste vedeli, kde podpis bude.
  Taktiež si všimnite, že nezáleží na tom, kde v súbore sa nachádza riadok
-
-\family default
  
 \family sans
 Signature
 \family default
 .
  Spomínajte.
- LyX je WYSIWYM: prostredie
-\family default
- 
+ LyX je WYSIWYM: prostredie 
 \family sans
 Signature
 \family default
@@ -3264,8 +2975,6 @@ status collapsed
 \begin_layout Standard
 Ešte jedno varovanie, keď píšete zo šablóny.
  Ak vymažete celý text z prostredia ­­­ napríklad, keď vymažete celé pole
-
-\family default
  
 \family sans
 My\InsetSpace ~
@@ -3292,15 +3001,11 @@ LyX (ako LaTeX) považuje titulnú stranu ­­­ ktorá môže obsahovať názov
 \end_layout
 
 \begin_layout Standard
-Vráťte sa k vášmu dokumentu
-\family default
- 
+Vráťte sa k vášmu dokumentu 
 \family typewriter
 newfile.lyx
 \family default
- a uistite sa, že je triedy
-\family default
- 
+ a uistite sa, že je triedy 
 \family sans
 Article
 \family default
@@ -3314,30 +3019,22 @@ Už by ste nameli používať triedu Letter, pretože nepodporuje titulné trán
 
 \end_inset
 
- Napíšte názov na prvý riadok, a prostredie zmeňte na
-\family default
- 
+ Napíšte názov na prvý riadok, a prostredie zmeňte na 
 \family sans
 Title
 \family default
 .
- Na ďalšom riadku nastavte prostredie
-\family default
- 
+ Na ďalšom riadku nastavte prostredie 
 \family sans
 Author
 \family default
  a napíšte svoje meno.
- Na ďalší riadok napíšte dátum a zvoľte prostredie
-\family default
- 
+ Na ďalší riadok napíšte dátum a zvoľte prostredie 
 \family sans
 Date
 \family default
 .
  Napíšte odsek alebo dva, ktoré popisujú váš dokument a nastavte im prostredie
-
-\family default
  
 \family sans
 Abstract
@@ -3361,6 +3058,7 @@ Návestia a krosreferencie
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec: návestia"
+
 \end_inset
 
 Sekciu (alebo podsekciu, alebo zriedkavo len nejakú časť textu) môžete v
@@ -3388,9 +3086,7 @@ O tomto dokumente
 \end_inset
 
 .
- Kliknite na koniec riadku názvu sekcie a vyberte príkaz
-\family default
- 
+ Kliknite na koniec riadku názvu sekcie a vyberte príkaz 
 \family sans
 \bar under
 V
@@ -3403,17 +3099,13 @@ N
 \family default
 .
  Okno sa vás spýta na názov návestia.
- Napíšte
-\family default
- 
+ Napíšte 
 \family typewriter
 sec:odokumente
 \family default
 , čo sa zdá byť dosť dobrý názov, ktorý si nebudete mýliť s inými názvami,
  ktoré možno pridáte.
- Keď stlačíte
-\family default
- 
+ Keď stlačíte 
 \family sans
 OK
 \family default
@@ -3432,8 +3124,6 @@ Mimochodom.
 
 \begin_layout Standard
 Doposiaľ ste nič neurobili.
-
-\family default
  
 \family sans
 Dvi
@@ -3458,9 +3148,7 @@ Ak chcete vedieť viac o tomto dokumente, potom si pozrite sekciu , ktorá
 \end_layout
 
 \begin_layout Standard
-Teraz ­­­ s kurzorom nastavným za slovom sekciu ­­­ vyberte
-\family default
- 
+Teraz ­­­ s kurzorom nastavným za slovom sekciu ­­­ vyberte 
 \family sans
 \bar under
 V
@@ -3472,9 +3160,7 @@ r
 eferencia
 \family default
 .
- Objaví sa okno
-\family default
- 
+ Objaví sa okno 
 \family sans
 Vložiť\InsetSpace ~
 krosreferenciu
@@ -3490,9 +3176,7 @@ sec:odokumente
 \end_inset
 
 .
- Označte ju (môže byť štandardne označená) a stlačte
-\family default
- 
+ Označte ju (môže byť štandardne označená) a stlačte 
 \family sans
 Vložiť\InsetSpace ~
 referenciu
@@ -3506,9 +3190,7 @@ stránke
 \begin_inset Quotes grd
 \end_inset
 
- a stlačte
-\family default
- 
+ a stlačte 
 \family sans
 Vložiť\InsetSpace ~
 číslo\InsetSpace ~
@@ -3520,17 +3202,13 @@ strany
 \begin_layout Standard
 LyX umiestní referencie ako obdĺžniky na mieste, kde sa nachádzal kurzor.
  Vo vytlačenom dokumente budú tieto značky referencií nahradené buď číslom
- strany, alebo sekcie (podľa toho, čo ste zvolili v okne
-\family default
- 
+ strany, alebo sekcie (podľa toho, čo ste zvolili v okne 
 \family sans
 Vložiť\InsetSpace ~
 krosreferenciu
 \family default
 ).
- Stačí si tiež opzrieť
-\family default
- 
+ Stačí si tiež opzrieť 
 \family sans
 dvi
 \family default
@@ -3566,9 +3244,7 @@ O tomto dokumente
 \series bold
 Cvičenie:
 \series default
- Opravte referencie v
-\family default
- 
+ Opravte referencie v 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3578,9 +3254,7 @@ Poznámky pod čiarou a na okraji
 \end_layout
 
 \begin_layout Standard
-Poznámky pod čiarou sa pridávajú tlačítkom
-\family default
- 
+Poznámky pod čiarou sa pridávajú tlačítkom 
 \family sans
 Vložiť\InsetSpace ~
 poznámku\InsetSpace ~
@@ -3598,9 +3272,7 @@ Tlačítko zobrazuje šípku ukazujúcu na červený text, ktorý je pod nejaký
 
 \end_inset
 
-, alebo príkazom
-\family default
- 
+, alebo príkazom 
 \family sans
 \bar under
 V
@@ -3622,9 +3294,7 @@ LyX
 \begin_inset Quotes grd
 \end_inset
 
- niekde v dokumente a stlačte
-\family default
- 
+ niekde v dokumente a stlačte 
 \family sans
 Vložiť\InsetSpace ~
 poznámku\InsetSpace ~
@@ -3696,9 +3366,7 @@ foot
 \begin_layout Standard
 Možno sa čudujete prečo značka je slovo a nie číslo.
  Odpoveďou je, že o číslovanie poznámok vo vytlačenom texte sa stará LyX.
- Môžete si to pozrieť v súbore
-\family default
- 
+ Môžete si to pozrieť v súbore 
 \family typewriter
 dvi
 \family default
@@ -3721,9 +3389,7 @@ Môže byť ľahšie označiť ju klávesnicou.
 
 \end_inset
 
- a
-\family default
- 
+ a 
 \family sans
 V
 \bar under
@@ -3731,9 +3397,7 @@ y
 \bar default
 strihnúť
 \family default
- ju a
-\family default
- 
+ ju a 
 \family sans
 V
 \bar under
@@ -3747,9 +3411,7 @@ ožiť
 \end_layout
 
 \begin_layout Standard
-Poznámky na okraj sa pridávajú tlačítkom
-\family default
- 
+Poznámky na okraj sa pridávajú tlačítkom 
 \family sans
 Vložiť\InsetSpace ~
 poznámku\InsetSpace ~
@@ -3765,9 +3427,7 @@ Tlačítko zobrazuje šípku ukazujúcu na červený text vedľa (na okraji) či
 
 \end_inset
 
-, alebo príkazom
-\bar default
- 
+, alebo príkazom 
 \bar under
 V
 \bar default
@@ -3826,9 +3486,7 @@ Zmeňte poznámku pod čiarou na text a následne ju zmeňte na poznámku na okr
 \series bold
 Cvičenie:
 \series default
- Upravte poznámky pod čiarou v
-\family default
- 
+ Upravte poznámky pod čiarou v 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3840,6 +3498,7 @@ Citácie
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec: citácie"
+
 \end_inset
 
 Citácie sú podobné krosreferenciám.
@@ -3852,17 +3511,13 @@ Citácie sú podobné krosreferenciám.
 \begin_layout Standard
 Choďte na koniec dokumentu a nastavte prostredie Bibliography.
  Teraz každý odsek ktorý napíšete bude referencia.
- Ako prvú referenciu napíšte
-\family default
- 
+ Ako prvú referenciu napíšte 
 \family typewriter
 Sprievodca programom LyX
 \family default
 .
  Všimnite si, že LyX automaticky vložil číslo v obdĺžniku pred každú referenciu.
- kliknite na toto číslo a zobrazí sa vám okienko
-\family default
- 
+ kliknite na toto číslo a zobrazí sa vám okienko 
 \family sans
 BibTeX
 \family default
@@ -3882,9 +3537,7 @@ lyxsprievodca
 
 \begin_layout Standard
 Teraz kliknite niekde v dokumente, kde chcete vložiť odkaz.
- Urobte tak príkazom
-\family default
- 
+ Urobte tak príkazom 
 \family sans
 \bar under
 V
@@ -3898,17 +3551,13 @@ u
 \bar default
 .
  LyX zobrazí šedý obdĺžnik s tromi otáznikmi v hranatých zátvorkách a zobrazí
- sa okienko
-\family default
- 
+ sa okienko 
 \family sans
 Vložiť\InsetSpace ~
 citáciu
 \family default
 .
- Prvá položka sa znovu nazýva
-\family default
- 
+ Prvá položka sa znovu nazýva 
 \family sans
 Kľúč
 \family default
@@ -3938,9 +3587,7 @@ lyxsprievodca
 \end_layout
 
 \begin_layout Standard
-Na čo sa používajú ďalšie položky? Pole Návestie v okienku
-\family default
- 
+Na čo sa používajú ďalšie položky? Pole Návestie v okienku 
 \family sans
 BibTeX
 \family default
@@ -3954,9 +3601,7 @@ Smi95
 \end_inset
 
  bude odkaz na knihu napísanú Smithom v roku 1995).
- Ako obyčajne kvôli detailom sa pozrite do
-\emph default
- 
+ Ako obyčajne kvôli detailom sa pozrite do 
 \emph on
 Užívateľskej príručky
 \emph toggle
@@ -3968,9 +3613,7 @@ Užívateľskej príručky
 \series bold
 Cvičenie:
 \series default
- Upravte citácie v
-\family default
- 
+ Upravte citácie v 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3983,9 +3626,7 @@ Obsah
 Možno by ste chceli na začiatok dokumentu vložiť obsah.
  S LyXom sa to dá veľmi jednoducho.
  Len stlačte Enter za názvom dokumentu a pred prvým názvom sekcie a vyberte
- príkaz
-\family default
- 
+ príkaz 
 \family sans
 \bar under
 V
@@ -4016,26 +3657,20 @@ Obsah
 
 \begin_layout Standard
 Nemusí sa vám to zdať veľmi užitočné.
- Avšak, ak si pozriete
-\family default
- 
+ Avšak, ak si pozriete 
 \family typewriter
 dvi
 \family default
  dokument, zistíte, že obsah bol skutočne vygenerovaný a zobrazuje rôzne
  sekcie a podsekcie vášho dokumentu.
  AKo obyčajne, keď zmeníte poradie jednotlivých častí, zmeny sa prejavia
- po aktualizovaní
-\family default
- 
+ po aktualizovaní 
 \family typewriter
 dvi
 \family default
  súboru.
  Obsah sa nezobrazí na obrazovke v LyXe, pretože aj tak ho nemôžete editovať.
- Môžete ho zobraziť v samostatnom okne príkazom
-\family default
- 
+ Môžete ho zobraziť v samostatnom okne príkazom 
 \family sans
 \bar under
 U
@@ -4066,9 +3701,7 @@ Ak sa chcete zbaviť obsahu, stačí vymazať jeho značku, jednoducho ako akýk
 \series bold
 Cvičenie:
 \series default
- Upravte obsah v
-\family default
- 
+ Upravte obsah v 
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -4092,9 +3725,7 @@ LaTeX používa veľa vedcov, pretože produkuje veľmi dobre vyzerajúce rovnic
 status collapsed
 
 \begin_layout Standard
-LyX nemôže skontrolovať, či vzorec, ktorý ste práve napísali je
-\emph default
- 
+LyX nemôže skontrolovať, či vzorec, ktorý ste práve napísali je 
 \emph on
 správny
 \emph toggle
@@ -4144,20 +3775,17 @@ Matematika sa píše v Matematickom režime.
 
 .
  LyX otvorí malý modrý štvorček, s rúžovým obdĺžnikom okolo neho.
- Modrý štvorček je
-\emph default
- 
+ Modrý štvorček je 
 \emph on
 vkladací bod
 \emph toggle
 , ktorý hovorí, že matematický editor čaká na váš, že niečo napíšete, a
  rúžový obdĺžnik hovorí, že ste v matematickom režime.
  LyX umiestnil kurzor do modrého štvorčeku, tak len znovu napíšte
-\family default
 \emph default
  
-\emph toggle
 \family typewriter
+\emph toggle
 E=mc^2
 \family default
 .
@@ -4180,9 +3808,7 @@ mat.
 \end_layout
 
 \begin_layout Standard
-Spustite LaTeX a pozrite si
-\family default
- 
+Spustite LaTeX a pozrite si 
 \family typewriter
 dvi
 \family default
@@ -4213,9 +3839,7 @@ bugov
  O profesionálne vysádzanie sa postará LaTeX.
  V 99% nebudete musieť robiť žiadne zmeny vo veľkostiach písem, alebo v
  medzerách.
- Takto (prepáčte, že sa opakujeme) sa môžte zamerať na
-\emph default
- 
+ Takto (prepáčte, že sa opakujeme) sa môžte zamerať na 
 \emph on
 obsah
 \emph default
@@ -4250,9 +3874,7 @@ Teraz zmeňme
 \end_inset
 
 .
- Znovu použite šípky alebo
-\family default
- 
+ Znovu použite šípky alebo 
 \family sans
 Esc
 \family default
@@ -4264,22 +3886,16 @@ Esc
 \begin_layout Standard
 Okrem špeciálnych klávesov popísaných nižšie, písanie v matematickom režime
  je ako písanie obyčajného textu.
- Používajte
-\family default
- 
+ Používajte 
 \family sans
 Delete
 \family default
- (alebo
-\family default
- 
+ (alebo 
 \family sans
 Backspace
 \family default
 ) na vymazávanie znakov.
  Označujte text s klávesami alebo myšou.
-
-\family default
  
 \family sans
 \bar under
@@ -4294,15 +3910,11 @@ späť
 \family default
  funguje v matemtickom režime, rovnako ako vystrihovanie a vkladanie.
  Ale na jednu vec si dávajte pozor: ak ste tesne vedľa výrazu a stlačíte
-
-\family default
  
 \family sans
 Delete
 \family default
- (alebo
-\family default
- 
+ (alebo 
 \family sans
 Backspace
 \family default
@@ -4336,9 +3948,7 @@ c
 \begin_inset Quotes grd
 \end_inset
 
-, stlačením klávesy
-\family default
- 
+, stlačením klávesy 
 \family sans
 Up
 \family default
@@ -4360,22 +3970,16 @@ Up
 \end_inset
 
 .
- Teraz stlačením klávesy
-\family default
- 
+ Teraz stlačením klávesy 
 \family sans
 Down
 \family default
  (šípka nadol), presunie kurzor naspäť na bežnú úroveň.
- V podstate, ak stlačíte
-\family default
- 
+ V podstate, ak stlačíte 
 \family sans
 Down
 \family default
- hocikde v hornom indexe, kurzor sa nastaví tesne
-\emph default
- 
+ hocikde v hornom indexe, kurzor sa nastaví tesne 
 \emph on
 za
 \emph default
@@ -4393,24 +3997,18 @@ daný horný index (potom môžete napísať
 \end_layout
 
 \begin_layout Standard
-Na pohyb vo výraze tiež môžete použiť
-\family default
- 
+Na pohyb vo výraze tiež môžete použiť 
 \family sans
 Medzeru
 \family default
 .
  Ak ste práve v matematickej štruktúre (horný/dolný index, zlomok, odmocnina,
- matica, všetky ktoré sú popísané v nasledujúcej sekcii), stlačením
-\family default
- 
+ matica, všetky ktoré sú popísané v nasledujúcej sekcii), stlačením 
 \family sans
 Medzery
 \family default
  presuniete kurzor za danú štruktúru, ale ostanete v matematiskom režime.
- Takže, keď je kurzor v hornom indexe, sltačením
-\family default
- 
+ Takže, keď je kurzor v hornom indexe, sltačením 
 \family sans
 Medzery
 \family default
@@ -4421,9 +4019,7 @@ Medzery
 
  bez používania myši alebo kurzorových šípok, spôsobom, ktorý budete pravdepodob
 ne preferovať, keď budete mať viac skúseností.
- Buďte opatrný, aby ste nestlačili
-\family default
- 
+ Buďte opatrný, aby ste nestlačili 
 \family sans
 Medzeru
 \family default
@@ -4444,9 +4040,7 @@ c
 \begin_inset Quotes grd
 \end_inset
 
-),
-\family default
- 
+), 
 \family sans
 Medzera
 \family default
@@ -4455,9 +4049,7 @@ Medzera
 status collapsed
 
 \begin_layout Standard
-Medzery a tabulátory sa
-\series default
- 
+Medzery a tabulátory sa 
 \series bold
 nepoužívajú
 \series default
@@ -4466,12 +4058,11 @@ nepoužívajú
  postarať LyX (LaTeX) (pozri sekciu 
 \begin_inset LatexCommand ref
 reference "sec: priestor"
+
 \end_inset
 
 ).
- Ak nie ste celkom spokojný, v
-\emph default
- 
+ Ak nie ste celkom spokojný, v 
 \emph on
 Užívateľskej príručke
 \emph default
@@ -4486,17 +4077,13 @@ si pozrite spôsoby ako jemne doladiť medzery.
 \end_layout
 
 \begin_layout Standard
-Všimnite si, že keď napíšete výraz a ukončíte ho
-\family default
- 
+Všimnite si, že keď napíšete výraz a ukončíte ho 
 \family sans
 Esc
 \family default
 , na ním nebude žiadna medzera.
  Je to dobré ak chcete za ním napísať bodku alebo čiarku.
- Ale ak chcete za ním napísať slovo, musíte explicitne stlačiť
-\family default
- 
+ Ale ak chcete za ním napísať slovo, musíte explicitne stlačiť 
 \family sans
 Medzeru
 \family default
@@ -4572,9 +4159,7 @@ _
 \series bold
 Cvičenie:
 \series default
- Prepíšte výraz 1 v
-\family default
- 
+ Prepíšte výraz 1 v 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4663,9 +4248,7 @@ Zdôraznenie znaku (
 \end_inset
 
 ) sa robí tak isto.
- Stlačte tlačítko
-\family default
- 
+ Stlačte tlačítko 
 \family sans
 Dekorácia
 \family default
@@ -4673,9 +4256,7 @@ Dekorácia
  Otvorí sa okno dekorácií.
  Stlačne na požadovanej dekorácií a LyX ju zobrazí s vkladacím bodom pod
  ňou.
- Napíšte čo potrebujete a stlačte
-\family default
- 
+ Napíšte čo potrebujete a stlačte 
 \family sans
 Medzeru
 \family default
@@ -4686,9 +4267,7 @@ Medzeru
 Oddeľovače a zátvorky pracujú podobne, ale sú trošku komplikovanejšie.
  Stlačte tlačítko oddeľovačov, ktoré má nakreslený modrý štvorček v hranatých
  zátvorkách, a objaví sa okno oddeľovačov.
- Kliknite na ľavý oddeľovač
-\emph default
- 
+ Kliknite na ľavý oddeľovač 
 \emph on
 ľavým myšítkom
 \emph default
@@ -4723,9 +4302,7 @@ pravým myšítkom
 \end_layout
 
 \begin_layout Standard
-Ak máte nastavené oddeľovače, stlačte tlačítko
-\family default
- 
+Ak máte nastavené oddeľovače, stlačte tlačítko 
 \family sans
 OK
 \family default
@@ -4791,9 +4368,7 @@ Zlomky sú v matematickom editore jednoduché.
 \series bold
 Cvičenie:
 \series default
- Preveďte výraz 2 v
-\family default
- 
+ Preveďte výraz 2 v 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4889,9 +4464,7 @@ sin
 \begin_inset Quotes grd
 \end_inset
 
- v menu
-\family default
- 
+ v menu 
 \family sans
 Funkcie
 \family default
@@ -4905,9 +4478,7 @@ sin
 \end_inset
 
  je napísané červeným normálnym písmom, tiež známym ako režim TeX.
- Celé slovo je považované za jeden symbol, takže keď stlačíte
-\family default
- 
+ Celé slovo je považované za jeden symbol, takže keď stlačíte 
 \family sans
 Backspace
 \family default
@@ -4921,9 +4492,7 @@ x
 \end_inset
 
 , ktoré bude napísané kurzívou, ako iste očakávate v matematickom editore.
- V súbore
-\family default
- 
+ V súbore 
 \family typewriter
 dvi
 \family default
@@ -4932,9 +4501,7 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Ďalšie príkazy, písané v režime TeX použitím tlačítka
-\family default
- 
+Ďalšie príkazy, písané v režime TeX použitím tlačítka 
 \family sans
 Funkcie
 \family default
@@ -4968,9 +4535,7 @@ Funkcie
 \end_layout
 
 \begin_layout Standard
-Cvičenie: Preveďte rovnicu 3 v
-\family default
- 
+Cvičenie: Preveďte rovnicu 3 v 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4984,26 +4549,21 @@ Matice
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec: matice"
+
 \end_inset
 
-Kliknite na tlačítko
-\family default
- 
+Kliknite na tlačítko 
 \family sans
 Matica
 \family default
  na matematickom paneli.
- Zobrazí sa okno
-\family default
- 
+ Zobrazí sa okno 
 \family sans
 Matica
 \family default
 , ktoré má dve posúvacie lišty, ktorými určíte koľko riadkov a stĺpcov má
  matica mať.
- Nastavte 2 riadky a 3 stĺpce a stlačte
-\family default
- 
+ Nastavte 2 riadky a 3 stĺpce a stlačte 
 \family sans
 OK
 \family default
@@ -5027,9 +4587,7 @@ Tabulátor
 \end_layout
 
 \begin_layout Standard
-V
-\emph default
- 
+V 
 \emph on
 Užívateľskej príručke
 \emph default
@@ -5053,9 +4611,7 @@ Všetky výrazy, ktoré sme doteraz napísali boli na rovnakom riadku ako text
  výraz, alebo chcete aby výraz bol mimo textu, potrebujete ho napísať v
  režime rovnice.
  Okrem toho len takto napísané výrazy môžu byť označkované a očíslované
- (pozri
-\emph default
- 
+ (pozri 
 \emph on
 Užívateľskú príručku
 \emph toggle
@@ -5063,15 +4619,14 @@ Užívateľskú príručku
  
 \begin_inset LatexCommand ref
 reference "sec: multiline"
+
 \end_inset
 
 ) musia byť napísané v režime rovnice.
 \end_layout
 
 \begin_layout Standard
-Kliknite na tlačítko
-\family default
- 
+Kliknite na tlačítko 
 \family sans
 Rovnica
 \family default
@@ -5117,9 +4672,7 @@ Rovnicové a inline výrazy sú si ináč veľmi podobné.
 \begin_layout Standard
 Ešte jedna poznámka o spôsobe vysádzania rovnicových výrazov: dajte si pozor,
  či vkladáte výraz do nového odseku alebo nie.
- Ak váš výraz je uprostred vety, nestláčajte
-\family default
- 
+ Ak váš výraz je uprostred vety, nestláčajte 
 \family sans
 Enter
 \family default
@@ -5132,9 +4685,7 @@ Enter
 \series bold
 Cvičenie:
 \series default
- Preveďte rôzne výrazy v
-\family default
- 
+ Preveďte rôzne výrazy v 
 \family typewriter
 example_raw.lyx
 \family default
@@ -5166,6 +4717,7 @@ Viacriadkové výrazy
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec: multiline"
+
 \end_inset
 
 Pokúste sa napísať nasledujúce rovnice a pozrite si výsledok v dvi súbore.
@@ -5208,9 +4760,7 @@ x & = & y+y+y+y+y\\
 \end_layout
 
 \begin_layout Standard
-Toto vyzerá
-\emph default
- 
+Toto vyzerá 
 \emph on
 oveľa
 \emph default
@@ -5221,8 +4771,6 @@ lepšie! Znamianka rovná sa sú zarovnané a medzi rovnicami je menšia medzera
 
 \begin_layout Standard
 Keď chcete písať viacriadkový výraz, spustite matematický editor a stlačte
-
-\family default
  
 \family sans
 C-Enter
@@ -5252,39 +4800,32 @@ LyX rovnice zarovná tak, aby druhé (prostredné) vkladacie body boli nad
  
 \begin_inset LatexCommand ref
 reference "sec: matice"
+
 \end_inset
 
 ).
 \end_layout
 
 \begin_layout Standard
-Ak chcete ešte dlhšiu množinu rovníc, stlačte znovu
-\family default
- 
+Ak chcete ešte dlhšiu množinu rovníc, stlačte znovu 
 \family sans
 C-Enter
 \family default
  a dostanete nový riadok.
  Ak nie ste na konci riadku keď to robíte, zvyšok riadku bude prenesený
  do nového riadku.
- Ak stlačíte
-\family default
- 
+ Ak stlačíte 
 \family sans
 C-Enter
 \family default
  ak ste už napísali (jednoriadkovú) rovnicu, celá rovnica ostane v prvom
  vkladacom bode.
- Umiestnite kurzor pred znamienko rovná sa a stlačte
-\family default
- 
+ Umiestnite kurzor pred znamienko rovná sa a stlačte 
 \family sans
 C-Tab
 \family default
 , aby sa posunulo do druhého bodu.
- Potom sa presuňte za rovná sa a znovu stlačte
-\family default
- 
+ Potom sa presuňte za rovná sa a znovu stlačte 
 \family sans
 C-Tab
 \family default
@@ -5305,8 +4846,6 @@ E & = & mc^{2}\\
 
 \begin_layout Standard
 Ak ste napísali príliš veľa riadkov, dajte kurzor na koniec riadku a použite
-
-\family default
  
 \family sans
 M-e\InsetSpace ~
@@ -5316,9 +4855,7 @@ k
  Vymaže to koiec riadku a spojí (všetky tri časti) nasledujúceho riadku
  na koniec aktuálneho.
  Ak nasledujúci riadok je prázdny, jednoducho ho zruší.
- Upozornenie: použitie
-\family default
- 
+ Upozornenie: použitie 
 \family sans
 M-e\InsetSpace ~
 k
@@ -5332,9 +4869,7 @@ k
 
 \begin_layout Standard
 Matematický editor dokáže oveľa viac.
- Teraz, keď ste sa oboznámili so základmi, odkážeme vás len na
-\emph default
- 
+ Teraz, keď ste sa oboznámili so základmi, odkážeme vás len na 
 \emph on
 Užívateľskú príručku
 \emph toggle
@@ -5368,9 +4903,7 @@ Písanie makier.
 \end_layout
 
 \begin_layout Itemize
-Robiť veľa vecí o ktorých sme sa nezmenili v tomto
-\emph default
- 
+Robiť veľa vecí o ktorých sme sa nezmenili v tomto 
 \emph on
 Sprievodcovi
 \emph toggle
@@ -5387,9 +4920,7 @@ Rôzne
 
 \begin_layout Standard
 Nepredstavili sme vám všetky možné príkazy LyXu a ani to neplánujeme.
- Ako obyčajne je tu
-\emph default
- 
+ Ako obyčajne je tu 
 \emph on
 Užívateľská príručka
 \emph toggle
@@ -5407,9 +4938,7 @@ Referenčnej príručke
 
 \begin_layout Itemize
 LyX má WYSIWYG podporu pre tabuľky.
- Na vloženie tabuľky je príkaz
-\family default
- 
+ Na vloženie tabuľky je príkaz 
 \family sans
 \bar under
 V
@@ -5421,9 +4950,7 @@ T
 abuľka
 \family default
 .
- Kliknite na tabuľke s
-\emph default
- 
+ Kliknite na tabuľke s 
 \emph on
 pravým myšítkom
 \emph default
@@ -5435,9 +4962,7 @@ a zobrazí sa vám menu, ktoré umožňuje meniť parametre tabuľky.
 \begin_layout Itemize
 LyX tiež podporuje vkladanie PostScriptových (alebo čisto LaTeXových) obrázkov
  do dokumentu.
- (Uhádli ste:
-\family default
- 
+ (Uhádli ste: 
 \family sans
 \bar under
 V
@@ -5455,9 +4980,7 @@ brázok
 \end_layout
 
 \begin_layout Itemize
-Je podporovaná správa verzií, použitím RCS (pre info si spustite
-\family default
- 
+Je podporovaná správa verzií, použitím RCS (pre info si spustite 
 \family typewriter
 man rcsinfo
 \family default
@@ -5468,9 +4991,7 @@ man rcsinfo
 LyX je veľmi konfigurovateľný.
  Všetko, od toho ako vyzerá okno LyXu, až po to aký je výstup sa dá nakonfigurov
 ať viacerými spôsobmi.
- Pomoc pri tomto získate príkazom
-\family default
- 
+ Pomoc pri tomto získate príkazom 
 \family sans
 \bar under
 P
@@ -5493,9 +5014,7 @@ LyX vyvíja tím programátorov na piatich kontinentoch.
 \end_layout
 
 \begin_layout Itemize
-Skontrolujte si pravopis s
-\family default
- 
+Skontrolujte si pravopis s 
 \family sans
 \bar under
 U
@@ -5526,9 +5045,7 @@ LyX pre používateľov LaTeXu
 
 \begin_layout Standard
 Ak neviete nič o LaTeXe, nemusíte túto sekciu čítať.
- Ale môžete chcieť
-\emph default
- 
+ Ale môžete chcieť 
 \emph on
 naučiť
 \emph default
@@ -5548,9 +5065,7 @@ sa niečo o LaTeXe, tak potom si túto sekciu prečítajte.
 \begin_layout Standard
 Pretože toto je len sprievodca, iba spomenieme veci, o ktoré sa budú väčšinou
  zaujímať nový užívatelia LyXu.
- V záujme udržania
-\emph default
- 
+ V záujme udržania 
 \emph on
 Sprievodcu
 \emph default
@@ -5576,9 +5091,7 @@ Režim TeX
 \begin_layout Standard
 Všetko čo vložíte v režime TeX, bude odovzdané priamo LaTeXu a bude zobrazené
  červeným písmom.
- TeX režim spustíte príkazom
-\family default
- 
+ TeX režim spustíte príkazom 
 \family sans
 \bar under
 R
@@ -5600,9 +5113,7 @@ V matematickom režime sa TeX režim správa trochu inak.
  znaku, ako napríklad číslo, podtržítko alebo zátvorky.
  Keď opustíte režim TeX, ak LyX spozná príkaz ktorý ste napísali, prevedie
  ho na WYSIWYM.
- Takže keď v matematike napíšete
-\family default
- 
+ Takže keď v matematike napíšete 
 \family typewriter
 
 \backslash
@@ -5630,9 +5141,7 @@ gamma
 
 .
  Toto funguje takmer na všetky nekomplikované matematické makrá (tiež si
- všimnite, že funkcie ako
-\family default
- 
+ všimnite, že funkcie ako 
 \family typewriter
 
 \backslash
@@ -5646,8 +5155,6 @@ sin
 \begin_layout Standard
 V špeciálnom prípade, keď napíšete zloženú zátvorku, v TeX režime v matematike,
  Matematický editor zobrazí počiatočnú a koncovú zátvorku červenú, potom
-
-\emph default
  
 \emph on
 zruší
@@ -5665,9 +5172,7 @@ LyX nedokáže urobiť absolútne všetko čo LaTeX.
  Režim TeX dovoľuje užívateľovi získať plnú flexibilitu LaTeXu pri ostatných
  črtách LyXu, ako napríklad WYSIWYM matematika, tabuľky a editovanie.
  LyX by nemohol podporovať všetky balíky LaTeXu.
- Ale napísaním
-\family default
- 
+ Ale napísaním 
 \family typewriter
 
 \backslash
@@ -5676,6 +5181,7 @@ usepacage[foo]
  v preamble (pozri sekciu 
 \begin_inset LatexCommand ref
 reference "sec: preamble"
+
 \end_inset
 
 ), môžte použiť balík aký chcete (samozrejme nebudete mať WYSIWYM podporu
@@ -5683,29 +5189,80 @@ reference "sec: preamble"
 \end_layout
 
 \begin_layout Subsection
-Konvertovanie LaTeXových dokumentov do LyXu
+Konvertovanie LaTeXových dokumentov do LyXu -- tex2lyx
 \end_layout
 
 \begin_layout Standard
-Nanešťastie toto nefunguje dobre v LyXe verzie 0.12.
- LyX Team garantuje, že od verzie 0.14 budú súbry LyXu podmnožinou LaTeXu,
- takže jednoduchým príkazom menu budete môcť vložiť celý LaTeX dokument
- do dokumentu LyXu.
- Vyvíja sa Perl program nazvaný
-\family default
- 
-\family typewriter
-reLyX
-\family default
-, na preklad LaTeXových súborov do LyXu.
- Program a inštrukcie o jeho použití nájdete v distribúcii LyXu pod adresárom
 
+\lang english
+\begin_inset LatexCommand label
+name "sec:tex2lyx"
+
+\end_inset
+
+You can import a LaTeX file into LyX by using the 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar \menuseparator
+
+\bar under
+I
+\bar default
+mport\SpecialChar \menuseparator
+
+\bar under
+L
+\bar default
+aTeX
 \family default
- 
+ command in LyX.
+ This will call 
 \family typewriter
-development/reLyX
+tex2lyx
 \family default
-.
+ which will create a file 
+\family typewriter
+foo.lyx
+\family default
+ from the file 
+\family typewriter
+foo.tex
+\family default
+ --- and then open that file.
+ If the translation doesn't work, you can try calling 
+\family typewriter
+tex2lyx
+\family default
+ from the command line, possibly using fancier options.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\lang english
+tex2lyx
+\family default
+ will translate most legal LaTeX, but not everything.
+ It will leave things it doesn't understand in TeX mode, so after translating
+ a file with 
+\family typewriter
+tex2lyx
+\family default
+, you can look for red text and hand-edit it to look right.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\lang english
+tex2lyx
+\family default
+ has its own manpage.
+ Read it to find out about which LaTeX commands and environments aren't
+ supported, bugs (and how to get around them), and how to use the various
+ options.
 \end_layout
 
 \begin_layout Subsection
@@ -5715,9 +5272,7 @@ Konvertovanie LyXových dokumentov do LaTeXu
 \begin_layout Standard
 Môžete chcieť konvertovať LyX dokument do LaTeXu.
  Napríklad spolupracovník a spoluautor, ktorý nemá LyX si ho chce prečítať.
- Toto je v LyXe veľmi jednoduché:
-\family default
- 
+ Toto je v LyXe veľmi jednoduché: 
 \family sans
 \bar under
 S
@@ -5734,15 +5289,11 @@ L
 aTeX
 \family default
 .
- Príkaz vytvorí súbor
-\family default
- 
+ Príkaz vytvorí súbor 
 \family typewriter
 meno.tex
 \family default
- z editovaného súboru
-\family default
- 
+ z editovaného súboru 
 \family typewriter
 meno.lyx
 \family default
@@ -5760,9 +5311,7 @@ Trieda dokumentu
 \end_layout
 
 \begin_layout Standard
-Okno
-\family default
- 
+Okno 
 \family sans
 \bar under
 R
@@ -5773,9 +5322,7 @@ D
 \bar default
 okument
 \family default
- sa stará o veľa vlastností, ktoré by ste napísali do príkazu
-\family default
- 
+ sa stará o veľa vlastností, ktoré by ste napísali do príkazu 
 \family typewriter
 
 \backslash
@@ -5783,9 +5330,7 @@ documentclass
 \family default
 .
  Mení sa tu trieda, štandardná veľkosť písma a papiera.
- Ďalšie extra vlastnosti môžete pridať do poľa
-\family default
- 
+ Ďalšie extra vlastnosti môžete pridať do poľa 
 \family sans
 Extra\InsetSpace ~
 parametre
@@ -5800,13 +5345,12 @@ parametre
 \begin_layout Standard
 \begin_inset LatexCommand label
 name "sec: preamble"
+
 \end_inset
 
 Ak chcete do preambuly LaTeXového súboru vložiť ďalšie príkazy, môžete to
  urobyť aj v dokumente LyXu.
- Vyberte
-\family default
- 
+ Vyberte 
 \family sans
 \bar under
 R
@@ -5829,15 +5373,11 @@ BibTeX
 \begin_layout Standard
 LyX má dobrú, ale nie úplnú podporu BiBTeXu, ktorý vám umožňuje vytvárať
  databázy bibliografických referencií, pre použitie vo viacerých dokumentoch.
- Na vloženie
-\family default
- 
+ Na vloženie 
 \family typewriter
 bib
 \family default
- súboru vyberte
-\family default
- 
+ súboru vyberte 
 \family sans
 \bar under
 V
@@ -5856,37 +5396,27 @@ ibTeX\InsetSpace ~
 referencia
 \family default
  .
- Kliknite na vytvorený obdĺžnik a zobrazí sa vám okienko
-\family default
- 
+ Kliknite na vytvorený obdĺžnik a zobrazí sa vám okienko 
 \family sans
 BibTeX
 \family default
 .
- Do poľa
-\family default
- 
+ Do poľa 
 \family sans
 Databáza
 \family default
- napíšte to, čo by ste napísali do zátvoriek príkazu
-\family default
- 
+ napíšte to, čo by ste napísali do zátvoriek príkazu 
 \family typewriter
 
 \backslash
 bibliography{}
 \family default
 .
- Do poľa
-\family default
- 
+ Do poľa 
 \family sans
 Štýl
 \family default
- napíšte to, čo by ste napísali so zátvoriek príkazu
-\family default
- 
+ napíšte to, čo by ste napísali so zátvoriek príkazu 
 \family typewriter
 
 \backslash
@@ -5897,9 +5427,7 @@ bibliographystyle{}
 
 \begin_layout Standard
 Potom, čo to urobíte, môžete používať citáty z ľubovoľnej bibliografie,
- použitím príkazu
-\family default
- 
+ použitím príkazu 
 \family sans
 \bar under
 V
@@ -5914,26 +5442,21 @@ u
  (pozri sekciu 
 \begin_inset LatexCommand ref
 reference "sec: citácie"
+
 \end_inset
 
 ).
  O spustenie BibTeXu sa postará LyX.
  Dôvod prečo hovoríme, že LyX nemá plnú podporu je, že LyX nedokáže vytvárať
-
-\family default
  
 \family typewriter
 bib
 \family default
- súbory a vy nebudete mať zoznam všetkých referencií z
-\family default
- 
+ súbory a vy nebudete mať zoznam všetkých referencií z 
 \family typewriter
 bib
 \family default
- súboru v okienku
-\family default
- 
+ súboru v okienku 
 \family sans
 Vložiť\InsetSpace ~
 citáciu
@@ -5946,9 +5469,7 @@ Rôzne
 \end_layout
 
 \begin_layout Standard
-Vložte chránenú medzeru s
-\family default
- 
+Vložte chránenú medzeru s 
 \family sans
 C-Medzera
 \family default
@@ -5962,9 +5483,7 @@ u
 \end_inset
 
 .
- V tomto
-\emph default
- 
+ V tomto 
 \emph on
 Sprievodcovi
 \emph default
@@ -5973,11 +5492,10 @@ Sprievodcovi
 ich je veľa.
  Ďalšie špeciálne znaky (trojbodka, zalomenie riadku, bod rozdelenia) sú
  v menu
-\family default
 \emph default
  
-\emph toggle
 \family sans
+\emph toggle
 \bar under
 V
 \bar default
