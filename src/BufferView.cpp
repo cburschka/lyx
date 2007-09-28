@@ -1440,28 +1440,31 @@ void BufferView::updateMetrics(bool singlepar)
 	pit_type const bottom_pit = cursor_.bottom().pit();
 	// If the paragraph metrics has changed, we can not
 	// use the singlepar optimisation.
-	if (singlepar
+	if (singlepar) {
+		int old_height = tm.parMetrics(bottom_pit).height();
 		// In Single Paragraph mode, rebreak only
 		// the (main text, not inset!) paragraph containing the cursor.
 		// (if this paragraph contains insets etc., rebreaking will
 		// recursively descend)
-		&& !tm.redoParagraph(bottom_pit)) {
-
-		updateOffsetRef();
-		// collect cursor paragraph iter bounds
-		ParagraphMetrics const & pm = tm.parMetrics(bottom_pit);
-		int y1 = pm.position() - pm.ascent();
-		int y2 = pm.position() + pm.descent();
-		metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
-			SingleParUpdate, npit);
-		LYXERR(Debug::PAINTING)
-			<< BOOST_CURRENT_FUNCTION
-			<< "\ny1: " << y1
-			<< " y2: " << y2
-			<< " pit: " << bottom_pit
-			<< " singlepar: " << singlepar
-			<< endl;
-		return;
+		tm.redoParagraph(bottom_pit);
+		ParagraphMetrics const & pm = tm.parMetrics(bottom_pit);		
+		if (pm.height() == old_height) {
+			// Paragraph height has not changed so we can proceed to
+			// the singlePar optimisation.
+			updateOffsetRef();
+			int y1 = pm.position() - pm.ascent();
+			int y2 = pm.position() + pm.descent();
+			metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
+				SingleParUpdate, npit);
+			LYXERR(Debug::PAINTING)
+				<< BOOST_CURRENT_FUNCTION
+				<< "\ny1: " << y1
+				<< " y2: " << y2
+				<< " pit: " << bottom_pit
+				<< " singlepar: " << singlepar
+				<< endl;
+			return;
+		}
 	}
 
 	pit_type const pit = anchor_ref_;
