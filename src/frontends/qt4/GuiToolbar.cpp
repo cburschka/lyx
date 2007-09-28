@@ -59,6 +59,12 @@ static TextClass const & textClass(LyXView const & lv)
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// GuiLayoutBox
+//
+/////////////////////////////////////////////////////////////////////
+
 GuiLayoutBox::GuiLayoutBox(QToolBar * toolbar, GuiViewBase & owner)
 	: owner_(owner)
 {
@@ -68,8 +74,8 @@ GuiLayoutBox::GuiLayoutBox(QToolBar * toolbar, GuiViewBase & owner)
 	combo_->setMinimumWidth(combo_->sizeHint().width());
 	combo_->setMaxVisibleItems(100);
 
-	QObject::connect(combo_, SIGNAL(activated(const QString &)),
-			 this, SLOT(selected(const QString &)));
+	QObject::connect(combo_, SIGNAL(activated(QString)),
+			 this, SLOT(selected(QString)));
 
 	toolbar->addWidget(combo_);
 }
@@ -102,7 +108,6 @@ void GuiLayoutBox::update()
 	TextClass const & tc = textClass(owner_);
 
 	combo_->setUpdatesEnabled(false);
-
 	combo_->clear();
 
 	TextClass::const_iterator it = tc.begin();
@@ -152,8 +157,17 @@ void GuiLayoutBox::selected(const QString & str)
 }
 
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// GuiToolbar
+//
+/////////////////////////////////////////////////////////////////////
+
+
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiViewBase & owner)
-	: QToolBar(qt_(tbinfo.gui_name), &owner), command_buffer_(0), owner_(owner)
+	: QToolBar(qt_(tbinfo.gui_name), &owner), owner_(owner),
+	  layout_(0), command_buffer_(0)
 {
 	// give visual separation between adjacent toolbars
 	addSeparator();
@@ -175,6 +189,15 @@ void GuiToolbar::focusCommandBuffer()
 }
 
 
+Action * GuiToolbar::addItem(ToolbarItem const & item)
+{
+	Action * act = new Action(owner_, getIcon(item.func_, false),
+	                          item.label_, item.func_, item.label_);
+	actions_.append(act);
+	return act;
+}
+
+
 void GuiToolbar::add(ToolbarItem const & item)
 {
 	switch (item.type_) {
@@ -182,7 +205,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		addSeparator();
 		break;
 	case ToolbarItem::LAYOUTS:
-		layout_.reset(new GuiLayoutBox(this, owner_));
+		layout_ = new GuiLayoutBox(this, owner_);
 		break;
 	case ToolbarItem::MINIBUFFER:
 		command_buffer_ = new GuiCommandBuffer(&owner_);
@@ -209,8 +232,8 @@ void GuiToolbar::add(ToolbarItem const & item)
 		tb->setToolTip(qt_(to_ascii(item.label_)));
 		tb->setStatusTip(qt_(to_ascii(item.label_)));
 		tb->setText(qt_(to_ascii(item.label_)));
-		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
-			tb, SLOT(setIconSize(const QSize &)));
+		connect(this, SIGNAL(iconSizeChanged(QSize)),
+			tb, SLOT(setIconSize(QSize)));
 		IconPalette * panel = new IconPalette(tb);
 		panel->setWindowTitle(qt_(to_ascii(item.label_)));
 		connect(this, SIGNAL(updated()), panel, SLOT(updateParent()));
@@ -223,13 +246,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		ToolbarInfo::item_iterator const end = tbinfo->items.end();
 		for (; it != end; ++it)
 			if (!getStatus(it->func_).unknown()) {
-				Action * action = new Action(owner_,
-					getIcon(it->func_),
-					it->label_,
-					it->func_,
-					it->label_);
-				panel->addButton(action);
-				actions_.push_back(action);
+				panel->addButton(addItem(*it));
 				// use the icon of first action for the toolbar button
 				if (it == tbinfo->items.begin())
 					tb->setIcon(QPixmap(getIcon(it->func_).c_str()));
@@ -248,8 +265,8 @@ void GuiToolbar::add(ToolbarItem const & item)
 		tb->setText(qt_(to_ascii(item.label_)));
 		FileName icon_path = libFileSearch("images/math", item.name_, "png");
 		tb->setIcon(QIcon(toqstr(icon_path.absFilename())));
-		connect(this, SIGNAL(iconSizeChanged(const QSize &)),
-			tb, SLOT(setIconSize(const QSize &)));
+		connect(this, SIGNAL(iconSizeChanged(QSize)),
+			tb, SLOT(setIconSize(QSize)));
 
 		ButtonMenu * m = new ButtonMenu(qt_(to_ascii(item.label_)), tb);
 		m->setWindowTitle(qt_(to_ascii(item.label_)));
@@ -263,30 +280,15 @@ void GuiToolbar::add(ToolbarItem const & item)
 		ToolbarInfo::item_iterator it = tbinfo->items.begin();
 		ToolbarInfo::item_iterator const end = tbinfo->items.end();
 		for (; it != end; ++it)
-			if (!getStatus(it->func_).unknown()) {
-				Action * action = new Action(owner_,
-					getIcon(it->func_, false),
-					it->label_,
-					it->func_,
-					it->label_);
-				m->add(action);
-				actions_.push_back(action);
-			}
+			if (!getStatus(it->func_).unknown())
+				m->add(addItem(*it));
 		tb->setMenu(m);
 		addWidget(tb);
 		break;
 		}
 	case ToolbarItem::COMMAND: {
-		if (getStatus(item.func_).unknown())
-			break;
-
-		Action * action = new Action(owner_,
-			getIcon(item.func_),
-			item.label_,
-			item.func_,
-			item.label_);
-		addAction(action);
-		actions_.push_back(action);
+		if (!getStatus(item.func_).unknown())
+			addAction(addItem(item));
 		break;
 		}
 	default:
@@ -348,7 +350,7 @@ void GuiToolbar::update()
 {
 	// This is a speed bottleneck because this is called on every keypress
 	// and update calls getStatus, which copies the cursor at least two times
-	for (size_t i = 0; i < actions_.size(); ++i)
+	for (int i = 0; i < actions_.size(); ++i)
 		actions_[i]->update();
 
 	// emit signal

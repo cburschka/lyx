@@ -19,11 +19,8 @@
 #include "frontends/Toolbars.h"
 #include "Session.h"
 
+#include <QList>
 #include <QToolBar>
-
-#include <boost/scoped_ptr.hpp>
-
-#include <vector>
 
 class QComboBox;
 
@@ -71,15 +68,13 @@ class GuiToolbar : public QToolBar, public Toolbar
 public:
 	GuiToolbar(ToolbarInfo const &, GuiViewBase &);
 
-	//~GuiToolbar();
-
 	void add(ToolbarItem const & item);
 	void hide(bool);
 	void show(bool);
 	bool isVisible() const;
 	void saveInfo(ToolbarSection::ToolbarInfo & info);
 	void update();
-	LayoutBox * layout() const { return layout_.get(); }
+	LayoutBox * layout() const { return layout_; }
 	///
 	void focusCommandBuffer();
 
@@ -87,12 +82,13 @@ Q_SIGNALS:
 	void updated();
 
 private:
-	GuiCommandBuffer * command_buffer_;
+	Action * addItem(ToolbarItem const & item);
 
-	std::vector<Action *> actions_;
+	QList<Action *> actions_;
 	GuiViewBase & owner_;
 
-	boost::scoped_ptr<GuiLayoutBox> layout_;
+	GuiLayoutBox * layout_;
+	GuiCommandBuffer * command_buffer_;
 };
 
 /// return a full path of an XPM for the given action
