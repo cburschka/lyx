@@ -468,6 +468,12 @@ ile
 
 \begin_layout Section
 Translating LaTeX files into LyX
+\begin_inset LatexCommand label
+name "sec:Translating-LaTeX-files"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -519,7 +525,8 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-If you just want to put a piece of LaTeX code into a LyX file, see Section
+If you just want to put a piece of LaTeX code into a LyX file, see Section\InsetSpace ~
+
 \begin_inset LatexCommand ref
 reference "sec:latexcodes"
 
@@ -13420,7 +13427,7 @@ target "http://publish.aps.org/revtex4/"
 Probably the easiest way to get started is either to import a RevTeX 4 document
  using 
 \family typewriter
-reLyX
+tex2lyx
 \family default
 , or to use the 
 \family sans
@@ -13523,7 +13530,7 @@ status collapsed
 \begin_layout Standard
 In case you're curious, both were included so that 
 \family typewriter
-reLyX
+tex2lyx
 \family default
  would be able to translate both 
 \family typewriter
@@ -14430,18 +14437,17 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-Translating from LaTeX into LyX is performed by a Perl script called reLyX.
+Translating from LaTeX into LyX is performed by a Python script called tex2lyx.
  Although it is a standalone program which can be called from the command
  line, LyX will call it automatically when a LaTeX document is imported.
  See section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:reLyX"
+reference "sec:Translating-LaTeX-files"
 
 \end_inset
 
  for a complete description.
- There are no user tunable parameters for reLyX within LyX.
 \end_layout
 
 \begin_layout Subsection

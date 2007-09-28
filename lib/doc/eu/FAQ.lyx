@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -36,6 +36,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
@@ -75,9 +76,7 @@ Ikusten duzuna esan nahi duzu" (WYSIWYM) ingurunea eskaintzen duen testu-prozesa
 dore bat du, eta software librea da.
  Laguntza gehiagorako, jarri harremanetan LyX-eko erabiltzaile taldearen
  posta-zerrendarekin; hori bai, eskuliburu guztiak irakurri ondoren.
- Posta-zerrenda hau da:
-\family default
- 
+ Posta-zerrenda hau da: 
 \family typewriter
 lyx-users@lists.lyx.org
 \family default
@@ -86,6 +85,7 @@ lyx-users@lists.lyx.org
 
 \begin_layout Standard
 \begin_inset LatexCommand tableofcontents
+
 \end_inset
 
 
@@ -137,15 +137,11 @@ Ia
 Beraz, lerro- eta orri-jauziekin ez duzu inolako arazorik izango.
  Azpiatal zehatz batek zein zenbatzaile duen gogoratu beharrik ez duzu izango.
  Atalen izenburuek zein letra-tipo eta tamaina erabiltzen duten ere ahaztu.
- LyX-i (eta LaTeX-i) esan behar diozun gauzan bakarra da zein
-\emph default
- 
+ LyX-i (eta LaTeX-i) esan behar diozun gauzan bakarra da zein 
 \emph on
 dokumentu-klase
 \emph default
- editatzen ari zaren eta testua dagoen paragrafoa zein
-\emph default
- 
+ editatzen ari zaren eta testua dagoen paragrafoa zein 
 \emph on
 motakoa
 \emph default
@@ -155,19 +151,13 @@ motakoa
  Hala ere, LyX-ek ordenagailuari testua zer den adierazten dio, eta ez nolako
  itxura eduki behar duen.
  Horregatik, LyX testu-prozesadoreak WYSIWYM ("What You See Is What You
-
-\emph default
  
 \emph on
 Mean"
 \emph default
- edo "Ikusten duzuna
-\emph default
- 
+ edo "Ikusten duzuna 
 \emph on
 esan
-\emph default
-
 \emph default
  
 \emph on
@@ -203,6 +193,7 @@ Tesiak (dokumentu batean 260 orrialde, luzeagoak beste fitxategi batzuk
 adibidez, 
 \begin_inset LatexCommand url
 target "http://www.fee.uva.nl/scholar/mdw/leuven/thesis.pdf"
+
 \end_inset
 
 
@@ -238,6 +229,7 @@ Liburuak
 PostgreSQL-ren liburua 
 \begin_inset LatexCommand url
 target "http://www.postgresql.org/docs/awbook.html"
+
 \end_inset
 
  gunean aurki dezakezu.
@@ -301,6 +293,7 @@ Nondik hasiko naiz?
 LyX-ekin zerikusia duena aurkitzeko, lehenbizi joan 
 \begin_inset LatexCommand url
 target "www.lyx.org"
+
 \end_inset
 
  web gunera.
@@ -327,6 +320,7 @@ utoretza
 Beste sarrerako gida bat aurkituko duzu hemen: 
 \begin_inset LatexCommand url
 target "www.bilkent.edu.tr/~robin/lyxguide.pdf"
+
 \end_inset
 
 
@@ -404,6 +398,7 @@ bertsioa
  eskuratzeko, joan gune honetara: 
 \begin_inset LatexCommand url
 target "ftp://ftp.lyx.org/pub/xforms/OpenSource/"
+
 \end_inset
 
 .
@@ -431,6 +426,7 @@ LyX-i buruzkoak interneteko zein gunetan aurki ditzaket?
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.lyx.org"
+
 \end_inset
 
 
@@ -439,6 +435,7 @@ target "www.lyx.org"
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "bugzilla.lyx.org"
+
 \end_inset
 
 , LyX-eko errore bati buruzko txostena bidaltzeko.
@@ -447,6 +444,7 @@ target "bugzilla.lyx.org"
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.devel.lyx.org"
+
 \end_inset
 
 , LyX-en hesteak eta odolkien artean murgiltzea nahi baduzu.
@@ -460,6 +458,7 @@ Ezagutzen diren ispilu-guneak, beste batzuen artean:
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.mx.lyx.org"
+
 \end_inset
 
 
@@ -468,6 +467,7 @@ target "www.mx.lyx.org"
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.no.lyx.org"
+
 \end_inset
 
 
@@ -476,6 +476,7 @@ target "www.no.lyx.org"
 \begin_layout Itemize
 \begin_inset LatexCommand url
 target "www.it.lyx.org"
+
 \end_inset
 
 
@@ -519,6 +520,7 @@ subscribe@lists.lyx.org helbidera, non "lelo" hauetariko bat adierazi nahi
  Xehetasun gehiagorako, ikusi 
 \begin_inset LatexCommand url
 target "http://www.lyx.org/internet/mailing.php3"
+
 \end_inset
 
  gunea.
@@ -540,6 +542,7 @@ Ederto, hi bai hi jatorra! Eta non gorde dituzue?
 Albisteak: 
 \begin_inset LatexCommand url
 target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
+
 \end_inset
 
 
@@ -549,6 +552,7 @@ target "http://www.mail-archive.com/lyx-announce@lists.lyx.org/"
 Erabiltzaileak: 
 \begin_inset LatexCommand url
 target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
+
 \end_inset
 
 
@@ -558,6 +562,7 @@ target "http://www.mail-archive.com/lyx-users@lists.lyx.org/"
 Garapena: 
 \begin_inset LatexCommand url
 target "http://www.mail-archive.com/lyx-devel@lists.lyx.org/"
+
 \end_inset
 
 
@@ -575,7 +580,11 @@ LaTeX fitxategiak irakur/idatz ditzaket?
 Bai horixe.
  LyX-ek dokumentuen irteera sortzeko LaTeX fitxategietara bihurtzen (inprimatzek
 o erabili behar bada) edo esportatzen (gizakiok irakurtzeko bada) ditu.
- reLyX programak, LyX-ekin datorrenak, LaTeX motako fitxategiak LyX formatura
+ 
+\family typewriter
+tex2lyx
+\family default
+ programak, LyX-ekin datorrenak, LaTeX motako fitxategiak LyX formatura
  bihurtzen lan dotorea egiten du.
  Perfektua ez izan arren, zuretzat %95 lantzen du.
 \end_layout
@@ -624,9 +633,7 @@ wvware (www.wvware.com gunean aurkituko duzu, edo azken bertsioa eskuratzeko,
  joan CVS gordeleku-sistemara).
  Garai batean msWordView izena zuen.
  Oso ona, LaTeX/HTML formatua sortzeko balio du.
- Oso konfigurakorra da:
-\family default
- 
+ Oso konfigurakorra da: 
 \family typewriter
 wvLaTeX.xml
 \family default
@@ -754,9 +761,7 @@ make
 make install
 \family default
  (komando hau supererabiltzaile edo root gisa landu beharko duzu, landu
- duzun
-\family default
- 
+ duzun 
 \family typewriter
 configure
 \family default
@@ -782,6 +787,7 @@ Arestiko pakete gehienak aurrekonpilatutako bitar formatuan Linux sistema
 \begin_layout LyX-Code
 \begin_inset LatexCommand url
 target "ftp://ftp.lyx.org/pub/lyx/bin/"
+
 \end_inset
 
 
@@ -794,6 +800,7 @@ Windows-entzako prestatutakoa hemendik jaitsi beharko duzu:
 \begin_layout LyX-Code
 \begin_inset LatexCommand url
 target "http://www.fh-hannover.de/mbau/tim/hentschel/lyx/index.html"
+
 \end_inset
 
 
@@ -839,9 +846,7 @@ txertatu LaTeX kode hau" edo antzeko zerbait agintzen dizugunean, zuk honako
 \end_layout
 
 \begin_layout Enumerate
-Tresna-barrako TeX botoian klikatu, edo
-\family default
- 
+Tresna-barrako TeX botoian klikatu, edo 
 \family sans
 \bar under
 T
@@ -890,9 +895,7 @@ tzultzailearen oharra
 
 \begin_layout Standard
 * ERT beste edozein mugikor bezala tolesta dezakezu; horretarako, klikatu
- dokumentuan txertatu duzun ERT botoiaren gainean edo erabili
-\family default
- 
+ dokumentuan txertatu duzun ERT botoiaren gainean edo erabili 
 \family sans
 \bar under
 E
@@ -905,9 +908,7 @@ m
 \bar default
 ugikorra
 \family default
- menua (lehenespenez
-\family default
- 
+ menua (lehenespenez 
 \family sans
 C-i
 \family default
@@ -915,9 +916,7 @@ C-i
 \end_layout
 
 \begin_layout Standard
-* ERT bat
-\emph default
- 
+* ERT bat 
 \emph on
 lerro-barnean
 \emph default
@@ -953,6 +952,7 @@ Atal honetan maiz egin ohi diren galderei erantzuna aurkitzen saiatuko gara.
  Oso gutxitan egin diren galderak Herbert Voss-ek egindako 
 \begin_inset LatexCommand url
 target "http://www.educat.hu-berlin.de/~voss/lyx"
+
 \end_inset
 
  bilduma ikusgarrian aurkituko dituzu.
@@ -969,15 +969,11 @@ Nola ezabatu titulu azpiko data?
 \end_layout
 
 \begin_layout Standard
-Irtenbiderik egokiena
-\family default
- 
+Irtenbiderik egokiena 
 \family sans
 Dokumentu-ezarpenak
 \family default
- leihoko
-\family default
- 
+ leihoko 
 \family sans
 Hitzaurrea
 \family default
@@ -997,9 +993,7 @@ Itzultzailearen\InsetSpace ~
 oharra
 \emph default
 : beste aukera bat da egilea izena sartzen duzunean, liburu batean adibidez,
- ondorengo lerroan zuriune babestu bat sartu eta hau
-\family default
- 
+ ondorengo lerroan zuriune babestu bat sartu eta hau 
 \family sans
 Data
 \family default
@@ -1056,60 +1050,44 @@ Gauza bera irudi eta taulekin egiterik ba ote?
 \end_layout
 
 \begin_layout Standard
-Ordeztu
-\family default
- 
+Ordeztu 
 \family typewriter
 
 \backslash
 theequation
 \family default
- esaldia
-\family default
- 
+ esaldia 
 \family typewriter
 
 \backslash
 thetable
 \family default
- edo
-\family default
- 
+ edo 
 \family typewriter
 
 \backslash
 thefigure
 \family default
- bategatik; gero ordeztu
-\family default
- 
+ bategatik; gero ordeztu 
 \family typewriter
 equation
 \family default
- hitza
-\family default
- 
+ hitza 
 \family typewriter
 table
 \family default
- edo
-\family default
- 
+ edo 
 \family typewriter
 figure
 \family default
  hitzagatik.
- Ez ahaztu
-\family default
- 
+ Ez ahaztu 
 \family typewriter
 
 \backslash
 @addtoreset
 \family default
- komandoa egokitzea ere, hor ere
-\family default
- 
+ komandoa egokitzea ere, hor ere 
 \family typewriter
 equation
 \family default
@@ -1237,49 +1215,37 @@ Nola finkatu tarte horizontal zehatz bat?
 \end_layout
 
 \begin_layout Standard
-Erabil ditzakezun ERT komando batzuk daude:
-\family default
- 
+Erabil ditzakezun ERT komando batzuk daude: 
 \family typewriter
 
 \backslash
 enspace
 \family default
- (1/2 em),
-\family default
- 
+ (1/2 em), 
 \family typewriter
 
 \backslash
 thinspace
 \family default
- (1/6 em),
-\family default
- 
+ (1/6 em), 
 \family typewriter
 
 \backslash
 negthinspace
 \family default
- (-1/6 em),
-\family default
- 
+ (-1/6 em), 
 \family typewriter
 
 \backslash
 quad
 \family default
- (1 em),
-\family default
- 
+ (1 em), 
 \family typewriter
 
 \backslash
 qquad
 \family default
- (2 em),
-\family default
- 
+ (2 em), 
 \family typewriter
 
 \backslash
@@ -1295,8 +1261,6 @@ luzera
 \end_inset
 
 em" horiek uneko letra-tipoko "m"hizkiaren zabalera da.
-
-\family default
  
 \family typewriter
 
@@ -1304,54 +1268,38 @@ em" horiek uneko letra-tipoko "m"hizkiaren zabalera da.
 hspace
 \family default
  komandoko luzeraren argumentua edozein TeX luzera baliagarria da; unitateak
-
-\family default
  
 \family typewriter
 mm
 \family default
- (milimetroak),
-\family default
- 
+ (milimetroak), 
 \family typewriter
 cm
 \family default
- (zentimetroak),
-\family default
- 
+ (zentimetroak), 
 \family typewriter
 in
 \family default
- (hatzak),
-\family default
- 
+ (hatzak), 
 \family typewriter
 pt
 \family default
- (puntuak = 1/72 hatz),
-\family default
- 
+ (puntuak = 1/72 hatz), 
 \family typewriter
 em
 \family default
- ("m" hizkiaren zabalera), edo
-\family default
- 
+ ("m" hizkiaren zabalera), edo 
 \family typewriter
 ex
 \family default
  ("x" hizkiaren luzera) izan daitezke.
- Adibidez:
-\family default
- 
+ Adibidez: 
 \family typewriter
 
 \backslash
 hspace{1in}
 \family default
-,
-\family default
- 
+, 
 \family typewriter
 
 \backslash
@@ -1365,9 +1313,7 @@ Zer egin zitazioek [1][2][3][6] ordez [1,2,3,6] edo [1-3,6] erakusteko?
 \end_layout
 
 \begin_layout Standard
-Txertatu
-\family default
- 
+Txertatu 
 \family typewriter
 
 \backslash
@@ -1426,9 +1372,7 @@ Nola kokatu dezaket irudi bat nahi dudan lekuan?
 \end_layout
 
 \begin_layout Standard
-Hautatu
-\family default
- 
+Hautatu 
 \family sans
 \bar under
 D
@@ -1441,15 +1385,11 @@ D
 okumentua
 \family default
  menua.
-
-\family default
  
 \family sans
 Diseinua
 \family default
- fitxako
-\family default
- 
+ fitxako 
 \family sans
 Mugikor-kokapena
 \family default
@@ -1516,18 +1456,14 @@ irudia badator, biak, kokapen egokia lortu arte, dokumentuaren
 \end_layout
 
 \begin_layout Standard
-Honen inguruan lan egiteko biderik errazena hau da: txertatu
-\family default
- 
+Honen inguruan lan egiteko biderik errazena hau da: txertatu 
 \family typewriter
 
 \backslash
 clearpage
 \family default
  komandoa dokumentuan orri-jauzia ongi letorkeen leku batean.
- Orri-jauzi batek orrialde berri bat hasten duen bitartean,
-\family default
- 
+ Orri-jauzi batek orrialde berri bat hasten duen bitartean, 
 \family typewriter
 
 \backslash
@@ -1536,9 +1472,7 @@ clearpage
  komandoak ordura arte finkatu gabe dauden mugikor guztiak prozesatu, eta
  gero orrialde berri bat hasten du.
  Honek dokumentu erdian irudi pila bat batera jarri eta dokumentua itsusi
- konposatuko du: beraz, irudiak dokumentuan zehar banatzeko hainbat
-\family default
- 
+ konposatuko du: beraz, irudiak dokumentuan zehar banatzeko hainbat 
 \family typewriter
 
 \backslash
@@ -1617,8 +1551,6 @@ eta egina duzu!
 \begin_layout Standard
 LyX-eko bertsio zaharragoa baduzu, X exekutatzen ari bazina bezalako sintaxia
  erabil dezakezu; horrek LyX leihoa pantailan agertzea dakar.
-
-\family default
  
 \family typewriter
 Xvfb
@@ -1656,9 +1588,7 @@ Nola sortu LyX dokumentuaren PDF fitxategia?
 \end_layout
 
 \begin_layout Standard
-Irakurri
-\emph default
- 
+Irakurri 
 \emph on
 Ezaugarri Hedatuak
 \emph default
@@ -1670,9 +1600,7 @@ Dokumentuaren letra-tipo itsusiak acroread-en?
 \end_layout
 
 \begin_layout Standard
-Arazo hau eta konponbidea
-\emph default
- 
+Arazo hau eta konponbidea 
 \emph on
 Ezaugarri Hedatua
 \emph default
@@ -1702,6 +1630,7 @@ Erabiltzaile batzuek ohartarazi zuten LyX-eko lerro-barneko EPS irudiak
 \begin_layout Standard
 \begin_inset LatexCommand url
 target "http://sourceforge.net/bugs/?func=detailbug&bug_id=124957&group_id=1897"
+
 \end_inset
 
 
@@ -1759,9 +1688,7 @@ Itzultzailearen oharra
 
  , Tutoretza bereziki! Dokumentazioa oso ona da (azken finean zenbait zati
  idazten lagundu bainuen :-).
- Zure arazoa LaTeX-ekin bada, orduan irakurri Leslie Lamport-en
-\emph default
- 
+ Zure arazoa LaTeX-ekin bada, orduan irakurri Leslie Lamport-en 
 \emph on
 LaTeX, A Document Preparation System, 2nd Ed.
  (1994)
@@ -1772,11 +1699,7 @@ LaTeX, A Document Preparation System, 2nd Ed.
 
 \begin_layout Standard
 LyX-ek ere hainbat adibide-fitxategi dakartza.
- Hautatu
-\family sans
-\bar default
-\family default
- 
+ Hautatu 
 \family sans
 \bar under
 F
@@ -1788,11 +1711,7 @@ I
 \bar default
 reki
 \family default
- menua eta klikatu
-\family sans
-\bar default
-\family default
- 
+ menua eta klikatu 
 \family sans
 \bar under
 A
@@ -1845,9 +1764,7 @@ Ohartarazpenei ongi etorria
 \end_layout
 
 \begin_layout Standard
-Idatzi
-\emph default
- 
+Idatzi 
 \emph on
 mike.ressler@alum.mit.edu
 \emph default

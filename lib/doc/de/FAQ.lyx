@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -36,7 +36,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "usti"
+\author "" 
 \end_header
 
 \begin_body
@@ -71,8 +71,8 @@ Peter Sütterlin.
 \end_layout
 
 \begin_layout Date
-7.\InsetSpace ~
-September 2002
+28.\InsetSpace ~
+September 2007
 \end_layout
 
 \begin_layout Abstract
@@ -701,8 +701,12 @@ Kann ich LaTeX Dateien lesen/schreiben?
 Ja.
  LyX kann LaTeX Code sowohl optimiert für menschliche Leser als auch für
  den Computer erzeugen.
- Das Programm reLyX, das Bestandteil des LyX Paketes ist, kann recht gut
- vorhandene LaTeX Dateien nach LyX konvertieren.
+ Das Programm 
+\family typewriter
+tex2lyx
+\family default
+, das Bestandteil des LyX Paketes ist, kann recht gut vorhandene LaTeX Dateien
+ nach LyX konvertieren.
  Es ist zwar nicht perfekt, ist aber in etwa 95% der Fälle erfolgreich.
 \end_layout
 

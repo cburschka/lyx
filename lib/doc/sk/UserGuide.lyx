@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -106,8 +106,8 @@ p\hspace{-0.55em}l
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -20627,37 +20627,62 @@ Preklad LaTeXových súborov do LyXu
 \end_layout
 
 \begin_layout Standard
-Veľa zo začiatočníkov v LyXe je už zoznámená s LaTeXom.
- Obyčajne sa pýtajú, či je možné preložiť LaTeXový súbor do LyXu.
- Odpoveď je 
-\begin_inset Quotes gld
-\end_inset
 
-niektoré druhy
-\begin_inset Quotes grd
-\end_inset
+\lang english
+You can import a LaTeX file into LyX by using the 
+\family sans
+\bar under
+F
+\bar default
+ile\SpecialChar \menuseparator
 
-.
- Prekladač LaTeXu do LyXu nazvaný reLyX sa vyvíja, ktorý skonvertuje LaTeX
- súbor do LyXu, pričom neznáme príkazy a prostredia nechá v prostredí LaTeX.
- Prekladač a inštrukcie ako ho používať nájdete v distribúcii LyXu pod adresárom
- 
-\family typewriter
-development/reLyX
+\bar under
+I
+\bar default
+mport\SpecialChar \menuseparator
+
+\bar under
+L
+\bar default
+aTeX
 \family default
-.
- Aj keď je stále nový a má chyby, veľmi rýchlo sa vyvíja, a môže vám ušetriť
- veľa práce.
+ command in LyX.
+ This will call a program named 
+\family typewriter
+tex2lyx
+\family default
+---which will create a file 
+\family typewriter
+foo.lyx
+\family default
+ from the file 
+\family typewriter
+foo.tex
+\family default
+---and then open that file.
 \end_layout
 
 \begin_layout Standard
-Nové verzie LyXu budú schopné čítať (takmer) obyčajný starý LaTeX.
- Avšak dovtedy vám čas ušetrí reLyX.
+
+\family typewriter
+\lang english
+tex2lyx
+\family default
+ will translate most legal LaTeX, but not everything.
+ It will leave things it doesn't understand in TeX mode, so after translating
+ a file with 
+\family typewriter
+tex2lyx
+\family default
+, you can look for red text and hand-edit it to look right.
 \end_layout
 
 \begin_layout Standard
-Ak nemôžete reLyX prinútiť pacovať, alebo chcete do LyX súboru vložiť len
- časť LaTeXového kódu, pozrite si sekciu 
+
+\lang english
+If you just want to put a piece of LaTeX code into a LyX file, see
+\lang slovak
+ sekciu 
 \begin_inset LatexCommand ref
 reference "sec: latexcodes"
 
