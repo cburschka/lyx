@@ -249,6 +249,9 @@ public:
 	boost::signal<void(docstring layout)> layoutChanged;
 
 private:
+	/// Update current paragraph metrics.
+	/// \return true if no further update is needed.
+	bool singleParUpdate();
 	///
 	bool multiParSel();
 

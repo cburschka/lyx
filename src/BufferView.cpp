@@ -1414,9 +1414,45 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 }
 
 
-// FIXME: We should split-up updateMetrics() for the singlepar case.
+bool BufferView::singleParUpdate()
+{
+	Text & buftext = buffer_.text();
+	pit_type const bottom_pit = cursor_.bottom().pit();
+	TextMetrics & tm = textMetrics(&buftext);
+	int old_height = tm.parMetrics(bottom_pit).height();
+
+	// In Single Paragraph mode, rebreak only
+	// the (main text, not inset!) paragraph containing the cursor.
+	// (if this paragraph contains insets etc., rebreaking will
+	// recursively descend)
+	tm.redoParagraph(bottom_pit);
+	ParagraphMetrics const & pm = tm.parMetrics(bottom_pit);		
+	if (pm.height() != old_height)
+		// Paragraph height has changed so we cannot proceed to
+		// the singlePar optimisation.
+		return false;
+
+	int y1 = pm.position() - pm.ascent();
+	int y2 = pm.position() + pm.descent();
+	metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
+		SingleParUpdate, buftext.paragraphs().size());
+	LYXERR(Debug::PAINTING)
+		<< BOOST_CURRENT_FUNCTION
+		<< "\ny1: " << y1
+		<< " y2: " << y2
+		<< " pit: " << bottom_pit
+		<< " singlepar: 1"
+		<< endl;
+	return true;
+}
+
+
 void BufferView::updateMetrics(bool singlepar)
 {
+	if (singlepar && singleParUpdate())
+		// No need to update the full screen metrics.
+		return;
+
 	Text & buftext = buffer_.text();
 	pit_type const npit = int(buftext.paragraphs().size());
 
@@ -1425,47 +1461,15 @@ void BufferView::updateMetrics(bool singlepar)
 		offset_ref_ = 0;
 	}
 
-	if (!singlepar) {
-		// Clear out the position cache in case of full screen redraw,
-		coord_cache_.clear();
+	// Clear out the position cache in case of full screen redraw,
+	coord_cache_.clear();
 
-		// Clear out paragraph metrics to avoid having invalid metrics
-		// in the cache from paragraphs not relayouted below
-		// The complete text metrics will be redone.
-		text_metrics_.clear();
-	}
+	// Clear out paragraph metrics to avoid having invalid metrics
+	// in the cache from paragraphs not relayouted below
+	// The complete text metrics will be redone.
+	text_metrics_.clear();
 
 	TextMetrics & tm = textMetrics(&buftext);
-
-	pit_type const bottom_pit = cursor_.bottom().pit();
-	// If the paragraph metrics has changed, we can not
-	// use the singlepar optimisation.
-	if (singlepar) {
-		int old_height = tm.parMetrics(bottom_pit).height();
-		// In Single Paragraph mode, rebreak only
-		// the (main text, not inset!) paragraph containing the cursor.
-		// (if this paragraph contains insets etc., rebreaking will
-		// recursively descend)
-		tm.redoParagraph(bottom_pit);
-		ParagraphMetrics const & pm = tm.parMetrics(bottom_pit);		
-		if (pm.height() == old_height) {
-			// Paragraph height has not changed so we can proceed to
-			// the singlePar optimisation.
-			updateOffsetRef();
-			int y1 = pm.position() - pm.ascent();
-			int y2 = pm.position() + pm.descent();
-			metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
-				SingleParUpdate, npit);
-			LYXERR(Debug::PAINTING)
-				<< BOOST_CURRENT_FUNCTION
-				<< "\ny1: " << y1
-				<< " y2: " << y2
-				<< " pit: " << bottom_pit
-				<< " singlepar: " << singlepar
-				<< endl;
-			return;
-		}
-	}
 
 	pit_type const pit = anchor_ref_;
 	int pit1 = pit;
@@ -1474,6 +1478,7 @@ void BufferView::updateMetrics(bool singlepar)
 	// Rebreak anchor paragraph.
 	tm.redoParagraph(pit);
 
+	// Take care of anchor offset if case a recentering is needed.
 	updateOffsetRef();
 
 	int y0 = tm.parMetrics(pit).ascent() - offset_ref_;
@@ -1520,7 +1525,7 @@ void BufferView::updateMetrics(bool singlepar)
 		<< " pit1: " << pit1
 		<< " pit2: " << pit2
 		<< " npit: " << npit
-		<< " singlepar: " << singlepar
+		<< " singlepar: 0"
 		<< endl;
 
 	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2,
