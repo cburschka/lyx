@@ -157,8 +157,8 @@ dnl Note that this will reportedly not be needed with libtool 2.0
 m4_undefine([AC_PROG_F77])
 m4_defun([AC_PROG_F77],[])
 
-#AC_DISABLE_SHARED
-AC_DISABLE_STATIC
+AC_DISABLE_SHARED
+#AC_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL
 #AM_PROG_LIBTOOL
 LYX_PROG_LIBTOOL
