@@ -12934,12 +12934,16 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-Tłumaczenie z LaTeX-a do LyX-a jest dokonywane przez Python za pomocą skryptów
- wywoływanych przez 
+
+\lang english
+Translating from LaTeX into LyX is performed by a converter program called
+ 
 \family typewriter
 tex2lyx
 \family default
 .
+
+\lang polish
  Ponadto jest to samodzielny program, który może być wywoływany z wiersza
  poleceń.
  LyX wywołuje go automatycznie podczas importu pliku LaTeX-a.

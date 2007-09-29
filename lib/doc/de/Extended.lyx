@@ -6148,7 +6148,8 @@ name "Dateiformat!Import!LaTeX"
 \end_layout
 
 \begin_layout Standard
-Die Übersetzung von LaTeX nach LyX geschieht mit dem Perl-Skript 
+Die Übersetzung von LaTeX nach LyX geschieht mit dem Konverter Programm
+ 
 \family typewriter
 tex2lyx
 \family default
@@ -6163,11 +6164,6 @@ reference "sec:LaTeX-Dateien-nach-LyX"
 \end_inset
 
 .
- Innerhalb von LyX kann der Benutzer keine Parameter für 
-\family typewriter
-tex2lyx
-\family default
- übergeben.
 \end_layout
 
 \begin_layout Subsection
