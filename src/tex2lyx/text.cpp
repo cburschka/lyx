@@ -15,6 +15,7 @@
 
 #include "tex2lyx.h"
 #include "Context.h"
+#include "Layout.h"
 #include "FloatList.h"
 #include "lengthcommon.h"
 #include "support/lstrings.h"

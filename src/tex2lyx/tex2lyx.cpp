@@ -17,6 +17,7 @@
 
 #include "debug.h"
 #include "TextClass.h"
+#include "Layout.h"
 
 #include "support/convert.h"
 #include "support/filetools.h"

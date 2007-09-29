@@ -10,10 +10,12 @@
 
 #include <config.h>
 
-#include <iostream>
+#include "Context.h"
+#include "Layout.h"
 
 #include "support/lstrings.h"
-#include "Context.h"
+
+#include <iostream>
 
 
 namespace lyx {
@@ -25,7 +27,7 @@ using std::string;
 
 namespace {
 
-void begin_layout(ostream & os, LayoutPtr layout, TeXFont const & font,
+void begin_layout(ostream & os, LayoutPtr const & layout, TeXFont const & font,
 		  TeXFont const & normalfont)
 {
 	os << "\n\\begin_layout " << to_utf8(layout->name()) << "\n";
