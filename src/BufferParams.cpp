@@ -1126,6 +1126,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// So load babel after the optional packages but before the user-defined
 	// preamble. This allows the users to redefine babel commands, e.g. to
 	// translate the word "Index" to the German "Stichwortverzeichnis".
+	// For more infos why this place was chosen, see
+	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128425.html
+	// if you encounter problem, you can shift babel to its old place behind
+	// the user-defined preamble
 	if (use_babel && !features.isRequired("jurabib")) {
 		// FIXME UNICODE
 		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
