@@ -261,8 +261,6 @@ liblyxcore_la_SOURCES = \
 	TextMetrics.h \
 	TocBackend.cpp \
 	TocBackend.h \
-	toc.cpp \
-	toc.h \
 	ToolbarBackend.cpp \
 	ToolbarBackend.h \
 	Trans.cpp \
