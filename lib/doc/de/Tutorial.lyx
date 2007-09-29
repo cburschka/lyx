@@ -4,7 +4,55 @@
 \begin_header
 \textclass book
 \begin_preamble
-%\usepackage{graphics}
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
+  {\usepackage[scaled=0.92]{helvet}
+    \usepackage{mathptmx}
+    \usepackage{courier} }
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=1,
+  linkcolor=black, citecolor=black, urlcolor=blue,  filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={The LyX User's Guide},pdfsubject={LyX-documentation Intro},
+  pdfkeywords={LyX}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Inhaltsverzeichnis}{}
+   \myTOC
+   \cleardoublepage
+   \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 \end_preamble
 \language ngerman
 \inputencoding auto
@@ -81,7 +129,7 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 28.
+letzte Änderung: 29.
  September 2007
 \end_layout
 
@@ -140,29 +188,7 @@ erkzeugleisten
 \end_layout
 
 \begin_layout Section
-Willkommen bei Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
- bei LaTeX, TeX usw., und als solcher gedruckt wird wie in der nächsten Zeile.
-\end_layout
-
-\end_inset
-
-
+Willkommen bei LyX
 \end_layout
 
 \begin_layout Standard
@@ -284,7 +310,7 @@ Tutorium
  in LyX sind nur verkleidete LaTeX-Ideen.
  Allerdings besitzt LyX einige spezifische Eigenheiten,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 \SpecialChar \ldots{}
@@ -387,33 +413,11 @@ So, nun ist es Zeit, anzufangen und das erste Dokument zu erstellen.
 \end_layout
 
 \begin_layout Chapter
-Die ersten Schritte mit Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+Die ersten Schritte mit LyX
 \end_layout
 
 \begin_layout Section
-Ihr erstes Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Dokument
+Ihr erstes LyX-Dokument
 \end_layout
 
 \begin_layout Standard
@@ -547,7 +551,7 @@ de_beispiel_roh.lyx
  Außerdem enthält die Datei auch Hinweise und Tipps, wie diese Korrektur
  erfolgen sollte.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Diese Hinweise finden Sie in den kleinen gelben 
@@ -630,7 +634,7 @@ Geben Sie einen Satz ein, zum Beispiel:
 \family typewriter
 Dies ist mein erster Text mit LyX!
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Ja, o.\InsetSpace \thinspace{}
@@ -669,38 +673,27 @@ Ansicht\SpecialChar \menuseparator
 DVI
 \family default
 \SpecialChar \@.
- Falls Sie LyX von einem anderen Fenster aus gestartet haben, können Sie
- dort eine ganze Menge Textausgabe sehen.
+ Falls Sie LyX von einer Konsole aus gestartet haben, können Sie dort eine
+ ganze Menge Textausgabe sehen.
  Dies sind Meldungen von LaTeX, die Sie im Moment ignorieren können.
- Ist der LaTeX-Lauf erfolgreich beendet, wird LyX 
-\family typewriter
-xdvi
-\family default
- (oder einen anderen DVI-Betrachter) starten, der dann ein eigenes Fenster
- öffnet, in dem Sie den Text so sehen können, wie er später gedruckt aussehen
- wird.
+ Ist der LaTeX-Lauf erfolgreich beendet, wird LyX einen anderen DVI-Betrachter
+ starten, der dann ein eigenes Fenster öffnet, in dem Sie den Text so sehen
+ können, wie er später gedruckt aussehen wird.
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-Sie können Zeit sparen, wenn Sie 
-\family typewriter
-xdvi
-\family default
- nicht jedes Mal neu starten, sondern nur das erste Mal, und das Programm
- dann im Hintergrund weiterlaufen lassen.
+Sie können Zeit sparen, wenn Sie den DVI-Betrachter nicht jedes Mal neu
+ starten, sondern nur das erste Mal, und das Programm dann im Hintergrund
+ weiterlaufen lassen.
  Sie können dann den Menüpunkt 
 \family sans
 Ansicht\SpecialChar \menuseparator
 Aktualisieren\SpecialChar \menuseparator
 DVI
 \family default
- wählen und, nachdem LaTeX beendet ist, in das 
-\family typewriter
-xdvi
-\family default
--Fenster klicken (oder \InsetSpace \space{}
-es de-ikonifizieren), um die neue Version zu sehen.
+ wählen und, nachdem LaTeX beendet ist, in das DVI-Betrachter-Fenster klicken,
+ um die neue Version zu sehen.
 \end_layout
 
 \end_inset
@@ -847,7 +840,7 @@ Inhaltsverzeichnis
  Im Gegensatz dazu blockieren Dialoge wie 
 \family sans
 Datei\SpecialChar \menuseparator
-iffnen
+Öffnen
 \family default
  die Texteingabe im Hauptfenster von LyX, bis sie wieder geschlossen werden.
 \end_layout
@@ -4743,18 +4736,7 @@ Vermischtes
 \end_layout
 
 \begin_layout Section
-Andere wichtige Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Merkmale
+Andere wichtige LyX-Merkmale
 \end_layout
 
 \begin_layout Standard
@@ -4910,7 +4892,7 @@ Anpassung
 LyX kann LaTeX-Dokumente importieren.
  Siehe dazu das Kapitel 
 \begin_inset LatexCommand vref
-reference "sec:reLyX"
+reference "sec:tex2lyx"
 
 \end_inset
 
@@ -4943,29 +4925,7 @@ Beachten Sie dabei, dass die Rechtschreibprüfung an der momentanen Position
 \end_layout
 
 \begin_layout Section
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X für LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Benutzer
+LyX für LaTeX-Benutzer
 \end_layout
 
 \begin_layout Standard
@@ -5018,18 +4978,7 @@ Geheimnisse der LaTeX-Zauberer
 \end_layout
 
 \begin_layout Subsection
-Der Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Modus
+Der TeX-Modus
 \end_layout
 
 \begin_layout Standard
@@ -5160,146 +5109,76 @@ usepackage {foo}
 \end_layout
 
 \begin_layout Subsection
-LaTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X-Dokumente nach Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X konvertieren -- 
+LaTeX-Dokumente nach LyX konvertieren -- 
 \family typewriter
 tex2lyx
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset LatexCommand label
 name "sec:tex2lyx"
 
 \end_inset
 
-You can import a LaTeX file into LyX by using the 
+Über den Menüpunkt 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mport\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTeX
+Datei\SpecialChar \menuseparator
+Importieren\SpecialChar \menuseparator
+LaTeX\InsetSpace \space{}
+(plain)
 \family default
- command in LyX.
- This will call 
+ können Sie vorhandene LaTeX-Dateien in LyX übernehmen.
+ Dabei wird das Programm 
 \family typewriter
 tex2lyx
 \family default
- which will create a file 
+ aufgerufen.
+ Dieses erzeugt aus einer Datei 
 \family typewriter
-foo.lyx
+bla.tex
 \family default
- from the file 
+ die Datei 
 \family typewriter
-foo.tex
+bla.lyx
 \family default
- --- and then open that file.
- If the translation doesn't work, you can try calling 
+, welche dann von LyX geöffnet wird.
+ Falls dies aus LyX heraus nicht richtig funktioniert, können Sie auch versuchen
+, 
 \family typewriter
 tex2lyx
 \family default
- from the command line, possibly using fancier options.
+ von der Kommandozeile aus aufzurufen und dabei zusätzliche Optionen mit
+ anzugeben.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-\lang english
 tex2lyx
 \family default
- will translate most legal LaTeX, but not everything.
- It will leave things it doesn't understand in TeX mode, so after translating
- a file with 
-\family typewriter
-tex2lyx
-\family default
-, you can look for red text and hand-edit it to look right.
+ kann die meisten korrekten LaTeX-Konstrukte in die entsprechende LyX-Form
+ übersetzen, aber nicht alle.
+ Derartige nicht übersetzbare Abschnitte werden im TeX-Modus belassen.
+ Diese Abschnitte können Sie dann später in LyX ansehen und von Hand bearbeiten.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-\lang english
 tex2lyx
 \family default
- has its own manpage.
- Read it to find out about which LaTeX commands and environments aren't
- supported, bugs (and how to get around them), and how to use the various
- options.
+ besitzt auch eine eigene Hilfeseite, die Sie mit 
+\family typewriter
+man\InsetSpace ~
+tex2lyx
+\family default
+ lesen können und sollten, um sich darüber zu informieren, welche LaTeX-Konstruk
+te nicht unterstützt werden, welche Fehler (noch) vorhanden sind und wie
+ man sie umgehen kann, sowie über die Benutzung der Kommandozeilenoptionen.
 \end_layout
 
 \begin_layout Subsection
-Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X-Dokumente nach LaTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X konvertieren
+LyX-Dokumente nach LaTeX konvertieren
 \end_layout
 
 \begin_layout Standard
@@ -5342,22 +5221,7 @@ dvi
 \end_layout
 
 \begin_layout Subsection
-Der LaTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X-Vorspann
+Der LaTeX-Vorspann
 \end_layout
 
 \begin_layout Subsubsection
@@ -5417,18 +5281,7 @@ Einstellungen
  
 \family sans
 \SpecialChar \menuseparator
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X\InsetSpace ~
+LaTeX\InsetSpace ~
 Vorspann
 \family default
 , und tragen Sie dort die gewünschten TeX-Kommandos ein.
@@ -5436,22 +5289,7 @@ Vorspann
 \end_layout
 
 \begin_layout Subsection
-BibTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X
+BibTeX
 \end_layout
 
 \begin_layout Standard
@@ -5468,18 +5306,7 @@ Einfügen\SpecialChar \menuseparator
 Liste\InsetSpace \space{}
 /\InsetSpace \space{}
 Inhaltsverzeichnis\SpecialChar \menuseparator
-BibTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X\InsetSpace \space{}
+BibTeX\InsetSpace \space{}
 Literaturverzeichnis
 \family default
 \SpecialChar \ldots{}

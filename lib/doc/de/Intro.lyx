@@ -13,9 +13,6 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-% provides missing characters,
-\usepackage{textcomp}
-
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
@@ -140,7 +137,7 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 11.
+letzte Änderung: 29.
  9.
  2007
 \end_layout
@@ -994,30 +991,22 @@ Und noch eine Bitte: Wenn Ihnen in dieser Dokumentation irgendetwas unklar
  das LyX-Dokumen\SpecialChar \-
 ta\SpecialChar \-
 tions-Team über die Mailing-Liste 
-\begin_inset LatexCommand url
-target "lyx-docs@lists.lyx.org"
-
-\end_inset
-
+\family sans
+lyx-docs@lists.lyx.org
+\family default
 .
  Falls Sie dringende Fragen haben, die in der Dokumentation offensichtlich
  nicht beantwortet werden, gibt es eine sehr aktive Mailing-Liste, die Sie
  unter 
-\family typewriter
-
-\begin_inset LatexCommand url
-target "lyx-users@lists.lyx.org"
-
-\end_inset
-
-
+\family sans
+lyx-users@lists.lyx.org
 \family default
  erreichen können.
  Außerdem könnten Sie bei 
 \family typewriter
 
 \begin_inset LatexCommand url
-target "http://wiki.lyx.org/"
+target "http://wiki.lyx.org"
 
 \end_inset
 
@@ -1655,9 +1644,10 @@ Es mag sein, dass Sie beim Benutzen von LyX auf Dinge stoßen, die Sie als
 \end_layout
 
 \begin_layout Standard
-LyX hat ein Web-basiertes Fehlermeldesystem, den 
-\begin_inset LatexCommand htmlurl
-name "LyX Bug Tracker"
+LyX hat ein Web-basiertes Fehlermeldesystem, den LyX Bug Tracker
+\newline
+
+\begin_inset LatexCommand url
 target "http://bugzilla.lyx.org"
 
 \end_inset
@@ -1667,18 +1657,15 @@ target "http://bugzilla.lyx.org"
  hat das ja schon jemand getan.
  Wenn Sie einen Kommentar zu einem bestehenden Fehler abgeben wollen oder
  einen neuen Fehler melden wollen, können Sie das über den Bug-Tracker tun,
- oder Sie senden einen eBrief an die 
-\begin_inset LatexCommand url
-name "Entwickler-Liste"
-target "lyx-devel@lists.lyx.org"
-
-\end_inset
-
+ oder Sie senden einen eBrief an die Entwickler-Liste 
+\family sans
+lyx-devel@lists.lyx.org
+\family default
 .
  Archive der Liste erreichen Sie über die 
-\begin_inset LatexCommand htmlurl
+\begin_inset LatexCommand url
 name "LyX-Startseite"
-target "http://www.lyx.org/"
+target "http://www.lyx.org"
 
 \end_inset
 
@@ -1706,7 +1693,11 @@ config.log
 \end_layout
 
 \begin_layout Standard
-Wenn Sie einen reproduzierbaren Absturz hervorrufen können, wäre es extrem
+
+\series bold
+Nur für Linux/Unix Nutzer:
+\series default
+ Wenn Sie einen reproduzierbaren Absturz hervorrufen können, wäre es extrem
  hilfreich, wenn Sie sich die Zeit nehmen könnten, einen Backtrace mit einem
  nicht-gestrippten Binary durchzuführen (das installierte Binary ist meist
  gestrippt, im Gegensatz zu dem im Quellverzeichnis).
@@ -1720,14 +1711,8 @@ gdb
 
 
 \family typewriter
-gdb
+gdb /usr/src/lyx-1.4.0/src/lyx
 \family default
- 
-\begin_inset LatexCommand url
-target "/usr/src/lyx-1.4.0/src/lyx"
-
-\end_inset
-
 
 \begin_inset Quotes grd
 \end_inset
@@ -1844,7 +1829,7 @@ Fehler in den Handbüchern
 \begin_layout Standard
 Wenn Sie eine Unstimmigkeit in der Dokumentation entdecken, schicken Sie
  bitte einen eBrief an die Mailing-Liste 
-\family typewriter
+\family sans
 lyxdoc@lists.lyx.org
 \family default
 .
@@ -1937,7 +1922,7 @@ Setzen Sie sich mit dem Team in Verbindung:
 \begin_deeper
 \begin_layout Standard
 
-\family typewriter
+\family sans
 lyx-docs@lists.lyx.org
 \end_layout
 
