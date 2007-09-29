@@ -24,30 +24,21 @@ namespace lyx {
 namespace frontend {
 
 ControlCharacter::ControlCharacter(Dialog & parent)
-	: Controller(parent), font_(0), toggleall_(false), reset_lang_(false)
+	: Controller(parent), font_(Font::ALL_IGNORE),
+	  toggleall_(false), reset_lang_(false)
 {}
-
-
-ControlCharacter::~ControlCharacter()
-{
-	delete font_;
-}
 
 
 bool ControlCharacter::initialiseParams(string const &)
 {
-	// Do this the first time only.
-	if (!font_)
-		font_ = new Font(Font::ALL_IGNORE);
-
 	// so that the user can press Ok
-	if (getFamily()   != Font::IGNORE_FAMILY ||
-	    getSeries()   != Font::IGNORE_SERIES ||
-	    getShape()    != Font::IGNORE_SHAPE  ||
-	    getSize()     != Font::IGNORE_SIZE ||
-	    getBar()      != IGNORE ||
-	    getColor()    != Color::ignore ||
-	    font_->language() != ignore_language)
+	if (getFamily()    != Font::IGNORE_FAMILY
+	    || getSeries() != Font::IGNORE_SERIES
+	    || getShape()  != Font::IGNORE_SHAPE
+	    || getSize()   != Font::IGNORE_SIZE
+	    || getBar()    != IGNORE
+	    || getColor()  != Color::ignore
+	    || font_.language() != ignore_language)
 		dialog().setButtonsValid(true);
 
 	return true;
@@ -56,80 +47,72 @@ bool ControlCharacter::initialiseParams(string const &)
 
 void ControlCharacter::dispatchParams()
 {
-	// Nothing to dispatch. (Can be called from the Toolbar.)
-	if (!font_)
-		return;
-
-	string data = font_->toString(toggleall_);
-	dispatch(FuncRequest(getLfun(), data));
+	dispatch(FuncRequest(getLfun(), font_.toString(toggleall_)));
 }
 
 
 Font::FONT_FAMILY ControlCharacter::getFamily() const
 {
-	return font_ ? font_->family() : Font::IGNORE_FAMILY;
+	return font_.family();
 }
 
 
 void ControlCharacter::setFamily(Font::FONT_FAMILY val)
 {
-	font_->setFamily(val);
+	font_.setFamily(val);
 }
 
 
 Font::FONT_SERIES ControlCharacter::getSeries() const
 {
-	return font_ ? font_->series() : Font::IGNORE_SERIES;
+	return font_.series();
 }
 
 
 void ControlCharacter::setSeries(Font::FONT_SERIES val)
 {
-	font_->setSeries(val);
+	font_.setSeries(val);
 }
 
 
 Font::FONT_SHAPE ControlCharacter::getShape() const
 {
-	return font_ ? font_->shape() : Font::IGNORE_SHAPE;
+	return font_.shape();
 }
 
 
 void ControlCharacter::setShape(Font::FONT_SHAPE val)
 {
-	font_->setShape(val);
+	font_.setShape(val);
 }
 
 
 Font::FONT_SIZE ControlCharacter::getSize() const
 {
-	return font_ ? font_->size() : Font::IGNORE_SIZE;
+	return font_.size();
 }
 
 
 void ControlCharacter::setSize(Font::FONT_SIZE val)
 {
-	font_->setSize(val);
+	font_.setSize(val);
 }
 
 
 FONT_STATE ControlCharacter::getBar() const
 {
-	if (!font_)
-		return IGNORE;
-
-	if (font_->emph() == Font::TOGGLE)
+	if (font_.emph() == Font::TOGGLE)
 		return EMPH_TOGGLE;
 
-	if (font_->underbar() == Font::TOGGLE)
+	if (font_.underbar() == Font::TOGGLE)
 		return UNDERBAR_TOGGLE;
 
-	if (font_->noun() == Font::TOGGLE)
+	if (font_.noun() == Font::TOGGLE)
 		return NOUN_TOGGLE;
 
-	if (font_->emph() == Font::IGNORE
-	    && font_->underbar() == Font::IGNORE
-	    && font_->noun() == Font::IGNORE)
+	if (font_.emph() == Font::IGNORE
+	    && font_.underbar() == Font::IGNORE
+	    && font_.noun() == Font::IGNORE)
 		return IGNORE;
 
 	return INHERIT;
@@ -140,27 +123,27 @@ void ControlCharacter::setBar(FONT_STATE val)
 {
 	switch (val) {
 	case IGNORE:
-		font_->setEmph(Font::IGNORE);
-		font_->setUnderbar(Font::IGNORE);
-		font_->setNoun(Font::IGNORE);
+		font_.setEmph(Font::IGNORE);
+		font_.setUnderbar(Font::IGNORE);
+		font_.setNoun(Font::IGNORE);
 		break;
 
 	case EMPH_TOGGLE:
-		font_->setEmph(Font::TOGGLE);
+		font_.setEmph(Font::TOGGLE);
 		break;
 
 	case UNDERBAR_TOGGLE:
-		font_->setUnderbar(Font::TOGGLE);
+		font_.setUnderbar(Font::TOGGLE);
 		break;
 
 	case NOUN_TOGGLE:
-		font_->setNoun(Font::TOGGLE);
+		font_.setNoun(Font::TOGGLE);
 		break;
 
 	case INHERIT:
-		font_->setEmph(Font::INHERIT);
-		font_->setUnderbar(Font::INHERIT);
-		font_->setNoun(Font::INHERIT);
+		font_.setEmph(Font::INHERIT);
+		font_.setUnderbar(Font::INHERIT);
+		font_.setNoun(Font::INHERIT);
 		break;
 	}
 }
@@ -168,10 +151,7 @@ void ControlCharacter::setBar(FONT_STATE val)
 
 Color_color ControlCharacter::getColor() const
 {
-	if (!font_)
-		return Color::ignore;
-
-	return font_->color();
+	return font_.color();
 }
 
 
@@ -189,7 +169,7 @@ void ControlCharacter::setColor(Color_color val)
 	case Color::magenta:
 	case Color::yellow:
 	case Color::inherit:
-		font_->setColor(val);
+		font_.setColor(val);
 		break;
 	default:
 		break;
@@ -201,8 +181,8 @@ string ControlCharacter::getLanguage() const
 {
 	if (reset_lang_)
 		return "reset";
-	if (font_ && font_->language())
-		return font_->language()->lang();
+	if (font_.language())
+		return font_.language()->lang();
 	return "ignore";
 }
 
@@ -210,13 +190,13 @@ string ControlCharacter::getLanguage() const
 void ControlCharacter::setLanguage(string const & val)
 {
 	if (val == "ignore")
-		font_->setLanguage(ignore_language);
+		font_.setLanguage(ignore_language);
 	else if (val == "reset") {
 		reset_lang_ = true;
 		// Ignored in getLanguage, but needed for dispatchParams
-		font_->setLanguage(buffer().params().language);
+		font_.setLanguage(buffer().params().language);
 	} else {
-		font_->setLanguage(languages.getLanguage(val));
+		font_.setLanguage(languages.getLanguage(val));
 	}
 }
 

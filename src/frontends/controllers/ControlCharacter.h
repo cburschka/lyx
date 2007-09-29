@@ -40,8 +40,6 @@ public:
 	///
 	ControlCharacter(Dialog &);
 	///
-	~ControlCharacter();
-	///
 	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams() {}
@@ -87,7 +85,7 @@ public:
 	bool getToggleAll() const;
 private:
 	///
-	Font * font_;
+	Font font_;
 	///
 	bool toggleall_;
 	/// If true the language should be reset.
