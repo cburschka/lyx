@@ -4,10 +4,58 @@
 \begin_header
 \textclass book
 \begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+% This preamble is designed to ensure that the User's Guide prints
+% out as advertised. If you mess with this preamble,
+% parts of the User's Guide may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
+ \usepackage[scaled=0.92]{helvet}
+ \usepackage{mathptmx}
+ \usepackage{courier} }
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+ linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+ pdfpagelayout=OneColumn, pdfnewwindow=true,
+ pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+ pdfauthor={LyX Team}, pdftex,
+ pdftitle={Customizing LyX: Features for the Advanced User},pdfsubject={LyX-documentation Customization},
+ pdfkeywords={LyX, documentation}
+]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Contents}{}
+   \myTOC
+   \cleardoublepage
+   \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+
+% used for multi-column text
 \usepackage{multicol}
-\IfFileExists{isolatin.def}
-{\usepackage[isolatin]{inputenc}}
-{\usepackage[latin1]{inputenc}}
 \end_preamble
 \language english
 \inputencoding default
@@ -806,10 +854,7 @@ reference "sec:autodetected"
 \begin_layout Chapter
 The 
 \family sans
-\bar under
-P
-\bar default
-references
+Preferences
 \family default
  dialog
 \end_layout
@@ -3256,7 +3301,7 @@ xx
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3404,7 +3449,7 @@ xx
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3837,7 +3882,7 @@ underbar (underb)
 \hfill
 
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3862,7 +3907,7 @@ underdot (underd)
 \hfill
 
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3893,7 +3938,7 @@ tie (tie)
 \hfill
 
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3912,7 +3957,7 @@ breve (bre)
 \hfill
 ă
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -3949,7 +3994,7 @@ dot (dot)
 \hfill
 ż
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -6217,7 +6262,7 @@ These are the general parameters which describe the form of the entire document:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -6650,7 +6695,7 @@ reference "sec:counter"
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -6803,7 +6848,7 @@ where the following commands are allowed:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
@@ -8157,7 +8202,7 @@ Note that, besides that functionality, there is no way to ensure any ordering
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status inlined
 
 \begin_layout Standard
 
