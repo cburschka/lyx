@@ -216,7 +216,7 @@ esac
 
 AC_ARG_ENABLE(pch,
   AC_HELP_STRING([--enable-pch],[enable precompiled headers]),,
-	enable_pch=yes;)
+	enable_pch=no;)
 lyx_pch_comp=no
 
 # set the compiler options correctly.
