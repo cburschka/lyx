@@ -162,7 +162,7 @@ namespace {
 		for ( ; it != et; it.forwardPos(true)) {
 			// avoid invalid nesting when selecting
 			if (!cursor.selection() || positionable(it, cursor.anchor_)) {
-				Point p = bv_funcs::getPos(bv, it, false);
+				Point p = bv.getPos(it, false);
 				int xo = p.x_;
 				int yo = p.y_;
 				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
@@ -220,7 +220,7 @@ namespace {
 			// avoid invalid nesting when selecting
 			if (bv.cursorStatus(it) == CUR_INSIDE
 			    && (!cur.selection() || positionable(it, cur.anchor_))) {
-				Point p = bv_funcs::getPos(bv, it, false);
+				Point p = bv.getPos(it, false);
 				int xo = p.x_;
 				int yo = p.y_;
 				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
@@ -419,7 +419,7 @@ int Cursor::currentMode()
 
 void Cursor::getPos(int & x, int & y) const
 {
-	Point p = bv_funcs::getPos(bv(), *this, boundary());
+	Point p = bv().getPos(*this, boundary());
 	x = p.x_;
 	y = p.y_;
 }
@@ -1235,7 +1235,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 
 	// with and without selection are handled differently
 	if (!selection()) {
-		int yo = bv_funcs::getPos(bv(), *this, boundary()).y_;
+		int yo = bv().getPos(*this, boundary()).y_;
 		Cursor old = *this;
 		// To next/previous row
 		if (up)

@@ -257,7 +257,7 @@ bool BufferView::fitCursor()
 			theFontMetrics(cursor_.getFont());
 		int const asc = fm.maxAscent();
 		int const des = fm.maxDescent();
-		Point const p = bv_funcs::getPos(*this, cursor_, cursor_.boundary());
+		Point const p = getPos(cursor_, cursor_.boundary());
 		if (p.y_ - asc >= 0 && p.y_ + des < height_)
 			return false;
 	}
@@ -462,7 +462,7 @@ void BufferView::setCursorFromScrollbar()
 		cur.clearSelection();
 		break;
 	case CUR_INSIDE:
-		int const y = bv_funcs::getPos(*this, cur, cur.boundary()).y_;
+		int const y = getPos(cur, cur.boundary()).y_;
 		int const newy = min(last, max(y, first));
 		if (y != newy) {
 			cur.reset(buffer_.inset());
@@ -486,7 +486,7 @@ Change const BufferView::getCurrentChange() const
 // FIXME: This does not work within mathed!
 CursorStatus BufferView::cursorStatus(DocIterator const & dit) const
 {
-	Point const p = bv_funcs::getPos(*this, dit, dit.boundary());
+	Point const p = getPos(dit, dit.boundary());
 	if (p.y_ < 0)
 		return CUR_ABOVE;
 	if (p.y_ > workHeight())
@@ -608,8 +608,8 @@ void BufferView::updateOffsetRef()
 	CursorSlice & bot = cursor_.bottom();
 	TextMetrics & tm = text_metrics_[bot.text()];
 	ParagraphMetrics const & pm = tm.parMetrics(bot.pit());
-	Point p = bv_funcs::coordOffset(*this, cursor_, cursor_.boundary());
-	offset_ref_ = p.y_ + pm.ascent() - height_ / 2;
+	int y = coordOffset(cursor_, cursor_.boundary()).y_;
+	offset_ref_ = y + pm.ascent() - height_ / 2;
 
 	need_centering_ = false;
 }
@@ -1055,7 +1055,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN: {
-		Point p = bv_funcs::getPos(*this, cur, cur.boundary());
+		Point p = getPos(cur, cur.boundary());
 		if (p.y_ < 0 || p.y_ > height_) {
 			// The cursor is off-screen so recenter before proceeding.
 			center();
@@ -1063,7 +1063,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			//FIXME: updateMetrics() does not update paragraph position
 			// This is done at draw() time. So we need a redraw!
 			buffer_.changed();
-			p = bv_funcs::getPos(*this, cur, cur.boundary());
+			p = getPos(cur, cur.boundary());
 		}
 		scroll(cmd.action == LFUN_SCREEN_UP? - height_ : height_);
 		cur.reset(buffer_.inset());
@@ -1079,7 +1079,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_SCREEN_DOWN_SELECT: {
 		cur.selHandle(true);
 		size_t initial_depth = cur.depth();
-		Point const p = bv_funcs::getPos(*this, cur, cur.boundary());
+		Point const p = getPos(cur, cur.boundary());
 		scroll(cmd.action == LFUN_SCREEN_UP_SELECT? - height_ : height_);
 		// FIXME: We need to verify if the cursor stayed within an inset...
 		//cur.reset(buffer_.inset());
@@ -1699,6 +1699,109 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 	message(bformat(res, disp_fn));
 	buffer_.errors("Parse");
 	updateMetrics(false);
+}
+
+
+Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
+{
+	int x = 0;
+	int y = 0;
+	int lastw = 0;
+
+	// Addup contribution of nested insets, from inside to outside,
+ 	// keeping the outer paragraph for a special handling below
+	for (size_t i = dit.depth() - 1; i >= 1; --i) {
+		CursorSlice const & sl = dit[i];
+		int xx = 0;
+		int yy = 0;
+		
+		// get relative position inside sl.inset()
+		sl.inset().cursorPos(*this, sl, boundary && (i + 1 == dit.depth()), xx, yy);
+		
+		// Make relative position inside of the edited inset relative to sl.inset()
+		x += xx;
+		y += yy;
+		
+		// In case of an RTL inset, the edited inset will be positioned to the left
+		// of xx:yy
+		if (sl.text()) {
+			bool boundary_i = boundary && i + 1 == dit.depth();
+			bool rtl = textMetrics(sl.text()).isRTL(sl, boundary_i);
+			if (rtl)
+				x -= lastw;
+		}
+
+		// remember width for the case that sl.inset() is positioned in an RTL inset
+		if (i && dit[i - 1].text()) {
+			// If this Inset is inside a Text Inset, retrieve the Dimension
+			// from the containing text instead of using Inset::dimension() which
+			// might not be implemented.
+			// FIXME (Abdel 23/09/2007): this is a bit messy because of the
+			// elimination of Inset::dim_ cache. This coordOffset() method needs
+			// to be rewritten in light of the new design.
+			Dimension const & dim = parMetrics(dit[i - 1].text(),
+				dit[i - 1].pit()).insetDimension(&sl.inset());
+			lastw = dim.wid;
+		} else {
+			Dimension const dim = sl.inset().dimension(*this);
+			lastw = dim.wid;
+		}
+		
+		//lyxerr << "Cursor::getPos, i: "
+		// << i << " x: " << xx << " y: " << y << endl;
+	}
+
+	// Add contribution of initial rows of outermost paragraph
+	CursorSlice const & sl = dit[0];
+	TextMetrics const & tm = textMetrics(sl.text());
+	ParagraphMetrics const & pm = tm.parMetrics(sl.pit());
+	BOOST_ASSERT(!pm.rows().empty());
+	y -= pm.rows()[0].ascent();
+#if 1
+	// FIXME: document this mess
+	size_t rend;
+	if (sl.pos() > 0 && dit.depth() == 1) {
+		int pos = sl.pos();
+		if (pos && boundary)
+			--pos;
+//		lyxerr << "coordOffset: boundary:" << boundary << " depth:" << dit.depth() << " pos:" << pos << " sl.pos:" << sl.pos() << std::endl;
+		rend = pm.pos2row(pos);
+	} else
+		rend = pm.pos2row(sl.pos());
+#else
+	size_t rend = pm.pos2row(sl.pos());
+#endif
+	for (size_t rit = 0; rit != rend; ++rit)
+		y += pm.rows()[rit].height();
+	y += pm.rows()[rend].ascent();
+	
+	TextMetrics const & bottom_tm = textMetrics(dit.bottom().text());
+	
+	// Make relative position from the nested inset now bufferview absolute.
+	int xx = bottom_tm.cursorX(dit.bottom(), boundary && dit.depth() == 1);
+	x += xx;
+	
+	// In the RTL case place the nested inset at the left of the cursor in 
+	// the outer paragraph
+	bool boundary_1 = boundary && 1 == dit.depth();
+	bool rtl = bottom_tm.isRTL(dit.bottom(), boundary_1);
+	if (rtl)
+		x -= lastw;
+	
+	return Point(x, y);
+}
+
+
+Point BufferView::getPos(DocIterator const & dit, bool boundary) const
+{
+	CursorSlice const & bot = dit.bottom();
+	TextMetrics const & tm = textMetrics(bot.text());
+	if (!tm.has(bot.pit()))
+		return Point(-1, -1);
+
+	Point p = coordOffset(dit, boundary); // offset from outer paragraph
+	p.y_ += tm.parMetrics(bot.pit()).position();
+	return p;
 }
 
 

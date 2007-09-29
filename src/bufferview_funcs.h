@@ -18,10 +18,6 @@
 
 namespace lyx {
 
-class Point;
-class BufferView;
-class DocIterator;
-class Inset_code;
 class Font;
 
 namespace bv_funcs {
@@ -36,10 +32,6 @@ bool string2font(std::string const & data, Font & font, bool & toggle);
  *  frontends.
  */
 std::string const freefont2string();
-
-Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary);
-
-Point coordOffset(BufferView const & bv, DocIterator const & dit, bool boundary);
 
 } // namespace bv_funcs
 

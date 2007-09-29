@@ -1999,7 +1999,7 @@ void TextMetrics::drawSelection(PainterInfo & pi,
 	if (clipAbove)
 		middleTop = 0;
 	else
-		middleTop = bv_funcs::getPos(*bv_, beg, beg.boundary()).y_ + row1.descent();
+		middleTop = bv_->getPos(beg, beg.boundary()).y_ + row1.descent();
 	
 	// clip below
 	int middleBottom;
@@ -2007,7 +2007,7 @@ void TextMetrics::drawSelection(PainterInfo & pi,
 	if (clipBelow)
 		middleBottom = bv_->workHeight();
 	else
-		middleBottom = bv_funcs::getPos(*bv_, end, end.boundary()).y_ - row2.ascent();
+		middleBottom = bv_->getPos(end, end.boundary()).y_ - row2.ascent();
 
 	// start and end in the same line?
 	if (!clipAbove && !clipBelow && &row1 == &row2)
@@ -2051,7 +2051,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 	DocIterator cur = beg;
 	int x1 = cursorX(beg.top(), beg.boundary());
 	int x2 = cursorX(end.top(), end.boundary());
-	int y1 = bv_funcs::getPos(*bv_, cur, cur.boundary()).y_ - row.ascent();
+	int y1 = bv_->getPos(cur, cur.boundary()).y_ - row.ascent();
 	int y2 = y1 + row.height();
 	
 	// draw the margins

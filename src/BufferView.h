@@ -223,6 +223,10 @@ public:
 	CoordCache const & coordCache() const { return coord_cache_; }
 
 	///
+	Point getPos(DocIterator const & dit, bool boundary) const;
+
+
+	///
 	void draw(frontend::Painter & pain);
 
 	/// get this view's keyboard map handler.
@@ -253,6 +257,8 @@ public:
 	boost::signal<void(docstring layout)> layoutChanged;
 
 private:
+	// the position relative to (0, baseline) of outermost paragraph
+	Point coordOffset(DocIterator const & dit, bool boundary) const;
 	/// Update current paragraph metrics.
 	/// \return true if no further update is needed.
 	bool singleParUpdate();
