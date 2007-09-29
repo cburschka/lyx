@@ -249,10 +249,12 @@ bool isValidGlueLength(string const & data, GlueLength * result)
 	unit_index = 1;  // entries at index 0 are sentinels
 
 	// construct "pattern" from "data"
-	while (!isEndOfData (buffer)) {
-		if (pattern_index > 20) return false;
-		pattern[pattern_index] = nextToken (buffer);
-		if (pattern[pattern_index] == 'E') return false;
+	while (!isEndOfData(buffer)) {
+		if (pattern_index > 20)
+			return false;
+		pattern[pattern_index] = nextToken(buffer);
+		if (pattern[pattern_index] == 'E')
+			return false;
 		++pattern_index;
 	}
 	pattern[pattern_index] = '\0';
@@ -324,7 +326,8 @@ bool isValidLength(string const & data, Length * result)
 	pattern[pattern_index] = '\0';
 
 	// only the most basic pattern is accepted here
-	if (compare(pattern, "nu") != 0) return false;
+	if (compare(pattern, "nu") != 0)
+		return false;
 
 	// It _was_ a correct length string.
 	// Store away the values we found.
@@ -345,7 +348,7 @@ VSpace::VSpace()
 {}
 
 
-VSpace::VSpace(vspace_kind k)
+VSpace::VSpace(VSpaceKind k)
 	: kind_(k), len_(), keep_(false)
 {}
 
@@ -394,30 +397,6 @@ VSpace::VSpace(string const & data)
 		kind_ = LENGTH;
 		len_  = GlueLength(Length(convert<double>(input), Length::CM));
 	}
-}
-
-
-VSpace::vspace_kind VSpace::kind() const
-{
-	return kind_;
-}
-
-
-GlueLength const & VSpace::length() const
-{
-	return len_;
-}
-
-
-bool VSpace::keep() const
-{
-	return keep_;
-}
-
-
-void VSpace::setKeep(bool val)
-{
-	keep_ = val;
 }
 
 
