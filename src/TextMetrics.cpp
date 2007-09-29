@@ -1177,7 +1177,7 @@ void TextMetrics::newParMetricsDown()
 {
 	pair<pit_type, ParagraphMetrics> const & last = *par_metrics_.rbegin();
 	pit_type const pit = last.first + 1;
-	if (pit == text_->paragraphs().size())
+	if (pit == int(text_->paragraphs().size()))
 		return;
 
 	// do it and update its position.
@@ -1995,8 +1995,7 @@ void TextMetrics::drawSelection(PainterInfo & pi,
 
 	// clip above
 	int middleTop;
-	bool const clipAbove = 
-		(bv_funcs::status(bv_, beg) == bv_funcs::CUR_ABOVE);
+	bool const clipAbove = (bv_->cursorStatus(beg) == CUR_ABOVE);
 	if (clipAbove)
 		middleTop = 0;
 	else
@@ -2004,15 +2003,14 @@ void TextMetrics::drawSelection(PainterInfo & pi,
 	
 	// clip below
 	int middleBottom;
-	bool const clipBelow = 
-		(bv_funcs::status(bv_, end) == bv_funcs::CUR_BELOW);
+	bool const clipBelow = (bv_->cursorStatus(end) == CUR_BELOW);
 	if (clipBelow)
 		middleBottom = bv_->workHeight();
 	else
 		middleBottom = bv_funcs::getPos(*bv_, end, end.boundary()).y_ - row2.ascent();
 
 	// start and end in the same line?
-	if (!(clipAbove || clipBelow) && &row1 == &row2)
+	if (!clipAbove && !clipBelow && &row1 == &row2)
 		// then only draw this row's selection
 		drawRowSelection(pi, x, row1, beg, end, false, false);
 	else {

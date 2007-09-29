@@ -48,6 +48,12 @@ class Text;
 class ParIterator;
 class ParagraphMetrics;
 class ViewMetricsInfo;
+ 
+enum CursorStatus {
+	CUR_INSIDE,
+	CUR_ABOVE,
+	CUR_BELOW
+};
 
 /// Scrollbar Parameters.
 struct ScrollbarParameters
@@ -171,6 +177,8 @@ public:
 	/// access to anchor.
 	pit_type anchor_ref() const;
 
+	///
+	CursorStatus cursorStatus(DocIterator const & dit) const;
 	/// access to full cursor.
 	Cursor & cursor();
 	/// access to full cursor.
@@ -210,13 +218,9 @@ public:
 	ParagraphMetrics const & parMetrics(Text const *, pit_type) const;
 
 	///
-	CoordCache & coordCache() {
-		return coord_cache_;
-	}
+	CoordCache & coordCache() { return coord_cache_; }
 	///
-	CoordCache const & coordCache() const {
-		return coord_cache_;
-	}
+	CoordCache const & coordCache() const { return coord_cache_; }
 
 	///
 	void draw(frontend::Painter & pain);

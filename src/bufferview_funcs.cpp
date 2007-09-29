@@ -253,21 +253,6 @@ Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary)
 	return p;
 }
 
-
-// this could be used elsewhere as well?
-// FIXME: This does not work within mathed!
-CurStatus status(BufferView const * bv, DocIterator const & dit)
-{
-	Point const p = bv_funcs::getPos(*bv, dit, dit.boundary());
-	if (p.y_ < 0)
-		return CUR_ABOVE;
-	if (p.y_ > bv->workHeight())
-		return CUR_BELOW;
-		
-	return CUR_INSIDE;
-}
-
-
 } // namespace bv_funcs
 
 

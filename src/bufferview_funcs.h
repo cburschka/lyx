@@ -15,7 +15,6 @@
 #define BUFFERVIEW_FUNCS_H
 
 #include <string>
-#include <vector>
 
 namespace lyx {
 
@@ -39,16 +38,6 @@ bool string2font(std::string const & data, Font & font, bool & toggle);
 std::string const freefont2string();
 
 Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary);
-
-enum CurStatus {
-	CUR_INSIDE,
-	CUR_ABOVE,
-	CUR_BELOW
-};
-
-
-CurStatus status(BufferView const * bv, DocIterator const & dit);
-
 
 Point coordOffset(BufferView const & bv, DocIterator const & dit, bool boundary);
 

@@ -218,7 +218,7 @@ namespace {
 
 		for ( ; it != et; it.forwardPos()) {
 			// avoid invalid nesting when selecting
-			if (bv_funcs::status(&bv, it) == bv_funcs::CUR_INSIDE
+			if (bv.cursorStatus(it) == CUR_INSIDE
 			    && (!cur.selection() || positionable(it, cur.anchor_))) {
 				Point p = bv_funcs::getPos(bv, it, false);
 				int xo = p.x_;

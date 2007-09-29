@@ -252,7 +252,7 @@ Buffer const & BufferView::buffer() const
 
 bool BufferView::fitCursor()
 {
-	if (bv_funcs::status(this, cursor_) == bv_funcs::CUR_INSIDE) {
+	if (cursorStatus(cursor_) == CUR_INSIDE) {
 		frontend::FontMetrics const & fm =
 			theFontMetrics(cursor_.getFont());
 		int const asc = fm.maxAscent();
@@ -446,24 +446,22 @@ void BufferView::setCursorFromScrollbar()
 	int const last = height_ - height;
 	Cursor & cur = cursor_;
 
-	bv_funcs::CurStatus st = bv_funcs::status(this, cur);
-
-	switch (st) {
-	case bv_funcs::CUR_ABOVE:
-		// We reset the cursor because bv_funcs::status() does not
+	switch (cursorStatus(cur)) {
+	case CUR_ABOVE:
+		// We reset the cursor because cursorStatus() does not
 		// work when the cursor is within mathed.
 		cur.reset(buffer_.inset());
 		tm.setCursorFromCoordinates(cur, 0, first);
 		cur.clearSelection();
 		break;
-	case bv_funcs::CUR_BELOW:
-		// We reset the cursor because bv_funcs::status() does not
+	case CUR_BELOW:
+		// We reset the cursor because cursorStatus() does not
 		// work when the cursor is within mathed.
 		cur.reset(buffer_.inset());
 		tm.setCursorFromCoordinates(cur, 0, last);
 		cur.clearSelection();
 		break;
-	case bv_funcs::CUR_INSIDE:
+	case CUR_INSIDE:
 		int const y = bv_funcs::getPos(*this, cur, cur.boundary()).y_;
 		int const newy = min(last, max(y, first));
 		if (y != newy) {
@@ -481,6 +479,19 @@ Change const BufferView::getCurrentChange() const
 
 	DocIterator dit = cursor_.selectionBegin();
 	return dit.paragraph().lookupChange(dit.pos());
+}
+
+
+// this could be used elsewhere as well?
+// FIXME: This does not work within mathed!
+CursorStatus BufferView::cursorStatus(DocIterator const & dit) const
+{
+	Point const p = bv_funcs::getPos(*this, dit, dit.boundary());
+	if (p.y_ < 0)
+		return CUR_ABOVE;
+	if (p.y_ > workHeight())
+		return CUR_BELOW;
+	return CUR_INSIDE;
 }
 
 
