@@ -1,5 +1,5 @@
-#LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 285
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -19,20 +19,20 @@
 
 % Alle Querverweise und URLs als Link darstellen
 % In der PDF-Ausgabe
- %\usepackage[colorlinks=true, bookmarks, bookmarksnumbered, %bookmarksopen, bookmarksopenlevel=1,
-%  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-%  pdfpagelayout=OneColumn, pdfnewwindow=true,
-%  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-%  pdfauthor={LyX Team}, pdftex,
-%  pdftitle={LyX's Figure, Table, Floats, Notes, and Boxes manual},
-%  pdfsubject={LyX-documentation about figures, tables, floats, notes, and %boxes},
-%  pdfkeywords={LyX, Tables, Figures, Floats, Boxes, Notes}]{hyperref}
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=1,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={Das LyX-Handbuch der Einfügungen: Abbildungen, Tabellen, Gleitobjekte, Notizen und Boxen},
+  pdfsubject={LyX-Dokumentation über Abbildungen, Tabellen, Gleitobjekte, Notizen und Boxen},
+  pdfkeywords={LyX, Abbildungen, Tabellen, Gleitobjekte, Notizen, Boxen}]{hyperref}
  
 \else % In der DVI- oder PS-Ausgabe
 
  % Alle Querverweise und URLs als Link in der DVI-Ansicht darstellen
- %\usepackage[ps2pdf, colorlinks=true,
-  %linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
+ \usepackage[ps2pdf, colorlinks=true,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
 
 \fi % Ende von: wenn pdflatex benutzt wird
 
@@ -140,6 +140,16 @@
 \let\myFoot\footnote
 \renewcommand{\footnote}[1]{\myFoot{#1\vspace{1.5mm}}}
 
+% damit kann auf Gleit-Algorithmen verwiesen werden
+\newfloat{Xalgorithm}{tbp}{loa}
+\floatname{Xalgorithm}{Algorithmus}
+\newcommand{\theHalgorithm}{\theHXalgorithm}
+\renewenvironment{algorithm}[1][tbp]
+ {\begin{Xalgorithm}[#1]}{\end{Xalgorithm}}
+
+% Gleit-Algorithmen werden innerhalb von Kapiteln numeriert
+\numberwithin{Xalgorithm}{chapter}
+
 % Grauschrift-Notizen in blauer Farbe
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
@@ -188,22 +198,6 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\use_hyperref true
-\pdf_store_options true
-\pdf_title "LyX's Figure, Table, Floats, Notes, and Boxes manual"
-\pdf_author "LyX Team, Uwe Stöhr"
-\pdf_subject "LyX-documentation about figures, tables, floats, notes, and boxes"
-\pdf_keywords "LyX, Tables, Figures, Floats, Boxes, Notes"
-\pdf_bookmarks true
-\pdf_bookmarksnumbered true
-\pdf_bookmarksopen true
-\pdf_bookmarksopenlevel "1"
-\pdf_breaklinks false
-\pdf_pdfborder false
-\pdf_colorlinks true
-\pdf_backref false
-\pdf_pagebackref false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdftex"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 2
@@ -227,9 +221,6 @@
 \author "" 
 \author "" 
 \end_header
-
-\begin_manifest
-\end_manifest
 
 \begin_body
 
@@ -415,8 +406,6 @@ Um eine Abbildung in Ihr Dokument einzufügen, klicken Sie auf das Symbol
  
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_graphics.png
-	inzipName 
-	embed true
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -700,8 +689,6 @@ reference "abs:Bildformate"
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	inzipName 
-	embed true
 	display color
 	scale 70
 	scaleBeforeRotation
@@ -721,8 +708,6 @@ Hier ist dieselbe Abbildung, aber im Entwurfsmodus gedruckt:
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	inzipName 
-	embed false
 	display color
 	scale 70
 	draft
@@ -770,8 +755,6 @@ reference "abs:Gleitobjekte-Einleitung"
 Wenn Sie auf das Werkzeugleisten-Symbol 
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -831,8 +814,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	inzipName 
-	embed false
 	display color
 	width 50col%
 	scaleBeforeRotation
@@ -893,8 +874,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	inzipName 
-	embed false
 	display color
 	scale 80
 	scaleBeforeRotation
@@ -938,8 +917,6 @@ Marke
  oder durch Klicken auf 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -955,8 +932,6 @@ Querverweis
  oder durch Klicken auf 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -1059,8 +1034,6 @@ status open
 
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	inzipName 
-	embed false
 	width 35col%
 	scaleBeforeRotation
 	subcaption
@@ -1073,8 +1046,6 @@ status open
 
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	inzipName 
-	embed false
 	lyxscale 60
 	width 45col%
 	scaleBeforeRotation
@@ -1479,8 +1450,6 @@ name "Tabellen ! Einführung"
 Eine Tabelle können Sie mit dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -1986,8 +1955,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-row.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2001,8 +1968,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_append-column.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2016,8 +1981,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-row.png
-	inzipName 
-	embed true
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2031,8 +1994,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_delete-column.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2046,8 +2007,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-top.png
-	inzipName 
-	embed true
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2062,8 +2021,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-bottom.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2078,8 +2035,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-left.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2094,8 +2049,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_toggle-line-right.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2110,8 +2063,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-all-lines.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2125,8 +2076,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_unset-all-lines.png
-	inzipName 
-	embed true
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2140,8 +2089,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-left.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2155,8 +2102,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-center.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2170,8 +2115,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_align-right.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2185,8 +2128,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-top.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2200,8 +2141,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-middle.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2215,8 +2154,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_valign-bottom.png
-	inzipName 
-	embed true
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2230,8 +2167,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-cell.png
-	inzipName 
-	embed true
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2245,8 +2180,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_set-rotate-tabular.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2260,8 +2193,6 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2590,8 +2521,6 @@ Tabelle
  oder einen Klick auf den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2614,8 +2543,6 @@ Nr:
  können Sie dann eine Tabelle mit dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/tabular-insert.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -2727,8 +2654,6 @@ Marke
  oder durch Klicken auf 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -2744,8 +2669,6 @@ Querverweis
  oder durch Klicken auf 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -11398,8 +11321,6 @@ Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
  und verwenden dann den Knopf 
 \begin_inset Graphics
 	filename ../../images/tabular-feature_multicolumn.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -14737,8 +14658,6 @@ name "Farbe ! für Text"
  auf den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -19067,8 +18986,6 @@ Gleitobjekt
  Für Abbildungen oder Tabellen können Sie auch auf 
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -19078,8 +18995,6 @@ Gleitobjekt
  oder 
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -19109,8 +19024,6 @@ reference "abs:Titel-Platzierung"
  Ein geschlossenes Gleitobjekt-Kästchen sieht so aus: 
 \begin_inset Graphics
 	filename clipart/GleitobjektQt4.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 128bp 22bp
@@ -19130,8 +19043,6 @@ Vorhandene Abbildungen oder Tabellen können Sie in ein Gleitobjekt packen,
  indem Sie sie markieren und dann auf 
 \begin_inset Graphics
 	filename ../../images/float-insert_figure.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -19141,8 +19052,6 @@ Vorhandene Abbildungen oder Tabellen können Sie in ein Gleitobjekt packen,
  oder 
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -19293,6 +19202,117 @@ Algorithm
 floatname{algorithm}{Algorithmus}
 \end_layout
 
+\begin_layout Description
+
+\series bold
+Bemerkung:
+\series default
+ Wenn Sie das LaTeX-Paket 
+\series bold
+hyperref
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-Pakete ! hyperref"
+
+\end_inset
+
+ benutzen, um in PDF-Dateien auf Gleitobjekte zu verweisen, muss es im LaTeX-Vor
+spann vor der Definition der Gleitobjekte geladen werden.
+ Weil LyX Gleitobjekt-Definitionen automatisch vor den editierbaren Teil
+ des LaTeX-Vorspanns schreibt, müssen Sie 
+\emph on
+nach
+\emph default
+ dem Laden von 
+\series bold
+hyperref
+\series default
+ folgende Befehle einfügen:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\series bold
+
+\newline
+
+\backslash
+newfloat{Xalgorithm}{tbp}{loa}
+\newline
+
+\backslash
+floatname{Xalgorithm}{Ihr\InsetSpace ~
+Name}
+\newline
+
+\backslash
+newcommand{
+\backslash
+theHalgorithm}{
+\backslash
+theHXalgorithm}
+\newline
+
+\backslash
+renewenvironment{algorithm}[1][tbp]
+\newline
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+hphantom{ }
+\end_layout
+
+\end_inset
+
+{
+\backslash
+begin{Xalgorithm}[#1]}{
+\backslash
+end{Xalgorithm}}
+\series default
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\newline
+Um das Algorithmenverzeichnis einzufügen, kann in diesem Fall nicht das
+ Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Liste\InsetSpace \thinspace{}
+/\InsetSpace \thinspace{}
+Inhaltsverzeichnis\SpecialChar \menuseparator
+Algorithmenverzeichnis
+\family default
+ nicht verwendet werden.
+ Stattdessen wird dieser Befehl als TeX-Code eingefügt:
+\newline
+
+\series bold
+
+\backslash
+listof{Xalgorithm}{Algorithmenverzeichnis}
+\series default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+wird am Ende dieses Dokuments verwendet
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Gleitobjekt-Algorithmen werden nicht wie Gleitobjekt-Abbildungen oder -Tabellen
  nach dem Schema 
@@ -19390,15 +19410,12 @@ fließen
  Er wird mit dem Befehl 
 \begin_inset Wrap figure
 placement l
-overhang 0col%
 width "40col%"
 status open
 
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	inzipName 
-	embed false
 	display color
 	width 40col%
 	scaleBeforeRotation
@@ -19857,8 +19874,6 @@ Marke
  oder einen Klick auf 
 \begin_inset Graphics
 	filename ../../images/label-insert.png
-	inzipName 
-	embed false
 	scale 85
 	scaleBeforeRotation
 
@@ -19879,8 +19894,6 @@ Marke
 
 \begin_inset Graphics
 	filename clipart/Marke.png
-	inzipName 
-	embed false
 	lyxscale 80
 	scale 50
 	scaleBeforeRotation
@@ -19901,8 +19914,6 @@ Querverweis
  oder einen Klick auf 
 \begin_inset Graphics
 	filename ../../images/dialog-show-new-inset_ref.png
-	inzipName 
-	embed false
 	scale 85
 	scaleBeforeRotation
 
@@ -19915,8 +19926,6 @@ Querverweis
 
 \begin_inset Graphics
 	filename clipart/Querverweis.png
-	inzipName 
-	embed false
 	lyxscale 80
 	scale 50
 	scaleBeforeRotation
@@ -21347,8 +21356,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/mobius.eps
-	inzipName 
-	embed false
 	lyxscale 50
 	scale 50
 	scaleBeforeRotation
@@ -22162,8 +22169,6 @@ status open
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	inzipName 
-	embed false
 	scale 75
 	scaleBeforeRotation
 
@@ -22480,8 +22485,6 @@ status open
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../clipart/escher-lsd.eps
-	inzipName 
-	embed false
 	scale 75
 	scaleBeforeRotation
 
@@ -22590,8 +22593,6 @@ name "Notizen ! LyX-Notizen"
 Notizen werden mit einem Klick auf 
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	inzipName 
-	embed false
 	scale 85
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -22620,8 +22621,6 @@ LyX-Notiz
 
 \begin_inset Graphics
 	filename clipart/LyXNotizQt4.png
-	inzipName 
-	embed false
 	display none
 	scale 60
 	scaleBeforeRotation
@@ -22673,8 +22672,6 @@ X (pdflatex) / (plain)
 
 \begin_inset Graphics
 	filename clipart/KommentarQt4.png
-	inzipName 
-	embed false
 	display none
 	scale 60
 	scaleBeforeRotation
@@ -22702,8 +22699,6 @@ Grauschrift: Diese Notiz wird grau gedruckt und sieht so aus:
 
 \begin_inset Graphics
 	filename clipart/GrauschriftNotizQt4.png
-	inzipName 
-	embed false
 	display none
 	scale 60
 	scaleBeforeRotation
@@ -22809,8 +22804,6 @@ Eingerahmt: Diese Notiz wird gerahmt gedruckt und sieht so aus:
 
 \begin_inset Graphics
 	filename clipart/GerahmteNotizQt4.png
-	inzipName 
-	embed false
 	display none
 	scale 60
 	scaleBeforeRotation
@@ -22869,8 +22862,6 @@ Box
 
 \begin_inset Graphics
 	filename clipart/SchattierteNotizQt4.png
-	inzipName 
-	embed false
 	display none
 	scale 60
 	scaleBeforeRotation
@@ -22915,8 +22906,6 @@ reference "abs:Farbige-Boxen"
 Wenn Sie auf den Werzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/note-insert.png
-	inzipName 
-	embed false
 	scale 85
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 22bp 22bp
@@ -23921,8 +23910,6 @@ framebox{
 
 \begin_inset Graphics
 	filename ../clipart/without_fntright.pdf
-	inzipName 
-	embed false
 	width 100col%
 	scaleBeforeRotation
 
@@ -23998,8 +23985,6 @@ framebox{
 
 \begin_inset Graphics
 	filename ../clipart/with_fntright.pdf
-	inzipName 
-	embed false
 	width 100col%
 	scaleBeforeRotation
 
@@ -24138,8 +24123,6 @@ framebox{
 
 \begin_inset Graphics
 	filename ../clipart/endnotes.pdf
-	inzipName 
-	embed false
 	scaleBeforeRotation
 
 \end_inset
@@ -24365,8 +24348,6 @@ Randnotizen sehen in LyX wie Fußnoten aus und verhalten sich auch so.
  Sie fügen sie mit einem Klick auf den Schalter 
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 0bp 22bp 22bp
@@ -25216,8 +25197,6 @@ Box (Minipage)
  erscheint: 
 \begin_inset Graphics
 	filename clipart/StandardBoxQt4.png
-	inzipName 
-	embed false
 	lyxscale 80
 	scale 60
 	scaleBeforeRotation
@@ -27721,8 +27700,6 @@ Der Boxinhalt kann auch eine Box sein, und Colorboxen können in anderen
 Die folgenden Farben sind vordefiniert (
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 0bp 22bp 22bp
@@ -28564,8 +28541,6 @@ rotatebox[origin=lb]{90}{
 
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	inzipName 
-	embed false
 	lyxscale 50
 	width 25col%
 
@@ -29106,8 +29081,6 @@ reflectbox{
 
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
-	inzipName 
-	embed false
 	lyxscale 50
 	width 25col%
 
@@ -29277,8 +29250,6 @@ name "URL"
 Internet- oder Email-Adressen können mit 
 \begin_inset Graphics
 	filename ../../images/url-insert.png
-	inzipName 
-	embed false
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 0bp 22bp 22bp
@@ -29713,7 +29684,7 @@ Tag-Monat-Jahr
  Hier ist ein Beispiel: 
 \begin_inset External
 	template Date
-	filename C:/Program Files (x86)/LyX 1.6.x/Resources/./doc/de/
+	filename .
 
 \end_inset
 
@@ -30059,8 +30030,6 @@ Entwurf
 LyX kann externes Material entweder als Box wie hier: 
 \begin_inset Graphics
 	filename clipart/ExternesMaterialQt4.png
-	inzipName 
-	embed false
 	lyxscale 80
 	scale 60
 	scaleBeforeRotation
@@ -30123,8 +30092,6 @@ Unterdokumente benutzt man bei größeren Dokumenten, die aus mehreren Kapiteln
 Unterdokumente werden in LyX als Box angezeigt: 
 \begin_inset Graphics
 	filename clipart/UnterdokumentQt4.png
-	inzipName 
-	embed false
 	lyxscale 80
 	scale 60
 	scaleBeforeRotation
@@ -31699,8 +31666,6 @@ Ansicht
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_dvi.png
-	inzipName 
-	embed false
 	scale 85
 	scaleBeforeRotation
 
@@ -31842,8 +31807,6 @@ Ansicht
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_ps.png
-	inzipName 
-	embed false
 	scale 85
 	scaleBeforeRotation
 
@@ -32071,8 +32034,6 @@ Ansicht
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/buffer-view_pdf2.png
-	inzipName 
-	embed false
 	scale 85
 	scaleBeforeRotation
 
@@ -32947,7 +32908,32 @@ LyX 1.5.0
 \end_layout
 
 \begin_layout Standard
-\begin_inset FloatList algorithm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+listof{Xalgorithm}{Algorithmenverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+siehe Abschnitt\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "uab:Gleitobjekt-Algorithmen"
+
+\end_inset
+
+ für eine Beschreibung
+\end_layout
 
 \end_inset
 
