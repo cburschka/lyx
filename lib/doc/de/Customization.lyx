@@ -1,12 +1,77 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
 \begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% wenn pdflatex benutzt wird:
+\usepackage{ifpdf}
+\ifpdf
+
+% Fonts fuer huebschere PDF-Ansichten
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}} % if it exists
+ {% wenn nicht vorhanden
+  \usepackage[scaled=0.92]{helvet}
+  \usepackage{mathptmx}
+  \usepackage{courier}
+ } % Ende des Nein-Zweiges
+
+% Alle Querverweise und URLs als Link darstellen
+% In der PDF-Ausgabe
+\usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=0,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={LyX-Anpassung:Möglichkeiten für fortgeschrittene Benutzer},
+  pdfsubject={LyX-Dokumentation, Anpassung},
+  pdfkeywords={LyX, Dokumentation}]{hyperref}
+
+\else % In der DVI- oder PS-Ausgabe
+
+% Alle Querverweise und URLs als Link in der DVI-Ansicht darstellen
+ \usepackage[ps2pdf, colorlinks=true,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
+
+\fi % Ende von: wenn pdflatex benutzt wird
+
+% Setzt den Link fuer Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Die Seiten des Inhaltsverzeichnisses werden roemisch numeriert,
+% ein PDF-Lesezeichen fuer das Inhaltsverzeichnis wird hinzugefuegt
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{Inhaltsverzeichnis}{}
+ \myTOC
+ \cleardoublepage
+ \pagenumbering{arabic}}
+
+% Formatierung von Legenden
+\usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
+
+% Damit der Index den Namen "Stichwortverzeichnis" erhält
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+
+% wird für mehrspaltigen Text benötigt
 \usepackage{multicol}
-\widowpenalty=10000 
-\clubpenalty=10000
 \end_preamble
 \language ngerman
 \inputencoding auto
@@ -42,8 +107,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -141,22 +206,7 @@ Ihre
 \end_layout
 
 \begin_layout Chapter
-Die Konfigurationsdateien von Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X
+Die Konfigurationsdateien von LyX
 \end_layout
 
 \begin_layout Standard
@@ -425,7 +475,7 @@ reference "sec:bindings"
 clipart/
 \family default
 \series default
- Hier sind einige PostScript®-Bilder gespeichert, die Sie in Ihre Dokumente
+ Hier sind einige PostScript-Bilder gespeichert, die Sie in Ihre Dokumente
  einbinden können.
  
 \end_layout
@@ -1072,21 +1122,12 @@ nfigurieren
 \end_layout
 
 \begin_layout Chapter
-Der Dialog 
-\family sans
-\bar under
-W
-\family default
-\bar default
-erkzeuge
+Der Dialog Werkzeuge
 \family sans
 \SpecialChar \menuseparator
 
 \family default
-\bar under
-E
-\bar default
-i
+Ei
 \family sans
 nstellungen
 \family default
@@ -2167,28 +2208,9 @@ name "sec:bindings"
 Tastaturkürzel dienen dazu, einer Taste oder Tastenkombination eine LyX-Funktion
  zuzuordnen.
  Die LyX-Distribution umfasst einige Dateien mit unterschiedlichen Tastaturzuord
-nungen: CUA, die typische Belegung auf PC und CDE, eine Emacs-Version für
- diejenigen, die der 
-\emph on
-reinen
-\emph default
- 
-\emph on
-Lehre
-\emph default
- folgen,
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-\SpecialChar \ldots{}
- das nimmt hoffentlich niemand ernst!
-\end_layout
-
-\end_inset
-
- sowie einige spezialisierte Versionen (broadway, hollywood) und an andere
- Sprachen (Deutsch, Französisch) angepasste Tastenbelegungen.
+nungen: CUA, die typische Belegung auf PC und CDE, eine Emacs-Version sowie
+ einige spezialisierte Versionen (broadway, hollywood) und an andere Sprachen
+ (Deutsch, Französisch) angepasste Tastenbelegungen.
  
 \end_layout
 
@@ -2766,22 +2788,7 @@ Farben
 
 \family sans
 \series bold
-Ly
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-X-Name
+LyX-Name
 \end_layout
 
 \end_inset
@@ -2903,22 +2910,7 @@ schwarz (0,0,0)
 \begin_inset Text
 
 \begin_layout Standard
-LaTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X-Text
+LaTeX-Text
 \end_layout
 
 \end_inset
@@ -2927,22 +2919,7 @@ X-Text
 \begin_inset Text
 
 \begin_layout Standard
-LaTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X-Text
+LaTeX-Text
 \end_layout
 
 \end_inset
@@ -3224,11 +3201,11 @@ view_ps_command
 gv
 \family default
  gesetzt, wenn Sie die entsprechenden Programme installiert haben (
-\begin_inset LatexCommand url
-target "\\view_pspic_command"
+\family typewriter
 
-\end_inset
-
+\backslash
+view_pspic_command
+\family default
  wird auf dasselbe Programm gesetzt).
 \end_layout
 
@@ -3386,22 +3363,7 @@ Referenzhandbuch
 \end_layout
 
 \begin_layout Chapter
-Internationales Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X
+Internationales LyX
 \begin_inset LatexCommand label
 name "chap:i18n"
 
@@ -3770,22 +3732,7 @@ menus.bind
 \end_layout
 
 \begin_layout Section
-Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X übersetzen
+LyX übersetzen
 \end_layout
 
 \begin_layout Subsection
@@ -5583,18 +5530,7 @@ n sehr hilfreich.
 \end_layout
 
 \begin_layout Section
-Installation eines neuen LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Paketes
+Installation eines neuen LaTeX-Paketes
 \end_layout
 
 \begin_layout Standard
@@ -5942,18 +5878,7 @@ Generell können drei Situationen auftreten, wenn Sie eine neue Dokumentenklasse
 \end_layout
 
 \begin_layout Subsection
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X2e 
+LaTeX2e 
 \family typewriter
 sty
 \family default
@@ -6075,18 +6000,7 @@ report
 \end_layout
 
 \begin_layout Subsection
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X2e 
+LaTeX2e 
 \family typewriter
 cls-
 \family default
@@ -6104,18 +6018,7 @@ In diesem Fall müssen Sie ziemlich sicher ein eigenes Layout von Grund auf
 \end_layout
 
 \begin_layout Subsection
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X 2.09 
+LaTeX 2.09 
 \family sans
 sty
 \family default
@@ -9047,11 +8950,7 @@ draft|Post
 \size default
 S
 \size normal
-cript
-\size default
-(R)
-\size normal
- 
+cript 
 \size default
 auf einem
 \size normal
@@ -9125,7 +9024,7 @@ S
 \size normal
 cript
 \size default
-(R) auf einem 
+ auf einem 
 \size normal
 Epson Stylus Color IIs, 360dpi:
 \backslash
@@ -9535,7 +9434,7 @@ lpr
 \begin_layout Standard
 Es ist üblich, für einen 
 \size normal
-PostScript®
+PostScript
 \size default
 -Drucker das Kürzel 
 \size normal
@@ -10299,18 +10198,14 @@ Wir bauen einen Druckerfilter
 \end_layout
 
 \begin_layout Subsection
-PostScript®-Dateien mit Hilfe von Ghostscript ausdrucken
+PostScript-Dateien mit Hilfe von Ghostscript ausdrucken
 \end_layout
 
 \begin_layout Standard
-Vermutlich kann Ihr Drucker nicht von sich aus PostScript
-\size normal
-®
-\size default
- drucken.
+Vermutlich kann Ihr Drucker nicht von sich aus PostScript drucken.
  Um Ihren Drucker trotzdem wie einen 
 \size normal
-PostScript®
+PostScript
 \size default
 -Drucker benutzen zu können, ist es am einfachsten, das
 \size normal
@@ -11553,14 +11448,14 @@ color
 \end_layout
 
 \begin_layout Subsection
-Wenn Ihr Drucker bereits PostScript® versteht\SpecialChar \ldots{}
+Wenn Ihr Drucker bereits PostScript versteht\SpecialChar \ldots{}
 
 \end_layout
 
 \begin_layout Standard
 Viele moderne Laserdrucker haben Post
 \size normal
-Script® 
+Script 
 \size default
 bereits eingebaut.
 
@@ -11569,7 +11464,7 @@ bereits eingebaut.
 \size default
 Einige Laserdrucker benutzen 
 \size normal
-PostScript® 
+PostScript 
 \size default
 sogar als Ihre 
 \begin_inset Quotes gld
@@ -11585,7 +11480,7 @@ Muttersprache
  Allerdings -- wenn Sie eine einfache Textdatei drucken möchten, werden
  Sie den Text erst irgendwie in 
 \size normal
-PostScript® 
+PostScript 
 \size default
 formatieren müssen.
 \end_layout
@@ -11593,7 +11488,7 @@ formatieren müssen.
 \begin_layout Standard
 Es gibt drei verbreitete Programme, die ASCII-Dateien nach 
 \size normal
-PostScript®
+PostScript
 \size default
  übersetzen
 \size normal
@@ -11774,7 +11669,7 @@ ps
 
  und verarbeitet Aufträge in 
 \size normal
-PostScript®
+PostScript
 \size default
 .
  Der Druckerfilter für den 
@@ -12328,7 +12223,7 @@ lpr -Pps
 \size default
 gefolgt vom Namen einer kurzen Datei im 
 \size normal
-PostScript®
+PostScript
 \size default
 -Format, eingeben.
 
@@ -12561,7 +12456,7 @@ Das Programm XFig bearbeitet eine speziell formatierte Datei mit der Endung
 \family typewriter
 transfig
 \family default
- starten, um eine PostScript®-Datei zu erzeugen, die von LaTeX eingebunden
+ starten, um eine PostScript-Datei zu erzeugen, die von LaTeX eingebunden
  werden kann.
  In diesem Fall ist also die 
 \family typewriter
@@ -12583,7 +12478,7 @@ dliche Exportformate für die LyX-Datei zu ermöglichen.
 
 \begin_layout Standard
 So ist es im Falle einer Ausgabe als reiner (ASCII) Text sicher nicht sinnvoll,
- eine PostScript®-Datei im Rohformat einzubinden.
+ eine PostScript-Datei im Rohformat einzubinden.
  In diesem Fall wird dann entweder nur eine Referenz auf die Bilddatei angegeben
 , oder aber es wird ein Konverter gestartet, der eine ASCII-Darstellung
  erzeugt, die in etwa so aussieht wie die ursprüngliche Grafik.
@@ -12602,8 +12497,8 @@ Externes Material
 \family default
  aber auch die einfache Integration mit externen Betrachtern und Editoren.
  So sind Sie bei einer XFig-Abbildung in der Lage, mit einem einigen Klick
- XFig zu starten, um die Abbildung zu bearbeiten oder die erstellte PostScript®-
-Datei mit 
+ XFig zu starten, um die Abbildung zu bearbeiten oder die erstellte PostScript-D
+atei mit 
 \family typewriter
 ghostview
 \family default
