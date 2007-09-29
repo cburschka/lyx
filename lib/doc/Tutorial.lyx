@@ -29,8 +29,8 @@
   pdfpagelayout=OneColumn, pdfnewwindow=true,
   pdfstartview=XYZ, plainpages=false, pdfpagelabels,
   pdfauthor={LyX Team}, pdftex,
-  pdftitle={The LyX User's Guide},pdfsubject={LyX-documentation Intro},
-  pdfkeywords={LyX}]{hyperref}
+  pdftitle={The LyX Tutorial},pdfsubject={LyX-documentation Tutorial},
+  pdfkeywords={LyX, documentation}]{hyperref}
  
 \else % if dvi or ps is produced
 
@@ -84,6 +84,7 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 

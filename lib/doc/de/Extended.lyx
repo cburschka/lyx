@@ -32,9 +32,9 @@
   pdfpagelayout=OneColumn, pdfnewwindow=true,
   pdfstartview=XYZ, plainpages=false, pdfpagelabels,
   pdfauthor={LyX Team}, pdftex,
-  pdftitle={Das LYX-Benutzerhandbuch},
-  pdfsubject={LyX-Dokumentation, Benutzerhandbuch},
-  pdfkeywords={LyX}]{hyperref}
+  pdftitle={Handbuchergänzungen},
+  pdfsubject={LyX-Dokumentation, Benutzerhandbuch, Ergänzungen},
+  pdfkeywords={LyX, Dokumentation}]{hyperref}
 
 \else % if dvi or ps is produced
 
@@ -66,12 +66,16 @@
 \usepackage[ngerman]{babel}
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 
-
 % Damit mehrere Spalten verwendet können, siehe Kap. 7.2
 \usepackage{multicol}
 
 % Befehl aus Kapitel 7.4
-\newcommand{\extratablespace}[1]{\noalign{vskip#1}} 
+\newcommand{\extratablespace}[1]{\noalign{vskip#1}}
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 \end_preamble
 \options bibtotoc, idxtotoc, BCOR7.5mm, titlepage
 \language ngerman
@@ -143,8 +147,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 28.
- August 2007
+letzte Änderung: 29.
+ September 2007
 \end_layout
 
 \begin_layout Standard
@@ -335,55 +339,11 @@ Weil alle Themen dieses Handbuchs stark vom Zusammenspiel LyX--LaTeX abhängen,
 \end_layout
 
 \begin_layout Chapter
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X und LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LyX und LaTeX
 \end_layout
 
 \begin_layout Section
-Wie Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X benutzt
+Wie LyX LaTeX benutzt
 \begin_inset LatexCommand index
 name "LyX und LaTeX"
 
@@ -393,17 +353,6 @@ name "LyX und LaTeX"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Die Klammerung {} verhindert, dass der Sonderbegriff LaTeX erkannt wird,
- ebenso bei LyX, TeX usw.
-\end_layout
-
-\end_inset
-
-
 \begin_inset LatexCommand label
 name "sec:lyxandlatex"
 
@@ -899,18 +848,7 @@ ps2pdf
 \begin_inset Quotes gld
 \end_inset
 
-Hilfe! Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X hat eine unleserliche 
+Hilfe! LyX hat eine unleserliche 
 \family typewriter
 .tex
 \family default
@@ -981,6 +919,19 @@ status collapsed
 \end_inset
 
 X.
+\family default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+Die Klammerung {} verhindert, dass der Sonderbegriff LaTeX erkannt wird,
+ ebenso bei LyX, TeX usw.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1023,29 +974,7 @@ X.
 \end_layout
 
 \begin_layout Section
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Dateien nach Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X konvertieren
+LaTeX-Dateien nach LyX konvertieren
 \begin_inset LatexCommand label
 name "sec:LaTeX-Dateien-nach-LyX"
 
@@ -1163,18 +1092,7 @@ reference "sec:latexcodes"
 \end_layout
 
 \begin_layout Section
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
+LaTeX-Code
 \begin_inset LatexCommand index
 name "LaTeX-Code"
 
@@ -1190,18 +1108,7 @@ name "ERT"
 
 \end_inset
 
-) in Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Dokumente einsetzen
+) in LyX-Dokumente einsetzen
 \end_layout
 
 \begin_layout Standard
@@ -1578,44 +1485,11 @@ Es gibt eine Reihe von LaTeX-Befehlen, die vor den eigentlichen Text gesetzt
 \end_layout
 
 \begin_layout Section
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X und der LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Vorspann
+LyX und der LaTeX-Vorspann
 \end_layout
 
 \begin_layout Subsection
-Über den LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Vorspann
+Über den LaTeX-Vorspann
 \end_layout
 
 \begin_layout Standard
@@ -2147,29 +2021,7 @@ Tricks
 \end_layout
 
 \begin_layout Section
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X und LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Fehler
+LyX und LaTeX-Fehler
 \begin_inset LatexCommand index
 name "LaTeX!-Fehler"
 
@@ -2645,18 +2497,7 @@ name "Literaturverzeichnis"
 
 \end_inset
 
- mit BibTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+ mit BibTeX
 \begin_inset LatexCommand index
 name "BibTeX"
 
@@ -6123,22 +5964,7 @@ Hierbei handelt es sich um chinesische, japanische und koreanische Dokumente.
 \end_layout
 
 \begin_layout Subsection
-LaTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X (plain)
+LaTeX (plain)
 \begin_inset LatexCommand index
 name "Dateiformat!Import!LaTeX"
 
@@ -6265,22 +6091,7 @@ Export in andere Formate
 \end_layout
 
 \begin_layout Subsection
-CJK Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X \SpecialChar \ldots{}
+CJK LyX \SpecialChar \ldots{}
 
 \end_layout
 
@@ -6470,22 +6281,7 @@ Hiermit wird auch eine HTML-Datei erstellt, die von Word gelesen/importiert
 \end_layout
 
 \begin_layout Subsection
-LaTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X (pdflatex und plain)
+LaTeX (pdflatex und plain)
 \begin_inset LatexCommand index
 name "Dateiformat!Export!LaTeX"
 
@@ -6534,22 +6330,7 @@ X
 \end_layout
 
 \begin_layout Subsection
-Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X 1.3.x
+LyX 1.3.x
 \begin_inset LatexCommand index
 name "Dateiformat!Export!LyX 1.3.x"
 
@@ -6634,18 +6415,7 @@ reference "sec:badfonts"
 \end_layout
 
 \begin_layout Subsubsection
-pdfLaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X benutzen
+pdfLaTeX benutzen
 \end_layout
 
 \begin_layout Standard
@@ -6913,29 +6683,7 @@ pmb{1#}}
 \end_layout
 
 \begin_layout Subsubsection
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code und pdfLaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LaTeX-Code und pdfLaTeX
 \end_layout
 
 \begin_layout Standard
@@ -7205,33 +6953,11 @@ custom_export_command "mycommand $$FName"
 \end_layout
 
 \begin_layout Chapter
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Funktionen, die zusätzliche Programme benötigen
+LyX-Funktionen, die zusätzliche Programme benötigen
 \end_layout
 
 \begin_layout Section
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X prüfen
+TeX prüfen
 \end_layout
 
 \begin_layout Standard
@@ -8795,18 +8521,7 @@ name "Versionskontrolle"
 
 \end_inset
 
- in Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+ in LyX
 \end_layout
 
 \begin_layout Standard
@@ -8864,18 +8579,7 @@ Die Implementation in LyX setzt eine aktuelle Version des GNU-RCS-Paketes
 \end_layout
 
 \begin_layout Subsection
-RCS-Befehle in Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+RCS-Befehle in LyX
 \end_layout
 
 \begin_layout Standard
@@ -9279,22 +8983,7 @@ Von dort aus erreichen Sie auch viele andere, hochinteressante Links und
 \end_layout
 
 \begin_layout Subsection
-Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X und Literarische Programmierung
+LyX und Literarische Programmierung
 \end_layout
 
 \begin_layout Standard
@@ -10439,18 +10128,7 @@ ben
 \end_layout
 
 \begin_layout Chapter
-Geheimnisse der LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Meister
+Geheimnisse der LaTeX-Meister
 \begin_inset LatexCommand label
 name "cha:Geheimnisse-der-LaTeX-Meister"
 
@@ -11929,7 +11607,7 @@ Graphit
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -13700,22 +13378,7 @@ end{multicols}
 \end_layout
 
 \begin_layout Subsection
-Von Ly
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X nicht unterstützte Befehle
+Von LyX nicht unterstützte Befehle
 \end_layout
 
 \begin_layout Standard
@@ -14044,22 +13707,7 @@ lyx
 \end_layout
 
 \begin_layout Section
-AASTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X
+AASTeX
 \begin_inset LatexCommand index
 name "Dokumentenklasse!AASTeX"
 
@@ -14977,33 +14625,7 @@ FAQs, Tipps, Tricks und andere Wiederholungen
 \end_layout
 
 \begin_layout Subsubsection
-Wie man Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X und AASTe
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-X zusammenarbeiten lässt
+Wie man LyX und AASTeX zusammenarbeiten lässt
 \end_layout
 
 \begin_layout Standard
@@ -15102,18 +14724,7 @@ You should not mix title layouts with normal ones
 \end_layout
 
 \begin_layout Subsubsection
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Fehler beim Verarbeiten von Tabellen
+LaTeX-Fehler beim Verarbeiten von Tabellen
 \end_layout
 
 \begin_layout Standard
@@ -17820,15 +17431,6 @@ scrlettr
  Die neue Briefklasse hat -- was die LaTeX-Umsetzung betrifft -- ein komplett
  neues Konzept und ist daher nicht kompatibel mit dem Vorgänger.
  Deshalb unterstützt LyX beide Klassen.
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-wirklich?
-\end_layout
-
-\end_inset
-
  Wir empfehlen jedoch den Umstieg auf die neue Briefklasse.
 \end_layout
 
@@ -19961,22 +19563,7 @@ Folien [
 \noun on
 Foil
 \family default
-Te
-\noun default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
-\noun on
-X
+TeX
 \noun default
 ]
 \begin_inset LatexCommand label
@@ -21416,18 +21003,7 @@ Nicht unterstützte Befehle von
 \family sans
 Foil
 \family default
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X
+TeX
 \begin_inset LatexCommand label
 name "sec:unsuppfoils"
 
@@ -22483,18 +22059,7 @@ R
 \end_layout
 
 \begin_layout Section
-article (REVTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X 4)
+article (REVTeX 4)
 \begin_inset LatexCommand index
 name "Dokumentenklasse!article!RevTeX 4"
 
@@ -22648,18 +22213,7 @@ revtex4.lyx
 \end_layout
 
 \begin_layout Subsection
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-X-Vorspann
+LaTeX-Vorspann
 \end_layout
 
 \begin_layout Standard
