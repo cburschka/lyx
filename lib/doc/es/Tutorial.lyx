@@ -3,6 +3,57 @@
 \begin_document
 \begin_header
 \textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
+  {\usepackage[scaled=0.92]{helvet}
+  \usepackage{mathptmx}
+  \usepackage{courier} }
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={The LyX User's Guide},pdfsubject={LyX-documentation Intro},
+  pdfkeywords={LyX}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Contenidos}{}
+   \myTOC
+   \cleardoublepage
+   \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+\end_preamble
 \language spanish
 \inputencoding auto
 \font_roman default
@@ -33,6 +84,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -5775,76 +5827,71 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset LatexCommand label
 name "sec:tex2lyx"
 
 \end_inset
 
-You can import a LaTeX file into LyX by using the 
+Puedes importar un archivo LaTeX en LyX usando la instrucción
 \family sans
 \bar under
-F
+ A
 \bar default
-ile\SpecialChar \menuseparator
+rchivo\SpecialChar \menuseparator
 
 \bar under
 I
 \bar default
-mport\SpecialChar \menuseparator
+mportar\SpecialChar \menuseparator
 
 \bar under
 L
 \bar default
 aTeX
 \family default
- command in LyX.
- This will call 
+.
+ Ésta llamará a 
 \family typewriter
 tex2lyx
 \family default
- which will create a file 
+, que creará un archivo 
 \family typewriter
-foo.lyx
+ foo.lyx
 \family default
- from the file 
+ a partir del archivo 
 \family typewriter
 foo.tex
 \family default
- --- and then open that file.
- If the translation doesn't work, you can try calling 
+ ---y después abrirá ese archivo---.
+  Si la traducción no funciona, puedes probar a ejecutar
 \family typewriter
-tex2lyx
+ tex2lyx
 \family default
- from the command line, possibly using fancier options.
+ en la línea de comandos, posiblemente usando opciones más creativas.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-\lang english
 tex2lyx
 \family default
- will translate most legal LaTeX, but not everything.
- It will leave things it doesn't understand in TeX mode, so after translating
- a file with 
+ traducirá la mayoría de las instrucciones legales de LaTeX, pero no todo.
+ Dejará lo que no entienda en modo TeX, así que después de la traducción
+ con  
 \family typewriter
 tex2lyx
 \family default
-, you can look for red text and hand-edit it to look right.
+,  puedes buscar el texto en rojo y editarlo a mano para tratar de arreglarlo.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-\lang english
 tex2lyx
 \family default
- has its own manpage.
- Read it to find out about which LaTeX commands and environments aren't
- supported, bugs (and how to get around them), and how to use the various
- options.
+ tiene su propia página de manual.
+ Léela si quieres conocer las instrucciones y entornos de LaTeX que no admite,
+ fallos (y cómo evitarlos), y cómo usar las distintas opciones.
 \end_layout
 
 \begin_layout Subsection

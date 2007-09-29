@@ -13,9 +13,6 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-% provides missing characters,
-\usepackage{textcomp}
-
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
