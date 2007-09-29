@@ -14437,7 +14437,12 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-Translating from LaTeX into LyX is performed by a Python script called tex2lyx.
+Translating from LaTeX into LyX is performed by a converter program called
+ 
+\family typewriter
+tex2lyx
+\family default
+.
  Although it is a standalone program which can be called from the command
  line, LyX will call it automatically when a LaTeX document is imported.
  See section\InsetSpace ~

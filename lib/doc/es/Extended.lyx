@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -38,6 +38,11 @@
   linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
 
 \fi % end if pdflatex is used
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
 \end_preamble
 \language spanish
 \inputencoding latin1
@@ -69,9 +74,8 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -218,98 +222,11 @@ Puesto que todos los temas tratados en este manual dependen estrechamente
 \end_layout
 
 \begin_layout Chapter
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- y LaTeX
-\series medium
-\size normal
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- es necesario para que el texto de los marcadores del índice en la salida
- PDF pueda contener caracteres descentrados como la 
-\begin_inset Quotes fld
-\end_inset
-
-y
-\begin_inset Quotes frd
-\end_inset
-
- en la palabra 
-\begin_inset Quotes fld
-\end_inset
-
-LyX
-\begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
+LyX y LaTeX
 \end_layout
 
 \begin_layout Section
-Uso de LaTeX en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
-
+Uso de LaTeX en LyX
 \end_layout
 
 \begin_layout Standard
@@ -553,31 +470,7 @@ ghostview
 \end_layout
 
 \begin_layout Section
-«¡Socorro! ¡
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- ha generado un archivo 
+«¡Socorro! ¡LyX ha generado un archivo 
 \family typewriter
 .tex
 \family default
@@ -626,27 +519,9 @@ Archivo
 \end_layout
 
 \begin_layout Section
-Traducir archivos LaTeX en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
+Traducir archivos LaTeX en LyX
+\begin_inset LatexCommand label
+name "sec:Traducir-archivos-LaTeX"
 
 \end_inset
 
@@ -718,31 +593,7 @@ reference "sec:códigolatex"
 \end_layout
 
 \begin_layout Section
-Insertar Código LaTeX en Documentos 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- 
+Insertar Código LaTeX en Documentos LyX 
 \begin_inset LatexCommand label
 name "sec:Insertar-Código-LaTeX"
 
@@ -797,7 +648,7 @@ insertado
 \family default
 
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -1088,30 +939,7 @@ Determinados comandos LaTeX deben colocarse antes del comienzo del documento.
 \end_layout
 
 \begin_layout Section
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- y el Preámbulo LaTeX
+LyX y el Preámbulo LaTeX
 \end_layout
 
 \begin_layout Subsection
@@ -1629,30 +1457,7 @@ reference "cha:secretos"
 \end_layout
 
 \begin_layout Section
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- y Errores de LaTeX
+LyX y Errores de LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -5277,71 +5082,7 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-Comandos no soportados por 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
-
-\series medium
-\size normal
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- es necesario para que el texto de los marcadores del índice en la salida
- PDF pueda contener caracteres descentrados como la 
-\begin_inset Quotes fld
-\end_inset
-
-y
-\begin_inset Quotes frd
-\end_inset
-
- en la palabra 
-\begin_inset Quotes fld
-\end_inset
-
-LyX
-\begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
+Comandos no soportados por LyX
 \end_layout
 
 \begin_layout Standard
@@ -6559,70 +6300,7 @@ FAQs, Consejos, Trucos, y Otras Reflexiones
 \end_layout
 
 \begin_layout Subsubsection
-Conseguir que 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- y AASTeX cooperen
-\series medium
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- es necesario para que el texto de los marcadores del índice en la salida
- PDF pueda contener caracteres descentrados como la 
-\begin_inset Quotes fld
-\end_inset
-
-y
-\begin_inset Quotes frd
-\end_inset
-
- en la palabra 
-\begin_inset Quotes fld
-\end_inset
-
-LyX
-\begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
+Conseguir que LyX y AASTeX cooperen
 \end_layout
 
 \begin_layout Standard
@@ -15163,7 +14841,7 @@ poema
 \begin_layout Chapter
 Importar y Exportar Formatos de Archivo Alternativos
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Importar y Exportar
@@ -15226,10 +14904,28 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-Un script de Perl, reLyX, se encarga de traducir de LaTeX a LyX.
- Aunque es un programa externo que se puede ejecutar en línea de comandos,
- LyX lo emplea automáticamente al importar un documento LaTeX.
- En LyX no hay parámetros de usuario disponibles para reLyX.
+
+\lang english
+Translating from LaTeX into LyX is performed by a converter program called
+ 
+\family typewriter
+tex2lyx
+\family default
+.
+ Although it is a standalone program which can be called from the command
+ line, LyX will call it automatically when a LaTeX document is imported.
+ See section
+\lang spanish
+\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Traducir-archivos-LaTeX"
+
+\end_inset
+
+ 
+\lang english
+for a complete description.
 \end_layout
 
 \begin_layout Subsection
@@ -17402,68 +17098,7 @@ lacheck
 \end_layout
 
 \begin_layout Section
-Control de Versiones en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- es necesario para que el texto de los marcadores del índice en la salida
- PDF pueda contener caracteres descentrados como la 
-\begin_inset Quotes fld
-\end_inset
-
-y
-\begin_inset Quotes frd
-\end_inset
-
- en la palabra 
-\begin_inset Quotes fld
-\end_inset
-
-LyX
-\begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
+Control de Versiones en LyX
 \end_layout
 
 \begin_layout Standard
@@ -17517,31 +17152,7 @@ La implementación en LyX asume una reciente versión del paquete GNU RCS
 \end_layout
 
 \begin_layout Subsection
-Comandos RCS en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
-
+Comandos RCS en LyX
 \end_layout
 
 \begin_layout Standard
@@ -18014,70 +17625,7 @@ Desde allí puedes acceder a muchos enlaces de interés y a ejemplos de programa
 \end_layout
 
 \begin_layout Subsection
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
- y la Programación Literaria
-\series medium
-\size normal
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- es necesario para que el texto de los marcadores del índice en la salida
- PDF pueda contener caracteres descentrados como la 
-\begin_inset Quotes fld
-\end_inset
-
-y
-\begin_inset Quotes frd
-\end_inset
-
- en la palabra 
-\begin_inset Quotes fld
-\end_inset
-
-LyX
-\begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
+LyX y la Programación Literaria
 \end_layout
 
 \begin_layout Standard
@@ -18790,70 +18338,7 @@ LIBDIR
 \end_layout
 
 \begin_layout Subsubsection
-Configurar 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}{LyX}
-\end_layout
-
-\end_inset
-
-
-\series medium
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-El comando 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-texorpdfstring
-\begin_inset Quotes frd
-\end_inset
-
- es necesario para que el texto de los marcadores del índice en la salida
- PDF pueda contener caracteres descentrados como la 
-\begin_inset Quotes fld
-\end_inset
-
-y
-\begin_inset Quotes frd
-\end_inset
-
- en la palabra 
-\begin_inset Quotes fld
-\end_inset
-
-LyX
-\begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
+Configurar LyX
 \end_layout
 
 \begin_layout Standard
