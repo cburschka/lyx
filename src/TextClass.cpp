@@ -16,6 +16,7 @@
 
 #include "TextClass.h"
 #include "debug.h"
+#include "Layout.h"
 #include "Lexer.h"
 #include "Counters.h"
 #include "gettext.h"
@@ -30,10 +31,10 @@
 #include "support/os.h"
 
 #include <boost/filesystem/operations.hpp>
-namespace fs = boost::filesystem;
 
 #include <sstream>
 
+namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -514,7 +515,7 @@ void TextClass::readTitleType(Lexer & lexrc)
 		return;
 	case TITLE_COMMAND_AFTER:
 	case TITLE_ENVIRONMENT:
-		titletype_ = static_cast<LYX_TITLE_LATEX_TYPES>(le);
+		titletype_ = static_cast<TitleLatexType>(le);
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
@@ -1168,7 +1169,7 @@ unsigned int TextClass::columns() const
 }
 
 
-LYX_TITLE_LATEX_TYPES TextClass::titletype() const
+TitleLatexType TextClass::titletype() const
 {
 	return titletype_;
 }

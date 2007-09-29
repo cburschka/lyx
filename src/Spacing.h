@@ -22,7 +22,6 @@
 
 namespace lyx {
 
-
 ///
 class Spacing {
 public:
@@ -42,16 +41,11 @@ public:
 	///
 	Spacing() : space(Default), value("1.0") {}
 	///
-	Spacing(Spacing::Space sp, double val = 1.0) {
-		set(sp, val);
-	}
-	Spacing(Spacing::Space sp, std::string const & val) {
-		set(sp, val);
-	}
+	Spacing(Spacing::Space sp, double val = 1.0) { set(sp, val); }
 	///
-	bool isDefault() const {
-		return space == Default;
-	}
+	Spacing(Spacing::Space sp, std::string const & val) { set(sp, val); }
+	///
+	bool isDefault() const { return space == Default; }
 	///
 	std::string const getValueAsString() const;
 	///

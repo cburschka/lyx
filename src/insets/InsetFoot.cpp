@@ -18,7 +18,8 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "gettext.h"
-// the following is needed just to get the layout of the enclosing
+#include "Layout.h"
+// FIXME: the following is needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
 #include "OutputParams.h"
 #include "ParIterator.h"

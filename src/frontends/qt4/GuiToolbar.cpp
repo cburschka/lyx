@@ -21,6 +21,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "IconPalette.h"
+#include "Layout.h"
 #include "LyXFunc.h"
 #include "ToolbarBackend.h"
 

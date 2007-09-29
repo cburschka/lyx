@@ -35,6 +35,7 @@
 #include "gettext.h"
 #include "Intl.h"
 #include "Language.h"
+#include "Layout.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
 #include "Lexer.h"

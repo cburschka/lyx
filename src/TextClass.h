@@ -11,7 +11,8 @@
 #define LYXTEXTCLASS_H
 
 #include "Color.h"
-#include "Layout.h"
+#include "Font.h"
+#include "LayoutEnums.h"
 #include "lyxlayout_ptr_fwd.h"
 
 #include <boost/shared_ptr.hpp>
@@ -24,6 +25,7 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+class Layout;
 class Lexer;
 class Counters;
 class FloatList;
@@ -178,7 +180,7 @@ public:
 	docstring const & rightmargin() const;
 
 	/// The type of command used to produce a title
-	LYX_TITLE_LATEX_TYPES titletype() const;
+	TitleLatexType titletype() const;
 	/// The name of the title command
 	std::string const & titlename() const;
 
@@ -243,7 +245,7 @@ private:
 	docstring rightmargin_;
 
 	/// The type of command used to produce a title
-	LYX_TITLE_LATEX_TYPES titletype_;
+	TitleLatexType titletype_;
 	/// The name of the title command
 	std::string titlename_;
 

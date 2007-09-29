@@ -18,10 +18,10 @@
 #define PARAGRAPH_METRICS_H
 
 #include "Dimension.h"
-#include "Paragraph.h"
 #include "Row.h"
 
 #include <map>
+#include <vector>
 
 namespace lyx {
 
@@ -32,16 +32,21 @@ namespace lyx {
  */
 typedef std::vector<Row> RowList;
 
+class Buffer;
+class BufferParams;
+class Font;
+class Inset;
+class Paragraph;
 class MetricsInfo;
 class PainterInfo;
 
-/// Helper class for Paragraph Metrics.
-class ParagraphMetrics  {
+/// Helper class for paragraph metrics.
+class ParagraphMetrics {
 public:
 	/// Default constructor (only here for STL containers).
-	ParagraphMetrics(): par_(0) {};
+	ParagraphMetrics() : par_(0) {}
 	/// The only useful constructor.
-	ParagraphMetrics(Paragraph const & par);
+	explicit ParagraphMetrics(Paragraph const & par);
 
 	/// Copy operator.
 	ParagraphMetrics & operator=(ParagraphMetrics const &);

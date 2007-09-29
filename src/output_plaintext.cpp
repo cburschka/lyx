@@ -16,6 +16,7 @@
 #include "BufferParams.h"
 #include "debug.h"
 #include "gettext.h"
+#include "Layout.h"
 #include "output.h"
 #include "OutputParams.h"
 #include "Paragraph.h"

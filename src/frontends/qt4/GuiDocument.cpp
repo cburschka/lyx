@@ -14,6 +14,7 @@
 #include "GuiDocument.h"
 
 #include "FloatPlacement.h"
+#include "Layout.h"
 #include "LengthCombo.h"
 #include "PanelStack.h"
 #include "qt_helpers.h"

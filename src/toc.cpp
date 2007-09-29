@@ -16,20 +16,21 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Cursor.h"
+#include "debug.h"
 #include "FuncRequest.h"
-#include "Text.h"
+#include "Layout.h"
 #include "LyXAction.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
-#include "Cursor.h"
-#include "debug.h"
+#include "Text.h"
 #include "Undo.h"
 
 
 namespace lyx {
 namespace toc {
 
-void outline(OutlineOp mode,  Cursor & cur)
+void outline(OutlineOp mode, Cursor & cur)
 {
 	Buffer & buf = cur.buffer();
 	pit_type & pit = cur.pit();

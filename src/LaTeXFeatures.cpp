@@ -23,6 +23,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "Language.h"
+#include "Layout.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 

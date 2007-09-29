@@ -23,6 +23,7 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "Language.h"
+#include "Layout.h"
 #include "Color.h"
 #include "LyXAction.h"
 #include "Lexer.h"

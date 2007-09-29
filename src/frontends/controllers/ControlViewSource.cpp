@@ -14,11 +14,12 @@
 #include <config.h>
 
 #include "ControlViewSource.h"
-#include "gettext.h"
-#include "support/types.h"
+
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
+#include "gettext.h"
+#include "Paragraph.h"
 #include "TexRow.h"
 
 

@@ -16,11 +16,12 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "debug.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
+#include "Layout.h"
 #include "LyXAction.h"
 #include "Paragraph.h"
-#include "debug.h"
 
 #include "insets/InsetOptArg.h"
 
@@ -31,7 +32,10 @@ using std::string;
 namespace lyx {
 
 ///////////////////////////////////////////////////////////////////////////
+//
 // TocItem implementation
+//
+///////////////////////////////////////////////////////////////////////////
 
 TocItem::TocItem(ParConstIterator const & par_it, int d,
 		docstring const & s)
@@ -71,7 +75,10 @@ FuncRequest TocItem::action() const
 
 
 ///////////////////////////////////////////////////////////////////////////
+//
 // TocBackend implementation
+//
+///////////////////////////////////////////////////////////////////////////
 
 Toc const & TocBackend::toc(std::string const & type) const
 {

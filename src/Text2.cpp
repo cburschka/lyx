@@ -37,6 +37,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "Language.h"
+#include "Layout.h"
 #include "Lexer.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"

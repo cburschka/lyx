@@ -21,6 +21,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
+#include "Layout.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "TextClass.h"

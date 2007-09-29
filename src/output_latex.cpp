@@ -17,6 +17,7 @@
 #include "debug.h"
 #include "Encoding.h"
 #include "Language.h"
+#include "Layout.h"
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
@@ -170,12 +171,12 @@ TeXEnvironment(Buffer const & buf,
 			os << '\n';
 			texrow.newline();
 		} else if (par->params().depth() > pit->params().depth()) {
-			    if (par->layout()->isParagraph()) {
+			if (par->layout()->isParagraph()) {
+			  // Thinko!
+			  // How to handle this? (Lgb)
+			  //&& !suffixIs(os, "\n\n")
+				  //) {
 
-			    // Thinko!
-			    // How to handle this? (Lgb)
-			    //&& !suffixIs(os, "\n\n")
-				    //) {
 				// There should be at least one '\n' already
 				// but we need there to be two for Standard
 				// paragraphs that are depth-increment'ed to be

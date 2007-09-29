@@ -17,6 +17,7 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "Text.h"
+#include "Layout.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 

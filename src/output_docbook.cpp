@@ -16,16 +16,15 @@
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
-#include "OutputParams.h"
 #include "Counters.h"
 #include "debug.h"
+#include "Layout.h"
+#include "OutputParams.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
-
-#include "insets/InsetCommand.h"
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"

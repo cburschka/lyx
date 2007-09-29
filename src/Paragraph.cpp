@@ -28,6 +28,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Color.h"
+#include "Layout.h"
 #include "Length.h"
 #include "Font.h"
 #include "LyXRC.h"

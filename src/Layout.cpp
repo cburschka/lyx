@@ -94,8 +94,7 @@ enum LayoutTags {
 
 /////////////////////
 
-// Constructor for layout
-Layout::Layout ()
+Layout::Layout()
 {
 	margintype = MARGIN_STATIC;
 	latextype = LATEX_PARAGRAPH;
@@ -131,7 +130,6 @@ Layout::Layout ()
 }
 
 
-// Reads a layout definition from file
 bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
@@ -656,16 +654,13 @@ void Layout::readLabelType(Lexer & lexrc)
 }
 
 
-namespace {
-
-keyword_item endlabelTypeTags[] = {
+static keyword_item endlabelTypeTags[] =
+{
 	{ "box",	END_LABEL_BOX },
 	{ "filled_box",	END_LABEL_FILLED_BOX },
 	{ "no_label",	END_LABEL_NO_LABEL },
 	{ "static",     END_LABEL_STATIC }
 };
-
-} // namespace anon
 
 
 void Layout::readEndLabelType(Lexer & lexrc)
@@ -681,7 +676,7 @@ void Layout::readEndLabelType(Lexer & lexrc)
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX:
 	case END_LABEL_NO_LABEL:
-		endlabeltype = static_cast<LYX_END_LABEL_TYPES>(le);
+		endlabeltype = static_cast<EndLabelType>(le);
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
@@ -713,7 +708,7 @@ void Layout::readMargin(Lexer & lexrc)
 	case MARGIN_DYNAMIC:
 	case MARGIN_FIRST_DYNAMIC:
 	case MARGIN_RIGHT_ADDRESS_BOX:
-		margintype = static_cast<LYX_MARGIN_TYPE>(le);
+		margintype = static_cast<MarginType>(le);
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
@@ -746,7 +741,7 @@ void Layout::readLatexType(Lexer & lexrc)
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_BIB_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		latextype = static_cast<LYX_LATEX_TYPES>(le);
+		latextype = static_cast<LatexType>(le);
 		break;
 	default:
 		lyxerr << "Unhandled value " << le
@@ -805,9 +800,9 @@ docstring const & Layout::name() const
 }
 
 
-void Layout::setName(docstring const & n)
+void Layout::setName(docstring const & name)
 {
-	name_ = n;
+	name_ = name;
 }
 
 
@@ -832,7 +827,5 @@ Layout * Layout::forCaption()
 	lay->optionalargs = 1;
 	return lay;
 }
-
-
 
 } // namespace lyx

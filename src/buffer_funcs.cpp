@@ -26,6 +26,7 @@
 #include "InsetIterator.h"
 #include "Language.h"
 #include "LaTeX.h"
+#include "Layout.h"
 #include "LyX.h"
 #include "lyxlayout_ptr_fwd.h"
 #include "TextClass.h"
@@ -347,7 +348,7 @@ depth_type getDepth(DocIterator const & it)
 depth_type getItemDepth(ParIterator const & it)
 {
 	Paragraph const & par = *it;
-	LYX_LABEL_TYPES const labeltype = par.layout()->labeltype;
+	LabelType const labeltype = par.layout()->labeltype;
 
 	if (labeltype != LABEL_ENUMERATE && labeltype != LABEL_ITEMIZE)
 		return 0;

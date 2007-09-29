@@ -14,7 +14,7 @@
 #ifndef PARAGRAPHPARAMETERS_H
 #define PARAGRAPHPARAMETERS_H
 
-#include "Layout.h"
+#include "LayoutEnums.h"
 #include "Length.h"
 #include "Spacing.h"
 
@@ -28,6 +28,7 @@
 namespace lyx {
 
 class BufferView;
+class Layout;
 class Length;
 class Lexer;
 class Paragraph;

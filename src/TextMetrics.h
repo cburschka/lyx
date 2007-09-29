@@ -15,22 +15,19 @@
 #define TEXT_METRICS_H
 
 #include "Font.h"
-// FIXME: We only need Point class definition, not the full
-// CoordCache.
+// FIXME: We only need Point class definition, not the full CoordCache.
 #include "CoordCache.h"
 #include "ParagraphMetrics.h"
 
 #include "support/types.h"
 
-#include <boost/utility.hpp>
 #include <boost/tuple/tuple.hpp>
-
-#include <map>
-
 
 namespace lyx {
 
 class BufferView;
+class Cursor;
+class CursorSlice;
 class DocIterator;
 class MetricsInfo;
 class Text;
@@ -40,7 +37,7 @@ class TextMetrics
 {
 public:
 	/// Default constructor (only here for STL containers).
-	TextMetrics(): text_(0) {}
+	TextMetrics() : text_(0) {}
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
 	
@@ -58,9 +55,8 @@ public:
 
 	///
 	Dimension const & dimension() const { return dim_; }
-
+	///
 	Point const & origin() const { return origin_; }
-
 
 
 	/// compute text metrics.

@@ -33,6 +33,7 @@
 #include "Language.h"
 #include "LaTeX.h"
 #include "LaTeXFeatures.h"
+#include "Layout.h"
 #include "LyXAction.h"
 #include "Lexer.h"
 #include "Text.h"

@@ -29,6 +29,7 @@
 #include "debug.h"
 #include "FontIterator.h"
 #include "FuncRequest.h"
+#include "Layout.h"
 #include "Length.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
