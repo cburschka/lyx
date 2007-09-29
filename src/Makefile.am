@@ -94,8 +94,6 @@ liblyxcore_la_SOURCES = \
 	BufferParams.cpp \
 	BufferParams.h \
 	BufferView.cpp \
-	bufferview_funcs.cpp \
-	bufferview_funcs.h \
 	BufferView.h \
 	Bullet.cpp \
 	Bullet.h \

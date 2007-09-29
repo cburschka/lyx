@@ -25,7 +25,6 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "bufferview_funcs.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -90,112 +89,92 @@ namespace frontend {
 extern docstring current_layout;
 }
 
-namespace {
+// globals...
+static Font freefont(Font::ALL_IGNORE);
+static bool toggleall = false;
 
-	// globals...
-	Font freefont(Font::ALL_IGNORE);
-	bool toggleall = false;
-
-	void toggleAndShow(Cursor & cur, Text * text,
-		Font const & font, bool toggleall = true)
-	{
-		text->toggleFree(cur, font, toggleall);
-
-		if (font.language() != ignore_language ||
-				font.number() != Font::IGNORE) {
-			TextMetrics const & tm = cur.bv().textMetrics(text);
-			if (cur.boundary() != tm.isRTLBoundary(cur.pit(),
-			                        cur.pos(), cur.real_current_font))
-				text->setCursor(cur, cur.pit(), cur.pos(),
-				                false, !cur.boundary());
-		}
-	}
-
-
-	void moveCursor(Cursor & cur, bool selecting)
-	{
-		if (selecting || cur.mark())
-			cur.setSelection();
-	}
-
-
-	void finishChange(Cursor & cur, bool selecting)
-	{
-		finishUndo();
-		moveCursor(cur, selecting);
-	}
-
-
-	void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
-	{
-		recordUndo(cur);
-		docstring sel = cur.selectionAsString(false);
-
-		// It may happen that sel is empty but there is a selection
-		replaceSelection(cur);
-
-		if (sel.empty()) {
-#ifdef ENABLE_ASSERTIONS
-			const int old_pos = cur.pos();
-#endif
-			cur.insert(new InsetMathHull(hullSimple));
-			BOOST_ASSERT(old_pos == cur.pos());
-			cur.nextInset()->edit(cur, true);
-			// don't do that also for LFUN_MATH_MODE
-			// unless you want end up with always changing
-			// to mathrm when opening an inlined inset --
-			// I really hate "LyXfunc overloading"...
-			if (display)
-				cur.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
-			// Avoid an unnecessary undo step if cmd.argument
-			// is empty
-			if (!cmd.argument().empty())
-				cur.dispatch(FuncRequest(LFUN_MATH_INSERT,
-							 cmd.argument()));
-		} else {
-			// create a macro if we see "\\newcommand"
-			// somewhere, and an ordinary formula
-			// otherwise
-			if (sel.find(from_ascii("\\newcommand")) == string::npos
-			    && sel.find(from_ascii("\\def")) == string::npos)
-			{
-				InsetMathHull * formula = new InsetMathHull;
-				istringstream is(to_utf8(sel));
-				Lexer lex(0, 0);
-				lex.setStream(is);
-				formula->read(cur.buffer(), lex);
-				if (formula->getType() == hullNone)
-					// Don't create pseudo formulas if
-					// delimiters are left out
-					formula->mutate(hullSimple);
-				cur.insert(formula);
-			} else {
-				cur.insert(new MathMacroTemplate(sel));
-			}
-		}
-		cur.message(from_utf8(N_("Math editor mode")));
-	}
-
-} // namespace anon
-
-
-
-namespace bv_funcs {
-
-string const freefont2string()
+static void toggleAndShow(Cursor & cur, Text * text,
+	Font const & font, bool toggleall = true)
 {
-	string data;
-	if (font2string(freefont, toggleall, data))
-		return data;
-	return string();
+	text->toggleFree(cur, font, toggleall);
+
+	if (font.language() != ignore_language ||
+			font.number() != Font::IGNORE) {
+		TextMetrics const & tm = cur.bv().textMetrics(text);
+		if (cur.boundary() != tm.isRTLBoundary(cur.pit(),
+														cur.pos(), cur.real_current_font))
+			text->setCursor(cur, cur.pit(), cur.pos(),
+											false, !cur.boundary());
+	}
 }
 
+
+static void moveCursor(Cursor & cur, bool selecting)
+{
+	if (selecting || cur.mark())
+		cur.setSelection();
 }
 
 
-namespace {
+static void finishChange(Cursor & cur, bool selecting)
+{
+	finishUndo();
+	moveCursor(cur, selecting);
+}
 
-void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
+
+static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
+{
+	recordUndo(cur);
+	docstring sel = cur.selectionAsString(false);
+
+	// It may happen that sel is empty but there is a selection
+	replaceSelection(cur);
+
+	if (sel.empty()) {
+#ifdef ENABLE_ASSERTIONS
+		const int old_pos = cur.pos();
+#endif
+		cur.insert(new InsetMathHull(hullSimple));
+		BOOST_ASSERT(old_pos == cur.pos());
+		cur.nextInset()->edit(cur, true);
+		// don't do that also for LFUN_MATH_MODE
+		// unless you want end up with always changing
+		// to mathrm when opening an inlined inset --
+		// I really hate "LyXfunc overloading"...
+		if (display)
+			cur.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
+		// Avoid an unnecessary undo step if cmd.argument
+		// is empty
+		if (!cmd.argument().empty())
+			cur.dispatch(FuncRequest(LFUN_MATH_INSERT,
+						 cmd.argument()));
+	} else {
+		// create a macro if we see "\\newcommand"
+		// somewhere, and an ordinary formula
+		// otherwise
+		if (sel.find(from_ascii("\\newcommand")) == string::npos
+				&& sel.find(from_ascii("\\def")) == string::npos)
+		{
+			InsetMathHull * formula = new InsetMathHull;
+			istringstream is(to_utf8(sel));
+			Lexer lex(0, 0);
+			lex.setStream(is);
+			formula->read(cur.buffer(), lex);
+			if (formula->getType() == hullNone)
+				// Don't create pseudo formulas if
+				// delimiters are left out
+				formula->mutate(hullSimple);
+			cur.insert(formula);
+		} else {
+			cur.insert(new MathMacroTemplate(sel));
+		}
+	}
+	cur.message(from_utf8(N_("Math editor mode")));
+}
+
+
+static void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 {
 	recordUndo(cur);
 	cap::replaceSelection(cur);
@@ -204,7 +183,7 @@ void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 }
 
 
-bool doInsertInset(Cursor & cur, Text * text,
+static bool doInsertInset(Cursor & cur, Text * text,
 	FuncRequest const & cmd, bool edit, bool pastesel)
 {
 	Inset * inset = createInset(&cur.bv(), cmd);
@@ -235,7 +214,10 @@ bool doInsertInset(Cursor & cur, Text * text,
 }
 
 
-} // anon namespace
+string const freefont2string()
+{
+	return freefont.toString(toggleall);
+}
 
 
 void Text::number(Cursor & cur)
@@ -1364,7 +1346,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FONT_FREE_UPDATE: {
 		Font font;
 		bool toggle;
-		if (bv_funcs::string2font(to_utf8(cmd.argument()), font, toggle)) {
+		if (font.fromString(to_utf8(cmd.argument()), toggle)) {
 			freefont = font;
 			toggleall = toggle;
 			toggleAndShow(cur, this, freefont, toggleall);

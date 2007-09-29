@@ -15,7 +15,6 @@
 
 #include "Bidi.h"
 #include "BufferView.h"
-#include "bufferview_funcs.h"
 #include "Buffer.h"
 #include "Cursor.h"
 #include "CoordCache.h"

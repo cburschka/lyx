@@ -25,12 +25,10 @@
 
 namespace lyx {
 
-
 class Lexer;
 class BufferParams;
 class Language;
 class OutputParams;
-
 
 ///
 class Font {
@@ -340,6 +338,11 @@ public:
 		return bits.shape;
 	}
 
+	/// Set \param data using \param font and \param toggle.
+	std::string toString(bool toggle) const;
+
+	/// Set \param font and \param toggle using \param data. Return success.
+	bool fromString(std::string const & data, bool & toggle);
 
 	/** Compaq cxx 6.5 requires that the definition be public so that
 	    it can compile operator==()
@@ -422,6 +425,11 @@ bool operator!=(Font const & font1, Font const & font2)
 {
 	return !(font1 == font2);
 }
+
+/** Returns the current freefont, encoded as a std::string to be passed to the
+ *  frontends.
+ */
+std::string const freefont2string();
 
 
 } // namespace lyx

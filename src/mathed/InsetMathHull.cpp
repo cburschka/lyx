@@ -25,9 +25,6 @@
 #include "MathSupport.h"
 #include "InsetMathRef.h"
 
-#include "bufferview_funcs.h"
-#include "Text.h"
-
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -43,6 +40,7 @@
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "sgml.h"
+#include "Text.h"
 #include "TextPainter.h"
 #include "Undo.h"
 
@@ -1304,7 +1302,7 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 	recordUndo(cur);
 	Font font;
 	bool b;
-	bv_funcs::string2font(to_utf8(arg), font, b);
+	font.fromString(to_utf8(arg), b);
 	if (font.color() != Color::inherit) {
 		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);

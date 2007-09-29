@@ -27,7 +27,6 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
-#include "bufferview_funcs.h"
 #include "BufferView.h"
 #include "callback.h"
 #include "Color.h"
@@ -116,8 +115,6 @@ namespace fs = boost::filesystem;
 
 namespace lyx {
 
-using bv_funcs::freefont2string;
-
 using frontend::LyXView;
 
 using support::absolutePath;
@@ -151,8 +148,7 @@ namespace Alert = frontend::Alert;
 
 namespace {
 
-bool getLocalStatus(Cursor cursor,
-	       FuncRequest const & cmd, FuncStatus & status)
+bool getLocalStatus(Cursor cursor, FuncRequest const & cmd, FuncStatus & status)
 {
 	// Try to fix cursor in case it is broken.
 	cursor.fixIfBroken();

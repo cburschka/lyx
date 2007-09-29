@@ -27,11 +27,14 @@
 #include "output_latex.h"
 #include "OutputParams.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
 
 using std::endl;
 using std::string;
 using std::ostream;
+using std::ostringstream;
+using std::istringstream;
 using std::pair;
 
 #ifndef CXX_GLOBAL_CSTD
@@ -971,6 +974,99 @@ Color_color Font::realColor() const
 	if (color() == Color::none)
 		return Color::foreground;
 	return color();
+}
+
+
+std::string Font::toString(bool const toggle) const
+{
+	string lang = "ignore";
+	if (language())
+		lang = language()->lang();
+
+	ostringstream os;
+	os << "family " << family() << '\n'
+	   << "series " << series() << '\n'
+	   << "shape " << shape() << '\n'
+	   << "size " << size() << '\n'
+	   << "emph " << emph() << '\n'
+	   << "underbar " << underbar() << '\n'
+	   << "noun " << noun() << '\n'
+	   << "number " << number() << '\n'
+	   << "color " << color() << '\n'
+	   << "language " << lang << '\n'
+	   << "toggleall " << convert<string>(toggle);
+	return os.str();
+}
+
+
+bool Font::fromString(string const & data, bool & toggle)
+{
+	istringstream is(data);
+	Lexer lex(0,0);
+	lex.setStream(is);
+
+	int nset = 0;
+	while (lex.isOK()) {
+		string token;
+		if (lex.next())
+			token = lex.getString();
+
+		if (token.empty() || !lex.next())
+			break;
+
+		if (token == "family") {
+			int const next = lex.getInteger();
+			setFamily(FONT_FAMILY(next));
+
+		} else if (token == "series") {
+			int const next = lex.getInteger();
+			setSeries(FONT_SERIES(next));
+
+		} else if (token == "shape") {
+			int const next = lex.getInteger();
+			setShape(FONT_SHAPE(next));
+
+		} else if (token == "size") {
+			int const next = lex.getInteger();
+			setSize(FONT_SIZE(next));
+
+		} else if (token == "emph" || token == "underbar" ||
+			   token == "noun" || token == "number") {
+
+			int const next = lex.getInteger();
+			FONT_MISC_STATE const misc = FONT_MISC_STATE(next);
+
+			if (token == "emph")
+			  setEmph(misc);
+			else if (token == "underbar")
+				setUnderbar(misc);
+			else if (token == "noun")
+				setNoun(misc);
+			else if (token == "number")
+				setNumber(misc);
+
+		} else if (token == "color") {
+			int const next = lex.getInteger();
+			setColor(Color::color(next));
+
+		} else if (token == "language") {
+			string const next = lex.getString();
+			if (next == "ignore")
+				setLanguage(ignore_language);
+			else
+				setLanguage(languages.getLanguage(next));
+
+		} else if (token == "toggleall") {
+			toggle = lex.getBool();
+
+		} else {
+			// Unrecognised token
+			break;
+		}
+
+		++nset;
+	}
+	return (nset > 0);
 }
 
 

@@ -20,7 +20,6 @@
 #include "buffer_funcs.h"
 #include "BufferList.h"
 #include "BufferParams.h"
-#include "bufferview_funcs.h"
 #include "callback.h" // added for Dispatch functions
 #include "CoordCache.h"
 #include "CutAndPaste.h"

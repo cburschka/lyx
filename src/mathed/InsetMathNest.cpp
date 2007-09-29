@@ -34,7 +34,6 @@
 #include "MathSupport.h"
 
 #include "Bidi.h"
-#include "bufferview_funcs.h"
 #include "BufferView.h"
 #include "Color.h"
 #include "CoordCache.h"
@@ -432,7 +431,7 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 	recordUndo(cur, Undo::ATOMIC);
 	Font font;
 	bool b;
-	bv_funcs::string2font(to_utf8(arg), font, b);
+	font.fromString(to_utf8(arg), b);
 	if (font.color() != Color::inherit) {
 		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);

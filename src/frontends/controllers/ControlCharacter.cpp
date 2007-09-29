@@ -14,12 +14,10 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "bufferview_funcs.h"
 #include "FuncRequest.h"
 #include "Language.h"
 #include "Color.h"
 
-using lyx::bv_funcs::font2string;
 using std::string;
 
 namespace lyx {
@@ -62,17 +60,14 @@ void ControlCharacter::dispatchParams()
 	if (!font_)
 		return;
 
-	string data;
-	if (font2string(*font_, toggleall_, data))
-		dispatch(FuncRequest(getLfun(), data));
+	string data = font_->toString(toggleall_);
+	dispatch(FuncRequest(getLfun(), data));
 }
 
 
 Font::FONT_FAMILY ControlCharacter::getFamily() const
 {
-	if (!font_)
-		return Font::IGNORE_FAMILY;
-	return font_->family();
+	return font_ ? font_->family() : Font::IGNORE_FAMILY;
 }
 
 
@@ -84,9 +79,7 @@ void ControlCharacter::setFamily(Font::FONT_FAMILY val)
 
 Font::FONT_SERIES ControlCharacter::getSeries() const
 {
-	if (!font_)
-		return Font::IGNORE_SERIES;
-	return font_->series();
+	return font_ ? font_->series() : Font::IGNORE_SERIES;
 }
 
 
@@ -98,9 +91,7 @@ void ControlCharacter::setSeries(Font::FONT_SERIES val)
 
 Font::FONT_SHAPE ControlCharacter::getShape() const
 {
-	if (!font_)
-		return Font::IGNORE_SHAPE;
-	return font_->shape();
+	return font_ ? font_->shape() : Font::IGNORE_SHAPE;
 }
 
 
@@ -112,9 +103,7 @@ void ControlCharacter::setShape(Font::FONT_SHAPE val)
 
 Font::FONT_SIZE ControlCharacter::getSize() const
 {
-	if (!font_)
-		return Font::IGNORE_SIZE;
-	return font_->size();
+	return font_ ? font_->size() : Font::IGNORE_SIZE;
 }
 
 
@@ -138,9 +127,9 @@ FONT_STATE ControlCharacter::getBar() const
 	if (font_->noun() == Font::TOGGLE)
 		return NOUN_TOGGLE;
 
-	if (font_->emph() == Font::IGNORE &&
-	    font_->underbar() == Font::IGNORE &&
-	    font_->noun() == Font::IGNORE)
+	if (font_->emph() == Font::IGNORE
+	    && font_->underbar() == Font::IGNORE
+	    && font_->noun() == Font::IGNORE)
 		return IGNORE;
 
 	return INHERIT;

@@ -24,7 +24,6 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "bufferview_funcs.h"
 #include "Color.h"
 #include "CutAndPaste.h"
 #include "debug.h"
