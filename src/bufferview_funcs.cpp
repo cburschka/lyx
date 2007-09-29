@@ -261,93 +261,10 @@ CurStatus status(BufferView const * bv, DocIterator const & dit)
 	Point const p = bv_funcs::getPos(*bv, dit, dit.boundary());
 	if (p.y_ < 0)
 		return CUR_ABOVE;
-	else if (p.y_ > bv->workHeight())
+	if (p.y_ > bv->workHeight())
 		return CUR_BELOW;
 		
 	return CUR_INSIDE;
-}
-
-namespace {
-
-bool findNextInset(DocIterator & dit,
-		   vector<Inset_code> const & codes,
-		   string const & contents)
-{
-	DocIterator tmpdit = dit;
-
-	while (tmpdit) {
-		Inset const * inset = tmpdit.nextInset();
-		if (inset
-		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
-		    && (contents.empty() ||
-		    static_cast<InsetCommand const *>(inset)->getContents() == contents)) {
-			dit = tmpdit;
-			return true;
-		}
-		tmpdit.forwardInset();
-	}
-
-	return false;
-}
-
-} // namespace anon
-
-
-bool findInset(DocIterator & dit, vector<Inset_code> const & codes,
-	       bool same_content)
-{
-	string contents;
-	DocIterator tmpdit = dit;
-	tmpdit.forwardInset();
-	if (!tmpdit)
-		return false;
-
-	if (same_content) {
-		Inset const * inset = tmpdit.nextInset();
-		if (inset
-		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
-			contents = static_cast<InsetCommand const *>(inset)->getContents();
-		}
-	}
-
-	if (!findNextInset(tmpdit, codes, contents)) {
-		if (dit.depth() != 1 || dit.pit() != 0 || dit.pos() != 0) {
-			tmpdit  = doc_iterator_begin(tmpdit.bottom().inset());
-			if (!findNextInset(tmpdit, codes, contents)) {
-				return false;
-			}
-		} else
-			return false;
-	}
-
-	dit = tmpdit;
-	return true;
-}
-
-
-void findInset(DocIterator & dit, Inset_code code, bool same_content)
-{
-	findInset(dit, vector<Inset_code>(1, code), same_content);
-}
-
-
-void gotoInset(BufferView * bv, vector<Inset_code> const & codes,
-	       bool same_content)
-{
-	Cursor tmpcur = bv->cursor();
-	if (!findInset(tmpcur, codes, same_content)) {
-		bv->cursor().message(_("No more insets"));
-		return;
-	}
-
-	tmpcur.clearSelection();
-	bv->setCursor(tmpcur);
-}
-
-
-void gotoInset(BufferView * bv, Inset_code code, bool same_content)
-{
-	gotoInset(bv, vector<Inset_code>(1, code), same_content);
 }
 
 

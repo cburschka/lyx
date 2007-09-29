@@ -52,21 +52,6 @@ CurStatus status(BufferView const * bv, DocIterator const & dit);
 
 Point coordOffset(BufferView const & bv, DocIterator const & dit, bool boundary);
 
-/// Moves cursor to the next inset with one of the given codes.
-void gotoInset(BufferView * bv, std::vector<Inset_code> const & codes,
-	       bool same_content);
-
-/// Moves cursor to the next inset with given code.
-void gotoInset(BufferView * bv, Inset_code code, bool same_content);
-
-/// Looks for next inset with one of the the given code
-bool findInset(DocIterator & dit, std::vector<Inset_code> const & codes,
-	       bool same_content);
-
-/// Looks for next inset with the given code
-void findInset(DocIterator & dit, Inset_code code, bool same_content);
-
-
 } // namespace bv_funcs
 
 

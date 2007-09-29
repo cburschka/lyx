@@ -109,16 +109,100 @@ namespace {
 
 /// Return an inset of this class if it exists at the current cursor position
 template <class T>
-T * getInsetByCode(Cursor & cur, Inset::Code code)
+T * getInsetByCode(Cursor const & cur, Inset::Code code)
 {
-	T * inset = 0;
 	DocIterator it = cur;
-	if (it.nextInset() &&
-	    it.nextInset()->lyxCode() == code) {
-		inset = static_cast<T*>(it.nextInset());
-	}
-	return inset;
+	Inset * inset = it.nextInset();
+	if (inset && inset->lyxCode() == code)
+		return static_cast<T*>(inset);
+	return 0;
 }
+
+
+bool findInset(DocIterator & dit, vector<Inset_code> const & codes,
+	bool same_content);
+
+bool findNextInset(DocIterator & dit, vector<Inset_code> const & codes,
+	string const & contents)
+{
+	DocIterator tmpdit = dit;
+
+	while (tmpdit) {
+		Inset const * inset = tmpdit.nextInset();
+		if (inset
+		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
+		    && (contents.empty() ||
+		    static_cast<InsetCommand const *>(inset)->getContents() == contents)) {
+			dit = tmpdit;
+			return true;
+		}
+		tmpdit.forwardInset();
+	}
+
+	return false;
+}
+
+
+/// Looks for next inset with one of the the given code
+bool findInset(DocIterator & dit, vector<Inset_code> const & codes,
+	bool same_content)
+{
+	string contents;
+	DocIterator tmpdit = dit;
+	tmpdit.forwardInset();
+	if (!tmpdit)
+		return false;
+
+	if (same_content) {
+		Inset const * inset = tmpdit.nextInset();
+		if (inset
+		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
+			contents = static_cast<InsetCommand const *>(inset)->getContents();
+		}
+	}
+
+	if (!findNextInset(tmpdit, codes, contents)) {
+		if (dit.depth() != 1 || dit.pit() != 0 || dit.pos() != 0) {
+			tmpdit  = doc_iterator_begin(tmpdit.bottom().inset());
+			if (!findNextInset(tmpdit, codes, contents))
+				return false;
+		} else
+			return false;
+	}
+
+	dit = tmpdit;
+	return true;
+}
+
+
+/// Looks for next inset with the given code
+void findInset(DocIterator & dit, Inset_code code, bool same_content)
+{
+	findInset(dit, vector<Inset_code>(1, code), same_content);
+}
+
+
+/// Moves cursor to the next inset with one of the given codes.
+void gotoInset(BufferView * bv, vector<Inset_code> const & codes,
+	       bool same_content)
+{
+	Cursor tmpcur = bv->cursor();
+	if (!findInset(tmpcur, codes, same_content)) {
+		bv->cursor().message(_("No more insets"));
+		return;
+	}
+
+	tmpcur.clearSelection();
+	bv->setCursor(tmpcur);
+}
+
+
+/// Moves cursor to the next inset with given code.
+void gotoInset(BufferView * bv, Inset_code code, bool same_content)
+{
+	gotoInset(bv, vector<Inset_code>(1, code), same_content);
+}
+
 
 } // anon namespace
 
@@ -756,14 +840,14 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_NOTE_NEXT:
-		bv_funcs::gotoInset(this, Inset::NOTE_CODE, false);
+		gotoInset(this, Inset::NOTE_CODE, false);
 		break;
 
 	case LFUN_REFERENCE_NEXT: {
 		vector<Inset_code> tmp;
 		tmp.push_back(Inset::LABEL_CODE);
 		tmp.push_back(Inset::REF_CODE);
-		bv_funcs::gotoInset(this, tmp, true);
+		gotoInset(this, tmp, true);
 		break;
 	}
 
@@ -873,7 +957,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
 		Cursor tmpcur = cursor_;
-		bv_funcs::findInset(tmpcur, Inset::BIBTEX_CODE, false);
+		findInset(tmpcur, Inset::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						Inset::BIBTEX_CODE);
 		if (inset) {
@@ -885,7 +969,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BIBTEX_DATABASE_DEL: {
 		Cursor tmpcur = cursor_;
-		bv_funcs::findInset(tmpcur, Inset::BIBTEX_CODE, false);
+		findInset(tmpcur, Inset::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						Inset::BIBTEX_CODE);
 		if (inset) {
@@ -1192,7 +1276,7 @@ void BufferView::scrollDown(int offset)
 	while (true) {
 		std::pair<pit_type, ParagraphMetrics const *> last = tm.last();
 		int bottom_pos = last.second->position() + last.second->descent();
-		if (last.first == text->paragraphs().size() - 1) {
+		if (last.first + 1 == int(text->paragraphs().size())) {
 			if (bottom_pos <= height_)
 				return;
 			offset = min(offset, bottom_pos - height_);
