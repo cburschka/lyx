@@ -227,7 +227,6 @@ src_pre_files = Split('''
     VSpace.cpp
     boost.cpp
     buffer_funcs.cpp
-    bufferview_funcs.cpp
     callback.cpp
     debug.cpp
     factory.cpp
