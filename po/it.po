@@ -4160,7 +4160,7 @@ msgstr "Blocco"
 
 #: lib/layouts/beamer.layout:653
 msgid "Block ( ERT[{title}] body ):"
-msgstr "Blocco ( ERT[{titolo}] corpo ):"
+msgstr "Blocco (ERT[{titolo}] corpo):"
 
 #: lib/layouts/beamer.layout:668
 msgid "ExampleBlock"
@@ -4168,20 +4168,19 @@ msgstr "Blocco Esempio"
 
 #: lib/layouts/beamer.layout:678
 msgid "Block ( ERT[{title}] example text ):"
-msgstr "Blocco ( ERT[{titolo}] testo esempio ):"
+msgstr "Esempio (ERT[{titolo}] testo):"
 
 #: lib/layouts/beamer.layout:697
 msgid "AlertBlock"
-msgstr "Blocco Avvertimento"
+msgstr "Blocco Avviso"
 
 #: lib/layouts/beamer.layout:707
 msgid "Block ( ERT[{title}] alert text ):"
-msgstr "Blocco ( ERT[{titolo}] testo avvertimento ):"
+msgstr "Avviso (ERT[{titolo}] testo):"
 
 #: lib/layouts/beamer.layout:751
-#, fuzzy
 msgid "Title (Plain Frame)"
-msgstr "Inizio Frame Semplice"
+msgstr "Titolo (Frame Semplice)"
 
 #: lib/layouts/beamer.layout:806 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
@@ -6707,9 +6706,8 @@ msgid "Subjectclass"
 msgstr "Classe soggetto"
 
 #: lib/layouts/amsdefs.inc:223
-#, fuzzy
 msgid "2000 Mathematics Subject Classification:"
-msgstr "Classificazione Soggetto Matematica 1991:"
+msgstr "Classificazione Soggetto Matematica 2000:"
 
 #: lib/layouts/amsmaths-plain.inc:64 lib/layouts/amsmaths.inc:169
 msgid "Conjecture."
@@ -6767,17 +6765,15 @@ msgstr "Conclusione."
 #: lib/layouts/amsmaths-plain.inc:164 lib/layouts/amsmaths-seq.inc:360
 #: lib/layouts/amsmaths.inc:545
 msgid "Assumption"
-msgstr ""
+msgstr "Assunzione"
 
 #: lib/layouts/amsmaths-plain.inc:166 lib/layouts/amsmaths.inc:559
-#, fuzzy
 msgid "Assumption."
-msgstr "Didascalia."
+msgstr "Assunzione."
 
 #: lib/layouts/amsmaths-seq.inc:152
-#, fuzzy
 msgid "Theorem \\arabic{thm}."
-msgstr "Teorema \\arabic{theorem}."
+msgstr "Teorema \\arabic{thm}."
 
 #: lib/layouts/amsmaths-seq.inc:202
 msgid "Criterion \\arabic{criterion}."
@@ -6824,9 +6820,8 @@ msgid "Conclusion \\arabic{conclusion}."
 msgstr "Conclusione \\arabic{conclusion}."
 
 #: lib/layouts/amsmaths-seq.inc:362
-#, fuzzy
 msgid "Assumption \\arabic{assumption}."
-msgstr "Domanda \\arabic{question}."
+msgstr "Assunzione \\arabic{assumption}."
 
 #: lib/layouts/amsmaths.inc:92
 msgid "Corollary @Section@.\\arabic{theorem}."
@@ -6853,18 +6848,16 @@ msgid "Criterion @Section@.\\arabic{theorem}."
 msgstr "Criterio @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:187
-#, fuzzy
 msgid "Criterion*"
-msgstr "Criterio"
+msgstr "Criterio*"
 
 #: lib/layouts/amsmaths.inc:201
 msgid "Algorithm @Section@.\\arabic{theorem}."
 msgstr "Algoritmo @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:209
-#, fuzzy
 msgid "Algorithm*"
-msgstr "Algoritmo|A"
+msgstr "Algoritmo*"
 
 #: lib/layouts/amsmaths.inc:223
 msgid "Fact @Section@.\\arabic{theorem}."
@@ -6879,9 +6872,8 @@ msgid "Axiom @Section@.\\arabic{theorem}."
 msgstr "Assioma @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:253
-#, fuzzy
 msgid "Axiom*"
-msgstr "Assioma"
+msgstr "Assioma*"
 
 #: lib/layouts/amsmaths.inc:267
 msgid "Definition @Section@.\\arabic{theorem}."
@@ -6956,9 +6948,8 @@ msgid "Summary @Section@.\\arabic{theorem}."
 msgstr "Sommario @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:490
-#, fuzzy
 msgid "Summary*"
-msgstr "Sommario"
+msgstr "Sommario*"
 
 #: lib/layouts/amsmaths.inc:504
 msgid "Acknowledgement @Section@.\\arabic{theorem}."
@@ -6977,13 +6968,12 @@ msgid "Conclusion*"
 msgstr "Conclusione*"
 
 #: lib/layouts/amsmaths.inc:548
-#, fuzzy
 msgid "Assumption @Section@.\\arabic{theorem}."
-msgstr "Assioma @Section@.\\arabic{theorem}."
+msgstr "Assunzione @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:556
 msgid "Assumption*"
-msgstr ""
+msgstr "Assunzione*"
 
 #: lib/layouts/db_stdlayouts.inc:11
 msgid "Literal"
@@ -8607,7 +8597,7 @@ msgstr "File|F"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Box[[Menu]]"
-msgstr ""
+msgstr "Casella"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Cross-Reference...|R"
@@ -15265,9 +15255,8 @@ msgid "Different textclasses"
 msgstr "Classi testo differenti"
 
 #: src/insets/InsetIndex.cpp:44
-#, fuzzy
 msgid "Idx: "
-msgstr "Idx"
+msgstr "Idx: "
 
 #: src/insets/InsetIndex.cpp:82
 msgid "Index"
