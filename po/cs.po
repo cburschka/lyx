@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-09-28 00:00+0200\n"
+"POT-Creation-Date: 2007-09-30 21:10+0200\n"
 "PO-Revision-Date: 2007-08-31 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -3555,7 +3555,7 @@ msgstr "Literatura"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:541
+#: src/rowpainter.cpp:540
 msgid "Appendix"
 msgstr "Pøíloha"
 
@@ -11695,11 +11695,11 @@ msgstr "Jedno slovo v dokumentu."
 msgid "Count words"
 msgstr "Spoèítat slova"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1611
 msgid "Select LyX document to insert"
 msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
+#: src/BufferView.cpp:1613 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
 #: src/LyXFunc.cpp:2108 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11709,31 +11709,31 @@ msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView.cpp:1608 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
 msgid "Examples|#E#e"
 msgstr "Pøíklady|#a#A"
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
-#: src/BufferView.cpp:1626 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
+#: src/BufferView.cpp:1632 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
 #: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
 msgid "Canceled."
 msgstr "Zru¹eno."
 
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1643
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkládání dokumentu %1$s..."
 
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1654
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s vlo¾en."
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1656
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nepodaøilo se vlo¾it dokument %1$s"
@@ -12401,8 +12401,9 @@ msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
-"LyX nemù¾e pokraèovat, proto¾e nebyly nalezeny potøebné soubory tøíd (textclass). Buïto mù¾ete pou¾ít "
-"normální rekonfiguraci nebo ji zavolat za pou¾ití standarních tøíd."
+"LyX nemù¾e pokraèovat, proto¾e nebyly nalezeny potøebné soubory tøíd "
+"(textclass). Buïto mù¾ete pou¾ít normální rekonfiguraci nebo ji zavolat za "
+"pou¾ití standarních tøíd."
 
 #: src/LyX.cpp:622
 msgid "&Reconfigure"
@@ -14967,7 +14968,7 @@ msgid "space"
 msgstr "mezera"
 
 #: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
-#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:612
 #: src/insets/InsetInclude.cpp:474
 msgid "Invalid filename"
 msgstr "Neplatný název souboru"
@@ -14988,7 +14989,7 @@ msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
 #: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
-#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:475
+#: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:475
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -15171,12 +15172,12 @@ msgstr ""
 "%1$s\n"
 "do pomocného adresáøe."
 
-#: src/insets/InsetGraphics.cpp:729
+#: src/insets/InsetGraphics.cpp:728
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Konverze %1$s není vùbec potøeba"
 
-#: src/insets/InsetGraphics.cpp:841
+#: src/insets/InsetGraphics.cpp:840
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Soubor s obrázkem: %1$s"

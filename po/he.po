@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-09-25 18:50+0200\n"
+"POT-Creation-Date: 2007-09-30 21:10+0200\n"
 "PO-Revision-Date: 2007-07-14 12:11+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -87,8 +87,8 @@ msgstr "אישור"
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:819
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:767
-#: src/LyXFunc.cpp:964 src/LyXFunc.cpp:1135 src/LyXFunc.cpp:2144
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:769
+#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2157
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
 #: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
@@ -166,7 +166,7 @@ msgstr "הוסף"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:883 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:885 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -2519,7 +2519,7 @@ msgid "&Maximum last files:"
 msgstr "מספר קבצים אחרונים:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:766
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:768
 msgid "&Save"
 msgstr "שמור"
 
@@ -2936,7 +2936,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1846
+#: src/LyXFunc.cpp:1859
 msgid "on"
 msgstr ""
 
@@ -3643,7 +3643,7 @@ msgstr "ביבליוגרפיה"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:541
+#: src/rowpainter.cpp:540
 msgid "Appendix"
 msgstr "נספח"
 
@@ -11863,8 +11863,8 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "אין אפשרות לכתוב אל הקובץ %s"
 
-#: src/Buffer.cpp:819 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
-#: src/LyXFunc.cpp:2144 src/callback.cpp:186
+#: src/Buffer.cpp:819 src/Exporter.cpp:87 src/LyXFunc.cpp:1147
+#: src/LyXFunc.cpp:2157 src/callback.cpp:186
 #, fuzzy
 msgid "&Overwrite"
 msgstr "שגיאה בכתיבה"
@@ -11920,7 +11920,7 @@ msgstr ""
 "\n"
 "האם אתה רוצה לשמור את המסמך או להסיר את השינויים?"
 
-#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:765
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:767
 msgid "Save changed document?"
 msgstr "האם לשמור את המסמך שעבר שינוי?"
 
@@ -12021,12 +12021,12 @@ msgstr ""
 msgid "Count words"
 msgstr "מילים שלמות"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1611
 msgid "Select LyX document to insert"
 msgstr ""
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
-#: src/LyXFunc.cpp:2095 src/callback.cpp:148
+#: src/BufferView.cpp:1613 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
+#: src/LyXFunc.cpp:2108 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12036,32 +12036,32 @@ msgstr ""
 msgid "Documents|#o#O"
 msgstr "מסמכים|מ"
 
-#: src/BufferView.cpp:1608 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
 msgid "Examples|#E#e"
 msgstr "דוגמאות"
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/BufferView.cpp:1626 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
-#: src/LyXFunc.cpp:2131 src/LyXFunc.cpp:2147
+#: src/BufferView.cpp:1632 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
+#: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
 #, fuzzy
 msgid "Canceled."
 msgstr "בוטל"
 
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1643
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "מסמך חדש"
 
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1654
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "מסמך חדש"
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1656
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Help document %s/%s not found"
@@ -12416,7 +12416,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "בחר קובץ סגנון"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1131
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1143
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12427,7 +12427,7 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1134
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1146
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "אין אפשרות לכתוב אל הקובץ %s"
@@ -12741,15 +12741,39 @@ msgstr "לא מסוגל להסיר את התיקייה הזמנית"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:814
+#: src/LyX.cpp:617
+msgid "No textclass is found"
+msgstr ""
+
+#: src/LyX.cpp:618
+msgid ""
+"LyX cannot continue because no textclass is found. You can either "
+"reconfigure normally, or reconfigure using default textclasses, or quit LyX."
+msgstr ""
+
+#: src/LyX.cpp:622
+#, fuzzy
+msgid "&Reconfigure"
+msgstr "הגדר מחדש |ג"
+
+#: src/LyX.cpp:623
+#, fuzzy
+msgid "&Use Default"
+msgstr "ברירת מחדל"
+
+#: src/LyX.cpp:624 src/LyX.cpp:1148
+msgid "&Exit LyX"
+msgstr "צא מ- LyX"
+
+#: src/LyX.cpp:844
 msgid "LyX: "
 msgstr "LyX:"
 
-#: src/LyX.cpp:943
+#: src/LyX.cpp:973
 msgid "Could not create temporary directory"
 msgstr ""
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:974
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12757,51 +12781,47 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:1111
+#: src/LyX.cpp:1141
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/LyX.cpp:1112
+#: src/LyX.cpp:1142
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1147
 #, fuzzy
 msgid "&Create directory"
 msgstr "`%s' היקית תריציב (%s) הלקת"
 
-#: src/LyX.cpp:1118
-msgid "&Exit LyX"
-msgstr "צא מ- LyX"
-
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1149
 #, fuzzy
 msgid "No user LyX directory. Exiting."
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/LyX.cpp:1123
+#: src/LyX.cpp:1153
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "שגיאה ביצירת התיקייה '%s': %s"
 
-#: src/LyX.cpp:1129
+#: src/LyX.cpp:1159
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1302
+#: src/LyX.cpp:1332
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1306
+#: src/LyX.cpp:1336
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "תואיגש יופינל עדימ לש `%s' רכומ-יתלב ןייפאמ"
 
-#: src/LyX.cpp:1317
+#: src/LyX.cpp:1347
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12823,43 +12843,43 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1353 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1383 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr ""
 ".תמייק הניא `%s' היקית\n"
 "\n"
 
-#: src/LyX.cpp:1354
+#: src/LyX.cpp:1384
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1364
+#: src/LyX.cpp:1394
 #, fuzzy
 msgid "No user directory"
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/LyX.cpp:1365
+#: src/LyX.cpp:1395
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1375
+#: src/LyX.cpp:1405
 msgid "Incomplete command"
 msgstr "פקודה לא שלמה"
 
-#: src/LyX.cpp:1376
+#: src/LyX.cpp:1406
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/LyX.cpp:1386
+#: src/LyX.cpp:1416
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/LyX.cpp:1398
+#: src/LyX.cpp:1428
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/LyX.cpp:1403
+#: src/LyX.cpp:1433
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "חסר תוסף הפרוטוקול עבור %s"
@@ -12879,7 +12899,7 @@ msgstr "ב ךרוצ ןיא\n"
 msgid "Unknown action"
 msgstr "העודי הנניא `%s' הדוקפ"
 
-#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:749
+#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:751
 #, fuzzy
 msgid "Command disabled"
 msgstr "פקודה קודמת"
@@ -12888,15 +12908,15 @@ msgstr "פקודה קודמת"
 msgid "Command not allowed without any document open"
 msgstr "הפקודה איננה אפשרית ללא מסמך פתוח"
 
-#: src/LyXFunc.cpp:735
+#: src/LyXFunc.cpp:737
 msgid "Document is read-only"
 msgstr "המסמך הוא לקריאה בלבד."
 
-#: src/LyXFunc.cpp:743
+#: src/LyXFunc.cpp:745
 msgid "This portion of the document is deleted."
 msgstr "חלק זה של המסמך נמחק."
 
-#: src/LyXFunc.cpp:762
+#: src/LyXFunc.cpp:764
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12904,7 +12924,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:780
+#: src/LyXFunc.cpp:782
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -12913,11 +12933,11 @@ msgstr ""
 "לא יכול להדפיס את המסמך %1$s. \n"
 "בדוק שהמדפסת מוגדרת כראוי."
 
-#: src/LyXFunc.cpp:783
+#: src/LyXFunc.cpp:785
 msgid "Print document failed"
 msgstr "הדפסת המסמך נכשלה"
 
-#: src/LyXFunc.cpp:802
+#: src/LyXFunc.cpp:804
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -12926,134 +12946,134 @@ msgstr ""
 "לא ניתן להמיר את המסמך\n"
 "למחלקת המסמך %1$s."
 
-#: src/LyXFunc.cpp:805
+#: src/LyXFunc.cpp:807
 msgid "Could not change class"
 msgstr "אין אפשרות לשנות מחלקה"
 
-#: src/LyXFunc.cpp:917
+#: src/LyXFunc.cpp:919
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "שומר מסמך %1$s..."
 
-#: src/LyXFunc.cpp:921
+#: src/LyXFunc.cpp:923
 #, fuzzy
 msgid " done."
 msgstr "ב החלצה"
 
-#: src/LyXFunc.cpp:938
+#: src/LyXFunc.cpp:940
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "שומר מסמך %1$s..."
 
-#: src/LyXFunc.cpp:951
+#: src/LyXFunc.cpp:953
 #, fuzzy
 msgid "All documents saved."
 msgstr "המסמך לא שמור"
 
-#: src/LyXFunc.cpp:961
+#: src/LyXFunc.cpp:963
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "כל השינויים יאבדו. אתה בטוח שברצונך לחזור לגרסה השמורה של המסמך %1$s?"
 
-#: src/LyXFunc.cpp:963 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:965 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
 msgstr "חזור למסמך השמור?"
 
-#: src/LyXFunc.cpp:964 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:966 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
 msgid "&Revert"
 msgstr "חזור"
 
-#: src/LyXFunc.cpp:1158
+#: src/LyXFunc.cpp:1170
 msgid "Exiting."
 msgstr "יוצא"
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1344
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1344
 #, fuzzy
 msgid "Missing argument"
 msgstr ".ץבוק םש רסח %s תינכתל\n"
 
-#: src/LyXFunc.cpp:1185
+#: src/LyXFunc.cpp:1198
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "שגיאה בפתיחת הקובץ %s!"
 
-#: src/LyXFunc.cpp:1580
+#: src/LyXFunc.cpp:1593
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/LyXFunc.cpp:1591
+#: src/LyXFunc.cpp:1604
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/LyXFunc.cpp:1705
+#: src/LyXFunc.cpp:1718
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "The current page in the document"
 
-#: src/LyXFunc.cpp:1708
+#: src/LyXFunc.cpp:1721
 msgid "Unable to save document defaults"
 msgstr "לא מסוגל לשמור ברירות מחדל של המסמך"
 
-#: src/LyXFunc.cpp:1764
+#: src/LyXFunc.cpp:1777
 msgid "Converting document to new document class..."
 msgstr "ממיר מסמך למחלקת מסמך חדשה"
 
-#: src/LyXFunc.cpp:1840
+#: src/LyXFunc.cpp:1853
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "פורמט תמונה לא ידוע"
 
-#: src/LyXFunc.cpp:1848
+#: src/LyXFunc.cpp:1861
 #, fuzzy
 msgid "off"
 msgstr "כבוי"
 
-#: src/LyXFunc.cpp:1850
+#: src/LyXFunc.cpp:1863
 #, fuzzy
 msgid "auto"
 msgstr "אוטומטי"
 
-#: src/LyXFunc.cpp:1852
+#: src/LyXFunc.cpp:1865
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1981
+#: src/LyXFunc.cpp:1994
 msgid "Select template file"
 msgstr "בחר קובץ תבנית"
 
-#: src/LyXFunc.cpp:1984 src/callback.cpp:150
+#: src/LyXFunc.cpp:1997 src/callback.cpp:150
 msgid "Templates|#T#t"
 msgstr "תבניות"
 
-#: src/LyXFunc.cpp:2020
+#: src/LyXFunc.cpp:2033
 msgid "Select document to open"
 msgstr "בחר קובץ לפתיחה"
 
-#: src/LyXFunc.cpp:2059
+#: src/LyXFunc.cpp:2072
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "פותח מסמך %1$s..."
 
-#: src/LyXFunc.cpp:2063
+#: src/LyXFunc.cpp:2076
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "מסמך חדש"
 
-#: src/LyXFunc.cpp:2065
+#: src/LyXFunc.cpp:2078
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "לא יכול לפתוח את הקובץ"
 
-#: src/LyXFunc.cpp:2090
+#: src/LyXFunc.cpp:2103
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "בחר קובץ להדפסה"
 
-#: src/LyXFunc.cpp:2141 src/callback.cpp:181
+#: src/LyXFunc.cpp:2154 src/callback.cpp:181
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13064,12 +13084,12 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/LyXFunc.cpp:2143 src/callback.cpp:185
+#: src/LyXFunc.cpp:2156 src/callback.cpp:185
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "להחליף את המסמך הקיים?"
 
-#: src/LyXFunc.cpp:2206
+#: src/LyXFunc.cpp:2219
 msgid "Welcome to LyX!"
 msgstr "ברוכים הבאים ל- LyX!"
 
@@ -13977,15 +13997,15 @@ msgstr ""
 msgid "Running configure..."
 msgstr "הגדרות החדק"
 
-#: src/callback.cpp:449
+#: src/callback.cpp:450
 msgid "Reloading configuration..."
 msgstr "טוען מחדש הגדרות..."
 
-#: src/callback.cpp:454
+#: src/callback.cpp:455
 msgid "System reconfigured"
 msgstr "תצורת המערכת הוגדרה מחדש"
 
-#: src/callback.cpp:455
+#: src/callback.cpp:456
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15278,7 +15298,7 @@ msgid "space"
 msgstr ""
 
 #: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
-#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:612
 #: src/insets/InsetInclude.cpp:474
 msgid "Invalid filename"
 msgstr ""
@@ -15297,7 +15317,7 @@ msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
 #: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
-#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:475
+#: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:475
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -15484,12 +15504,12 @@ msgid ""
 "into the temporary directory."
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:729
+#: src/insets/InsetGraphics.cpp:728
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:841
+#: src/insets/InsetGraphics.cpp:840
 #, fuzzy, c-format
 msgid "Graphics file: %1$s"
 msgstr "%d קובץ %lld %s"

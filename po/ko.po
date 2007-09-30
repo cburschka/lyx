@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-09-25 18:50+0200\n"
+"POT-Creation-Date: 2007-09-30 21:10+0200\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -79,8 +79,8 @@ msgstr ""
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:819
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:767
-#: src/LyXFunc.cpp:964 src/LyXFunc.cpp:1135 src/LyXFunc.cpp:2144
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:769
+#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2157
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
 #: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
@@ -158,7 +158,7 @@ msgstr ""
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:883 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:885 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr ""
 
@@ -2460,7 +2460,7 @@ msgid "&Maximum last files:"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:766
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:768
 msgid "&Save"
 msgstr "저장(&Save)"
 
@@ -2873,7 +2873,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1846
+#: src/LyXFunc.cpp:1859
 msgid "on"
 msgstr ""
 
@@ -3563,7 +3563,7 @@ msgstr "참고 문헌 목록(Bibliography)"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:541
+#: src/rowpainter.cpp:540
 msgid "Appendix"
 msgstr "부록"
 
@@ -11611,8 +11611,8 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "문서를 덮어 쓸가요?"
 
-#: src/Buffer.cpp:819 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
-#: src/LyXFunc.cpp:2144 src/callback.cpp:186
+#: src/Buffer.cpp:819 src/Exporter.cpp:87 src/LyXFunc.cpp:1147
+#: src/LyXFunc.cpp:2157 src/callback.cpp:186
 #, fuzzy
 msgid "&Overwrite"
 msgstr "문서를 덮어 쓸가요?"
@@ -11662,7 +11662,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:765
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:767
 msgid "Save changed document?"
 msgstr "변경된 문서를 저장하시겠습니까?"
 
@@ -11756,12 +11756,12 @@ msgstr "문서에서 한 글자(One word in document)"
 msgid "Count words"
 msgstr ""
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1611
 msgid "Select LyX document to insert"
 msgstr "삽입할 LyX 문서를 고르시오"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
-#: src/LyXFunc.cpp:2095 src/callback.cpp:148
+#: src/BufferView.cpp:1613 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
+#: src/LyXFunc.cpp:2108 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -11770,31 +11770,31 @@ msgstr "삽입할 LyX 문서를 고르시오"
 msgid "Documents|#o#O"
 msgstr ""
 
-#: src/BufferView.cpp:1608 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
 msgid "Examples|#E#e"
 msgstr ""
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX 문서(*.lyx)"
 
-#: src/BufferView.cpp:1626 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
-#: src/LyXFunc.cpp:2131 src/LyXFunc.cpp:2147
+#: src/BufferView.cpp:1632 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
+#: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
 msgid "Canceled."
 msgstr "취소됨"
 
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1643
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "문서를 삽입합니다 %1$s..."
 
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1654
 #, c-format
 msgid "Document %1$s inserted."
 msgstr ""
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1656
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr ""
@@ -12127,7 +12127,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr ""
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1131
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1143
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12135,7 +12135,7 @@ msgid ""
 "Do you want to overwrite that file?"
 msgstr ""
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1134
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1146
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "문서를 덮어 쓸가요?"
@@ -12432,15 +12432,39 @@ msgstr ""
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:814
+#: src/LyX.cpp:617
+msgid "No textclass is found"
+msgstr ""
+
+#: src/LyX.cpp:618
+msgid ""
+"LyX cannot continue because no textclass is found. You can either "
+"reconfigure normally, or reconfigure using default textclasses, or quit LyX."
+msgstr ""
+
+#: src/LyX.cpp:622
+#, fuzzy
+msgid "&Reconfigure"
+msgstr "재구성(Reconfigure)|R"
+
+#: src/LyX.cpp:623
+#, fuzzy
+msgid "&Use Default"
+msgstr "기본 설정(Default)"
+
+#: src/LyX.cpp:624 src/LyX.cpp:1148
+msgid "&Exit LyX"
+msgstr ""
+
+#: src/LyX.cpp:844
 msgid "LyX: "
 msgstr ""
 
-#: src/LyX.cpp:943
+#: src/LyX.cpp:973
 msgid "Could not create temporary directory"
 msgstr ""
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:974
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12448,48 +12472,44 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/LyX.cpp:1111
+#: src/LyX.cpp:1141
 msgid "Missing user LyX directory"
 msgstr ""
 
-#: src/LyX.cpp:1112
+#: src/LyX.cpp:1142
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1147
 msgid "&Create directory"
 msgstr ""
 
-#: src/LyX.cpp:1118
-msgid "&Exit LyX"
-msgstr ""
-
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1149
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1123
+#: src/LyX.cpp:1153
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr ""
 
-#: src/LyX.cpp:1129
+#: src/LyX.cpp:1159
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/LyX.cpp:1302
+#: src/LyX.cpp:1332
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/LyX.cpp:1306
+#: src/LyX.cpp:1336
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr ""
 
-#: src/LyX.cpp:1317
+#: src/LyX.cpp:1347
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12511,39 +12531,39 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/LyX.cpp:1353 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1383 src/support/Package.cpp.in:568
 msgid "No system directory"
 msgstr ""
 
-#: src/LyX.cpp:1354
+#: src/LyX.cpp:1384
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1364
+#: src/LyX.cpp:1394
 msgid "No user directory"
 msgstr ""
 
-#: src/LyX.cpp:1365
+#: src/LyX.cpp:1395
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/LyX.cpp:1375
+#: src/LyX.cpp:1405
 msgid "Incomplete command"
 msgstr ""
 
-#: src/LyX.cpp:1376
+#: src/LyX.cpp:1406
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/LyX.cpp:1386
+#: src/LyX.cpp:1416
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/LyX.cpp:1398
+#: src/LyX.cpp:1428
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/LyX.cpp:1403
+#: src/LyX.cpp:1433
 msgid "Missing filename for --import"
 msgstr ""
 
@@ -12559,7 +12579,7 @@ msgstr ""
 msgid "Unknown action"
 msgstr ""
 
-#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:749
+#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:751
 msgid "Command disabled"
 msgstr ""
 
@@ -12567,15 +12587,15 @@ msgstr ""
 msgid "Command not allowed without any document open"
 msgstr ""
 
-#: src/LyXFunc.cpp:735
+#: src/LyXFunc.cpp:737
 msgid "Document is read-only"
 msgstr ""
 
-#: src/LyXFunc.cpp:743
+#: src/LyXFunc.cpp:745
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/LyXFunc.cpp:762
+#: src/LyXFunc.cpp:764
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12583,149 +12603,149 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:780
+#: src/LyXFunc.cpp:782
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/LyXFunc.cpp:783
+#: src/LyXFunc.cpp:785
 msgid "Print document failed"
 msgstr "문서 인쇄 실패"
 
-#: src/LyXFunc.cpp:802
+#: src/LyXFunc.cpp:804
 #, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr ""
 
-#: src/LyXFunc.cpp:805
+#: src/LyXFunc.cpp:807
 msgid "Could not change class"
 msgstr "class를 변경시킬 수 없습니다."
 
-#: src/LyXFunc.cpp:917
+#: src/LyXFunc.cpp:919
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "문서를 저장하고 있습니다 %1$s..."
 
-#: src/LyXFunc.cpp:921
+#: src/LyXFunc.cpp:923
 msgid " done."
 msgstr ""
 
-#: src/LyXFunc.cpp:938
+#: src/LyXFunc.cpp:940
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "문서를 저장하고 있습니다 %1$s..."
 
-#: src/LyXFunc.cpp:951
+#: src/LyXFunc.cpp:953
 #, fuzzy
 msgid "All documents saved."
 msgstr "문서 인쇄 실패"
 
-#: src/LyXFunc.cpp:961
+#: src/LyXFunc.cpp:963
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/LyXFunc.cpp:963 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:965 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
 msgstr "저장된 문서로 되돌릴까요?"
 
-#: src/LyXFunc.cpp:964 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:966 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
 msgid "&Revert"
 msgstr ""
 
-#: src/LyXFunc.cpp:1158
+#: src/LyXFunc.cpp:1170
 msgid "Exiting."
 msgstr "나가기"
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1344
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1344
 msgid "Missing argument"
 msgstr ""
 
-#: src/LyXFunc.cpp:1185
+#: src/LyXFunc.cpp:1198
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr ""
 
-#: src/LyXFunc.cpp:1580
+#: src/LyXFunc.cpp:1593
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/LyXFunc.cpp:1591
+#: src/LyXFunc.cpp:1604
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/LyXFunc.cpp:1705
+#: src/LyXFunc.cpp:1718
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1708
+#: src/LyXFunc.cpp:1721
 msgid "Unable to save document defaults"
 msgstr ""
 
-#: src/LyXFunc.cpp:1764
+#: src/LyXFunc.cpp:1777
 msgid "Converting document to new document class..."
 msgstr ""
 
-#: src/LyXFunc.cpp:1840
+#: src/LyXFunc.cpp:1853
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "모르는 표시(token): %1$s %2$s\n"
 
-#: src/LyXFunc.cpp:1848
+#: src/LyXFunc.cpp:1861
 msgid "off"
 msgstr ""
 
-#: src/LyXFunc.cpp:1850
+#: src/LyXFunc.cpp:1863
 #, fuzzy
 msgid "auto"
 msgstr "날짜"
 
-#: src/LyXFunc.cpp:1852
+#: src/LyXFunc.cpp:1865
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1981
+#: src/LyXFunc.cpp:1994
 msgid "Select template file"
 msgstr ""
 
-#: src/LyXFunc.cpp:1984 src/callback.cpp:150
+#: src/LyXFunc.cpp:1997 src/callback.cpp:150
 msgid "Templates|#T#t"
 msgstr ""
 
-#: src/LyXFunc.cpp:2020
+#: src/LyXFunc.cpp:2033
 msgid "Select document to open"
 msgstr "열 문서를 고르시오"
 
-#: src/LyXFunc.cpp:2059
+#: src/LyXFunc.cpp:2072
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "문서를 엽니다 %1$s..."
 
-#: src/LyXFunc.cpp:2063
+#: src/LyXFunc.cpp:2076
 #, c-format
 msgid "Document %1$s opened."
 msgstr ""
 
-#: src/LyXFunc.cpp:2065
+#: src/LyXFunc.cpp:2078
 #, c-format
 msgid "Could not open document %1$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:2090
+#: src/LyXFunc.cpp:2103
 #, c-format
 msgid "Select %1$s file to import"
 msgstr ""
 
-#: src/LyXFunc.cpp:2141 src/callback.cpp:181
+#: src/LyXFunc.cpp:2154 src/callback.cpp:181
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12733,12 +12753,12 @@ msgid ""
 "Do you want to overwrite that document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:2143 src/callback.cpp:185
+#: src/LyXFunc.cpp:2156 src/callback.cpp:185
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "문서를 덮어 쓸가요?"
 
-#: src/LyXFunc.cpp:2206
+#: src/LyXFunc.cpp:2219
 msgid "Welcome to LyX!"
 msgstr ""
 
@@ -13602,15 +13622,15 @@ msgstr ""
 msgid "Running configure..."
 msgstr ""
 
-#: src/callback.cpp:449
+#: src/callback.cpp:450
 msgid "Reloading configuration..."
 msgstr ""
 
-#: src/callback.cpp:454
+#: src/callback.cpp:455
 msgid "System reconfigured"
 msgstr "시스템이 재설정 되었음"
 
-#: src/callback.cpp:455
+#: src/callback.cpp:456
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -14808,7 +14828,7 @@ msgid "space"
 msgstr "공간(space)"
 
 #: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
-#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:612
 #: src/insets/InsetInclude.cpp:474
 msgid "Invalid filename"
 msgstr ""
@@ -14827,7 +14847,7 @@ msgid "LyX: %1$s"
 msgstr ""
 
 #: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
-#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:475
+#: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:475
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -15004,12 +15024,12 @@ msgid ""
 "into the temporary directory."
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:729
+#: src/insets/InsetGraphics.cpp:728
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/InsetGraphics.cpp:841
+#: src/insets/InsetGraphics.cpp:840
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr ""
@@ -15650,10 +15670,6 @@ msgstr "모르는 사용자(user)"
 #, fuzzy
 #~ msgid "Opened Theorem Inset"
 #~ msgstr "열려있는 노우트(Note) 삽입구"
-
-#, fuzzy
-#~ msgid "&Default"
-#~ msgstr "기본 설정(Default)"
 
 #, fuzzy
 #~ msgid "Columns "

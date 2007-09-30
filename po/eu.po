@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-09-25 18:50+0200\n"
+"POT-Creation-Date: 2007-09-30 21:10+0200\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -84,8 +84,8 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/CitationUi.ui:323
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:629 src/Buffer.cpp:819
-#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:767
-#: src/LyXFunc.cpp:964 src/LyXFunc.cpp:1135 src/LyXFunc.cpp:2144
+#: src/BufferList.cpp:113 src/BufferList.cpp:221 src/LyXFunc.cpp:769
+#: src/LyXFunc.cpp:966 src/LyXFunc.cpp:1147 src/LyXFunc.cpp:2157
 #: src/LyXVC.cpp:175 src/buffer_funcs.cpp:101 src/buffer_funcs.cpp:128
 #: src/buffer_funcs.cpp:169 src/callback.cpp:115 src/callback.cpp:186
 msgid "&Cancel"
@@ -163,7 +163,7 @@ msgstr "&Gehitu"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83 src/frontends/qt4/ui/BibtexUi.ui:229
 #: src/frontends/qt4/ui/ChangesUi.ui:78 src/frontends/qt4/ui/IndexUi.ui:92
 #: src/frontends/qt4/ui/NomenclUi.ui:105 src/frontends/qt4/ui/SendtoUi.ui:95
-#: src/LyXFunc.cpp:883 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
+#: src/LyXFunc.cpp:885 src/buffer_funcs.cpp:218 src/frontends/qt4/Qt2BC.h:36
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -2524,7 +2524,7 @@ msgid "&Maximum last files:"
 msgstr "&Gehienezko azken dokumentuak:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
-#: src/BufferList.cpp:221 src/LyXFunc.cpp:766
+#: src/BufferList.cpp:221 src/LyXFunc.cpp:768
 msgid "&Save"
 msgstr "&Gorde"
 
@@ -2939,7 +2939,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
-#: src/LyXFunc.cpp:1846
+#: src/LyXFunc.cpp:1859
 msgid "on"
 msgstr "aktibatuta"
 
@@ -3636,7 +3636,7 @@ msgstr "Bibliografia"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:541
+#: src/rowpainter.cpp:540
 msgid "Appendix"
 msgstr "Eranskina"
 
@@ -12014,8 +12014,8 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/Buffer.cpp:819 src/Exporter.cpp:87 src/LyXFunc.cpp:1135
-#: src/LyXFunc.cpp:2144 src/callback.cpp:186
+#: src/Buffer.cpp:819 src/Exporter.cpp:87 src/LyXFunc.cpp:1147
+#: src/LyXFunc.cpp:2157 src/callback.cpp:186
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Gainidatzi"
@@ -12072,7 +12072,7 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea edo aldaketak baztertu nahi dituzu?"
 
-#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:765
+#: src/BufferList.cpp:112 src/BufferList.cpp:220 src/LyXFunc.cpp:767
 msgid "Save changed document?"
 msgstr "Gorde aldatutako dokumentua?"
 
@@ -12167,12 +12167,12 @@ msgstr "Hitz bat dokumentuan."
 msgid "Count words"
 msgstr "Zenbatu hitzak"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1611
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1983 src/LyXFunc.cpp:2022
-#: src/LyXFunc.cpp:2095 src/callback.cpp:148
+#: src/BufferView.cpp:1613 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
+#: src/LyXFunc.cpp:2108 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
 #: src/frontends/controllers/ControlExternal.cpp:169
@@ -12181,31 +12181,31 @@ msgstr "Hautatu LyX dokumentua txertatzeko"
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView.cpp:1608 src/LyXFunc.cpp:2023 src/LyXFunc.cpp:2096
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:1988 src/LyXFunc.cpp:2027
+#: src/BufferView.cpp:1620 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/BufferView.cpp:1626 src/LyXFunc.cpp:2037 src/LyXFunc.cpp:2117
-#: src/LyXFunc.cpp:2131 src/LyXFunc.cpp:2147
+#: src/BufferView.cpp:1632 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
+#: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1643
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1654
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1656
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
@@ -12551,7 +12551,7 @@ msgstr ""
 msgid "Undefined character style"
 msgstr "Definitu gabeko karaktere-estiloa"
 
-#: src/Exporter.cpp:82 src/LyXFunc.cpp:1131
+#: src/Exporter.cpp:82 src/LyXFunc.cpp:1143
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -12562,7 +12562,7 @@ msgstr ""
 "\n"
 "Nahi duzu fitxategi hori gainidaztea?"
 
-#: src/Exporter.cpp:85 src/LyXFunc.cpp:1134
+#: src/Exporter.cpp:85 src/LyXFunc.cpp:1146
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "Gainidatzi fitxategia?"
@@ -12868,15 +12868,39 @@ msgstr "Ezin da aldi baterako direktorioa ezabatu"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Komandoaren `%1$s' aukera okerra. Irteten."
 
-#: src/LyX.cpp:814
+#: src/LyX.cpp:617
+msgid "No textclass is found"
+msgstr ""
+
+#: src/LyX.cpp:618
+msgid ""
+"LyX cannot continue because no textclass is found. You can either "
+"reconfigure normally, or reconfigure using default textclasses, or quit LyX."
+msgstr ""
+
+#: src/LyX.cpp:622
+#, fuzzy
+msgid "&Reconfigure"
+msgstr "Birkonfiguratu|B"
+
+#: src/LyX.cpp:623
+#, fuzzy
+msgid "&Use Default"
+msgstr "Lehenetsia"
+
+#: src/LyX.cpp:624 src/LyX.cpp:1148
+msgid "&Exit LyX"
+msgstr "&Irten LyX-etik"
+
+#: src/LyX.cpp:844
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:943
+#: src/LyX.cpp:973
 msgid "Could not create temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu:"
 
-#: src/LyX.cpp:944
+#: src/LyX.cpp:974
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12887,11 +12911,11 @@ msgstr ""
 "Ziurtatu bide-izen hori existitzen dela eta idazteko \n"
 "baimenak dituela, eta saiatu berriro."
 
-#: src/LyX.cpp:1111
+#: src/LyX.cpp:1141
 msgid "Missing user LyX directory"
 msgstr "Erabiltzailearen LyX direktorioa falta da"
 
-#: src/LyX.cpp:1112
+#: src/LyX.cpp:1142
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -12900,37 +12924,33 @@ msgstr ""
 "Existitzen ez den erabiltzailearen LyX direktorioa zehaztu duzu: %1$s.\n"
 "Zure konfigurazioa gordetzeko behar da."
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1147
 msgid "&Create directory"
 msgstr "&Sortu direktorioa"
 
-#: src/LyX.cpp:1118
-msgid "&Exit LyX"
-msgstr "&Irten LyX-etik"
-
-#: src/LyX.cpp:1119
+#: src/LyX.cpp:1149
 msgid "No user LyX directory. Exiting."
 msgstr "Ez dago erabiltzailearen LyX direktoriorik. Irtetzen."
 
-#: src/LyX.cpp:1123
+#: src/LyX.cpp:1153
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: %1$s direktorioa sortzen"
 
-#: src/LyX.cpp:1129
+#: src/LyX.cpp:1159
 msgid "Failed to create directory. Exiting."
 msgstr "Huts egin du direktorioa sortzean. Irtetzen."
 
-#: src/LyX.cpp:1302
+#: src/LyX.cpp:1332
 msgid "List of supported debug flags:"
 msgstr "Onartutako arazte-ikurren zerrenda:"
 
-#: src/LyX.cpp:1306
+#: src/LyX.cpp:1336
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Arazte-maila %1$s-ra ezartzen"
 
-#: src/LyX.cpp:1317
+#: src/LyX.cpp:1347
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12971,44 +12991,44 @@ msgstr ""
 "\t-version        bertsioa eta konpilatze-informazioaren laburpena\n"
 "Ikus LyX-en man eskuliburua xehetasun gehiagorako (exekutatu: man lyx)."
 
-#: src/LyX.cpp:1353 src/support/Package.cpp.in:568
+#: src/LyX.cpp:1383 src/support/Package.cpp.in:568
 #, fuzzy
 msgid "No system directory"
 msgstr "Erabiltzailearen direktorioa: "
 
-#: src/LyX.cpp:1354
+#: src/LyX.cpp:1384
 msgid "Missing directory for -sysdir switch"
 msgstr "'-sysdir' aukeraren direktorioa falta da"
 
-#: src/LyX.cpp:1364
+#: src/LyX.cpp:1394
 #, fuzzy
 msgid "No user directory"
 msgstr "Erabiltzailearen direktorioa: "
 
-#: src/LyX.cpp:1365
+#: src/LyX.cpp:1395
 msgid "Missing directory for -userdir switch"
 msgstr "'-userdir' aukeraren direktorioa falta da"
 
-#: src/LyX.cpp:1375
+#: src/LyX.cpp:1405
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Indize-komandoa:"
 
-#: src/LyX.cpp:1376
+#: src/LyX.cpp:1406
 msgid "Missing command string after --execute switch"
 msgstr "'--execute' aukeraren ondoren komandoa falta da"
 
-#: src/LyX.cpp:1386
+#: src/LyX.cpp:1416
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "'--export' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/LyX.cpp:1398
+#: src/LyX.cpp:1428
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "'--import' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/LyX.cpp:1403
+#: src/LyX.cpp:1433
 msgid "Missing filename for --import"
 msgstr "'--import' aukeraren fitxategi-izena falta da"
 
@@ -13024,7 +13044,7 @@ msgstr "Ezin ezer egin"
 msgid "Unknown action"
 msgstr "Ekintza ezezaguna"
 
-#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:749
+#: src/LyXFunc.cpp:433 src/LyXFunc.cpp:751
 msgid "Command disabled"
 msgstr "Komandoa desgaitua"
 
@@ -13032,15 +13052,15 @@ msgstr "Komandoa desgaitua"
 msgid "Command not allowed without any document open"
 msgstr "Ezin komandoa erabili dokumentu bat ireki arte"
 
-#: src/LyXFunc.cpp:735
+#: src/LyXFunc.cpp:737
 msgid "Document is read-only"
 msgstr "Dokumentua irakurtzeko soilik da"
 
-#: src/LyXFunc.cpp:743
+#: src/LyXFunc.cpp:745
 msgid "This portion of the document is deleted."
 msgstr "Dokumentuaren zati hau ezabatu egin da."
 
-#: src/LyXFunc.cpp:762
+#: src/LyXFunc.cpp:764
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -13051,7 +13071,7 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea?"
 
-#: src/LyXFunc.cpp:780
+#: src/LyXFunc.cpp:782
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -13060,11 +13080,11 @@ msgstr ""
 "Ezin izan da %1$s dokumentua inprimatu.\n"
 "Egiaztatu inprimagailua ongi konfiguratuta dagoela."
 
-#: src/LyXFunc.cpp:783
+#: src/LyXFunc.cpp:785
 msgid "Print document failed"
 msgstr "Huts egin du dokumentua inprimatzean"
 
-#: src/LyXFunc.cpp:802
+#: src/LyXFunc.cpp:804
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -13073,30 +13093,30 @@ msgstr ""
 "Dokumentua ezin izan da bihurtu\n"
 "%1$s dokumentu-klasera."
 
-#: src/LyXFunc.cpp:805
+#: src/LyXFunc.cpp:807
 msgid "Could not change class"
 msgstr "Ezin izan da klasea aldatu"
 
-#: src/LyXFunc.cpp:917
+#: src/LyXFunc.cpp:919
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/LyXFunc.cpp:921
+#: src/LyXFunc.cpp:923
 msgid " done."
 msgstr " eginda."
 
-#: src/LyXFunc.cpp:938
+#: src/LyXFunc.cpp:940
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/LyXFunc.cpp:951
+#: src/LyXFunc.cpp:953
 #, fuzzy
 msgid "All documents saved."
 msgstr "Dokumentua ez da gorde"
 
-#: src/LyXFunc.cpp:961
+#: src/LyXFunc.cpp:963
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -13105,105 +13125,105 @@ msgstr ""
 "Edozein aldaketa galdu egingo da. Ziur zaude %1$s dokumentuaren gordetako "
 "bertsioa leheneratu nahi duzula?"
 
-#: src/LyXFunc.cpp:963 src/buffer_funcs.cpp:192
+#: src/LyXFunc.cpp:965 src/buffer_funcs.cpp:192
 msgid "Revert to saved document?"
 msgstr "Gordetako dokumentua berreskuratu?"
 
-#: src/LyXFunc.cpp:964 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
+#: src/LyXFunc.cpp:966 src/LyXVC.cpp:175 src/buffer_funcs.cpp:193
 msgid "&Revert"
 msgstr "&Berreskuratu"
 
-#: src/LyXFunc.cpp:1158
+#: src/LyXFunc.cpp:1170
 #, fuzzy
 msgid "Exiting."
 msgstr "Irtetzen"
 
-#: src/LyXFunc.cpp:1176 src/Text3.cpp:1344
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1344
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
-#: src/LyXFunc.cpp:1185
+#: src/LyXFunc.cpp:1198
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "%1$s laguntza-fitxategia irekitzen..."
 
-#: src/LyXFunc.cpp:1580
+#: src/LyXFunc.cpp:1593
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxia: set-color <lyx_izena> <x11_izena>"
 
-#: src/LyXFunc.cpp:1591
+#: src/LyXFunc.cpp:1604
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Huts egin du \"%1$s\" kolorea ezartzean - kolorea definitu gabe dago edo "
 "ezin da berriz definitu"
 
-#: src/LyXFunc.cpp:1705
+#: src/LyXFunc.cpp:1718
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentuaren lehenetsiak hemen gordeta: "
 
-#: src/LyXFunc.cpp:1708
+#: src/LyXFunc.cpp:1721
 msgid "Unable to save document defaults"
 msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 
-#: src/LyXFunc.cpp:1764
+#: src/LyXFunc.cpp:1777
 msgid "Converting document to new document class..."
 msgstr "Dokumentua klase berrira bihurtzen..."
 
-#: src/LyXFunc.cpp:1840
+#: src/LyXFunc.cpp:1853
 #, fuzzy, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "'%1$s' taula-ezaugarri ezezaguna"
 
-#: src/LyXFunc.cpp:1848
+#: src/LyXFunc.cpp:1861
 #, fuzzy
 msgid "off"
 msgstr "Desaktibatua"
 
-#: src/LyXFunc.cpp:1850
+#: src/LyXFunc.cpp:1863
 #, fuzzy
 msgid "auto"
 msgstr "Data"
 
-#: src/LyXFunc.cpp:1852
+#: src/LyXFunc.cpp:1865
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1981
+#: src/LyXFunc.cpp:1994
 msgid "Select template file"
 msgstr "Hautatu txantiloia"
 
-#: src/LyXFunc.cpp:1984 src/callback.cpp:150
+#: src/LyXFunc.cpp:1997 src/callback.cpp:150
 msgid "Templates|#T#t"
 msgstr "Txantiloiak|#T#t"
 
-#: src/LyXFunc.cpp:2020
+#: src/LyXFunc.cpp:2033
 msgid "Select document to open"
 msgstr "Hautatu dokumentua irekitzeko"
 
-#: src/LyXFunc.cpp:2059
+#: src/LyXFunc.cpp:2072
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/LyXFunc.cpp:2063
+#: src/LyXFunc.cpp:2076
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentua irekita."
 
-#: src/LyXFunc.cpp:2065
+#: src/LyXFunc.cpp:2078
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Ezin izan da %1$s dokumentua ireki"
 
-#: src/LyXFunc.cpp:2090
+#: src/LyXFunc.cpp:2103
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Hautatu %1$s fitxategia inportatzeko"
 
-#: src/LyXFunc.cpp:2141 src/callback.cpp:181
+#: src/LyXFunc.cpp:2154 src/callback.cpp:181
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13214,12 +13234,12 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gainidaztea?"
 
-#: src/LyXFunc.cpp:2143 src/callback.cpp:185
+#: src/LyXFunc.cpp:2156 src/callback.cpp:185
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Gainidatzi dokumentua?"
 
-#: src/LyXFunc.cpp:2206
+#: src/LyXFunc.cpp:2219
 msgid "Welcome to LyX!"
 msgstr "Ongi etorri LyX-era!"
 
@@ -14221,15 +14241,15 @@ msgstr ""
 msgid "Running configure..."
 msgstr "Konfigurazioa exekutatzen..."
 
-#: src/callback.cpp:449
+#: src/callback.cpp:450
 msgid "Reloading configuration..."
 msgstr "Konfigurazioa birkargatzen..."
 
-#: src/callback.cpp:454
+#: src/callback.cpp:455
 msgid "System reconfigured"
 msgstr "Sistema birkonfiguratu da."
 
-#: src/callback.cpp:455
+#: src/callback.cpp:456
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15456,7 +15476,7 @@ msgid "space"
 msgstr "tartea"
 
 #: src/frontends/qt4/Validator.cpp:180 src/insets/ExternalSupport.cpp:380
-#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:613
+#: src/insets/InsetBibtex.cpp:194 src/insets/InsetGraphics.cpp:612
 #: src/insets/InsetInclude.cpp:474
 msgid "Invalid filename"
 msgstr "Fitxategi-izen baliogabea"
@@ -15478,7 +15498,7 @@ msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
 #: src/insets/ExternalSupport.cpp:381 src/insets/InsetBibtex.cpp:195
-#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:475
+#: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:475
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -15667,12 +15687,12 @@ msgstr ""
 "%1$s\n"
 "aldi-baterako direktorioan."
 
-#: src/insets/InsetGraphics.cpp:729
+#: src/insets/InsetGraphics.cpp:728
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Azken finean ez da %1$s(r)en bihurketarik behar"
 
-#: src/insets/InsetGraphics.cpp:841
+#: src/insets/InsetGraphics.cpp:840
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikoen fitxategia: %1$s"
@@ -16358,10 +16378,6 @@ msgstr "Erabiltzaile ezezaguna"
 
 #~ msgid "Acknowledgement \\arabic{theorem}"
 #~ msgstr "\\arabic{theorem}. aitorpena"
-
-#, fuzzy
-#~ msgid "&Default"
-#~ msgstr "Lehenetsia"
 
 #~ msgid "To &file:"
 #~ msgstr "Fitxate&gira:"
