@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-09-30 21:10+0200\n"
-"PO-Revision-Date: 2007-09-23 19:53+0200\n"
+"PO-Revision-Date: 2007-10-01 00:10+0200\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -7453,7 +7453,7 @@ msgstr "Nuovo|N"
 
 #: lib/ui/classic.ui:48
 msgid "New from Template...|T"
-msgstr "Nuovo da modello...|T"
+msgstr "Nuovo da modello...|u"
 
 #: lib/ui/classic.ui:49 lib/ui/stdmenus.inc:37
 msgid "Open...|O"
@@ -7533,7 +7533,7 @@ msgstr "Annulla|A"
 
 #: lib/ui/classic.ui:91
 msgid "Redo|d"
-msgstr "Rifai|R"
+msgstr "Rifai|f"
 
 #: lib/ui/classic.ui:93
 msgid "Cut|C"
@@ -7541,7 +7541,7 @@ msgstr "Taglia|g"
 
 #: lib/ui/classic.ui:94
 msgid "Copy|o"
-msgstr "Copia|C"
+msgstr "Copia"
 
 #: lib/ui/classic.ui:95
 msgid "Paste|a"
@@ -7569,7 +7569,7 @@ msgstr "Correttore ortografico...|C"
 
 #: lib/ui/classic.ui:105
 msgid "Thesaurus..."
-msgstr "Dizionario lessicale..."
+msgstr "Dizionario lessicale...|l"
 
 #: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:463
 msgid "Count Words|W"
@@ -7581,7 +7581,7 @@ msgstr "Controlla TeX|n"
 
 #: lib/ui/classic.ui:108
 msgid "Change Tracking|g"
-msgstr "Cambia tracciatura"
+msgstr "Tracciamento modifiche|d"
 
 #: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:471
 msgid "Preferences...|P"
@@ -7609,7 +7609,7 @@ msgstr "Linea in alto|a"
 
 #: lib/ui/classic.ui:123
 msgid "Line Bottom|B"
-msgstr "Linea in basso|o"
+msgstr "Linea in basso|b"
 
 #: lib/ui/classic.ui:124
 msgid "Line Left|L"
@@ -7621,7 +7621,7 @@ msgstr "Linea destra|d"
 
 #: lib/ui/classic.ui:127
 msgid "Alignment|i"
-msgstr "Allineamento|A"
+msgstr "Allineamento|n"
 
 #: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:172
 msgid "Add Row|A"
@@ -7641,7 +7641,7 @@ msgstr "Scambia righe"
 
 #: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:177
 msgid "Add Column|u"
-msgstr "Aggiungi colonna|l"
+msgstr "Aggiungi colonna|o"
 
 #: lib/ui/classic.ui:135
 msgid "Delete Column|D"
@@ -7713,7 +7713,7 @@ msgstr "Elimina riga|g"
 
 #: lib/ui/classic.ui:175
 msgid "Add Column|C"
-msgstr "Aggiungi colonna|l"
+msgstr "Aggiungi colonna|o"
 
 #: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:178
 msgid "Delete Column|e"
@@ -7782,7 +7782,7 @@ msgstr "Contesto alignat"
 
 #: lib/ui/classic.ui:204
 msgid "Flalign Environment|F"
-msgstr "Contesto flalign|F"
+msgstr "Contesto flalign|f"
 
 #: lib/ui/classic.ui:207
 msgid "Gather Environment"
@@ -7842,7 +7842,7 @@ msgstr "Nota|N"
 
 #: lib/ui/classic.ui:227
 msgid "Lists & TOC|O"
-msgstr "Elenchi & Indice generale|O"
+msgstr "Elenchi & Indice generale|h"
 
 #: lib/ui/classic.ui:229
 msgid "TeX Code|T"
@@ -7850,7 +7850,7 @@ msgstr "Codice TeX|T"
 
 #: lib/ui/classic.ui:230
 msgid "Minipage|p"
-msgstr "Minipagina|p"
+msgstr "Minipagina"
 
 #: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:309
 msgid "Graphics...|G"
@@ -7870,11 +7870,11 @@ msgstr "Includi file...|d"
 
 #: lib/ui/classic.ui:236
 msgid "Insert File|e"
-msgstr "Inserisci file|e"
+msgstr "Inserisci file|f"
 
 #: lib/ui/classic.ui:237
 msgid "External Material...|x"
-msgstr "Materiale esterno...|s"
+msgstr "Materiale esterno...|l"
 
 #: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:329
 msgid "Superscript|S"
@@ -7898,7 +7898,7 @@ msgstr "Interruzione di legatura|z"
 
 #: lib/ui/classic.ui:246
 msgid "Protected Space|r"
-msgstr "Spazio protetto|S"
+msgstr "Spazio protetto|a"
 
 #: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:333
 msgid "Inter-word Space|w"
@@ -7986,7 +7986,7 @@ msgstr "Dividi contesto|D"
 
 #: lib/ui/classic.ui:276
 msgid "Font Change|o"
-msgstr "Cambio carattere|c"
+msgstr "Cambio carattere|b"
 
 #: lib/ui/classic.ui:280
 msgid "Math Normal Font"
@@ -8098,7 +8098,7 @@ msgstr "Accetta tutte le modifiche|u"
 
 #: lib/ui/classic.ui:327
 msgid "Reject All Changes|R"
-msgstr "Rifiuta tutte le modifiche|g"
+msgstr "Rifiuta tutte le modifiche|f"
 
 #: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:429
 msgid "Show Changes in Output|S"
@@ -8158,7 +8158,7 @@ msgstr "Registro di LaTeX|R"
 
 #: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:415
 msgid "Outline|O"
-msgstr "Profilo|P"
+msgstr "Profilo|o"
 
 #: lib/ui/classic.ui:361
 msgid "TeX Information|X"
@@ -8178,23 +8178,23 @@ msgstr "Segnalibri|S"
 
 #: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:446
 msgid "Save Bookmark 1|S"
-msgstr "Salva segnalibro 1|1"
+msgstr "Salva segnalibro 1|S"
 
 #: lib/ui/classic.ui:381 lib/ui/stdmenus.inc:447
 msgid "Save Bookmark 2"
-msgstr "Salva segnalibro 2|2"
+msgstr "Salva segnalibro 2"
 
 #: lib/ui/classic.ui:382 lib/ui/stdmenus.inc:448
 msgid "Save Bookmark 3"
-msgstr "Salva segnalibro 3|3"
+msgstr "Salva segnalibro 3"
 
 #: lib/ui/classic.ui:383 lib/ui/stdmenus.inc:449
 msgid "Save Bookmark 4"
-msgstr "Salva segnalibro 4|4"
+msgstr "Salva segnalibro 4"
 
 #: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:450
 msgid "Save Bookmark 5"
-msgstr "Salva segnalibro 5|5"
+msgstr "Salva segnalibro 5"
 
 #: lib/ui/classic.ui:386
 msgid "Go to Bookmark 1|1"
@@ -8349,11 +8349,11 @@ msgstr "Impostazioni paragrafo...|p"
 
 #: lib/ui/stdmenus.inc:105
 msgid "Table|T"
-msgstr "Tabella|T"
+msgstr "Tabella|b"
 
 #: lib/ui/stdmenus.inc:107
 msgid "Rows & Columns|C"
-msgstr "Righe e colonne|C"
+msgstr "Righe e colonne|c"
 
 #: lib/ui/stdmenus.inc:114
 msgid "Increase List Depth|I"
@@ -8393,7 +8393,7 @@ msgstr "Impostazioni casella...|g"
 
 #: lib/ui/stdmenus.inc:127
 msgid "Table Settings...|a"
-msgstr "Impostazioni tabella...|t"
+msgstr "Impostazioni tabella...|z"
 
 #: lib/ui/stdmenus.inc:131
 msgid "Plain Text|T"
@@ -8781,7 +8781,7 @@ msgstr "Riferimento successivo|R"
 
 #: lib/ui/stdmenus.inc:451
 msgid "Clear Bookmarks|C"
-msgstr "Cancella segnalibri|s"
+msgstr "Cancella segnalibri|C"
 
 #: lib/ui/stdmenus.inc:462
 msgid "Thesaurus...|T"
@@ -12412,23 +12412,24 @@ msgstr "L'opzione `%1$s' della linea di comando è sbagliata. Abbandono."
 
 #: src/LyX.cpp:617
 msgid "No textclass is found"
-msgstr ""
+msgstr "Nessuna classe di documento trovata"
 
 #: src/LyX.cpp:618
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
+"LyX non può continuare perché non è stata trovata nessuna classe di "
+"documento. Occorre eseguire una riconfigurazione normale, oppure "
+"riconfigurare usando classi di documento predefinite, oppure uscire da LyX."
 
 #: src/LyX.cpp:622
-#, fuzzy
 msgid "&Reconfigure"
-msgstr "Riconfigura"
+msgstr "&Riconfigura"
 
 #: src/LyX.cpp:623
-#, fuzzy
 msgid "&Use Default"
-msgstr "&Predefinito"
+msgstr "&Classi predefinite"
 
 #: src/LyX.cpp:624 src/LyX.cpp:1148
 msgid "&Exit LyX"
@@ -12628,7 +12629,7 @@ msgid ""
 "into the document class %1$s."
 msgstr ""
 "Il documento potrebbe non venire convertito\n"
-"nella classe del documento %1$s."
+"nella classe di documento %1$s."
 
 #: src/LyXFunc.cpp:807
 msgid "Could not change class"
@@ -13383,7 +13384,7 @@ msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
-"La struttura '%1$s' non esiste nella classe di testo '%2$s'\n"
+"La struttura '%1$s' non esiste nella classe di documento '%2$s'\n"
 "Cerco di usare quella predefinita al suo posto.\n"
 
 #: src/Text.cpp:167
@@ -13800,8 +13801,8 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 "Il sistema è stato riconfigurato.\n"
-"Occorre riavviare LyX per poter usare ogni\n"
-"specifica aggiornata della classe del documento."
+"Occorre riavviare LyX per potere usare tutte le\n"
+"specifiche aggiornate delle classi di documento."
 
 #: src/client/debug.cpp:44 src/debug.cpp:44
 msgid "No debugging message"
@@ -13862,7 +13863,7 @@ msgstr "Gestione caratteri"
 
 #: src/debug.cpp:55
 msgid "Textclass files reading"
-msgstr "Sto leggendo i file delle classi di testo"
+msgstr "Sto leggendo i file delle classi di documento"
 
 #: src/debug.cpp:56
 msgid "Version control"
@@ -15267,12 +15268,12 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 "Il file incluso `%1$s'\n"
-"ha `%2$s' come classe di testo\n"
+"ha `%2$s' come classe di documento\n"
 "mentre quella del genitore è invece `%3$s'."
 
 #: src/insets/InsetInclude.cpp:503
 msgid "Different textclasses"
-msgstr "Classi testo differenti"
+msgstr "Classi di documento differenti"
 
 #: src/insets/InsetIndex.cpp:44
 msgid "Idx: "
