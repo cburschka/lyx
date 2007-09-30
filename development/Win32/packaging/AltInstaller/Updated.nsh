@@ -11,12 +11,6 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\images"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc"
- File /r "${PRODUCT_SOURCEDIR}\Resources\doc\biblio"
- File /r "${PRODUCT_SOURCEDIR}\Resources\doc\clipart"
- File /r "${PRODUCT_SOURCEDIR}\Resources\doc\de"
- File /r "${PRODUCT_SOURCEDIR}\Resources\doc\es"
- File /r "${PRODUCT_SOURCEDIR}\Resources\doc\es\biblio"
- File /r "${PRODUCT_SOURCEDIR}\Resources\doc\es\clipart"
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  SetOutPath "$INSTDIR\Resources\examples\de"
@@ -40,6 +34,9 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\LyX.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_lang.py"
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
+ SetOutPath "$INSTDIR\Resources\templates"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\g-brief-de.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\g-brief-en.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
 
