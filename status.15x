@@ -132,6 +132,9 @@ What's new
 
 - Fix a crash when logging out from within the Gnome desktop (bug 1656).
 
+- Fix a crash when exporting a file with graphics to LaTeX on Windows
+  (bug 4243).
+
 - Fix a crash with View>PDF on the Mac. This occurred only when LyX was
   compiled with gcc's stdlib-debug option (bug 4014).
 

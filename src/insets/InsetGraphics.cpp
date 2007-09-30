@@ -601,13 +601,12 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (status == FAILURE)
 		return orig_file;
 
-	// a relative filename should be relative to the master
-	// buffer.
+	// a relative filename should be relative to the master buffer.
 	// "nice" means that the buffer is exported to LaTeX format but not
-	//        run through the LaTeX compiler.
-	string output_file = support::os::external_path(runparams.nice ?
+	// run through the LaTeX compiler.
+	string output_file = runparams.nice ?
 		params().filename.outputFilename(m_buffer->filePath()) :
-		onlyFilename(temp_file.absFilename()));
+		onlyFilename(temp_file.absFilename());
 
 	if (runparams.nice && !isValidLaTeXFilename(output_file)) {
 		frontend::Alert::warning(_("Invalid filename"),
