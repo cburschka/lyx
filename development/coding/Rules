@@ -12,6 +12,7 @@ of this happened before we really became aware of these issues,
 but still, we don't want it to happen again. So we have put together
 some guidelines and rules for the developers.
 
+
 General
 -------
 
@@ -61,16 +62,9 @@ lot easier to read than the other diff formats. Also please do not
 send patches that implements or fixes several different things; several
 patches is a much better option.
 
-We also require you to provide a ChangeLog entry with every patch, this
-describes shortly what the patch is doing. The ChangeLog entry follows
-this syntax:
+We also require you to provide a commit message entry with every patch,
+this describes in detail what the patch is doing.
 
-1999-12-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
-
-	* src/support/lyxstring.C (find): assert bug fixed.
-
-Note that there are specific ChangeLogs for most directories; use those
-rather than the top-level one.
 
 Code Constructs
 ---------------
@@ -85,7 +79,7 @@ in C++.
   user defined types, and these can very often be expensive to
   initialize. This rule connects to the next rule too.
 
-- declare the variable as const if you don't need to change it. This
+- Declare the variable as const if you don't need to change it. This
   applies to POD types like int as well as classes.
 
 - Make the scope of a variable as small as possible.
@@ -139,6 +133,7 @@ in C++.
 	case bar: ...; break;
 	default: ...; break; // not needed and would shadow a wrong use of Foo
 	}
+
 
 Exceptions
 ----------
@@ -321,7 +316,7 @@ Formatting
     like this :
 
   /**
-   * \file NewFile.C
+   * \file NewFile.cpp
    * This file is part of LyX, the document processor.
    * Licence details can be found in the file COPYING.
    *
@@ -335,7 +330,7 @@ Formatting
   - The documentation is generated from the header files.
   - You document for the other developers, not for yourself.
   - You should document what the function does, not the implementation.
-  - in the .C files you document the implementation.
+  - in the .cpp files you document the implementation.
   - Single line description (///), multiple lines description (/** ... */)
   - see the doxygen webpage referenced above
 
