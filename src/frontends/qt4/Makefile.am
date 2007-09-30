@@ -117,7 +117,6 @@ SOURCEFILES = \
 
 NOMOCHEADER = \
 	ButtonController.h \
-	GuiClipboard.h \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
 	GuiSelection.h \
@@ -143,6 +142,7 @@ MOCHEADER = \
 	GuiChanges.h \
 	GuiCharacter.h \
 	GuiCitation.h \
+	GuiClipboard.h \
 	GuiCommandBuffer.h \
 	GuiCommandEdit.h \
 	GuiDelimiter.h \
