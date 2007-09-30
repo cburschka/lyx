@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-09-30 21:10+0200\n"
+"POT-Creation-Date: 2007-09-30 21:24+0200\n"
 "PO-Revision-Date: 2007-08-28 23:15+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -12499,23 +12499,24 @@ msgstr "Falsche Befehlszeilenoption `%1$s'. Das Programm terminiert."
 
 #: src/LyX.cpp:617
 msgid "No textclass is found"
-msgstr ""
+msgstr "Keine Textklasse gefunden"
 
 #: src/LyX.cpp:618
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
+"LyX kann nicht fortgesetzt werden, da keine Textklasse gefunden wurde. Sie "
+"können normal neu konfigurieren, mit den Standard-Textklassen neu "
+"konfigurieren, oder LyX beenden."
 
 #: src/LyX.cpp:622
-#, fuzzy
 msgid "&Reconfigure"
-msgstr "Neu konfigurieren"
+msgstr "&Neu konfigurieren"
 
 #: src/LyX.cpp:623
-#, fuzzy
 msgid "&Use Default"
-msgstr "Standard"
+msgstr "&Standard verwenden"
 
 #: src/LyX.cpp:624 src/LyX.cpp:1148
 msgid "&Exit LyX"
@@ -16007,15 +16008,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "Case."
-#~ msgstr "Fall."
-
-#~ msgid "Case \\arabic{case}."
-#~ msgstr "Fall \\arabic{case}."
-
-#~ msgid "Algorithm #."
-#~ msgstr "Algorithmus #."
-
-#~ msgid "Case @Section@.\\arabic{theorem}."
-#~ msgstr "Fall @Section@.\\arabic{theorem}."
