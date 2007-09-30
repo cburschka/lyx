@@ -20,7 +20,7 @@
 #ifndef GRAPHICSCACHE_H
 #define GRAPHICSCACHE_H
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 

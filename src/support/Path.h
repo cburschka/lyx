@@ -14,7 +14,7 @@
 
 #include "support/FileName.h"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <string>
 

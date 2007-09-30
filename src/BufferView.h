@@ -24,7 +24,7 @@
 #include "support/types.h"
 
 #include <boost/tuple/tuple.hpp>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 #include <boost/signal.hpp>
 
 #include <utility>

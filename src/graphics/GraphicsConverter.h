@@ -19,7 +19,7 @@
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 namespace lyx {
 

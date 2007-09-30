@@ -16,7 +16,7 @@
 
 #include "support/types.h"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <string>
 #include <vector>

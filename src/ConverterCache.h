@@ -21,7 +21,7 @@
 #ifndef CONVERTERCACHE_H
 #define CONVERTERCACHE_H
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 
 #include <string>

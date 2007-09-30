@@ -16,7 +16,7 @@
 #include "support/FileName.h"
 #include "support/types.h"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 #include <boost/tuple/tuple.hpp>
 
 #include <string>

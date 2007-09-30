@@ -38,7 +38,7 @@
 #include "support/ForkedcallsController.h"
 #include "support/FileName.h"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 

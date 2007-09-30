@@ -18,7 +18,7 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/tokenizer.hpp>
 #include <boost/tuple/tuple.hpp>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 #include <boost/version.hpp>
 
 #include <algorithm>

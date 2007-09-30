@@ -30,7 +30,7 @@
 
 #include "GraphicsTypes.h"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 

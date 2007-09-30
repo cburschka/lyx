@@ -15,7 +15,7 @@
 #define LYX_H
 
 #include <boost/scoped_ptr.hpp>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <string>
 

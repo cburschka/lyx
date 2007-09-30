@@ -14,7 +14,7 @@
 #define DIALOGS_H
 
 #include <boost/signal.hpp>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <map>
 

@@ -18,7 +18,7 @@
 
 #include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <vector>
 

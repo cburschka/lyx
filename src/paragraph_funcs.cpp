@@ -19,10 +19,11 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 
+#include <boost/next_prior.hpp>
+
 
 namespace lyx {
 
-using std::string;
 using std::endl;
 
 

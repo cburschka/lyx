@@ -14,7 +14,7 @@
 
 #include "support/docstring.h"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <vector>
 

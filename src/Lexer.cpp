@@ -25,7 +25,7 @@
 #include "support/types.h"
 #include "support/unicode.h"
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <functional>
 #include <istream>

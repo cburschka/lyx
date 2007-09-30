@@ -10,7 +10,7 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/signal.hpp>
 #include <boost/tuple/tuple.hpp>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <algorithm>
 #include <cmath>

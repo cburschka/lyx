@@ -13,13 +13,8 @@
 #ifndef RANDOM_ACESS_LIST_H
 #define RANDOM_ACESS_LIST_H
 
-//#include "debug.h"
-
-#include <boost/utility.hpp>
-
 #include <vector>
 #include <list>
-#include <algorithm>
 
 
 namespace lyx {

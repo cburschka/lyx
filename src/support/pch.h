@@ -19,7 +19,7 @@
 #endif
 
 #include <boost/tokenizer.hpp>
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 
 #include <fcntl.h>
 #ifdef HAVE_SYS_STAT_H

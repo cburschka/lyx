@@ -18,7 +18,7 @@
 #ifndef PREVIEWLOADER_H
 #define PREVIEWLOADER_H
 
-#include <boost/utility.hpp>
+#include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
