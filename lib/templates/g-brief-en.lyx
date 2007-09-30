@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -40,22 +40,60 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Name
-
 Thomas Hartkens
+\begin_inset Note Note
+status open
+
+\begin_layout Letter
+
+\series bold
+Important note:
+\series default
+ This template uses the old 
+\begin_inset Quotes pld
+\end_inset
+
+g-brief
+\begin_inset Quotes prd
+\end_inset
+
+ class that is replaced be the new class version 
+\begin_inset Quotes pld
+\end_inset
+
+g-brief2
+\begin_inset Quotes prd
+\end_inset
+
+.
+ It is therefore recommended to use the template 
+\begin_inset Quotes pld
+\end_inset
+
+g-brief2
+\begin_inset Quotes prd
+\end_inset
+
+ instead.
+ This template is only here for compatibility issues.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Signature
-
 Thomas Hartkens
 \end_layout
 
 \begin_layout Street
-
 Edmund-Siemers-Allee 25
 \end_layout
 
@@ -64,12 +102,10 @@ Edmund-Siemers-Allee 25
 \end_layout
 
 \begin_layout Town
-
 22761 Hamburg
 \end_layout
 
 \begin_layout State
-
 Germany
 \end_layout
 
@@ -78,7 +114,6 @@ Germany
 \end_layout
 
 \begin_layout Phone
-
 +49 40 3333333
 \end_layout
 
@@ -91,12 +126,10 @@ Germany
 \end_layout
 
 \begin_layout EMail
-
 thomas@hartkens.de
 \end_layout
 
 \begin_layout HTTP
-
 www.hartkens.de/thomas
 \end_layout
 
@@ -113,7 +146,6 @@ www.hartkens.de/thomas
 \end_layout
 
 \begin_layout Address
-
 Hans Beispiel
 \newline
 Teststrasse 34
@@ -122,17 +154,14 @@ Teststrasse 34
 \end_layout
 
 \begin_layout Reference
-
 Musterbrief
 \end_layout
 
 \begin_layout PostalComment
-
 REGISTERED LETTER
 \end_layout
 
 \begin_layout MyRef
-
 TH
 \end_layout
 
@@ -153,12 +182,11 @@ TH
 \end_layout
 
 \begin_layout Date
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Letter
+
 
 \backslash
 today
@@ -170,24 +198,20 @@ today
 \end_layout
 
 \begin_layout Opening
-
 Dear Mr.
  Beispiel,
 \end_layout
 
 \begin_layout Closing
-
 Yours sincerely,
 \end_layout
 
 \begin_layout Letter
-
 I am writing to ask whether you could send me any information about possibility
  of ...
 \end_layout
 
 \begin_layout Letter
-
 I would be very pleased if you could send me these informations.
 \end_layout
 
