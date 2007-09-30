@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -40,22 +40,60 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Name
-
 Thomas Hartkens
+\begin_inset Note Note
+status open
+
+\begin_layout Brieftext
+
+\series bold
+Wichtiger Hinweis:
+\series default
+ Diese Vorlage nutzt die alte Dokumentklasse 
+\begin_inset Quotes pld
+\end_inset
+
+g-brief
+\begin_inset Quotes prd
+\end_inset
+
+, die durch die neue Version 
+\begin_inset Quotes pld
+\end_inset
+
+g-brief2
+\begin_inset Quotes prd
+\end_inset
+
+ ersetzt wurde.
+ Is wird daher empfohlen stattdessen die Vorlage 
+\begin_inset Quotes pld
+\end_inset
+
+g-brief2
+\begin_inset Quotes prd
+\end_inset
+
+ zu benutzen.
+ Diese Vorlage ist nur aus Kompatibilitätsgründen vorhanden.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Unterschrift
-
 Thomas Hartkens
 \end_layout
 
 \begin_layout Strasse
-
 Edmund-Siemers-Allee 25
 \end_layout
 
@@ -64,7 +102,6 @@ Edmund-Siemers-Allee 25
 \end_layout
 
 \begin_layout Ort
-
 20434 Hamburg
 \end_layout
 
@@ -77,7 +114,6 @@ Edmund-Siemers-Allee 25
 \end_layout
 
 \begin_layout Telefon
-
 +49 40 3333333
 \end_layout
 
@@ -90,12 +126,10 @@ Edmund-Siemers-Allee 25
 \end_layout
 
 \begin_layout EMail
-
 thomas@hartkens.de 
 \end_layout
 
 \begin_layout HTTP
-
 www.hartkens.de/thomas
 \end_layout
 
@@ -112,7 +146,6 @@ www.hartkens.de/thomas
 \end_layout
 
 \begin_layout Adresse
-
 Hans Beispiel
 \newline
 Teststrasse 34
@@ -121,12 +154,10 @@ Teststrasse 34
 \end_layout
 
 \begin_layout Betreff
-
 Musterbrief
 \end_layout
 
 \begin_layout Postvermerk
-
 EINSCHREIBEN
 \end_layout
 
@@ -135,7 +166,6 @@ EINSCHREIBEN
 \end_layout
 
 \begin_layout IhrZeichen
-
 TH
 \end_layout
 
@@ -152,12 +182,11 @@ TH
 \end_layout
 
 \begin_layout Datum
-
-
 \begin_inset ERT
 status collapsed
 
-\begin_layout Standard
+\begin_layout Brieftext
+
 
 \backslash
 today
@@ -169,17 +198,14 @@ today
 \end_layout
 
 \begin_layout Anrede
-
 Sehr geehrter Herr Beispiel,
 \end_layout
 
 \begin_layout Gruss
-
 Mit freundlichen Grüßen,
 \end_layout
 
 \begin_layout Brieftext
-
 seit der siebten Mieterhöhung im laufenden Jahr konnte ich keinen Zahlungseingan
 g von Ihnen mehr verbuchen.
  Ich bitte Sie Ihren Verpflichtungen schnellstens nachzukommen, da ich mich
