@@ -6801,9 +6801,8 @@ msgid "Subjectclass"
 msgstr "Sachgebiet"
 
 #: lib/layouts/amsdefs.inc:223
-#, fuzzy
 msgid "2000 Mathematics Subject Classification:"
-msgstr "1991 Mathematik-Sachgebiet-Klassifikation:"
+msgstr "2000 Mathematik-Sachgebiet-Klassifikation:"
 
 #: lib/layouts/amsmaths-plain.inc:64 lib/layouts/amsmaths.inc:169
 msgid "Conjecture."
@@ -6861,16 +6860,15 @@ msgstr "Schlussfolgerung."
 #: lib/layouts/amsmaths-plain.inc:164 lib/layouts/amsmaths-seq.inc:360
 #: lib/layouts/amsmaths.inc:545
 msgid "Assumption"
-msgstr ""
+msgstr "Annahme"
 
 #: lib/layouts/amsmaths-plain.inc:166 lib/layouts/amsmaths.inc:559
 msgid "Assumption."
-msgstr ""
+msgstr "Annahme."
 
 #: lib/layouts/amsmaths-seq.inc:152
-#, fuzzy
 msgid "Theorem \\arabic{thm}."
-msgstr "Theorem \\arabic{theorem}."
+msgstr "Theorem \\arabic{thm}."
 
 #: lib/layouts/amsmaths-seq.inc:202
 msgid "Criterion \\arabic{criterion}."
@@ -6917,9 +6915,8 @@ msgid "Conclusion \\arabic{conclusion}."
 msgstr "Schlussfolgerung \\arabic{conclusion}."
 
 #: lib/layouts/amsmaths-seq.inc:362
-#, fuzzy
 msgid "Assumption \\arabic{assumption}."
-msgstr "Frage \\arabic{question}."
+msgstr "Annahme \\arabic{assumption}."
 
 #: lib/layouts/amsmaths.inc:92
 msgid "Corollary @Section@.\\arabic{theorem}."
@@ -6946,18 +6943,16 @@ msgid "Criterion @Section@.\\arabic{theorem}."
 msgstr "Kriterium @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:187
-#, fuzzy
 msgid "Criterion*"
-msgstr "Kriterium"
+msgstr "Kriterium*"
 
 #: lib/layouts/amsmaths.inc:201
 msgid "Algorithm @Section@.\\arabic{theorem}."
 msgstr "Algorithmus @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:209
-#, fuzzy
 msgid "Algorithm*"
-msgstr "Algorithmus"
+msgstr "Algorithmus*"
 
 #: lib/layouts/amsmaths.inc:223
 msgid "Fact @Section@.\\arabic{theorem}."
@@ -6972,9 +6967,8 @@ msgid "Axiom @Section@.\\arabic{theorem}."
 msgstr "Axiom @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:253
-#, fuzzy
 msgid "Axiom*"
-msgstr "Axiom"
+msgstr "Axiom*"
 
 #: lib/layouts/amsmaths.inc:267
 msgid "Definition @Section@.\\arabic{theorem}."
@@ -7049,9 +7043,8 @@ msgid "Summary @Section@.\\arabic{theorem}."
 msgstr "Zusammenfassung @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:490
-#, fuzzy
 msgid "Summary*"
-msgstr "Zusammenfassung"
+msgstr "Zusammenfassung*"
 
 #: lib/layouts/amsmaths.inc:504
 msgid "Acknowledgement @Section@.\\arabic{theorem}."
@@ -7070,13 +7063,12 @@ msgid "Conclusion*"
 msgstr "Schlussfolgerung*"
 
 #: lib/layouts/amsmaths.inc:548
-#, fuzzy
 msgid "Assumption @Section@.\\arabic{theorem}."
-msgstr "Axiom @Section@.\\arabic{theorem}."
+msgstr "Annahme @Section@.\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:556
 msgid "Assumption*"
-msgstr ""
+msgstr "Annahme*"
 
 #: lib/layouts/db_stdlayouts.inc:11
 msgid "Literal"
@@ -8702,7 +8694,7 @@ msgstr "Datei|D"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Box[[Menu]]"
-msgstr ""
+msgstr "Box|B"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Cross-Reference...|R"
@@ -15374,9 +15366,8 @@ msgid "Different textclasses"
 msgstr "Unterschiedliche Textklassen"
 
 #: src/insets/InsetIndex.cpp:44
-#, fuzzy
 msgid "Idx: "
-msgstr "Stichwort"
+msgstr "Stichwort: "
 
 #: src/insets/InsetIndex.cpp:82
 msgid "Index"
