@@ -79,6 +79,7 @@ src_header_files = Split('''
     LaTeXFeatures.h
     Language.h
     Layout.h
+    LayoutEnums.h
     Length.h
     Lexer.h
     LyX.h
@@ -123,7 +124,6 @@ src_header_files = Split('''
     Variables.h
     WordLangTuple.h
     buffer_funcs.h
-    bufferview_funcs.h
     callback.h
     debug.h
     factory.h
@@ -140,7 +140,6 @@ src_header_files = Split('''
     paragraph_funcs.h
     rowpainter.h
     sgml.h
-    toc.h
     update_flags.h
     version.h
 ''')
@@ -240,7 +239,6 @@ src_pre_files = Split('''
     paragraph_funcs.cpp
     rowpainter.cpp
     sgml.cpp
-    toc.cpp
     version.cpp
 ''')
 
