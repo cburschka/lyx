@@ -207,11 +207,19 @@ void IconPalette::hideEvent(QHideEvent * event )
 void IconPalette::updateParent()
 {
 	bool enable = false;
+	// FIXME: so this is commented out for speed considerations
+	// true fix is to repair the updating mechanism of the toolbar
+#if 0
 	for (int i = 0; i < actions_.size(); ++i)
 		if (actions_.at(i)->isEnabled()) {
 			enable = true;
 			break;
 		}
+#else
+	// we check only the first action to enable/disable the menu
+	if (actions_.size() > 0)
+		enable = actions_.at(0)->isEnabled();
+#endif
 
 	parentWidget()->setEnabled(enable);
 }
@@ -256,11 +264,19 @@ void ButtonMenu::add(QAction * action)
 void ButtonMenu::updateParent()
 {
 	bool enable = false;
+	// FIXME: so this is commented out for speed considerations
+	// true fix is to repair the updating mechanism of the toolbar
+#if 0
 	for (int i = 0; i < actions_.size(); ++i)
 		if (actions_.at(i)->isEnabled()) {
 			enable = true;
 			break;
 		}
+#else
+	// we check only the first action to enable/disable the menu
+	if (actions_.size() > 0)
+		enable = actions_.at(0)->isEnabled();
+#endif
 
 	parentWidget()->setEnabled(enable);
 }
