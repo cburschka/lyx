@@ -1,5 +1,6 @@
+#if 0
 /**
- * \file Inset.heorem.cpp
+ * \file InsetTheorem.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +11,7 @@
 
 #include <config.h>
 
-#include "Inset.heorem.h"
+#include "InsetTheorem.h"
 #include "insets/InsetText.h"
 
 #include "debug.h"
@@ -100,3 +101,5 @@ int Inset.heorem::latex(Buffer const * buf, odocstream & os,
 
 
 } // namespace lyx
+
+#endif

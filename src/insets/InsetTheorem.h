@@ -9,9 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef Inset.heorem_H
-#define Inset.heorem_H
+#if 0
 
+#ifndef INSETTHEOREM_H
+#define INSETTHEOREM_H
 
 #include "InsetCollapsable.h"
 
@@ -47,5 +48,7 @@ private:
 
 
 } // namespace lyx
+
+#endif
 
 #endif
