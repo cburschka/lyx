@@ -45,6 +45,8 @@
 #include "Session.h"
 #include "version.h"
 
+#include <boost/current_function.hpp>
+
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
