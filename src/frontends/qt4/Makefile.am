@@ -119,7 +119,6 @@ NOMOCHEADER = \
 	ButtonController.h \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
-	GuiSelection.h \
 	GuiImage.h \
 	GuiPainter.h \
 	qt_helpers.h
@@ -171,6 +170,7 @@ MOCHEADER = \
 	GuiPrint.h \
 	GuiRef.h \
 	GuiSearch.h \
+	GuiSelection.h \
 	GuiSelectionManager.h \
 	GuiSendto.h \
 	GuiSetBorder.h \
