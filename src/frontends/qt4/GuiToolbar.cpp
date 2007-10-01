@@ -149,13 +149,12 @@ void GuiLayoutBox::setEnabled(bool enable)
 		combo_->setEnabled(enable);
 }
 
-namespace {
 
-// FIXME: put that in frontends/LayoutBox class.
-void layoutSelected(LyXView & lv, docstring const & name)
+void GuiLayoutBox::selected(const QString & str)
 {
-	TextClass const & tc = lv.buffer()->params().getTextClass();
-
+	owner_.setFocus();
+	TextClass const & tc = owner_.buffer()->params().getTextClass();
+	docstring const name = qstring_to_ucs4(str);
 	TextClass::const_iterator it  = tc.begin();
 	TextClass::const_iterator const end = tc.end();
 	for (; it != end; ++it) {
@@ -163,21 +162,12 @@ void layoutSelected(LyXView & lv, docstring const & name)
 		if (translateIfPossible(itname) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::TOOLBAR);
-			lv.dispatch(func);
+			owner_.dispatch(func);
 			return;
 		}
 	}
 	lyxerr << "ERROR (layoutSelected): layout not found!"
 	       << endl;
-}
-
-} // anon namespace
-
-void GuiLayoutBox::selected(const QString & str)
-{
-	owner_.setFocus();
-
-	layoutSelected(owner_, qstring_to_ucs4(str));
 }
 
 
