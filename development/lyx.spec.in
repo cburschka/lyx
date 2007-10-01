@@ -81,7 +81,7 @@ texhash
 %files
 %defattr(-,root,root)
 %doc ABOUT-NLS ANNOUNCE COPYING
-%doc README UPGRADING ChangeLog NEWS
+%doc README UPGRADING NEWS
 %doc lib/CREDITS
 %{_bindir}/*
 %{_mandir}/man?/*

@@ -4,8 +4,6 @@ TOP_extra_files = Split('''
     ABOUT-NLS
     ANNOUNCE
     COPYING
-    ChangeLog
-    ChangeLog.1
     INSTALL
     INSTALL.MacOSX
     INSTALL.Win32
@@ -14,7 +12,6 @@ TOP_extra_files = Split('''
     INSTALL.scons
     Makefile.am
     NEWS
-    OLD-CHANGES
     README
     README.Cygwin
     README.Win32
@@ -264,7 +261,6 @@ src_extra_src_files = Split('''
 
 
 src_extra_files = Split('''
-    ChangeLog
     Makefile.am
     pch.h
 ''')
@@ -286,7 +282,6 @@ src_client_files = Split('''
 
 
 src_client_extra_files = Split('''
-    ChangeLog
     Makefile.am
     lyxclient.man
     pch.h
@@ -390,14 +385,12 @@ src_support_extra_src_files = Split('''
 
 
 src_support_extra_files = Split('''
-    ChangeLog
     Makefile.am
     pch.h
 ''')
 
 
 src_support_tests_extra_files = Split('''
-    ChangeLog
     Makefile.am
     boost.cpp
     convert.cpp
@@ -466,7 +459,6 @@ src_graphics_files = Split('''
 
 
 src_graphics_extra_files = Split('''
-    ChangeLog
     Makefile.am
     pch.h
 ''')
@@ -624,7 +616,6 @@ src_mathed_files = Split('''
 
 src_mathed_extra_files = Split('''
     BUGS
-    ChangeLog
     InsetFormulaMacro.cpp
     InsetFormulaMacro.h
     InsetMathMBox.cpp
@@ -674,7 +665,6 @@ src_tex2lyx_copied_files = Split('''
 
 
 src_tex2lyx_extra_files = Split('''
-    ChangeLog
     Makefile.am
     pch.h
     test-insets.tex
@@ -719,7 +709,6 @@ src_frontends_files = Split('''
 
 
 src_frontends_extra_files = Split('''
-    ChangeLog
     Makefile.am
     pch.h
 ''')
@@ -812,7 +801,6 @@ src_frontends_controllers_files = Split('''
 
 
 src_frontends_controllers_extra_files = Split('''
-    ChangeLog
     Makefile.am
     pch.h
 ''')
@@ -1000,7 +988,6 @@ src_frontends_qt4_files = Split('''
 
 
 src_frontends_qt4_extra_files = Split('''
-    ChangeLog
     GuiFontMetrics.h
     Makefile.am
     README
@@ -1200,7 +1187,6 @@ src_insets_files = Split('''
 
 
 src_insets_extra_files = Split('''
-    ChangeLog
     InsetTheorem.cpp
     InsetTheorem.h
     Makefile.am
@@ -1256,7 +1242,6 @@ intl_files = Split('''
 
 
 intl_extra_files = Split('''
-    ChangeLog
     VERSION
     config.charset
     libgnuintl.h.in
@@ -1272,7 +1257,6 @@ intl_extra_files = Split('''
 
 
 config_extra_files = Split('''
-    ChangeLog
     Makefile.am
     common.am
     config.guess
@@ -1299,7 +1283,6 @@ sourcedoc_extra_files = Split('''
 
 
 po_extra_files = Split('''
-    ChangeLog
     LINGUAS
     Makefile.in.in
     Makevars
@@ -1361,7 +1344,6 @@ lib_files = Split('''
 
 
 lib_extra_files = Split('''
-    ChangeLog
     Makefile.am
     autocorrect
     build-listerrors
@@ -2186,7 +2168,6 @@ lib_doc_clipart_files = Split('''
 
 
 lib_doc_extra_files = Split('''
-    ChangeLog
     Makefile.am
     Makefile.depend
     README.Documentation
@@ -2572,7 +2553,6 @@ lib_lyx2lyx_files = Split('''
 
 
 lib_lyx2lyx_extra_files = Split('''
-    ChangeLog
     Makefile.am
     lyx2lyx_version.py.in
 ''')
@@ -2774,7 +2754,6 @@ lib_bind_de_files = Split('''
 
 
 boost_extra_files = Split('''
-    ChangeLog
     LICENSE_1_0.txt
     Makefile.am
 ''')
