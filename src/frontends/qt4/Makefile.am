@@ -35,10 +35,8 @@ libqt4_la_SOURCES = \
 	DockView.h \
 	Dialogs.cpp \
 	FileDialog.cpp \
-	GuiClipboard.h GuiClipboard.cpp \
 	GuiFontLoader.h GuiFontLoader.cpp \
 	GuiFontMetrics.h GuiFontMetrics.cpp \
-	GuiSelection.h GuiSelection.cpp \
 	KeySymbol.cpp \
 	QLMenubar.cpp QLMenubar.h \
 	QBox.cpp QBox.h \

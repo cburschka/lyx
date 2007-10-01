@@ -30,6 +30,16 @@ using std::endl;
 namespace lyx {
 namespace frontend {
 
+GuiSelection::GuiSelection()
+	: selection_supported_(qApp->clipboard()->supportsSelection())
+{
+	connect(qApp->clipboard(), SIGNAL(dataChanged()),
+		this, SLOT(on_dataChanged()));
+	// initialize clipboard status.
+	on_dataChanged();
+}
+
+
 void GuiSelection::haveSelection(bool own)
 {
 	if (!qApp->clipboard()->supportsSelection())
@@ -78,13 +88,22 @@ void GuiSelection::put(docstring const & str)
 }
 
 
+void GuiSelection::on_dataChanged()
+{
+	text_selection_empty_ = qApp->clipboard()->
+		text(QClipboard::Selection).isEmpty();
+}
+
+
 bool GuiSelection::empty() const
 {
-	if (!qApp->clipboard()->supportsSelection())
+	if (!selection_supported_)
 		return true;
 
-	return qApp->clipboard()->text(QClipboard::Selection).isEmpty();
+	return text_selection_empty_;
 }
 
 } // namespace frontend
 } // namespace lyx
+
+#include "GuiSelection_moc.cpp"

@@ -16,15 +16,19 @@
 
 #include "frontends/Clipboard.h"
 
+#include <QObject>
+
 namespace lyx {
 namespace frontend {
 
 /**
  * The Qt4 version of the Clipboard.
  */
-class GuiClipboard: public Clipboard
+class GuiClipboard: public QObject, public Clipboard
 {
+	Q_OBJECT
 public:
+	GuiClipboard();
 	virtual ~GuiClipboard() {}
 
 	/** Clipboard overloaded methods
@@ -37,6 +41,13 @@ public:
 	bool isInternal() const;
 	bool empty() const;
 	//@}
+
+private Q_SLOTS:
+	void on_dataChanged();
+
+private:
+	bool text_clipboard_empty_;
+	bool has_lyx_contents_;
 };
 
 } // namespace frontend

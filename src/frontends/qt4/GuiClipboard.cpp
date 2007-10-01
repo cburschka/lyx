@@ -35,6 +35,15 @@ static char const * const mime_type = "application/x-lyx";
 namespace lyx {
 namespace frontend {
 
+GuiClipboard::GuiClipboard()
+{
+	connect(qApp->clipboard(), SIGNAL(dataChanged()),
+		this, SLOT(on_dataChanged()));
+	// initialize clipboard status.
+	on_dataChanged();
+}
+
+
 string const GuiClipboard::getAsLyX() const
 {
 	LYXERR(Debug::ACTION) << "GuiClipboard::getAsLyX(): `";
@@ -109,16 +118,27 @@ bool GuiClipboard::isInternal() const
 }
 
 
+void GuiClipboard::on_dataChanged()
+{
+	text_clipboard_empty_ = qApp->clipboard()->
+		text(QClipboard::Clipboard).isEmpty();
+
+	has_lyx_contents_ = hasLyXContents();
+}
+
+
 bool GuiClipboard::empty() const
 {
 	// We need to check both the plaintext and the LyX version of the
 	// clipboard. The plaintext version is empty if the LyX version
-	// contains only one inset, and the LyX version is empry if the
+	// contains only one inset, and the LyX version is empty if the
 	// clipboard does not come from LyX.
-	if (!qApp->clipboard()->text(QClipboard::Clipboard).isEmpty())
+	if (!text_clipboard_empty_)
 		return false;
-	return !hasLyXContents();
+	return !has_lyx_contents_;
 }
 
 } // namespace frontend
 } // namespace lyx
+
+#include "GuiClipboard_moc.cpp"

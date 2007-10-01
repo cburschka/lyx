@@ -80,7 +80,9 @@ MOCFILES = \
 	LyXFileDialog.cpp LyXFileDialog.h \
 	FloatPlacement.cpp FloatPlacement.h \
 	GuiApplication.cpp GuiApplication.h \
+	GuiClipboard.h GuiClipboard.cpp \
 	GuiImplementation.cpp GuiImplementation.h \
+	GuiSelection.h GuiSelection.cpp \
 	GuiView.cpp GuiView.h \
 	GuiWorkArea.cpp GuiWorkArea.h \
 	IconPalette.cpp IconPalette.h \
