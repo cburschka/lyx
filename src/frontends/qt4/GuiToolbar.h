@@ -20,8 +20,7 @@
 
 #include <QList>
 #include <QToolBar>
-
-class QComboBox;
+#include <QComboBox>
 
 namespace lyx {
 
@@ -86,7 +85,7 @@ private:
 	GuiCommandBuffer * command_buffer_;
 };
 
-/// return a full path of an XPM for the given action
+/// return a full path of an .png for the given action
 std::string const getIcon(FuncRequest const & f, bool unknown = true);
 
 } // namespace frontend
