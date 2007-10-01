@@ -66,19 +66,16 @@ static TextClass const & textClass(LyXView const & lv)
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiLayoutBox::GuiLayoutBox(QToolBar * toolbar, GuiViewBase & owner)
+GuiLayoutBox::GuiLayoutBox(GuiViewBase & owner)
 	: owner_(owner)
 {
-	combo_ = new QComboBox;
-	combo_->setSizeAdjustPolicy(QComboBox::AdjustToContents);
-	combo_->setFocusPolicy(Qt::ClickFocus);
-	combo_->setMinimumWidth(combo_->sizeHint().width());
-	combo_->setMaxVisibleItems(100);
+	setSizeAdjustPolicy(QComboBox::AdjustToContents);
+	setFocusPolicy(Qt::ClickFocus);
+	setMinimumWidth(sizeHint().width());
+	setMaxVisibleItems(100);
 
-	QObject::connect(combo_, SIGNAL(activated(QString)),
+	QObject::connect(this, SIGNAL(activated(QString)),
 			 this, SLOT(selected(QString)));
-
-	toolbar->addWidget(combo_);
 }
 
 
@@ -89,18 +86,18 @@ void GuiLayoutBox::set(docstring const & layout)
 	QString const & name = toqstr(translateIfPossible(tc[layout]->name()));
 
 	int i = 0;
-	for (; i < combo_->count(); ++i) {
-		if (name == combo_->itemText(i))
+	for (; i < count(); ++i) {
+		if (name == itemText(i))
 			break;
 	}
 
-	if (i == combo_->count()) {
+	if (i == count()) {
 		lyxerr << "Trying to select non existent layout type "
 			<< fromqstr(name) << endl;
 		return;
 	}
 
-	combo_->setCurrentIndex(i);
+	setCurrentIndex(i);
 }
 
 
@@ -108,45 +105,23 @@ void GuiLayoutBox::updateContents()
 {
 	TextClass const & tc = textClass(owner_);
 
-	combo_->setUpdatesEnabled(false);
-	combo_->clear();
+	setUpdatesEnabled(false);
+	clear();
 
 	TextClass::const_iterator it = tc.begin();
 	TextClass::const_iterator const end = tc.end();
 	for (; it != end; ++it) {
 		// ignore obsolete entries
 		if ((*it)->obsoleted_by().empty())
-			combo_->addItem(toqstr(translateIfPossible((*it)->name())));
+			addItem(toqstr(translateIfPossible((*it)->name())));
 	}
 
 	// needed to recalculate size hint
-	combo_->hide();
-	combo_->setMinimumWidth(combo_->sizeHint().width());
-	combo_->show();
+	hide();
+	setMinimumWidth(sizeHint().width());
+	show();
 
-	combo_->setUpdatesEnabled(true);
-	combo_->update();
-}
-
-
-void GuiLayoutBox::clear()
-{
-	combo_->clear();
-}
-
-
-void GuiLayoutBox::open()
-{
-	combo_->showPopup();
-}
-
-
-void GuiLayoutBox::setEnabled(bool enable)
-{
-	// Workaround for Qt bug where setEnabled(true) closes
-	// the popup
-	if (enable != combo_->isEnabled())
-		combo_->setEnabled(enable);
+	setUpdatesEnabled(true);
 }
 
 
@@ -220,7 +195,8 @@ void GuiToolbar::add(ToolbarItem const & item)
 		addSeparator();
 		break;
 	case ToolbarItem::LAYOUTS:
-		layout_ = new GuiLayoutBox(this, owner_);
+		layout_ = new GuiLayoutBox(owner_);
+		addWidget(layout_);
 		break;
 	case ToolbarItem::MINIBUFFER:
 		command_buffer_ = new GuiCommandBuffer(&owner_);

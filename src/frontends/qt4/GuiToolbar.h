@@ -36,28 +36,21 @@ class GuiViewBase;
 class Action;
 
 
-class GuiLayoutBox : public QObject
+class GuiLayoutBox : public QComboBox
 {
 	Q_OBJECT
 public:
-	GuiLayoutBox(QToolBar *, GuiViewBase &);
+	GuiLayoutBox(GuiViewBase &);
 
 	/// select the right layout in the combobox.
 	void set(docstring const & layout);
 	/// Populate the layout combox.
 	void updateContents();
-	/// Erase the layout list.
-	void clear();
-	/// Display the layout list.
-	void open();
-	/// Set the activation status of the combox.
-	void setEnabled(bool);
 
 private Q_SLOTS:
 	void selected(const QString & str);
 
 private:
-	QComboBox * combo_;
 	GuiViewBase & owner_;
 };
 

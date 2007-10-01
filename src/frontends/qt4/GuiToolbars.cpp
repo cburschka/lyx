@@ -108,7 +108,7 @@ bool GuiToolbars::updateLayoutList(TextClassPtr textclass)
 void GuiToolbars::openLayoutList()
 {
 	if (layout_)
-		layout_->open();
+		layout_->showPopup();
 }
 
 
