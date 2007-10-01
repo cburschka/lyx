@@ -41,7 +41,7 @@ GuiClipboard::GuiClipboard()
 	connect(qApp->clipboard(), SIGNAL(dataChanged()),
 		this, SLOT(on_dataChanged()));
 	// initialize clipboard status.
-	on_dataChanged()
+	on_dataChanged();
 }
 
 
