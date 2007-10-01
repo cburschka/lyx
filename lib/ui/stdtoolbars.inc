@@ -275,7 +275,7 @@ ToolbarSet
 		Item "No hor. line	\\atop" "math-insert \atop"
 		Item "Nice (3/4)	\\nicefrac" "math-insert \nicefrac"
 		Item "Unit (km)	\\unit" "math-insert \unitone"
-		Item "Unit (864 m)	\\unit" "math-insert \unit"
+		Item "Unit (864 m)	\\unit" "math-insert \unittwo"
 		Item "Unitfrac (km/h)	\\unitfrac" "math-insert \unitfrac"
 		Item "Unitfrac (20 km/h)	\\unitfrac" "math-insert \unitfracthree"
 		Item "Text frac (amsmath)	\\tfrac" "math-insert \tfrac"

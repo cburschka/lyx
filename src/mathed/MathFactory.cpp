@@ -377,7 +377,7 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC, 3));
 	if (s == "unitone")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT, 1));
-	if (s == "unit")
+	if (s == "unittwo")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
