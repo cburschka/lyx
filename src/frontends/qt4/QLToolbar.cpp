@@ -344,6 +344,9 @@ void QLToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
 
 void QLToolbar::update()
 {
+	// update visible toolbars only
+	if (!isVisible())
+		return;
 	// This is a speed bottleneck because this is called on every keypress
 	// and update calls getStatus, which copies the cursor at least two times
 	for (size_t i = 0; i < ActionVector.size(); ++i)

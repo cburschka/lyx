@@ -138,8 +138,11 @@ What's new
 - Fix a crash with View>PDF on the Mac. This occurred only when LyX was
   compiled with gcc's stdlib-debug option (bug 4014).
 
-- Fix performance problem related to Clipboard and Selection under X11 platforms
-  (bug 4045).
+- Fix performance problem related to Clipboard and Selection on X11
+  platforms (bug 4045).
+
+- Only update the toolbars that are actually visible. This improves LyX's
+  performance on editing.
 
 - Fix the loading of non-LyX child documents with relative path names. Change
   'Load' to 'Edit' in the child document dialog (bugs 4107 and 4111).
