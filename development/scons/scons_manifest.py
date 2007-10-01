@@ -1008,7 +1008,9 @@ src_frontends_qt4_moc_files = Split('''
     EmptyTable.cpp
     FloatPlacement.cpp
     GuiApplication.cpp
+    GuiClipboard.cpp
     GuiImplementation.cpp
+    GuiSelection.cpp
     GuiView.cpp
     GuiWorkArea.cpp
     IconPalette.cpp
