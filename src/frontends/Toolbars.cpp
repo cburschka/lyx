@@ -13,8 +13,6 @@
 
 #include "frontends/Toolbars.h"
 
-#include "frontends/LyXView.h"
-
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "debug.h"
@@ -33,10 +31,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-Toolbars::Toolbars(LyXView & owner)
-	: owner_(owner),
-	  layout_(0),
-	  last_textclass_(TextClassPtr())
+Toolbars::Toolbars()
 {}
 
 #define TurnOnFlag(x)   flags |= ToolbarInfo::x
@@ -145,7 +140,7 @@ void Toolbars::init()
 }
 
 
-Toolbar * Toolbars::display(string const & name, bool show)
+void Toolbars::display(string const & name, bool show)
 {
 	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
@@ -161,13 +156,12 @@ Toolbar * Toolbars::display(string const & name, bool show)
 			else
 				TurnOnFlag(OFF);
 			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
-			return displayToolbar(*cit, show);
+			displayToolbar(*cit, show);
 		}
 	}
 
 	LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
 		<< name << endl;
-	return 0;
 }
 
 
@@ -216,7 +210,7 @@ void Toolbars::toggleToolbarState(string const & name, bool allowauto)
 
 void Toolbars::update(bool in_math, bool in_table, bool review)
 {
-	update();
+	updateIcons();
 
 	// extracts the toolbars from the backend
 	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
@@ -236,148 +230,6 @@ void Toolbars::update(bool in_math, bool in_table, bool review)
 	}
 }
 
-
-bool Toolbars::visible(string const & name) const
-{
-	std::map<string, ToolbarPtr>::const_iterator it =
-		toolbars_.find(name);
-	if (it == toolbars_.end())
-		return false;
-	return it->second.get()->isVisible();
-}
-
-
-void Toolbars::saveToolbarInfo()
-{
-	ToolbarSection & tb = LyX::ref().session().toolbars();
-
-	for (ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
-		cit != toolbarbackend.end(); ++cit) {
-		ToolbarsMap::iterator it = toolbars_.find(cit->name);
-		BOOST_ASSERT(it != toolbars_.end());
-		// get toolbar info from session.
-		ToolbarSection::ToolbarInfo & info = tb.load(cit->name);
-		if (cit->flags & ToolbarInfo::ON)
-			info.state = ToolbarSection::ToolbarInfo::ON;
-		else if (cit->flags & ToolbarInfo::OFF)
-			info.state = ToolbarSection::ToolbarInfo::OFF;
-		else if (cit->flags & ToolbarInfo::AUTO)
-			info.state = ToolbarSection::ToolbarInfo::AUTO;
-		// save other information
-		// if auto, frontend should *not* set on/off
-		it->second->saveInfo(info);
-		// maybe it is useful to update flags with real status. I do not know
-		/*
-		if (!(cit->flags & ToolbarInfo::AUTO)) {
-			unsigned int flags = static_cast<unsigned int>(cit->flags);
-			flags &= ~(info.state == ToolbarSection::ToolbarInfo::ON ? ToolbarInfo::OFF : ToolbarInfo::ON);
-			flags |= (info.state == ToolbarSection::ToolbarInfo::ON ? ToolbarInfo::ON : ToolbarInfo::OFF);
-			if (info.state == ToolbarSection::ToolbarInfo::ON)
-			cit->flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
-		}
-		*/
-	}
-}
-
-
-void Toolbars::setLayout(docstring const & layout)
-{
-	if (layout_)
-		layout_->set(layout);
-}
-
-
-bool Toolbars::updateLayoutList(TextClassPtr textclass)
-{
-	// update the layout display
-	if (last_textclass_ != textclass) {
-		if (layout_)
-			layout_->update();
-		last_textclass_ = textclass;
-		return true;
-	} else
-		return false;
-}
-
-
-void Toolbars::openLayoutList()
-{
-	if (layout_)
-		layout_->open();
-}
-
-
-void Toolbars::clearLayoutList()
-{
-	last_textclass_ = TextClassPtr();
-	if (layout_)
-		layout_->clear();
-}
-
-
-void Toolbars::add(ToolbarInfo const & tbinfo, bool newline)
-{
-	ToolbarPtr tb_ptr(owner_.makeToolbar(tbinfo, newline));
-	toolbars_[tbinfo.name] = tb_ptr;
-
-	if (tbinfo.flags & ToolbarInfo::ON)
-		tb_ptr->show(false);
-	else
-		tb_ptr->hide(false);
-
-	if (tb_ptr->layout())
-		layout_ = tb_ptr->layout();
-}
-
-
-Toolbar * Toolbars::displayToolbar(ToolbarInfo const & tbinfo,
-			      bool show_it)
-{
-	ToolbarsMap::iterator it = toolbars_.find(tbinfo.name);
-	BOOST_ASSERT(it != toolbars_.end());
-
-	if (show_it)
-		it->second->show(true);
-	else
-		it->second->hide(true);
-
-	return it->second.get();
-}
-
-
-void Toolbars::update()
-{
-	ToolbarsMap::const_iterator it = toolbars_.begin();
-	ToolbarsMap::const_iterator const end = toolbars_.end();
-	for (; it != end; ++it)
-		it->second->update();
-
-	bool const enable =
-		lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
-
-	if (layout_)
-		layout_->setEnabled(enable);
-}
-
-
-void layoutSelected(LyXView & lv, docstring const & name)
-{
-	TextClass const & tc = lv.buffer()->params().getTextClass();
-
-	TextClass::const_iterator it  = tc.begin();
-	TextClass::const_iterator const end = tc.end();
-	for (; it != end; ++it) {
-		docstring const & itname = (*it)->name();
-		if (translateIfPossible(itname) == name) {
-			FuncRequest const func(LFUN_LAYOUT, itname,
-					       FuncRequest::TOOLBAR);
-			lv.dispatch(func);
-			return;
-		}
-	}
-	lyxerr << "ERROR (layoutSelected): layout not found!"
-	       << endl;
-}
 
 } // namespace frontend
 } // namespace lyx

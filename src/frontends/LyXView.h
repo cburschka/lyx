@@ -38,8 +38,6 @@ namespace frontend {
 
 class Dialogs;
 class WorkArea;
-class Toolbar;
-class Toolbars;
 
 /**
  * LyXView - main LyX window
@@ -110,8 +108,6 @@ public:
 	/// show busy cursor
 	virtual void busy(bool) = 0;
 
-	virtual Toolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline) = 0;
-
 	//@{ generic accessor functions
 
 	/// \return the current buffer view.
@@ -122,9 +118,9 @@ public:
 	Buffer const * buffer() const;
 
 	///
-	void openLayoutList();
+	virtual void openLayoutList() = 0;
 	///
-	bool isToolbarVisible(std::string const & id);
+	virtual bool isToolbarVisible(std::string const & id) = 0;
 	///
 	virtual void showMiniBuffer(bool visible) = 0;
 	virtual void openMenu(docstring const & name) = 0;
@@ -144,14 +140,14 @@ public:
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 
 	/// updates the possible layouts selectable
-	void updateLayoutChoice();
+	virtual void updateLayoutChoice() = 0;
 
 	/// update the toolbar
-	void updateToolbars();
+	virtual void updateToolbars() = 0;
 	/// get toolbar info
-	ToolbarInfo * getToolbarInfo(std::string const & name);
+	virtual ToolbarInfo * getToolbarInfo(std::string const & name) = 0;
 	/// toggle toolbar state
-	void toggleToolbarState(std::string const & name, bool allowauto);
+	virtual void toggleToolbarState(std::string const & name, bool allowauto) = 0;
 	/// update the status bar
 	virtual void updateStatusBar() = 0;
 
@@ -190,9 +186,6 @@ protected:
 	void connectBuffer(Buffer & buf);
 	/// disconnect from signals in the given buffer
 	void disconnectBuffer();
-
-	/// view's toolbar
-	Toolbars * toolbars_;
 
 private:
 	/**
@@ -234,7 +227,6 @@ private:
 	boost::signals::connection show_dialog_with_data_connection_;
 	boost::signals::connection show_inset_dialog_connection_;
 	boost::signals::connection update_dialog_connection_;
-	boost::signals::connection layout_changed_connection_;
 	//@}
 
 	/// Bind methods for BufferView messages signal connection

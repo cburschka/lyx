@@ -64,11 +64,8 @@ using support::onlyFilename;
 
 namespace frontend {
 
-docstring current_layout;
-
 LyXView::LyXView(int id)
-	: toolbars_(new Toolbars(*this)),
-	  autosave_timeout_(new Timeout(5000)),
+	: autosave_timeout_(new Timeout(5000)),
 	  dialogs_(new Dialogs(*this)),
 	  id_(id)
 {
@@ -86,7 +83,6 @@ LyXView::~LyXView()
 	disconnectBuffer();
 	disconnectBufferView();
 	delete dialogs_;
-	delete toolbars_;
 	delete autosave_timeout_;
 }
 
@@ -214,7 +210,6 @@ void LyXView::disconnectBuffer()
 	titleConnection_.disconnect();
 	timerConnection_.disconnect();
 	readonlyConnection_.disconnect();
-	layout_changed_connection_.disconnect();
 }
 
 
@@ -230,8 +225,6 @@ void LyXView::connectBufferView(BufferView & bv)
 			boost::bind(&LyXView::showInsetDialog, this, _1, _2, _3));
 	update_dialog_connection_ = bv.updateDialog.connect(
 			boost::bind(&LyXView::updateDialog, this, _1, _2));
-	layout_changed_connection_ = bv.layoutChanged.connect(
-			boost::bind(&Toolbars::setLayout, toolbars_, _1));
 }
 
 
@@ -306,47 +299,6 @@ void LyXView::updateEmbeddedFiles()
 }
 
 
-void LyXView::updateToolbars()
-{
-	WorkArea * wa = currentWorkArea();
-	if (wa) {
-		bool const math =
-			wa->bufferView().cursor().inMathed();
-		bool const table =
-			lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
-		bool const review =
-			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled() &&
-			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onoff(true);
-
-		toolbars_->update(math, table, review);
-	} else
-		toolbars_->update(false, false, false);
-
-	// update redaonly status of open dialogs.
-	getDialogs().checkStatus();
-}
-
-
-ToolbarInfo * LyXView::getToolbarInfo(string const & name)
-{
-	return toolbars_->getToolbarInfo(name);
-}
-
-
-void LyXView::toggleToolbarState(string const & name, bool allowauto)
-{
-	// it is possible to get current toolbar status like this,...
-	// but I decide to obey the order of ToolbarBackend::flags
-	// and disregard real toolbar status.
-	// toolbars_->saveToolbarInfo();
-	//
-	// toggle state on/off/auto
-	toolbars_->toggleToolbarState(name, allowauto);
-	// update toolbar
-	updateToolbars();
-}
-
-
 void LyXView::autoSave()
 {
 	LYXERR(Debug::INFO) << "Running autoSave()" << endl;
@@ -360,29 +312,6 @@ void LyXView::resetAutosaveTimer()
 {
 	if (lyxrc.autosave)
 		autosave_timeout_->restart();
-}
-
-
-void LyXView::updateLayoutChoice()
-{
-	// Don't show any layouts without a buffer
-	if (!buffer()) {
-		toolbars_->clearLayoutList();
-		return;
-	}
-
-	// Update the layout display
-	if (toolbars_->updateLayoutList(buffer()->params().getTextClassPtr())) {
-		current_layout = buffer()->params().getTextClass().defaultLayoutName();
-	}
-
-	docstring const & layout = currentWorkArea()->bufferView().cursor().
-		innerParagraph().layout()->name();
-
-	if (layout != current_layout) {
-		toolbars_->setLayout(layout);
-		current_layout = layout;
-	}
 }
 
 
@@ -437,17 +366,6 @@ Buffer const * LyXView::updateInset(Inset const * inset)
 	return &work_area->bufferView().buffer();
 }
 
-
-void LyXView::openLayoutList()
-{
-	toolbars_->openLayoutList();
-}
-
-
-bool LyXView::isToolbarVisible(std::string const & id)
-{
-	return toolbars_->visible(id);
-}
 
 } // namespace frontend
 } // namespace lyx

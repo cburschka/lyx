@@ -20,6 +20,7 @@
 #include "GuiKeySymbol.h"
 #include "GuiMenubar.h"
 #include "GuiToolbar.h"
+#include "GuiToolbars.h"
 #include "qt_helpers.h"
 
 #include "frontends/Application.h"
@@ -33,15 +34,18 @@
 #include "support/os.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "BufferList.h"
 #include "callback.h"
 #include "debug.h"
 #include "FuncRequest.h"
+#include "Layout.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "MenuBackend.h"
+#include "Paragraph.h"
 #include "Session.h"
 #include "version.h"
 
@@ -140,6 +144,10 @@ struct GuiViewBase::GuiViewPrivate
 	BackgroundWidget * bg_widget_;
 	/// view's menubar
 	GuiMenubar * menubar_;
+	/// view's toolbars
+	GuiToolbars * toolbars_;
+	///
+	docstring current_layout;
 
 	GuiViewPrivate() : posx_offset(0), posy_offset(0) {}
 
@@ -278,6 +286,7 @@ GuiViewBase::GuiViewBase(int id)
 GuiViewBase::~GuiViewBase()
 {
 	delete d.menubar_;
+	delete d.toolbars_;
 	delete &d;
 }
 
@@ -305,9 +314,13 @@ QMenu* GuiViewBase::createPopupMenu()
 
 void GuiViewBase::init()
 {
+	// GuiToolbars *must* be initialised before GuiMenubar.
+	d.toolbars_ = new GuiToolbars(*this);
+	// FIXME: GuiToolbars::init() cannot be integrated in the ctor
+	// because LyXFunc::getStatus() needs a properly initialized
+	// GuiToolbars object (for LFUN_TOOLBAR_TOGGLE).
+	d.toolbars_->init();
 	d.menubar_ = new GuiMenubar(this, menubackend);
-
-	toolbars_->init();
 
 	statusBar()->setSizeGripEnabled(true);
 
@@ -442,7 +455,7 @@ void GuiViewBase::saveGeometry()
 		session.sessionInfo().save("WindowPosX", convert<string>(normal_geometry.x() + d.posx_offset));
 		session.sessionInfo().save("WindowPosY", convert<string>(normal_geometry.y() + d.posy_offset));
 	}
-	toolbars_->saveToolbarInfo();
+	d.toolbars_->saveToolbarInfo();
 }
 
 
@@ -776,7 +789,7 @@ void GuiViewBase::busy(bool yes)
 }
 
 
-Toolbar * GuiViewBase::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
+GuiToolbar * GuiViewBase::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
 {
 	GuiToolbar * toolBar = new GuiToolbar(tbinfo, *this);
 
@@ -925,9 +938,11 @@ void GuiViewBase::removeWorkArea(WorkArea * work_area)
 
 void GuiViewBase::showMiniBuffer(bool visible)
 {
-	Toolbar * t = toolbars_->display("minibuffer", visible);
-	if (t)
-		t->focusCommandBuffer();
+	d.toolbars_->display("minibuffer", visible);
+
+	// FIXME: do something about command buffer focus.
+//	if (t)
+//		t->focusCommandBuffer();
 }
 
 
@@ -935,6 +950,82 @@ void GuiViewBase::openMenu(docstring const & name)
 {
 	d.menubar_->openByName(toqstr(name));
 }
+
+
+void GuiViewBase::openLayoutList()
+{
+	d.toolbars_->openLayoutList();
+}
+
+
+void GuiViewBase::updateLayoutChoice()
+{
+	// Don't show any layouts without a buffer
+	if (!buffer()) {
+		d.toolbars_->clearLayoutList();
+		return;
+	}
+
+	// Update the layout display
+	if (d.toolbars_->updateLayoutList(buffer()->params().getTextClassPtr())) {
+		d.current_layout = buffer()->params().getTextClass().defaultLayoutName();
+	}
+
+	docstring const & layout = currentWorkArea()->bufferView().cursor().
+		innerParagraph().layout()->name();
+
+	if (layout != d.current_layout) {
+		d.toolbars_->setLayout(layout);
+		d.current_layout = layout;
+	}
+}
+
+
+bool GuiViewBase::isToolbarVisible(std::string const & id)
+{
+	return d.toolbars_->visible(id);
+}
+
+void GuiViewBase::updateToolbars()
+{
+	WorkArea * wa = currentWorkArea();
+	if (wa) {
+		bool const math =
+			wa->bufferView().cursor().inMathed();
+		bool const table =
+			lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
+		bool const review =
+			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled() &&
+			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onoff(true);
+
+		d.toolbars_->update(math, table, review);
+	} else
+		d.toolbars_->update(false, false, false);
+
+	// update read-only status of open dialogs.
+	getDialogs().checkStatus();
+}
+
+
+ToolbarInfo * GuiViewBase::getToolbarInfo(string const & name)
+{
+	return d.toolbars_->getToolbarInfo(name);
+}
+
+
+void GuiViewBase::toggleToolbarState(string const & name, bool allowauto)
+{
+	// it is possible to get current toolbar status like this,...
+	// but I decide to obey the order of ToolbarBackend::flags
+	// and disregard real toolbar status.
+	// toolbars_->saveToolbarInfo();
+	//
+	// toggle state on/off/auto
+	d.toolbars_->toggleToolbarState(name, allowauto);
+	// update toolbar
+	updateToolbars();
+}
+
 
 } // namespace frontend
 } // namespace lyx

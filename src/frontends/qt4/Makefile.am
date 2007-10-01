@@ -99,6 +99,7 @@ SOURCEFILES = \
 	GuiThesaurus.cpp \
 	GuiToc.cpp \
 	GuiToolbar.cpp \
+	GuiToolbars.cpp \
 	GuiURL.cpp \
 	GuiView.cpp \
 	GuiViewSource.cpp \
@@ -121,6 +122,7 @@ NOMOCHEADER = \
 	GuiFontMetrics.h \
 	GuiImage.h \
 	GuiPainter.h \
+	GuiToolbars.h \
 	qt_helpers.h
 
 MOCHEADER = \

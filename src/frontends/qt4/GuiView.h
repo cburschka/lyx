@@ -31,6 +31,8 @@ class QToolBar;
 namespace lyx {
 namespace frontend {
 
+class GuiToolbar;
+
 QWidget * mainWindow();
 
 /**
@@ -64,13 +66,19 @@ public:
 	virtual void saveGeometry();
 	virtual void busy(bool);
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
-	Toolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
+	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
 	virtual void updateStatusBar();
 	virtual void message(docstring const & str);
 	virtual void clearMessage();
 	virtual bool hasFocus() const;
 	void showMiniBuffer(bool);
 	void openMenu(docstring const &);
+	void openLayoutList();
+	void updateLayoutChoice();
+	bool isToolbarVisible(std::string const & id);
+	void updateToolbars();
+	ToolbarInfo * getToolbarInfo(std::string const & name);
+	void toggleToolbarState(std::string const & name, bool allowauto);
 
 	/// show - display the top-level window
 	void showView();

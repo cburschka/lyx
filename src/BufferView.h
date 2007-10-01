@@ -253,9 +253,6 @@ public:
 	boost::signal<void(std::string name,
 		std::string data)> updateDialog;
 
-	/// This signal is emitted when the layout at the cursor is changed.
-	boost::signal<void(docstring layout)> layoutChanged;
-
 private:
 	// the position relative to (0, baseline) of outermost paragraph
 	Point coordOffset(DocIterator const & dit, bool boundary) const;

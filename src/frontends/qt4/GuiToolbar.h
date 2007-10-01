@@ -36,7 +36,7 @@ class GuiViewBase;
 class Action;
 
 
-class GuiLayoutBox : public QObject, public LayoutBox
+class GuiLayoutBox : public QObject
 {
 	Q_OBJECT
 public:
@@ -45,12 +45,12 @@ public:
 	/// select the right layout in the combobox.
 	void set(docstring const & layout);
 	/// Populate the layout combox.
-	void update();
+	void updateContents();
 	/// Erase the layout list.
 	void clear();
 	/// Display the layout list.
 	void open();
-	///
+	/// Set the activation status of the combox.
 	void setEnabled(bool);
 
 private Q_SLOTS:
@@ -62,20 +62,22 @@ private:
 };
 
 
-class GuiToolbar : public QToolBar, public Toolbar
+class GuiToolbar : public QToolBar
 {
 	Q_OBJECT
 public:
 	GuiToolbar(ToolbarInfo const &, GuiViewBase &);
 
+	/// Add a button to the bar.
 	void add(ToolbarItem const & item);
-	void hide(bool);
-	void show(bool);
-	bool isVisible() const;
+	/** update toolbar information
+	* ToolbarInfo will then be saved by session
+	*/
 	void saveInfo(ToolbarSection::ToolbarInfo & info);
-	void update();
-	LayoutBox * layout() const { return layout_; }
-	///
+	/// Refresh the contents of the bar.
+	void updateContents();
+	GuiLayoutBox * layout() const { return layout_; }
+	/// Set the focus on the command buffer, if any.
 	void focusCommandBuffer();
 
 Q_SIGNALS:

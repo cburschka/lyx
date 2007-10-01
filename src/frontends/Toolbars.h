@@ -27,74 +27,20 @@
 #include "ToolbarBackend.h"
 #include "Session.h"
 
-#include <boost/shared_ptr.hpp>
-
-#include <map>
-
 namespace lyx {
 namespace frontend {
-
-class LyXView;
-
-class LayoutBox {
-public:
-	virtual ~LayoutBox() {}
-	/// Select the correct layout in the combox.
-	virtual void set(docstring const & layout) = 0;
-	/// Populate the layout combox.
-	virtual void update() = 0;
-	/// Erase the layout list.
-	virtual void clear() = 0;
-	/// Display the layout list.
-	virtual void open() = 0;
-	/// Set the activation status of the combox.
-	virtual void setEnabled(bool) = 0;
-};
-
-
-class Toolbar {
-public:
-	virtual ~Toolbar() {}
-	/// Add a button to the bar.
-	virtual void add(ToolbarItem const & item) = 0;
-
-	/** Hide the bar.
-	 *  \param update_metrics is a hint to the layout engine that the
-	 *  metrics should be updated.
-	 */
-	virtual void hide(bool update_metrics) = 0;
-	/** Show the bar.
-	 *  \param update_metrics is a hint to the layout engine that the
-	 *  metrics should be updated.
-	 */
-	virtual void show(bool update_metrics) = 0;
-	/** update toolbar information
-	* ToolbarInfo will then be saved by session
-	*/
-	virtual void saveInfo(ToolbarSection::ToolbarInfo & tbinfo) = 0;
-
-	/// whether toolbar is visible
-	virtual bool isVisible() const = 0;
-	/// Refresh the contents of the bar.
-	virtual void update() = 0;
-	/// Accessor to the layout combox, if any.
-	virtual LayoutBox * layout() const = 0;
-
-	/// Set the focus on the command buffer, if any.
-	virtual void focusCommandBuffer() = 0;
-};
-
 
 class Toolbars {
 public:
 	///
-	Toolbars(LyXView & owner);
+	Toolbars();
+	virtual ~Toolbars() {}
 
 	/// Initialize the toolbars using the backend database.
 	void init();
 
 	/// Show/hide the named toolbar.
-	Toolbar * display(std::string const & name, bool show);
+	void display(std::string const & name, bool show);
 
 	/// get toolbar info
 	ToolbarInfo * getToolbarInfo(std::string const & name);
@@ -108,61 +54,25 @@ public:
 	void update(bool in_math, bool in_table, bool review);
 
 	/// Is the Toolbar currently visible?
-	bool visible(std::string const & name) const;
+	virtual bool visible(std::string const & name) const = 0;
 
 	/// save toolbar information
-	void saveToolbarInfo();
+	virtual void saveToolbarInfo() = 0;
 
 	/// Select the right layout in the combox.
-	void setLayout(docstring const & layout);
+	virtual void setLayout(docstring const & layout) = 0;
 
-	/** Populate the layout combox - returns whether we did a full
-	 *  update or not
-	 */
-	bool updateLayoutList(TextClassPtr textclass);
-
-	/// Drop down the layout list.
-	void openLayoutList();
-	/// Erase the layout list.
-	void clearLayoutList();
-
-	///
-	typedef boost::shared_ptr<Toolbar> ToolbarPtr;
-
-private:
+protected:
 	/// Add a new toolbar. if newline==true, start from a new line
-	void add(ToolbarInfo const & tbinfo, bool newline);
+	virtual void add(ToolbarInfo const & tbinfo, bool newline) = 0;
 	/// Show or hide a toolbar.
-	Toolbar * displayToolbar(ToolbarInfo const & tbinfo, bool show);
+	virtual void displayToolbar(ToolbarInfo const & tbinfo, bool show) = 0;
 	/// Update the state of the icons
-	void update();
-
-	/// The parent window.
-	LyXView & owner_;
-
-	/** The layout box is actually owned by whichever toolbar
-	 *  contains it. All the Toolbars class needs is a means of
-	 *  accessing it.
-	 *
-	 *  We don't need to use boost::weak_ptr here because the toolbars
-	 *  are also stored here. There are, therefore, no lifetime issues.
-	 */
-	LayoutBox * layout_;
-
-	/// Toolbar store providing access to individual toolbars by name.
-	typedef std::map<std::string, ToolbarPtr> ToolbarsMap;
-	ToolbarsMap toolbars_;
-
-	/// The last textclass layout list in the layout choice selector
-	TextClassPtr last_textclass_;
+	virtual void updateIcons() = 0;
 
 	// load flags with saved values
 	void initFlags(ToolbarInfo & tbinfo);
 };
-
-/// Set the layout in the kernel when an entry has been selected
-void layoutSelected(LyXView & lv, docstring const & name);
-
 
 } // namespace frontend
 } // namespace lyx

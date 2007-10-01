@@ -86,10 +86,6 @@ using cap::replaceSelection;
 using support::isStrUnsignedInt;
 using support::token;
 
-namespace frontend {
-extern docstring current_layout;
-}
-
 // globals...
 static Font freefont(Font::ALL_IGNORE);
 static bool toggleall = false;
@@ -772,6 +768,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		docstring layout = cmd.argument();
 		LYXERR(Debug::INFO) << "LFUN_LAYOUT: (arg) " << to_utf8(layout) << endl;
 
+		docstring const old_layout = cur.paragraph().layout()->name();
+
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
 		TextClass const & tclass = bv->buffer().params().getTextClass();
@@ -792,7 +790,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 
-		bool change_layout = (frontend::current_layout != layout);
+		bool change_layout = (old_layout != layout);
 
 		if (!change_layout && cur.selection() &&
 			cur.selBegin().pit() != cur.selEnd().pit())
@@ -800,7 +798,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			pit_type spit = cur.selBegin().pit();
 			pit_type epit = cur.selEnd().pit() + 1;
 			while (spit != epit) {
-				if (pars_[spit].layout()->name() != frontend::current_layout) {
+				if (pars_[spit].layout()->name() != old_layout) {
 					change_layout = true;
 					break;
 				}
@@ -808,11 +806,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 
-		if (change_layout) {
+		if (change_layout)
 			setLayout(cur, layout);
-			// inform the GUI that the layout has changed.
-			bv->layoutChanged(layout);
-		}
+
 		break;
 	}
 

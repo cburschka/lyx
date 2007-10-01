@@ -104,7 +104,7 @@ void GuiLayoutBox::set(docstring const & layout)
 }
 
 
-void GuiLayoutBox::update()
+void GuiLayoutBox::updateContents()
 {
 	TextClass const & tc = textClass(owner_);
 
@@ -149,6 +149,29 @@ void GuiLayoutBox::setEnabled(bool enable)
 		combo_->setEnabled(enable);
 }
 
+namespace {
+
+// FIXME: put that in frontends/LayoutBox class.
+void layoutSelected(LyXView & lv, docstring const & name)
+{
+	TextClass const & tc = lv.buffer()->params().getTextClass();
+
+	TextClass::const_iterator it  = tc.begin();
+	TextClass::const_iterator const end = tc.end();
+	for (; it != end; ++it) {
+		docstring const & itname = (*it)->name();
+		if (translateIfPossible(itname) == name) {
+			FuncRequest const func(LFUN_LAYOUT, itname,
+					       FuncRequest::TOOLBAR);
+			lv.dispatch(func);
+			return;
+		}
+	}
+	lyxerr << "ERROR (layoutSelected): layout not found!"
+	       << endl;
+}
+
+} // anon namespace
 
 void GuiLayoutBox::selected(const QString & str)
 {
@@ -299,24 +322,6 @@ void GuiToolbar::add(ToolbarItem const & item)
 }
 
 
-void GuiToolbar::hide(bool)
-{
-	QToolBar::hide();
-}
-
-
-void GuiToolbar::show(bool)
-{
-	QToolBar::show();
-}
-
-
-bool GuiToolbar::isVisible() const
-{
-	return QToolBar::isVisible();
-}
-
-
 void GuiToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
 {
 	// if tbinfo.state == auto *do not* set on/off
@@ -348,7 +353,7 @@ void GuiToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
 }
 
 
-void GuiToolbar::update()
+void GuiToolbar::updateContents()
 {
 	// update visible toolbars only
 	if (!isVisible())
