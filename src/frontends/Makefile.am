@@ -30,8 +30,6 @@ liblyxfrontends_la_SOURCES = \
 	LyXView.h \
 	Painter.cpp \
 	Painter.h \
-	Toolbars.cpp \
-	Toolbars.h \
 	Clipboard.h \
 	Gui.h \
 	Selection.h \

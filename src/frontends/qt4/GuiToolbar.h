@@ -16,7 +16,6 @@
 #ifndef GUITOOLBAR_H
 #define GUITOOLBAR_H
 
-#include "frontends/Toolbars.h"
 #include "Session.h"
 
 #include <QList>
@@ -27,6 +26,7 @@ class QComboBox;
 namespace lyx {
 
 class FuncRequest;
+class ToolbarItem;
 
 namespace frontend {
 
