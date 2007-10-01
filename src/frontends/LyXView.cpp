@@ -14,7 +14,6 @@
 #include "LyXView.h"
 
 #include "Dialogs.h"
-#include "Toolbars.h"
 #include "WorkArea.h"
 #include "Gui.h"
 
@@ -34,9 +33,10 @@
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
-#include "Text.h"
 #include "MenuBackend.h"
 #include "Paragraph.h"
+#include "Session.h"
+#include "Text.h"
 
 #include "support/lstrings.h"
 #include "support/filetools.h" // OnlyFilename()
