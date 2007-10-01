@@ -141,7 +141,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const dim1 = cell(1).dimension(*pi.base.bv);
-	Dimension const dim2 = cell(0).dimension(*pi.base.bv);
+	Dimension const dim2 = cell(2).dimension(*pi.base.bv);
 	int m = x + dim.wid / 2;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
