@@ -212,6 +212,7 @@ void IconPalette::updateParent()
 	// FIXME: so this is commented out for speed considerations
 	// true fix is to repair the updating mechanism of the toolbar
 #if 0
+	for (int i = 0; i < actions_.size(); ++i)
 		if (actions_.at(i)->isEnabled()) {
 			enable = true;
 			break;
