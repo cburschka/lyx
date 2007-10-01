@@ -47,7 +47,7 @@ What's new
 
 - Add a pixmap cache to speed up text drawing on screen. This cache is
   enabled on Mac and Windows platforms using Qt 4.2 or higher.
-  
+
 - Add an optimization that avoids a full screen drawing when typing in a
   non-wide inset.
 
@@ -137,8 +137,9 @@ What's new
 
 - Fix a crash with View>PDF on the Mac. This occurred only when LyX was
   compiled with gcc's stdlib-debug option (bug 4014).
-  
-- Fix slowness issue related to Clipboard and Selection under X11 platforms.
+
+- Fix performance problem related to Clipboard and Selection under X11 platforms
+  (bug 4045).
 
 - Fix the loading of non-LyX child documents with relative path names. Change
   'Load' to 'Edit' in the child document dialog (bugs 4107 and 4111).
