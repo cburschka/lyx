@@ -14904,28 +14904,22 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Translating from LaTeX into LyX is performed by a converter program called
- 
+La traducción de LaTeX a LyX se realiza mediante un programa convertidor
+ llamado 
 \family typewriter
 tex2lyx
 \family default
 .
- Although it is a standalone program which can be called from the command
- line, LyX will call it automatically when a LaTeX document is imported.
- See section
-\lang spanish
-\InsetSpace ~
+ Aunque es un programa externo que puede ejecutarse en línea de comandos,
+ LyX lo llamará automáticamente cuando se importe un documento LaTeX.
+ Véase la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Traducir-archivos-LaTeX"
 
 \end_inset
 
- 
-\lang english
-for a complete description.
+ para una descripción completa.
 \end_layout
 
 \begin_layout Subsection

@@ -1,13 +1,68 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
 \textclass book
 \begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% provides missing characters,
+\usepackage{textcomp}
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
+  {\usepackage[scaled=0.92]{helvet}
+    \usepackage{mathptmx}
+    \usepackage{courier} }
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Contents}{}
+   \myTOC
+   \clearpage
+   \pagenumbering{arabic} }
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={The LyX User's Guide},pdfsubject={LyX-documentation Intro},
+  pdfkeywords={LyX}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+ % the pages of the TOC are numbered roman
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Contents}{}
+   \myTOC
+   \clearpage
+   \pagenumbering{arabic} }
+   
+\fi
 %\def\magyarOptions{defaults=over-1.4,footnote=huplain}
-\usepackage{indentfirst}
-\frenchspacing
-\sloppypar
+%\usepackage{indentfirst}
+%\frenchspacing
+%\sloppypar
 \end_preamble
 \language magyar
 \inputencoding auto
@@ -47,6 +102,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -58,7 +114,7 @@ A LyX tankönyv
 \begin_layout Author
 Készítette: a LyX csapat
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \InsetSpace ~
@@ -72,7 +128,7 @@ Amir Karger
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
-, vagy közvetlenül a kérdéses dokumentum fordítóinak.
+, vagy közvetlenül a kérdéses dokumentum fordítójának.
 \end_layout
 
 \end_inset
@@ -103,7 +159,7 @@ Bevezetés
 
 \begin_layout Standard
 Ez a tankönyv azok számára készült, akik még sohasem hallottak a LaTeX-ről
- vagy nem ismerik elég jól.
+ vagy nem ismerik azt elég jól.
  De ne essen pánikba, nem kell megtanulnia a LaTeX-et ahhoz, hogy használni
  tudja a LyX-et.
  Tulajdonképpen a LyX lényege éppen ez: egy majdnem WYSIWYG
@@ -134,7 +190,8 @@ azt kap amit lát
 \end_inset
 
  kezelőfelület a LaTeX-hez.
- Azonban van néhány dolog, amit meg kell tanulnia a LyX eredményes használatához.
+ Azonban van néhány dolog, amit érdemes megtanulnia a LyX eredményes használatáh
+oz.
 \end_layout
 
 \begin_layout Standard
@@ -155,8 +212,8 @@ Valószínűleg, sokan azért kezdték olvasni ezt a dokumentumot, mert megprób
  manuálisan állítsa be a betűméreteket, kihagyásokat, oldaltöréseket, stb.
  Szóval önnek kellett elvégezni a dokumentum megírásán kívül a szedését
  is.
- A LyX következetesen elvégzi ön helyett a szöveg szedését és tördelését,
- így önnek csak az írásra kell koncentrálnia.
+ A LyX következetesen végzi el ön helyett a szöveg szedését és tördelését,
+ így önnek csak az írásának tartalmára kell koncentrálnia.
 \end_layout
 
 \begin_layout Standard
@@ -187,7 +244,7 @@ Tankönyv
 \emph on
 Bevezetés
 \emph default
--ben vázolt jelölés szerinti betűstílusokat használja.
+-ben vázolt jelöléseket használja.
  Ha ön rögtön ezzel a dokumentummal kezdte az olvasást, javasoljuk először
  olvassa el a 
 \emph on
@@ -211,7 +268,7 @@ A tankönyv lényegének elsajátítása
 \end_layout
 
 \begin_layout Standard
-Ez a tankönyv főleg példákból és feladatokból áll.
+Ez a tankönyv példákból és feladatokból áll.
  Ahhoz, hogy az itt leírtakat elsajátítsa, az egész dokumentumot el kell
  olvasnia.
  Be kell gépelnie az összes apró idétlen dolgot, amit mi itt leírtunk és
@@ -219,7 +276,7 @@ Ez a tankönyv főleg példákból és feladatokból áll.
  Ahhoz, hogy mindez kényelmesebb legyen ki is nyomtathatja a dokumentum
  PostScript
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -230,12 +287,12 @@ textregistered
 
 \end_inset
 
- változatát.
+ \InsetSpace ~
+változatát.
 \end_layout
 
 \begin_layout Standard
-Ha ön már ismeri a LaTeX-et valószínűleg valamivel gyorsabban tudja elolvasni
- a 
+Ha ön már ismeri a LaTeX-et valószínűleg gyorsabban tudja elolvasni a 
 \emph on
 Tankönyv
 \emph default
@@ -283,7 +340,7 @@ nem fog
 \end_layout
 
 \begin_layout Itemize
-A LyX jellemzőinek részletes magyarázata.
+A LyX összes jellemzőjének részletes magyarázata.
 \end_layout
 
 \begin_deeper
@@ -340,7 +397,7 @@ Szükségtelen.
 
 \end_deeper
 \begin_layout Standard
-Hát bátor jelentkező, ideje továbblépni.
+Hát bátor olvasó, ideje továbblépni.
  Eljött az idő az első dokumentum elkészítéséhez\SpecialChar \ldots{}
 
 \end_layout
@@ -412,18 +469,19 @@ z
 \bar default
 et
 \family default
- menüpontban választhatja ki, hogy éppen melyik legyen az aktuális.
+ menüpontban vagy a dokumentum füleken választhatja ki, hogy éppen melyik
+ legyen az aktuális.
  A 
 \emph on
 Tankönyv
 \emph default
- nem részletezi a dolgokat ugyanolyan mélységben, mint a többi LyX kézikönyv.
- Ez először megnehezíti a dolgát, de a 
+ nem részletez olyan dolgokat, amelyeket megtalál más LyX kézikönyvekben.
+ Ez kezdetben megnehezíti a dolgát, de a 
 \emph on
 Tankönyv
 \emph default
  csak így lehet rövid, másrészt pedig rutint szerezhet ezen kézikönyvek
- használatában, amivel később időt takaríthat meg.
+ használatában, amivel később sok időt takaríthat meg.
 \end_layout
 
 \begin_layout Standard
@@ -457,19 +515,22 @@ textregistered
  Ez elég sok feltételezés, de ha önnek ezek közül valamelyik is hiányzik
  vagy nem működik, akkor önnek (vagy egy barátságos rendszergazdának) be
  kell a felsoroltakat állítania.
- Ezek telepítéséről és beállításáról más a kézikönyvben lesz szó.
+ Ezek telepítéséről és beállításáról más a kézikönyvekben lesz szó.
  
 \end_layout
 
 \begin_layout Standard
-Végül megtalálja a 
+Végül megtalálja az 
 \family typewriter
 example-raw.lyx
 \family default
  nevű fájlt, amit azért készítettünk, hogy gyakorolhassa a LyX használatát.
  Ezt a fájlt egy a LyX-hez egyáltalán nem értő személy gépelte be.
- Ahogy szépen sorban megtanulja a LyX-et használni, javasoljuk lépésenként
- javítsa ki a már megtanult dolgokat a fájlban.
+ Ahogy megismer egy-egy új LyX funkciót, javasoljuk javítsa ki a 
+\family typewriter
+example-raw.lyx
+\family default
+ fájl idevágó részeit.
  Ez a fájl sok-sok megjegyzést is tartalmaz, amelyek az aktuális részek
  kijavításához adnak némi tanácsot
 \begin_inset Foot
@@ -486,7 +547,7 @@ megjegyzés
 \end_inset
 
  feliratú betétben találhatóak.
- Kinyitásukhoz csak rájuk kell kattintani.
+ Az elolvasásukhoz csak rájuk kell kattintani.
 \end_layout
 
 \end_inset
@@ -518,7 +579,7 @@ n
 \bar default
 yitás
 \family default
- menüből úgy érhet el, hogy a 
+ menüből úgy érhet el, majd a 
 \family sans
 \bar under
 P
@@ -541,10 +602,10 @@ Men
 t
 \bar default
 és\InsetSpace ~
-másként...
+másként\SpecialChar \ldots{}
 
 \family default
- kiválasztásával a saját könyvtárába, hogy dolgozhasson rajta.
+ kiválasztásával a saját munkakönyvtárába, hogy dolgozhasson rajta.
  Ahogy sorban javítgatja a fájlt, mindig nézze meg hogyan változik a nyomtatott
  forma.
  
@@ -563,11 +624,12 @@ examples/
 \emph on
 Tankönyvet
 \emph default
- és kiváncsi egyéb érdekességekre is, vessen egy pillantást ezekre a példákra.
+ vagy összezavarodott hogyan kell megcsinálni bizonyos dolgokat, vessen
+ egy pillantást ezekre a példákra.
 \end_layout
 
 \begin_layout Subsection
-Gépelés, megnézés, és nyomtatás
+Gépelés, megnézés és nyomtatás
 \end_layout
 
 \begin_layout Itemize
@@ -610,7 +672,7 @@ másként\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Itemize
-Futtassa a LaTeX-et a a dvi fájl létrehozásához a 
+Futtassa a LaTeX-et a dvi fájl létrehozásához a 
 \family sans
 Né
 \bar under
@@ -629,23 +691,23 @@ VI
 lyx
 \family default
  parancsot futtatta.
- Ezek a LaTeX üzenetei, amyelyeket nyugodtan figyelmen kívül hagyhatja.
+ Ezek a LaTeX üzenetei, amyelyeket most nyugodtan figyelmen kívül hagyhat.
  Ezután a LyX el fogja indítani az 
 \family typewriter
 xdvi
 \family default
- (vagy más 
+ (vagy egy másik 
 \family typewriter
 dvi
 \family default
  megjelenítő programot), ami egy új ablakban fog megjelenni és úgy látja
  benne a művét, ahogy az a papíron is megjelenik
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 \InsetSpace ~
-Időt spórolhat meg azzal, ha ezt az ablakot nyitva hagyja, és később csak
+Időt spórolhat meg azzal, ha ezt az ablakot nyitva hagyja és később csak
  a 
 \family sans
 Né
@@ -668,12 +730,7 @@ VI
 \family typewriter
 xdvi
 \family default
- ablakára kattint.
- Így az 
-\family typewriter
-xdvi
-\family default
- automatikusan frissíteni fogja a tartalmát amint a LaTeX lefutott.
+ ablakára kattint miután a LaTeX lefutott.
 \end_layout
 
 \end_inset
@@ -736,11 +793,11 @@ Sz
 e
 \bar default
 rkesztés \SpecialChar \menuseparator
- Vi
+ Visszavo
 \bar under
-s
+n
 \bar default
-szavonás
+ás
 \family default
  menüpont ismételt kiválasztásával.
  Ha túl sokat vont volna vissza, akkor a 
@@ -765,20 +822,18 @@ alkalmaz
 
 \begin_deeper
 \begin_layout Standard
-Pillanatnyilag ugyan ez le van korlátozva 100 műveletig.
+Pillanatnyilag ez le van korlátozva 100 műveletig.
  Valamint nem lehet 
 \emph on
 mindent
 \emph default
  visszavonni, például a dokumentum formátumának változásait.
- Ezek mind hibák és idővel ki lesznek javítva.
+ Ezek mind a LyX hibái.
 \end_layout
 
 \end_deeper
 \begin_layout Description
-Kivágás\InsetSpace ~
-Beillesztés\InsetSpace ~
-Másolás Használja a 
+Kivágás/Beillesztés/Másolás Használja a 
 \family sans
 Sz
 \bar under
@@ -789,10 +844,7 @@ rkesztés \SpecialChar \menuseparator
 \family default
  
 \family sans
-\bar under
-K
-\bar default
-ivágás
+Kivágás
 \family default
 , 
 \family sans
@@ -801,11 +853,7 @@ Sz
 e
 \bar default
 rkesztés \SpecialChar \menuseparator
- Be
-\bar under
-i
-\bar default
-llesztés
+ Beillesztés
 \family default
  és a 
 \family sans
@@ -814,14 +862,10 @@ Sz
 e
 \bar default
 rkesztés\SpecialChar \menuseparator
-Más
-\bar under
-o
-\bar default
-lás
+Másolás
 \family default
  menüpontokat ezekhez a műveletekhez vagy automatikusan illessze be a kiválaszto
-tt szöveget (más programokban történő kijelölést is beleértve) a 
+tt szöveget (más programokat is beleértve) a 
 \emph on
 középső egérgomb
 \emph default
@@ -852,8 +896,7 @@ sere
 \bar under
 K
 \bar default
-övetkező\InsetSpace ~
-\SpecialChar \ldots{}
+övetkező\SpecialChar \ldots{}
 
 \family default
  gombot a kereséséhez, valamint a keresett szöveg kicseréléshez a 
@@ -886,7 +929,7 @@ Tartalomjegyzék
 \family sans
 Formátum
 \family default
- ablakokat, valamint jónéhány képletszerkesztő ablakot is ideértve, képes
+ ablakokat, valamint néhány képletszerkesztő ablakot is ideértve, képes
  így működni.
  Néhány dialógusablak mint például a 
 \family sans
@@ -898,8 +941,7 @@ Meg
 \bar under
 n
 \bar default
-yitás\InsetSpace ~
-\SpecialChar \ldots{}
+yitás\SpecialChar \ldots{}
 
 \family default
  nem engedi, hogy bármit is írjon a dokumentumba amíg be nem csukja azt.
@@ -910,7 +952,7 @@ yitás\InsetSpace ~
 \end_inset
 
 .
- A keresés lehet kis- és nagybetű érzékeny, beállíthatja a csak egész szavak
+ A keresés lehet kis- és nagybetű érzékeny, beállíthatja csak egész szavak
  keresését, valamint kereshet a dokumentumban visszafelé is.
 \end_layout
 
@@ -919,25 +961,28 @@ Betűformátum
 \emph on
 Kiemelhet
 \emph default
- szöveget (ami általában dőlt szöveget eredményez), félkövérre állíthatja
- azt vagy éppen 
+ szöveget (ami általában dőlt szöveget eredményez), 
+\series bold
+félkövérre
+\series default
+ állíthatja azt vagy éppen 
 \noun on
 Kiskapitális
 \noun default
 -ra (rendszerint személyek neveihez használjuk) módosíthatja a váltóbillentyűkke
 l a 
 \family sans
-Fo
+Sz
 \bar under
-r
+e
 \bar default
-mátum\SpecialChar \menuseparator
+rkesztés\SpecialChar \menuseparator
 
 \bar under
-B
+S
 \bar default
-etű\InsetSpace ~
-\SpecialChar \ldots{}
+zöveg\InsetSpace ~
+stílus\SpecialChar \ldots{}
 
 \family default
  dialógusablakban.
@@ -945,7 +990,8 @@ etű\InsetSpace ~
 
 \begin_layout Description
 Eszköztár Van egy eszközár (a menüsor alatt) amely a sűrűn használt parancsokat
- tartalmazza mint 
+ tartalmazza, mint pl.
+ a 
 \family sans
 Beillesztés
 \family default
@@ -957,8 +1003,8 @@ Nyomtatás
 \end_layout
 
 \begin_layout Standard
-Természetesen még nem használta eleget a programot ahhoz, hogy ezeket a
- funkciókat hasznosnak találja.
+Természetesen még nem írt eleget ahhoz, hogy ezeket a funkciókat hasznosnak
+ találja.
  Írás közben gyakorolja a használatukat, próbálja ki a visszavonást, beillesztés
 t, stb.
 \end_layout
@@ -996,7 +1042,8 @@ Tab
 nincsenek
 \emph default
  tabulátor pozíciók.
- Sőt, nincs vonalzó sem, amin be tudná állítani a margókat vagy a tabulátorokat.
+ Sőt, nincs vonalzó sem a lap tetején, amin be tudná állítani a margókat
+ vagy a tabulátorokat.
 \end_layout
 
 \begin_layout Standard
@@ -1015,11 +1062,12 @@ status collapsed
 
 \begin_layout Standard
 \InsetSpace ~
-Fordító megjegyzése: 
+Ford.
+ megj.: ALAKHŰ - 
 \begin_inset Quotes pld
 \end_inset
 
-Amit Lát Azt Kap
+Amit Lát Azt Kapja HŰen
 \begin_inset Quotes prd
 \end_inset
 
@@ -1046,7 +1094,8 @@ status collapsed
 
 \begin_layout Standard
 \InsetSpace ~
-Fordító megjegyzése: 
+Ford.
+ megj.: 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1081,7 +1130,11 @@ Tab
 \emph on
 tartalmára
 \emph default
- fordítani, mint a kinézetére.
+ fordítani, mint a 
+\emph on
+kinézetére
+\emph default
+.
  Olvassa el a 
 \emph on
 Bevezetés
@@ -1092,7 +1145,7 @@ Bevezetés
 
 \begin_layout Standard
 A LyX-ben számos lehetősége nyílik a szövegtördelés finomhangolására, mivel
- lehet hogy a LyX nem pont úgy szed ahogy azt ön 
+ lehet hogy a LyX nem pont úgy szed, ahogy azt ön 
 \emph on
 akarja
 \emph default
@@ -1102,10 +1155,10 @@ akarja
 Felhasználói kézikönyv
 \emph default
 -ben olvashat.
- Olvashat ott a vízszintes kitöltésről és a függőlegesről, amik sokkal hasznosab
-bak és sokoldalúbbak, mint a szóköz használata.
+ Olvashat ott a vízszintes és függőleges kitöltésről, amelyek sokkal hasznosabba
+k és rugalmasabbak, mint a szóköz vagy üres sorok használata.
  Egyebek között megtalálja a betűméretek, betűstílusok, bekezdések, manuális
- igazítások használatára vonatkozó leírást is.
+ igazítások használatára vonatkozó leírásokat is.
  Az alapötlet az, hogy a tartalomra koncentrálva készíti el a dokumentumát,
  majd miután elkészült végzi el a finomhangolást.
  Egy hagyományos szövegszerkesztőben viszont önnek egyszerre kell a dokumentumát
@@ -1147,8 +1200,8 @@ What You See Is What You Mean
  változhat: egy folyóiratnál a szakaszcímekhez félkövér 18 pont magas középre
  igazított betűk szükségesek, amíg a másiknál: balraigazított dőlt, 15 pont
  magas.
- Különböző nyelveknél a behúzás szabályai is mások, az irodalomjegyzék formátuma
- is nagyon eltérő lehet.
+ Különböző nyelveknél a behúzás szabályai is mások lehetnek, az irodalomjegyzék
+ formátuma is nagyon eltérő lehet.
  A LyX segítségével elkerülheti ezen formázási szabályok megtanulását.
  
 \end_layout
@@ -1176,7 +1229,7 @@ Normál szöveg
 \end_inset
 
 , ami az alapértelmezett szövegkörnyezet.
- Most környezetek hadát fogja beépíteni új dokumentumába, ezáltal megismeri
+ Most sok környezetet fogja beépíteni új dokumentumába, ezáltal megismeri
  működésük módját.
  Mindezt, a 
 \family sans
@@ -1282,11 +1335,11 @@ Normál szöveg
 \end_inset
 
 -re.
- A szakaszcímek, ahogy a legtöbb egyéb környezet, a következő 
+ A szakaszcímek, ahogy a legtöbb egyéb környezet is, a 
 \family sans
 Return
 \family default
- leütéséig tart.
+ következő leütéséig tartanak.
  Most pedig írja be a bevezetés szövegét:
 \end_layout
 
@@ -1297,13 +1350,17 @@ Ez a bevezetés az első LyX dokumentumomhoz.
 \end_layout
 
 \begin_layout Standard
-Üsse le megint a Return-t és válassza ki a 
+Üsse le megint a 
 \family sans
-Szakaszt
+Return
 \family default
- a 
+-t és válassza ki a 
 \family sans
-Környezet
+Szakasz
+\family default
+-t a 
+\family sans
+Környezetek
 \family default
  menüből.
  A LyX kiírja, hogy 
@@ -1314,7 +1371,7 @@ Környezet
 \begin_inset Quotes prd
 \end_inset
 
- és várja hogy megadja a szakasz címét.
+ és várja, hogy megadja a szakasz címét.
  Írja be 
 \family typewriter
 További dolgok
@@ -1332,11 +1389,15 @@ első LyX dokumentumom
 \begin_inset Quotes prd
 \end_inset
 
- után) és üsse le újra a Return-t, valamint válassza ki újra a 
+ után) és üsse le újra a 
 \family sans
-Szakaszt
+Return
 \family default
- a 
+-t, valamint válassza ki újra a 
+\family sans
+Szakasz
+\family default
+-t a 
 \family sans
 környezetek
 \family default
@@ -1363,12 +1424,12 @@ További dolgok
 \begin_inset Quotes prd
 \end_inset
 
- szakasz ami az előbb még a 2.\InsetSpace ~
-szakasz volt, automatikusan átszámozódott 3.\InsetSpace ~
-szakassz
-á! A valódi WYSIWYM filozófiában, önnek csak be kell azonosítania a szakaszícmek
-et alkotó szöveget, a LyX fog gondoskodni a szakaszok számozásáról és a
- szakaszcímek szedéséről.
+ szakasz, ami az előbb még a 2.\InsetSpace ~
+szakasz volt, automatikusan átszámozódott
+ 3.\InsetSpace ~
+szakasszá! A valódi WYSIWYM filozófiában, önnek csak be kell azonosítania
+ a szakaszícmeket alkotó szöveget, a LyX fog gondoskodni a szakaszok számozásáró
+l és a szakaszcímek szedéséről.
 \end_layout
 
 \begin_layout Standard
@@ -1415,8 +1476,16 @@ Az alszakaszok kisebbek, mint a szakaszok.
 \end_layout
 
 \begin_layout Standard
-Kattintson a második sorra és válaassza az Alszakaszt a Környezet menüből.
- A LyX átszámozza 
+Kattintson a második sorra és válassza az 
+\family sans
+Alszakasz
+\family default
+-t a 
+\family sans
+Környezetek
+\family default
+ menüből.
+ A LyX beszámozza azt 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1428,10 +1497,10 @@ Kattintson a második sorra és válaassza az Alszakaszt a Környezet menüből.
  a normál szöveg, de kisebb mint a szakaszcím.
  Váloztassa át a negyedik sort is 
 \family sans
-alszakaszra
+Alszakasz
 \family default
-.
- Ahogy várta, a LyX automatikusan átszámozta 
+-ra.
+ Ahogy várta, a LyX automatikusan beszámozta azt 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1440,7 +1509,7 @@ alszakaszra
 \end_inset
 
 -re.
- Ha tesz egy másik szakaszt a 2.\InsetSpace ~
+ Ha beszúr egy másik szakaszt a 2.\InsetSpace ~
 szakasz elé, akkor az átszámozódik 3.\InsetSpace ~
 szakasszá
  és az alszakaszok átszámozódnak 
@@ -1460,7 +1529,11 @@ szakasszá
 \end_inset
 
 -re.
- A szakaszra bontás további szintjei tartlmazzák az 
+ 
+\end_layout
+
+\begin_layout Standard
+A szakaszra bontás további szintjei tartlmazzák az 
 \family sans
 Alalszakasz
 \family default
@@ -1474,7 +1547,7 @@ Albekezdés
 \family default
 -t.
  Mindjárt játszhat velük egy keveset.
- Észreveheti, hogy a bekezdés és az albekezdés címek nem számozódnak alaból,
+ Észreveheti, hogy a bekezdés és az albekezdés címek nem számozódnak alapból,
  és az albekezdések be vannak húzva.
  A 
 \emph on
@@ -1485,8 +1558,12 @@ ben megtalálja, hogyan változtasson ezen.
 \family sans
 Fejezet
 \family default
- cím, a szakaszra bontás legmagasabb szintje a szakasz fölött, de csak bizonyos
- típusú (szöveg osztályú) LyX dokumentumoknál hasunálható (Lásd 
+ cím, a szakaszra tördelés legmagasabb szintje a 
+\family sans
+Szakasz
+\family default
+ után, de csak bizonyos típusú (szöveg osztályú) LyX dokumentumoknál használható
+ (Lásd 
 \begin_inset LatexCommand ref
 reference "sec:textclasses"
 
@@ -1497,14 +1574,19 @@ szakasz).
 \end_layout
 
 \begin_layout Standard
-Végül akarhat olyan szakaszokat vagy alszakaszokat amelyek nincsenek számozva.
+Végül szókságe lehet olyan szakaszokra vagy alszakaszokra amelyek nincsenek
+ számozva.
  Erre a célra is vannak környezetek.
- Ha megváltoztatja az egyik szakaszcímének környezetét 
+ Ha megváltoztatja az egyik szakasz címének környezetét 
 \family sans
 Szakasz*
 \family default
--ra (lehet hogy görgetnie kell a környezet menüt hogy megtalálja), a LyX
- azonos betűméretet fogy használni, de nem fogja megszámozni azt.
+-ra (lehet hogy görgetnie kell a 
+\family sans
+Környezetek
+\family default
+ menüt hogy megtalálja), a LyX azonos betűméretet fog használni, de nem
+ fogja megszámozni azt.
  Következetesen vannak 
 \begin_inset Quotes pld
 \end_inset
@@ -1515,13 +1597,13 @@ csillagos
 
  környezetek az 
 \family sans
-Alaszakaszok
+Alaszakasz
 \family default
--hoz és az 
+-okhoz és az 
 \family sans
-Alalszakaszok
+Alalszakasz
 \family default
--hoz is.
+-okhoz is.
  Próbálja megváltoztatni a szakaszait a csillagos környezetre és figyelje
  meg hogyan változik a számozás.
 \end_layout
@@ -1552,7 +1634,7 @@ Tab
  számtalan leütésétől.
  Miközben a vázlatot készíti vagy amikor átszámozza a felsorolást, mert
  valahova középre beszúrt egy új elemet.
- A szerkesztés közben a felsorolás tartalmára koncentrálhat.
+ A szerkesztés közben a felsorolás tartalmára koncentrálhat
 \begin_inset Foot
 status collapsed
 
@@ -1565,15 +1647,15 @@ Bevezetés
 ben.
  De ez a 
 \emph on
-fő filozófiája
+fő 
 \emph default
- a LyX-nek, ezért kérjük bocsásson meg nekünk.
+filozófiája a LyX-nek, ezért kérjük bocsásson meg nekünk.
 \end_layout
 
 \end_inset
 
- Logikusan átgondolva, különböző dokumentumtípusok különböző felsorolás
- típusokat igényelnek:
+.
+ Különböző dokumentumtípusok különböző felsorolás-típusokat igényelnek:
 \end_layout
 
 \begin_layout Itemize
@@ -1581,7 +1663,7 @@ Egy prezentáció használhatja a
 \family sans
 Felsorolás
 \family default
- környezetet jelölt listaként, külömböző dolog megnevezéséhez.
+ környezetet jelölt listaként, különböző dolgok leírásához.
 \end_layout
 
 \begin_layout Itemize
@@ -1589,11 +1671,11 @@ Egy vázlathoz inkább a
 \family sans
 Számozott felsorolás
 \family default
- környezetet használjuk (valamint betűkkel jelölt alelemeket).
+ környezetet használjuk (valamint betűkkel jelölt allistákat).
 \end_layout
 
 \begin_layout Itemize
-Egy szofvert bemutató dokumentum a 
+Néhány szofver csomagot bemutató dokumentum a 
 \family sans
 Leírás
 \family default
@@ -1616,7 +1698,7 @@ tól.
 \begin_layout Standard
 Készítsünk egy listát arról, hogy a LyX miért jobb, mint a többi szövegszerkeszt
 ő.
- A dokumentumában valahol gépelje:
+ A dokumentumában valahol írja be:
 \end_layout
 
 \begin_layout Standard
@@ -1661,13 +1743,13 @@ A szövegszedést elvégzi helyettünk
 \begin_layout Standard
 
 \family typewriter
-A képletszerkesztő WYSIWYG
+A képletszerkesztő ALAKHŰ
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-Könnyű felsorolást készíteni
+Könnyű felsorolásokat készíteni
 \end_layout
 
 \begin_layout Standard
@@ -1682,7 +1764,7 @@ Return
 \emph on
 elemen
 \emph default
- belül, egyrészt használni a 
+ belül, használhatja a 
 \family sans
 Védett\InsetSpace ~
 Sortörés
@@ -1697,7 +1779,7 @@ C-Return
 Normál\InsetSpace ~
 szöveg
 \family default
- környezetet (vagy 
+ környezetet (vagy használja a 
 \family sans
 M-p\InsetSpace ~
 s
@@ -1709,8 +1791,8 @@ s
 Kapott egy gyönyörű felsorolást.
  Lehet hogy futtatni akarja a LaTeX-et hogy meggyőződjöm arról, hogyan néz
  ki mindez nyomtatásban.
- De mi lenne, ha meg szeretné számozni a felsorolást? Nos, csak jelölje
- ki a teljes felsorolást
+ De mi lenne, ha meg szeretné számozni az okokat? Nos, csak jelölje ki a
+ teljes felsorolást
 \begin_inset Foot
 status collapsed
 
@@ -1722,7 +1804,7 @@ előző
 \emph default
  bekezdést is, amit valószinűleg nem akar.
  Hasonlóan, nem tudja kiválasztani az első szakaszcím számát sem.
- De nem aggódjon miatta!
+ De nem aggódjon emiatt!
 \end_layout
 
 \end_inset
@@ -1742,8 +1824,8 @@ ek menüből.
 \end_layout
 
 \begin_layout Standard
-Amíg a felsorolás ki van jelölve, átváltoztathatja a másik két felsorolás
- környezetre is, ahhoz hogy megtudja hogyan néznek ki: 
+Amíg a felsorolás ki van jelölve, átválthat a másik két felsorolás környezetre
+ is, ahhoz hogy megtudja hogyan néznek ki: 
 \family sans
 Leírás
 \family default
@@ -1752,7 +1834,7 @@ Leírás
 Lista
 \family default
 .
- Ebben a két környezetben, minden listaelemkét részből áll: egy kifejezés,
+ Ebben a két környezetben, minden listaelem két részből áll: egy kifejezés,
  ez az első szó, és annak definíciója, a bekezdés többi része (a 
 \family sans
 Return
@@ -1787,13 +1869,12 @@ Tabulátor
 \end_inset
 
  (Lista) többi részétől.
- Ha több mint egy szavat szeretne a kifejezésben, válassza el a szavakat
- a 
+ Ha több mint egy szót szeretne a kifejezésben, a szavakat a 
 \family sans
 Védett\InsetSpace ~
 szóköz
 \family default
-zel.
+zel válassza el .
 \end_layout
 
 \begin_layout Standard
@@ -1811,8 +1892,8 @@ example_raw.lyx
 \begin_layout Standard
 Egymásba is tud ágyazni különböző felsorolásokat, sokféle variációban.
  A nyilvánvaló példa erre vázlatok készítése.
- A számozott listáknak és felsorolásoknak lehetnek különböző számaik és
- jeleik, csak úgy mint az alelemeiknek.
+ A számozott listáknak és felsorolásoknak különböző jelölésrendszere lehet
+ az allistákhoz.
  Lásd a 
 \emph on
 Felhasználói készikönyv
@@ -1830,14 +1911,15 @@ Két környezet is a rendelkezésre áll, hogy az idézeteket elkülönítsük a
  környező szövegtől.
  
 \family sans
-Quote
+Idézet
 \family default
  a rövid idézetekhez és 
 \family sans
-Quotation
+Idézet\InsetSpace ~
+(hosszú)
 \family default
  a hosszabbakhoz.
- Számítógépes kódok (a 
+ Programlistákhoz (a 
 \family sans
 LyX-kód
 \family default
@@ -1845,11 +1927,11 @@ LyX-kód
 \emph on
 Bevezetés
 \emph default
-ben, hosszabb gépelési példákban) 
+ben, a hosszabb gépelési példákban) 
 \family typewriter
 írógép
 \family default
- betűkészlettel íródnak; ez az egyetlen környezet a LyX-ben, ahol egymás
+ betűkészlettel íródtak; ez az egyetlen környezet a LyX-ben, ahol egymás
  mellé le lehet ütni több szóközt is, amivel úgye pozícionálni lehet.
  De készíthet költeményt is a 
 \family sans
@@ -1878,7 +1960,7 @@ Feladat
 \series default
 : Javítsa a 
 \family sans
-Quote
+Idézet
 \family default
 , 
 \family sans
@@ -1889,19 +1971,6 @@ LyX-kód
 Vers
 \family default
  részeket a 
-\begin_inset ERT
-status inlined
-
-\begin_layout Standard
-
-
-\backslash
-linebreak
-\end_layout
-
-\end_inset
-
- 
 \family typewriter
 example_raw.lyx
 \family default
@@ -1909,18 +1978,18 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Chapter
-Dokumentumok készítése --- Writing Documents
+Dokumentumok készítése
 \end_layout
 
 \begin_layout Standard
-Remélhetőleg, az előző fejezet segítségével már el tud kezdeni írni a LyX-el.
+Az előző fejezet segítségével remélhetőleg már el tud kezdeni írni a LyX-el.
  Bemutattuk a LyX elemi szerkesztési műveleteit, csak úgy, mint a környezetek
  használatának hatékonyságát.
- Habár a legtöbb ember, aki a LyX-et használja, a következő dokumentumféléket
+ Habár a legtöbb ember, aki a LyX-et használja, a következő típusokat dokumentum
  szeretné elkészíteni: publikációk, cikkek, könyvek, kézikönyvek vagy levelek.
  Ebben a fejezetben az olvasó a szavak beírásától eljut egy teljes dokumentum
  elkészítéséig.
- Be fogjuk mutatni a szövegosztályokat, amelyek segítségével különböző fajta
+ Be fogjuk mutatni a szövegosztályokat, amelyek segítségével különböző típusú
  dokumentumokat készíthetünk.
  Ezentúl, megmutatunk további sok apróságot, amelyek a szöveget dokumentummá
  teszik, mint pl.
@@ -1929,7 +1998,7 @@ yzék.
 \end_layout
 
 \begin_layout Section
-Szövegosztályok --- Text classes
+Szövegosztályok
 \end_layout
 
 \begin_layout Standard
@@ -1974,7 +2043,7 @@ Book
 \family default
  szövegosztállyal készítettük.
  A szövegosztályok, a WYSIWYM filozófia szerves részei.
- Ezek közlik a LyX-el, hogyan kell szedni egy dokumentumot, amit önnek nem
+ Ezek közlik a LyX-el, hogyan kell szednie a dokumentumot, amit önnek nem
  kell észben tartania.
 \end_layout
 
@@ -1989,7 +2058,8 @@ status collapsed
 
 \begin_layout Standard
 \InsetSpace ~
-Ford.megj.: Ez megfelel az 
+Ford.
+ megj.: Ez megfelel az 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2013,13 +2083,13 @@ Rendszerint ez, az alapértelmezett szövegosztály
 
 \end_inset
 
- for elkészülni.
+ fog elkészülni.
  Próbáljon meg átváltani egy másik osztályra (a 
 \family sans
 \bar under
 D
 \bar default
-okumentumok\SpecialChar \menuseparator
+okumentum\SpecialChar \menuseparator
 
 \bar under
 B
@@ -2038,7 +2108,8 @@ status collapsed
 
 \begin_layout Standard
 \InsetSpace ~
-Ford.megj.: Jelentése 
+Ford.
+ megj.: jelentése 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2056,13 +2127,13 @@ Könyv
 Környezet
 \family default
  menüt.
- Azt fogja látni, hogy a használható környezetek azonosak.
+ Azt fogja látni, hogy a használható környezetek többnyire azonosak.
  Habár, mostmár használhatja a 
 \family sans
 Fejezet
 \family default
  környezetet is.
- Amennyiben bizonytalan, hogy milyen szövegosztályban, milyen környezeteket
+ Amennyiben bizonytalan, hogy melyik szövegosztályban, milyen környezeteket
  használhat, ellenőrizze azt a 
 \family sans
 Környezet
@@ -2074,8 +2145,15 @@ Környezet
 Betűméretek, egy- vagy kéthasábos nyomtatás vagy oldalcímek, csak néhány
  apróság amiben az egyes folyóiratok szedési módja különbözik.
  Ahogy a számítógépek korába léptünk, a folyóiratok elkezdték a cikkeket
- elektromos formában is elfogadni, LaTeX stílus fájlokat készítve, ezáltal
- a szerzők a megfelelő formában tudják elkészíteni a cikküket.
+ elektromos formában is elfogadni, LaTeX 
+\begin_inset Quotes pld
+\end_inset
+
+stílus fájlokat
+\begin_inset Quotes prd
+\end_inset
+
+ készítve, ezáltal a szerzők a megfelelő formában tudják elkészíteni a cikküket.
  A LyX támogatja ezt a formát.
  A LyX például támogatja az American Mathematics Society folyóirat szedését
  (és extra környezeteit) az 
@@ -2179,7 +2257,7 @@ article (AMS)
 \begin_inset Text
 
 \begin_layout Standard
-elrendezés és környezetek az American Math Society foylóirathoz
+elrendezés és környezetek az American Math Society folyóirathoz
 \end_layout
 
 \end_inset
@@ -2350,7 +2428,7 @@ sok extra környezet címhez, aláíráshoz\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Section
-Sablonok: levél írása -- Templates: Writing a Letter
+Sablonok: levél írása
 \end_layout
 
 \begin_layout Standard
@@ -2369,7 +2447,7 @@ Levél
 \bar under
 D
 \bar default
-okumentumok \SpecialChar \menuseparator
+okumentum \SpecialChar \menuseparator
 
 \family default
  
@@ -2380,7 +2458,8 @@ B
 eállítások
 \family default
  dialógus-ablakban.
- Bár ez a legkézenfekvőbb módja a levélírásnak azért, igényel egy kis munkát.
+ Bár ez a legkézenfekvőbb módja a levélírásnak azért, igényel egy kis többlet
+ munkát.
  Ahányszor csak írni szeretne egy üzleti levelet, mindig bele fogja írni
  a saját címét valamint a címzettét, a levél törzsét, aláírás helyét, stb.
  Ezért a LyX rendelkezik egy 
@@ -2402,15 +2481,15 @@ F
 \bar under
 l
 \bar default
-on alapján ...
-
+on alapján\SpecialChar \ldots{}
+ 
 \family default
- menüpontot.
+menüpontot.
  Válassza ki a 
 \family typewriter
 letter.lyx
 \family default
--et sablonként.
+-et a sablonként.
  Mentse el és nyomtassa ki a fájlt ahhoz, hogy az egyes környezetek szedését
  megértse.
 \end_layout
@@ -2420,16 +2499,16 @@ Amennyiben megfigyeli a
 \family sans
 Környezetek
 \family default
- menüt, látni fog különböző környezeteket, mint pl.
+ menüt, találni fog különböző környezeteket, mint pl.
  a 
 \family sans
 Címem
 \family default
- környezet, ami nem létezik semmilyen szövegosztályban sem.
- A többiek mint pl.
- a 
+ környezet, ami nem létezik semmilyen más szövegosztályban sem.
+ A többi mint pl.
+ az 
 \family sans
-Lista
+Idézet
 \family default
  és 
 \family sans
@@ -2437,8 +2516,11 @@ Leírás
 \family default
  már ismerősek.
  Ismerkedjem meg az egyek környezetekkel, és azzal hogyan működnek.
- Fel fog figyelni arra hogy pl az aláírás környezet tartalmazza pirossal
- a 
+ Fel fog figyelni arra, hogy pl az 
+\family sans
+Aláírás
+\family default
+ környezet tartalmazza pirossal a 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2447,31 +2529,49 @@ Signature:
 \end_inset
 
  szót, az aláírás tényleges szövege előtt.
- Ez a szó nem jelenik meg a nyomtatásban, mindössze tudatja önnel hova kell
- írnia az aláírást.
- Annak ellenére, hogy az aláírás logikailag kicsit előbbre kerül, a LyX
- tudja hovy kell azt raknia, pontosan a levél végére!
+ Ez a szó nem jelenik meg a nyomtatásban (ha megpróbálja kinyomtatni a levelet),
+ mindössze tudatja önnel hova kell írnia az aláírást.
+ Figyelje meg lényegtelen, hogy a fájlban hol helyezkedik el az 
+\family sans
+Aláírás
+\family default
+ sor.
+ Emlékezzen a LyX WYSIWYM egy program, bárhol elhelyezheti az 
+\family sans
+Aláírás
+\family default
+ környezetet, a LyX tudja mit hová kell raknia, az aláírásnak pontosan a
+ levél végére kell kerülnie!
 \end_layout
 
 \begin_layout Standard
 A sablon egy normális LyX fájl.
  Ez azt jelenti, hogy beleírhatja a saját címét és aláírását és elmentheti
  a fájlt sablonként.
- Mostantól, bármikor használhatja az új sablonját levél írásához, valamint
- idő megtakarításához.
- Azért mi nem azt ajánljuk hogy minden levelet egy kaptafára készítsen.
- Azért készítsen sablont hogy idő spórolhasson meg, amennyiben valakinek
- levelet ír
+ Mostantól, bármikor használhatja az új sablonját levél írásához, használja
+ a sablon hogy idő takarítson meg.
+ Mi itt most nem adunk egy 
+\begin_inset Quotes pld
+\end_inset
+
+feladatot
+\begin_inset Quotes prd
+\end_inset
+
+, csak írjon egy levelet valakinek
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
 \InsetSpace ~
 Egy figyelmeztetés, arra az esetre ha sablonból dolgozik.
- Amennyiben egy környezet minden szövegét kitörli -- példul a Címem mező
- tartalmát kitörli, hogy beleírja a sajátját -- és a kurzort elmozdítja
- szöveg beírása néllkül, a környezet el fog tünni.
- Ez azért van, mert egyes környezetek létének feltétele a tartalma.
+ Amennyiben egy környezet minden szövegét kitörli -- például a 
+\family sans
+Címem
+\family default
+ mező teljes tartalmát kitörli, hogy beleírja a sajátját -- és a kurzort
+ elmozdítja szöveg beírása néllkül, a környezet eltünhet.
+ Ez azért van, mert egyes környezetek létének feltétele a tartalmuk.
  A visszaállításhoz csak válassza ki a környezetet a 
 \family sans
 Környezetek
@@ -2491,13 +2591,13 @@ A sablonokkal nagyon sok időt takaríthatunk meg, ezért javasoljuk hogy haszn�
 ét.
  Végül hasznos lehet annak, aki sok számítógépre állítja be a LyX-et olyanoknak,
  akik nem nagyon értenek a számítógéphez.
- Amikor ők először tanulják a LyX-et sokkal kveésbé fognak megrémülni, amennyibe
+ Amikor ők először tanulják a LyX-et sokkal kevésbé fognak megrémülni, amennyibe
 n pl.
  a levélsablon már a cégüknek megfelelően be van állítva.
 \end_layout
 
 \begin_layout Section
-Dokumentum címek -- Document Titles
+Dokumentum címek
 \end_layout
 
 \begin_layout Standard
@@ -2546,10 +2646,18 @@ Szerző
 \family sans
 Dátum
 \family default
- környezet használatáva.
- Írjon egy vagy két bekezdést, összegezve a dokumentum tartalmát a Kivonat
+ környezetet használatáva.
+ Írjon egy vagy két bekezdést, összegezve a dokumentum tartalmát a 
+\family sans
+Kivonat
+\family default
  környezet használatával.
  Most pedig nézze meg, hogyan néz ki mindez nyomtatásban.
+ Ha a dokumentum formátumát átváltja 
+\family sans
+Book
+\family default
+-ra, egy különálló címlapot fog kapni, mint ezen tankönyv első oldala.
 \end_layout
 
 \begin_layout Standard
@@ -2565,7 +2673,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-Címkék és kereszt referenciák -- Labels and Cross-References
+Címkék és kereszt referenciák
 \end_layout
 
 \begin_layout Standard
@@ -2579,13 +2687,14 @@ Felcímkézheti a dokumentumának egy szakaszát (vagy alszakaszát, ritkábban
  Amint ezt megteszi, a dokumentum bármely részében hivatkozhat rá a keresztrefer
 enciák segítségével.
  Hivatkozhat a szakasz számára, vagy arra, hogy melyik oldalon található.
- Csak úgy mint a szakaszokat és a lábjegyzeteket, a LyX automatikusan karbantart
-ja a kereszthivatkozásokat is, ami a LyX (és persze a LaTeX) egyik legnagyobb
- előnye szemben a konvencionális szövegszerkesztőkkel.
+ Csak úgy mint a szakaszokról és a lábjegyzetekről, a LyX gondoskodik a
+ kereszthivatkozásokról is.
+ Automatikus címkék és keresztreferenciák a LyX (és persze a LaTeX) egyik
+ legnagyobb előnye a konvencionális szövegszerkesztőkkel szemben.
 \end_layout
 
 \begin_layout Subsection*
-Az első címkém -- Your first label
+Az első címkém
 \end_layout
 
 \begin_layout Standard
@@ -2610,14 +2719,14 @@ m
 \bar default
 ke
 \family default
+\SpecialChar \ldots{}
 .
- Egy dialógusablak jelenik meg a címke nevét kérve, javasolva számunkra
- egy címet.
+ Egy dialógusablak jelenik meg a címke nevét kérve, egy cím-javaslattal.
  Miután kattint az 
 \family sans
 OK
 \family default
--ra, a címke egy dobozban bekerül a szakasz címe mellé.
+-ra, a címke egy betétben bekerül a szakasz címe mellé.
 \end_layout
 
 \begin_layout Standard
@@ -2641,7 +2750,7 @@ dvi
 \end_layout
 
 \begin_layout Subsection*
-Az Ön első kereszthivatkozása -- Your first cross-references
+Az első kereszthivatkozásunk
 \end_layout
 
 \begin_layout Standard
@@ -2664,8 +2773,8 @@ Most -- helyezze a kurzort közvetlen a
 \begin_inset Quotes pld
 \end_inset
 
-.
- szakasz
+.\InsetSpace ~
+szakasz
 \begin_inset Quotes prd
 \end_inset
 
@@ -2681,6 +2790,7 @@ r
 \bar default
 eszthivatkozás
 \family default
+\SpecialChar \ldots{}
 -t
 \family sans
 .
@@ -2701,7 +2811,7 @@ sec:Erről-a-dokumentumról
 \end_inset
 
 .
- Válassza ezt ezt (lehet, hogy már alapból ki van jelölve), és kattintson
+ Válassza ezt (lehet, hogy már alapból ki van választva), és kattintson
  az 
 \family sans
 Alkalmaz
@@ -2711,8 +2821,8 @@ Alkalmaz
 \begin_inset Quotes pld
 \end_inset
 
-.
- oldalon
+.\InsetSpace ~
+oldalon
 \begin_inset Quotes prd
 \end_inset
 
@@ -2732,7 +2842,7 @@ szóköz
 \end_layout
 
 \begin_layout Standard
-A hivatkozásokat, a LyX egy dobozba helyezi el oda ahol a kurzor áll.
+A hivatkozásokat, a LyX egy betétbe helyezi el oda ahol a kurzor áll.
  A nyomtatott dokumentumban, ez a hivatkozás ki lesz cserélve a megfelelő
  típusúra, legyen az oldalszám vagy a szakasz száma (attól függően, hogy
  mit választott ki a 
@@ -2805,7 +2915,7 @@ grás
 \end_layout
 
 \begin_layout Subsection*
-További játék a címkékkel -- More fun with labels
+További játék a címkékkel
 \end_layout
 
 \begin_layout Standard
@@ -2881,8 +2991,8 @@ Kereszthivatkozás
 \end_layout
 
 \begin_layout Standard
-Amennyiben meg akar róla bizonyosodni, hogy az oldalszámozás is helyes lesz
- nagyméretű dokumentumok esetén, 
+Amennyiben meg akar róla bizonyosodni, hogy az oldalszámozás helyes lesz
+ nagyméretű dokumentumok esetén is, 
 \family sans
 másoljon ki
 \family default
@@ -2900,8 +3010,8 @@ status collapsed
 
 \begin_layout Standard
 \InsetSpace ~
-Vigyázat, a fejezetcímek másolása hibát eredményez, mivel az article dokumentum-
-osztályban a nincsenek fejezetek.
+Vigyázat, a fejezetcímek másolása hibát eredményezhet, mivel az article
+ dokumentum-osztályban a nincsenek fejezetek.
  Ha ilyen hiba történne, egyszerűen törölje ki a fejezetcímet.
  Amennyiben többet szeretne erről a témáról megtudni, kérem nézze meg a
  
@@ -2932,11 +3042,22 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-Lábjegyzetek és széljegyzetek -- Footnotes and Margin Notes
+Lábjegyzetek és széljegyzetek
 \end_layout
 
 \begin_layout Standard
-Az eszköztáron található 
+Az eszköztáron
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+\InsetSpace ~
+A gombon pár sor fekete szöveg alatt 2 sor piros szöveg látható.
+\end_layout
+
+\end_inset
+
+ található 
 \family sans
 Lábjegyzet\InsetSpace ~
 beszúrása
@@ -2951,10 +3072,11 @@ eszúrás \SpecialChar \menuseparator
 \family default
  
 \family sans
+Lá
 \bar under
-L
+b
 \bar default
-ábjegyzet
+jegyzet
 \family default
  parancscsal szúrhatunk be lábjegyzeteket.
  Kattintson a dokumentumában valahol egy szó 
@@ -2965,13 +3087,13 @@ LyX
 \begin_inset Quotes prd
 \end_inset
 
- szó végére és kattintson a 
+ szó mögé és kattintson a 
 \family sans
 Lábjegyzet\InsetSpace ~
 beszúrása
 \family default
  gombra.
- Egy lábjegyzet doboz fog megjelenni, ahova be tudja írni a lábjegyzet szövegét.
+ Egy lábjegyzet betét fog megjelenni, ahova be tudja írni a lábjegyzet szövegét.
  LyX a kurzort a lábjegyzet elejére helyezi.
  Gépelje be a következőt:
 \end_layout
@@ -3008,13 +3130,13 @@ lábjegyzet
 
 \begin_layout Standard
 Csodálkozhat azon miért lábjegyzet gomb van és miért nem egy szám.
- A válasz az, hogy a fog LyX gondoskodni a lábjegyzetek számozásáról a nyomtatot
-t szövegben.
+ A válasz az, hogy a LyX gondoskodik a lábjegyzetek számozásáról a nyomtatott
+ szövegben.
  Mindebben Ön is meggyőződhet a 
 \family typewriter
 dvi
 \family default
- fájl megtekintésével (vagy a nyomtatással).
+ fájl megtekintésével (vagy a nyomtatásával).
  Ha további lábjegyzetet szúr be, a LyX át fogja őket számozni.
  Mivel a LyX (nos, ténylegesen a LaTeX) gondoskodik a sorszámozásról, ezért
  nincs rá szükség, hogy ezzel is növeljük a LyX fájl méretét.
@@ -3053,17 +3175,21 @@ Lábjegyzet\InsetSpace ~
 beszúrása
 \family default
  gombra.
- a lábjegyzetet vissza is alakíthatja normál szöveggé kattintva a 
+ A lábjegyzetet vissza is alakíthatja normál szöveggé, a 
 \family sans
-Lábjegyzet\InsetSpace ~
-beszúrása
+Backspace
 \family default
- gombra amikor a kurzor a lábjegyzetben van.
+-t leütve, amikor a kurzor a lábjegyzet betét első pozíciójában van, vagy
+ a 
+\family sans
+Delete
+\family default
+ gombot leütve amikor a kuzrzor a betét utolsó pozíciójában van.
 \end_layout
 
 \begin_layout Standard
 Széljegyzetet az eszköztár gombjával (a sok szöveg mellett lévő kevés szöveget
- jelképező ikon, ami közvetlen a 
+ jelképező ikon (azaz valaminek a széle), ami közvetlen a 
 \family sans
 Lábjegyzet\InsetSpace ~
 beszúrása
@@ -3085,7 +3211,7 @@ e
 gyzet
 \family default
  parancs kiválasztásával szúrhat be.
- A széljegyzetek ugyanúgy néznek ki mint a lábjegyzetek, kivéve hogy:
+ A széljegyzetek ugyanolyanok mint a lábjegyzetek, kivéve hogy:
 \end_layout
 
 \begin_layout Itemize
@@ -3135,7 +3261,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-Irodalomjegyzék -- Bibliographies
+Irodalomjegyzék
 \end_layout
 
 \begin_layout Standard
@@ -3144,13 +3270,13 @@ name "sec:bibliographies"
 
 \end_inset
 
-Az irodalomjegyzék (tudományos életben legalábbis) olyan mint a kereszthivatkozá
-s.
+Az irodalomjegyzék (tudományos életben legalábbis) olyan, mint a kereszthivatkoz
+ás.
  A dokumentum végén elhelyezett irodalomjegyzék egy listát tartalmaz, amelyekre
  a dokumentumban hivatkozhatunk.
- Csak úgy mint a szakaszcímek LyX és a LaTeX könnyűvé teszi a munkát a azáltal,
- hogy automatikusan beszámozza az irodalomjegyzék elemeket és megváltoztatja
- a számozást amikor az elemek sorrendje változik.
+ Csak úgy mint a szakaszcímek, a LyX és a LaTeX könnyűvé teszi a munkát
+ a azáltal, hogy automatikusan beszámozza az irodalomjegyzék elemeket és
+ megváltoztatja a számozást amikor az elemek számozása változik.
 \end_layout
 
 \begin_layout Standard
@@ -3159,20 +3285,20 @@ Menjen a dokumentum végére és váltson át az
 Irodalomjegyzék
 \family default
  környezetre.
- A most begépelt minden egyes paragrafus, egy-egy hivatkozás lesz.
+ A most begépelt minden egyes bekezdés, egy-egy hivatkozás lesz.
  Írja be 
 \family typewriter
 A LyX kézikönyv, a LyX dokumentációs csapat készítésében
 \family default
- mint első hivatkozás.
+ mint első hivatkozást.
  Figyelje meg, hogy a LyX minden egyes hivatkozás elé szögletes zárójelben
  egy számot tesz.
- Kattintson a dobozban lévő számra, és az 
+ Kattintson a betétben lévő számra, és az 
 \family sans
 Irodalomjegyzék\InsetSpace ~
 elem
 \family default
- dialógus ablak megjelenik.
+ dialógus ablak jelenik meg.
  Az első mező a 
 \family sans
 Kulcs
@@ -3191,24 +3317,28 @@ lyxkezikonyv
 \begin_inset Quotes prd
 \end_inset
 
--ra, amit könnyebb megjegyezni.
+-re, amit könnyebb megjegyezni.
 \end_layout
 
 \begin_layout Standard
-Most menjen oda a dokumentumban, ahova be szeretne szúrni egy hivatkozást
+Most menjen oda a dokumentumban, ahol be szeretne szúrni egy hivatkozást
  erre az elemre.
  Szúrja be a 
 \family sans
-Beszúrás\SpecialChar \menuseparator
-Idézet
+\bar under
+B
+\bar default
+eszúrás \SpecialChar \menuseparator
+ Idézet
 \family default
+\SpecialChar \ldots{}
 .
  Az 
 \family sans
 Idézet
 \family default
  dialógus ablak fog megjelenni.
- Az ablak bal oldalán láthatjuk az összes irodalomjegyzék elemet, itt kell
+ Az ablak jobb oldalán láthatjuk az összes irodalomjegyzék elemet, itt kell
  kiválasztanunk, melyik elem(ek)re szeretnénk hivatkozni.
  Válassza ki a 
 \begin_inset Quotes pld
@@ -3218,9 +3348,14 @@ lyxkezikonyv
 \begin_inset Quotes prd
 \end_inset
 
--et (most ez az egyetlen elem az irodalomjegyzékben), kattintson a 
+-et (most csak ez az egyetlen elem az irodalomjegyzékben), kattintson a
+ 
 \family sans
-Hozzáadás
+Hozzáa
+\bar under
+d
+\bar default
+ás
 \family default
  gombra, majd az 
 \family sans
@@ -3228,7 +3363,7 @@ Ok
 \family default
  gombra a beszúráshoz.
  (Ki lehet választani egyszerre több elemet is, ezáltal a zárójelben több
- szám fog megjelenni.) Akkor most futtassa a LateX-et és ellenőrizze hogyan
+ szám fog megjelenni.) Akkor most futtassa a LaTeX-et és ellenőrizze hogyan
  jelenik meg az irodalomjegyzék elem hivatkozva a dokumentum végén elhelyezett
  listára.
 \end_layout
@@ -3266,7 +3401,11 @@ Irodalomjegyzék\InsetSpace ~
 elem
 \family default
  dialógusablakban.
- A további részleteket megtalálj a Felhasználói kézikönyvben.
+ A további részleteket megtalálja a 
+\emph on
+Felhasználói kézikönyv
+\emph default
+ben.
 \end_layout
 
 \begin_layout Standard
@@ -3282,7 +3421,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-Tartalomjegyzék -- Table of Contents
+Tartalomjegyzék
 \end_layout
 
 \begin_layout Standard
@@ -3299,13 +3438,13 @@ Return
 B
 \bar default
 eszúrás\SpecialChar \menuseparator
-Listák\InsetSpace ~
-és\InsetSpace ~
-tartal
+Listá
 \bar under
-o
+k
 \bar default
-mjegyzék\SpecialChar \menuseparator
+\InsetSpace ~
+és\InsetSpace ~
+tartalomjegyzék\SpecialChar \menuseparator
 
 \bar under
 T
@@ -3313,7 +3452,8 @@ T
 artalomjegyzék
 \family default
  menüelemet.
- Az előbbi művelet eredményeként egy dobozban a 
+ Az előbbi művelet eredményeként a dokumentum első sorában egy betétben
+ a 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3325,12 +3465,12 @@ Tartalomjegyzék
 \end_layout
 
 \begin_layout Standard
-Ez nem fog nagyon hasznosnak tűnni.
+Ez nem tűnik valami nagyon hasznosnak.
  Azonban, amennyiben megnézi a 
 \family typewriter
 dvi
 \family default
- fájlt, látni fogja, hogy a doboz helyett a valódi tartalomjegyzék jelenik
+ fájlt, látni fogja, hogy a betét helyett a valódi tartalomjegyzék jelenik
  meg, tartalmazva a dokumentum szakaszait és alszakaszait.
  Amennyiben megcserél egyes szakaszokat vagy újakat hoz létre, a változásokat
  a 
@@ -3344,19 +3484,7 @@ dvi
 A tartalomjegyzék nem jelenik meg a maga valójában a dokumentum szerkesztése
  közben, mivel azt közvetlenül nem szerkeszthető.
  Habár megjelenítheti azt egy különálló ablakban, amennyiben rákattint dokumentu
-mban a tartomjegyzék gombra vagy a 
-\family sans
-\bar under
-D
-\bar default
-okumentum \SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-artalomjegyzék
-\family default
- menüt válassza.
+mban a tartomjegyzék gombra.
  A parancs akkor is működni fog amennyiben nincs egyetlen elem sem a tartalomjeg
 yzékben.
  Ez egy nagyon hatékony segédeszköz.
@@ -3364,11 +3492,11 @@ yzékben.
 \family sans
 Tartalomjegyzék
 \family default
--et arra, hogy gyorsan mozogjon dokumentumban.
+ ablakot arra, hogy gyorsan mozogjon a dokumentumban.
  Rákattintva az egyik (al)szakasz címére, az kijelölődik és a kurzor a(z)
  (al)szakasz első sorába kerül (természetesen a LyX szerkesztő ablakában).
  Használhatja a kurzor billentyűket is a tartalomjegyzékben való mozgásra.
- Ezen oknál fogva kényelmesnek találhatja a használatát és nyitva tarthatja
+ Ezen oknál fogva kényelmesnek találhatja a használatát és nyitva is tarthatja
  ezt az ablakot a dokumentum szerkesztése közben.
  Hasonló funkciót érhet el a 
 \family sans
@@ -3378,7 +3506,11 @@ N
 avigáció
 \family default
  menüvel, ahol a tartalomjegyzék automatikusan jelenik meg.
- A tartalomjegyzék eltávolításához mindössze azt a gombot kell kitörölnie,
+ 
+\end_layout
+
+\begin_layout Standard
+A tartalomjegyzék eltávolításához mindössze azt a betétet kell kitörölnie,
  csakúgy mint a bármilyen szöveget.
 \end_layout
 
@@ -3395,7 +3527,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Chapter
-Képletek használata -- Using Math
+Képletek használata
 \end_layout
 
 \begin_layout Standard
@@ -3404,12 +3536,15 @@ Nagyon sok tudós használja a LaTeX-et, mivel nagyszerűen kezeli a képleteket
  használatát.
  Ezen tudósok nagy része azonban egy kicsit csalódott, mivel a képletek
  elkészítése a LaTeX-el inkább programozás, mintsem írás.
- Örömükre, a LyX WYSIWYM támogatással rendelkezik a képletek elkészítéséhez.
+ Szerencsére, a LyX WYSIWYM támogatással rendelkezik a képletek elkészítéséhez.
  Amennyiben használt már LaTeX-et, azt tapasztalhatja, hogy a LaTeX parancsokat
  bármikor begépelheti, és azok eredményei a WYSIWYM filozófiának megfelelően
  fognak megjelenni.
- Azonban amennyiben még sohasem készített képletet LaTeX-el, a képletszerkesztőv
-el gyorsan és könnyedén fog professzionális megjelenésű képleteket készíteni
+ Azonban amennyiben még sohasem készített képletet LaTeX-el, a 
+\family sans
+Képletszerkesztő
+\family default
+vel gyorsan és könnyedén fog professzionális megjelenésű képleteket készíteni
 \begin_inset Foot
 status collapsed
 
@@ -3428,11 +3563,11 @@ helyesek
 \end_layout
 
 \begin_layout Section
-Képlet mód -- Math Mode
+Képlet mód
 \end_layout
 
 \begin_layout Standard
-A LyX dokumentumában valahol írja be:
+A LyX dokumentumában valahva írja be:
 \end_layout
 
 \begin_layout LyX-Code
@@ -3454,8 +3589,8 @@ dvi
 \begin_inset Quotes prd
 \end_inset
 
--est a felső indexbe kellene írni.
- Ez a rossz szedés azért történhetett, mert nem adtuk meg a LyX-nek, hogy
+-t a felső indexbe kellene írni.
+ Ez a rossz szedés azért történhetett, mert nem tudattuk a LyX-nek, hogy
  egy matematikai kifejezést 
 \begin_inset Quotes pld
 \end_inset
@@ -3475,7 +3610,7 @@ Képletet kell létrehoznunk ahhoz, hogy a szedés megfelelő legyen.
 \begin_inset Formula $\frac{a+b}{c}$
 \end_inset
 
- gombján.
+ gombjára.
  A LyX be fog szúrni egy kis kék négyzetet, ami egy üres képlet.
  A LyX, a kurzort ebbe a kis négyzetbe rakja, így csak újra be kell írnia
  
@@ -3483,8 +3618,8 @@ Képletet kell létrehoznunk ahhoz, hogy a szedés megfelelő legyen.
 E=mc^2
 \family default
 .
- A kifejezés kékkel fog megjelenni és a kék négyzet el fog tünni amint a
- képlet nem üres.
+ A kifejezés kékkel fog megjelenni és a kék négyzet el fog tünni, amint
+ a képlet nem üres.
  Most üsse le az 
 \family sans
 Esc
@@ -3510,14 +3645,14 @@ dvi
 \end_inset
 
  a felső indexben van.
- A betűket képlet módban változónak tételezi fel a program ezért mutatja
+ A betűket képlet módban változónak tételezi fel a program, ezért mutatja
  őket dölttel.
  A számok azok számok maradnak.
 \end_layout
 
 \begin_layout Standard
 A képletszerksztő, csak egy másik példája a WYSIWYM filozófiának.
- A LaTeX-ben a matematikai kifejezéseket szövegegl és parancsokkal, mint
+ A LaTeX-ben a matematikai kifejezéseket szöveggel és parancsokkal, mint
  pl.
  az 
 \family typewriter
@@ -3526,8 +3661,8 @@ A képletszerksztő, csak egy másik példája a WYSIWYM filozófiának.
 sqrt
 \family default
  adjuk meg.
- Ez nehézkes lehet, mivel hogyan néz ki az egész kifejezés, amíg le nem
- futtatja a LaTeX-et.
+ Ez nehézkes lehet, mivel nem tudja hogyan néz ki az egész kifejezés, amíg
+ le nem futtatja a LaTeX-et.
  Sok időt tölthet el hiányzó zárójelek vagy 
 \begin_inset Quotes pld
 \end_inset
@@ -3538,8 +3673,7 @@ egyéb
 
  hibák keresésével.
  Egyébként a LyX nem próbálja meg a legtökéletesebben megjeleníteni a kifejezést
- (WYSIWYG), de segít abban.
- hogy láthassam milyen lesz a kifejezés.
+ (WYSIWYG), de segít abban, hogy láthassuk milyen lesz a kifejezés.
  A LaTeX fog gondoskodni a professzionális szedésről.
  Az esetek 99%-ban semmilyen változtatást nem kell eszközölni a betűméreteken
  vagy a térközökön.
@@ -3551,7 +3685,7 @@ tartalmára
 \end_layout
 
 \begin_layout Section
-Nagiváció a képletben -- Navigating an Equation
+Nagiváció a képletben
 \end_layout
 
 \begin_layout Standard
@@ -3564,9 +3698,9 @@ Változtassuk meg a
 \end_inset
 
 .
- Használja fel a nyíl billentyűket a kurzor képleten belüli mozgatásához.
- Figyelje meg, hogy amint belép a képletbe lila jelölők jelennek meg a képlet
- körül, jelezve képletet szerkeszt.
+ Használja a nyíl billentyűket a kurzor képletbe történő mozgatásához.
+ Figyelje meg, hogy amint belép a képletbe, lila jelölők jelennek meg a
+ képlet körül, jelezve képletet szerkeszt.
  Most használhatja a 
 \family sans
 Balra
@@ -3592,8 +3726,8 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Az említett speciális billentyűket kivéve, képletszerkesztés közben többi
- a megszokott szövegszerkesztéshez használható.
+Az említett speciális billentyűket kivéve, az írás képletszerkesztés közben
+ olyan, mintha normál szöveget írna.
  Használja a 
 \family sans
 Delete
@@ -3602,8 +3736,8 @@ Delete
 \family sans
 Backspace
 \family default
-) gombokat törléshez.
- Kijelölhet szöveget mind a kurzorral vagy az egérrel egyaránt.
+) gombokat a törléshez.
+ Kijelölhet szöveget, mind a kurzorral vagy az egérrel egyaránt.
  Az 
 \family sans
 Sz
@@ -3617,7 +3751,7 @@ n
 \bar default
 ás
 \family default
- működik képület módban, csakúgy mint kivágás vagy beillesztés.
+ működik képlet módban, csakúgy, mint a kivágás vagy a beillesztés.
  Egyetlen dolgora hívom fel csak a figyelmet: ha a képlet jobb oldalán kivül
  áll a kurzor, egyetlen 
 \family sans
@@ -3709,7 +3843,7 @@ utánra
 \end_layout
 
 \begin_layout Section
-Kitevők és indexek -- Exponents and Indices
+Kitevők és indexek
 \end_layout
 
 \begin_layout Standard
@@ -3732,12 +3866,12 @@ Képletszerkesztő
 \family sans
 Szóköz
 \family default
- leütéséig (vagy az 
+ leütéséig beír (vagy az 
 \family sans
 Esc
 \family default
- leütéséig, amivel a képletszerkesztésből kilépünk) beír a felső index-be
- fog kerülni.
+ leütéséig, amivel a képletszerkesztésből kilépünk) a felső index-be fog
+ kerülni.
 \end_layout
 
 \begin_layout Standard
@@ -3751,7 +3885,7 @@ _
 \end_inset
 
  kell használnia.
- Használhatja az alsóindexet és a felsőindex-et mind alsóndexekben mind
+ Használhatja az alsóindexet és a felsőindex-et mind alsóindexekben, mind
  felsőindexekben, mint ez a példa: 
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
 \end_inset
@@ -3776,10 +3910,6 @@ example_raw.lyx
 A 
 \family sans
 Képletszerkesztő
-\family default
- -- The 
-\family sans
-Math Panel
 \end_layout
 
 \begin_layout Standard
@@ -3795,8 +3925,8 @@ Sz
 \bar under
 e
 \bar default
-rkesztés\SpecialChar \menuseparator
-Ké
+rkesztés \SpecialChar \menuseparator
+ Ké
 \bar under
 p
 \bar default
@@ -3809,17 +3939,17 @@ B
 \bar default
 eszúrás
 \bar under
-\SpecialChar \menuseparator
+ \SpecialChar \menuseparator
 
 \bar default
-Kép
+ Kép
 \bar under
 l
 \bar default
 et
 \family default
  menük segítségével.
- Azonban mi most a 
+ Azonban mi most csak a 
 \family sans
 Képletszerkesztő
 \family default
@@ -3832,10 +3962,10 @@ B
 \bar default
 eszúrás
 \bar under
-\SpecialChar \menuseparator
+ \SpecialChar \menuseparator
 
 \bar default
-Kép
+ Kép
 \bar under
 l
 \bar default
@@ -3847,25 +3977,42 @@ et
 \SpecialChar \menuseparator
 
 \bar default
-Kép
+ Kép
 \bar under
 l
 \bar default
-etszerkesztő
+etszerkesztő\InsetSpace ~
+eszköztár\InsetSpace ~
+mutatása/elrejtése
 \family default
  segítségével és hagyja nyitva amíg ezt a fejezetet olvassa.
-\end_layout
-
-\begin_layout Standard
-Egy képletre jobb egérgombbal kattintva, a 
+ A képletszerkesztő eszköztárat a 
 \family sans
-Képletszerkesztő
+Né
+\bar under
+z
+\bar default
+et 
+\bar under
+\SpecialChar \menuseparator
+
+\bar default
+ Esz
+\bar under
+k
+\bar default
+öztárak 
+\bar under
+\SpecialChar \menuseparator
+
+\bar default
+ Képlet
 \family default
- fog megnyílni.
+ paranccsal is elérheti.
 \end_layout
 
 \begin_layout Subsection
-Görög és egyéb szimbólumok -- Greek and symbols
+Görög és egyéb szimbólumok
 \end_layout
 
 \begin_layout Standard
@@ -3897,7 +4044,7 @@ Nincs olyan, amit meg ne tehetne\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Subsection
-Gyökjelek, ékezetek és határoló jelek -- Square roots, accents, and delimiters
+Gyökjelek, ékezetek és határoló jelek
 \end_layout
 
 \begin_layout Standard
@@ -3919,22 +4066,22 @@ Egy jel fölé (
 \begin_inset Formula $\overrightarrow{a+b}$
 \end_inset
 
-) hasonlóan helyezhetünk dolgokat.
+) hasonlóan helyezhetünk ékezeteket.
  A 
 \family sans
 Keret\InsetSpace ~
 díszítőelemek
 \family default
  egy panelen keresztül érhetőek el.
- Kattintson egy ilyen elemre a LyX erre be fogja azt szúrni, a kurzort pedig
- az elem alá vagy fölé helyezve, hogy a hozzá tartozó szöveget bevihessük.
+ Kattintson egy ilyen elemre a LyX erre be fogja azt szúrni, az aktuális
+ elem alá vagy fölé, hogy a hozzá tartozó szöveget bevihessük.
  Két fajta ilyen elemkészlet létezik: az egyik mérete a hozzá tartozó szöveggel
  együtt nő vagy csökken, amíg a másik fix méretű mindössze egyetlen betűhöz
  tartozhat.
 \end_layout
 
 \begin_layout Standard
-A határolójelek mint pl.
+A határolójelek, mint pl.
  a kapcsos-, szögletes- vagy normál-zárójelek hasonlóan működnek, egy kicsit
  azért bonyolultabban.
  Kattintson a 
@@ -3975,7 +4122,7 @@ Határolójelek
  ablakot.
  Azonban ezek a zárójelek a normál szöveggel azonos méretűek lesznek, ami
  nem fog jól mutatni, ha pl.
- tört vagy mátrix lesz a zárójelen belül.
+ egy nagy tört vagy mátrix lesz a zárójelen belül.
  A 
 \family sans
 Határolójelek
@@ -4006,19 +4153,18 @@ Képletszerkesztő
 \end_layout
 
 \begin_layout Subsection
-Törtek -- Fractions
+Törtek
 \end_layout
 
 \begin_layout Standard
-A törtek nagyon egyszerűen létrehozhatóak képlet módban.
+A törtek nagyon egyszerűen hozhatóak létre képlet módban.
  Csak kattintson a 
 \family sans
 Képletszerkesztő
 \family default
 -ben a 
 \family sans
-Törtjel\InsetSpace ~
-beszúrása
+Törtek
 \family default
  gombra, arra ami egy fekete törtvonalat mutat egy-egy kék négyzettel a
  számlálóban és a nevezőben.
@@ -4065,8 +4211,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-TeX mód: Határok, log, sin és a többiek -- TeX mode: Limits, log, sin and
- others
+TeX mód: határok, log, sin és a többiek
 \end_layout
 
 \begin_layout Standard
@@ -4163,14 +4308,11 @@ sin
 \family sans
 Képletszerkesztő
 \family default
- ablakában a 
+ eszköztáron a 
 \family sans
-\bar under
-F
-\bar default
-üggvények
+Függvények
 \family default
- listában.
+ gombra.
  A 
 \begin_inset Quotes pld
 \end_inset
@@ -4200,20 +4342,17 @@ x
 dvi
 \family default
  fájlban megfelelően fog látszódni.
- Ellnőrizze le!
+ Ellenőrizze le!
 \end_layout
 
 \begin_layout Standard
 A képlet módban bevihető függvények, melyeket a 
 \family sans
-\bar under
-F
-\bar default
-üggvények
+Függvények
 \family default
  listából vihet be, tartalmazhatják a trigonumetrikus műveleteket azok inverzeit
 , a hiperbolikus függvényeket, logaritmusokat, határokat valamint sok egyéb
- függvényt.
+ függvényt is.
  Ezen függvényeknek lehet alsó vagy felső index-ű operátoruk, mint pl.
  
 \begin_inset Quotes pld
@@ -4255,7 +4394,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-Mátrixok -- Matrices
+Mátrixok
 \end_layout
 
 \begin_layout Standard
@@ -4270,7 +4409,8 @@ Képletszerkesztő
 \family default
  a 
 \family sans
-Mátrix
+Mátrix\InsetSpace ~
+beszúrása
 \family default
  gombjára.
  A megjelenő dialógusablakban kiválaszthatjuk mennyi sora és oszlopa legyen
@@ -4279,12 +4419,8 @@ Mátrix
 \family sans
 OK
 \family default
- gombot majd a 
-\family sans
-Bezár
-\family default
  gombot.
- A LyX be fog szúrni és 6 kék négyzetet egy 
+ A LyX be fog szúrni 6 kék négyzetet egy 
 \begin_inset Formula $2\times3$
 \end_inset
 
@@ -4292,7 +4428,8 @@ Bezár
  Ahogy azt már megszokhatta ezekbe a négyzetekbe bármilyen matematikai kifejezés
 ket beírhat (pl.
  gyökjeles, másik mátrix, stb.).
- Amennyiben valamely kék négyzetet üresen akarja hagyni, az nem jelent problémát.
+ Amennyiben valamelyik kék négyzetet üresen akarja hagyni, az nem jelent
+ problémát.
 \end_layout
 
 \begin_layout Standard
@@ -4301,7 +4438,7 @@ Az oszlopok közötti mozgáshoz felhasználhatja a
 Tab
 \family default
  billentyűt.
- Egyébként használhatja a nyíl billentyűket a mozgáshoz, egy cella jobb
+ Egyébként a nyíl billentyűket használhatja a mozgáshoz, egy cella jobb
  szélén a 
 \family sans
 Jobbra
@@ -4323,21 +4460,29 @@ Sz
 \bar under
 e
 \bar default
-rkesztés\SpecialChar \menuseparator
-S
+rkesztés \SpecialChar \menuseparator
+ So
 \bar under
-o
+r
 \bar default
-rok\InsetSpace ~
+ok\InsetSpace ~
 és\InsetSpace ~
-oszlopok\SpecialChar \menuseparator
-Oszlop\InsetSpace ~
-hozzáadása
+oszlopok \SpecialChar \menuseparator
+ Oszlop\InsetSpace ~
+
+\bar under
+h
+\bar default
+ozzáadása
 \family default
  vagy 
 \family sans
 Sor\InsetSpace ~
-hozzáadása
+hozzá
+\bar under
+a
+\bar default
+dása
 \family default
  parancsokat.
  Ezek beszúrnak egy új sort vagy oszlopot az aktuális pozícióba.
@@ -4360,14 +4505,14 @@ A
 Felhasználói kézikönyv
 \emph default
 -ben megtalálja hogyan változtassa meg az egyes oszlopok igazítását és azt,
- hogyan változtassa meg a teljes mátrix függőleegs pozícióját.
+ hogyan változtassa meg a teljes mátrix függőleges pozícióját.
  Amennyiben szöveget tartalmazó táblázatot szeretne készíteni, érdemes a
  LyX nagyszerű táblázatkezelőjét használnia, mátrixok használata helyett.
  
 \end_layout
 
 \begin_layout Subsection
-Megjelenítési mód -- Display mode
+Megjelenítési mód
 \end_layout
 
 \begin_layout Standard
@@ -4375,20 +4520,14 @@ Az eddig készített összes képlet vagy matematikai kifejezés a normál szöv
  egy sorba került, ezeket beszúrt képleteknek nevezzük.
  Ez nagyszerű rövid, egyszerű kifejezések elkészítéséhez, azonban ha egy
  nagyot szeretne készíteni vagy azt szeretné, hogy a képlet különüljön el
- a szövegtől, a képletet megjelenítés módját meg kell változtatnia (megjelenítet
-t-mód).
+ a szövegtől, a képlet megjelenítés módját meg kell változtatnia (megjelenített-
+mód).
  Továbbá amennyiben címkézni és számozni (lásd a 
 \emph on
 Felhasználói kézikönyv
 \emph default
-ben) szeretné, esetleg többsoros kifejezést (lásd a 
-\begin_inset LatexCommand ref
-reference "sec:multiline"
-
-\end_inset
-
-.\InsetSpace ~
-szakaszt) szeretne, a képletnek megjelenített módban kell lennie.
+ben) szeretné, esetleg többsoros kifejezést szeretne, a képletnek megjelenített
+ módban kell lennie.
 \end_layout
 
 \begin_layout Standard
@@ -4396,7 +4535,7 @@ Kattintson a
 \family sans
 Képletszerkesztő
 \family default
-, 
+ eszköztár 
 \family sans
 Megjelenítés\InsetSpace ~
 módjának\InsetSpace ~
@@ -4418,11 +4557,11 @@ váltása
 \end_layout
 
 \begin_layout Standard
-A megjelenített és a beszúrt megjelenítés pár dologban eltér egymástól:
+A megjelenített mód pár dologban eltér a beszúrt módtól:
 \end_layout
 
 \begin_layout Itemize
-Az alap betűkészlet nagyon néhány szimbólum esetében, mint a 
+Az alap betűkészlet nagyobb néhány szimbólum esetében, mint a 
 \begin_inset Formula $\sum$
 \end_inset
 
@@ -4459,7 +4598,7 @@ Return
 utáni
 \emph default
  szöveg egy új bekezdésbe fog kerülni.
- Emiatt lehet, hogy az be lesz húzva, amit feltehetőleg nem szeretne.
+ Emiatt a szöveg lehet, hogy be lesz húzva, amit feltehetőleg nem szeretne.
 \end_layout
 
 \begin_layout Standard
@@ -4480,8 +4619,8 @@ example_raw.lyx
 \series bold
 Feladat
 \series default
-: Különböző - ebben a szakaszban tanult - eszközök felhasználásával készíthet
- ilyen képleteket
+: Különböző - ebben a szakaszban tanult - eszközök felhasználásával mostantól
+ képes lehet hasonló képletek elkészítésére
 \begin_inset Foot
 status collapsed
 
@@ -4489,11 +4628,10 @@ status collapsed
 \InsetSpace ~
 Miután a bonyolultabb módon elkészítette, miért nem próbálja ki a 
 \family sans
-B
 \bar under
-e
+B
 \bar default
-szúrás\SpecialChar \menuseparator
+eszúrás\SpecialChar \menuseparator
 Kép
 \bar under
 l
@@ -4527,7 +4665,7 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Section
-További képletes dolgok -- More Math Stuff
+További képletes dolgok
 \end_layout
 
 \begin_layout Standard
@@ -4536,7 +4674,7 @@ A Képlet-módban sokkal több mindent meg tud csinálni.
 \emph on
 Felhasználói kézikönyv
 \emph default
--re hivatkozunk a hogy hogyan tudja megcsinálni a:
+-re hivatkozunk hogy hogyan tudja megcsinálni a:
 \end_layout
 
 \begin_layout Itemize
@@ -4576,11 +4714,11 @@ Tankönyv
 \end_layout
 
 \begin_layout Chapter
-Egyéb dolgok -- Miscellaneous
+Egyéb dolgok
 \end_layout
 
 \begin_layout Section
-Egyéb fontos LyX jellemzők -- Other Major LyX Features
+Egyéb fontos LyX jellemzők
 \end_layout
 
 \begin_layout Standard
@@ -4601,15 +4739,24 @@ A LyX támogatja a táblázatokat WYSIWYM módon.
 \bar under
 B
 \bar default
-eszúrás\SpecialChar \menuseparator
+eszúrás \SpecialChar \menuseparator
 
 \bar under
-T
+ T
 \bar default
-áblázat
+áblázat\SpecialChar \ldots{}
+
 \family default
  parancsot, táblázat beszúrásához.
- Kattintson jobb gombbal a táblázaton a 
+ Kattintson 
+\emph on
+jobb
+\emph default
+ 
+\emph on
+gombbal
+\emph default
+ a táblázaton a 
 \family sans
 Táblázat\InsetSpace ~
 beállítása
@@ -4619,7 +4766,7 @@ beállítása
 
 \begin_layout Itemize
 A LyX támogatja képek beszúrását számos formátumban (beleértve JPEG-et,
- és a többi bitmap formátumot, a PostScript 
+ és bitmap formátumokat, a PostScript
 \begin_inset ERT
 status collapsed
 
@@ -4638,17 +4785,18 @@ textregistered
 \bar under
 B
 \bar default
-eszúrás\SpecialChar \menuseparator
+eszúrás \SpecialChar \menuseparator
 
 \bar under
-G
+ G
 \bar default
 rafika
 \family default
-\SpecialChar \@.
- Ezután kattintson jobb egérgombbal a fájl megadásához, a kép elforgatásához,
- méretezéséhez, stb.) A táblázatoknak és ábráknak lehet címük, a LyX automatikusa
-n elkészíti a táblázatok és képek listáját.
+\SpecialChar \ldots{}
+.
+ Ezután kattintson a képre a fájl megadásához, a kép elforgatásához, méretezéséh
+ez, stb.) A táblázatoknak és ábráknak lehet címkéjük, a LyX automatikusan
+ elkészíti a táblázatok és képek listáját.
 \end_layout
 
 \begin_layout Itemize
@@ -4662,29 +4810,30 @@ man rcsintro
 
 \begin_layout Itemize
 A LyX nagymértékben beállítható.
- A LyX ablak kinézetétől kezdve, hogy a kimenet hogyan keletkezik beállítható
- számtalan módon.
+ A LyX ablak kinézetétől kezdve, hogy a kimenet hogyan keletkezik, mindez
+ számtalan módon beállítható.
  Sok beállítás az 
 \family sans
 Esz
 \bar under
 k
 \bar default
-özök\SpecialChar \menuseparator
+özök \SpecialChar \menuseparator
 
 \bar under
-B
+ B
 \bar default
 eállítások
 \family default
--on keresztűl valósul meg.
+\SpecialChar \ldots{}
+-on keresztül valósul meg.
  További információért olvassa el a 
 \family sans
 \bar under
 S
 \bar default
-egítség\SpecialChar \menuseparator
-T
+egítség \SpecialChar \menuseparator
+ T
 \bar under
 e
 \bar default
@@ -4694,11 +4843,11 @@ streszabás
 \end_layout
 
 \begin_layout Itemize
-A LyX fejlesztését a kontinenseket átfedő programozók csoportja végzi.
+A LyX fejlesztését öt kontinensen található programozók csoportja végzi.
  Ezért a LyX jobb támogatással rendelkezik nem angol nyelvekhez (mint, pl.
  a holland, német, francia, görög, cseh, török\SpecialChar \ldots{}
 ) mint a többi szövegszerkesztő.
- Még néhány jobbról-balra író nyelvet is mint a héber vagy az arab támogat.
+ Még néhány jobbról-balra író nyelvet is, mint a Héber vagy az Arab támogat.
  Írhat dokumentumot más nyelveken, de beállíthatja a LyX-et úgy, hogy a
  menük és az üzenetek egy másik nyelven jelenjenek meg.
 \end_layout
@@ -4710,14 +4859,14 @@ A LyX menük tartalmaznak gyorsító elemeket.
 \bar under
 F
 \bar default
-ájl\SpecialChar \menuseparator
-Meg
+ájl \SpecialChar \menuseparator
+ Meg
 \bar under
 n
 \bar default
 yitás
 \family default
- \SpecialChar \ldots{}
+\SpecialChar \ldots{}
  elérhető az 
 \family sans
 M-F
@@ -4726,16 +4875,16 @@ M-F
 \family sans
 N
 \family default
- lenyomásával vagy a menüelem mellett látható gyorsbillnetyűvel (ami alapból
+ lenyomásával vagy a menüelem mellett látható gyorsbillentyűvel (ami alapból
  C-O).
- A gyorsbillentyűk szintén beállíthatóak, további információért kérem olvassa
+ A gyorsbillentyűk szintén beállíthatóak, további információkért kérem olvassa
  el a 
 \family sans
 \bar under
 S
 \bar default
-egítség\SpecialChar \menuseparator
-T
+egítség \SpecialChar \menuseparator
+ T
 \bar under
 e
 \bar default
@@ -4767,12 +4916,12 @@ emacs
 \family default
  hasonló eszköze alapján).
  Ez hozzáférhetővé tesz mindenfajta érdekes funkciókat, beleértve azokat
- amivel tönkreteheti a dokumentumát.
+ is amivel tönkreteheti a dokumentumát.
  Azaz csak akkor írjon a minibuffer-be, ha tudja mit csinál.
 \end_layout
 
 \begin_layout Section
-LyX a LaTeX felhasználóknak -- LyX for LaTeX Users
+LyX a LaTeX felhasználóknak
 \end_layout
 
 \begin_layout Standard
@@ -4786,21 +4935,22 @@ Ha semmit sem tud a LaTeX-ről, nem kell elolvasnia ezt a szakaszt.
 \emph on
 tanulni
 \emph default
- a LaTeX-ről, és mégis el olvassa .
- Sok ember aki a LyX-et most kezdi el használni, már ismeri a LateX-et.
+ a LaTeX-ről, és el olvassa ezt a fejezetet.
+ Sok ember aki a LyX-et most kezdi el használni, már ismeri a LaTeX-et.
  Ha ön egy ilyen ember, jogosan kérdezheti hogyan képes a LyX mindarra amire
  a LaTeX.
  A rövid válasz az, hogy a LyX meglehetősen sokmindenre képes amit a LaTeX
- ilyen vagy olyan formában meg tud csinálni.
+ ilyen vagy olyan formában.
  Valamint minden bizonnyal egyszerüsíti egy LaTeX dokumentum elkészítését.
- Jelenleg, a régi LaTeX dokumentumok átalakítása és pár egyéb dolog okozhat
- némi bosszúságot, de a későbbi kiadások során ezen hiányosságok csökkentése
- a célunk.
+ A segédeszközt -- aminek segítségével a LaTeX dokumentumokat átalakíthatjuk
+ LyX által feldolgozható formára -- teljesen újraírtuk a LyX 1.4 változatához.
+ Mostmár képesnek kell lennie a könnyedén lekezelni a LaTeX nagy részét.
+ 
 \end_layout
 
 \begin_layout Standard
-Mivel ez csak egy tankönyv, azért csak azon dolgokat említjuk meg, amikkel
- a kezdő felhasználó először szembesülhet.
+Mivel ez csak egy tankönyv, azért csak azokat a dolgokat említjuk meg, amelyek
+ a kezdő felhasználót érdekelhetnek.
  Azért, hogy a 
 \emph on
 Tankönyv
@@ -4814,30 +4964,30 @@ Haladó szolgáltatások
 \emph on
 LaTeX mesterek titkai (Secrets of the LaTeX Masters
 \emph default
-) fejezetben találhat sok-sok információt a LyX és a LaTeX különbségéről
- valamint arról, hogyan valósítsunk meg egyes LaTeX trükköket LyX-ben.
+) fejezetben találhat sok-sok információt a LyX és a LaTeX különbségéről,
+ valamint arról, hogyan valósíthat meg egyes LaTeX trükköket LyX-ben.
 \end_layout
 
 \begin_layout Subsection
-TeX-mód -- TeX Mode 
+TeX-mód
 \end_layout
 
 \begin_layout Standard
 Bármi, amit TeX-módban ír be, azt a LaTeX közvetlen (változtatás nélkül)
- kapja meg, a képernyőn pedig pirossal fog megjelenni.
+ kapja meg, a képernyőn pirossal fog megjelenni.
  A TeX parancsok beviteléhez válassza a 
 \family sans
 \bar under
 B
 \bar default
-eszúrás\SpecialChar \menuseparator
-Te
+eszúrás \SpecialChar \menuseparator
+ Te
 \bar under
 X
 \family default
 \bar default
  menüt.
- A parancs létrehoz egy dobozt, amit ebbe a dobozba beírunk közvetlen átadásra
+ A parancs létrehoz egy betétet, amit ebbe a betétbe beírunk közvetlen átadásra
  kerül a LaTeX-nek.
 \end_layout
 
@@ -4852,9 +5002,9 @@ backslash
 \end_inset
 
  karaktert kell leütnie.
- A perjel nem kerűl a képernyőre, de amit utána beírunk az pirossal fog
+ A perjel nem kerül a képernyőre, de amit utána beírunk az pirossal fog
  megjelenni.
- A TeX-módból való kilépéshez írjon be egy 
+ A TeX-módból való kilépéshez üüse le a 
 \family sans
 Szóköz-
 \family default
@@ -4864,7 +5014,7 @@ t vagy egy nem betű karaktert, mint pl.
  át fogja alakítani azt a WYSIWYM formába.
  Azaz, ha egy képletben beírja 
 \backslash
-gamma és leüti a 
+gamma valamint leüti a 
 \family sans
 Szóköz
 \family default
@@ -4899,23 +5049,22 @@ Képletszerkesztő
 \end_layout
 
 \begin_layout Standard
-Amennyiben TeX-módan beír egy zárójelet, mint speciális szimbólumot, mind
- a nyitó 
+Amennyiben TeX-módan egy speciális esetben beír egy zárójelet, mind a nyitó
+ 
 \emph on
 és
 \emph default
- záró pár meg fog jelenni pirosban, a rendszer kilép TeX módból és kurzor
- a két zárójel közé kerűl.
- Ezzel kényelmesebbé teszi parancsok beírását, amennyiben a LyX nem ismeri
- a megfelelő paraméterezést.
+ záró pár pirosban fog megjelenni, a rendszer kilép TeX módból és kurzor
+ a két zárójel közé kerül.
+ Ezzel kényelmesebbé teszi olyan parancsok beírását, amiket a LyX nem ismeri.
 \end_layout
 
 \begin_layout Standard
 A LyX (egyenlőre) nem képes mindarra amire a LaTeX.
  Valamely funkciókat jelenleg egyáltalán nem támogat, van ami működik, de
- nem WYSIWYM-nak megfelelően.
+ nem a WYSIWYM-nak megfelelően.
  A TeX-mód segítségével kiaknázhatjuk a LaTeX összes lehetőségét, miközben
- kényelmesen kihasználjuk a LyX által nyujtott szolgáltatásokat, mint pl.
+ kényelmesen kihasználjuk a LyX által nyújtott szolgáltatásokat, mint pl.
  WYSIWYM képletek, táblázatok és szerkesztés.
  A LyX sohasem lesz képes az összes LaTeX csomag támogatására.
  Azonban, ha beírja a 
@@ -4931,110 +5080,109 @@ reference "sec:preamble"
 \end_inset
 
 .\InsetSpace ~
-szakasz), olyan csomagot használ, amilyet csak akar -- azonban nem lesz
+szakaszt), olyan csomagot használ, amilyet csak akar -- azonban nem lesz
  WYSIWYM támogatás a csomag jellemzőihez.
 \end_layout
 
 \begin_layout Subsection
-LaTeX dokumentumok importálása -- tex2lyx
+LaTeX dokumentumok importálása -- 
+\family typewriter
+tex2lyx
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset LatexCommand label
-name "sec:tex2lyx"
+name "sec:relyx"
 
 \end_inset
 
-You can import a LaTeX file into LyX by using the 
+Importálhat LaTeX fájlokat a 
 \family sans
 \bar under
 F
 \bar default
-ile\SpecialChar \menuseparator
+ájl \SpecialChar \menuseparator
 
 \bar under
-I
+ I
 \bar default
-mport\SpecialChar \menuseparator
+mportálás \SpecialChar \menuseparator
 
 \bar under
-L
+ L
 \bar default
 aTeX
 \family default
- command in LyX.
- This will call 
+ parancs segítségével.
+ Ez a 
 \family typewriter
 tex2lyx
 \family default
- which will create a file 
+ porgramot hívja meg, ami létre fogja hozni a 
 \family typewriter
-foo.lyx
+valami.lyx
 \family default
- from the file 
+ fájlt, a 
 \family typewriter
-foo.tex
+valami.tex
 \family default
- --- and then open that file.
- If the translation doesn't work, you can try calling 
+-ből, ezután természetesen megnyitja a lyx fájlt.
+ Amennyiben az átalakítás valamilyen oknál fogva sikertelen, megpróbálhatja
+ a 
 \family typewriter
 tex2lyx
 \family default
- from the command line, possibly using fancier options.
+ futtatását a parancssorból valószínűleg szakszerűbb kapcsolókat használva.
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-\lang english
 tex2lyx
 \family default
- will translate most legal LaTeX, but not everything.
- It will leave things it doesn't understand in TeX mode, so after translating
- a file with 
+ a LaTeX jelentős részét le tudja fordítani, de mégsem mindent.
+ Amit nem ért meg azt TeX módban fogja hagyni, ezért miután lefordította
+ a fájlt 
 \family typewriter
 tex2lyx
 \family default
-, you can look for red text and hand-edit it to look right.
+-el, meg kell keresnie a piros szövegrészeket és ki kell azokat javítania.
 \end_layout
 
 \begin_layout Standard
-
+A 
 \family typewriter
-\lang english
 tex2lyx
 \family default
- has its own manpage.
- Read it to find out about which LaTeX commands and environments aren't
- supported, bugs (and how to get around them), and how to use the various
- options.
+-nek van saját kézikönyvoldala.
+ Érdemes elolvasnia ahhoz, hogy megtudja mely, LaTeX parancsokat és környezeteke
+t nem támogatja a program, ismerteti a hibáit (és azt hogyan lehet megkerülni
+ őket), valamint miként használjunk bizonyos kapcsolókat.
 \end_layout
 
 \begin_layout Subsection
-LyX dokumentumok átalakítása LaTeX-re -- Converting LyX Documents to LaTeX
+LyX dokumentumok átalakítása LaTeX-re
 \end_layout
 
 \begin_layout Standard
 LyX dokumentumát lehet, hogy át akarja alakítani LaTeX formátumba.
- Például, egy segítő vagy szerzőtárs nem rendelkezik LyX-el és el szeretné
- olvasni a művét.
+ Például, egy segítőnek vagy szerzőtársnak, aki nem rendelkezik LyX-el és
+ el szeretné olvasni a művét.
  Ezt nagyon könnyedén meg tudja csinálni.
  Válassza a 
 \family sans
 \bar under
 F
 \bar default
-ájl\SpecialChar \menuseparator
-E
+ájl \SpecialChar \menuseparator
+ E
 \bar under
 x
 \bar default
-portálás\SpecialChar \menuseparator
+portálás \SpecialChar \menuseparator
 
 \bar under
-L
+ L
 \bar default
 aTeX
 \family default
@@ -5048,17 +5196,17 @@ valami.tex
 valami.lyx
 \family default
  fájlból, amit éppen szerkeszt.
- A LyX minden esetben ideiglenes fájlokat hoz létre, mindahányszor megnézzük
- a dokumentumunk kimenetet vagy ki szeretnénk azt nyomtatni, emiatt nagyon
- jó LaTeX fájl készítésben.
+ A LyX minden esetben ideiglenes LaTeX fájlokat hoz létre, mindahányszor
+ megnézzük a dokumentumunk kimenetet vagy ki szeretnénk azt nyomtatni, emiatt
+ nagyon jó LaTeX fájl készítésben.
 \end_layout
 
 \begin_layout Subsection
-LaTeX Preambulum -- LaTeX Preamble
+LaTeX Preambulum
 \end_layout
 
 \begin_layout Subsubsection
-Dokumentum osztály -- Document Class
+Dokumentum osztály
 \end_layout
 
 \begin_layout Standard
@@ -5067,12 +5215,13 @@ A
 \bar under
 D
 \bar default
-okumentum\SpecialChar \menuseparator
+okumentum \SpecialChar \menuseparator
 
 \bar under
-B
+ B
 \bar default
-eállítások
+eállítások\SpecialChar \ldots{}
+
 \family default
  dialógusablak tartalmazza mindazokat a beállításokat amiket a 
 \family typewriter
@@ -5081,7 +5230,7 @@ eállítások
 documentclass
 \family default
  paranccsal elérhetünk.
- Itt lehet megváltoztatni a dokumentumosztályt alap betűméretet valamint
+ Itt lehet megváltoztatni a dokumentumosztály alap betűméretet valamint
  a papírméretet is.
  Megadhatja a 
 \family typewriter
@@ -5110,24 +5259,32 @@ name "sec:preamble"
 
 \end_inset
 
- Amennyiben valamilyen speciális beállításokat használt a LaTeX fájl preambulumá
-ban, azokról a LyX dokumentum esetén sem kell lemondania.
+ Amennyiben valamilyen speciális beállításokat használ a LaTeX fájl preambulumáb
+an, azokról a LyX dokumentum esetén sem kell lemondania.
  Válassza a 
 \family sans
 \bar under
 D
 \bar default
-okumentum\SpecialChar \menuseparator
+okumentum \SpecialChar \menuseparator
 
 \bar under
-L
+ B
 \bar default
-aTeX\InsetSpace ~
+eállítások
+\bar under
+ 
+\bar default
+\SpecialChar \menuseparator
+
+\bar under
+ 
+\bar default
+LaTeX\InsetSpace ~
 Preambulum
 \family default
- és írja be a megjelenő dialógusablakba (vagy a dokumentum beállításai ablakban,
- attól függően milyen kezelőfelületet használ).
- Bármi amit begépel, (csak úgy mint TeX módban) azt közvetlen a LaTeX fogja
+-ot és írja be a megjelenő dialógusablakba.
+ Bármi amit begépel, (csak úgy mint TeX módban) azt a LaTeX közvetlen fogja
  feldolgozni.
 \end_layout
 
@@ -5144,17 +5301,17 @@ tjuk.
 B
 \family sans
 \bar default
-eszúrás\SpecialChar \menuseparator
-Listák\InsetSpace ~
+eszúrás \SpecialChar \menuseparator
+ Listák\InsetSpace ~
 és\InsetSpace ~
 tartal
 \bar under
 o
 \bar default
-mjegyzék\SpecialChar \menuseparator
+mjegyzék \SpecialChar \menuseparator
 
 \bar under
-B
+ B
 \bar default
 ibTeX\InsetSpace ~
 irodalomjegyzék
@@ -5169,8 +5326,9 @@ bib
 \end_inset
 
 BibTeX\InsetSpace ~
+által\InsetSpace ~
 létrehozott\InsetSpace ~
-hivatkozások
+irodalomjegyzék
 \begin_inset Quotes prd
 \end_inset
 
@@ -5202,11 +5360,11 @@ va, szóközök nélkül
 \end_inset
 
 .
- A 
+ Hasonlóan, a 
 \family sans
 Stílus
 \family default
- mezőbe pedig egyszerűen írja be, amit a 
+ mezőbe írja be, amit a 
 \family typewriter
 
 \backslash
@@ -5222,10 +5380,10 @@ gyzék elemre a
 \bar under
 B
 \bar default
-eszúrás\SpecialChar \menuseparator
+eszúrás \SpecialChar \menuseparator
 
 \bar under
-I
+ I
 \bar default
 dézet
 \family default
@@ -5251,15 +5409,15 @@ bib
 \end_layout
 
 \begin_layout Section
-Hibák! -- Errors!
+Hibák!
 \end_layout
 
 \begin_layout Standard
-Néha, miközben feldolgozzuk a dokumentumunkat, hibák léphetnek fel amelyeket
+Néha, miközben feldolgozzuk a dokumentumunkat, hibák léphetnek fel, amelyeket
  a LyX vagy a LaTeX nem ért meg.
  Amikor ez történik, a hibák egy ablakban fognak megjelenni.
- Rájuk kattintva a kurzor a megfelelő szövegrészhez ugrik valamint egy magyarázó
- ablakban megjelenik a LaTeX által adott hibaüzenet.
+ Rájuk kattintva a kurzor a megfelelő szövegrészhez ugrik, valamint egy
+ magyarázó ablakban megjelenik a LaTeX által adott hibaüzenet.
  Azt azért meg kell jegyezni, hogy ezek a hibaüzenetek nem minden esetben
  kielégítőek.
 \end_layout
