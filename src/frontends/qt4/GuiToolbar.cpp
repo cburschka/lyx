@@ -350,6 +350,9 @@ void GuiToolbar::saveInfo(ToolbarSection::ToolbarInfo & tbinfo)
 
 void GuiToolbar::update()
 {
+	// update visible toolbars only
+	if (!isVisible())
+		return;
 	// This is a speed bottleneck because this is called on every keypress
 	// and update calls getStatus, which copies the cursor at least two times
 	for (int i = 0; i < actions_.size(); ++i)
