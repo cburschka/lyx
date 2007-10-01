@@ -144,6 +144,9 @@ What's new
 - Only update the toolbars that are actually visible. This improves LyX's
   performance on editing.
 
+- Further improve performance on editing by reducing the update calls of the
+  math panel toolbar to the bare essentials.
+
 - Fix the loading of non-LyX child documents with relative path names. Change
   'Load' to 'Edit' in the child document dialog (bugs 4107 and 4111).
 
