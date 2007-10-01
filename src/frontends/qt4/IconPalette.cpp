@@ -217,7 +217,7 @@ void IconPalette::updateParent()
 		}
 #else
 	// we check only the first action to enable/disable the menu
-	if (actions_.size() > 0)
+	if (!actions_.isEmpty())
 		enable = actions_.at(0)->isEnabled();
 #endif
 
@@ -274,7 +274,7 @@ void ButtonMenu::updateParent()
 		}
 #else
 	// we check only the first action to enable/disable the menu
-	if (actions_.size() > 0)
+	if (!actions_.isEmpty())
 		enable = actions_.at(0)->isEnabled();
 #endif
 
