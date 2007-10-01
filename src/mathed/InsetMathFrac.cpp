@@ -140,8 +140,6 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	setPosCache(pi, x, y);
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const dim0 = cell(0).dimension(*pi.base.bv);
-	Dimension const dim1 = cell(1).dimension(*pi.base.bv);
-	Dimension const dim2 = cell(2).dimension(*pi.base.bv);
 	int m = x + dim.wid / 2;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
@@ -155,6 +153,8 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			cell(2).draw(pi, x + 1, y);
 			ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
 			FracChanger dummy(pi.base);
+			Dimension const dim1 = cell(1).dimension(*pi.base.bv);
+			Dimension const dim2 = cell(2).dimension(*pi.base.bv);
 			int xx = x + dim2.wid + 5;
 			cell(0).draw(pi, xx + 2, 
 					 y - dim0.des - 5);
@@ -163,6 +163,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		}
 	} else {
 		FracChanger dummy(pi.base);
+		Dimension const dim1 = cell(1).dimension(*pi.base.bv);
 		if (kind_ == NICEFRAC) {
 			cell(0).draw(pi, x + 2,
 					y - dim0.des - 5);
@@ -185,6 +186,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	if (kind_ == NICEFRAC || kind_ == UNITFRAC) {
 		// Diag line:
 		int xx = x;
+		Dimension const dim2 = cell(2).dimension(*pi.base.bv);
 		if (nargs() == 3)
 			xx += dim2.wid + 5;
 		pi.pain.line(xx + dim0.wid,
