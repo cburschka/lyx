@@ -114,6 +114,9 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		FracChanger dummy(mi.base);
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
+		if (nargs() == 3)
+			cell(2).metrics(mi, dim2);
+
 		if (kind_ == NICEFRAC) {
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = dim0.height() + 5;
@@ -186,9 +189,9 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	if (kind_ == NICEFRAC || kind_ == UNITFRAC) {
 		// Diag line:
 		int xx = x;
-		Dimension const dim2 = cell(2).dimension(*pi.base.bv);
 		if (nargs() == 3)
-			xx += dim2.wid + 5;
+			xx += cell(2).dimension(*pi.base.bv).wid + 5;
+
 		pi.pain.line(xx + dim0.wid,
 				y + dim.des - 2,
 				xx + dim0.wid + 5,
