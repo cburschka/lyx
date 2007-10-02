@@ -31,7 +31,7 @@ Invocation:
 # Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
 lyx_version="1.5.2svn"
-lyx_branch="BRANCH_1_5_x"
+lyx_branch="BRANCH_1_5_X"
 
 import os
 import sys
@@ -126,9 +126,9 @@ if __name__ == "__main__":
 
     print """<?php
 // The current version
-\$lyx_version = "%s";
+$lyx_version = "%s";
 // The branch tag
-\$branch_tag = "%s";
+$branch_tag = "%s";
 
 // The data itself
 \$podata = array (%s
