@@ -20,8 +20,6 @@
 #include "LyXAction.h"
 #include "Lexer.h"
 
-#include "frontends/KeySymbol.h"
-
 #include "support/filetools.h"
 
 #include <sstream>
@@ -36,18 +34,17 @@ using support::FileName;
 using support::i18nLibFileSearch;
 
 
-string const KeyMap::printKeySym(KeySymbol const & key,
-				    key_modifier::state mod)
+string const KeyMap::printKeySym(KeySymbol const & key, KeyModifier mod)
 {
 	string buf;
 
 	string const s = key.getSymbolName();
 
-	if (mod & key_modifier::shift)
+	if (mod & ShiftModifier)
 		buf += "S-";
-	if (mod & key_modifier::ctrl)
+	if (mod & ControlModifier)
 		buf += "C-";
-	if (mod & key_modifier::alt)
+	if (mod & AltModifier)
 		buf += "M-";
 
 	buf += s;
@@ -171,7 +168,7 @@ bool KeyMap::read(string const & bind_file)
 
 
 FuncRequest const & KeyMap::lookup(KeySymbol const &key,
-		  key_modifier::state mod, KeySequence * seq) const
+		  KeyModifier mod, KeySequence * seq) const
 {
 	static FuncRequest const unknown(LFUN_UNKNOWN_ACTION);
 
@@ -183,9 +180,8 @@ FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
-		key_modifier::state mask(cit->mod.second);
-		key_modifier::state check =
-			static_cast<key_modifier::state>(mod & ~mask);
+		KeyModifier mask = cit->mod.second;
+		KeyModifier check = static_cast<KeyModifier>(mod & ~mask);
 
 		if (cit->code == key && cit->mod.first == check) {
 			// match found
@@ -229,8 +225,8 @@ void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 	if (!code.isOK())
 		return;
 
-	key_modifier::state const mod1 = seq->modifiers[r].first;
-	key_modifier::state const mod2 = seq->modifiers[r].second;
+	KeyModifier const mod1 = seq->modifiers[r].first;
+	KeyModifier const mod2 = seq->modifiers[r].second;
 
 	// check if key is already there
 	Table::iterator end = table.end();

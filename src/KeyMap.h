@@ -16,7 +16,7 @@
 
 #include "FuncRequest.h"
 
-#include "frontends/key_state.h"
+#include "frontends/KeyModifier.h"
 #include "frontends/KeySymbol.h"
 
 #include "support/docstream.h"
@@ -60,8 +60,7 @@ public:
 	 * @return the action / LFUN_COMMAND_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
 	FuncRequest const &
-	lookup(KeySymbol const & key,
-	       key_modifier::state mod, KeySequence * seq) const;
+	lookup(KeySymbol const & key, KeyModifier mod, KeySequence * seq) const;
 
 	///
 	typedef std::deque<KeySequence> Bindings;
@@ -77,7 +76,7 @@ public:
 	 *  The KeySymbol pointer is 0 is no key is found.
 	 *  [only used by the Qt/Mac frontend]
 	 */
-	std::pair<KeySymbol, key_modifier::state>
+	std::pair<KeySymbol, KeyModifier>
 	find1keybinding(FuncRequest const & func) const;
 
 
@@ -87,9 +86,9 @@ public:
 	 * @param mod the modifiers
 	 */
 	static std::string const printKeySym(KeySymbol const & key,
-					     key_modifier::state mod);
+					     KeyModifier mod);
 
-	typedef std::pair<key_modifier::state, key_modifier::state> modifier_pair;
+	typedef std::pair<KeyModifier, KeyModifier> ModifierPair;
 
 private:
 	///
@@ -98,7 +97,7 @@ private:
 		KeySymbol code;
 
 		/// Modifier masks
-		modifier_pair mod;
+		ModifierPair mod;
 
 		/// Keymap for prefix keys
 		boost::shared_ptr<KeyMap> table;

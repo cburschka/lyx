@@ -202,7 +202,7 @@ Change::Type lookupChangeType(DocIterator const & dit, bool outer = false)
 
 
 LyXFunc::LyXFunc()
-	: lyx_view_(0), encoded_last_key(0), meta_fake_bit(key_modifier::none)
+	: lyx_view_(0), encoded_last_key(0), meta_fake_bit(NoModifier)
 {
 }
 
@@ -289,8 +289,7 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 }
 
 
-void LyXFunc::processKeySym(KeySymbol const & keysym,
-		key_modifier::state state)
+void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 {
 	LYXERR(Debug::KEY) << "KeySym is " << keysym.getSymbolName() << endl;
 
@@ -323,7 +322,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym,
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
-	// Mostly, meta_fake_bit = key_modifier::none. RVDK_PATCH_5.
+	// Mostly, meta_fake_bit = NoModifier. RVDK_PATCH_5.
 	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
 		// remove Caps Lock and Mod2 as a modifiers
 		func = keyseq.addkey(keysym, (state | meta_fake_bit));
@@ -333,12 +332,11 @@ void LyXFunc::processKeySym(KeySymbol const & keysym,
 	}
 
 	// Dont remove this unless you know what you are doing.
-	meta_fake_bit = key_modifier::none;
+	meta_fake_bit = NoModifier;
 
 	// Can this happen now ?
-	if (func.action == LFUN_NOACTION) {
+	if (func.action == LFUN_NOACTION)
 		func = FuncRequest(LFUN_COMMAND_PREFIX);
-	}
 
 	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 	       << " Key [action="
@@ -350,17 +348,15 @@ void LyXFunc::processKeySym(KeySymbol const & keysym,
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)
 
-	if (keyseq.length() > 1) {
+	if (keyseq.length() > 1)
 		lyx_view_->message(keyseq.print(true));
-	}
 
 
 	// Maybe user can only reach the key via holding down shift.
 	// Let's see. But only if shift is the only modifier
-	if (func.action == LFUN_UNKNOWN_ACTION &&
-	    state == key_modifier::shift) {
+	if (func.action == LFUN_UNKNOWN_ACTION && state == ShiftModifier) {
 		LYXERR(Debug::KEY) << "Trying without shift" << endl;
-		func = keyseq.addkey(keysym, key_modifier::none);
+		func = keyseq.addkey(keysym, NoModifier);
 		LYXERR(Debug::KEY) << "Action now " << func.action << endl;
 	}
 
@@ -894,7 +890,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_CANCEL:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 			keyseq.reset();
-			meta_fake_bit = key_modifier::none;
+			meta_fake_bit = NoModifier;
 			if (lyx_view_->buffer())
 				// cancel any selection
 				dispatch(FuncRequest(LFUN_MARK_OFF));
@@ -902,18 +898,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_META_PREFIX:
-			meta_fake_bit = key_modifier::alt;
+			meta_fake_bit = AltModifier;
 			setMessage(keyseq.print(true));
 			break;
 
-		case LFUN_BUFFER_TOGGLE_READ_ONLY:
+		case LFUN_BUFFER_TOGGLE_READ_ONLY: {
 			BOOST_ASSERT(lyx_view_ && lyx_view_->view() && lyx_view_->buffer());
-			if (lyx_view_->buffer()->lyxvc().inUse())
-				lyx_view_->buffer()->lyxvc().toggleReadOnly();
+			Buffer * buf = lyx_view_->buffer();
+			if (buf->lyxvc().inUse())
+				buf->lyxvc().toggleReadOnly();
 			else
-				lyx_view_->buffer()->setReadonly(
-					!lyx_view_->buffer()->isReadonly());
+				buf->setReadonly(!lyx_view_->buffer()->isReadonly());
 			break;
+		}
 
 		// --- Menus -----------------------------------------------
 		case LFUN_BUFFER_NEW:
@@ -2312,7 +2309,7 @@ BufferView * LyXFunc::view() const
 
 bool LyXFunc::wasMetaKey() const
 {
-	return (meta_fake_bit != key_modifier::none);
+	return (meta_fake_bit != NoModifier);
 }
 
 

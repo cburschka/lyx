@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-#include "frontends/KeySymbol.h"
-
 #include "KeySymbol.h"
 
 #include "qlkey.h"
@@ -43,9 +41,7 @@ using lyx::support::contains;
 using lyx::support::getEnv;
 
 
-namespace {
-
-char encode(string const & encoding, QString const & str)
+static char encode(string const & encoding, QString const & str)
 {
 	typedef map<string, QTextCodec *> EncodingMap;
 	EncodingMap encoding_map;
@@ -76,8 +72,6 @@ char encode(string const & encoding, QString const & str)
 
 	return codec->fromUnicode(str).data()[0];
 }
-
-} // anon namespace
 
 
 void setKeySymbol(KeySymbol * sym, QKeyEvent * ev)
@@ -152,16 +146,16 @@ char_type KeySymbol::getUCSEncoded() const
 }
 
 
-docstring const KeySymbol::print(key_modifier::state mod, bool forgui) const
+docstring const KeySymbol::print(KeyModifier mod, bool forgui) const
 {
 	int tmpkey = key_;
 
-	if (mod & key_modifier::shift)
-		tmpkey += Qt::SHIFT;
-	if (mod & key_modifier::ctrl)
-		tmpkey += Qt::CTRL;
-	if (mod & key_modifier::alt)
-		tmpkey += Qt::ALT;
+	if (mod & ShiftModifier)
+		tmpkey += Qt::ShiftModifier;
+	if (mod & ControlModifier)
+		tmpkey += Qt::ControlModifier;
+	if (mod & AltModifier)
+		tmpkey += Qt::AltModifier;
 
 	QKeySequence seq(tmpkey);
 
@@ -190,15 +184,15 @@ bool KeySymbol::operator==(KeySymbol const & ks) const
 }
 
 
-key_modifier::state q_key_state(Qt::KeyboardModifiers state)
+KeyModifier q_key_state(Qt::KeyboardModifiers state)
 {
-	key_modifier::state k = key_modifier::none;
+	KeyModifier k = NoModifier;
 	if (state & Qt::ControlModifier)
-		k |= key_modifier::ctrl;
+		k |= ControlModifier;
 	if (state & Qt::ShiftModifier)
-		k |= key_modifier::shift;
+		k |= ShiftModifier;
 	if (state & Qt::AltModifier || state & Qt::MetaModifier)
-		k |= key_modifier::alt;
+		k |= AltModifier;
 	return k;
 }
 

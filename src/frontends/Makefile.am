@@ -25,6 +25,7 @@ liblyxfrontends_la_SOURCES = \
 	FileDialog.h \
 	FontLoader.h \
 	FontMetrics.h \
+	KeyModifier.h \
 	KeySymbol.h \
 	LyXView.cpp \
 	LyXView.h \
@@ -37,5 +38,4 @@ liblyxfrontends_la_SOURCES = \
 	WorkArea.h \
 	WorkAreaManager.cpp \
 	WorkAreaManager.h \
-	key_state.h \
 	mouse_state.h

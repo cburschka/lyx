@@ -750,7 +750,7 @@ bool GuiViewBase::event(QEvent * e)
 		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
 			KeySymbol sym;
 			setKeySymbol(&sym, ke);
-			currentWorkArea()->processKeySym(sym, key_modifier::none);
+			currentWorkArea()->processKeySym(sym, NoModifier);
 			e->accept();
 			return true;
 		}

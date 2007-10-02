@@ -10,10 +10,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef KB_SEQUENCE_H
-#define KB_SEQUENCE_H
+#ifndef KEYSEQUENCE_H
+#define KEYSEQUENCE_H
 
-#include "frontends/key_state.h"
+#include "frontends/KeyModifier.h"
 #include "frontends/KeySymbol.h"
 
 #include <string>
@@ -45,9 +45,8 @@ public:
 	 * @param nmod which modifiers to mask out for equality test
 	 * @return the action matching this key sequence or LFUN_UNKNOWN_ACTION
 	 */
-	FuncRequest const &
-	addkey(KeySymbol const & keysym, key_modifier::state mod,
-	       key_modifier::state nmod = key_modifier::none);
+	FuncRequest const & addkey(KeySymbol const & keysym, KeyModifier mod,
+	       KeyModifier nmod = NoModifier);
 
 	/**
 	 * Add a sequence of keys from a string to the sequence
@@ -105,11 +104,10 @@ private:
 	 */
 	Sequence sequence;
 
-	typedef std::pair<key_modifier::state, key_modifier::state>
-		modifier_pair;
+	typedef std::pair<KeyModifier, KeyModifier> ModifierPair;
 
 	/// modifiers for keys in the sequence
-	std::vector<modifier_pair> modifiers;
+	std::vector<ModifierPair> modifiers;
 
 	/// is keysequence deleted ?
 	bool deleted_;

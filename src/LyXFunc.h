@@ -60,7 +60,7 @@ public:
 	docstring const viewStatusMessage();
 
 	///
-	void processKeySym(KeySymbol const & key, key_modifier::state state);
+	void processKeySym(KeySymbol const & key, KeyModifier state);
 
 	///
 	FuncStatus getStatus(FuncRequest const & action) const;
@@ -99,7 +99,7 @@ private:
 	///
 	KeySequence cancel_meta_seq;
 	///
-	key_modifier::state meta_fake_bit;
+	KeyModifier meta_fake_bit;
 
 	/// Error status, only Dispatch can change this flag
 	mutable bool errorstat;

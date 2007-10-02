@@ -23,7 +23,7 @@ namespace lyx {
 void setKeySymbol(KeySymbol * sym, QKeyEvent * ev);
 
 /// return the LyX key state from Qt's
-key_modifier::state q_key_state(Qt::KeyboardModifiers state);
+KeyModifier q_key_state(Qt::KeyboardModifiers state);
 
 } // namespace lyx
 

@@ -27,7 +27,7 @@ using std::string;
 namespace lyx {
 
 FuncRequest const & KeySequence::addkey(KeySymbol const & key,
-	key_modifier::state mod, key_modifier::state nmod)
+	KeyModifier mod, KeyModifier nmod)
 {
 	// adding a key to a deleted sequence
 	// starts a new sequence
@@ -55,8 +55,8 @@ size_t KeySequence::parse(string const & s)
 		return 1;
 
 	size_t i = 0;
-	key_modifier::state mod = key_modifier::none;
-	key_modifier::state nmod = key_modifier::none;
+	KeyModifier mod = NoModifier;
+	KeyModifier nmod = NoModifier;
 
 	while (i < s.length()) {
 		if (s[i] == ' ')
@@ -67,15 +67,15 @@ size_t KeySequence::parse(string const & s)
 		if (i + 1 < s.length() && s[i + 1] == '-') {
 			switch (s[i]) {
 			case 's': case 'S':
-				mod |= key_modifier::shift;
+				mod |= ShiftModifier;
 				i += 2;
 				continue;
 			case 'c': case 'C':
-				mod |= key_modifier::ctrl;
+				mod |= ControlModifier;
 				i += 2;
 				continue;
 			case 'm': case 'M':
-				mod |= key_modifier::alt;
+				mod |= AltModifier;
 				i += 2;
 				continue;
 			default:
@@ -85,15 +85,15 @@ size_t KeySequence::parse(string const & s)
 			   && s[i + 2] == '-') {
 			switch (s[i + 1]) {
 			case 's': case 'S':
-				nmod |= key_modifier::shift;
+				nmod |= ShiftModifier;
 				i += 3;
 				continue;
 			case 'c': case 'C':
-				nmod |= key_modifier::ctrl;
+				nmod |= ControlModifier;
 				i += 3;
 				continue;
 			case 'm': case 'M':
-				nmod |= key_modifier::alt;
+				nmod |= AltModifier;
 				i += 3;
 				continue;
 			default:
@@ -114,7 +114,7 @@ size_t KeySequence::parse(string const & s)
 			i = j;
 
 			addkey(key, mod, nmod);
-			mod = key_modifier::none;
+			mod = NoModifier;
 		}
 	}
 

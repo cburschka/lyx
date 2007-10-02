@@ -12,9 +12,7 @@
 #ifndef KEYSYMBOL_H
 #define KEYSYMBOL_H
 
-#include <string>
-
-#include "key_state.h"
+#include "KeyModifier.h"
 
 #include "support/docstring.h"
 
@@ -58,7 +56,7 @@ public:
 	 * Use the native UI format when \c forgui is true.
 	 * i.e. (translated and with special characters for Mac OS X)
 	 */
-	docstring const print(key_modifier::state mod, bool forgui) const;
+	docstring const print(KeyModifier mod, bool forgui) const;
 
 	///
 	int key() const { return key_; }

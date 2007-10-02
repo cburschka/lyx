@@ -163,18 +163,18 @@ void WorkArea::redraw()
 }
 
 
-void WorkArea::processKeySym(KeySymbol const & key, key_modifier::state state)
+void WorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 {
 	// In order to avoid bad surprise in the middle of an operation, we better stop
 	// the blinking cursor.
 	stopBlinkingCursor();
 
 	theLyXFunc().setLyXView(lyx_view_);
-	theLyXFunc().processKeySym(key, state);
+	theLyXFunc().processKeySym(key, mod);
 }
 
 
-void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
+void WorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 {
 	// Handle drag&drop
 	if (cmd0.action == LFUN_FILE_OPEN) {
@@ -187,9 +187,9 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 	FuncRequest cmd;
 
 	if (cmd0.action == LFUN_MOUSE_PRESS) {
-		if (k == key_modifier::shift)
+		if (mod == ShiftModifier)
 			cmd = FuncRequest(cmd0, "region-select");
-		else if (k == key_modifier::ctrl)
+		else if (mod == ControlModifier)
 			cmd = FuncRequest(cmd0, "paragraph-select");
 		else
 			cmd = cmd0;
