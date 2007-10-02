@@ -68,6 +68,7 @@
 #include "support/convert.h"
 
 #include <boost/current_function.hpp>
+#include <boost/next_prior.hpp>
 
 #include <sstream>
 

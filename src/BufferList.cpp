@@ -330,7 +330,9 @@ void BufferList::emergencyWrite(Buffer * buf)
 {
 	// Use ::assert to avoid a loop, BOOST_ASSERT ends up calling ::assert
 	// compare with 0 to avoid pointer/interger comparison
-	assert(buf != 0);
+	// ::assert(buf != 0);
+	if (!buf)
+		return;
 
 	// No need to save if the buffer has not changed.
 	if (buf->isClean())

@@ -1281,7 +1281,8 @@ Row const & TextMetrics::getRowNearY(int y, pit_type pit) const
 	int yy = pm.position() - pm.ascent();
 	BOOST_ASSERT(!pm.rows().empty());
 	RowList::const_iterator rit = pm.rows().begin();
-	RowList::const_iterator const rlast = boost::prior(pm.rows().end());
+	RowList::const_iterator rlast = pm.rows().end();
+	--rlast;
 	for (; rit != rlast; yy += rit->height(), ++rit)
 		if (yy + rit->height() > y)
 			break;

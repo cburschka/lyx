@@ -23,9 +23,7 @@
 
 #include "support/types.h"
 
-#include <boost/tuple/tuple.hpp>
 #include <boost/noncopyable.hpp>
-#include <boost/signal.hpp>
 
 #include <utility>
 #include <string>
@@ -36,6 +34,7 @@ namespace lyx {
 namespace support { class FileName; }
 
 namespace frontend { class Painter; }
+namespace frontend { class GuiBufferViewDelegate; }
 
 class Buffer;
 class Change;
@@ -89,7 +88,7 @@ class BufferView : boost::noncopyable {
 public:
 	///
 	BufferView(Buffer & buffer);
-
+	///
 	~BufferView();
 
 	/// return the buffer being viewed.
@@ -234,24 +233,28 @@ public:
 	///
 	Intl const & getIntl() const { return *intl_.get(); }
 
+	//
+	// Messages to the GUI
+	//
 	/// This signal is emitted when some message shows up.
-	boost::signal<void(docstring)> message;
+	void message(docstring const & msg);
 
 	/// This signal is emitted when some dialog needs to be shown.
-	boost::signal<void(std::string name)> showDialog;
+	void showDialog(std::string const & name);
 
 	/// This signal is emitted when some dialog needs to be shown with
 	/// some data.
-	boost::signal<void(std::string name,
-		std::string data)> showDialogWithData;
+	void showDialogWithData(std::string const & name, std::string const & data);
 
 	/// This signal is emitted when some inset dialogs needs to be shown.
-	boost::signal<void(std::string name, std::string data,
-		Inset * inset)> showInsetDialog;
+	void showInsetDialog(std::string const & name, std::string const & data,
+		Inset * inset);
 
 	/// This signal is emitted when some dialogs needs to be updated.
-	boost::signal<void(std::string name,
-		std::string data)> updateDialog;
+	void updateDialog(std::string const & name, std::string const & data);
+
+	///
+	void setGuiDelegate(frontend::GuiBufferViewDelegate *);
 
 private:
 	// the position relative to (0, baseline) of outermost paragraph
@@ -317,6 +320,9 @@ private:
 	/// A map from a Text to the associated text metrics
 	typedef std::map<Text const *, TextMetrics> TextMetricsCache;
 	mutable TextMetricsCache text_metrics_;
+
+	// Whom to notify. Not owned, so don't delete.
+	frontend::GuiBufferViewDelegate * gui_;
 };
 
 /// some space for drawing the 'nested' markers (in pixel)

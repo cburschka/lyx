@@ -163,87 +163,35 @@ Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 
 void LyXView::connectBuffer(Buffer & buf)
 {
-	if (errorsConnection_.connected())
-		disconnectBuffer();
-
-	bufferStructureChangedConnection_ =
-		buf.getMasterBuffer()->structureChanged.connect(
-			boost::bind(&LyXView::updateToc, this));
-
-	bufferEmbeddingChangedConnection_ =
-		buf.embeddingChanged.connect(
-			boost::bind(&LyXView::updateEmbeddedFiles, this));
-
-	errorsConnection_ =
-		buf.errors.connect(
-			boost::bind(&LyXView::showErrorList, this, _1));
-
-	messageConnection_ =
-		buf.message.connect(
-			boost::bind(&LyXView::message, this, _1));
-
-	busyConnection_ =
-		buf.busy.connect(
-			boost::bind(&LyXView::busy, this, _1));
-
-	titleConnection_ =
-		buf.updateTitles.connect(
-			boost::bind(&LyXView::updateWindowTitle, this));
-
-	timerConnection_ =
-		buf.resetAutosaveTimers.connect(
-			boost::bind(&LyXView::resetAutosaveTimer, this));
-
-	readonlyConnection_ =
-		buf.readonly.connect(
-			boost::bind(&LyXView::showReadonly, this, _1));
+	buf.setGuiDelegate(this);
 }
 
 
 void LyXView::disconnectBuffer()
 {
-	errorsConnection_.disconnect();
-	bufferStructureChangedConnection_.disconnect();
-	bufferEmbeddingChangedConnection_.disconnect();
-	messageConnection_.disconnect();
-	busyConnection_.disconnect();
-	titleConnection_.disconnect();
-	timerConnection_.disconnect();
-	readonlyConnection_.disconnect();
+	if (WorkArea * work_area = currentWorkArea())
+		work_area->bufferView().setGuiDelegate(0);
 }
 
 
 void LyXView::connectBufferView(BufferView & bv)
 {
-	message_connection_ = bv.message.connect(
-			boost::bind(&LyXView::message, this, _1));
-	show_dialog_connection_ = bv.showDialog.connect(
-			boost::bind(&LyXView::showDialog, this, _1));
-	show_dialog_with_data_connection_ = bv.showDialogWithData.connect(
-			boost::bind(&LyXView::showDialogWithData, this, _1, _2));
-	show_inset_dialog_connection_ = bv.showInsetDialog.connect(
-			boost::bind(&LyXView::showInsetDialog, this, _1, _2, _3));
-	update_dialog_connection_ = bv.updateDialog.connect(
-			boost::bind(&LyXView::updateDialog, this, _1, _2));
+	bv.setGuiDelegate(this);
 }
 
 
 void LyXView::disconnectBufferView()
 {
-	message_connection_.disconnect();
-	show_dialog_connection_.disconnect();
-	show_dialog_with_data_connection_.disconnect();
-	show_inset_dialog_connection_.disconnect();
-	update_dialog_connection_.disconnect();
+	if (WorkArea * work_area = currentWorkArea())
+		work_area->bufferView().setGuiDelegate(0);
 }
 
 
 void LyXView::showErrorList(string const & error_type)
 {
 	ErrorList & el = buffer()->errorList(error_type);
-	if (!el.empty()) {
+	if (!el.empty())
 		getDialogs().show("errorlist", error_type);
-	}
 }
 
 
@@ -364,6 +312,21 @@ Buffer const * LyXView::updateInset(Inset const * inset)
 		work_area->scheduleRedraw();
 	}
 	return &work_area->bufferView().buffer();
+}
+
+
+
+void LyXView::changed()
+{
+	if (WorkArea * wa = currentWorkArea())
+		wa->redraw();
+}
+
+
+void LyXView::closing(Buffer *)
+{
+	if (WorkArea * wa = currentWorkArea())
+		removeWorkArea(wa);
 }
 
 

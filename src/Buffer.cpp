@@ -68,6 +68,7 @@
 #include "mathed/MathSupport.h"
 
 #include "frontends/alert.h"
+#include "frontends/Delegates.h"
 #include "frontends/WorkAreaManager.h"
 
 #include "graphics/Previews.h"
@@ -233,7 +234,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 
 
 Buffer::Buffer(string const & file, bool readonly)
-	: pimpl_(new Impl(*this, FileName(file), readonly))
+	: pimpl_(new Impl(*this, FileName(file), readonly)), gui_(0)
 {
 	LYXERR(Debug::INFO) << "Buffer::Buffer()" << endl;
 }
@@ -269,7 +270,7 @@ Buffer::~Buffer()
 }
 
 
-void Buffer::changed()
+void Buffer::changed() const
 {
 	if (pimpl_->wa_)
 		pimpl_->wa_->redrawAll();
@@ -1918,5 +1919,73 @@ ErrorList & Buffer::errorList(string const & type)
 	return pimpl_->errorLists[type];
 }
 
+
+void Buffer::structureChanged() const
+{
+	if (gui_)
+		gui_->structureChanged();
+}
+
+
+void Buffer::embeddingChanged() const
+{
+	if (gui_)
+		gui_->embeddingChanged();
+}
+
+
+void Buffer::errors(std::string const & err) const
+{
+	if (gui_)
+		gui_->errors(err);
+}
+
+
+void Buffer::message(docstring const & msg) const
+{
+	if (gui_)
+		gui_->message(msg);
+}
+
+
+void Buffer::busy(bool on) const
+{
+	if (gui_)
+		gui_->busy(on);
+}
+
+
+void Buffer::readonly(bool on) const
+{
+	if (gui_)
+		gui_->readonly(on);
+}
+
+
+void Buffer::updateTitles() const
+{
+	if (gui_)
+		gui_->updateTitles();
+}
+
+
+void Buffer::resetAutosaveTimers() const
+{
+	if (gui_)
+		gui_->resetAutosaveTimers();
+}
+
+
+void Buffer::closing(Buffer * buf) const
+{
+	if (gui_)
+		gui_->closing(buf);
+}
+
+
+void Buffer::setGuiDelegate(frontend::GuiBufferDelegate * gui)
+{
+	gui_ = gui;
+}
 
 } // namespace lyx

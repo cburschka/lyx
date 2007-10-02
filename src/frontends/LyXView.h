@@ -14,10 +14,9 @@
 #define LYXVIEW_H
 
 #include "frontends/Application.h"
+#include "frontends/Delegates.h"
 #include "support/docstring.h"
 
-#include <boost/signal.hpp>
-#include <boost/signals/trackable.hpp>
 #include <boost/noncopyable.hpp>
 
 #include <vector>
@@ -52,7 +51,9 @@ class WorkArea;
  * Additionally we would like to support multiple views
  * in a single LyXView.
  */
-class LyXView : public boost::signals::trackable, boost::noncopyable {
+class LyXView : boost::noncopyable,
+	public GuiBufferViewDelegate, public GuiBufferDelegate
+{
 public:
 	///
 	LyXView(int id);
@@ -177,7 +178,29 @@ public:
 	/// show the error list to the user
 	void showErrorList(std::string const &);
 
-protected:
+	
+	//
+	// GuiBufferDelegate
+	//
+	/// This function is called when the buffer is changed.
+	void changed();
+	/// This function is called if the buffer is being closed.
+	void closing(Buffer *);
+	/// This function is called when the buffer structure is changed.
+	void structureChanged() { updateToc(); }
+	/// This function is called when an embedded file is changed
+	void embeddingChanged() { updateEmbeddedFiles(); }
+	/// This function is called when some parsing error shows up.
+	void errors(std::string const & err) { showErrorList(err); }
+	/// This function is called when the buffer busy status change.
+	//void busy(bool);
+	/// This function is called when the buffer readonly status change.
+	void readonly(bool on) { showReadonly(on); }
+	/// Update window titles of all users.
+	void updateTitles() { updateWindowTitle(); }
+	/// Reset autosave timers for all users.
+	void resetAutosaveTimers() { resetAutosaveTimer(); }
+
 	/// connect to signals in the given BufferView
 	void connectBufferView(BufferView & bv);
 	/// disconnect from signals in the given BufferView
@@ -202,32 +225,6 @@ private:
 	Timeout * const autosave_timeout_;
 	/// dialogs for this view
 	Dialogs * dialogs_;
-
-	/// buffer structure changed signal connection
-	boost::signals::connection bufferStructureChangedConnection_;
-	/// embedded file change signal connection
-	boost::signals::connection bufferEmbeddingChangedConnection_;
-	/// buffer errors signal connection
-	boost::signals::connection errorsConnection_;
-	/// buffer messages signal connection
-	boost::signals::connection messageConnection_;
-	/// buffer busy status signal connection
-	boost::signals::connection busyConnection_;
-	/// buffer title changed signal connection
-	boost::signals::connection titleConnection_;
-	/// buffer reset timers signal connection
-	boost::signals::connection timerConnection_;
-	/// buffer readonly status changed signal connection
-	boost::signals::connection readonlyConnection_;
-
-	/// BufferView messages signal connection
-	//@{
-	boost::signals::connection message_connection_;
-	boost::signals::connection show_dialog_connection_;
-	boost::signals::connection show_dialog_with_data_connection_;
-	boost::signals::connection show_inset_dialog_connection_;
-	boost::signals::connection update_dialog_connection_;
-	//@}
 
 	/// Bind methods for BufferView messages signal connection
 	//@{

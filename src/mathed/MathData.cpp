@@ -29,6 +29,7 @@
 #include "frontends/Painter.h"
 
 #include <boost/assert.hpp>
+#include <boost/next_prior.hpp>
 
 
 namespace lyx {

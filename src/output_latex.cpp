@@ -31,6 +31,7 @@
 
 #include "support/lstrings.h"
 
+#include <boost/next_prior.hpp>
 
 namespace lyx {
 

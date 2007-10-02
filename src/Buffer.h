@@ -20,8 +20,6 @@
 #include "support/docstring.h"
 #include "support/docstream.h"
 
-#include <boost/signal.hpp>
-
 #include <iosfwd>
 #include <string>
 #include <utility>
@@ -54,6 +52,7 @@ class TocBackend;
 class Undo;
 
 namespace frontend {
+class GuiBufferDelegate;
 class WorkAreaManager;
 }
 
@@ -67,7 +66,7 @@ class WorkAreaManager;
  * I am not sure if the class is complete or
  * minimal, probably not.
  * \author Lars Gullik Bjønnes
-  */
+ */
 class Buffer {
 public:
 	/// What type of log will \c getLogName() return?
@@ -142,29 +141,8 @@ public:
 	/// do we have a paragraph with this id?
 	bool hasParWithID(int id) const;
 
-	/// This signal is emitted when the buffer is changed.
-	void changed();
-
 	///
 	frontend::WorkAreaManager & workAreaManager() const;
-
-	/// This signal is emitted when the buffer structure is changed.
-	boost::signal<void()> structureChanged;
-	/// This signal is emitted when an embedded file is changed
-	boost::signal<void()> embeddingChanged;
-	/// This signal is emitted when some parsing error shows up.
-	boost::signal<void(std::string)> errors;
-	/// This signal is emitted when some message shows up.
-	boost::signal<void(docstring)> message;
-	/// This signal is emitted when the buffer busy status change.
-	boost::signal<void(bool)> busy;
-	/// This signal is emitted when the buffer readonly status change.
-	boost::signal<void(bool)> readonly;
-	/// Update window titles of all users.
-	boost::signal<void()> updateTitles;
-	/// Reset autosave timers for all users.
-	boost::signal<void()> resetAutosaveTimers;
-
 
 	/** Save file.
 	    Takes care of auto-save files and backup file if requested.
@@ -410,6 +388,30 @@ public:
 	EmbeddedFiles & embeddedFiles();
 	EmbeddedFiles const & embeddedFiles() const;
 	//@}
+       
+	/// This function is called when the buffer is changed.
+	void changed() const;
+	/// This function is called if the buffer is being closed.
+	void closing(Buffer *) const;
+	/// This function is called when the buffer structure is changed.
+	void structureChanged() const;
+	/// This function is called when an embedded file is changed
+	void embeddingChanged() const;
+	/// This function is called when some parsing error shows up.
+	void errors(std::string const & err) const;
+	/// This function is called when the buffer busy status change.
+	void busy(bool on) const;
+	/// This function is called when the buffer readonly status change.
+	void readonly(bool on) const;
+	/// Update window titles of all users.
+	void updateTitles() const;
+	/// Reset autosave timers for all users.
+	void resetAutosaveTimers() const;
+	///
+	void message(docstring const & msg) const;
+
+	void setGuiDelegate(frontend::GuiBufferDelegate * gui);
+
 
 private:
 	/** Inserts a file into a document
@@ -426,6 +428,8 @@ private:
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
 	mutable std::vector<support::FileName> bibfilesCache_;
+
+	frontend::GuiBufferDelegate * gui_;
 };
 
 

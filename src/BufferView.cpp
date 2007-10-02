@@ -59,6 +59,7 @@
 #include "insets/InsetText.h"
 
 #include "frontends/alert.h"
+#include "frontends/Delegates.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -74,6 +75,7 @@
 
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
+#include <boost/next_prior.hpp>
 
 #include <functional>
 #include <vector>
@@ -339,7 +341,8 @@ BufferView::BufferView(Buffer & buf)
 	: width_(0), height_(0), buffer_(buf), wh_(0),
 	  cursor_(*this),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
-	  need_centering_(false), intl_(new Intl), last_inset_(0)
+	  need_centering_(false), intl_(new Intl), last_inset_(0),
+	  gui_(0)
 {
 	xsel_cache_.set = false;
 	intl_->initKeyMapper(lyxrc.use_kbmap);
@@ -1971,5 +1974,49 @@ void BufferView::draw(frontend::Painter & pain)
 		pain.fillRectangle(0, metrics_info_.y2, width_,
 			height_ - metrics_info_.y2, Color::bottomarea);
 }
+
+
+void BufferView::message(docstring const & msg)
+{
+	if (gui_)
+		gui_->message(msg);
+}
+
+
+void BufferView::showDialog(std::string const & name)
+{
+	if (gui_)
+		gui_->showDialog(name);
+}
+
+
+void BufferView::showDialogWithData(std::string const & name,
+	std::string const & data)
+{
+	if (gui_)
+		gui_->showDialogWithData(name, data);
+}
+
+
+void BufferView::showInsetDialog(std::string const & name,
+	std::string const & data, Inset * inset)
+{
+	if (gui_)
+		gui_->showInsetDialog(name, data, inset);
+}
+
+
+void BufferView::updateDialog(std::string const & name, std::string const & data)
+{
+	if (gui_)
+		gui_->updateDialog(name, data);
+}
+
+
+void BufferView::setGuiDelegate(frontend::GuiBufferViewDelegate * gui)
+{
+	gui_ = gui;
+}
+
 
 } // namespace lyx

@@ -31,6 +31,8 @@
 #include "support/convert.h"
 #include "support/types.h"
 
+#include <boost/next_prior.hpp>
+
 
 namespace lyx {
 

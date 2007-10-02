@@ -51,6 +51,7 @@
 
 #include <boost/current_function.hpp>
 #include <boost/tuple/tuple.hpp>
+#include <boost/next_prior.hpp>
 
 #include <string>
 

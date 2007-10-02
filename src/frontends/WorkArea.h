@@ -15,6 +15,7 @@
 #define BASE_WORKAREA_H
 
 #include "frontends/key_state.h"
+#include "frontends/Delegates.h"
 
 #include "support/Timeout.h"
 #include "support/docstring.h"
