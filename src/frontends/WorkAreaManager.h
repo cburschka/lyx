@@ -12,13 +12,19 @@
 #ifndef WORKAREA_MANAGER_H
 #define WORKAREA_MANAGER_H
 
-#include <vector>
+#include <list>
 
 namespace lyx {
 namespace frontend {
 
 class WorkArea;
 
+/// \c WorkArea Manager.
+/**
+  * This is a helper class designed to avoid signal/slot connections
+  * between a \c Buffer and the potentially multiple \c WorkArea(s)
+  * used to visualize this Buffer contents.
+  */
 class WorkAreaManager
 {
 public:
@@ -28,13 +34,16 @@ public:
 	void add(WorkArea * wa);
 
 	///
+	void remove(WorkArea * wa);
+
+	///
 	void redrawAll();
 
 	///
 	void closeAll();
 
 private:
-	std::vector<WorkArea *> work_areas_;
+	std::list<WorkArea *> work_areas_;
 };
 
 } // namespace frontend

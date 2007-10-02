@@ -276,10 +276,12 @@ void Buffer::changed()
 }
 
 
-frontend::WorkAreaManager * Buffer::workAreaManager() const
+frontend::WorkAreaManager & Buffer::workAreaManager() const
 {
-	return pimpl_->wa_;
+	BOOST_ASSERT(pimpl_->wa_);
+	return *pimpl_->wa_;
 }
+
 
 Text & Buffer::text() const
 {

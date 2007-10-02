@@ -146,7 +146,7 @@ public:
 	void changed();
 
 	///
-	frontend::WorkAreaManager * workAreaManager() const;
+	frontend::WorkAreaManager & workAreaManager() const;
 
 	/// This signal is emitted when the buffer structure is changed.
 	boost::signal<void()> structureChanged;

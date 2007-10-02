@@ -15,6 +15,8 @@
 
 #include "WorkAreaManager.h"
 
+using std::list;
+
 namespace lyx {
 namespace frontend {
 
@@ -23,16 +25,32 @@ void WorkAreaManager::add(WorkArea * wa)
 	work_areas_.push_back(wa);
 }
 
+
+void WorkAreaManager::remove(WorkArea * wa)
+{
+	work_areas_.remove(wa);
+}
+
+
 void WorkAreaManager::redrawAll()
 {
-	for (size_t i = 0; i != work_areas_.size(); ++i)
-		work_areas_[i]->redraw();
+	for (list<WorkArea *>::iterator it = work_areas_.begin();
+		it != work_areas_.end(); ) {
+		(*it)->redraw();
+		++it;
+	}
 }
+
 
 void WorkAreaManager::closeAll()
 {
-	for (size_t i = 0; i != work_areas_.size(); ++i)
-		work_areas_[i]->close();
+	for (list<WorkArea *>::iterator it = work_areas_.begin();
+		it != work_areas_.end(); ) {
+		(*it)->close();
+		if (work_areas_.empty())
+			break;
+		++it;
+	}
 }
 
 } // namespace frontend
