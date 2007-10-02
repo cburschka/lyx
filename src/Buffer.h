@@ -54,6 +54,9 @@ class TexRow;
 class TocBackend;
 class Undo;
 
+namespace frontend {
+class WorkAreaManager;
+}
 
 /** The buffer object.
  * This is the buffer object. It contains all the informations about
@@ -141,7 +144,11 @@ public:
 	bool hasParWithID(int id) const;
 
 	/// This signal is emitted when the buffer is changed.
-	boost::signal<void()> changed;
+	void changed();
+
+	///
+	frontend::WorkAreaManager * workAreaManager() const;
+
 	/// This signal is emitted when the buffer structure is changed.
 	boost::signal<void()> structureChanged;
 	/// This signal is emitted when an embedded file is changed
@@ -158,8 +165,6 @@ public:
 	boost::signal<void()> updateTitles;
 	/// Reset autosave timers for all users.
 	boost::signal<void()> resetAutosaveTimers;
-	/// This signal is emitting if the buffer is being closed.
-	boost::signal<void(Buffer *)> closing;
 
 
 	/** Save file.

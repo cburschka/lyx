@@ -35,5 +35,7 @@ liblyxfrontends_la_SOURCES = \
 	Selection.h \
 	WorkArea.cpp \
 	WorkArea.h \
+	WorkAreaManager.cpp \
+	WorkAreaManager.h \
 	key_state.h \
 	mouse_state.h

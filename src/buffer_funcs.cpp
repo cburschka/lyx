@@ -626,8 +626,8 @@ void updateLabels(Buffer const & buf, bool childonly)
 	// FIXME
 	// the embedding signal is emitted with structureChanged signal
 	// this is inaccurate so these two will be separated later.
-	cbuf.embeddedFiles().update();
-	cbuf.embeddingChanged();
+	//cbuf.embeddedFiles().update();
+	//cbuf.embeddingChanged();
 }
 
 

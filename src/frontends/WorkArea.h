@@ -19,8 +19,6 @@
 #include "support/Timeout.h"
 #include "support/docstring.h"
 
-#include <boost/signals/trackable.hpp>
-
 #undef CursorShape
 
 namespace lyx {
@@ -52,7 +50,8 @@ enum CursorShape {
  * It works in concert with the BaseScreen class to update the
  * widget view of a document.
  */
-class WorkArea : public boost::signals::trackable {
+class WorkArea
+{
 public:
 	///
 	WorkArea(Buffer & buffer, LyXView & lv);
@@ -100,6 +99,10 @@ public:
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, key_modifier::state state);
 
+	/// close this work area.
+	/// Slot for Buffer::closing signal.
+	void close();
+
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
@@ -107,9 +110,6 @@ protected:
 	void dispatch(FuncRequest const & cmd0,
 		key_modifier::state = key_modifier::none);
 
-	/// close this work area.
-	/// Slot for Buffer::closing boost signal.
-	void close();
 	///
 	void resizeBufferView();
 	/// hide the visible cursor, if it is visible
@@ -136,11 +136,6 @@ private:
 
 	///
 	Timeout cursor_timeout_;
-
-	/// buffer changed signal connection
-	boost::signals::connection bufferChangedConnection_;
-	/// buffer closing signal connection
-	boost::signals::connection bufferClosingConnection_;
 };
 
 } // namespace frontend

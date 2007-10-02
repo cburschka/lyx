@@ -68,6 +68,7 @@
 #include "mathed/MathSupport.h"
 
 #include "frontends/alert.h"
+#include "frontends/WorkAreaManager.h"
 
 #include "graphics/Previews.h"
 
@@ -206,13 +207,17 @@ public:
 	/// modified. (Used to properly enable 'File->Revert to saved', bug 4114).
 	time_t timestamp_;
 	unsigned long checksum_;
+
+	///
+	frontend::WorkAreaManager * wa_;
 };
 
 
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), file_fully_loaded(false), inset(params),
-	  toc_backend(&parent), embedded_files(&parent), timestamp_(0), checksum_(0)
+	  toc_backend(&parent), embedded_files(&parent), timestamp_(0),
+	  checksum_(0), wa_(0)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
@@ -221,6 +226,9 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	// FIXME: And now do something if temppath == string(), because we
 	// assume from now on that temppath points to a valid temp dir.
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg67406.html
+
+	if (use_gui)
+		wa_ = new frontend::WorkAreaManager;
 }
 
 
@@ -253,9 +261,24 @@ Buffer::~Buffer()
 	// Remove any previewed LaTeX snippets associated with this buffer.
 	graphics::Previews::get().removeLoader(*this);
 
-	closing(this);
+	if (pimpl_->wa_) {
+		pimpl_->wa_->closing();
+		delete pimpl_->wa_;
+	}
 }
 
+
+void Buffer::changed()
+{
+	if (pimpl_->wa_)
+		pimpl_->wa_->changed();
+}
+
+
+frontend::WorkAreaManager * Buffer::workAreaManager() const
+{
+	return pimpl_->wa_;
+}
 
 Text & Buffer::text() const
 {

@@ -27,6 +27,7 @@
 #include "frontends/Dialogs.h"
 #include "frontends/Gui.h"
 #include "frontends/WorkArea.h"
+#include "frontends/WorkAreaManager.h"
 
 #include "support/filetools.h"
 #include "support/convert.h"
@@ -858,6 +859,8 @@ WorkArea * GuiViewBase::addWorkArea(Buffer & buffer)
 		d.stack_widget_->setCurrentWidget(d.tab_widget_);
 	// Hide tabbar if there's only one tab.
 	d.tab_widget_->showBar(d.tab_widget_->count() > 1);
+	///
+	buffer.workAreaManager()->registerWorkArea(wa);
 	return wa;
 }
 

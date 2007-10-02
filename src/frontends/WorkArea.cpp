@@ -72,23 +72,12 @@ WorkArea::WorkArea(Buffer & buffer, LyXView & lv)
 	timecon = cursor_timeout_.timeout
 		.connect(boost::bind(&WorkArea::toggleCursor, this));
 
-	bufferChangedConnection_ =
-		buffer.changed.connect(
-			boost::bind(&WorkArea::redraw, this));
-
-	bufferClosingConnection_ =
-		buffer.closing.connect(
-		boost::bind(&WorkArea::close, this));
-
 	cursor_timeout_.start();
 }
 
 
 WorkArea::~WorkArea()
 {
-	bufferChangedConnection_.disconnect();
-	bufferClosingConnection_.disconnect();
-
 	delete buffer_view_;
 }
 
