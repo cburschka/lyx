@@ -53,7 +53,7 @@ DISTFILES = $(DISTFILES.common) Makevars POTFILES.in \
 $(POFILES) $(GMOFILES) \
 $(DISTFILES.extra1) $(DISTFILES.extra2) $(DISTFILES.extra3)
 
-DISTFILES.extra1 = lyx_pot.py postats.sh pocheck.pl
+DISTFILES.extra1 = lyx_pot.py postats.py pocheck.pl
 
 POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
 
@@ -413,8 +413,8 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui $(top_srcdir)/lib/ui/*.inc
 	LC_ALL=C ; export LC_ALL ; \
 	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t ui ${top_srcdir}/lib/ui/*.ui ${top_srcdir}/lib/ui/*.inc
 
-i18n.inc: $(POFILES) postats.sh
-	(cd $(srcdir) ; ./postats.sh $(POFILES)) >$@
+i18n.inc: $(POFILES) postats.py
+	(cd $(srcdir) ; python postats.py $(POFILES)) >$@
 
 external_l10n.pot: $(top_srcdir)/lib/external_templates
 	python $(srcdir)/lyx_pot.py -b $(top_srcdir) -o $@ -t external ${top_srcdir}/lib/external_templates
