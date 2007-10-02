@@ -1976,13 +1976,6 @@ void Buffer::resetAutosaveTimers() const
 }
 
 
-void Buffer::closing(Buffer * buf) const
-{
-	if (gui_)
-		gui_->closing(buf);
-}
-
-
 void Buffer::setGuiDelegate(frontend::GuiBufferDelegate * gui)
 {
 	gui_ = gui;

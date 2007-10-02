@@ -51,8 +51,6 @@ class GuiBufferDelegate
 {
 public:
 	virtual ~GuiBufferDelegate() {}
-	/// This function is called when the buffer is changed.
-	virtual void changed() = 0;
 	/// This function is called when the buffer structure is changed.
 	virtual void structureChanged() = 0;
 	/// This function is called when an embedded file is changed
@@ -69,8 +67,6 @@ public:
 	virtual void updateTitles() = 0;
 	/// Reset autosave timers for all users.
 	virtual void resetAutosaveTimers() = 0;
-	/// This signal is emitting if the buffer is being closed.
-	virtual void closing(Buffer *) = 0;
 };
 
 } // namespace frontend

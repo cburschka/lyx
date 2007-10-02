@@ -314,21 +314,5 @@ Buffer const * LyXView::updateInset(Inset const * inset)
 	return &work_area->bufferView().buffer();
 }
 
-
-
-void LyXView::changed()
-{
-	if (WorkArea * wa = currentWorkArea())
-		wa->redraw();
-}
-
-
-void LyXView::closing(Buffer *)
-{
-	if (WorkArea * wa = currentWorkArea())
-		removeWorkArea(wa);
-}
-
-
 } // namespace frontend
 } // namespace lyx

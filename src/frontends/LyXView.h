@@ -182,10 +182,6 @@ public:
 	//
 	// GuiBufferDelegate
 	//
-	/// This function is called when the buffer is changed.
-	void changed();
-	/// This function is called if the buffer is being closed.
-	void closing(Buffer *);
 	/// This function is called when the buffer structure is changed.
 	void structureChanged() { updateToc(); }
 	/// This function is called when an embedded file is changed
