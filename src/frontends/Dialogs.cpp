@@ -48,20 +48,6 @@ Dialog * Dialogs::find_or_build(string const & name)
 }
 
 
-void Dialogs::show(string const & name, string const & data)
-{
-	if (in_show_)
-		return;
-
-	in_show_ = true;
-	Dialog * dialog = find_or_build(name);
-	if (dialog)
-		dialog->showData(data);
-
-	in_show_ = false;
-}
-
-
 void Dialogs::show(string const & name, string const & data, Inset * inset)
 {
 	if (in_show_)
@@ -71,7 +57,8 @@ void Dialogs::show(string const & name, string const & data, Inset * inset)
 	Dialog * dialog = find_or_build(name);
 	if (dialog) {
 		dialog->showData(data);
-		open_insets_[name] = inset;
+		if (inset)
+			open_insets_[name] = inset;
 	}
 	in_show_ = false;
 }

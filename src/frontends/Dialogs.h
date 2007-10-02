@@ -52,30 +52,25 @@ public:
 	void hideBufferDependent() const;
 	/** Update visible, buffer-dependent dialogs
 	    If the bool is true then a buffer change has occurred
-	    else its still the same buffer.
+	    else it is still the same buffer.
 	 */
-	void updateBufferDependent(bool) const ;
-
-	/** \param name == "about" etc; an identifier used to
-	    launch a particular dialog.
-	    \param data is a string encoding of the data used to populate
-	    the dialog. Several of these dialogs do not need any data,
-	    so it defaults to string().
-	*/
-	void show(std::string const & name, std::string const & data = std::string());
+	void updateBufferDependent(bool) const;
 
 	/** \param name == "bibtex", "citation" etc; an identifier used to
 	    launch a particular dialog.
 	    \param data is a string representation of the Inset contents.
 	    It is often little more than the output from Inset::write.
 	    It is passed to, and parsed by, the frontend dialog.
-	    \param inset is _not_ passed to the frontend dialog.
+	    Several of these dialogs do not need any data,
+	    so it defaults to string().
+	    \param inset ownership is _not_ passed to the frontend dialog.
 	    It is stored internally and used by the kernel to ascertain
 	    what to do with the FuncRequest dispatched from the frontend
 	    dialog on 'Apply'; should it be used to create a new inset at
 	    the current cursor position or modify an existing, 'open' inset?
 	*/
-	void show(std::string const & name, std::string const & data, Inset * inset);
+	void show(std::string const & name,
+		std::string const & data = std::string(), Inset * inset = 0);
 
 	/** \param name == "citation", "bibtex" etc; an identifier used
 	    to update the contents of a particular dialog with \param data.
