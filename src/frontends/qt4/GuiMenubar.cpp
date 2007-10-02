@@ -96,6 +96,12 @@ GuiMenubar::GuiMenubar(LyXView * view, MenuBackend & mbe)
 }
 
 
+GuiMenubar::~GuiMenubar() {
+#ifdef Q_WS_MACX
+	delete mac_menubar_;
+#endif
+}
+
 void GuiMenubar::openByName(QString const & name)
 {
 	if (QMenu * menu = name_map_.value(name))
@@ -142,7 +148,7 @@ extern void qt_mac_set_menubar_merge(bool b);
 void GuiMenubar::macxMenuBarInit()
 {
 #ifdef Q_WS_MACX
-	mac_menubar_.reset(new QMenuBar);
+	mac_menubar_ = new QMenuBar;
 
 # if QT_VERSION >= 0x040200
 	/* Since Qt 4.2, the qt/mac menu code has special code for
@@ -198,8 +204,9 @@ void GuiMenubar::macxMenuBarInit()
 	Menu::const_iterator cit = menubackend_.specialMenu().begin();
 	Menu::const_iterator end = menubackend_.specialMenu().end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-		Action * action = new Action(*owner_, cit->label(),
-					     cit->func());
+		Action * action = new Action(*owner_, QString(), 
+					     toqstr(cit->label()),
+					     cit->func(), QString());
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);
 

@@ -34,6 +34,8 @@ class GuiMenubar : public QObject
 public:
 	GuiMenubar(LyXView *, MenuBackend &);
 
+	~GuiMenubar();
+
 	/// opens a top-level submenu given its name
 	void openByName(QString const & name);
 
