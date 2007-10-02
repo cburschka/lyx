@@ -20,7 +20,6 @@
 #include "support/docstring.h"
 #include "support/docstream.h"
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
 #include <iosfwd>
@@ -422,7 +421,7 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
-	boost::scoped_ptr<Impl> const pimpl_;
+	Impl * const pimpl_;
 
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.

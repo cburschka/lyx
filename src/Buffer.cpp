@@ -265,6 +265,7 @@ Buffer::~Buffer()
 		pimpl_->wa_->closeAll();
 		delete pimpl_->wa_;
 	}
+	delete pimpl_;
 }
 
 
