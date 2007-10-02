@@ -16,6 +16,8 @@
 #ifndef GUITOOLBAR_H
 #define GUITOOLBAR_H
 
+#include "GuiCommandBuffer.h"
+
 #include "Session.h"
 
 #include <QList>
@@ -29,8 +31,6 @@ class ToolbarItem;
 
 namespace frontend {
 
-class GuiCommandBuffer;
-class GuiLayoutBox;
 class GuiViewBase;
 class Action;
 
@@ -69,8 +69,8 @@ public:
 	/// Refresh the contents of the bar.
 	void updateContents();
 	GuiLayoutBox * layout() const { return layout_; }
-	/// Set the focus on the command buffer, if any.
-	void focusCommandBuffer();
+	///
+	GuiCommandBuffer * commandBuffer() { return command_buffer_; }
 
 Q_SIGNALS:
 	void updated();

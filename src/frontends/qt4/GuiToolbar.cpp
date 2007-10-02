@@ -171,13 +171,6 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiViewBase & owner)
 }
 
 
-void GuiToolbar::focusCommandBuffer()
-{
-	if (command_buffer_)
-		command_buffer_->setFocus();
-}
-
-
 Action * GuiToolbar::addItem(ToolbarItem const & item)
 {
 	Action * act = new Action(owner_,

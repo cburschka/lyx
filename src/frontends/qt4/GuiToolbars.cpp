@@ -362,5 +362,25 @@ void GuiToolbars::updateIcons()
 		layout_->setEnabled(enable);
 }
 
+
+void GuiToolbars::showCommandBuffer(bool show_it)
+{
+	ToolbarsMap::const_iterator it = toolbars_.begin();
+	ToolbarsMap::const_iterator const end = toolbars_.end();
+	for (; it != end; ++it) {
+		GuiCommandBuffer * cb = it->second->commandBuffer();
+		if (!cb)
+			continue;
+		if (!show_it) {
+			it->second->hide();
+			return;
+		}
+		if (!it->second->isVisible())
+			it->second->show();
+		cb->setFocus();
+		return;
+	}
+}
+
 } // namespace frontend
 } // namespace lyx

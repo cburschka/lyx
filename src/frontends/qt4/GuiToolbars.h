@@ -69,6 +69,10 @@ public:
 	/// Erase the layout list.
 	void clearLayoutList();
 
+	/// Show or hide the command buffer.
+	void showCommandBuffer(bool show_it);
+
+
 private:
 	/// Add a new toolbar. if newline==true, start from a new line
 	void add(ToolbarInfo const & tbinfo, bool newline);

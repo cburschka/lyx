@@ -938,11 +938,7 @@ void GuiViewBase::removeWorkArea(WorkArea * work_area)
 
 void GuiViewBase::showMiniBuffer(bool visible)
 {
-	d.toolbars_->display("minibuffer", visible);
-
-	// FIXME: do something about command buffer focus.
-//	if (t)
-//		t->focusCommandBuffer();
+	d.toolbars_->showCommandBuffer(visible);
 }
 
 
