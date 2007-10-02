@@ -262,7 +262,7 @@ Buffer * BufferList::last()
 }
 
 
-Buffer * BufferList::getBuffer(unsigned int const choice)
+Buffer * BufferList::getBuffer(unsigned int choice)
 {
 	if (choice >= bstore.size())
 		return 0;

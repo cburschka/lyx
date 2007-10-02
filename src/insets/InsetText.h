@@ -18,9 +18,6 @@
 
 #include "support/types.h"
 
-#include "frontends/mouse_state.h"
-
-
 namespace lyx {
 
 class Buffer;
