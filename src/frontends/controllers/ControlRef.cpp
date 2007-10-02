@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlRef.h"
 
 #include "Buffer.h"
@@ -18,6 +17,8 @@
 #include "FuncRequest.h"
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
+
+#include <boost/filesystem/operations.hpp>
 
 using lyx::docstring;
 
