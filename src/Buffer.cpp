@@ -262,7 +262,7 @@ Buffer::~Buffer()
 	graphics::Previews::get().removeLoader(*this);
 
 	if (pimpl_->wa_) {
-		pimpl_->wa_->closing();
+		pimpl_->wa_->closeAll();
 		delete pimpl_->wa_;
 	}
 }
@@ -271,7 +271,7 @@ Buffer::~Buffer()
 void Buffer::changed()
 {
 	if (pimpl_->wa_)
-		pimpl_->wa_->changed();
+		pimpl_->wa_->redrawAll();
 }
 
 

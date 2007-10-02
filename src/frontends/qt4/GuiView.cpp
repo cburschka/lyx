@@ -860,7 +860,7 @@ WorkArea * GuiViewBase::addWorkArea(Buffer & buffer)
 	// Hide tabbar if there's only one tab.
 	d.tab_widget_->showBar(d.tab_widget_->count() > 1);
 	///
-	buffer.workAreaManager()->registerWorkArea(wa);
+	buffer.workAreaManager()->add(wa);
 	return wa;
 }
 

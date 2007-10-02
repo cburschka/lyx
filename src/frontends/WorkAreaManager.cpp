@@ -18,18 +18,18 @@
 namespace lyx {
 namespace frontend {
 
-void WorkAreaManager::registerWorkArea(WorkArea * wa)
+void WorkAreaManager::add(WorkArea * wa)
 {
 	work_areas_.push_back(wa);
 }
 
-void WorkAreaManager::changed()
+void WorkAreaManager::redrawAll()
 {
 	for (size_t i = 0; i != work_areas_.size(); ++i)
 		work_areas_[i]->redraw();
 }
 
-void WorkAreaManager::closing()
+void WorkAreaManager::closeAll()
 {
 	for (size_t i = 0; i != work_areas_.size(); ++i)
 		work_areas_[i]->close();

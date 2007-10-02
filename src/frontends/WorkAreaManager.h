@@ -25,13 +25,13 @@ public:
 	WorkAreaManager() {}
 
 	///
-	void registerWorkArea(WorkArea * wa);
+	void add(WorkArea * wa);
 
 	///
-	void changed();
+	void redrawAll();
 
 	///
-	void closing();
+	void closeAll();
 
 private:
 	std::vector<WorkArea *> work_areas_;
