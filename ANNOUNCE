@@ -1,15 +1,13 @@
-Public release of LyX version 1.5.1
+Public release of LyX version 1.5.2
 ===================================
 
-We are pleased to announce the release of LyX 1.5.1. It includes a
-few bug fixes and, more importantly, fixes a bug where files produced
-with the Document>Compressed option on would be malformed on windows.
-It was therefore decided to revert to the trusty 1.4.x code in this
-area and release 1.5.1 sooner than anticipated.
+We are pleased to announce the release of LyX 1.5.2. This is a maintenance
+release that focuses on improving the stability. We have fixed numerous
+crashes, performance problems, and other bugs. Furthermore, the documentation
+has been revised. It covers all new features of the 1.5.x series now.
 
-All 1.5.0 users are urged to upgrade to 1.5.1.
-
-See the file RELEASE-NOTES for some known problems in this release.
+A detailed list of changes is appended below. The file RELEASE-NOTES lists
+some remaining known problems.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -35,37 +33,34 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.5.1 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.5.2 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.1.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.1.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.1.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.1.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.2.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.2.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.2.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.2.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will
 also host the .bz2 versions):
 
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.1.tar.gz
-	http://lyx.cybermirror.org/stable/lyx-1.5.1.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.1.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.1.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/lyx-1.5.1.tar.gz
-        http://lyx.mirror.fr/stable/lyx-1.5.1.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.2.tar.gz
+	http://lyx.cybermirror.org/stable/lyx-1.5.2.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.2.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.2.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/lyx-1.5.2.tar.gz
+        http://lyx.mirror.fr/stable/lyx-1.5.2.tar.gz
 
-Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
+Prebuilt binaries (rpms for Linux distributions, Mac OS X and Windows
 installers) should soon be available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.5.1/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.5.2/
 
-If you already have the LyX 1.4.4 sources, you may want to apply one
+If you already have the LyX 1.5.1 sources, you may want to apply one
 of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.5.1.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.5.1.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.5.2.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.5.2.bz2
 
-Note that this patch will not produce valid LyX/Mac sources, since
-some binary files have been added for this release.
-
-If you find what you think is a bug in LyX 1.5.1, you may either
+If you find what you think is a bug in LyX 1.5.2, you may either
 e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
 or open a bug report at http://bugzilla.lyx.org
 
@@ -77,75 +72,219 @@ Enjoy!
 
 The LyX team.
 
-What's new in version 1.5.1?
+What's new in version 1.5.2?
 ----------------------------
-
 
 ** Updates:
 ***********
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Add template for the APA class (bug 2390).
+- The LyX User Guide has been revised completely. It is now up to
+  date and describes all of LyX 1.5's main features (bug 3315 a.o.)
+  For a detailed changelog, see
+  http://wiki.lyx.org/LyX/DocumentationDevelopment#Status
 
+- The LyX User Guide has been translated into Spanish.
+
+- The Embedded Objects manual contains two new sections:
+  * longtable alignment.
+  * scaled and rotated material.
+
+- Many improvements to the translation of the user interface on the Mac.
+  In particular, LyX automatically uses the language of the interface for
+  all of its menus and for the help files. Documents strings like
+  "Chapter" are correctly translated on screen too.
+
+- New translations of the user interface into Finnish, Portuguese and
+  Simplified Chinese.
+
+- Updated Czech and Italian translations of the user interface.
+
+* USER INTERFACE
+
+- Add a pixmap cache to speed up text drawing on screen. This cache is
+  enabled on Mac and Windows platforms using Qt 4.2 or higher.
+
+- Add an optimization that avoids a full screen drawing when typing in a
+  non-wide inset.
+
+- Add a "Save all" menu entry, to save all modified files (bug 2840).
+
+- Mark modified files in the View menu with an asterisk (bug 2876).
+
+- Add a paragraph-params LFUN, used for updating paragraph parameters
+  (bug 2714).
+
+- Add a "Save all on log-out or cancel" feature (bug 1656).
+
+- Improved on screen rendering of some toolbar images.
+
+- The dialogs of "editable" insets (such as index entries, URLs or
+  citations) are now opened by the "next-inset-toggle" LFUN (bug
+  2907).
+
+- The screen label of index insets now displays their content.
+
+- Floats comes now with fixed width on screen (bug 4002).
+
+- A "Title (Plain Frame)" style has been added to the beamer layout.
+  This allows for setting a title frame without head-/footlines and
+  navigation bars (bug 3133).
+
+- The AMS document classes have undergone a major rewrite. Several
+  bugs were fixed and some new styles were added (bugs 4087, 4223).
+  Cf. http://wiki.lyx.org/Layouts/AMS for a detailed list of changes.
+
+- New LyX functions, master-buffer-view and master-buffer-update, have
+  been added, to view the master buffer associated with a given child
+  buffer. These are bound by default to C-M-t and C-M-d, for Postscript
+  and DVI, respectively, for view, and to C-M-S-t and C-M-S-d, for update.
+
+- The debug output obtained with the '-dbg painting' option has been
+  modified to be more verbose and in line with the LyX development
+  version.
 
 ** Bug fixes:
 *************
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix output of LyX files on windows when Document>Compressed is set.
-  This is a dataloss bug that was the main reason for releasing 1.5.1
-  earlier than anticipated.
+- Reconfiguration failure will no longer result in empty textclass lists.
+  Lyx now starts and asks for reconfigure if no textclass is found (bug 2829).
 
-- Get rid of annoying LaTeX error after changing the document language
-  (bug 2468).
+- Check if the .lyx file has been externally modified when a buffer is saved.
 
-- Fix a LaTeX error with caption inset in a listing inset (some
-  problems remain).
+- Fix conversion from older documents if koi8 is used as the document
+  encoding (bug 4158).
 
-- Fix crashes relating to command line export (bugs 4077 and 4086).
+- Handle array column specifiers @{decl.}, p{width} and the extensions by
+  array.sty in mathed (bug 4132).
 
-- Fix export to FAT32 under Linux (bug 4094).
+- Detect (pdf)tex's file:line:error style messages that are used by some
+  distributions and that caused LyX to ignore LaTeX errors (bug 4222).
+
+- Fix LaTeX error with captions in Program Listings (bug 4182).
 
 * USER INTERFACE:
 
-- Fix crash with TOC and child documents (bug 4096).
+- Fix a crash when closing a LyX window with document tabs (bug 4123).
 
-- Fix redrawing artefacts when switching tabs (bug 3969).
+- Fix a crash when clicking in a tabular cell and the "delete empty paragraph"
+  mechanism triggers (bug 4133).
 
-- Fix pasting a selection from the same LyX document with middle mouse
-  button.
+- Fix a crash when using the LFUN 'buffer-write-as' with an argument
+  that is not an absolute path (bug 4135).
 
-- Fix pasting of a selection from other applications (X11 only).
+- Fix a crash when a user removes the underlying figure of a graphic inset
+  that has been copied and pasted (bug 4108).
 
-- Coherent behaviour when inserting over a selection: now the selection
-  is always replaced by the insertion (bug 672).
+- Fix a crash when inserting a float.
 
-- When inserting an URL over selected text, insert the selected
-  text in the URL inset (bug 683).
+- Fix a crash on quitting if graphics were selected (bug 4178).
 
-- Don't allow invalid listings parameters to be passed when
-  updating other controls in listings-related dialogs (bug 4053).
+- Fix a crash when a user removes a formula when its preview is being
+  generated (gcc 3 only).
 
-- Fix bug with math-matrix dialog always producing 1x1 matrices on
-  platforms lacking proper support for wide characters (bug 4076).
+- Fix a crash when using the down arrow in an empty math subscript (bug 4117).
 
-- Sort colors in the Preferences dialog (bug 2571).
+- Fix a crash when logging out from within the Gnome desktop (bug 1656).
 
-- Fix bug where using pdfsync marks the document 'changed' (bug 4023).
+- Fix a crash when exporting a file with graphics to LaTeX on Windows
+  (bug 4243).
+
+- Fix a crash with View>PDF on the Mac. This occurred only when LyX was
+  compiled with gcc's stdlib-debug option (bug 4014).
+
+- Fix performance problem related to Clipboard and Selection on X11
+  platforms (bug 4045).
+
+- Only update the toolbars that are actually visible. This improves LyX's
+  performance on editing.
+
+- Further improve performance on editing by reducing the update calls of the
+  math panel toolbar to the bare essentials.
+
+- Fix the loading of non-LyX child documents with relative path names. Change
+  'Load' to 'Edit' in the child document dialog (bugs 4107 and 4111).
+
+- Allow roman numerals beyond 20 (bug 4112).
+
+- Render malformed tables correctly (bug 580).
+
+- Enable File>Revert when the file is externally modified, and rename
+  this menu item to "File>Revert to saved" (bugs 3766 and 4114).
+
+- Update the screen when leaving a 'wide' inset using the up- and down-arrows.
+
+- Fix a problem where the Delete button in the citation dialog was erroneously
+  disabled (bug 4121).
+
+- Reset the current cursor font when going to a bookmark.
+
+- Fix an icorrect handling of spaces in change tracking mode (bug 3961).
+
+- Fix a failure to close the window when a modified document is saved
+  (bug 4170).
+
+- Highlight search text in the find dialog (bug 3999).
+
+- Fix the deletion of paragraphs with leading spaces (bug 3600).
+
+- Fix the loss of start-of-appendix information when creating/deleting an
+  empty paragraph (bug 4212).
+
+- "Revert" and "Save As" are no longer treated as external modifications
+  of the document (bug 4193).
+
+- Fix a bug where the "longest label" widget in the paragraph dialog was
+  disabled after its content was deleted (bug 4127).
+
+- Fix a bug where the cursor was largely off-screen on document opening
+  (bug 3427).
+
+- Fix a bug where fixed width insets were not honoured correctly (bug 4029).
+
+- Fix a bug where the current document was closed unexpectedly when
+  typing a space after switching between 2 documents with the file->Open
+  dialog (bug 4211).
+
+- Fix bug in box dialog where the inner box was empty when switching
+  the box decoration (bug 4233).
 
 
 * DOCUMENTATION
 
+- Fix installation links for Hebrew (bug 4165).
+
+- Correct the description of list of algorithms in the Embedded Objects manual.
+
+- Fix the appearance of the word "LyX" in PDF-bookmarks in the
+  Introduction manual (bug 2435).
+
+- removed description of the program "reLyX" that was replaced in LyX 1.4 by
+  "tex2lyx" (bug 2766)
+
 
 * BUILD/INSTALLATION:
 
-- scons now accepts SConstruct file from top source directory, which
-  can be a symbolic link to development/scons/SConstruct.
+- Upgrade to boost 1.34.1.
 
-- LyX configuration script now checks for htlatex as an OpenDocument
-  converter, since some platforms have htlatex but not oolatex. It also
-  checks for oowriter as an OpenDocument viewer and editor.
+- Upgrade to gettext 0.14.6.
 
-- Fix building on Mac OS X when pkg-config is installed.
+- On all supported platforms, allow Qt 4.2 or higher to use the math fonts in
+  <sysdir>/fonts without the need to install them.
+
+- Make configure.py remove a log file generated by MikTeX and copy the file
+  chkconfig.ltx to the user dir using default permissions (thus avoiding a
+  bug on Cygwin where python doesn't copy ACLs associated with a file).
+
+- Clarify an error message for --without-included-boost.
+
+- Better alignment of the version info output.
+
+- Remove the /TP (force to use C++ compiler) option from scons/msvc.
+
+- Allow the use of a snapshot version of scons.
+
+- Fix usage display for lib/doc_toc.py (bug 3798).
