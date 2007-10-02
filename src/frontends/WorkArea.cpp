@@ -18,6 +18,7 @@
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/LyXView.h"
+#include "frontends/WorkAreaManager.h"
 
 #include "BufferView.h"
 #include "Buffer.h"
@@ -68,6 +69,7 @@ WorkArea::WorkArea(Buffer & buffer, LyXView & lv)
 	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
 	cursor_visible_(false), cursor_timeout_(400)
 {
+	buffer.workAreaManager().add(this);
 	// Setup the signals
 	timecon = cursor_timeout_.timeout
 		.connect(boost::bind(&WorkArea::toggleCursor, this));
@@ -78,6 +80,7 @@ WorkArea::WorkArea(Buffer & buffer, LyXView & lv)
 
 WorkArea::~WorkArea()
 {
+	buffer_view_->buffer().workAreaManager().remove(this);
 	delete buffer_view_;
 }
 

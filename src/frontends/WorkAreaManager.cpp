@@ -18,6 +18,9 @@
 using std::list;
 
 namespace lyx {
+
+extern bool quitting;
+
 namespace frontend {
 
 void WorkAreaManager::add(WorkArea * wa)
@@ -44,13 +47,12 @@ void WorkAreaManager::redrawAll()
 
 void WorkAreaManager::closeAll()
 {
-	for (list<WorkArea *>::iterator it = work_areas_.begin();
-		it != work_areas_.end(); ) {
-		(*it)->close();
-		if (work_areas_.empty())
-			break;
-		++it;
-	}
+	if (quitting)
+		return;
+
+	while (!work_areas_.empty())
+		// WorkArea is de-registering itself.
+		(*work_areas_.begin())->close();
 }
 
 } // namespace frontend

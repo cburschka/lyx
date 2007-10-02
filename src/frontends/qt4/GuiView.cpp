@@ -27,7 +27,6 @@
 #include "frontends/Dialogs.h"
 #include "frontends/Gui.h"
 #include "frontends/WorkArea.h"
-#include "frontends/WorkAreaManager.h"
 
 #include "support/filetools.h"
 #include "support/convert.h"
@@ -298,8 +297,6 @@ void GuiViewBase::close()
 	for (int i = 0; i != d.tab_widget_->count(); ++i) {
 		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(i));
 		BOOST_ASSERT(wa);
-		Buffer & buffer = wa->bufferView().buffer();
-		buffer.workAreaManager().remove(wa);
 		d.tab_widget_->removeTab(i);
 		delete wa;
 	}
@@ -867,8 +864,6 @@ WorkArea * GuiViewBase::addWorkArea(Buffer & buffer)
 		d.stack_widget_->setCurrentWidget(d.tab_widget_);
 	// Hide tabbar if there's only one tab.
 	d.tab_widget_->showBar(d.tab_widget_->count() > 1);
-	///
-	buffer.workAreaManager().add(wa);
 	return wa;
 }
 
@@ -918,9 +913,6 @@ void GuiViewBase::removeWorkArea(WorkArea * work_area)
 		disconnectBuffer();
 		disconnectBufferView();
 	}
-
-	Buffer & buffer = work_area->bufferView().buffer();
-	buffer.workAreaManager().remove(work_area);
 
 	// removing a work area often results from closing a file so
 	// update the toc in any case.
