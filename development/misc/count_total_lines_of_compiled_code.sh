@@ -16,6 +16,7 @@ s=0
 for i in `find ../.. -name *.cpp` ; do
 	#echo $i
 	#echo "g++ $inc -DQT_NO_STL -E $i"
+	g++ $inc -DQT_NO_STL -E $i > tmp/`basename $i`
 	l=`g++ $inc -DQT_NO_STL -E $i | wc -l`
 	s=$[s + l]
 	printf "%10d  %-40s\n" $l $i

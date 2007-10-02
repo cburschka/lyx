@@ -8,7 +8,7 @@ EXTRA_DIST = pch.h
 
 BUILT_SOURCES = $(PCH_FILE)
 
-pkglib_LTLIBRARIES = liblyxfrontends.la
+noinst_LTLIBRARIES = liblyxfrontends.la
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/..  $(BOOST_INCLUDES)
 

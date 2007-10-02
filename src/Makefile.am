@@ -20,7 +20,7 @@ EXTRA_DIST = config.h.in \
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS)
 
-pkglib_LTLIBRARIES = liblyxcore.la
+noinst_LTLIBRARIES = liblyxcore.la
 bin_PROGRAMS = lyx
 
 lyx_LDADD = \
@@ -277,7 +277,7 @@ liblyxcore_la_SOURCES = \
 	VSpace.h
 ############################### Graphics ##############################
 
-pkglib_LTLIBRARIES += liblyxgraphics.la
+noinst_LTLIBRARIES += liblyxgraphics.la
 
 liblyxgraphics_la_SOURCES = \
 	graphics/GraphicsCache.h \
@@ -308,7 +308,7 @@ liblyxgraphics_la_SOURCES = \
 
 EXTRA_DIST += mathed/InsetFormulaMacro.cpp
 
-pkglib_LTLIBRARIES += liblyxmathed.la
+noinst_LTLIBRARIES += liblyxmathed.la
 
 liblyxmathed_la_SOURCES = \
 	mathed/InsetMathAMSArray.cpp \
@@ -458,7 +458,7 @@ liblyxmathed_la_SOURCES = \
 
 ############################### Insets  ##############################
 
-pkglib_LTLIBRARIES += liblyxinsets.la
+noinst_LTLIBRARIES += liblyxinsets.la
 
 EXTRA_DIST += \
 	insets/InsetTheorem.cpp \

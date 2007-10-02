@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-pkglib_LTLIBRARIES = liblyxboost.la
+noinst_LTLIBRARIES = liblyxboost.la
 
 # Using precompiled headers makes compilation >10% slower
 #EXTRA_DIST = pch.h

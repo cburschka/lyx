@@ -4,7 +4,7 @@ AM_CPPFLAGS += -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
 EXTRA_DIST = tests/regfiles/biblio
 
-pkglib_LTLIBRARIES = liblyxcontrollers.la
+noinst_LTLIBRARIES = liblyxcontrollers.la
 
 SOURCEFILES = \
 	Dialog.cpp \

@@ -5,7 +5,7 @@ CLEANFILES += $(BUILT_SOURCES)
 EXTRA_DIST = pch.h \
 	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h
 
-pkglib_LTLIBRARIES = liblyxsupport.la
+noinst_LTLIBRARIES = liblyxsupport.la
 
 liblyxsupport_la_LIBADD = $(LIBSHLWAPI) $(QT4_CORE_LIB) $(BOOST_SIGNALS)
 liblyxsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)

@@ -20,7 +20,7 @@ MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
 
 #########################  LIBRARIES  #############################
 
-pkglib_LTLIBRARIES = liblyxqt4.la
+noinst_LTLIBRARIES = liblyxqt4.la
 
 liblyxqt4_la_DEPENDENCIES = $(MOCEDFILES)
 liblyxqt4_la_LDFLAGS = $(QT4_LDFLAGS)
