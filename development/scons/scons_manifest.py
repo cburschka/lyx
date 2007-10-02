@@ -689,8 +689,8 @@ src_frontends_header_files = Split('''
     NoGuiFontMetrics.h
     Painter.h
     Selection.h
-    Toolbars.h
     WorkArea.h
+    WorkAreaManager.h
     alert.h
     key_state.h
     mouse_state.h
@@ -702,8 +702,8 @@ src_frontends_files = Split('''
     Dialogs.cpp
     LyXView.cpp
     Painter.cpp
-    Toolbars.cpp
     WorkArea.cpp
+    WorkAreaManager.cpp
     alert.cpp
 ''')
 
@@ -885,6 +885,7 @@ src_frontends_qt4_header_files = Split('''
     GuiThesaurus.h
     GuiToc.h
     GuiToolbar.h
+    GuiToolbars.h
     GuiURL.h
     GuiView.h
     GuiViewSource.h
@@ -968,6 +969,7 @@ src_frontends_qt4_files = Split('''
     GuiThesaurus.cpp
     GuiToc.cpp
     GuiToolbar.cpp
+    GuiToolbars.cpp
     GuiURL.cpp
     GuiView.cpp
     GuiViewSource.cpp
