@@ -136,6 +136,8 @@ What's new
 - Fix a crash when exporting a file with graphics to LaTeX on Windows
   (bug 4243).
 
+- Fix a crash when a counter was ill-defined in a layout file (bug 4232).
+
 - Fix a crash with View>PDF on the Mac. This occurred only when LyX was
   compiled with gcc's stdlib-debug option (bug 4014).
 
@@ -194,8 +196,6 @@ What's new
 
 - Fix bug in box dialog where the inner box was empty when switching
   the box decoration (bug 4233).
-
-- Fix a crash when a counter was ill-defined in a layout file (bug 4232).
 
 
 * DOCUMENTATION
