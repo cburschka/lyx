@@ -32,7 +32,6 @@
 #include "Language.h"
 #include "Session.h"
 #include "Color.h"
-#include "callback.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
 #include "Lexer.h"

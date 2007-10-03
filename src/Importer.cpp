@@ -17,7 +17,6 @@
 #include "Format.h"
 #include "frontends/LyXView.h"
 #include "FuncRequest.h"
-#include "callback.h"
 
 #include "support/filetools.h"
 
@@ -96,7 +95,7 @@ bool Importer::Import(LyXView * lv, FileName const & filename,
 		string filename2 = (loader_format == format) ? filename.absFilename()
 			: changeExtension(filename.absFilename(),
 					  formats.extension(loader_format));
-		insertPlaintextFile(lv->view(), filename2, as_paragraphs);
+		lv->view()->insertPlaintextFile(filename2, as_paragraphs);
 		lv->dispatch(FuncRequest(LFUN_MARK_OFF));
 	}
 

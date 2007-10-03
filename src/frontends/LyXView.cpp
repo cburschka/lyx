@@ -22,7 +22,6 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "callback.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "ErrorList.h"

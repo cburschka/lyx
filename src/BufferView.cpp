@@ -20,7 +20,6 @@
 #include "buffer_funcs.h"
 #include "BufferList.h"
 #include "BufferParams.h"
-#include "callback.h" // added for Dispatch functions
 #include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -72,17 +71,23 @@
 #include "support/filetools.h"
 #include "support/Package.h"
 #include "support/types.h"
+#include "support/fs_extras.h"
 
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 #include <boost/next_prior.hpp>
+#include <boost/filesystem/operations.hpp>
 
+#include <cerrno>
+#include <fstream>
 #include <functional>
 #include <vector>
 
 using std::distance;
 using std::endl;
+using std::ifstream;
 using std::istringstream;
+using std::istream_iterator;
 using std::make_pair;
 using std::min;
 using std::max;
@@ -90,6 +95,7 @@ using std::mem_fun_ref;
 using std::string;
 using std::vector;
 
+namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -101,6 +107,7 @@ using support::fileSearch;
 using support::isDirWriteable;
 using support::isFileReadable;
 using support::makeDisplayPath;
+using support::makeAbsPath;
 using support::package;
 
 namespace Alert = frontend::Alert;
@@ -894,12 +901,12 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 		// FIXME UNICODE
-		insertPlaintextFile(this, to_utf8(cmd.argument()), true);
+		insertPlaintextFile(to_utf8(cmd.argument()), true);
 		break;
 
 	case LFUN_FILE_INSERT_PLAINTEXT:
 		// FIXME UNICODE
-		insertPlaintextFile(this, to_utf8(cmd.argument()), false);
+		insertPlaintextFile(to_utf8(cmd.argument()), false);
 		break;
 
 	case LFUN_FONT_STATE:
@@ -2019,7 +2026,8 @@ void BufferView::setGuiDelegate(frontend::GuiBufferViewDelegate * gui)
 }
 
 
-static docstring contentsOfPlaintextFile(BufferView * bv, string const & f,
+// FIXME: Move this out of BufferView again
+docstring BufferView::contentsOfPlaintextFile(string const & f,
 	bool asParagraph)
 {
 	FileName fname(f);
@@ -2031,7 +2039,7 @@ static docstring contentsOfPlaintextFile(BufferView * bv, string const & f,
 				     : LFUN_FILE_INSERT_PLAINTEXT) );
 
 		FileDialog::Result result =
-			fileDlg.open(from_utf8(bv->buffer().filePath()),
+			fileDlg.open(from_utf8(buffer().filePath()),
 				     FileFilterList(), docstring());
 
 		if (result.first == FileDialog::Later)
@@ -2064,7 +2072,7 @@ static docstring contentsOfPlaintextFile(BufferView * bv, string const & f,
 		return docstring();
 	}
 
-	ifs.unsetf(ios::skipws);
+	ifs.unsetf(std::ios::skipws);
 	istream_iterator<char> ii(ifs);
 	istream_iterator<char> end;
 #if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
@@ -2096,11 +2104,10 @@ static docstring contentsOfPlaintextFile(BufferView * bv, string const & f,
 	return normalize_c(file_content);
 }
 
-// Insert plain text file (if filename is empty, prompt for one)
+
 void BufferView::insertPlaintextFile(string const & f, bool asParagraph)
 {
-	docstring const tmpstr =
-	  contentsOfPlaintextFile(this, f, asParagraph);
+	docstring const tmpstr = contentsOfPlaintextFile(f, asParagraph);
 
 	if (tmpstr.empty())
 		return;

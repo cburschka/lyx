@@ -256,6 +256,8 @@ public:
 	///
 	void setGuiDelegate(frontend::GuiBufferViewDelegate *);
 
+	///
+	docstring contentsOfPlaintextFile(std::string const & f, bool asParagraph);
 	// Insert plain text file (if filename is empty, prompt for one)
 	void insertPlaintextFile(std::string const & fileName, bool asParagraph);
 private:

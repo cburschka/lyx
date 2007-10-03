@@ -28,7 +28,6 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "callback.h"
 #include "Color.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
@@ -145,6 +144,7 @@ using support::prefixIs;
 
 namespace Alert = frontend::Alert;
 
+extern bool quitting;
 
 namespace {
 

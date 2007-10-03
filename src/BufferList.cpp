@@ -18,7 +18,6 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Session.h"
-#include "callback.h"
 #include "LyX.h"
 #include "output_latex.h"
 #include "ParagraphList.h"

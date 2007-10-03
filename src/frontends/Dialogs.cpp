@@ -14,8 +14,6 @@
 
 #include "Dialogs.h"
 
-#include "callback.h"
-
 #include "controllers/Dialog.h"
 
 #include <boost/signal.hpp>
@@ -24,6 +22,8 @@
 using std::string;
 
 namespace lyx {
+
+extern bool quitting;
 
 namespace frontend {
 
