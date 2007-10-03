@@ -347,13 +347,13 @@ def revert_wrapfig_options(document):
         i = find_token(document.body, "lines", i)
         if i == -1:
             return
-        del document.body[i]
         j = find_token(document.body, "overhang", i+1)
-        if j != i + 1 and j != -1:
+        if j != i + 2 and j != -1:
             document.warning("Malformed LyX document: Couldn't find overhang parameter of wrap float.")
         if j == -1:
             return
-        del document.body[j]
+        del document.body[i]
+        del document.body[j-1]
         i = i + 1
 
 
