@@ -119,9 +119,9 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 		bool succeeded;
 
 		if (buf->isUnnamed())
-			succeeded = writeAs(buf);
+			succeeded = buf->writeAs();
 		else
-			succeeded = menuWrite(buf);
+			succeeded = buf->menuWrite();
 
 		if (!succeeded)
 			return false;
@@ -222,9 +222,9 @@ bool BufferList::close(Buffer * buf, bool const ask)
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {
-			if (!writeAs(buf))
+			if (!buf->writeAs())
 				return false;
-		} else if (!menuWrite(buf))
+		} else if (!buf->menuWrite())
 			return false;
 	} else if (ret == 2)
 		return false;

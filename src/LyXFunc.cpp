@@ -934,17 +934,17 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				docstring const str = bformat(_("Saving document %1$s..."),
 					 makeDisplayPath(lyx_view_->buffer()->fileName()));
 				lyx_view_->message(str);
-				menuWrite(lyx_view_->buffer());
+				lyx_view_->buffer()->menuWrite();
 				lyx_view_->message(str + _(" done."));
 			} else {
-				writeAs(lyx_view_->buffer());
+				lyx_view_->buffer()->writeAs();
 			}
 			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_WRITE_AS:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			writeAs(lyx_view_->buffer(), argument);
+			lyx_view_->buffer()->writeAs(argument);
 			updateFlags = Update::None;
 			break;
 
@@ -958,10 +958,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				do {
 					if (!b->isClean()) {
 						if (!b->isUnnamed()) {
-							menuWrite(b);
+							b->menuWrite();
 							lyxerr[Debug::ACTION] << "Saved " << b->fileName() << endl;
 						} else
-							writeAs(b);
+							b->writeAs();
 					}
 					b = theBufferList().next(b);
 				} while (b != first); 
@@ -1188,7 +1188,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_AUTO_SAVE:
-			autoSave(view());
+			lyx_view_->buffer()->autoSave();
 			break;
 
 		case LFUN_RECONFIGURE:

@@ -26,19 +26,13 @@ class LyXView;
 ///
 extern bool quitting;
 
-///
-bool menuWrite(Buffer * buffer);
-/// write the given file, or ask if no name given
-bool writeAs(Buffer * buffer, std::string const & filename = std::string());
-///
-void autoSave(BufferView * bv);
+/// read plain text file (if \p f is empty, prompt for a filename)
+docstring const getContentsOfPlaintextFile(BufferView * bv,
+		std::string const & f, bool asParagraph);
 ///
 void newFile(frontend::LyXView & lv, std::string const & filename);
 ///
 void insertPlaintextFile(BufferView * bv, std::string const & f, bool asParagraph);
-/// read plain text file (if \p f is empty, prompt for a filename)
-docstring const getContentsOfPlaintextFile(BufferView * bv,
-		std::string const & f, bool asParagraph);
 ///
 void reconfigure(frontend::LyXView & lv, std::string const & option);
 

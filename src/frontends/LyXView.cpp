@@ -250,7 +250,7 @@ void LyXView::autoSave()
 	LYXERR(Debug::INFO) << "Running autoSave()" << endl;
 
 	if (buffer())
-		lyx::autoSave(view());
+		view()->buffer().autoSave();
 }
 
 

@@ -218,7 +218,7 @@ public:
 	void markClean() const;
 
 	///
-	void markBakClean();
+	void markBakClean() const;
 
 	///
 	void markDepClean(std::string const & name);
@@ -410,6 +410,12 @@ public:
 
 	void setGuiDelegate(frontend::GuiBufferDelegate * gui);
 
+	///
+	void autoSave() const;
+	///
+	bool writeAs(std::string const & newname = std::string());
+	///
+	bool menuWrite();
 
 private:
 	/** Inserts a file into a document

@@ -69,7 +69,7 @@ void InsetMathSqrt::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 }
 
 
-void InsetMathSqrt::drawT(TextPainter & pain, int x, int y) const
+void InsetMathSqrt::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 {
 	/*
 	cell(0).drawT(pain, x + 2, y);

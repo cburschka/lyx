@@ -118,6 +118,7 @@ namespace os = support::os;
 */
 bool use_gui = true;
 
+bool quitting;	// flag, that we are quitting the program
 
 namespace {
 
@@ -405,7 +406,8 @@ int LyX::exec(int & argc, char * argv[])
 	// we need to parse for "-dbg" and "-help"
 	easyParse(argc, argv);
 
-	try { support::init_package(to_utf8(from_local8bit(argv[0])),
+	try {
+		support::init_package(to_utf8(from_local8bit(argv[0])),
 			      cl_system_support, cl_user_support,
 			      support::top_build_dir_is_one_level_up);
 	} catch (support::ExceptionMessage const & message) {

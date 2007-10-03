@@ -48,6 +48,7 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
+#include "Session.h"
 #include "sgml.h"
 #include "TexRow.h"
 #include "TextClassList.h"
@@ -70,12 +71,15 @@
 #include "frontends/alert.h"
 #include "frontends/Delegates.h"
 #include "frontends/WorkAreaManager.h"
+#include "frontends/FileDialog.h"
 
 #include "graphics/Previews.h"
 
 #include "support/types.h"
 #include "support/lyxalgo.h"
+#include "support/FileFilterList.h"
 #include "support/filetools.h"
+#include "support/Forkedcall.h"
 #include "support/fs_extras.h"
 #include "support/gzstream.h"
 #include "support/lyxlib.h"
@@ -87,6 +91,7 @@
 #include <boost/bind.hpp>
 #include <boost/filesystem/exception.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <algorithm>
 #include <iomanip>
@@ -1686,7 +1691,7 @@ void Buffer::markClean() const
 }
 
 
-void Buffer::markBakClean()
+void Buffer::markBakClean() const
 {
 	pimpl_->bak_clean = true;
 }
@@ -1980,5 +1985,220 @@ void Buffer::setGuiDelegate(frontend::GuiBufferDelegate * gui)
 {
 	gui_ = gui;
 }
+
+
+
+namespace {
+
+class AutoSaveBuffer : public support::ForkedProcess {
+public:
+	///
+	AutoSaveBuffer(Buffer const & buffer, FileName const & fname)
+		: buffer_(buffer), fname_(fname) {}
+	///
+	virtual boost::shared_ptr<ForkedProcess> clone() const
+	{
+		return boost::shared_ptr<ForkedProcess>(new AutoSaveBuffer(*this));
+	}
+	///
+	int start()
+	{
+		command_ = to_utf8(bformat(_("Auto-saving %1$s"), 
+						 from_utf8(fname_.absFilename())));
+		return run(DontWait);
+	}
+private:
+	///
+	virtual int generateChild();
+	///
+	Buffer const & buffer_;
+	FileName fname_;
+};
+
+
+int AutoSaveBuffer::generateChild()
+{
+	// tmp_ret will be located (usually) in /tmp
+	// will that be a problem?
+	pid_t const pid = fork(); // If you want to debug the autosave
+	// you should set pid to -1, and comment out the
+	// fork.
+	if (pid == 0 || pid == -1) {
+		// pid = -1 signifies that lyx was unable
+		// to fork. But we will do the save
+		// anyway.
+		bool failed = false;
+
+		FileName const tmp_ret(tempName(FileName(), "lyxauto"));
+		if (!tmp_ret.empty()) {
+			buffer_.writeFile(tmp_ret);
+			// assume successful write of tmp_ret
+			if (!rename(tmp_ret, fname_)) {
+				failed = true;
+				// most likely couldn't move between
+				// filesystems unless write of tmp_ret
+				// failed so remove tmp file (if it
+				// exists)
+				unlink(tmp_ret);
+			}
+		} else {
+			failed = true;
+		}
+
+		if (failed) {
+			// failed to write/rename tmp_ret so try writing direct
+			if (!buffer_.writeFile(fname_)) {
+				// It is dangerous to do this in the child,
+				// but safe in the parent, so...
+				if (pid == -1) // emit message signal.
+					buffer_.message(_("Autosave failed!"));
+			}
+		}
+		if (pid == 0) { // we are the child so...
+			_exit(0);
+		}
+	}
+	return pid;
+}
+
+} // namespace anon
+
+
+// Perfect target for a thread...
+void Buffer::autoSave() const
+{
+	if (isBakClean() || isReadonly()) {
+		// We don't save now, but we'll try again later
+		resetAutosaveTimers();
+		return;
+	}
+
+	// emit message signal.
+	message(_("Autosaving current document..."));
+
+	// create autosave filename
+	string fname = filePath();
+	fname += '#';
+	fname += onlyFilename(fileName());
+	fname += '#';
+
+	AutoSaveBuffer autosave(*this, FileName(fname));
+	autosave.start();
+
+	markBakClean();
+	resetAutosaveTimers();
+}
+
+
+/** Write a buffer to a new file name and rename the buffer
+    according to the new file name.
+
+    This function is e.g. used by menu callbacks and
+    LFUN_BUFFER_WRITE_AS.
+
+    If 'newname' is empty (the default), the user is asked via a
+    dialog for the buffer's new name and location.
+
+    If 'newname' is non-empty and has an absolute path, that is used.
+    Otherwise the base directory of the buffer is used as the base
+    for any relative path in 'newname'.
+*/
+
+bool Buffer::writeAs(string const & newname)
+{
+	string fname = fileName();
+	string const oldname = fname;
+
+	if (newname.empty()) {	/// No argument? Ask user through dialog
+
+		// FIXME UNICODE
+		FileDialog fileDlg(_("Choose a filename to save document as"),
+				   LFUN_BUFFER_WRITE_AS,
+				   make_pair(_("Documents|#o#O"), 
+					     from_utf8(lyxrc.document_path)),
+				   make_pair(_("Templates|#T#t"), 
+					     from_utf8(lyxrc.template_path)));
+
+		if (!support::isLyXFilename(fname))
+			fname += ".lyx";
+
+		support::FileFilterList const filter(_("LyX Documents (*.lyx)"));
+
+		FileDialog::Result result =
+			fileDlg.save(from_utf8(onlyPath(fname)),
+				     filter,
+				     from_utf8(onlyFilename(fname)));
+
+		if (result.first == FileDialog::Later)
+			return false;
+
+		fname = to_utf8(result.second);
+
+		if (fname.empty())
+			return false;
+
+		// Make sure the absolute filename ends with appropriate suffix
+		fname = makeAbsPath(fname).absFilename();
+		if (!support::isLyXFilename(fname))
+			fname += ".lyx";
+
+	} else 
+		fname = makeAbsPath(newname, onlyPath(oldname)).absFilename();
+
+	if (fs::exists(FileName(fname).toFilesystemEncoding())) {
+		docstring const file = makeDisplayPath(fname, 30);
+		docstring text = bformat(_("The document %1$s already "
+					   "exists.\n\nDo you want to "
+					   "overwrite that document?"), 
+					 file);
+		int const ret = Alert::prompt(_("Overwrite document?"),
+			text, 0, 1, _("&Overwrite"), _("&Cancel"));
+
+		if (ret == 1)
+			return false;
+	}
+
+	// Ok, change the name of the buffer
+	setFileName(fname);
+	markDirty();
+	bool unnamed = isUnnamed();
+	setUnnamed(false);
+	saveCheckSum(fname);
+
+	if (!menuWrite()) {
+		setFileName(oldname);
+		setUnnamed(unnamed);
+		saveCheckSum(oldname);
+		return false;
+	}
+
+	removeAutosaveFile(oldname);
+	return true;
+}
+
+
+bool Buffer::menuWrite()
+{
+	if (save()) {
+		LyX::ref().session().lastFiles().add(FileName(fileName()));
+		return true;
+	}
+
+	// FIXME: we don't tell the user *WHY* the save failed !!
+
+	docstring const file = makeDisplayPath(fileName(), 30);
+
+	docstring text = bformat(_("The document %1$s could not be saved.\n\n"
+				   "Do you want to rename the document and "
+				   "try again?"), file);
+	int const ret = Alert::prompt(_("Rename and save?"),
+		text, 0, 1, _("&Rename"), _("&Cancel"));
+
+	if (ret != 0)
+		return false;
+
+	return writeAs();
+}
+
 
 } // namespace lyx
