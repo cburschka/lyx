@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -37,6 +37,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -46,88 +48,36 @@
 \end_layout
 
 \begin_layout Section*
-Az első N dolog, amit tudnia kell a LyX-ről
+A legfontosabb dolgok, amiket tudnia kell a LyX-ről
 \end_layout
 
 \begin_layout Enumerate
 A LyX rendkívül jól dokumentált.
- Kérjük használja ki ezt! Kezdje a
-\family default
- 
+ Kérjük használja ki ezt! Kezdje a 
 \family sans
 \bar under
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
 S
 \bar default
-egítség\SpecialChar \menuseparator
+egítség \SpecialChar \menuseparator
 
 \bar under
-B
+ B
 \bar default
 evezetés
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \family default
  elolvasásával, ami gyors áttekintést ad a dokumentáció használatával kapcsolatb
 an.
- Aztán folytassa a
-\family default
- 
+ Aztán folytassa a 
 \family sans
 \bar under
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
 S
 \bar default
-egítség\SpecialChar \menuseparator
+egítség \SpecialChar \menuseparator
 
 \bar under
-T
+ T
 \bar default
 ankönyv
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
 \family default
  olvasásával, amelynek segítségével elsajátíthatja a LyX használatával kapcsolat
 os alapvető dolgokat.
@@ -144,7 +94,7 @@ szövegszerkesztőnek
 
  nevezünk.
  Alapvetően más elveket követ, mint egy átlagos szövegszerkesztő, és ezzel
- sokkal könnyebbé teszi a dokumentumok szerkesztését.
+ sokkal könnyebbé teszi dokumentumok készítését.
  De ez csak egy kis különbség, szóval ne ijedjen meg.
  A dokumentációból minden világos lesz.
 \begin_inset Foot
@@ -161,57 +111,26 @@ Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
 \end_layout
 
 \begin_layout Enumerate
-A LyX segítségével szép dokumentumokat készíthetünk! Válassza a
-\family default
- 
+A LyX segítségével szép dokumentumokat készíthetünk! Válassza a 
 \family sans
-\bar under
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\bar default
 Né
 \bar under
 z
 \bar default
-et\SpecialChar \menuseparator
+et \SpecialChar \menuseparator
 
 \bar under
-D
+ D
 \bar default
 VI
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
  menüpontot, és ellenőrizze saját maga.
 \end_layout
 
 \begin_layout Enumerate
 Igen, a LyX tudja (majdnem) mindazt, amit a LaTeX, valamint képes LaTeX
  fájlokat importálni is.
- Gyakorlott LaTeX felhasználók ki is hagyhatják a
-\emph default
- 
+ Gyakorlott LaTeX felhasználók ki is hagyhatják a 
 \emph on
 Tankönyv
 \emph default
@@ -231,111 +150,39 @@ LyX LaTeX felhasználóknak
 \begin_layout Enumerate
 A LyX rengeteg hasznos lehetőséggel rendelkezik mindazok számára, akik az
  angol-tól eltérő nyelven készítenek dokumentumokat.
- A billentyűzet, a menük és sok egyéb jellemző
- nagymértékben testreszabható
- az igényeinek megfelelően.
- További információkért olvassa el a
-\family default
- 
+ A billentyűzet, a eszköztárak és sok egyéb jellemző nagymértékben testreszabhat
+ó az igényeinek megfelelően.
+ További információkért olvassa el a 
 \family sans
 \bar under
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
 S
 \bar default
-egítség\SpecialChar \menuseparator
-T
+egítség \SpecialChar \menuseparator
+ T
 \bar under
 e
 \bar default
 streszabás
 \family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
  részt.
 \end_layout
 
 \begin_layout Enumerate
 A LyX honlapja a következő címen található meg: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\begin_inset LatexCommand htmlurl
+\begin_inset LatexCommand url
 target "http://www.lyx.org/"
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
 
 \end_inset
 
 .
  Itt további információkat tudhat meg a LyX-ről, feliratkozhat a levelezőlistákr
-a, stb\SpecialChar \ldots{}
+a, vagy megnézheti hogyan néz ki a LyX menetközben stb\SpecialChar \ldots{}
 
 \newline
-A LyX magyar honlapja a 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
-
-\begin_inset LatexCommand htmlurl
+A LyX magyar honlapja
+ a 
+\begin_inset LatexCommand url
 target "http://www.lyx.hu"
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
 
 \end_inset
 
