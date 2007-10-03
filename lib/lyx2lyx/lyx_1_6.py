@@ -357,13 +357,49 @@ def revert_wrapfig_options(document):
         i = i + 1
 
 
+def convert_latexcommand_index(document):
+    "Convert from LatexCommand form to collapsable form."
+    i = 0 
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset index", i)
+        if i == -1:
+            return
+        if document.body[i + 1] != "LatexCommand index": # Might also be index_print
+            return
+        fullcommand = document.body[i + 2]
+        document.body[i] = "\\begin_inset Index"
+        document.body[i + 1] = "status collapsed"
+        document.body[i + 2] = "\\begin_layout standard"
+        document.body.insert(i + 3, fullcommand[6:].strip('"'))
+        document.body.insert(i + 4, "\\end_layout")
+        i = i + 5
+
+
+def revert_latexcommand_index(document):
+    "Revert from collapsable form toLatexCommand form."
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Index", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        del document.body[j - 1]
+        del document.body[j - 2] # \end_layout
+        document.body[i] =  "\\begin_inset CommandInset index"
+        document.body[i + 1] =  "LatexCommand index"
+        document.body[i + 3] = "name " + '"' + document.body[i + 3] + '"'
+        document.body.insert(i + 4, "")
+        del document.body[i + 2] # \begin_layout standard
+        i = i + 5
+
+
+
 ##
 # Conversion hub
 #
 
 supported_versions = ["1.6.0","1.6"]
-convert = [
-           [277, [fix_wrong_tables]],
+convert = [[277, [fix_wrong_tables]],
            [278, [close_begin_deeper]],
            [279, [long_charstyle_names]],
            [280, [axe_show_label]],
@@ -374,10 +410,12 @@ convert = [
            [285, []], # an empty manifest is automatically added
            [286, []],
            [287, [convert_wrapfig_options]],
-           [288, [convert_inset_command]]
+           [288, [convert_inset_command]],
+           [289, [convert_latexcommand_index]]
           ]
 
 revert =  [
+           [288, [revert_latexcommand_index]],
            [287, [revert_inset_command]],
            [286, [revert_wrapfig_options]],
            [285, [revert_pdf_options]],

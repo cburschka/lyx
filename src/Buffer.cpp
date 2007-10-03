@@ -151,7 +151,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 288; //RGH, command insets
+int const LYX_FORMAT = 289; //MV, index collapsable
 
 } // namespace anon
 

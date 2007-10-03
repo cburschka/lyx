@@ -13,6 +13,7 @@
 #define INSET_INDEX_H
 
 
+#include "InsetCollapsable.h"
 #include "InsetCommand.h"
 
 
@@ -22,23 +23,38 @@ class LaTeXFeatures;
 
 /** Used to insert index labels
   */
-class InsetIndex : public InsetCommand {
+class InsetIndex : public InsetCollapsable {
 public:
 	///
-	InsetIndex(InsetCommandParams const &);
+	InsetIndex(BufferParams const &);
 	///
-	docstring const getScreenLabel(Buffer const &) const;
+	InsetIndex(InsetIndex const &);
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	Inset::Code lyxCode() const;
 	///
+	///
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo &, int, int) const;
+	///
+	docstring name() const { return from_ascii("Index"); }
+	///
+	void getDrawFont(Font &) const;
+	///
+	void write(Buffer const & buf, std::ostream & os) const;
+	///
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
+	/// should paragraph indendation be omitted in any case?
+	bool neverIndent(Buffer const &) const { return true; }
+
 private:
-	virtual Inset * clone() const {
-		return new InsetIndex(params());
-	}
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
+	virtual Inset * clone() const;
 };
 
 

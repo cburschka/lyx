@@ -177,14 +177,8 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			return 0;
 		}
 
-		case LFUN_INDEX_INSERT: {
-			// Try and generate a valid index entry.
-			InsetCommandParams icp("index");
-			icp["name"] = cmd.argument().empty() ?
-				bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
-				cmd.argument();
-			return new InsetIndex(icp);
-		}
+		case LFUN_INDEX_INSERT:
+			return new InsetIndex(params);
 
 		case LFUN_NOMENCL_INSERT: {
 			InsetCommandParams icp("nomenclature");
@@ -290,10 +284,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				return new InsetInclude(iip);
 
 			} else if (name == "index") {
-				InsetCommandParams icp(name);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetIndex(icp);
+				return new InsetIndex(params);
 
 			} else if (name == "nomenclature") {
 				InsetCommandParams icp(name);
@@ -412,7 +403,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (insetType == "bibtex") {
 			inset.reset(new InsetBibtex(inscmd));
 		} else if (insetType == "index") {
-			inset.reset(new InsetIndex(inscmd));
+			inset.reset(new InsetIndex(buf.params()));
 		} else if (insetType == "nomenclature") {
 			inset.reset(new InsetNomencl(inscmd));
 		} else if (insetType == "include") {
@@ -502,6 +493,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 #endif
 		} else if (tmptok == "Caption") {
 			inset.reset(new InsetCaption(buf.params()));
+		} else if (tmptok == "Index") {
+			inset.reset(new InsetIndex(buf.params()));
 		} else if (tmptok == "FloatList") {
 			inset.reset(new InsetFloatList);
 		} else {

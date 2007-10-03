@@ -50,6 +50,7 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
+#include "insets/InsetCollapsable.h"
 #include "insets/InsetCommand.h"
 #include "insets/InsetFloatList.h"
 #include "insets/InsetNewline.h"
@@ -188,23 +189,32 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		return false;
 
 	recordUndo(cur);
-	bool gotsel = false;
-	if (cur.selection()) {
-		lyx::dispatch(FuncRequest(LFUN_CUT));
-		gotsel = true;
-	}
-	text->insertInset(cur, inset);
+	if (cmd.action == LFUN_INDEX_INSERT) {
+		docstring ds = support::subst(text->getStringToIndex(cur), '\n', ' ');
+		text->insertInset(cur, inset);
+		if (edit)
+			inset->edit(cur, true);
+		// Now put this into inset
+		static_cast<InsetCollapsable *>(inset)->text_.insertStringAsParagraphs(cur, ds);
+	} else {
+		bool gotsel = false;
+		if (cur.selection()) {
+			lyx::dispatch(FuncRequest(LFUN_CUT));
+			gotsel = true;
+		}
+		text->insertInset(cur, inset);
 
-	if (edit)
-		inset->edit(cur, true);
+		if (edit)
+			inset->edit(cur, true);
 
-	if (gotsel && pastesel) {
-		lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
-		// reset first par to default
-		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
-			LayoutPtr const layout =
-				cur.buffer().params().getTextClass().defaultLayout();
-			cur.text()->paragraphs().begin()->layout(layout);
+		if (gotsel && pastesel) {
+			lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
+			// reset first par to default
+			if (cur.lastpit() != 0 || cur.lastpos() != 0) {
+				LayoutPtr const layout =
+					cur.buffer().params().getTextClass().defaultLayout();
+				cur.text()->paragraphs().begin()->layout(layout);
+			}
 		}
 	}
 	return true;
@@ -1173,6 +1183,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INDEX_INSERT:
+		doInsertInset(cur, this, cmd, true, true);
+		cur.posRight();
+		break;
 	case LFUN_NOMENCL_INSERT: {
 		Inset * inset = createInset(&cur.bv(), cmd);
 		if (!inset)

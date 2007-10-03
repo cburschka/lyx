@@ -101,4 +101,18 @@ InsetLayout Branch
 	EndFont
 End
 
+InsetLayout Index
+	LabelString           Idx
+	LatexType             command
+	LatexName             index
+	Decoration            minimalistic
+	Font
+	  Color               Green
+	  Size                Small
+	EndFont
+	LabelFont
+	  Color               Green
+	  Size                Small
+	EndFont
+End
 
