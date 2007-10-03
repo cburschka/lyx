@@ -171,7 +171,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 
 		case LFUN_WRAP_INSERT: {
 			string const argument = to_utf8(cmd.argument());
-			if (argument == "figure")
+			if (argument == "figure" || argument == "table")
 				return new InsetWrap(params, argument);
 			lyxerr << "Non-existent wrapfig type: " << argument << endl;
 			return 0;

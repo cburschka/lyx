@@ -374,7 +374,8 @@ Menuset
 	Menu "insert_float"
 		FloatInsert
 # This has got to be better than "Wrap", anyway
-		Item "Text Wrap Float|W" "wrap-insert figure"
+		Item "Figure Wrap Float|F" "wrap-insert figure"
+		Item "Table Wrap Float|T" "wrap-insert table"
 	End
 
 	Menu "insert_toc"

@@ -394,6 +394,17 @@ def revert_latexcommand_index(document):
 
 
 
+def revert_wraptable(document):
+    "Revert wrap table to wrap figure."
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Wrap table", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace('\\begin_inset Wrap table', '\\begin_inset Wrap figure')
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -412,9 +423,10 @@ convert = [[277, [fix_wrong_tables]],
            [287, [convert_wrapfig_options]],
            [288, [convert_inset_command]],
            [289, [convert_latexcommand_index]]
+           [290, []]
           ]
 
-revert =  [
+revert =  [[289, [revert_wraptable]],
            [288, [revert_latexcommand_index]],
            [287, [revert_inset_command]],
            [286, [revert_wrapfig_options]],

@@ -151,7 +151,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 289; //MV, index collapsable
+int const LYX_FORMAT = 290; //Uwe Stöhr, wrap table
 
 } // namespace anon
 
