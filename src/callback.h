@@ -19,10 +19,6 @@ namespace lyx {
 class Buffer;
 class BufferView;
 
-namespace frontend {
-class LyXView;
-}
-
 ///
 extern bool quitting;
 
@@ -31,8 +27,6 @@ docstring const getContentsOfPlaintextFile(BufferView * bv,
 		std::string const & f, bool asParagraph);
 ///
 void insertPlaintextFile(BufferView * bv, std::string const & f, bool asParagraph);
-///
-void reconfigure(frontend::LyXView & lv, std::string const & option);
 
 } // namespace lyx
 

@@ -188,31 +188,4 @@ docstring const getContentsOfPlaintextFile(BufferView * bv, string const & f,
 }
 
 
-// This function runs "configure" and then rereads lyx.defaults to
-// reconfigure the automatic settings.
-void reconfigure(LyXView & lv, string const & option)
-{
-	// emit message signal.
-	lv.message(_("Running configure..."));
-
-	// Run configure in user lyx directory
-	support::Path p(package().user_support());
-	string configure_command = package().configure_command();
-	configure_command += option;
-	Systemcall one;
-	one.startscript(Systemcall::Wait, configure_command);
-	p.pop();
-	// emit message signal.
-	lv.message(_("Reloading configuration..."));
-	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
-	// Re-read packages.lst
-	LaTeXFeatures::getAvailable();
-
-	Alert::information(_("System reconfigured"),
-			   _("The system has been reconfigured.\n"
-			     "You need to restart LyX to make use of any\n"
-			     "updated document class specifications."));
-}
-
-
 } // namespace lyx
