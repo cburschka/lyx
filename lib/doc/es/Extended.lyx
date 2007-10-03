@@ -91,18 +91,13 @@ status collapsed
 
 \begin_layout Standard
 \noindent
-Si tienes correcciones o comentarios, envíalos, por favor, a la lista de
+El principal mantenedor de este archivo es 
+\noun on
+Mike Ressler
+\noun default
+.
+ Si tienes correcciones o comentarios, envíalos, por favor, a la lista de
  correo de Documentación de LyX, <lyx-docs@lists.lyx.org>.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Traducción de: Ignacio García
 \end_layout
 
 \end_inset
@@ -169,14 +164,14 @@ es WYSIWYM, un simple intermediario para ciertas características de LaTeX.
 \begin_layout Standard
 Con toda esta documentación extra, las
 \emph on
- Características Extendidas de LyX 
+ Características extendidas de LyX 
 \emph default
 quizá sean demasiado para tus necesidades.
  ¡En ese caso, puedes sonreir y rebautizarlo 
 \begin_inset Quotes fld
 \end_inset
 
-Manual Sobreextendido
+Manual sobreextendido
 \begin_inset Quotes frd
 \end_inset
 
@@ -197,7 +192,7 @@ Introducción
  y te explicamos los criterios y el formato de todos los manuales.
  También deberías estar familiarizado con la 
 \emph on
-Guía del Usuario
+Guía del usuario
 \emph default
  y con las características fundamentales de LyX.
  
@@ -593,7 +588,7 @@ reference "sec:códigolatex"
 \end_layout
 
 \begin_layout Section
-Insertar Código LaTeX en Documentos LyX 
+Insertar código LaTeX en documentos LyX 
 \begin_inset LatexCommand label
 name "sec:Insertar-Código-LaTeX"
 
@@ -943,7 +938,7 @@ LyX y el Preámbulo LaTeX
 \end_layout
 
 \begin_layout Subsection
-Sobre el Preámbulo LaTeX
+Sobre el preámbulo LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -1060,7 +1055,7 @@ LyX añade su propio conjunto de definiciones al preámbulo del archivo
 \end_layout
 
 \begin_layout Subsection
-Cambiar el Preámbulo
+Cambiar el preámbulo
 \end_layout
 
 \begin_layout Standard
@@ -1361,7 +1356,7 @@ Algún día, alguien escribirá un archivo de formato (
 \end_layout
 
 \begin_layout Subsubsection
-Ejemplo #3: Sangrado de Párrafos
+Ejemplo #3: Sangrado de párrafos
 \end_layout
 
 \begin_layout Standard
@@ -1426,7 +1421,7 @@ Si tu distribución de TeX no está descerebrada, tendrás este paquete, y
 \end_layout
 
 \begin_layout Subsubsection
-Ejemplo #4: Este Documento
+Ejemplo #4: Este documento
 \end_layout
 
 \begin_layout Standard
@@ -1457,7 +1452,7 @@ reference "cha:secretos"
 \end_layout
 
 \begin_layout Section
-LyX y Errores de LaTeX
+LyX y errores de LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -1997,11 +1992,11 @@ fallo
 \end_layout
 
 \begin_layout Chapter
-Herramientas Suplementarias
+Herramientas suplementarias
 \end_layout
 
 \begin_layout Section
-Preparar una Bibliografía con BibTeX
+Preparar una bibliografía con BibTeX
 \begin_inset LatexCommand label
 name "sec:Preparar-una-Bibliografía"
 
@@ -2185,7 +2180,7 @@ VI
 \end_layout
 
 \begin_layout Subsection
-Estilos Alternativos de Cita
+Estilos alternativos de cita
 \end_layout
 
 \begin_layout Standard
@@ -2342,7 +2337,7 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-Bibliografía por Secciones
+Bibliografía por secciones
 \begin_inset LatexCommand label
 name "sub:Bibliografías-por-Secciones"
 
@@ -2529,7 +2524,7 @@ bibtopic
 \end_layout
 
 \begin_layout Subsection
-Bibliografías Múltiples
+Bibliografías múltiples
 \end_layout
 
 \begin_layout Standard
@@ -2650,7 +2645,7 @@ btUnit
 \end_layout
 
 \begin_layout Section
-Hacer un Índice Alfabético
+Hacer un índice alfabético
 \end_layout
 
 \begin_layout Standard
@@ -2818,337 +2813,16 @@ Procura no poner espacios entre el texto y el cuadro marcador de índice;
  puede ocasionar, parece ser, una numeración de página errónea.
 \end_layout
 
-\begin_layout Section
-Glosarios
-\end_layout
-
-\begin_layout Standard
-por 
-\noun on
-Özgür Ug̃raş Baran
-\end_layout
-
-\begin_layout Standard
-Algunas veces necesitarás compilar una lista de símbolos mencionados en
- un documento con una breve explicación de los mismos.
- El paquete LaTeX 
-\family typewriter
-nomencl
-\family default
- facilita la compilación de tales listas.
- 
-\family typewriter
-nomencl
-\family default
- se incluye en la mayoría de distribuciones estándar de Linux.
- Si no lo tienes, puedes descargarlo de algún repositorio CTAN e instalarlo.
- 
-\end_layout
-
-\begin_layout Standard
-Una entrada de glosario se crea situando el cursor después de una entrada
- de símbolo y marcando entonces 
-\family sans
-Insertar\SpecialChar \menuseparator
-Entrada\InsetSpace ~
-de\InsetSpace ~
-glosario
-\family default
-.
- Se inserta un cuadro gris etiquetado 
-\begin_inset Quotes fld
-\end_inset
-
-
-\family sans
-Glo
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- y surge una ventana para la entrada del glosario.
- Hay dos campos de texto principales.
- El primero es el símbolo que quieres referenciar.
- Debes introducir un código LaTeX válido en el campo correspondiente del
- diálogo.
- El segundo es la descripción del símbolo.
- Debes rellenar el campo correspondiente para completar la entrada de glosario.
-\end_layout
-
-\begin_layout Subsection
-Clasificación de las Entradas del Glosario
-\end_layout
-
-\begin_layout Standard
-Supón que tienes dos entradas de glosario para los símbolos 
-\begin_inset Formula $a$
-\end_inset
-
- y 
-\begin_inset Formula $\sigma$
-\end_inset
-
-.
- El paquete 
-\family typewriter
-nomencl
-\family default
- las clasifica automáticamente teniendo en cuenta el símbolo, mientras imprime
- el Glosario.
- Sin embargo, esto puede llevar a una ordenación no deseada.
- Para el ejemplo dado, la primera entrada aparece como 
-\family typewriter
-$a$
-\family default
-, mientras que la segunda es 
-\family typewriter
-$
-\backslash
-sigma$
-\family default
-.
- Observa que, en este caso, 
-\begin_inset Formula $\sigma$
-\end_inset
-
-
-\family typewriter
- 
-\family default
-se coloca
-\family typewriter
- 
-\family default
-delante de 
-\begin_inset Formula $a$
-\end_inset
-
-, puesto que el carácter 
-\begin_inset Quotes fld
-\end_inset
-
-
-\backslash
-
-\begin_inset Quotes frd
-\end_inset
-
- es tenido en cuenta.
- Con el fin de controlar el orden de clasificación, puedes editar el campo
-\family sans
- Clasificar\InsetSpace ~
-como 
-\family default
-en el diálogo de glosario.
- En nuestro ejemplo, puedes editar este campo como 
-\family typewriter
-a
-\family default
- y 
-\family typewriter
-sigma 
-\family default
-respectivamente.
- Así, estas entradas se ordenarán adecuadamente y 
-\begin_inset Formula $a$
-\end_inset
-
- se colocará delante de 
-\begin_inset Formula $\sigma$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Esta característica proporciona formas excitantes de ordenar las entradas.
- Para formar subgrupos y ver más indicaciones sobre la clasificación de
- entradas, véase la documentación oficial del paquete 
-\family typewriter
-nomencl
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Referenciar
-\end_layout
-
-\begin_layout Standard
-Ecuaciones y páginas se pueden referenciar en las entradas del glosario.
- Para ello, deberás añadir comandos de opciones de referencias al final
- del campo de descripción.
- Hay seis opciones en el paquete 
-\family typewriter
-nomencl
-\family default
-:
-\end_layout
-
-\begin_layout Paragraph*
-
-\backslash
-refeq:
-\end_layout
-
-\begin_layout Standard
-Añade una referencia a la ecuación con la frase 
-\begin_inset Quotes fld
-\end_inset
-
-, véase ecuación (#)
-\begin_inset Quotes frd
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Paragraph*
-
-\backslash
-refpage:
-\end_layout
-
-\begin_layout Standard
-Añade una referencia a una página con la frase 
-\begin_inset Quotes fld
-\end_inset
-
-, página(#)
-\begin_inset Quotes frd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph*
-
-\backslash
-refeqpage:
-\end_layout
-
-\begin_layout Standard
-Es la notación breve de 
-\backslash
-refeq
-\backslash
-refpage.
-\end_layout
-
-\begin_layout Paragraph*
-
-\backslash
-norefeq, 
-\backslash
-norefpag, 
-\backslash
-norefeqpage:
-\end_layout
-
-\begin_layout Standard
-Desactiva las correspondientes opciones de referencia si están activadas
- globalmente (véase la documentación de 
-\family sans
-nomencl
-\family default
-).
-\end_layout
-
-\begin_layout Subsection
-Imprimir el Glosario
-\end_layout
-
-\begin_layout Standard
-El glosario se puede insertar con el menú 
-\family sans
-Insertar\SpecialChar \menuseparator
-List
-\family default
-a
-\family sans
-/IG\SpecialChar \menuseparator
-Glosario
-\family default
-.
- Se mostrará un cuadro azul claro con la etiqueta 
-\begin_inset Quotes fld
-\end_inset
-
-
-\family sans
-Glosario
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
-, en el sitio en el que se imprimirá el índice.
- El cuadro del glosario no es desplegable como otros cuadros LyX.
- En la salida impresa, el título del glosario aparece como 
-\series bold
-Nomenclatur
-\series default
-a
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Se traduce al lenguaje del documento en algunos idiomas, entre otros francés,
- alemán y español.
-\end_layout
-
-\end_inset
-
-.
- Si no te agrada ese título, puedes cambiarlo redefiniendo en el preámbulo
- el comando 
-\family typewriter
-
-\backslash
-nomname
-\family default
-.
- Por ejemplo, para cambiar el título por 
-\emph on
-Lista de símbolos
-\emph default
- en el 
-\emph on
-Glosario
-\emph default
- añade la siguiente línea al preámbulo:
-\emph on
- 
-\end_layout
-
 \begin_layout LyX-Code
 
-\backslash
-renewcommand{
-\backslash
-nomname}{Lista de símbolos}
-\end_layout
-
-\begin_layout Standard
-Si no te gusta el espacio para los símbolos, lo puedes cambiar mediante
- una línea como la siguiente en el preámbulo:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-renewcommand{
-\backslash
-nomlabelwidth}{3.0cm}
 \end_layout
 
 \begin_layout Section
-Documentos Multipartes
+Documentos multipartes
 \end_layout
 
 \begin_layout Subsection
-Operación General
+Operación general
 \end_layout
 
 \begin_layout Standard
@@ -3345,7 +3019,7 @@ salida
 \end_layout
 
 \begin_layout Subsection
-Referencias Cruzadas entre Archivos
+Referencias cruzadas entre archivos
 \end_layout
 
 \begin_layout Standard
@@ -3365,7 +3039,7 @@ buffer
 \end_layout
 
 \begin_layout Section
-Encabezados y Pies de Página Personalizados
+Encabezados y pies de página personalizados
 \end_layout
 
 \begin_layout Standard
@@ -3706,7 +3380,7 @@ usepackage{graphics}
 \end_layout
 
 \begin_layout Section
-Selección de Marcas de Listas
+Selección de marcas de listas
 \begin_inset LatexCommand label
 name "sec:Marcas"
 
@@ -4078,7 +3752,7 @@ pifont.sty
 \end_layout
 
 \begin_layout Standard
-LyX no se para si usas marcas de paquetes no disponibles.
+LyX no se detiene si usas marcas de paquetes no disponibles.
  Pero si se producen errores de LaTeX al intentar ver o imprimir el archivo,
  probablemente se debe a la falta de algún paquete.
  LyX no restringe su uso porque puede suceder que estés editando localmente
@@ -4106,7 +3780,7 @@ spanish.ldf
 babel
 \family default
  establece unas marcas predeterminadas que, al procesar el archivo con LaTeX,
- sobreescriben las elegidas en LyX.
+ reescriben las elegidas en LyX.
  
 \emph on
 (N.
@@ -4311,7 +3985,7 @@ savelabelitemi}
 \end_layout
 
 \begin_layout Chapter
-Clases Especiales de Documento
+Clases especiales de documentos
 \end_layout
 
 \begin_layout Section
@@ -4801,13 +4475,17 @@ Selecciona
 \family sans
 article (A&A)
 \family default
- en el 
+ en el diálogo 
 \family sans
 \bar under
 D
 \bar default
 ocumento\SpecialChar \menuseparator
-Configuración
+C
+\bar under
+o
+\bar default
+nfiguración
 \family default
  (vale, esto era obvio).
 \end_layout
@@ -5170,7 +4848,7 @@ Si quieres usar alguno de ellos tienes que introducirlos a mano, y
 \end_layout
 
 \begin_layout Subsection
-Figuras y Tablas Flotantes
+Figuras y tablas flotantes
 \end_layout
 
 \begin_layout Standard
@@ -5304,7 +4982,7 @@ paper
 \end_layout
 
 \begin_layout Subsection
-Formato Referee
+Formato «referee»
 \end_layout
 
 \begin_layout Standard
@@ -5349,7 +5027,7 @@ Configuración
 \end_layout
 
 \begin_layout Subsection
-El ejemplo paper
+El ejemplo «paper»
 \end_layout
 
 \begin_layout Standard
@@ -5444,7 +5122,7 @@ Contiene una completa guía del usuario con la que deberías familiarizarte
 \end_layout
 
 \begin_layout Subsection
-Empezar un Artículo Nuevo
+Empezar un artículo nuevo
 \end_layout
 
 \begin_layout Standard
@@ -5496,7 +5174,7 @@ Evil Red Text
 \end_layout
 
 \begin_layout Subsection
-Finalizar el Artículo
+Finalizar el artículo
 \end_layout
 
 \begin_layout Standard
@@ -5623,7 +5301,7 @@ Remítelo.
 \end_layout
 
 \begin_layout Subsection
-Comentarios sobre Comandos Específicos
+Comentarios sobre comandos específicos
 \end_layout
 
 \begin_layout Standard
@@ -6550,7 +6228,7 @@ preprint2
 \end_layout
 
 \begin_layout Subsection
-Advertencia Final
+Advertencia final
 \end_layout
 
 \begin_layout Standard
@@ -6564,7 +6242,7 @@ Tu recorrido puede variar.
 \end_layout
 
 \begin_layout Section
-qijmpc y ijmpd
+ijmpc e ijmpd
 \end_layout
 
 \begin_layout Standard
@@ -6574,7 +6252,7 @@ Panayotis Papasotiriou
 \end_layout
 
 \begin_layout Subsection
-Vista Previa
+Visión previa
 \end_layout
 
 \begin_layout Standard
@@ -7153,6 +6831,176 @@ markboth{Nombres de autores}{Título corto del artículo}
 \end_layout
 
 \begin_layout Section
+iopart
+\end_layout
+
+\begin_layout Standard
+por 
+\noun on
+Uwe Stóhr
+\end_layout
+
+\begin_layout Subsection
+Visión previa
+\end_layout
+
+\begin_layout Standard
+El paquete 
+\family sans
+iopart
+\family default
+ suministra una clase de documento para remitir documentos electrónicos
+ a publicaciones del 
+\emph on
+Institute of Physics
+\emph default
+.
+ Las instrucciones para los autores que quieran crear documentos de esta
+ clase y el paquete 
+\family sans
+iopart 
+\family default
+se pueden descargar del sitio 
+\begin_inset LatexCommand url
+target "ftp://ftp.iop.org/pub/journals/latex2e"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Escribir un documento
+\end_layout
+
+\begin_layout Standard
+La forma más sencilla de escribir un documento es empezar con el archivo
+ 
+\emph on
+IOP-article.lyx
+\emph default
+, disponible en el directorio de ejemplos de LyX.
+ Abre el archivo, guárdalo con otro nombre y comienza a escribir.
+ El archivo de ejemplo explica cómo usar los entornos especiales de texto.
+ Aquí están los consejos más importantes:
+\end_layout
+
+\begin_layout Itemize
+Para poder compilar tu documento a PDF, PS o DVI, asegúrate de que las dos
+ opciones 
+\family sans
+Usar el paquete de ecuaciones AMS
+\family default
+ de la configuración del documento, en el apartado 
+\family sans
+Ecuaciones
+\family default
+, ¡no están marcadas!
+\end_layout
+
+\begin_layout Itemize
+El entorno de título define la clase de tu documento.
+ Por tanto usa uno de los siguientes entornos para el título:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family sans
+Title
+\family default
+ para un artículo
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Review
+\family default
+ para una revista
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Topical
+\family default
+ para una reseña de actualidad
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Comment
+\family default
+ para un comentario
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Note
+\family default
+ para una nota
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Paper
+\family default
+ para un artículo (igual que Title)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Prelim
+\family default
+ para una comunicación preliminar
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Rapid
+\family default
+ para una comunicación rápida
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Letter
+\family default
+ para una carta al editor
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Todos los entornos de título excepto 
+\family sans
+Letter
+\family default
+ pueden tener un título breve opcional.
+\end_layout
+
+\begin_layout Itemize
+Hay un entorno general de título 
+\family sans
+Article
+\family default
+ que no es soportado directamente por LyX.
+ Puede usarse en ERT si tu documento no se adecúa a ninguno de los otros
+ tipos de título.
+\end_layout
+
+\begin_layout Standard
+Para más información, como consejos para formatos especiales de ecuaciones
+ y tablas, echa un vistazo a las pautas dadas por el autor de IOP.
+\end_layout
+
+\begin_layout Section
 Kluwer
 \end_layout
 
@@ -7163,7 +7011,7 @@ Panayotis Papasotiriou
 \end_layout
 
 \begin_layout Subsection
-Vista Previa
+Visión previa
 \end_layout
 
 \begin_layout Standard
@@ -7517,7 +7365,7 @@ Bernd Rellermeyer
 \end_layout
 
 \begin_layout Subsection
-Vista Previa
+Visión previa
 \end_layout
 
 \begin_layout Standard
@@ -10391,7 +10239,7 @@ Confiemos en que alguna futura versión de LyX resuelva esta peculiaridad\Specia
 \end_layout
 
 \begin_layout Subsection
-Hacer una Presentación con 
+Hacer una presentación con 
 \family sans
 Transparencia
 \family default
@@ -11961,7 +11809,7 @@ TeX desaconseja su empleo a causa de potenciales conflictos con el diseño
 
 \end_deeper
 \begin_layout Subsubsection
-Opciones Extras
+Opciones extras
 \end_layout
 
 \begin_layout Standard
@@ -12065,7 +11913,7 @@ fleqn
 \end_layout
 
 \begin_layout Subsection
-Entornos Soportados
+Entornos soportados
 \end_layout
 
 \begin_layout Standard
@@ -12500,7 +12348,7 @@ reference "sec:unsuppfoils"
 \end_layout
 
 \begin_layout Subsection
-Diseño de una Colección de Diapositivas
+Diseño de una colección de diapositivas
 \end_layout
 
 \begin_layout Standard
@@ -12533,7 +12381,7 @@ brir\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Subsubsection
-Página de Título
+Página de título
 \end_layout
 
 \begin_layout Standard
@@ -12566,7 +12414,7 @@ Fecha
 \end_layout
 
 \begin_layout Subsubsection
-Comenzar una Diapositiva
+Comenzar una diapositiva
 \end_layout
 
 \begin_layout Standard
@@ -12626,7 +12474,7 @@ dvips
 \end_layout
 
 \begin_layout Subsubsection
-Teoremas, Lemas, Demostraciones y más
+Teoremas, lemas, demostraciones y más
 \end_layout
 
 \begin_layout Standard
@@ -12734,7 +12582,7 @@ psnfss
 \end_layout
 
 \begin_layout Subsubsection
-Figuras y Tablas
+Figuras y tablas
 \end_layout
 
 \begin_layout Standard
@@ -12750,7 +12598,7 @@ TeX redefine los flotantes de figuras y tablas para que aparezcan exactamente
 \end_layout
 
 \begin_layout Subsubsection
-Encabezados y Pies de página
+Encabezados y pies de página
 \begin_inset LatexCommand label
 name "sec:foilfoot"
 
@@ -13075,7 +12923,7 @@ setlength
 \end_layout
 
 \begin_layout Subsubsection
-Encabezamientos y Pies
+Encabezamientos y pies
 \end_layout
 
 \begin_layout Standard
@@ -13157,7 +13005,7 @@ foils
 \end_layout
 
 \begin_layout Section
-Latex8 (Exposición de Conferencias de
+Latex8 (Exposición de conferencias de
 \noun on
  
 \noun default
@@ -13265,7 +13113,7 @@ Encabezado
 \end_layout
 
 \begin_layout Subsection
-Diferencias entre Pantalla y Papel
+Diferencias entre pantalla y papel
 \end_layout
 
 \begin_layout Standard
@@ -13342,7 +13190,7 @@ Introduce los nombres de los personajes
 \end_layout
 
 \begin_layout Subsection
-Tamaño del papel y Márgenes
+Tamaño del papel y márgenes
 \end_layout
 
 \begin_layout Standard
@@ -13602,7 +13450,7 @@ Introduce los nombres de los personajes
 \end_layout
 
 \begin_layout Subsection
-Tamaño del papel y Márgenes
+Tamaño del papel y márgenes
 \end_layout
 
 \begin_layout Standard
@@ -14007,7 +13855,7 @@ reLyX
 \end_layout
 
 \begin_layout Subsection
-Notas Importantes
+Notas importantes
 \end_layout
 
 \begin_layout Standard
@@ -14303,7 +14151,7 @@ withmarginpar reservar sitio de la página para los márgenes.
 
 \end_deeper
 \begin_layout Section
-Elsevier Journals
+Publicaciones de Elsevier
 \end_layout
 
 \begin_layout Standard
@@ -14402,7 +14250,7 @@ Jürgen Spitzmüller
 \end_layout
 
 \begin_layout Subsection
-Vista Previa
+Visión previa
 \end_layout
 
 \begin_layout Standard
@@ -14839,12 +14687,12 @@ poema
 \end_layout
 
 \begin_layout Chapter
-Importar y Exportar Formatos de Archivo Alternativos
+Importar y exportar formatos de archivo alternativos
 \begin_inset OptArg
-status collapsed
+status open
 
 \begin_layout Standard
-Importar y Exportar
+Importar y exportar
 \end_layout
 
 \end_inset
@@ -14896,7 +14744,7 @@ xportar
 \end_layout
 
 \begin_layout Section
-Importar Otros Formatos
+Importar otros formatos
 \end_layout
 
 \begin_layout Subsection
@@ -14959,12 +14807,14 @@ Noweb
 \begin_layout Standard
 (
 \emph on
-Nota del editor: este tema está sin escribir, obviamente --¿algún voluntario?--
- mer)
+Nota del editor: hay que escribirlo, obviamente ---¿algún voluntario?---
+ mer
+\emph default
+)
 \end_layout
 
 \begin_layout Section
-Exportar a Otros Formatos
+Exportar a otros formatos
 \end_layout
 
 \begin_layout Standard
@@ -14988,10 +14838,10 @@ Ver DVI
 \family default
 , etc.) que normalmente no se miran nunca
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
-El archivo resultante es perfectamente válido LaTeX, aunque el preámbulo
+El archivo resultante es LaTeX perfectamente válido, aunque el preámbulo
  puede resultar un poco extraño porque incluye algunas definiciones puestas
  por LyX que no se verían en archivos escritos por humanos.
 \end_layout
@@ -15142,7 +14992,7 @@ Preferencias
 \end_layout
 
 \begin_layout Subsection
-Texto Simple
+Texto simple
 \family sans
  
 \family default
@@ -15673,12 +15523,12 @@ custom_export_command "mi_comando $$FName"
 \end_layout
 
 \begin_layout Chapter
-Características de LyX que requieren Software Adicional
+Características de LyX que requieren software adicional
 \begin_inset OptArg
 status open
 
 \begin_layout Standard
-Software Adicional
+Software adicional
 \end_layout
 
 \end_inset
@@ -17092,7 +16942,7 @@ lacheck
 \end_layout
 
 \begin_layout Section
-Control de Versiones en LyX
+Control de versiones en LyX
 \end_layout
 
 \begin_layout Standard
@@ -17242,7 +17092,7 @@ man ci
 \begin_layout Subsubsection
 
 \family sans
-Entrar Cambios
+Entrar cambios
 \end_layout
 
 \begin_layout Standard
@@ -17266,7 +17116,7 @@ ci -q -u -m"<descripción>" <nombre-archivo>
 \begin_layout Subsubsection
 
 \family sans
-Comprobar para Editar
+Comprobar para editar
 \end_layout
 
 \begin_layout Standard
@@ -17318,7 +17168,7 @@ co -f -u<version> <nombre-archivo>
 \begin_layout Subsubsection
 
 \family sans
-Deshacer Última Revisión
+Deshacer última revisión
 \end_layout
 
 \begin_layout Standard
@@ -17337,7 +17187,7 @@ rcs -o<version> <nombre-archivo>
 \begin_layout Subsubsection
 
 \family sans
-Mostrar Historial
+Mostrar historial
 \end_layout
 
 \begin_layout Standard
@@ -17359,7 +17209,7 @@ man rlog
 \end_layout
 
 \begin_layout Section
-Programación Literaria
+Programación literaria
 \begin_inset Foot
 status collapsed
 
@@ -17619,7 +17469,7 @@ Desde allí puedes acceder a muchos enlaces de interés y a ejemplos de programa
 \end_layout
 
 \begin_layout Subsection
-LyX y la Programación Literaria
+LyX y la programación literaria
 \end_layout
 
 \begin_layout Standard
@@ -18614,11 +18464,7 @@ Edit Sources
 \end_layout
 
 \begin_layout LyX-Code
-echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@"
-\end_layout
-
-\begin_layout LyX-Code
->~/.lyxpipe.in
+echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
 \end_layout
 
 \begin_layout Standard
@@ -18689,7 +18535,7 @@ Personalización
 \end_layout
 
 \begin_layout Subsubsection
-Ampliación de la Barra de Herramientas
+Ampliación de la barra de herramientas
 \end_layout
 
 \begin_layout Standard
@@ -18883,7 +18729,7 @@ El siguiente asunto es la presencia visible del carácter salto de línea
 \end_layout
 
 \begin_layout Chapter
-Secretos de Maestros en LaTeX 
+Secretos de maestros en LaTeX 
 \begin_inset LatexCommand label
 name "cha:secretos"
 
@@ -18927,7 +18773,7 @@ La mayor parte de las ideas sugeridas aquí requieren archivos menos comunes
 \end_layout
 
 \begin_layout Section
-Columnas Múltiples
+Columnas múltiples
 \end_layout
 
 \begin_layout Standard
@@ -19301,16 +19147,16 @@ examples/multicol.lyx
 \end_layout
 
 \begin_layout Section
-Numeración en el Entorno de Párrafo 
+Numeración en el entorno de párrafo 
 \family sans
 Enumeración
 \family default
 
 \begin_inset OptArg
-status collapsed
+status open
 
 \begin_layout Standard
-Numeración en Enumeración
+Numeración con Enumeración
 \end_layout
 
 \end_inset
@@ -19351,42 +19197,18 @@ del programa
 \family sans
 babel 
 \family default
-establece por defecto la secuencia <
-\begin_inset Quotes eld
+establece de manera predeterminada la secuencia 
+\begin_inset Quotes fld
 \end_inset
 
-1.
-\begin_inset Quotes erd
+1.\InsetSpace ~
+a)\InsetSpace ~
+1)\InsetSpace ~
+a'
+\begin_inset Quotes frd
 \end_inset
 
-,\InsetSpace ~
-
-\begin_inset Quotes eld
-\end_inset
-
-a)
-\begin_inset Quotes erd
-\end_inset
-
-,\InsetSpace ~
-
-\begin_inset Quotes eld
-\end_inset
-
-1)
-\begin_inset Quotes erd
-\end_inset
-
-,\InsetSpace ~
-
-\begin_inset Quotes eld
-\end_inset
-
-a')
-\begin_inset Quotes erd
-\end_inset
-
->.
+.
  
 \emph on
 (N.
@@ -19660,7 +19482,7 @@ a+
 \end_layout
 
 \begin_layout Section
-Mayúsculas Capitulares
+Mayúsculas capitulares
 \end_layout
 
 \begin_layout Standard
@@ -19851,7 +19673,7 @@ dropping.
 \end_layout
 
 \begin_layout Section
-Párrafos con Formas Diversas
+Párrafos con formas diversas
 \end_layout
 
 \begin_layout Standard

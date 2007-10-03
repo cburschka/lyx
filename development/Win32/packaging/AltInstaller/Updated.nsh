@@ -15,6 +15,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\splash.lyx"
+ SetOutPath "$INSTDIR\Resources\examples\es"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\es\splash.lyx"
  SetOutPath "$INSTDIR\Resources\images\math"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\lparen_rparen.xpm"
  File "${PRODUCT_SOURCEDIR}\Resources\images\math\lbracket_rbracket.xpm"
