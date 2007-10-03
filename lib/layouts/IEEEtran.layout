@@ -463,11 +463,13 @@ End
 
 Style MarkBoth
 	LaTeXType             Command
-	LaTeXName             IEEEmarkboth
+	LaTeXName             markboth
 	Align                 Center
 	Preamble
-	% protect against redefinition of \markboth by babel >= 3.6
-	\let\IEEEmarkboth=\markboth
+	% protect \markboth against an old bug reintroduced in babel >= 3.8g
+	\let\oldforeign@language\foreign@language
+	\DeclareRobustCommand{\foreign@language}[1]{%
+	  \lowercase{\oldforeign@language{#1}}}
 	EndPreamble
 End
 
