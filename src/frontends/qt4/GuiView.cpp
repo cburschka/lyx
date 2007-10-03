@@ -736,14 +736,15 @@ bool GuiViewBase::event(QEvent * e)
 	//case QEvent::Drop:
 	//	break;
 
-	case QEvent::WindowActivate: {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
-		BOOST_ASSERT(wa);
-		BufferView & bv = wa->bufferView();
-		connectBufferView(bv);
-		connectBuffer(bv.buffer());
+	case QEvent::WindowActivate:
+		if (d.tab_widget_->count()) {
+			GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
+			BOOST_ASSERT(wa);
+			BufferView & bv = wa->bufferView();
+			connectBufferView(bv);
+			connectBuffer(bv.buffer());
+		}
 		return QMainWindow::event(e);
-	}
 
 	case QEvent::ShortcutOverride: {
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
