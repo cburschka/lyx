@@ -241,8 +241,11 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	sshift_ = xascent / 4;
 	kerning_ = 0;
 
-	if (empty())
+	if (empty()) {
+		// Cache the dimension.
+		mi.base.bv->coordCache().arrays().add(this, dim);
 		return;
+	}
 
 	dim.asc = 0;
 	dim.wid = 0;
