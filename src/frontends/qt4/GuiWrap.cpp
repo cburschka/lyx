@@ -183,10 +183,20 @@ void GuiWrapDialog::updateContents()
 	Length len_w(params.width);
 	widthED->setText(QString::number(len_w.value()));
 	widthUnitLC->setCurrentItem(len_w.unit());
+
 	Length len_o(params.overhang);
 	overhangED->setText(QString::number(len_o.value()));
 	overhangUnitLC->setCurrentItem(len_o.unit());
+	if (len_o.value() == 0)
+		overhangCB->setCheckState(Qt::Unchecked);
+	else
+		overhangCB->setCheckState(Qt::Checked);
+
 	linesSB->setValue(params.lines);
+	if (params.lines == 0)
+		linesCB->setCheckState(Qt::Unchecked);
+	else
+		linesCB->setCheckState(Qt::Checked);
 
 	int item = 0;
 	if (params.placement == "i")
