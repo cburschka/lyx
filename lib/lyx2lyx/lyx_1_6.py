@@ -308,12 +308,14 @@ def revert_inset_command(document):
   i = 0
   while 1:
     i = find_token(document.body, "\\begin_inset CommandInset", i)
+    if i == -1:
+      return
     nextline = document.body[i+1]
     r = re.compile(r'LatexCommand\s+(.*)$')
     m = r.match(nextline)
     if not m:
       document.warning("Malformed LyX document: Missing LatexCommand in " + document.body[i] + ".")
-      return
+      continue
     cmdName = m.group(1)
     insertion = ["\\begin_inset LatexCommand " + cmdName]
     document.body[i : i+2] = insertion
