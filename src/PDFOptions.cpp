@@ -93,6 +93,9 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 	string opt;
 	
 	opt = "\\usepackage[";
+	// since LyX uses unicode, also set the PDF strings to unicode strings with the
+	// hyperref option "unicode"
+	opt += "unicode=true,\n ";
 	if (!title.empty())
 		opt += "pdftitle={"   + title + "},\n ";
 	if (!author.empty())
@@ -101,6 +104,10 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 		opt += "pdfsubject={" + subject + "},\n ";
 	if (!keywords.empty())
 		opt += "pdfkeywords={" + keywords + "},\n ";
+	// try to extract author and title from document when none is
+	// explicitely given
+	if (title.empty() && author.empty())
+		opt += "pdfusetitle,\n ";
 	opt += "bookmarks=" + convert<string>(bookmarks) + ',';
 	if (bookmarks) {
 		opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
