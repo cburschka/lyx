@@ -14,19 +14,10 @@
 #include "debug.h"
 #include "FuncRequest.h"
 
-#include "support/lyxalgo.h" // sorted
-#include "support/lstrings.h"
-#include "support/filetools.h"
-
 using std::string;
 using std::map;
 
 namespace lyx {
-
-using support::compare;
-using support::libFileSearch;
-using support::subst;
-
 namespace frontend {
 
 ControlMath::ControlMath(Dialog & dialog)
@@ -410,110 +401,6 @@ char const *  latex_delimiters[] = {
 
 
 int const nr_latex_delimiters = sizeof(latex_delimiters) / sizeof(char const *);
-
-namespace {
-
-struct PngMap {
-	char const * key;
-	char const * value;
-};
-
-
-bool operator<(PngMap const & lhs, PngMap const & rhs)
-{
-		return compare(lhs.key, rhs.key) < 0;
-}
-
-
-class CompareKey {
-public:
-	CompareKey(string const & name) : name_(name) {}
-	bool operator()(PngMap const & other) const {
-		return other.key == name_;
-	}
-private:
-	string const name_;
-};
-
-
-PngMap sorted_png_map[] = {
-	{ "Bumpeq", "bumpeq2" },
-	{ "Cap", "cap2" },
-	{ "Cup", "cup2" },
-	{ "Delta", "delta2" },
-	{ "Downarrow", "downarrow2" },
-	{ "Gamma", "gamma2" },
-	{ "Lambda", "lambda2" },
-	{ "Leftarrow", "leftarrow2" },
-	{ "Leftrightarrow", "leftrightarrow2" },
-	{ "Longleftarrow", "longleftarrow2" },
-	{ "Longleftrightarrow", "longleftrightarrow2" },
-	{ "Longrightarrow", "longrightarrow2" },
-	{ "Omega", "omega2" },
-	{ "Phi", "phi2" },
-	{ "Pi", "pi2" },
-	{ "Psi", "psi2" },
-	{ "Rightarrow", "rightarrow2" },
-	{ "Sigma", "sigma2" },
-	{ "Subset", "subset2" },
-	{ "Supset", "supset2" },
-	{ "Theta", "theta2" },
-	{ "Uparrow", "uparrow2" },
-	{ "Updownarrow", "updownarrow2" },
-	{ "Upsilon", "upsilon2" },
-	{ "Vdash", "vdash3" },
-	{ "Xi", "xi2" },
-	{ "nLeftarrow", "nleftarrow2" },
-	{ "nLeftrightarrow", "nleftrightarrow2" },
-	{ "nRightarrow", "nrightarrow2" },
-	{ "nVDash", "nvdash3" },
-	{ "nvDash", "nvdash2" },
-	{ "textrm \\AA", "textrm_AA"},
-	{ "textrm \\O", "textrm_Oe"},
-	{ "vDash", "vdash2" }
-};
-
-size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
-
-} // namespace anon
-
-
-string const find_png(string const & name)
-{
-	PngMap const * const begin = sorted_png_map;
-	PngMap const * const end = begin + nr_sorted_png_map;
-	BOOST_ASSERT(sorted(begin, end));
-
-	PngMap const * const it =
-		std::find_if(begin, end, CompareKey(name));
-
-	string png_name;
-	if (it != end)
-		png_name = it->value;
-	else {
-		png_name = subst(name, "_", "underscore");
-		png_name = subst(png_name, ' ', '_');
-
-		// This way we can have "math-delim { }" on the toolbar.
-		png_name = subst(png_name, "(", "lparen");
-		png_name = subst(png_name, ")", "rparen");
-		png_name = subst(png_name, "[", "lbracket");
-		png_name = subst(png_name, "]", "rbracket");
-		png_name = subst(png_name, "{", "lbrace");
-		png_name = subst(png_name, "}", "rbrace");
-		png_name = subst(png_name, "|", "bars");
-		png_name = subst(png_name, ",", "thinspace");
-		png_name = subst(png_name, ":", "mediumspace");
-		png_name = subst(png_name, ";", "thickspace");
-		png_name = subst(png_name, "!", "negthinspace");
-	}
-
-	LYXERR(Debug::GUI) << "find_png(" << name << ")\n"
-			   << "Looking for math PNG called \""
-			   << png_name << '"' << std::endl;
-
-	return libFileSearch("images/math/", png_name, "png").absFilename();
-}
 
 } // namespace frontend
 } // namespace lyx

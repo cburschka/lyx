@@ -111,12 +111,6 @@ extern int const nr_latex_ams_ops;
 extern char const * latex_delimiters[];
 extern int const nr_latex_delimiters;
 
-/**
- * Return the mangled PNG filename of the given
- * math symbol.
- */
-std::string const find_png(std::string const & name);
-
 } // namespace frontend
 } // namespace lyx
 
