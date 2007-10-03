@@ -738,13 +738,17 @@ bool GuiViewBase::event(QEvent * e)
 
 	case QEvent::WindowActivate:
 		if (d.tab_widget_->count()) {
-			GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
+			GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(
+				d.tab_widget_->currentWidget());
 			BOOST_ASSERT(wa);
 			BufferView & bv = wa->bufferView();
 			connectBufferView(bv);
 			connectBuffer(bv.buffer());
-			// The document structure might have changed in another view.
+			// The document structure, name and dialogs might have
+			// changed in another view.
 			updateToc();
+			updateWindowTitle();
+			getDialogs().updateBufferDependent(true);
 		}
 		return QMainWindow::event(e);
 
