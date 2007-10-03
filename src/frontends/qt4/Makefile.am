@@ -6,7 +6,7 @@ CLEANFILES += $(MOCEDFILES)
 BUILT_SOURCES = $(UIFILES:%.ui=ui_%.h)
 BUILT_SOURCES += $(MOCEDFILES)
 
-#########################  Translation  #############################
+#########################  Qt stuff  #############################
 # Use _() for localization instead of tr() or trUtf8()
 UIC4FLAGS=-tr lyx::qt_
 
@@ -17,6 +17,17 @@ MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
 
 %_moc.cpp: %.h
 	$(MOC4) -o $@ $<
+
+Resources.qrc: Makefile
+	echo "<!DOCTYPE RCC><RCC version='1.0'><qresource>" > $@
+	find $(top_srcdir)/lib/images -name '*.png' \
+		| sed -e 's:$(top_srcdir)/lib/\(.*\):<file alias="\1">&</file>:' \
+		>> $@
+	echo "</qresource></RCC>" >> $@
+
+Resources.cpp: Resources.qrc
+	rcc $< -o $@
+
 
 #########################  LIBRARIES  #############################
 
@@ -35,6 +46,7 @@ AM_CPPFLAGS += \
 	-I$(top_srcdir)/src/frontends/controllers
 
 SOURCEFILES = \
+	Resources.cpp \
 	Action.cpp \
 	alert_pimpl.cpp \
 	BulletsModule.cpp \
