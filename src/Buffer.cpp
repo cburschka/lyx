@@ -119,7 +119,6 @@ using std::vector;
 using std::string;
 using std::time_t;
 
-
 namespace lyx {
 
 using support::addName;
@@ -2020,13 +2019,17 @@ private:
 };
 
 
+#if !defined (HAVE_FORK)
+# define fork() -1
+#endif
+
 int AutoSaveBuffer::generateChild()
 {
 	// tmp_ret will be located (usually) in /tmp
 	// will that be a problem?
-	pid_t const pid = fork(); // If you want to debug the autosave
-	// you should set pid to -1, and comment out the
-	// fork.
+	pid_t const pid = fork();
+	// If you want to debug the autosave
+	// you should set pid to -1, and comment out the fork.
 	if (pid == 0 || pid == -1) {
 		// pid = -1 signifies that lyx was unable
 		// to fork. But we will do the save
