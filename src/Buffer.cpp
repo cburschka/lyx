@@ -88,6 +88,10 @@
 #include "support/textutils.h"
 #include "support/convert.h"
 
+#if !defined (HAVE_FORK)
+# define fork() -1
+#endif
+
 #include <boost/bind.hpp>
 #include <boost/filesystem/exception.hpp>
 #include <boost/filesystem/operations.hpp>

@@ -121,7 +121,6 @@ src_header_files = Split('''
     Variables.h
     WordLangTuple.h
     buffer_funcs.h
-    callback.h
     debug.h
     factory.h
     gettext.h
@@ -223,7 +222,6 @@ src_pre_files = Split('''
     VSpace.cpp
     boost.cpp
     buffer_funcs.cpp
-    callback.cpp
     debug.cpp
     factory.cpp
     gettext.cpp
@@ -683,6 +681,7 @@ src_frontends_header_files = Split('''
     FontLoader.h
     FontMetrics.h
     Gui.h
+    KeyModifier.h
     KeySymbol.h
     LyXView.h
     NoGuiFontLoader.h
@@ -692,7 +691,6 @@ src_frontends_header_files = Split('''
     WorkArea.h
     WorkAreaManager.h
     alert.h
-    key_state.h
     mouse_state.h
 ''')
 
