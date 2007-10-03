@@ -14,7 +14,6 @@
 
 #include "frontends/LyXView.h"
 
-#include "callback.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"

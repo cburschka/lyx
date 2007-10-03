@@ -2019,4 +2019,100 @@ void BufferView::setGuiDelegate(frontend::GuiBufferViewDelegate * gui)
 }
 
 
+static docstring contentsOfPlaintextFile(BufferView * bv, string const & f,
+	bool asParagraph)
+{
+	FileName fname(f);
+
+	if (fname.empty()) {
+		FileDialog fileDlg(_("Select file to insert"),
+				   ( asParagraph
+				     ? LFUN_FILE_INSERT_PLAINTEXT_PARA 
+				     : LFUN_FILE_INSERT_PLAINTEXT) );
+
+		FileDialog::Result result =
+			fileDlg.open(from_utf8(bv->buffer().filePath()),
+				     FileFilterList(), docstring());
+
+		if (result.first == FileDialog::Later)
+			return docstring();
+
+		fname = makeAbsPath(to_utf8(result.second));
+
+		if (fname.empty())
+			return docstring();
+	}
+
+	if (!fs::is_readable(fname.toFilesystemEncoding())) {
+		docstring const error = from_ascii(strerror(errno));
+		docstring const file = makeDisplayPath(fname.absFilename(), 50);
+		docstring const text =
+		  bformat(_("Could not read the specified document\n"
+			    "%1$s\ndue to the error: %2$s"), file, error);
+		Alert::error(_("Could not read file"), text);
+		return docstring();
+	}
+
+	ifstream ifs(fname.toFilesystemEncoding().c_str());
+	if (!ifs) {
+		docstring const error = from_ascii(strerror(errno));
+		docstring const file = makeDisplayPath(fname.absFilename(), 50);
+		docstring const text =
+		  bformat(_("Could not open the specified document\n"
+			    "%1$s\ndue to the error: %2$s"), file, error);
+		Alert::error(_("Could not open file"), text);
+		return docstring();
+	}
+
+	ifs.unsetf(ios::skipws);
+	istream_iterator<char> ii(ifs);
+	istream_iterator<char> end;
+#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
+	// We use this until the compilers get better...
+	std::vector<char> tmp;
+	copy(ii, end, back_inserter(tmp));
+	string const tmpstr(tmp.begin(), tmp.end());
+#else
+	// This is what we want to use and what we will use once the
+	// compilers get good enough.
+	//string tmpstr(ii, end); // yet a reason for using std::string
+	// alternate approach to get the file into a string:
+	string tmpstr;
+	copy(ii, end, back_inserter(tmpstr));
+#endif
+
+	// FIXME UNICODE: We don't know the encoding of the file
+	docstring file_content = from_utf8(tmpstr);
+	if (file_content.empty()) {
+		Alert::error(_("Reading not UTF-8 encoded file"),
+			     _("The file is not UTF-8 encoded.\n"
+			       "It will be read as local 8Bit-encoded.\n"
+			       "If this does not give the correct result\n"
+			       "then please change the encoding of the file\n"
+			       "to UTF-8 with a program other than LyX.\n"));
+		file_content = from_local8bit(tmpstr);
+	}
+
+	return normalize_c(file_content);
+}
+
+// Insert plain text file (if filename is empty, prompt for one)
+void BufferView::insertPlaintextFile(string const & f, bool asParagraph)
+{
+	docstring const tmpstr =
+	  contentsOfPlaintextFile(this, f, asParagraph);
+
+	if (tmpstr.empty())
+		return;
+
+	Cursor & cur = cursor();
+	cap::replaceSelection(cur);
+	recordUndo(cur);
+	if (asParagraph)
+		cur.innerText()->insertStringAsParagraphs(cur, tmpstr);
+	else
+		cur.innerText()->insertStringAsLines(cur, tmpstr);
+}
+
+
 } // namespace lyx

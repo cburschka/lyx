@@ -37,7 +37,6 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "BufferList.h"
-#include "callback.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "Layout.h"
@@ -78,6 +77,8 @@ namespace lyx {
 using support::FileName;
 using support::libFileSearch;
 using support::makeDisplayPath;
+
+extern bool quitting;
 
 namespace frontend {
 

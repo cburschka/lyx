@@ -183,8 +183,6 @@ liblyxcore_la_SOURCES = \
 	lfuns.h \
 	LyXAction.cpp \
 	LyXAction.h \
-	callback.cpp \
-	callback.h \
 	LyX.cpp \
 	lyxfind.cpp \
 	lyxfind.h \

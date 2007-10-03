@@ -256,6 +256,8 @@ public:
 	///
 	void setGuiDelegate(frontend::GuiBufferViewDelegate *);
 
+	// Insert plain text file (if filename is empty, prompt for one)
+	void insertPlaintextFile(std::string const & fileName, bool asParagraph);
 private:
 	// the position relative to (0, baseline) of outermost paragraph
 	Point coordOffset(DocIterator const & dit, bool boundary) const;
