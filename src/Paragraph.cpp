@@ -1672,7 +1672,9 @@ docstring Paragraph::expandLabel(Layout_ptr const & layout,
 		size_t const j = fmt.find('@', i + 1);
 		if (j != docstring::npos) {
 			docstring parent(fmt, i + 1, j - i - 1);
-			docstring label = expandLabel(tclass[parent], bparams);
+			docstring label = from_ascii("??");
+			if (tclass.hasLayout(parent))
+				label = expandLabel(tclass[parent], bparams);
 			fmt = docstring(fmt, 0, i) + label + docstring(fmt, j + 1, docstring::npos);
 		}
 	}

@@ -195,6 +195,8 @@ What's new
 - Fix bug in box dialog where the inner box was empty when switching
   the box decoration (bug 4233).
 
+- Fix a crash when a counter was ill-defined in a layout file (bug 4232).
+
 
 * DOCUMENTATION
 
