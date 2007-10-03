@@ -743,6 +743,8 @@ bool GuiViewBase::event(QEvent * e)
 			BufferView & bv = wa->bufferView();
 			connectBufferView(bv);
 			connectBuffer(bv.buffer());
+			// The document structure might have changed in another view.
+			updateToc();
 		}
 		return QMainWindow::event(e);
 
