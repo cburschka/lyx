@@ -1287,11 +1287,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			updateFlags = Update::None;
 			break;
 
-		case LFUN_FILE_NEW:
+		case LFUN_FILE_NEW: {
 			BOOST_ASSERT(lyx_view_);
-			newFile(*lyx_view_, argument);
+			string name;
+			string tmpname = split(argument, name, ':'); // Split filename
+			Buffer * const b = newFile(name, tmpname);
+			if (b)
+				lyx_view_->setBuffer(b);
 			updateFlags = Update::None;
 			break;
+		}
 
 		case LFUN_FILE_OPEN:
 			BOOST_ASSERT(lyx_view_);

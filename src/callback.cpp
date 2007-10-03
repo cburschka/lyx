@@ -91,28 +91,6 @@ using frontend::LyXView;
 
 namespace Alert = frontend::Alert;
 
-//
-// Copyright CHT Software Service GmbH
-// Uwe C. Schroeder
-//
-// create new file with template
-// SERVERCMD !
-//
-void newFile(LyXView & lv, string const & filename)
-{
-	// Split argument by :
-	string name;
-	string tmpname = split(filename, name, ':');
-	LYXERR(Debug::INFO) << "Arg is " << filename
-			    << "\nName is " << name
-			    << "\nTemplate is " << tmpname << endl;
-
-	Buffer * const b = newFile(name, tmpname);
-	if (b)
-		lv.setBuffer(b);
-}
-
-
 // Insert plain text file (if filename is empty, prompt for one)
 void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 {
