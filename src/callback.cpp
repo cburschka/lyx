@@ -214,8 +214,8 @@ namespace {
 class AutoSaveBuffer : public ForkedProcess {
 public:
 	///
-	AutoSaveBuffer(BufferView & bv, FileName const & fname)
-		: bv_(bv), fname_(fname) {}
+	AutoSaveBuffer(Buffer & buffer, FileName const & fname)
+		: buffer_(buffer), fname_(fname) {}
 	///
 	virtual shared_ptr<ForkedProcess> clone() const
 	{
@@ -227,7 +227,7 @@ private:
 	///
 	virtual int generateChild();
 	///
-	BufferView & bv_;
+	Buffer & buffer_;
 	FileName fname_;
 };
 
@@ -255,7 +255,7 @@ int AutoSaveBuffer::generateChild()
 
 		FileName const tmp_ret(tempName(FileName(), "lyxauto"));
 		if (!tmp_ret.empty()) {
-			bv_.buffer().writeFile(tmp_ret);
+			buffer_.writeFile(tmp_ret);
 			// assume successful write of tmp_ret
 			if (!rename(tmp_ret, fname_)) {
 				failed = true;
@@ -271,11 +271,11 @@ int AutoSaveBuffer::generateChild()
 
 		if (failed) {
 			// failed to write/rename tmp_ret so try writing direct
-			if (!bv_.buffer().writeFile(fname_)) {
+			if (!buffer_.writeFile(fname_)) {
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1) // emit message signal.
-					bv_.buffer().message(_("Autosave failed!"));
+					buffer_.message(_("Autosave failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -292,26 +292,27 @@ void autoSave(BufferView * bv)
 	// should probably be moved into BufferList (Lgb)
 	// Perfect target for a thread...
 {
-	if (bv->buffer().isBakClean() || bv->buffer().isReadonly()) {
+	Buffer & buf = bv->buffer();
+	if (buf.isBakClean() || buf.isReadonly()) {
 		// We don't save now, but we'll try again later
-		bv->buffer().resetAutosaveTimers();
+		buf.resetAutosaveTimers();
 		return;
 	}
 
 	// emit message signal.
-	bv->buffer().message(_("Autosaving current document..."));
+	buf.message(_("Autosaving current document..."));
 
 	// create autosave filename
-	string fname = bv->buffer().filePath();
+	string fname = buf.filePath();
 	fname += '#';
-	fname += onlyFilename(bv->buffer().fileName());
+	fname += onlyFilename(buf.fileName());
 	fname += '#';
 
-	AutoSaveBuffer autosave(*bv, FileName(fname));
+	AutoSaveBuffer autosave(buf, FileName(fname));
 	autosave.start();
 
-	bv->buffer().markBakClean();
-	bv->buffer().resetAutosaveTimers();
+	buf.markBakClean();
+	buf.resetAutosaveTimers();
 }
 
 
