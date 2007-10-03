@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -33,26 +33,23 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-
 ¡Bienvenido a LyX!
 \end_layout
 
 \begin_layout Section*
-
 Las n primeras cosas que debe saber al usar LyX
 \end_layout
 
 \begin_layout Enumerate
-
 LyX viene con una excelente documentación (por favor, ¡úsela!).
- Comience en el menú con
-\family default
- 
+ Comience en el menú con 
 \family sans
 \bar under
 A
@@ -65,9 +62,7 @@ I
 ntroducción
 \family default
 , que le hará una introducción muy breve a los manuales.
- Después aprenda a usar LyX con
-\family default
- 
+ Después aprenda a usar LyX con 
 \family sans
 \bar under
 A
@@ -83,7 +78,6 @@ utorial
 \end_layout
 
 \begin_layout Enumerate
-
 LyX es lo que llamamos un 
 \begin_inset Quotes eld
 \end_inset
@@ -101,7 +95,6 @@ procesador de documentos
 status collapsed
 
 \begin_layout Standard
-
 ¿Hemos dicho ya que debería leer la documentación?
 \end_layout
 
@@ -111,11 +104,8 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
-
 La salida de LyX tiene un aspecto impecable.
- Ejecute en el menú
-\family default
- 
+ Ejecute en el menú 
 \family sans
 \bar under
 A
@@ -132,7 +122,6 @@ vi
 \end_layout
 
 \begin_layout Enumerate
-
 Sí, LyX puede imitar casi toda la funcionalidad de LaTeX.
  Y sí, LyX puede importar ficheros LaTeX.
  Los usuarios experimentados de LaTeX deberían leerse el capítulo 
@@ -143,9 +132,7 @@ LyX para usuarios de LaTeX
 \begin_inset Quotes erd
 \end_inset
 
-, y hojear el resto del
-\emph default
- 
+, y hojear el resto del 
 \emph on
 Tutorial
 \emph default
@@ -155,21 +142,11 @@ Tutorial
 \end_layout
 
 \begin_layout Enumerate
-
 LyX tiene montones de ventajas para aquellos que leen o escriben en un idioma
  distinto del inglés.
  Además, las asociaciones de teclas, la barra de herramientas y muchas otras
- características son altamente configurables (la mayor parte editando su
- fichero
-\family default
- 
-\family typewriter
-lyxrc
-\family default
-).
- Mire en
-\family default
- 
+ características son altamente configurables.
+ Mire en 
 \family sans
 \bar under
 A
@@ -185,18 +162,15 @@ ersonalización
 \end_layout
 
 \begin_layout Enumerate
+La página de LyX en Internet está en 
+\begin_inset LatexCommand url
+target "http://www.lyx.org"
 
-La página de LyX en Internet está en
-\family default
- 
-\family typewriter
-www.lyx.org
-\family default
+\end_inset
+
 .
  Consiga allí información sobre el programa, subscríbase a la(s) lista(s)
- de correo, obtenga el
-\emph default
- 
+ de correo, obtenga el 
 \emph on
 Tour Gráfico de LyX
 \emph default
