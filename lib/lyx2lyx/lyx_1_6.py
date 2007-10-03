@@ -303,8 +303,6 @@ def revert_inset_command(document):
     Some insets may end up being converted to insets earlier versions of LyX
     will not be able to recognize. Not sure what to do about that.
   """
-  # FIXME, this routine doesn't work, must be fixed before LyX 1.6.0, see
-  # http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128426.html
   i = 0
   while 1:
     i = find_token(document.body, "\\begin_inset CommandInset", i)
