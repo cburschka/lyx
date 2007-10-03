@@ -294,10 +294,10 @@ GuiViewBase::~GuiViewBase()
 void GuiViewBase::close()
 {
 	quitting_by_menu_ = true;
-	for (int i = 0; i != d.tab_widget_->count(); ++i) {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(i));
+	while (d.tab_widget_->count()) {
+		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(0));
 		BOOST_ASSERT(wa);
-		d.tab_widget_->removeTab(i);
+		d.tab_widget_->removeTab(0);
 		delete wa;
 	}
 	QMainWindow::close();
@@ -722,7 +722,6 @@ bool GuiViewBase::event(QEvent * e)
 	switch (e->type())
 	{
 	// Useful debug code:
-	//case QEvent::WindowActivate:
 	//case QEvent::ActivationChange:
 	//case QEvent::WindowDeactivate:
 	//case QEvent::Paint:
@@ -736,6 +735,15 @@ bool GuiViewBase::event(QEvent * e)
 	//case QEvent::DragLeave:
 	//case QEvent::Drop:
 	//	break;
+
+	case QEvent::WindowActivate: {
+		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
+		BOOST_ASSERT(wa);
+		BufferView & bv = wa->bufferView();
+		connectBufferView(bv);
+		connectBuffer(bv.buffer());
+		return QMainWindow::event(e);
+	}
 
 	case QEvent::ShortcutOverride: {
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);

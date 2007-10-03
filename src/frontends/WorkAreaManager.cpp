@@ -47,9 +47,6 @@ void WorkAreaManager::redrawAll()
 
 void WorkAreaManager::closeAll()
 {
-	if (quitting)
-		return;
-
 	while (!work_areas_.empty())
 		// WorkArea is de-registering itself.
 		(*work_areas_.begin())->close();

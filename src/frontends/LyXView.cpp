@@ -80,8 +80,6 @@ LyXView::LyXView(int id)
 
 LyXView::~LyXView()
 {
-	disconnectBuffer();
-	disconnectBufferView();
 	delete dialogs_;
 	delete autosave_timeout_;
 }
