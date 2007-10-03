@@ -95,24 +95,18 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 	opt = "\\usepackage[";
 	// since LyX uses unicode, also set the PDF strings to unicode strings with the
 	// hyperref option "unicode"
-	opt += "unicode=true,\n ";
-	if (!title.empty())
-		opt += "pdftitle={"   + title + "},\n ";
-	if (!author.empty())
-		opt += "pdfauthor={"  + author + "},\n ";
-	if (!subject.empty())
-		opt += "pdfsubject={" + subject + "},\n ";
-	if (!keywords.empty())
-		opt += "pdfkeywords={" + keywords + "},\n ";
+	opt += "unicode=true, ";
+	
 	// try to extract author and title from document when none is
 	// explicitely given
 	if (title.empty() && author.empty())
 		opt += "pdfusetitle,\n ";
+	else
+		opt += "\n ";
 	opt += "bookmarks=" + convert<string>(bookmarks) + ',';
 	if (bookmarks) {
 		opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
 		opt += "bookmarksopen=" + convert<string>(bookmarksopen) + ',';
-	
 		if (bookmarksopen)
 			opt += "bookmarksopenlevel=" + convert<string>(bookmarksopenlevel) + ',';
 	}
@@ -129,12 +123,28 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 	opt += "colorlinks="     + convert<string>(colorlinks) + ',';
 	if (!pagemode.empty())
 		opt += "pdfpagemode=" + pagemode + ',';
-	if (!quoted_options.empty()){
-		opt += "\n ";
-		opt += quoted_options_get();
-	}
+	
 	opt = support::rtrim(opt,",");
 	opt += "]\n {hyperref}\n";
+
+	// load the pdftitle etc. as hypersetup, otherwise you'll get
+	// LaTeX-errors when using non-latin characters
+	string hyperset;
+	if (!title.empty())
+		hyperset += "pdftitle={"   + title + "},";
+	if (!author.empty())
+		hyperset += "\n pdfauthor={"  + author + "},";
+	if (!subject.empty())
+		hyperset += "\n pdfsubject={" + subject + "},";
+	if (!keywords.empty())
+		hyperset += "\n pdfkeywords={" + keywords + "},";
+	if (!quoted_options.empty()){
+		hyperset += "\n ";
+		hyperset += quoted_options_get();
+	}
+	hyperset = support::rtrim(hyperset,",");
+	if (!hyperset.empty())
+		opt += "\\hypersetup{" + hyperset + "}\n ";
 	
 	// FIXME UNICODE
 	os << from_utf8(opt);
