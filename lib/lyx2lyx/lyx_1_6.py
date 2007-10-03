@@ -391,7 +391,6 @@ def revert_latexcommand_index(document):
         i = i + 5
 
 
-
 def revert_wraptable(document):
     "Revert wrap table to wrap figure."
     i = 0
@@ -420,7 +419,7 @@ convert = [[277, [fix_wrong_tables]],
            [286, []],
            [287, [convert_wrapfig_options]],
            [288, [convert_inset_command]],
-           [289, [convert_latexcommand_index]]
+           [289, [convert_latexcommand_index]],
            [290, []]
           ]
 
