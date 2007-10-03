@@ -391,8 +391,6 @@ public:
        
 	/// This function is called when the buffer is changed.
 	void changed() const;
-	/// This function is called if the buffer is being closed.
-	void closing(Buffer *) const;
 	/// This function is called when the buffer structure is changed.
 	void structureChanged() const;
 	/// This function is called when an embedded file is changed
