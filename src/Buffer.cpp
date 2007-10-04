@@ -154,7 +154,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 290; //Uwe Stöhr, wrap table
+int const LYX_FORMAT = 291; //Uwe Stöhr, Vietnamese
 
 } // namespace anon
 

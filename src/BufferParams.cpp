@@ -54,6 +54,7 @@
 
 using std::count;
 using std::endl;
+using std::find;
 using std::string;
 using std::istringstream;
 using std::ostream;
@@ -899,7 +900,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				language_options << ',';
 			language_options << language->babel();
 		}
-		if (lyxrc.language_global_options && !language_options.str().empty())
+		// when Vietnamese is used, babel must directly be loaded with the
+		// language options, not in the class options
+		int viet = language_options.str().find("vietnam");
+		// viet = string::npos when not found
+		if (lyxrc.language_global_options && !language_options.str().empty()
+			&& viet == string::npos)
 			clsoptions << language_options.str() << ',';
 	}
 
@@ -1548,7 +1554,11 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	// other languages are used (lang_opts is then empty)
 	if (lang_opts.empty())
 		return string();
-	if (!lyxrc.language_global_options)
+	// when Vietnamese is used, babel must directly be loaded with the
+	// language options
+	int viet = lang_opts.find("vietnam");
+	// viet = string::npos when not found
+	if (!lyxrc.language_global_options || viet != string::npos)
 		return "\\usepackage[" + lang_opts + "]{babel}";
 	return lang_pack;
 }
