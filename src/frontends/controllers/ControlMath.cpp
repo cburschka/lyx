@@ -150,26 +150,5 @@ std::string const & ControlMath::texName(char_type math_symbol) const
 }
 
 
-char const * function_names[] = {
-	"arccos", "arcsin", "arctan", "arg", "bmod",
-	"cos", "cosh", "cot", "coth", "csc", "deg",
-	"det", "dim", "exp", "gcd", "hom", "inf", "ker",
-	"lg", "lim", "liminf", "limsup", "ln", "log",
-	"max", "min", "sec", "sin", "sinh", "sup",
-	"tan", "tanh", "Pr", ""
-};
-
-int const nr_function_names = sizeof(function_names) / sizeof(char const *) - 1;
-
-char const *  latex_delimiters[] = {
-	"(", ")", "{", "}", "[", "]",
-	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
-	"uparrow", "updownarrow", "Uparrow", "Updownarrow", "downarrow", "Downarrow",
-	"|", "Vert", "/", "backslash", ""
-};
-
-
-int const nr_latex_delimiters = sizeof(latex_delimiters) / sizeof(char const *);
-
 } // namespace frontend
 } // namespace lyx

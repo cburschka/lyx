@@ -9,7 +9,7 @@
  */
 
 // This file contains most of the magic that extracts "context
-// information" from the unstructered layout-oriented stuff in an
+// information" from the unstructered layout-oriented stuff in
 // MathData.
 
 #include <config.h>
@@ -36,7 +36,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "frontends/controllers/ControlMath.h"
 
 #include <algorithm>
 #include <sstream>
@@ -55,8 +54,6 @@ using support::tempName;
 using support::unlink;
 using support::subst;
 
-using frontend::function_names;
-
 using std::auto_ptr;
 using std::endl;
 using std::find_if;
@@ -65,6 +62,15 @@ using std::ostream;
 using std::swap;
 using std::string;
 using std::vector;
+
+static char const * function_names[] = {
+	"arccos", "arcsin", "arctan", "arg", "bmod",
+	"cos", "cosh", "cot", "coth", "csc", "deg",
+	"det", "dim", "exp", "gcd", "hom", "inf", "ker",
+	"lg", "lim", "liminf", "limsup", "ln", "log",
+	"max", "min", "sec", "sin", "sinh", "sup",
+	"tan", "tanh", "Pr", 0
+};
 
 static size_t const npos = lyx::docstring::npos;
 
@@ -224,7 +230,7 @@ bool extractString(MathAtom const & at, docstring & str)
 // is this a known function?
 bool isKnownFunction(docstring const & str)
 {
-	for (int i = 0; *function_names[i]; ++i) {
+	for (int i = 0; function_names[i]; ++i) {
 		if (str == function_names[i])
 			return true;
 	}

@@ -27,8 +27,16 @@
 
 using std::string;
 
-namespace lyx {
-namespace frontend {
+static char const *  latex_delimiters[] = {
+	"(", ")", "{", "}", "[", "]",
+	"lceil", "rceil", "lfloor", "rfloor", "langle", "rangle",
+	"uparrow", "updownarrow", "Uparrow", "Updownarrow", "downarrow", "Downarrow",
+	"|", "Vert", "/", "backslash", ""
+};
+
+
+static int const nr_latex_delimiters =
+	sizeof(latex_delimiters) / sizeof(char const *);
 
 static QString const bigleft[]  = {"", "bigl", "Bigl", "biggl", "Biggl"};
 
@@ -55,6 +63,10 @@ static QString fix_name(QString const & str, bool big)
 
 	return "\\" + str;
 }
+
+
+namespace lyx {
+namespace frontend {
 
 
 GuiDelimiterDialog::GuiDelimiterDialog(LyXView & lv)
