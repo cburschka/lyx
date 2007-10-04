@@ -263,12 +263,6 @@ void GuiWorkArea::adjustViewWithScrollBar(int action)
 
 void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 {
-	// No need to do anything if we didn't change views...
-//	if (theApp() == 0 || &lyx_view_ == theApp()->currentView())
-//		return;
-
-	theApp()->setCurrentView(*lyx_view_);
-
 	// Repaint the whole screen.
 	// Note: this is different from redraw() as only the backing pixmap
 	// will be redrawn, which is cheap.

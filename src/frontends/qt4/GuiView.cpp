@@ -741,6 +741,7 @@ bool GuiViewBase::event(QEvent * e)
 	//	break;
 
 	case QEvent::WindowActivate:
+		theApp()->setCurrentView(*this);
 		if (d.tab_widget_->count()) {
 			GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(
 				d.tab_widget_->currentWidget());
