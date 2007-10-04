@@ -584,6 +584,9 @@ void GuiViewBase::setWindowTitle(docstring const & t, docstring const & it)
 		QMainWindow::setWindowTitle(new_title);
 		QMainWindow::setWindowIconText(toqstr(it));
 	}
+	if (Buffer const * buf = buffer())
+		d.tab_widget_->setTabText(d.tab_widget_->currentIndex(),
+			toqstr(makeDisplayPath(buf->fileName(), 30)));
 }
 
 
