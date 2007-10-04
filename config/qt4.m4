@@ -144,6 +144,7 @@ AC_DEFUN([QT4_DO_IT_ALL],
 	fi
 	AC_PATH_PROGS(MOC4, [moc-qt4 moc],[],$qt4_cv_bin:$PATH)
 	AC_PATH_PROGS(UIC4, [uic-qt4 uic],[],$qt4_cv_bin:$PATH)
+	AC_PATH_PROGS(RCC4, [rcc-qt4 rcc],[],$qt4_cv_bin:$PATH)
 ])
 
 AC_DEFUN([QT4_DO_PKG_CONFIG],

@@ -26,7 +26,7 @@ Resources.qrc: Makefile
 	echo "</qresource></RCC>" >> $@
 
 Resources.cpp: Resources.qrc
-	rcc $< -o $@
+	$(RCC4) $< -o $@
 
 
 #########################  LIBRARIES  #############################
