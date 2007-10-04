@@ -60,9 +60,6 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 	connect(linesSB, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 
-	connect(overhangCB, SIGNAL(stateChanged(int)), this, SLOT(overhangChecked(int)));
-	connect(linesCB, SIGNAL(stateChanged(int)), this, SLOT(linesChecked(int)));
-
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	// FIXME:
 	// overhang can be negative, but the unsignedLengthValidator allows this
@@ -105,26 +102,6 @@ void GuiWrapDialog::closeEvent(QCloseEvent * e)
 void GuiWrapDialog::change_adaptor()
 {
 	changed();
-}
-
-
-void GuiWrapDialog::overhangChecked(int checkState)
-{
-	if (checkState == Qt::Checked) {
-		overhangED->setEnabled(true);
-		overhangUnitLC->setEnabled(true);
-	} else { 
-		overhangED->setEnabled(false);
-		overhangUnitLC->setEnabled(false);
-	}
-}
-
-void GuiWrapDialog::linesChecked(int checkState)
-{
-	if (checkState == Qt::Checked)
-		linesSB->setEnabled(true);
-	else 
-		linesSB->setEnabled(false);
 }
 
 
