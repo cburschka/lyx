@@ -162,6 +162,8 @@ class Controller
 public:
 	/// \param parent Dialog owning this Controller.
 	Controller(Dialog & parent);
+	// the same. avoids ambiguity with the (non-existent) copy constructor
+	Controller(Dialog * parent);
 	virtual ~Controller();
 	void setLyXView(LyXView & lv) { lyxview_ = &lv; }
 

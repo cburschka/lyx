@@ -111,6 +111,7 @@ private:
 
 
 Dialog * createGuiRef(LyXView & lv);
+Dialog * createGuiWrap(LyXView & lv);
 
 
 bool Dialogs::isValidName(string const & name) const
@@ -224,7 +225,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "vspace") {
 		dialog = new GuiVSpaceDialog(lyxview_);
 	} else if (name == "wrap") {
-		dialog = new GuiWrapDialog(lyxview_);
+		dialog = createGuiWrap(lyxview_);
 	} else if (name == "listings") {
 		dialog = new GuiListingsDialog(lyxview_);
 	}

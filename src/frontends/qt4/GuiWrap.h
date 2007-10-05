@@ -13,18 +13,18 @@
 #define GUIWRAP_H
 
 #include "GuiDialog.h"
-#include "ControlWrap.h"
 #include "ui_WrapUi.h"
+#include "insets/InsetWrap.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiWrapDialog : public GuiDialog, public Ui::WrapUi
+class GuiWrap : public GuiDialog, public Ui::WrapUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiWrapDialog(LyXView & lv);
+	GuiWrap(LyXView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -32,11 +32,22 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlWrap & controller();
+	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// update
 	void updateContents();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+	///
+	InsetWrapParams params_;
 };
 
 } // namespace frontend

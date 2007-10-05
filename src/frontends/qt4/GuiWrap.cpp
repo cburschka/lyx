@@ -12,10 +12,10 @@
 
 #include "GuiWrap.h"
 
-#include "ControlWrap.h"
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Validator.h"
+#include "FuncRequest.h"
 
 #include "insets/InsetWrap.h"
 
@@ -31,27 +31,27 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiWrapDialog::GuiWrapDialog(LyXView & lv)
-	: GuiDialog(lv, "wrap")
+GuiWrap::GuiWrap(LyXView & lv)
+	: GuiDialog(lv, "wrap"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("Wrap Float Settings"));
-	setController(new ControlWrap(*this));
+	setController(this, false);
 
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-	connect(widthED, SIGNAL(textChanged(const QString &)),
+	connect(widthED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(widthUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
-	connect(valignCO, SIGNAL(highlighted(const QString &)),
+	connect(valignCO, SIGNAL(highlighted(QString)),
 		this, SLOT(change_adaptor()));
 	connect(overhangCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(overhangED, SIGNAL(textChanged(const QString &)),
+	connect(overhangED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(overhangUnitLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
@@ -86,26 +86,20 @@ GuiWrapDialog::GuiWrapDialog(LyXView & lv)
 }
 
 
-ControlWrap & GuiWrapDialog::controller()
-{
-	return static_cast<ControlWrap &>(GuiDialog::controller());
-}
-
-
-void GuiWrapDialog::closeEvent(QCloseEvent * e)
+void GuiWrap::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiWrapDialog::change_adaptor()
+void GuiWrap::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiWrapDialog::applyView()
+void GuiWrap::applyView()
 {
 	double const width_value = widthED->text().toDouble();
 	Length::UNIT widthUnit = widthUnitLC->currentLengthItem();
@@ -116,52 +110,48 @@ void GuiWrapDialog::applyView()
 	if (overhangED->text().isEmpty())
 		overhangUnit = Length::UNIT_NONE;
 	
-	InsetWrapParams & params = controller().params();
-
-	params.width = Length(width_value, widthUnit);
+	params_.width = Length(width_value, widthUnit);
 
 	if (overhangCB->checkState() == Qt::Checked)
-		params.overhang = Length(overhang_value, overhangUnit);
+		params_.overhang = Length(overhang_value, overhangUnit);
 	else
 		// when value is "0" the option is not set in the LaTeX-output
 		// in InsetWrap.cpp
-		params.overhang = Length("0in");
+		params_.overhang = Length("0in");
 
 	if (linesCB->checkState() == Qt::Checked)
-		params.lines = linesSB->value();
+		params_.lines = linesSB->value();
 	else
 		// when value is "0" the option is not set in the LaTeX-output
 		// in InsetWrap.cpp
-		params.lines = 0;
+		params_.lines = 0;
 
 	switch (valignCO->currentIndex()) {
 	case 0:
-		params.placement = "o";
+		params_.placement = "o";
 		break;
 	case 1:
-		params.placement = "i";
+		params_.placement = "i";
 		break;
 	case 2:
-		params.placement = "l";
+		params_.placement = "l";
 		break;
 	case 3:
-		params.placement = "r";
+		params_.placement = "r";
 		break;
 	}
 }
 
 
-void GuiWrapDialog::updateContents()
+void GuiWrap::updateContents()
 {
-	InsetWrapParams & params = controller().params();
-
-	//0pt is a legal width now, it yields a
-	//wrapfloat just wide enough for the contents.
-	Length len_w(params.width);
+	// 0pt is a legal width now, it yields a
+	// wrapfloat just wide enough for the contents.
+	Length len_w = params_.width;
 	widthED->setText(QString::number(len_w.value()));
 	widthUnitLC->setCurrentItem(len_w.unit());
 
-	Length len_o(params.overhang);
+	Length len_o(params_.overhang);
 	overhangED->setText(QString::number(len_o.value()));
 	overhangUnitLC->setCurrentItem(len_o.unit());
 	if (len_o.value() == 0)
@@ -169,22 +159,46 @@ void GuiWrapDialog::updateContents()
 	else
 		overhangCB->setCheckState(Qt::Checked);
 
-	linesSB->setValue(params.lines);
-	if (params.lines == 0)
+	linesSB->setValue(params_.lines);
+	if (params_.lines == 0)
 		linesCB->setCheckState(Qt::Unchecked);
 	else
 		linesCB->setCheckState(Qt::Checked);
 
 	int item = 0;
-	if (params.placement == "i")
+	if (params_.placement == "i")
 		item = 1;
-	else if (params.placement == "l")
+	else if (params_.placement == "l")
 		item = 2;
-	else if (params.placement == "r")
+	else if (params_.placement == "r")
 		item = 3;
 
 	valignCO->setCurrentIndex(item);
 }
+
+
+bool GuiWrap::initialiseParams(string const & data)
+{
+	InsetWrapMailer::string2params(data, params_);
+	return true;
+}
+
+
+void GuiWrap::clearParams()
+{
+	params_ = InsetWrapParams();
+}
+
+
+void GuiWrap::dispatchParams()
+{
+	string const lfun = InsetWrapMailer::params2string(params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+
+Dialog * createGuiWrap(LyXView & lv) { return new GuiWrap(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

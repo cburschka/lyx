@@ -52,7 +52,7 @@ using support::makeDisplayPath;
 static std::string const lfun_name_ = "ref";
 
 GuiRef::GuiRef(LyXView & lv)
-	: GuiDialog(lv, "ref"), Controller(*static_cast<Dialog*>(this)),
+	: GuiDialog(lv, "ref"), Controller(this),
 		params_("ref")
 {
 	setupUi(this);

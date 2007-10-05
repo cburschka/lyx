@@ -43,7 +43,6 @@ SOURCEFILES = \
 	ControlThesaurus.cpp \
 	ControlToc.cpp \
 	ControlVSpace.cpp \
-	ControlWrap.cpp \
 	frontend_helpers.cpp 
 
 HEADERFILES = \
@@ -82,7 +81,6 @@ HEADERFILES = \
 	ControlThesaurus.h \
 	ControlToc.h \
 	ControlVSpace.h \
-	ControlWrap.h \
 	frontend_helpers.h
 
 if MONOLITHIC_CONTROLLERS

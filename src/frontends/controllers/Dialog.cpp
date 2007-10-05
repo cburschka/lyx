@@ -35,6 +35,11 @@ Controller::Controller(Dialog & parent)
 {}
 
 
+Controller::Controller(Dialog * parent)
+	: parent_(*parent), lyxview_(0)
+{}
+
+
 Controller::~Controller()
 {}
 
