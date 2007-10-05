@@ -340,7 +340,8 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 			// (special units like \height are handled as "in")
 			// but when the user has chosen a non-default inner_pos, the height
 			// must be given: \minipage[pos][height][inner-pos]{width}
-			if (params_.height != Length("1in") ||
+			if ((params_.height != Length("1in") ||
+				 params_.height_special != "totalheight") ||
 				params_.inner_pos != params_.pos) {
 				// FIXME UNICODE
 				os << "[" << params_.height.value()

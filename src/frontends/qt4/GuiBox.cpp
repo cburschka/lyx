@@ -72,7 +72,6 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(restoreClicked()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
-	connect(heightCB, SIGNAL(stateChanged(int)), this, SLOT(heightChecked(int)));
 	connect(halignCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(ialignCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(innerBoxCO, SIGNAL(activated(const QString&)),
@@ -157,17 +156,6 @@ void GuiBoxDialog::typeChanged(int index)
 }
 
 
-void GuiBoxDialog::heightChecked(int checkState)
-{
-	if (checkState == Qt::Unchecked) {
-		heightED->setEnabled(false);
-		heightUnitsLC->setEnabled(false);
-	} else { 
-		heightED->setEnabled(true);
-		heightUnitsLC->setEnabled(true);
-	}
-}
-
 void GuiBoxDialog::restoreClicked()
 {
 	setInnerType(true, 2);
@@ -235,7 +223,7 @@ void GuiBoxDialog::updateContents()
 
 	lengthToWidgets(heightED, heightUnitsLC,
 		(controller().params().height).asString(), default_unit);
-
+	
 	string const height_special = controller().params().height_special;
 	if (!height_special.empty() && height_special != "none") {
 		QString hspc;
@@ -250,6 +238,14 @@ void GuiBoxDialog::updateContents()
 			}
 		}
 	}
+	// set no optional height when the value is the default "1\height"
+	// (special units like \height are handled as "in",
+	if (height_special == "totalheight" &&  
+		controller().params().height == Length("1in"))
+		heightCB->setCheckState(Qt::Unchecked);
+	else
+		heightCB->setCheckState(Qt::Checked);
+
 	heightCB->setEnabled(ibox);
 }
 

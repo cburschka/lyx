@@ -132,7 +132,7 @@
        <string>&amp;Height (optional):</string>
       </property>
       <property name="checked" >
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="tristate" >
        <bool>false</bool>
@@ -141,6 +141,9 @@
     </item>
     <item>
      <widget class="QLineEdit" name="heightED" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
       <property name="sizePolicy" >
        <sizepolicy>
         <hsizetype>1</hsizetype>
@@ -155,7 +158,11 @@
      </widget>
     </item>
     <item>
-     <widget class="LengthCombo" name="heightUnitsLC" />
+     <widget class="LengthCombo" name="heightUnitsLC" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -431,5 +438,38 @@
   <include location="local" >qt_helpers.h</include>
  </includes>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>heightCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>heightED</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>75</x>
+     <y>83</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>171</x>
+     <y>83</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>heightCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>heightUnitsLC</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>86</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>283</x>
+     <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
