@@ -18,7 +18,7 @@
 # modify this when you change version
 # Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
-lyx_version=1.5.2svn
+lyx_version=1.5.2
 lyx_branch=BRANCH_1_5_X
 
 
