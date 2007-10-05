@@ -20,7 +20,6 @@
 #include "GuiBibitem.h"
 #include "GuiBibtex.h"
 #include "GuiBox.h"
-#include "GuiBranch.h"
 #include "GuiChanges.h"
 #include "GuiCharacter.h"
 #include "GuiCitation.h"
@@ -166,7 +165,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "box") {
 		dialog = new GuiBoxDialog(lyxview_);
 	} else if (name == "branch") {
-		dialog = new GuiBranchDialog(lyxview_);
+		dialog = createGuiBranch(lyxview_);
 	} else if (name == "changes") {
 		dialog = new GuiChangesDialog(lyxview_);
 	} else if (name == "character") {

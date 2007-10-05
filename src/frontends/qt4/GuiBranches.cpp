@@ -13,7 +13,6 @@
 
 #include "GuiBranches.h"
 
-#include "ControlBranch.h"
 #include "ControlDocument.h"
 #include "GuiApplication.h"
 #include "Validator.h"
@@ -52,6 +51,7 @@ void GuiBranches::update(BufferParams const & params)
 	updateView();
 }
 
+
 void GuiBranches::updateView()
 {
 	// store the selected branch
@@ -65,8 +65,7 @@ void GuiBranches::updateView()
 	BranchList::const_iterator it = branchlist_.begin();
 	BranchList::const_iterator const end = branchlist_.end();
 	for (; it != end; ++it) {
-		QTreeWidgetItem * newItem =
-			new QTreeWidgetItem(branchesTW);
+		QTreeWidgetItem * newItem = new QTreeWidgetItem(branchesTW);
 
 		QString const bname = toqstr(it->getBranch());
 		newItem->setText(0, bname);
@@ -90,10 +89,12 @@ void GuiBranches::updateView()
 	changed();
 }
 
+
 void GuiBranches::apply(BufferParams & params) const
 {
 	params.branchlist() = branchlist_;
 }
+
 
 void GuiBranches::on_addBranchPB_pressed()
 {
@@ -108,8 +109,7 @@ void GuiBranches::on_addBranchPB_pressed()
 
 void GuiBranches::on_removePB_pressed()
 {
-	QTreeWidgetItem * selItem =
-		branchesTW->currentItem();
+	QTreeWidgetItem * selItem = branchesTW->currentItem();
 	QString sel_branch;
 	if (selItem != 0)
 		sel_branch = selItem->text(0);
@@ -142,13 +142,14 @@ void GuiBranches::toggleBranch(QTreeWidgetItem * item)
 		return;
 
 	QString sel_branch = item->text(0);
-	if (!sel_branch.isEmpty()) {
-		bool const selected = item->text(1) == qt_("Yes");
-		Branch * branch = branchlist_.find(qstring_to_ucs4(sel_branch));
-		if (branch && branch->setSelected(!selected)) {
-			newBranchLE->clear();
-			updateView();
-		}
+	if (sel_branch.isEmpty())
+		return;
+
+	bool const selected = (item->text(1) == qt_("Yes"));
+	Branch * branch = branchlist_.find(qstring_to_ucs4(sel_branch));
+	if (branch && branch->setSelected(!selected)) {
+		newBranchLE->clear();
+		updateView();
 	}
 }
 
@@ -165,22 +166,24 @@ void GuiBranches::toggleColor(QTreeWidgetItem * item)
 		return;
 
 	QString sel_branch = item->text(0);
-	if (!sel_branch.isEmpty()) {
-		docstring current_branch = qstring_to_ucs4(sel_branch);
-		Branch * branch =
-			branchlist_.find(current_branch);
-		if (!branch)
-			return;
+	if (sel_branch.isEmpty())
+		return;
 
-		QColor const initial = rgb2qcolor(branch->getColor());
-		QColor ncol(QColorDialog::getColor(initial, qApp->focusWidget()));
-		if (ncol.isValid()){
-			// add the color to the branchlist
-			branch->setColor(fromqstr(ncol.name()));
-			newBranchLE->clear();
-			updateView();
-		}
-	}
+	docstring current_branch = qstring_to_ucs4(sel_branch);
+	Branch * branch =
+		branchlist_.find(current_branch);
+	if (!branch)
+		return;
+
+	QColor const initial = rgb2qcolor(branch->getColor());
+	QColor ncol = QColorDialog::getColor(initial, qApp->focusWidget());
+	if (!ncol.isValid())
+		return;
+
+	// add the color to the branchlist
+	branch->setColor(fromqstr(ncol.name()));
+	newBranchLE->clear();
+	updateView();
 }
 
 } // namespace frontend

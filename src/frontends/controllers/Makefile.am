@@ -11,7 +11,6 @@ SOURCEFILES = \
 	ButtonPolicy.cpp \
 	ControlBibtex.cpp \
 	ControlBox.cpp \
-	ControlBranch.cpp \
 	ControlCharacter.cpp \
 	ControlChanges.cpp \
 	ControlCitation.cpp \
@@ -43,7 +42,6 @@ HEADERFILES = \
 	ButtonPolicy.h \
 	ControlBibtex.h \
 	ControlBox.h \
-	ControlBranch.h \
 	ControlCharacter.h \
 	ControlChanges.h \
 	ControlCitation.h \

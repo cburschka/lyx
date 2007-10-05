@@ -3,6 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Angus Leeming
+ * \author Martin Vermeer
  * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
@@ -12,25 +14,30 @@
 
 #include "GuiBranch.h"
 
-#include "ControlBranch.h"
-
 #include "qt_helpers.h"
 #include "BranchList.h"
+
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "BranchList.h"
+#include "FuncRequest.h"
 
 #include "insets/InsetBranch.h"
 
 #include <QPushButton>
 #include <QCloseEvent>
 
+using std::string;
+using std::vector;
 
 namespace lyx {
 namespace frontend {
 
-GuiBranchDialog::GuiBranchDialog(LyXView & lv)
-	: GuiDialog(lv, "branch")
+GuiBranch::GuiBranch(LyXView & lv)
+	: GuiDialog(lv, "branch"), Controller(this)
 {
 	setupUi(this);
-	setController(new ControlBranch(*this));
+	setController(this, false);
 	setViewTitle(_("Branch Settings"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
@@ -43,31 +50,25 @@ GuiBranchDialog::GuiBranchDialog(LyXView & lv)
 }
 
 
-ControlBranch & GuiBranchDialog::controller()
-{
-	return static_cast<ControlBranch &>(GuiDialog::controller());
-}
-
-
-void GuiBranchDialog::closeEvent(QCloseEvent * e)
+void GuiBranch::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiBranchDialog::change_adaptor()
+void GuiBranch::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiBranchDialog::updateContents()
+void GuiBranch::updateContents()
 {
 	typedef BranchList::const_iterator const_iterator;
 
-	BranchList const & branchlist = controller().branchlist();
-	docstring const cur_branch = controller().params().branch;
+	BranchList const & branchlist = buffer().params().branchlist();
+	docstring const cur_branch = params_.branch;
 
 	branchCO->clear();
 
@@ -86,11 +87,33 @@ void GuiBranchDialog::updateContents()
 }
 
 
-void GuiBranchDialog::applyView()
+void GuiBranch::applyView()
 {
-	docstring const type = qstring_to_ucs4(branchCO->currentText());
-	controller().params().branch = type;
+	params_.branch = qstring_to_ucs4(branchCO->currentText());
 }
+
+
+bool GuiBranch::initialiseParams(string const & data)
+{
+	InsetBranchMailer::string2params(data, params_);
+	return true;
+}
+
+
+void GuiBranch::clearParams()
+{
+	params_ = InsetBranchParams();
+}
+
+
+void GuiBranch::dispatchParams()
+{
+	dispatch(FuncRequest(getLfun(), InsetBranchMailer::params2string(params_)));
+}
+
+
+Dialog * createGuiBranch(LyXView & lv) { return new GuiBranch(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
