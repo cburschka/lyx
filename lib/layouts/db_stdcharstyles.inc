@@ -3,7 +3,7 @@
 # Character Styles definition
 
 Format 5
-InsetLayout CharStyle:Filename
+InsetLayout Element:Filename
 	LyXType element
 	LabelString Filename
 	LatexType             Command
@@ -17,7 +17,7 @@ InsetLayout CharStyle:Filename
 	EndFont
 End
 
-InsetLayout CharStyle:Directory
+InsetLayout Element:Directory
 	LyXType element
 	LabelString Directory
 	LatexType             Command
@@ -32,7 +32,7 @@ InsetLayout CharStyle:Directory
 	EndFont
 End
 
-InsetLayout CharStyle:Firstname
+InsetLayout Element:Firstname
 	LyXType element
 	LabelString Firstname
 	LatexType             Command
@@ -43,7 +43,7 @@ InsetLayout CharStyle:Firstname
 	EndFont
 End
 
-InsetLayout CharStyle:Surname
+InsetLayout Element:Surname
 	LyXType element
 	LabelString Surname
 	LatexType             Command
@@ -54,7 +54,7 @@ InsetLayout CharStyle:Surname
 	EndFont
 End
 
-InsetLayout CharStyle:Literal
+InsetLayout Element:Literal
 	LyXType element
 	LabelString Literal
 	LatexType             Command
@@ -68,7 +68,7 @@ InsetLayout CharStyle:Literal
 	EndFont
 End
 
-InsetLayout CharStyle:Email
+InsetLayout Element:Email
 	LyXType element
 	LabelString Email
         LatexType             Command
@@ -82,7 +82,7 @@ InsetLayout CharStyle:Email
         EndFont
 End
 
-InsetLayout CharStyle:KeyCombo
+InsetLayout Element:KeyCombo
 	LyXType element
 	LabelString KeyCombo
         LatexType             Command
@@ -96,7 +96,7 @@ InsetLayout CharStyle:KeyCombo
         EndFont
 End
 
-InsetLayout CharStyle:KeyCap
+InsetLayout Element:KeyCap
 	LyXType element
 	LabelString KeyCap
         LatexType             Command
@@ -110,7 +110,7 @@ InsetLayout CharStyle:KeyCap
         EndFont
 End
 
-InsetLayout CharStyle:GuiMenu
+InsetLayout Element:GuiMenu
 	LyXType element
 	LabelString GuiMenu
         LatexType             Command
@@ -124,7 +124,7 @@ InsetLayout CharStyle:GuiMenu
         EndFont
 End
 
-InsetLayout CharStyle:GuiMenuItem
+InsetLayout Element:GuiMenuItem
 	LyXType element
 	LabelString GuiMenuItem
         LatexType             Command
@@ -138,7 +138,7 @@ InsetLayout CharStyle:GuiMenuItem
         EndFont
 End
 
-InsetLayout CharStyle:GuiButton
+InsetLayout Element:GuiButton
 	LyXType element
 	LabelString GuiButton
         LatexType             Command
@@ -152,7 +152,7 @@ InsetLayout CharStyle:GuiButton
         EndFont
 End
 
-InsetLayout CharStyle:MenuChoice
+InsetLayout Element:MenuChoice
 	LyXType element
 	LabelString MenuChoice
         LatexType             Command
