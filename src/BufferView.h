@@ -170,8 +170,7 @@ public:
 
 	/// dispatch method helper for \c WorkArea
 	/// \sa WorkArea
-	/// \retval true if a redraw is needed
-	bool workAreaDispatch(FuncRequest const & ev);
+	void mouseEventDispatch(FuncRequest const & ev);
 
 	/// access to anchor.
 	pit_type anchor_ref() const;

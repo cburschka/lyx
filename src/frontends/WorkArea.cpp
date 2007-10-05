@@ -203,10 +203,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 		&& cmd.button() == mouse_button::none))
 		stopBlinkingCursor();
 
-	bool const needRedraw = buffer_view_->workAreaDispatch(cmd);
-
-	if (needRedraw)
-		buffer_view_->buffer().changed();
+	buffer_view_->mouseEventDispatch(cmd);
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {

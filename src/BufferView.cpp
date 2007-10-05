@@ -1315,7 +1315,7 @@ Inset const * BufferView::getCoveringInset(Text const & text, int x, int y)
 }
 
 
-bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
+void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << BOOST_CURRENT_FUNCTION << "[ cmd0 " << cmd0 << "]" << endl;
 
@@ -1340,7 +1340,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 			getCoveringInset(buffer_.text(), cmd.x, cmd.y);
 		if (covering_inset == last_inset_)
 			// Same inset, no need to do anything...
-			return false;
+			return;
 
 		bool need_redraw = false;
 		// const_cast because of setMouseHover().
@@ -1353,7 +1353,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 			need_redraw |= inset->setMouseHover(true);
 		last_inset_ = inset;
 		if (!need_redraw)
-			return false;
+			return;
 
 		// if last metrics update was in singlepar mode, WorkArea::redraw() will
 		// not expose the button for redraw. We adjust here the metrics dimension
@@ -1375,7 +1375,8 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
-		return true;
+		buffer_.changed();
+		return;
 	}
 
 	// Build temporary cursor.
@@ -1388,9 +1389,8 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	// via the temp cursor. If the inset wishes to change the real
 	// cursor it has to do so explicitly by using
 	//  cur.bv().cursor() = cur;  (or similar)
-	if (inset) {
+	if (inset)
 		inset->dispatch(cur, cmd);
-	}
 
 	// Now dispatch to the temporary cursor. If the real cursor should
 	// be modified, the inset's dispatch has to do so explicitly.
@@ -1400,11 +1400,14 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	//Do we have a selection?
 	theSelection().haveSelection(cursor().selection());
 
-	// Redraw if requested and necessary.
-	if (cur.result().dispatched() && cur.result().update())
-		return update(cur.result().update());
-
-	return false;
+	// If the command has been dispatched,
+	if (cur.result().dispatched()
+		// an update is asked,
+		&& cur.result().update()
+		// and redraw is needed,
+		&& update(cur.result().update()))
+		// then trigger a redraw.
+		buffer_.changed();
 }
 
 
