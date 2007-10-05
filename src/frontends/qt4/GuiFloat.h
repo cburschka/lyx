@@ -13,18 +13,19 @@
 #define GUIFLOAT_H
 
 #include "GuiDialog.h"
-#include "ControlFloat.h"
 #include "ui_FloatUi.h"
+#include "insets/InsetFloat.h"
+
 
 namespace lyx {
 namespace frontend {
 
-class GuiFloatDialog : public GuiDialog, public Ui::FloatUi
+class GuiFloat : public GuiDialog, public Ui::FloatUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiFloatDialog(LyXView & lv);
+	GuiFloat(LyXView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -32,11 +33,23 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlFloat & controller();
+	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// update
 	void updateContents();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+private:
+	///
+	InsetFloatParams params_;
 };
 
 } // namespace frontend

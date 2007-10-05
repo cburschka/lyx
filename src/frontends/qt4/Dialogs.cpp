@@ -29,7 +29,6 @@
 #include "GuiEmbeddedFiles.h"
 #include "GuiErrorList.h"
 #include "GuiExternal.h"
-#include "GuiFloat.h"
 #include "GuiGraphics.h"
 #include "GuiInclude.h"
 #include "GuiIndex.h"
@@ -191,7 +190,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "findreplace") {
 		dialog = new GuiSearchDialog(lyxview_);
 	} else if (name == "float") {
-		dialog = new GuiFloatDialog(lyxview_);
+		dialog = createGuiFloat(lyxview_);
 	} else if (name == "graphics") {
 		dialog = new GuiGraphicsDialog(lyxview_);
 	} else if (name == "include") {

@@ -12,22 +12,24 @@
 
 #include "GuiFloat.h"
 
-#include "ControlFloat.h"
 #include "FloatPlacement.h"
+#include "FuncRequest.h"
 
 #include "insets/InsetFloat.h"
 
 #include <QCloseEvent>
 #include <QPushButton>
 
+using std::string;
+
 
 namespace lyx {
 namespace frontend {
 
-GuiFloatDialog::GuiFloatDialog(LyXView & lv)
-	: GuiDialog(lv, "float")
+GuiFloat::GuiFloat(LyXView & lv)
+	: GuiDialog(lv, "float"), Controller(this)
 {
-	setController(new ControlFloat(*this));
+	setController(this, false);
 	setViewTitle(_("Float Settings"));
 
 	setupUi(this);
@@ -54,36 +56,52 @@ GuiFloatDialog::GuiFloatDialog(LyXView & lv)
 }
 
 
-ControlFloat & GuiFloatDialog::controller()
-{
-	return static_cast<ControlFloat &>(GuiDialog::controller());
-}
-
-
-void GuiFloatDialog::change_adaptor()
+void GuiFloat::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiFloatDialog::closeEvent(QCloseEvent * e)
+void GuiFloat::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiFloatDialog::updateContents()
+void GuiFloat::updateContents()
 {
-	floatFP->set(controller().params());
+	floatFP->set(params_);
 }
 
 
-void GuiFloatDialog::applyView()
+void GuiFloat::applyView()
 {
-	InsetFloatParams & params = controller().params();
-	params.placement = floatFP->get(params.wide, params.sideways);
+	params_.placement = floatFP->get(params_.wide, params_.sideways);
 }
+
+
+bool GuiFloat::initialiseParams(string const & data)
+{
+	InsetFloatMailer::string2params(data, params_);
+	return true;
+}
+
+
+void GuiFloat::clearParams()
+{
+	params_ = InsetFloatParams();
+}
+
+
+void GuiFloat::dispatchParams()
+{
+	dispatch(FuncRequest(getLfun(), InsetFloatMailer::params2string(params_)));
+}
+
+
+Dialog * createGuiFloat(LyXView & lv) { return new GuiFloat(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
