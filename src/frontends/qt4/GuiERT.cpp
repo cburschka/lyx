@@ -3,6 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Jürgen Vigna
+ * \author Angus Leeming
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS.
@@ -11,8 +13,8 @@
 #include <config.h>
 
 #include "GuiERT.h"
-#include "ControlERT.h"
 #include "gettext.h"
+#include "FuncRequest.h"
 
 #include <QRadioButton>
 #include <QPushButton>
@@ -22,12 +24,12 @@
 namespace lyx {
 namespace frontend {
 
-GuiERTDialog::GuiERTDialog(LyXView & lv)
-	: GuiDialog(lv, "ert")
+GuiERT::GuiERT(LyXView & lv)
+	: GuiDialog(lv, "ert"), Controller(this), status_(InsetERT::Collapsed)
 {
 	setupUi(this);
 	setViewTitle(_("TeX Code Settings"));
-	setController(new ControlERT(*this));
+	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -40,41 +42,58 @@ GuiERTDialog::GuiERTDialog(LyXView & lv)
 }
 
 
-ControlERT & GuiERTDialog::controller()
-{
-	return static_cast<ControlERT &>(GuiDialog::controller());
-}
-
-
-void GuiERTDialog::closeEvent(QCloseEvent * e)
+void GuiERT::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiERTDialog::change_adaptor()
+void GuiERT::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiERTDialog::applyView()
+void GuiERT::applyView()
 {
 	if (openRB->isChecked())
-		controller().setStatus(Inset::Open);
+		status_ = Inset::Open;
 	else
-		controller().setStatus(Inset::Collapsed);
+		status_ = Inset::Collapsed;
 }
 
 
-void GuiERTDialog::updateContents()
+void GuiERT::updateContents()
 {
-	switch (controller().status()) {
+	switch (status_) {
 		case InsetERT::Open: openRB->setChecked(true); break;
 		case InsetERT::Collapsed: collapsedRB->setChecked(true); break;
 	}
 }
+
+
+bool GuiERT::initialiseParams(std::string const & data)
+{
+	InsetERTMailer::string2params(data, status_);
+	return true;
+}
+
+
+void GuiERT::clearParams()
+{
+	status_ = InsetERT::Collapsed;
+}
+
+
+void GuiERT::dispatchParams()
+{
+	dispatch(FuncRequest(getLfun(), InsetERTMailer::params2string(status_)));
+}
+
+
+Dialog * createGuiERT(LyXView & lv) { return new GuiERT(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

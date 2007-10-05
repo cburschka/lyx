@@ -13,18 +13,18 @@
 #define GUIERT_H
 
 #include "GuiDialog.h"
-#include "ControlERT.h"
 #include "ui_ERTUi.h"
+#include "insets/InsetERT.h" // InsetERT::ERTStatus
 
 namespace lyx {
 namespace frontend {
 
-class GuiERTDialog : public GuiDialog, public Ui::ERTUi
+class GuiERT : public GuiDialog, public Ui::ERTUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiERTDialog(LyXView & lv);
+	GuiERT(LyXView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -32,11 +32,26 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlERT & controller();
+	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// update
 	void updateContents();
+	///
+	InsetCollapsable::CollapseStatus status() const { return status_; }
+	///
+	void setStatus(InsetCollapsable::CollapseStatus status) { status_ = status; }
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+private:
+	///
+	InsetCollapsable::CollapseStatus status_;
 };
 
 } // namespace frontend

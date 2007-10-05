@@ -28,7 +28,6 @@
 #include "GuiDocument.h"
 #include "GuiEmbeddedFiles.h"
 #include "GuiErrorList.h"
-#include "GuiERT.h"
 #include "GuiExternal.h"
 #include "GuiFloat.h"
 #include "GuiGraphics.h"
@@ -108,42 +107,42 @@ private:
 } // namespace anon
 
 // will be replaced by a proper factory...
-Dialog * createGuiAboutDialog(LyXView & lv);
-Dialog * createGuiBibitemDialog(LyXView & lv);
-Dialog * createGuiBibtexDialog(LyXView & lv);
-Dialog * createGuiBoxDialog(LyXView & lv);
-Dialog * createGuiBranchDialog(LyXView & lv);
-Dialog * createGuiChangesDialog(LyXView & lv);
-Dialog * createGuiCharacterDialog(LyXView & lv);
-Dialog * createGuiCitationDialog(LyXView & lv);
-Dialog * createGuiDelimiterDialog(LyXView & lv);
-Dialog * createGuiDocumentDialog(LyXView & lv);
-Dialog * createGuiErrorListDialog(LyXView & lv);
-Dialog * createGuiERTDialog(LyXView & lv);
-Dialog * createGuiExternalDialog(LyXView & lv);
-Dialog * createGuiFloatDialog(LyXView & lv);
-Dialog * createGuiGraphicsDialog(LyXView & lv);
-Dialog * createGuiIncludeDialog(LyXView & lv);
-Dialog * createGuiIndexDialog(LyXView & lv);
-Dialog * createGuiLabelDialog(LyXView & lv);
-Dialog * createGuiListingsDialog(LyXView & lv);
-Dialog * createGuiLogDialog(LyXView & lv);
-Dialog * createGuiMathMatrixDialog(LyXView & lv);
-Dialog * createGuiNomenclDialog(LyXView & lv);
+Dialog * createGuiAbout(LyXView & lv);
+Dialog * createGuiBibitem(LyXView & lv);
+Dialog * createGuiBibtex(LyXView & lv);
+Dialog * createGuiBox(LyXView & lv);
+Dialog * createGuiBranch(LyXView & lv);
+Dialog * createGuiChanges(LyXView & lv);
+Dialog * createGuiCharacter(LyXView & lv);
+Dialog * createGuiCitation(LyXView & lv);
+Dialog * createGuiDelimiter(LyXView & lv);
+Dialog * createGuiDocument(LyXView & lv);
+Dialog * createGuiErrorList(LyXView & lv);
+Dialog * createGuiERT(LyXView & lv);
+Dialog * createGuiExternal(LyXView & lv);
+Dialog * createGuiFloat(LyXView & lv);
+Dialog * createGuiGraphics(LyXView & lv);
+Dialog * createGuiInclude(LyXView & lv);
+Dialog * createGuiIndex(LyXView & lv);
+Dialog * createGuiLabel(LyXView & lv);
+Dialog * createGuiListings(LyXView & lv);
+Dialog * createGuiLog(LyXView & lv);
+Dialog * createGuiMathMatrix(LyXView & lv);
+Dialog * createGuiNomencl(LyXView & lv);
 Dialog * createGuiNote(LyXView & lv);
-Dialog * createGuiPrefsDialog(LyXView & lv);
-Dialog * createGuiPrintDialog(LyXView & lv);
+Dialog * createGuiPrefs(LyXView & lv);
+Dialog * createGuiPrint(LyXView & lv);
 Dialog * createGuiRef(LyXView & lv);
-Dialog * createGuiSearchDialog(LyXView & lv);
-Dialog * createGuiSendtoDialog(LyXView & lv);
-Dialog * createGuiShowFileDialog(LyXView & lv);
-Dialog * createGuiSpellcheckerDialog(LyXView & lv);
-Dialog * createGuiTabularCreateDialog(LyXView & lv);
-Dialog * createGuiTabularDialog(LyXView & lv);
-Dialog * createGuiTexinfoDialog(LyXView & lv);
-Dialog * createGuiThesaurusDialog(LyXView & lv);
-Dialog * createGuiURLDialog(LyXView & lv);
-Dialog * createGuiVSpaceDialog(LyXView & lv);
+Dialog * createGuiSearch(LyXView & lv);
+Dialog * createGuiSendto(LyXView & lv);
+Dialog * createGuiShowFile(LyXView & lv);
+Dialog * createGuiSpellchecker(LyXView & lv);
+Dialog * createGuiTabularCreate(LyXView & lv);
+Dialog * createGuiTabular(LyXView & lv);
+Dialog * createGuiTexinfo(LyXView & lv);
+Dialog * createGuiThesaurus(LyXView & lv);
+Dialog * createGuiURL(LyXView & lv);
+Dialog * createGuiVSpace(LyXView & lv);
 Dialog * createGuiWrap(LyXView & lv);
 
 
@@ -185,7 +184,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "errorlist") {
 		dialog = new GuiErrorListDialog(lyxview_);
 	} else if (name == "ert") {
-		dialog = new GuiERTDialog(lyxview_);
+		dialog = createGuiERT(lyxview_);
 	} else if (name == "external") {
 		dialog = new GuiExternalDialog(lyxview_);
 	} else if (name == "file") {
