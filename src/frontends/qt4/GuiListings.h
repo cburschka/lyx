@@ -13,17 +13,17 @@
 #define GUILISTINGS_H
 
 #include "GuiDialog.h"
-#include "ControlListings.h"
 #include "ui_ListingsUi.h"
+#include "insets/InsetListingsParams.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiListingsDialog : public GuiDialog, public Ui::ListingsUi
+class GuiListings : public GuiDialog, public Ui::ListingsUi, public Controller
 {
 	Q_OBJECT
 public:
-	GuiListingsDialog(LyXView & lv);
+	GuiListings(LyXView & lv);
 	/// get values from all the widgets and form a string
 	std::string construct_params();
 	/// validate listings parameters and return an error message, if any
@@ -46,13 +46,26 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlListings & controller();
+	Controller & controller() { return *this; }
 	/// return false if validate_listings_params returns error
 	bool isValid();
 	/// Apply changes
 	void applyView();
 	/// update
 	void updateContents();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	void setParams(InsetListingsParams const &);
+
+	///
+	InsetListingsParams params_;
 };
 
 } // namespace frontend

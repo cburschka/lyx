@@ -24,7 +24,6 @@ SOURCEFILES = \
 	ControlFloat.cpp \
 	ControlGraphics.cpp \
 	ControlInclude.cpp \
-	ControlListings.cpp \
 	ControlLog.cpp \
 	ControlViewSource.cpp \
 	ControlMath.cpp \
@@ -59,7 +58,6 @@ HEADERFILES = \
 	ControlExternal.h \
 	ControlFloat.h \
 	ControlGraphics.h \
-	ControlListings.h \
 	ControlInclude.h \
 	ControlLog.h \
 	ControlViewSource.h \

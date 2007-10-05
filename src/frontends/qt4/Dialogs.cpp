@@ -35,7 +35,6 @@
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
 #include "GuiNomencl.h"
-#include "GuiListings.h"
 #include "GuiLog.h"
 #include "GuiParagraph.h"
 #include "GuiPrefs.h"
@@ -259,7 +258,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "wrap") {
 		dialog = createGuiWrap(lyxview_);
 	} else if (name == "listings") {
-		dialog = new GuiListingsDialog(lyxview_);
+		dialog = createGuiListings(lyxview_);
 	}
 
 	return dialog;

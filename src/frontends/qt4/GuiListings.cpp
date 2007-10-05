@@ -13,8 +13,9 @@
 
 #include "GuiListings.h"
 
-#include "ControlListings.h"
 #include "qt_helpers.h"
+#include "FuncRequest.h"
+#include "insets/InsetListings.h"
 #include "insets/InsetListingsParams.h"
 #include "debug.h"
 
@@ -36,12 +37,14 @@ using lyx::support::prefixIs;
 using lyx::support::suffixIs;
 using lyx::support::contains;
 
+
 namespace lyx {
 namespace frontend {
 
+
 /////////////////////////////////////////////////////////////////////
 //
-// GuiListingsDialog
+// GuiListings
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -162,12 +165,12 @@ char const * font_styles_gui[] =
 
 
 
-GuiListingsDialog::GuiListingsDialog(LyXView & lv)
-	: GuiDialog(lv, "listings")
+GuiListings::GuiListings(LyXView & lv)
+	: GuiDialog(lv, "listings"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("Program Listing Settings"));
-	setController(new ControlListings(*this));
+	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -181,17 +184,17 @@ GuiListingsDialog::GuiListingsDialog(LyXView & lv)
 		this, SLOT(change_adaptor()));
 	connect(floatCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(placementLE, SIGNAL(textChanged(const QString&)),
+	connect(placementLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(numberSideCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(numberStepLE, SIGNAL(textChanged(const QString&)),
+	connect(numberStepLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(numberFontSizeCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(firstlineLE, SIGNAL(textChanged(const QString&)),
+	connect(firstlineLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(lastlineLE, SIGNAL(textChanged(const QString&)),
+	connect(lastlineLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(fontsizeCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
@@ -244,32 +247,26 @@ GuiListingsDialog::GuiListingsDialog(LyXView & lv)
 }
 
 
-ControlListings & GuiListingsDialog::controller()
-{
-	return static_cast<ControlListings &>(GuiDialog::controller());
-}
-
-
-void GuiListingsDialog::closeEvent(QCloseEvent * e)
+void GuiListings::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiListingsDialog::change_adaptor()
+void GuiListings::change_adaptor()
 {
 	changed();
 }
 
 
-string GuiListingsDialog::construct_params()
+string GuiListings::construct_params()
 {
 	string language = languages[languageCO->currentIndex()];
 	string dialect;
 	string const dialect_gui = fromqstr(dialectCO->currentText());
 	if (dialectCO->currentIndex() > 0) {
-		for (size_t i = 0; i < nr_dialects; ++i) {
+		for (size_t i = 0; i != nr_dialects; ++i) {
 			if (dialect_gui == dialects[i].gui
 			&& dialects[i].language == language
 			&& !dialects[i].is_default) {
@@ -355,12 +352,12 @@ string GuiListingsDialog::construct_params()
 }
 
 
-docstring GuiListingsDialog::validate_listings_params()
+docstring GuiListings::validate_listings_params()
 {
 	// use a cache here to avoid repeated validation
 	// of the same parameters
-	static string param_cache = string();
-	static docstring msg_cache = docstring();
+	static string param_cache;
+	static docstring msg_cache;
 	
 	if (bypassCB->isChecked())
 		return docstring();
@@ -374,7 +371,7 @@ docstring GuiListingsDialog::validate_listings_params()
 }
 
 
-void GuiListingsDialog::set_listings_msg()
+void GuiListings::set_listings_msg()
 {
 	static bool isOK = true;
 	docstring msg = validate_listings_params();
@@ -391,7 +388,7 @@ void GuiListingsDialog::set_listings_msg()
 }
 
 
-void GuiListingsDialog::on_floatCB_stateChanged(int state)
+void GuiListings::on_floatCB_stateChanged(int state)
 {
 	if (state == Qt::Checked) {
 		inlineCB->setChecked(false);
@@ -401,7 +398,7 @@ void GuiListingsDialog::on_floatCB_stateChanged(int state)
 }
 
 
-void GuiListingsDialog::on_inlineCB_stateChanged(int state)
+void GuiListings::on_inlineCB_stateChanged(int state)
 {
 	if (state == Qt::Checked) {
 		floatCB->setChecked(false);
@@ -410,14 +407,14 @@ void GuiListingsDialog::on_inlineCB_stateChanged(int state)
 }
 
 
-void GuiListingsDialog::on_numberSideCO_currentIndexChanged(int index)
+void GuiListings::on_numberSideCO_currentIndexChanged(int index)
 {
 	numberStepLE->setEnabled(index > 0);
 	numberFontSizeCO->setEnabled(index > 0);
 }
 
 
-void GuiListingsDialog::on_languageCO_currentIndexChanged(int index)
+void GuiListings::on_languageCO_currentIndexChanged(int index)
 {
 	dialectCO->clear();
 	// 0 is "no dialect"
@@ -425,7 +422,7 @@ void GuiListingsDialog::on_languageCO_currentIndexChanged(int index)
 	dialectCO->addItem(qt_("No dialect"));
 	string const language = languages[index];
 
-	for (size_t i = 0; i < nr_dialects; ++i) {
+	for (size_t i = 0; i != nr_dialects; ++i) {
 		if (language == dialects[i].language) {
 			dialectCO->addItem(qt_(dialects[i].gui));
 			if (dialects[i].is_default)
@@ -438,12 +435,10 @@ void GuiListingsDialog::on_languageCO_currentIndexChanged(int index)
 }
 
 
-void GuiListingsDialog::applyView()
+void GuiListings::applyView()
 {
-	InsetListingsParams & params = controller().params();
-	params.setInline(inlineCB->isChecked());
-	params.setParams(construct_params());
-	controller().setParams(params);
+	params_.setInline(inlineCB->isChecked());
+	params_.setParams(construct_params());
 }
 
 
@@ -456,7 +451,7 @@ static string plainParam(std::string const & par)
 }
 
 
-void GuiListingsDialog::updateContents()
+void GuiListings::updateContents()
 {
 	// set default values
 	listingsTB->setPlainText(
@@ -478,14 +473,13 @@ void GuiListingsDialog::updateContents()
 	extendedcharsCB->setChecked(false);
 
 	// set values from param string
-	InsetListingsParams & params = controller().params();
-	inlineCB->setChecked(params.isInline());
-	if (params.isInline()) {
+	inlineCB->setChecked(params_.isInline());
+	if (params_.isInline()) {
 		floatCB->setChecked(false);
 		placementLE->setEnabled(false);
 	}
 	// break other parameters and set values
-	vector<string> pars = getVectorFromString(params.separatedParams(), "\n");
+	vector<string> pars = getVectorFromString(params_.separatedParams(), "\n");
 	// process each of them
 	for (vector<string>::iterator it = pars.begin();
 	    it != pars.end(); ++it) {
@@ -509,7 +503,7 @@ void GuiListingsDialog::updateContents()
 			// on_languageCO_currentIndexChanged should have set dialects
 			if (!dialect.empty()) {
 				string dialect_gui;
-				for (size_t i = 0; i < nr_dialects; ++i) {
+				for (size_t i = 0; i != nr_dialects; ++i) {
 					if (dialect == dialects[i].dialect
 					    && dialects[i].language == language) {
 						dialect_gui = dialects[i].gui;
@@ -617,10 +611,39 @@ void GuiListingsDialog::updateContents()
 }
 
 
-bool GuiListingsDialog::isValid()
+bool GuiListings::isValid()
 {
 	return validate_listings_params().empty();
 }
+
+
+bool GuiListings::initialiseParams(string const & data)
+{
+	InsetListingsMailer::string2params(data, params_);
+	return true;
+}
+
+
+void GuiListings::clearParams()
+{
+	params_.clear();
+}
+
+
+void GuiListings::dispatchParams()
+{
+	string const lfun = InsetListingsMailer::params2string(params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+
+void GuiListings::setParams(InsetListingsParams const & params)
+{
+	params_ = params;
+}
+
+
+Dialog * createGuiListings(LyXView & lv) { return new GuiListings(lv); }
 
 
 } // namespace frontend
