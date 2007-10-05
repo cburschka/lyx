@@ -185,7 +185,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "external") {
 		dialog = new GuiExternalDialog(lyxview_);
 	} else if (name == "file") {
-		dialog = new GuiShowFileDialog(lyxview_);
+		dialog = createGuiShowFile(lyxview_);
 	} else if (name == "findreplace") {
 		dialog = new GuiSearchDialog(lyxview_);
 	} else if (name == "float") {

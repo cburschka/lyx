@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Herbert Voß
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,8 +13,8 @@
 
 #include "GuiShowFile.h"
 
-#include "ControlShowFile.h"
 #include "qt_helpers.h"
+#include "support/filetools.h"
 
 #include <QTextBrowser>
 #include <QPushButton>
@@ -23,12 +24,15 @@
 namespace lyx {
 namespace frontend {
 
-GuiShowFileDialog::GuiShowFileDialog(LyXView & lv)
-	: GuiDialog(lv, "file")
+using support::FileName;
+using support::onlyFilename;
+
+GuiShowFile::GuiShowFile(LyXView & lv)
+	: GuiDialog(lv, "file"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("Show File"));
-	setController(new ControlShowFile(*this));
+	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
@@ -37,30 +41,40 @@ GuiShowFileDialog::GuiShowFileDialog(LyXView & lv)
 }
 
 
-ControlShowFile & GuiShowFileDialog::controller()
-{
-	return static_cast<ControlShowFile &>(GuiDialog::controller());
-}
-
-
-void GuiShowFileDialog::closeEvent(QCloseEvent * e)
+void GuiShowFile::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiShowFileDialog::updateContents()
+void GuiShowFile::updateContents()
 {
-	setWindowTitle(toqstr(controller().getFileName()));
+	setWindowTitle(toqstr(onlyFilename(filename_.absFilename())));
 
-	std::string contents = controller().getFileContents();
-	if (contents.empty()) {
+	std::string contents = support::getFileContents(filename_);
+	if (contents.empty())
 		contents = "Error -> Cannot load file!";
-	}
 
 	textTB->setPlainText(toqstr(contents));
 }
+
+
+bool GuiShowFile::initialiseParams(std::string const & data)
+{
+	filename_ = FileName(data);
+	return true;
+}
+
+
+void GuiShowFile::clearParams()
+{
+	filename_.erase();
+}
+
+
+Dialog * createGuiShowFile(LyXView & lv) { return new GuiShowFile(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
