@@ -99,15 +99,13 @@ What's new in version 1.5.2?
 - New translations of the user interface into Finnish, Portuguese and
   Simplified Chinese.
 
-- Updated Czech and Italian translations of the user interface.
+- Updated Czech, French, Galician, German, Hungarian, Hebrew, Italian, 
+  Japanese and Romanian translations of the user interface.
 
 * USER INTERFACE
 
 - Add a pixmap cache to speed up text drawing on screen. This cache is
   enabled on Mac and Windows platforms using Qt 4.2 or higher.
-
-- Add an optimization that avoids a full screen drawing when typing in a
-  non-wide inset.
 
 - Add a "Save all" menu entry, to save all modified files (bug 2840).
 
@@ -192,6 +190,8 @@ What's new in version 1.5.2?
 
 - Fix a crash when exporting a file with graphics to LaTeX on Windows
   (bug 4243).
+
+- Fix a crash when a counter was ill-defined in a layout file (bug 4232).
 
 - Fix a crash with View>PDF on the Mac. This occurred only when LyX was
   compiled with gcc's stdlib-debug option (bug 4014).
