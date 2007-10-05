@@ -31,8 +31,8 @@ Style Standard
 End
 
 
-InsetLayout CharStyle:Firstname
-	LyXType charstyle
+InsetLayout Element:Firstname
+	LyXType element
 	LabelString Firstname
 	LatexType             Command
 	LatexName             firstname
@@ -45,8 +45,8 @@ InsetLayout CharStyle:Firstname
 	EndFont
 End
 
-InsetLayout CharStyle:Fname
-	LyXType charstyle
+InsetLayout Element:Fname
+	LyXType element
 	LabelString Fname
 	LatexType             Command
 	LatexName             fname
@@ -60,8 +60,8 @@ InsetLayout CharStyle:Fname
 End
 
 
-InsetLayout CharStyle:Surname
-	LyXType charstyle
+InsetLayout Element:Surname
+	LyXType element
 	LabelString Surname
 	LatexType             Command
 	LatexName             surname
@@ -75,8 +75,8 @@ InsetLayout CharStyle:Surname
 End
 
 
-InsetLayout CharStyle:Filename
-	LyXType charstyle
+InsetLayout Element:Filename
+	LyXType element
 	LabelString Filename
 	LatexType             Command
 	LatexName             filename
@@ -90,8 +90,8 @@ InsetLayout CharStyle:Filename
 End
 
 
-InsetLayout CharStyle:Literal
-	LyXType charstyle
+InsetLayout Element:Literal
+	LyXType element
 	LabelString Literal
 	LatexType             Command
 	LatexName             literal
@@ -105,8 +105,8 @@ InsetLayout CharStyle:Literal
 End
 
 
-InsetLayout CharStyle:Emph
-	LyXType charstyle
+InsetLayout Element:Emph
+	LyXType element
 	LabelString Emph
 	LatexType             Command
 	LatexName             emph
@@ -121,8 +121,8 @@ InsetLayout CharStyle:Emph
 End
 
 
-InsetLayout CharStyle:Abbrev
-	LyXType charstyle
+InsetLayout Element:Abbrev
+	LyXType element
 	LabelString Abbrev
 	LatexType             Command
 	LatexName             abbrev
@@ -132,8 +132,8 @@ InsetLayout CharStyle:Abbrev
 End
 
 
-InsetLayout CharStyle:Citation-number
-	LyXType charstyle
+InsetLayout Element:Citation-number
+	LyXType element
 	LabelString Citation-number
 	LatexType             Command
 	LatexName             citation-number
@@ -143,8 +143,8 @@ InsetLayout CharStyle:Citation-number
 End
 
 
-InsetLayout CharStyle:Volume
-	LyXType charstyle
+InsetLayout Element:Volume
+	LyXType element
 	LabelString Volume
 	LatexType             Command
 	LatexName             volume
@@ -154,8 +154,8 @@ InsetLayout CharStyle:Volume
 End
 
 
-InsetLayout CharStyle:Day
-	LyXType charstyle
+InsetLayout Element:Day
+	LyXType element
 	LabelString Day
 	LatexType             Command
 	LatexName             day
@@ -165,8 +165,8 @@ InsetLayout CharStyle:Day
 End
 
 
-InsetLayout CharStyle:Month
-	LyXType charstyle
+InsetLayout Element:Month
+	LyXType element
 	LabelString Month
 	LatexType             Command
 	LatexName             month
@@ -176,8 +176,8 @@ InsetLayout CharStyle:Month
 End
 
 
-InsetLayout CharStyle:Year
-	LyXType charstyle
+InsetLayout Element:Year
+	LyXType element
 	LabelString Year
 	LatexType             Command
 	LatexName             year
@@ -187,8 +187,8 @@ InsetLayout CharStyle:Year
 End
 
 
-InsetLayout CharStyle:Issue-number
-	LyXType charstyle
+InsetLayout Element:Issue-number
+	LyXType element
 	LabelString Issue-number
 	LatexType             Command
 	LatexName             issue-number
@@ -198,8 +198,8 @@ InsetLayout CharStyle:Issue-number
 End
 
 
-InsetLayout CharStyle:Issue-day
-	LyXType charstyle
+InsetLayout Element:Issue-day
+	LyXType element
 	LabelString Issue-day
 	LatexType             Command
 	LatexName             issue-day
@@ -209,8 +209,8 @@ InsetLayout CharStyle:Issue-day
 End
 
 
-InsetLayout CharStyle:Issue-months
-	LyXType charstyle
+InsetLayout Element:Issue-months
+	LyXType element
 	LabelString Issue-months
 	LatexType             Command
 	LatexName             issue-months
