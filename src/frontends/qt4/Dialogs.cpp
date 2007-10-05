@@ -38,7 +38,6 @@
 #include "GuiNomencl.h"
 #include "GuiListings.h"
 #include "GuiLog.h"
-#include "GuiNote.h"
 #include "GuiParagraph.h"
 #include "GuiPrefs.h"
 #include "GuiPrint.h"
@@ -55,7 +54,6 @@
 #include "TocWidget.h"
 #include "GuiURL.h"
 #include "GuiVSpace.h"
-#include "GuiWrap.h"
 
 #ifdef HAVE_LIBAIKSAURUS
 #include "ControlThesaurus.h"
@@ -109,8 +107,43 @@ private:
 
 } // namespace anon
 
-
+// will be replaced by a proper factory...
+Dialog * createGuiAboutDialog(LyXView & lv);
+Dialog * createGuiBibitemDialog(LyXView & lv);
+Dialog * createGuiBibtexDialog(LyXView & lv);
+Dialog * createGuiBoxDialog(LyXView & lv);
+Dialog * createGuiBranchDialog(LyXView & lv);
+Dialog * createGuiChangesDialog(LyXView & lv);
+Dialog * createGuiCharacterDialog(LyXView & lv);
+Dialog * createGuiCitationDialog(LyXView & lv);
+Dialog * createGuiDelimiterDialog(LyXView & lv);
+Dialog * createGuiDocumentDialog(LyXView & lv);
+Dialog * createGuiErrorListDialog(LyXView & lv);
+Dialog * createGuiERTDialog(LyXView & lv);
+Dialog * createGuiExternalDialog(LyXView & lv);
+Dialog * createGuiFloatDialog(LyXView & lv);
+Dialog * createGuiGraphicsDialog(LyXView & lv);
+Dialog * createGuiIncludeDialog(LyXView & lv);
+Dialog * createGuiIndexDialog(LyXView & lv);
+Dialog * createGuiLabelDialog(LyXView & lv);
+Dialog * createGuiListingsDialog(LyXView & lv);
+Dialog * createGuiLogDialog(LyXView & lv);
+Dialog * createGuiMathMatrixDialog(LyXView & lv);
+Dialog * createGuiNomenclDialog(LyXView & lv);
+Dialog * createGuiNote(LyXView & lv);
+Dialog * createGuiPrefsDialog(LyXView & lv);
+Dialog * createGuiPrintDialog(LyXView & lv);
 Dialog * createGuiRef(LyXView & lv);
+Dialog * createGuiSearchDialog(LyXView & lv);
+Dialog * createGuiSendtoDialog(LyXView & lv);
+Dialog * createGuiShowFileDialog(LyXView & lv);
+Dialog * createGuiSpellcheckerDialog(LyXView & lv);
+Dialog * createGuiTabularCreateDialog(LyXView & lv);
+Dialog * createGuiTabularDialog(LyXView & lv);
+Dialog * createGuiTexinfoDialog(LyXView & lv);
+Dialog * createGuiThesaurusDialog(LyXView & lv);
+Dialog * createGuiURLDialog(LyXView & lv);
+Dialog * createGuiVSpaceDialog(LyXView & lv);
 Dialog * createGuiWrap(LyXView & lv);
 
 
@@ -181,7 +214,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "mathmatrix") {
 		dialog = new GuiMathMatrixDialog(lyxview_);
 	} else if (name == "note") {
-		dialog = new GuiNoteDialog(lyxview_);
+		dialog = createGuiNote(lyxview_);
 	} else if (name == "paragraph") {
 #ifdef USE_DOCK_WIDGET
 		DockView<ControlParagraph, GuiParagraph> * dv =

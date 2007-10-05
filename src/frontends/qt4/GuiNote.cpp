@@ -3,6 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Angus Leeming
  * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
@@ -11,20 +12,24 @@
 #include <config.h>
 
 #include "GuiNote.h"
+#include "FuncRequest.h"
+#include "gettext.h"
 
-#include "ControlNote.h"
 #include "insets/InsetNote.h"
 
 #include <QCloseEvent>
 
+using std::string;
+
+
 namespace lyx {
 namespace frontend {
 
-GuiNoteDialog::GuiNoteDialog(LyXView & lv)
-	: GuiDialog(lv, "note")
+GuiNote::GuiNote(LyXView & lv)
+	: GuiDialog(lv, "note"), Controller(this)
 {
 	setupUi(this);
-	setController(new ControlNote(*this));
+	setController(this, false);
 	setViewTitle(_("Note Settings"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
@@ -42,68 +47,77 @@ GuiNoteDialog::GuiNoteDialog(LyXView & lv)
 }
 
 
-ControlNote & GuiNoteDialog::controller()
-{
-	return static_cast<ControlNote &>(GuiDialog::controller());
-}
-
-
-void GuiNoteDialog::closeEvent(QCloseEvent * e)
+void GuiNote::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiNoteDialog::change_adaptor()
+void GuiNote::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiNoteDialog::updateContents()
+void GuiNote::updateContents()
 {
-	QRadioButton * rb = 0;
-
-	switch (controller().params().type) {
+	switch (params_.type) {
 	case InsetNoteParams::Note:
-		rb = noteRB;
+		noteRB->setChecked(true);
 		break;
 	case InsetNoteParams::Comment:
-		rb = commentRB;
+		commentRB->setChecked(true);
 		break;
 	case InsetNoteParams::Greyedout:
-		rb = greyedoutRB;
+		greyedoutRB->setChecked(true);
 		break;
 	case InsetNoteParams::Framed:
-		rb = framedRB;
+		framedRB->setChecked(true);
 		break;
 	case InsetNoteParams::Shaded:
-		rb = shadedRB;
+		shadedRB->setChecked(true);
 		break;
 	}
-
-	rb->setChecked(true);
 }
 
 
-void GuiNoteDialog::applyView()
+void GuiNote::applyView()
 {
-	InsetNoteParams::Type type;
-
 	if (greyedoutRB->isChecked())
-		type = InsetNoteParams::Greyedout;
+		params_.type = InsetNoteParams::Greyedout;
 	else if (commentRB->isChecked())
-		type = InsetNoteParams::Comment;
+		params_.type = InsetNoteParams::Comment;
 	else if (framedRB->isChecked())
-		type = InsetNoteParams::Framed;
+		params_.type = InsetNoteParams::Framed;
 	else if (shadedRB->isChecked())
-		type = InsetNoteParams::Shaded;
+		params_.type = InsetNoteParams::Shaded;
 	else
-		type = InsetNoteParams::Note;
-
-	controller().params().type = type;
+		params_.type = InsetNoteParams::Note;
 }
+
+
+bool GuiNote::initialiseParams(string const & data)
+{
+	InsetNoteMailer::string2params(data, params_);
+	return true;
+}
+
+
+void GuiNote::clearParams()
+{
+	params_ = InsetNoteParams();
+}
+
+
+void GuiNote::dispatchParams()
+{
+	dispatch(FuncRequest(getLfun(), InsetNoteMailer::params2string(params_)));
+}
+
+
+Dialog * createGuiNote(LyXView & lv) { return new GuiNote(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

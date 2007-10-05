@@ -13,27 +13,38 @@
 #define GUINOTE_H
 
 #include "GuiDialog.h"
-#include "ControlNote.h"
+#include "insets/InsetNote.h"
 #include "ui_NoteUi.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiNoteDialog : public GuiDialog, public Ui::NoteUi
+class GuiNote : public GuiDialog, public Ui::NoteUi, public Controller
 {
 	Q_OBJECT
 public:
-	GuiNoteDialog(LyXView & lv);
+	GuiNote(LyXView & lv);
 private Q_SLOTS:
 	void change_adaptor();
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlNote & controller();
+	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// Update dialog before showing it
 	void updateContents();
+	///
+	bool initialiseParams(std::string const & data);
+	///
+	void clearParams();
+	///
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+private:
+	///
+	InsetNoteParams params_;
 };
 
 } // namespace frontend

@@ -29,7 +29,6 @@ SOURCEFILES = \
 	ControlLog.cpp \
 	ControlViewSource.cpp \
 	ControlMath.cpp \
-	ControlNote.cpp \
 	ControlParagraph.cpp \
 	ControlPrefs.cpp \
 	ControlPrint.cpp \
@@ -67,7 +66,6 @@ HEADERFILES = \
 	ControlLog.h \
 	ControlViewSource.h \
 	ControlMath.h \
-	ControlNote.h \
 	ControlParagraph.h \
 	ControlPrefs.h \
 	ControlPrint.h \
