@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-10-02 11:48+0200\n"
+"POT-Creation-Date: 2007-10-03 08:58+0200\n"
 "PO-Revision-Date: 2007-10-04 22:57+0100\n"
 "Last-Translator: Susana Barbosa <susana.barbosa@fc.up.pt>\n"
 "Language-Team:  <en@li.org>\n"
@@ -1128,7 +1128,8 @@ msgstr "Tamanho de sáida"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr "Define altura do gráfico. Não assinalar para determinar automáticamente."
+msgstr ""
+"Define altura do gráfico. Não assinalar para determinar automáticamente."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "Set &height:"
@@ -1140,7 +1141,8 @@ msgstr "Re&dimensionar gráficos (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:194
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr "Define largura do gráfico. Não assinalar para determinar automáticamente."
+msgstr ""
+"Define largura do gráfico. Não assinalar para determinar automáticamente."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:197
 msgid "Set &width:"
@@ -1148,7 +1150,8 @@ msgstr "Definir &largura:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:207
 msgid "Scale image to maximum size not exceeding width and height"
-msgstr "Redimensionar imagem para tamanho máximo que não exceda altura e largura"
+msgstr ""
+"Redimensionar imagem para tamanho máximo que não exceda altura e largura"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:220
 msgid "Rotate Graphics"
@@ -1496,7 +1499,8 @@ msgstr "Janela de feedback"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:570
 msgid "Input listing parameters here. Enter ? for a list of parameters."
-msgstr "Inserir parâmetros de listagem aqui. Premir ? para uma lista de parâmetros."
+msgstr ""
+"Inserir parâmetros de listagem aqui. Premir ? para uma lista de parâmetros."
 
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Update the display"
@@ -1673,7 +1677,8 @@ msgstr "Tamanho de papel"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:74
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr "Escolher um tamanho de papel particular ou definir um próprio com \"Custom\""
+msgstr ""
+"Escolher um tamanho de papel particular ou definir um próprio com \"Custom\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
 msgid "Orientation"
@@ -1718,7 +1723,8 @@ msgstr "Tabela longa"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:195
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "Usar o alinhamento pré-definido para este parágrafo, qualquer que ele seja."
+msgstr ""
+"Usar o alinhamento pré-definido para este parágrafo, qualquer que ele seja."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:198 src/frontends/qt4/QParagraph.cpp:86
 msgid "Use Paragraph's Default Alignment"
@@ -2622,7 +2628,8 @@ msgstr "Procurar para trás"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:45
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Processar o ficheiro convertido com este comando ($$FName = nome ficheiro)"
+msgstr ""
+"Processar o ficheiro convertido com este comando ($$FName = nome ficheiro)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:104
 msgid "&Export formats:"
@@ -2767,7 +2774,8 @@ msgstr "Limpar"
 
 #: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr "Usar estilo de contorno (a.k.a booktabs) formal (sem contornos verticais)"
+msgstr ""
+"Usar estilo de contorno (a.k.a booktabs) formal (sem contornos verticais)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:316
 msgid "Fo&rmal"
@@ -2929,7 +2937,8 @@ msgid "&Rescan"
 msgstr "Reler"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostrar conteúdo do ficheiro marcado. Só é possível quando os ficheiros são "
 "mostrados com path"
@@ -3053,7 +3062,8 @@ msgstr "Mover item seleccionado um acima"
 msgid ""
 "Switch between table of contents, list of figures or list of tables, if "
 "available"
-msgstr "Alternar entre índice, lista de figuras ou lista de tabelas, se disponível"
+msgstr ""
+"Alternar entre índice, lista de figuras ou lista de tabelas, se disponível"
 
 #: src/frontends/qt4/ui/TocUi.ui:181
 msgid "Adjust the depth of the navigation tree"
@@ -11759,7 +11769,8 @@ msgstr "Classe de documento desconhecida"
 #: src/Buffer.cpp:410
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "A usar a classe de documento por omissão, porque a class %1$s é desconhecida."
+msgstr ""
+"A usar a classe de documento por omissão, porque a class %1$s é desconhecida."
 
 #: src/Buffer.cpp:470 src/Text.cpp:295
 #, c-format
@@ -11784,7 +11795,8 @@ msgstr "Não é possível carregar classe de documento"
 
 #: src/Buffer.cpp:512
 #, c-format
-msgid "Using the default document class, because the class %1$s could not be loaded."
+msgid ""
+"Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 "A usar a classe de documento por omissão, porque a classe  %1$s não pode ser "
 "carregada."
@@ -11900,7 +11912,9 @@ msgstr ""
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
-msgstr "O documento %1$s foi modificado externamente. Tem a certeza de que quer escrever por cima deste documento?"
+msgstr ""
+"O documento %1$s foi modificado externamente. Tem a certeza de que quer "
+"escrever por cima deste documento?"
 
 #: src/Buffer.cpp:818
 msgid "Overwrite modified file?"
@@ -12062,11 +12076,11 @@ msgstr "Uma palavra no documento."
 msgid "Count words"
 msgstr "Contar palavras"
 
-#: src/BufferView.cpp:1611
+#: src/BufferView.cpp:1605
 msgid "Select LyX document to insert"
 msgstr "Selecionar documento LyX a inserir"
 
-#: src/BufferView.cpp:1613 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
+#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
 #: src/LyXFunc.cpp:2108 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -12076,31 +12090,31 @@ msgstr "Selecionar documento LyX a inserir"
 msgid "Documents|#o#O"
 msgstr "Documentos"
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
+#: src/BufferView.cpp:1608 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
 msgid "Examples|#E#e"
 msgstr "Exemplos"
 
-#: src/BufferView.cpp:1620 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
+#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "Documentos LyX (*.lyx)"
 
-#: src/BufferView.cpp:1632 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
+#: src/BufferView.cpp:1626 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
 #: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
 msgid "Canceled."
 msgstr "Cancelado."
 
-#: src/BufferView.cpp:1643
+#: src/BufferView.cpp:1637
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "A inserir documento %1$s..."
 
-#: src/BufferView.cpp:1654
+#: src/BufferView.cpp:1648
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento %1$s inserido."
 
-#: src/BufferView.cpp:1656
+#: src/BufferView.cpp:1650
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Não é possível inserir documento %1$s"
@@ -12668,7 +12682,8 @@ msgstr ""
 
 #: src/ISpell.cpp:416
 msgid "Could not communicate with the ispell spellchecker process."
-msgstr "Não é possível comunicar com o processo ispell do verificador ortográfico."
+msgstr ""
+"Não é possível comunicar com o processo ispell do verificador ortográfico."
 
 #: src/ISpell.cpp:476
 #, c-format
@@ -12772,7 +12787,10 @@ msgstr "Classetexto não encontrada"
 msgid ""
 "LyX cannot continue because no textclass is found. You can either "
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
-msgstr "O Lyx não pode continuar porque a classtexto não foi encontrada. Pode reconfigurar normalmente, ou reconfigurar utilizando classestexto por omissão, ou sair do Lyx."
+msgstr ""
+"O Lyx não pode continuar porque a classtexto não foi encontrada. Pode "
+"reconfigurar normalmente, ou reconfigurar utilizando classestexto por "
+"omissão, ou sair do Lyx."
 
 #: src/LyX.cpp:622
 msgid "&Reconfigure"
@@ -13039,7 +13057,8 @@ msgstr "Síntaxe: set-color <lyx_name> <x11_name>"
 #: src/LyXFunc.cpp:1604
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr "Set-color \"%1$s\" falhou - cor não definida ou que não pode ser redfinida"
+msgstr ""
+"Set-color \"%1$s\" falhou - cor não definida ou que não pode ser redfinida"
 
 #: src/LyXFunc.cpp:1718
 #, c-format
@@ -13166,7 +13185,8 @@ msgstr ""
 "para as pré-definidas após a alteração de classe."
 
 #: src/LyXRC.cpp:2109
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "O intervalo de tempo entre auto-saves (em segundos). 0 significa não auto-"
 "save."
@@ -13300,7 +13320,8 @@ msgstr ""
 "documento."
 
 #: src/LyXRC.cpp:2210
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Seleccionar se um comando de alteração de língua é necessário no fim do "
 "documento."
@@ -13376,7 +13397,8 @@ msgstr ""
 #: src/LyXRC.cpp:2254
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "Número máximo de ultimosficheiros. Até %1$d pode aparecer no menu ficheiro."
+msgstr ""
+"Número máximo de ultimosficheiros. Até %1$d pode aparecer no menu ficheiro."
 
 #: src/LyXRC.cpp:2259
 msgid ""
@@ -13387,7 +13409,8 @@ msgstr ""
 "Usar o formato nativo do sistema operativo."
 
 #: src/LyXRC.cpp:2266
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Especificar um ficheiro de dicionário pessoal alternativo. Ex \"."
 "ispell_english\"."
@@ -13434,7 +13457,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2302
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr "Extensão do ficheiro de saída do programa de impressão. Em geral  \".ps\"."
+msgstr ""
+"Extensão do ficheiro de saída do programa de impressão. Em geral  \".ps\"."
 
 #: src/LyXRC.cpp:2306
 msgid "The option to print out in landscape."
@@ -13482,7 +13506,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2338
 msgid "Option to pass to the print program to print to a file."
-msgstr "Opção a passar para o programa de impressão para imprimir para um ficheiro."
+msgstr ""
+"Opção a passar para o programa de impressão para imprimir para um ficheiro."
 
 #: src/LyXRC.cpp:2342
 msgid "Option to pass to the print program to print on a specific printer."
@@ -13503,7 +13528,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "O seu programa favorito de impressão, ex \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:2354
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Seleccionar para activar suporte para línguas direita-para-esquerda (ex "
 "Hebreu, Árabe)."
@@ -13533,7 +13559,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2377
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr "Os tamanhos de fonte usados para calcular a dimensão das fontes de écran."
+msgstr ""
+"Os tamanhos de fonte usados para calcular a dimensão das fontes de écran."
 
 #: src/LyXRC.cpp:2382
 #, no-c-format
@@ -13699,11 +13726,11 @@ msgstr "Sem Ramo no Documento!"
 msgid "Senseless with this layout!"
 msgstr "Sem sentido com este layout!"
 
-#: src/Paragraph.cpp:1690
+#: src/Paragraph.cpp:1692
 msgid "Alignment not permitted"
 msgstr "Alinhamento não permitido"
 
-#: src/Paragraph.cpp:1691
+#: src/Paragraph.cpp:1693
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -13737,8 +13764,7 @@ msgid "Change tracking error"
 msgstr "Alterar erro "
 
 #: src/Text.cpp:274
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr "Autor de índice remissivo desconhecido para inserção: %1$d\n"
 
@@ -14495,7 +14521,8 @@ msgstr "Ficheiro de registo LaTeX não encontrado."
 
 #: src/frontends/controllers/ControlLog.cpp:119
 msgid "No literate programming build log file found."
-msgstr "Ficheiro de registo de Compilação de Programação Literal não encontrado."
+msgstr ""
+"Ficheiro de registo de Compilação de Programação Literal não encontrado."
 
 #: src/frontends/controllers/ControlLog.cpp:122
 msgid "No lyx2lyx error log file found."
@@ -14988,7 +15015,8 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:655
-msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Inserir parâmetros de listagem à direita Premir ? para uma lista de "
 "parâmetros."
@@ -15154,7 +15182,8 @@ msgstr "Gráficos"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Inserir parâmetros de listagem à direita. Premir ? para uma lista de "
 "parâmetros."
@@ -15712,7 +15741,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "Deveria ser constituído por um ou mais de %1$s."
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "Usar \\footnotesize, \\small, \\itshape, \\ttfamily ou algo como isto"
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -15911,6 +15941,16 @@ msgstr "Não pode definir multicoluna verticalmente."
 msgid "Opened Text Inset"
 msgstr "Inserto Texto Aberto"
 
+#: src/insets/InsetTheorem.cpp:41
+#, fuzzy
+msgid "theorem"
+msgstr "Teorema"
+
+#: src/insets/InsetTheorem.cpp:91
+#, fuzzy
+msgid "Opened Theorem Inset"
+msgstr "Inserto Nota Aberto"
+
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
 msgstr "Url: "
@@ -16078,6 +16118,11 @@ msgstr "Cadeia alfanumérica foi substituida."
 msgid " strings have been replaced."
 msgstr "Cadeias alfanuméricas foram substituidas."
 
+#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " Macro: %1$s: "
+
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -16145,11 +16190,6 @@ msgstr "introduzido como modo texto em mat. (textrm)"
 msgid "Standard[[mathref]]"
 msgstr ""
 
-#: src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Macro: %1$s: "
-
 #: src/mathed/MathMacroTemplate.cpp:241
 msgid "math macro"
 msgstr "macro mat"
@@ -16181,7 +16221,8 @@ msgstr "Binário LyX não encontrado"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Não é possível determinar o path para o binário LyX a partir da linha de "
 "comando %1$s"
@@ -16266,4 +16307,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Utilizador desconhecido"
-
