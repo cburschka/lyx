@@ -7,6 +7,7 @@
  * \author André Pönitz
  * \author Angus Leeming
  * \author Jürgen Spitzmüller
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -15,31 +16,47 @@
 #define GUIVSPACE_H
 
 #include "GuiDialog.h"
-#include "ControlVSpace.h"
 #include "ui_VSpaceUi.h"
+#include "VSpace.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiVSpaceDialog : public GuiDialog, public Ui::VSpaceUi
+class GuiVSpace : public GuiDialog, public Ui::VSpaceUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiVSpaceDialog(LyXView & lv);
+	GuiVSpace(LyXView & lv);
 
 private Q_SLOTS:
+	///
 	void change_adaptor();
+	///
 	void closeEvent(QCloseEvent *);
+	///
 	void enableCustom(int);
 
 private:
 	/// parent controller
-	ControlVSpace & controller();
+	Controller & controller() { return *this; }
 	/// Apply from dialog
 	void applyView();
 	/// Update the dialog
 	void updateContents();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	bool inInset() const;
+
+	///
+	VSpace params_;
 };
 
 } // namespace frontend

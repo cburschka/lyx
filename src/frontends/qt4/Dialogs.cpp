@@ -50,7 +50,6 @@
 #include "GuiViewSource.h"
 #include "TocWidget.h"
 #include "GuiURL.h"
-#include "GuiVSpace.h"
 
 #ifdef HAVE_LIBAIKSAURUS
 #include "ControlThesaurus.h"
@@ -253,7 +252,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "url") {
 		dialog = new GuiURLDialog(lyxview_);
 	} else if (name == "vspace") {
-		dialog = new GuiVSpaceDialog(lyxview_);
+		dialog = createGuiVSpace(lyxview_);
 	} else if (name == "wrap") {
 		dialog = createGuiWrap(lyxview_);
 	} else if (name == "listings") {

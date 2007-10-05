@@ -17,14 +17,14 @@
 
 #include "GuiVSpace.h"
 
-#include "ControlVSpace.h"
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 
 #include "LyXRC.h" // to set the default length values
 #include "Spacing.h"
-#include "VSpace.h"
+#include "FuncRequest.h"
+#include "insets/InsetVSpace.h"
 
 #include "support/lstrings.h"
 
@@ -40,12 +40,12 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiVSpaceDialog::GuiVSpaceDialog(LyXView & lv)
-	: GuiDialog(lv, "vspace")
+GuiVSpace::GuiVSpace(LyXView & lv)
+	: GuiDialog(lv, "vspace"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("Vertical Space Settings"));
-	setController(new ControlVSpace(*this));
+	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -84,26 +84,20 @@ GuiVSpaceDialog::GuiVSpaceDialog(LyXView & lv)
 }
 
 
-ControlVSpace & GuiVSpaceDialog::controller()
-{
-	return static_cast<ControlVSpace &>(GuiDialog::controller());
-}
-
-
-void GuiVSpaceDialog::closeEvent(QCloseEvent * e)
+void GuiVSpace::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiVSpaceDialog::change_adaptor()
+void GuiVSpace::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiVSpaceDialog::enableCustom(int selection)
+void GuiVSpace::enableCustom(int selection)
 {
 	bool const enable = selection == 5;
 	valueLE->setEnabled(enable);
@@ -164,25 +158,48 @@ static VSpace setVSpaceFromWidgets(int spacing,
 }
 
 
-void GuiVSpaceDialog::applyView()
+void GuiVSpace::applyView()
 {
 	// If a vspace choice is "Length" but there's no text in
 	// the input field, do not insert a vspace at all.
 	if (spacingCO->currentIndex() == 5 && valueLE->text().isEmpty())
 		return;
 
-	VSpace const space = setVSpaceFromWidgets(spacingCO->currentIndex(),
+	params_ = setVSpaceFromWidgets(spacingCO->currentIndex(),
 			valueLE, unitCO, keepCB->isChecked()); 
 
-	controller().params() = space;
 }
 
 
-void GuiVSpaceDialog::updateContents()
+void GuiVSpace::updateContents()
 {
-	setWidgetsFromVSpace(controller().params(),
-		spacingCO, valueLE, unitCO, keepCB);
+	setWidgetsFromVSpace(params_, spacingCO, valueLE, unitCO, keepCB);
 }
+
+
+bool GuiVSpace::initialiseParams(string const & data)
+{
+	InsetVSpaceMailer::string2params(data, params_);
+	dialog().setButtonsValid(true);
+
+	return true;
+}
+
+
+void GuiVSpace::clearParams()
+{
+	params_ = VSpace();
+}
+
+
+void GuiVSpace::dispatchParams()
+{
+	dispatch(FuncRequest(getLfun(), InsetVSpaceMailer::params2string(params_)));
+}
+
+
+Dialog * createGuiVSpace(LyXView & lv) { return new GuiVSpace(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
