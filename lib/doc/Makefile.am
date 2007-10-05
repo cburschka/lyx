@@ -86,7 +86,8 @@ dist_esdoc_DATA = \
 	es/EmbeddedObjects.lyx \
 	es/Extended.lyx \
 	es/Intro.lyx \
-	es/Tutorial.lyx
+	es/Tutorial.lyx \
+	es/UserGuide.lyx
 
 esbibliodocdir = $(pkgdatadir)/doc/es/biblio
 dist_esbibliodoc_DATA = \
