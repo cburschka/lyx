@@ -737,7 +737,6 @@ src_frontends_controllers_header_files = Split('''
     ControlParagraph.h
     ControlPrefs.h
     ControlPrint.h
-    ControlRef.h
     ControlSearch.h
     ControlSendto.h
     ControlShowFile.h
@@ -780,7 +779,6 @@ src_frontends_controllers_files = Split('''
     ControlParagraph.cpp
     ControlPrefs.cpp
     ControlPrint.cpp
-    ControlRef.cpp
     ControlSearch.cpp
     ControlSendto.cpp
     ControlShowFile.cpp
