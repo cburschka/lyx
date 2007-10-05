@@ -25,7 +25,7 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(LyXView & lv, std::string const & name)
-	: is_closing_(false), name_(name), controller_(0)
+	: is_closing_(false), name_(name), controller_(0), destroy_controller_(false)
 {
 	lyxview_ = &lv;
 }
@@ -33,7 +33,8 @@ GuiDialog::GuiDialog(LyXView & lv, std::string const & name)
 
 GuiDialog::~GuiDialog()
 {
-	delete controller_;
+	if (destroy_controller_)
+		delete controller_;
 }
 
 
@@ -232,10 +233,11 @@ void GuiDialog::apply()
 }
 
 
-void GuiDialog::setController(Controller * controller)
+void GuiDialog::setController(Controller * controller, bool destroy)
 {
 	BOOST_ASSERT(controller);
 	BOOST_ASSERT(!controller_);
+	destroy_controller_ = destroy;
 	controller_ = controller;
 	controller_->setLyXView(*lyxview_);
 }

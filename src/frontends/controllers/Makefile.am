@@ -33,7 +33,6 @@ SOURCEFILES = \
 	ControlParagraph.cpp \
 	ControlPrefs.cpp \
 	ControlPrint.cpp \
-	ControlRef.cpp \
 	ControlSearch.cpp \
 	ControlSendto.cpp \
 	ControlShowFile.cpp \
@@ -73,7 +72,6 @@ HEADERFILES = \
 	ControlParagraph.h \
 	ControlPrefs.h \
 	ControlPrint.h \
-	ControlRef.h \
 	ControlSearch.h \
 	ControlSendto.h \
 	ControlShowFile.h \

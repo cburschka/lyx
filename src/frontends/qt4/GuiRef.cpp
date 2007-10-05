@@ -13,10 +13,17 @@
 
 #include "GuiRef.h"
 
-#include "ControlRef.h"
+#include "Buffer.h"
+#include "BufferList.h"
+#include "FuncRequest.h"
+
 #include "qt_helpers.h"
 
 #include "insets/InsetRef.h"
+
+#include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
+
+#include <boost/filesystem/operations.hpp>
 
 #include <QLineEdit>
 #include <QCheckBox>
@@ -26,19 +33,30 @@
 #include <QToolTip>
 #include <QCloseEvent>
 
+#include <algorithm>
 
+using std::find;
 using std::vector;
 using std::string;
-
 
 namespace lyx {
 namespace frontend {
 
-GuiRefDialog::GuiRefDialog(LyXView & lv)
-	: GuiDialog(lv, "ref")
+using support::makeAbsPath;
+using support::makeDisplayPath;
+
+//FIXME It should be possible to eliminate lfun_name_
+//now and recover that information from params().insetType().
+//But let's not do that quite yet.
+/// Flags what action is taken by Kernel::dispatch()
+static std::string const lfun_name_ = "ref";
+
+GuiRef::GuiRef(LyXView & lv)
+	: GuiDialog(lv, "ref"), Controller(*static_cast<Dialog*>(this)),
+		params_("ref")
 {
 	setupUi(this);
-	setController(new ControlRef(*this));
+	setController(this, false);
 	setViewTitle(_("Cross-reference"));
 
 	sort_ = false;
@@ -88,26 +106,20 @@ GuiRefDialog::GuiRefDialog(LyXView & lv)
 }
 
 
-ControlRef & GuiRefDialog::controller()
-{
-	return static_cast<ControlRef &>(GuiDialog::controller());
-}
-
-
-void GuiRefDialog::changed_adaptor()
+void GuiRef::changed_adaptor()
 {
 	changed();
 }
 
 
-void GuiRefDialog::gotoClicked()
+void GuiRef::gotoClicked()
 {
 	gotoRef();
 }
 
-void GuiRefDialog::selectionChanged()
+void GuiRef::selectionChanged()
 {
-	if (controller().isBufferReadonly())
+	if (isBufferReadonly())
 		return;
 
 	QList<QListWidgetItem *> selections = refsLW->selectedItems();
@@ -119,7 +131,7 @@ void GuiRefDialog::selectionChanged()
 }
 
 
-void GuiRefDialog::refHighlighted(QListWidgetItem * sel)
+void GuiRef::refHighlighted(QListWidgetItem * sel)
 {
 	if (controller().isBufferReadonly())
 		return;
@@ -142,9 +154,9 @@ void GuiRefDialog::refHighlighted(QListWidgetItem * sel)
 }
 
 
-void GuiRefDialog::refSelected(QListWidgetItem * sel)
+void GuiRef::refSelected(QListWidgetItem * sel)
 {
-	if (controller().isBufferReadonly())
+	if (isBufferReadonly())
 		return;
 
 /*	int const cur_item = refsLW->currentRow();
@@ -159,27 +171,27 @@ void GuiRefDialog::refSelected(QListWidgetItem * sel)
 }
 
 
-void GuiRefDialog::sortToggled(bool on)
+void GuiRef::sortToggled(bool on)
 {
 	sort_ = on;
 	redoRefs();
 }
 
 
-void GuiRefDialog::updateClicked()
+void GuiRef::updateClicked()
 {
 	updateRefs();
 }
 
 
-void GuiRefDialog::reset_dialog()
+void GuiRef::reset_dialog()
 {
 	at_ref_ = false;
 	setGotoRef();
 }
 
 
-void GuiRefDialog::closeEvent(QCloseEvent * e)
+void GuiRef::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	reset_dialog();
@@ -187,23 +199,21 @@ void GuiRefDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void GuiRefDialog::updateContents()
+void GuiRef::updateContents()
 {
-	InsetCommandParams const & params = controller().params();
-
 	int orig_type = typeCO->currentIndex();
 
-	referenceED->setText(toqstr(params["reference"]));
+	referenceED->setText(toqstr(params_["reference"]));
 
-	nameED->setText(toqstr(params["name"]));
-	nameED->setReadOnly(!nameAllowed() && !controller().isBufferReadonly());
+	nameED->setText(toqstr(params_["name"]));
+	nameED->setReadOnly(!nameAllowed() && !isBufferReadonly());
 
 	// restore type settings for new insets
-	if (params["reference"].empty())
+	if (params_["reference"].empty())
 		typeCO->setCurrentIndex(orig_type);
 	else
-		typeCO->setCurrentIndex(InsetRef::getType(params.getCmdName()));
-	typeCO->setEnabled(typeAllowed() && !controller().isBufferReadonly());
+		typeCO->setCurrentIndex(InsetRef::getType(params_.getCmdName()));
+	typeCO->setEnabled(typeAllowed() && !isBufferReadonly());
 	if (!typeAllowed())
 		typeCO->setCurrentIndex(0);
 
@@ -211,51 +221,50 @@ void GuiRefDialog::updateContents()
 
 	// insert buffer list
 	bufferCO->clear();
-	vector<string> const buffers = controller().getBufferList();
-	for (vector<string>::const_iterator it = buffers.begin();
-		it != buffers.end(); ++it) {
-		bufferCO->addItem(toqstr(*it));
+	vector<string> buffers = theBufferList().getFileNames();
+	for (vector<string>::iterator it = buffers.begin();
+	     it != buffers.end(); ++it) {
+		bufferCO->addItem(toqstr(lyx::to_utf8(makeDisplayPath(*it))));
 	}
+
 	// restore the buffer combo setting for new insets
-	if (params["reference"].empty() && restored_buffer_ != -1
+	if (params_["reference"].empty() && restored_buffer_ != -1
 	&& restored_buffer_ < bufferCO->count())
 		bufferCO->setCurrentIndex(restored_buffer_);
 	else
-		bufferCO->setCurrentIndex(controller().getBufferNum());
+		bufferCO->setCurrentIndex(bufferNum());
 
 	updateRefs();
 	bc().setValid(false);
 }
 
 
-void GuiRefDialog::applyView()
+void GuiRef::applyView()
 {
-	InsetCommandParams & params = controller().params();
-
 	last_reference_ = referenceED->text();
 
-	params.setCmdName(InsetRef::getName(typeCO->currentIndex()));
-	params["reference"] = qstring_to_ucs4(last_reference_);
-	params["name"] = qstring_to_ucs4(nameED->text());
+	params_.setCmdName(InsetRef::getName(typeCO->currentIndex()));
+	params_["reference"] = qstring_to_ucs4(last_reference_);
+	params_["name"] = qstring_to_ucs4(nameED->text());
 
 	restored_buffer_ = bufferCO->currentIndex();
 }
 
 
-bool GuiRefDialog::nameAllowed()
+bool GuiRef::nameAllowed()
 {
-	KernelDocType const doc_type = controller().docType();
+	KernelDocType const doc_type = docType();
 	return doc_type != LATEX && doc_type != LITERATE;
 }
 
 
-bool GuiRefDialog::typeAllowed()
+bool GuiRef::typeAllowed()
 {
-	return controller().docType() != DOCBOOK;
+	return docType() != DOCBOOK;
 }
 
 
-void GuiRefDialog::setGoBack()
+void GuiRef::setGoBack()
 {
 	gotoPB->setText(qt_("&Go Back"));
 	gotoPB->setToolTip("");
@@ -263,7 +272,7 @@ void GuiRefDialog::setGoBack()
 }
 
 
-void GuiRefDialog::setGotoRef()
+void GuiRef::setGotoRef()
 {
 	gotoPB->setText(qt_("&Go to Label"));
 	gotoPB->setToolTip("");
@@ -271,24 +280,24 @@ void GuiRefDialog::setGotoRef()
 }
 
 
-void GuiRefDialog::gotoRef()
+void GuiRef::gotoRef()
 {
 	string ref = fromqstr(referenceED->text());
 
 	if (at_ref_) {
 		// go back
 		setGotoRef();
-		controller().gotoBookmark();
+		gotoBookmark();
 	} else {
 		// go to the ref
 		setGoBack();
-		controller().gotoRef(ref);
+		gotoRef(ref);
 	}
 	at_ref_ = !at_ref_;
 }
 
 
-void GuiRefDialog::redoRefs()
+void GuiRef::redoRefs()
 {
 	// Prevent these widgets from emitting any signals whilst
 	// we modify their state.
@@ -341,11 +350,12 @@ void GuiRefDialog::redoRefs()
 }
 
 
-void GuiRefDialog::updateRefs()
+void GuiRef::updateRefs()
 {
 	refs_.clear();
-	string const name = controller().getBufferName(bufferCO->currentIndex());
-	refs_ = controller().getLabelList(name);
+	string const name = theBufferList().getFileNames()[bufferCO->currentIndex()];
+	Buffer const * buf = theBufferList().getBuffer(makeAbsPath(name).absFilename());
+	buf->getLabelList(refs_);
 	sortCB->setEnabled(!refs_.empty());
 	refsLW->setEnabled(!refs_.empty());
 	gotoPB->setEnabled(!refs_.empty());
@@ -353,10 +363,61 @@ void GuiRefDialog::updateRefs()
 }
 
 
-bool GuiRefDialog::isValid()
+bool GuiRef::isValid()
 {
 	return !referenceED->text().isEmpty();
 }
+
+
+void GuiRef::gotoRef(string const & ref)
+{
+	dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
+	dispatch(FuncRequest(LFUN_LABEL_GOTO, ref));
+}
+
+
+void GuiRef::gotoBookmark()
+{
+	dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
+}
+
+
+int GuiRef::bufferNum() const
+{
+	vector<string> buffers = theBufferList().getFileNames();
+	string const name = buffer().fileName();
+	vector<string>::const_iterator cit =
+		std::find(buffers.begin(), buffers.end(), name);
+	if (cit == buffers.end())
+		return 0;
+	return int(cit - buffers.begin());
+}
+
+
+bool GuiRef::initialiseParams(string const & data)
+{
+	// The name passed with LFUN_INSET_APPLY is also the name
+	// used to identify the mailer.
+	InsetCommandMailer::string2params(lfun_name_, data, params_);
+	return true;
+}
+
+
+void GuiRef::clearParams()
+{
+	params_.clear();
+}
+
+
+void GuiRef::dispatchParams()
+{
+	string const lfun = InsetCommandMailer::params2string(lfun_name_, params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+
+Dialog * createGuiRef(LyXView & lv) { return new GuiRef(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

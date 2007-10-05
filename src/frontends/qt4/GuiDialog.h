@@ -123,7 +123,7 @@ public:
 	 */
 	//@{
 	/// \param ptr is stored and destroyed by \c Dialog.
-	void setController(Controller * ptr);
+	void setController(Controller * ptr, bool destroy = true);
 	//@}
 
 	/** \name Dialog Components
@@ -160,6 +160,7 @@ private:
 	 */
 	std::string name_;
 	Controller * controller_;
+	bool destroy_controller_;
 	LyXView * lyxview_; // FIXME: replace by moving to constructor
 };
 

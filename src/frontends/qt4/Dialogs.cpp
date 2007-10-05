@@ -42,7 +42,6 @@
 #include "GuiParagraph.h"
 #include "GuiPrefs.h"
 #include "GuiPrint.h"
-#include "GuiRef.h"
 #include "GuiSearch.h"
 #include "GuiSendto.h"
 #include "GuiShowFile.h"
@@ -109,6 +108,9 @@ private:
 
 
 } // namespace anon
+
+
+Dialog * createGuiRef(LyXView & lv);
 
 
 bool Dialogs::isValidName(string const & name) const
@@ -194,7 +196,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "print") {
 		dialog = new GuiPrintDialog(lyxview_);
 	} else if (name == "ref") {
-		dialog = new GuiRefDialog(lyxview_);
+		dialog = createGuiRef(lyxview_);
 	} else if (name == "sendto") {
 		dialog = new GuiSendtoDialog(lyxview_);
 	} else if (name == "spellchecker") {

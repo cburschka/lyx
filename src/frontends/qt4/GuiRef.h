@@ -13,8 +13,9 @@
 #define GUIREF_H
 
 #include "GuiDialog.h"
-#include "ControlRef.h"
+#include "Dialog.h"
 #include "ui_RefUi.h"
+#include "insets/InsetCommandParams.h"
 
 #include <vector>
 
@@ -23,12 +24,12 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiRefDialog : public GuiDialog, public Ui::RefUi
+class GuiRef : public GuiDialog, public Ui::RefUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiRefDialog(LyXView & lv);
+	GuiRef(LyXView & lv);
 
 private Q_SLOTS:
 	void changed_adaptor();
@@ -42,9 +43,28 @@ private Q_SLOTS:
 
 private:
 	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+	/** disconnect from the inset when the Apply button is pressed.
+	 Allows easy insertion of multiple references. */
+	bool disconnectOnApply() const { return true; }
+	///
+	void gotoRef(std::string const &);
+	///
+	void gotoBookmark();
+	///
+	int bufferNum() const;
+
+	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlRef & controller();
+	Controller & controller() { return *static_cast<Controller*>(this); }
 	///
 	bool isValid();
 	/// apply changes
@@ -77,6 +97,9 @@ private:
 	int restored_buffer_;
 	/// the references
 	std::vector<docstring> refs_;
+
+	///
+	InsetCommandParams params_;
 };
 
 } // namespace frontend
