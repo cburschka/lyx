@@ -19,8 +19,6 @@ SOURCEFILES = \
 	ControlPrefs.cpp \
 	ControlPrint.cpp \
 	ControlSearch.cpp \
-	ControlSendto.cpp \
-	ControlThesaurus.cpp \
 	ControlToc.cpp \
 	frontend_helpers.cpp 
 
@@ -36,8 +34,6 @@ HEADERFILES = \
 	ControlPrefs.h \
 	ControlPrint.h \
 	ControlSearch.h \
-	ControlSendto.h \
-	ControlThesaurus.h \
 	ControlToc.h \
 	frontend_helpers.h
 

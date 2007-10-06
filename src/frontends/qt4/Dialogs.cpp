@@ -28,7 +28,6 @@
 #include "GuiPrefs.h"
 #include "GuiPrint.h"
 #include "GuiSearch.h"
-#include "GuiSendto.h"
 #include "GuiShowFile.h"
 #include "GuiToc.h"
 #include "GuiView.h"
@@ -111,7 +110,7 @@ Dialog * createGuiPrefs(LyXView & lv);
 Dialog * createGuiPrint(LyXView & lv);
 Dialog * createGuiRef(LyXView & lv);
 Dialog * createGuiSearch(LyXView & lv);
-Dialog * createGuiSendto(LyXView & lv);
+Dialog * createGuiSendTo(LyXView & lv);
 Dialog * createGuiShowFile(LyXView & lv);
 Dialog * createGuiSpellchecker(LyXView & lv);
 Dialog * createGuiTabularCreate(LyXView & lv);
@@ -204,7 +203,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "ref")
 		return createGuiRef(lyxview_);
 	if (name == "sendto")
-		return new GuiSendtoDialog(lyxview_);
+		return createGuiSendTo(lyxview_);
 	if (name == "spellchecker")
 		return createGuiSpellchecker(lyxview_);
 	if (name == "tabular")

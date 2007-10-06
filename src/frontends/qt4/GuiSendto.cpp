@@ -3,6 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Angus Leeming
  * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
@@ -12,10 +13,15 @@
 
 #include "GuiSendto.h"
 
-#include "ControlSendto.h"
+#include "Buffer.h"
+#include "Converter.h"
+#include "Format.h"
+#include "FuncRequest.h"
+#include "LyXRC.h"
 #include "qt_helpers.h"
 
-#include "Format.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
 
 #include <QListWidget>
 #include <QPushButton>
@@ -28,12 +34,14 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiSendtoDialog::GuiSendtoDialog(LyXView & lv)
-	: GuiDialog(lv, "sendto")
+using support::trim;
+
+GuiSendTo::GuiSendTo(LyXView & lv)
+	: GuiDialog(lv, "sendto"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("Send Document to Command"));
-	setController(new ControlSendto(*this));
+	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -45,7 +53,7 @@ GuiSendtoDialog::GuiSendtoDialog(LyXView & lv)
 		this, SLOT(slotFormatSelected(QListWidgetItem *)));
 	connect(formatLW, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(changed_adaptor()));
-	connect(commandCO, SIGNAL(textChanged(const QString&)),
+	connect(commandCO, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
@@ -55,28 +63,22 @@ GuiSendtoDialog::GuiSendtoDialog(LyXView & lv)
 }
 
 
-ControlSendto & GuiSendtoDialog::controller()
-{
-	return static_cast<ControlSendto &>(GuiDialog::controller());
-}
-
-
-void GuiSendtoDialog::changed_adaptor()
+void GuiSendTo::changed_adaptor()
 {
 	changed();
 }
 
 
-void GuiSendtoDialog::closeEvent(QCloseEvent * e)
+void GuiSendTo::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiSendtoDialog::updateContents()
+void GuiSendTo::updateContents()
 {
-	all_formats_ = controller().allFormats();
+	all_formats_ = allFormats();
 
 	// Check whether the current contents of the browser will be
 	// changed by loading the contents of formats
@@ -97,23 +99,23 @@ void GuiSendtoDialog::updateContents()
 		formatLW->addItem(toqstr(*it));
 	}
 
-	commandCO->addItem(toqstr(controller().getCommand()));
+	commandCO->addItem(toqstr(command_));
 }
 
 
-void GuiSendtoDialog::applyView()
+void GuiSendTo::applyView()
 {
 	int const line = formatLW->currentRow();
 
 	if (line < 0 || line > int(formatLW->count()))
 		return;
 
-	controller().setFormat(all_formats_[line]);
-	controller().setCommand(fromqstr(commandCO->currentText()));
+	format_ = all_formats_[line];
+	command_ = trim(fromqstr(commandCO->currentText()));
 }
 
 
-bool GuiSendtoDialog::isValid()
+bool GuiSendTo::isValid()
 {
 	int const line = formatLW->currentRow();
 
@@ -123,6 +125,74 @@ bool GuiSendtoDialog::isValid()
 	return formatLW->count() != 0 &&
 		!commandCO->currentText().isEmpty();
 }
+
+
+bool GuiSendTo::initialiseParams(std::string const &)
+{
+	format_ = 0;
+	command_ = lyxrc.custom_export_command;
+	return true;
+}
+
+
+void GuiSendTo::dispatchParams()
+{
+	if (command_.empty() || !format_ || format_->name().empty())
+		return;
+
+	string const data = format_->name() + " " + command_;
+	dispatch(FuncRequest(getLfun(), data));
+}
+
+// FIXME: Move to Converters?
+vector<Format const *> GuiSendTo::allFormats() const
+{
+	// What formats can we output natively?
+	vector<string> exports;
+	exports.push_back("lyx");
+	exports.push_back("text");
+
+	if (buffer().isLatex())
+		exports.push_back("latex");
+	else if (buffer().isDocBook())
+		exports.push_back("docbook");
+	else if (buffer().isLiterate())
+		exports.push_back("literate");
+
+	// Loop over these native formats and ascertain what formats we
+	// can convert to
+	vector<Format const *> to;
+
+	vector<string>::const_iterator ex_it  = exports.begin();
+	vector<string>::const_iterator ex_end = exports.end();
+	for (; ex_it != ex_end; ++ex_it) {
+		// Start off with the native export format.
+		// "formats" is LyX's list of recognised formats
+		to.push_back(formats.getFormat(*ex_it));
+
+		Formats::const_iterator fo_it  = formats.begin();
+		Formats::const_iterator fo_end = formats.end();
+		for (; fo_it != fo_end; ++fo_it) {
+			// we need to hide the default graphic export formats
+			// from the external menu, because we need them only
+			// for the internal lyx-view and external latex run
+			string const name = fo_it->name();
+			if (name != "eps" && name != "xpm" && name != "png" &&
+			    theConverters().isReachable(*ex_it, name))
+				to.push_back(&(*fo_it));
+		}
+	}
+
+	// Remove repeated formats.
+	std::sort(to.begin(), to.end());
+	to.erase(std::unique(to.begin(), to.end()), to.end());
+
+	return to;
+}
+
+
+Dialog * createGuiSendTo(LyXView & lv) { return new GuiSendTo(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
