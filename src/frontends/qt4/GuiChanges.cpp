@@ -12,32 +12,41 @@
 #include <config.h>
 
 #include "GuiChanges.h"
-#include "ControlChanges.h"
 
 #include "qt_helpers.h"
 
 #include "support/lstrings.h"
+#include "support/lyxtime.h"
+
+#include "Author.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "BufferView.h"
+#include "Changes.h"
+#include "FuncRequest.h"
+#include "lyxfind.h"
+#include "LyXRC.h"
 
 #include <QCloseEvent>
 #include <QTextBrowser>
-
-using lyx::support::bformat;
 
 
 namespace lyx {
 namespace frontend {
 
-GuiChangesDialog::GuiChangesDialog(LyXView & lv)
-	: GuiDialog(lv, "changes")
+using support::bformat;
+
+GuiChanges::GuiChanges(LyXView & lv)
+	: GuiDialog(lv, "changes"), Controller(this)
 {
 	setupUi(this);
-	setController(new ControlChanges(*this));
+	setController(this, false);
 	setViewTitle(_("Merge Changes"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(nextPB, SIGNAL(clicked()), this, SLOT(nextPressed()));
-	connect(rejectPB, SIGNAL(clicked()), this, SLOT(rejectPressed()));
-	connect(acceptPB, SIGNAL(clicked()), this, SLOT(acceptPressed()));
+	connect(nextPB, SIGNAL(clicked()), this, SLOT(nextChange()));
+	connect(rejectPB, SIGNAL(clicked()), this, SLOT(rejectChange()));
+	connect(acceptPB, SIGNAL(clicked()), this, SLOT(acceptChange()));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setCancel(closePB);
@@ -46,24 +55,18 @@ GuiChangesDialog::GuiChangesDialog(LyXView & lv)
 }
 
 
-ControlChanges & GuiChangesDialog::controller()
-{
-	return static_cast<ControlChanges &>(GuiDialog::controller());
-}
-
-
-void GuiChangesDialog::closeEvent(QCloseEvent *e)
+void GuiChanges::closeEvent(QCloseEvent *e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiChangesDialog::updateContents()
+void GuiChanges::updateContents()
 {
 	docstring text;
-	docstring author = controller().getChangeAuthor();
-	docstring date = controller().getChangeDate();
+	docstring author = changeAuthor();
+	docstring date = changeDate();
 
 	if (!author.empty())
 		text += bformat(_("Change by %1$s\n\n"), author);
@@ -74,22 +77,56 @@ void GuiChangesDialog::updateContents()
 }
 
 
-void GuiChangesDialog::nextPressed()
+void GuiChanges::nextChange()
 {
-	controller().next();
+	dispatch(FuncRequest(LFUN_CHANGE_NEXT));
 }
 
 
-void GuiChangesDialog::acceptPressed()
+docstring GuiChanges::changeDate() const
 {
-	controller().accept();
+	Change const & c = bufferview()->getCurrentChange();
+	if (c.type == Change::UNCHANGED)
+		return docstring();
+
+	// FIXME UNICODE
+	return from_utf8(formatted_time(c.changetime, lyxrc.date_insert_format));
 }
 
 
-void GuiChangesDialog::rejectPressed()
+docstring GuiChanges::changeAuthor() const
 {
-	controller().reject();
+	Change const & c = bufferview()->getCurrentChange();
+	if (c.type == Change::UNCHANGED)
+		return docstring();
+
+	Author const & a = buffer().params().authors().get(c.author);
+
+	docstring author = a.name();
+
+	if (!a.email().empty())
+		author += " (" + a.email() + ")";
+
+	return author;
 }
+
+
+void GuiChanges::acceptChange()
+{
+	dispatch(FuncRequest(LFUN_CHANGE_ACCEPT));
+	nextChange();
+}
+
+
+void GuiChanges::rejectChange()
+{
+	dispatch(FuncRequest(LFUN_CHANGE_REJECT));
+	nextChange();
+}
+
+
+Dialog * createGuiChanges(LyXView & lv) { return new GuiChanges(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

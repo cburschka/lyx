@@ -10,7 +10,6 @@ SOURCEFILES = \
 	Dialog.cpp \
 	ButtonPolicy.cpp \
 	ControlCharacter.cpp \
-	ControlChanges.cpp \
 	ControlCitation.cpp \
 	ControlCommand.cpp \
 	ControlCommandBuffer.cpp \
@@ -36,7 +35,6 @@ SOURCEFILES = \
 HEADERFILES = \
 	ButtonPolicy.h \
 	ControlCharacter.h \
-	ControlChanges.h \
 	ControlCitation.h \
 	ControlCommand.h \
 	ControlCommandBuffer.h \

@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Michael Gerz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,28 +14,48 @@
 #define GUICHANGES_H
 
 #include "GuiDialog.h"
-#include "ControlChanges.h"
 #include "ui_ChangesUi.h"
+#include "support/docstring.h"
+
 
 namespace lyx {
 namespace frontend {
 
-class GuiChangesDialog : public GuiDialog, public Ui::ChangesUi
+class GuiChanges : public GuiDialog, public Ui::ChangesUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiChangesDialog(LyXView & lv);
+	GuiChanges(LyXView & lv);
 
 protected Q_SLOTS:
-	void nextPressed();
-	void acceptPressed();
-	void rejectPressed();
+	/// accept the current change
+	void acceptChange();
+	/// reject the current change
+	void rejectChange();
+	/// find the next change and highlight it
+	void nextChange();
 
 private:
 	void closeEvent(QCloseEvent * e);
-	ControlChanges & controller();
+	Controller & controller() { return *this; }
 	void updateContents();
+
+	/// Nothing to initialise in this case.
+	bool initialiseParams(std::string const &) { return true; }
+	///
+	void clearParams() {}
+	///
+	void dispatchParams() {}
+	///
+	bool isBufferDependent() const { return true; }
+	/// always true since dispatchParams() is empty
+	bool canApply() const { return true; }
+
+	/// return date of change
+	docstring changeDate() const;
+	/// return author of change
+	docstring changeAuthor() const;
 };
 
 } // namespace frontend
