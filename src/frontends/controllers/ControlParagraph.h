@@ -25,7 +25,7 @@ public:
 	///
 	ControlParagraph(Dialog &);
 	///
-	virtual bool initialiseParams(std::string const & data) { return true; }
+	virtual bool initialiseParams(std::string const & /*data*/) { return true; }
 	/// clean-up on hide.
 	virtual void clearParams() {}
 	///

@@ -14,11 +14,16 @@
 
 #include "GuiTabular.h"
 
-#include "ControlTabular.h"
+#include "BufferView.h"
+#include "Cursor.h"
+#include "FuncRequest.h"
 #include "GuiSetBorder.h"
 #include "LengthCombo.h"
-#include "Validator.h"
+#include "LyXRC.h"
 #include "qt_helpers.h"
+#include "Validator.h"
+
+#include "insets/InsetTabular.h"
 
 #include <QCloseEvent>
 #include <QCheckBox>
@@ -32,12 +37,14 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiTabularDialog::GuiTabularDialog(LyXView & lv)
-	: GuiDialog(lv, "tabular")
+GuiTabular::GuiTabular(LyXView & lv)
+	: GuiDialog(lv, "tabular"), Controller(this)
 {
+	active_cell_ = Tabular::npos;
+
 	setupUi(this);
 	setViewTitle(_("Table Settings"));
-	setController(new ControlTabular(*this));
+	setController(this, false);
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	topspaceED->setValidator(new LengthValidator(topspaceED));
@@ -146,51 +153,50 @@ GuiTabularDialog::GuiTabularDialog(LyXView & lv)
 }
 
 
-ControlTabular & GuiTabularDialog::controller()
+GuiTabular::~GuiTabular()
 {
-	return static_cast<ControlTabular &>(GuiDialog::controller());
 }
 
 
-void GuiTabularDialog::change_adaptor()
+void GuiTabular::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiTabularDialog::closeEvent(QCloseEvent * e)
+void GuiTabular::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	GuiDialog::closeEvent(e);
 }
 
 
-void GuiTabularDialog::booktabsChanged(bool)
+void GuiTabular::booktabsChanged(bool)
 {
 	changed();
-	controller().booktabs(booktabsRB->isChecked());
+	booktabs(booktabsRB->isChecked());
 	update_borders();
 }
 
 
-void GuiTabularDialog::topspace_changed()
+void GuiTabular::topspace_changed()
 {
-	switch(topspaceCO->currentIndex()) {
+	switch (topspaceCO->currentIndex()) {
 		case 0: {
-			controller().set(Tabular::SET_TOP_SPACE, "");
-				topspaceED->setEnabled(false);
-				topspaceUnit->setEnabled(false);
+			set(Tabular::SET_TOP_SPACE, "");
+			topspaceED->setEnabled(false);
+			topspaceUnit->setEnabled(false);
 			break;
 		}
 		case 1: {
-			controller().set(Tabular::SET_TOP_SPACE, "default");
+			set(Tabular::SET_TOP_SPACE, "default");
 			topspaceED->setEnabled(false);
 			topspaceUnit->setEnabled(false);
 			break;
 		}
 		case 2: {
 			if (!topspaceED->text().isEmpty())
-				controller().set(Tabular::SET_TOP_SPACE,
+				set(Tabular::SET_TOP_SPACE,
 					widgetsToLength(topspaceED, topspaceUnit));
 			if (!bc().policy().isReadOnly()) {
 				topspaceED->setEnabled(true);
@@ -203,24 +209,24 @@ void GuiTabularDialog::topspace_changed()
 }
 
 
-void GuiTabularDialog::bottomspace_changed()
+void GuiTabular::bottomspace_changed()
 {
-	switch(bottomspaceCO->currentIndex()) {
+	switch (bottomspaceCO->currentIndex()) {
 		case 0: {
-			controller().set(Tabular::SET_BOTTOM_SPACE, "");
+			set(Tabular::SET_BOTTOM_SPACE, "");
 				bottomspaceED->setEnabled(false);
 				bottomspaceUnit->setEnabled(false);
 			break;
 		}
 		case 1: {
-			controller().set(Tabular::SET_BOTTOM_SPACE, "default");
+			set(Tabular::SET_BOTTOM_SPACE, "default");
 			bottomspaceED->setEnabled(false);
 			bottomspaceUnit->setEnabled(false);
 			break;
 		}
 		case 2: {
 			if (!bottomspaceED->text().isEmpty())
-				controller().set(Tabular::SET_BOTTOM_SPACE,
+				set(Tabular::SET_BOTTOM_SPACE,
 					widgetsToLength(bottomspaceED, bottomspaceUnit));
 			if (!bc().policy().isReadOnly()) {
 				bottomspaceED->setEnabled(true);
@@ -233,24 +239,24 @@ void GuiTabularDialog::bottomspace_changed()
 }
 
 
-void GuiTabularDialog::interlinespace_changed()
+void GuiTabular::interlinespace_changed()
 {
-	switch(interlinespaceCO->currentIndex()) {
+	switch (interlinespaceCO->currentIndex()) {
 		case 0: {
-			controller().set(Tabular::SET_INTERLINE_SPACE, "");
+			set(Tabular::SET_INTERLINE_SPACE, "");
 				interlinespaceED->setEnabled(false);
 				interlinespaceUnit->setEnabled(false);
 			break;
 		}
 		case 1: {
-			controller().set(Tabular::SET_INTERLINE_SPACE, "default");
+			set(Tabular::SET_INTERLINE_SPACE, "default");
 			interlinespaceED->setEnabled(false);
 			interlinespaceUnit->setEnabled(false);
 			break;
 		}
 		case 2: {
 			if (!interlinespaceED->text().isEmpty())
-				controller().set(Tabular::SET_INTERLINE_SPACE,
+				set(Tabular::SET_INTERLINE_SPACE,
 					widgetsToLength(interlinespaceED, interlinespaceUnit));
 			if (!bc().policy().isReadOnly()) {
 				interlinespaceED->setEnabled(true);
@@ -263,144 +269,144 @@ void GuiTabularDialog::interlinespace_changed()
 }
 
 
-void GuiTabularDialog::close_clicked()
+void GuiTabular::close_clicked()
 {
 	closeGUI();
 	slotClose();
 }
 
 
-void GuiTabularDialog::borderSet_clicked()
+void GuiTabular::borderSet_clicked()
 {
-	controller().set(Tabular::SET_ALL_LINES);
+	set(Tabular::SET_ALL_LINES);
 	update_borders();
 	changed();
 }
 
 
-void GuiTabularDialog::borderUnset_clicked()
+void GuiTabular::borderUnset_clicked()
 {
-	controller().set(Tabular::UNSET_ALL_LINES);
+	set(Tabular::UNSET_ALL_LINES);
 	update_borders();
 	changed();
 }
 
 
-void GuiTabularDialog::leftBorder_changed()
+void GuiTabular::leftBorder_changed()
 {
-	controller().toggleLeftLine();
+	toggleLeftLine();
 	changed();
 }
 
 
-void GuiTabularDialog::rightBorder_changed()
+void GuiTabular::rightBorder_changed()
 {
-	controller().toggleRightLine();
+	toggleRightLine();
 	changed();
 }
 
 
-void GuiTabularDialog::topBorder_changed()
+void GuiTabular::topBorder_changed()
 {
-	controller().toggleTopLine();
+	toggleTopLine();
 	changed();
 }
 
 
-void GuiTabularDialog::bottomBorder_changed()
+void GuiTabular::bottomBorder_changed()
 {
-	controller().toggleBottomLine();
+	toggleBottomLine();
 	changed();
 }
 
 
-void GuiTabularDialog::specialAlignment_changed()
+void GuiTabular::specialAlignment_changed()
 {
 	string special = fromqstr(specialAlignmentED->text());
-	controller().setSpecial(special);
+	setSpecial(special);
 	changed();
 }
 
 
-void GuiTabularDialog::width_changed()
+void GuiTabular::width_changed()
 {
 	changed();
 	string const width = widgetsToLength(widthED, widthUnit);
-	controller().setWidth(width);
+	setWidth(width);
 }
 
 
-void GuiTabularDialog::multicolumn_clicked()
+void GuiTabular::multicolumn_clicked()
 {
-	controller().toggleMultiColumn();
+	toggleMultiColumn();
 	changed();
 }
 
 
-void GuiTabularDialog::rotateTabular()
+void GuiTabular::rotateTabular()
 {
-	controller().rotateTabular(rotateTabularCB->isChecked());
+	rotateTabular(rotateTabularCB->isChecked());
 	changed();
 }
 
 
-void GuiTabularDialog::rotateCell()
+void GuiTabular::rotateCell()
 {
-	controller().rotateCell(rotateCellCB->isChecked());
+	rotateCell(rotateCellCB->isChecked());
 	changed();
 }
 
 
-void GuiTabularDialog::hAlign_changed(int align)
+void GuiTabular::hAlign_changed(int align)
 {
-	ControlTabular::HALIGN h = ControlTabular::LEFT;
+	GuiTabular::HALIGN h = GuiTabular::LEFT;
 
 	switch (align) {
-		case 0: h = ControlTabular::LEFT; break;
-		case 1: h = ControlTabular::CENTER; break;
-		case 2: h = ControlTabular::RIGHT; break;
-		case 3: h = ControlTabular::BLOCK; break;
+		case 0: h = GuiTabular::LEFT; break;
+		case 1: h = GuiTabular::CENTER; break;
+		case 2: h = GuiTabular::RIGHT; break;
+		case 3: h = GuiTabular::BLOCK; break;
 	}
 
-	controller().halign(h);
+	halign(h);
 }
 
 
-void GuiTabularDialog::vAlign_changed(int align)
+void GuiTabular::vAlign_changed(int align)
 {
-	ControlTabular::VALIGN v = ControlTabular::TOP;
+	GuiTabular::VALIGN v = GuiTabular::TOP;
 
 	switch (align) {
-		case 0: v = ControlTabular::TOP; break;
-		case 1: v = ControlTabular::MIDDLE; break;
-		case 2: v = ControlTabular::BOTTOM; break;
+		case 0: v = GuiTabular::TOP; break;
+		case 1: v = GuiTabular::MIDDLE; break;
+		case 2: v = GuiTabular::BOTTOM; break;
 	}
 
-	controller().valign(v);
+	valign(v);
 }
 
 
-void GuiTabularDialog::longTabular()
+void GuiTabular::longTabular()
 {
-	controller().longTabular(longTabularCB->isChecked());
+	longTabular(longTabularCB->isChecked());
 	changed();
 }
 
 
-void GuiTabularDialog::ltNewpage_clicked()
+void GuiTabular::ltNewpage_clicked()
 {
-	controller().set(Tabular::SET_LTNEWPAGE);
+	set(Tabular::SET_LTNEWPAGE);
 	changed();
 }
 
 
-void GuiTabularDialog::ltHeaderStatus_clicked()
+void GuiTabular::ltHeaderStatus_clicked()
 {
-	bool enable(headerStatusCB->isChecked());
+	bool enable = headerStatusCB->isChecked();
 	if (enable)
-		controller().set(Tabular::SET_LTHEAD, "");
+		set(Tabular::SET_LTHEAD, "");
 	else
-		controller().set(Tabular::UNSET_LTHEAD, "");
+		set(Tabular::UNSET_LTHEAD, "");
 	headerBorderAboveCB->setEnabled(enable);
 	headerBorderBelowCB->setEnabled(enable);
 	firstheaderNoContentsCB->setEnabled(enable);
@@ -408,66 +414,66 @@ void GuiTabularDialog::ltHeaderStatus_clicked()
 }
 
 
-void GuiTabularDialog::ltHeaderBorderAbove_clicked()
+void GuiTabular::ltHeaderBorderAbove_clicked()
 {
 	if (headerBorderAboveCB->isChecked())
-		controller().set(Tabular::SET_LTHEAD, "dl_above");
+		set(Tabular::SET_LTHEAD, "dl_above");
 	else
-		controller().set(Tabular::UNSET_LTHEAD, "dl_above");
+		set(Tabular::UNSET_LTHEAD, "dl_above");
 	changed();
 }
 
 
-void GuiTabularDialog::ltHeaderBorderBelow_clicked()
+void GuiTabular::ltHeaderBorderBelow_clicked()
 {
 	if (headerBorderBelowCB->isChecked())
-		controller().set(Tabular::SET_LTHEAD, "dl_below");
+		set(Tabular::SET_LTHEAD, "dl_below");
 	else
-		controller().set(Tabular::UNSET_LTHEAD, "dl_below");
+		set(Tabular::UNSET_LTHEAD, "dl_below");
 	changed();
 }
 
 
-void GuiTabularDialog::ltFirstHeaderBorderAbove_clicked()
+void GuiTabular::ltFirstHeaderBorderAbove_clicked()
 {
 	if (firstheaderBorderAboveCB->isChecked())
-		controller().set(Tabular::SET_LTFIRSTHEAD, "dl_above");
+		set(Tabular::SET_LTFIRSTHEAD, "dl_above");
 	else
-		controller().set(Tabular::UNSET_LTFIRSTHEAD, "dl_above");
+		set(Tabular::UNSET_LTFIRSTHEAD, "dl_above");
 	changed();
 }
 
 
-void GuiTabularDialog::ltFirstHeaderBorderBelow_clicked()
+void GuiTabular::ltFirstHeaderBorderBelow_clicked()
 {
 	if (firstheaderBorderBelowCB->isChecked())
-		controller().set(Tabular::SET_LTFIRSTHEAD, "dl_below");
+		set(Tabular::SET_LTFIRSTHEAD, "dl_below");
 	else
-		controller().set(Tabular::UNSET_LTFIRSTHEAD, "dl_below");
+		set(Tabular::UNSET_LTFIRSTHEAD, "dl_below");
 	changed();
 }
 
 
-void GuiTabularDialog::ltFirstHeaderStatus_clicked()
+void GuiTabular::ltFirstHeaderStatus_clicked()
 {
-	bool enable(firstheaderStatusCB->isChecked());
+	bool enable = firstheaderStatusCB->isChecked();
 	if (enable)
-		controller().set(Tabular::SET_LTFIRSTHEAD, "");
+		set(Tabular::SET_LTFIRSTHEAD, "");
 	else
-		controller().set(Tabular::UNSET_LTFIRSTHEAD, "");
+		set(Tabular::UNSET_LTFIRSTHEAD, "");
 	firstheaderBorderAboveCB->setEnabled(enable);
 	firstheaderBorderBelowCB->setEnabled(enable);
 	changed();
 }
 
 
-void GuiTabularDialog::ltFirstHeaderEmpty_clicked()
+void GuiTabular::ltFirstHeaderEmpty_clicked()
 {
-	bool enable(firstheaderNoContentsCB->isChecked());
+	bool enable = firstheaderNoContentsCB->isChecked();
 	if (enable)
-		controller().set(Tabular::SET_LTFIRSTHEAD, "empty");
+		set(Tabular::SET_LTFIRSTHEAD, "empty");
 	else
-		controller().set(Tabular::UNSET_LTFIRSTHEAD, "empty");
+		set(Tabular::UNSET_LTFIRSTHEAD, "empty");
 	firstheaderStatusCB->setEnabled(!enable);
 	firstheaderBorderAboveCB->setEnabled(!enable);
 	firstheaderBorderBelowCB->setEnabled(!enable);
@@ -475,13 +481,13 @@ void GuiTabularDialog::ltFirstHeaderEmpty_clicked()
 }
 
 
-void GuiTabularDialog::ltFooterStatus_clicked()
+void GuiTabular::ltFooterStatus_clicked()
 {
-	bool enable(footerStatusCB->isChecked());
+	bool enable = footerStatusCB->isChecked();
 	if (enable)
-		controller().set(Tabular::SET_LTFOOT, "");
+		set(Tabular::SET_LTFOOT, "");
 	else
-		controller().set(Tabular::UNSET_LTFOOT, "");
+		set(Tabular::UNSET_LTFOOT, "");
 	footerBorderAboveCB->setEnabled(enable);
 	footerBorderBelowCB->setEnabled(enable);
 	lastfooterNoContentsCB->setEnabled(enable);
@@ -489,66 +495,66 @@ void GuiTabularDialog::ltFooterStatus_clicked()
 }
 
 
-void GuiTabularDialog::ltFooterBorderAbove_clicked()
+void GuiTabular::ltFooterBorderAbove_clicked()
 {
 	if (footerBorderAboveCB->isChecked())
-		controller().set(Tabular::SET_LTFOOT, "dl_above");
+		set(Tabular::SET_LTFOOT, "dl_above");
 	else
-		controller().set(Tabular::UNSET_LTFOOT, "dl_above");
+		set(Tabular::UNSET_LTFOOT, "dl_above");
 	changed();
 }
 
 
-void GuiTabularDialog::ltFooterBorderBelow_clicked()
+void GuiTabular::ltFooterBorderBelow_clicked()
 {
 	if (footerBorderBelowCB->isChecked())
-		controller().set(Tabular::SET_LTFOOT, "dl_below");
+		set(Tabular::SET_LTFOOT, "dl_below");
 	else
-		controller().set(Tabular::UNSET_LTFOOT, "dl_below");
+		set(Tabular::UNSET_LTFOOT, "dl_below");
 	changed();
 }
 
 
-void GuiTabularDialog::ltLastFooterStatus_clicked()
+void GuiTabular::ltLastFooterStatus_clicked()
 {
-	bool enable(lastfooterStatusCB->isChecked());
+	bool enable = lastfooterStatusCB->isChecked();
 	if (enable)
-		controller().set(Tabular::SET_LTLASTFOOT, "");
+		set(Tabular::SET_LTLASTFOOT, "");
 	else
-		controller().set(Tabular::UNSET_LTLASTFOOT, "");
+		set(Tabular::UNSET_LTLASTFOOT, "");
 	lastfooterBorderAboveCB->setEnabled(enable);
 	lastfooterBorderBelowCB->setEnabled(enable);
 	changed();
 }
 
 
-void GuiTabularDialog::ltLastFooterBorderAbove_clicked()
+void GuiTabular::ltLastFooterBorderAbove_clicked()
 {
 	if (lastfooterBorderAboveCB->isChecked())
-		controller().set(Tabular::SET_LTLASTFOOT, "dl_above");
+		set(Tabular::SET_LTLASTFOOT, "dl_above");
 	else
-		controller().set(Tabular::UNSET_LTLASTFOOT, "dl_above");
+		set(Tabular::UNSET_LTLASTFOOT, "dl_above");
 	changed();
 }
 
 
-void GuiTabularDialog::ltLastFooterBorderBelow_clicked()
+void GuiTabular::ltLastFooterBorderBelow_clicked()
 {
 	if (lastfooterBorderBelowCB->isChecked())
-		controller().set(Tabular::SET_LTLASTFOOT, "dl_below");
+		set(Tabular::SET_LTLASTFOOT, "dl_below");
 	else
-		controller().set(Tabular::UNSET_LTLASTFOOT, "dl_below");
+		set(Tabular::UNSET_LTLASTFOOT, "dl_below");
 	changed();
 }
 
 
-void GuiTabularDialog::ltLastFooterEmpty_clicked()
+void GuiTabular::ltLastFooterEmpty_clicked()
 {
-	bool enable(lastfooterNoContentsCB->isChecked());
+	bool enable = lastfooterNoContentsCB->isChecked();
 	if (enable)
-		controller().set(Tabular::SET_LTLASTFOOT, "empty");
+		set(Tabular::SET_LTLASTFOOT, "empty");
 	else
-		controller().set(Tabular::UNSET_LTLASTFOOT, "empty");
+		set(Tabular::UNSET_LTLASTFOOT, "empty");
 	lastfooterStatusCB->setEnabled(!enable);
 	lastfooterBorderAboveCB->setEnabled(!enable);
 	lastfooterBorderBelowCB->setEnabled(!enable);
@@ -556,39 +562,38 @@ void GuiTabularDialog::ltLastFooterEmpty_clicked()
 }
 
 
-void GuiTabularDialog::update_borders()
+void GuiTabular::update_borders()
 {
-	Tabular const & tabular = controller().tabular();
-	Tabular::idx_type const cell = controller().getActiveCell();
-	bool const isMulticolumnCell = tabular.isMultiColumn(cell);
+	Tabular::idx_type const cell = getActiveCell();
+	bool const isMulticolumnCell = tabular_.isMultiColumn(cell);
 
 	if (!isMulticolumnCell) {
 		borders->setLeftEnabled(true);
 		borders->setRightEnabled(true);
-		borders->setTop(tabular.topLine(cell, true));
-		borders->setBottom(tabular.bottomLine(cell, true));
-		borders->setLeft(tabular.leftLine(cell, true));
-		borders->setRight(tabular.rightLine(cell, true));
+		borders->setTop(tabular_.topLine(cell, true));
+		borders->setBottom(tabular_.bottomLine(cell, true));
+		borders->setLeft(tabular_.leftLine(cell, true));
+		borders->setRight(tabular_.rightLine(cell, true));
 		// repaint the setborder widget
 		borders->update();
 		return;
 	}
 
-	borders->setTop(tabular.topLine(cell));
-	borders->setBottom(tabular.bottomLine(cell));
+	borders->setTop(tabular_.topLine(cell));
+	borders->setBottom(tabular_.bottomLine(cell));
 	// pay attention to left/right lines: they are only allowed
 	// to set if we are in first/last cell of row or if the left/right
 	// cell is also a multicolumn.
-	if (tabular.isFirstCellInRow(cell) || tabular.isMultiColumn(cell - 1)) {
+	if (tabular_.isFirstCellInRow(cell) || tabular_.isMultiColumn(cell - 1)) {
 		borders->setLeftEnabled(true);
-		borders->setLeft(tabular.leftLine(cell));
+		borders->setLeft(tabular_.leftLine(cell));
 	} else {
 		borders->setLeft(false);
 		borders->setLeftEnabled(false);
 	}
-	if (tabular.isLastCellInRow(cell) || tabular.isMultiColumn(cell + 1)) {
+	if (tabular_.isLastCellInRow(cell) || tabular_.isMultiColumn(cell + 1)) {
 		borders->setRightEnabled(true);
-		borders->setRight(tabular.rightLine(cell));
+		borders->setRight(tabular_.rightLine(cell));
 	} else {
 		borders->setRight(false);
 		borders->setRightEnabled(false);
@@ -598,27 +603,26 @@ void GuiTabularDialog::update_borders()
 }
 
 
-void GuiTabularDialog::updateContents()
+void GuiTabular::updateContents()
 {
-	controller().initialiseParams(string());
+	initialiseParams(string());
 
-	Tabular const & tabular(controller().tabular());
-	Tabular::idx_type const cell = controller().getActiveCell();
+	Tabular::idx_type const cell = getActiveCell();
 
-	Tabular::row_type const row = tabular.cellRow(cell);
-	Tabular::col_type const col = tabular.cellColumn(cell);
+	Tabular::row_type const row = tabular_.cellRow(cell);
+	Tabular::col_type const col = tabular_.cellColumn(cell);
 
 	tabularRowED->setText(QString::number(row + 1));
 	tabularColumnED->setText(QString::number(col + 1));
 
-	bool const multicol(tabular.isMultiColumn(cell));
+	bool const multicol(tabular_.isMultiColumn(cell));
 
 	multicolumnCB->setChecked(multicol);
 
-	rotateCellCB->setChecked(tabular.getRotateCell(cell));
-	rotateTabularCB->setChecked(tabular.getRotateTabular());
+	rotateCellCB->setChecked(tabular_.getRotateCell(cell));
+	rotateTabularCB->setChecked(tabular_.getRotateTabular());
 
-	longTabularCB->setChecked(tabular.isLongTabular());
+	longTabularCB->setChecked(tabular_.isLongTabular());
 
 	update_borders();
 
@@ -626,11 +630,11 @@ void GuiTabularDialog::updateContents()
 	docstring special;
 
 	if (multicol) {
-		special = tabular.getAlignSpecial(cell, Tabular::SET_SPECIAL_MULTI);
-		pwidth = tabular.getMColumnPWidth(cell);
+		special = tabular_.getAlignSpecial(cell, Tabular::SET_SPECIAL_MULTI);
+		pwidth = tabular_.getMColumnPWidth(cell);
 	} else {
-		special = tabular.getAlignSpecial(cell, Tabular::SET_SPECIAL_COLUMN);
-		pwidth = tabular.getColumnPWidth(cell);
+		special = tabular_.getAlignSpecial(cell, Tabular::SET_SPECIAL_COLUMN);
+		pwidth = tabular_.getColumnPWidth(cell);
 	}
 
 	specialAlignmentED->setText(toqstr(special));
@@ -639,21 +643,21 @@ void GuiTabularDialog::updateContents()
 	specialAlignmentED->setEnabled(!isReadonly);
 
 	Length::UNIT default_unit =
-		controller().useMetricUnits() ? Length::CM : Length::IN;
+		useMetricUnits() ? Length::CM : Length::IN;
 
-	borderDefaultRB->setChecked(!tabular.useBookTabs());
-	booktabsRB->setChecked(tabular.useBookTabs());
+	borderDefaultRB->setChecked(!tabular_.useBookTabs());
+	booktabsRB->setChecked(tabular_.useBookTabs());
 
-	if (tabular.row_info[row].top_space.empty()
-	    && !tabular.row_info[row].top_space_default) {
+	if (tabular_.row_info[row].top_space.empty()
+	    && !tabular_.row_info[row].top_space_default) {
 		topspaceCO->setCurrentIndex(0);
-	} else if (tabular.row_info[row].top_space_default) {
+	} else if (tabular_.row_info[row].top_space_default) {
 		topspaceCO->setCurrentIndex(1);
 	} else {
 		topspaceCO->setCurrentIndex(2);
 		lengthToWidgets(topspaceED,
 				topspaceUnit,
-				tabular.row_info[row].top_space.asString(),
+				tabular_.row_info[row].top_space.asString(),
 				default_unit);
 	}
 	topspaceED->setEnabled(!isReadonly
@@ -662,16 +666,16 @@ void GuiTabularDialog::updateContents()
 		&& (topspaceCO->currentIndex() == 2));
 	topspaceCO->setEnabled(!isReadonly);
 
-	if (tabular.row_info[row].bottom_space.empty()
-	    && !tabular.row_info[row].bottom_space_default) {
+	if (tabular_.row_info[row].bottom_space.empty()
+	    && !tabular_.row_info[row].bottom_space_default) {
 		bottomspaceCO->setCurrentIndex(0);
-	} else if (tabular.row_info[row].bottom_space_default) {
+	} else if (tabular_.row_info[row].bottom_space_default) {
 		bottomspaceCO->setCurrentIndex(1);
 	} else {
 		bottomspaceCO->setCurrentIndex(2);
 		lengthToWidgets(bottomspaceED,
 				bottomspaceUnit,
-				tabular.row_info[row].bottom_space.asString(),
+				tabular_.row_info[row].bottom_space.asString(),
 				default_unit);
 	}
 	bottomspaceED->setEnabled(!isReadonly
@@ -680,16 +684,16 @@ void GuiTabularDialog::updateContents()
 		&& (bottomspaceCO->currentIndex() == 2));
 	bottomspaceCO->setEnabled(!isReadonly);
 
-	if (tabular.row_info[row].interline_space.empty()
-	    && !tabular.row_info[row].interline_space_default) {
+	if (tabular_.row_info[row].interline_space.empty()
+	    && !tabular_.row_info[row].interline_space_default) {
 		interlinespaceCO->setCurrentIndex(0);
-	} else if (tabular.row_info[row].interline_space_default) {
+	} else if (tabular_.row_info[row].interline_space_default) {
 		interlinespaceCO->setCurrentIndex(1);
 	} else {
 		interlinespaceCO->setCurrentIndex(2);
 		lengthToWidgets(interlinespaceED,
 				interlinespaceUnit,
-				tabular.row_info[row].interline_space.asString(),
+				tabular_.row_info[row].interline_space.asString(),
 				default_unit);
 	}
 	interlinespaceED->setEnabled(!isReadonly
@@ -715,7 +719,7 @@ void GuiTabularDialog::updateContents()
 		hAlignCB->addItem(qt_("Justified"));
 
 	int align = 0;
-	switch (tabular.getAlignment(cell)) {
+	switch (tabular_.getAlignment(cell)) {
 	case LYX_ALIGN_LEFT:
 		align = 0;
 		break;
@@ -738,7 +742,7 @@ void GuiTabularDialog::updateContents()
 	hAlignCB->setCurrentIndex(align);
 
 	int valign = 0;
-	switch (tabular.getVAlignment(cell)) {
+	switch (tabular_.getVAlignment(cell)) {
 	case Tabular::LYX_VALIGN_TOP:
 		valign = 0;
 		break;
@@ -759,7 +763,7 @@ void GuiTabularDialog::updateContents()
 	hAlignCB->setEnabled(true);
 	vAlignCB->setEnabled(!pwidth.zero());
 
-	if (!tabular.isLongTabular()) {
+	if (!tabular_.isLongTabular()) {
 		headerStatusCB->setChecked(false);
 		headerBorderAboveCB->setChecked(false);
 		headerBorderBelowCB->setChecked(false);
@@ -781,7 +785,7 @@ void GuiTabularDialog::updateContents()
 
 	Tabular::ltType ltt;
 	bool use_empty;
-	bool row_set = tabular.getRowOfLTHead(row, ltt);
+	bool row_set = tabular_.getRowOfLTHead(row, ltt);
 	headerStatusCB->setChecked(row_set);
 	if (ltt.set) {
 		headerBorderAboveCB->setChecked(ltt.topDL);
@@ -797,7 +801,7 @@ void GuiTabularDialog::updateContents()
 		use_empty = false;
 	}
 
-	row_set = tabular.getRowOfLTFirstHead(row, ltt);
+	row_set = tabular_.getRowOfLTFirstHead(row, ltt);
 	firstheaderStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		firstheaderBorderAboveCB->setChecked(ltt.topDL);
@@ -814,7 +818,7 @@ void GuiTabularDialog::updateContents()
 		}
 	}
 
-	row_set = tabular.getRowOfLTFoot(row, ltt);
+	row_set = tabular_.getRowOfLTFoot(row, ltt);
 	footerStatusCB->setChecked(row_set);
 	if (ltt.set) {
 		footerBorderAboveCB->setChecked(ltt.topDL);
@@ -830,7 +834,7 @@ void GuiTabularDialog::updateContents()
 		use_empty = false;
 	}
 
-	row_set = tabular.getRowOfLTLastFoot(row, ltt);
+	row_set = tabular_.getRowOfLTLastFoot(row, ltt);
 		lastfooterStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		lastfooterBorderAboveCB->setChecked(ltt.topDL);
@@ -846,101 +850,313 @@ void GuiTabularDialog::updateContents()
 				lastfooterStatusCB->setEnabled(false);
 		}
 	}
-	newpageCB->setChecked(tabular.getLTNewPage(row));
+	newpageCB->setChecked(tabular_.getLTNewPage(row));
 }
 
 
-void GuiTabularDialog::closeGUI()
+void GuiTabular::closeGUI()
 {
 	// ugly hack to auto-apply the stuff that hasn't been
 	// yet. don't let this continue to exist ...
 
 	// Subtle here, we must /not/ apply any changes and
 	// then refer to tabular, as it will have been freed
-	// since the changes update the actual controller().tabular()
-	Tabular const & tabular(controller().tabular());
-
+	// since the changes update the actual tabular_
+	//
 	// apply the fixed width values
-	Tabular::idx_type const cell = controller().getActiveCell();
-	bool const multicol = tabular.isMultiColumn(cell);
+	Tabular::idx_type const cell = getActiveCell();
+	bool const multicol = tabular_.isMultiColumn(cell);
 	string width = widgetsToLength(widthED, widthUnit);
 	string width2;
 
-	Length llen = tabular.getColumnPWidth(cell);
-	Length llenMulti = tabular.getMColumnPWidth(cell);
+	Length llen = tabular_.getColumnPWidth(cell);
+	Length llenMulti = tabular_.getMColumnPWidth(cell);
 
 	if (multicol && !llenMulti.zero())
-			width2 = llenMulti.asString();
+		width2 = llenMulti.asString();
 	else if (!multicol && !llen.zero())
-			width2 = llen.asString();
+		width2 = llen.asString();
 
 	// apply the special alignment
 	docstring const sa1 = qstring_to_ucs4(specialAlignmentED->text());
 	docstring sa2;
 
 	if (multicol)
-		sa2 = tabular.getAlignSpecial(cell, Tabular::SET_SPECIAL_MULTI);
+		sa2 = tabular_.getAlignSpecial(cell, Tabular::SET_SPECIAL_MULTI);
 	else
-		sa2 = tabular.getAlignSpecial(cell, Tabular::SET_SPECIAL_COLUMN);
+		sa2 = tabular_.getAlignSpecial(cell, Tabular::SET_SPECIAL_COLUMN);
 
 	if (sa1 != sa2) {
 		if (multicol)
-			controller().set(Tabular::SET_SPECIAL_MULTI, to_utf8(sa1));
+			set(Tabular::SET_SPECIAL_MULTI, to_utf8(sa1));
 		else
-			controller().set(Tabular::SET_SPECIAL_COLUMN, to_utf8(sa1));
+			set(Tabular::SET_SPECIAL_COLUMN, to_utf8(sa1));
 	}
 
 	if (width != width2) {
 		if (multicol)
-			controller().set(Tabular::SET_MPWIDTH, width);
+			set(Tabular::SET_MPWIDTH, width);
 		else
-			controller().set(Tabular::SET_PWIDTH, width);
+			set(Tabular::SET_PWIDTH, width);
 	}
 
 	/* DO WE NEED THIS?
 	switch (topspaceCO->currentIndex()) {
 		case 0:
-			controller().set(Tabular::SET_TOP_SPACE, "");
+			set(Tabular::SET_TOP_SPACE, "");
 			break;
 		case 1:
-			controller().set(Tabular::SET_TOP_SPACE, "default");
+			set(Tabular::SET_TOP_SPACE, "default");
 			break;
 		case 2:
-			controller().set(Tabular::SET_TOP_SPACE,
-				widgetsToLength(topspaceED,
-					topspaceUnit));
+			set(Tabular::SET_TOP_SPACE,
+				widgetsToLength(topspaceED, topspaceUnit));
 			break;
 	}
 
 	switch (bottomspaceCO->currentIndex()) {
 		case 0:
-			controller().set(Tabular::SET_BOTTOM_SPACE, "");
+			set(Tabular::SET_BOTTOM_SPACE, "");
 			break;
 		case 1:
-			controller().set(Tabular::SET_BOTTOM_SPACE, "default");
+			set(Tabular::SET_BOTTOM_SPACE, "default");
 			break;
 		case 2:
-			controller().set(Tabular::SET_BOTTOM_SPACE,
-				widgetsToLength(bottomspaceED,
-					bottomspaceUnit));
+			set(Tabular::SET_BOTTOM_SPACE,
+				widgetsToLength(bottomspaceED, bottomspaceUnit));
 			break;
 	}
 
 	switch (interlinespaceCO->currentIndex()) {
 		case 0:
-			controller().set(Tabular::SET_INTERLINE_SPACE, "");
+			set(Tabular::SET_INTERLINE_SPACE, "");
 			break;
 		case 1:
-			controller().set(Tabular::SET_INTERLINE_SPACE, "default");
+			set(Tabular::SET_INTERLINE_SPACE, "default");
 			break;
 		case 2:
-			controller().set(Tabular::SET_INTERLINE_SPACE,
-				widgetsToLength(interlinespaceED,
-					interlinespaceUnit));
+			set(Tabular::SET_INTERLINE_SPACE,
+				widgetsToLength(interlinespaceED, interlinespaceUnit));
 			break;
 	}
 */
 }
+
+bool GuiTabular::initialiseParams(string const & data)
+{
+	// try to get the current cell
+	BufferView const * const bv = bufferview();
+	InsetTabular const * current_inset = 0;
+	if (bv) {
+		Cursor const & cur = bv->cursor();
+		// get the innermost tabular inset;
+		// assume that it is "ours"
+		for (int i = cur.depth() - 1; i >= 0; --i)
+			if (cur[i].inset().lyxCode() == Inset::TABULAR_CODE) {
+				current_inset = static_cast<InsetTabular const *>(&cur[i].inset());
+				active_cell_ = cur[i].idx();
+				break;
+			}
+	}
+
+	if (current_inset && data.empty()) {
+		tabular_ = Tabular(current_inset->tabular);
+		return true;
+	}
+
+	InsetTabular tmp(buffer());
+	InsetTabularMailer::string2params(data, tmp);
+	tabular_ = Tabular(tmp.tabular);
+	return true;
+}
+
+
+void GuiTabular::clearParams()
+{
+	InsetTabular tmp(buffer());
+	tabular_ = tmp.tabular;
+	active_cell_ = Tabular::npos;
+}
+
+
+Tabular::idx_type GuiTabular::getActiveCell() const
+{
+	return active_cell_;
+}
+
+
+void GuiTabular::set(Tabular::Feature f, string const & arg)
+{
+	string const data = featureAsString(f) + ' ' + arg;
+	dispatch(FuncRequest(getLfun(), data));
+}
+
+
+bool GuiTabular::useMetricUnits() const
+{
+	return lyxrc.default_papersize > PAPER_USEXECUTIVE;
+}
+
+
+void GuiTabular::toggleTopLine()
+{
+	if (tabular_.isMultiColumn(getActiveCell()))
+		set(Tabular::M_TOGGLE_LINE_TOP);
+	else
+		set(Tabular::TOGGLE_LINE_TOP);
+}
+
+
+void GuiTabular::toggleBottomLine()
+{
+	if (tabular_.isMultiColumn(getActiveCell()))
+		set(Tabular::M_TOGGLE_LINE_BOTTOM);
+	else
+		set(Tabular::TOGGLE_LINE_BOTTOM);
+}
+
+
+void GuiTabular::toggleLeftLine()
+{
+	if (tabular_.isMultiColumn(getActiveCell()))
+		set(Tabular::M_TOGGLE_LINE_LEFT);
+	else
+		set(Tabular::TOGGLE_LINE_LEFT);
+}
+
+
+void GuiTabular::toggleRightLine()
+{
+	if (tabular_.isMultiColumn(getActiveCell()))
+		set(Tabular::M_TOGGLE_LINE_RIGHT);
+	else
+		set(Tabular::TOGGLE_LINE_RIGHT);
+}
+
+
+void GuiTabular::setSpecial(string const & special)
+{
+	if (tabular_.isMultiColumn(getActiveCell()))
+		set(Tabular::SET_SPECIAL_MULTI, special);
+	else
+		set(Tabular::SET_SPECIAL_COLUMN, special);
+}
+
+
+void GuiTabular::setWidth(string const & width)
+{
+	if (tabular_.isMultiColumn(getActiveCell()))
+		set(Tabular::SET_MPWIDTH, width);
+	else
+		set(Tabular::SET_PWIDTH, width);
+
+	dialog().updateView();
+}
+
+
+void GuiTabular::toggleMultiColumn()
+{
+	set(Tabular::MULTICOLUMN);
+	dialog().updateView();
+}
+
+
+void GuiTabular::rotateTabular(bool yes)
+{
+	if (yes)
+		set(Tabular::SET_ROTATE_TABULAR);
+	else
+		set(Tabular::UNSET_ROTATE_TABULAR);
+}
+
+
+void GuiTabular::rotateCell(bool yes)
+{
+	if (yes)
+		set(Tabular::SET_ROTATE_CELL);
+	else
+		set(Tabular::UNSET_ROTATE_CELL);
+}
+
+
+void GuiTabular::halign(GuiTabular::HALIGN h)
+{
+	Tabular::Feature num = Tabular::ALIGN_LEFT;
+	Tabular::Feature multi_num = Tabular::M_ALIGN_LEFT;
+
+	switch (h) {
+		case LEFT:
+			num = Tabular::ALIGN_LEFT;
+			multi_num = Tabular::M_ALIGN_LEFT;
+			break;
+		case CENTER:
+			num = Tabular::ALIGN_CENTER;
+			multi_num = Tabular::M_ALIGN_CENTER;
+			break;
+		case RIGHT:
+			num = Tabular::ALIGN_RIGHT;
+			multi_num = Tabular::M_ALIGN_RIGHT;
+			break;
+		case BLOCK:
+			num = Tabular::ALIGN_BLOCK;
+			//multi_num: no equivalent
+			break;
+	}
+
+	if (tabular_.isMultiColumn(getActiveCell()))
+		set(multi_num);
+	else
+		set(num);
+}
+
+
+void GuiTabular::valign(GuiTabular::VALIGN v)
+{
+	Tabular::Feature num = Tabular::VALIGN_MIDDLE;
+	Tabular::Feature multi_num = Tabular::M_VALIGN_MIDDLE;
+
+	switch (v) {
+		case TOP:
+			num = Tabular::VALIGN_TOP;
+			multi_num = Tabular::M_VALIGN_TOP;
+			break;
+		case MIDDLE:
+			num = Tabular::VALIGN_MIDDLE;
+			multi_num = Tabular::M_VALIGN_MIDDLE;
+			break;
+		case BOTTOM:
+			num = Tabular::VALIGN_BOTTOM;
+			multi_num = Tabular::M_VALIGN_BOTTOM;
+			break;
+	}
+
+	if (tabular_.isMultiColumn(getActiveCell()))
+		set(multi_num);
+	else
+		set(num);
+}
+
+
+void GuiTabular::booktabs(bool yes)
+{
+	if (yes)
+		set(Tabular::SET_BOOKTABS);
+	else
+		set(Tabular::UNSET_BOOKTABS);
+}
+
+
+void GuiTabular::longTabular(bool yes)
+{
+	if (yes)
+		set(Tabular::SET_LONGTABULAR);
+	else
+		set(Tabular::UNSET_LONGTABULAR);
+}
+
+
+Dialog * createGuiTabular(LyXView & lv) { return new GuiTabular(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

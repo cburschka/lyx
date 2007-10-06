@@ -230,7 +230,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "spellchecker") {
 		dialog = new GuiSpellcheckerDialog(lyxview_);
 	} else if (name == "tabular") {
-		dialog = new GuiTabularDialog(lyxview_);
+		dialog = createGuiTabular(lyxview_);
 	} else if (name == "tabularcreate") {
 		dialog = new GuiTabularCreateDialog(lyxview_);
 	} else if (name == "texinfo") {

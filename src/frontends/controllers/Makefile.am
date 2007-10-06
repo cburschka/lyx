@@ -31,7 +31,6 @@ SOURCEFILES = \
 	ControlSearch.cpp \
 	ControlSendto.cpp \
 	ControlSpellchecker.cpp \
-	ControlTabular.cpp \
 	ControlTabularCreate.cpp \
 	ControlThesaurus.cpp \
 	ControlToc.cpp \
@@ -61,7 +60,6 @@ HEADERFILES = \
 	ControlSearch.h \
 	ControlSendto.h \
 	ControlSpellchecker.h \
-	ControlTabular.h \
 	ControlTabularCreate.h \
 	ControlThesaurus.h \
 	ControlToc.h \

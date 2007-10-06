@@ -576,6 +576,12 @@ Tabular::ltType::ltType()
 {}
 
 
+Tabular::Tabular()
+{
+	// unusable now!
+}
+
+
 Tabular::Tabular(BufferParams const & bp, row_type rows_arg,
 		       col_type columns_arg)
 {

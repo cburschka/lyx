@@ -16,18 +16,19 @@
 #define GUITABULAR_H
 
 #include "GuiDialog.h"
-#include "ControlTabular.h"
 #include "ui_TabularUi.h"
+#include "insets/InsetTabular.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiTabularDialog : public GuiDialog, public Ui::TabularUi
+class GuiTabular : public GuiDialog, public Ui::TabularUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiTabularDialog(LyXView & lv);
+	GuiTabular(LyXView & lv);
+	~GuiTabular();
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -71,7 +72,7 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlTabular & controller();
+	Controller & controller() { return *this; }
 	///
 	bool isValid() { return true; }
 	/// update borders
@@ -80,6 +81,55 @@ private:
 	void updateContents();
 	/// save some values before closing the gui
 	void closeGUI();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// We use set() instead.
+	void dispatchParams() {};
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	kb_action getLfun() const { return LFUN_TABULAR_FEATURE; }
+
+	///
+	Tabular::idx_type getActiveCell() const;
+	/// return true if units should default to metric
+	bool useMetricUnits() const;
+	/// set a parameter
+	void set(Tabular::Feature, std::string const & arg = std::string());
+
+	/// borders
+	void toggleTopLine();
+	void toggleBottomLine();
+	void toggleLeftLine();
+	void toggleRightLine();
+
+	void setSpecial(std::string const & special);
+
+	void setWidth(std::string const & width);
+
+	void toggleMultiColumn();
+
+	void rotateTabular(bool yes);
+	void rotateCell(bool yes);
+
+	enum HALIGN { LEFT, RIGHT, CENTER, BLOCK };
+
+	void halign(HALIGN h);
+
+	enum VALIGN { TOP, MIDDLE, BOTTOM };
+
+	void valign(VALIGN h);
+
+	void booktabs(bool yes);
+
+	void longTabular(bool yes);
+
+	///
+	Tabular::idx_type active_cell_;
+	///
+	Tabular tabular_;
 };
 
 } // namespace frontend

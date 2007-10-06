@@ -67,7 +67,7 @@ class OutputParams;
 //
 // A helper struct for tables
 //
-class Tabular  {
+class Tabular {
 public:
 	///
 	enum Feature {
@@ -238,6 +238,8 @@ public:
 	/// index indicating an invalid position
 	static const idx_type npos = static_cast<idx_type>(-1);
 
+	/// constructor
+	Tabular();
 	/// constructor
 	Tabular(BufferParams const &, col_type columns_arg,
 		   row_type rows_arg);
