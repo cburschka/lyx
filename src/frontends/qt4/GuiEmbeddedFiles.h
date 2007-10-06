@@ -13,12 +13,58 @@
 #define GUIEMBEDDEDFILES_H
 
 #include "GuiDialog.h"
+#include "DockView.h"
 #include "EmbeddedFiles.h"
-#include "ControlEmbeddedFiles.h"
 #include "ui_EmbeddedFilesUi.h"
 
 namespace lyx {
 namespace frontend {
+
+class ControlEmbeddedFiles : public Controller {
+public:
+	///
+	ControlEmbeddedFiles(Dialog &);
+	///
+	~ControlEmbeddedFiles() {}
+	///
+	EmbeddedFiles & embeddedFiles();
+	///
+	bool initialiseParams(std::string const &);
+	/// obtain embedded files from buffer
+	void updateEmbeddedFiles();
+	///
+	void clearParams() {}
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	bool canApply() const { return true; }
+	///
+	bool canApplyToReadOnly() const { return false; }
+	///
+	void dispatchMessage(std::string const & msg);
+	///
+	void dispatchParams() {}
+	///
+	bool isReadonly();
+	///
+	void setEmbedding(bool enable);
+	///
+	void goTo(EmbeddedFile const & item, int idx);
+	///
+	void view(EmbeddedFile const & item);
+	///
+	void setEmbed(EmbeddedFile & item, bool embed, bool update);
+	///
+	bool browseAndAddFile();
+	///
+	bool extract(EmbeddedFile const & item);
+	///
+	bool update(EmbeddedFile const & item);
+
+protected:
+	//
+	std::string message_;
+};
 
 class GuiEmbeddedFilesDialog : public QWidget, public Ui::GuiEmbeddedFilesUi
 {
@@ -49,6 +95,15 @@ private:
 	ControlEmbeddedFiles & controller_;
 	void set_embedding_status(bool embed);
 };
+
+
+class GuiEmbeddedFiles
+	: public DockView<ControlEmbeddedFiles, GuiEmbeddedFilesDialog>
+{
+public:
+	GuiEmbeddedFiles(LyXView & lv);
+};
+
 
 } // namespace frontend
 } // namespace lyx

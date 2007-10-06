@@ -19,7 +19,6 @@
 #include "GuiBibitem.h"
 #include "GuiDelimiter.h"
 #include "GuiDocument.h"
-#include "GuiEmbeddedFiles.h"
 #include "GuiExternal.h"
 #include "GuiGraphics.h"
 #include "GuiIndex.h"
@@ -101,6 +100,7 @@ Dialog * createGuiCharacter(LyXView & lv);
 Dialog * createGuiCitation(LyXView & lv);
 Dialog * createGuiDelimiter(LyXView & lv);
 Dialog * createGuiDocument(LyXView & lv);
+Dialog * createGuiEmbeddedFiles(LyXView & lv);
 Dialog * createGuiErrorList(LyXView & lv);
 Dialog * createGuiERT(LyXView & lv);
 Dialog * createGuiExternal(LyXView & lv);
@@ -163,8 +163,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "document") {
 		dialog = new GuiDocumentDialog(lyxview_);
 	} else if (name == "embedding") {
-		dialog = new DockView<ControlEmbeddedFiles, GuiEmbeddedFilesDialog>(
-			guiview, name, Qt::RightDockWidgetArea);
+		dialog = createGuiEmbeddedFiles(lyxview_);
 	} else if (name == "errorlist") {
 		dialog = createGuiErrorList(lyxview_);
 	} else if (name == "ert") {
