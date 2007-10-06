@@ -187,9 +187,9 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "label") {
 		dialog = new GuiLabelDialog(lyxview_);
 	} else if (name == "log") {
-		createGuiLog(lyxview_);
+		dialog = createGuiLog(lyxview_);
 	} else if (name == "view-source") {
-		createGuiViewSource(lyxview_);
+		dialog = createGuiViewSource(lyxview_);
 	} else if (name == "mathdelimiter") {
 		dialog = new GuiDelimiterDialog(lyxview_);
 	} else if (name == "mathmatrix") {
