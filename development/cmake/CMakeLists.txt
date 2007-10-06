@@ -174,14 +174,14 @@ add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 if(MSVC AND NOT disable-pch)
 	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h
 		${CMAKE_BINARY_DIR}/pcheaders.h)
-	configure_file(${CMAKE_SOURCE_DIR}/config.C.cmake
-		${CMAKE_BINARY_DIR}/config_pch.C)
+	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake
+		${CMAKE_BINARY_DIR}/config_pch.cpp)
 	macro(lyx_add_msvc_pch name_)
 		set_source_files_properties(${${name_}_sources} PROPERTIES
 			COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
-		set_source_files_properties(${CMAKE_BINARY_DIR}/config_pch.C PROPERTIES
+		set_source_files_properties(${CMAKE_BINARY_DIR}/config_pch.cpp PROPERTIES
 			COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
-		set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.C
+		set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.cpp
 			${CMAKE_BINARY_DIR}/pcheaders.h)
 		add_definitions(/DLYX_ENABLE_PCH)
 	endmacro(lyx_add_msvc_pch)
