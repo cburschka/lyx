@@ -27,7 +27,6 @@
 #include "GuiParagraph.h"
 #include "GuiPrefs.h"
 #include "GuiPrint.h"
-#include "GuiSearch.h"
 #include "GuiShowFile.h"
 #include "GuiView.h"
 #include "TocWidget.h"
@@ -165,7 +164,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "file")
 		return createGuiShowFile(lyxview_);
 	if (name == "findreplace")
-		return new GuiSearchDialog(lyxview_);
+		return createGuiSearch(lyxview_);
 	if (name == "float")
 		return createGuiFloat(lyxview_);
 	if (name == "graphics")

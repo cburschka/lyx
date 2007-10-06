@@ -14,7 +14,7 @@
 #define TOC_WIDGET_H
 
 #include "GuiDialog.h"
-#include "ControlToc.h"
+#include "GuiToc.h"
 #include "ui_TocUi.h"
 
 

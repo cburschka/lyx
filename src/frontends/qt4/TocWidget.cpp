@@ -315,11 +315,8 @@ void TocWidget::reconnectSelectionModel()
 void TocWidget::disconnectSelectionModel()
 {
 	disconnect(tocTV->selectionModel(),
-		   SIGNAL(currentChanged(const QModelIndex &,
-			  const QModelIndex &)),
-		   this,
-		   SLOT(selectionChanged(const QModelIndex &,
-			const QModelIndex &)));
+		SIGNAL(currentChanged(QModelIndex, QModelIndex)),
+		this, SLOT(selectionChanged(QModelIndex, QModelIndex)));
 }
 
 } // namespace frontend

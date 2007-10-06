@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,20 +14,17 @@
 #define GUISEARCH_H
 
 #include "GuiDialog.h"
-#include "ControlSearch.h"
 #include "ui_SearchUi.h"
 
 namespace lyx {
 namespace frontend {
 
-class ControlSearch;
-
-class GuiSearchDialog : public GuiDialog, public Ui::SearchUi
+class GuiSearch : public GuiDialog, public Ui::SearchUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiSearchDialog(LyXView & lv);
+	GuiSearch(LyXView & lv);
 
 private Q_SLOTS:
 	void findChanged();
@@ -38,14 +36,21 @@ private:
 	void showView();
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlSearch & controller();
+	Controller & controller() { return *this; }
 	///
-	void find(docstring const & str, bool casesens,
-	  bool words, bool backwards);
-	///
-	void replace(docstring const & findstr,
-	  docstring const & replacestr,
-	  bool casesens, bool words, bool backwards, bool all);
+	bool initialiseParams(std::string const &) { return true; }
+	void clearParams() {}
+	void dispatchParams() {}
+	bool isBufferDependent() const { return true; }
+
+	/// Searches occurence of string
+	void find(docstring const & search,
+		  bool casesensitive, bool matchword, bool forward);
+
+	/// Replaces occurence of string
+	void replace(docstring const & search, docstring const & replace,
+		     bool casesensitive, bool matchword,
+		     bool forward, bool all);
 };
 
 } // namespace frontend

@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Edwin Leuven
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,7 +14,9 @@
 
 #include "GuiSearch.h"
 
-#include "ControlSearch.h"
+#include "FuncRequest.h"
+#include "lyxfind.h"
+
 #include "qt_helpers.h"
 
 #include <QLineEdit>
@@ -36,11 +39,11 @@ static void uniqueInsert(QComboBox * box, QString const & text)
 }
 
 
-GuiSearchDialog::GuiSearchDialog(LyXView & lv)
-	: GuiDialog(lv, "findreplace") 
+GuiSearch::GuiSearch(LyXView & lv)
+	: GuiDialog(lv, "findreplace"), Controller(this)
 {
 	setupUi(this);
-	setController(new ControlSearch(*this));
+	setController(this, false);
 	setViewTitle(_("Find and Replace"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -63,27 +66,21 @@ GuiSearchDialog::GuiSearchDialog(LyXView & lv)
 }
 
 
-ControlSearch & GuiSearchDialog::controller()
-{
-	return static_cast<ControlSearch &>(GuiDialog::controller());
-}
-
-
-void GuiSearchDialog::showView()
+void GuiSearch::showView()
 {
 	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
 	GuiDialog::showView();
 }
 
 
-void GuiSearchDialog::closeEvent(QCloseEvent * e)
+void GuiSearch::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	GuiDialog::closeEvent(e);
 }
 
 
-void GuiSearchDialog::findChanged()
+void GuiSearch::findChanged()
 {
 	if (findCO->currentText().isEmpty()) {
 		findPB->setEnabled(false);
@@ -97,51 +94,58 @@ void GuiSearchDialog::findChanged()
 }
 
 
-void GuiSearchDialog::findClicked()
+void GuiSearch::findClicked()
 {
 	docstring const needle = qstring_to_ucs4(findCO->currentText());
 	find(needle, caseCB->isChecked(), wordsCB->isChecked(),
-		backwardsCB->isChecked());
+		!backwardsCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
 	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
 }
 
 
-void GuiSearchDialog::replaceClicked()
+void GuiSearch::replaceClicked()
 {
 	docstring const needle = qstring_to_ucs4(findCO->currentText());
 	docstring const repl = qstring_to_ucs4(replaceCO->currentText());
 	replace(needle, repl, caseCB->isChecked(), wordsCB->isChecked(),
-		backwardsCB->isChecked(), false);
+		!backwardsCB->isChecked(), false);
 	uniqueInsert(findCO, findCO->currentText());
 	uniqueInsert(replaceCO, replaceCO->currentText());
 }
 
 
-void GuiSearchDialog::replaceallClicked()
+void GuiSearch::replaceallClicked()
 {
 	replace(qstring_to_ucs4(findCO->currentText()),
 		qstring_to_ucs4(replaceCO->currentText()),
-		caseCB->isChecked(), wordsCB->isChecked(), false, true);
+		caseCB->isChecked(), wordsCB->isChecked(), true, true);
 	uniqueInsert(findCO, findCO->currentText());
 	uniqueInsert(replaceCO, replaceCO->currentText());
 }
 
 
-void GuiSearchDialog::find(docstring const & str, bool casesens,
-	bool words, bool backwards)
+void GuiSearch::find(docstring const & search, bool casesensitive,
+			 bool matchword, bool forward)
 {
-	controller().find(str, casesens, words, !backwards);
+	docstring const data = find2string(search, casesensitive,
+					      matchword, forward);
+	dispatch(FuncRequest(LFUN_WORD_FIND, data));
 }
 
 
-void GuiSearchDialog::replace(docstring const & findstr,
-	docstring const & replacestr,
-	bool casesens, bool words, bool backwards, bool all)
+void GuiSearch::replace(docstring const & search, docstring const & replace,
+			    bool casesensitive, bool matchword,
+			    bool forward, bool all)
 {
-	controller().replace(findstr, replacestr, casesens, words,
-			     !backwards, all);
+	docstring const data =
+		replace2string(search, replace, casesensitive,
+				     matchword, all, forward);
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }
+
+Dialog * createGuiSearch(LyXView & lv) { return new GuiSearch(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
