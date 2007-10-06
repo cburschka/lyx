@@ -27,7 +27,6 @@
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
 #include "GuiNomencl.h"
-#include "GuiLog.h"
 #include "GuiParagraph.h"
 #include "GuiPrefs.h"
 #include "GuiPrint.h"
@@ -191,7 +190,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "label") {
 		dialog = new GuiLabelDialog(lyxview_);
 	} else if (name == "log") {
-		dialog = new GuiLogDialog(lyxview_);
+		createGuiLog(lyxview_);
 	} else if (name == "view-source") {
 		dialog = new DockView<ControlViewSource, GuiViewSourceDialog>(
 			guiview, name, Qt::BottomDockWidgetArea);

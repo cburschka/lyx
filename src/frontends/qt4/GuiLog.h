@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,36 +14,67 @@
 #define GUILOG_H
 
 #include "GuiDialog.h"
-#include "ControlLog.h"
 #include "ui_LogUi.h"
+
+#include "support/FileName.h"
+
 
 namespace lyx {
 namespace frontend {
 
 class LogHighlighter;
 
-class GuiLogDialog : public GuiDialog, public Ui::LogUi
+class GuiLog : public GuiDialog, public Ui::LogUi, public Controller
 {
 	Q_OBJECT
+
 public:
-	GuiLogDialog(LyXView & lv);
+	GuiLog(LyXView & lv);
+
 private Q_SLOTS:
-	void updateClicked();
+	void updateContents();
+
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlLog & controller();
+	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView() {}
-	/// update
-	void updateContents();
 
 	/// log syntax highlighter
 	LogHighlighter * highlighter;
+
+	/** \param data should contain "<logtype> <logfile>"
+	 *  where <logtype> is one of "latex", "literate", "lyx2lyx", "vc".
+	 */
+	bool initialiseParams(std::string const & data);
+	///
+	void clearParams();
+	///
+	void dispatchParams() {}
+	///
+	bool isBufferDependent() const { return true; }
+
+	/// The title displayed by the dialog reflects the \c LogType
+	docstring title() const;
+	/// put the log file into the ostream
+	void getContents(std::ostream & ss) const;
+
+private:
+	/// Recognized log file-types
+	enum LogType {
+		LatexLog,
+		LiterateLog,
+		Lyx2lyxLog,
+		VCLog
+	};
+
+	LogType type_;
+	support::FileName logfile_;
 };
 
 
 } // namespace frontend
 } // namespace lyx
 
-#endif // QLOG_H
+#endif // GUILOG_H

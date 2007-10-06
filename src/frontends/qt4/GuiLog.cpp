@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,8 +13,9 @@
 
 #include "GuiLog.h"
 
-#include "ControlLog.h"
 #include "qt_helpers.h"
+#include "gettext.h"
+#include "Lexer.h"
 
 #include "frontends/Application.h"
 
@@ -21,12 +23,18 @@
 #include <QTextBrowser>
 #include <QSyntaxHighlighter>
 
+#include <fstream>
 #include <sstream>
+
+using std::istringstream;
+using std::ostream;
+using std::string;
 
 
 namespace lyx {
 namespace frontend {
 
+using support::FileName;
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -94,14 +102,14 @@ void LogHighlighter::highlightBlock(QString const & text)
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiLogDialog::GuiLogDialog(LyXView & lv)
-	: GuiDialog(lv, "log")
+GuiLog::GuiLog(LyXView & lv)
+	: GuiDialog(lv, "log"), Controller(this), type_(LatexLog)
 {
 	setupUi(this);
-	setController(new ControlLog(*this));
+	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(updatePB, SIGNAL(clicked()), this, SLOT(updateClicked()));
+	connect(updatePB, SIGNAL(clicked()), this, SLOT(updateContents()));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 
@@ -117,34 +125,115 @@ GuiLogDialog::GuiLogDialog(LyXView & lv)
 }
 
 
-ControlLog & GuiLogDialog::controller()
-{
-	return static_cast<ControlLog &>(GuiDialog::controller());
-}
-
-
-void GuiLogDialog::closeEvent(QCloseEvent * e)
+void GuiLog::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiLogDialog::updateClicked()
+void GuiLog::updateContents()
 {
-	updateContents();
-}
-
-
-void GuiLogDialog::updateContents()
-{
-	setViewTitle(controller().title());
+	setViewTitle(title());
 
 	std::ostringstream ss;
-	controller().getContents(ss);
+	getContents(ss);
 
 	logTB->setPlainText(toqstr(ss.str()));
 }
+
+
+bool GuiLog::initialiseParams(string const & data)
+{
+	istringstream is(data);
+	Lexer lex(0,0);
+	lex.setStream(is);
+
+	string logtype, logfile;
+	lex >> logtype;
+	if (lex) {
+		lex.next(true);
+		logfile = lex.getString();
+	}
+	if (!lex)
+		// Parsing of the data failed.
+		return false;
+
+	if (logtype == "latex")
+		type_ = LatexLog;
+	else if (logtype == "literate")
+		type_ = LiterateLog;
+	else if (logtype == "lyx2lyx")
+		type_ = Lyx2lyxLog;
+	else if (logtype == "vc")
+		type_ = VCLog;
+	else
+		return false;
+
+	logfile_ = FileName(logfile);
+	return true;
+}
+
+
+void GuiLog::clearParams()
+{
+	logfile_.erase();
+}
+
+
+docstring GuiLog::title() const
+{
+	switch (type_) {
+	case LatexLog:
+		return _("LaTeX Log");
+	case LiterateLog:
+		return _("Literate Programming Build Log");
+	case Lyx2lyxLog:
+		return _("lyx2lyx Error Log");
+	case VCLog:
+		return _("Version Control Log");
+	default:
+		return docstring();
+	}
+}
+
+
+void GuiLog::getContents(std::ostream & ss) const
+{
+	std::ifstream in(logfile_.toFilesystemEncoding().c_str());
+
+	bool success = false;
+
+	// FIXME UNICODE
+	// Our caller interprets the file contents as UTF8, but is that
+	// correct?
+	if (in) {
+		ss << in.rdbuf();
+		success = ss.good();
+	}
+
+	if (success)
+		return;
+
+	switch (type_) {
+	case LatexLog:
+		ss << to_utf8(_("No LaTeX log file found."));
+		break;
+	case LiterateLog:
+		ss << to_utf8(_("No literate programming build log file found."));
+		break;
+	case Lyx2lyxLog:
+		ss << to_utf8(_("No lyx2lyx error log file found."));
+		break;
+	case VCLog:
+		ss << to_utf8(_("No version control log file found."));
+		break;
+	}
+}
+
+
+Dialog * createGuiLog(LyXView & lv) { return new GuiLog(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
