@@ -13,7 +13,6 @@
 
 #include "GuiBranches.h"
 
-#include "ControlDocument.h"
 #include "GuiApplication.h"
 #include "Validator.h"
 #include "qt_helpers.h"
@@ -69,9 +68,7 @@ void GuiBranches::updateView()
 
 		QString const bname = toqstr(it->getBranch());
 		newItem->setText(0, bname);
-
-		QString const sel = it->getSelected() ? qt_("Yes") : qt_("No");
-		newItem->setText(1, sel);
+		newItem->setText(1, it->getSelected() ? qt_("Yes") : qt_("No"));
 
 		QColor const itemcolor = rgb2qcolor(it->getColor());
 		if (itemcolor.isValid()) {

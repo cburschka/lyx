@@ -13,27 +13,38 @@
 
 #include "GuiDocument.h"
 
+#include "BranchList.h"
+#include "buffer_funcs.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "BufferView.h"
+#include "Color.h"
+#include "Encoding.h"
 #include "FloatPlacement.h"
+#include "frontend_helpers.h"
+#include "FuncRequest.h"
+#include "gettext.h"
+#include "GuiBranches.h"
+#include "Language.h"
+#include "LaTeXFeatures.h"
+#include "LaTeXHighlighter.h"
 #include "Layout.h"
 #include "LengthCombo.h"
+#include "LyXRC.h" // defaultUnit
+#include "ModuleList.h"
+#include "OutputParams.h"
 #include "PanelStack.h"
+#include "PDFOptions.h"
 #include "qt_helpers.h"
+#include "Spacing.h"
+#include "TextClassList.h"
 #include "Validator.h"
 
-// For the Branches module
-#include "GuiBranches.h"
 
-#include "LaTeXHighlighter.h"
-
-#include "frontend_helpers.h"
-#include "BufferParams.h"
-#include "Encoding.h"
-#include "gettext.h"
-#include "Language.h"
-#include "LyXRC.h" // defaultUnit
-#include "TextClassList.h"
-#include "Spacing.h"
-#include "PDFOptions.h"
+// FIXME: those two headers are needed because of the
+// WorkArea::redraw() call below.
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
 
 #include "insets/InsetListingsParams.h"
 
@@ -46,18 +57,15 @@
 #include <QTextCursor>
 
 #include <algorithm>
-
-using lyx::support::token;
-using lyx::support::bformat;
-using lyx::support::findToken;
-using lyx::support::getVectorFromString;
+#include <sstream>
 
 using std::distance;
 using std::make_pair;
 using std::pair;
 using std::vector;
 using std::string;
-
+using std::ostringstream;
+using std::sort;
 
 ///
 template<class Pair>
@@ -135,6 +143,11 @@ vector<pair<string, lyx::docstring> > pagestyles;
 namespace lyx {
 namespace frontend {
 
+using support::token;
+using support::bformat;
+using support::findToken;
+using support::getVectorFromString;
+
 /////////////////////////////////////////////////////////////////////
 //
 // PreambleModule
@@ -205,11 +218,11 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 
 
 
-GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
-	: GuiDialog(lv, "document")
+GuiDocument::GuiDocument(LyXView & lv)
+	: GuiDialog(lv, "document"), Controller(this)
 {
 	setupUi(this);
-	setController(new ControlDocument(*this));
+	setController(this, false);
 	setViewTitle(_("Document Settings"));
 
 	lang_ = getSecond(getLanguageData(false));
@@ -315,19 +328,19 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 
 	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
 		QString font = qt_(tex_fonts_roman_gui[n]);
-		if (!controller().isFontAvailable(tex_fonts_roman[n]))
+		if (!isFontAvailable(tex_fonts_roman[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsRomanCO->addItem(font);
 	}
 	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
 		QString font = qt_(tex_fonts_sans_gui[n]);
-		if (!controller().isFontAvailable(tex_fonts_sans[n]))
+		if (!isFontAvailable(tex_fonts_sans[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsSansCO->addItem(font);
 	}
 	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
 		QString font = qt_(tex_fonts_monospaced_gui[n]);
-		if (!controller().isFontAvailable(tex_fonts_monospaced[n]))
+		if (!isFontAvailable(tex_fonts_monospaced[n]))
 			font += qt_(" (not installed)");
 		fontModule->fontsTypewriterCO->addItem(font);
 	}
@@ -337,9 +350,9 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 	fontModule->fontsizeCO->addItem(qt_("11"));
 	fontModule->fontsizeCO->addItem(qt_("12"));
 
-	for (int n = 0; ControlDocument::fontfamilies_gui[n][0]; ++n)
+	for (int n = 0; GuiDocument::fontfamilies_gui[n][0]; ++n)
 		fontModule->fontsDefaultCO->addItem(
-			qt_(ControlDocument::fontfamilies_gui[n]));
+			qt_(GuiDocument::fontfamilies_gui[n]));
 
 
 	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>;
@@ -584,7 +597,7 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 	}
 	// latex classes
 	//FIXME This seems too involved with the kernel. Some of this
-	//should be moved to the controller---which should perhaps just
+	//should be moved to the kernel---which should perhaps just
 	//give us a list of entries or something of the sort.
 	for (TextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
@@ -676,37 +689,31 @@ GuiDocumentDialog::GuiDocumentDialog(LyXView & lv)
 }
 
 
-ControlDocument & GuiDocumentDialog::controller()
-{
-	return static_cast<ControlDocument &>(GuiDialog::controller());
-}
-
-
-void GuiDocumentDialog::showPreamble()
+void GuiDocument::showPreamble()
 {
 	docPS->setCurrentPanel(_("LaTeX Preamble"));
 }
 
 
-void GuiDocumentDialog::saveDefaultClicked()
+void GuiDocument::saveDefaultClicked()
 {
 	saveDocDefault();
 }
 
 
-void GuiDocumentDialog::useDefaultsClicked()
+void GuiDocument::useDefaultsClicked()
 {
 	useClassDefaults();
 }
 
 
-void GuiDocumentDialog::change_adaptor()
+void GuiDocument::change_adaptor()
 {
 	changed();
 }
 
 
-docstring GuiDocumentDialog::validate_listings_params()
+docstring GuiDocument::validate_listings_params()
 {
 	// use a cache here to avoid repeated validation
 	// of the same parameters
@@ -725,7 +732,7 @@ docstring GuiDocumentDialog::validate_listings_params()
 }
 
 
-void GuiDocumentDialog::set_listings_msg()
+void GuiDocument::set_listings_msg()
 {
 	static bool isOK = true;
 	docstring msg = validate_listings_params();
@@ -744,20 +751,20 @@ void GuiDocumentDialog::set_listings_msg()
 }
 
 
-void GuiDocumentDialog::closeEvent(QCloseEvent * e)
+void GuiDocument::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiDocumentDialog::setLSpacing(int item)
+void GuiDocument::setLSpacing(int item)
 {
 	textLayoutModule->lspacingLE->setEnabled(item == 3);
 }
 
 
-void GuiDocumentDialog::setSkip(int item)
+void GuiDocument::setSkip(int item)
 {
 	bool const enable = (item == 3);
 	textLayoutModule->skipLE->setEnabled(enable);
@@ -765,7 +772,7 @@ void GuiDocumentDialog::setSkip(int item)
 }
 
 
-void GuiDocumentDialog::enableSkip(bool skip)
+void GuiDocument::enableSkip(bool skip)
 {
 	textLayoutModule->skipCO->setEnabled(skip);
 	textLayoutModule->skipLE->setEnabled(skip);
@@ -774,19 +781,19 @@ void GuiDocumentDialog::enableSkip(bool skip)
 		setSkip(textLayoutModule->skipCO->currentIndex());
 }
 
-void GuiDocumentDialog::portraitChanged()
+void GuiDocument::portraitChanged()
 {
 	setMargins(pageLayoutModule->papersizeCO->currentIndex());
 }
 
-void GuiDocumentDialog::setMargins(bool custom)
+void GuiDocument::setMargins(bool custom)
 {
 	marginsModule->marginCB->setChecked(custom);
 	setCustomMargins(custom);
 }
 
 
-void GuiDocumentDialog::setCustomPapersize(int papersize)
+void GuiDocument::setCustomPapersize(int papersize)
 {
 	bool const custom = (papersize == 1);
 
@@ -800,7 +807,7 @@ void GuiDocumentDialog::setCustomPapersize(int papersize)
 }
 
 
-void GuiDocumentDialog::setCustomMargins(bool custom)
+void GuiDocument::setCustomMargins(bool custom)
 {
 	marginsModule->topL->setEnabled(!custom);
 	marginsModule->topLE->setEnabled(!custom);
@@ -832,7 +839,7 @@ void GuiDocumentDialog::setCustomMargins(bool custom)
 }
 
 
-void GuiDocumentDialog::updateFontsize(string const & items, string const & sel)
+void GuiDocument::updateFontsize(string const & items, string const & sel)
 {
 	fontModule->fontsizeCO->clear();
 	fontModule->fontsizeCO->addItem(qt_("Default"));
@@ -850,33 +857,33 @@ void GuiDocumentDialog::updateFontsize(string const & items, string const & sel)
 }
 
 
-void GuiDocumentDialog::romanChanged(int item)
+void GuiDocument::romanChanged(int item)
 {
 	string const font = tex_fonts_roman[item];
-	fontModule->fontScCB->setEnabled(controller().providesSC(font));
-	fontModule->fontOsfCB->setEnabled(controller().providesOSF(font));
+	fontModule->fontScCB->setEnabled(providesSC(font));
+	fontModule->fontOsfCB->setEnabled(providesOSF(font));
 }
 
 
-void GuiDocumentDialog::sansChanged(int item)
+void GuiDocument::sansChanged(int item)
 {
 	string const font = tex_fonts_sans[item];
-	bool scaleable = controller().providesScale(font);
+	bool scaleable = providesScale(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
 	fontModule->scaleSansLA->setEnabled(scaleable);
 }
 
 
-void GuiDocumentDialog::ttChanged(int item)
+void GuiDocument::ttChanged(int item)
 {
 	string const font = tex_fonts_monospaced[item];
-	bool scaleable = controller().providesScale(font);
+	bool scaleable = providesScale(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
 	fontModule->scaleTypewriterLA->setEnabled(scaleable);
 }
 
 
-void GuiDocumentDialog::updatePagestyle(string const & items, string const & sel)
+void GuiDocument::updatePagestyle(string const & items, string const & sel)
 {
 	pagestyles.clear();
 	pageLayoutModule->pagestyleCO->clear();
@@ -906,18 +913,17 @@ void GuiDocumentDialog::updatePagestyle(string const & items, string const & sel
 }
 
 
-void GuiDocumentDialog::classChanged()
+void GuiDocument::classChanged()
 {
-	BufferParams & params = controller().params();
 	textclass_type const tc = latexModule->classCO->currentIndex();
-	params.setJustBaseClass(tc);
+	bp_.setJustBaseClass(tc);
 	if (lyxrc.auto_reset_options)
-		params.useClassDefaults();
+		bp_.useClassDefaults();
 	updateContents();
 }
 
 
-void GuiDocumentDialog::updateModuleInfo()
+void GuiDocument::updateModuleInfo()
 {
 	selectionManager->update();
 	//Module description
@@ -929,8 +935,8 @@ void GuiDocumentDialog::updateModuleInfo()
 	else {
 		QModelIndex const idx = lv->selectionModel()->currentIndex();
 		string const modName = fromqstr(idx.data().toString());
-		string desc = controller().getModuleDescription(modName);
-		vector<string> pkgList = controller().getPackageList(modName);
+		string desc = getModuleDescription(modName);
+		vector<string> pkgList = getPackageList(modName);
 		string pkgdesc;
 		//this mess formats the package list as "pkg1, pkg2, and pkg3"
 		int const pkgListSize = pkgList.size();
@@ -955,9 +961,9 @@ void GuiDocumentDialog::updateModuleInfo()
 }
 
 
-void GuiDocumentDialog::updateNumbering()
+void GuiDocument::updateNumbering()
 {
-	TextClass const & tclass = controller().params().getTextClass();
+	TextClass const & tclass = bp_.getTextClass();
 
 	numberingModule->tocTW->setUpdatesEnabled(false);
 	numberingModule->tocTW->clear();
@@ -985,7 +991,7 @@ void GuiDocumentDialog::updateNumbering()
 }
 
 
-void GuiDocumentDialog::apply(BufferParams & params)
+void GuiDocument::apply(BufferParams & params)
 {
 	// preamble
 	preambleModule->apply(params);
@@ -1178,7 +1184,7 @@ void GuiDocumentDialog::apply(BufferParams & params)
 
 	params.fontsOSF = fontModule->fontOsfCB->isChecked();
 
-	params.fontsDefaultFamily = ControlDocument::fontfamilies[
+	params.fontsDefaultFamily = GuiDocument::fontfamilies[
 		fontModule->fontsDefaultCO->currentIndex()];
 
 	if (fontModule->fontsizeCO->currentIndex() == 0)
@@ -1270,17 +1276,15 @@ static size_t findPos(std::vector<A> const & vec, A const & val)
 }
 
 
-void GuiDocumentDialog::updateParams()
+void GuiDocument::updateParams()
 {
-	BufferParams const & params = controller().params();
-	updateParams(params);
+	updateParams(bp_);
 }
 
 
-void GuiDocumentDialog::updateParams(BufferParams const & params)
+void GuiDocument::updateParams(BufferParams const & params)
 {
 	// set the default unit
-	// FIXME: move to controller
 	Length::UNIT defaultUnit = Length::CM;
 	switch (lyxrc.default_papersize) {
 		case PAPER_DEFAULT: break;
@@ -1304,7 +1308,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	}
 
 	// preamble
-	preambleModule->update(params, controller().id());
+	preambleModule->update(params, id());
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
@@ -1350,9 +1354,9 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	langModule->otherencodingRB->setChecked(!default_enc);
 
 	// numbering
-	int const min_toclevel = controller().textClass().min_toclevel();
-	int const max_toclevel = controller().textClass().max_toclevel();
-	if (controller().textClass().hasTocLevels()) {
+	int const min_toclevel = textClass().min_toclevel();
+	int const max_toclevel = textClass().max_toclevel();
+	if (textClass().hasTocLevels()) {
 		numberingModule->setEnabled(true);
 		numberingModule->depthSL->setMinimum(min_toclevel - 1);
 		numberingModule->depthSL->setMaximum(max_toclevel);
@@ -1399,7 +1403,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	// text layout
 	latexModule->classCO->setCurrentIndex(params.getBaseClass());
 	
-	updatePagestyle(controller().textClass().opt_pagestyle(),
+	updatePagestyle(textClass().opt_pagestyle(),
 				 params.pagestyle);
 
 	textLayoutModule->lspacingCO->setCurrentIndex(nitem);
@@ -1459,7 +1463,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	floatModule->set(params.float_placement);
 
 	// Fonts
-	updateFontsize(controller().textClass().opt_fontsize(),
+	updateFontsize(textClass().opt_fontsize(),
 			params.fontsize);
 
 	int n = findToken(tex_fonts_roman, params.fontsRoman);
@@ -1484,7 +1488,7 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 	fontModule->fontOsfCB->setChecked(params.fontsOSF);
 	fontModule->scaleSansSB->setValue(params.fontsSansScale);
 	fontModule->scaleTypewriterSB->setValue(params.fontsTypewriterScale);
-	n = findToken(ControlDocument::fontfamilies, params.fontsDefaultFamily);
+	n = findToken(GuiDocument::fontfamilies, params.fontsDefaultFamily);
 	if (n >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(n);
 
@@ -1563,54 +1567,247 @@ void GuiDocumentDialog::updateParams(BufferParams const & params)
 }
 
 
-void GuiDocumentDialog::applyView()
+void GuiDocument::applyView()
 {
-	apply(controller().params());
+	apply(params());
 }
 
 
-void GuiDocumentDialog::saveDocDefault()
+void GuiDocument::saveDocDefault()
 {
 	// we have to apply the params first
 	applyView();
-	controller().saveAsDefault();
+	saveAsDefault();
 }
 
 
-void GuiDocumentDialog::updateContents()
+void GuiDocument::updateContents()
 {
 	//update list of available modules
 	QStringList strlist;
-	vector<string> const modNames = controller().getModuleNames();
+	vector<string> const modNames = getModuleNames();
 	vector<string>::const_iterator it = modNames.begin();
 	for (; it != modNames.end(); ++it)
 		strlist.push_back(toqstr(*it));
 	available_model_.setStringList(strlist);
 	//and selected ones, too
 	QStringList strlist2;
-	vector<string> const & selMods = controller().getSelectedModules();
+	vector<string> const & selMods = getSelectedModules();
 	it = selMods.begin();
 	for (; it != selMods.end(); ++it)
 		strlist2.push_back(toqstr(*it));
 	selected_model_.setStringList(strlist2);
 
-	updateParams(controller().params());
+	updateParams(bp_);
 }
 
-void GuiDocumentDialog::useClassDefaults()
+void GuiDocument::useClassDefaults()
 {
-	BufferParams & params = controller().params();
-
-	params.setJustBaseClass(latexModule->classCO->currentIndex());
-	params.useClassDefaults();
+	bp_.setJustBaseClass(latexModule->classCO->currentIndex());
+	bp_.useClassDefaults();
 	updateContents();
 }
 
 
-bool GuiDocumentDialog::isValid()
+bool GuiDocument::isValid()
 {
 	return validate_listings_params().empty();
 }
+
+
+char const * const GuiDocument::fontfamilies[5] = {
+	"default", "rmdefault", "sfdefault", "ttdefault", ""
+};
+
+
+char const * GuiDocument::fontfamilies_gui[5] = {
+	N_("Default"), N_("Roman"), N_("Sans Serif"), N_("Typewriter"), ""
+};
+
+
+bool GuiDocument::initialiseParams(string const &)
+{
+	bp_ = buffer().params();
+	loadModuleNames();
+	return true;
+}
+
+
+void GuiDocument::clearParams()
+{
+	bp_ = BufferParams();
+}
+
+
+BufferId GuiDocument::id() const
+{
+	return &buffer();
+}
+
+
+vector<string> GuiDocument::getModuleNames()
+{
+	return moduleNames_;
+}
+
+
+vector<string> const & GuiDocument::getSelectedModules()
+{
+	return params().getModules();
+}
+
+
+string GuiDocument::getModuleDescription(string const & modName) const
+{
+	LyXModule const * const mod = moduleList[modName];
+	if (!mod)
+		return string("Module unavailable!");
+	return mod->description;
+}
+
+
+vector<string>
+GuiDocument::getPackageList(string const & modName) const
+{
+	LyXModule const * const mod = moduleList[modName];
+	if (!mod)
+		return vector<string>(); //empty such thing
+	return mod->packageList;
+}
+
+
+TextClass const & GuiDocument::textClass() const
+{
+	return textclasslist[bp_.getBaseClass()];
+}
+
+
+static void dispatch_bufferparams(Controller const & controller,
+	BufferParams const & bp, kb_action lfun)
+{
+	ostringstream ss;
+	ss << "\\begin_header\n";
+	bp.writeFile(ss);
+	ss << "\\end_header\n";
+	controller.dispatch(FuncRequest(lfun, ss.str()));
+}
+
+
+void GuiDocument::dispatchParams()
+{
+	// This must come first so that a language change is correctly noticed
+	setLanguage();
+
+	// Apply the BufferParams. Note that this will set the base class
+	// and then update the buffer's layout.
+	//FIXME Could this be done last? Then, I think, we'd get the automatic
+	//update mentioned in the next FIXME...
+	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY);
+
+	// Generate the colours requested by each new branch.
+	BranchList & branchlist = params().branchlist();
+	if (!branchlist.empty()) {
+		BranchList::const_iterator it = branchlist.begin();
+		BranchList::const_iterator const end = branchlist.end();
+		for (; it != end; ++it) {
+			docstring const & current_branch = it->getBranch();
+			Branch const * branch = branchlist.find(current_branch);
+			string const x11hexname =
+					lyx::X11hexname(branch->getColor());
+			// display the new color
+			docstring const str = current_branch + ' ' + from_ascii(x11hexname);
+			dispatch(FuncRequest(LFUN_SET_COLOR, str));
+		}
+
+		// Open insets of selected branches, close deselected ones
+		dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE,
+			"assign branch"));
+	}
+	// FIXME: If we used an LFUN, we would not need those two lines:
+	bufferview()->update();
+	lyxview().currentWorkArea()->redraw();
+}
+
+
+void GuiDocument::setLanguage() const
+{
+	Language const * const newL = bp_.language;
+	if (buffer().params().language == newL)
+		return;
+
+	string const & lang_name = newL->lang();
+	dispatch(FuncRequest(LFUN_BUFFER_LANGUAGE, lang_name));
+}
+
+
+void GuiDocument::saveAsDefault() const
+{
+	dispatch_bufferparams(*this, params(), LFUN_BUFFER_SAVE_AS_DEFAULT);
+}
+
+
+bool GuiDocument::isFontAvailable(string const & font) const
+{
+	if (font == "default" || font == "cmr"
+	    || font == "cmss" || font == "cmtt")
+		// these are standard
+		return true;
+	if (font == "lmodern" || font == "lmss" || font == "lmtt")
+		return LaTeXFeatures::isAvailable("lmodern");
+	if (font == "times" || font == "palatino"
+		 || font == "helvet" || font == "courier")
+		return LaTeXFeatures::isAvailable("psnfss");
+	if (font == "cmbr" || font == "cmtl")
+		return LaTeXFeatures::isAvailable("cmbright");
+	if (font == "utopia")
+		return LaTeXFeatures::isAvailable("utopia")
+			|| LaTeXFeatures::isAvailable("fourier");
+	if (font == "beraserif" || font == "berasans"
+		|| font == "beramono")
+		return LaTeXFeatures::isAvailable("bera");
+	return LaTeXFeatures::isAvailable(font);
+}
+
+
+bool GuiDocument::providesOSF(string const & font) const
+{
+	if (font == "cmr")
+		return isFontAvailable("eco");
+	if (font == "palatino")
+		return isFontAvailable("mathpazo");
+	return false;
+}
+
+
+bool GuiDocument::providesSC(string const & font) const
+{
+	if (font == "palatino")
+		return isFontAvailable("mathpazo");
+	if (font == "utopia")
+		return isFontAvailable("fourier");
+	return false;
+}
+
+
+bool GuiDocument::providesScale(string const & font) const
+{
+	return font == "helvet" || font == "luximono"
+		|| font == "berasans"  || font == "beramono";
+}
+
+
+void GuiDocument::loadModuleNames ()
+{
+	moduleNames_.clear();
+	LyXModuleList::const_iterator it = moduleList.begin();
+	for (; it != moduleList.end(); ++it)
+		moduleNames_.push_back(it->name);
+	if (!moduleNames_.empty())
+		sort(moduleNames_.begin(), moduleNames_.end());
+}
+
+
+Dialog * createGuiDocument(LyXView & lv) { return new GuiDocument(lv); }
 
 
 } // namespace frontend

@@ -11,7 +11,6 @@ SOURCEFILES = \
 	ButtonPolicy.cpp \
 	ControlCommand.cpp \
 	ControlCommandBuffer.cpp \
-	ControlDocument.cpp \
 	ControlExternal.cpp \
 	ControlMath.cpp \
 	ControlParagraph.cpp \
@@ -22,7 +21,6 @@ HEADERFILES = \
 	ButtonPolicy.h \
 	ControlCommand.h \
 	ControlCommandBuffer.h \
-	ControlDocument.h \
 	ControlExternal.h \
 	ControlMath.h \
 	ControlParagraph.h \

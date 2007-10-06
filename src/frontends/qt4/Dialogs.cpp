@@ -18,7 +18,6 @@
 #include "DockView.h"
 #include "GuiBibitem.h"
 #include "GuiDelimiter.h"
-#include "GuiDocument.h"
 #include "GuiExternal.h"
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
@@ -148,7 +147,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "citation")
 		return createGuiCitation(lyxview_);
 	if (name == "document")
-		return new GuiDocumentDialog(lyxview_);
+		return createGuiDocument(lyxview_);
 	if (name == "embedding")
 		return createGuiEmbeddedFiles(lyxview_);
 	if (name == "errorlist")
