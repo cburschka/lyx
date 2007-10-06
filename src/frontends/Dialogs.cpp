@@ -194,7 +194,7 @@ void Dialogs::checkStatus()
 
 	for(; it != end; ++it) {
 		Dialog * const dialog = it->second.get();
-		if (dialog->isVisibleView())
+		if (dialog && dialog->isVisibleView())
 			dialog->checkStatus();
 	}
 }

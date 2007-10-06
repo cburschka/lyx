@@ -20,7 +20,6 @@ SOURCEFILES = \
 	ControlPrint.cpp \
 	ControlSearch.cpp \
 	ControlSendto.cpp \
-	ControlSpellchecker.cpp \
 	ControlThesaurus.cpp \
 	ControlToc.cpp \
 	frontend_helpers.cpp 
@@ -38,7 +37,6 @@ HEADERFILES = \
 	ControlPrint.h \
 	ControlSearch.h \
 	ControlSendto.h \
-	ControlSpellchecker.h \
 	ControlThesaurus.h \
 	ControlToc.h \
 	frontend_helpers.h

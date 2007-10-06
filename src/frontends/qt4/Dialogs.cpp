@@ -30,7 +30,6 @@
 #include "GuiSearch.h"
 #include "GuiSendto.h"
 #include "GuiShowFile.h"
-#include "GuiSpellchecker.h"
 #include "GuiToc.h"
 #include "GuiView.h"
 #include "TocWidget.h"
@@ -141,110 +140,107 @@ Dialog * Dialogs::build(string const & name)
 {
 	BOOST_ASSERT(isValidName(name));
 
-	Dialog * dialog = 0;
 	GuiViewBase & guiview = static_cast<GuiViewBase &>(lyxview_);
 
-	if (name == "aboutlyx") {
-		dialog = createGuiAbout(lyxview_);
-	} else if (name == "bibitem") {
-		dialog = new GuiBibitemDialog(lyxview_);
-	} else if (name == "bibtex") {
-		dialog = createGuiBibtex(lyxview_);
-	} else if (name == "box") {
-		dialog = createGuiBox(lyxview_);
-	} else if (name == "branch") {
-		dialog = createGuiBranch(lyxview_);
-	} else if (name == "changes") {
-		dialog = createGuiChanges(lyxview_);
-	} else if (name == "character") {
-		dialog = createGuiCharacter(lyxview_);
-	} else if (name == "citation") {
-		dialog = createGuiCitation(lyxview_);
-	} else if (name == "document") {
-		dialog = new GuiDocumentDialog(lyxview_);
-	} else if (name == "embedding") {
-		dialog = createGuiEmbeddedFiles(lyxview_);
-	} else if (name == "errorlist") {
-		dialog = createGuiErrorList(lyxview_);
-	} else if (name == "ert") {
-		dialog = createGuiERT(lyxview_);
-	} else if (name == "external") {
-		dialog = new GuiExternalDialog(lyxview_);
-	} else if (name == "file") {
-		dialog = createGuiShowFile(lyxview_);
-	} else if (name == "findreplace") {
-		dialog = new GuiSearchDialog(lyxview_);
-	} else if (name == "float") {
-		dialog = createGuiFloat(lyxview_);
-	} else if (name == "graphics") {
-		dialog = new GuiGraphicsDialog(lyxview_);
-	} else if (name == "include") {
-		dialog = createGuiInclude(lyxview_);
-	} else if (name == "index") {
-		dialog = new GuiIndexDialog(lyxview_);
-	} else if (name == "nomenclature") {
-		dialog = new GuiNomenclDialog(lyxview_);
-	} else if (name == "label") {
-		dialog = new GuiLabelDialog(lyxview_);
-	} else if (name == "log") {
-		dialog = createGuiLog(lyxview_);
-	} else if (name == "view-source") {
-		dialog = createGuiViewSource(lyxview_);
-	} else if (name == "mathdelimiter") {
-		dialog = new GuiDelimiterDialog(lyxview_);
-	} else if (name == "mathmatrix") {
-		dialog = new GuiMathMatrixDialog(lyxview_);
-	} else if (name == "note") {
-		dialog = createGuiNote(lyxview_);
-	} else if (name == "paragraph") {
+	if (name == "aboutlyx")
+		return createGuiAbout(lyxview_);
+	if (name == "bibitem")
+		return new GuiBibitemDialog(lyxview_);
+	if (name == "bibtex")
+		return createGuiBibtex(lyxview_);
+	if (name == "box")
+		return createGuiBox(lyxview_);
+	if (name == "branch")
+		return createGuiBranch(lyxview_);
+	if (name == "changes")
+		return createGuiChanges(lyxview_);
+	if (name == "character")
+		return createGuiCharacter(lyxview_);
+	if (name == "citation")
+		return createGuiCitation(lyxview_);
+	if (name == "document")
+		return new GuiDocumentDialog(lyxview_);
+	if (name == "embedding")
+		return createGuiEmbeddedFiles(lyxview_);
+	if (name == "errorlist")
+		return createGuiErrorList(lyxview_);
+	if (name == "ert")
+		return createGuiERT(lyxview_);
+	if (name == "external")
+		return new GuiExternalDialog(lyxview_);
+	if (name == "file")
+		return createGuiShowFile(lyxview_);
+	if (name == "findreplace")
+		return new GuiSearchDialog(lyxview_);
+	if (name == "float")
+		return createGuiFloat(lyxview_);
+	if (name == "graphics")
+		return new GuiGraphicsDialog(lyxview_);
+	if (name == "include")
+		return createGuiInclude(lyxview_);
+	if (name == "index")
+		return new GuiIndexDialog(lyxview_);
+	if (name == "nomenclature")
+		return new GuiNomenclDialog(lyxview_);
+	if (name == "label")
+		return new GuiLabelDialog(lyxview_);
+	if (name == "log")
+		return createGuiLog(lyxview_);
+	if (name == "view-source")
+		return createGuiViewSource(lyxview_);
+	if (name == "mathdelimiter")
+		return new GuiDelimiterDialog(lyxview_);
+	if (name == "mathmatrix")
+		return new GuiMathMatrixDialog(lyxview_);
+	if (name == "note")
+		return createGuiNote(lyxview_);
+	if (name == "paragraph") {
 #ifdef USE_DOCK_WIDGET
-		DockView<ControlParagraph, GuiParagraph> * dv =
-			new DockView<ControlParagraph, GuiParagraph>(guiview, name,
-				Qt::TopDockWidgetArea);
+		return new DockView<ControlParagraph, GuiParagraph>(guiview, name,
+			Qt::TopDockWidgetArea);
 #else
-		DialogView<ControlParagraph, GuiParagraph> * dv =
-			new DialogView<ControlParagraph, GuiParagraph>(guiview, name);
+		return new DialogView<ControlParagraph, GuiParagraph>(guiview, name);
 #endif
-		dialog = dv;
-	} else if (name == "prefs") {
-		dialog = new GuiPrefsDialog(lyxview_);
-	} else if (name == "print") {
-		dialog = new GuiPrintDialog(lyxview_);
-	} else if (name == "ref") {
-		dialog = createGuiRef(lyxview_);
-	} else if (name == "sendto") {
-		dialog = new GuiSendtoDialog(lyxview_);
-	} else if (name == "spellchecker") {
-		dialog = new GuiSpellcheckerDialog(lyxview_);
-	} else if (name == "tabular") {
-		dialog = createGuiTabular(lyxview_);
-	} else if (name == "tabularcreate") {
-		dialog = createGuiTabularCreate(lyxview_);
-	} else if (name == "texinfo") {
-		dialog = createGuiTexInfo(lyxview_);
+	}
+	if (name == "prefs")
+		return new GuiPrefsDialog(lyxview_);
+	if (name == "print")
+		return new GuiPrintDialog(lyxview_);
+	if (name == "ref")
+		return createGuiRef(lyxview_);
+	if (name == "sendto")
+		return new GuiSendtoDialog(lyxview_);
+	if (name == "spellchecker")
+		return createGuiSpellchecker(lyxview_);
+	if (name == "tabular")
+		return createGuiTabular(lyxview_);
+	if (name == "tabularcreate")
+		return createGuiTabularCreate(lyxview_);
+	if (name == "texinfo")
+		return createGuiTexInfo(lyxview_);
 #ifdef HAVE_LIBAIKSAURUS
-	} else if (name == "thesaurus") {
-		dialog = new GuiThesaurusDialog(lyxview_);
+	if (name == "thesaurus")
+		return new GuiThesaurusDialog(lyxview_);
 #endif
-	} else if (name == "toc") {
+	if (name == "toc") {
 #ifdef Q_WS_MACX
 		// On Mac show as a drawer at the right
-		dialog = new DockView<GuiToc, TocWidget>(guiview, name,
+		return new DockView<GuiToc, TocWidget>(guiview, name,
 			Qt::RightDockWidgetArea, Qt::Drawer);
 #else
-		dialog = new DockView<GuiToc, TocWidget>(guiview, name);
+		return new DockView<GuiToc, TocWidget>(guiview, name);
 #endif
-	} else if (name == "url") {
-		dialog = new GuiURLDialog(lyxview_);
-	} else if (name == "vspace") {
-		dialog = createGuiVSpace(lyxview_);
-	} else if (name == "wrap") {
-		dialog = createGuiWrap(lyxview_);
-	} else if (name == "listings") {
-		dialog = createGuiListings(lyxview_);
 	}
+	if (name == "url")
+		return new GuiURLDialog(lyxview_);
+	if (name == "vspace")
+		return createGuiVSpace(lyxview_);
+	if (name == "wrap")
+		return createGuiWrap(lyxview_);
+	if (name == "listings")
+		return createGuiListings(lyxview_);
 
-	return dialog;
+	return 0;
 }
 
 
