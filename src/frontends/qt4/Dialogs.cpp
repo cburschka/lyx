@@ -43,7 +43,6 @@
 #include "GuiSpellchecker.h"
 #include "GuiTabular.h"
 #include "GuiTabularCreate.h"
-#include "GuiTexinfo.h"
 #include "GuiToc.h"
 #include "GuiView.h"
 #include "GuiViewSource.h"
@@ -135,7 +134,7 @@ Dialog * createGuiShowFile(LyXView & lv);
 Dialog * createGuiSpellchecker(LyXView & lv);
 Dialog * createGuiTabularCreate(LyXView & lv);
 Dialog * createGuiTabular(LyXView & lv);
-Dialog * createGuiTexinfo(LyXView & lv);
+Dialog * createGuiTexInfo(LyXView & lv);
 Dialog * createGuiThesaurus(LyXView & lv);
 Dialog * createGuiURL(LyXView & lv);
 Dialog * createGuiVSpace(LyXView & lv);
@@ -235,7 +234,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "tabularcreate") {
 		dialog = new GuiTabularCreateDialog(lyxview_);
 	} else if (name == "texinfo") {
-		dialog = new GuiTexinfoDialog(lyxview_);
+		dialog = createGuiTexInfo(lyxview_);
 #ifdef HAVE_LIBAIKSAURUS
 	} else if (name == "thesaurus") {
 		dialog = new GuiThesaurusDialog(lyxview_);

@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
+ * \author Herbert Voß
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,39 +13,92 @@
 
 #include "GuiTexinfo.h"
 
-#include "ControlTexinfo.h"
-#include "qt_helpers.h"
+#include "FuncRequest.h"
+#include "debug.h"
 
 #include "support/filetools.h"
+#include "support/FileName.h"
+#include "support/lstrings.h"
+
+#include "qt_helpers.h"
 
 #include <QCloseEvent>
 #include <QCheckBox>
 #include <QListWidget>
 #include <QPushButton>
 
+#include <fstream>
 #include <algorithm>
 
 using std::string;
 using std::vector;
-
+using std::endl;
 
 namespace lyx {
 namespace frontend {
 
-GuiTexinfoDialog::GuiTexinfoDialog(LyXView & lv)
-	: GuiDialog(lv, "texinfo")
+using support::FileName;
+using support::contains;
+using support::split;
+using support::token;
+using support::getExtension;
+using support::libFileSearch;
+using support::onlyFilename;
+
+static string texFileFromList(string const & file, string const & type)
+{
+	string file_ = file;
+	// do we need to add the suffix?
+	if (!(getExtension(file) == type))
+		file_ += '.' + type;
+
+	lyxerr << "Searching for file " << file_ << endl;
+
+	string lstfile = type + "Files.lst";
+	if (type == "cls")
+		lstfile = "clsFiles.lst";
+	else if (type == "sty")
+		lstfile = "styFiles.lst";
+	else if (type == "bst")
+		lstfile = "bstFiles.lst";
+	else if (type == "bib")
+		lstfile = "bibFiles.lst";
+	FileName const abslstfile = libFileSearch(string(), lstfile);
+	if (abslstfile.empty()) {
+		lyxerr << "File `'" << lstfile << "' not found." << endl;
+		return string();
+	}
+	string const allClasses = getFileContents(abslstfile);
+	int entries = 0;
+	string classfile = token(allClasses, '\n', entries);
+	int count = 0;
+	while ((!contains(classfile, file) ||
+		(onlyFilename(classfile) != file)) &&
+		(++count < 1000)) {
+		classfile = token(allClasses, '\n', ++entries);
+	}
+
+	// now we have filename with full path
+	lyxerr << "with full path: " << classfile << endl;
+
+	return classfile;
+}
+
+
+GuiTexInfo::GuiTexInfo(LyXView & lv)
+	: GuiDialog(lv, "texinfo"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("TeX Information"));
-	setController(new ControlTexinfo(*this));
+	setController(this, false);
 
 	warningPosted = false;
-	activeStyle = ControlTexinfo::cls;
+	activeStyle = ClsType;
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(viewPB, SIGNAL(clicked()), this, SLOT(viewClicked()));
-	connect(whatStyleCO, SIGNAL(activated(const QString &)),
+	connect(whatStyleCO, SIGNAL(activated(QString)),
 		this, SLOT(enableViewPB()));
 	connect(whatStyleCO, SIGNAL(activated(int)), this, SLOT(updateView()));
 	connect(pathCB, SIGNAL(stateChanged(int)), this, SLOT(updateView()));
@@ -55,33 +109,27 @@ GuiTexinfoDialog::GuiTexinfoDialog(LyXView & lv)
 	connect(fileListLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(enableViewPB()));
 
-	updateStyles(ControlTexinfo::cls);
+	updateStyles(ClsType);
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	bc().setCancel(closePB);
 }
 
 
-ControlTexinfo & GuiTexinfoDialog::controller()
-{
-	return static_cast<ControlTexinfo &>(GuiDialog::controller());
-}
-
-
-void GuiTexinfoDialog::change_adaptor()
+void GuiTexInfo::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiTexinfoDialog::closeEvent(QCloseEvent * e)
+void GuiTexInfo::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiTexinfoDialog::rescanClicked()
+void GuiTexInfo::rescanClicked()
 {
 	// build new *Files.lst
 	rescanTexStyles();
@@ -90,60 +138,38 @@ void GuiTexinfoDialog::rescanClicked()
 }
 
 
-void GuiTexinfoDialog::viewClicked()
+void GuiTexInfo::viewClicked()
 {
 	size_t const fitem = fileListLW->currentRow();
 	vector<string> const & data = texdata_[activeStyle];
 	string file = data[fitem];
 	if (!pathCB->isChecked())
-		file = getTexFileFromList(data[fitem],
-			controller().getFileType(activeStyle));
-	controller().viewFile(file);
+		file = texFileFromList(data[fitem], fileType(activeStyle));
+	viewFile(file);
 }
 
 
-void GuiTexinfoDialog::updateView()
+void GuiTexInfo::updateView()
 {
-	switch (whatStyleCO->currentIndex()) {
-		case 0:
-			updateStyles(ControlTexinfo::cls);
-			break;
-		case 1:
-			updateStyles(ControlTexinfo::sty);
-			break;
-		case 2:
-			updateStyles(ControlTexinfo::bst);
-			break;
-		default:
-			break;
-	}
-
+	// takes advantage of enum order
+	updateStyles(static_cast<TexFileType>(whatStyleCO->currentIndex()));
 	enableViewPB();
 }
 
 
-void GuiTexinfoDialog::enableViewPB()
+void GuiTexInfo::enableViewPB()
 {
 	viewPB->setEnabled(fileListLW->currentRow() > -1);
 }
 
 
-void GuiTexinfoDialog::updateStyles(ControlTexinfo::texFileSuffix type)
+void GuiTexInfo::updateStyles(TexFileType type)
 {
 	ContentsType & data = texdata_[type];
 
-	string filename;
-	switch (type) {
-	case ControlTexinfo::bst:
-		filename = "bstFiles.lst";
-		break;
-	case ControlTexinfo::cls:
-		filename = "clsFiles.lst";
-		break;
-	case ControlTexinfo::sty:
-		filename = "styFiles.lst";
-		break;
-	}
+	static string filenames[] = { "clsFile.lst", "styFiles.lst", "bstFiles.lst" };
+	string filename = filenames[type];
+
 	getTexFileList(filename, data);
 	if (data.empty()) {
 		// build filelists of all availabe bst/cls/sty-files.
@@ -173,10 +199,50 @@ void GuiTexinfoDialog::updateStyles(ControlTexinfo::texFileSuffix type)
 }
 
 
-void GuiTexinfoDialog::updateStyles()
+void GuiTexInfo::updateStyles()
 {
 	updateStyles(activeStyle);
 }
+
+
+void GuiTexInfo::viewFile(string const & filename) const
+{
+	dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + filename));
+}
+
+
+/// get a class with full path from the list
+string GuiTexInfo::classOptions(string const & classname) const
+{
+	FileName const filename(texFileFromList(classname, "cls"));
+	if (filename.empty())
+		return string();
+	string optionList;
+	std::ifstream is(filename.toFilesystemEncoding().c_str());
+	while (is) {
+		string s;
+		is >> s;
+		if (contains(s, "DeclareOption")) {
+			s = s.substr(s.find("DeclareOption"));
+			s = split(s, '{');		// cut front
+			s = token(s, '}', 0);		// cut end
+			optionList += (s + '\n');
+		}
+	}
+	return optionList;
+}
+
+
+string GuiTexInfo::fileType(TexFileType type) const
+{
+	// takes advantage of enum order
+	static string const ext[] = { "cls", "sty", "bst" };
+	return ext[type];
+}
+
+
+Dialog * createGuiTexInfo(LyXView & lv) { return new GuiTexInfo(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
