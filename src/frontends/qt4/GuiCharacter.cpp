@@ -3,6 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Angus Leeming
  * \author Edwin Leuven
  * \author John Levon
  *
@@ -13,14 +14,20 @@
 
 #include "GuiCharacter.h"
 
-#include "ControlCharacter.h"
 #include "qt_helpers.h"
 #include "Color.h"
 #include "Font.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "FuncRequest.h"
+#include "Language.h"
+#include "Color.h"
 
 #include <QCloseEvent>
 
 using std::vector;
+using std::string;
+
 
 namespace lyx {
 namespace frontend {
@@ -265,11 +272,12 @@ static vector<FamilyPair> const getFamilyData()
 }
 
 
-GuiCharacterDialog::GuiCharacterDialog(LyXView & lv)
-	: GuiDialog(lv, "character")
+GuiCharacter::GuiCharacter(LyXView & lv)
+	: GuiDialog(lv, "character"), Controller(this), font_(Font::ALL_IGNORE),
+	  toggleall_(false), reset_lang_(false)
 {
 	setupUi(this);
-	setController(new ControlCharacter(*this));
+	setController(this, false);
 	setViewTitle(_("Text Style"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
@@ -346,13 +354,7 @@ GuiCharacterDialog::GuiCharacterDialog(LyXView & lv)
 }
 
 
-ControlCharacter & GuiCharacterDialog::controller()
-{
-	return static_cast<ControlCharacter &>(GuiDialog::controller());
-}
-
-
-void GuiCharacterDialog::change_adaptor()
+void GuiCharacter::change_adaptor()
 {
 	changed();
 
@@ -374,7 +376,7 @@ void GuiCharacterDialog::change_adaptor()
 }
 
 
-void GuiCharacterDialog::closeEvent(QCloseEvent * e)
+void GuiCharacter::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	GuiDialog::closeEvent(e);
@@ -395,36 +397,220 @@ static int findPos2nd(vector<std::pair<A, B> > const & vec, B const & val)
 }
 
 
-void GuiCharacterDialog::updateContents()
+void GuiCharacter::updateContents()
 {
-	ControlCharacter const & ctrl = controller();
+	familyCO->setCurrentIndex(findPos2nd(family, getFamily()));
+	seriesCO->setCurrentIndex(findPos2nd(series, getSeries()));
+	shapeCO->setCurrentIndex(findPos2nd(shape, getShape()));
+	sizeCO->setCurrentIndex(findPos2nd(size, getSize()));
+	miscCO->setCurrentIndex(findPos2nd(bar, getBar()));
+	colorCO->setCurrentIndex(findPos2nd(color, getColor()));
+	langCO->setCurrentIndex(findPos2nd(language, getLanguage()));
 
-	familyCO->setCurrentIndex(findPos2nd(family, ctrl.getFamily()));
-	seriesCO->setCurrentIndex(findPos2nd(series, ctrl.getSeries()));
-	shapeCO->setCurrentIndex(findPos2nd(shape, ctrl.getShape()));
-	sizeCO->setCurrentIndex(findPos2nd(size, ctrl.getSize()));
-	miscCO->setCurrentIndex(findPos2nd(bar, ctrl.getBar()));
-	colorCO->setCurrentIndex(findPos2nd(color, ctrl.getColor()));
-	langCO->setCurrentIndex(findPos2nd(language, ctrl.getLanguage()));
-
-	toggleallCB->setChecked(ctrl.getToggleAll());
+	toggleallCB->setChecked(getToggleAll());
 }
 
 
-void GuiCharacterDialog::applyView()
+void GuiCharacter::applyView()
 {
-	ControlCharacter & ctrl = controller();
+	setFamily(family[familyCO->currentIndex()].second);
+	setSeries(series[seriesCO->currentIndex()].second);
+	setShape(shape[shapeCO->currentIndex()].second);
+	setSize(size[sizeCO->currentIndex()].second);
+	setBar(bar[miscCO->currentIndex()].second);
+	setColor(color[colorCO->currentIndex()].second);
+	setLanguage(language[langCO->currentIndex()].second);
 
-	ctrl.setFamily(family[familyCO->currentIndex()].second);
-	ctrl.setSeries(series[seriesCO->currentIndex()].second);
-	ctrl.setShape(shape[shapeCO->currentIndex()].second);
-	ctrl.setSize(size[sizeCO->currentIndex()].second);
-	ctrl.setBar(bar[miscCO->currentIndex()].second);
-	ctrl.setColor(color[colorCO->currentIndex()].second);
-	ctrl.setLanguage(language[langCO->currentIndex()].second);
-
-	ctrl.setToggleAll(toggleallCB->isChecked());
+	setToggleAll(toggleallCB->isChecked());
 }
+
+
+bool GuiCharacter::initialiseParams(string const &)
+{
+	// so that the user can press Ok
+	if (getFamily()    != Font::IGNORE_FAMILY
+	    || getSeries() != Font::IGNORE_SERIES
+	    || getShape()  != Font::IGNORE_SHAPE
+	    || getSize()   != Font::IGNORE_SIZE
+	    || getBar()    != IGNORE
+	    || getColor()  != Color::ignore
+	    || font_.language() != ignore_language)
+		dialog().setButtonsValid(true);
+
+	return true;
+}
+
+
+void GuiCharacter::dispatchParams()
+{
+	dispatch(FuncRequest(getLfun(), font_.toString(toggleall_)));
+}
+
+
+Font::FONT_FAMILY GuiCharacter::getFamily() const
+{
+	return font_.family();
+}
+
+
+void GuiCharacter::setFamily(Font::FONT_FAMILY val)
+{
+	font_.setFamily(val);
+}
+
+
+Font::FONT_SERIES GuiCharacter::getSeries() const
+{
+	return font_.series();
+}
+
+
+void GuiCharacter::setSeries(Font::FONT_SERIES val)
+{
+	font_.setSeries(val);
+}
+
+
+Font::FONT_SHAPE GuiCharacter::getShape() const
+{
+	return font_.shape();
+}
+
+
+void GuiCharacter::setShape(Font::FONT_SHAPE val)
+{
+	font_.setShape(val);
+}
+
+
+Font::FONT_SIZE GuiCharacter::getSize() const
+{
+	return font_.size();
+}
+
+
+void GuiCharacter::setSize(Font::FONT_SIZE val)
+{
+	font_.setSize(val);
+}
+
+
+FontState GuiCharacter::getBar() const
+{
+	if (font_.emph() == Font::TOGGLE)
+		return EMPH_TOGGLE;
+
+	if (font_.underbar() == Font::TOGGLE)
+		return UNDERBAR_TOGGLE;
+
+	if (font_.noun() == Font::TOGGLE)
+		return NOUN_TOGGLE;
+
+	if (font_.emph() == Font::IGNORE
+	    && font_.underbar() == Font::IGNORE
+	    && font_.noun() == Font::IGNORE)
+		return IGNORE;
+
+	return INHERIT;
+}
+
+
+void GuiCharacter::setBar(FontState val)
+{
+	switch (val) {
+	case IGNORE:
+		font_.setEmph(Font::IGNORE);
+		font_.setUnderbar(Font::IGNORE);
+		font_.setNoun(Font::IGNORE);
+		break;
+
+	case EMPH_TOGGLE:
+		font_.setEmph(Font::TOGGLE);
+		break;
+
+	case UNDERBAR_TOGGLE:
+		font_.setUnderbar(Font::TOGGLE);
+		break;
+
+	case NOUN_TOGGLE:
+		font_.setNoun(Font::TOGGLE);
+		break;
+
+	case INHERIT:
+		font_.setEmph(Font::INHERIT);
+		font_.setUnderbar(Font::INHERIT);
+		font_.setNoun(Font::INHERIT);
+		break;
+	}
+}
+
+
+Color_color GuiCharacter::getColor() const
+{
+	return font_.color();
+}
+
+
+void GuiCharacter::setColor(Color_color val)
+{
+	switch (val) {
+	case Color::ignore:
+	case Color::none:
+	case Color::black:
+	case Color::white:
+	case Color::red:
+	case Color::green:
+	case Color::blue:
+	case Color::cyan:
+	case Color::magenta:
+	case Color::yellow:
+	case Color::inherit:
+		font_.setColor(val);
+		break;
+	default:
+		break;
+	}
+}
+
+
+string GuiCharacter::getLanguage() const
+{
+	if (reset_lang_)
+		return "reset";
+	if (font_.language())
+		return font_.language()->lang();
+	return "ignore";
+}
+
+
+void GuiCharacter::setLanguage(string const & val)
+{
+	if (val == "ignore")
+		font_.setLanguage(ignore_language);
+	else if (val == "reset") {
+		reset_lang_ = true;
+		// Ignored in getLanguage, but needed for dispatchParams
+		font_.setLanguage(buffer().params().language);
+	} else {
+		font_.setLanguage(languages.getLanguage(val));
+	}
+}
+
+
+bool GuiCharacter::getToggleAll() const
+{
+	return toggleall_;
+}
+
+
+void GuiCharacter::setToggleAll(bool t)
+{
+	toggleall_ = t;
+}
+
+
+Dialog * createGuiCharacter(LyXView & lv) { return new GuiCharacter(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

@@ -9,7 +9,6 @@ noinst_LTLIBRARIES = liblyxcontrollers.la
 SOURCEFILES = \
 	Dialog.cpp \
 	ButtonPolicy.cpp \
-	ControlCharacter.cpp \
 	ControlCitation.cpp \
 	ControlCommand.cpp \
 	ControlCommandBuffer.cpp \
@@ -34,7 +33,6 @@ SOURCEFILES = \
 
 HEADERFILES = \
 	ButtonPolicy.h \
-	ControlCharacter.h \
 	ControlCitation.h \
 	ControlCommand.h \
 	ControlCommandBuffer.h \
