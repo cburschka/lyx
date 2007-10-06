@@ -20,7 +20,6 @@
 #include "GuiDelimiter.h"
 #include "GuiDocument.h"
 #include "GuiExternal.h"
-#include "GuiGraphics.h"
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
 #include "GuiNomencl.h"
@@ -165,7 +164,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "float")
 		return createGuiFloat(lyxview_);
 	if (name == "graphics")
-		return new GuiGraphicsDialog(lyxview_);
+		return createGuiGraphics(lyxview_);
 	if (name == "include")
 		return createGuiInclude(lyxview_);
 	if (name == "index")

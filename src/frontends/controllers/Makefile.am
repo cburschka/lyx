@@ -13,7 +13,6 @@ SOURCEFILES = \
 	ControlCommandBuffer.cpp \
 	ControlDocument.cpp \
 	ControlExternal.cpp \
-	ControlGraphics.cpp \
 	ControlMath.cpp \
 	ControlParagraph.cpp \
 	ControlPrefs.cpp \
@@ -25,7 +24,6 @@ HEADERFILES = \
 	ControlCommandBuffer.h \
 	ControlDocument.h \
 	ControlExternal.h \
-	ControlGraphics.h \
 	ControlMath.h \
 	ControlParagraph.h \
 	ControlPrefs.h \

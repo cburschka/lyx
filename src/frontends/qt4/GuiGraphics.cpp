@@ -3,6 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Angus Leeming
  * \author John Levon
  * \author Edwin Leuven
  * \author Herbert Voﬂ
@@ -15,22 +16,35 @@
 
 #include "GuiGraphics.h"
 
-#include "ControlGraphics.h"
+#include "GuiGraphics.h"
 #include "debug.h"
 #include "LengthCombo.h"
 #include "lengthcommon.h"
 #include "LyXRC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
+#include "frontend_helpers.h"
+
+#include "FuncRequest.h"
+#include "gettext.h"
+
+#include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsImage.h"
 
 #include "insets/InsetGraphicsParams.h"
 
 #include "support/convert.h"
+#include "support/FileFilterList.h"
+#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
+#include "support/Package.h"
+#include "support/types.h"
 
 #include <boost/bind.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -43,23 +57,32 @@
 #include <cmath>
 #include <utility>
 
-using lyx::support::float_equal;
-using lyx::support::token;
-
-using lyx::support::os::internal_path;
-
-using std::find;
-
 #ifndef CXX_GLOBAL_CSTD
 using std::floor;
 #endif
-
+using std::find;
 using std::vector;
 using std::string;
 using std::transform;
+using std::make_pair;
+using std::pair;
+using std::vector;
+
+namespace fs = boost::filesystem;
 
 namespace lyx {
 namespace frontend {
+
+using support::addName;
+using support::FileFilterList;
+using support::FileName;
+using support::float_equal;
+using support::isFileReadable;
+using support::makeAbsPath;
+using support::os::internal_path;
+using support::package;
+using support::readBB_from_PSFile;
+using support::token;
 
 
 //FIXME setAutoTextCB should really take an argument, as indicated, that
@@ -111,12 +134,12 @@ getSecond(vector<Pair> const & pr)
 	 return tmp;
 }
 
-GuiGraphicsDialog::GuiGraphicsDialog(LyXView & lv)
-	: GuiDialog(lv, "graphics")
+GuiGraphics::GuiGraphics(LyXView & lv)
+	: GuiDialog(lv, "graphics"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("Graphics"));
-	setController(new ControlGraphics(*this));
+	setController(this, false);
 
 	//main buttons
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
@@ -253,38 +276,30 @@ GuiGraphicsDialog::GuiGraphicsDialog(LyXView & lv)
 }
 
 
-ControlGraphics & GuiGraphicsDialog::controller()
-{
-	return static_cast<ControlGraphics &>(GuiDialog::controller());
-}
-
-
-void GuiGraphicsDialog::change_adaptor()
+void GuiGraphics::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiGraphicsDialog::change_bb()
+void GuiGraphics::change_bb()
 {
-	controller().bbChanged = true;
-	LYXERR(Debug::GRAPHICS)
-		<< "[controller().bb_Changed set to true]\n";
+	bbChanged = true;
+	LYXERR(Debug::GRAPHICS) << "[bb_Changed set to true]\n";
 	changed();
 }
 
 
-void GuiGraphicsDialog::closeEvent(QCloseEvent * e)
+void GuiGraphics::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	GuiDialog::closeEvent(e);
 }
 
 
-void GuiGraphicsDialog::on_browsePB_clicked()
+void GuiGraphics::on_browsePB_clicked()
 {
-	docstring const str =
-		controller().browse(qstring_to_ucs4(filename->text()));
+	docstring const str = browse(qstring_to_ucs4(filename->text()));
 	if (!str.empty()) {
 		filename->setText(toqstr(str));
 		embedCB->setCheckState(Qt::Unchecked);
@@ -293,25 +308,25 @@ void GuiGraphicsDialog::on_browsePB_clicked()
 }
 
 
-void GuiGraphicsDialog::on_getPB_clicked()
+void GuiGraphics::on_getPB_clicked()
 {
 	getBB();
 }
 
 
-void GuiGraphicsDialog::on_editPB_clicked()
+void GuiGraphics::on_editPB_clicked()
 {
-	controller().editGraphics();
+	editGraphics();
 }
 
 
-void GuiGraphicsDialog::on_filename_textChanged(const QString & filename)
+void GuiGraphics::on_filename_textChanged(const QString & filename)
 {
 	editPB->setDisabled(filename.isEmpty());
 }
 
 
-void GuiGraphicsDialog::setAutoText()
+void GuiGraphics::setAutoText()
 {
 	if (scaleCB->isChecked())
 		return;
@@ -323,7 +338,7 @@ void GuiGraphicsDialog::setAutoText()
 }
 
 
-void GuiGraphicsDialog::on_scaleCB_toggled(bool setScale)
+void GuiGraphics::on_scaleCB_toggled(bool setScale)
 {
 	Scale->setEnabled(setScale);
 	if (setScale) {
@@ -357,7 +372,7 @@ void GuiGraphicsDialog::on_scaleCB_toggled(bool setScale)
 }
 
 
-void GuiGraphicsDialog::on_WidthCB_toggled(bool setWidth)
+void GuiGraphics::on_WidthCB_toggled(bool setWidth)
 {
 	Width->setEnabled(setWidth);
 	widthUnit->setEnabled(setWidth);
@@ -382,7 +397,7 @@ void GuiGraphicsDialog::on_WidthCB_toggled(bool setWidth)
 }
 
 
-void GuiGraphicsDialog::on_HeightCB_toggled(bool setHeight)
+void GuiGraphics::on_HeightCB_toggled(bool setHeight)
 {
 	Height->setEnabled(setHeight);
 	heightUnit->setEnabled(setHeight);
@@ -407,7 +422,7 @@ void GuiGraphicsDialog::on_HeightCB_toggled(bool setHeight)
 }
 
 
-void GuiGraphicsDialog::on_angle_textChanged(const QString & filename)
+void GuiGraphics::on_angle_textChanged(const QString & filename)
 {
 	rotateOrderCB->setEnabled((WidthCB->isChecked() ||
 				 HeightCB->isChecked() ||
@@ -424,7 +439,7 @@ static int getItemNo(const vector<string> & v, string const & s)
 }
 
 
-void GuiGraphicsDialog::updateContents()
+void GuiGraphics::updateContents()
 {
 	// clear and fill in the comboboxes
 	vector<string> const bb_units = frontend::getBBUnits();
@@ -440,7 +455,7 @@ void GuiGraphicsDialog::updateContents()
 		rtYunit->addItem(toqstr(*it));
 	}
 
-	InsetGraphicsParams & igp = controller().params();
+	InsetGraphicsParams & igp = params_;
 
 	// set the right default unit
 	Length::UNIT unitDefault = Length::CM;
@@ -455,13 +470,13 @@ void GuiGraphicsDialog::updateContents()
 	}
 
 	string const name =
-		igp.filename.outputFilename(controller().bufferFilepath());
+		igp.filename.outputFilename(bufferFilepath());
 	filename->setText(toqstr(name));
     embedCB->setCheckState(igp.filename.embedded() ? Qt::Checked : Qt::Unchecked);
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
-		string const bb = controller().readBB(igp.filename.absFilename());
+		string const bb = readBB(igp.filename.absFilename());
 		// the values from the file always have the bigpoint-unit bp
 		lbX->setText(toqstr(token(bb, ' ', 0)));
 		lbY->setText(toqstr(token(bb, ' ', 1)));
@@ -471,14 +486,14 @@ void GuiGraphicsDialog::updateContents()
 		lbYunit->setCurrentIndex(0);
 		rtXunit->setCurrentIndex(0);
 		rtYunit->setCurrentIndex(0);
-		controller().bbChanged = false;
+		bbChanged = false;
 	} else {
 		// get the values from the inset
 		Length anyLength;
-		string const xl(token(igp.bb, ' ', 0));
-		string const yl(token(igp.bb, ' ', 1));
-		string const xr(token(igp.bb, ' ', 2));
-		string const yr(token(igp.bb, ' ', 3));
+		string const xl = token(igp.bb, ' ', 0);
+		string const yl = token(igp.bb, ' ', 1);
+		string const xr = token(igp.bb, ' ', 2);
+		string const yr = token(igp.bb, ' ', 3);
 		if (isValidLength(xl, &anyLength)) {
 			lbX->setText(toqstr(convert<string>(anyLength.value())));
 			string const unit(unit_name[anyLength.unit()]);
@@ -507,7 +522,7 @@ void GuiGraphicsDialog::updateContents()
 		} else {
 			rtY->setText(toqstr(xl));
 		}
-		controller().bbChanged = true;
+		bbChanged = true;
 	}
 
 	// Update the draft and clip mode
@@ -598,17 +613,17 @@ void GuiGraphicsDialog::updateContents()
 }
 
 
-void GuiGraphicsDialog::applyView()
+void GuiGraphics::applyView()
 {
-	InsetGraphicsParams & igp = controller().params();
+	InsetGraphicsParams & igp = params_;
 
 	igp.filename.set(internal_path(fromqstr(filename->text())),
-			 controller().bufferFilepath());
+			 bufferFilepath());
 	igp.filename.setEmbed(embedCB->checkState() == Qt::Checked);
 
 	// the bb section
 	igp.bb.erase();
-	if (controller().bbChanged) {
+	if (bbChanged) {
 		string bb;
 		string lbXs = fromqstr(lbX->text());
 		string lbYs = fromqstr(lbY->text());
@@ -695,11 +710,11 @@ void GuiGraphicsDialog::applyView()
 }
 
 
-void GuiGraphicsDialog::getBB()
+void GuiGraphics::getBB()
 {
 	string const fn = fromqstr(filename->text());
 	if (!fn.empty()) {
-		string const bb = controller().readBB(fn);
+		string const bb = readBB(fn);
 		if (!bb.empty()) {
 			lbX->setText(toqstr(token(bb, ' ', 0)));
 			lbY->setText(toqstr(token(bb, ' ', 1)));
@@ -712,18 +727,156 @@ void GuiGraphicsDialog::getBB()
 			rtXunit->setCurrentIndex(0);
 			rtYunit->setCurrentIndex(0);
 		}
-		controller().bbChanged = false;
+		bbChanged = false;
 	}
 }
 
 
-bool GuiGraphicsDialog::isValid()
+bool GuiGraphics::isValid()
 {
 	return !filename->text().isEmpty();
 }
 
+
+bool GuiGraphics::initialiseParams(string const & data)
+{
+	InsetGraphicsMailer::string2params(data, buffer(), params_);
+	return true;
+}
+
+
+void GuiGraphics::clearParams()
+{
+	params_ = InsetGraphicsParams();
+}
+
+
+void GuiGraphics::dispatchParams()
+{
+	InsetGraphicsParams tmp_params(params_);
+	string const lfun =
+		InsetGraphicsMailer::params2string(tmp_params, buffer());
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+
+docstring const GuiGraphics::browse(docstring const & in_name) const
+{
+	docstring const title = _("Select graphics file");
+
+	// Does user clipart directory exist?
+	string clipdir = addName(package().user_support().absFilename(), "clipart");
+	string const encoded_clipdir = FileName(clipdir).toFilesystemEncoding();
+	if (!(fs::exists(encoded_clipdir) && fs::is_directory(encoded_clipdir)))
+		// No - bail out to system clipart directory
+		clipdir = addName(package().system_support().absFilename(), "clipart");
+	pair<docstring, docstring> dir1(_("Clipart|#C#c"), from_utf8(clipdir));
+	pair<docstring, docstring> dir2(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+	// Show the file browser dialog
+	return browseRelFile(in_name, from_utf8(bufferFilepath()),
+		title, FileFilterList(), false, dir1, dir2);
+}
+
+
+string const GuiGraphics::readBB(string const & file)
+{
+	FileName const abs_file(makeAbsPath(file, bufferFilepath()));
+
+	// try to get it from the file, if possible. Zipped files are
+	// unzipped in the readBB_from_PSFile-Function
+	string const bb = readBB_from_PSFile(abs_file);
+	if (!bb.empty())
+		return bb;
+
+	// we don't, so ask the Graphics Cache if it has loaded the file
+	int width = 0;
+	int height = 0;
+
+	graphics::Cache & gc = graphics::Cache::get();
+	if (gc.inCache(abs_file)) {
+		graphics::Image const * image = gc.item(abs_file)->image();
+
+		if (image) {
+			width  = image->getWidth();
+			height = image->getHeight();
+		}
+	}
+
+	return ("0 0 " + convert<string>(width) + ' ' + convert<string>(height));
+}
+
+
+bool GuiGraphics::isFilenameValid(string const & fname) const
+{
+	// It may be that the filename is relative.
+	FileName const name(makeAbsPath(fname, bufferFilepath()));
+	return isFileReadable(name);
+}
+
+
+void GuiGraphics::editGraphics()
+{
+	dialog().applyView();
+	string const lfun =
+		InsetGraphicsMailer::params2string(params_, buffer());
+	dispatch(FuncRequest(LFUN_GRAPHICS_EDIT, lfun));
+}
+
+
+namespace {
+
+char const * const bb_units[] = { "bp", "cm", "mm", "in" };
+size_t const bb_size = sizeof(bb_units) / sizeof(char *);
+
+// These are the strings that are stored in the LyX file and which
+// correspond to the LaTeX identifiers shown in the comments at the
+// end of each line.
+char const * const rorigin_lyx_strs[] = {
+	// the LaTeX default is leftBaseline
+	"",
+	"leftTop",  "leftBottom", "leftBaseline", // lt lb lB
+	"center", "centerTop", "centerBottom", "centerBaseline", // c ct cb cB
+	"rightTop", "rightBottom", "rightBaseline" }; // rt rb rB
+
+// These are the strings, corresponding to the above, that the GUI should
+// use. Note that they can/should be translated.
+char const * const rorigin_gui_strs[] = {
+	N_("Default"),
+	N_("Top left"), N_("Bottom left"), N_("Baseline left"),
+	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Baseline center"),
+	N_("Top right"), N_("Bottom right"), N_("Baseline right") };
+
+size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
+
+} // namespace anon
+
+
+vector<string> const getBBUnits()
+{
+	return vector<string>(bb_units, bb_units + bb_size);
+}
+
+
+vector<RotationOriginPair> getRotationOriginData()
+{
+	static vector<RotationOriginPair> data;
+	if (!data.empty())
+		return data;
+
+	data.resize(rorigin_size);
+	for (size_type i = 0; i < rorigin_size; ++i) {
+		data[i] = make_pair(_(rorigin_gui_strs[i]),
+				    rorigin_lyx_strs[i]);
+	}
+
+	return data;
+}
+
+
+Dialog * createGuiGraphics(LyXView & lv) { return new GuiGraphics(lv); }
+
+
 } // namespace frontend
 } // namespace lyx
-
 
 #include "GuiGraphics_moc.cpp"

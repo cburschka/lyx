@@ -6,6 +6,8 @@
  *
  * \author John Levon
  * \author Herbert Voﬂ
+ * \author Baruch Even
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -14,22 +16,33 @@
 #define GUIGRAPHICS_H
 
 #include "GuiDialog.h"
-#include "ControlGraphics.h"
 #include "ui_GraphicsUi.h"
 
+#include "support/docstring.h"
+#include "insets/InsetGraphics.h"
+
+#include <utility>
 #include <vector>
 
 class QString;
 
 namespace lyx {
+
+class InsetGraphics;
+class InsetGraphicsParams;
+
 namespace frontend {
 
-class GuiGraphicsDialog : public GuiDialog, public Ui::GraphicsUi
+class LyXView;
+
+class GuiGraphics : public GuiDialog, public Ui::GraphicsUi, public Controller
 {
 	Q_OBJECT
+
 public:
-	GuiGraphicsDialog(LyXView & lv);
+	GuiGraphics(LyXView & lv);
 	void setAutoText();
+
 private Q_SLOTS:
 	void change_adaptor();
 	void change_bb();
@@ -41,10 +54,11 @@ private Q_SLOTS:
 	void on_WidthCB_toggled(bool);
 	void on_HeightCB_toggled(bool);
 	void on_angle_textChanged(const QString &);
+
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlGraphics & controller();
+	Controller & controller() { return *this; }
 	bool isValid();
 	/// Apply changes
 	void applyView();
@@ -55,7 +69,39 @@ private:
 
 	/// Store the LaTeX names for the rotation origins.
 	std::vector<std::string> origin_ltx;
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+	/// Browse for a file
+	docstring const browse(docstring const &) const;
+	/// Read the Bounding Box from a eps or ps-file
+	std::string const readBB(std::string const & file);
+	/// Control the bb
+	bool bbChanged;
+	/// test if file exist
+	bool isFilenameValid(std::string const & fname) const;
+	/// edit file
+	void editGraphics();
+
+private:
+	///
+	InsetGraphicsParams params_;
 };
+
+
+/// get the units for the bounding box
+std::vector<std::string> const getBBUnits();
+
+/// The (tranlated) GUI std::string and it's LaTeX equivalent.
+typedef std::pair<docstring, std::string> RotationOriginPair;
+///
+std::vector<RotationOriginPair> getRotationOriginData();
 
 } // namespace frontend
 } // namespace lyx
