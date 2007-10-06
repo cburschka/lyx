@@ -714,41 +714,20 @@ src_frontends_extra_files = Split('''
 
 src_frontends_controllers_header_files = Split('''
     ButtonPolicy.h
-    ControlBibtex.h
-    ControlBox.h
-    ControlBranch.h
-    ControlChanges.h
-    ControlCharacter.h
-    ControlCitation.h
     ControlCommand.h
     ControlCommandBuffer.h
     ControlDocument.h
-    ControlEmbeddedFiles.h
-    ControlERT.h
-    ControlErrorList.h
     ControlExternal.h
-    ControlFloat.h
     ControlGraphics.h
-    ControlInclude.h
-    ControlListings.h
-    ControlLog.h
     ControlMath.h
-    ControlNote.h
     ControlParagraph.h
     ControlPrefs.h
     ControlPrint.h
     ControlSearch.h
     ControlSendto.h
-    ControlShowFile.h
     ControlSpellchecker.h
-    ControlTabular.h
-    ControlTabularCreate.h
-    ControlTexinfo.h
     ControlThesaurus.h
     ControlToc.h
-    ControlVSpace.h
-    ControlViewSource.h
-    ControlWrap.h
     Dialog.h
     frontend_helpers.h
 ''')
@@ -756,41 +735,20 @@ src_frontends_controllers_header_files = Split('''
 
 src_frontends_controllers_files = Split('''
     ButtonPolicy.cpp
-    ControlBibtex.cpp
-    ControlBox.cpp
-    ControlBranch.cpp
-    ControlChanges.cpp
-    ControlCharacter.cpp
-    ControlCitation.cpp
     ControlCommand.cpp
     ControlCommandBuffer.cpp
     ControlDocument.cpp
-    ControlEmbeddedFiles.cpp
-    ControlERT.cpp
-    ControlErrorList.cpp
     ControlExternal.cpp
-    ControlFloat.cpp
     ControlGraphics.cpp
-    ControlInclude.cpp
-    ControlListings.cpp
-    ControlLog.cpp
     ControlMath.cpp
-    ControlNote.cpp
     ControlParagraph.cpp
     ControlPrefs.cpp
     ControlPrint.cpp
     ControlSearch.cpp
     ControlSendto.cpp
-    ControlShowFile.cpp
     ControlSpellchecker.cpp
-    ControlTabular.cpp
-    ControlTabularCreate.cpp
-    ControlTexinfo.cpp
     ControlThesaurus.cpp
     ControlToc.cpp
-    ControlVSpace.cpp
-    ControlViewSource.cpp
-    ControlWrap.cpp
     Dialog.cpp
     frontend_helpers.cpp
 ''')
