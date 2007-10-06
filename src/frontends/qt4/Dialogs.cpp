@@ -23,7 +23,6 @@
 #include "GuiErrorList.h"
 #include "GuiExternal.h"
 #include "GuiGraphics.h"
-#include "GuiInclude.h"
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
 #include "GuiNomencl.h"
@@ -182,7 +181,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "graphics") {
 		dialog = new GuiGraphicsDialog(lyxview_);
 	} else if (name == "include") {
-		dialog = new GuiIncludeDialog(lyxview_);
+		dialog = createGuiInclude(lyxview_);
 	} else if (name == "index") {
 		dialog = new GuiIndexDialog(lyxview_);
 	} else if (name == "nomenclature") {

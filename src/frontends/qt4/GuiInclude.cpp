@@ -3,7 +3,9 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Alejandro Aguilar Sierra
  * \author John Levon
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -11,39 +13,59 @@
 #include <config.h>
 
 #include "GuiInclude.h"
-#include "ControlInclude.h"
 
-#include "support/os.h"
-#include "support/lstrings.h"
+#include "frontend_helpers.h"
+
+#include "Buffer.h"
+#include "Format.h"
+#include "FuncRequest.h"
+#include "gettext.h"
+#include "LyXRC.h"
 
 #include "qt_helpers.h"
 #include "LyXRC.h"
 
+#include "support/os.h"
+#include "support/lstrings.h"
+#include "support/FileFilterList.h"
+#include "support/filetools.h"
+
 #include "insets/InsetListingsParams.h"
+#include "insets/InsetInclude.h"
 
 #include <QPushButton>
 #include <QCheckBox>
 #include <QCloseEvent>
 #include <QLineEdit>
 
+#include <utility>
+
 using std::string;
 using std::vector;
-
-using lyx::support::os::internal_path;
-using lyx::support::prefixIs;
-using lyx::support::getStringFromVector;
-using lyx::support::getVectorFromString;
+using std::pair;
+using std::string;
 
 
 namespace lyx {
 namespace frontend {
 
-GuiIncludeDialog::GuiIncludeDialog(LyXView & lv)
-	: GuiDialog(lv, "include")
+using support::FileFilterList;
+using support::FileName;
+using support::isFileReadable;
+using support::makeAbsPath;
+using support::onlyPath;
+using support::os::internal_path;
+using support::prefixIs;
+using support::getStringFromVector;
+using support::getVectorFromString;
+
+
+GuiInclude::GuiInclude(LyXView & lv)
+	: GuiDialog(lv, "include"), Controller(this), params_("include")
 {
 	setupUi(this);
 	setViewTitle(_("Child Document"));
-	setController(new ControlInclude(*this));
+	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -51,8 +73,8 @@ GuiIncludeDialog::GuiIncludeDialog(LyXView & lv)
 	connect(visiblespaceCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(filenameED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(editPB, SIGNAL(clicked()), this, SLOT(editClicked()));
-	connect(browsePB, SIGNAL(clicked()), this, SLOT(browseClicked()));
+	connect(editPB, SIGNAL(clicked()), this, SLOT(edit()));
+	connect(browsePB, SIGNAL(clicked()), this, SLOT(browse()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(typeCO, SIGNAL(activated(int)), this, SLOT(typeChanged(int)));
 	connect(previewCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -78,19 +100,13 @@ GuiIncludeDialog::GuiIncludeDialog(LyXView & lv)
 }
 
 
-ControlInclude & GuiIncludeDialog::controller()
-{
-	return static_cast<ControlInclude &>(GuiDialog::controller());
-}
-
-
-void GuiIncludeDialog::change_adaptor()
+void GuiInclude::change_adaptor()
 {
 	changed();
 }
 
 
-docstring GuiIncludeDialog::validate_listings_params()
+docstring GuiInclude::validate_listings_params()
 {
 	// use a cache here to avoid repeated validation
 	// of the same parameters
@@ -109,7 +125,7 @@ docstring GuiIncludeDialog::validate_listings_params()
 }
 
 
-void GuiIncludeDialog::set_listings_msg()
+void GuiInclude::set_listings_msg()
 {
 	static bool isOK = true;
 	docstring msg = validate_listings_params();
@@ -126,14 +142,14 @@ void GuiIncludeDialog::set_listings_msg()
 }
 
 
-void GuiIncludeDialog::closeEvent(QCloseEvent * e)
+void GuiInclude::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiIncludeDialog::typeChanged(int v)
+void GuiInclude::typeChanged(int v)
 {
 	switch (v) {
 		//case Include
@@ -174,23 +190,9 @@ void GuiIncludeDialog::typeChanged(int v)
 }
 
 
-void GuiIncludeDialog::editClicked()
+void GuiInclude::updateContents()
 {
-	edit();
-}
-
-
-void GuiIncludeDialog::browseClicked()
-{
-	browse();
-}
-
-
-void GuiIncludeDialog::updateContents()
-{
-	InsetCommandParams const & params = controller().params();
-
-	filenameED->setText(toqstr(params["filename"]));
+	filenameED->setText(toqstr(params_["filename"]));
 
 	visiblespaceCB->setChecked(false);
 	visiblespaceCB->setEnabled(false);
@@ -203,7 +205,7 @@ void GuiIncludeDialog::updateContents()
 	listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 
-	string cmdname = controller().params().getCmdName();
+	string cmdname = params_.getCmdName();
 	if (cmdname != "include" &&
 	    cmdname != "verbatiminput" &&
 	    cmdname != "verbatiminput*" &&
@@ -216,7 +218,7 @@ void GuiIncludeDialog::updateContents()
 	} else if (cmdname == "input") {
 		typeCO->setCurrentIndex(1);
 		previewCB->setEnabled(true);
-		previewCB->setChecked(params.preview());
+		previewCB->setChecked(params_.preview());
 
 	} else if (cmdname == "verbatiminput*") {
 		typeCO->setCurrentIndex(2);
@@ -231,21 +233,21 @@ void GuiIncludeDialog::updateContents()
 		typeCO->setCurrentIndex(3);
 		listingsGB->setEnabled(true);
 		listingsED->setEnabled(true);
-		InsetListingsParams par(params.getOptions());
+		InsetListingsParams par(params_.getOptions());
 		// extract caption and label and put them into their respective editboxes
 		vector<string> pars = getVectorFromString(par.separatedParams(), "\n");
 		for (vector<string>::iterator it = pars.begin();
 			it != pars.end(); ++it) {
 			if (prefixIs(*it, "caption=")) {
 				string cap = it->substr(8);
-				if (cap[0] == '{' && cap[cap.size()-1] == '}') {
-					captionLE->setText(toqstr(cap.substr(1, cap.size()-2)));
+				if (cap[0] == '{' && cap[cap.size() - 1] == '}') {
+					captionLE->setText(toqstr(cap.substr(1, cap.size() - 2)));
 					*it = "";
 				} 
 			} else if (prefixIs(*it, "label=")) {
 				string lbl = it->substr(6);
 				if (lbl[0] == '{' && lbl[lbl.size()-1] == '}') {
-					labelLE->setText(toqstr(lbl.substr(1, lbl.size()-2)));
+					labelLE->setText(toqstr(lbl.substr(1, lbl.size() - 2)));
 					*it = "";
 				}
 			}
@@ -257,20 +259,18 @@ void GuiIncludeDialog::updateContents()
 }
 
 
-void GuiIncludeDialog::applyView()
+void GuiInclude::applyView()
 {
-	InsetCommandParams params = controller().params();
-
-	params["filename"] = from_utf8(internal_path(fromqstr(filenameED->text())));
-	params.preview(previewCB->isChecked());
+	params_["filename"] = from_utf8(internal_path(fromqstr(filenameED->text())));
+	params_.preview(previewCB->isChecked());
 
 	int const item = typeCO->currentIndex();
 	if (item == 0) {
-		params.setCmdName("include");
+		params_.setCmdName("include");
 	} else if (item == 1) {
-		params.setCmdName("input");
+		params_.setCmdName("input");
 	} else if (item == 3) {
-		params.setCmdName("lstinputlisting");
+		params_.setCmdName("lstinputlisting");
 		// the parameter string should have passed validation
 		InsetListingsParams par(fromqstr(listingsED->toPlainText()));
 		string caption = fromqstr(captionLE->text());
@@ -279,53 +279,113 @@ void GuiIncludeDialog::applyView()
 			par.addParam("caption", "{" + caption + "}");
 		if (!label.empty())
 			par.addParam("label", "{" + label + "}");
-		params.setOptions(par.params());
+		params_.setOptions(par.params());
 	} else {
 		if (visiblespaceCB->isChecked())
-			params.setCmdName("verbatiminput*");
+			params_.setCmdName("verbatiminput*");
 		else
-			params.setCmdName("verbatiminput");
+			params_.setCmdName("verbatiminput");
 	}
-	controller().setParams(params);
 }
 
 
-void GuiIncludeDialog::browse()
+void GuiInclude::browse()
 {
-	ControlInclude::Type type;
+	Type type;
 
 	int const item = typeCO->currentIndex();
 	if (item == 0)
-		type = ControlInclude::INCLUDE;
+		type = INCLUDE;
 	else if (item == 1)
-		type = ControlInclude::INPUT;
+		type = INPUT;
 	else if (item == 2)
-		type = ControlInclude::VERBATIM;
+		type = VERBATIM;
 	else
-		type = ControlInclude::LISTINGS;
+		type = LISTINGS;
 
-	docstring const & name =
-		controller().browse(qstring_to_ucs4(filenameED->text()), type);
+	docstring const & name = browse(qstring_to_ucs4(filenameED->text()), type);
 	if (!name.empty())
 		filenameED->setText(toqstr(name));
 }
 
 
-void GuiIncludeDialog::edit()
+void GuiInclude::edit()
 {
 	if (isValid()) {
 		string const file = fromqstr(filenameED->text());
 		slotOK();
-		controller().edit(file);
+		edit(file);
 	}
 }
 
 
-bool GuiIncludeDialog::isValid()
+bool GuiInclude::isValid()
 {
-	return !filenameED->text().isEmpty() &&
-		validate_listings_params().empty();
+	return !filenameED->text().isEmpty() && validate_listings_params().empty();
 }
+
+
+bool GuiInclude::initialiseParams(string const & data)
+{
+	InsetIncludeMailer::string2params(data, params_);
+	return true;
+}
+
+
+void GuiInclude::clearParams()
+{
+	params_.clear();
+}
+
+
+void GuiInclude::dispatchParams()
+{
+	dispatch(FuncRequest(getLfun(), InsetIncludeMailer::params2string(params_)));
+}
+
+
+docstring GuiInclude::browse(docstring const & in_name, Type in_type) const
+{
+	docstring const title = _("Select document to include");
+
+	// input TeX, verbatim, or LyX file ?
+	FileFilterList filters;
+	switch (in_type) {
+	case INCLUDE:
+	case INPUT:
+		filters = FileFilterList(_("LaTeX/LyX Documents (*.tex *.lyx)"));
+		break;
+	case VERBATIM:
+		break;
+	case LISTINGS:
+		break;
+	}
+
+	pair<docstring, docstring> dir1(_("Documents|#o#O"),
+		from_utf8(lyxrc.document_path));
+
+	docstring const docpath = from_utf8(onlyPath(buffer().fileName()));
+
+	return browseRelFile(in_name, docpath, title,
+			     filters, false, dir1);
+}
+
+
+void GuiInclude::edit(string const & file)
+{
+	string const ext = support::getExtension(file);
+	if (ext == "lyx")
+		dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN, file));
+	else
+		// tex file or other text file in verbatim mode
+		formats.edit(buffer(), 
+			FileName(makeAbsPath(file, onlyPath(buffer().fileName()))),
+			"text");
+}
+
+
+Dialog * createGuiInclude(LyXView & lv) { return new GuiInclude(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
