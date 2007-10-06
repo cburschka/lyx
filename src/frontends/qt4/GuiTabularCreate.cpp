@@ -12,23 +12,27 @@
 
 #include "GuiTabularCreate.h"
 
-#include "ControlTabularCreate.h"
 #include "EmptyTable.h"
+#include "FuncRequest.h"
+
+#include "support/convert.h"
 
 #include <QCloseEvent>
 #include <QSpinBox>
 #include <QPushButton>
 
+using std::string;
+
 
 namespace lyx {
 namespace frontend {
 
-GuiTabularCreateDialog::GuiTabularCreateDialog(LyXView & lv)
-	: GuiDialog(lv, "tabularcreate")
+GuiTabularCreate::GuiTabularCreate(LyXView & lv)
+	: GuiDialog(lv, "tabularcreate"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("Insert Table"));
-	setController(new ControlTabularCreate(*this));
+	setController(this, false);
 
 	rowsSB->setValue(5);
 	columnsSB->setValue(5);
@@ -47,29 +51,52 @@ GuiTabularCreateDialog::GuiTabularCreateDialog(LyXView & lv)
 }
 
 
-ControlTabularCreate & GuiTabularCreateDialog::controller()
-{
-	return static_cast<ControlTabularCreate &>(GuiDialog::controller());
-}
-
-
-void GuiTabularCreateDialog::columnsChanged(int)
+void GuiTabularCreate::columnsChanged(int)
 {
 	changed();
 }
 
 
-void GuiTabularCreateDialog::rowsChanged(int)
+void GuiTabularCreate::rowsChanged(int)
 {
 	changed();
 }
 
 
-void GuiTabularCreateDialog::applyView()
+void GuiTabularCreate::applyView()
 {
-	controller().params().first = rowsSB->value();
-	controller().params().second = columnsSB->value();
+	params_.first = rowsSB->value();
+	params_.second = columnsSB->value();
 }
+
+
+bool GuiTabularCreate::initialiseParams(string const &)
+{
+	params_.first  = 5;
+	params_.second = 5;
+	return true;
+}
+
+
+void GuiTabularCreate::clearParams()
+{
+	params_.first  = 0;
+	params_.second = 0;
+}
+
+
+void GuiTabularCreate::dispatchParams()
+{
+	string const data = convert<string>(params().first) + ' ' + convert<string>(params().second);
+	dispatch(FuncRequest(getLfun(), data));
+}
+
+
+Dialog * createGuiTabularCreate(LyXView & lv)
+{
+	return new GuiTabularCreate(lv);
+}
+
 
 } // namespace frontend
 } // namespace lyx

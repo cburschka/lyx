@@ -41,8 +41,6 @@
 #include "GuiSendto.h"
 #include "GuiShowFile.h"
 #include "GuiSpellchecker.h"
-#include "GuiTabular.h"
-#include "GuiTabularCreate.h"
 #include "GuiToc.h"
 #include "GuiView.h"
 #include "GuiViewSource.h"
@@ -232,7 +230,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "tabular") {
 		dialog = createGuiTabular(lyxview_);
 	} else if (name == "tabularcreate") {
-		dialog = new GuiTabularCreateDialog(lyxview_);
+		dialog = createGuiTabularCreate(lyxview_);
 	} else if (name == "texinfo") {
 		dialog = createGuiTexInfo(lyxview_);
 #ifdef HAVE_LIBAIKSAURUS

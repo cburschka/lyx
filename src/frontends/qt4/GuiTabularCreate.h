@@ -13,29 +13,51 @@
 #define GUITABULARCREATE_H
 
 #include "GuiDialog.h"
-#include "ControlTabularCreate.h"
 #include "ui_TabularCreateUi.h"
+
+#include <utility>
 
 namespace lyx {
 namespace frontend {
 
-class GuiTabularCreateDialog : public GuiDialog, public Ui::TabularCreateUi
+
+class GuiTabularCreate
+	: public GuiDialog, public Ui::TabularCreateUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiTabularCreateDialog(LyXView & lv);
+	GuiTabularCreate(LyXView & lv);
 
 private Q_SLOTS:
 	void columnsChanged(int);
 	void rowsChanged(int);
 
 	/// parent controller
-	ControlTabularCreate & controller();
+	Controller & controller() { return *this; }
 
 private:
 	/// Apply changes
 	void applyView();
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams();
+	///
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	kb_action getLfun() const { return LFUN_TABULAR_INSERT; }
+
+	///
+	typedef std::pair<size_t, size_t> rowsCols;
+	///
+	rowsCols & params() { return params_; }
+
+private:
+	/// rows, cols params
+	rowsCols params_;
 };
 
 } // namespace frontend
