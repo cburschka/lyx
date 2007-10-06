@@ -13,7 +13,7 @@
 #define GUIERRORLIST_H
 
 #include "GuiDialog.h"
-#include "ControlErrorList.h"
+#include "ErrorList.h"
 #include "ui_ErrorListUi.h"
 
 class QListWidgetItem;
@@ -21,25 +21,44 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiErrorListDialog : public GuiDialog, public Ui::ErrorListUi
+class GuiErrorList : public GuiDialog, public Ui::ErrorListUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiErrorListDialog(LyXView & lv);
+	GuiErrorList(LyXView & lv);
 
 public Q_SLOTS:
-	void select_adaptor(QListWidgetItem *);
-
-private:
-	void closeEvent(QCloseEvent *);
-	void showEvent(QShowEvent *);
-	/// parent controller
-	ControlErrorList & controller();
 	/// select an entry
 	void select(QListWidgetItem *);
+
+private:
+	///
+	void closeEvent(QCloseEvent *);
+	///
+	void showEvent(QShowEvent *);
+	/// parent controller
+	Controller & controller() { return *this; }
 	/// update contents
 	void updateContents();
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	bool initialiseParams(std::string const & data);
+	///
+	void clearParams() {}
+	///
+	void dispatchParams() {}
+
+	/// goto this error in the parent bv
+	void goTo(int item);
+	///
+	ErrorList const & errorList() const;
+private:
+	///
+	std::string error_type_;
+	/// the parent document name
+	docstring name_;
 };
 
 } // namespace frontend

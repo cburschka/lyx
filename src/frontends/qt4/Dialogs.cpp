@@ -20,7 +20,6 @@
 #include "GuiDelimiter.h"
 #include "GuiDocument.h"
 #include "GuiEmbeddedFiles.h"
-#include "GuiErrorList.h"
 #include "GuiExternal.h"
 #include "GuiGraphics.h"
 #include "GuiIndex.h"
@@ -167,7 +166,7 @@ Dialog * Dialogs::build(string const & name)
 		dialog = new DockView<ControlEmbeddedFiles, GuiEmbeddedFilesDialog>(
 			guiview, name, Qt::RightDockWidgetArea);
 	} else if (name == "errorlist") {
-		dialog = new GuiErrorListDialog(lyxview_);
+		dialog = createGuiErrorList(lyxview_);
 	} else if (name == "ert") {
 		dialog = createGuiERT(lyxview_);
 	} else if (name == "external") {
