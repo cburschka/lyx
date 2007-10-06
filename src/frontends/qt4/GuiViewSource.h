@@ -16,8 +16,12 @@
 
 #include "ui_ViewSourceUi.h"
 
-#include "ControlViewSource.h"
+#include "controllers/Dialog.h"
+#include "GuiView.h"
+#include "qt_helpers.h"
+#include "debug.h"
 
+#include <QDockWidget>
 #include <QWidget>
 #include <QSyntaxHighlighter>
 #include <QTextCharFormat>
@@ -42,6 +46,7 @@ private:
 	QTextCharFormat mathFormat;
 };
 
+class ControlViewSource;
 
 class GuiViewSourceDialog : public QWidget, public Ui::ViewSourceUi
 {
@@ -67,6 +72,95 @@ private:
 	LaTeXHighlighter * highlighter_;
 };
 
+/**
+ * A controller for a read-only text browser.
+ */
+class ControlViewSource : public Controller {
+public:
+	///
+	ControlViewSource(Dialog &);
+	/** \param source source code to be displayed
+	 */
+	bool initialiseParams(std::string const & source);
+	///
+	void clearParams() {}
+	///
+	void dispatchParams() {}
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	bool canApply() const { return true; }
+	///
+	bool canApplyToReadOnly() const { return true; }
+
+	/// The title displayed by the dialog reflects source type.
+	docstring const title() const;
+
+	/** get the source code of selected paragraphs, or the whole document
+		\param fullSource get full source code
+	 */
+	docstring const updateContent(bool fullSource);
+	/** get the cursor position in the source code
+	 */
+	std::pair<int, int> getRows() const;
+};
+
+
+class GuiViewSource : public QDockWidget, public Dialog
+{
+public:
+	GuiViewSource(GuiViewBase & parent)
+		: QDockWidget(&parent, Qt::WindowFlags(0)), name_("view-source")
+	{
+		ControlViewSource * c = new ControlViewSource(*this);
+		controller_ = c;
+		controller_->setLyXView(parent);
+		widget_ = new GuiViewSourceDialog(*c);
+		setWidget(widget_);
+		setWindowTitle(widget_->windowTitle());
+		parent.addDockWidget(Qt::BottomDockWidgetArea, this);
+	}
+	~GuiViewSource() { delete widget_; delete controller_; }
+
+	/// Dialog inherited methods
+	//@{
+	void applyView() {}
+	void hideView()	{ QDockWidget::hide(); }
+	void showData(std::string const & data)
+	{
+		controller_->initialiseParams(data);
+		showView();
+	}
+	void showView()
+	{
+		widget_->updateView();  // make sure its up-to-date
+		QDockWidget::show();
+	}
+	bool isVisibleView() const { return QDockWidget::isVisible(); }
+	void checkStatus() { updateView(); }
+	void redraw() { redrawView(); }
+	void redrawView() {}
+	void updateData(std::string const & data)
+	{
+		controller_->initialiseParams(data);
+		updateView();
+	}
+	void updateView()
+	{
+		widget_->updateView();
+		QDockWidget::update();
+	}
+	bool isClosing() const { return false; }
+	void partialUpdateView(int /*id*/) {}
+	Controller & controller() { return *controller_; }
+	std::string name() const { return name_; }
+	//@}
+private:
+	/// The encapsulated widget.
+	GuiViewSourceDialog * widget_;
+	Controller * controller_;
+	std::string name_;
+};
 
 } // namespace frontend
 } // namespace lyx

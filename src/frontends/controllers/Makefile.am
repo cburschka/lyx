@@ -12,10 +12,8 @@ SOURCEFILES = \
 	ControlCommand.cpp \
 	ControlCommandBuffer.cpp \
 	ControlDocument.cpp \
-	ControlEmbeddedFiles.cpp \
 	ControlExternal.cpp \
 	ControlGraphics.cpp \
-	ControlViewSource.cpp \
 	ControlMath.cpp \
 	ControlParagraph.cpp \
 	ControlPrefs.cpp \
@@ -32,10 +30,8 @@ HEADERFILES = \
 	ControlCommand.h \
 	ControlCommandBuffer.h \
 	ControlDocument.h \
-	ControlEmbeddedFiles.h \
 	ControlExternal.h \
 	ControlGraphics.h \
-	ControlViewSource.h \
 	ControlMath.h \
 	ControlParagraph.h \
 	ControlPrefs.h \

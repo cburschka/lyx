@@ -33,7 +33,6 @@
 #include "GuiSpellchecker.h"
 #include "GuiToc.h"
 #include "GuiView.h"
-#include "GuiViewSource.h"
 #include "TocWidget.h"
 #include "GuiURL.h"
 
@@ -127,6 +126,7 @@ Dialog * createGuiTexInfo(LyXView & lv);
 Dialog * createGuiThesaurus(LyXView & lv);
 Dialog * createGuiURL(LyXView & lv);
 Dialog * createGuiVSpace(LyXView & lv);
+Dialog * createGuiViewSource(LyXView & lv);
 Dialog * createGuiWrap(LyXView & lv);
 
 
@@ -189,8 +189,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "log") {
 		createGuiLog(lyxview_);
 	} else if (name == "view-source") {
-		dialog = new DockView<ControlViewSource, GuiViewSourceDialog>(
-			guiview, name, Qt::BottomDockWidgetArea);
+		createGuiViewSource(lyxview_);
 	} else if (name == "mathdelimiter") {
 		dialog = new GuiDelimiterDialog(lyxview_);
 	} else if (name == "mathmatrix") {
