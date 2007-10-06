@@ -4,6 +4,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Allan Rae
+ * \author Angus Leeming
  * \author John Levon
  * \author Edwin Leuven
  *
@@ -14,18 +16,21 @@
 #define GUIPRINT_H
 
 #include "GuiDialog.h"
-#include "ControlPrint.h"
 #include "ui_PrintUi.h"
+
+#include "Dialog.h"
+#include "PrinterParams.h"
+#include "support/docstring.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiPrintDialog : public GuiDialog, public Ui::PrintUi
+class GuiPrint : public GuiDialog, public Ui::PrintUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiPrintDialog(LyXView & lv);
+	GuiPrint(LyXView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -35,13 +40,28 @@ private Q_SLOTS:
 	void printerChanged();
 	void pagerangeChanged();
 	/// parent controller
-	ControlPrint & controller();
+	Controller & controller() { return *this; }
 
 private:
 	/// Apply changes
 	void applyView();
 	/// update
 	void updateContents();
+	///
+	bool initialiseParams(std::string const & data);
+	///
+	void clearParams();
+	///
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	bool canApplyToReadOnly() const { return true; }
+	///
+	kb_action getLfun() const { return LFUN_BUFFER_PRINT; }
+
+	///
+	PrinterParams params_;
 };
 
 } // namespace frontend

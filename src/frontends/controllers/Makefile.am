@@ -17,8 +17,6 @@ SOURCEFILES = \
 	ControlMath.cpp \
 	ControlParagraph.cpp \
 	ControlPrefs.cpp \
-	ControlPrint.cpp \
-	ControlSearch.cpp \
 	frontend_helpers.cpp 
 
 HEADERFILES = \
@@ -31,8 +29,6 @@ HEADERFILES = \
 	ControlMath.h \
 	ControlParagraph.h \
 	ControlPrefs.h \
-	ControlPrint.h \
-	ControlSearch.h \
 	frontend_helpers.h
 
 if MONOLITHIC_CONTROLLERS

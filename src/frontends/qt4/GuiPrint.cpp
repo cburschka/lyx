@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Edwin Leuven
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,10 +14,19 @@
 
 #include "GuiPrint.h"
 
-#include "ControlPrint.h"
 #include "qt_helpers.h"
 #include "PrinterParams.h"
 
+#include "frontend_helpers.h"
+
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "FuncRequest.h"
+#include "gettext.h"
+
+#include "support/convert.h"
+#include "support/FileFilterList.h"
+#include "support/filetools.h"
 #include "support/os.h"
 
 #include <QLineEdit>
@@ -25,24 +35,29 @@
 #include <QSpinBox>
 #include <QPushButton>
 
+using std::string;
+
 
 namespace lyx {
 namespace frontend {
 
-GuiPrintDialog::GuiPrintDialog(LyXView & lv)
-	: GuiDialog(lv, "print")
+using support::FileFilterList;
+
+
+GuiPrint::GuiPrint(LyXView & lv)
+	: GuiDialog(lv, "print"), Controller(this)
 {
 	setupUi(this);
-	setController(new ControlPrint(*this));
+	setController(this, false);
 	setViewTitle(_("Print Document"));
 
 	connect(printPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
 	connect(copiesSB, SIGNAL(valueChanged(int)), this, SLOT(copiesChanged(int)));
-	connect(printerED, SIGNAL(textChanged(const QString&)),
+	connect(printerED, SIGNAL(textChanged(QString)),
 		this, SLOT(printerChanged()));
-	connect(fileED, SIGNAL(textChanged(const QString&)),
+	connect(fileED, SIGNAL(textChanged(QString)),
 		this, SLOT(fileChanged() ));
 	connect(browsePB, SIGNAL(clicked()), this, SLOT(browseClicked()));
 	connect(allRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -67,21 +82,20 @@ GuiPrintDialog::GuiPrintDialog(LyXView & lv)
 }
 
 
-ControlPrint & GuiPrintDialog::controller()
-{
-	return static_cast<ControlPrint &>(GuiDialog::controller());
-}
-
-
-void GuiPrintDialog::change_adaptor()
+void GuiPrint::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiPrintDialog::browseClicked()
+void GuiPrint::browseClicked()
 {
-	QString file = toqstr(controller().browse(docstring()));
+	docstring name =
+		browseRelFile(docstring(), from_utf8(buffer().filePath()),
+			     _("Print to file"),
+			     FileFilterList(_("PostScript files (*.ps)")),
+			     true);
+	QString file = toqstr(name);
 	if (!file.isNull()) {
 		fileED->setText(file);
 		changed();
@@ -89,7 +103,7 @@ void GuiPrintDialog::browseClicked()
 }
 
 
-void GuiPrintDialog::fileChanged()
+void GuiPrint::fileChanged()
 {
 	if (!fileED->text().isEmpty())
 		fileRB->setChecked(true);
@@ -97,67 +111,66 @@ void GuiPrintDialog::fileChanged()
 }
 
 
-void GuiPrintDialog::copiesChanged(int i)
+void GuiPrint::copiesChanged(int i)
 {
 	collateCB->setEnabled(i != 1);
 	changed();
 }
 
 
-void GuiPrintDialog::printerChanged()
+void GuiPrint::printerChanged()
 {
 	printerRB->setChecked(true);
 	changed();
 }
 
 
-void GuiPrintDialog::pagerangeChanged()
+void GuiPrint::pagerangeChanged()
 {
 	changed();
 }
 
 
-void GuiPrintDialog::updateContents()
+void GuiPrint::updateContents()
 {
-	PrinterParams & pp = controller().params();
-
 	// only reset params if a different buffer
-	if (!pp.file_name.empty() && pp.file_name == fromqstr(fileED->text()))
+	if (!params_.file_name.empty()
+			&& params_.file_name == fromqstr(fileED->text()))
 		return;
 
-	printerED->setText(toqstr(pp.printer_name));
-	fileED->setText(toqstr(pp.file_name));
+	printerED->setText(toqstr(params_.printer_name));
+	fileED->setText(toqstr(params_.file_name));
 
 	printerRB->setChecked(true);
-	if (pp.target == PrinterParams::FILE)
+	if (params_.target == PrinterParams::FILE)
 		fileRB->setChecked(true);
 
-	reverseCB->setChecked(pp.reverse_order);
+	reverseCB->setChecked(params_.reverse_order);
 
-	copiesSB->setValue(pp.count_copies);
+	copiesSB->setValue(params_.count_copies);
 
-	oddCB->setChecked(pp.odd_pages);
-	evenCB->setChecked(pp.even_pages);
+	oddCB->setChecked(params_.odd_pages);
+	evenCB->setChecked(params_.even_pages);
 
-	collateCB->setChecked(pp.sorted_copies);
+	collateCB->setChecked(params_.sorted_copies);
 
-	if (pp.all_pages) {
+	if (params_.all_pages) {
 		allRB->setChecked(true);
 	} else {
 		rangeRB->setChecked(true);
-		fromED->setText(QString::number(pp.from_page));
-		toED->setText(QString::number(pp.to_page));
+		fromED->setText(QString::number(params_.from_page));
+		toED->setText(QString::number(params_.to_page));
 	}
 }
 
 
-void GuiPrintDialog::applyView()
+void GuiPrint::applyView()
 {
 	PrinterParams::Target t = PrinterParams::PRINTER;
 	if (fileRB->isChecked())
 		t = PrinterParams::FILE;
 
-	PrinterParams const pp(t,
+	params_ = PrinterParams(t,
 		fromqstr(printerED->text()),
 		support::os::internal_path(fromqstr(fileED->text())),
 		allRB->isChecked(),
@@ -167,10 +180,88 @@ void GuiPrintDialog::applyView()
 		evenCB->isChecked(),
 		copiesSB->text().toUInt(),
 		collateCB->isChecked(),
-		reverseCB->isChecked());
-
-	controller().params() = pp;
+		reverseCB->isChecked()
+	);
 }
+
+
+bool GuiPrint::initialiseParams(std::string const &)
+{
+	/// get global printer parameters
+	string const name = support::changeExtension(buffer().fileName(),
+					lyxrc.print_file_extension);
+	params_ = PrinterParams(PrinterParams::PRINTER, lyxrc.printer, name);
+
+	dialog().setButtonsValid(true); // so that the user can press Ok
+	return true;
+}
+
+
+void GuiPrint::clearParams()
+{
+	params_ = PrinterParams();
+}
+
+
+/// print the current buffer
+void GuiPrint::dispatchParams()
+{
+	string command = lyxrc.print_command + ' ';
+
+	if (params_.target == PrinterParams::PRINTER
+	    && lyxrc.print_adapt_output  // dvips wants a printer name
+	    && !params_.printer_name.empty()) {// printer name given
+		command += lyxrc.print_to_printer + params_.printer_name + ' ';
+	}
+
+	if (!params_.all_pages && params_.from_page) {
+		command += lyxrc.print_pagerange_flag + ' ';
+		command += convert<string>(params_.from_page);
+		if (params_.to_page) {
+			// we have a range "from-to"
+			command += '-' + convert<string>(params_.to_page);
+		}
+		command += ' ';
+	}
+
+	// If both are, or both are not selected, then skip the odd/even printing
+	if (params_.odd_pages != params_.even_pages) {
+		if (params_.odd_pages)
+			command += lyxrc.print_oddpage_flag + ' ';
+		else if (params_.even_pages)
+			command += lyxrc.print_evenpage_flag + ' ';
+	}
+
+	if (params_.count_copies > 1) {
+		if (params_.sorted_copies)
+			command += lyxrc.print_collcopies_flag;
+		else
+			command += lyxrc.print_copies_flag;
+		command += ' ' + convert<string>(params_.count_copies) + ' ';
+	}
+
+	if (params_.reverse_order)
+		command += lyxrc.print_reverse_flag + ' ';
+
+	if (!lyxrc.print_extra_options.empty())
+		command += lyxrc.print_extra_options + ' ';
+
+	command += buffer().params().dvips_options();
+
+	string const target = (params_.target == PrinterParams::PRINTER) ?
+		"printer" : "file";
+
+	string const target_name = (params_.target == PrinterParams::PRINTER) ?
+		(params_.printer_name.empty() ? "default" : params_.printer_name) :
+		params_.file_name;
+
+	string const data = target + " \"" + target_name + "\" \"" + command + '"';
+	dispatch(FuncRequest(getLfun(), data));
+}
+
+
+Dialog * createGuiPrint(LyXView & lv) { return new GuiPrint(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

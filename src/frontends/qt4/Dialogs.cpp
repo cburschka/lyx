@@ -26,10 +26,7 @@
 #include "GuiNomencl.h"
 #include "GuiParagraph.h"
 #include "GuiPrefs.h"
-#include "GuiPrint.h"
-#include "GuiShowFile.h"
 #include "GuiView.h"
-#include "TocWidget.h"
 #include "GuiURL.h"
 
 // Uncomment this if you prefer dock widget
@@ -198,7 +195,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "prefs")
 		return new GuiPrefsDialog(lyxview_);
 	if (name == "print")
-		return new GuiPrintDialog(lyxview_);
+		return createGuiPrint(lyxview_);
 	if (name == "ref")
 		return createGuiRef(lyxview_);
 	if (name == "sendto")
