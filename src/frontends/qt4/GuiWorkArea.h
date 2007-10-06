@@ -19,11 +19,12 @@
 #include "support/Timeout.h"
 
 #include <QAbstractScrollArea>
-#include <QMouseEvent>
-#include <QResizeEvent>
 #include <QKeyEvent>
-#include <QTimer>
+#include <QMouseEvent>
 #include <QPixmap>
+#include <QResizeEvent>
+#include <QTabWidget>
+#include <QTimer>
 
 #include <queue>
 
@@ -170,7 +171,26 @@ private:
 	bool schedule_redraw_;
 	///
 	int preedit_lines_;
-};
+}; //GuiWorkArea
+
+/// A tabbed set of GuiWorkAreas.
+class TabWorkArea : public QTabWidget
+{
+	Q_OBJECT
+public:
+	TabWorkArea(QWidget * parent = 0);
+	void showBar(bool show);
+
+Q_SIGNALS:
+	///
+	void currentWorkAreaChanged(GuiWorkArea *);
+
+public Q_SLOTS:
+	///
+	void on_currentTabChanged(int index);
+	///
+	void closeCurrentTab();
+}; // TabWorkArea
 
 } // namespace frontend
 } // namespace lyx

@@ -21,6 +21,7 @@
 #include <QAction>
 #include <QCloseEvent>
 #include <QMainWindow>
+#include <QTabWidget>
 #include <QTimer>
 
 class QDragEnterEvent;
@@ -32,6 +33,7 @@ namespace lyx {
 namespace frontend {
 
 class GuiToolbar;
+class GuiWorkArea;
 
 QWidget * mainWindow();
 
@@ -95,8 +97,8 @@ public Q_SLOTS:
 	/// idle timeout
 	void update_view_state_qt();
 
-	void currentTabChanged(int index);
-	void closeCurrentTab();
+	///
+	void on_currentWorkAreaChanged(GuiWorkArea *);
 
 	/// slots to change the icon size
 	void smallSizedIcons();
@@ -165,6 +167,7 @@ private:
 	struct GuiViewPrivate;
 	GuiViewPrivate& d;
 };
+
 
 } // namespace frontend
 } // namespace lyx

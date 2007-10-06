@@ -63,9 +63,7 @@
 #include <QPushButton>
 #include <QStackedWidget>
 #include <QStatusBar>
-#include <QTabBar>
 #include <QToolBar>
-#include <QTabWidget>
 #include <QUrl>
 
 using std::endl;
@@ -123,14 +121,7 @@ private:
 	QPixmap * splash_;
 };
 
-
-class TabWidget : public QTabWidget {
-public:
-	void showBar(bool show) { tabBar()->setVisible(show); }
 };
-
-
-} // namespace anon
 
 
 struct GuiViewBase::GuiViewPrivate
@@ -140,7 +131,7 @@ struct GuiViewBase::GuiViewPrivate
 	int posx_offset;
 	int posy_offset;
 
-	TabWidget * tab_widget_;
+	TabWorkArea * tab_widget_;
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
 	/// view's menubar
@@ -241,31 +232,9 @@ GuiViewBase::GuiViewBase(int id)
 		setWindowIcon(QPixmap(toqstr(iconname.absFilename())));
 #endif
 
-	d.tab_widget_ = new TabWidget;
-
-	QPushButton * closeTabButton = new QPushButton(this);
-	FileName const file = support::libFileSearch("images", "closetab", "png");
-	if (!file.empty()) {
-		QPixmap pm(toqstr(file.absFilename()));
-		closeTabButton->setIcon(QIcon(pm));
-		closeTabButton->setMaximumSize(pm.size());
-		closeTabButton->setFlat(true);
-	} else {
-		closeTabButton->setText("Close");
-	}
-	closeTabButton->setCursor(Qt::ArrowCursor);
-	closeTabButton->setToolTip(tr("Close tab"));
-	closeTabButton->setEnabled(true);
-
-	QObject::connect(d.tab_widget_, SIGNAL(currentChanged(int)),
-			this, SLOT(currentTabChanged(int)));
-	QObject::connect(closeTabButton, SIGNAL(clicked()),
-			this, SLOT(closeCurrentTab()));
-
-	d.tab_widget_->setCornerWidget(closeTabButton);
-#if QT_VERSION >= 0x040200
-	d.tab_widget_->setUsesScrollButtons(true);
-#endif
+	d.tab_widget_ = new TabWorkArea;
+	QObject::connect(d.tab_widget_, SIGNAL(currentWorkAreaChanged(GuiWorkArea *)),
+		this, SLOT(on_currentWorkAreaChanged(GuiWorkArea *)));
 
 	d.initBackground();
 	if (d.bg_widget_) {
@@ -639,26 +608,12 @@ void GuiViewBase::update_view_state_qt()
 }
 
 
-void GuiViewBase::closeCurrentTab()
-{
-	dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
-}
-
-
-void GuiViewBase::currentTabChanged(int i)
+void GuiViewBase::on_currentWorkAreaChanged(GuiWorkArea * wa)
 {
 	disconnectBuffer();
 	disconnectBufferView();
-	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(i));
-	BOOST_ASSERT(wa);
-	BufferView & bv = wa->bufferView();
-	connectBufferView(bv);
-	connectBuffer(bv.buffer());
-	bv.updateMetrics(false);
-	bv.cursor().fixIfBroken();
-	wa->setUpdatesEnabled(true);
-	wa->redraw();
-	wa->setFocus();
+	connectBufferView(wa->bufferView());
+	connectBuffer(wa->bufferView().buffer());
 
 	updateToc();
 	// Buffer-dependent dialogs should be updated or
@@ -669,9 +624,6 @@ void GuiViewBase::currentTabChanged(int i)
 	updateLayoutChoice();
 	updateWindowTitle();
 	updateStatusBar();
-
-	LYXERR(Debug::GUI) << "currentTabChanged " << i
-		<< "File" << bv.buffer().fileName() << endl;
 }
 
 
@@ -921,7 +873,7 @@ void GuiViewBase::setCurrentWorkArea(WorkArea * work_area)
 		d.tab_widget_->setCurrentWidget(wa);
 	else
 		// Make sure the work area is up to date.
-		currentTabChanged(d.tab_widget_->currentIndex());
+		d.tab_widget_->on_currentTabChanged(d.tab_widget_->currentIndex());
 	wa->setFocus();
 }
 

@@ -20,10 +20,12 @@
 
 #include "frontends/LyXView.h"
 
+#include "Buffer.h"
 #include "BufferView.h"
 #include "Color.h"
 #include "debug.h"
 #include "FuncRequest.h"
+#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "version.h"
 
@@ -36,7 +38,9 @@
 #include <QLayout>
 #include <QMainWindow>
 #include <QPainter>
+#include <QPushButton>
 #include <QScrollBar>
+#include <QTabBar>
 #include <QTimer>
 
 #include <boost/bind.hpp>
@@ -685,6 +689,66 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 		default:
 			return QWidget::inputMethodQuery(query);
 	}
+}
+
+////////////////////////////////////////////////////////////////////
+// TabWorkArea implementation.
+////////////////////////////////////////////////////////////////////
+TabWorkArea::TabWorkArea(QWidget * parent): QTabWidget(parent)
+{
+	QPushButton * closeTabButton = new QPushButton(this);
+	FileName const file = support::libFileSearch("images", "closetab", "png");
+	if (!file.empty()) {
+		QPixmap pm(toqstr(file.absFilename()));
+		closeTabButton->setIcon(QIcon(pm));
+		closeTabButton->setMaximumSize(pm.size());
+		closeTabButton->setFlat(true);
+	} else {
+		closeTabButton->setText("Close");
+	}
+	closeTabButton->setCursor(Qt::ArrowCursor);
+	closeTabButton->setToolTip(tr("Close tab"));
+	closeTabButton->setEnabled(true);
+
+	QObject::connect(this, SIGNAL(currentChanged(int)),
+		this, SLOT(on_currentTabChanged(int)));
+	QObject::connect(closeTabButton, SIGNAL(clicked()),
+		this, SLOT(closeCurrentTab()));
+
+	setCornerWidget(closeTabButton);
+#if QT_VERSION >= 0x040200
+	setUsesScrollButtons(true);
+#endif
+}
+
+
+void TabWorkArea::showBar(bool show)
+{
+	tabBar()->setVisible(show);
+}
+
+
+void TabWorkArea::on_currentTabChanged(int i)
+{
+	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
+	BOOST_ASSERT(wa);
+	BufferView & bv = wa->bufferView();
+	bv.updateMetrics(false);
+	bv.cursor().fixIfBroken();
+	wa->setUpdatesEnabled(true);
+	wa->redraw();
+	wa->setFocus();
+	///
+	currentWorkAreaChanged(wa);
+
+	LYXERR(Debug::GUI) << "currentTabChanged " << i
+		<< "File" << bv.buffer().fileName() << endl;
+}
+
+
+void TabWorkArea::closeCurrentTab()
+{
+	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
 }
 
 } // namespace frontend
