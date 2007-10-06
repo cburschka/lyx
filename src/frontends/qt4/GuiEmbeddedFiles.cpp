@@ -25,6 +25,8 @@
 
 #include "support/FileFilterList.h"
 #include "support/convert.h"
+#include "support/FileName.h"
+#include "support/filetools.h"
 
 using std::string;
 
@@ -33,6 +35,8 @@ namespace lyx {
 namespace frontend {
 
 using support::FileFilterList;
+using support::FileName;
+using support::libFileSearch;
 
 GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog
 		(ControlEmbeddedFiles & controller)
@@ -40,6 +44,18 @@ GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog
 {
 	setupUi(this);
 	setWindowTitle("LyX: " + qt_("Embedded Files"));
+	// Temporary icons.
+	FileName icon_path = libFileSearch("images", "tabular-feature_set-all-lines.png");
+	selectPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	icon_path =  libFileSearch("images", "tabular-feature_unset-all-lines.png");
+	unselectPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	icon_path =  libFileSearch("images", "file-open.png");
+	addPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	icon_path =  libFileSearch("images", "depth-decrement.png");
+	extractPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	icon_path =  libFileSearch("images", "depth-increment.png");
+	updatePB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+
 	updateView();
 }
 
