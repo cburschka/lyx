@@ -232,7 +232,7 @@ void TocWidget::enableControls(bool enable)
 void TocWidget::updateView()
 {
 	LYXERR(Debug::GUI) << "In TocWidget::updateView()" << endl;
-	select(form_.getCurrentIndex(typeCO->currentIndex()));
+	select(form_.currentIndex(typeCO->currentIndex()));
 }
 
 
@@ -289,7 +289,7 @@ void TocWidget::setTocModel(size_t type)
 
 	LYXERR(Debug::GUI) << "In TocWidget::updateGui()" << endl;
 
-	select(form_.getCurrentIndex(typeCO->currentIndex()));
+	select(form_.currentIndex(typeCO->currentIndex()));
 
 	if (toc_model) {
 		LYXERR(Debug::GUI)

@@ -29,7 +29,6 @@
 #include "GuiPrint.h"
 #include "GuiSearch.h"
 #include "GuiShowFile.h"
-#include "GuiToc.h"
 #include "GuiView.h"
 #include "TocWidget.h"
 #include "GuiURL.h"
@@ -116,6 +115,7 @@ Dialog * createGuiSpellchecker(LyXView & lv);
 Dialog * createGuiTabularCreate(LyXView & lv);
 Dialog * createGuiTabular(LyXView & lv);
 Dialog * createGuiTexInfo(LyXView & lv);
+Dialog * createGuiToc(LyXView & lv);
 Dialog * createGuiThesaurus(LyXView & lv);
 Dialog * createGuiURL(LyXView & lv);
 Dialog * createGuiVSpace(LyXView & lv);
@@ -216,15 +216,8 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "thesaurus")
 		return createGuiThesaurus(lyxview_);
 #endif
-	if (name == "toc") {
-#ifdef Q_WS_MACX
-		// On Mac show as a drawer at the right
-		return new DockView<GuiToc, TocWidget>(guiview, name,
-			Qt::RightDockWidgetArea, Qt::Drawer);
-#else
-		return new DockView<GuiToc, TocWidget>(guiview, name);
-#endif
-	}
+	if (name == "toc")
+		return createGuiToc(lyxview_);
 	if (name == "url")
 		return new GuiURLDialog(lyxview_);
 	if (name == "vspace")

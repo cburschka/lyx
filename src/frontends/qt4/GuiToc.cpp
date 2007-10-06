@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Abdelrazak Younes
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,31 +13,37 @@
 #include <config.h>
 
 #include "GuiToc.h"
+#include "GuiView.h"
+#include "DockView.h"
+#include "TocWidget.h"
 
 #include "TocModel.h"
 #include "qt_helpers.h"
 
+#include "Buffer.h"
+#include "BufferView.h"
+#include "BufferParams.h"
 #include "debug.h"
+#include "FloatList.h"
+#include "FuncRequest.h"
+#include "gettext.h"
+
+#include "frontends/LyXView.h"
+
+#include "support/convert.h"
 
 #include <algorithm>
 
 using std::endl;
+using std::string;
+
 
 namespace lyx {
 namespace frontend {
 
-
 GuiToc::GuiToc(Dialog & dialog)
-	: ControlToc(dialog)
+	: ControlCommand(dialog, "toc")
 {
-}
-
-
-bool GuiToc::canOutline(int type) const
-{
-	if (type < 0)
-		return false;
-	return ControlToc::canOutline(type);
 }
 
 
@@ -68,7 +75,7 @@ QStandardItemModel * GuiToc::tocModel(int type)
 }
 
 
-QModelIndex const GuiToc::getCurrentIndex(int type) const
+QModelIndex GuiToc::currentIndex(int type) const
 {
 	if (type < 0)
 		return QModelIndex();
@@ -79,7 +86,7 @@ QModelIndex const GuiToc::getCurrentIndex(int type) const
 	if(!canOutline(type))
 		return QModelIndex();
 
-	return toc_models_[type]->modelIndex(getCurrentTocItem(type));
+	return toc_models_[type]->modelIndex(currentTocItem(type));
 }
 
 
@@ -99,17 +106,8 @@ void GuiToc::goTo(int type, QModelIndex const & index)
 
 	LYXERR(Debug::GUI) << "GuiToc::goTo " << to_utf8(it->str()) << endl;
 
-	ControlToc::goTo(*it);
-}
-
-
-bool GuiToc::initialiseParams(std::string const & data)
-{
-	if (!ControlToc::initialiseParams(data))
-		return false;
-	updateView();
-	modelReset();
-	return true;
+	string const tmp = convert<string>(it->id());
+	lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
 }
 
 
@@ -120,6 +118,120 @@ void GuiToc::updateView()
 	TocList::const_iterator end = tocs().end();
 	for (; it != end; ++it)
 		toc_models_.push_back(new TocModel(it->second));
+}
+
+
+TocList const & GuiToc::tocs() const
+{
+	return buffer().getMasterBuffer()->tocBackend().tocs();
+}
+
+
+bool GuiToc::initialiseParams(string const & data)
+{
+	if (!ControlCommand::initialiseParams(data))
+		return false;
+
+	updateView();
+	modelReset();
+
+	types_.clear();
+	type_names_.clear();
+	TocList const & tocs = buffer().getMasterBuffer()->
+		tocBackend().tocs();
+	TocList::const_iterator it = tocs.begin();
+	TocList::const_iterator end = tocs.end();
+	for (; it != end; ++it) {
+		types_.push_back(it->first);
+		type_names_.push_back(guiName(it->first));
+	}
+
+	string selected_type ;
+	if(params()["type"].empty()) //Then plain toc...
+		selected_type = params().getCmdName();
+	else
+		selected_type = to_ascii(params()["type"]);
+	selected_type_ = -1;
+	for (size_t i = 0;  i != types_.size(); ++i) {
+		if (selected_type == types_[i]) {
+			selected_type_ = i;
+			break;
+		}
+	}
+
+	return true;
+}
+
+
+bool GuiToc::canOutline(int type) const
+{
+	return types_[type] == "tableofcontents";
+}
+
+
+void GuiToc::outlineUp()
+{
+	dispatch(FuncRequest(LFUN_OUTLINE_UP));
+}
+
+
+void GuiToc::outlineDown()
+{
+	dispatch(FuncRequest(LFUN_OUTLINE_DOWN));
+}
+
+
+void GuiToc::outlineIn()
+{
+	dispatch(FuncRequest(LFUN_OUTLINE_IN));
+}
+
+
+void GuiToc::outlineOut()
+{
+	dispatch(FuncRequest(LFUN_OUTLINE_OUT));
+}
+
+
+void GuiToc::updateBackend()
+{
+	buffer().getMasterBuffer()->tocBackend().update();
+	buffer().structureChanged();
+}
+
+
+TocIterator GuiToc::currentTocItem(int type) const
+{
+	BOOST_ASSERT(bufferview());
+	ParConstIterator it(bufferview()->cursor());
+	Buffer const * master = buffer().getMasterBuffer();
+	return master->tocBackend().item(types_[type], it);
+}
+
+
+docstring GuiToc::guiName(string const & type) const
+{
+	if (type == "tableofcontents")
+		return _("Table of Contents");
+
+	FloatList const & floats = buffer().params().getTextClass().floats();
+	if (floats.typeExist(type))
+		return _(floats.getType(type).listName());
+
+	return _(type);
+}
+
+
+Dialog * createGuiToc(LyXView & lv)
+{
+	GuiViewBase & guiview = static_cast<GuiViewBase &>(lv);
+#ifdef Q_WS_MACX
+	// On Mac show as a drawer at the right
+	return new DockView<GuiToc, TocWidget>(guiview, "toc",
+		Qt::RightDockWidgetArea, Qt::Drawer);
+#else
+	return new DockView<GuiToc, TocWidget>(guiview, "toc");
+#endif
 }
 
 
