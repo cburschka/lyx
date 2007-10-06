@@ -12,7 +12,6 @@
 
 #include "GuiThesaurus.h"
 
-#include "ControlThesaurus.h"
 #include "qt_helpers.h"
 #include "debug.h"
 
@@ -23,18 +22,21 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 
+#include "lyxfind.h"
+#include "FuncRequest.h"
+
 using std::string;
 
 
 namespace lyx {
 namespace frontend {
 
-GuiThesaurusDialog::GuiThesaurusDialog(LyXView & lv)
-	: GuiDialog(lv, "thesaurus")
+GuiThesaurus::GuiThesaurus(LyXView & lv)
+	: GuiDialog(lv, "thesaurus"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("Thesaurus"));
-	setController(new ControlThesaurus(*this));
+	setController(this, false);
 
 	meaningsTV->setColumnCount(1);
 	meaningsTV->header()->hide();
@@ -43,8 +45,8 @@ GuiThesaurusDialog::GuiThesaurusDialog(LyXView & lv)
 		this, SLOT(slotClose()));
 	connect(replaceED, SIGNAL(returnPressed()),
 		this, SLOT(replaceClicked()));
-	connect(replaceED, SIGNAL(textChanged(const QString &)),
-		this, SLOT(change_adaptor() ) );
+	connect(replaceED, SIGNAL(textChanged(QString)),
+		this, SLOT(change_adaptor()));
 	connect(entryED, SIGNAL(returnPressed()),
 		this, SLOT(entryChanged()));
 	connect(replacePB, SIGNAL(clicked()),
@@ -64,34 +66,29 @@ GuiThesaurusDialog::GuiThesaurusDialog(LyXView & lv)
 }
 
 
-ControlThesaurus & GuiThesaurusDialog::controller()
-{
-	return static_cast<ControlThesaurus &>(GuiDialog::controller());
-}
-
-void GuiThesaurusDialog::change_adaptor()
+void GuiThesaurus::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiThesaurusDialog::closeEvent(QCloseEvent * e)
+void GuiThesaurus::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	GuiDialog::closeEvent(e);
 }
 
 
-void GuiThesaurusDialog::entryChanged()
+void GuiThesaurus::entryChanged()
 {
 	updateLists();
 }
 
 
-void GuiThesaurusDialog::selectionChanged()
+void GuiThesaurus::selectionChanged()
 {
 	int const col = meaningsTV->currentColumn();
-	if (col < 0 || controller().isBufferReadonly())
+	if (col < 0 || isBufferReadonly())
 		return;
 
 	replaceED->setText(meaningsTV->currentItem()->text(col));
@@ -100,13 +97,13 @@ void GuiThesaurusDialog::selectionChanged()
 }
 
 
-void GuiThesaurusDialog::itemClicked(QTreeWidgetItem * /*item*/, int /*col*/)
+void GuiThesaurus::itemClicked(QTreeWidgetItem * /*item*/, int /*col*/)
 {
 	selectionChanged();
 }
 
 
-void GuiThesaurusDialog::selectionClicked(QTreeWidgetItem * item, int col)
+void GuiThesaurus::selectionClicked(QTreeWidgetItem * item, int col)
 {
 	entryED->setText(item->text(col));
 	selectionChanged();
@@ -114,12 +111,12 @@ void GuiThesaurusDialog::selectionClicked(QTreeWidgetItem * item, int col)
 }
 
 
-void GuiThesaurusDialog::updateLists()
+void GuiThesaurus::updateLists()
 {
 	meaningsTV->clear();
 	meaningsTV->setUpdatesEnabled(false);
 
-	Thesaurus::Meanings meanings = controller().getMeanings(qstring_to_ucs4(entryED->text()));
+	Thesaurus::Meanings meanings = getMeanings(qstring_to_ucs4(entryED->text()));
 
 	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
 		cit != meanings.end(); ++cit) {
@@ -138,18 +135,59 @@ void GuiThesaurusDialog::updateLists()
 }
 
 
-void GuiThesaurusDialog::updateContents()
+void GuiThesaurus::updateContents()
 {
-	entryED->setText(toqstr(controller().text()));
+	entryED->setText(toqstr(text_));
 	replaceED->setText("");
 	updateLists();
 }
 
 
-void GuiThesaurusDialog::replaceClicked()
+void GuiThesaurus::replaceClicked()
 {
-	controller().replace(qstring_to_ucs4(replaceED->text()));
+	replace(qstring_to_ucs4(replaceED->text()));
 }
+
+
+bool GuiThesaurus::initialiseParams(string const & data)
+{
+	text_ = from_utf8(data);
+	return true;
+}
+
+
+void GuiThesaurus::clearParams()
+{
+	text_.erase();
+}
+
+
+void GuiThesaurus::replace(docstring const & newstr)
+{
+	/* FIXME: this is not suitable ! We need to have a "lock"
+	 * on a particular charpos in a paragraph that is broken on
+	 * deletion/change !
+	 */
+	docstring const data =
+		replace2string(text_, newstr,
+				     true,  // case sensitive
+				     true,  // match word
+				     false, // all words
+				     true); // forward
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+}
+
+
+Thesaurus::Meanings const & GuiThesaurus::getMeanings(docstring const & str)
+{
+	if (str != laststr_)
+		meanings_ = thesaurus.lookup(str);
+	return meanings_;
+}
+
+
+Dialog * createGuiThesaurus(LyXView & lv) { return new GuiThesaurus(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

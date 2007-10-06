@@ -13,7 +13,7 @@
 #define GUITHESAURUS_H
 
 #include "GuiDialog.h"
-#include "ControlThesaurus.h"
+#include "Thesaurus.h"
 #include "ui_ThesaurusUi.h"
 
 class QTreeWidgetItem;
@@ -21,12 +21,12 @@ class QTreeWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiThesaurusDialog : public GuiDialog, public Ui::ThesaurusUi
+class GuiThesaurus : public GuiDialog, public Ui::ThesaurusUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiThesaurusDialog(LyXView & lv);
+	GuiThesaurus(LyXView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -39,11 +39,38 @@ private Q_SLOTS:
 private:
 	void closeEvent(QCloseEvent * e);
 	/// parent controller
-	ControlThesaurus & controller();
+	Controller & controller() { return *this; }
 	/// update
 	void updateContents();
 	///
 	void updateLists();
+	///
+	bool initialiseParams(std::string const & data);
+	///
+	void clearParams();
+	///
+	void dispatchParams() {}
+	///
+	bool isBufferDependent() const { return true; }
+
+	/// replace the particular string
+	void replace(docstring const & newstr);
+
+	/// get meanings
+	Thesaurus::Meanings const & getMeanings(docstring const & str);
+
+private:
+	/// last string looked up
+	docstring laststr_;
+
+	/// entries for last string
+	Thesaurus::Meanings meanings_;
+
+	/// original string
+	docstring text_;
+
+	/// not needed.
+	void apply() {}
 };
 
 } // namespace frontend

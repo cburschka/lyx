@@ -35,11 +35,6 @@
 #include "TocWidget.h"
 #include "GuiURL.h"
 
-#ifdef HAVE_LIBAIKSAURUS
-#include "ControlThesaurus.h"
-#include "GuiThesaurus.h"
-#endif
-
 // Uncomment this if you prefer dock widget
 //#define USE_DOCK_WIDGET
 
@@ -220,7 +215,7 @@ Dialog * Dialogs::build(string const & name)
 		return createGuiTexInfo(lyxview_);
 #ifdef HAVE_LIBAIKSAURUS
 	if (name == "thesaurus")
-		return new GuiThesaurusDialog(lyxview_);
+		return createGuiThesaurus(lyxview_);
 #endif
 	if (name == "toc") {
 #ifdef Q_WS_MACX
