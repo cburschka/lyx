@@ -17,7 +17,6 @@
 #include "DialogView.h"
 #include "DockView.h"
 #include "GuiBibitem.h"
-#include "GuiCitation.h"
 #include "GuiDelimiter.h"
 #include "GuiDocument.h"
 #include "GuiEmbeddedFiles.h"
@@ -163,7 +162,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "character") {
 		dialog = createGuiCharacter(lyxview_);
 	} else if (name == "citation") {
-		dialog = new GuiCitationDialog(lyxview_);
+		dialog = createGuiCitation(lyxview_);
 	} else if (name == "document") {
 		dialog = new GuiDocumentDialog(lyxview_);
 	} else if (name == "embedding") {
