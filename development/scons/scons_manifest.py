@@ -2318,6 +2318,7 @@ lib_doc_es_files = Split('''
     Extended.lyx
     Intro.lyx
     Tutorial.lyx
+    UserGuide.lyx
 ''')
 
 
