@@ -195,8 +195,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		int d = 0;
 		docstring s = layout_.labelstring;
 		theFontMetrics(font).rectText(s, w, a, d);
-		dim.wid = max(dim.wid, w);
-		dim.des += d;
+		dim.des += a + d;
 		break;
 		}
 	case TopButton:
@@ -320,9 +319,10 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			int d = 0;
 			docstring s = layout_.labelstring;
 			theFontMetrics(font).rectText(s, w, a, d);
-			desc += d;
-			pi.pain.rectText(x + (textdim.wid - w) / 2, y + desc + a,
+			int const ww = max(textdim.wid, w);
+			pi.pain.rectText(x + (ww - w) / 2, y + desc + a,
 				s, font, Color::none, Color::none);
+			desc += d;
 		}
 
 		// a visual cue when the cursor is inside the inset
