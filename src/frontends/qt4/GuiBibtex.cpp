@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Herbert Voß
+ * \author Angus Leeming
  * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
@@ -14,16 +15,23 @@
 
 #include "GuiBibtex.h"
 
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "debug.h"
 #include "ui_BibtexAddUi.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 #include "LyXRC.h"
+#include "gettext.h"
 
-#include "ControlBibtex.h"
 #include "ButtonPolicy.h"
 
 #include "support/filetools.h" // changeExtension
 #include "support/lstrings.h"
+#include "support/FileFilterList.h"
+
+#include "frontend_helpers.h"
+
 
 #include <QPushButton>
 #include <QListWidget>
@@ -31,29 +39,30 @@
 #include <QCloseEvent>
 #include <QLineEdit>
 
-#include "debug.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
-
-using std::vector;
+using std::pair;
 using std::string;
+using std::vector;
 
 
 namespace lyx {
 namespace frontend {
 
 using support::changeExtension;
+using support::contains;
+using support::FileFilterList;
+using support::onlyFilename;
+using support::prefixIs;
 using support::split;
 using support::trim;
 
 
-GuiBibtexDialog::GuiBibtexDialog(LyXView & lv)
-	: GuiDialog(lv, "bibtex")
+GuiBibtex::GuiBibtex(LyXView & lv)
+	: GuiDialog(lv, "bibtex"), ControlCommand(*this, "bibtex")
 {
 	setupUi(this);
 
 	setViewTitle( _("BibTeX Bibliography"));
-	setController(new ControlBibtex(*this));
+	setController(this, false);
 
 	QDialog::setModal(true);
 
@@ -65,7 +74,7 @@ GuiBibtexDialog::GuiBibtexDialog(LyXView & lv)
 		this, SLOT(browsePressed()));
 	connect(deletePB, SIGNAL(clicked()),
 		this, SLOT(deletePressed()));
-	connect(styleCB, SIGNAL(editTextChanged(const QString &)),
+	connect(styleCB, SIGNAL(editTextChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(databaseLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(databaseChanged()));
@@ -111,13 +120,7 @@ GuiBibtexDialog::GuiBibtexDialog(LyXView & lv)
 }
 
 
-ControlBibtex & GuiBibtexDialog::controller()
-{
-	return static_cast<ControlBibtex &>(GuiDialog::controller());
-}
-
-
-void GuiBibtexDialog::bibEDChanged()
+void GuiBibtex::bibEDChanged()
 {
 	// Indicate to the button controller that the contents have
 	// changed. The actual test of validity is carried out by
@@ -126,15 +129,15 @@ void GuiBibtexDialog::bibEDChanged()
 }
 
 
-void GuiBibtexDialog::change_adaptor()
+void GuiBibtex::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiBibtexDialog::browsePressed()
+void GuiBibtex::browsePressed()
 {
-	docstring const file = controller().browseBst(docstring());
+	docstring const file = browseBst(docstring());
 
 	if (!file.empty()) {
 		// FIXME UNICODE
@@ -158,9 +161,9 @@ void GuiBibtexDialog::browsePressed()
 }
 
 
-void GuiBibtexDialog::browseBibPressed()
+void GuiBibtex::browseBibPressed()
 {
-	docstring const file = trim(controller().browseBib(docstring()));
+	docstring const file = trim(browseBib(docstring()));
 
 	if (!file.empty()) {
 		// FIXME UNICODE
@@ -182,14 +185,14 @@ void GuiBibtexDialog::browseBibPressed()
 }
 
 
-void GuiBibtexDialog::addPressed()
+void GuiBibtex::addPressed()
 {
 	add_bc_.setValid(false);
 	add_->exec();
 }
 
 
-void GuiBibtexDialog::addDatabase()
+void GuiBibtex::addDatabase()
 {
 	int const sel = add_->bibLW->currentRow();
 	docstring const file = trim(qstring_to_ucs4(add_->bibED->text()));
@@ -223,7 +226,7 @@ void GuiBibtexDialog::addDatabase()
 }
 
 
-void GuiBibtexDialog::deletePressed()
+void GuiBibtex::deletePressed()
 {
 	databaseLW->takeItem(databaseLW->currentRow());
 	changed();
@@ -231,32 +234,32 @@ void GuiBibtexDialog::deletePressed()
 
 
 
-void GuiBibtexDialog::databaseChanged()
+void GuiBibtex::databaseChanged()
 {
-	deletePB->setEnabled(!controller().isBufferReadonly() && databaseLW->currentRow() != -1);
+	deletePB->setEnabled(!isBufferReadonly() && databaseLW->currentRow() != -1);
 }
 
 
-void GuiBibtexDialog::availableChanged()
+void GuiBibtex::availableChanged()
 {
 	add_bc_.setValid(true);
 }
 
 
-void GuiBibtexDialog::closeEvent(QCloseEvent *e)
+void GuiBibtex::closeEvent(QCloseEvent *e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiBibtexDialog::updateContents()
+void GuiBibtex::updateContents()
 {
-	bool bibtopic = controller().usingBibtopic();
+	bool bibtopic = usingBibtopic();
 
 	databaseLW->clear();
 
-	docstring bibs(controller().params()["bibfiles"]);
+	docstring bibs = params()["bibfiles"];
 	docstring bib;
 
 	while (!bibs.empty()) {
@@ -269,19 +272,19 @@ void GuiBibtexDialog::updateContents()
 	add_->bibLW->clear();
 
 	vector<string> bib_str;
-	controller().getBibFiles(bib_str);
+	getBibFiles(bib_str);
 	for (vector<string>::const_iterator it = bib_str.begin();
 		it != bib_str.end(); ++it) {
 		string bibItem(changeExtension(*it, ""));
 		add_->bibLW->addItem(toqstr(bibItem));
 	}
 
-	string bibstyle(controller().getStylefile());
+	string bibstyle = getStylefile();
 
-	bibtocCB->setChecked(controller().bibtotoc() && !bibtopic);
+	bibtocCB->setChecked(bibtotoc() && !bibtopic);
 	bibtocCB->setEnabled(!bibtopic);
 
-	docstring btprint(controller().params()["btprint"]);
+	docstring btprint(params()["btprint"]);
 	int btp = 0;
 	if (btprint == "btPrintNotCited")
 		btp = 1;
@@ -296,7 +299,7 @@ void GuiBibtexDialog::updateContents()
 	int item_nr(-1);
 
 	vector<string> str;
-	controller().getBibStyles(str);
+	getBibStyles(str);
 	for (vector<string>::const_iterator it = str.begin();
 		it != str.end(); ++it) {
 		string item(changeExtension(*it, ""));
@@ -317,7 +320,7 @@ void GuiBibtexDialog::updateContents()
 }
 
 
-void GuiBibtexDialog::applyView()
+void GuiBibtex::applyView()
 {
 	docstring dbs = qstring_to_ucs4(databaseLW->item(0)->text());
 
@@ -327,22 +330,22 @@ void GuiBibtexDialog::applyView()
 		dbs += qstring_to_ucs4(databaseLW->item(i)->text());
 	}
 
-	controller().params()["bibfiles"] = dbs;
+	params()["bibfiles"] = dbs;
 
 	docstring const bibstyle(qstring_to_ucs4(styleCB->currentText()));
 	bool const bibtotoc(bibtocCB->isChecked());
 
 	if (bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
-		controller().params()["options"] = "bibtotoc," + bibstyle;
+		params()["options"] = "bibtotoc," + bibstyle;
 	} else if (bibtotoc) {
 		// bibtotoc and no style
-		controller().params()["options"] = from_ascii("bibtotoc");
+		params()["options"] = from_ascii("bibtotoc");
 	} else {
 		// only style. An empty one is valid, because some
 		// documentclasses have an own \bibliographystyle{}
 		// command!
-		controller().params()["options"] = bibstyle;
+		params()["options"] = bibstyle;
 	}
 
 	// bibtopic allows three kinds of sections:
@@ -353,25 +356,152 @@ void GuiBibtexDialog::applyView()
 
 	switch (btp) {
 	case 0:
-		controller().params()["btprint"] = from_ascii("btPrintCited");
+		params()["btprint"] = from_ascii("btPrintCited");
 		break;
 	case 1:
-		controller().params()["btprint"] = from_ascii("btPrintNotCited");
+		params()["btprint"] = from_ascii("btPrintNotCited");
 		break;
 	case 2:
-		controller().params()["btprint"] = from_ascii("btPrintAll");
+		params()["btprint"] = from_ascii("btPrintAll");
 		break;
 	}
 
-	if (!controller().usingBibtopic())
-		controller().params()["btprint"] = docstring();
+	if (!usingBibtopic())
+		params()["btprint"] = docstring();
 }
 
 
-bool GuiBibtexDialog::isValid()
+bool GuiBibtex::isValid()
 {
 	return databaseLW->count() != 0;
 }
+
+
+docstring const GuiBibtex::browseBib(docstring const & in_name) const
+{
+	// FIXME UNICODE
+	pair<docstring, docstring> dir1(_("Documents|#o#O"),
+				  from_utf8(lyxrc.document_path));
+	FileFilterList const filter(_("BibTeX Databases (*.bib)"));
+	return browseRelFile(in_name, from_utf8(bufferFilepath()),
+			     _("Select a BibTeX database to add"),
+			     filter, false, dir1);
+}
+
+
+docstring const GuiBibtex::browseBst(docstring const & in_name) const
+{
+	// FIXME UNICODE
+	pair<docstring, docstring> dir1(_("Documents|#o#O"),
+				  from_utf8(lyxrc.document_path));
+	FileFilterList const filter(_("BibTeX Styles (*.bst)"));
+	return browseRelFile(in_name, from_utf8(bufferFilepath()),
+			     _("Select a BibTeX style"), filter, false, dir1);
+}
+
+
+void GuiBibtex::getBibStyles(vector<string> & data) const
+{
+	data.clear();
+
+	getTexFileList("bstFiles.lst", data);
+	// test, if we have a valid list, otherwise run rescan
+	if (data.empty()) {
+		rescanBibStyles();
+		getTexFileList("bstFiles.lst", data);
+	}
+	vector<string>::iterator it  = data.begin();
+	vector<string>::iterator end = data.end();
+	for (; it != end; ++it) {
+		*it = onlyFilename(*it);
+	}
+	// sort on filename only (no path)
+	std::sort(data.begin(), data.end());
+}
+
+
+void GuiBibtex::getBibFiles(vector<string> & data) const
+{
+	data.clear();
+
+	getTexFileList("bibFiles.lst", data);
+	// test, if we have a valid list, otherwise run rescan
+	if (data.empty()) {
+		rescanBibStyles();
+		getTexFileList("bibFiles.lst", data);
+	}
+	vector<string>::iterator it  = data.begin();
+	vector<string>::iterator end = data.end();
+	for (; it != end; ++it) {
+		*it = onlyFilename(*it);
+	}
+	// sort on filename only (no path)
+	std::sort(data.begin(), data.end());
+}
+
+
+void GuiBibtex::rescanBibStyles() const
+{
+	rescanTexStyles();
+}
+
+
+bool GuiBibtex::usingBibtopic() const
+{
+	return buffer().params().use_bibtopic;
+}
+
+
+bool GuiBibtex::bibtotoc() const
+{
+	return prefixIs(to_utf8(params()["options"]), "bibtotoc");
+}
+
+
+string const GuiBibtex::getStylefile() const
+{
+	// the different bibtex packages have (and need) their
+	// own "plain" stylefiles
+	biblio::CiteEngine const engine = buffer().params().getEngine();
+	docstring defaultstyle;
+	switch (engine) {
+	case biblio::ENGINE_BASIC:
+		defaultstyle = from_ascii("plain");
+		break;
+	case biblio::ENGINE_NATBIB_AUTHORYEAR:
+		defaultstyle = from_ascii("plainnat");
+		break;
+	case biblio::ENGINE_NATBIB_NUMERICAL:
+		defaultstyle = from_ascii("plainnat");
+		break;
+	case biblio::ENGINE_JURABIB:
+		defaultstyle = from_ascii("jurabib");
+		break;
+	}
+
+	docstring bst = params()["options"];
+	if (bibtotoc()){
+		// bibstyle exists?
+		if (contains(bst, ',')) {
+			docstring bibtotoc = from_ascii("bibtotoc");
+			bst = split(bst, bibtotoc, ',');
+		} else
+			bst.erase();
+	}
+
+	// propose default style file for new insets
+	// existing insets might have (legally) no bst files
+	// (if the class already provides a style)
+	if (bst.empty() && params()["bibfiles"].empty())
+		bst = defaultstyle;
+
+	// FIXME UNICODE
+	return to_utf8(bst);
+}
+
+
+Dialog * createGuiBibtex(LyXView & lv) { return new GuiBibtex(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

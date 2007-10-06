@@ -95,23 +95,12 @@ static QString version()
 }
 
 
-class ControlAbout : public Controller
-{
-public:
-	ControlAbout(Dialog & parent) : Controller(parent) {}
-	bool initialiseParams(std::string const &) { return true; }
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return false; }
-};
-
-
-GuiAboutDialog::GuiAboutDialog(LyXView & lv)
-	: GuiDialog(lv, "aboutlyx")
+GuiAbout::GuiAbout(LyXView & lv)
+	: GuiDialog(lv, "aboutlyx"), Controller(this)
 {
 	setupUi(this);
 	setViewTitle(_("About LyX"));
-	setController(new ControlAbout(*this));
+	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
 
@@ -124,6 +113,10 @@ GuiAboutDialog::GuiAboutDialog(LyXView & lv)
 	versionLA->setText(version());
 	creditsTB->setHtml(credits());
 }
+
+
+Dialog * createGuiAbout(LyXView & lv) { return new GuiAbout(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

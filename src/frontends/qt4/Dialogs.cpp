@@ -16,9 +16,7 @@
 #include "ButtonController.h"
 #include "DialogView.h"
 #include "DockView.h"
-#include "GuiAbout.h"
 #include "GuiBibitem.h"
-#include "GuiBibtex.h"
 #include "GuiBox.h"
 #include "GuiChanges.h"
 #include "GuiCharacter.h"
@@ -154,11 +152,11 @@ Dialog * Dialogs::build(string const & name)
 	GuiViewBase & guiview = static_cast<GuiViewBase &>(lyxview_);
 
 	if (name == "aboutlyx") {
-		dialog = new GuiAboutDialog(lyxview_);
+		dialog = createGuiAbout(lyxview_);
 	} else if (name == "bibitem") {
 		dialog = new GuiBibitemDialog(lyxview_);
 	} else if (name == "bibtex") {
-		dialog = new GuiBibtexDialog(lyxview_);
+		dialog = createGuiBibtex(lyxview_);
 	} else if (name == "box") {
 		dialog = new GuiBoxDialog(lyxview_);
 	} else if (name == "branch") {

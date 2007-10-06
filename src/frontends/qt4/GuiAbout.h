@@ -18,13 +18,19 @@
 namespace lyx {
 namespace frontend {
 
-class GuiAboutDialog : public GuiDialog, public Ui::AboutUi
+class GuiAbout : public GuiDialog, public Ui::AboutUi, public Controller
 {
 	Q_OBJECT
 
 public:
 	// Constructor
-	GuiAboutDialog(LyXView & lv);
+	GuiAbout(LyXView & lv);
+
+	// Controller stuff
+	bool initialiseParams(std::string const &) { return true; }
+	void clearParams() {}
+	void dispatchParams() {}
+	bool isBufferDependent() const { return false; }
 };
 
 } // namespace frontend
