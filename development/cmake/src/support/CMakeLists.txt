@@ -27,7 +27,7 @@ lyx_add_msvc_pch(support)
 	
 include_directories(${TOP_SRC_DIR}/src/support
 	${TOP_SRC_DIR}/src/support/minizip
-	${QT_INCLUDE_DIR} ${QT_INCLUDE_DIR}/QtCore
+	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR})
 
 

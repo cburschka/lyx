@@ -24,7 +24,7 @@ add_definitions(-DQT_GENUINE_STR -DLYX_BUILD_QT4_FRONTEND)
 include_directories(	
 	${TOP_SRC_DIR}/src/frontends/qt4 
 	${TOP_SRC_DIR}/src/frontends/controllers
-	${QT_INCLUDE_DIR} ${QT_INCLUDE_DIR}/QtCore  ${QT_INCLUDE_DIR}/QtGui
+	${QT_INCLUDES}
 	${CMAKE_CURRENT_BINARY_DIR})
 
 if(MERGE_FILES)
