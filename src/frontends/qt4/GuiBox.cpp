@@ -14,6 +14,9 @@
 
 #include "GuiBox.h"
 
+#include "FuncRequest.h"
+#include "gettext.h"
+
 #include "LengthCombo.h"
 #include "qt_helpers.h"
 #include "lengthcommon.h"
@@ -28,18 +31,54 @@
 #include <QLineEdit>
 #include <QCloseEvent>
 
-
 using std::string;
+using std::vector;
+
 
 namespace lyx {
 namespace frontend {
 
-GuiBoxDialog::GuiBoxDialog(LyXView & lv)
-	: GuiDialog(lv, "box")
+
+void box_gui_tokens(vector<string> & ids, vector<docstring> & gui_names)
+{
+	char const * const ids_[] = {
+		"Frameless", "Boxed", "ovalbox",
+		"Ovalbox", "Shadowbox", "Doublebox"};
+	size_t const ids_size = sizeof(ids_) / sizeof(char *);
+	ids = vector<string>(ids_, ids_ + ids_size);
+	gui_names.clear();
+	gui_names.push_back(_("No frame drawn"));
+	gui_names.push_back(_("Rectangular box"));
+	gui_names.push_back(_("Oval box, thin"));
+	gui_names.push_back(_("Oval box, thick"));
+	gui_names.push_back(_("Shadow box"));
+	gui_names.push_back(_("Double box"));
+}
+
+
+void box_gui_tokens_special_length(vector<string> & ids,
+	vector<docstring> & gui_names)
+{
+	char const * const ids_[] = {
+		"none", "height", "depth",
+		"totalheight", "width"};
+	size_t const ids_size = sizeof(ids_) / sizeof(char *);
+	ids = vector<string>(ids_, ids_ + ids_size);
+	gui_names.clear();
+	gui_names.push_back(_("None"));
+	gui_names.push_back(_("Height"));
+	gui_names.push_back(_("Depth"));
+	gui_names.push_back(_("Total Height"));
+	gui_names.push_back(_("Width"));
+}
+
+
+GuiBox::GuiBox(LyXView & lv)
+	: GuiDialog(lv, "box"), Controller(this), params_("")
 {
 	setupUi(this);
 	setViewTitle(_("Box Settings"));
-	setController(new ControlBox(*this));
+	setController(this, false);
 
 	// fill the box type choice
 	box_gui_tokens(ids_, gui_names_);
@@ -57,11 +96,11 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-	connect(widthED, SIGNAL(textChanged(const QString &)),
+	connect(widthED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(widthUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
-	connect(valignCO, SIGNAL(highlighted(const QString &)),
+	connect(valignCO, SIGNAL(highlighted(QString)),
 		this, SLOT(change_adaptor()));
 	connect(heightCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
@@ -105,26 +144,20 @@ GuiBoxDialog::GuiBoxDialog(LyXView & lv)
 }
 
 
-ControlBox & GuiBoxDialog::controller()
-{
-	return static_cast<ControlBox &>(GuiDialog::controller());
-}
-
-
-void GuiBoxDialog::closeEvent(QCloseEvent * e)
+void GuiBox::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiBoxDialog::change_adaptor()
+void GuiBox::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiBoxDialog::innerBoxChanged(const QString & str)
+void GuiBox::innerBoxChanged(const QString & str)
 {
 	bool const ibox = (str != qt_("None"));
 	valignCO->setEnabled(ibox);
@@ -139,7 +172,7 @@ void GuiBoxDialog::innerBoxChanged(const QString & str)
 }
 
 
-void GuiBoxDialog::typeChanged(int index)
+void GuiBox::typeChanged(int index)
 {
 	bool const frameless = (index == 0);
 	if (frameless) {
@@ -156,7 +189,7 @@ void GuiBoxDialog::typeChanged(int index)
 }
 
 
-void GuiBoxDialog::restoreClicked()
+void GuiBox::restoreClicked()
 {
 	setInnerType(true, 2);
 	widthED->setText("100");
@@ -170,9 +203,9 @@ void GuiBoxDialog::restoreClicked()
 }
 
 
-void GuiBoxDialog::updateContents()
+void GuiBox::updateContents()
 {
-	string type(controller().params().type);
+	string type = params_.type;
 	for (unsigned int i = 0; i < gui_names_.size(); ++i) {
 		if (type == ids_[i])
 			typeCO->setCurrentIndex(i);
@@ -180,23 +213,23 @@ void GuiBoxDialog::updateContents()
 
 	// default: minipage
 	unsigned int inner_type = 2;
-	if (!controller().params().inner_box)
+	if (!params_.inner_box)
 		// none
 		inner_type = 0;
-	if (controller().params().use_parbox)
+	if (params_.use_parbox)
 		// parbox
 		inner_type = 1;
-	bool frameless = (controller().params().type == "Frameless");
+	bool frameless = (params_.type == "Frameless");
 	setInnerType(frameless, inner_type);
 
-	char c = controller().params().pos;
+	char c = params_.pos;
 	valignCO->setCurrentIndex(string("tcb").find(c, 0));
-	c = controller().params().inner_pos;
+	c = params_.inner_pos;
 	ialignCO->setCurrentIndex(string("tcbs").find(c, 0));
-	c = controller().params().hor_pos;
+	c = params_.hor_pos;
 	halignCO->setCurrentIndex(string("lcrs").find(c, 0));
 
-	bool ibox = controller().params().inner_box;
+	bool ibox = params_.inner_box;
 	valignCO->setEnabled(ibox);
 	ialignCO->setEnabled(ibox);
 	halignCO->setEnabled(!ibox);
@@ -206,9 +239,9 @@ void GuiBoxDialog::updateContents()
 		(lyxrc.default_papersize > 3) ? Length::CM : Length::IN;
 
 	lengthToWidgets(widthED, widthUnitsLC,
-		(controller().params().width).asString(), default_unit);
+		(params_.width).asString(), default_unit);
 
-	string const special = controller().params().special;
+	string const special = params_.special;
 	if (!special.empty() && special != "none") {
 		QString spc;
 		for (unsigned int i = 0; i < gui_names_spec_.size(); i++) {
@@ -222,26 +255,24 @@ void GuiBoxDialog::updateContents()
 	}
 
 	lengthToWidgets(heightED, heightUnitsLC,
-		(controller().params().height).asString(), default_unit);
+		(params_.height).asString(), default_unit);
 	
-	string const height_special = controller().params().height_special;
+	string const height_special = params_.height_special;
 	if (!height_special.empty() && height_special != "none") {
 		QString hspc;
-		for (unsigned int i = 0; i < gui_names_spec_.size(); i++) {
-			if (height_special == ids_spec_[i]) {
+		for (unsigned int i = 0; i != gui_names_spec_.size(); i++) {
+			if (height_special == ids_spec_[i])
 				hspc = toqstr(gui_names_spec_[i].c_str());
-			}
 		}
-		for (int j = 0; j < heightUnitsLC->count(); j++) {
-			if (heightUnitsLC->itemText(j) == hspc) {
+		for (int j = 0; j != heightUnitsLC->count(); j++) {
+			if (heightUnitsLC->itemText(j) == hspc)
 				heightUnitsLC->setCurrentIndex(j);
-			}
 		}
 	}
 	// set no optional height when the value is the default "1\height"
 	// (special units like \height are handled as "in",
 	if (height_special == "totalheight" &&  
-		controller().params().height == Length("1in"))
+		params_.height == Length("1in"))
 		heightCB->setCheckState(Qt::Unchecked);
 	else
 		heightCB->setCheckState(Qt::Checked);
@@ -250,22 +281,16 @@ void GuiBoxDialog::updateContents()
 }
 
 
-void GuiBoxDialog::applyView()
+void GuiBox::applyView()
 {
-	controller().params().type =
-		ids_[typeCO->currentIndex()];
+	params_.type = ids_[typeCO->currentIndex()];
 
-	controller().params().inner_box =
-		innerBoxCO->currentText() != qt_("None");
-	controller().params().use_parbox =
-		innerBoxCO->currentText() ==  qt_("Parbox");
+	params_.inner_box = innerBoxCO->currentText() != qt_("None");
+	params_.use_parbox = innerBoxCO->currentText() ==  qt_("Parbox");
 
-	controller().params().pos =
-		"tcb"[valignCO->currentIndex()];
-	controller().params().inner_pos =
-		"tcbs"[ialignCO->currentIndex()];
-	controller().params().hor_pos =
-		"lcrs"[halignCO->currentIndex()];
+	params_.pos = "tcb"[valignCO->currentIndex()];
+	params_.inner_pos = "tcbs"[ialignCO->currentIndex()];
+	params_.hor_pos = "lcrs"[halignCO->currentIndex()];
 
 	int i = 0;
 	bool spec = false;
@@ -289,17 +314,18 @@ void GuiBoxDialog::applyView()
 		i = 0;
 		spec = false;
 	}
-	controller().params().special = ids_spec_[i];
+	params_.special = ids_spec_[i];
 
 	string width;
 	if (spec) {
 		width = fromqstr(value);
 		// beware: bogosity! the unit is simply ignored in this case
 		width += "in";
-	} else
+	} else {
 		width = widgetsToLength(widthED, widthUnitsLC);
+	}
 
-	controller().params().width = Length(width);
+	params_.width = Length(width);
 
 	i = 0;
 	spec = false;
@@ -323,7 +349,7 @@ void GuiBoxDialog::applyView()
 		i = 0;
 		spec = false;
 	}
-	controller().params().height_special = ids_spec_[i];
+	params_.height_special = ids_spec_[i];
 
 	string height;
 	if (spec  && !isValidLength(fromqstr(heightED->text()))) {
@@ -338,15 +364,15 @@ void GuiBoxDialog::applyView()
 	// 1in + "Total Height" means "1\height" which is the LaTeX default when
 	// no height is given
 	if (heightCB->checkState() == Qt::Checked)
-		controller().params().height = Length(height);
+		params_.height = Length(height);
 	else {
-		controller().params().height = Length("1in");
-		controller().params().height_special = ids_spec_[3];
+		params_.height = Length("1in");
+		params_.height_special = ids_spec_[3];
 	}
 }
 
 
-void GuiBoxDialog::setSpecial(bool ibox)
+void GuiBox::setSpecial(bool ibox)
 {
 	box_gui_tokens_special_length(ids_spec_, gui_names_spec_);
 	// check if the widget contains the special units
@@ -368,7 +394,7 @@ void GuiBoxDialog::setSpecial(bool ibox)
 }
 
 
-void GuiBoxDialog::setInnerType(bool frameless, int i)
+void GuiBox::setInnerType(bool frameless, int i)
 {
 	// with "frameless" boxes, inner box is mandatory (i.e. is the actual box)
 	// we have to remove "none" then and adjust the combo
@@ -390,6 +416,29 @@ void GuiBoxDialog::setInnerType(bool frameless, int i)
 		innerBoxCO->setCurrentIndex(i);
 	}
 }
+
+bool GuiBox::initialiseParams(string const & data)
+{
+	InsetBoxMailer::string2params(data, params_);
+	return true;
+
+}
+
+
+void GuiBox::clearParams()
+{
+	params_ = InsetBoxParams("");
+}
+
+
+void GuiBox::dispatchParams()
+{
+	dispatch(FuncRequest(getLfun(), InsetBoxMailer::params2string(params_)));
+}
+
+
+Dialog * createGuiBox(LyXView & lv) { return new GuiBox(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

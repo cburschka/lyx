@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Jürgen Spitzmüller
- * \ author Martin Vermeer
+ * \author Martin Vermeer (with useful hints from Angus Leeming)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -14,20 +14,21 @@
 #define GUIBOX_H
 
 #include "GuiDialog.h"
-#include "ControlBox.h"
 #include "ui_BoxUi.h"
+#include "insets/InsetBox.h"
 
 #include <vector>
+
 
 namespace lyx {
 namespace frontend {
 
-class GuiBoxDialog : public GuiDialog, public Ui::BoxUi
+class GuiBox : public GuiDialog, public Ui::BoxUi, public Controller
 {
 	Q_OBJECT
 
 public:
-	GuiBoxDialog(LyXView & lv);
+	GuiBox(LyXView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -36,10 +37,11 @@ private Q_SLOTS:
 	void restoreClicked();
 
 private:
+	///
 	void closeEvent(QCloseEvent * e);
 
 	/// parent controller
-	ControlBox & controller();
+	Controller & controller() { return *this; }
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items
@@ -51,6 +53,15 @@ private:
 	void updateContents();
 
 	///
+	bool initialiseParams(std::string const & data);
+	///
+	void clearParams();
+	///
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+	///
 	std::vector<std::string> ids_;
 	///
 	std::vector<docstring> gui_names_;
@@ -58,6 +69,9 @@ private:
 	std::vector<std::string> ids_spec_;
 	///
 	std::vector<docstring> gui_names_spec_;
+
+	///
+	InsetBoxParams params_;
 };
 
 } // namespace frontend

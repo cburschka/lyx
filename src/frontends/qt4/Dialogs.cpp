@@ -17,7 +17,6 @@
 #include "DialogView.h"
 #include "DockView.h"
 #include "GuiBibitem.h"
-#include "GuiBox.h"
 #include "GuiChanges.h"
 #include "GuiCharacter.h"
 #include "GuiCitation.h"
@@ -158,7 +157,7 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "bibtex") {
 		dialog = createGuiBibtex(lyxview_);
 	} else if (name == "box") {
-		dialog = new GuiBoxDialog(lyxview_);
+		dialog = createGuiBox(lyxview_);
 	} else if (name == "branch") {
 		dialog = createGuiBranch(lyxview_);
 	} else if (name == "changes") {
