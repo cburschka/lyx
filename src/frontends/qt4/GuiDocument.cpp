@@ -23,7 +23,7 @@
 // For the Branches module
 #include "GuiBranches.h"
 
-#include "GuiViewSource.h" // For latexHighlighter use in the preamble.
+#include "LaTeXHighlighter.h"
 
 #include "frontend_helpers.h"
 #include "BufferParams.h"

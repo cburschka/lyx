@@ -31,22 +31,8 @@ class QTextDocument;
 namespace lyx {
 namespace frontend {
 
-// used already twice...
-class LaTeXHighlighter : public QSyntaxHighlighter
-{
-public:
-	LaTeXHighlighter(QTextDocument * parent);
-
-protected:
-	void highlightBlock(QString const & text);
-
-private:
-	QTextCharFormat commentFormat;
-	QTextCharFormat keywordFormat;
-	QTextCharFormat mathFormat;
-};
-
 class ControlViewSource;
+class LaTeXHighlighter;
 
 class GuiViewSourceDialog : public QWidget, public Ui::ViewSourceUi
 {

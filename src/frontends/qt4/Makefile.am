@@ -122,6 +122,7 @@ SOURCEFILES = \
 	InsertTableWidget.cpp \
 	LengthCombo.cpp \
 	LyXFileDialog.cpp \
+	LaTeXHighlighter.cpp \
 	PanelStack.cpp \
 	qt_helpers.cpp \
 	TocModel.cpp \
@@ -206,6 +207,7 @@ MOCHEADER = \
 	InsertTableWidget.h \
 	LengthCombo.h \
 	LyXFileDialog.h \
+	LaTeXHighlighter.h \
 	PanelStack.h \
 	qlkey.h \
 	TocModel.h \
