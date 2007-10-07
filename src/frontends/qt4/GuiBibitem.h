@@ -16,8 +16,6 @@
 #include "GuiDialog.h"
 #include "ui_BibitemUi.h"
 
-#include "controllers/Dialog.h"
-
 #include "insets/InsetCommandParams.h"
 
 namespace lyx {

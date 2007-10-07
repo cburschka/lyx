@@ -6,15 +6,9 @@ EXTRA_DIST = tests/regfiles/biblio
 
 noinst_LTLIBRARIES = liblyxcontrollers.la
 
-SOURCEFILES = \
-	Dialog.cpp \
-	ButtonPolicy.cpp \
-	frontend_helpers.cpp 
+SOURCEFILES = 
 
-HEADERFILES = \
-	Dialog.h \
-	ButtonPolicy.h \
-	frontend_helpers.h
+HEADERFILES =
 
 if MONOLITHIC_CONTROLLERS
 

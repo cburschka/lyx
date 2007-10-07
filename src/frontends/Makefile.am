@@ -1,8 +1,8 @@
 include $(top_srcdir)/config/common.am
 
-SUBDIRS = controllers $(FRONTENDS_SUBDIRS)
+SUBDIRS = $(FRONTENDS_SUBDIRS)
 
-DIST_SUBDIRS = controllers qt4
+DIST_SUBDIRS = qt4
 
 EXTRA_DIST = pch.h
 
@@ -13,6 +13,12 @@ noinst_LTLIBRARIES = liblyxfrontends.la
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/..  $(BOOST_INCLUDES)
 
 liblyxfrontends_la_SOURCES = \
+	ButtonPolicy.cpp \
+	ButtonPolicy.h \
+	Dialog.cpp \
+	Dialog.h \
+	frontend_helpers.cpp \
+	frontend_helpers.h \
 	alert.cpp \
 	alert.h \
 	Alert_pimpl.h \
