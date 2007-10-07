@@ -6,6 +6,7 @@
  *
  * \author Edwin Leuven
  * \author John Levon
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,22 +14,32 @@
 #ifndef GUIPARAGRAPH_H
 #define GUIPARAGRAPH_H
 
-#include "ControlParagraph.h"
 #include "Layout.h"
 #include "ui_ParagraphUi.h"
+#include "Dialog.h"
+#include "ParagraphParameters.h"
+#include "GuiView.h"
+#include "qt_helpers.h"
+#include "debug.h"
 
-#include <QWidget>
+#include <QCloseEvent>
+#include <QDialog>
+#include <QSettings>
+#include <QShowEvent>
+#include <QGridLayout>
 
 #include <map>
+#include <string>
 
 namespace lyx {
 namespace frontend {
 
-class GuiParagraph : public QWidget, public Ui::ParagraphUi
+class GuiParagraph
+	: public QDialog, public Ui::ParagraphUi, public Controller, public Dialog
 {
 	Q_OBJECT
 public:
-	GuiParagraph(ControlParagraph & controller, QWidget * parent = 0);
+	GuiParagraph(LyXView & lv);
 
 	/// update
 	void updateView();
@@ -41,12 +52,66 @@ private:
 	///
 	LyXAlignment getAlignmentFromDialog();
 	///
+	Controller & controller() { return *this; }
+	///
 	typedef std::map<LyXAlignment, QRadioButton *> RadioMap;
 	RadioMap radioMap;
 
-	ControlParagraph & controller_;
-
 	QString const alignDefaultLabel;
+
+	void applyView() {}
+	void hideView()
+	{
+		clearParams();
+		QDialog::hide();
+	}
+	void showData(std::string const & data)
+	{
+		initialiseParams(data);
+		showView();
+	}
+	void showView()
+	{
+		updateView();  // make sure its up-to-date
+		QDialog::show();
+		raise();
+		activateWindow();
+	}
+	bool isVisibleView() const { return QDialog::isVisible(); }
+	void checkStatus() { updateView(); }
+	void redraw() { redrawView(); }
+	void redrawView() {}
+	void updateData(std::string const & data)
+	{
+		initialiseParams(data);
+		updateView();
+	}
+	void partialUpdateView(int /*id*/) {}
+	std::string name() const { return "paragraph"; }
+
+private:
+	std::string name_;
+
+	void showEvent(QShowEvent * e)
+	{
+#if (QT_VERSION >= 0x040200)
+		QSettings settings;
+		std::string key = name_ + "/geometry";
+		QDialog::restoreGeometry(settings.value(key.c_str()).toByteArray());
+#endif
+	    QDialog::showEvent(e);
+	}
+
+	void closeEvent(QCloseEvent * e)
+	{
+#if (QT_VERSION >= 0x040200)
+		QSettings settings;
+		std::string key = name_ + "/geometry";
+		settings.setValue(key.c_str(), QDialog::saveGeometry());
+#endif
+	    QDialog::closeEvent(e);
+	}
+
 private Q_SLOTS:
 	///
 	void changed();
@@ -58,6 +123,31 @@ private Q_SLOTS:
 	void on_linespacing_activated(int);
 	/// Apply changes
 	void on_applyPB_clicked();
+
+private:
+	///
+	bool initialiseParams(std::string const & /*data*/) { return true; }
+	/// clean-up on hide.
+	void clearParams() {}
+	///
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+	///
+	ParagraphParameters & params();
+	///
+	ParagraphParameters const & params() const;
+	///
+	bool haveMulitParSelection();
+	///
+	bool canIndent() const;
+	///
+	LyXAlignment alignPossible() const;
+	///
+	LyXAlignment alignDefault() const;
+
+private:
+	ParagraphParameters multiparsel_;
 };
 
 } // namespace frontend

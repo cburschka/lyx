@@ -6,6 +6,7 @@
  * \author Edwin Leuven
  * \author Richard Heck
  * \author Abdelrazak Younes
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,18 +14,23 @@
 #include <config.h>
 
 #include "GuiParagraph.h"
-#include "qt_helpers.h"
 
-#include "ControlParagraph.h"
-
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "BufferView.h"
+#include "Cursor.h"
 #include "debug.h"
-#include "frontend_helpers.h"
-#include "gettext.h"
-#include "ParagraphParameters.h"
-#include "Spacing.h"
-#include "GuiView.h"
 #include "DialogView.h"
 #include "DockView.h"
+#include "frontend_helpers.h"
+#include "FuncRequest.h"
+#include "gettext.h"
+#include "GuiView.h"
+#include "Lexer.h"
+#include "Paragraph.h"
+#include "ParagraphParameters.h"
+#include "qt_helpers.h"
+#include "Spacing.h"
 
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -33,17 +39,27 @@
 
 #include <boost/current_function.hpp>
 
+#include <sstream>
+
+using std::istringstream;
+using std::ostringstream;
 using std::string;
 using std::endl;
 
 namespace lyx {
 namespace frontend {
 
-GuiParagraph::GuiParagraph(ControlParagraph & controller, QWidget * parent)
-	: QWidget(parent), controller_(controller)
+GuiParagraph::GuiParagraph(LyXView & lv)
+	: Controller(this)
 {
 	setupUi(this);
 	setWindowTitle(qt_("Paragraph Settings"));
+
+	//setModal(modal);
+	setLyXView(lv);
+	QGridLayout * gridLayout = new QGridLayout(this);
+	gridLayout->setMargin(0);
+	gridLayout->addWidget(this);
 
 	connect(alignDefaultRB, SIGNAL(clicked()), this, SLOT(changed()));
 	connect(alignJustRB, SIGNAL(clicked()), this, SLOT(changed()));
@@ -89,19 +105,18 @@ void GuiParagraph::on_linespacing_activated(int index)
 }
 
 
-void GuiParagraph::checkAlignmentRadioButtons() {
-	LyXAlignment const alignPossible = controller_.alignPossible();
-
+void GuiParagraph::checkAlignmentRadioButtons()
+{
 	RadioMap::iterator it = radioMap.begin();
 	for (; it != radioMap.end(); ++it) {
 		LyXAlignment const align = it->first;
-		it->second->setEnabled(align & alignPossible);
+		it->second->setEnabled(align & alignPossible());
 	}
-	if (controller_.haveMulitParSelection())
+	if (haveMulitParSelection())
 		alignDefaultRB->setText(alignDefaultLabel);
 	else
 		alignDefaultRB->setText(alignDefaultLabel + " (" 
-			+ radioMap[controller_.alignDefault()]->text() + ")");
+			+ radioMap[alignDefault()]->text() + ")");
 }
 
 
@@ -149,9 +164,9 @@ void GuiParagraph::changed()
 
 void GuiParagraph::on_applyPB_clicked()
 {
-	ParagraphParameters & params = controller_.params();
+	ParagraphParameters & pp = params();
 
-	params.align(getAlignmentFromDialog());
+	pp.align(getAlignmentFromDialog());
 
 	// get spacing
 	Spacing::Space ls = Spacing::Default;
@@ -176,14 +191,14 @@ void GuiParagraph::on_applyPB_clicked()
 	}
 
 	Spacing const spacing(ls, other);
-	params.spacing(spacing);
+	pp.spacing(spacing);
 
 	// label width
-	params.labelWidthString(qstring_to_ucs4(labelWidth->text()));
+	pp.labelWidthString(qstring_to_ucs4(labelWidth->text()));
 	// indendation
-	params.noindent(!indentCB->isChecked());
+	pp.noindent(!indentCB->isChecked());
 
-	controller_.dispatchParams();
+	dispatchParams();
 }
 
 
@@ -197,10 +212,10 @@ void GuiParagraph::updateView()
 {
 	on_synchronizedViewCB_toggled();
 
-	ParagraphParameters const & params = controller_.params();
+	ParagraphParameters const & pp = params();
 
 	// label width
-	docstring const & labelwidth = params.labelWidthString();
+	docstring const & labelwidth = pp.labelWidthString();
 	// FIXME We should not compare translated strings
 	if (labelwidth != _("Senseless with this layout!")) {
 		labelwidthGB->setEnabled(true);
@@ -212,16 +227,16 @@ void GuiParagraph::updateView()
 
 	// alignment
 	checkAlignmentRadioButtons();
-	alignmentToRadioButtons(params.align());
+	alignmentToRadioButtons(pp.align());
 
 	//indentation
-	bool const canindent = controller_.canIndent();
+	bool const canindent = canIndent();
 	indentCB->setEnabled(canindent);
-	indentCB->setChecked(canindent && !params.noindent());
+	indentCB->setChecked(canindent && !pp.noindent());
 
 	// linespacing
 	int ls;
-	Spacing const & space = params.spacing();
+	Spacing const & space = pp.spacing();
 	switch (space.getSpace()) {
 	case Spacing::Single:
 		ls = 1;
@@ -250,8 +265,69 @@ void GuiParagraph::updateView()
 }
 
 
+ParagraphParameters & GuiParagraph::params()
+{
+	if (haveMulitParSelection()) {
+		multiparsel_ = ParagraphParameters();
+		// FIXME: It would be nice to initialise the parameters that
+		// are common to all paragraphs.
+		return multiparsel_;
+	}
+
+	return bufferview()->cursor().innerParagraph().params();
+}
+
+
+ParagraphParameters const & GuiParagraph::params() const
+{
+	return bufferview()->cursor().innerParagraph().params();
+}
+
+
+void GuiParagraph::dispatchParams()
+{
+	if (haveMulitParSelection()) {
+		ostringstream data;
+		multiparsel_.write(data);
+		FuncRequest const fr(LFUN_PARAGRAPH_PARAMS_APPLY, data.str());
+		dispatch(fr);
+		return;
+	}
+
+	bufferview()->updateMetrics(false);
+	bufferview()->buffer().changed();
+}
+
+
+bool GuiParagraph::haveMulitParSelection()
+{
+	Cursor cur = bufferview()->cursor();
+	return cur.selection() && cur.selBegin().pit() != cur.selEnd().pit();
+}
+
+	
+bool GuiParagraph::canIndent() const
+{
+	return buffer().params().paragraph_separation ==
+		BufferParams::PARSEP_INDENT;
+}
+
+
+LyXAlignment GuiParagraph::alignPossible() const
+{
+	return bufferview()->cursor().innerParagraph().layout()->alignpossible;
+}
+
+
+LyXAlignment GuiParagraph::alignDefault() const
+{
+	return bufferview()->cursor().innerParagraph().layout()->align;
+}
+
+
 Dialog * createGuiParagraph(LyXView & lv)
 {
+#if 0
 	GuiViewBase & guiview = static_cast<GuiViewBase &>(lv);
 #ifdef USE_DOCK_WIDGET
 	return new DockView<ControlParagraph, GuiParagraph>(guiview, "paragraph",
@@ -259,6 +335,9 @@ Dialog * createGuiParagraph(LyXView & lv)
 #else
 	return new DialogView<ControlParagraph, GuiParagraph>(guiview, "paragraph");
 #endif
+#endif
+
+	return new GuiParagraph(lv);
 }
 
 

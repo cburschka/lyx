@@ -10,14 +10,12 @@ SOURCEFILES = \
 	Dialog.cpp \
 	ButtonPolicy.cpp \
 	ControlMath.cpp \
-	ControlParagraph.cpp \
 	frontend_helpers.cpp 
 
 HEADERFILES = \
 	Dialog.h \
 	ButtonPolicy.h \
 	ControlMath.h \
-	ControlParagraph.h \
 	frontend_helpers.h
 
 if MONOLITHIC_CONTROLLERS
