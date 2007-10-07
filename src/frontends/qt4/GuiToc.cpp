@@ -16,6 +16,8 @@
 #include "GuiView.h"
 #include "DockView.h"
 #include "TocWidget.h"
+#include "FuncRequest.h"
+#include "insets/InsetCommand.h"
 
 #include "TocModel.h"
 #include "qt_helpers.h"
@@ -42,9 +44,8 @@ namespace lyx {
 namespace frontend {
 
 GuiToc::GuiToc(Dialog & dialog)
-	: ControlCommand(dialog, "toc")
-{
-}
+	: Controller(dialog), params_("toc")
+{}
 
 
 int GuiToc::getTocDepth(int type)
@@ -129,8 +130,7 @@ TocList const & GuiToc::tocs() const
 
 bool GuiToc::initialiseParams(string const & data)
 {
-	if (!ControlCommand::initialiseParams(data))
-		return false;
+	InsetCommandMailer::string2params("toc", data, params_);
 
 	updateView();
 	modelReset();
@@ -147,10 +147,10 @@ bool GuiToc::initialiseParams(string const & data)
 	}
 
 	string selected_type ;
-	if(params()["type"].empty()) //Then plain toc...
-		selected_type = params().getCmdName();
+	if (params_["type"].empty()) //Then plain toc...
+		selected_type = params_.getCmdName();
 	else
-		selected_type = to_ascii(params()["type"]);
+		selected_type = to_ascii(params_["type"]);
 	selected_type_ = -1;
 	for (size_t i = 0;  i != types_.size(); ++i) {
 		if (selected_type == types_[i]) {
@@ -219,6 +219,14 @@ docstring GuiToc::guiName(string const & type) const
 		return _(floats.getType(type).listName());
 
 	return _(type);
+}
+
+
+void GuiToc::dispatchParams()
+{
+	string const lfun = 
+		InsetCommandMailer::params2string("toc", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

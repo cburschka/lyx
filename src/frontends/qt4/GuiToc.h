@@ -15,8 +15,9 @@
 #ifndef GUITOC_H
 #define GUITOC_H
 
-#include "ControlCommand.h"
 #include "TocBackend.h"
+#include "Dialog.h"
+#include "insets/InsetCommandParams.h"
 
 #include <QObject>
 #include <QStandardItemModel>
@@ -29,7 +30,7 @@ namespace frontend {
 
 class TocModel;
 
-class GuiToc : public QObject, public ControlCommand
+class GuiToc : public QObject, public Controller
 {
 	Q_OBJECT
 
@@ -87,13 +88,23 @@ private:
 	///
 	void updateBackend();
 
-private:
 	std::vector<std::string> types_;
 	std::vector<docstring> type_names_;
 	int selected_type_;
 
 	/// Return the guiname from a given cmdName of the TOC param
 	docstring guiName(std::string const & type) const;
+
+	/// clean-up on hide.
+	void clearParams() { params_.clear(); }
+	///
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+private:
+	///
+	InsetCommandParams params_;
 };
 
 } // namespace frontend
