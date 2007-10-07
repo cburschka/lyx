@@ -10,7 +10,6 @@ SOURCEFILES = \
 	Dialog.cpp \
 	ButtonPolicy.cpp \
 	ControlCommand.cpp \
-	ControlCommandBuffer.cpp \
 	ControlMath.cpp \
 	ControlParagraph.cpp \
 	frontend_helpers.cpp 
@@ -19,7 +18,6 @@ HEADERFILES = \
 	Dialog.h \
 	ButtonPolicy.h \
 	ControlCommand.h \
-	ControlCommandBuffer.h \
 	ControlMath.h \
 	ControlParagraph.h \
 	frontend_helpers.h

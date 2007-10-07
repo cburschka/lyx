@@ -20,7 +20,6 @@
 #include "ui_CitationUi.h"
 #include "support/docstring.h"
 #include "BiblioInfo.h"
-#include "ControlCommand.h"
 
 #include <QKeyEvent>
 #include <QStringList>

@@ -57,12 +57,11 @@ using support::trim;
 
 
 GuiBibtex::GuiBibtex(LyXView & lv)
-	: GuiDialog(lv, "bibtex"), ControlCommand(*this, "bibtex")
+	: GuiCommand(lv, "bibtex")
 {
 	setupUi(this);
 
 	setViewTitle( _("BibTeX Bibliography"));
-	setController(this, false);
 
 	QDialog::setModal(true);
 
@@ -259,7 +258,7 @@ void GuiBibtex::updateContents()
 
 	databaseLW->clear();
 
-	docstring bibs = params()["bibfiles"];
+	docstring bibs = params_["bibfiles"];
 	docstring bib;
 
 	while (!bibs.empty()) {
@@ -284,7 +283,7 @@ void GuiBibtex::updateContents()
 	bibtocCB->setChecked(bibtotoc() && !bibtopic);
 	bibtocCB->setEnabled(!bibtopic);
 
-	docstring btprint(params()["btprint"]);
+	docstring btprint = params_["btprint"];
 	int btp = 0;
 	if (btprint == "btPrintNotCited")
 		btp = 1;
@@ -330,22 +329,22 @@ void GuiBibtex::applyView()
 		dbs += qstring_to_ucs4(databaseLW->item(i)->text());
 	}
 
-	params()["bibfiles"] = dbs;
+	params_["bibfiles"] = dbs;
 
-	docstring const bibstyle(qstring_to_ucs4(styleCB->currentText()));
-	bool const bibtotoc(bibtocCB->isChecked());
+	docstring const bibstyle = qstring_to_ucs4(styleCB->currentText());
+	bool const bibtotoc = bibtocCB->isChecked();
 
 	if (bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
-		params()["options"] = "bibtotoc," + bibstyle;
+		params_["options"] = "bibtotoc," + bibstyle;
 	} else if (bibtotoc) {
 		// bibtotoc and no style
-		params()["options"] = from_ascii("bibtotoc");
+		params_["options"] = from_ascii("bibtotoc");
 	} else {
 		// only style. An empty one is valid, because some
 		// documentclasses have an own \bibliographystyle{}
 		// command!
-		params()["options"] = bibstyle;
+		params_["options"] = bibstyle;
 	}
 
 	// bibtopic allows three kinds of sections:
@@ -356,18 +355,18 @@ void GuiBibtex::applyView()
 
 	switch (btp) {
 	case 0:
-		params()["btprint"] = from_ascii("btPrintCited");
+		params_["btprint"] = from_ascii("btPrintCited");
 		break;
 	case 1:
-		params()["btprint"] = from_ascii("btPrintNotCited");
+		params_["btprint"] = from_ascii("btPrintNotCited");
 		break;
 	case 2:
-		params()["btprint"] = from_ascii("btPrintAll");
+		params_["btprint"] = from_ascii("btPrintAll");
 		break;
 	}
 
 	if (!usingBibtopic())
-		params()["btprint"] = docstring();
+		params_["btprint"] = docstring();
 }
 
 
@@ -454,7 +453,7 @@ bool GuiBibtex::usingBibtopic() const
 
 bool GuiBibtex::bibtotoc() const
 {
-	return prefixIs(to_utf8(params()["options"]), "bibtotoc");
+	return prefixIs(to_utf8(params_["options"]), "bibtotoc");
 }
 
 
@@ -479,7 +478,7 @@ string const GuiBibtex::getStylefile() const
 		break;
 	}
 
-	docstring bst = params()["options"];
+	docstring bst = params_["options"];
 	if (bibtotoc()){
 		// bibstyle exists?
 		if (contains(bst, ',')) {
@@ -492,7 +491,7 @@ string const GuiBibtex::getStylefile() const
 	// propose default style file for new insets
 	// existing insets might have (legally) no bst files
 	// (if the class already provides a style)
-	if (bst.empty() && params()["bibfiles"].empty())
+	if (bst.empty() && params_["bibfiles"].empty())
 		bst = defaultstyle;
 
 	// FIXME UNICODE

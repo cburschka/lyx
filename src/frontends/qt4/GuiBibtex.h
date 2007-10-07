@@ -18,8 +18,6 @@
 #include "ui_BibtexUi.h"
 #include "ui_BibtexAddUi.h"
 
-#include "ControlCommand.h"
-
 #include "support/docstring.h"
 
 #include <vector>
@@ -41,7 +39,7 @@ public:
 };
 
 
-class GuiBibtex : public GuiDialog, public Ui::BibtexUi, public ControlCommand
+class GuiBibtex : public GuiCommand, public Ui::BibtexUi
 {
 	Q_OBJECT
 
@@ -63,14 +61,12 @@ private:
 	void closeEvent(QCloseEvent * e);
 
 private:
-	/// parent controller
-	Controller & controller() { return *this; }
 	///
-	virtual bool isValid();
+	bool isValid();
 	/// Apply changes
-	virtual void applyView();
+	void applyView();
 	/// update
-	virtual void updateContents();
+	void updateContents();
 
 	/// Browse for a .bib file
 	docstring const browseBib(docstring const & in_name) const;

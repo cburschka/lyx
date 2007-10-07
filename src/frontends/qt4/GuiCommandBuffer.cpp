@@ -3,6 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Lars
+ * \author Asger and Jürgen
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS.
@@ -18,6 +20,16 @@
 #include "GuiCommandEdit.h"
 #include "qt_helpers.h"
 
+#include "BufferView.h"
+#include "Cursor.h"
+#include "LyXFunc.h"
+#include "LyXAction.h"
+#include "FuncRequest.h"
+
+#include "frontends/LyXView.h"
+
+#include "support/lyxalgo.h"
+#include "support/lstrings.h"
 #include "support/filetools.h"
 
 #include <QHBoxLayout>
@@ -30,13 +42,18 @@
 #include <QToolTip>
 #include <QVBoxLayout>
 
-using lyx::support::libFileSearch;
-
-using std::vector;
+using std::back_inserter;
+using std::transform;
 using std::string;
+using std::vector;
+
 
 namespace lyx {
 namespace frontend {
+
+using support::prefixIs;
+using support::libFileSearch;
+
 
 namespace {
 
@@ -76,8 +93,11 @@ protected:
 
 
 GuiCommandBuffer::GuiCommandBuffer(GuiViewBase * view)
-	: view_(view), controller_(*view)
+	: view_(view), lv_(*view), history_pos_(history_.end())
 {
+	transform(lyxaction.func_begin(), lyxaction.func_end(),
+		back_inserter(commands_), firster());
+
 	QPixmap qpup(toqstr(libFileSearch("images", "up", "png").absFilename()));
 	QPixmap qpdown(toqstr(libFileSearch("images", "down", "png").absFilename()));
 
@@ -86,8 +106,6 @@ GuiCommandBuffer::GuiCommandBuffer(GuiViewBase * view)
 
 	QPushButton * up = new QPushButton(qpup, "", this);
 	up->setMaximumSize(24, 24);
-	up->setToolTip(qt_("Previous command"));
-	connect(up, SIGNAL(clicked()), this, SLOT(up()));
 	QPushButton * down = new QPushButton(qpdown, "", this);
 	down->setToolTip(qt_("Next command"));
 	down->setMaximumSize(24, 24);
@@ -123,7 +141,7 @@ void GuiCommandBuffer::cancel()
 
 void GuiCommandBuffer::dispatch()
 {
-	controller_.dispatch(fromqstr(edit_->text()));
+	dispatch(fromqstr(edit_->text()));
 	view_->setFocus();
 	edit_->setText(QString());
 	edit_->clearFocus();
@@ -134,7 +152,7 @@ void GuiCommandBuffer::complete()
 {
 	string const input = fromqstr(edit_->text());
 	string new_input;
-	vector<string> comp = controller_.completions(input, new_input);
+	vector<string> comp = completions(input, new_input);
 
 	if (comp.empty() && new_input == input) {
 		// show_info_suffix(qt_("[no match]"), input);
@@ -188,7 +206,7 @@ void GuiCommandBuffer::complete_selected(QListWidgetItem * item)
 void GuiCommandBuffer::up()
 {
 	string const input = fromqstr(edit_->text());
-	string const h = controller_.historyUp();
+	string const h = historyUp();
 
 	if (h.empty()) {
 	//	show_info_suffix(qt_("[Beginning of history]"), input);
@@ -201,7 +219,7 @@ void GuiCommandBuffer::up()
 void GuiCommandBuffer::down()
 {
 	string const input = fromqstr(edit_->text());
-	string const h = controller_.historyDown();
+	string const h = historyDown();
 
 	if (h.empty()) {
 	//	show_info_suffix(qt_("[End of history]"), input);
@@ -216,27 +234,104 @@ void GuiCommandBuffer::hideParent()
 	view_->setFocus();
 	edit_->setText(QString());
 	edit_->clearFocus();
-	controller_.hide();
+	hide();
 }
 
 
-#if 0
-void XMiniBuffer::show_info_suffix(string const & suffix, string const & input)
+namespace {
+
+class prefix_p {
+public:
+	string p;
+	prefix_p(string const & s) : p(s) {}
+	bool operator()(string const & s) const { return prefixIs(s, p); }
+};
+
+} // end of anon namespace
+
+
+string const GuiCommandBuffer::historyUp()
 {
-	stored_input_ = input;
-	info_suffix_shown_ = true;
-	set_input(input + ' ' + suffix);
-	suffix_timer_->start();
+	if (history_pos_ == history_.begin())
+		return string();
+
+	return *(--history_pos_);
 }
 
 
-void XMiniBuffer::suffix_timeout()
+string const GuiCommandBuffer::historyDown()
 {
-	info_suffix_shown_ = false;
-	set_input(stored_input_);
+	if (history_pos_ == history_.end())
+		return string();
+	if (history_pos_ + 1 == history_.end())
+		return string();
+
+	return *(++history_pos_);
 }
 
-#endif
+
+docstring const GuiCommandBuffer::getCurrentState() const
+{
+	return lv_.view()->cursor().currentState();
+}
+
+
+void GuiCommandBuffer::hide() const
+{
+	lv_.showMiniBuffer(false);
+}
+
+
+vector<string> const
+GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
+{
+	vector<string> comp;
+
+	copy_if(commands_.begin(), commands_.end(),
+		back_inserter(comp), prefix_p(prefix));
+
+	if (comp.empty()) {
+		new_prefix = prefix;
+		return comp;
+	}
+
+	if (comp.size() == 1) {
+		new_prefix = comp[0];
+		return vector<string>();
+	}
+
+	// find maximal available prefix
+	string const tmp = comp[0];
+	string test = prefix;
+	if (tmp.length() > test.length())
+		test += tmp[test.length()];
+	while (test.length() < tmp.length()) {
+		vector<string> vtmp;
+		copy_if(comp.begin(), comp.end(),
+			back_inserter(vtmp), prefix_p(test));
+		if (vtmp.size() != comp.size()) {
+			test.erase(test.length() - 1);
+			break;
+		}
+		test += tmp[test.length()];
+	}
+
+	new_prefix = test;
+	return comp;
+}
+
+
+void GuiCommandBuffer::dispatch(string const & str)
+{
+	if (str.empty())
+		return;
+
+	history_.push_back(str);
+	history_pos_ = history_.end();
+	FuncRequest func = lyxaction.lookupFunc(str);
+	func.origin = FuncRequest::COMMANDBUFFER;
+	lv_.dispatch(func);
+}
 
 } // namespace frontend
 } // namespace lyx

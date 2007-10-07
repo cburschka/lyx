@@ -4,6 +4,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Lars
+ * \author Asger and Jürgen
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS.
@@ -12,15 +14,19 @@
 #ifndef GUICOMMANDBUFFER_H
 #define GUICOMMANDBUFFER_H
 
-#include "ControlCommandBuffer.h"
+#include "support/docstring.h"
 
 #include <QWidget>
+
+#include <vector>
 
 class QListWidgetItem;
 
 namespace lyx {
 namespace frontend {
 
+class LyXView;
+class GuiViewBase;
 class GuiCommandEdit;
 
 class GuiCommandBuffer : public QWidget
@@ -48,10 +54,37 @@ public Q_SLOTS:
 private:
 	/// owning view
 	GuiViewBase * view_;
-	/// controller
-	ControlCommandBuffer controller_;
+	///
+	LyXView & lv_;
 	/// command widget
 	GuiCommandEdit * edit_;
+
+	/// return the previous history entry if any
+	std::string const historyUp();
+	/// return the next history entry if any
+	std::string const historyDown();
+
+	/// return the font and depth in the active BufferView as a message.
+	docstring const getCurrentState() const;
+
+	/// hide the command buffer.
+	void hide() const;
+
+	/// return the possible completions
+	std::vector<std::string> const completions(std::string const & prefix,
+					      std::string & new_prefix);
+
+	/// dispatch a command
+	void dispatch(std::string const & str);
+
+	/// available command names
+	std::vector<std::string> commands_;
+
+	/// command history
+	std::vector<std::string> history_;
+
+	/// current position in command history
+	std::vector<std::string>::const_iterator history_pos_;
 };
 
 } // namespace frontend
