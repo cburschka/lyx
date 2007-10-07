@@ -713,16 +713,10 @@ src_frontends_extra_files = Split('''
 
 
 src_frontends_controllers_header_files = Split('''
-    ButtonPolicy.h
-    Dialog.h
-    frontend_helpers.h
 ''')
 
 
 src_frontends_controllers_files = Split('''
-    ButtonPolicy.cpp
-    Dialog.cpp
-    frontend_helpers.cpp
 ''')
 
 
@@ -747,6 +741,9 @@ src_frontends_controllers_tests_regfiles_extra_files = Split('''
 
 
 src_frontends_qt4_header_files = Split('''
+		../ButtonPolicy.h
+		../Dialog.h
+		../frontend_helpers.h
     Action.h
     BulletsModule.h
     ButtonController.h
@@ -834,6 +831,9 @@ src_frontends_qt4_header_files = Split('''
 
 
 src_frontends_qt4_files = Split('''
+		../ButtonPolicy.cpp
+		../Dialog.cpp
+		../frontend_helpers.cpp
     Action.cpp
     BulletsModule.cpp
     ButtonController.cpp

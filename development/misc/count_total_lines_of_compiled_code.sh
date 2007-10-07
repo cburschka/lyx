@@ -13,6 +13,7 @@ inc="$inc -I../../src/frontends/controllers"
 inc="$inc -I../../src/frontends/qt4"
 
 s=0
+#for i in `find ../../src/frontends/controllers -name *.cpp` ; do
 for i in `find ../.. -name *.cpp` ; do
 	#echo $i
 	#echo "g++ $inc -DQT_NO_STL -E $i"

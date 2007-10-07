@@ -414,12 +414,6 @@ AC_ARG_ENABLE(monolithic-client,
   [enable_monolithic_client=no])
 AM_CONDITIONAL(MONOLITHIC_CLIENT, test "$enable_monolithic_client" = "yes")
 
-AC_ARG_ENABLE(monolithic-controllers,
-  AC_HELP_STRING([--enable-monolithic-controllers],
-		[Use monolithic controllers compilations]),,
-  [enable_monolithic_controllers=no])
-AM_CONDITIONAL(MONOLITHIC_CONTROLLERS, test "$enable_monolithic_controllers" = "yes")
-
 AC_ARG_ENABLE(monolithic-insets,
   AC_HELP_STRING([--enable-monolithic-insets],
 		[Use monolithic insets compilations]),,
@@ -493,7 +487,6 @@ AC_CONFIG_FILES([Makefile
       src/tex2lyx/Makefile \
       src/support/Makefile \
       src/frontends/Makefile \
-      src/frontends/controllers/Makefile \
       src/frontends/qt4/Makefile
 ])
 
@@ -511,7 +504,6 @@ if test x$with_qmake = xyes ; then
 		rm src/tex2lyx/Makefile
 		rm src/support/Makefile
 		rm src/frontends/Makefile
-		rm src/frontends/controllers/Makefile
 		rm src/frontends/qt4/Makefile
 		rm -rf boost/.deps
 		rm -rf src/client/.deps
@@ -519,7 +511,6 @@ if test x$with_qmake = xyes ; then
 		rm -rf src/tex2lyx/.deps
 		rm -rf src/support/.deps
 		rm -rf src/frontends/.deps
-		rm -rf src/frontends/controllers/.deps
 		rm -rf src/frontends/qt4/.deps
 		${srcdir}/development/qmake/doit
 	fi

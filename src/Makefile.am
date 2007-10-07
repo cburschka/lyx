@@ -29,7 +29,6 @@ lyx_LDADD = \
 	liblyxinsets.la \
 	frontends/liblyxfrontends.la \
 	frontends/qt4/liblyxqt4.la \
-	frontends/controllers/liblyxcontrollers.la \
 	liblyxgraphics.la \
 	support/liblyxsupport.la \
 	$(OTHERLIBS) \
