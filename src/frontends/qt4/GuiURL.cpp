@@ -3,6 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Angus Leeming
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS.
@@ -12,8 +13,10 @@
 
 #include "GuiURL.h"
 
-#include "ControlCommand.h"
+#include "GuiURL.h"
 #include "qt_helpers.h"
+#include "FuncRequest.h"
+#include "insets/InsetCommand.h"
 
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -24,12 +27,12 @@
 namespace lyx {
 namespace frontend {
 
-GuiURLDialog::GuiURLDialog(LyXView & lv)
-	: GuiDialog(lv, "url")
+GuiURL::GuiURL(LyXView & lv)
+	: GuiDialog(lv, "url"), Controller(this), params_("url")
 {
 	setupUi(this);
 	setViewTitle( _("URL"));
-	setController(new ControlCommand(*this, "url"));
+	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -51,19 +54,13 @@ GuiURLDialog::GuiURLDialog(LyXView & lv)
 }
 
 
-ControlCommand & GuiURLDialog::controller()
-{
-	return static_cast<ControlCommand &>(GuiDialog::controller());
-}
-
-
-void GuiURLDialog::changed_adaptor()
+void GuiURL::changed_adaptor()
 {
 	changed();
 }
 
 
-void GuiURLDialog::closeEvent(QCloseEvent * e)
+void GuiURL::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
@@ -71,39 +68,56 @@ void GuiURLDialog::closeEvent(QCloseEvent * e)
 
 
 
-void GuiURLDialog::updateContents()
+void GuiURL::updateContents()
 {
-	InsetCommandParams const & params = controller().params();
-
-	urlED->setText(toqstr(params["target"]));
-	nameED->setText(toqstr(params["name"]));
-	hyperlinkCB->setChecked(params.getCmdName() != "url");
+	urlED->setText(toqstr(params_["target"]));
+	nameED->setText(toqstr(params_["name"]));
+	hyperlinkCB->setChecked(params_.getCmdName() != "url");
 
 	bc().setValid(isValid());
 }
 
 
-void GuiURLDialog::applyView()
+void GuiURL::applyView()
 {
-	InsetCommandParams & params = controller().params();
-
-	params["target"] = qstring_to_ucs4(urlED->text());
-	params["name"] = qstring_to_ucs4(nameED->text());
+	params_["target"] = qstring_to_ucs4(urlED->text());
+	params_["name"] = qstring_to_ucs4(nameED->text());
 
 	if (hyperlinkCB->isChecked())
-		params.setCmdName("htmlurl");
+		params_.setCmdName("htmlurl");
 	else
-		params.setCmdName("url");
+		params_.setCmdName("url");
 }
 
 
-bool GuiURLDialog::isValid()
+bool GuiURL::isValid()
 {
 	QString const u = urlED->text();
 	QString const n = nameED->text();
 
 	return !u.isEmpty() || !n.isEmpty();
 }
+
+
+bool GuiURL::initialiseParams(std::string const & data)
+{
+	// The name passed with LFUN_INSET_APPLY is also the name
+	// used to identify the mailer.
+	InsetCommandMailer::string2params("name", data, params_);
+	return true;
+}
+
+
+void GuiURL::dispatchParams()
+{
+	std::string const lfun = 
+		InsetCommandMailer::params2string("url", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+
+Dialog * createGuiURL(LyXView & lv) { return new GuiURL(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

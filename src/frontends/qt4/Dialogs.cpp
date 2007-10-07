@@ -21,7 +21,6 @@
 #include "GuiMathMatrix.h"
 #include "GuiNomencl.h"
 #include "GuiView.h"
-#include "GuiURL.h"
 
 // Uncomment this if you prefer dock widget
 //#define USE_DOCK_WIDGET
@@ -202,7 +201,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "toc")
 		return createGuiToc(lyxview_);
 	if (name == "url")
-		return new GuiURLDialog(lyxview_);
+		return createGuiURL(lyxview_);
 	if (name == "vspace")
 		return createGuiVSpace(lyxview_);
 	if (name == "wrap")
