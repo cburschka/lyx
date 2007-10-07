@@ -728,6 +728,17 @@ void TabWorkArea::showBar(bool show)
 }
 
 
+void TabWorkArea::closeAll()
+{
+	while (count()) {
+		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(0));
+		BOOST_ASSERT(wa);
+		removeTab(0);
+		delete wa;
+	}
+}
+
+
 bool TabWorkArea::setCurrentWorkArea(GuiWorkArea * work_area)
 {
 	BOOST_ASSERT(work_area);

@@ -264,12 +264,7 @@ GuiViewBase::~GuiViewBase()
 void GuiViewBase::close()
 {
 	quitting_by_menu_ = true;
-	while (d.tab_widget_->count()) {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(0));
-		BOOST_ASSERT(wa);
-		d.tab_widget_->removeTab(0);
-		delete wa;
-	}
+	d.tab_widget_->closeAll();
 	QMainWindow::close();
 	quitting_by_menu_ = false;
 }
