@@ -21,7 +21,6 @@
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
 #include "GuiNomencl.h"
-#include "GuiParagraph.h"
 #include "GuiView.h"
 #include "GuiURL.h"
 
@@ -97,6 +96,7 @@ Dialog * createGuiLog(LyXView & lv);
 Dialog * createGuiMath(LyXView & lv);
 Dialog * createGuiNomencl(LyXView & lv);
 Dialog * createGuiNote(LyXView & lv);
+Dialog * createGuiParagraph(LyXView & lv)
 Dialog * createGuiPreferences(LyXView & lv);
 Dialog * createGuiPrint(LyXView & lv);
 Dialog * createGuiRef(LyXView & lv);
@@ -125,8 +125,6 @@ bool Dialogs::isValidName(string const & name) const
 Dialog * Dialogs::build(string const & name)
 {
 	BOOST_ASSERT(isValidName(name));
-
-	GuiViewBase & guiview = static_cast<GuiViewBase &>(lyxview_);
 
 	if (name == "aboutlyx")
 		return createGuiAbout(lyxview_);
@@ -180,14 +178,8 @@ Dialog * Dialogs::build(string const & name)
 		return new GuiMathMatrixDialog(lyxview_);
 	if (name == "note")
 		return createGuiNote(lyxview_);
-	if (name == "paragraph") {
-#ifdef USE_DOCK_WIDGET
-		return new DockView<ControlParagraph, GuiParagraph>(guiview, name,
-			Qt::TopDockWidgetArea);
-#else
-		return new DialogView<ControlParagraph, GuiParagraph>(guiview, name);
-#endif
-	}
+	if (name == "paragraph")
+		return createGuiParagraph(lyxview_);
 	if (name == "prefs")
 		return createGuiPreferences(lyxview_);
 	if (name == "print")

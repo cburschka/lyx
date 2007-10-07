@@ -246,6 +246,19 @@ void GuiParagraph::updateView()
 	}
 }
 
+
+Dialog * createGuiParagraph(LyXView & lv)
+{
+	GuiViewBase & guiview = static_cast<GuiViewBase &>(lv);
+#ifdef USE_DOCK_WIDGET
+	return new DockView<ControlParagraph, GuiParagraph>(guiview, name,
+		Qt::TopDockWidgetArea);
+#else
+	return new DialogView<ControlParagraph, GuiParagraph>(guiview, name);
+#endif
+}
+
+
 } // namespace frontend
 } // namespace lyx
 
