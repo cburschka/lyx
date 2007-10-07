@@ -23,7 +23,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiBibitem : public GuiDialog, public Ui::BibitemUi, public Controller
+class GuiBibitem : public GuiCommand, public Ui::BibitemUi
 {
 	Q_OBJECT
 
@@ -36,8 +36,6 @@ private Q_SLOTS:
 private:
 	///
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 
 private:
 	///
@@ -46,18 +44,6 @@ private:
 	void applyView();
 	/// update
 	void updateContents();
-	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
-private:
-	///
-	InsetCommandParams params_;
 };
 
 } // namespace frontend

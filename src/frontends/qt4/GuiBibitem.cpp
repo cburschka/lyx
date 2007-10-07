@@ -11,11 +11,8 @@
 #include <config.h>
 
 #include "GuiBibitem.h"
-#include "ControlCommand.h"
 #include "qt_helpers.h"
 #include "FuncRequest.h"
-
-#include "insets/InsetCommand.h"
 
 #include <QCloseEvent>
 #include <QLineEdit>
@@ -27,11 +24,10 @@ namespace frontend {
 
 
 GuiBibitem::GuiBibitem(LyXView & lv)
-	: GuiDialog(lv, "bibitem"), Controller(this), params_("bibitem")
+	: GuiCommand(lv, "bibitem")
 {
 	setupUi(this);
 	setViewTitle(_("Bibliography Entry Settings"));
-	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -79,22 +75,6 @@ void GuiBibitem::applyView()
 bool GuiBibitem::isValid()
 {
 	return !keyED->text().isEmpty();
-}
-
-
-bool GuiBibitem::initialiseParams(std::string const & data)
-{
-	// The name passed with LFUN_INSET_APPLY is also the name
-	// used to identify the mailer.
-	InsetCommandMailer::string2params("bibitem", data, params_);
-	return true;
-}
-
-
-void GuiBibitem::dispatchParams()
-{
-	std::string const lfun = InsetCommandMailer::params2string("bibitem", params_);
-	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 
