@@ -13,6 +13,9 @@
 #include "GuiBibitem.h"
 #include "ControlCommand.h"
 #include "qt_helpers.h"
+#include "FuncRequest.h"
+
+#include "insets/InsetCommand.h"
 
 #include <QCloseEvent>
 #include <QLineEdit>
@@ -23,19 +26,19 @@ namespace lyx {
 namespace frontend {
 
 
-GuiBibitemDialog::GuiBibitemDialog(LyXView & lv)
-	: GuiDialog(lv, "bibitem")
+GuiBibitem::GuiBibitem(LyXView & lv)
+	: GuiDialog(lv, "bibitem"), Controller(this), params_("bibitem")
 {
 	setupUi(this);
 	setViewTitle(_("Bibliography Entry Settings"));
-	setController(new ControlCommand(*this, "bibitem"));
+	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-	connect(keyED, SIGNAL(textChanged(const QString &)),
+	connect(keyED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(labelED, SIGNAL(textChanged(const QString &)),
+	connect(labelED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::OkCancelReadOnlyPolicy);
@@ -46,43 +49,57 @@ GuiBibitemDialog::GuiBibitemDialog(LyXView & lv)
 }
 
 
-ControlCommand & GuiBibitemDialog::controller()
-{
-	return static_cast<ControlCommand &>(GuiDialog::controller());
-}
-
-
-void GuiBibitemDialog::change_adaptor()
+void GuiBibitem::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiBibitemDialog::closeEvent(QCloseEvent *e)
+void GuiBibitem::closeEvent(QCloseEvent *e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiBibitemDialog::updateContents()
+void GuiBibitem::updateContents()
 {
-	keyED->setText(toqstr(controller().params()["key"]));
-	labelED->setText(toqstr(controller().params()["label"]));
+	keyED->setText(toqstr(params_["key"]));
+	labelED->setText(toqstr(params_["label"]));
 }
 
 
-void GuiBibitemDialog::applyView()
+void GuiBibitem::applyView()
 {
-	controller().params()["key"] = qstring_to_ucs4(keyED->text());
-	controller().params()["label"] = qstring_to_ucs4(labelED->text());
+	params_["key"] = qstring_to_ucs4(keyED->text());
+	params_["label"] = qstring_to_ucs4(labelED->text());
 }
 
 
-bool GuiBibitemDialog::isValid()
+bool GuiBibitem::isValid()
 {
 	return !keyED->text().isEmpty();
 }
+
+
+bool GuiBibitem::initialiseParams(std::string const & data)
+{
+	// The name passed with LFUN_INSET_APPLY is also the name
+	// used to identify the mailer.
+	InsetCommandMailer::string2params("bibitem", data, params_);
+	return true;
+}
+
+
+void GuiBibitem::dispatchParams()
+{
+	std::string const lfun = InsetCommandMailer::params2string("bibitem", params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+
+Dialog * createGuiBibitem(LyXView & lv) { return new GuiBibitem(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

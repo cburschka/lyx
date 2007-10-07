@@ -16,7 +16,6 @@
 #include "ButtonController.h"
 #include "DialogView.h"
 #include "DockView.h"
-#include "GuiBibitem.h"
 #include "GuiDelimiter.h"
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
@@ -96,7 +95,7 @@ Dialog * createGuiLog(LyXView & lv);
 Dialog * createGuiMath(LyXView & lv);
 Dialog * createGuiNomencl(LyXView & lv);
 Dialog * createGuiNote(LyXView & lv);
-Dialog * createGuiParagraph(LyXView & lv)
+Dialog * createGuiParagraph(LyXView & lv);
 Dialog * createGuiPreferences(LyXView & lv);
 Dialog * createGuiPrint(LyXView & lv);
 Dialog * createGuiRef(LyXView & lv);
@@ -129,7 +128,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "aboutlyx")
 		return createGuiAbout(lyxview_);
 	if (name == "bibitem")
-		return new GuiBibitemDialog(lyxview_);
+		return createGuiBibitem(lyxview_);
 	if (name == "bibtex")
 		return createGuiBibtex(lyxview_);
 	if (name == "box")

@@ -22,6 +22,9 @@
 #include "gettext.h"
 #include "ParagraphParameters.h"
 #include "Spacing.h"
+#include "GuiView.h"
+#include "DialogView.h"
+#include "DockView.h"
 
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -251,10 +254,10 @@ Dialog * createGuiParagraph(LyXView & lv)
 {
 	GuiViewBase & guiview = static_cast<GuiViewBase &>(lv);
 #ifdef USE_DOCK_WIDGET
-	return new DockView<ControlParagraph, GuiParagraph>(guiview, name,
+	return new DockView<ControlParagraph, GuiParagraph>(guiview, "paragraph",
 		Qt::TopDockWidgetArea);
 #else
-	return new DialogView<ControlParagraph, GuiParagraph>(guiview, name);
+	return new DialogView<ControlParagraph, GuiParagraph>(guiview, "paragraph");
 #endif
 }
 
