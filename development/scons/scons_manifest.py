@@ -714,10 +714,6 @@ src_frontends_extra_files = Split('''
 
 src_frontends_controllers_header_files = Split('''
     ButtonPolicy.h
-    ControlCommand.h
-    ControlCommandBuffer.h
-    ControlMath.h
-    ControlParagraph.h
     Dialog.h
     frontend_helpers.h
 ''')
@@ -725,10 +721,6 @@ src_frontends_controllers_header_files = Split('''
 
 src_frontends_controllers_files = Split('''
     ButtonPolicy.cpp
-    ControlCommand.cpp
-    ControlCommandBuffer.cpp
-    ControlMath.cpp
-    ControlParagraph.cpp
     Dialog.cpp
     frontend_helpers.cpp
 ''')
@@ -796,6 +788,7 @@ src_frontends_qt4_header_files = Split('''
     GuiKeySymbol.h
     GuiListings.h
     GuiLog.h
+    GuiMath.h
     GuiMathMatrix.h
     GuiMenubar.h
     GuiNomencl.h
@@ -881,6 +874,7 @@ src_frontends_qt4_files = Split('''
     GuiKeySymbol.cpp
     GuiListings.cpp
     GuiLog.cpp
+    GuiMath.cpp
     GuiMathMatrix.cpp
     GuiMenubar.cpp
     GuiNomencl.cpp
