@@ -12,7 +12,7 @@
 #ifndef CONTROLMATH_H
 #define CONTROLMATH_H
 
-#include "Dialog.h"
+#include "frontends/Dialog.h"
 #include "lfuns.h" // for kb_action
 #include "Font.h"
 

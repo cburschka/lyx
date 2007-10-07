@@ -18,7 +18,6 @@
 #include "DockView.h"
 #include "GuiBibitem.h"
 #include "GuiDelimiter.h"
-#include "GuiExternal.h"
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
 #include "GuiNomencl.h"
@@ -96,7 +95,7 @@ Dialog * createGuiIndex(LyXView & lv);
 Dialog * createGuiLabel(LyXView & lv);
 Dialog * createGuiListings(LyXView & lv);
 Dialog * createGuiLog(LyXView & lv);
-Dialog * createGuiMathMatrix(LyXView & lv);
+Dialog * createGuiMath(LyXView & lv);
 Dialog * createGuiNomencl(LyXView & lv);
 Dialog * createGuiNote(LyXView & lv);
 Dialog * createGuiPrefs(LyXView & lv);
@@ -155,7 +154,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "ert")
 		return createGuiERT(lyxview_);
 	if (name == "external")
-		return new GuiExternalDialog(lyxview_);
+		return createGuiExternal(lyxview_);
 	if (name == "file")
 		return createGuiShowFile(lyxview_);
 	if (name == "findreplace")

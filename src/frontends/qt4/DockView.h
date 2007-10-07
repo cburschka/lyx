@@ -12,7 +12,7 @@
 #ifndef DOCK_VIEW_H
 #define DOCK_VIEW_H
 
-#include "controllers/Dialog.h"
+#include "Dialog.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
 #include "debug.h"

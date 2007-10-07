@@ -20,8 +20,6 @@
 
 #include "frontends/alert.h"
 
-#include "frontends/controllers/Dialog.h"
-
 #include "support/docstring.h"
 #include "support/lstrings.h"
 #include "support/std_ostream.h"

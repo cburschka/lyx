@@ -16,7 +16,7 @@
 
 #include "ui_ViewSourceUi.h"
 
-#include "controllers/Dialog.h"
+#include "Dialog.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
 #include "debug.h"

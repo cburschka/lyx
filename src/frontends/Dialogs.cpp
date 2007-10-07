@@ -13,8 +13,7 @@
 #include <config.h>
 
 #include "Dialogs.h"
-
-#include "controllers/Dialog.h"
+#include "Dialog.h"
 
 #include <boost/signal.hpp>
 #include <boost/bind.hpp>

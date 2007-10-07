@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Angus Leeming
+ * \author Asger Alstrup
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,17 +14,27 @@
 
 #include "GuiExternal.h"
 
-#include "ControlExternal.h"
+#include "GuiExternal.h"
+#include "frontend_helpers.h"
+#include "FuncRequest.h"
+#include "gettext.h"
 #include "lengthcommon.h"
 #include "LyXRC.h"
 
+#include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
 #include "insets/InsetExternal.h"
 
-#include "support/lstrings.h"
+#include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsImage.h"
+
 #include "support/convert.h"
-#include "support/os.h"
+#include "support/FileFilterList.h"
+#include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/os.h"
 
 #include "LengthCombo.h"
 #include "qt_helpers.h"
@@ -36,28 +47,67 @@
 #include <QTabWidget>
 #include <QTextBrowser>
 
-namespace external = lyx::external;
-
-using lyx::support::isStrDbl;
-using lyx::support::token;
-using lyx::support::trim;
-using lyx::support::float_equal;
-
-using lyx::support::os::internal_path;
-
-using std::string;
+using std::advance;
 using std::vector;
+using std::string;
 
 
 namespace lyx {
 namespace frontend {
 
-GuiExternalDialog::GuiExternalDialog(LyXView & lv)
-	: GuiDialog(lv, "external")
+using support::FileFilterList;
+using support::FileName;
+using support::float_equal;
+using support::isStrDbl;
+using support::makeAbsPath;
+using support::readBB_from_PSFile;
+using support::token;
+using support::trim;
+using support::os::internal_path;
+
+using namespace external;
+
+namespace {
+
+RotationDataType origins_array[] = {
+	RotationData::DEFAULT,
+	RotationData::TOPLEFT,
+	RotationData::BOTTOMLEFT,
+	RotationData::BASELINELEFT,
+	RotationData::CENTER,
+	RotationData::TOPCENTER,
+	RotationData::BOTTOMCENTER,
+	RotationData::BASELINECENTER,
+	RotationData::TOPRIGHT,
+	RotationData::BOTTOMRIGHT,
+	RotationData::BASELINERIGHT
+};
+
+
+size_type const origins_array_size =
+sizeof(origins_array) / sizeof(origins_array[0]);
+
+vector<external::RotationDataType> const
+all_origins(origins_array, origins_array + origins_array_size);
+
+// These are the strings, corresponding to the above, that the GUI should
+// use. Note that they can/should be translated.
+char const * const origin_gui_strs[] = {
+	N_("Default"),
+	N_("Top left"), N_("Bottom left"), N_("Baseline left"),
+	N_("Center"), N_("Top center"), N_("Bottom center"), N_("Baseline center"),
+	N_("Top right"), N_("Bottom right"), N_("Baseline right")
+};
+
+} // namespace anon
+
+
+GuiExternal::GuiExternal(LyXView & lv)
+	: GuiDialog(lv, "external"), Controller(this), bbChanged_(false)
 {
 	setupUi(this);
 	setViewTitle(_("External Material"));
-	setController(new ControlExternal(*this));
+	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -102,10 +152,10 @@ GuiExternalDialog::GuiExternalDialog(LyXView & lv)
 	connect(clipCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(getbbPB, SIGNAL(clicked()), this, SLOT(getbbClicked()));
-	connect(xrED, SIGNAL(textChanged(const QString &)), this, SLOT(bbChanged()));
-	connect(ytED, SIGNAL(textChanged(const QString &)), this, SLOT(bbChanged()));
-	connect(xlED, SIGNAL(textChanged(const QString &)), this, SLOT(bbChanged()));
-	connect(ybED, SIGNAL(textChanged(const QString &)), this, SLOT(bbChanged()));
+	connect(xrED, SIGNAL(textChanged(QString)), this, SLOT(bbChanged()));
+	connect(ytED, SIGNAL(textChanged(QString)), this, SLOT(bbChanged()));
+	connect(xlED, SIGNAL(textChanged(QString)), this, SLOT(bbChanged()));
+	connect(ybED, SIGNAL(textChanged(QString)), this, SLOT(bbChanged()));
 	connect(draftCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	QIntValidator * validator = new QIntValidator(displayscaleED);
@@ -164,7 +214,7 @@ GuiExternalDialog::GuiExternalDialog(LyXView & lv)
 	bc().addCheckedLineEdit(ytED, rtLA);
 	bc().addCheckedLineEdit(fileED, fileLA);
 
-	std::vector<string> templates(controller().getTemplates());
+	std::vector<string> templates = getTemplates();
 
 	for (std::vector<string>::const_iterator cit = templates.begin();
 		cit != templates.end(); ++cit) {
@@ -172,10 +222,8 @@ GuiExternalDialog::GuiExternalDialog(LyXView & lv)
 	}
 
 	// Fill the origins combo
-	typedef vector<external::RotationDataType> Origins;
-	Origins const & all_origins = external::all_origins();
-	for (Origins::size_type i = 0; i != all_origins.size(); ++i)
-		originCO->addItem(toqstr(external::origin_gui_str(i)));
+	for (size_t i = 0; i != all_origins.size(); ++i)
+		originCO->addItem(qt_(origin_gui_strs[i]));
 
 	// Fill the width combo
 	widthUnitCO->addItem(qt_("Scale%"));
@@ -184,13 +232,7 @@ GuiExternalDialog::GuiExternalDialog(LyXView & lv)
 }
 
 
-ControlExternal & GuiExternalDialog::controller()
-{
-	return static_cast<ControlExternal &>(GuiDialog::controller());
-}
-
-
-bool GuiExternalDialog::activateAspectratio() const
+bool GuiExternal::activateAspectratio() const
 {
 	if (widthUnitCO->currentIndex() == 0)
 		return false;
@@ -218,21 +260,18 @@ bool GuiExternalDialog::activateAspectratio() const
 }
 
 
-void GuiExternalDialog::bbChanged()
+void GuiExternal::bbChanged()
 {
-	controller().bbChanged(true);
+	bbChanged_ = true;
 	changed();
 }
 
 
-void GuiExternalDialog::browseClicked()
+void GuiExternal::browseClicked()
 {
 	int const choice =  externalCO->currentIndex();
-	docstring const template_name =
-		from_utf8(controller().getTemplate(choice).lyxName);
-	docstring const str =
-		controller().browse(qstring_to_ucs4(fileED->text()),
-					   template_name);
+	docstring const template_name = from_utf8(getTemplate(choice).lyxName);
+	docstring const str = browse(qstring_to_ucs4(fileED->text()), template_name);
 	if (!str.empty()) {
 		fileED->setText(toqstr(str));
 		changed();
@@ -240,27 +279,27 @@ void GuiExternalDialog::browseClicked()
 }
 
 
-void GuiExternalDialog::change_adaptor()
+void GuiExternal::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiExternalDialog::closeEvent(QCloseEvent * e)
+void GuiExternal::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiExternalDialog::editClicked()
+void GuiExternal::editClicked()
 {
-	controller().editExternal();
+	editExternal();
 }
 
 
 
-void GuiExternalDialog::extraChanged(const QString& text)
+void GuiExternal::extraChanged(const QString& text)
 {
 	std::string const format = fromqstr(extraFormatCO->currentText());
 	extra_[format] = text;
@@ -268,33 +307,33 @@ void GuiExternalDialog::extraChanged(const QString& text)
 }
 
 
-void GuiExternalDialog::formatChanged(const QString& format)
+void GuiExternal::formatChanged(const QString& format)
 {
 	extraED->setText(extra_[fromqstr(format)]);
 }
 
 
-void GuiExternalDialog::getbbClicked()
+void GuiExternal::getbbClicked()
 {
 	getBB();
 }
 
 
-void GuiExternalDialog::sizeChanged()
+void GuiExternal::sizeChanged()
 {
 	aspectratioCB->setEnabled(activateAspectratio());
 	changed();
 }
 
 
-void GuiExternalDialog::templateChanged()
+void GuiExternal::templateChanged()
 {
 	updateTemplate();
 	changed();
 }
 
 
-void GuiExternalDialog::widthUnitChanged()
+void GuiExternal::widthUnitChanged()
 {
 	bool useHeight = (widthUnitCO->currentIndex() > 0);
 
@@ -309,10 +348,7 @@ void GuiExternalDialog::widthUnitChanged()
 }
 
 
-
-namespace {
-
-Length::UNIT defaultUnit()
+static Length::UNIT defaultUnit()
 {
 	Length::UNIT default_unit = Length::CM;
 	switch (lyxrc.default_papersize) {
@@ -328,9 +364,9 @@ Length::UNIT defaultUnit()
 }
 
 
-void setDisplay(QCheckBox & displayCB, QComboBox & showCO, QLineEdit & scaleED,
-		external::DisplayType display, unsigned int scale,
-		bool read_only)
+static void setDisplay(
+	QCheckBox & displayCB, QComboBox & showCO, QLineEdit & scaleED,
+	external::DisplayType display, unsigned int scale, bool read_only)
 {
 	int item = 0;
 	switch (display) {
@@ -363,7 +399,7 @@ void setDisplay(QCheckBox & displayCB, QComboBox & showCO, QLineEdit & scaleED,
 }
 
 
-void getDisplay(external::DisplayType & display,
+static void getDisplay(external::DisplayType & display,
 		unsigned int & scale,
 		QCheckBox const & displayCB,
 		QComboBox const & showCO,
@@ -394,16 +430,16 @@ void getDisplay(external::DisplayType & display,
 }
 
 
-void setRotation(QLineEdit & angleED, QComboBox & originCO,
-		 external::RotationData const & data)
+static void setRotation(QLineEdit & angleED, QComboBox & originCO,
+	external::RotationData const & data)
 {
 	originCO.setCurrentIndex(int(data.origin()));
 	angleED.setText(toqstr(data.angle));
 }
 
 
-void getRotation(external::RotationData & data,
-		 QLineEdit const & angleED, QComboBox const & originCO)
+static void getRotation(external::RotationData & data,
+	QLineEdit const & angleED, QComboBox const & originCO)
 {
 	typedef external::RotationData::OriginType OriginType;
 
@@ -412,10 +448,10 @@ void getRotation(external::RotationData & data,
 }
 
 
-void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
-	     QLineEdit & heightED, LengthCombo & heightUnitCO,
-	     QCheckBox & aspectratioCB,
-	     external::ResizeData const & data)
+static void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
+	QLineEdit & heightED, LengthCombo & heightUnitCO,
+	QCheckBox & aspectratioCB,
+	external::ResizeData const & data)
 {
 	bool using_scale = data.usingScale();
 	std::string scale = data.scale;
@@ -452,10 +488,10 @@ void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 }
 
 
-void getSize(external::ResizeData & data,
-	     QLineEdit const & widthED, QComboBox const & widthUnitCO,
-	     QLineEdit const & heightED, LengthCombo const & heightUnitCO,
-	     QCheckBox const & aspectratioCB)
+static void getSize(external::ResizeData & data,
+	QLineEdit const & widthED, QComboBox const & widthUnitCO,
+	QLineEdit const & heightED, LengthCombo const & heightUnitCO,
+	QCheckBox const & aspectratioCB)
 {
 	string const width = fromqstr(widthED.text());
 
@@ -487,9 +523,9 @@ void getSize(external::ResizeData & data,
 
 
 void setCrop(QCheckBox & clipCB,
-	     QLineEdit & xlED, QLineEdit & ybED,
-	     QLineEdit & xrED, QLineEdit & ytED,
-	     external::ClipData const & data)
+	QLineEdit & xlED, QLineEdit & ybED,
+	QLineEdit & xrED, QLineEdit & ytED,
+	external::ClipData const & data)
 {
 	clipCB.setChecked(data.clip);
 	graphics::BoundingBox const & bbox = data.bbox;
@@ -500,11 +536,11 @@ void setCrop(QCheckBox & clipCB,
 }
 
 
-void getCrop(external::ClipData & data,
-	     QCheckBox const & clipCB,
-	     QLineEdit const & xlED, QLineEdit const & ybED,
-	     QLineEdit const & xrED, QLineEdit const & ytED,
-	     bool bb_changed)
+static void getCrop(external::ClipData & data,
+	QCheckBox const & clipCB,
+	QLineEdit const & xlED, QLineEdit const & ybED,
+	QLineEdit const & xrED, QLineEdit const & ytED,
+	bool bb_changed)
 {
 	data.clip = clipCB.isChecked();
 
@@ -518,60 +554,48 @@ void getCrop(external::ClipData & data,
 }
 
 
-void getExtra(external::ExtraData & data,
-	      GuiExternalDialog::MapType const & extra)
+static void getExtra(external::ExtraData & data,
+	      GuiExternal::MapType const & extra)
 {
-	typedef GuiExternalDialog::MapType MapType;
+	typedef GuiExternal::MapType MapType;
 	MapType::const_iterator it = extra.begin();
 	MapType::const_iterator const end = extra.end();
 	for (; it != end; ++it)
 		data.set(it->first, trim(fromqstr(it->second)));
 }
 
-} // namespace anon
 
-
-
-void GuiExternalDialog::updateContents()
+void GuiExternal::updateContents()
 {
 	tab->setCurrentIndex(0);
-	InsetExternalParams const & params = controller().params();
 
 	string const name =
-		params.filename.outputFilename(controller().bufferFilepath());
+		params_.filename.outputFilename(bufferFilepath());
 	fileED->setText(toqstr(name));
 
-	externalCO->setCurrentIndex(
-		controller().getTemplateNumber(params.templatename()));
+	externalCO->setCurrentIndex(getTemplateNumber(params_.templatename()));
 	updateTemplate();
 
-	draftCB->setChecked(params.draft);
+	draftCB->setChecked(params_.draft);
 
-	setDisplay(*displayCB, *showCO,
-		   *displayscaleED,
-		   params.display, params.lyxscale, controller().isBufferReadonly());
+	setDisplay(*displayCB, *showCO, *displayscaleED,
+		   params_.display, params_.lyxscale, isBufferReadonly());
 
-	setRotation(*angleED, *originCO, params.rotationdata);
+	setRotation(*angleED, *originCO, params_.rotationdata);
 
-	setSize(*widthED, *widthUnitCO,
-		*heightED, *heightUnitCO,
-		*aspectratioCB,
-		params.resizedata);
+	setSize(*widthED, *widthUnitCO, *heightED, *heightUnitCO,
+		*aspectratioCB, params_.resizedata);
 
-	setCrop(*clipCB,
-		*xlED, *ybED,
-		*xrED, *ytED,
-		params.clipdata);
-	controller().bbChanged(!params.clipdata.bbox.empty());
+	setCrop(*clipCB, *xlED, *ybED, *xrED, *ytED, params_.clipdata);
+	bbChanged_ = !params_.clipdata.bbox.empty();
 
 	isValid();
 }
 
 
-void GuiExternalDialog::updateTemplate()
+void GuiExternal::updateTemplate()
 {
-	external::Template templ =
-		controller().getTemplate(externalCO->currentIndex());
+	external::Template templ = getTemplate(externalCO->currentIndex());
 	externalTB->setPlainText(qt_(templ.helpText));
 
 	// Ascertain which (if any) transformations the template supports
@@ -608,7 +632,7 @@ void GuiExternalDialog::updateTemplate()
 		    it->second.option_transformers.end())
 			continue;
 		string const format = it->first;
-		string const opt = controller().params().extradata.get(format);
+		string const opt = params_.extradata.get(format);
 		extraFormatCO->addItem(toqstr(format));
 		extra_[format] = toqstr(opt);
 	}
@@ -617,7 +641,7 @@ void GuiExternalDialog::updateTemplate()
 
 	tab->setTabEnabled(
 		tab->indexOf(optionstab), enabled);
-	extraED->setEnabled(enabled && !controller().isBufferReadonly());
+	extraED->setEnabled(enabled && !isBufferReadonly());
 	extraFormatCO->setEnabled(enabled);
 
 	if (enabled) {
@@ -627,41 +651,36 @@ void GuiExternalDialog::updateTemplate()
 }
 
 
-void GuiExternalDialog::applyView()
+void GuiExternal::applyView()
 {
-	InsetExternalParams params = controller().params();
-
-	params.filename.set(internal_path(fromqstr(fileED->text())),
+	params_.filename.set(internal_path(fromqstr(fileED->text())),
 			    controller().bufferFilepath());
 
-	params.settemplate(controller().getTemplate(
-				   externalCO->currentIndex()).lyxName);
+	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
 
-	params.draft = draftCB->isChecked();
+	params_.draft = draftCB->isChecked();
 
-	getDisplay(params.display, params.lyxscale,
+	getDisplay(params_.display, params_.lyxscale,
 		   *displayCB, *showCO,
 		   *displayscaleED);
 
 	if (tab->isTabEnabled(tab->indexOf(rotatetab)))
-		getRotation(params.rotationdata, *angleED, *originCO);
+		getRotation(params_.rotationdata, *angleED, *originCO);
 
 	if (tab->isTabEnabled(tab->indexOf(scaletab)))
-		getSize(params.resizedata, *widthED, *widthUnitCO,
+		getSize(params_.resizedata, *widthED, *widthUnitCO,
 			*heightED, *heightUnitCO, *aspectratioCB);
 
 	if (tab->isTabEnabled(tab->indexOf(croptab)))
-		getCrop(params.clipdata, *clipCB, *xlED, *ybED,
-			*xrED, *ytED, controller().bbChanged());
+		getCrop(params_.clipdata, *clipCB, *xlED, *ybED,
+			*xrED, *ytED, bbChanged_);
 
 	if (tab->isTabEnabled(tab->indexOf(optionstab)))
-		getExtra(params.extradata, extra_);
-
-	controller().setParams(params);
+		getExtra(params_.extradata, extra_);
 }
 
 
-void GuiExternalDialog::getBB()
+void GuiExternal::getBB()
 {
 	xlED->setText("0");
 	ybED->setText("0");
@@ -672,7 +691,7 @@ void GuiExternalDialog::getBB()
 	if (filename.empty())
 		return;
 
-	string const bb = controller().readBB(filename);
+	string const bb = readBB(filename);
 	if (bb.empty())
 		return;
 
@@ -681,8 +700,142 @@ void GuiExternalDialog::getBB()
 	xrED->setText(toqstr(token(bb, ' ', 2)));
 	ytED->setText(toqstr(token(bb, ' ', 3)));
 
-	controller().bbChanged(false);
+	bbChanged_ = false;
 }
+
+
+bool GuiExternal::initialiseParams(string const & data)
+{
+	InsetExternalMailer::string2params(data, buffer(), params_);
+	return true;
+}
+
+
+void GuiExternal::clearParams()
+{
+	params_ = InsetExternalParams();
+}
+
+
+void GuiExternal::dispatchParams()
+{
+	string const lfun = InsetExternalMailer::params2string(params_, buffer());
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+
+void GuiExternal::editExternal()
+{
+	dialog().applyView();
+	string const lfun = InsetExternalMailer::params2string(params_, buffer());
+	dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));
+}
+
+
+vector<string> const GuiExternal::getTemplates() const
+{
+	vector<string> result;
+
+	external::TemplateManager::Templates::const_iterator i1, i2;
+	i1 = external::TemplateManager::get().getTemplates().begin();
+	i2 = external::TemplateManager::get().getTemplates().end();
+
+	for (; i1 != i2; ++i1) {
+		result.push_back(i1->second.lyxName);
+	}
+	return result;
+}
+
+
+int GuiExternal::getTemplateNumber(string const & name) const
+{
+	external::TemplateManager::Templates::const_iterator i1, i2;
+	i1 = external::TemplateManager::get().getTemplates().begin();
+	i2 = external::TemplateManager::get().getTemplates().end();
+	for (int i = 0; i1 != i2; ++i1, ++i) {
+		if (i1->second.lyxName == name)
+			return i;
+	}
+
+	// we can get here if a LyX document has a template not installed
+	// on this machine.
+	return -1;
+}
+
+
+external::Template GuiExternal::getTemplate(int i) const
+{
+	external::TemplateManager::Templates::const_iterator i1
+		= external::TemplateManager::get().getTemplates().begin();
+
+	advance(i1, i);
+
+	return i1->second;
+}
+
+
+string const
+GuiExternal::getTemplateFilters(string const & template_name) const
+{
+	/// Determine the template file extension
+	external::TemplateManager const & etm =
+		external::TemplateManager::get();
+	external::Template const * const et_ptr =
+		etm.getTemplateByName(template_name);
+
+	if (et_ptr)
+		return et_ptr->fileRegExp;
+
+	return string();
+}
+
+
+docstring const GuiExternal::browse(docstring const & input,
+				     docstring const & template_name) const
+{
+	docstring const title =  _("Select external file");
+
+	docstring const bufpath = lyx::from_utf8(bufferFilepath());
+	FileFilterList const filter =
+		FileFilterList(lyx::from_utf8(getTemplateFilters(lyx::to_utf8(template_name))));
+
+	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),
+		lyx::from_utf8(lyxrc.document_path));
+
+	return browseRelFile(input, bufpath, title, filter, false, dir1);
+}
+
+
+string const GuiExternal::readBB(string const & file)
+{
+	FileName const abs_file(makeAbsPath(file, bufferFilepath()));
+
+	// try to get it from the file, if possible. Zipped files are
+	// unzipped in the readBB_from_PSFile-Function
+	string const bb = readBB_from_PSFile(abs_file);
+	if (!bb.empty())
+		return bb;
+
+	// we don't, so ask the Graphics Cache if it has loaded the file
+	int width = 0;
+	int height = 0;
+
+	graphics::Cache & gc = graphics::Cache::get();
+	if (gc.inCache(abs_file)) {
+		graphics::Image const * image = gc.item(abs_file)->image();
+
+		if (image) {
+			width  = image->getWidth();
+			height = image->getHeight();
+		}
+	}
+
+	return ("0 0 " + convert<string>(width) + ' ' + convert<string>(height));
+}
+
+
+Dialog * createGuiExternal(LyXView & lv) { return new GuiExternal(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

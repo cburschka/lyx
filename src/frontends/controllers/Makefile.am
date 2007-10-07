@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-AM_CPPFLAGS += -I$(top_srcdir)/src $(BOOST_INCLUDES)
+AM_CPPFLAGS += -I$(top_srcdir)/src $(BOOST_INCLUDES) -I$(top_srcdir)/src/frontends
 
 EXTRA_DIST = tests/regfiles/biblio
 
@@ -11,17 +11,16 @@ SOURCEFILES = \
 	ButtonPolicy.cpp \
 	ControlCommand.cpp \
 	ControlCommandBuffer.cpp \
-	ControlExternal.cpp \
 	ControlMath.cpp \
 	ControlParagraph.cpp \
 	ControlPrefs.cpp \
 	frontend_helpers.cpp 
 
 HEADERFILES = \
+	Dialog.h \
 	ButtonPolicy.h \
 	ControlCommand.h \
 	ControlCommandBuffer.h \
-	ControlExternal.h \
 	ControlMath.h \
 	ControlParagraph.h \
 	ControlPrefs.h \
