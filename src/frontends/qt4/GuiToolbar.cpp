@@ -37,8 +37,6 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
 
-#include "controllers/ControlMath.h"
-
 #include <QComboBox>
 #include <QToolBar>
 #include <QToolButton>

@@ -1,5 +1,5 @@
 /**
- * \file ControlMath.cpp
+ * \file GuiMath.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "ControlMath.h"
+#include "GuiMath.h"
 #include "debug.h"
 #include "FuncRequest.h"
 
@@ -20,8 +20,8 @@ using std::map;
 namespace lyx {
 namespace frontend {
 
-ControlMath::ControlMath(Dialog & dialog)
-	: Controller(dialog)
+GuiMath::GuiMath(LyXView & lv, std::string const & name)
+	: GuiDialog(lv, name), Controller(this)
 {
 	// FIXME: Ideally, those unicode codepoints would be defined
 	// in "lib/symbols". Unfortunately, some of those are already
@@ -62,31 +62,31 @@ ControlMath::ControlMath(Dialog & dialog)
 }
 
 
-void ControlMath::dispatchFunc(kb_action action, string const & arg) const
+void GuiMath::dispatchFunc(kb_action action, string const & arg) const
 {
 	dispatch(FuncRequest(action, arg));
 }
 
 
-void ControlMath::dispatchInsert(string const & name) const
+void GuiMath::dispatchInsert(string const & name) const
 {
 	dispatchFunc(LFUN_MATH_INSERT, '\\' + name);
 }
 
 
-void ControlMath::dispatchSubscript() const
+void GuiMath::dispatchSubscript() const
 {
 	dispatchFunc(LFUN_MATH_INSERT, "_");
 }
 
 
-void ControlMath::dispatchSuperscript() const
+void GuiMath::dispatchSuperscript() const
 {
 	dispatchFunc(LFUN_MATH_INSERT, "^");
 }
 
 
-void ControlMath::dispatchCubeRoot() const
+void GuiMath::dispatchCubeRoot() const
 {
 	dispatchFunc(LFUN_MATH_INSERT, "\\root");
 	dispatchFunc(LFUN_SELF_INSERT, "3");
@@ -94,37 +94,37 @@ void ControlMath::dispatchCubeRoot() const
 }
 
 
-void ControlMath::dispatchMatrix(string const & str) const
+void GuiMath::dispatchMatrix(string const & str) const
 {
 	dispatchFunc(LFUN_MATH_MATRIX, str);
 }
 
 
-void ControlMath::dispatchDelim(string const & str) const
+void GuiMath::dispatchDelim(string const & str) const
 {
 	dispatchFunc(LFUN_MATH_DELIM, str);
 }
 
 
-void ControlMath::dispatchBigDelim(string const & str) const
+void GuiMath::dispatchBigDelim(string const & str) const
 {
 	dispatchFunc(LFUN_MATH_BIGDELIM, str);
 }
 
 
-void ControlMath::dispatchToggleDisplay() const
+void GuiMath::dispatchToggleDisplay() const
 {
 	dispatchFunc(LFUN_MATH_DISPLAY);
 }
 
 
-void ControlMath::showDialog(string const & name) const
+void GuiMath::showDialog(string const & name) const
 {
 	dispatchFunc(LFUN_DIALOG_SHOW, name);
 }
 
 
-MathSymbol const & ControlMath::mathSymbol(string tex_name) const
+MathSymbol const & GuiMath::mathSymbol(string tex_name) const
 {
 	map<string, MathSymbol>::const_iterator it =
 		math_symbols_.find(tex_name);
@@ -137,7 +137,7 @@ MathSymbol const & ControlMath::mathSymbol(string tex_name) const
 }
 
 
-std::string const & ControlMath::texName(char_type math_symbol) const
+std::string const & GuiMath::texName(char_type math_symbol) const
 {
 	map<char_type, string>::const_iterator it =
 		tex_names_.find(math_symbol);

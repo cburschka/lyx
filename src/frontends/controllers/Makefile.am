@@ -9,13 +9,11 @@ noinst_LTLIBRARIES = liblyxcontrollers.la
 SOURCEFILES = \
 	Dialog.cpp \
 	ButtonPolicy.cpp \
-	ControlMath.cpp \
 	frontend_helpers.cpp 
 
 HEADERFILES = \
 	Dialog.h \
 	ButtonPolicy.h \
-	ControlMath.h \
 	frontend_helpers.h
 
 if MONOLITHIC_CONTROLLERS

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file ControlMath.h
+ * \file GuiMath.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,10 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef CONTROLMATH_H
-#define CONTROLMATH_H
+#ifndef GUIMATH_H
+#define GUIMATH_H
 
-#include "Dialog.h"
+#include "GuiDialog.h"
 #include "lfuns.h" // for kb_action
 #include "Font.h"
 
@@ -33,18 +33,22 @@ struct MathSymbol {
 };
 
 
-class ControlMath : public Controller {
+class GuiMath : public GuiDialog, public Controller
+{
 public:
-	ControlMath(Dialog &);
+	GuiMath(LyXView & lv, std::string const & name);
 
 	/// Nothing to initialise in this case.
-	virtual bool initialiseParams(std::string const &) { return true; }
-	virtual void clearParams() {}
-	virtual void dispatchParams() {}
-	virtual bool isBufferDependent() const { return true; }
+	bool initialiseParams(std::string const &) { return true; }
+	void clearParams() {}
+	void dispatchParams() {}
+	bool isBufferDependent() const { return true; }
+
+	Controller & controller() { return *this; }
 
 	/// dispatch an LFUN
-	void dispatchFunc(kb_action action, std::string const & arg = std::string()) const;
+	void dispatchFunc(kb_action action,
+		std::string const & arg = std::string()) const;
 	/// Insert a math symbol into the doc.
 	void dispatchInsert(std::string const & name) const;
 	/// Insert a subscript.
@@ -84,4 +88,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // NOT CONTROLMATH
+#endif // GUIMATH_H

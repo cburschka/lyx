@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file GuiMathMatrixDialog.h
+ * \file GuiMathMatrix.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,11 +11,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GUIMATHMATRIXDIALOG_H
-#define GUIMATHMATRIXDIALOG_H
+#ifndef GUIMATHMATRIX_H
+#define GUIMATHMATRIX_H
 
-#include "GuiDialog.h"
-#include "ControlMath.h"
+#include "GuiMath.h"
 #include "ui_MathMatrixUi.h"
 
 #include <QDialog>
@@ -23,12 +22,12 @@
 namespace lyx {
 namespace frontend {
 
-class GuiMathMatrixDialog : public GuiDialog, public Ui::MathMatrixUi
+class GuiMathMatrix : public GuiMath, public Ui::MathMatrixUi
 {
 	Q_OBJECT
 
 public:
-	GuiMathMatrixDialog(LyXView & lv);
+	GuiMathMatrix(LyXView & lv);
 
 public Q_SLOTS:
 	void slotOK();
@@ -36,9 +35,6 @@ public Q_SLOTS:
 	void columnsChanged(int);
 	void rowsChanged(int);
 	void change_adaptor();
-
-	/// parent controller
-	ControlMath & controller();
 };
 
 } // namespace frontend

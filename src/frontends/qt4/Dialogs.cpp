@@ -13,17 +13,6 @@
 #include "Dialogs.h"
 #include "GuiDialog.h"
 
-#include "ButtonController.h"
-#include "DialogView.h"
-#include "DockView.h"
-#include "GuiDelimiter.h"
-#include "GuiIndex.h"
-#include "GuiMathMatrix.h"
-#include "GuiView.h"
-
-// Uncomment this if you prefer dock widget
-//#define USE_DOCK_WIDGET
-
 #include "qt_helpers.h"
 
 #include <boost/assert.hpp>
@@ -90,7 +79,7 @@ Dialog * createGuiIndex(LyXView & lv);
 Dialog * createGuiLabel(LyXView & lv);
 Dialog * createGuiListings(LyXView & lv);
 Dialog * createGuiLog(LyXView & lv);
-Dialog * createGuiMath(LyXView & lv);
+Dialog * createGuiMathMatrix(LyXView & lv);
 Dialog * createGuiNomenclature(LyXView & lv);
 Dialog * createGuiNote(LyXView & lv);
 Dialog * createGuiParagraph(LyXView & lv);
@@ -170,9 +159,9 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "view-source")
 		return createGuiViewSource(lyxview_);
 	if (name == "mathdelimiter")
-		return new GuiDelimiterDialog(lyxview_);
+		return createGuiDelimiter(lyxview_);
 	if (name == "mathmatrix")
-		return new GuiMathMatrixDialog(lyxview_);
+		return createGuiMathMatrix(lyxview_);
 	if (name == "note")
 		return createGuiNote(lyxview_);
 	if (name == "paragraph")

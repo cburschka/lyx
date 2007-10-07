@@ -12,7 +12,6 @@
 
 #include "GuiMathMatrix.h"
 
-#include "ControlMath.h"
 #include "EmptyTable.h"
 #include "qt_helpers.h"
 #include "gettext.h"
@@ -29,12 +28,12 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiMathMatrixDialog::GuiMathMatrixDialog(LyXView & lv)
-	: GuiDialog(lv, "mathmatrix")
+GuiMathMatrix::GuiMathMatrix(LyXView & lv)
+	: GuiMath(lv, "mathmatrix")
 {
 	setupUi(this);
 	setViewTitle(_("Math Matrix"));
-	setController(new ControlMath(*this));
+	setController(this, false);
 
 	table->setMinimumSize(100, 100);
 	rowsSB->setValue(5);
@@ -65,13 +64,7 @@ GuiMathMatrixDialog::GuiMathMatrixDialog(LyXView & lv)
 }
 
 
-ControlMath & GuiMathMatrixDialog::controller()
-{
-	return static_cast<ControlMath &>(GuiDialog::controller());
-}
-
-
-void GuiMathMatrixDialog::columnsChanged(int)
+void GuiMathMatrix::columnsChanged(int)
 {
 	char h_align_str[80] = "c";
 	int const nx = int(columnsSB->value());
@@ -83,18 +76,18 @@ void GuiMathMatrixDialog::columnsChanged(int)
 }
 
 
-void GuiMathMatrixDialog::rowsChanged(int)
+void GuiMathMatrix::rowsChanged(int)
 {
 }
 
 
-void GuiMathMatrixDialog::change_adaptor()
+void GuiMathMatrix::change_adaptor()
 {
 	// FIXME: We need a filter for the halign input
 }
 
 
-void GuiMathMatrixDialog::slotOK()
+void GuiMathMatrix::slotOK()
 {
 	char v_align_c[] = "tcb";
 	char const c = v_align_c[valignCO->currentIndex()];
@@ -104,17 +97,21 @@ void GuiMathMatrixDialog::slotOK()
 
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
-	controller().dispatchMatrix(os.str().c_str());
+	dispatchMatrix(os.str().c_str());
 
 	// close the dialog
 	close();
 }
 
 
-void GuiMathMatrixDialog::slotClose()
+void GuiMathMatrix::slotClose()
 {
 	close();
 }
+
+
+Dialog * createGuiMathMatrix(LyXView & lv) { return new GuiMathMatrix(lv); }
+
 
 } // namespace frontend
 } // namespace lyx

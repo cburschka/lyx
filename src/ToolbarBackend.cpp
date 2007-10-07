@@ -22,8 +22,6 @@
 #include <boost/bind.hpp>
 #include <algorithm>
 
-#include "frontends/controllers/ControlMath.h"
-
 namespace lyx {
 
 using support::compare_ascii_no_case;

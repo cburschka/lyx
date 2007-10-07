@@ -88,6 +88,7 @@ SOURCEFILES = \
 	GuiKeySymbol.cpp \
 	GuiListings.cpp \
 	GuiLog.cpp \
+	GuiMath.cpp \
 	GuiMathMatrix.cpp \
 	GuiMenubar.cpp \
 	GuiNomencl.cpp \
@@ -175,6 +176,7 @@ MOCHEADER = \
 	GuiKeySymbol.h \
 	GuiListings.h \
 	GuiLog.h \
+	GuiMath.h \
 	GuiMathMatrix.h \
 	GuiMenubar.h \
 	GuiNomencl.h \

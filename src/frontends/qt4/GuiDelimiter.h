@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file GuiDelimiterDialog.h
+ * \file GuiDelimiter.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,8 +12,7 @@
 #ifndef GUIDELIMITERDIALOG_H
 #define GUIDELIMITERDIALOG_H
 
-#include "GuiDialog.h"
-#include "ControlMath.h"
+#include "GuiMath.h"
 #include "ui_DelimiterUi.h"
 
 class QListWidgetItem;
@@ -21,12 +20,12 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiDelimiterDialog : public GuiDialog, public Ui::DelimiterUi
+class GuiDelimiter : public GuiMath, public Ui::DelimiterUi
 {
 	Q_OBJECT
 
 public:
-	GuiDelimiterDialog(LyXView & lv);
+	GuiDelimiter(LyXView & lv);
 
 public Q_SLOTS:
 	void on_leftLW_itemActivated(QListWidgetItem *);
@@ -42,8 +41,6 @@ private:
 	char_type doMatch(char_type const symbol);
 	///
 	void updateTeXCode(int size);
-	/// parent controller
-	ControlMath & controller();
 
 	/// TeX code that will be inserted.
 	QString tex_code_;

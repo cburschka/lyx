@@ -69,12 +69,12 @@ namespace lyx {
 namespace frontend {
 
 
-GuiDelimiterDialog::GuiDelimiterDialog(LyXView & lv)
-	: GuiDialog(lv, "mathdelimiter")
+GuiDelimiter::GuiDelimiter(LyXView & lv)
+	: GuiMath(lv, "mathdelimiter")
 {
 	setupUi(this);
 	setViewTitle(_("Math Delimiter"));
-	setController(new ControlMath(*this));
+	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
 
@@ -89,7 +89,7 @@ GuiDelimiterDialog::GuiDelimiterDialog(LyXView & lv)
 	int const end = nr_latex_delimiters - 1;
 	for (int i = 0; i < end; ++i) {
 		string const delim = latex_delimiters[i];
-		MathSymbol const & ms =	controller().mathSymbol(delim);
+		MathSymbol const & ms =	mathSymbol(delim);
 		QString symbol(ms.fontcode?
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
@@ -103,7 +103,7 @@ GuiDelimiterDialog::GuiDelimiterDialog(LyXView & lv)
 	}
 
 	for (int i = 0; i != leftLW->count(); ++i) {
-		MathSymbol const & ms =	controller().mathSymbol(
+		MathSymbol const & ms =	mathSymbol(
 			fromqstr(leftLW->item(i)->toolTip()));
 		rightLW->addItem(list_items[doMatch(ms.unicode)]->clone());
 	}
@@ -122,15 +122,9 @@ GuiDelimiterDialog::GuiDelimiterDialog(LyXView & lv)
 }
 
 
-ControlMath & GuiDelimiterDialog::controller()
+char_type GuiDelimiter::doMatch(char_type const symbol)
 {
-	return static_cast<ControlMath &>(GuiDialog::controller()); 
-}
-
-
-char_type GuiDelimiterDialog::doMatch(char_type const symbol)
-{
-	string const & str = controller().texName(symbol);
+	string const & str = texName(symbol);
 	string match;
 	if (str == "(") match = ")";
 	else if (str == ")") match = "(";
@@ -149,11 +143,11 @@ char_type GuiDelimiterDialog::doMatch(char_type const symbol)
 	else if (str == "/") match = "backslash";
 	else return symbol;
 
-	return controller().mathSymbol(match).unicode;
+	return mathSymbol(match).unicode;
 }
 
 
-void GuiDelimiterDialog::updateTeXCode(int size)
+void GuiDelimiter::updateTeXCode(int size)
 {
 	bool const bigsize = size != 0;
 
@@ -191,39 +185,39 @@ void GuiDelimiterDialog::updateTeXCode(int size)
 }
 
 
-void GuiDelimiterDialog::on_insertPB_clicked()
+void GuiDelimiter::on_insertPB_clicked()
 {
 	if (sizeCO->currentIndex() == 0)
-		controller().dispatchDelim(fromqstr(tex_code_));
+		dispatchDelim(fromqstr(tex_code_));
 	else {
 		QString command = '"' + tex_code_ + '"';
 		command.replace(' ', "\" \"");
-		controller().dispatchBigDelim(fromqstr(command));
+		dispatchBigDelim(fromqstr(command));
 	}
  }
 
 
-void GuiDelimiterDialog::on_sizeCO_activated(int index)
+void GuiDelimiter::on_sizeCO_activated(int index)
 {
 	updateTeXCode(index);
 }
 
 
-void GuiDelimiterDialog::on_leftLW_itemActivated(QListWidgetItem *)
+void GuiDelimiter::on_leftLW_itemActivated(QListWidgetItem *)
 {
 	on_insertPB_clicked();
 	accept();
 }
 
 
-void GuiDelimiterDialog::on_rightLW_itemActivated(QListWidgetItem *)
+void GuiDelimiter::on_rightLW_itemActivated(QListWidgetItem *)
 {
 	on_insertPB_clicked();
 	accept();
 }
 
 
-void GuiDelimiterDialog::on_leftLW_currentRowChanged(int item)
+void GuiDelimiter::on_leftLW_currentRowChanged(int item)
 {
 	if (matchCB->isChecked())
 		rightLW->setCurrentRow(item);
@@ -232,7 +226,7 @@ void GuiDelimiterDialog::on_leftLW_currentRowChanged(int item)
 }
 
 
-void GuiDelimiterDialog::on_rightLW_currentRowChanged(int item)
+void GuiDelimiter::on_rightLW_currentRowChanged(int item)
 {
 	if (matchCB->isChecked())
 		leftLW->setCurrentRow(item);
@@ -241,13 +235,16 @@ void GuiDelimiterDialog::on_rightLW_currentRowChanged(int item)
 }
 
 
-void GuiDelimiterDialog::on_matchCB_stateChanged(int state)
+void GuiDelimiter::on_matchCB_stateChanged(int state)
 {
 	if (state == Qt::Checked)
 		on_leftLW_currentRowChanged(leftLW->currentRow());
 
 	updateTeXCode(sizeCO->currentIndex());
 }
+
+
+Dialog * createGuiDelimiter(LyXView & lv) { return new GuiDelimiter(lv); }
 
 
 } // namespace frontend
