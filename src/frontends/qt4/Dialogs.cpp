@@ -11,9 +11,6 @@
 #include <config.h>
 
 #include "Dialogs.h"
-#include "GuiDialog.h"
-
-#include "qt_helpers.h"
 
 #include <boost/assert.hpp>
 
