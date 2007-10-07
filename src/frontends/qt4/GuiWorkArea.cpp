@@ -728,6 +728,46 @@ void TabWorkArea::showBar(bool show)
 }
 
 
+bool TabWorkArea::setCurrentWorkArea(GuiWorkArea * work_area)
+{
+	BOOST_ASSERT(work_area);
+	int index = indexOf(work_area);
+	if (index == -1)
+		return false;
+
+	if (index == currentIndex())
+		// Make sure the work area is up to date.
+		on_currentTabChanged(index);
+	else
+		// Switch to the work area.
+		setCurrentIndex(index);
+	work_area->setFocus();
+
+	return true;
+}
+
+
+bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
+{
+	BOOST_ASSERT(work_area);
+	int index = indexOf(work_area);
+	if (index == -1)
+		return false;
+
+	work_area->setUpdatesEnabled(false);
+	removeTab(index);
+	delete work_area;
+
+	if (count()) {
+		// make sure the next work area is enabled.
+		currentWidget()->setUpdatesEnabled(true);
+		// Hide tabbar if there's only one tab.
+		showBar(count() > 1);
+	}
+	return true;
+}
+
+
 void TabWorkArea::on_currentTabChanged(int i)
 {
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));

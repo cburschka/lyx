@@ -180,6 +180,8 @@ class TabWorkArea : public QTabWidget
 public:
 	TabWorkArea(QWidget * parent = 0);
 	void showBar(bool show);
+	bool setCurrentWorkArea(GuiWorkArea *);
+	bool removeWorkArea(GuiWorkArea *);
 
 Q_SIGNALS:
 	///

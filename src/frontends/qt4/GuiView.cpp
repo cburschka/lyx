@@ -868,13 +868,7 @@ void GuiViewBase::setCurrentWorkArea(WorkArea * work_area)
 
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(work_area);
 	BOOST_ASSERT(wa);
-	if (wa != d.tab_widget_->currentWidget())
-		// Switch to the work area.
-		d.tab_widget_->setCurrentWidget(wa);
-	else
-		// Make sure the work area is up to date.
-		d.tab_widget_->on_currentTabChanged(d.tab_widget_->currentIndex());
-	wa->setFocus();
+	d.tab_widget_->setCurrentWorkArea(wa);
 }
 
 
@@ -891,26 +885,14 @@ void GuiViewBase::removeWorkArea(WorkArea * work_area)
 	updateToc();
 
 	GuiWorkArea * gwa = dynamic_cast<GuiWorkArea *>(work_area);
-	gwa->setUpdatesEnabled(false);
 	BOOST_ASSERT(gwa);
-	int index = d.tab_widget_->indexOf(gwa);
-	d.tab_widget_->removeTab(index);
-
-	delete gwa;
-
-	if (d.tab_widget_->count()) {
-		// make sure the next work area is enabled.
-		d.tab_widget_->currentWidget()->setUpdatesEnabled(true);
-		// Hide tabbar if there's only one tab.
-		d.tab_widget_->showBar(d.tab_widget_->count() > 1);
-		return;
-	}
+	d.tab_widget_->removeWorkArea(gwa);
 
 	getDialogs().hideBufferDependent();
-	if (d.stack_widget_) {
+
+	if (d.tab_widget_->count() == 0 && d.stack_widget_)
 		// No more work area, switch to the background widget.
 		d.setBackground();
-	}
 }
 
 
