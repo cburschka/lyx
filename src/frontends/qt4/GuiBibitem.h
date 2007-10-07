@@ -16,7 +16,7 @@
 #include "GuiDialog.h"
 #include "ui_BibitemUi.h"
 
-#include "frontends/Dialog.h"
+#include "controllers/Dialog.h"
 
 #include "insets/InsetCommandParams.h"
 

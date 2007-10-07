@@ -15,7 +15,7 @@
 #ifndef CONTROLCOMMAND_H
 #define CONTROLCOMMAND_H
 
-#include "frontends/Dialog.h"
+#include "controllers/Dialog.h"
 #include "insets/InsetCommandParams.h"
 
 namespace lyx {
