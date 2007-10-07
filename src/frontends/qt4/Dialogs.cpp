@@ -160,11 +160,11 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "include")
 		return createGuiInclude(lyxview_);
 	if (name == "index")
-		return new GuiIndexDialog(lyxview_);
+		return createGuiIndex(lyxview_);
 	if (name == "nomenclature")
 		return createGuiNomenclature(lyxview_);
 	if (name == "label")
-		return new GuiLabelDialog(lyxview_);
+		return createGuiLabel(lyxview_);
 	if (name == "log")
 		return createGuiLog(lyxview_);
 	if (name == "view-source")

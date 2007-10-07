@@ -12,8 +12,6 @@
 
 #include "GuiIndex.h"
 
-#include "ControlCommand.h"
-
 #include "debug.h"
 #include "qt_helpers.h"
 
@@ -36,12 +34,11 @@ namespace frontend {
 
 GuiIndexDialogBase::GuiIndexDialogBase(LyXView & lv,
 		docstring const & title, QString const & label, std::string const & name)
-	: GuiDialog(lv, name)
+	: GuiCommand(lv, name)
 {
 	label_ = label;
 	setupUi(this);
 	setViewTitle(title);
-	setController(new ControlCommand(*this, name));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -75,12 +72,6 @@ GuiIndexDialogBase::GuiIndexDialogBase(LyXView & lv,
 }
 
 
-ControlCommand & GuiIndexDialogBase::controller()
-{
-	return static_cast<ControlCommand &>(GuiDialog::controller());
-}
-
-
 void GuiIndexDialogBase::change_adaptor()
 {
 	changed();
@@ -102,7 +93,7 @@ void GuiIndexDialogBase::closeEvent(QCloseEvent * e)
 
 void GuiIndexDialogBase::updateContents()
 {
-	docstring const contents = controller().params()["name"];
+	docstring const contents = params_["name"];
 	keywordED->setText(toqstr(contents));
 	bc().setValid(!contents.empty());
 }
@@ -110,7 +101,7 @@ void GuiIndexDialogBase::updateContents()
 
 void GuiIndexDialogBase::applyView()
 {
-	controller().params()["name"] = qstring_to_ucs4(keywordED->text());
+	params_["name"] = qstring_to_ucs4(keywordED->text());
 }
 
 
@@ -127,7 +118,7 @@ bool GuiIndexDialogBase::isValid()
 /////////////////////////////////////////////////////////////////
 
 
-GuiIndexDialog::GuiIndexDialog(LyXView & lv)
+GuiIndex::GuiIndex(LyXView & lv)
 	: GuiIndexDialogBase(lv, _("Index Entry"), qt_("&Keyword:"), "index") 
 {
 	keywordED->setWhatsThis( qt_(
@@ -148,15 +139,21 @@ GuiIndexDialog::GuiIndexDialog(LyXView & lv)
 }
 
 
+Dialog * createGuiIndex(LyXView & lv) { return new GuiIndex(lv); }
+
+
 /////////////////////////////////////////////////////////////////
 //
 // Label Dialog
 //
 /////////////////////////////////////////////////////////////////
 
-GuiLabelDialog::GuiLabelDialog(LyXView & lv)
+GuiLabel::GuiLabel(LyXView & lv)
 	: GuiIndexDialogBase(lv, _("Label"), qt_("&Label:"), "label")
 {}
+
+
+Dialog * createGuiLabel(LyXView & lv) { return new GuiLabel(lv); }
 
 
 } // namespace frontend

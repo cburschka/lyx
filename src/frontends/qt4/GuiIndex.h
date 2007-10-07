@@ -14,13 +14,12 @@
 #define GUIINDEX_H
 
 #include "GuiDialog.h"
-#include "ControlCommand.h"
 #include "ui_IndexUi.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiIndexDialogBase : public GuiDialog, public Ui::IndexUi
+class GuiIndexDialogBase : public GuiCommand, public Ui::IndexUi
 {
 	Q_OBJECT
 
@@ -35,8 +34,6 @@ private Q_SLOTS:
 private:
 	///
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	ControlCommand & controller();
 	///
 	bool isValid();
 	/// Apply changes
@@ -49,17 +46,17 @@ private:
 };
 
 
-class GuiIndexDialog : public GuiIndexDialogBase
+class GuiIndex : public GuiIndexDialogBase
 {
 public:
-	GuiIndexDialog(LyXView & lv);
+	GuiIndex(LyXView & lv);
 };
 
 
-class GuiLabelDialog : public GuiIndexDialogBase
+class GuiLabel : public GuiIndexDialogBase
 {
 public:
-	GuiLabelDialog(LyXView & lv);
+	GuiLabel(LyXView & lv);
 };
 
 

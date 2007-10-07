@@ -29,8 +29,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiCitation
-	: public GuiDialog, public Ui::CitationUi, public ControlCommand
+class GuiCitation : public GuiCommand, public Ui::CitationUi
 {
 	Q_OBJECT
 
@@ -54,8 +53,6 @@ public Q_SLOTS:
 	void updateView();
 
 private:
-	///
-	ControlCommand & controller() { return *this; }
 	///
 	void closeEvent(QCloseEvent * e);
 	/// prepares a call to GuiCitation::searchKeys when we
@@ -101,28 +98,20 @@ private:
 
 	///
 	void init();
-
 	/// Available keys
 	QStringListModel * available() { return &available_model_; }
-
 	/// Selected keys
 	QStringListModel * selected() { return &selected_model_; }
-
 	/// Text before cite
 	QString textBefore();
-
 	/// Text after cite
 	QString textAfter();
-
 	/// Get key description
 	QString getKeyInfo(QString const &);
-
 	/// Clear selected keys
 	void clearSelection();
-	
 	/// Return a list of available fields 
 	QStringList getFieldsAsQStringList();
-	
 	/// Return a list of available fields 
 	QStringList getEntriesAsQStringList();
 	

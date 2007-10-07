@@ -25,6 +25,8 @@
 #include "support/lstrings.h"
 #include "support/docstring.h"
 
+#include "insets/InsetCommand.h"
+
 #include <vector>
 #include <string>
 
@@ -75,11 +77,10 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 
 
 GuiCitation::GuiCitation(LyXView & lv)
-	: GuiDialog(lv, "citation"), ControlCommand(*this, "citation")
+	: GuiCommand(lv, "citation")
 {
 	setupUi(this);
 	setViewTitle(_("Citation"));
-	setController(this, false);
 
 	connect(citationStyleCO, SIGNAL(activated(int)),
 		this, SLOT(changed()));
@@ -246,7 +247,7 @@ void GuiCitation::updateStyle()
 	citationStyleCO->setEnabled(!basic_engine && haveSelection);
 	citationStyleLA->setEnabled(!basic_engine && haveSelection);
 
-	string const & command = params().getCmdName();
+	string const & command = params_.getCmdName();
 
 	// Find the style of the citekeys
 	vector<biblio::CiteStyle> const & styles = citeStyles_;
@@ -458,10 +459,10 @@ void GuiCitation::apply(int const choice, bool const full, bool const force,
 		biblio::CitationStyle(styles[choice], full, force)
 		.asLatexStr();
 
-	params().setCmdName(command);
-	params()["key"] = qstring_to_ucs4(cited_keys_.join(","));
-	params()["before"] = qstring_to_ucs4(before);
-	params()["after"] = qstring_to_ucs4(after);
+	params_.setCmdName(command);
+	params_["key"] = qstring_to_ucs4(cited_keys_.join(","));
+	params_["before"] = qstring_to_ucs4(before);
+	params_["after"] = qstring_to_ucs4(after);
 	dispatchParams();
 }
 
@@ -475,13 +476,13 @@ void GuiCitation::clearSelection()
 
 QString GuiCitation::textBefore()
 {
-	return toqstr(params()["before"]);
+	return toqstr(params_["before"]);
 }
 
 
 QString GuiCitation::textAfter()
 {
-	return toqstr(params()["after"]);
+	return toqstr(params_["after"]);
 }
 
 
@@ -492,7 +493,7 @@ void GuiCitation::init()
 	available_model_.setStringList(all_keys_);
 
 	// Ditto for the keys cited in this inset
-	QString str = toqstr(params()["key"]);
+	QString str = toqstr(params_["key"]);
 	if (str.isEmpty())
 		cited_keys_.clear();
 	else
@@ -586,8 +587,7 @@ void GuiCitation::setCitedKeys()
 
 bool GuiCitation::initialiseParams(string const & data)
 {
-	if (!ControlCommand::initialiseParams(data))
-		return false;
+	InsetCommandMailer::string2params(lfun_name_, data, params_);
 
 	biblio::CiteEngine const engine = buffer().params().getEngine();
 
@@ -607,10 +607,9 @@ bool GuiCitation::initialiseParams(string const & data)
 }
 
 
-
 void GuiCitation::clearParams()
 {
-	ControlCommand::clearParams();
+	params_.clear();
 	bibkeysInfo_.clear();
 }
 
