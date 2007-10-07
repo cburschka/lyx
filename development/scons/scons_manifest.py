@@ -716,18 +716,8 @@ src_frontends_controllers_header_files = Split('''
     ButtonPolicy.h
     ControlCommand.h
     ControlCommandBuffer.h
-    ControlDocument.h
-    ControlExternal.h
-    ControlGraphics.h
     ControlMath.h
     ControlParagraph.h
-    ControlPrefs.h
-    ControlPrint.h
-    ControlSearch.h
-    ControlSendto.h
-    ControlSpellchecker.h
-    ControlThesaurus.h
-    ControlToc.h
     Dialog.h
     frontend_helpers.h
 ''')
@@ -737,18 +727,8 @@ src_frontends_controllers_files = Split('''
     ButtonPolicy.cpp
     ControlCommand.cpp
     ControlCommandBuffer.cpp
-    ControlDocument.cpp
-    ControlExternal.cpp
-    ControlGraphics.cpp
     ControlMath.cpp
     ControlParagraph.cpp
-    ControlPrefs.cpp
-    ControlPrint.cpp
-    ControlSearch.cpp
-    ControlSendto.cpp
-    ControlSpellchecker.cpp
-    ControlThesaurus.cpp
-    ControlToc.cpp
     Dialog.cpp
     frontend_helpers.cpp
 ''')
@@ -848,6 +828,7 @@ src_frontends_qt4_header_files = Split('''
     GuiWrap.h
     IconPalette.h
     InsertTableWidget.h
+    LaTeXHighlighter.h
     LengthCombo.h
     LyXFileDialog.h
     PanelStack.h
@@ -933,6 +914,7 @@ src_frontends_qt4_files = Split('''
     IconPalette.cpp
     InsertTableWidget.cpp
     LengthCombo.cpp
+    LaTeXHighlighter.cpp
     LyXFileDialog.cpp
     PanelStack.cpp
     TocModel.cpp
