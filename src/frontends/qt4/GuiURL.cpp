@@ -28,11 +28,10 @@ namespace lyx {
 namespace frontend {
 
 GuiURL::GuiURL(LyXView & lv)
-	: GuiDialog(lv, "url"), Controller(this), params_("url")
+	: GuiCommand(lv, "url")
 {
 	setupUi(this);
 	setViewTitle( _("URL"));
-	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
@@ -96,23 +95,6 @@ bool GuiURL::isValid()
 	QString const n = nameED->text();
 
 	return !u.isEmpty() || !n.isEmpty();
-}
-
-
-bool GuiURL::initialiseParams(std::string const & data)
-{
-	// The name passed with LFUN_INSET_APPLY is also the name
-	// used to identify the mailer.
-	InsetCommandMailer::string2params("name", data, params_);
-	return true;
-}
-
-
-void GuiURL::dispatchParams()
-{
-	std::string const lfun = 
-		InsetCommandMailer::params2string("url", params_);
-	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

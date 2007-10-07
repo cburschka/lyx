@@ -267,4 +267,49 @@ void GuiDialog::closeEvent(QCloseEvent * e)
 } // namespace frontend
 } // namespace lyx
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// Command based dialogs
+//
+/////////////////////////////////////////////////////////////////////
+
+#include "FuncRequest.h"
+#include "insets/InsetCommand.h"
+
+
+using std::string;
+
+namespace lyx {
+namespace frontend {
+
+GuiCommand::GuiCommand(LyXView & lv, string const & name)
+	: GuiDialog(lv, name), Controller(this), params_(name), lfun_name_(name)
+{
+	setController(this, false);
+}
+
+
+bool GuiCommand::initialiseParams(string const & data)
+{
+	// The name passed with LFUN_INSET_APPLY is also the name
+	// used to identify the mailer.
+	InsetCommandMailer::string2params(lfun_name_, data, params_);
+	return true;
+}
+
+
+void GuiCommand::dispatchParams()
+{
+	if (lfun_name_.empty())
+		return;
+
+	string const lfun = 
+		InsetCommandMailer::params2string(lfun_name_, params_);
+	dispatch(FuncRequest(getLfun(), lfun));
+}
+
+} // namespace frontend
+} // namespace lyx
+
 #include "GuiDialog_moc.cpp"

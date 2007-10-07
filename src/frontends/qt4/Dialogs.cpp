@@ -19,7 +19,6 @@
 #include "GuiDelimiter.h"
 #include "GuiIndex.h"
 #include "GuiMathMatrix.h"
-#include "GuiNomencl.h"
 #include "GuiView.h"
 
 // Uncomment this if you prefer dock widget
@@ -92,7 +91,7 @@ Dialog * createGuiLabel(LyXView & lv);
 Dialog * createGuiListings(LyXView & lv);
 Dialog * createGuiLog(LyXView & lv);
 Dialog * createGuiMath(LyXView & lv);
-Dialog * createGuiNomencl(LyXView & lv);
+Dialog * createGuiNomenclature(LyXView & lv);
 Dialog * createGuiNote(LyXView & lv);
 Dialog * createGuiParagraph(LyXView & lv);
 Dialog * createGuiPreferences(LyXView & lv);
@@ -163,7 +162,7 @@ Dialog * Dialogs::build(string const & name)
 	if (name == "index")
 		return new GuiIndexDialog(lyxview_);
 	if (name == "nomenclature")
-		return new GuiNomenclDialog(lyxview_);
+		return createGuiNomenclature(lyxview_);
 	if (name == "label")
 		return new GuiLabelDialog(lyxview_);
 	if (name == "log")

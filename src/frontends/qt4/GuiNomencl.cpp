@@ -14,7 +14,6 @@
 #include "GuiNomencl.h"
 
 #include "debug.h"
-#include "ControlCommand.h"
 #include "qt_helpers.h"
 
 #include <QLabel>
@@ -29,15 +28,14 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiNomenclDialog::GuiNomenclDialog(LyXView & lv)
-	: GuiDialog(lv, "nomenclature")
+GuiNomenclature::GuiNomenclature(LyXView & lv)
+	: GuiCommand(lv, "nomenclature")
 {
 	setupUi(this);
-	setController(new ControlCommand(*this, "nomenclature"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(symbolED, SIGNAL(textChanged(const QString&)),
+	connect(symbolED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(descriptionTE, SIGNAL(textChanged()),
 		this, SLOT(change_adaptor()));
@@ -53,36 +51,30 @@ GuiNomenclDialog::GuiNomenclDialog(LyXView & lv)
 }
 
 
-ControlCommand & GuiNomenclDialog::controller()
-{
-	return static_cast<ControlCommand &>(GuiDialog::controller());
-}
-
-
-void GuiNomenclDialog::change_adaptor()
+void GuiNomenclature::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiNomenclDialog::reject()
+void GuiNomenclature::reject()
 {
 	slotClose();
 }
 
 
-void GuiNomenclDialog::closeEvent(QCloseEvent * e)
+void GuiNomenclature::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiNomenclDialog::updateContents()
+void GuiNomenclature::updateContents()
 {
-	prefixED->setText(toqstr(controller().params()["prefix"]));
-	symbolED->setText(toqstr(controller().params()["symbol"]));
-	QString description = toqstr(controller().params()["description"]);
+	prefixED->setText(toqstr(params_["prefix"]));
+	symbolED->setText(toqstr(params_["symbol"]));
+	QString description = toqstr(params_["description"]);
 	description.replace("\\\\","\n");
 	descriptionTE->setPlainText(description);
 
@@ -90,21 +82,28 @@ void GuiNomenclDialog::updateContents()
 }
 
 
-void GuiNomenclDialog::applyView()
+void GuiNomenclature::applyView()
 {
-	controller().params()["prefix"] = qstring_to_ucs4(prefixED->text());
-	controller().params()["symbol"] = qstring_to_ucs4(symbolED->text());
+	params_["prefix"] = qstring_to_ucs4(prefixED->text());
+	params_["symbol"] = qstring_to_ucs4(symbolED->text());
 	QString description = descriptionTE->toPlainText();
 	description.replace('\n',"\\\\");
-	controller().params()["description"] = qstring_to_ucs4(description);
+	params_["description"] = qstring_to_ucs4(description);
 }
 
 
-bool GuiNomenclDialog::isValid()
+bool GuiNomenclature::isValid()
 {
 	QString const description = descriptionTE->toPlainText();
 	return !symbolED->text().isEmpty() && !description.isEmpty();
 }
+
+
+Dialog * createGuiNomenclature(LyXView & lv)
+{
+	return new GuiNomenclature(lv);
+}
+
 
 } // namespace frontend
 } // namespace lyx

@@ -15,18 +15,17 @@
 #define GUINOMENCL_H
 
 #include "GuiDialog.h"
-#include "ControlCommand.h"
 #include "ui_NomenclUi.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiNomenclDialog : public GuiDialog, public Ui::NomenclUi
+class GuiNomenclature : public GuiCommand, public Ui::NomenclUi
 {
 	Q_OBJECT
 
 public:
-	GuiNomenclDialog(LyXView & lv);
+	GuiNomenclature(LyXView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();
@@ -35,8 +34,6 @@ private Q_SLOTS:
 private:
 	///
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	ControlCommand & controller();
 	///
 	bool isValid();
 	/// Apply changes

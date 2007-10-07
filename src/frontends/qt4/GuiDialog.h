@@ -15,6 +15,8 @@
 #include "Dialog.h"
 #include "ButtonController.h"
 
+#include "insets/InsetCommandParams.h"
+
 #include <QDialog>
 #include <QObject>
 
@@ -162,6 +164,31 @@ private:
 	Controller * controller_;
 	bool destroy_controller_;
 	LyXView * lyxview_; // FIXME: replace by moving to constructor
+};
+
+
+class GuiCommand : public GuiDialog, public Controller
+{
+public:
+	/// We need to know with what sort of inset we're associated.
+	GuiCommand(LyXView &, std::string const & name);
+	///
+	bool initialiseParams(std::string const & data);
+	/// clean-up on hide.
+	void clearParams() { params_.clear(); }
+	/// clean-up on hide.
+	void dispatchParams();
+	///
+	bool isBufferDependent() const { return true; }
+
+protected:
+	///
+	InsetCommandParams params_;
+	//FIXME It should be possible to eliminate lfun_name_
+	//now and recover that information from params().insetType().
+	//But let's not do that quite yet.
+	/// Flags what action is taken by Kernel::dispatch()
+	std::string const lfun_name_;
 };
 
 } // namespace frontend

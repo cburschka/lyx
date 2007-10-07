@@ -14,14 +14,13 @@
 #define GUIURL_H
 
 #include "GuiDialog.h"
-#include "ControlCommand.h"
 #include "ui_URLUi.h"
 #include "insets/InsetCommandParams.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiURL : public GuiDialog, public Ui::URLUi, public Controller
+class GuiURL : public GuiCommand, public Ui::URLUi
 {
 	Q_OBJECT
 
@@ -33,26 +32,12 @@ public Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent *);
-	/// parent controller
-	Controller & controller() { return *this; }
 	///
 	bool isValid();
 	/// apply dialog
 	void applyView();
 	/// update dialog
 	void updateContents();
-	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
-private:
-	///
-	InsetCommandParams params_;
 };
 
 } // namespace frontend
