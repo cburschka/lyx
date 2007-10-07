@@ -22,7 +22,6 @@
 #include "GuiMathMatrix.h"
 #include "GuiNomencl.h"
 #include "GuiParagraph.h"
-#include "GuiPrefs.h"
 #include "GuiView.h"
 #include "GuiURL.h"
 
@@ -98,7 +97,7 @@ Dialog * createGuiLog(LyXView & lv);
 Dialog * createGuiMath(LyXView & lv);
 Dialog * createGuiNomencl(LyXView & lv);
 Dialog * createGuiNote(LyXView & lv);
-Dialog * createGuiPrefs(LyXView & lv);
+Dialog * createGuiPreferences(LyXView & lv);
 Dialog * createGuiPrint(LyXView & lv);
 Dialog * createGuiRef(LyXView & lv);
 Dialog * createGuiSearch(LyXView & lv);
@@ -190,7 +189,7 @@ Dialog * Dialogs::build(string const & name)
 #endif
 	}
 	if (name == "prefs")
-		return new GuiPrefsDialog(lyxview_);
+		return createGuiPreferences(lyxview_);
 	if (name == "print")
 		return createGuiPrint(lyxview_);
 	if (name == "ref")

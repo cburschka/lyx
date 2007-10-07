@@ -13,7 +13,6 @@ SOURCEFILES = \
 	ControlCommandBuffer.cpp \
 	ControlMath.cpp \
 	ControlParagraph.cpp \
-	ControlPrefs.cpp \
 	frontend_helpers.cpp 
 
 HEADERFILES = \
@@ -23,7 +22,6 @@ HEADERFILES = \
 	ControlCommandBuffer.h \
 	ControlMath.h \
 	ControlParagraph.h \
-	ControlPrefs.h \
 	frontend_helpers.h
 
 if MONOLITHIC_CONTROLLERS

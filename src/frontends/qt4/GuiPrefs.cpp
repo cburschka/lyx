@@ -11,22 +11,25 @@
 #include <config.h>
 
 #include "GuiPrefs.h"
-#include "ControlPrefs.h"
 
 #include "qt_helpers.h"
 #include "GuiApplication.h"
 
-#include "ConverterCache.h"
-#include "Session.h"
-#include "debug.h"
+#include "BufferList.h"
 #include "Color.h"
+#include "ConverterCache.h"
+#include "debug.h"
 #include "Font.h"
-#include "PanelStack.h"
-#include "GuiFontExample.h"
+#include "FuncRequest.h"
 #include "gettext.h"
+#include "GuiFontExample.h"
+#include "PanelStack.h"
+#include "paper.h"
+#include "Session.h"
 
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/FileFilterList.h"
 
 #include "frontend_helpers.h"
 
@@ -50,20 +53,22 @@
 
 using namespace Ui;
 
-using lyx::support::compare_ascii_no_case;
-using lyx::support::os::external_path;
-using lyx::support::os::external_path_list;
-using lyx::support::os::internal_path;
-using lyx::support::os::internal_path_list;
-
 using std::endl;
-using std::string;
+using std::ostringstream;
 using std::pair;
+using std::string;
 using std::vector;
-
 
 namespace lyx {
 namespace frontend {
+
+using support::compare_ascii_no_case;
+using support::os::external_path;
+using support::os::external_path_list;
+using support::os::internal_path;
+using support::os::internal_path_list;
+using support::FileFilterList;
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -234,7 +239,7 @@ void PrefDate::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefKeyboard::PrefKeyboard(GuiPrefsDialog * form, QWidget * parent)
+PrefKeyboard::PrefKeyboard(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("Keyboard"), form, parent)
 {
 	setupUi(this);
@@ -268,7 +273,7 @@ void PrefKeyboard::update(LyXRC const & rc)
 
 QString PrefKeyboard::testKeymap(QString keymap)
 {
-	return toqstr(form_->controller().browsekbmap(from_utf8(internal_path(fromqstr(keymap)))));
+	return toqstr(form_->browsekbmap(from_utf8(internal_path(fromqstr(keymap)))));
 }
 
 
@@ -305,7 +310,7 @@ void PrefKeyboard::on_keymapCB_toggled(bool keymap)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefLatex::PrefLatex(GuiPrefsDialog * form, QWidget * parent)
+PrefLatex::PrefLatex(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("LaTeX"), form, parent)
 {
 	setupUi(this);
@@ -343,7 +348,7 @@ void PrefLatex::apply(LyXRC & rc) const
 	rc.auto_reset_options = latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexDviPaperED->text());
 	rc.default_papersize =
-		form_->controller().toPaperSize(latexPaperSizeCO->currentIndex());
+		form_->toPaperSize(latexPaperSizeCO->currentIndex());
 #if defined(__CYGWIN__) || defined(_WIN32)
 	rc.windows_style_tex_paths = pathCB->isChecked();
 #endif
@@ -359,7 +364,7 @@ void PrefLatex::update(LyXRC const & rc)
 	latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
 	latexPaperSizeCO->setCurrentIndex(
-		form_->controller().fromPaperSize(rc.default_papersize));
+		form_->fromPaperSize(rc.default_papersize));
 #if defined(__CYGWIN__) || defined(_WIN32)
 	pathCB->setChecked(rc.windows_style_tex_paths);
 #endif
@@ -372,7 +377,7 @@ void PrefLatex::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefScreenFonts::PrefScreenFonts(GuiPrefsDialog * form, QWidget * parent)
+PrefScreenFonts::PrefScreenFonts(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("Screen fonts"), form, parent)
 {
 	setupUi(this);
@@ -464,7 +469,7 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 		|| rc.sans_font_name != oldrc.sans_font_name
 		|| rc.typewriter_font_name != oldrc.typewriter_font_name
 		|| rc.zoom != oldrc.zoom || rc.dpi != oldrc.dpi) {
-		form_->controller().updateScreenFonts();
+		form_->updateScreenFonts();
 	}
 }
 
@@ -531,7 +536,7 @@ struct ColorSorter
 
 } // namespace anon
 
-PrefColors::PrefColors(GuiPrefsDialog * form, QWidget * parent)
+PrefColors::PrefColors(GuiPreferences * form, QWidget * parent)
 	: PrefModule( _("Colors"), form, parent)
 {
 	setupUi(this);
@@ -580,7 +585,7 @@ void PrefColors::apply(LyXRC & /*rc*/) const
 {
 	for (unsigned int i = 0; i < lcolors_.size(); ++i)
 		if (curcolors_[i] != newcolors_[i])
-			form_->controller().setColor(lcolors_[i], fromqstr(newcolors_[i]));
+			form_->setColor(lcolors_[i], fromqstr(newcolors_[i]));
 }
 
 
@@ -700,7 +705,7 @@ void PrefDisplay::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefPaths::PrefPaths(GuiPrefsDialog * form, QWidget * parent)
+PrefPaths::PrefPaths(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("Paths"), form, parent)
 {
 	setupUi(this);
@@ -750,7 +755,7 @@ void PrefPaths::update(LyXRC const & rc)
 
 void PrefPaths::select_templatedir()
 {
-	docstring file(form_->controller().browsedir(
+	docstring file(form_->browsedir(
 		from_utf8(internal_path(fromqstr(templateDirED->text()))),
 		_("Select a document templates directory")));
 	if (!file.empty())
@@ -760,7 +765,7 @@ void PrefPaths::select_templatedir()
 
 void PrefPaths::select_tempdir()
 {
-	docstring file(form_->controller().browsedir(
+	docstring file(form_->browsedir(
 		from_utf8(internal_path(fromqstr(tempDirED->text()))),
 		_("Select a temporary directory")));
 	if (!file.empty())
@@ -770,7 +775,7 @@ void PrefPaths::select_tempdir()
 
 void PrefPaths::select_backupdir()
 {
-	docstring file(form_->controller().browsedir(
+	docstring file(form_->browsedir(
 		from_utf8(internal_path(fromqstr(backupDirED->text()))),
 		_("Select a backups directory")));
 	if (!file.empty())
@@ -780,7 +785,7 @@ void PrefPaths::select_backupdir()
 
 void PrefPaths::select_workingdir()
 {
-	docstring file(form_->controller().browsedir(
+	docstring file(form_->browsedir(
 		from_utf8(internal_path(fromqstr(workingDirED->text()))),
 		_("Select a document directory")));
 	if (!file.empty())
@@ -790,7 +795,7 @@ void PrefPaths::select_workingdir()
 
 void PrefPaths::select_lyxpipe()
 {
-	docstring file(form_->controller().browse(
+	docstring file(form_->browse(
 		from_utf8(internal_path(fromqstr(lyxserverDirED->text()))),
 		_("Give a filename for the LyX server pipe")));
 	if (!file.empty())
@@ -804,7 +809,7 @@ void PrefPaths::select_lyxpipe()
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefSpellchecker::PrefSpellchecker(GuiPrefsDialog * form, QWidget * parent)
+PrefSpellchecker::PrefSpellchecker(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("Spellchecker"), form, parent)
 {
 	setupUi(this);
@@ -899,7 +904,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 
 void PrefSpellchecker::select_dict()
 {
-	docstring file(form_->controller().browsedict(
+	docstring file(form_->browsedict(
 		from_utf8(internal_path(fromqstr(persDictionaryED->text())))));
 	if (!file.empty())
 		persDictionaryED->setText(toqstr(file));
@@ -914,7 +919,7 @@ void PrefSpellchecker::select_dict()
 /////////////////////////////////////////////////////////////////////
 
 
-PrefConverters::PrefConverters(GuiPrefsDialog * form, QWidget * parent)
+PrefConverters::PrefConverters(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("Converters"), form, parent)
 {
 	setupUi(this);
@@ -1183,7 +1188,7 @@ std::string FormatPrettynameValidator::str(Formats::const_iterator it) const
 }
 
 
-PrefFileformats::PrefFileformats(GuiPrefsDialog * form, QWidget * parent)
+PrefFileformats::PrefFileformats(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("File formats"), form, parent)
 {
 	setupUi(this);
@@ -1560,7 +1565,7 @@ void PrefPrinter::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-PrefUserInterface::PrefUserInterface(GuiPrefsDialog * form, QWidget * parent)
+PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("User interface"), form, parent)
 {
 	setupUi(this);
@@ -1650,7 +1655,7 @@ void PrefUserInterface::select_ui()
 {
 	docstring const name =
 		from_utf8(internal_path(fromqstr(uiFileED->text())));
-	docstring file = form_->controller().browseUI(name);
+	docstring file = form_->browseUI(name);
 	if (!file.empty())
 		uiFileED->setText(toqstr(file));
 }
@@ -1660,7 +1665,7 @@ void PrefUserInterface::select_bind()
 {
 	docstring const name =
 		from_utf8(internal_path(fromqstr(bindFileED->text())));
-	docstring file = form_->controller().browsebind(name);
+	docstring file = form_->browsebind(name);
 	if (!file.empty())
 		bindFileED->setText(toqstr(file));
 }
@@ -1704,16 +1709,16 @@ void PrefIdentity::update(LyXRC const & rc)
 
 /////////////////////////////////////////////////////////////////////
 //
-// GuiPrefsDialog
+// GuiPreferences
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiPrefsDialog::GuiPrefsDialog(LyXView & lv)
-	: GuiDialog(lv, "prefs")
+GuiPreferences::GuiPreferences(LyXView & lv)
+	: GuiDialog(lv, "prefs"), Controller(this), update_screen_font_(false)
 {
 	setupUi(this);
 	setViewTitle(_("Preferences"));
-	setController(new ControlPrefs(*this));
+	setController(this, false);
 
 	QDialog::setModal(false);
 
@@ -1762,13 +1767,7 @@ GuiPrefsDialog::GuiPrefsDialog(LyXView & lv)
 }
 
 
-ControlPrefs & GuiPrefsDialog::controller()
-{
-	return static_cast<ControlPrefs &>(GuiDialog::controller());
-}
-
-
-void GuiPrefsDialog::add(PrefModule * module)
+void GuiPreferences::add(PrefModule * module)
 {
 	BOOST_ASSERT(module);
 	prefsPS->addPanel(module, module->title());
@@ -1777,20 +1776,20 @@ void GuiPrefsDialog::add(PrefModule * module)
 }
 
 
-void GuiPrefsDialog::closeEvent(QCloseEvent * e)
+void GuiPreferences::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-void GuiPrefsDialog::change_adaptor()
+void GuiPreferences::change_adaptor()
 {
 	changed();
 }
 
 
-void GuiPrefsDialog::apply(LyXRC & rc) const
+void GuiPreferences::apply(LyXRC & rc) const
 {
 	size_t end = modules_.size();
 	for (size_t i = 0; i != end; ++i)
@@ -1798,7 +1797,7 @@ void GuiPrefsDialog::apply(LyXRC & rc) const
 }
 
 
-void GuiPrefsDialog::updateRc(LyXRC const & rc)
+void GuiPreferences::updateRc(LyXRC const & rc)
 {
 	size_t const end = modules_.size();
 	for (size_t i = 0; i != end; ++i)
@@ -1806,33 +1805,186 @@ void GuiPrefsDialog::updateRc(LyXRC const & rc)
 }
 
 
-Converters & GuiPrefsDialog::converters()
+void GuiPreferences::applyView()
 {
-	return controller().converters();
+	apply(rc());
 }
 
 
-Formats & GuiPrefsDialog::formats()
+void GuiPreferences::updateContents()
 {
-	return controller().formats();
+	updateRc(rc());
 }
 
 
-Movers & GuiPrefsDialog::movers()
+bool GuiPreferences::initialiseParams(std::string const &)
 {
-	return controller().movers();
+	rc_ = lyxrc;
+	formats_ = lyx::formats;
+	converters_ = theConverters();
+	converters_.update(formats_);
+	movers_ = theMovers();
+	colors_.clear();
+	update_screen_font_ = false;
+
+	return true;
 }
 
 
-void GuiPrefsDialog::applyView()
+void GuiPreferences::dispatchParams()
 {
-	apply(controller().rc());
+	ostringstream ss;
+	rc_.write(ss, true);
+	dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str())); 
+	// FIXME: these need lfuns
+	// FIXME UNICODE
+	theBufferList().setCurrentAuthor(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
+
+	lyx::formats = formats_;
+
+	theConverters() = converters_;
+	theConverters().update(lyx::formats);
+	theConverters().buildGraph();
+
+	theMovers() = movers_;
+
+	vector<string>::const_iterator it = colors_.begin();
+	vector<string>::const_iterator const end = colors_.end();
+	for (; it != end; ++it)
+		dispatch(FuncRequest(LFUN_SET_COLOR, *it));
+	colors_.clear();
+
+	if (update_screen_font_) {
+		dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+		update_screen_font_ = false;
+	}
+
+	// The Save button has been pressed
+	if (dialog().isClosing()) {
+		dispatch(FuncRequest(LFUN_PREFERENCES_SAVE));
+	}
 }
 
-void GuiPrefsDialog::updateContents()
+
+void GuiPreferences::setColor(Color_color col, string const & hex)
 {
-	updateRc(controller().rc());
+	colors_.push_back(lcolor.getLyXName(col) + ' ' + hex);
 }
+
+
+void GuiPreferences::updateScreenFonts()
+{
+	update_screen_font_ = true;
+}
+
+
+docstring const GuiPreferences::browsebind(docstring const & file) const
+{
+	return browseLibFile(from_ascii("bind"), file, from_ascii("bind"),
+			     _("Choose bind file"),
+			     FileFilterList(_("LyX bind files (*.bind)")));
+}
+
+
+docstring const GuiPreferences::browseUI(docstring const & file) const
+{
+	return browseLibFile(from_ascii("ui"), file, from_ascii("ui"),
+			     _("Choose UI file"),
+			     FileFilterList(_("LyX UI files (*.ui)")));
+}
+
+
+docstring const GuiPreferences::browsekbmap(docstring const & file) const
+{
+	return browseLibFile(from_ascii("kbd"), file, from_ascii("kmap"),
+			     _("Choose keyboard map"),
+			     FileFilterList(_("LyX keyboard maps (*.kmap)")));
+}
+
+
+docstring const GuiPreferences::browsedict(docstring const & file) const
+{
+	if (lyxrc.use_spell_lib)
+		return browseFile(file,
+				  _("Choose personal dictionary"),
+				  FileFilterList(_("*.pws")));
+	else
+		return browseFile(file,
+				  _("Choose personal dictionary"),
+				  FileFilterList(_("*.ispell")));
+}
+
+
+docstring const GuiPreferences::browse(docstring const & file,
+				  docstring const & title) const
+{
+	return browseFile(file, title, FileFilterList(), true);
+}
+
+
+docstring const GuiPreferences::browsedir(docstring const & path,
+				     docstring const & title) const
+{
+	return browseDir(path, title);
+}
+
+
+// We support less paper sizes than the document dialog
+// Therefore this adjustment is needed.
+PAPER_SIZE GuiPreferences::toPaperSize(int i) const
+{
+	switch (i) {
+	case 0:
+		return PAPER_DEFAULT;
+	case 1:
+		return PAPER_USLETTER;
+	case 2:
+		return PAPER_USLEGAL;
+	case 3:
+		return PAPER_USEXECUTIVE;
+	case 4:
+		return PAPER_A3;
+	case 5:
+		return PAPER_A4;
+	case 6:
+		return PAPER_A5;
+	case 7:
+		return PAPER_B5;
+	default:
+		// should not happen
+		return PAPER_DEFAULT;
+	}
+}
+
+
+int GuiPreferences::fromPaperSize(PAPER_SIZE papersize) const
+{
+	switch (papersize) {
+	case PAPER_DEFAULT:
+		return 0;
+	case PAPER_USLETTER:
+		return 1;
+	case PAPER_USLEGAL:
+		return 2;
+	case PAPER_USEXECUTIVE:
+		return 3;
+	case PAPER_A3:
+		return 4;
+	case PAPER_A4:
+		return 5;
+	case PAPER_A5:
+		return 6;
+	case PAPER_B5:
+		return 7;
+	default:
+		// should not happen
+		return 0;
+	}
+}
+
+
+Dialog * createGuiPreferences(LyXView & lv) { return new GuiPreferences(lv); }
+
 
 } // namespace frontend
 } // namespace lyx
