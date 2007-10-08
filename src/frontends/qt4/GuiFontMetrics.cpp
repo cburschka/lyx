@@ -122,8 +122,21 @@ int GuiFontMetrics::width(docstring const & s) const
 {
 	size_t ls = s.size();
 	int w = 0;
-	for (unsigned int i = 0; i < ls; ++i)
+	for (unsigned int i = 0; i < ls; ++i) {
+		//FIXME: we need to detect surrogate pairs and act accordingly
+		/**
+		if isSurrogateBase(s[i]) {
+			docstring c = s[i];
+			if (smallcaps_shape_)
+				w += metrics_.width(toqstr(c + s[i + 1]));
+			else
+				w += smallcaps_metrics_.width(toqstr(c + s[i + 1]));
+			++i;
+		}
+		else
+		*/
 		w += width(s[i]);
+	}
 
 	return w;
 }
