@@ -50,5 +50,7 @@ endif()
 project_source_group("${GROUP_CODE}"
 	frontends_qt4_sources frontends_qt4_headers)
 
+target_link_libraries(frontend_qt4 boost_filesystem)
+
 source_group("Uic files" FILES ${frontend_qt4_UI})
 
