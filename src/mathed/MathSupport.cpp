@@ -550,9 +550,9 @@ fontinfo fontinfos[] = {
 	{"msb",           Font::MSB_FAMILY, inh_series,
 			  inh_shape, Color::math},
 	{"wasy",          Font::WASY_FAMILY, inh_series,
-			  inh_shape, Color::none},
+			  inh_shape, Color::math},
 	{"esint",         Font::ESINT_FAMILY, inh_series,
-			  inh_shape, Color::none},
+			  inh_shape, Color::math},
 
 	// Text fonts
 	{"text",          inh_family, inh_series,
