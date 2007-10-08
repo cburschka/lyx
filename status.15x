@@ -26,6 +26,9 @@ What's new
 
 * USER INTERFACE
 
+- the behaviour of Return and M-Return has changed: they now allow to either
+  keep current paragraph and depth or to to nesting paragraph (bug 2445). 
+  
 - Add the esint font to the private math fonts. This font assures a
   consistent on screen looking for all kinds of supported integral signs.
 
