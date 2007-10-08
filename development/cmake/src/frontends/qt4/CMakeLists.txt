@@ -23,7 +23,6 @@ add_definitions(-DQT_GENUINE_STR -DLYX_BUILD_QT4_FRONTEND)
 
 include_directories(	
 	${TOP_SRC_DIR}/src/frontends/qt4 
-	${TOP_SRC_DIR}/src/frontends/controllers
 	${QT_INCLUDES}
 	${CMAKE_CURRENT_BINARY_DIR})
 
@@ -42,7 +41,7 @@ else()
 endif()
 
 target_link_libraries(frontend_qt4
-	${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} controllers)
+	${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 if(WIN32)
 	target_link_libraries(frontend_qt4 Gdi32)
