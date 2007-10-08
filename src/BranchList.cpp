@@ -24,7 +24,9 @@ namespace lyx {
 
 Branch::Branch() : selected_(false)
 {
-	theApp()->getRgbColor(Color::background, color_);
+	// no theApp() with command line export
+	if (theApp())
+		theApp()->getRgbColor(Color::background, color_);
 }
 
 
