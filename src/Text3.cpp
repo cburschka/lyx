@@ -668,7 +668,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_BREAK_PARAGRAPH:
 		cap::replaceSelection(cur);
-		breakParagraph(cur, false);
+		breakParagraph(cur, cmd.argument() == "inverse");
 		cur.resetAnchor();
 		break;
 

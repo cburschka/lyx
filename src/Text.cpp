@@ -583,7 +583,7 @@ Color_color Text::backgroundColor() const
 }
 
 
-void Text::breakParagraph(Cursor & cur, bool keep_layout)
+void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -608,11 +608,9 @@ void Text::breakParagraph(Cursor & cur, bool keep_layout)
 		cpar.eraseChar(cur.pos(), cur.buffer().params().trackChanges);
 
 	// What should the layout for the new paragraph be?
-	int preserve_layout = 0;
-	if (keep_layout)
-		preserve_layout = 2;
-	else
-		preserve_layout = layout->isEnvironment();
+	bool keep_layout = inverse_logic ? 
+		!layout->isEnvironment() 
+		: layout->isEnvironment();
 
 	// We need to remember this before we break the paragraph, because
 	// that invalidates the layout variable
@@ -622,7 +620,7 @@ void Text::breakParagraph(Cursor & cur, bool keep_layout)
 	bool const isempty = cpar.allowEmpty() && cpar.empty();
 
 	lyx::breakParagraph(cur.buffer().params(), paragraphs(), cpit,
-			 cur.pos(), preserve_layout);
+			 cur.pos(), keep_layout);
 
 	// After this, neither paragraph contains any rows!
 

@@ -27,9 +27,9 @@ class ParagraphList;
 /**
  * This breaks a paragraph at the specified position.
  * The new paragraph will:
- * get the default layout, when flag == 0
- * will inherit the existing one, except for depth, when flag == 1
- * will inherit the existing one, including depth, when flag == 2
+ * - Decrease depth by one (or chenge layout to default layout when 
+ *    keep_layout == false  
+ * - keep current depth and layout when keep_layout == true
  * Be aware that the old or new paragraph does not contain any rows
  * after this.
  */
@@ -37,7 +37,7 @@ void breakParagraph(BufferParams const & bparams,
 		    ParagraphList & paragraphs,
 		    pit_type par,
 		    pos_type pos,
-		    int flag);
+		    bool keep_layout);
 
 ///
 void breakParagraphConservative(BufferParams const & bparams,
