@@ -40,8 +40,11 @@ else()
 		${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files})
 endif()
 
-target_link_libraries(frontend_qt4
-	${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
+target_link_libraries(frontend_qt4 
+	frontends
+	${QT_QTCORE_LIBRARY} 
+	${QT_QTGUI_LIBRARY}
+	boost_filesystem)
 
 if(WIN32)
 	target_link_libraries(frontend_qt4 Gdi32)
@@ -49,8 +52,6 @@ endif()
 
 project_source_group("${GROUP_CODE}"
 	frontends_qt4_sources frontends_qt4_headers)
-
-target_link_libraries(frontend_qt4 boost_filesystem)
 
 source_group("Uic files" FILES ${frontend_qt4_UI})
 
