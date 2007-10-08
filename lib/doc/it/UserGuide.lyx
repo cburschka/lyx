@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -14,27 +14,15 @@
 % file, contattate il gruppo per la documentazione
 % email: lyx-docs@lists.lyx.org
 
-% provides missing characters,
-% see note in chapter 'Character Tables'
-\usepackage{textcomp}
-
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
-  % set fonts for nicer pdf view
-  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
-  \usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier} }
-  % the pages of the TOC are numbered roman
-  % and a pdf-bookmark for the TOC is added
-  \pagenumbering{roman}
-  \let\myTOC\tableofcontents
-  \renewcommand\tableofcontents{%
-    \pdfbookmark[1]{Contents}{}
-    \myTOC
-    \clearpage
-    \pagenumbering{arabic} }
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
+ \usepackage[scaled=0.92]{helvet}
+ \usepackage{mathptmx}
+ \usepackage{courier} }
+
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
@@ -49,18 +37,27 @@
  % link all cross references and URLs in dvi output
  \usepackage[ps2pdf]{hyperref}
 
+\fi % end if pdflatex is used
+
  % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
  \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
+   \pdfbookmark[1]{Indice}{}
    \myTOC
-   \clearpage
+   \cleardoublepage
    \pagenumbering{arabic} }
-   
-\fi 
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+
+% define a short command for \textvisiblespace
+\newcommand{\spce}{\textvisiblespace}
 \end_preamble
-\options bibtotoc,BCOR7mm
+\options intoc,refpage,idxtotoc,BCOR7mm
 \language italian
 \inputencoding latin1
 \font_roman default
@@ -91,9 +88,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -24102,30 +24098,7 @@ circonflesso
 \end_layout
 
 \begin_layout Standard
-`
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textasciigrave
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-`
-\end_layout
-
-\end_inset
-
- À È Ì Ò Ù à è ì ò ù
+` À È Ì Ò Ù à è ì ò ù
 \hfill
 grave
 \end_layout
@@ -24149,49 +24122,9 @@ cedilla
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textasciimacron
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-¯ 
-\end_layout
-
-\end_inset
-
-
+¯
 \hfill
 macron
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Il macron morto è in genere non necessario, in quanto per esso farete uso
- di un tasto non--morto.
- Per esempio, S-M-minus, o se 
-\family typewriter
-\shape up
-.Xmodmap
-\family default
-\shape default
- è corretto, S-M-macron.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -24209,7 +24142,7 @@ ISO8859--2
 
 \begin_deeper
 \begin_layout Standard
-ĤĴĥȷ̂ĈĜŜĉĝŝ
+ĤĴĥĵĈĜŜĉĝŝ
 \hfill
 circonflesso
 \end_layout

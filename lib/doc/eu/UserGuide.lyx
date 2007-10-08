@@ -1,81 +1,62 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
 \begin_preamble
-\usepackage{multicol}
-% DO NOT ALTER THIS PREAMBLE!!!!
+% DO NOT ALTER THIS PREAMBLE!!!
 %
-% I've designed this preamble to ensure that the User's Guide prints
+% This preamble is designed to ensure that the User's Guide prints
 % out as advertised. If you mess with this preamble,
 % parts of the User's Guide may not print out as expected.  If you
 % have problems LaTeXing this file, please contact 
-% the documentation team intead of messing around in here.  --jpw 4/97
+% the documentation team
+% email: lyx-docs@lists.lyx.org
 
-%% Widens the vertical table spacing
-%%
-\renewcommand{\arraystretch}{1.25}
-\setlength{\tabcolsep}{0.45em}
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
 
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
+ \usepackage[scaled=0.92]{helvet}
+ \usepackage{mathptmx}
+ \usepackage{courier} }
 
-%% Provides certain commands which are missing.
-%%
-\DeclareRobustCommand{\textyen}{%
-{\fontencoding{U}\fontfamily{msa}\selectfont\char85}%
-}
-\DeclareRobustCommand{\textcurrency}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char27}%
-}
-\DeclareRobustCommand{\textcent}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char103}%
-}
-\DeclareRobustCommand{\textbrokenbar}{%
-{\fontencoding{U}\fontfamily{wasy}\selectfont\char124}%
-}
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+ linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+ pdfpagelayout=OneColumn, pdfnewwindow=true,
+ pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+ pdfauthor={LyX Team}, pdftex,
+ pdftitle={The LyX User's Guide},pdfsubject={LyX},
+ pdfkeywords={LyX}]{hyperref}
+ 
+\else % if dvi or ps is produced
 
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
 
-%% For some odd reason, this character isn't defined in T1-encoding. 
-%%
-\DeclareInputText{"0AD}{\textendash}
+\fi % end if pdflatex is used
 
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Gaien Aurkibidea}{}
+   \myTOC
+   \cleardoublepage
+   \pagenumbering{arabic} }
 
-%% Accented characters missing in non-T1 encodings.
-%%
-\ProvideTextCommandDefault{\quotedblbase}{%
-\raisebox{-1ex}{\textquotedblright}
-\hspace{-0.7em}
-}
-\ProvideTextCommandDefault{\quotesinglbase}{%
-\raisebox{-1ex}{\textquoteright}
-\hspace{-0.7em}
-}
-\ProvideTextCommandDefault{\guillemotleft}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle \ll\!\!\!}}
-}
-\ProvideTextCommandDefault{\guillemotright}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle \gg}}
-}
-\ProvideTextCommandDefault{\guilsinglleft}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle <\!\!\!}}
-}
-\ProvideTextCommandDefault{\guilsinglright}{%
-\raisebox{0.27ex}{\ensuremath{\scriptscriptstyle >}}
-}
-\ProvideTextCommandDefault{\DH}{%
-D\hspace{-0.7em}\rule[0.8ex]{0.30em}{0.08ex}\hspace{0.40em}
-}
-\ProvideTextCommandDefault{\dh}{%
-\ensuremath{\mathrm{\partial}}
-\hspace{-0.65em}\rule[1.35ex]{0.3em}{0.08ex}\hspace{0.35em}
-}
-\ProvideTextCommandDefault{\TH}{%
-\textsc{I\hspace{-0.325em}p}
-}
-\ProvideTextCommandDefault{\th}{%
-p\hspace{-0.55em}l
-}
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+
+% define a short command for \textvisiblespace
+\newcommand{\spce}{\textvisiblespace}
 \end_preamble
+\options intoc,refpage,idxtotoc,BCOR7mm
 \language basque
 \inputencoding latin1
 \font_roman times
@@ -106,8 +87,8 @@ p\hspace{-0.55em}l
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -24312,7 +24293,7 @@ ISO8859--2
 
 \begin_deeper
 \begin_layout Standard
-ĤĴĥȷ̂ĈĜŜĉĝŝ
+ĤĴĥĵĈĜŜĉĝŝ
 \hfill
 zirkunflexu
 \end_layout
