@@ -43,9 +43,13 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiToc::GuiToc(Dialog & dialog)
-	: Controller(dialog), params_("toc")
-{}
+GuiToc::GuiToc(GuiViewBase & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
+	: DockView(parent, "toc", area, flags), params_("toc")
+{
+	widget_ = new TocWidget(*this);
+	setWidget(widget_);
+	setWindowTitle(widget_->windowTitle());
+}
 
 
 int GuiToc::getTocDepth(int type)
@@ -235,10 +239,9 @@ Dialog * createGuiToc(LyXView & lv)
 	GuiViewBase & guiview = static_cast<GuiViewBase &>(lv);
 #ifdef Q_WS_MACX
 	// On Mac show as a drawer at the right
-	return new DockView<GuiToc, TocWidget>(guiview, "toc",
-		Qt::RightDockWidgetArea, Qt::Drawer);
+	return new GuiToc(guiview, Qt::RightDockWidgetArea, Qt::Drawer);
 #else
-	return new DockView<GuiToc, TocWidget>(guiview, "toc");
+	return new GuiToc(guiview);
 #endif
 }
 

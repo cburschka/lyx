@@ -20,12 +20,21 @@
 namespace lyx {
 namespace frontend {
 
-class ControlEmbeddedFiles : public Controller {
+class EmbeddedFilesWidget;
+
+class GuiEmbeddedFiles : public DockView
+{
+	Q_OBJECT
+
 public:
 	///
-	ControlEmbeddedFiles(Dialog &);
+	GuiEmbeddedFiles(
+		GuiViewBase & parent, ///< the main window where to dock.
+		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
+		Qt::WindowFlags flags = 0);
 	///
-	~ControlEmbeddedFiles() {}
+	void updateView();
+	
 	///
 	EmbeddedFiles & embeddedFiles();
 	///
@@ -62,16 +71,19 @@ public:
 	bool update(EmbeddedFile const & item);
 
 protected:
-	//
+	///
+	EmbeddedFilesWidget * widget_;
+	///
 	std::string message_;
 };
 
-class GuiEmbeddedFilesDialog : public QWidget, public Ui::GuiEmbeddedFilesUi
+
+class EmbeddedFilesWidget : public QWidget, public Ui::GuiEmbeddedFilesUi
 {
 	Q_OBJECT
 
 public:
-	GuiEmbeddedFilesDialog(ControlEmbeddedFiles &);
+	EmbeddedFilesWidget(GuiEmbeddedFiles &);
 	std::string name() const { return "embedding"; }
 
 public Q_SLOTS:
@@ -92,16 +104,8 @@ public Q_SLOTS:
 	void on_updatePB_clicked();
 
 private:
-	ControlEmbeddedFiles & controller_;
+	GuiEmbeddedFiles & controller_;
 	void set_embedding_status(bool embed);
-};
-
-
-class GuiEmbeddedFiles
-	: public DockView<ControlEmbeddedFiles, GuiEmbeddedFilesDialog>
-{
-public:
-	GuiEmbeddedFiles(LyXView & lv);
 };
 
 

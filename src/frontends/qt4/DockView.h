@@ -25,8 +25,7 @@ namespace frontend {
 /// Dock Widget container for LyX dialogs.
 /// This template class that encapsulates a given Widget inside a
 /// QDockWidget and presents a Dialog interface
-template<class MyController, class MyWidget>
-class DockView : public QDockWidget, public Dialog
+class DockView : public QDockWidget, public Dialog, public Controller
 {
 public:
 	DockView(
@@ -35,19 +34,15 @@ public:
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0
 	)
-		: QDockWidget(&parent, flags), name_(name)
+		: QDockWidget(&parent, flags), name_(name), Controller(this)
 	{
 		if (flags & Qt::Drawer)
 			setFeatures(QDockWidget::NoDockWidgetFeatures);
-		MyController * c = new MyController(*this);
-		controller_ = c;
-		controller_->setLyXView(parent);
-		widget_ = new MyWidget(*c);
-		setWidget(widget_);
-		setWindowTitle(widget_->windowTitle());
+		setLyXView(parent);
 		parent.addDockWidget(area, this);
 	}
-	~DockView() { delete widget_; delete controller_; }
+
+	virtual ~DockView() {}
 
 	/// Dialog inherited methods
 	//@{
@@ -55,12 +50,12 @@ public:
 	void hideView()	{ QDockWidget::hide(); }
 	void showData(std::string const & data)
 	{
-		controller_->initialiseParams(data);
+		initialiseParams(data);
 		showView();
 	}
 	void showView()
 	{
-		widget_->updateView();  // make sure its up-to-date
+		updateView();  // make sure its up-to-date
 		QDockWidget::show();
 	}
 	bool isVisibleView() const { return QDockWidget::isVisible(); }
@@ -69,23 +64,15 @@ public:
 	void redrawView() {}
 	void updateData(std::string const & data)
 	{
-		controller_->initialiseParams(data);
+		initialiseParams(data);
 		updateView();
-	}
-	void updateView()
-	{
-		widget_->updateView();
-		QDockWidget::update();
 	}
 	bool isClosing() const { return false; }
 	void partialUpdateView(int /*id*/) {}
-	Controller & controller() { return *controller_; }
+	Controller & controller() { return *this; }
 	std::string name() const { return name_; }
 	//@}
 private:
-	/// The encapsulated widget.
-	MyWidget * widget_;
-	Controller * controller_;
 	std::string name_;
 };
 

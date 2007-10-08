@@ -15,9 +15,11 @@
 #ifndef GUITOC_H
 #define GUITOC_H
 
-#include "TocBackend.h"
-#include "Dialog.h"
+#include "DockView.h"
+
 #include "insets/InsetCommandParams.h"
+
+#include "TocBackend.h"
 
 #include <QObject>
 #include <QStandardItemModel>
@@ -29,14 +31,18 @@ namespace lyx {
 namespace frontend {
 
 class TocModel;
+class TocWidget;
 
-class GuiToc : public QObject, public Controller
+class GuiToc : public DockView
 {
 	Q_OBJECT
 
 public:
 	///
-	GuiToc(Dialog &);
+	GuiToc(
+		GuiViewBase & parent, ///< the main window where to dock.
+		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
+		Qt::WindowFlags flags = 0);
 
 	///
 	bool initialiseParams(std::string const & data);
@@ -60,10 +66,12 @@ Q_SIGNALS:
 	void modelReset();
 
 private:
-	friend class TocWidget;
+	///
+	TocWidget * widget_;
 	///
 	std::vector<TocModel *> toc_models_;
 
+public:
 	///
 	TocList const & tocs() const;
 

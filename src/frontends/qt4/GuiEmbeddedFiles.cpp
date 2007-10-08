@@ -38,8 +38,8 @@ using support::FileFilterList;
 using support::FileName;
 using support::libFileSearch;
 
-GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog
-		(ControlEmbeddedFiles & controller)
+EmbeddedFilesWidget::EmbeddedFilesWidget
+		(GuiEmbeddedFiles & controller)
 	: controller_(controller)
 {
 	setupUi(this);
@@ -60,7 +60,7 @@ GuiEmbeddedFilesDialog::GuiEmbeddedFilesDialog
 }
 
 
-void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
+void EmbeddedFilesWidget::on_filesLW_itemChanged(QListWidgetItem* item)
 {
 	EmbeddedFiles & files = controller_.embeddedFiles();
 	if (item->checkState() == Qt::Checked) {
@@ -79,7 +79,7 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemChanged(QListWidgetItem* item)
 }
 
 
-void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
+void EmbeddedFilesWidget::on_filesLW_itemSelectionChanged()
 {
 	if (controller_.isReadonly())
 		return;
@@ -113,7 +113,7 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemSelectionChanged()
 }
 
 
-void GuiEmbeddedFilesDialog::on_filesLW_itemClicked(QListWidgetItem* item)
+void EmbeddedFilesWidget::on_filesLW_itemClicked(QListWidgetItem* item)
 {
 	EmbeddedFiles & files = controller_.embeddedFiles();
 	int idx = filesLW->row(item);
@@ -134,14 +134,14 @@ void GuiEmbeddedFilesDialog::on_filesLW_itemClicked(QListWidgetItem* item)
 }
 
 
-void GuiEmbeddedFilesDialog::on_filesLW_itemDoubleClicked(QListWidgetItem* item)
+void EmbeddedFilesWidget::on_filesLW_itemDoubleClicked(QListWidgetItem* item)
 {
 	EmbeddedFiles & files = controller_.embeddedFiles();
 	controller_.view(files[filesLW->row(item)]);
 }
 
 
-void GuiEmbeddedFilesDialog::updateView()
+void EmbeddedFilesWidget::updateView()
 {
 	bool readOnly = controller_.isReadonly();
 	fullpathLE->setEnabled(!readOnly);
@@ -179,7 +179,7 @@ void GuiEmbeddedFilesDialog::updateView()
 }
 
 
-void GuiEmbeddedFilesDialog::on_selectPB_clicked()
+void EmbeddedFilesWidget::on_selectPB_clicked()
 {
 	EmbeddedFiles & files = controller_.embeddedFiles();
 	// this should not be needed after EmbeddedFiles are updated correctly.
@@ -194,7 +194,7 @@ void GuiEmbeddedFilesDialog::on_selectPB_clicked()
 }
 
 
-void GuiEmbeddedFilesDialog::on_unselectPB_clicked()
+void EmbeddedFilesWidget::on_unselectPB_clicked()
 {
 	EmbeddedFiles & files = controller_.embeddedFiles();
 	// this should not be needed after EmbeddedFiles are updated correctly.
@@ -209,14 +209,14 @@ void GuiEmbeddedFilesDialog::on_unselectPB_clicked()
 }
 
 
-void GuiEmbeddedFilesDialog::on_addPB_clicked()
+void EmbeddedFilesWidget::on_addPB_clicked()
 {
 	if (controller_.browseAndAddFile())
 		updateView();
 }
 
 
-void GuiEmbeddedFilesDialog::on_extractPB_clicked()
+void EmbeddedFilesWidget::on_extractPB_clicked()
 {
 	EmbeddedFiles const & files = controller_.embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
@@ -228,7 +228,7 @@ void GuiEmbeddedFilesDialog::on_extractPB_clicked()
 }
 
 
-void GuiEmbeddedFilesDialog::on_updatePB_clicked()
+void EmbeddedFilesWidget::on_updatePB_clicked()
 {
 	EmbeddedFiles const & files = controller_.embeddedFiles();
 	QList<QListWidgetItem *> selection = filesLW->selectedItems();
@@ -241,31 +241,41 @@ void GuiEmbeddedFilesDialog::on_updatePB_clicked()
 
 
 
-void GuiEmbeddedFilesDialog::on_enableCB_toggled(bool enable)
+void EmbeddedFilesWidget::on_enableCB_toggled(bool enable)
 {
 	controller_.setEmbedding(enable);
 }
 
 
 
-ControlEmbeddedFiles::ControlEmbeddedFiles(Dialog & parent)
-	: Controller(parent)
-{}
+GuiEmbeddedFiles::GuiEmbeddedFiles(GuiViewBase & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
+	: DockView(parent, "embedded", area, flags)
+{
+	widget_ = new EmbeddedFilesWidget(*this);
+	setWidget(widget_);
+	setWindowTitle(widget_->windowTitle());
+}
 
 
-EmbeddedFiles & ControlEmbeddedFiles::embeddedFiles()
+void GuiEmbeddedFiles::updateView()
+{
+	widget_->updateView();
+}
+
+
+EmbeddedFiles & GuiEmbeddedFiles::embeddedFiles()
 {
 	return buffer().embeddedFiles();
 }
 
 
-bool ControlEmbeddedFiles::initialiseParams(string const &)
+bool GuiEmbeddedFiles::initialiseParams(string const &)
 {
 	return true;
 }
 
 
-void ControlEmbeddedFiles::updateEmbeddedFiles()
+void GuiEmbeddedFiles::updateEmbeddedFiles()
 {
 	// copy buffer embeddedFiles to a local copy
 	buffer().embeddedFiles().update();
@@ -273,7 +283,7 @@ void ControlEmbeddedFiles::updateEmbeddedFiles()
 }
 
 
-void ControlEmbeddedFiles::dispatchMessage(string const & msg)
+void GuiEmbeddedFiles::dispatchMessage(string const & msg)
 {
 	// FIXME: the right thing to do? QT guys?
 	// lyx view will only be updated if we do something to the main window. :-)
@@ -281,13 +291,13 @@ void ControlEmbeddedFiles::dispatchMessage(string const & msg)
 }
 
 
-bool ControlEmbeddedFiles::isReadonly()
+bool GuiEmbeddedFiles::isReadonly()
 {
 	return buffer().isReadonly();
 }
 
 
-void ControlEmbeddedFiles::setEmbedding(bool enable)
+void GuiEmbeddedFiles::setEmbedding(bool enable)
 {
 	if (embeddedFiles().enabled() == enable)
 		return;
@@ -300,7 +310,7 @@ void ControlEmbeddedFiles::setEmbedding(bool enable)
 }
 
 
-void ControlEmbeddedFiles::goTo(EmbeddedFile const & item, int idx)
+void GuiEmbeddedFiles::goTo(EmbeddedFile const & item, int idx)
 {
 	BOOST_ASSERT(idx < item.refCount());
 	item.saveBookmark(&buffer(), idx);
@@ -308,13 +318,13 @@ void ControlEmbeddedFiles::goTo(EmbeddedFile const & item, int idx)
 }
 
 
-void ControlEmbeddedFiles::view(EmbeddedFile const & item)
+void GuiEmbeddedFiles::view(EmbeddedFile const & item)
 {
 	formats.view(buffer(), item, formats.getFormatFromFile(item));
 }
 
 
-void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update)
+void GuiEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update)
 {
 	if (item.embedded() == embed)
 		return;
@@ -337,7 +347,7 @@ void ControlEmbeddedFiles::setEmbed(EmbeddedFile & item, bool embed, bool update
 }
 
 
-bool ControlEmbeddedFiles::browseAndAddFile()
+bool GuiEmbeddedFiles::browseAndAddFile()
 {
 	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),
 				  from_utf8(lyxrc.document_path));
@@ -357,7 +367,7 @@ bool ControlEmbeddedFiles::browseAndAddFile()
 }
 
 
-bool ControlEmbeddedFiles::extract(EmbeddedFile const & item)
+bool GuiEmbeddedFiles::extract(EmbeddedFile const & item)
 {
 	if (item.embedded())
 		return item.extract(&buffer());
@@ -366,7 +376,7 @@ bool ControlEmbeddedFiles::extract(EmbeddedFile const & item)
 }
 
 
-bool ControlEmbeddedFiles::update(EmbeddedFile const & item)
+bool GuiEmbeddedFiles::update(EmbeddedFile const & item)
 {
 	if (item.embedded())
 		return item.updateFromExternalFile(&buffer());
@@ -375,16 +385,15 @@ bool ControlEmbeddedFiles::update(EmbeddedFile const & item)
 }
 
 
-GuiEmbeddedFiles::GuiEmbeddedFiles(LyXView & lv)
-	: DockView<ControlEmbeddedFiles, GuiEmbeddedFilesDialog>(
-			static_cast<GuiViewBase &>(lv),
-			"embedded", Qt::RightDockWidgetArea)
-{}
-
-
 Dialog * createGuiEmbeddedFiles(LyXView & lv)
 {
-	return new GuiEmbeddedFiles(lv);
+	GuiViewBase & guiview = static_cast<GuiViewBase &>(lv);
+#ifdef Q_WS_MACX
+	// On Mac show as a drawer at the right
+	return new GuiEmbeddedFiles(guiview, Qt::RightDockWidgetArea, Qt::Drawer);
+#else
+	return new GuiEmbeddedFiles(guiview, Qt::RightDockWidgetArea);
+#endif
 }
 
 
