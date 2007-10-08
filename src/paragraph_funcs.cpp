@@ -62,7 +62,8 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 
 
 void breakParagraph(BufferParams const & bparams,
-	ParagraphList & pars, pit_type par_offset, pos_type pos, int flag)
+		    ParagraphList & pars, pit_type par_offset, pos_type pos, 
+		    bool keep_layout)
 {
 	// create a new paragraph, and insert into the list
 	ParagraphList::iterator tmp =
@@ -78,7 +79,7 @@ void breakParagraph(BufferParams const & bparams,
 	tmp->setInsetOwner(par.inInset());
 
 	// layout stays the same with latex-environments
-	if (flag) {
+	if (keep_layout) {
 		tmp->layout(par.layout());
 		tmp->setLabelWidthString(par.params().labelWidthString());
 		tmp->params().depth(par.params().depth());
@@ -92,7 +93,7 @@ void breakParagraph(BufferParams const & bparams,
 
 	bool const isempty = (par.allowEmpty() && par.empty());
 
-	if (!isempty && (par.size() > pos || par.empty() || flag == 2)) {
+	if (!isempty && (par.size() > pos || par.empty())) {
 		tmp->layout(par.layout());
 		tmp->params().align(par.params().align());
 		tmp->setLabelWidthString(par.params().labelWidthString());
@@ -144,7 +145,7 @@ void breakParagraph(BufferParams const & bparams,
 	}
 
 	// layout stays the same with latex-environments
-	if (flag) {
+	if (keep_layout) {
 		par.layout(tmp->layout());
 		par.setLabelWidthString(tmp->params().labelWidthString());
 		par.params().depth(tmp->params().depth());

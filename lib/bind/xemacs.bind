@@ -219,7 +219,7 @@
 \bind "C-Delete"		"word-delete-forward"
 \bind "M-d"                     "word-delete-forward"
 \bind "C-BackSpace"		"word-delete-backward"
-\bind "M-Return"		"break-paragraph-keep-layout"
+\bind "M-Return"		"break-paragraph inverse"
 \bind "C-Return"		"break-line"
 \bind "C-S-L"			"ligature-break-insert"
 \bind "C-space"			"space-insert protected"
@@ -330,7 +330,7 @@
 
 \bind "C-c percent"		"layout Comment"
 
-\bind "C-c Return"		"break-paragraph-keep-layout"
+\bind "C-c Return"		"break-paragraph inverse"
 #
 ## End AucTeX
 #

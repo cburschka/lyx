@@ -198,7 +198,6 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 
 	case LFUN_BREAK_PARAGRAPH:
-	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
 		status.enabled(false);
 		return true;

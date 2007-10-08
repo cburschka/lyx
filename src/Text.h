@@ -68,7 +68,7 @@ public:
 		Font const & font, bool toggleall = false);
 
 	/// what you expect when pressing \<enter\> at cursor position
-	void breakParagraph(Cursor & cur, bool keep_layout = false);
+	void breakParagraph(Cursor & cur, bool inverse_logic = false);
 
 	/// set layout over selection
 	void setLayout(Buffer const & buffer, pit_type start, pit_type end,

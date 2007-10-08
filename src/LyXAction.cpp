@@ -105,7 +105,6 @@ void LyXAction::init()
 		{ LFUN_BOOKMARK_CLEAR, "bookmark-clear", NoBuffer },
 		{ LFUN_BREAK_LINE, "break-line", Noop },
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop },
-		{ LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT, "break-paragraph-keep-layout", Noop },
 		{ LFUN_BREAK_PARAGRAPH_SKIP, "break-paragraph-skip", Noop },
 		{ LFUN_BUILD_PROGRAM, "build-program", ReadOnly },
 		{ LFUN_BUFFER_AUTO_SAVE, "buffer-auto-save", Noop },

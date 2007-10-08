@@ -562,13 +562,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_BREAK_PARAGRAPH:
 		cap::replaceSelection(cur);
-		breakParagraph(cur, false);
-		cur.resetAnchor();
-		break;
-
-	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
-		cap::replaceSelection(cur);
-		breakParagraph(cur, true);
+		breakParagraph(cur, cmd.argument() == "inverse");
 		cur.resetAnchor();
 		break;
 
@@ -1856,7 +1850,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_CHAR_DELETE_BACKWARD:
 	case LFUN_DELETE_BACKWARD_SKIP:
 	case LFUN_BREAK_PARAGRAPH:
-	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
 	case LFUN_PARAGRAPH_SPACING:
 	case LFUN_INSET_INSERT:

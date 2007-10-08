@@ -176,7 +176,7 @@
 
 \bind "M-Delete"		"word-delete-forward"
 \bind "M-BackSpace"		"word-delete-backward"
-\bind "M-Return"		"break-paragraph-keep-layout"
+\bind "M-Return"		"break-paragraph inverse"
 \bind "C-Return"		"break-line"
 \bind "C-k"			"line-delete-forward"
 \bind "M-space"			"space-insert protected"
