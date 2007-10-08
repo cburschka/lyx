@@ -420,6 +420,24 @@ def revert_vietnamese(document):
         j = j + 1
 
 
+def revert_japanese(document):
+    "Set language japanese-plain to japanese"
+    # Set document language from japanese-plain to japanese
+    i = 0
+    if document.language == "japanese-plain":
+        document.language = "japanese"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language japanese"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang japanese-plain", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang japanese-plain", "\\lang japanese")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -439,10 +457,12 @@ convert = [[277, [fix_wrong_tables]],
            [288, [convert_inset_command]],
            [289, [convert_latexcommand_index]],
            [290, []],
-           [291, []]
+           [291, []],
+           [292, []]
           ]
 
-revert =  [[290, [revert_vietnamese]],
+revert =  [[291, [revert_japanese]],
+           [290, [revert_vietnamese]],
            [289, [revert_wraptable]],
            [288, [revert_latexcommand_index]],
            [287, [revert_inset_command]],
