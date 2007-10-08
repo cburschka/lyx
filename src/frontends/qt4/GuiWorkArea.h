@@ -34,6 +34,10 @@ class QDropEvent;
 class QWheelEvent;
 class QPaintEvent;
 
+#ifdef CursorShape
+#undef CursorShape
+#endif
+
 namespace lyx {
 namespace frontend {
 
