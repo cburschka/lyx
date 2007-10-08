@@ -171,6 +171,15 @@ End
 
 # encodings that do not use a package
 
+# Traditional Japanese TeX programs require neither CJK nor inputenc
+# package.
+Encoding euc-jp-plain EUC-JP-plain EUC-JP variable none
+End
+Encoding jis-plain JIS-plain JIS variable none
+End
+Encoding shift-jis-plain SJIS-plain SJIS variable none
+End
+
 # This one needs hardcoded support, since the inputenc package does not know
 # tis620-0, and thailatex sets up babel directly to use tis620-0, so the
 # LaTeX name is never output to .tex files (but needed for the hardcoded
