@@ -45,6 +45,7 @@ public:
 	Font labelfont;
 	Color::color bgcolor;
 	std::string preamble;
+	bool multipar;
 };
 
 

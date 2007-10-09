@@ -137,7 +137,7 @@ bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// paragraph breaks not allowed in flex insets
 		case LFUN_BREAK_PARAGRAPH:
 		case LFUN_BREAK_PARAGRAPH_SKIP:
-			status.enabled(false);
+			status.enabled(layout_.multipar);
 			return true;
 
 		default:

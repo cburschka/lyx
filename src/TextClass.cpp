@@ -620,6 +620,7 @@ enum InsetLayoutTags {
 	IL_LATEXPARAM,
 	IL_LATEXTYPE,
 	IL_LYXTYPE,
+	IL_MULTIPAR,
 	IL_PREAMBLE,
 	IL_END
 };
@@ -638,6 +639,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		{ "latexparam", IL_LATEXPARAM },
 		{ "latextype", IL_LATEXTYPE },
 		{ "lyxtype", IL_LYXTYPE },
+		{ "multipar", IL_MULTIPAR },
 		{ "preamble", IL_PREAMBLE }
 	};
 
@@ -649,10 +651,11 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	string decoration;
 	string latexname;
 	string latexparam;
-	Font font(Font::ALL_INHERIT);
-	Font labelfont(Font::ALL_INHERIT);
+	Font font(defaultfont());
+	Font labelfont(defaultfont());
 	Color::color bgcolor(Color::background);
 	string preamble;
+	bool multipar(false);
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -692,6 +695,10 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			labelfont.lyxRead(lexrc);
 			labelfont.realize(defaultfont());
 			break;
+		case IL_MULTIPAR:
+			lexrc.next();
+			multipar = lexrc.getBool();
+			break;
 		case IL_FONT:
 			font.lyxRead(lexrc);
 			font.realize(defaultfont());
@@ -724,6 +731,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.latextype = latextype;
 		il.latexname = latexname;
 		il.latexparam = latexparam;
+		il.multipar = multipar;
 		il.font = font;
 		il.labelfont = labelfont;
 		il.bgcolor = bgcolor;		
