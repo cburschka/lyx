@@ -901,7 +901,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			language_options << language->babel();
 		}
 		// when Vietnamese is used, babel must directly be loaded with the
-		// language options, not in the class options
+		// language options, not in the class options, see
+		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 		int viet = language_options.str().find("vietnam");
 		// viet = string::npos when not found
 		if (lyxrc.language_global_options && !language_options.str().empty()
@@ -1134,8 +1135,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// translate the word "Index" to the German "Stichwortverzeichnis".
 	// For more infos why this place was chosen, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg128425.html
-	// if you encounter problem, you can shift babel to its old place behind
-	// the user-defined preamble
+	// If you encounter problems, you can shift babel to its old place behind
+	// the user-defined preamble. But in this case you must change the Vietnamese
+	// support from currently "\usepackage[vietnamese]{babel}" to:
+	// \usepackage{vietnamese}
+	// \usepackage{babel}
+	// because vietnamese must be loaded before hyperref
 	if (use_babel && !features.isRequired("jurabib")) {
 		// FIXME UNICODE
 		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
@@ -1558,10 +1563,13 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	// suppress the babel call when there is no babel language defined
 	// for the document language in the lib/languages file and if no
 	// other languages are used (lang_opts is then empty)
-	if (lang_opts.empty())
+	// exception is the language "japanese-plain" where babel is needed anyway
+	// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
+	if (lang_opts.empty() && language->lang() != "japanese-plain")
 		return string();
 	// when Vietnamese is used, babel must directly be loaded with the
-	// language options
+	// language options, see
+	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 	int viet = lang_opts.find("vietnam");
 	// viet = string::npos when not found
 	if (!lyxrc.language_global_options || viet != string::npos)
