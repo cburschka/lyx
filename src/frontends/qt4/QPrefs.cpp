@@ -15,6 +15,7 @@
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 #include "GuiApplication.h"
+#include "GuiFontLoader.h"
 
 #include "ConverterCache.h"
 #include "Session.h"
@@ -38,6 +39,7 @@
 #include <QColorDialog>
 #include <QFontDatabase>
 #include <QLineEdit>
+#include <QPixmapCache>
 #include <QPushButton>
 #include <QSpinBox>
 #include <QString>
@@ -454,6 +456,11 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 		|| rc.sans_font_name != oldrc.sans_font_name
 		|| rc.typewriter_font_name != oldrc.typewriter_font_name
 		|| rc.zoom != oldrc.zoom || rc.dpi != oldrc.dpi) {
+		// The global QPixmapCache is used in GuiPainter to cache text
+		// painting so we must reset it in case any of the above
+		// parameter is changed.
+		QPixmapCache::clear();
+		guiApp->fontLoader().update();
 		form_->controller().updateScreenFonts();
 	}
 }
