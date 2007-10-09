@@ -1584,11 +1584,14 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 		std::set<string> encodings =
 			features.getEncodingSet(doc_encoding);
 
-		// When the language japanese-plain is used, the package inputenc must
-		// be omitted.
+		// When the encodings EUC-JP-plain, JIS-plain, or SJIS-plainare used, the
+		// package inputenc must be omitted. Therefore set the encoding to empty.
 		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-		if ((!encodings.empty() || package == Encoding::inputenc) &&
-			language->lang() != "japanese-plain") {
+		if (doc_encoding == "EUC-JP-plain" || doc_encoding == "JIS-plain" ||
+			doc_encoding == "SJIS-plain")
+			encodings.clear();
+
+		if (!encodings.empty() || package == Encoding::inputenc) {
 			os << "\\usepackage[";
 			std::set<string>::const_iterator it = encodings.begin();
 			std::set<string>::const_iterator const end = encodings.end();
