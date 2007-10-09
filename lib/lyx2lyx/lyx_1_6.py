@@ -438,6 +438,23 @@ def revert_japanese(document):
         j = j + 1
 
 
+def revert_japanese_encoding(document):
+    "Set input encoding form EUC-JP-plain to EUC-JP etc."
+    # Set input encoding form EUC-JP-plain to EUC-JP etc.
+    i = 0
+    i = find_token(document.header, "\\inputencoding EUC-JP-plain", 0)
+    if i != -1:
+        document.header[i] = "\\inputencoding EUC-JP"
+    j = 0
+    j = find_token(document.header, "\\inputencoding JIS-plain", 0)
+    if j != -1:
+        document.header[j] = "\\inputencoding JIS"
+    k = 0
+    k = find_token(document.header, "\\inputencoding SJIS-plain", 0)
+    if k != -1: # convert to UTF8 since there is currently no SJIS encoding 
+        document.header[k] = "\\inputencoding UTF8"
+
+
 ##
 # Conversion hub
 #
@@ -461,7 +478,7 @@ convert = [[277, [fix_wrong_tables]],
            [292, []]
           ]
 
-revert =  [[291, [revert_japanese]],
+revert =  [[291, [revert_japanese, revert_japanese_encoding]],
            [290, [revert_vietnamese]],
            [289, [revert_wraptable]],
            [288, [revert_latexcommand_index]],
