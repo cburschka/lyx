@@ -32,7 +32,7 @@ namespace frontend {
 /// This template class that encapsulates a given Widget inside a
 /// QDialog and presents a Dialog interface
 template<class MyWidget>
-class DialogView : public QDialog, public Dialog, public Controller
+class DialogView : public QDialog, public Dialog
 {
 public:
 	DialogView(
@@ -85,7 +85,6 @@ public:
 		widget_->updateView();
 	}
 	void partialUpdateView(int /*id*/) {}
-	Controller & controller() { return *this; }
 	std::string name() const { return name_; }
 	//@}
 private:
