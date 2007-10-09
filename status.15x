@@ -39,7 +39,11 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix a crash when exporting a file with a branch from the command line (bug 4255).
+- Fix a crash when exporting a file with a branch from the command line
+  (bug 4255).
+
+- Remove obsolete LaTeX-preamble code that was set when a document contains
+  URLs (bug 2265).
 
 
 * USER INTERFACE:
@@ -48,9 +52,9 @@ What's new
 
 - Fix color of some math symbols (bug 2330).
 
-- Correctly adjust screen fonts when the zoom or dpi settings are changed in the
-  preferences.
-  
+- Correctly adjust screen fonts when the zoom or dpi settings are changed in
+  the preferences.
+
 
 * DOCUMENTATION
 
