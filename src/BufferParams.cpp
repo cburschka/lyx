@@ -1142,6 +1142,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		lyxpreamble += from_utf8(features.getBabelOptions());
 	}
 
+	// When the language "japanese-plain" is used, the package "japanese" must
+	// be loaded behind babel (it provides babel support for Japanese)
+	// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
+	if (language->lang() == "japanese-plain")
+		lyxpreamble += "\\usepackage{japanese}\n";
+
 	// PDF support.
 	// * Hyperref manual: "Make sure it comes last of your loaded
 	//   packages, to give it a fighting chance of not being over-written,
@@ -1578,7 +1584,11 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 		std::set<string> encodings =
 			features.getEncodingSet(doc_encoding);
 
-		if (!encodings.empty() || package == Encoding::inputenc) {
+		// When the language japanese-plain is used, the package inputenc must
+		// be omitted.
+		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
+		if ((!encodings.empty() || package == Encoding::inputenc) &&
+			language->lang() != "japanese-plain") {
 			os << "\\usepackage[";
 			std::set<string>::const_iterator it = encodings.begin();
 			std::set<string>::const_iterator const end = encodings.end();
