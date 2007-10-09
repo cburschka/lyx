@@ -808,14 +808,13 @@ string const GuiGraphics::readBB(string const & file)
 bool GuiGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	FileName const name(makeAbsPath(fname, bufferFilepath()));
-	return isFileReadable(name);
+	return isFileReadable(makeAbsPath(fname, bufferFilepath()));
 }
 
 
 void GuiGraphics::editGraphics()
 {
-	dialog().applyView();
+	applyView();
 	string const lfun =
 		InsetGraphicsMailer::params2string(params_, buffer());
 	dispatch(FuncRequest(LFUN_GRAPHICS_EDIT, lfun));

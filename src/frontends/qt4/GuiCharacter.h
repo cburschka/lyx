@@ -98,8 +98,6 @@ private:
 	void setColor(Color_color);
 	///
 	void setLanguage(std::string const &);
-	///
-	void setToggleAll(bool);
 
 	///
 	Font::FONT_FAMILY getFamily() const;
@@ -115,8 +113,7 @@ private:
 	Color_color getColor() const;
 	///
 	std::string getLanguage() const;
-	///
-	bool getToggleAll() const;
+
 private:
 	///
 	Font font_;

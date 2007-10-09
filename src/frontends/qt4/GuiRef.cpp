@@ -132,7 +132,7 @@ void GuiRef::selectionChanged()
 
 void GuiRef::refHighlighted(QListWidgetItem * sel)
 {
-	if (controller().isBufferReadonly())
+	if (isBufferReadonly())
 		return;
 
 /*	int const cur_item = refsLW->currentRow();

@@ -30,10 +30,9 @@ namespace frontend {
 
 static void uniqueInsert(QComboBox * box, QString const & text)
 {
-	for (int i = 0; i < box->count(); ++i) {
+	for (int i = box->count(); --i >= 0; )
 		if (box->itemText(i) == text)
 			return;
-	}
 
 	box->addItem(text);
 }
@@ -87,8 +86,8 @@ void GuiSearch::findChanged()
 		replaceallPB->setEnabled(false);
 	} else {
 		findPB->setEnabled(true);
-		replacePB->setEnabled(!controller().isBufferReadonly());
-		replaceallPB->setEnabled(!controller().isBufferReadonly());
+		replacePB->setEnabled(!isBufferReadonly());
+		replaceallPB->setEnabled(!isBufferReadonly());
 	}
 }
 
@@ -127,8 +126,8 @@ void GuiSearch::replaceallClicked()
 void GuiSearch::find(docstring const & search, bool casesensitive,
 			 bool matchword, bool forward)
 {
-	docstring const data = find2string(search, casesensitive,
-					      matchword, forward);
+	docstring const data =
+		find2string(search, casesensitive, matchword, forward);
 	dispatch(FuncRequest(LFUN_WORD_FIND, data));
 }
 

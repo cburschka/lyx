@@ -38,7 +38,7 @@ namespace lyx {
 namespace frontend {
 
 class GuiParagraph
-	: public QDialog, public Ui::ParagraphUi, public Controller, public Dialog
+	: public QDialog, public Ui::ParagraphUi, public Dialog
 {
 	Q_OBJECT
 public:
@@ -54,8 +54,6 @@ private:
 	void alignmentToRadioButtons(LyXAlignment align = LYX_ALIGN_LAYOUT);
 	///
 	LyXAlignment getAlignmentFromDialog();
-	///
-	Controller & controller() { return *this; }
 	///
 	typedef std::map<LyXAlignment, QRadioButton *> RadioMap;
 	RadioMap radioMap;
@@ -112,7 +110,7 @@ private:
 		std::string key = name_ + "/geometry";
 		settings.setValue(key.c_str(), QDialog::saveGeometry());
 #endif
-	    QDialog::closeEvent(e);
+		QDialog::closeEvent(e);
 	}
 
 private Q_SLOTS:

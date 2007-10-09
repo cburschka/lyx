@@ -20,8 +20,8 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "debug.h"
-#include "DialogView.h"
-#include "DockView.h"
+//#include "DialogView.h"
+//#include "DockView.h"
 #include "frontend_helpers.h"
 #include "FuncRequest.h"
 #include "gettext.h"
@@ -50,7 +50,7 @@ namespace lyx {
 namespace frontend {
 
 GuiParagraph::GuiParagraph(LyXView & lv)
-	: Controller(this, lv)
+	: Dialog(lv)
 {
 	setupUi(this);
 	setWindowTitle(qt_("Paragraph Settings"));

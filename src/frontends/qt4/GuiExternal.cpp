@@ -653,7 +653,7 @@ void GuiExternal::updateTemplate()
 void GuiExternal::applyView()
 {
 	params_.filename.set(internal_path(fromqstr(fileED->text())),
-			    controller().bufferFilepath());
+			    bufferFilepath());
 
 	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
 
@@ -725,7 +725,7 @@ void GuiExternal::dispatchParams()
 
 void GuiExternal::editExternal()
 {
-	dialog().applyView();
+	applyView();
 	string const lfun = InsetExternalMailer::params2string(params_, buffer());
 	dispatch(FuncRequest(LFUN_EXTERNAL_EDIT, lfun));
 }

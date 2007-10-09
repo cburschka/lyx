@@ -65,8 +65,7 @@ void Dialogs::show(string const & name, string const & data, Inset * inset)
 
 bool Dialogs::visible(string const & name) const
 {
-	std::map<string, DialogPtr>::const_iterator it =
-		dialogs_.find(name);
+	std::map<string, DialogPtr>::const_iterator it = dialogs_.find(name);
 	if (it == dialogs_.end())
 		return false;
 	return it->second.get()->isVisibleView();
@@ -75,8 +74,7 @@ bool Dialogs::visible(string const & name) const
 
 void Dialogs::update(string const & name, string const & data)
 {
-	std::map<string, DialogPtr>::const_iterator it =
-		dialogs_.find(name);
+	std::map<string, DialogPtr>::const_iterator it = dialogs_.find(name);
 	if (it == dialogs_.end())
 		return;
 
@@ -148,7 +146,7 @@ void Dialogs::hideBufferDependent() const
 
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
-		if (dialog->controller().isBufferDependent())
+		if (dialog->isBufferDependent())
 			dialog->hide();
 	}
 }
@@ -161,8 +159,8 @@ void Dialogs::updateBufferDependent(bool switched) const
 
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
-		if (switched && dialog->controller().isBufferDependent()) {
-			if (dialog->isVisibleView() && dialog->controller().initialiseParams(""))
+		if (switched && dialog->isBufferDependent()) {
+			if (dialog->isVisibleView() && dialog->initialiseParams(""))
 				dialog->updateView();
 			else
 				dialog->hide();

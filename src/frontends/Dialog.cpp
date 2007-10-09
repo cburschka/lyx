@@ -30,53 +30,39 @@ Dialog::~Dialog()
 {}
 
 
-Controller::Controller(Dialog & parent)
-	: parent_(parent), lyxview_(0)
-{}
-
-
-Controller::Controller(Dialog * parent)
-	: parent_(*parent), lyxview_(0)
-{}
-
-
-Controller::~Controller()
-{}
-
-
-bool Controller::canApply() const
+bool Dialog::canApply() const
 {
-	FuncRequest const fr(getLfun(), dialog().name());
+	FuncRequest const fr(getLfun(), name());
 	FuncStatus const fs(getStatus(fr));
 	return fs.enabled();
 }
 
 
-void Controller::dispatch(FuncRequest const & fr) const
+void Dialog::dispatch(FuncRequest const & fr) const
 {
 	lyxview_->dispatch(fr);
 }
 
 
-void Controller::updateDialog(std::string const & name) const
+void Dialog::updateDialog(std::string const & name) const
 {
 	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, name));
 }
 
 
-void Controller::disconnect(std::string const & name) const
+void Dialog::disconnect(std::string const & name) const
 {
 	lyxview_->getDialogs().disconnect(name);
 }
 
 
-bool Controller::isBufferAvailable() const
+bool Dialog::isBufferAvailable() const
 {
 	return lyxview_->buffer() != 0;
 }
 
 
-bool Controller::isBufferReadonly() const
+bool Dialog::isBufferReadonly() const
 {
 	if (!lyxview_->buffer())
 		return true;
@@ -84,13 +70,13 @@ bool Controller::isBufferReadonly() const
 }
 
 
-std::string const Controller::bufferFilepath() const
+std::string const Dialog::bufferFilepath() const
 {
 	return buffer().filePath();
 }
 
 
-KernelDocType Controller::docType() const
+KernelDocType Dialog::docType() const
 {
 	if (buffer().isLatex())
 		return LATEX;
@@ -101,26 +87,26 @@ KernelDocType Controller::docType() const
 }
 
 
-BufferView * Controller::bufferview()
+BufferView * Dialog::bufferview()
 {
 	return lyxview_->view();
 }
 
 
-BufferView const * Controller::bufferview() const
+BufferView const * Dialog::bufferview() const
 {
 	return lyxview_->view();
 }
 
 
-Buffer & Controller::buffer()
+Buffer & Dialog::buffer()
 {
 	BOOST_ASSERT(lyxview_->buffer());
 	return *lyxview_->buffer();
 }
 
 
-Buffer const & Controller::buffer() const
+Buffer const & Dialog::buffer() const
 {
 	BOOST_ASSERT(lyxview_->buffer());
 	return *lyxview_->buffer();

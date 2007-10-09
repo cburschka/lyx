@@ -357,7 +357,7 @@ void GuiSpellchecker::check()
 			LYXERR(Debug::GUI) << "Updating spell progress." << endl;
 			oldval_ = newvalue_;
 			// set progress bar
-			dialog().partialUpdateView(SPELL_PROGRESSED);
+			partialUpdateView(SPELL_PROGRESSED);
 		}
 
 		// speller might be dead ...
@@ -385,7 +385,7 @@ void GuiSpellchecker::check()
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
 		LYXERR(Debug::GUI) << "Found a word needing checking." << endl;
-		dialog().partialUpdateView(SPELL_FOUND_WORD);
+		partialUpdateView(SPELL_FOUND_WORD);
 	}
 }
 
@@ -402,7 +402,7 @@ bool GuiSpellchecker::checkAlive()
 	else
 		message = _("The spellchecker has failed.\n") + speller_->error();
 
-	dialog().slotClose();
+	slotClose();
 
 	Alert::error(_("The spellchecker has failed"), message);
 	return false;
@@ -412,7 +412,7 @@ bool GuiSpellchecker::checkAlive()
 void GuiSpellchecker::showSummary()
 {
 	if (!checkAlive() || count_ == 0) {
-		dialog().slotClose();
+		slotClose();
 		return;
 	}
 
@@ -422,7 +422,7 @@ void GuiSpellchecker::showSummary()
 	else
 		message = _("One word checked.");
 
-	dialog().slotClose();
+	slotClose();
 	Alert::information(_("Spelling check completed"), message);
 }
 

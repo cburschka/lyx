@@ -25,7 +25,7 @@ namespace frontend {
 /// Dock Widget container for LyX dialogs.
 /// This template class that encapsulates a given Widget inside a
 /// QDockWidget and presents a Dialog interface
-class DockView : public QDockWidget, public Dialog, public Controller
+class DockView : public QDockWidget, public Dialog
 {
 public:
 	DockView(
@@ -34,7 +34,7 @@ public:
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0
 	)
-		: QDockWidget(&parent, flags), Controller(this, parent), name_(name)
+		: QDockWidget(&parent, flags), Dialog(parent), name_(name)
 	{
 		if (flags & Qt::Drawer)
 			setFeatures(QDockWidget::NoDockWidgetFeatures);
@@ -68,7 +68,6 @@ public:
 	}
 	bool isClosing() const { return false; }
 	void partialUpdateView(int /*id*/) {}
-	Controller & controller() { return *this; }
 	std::string name() const { return name_; }
 	//@}
 private:

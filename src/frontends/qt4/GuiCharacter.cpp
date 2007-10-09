@@ -406,7 +406,7 @@ void GuiCharacter::updateContents()
 	colorCO->setCurrentIndex(findPos2nd(color, getColor()));
 	langCO->setCurrentIndex(findPos2nd(language, getLanguage()));
 
-	toggleallCB->setChecked(getToggleAll());
+	toggleallCB->setChecked(toggleall_);
 }
 
 
@@ -420,7 +420,7 @@ void GuiCharacter::applyView()
 	setColor(color[colorCO->currentIndex()].second);
 	setLanguage(language[langCO->currentIndex()].second);
 
-	setToggleAll(toggleallCB->isChecked());
+	toggleall_ = toggleallCB->isChecked();
 }
 
 
@@ -434,7 +434,7 @@ bool GuiCharacter::initialiseParams(string const &)
 	    || getBar()    != IGNORE
 	    || getColor()  != Color::ignore
 	    || font_.language() != ignore_language)
-		dialog().setButtonsValid(true);
+		setButtonsValid(true);
 
 	return true;
 }
@@ -593,18 +593,6 @@ void GuiCharacter::setLanguage(string const & val)
 	} else {
 		font_.setLanguage(languages.getLanguage(val));
 	}
-}
-
-
-bool GuiCharacter::getToggleAll() const
-{
-	return toggleall_;
-}
-
-
-void GuiCharacter::setToggleAll(bool t)
-{
-	toggleall_ = t;
 }
 
 

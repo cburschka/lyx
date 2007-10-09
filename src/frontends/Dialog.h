@@ -39,13 +39,6 @@ enum KernelDocType
 };
 
 
-/** Different dialogs will have different Controllers and Views.
- *  deriving from these base classes.
- */
-//@{
-class Controller;
-//@}
-
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
  */
@@ -55,7 +48,7 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	Dialog() {}
+	Dialog(LyXView & lv) : lyxview_(&lv) {}
 	virtual ~Dialog();
 
 	/** \name Container Access
@@ -93,13 +86,6 @@ public:
 	 */
 	virtual bool isClosing() const { return false; }
 
-	/** \name Dialog Specialization
-	 *  Methods to set the Controller and View and so specialise
-	 *  to a particular dialog.
-	 */
-	//@{
-	virtual Controller & controller() = 0;
-	//@}
 
 	/** \c Button controller part
 	 */
@@ -144,33 +130,6 @@ public:
 	///
 	virtual std::string name() const = 0;
 
-protected:
-	virtual void apply() {}
-
-private:
-	/// intentionally unimplemented, therefore uncopiable
-	Dialog(Dialog const &);
-	void operator=(Dialog const &);
-};
-
-
-/** \c Controller is an abstract base class for the Controller
- *  of a Model-Controller-View split of a generic dialog.
- */
-class Controller 
-{
-public:
-	/// \param parent Dialog owning this Controller.
-	Controller(Dialog & parent);
-	// the same. avoids ambiguity with the (non-existent) copy constructor
-	Controller(Dialog * parent);
-	virtual ~Controller();
-	void setLyXView(LyXView & lv) { lyxview_ = &lv; }
-
-	/** \name Generic Controller
-	 *  These few methods are all that a generic dialog needs of a
-	 *  controller.
-	 */
 	//@{
 	/** Enable the controller to initialise its data structures.
 	 *  \param data is a string encoding of the parameters to be displayed.
@@ -228,14 +187,6 @@ public:
 	 *   makes use of that.
 	*/
 	virtual bool exitEarly() const { return false; }
-	//@}
-public:
-	/** \name Controller Access
-	 *  Enable the derived classes to access the other parts of the whole.
-	 */
-	//@{
-	Dialog & dialog() { return parent_; }
-	Dialog const & dialog() const { return parent_; }
 	//@}
 
 	/** \c Kernel part: a wrapper making the LyX kernel available to the dialog.
@@ -295,14 +246,17 @@ public:
 	BufferView const * bufferview() const;
 	//@}
 
-private:
-	/// intentionally unimplemented, therefore uncopiable
-	Controller(Controller const &);
-	void operator=(Controller const &);
+protected:
+	virtual void apply() {}
 
 private:
-	Dialog & parent_;
 	LyXView * lyxview_;
+
+private:
+	/// intentionally unimplemented, therefore uncopiable
+	Dialog(Dialog const &);
+	void operator=(Dialog const &);
+
 };
 
 

@@ -1681,14 +1681,14 @@ TextClass const & GuiDocument::textClass() const
 }
 
 
-static void dispatch_bufferparams(Controller const & controller,
+static void dispatch_bufferparams(Dialog const & dialog,
 	BufferParams const & bp, kb_action lfun)
 {
 	ostringstream ss;
 	ss << "\\begin_header\n";
 	bp.writeFile(ss);
 	ss << "\\end_header\n";
-	controller.dispatch(FuncRequest(lfun, ss.str()));
+	dialog.dispatch(FuncRequest(lfun, ss.str()));
 }
 
 
@@ -1711,8 +1711,7 @@ void GuiDocument::dispatchParams()
 		for (; it != end; ++it) {
 			docstring const & current_branch = it->getBranch();
 			Branch const * branch = branchlist.find(current_branch);
-			string const x11hexname =
-					lyx::X11hexname(branch->getColor());
+			string const x11hexname = X11hexname(branch->getColor());
 			// display the new color
 			docstring const str = current_branch + ' ' + from_ascii(x11hexname);
 			dispatch(FuncRequest(LFUN_SET_COLOR, str));

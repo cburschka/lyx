@@ -50,9 +50,9 @@ GuiVSpace::GuiVSpace(LyXView & lv)
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 
-	connect(spacingCO, SIGNAL(highlighted(const QString &)),
+	connect(spacingCO, SIGNAL(highlighted(QString)),
 		this, SLOT(change_adaptor()));
-	connect(valueLE, SIGNAL(textChanged(const QString &)),
+	connect(valueLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(spacingCO, SIGNAL(activated(int)),
 		this, SLOT(enableCustom(int)));
@@ -166,7 +166,6 @@ void GuiVSpace::applyView()
 
 	params_ = setVSpaceFromWidgets(spacingCO->currentIndex(),
 			valueLE, unitCO, keepCB->isChecked()); 
-
 }
 
 
@@ -179,7 +178,7 @@ void GuiVSpace::updateContents()
 bool GuiVSpace::initialiseParams(string const & data)
 {
 	InsetVSpaceMailer::string2params(data, params_);
-	dialog().setButtonsValid(true);
+	setButtonsValid(true);
 
 	return true;
 }

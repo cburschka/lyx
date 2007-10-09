@@ -25,7 +25,7 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(LyXView & lv, std::string const & name)
-	: Controller(this, lv), is_closing_(false), name_(name)
+	: Dialog(lv), is_closing_(false), name_(name)
 {}
 
 
@@ -206,7 +206,7 @@ void GuiDialog::hide()
 
 	clearParams();
 	hideView();
-	Controller::disconnect(name_);
+	Dialog::disconnect(name_);
 }
 
 
@@ -222,7 +222,7 @@ void GuiDialog::apply()
 	dispatchParams();
 
 	if (disconnectOnApply() && !is_closing_) {
-		Controller::disconnect(name_);
+		Dialog::disconnect(name_);
 		initialiseParams(string());
 		updateView();
 	}

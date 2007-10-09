@@ -941,6 +941,7 @@ void GuiTabular::closeGUI()
 */
 }
 
+
 bool GuiTabular::initialiseParams(string const & data)
 {
 	// try to get the current cell
@@ -1049,14 +1050,14 @@ void GuiTabular::setWidth(string const & width)
 	else
 		set(Tabular::SET_PWIDTH, width);
 
-	dialog().updateView();
+	updateView();
 }
 
 
 void GuiTabular::toggleMultiColumn()
 {
 	set(Tabular::MULTICOLUMN);
-	dialog().updateView();
+	updateView();
 }
 
 

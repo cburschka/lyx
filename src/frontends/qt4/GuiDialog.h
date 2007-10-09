@@ -29,7 +29,7 @@ namespace frontend {
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
  */
-class GuiDialog : public QDialog, public Dialog, public Controller
+class GuiDialog : public QDialog, public Dialog
 {
 	Q_OBJECT
 
@@ -119,13 +119,6 @@ public:
 	 */
 	bool isClosing() const { return is_closing_; }
 
-	/** \name Dialog Components
-	 *  Methods to access the various components making up a dialog.
-	 */
-	//@{
-	virtual Controller & controller() { return *this; }
-	//@}
-
 	/** Defaults to nothing. Can be used by the Controller, however, to
 	 *  indicate to the View that something has changed and that the
 	 *  dialog therefore needs updating.
@@ -139,10 +132,10 @@ public:
 	void apply();
 	void redrawView() {}
 
-private:
 	/// Update the display of the dialog whilst it is still visible.
 	virtual void updateView();
 
+private:
 	ButtonController bc_;
 	/// are we updating ?
 	bool updating_;

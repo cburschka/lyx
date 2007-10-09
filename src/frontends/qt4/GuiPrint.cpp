@@ -191,7 +191,7 @@ bool GuiPrint::initialiseParams(std::string const &)
 					lyxrc.print_file_extension);
 	params_ = PrinterParams(PrinterParams::PRINTER, lyxrc.printer, name);
 
-	dialog().setButtonsValid(true); // so that the user can press Ok
+	setButtonsValid(true); // so that the user can press Ok
 	return true;
 }
 
