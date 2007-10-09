@@ -31,8 +31,8 @@ namespace frontend {
 /// Window Dialog container for LyX dialogs.
 /// This template class that encapsulates a given Widget inside a
 /// QDialog and presents a Dialog interface
-template<class MyController, class MyWidget>
-class DialogView : public QDialog, public Dialog
+template<class MyWidget>
+class DialogView : public QDialog, public Dialog, public Controller
 {
 public:
 	DialogView(
@@ -44,10 +44,9 @@ public:
 		: QDialog(&parent, flags), name_(name)
 	{
 		setModal(modal);
-		controller_ = new MyController(*this, parent);
 		QGridLayout * gridLayout = new QGridLayout(this);
 		gridLayout->setMargin(0);
-		widget_ = new MyWidget(*controller_, this);
+		widget_ = new MyWidget(*this, this);
 		gridLayout->addWidget(widget_);
 		setWindowTitle("LyX: " + widget_->windowTitle());
 	}
@@ -57,12 +56,12 @@ public:
 	void applyView() {}
 	void hideView()
 	{
-		controller().clearParams();
+		clearParams();
 		QDialog::hide();
 	}
 	void showData(std::string const & data)
 	{
-		controller_->initialiseParams(data);
+		initialiseParams(data);
 		showView();
 	}
 	void showView()
@@ -78,7 +77,7 @@ public:
 	void redrawView() {}
 	void updateData(std::string const & data)
 	{
-		controller_->initialiseParams(data);
+		initialiseParams(data);
 		updateView();
 	}
 	void updateView()
@@ -86,13 +85,12 @@ public:
 		widget_->updateView();
 	}
 	void partialUpdateView(int /*id*/) {}
-	Controller & controller() { return *controller_; }
+	Controller & controller() { return *this; }
 	std::string name() const { return name_; }
 	//@}
 private:
 	/// The encapsulated widget.
 	MyWidget * widget_;
-	Controller * controller_;
 	std::string name_;
 
 	void showEvent(QShowEvent * e)
@@ -112,7 +110,7 @@ private:
 		std::string key = name_ + "/geometry";
 		settings.setValue(key.c_str(), QDialog::saveGeometry());
 #endif
-	    QDialog::closeEvent(e);
+	  QDialog::closeEvent(e);
 	}
 };
 
