@@ -33,7 +33,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiViewSourceDialog::GuiViewSourceDialog(ControlViewSource & controller)
+ViewSourceWidget::ViewSourceWidget(GuiViewSource & controller)
 	:	controller_(controller), document_(new QTextDocument(this)),
 		highlighter_(new LaTeXHighlighter(document_))
 {
@@ -49,9 +49,9 @@ GuiViewSourceDialog::GuiViewSourceDialog(ControlViewSource & controller)
 
 	// setting a document at this point trigger an assertion in Qt
 	// so we disable the signals here:
-	document()->blockSignals(true);
-	viewSourceTV->setDocument(document());
-	document()->blockSignals(false);
+	document_->blockSignals(true);
+	viewSourceTV->setDocument(document_);
+	document_->blockSignals(false);
 	viewSourceTV->setReadOnly(true);
 	///dialog_->viewSourceTV->setAcceptRichText(false);
 	// this is personal. I think source code should be in fixed-size font
@@ -65,7 +65,7 @@ GuiViewSourceDialog::GuiViewSourceDialog(ControlViewSource & controller)
 }
 
 
-void GuiViewSourceDialog::updateView()
+void ViewSourceWidget::updateView()
 {
 	if (autoUpdateCB->isChecked())
 		update(viewFullSourceCB->isChecked());
@@ -77,28 +77,44 @@ void GuiViewSourceDialog::updateView()
 	c.select(QTextCursor::BlockUnderCursor);
 	c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor, end - beg + 1);
 	viewSourceTV->setTextCursor(c);
-	QWidget::update();
 }
 
 
-void GuiViewSourceDialog::update(bool full_source)
+void ViewSourceWidget::update(bool full_source)
 {
-	document_->setPlainText(toqstr(controller_.updateContent(full_source)));
+	document_->setPlainText(controller_.getContent(full_source));
 }
 
 
-ControlViewSource::ControlViewSource(Dialog & parent)
-	: Controller(parent)
-{}
-
-
-bool ControlViewSource::initialiseParams(string const & /*source*/)
+GuiViewSource::GuiViewSource(GuiViewBase & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
+	: DockView(parent, "view-source", area, flags)
 {
+	widget_ = new ViewSourceWidget(*this);
+	setWidget(widget_);
+	setWindowTitle(widget_->windowTitle());
+}
+
+
+GuiViewSource::~GuiViewSource()
+{
+	delete widget_;
+}
+
+
+void GuiViewSource::updateView()
+{
+	widget_->updateView();
+}
+
+
+bool GuiViewSource::initialiseParams(string const & /*source*/)
+{
+	setWindowTitle(title());
 	return true;
 }
 
 
-docstring const ControlViewSource::updateContent(bool fullSource)
+QString GuiViewSource::getContent(bool fullSource)
 {
 	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
@@ -117,11 +133,11 @@ docstring const ControlViewSource::updateContent(bool fullSource)
 		std::swap(par_begin, par_end);
 	odocstringstream ostr;
 	view->buffer().getSourceCode(ostr, par_begin, par_end + 1, fullSource);
-	return ostr.str();
+	return toqstr(ostr.str());
 }
 
 
-std::pair<int, int> ControlViewSource::getRows() const
+std::pair<int, int> GuiViewSource::getRows() const
 {
 	BufferView const * view = bufferview();
 	CursorSlice beg = view->cursor().selectionBegin().bottom();
@@ -137,19 +153,18 @@ std::pair<int, int> ControlViewSource::getRows() const
 }
 
 
-docstring const ControlViewSource::title() const
+QString GuiViewSource::title() const
 {
 	switch (docType()) {
 		case LATEX:
-			return _("LaTeX Source");
+			return qt_("LaTeX Source");
 		case DOCBOOK:
-			return _("DocBook Source");
+			return qt_("DocBook Source");
 		case LITERATE:
-			return _("Literate Source");
-		default:
-			BOOST_ASSERT(false);
-			return docstring();
+			return qt_("Literate Source");
 	}
+	BOOST_ASSERT(false);
+	return QString();
 }
 
 
