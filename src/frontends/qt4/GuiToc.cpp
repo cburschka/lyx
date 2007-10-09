@@ -118,11 +118,7 @@ void GuiToc::goTo(int type, QModelIndex const & index)
 
 void GuiToc::updateView()
 {
-	toc_models_.clear();
-	TocList::const_iterator it = tocs().begin();
-	TocList::const_iterator end = tocs().end();
-	for (; it != end; ++it)
-		toc_models_.push_back(new TocModel(it->second));
+	widget_->updateView();
 }
 
 
@@ -136,11 +132,9 @@ bool GuiToc::initialiseParams(string const & data)
 {
 	InsetCommandMailer::string2params("toc", data, params_);
 
-	updateView();
-	modelReset();
-
 	types_.clear();
 	type_names_.clear();
+	toc_models_.clear();
 	TocList const & tocs = buffer().getMasterBuffer()->
 		tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
@@ -148,6 +142,7 @@ bool GuiToc::initialiseParams(string const & data)
 	for (; it != end; ++it) {
 		types_.push_back(it->first);
 		type_names_.push_back(guiName(it->first));
+		toc_models_.push_back(new TocModel(it->second));
 	}
 
 	string selected_type ;
@@ -163,6 +158,7 @@ bool GuiToc::initialiseParams(string const & data)
 		}
 	}
 
+	modelReset();
 	return true;
 }
 

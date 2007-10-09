@@ -698,7 +698,6 @@ bool GuiViewBase::event(QEvent * e)
 			connectBuffer(bv.buffer());
 			// The document structure, name and dialogs might have
 			// changed in another view.
-			updateToc();
 			updateWindowTitle();
 			getDialogs().updateBufferDependent(true);
 		}
