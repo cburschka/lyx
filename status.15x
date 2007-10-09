@@ -24,6 +24,7 @@ What's new
 
 - Update Japanese and Traditional Chinese translations of the interface
 
+
 * USER INTERFACE
 
 - the behaviour of Return and M-Return has changed: they now allow to either
@@ -31,6 +32,7 @@ What's new
   
 - Add the esint font to the private math fonts. This font assures a
   consistent on screen looking for all kinds of supported integral signs.
+  
 
 ** Bug fixes:
 *************
@@ -38,6 +40,7 @@ What's new
 * DOCUMENT INPUT/OUTPUT
 
 - Fix a crash when exporting a file with a branch from the command line (bug 4255).
+
 
 * USER INTERFACE:
 
@@ -47,9 +50,11 @@ What's new
 
 - Correctly adjust screen fonts when the zoom or dpi settings are changed in the
   preferences.
+  
 
 * DOCUMENTATION
 
+- Fix wrong character in the User's Guide (including the translations)
 
 
 * BUILD/INSTALLATION:
