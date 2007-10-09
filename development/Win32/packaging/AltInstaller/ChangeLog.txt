@@ -3,6 +3,15 @@
 
 - support to set Portuguese as LyX's menu language
 - support to set Catalan as LyX's menu language
+- LyX is build using the Qt 4.3.2 libraries, this should solve
+  some problems users had on Windows Vista
+- this installer release comes with an update installer that allows
+  you to update LyX 1.5.1 to LyX 1.5.2 without the need to uninstall LyX 1.5.1
+- updated to MiKTeX 2.6 (version 2831)
+- updated to ImageMagick 6.3.6-1
+
+- updated Readme files
+- NSIS 2.30 is now required to compile the installer
 
 
 Version 3.19
