@@ -52,6 +52,12 @@ GuiToc::GuiToc(GuiViewBase & parent, Qt::DockWidgetArea area, Qt::WindowFlags fl
 }
 
 
+GuiToc::~GuiToc()
+{
+	delete widget_;
+}
+
+
 int GuiToc::getTocDepth(int type)
 {
 	if (type < 0)
