@@ -32,11 +32,10 @@ namespace lyx {
 namespace frontend {
 
 GuiWrap::GuiWrap(LyXView & lv)
-	: GuiDialog(lv, "wrap"), Controller(this)
+	: GuiDialog(lv, "wrap")
 {
 	setupUi(this);
 	setViewTitle(_("Wrap Float Settings"));
-	setController(this, false);
 
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));

@@ -45,10 +45,9 @@ using support::FileFilterList;
 
 
 GuiPrint::GuiPrint(LyXView & lv)
-	: GuiDialog(lv, "print"), Controller(this)
+	: GuiDialog(lv, "print")
 {
 	setupUi(this);
-	setController(this, false);
 	setViewTitle(_("Print Document"));
 
 	connect(printPB, SIGNAL(clicked()), this, SLOT(slotOK()));

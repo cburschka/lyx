@@ -21,7 +21,7 @@ namespace lyx {
 namespace frontend {
 
 GuiMath::GuiMath(LyXView & lv, std::string const & name)
-	: GuiDialog(lv, name), Controller(this)
+	: GuiDialog(lv, name)
 {
 	// FIXME: Ideally, those unicode codepoints would be defined
 	// in "lib/symbols". Unfortunately, some of those are already

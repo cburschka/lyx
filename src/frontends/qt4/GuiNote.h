@@ -19,7 +19,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiNote : public GuiDialog, public Ui::NoteUi, public Controller
+class GuiNote : public GuiDialog, public Ui::NoteUi
 {
 	Q_OBJECT
 public:
@@ -28,8 +28,6 @@ private Q_SLOTS:
 	void change_adaptor();
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// Update dialog before showing it

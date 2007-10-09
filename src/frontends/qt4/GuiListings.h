@@ -19,7 +19,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiListings : public GuiDialog, public Ui::ListingsUi, public Controller
+class GuiListings : public GuiDialog, public Ui::ListingsUi
 {
 	Q_OBJECT
 public:
@@ -45,8 +45,6 @@ private Q_SLOTS:
 	void on_languageCO_currentIndexChanged(int);
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// return false if validate_listings_params returns error
 	bool isValid();
 	/// Apply changes

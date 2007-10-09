@@ -25,7 +25,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiInclude : public GuiDialog, public Ui::IncludeUi, public Controller
+class GuiInclude : public GuiDialog, public Ui::IncludeUi
 {
 	Q_OBJECT
 
@@ -49,8 +49,6 @@ private Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	///
 	void updateLists();
 	/// validate listings parameters and return an error message, if any

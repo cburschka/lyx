@@ -33,7 +33,7 @@ struct MathSymbol {
 };
 
 
-class GuiMath : public GuiDialog, public Controller
+class GuiMath : public GuiDialog
 {
 public:
 	GuiMath(LyXView & lv, std::string const & name);
@@ -43,8 +43,6 @@ public:
 	void clearParams() {}
 	void dispatchParams() {}
 	bool isBufferDependent() const { return true; }
-
-	Controller & controller() { return *this; }
 
 	/// dispatch an LFUN
 	void dispatchFunc(kb_action action,

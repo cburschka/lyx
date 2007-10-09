@@ -141,6 +141,7 @@ NOMOCHEADER = \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
 	GuiImage.h \
+	GuiMath.h \
 	GuiPainter.h \
 	GuiToolbars.h \
 	qt_helpers.h
@@ -182,7 +183,6 @@ MOCHEADER = \
 	GuiKeySymbol.h \
 	GuiListings.h \
 	GuiLog.h \
-	GuiMath.h \
 	GuiMathMatrix.h \
 	GuiMenubar.h \
 	GuiNomencl.h \

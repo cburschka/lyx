@@ -29,7 +29,7 @@ namespace frontend {
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
  */
-class GuiDialog : public QDialog, public Dialog
+class GuiDialog : public QDialog, public Dialog, public Controller
 {
 	Q_OBJECT
 
@@ -119,20 +119,11 @@ public:
 	 */
 	bool isClosing() const { return is_closing_; }
 
-	/** \name Dialog Specialization
-	 *  Methods to set the Controller and View and so specialise
-	 *  to a particular dialog.
-	 */
-	//@{
-	/// \param ptr is stored and destroyed by \c Dialog.
-	void setController(Controller * ptr, bool destroy = true);
-	//@}
-
 	/** \name Dialog Components
 	 *  Methods to access the various components making up a dialog.
 	 */
 	//@{
-	virtual Controller & controller() { return *controller_; }
+	virtual Controller & controller() { return *this; }
 	//@}
 
 	/** Defaults to nothing. Can be used by the Controller, however, to
@@ -161,13 +152,10 @@ private:
 	 *  itself to the kernel.
 	 */
 	std::string name_;
-	Controller * controller_;
-	bool destroy_controller_;
-	LyXView * lyxview_; // FIXME: replace by moving to constructor
 };
 
 
-class GuiCommand : public GuiDialog, public Controller
+class GuiCommand : public GuiDialog
 {
 public:
 	/// We need to know with what sort of inset we're associated.

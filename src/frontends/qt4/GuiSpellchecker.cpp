@@ -71,12 +71,11 @@ using support::bformat;
 using support::contains;
 
 GuiSpellchecker::GuiSpellchecker(LyXView & lv)
-	: GuiDialog(lv, "spellchecker"), Controller(this), exitEarly_(false),
+	: GuiDialog(lv, "spellchecker"), exitEarly_(false),
 	  oldval_(0), newvalue_(0), count_(0), speller_(0)
 {
 	setupUi(this);
 	setViewTitle(_("Spellchecker"));
-	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));

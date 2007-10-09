@@ -25,11 +25,10 @@ namespace lyx {
 namespace frontend {
 
 GuiERT::GuiERT(LyXView & lv)
-	: GuiDialog(lv, "ert"), Controller(this), status_(InsetERT::Collapsed)
+	: GuiDialog(lv, "ert"), status_(InsetERT::Collapsed)
 {
 	setupUi(this);
 	setViewTitle(_("TeX Code Settings"));
-	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

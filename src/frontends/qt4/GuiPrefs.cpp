@@ -1721,11 +1721,10 @@ void PrefIdentity::update(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 GuiPreferences::GuiPreferences(LyXView & lv)
-	: GuiDialog(lv, "prefs"), Controller(this), update_screen_font_(false)
+	: GuiDialog(lv, "prefs"), update_screen_font_(false)
 {
 	setupUi(this);
 	setViewTitle(_("Preferences"));
-	setController(this, false);
 
 	QDialog::setModal(false);
 

@@ -103,10 +103,9 @@ void LogHighlighter::highlightBlock(QString const & text)
 /////////////////////////////////////////////////////////////////////
 
 GuiLog::GuiLog(LyXView & lv)
-	: GuiDialog(lv, "log"), Controller(this), type_(LatexLog)
+	: GuiDialog(lv, "log"), type_(LatexLog)
 {
 	setupUi(this);
-	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(updatePB, SIGNAL(clicked()), this, SLOT(updateContents()));

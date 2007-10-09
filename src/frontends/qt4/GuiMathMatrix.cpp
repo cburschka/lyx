@@ -33,7 +33,6 @@ GuiMathMatrix::GuiMathMatrix(LyXView & lv)
 {
 	setupUi(this);
 	setViewTitle(_("Math Matrix"));
-	setController(this, false);
 
 	table->setMinimumSize(100, 100);
 	rowsSB->setValue(5);

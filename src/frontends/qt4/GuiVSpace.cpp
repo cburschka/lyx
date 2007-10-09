@@ -41,11 +41,10 @@ namespace lyx {
 namespace frontend {
 
 GuiVSpace::GuiVSpace(LyXView & lv)
-	: GuiDialog(lv, "vspace"), Controller(this)
+	: GuiDialog(lv, "vspace")
 {
 	setupUi(this);
 	setViewTitle(_("Vertical Space Settings"));
-	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

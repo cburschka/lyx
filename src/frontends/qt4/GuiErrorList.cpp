@@ -43,10 +43,9 @@ namespace frontend {
 using support::bformat;
 
 GuiErrorList::GuiErrorList(LyXView & lv)
-	: GuiDialog(lv, "errorlist"), Controller(this)
+	: GuiDialog(lv, "errorlist")
 {
 	setupUi(this);
-	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));

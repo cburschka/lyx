@@ -26,7 +26,7 @@ class Format;
 
 namespace frontend {
 
-class GuiSendTo : public GuiDialog, public Ui::SendtoUi, public Controller
+class GuiSendTo : public GuiDialog, public Ui::SendtoUi
 {
 	Q_OBJECT
 
@@ -40,8 +40,6 @@ private Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	///
 	bool isValid();
 	/// Apply from dialog

@@ -166,11 +166,10 @@ char const * font_styles_gui[] =
 
 
 GuiListings::GuiListings(LyXView & lv)
-	: GuiDialog(lv, "listings"), Controller(this)
+	: GuiDialog(lv, "listings")
 {
 	setupUi(this);
 	setViewTitle(_("Program Listing Settings"));
-	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

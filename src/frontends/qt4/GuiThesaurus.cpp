@@ -32,11 +32,10 @@ namespace lyx {
 namespace frontend {
 
 GuiThesaurus::GuiThesaurus(LyXView & lv)
-	: GuiDialog(lv, "thesaurus"), Controller(this)
+	: GuiDialog(lv, "thesaurus")
 {
 	setupUi(this);
 	setViewTitle(_("Thesaurus"));
-	setController(this, false);
 
 	meaningsTV->setColumnCount(1);
 	meaningsTV->header()->hide();

@@ -50,13 +50,12 @@ namespace lyx {
 namespace frontend {
 
 GuiParagraph::GuiParagraph(LyXView & lv)
-	: Controller(this)
+	: Controller(this, lv)
 {
 	setupUi(this);
 	setWindowTitle(qt_("Paragraph Settings"));
 
 	//setModal(modal);
-	setLyXView(lv);
 	QGridLayout * gridLayout = new QGridLayout(this);
 	gridLayout->setMargin(0);
 	gridLayout->addWidget(this);
@@ -67,10 +66,10 @@ GuiParagraph::GuiParagraph(LyXView & lv)
 	connect(alignRightRB, SIGNAL(clicked()), this, SLOT(changed()));
 	connect(alignCenterRB, SIGNAL(clicked()), this, SLOT(changed()));
 	connect(linespacing, SIGNAL(activated(int)), this, SLOT(changed()));
-	connect(linespacingValue, SIGNAL(textChanged(const QString &)),
+	connect(linespacingValue, SIGNAL(textChanged(QString)),
 		this, SLOT(changed()));
 	connect(indentCB, SIGNAL(clicked()), this, SLOT(changed()));
-	connect(labelWidth, SIGNAL(textChanged(const QString &)),
+	connect(labelWidth, SIGNAL(textChanged(QString)),
 		this, SLOT(changed()));
 
 

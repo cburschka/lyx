@@ -48,7 +48,7 @@ typedef std::pair<QString, Font::FONT_SIZE>   SizePair;
 typedef std::pair<QString, FontState> BarPair;
 typedef std::pair<QString, Color_color> ColorPair;
 
-class GuiCharacter : public GuiDialog, public Ui::CharacterUi, public Controller
+class GuiCharacter : public GuiDialog, public Ui::CharacterUi
 {
 	Q_OBJECT
 
@@ -60,8 +60,6 @@ protected Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// update

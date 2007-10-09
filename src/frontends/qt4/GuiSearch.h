@@ -19,7 +19,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiSearch : public GuiDialog, public Ui::SearchUi, public Controller
+class GuiSearch : public GuiDialog, public Ui::SearchUi
 {
 	Q_OBJECT
 
@@ -35,8 +35,6 @@ private Q_SLOTS:
 private:
 	void showView();
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	///
 	bool initialiseParams(std::string const &) { return true; }
 	void clearParams() {}

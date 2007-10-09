@@ -27,8 +27,7 @@ class SpellBase;
 
 namespace frontend {
 
-class GuiSpellchecker
-	: public GuiDialog, public Ui::SpellcheckerUi, public Controller
+class GuiSpellchecker : public GuiDialog, public Ui::SpellcheckerUi
 {
 	Q_OBJECT
 
@@ -52,8 +51,6 @@ private:
 	void closeEvent(QCloseEvent * e);
 	/// update from controller
 	void partialUpdate(int id);
-	/// parent controller
-	Controller & controller() { return *this; }
 	///
 	void updateContents();
 

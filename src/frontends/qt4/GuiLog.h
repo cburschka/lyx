@@ -24,7 +24,7 @@ namespace frontend {
 
 class LogHighlighter;
 
-class GuiLog : public GuiDialog, public Ui::LogUi, public Controller
+class GuiLog : public GuiDialog, public Ui::LogUi
 {
 	Q_OBJECT
 
@@ -36,8 +36,6 @@ private Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView() {}
 

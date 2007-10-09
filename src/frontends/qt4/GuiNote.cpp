@@ -26,10 +26,9 @@ namespace lyx {
 namespace frontend {
 
 GuiNote::GuiNote(LyXView & lv)
-	: GuiDialog(lv, "note"), Controller(this)
+	: GuiDialog(lv, "note")
 {
 	setupUi(this);
-	setController(this, false);
 	setViewTitle(_("Note Settings"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));

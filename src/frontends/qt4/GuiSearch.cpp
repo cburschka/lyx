@@ -40,17 +40,16 @@ static void uniqueInsert(QComboBox * box, QString const & text)
 
 
 GuiSearch::GuiSearch(LyXView & lv)
-	: GuiDialog(lv, "findreplace"), Controller(this)
+	: GuiDialog(lv, "findreplace")
 {
 	setupUi(this);
-	setController(this, false);
 	setViewTitle(_("Find and Replace"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));
 	connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));
 	connect(replaceallPB, SIGNAL(clicked()), this, SLOT(replaceallClicked()));
-	connect(findCO, SIGNAL(editTextChanged(const QString &)),
+	connect(findCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(findChanged()));
 
 	setFocusProxy(findCO);

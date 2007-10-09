@@ -28,11 +28,10 @@ namespace lyx {
 namespace frontend {
 
 GuiTabularCreate::GuiTabularCreate(LyXView & lv)
-	: GuiDialog(lv, "tabularcreate"), Controller(this)
+	: GuiDialog(lv, "tabularcreate")
 {
 	setupUi(this);
 	setViewTitle(_("Insert Table"));
-	setController(this, false);
 
 	rowsSB->setValue(5);
 	columnsSB->setValue(5);

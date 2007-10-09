@@ -86,11 +86,10 @@ static string texFileFromList(string const & file, string const & type)
 
 
 GuiTexInfo::GuiTexInfo(LyXView & lv)
-	: GuiDialog(lv, "texinfo"), Controller(this)
+	: GuiDialog(lv, "texinfo")
 {
 	setupUi(this);
 	setViewTitle(_("TeX Information"));
-	setController(this, false);
 
 	warningPosted = false;
 	activeStyle = ClsType;

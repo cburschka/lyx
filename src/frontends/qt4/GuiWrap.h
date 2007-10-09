@@ -19,7 +19,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiWrap : public GuiDialog, public Ui::WrapUi, public Controller
+class GuiWrap : public GuiDialog, public Ui::WrapUi
 {
 	Q_OBJECT
 
@@ -31,8 +31,6 @@ private Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// update

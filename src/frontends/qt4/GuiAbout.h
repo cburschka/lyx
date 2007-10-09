@@ -18,7 +18,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiAbout : public GuiDialog, public Ui::AboutUi, public Controller
+class GuiAbout : public GuiDialog, public Ui::AboutUi
 {
 	Q_OBJECT
 

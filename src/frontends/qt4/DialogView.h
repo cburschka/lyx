@@ -44,12 +44,10 @@ public:
 		: QDialog(&parent, flags), name_(name)
 	{
 		setModal(modal);
-		MyController * c = new MyController(*this);
-		controller_ = c;
-		controller_->setLyXView(parent);
+		controller_ = new MyController(*this, parent);
 		QGridLayout * gridLayout = new QGridLayout(this);
 		gridLayout->setMargin(0);
-		widget_ = new MyWidget(*c, this);
+		widget_ = new MyWidget(*controller_, this);
 		gridLayout->addWidget(widget_);
 		setWindowTitle("LyX: " + widget_->windowTitle());
 	}

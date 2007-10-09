@@ -23,7 +23,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiBox : public GuiDialog, public Ui::BoxUi, public Controller
+class GuiBox : public GuiDialog, public Ui::BoxUi
 {
 	Q_OBJECT
 
@@ -40,8 +40,6 @@ private:
 	///
 	void closeEvent(QCloseEvent * e);
 
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items

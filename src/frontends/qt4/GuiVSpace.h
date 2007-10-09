@@ -22,7 +22,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiVSpace : public GuiDialog, public Ui::VSpaceUi, public Controller
+class GuiVSpace : public GuiDialog, public Ui::VSpaceUi
 {
 	Q_OBJECT
 
@@ -38,8 +38,6 @@ private Q_SLOTS:
 	void enableCustom(int);
 
 private:
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Apply from dialog
 	void applyView();
 	/// Update the dialog

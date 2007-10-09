@@ -27,9 +27,8 @@ namespace lyx {
 namespace frontend {
 
 GuiFloat::GuiFloat(LyXView & lv)
-	: GuiDialog(lv, "float"), Controller(this)
+	: GuiDialog(lv, "float")
 {
-	setController(this, false);
 	setViewTitle(_("Float Settings"));
 
 	setupUi(this);

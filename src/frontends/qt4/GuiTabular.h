@@ -22,7 +22,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiTabular : public GuiDialog, public Ui::TabularUi, public Controller
+class GuiTabular : public GuiDialog, public Ui::TabularUi
 {
 	Q_OBJECT
 
@@ -71,8 +71,6 @@ private Q_SLOTS:
 private:
 	///
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	///
 	bool isValid() { return true; }
 	/// update borders

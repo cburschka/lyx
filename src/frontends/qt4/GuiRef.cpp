@@ -52,11 +52,9 @@ using support::makeDisplayPath;
 static std::string const lfun_name_ = "ref";
 
 GuiRef::GuiRef(LyXView & lv)
-	: GuiDialog(lv, "ref"), Controller(this),
-		params_("ref")
+	: GuiDialog(lv, "ref"), params_("ref")
 {
 	setupUi(this);
-	setController(this, false);
 	setViewTitle(_("Cross-reference"));
 
 	sort_ = false;
@@ -70,9 +68,9 @@ GuiRef::GuiRef(LyXView & lv)
 
 	connect(typeCO, SIGNAL(activated(int)),
 		this, SLOT(changed_adaptor()));
-	connect(referenceED, SIGNAL(textChanged(const QString &)),
+	connect(referenceED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
-	connect(nameED, SIGNAL(textChanged(const QString &)),
+	connect(nameED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
 	connect(refsLW, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(refHighlighted(QListWidgetItem *)));
@@ -116,6 +114,7 @@ void GuiRef::gotoClicked()
 {
 	gotoRef();
 }
+
 
 void GuiRef::selectionChanged()
 {
@@ -326,20 +325,18 @@ void GuiRef::redoRefs()
 	if (!oldSelection.isEmpty() || !last_reference_.isEmpty()) {
 		bool const newInset = oldSelection.isEmpty();
 		QString textToFind = newInset ? last_reference_ : oldSelection;
-		bool foundItem = false;
-		for (int i = 0; !foundItem && i < refsLW->count(); ++i) {
+		last_reference_.clear();
+		for (int i = 0; i != refsLW->count(); ++i) {
 			QListWidgetItem * item = refsLW->item(i);
 			if (textToFind == item->text()) {
 				refsLW->setCurrentItem(item);
 				refsLW->setItemSelected(item, !newInset);
 				//Make sure selected item is visible
 				refsLW->scrollToItem(item);
-				foundItem = true;
+				last_reference_ = textToFind;
+				break;
 			}
 		}
-		if (foundItem)
-			last_reference_ = textToFind;
-		else last_reference_ = "";
 	}
 	refsLW->setUpdatesEnabled(true);
 	refsLW->update();

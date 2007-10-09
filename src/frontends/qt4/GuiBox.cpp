@@ -74,11 +74,10 @@ void box_gui_tokens_special_length(vector<string> & ids,
 
 
 GuiBox::GuiBox(LyXView & lv)
-	: GuiDialog(lv, "box"), Controller(this), params_("")
+	: GuiDialog(lv, "box"), params_("")
 {
 	setupUi(this);
 	setViewTitle(_("Box Settings"));
-	setController(this, false);
 
 	// fill the box type choice
 	box_gui_tokens(ids_, gui_names_);

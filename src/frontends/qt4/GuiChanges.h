@@ -21,7 +21,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiChanges : public GuiDialog, public Ui::ChangesUi, public Controller
+class GuiChanges : public GuiDialog, public Ui::ChangesUi
 {
 	Q_OBJECT
 
@@ -38,7 +38,6 @@ protected Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	Controller & controller() { return *this; }
 	void updateContents();
 
 	/// Nothing to initialise in this case.

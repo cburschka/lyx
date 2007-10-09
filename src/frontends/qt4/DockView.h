@@ -34,11 +34,10 @@ public:
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0
 	)
-		: QDockWidget(&parent, flags), name_(name), Controller(this)
+		: QDockWidget(&parent, flags), Controller(this, parent), name_(name)
 	{
 		if (flags & Qt::Drawer)
 			setFeatures(QDockWidget::NoDockWidgetFeatures);
-		setLyXView(parent);
 		parent.addDockWidget(area, this);
 	}
 

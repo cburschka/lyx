@@ -37,11 +37,10 @@ namespace frontend {
 using support::trim;
 
 GuiSendTo::GuiSendTo(LyXView & lv)
-	: GuiDialog(lv, "sendto"), Controller(this)
+	: GuiDialog(lv, "sendto")
 {
 	setupUi(this);
 	setViewTitle(_("Send Document to Command"));
-	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));

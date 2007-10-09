@@ -25,16 +25,12 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(LyXView & lv, std::string const & name)
-	: is_closing_(false), name_(name), controller_(0), destroy_controller_(false)
-{
-	lyxview_ = &lv;
-}
+	: Controller(this, lv), is_closing_(false), name_(name)
+{}
 
 
 GuiDialog::~GuiDialog()
 {
-	if (destroy_controller_)
-		delete controller_;
 }
 
 
@@ -79,7 +75,7 @@ void GuiDialog::slotRestore()
 	// Tell the controller that a request to refresh the dialog's contents
 	// has been received. It's up to the controller to supply the necessary
 	// info by calling GuiDialog::updateView().
-	controller().updateDialog(name_);
+	updateDialog(name_);
 	bc().restore();
 }
 
@@ -87,23 +83,23 @@ void GuiDialog::checkStatus()
 {
 	// buffer independant dialogs are always active.
 	// This check allows us leave canApply unimplemented for some dialogs.
-	if (!controller().isBufferDependent())
+	if (!isBufferDependent())
 		return;
 
 	// deactivate the dialog if we have no buffer
-	if (!controller().isBufferAvailable()) {
+	if (!isBufferAvailable()) {
 		bc().setReadOnly(true);
 		return;
 	}
 
 	// check whether this dialog may be active
-	if (controller().canApply()) {
-		bool const readonly = controller().isBufferReadonly();
+	if (canApply()) {
+		bool const readonly = isBufferReadonly();
 		bc().setReadOnly(readonly);
 		// refreshReadOnly() is too generous in _enabling_ widgets
 		// update dialog to disable disabled widgets again
 
-		if (!readonly || controller().canApplyToReadOnly())
+		if (!readonly || canApplyToReadOnly())
 			updateView();
 
 	} else {
@@ -125,7 +121,7 @@ void GuiDialog::showView()
 		setMinimumSize(hint);
 
 	updateView();  // make sure its up-to-date
-	if (controller().exitEarly())
+	if (exitEarly())
 		return;
 
 	if (QWidget::isVisible()) {
@@ -168,17 +164,17 @@ void GuiDialog::updateView()
 
 void GuiDialog::showData(string const & data)
 {
-	if (controller().isBufferDependent() && !controller().isBufferAvailable())
+	if (isBufferDependent() && !isBufferAvailable())
 		return;
 
-	if (!controller().initialiseParams(data)) {
+	if (!initialiseParams(data)) {
 		lyxerr << "Dialog \"" << name_
 		       << "\" failed to translate the data "
 			"string passed to show()" << std::endl;
 		return;
 	}
 
-	bc().setReadOnly(controller().isBufferReadonly());
+	bc().setReadOnly(isBufferReadonly());
 	showView();
 	// The widgets may not be valid, so refresh the button controller
 	bc().refresh();
@@ -187,16 +183,16 @@ void GuiDialog::showData(string const & data)
 
 void GuiDialog::updateData(string const & data)
 {
-	if (controller().isBufferDependent() && !controller().isBufferAvailable())
+	if (isBufferDependent() && !isBufferAvailable())
 		return;
 
-	if (!controller().initialiseParams(data)) {
+	if (!initialiseParams(data)) {
 		lyxerr << "Dialog \"" << name_
 		       << "\" could not be initialized" << std::endl;
 		return;
 	}
 
-	bc().setReadOnly(controller().isBufferReadonly());
+	bc().setReadOnly(isBufferReadonly());
 	updateView();
 	// The widgets may not be valid, so refresh the button controller
 	bc().refresh();
@@ -208,38 +204,28 @@ void GuiDialog::hide()
 	if (!isVisibleView())
 		return;
 
-	controller().clearParams();
+	clearParams();
 	hideView();
-	controller().disconnect(name_);
+	Controller::disconnect(name_);
 }
 
 
 void GuiDialog::apply()
 {
-	if (controller().isBufferDependent()) {
-		if (!controller().isBufferAvailable() ||
-		    (controller().isBufferReadonly() && !controller().canApplyToReadOnly()))
+	if (isBufferDependent()) {
+		if (!isBufferAvailable() ||
+		    (isBufferReadonly() && !canApplyToReadOnly()))
 			return;
 	}
 
 	applyView();
-	controller().dispatchParams();
+	dispatchParams();
 
-	if (controller().disconnectOnApply() && !is_closing_) {
-		controller().disconnect(name_);
-		controller().initialiseParams(string());
+	if (disconnectOnApply() && !is_closing_) {
+		Controller::disconnect(name_);
+		initialiseParams(string());
 		updateView();
 	}
-}
-
-
-void GuiDialog::setController(Controller * controller, bool destroy)
-{
-	BOOST_ASSERT(controller);
-	BOOST_ASSERT(!controller_);
-	destroy_controller_ = destroy;
-	controller_ = controller;
-	controller_->setLyXView(*lyxview_);
 }
 
 
@@ -284,9 +270,8 @@ namespace lyx {
 namespace frontend {
 
 GuiCommand::GuiCommand(LyXView & lv, string const & name)
-	: GuiDialog(lv, name), Controller(this), params_(name), lfun_name_(name)
+	: GuiDialog(lv, name), params_(name), lfun_name_(name)
 {
-	setController(this, false);
 }
 
 

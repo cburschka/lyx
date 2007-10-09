@@ -35,7 +35,7 @@ namespace frontend {
 
 class LyXView;
 
-class GuiGraphics : public GuiDialog, public Ui::GraphicsUi, public Controller
+class GuiGraphics : public GuiDialog, public Ui::GraphicsUi
 {
 	Q_OBJECT
 
@@ -57,8 +57,6 @@ private Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	bool isValid();
 	/// Apply changes
 	void applyView();

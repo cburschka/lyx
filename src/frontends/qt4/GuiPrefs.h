@@ -355,7 +355,7 @@ public:
 };
 
 
-class GuiPreferences : public GuiDialog, public Ui::PrefsUi, public Controller
+class GuiPreferences : public GuiDialog, public Ui::PrefsUi
 {
 	Q_OBJECT
 public:
@@ -372,8 +372,6 @@ public:
 	void closeEvent(QCloseEvent * e);
 	///
 	void add(PrefModule * module);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// update (do we need this?)

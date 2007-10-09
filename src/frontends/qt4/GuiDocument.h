@@ -70,7 +70,7 @@ public:
 };
 
 
-class GuiDocument : public GuiDialog, public Ui::DocumentUi, public Controller
+class GuiDocument : public GuiDialog, public Ui::DocumentUi
 {
 	Q_OBJECT
 public:
@@ -134,8 +134,6 @@ private:
 	// FIXME
 	std::vector<std::string> lang_;
 
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Available modules
 	QStringListModel * availableModel() { return &available_model_; }
 	/// Selected modules

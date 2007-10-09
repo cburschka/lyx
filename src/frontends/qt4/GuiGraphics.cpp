@@ -135,11 +135,10 @@ getSecond(vector<Pair> const & pr)
 }
 
 GuiGraphics::GuiGraphics(LyXView & lv)
-	: GuiDialog(lv, "graphics"), Controller(this)
+	: GuiDialog(lv, "graphics")
 {
 	setupUi(this);
 	setViewTitle(_("Graphics"));
-	setController(this, false);
 
 	//main buttons
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));

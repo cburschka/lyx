@@ -20,7 +20,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiFloat : public GuiDialog, public Ui::FloatUi, public Controller
+class GuiFloat : public GuiDialog, public Ui::FloatUi
 {
 	Q_OBJECT
 
@@ -32,8 +32,6 @@ private Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// update

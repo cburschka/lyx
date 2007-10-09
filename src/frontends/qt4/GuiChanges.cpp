@@ -37,10 +37,9 @@ namespace frontend {
 using support::bformat;
 
 GuiChanges::GuiChanges(LyXView & lv)
-	: GuiDialog(lv, "changes"), Controller(this)
+	: GuiDialog(lv, "changes")
 {
 	setupUi(this);
-	setController(this, false);
 	setViewTitle(_("Merge Changes"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));

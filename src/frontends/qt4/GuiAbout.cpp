@@ -96,11 +96,10 @@ static QString version()
 
 
 GuiAbout::GuiAbout(LyXView & lv)
-	: GuiDialog(lv, "aboutlyx"), Controller(this)
+	: GuiDialog(lv, "aboutlyx")
 {
 	setupUi(this);
 	setViewTitle(_("About LyX"));
-	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
 

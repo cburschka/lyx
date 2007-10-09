@@ -273,11 +273,10 @@ static vector<FamilyPair> const getFamilyData()
 
 
 GuiCharacter::GuiCharacter(LyXView & lv)
-	: GuiDialog(lv, "character"), Controller(this), font_(Font::ALL_IGNORE),
+	: GuiDialog(lv, "character"), font_(Font::ALL_IGNORE),
 	  toggleall_(false), reset_lang_(false)
 {
 	setupUi(this);
-	setController(this, false);
 	setViewTitle(_("Text Style"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));

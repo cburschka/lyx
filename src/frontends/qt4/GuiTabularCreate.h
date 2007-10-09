@@ -21,8 +21,7 @@ namespace lyx {
 namespace frontend {
 
 
-class GuiTabularCreate
-	: public GuiDialog, public Ui::TabularCreateUi, public Controller
+class GuiTabularCreate : public GuiDialog, public Ui::TabularCreateUi
 {
 	Q_OBJECT
 
@@ -32,9 +31,6 @@ public:
 private Q_SLOTS:
 	void columnsChanged(int);
 	void rowsChanged(int);
-
-	/// parent controller
-	Controller & controller() { return *this; }
 
 private:
 	/// Apply changes

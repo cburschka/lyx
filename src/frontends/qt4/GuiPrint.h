@@ -25,7 +25,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiPrint : public GuiDialog, public Ui::PrintUi, public Controller
+class GuiPrint : public GuiDialog, public Ui::PrintUi
 {
 	Q_OBJECT
 
@@ -39,8 +39,6 @@ private Q_SLOTS:
 	void copiesChanged(int);
 	void printerChanged();
 	void pagerangeChanged();
-	/// parent controller
-	Controller & controller() { return *this; }
 
 private:
 	/// Apply changes

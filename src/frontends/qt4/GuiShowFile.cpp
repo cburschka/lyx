@@ -28,11 +28,10 @@ using support::FileName;
 using support::onlyFilename;
 
 GuiShowFile::GuiShowFile(LyXView & lv)
-	: GuiDialog(lv, "file"), Controller(this)
+	: GuiDialog(lv, "file")
 {
 	setupUi(this);
 	setViewTitle(_("Show File"));
-	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 

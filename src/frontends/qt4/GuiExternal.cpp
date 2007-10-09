@@ -103,11 +103,10 @@ char const * const origin_gui_strs[] = {
 
 
 GuiExternal::GuiExternal(LyXView & lv)
-	: GuiDialog(lv, "external"), Controller(this), bbChanged_(false)
+	: GuiDialog(lv, "external"), bbChanged_(false)
 {
 	setupUi(this);
 	setViewTitle(_("External Material"));
-	setController(this, false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -117,7 +116,7 @@ GuiExternal::GuiExternal(LyXView & lv)
 		showCO, SLOT(setEnabled(bool)));
 	connect(displayCB, SIGNAL(toggled(bool)),
 		displayscaleED, SLOT(setEnabled(bool)));
-	connect(showCO, SIGNAL(activated(const QString&)),
+	connect(showCO, SIGNAL(activated(QString)),
 		this, SLOT(change_adaptor()));
 	connect(originCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
@@ -127,27 +126,27 @@ GuiExternal::GuiExternal(LyXView & lv)
 		this, SLOT(browseClicked()));
 	connect(editPB, SIGNAL(clicked()),
 		this, SLOT(editClicked()));
-	connect(externalCO, SIGNAL(activated(const QString &)),
+	connect(externalCO, SIGNAL(activated(QString)),
 		this, SLOT(templateChanged()));
-	connect(extraED, SIGNAL(textChanged(const QString &)),
-		this, SLOT(extraChanged(const QString&)));
-	connect(extraFormatCO, SIGNAL(activated(const QString &)),
-		this, SLOT(formatChanged(const QString&)));
+	connect(extraED, SIGNAL(textChanged(QString)),
+		this, SLOT(extraChanged(QString)));
+	connect(extraFormatCO, SIGNAL(activated(QString)),
+		this, SLOT(formatChanged(QString)));
 	connect(widthUnitCO, SIGNAL(activated(int)),
 		this, SLOT(widthUnitChanged()));
 	connect(heightUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 	connect(displayCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(displayscaleED, SIGNAL(textChanged(const QString &)),
+	connect(displayscaleED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(angleED, SIGNAL(textChanged(const QString &)),
+	connect(angleED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
-	connect(widthED, SIGNAL(textChanged(const QString &)),
+	connect(widthED, SIGNAL(textChanged(QString)),
 		this, SLOT(sizeChanged()));
-	connect(heightED, SIGNAL(textChanged(const QString &)),
+	connect(heightED, SIGNAL(textChanged(QString)),
 		this, SLOT(sizeChanged()));
-	connect(fileED, SIGNAL(textChanged(const QString &)),
+	connect(fileED, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(clipCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));

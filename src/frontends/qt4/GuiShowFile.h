@@ -21,7 +21,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiShowFile : public GuiDialog, public Ui::ShowFileUi, public Controller
+class GuiShowFile : public GuiDialog, public Ui::ShowFileUi
 {
 	Q_OBJECT
 
@@ -31,8 +31,6 @@ public:
 private:
 	///
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// update
 	void updateContents();
 	///

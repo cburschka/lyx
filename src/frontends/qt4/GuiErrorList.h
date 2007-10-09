@@ -21,7 +21,7 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiErrorList : public GuiDialog, public Ui::ErrorListUi, public Controller
+class GuiErrorList : public GuiDialog, public Ui::ErrorListUi
 {
 	Q_OBJECT
 
@@ -37,8 +37,6 @@ private:
 	void closeEvent(QCloseEvent *);
 	///
 	void showEvent(QShowEvent *);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// update contents
 	void updateContents();
 	///

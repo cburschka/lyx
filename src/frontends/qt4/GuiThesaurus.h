@@ -21,7 +21,7 @@ class QTreeWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiThesaurus : public GuiDialog, public Ui::ThesaurusUi, public Controller
+class GuiThesaurus : public GuiDialog, public Ui::ThesaurusUi
 {
 	Q_OBJECT
 
@@ -38,8 +38,6 @@ private Q_SLOTS:
 
 private:
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// update
 	void updateContents();
 	///

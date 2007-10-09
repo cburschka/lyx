@@ -219,10 +219,9 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 
 
 GuiDocument::GuiDocument(LyXView & lv)
-	: GuiDialog(lv, "document"), Controller(this)
+	: GuiDialog(lv, "document")
 {
 	setupUi(this);
-	setController(this, false);
 	setViewTitle(_("Document Settings"));
 
 	lang_ = getSecond(getLanguageData(false));

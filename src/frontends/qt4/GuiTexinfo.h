@@ -24,7 +24,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiTexInfo : public GuiDialog, public Ui::TexinfoUi, public Controller
+class GuiTexInfo : public GuiDialog, public Ui::TexinfoUi
 {
 	Q_OBJECT
 
@@ -32,7 +32,7 @@ public:
 	///
 	GuiTexInfo(LyXView & lv);
 	/// the file extensions. order matters in GuiTexInfo::fileType()
-	enum TexFileType {ClsType, StyType, BstType};
+	enum TexFileType { ClsType, StyType, BstType };
 
 public Q_SLOTS:
 	///
@@ -51,8 +51,6 @@ private Q_SLOTS:
 private:
 	///
 	void closeEvent(QCloseEvent * e);
-	///
-	Controller & controller() { return *this; }
 	///
 	void updateStyles(TexFileType);
 	///

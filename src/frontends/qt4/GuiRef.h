@@ -24,7 +24,7 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class GuiRef : public GuiDialog, public Ui::RefUi, public Controller
+class GuiRef : public GuiDialog, public Ui::RefUi
 {
 	Q_OBJECT
 
@@ -63,8 +63,6 @@ private:
 
 	///
 	void closeEvent(QCloseEvent * e);
-	/// parent controller
-	Controller & controller() { return *static_cast<Controller*>(this); }
 	///
 	bool isValid();
 	/// apply changes

@@ -36,7 +36,7 @@ class RotationDataType;
 
 namespace frontend {
 
-class GuiExternal : public GuiDialog, public Ui::ExternalUi, public Controller
+class GuiExternal : public GuiDialog, public Ui::ExternalUi
 {
 	Q_OBJECT
 
@@ -63,8 +63,6 @@ private:
 	void closeEvent(QCloseEvent * e);
 	//
 	bool activateAspectratio() const;
-	/// parent controller
-	Controller & controller() { return *this; }
 	/// Apply changes
 	void applyView();
 	/// update

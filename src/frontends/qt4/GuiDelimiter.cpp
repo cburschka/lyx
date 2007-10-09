@@ -74,7 +74,6 @@ GuiDelimiter::GuiDelimiter(LyXView & lv)
 {
 	setupUi(this);
 	setViewTitle(_("Math Delimiter"));
-	setController(this, false);
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(accept()));
 
