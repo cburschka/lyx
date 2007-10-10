@@ -60,11 +60,12 @@ bool setEnv(string const & name, string const & value)
 	// CHECK Look at and fix this.
 	// f.ex. what about error checking?
 
-	string const encoded(to_local8bit(from_utf8(value)));
+	string const encoded = to_local8bit(from_utf8(value));
 #if defined (HAVE_SETENV)
-	int const retval = ::setenv(name.c_str(), encoded.c_str(), true);
+	return ::setenv(name.c_str(), encoded.c_str(), true) == 0;
+#endif
 
-#elif defined (HAVE_PUTENV)
+#if defined (HAVE_PUTENV)
 	static std::map<string, char *> varmap;
 
 	string envstr = name + '=' + encoded;
@@ -77,11 +78,13 @@ bool setEnv(string const & name, string const & value)
 	if (oldptr)
 		delete oldptr;
 	varmap[name] = newptr;
+	return retval == 0;
+#endif
 
-#else
+#if !(defined HAVE_SETENV) && !(defined HAVE_PUTENV)
 #error No environment-setting function has been defined.
 #endif
-	return retval == 0;
+	return false;
 }
 
 
