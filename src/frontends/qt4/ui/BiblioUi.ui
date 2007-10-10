@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BiblioUi</class>
  <widget class="QWidget" name="BiblioUi" >
   <property name="geometry" >
@@ -16,22 +13,28 @@
    <string/>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>11</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
    <item row="0" column="0" >
     <widget class="QGroupBox" name="CiteStyleBG" >
      <property name="title" >
       <string>Citation Style</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>11</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>11</number>
+      </property>
+      <property name="rightMargin" >
+       <number>11</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>11</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>6</number>
+      </property>
+      <property name="verticalSpacing" >
        <number>6</number>
       </property>
       <item row="2" column="0" >
@@ -66,11 +69,20 @@
       </item>
       <item row="1" column="1" >
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
         <property name="spacing" >
          <number>6</number>
+        </property>
+        <property name="leftMargin" >
+         <number>0</number>
+        </property>
+        <property name="topMargin" >
+         <number>0</number>
+        </property>
+        <property name="rightMargin" >
+         <number>0</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="citationStyleL" >
@@ -91,9 +103,7 @@
            <bool>false</bool>
           </property>
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>0</vsizetype>
+           <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -105,7 +115,30 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" >
+   <item row="0" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="2" >
+    <widget class="QCheckBox" name="bibtopicCB" >
+     <property name="toolTip" >
+      <string>Select this if you want to split your bibliography into sections</string>
+     </property>
+     <property name="text" >
+      <string>S&amp;ectioned bibliography</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -121,19 +154,8 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" >
-    <widget class="QCheckBox" name="bibtopicCB" >
-     <property name="toolTip" >
-      <string>Select this if you want to split your bibliography into sections</string>
-     </property>
-     <property name="text" >
-      <string>S&amp;ectioned bibliography</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <includes>
   <include location="local" >qt_helpers.h</include>
  </includes>
