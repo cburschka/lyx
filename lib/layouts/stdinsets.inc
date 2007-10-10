@@ -12,6 +12,7 @@ InsetLayout Marginal
 	  Color               Red
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 InsetLayout Foot
@@ -22,6 +23,7 @@ InsetLayout Foot
 	  Color               Green
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 InsetLayout Note:Comment
@@ -33,6 +35,7 @@ InsetLayout Note:Comment
 	  Color               comment
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 
@@ -45,6 +48,7 @@ InsetLayout Note:Note
 	  Color               note
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 InsetLayout Note:Greyedout
@@ -56,6 +60,7 @@ InsetLayout Note:Greyedout
 	  Color               greyedout
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 InsetLayout Note:Framed
@@ -67,6 +72,7 @@ InsetLayout Note:Framed
 	  Color               greyedout
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 InsetLayout Note:Shaded
@@ -78,6 +84,7 @@ InsetLayout Note:Shaded
 	  Color               greyedout
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 InsetLayout ERT
@@ -91,6 +98,7 @@ InsetLayout ERT
 	  Color               latex
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 InsetLayout Branch
@@ -99,6 +107,7 @@ InsetLayout Branch
 	  Color               Red
 	  Size                Small
 	EndFont
+	MultiPar              true
 End
 
 InsetLayout Index
@@ -114,5 +123,10 @@ InsetLayout Index
 	  Color               Green
 	  Size                Small
 	EndFont
+	MultiPar              false
+End
+
+InsetLayout Box
+	MultiPar              true
 End
 

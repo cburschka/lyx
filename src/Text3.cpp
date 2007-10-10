@@ -209,11 +209,26 @@ static bool doInsertInset(Cursor & cur, Text * text,
 
 		if (gotsel && pastesel) {
 			lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
-			// reset first par to default
-			if (cur.lastpit() != 0 || cur.lastpos() != 0) {
+			InsetLayout il = inset->getLayout(cur.buffer().params());
+			if (!il.multipar || cur.lastpit() == 0) {
+				// reset first par to default
 				LayoutPtr const layout =
 					cur.buffer().params().getTextClass().defaultLayout();
 				cur.text()->paragraphs().begin()->layout(layout);
+				cur.pos() = 0;
+				cur.pit() = 0;
+				// Merge multiple paragraphs -- hack
+				while (cur.lastpit() > 0) {
+					mergeParagraph(cur.buffer().params(),
+						cur.text()->paragraphs(), 0);
+				}
+			} else {
+				// reset surrounding par to default
+				docstring const layoutname = 
+					cur.buffer().params().getTextClass().defaultLayoutName();
+				cur.leaveInset(*inset);
+				text->setLayout(cur, layoutname);
+				}
 			}
 		}
 	}
