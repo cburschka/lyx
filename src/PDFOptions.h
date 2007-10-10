@@ -19,18 +19,6 @@ namespace lyx {
 class Lexer;
 
 /// Options for PDF generation
-
-/*
-  Possible cleanups, left for next fileformat change:
-  
-  - bookmarksopenlevel is stored in .lyx as string; 
-    after change to spinbox it would be appropriate
-    change to int.
-  - store_options flag can be completely replaced by
-    function store_options() doing essentialy the same
-    as empty() now.
-*/
-
 class PDFOptions {
 public:
 	///
@@ -43,7 +31,7 @@ public:
 	void writeLaTeX(odocstringstream &) const;
 	/// read tokens from lyx header
 	std::string readToken(Lexer &lex, std::string const & token);
-	/// keep implicit hyperref settings
+	/// set implicit settings for hyperref
 	void clear();
 
 	///
@@ -128,6 +116,15 @@ public:
 		* dialog -> PDFOptions.pagemode .
 		*/
 	std::string pagemode;
+	/**
+		* Flag indicating whether hyperref tries to derive the values for
+		* pdftitle and pdfauthor from \title and \author.
+		* pdfusetitle       boolean false
+		*
+		* Note that we use true as default value instead. The option is also
+		* used in latex output only when title and author is not filled.
+	*/
+	bool pdfusetitle;
 	///latex string
 	static const std::string pagemode_fullscreen;
 	/**

@@ -653,6 +653,8 @@ GuiDocument::GuiDocument(LyXView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->backrefCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
+	connect(pdfSupportModule->pdfusetitleCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->pagebackrefCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->fullscreenCB, SIGNAL(toggled(bool)),
@@ -1248,6 +1250,7 @@ void GuiDocument::apply(BufferParams & params)
 
 	pdf.breaklinks = pdfSupportModule->breaklinksCB->isChecked();
 	pdf.pdfborder = pdfSupportModule->pdfborderCB->isChecked();
+	pdf.pdfusetitle = pdfSupportModule->pdfusetitleCB->isChecked();
 	pdf.colorlinks = pdfSupportModule->colorlinksCB->isChecked();
 	pdf.backref = pdfSupportModule->backrefCB->isChecked();
 	pdf.pagebackref	= pdfSupportModule->pagebackrefCB->isChecked();
@@ -1256,8 +1259,6 @@ void GuiDocument::apply(BufferParams & params)
 	else
 		pdf.pagemode.clear();
 	pdf.quoted_options = fromqstr(pdfSupportModule->optionsLE->text());
-	if (pdf.use_hyperref || !pdf.empty())
-		pdf.store_options = true;
 }
 
 
@@ -1555,6 +1556,7 @@ void GuiDocument::updateParams(BufferParams const & params)
 
 	pdfSupportModule->breaklinksCB->setChecked(pdf.breaklinks);
 	pdfSupportModule->pdfborderCB->setChecked(pdf.pdfborder);
+	pdfSupportModule->pdfusetitleCB->setChecked(pdf.pdfusetitle);
 	pdfSupportModule->colorlinksCB->setChecked(pdf.colorlinks);
 	pdfSupportModule->backrefCB->setChecked(pdf.backref);
 	pdfSupportModule->pagebackrefCB->setChecked(pdf.pagebackref);

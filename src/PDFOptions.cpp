@@ -47,14 +47,14 @@ bool PDFOptions::empty() const
 		&& pdfborder == x.pdfborder
 		&& colorlinks == x.colorlinks
 		&& backref == x.backref
-		&& pagebackref == x.pagebackref ;
+		&& pagebackref == x.pagebackref
+		&& pdfusetitle == x.pdfusetitle;
 }
 
 void PDFOptions::writeFile(ostream & os) const
 {
 	os << "\\use_hyperref " << convert<string>(use_hyperref) << '\n';
-	os << "\\pdf_store_options " << convert<string>(store_options) << '\n';
-	if (!use_hyperref && !store_options)
+	if (!use_hyperref && empty())
 		return;
 	
 	if (!title.empty() )
@@ -77,6 +77,7 @@ void PDFOptions::writeFile(ostream & os) const
 	os << "\\pdf_colorlinks "  << convert<string>(colorlinks)  << '\n';
 	os << "\\pdf_backref "     << convert<string>(backref)     << '\n';
 	os << "\\pdf_pagebackref " << convert<string>(pagebackref) << '\n';
+	os << "\\pdf_pdfusetitle " << convert<string>(pdfusetitle) << '\n';
 	
 	if (!pagemode.empty())
 		os << "\\pdf_pagemode " << pagemode << '\n';
@@ -99,10 +100,10 @@ void PDFOptions::writeLaTeX(odocstringstream &os) const
 	
 	// try to extract author and title from document when none is
 	// explicitely given
-	if (title.empty() && author.empty())
-		opt += "pdfusetitle,\n ";
-	else
-		opt += "\n ";
+	if (pdfusetitle && title.empty() && author.empty())
+		opt += "pdfusetitle,";
+	opt += "\n ";
+
 	opt += "bookmarks=" + convert<string>(bookmarks) + ',';
 	if (bookmarks) {
 		opt += "bookmarksnumbered=" + convert<string>(bookmarksnumbered) + ',';
@@ -181,12 +182,14 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 		lex >> backref;
 	} else if (token == "\\pdf_pagebackref") {
 		lex >> pagebackref;
+	} else if (token == "\\pdf_pdfusetitle") {
+		lex >> pdfusetitle;
 	} else if (token == "\\pdf_pagemode") {
 		lex >> pagemode;
 	} else if (token == "\\pdf_quoted_options") {
 		lex >> quoted_options;
 	} else if (token == "\\pdf_store_options") {
-		lex >> store_options;
+		//leftover from previous option; intended for later removal
 	} else {
 		return token;
 	}
@@ -194,13 +197,13 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 }
 
 
-//prepared for check
+// prepared for check
 string PDFOptions::quoted_options_get() const
 {
 	return quoted_options;
 }
 
-// Keep implicit hyperref settings
+// set implicit settings for hyperref
 void PDFOptions::clear()
 {
 	use_hyperref            = false;
@@ -219,7 +222,7 @@ void PDFOptions::clear()
 	pagebackref             = false;
 	pagemode.clear();
 	quoted_options.clear();
-	store_options           = false;
+	pdfusetitle             = true;  //in contrast with hyperref
 }
 
 } // namespace lyx
