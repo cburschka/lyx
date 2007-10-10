@@ -509,7 +509,7 @@ void GuiWorkArea::updateScreen()
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
 	if (schedule_redraw_) {
-		buffer_view_->update(Update::Force);
+		buffer_view_->updateMetrics(false);
 		updateScreen();
 		viewport()->update(QRect(0, 0, viewport()->width(), viewport()->height()));
 		schedule_redraw_ = false;

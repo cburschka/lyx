@@ -266,7 +266,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	keyseq.clear();
 	// copied verbatim from do_accent_char
 	view()->cursor().resetAnchor();
-	view()->update();
+	view()->processUpdateFlags(Update::FitCursor);
 }
 
 
@@ -1979,13 +1979,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// also initializes the position cache for all insets in
 			// (at least partially) visible top-level paragraphs.
 			// We will redraw the screen only if needed.
-			if (view()->update(updateFlags)) {
-				// Buffer::changed() signals that a repaint is needed.
-				// The frontend (WorkArea) knows which area to repaint
-				// thanks to the ViewMetricsInfo updated above.
-				lyx_view_->buffer()->changed();
-			}
-
+			view()->processUpdateFlags(updateFlags);
 			lyx_view_->updateStatusBar();
 
 			// if we executed a mutating lfun, mark the buffer as dirty

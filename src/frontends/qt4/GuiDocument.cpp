@@ -1724,8 +1724,7 @@ void GuiDocument::dispatchParams()
 			"assign branch"));
 	}
 	// FIXME: If we used an LFUN, we would not need those two lines:
-	bufferview()->update();
-	lyxview().currentWorkArea()->redraw();
+	bufferview()->processUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 

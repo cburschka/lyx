@@ -415,7 +415,7 @@ bool BufferView::multiParSel()
 }
 
 
-bool BufferView::update(Update::flags flags)
+void BufferView::processUpdateFlags(Update::flags flags)
 {
 	// last_inset_ points to the last visited inset. This pointer may become
 	// invalid because of keyboard editing. Since all such operations
@@ -441,12 +441,13 @@ bool BufferView::update(Update::flags flags)
 	if (!flags) {
 		// no need to redraw anything.
 		metrics_info_.update_strategy = NoScreenUpdate;
-		return false;
+		return;
 	}
 
 	if (flags == Update::Decoration) {
 		metrics_info_.update_strategy = DecorationUpdate;
-		return true;
+		buffer_.changed();
+		return;
 	}
 
 	if (flags == Update::FitCursor
@@ -455,15 +456,17 @@ bool BufferView::update(Update::flags flags)
 		// tell the frontend to update the screen if needed.
 		if (fit_cursor) {
 			updateMetrics(false);
-			return true;
+			buffer_.changed();
+			return;
 		}
 		if (flags & Update::Decoration) {
 			metrics_info_.update_strategy = DecorationUpdate;
-			return true;
+			buffer_.changed();
+			return;
 		}
 		// no screen update is needed.
 		metrics_info_.update_strategy = NoScreenUpdate;
-		return false;
+		return;
 	}
 
 	bool full_metrics = flags & Update::Force;
@@ -473,21 +476,24 @@ bool BufferView::update(Update::flags flags)
 	bool const single_par = !full_metrics;
 	updateMetrics(single_par);
 
-	if (flags & Update::FitCursor) {
-		//FIXME: updateMetrics() does not update paragraph position
-		// This is done at draw() time. So we need a redraw!
+	if (!(flags & Update::FitCursor)) {
 		buffer_.changed();
-		if (fitCursor())
-			updateMetrics(false);
-		else
-			// The screen has already been updated thanks to the
-			// 'buffer_.changed()' call three line above. So no need
-			// to redraw again.
-			return false;
+		return;
 	}
 
-	// tell the frontend to update the screen.
-	return true;
+	//FIXME: updateMetrics() does not update paragraph position
+	// This is done at draw() time. So we need a redraw!
+	buffer_.changed();
+	if (!fitCursor())
+		// The screen has already been updated thanks to the
+		// 'buffer_.changed()' call three line above. So no need
+		// to redraw again.
+		return;
+
+	// The screen has been recentered around the cursor position so
+	// refresh it:
+	updateMetrics(false);
+	buffer_.changed();
 }
 
 
@@ -1403,11 +1409,8 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	// If the command has been dispatched,
 	if (cur.result().dispatched()
 		// an update is asked,
-		&& cur.result().update()
-		// and redraw is needed,
-		&& update(cur.result().update()))
-		// then trigger a redraw.
-		buffer_.changed();
+		&& cur.result().update())
+		processUpdateFlags(cur.result().update());
 }
 
 
@@ -1490,7 +1493,7 @@ void BufferView::gotoLabel(docstring const & label)
 		it->getLabelList(buffer_, labels);
 		if (std::find(labels.begin(), labels.end(), label) != labels.end()) {
 			setCursor(it);
-			update();
+			processUpdateFlags(Update::FitCursor);
 			return;
 		}
 	}

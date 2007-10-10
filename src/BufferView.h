@@ -101,7 +101,7 @@ public:
 	 * \c Update::Force means to force an update in any case.
 	 * \retval true if a screen redraw is needed
 	 */
-	bool update(Update::flags flags = Update::FitCursor | Update::Force);
+	void processUpdateFlags(Update::flags flags);
 
 	/// move the screen to fit the cursor.
 	/// Only to be called with good y coordinates (after a bv::metrics)
