@@ -9,7 +9,7 @@
     <x>0</x>
     <y>0</y>
     <width>427</width>
-    <height>448</height>
+    <height>414</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,19 +22,6 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>409</width>
-       <height>16</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="0" column="0" >
     <widget class="QGroupBox" name="use_hyperrefGB" >
      <property name="focusPolicy" >
@@ -339,6 +326,19 @@
       </item>
      </layout>
     </widget>
+   </item>
+   <item row="1" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>409</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
