@@ -228,7 +228,6 @@ static bool doInsertInset(Cursor & cur, Text * text,
 					cur.buffer().params().getTextClass().defaultLayoutName();
 				cur.leaveInset(*inset);
 				text->setLayout(cur, layoutname);
-				}
 			}
 		}
 	}
