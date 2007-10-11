@@ -413,12 +413,6 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	} else {
 		dispatch(func);
 	}
-
-	/* When we move around, or type, it's nice to be able to see
-	 * the cursor immediately after the keypress.
-	 */
-	if (lyx_view_ && lyx_view_->currentWorkArea())
-		lyx_view_->currentWorkArea()->startBlinkingCursor();
 }
 
 
