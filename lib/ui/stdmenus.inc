@@ -489,6 +489,7 @@ Menuset
 		Item "Extended Features|E" "help-open Extended"
 		Item "Embedded Objects|m" "help-open EmbeddedObjects" 
 		Item "Customization|C" "help-open Customization"
+		Item "Shortcuts|S" "help-open Shortcuts"
 		Item "FAQ|F" "help-open FAQ"
 		Item "Table of Contents|a" "help-open TOC"
 		Item "LaTeX Configuration|L" "help-open LaTeXConfig"
