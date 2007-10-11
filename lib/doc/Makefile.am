@@ -207,7 +207,7 @@ dist_doc_DATA = \
 	Extended.lyx \
 	FAQ.lyx \
 	Intro.lyx \
-	LaTeXConfig.lyx.in \
+	LaTeXConfig.lyx \
 	Reference.lyx \
 	Tutorial.lyx \
 	UserGuide.lyx

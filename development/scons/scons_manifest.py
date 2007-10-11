@@ -2047,7 +2047,7 @@ lib_doc_files = Split('''
     Extended.lyx
     FAQ.lyx
     Intro.lyx
-    LaTeXConfig.lyx.in
+    LaTeXConfig.lyx
     Reference.lyx
     Tutorial.lyx
     UserGuide.lyx

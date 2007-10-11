@@ -597,7 +597,7 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
     # version of textclass.lst, re-generate a default file.
     if not os.path.isfile('textclass.lst') or not check_config:
         # remove the files only if we want to regenerate
-        removeFiles(['textclass.lst', 'packages.lst', 'chkconfig.sed'])
+        removeFiles(['textclass.lst', 'packages.lst'])
         #
         # Then, generate a default textclass.lst. In case configure.py
         # fails, we still have something to start lyx.
@@ -697,59 +697,6 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
             shutil.move('packages.lst.tmp', 'packages.lst')
 
 
-def createLaTeXConfig():
-    ''' create LaTeXConfig.lyx '''
-    # if chkconfig.sed does not exist (because LaTeX did not run),
-    # then provide a standard version.
-    if not os.path.isfile('chkconfig.sed'):
-        writeToFile('chkconfig.sed', 's!@.*@!???!g\n')
-    print "creating packages.lst"
-    # if packages.lst does not exist (because LaTeX did not run),
-    # then provide a standard version.
-    if not os.path.isfile('packages.lst'):
-        writeToFile('packages.lst', '''
-### This file should contain the list of LaTeX packages that have been
-### recognized by LyX. Unfortunately, since configure could not find
-### your LaTeX2e program, the tests have not been run. Run ./configure.py
-### if you need to update it after a configuration change.
-''')
-    print 'creating doc/LaTeXConfig.lyx'
-    #
-    # This is originally done by sed, using a
-    # tex-generated file chkconfig.sed
-    ##sed -f chkconfig.sed ${srcdir}/doc/LaTeXConfig.lyx.in
-    ##  >doc/LaTeXConfig.lyx
-    # Now, we have to do it by hand (python).
-    #
-    # add to chekconfig.sed
-    writeToFile('chkconfig.sed', '''s!@chk_linuxdoc@!%s!g
-s!@chk_docbook@!%s!g
-    ''' % (chk_linuxdoc, chk_docbook) , append=True)
-    # process this sed file!!!!
-    lyxin = open( os.path.join(srcdir, 'doc', 'LaTeXConfig.lyx.in')).readlines()
-    # get the rules
-    p = re.compile(r's!(.*)!(.*)!g')
-    # process each sed replace.
-    for sed in open('chkconfig.sed').readlines():
-        if sed.strip() == '':
-            continue
-        try:
-            fr, to = p.match(sed).groups()
-            # if latex did not run, change all @name@ to '???'
-            if fr == '@.*@':
-                for line in range(len(lyxin)):
-                    lyxin[line] = re.sub('@.*@', to, lyxin[line])
-            else:
-                for line in range(len(lyxin)):
-                    lyxin[line] = lyxin[line].replace(fr, to)
-        except:  # wrong sed entry?
-            print "Wrong sed entry in chkconfig.sed: '" + sed + "'"
-            sys.exit(4)
-    # 
-    writeToFile( os.path.join('doc', 'LaTeXConfig.lyx'),
-        ''.join(lyxin))
-
-
 def checkModulesConfig():
   removeFiles(['lyxmodules.lst'])
 
@@ -824,7 +771,7 @@ def checkTeXAllowSpaces():
 def removeTempFiles():
     # Final clean-up
     if not lyx_keep_temps:
-        removeFiles(['chkconfig.sed', 'chkconfig.vars',  \
+        removeFiles(['chkconfig.vars',  \
             'wrap_chkconfig.ltx', 'wrap_chkconfig.log', \
             'chklayouts.tex', 'missfont.log', 
             'chklatex.ltx', 'chklatex.log'])
@@ -893,6 +840,5 @@ Options:
     checkOtherEntries()
     # --without-latex-config can disable lyx_check_config
     checkLatexConfig( lyx_check_config and LATEX != '', bool_docbook, bool_linuxdoc)
-    createLaTeXConfig()
     checkModulesConfig() #lyx_check_config and LATEX != '')
     removeTempFiles()

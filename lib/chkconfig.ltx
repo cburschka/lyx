@@ -58,7 +58,6 @@
   \immediate\write\layouts{"#2"   "#1"   "#3"   "#4"}}
 
 \newcommand{\AddVariable}[2]{
-  \immediate\write\sed{s!@chk_#1@!#2!g}
   \immediate\write\vars{chk_#1='#2'}}
 
 \newcommand{\AddPackage}[1]{
@@ -130,7 +129,6 @@
 % Initializes the files
 \typeout{\prefix Inspecting your LaTeX configuration.}
 \newwrite{\layouts} \immediate\openout \layouts = textclass.lst.tmp
-\newwrite{\sed} \immediate\openout \sed  = chkconfig.sed
 \newwrite{\vars} \immediate\openout \vars = chkconfig.vars
 \newwrite{\packages} \immediate\openout \packages = packages.lst.tmp
 
@@ -301,7 +299,6 @@
 
 % End of the LaTeX job
 \immediate\closeout\layouts
-\immediate\closeout\sed
 \immediate\closeout\vars
 \immediate\closeout\packages
 \typeout{\prefix Inspection done.}
