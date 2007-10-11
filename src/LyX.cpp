@@ -959,21 +959,23 @@ bool LyX::init()
 	//...and the modules
 	moduleList.load();
 
-	if (use_gui) {
-		// Set the language defined by the user.
-		//setGuiLanguage(lyxrc.gui_language);
+	// read keymap and ui files in batch mode as well
+	// because InsetInfo needs to know these to produce
+	// the correct output
 
-		// Set up bindings
-		pimpl_->toplevel_keymap_.reset(new KeyMap);
-		defaultKeyBindings(pimpl_->toplevel_keymap_.get());
-		pimpl_->toplevel_keymap_->read(lyxrc.bind_file);
+	// Set the language defined by the user.
+	//setGuiLanguage(lyxrc.gui_language);
 
-		pimpl_->lyxfunc_.initKeySequences(pimpl_->toplevel_keymap_.get());
+	// Set up bindings
+	pimpl_->toplevel_keymap_.reset(new KeyMap);
+	defaultKeyBindings(pimpl_->toplevel_keymap_.get());
+	pimpl_->toplevel_keymap_->read(lyxrc.bind_file);
 
-		// Read menus
-		if (!readUIFile(lyxrc.ui_file))
-			return false;
-	}
+	pimpl_->lyxfunc_.initKeySequences(pimpl_->toplevel_keymap_.get());
+
+	// Read menus
+	if (!readUIFile(lyxrc.ui_file))
+		return false;
 
 	if (lyxerr.debugging(Debug::LYXRC))
 		lyxrc.print();
@@ -1562,7 +1564,6 @@ ServerSocket & theServerSocket()
 
 KeyMap & theTopLevelKeymap()
 {
-	BOOST_ASSERT(use_gui);
 	return LyX::ref().topLevelKeymap();
 }
 
