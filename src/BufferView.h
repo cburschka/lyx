@@ -190,7 +190,7 @@ public:
 	bool checkDepm(Cursor & cur, Cursor & old);
 	/// sets cursor.
 	/// This is used when handling LFUN_MOUSE_PRESS.
-	bool mouseSetCursor(Cursor & cur);
+	bool mouseSetCursor(Cursor & cur, bool select = false);
 
 	/// sets the selection.
 	/* When \c backwards == false, set anchor

@@ -922,11 +922,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	// Single-click on work area
 	case LFUN_MOUSE_PRESS: {
 		// Right click on a footnote flag opens float menu
+		// FIXME: Why should we clear the selection in this case?
 		if (cmd.button() == mouse_button::button3)
 			cur.clearSelection();
 
+		bool do_selection = cmd.button() == mouse_button::button1
+			&& cmd.argument() == "region-select";
 		// Set the cursor
-		bool update = bv->mouseSetCursor(cur);
+		bool update = bv->mouseSetCursor(cur, do_selection);
 
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
