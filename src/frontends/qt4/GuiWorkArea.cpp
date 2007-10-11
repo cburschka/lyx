@@ -39,7 +39,8 @@
 #include <QLayout>
 #include <QMainWindow>
 #include <QPainter>
-#include <QPushButton>
+#include <QToolButton>
+#include <QPalette>
 #include <QScrollBar>
 #include <QTabBar>
 #include <QTimer>
@@ -697,16 +698,21 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 ////////////////////////////////////////////////////////////////////
 TabWorkArea::TabWorkArea(QWidget * parent): QTabWidget(parent)
 {
-	QPushButton * closeTabButton = new QPushButton(this);
+	QPalette pal = palette();
+	pal.setColor(QPalette::Active, QPalette::Button, pal.color(QPalette::Active, QPalette::Window));
+	pal.setColor(QPalette::Disabled, QPalette::Button, pal.color(QPalette::Disabled, QPalette::Window));
+	pal.setColor(QPalette::Inactive, QPalette::Button, pal.color(QPalette::Inactive, QPalette::Window));
+
+	QToolButton * closeTabButton = new QToolButton(this);
+    closeTabButton->setPalette(pal);
 	FileName const file = support::libFileSearch("images", "closetab", "png");
 	if (!file.empty()) {
 		QPixmap pm(toqstr(file.absFilename()));
 		closeTabButton->setIcon(QIcon(pm));
-		closeTabButton->setMaximumSize(pm.size());
-		closeTabButton->setFlat(true);
 	} else {
 		closeTabButton->setText("Close");
 	}
+	closeTabButton->setAutoRaise(true);
 	closeTabButton->setCursor(Qt::ArrowCursor);
 	closeTabButton->setToolTip(tr("Close tab"));
 	closeTabButton->setEnabled(true);
