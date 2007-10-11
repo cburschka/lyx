@@ -932,6 +932,60 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		flag.enabled(false);
 		break;
 
+	case LFUN_LAYOUT_TABULAR:
+		flag.enabled(cur.innerInsetOfType(Inset::TABULAR_CODE));
+		break;
+
+	case LFUN_LAYOUT:
+	case LFUN_LAYOUT_PARAGRAPH:
+		flag.enabled(cur.inset().forceDefaultParagraphs(cur.idx()));
+		break;
+
+	case LFUN_INSET_SETTINGS: {
+		Inset::Code code = cur.inset().lyxCode();
+		bool enable = false;
+		switch (code) {
+			case Inset::TABULAR_CODE:
+				enable = cmd.argument() == "tabular";
+				break;
+			case Inset::ERT_CODE:
+				enable = cmd.argument() == "ert";
+				break;
+			case Inset::FLOAT_CODE:
+				enable = cmd.argument() == "float";
+				break;
+			case Inset::WRAP_CODE:
+				enable = cmd.argument() == "wrap";
+				break;
+			case Inset::NOTE_CODE:
+				enable = cmd.argument() == "note";
+				break;
+			case Inset::BRANCH_CODE:
+				enable = cmd.argument() == "branch";
+				break;
+			case Inset::BOX_CODE:
+				enable = cmd.argument() == "box";
+				break;
+			case Inset::LISTINGS_CODE:
+				enable = cmd.argument() == "listings";
+				break;
+			default:
+				break;
+		}
+		flag.enabled(enable);
+		break;
+	}
+
+	case LFUN_DIALOG_SHOW_NEW_INSET:
+		flag.enabled(cur.inset().lyxCode() != Inset::ERT_CODE &&
+			cur.inset().lyxCode() != Inset::LISTINGS_CODE);
+		if (cur.inset().lyxCode() == Inset::CAPTION_CODE) {
+			FuncStatus flag;
+			if (cur.inset().getStatus(cur, cmd, flag))
+				return flag;
+		}
+		break;
+
 	default:
 		flag.enabled(false);
 	}
