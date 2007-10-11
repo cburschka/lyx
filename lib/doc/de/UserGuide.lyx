@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -182,7 +182,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 6.
+letzte Änderung: 10.
  Oktober 2007
 \end_layout
 
@@ -33856,7 +33856,8 @@ beim\InsetSpace ~
 Wechsel\InsetSpace ~
 der\InsetSpace ~
 Dokumentklasse\InsetSpace ~
-zurücksetzen ???
+zurücksetzen entfernt beim Wechsel
+ der Dokumentklasse alle von Hand gesetzten Dokumentklassen-Optionen.
 \end_layout
 
 \begin_layout Description
@@ -34177,9 +34178,20 @@ Im Unterfenster
 Kopierer
 \family default
 \series default
- finden Sie ???.
- Wenn Sie ein Element anklicken, können Sie rechts die folgenden Einträge
- vornehmen:
+ finden Sie eine Liste der definierten Kopierer.
+ Da alle Konvertierungen von einem Format in ein anderes im temporären Verzeichn
+is von LyX stattfinden, ist es manchmal notwendig, eine Datei zu modifizieren,
+ bevor sie ins temporäre Verzeichnis kopiert wird, damit die Konvertierung
+ stattfinden kann.
+ Das macht ein Kopierer.
+\end_layout
+
+\begin_layout Standard
+Im Abschnitt Kopierer im 
+\emph on
+Anpassung
+\emph default
+-Handbuch finden Sie weitere Informationen über Konverter.
 \end_layout
 
 \begin_layout Description
