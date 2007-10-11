@@ -80,8 +80,6 @@ Var UserName
 !insertmacro LineFind
 !include "WordFunc.nsh"
 !insertmacro WordReplace
-!include "registry.nsh"
-!insertmacro COPY_REGISTRY_KEY
 
 # Set of various macros and functions
 !include "LyXUtils.nsh"

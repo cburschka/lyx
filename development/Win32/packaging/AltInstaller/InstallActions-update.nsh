@@ -226,50 +226,52 @@ Function RefreshRegUninst
   # ImageMagick
   ReadRegStr $0 SHCTX "Software\ImageMagick" "OnlyWithLyX"
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
-   # set the new path
    WriteRegStr HKLM "SOFTWARE\ImageMagick" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
-   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "BinPath"
+   # set the new path
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\Current" "BinPath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0 # macro from WordFunc.nsh
    WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "BinPath" "$0"
-   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "CoderModulesPath"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\Current" "CoderModulesPath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
    WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "$0"
-   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "ConfigurePath"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\Current" "ConfigurePath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
    WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "ConfigurePath" "$0"
-   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "FilterModulesPath"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\Current" "FilterModulesPath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
    WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "$0"
-   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "LibPath"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\Current" "LibPath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
    WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "LibPath" "$0"
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
-   
-   ${COPY_REGISTRY_KEY} HKLM "Software\ImageMagick\${ImageMagickVersion_Old}" \
-                        HKLM "Software\ImageMagick\${ImageMagickVersion}" # macro from registry.nsh
-   DeleteRegKey HKLM "Software\ImageMagick\${ImageMagickVersion_Old}"
    # set the new path
-   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "BinPath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "$0"
-   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath"
-   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}\Q:16" "+" $0
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "$0"
-   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "BinPath" "$0"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "CoderModulesPath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "$0"
-   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "CoderModulesPath" "$0"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "ConfigurePath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "$0"
-   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "ConfigurePath" "$0"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "FilterModulesPath"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
-   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "$0"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "FilterModulesPath" "$0"
+   ReadRegStr $0 HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "LibPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion_Old}\Q:16" "LibPath" "$0"
   ${endif}
   
   # Ghostscript and GSview
   ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX"
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
-   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+  WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+   # set the new path
+   ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion_Old}" "GS_DLL"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion_Old}" "GS_DLL" "$0"
+   ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion_Old}" "GS_LIB"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion_Old}" "GS_LIB" "$0"
   ${endif}
 
 FunctionEnd
