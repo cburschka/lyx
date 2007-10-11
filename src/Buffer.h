@@ -12,8 +12,6 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include "DocIterator.h"
-
 #include "support/FileName.h"
 #include "support/limited_stack.h"
 #include "support/types.h"
@@ -29,11 +27,11 @@
 namespace lyx {
 
 class BufferParams;
+class EmbeddedFiles;
 class ErrorItem;
 class ErrorList;
 class FuncRequest;
 class Inset;
-class InsetText;
 class Font;
 class Lexer;
 class LyXRC;
@@ -366,9 +364,14 @@ public:
 	///
 	void insertMacro(docstring const & name, MacroData const & data);
 
-	///
+	/// Replace the inset contents for insets which Inset::Code is equal
+	/// to the passed \p inset_code.
+	/// FIXME: we pass Inset::Code as an int in order to avoid the inclusion
+	/// of "Inset.h". It would be better to put Inset::Code in its own
+	/// header.
 	void changeRefsIfUnique(docstring const & from, docstring const & to,
-		Inset::Code code);
+		int inset_code);
+
 /// get source code (latex/docbook) for some paragraphs, or all paragraphs
 /// including preamble
 	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end, bool full_source);
