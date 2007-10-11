@@ -419,8 +419,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
 
-	Cursor & cur = view()->cursor();
-
 	/* In LyX/Mac, when a dialog is open, the menus of the
 	   application can still be accessed without giving focus to
 	   the main window. In this case, we want to disable the menu
@@ -472,6 +470,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		return flag;
 	}
 
+	Cursor * cur = view()? &view()->cursor(): 0;
+
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
 	// -- And I'd rather let an inset decide which LFUNs it is willing
@@ -503,12 +503,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		enable = cur.innerInsetOfType(Inset::TABULAR_CODE);
+		enable = cur? cur->innerInsetOfType(Inset::TABULAR_CODE) : false;
 		break;
 
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH:
-		enable = !cur.inset().forceDefaultParagraphs(cur.idx());
+		enable = cur? !cur->inset().forceDefaultParagraphs(cur->idx()) : false;
 		break;
 
 	case LFUN_VC_REGISTER:
@@ -533,7 +533,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = false;
 		if (!cur)
 			break;
-		Inset::Code code = cur.inset().lyxCode();
+		Inset::Code code = cur->inset().lyxCode();
 		switch (code) {
 			case Inset::TABULAR_CODE:
 				enable = cmd.argument() == "tabular";
@@ -566,12 +566,15 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_INSET_APPLY: {
+		enable = false;
+		if (!cur)
+			break;
 		string const name = cmd.getArg(0);
 		Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
 		if (inset) {
 			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 			FuncStatus fs;
-			if (!inset->getStatus(cur, fr, fs)) {
+			if (!inset->getStatus(*cur, fr, fs)) {
 				// Every inset is supposed to handle this
 				BOOST_ASSERT(false);
 			}
@@ -588,6 +591,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.setOnOff(lyx_view_->getDialogs().visible(cmd.getArg(0)));
 		// fall through to set "enable"
 	case LFUN_DIALOG_SHOW: {
+		enable = false;
+		if (!cur)
+			break;
 		string const name = cmd.getArg(0);
 		if (!buf)
 			enable = name == "aboutlyx"
@@ -598,8 +604,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = Exporter::isExportable(*buf, "dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character")
-			enable = cur.inset().lyxCode() != Inset::ERT_CODE &&
-				cur.inset().lyxCode() != Inset::LISTINGS_CODE;
+			enable = cur->inset().lyxCode() != Inset::ERT_CODE &&
+				cur->inset().lyxCode() != Inset::LISTINGS_CODE;
 		else if (name == "latexlog")
 			enable = isFileReadable(FileName(buf->getLogName().second));
 		else if (name == "spellchecker")
@@ -614,11 +620,14 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		enable = cur.inset().lyxCode() != Inset::ERT_CODE &&
-			cur.inset().lyxCode() != Inset::LISTINGS_CODE;
-		if (cur.inset().lyxCode() == Inset::CAPTION_CODE) {
+		enable = false;
+		if (!cur)
+			break;
+		enable = cur->inset().lyxCode() != Inset::ERT_CODE &&
+			cur->inset().lyxCode() != Inset::LISTINGS_CODE;
+		if (cur->inset().lyxCode() == Inset::CAPTION_CODE) {
 			FuncStatus flag;
-			if (cur.inset().getStatus(cur, cmd, flag))
+			if (cur->inset().getStatus(*cur, cmd, flag))
 				return flag;
 		}
 		break;
@@ -755,7 +764,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	default:
-		if (!getLocalStatus(cur, cmd, flag))
+		enable = false;
+		if (!cur)
+			break;
+		if (!getLocalStatus(*cur, cmd, flag))
 			flag = view()->getStatus(cmd);
 	}
 
@@ -771,7 +783,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	// Are we in a DELETED change-tracking region?
-	if (buf && lookupChangeType(cur, true) == Change::DELETED
+	if (buf && cur 
+		&& lookupChangeType(*cur, true) == Change::DELETED
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		flag.message(from_utf8(N_("This portion of the document is deleted.")));
