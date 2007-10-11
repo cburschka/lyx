@@ -209,6 +209,7 @@ dist_doc_DATA = \
 	Intro.lyx \
 	LaTeXConfig.lyx \
 	Reference.lyx \
+	Shortcuts.lyx \
 	Tutorial.lyx \
 	UserGuide.lyx
 

@@ -2049,6 +2049,7 @@ lib_doc_files = Split('''
     Intro.lyx
     LaTeXConfig.lyx
     Reference.lyx
+    Shortcuts.lyx
     Tutorial.lyx
     UserGuide.lyx
 ''')
