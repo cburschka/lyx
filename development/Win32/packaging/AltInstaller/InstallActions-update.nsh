@@ -264,7 +264,7 @@ Function RefreshRegUninst
   # Ghostscript and GSview
   ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX"
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
-  WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+   WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
    # set the new path
    ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion_Old}" "GS_DLL"
    ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
