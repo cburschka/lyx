@@ -101,7 +101,7 @@ Section "-Installation actions" SecInstallation
   WriteUninstaller "${PRODUCT_UNINSTALL_EXE}"
   
   # test if Python is installed
-  # only use an existing python when it is version 2.5 because many Compaq and Dell PC are delivered
+  # only use an existing python when it is version 2.5 because some Compaq and Dell PC are delivered
   # with outdated Python interpreters
   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.5\InstallPath" ""
   ${if} $PythonPath == ""
@@ -226,7 +226,44 @@ Function RefreshRegUninst
   # ImageMagick
   ReadRegStr $0 SHCTX "Software\ImageMagick" "OnlyWithLyX"
   ${if} $0 == "Yes${PRODUCT_VERSION_SHORT_OLD}"
+   # set the new path
    WriteRegStr HKLM "SOFTWARE\ImageMagick" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
+   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "BinPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0 # macro from WordFunc.nsh
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "BinPath" "$0"
+   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "CoderModulesPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "CoderModulesPath" "$0"
+   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "ConfigurePath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "ConfigurePath" "$0"
+   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "FilterModulesPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "FilterModulesPath" "$0"
+   ReadRegStr $0 HKLM "Software\ImageMagick\Current" "LibPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "LibPath" "$0"
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\Current" "Version" "${ImageMagickVersion}"
+   
+   ${COPY_REGISTRY_KEY} HKLM "Software\ImageMagick\${ImageMagickVersion_Old}" \
+                        HKLM "Software\ImageMagick\${ImageMagickVersion}" # macro from registry.nsh
+   DeleteRegKey HKLM "Software\ImageMagick\${ImageMagickVersion_Old}"
+   # set the new path
+   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "$0"
+   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}\Q:16" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "$0"
+   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "$0"
+   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "FilterModulesPath" "$0"
+   ReadRegStr $0 HKLM "Software\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath"
+   ${WordReplace} $0 "${PRODUCT_VERSION_OLD}" "LyX ${PRODUCT_VERSION}" "+" $0
+   WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "LibPath" "$0"
   ${endif}
   
   # Ghostscript and GSview
