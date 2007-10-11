@@ -78,6 +78,7 @@
 
 \bind "C-k"	"line-delete-forward"
 \bind "C-l"	"screen-recenter"
+\bind "C-S-I"			"info-insert"
 
 # Toggle: in text mode, switch to math, and vice versa. Also C-t.
 \bind "C-m"	"math-mode"
