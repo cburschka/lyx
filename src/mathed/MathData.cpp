@@ -437,11 +437,6 @@ void MathData::setXY(BufferView & bv, int x, int y) const
 
 Dimension const & MathData::dimension(BufferView const & bv) const
 {
-	if (empty()) {
-		static Dimension dummy;
-		return dummy;
-	}
-
 	return bv.coordCache().getArrays().dim(this);
 }
 
