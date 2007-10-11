@@ -1056,7 +1056,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			bool const align =
 				cur.bv().buffer().params().use_amsmath == BufferParams::package_on;
 			mutate(align ? hullAlign : hullEqnArray);
-			cur.idx() = 0;
+			cur.idx() = nrows() * ncols() - 1;
 			cur.pos() = cur.lastpos();
 		}
 		InsetMathGrid::doDispatch(cur, cmd);
