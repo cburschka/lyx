@@ -33,6 +33,8 @@ public:
 
 private Q_SLOTS:
 	void updateContents();
+	// copy log to clipboard
+	void on_copyPB_clicked();
 
 private:
 	void closeEvent(QCloseEvent * e);

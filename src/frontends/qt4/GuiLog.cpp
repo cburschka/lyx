@@ -231,6 +231,12 @@ void GuiLog::getContents(std::ostream & ss) const
 }
 
 
+void GuiLog::on_copyPB_clicked()
+{
+	qApp->clipboard()->setText(logTB->toPlainText());
+}
+
+
 Dialog * createGuiLog(LyXView & lv) { return new GuiLog(lv); }
 
 

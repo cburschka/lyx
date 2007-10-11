@@ -1,12 +1,15 @@
 <ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
  <class>LogUi</class>
  <widget class="QDialog" name="LogUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
-    <height>328</height>
+    <width>421</width>
+    <height>359</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,66 +25,64 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <widget class="QTextBrowser" name="logTB" />
-   </item>
    <item row="1" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+    <widget class="QPushButton" name="copyPB" >
+     <property name="text" >
+      <string>Copy to Clip&amp;board</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
      </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="updatePB" >
-       <property name="toolTip" >
-        <string>Update the display</string>
-       </property>
-       <property name="text" >
-        <string>&amp;Update</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>&amp;Close</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>111</width>
+       <height>26</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="3" >
+    <widget class="QPushButton" name="closePB" >
+     <property name="text" >
+      <string>&amp;Close</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QPushButton" name="updatePB" >
+     <property name="toolTip" >
+      <string>Update the display</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Update</string>
+     </property>
+     <property name="default" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="4" >
+    <widget class="QTextBrowser" name="logTB" />
    </item>
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>logTB</tabstop>
+  <tabstop>copyPB</tabstop>
   <tabstop>updatePB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
