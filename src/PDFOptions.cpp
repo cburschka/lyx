@@ -70,7 +70,7 @@ void PDFOptions::writeFile(ostream & os) const
 	os << "\\pdf_bookmarks " << convert<string>(bookmarks) << '\n';
 	os << "\\pdf_bookmarksnumbered " << convert<string>(bookmarksnumbered) << '\n';
 	os << "\\pdf_bookmarksopen " << convert<string>(bookmarksopen) << '\n';
-	os << "\\pdf_bookmarksopenlevel \"" << bookmarksopenlevel << "\"\n";
+	os << "\\pdf_bookmarksopenlevel " << bookmarksopenlevel << '\n';
 	
 	os << "\\pdf_breaklinks "  << convert<string>(breaklinks)  << '\n';
 	os << "\\pdf_pdfborder "   << convert<string>(pdfborder)   << '\n';
