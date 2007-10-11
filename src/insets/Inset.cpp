@@ -103,6 +103,7 @@ static TranslatorMap const build_translator()
 		InsetName("vspace", Inset::VSPACE_CODE),
 		InsetName("mathmacroarg", Inset::MATHMACROARG_CODE),
 		InsetName("listings", Inset::LISTINGS_CODE),
+		InsetName("info", Inset::INFO_CODE),
 	};
 
 	std::size_t const insetnames_size =

@@ -402,8 +402,9 @@ enum kb_action {
 	LFUN_LAYOUT_MODULES_CLEAR,       // rgh, 20070825
 	LFUN_LAYOUT_MODULE_ADD,          // rgh, 20070825
 	LFUN_LAYOUT_RELOAD,              // rgh, 20070903
-	LFUN_MASTER_BUFFER_VIEW,	 // Tommaso, 20070920
-	LFUN_MASTER_BUFFER_UPDATE,	 // Tommaso, 20070920
+	LFUN_MASTER_BUFFER_VIEW,         // Tommaso, 20070920
+	LFUN_MASTER_BUFFER_UPDATE,       // Tommaso, 20070920
+	LFUN_INFO_INSERT,                // bpeng, 20071007
 
 	LFUN_LASTACTION                  // end of the table
 };

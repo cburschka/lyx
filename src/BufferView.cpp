@@ -867,6 +867,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
+	case LFUN_INFO_INSERT:
 	case LFUN_PARAGRAPH_GOTO:
 	// FIXME handle non-trivially
 	case LFUN_OUTLINE_UP:

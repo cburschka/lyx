@@ -376,6 +376,7 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", Noop },
 		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop },
 		{ LFUN_LAYOUT_RELOAD, "layout-reload", Noop },
+		{ LFUN_INFO_INSERT, "info-insert", Noop },
 
 		{ LFUN_NOACTION, "", Noop }
 	};

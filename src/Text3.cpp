@@ -58,6 +58,7 @@
 #include "insets/InsetQuotes.h"
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetText.h"
+#include "insets/InsetInfo.h"
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -1113,7 +1114,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-
+	case LFUN_INFO_INSERT: {
+		if (!cur.selection())
+			break;
+		Inset * inset = createInset(&cur.bv(), cmd);
+		if (!inset)
+			break;
+		// use selected text as info to avoid a separate UI
+		docstring ds = cur.selectionAsString(false);
+		cutSelection(cur, true, false);
+		insertInset(cur, inset);
+		static_cast<InsetInfo *>(inset)->setInfo(to_utf8(ds));
+		cur.posRight();
+		break;
+	}
 #if 0
 	case LFUN_LIST_INSERT:
 	case LFUN_THEOREM_INSERT:
@@ -1705,6 +1719,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_LABEL_INSERT:
 		code = Inset::LABEL_CODE;
+		break;
+	case LFUN_INFO_INSERT:
+		code = Inset::INFO_CODE;
 		break;
 	case LFUN_OPTIONAL_INSERT:
 		code = Inset::OPTARG_CODE;

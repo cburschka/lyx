@@ -367,7 +367,9 @@ public:
 		///
 		PAGEBREAK_CODE,
 		///
-		LISTINGS_CODE
+		LISTINGS_CODE,
+		///
+		INFO_CODE,
 	};
 
 	/** returns the Code corresponding to the \c name.

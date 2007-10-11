@@ -523,6 +523,8 @@ liblyxinsets_la_SOURCES = \
 	insets/InsetInclude.h \
 	insets/InsetIndex.cpp \
 	insets/InsetIndex.h \
+	insets/InsetInfo.cpp \
+	insets/InsetInfo.h \
 	insets/InsetLabel.cpp \
 	insets/InsetLabel.h \
 	insets/InsetLine.cpp \

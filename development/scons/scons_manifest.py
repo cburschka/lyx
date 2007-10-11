@@ -1028,6 +1028,7 @@ src_insets_header_files = Split('''
     InsetHFill.h
     InsetInclude.h
     InsetIndex.h
+    InsetInfo.h
     InsetLabel.h
     InsetLine.h
     InsetListings.h
@@ -1083,6 +1084,7 @@ src_insets_files = Split('''
     InsetHFill.cpp
     InsetInclude.cpp
     InsetIndex.cpp
+    InsetInfo.cpp
     InsetLabel.cpp
     InsetLine.cpp
     InsetListings.cpp

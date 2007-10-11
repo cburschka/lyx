@@ -38,6 +38,7 @@
 #include "insets/InsetHFill.h"
 #include "insets/InsetInclude.h"
 #include "insets/InsetIndex.h"
+#include "insets/InsetInfo.h"
 #include "insets/InsetNomencl.h"
 #include "insets/InsetLabel.h"
 #include "insets/InsetLine.h"
@@ -221,6 +222,8 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 		case LFUN_ENVIRONMENT_INSERT:
 			return new InsetEnvironment(params, cmd.argument());
 
+		case LFUN_INFO_INSERT:
+			return new InsetInfo(params, to_utf8(cmd.argument()));
 #if 0
 		case LFUN_LIST_INSERT:
 			return new InsetList;
@@ -497,6 +500,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetIndex(buf.params()));
 		} else if (tmptok == "FloatList") {
 			inset.reset(new InsetFloatList);
+		} else if (tmptok == "Info") {
+			inset.reset(new InsetInfo(buf.params()));
 		} else {
 			lyxerr << "unknown Inset type '" << tmptok
 			       << "'" << std::endl;
