@@ -455,6 +455,31 @@ def revert_japanese_encoding(document):
         document.header[k] = "\\inputencoding UTF8"
 
 
+def revert_inset_info(document):
+    'Replace info inset with its content'
+    i = 0
+    while 1:
+        i = find_token(document.body, '\\begin_inset Info', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            # should not happen
+            document.warning("Malformed LyX document: Could not find end of Info inset.")
+        type = 'unknown'
+        arg = ''
+        for k in range(i, j+1):
+            if document.body[k].startswith("arg"):
+                arg = document.body[k][3:].strip().strip('"')
+            if document.body[k].startswith("type"):
+                type = document.body[k][4:].strip().strip('"')
+        # I think there is a newline after \\end_inset, which should be removed.
+        if document.body[j + 1].strip() == "":
+            document.body[i : (j + 2)] = [type + ':' + arg]
+        else:
+            document.body[i : (j + 1)] = [type + ':' + arg]
+
+
 ##
 # Conversion hub
 #
@@ -475,10 +500,12 @@ convert = [[277, [fix_wrong_tables]],
            [289, [convert_latexcommand_index]],
            [290, []],
            [291, []],
-           [292, []]
+           [292, []],
+           [293, []]
           ]
 
-revert =  [[291, [revert_japanese, revert_japanese_encoding]],
+revert =  [[292, [revert_inset_info]],
+           [291, [revert_japanese, revert_japanese_encoding]],
            [290, [revert_vietnamese]],
            [289, [revert_wraptable]],
            [288, [revert_latexcommand_index]],

@@ -80,7 +80,7 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_3",     [221], minor_versions("1.3" , 7)),
                    ("1_4", range(222,246), minor_versions("1.4" , 5)),
                    ("1_5", range(246,277), minor_versions("1.5" , 1)),
-                   ("1_6", range(277,293), minor_versions("1.6" , 0))] # Uwe Stöhr, Japanese
+                   ("1_6", range(277,294), minor_versions("1.6" , 0))]
 
 
 def formats_list():
