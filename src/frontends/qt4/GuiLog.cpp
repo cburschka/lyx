@@ -22,6 +22,7 @@
 #include <QCloseEvent>
 #include <QTextBrowser>
 #include <QSyntaxHighlighter>
+#include <QClipboard>
 
 #include <fstream>
 #include <sstream>
