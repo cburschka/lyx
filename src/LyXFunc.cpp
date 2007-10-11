@@ -314,6 +314,17 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 }
 
 
+namespace {
+void restartCursor(LyXView * lv)
+{
+	/* When we move around, or type, it's nice to be able to see
+	 * the cursor immediately after the keypress.
+	 */
+	if (lv && lv->currentWorkArea())
+		lv->currentWorkArea()->startBlinkingCursor();
+}
+}
+
 void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 {
 	LYXERR(Debug::KEY) << "KeySym is " << keysym.getSymbolName() << endl;
@@ -322,11 +333,13 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	if (!keysym.isOK()) {
 		LYXERR(Debug::KEY) << "Empty kbd action (probably composing)"
 				   << endl;
+		restartCursor(lyx_view_);
 		return;
 	}
 
 	if (keysym.isModifier()) {
 		LYXERR(Debug::KEY) << "isModifier true" << endl;
+		restartCursor(lyx_view_);
 		return;
 	}
 
@@ -396,6 +409,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		} else {
 			LYXERR(Debug::KEY) << "Unknown, !isText() - giving up" << endl;
 			lyx_view_->message(_("Unknown function."));
+			restartCursor(lyx_view_);
 			return;
 		}
 	}
@@ -411,6 +425,8 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	} else {
 		dispatch(func);
 	}
+
+	restartCursor(lyx_view_);
 }
 
 

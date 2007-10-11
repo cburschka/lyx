@@ -171,11 +171,6 @@ void WorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 
 	theLyXFunc().setLyXView(lyx_view_);
 	theLyXFunc().processKeySym(key, mod);
-
-	/* When we move around, or type, it's nice to be able to see
-	 * the cursor immediately after the keypress.
-	 */
-	startBlinkingCursor();
 }
 
 
