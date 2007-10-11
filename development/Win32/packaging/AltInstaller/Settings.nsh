@@ -44,6 +44,7 @@ BrandingText "LyXWinInstaller v3.20 - ${INSTALLER_VERSION}"
  !define PRODUCT_VERSION_SHORT_OLD "151"
  !define JabRefVersion "2.2" # could be an older version
  !define ImageMagickVersion_Old "6.3.5" # could be an older version
+ !define GhostscriptVersion_Old "8.60"
  !define MiKTeXDeliveredVersion "2.6" # could be an older version
 !endif
 
