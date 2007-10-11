@@ -276,11 +276,18 @@ void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 
 docstring const KeyMap::printbindings(FuncRequest const & func) const
 {
-	odocstringstream res;
 	Bindings bindings = findbindings(func);
-	for (Bindings::const_iterator cit = bindings.begin();
-	     cit != bindings.end() ; ++cit)
-		res << '[' << cit->print(true) << ']';
+	if (bindings.empty())
+		return docstring();
+	
+	odocstringstream res;
+	Bindings::const_iterator cit = bindings.begin();
+	Bindings::const_iterator cit_end = bindings.end();
+	// prin the first item
+	res << cit->print(true);
+	// more than one shortcuts?
+	for (++cit; cit != cit_end; ++cit)
+		res << ", " << cit->print(true);
 	return res.str();
 }
 
