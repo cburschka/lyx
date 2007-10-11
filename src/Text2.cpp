@@ -47,6 +47,7 @@
 #include "ParIterator.h"
 #include "Server.h"
 #include "ServerSocket.h"
+#include "TextMetrics.h"
 #include "Undo.h"
 #include "VSpace.h"
 

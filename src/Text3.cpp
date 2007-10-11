@@ -43,6 +43,7 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "TextMetrics.h"
 #include "Undo.h"
 #include "VSpace.h"
 #include "ParIterator.h"

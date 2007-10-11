@@ -29,18 +29,6 @@ class Paragraph;
 
 void lyxbreaker(void const * data, const char * hint, int size);
 
-class Point {
-public:
-	Point()
-		: x_(0), y_(0)
-	{}
-
-	Point(int x, int y);
-
-	int x_, y_;
-};
-
-
 struct Geometry {
 	Point pos;
 	Dimension dim;

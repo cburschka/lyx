@@ -77,6 +77,16 @@ bool operator!=(Dimension const & a, Dimension const & b)
 	return a.wid != b.wid || a.asc != b.asc || a.des != b.des ;
 }
 
+class Point {
+public:
+	Point()
+		: x_(0), y_(0)
+	{}
+
+	Point(int x, int y);
+
+	int x_, y_;
+};
 
 } // namespace lyx
 

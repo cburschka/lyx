@@ -17,6 +17,7 @@
 #include "gettext.h"
 #include "lengthcommon.h"
 #include "Text.h"
+#include "TextMetrics.h" // for defaultRowHeight()
 
 #include "support/convert.h"
 #include "support/lstrings.h"

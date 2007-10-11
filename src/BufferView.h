@@ -15,12 +15,10 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
-#include "CoordCache.h"
-#include "Cursor.h"
-#include "MetricsInfo.h"
-#include "TextMetrics.h"
+#include "Dimension.h"
 #include "update_flags.h"
 
+#include "support/docstring.h"
 #include "support/types.h"
 
 #include <boost/noncopyable.hpp>
@@ -38,16 +36,19 @@ namespace frontend { class GuiBufferViewDelegate; }
 
 class Buffer;
 class Change;
+class CoordCache;
+class Cursor;
 class DocIterator;
 class FuncRequest;
 class FuncStatus;
 class Intl;
-class Cursor;
-class Text;
+class Inset;
 class ParIterator;
 class ParagraphMetrics;
+class Text;
+class TextMetrics;
 class ViewMetricsInfo;
- 
+
 enum CursorStatus {
 	CUR_INSIDE,
 	CUR_ABOVE,
@@ -216,9 +217,9 @@ public:
 	ParagraphMetrics const & parMetrics(Text const *, pit_type) const;
 
 	///
-	CoordCache & coordCache() { return coord_cache_; }
+	CoordCache & coordCache();
 	///
-	CoordCache const & coordCache() const { return coord_cache_; }
+	CoordCache const & coordCache() const;
 
 	///
 	Point getPos(DocIterator const & dit, bool boundary) const;
@@ -228,9 +229,9 @@ public:
 	void draw(frontend::Painter & pain);
 
 	/// get this view's keyboard map handler.
-	Intl & getIntl() { return *intl_.get(); }
+	Intl & getIntl();
 	///
-	Intl const & getIntl() const { return *intl_.get(); }
+	Intl const & getIntl() const;
 
 	//
 	// Messages to the GUI
@@ -259,6 +260,7 @@ public:
 	docstring contentsOfPlaintextFile(std::string const & f, bool asParagraph);
 	// Insert plain text file (if filename is empty, prompt for one)
 	void insertPlaintextFile(std::string const & fileName, bool asParagraph);
+
 private:
 	// the position relative to (0, baseline) of outermost paragraph
 	Point coordOffset(DocIterator const & dit, bool boundary) const;
@@ -281,51 +283,15 @@ private:
 	///
 	int height_;
 	///
-	ScrollbarParameters scrollbarParameters_;
-
-	///
-	ViewMetricsInfo metrics_info_;
-	///
-	CoordCache coord_cache_;
-	///
 	Buffer & buffer_;
 
-	/// Estimated average par height for scrollbar.
-	int wh_;
 	///
 	void menuInsertLyXFile(std::string const & filen);
 
-	/// this is used to handle XSelection events in the right manner.
-	struct {
-		CursorSlice cursor;
-		CursorSlice anchor;
-		bool set;
-	} xsel_cache_;
-	///
-	Cursor cursor_;
-	///
-	bool multiparsel_cache_;
-	///
-	pit_type anchor_ref_;
-	///
-	int offset_ref_;
-	///
 	void updateOffsetRef();
-	///
-	bool need_centering_;
 
-	/// keyboard mapping object.
-	boost::scoped_ptr<Intl> const intl_;
-
-	/// last visited inset (kept to send setMouseHover(false) )
-	Inset * last_inset_;
-
-	/// A map from a Text to the associated text metrics
-	typedef std::map<Text const *, TextMetrics> TextMetricsCache;
-	mutable TextMetricsCache text_metrics_;
-
-	// Whom to notify. Not owned, so don't delete.
-	frontend::GuiBufferViewDelegate * gui_;
+	struct BufferViewPrivate;
+	BufferViewPrivate & d;
 };
 
 /// some space for drawing the 'nested' markers (in pixel)

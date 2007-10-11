@@ -21,6 +21,7 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "CoordCache.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "DispatchResult.h"
@@ -45,12 +46,14 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "Session.h"
-#include "TexRow.h"
 #include "Text.h"
 #include "TextClass.h"
+#include "TextMetrics.h"
+#include "TexRow.h"
 #include "Undo.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"
+
 
 #include "insets/InsetBibtex.h"
 #include "insets/InsetCommand.h" // ChangeRefs
@@ -334,6 +337,9 @@ void outline(OutlineOp mode, Cursor & cur)
 	}
 }
 
+/// A map from a Text to the associated text metrics
+typedef std::map<Text const *, TextMetrics> TextMetricsCache;
+
 } // anon namespace
 
 
@@ -343,20 +349,66 @@ void outline(OutlineOp mode, Cursor & cur)
 //
 /////////////////////////////////////////////////////////////////////
 
+struct BufferView::BufferViewPrivate
+{
+	BufferViewPrivate(BufferView & bv): wh_(0), cursor_(bv),
+		multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
+		need_centering_(false), last_inset_(0), gui_(0)
+	{}
+
+	///
+	ScrollbarParameters scrollbarParameters_;
+	///
+	ViewMetricsInfo metrics_info_;
+	///
+	CoordCache coord_cache_;
+
+	/// Estimated average par height for scrollbar.
+	int wh_;
+	/// this is used to handle XSelection events in the right manner.
+	struct {
+		CursorSlice cursor;
+		CursorSlice anchor;
+		bool set;
+	} xsel_cache_;
+	///
+	Cursor cursor_;
+	///
+	bool multiparsel_cache_;
+	///
+	pit_type anchor_ref_;
+	///
+	int offset_ref_;
+	///
+	bool need_centering_;
+
+	/// keyboard mapping object.
+	Intl intl_;
+
+	/// last visited inset.
+	/** kept to send setMouseHover(false).
+	  * Not owned, so don't delete.
+	  */
+	Inset * last_inset_;
+
+	mutable TextMetricsCache text_metrics_;
+
+	/// Whom to notify.
+	/** Not owned, so don't delete.
+	  */
+	frontend::GuiBufferViewDelegate * gui_;
+};
+
 
 BufferView::BufferView(Buffer & buf)
-	: width_(0), height_(0), buffer_(buf), wh_(0),
-	  cursor_(*this),
-	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
-	  need_centering_(false), intl_(new Intl), last_inset_(0),
-	  gui_(0)
+	: width_(0), height_(0), buffer_(buf), d(*new BufferViewPrivate(*this))
 {
-	xsel_cache_.set = false;
-	intl_->initKeyMapper(lyxrc.use_kbmap);
+	d.xsel_cache_.set = false;
+	d.intl_.initKeyMapper(lyxrc.use_kbmap);
 
-	cursor_.push(buffer_.inset());
-	cursor_.resetAnchor();
-	cursor_.setCurrentFont();
+	d.cursor_.push(buffer_.inset());
+	d.cursor_.resetAnchor();
+	d.cursor_.setCurrentFont();
 
 	if (graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(buffer_);
@@ -372,7 +424,33 @@ BufferView::~BufferView()
 	// restore to the left of the top level inset.
 	LyX::ref().session().lastFilePos().save(
 		support::FileName(buffer_.fileName()),
-		boost::tie(cursor_.bottom().pit(), cursor_.bottom().pos()) );
+		boost::tie(d.cursor_.bottom().pit(), d.cursor_.bottom().pos()) );
+
+	delete &d;
+}
+
+
+Intl & BufferView::getIntl()
+{
+	return d.intl_;
+}
+
+
+Intl const & BufferView::getIntl() const
+{
+	return d.intl_;
+}
+
+
+CoordCache & BufferView::coordCache()
+{
+	return d.coord_cache_;
+}
+
+
+CoordCache const & BufferView::coordCache() const
+{
+	return d.coord_cache_;
 }
 
 
@@ -390,12 +468,12 @@ Buffer const & BufferView::buffer() const
 
 bool BufferView::fitCursor()
 {
-	if (cursorStatus(cursor_) == CUR_INSIDE) {
+	if (cursorStatus(d.cursor_) == CUR_INSIDE) {
 		frontend::FontMetrics const & fm =
-			theFontMetrics(cursor_.getFont());
+			theFontMetrics(d.cursor_.getFont());
 		int const asc = fm.maxAscent();
 		int const des = fm.maxDescent();
-		Point const p = getPos(cursor_, cursor_.boundary());
+		Point const p = getPos(d.cursor_, d.cursor_.boundary());
 		if (p.y_ - asc >= 0 && p.y_ + des < height_)
 			return false;
 	}
@@ -406,12 +484,12 @@ bool BufferView::fitCursor()
 
 bool BufferView::multiParSel()
 {
-	if (!cursor_.selection())
+	if (!d.cursor_.selection())
 		return false;
-	bool ret = multiparsel_cache_;
-	multiparsel_cache_ = cursor_.selBegin().pit() != cursor_.selEnd().pit();
+	bool ret = d.multiparsel_cache_;
+	d.multiparsel_cache_ = d.cursor_.selBegin().pit() != d.cursor_.selEnd().pit();
 	// Either this, or previous selection spans paragraphs
-	return ret || multiparsel_cache_;
+	return ret || d.multiparsel_cache_;
 }
 
 
@@ -420,7 +498,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// last_inset_ points to the last visited inset. This pointer may become
 	// invalid because of keyboard editing. Since all such operations
 	// causes screen update(), I reset last_inset_ to avoid such a problem.
-	last_inset_ = 0;
+	d.last_inset_ = 0;
 	// This is close to a hot-path.
 	LYXERR(Debug::DEBUG)
 		<< BOOST_CURRENT_FUNCTION
@@ -440,12 +518,12 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// Case when no explicit update is requested.
 	if (!flags) {
 		// no need to redraw anything.
-		metrics_info_.update_strategy = NoScreenUpdate;
+		d.metrics_info_.update_strategy = NoScreenUpdate;
 		return;
 	}
 
 	if (flags == Update::Decoration) {
-		metrics_info_.update_strategy = DecorationUpdate;
+		d.metrics_info_.update_strategy = DecorationUpdate;
 		buffer_.changed();
 		return;
 	}
@@ -460,12 +538,12 @@ void BufferView::processUpdateFlags(Update::flags flags)
 			return;
 		}
 		if (flags & Update::Decoration) {
-			metrics_info_.update_strategy = DecorationUpdate;
+			d.metrics_info_.update_strategy = DecorationUpdate;
 			buffer_.changed();
 			return;
 		}
 		// no screen update is needed.
-		metrics_info_.update_strategy = NoScreenUpdate;
+		d.metrics_info_.update_strategy = NoScreenUpdate;
 		return;
 	}
 
@@ -500,39 +578,39 @@ void BufferView::processUpdateFlags(Update::flags flags)
 void BufferView::updateScrollbar()
 {
 	Text & t = buffer_.text();
-	TextMetrics & tm = text_metrics_[&t];
+	TextMetrics & tm = d.text_metrics_[&t];
 
 	int const parsize = int(t.paragraphs().size() - 1);
-	if (anchor_ref_ >  parsize)  {
-		anchor_ref_ = parsize;
-		offset_ref_ = 0;
+	if (d.anchor_ref_ >  parsize)  {
+		d.anchor_ref_ = parsize;
+		d.offset_ref_ = 0;
 	}
 
 	LYXERR(Debug::GUI)
 		<< BOOST_CURRENT_FUNCTION
 		<< " Updating scrollbar: height: " << t.paragraphs().size()
-		<< " curr par: " << cursor_.bottom().pit()
+		<< " curr par: " << d.cursor_.bottom().pit()
 		<< " default height " << defaultRowHeight() << endl;
 
 	// It would be better to fix the scrollbar to understand
 	// values in [0..1] and divide everything by wh
 
 	// estimated average paragraph height:
-	if (wh_ == 0)
-		wh_ = height_ / 4;
+	if (d.wh_ == 0)
+		d.wh_ = height_ / 4;
 
-	int h = tm.parMetrics(anchor_ref_).height();
+	int h = tm.parMetrics(d.anchor_ref_).height();
 
 	// Normalize anchor/offset (MV):
-	while (offset_ref_ > h && anchor_ref_ < parsize) {
-		anchor_ref_++;
-		offset_ref_ -= h;
-		h = tm.parMetrics(anchor_ref_).height();
+	while (d.offset_ref_ > h && d.anchor_ref_ < parsize) {
+		d.anchor_ref_++;
+		d.offset_ref_ -= h;
+		h = tm.parMetrics(d.anchor_ref_).height();
 	}
 	// Look at paragraph heights on-screen
 	int sumh = 0;
 	int nh = 0;
-	for (pit_type pit = anchor_ref_; pit <= parsize; ++pit) {
+	for (pit_type pit = d.anchor_ref_; pit <= parsize; ++pit) {
 		if (sumh > height_)
 			break;
 		int const h2 = tm.parMetrics(pit).height();
@@ -543,19 +621,19 @@ void BufferView::updateScrollbar()
 	BOOST_ASSERT(nh);
 	int const hav = sumh / nh;
 	// More realistic average paragraph height
-	if (hav > wh_)
-		wh_ = hav;
+	if (hav > d.wh_)
+		d.wh_ = hav;
 
 	BOOST_ASSERT(h);
-	scrollbarParameters_.height = (parsize + 1) * wh_;
-	scrollbarParameters_.position = anchor_ref_ * wh_ + int(offset_ref_ * wh_ / float(h));
-	scrollbarParameters_.lineScrollHeight = int(wh_ * defaultRowHeight() / float(h));
+	d.scrollbarParameters_.height = (parsize + 1) * d.wh_;
+	d.scrollbarParameters_.position = d.anchor_ref_ * d.wh_ + int(d.offset_ref_ * d.wh_ / float(h));
+	d.scrollbarParameters_.lineScrollHeight = int(d.wh_ * defaultRowHeight() / float(h));
 }
 
 
 ScrollbarParameters const & BufferView::scrollbarParameters() const
 {
-	return scrollbarParameters_;
+	return d.scrollbarParameters_;
 }
 
 
@@ -565,17 +643,17 @@ void BufferView::scrollDocView(int value)
 			   << "[ value = " << value << "]" << endl;
 
 	Text & t = buffer_.text();
-	TextMetrics & tm = text_metrics_[&t];
+	TextMetrics & tm = d.text_metrics_[&t];
 
-	float const bar = value / float(wh_ * t.paragraphs().size());
+	float const bar = value / float(d.wh_ * t.paragraphs().size());
 
-	anchor_ref_ = int(bar * t.paragraphs().size());
-	if (anchor_ref_ >  int(t.paragraphs().size()) - 1)
-		anchor_ref_ = int(t.paragraphs().size()) - 1;
+	d.anchor_ref_ = int(bar * t.paragraphs().size());
+	if (d.anchor_ref_ >  int(t.paragraphs().size()) - 1)
+		d.anchor_ref_ = int(t.paragraphs().size()) - 1;
 
-	tm.redoParagraph(anchor_ref_);
-	int const h = tm.parMetrics(anchor_ref_).height();
-	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);
+	tm.redoParagraph(d.anchor_ref_);
+	int const h = tm.parMetrics(d.anchor_ref_).height();
+	d.offset_ref_ = int((bar * t.paragraphs().size() - d.anchor_ref_) * h);
 	updateMetrics(false);
 	buffer_.changed();
 }
@@ -583,12 +661,12 @@ void BufferView::scrollDocView(int value)
 
 void BufferView::setCursorFromScrollbar()
 {
-	TextMetrics & tm = text_metrics_[&buffer_.text()];
+	TextMetrics & tm = d.text_metrics_[&buffer_.text()];
 
 	int const height = 2 * defaultRowHeight();
 	int const first = height;
 	int const last = height_ - height;
-	Cursor & cur = cursor_;
+	Cursor & cur = d.cursor_;
 
 	switch (cursorStatus(cur)) {
 	case CUR_ABOVE:
@@ -618,10 +696,10 @@ void BufferView::setCursorFromScrollbar()
 
 Change const BufferView::getCurrentChange() const
 {
-	if (!cursor_.selection())
+	if (!d.cursor_.selection())
 		return Change(Change::UNCHANGED);
 
-	DocIterator dit = cursor_.selectionBegin();
+	DocIterator dit = d.cursor_.selectionBegin();
 	return dit.paragraph().lookupChange(dit.pos());
 }
 
@@ -647,10 +725,10 @@ void BufferView::saveBookmark(unsigned int idx)
 	// when lyx exits.
 	LyX::ref().session().bookmarks().save(
 		FileName(buffer_.fileName()),
-		cursor_.bottom().pit(),
-		cursor_.bottom().pos(),
-		cursor_.paragraph().id(),
-		cursor_.pos(),
+		d.cursor_.bottom().pit(),
+		d.cursor_.bottom().pos(),
+		d.cursor_.paragraph().id(),
+		d.cursor_.pos(),
 		idx
 	);
 	if (idx)
@@ -665,7 +743,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 	bool success = false;
 	DocIterator doc_it;
 
-	cursor_.clearSelection();
+	d.cursor_.clearSelection();
 
 	// if a valid par_id is given, try it first
 	// This is the case for a 'live' bookmark when unique paragraph ID
@@ -707,7 +785,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		// Note: only bottom (document) level pit is set.
 		setCursor(doc_it);
 		// set the current font.
-		cursor_.setCurrentFont();
+		d.cursor_.setCurrentFont();
 		// center the screen on this new position.
 		center();
 	}
@@ -719,16 +797,16 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 void BufferView::translateAndInsert(char_type c, Text * t, Cursor & cur)
 {
 	if (lyxrc.rtl_support) {
-		if (cursor_.real_current_font.isRightToLeft()) {
-			if (intl_->keymap == Intl::PRIMARY)
-				intl_->keyMapSec();
+		if (d.cursor_.real_current_font.isRightToLeft()) {
+			if (d.intl_.keymap == Intl::PRIMARY)
+				d.intl_.keyMapSec();
 		} else {
-			if (intl_->keymap == Intl::SECONDARY)
-				intl_->keyMapPrim();
+			if (d.intl_.keymap == Intl::SECONDARY)
+				d.intl_.keyMapPrim();
 		}
 	}
 
-	intl_->getTransManager().translateAndInsert(c, t, cur);
+	d.intl_.getTransManager().translateAndInsert(c, t, cur);
 }
 
 
@@ -740,8 +818,8 @@ int BufferView::workWidth() const
 
 void BufferView::updateOffsetRef()
 {
-	// No need to update offset_ref_ in this case.
-	if (!need_centering_)
+	// No need to update d.offset_ref_ in this case.
+	if (!d.need_centering_)
 		return;
 
 	// We are not properly started yet, delay until resizing is
@@ -749,20 +827,20 @@ void BufferView::updateOffsetRef()
 	if (height_ == 0)
 		return;
 
-	CursorSlice & bot = cursor_.bottom();
-	TextMetrics & tm = text_metrics_[bot.text()];
+	CursorSlice & bot = d.cursor_.bottom();
+	TextMetrics & tm = d.text_metrics_[bot.text()];
 	ParagraphMetrics const & pm = tm.parMetrics(bot.pit());
-	int y = coordOffset(cursor_, cursor_.boundary()).y_;
-	offset_ref_ = y + pm.ascent() - height_ / 2;
+	int y = coordOffset(d.cursor_, d.cursor_.boundary()).y_;
+	d.offset_ref_ = y + pm.ascent() - height_ / 2;
 
-	need_centering_ = false;
+	d.need_centering_ = false;
 }
 
 
 void BufferView::center()
 {
-	anchor_ref_ = cursor_.bottom().pit();
-	need_centering_ = true;
+	d.anchor_ref_ = d.cursor_.bottom().pit();
+	d.need_centering_ = true;
 }
 
 
@@ -770,7 +848,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 {
 	FuncStatus flag;
 
-	Cursor & cur = cursor_;
+	Cursor & cur = d.cursor_;
 
 	switch (cmd.action) {
 
@@ -876,7 +954,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		<< " button[" << cmd.button() << ']'
 		<< endl;
 
-	Cursor & cur = cursor_;
+	Cursor & cur = d.cursor_;
 	// Default Update flags.
 	Update::flags updateFlags = Update::Force | Update::FitCursor;
 
@@ -927,7 +1005,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		docstring label = cmd.argument();
 		if (label.empty()) {
 			InsetRef * inset =
-				getInsetByCode<InsetRef>(cursor_,
+				getInsetByCode<InsetRef>(d.cursor_,
 							 Inset::REF_CODE);
 			if (inset) {
 				label = inset->getParam("reference");
@@ -976,21 +1054,21 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_OUTLINE_UP:
-		outline(OutlineUp, cursor_);
-		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
+		outline(OutlineUp, d.cursor_);
+		d.cursor_.text()->setCursor(d.cursor_, d.cursor_.pit(), 0);
 		updateLabels(buffer_);
 		break;
 	case LFUN_OUTLINE_DOWN:
-		outline(OutlineDown, cursor_);
-		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
+		outline(OutlineDown, d.cursor_);
+		d.cursor_.text()->setCursor(d.cursor_, d.cursor_.pit(), 0);
 		updateLabels(buffer_);
 		break;
 	case LFUN_OUTLINE_IN:
-		outline(OutlineIn, cursor_);
+		outline(OutlineIn, d.cursor_);
 		updateLabels(buffer_);
 		break;
 	case LFUN_OUTLINE_OUT:
-		outline(OutlineOut, cursor_);
+		outline(OutlineOut, d.cursor_);
 		updateLabels(buffer_);
 		break;
 
@@ -1044,21 +1122,21 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_ALL_CHANGES_ACCEPT:
 		// select complete document
-		cursor_.reset(buffer_.inset());
-		cursor_.selHandle(true);
-		buffer_.text().cursorBottom(cursor_);
+		d.cursor_.reset(buffer_.inset());
+		d.cursor_.selHandle(true);
+		buffer_.text().cursorBottom(d.cursor_);
 		// accept everything in a single step to support atomic undo
-		buffer_.text().acceptOrRejectChanges(cursor_, Text::ACCEPT);
+		buffer_.text().acceptOrRejectChanges(d.cursor_, Text::ACCEPT);
 		break;
 
 	case LFUN_ALL_CHANGES_REJECT:
 		// select complete document
-		cursor_.reset(buffer_.inset());
-		cursor_.selHandle(true);
-		buffer_.text().cursorBottom(cursor_);
+		d.cursor_.reset(buffer_.inset());
+		d.cursor_.selHandle(true);
+		buffer_.text().cursorBottom(d.cursor_);
 		// reject everything in a single step to support atomic undo
 		// Note: reject does not work recursively; the user may have to repeat the operation
-		buffer_.text().acceptOrRejectChanges(cursor_, Text::REJECT);
+		buffer_.text().acceptOrRejectChanges(d.cursor_, Text::REJECT);
 		break;
 
 	case LFUN_WORD_FIND:
@@ -1111,7 +1189,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
-		Cursor tmpcur = cursor_;
+		Cursor tmpcur = d.cursor_;
 		findInset(tmpcur, Inset::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						Inset::BIBTEX_CODE);
@@ -1123,7 +1201,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_BIBTEX_DATABASE_DEL: {
-		Cursor tmpcur = cursor_;
+		Cursor tmpcur = d.cursor_;
 		findInset(tmpcur, Inset::BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						Inset::BIBTEX_CODE);
@@ -1211,7 +1289,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		}
 		scroll(cmd.action == LFUN_SCREEN_UP? - height_ : height_);
 		cur.reset(buffer_.inset());
-		text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
+		d.text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
 		//FIXME: what to do with cur.x_target()?
 		finishUndo();
 		// The metrics are already up to date. see scroll()
@@ -1227,7 +1305,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		scroll(cmd.action == LFUN_SCREEN_UP_SELECT? - height_ : height_);
 		// FIXME: We need to verify if the cursor stayed within an inset...
 		//cur.reset(buffer_.inset());
-		text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
+		d.text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
 		finishUndo();
 		while (cur.depth() > initial_depth) {
 			cur.forwardInset();
@@ -1248,20 +1326,20 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 docstring const BufferView::requestSelection()
 {
-	Cursor & cur = cursor_;
+	Cursor & cur = d.cursor_;
 
 	if (!cur.selection()) {
-		xsel_cache_.set = false;
+		d.xsel_cache_.set = false;
 		return docstring();
 	}
 
-	if (!xsel_cache_.set ||
-	    cur.top() != xsel_cache_.cursor ||
-	    cur.anchor_.top() != xsel_cache_.anchor)
+	if (!d.xsel_cache_.set ||
+	    cur.top() != d.xsel_cache_.cursor ||
+	    cur.anchor_.top() != d.xsel_cache_.anchor)
 	{
-		xsel_cache_.cursor = cur.top();
-		xsel_cache_.anchor = cur.anchor_.top();
-		xsel_cache_.set = cur.selection();
+		d.xsel_cache_.cursor = cur.top();
+		d.xsel_cache_.anchor = cur.anchor_.top();
+		d.xsel_cache_.set = cur.selection();
 		return cur.selectionAsString(false);
 	}
 	return docstring();
@@ -1270,12 +1348,12 @@ docstring const BufferView::requestSelection()
 
 void BufferView::clearSelection()
 {
-	cursor_.clearSelection();
+	d.cursor_.clearSelection();
 	// Clear the selection buffer. Otherwise a subsequent
 	// middle-mouse-button paste would use the selection buffer,
 	// not the more current external selection.
 	cap::clearSelection();
-	xsel_cache_.set = false;
+	d.xsel_cache_.set = false;
 	// The buffer did not really change, but this causes the
 	// redraw we need because we cleared the selection above.
 	buffer_.changed();
@@ -1294,7 +1372,7 @@ void BufferView::resize(int width, int height)
 
 Inset const * BufferView::getCoveringInset(Text const & text, int x, int y)
 {
-	TextMetrics & tm = text_metrics_[&text];
+	TextMetrics & tm = d.text_metrics_[&text];
 	Inset * inset = tm.checkInsetHit(x, y);
 	if (!inset)
 		return 0;
@@ -1331,7 +1409,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 
 	Cursor cur(*this);
 	cur.push(buffer_.inset());
-	cur.selection() = cursor_.selection();
+	cur.selection() = d.cursor_.selection();
 
 	// Either the inset under the cursor or the
 	// surrounding Text will handle this event.
@@ -1344,36 +1422,36 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		// Get inset under mouse, if there is one.
 		Inset const * covering_inset =
 			getCoveringInset(buffer_.text(), cmd.x, cmd.y);
-		if (covering_inset == last_inset_)
+		if (covering_inset == d.last_inset_)
 			// Same inset, no need to do anything...
 			return;
 
 		bool need_redraw = false;
 		// const_cast because of setMouseHover().
 		Inset * inset = const_cast<Inset *>(covering_inset);
-		if (last_inset_)
+		if (d.last_inset_)
 			// Remove the hint on the last hovered inset (if any).
-			need_redraw |= last_inset_->setMouseHover(false);
+			need_redraw |= d.last_inset_->setMouseHover(false);
 		if (inset)
 			// Highlighted the newly hovered inset (if any).
 			need_redraw |= inset->setMouseHover(true);
-		last_inset_ = inset;
+		d.last_inset_ = inset;
 		if (!need_redraw)
 			return;
 
 		// if last metrics update was in singlepar mode, WorkArea::redraw() will
 		// not expose the button for redraw. We adjust here the metrics dimension
 		// to enable a full redraw in any case as this is not costly.
-		TextMetrics & tm = text_metrics_[&buffer_.text()];
+		TextMetrics & tm = d.text_metrics_[&buffer_.text()];
 		std::pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
 		std::pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
 		int y1 = firstpm.second->position() - firstpm.second->ascent();
 		int y2 = lastpm.second->position() + lastpm.second->descent();
-		metrics_info_ = ViewMetricsInfo(firstpm.first, lastpm.first, y1, y2,
+		d.metrics_info_ = ViewMetricsInfo(firstpm.first, lastpm.first, y1, y2,
 			FullScreenUpdate, buffer_.text().paragraphs().size());
 		// Reinitialize anchor to first pit.
-		anchor_ref_ = firstpm.first;
-		offset_ref_ = -y1;
+		d.anchor_ref_ = firstpm.first;
+		d.offset_ref_ = -y1;
 		LYXERR(Debug::PAINTING)
 			<< "Mouse hover detected at: (" << cmd.x << ", " << cmd.y << ")"
 			<< "\nTriggering redraw: y1: " << y1 << " y2: " << y2
@@ -1386,7 +1464,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	}
 
 	// Build temporary cursor.
-	Inset * inset = text_metrics_[&buffer_.text()].editXY(cur, cmd.x, cmd.y);
+	Inset * inset = d.text_metrics_[&buffer_.text()].editXY(cur, cmd.x, cmd.y);
 
 	// Put anchor at the same position.
 	cur.resetAnchor();
@@ -1426,7 +1504,7 @@ void BufferView::scroll(int y)
 void BufferView::scrollDown(int offset)
 {
 	Text * text = &buffer_.text();
-	TextMetrics & tm = text_metrics_[text];
+	TextMetrics & tm = d.text_metrics_[text];
 	int ymax = height_ + offset;
 	while (true) {
 		std::pair<pit_type, ParagraphMetrics const *> last = tm.last();
@@ -1441,7 +1519,7 @@ void BufferView::scrollDown(int offset)
 			break;
 		tm.newParMetricsDown();
 	}
-	offset_ref_ += offset;
+	d.offset_ref_ += offset;
 	updateMetrics(false);
 	buffer_.changed();
 }
@@ -1450,7 +1528,7 @@ void BufferView::scrollDown(int offset)
 void BufferView::scrollUp(int offset)
 {
 	Text * text = &buffer_.text();
-	TextMetrics & tm = text_metrics_[text];
+	TextMetrics & tm = d.text_metrics_[text];
 	int ymin = - offset;
 	while (true) {
 		std::pair<pit_type, ParagraphMetrics const *> first = tm.first();
@@ -1465,7 +1543,7 @@ void BufferView::scrollUp(int offset)
 			break;
 		tm.newParMetricsUp();
 	}
-	offset_ref_ -= offset;
+	d.offset_ref_ -= offset;
 	updateMetrics(false);
 	buffer_.changed();
 }
@@ -1478,11 +1556,11 @@ void BufferView::setCursorFromRow(int row)
 
 	buffer_.texrow().getIdFromRow(row, tmpid, tmppos);
 
-	cursor_.reset(buffer_.inset());
+	d.cursor_.reset(buffer_.inset());
 	if (tmpid == -1)
-		buffer_.text().setCursor(cursor_, 0, 0);
+		buffer_.text().setCursor(d.cursor_, 0, 0);
 	else
-		buffer_.text().setCursor(cursor_, buffer_.getParFromID(tmpid).pit(), tmppos);
+		buffer_.text().setCursor(d.cursor_, buffer_.getParFromID(tmpid).pit(), tmppos);
 }
 
 
@@ -1508,9 +1586,9 @@ TextMetrics const & BufferView::textMetrics(Text const * t) const
 
 TextMetrics & BufferView::textMetrics(Text const * t)
 {
-	TextMetricsCache::iterator tmc_it  = text_metrics_.find(t);
-	if (tmc_it == text_metrics_.end()) {
-		tmc_it = text_metrics_.insert(
+	TextMetricsCache::iterator tmc_it  = d.text_metrics_.find(t);
+	if (tmc_it == d.text_metrics_.end()) {
+		tmc_it = d.text_metrics_.insert(
 			make_pair(t, TextMetrics(this, const_cast<Text *>(t)))).first;
 	}
 	return tmc_it->second;
@@ -1534,10 +1612,10 @@ void BufferView::setCursor(DocIterator const & dit)
 {
 	size_t const n = dit.depth();
 	for (size_t i = 0; i < n; ++i)
-		dit[i].inset().edit(cursor_, true);
+		dit[i].inset().edit(d.cursor_, true);
 
-	cursor_.setCursor(dit);
-	cursor_.selection() = false;
+	d.cursor_.setCursor(dit);
+	d.cursor_.selection() = false;
 }
 
 
@@ -1548,7 +1626,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 		return false;
 
 	bool need_anchor_change = false;
-	bool changed = cursor_.text()->deleteEmptyParagraphMechanism(cur, old,
+	bool changed = d.cursor_.text()->deleteEmptyParagraphMechanism(cur, old,
 		need_anchor_change);
 
 	if (need_anchor_change)
@@ -1575,17 +1653,17 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 
 	// Has the cursor just left the inset?
 	bool badcursor = false;
-	bool leftinset = (&cursor_.inset() != &cur.inset());
+	bool leftinset = (&d.cursor_.inset() != &cur.inset());
 	if (leftinset)
-		badcursor = notifyCursorLeaves(cursor_, cur);
+		badcursor = notifyCursorLeaves(d.cursor_, cur);
 
 	// do the dEPM magic if needed
 	// FIXME: (1) move this to InsetText::notifyCursorLeaves?
 	// FIXME: (2) if we had a working InsetText::notifyCursorLeaves,
 	// the leftinset bool would not be necessary (badcursor instead).
 	bool update = leftinset;
-	if (!badcursor && cursor_.inTexted())
-		update |= checkDepm(cur, cursor_);
+	if (!badcursor && d.cursor_.inTexted())
+		update |= checkDepm(cur, d.cursor_);
 
 	// if the cursor was in an empty script inset and the new
 	// position is in the nucleus of the inset, notifyCursorLeaves
@@ -1604,9 +1682,9 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 	}
 	//lyxerr << "5 cur after" << dit <<std::endl;
 
-	cursor_.setCursor(dit);
-	cursor_.boundary(cur.boundary());
-	cursor_.clearSelection();
+	d.cursor_.setCursor(dit);
+	d.cursor_.boundary(cur.boundary());
+	d.cursor_.clearSelection();
 	finishUndo();
 	return update;
 }
@@ -1615,48 +1693,48 @@ bool BufferView::mouseSetCursor(Cursor & cur)
 void BufferView::putSelectionAt(DocIterator const & cur,
 				int length, bool backwards)
 {
-	cursor_.clearSelection();
+	d.cursor_.clearSelection();
 
 	setCursor(cur);
 
 	if (length) {
 		if (backwards) {
-			cursor_.pos() += length;
-			cursor_.setSelection(cursor_, -length);
+			d.cursor_.pos() += length;
+			d.cursor_.setSelection(d.cursor_, -length);
 		} else
-			cursor_.setSelection(cursor_, length);
+			d.cursor_.setSelection(d.cursor_, length);
 	}
 }
 
 
 Cursor & BufferView::cursor()
 {
-	return cursor_;
+	return d.cursor_;
 }
 
 
 Cursor const & BufferView::cursor() const
 {
-	return cursor_;
+	return d.cursor_;
 }
 
 
 pit_type BufferView::anchor_ref() const
 {
-	return anchor_ref_;
+	return d.anchor_ref_;
 }
 
 
 ViewMetricsInfo const & BufferView::viewMetricsInfo()
 {
-	return metrics_info_;
+	return d.metrics_info_;
 }
 
 
 bool BufferView::singleParUpdate()
 {
 	Text & buftext = buffer_.text();
-	pit_type const bottom_pit = cursor_.bottom().pit();
+	pit_type const bottom_pit = d.cursor_.bottom().pit();
 	TextMetrics & tm = textMetrics(&buftext);
 	int old_height = tm.parMetrics(bottom_pit).height();
 
@@ -1673,7 +1751,7 @@ bool BufferView::singleParUpdate()
 
 	int y1 = pm.position() - pm.ascent();
 	int y2 = pm.position() + pm.descent();
-	metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
+	d.metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
 		SingleParUpdate, buftext.paragraphs().size());
 	LYXERR(Debug::PAINTING)
 		<< BOOST_CURRENT_FUNCTION
@@ -1695,22 +1773,22 @@ void BufferView::updateMetrics(bool singlepar)
 	Text & buftext = buffer_.text();
 	pit_type const npit = int(buftext.paragraphs().size());
 
-	if (anchor_ref_ > int(npit - 1)) {
-		anchor_ref_ = int(npit - 1);
-		offset_ref_ = 0;
+	if (d.anchor_ref_ > int(npit - 1)) {
+		d.anchor_ref_ = int(npit - 1);
+		d.offset_ref_ = 0;
 	}
 
 	// Clear out the position cache in case of full screen redraw,
-	coord_cache_.clear();
+	d.coord_cache_.clear();
 
 	// Clear out paragraph metrics to avoid having invalid metrics
 	// in the cache from paragraphs not relayouted below
 	// The complete text metrics will be redone.
-	text_metrics_.clear();
+	d.text_metrics_.clear();
 
 	TextMetrics & tm = textMetrics(&buftext);
 
-	pit_type const pit = anchor_ref_;
+	pit_type const pit = d.anchor_ref_;
 	int pit1 = pit;
 	int pit2 = pit;
 
@@ -1720,7 +1798,7 @@ void BufferView::updateMetrics(bool singlepar)
 	// Take care of anchor offset if case a recentering is needed.
 	updateOffsetRef();
 
-	int y0 = tm.parMetrics(pit).ascent() - offset_ref_;
+	int y0 = tm.parMetrics(pit).ascent() - d.offset_ref_;
 
 	// Redo paragraphs above anchor if necessary.
 	int y1 = y0;
@@ -1735,14 +1813,14 @@ void BufferView::updateMetrics(bool singlepar)
 	y1 -= tm.parMetrics(pit1).ascent();
 
 	// Normalize anchor for next time
-	anchor_ref_ = pit1;
-	offset_ref_ = -y1;
+	d.anchor_ref_ = pit1;
+	d.offset_ref_ = -y1;
 
 	// Grey at the beginning is ugly
 	if (pit1 == 0 && y1 > 0) {
 		y0 -= y1;
 		y1 = 0;
-		anchor_ref_ = 0;
+		d.anchor_ref_ = 0;
 	}
 
 	// Redo paragraphs below the anchor if necessary.
@@ -1767,19 +1845,19 @@ void BufferView::updateMetrics(bool singlepar)
 		<< " singlepar: 0"
 		<< endl;
 
-	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2,
+	d.metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2,
 		FullScreenUpdate, npit);
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		LYXERR(Debug::WORKAREA) << "BufferView::updateMetrics" << endl;
-		coord_cache_.dump();
+		d.coord_cache_.dump();
 	}
 }
 
 
 void BufferView::menuInsertLyXFile(string const & filenm)
 {
-	BOOST_ASSERT(cursor_.inTexted());
+	BOOST_ASSERT(d.cursor_.inTexted());
 	string filename = filenm;
 
 	if (filename.empty()) {
@@ -1832,8 +1910,8 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		ErrorList & el = buffer_.errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");
-		recordUndo(cursor_);
-		cap::pasteParagraphList(cursor_, buf.paragraphs(),
+		recordUndo(d.cursor_);
+		cap::pasteParagraphList(d.cursor_, buf.paragraphs(),
 					     buf.params().getTextClassPtr(), el);
 		res = _("Document %1$s inserted.");
 	} else
@@ -1956,79 +2034,79 @@ void BufferView::draw(frontend::Painter & pain)
 	// FIXME: We should also distinguish DecorationUpdate to avoid text
 	// drawing if possible. This is not possible to do easily right now
 	// because of the single backing pixmap.
-	pi.full_repaint = metrics_info_.update_strategy != SingleParUpdate;
+	pi.full_repaint = d.metrics_info_.update_strategy != SingleParUpdate;
 
 	if (pi.full_repaint)
 		// Clear background (if not delegated to rows)
-		pain.fillRectangle(0, metrics_info_.y1, width_,
-			metrics_info_.y2 - metrics_info_.y1,
+		pain.fillRectangle(0, d.metrics_info_.y1, width_,
+			d.metrics_info_.y2 - d.metrics_info_.y1,
 			buffer_.inset().backgroundColor());
 
 	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
 	Text & text = buffer_.text();
-	TextMetrics const & tm = text_metrics_[&text];
-	int y = metrics_info_.y1 + tm.parMetrics(metrics_info_.p1).ascent();
+	TextMetrics const & tm = d.text_metrics_[&text];
+	int y = d.metrics_info_.y1 + tm.parMetrics(d.metrics_info_.p1).ascent();
 	if (!pi.full_repaint)
-		tm.drawParagraph(pi, metrics_info_.p1, 0, y);
+		tm.drawParagraph(pi, d.metrics_info_.p1, 0, y);
 	else
 		tm.draw(pi, 0, y);
 	LYXERR(Debug::PAINTING) << "\n\t\t*** END DRAWING  ***" << endl;
 
 	// and grey out above (should not happen later)
-//	lyxerr << "par ascent: " << text.getPar(metrics_info_.p1).ascent() << endl;
-	if (metrics_info_.y1 > 0
-		&& metrics_info_.update_strategy == FullScreenUpdate)
-		pain.fillRectangle(0, 0, width_, metrics_info_.y1, Color::bottomarea);
+//	lyxerr << "par ascent: " << text.getPar(d.metrics_info_.p1).ascent() << endl;
+	if (d.metrics_info_.y1 > 0
+		&& d.metrics_info_.update_strategy == FullScreenUpdate)
+		pain.fillRectangle(0, 0, width_, d.metrics_info_.y1, Color::bottomarea);
 
 	// and possibly grey out below
-//	lyxerr << "par descent: " << text.getPar(metrics_info_.p1).ascent() << endl;
-	if (metrics_info_.y2 < height_
-		&& metrics_info_.update_strategy == FullScreenUpdate)
-		pain.fillRectangle(0, metrics_info_.y2, width_,
-			height_ - metrics_info_.y2, Color::bottomarea);
+//	lyxerr << "par descent: " << text.getPar(d.metrics_info_.p1).ascent() << endl;
+	if (d.metrics_info_.y2 < height_
+		&& d.metrics_info_.update_strategy == FullScreenUpdate)
+		pain.fillRectangle(0, d.metrics_info_.y2, width_,
+			height_ - d.metrics_info_.y2, Color::bottomarea);
 }
 
 
 void BufferView::message(docstring const & msg)
 {
-	if (gui_)
-		gui_->message(msg);
+	if (d.gui_)
+		d.gui_->message(msg);
 }
 
 
 void BufferView::showDialog(std::string const & name)
 {
-	if (gui_)
-		gui_->showDialog(name);
+	if (d.gui_)
+		d.gui_->showDialog(name);
 }
 
 
 void BufferView::showDialogWithData(std::string const & name,
 	std::string const & data)
 {
-	if (gui_)
-		gui_->showDialogWithData(name, data);
+	if (d.gui_)
+		d.gui_->showDialogWithData(name, data);
 }
 
 
 void BufferView::showInsetDialog(std::string const & name,
 	std::string const & data, Inset * inset)
 {
-	if (gui_)
-		gui_->showInsetDialog(name, data, inset);
+	if (d.gui_)
+		d.gui_->showInsetDialog(name, data, inset);
 }
 
 
 void BufferView::updateDialog(std::string const & name, std::string const & data)
 {
-	if (gui_)
-		gui_->updateDialog(name, data);
+	if (d.gui_)
+		d.gui_->updateDialog(name, data);
 }
 
 
 void BufferView::setGuiDelegate(frontend::GuiBufferViewDelegate * gui)
 {
-	gui_ = gui;
+	d.gui_ = gui;
 }
 
 

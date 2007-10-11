@@ -42,6 +42,7 @@
 #include "ParIterator.h"
 #include "Row.h"
 #include "sgml.h"
+#include "TextMetrics.h"
 #include "TexRow.h"
 #include "Undo.h"
 

@@ -23,6 +23,7 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "Color.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "LyXFunc.h"

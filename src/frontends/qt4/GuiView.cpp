@@ -37,6 +37,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "BufferList.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "Layout.h"

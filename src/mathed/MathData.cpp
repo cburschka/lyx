@@ -19,11 +19,12 @@
 #include "MathSupport.h"
 #include "ReplaceData.h"
 
-#include "BufferView.h"
 #include "Buffer.h"
+#include "BufferView.h"
+#include "CoordCache.h"
+#include "Color.h"
 #include "Cursor.h"
 #include "debug.h"
-#include "Color.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
