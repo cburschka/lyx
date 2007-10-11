@@ -530,9 +530,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_INSET_SETTINGS: {
-		enable = false;
-		if (!cur)
+		if (!cur) {
+			enable = false;
 			break;
+		}
 		Inset::Code code = cur->inset().lyxCode();
 		switch (code) {
 			case Inset::TABULAR_CODE:
@@ -566,9 +567,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_INSET_APPLY: {
-		enable = false;
-		if (!cur)
+		if (!cur) {
+			enable = false;
 			break;
+		}
 		string const name = cmd.getArg(0);
 		Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
 		if (inset) {
@@ -591,9 +593,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.setOnOff(lyx_view_->getDialogs().visible(cmd.getArg(0)));
 		// fall through to set "enable"
 	case LFUN_DIALOG_SHOW: {
-		enable = false;
-		if (!cur)
+		if (!cur) {
+			enable = false;
 			break;
+		}
 		string const name = cmd.getArg(0);
 		if (!buf)
 			enable = name == "aboutlyx"
@@ -620,9 +623,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		enable = false;
-		if (!cur)
+		if (!cur) {
+			enable = false;
 			break;
+		}
 		enable = cur->inset().lyxCode() != Inset::ERT_CODE &&
 			cur->inset().lyxCode() != Inset::LISTINGS_CODE;
 		if (cur->inset().lyxCode() == Inset::CAPTION_CODE) {
@@ -764,9 +768,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	default:
-		enable = false;
-		if (!cur)
+		if (!cur) {
+			enable = false;
 			break;
+		}
 		if (!getLocalStatus(*cur, cmd, flag))
 			flag = view()->getStatus(cmd);
 	}
