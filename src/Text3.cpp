@@ -210,8 +210,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 
 		if (gotsel && pastesel) {
 			lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
-			InsetLayout il = inset->getLayout(cur.buffer().params());
-			if (!il.multipar || cur.lastpit() == 0) {
+			if (!static_cast<InsetText *>(inset)->allowMultiPar() 
+			    || cur.lastpit() == 0) {
 				// reset first par to default
 				LayoutPtr const layout =
 					cur.buffer().params().getTextClass().defaultLayout();

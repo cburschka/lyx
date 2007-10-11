@@ -130,6 +130,8 @@ public:
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent(Buffer const &) const;
 	///
+	virtual bool allowMultiPar() const { return true; }
+	///
 	InsetText(InsetText const &);
 
 	// Update the counters of this inset and of its contents

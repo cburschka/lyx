@@ -122,6 +122,8 @@ public:
 	///
 	bool allowSpellCheck() const { return true; }
 	///
+	bool allowMultiPar() const;
+	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	void setStatus(Cursor & cur, CollapseStatus st);

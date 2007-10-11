@@ -14,6 +14,7 @@
 
 #include "InsetBox.h"
 
+#include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
@@ -94,6 +95,7 @@ void InsetBox::init()
 InsetBox::InsetBox(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp), params_(label)
 {
+	setLayout(bp);
 	init();
 }
 
@@ -134,6 +136,7 @@ void InsetBox::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
+	setLayout(buf.params());
 	setButtonLabel();
 }
 
@@ -203,6 +206,7 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		//lyxerr << "InsetBox::dispatch MODIFY" << endl;
 		InsetBoxMailer::string2params(to_utf8(cmd.argument()), params_);
+		setLayout(cur.buffer().params());
 		setButtonLabel();
 		break;
 	}

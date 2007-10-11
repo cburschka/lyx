@@ -546,6 +546,12 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
+bool InsetCollapsable::allowMultiPar() const
+{
+	return layout_.multipar;
+}
+
+
 bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
