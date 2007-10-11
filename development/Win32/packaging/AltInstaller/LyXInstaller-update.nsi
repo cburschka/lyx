@@ -10,7 +10,7 @@
 # Full author contact details are available in file CREDITS or copy at
 # http://www.lyx.org/about/credits.php
 
-# This script requires NSIS 2.25 and newer
+# This script requires NSIS 2.30 or newer
 # http://nsis.sourceforge.net/
 #--------------------------------
 
@@ -80,6 +80,8 @@ Var UserName
 !insertmacro LineFind
 !include "WordFunc.nsh"
 !insertmacro WordReplace
+!include "registry.nsh"
+!insertmacro COPY_REGISTRY_KEY
 
 # Set of various macros and functions
 !include "LyXUtils.nsh"
