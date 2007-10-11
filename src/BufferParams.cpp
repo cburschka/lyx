@@ -1148,10 +1148,16 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	}
 
 	// When the language "japanese-plain" is used, the package "japanese" must
-	// be loaded behind babel (it provides babel support for Japanese)
-	// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-	if (language->lang() == "japanese-plain")
+	// be loaded behind babel (it provides babel support for Japanese) but before
+	// hyperref, see
+	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
+	if (language->lang() == "japanese-plain" &&
+		!getTextClass().provides("japanese")) {
+		//load babel in case it was not loaded due to an empty language list
+		if (language_options.str().empty())
+			lyxpreamble += "\\usepackage{babel}\n";
 		lyxpreamble += "\\usepackage{japanese}\n";
+	}
 
 	// PDF support.
 	// * Hyperref manual: "Make sure it comes last of your loaded
@@ -1563,9 +1569,7 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	// suppress the babel call when there is no babel language defined
 	// for the document language in the lib/languages file and if no
 	// other languages are used (lang_opts is then empty)
-	// exception is the language "japanese-plain" where babel is needed anyway
-	// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-	if (lang_opts.empty() && language->lang() != "japanese-plain")
+	if (lang_opts.empty())
 		return string();
 	// when Vietnamese is used, babel must directly be loaded with the
 	// language options, see
