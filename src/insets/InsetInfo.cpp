@@ -23,6 +23,7 @@
 #include "KeyMap.h"
 #include "LaTeXFeatures.h"
 #include "LyXAction.h"
+#include "LyXRC.h"
 #include "Lexer.h"
 #include "MenuBackend.h"
 #include "MetricsInfo.h"
@@ -82,6 +83,7 @@ Translator<InsetInfo::info_type, string> const initTranslator()
 	Translator<InsetInfo::info_type, string> translator(InsetInfo::UNKNOWN_INFO, "unknown");
 
 	translator.addPair(InsetInfo::SHORTCUT_INFO, "shortcut");
+	translator.addPair(InsetInfo::LYXRC_INFO, "lyxrc");
 	translator.addPair(InsetInfo::PACKAGE_INFO, "package");
 	translator.addPair(InsetInfo::TEXTCLASS_INFO, "textclass");
 	translator.addPair(InsetInfo::MENU_INFO, "menu");
@@ -180,6 +182,18 @@ void InsetInfo::updateInfo()
 		if (func.action != LFUN_UNKNOWN_ACTION)
 			setText(theTopLevelKeymap().printbindings(func),
 				bp_.getFont(), false);
+		break;
+	}
+	case LYXRC_INFO: {
+		ostringstream oss;
+		lyxrc.write(oss, true, name_);
+		string result = oss.str();
+		// remove leading \\name
+		result = result.substr(name_.size() + 2);
+		// remove \n and ""
+		result = rtrim(result, "\n");
+		result = trim(result, "\"");
+		setText(from_utf8(result), bp_.getFont(), false);
 		break;
 	}
 	case PACKAGE_INFO:

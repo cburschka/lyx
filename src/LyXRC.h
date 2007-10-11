@@ -160,9 +160,10 @@ public:
 	///
 	void write(support::FileName const & filename,
 		   bool ignore_system_lyxrc) const;
-	///
+	/// write rc. If a specific tag is given, only output that one.
 	void write(std::ostream & os,
-		   bool ignore_system_lyxrc) const;
+		   bool ignore_system_lyxrc, 
+		   std::string const & tag = std::string()) const;
 	///
 	void print() const;
 	// FIXME unused (was used for xforms. Do we still need this?)
