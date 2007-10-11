@@ -21,8 +21,6 @@
 
 #include "support/docstring.h"
 
-#include <boost/signals/trackable.hpp>
-
 namespace lyx {
 
 class Buffer;
@@ -42,7 +40,8 @@ class LyXView;
     keyboard or from the GUI. All GUI objects, including buttons and
     menus should use this class and never call kernel functions directly.
 */
-class LyXFunc : public boost::signals::trackable {
+class LyXFunc
+{
 public:
 	///
 	explicit LyXFunc();

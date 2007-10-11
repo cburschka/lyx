@@ -89,7 +89,6 @@
 #include "support/environment.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
-#include "support/ForkedcallsController.h"
 #include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/Path.h"
@@ -125,7 +124,6 @@ using support::contains;
 using support::FileFilterList;
 using support::FileName;
 using support::fileSearch;
-using support::ForkedcallsController;
 using support::i18nLibFileSearch;
 using support::isDirWriteable;
 using support::isFileReadable;
