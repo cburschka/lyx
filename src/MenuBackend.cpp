@@ -65,7 +65,7 @@ using std::max;
 using std::sort;
 using std::string;
 using std::vector;
-
+using std::stack;
 
 namespace {
 
@@ -420,6 +420,27 @@ void Menu::checkShortcuts() const
 			}
 		}
 	}
+}
+
+
+bool Menu::searchFunc(FuncRequest & func, stack<docstring> & names)
+{
+	const_iterator m = begin();
+	const_iterator m_end = end();
+	for (; m != m_end; ++m) {
+		if (m->kind() == MenuItem::Command && m->func() == func) {
+			names.push(m->label());
+			return true;
+		} else if (m->kind() == MenuItem::Submenu) {
+			names.push(m->label());
+			Menu submenu = menubackend.getMenu(m->submenuname());
+			if (submenu.searchFunc(func, names))
+				return true;
+			else
+				names.pop();
+		}
+	}
+	return false;
 }
 
 

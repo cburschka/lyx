@@ -29,6 +29,7 @@ public:
 		SHORTCUT_INFO,  // Keyboard shortcut
 		PACKAGE_INFO,   // Availability of package
 		TEXTCLASS_INFO, // Availability of textclass
+		MENU_INFO,      // Which menu item is used for certain function
 	};
 
 	///

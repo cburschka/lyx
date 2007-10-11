@@ -24,6 +24,7 @@
 #include "LaTeXFeatures.h"
 #include "LyXAction.h"
 #include "Lexer.h"
+#include "MenuBackend.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 #include "TextClassList.h"
@@ -83,6 +84,7 @@ Translator<InsetInfo::info_type, string> const initTranslator()
 	translator.addPair(InsetInfo::SHORTCUT_INFO, "shortcut");
 	translator.addPair(InsetInfo::PACKAGE_INFO, "package");
 	translator.addPair(InsetInfo::TEXTCLASS_INFO, "textclass");
+	translator.addPair(InsetInfo::MENU_INFO, "menu");
 
 	return translator;
 }
@@ -191,6 +193,34 @@ void InsetInfo::updateInfo()
 			textclasslist.numberOfClass(name_);
 		setText(pp.first ? _("yes") : _("no"),
 			bp_.getFont(), false);
+		break;
+	}
+	case MENU_INFO: {
+		stack<docstring> names;
+		FuncRequest func = lyxaction.lookupFunc(name_);
+		if (func.action == LFUN_UNKNOWN_ACTION) {
+			setText(_("No menu entry for "), bp_.getFont(), false);
+			break;
+		}
+		// iterate through the menubackend to find it
+		Menu menu = menubackend.getMenubar();
+		if (!menu.searchFunc(func, names)) {
+			setText(_("No menu entry for "), bp_.getFont(), false);
+			break;
+		}
+		// if find, return its path.
+		InsetText::clear();
+		Paragraph & info = paragraphs().front();
+		unsigned int i = 0;
+		while (!names.empty()) {
+			// do not insert > for the top level menu item
+			if (i != 0)
+				info.insertInset(0, new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR),
+					Change(Change::UNCHANGED));
+			for (i = 0; i < names.top().length(); ++i)
+				info.insertChar(i, names.top()[i], bp_.getFont(), false);
+			names.pop();
+		}
 		break;
 	}
 	}

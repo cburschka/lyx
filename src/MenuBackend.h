@@ -19,6 +19,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
+#include <stack>
 
 
 namespace lyx {
@@ -191,6 +192,10 @@ public:
 
 	// Check whether the menu shortcuts are unique
 	void checkShortcuts() const;
+	
+	// search for func in this menu iteratively, and put menu
+	// names in a stack.
+	bool searchFunc(FuncRequest & func, std::stack<docstring> & names);
 
 private:
 	friend class MenuBackend;
