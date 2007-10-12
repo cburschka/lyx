@@ -66,8 +66,10 @@ using std::ostream;
 namespace lyx {
 
 using support::contains;
+using support::prefixIs;
 using support::suffixIs;
 using support::rsplit;
+using support::rtrim;
 
 
 /////////////////////////////////////////////////////////////////////
@@ -187,6 +189,11 @@ public:
 			     unsigned int & column,
 			     Font const & font,
 			     Layout const & style);
+	/// Output consecutive known unicode chars, belonging to the same
+	/// language as specified by \p preamble, to \p os starting from \p c.
+	/// \return the number of characters written.
+	int knownLangChars(odocstream & os, value_type c, string & preamble,
+			   Change &, Encoding const &, pos_type &);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
 				   odocstream &,
@@ -627,6 +634,61 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 }
 
 
+int Paragraph::Pimpl::knownLangChars(odocstream & os,
+				     value_type c,
+				     string & preamble,
+				     Change & runningChange,
+				     Encoding const & encoding,
+				     pos_type & i)
+{
+	// The latex command is "\textLANG{<spec>}" and we have to retain
+	// "\textLANG{<spec>" for the first char but only "<spec>" for all
+	// subsequent chars (this also works when we are passed untranslated
+	// unicode).
+	docstring const latex1 = rtrim(encoding.latexChar(c), "}");
+	int length = latex1.length();
+	os << latex1;
+	while (i < size() - 1) {
+		char_type next = getChar(i + 1);
+		if (!Encodings::isKnownLangChar(next, preamble) ||
+		    runningChange != lookupChange(i + 1))
+			break;
+		Font prev_font;
+		bool found = false;
+		FontList::const_iterator cit = fontlist.begin();
+		FontList::const_iterator end = fontlist.end();
+		for (; cit != end; ++cit) {
+			if (cit->pos() >= i && !found) {
+				prev_font = cit->font();
+				found = true;
+			}
+			if (cit->pos() >= i + 1)
+				break;
+		}
+		if (found && cit != end && prev_font != cit->font())
+			break;
+		docstring const latex = rtrim(encoding.latexChar(next), "}");
+		docstring::size_type const j =
+					latex.find_first_of(from_ascii("{"));
+		if (j == docstring::npos) {
+			os << latex;
+			length += latex.length();
+		} else {
+			os << latex.substr(j + 1);
+			length += latex.substr(j + 1).length();
+		}
+		++i;
+	}
+	// When the proper language is set, we are passed the straight unicode,
+	// so we should not try to close the \textLANG command.
+	if (prefixIs(latex1, from_ascii("\\" + preamble))) {
+		os << '}';
+		++length;
+	}
+	return length;
+}
+
+
 bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 {
 	pos_type const len = str.length();
@@ -951,6 +1013,14 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 						++i;
 						break;
 					}
+				}
+				string preamble;
+				if (Encodings::isKnownLangChar(c, preamble)) {
+					column +=
+						knownLangChars(os, c, preamble,
+							running_change,
+							encoding, i) - 1;
+					break;
 				}
 				docstring const latex = encoding.latexChar(c);
 				if (latex.length() > 1 &&

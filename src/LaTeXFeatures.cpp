@@ -186,6 +186,20 @@ static string const changetracking_none_def =
 	"\\newcommand{\\lyxadded}[3]{#3}\n"
 	"\\newcommand{\\lyxdeleted}[3]{}\n";
 
+static string const textgreek_def =
+	"\\DeclareRobustCommand{\\greektext}{%\n"
+	" \\fontencoding{LGR}\\selectfont\n"
+	" \\def\\encodingdefault{LGR}}\n"
+	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
+	"\\DeclareFontEncoding{LGR}{}{}\n";
+
+static string const textcyr_def =
+	"\\DeclareRobustCommand{\\cyrtext}{%\n"
+	" \\fontencoding{T2A}\\selectfont\n"
+	" \\def\\encodingdefault{T2A}}\n"
+	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n"
+	"\\DeclareFontEncoding{T2A}{}{}\n";
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -617,6 +631,12 @@ string const LaTeXFeatures::getMacros() const
 
 	if (mustProvide("lyxarrow"))
 		macros << lyxarrow_def << '\n';
+
+	if (mustProvide("textgreek"))
+		macros << textgreek_def << '\n';
+
+	if (mustProvide("textcyr"))
+		macros << textcyr_def << '\n';
 
 	// quotes.
 	if (mustProvide("quotesinglbase"))
