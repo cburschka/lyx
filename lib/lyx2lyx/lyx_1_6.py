@@ -22,7 +22,7 @@ import re
 import unicodedata
 import sys, os
 
-from parser_tools import find_token, find_end_of, find_tokens
+from parser_tools import find_token, find_end_of, find_tokens, get_value
 
 ####################################################################
 # Private helper functions
@@ -480,6 +480,34 @@ def revert_inset_info(document):
             document.body[i : (j + 1)] = [type + ':' + arg]
 
 
+def convert_pdf_options(document):
+    # Set the pdfusetitle tag, delete the pdf_store_options,
+    # set quotes for bookmarksopenlevel"
+    has_hr = get_value(document.header, "\\use_hyperref", 0, default = "0")
+    if has_hr == "1":
+        k = find_token(document.header, "\\use_hyperref", 0)
+        document.header.insert(k + 1, "\\pdf_pdfusetitle true")
+    k = find_token(document.header, "\\pdf_store_options", 0)
+    if k != -1:
+        del document.header[k]
+    i = find_token(document.header, "\\pdf_bookmarksopenlevel", k)
+    if i == -1: return
+    document.header[i] = document.header[i].replace('"', '')
+
+
+def revert_pdf_options(document):
+    # reset the pdfusetitle tag, set quotes for bookmarksopenlevel"
+    k = find_token(document.header, "\\use_hyperref", 0)
+    i = find_token(document.header, "\\pdf_pdfusetitle", k)
+    if i != -1:
+        del document.header[i]
+    i = find_token(document.header, "\\pdf_bookmarksopenlevel", k)
+    if i == -1: return
+    values = document.header[i].split()
+    values[1] = ' "' + values[1] + '"'
+    document.header[i] = ''.join(values)
+
+
 ##
 # Conversion hub
 #
@@ -501,10 +529,12 @@ convert = [[277, [fix_wrong_tables]],
            [290, []],
            [291, []],
            [292, []],
-           [293, []]
+           [293, []],
+           [294, [convert_pdf_options]]
           ]
 
-revert =  [[292, [revert_inset_info]],
+revert =  [[293, [revert_pdf_options]],
+           [292, [revert_inset_info]],
            [291, [revert_japanese, revert_japanese_encoding]],
            [290, [revert_vietnamese]],
            [289, [revert_wraptable]],

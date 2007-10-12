@@ -188,8 +188,6 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 		lex >> pagemode;
 	} else if (token == "\\pdf_quoted_options") {
 		lex >> quoted_options;
-	} else if (token == "\\pdf_store_options") {
-		//leftover from previous option; intended for later removal
 	} else {
 		return token;
 	}
