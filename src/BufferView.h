@@ -290,8 +290,8 @@ private:
 
 	void updateOffsetRef();
 
-	struct BufferViewPrivate;
-	BufferViewPrivate & d;
+	struct Private;
+	Private * const d;
 };
 
 /// some space for drawing the 'nested' markers (in pixel)
