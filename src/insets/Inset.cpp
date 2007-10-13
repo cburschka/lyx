@@ -129,7 +129,7 @@ Dimension const Inset::dimension(BufferView const & bv) const
 }
 
 
-InsetCode Inset::translate(std::string const & name)
+InsetCode insetCode(std::string const & name)
 {
 	static TranslatorMap const translator = build_translator();
 

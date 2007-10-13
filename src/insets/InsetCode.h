@@ -15,6 +15,8 @@
 #ifndef INSETCODE_H
 #define INSETCODE_H
 
+#include <string>
+
 namespace lyx {
 
 /** This is not quite the correct place for this enum. I think
@@ -124,6 +126,12 @@ enum InsetCode {
 	///
 	INFO_CODE,
 };
+
+/** returns the InsetCode corresponding to the \c name.
+*  Eg, translate("branch") == BRANCH_CODE
+* implemented in 'Inset.cpp'.
+*/
+InsetCode insetCode(std::string const & name);
 
 } // namespace lyx
 

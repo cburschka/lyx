@@ -1687,7 +1687,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			string action;
 			string const name = split(argument, action, ' ');
 			InsetCode const inset_code =
-				Inset::translate(name);
+				insetCode(name);
 
 			Cursor & cur = view()->cursor();
 			FuncRequest fr(LFUN_INSET_TOGGLE, action);

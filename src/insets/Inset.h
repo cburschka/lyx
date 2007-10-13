@@ -266,11 +266,6 @@ public:
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 
-	/** returns the InsetCode corresponding to the \c name.
-	 *  Eg, translate("branch") == BRANCH_CODE
-	 */
-	static InsetCode translate(std::string const & name);
-
 	/// returns true if the inset can hold an inset of given type
 	virtual bool insetAllowed(InsetCode) const { return false; }
 	/// if this inset has paragraphs should they be output all as default
