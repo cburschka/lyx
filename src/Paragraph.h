@@ -20,7 +20,7 @@
 #include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
 
-#include "insets/Inset.h" // only for InsetCode
+#include "insets/InsetCode.h"
 
 
 namespace lyx {
@@ -318,10 +318,8 @@ public:
 	}
 
 	///
-	bool isHfill(pos_type pos) const {
-		return isInset(pos)
-		       && getInset(pos)->lyxCode() == HFILL_CODE;
-	}
+	bool isHfill(pos_type pos) const;
+
 	/// hinted by profiler
 	bool isInset(pos_type pos) const {
 		return getChar(pos) == static_cast<value_type>(META_INSET);

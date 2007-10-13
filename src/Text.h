@@ -30,6 +30,7 @@ class FuncStatus;
 class Inset;
 class Color_color;
 class Cursor;
+class Lexer;
 class PainterInfo;
 class Spacing;
 

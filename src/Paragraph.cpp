@@ -2429,6 +2429,13 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 }
 
 
+bool Paragraph::isHfill(pos_type pos) const
+{
+	return isInset(pos)
+		&& getInset(pos)->lyxCode() == HFILL_CODE;
+}
+
+
 bool Paragraph::isNewline(pos_type pos) const
 {
 	return isInset(pos)
