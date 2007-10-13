@@ -12,6 +12,8 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
+#include "insets/InsetCode.h"
+
 #include "support/FileName.h"
 #include "support/limited_stack.h"
 #include "support/types.h"
@@ -366,11 +368,8 @@ public:
 
 	/// Replace the inset contents for insets which InsetCode is equal
 	/// to the passed \p inset_code.
-	/// FIXME: we pass InsetCode as an int in order to avoid the inclusion
-	/// of "Inset.h". It would be better to put InsetCode in its own
-	/// header.
 	void changeRefsIfUnique(docstring const & from, docstring const & to,
-		int inset_code);
+		InsetCode code);
 
 /// get source code (latex/docbook) for some paragraphs, or all paragraphs
 /// including preamble

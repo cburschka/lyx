@@ -1834,10 +1834,8 @@ void Buffer::buildMacros()
 
 
 void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
-	int inset_code)
+	InsetCode code)
 {
-	InsetCode code = static_cast<InsetCode>(inset_code);
-
 	//FIXME: This does not work for child documents yet.
 	BOOST_ASSERT(code == CITE_CODE || code == REF_CODE);
 	// Check if the label 'from' appears more than once
