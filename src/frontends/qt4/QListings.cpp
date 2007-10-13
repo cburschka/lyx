@@ -50,7 +50,7 @@ namespace frontend {
 char const * languages[] =
 { "no language", "ABAP", "ACSL", "Ada", "ALGOL", "Assembler", "Awk", "bash", "Basic", "C",
   "C++", "Caml", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
-  "Eiffel", "Elan", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
+  "Eiffel", "Elan", "erlang", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
   "Java", "JVMIS", "ksh", "Lingo", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
   "MetaPost", "Miranda", "ML", "Modula-2", "MuPAD", "NASTRAN", "Oberon-2", "OCL", "Octave",
   "Oz", "Pascal", "Perl", "PHP", "PL/I", "Plasm", "PostScript", "POV", "Prolog", "Promela",
@@ -62,7 +62,7 @@ char const * languages[] =
 char const * languages_gui[] =
 { N_("No language"), "ABAP", "ACSL", "Ada", "ALGOL", "Assembler", "Awk", "bash", "Basic",
   "C", "C++", "Caml", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
-  "Eiffel", "Elan", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
+  "Eiffel", "Elan", "Erlang", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
   "Java", "JVMIS", "ksh", "Lingo", "Lisp", "Logo", "make", "Mathematica", "Matlab", "Mercury",
   "MetaPost", "Miranda", "ML", "Modula-2", "MuPAD", "NASTRAN", "Oberon-2", "OCL", "Octave",
   "Oz", "Pascal", "Perl", "PHP", "PL/I", "Plasm", "PostScript", "POV", "Prolog", "Promela",
