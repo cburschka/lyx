@@ -641,15 +641,19 @@ int Paragraph::Pimpl::knownLangChars(odocstream & os,
 				     Encoding const & encoding,
 				     pos_type & i)
 {
-	// The latex command is "\textLANG{<spec>}" and we have to retain
-	// "\textLANG{<spec>" for the first char but only "<spec>" for all
-	// subsequent chars (this also works when we are passed untranslated
-	// unicode).
+	// When the character is marked by the proper language, we simply
+	// get its code point in some encoding, otherwise we get the
+	// translation specified in the unicodesymbols file, which is
+	// something like "\textLANG{<spec>}". So, we have to retain
+	// "\textLANG{<spec>" for the first char but only "<spec>" for
+	// all subsequent chars.
 	docstring const latex1 = rtrim(encoding.latexChar(c), "}");
 	int length = latex1.length();
 	os << latex1;
 	while (i < size() - 1) {
 		char_type next = getChar(i + 1);
+		// Stop here if next character belongs to another
+		// language or there is a change tracking status.
 		if (!Encodings::isKnownLangChar(next, preamble) ||
 		    runningChange != lookupChange(i + 1))
 			break;
@@ -665,6 +669,7 @@ int Paragraph::Pimpl::knownLangChars(odocstream & os,
 			if (cit->pos() >= i + 1)
 				break;
 		}
+		// Stop here if there is a font attribute change.
 		if (found && cit != end && prev_font != cit->font())
 			break;
 		docstring const latex = rtrim(encoding.latexChar(next), "}");
@@ -679,8 +684,8 @@ int Paragraph::Pimpl::knownLangChars(odocstream & os,
 		}
 		++i;
 	}
-	// When the proper language is set, we are passed the straight unicode,
-	// so we should not try to close the \textLANG command.
+	// When the proper language is set, we are simply passed a code
+	// point, so we should not try to close the \textLANG command.
 	if (prefixIs(latex1, from_ascii("\\" + preamble))) {
 		os << '}';
 		++length;
