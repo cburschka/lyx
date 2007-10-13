@@ -1376,17 +1376,17 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 		name = from_ascii(layout->latexname());
 
 	// for captions, we just take the caption type
-	Inset * caption_inset = cur.innerInsetOfType(Inset::CAPTION_CODE);
+	Inset * caption_inset = cur.innerInsetOfType(CAPTION_CODE);
 	if (caption_inset)
 		name = from_ascii(static_cast<InsetCaption *>(caption_inset)->type());
 
 	// If none of the above worked, we'll see if we're inside various
 	// types of insets and take our abbreviation from them.
 	if (name.empty()) {
-		Inset::Code const codes[] = {
-			Inset::FLOAT_CODE,
-			Inset::WRAP_CODE,
-			Inset::FOOT_CODE
+		InsetCode const codes[] = {
+			FLOAT_CODE,
+			WRAP_CODE,
+			FOOT_CODE
 		};
 		for (unsigned int i = 0; i < (sizeof codes / sizeof codes[0]); ++i) {
 			Inset * float_inset = cur.innerInsetOfType(codes[i]);

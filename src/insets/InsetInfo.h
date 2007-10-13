@@ -48,7 +48,7 @@ public:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	Inset::Code lyxCode() const { return Inset::INFO_CODE; }
+	InsetCode lyxCode() const { return INFO_CODE; }
 	///
 	void setInfo(std::string const & info);
 	///

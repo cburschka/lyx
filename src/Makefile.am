@@ -491,6 +491,7 @@ liblyxinsets_la_SOURCES = \
 	insets/InsetCaption.h \
 	insets/InsetCitation.cpp \
 	insets/InsetCitation.h \
+	insets/InsetCode.h \
 	insets/InsetCollapsable.cpp \
 	insets/InsetCollapsable.h \
 	insets/InsetCommand.cpp \

@@ -65,7 +65,7 @@ public:
 	/// identifies macro templates
 	MathMacroTemplate const * asMacroTemplate() const { return this; }
 	///
-	Inset::Code lyxCode() const { return MATHMACRO_CODE; }
+	InsetCode lyxCode() const { return MATHMACRO_CODE; }
 
 private:
 	virtual Inset * clone() const;

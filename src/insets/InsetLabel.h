@@ -26,7 +26,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const { return Inset::LABEL_CODE; }
+	InsetCode lyxCode() const { return LABEL_CODE; }
 	/// Appends \c list with this label
 	void getLabelList(Buffer const &, std::vector<docstring> & list) const;
 	///

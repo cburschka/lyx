@@ -42,7 +42,7 @@ public:
 	///
 	~InsetERT();
 	///
-	Inset::Code lyxCode() const { return Inset::ERT_CODE; }
+	InsetCode lyxCode() const { return ERT_CODE; }
 	///
 	docstring name() const { return from_ascii("ERT"); }
 	///
@@ -52,7 +52,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	bool insetAllowed(Inset::Code code) const;
+	bool insetAllowed(InsetCode code) const;
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;

@@ -27,7 +27,7 @@ public:
 	///
 	docstring const getScreenLabel(Buffer const &) const;
 	///
-	Inset::Code lyxCode() const { return Inset::HFILL_CODE; }
+	InsetCode lyxCode() const { return HFILL_CODE; }
 	///
 	int plaintext(Buffer const &, odocstream &,
 		      OutputParams const &) const;

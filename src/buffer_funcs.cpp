@@ -655,7 +655,7 @@ void loadChildDocuments(Buffer const & buf)
 	bool parse_error = false;
 		
 	for (InsetIterator it = inset_iterator_begin(buf.inset()); it; ++it) {
-		if (it->lyxCode() != Inset::INCLUDE_CODE)
+		if (it->lyxCode() != INCLUDE_CODE)
 			continue;
 		InsetInclude const & inset = static_cast<InsetInclude const &>(*it);
 		InsetCommandParams const & ip = inset.params();

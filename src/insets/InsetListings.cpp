@@ -329,7 +329,7 @@ docstring InsetListings::getCaption(Buffer const & buf,
 		InsetList::const_iterator it = pit->insetlist.begin();
 		for (; it != pit->insetlist.end(); ++it) {
 			Inset & inset = *it->inset;
-			if (inset.lyxCode() == Inset::CAPTION_CODE) {
+			if (inset.lyxCode() == CAPTION_CODE) {
 				odocstringstream ods;
 				InsetCaption * ins =
 					static_cast<InsetCaption *>(it->inset);

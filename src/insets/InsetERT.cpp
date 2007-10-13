@@ -400,7 +400,7 @@ void InsetERT::setButtonLabel()
 }
 
 
-bool InsetERT::insetAllowed(Inset::Code /* code */) const
+bool InsetERT::insetAllowed(InsetCode /* code */) const
 {
 	return false;
 }

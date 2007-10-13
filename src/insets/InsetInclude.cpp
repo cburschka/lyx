@@ -151,7 +151,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cur.bv().buffer().changeRefsIfUnique(
 						from_utf8(par_old.getParamValue("label")),
 						from_utf8(par_new.getParamValue("label")),
-						Inset::REF_CODE);
+						REF_CODE);
 			}
 			set(p, cur.buffer());
 			cur.buffer().updateBibfilesCache();

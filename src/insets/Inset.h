@@ -15,6 +15,8 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
+#include "InsetCode.h"
+
 #include "Dimension.h"
 
 #include "support/docstream.h"
@@ -264,121 +266,13 @@ public:
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 
-	/** This is not quite the correct place for this enum. I think
-	    the correct would be to let each subclass of Inset declare
-	    its own enum code. Actually the notion of an Inset::Code
-	    should be avoided, but I am not sure how this could be done
-	    in a cleaner way. */
-	enum Code {
-		///
-		NO_CODE, // 0
-		///
-		TOC_CODE,  // do these insets really need a code? (ale)
-		///
-		QUOTE_CODE,
-		///
-		MARK_CODE,
-		///
-		REF_CODE,
-		///
-		URL_CODE, // 5
-		///
-		HTMLURL_CODE,
-		///
-		SEPARATOR_CODE,
-		///
-		ENDING_CODE,
-		///
-		LABEL_CODE,
-		///
-		NOTE_CODE, // 10
-		///
-		ACCENT_CODE,
-		///
-		MATH_CODE,
-		///
-		INDEX_CODE,
-		///
-		INCLUDE_CODE,
-		///
-		GRAPHICS_CODE, // 15
-		///
-		BIBITEM_CODE,
-		///
-		BIBTEX_CODE,
-		///
-		TEXT_CODE,
-		///
-		ERT_CODE,
-		///
-		FOOT_CODE, // 20
-		///
-		MARGIN_CODE,
-		///
-		FLOAT_CODE,
-		///
-		WRAP_CODE,
-		///
-		SPACE_CODE, // 25
-		///
-		SPECIALCHAR_CODE,
-		///
-		TABULAR_CODE,
-		///
-		EXTERNAL_CODE,
-#if 0
-		///
-		THEOREM_CODE,
-#endif
-		///
-		CAPTION_CODE,
-		///
-		MATHMACRO_CODE, // 30
-		///
-		CITE_CODE,
-		///
-		FLOAT_LIST_CODE,
-		///
-		INDEX_PRINT_CODE,
-		///
-		OPTARG_CODE, // 35
-		///
-		ENVIRONMENT_CODE,
-		///
-		HFILL_CODE,
-		///
-		NEWLINE_CODE,
-		///
-		LINE_CODE,
-		///
-		BRANCH_CODE, // 40
-		///
-		BOX_CODE,
-		///
-		FLEX_CODE,
-		///
-		VSPACE_CODE,
-		///
-		MATHMACROARG_CODE,
-		///
-		NOMENCL_CODE, // 45
-		///
-		NOMENCL_PRINT_CODE,
-		///
-		PAGEBREAK_CODE,
-		///
-		LISTINGS_CODE,
-		///
-		INFO_CODE,
-	};
-
-	/** returns the Code corresponding to the \c name.
+	/** returns the InsetCode corresponding to the \c name.
 	 *  Eg, translate("branch") == BRANCH_CODE
 	 */
-	static Code translate(std::string const & name);
+	static InsetCode translate(std::string const & name);
 
 	/// returns true if the inset can hold an inset of given type
-	virtual bool insetAllowed(Code) const { return false; }
+	virtual bool insetAllowed(InsetCode) const { return false; }
 	/// if this inset has paragraphs should they be output all as default
 	/// paragraphs with the default layout of the text class?
 	virtual bool forceDefaultParagraphs(idx_type) const { return false; }
@@ -457,7 +351,7 @@ public:
 
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual Code lyxCode() const { return NO_CODE; }
+	virtual InsetCode lyxCode() const { return NO_CODE; }
 
 	/// -1: text mode, 1: math mode, 0 undecided
 	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
@@ -533,18 +427,6 @@ bool isEditableInset(Inset const * inset);
  * and points to a highly editable inset
  */
 bool isHighlyEditableInset(Inset const * inset);
-
-/** \c Inset_code is a wrapper for Inset::Code.
- *  It can be forward-declared and passed as a function argument without
- *  having to expose Inset.h.
- */
-class Inset_code {
-	Inset::Code val_;
-public:
-	Inset_code(Inset::Code val) : val_(val) {}
-	operator Inset::Code() const { return val_; }
-};
-
 
 
 } // namespace lyx

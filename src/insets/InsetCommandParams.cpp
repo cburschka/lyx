@@ -36,7 +36,7 @@ using support::WarningException;
 
 
 //FIXME There is no reason now for this to take a string argument.
-//It'd be much more robust if it took an Inset::Code, since then
+//It'd be much more robust if it took an InsetCode, since then
 //the compiler would do some checking for us.
 InsetCommandParams::InsetCommandParams(string const & insetType)
 	: insetType_(insetType), preview_(false)

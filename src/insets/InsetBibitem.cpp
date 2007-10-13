@@ -67,7 +67,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (p["key"] != params()["key"])
 			cur.bv().buffer().changeRefsIfUnique(params()["key"],
-						       p["key"], Inset::CITE_CODE);
+						       p["key"], CITE_CODE);
 		setParams(p);
 	}
 

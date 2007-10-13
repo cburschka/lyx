@@ -652,7 +652,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// other feature like "automatic labelling".
 			/*
 			Paragraph & par = pars_[cur.pit()];
-			if (inset->lyxCode() == Inset::LABEL_CODE
+			if (inset->lyxCode() == LABEL_CODE
 				&& par.layout()->labeltype == LABEL_COUNTER) {
 				// Go to the end of the paragraph
 				// Warning: Because of Change-Tracking, the last
@@ -1596,7 +1596,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	Font const & font = cur.real_current_font;
 	bool enable = true;
-	Inset::Code code = Inset::NO_CODE;
+	InsetCode code = NO_CODE;
 
 	switch (cmd.action) {
 
@@ -1619,88 +1619,88 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
 		if (cmd.argument() == "bibitem")
-			code = Inset::BIBITEM_CODE;
+			code = BIBITEM_CODE;
 		else if (cmd.argument() == "bibtex")
-			code = Inset::BIBTEX_CODE;
+			code = BIBTEX_CODE;
 		else if (cmd.argument() == "box")
-			code = Inset::BOX_CODE;
+			code = BOX_CODE;
 		else if (cmd.argument() == "branch")
-			code = Inset::BRANCH_CODE;
+			code = BRANCH_CODE;
 		else if (cmd.argument() == "citation")
-			code = Inset::CITE_CODE;
+			code = CITE_CODE;
 		else if (cmd.argument() == "ert")
-			code = Inset::ERT_CODE;
+			code = ERT_CODE;
 		else if (cmd.argument() == "external")
-			code = Inset::EXTERNAL_CODE;
+			code = EXTERNAL_CODE;
 		else if (cmd.argument() == "float")
-			code = Inset::FLOAT_CODE;
+			code = FLOAT_CODE;
 		else if (cmd.argument() == "graphics")
-			code = Inset::GRAPHICS_CODE;
+			code = GRAPHICS_CODE;
 		else if (cmd.argument() == "include")
-			code = Inset::INCLUDE_CODE;
+			code = INCLUDE_CODE;
 		else if (cmd.argument() == "index")
-			code = Inset::INDEX_CODE;
+			code = INDEX_CODE;
 		else if (cmd.argument() == "nomenclature")
-			code = Inset::NOMENCL_CODE;
+			code = NOMENCL_CODE;
 		else if (cmd.argument() == "label")
-			code = Inset::LABEL_CODE;
+			code = LABEL_CODE;
 		else if (cmd.argument() == "note")
-			code = Inset::NOTE_CODE;
+			code = NOTE_CODE;
 		else if (cmd.argument() == "ref")
-			code = Inset::REF_CODE;
+			code = REF_CODE;
 		else if (cmd.argument() == "toc")
-			code = Inset::TOC_CODE;
+			code = TOC_CODE;
 		else if (cmd.argument() == "url")
-			code = Inset::URL_CODE;
+			code = URL_CODE;
 		else if (cmd.argument() == "vspace")
-			code = Inset::VSPACE_CODE;
+			code = VSPACE_CODE;
 		else if (cmd.argument() == "wrap")
-			code = Inset::WRAP_CODE;
+			code = WRAP_CODE;
 		else if (cmd.argument() == "listings")
-			code = Inset::LISTINGS_CODE;
+			code = LISTINGS_CODE;
 		break;
 
 	case LFUN_ERT_INSERT:
-		code = Inset::ERT_CODE;
+		code = ERT_CODE;
 		break;
 	case LFUN_LISTING_INSERT:
-	    code = Inset::LISTINGS_CODE;
+	    code = LISTINGS_CODE;
 		break;
 	case LFUN_FOOTNOTE_INSERT:
-		code = Inset::FOOT_CODE;
+		code = FOOT_CODE;
 		break;
 	case LFUN_TABULAR_INSERT:
-		code = Inset::TABULAR_CODE;
+		code = TABULAR_CODE;
 		break;
 	case LFUN_MARGINALNOTE_INSERT:
-		code = Inset::MARGIN_CODE;
+		code = MARGIN_CODE;
 		break;
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
-		code = Inset::FLOAT_CODE;
+		code = FLOAT_CODE;
 		break;
 	case LFUN_WRAP_INSERT:
-		code = Inset::WRAP_CODE;
+		code = WRAP_CODE;
 		break;
 	case LFUN_FLOAT_LIST:
-		code = Inset::FLOAT_LIST_CODE;
+		code = FLOAT_LIST_CODE;
 		break;
 #if 0
 	case LFUN_LIST_INSERT:
-		code = Inset::LIST_CODE;
+		code = LIST_CODE;
 		break;
 	case LFUN_THEOREM_INSERT:
-		code = Inset::THEOREM_CODE;
+		code = THEOREM_CODE;
 		break;
 #endif
 	case LFUN_CAPTION_INSERT:
-		code = Inset::CAPTION_CODE;
+		code = CAPTION_CODE;
 		break;
 	case LFUN_NOTE_INSERT:
-		code = Inset::NOTE_CODE;
+		code = NOTE_CODE;
 		break;
 	case LFUN_FLEX_INSERT: {
-		code = Inset::FLEX_CODE;
+		code = FLEX_CODE;
 		string s = cmd.getArg(0);
 		InsetLayout il =  cur.buffer().params().getTextClass().insetlayout(from_utf8(s));
 		if (il.lyxtype != "charstyle" &&
@@ -1710,45 +1710,45 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 		}
 	case LFUN_BOX_INSERT:
-		code = Inset::BOX_CODE;
+		code = BOX_CODE;
 		break;
 	case LFUN_BRANCH_INSERT:
-		code = Inset::BRANCH_CODE;
+		code = BRANCH_CODE;
 		if (cur.buffer().getMasterBuffer()->params().branchlist().empty())
 			enable = false;
 		break;
 	case LFUN_LABEL_INSERT:
-		code = Inset::LABEL_CODE;
+		code = LABEL_CODE;
 		break;
 	case LFUN_INFO_INSERT:
-		code = Inset::INFO_CODE;
+		code = INFO_CODE;
 		break;
 	case LFUN_OPTIONAL_INSERT:
-		code = Inset::OPTARG_CODE;
+		code = OPTARG_CODE;
 		enable = numberOfOptArgs(cur.paragraph())
 			< cur.paragraph().layout()->optionalargs;
 		break;
 	case LFUN_ENVIRONMENT_INSERT:
-		code = Inset::BOX_CODE;
+		code = BOX_CODE;
 		break;
 	case LFUN_INDEX_INSERT:
-		code = Inset::INDEX_CODE;
+		code = INDEX_CODE;
 		break;
 	case LFUN_INDEX_PRINT:
-		code = Inset::INDEX_PRINT_CODE;
+		code = INDEX_PRINT_CODE;
 		break;
 	case LFUN_NOMENCL_INSERT:
-		code = Inset::NOMENCL_CODE;
+		code = NOMENCL_CODE;
 		break;
 	case LFUN_NOMENCL_PRINT:
-		code = Inset::NOMENCL_PRINT_CODE;
+		code = NOMENCL_PRINT_CODE;
 		break;
 	case LFUN_TOC_INSERT:
-		code = Inset::TOC_CODE;
+		code = TOC_CODE;
 		break;
 	case LFUN_HTML_INSERT:
 	case LFUN_URL_INSERT:
-		code = Inset::URL_CODE;
+		code = URL_CODE;
 		break;
 	case LFUN_QUOTE_INSERT:
 		// always allow this, since we will inset a raw quote
@@ -1760,12 +1760,12 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MENU_SEPARATOR_INSERT:
 	case LFUN_DOTS_INSERT:
 	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
-		code = Inset::SPECIALCHAR_CODE;
+		code = SPECIALCHAR_CODE;
 		break;
 	case LFUN_SPACE_INSERT:
 		// slight hack: we know this is allowed in math mode
 		if (cur.inTexted())
-			code = Inset::SPACE_CODE;
+			code = SPACE_CODE;
 		break;
 
 	case LFUN_INSET_MODIFY:
@@ -1955,7 +1955,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return false;
 	}
 
-	if (code != Inset::NO_CODE
+	if (code != NO_CODE
 	    && (cur.empty() || !cur.inset().insetAllowed(code)))
 		enable = false;
 

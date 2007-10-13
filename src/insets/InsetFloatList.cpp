@@ -60,9 +60,9 @@ docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
 }
 
 
-Inset::Code InsetFloatList::lyxCode() const
+InsetCode InsetFloatList::lyxCode() const
 {
-	return Inset::FLOAT_LIST_CODE;
+	return FLOAT_LIST_CODE;
 }
 
 

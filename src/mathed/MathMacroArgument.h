@@ -31,7 +31,7 @@ public:
 	///
 	std::size_t number() const { return number_; }
 	///
-	Inset::Code lyxCode() const { return MATHMACROARG_CODE; }
+	InsetCode lyxCode() const { return MATHMACROARG_CODE; }
 
 	///
 	void normalize(NormalStream &) const;

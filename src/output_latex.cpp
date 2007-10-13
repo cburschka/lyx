@@ -226,7 +226,7 @@ int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
 	InsetList::const_iterator it = par.insetlist.begin();
 	InsetList::const_iterator end = par.insetlist.end();
 	for (; it != end && number > 0 ; ++it) {
-		if (it->inset->lyxCode() == Inset::OPTARG_CODE) {
+		if (it->inset->lyxCode() == OPTARG_CODE) {
 			InsetOptArg * ins =
 				static_cast<InsetOptArg *>(it->inset);
 			lines += ins->latexOptional(buf, os, runparams);

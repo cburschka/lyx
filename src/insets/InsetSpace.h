@@ -76,7 +76,7 @@ public:
 	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	///
-	Inset::Code lyxCode() const { return Inset::SPACE_CODE; }
+	InsetCode lyxCode() const { return SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 

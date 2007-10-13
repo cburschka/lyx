@@ -26,7 +26,7 @@ public:
 	///
 	InsetFoot(BufferParams const &);
 	///
-	Inset::Code lyxCode() const { return Inset::FOOT_CODE; }
+	InsetCode lyxCode() const { return FOOT_CODE; }
 	///
 	docstring name() const { return from_ascii("Foot"); }
 	///

@@ -36,7 +36,7 @@ public:
 	///
 	virtual bool neverIndent(Buffer const &) const { return true; }
 	///
-	virtual Inset::Code lyxCode() const;
+	virtual InsetCode lyxCode() const;
 	///
 	virtual docstring const editMessage() const;
 	///
@@ -53,7 +53,7 @@ public:
 	///
 	virtual Inset * editXY(Cursor & cur, int x, int y);
 	///
-	bool insetAllowed(Inset::Code code) const;
+	bool insetAllowed(InsetCode code) const;
 	///
 	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
@@ -108,7 +108,7 @@ Inset::DisplayType InsetCaption::display() const
 
 
 inline
-Inset::Code InsetCaption::lyxCode() const
+InsetCode InsetCaption::lyxCode() const
 {
 	return CAPTION_CODE;
 }

@@ -28,7 +28,7 @@ public:
 	InsetOptArg(BufferParams const &);
 
 	/// code of the inset
-	Inset::Code lyxCode() const { return Inset::OPTARG_CODE; }
+	InsetCode lyxCode() const { return OPTARG_CODE; }
 	/// return an message upon editing
 	virtual docstring const editMessage() const;
 

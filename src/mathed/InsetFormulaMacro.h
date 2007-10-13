@@ -54,7 +54,7 @@ public:
 		    OutputParams const &) const;
 
 	///
-	Inset::Code lyxCode() const { return MATHMACRO_CODE; }
+	InsetCode lyxCode() const { return MATHMACRO_CODE; }
 	///
 	docstring const & getInsetName() const { return name_; }
 	///

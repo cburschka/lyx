@@ -20,7 +20,7 @@
 #include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
 
-#include "insets/Inset.h" // only for Inset::Code
+#include "insets/Inset.h" // only for InsetCode
 
 
 namespace lyx {
@@ -160,7 +160,7 @@ public:
 	///
 	Inset * inInset() const;
 	///
-	Inset::Code ownerCode() const;
+	InsetCode ownerCode() const;
 	///
 	bool forceDefaultParagraphs() const;
 
@@ -307,7 +307,7 @@ public:
 	void insertInset(pos_type pos, Inset * inset,
 			 Font const &, Change const & change);
 	///
-	bool insetAllowed(Inset_code code);
+	bool insetAllowed(InsetCode code);
 	///
 	Inset * getInset(pos_type pos) {
 		return insetlist.get(pos);
@@ -320,7 +320,7 @@ public:
 	///
 	bool isHfill(pos_type pos) const {
 		return isInset(pos)
-		       && getInset(pos)->lyxCode() == Inset::HFILL_CODE;
+		       && getInset(pos)->lyxCode() == HFILL_CODE;
 	}
 	/// hinted by profiler
 	bool isInset(pos_type pos) const {

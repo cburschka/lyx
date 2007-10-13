@@ -50,7 +50,7 @@ public:
 	InsetCommandParams const & params() const;
 
 	///
-	Inset::Code lyxCode() const { return Inset::INCLUDE_CODE; }
+	InsetCode lyxCode() const { return INCLUDE_CODE; }
 	/** Fills \c list
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param list the list of labels in the child buffer.

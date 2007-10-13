@@ -393,8 +393,8 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		lex.pushToken(insetType);
 
 		//FIXME 
-		//Inset::Code const code = Inset::translate(insetType);
-		//if (code == Inset::NO_CODE) { choke as below; }
+		//InsetCode const code = Inset::translate(insetType);
+		//if (code == NO_CODE) { choke as below; }
 		//InsetCommandParams inscmd();
 		InsetCommandParams inscmd(insetType);
 		inscmd.read(lex);
@@ -513,7 +513,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		inset->read(buf, lex);
 
 // FIXME: hack..
-		if (inset->lyxCode() == Inset::MATHMACRO_CODE) {
+		if (inset->lyxCode() == MATHMACRO_CODE) {
 			MathMacroTemplate const * tmpl =
 				static_cast<MathMacroTemplate*>(inset.get());
 			MacroTable::globalMacros().insert

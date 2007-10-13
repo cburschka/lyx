@@ -28,7 +28,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const;
+	InsetCode lyxCode() const;
 	///
 	DisplayType display() const { return AlignCenter; }
 	///

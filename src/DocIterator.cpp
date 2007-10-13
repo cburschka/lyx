@@ -95,7 +95,7 @@ Inset * DocIterator::realInset() const
 {
 	BOOST_ASSERT(inTexted());
 	// if we are in a tabular, we need the cell
-	if (inset().lyxCode() == Inset::TABULAR_CODE) {
+	if (inset().lyxCode() == TABULAR_CODE) {
 		InsetTabular & tabular = static_cast<InsetTabular&>(inset());
 		return tabular.cell(idx()).get();
 	}

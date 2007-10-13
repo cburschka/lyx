@@ -29,7 +29,7 @@ public:
 	///
 	void read(Buffer const & buf, Lexer & lex);
 	///
-	Inset::Code lyxCode() const { return Inset::ENVIRONMENT_CODE; }
+	InsetCode lyxCode() const { return ENVIRONMENT_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;

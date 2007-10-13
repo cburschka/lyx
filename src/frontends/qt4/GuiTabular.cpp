@@ -952,7 +952,7 @@ bool GuiTabular::initialiseParams(string const & data)
 		// get the innermost tabular inset;
 		// assume that it is "ours"
 		for (int i = cur.depth() - 1; i >= 0; --i)
-			if (cur[i].inset().lyxCode() == Inset::TABULAR_CODE) {
+			if (cur[i].inset().lyxCode() == TABULAR_CODE) {
 				current_inset = static_cast<InsetTabular const *>(&cur[i].inset());
 				active_cell_ = cur[i].idx();
 				break;

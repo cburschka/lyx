@@ -902,8 +902,8 @@ boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const
 		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation
 		    == BufferParams::PARSEP_SKIP
-			&& par.ownerCode() != Inset::ERT_CODE
-			&& par.ownerCode() != Inset::LISTINGS_CODE
+			&& par.ownerCode() != ERT_CODE
+			&& par.ownerCode() != LISTINGS_CODE
 			&& pit > 0
 			&& ((layout->isParagraph() && par.getDepth() == 0)
 			    || (pars[pit - 1].layout()->isParagraph()

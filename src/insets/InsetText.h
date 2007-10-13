@@ -77,7 +77,7 @@ public:
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
 	///
-	Code lyxCode() const { return TEXT_CODE; }
+	InsetCode lyxCode() const { return TEXT_CODE; }
 	///
 	void setText(docstring const &, Font const &, bool trackChanges);
 	///
@@ -124,7 +124,7 @@ public:
 	///
 	ParagraphList const & paragraphs() const;
 	///
-	bool insetAllowed(Code) const { return true; }
+	bool insetAllowed(InsetCode) const { return true; }
 	///
 	bool allowSpellCheck() const { return true; }
 	/// should paragraph indendation be ommitted in any case?

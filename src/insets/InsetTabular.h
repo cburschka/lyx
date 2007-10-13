@@ -679,7 +679,7 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	bool insetAllowed(Inset::Code) const { return true; }
+	bool insetAllowed(InsetCode) const { return true; }
 	///
 	bool allowSpellCheck() const { return true; }
 	///
@@ -702,7 +702,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Code lyxCode() const { return Inset::TABULAR_CODE; }
+	InsetCode lyxCode() const { return TABULAR_CODE; }
 	/// get offset of this cursor slice relative to our upper left corner
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;

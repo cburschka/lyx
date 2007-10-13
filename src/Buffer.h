@@ -364,10 +364,10 @@ public:
 	///
 	void insertMacro(docstring const & name, MacroData const & data);
 
-	/// Replace the inset contents for insets which Inset::Code is equal
+	/// Replace the inset contents for insets which InsetCode is equal
 	/// to the passed \p inset_code.
-	/// FIXME: we pass Inset::Code as an int in order to avoid the inclusion
-	/// of "Inset.h". It would be better to put Inset::Code in its own
+	/// FIXME: we pass InsetCode as an int in order to avoid the inclusion
+	/// of "Inset.h". It would be better to put InsetCode in its own
 	/// header.
 	void changeRefsIfUnique(docstring const & from, docstring const & to,
 		int inset_code);

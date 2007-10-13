@@ -1124,7 +1124,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring old = label(r);
 			if (str != old) {
 				cur.bv().buffer().changeRefsIfUnique(old, str,
-							Inset::REF_CODE);
+							REF_CODE);
 				label(r, str);
 			}
 			break;
@@ -1363,7 +1363,7 @@ void InsetMathHull::revealCodes(Cursor & cur) const
 }
 
 
-Inset::Code InsetMathHull::lyxCode() const
+InsetCode InsetMathHull::lyxCode() const
 {
 	return MATH_CODE;
 }

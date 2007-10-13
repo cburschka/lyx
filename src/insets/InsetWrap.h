@@ -55,7 +55,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code lyxCode() const { return Inset::WRAP_CODE; }
+	InsetCode lyxCode() const { return WRAP_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
@@ -68,7 +68,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	bool insetAllowed(Inset::Code) const;
+	bool insetAllowed(InsetCode) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///

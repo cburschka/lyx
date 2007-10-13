@@ -119,7 +119,7 @@ namespace {
 
 /// Return an inset of this class if it exists at the current cursor position
 template <class T>
-T * getInsetByCode(Cursor const & cur, Inset::Code code)
+T * getInsetByCode(Cursor const & cur, InsetCode code)
 {
 	DocIterator it = cur;
 	Inset * inset = it.nextInset();
@@ -129,10 +129,10 @@ T * getInsetByCode(Cursor const & cur, Inset::Code code)
 }
 
 
-bool findInset(DocIterator & dit, vector<Inset_code> const & codes,
+bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 	bool same_content);
 
-bool findNextInset(DocIterator & dit, vector<Inset_code> const & codes,
+bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 	string const & contents)
 {
 	DocIterator tmpdit = dit;
@@ -154,7 +154,7 @@ bool findNextInset(DocIterator & dit, vector<Inset_code> const & codes,
 
 
 /// Looks for next inset with one of the the given code
-bool findInset(DocIterator & dit, vector<Inset_code> const & codes,
+bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 	bool same_content)
 {
 	string contents;
@@ -186,14 +186,14 @@ bool findInset(DocIterator & dit, vector<Inset_code> const & codes,
 
 
 /// Looks for next inset with the given code
-void findInset(DocIterator & dit, Inset_code code, bool same_content)
+void findInset(DocIterator & dit, InsetCode code, bool same_content)
 {
-	findInset(dit, vector<Inset_code>(1, code), same_content);
+	findInset(dit, vector<InsetCode>(1, code), same_content);
 }
 
 
 /// Moves cursor to the next inset with one of the given codes.
-void gotoInset(BufferView * bv, vector<Inset_code> const & codes,
+void gotoInset(BufferView * bv, vector<InsetCode> const & codes,
 	       bool same_content)
 {
 	Cursor tmpcur = bv->cursor();
@@ -208,9 +208,9 @@ void gotoInset(BufferView * bv, vector<Inset_code> const & codes,
 
 
 /// Moves cursor to the next inset with given code.
-void gotoInset(BufferView * bv, Inset_code code, bool same_content)
+void gotoInset(BufferView * bv, InsetCode code, bool same_content)
 {
-	gotoInset(bv, vector<Inset_code>(1, code), same_content);
+	gotoInset(bv, vector<InsetCode>(1, code), same_content);
 }
 
 
@@ -891,7 +891,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_LABEL_GOTO: {
 		flag.enabled(!cmd.argument().empty()
-		    || getInsetByCode<InsetRef>(cur, Inset::REF_CODE));
+		    || getInsetByCode<InsetRef>(cur, REF_CODE));
 		break;
 	}
 
@@ -934,7 +934,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		flag.enabled(cur.innerInsetOfType(Inset::TABULAR_CODE));
+		flag.enabled(cur.innerInsetOfType(TABULAR_CODE));
 		break;
 
 	case LFUN_LAYOUT:
@@ -943,31 +943,31 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 
 	case LFUN_INSET_SETTINGS: {
-		Inset::Code code = cur.inset().lyxCode();
+		InsetCode code = cur.inset().lyxCode();
 		bool enable = false;
 		switch (code) {
-			case Inset::TABULAR_CODE:
+			case TABULAR_CODE:
 				enable = cmd.argument() == "tabular";
 				break;
-			case Inset::ERT_CODE:
+			case ERT_CODE:
 				enable = cmd.argument() == "ert";
 				break;
-			case Inset::FLOAT_CODE:
+			case FLOAT_CODE:
 				enable = cmd.argument() == "float";
 				break;
-			case Inset::WRAP_CODE:
+			case WRAP_CODE:
 				enable = cmd.argument() == "wrap";
 				break;
-			case Inset::NOTE_CODE:
+			case NOTE_CODE:
 				enable = cmd.argument() == "note";
 				break;
-			case Inset::BRANCH_CODE:
+			case BRANCH_CODE:
 				enable = cmd.argument() == "branch";
 				break;
-			case Inset::BOX_CODE:
+			case BOX_CODE:
 				enable = cmd.argument() == "box";
 				break;
-			case Inset::LISTINGS_CODE:
+			case LISTINGS_CODE:
 				enable = cmd.argument() == "listings";
 				break;
 			default:
@@ -978,9 +978,9 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		flag.enabled(cur.inset().lyxCode() != Inset::ERT_CODE &&
-			cur.inset().lyxCode() != Inset::LISTINGS_CODE);
-		if (cur.inset().lyxCode() == Inset::CAPTION_CODE) {
+		flag.enabled(cur.inset().lyxCode() != ERT_CODE &&
+			cur.inset().lyxCode() != LISTINGS_CODE);
+		if (cur.inset().lyxCode() == CAPTION_CODE) {
 			FuncStatus flag;
 			if (cur.inset().getStatus(cur, cmd, flag))
 				return flag;
@@ -1061,7 +1061,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		if (label.empty()) {
 			InsetRef * inset =
 				getInsetByCode<InsetRef>(d->cursor_,
-							 Inset::REF_CODE);
+							 REF_CODE);
 			if (inset) {
 				label = inset->getParam("reference");
 				// persistent=false: use temp_bookmark
@@ -1128,13 +1128,13 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_NOTE_NEXT:
-		gotoInset(this, Inset::NOTE_CODE, false);
+		gotoInset(this, NOTE_CODE, false);
 		break;
 
 	case LFUN_REFERENCE_NEXT: {
-		vector<Inset_code> tmp;
-		tmp.push_back(Inset::LABEL_CODE);
-		tmp.push_back(Inset::REF_CODE);
+		vector<InsetCode> tmp;
+		tmp.push_back(LABEL_CODE);
+		tmp.push_back(REF_CODE);
 		gotoInset(this, tmp, true);
 		break;
 	}
@@ -1245,9 +1245,9 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
 		Cursor tmpcur = d->cursor_;
-		findInset(tmpcur, Inset::BIBTEX_CODE, false);
+		findInset(tmpcur, BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
-						Inset::BIBTEX_CODE);
+						BIBTEX_CODE);
 		if (inset) {
 			if (inset->addDatabase(to_utf8(cmd.argument())))
 				buffer_.updateBibfilesCache();
@@ -1257,9 +1257,9 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BIBTEX_DATABASE_DEL: {
 		Cursor tmpcur = d->cursor_;
-		findInset(tmpcur, Inset::BIBTEX_CODE, false);
+		findInset(tmpcur, BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
-						Inset::BIBTEX_CODE);
+						BIBTEX_CODE);
 		if (inset) {
 			if (inset->delDatabase(to_utf8(cmd.argument())))
 				buffer_.updateBibfilesCache();

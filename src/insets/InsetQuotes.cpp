@@ -385,9 +385,9 @@ Inset * InsetQuotes::clone() const
 }
 
 
-Inset::Code InsetQuotes::lyxCode() const
+InsetCode InsetQuotes::lyxCode() const
 {
-	return Inset::QUOTE_CODE;
+	return QUOTE_CODE;
 }
 
 

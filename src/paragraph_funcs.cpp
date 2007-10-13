@@ -316,7 +316,7 @@ int numberOfOptArgs(Paragraph const & par)
 	InsetList::const_iterator it = par.insetlist.begin();
 	InsetList::const_iterator end = par.insetlist.end();
 	for (; it != end ; ++it) {
-		if (it->inset->lyxCode() == Inset::OPTARG_CODE)
+		if (it->inset->lyxCode() == OPTARG_CODE)
 			++num;
 	}
 	return num;

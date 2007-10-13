@@ -100,7 +100,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	Inset::Code lyxCode() const;
+	InsetCode lyxCode() const;
 	// should this inset be handled like a normal character
 	bool isChar() const { return true; }
 

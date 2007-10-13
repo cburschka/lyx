@@ -360,11 +360,11 @@ int InsetFloat::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-bool InsetFloat::insetAllowed(Inset::Code code) const
+bool InsetFloat::insetAllowed(InsetCode code) const
 {
-	return code != Inset::FLOAT_CODE
-	    && code != Inset::FOOT_CODE
-	    && code != Inset::MARGIN_CODE;
+	return code != FLOAT_CODE
+	    && code != FOOT_CODE
+	    && code != MARGIN_CODE;
 }
 
 

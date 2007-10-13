@@ -43,7 +43,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Code lyxCode() const { return REF_CODE; }
+	InsetCode lyxCode() const { return REF_CODE; }
 	///
 	DisplayType display() const { return Inline; }
 	///

@@ -23,7 +23,7 @@ public:
 
 	InsetNewline() {}
 
-	Inset::Code lyxCode() const { return Inset::NEWLINE_CODE; }
+	InsetCode lyxCode() const { return NEWLINE_CODE; }
 
 	void metrics(MetricsInfo &, Dimension &) const;
 

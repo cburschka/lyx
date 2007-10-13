@@ -70,9 +70,9 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 }
 
 
-Inset::Code InsetNomencl::lyxCode() const
+InsetCode InsetNomencl::lyxCode() const
 {
-	return Inset::NOMENCL_CODE;
+	return NOMENCL_CODE;
 }
 
 
@@ -93,10 +93,10 @@ int InsetPrintNomencl::docbook(Buffer const & buf, odocstream & os,
 	os << "<glossary>\n";
 	int newlines = 2;
 	for (InsetIterator it = inset_iterator_begin(buf.inset()); it;) {
-		if (it->lyxCode() == Inset::NOMENCL_CODE) {
+		if (it->lyxCode() == NOMENCL_CODE) {
 			newlines += static_cast<InsetNomencl const &>(*it).docbookGlossary(os);
 			++it;
-		} else if(it->lyxCode() == Inset::NOTE_CODE &&
+		} else if(it->lyxCode() == NOTE_CODE &&
 			  static_cast<InsetNote const &>(*it).params().type == InsetNoteParams::Note) {
 			// Don't output anything nested in note insets
 			size_t const depth = it.depth();
@@ -118,9 +118,9 @@ void InsetPrintNomencl::validate(LaTeXFeatures & features) const
 }
 
 
-Inset::Code InsetPrintNomencl::lyxCode() const
+InsetCode InsetPrintNomencl::lyxCode() const
 {
-	return Inset::NOMENCL_PRINT_CODE;
+	return NOMENCL_PRINT_CODE;
 }
 
 

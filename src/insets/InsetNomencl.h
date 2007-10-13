@@ -34,7 +34,7 @@ public:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code lyxCode() const;
+	InsetCode lyxCode() const;
 	///
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
@@ -65,7 +65,7 @@ public:
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	///
-	Inset::Code lyxCode() const;
+	InsetCode lyxCode() const;
 	///
 	DisplayType display() const { return AlignCenter; }
 	///

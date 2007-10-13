@@ -27,7 +27,7 @@ public:
 	///
 	InsetMarginal(BufferParams const &);
 	///
-	Inset::Code lyxCode() const { return Inset::MARGIN_CODE; }
+	InsetCode lyxCode() const { return MARGIN_CODE; }
 	///
 	docstring name() const { return from_ascii("Marginal"); }
 	///

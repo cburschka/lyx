@@ -1171,7 +1171,9 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
 	BufferView & bv = cur.bv();
-	bv.mouseSetCursor(cur);
+	bool do_selection = cmd.button() == mouse_button::button1
+		&& cmd.argument() == "region-select";
+	bv.mouseSetCursor(cur, do_selection);
 	if (cmd.button() == mouse_button::button1) {
 		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;
 		// Update the cursor update flags as needed:

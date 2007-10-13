@@ -32,7 +32,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
+	InsetCode lyxCode() const { return BIBTEX_CODE; }
 	///
 	DisplayType display() const { return AlignCenter; }
 	///

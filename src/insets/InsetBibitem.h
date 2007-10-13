@@ -35,7 +35,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const { return Inset::BIBITEM_CODE; }
+	InsetCode lyxCode() const { return BIBITEM_CODE; }
 	///
 	docstring const getBibLabel() const;
 	///

@@ -57,7 +57,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset::Code lyxCode() const { return Inset::FLOAT_CODE; }
+	InsetCode lyxCode() const { return FLOAT_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
@@ -70,7 +70,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	bool insetAllowed(Inset::Code) const;
+	bool insetAllowed(InsetCode) const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */

@@ -177,7 +177,7 @@ Inset * InsetCaption::editXY(Cursor & cur, int x, int y)
 }
 
 
-bool InsetCaption::insetAllowed(Inset::Code code) const
+bool InsetCaption::insetAllowed(InsetCode code) const
 {
 	switch (code) {
 	case FLOAT_CODE:

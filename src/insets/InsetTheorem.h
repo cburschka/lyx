@@ -29,7 +29,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	Inset::Code lyxCode() const { return Inset::THEOREM_CODE; }
+	InsetCode lyxCode() const { return THEOREM_CODE; }
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

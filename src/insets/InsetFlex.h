@@ -48,7 +48,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	Inset::Code lyxCode() const { return Inset::FLEX_CODE; }
+	InsetCode lyxCode() const { return FLEX_CODE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

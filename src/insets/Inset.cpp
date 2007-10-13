@@ -47,69 +47,69 @@ namespace lyx {
 
 class InsetName {
 public:
-	InsetName(std::string const & n, Inset::Code c)
+	InsetName(std::string const & n, InsetCode c)
 		: name(n), code(c) {}
 	std::string name;
-	Inset::Code code;
+	InsetCode code;
 };
 
 
-typedef std::map<std::string, Inset::Code> TranslatorMap;
+typedef std::map<std::string, InsetCode> TranslatorMap;
 
 
 static TranslatorMap const build_translator()
 {
 	InsetName const insetnames[] = {
-		InsetName("toc", Inset::TOC_CODE),
-		InsetName("quote", Inset::QUOTE_CODE),
-		InsetName("ref", Inset::REF_CODE),
-		InsetName("url", Inset::URL_CODE),
-		InsetName("htmlurl", Inset::HTMLURL_CODE),
-		InsetName("separator", Inset::SEPARATOR_CODE),
-		InsetName("ending", Inset::ENDING_CODE),
-		InsetName("label", Inset::LABEL_CODE),
-		InsetName("note", Inset::NOTE_CODE),
-		InsetName("accent", Inset::ACCENT_CODE),
-		InsetName("math", Inset::MATH_CODE),
-		InsetName("index", Inset::INDEX_CODE),
-		InsetName("nomenclature", Inset::NOMENCL_CODE),
-		InsetName("include", Inset::INCLUDE_CODE),
-		InsetName("graphics", Inset::GRAPHICS_CODE),
-		InsetName("bibitem", Inset::BIBITEM_CODE),
-		InsetName("bibtex", Inset::BIBTEX_CODE),
-		InsetName("text", Inset::TEXT_CODE),
-		InsetName("ert", Inset::ERT_CODE),
-		InsetName("foot", Inset::FOOT_CODE),
-		InsetName("margin", Inset::MARGIN_CODE),
-		InsetName("float", Inset::FLOAT_CODE),
-		InsetName("wrap", Inset::WRAP_CODE),
-		InsetName("specialchar", Inset::SPECIALCHAR_CODE),
-		InsetName("tabular", Inset::TABULAR_CODE),
-		InsetName("external", Inset::EXTERNAL_CODE),
-		InsetName("caption", Inset::CAPTION_CODE),
-		InsetName("mathmacro", Inset::MATHMACRO_CODE),
-		InsetName("citation", Inset::CITE_CODE),
-		InsetName("floatlist", Inset::FLOAT_LIST_CODE),
-		InsetName("index_print", Inset::INDEX_PRINT_CODE),
-		InsetName("nomencl_print", Inset::NOMENCL_PRINT_CODE),
-		InsetName("optarg", Inset::OPTARG_CODE),
-		InsetName("environment", Inset::ENVIRONMENT_CODE),
-		InsetName("hfill", Inset::HFILL_CODE),
-		InsetName("newline", Inset::NEWLINE_CODE),
-		InsetName("line", Inset::LINE_CODE),
-		InsetName("branch", Inset::BRANCH_CODE),
-		InsetName("box", Inset::BOX_CODE),
-		InsetName("flex", Inset::FLEX_CODE),
-		InsetName("vspace", Inset::VSPACE_CODE),
-		InsetName("mathmacroarg", Inset::MATHMACROARG_CODE),
-		InsetName("listings", Inset::LISTINGS_CODE),
-		InsetName("info", Inset::INFO_CODE),
+		InsetName("toc", TOC_CODE),
+		InsetName("quote", QUOTE_CODE),
+		InsetName("ref", REF_CODE),
+		InsetName("url", URL_CODE),
+		InsetName("htmlurl", HTMLURL_CODE),
+		InsetName("separator", SEPARATOR_CODE),
+		InsetName("ending", ENDING_CODE),
+		InsetName("label", LABEL_CODE),
+		InsetName("note", NOTE_CODE),
+		InsetName("accent", ACCENT_CODE),
+		InsetName("math", MATH_CODE),
+		InsetName("index", INDEX_CODE),
+		InsetName("nomenclature", NOMENCL_CODE),
+		InsetName("include", INCLUDE_CODE),
+		InsetName("graphics", GRAPHICS_CODE),
+		InsetName("bibitem", BIBITEM_CODE),
+		InsetName("bibtex", BIBTEX_CODE),
+		InsetName("text", TEXT_CODE),
+		InsetName("ert", ERT_CODE),
+		InsetName("foot", FOOT_CODE),
+		InsetName("margin", MARGIN_CODE),
+		InsetName("float", FLOAT_CODE),
+		InsetName("wrap", WRAP_CODE),
+		InsetName("specialchar", SPECIALCHAR_CODE),
+		InsetName("tabular", TABULAR_CODE),
+		InsetName("external", EXTERNAL_CODE),
+		InsetName("caption", CAPTION_CODE),
+		InsetName("mathmacro", MATHMACRO_CODE),
+		InsetName("citation", CITE_CODE),
+		InsetName("floatlist", FLOAT_LIST_CODE),
+		InsetName("index_print", INDEX_PRINT_CODE),
+		InsetName("nomencl_print", NOMENCL_PRINT_CODE),
+		InsetName("optarg", OPTARG_CODE),
+		InsetName("environment", ENVIRONMENT_CODE),
+		InsetName("hfill", HFILL_CODE),
+		InsetName("newline", NEWLINE_CODE),
+		InsetName("line", LINE_CODE),
+		InsetName("branch", BRANCH_CODE),
+		InsetName("box", BOX_CODE),
+		InsetName("flex", FLEX_CODE),
+		InsetName("vspace", VSPACE_CODE),
+		InsetName("mathmacroarg", MATHMACROARG_CODE),
+		InsetName("listings", LISTINGS_CODE),
+		InsetName("info", INFO_CODE),
 	};
 
 	std::size_t const insetnames_size =
 		sizeof(insetnames) / sizeof(insetnames[0]);
 
-	std::map<std::string, Inset::Code> data;
+	std::map<std::string, InsetCode> data;
 	for (std::size_t i = 0; i != insetnames_size; ++i) {
 		InsetName const & var = insetnames[i];
 		data[var.name] = var.code;
@@ -129,7 +129,7 @@ Dimension const Inset::dimension(BufferView const & bv) const
 }
 
 
-Inset::Code Inset::translate(std::string const & name)
+InsetCode Inset::translate(std::string const & name)
 {
 	static TranslatorMap const translator = build_translator();
 

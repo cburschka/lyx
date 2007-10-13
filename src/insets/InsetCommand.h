@@ -56,7 +56,7 @@ public:
 	///
 	int docbook(Buffer const &, odocstream &, OutputParams const & runparams) const;
 	///
-	Inset::Code lyxCode() const { return Inset::NO_CODE; }
+	InsetCode lyxCode() const { return NO_CODE; }
 
 	///
 	InsetCommandParams const & params() const { return p_; }

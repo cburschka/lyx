@@ -33,7 +33,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset::Code lyxCode() const { return Inset::CITE_CODE; }
+	InsetCode lyxCode() const { return CITE_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;

@@ -31,7 +31,7 @@ public:
 	///
 	~InsetListings();
 	///
-	Inset::Code lyxCode() const { return Inset::LISTINGS_CODE; }
+	InsetCode lyxCode() const { return LISTINGS_CODE; }
 	/// lstinline is inlined, normal listing is displayed
 	virtual DisplayType display() const;
 	///

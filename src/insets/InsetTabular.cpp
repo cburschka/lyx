@@ -3794,7 +3794,7 @@ int InsetTabular::docbook(Buffer const & buf, odocstream & os,
 	// if the table is inside a float it doesn't need the informaltable
 	// wrapper. Search for it.
 	for (master = owner(); master; master = master->owner())
-		if (master->lyxCode() == Inset::FLOAT_CODE)
+		if (master->lyxCode() == FLOAT_CODE)
 			break;
 #endif
 

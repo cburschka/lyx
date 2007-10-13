@@ -114,7 +114,7 @@ public:
 	/// get notification when the cursor leaves this inset
 	bool notifyCursorLeaves(Cursor & cur);
 	///
-	//bool insetAllowed(Code code) const;
+	//bool insetAllowed(InsetCode code) const;
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 
@@ -202,7 +202,7 @@ public:
 	///
 	DisplayType display() const;
 	///
-	Code lyxCode() const;
+	InsetCode lyxCode() const;
 
 protected:
 	///

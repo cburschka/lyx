@@ -50,7 +50,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	Inset::Code lyxCode() const { return Inset::NOTE_CODE; }
+	InsetCode lyxCode() const { return NOTE_CODE; }
 	///
 	docstring name() const;
 	/// framed and shaded notes are displayed

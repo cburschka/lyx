@@ -574,8 +574,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			if (!view())
 				enable = false;
 			else {
-				Inset::Code ic = view()->cursor().inset().lyxCode();
-				enable = ic != Inset::ERT_CODE && ic != Inset::LISTINGS_CODE;
+				InsetCode ic = view()->cursor().inset().lyxCode();
+				enable = ic != ERT_CODE && ic != LISTINGS_CODE;
 			}
 		}
 		else if (name == "latexlog")
@@ -1686,7 +1686,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			string action;
 			string const name = split(argument, action, ' ');
-			Inset::Code const inset_code =
+			InsetCode const inset_code =
 				Inset::translate(name);
 
 			Cursor & cur = view()->cursor();
@@ -1697,7 +1697,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			InsetIterator const end = inset_iterator_end(inset);
 			for (; it != end; ++it) {
 				if (!it->asInsetMath()
-				    && (inset_code == Inset::NO_CODE
+				    && (inset_code == NO_CODE
 				    || inset_code == it->lyxCode())) {
 					Cursor tmpcur = cur;
 					tmpcur.pushLeft(*it);
@@ -1783,7 +1783,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				InsetIterator it  = inset_iterator_begin(inset);
 				InsetIterator const end = inset_iterator_end(inset);
 				for (; it != end; ++it)
-					if (it->lyxCode() == Inset::CITE_CODE)
+					if (it->lyxCode() == CITE_CODE)
 						it->dispatch(cur, fr);
 			}
 			

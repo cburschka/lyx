@@ -64,7 +64,7 @@ public:
 	///
 	virtual docstring const editMessage() const;
 	///
-	Inset::Code lyxCode() const { return Inset::BOX_CODE; }
+	InsetCode lyxCode() const { return BOX_CODE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

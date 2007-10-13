@@ -130,8 +130,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	// Convert newline to paragraph break in ERT inset.
 	// This should not be here!
 	if (pars[pit].inInset() &&
-	    (pars[pit].inInset()->lyxCode() == Inset::ERT_CODE ||
-		pars[pit].inInset()->lyxCode() == Inset::LISTINGS_CODE)) {
+	    (pars[pit].inInset()->lyxCode() == ERT_CODE ||
+		pars[pit].inInset()->lyxCode() == LISTINGS_CODE)) {
 		for (ParagraphList::size_type i = 0; i < insertion.size(); ++i) {
 			for (pos_type j = 0; j < insertion[i].size(); ++j) {
 				if (insertion[i].isNewline(j)) {
@@ -223,7 +223,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 		for (; lit != eit; ++lit) {
 			switch (lit->inset->lyxCode()) {
-			case Inset::TABULAR_CODE: {
+			case TABULAR_CODE: {
 				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
 				it->buffer(&buffer);
 				break;
@@ -373,7 +373,7 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 		// ERT paragraphs have the Language latex_language.
 		// This is invalid outside of ERT, so we need to change it
 		// to the buffer language.
-		if (it->ownerCode() == Inset::ERT_CODE || it->ownerCode() == Inset::LISTINGS_CODE) {
+		if (it->ownerCode() == ERT_CODE || it->ownerCode() == LISTINGS_CODE) {
 			it->changeLanguage(buf.params(), latex_language,
 					   buf.getLanguage());
 		}
@@ -442,7 +442,7 @@ void switchBetweenClasses(TextClassPtr const & c1,
 	// character styles
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		if (it->lyxCode() == Inset::FLEX_CODE) {
+		if (it->lyxCode() == FLEX_CODE) {
 			InsetFlex & inset =
 				static_cast<InsetFlex &>(*it);
 			string const name = inset.params().name;
