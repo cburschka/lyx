@@ -684,6 +684,20 @@
 #0x036d ""                         "" "combining" # COMBINING LATIN SMALL LETTER T
 #0x036e ""                         "" "combining" # COMBINING LATIN SMALL LETTER V
 #0x036f ""                         "" "combining" # COMBINING LATIN SMALL LETTER X
+0x0374 "\\textgreek{\char254}"    "textgreek" "" # GREEK NUMERAL SIGN
+0x0375 "\\textgreek{\char255}"    "textgreek" "" # GREEK LOWER NUMERAL SIGN
+0x037e "\\textgreek{\char63}"     "textgreek" "" # GREEK QUESTION MARK
+0x0384 "\\textgreek{\char39}"     "textgreek" "" # GREEK TONOS
+0x0385 "\\textgreek{\char35}"     "textgreek" "" # GREEK DIALYTIKA TONOS
+0x0386 "\\textgreek{\char39A}"    "textgreek" "" # GREEK CAPITAL LETTER ALPHA WITH TONOS
+0x0387 "\\textgreek{\char38}"     "textgreek" "" # GREEK ANO TELEIA
+0x0388 "\\textgreek{\char39E}"    "textgreek" "" # GREEK CAPITAL LETTER EPSILON WITH TONOS
+0x0389 "\\textgreek{\char39H}"    "textgreek" "" # GREEK CAPITAL LETTER ETA WITH TONOS
+0x038a "\\textgreek{\char39I}"    "textgreek" "" # GREEK CAPITAL LETTER IOTA WITH TONOS
+0x038c "\\textgreek{\char39O}"    "textgreek" "" # GREEK CAPITAL LETTER OMICRON WITH TONOS
+0x038e "\\textgreek{\char39U}"    "textgreek" "" # GREEK CAPITAL LETTER UPSILON WITH TONOS
+0x038f "\\textgreek{\char39W}"    "textgreek" "" # GREEK CAPITAL LETTER OMEGA WITH TONOS
+0x0390 "\\textgreek{\char242}"    "textgreek" "" # GREEK SMALL LETTER IOTA WITH DIALYTKA
 0x0391 "\\textgreek{A}"           "textgreek" "" # GREEK CAPITAL LETTER ALPHA
 0x0392 "\\textgreek{B}"           "textgreek" "" # GREEK CAPITAL LETTER BETA
 0x0393 "\\textgreek{G}"           "textgreek" "" # GREEK CAPITAL LETTER GAMMA
@@ -708,6 +722,13 @@
 0x03a7 "\\textgreek{Q}"           "textgreek" "" # GREEK CAPITAL LETTER CHI
 0x03a8 "\\textgreek{Y}"           "textgreek" "" # GREEK CAPITAL LETTER PSI
 0x03a9 "\\textgreek{W}"           "textgreek" "" # GREEK CAPITAL LETTER OMEGA
+0x03aa "\\textgreek{\\char219}"   "textgreek" "" # GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
+0x03ab "\\textgreek{\\char223}"   "textgreek" "" # GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
+0x03ac "\\textgreek{\\char136}"   "textgreek" "" # GREEK SMALL LETTER ALPHA WITH TONOS
+0x03ad "\\textgreek{\\char232}"   "textgreek" "" # GREEK SMALL LETTER EPSILON WITH TONOS
+0x03ae "\\textgreek{\\char160}"   "textgreek" "" # GREEK SMALL LETTER ETA WITH TONOS
+0x03af "\\textgreek{\\char208}"   "textgreek" "" # GREEK SMALL LETTER IOTA WITH TONOS
+0x03b0 "\\textgreek{\\char246}"   "textgreek" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND TONOS
 0x03b1 "\\textgreek{a}"           "textgreek" "" # GREEK SMALL LETTER ALPHA
 0x03b2 "\\textgreek{b}"           "textgreek" "" # GREEK SMALL LETTER BETA
 0x03b3 "\\textgreek{g}"           "textgreek" "" # GREEK SMALL LETTER GAMMA
@@ -733,6 +754,27 @@
 0x03c7 "\\textgreek{q}"           "textgreek" "" # GREEK SMALL LETTER CHI
 0x03c8 "\\textgreek{y}"           "textgreek" "" # GREEK SMALL LETTER PSI
 0x03c9 "\\textgreek{w}"           "textgreek" "" # GREEK SMALL LETTER OMEGA
+0x03ca "\\textgreek{\\char240}"   "textgreek" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA
+0x03cb "\\textgreek{\\char244}"   "textgreek" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA
+0x03cc "\\textgreek{\\char236}"   "textgreek" "" # GREEK SMALL LETTER OMICRON WITH TONOS
+0x03cd "\\textgreek{\\char212}"   "textgreek" "" # GREEK SMALL LETTER UPSILON WITH TONOS
+0x03ce "\\textgreek{\\char184}"   "textgreek" "" # GREEK SMALL LETTER OMEGA WITH TONOS
+0x0400 "\\textcyr{\\accent0\\char197}"  "textcyr" "" # CYRILLIC CAPITAL LETTER IE WITH GRAVE
+0x0401 "\\textcyr{\\char156}"     "textcyr" "" # CYRILLIC CAPITAL LETTER IO
+0x0402 "\\textcyr{\\char130}"     "textcyr" "" # CYRILLIC CAPITAL LETTER DJE
+0x0403 "\\textcyr{\\accent1\\char195}"  "textcyr" "" # CYRILLIC CAPITAL LETTER GJE
+0x0404 "\\textcyr{\\char153}"     "textcyr" "" # CYRILLIC CAPITAL LETTER UKRAINIAN IE
+0x0405 "\\textcyr{\\char143}"     "textcyr" "" # CYRILLIC CAPITAL LETTER DZE
+0x0406 "\\textcyr{I}"             "textcyr" "" # CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I
+0x0407 "\\textcyr{\\char136}"     "textcyr" "" # CYRILLIC CAPITAL LETTER YI
+0x0408 "\\textcyr{J}"             "textcyr" "" # CYRILLIC CAPITAL LETTER JE
+0x0409 "\\textcyr{\\char135}"     "textcyr" "" # CYRILLIC CAPITAL LETTER LJE
+0x040a "\\textcyr{\\char155}"     "textcyr" "" # CYRILLIC CAPITAL LETTER NJE
+0x040b "\\textcyr{\\char131}"     "textcyr" "" # CYRILLIC CAPITAL LETTER TSHE
+0x040c "\\textcyr{\\accent1\\char202}"  "textcyr" "" # CYRILLIC CAPITAL LETTER KJE
+0x040d "\\textcyr{\\accent0\\char200}"  "textcyr" "" # CYRILLIC CAPITAL LETTER I WITH GRAVE
+0x040e "\\textcyr{\\char146}"     "textcyr" "" # CYRILLIC CAPITAL LETTER SHORT U
+0x040f "\\textcyr{\\char150}"     "textcyr" "" # CYRILLIC CAPITAL LETTER DZHE
 0x0410 "\\textcyr{\\char192}"     "textcyr" "" # CYRILLIC CAPITAL LETTER A
 0x0411 "\\textcyr{\\char193}"     "textcyr" "" # CYRILLIC CAPITAL LETTER BE
 0x0412 "\\textcyr{\\char194}"     "textcyr" "" # CYRILLIC CAPITAL LETTER VE
@@ -797,6 +839,22 @@
 0x044d "\\textcyr{\\char253}"     "textcyr" "" # CYRILLIC SMALL LETTER E
 0x044e "\\textcyr{\\char254}"     "textcyr" "" # CYRILLIC SMALL LETTER YU
 0x044f "\\textcyr{\\char255}"     "textcyr" "" # CYRILLIC SMALL LETTER YA
+0x0450 "\\textcyr{\\accent0\\char229}"  "textcyr" "" # CYRILLIC SMALL LETTER IE WITH GRAVE
+0x0451 "\\textcyr{\\char188}"     "textcyr" "" # CYRILLIC SMALL LETTER IO
+0x0452 "\\textcyr{\\char162}"     "textcyr" "" # CYRILLIC SMALL LETTER DJE
+0x0453 "\\textcyr{\\accent1\\char227}"  "textcyr" "" # CYRILLIC SMALL LETTER GJE
+0x0454 "\\textcyr{\\char185}"     "textcyr" "" # CYRILLIC SMALL LETTER UKRAINIAN IE
+0x0455 "\\textcyr{\\char175}"     "textcyr" "" # CYRILLIC SMALL LETTER DZE
+0x0456 "\\textcyr{i}"             "textcyr" "" # CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
+0x0457 "\\textcyr{\\char168}"     "textcyr" "" # CYRILLIC SMALL LETTER YI
+0x0458 "\\textcyr{j}"             "textcyr" "" # CYRILLIC SMALL LETTER JE
+0x0459 "\\textcyr{\\char167}"     "textcyr" "" # CYRILLIC SMALL LETTER LJE
+0x045a "\\textcyr{\\char187}"     "textcyr" "" # CYRILLIC SMALL LETTER NJE
+0x045b "\\textcyr{\\char163}"     "textcyr" "" # CYRILLIC SMALL LETTER TSHE
+0x045c "\\textcyr{\\accent1\\char234}"  "textcyr" "" # CYRILLIC SMALL LETTER KJE
+0x045d "\\textcyr{\\accent0\\char232}"  "textcyr" "" # CYRILLIC SMALL LETTER I WITH GRAVE
+0x045e "\\textcyr{\\char178}"     "textcyr" "" # CYRILLIC SMALL LETTER SHORT U
+0x045f "\\textcyr{\\char182}"     "textcyr" "" # CYRILLIC SMALL LETTER DZHE
 0x0e3f "\\textbaht"               "textcomp" "" # THAI CURRENCY SYMBOL BAHT
 0x1e00 "\\textsubring{A}"         "tipa" "" # LATIN CAPITAL LETTER A WITH RING BELOW
 0x1e01 "\\textsubring{a}"         "tipa" "" # LATIN SMALL LETTER A WITH RING BELOW
