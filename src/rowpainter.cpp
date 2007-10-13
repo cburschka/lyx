@@ -750,7 +750,7 @@ void RowPainter::paintText()
 		}
 
 		bool const highly_editable_inset = par_.isInset(pos)
-			&& isHighlyEditableInset(par_.getInset(pos));
+			&& par_.getInset(pos)->editable() == Inset::HIGHLY_EDITABLE;
 
 		// If we reach the end of a struck out range, paint it.
 		// We also don't paint across things like tables

@@ -369,20 +369,4 @@ void Inset::setDimCache(MetricsInfo const & mi, Dimension const & dim) const
 	mi.base.bv->coordCache().insets().add(this, dim);
 }
 
-
-
-/////////////////////////////////////////
-
-bool isEditableInset(Inset const * inset)
-{
-	return inset && inset->editable();
-}
-
-
-bool isHighlyEditableInset(Inset const * inset)
-{
-	return inset && inset->editable() == Inset::HIGHLY_EDITABLE;
-}
-
-
 } // namespace lyx

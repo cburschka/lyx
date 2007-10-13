@@ -409,21 +409,6 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 };
 
-
-/**
- * returns true if pointer argument is valid
- * and points to an editable inset
- */
-bool isEditableInset(Inset const * inset);
-
-
-/**
- * returns true if pointer argument is valid
- * and points to a highly editable inset
- */
-bool isHighlyEditableInset(Inset const * inset);
-
-
 } // namespace lyx
 
 #endif

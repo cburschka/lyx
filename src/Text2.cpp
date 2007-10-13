@@ -586,7 +586,7 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 	if (!front && cur.pos() == 0)
 		return false;
 	Inset * inset = front ? cur.nextInset() : cur.prevInset();
-	if (!isHighlyEditableInset(inset))
+	if (!inset || inset->editable() != Inset::HIGHLY_EDITABLE)
 		return false;
 	/*
 	 * Apparently, when entering an inset we are expected to be positioned
