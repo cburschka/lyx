@@ -1012,6 +1012,7 @@ src_insets_header_files = Split('''
     InsetBranch.h
     InsetCaption.h
     InsetCitation.h
+    InsetCode.h
     InsetCollapsable.h
     InsetCommand.h
     InsetCommandParams.h
