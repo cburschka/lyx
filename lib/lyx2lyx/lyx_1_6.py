@@ -495,7 +495,7 @@ def convert_pdf_options(document):
     document.header[i] = document.header[i].replace('"', '')
 
 
-def revert_pdf_options(document):
+def revert_pdf_options_2(document):
     # reset the pdfusetitle tag, set quotes for bookmarksopenlevel"
     k = find_token(document.header, "\\use_hyperref", 0)
     i = find_token(document.header, "\\pdf_pdfusetitle", k)
@@ -533,7 +533,7 @@ convert = [[277, [fix_wrong_tables]],
            [294, [convert_pdf_options]]
           ]
 
-revert =  [[293, [revert_pdf_options]],
+revert =  [[293, [revert_pdf_options_2]],
            [292, [revert_inset_info]],
            [291, [revert_japanese, revert_japanese_encoding]],
            [290, [revert_vietnamese]],
