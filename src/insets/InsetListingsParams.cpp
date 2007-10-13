@@ -245,7 +245,7 @@ char const * allowed_languages =
 	"[Sharp]C\nC++\n[ANSI]C++\n[GNU]C++\n[ISO]C++\n[Visual]C++\nCaml\n"
 	"[light]Caml\n[Objective]Caml\nClean\nCobol\n[1974]Cobol\n[1985]Cobol\n"
 	"[ibm]Cobol\nComal 80\ncommand.com\n[WinXP]command.com\nComsol\ncsh\n"
-	"Delphi\nEiffel\nElan\nEuphoria\nFortran\n[77]Fortran\n[90]Fortran\n"
+	"Delphi\nEiffel\nElan\nerlang\nEuphoria\nFortran\n[77]Fortran\n[90]Fortran\n"
 	"[95]Fortran\nGCL\nGnuplot\nHaskell\nHTML\nIDL\n[CORBA]IDL\ninform\n"
 	"Java\n[AspectJ]Java\nJVMIS\nksh\nLingo\nLisp\n[Auto]Lisp\nLogo\n"
 	"make\n[gnu]make\nMathematica\n[1.0]Mathematica\n[3.0]Mathematica\n"
