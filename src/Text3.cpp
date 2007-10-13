@@ -211,7 +211,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 
 		if (gotsel && pastesel) {
 			lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
-			if (!static_cast<InsetText *>(inset)->allowMultiPar() 
+			InsetText * insetText = dynamic_cast<InsetText *>(inset);
+			if (insetText && !insetText->allowMultiPar() 
 			    || cur.lastpit() == 0) {
 				// reset first par to default
 				LayoutPtr const layout =
