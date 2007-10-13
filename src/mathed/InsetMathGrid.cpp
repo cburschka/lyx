@@ -743,9 +743,9 @@ void InsetMathGrid::addCol(col_type newcol)
 
 	for (row_type row = 0; row < nr; ++row)
 		for (col_type col = 0; col < nc; ++col) {
-			new_cells[row * (nc + 1) + col + (col > newcol)]
+			new_cells[row * (nc + 1) + col + (col >= newcol)]
 				= cells_[row * nc + col];
-			new_cellinfo[row * (nc + 1) + col + (col > newcol)]
+			new_cellinfo[row * (nc + 1) + col + (col >= newcol)]
 				= cellinfo_[row * nc + col];
 		}
 	swap(cells_, new_cells);

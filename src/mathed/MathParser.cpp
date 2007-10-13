@@ -150,7 +150,7 @@ bool addCol(InsetMathGrid & grid, InsetMathGrid::col_type & cellcol)
 	++cellcol;
 	if (cellcol == grid.ncols()) {
 		//lyxerr << "adding column " << cellcol << endl;
-		grid.addCol(cellcol - 1);
+		grid.addCol(cellcol);
 		if (cellcol == grid.ncols()) {
 			// We can't add a column to this grid, so let's
 			// append the content of this cell to the previous
