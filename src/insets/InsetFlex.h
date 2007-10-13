@@ -40,6 +40,8 @@ public:
 	InsetFlex(BufferParams const &, InsetLayout);
 	///
 	docstring name() const { return from_ascii("Flex"); }
+	///
+	InsetLayout const & getLayout(BufferParams const &) const { return layout_; } 
 	/// Is this character style defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;

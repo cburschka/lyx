@@ -140,6 +140,7 @@ Menuset
 	End
 
 	Menu "edit_textstyles"
+		Item "Dissolve CharStyle" "inset-dissolve charstyle"
 		CharStyles
 		Elements
 		Separator

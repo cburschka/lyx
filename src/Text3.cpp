@@ -1840,7 +1840,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_INSET_DISSOLVE:
-		enable = !isMainText(cur.bv().buffer()) && cur.inset().nargs() == 1;
+		if (!cmd.argument().empty()) {
+			InsetLayout il = cur.inset().getLayout(cur.buffer().params());
+			enable = (cur.inset().lyxCode() == FLEX_CODE) 
+			      && (il.lyxtype == to_utf8(cmd.argument()));
+		} else
+			enable = !isMainText(cur.bv().buffer()) 
+				&& cur.inset().nargs() == 1;
 		break;
 
 	case LFUN_CHANGE_ACCEPT:
