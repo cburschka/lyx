@@ -436,7 +436,6 @@ char const * simplefeatures[] = {
 	"txfonts",
 	"mathrsfs",
 	"ascii",
-	"url",
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

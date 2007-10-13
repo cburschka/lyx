@@ -770,6 +770,7 @@ src_frontends_qt4_header_files = Split('''
     GuiFontLoader.h
     GuiGraphics.h
     GuiGraphicsUi.h
+    GuiHyperlink.h
     GuiImage.h
     GuiImplementation.h
     GuiInclude.h
@@ -802,7 +803,6 @@ src_frontends_qt4_header_files = Split('''
     GuiToc.h
     GuiToolbar.h
     GuiToolbars.h
-    GuiURL.h
     GuiView.h
     GuiViewSource.h
     GuiVSpace.h
@@ -859,6 +859,7 @@ src_frontends_qt4_files = Split('''
     GuiFontLoader.cpp
     GuiFontMetrics.cpp
     GuiGraphics.cpp
+    GuiHyperlink.cpp
     GuiImage.cpp
     GuiImplementation.cpp
     GuiInclude.cpp
@@ -891,7 +892,6 @@ src_frontends_qt4_files = Split('''
     GuiToc.cpp
     GuiToolbar.cpp
     GuiToolbars.cpp
-    GuiURL.cpp
     GuiView.cpp
     GuiViewSource.cpp
     GuiVSpace.cpp
@@ -943,6 +943,7 @@ src_frontends_qt4_ui_files = Split('''
     FloatUi.ui
     FontUi.ui
     GraphicsUi.ui
+    HyperlinkUi.ui
     IncludeUi.ui
     IndexUi.ui
     LaTeXUi.ui
@@ -988,7 +989,6 @@ src_frontends_qt4_ui_files = Split('''
     TextLayoutUi.ui
     ThesaurusUi.ui
     TocUi.ui
-    URLUi.ui
     VSpaceUi.ui
     ViewSourceUi.ui
     WrapUi.ui
@@ -1027,6 +1027,7 @@ src_insets_header_files = Split('''
     InsetGraphics.h
     InsetGraphicsParams.h
     InsetHFill.h
+    InsetHyperlink.h
     InsetInclude.h
     InsetIndex.h
     InsetInfo.h
@@ -1047,7 +1048,6 @@ src_insets_header_files = Split('''
     InsetTOC.h
     InsetTabular.h
     InsetText.h
-    InsetUrl.h
     InsetVSpace.h
     InsetWrap.h
     MailInset.h
@@ -1083,6 +1083,7 @@ src_insets_files = Split('''
     InsetGraphics.cpp
     InsetGraphicsParams.cpp
     InsetHFill.cpp
+    InsetHyperlink.cpp
     InsetInclude.cpp
     InsetIndex.cpp
     InsetInfo.cpp
@@ -1103,7 +1104,6 @@ src_insets_files = Split('''
     InsetTOC.cpp
     InsetTabular.cpp
     InsetText.cpp
-    InsetUrl.cpp
     InsetVSpace.cpp
     InsetWrap.cpp
     MailInset.cpp
@@ -1434,6 +1434,7 @@ lib_images_files = Split('''
     font-noun.png
     font-sans.png
     footnote-insert.png
+    href-insert.png
     index-insert.png
     label-insert.png
     layout-document.png
@@ -1496,7 +1497,6 @@ lib_images_files = Split('''
     undo.png
     unknown.png
     up.png
-    url-insert.png
 ''')
 
 

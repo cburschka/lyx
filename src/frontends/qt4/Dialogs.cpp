@@ -36,7 +36,7 @@ char const * const dialognames[] = {
 "thesaurus",
 #endif
 
-"texinfo", "toc", "url", "view-source", "vspace", "wrap", "listings" };
+"texinfo", "toc", "href", "view-source", "vspace", "wrap", "listings" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -92,7 +92,7 @@ Dialog * createGuiTabular(LyXView & lv);
 Dialog * createGuiTexInfo(LyXView & lv);
 Dialog * createGuiToc(LyXView & lv);
 Dialog * createGuiThesaurus(LyXView & lv);
-Dialog * createGuiURL(LyXView & lv);
+Dialog * createGuiHyperlink(LyXView & lv);
 Dialog * createGuiVSpace(LyXView & lv);
 Dialog * createGuiViewSource(LyXView & lv);
 Dialog * createGuiWrap(LyXView & lv);
@@ -185,8 +185,8 @@ Dialog * Dialogs::build(string const & name)
 #endif
 	if (name == "toc")
 		return createGuiToc(lyxview_);
-	if (name == "url")
-		return createGuiURL(lyxview_);
+	if (name == "href")
+		return createGuiHyperlink(lyxview_);
 	if (name == "vspace")
 		return createGuiVSpace(lyxview_);
 	if (name == "wrap")

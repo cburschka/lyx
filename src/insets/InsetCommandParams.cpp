@@ -114,6 +114,15 @@ InsetCommandParams::findInfo(std::string const & insetType)
 		return &info;
 	}
 
+	// InsetHyperlink
+	if (insetType == "href") {
+		static const char * const paramnames[] =
+				{"name", "target", ""};
+		static const bool isoptional[] = {true, false};
+		static const CommandInfo info = {2, paramnames, isoptional};
+		return &info;
+	}
+
 	// InsetInclude
 	//FIXME This is really correct only for lstinputlistings, but it shouldn't
 	//cause a problem before we get things sorted out. Eventually, this calls
@@ -166,15 +175,6 @@ InsetCommandParams::findInfo(std::string const & insetType)
 		return &info;
 	}
 
-	// InsetUrl
-	if (insetType == "url") {
-		static const char * const paramnames[] =
-				{"name", "target", ""};
-		static const bool isoptional[] = {true, false};
-		static const CommandInfo info = {2, paramnames, isoptional};
-		return &info;
-	}
-
 	return 0;
 }
 
@@ -200,6 +200,8 @@ std::string InsetCommandParams::getDefaultCmd(std::string insetType) {
 		return "";
 	if (insetType == "hfill")
 		return "hfill";
+	if (insetType == "href")
+		return "href";
 	if (insetType == "include")
 		return "include";
 	if (insetType == "index")
@@ -216,8 +218,6 @@ std::string InsetCommandParams::getDefaultCmd(std::string insetType) {
 		return "ref";
 	if (insetType == "toc")
 		return "tableofcontents";
-	if (insetType == "url")
-		return "url";
 	return "";	
 }
 

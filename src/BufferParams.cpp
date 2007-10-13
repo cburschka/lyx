@@ -1168,7 +1168,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// * Has to be loaded before the "LyX specific LaTeX commands" to
 	//   avoid errors with algorithm floats.
 	odocstringstream oss;
-	pdfoptions().writeLaTeX(oss);
+	// use hyperref explicitely when it is required
+	pdfoptions().writeLaTeX(oss, features.isRequired("hyperref"));
 	lyxpreamble += oss.str();
 
 	// this might be useful...

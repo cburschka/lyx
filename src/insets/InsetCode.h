@@ -36,9 +36,7 @@ enum InsetCode {
 	///
 	REF_CODE,
 	///
-	URL_CODE, // 5
-	///
-	HTMLURL_CODE,
+	HYPERLINK_CODE, // 5
 	///
 	SEPARATOR_CODE,
 	///

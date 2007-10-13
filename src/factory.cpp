@@ -52,7 +52,7 @@
 #include "insets/InsetSpace.h"
 #include "insets/InsetTabular.h"
 #include "insets/InsetTOC.h"
-#include "insets/InsetUrl.h"
+#include "insets/InsetHyperlink.h"
 #include "insets/InsetVSpace.h"
 #include "insets/InsetWrap.h"
 
@@ -281,6 +281,12 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				inset->setParams(igp);
 				return inset.release();
 
+			} else if (name == "href") {
+				InsetCommandParams icp(name);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
+					icp);
+				return new InsetHyperlink(icp);
+
 			} else if (name == "include") {
 				InsetCommandParams iip(name);
 				InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
@@ -312,12 +318,6 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 					icp);
 				return new InsetTOC(icp);
-
-			} else if (name == "url") {
-				InsetCommandParams icp(name);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetUrl(icp);
 
 			} else if (name == "vspace") {
 				VSpace vspace;
@@ -407,14 +407,14 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetBibtex(inscmd));
 		} else if (insetType == "index") {
 			inset.reset(new InsetIndex(buf.params()));
-		} else if (insetType == "nomenclature") {
-			inset.reset(new InsetNomencl(inscmd));
+		} else if (insetType == "href") {
+			inset.reset(new InsetHyperlink(inscmd));
 		} else if (insetType == "include") {
 			inset.reset(new InsetInclude(inscmd));
 		} else if (insetType == "label") {
 			inset.reset(new InsetLabel(inscmd));
-		} else if (insetType == "url") {
-			inset.reset(new InsetUrl(inscmd));
+		} else if (insetType == "nomenclature") {
+			inset.reset(new InsetNomencl(inscmd));
 		} else if (insetType == "ref") {
 			if (!inscmd["name"].empty()
 			    || !inscmd["reference"].empty()) {

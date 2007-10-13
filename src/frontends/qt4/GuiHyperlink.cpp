@@ -1,5 +1,5 @@
 /**
- * \file GuiURL.cpp
+ * \file GuiHyperlink.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,9 +11,8 @@
 
 #include <config.h>
 
-#include "GuiURL.h"
+#include "GuiHyperlink.h"
 
-#include "GuiURL.h"
 #include "qt_helpers.h"
 #include "FuncRequest.h"
 #include "insets/InsetCommand.h"
@@ -27,69 +26,58 @@
 namespace lyx {
 namespace frontend {
 
-GuiURL::GuiURL(LyXView & lv)
-	: GuiCommand(lv, "url")
+GuiHyperlink::GuiHyperlink(LyXView & lv)
+	: GuiCommand(lv, "href")
 {
 	setupUi(this);
-	setViewTitle( _("URL"));
+	setViewTitle( _("Hyperlink"));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(urlED, SIGNAL(textChanged(const QString &)),
-		this, SLOT(changed_adaptor()));
-	connect(hyperlinkCB, SIGNAL(clicked()),
 		this, SLOT(changed_adaptor()));
 	connect(nameED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changed_adaptor()));
 
 	setFocusProxy(urlED);
 
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(okPB);
 	bc().setCancel(closePB);
 	bc().addReadOnly(urlED);
 	bc().addReadOnly(nameED);
-	bc().addReadOnly(hyperlinkCB);
 }
 
 
-void GuiURL::changed_adaptor()
+void GuiHyperlink::changed_adaptor()
 {
 	changed();
 }
 
 
-void GuiURL::closeEvent(QCloseEvent * e)
+void GuiHyperlink::closeEvent(QCloseEvent * e)
 {
 	slotClose();
 	e->accept();
 }
 
 
-
-void GuiURL::updateContents()
+void GuiHyperlink::updateContents()
 {
 	urlED->setText(toqstr(params_["target"]));
 	nameED->setText(toqstr(params_["name"]));
-	hyperlinkCB->setChecked(params_.getCmdName() != "url");
-
 	bc().setValid(isValid());
 }
 
 
-void GuiURL::applyView()
+void GuiHyperlink::applyView()
 {
 	params_["target"] = qstring_to_ucs4(urlED->text());
 	params_["name"] = qstring_to_ucs4(nameED->text());
-
-	if (hyperlinkCB->isChecked())
-		params_.setCmdName("htmlurl");
-	else
-		params_.setCmdName("url");
+	params_.setCmdName("href");
 }
 
 
-bool GuiURL::isValid()
+bool GuiHyperlink::isValid()
 {
 	QString const u = urlED->text();
 	QString const n = nameED->text();
@@ -98,11 +86,11 @@ bool GuiURL::isValid()
 }
 
 
-Dialog * createGuiURL(LyXView & lv) { return new GuiURL(lv); }
+Dialog * createGuiHyperlink(LyXView & lv) { return new GuiHyperlink(lv); }
 
 
 } // namespace frontend
 } // namespace lyx
 
 
-#include "GuiURL_moc.cpp"
+#include "GuiHyperlink_moc.cpp"

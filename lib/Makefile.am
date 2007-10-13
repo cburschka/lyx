@@ -296,6 +296,7 @@ dist_images_DATA = \
 	images/font-noun.png \
 	images/font-sans.png \
 	images/footnote-insert.png \
+	images/href-insert.png \
 	images/index-insert.png \
 	images/label-insert.png \
 	images/layout.png \
@@ -357,8 +358,7 @@ dist_images_DATA = \
 	images/toolbar-toggle_table.png \
 	images/undo.png \
 	images/unknown.png \
-	images/up.png \
-	images/url-insert.png
+	images/up.png
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \

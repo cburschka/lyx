@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file InsetUrl.h
+ * \file InsetHyperlink.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef INSET_URL_H
-#define INSET_URL_H
+#ifndef INSET_HYPERLINK_H
+#define INSET_HYPERLINK_H
 
 
 #include "InsetCommand.h"
@@ -20,15 +20,15 @@ namespace lyx {
 
 class LaTeXFeatures;
 
-/** The url inset
+/** The hyperlink inset
  */
-class InsetUrl : public InsetCommand {
+class InsetHyperlink : public InsetCommand {
 public:
 	///
 	explicit
-	InsetUrl(InsetCommandParams const &);
+	InsetHyperlink(InsetCommandParams const &);
 	///
-	InsetCode lyxCode() const { return URL_CODE; }
+	InsetCode lyxCode() const { return HYPERLINK_CODE; }
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -51,7 +51,7 @@ public:
 		OutputParams const &) const;
 private:
 	virtual Inset * clone() const {
-		return new InsetUrl(params());
+		return new InsetHyperlink(params());
 	}
 };
 

@@ -243,7 +243,7 @@ public:
 	/** This enum indicates by which means the inset can be modified:
 	- NOT_EDITABLE: the inset's content cannot be modified at all
 	  (e.g. printindex, insetspecialchar)
-	- IS_EDITABLE: content can be edited via dialog (e.g. bibtex, index, url)
+	- IS_EDITABLE: content can be edited via dialog (e.g. bibtex, index, href)
 	- HIGHLY_EDITABLE: content can be edited on screen (normally means that
 	  insettext is contained, e.g. collapsables, tabular) */
 	// FIXME: This has not yet been fully implemented to math insets

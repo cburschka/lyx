@@ -105,8 +105,9 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 }
 
 
-char const * const known_latex_commands[] = { "ref", "cite", "label", "index",
-"printindex", "pageref", "url", "vref", "vpageref", "prettyref", "eqref", 0 };
+char const * const known_latex_commands[] = { "ref", "cite", "label", "href",
+ "index", "printindex", "pageref", "url", "vref", "vpageref", "prettyref",
+ "eqref", 0 };
 
 /*!
  * natbib commands.

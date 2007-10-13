@@ -1,5 +1,5 @@
 /**
- * \file InsetUrl.cpp
+ * \file InsetHyperlink.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "InsetUrl.h"
+#include "InsetHyperlink.h"
 
 #include "DispatchResult.h"
 #include "FuncRequest.h"
@@ -31,21 +31,19 @@ using std::string;
 using std::ostream;
 
 
-InsetUrl::InsetUrl(InsetCommandParams const & p)
-	: InsetCommand(p, "url")
+InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
+	: InsetCommand(p, "href")
 {}
 
 
-docstring const InsetUrl::getScreenLabel(Buffer const &) const
+docstring const InsetHyperlink::getScreenLabel(Buffer const &) const
 {
-	docstring const temp =
-		(getCmdName() == "url") ? _("Url: ") : _("HtmlUrl: ");
+	docstring const temp = from_ascii("Hyperlink: ");
 
 	docstring url;
 
-	if (!getParam("name").empty())
-		url += getParam("name");
-	else
+	url += getParam("name");
+	if (url.empty())
 		url += getParam("target");
 
 	// elide if long
@@ -57,20 +55,22 @@ docstring const InsetUrl::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetUrl::latex(Buffer const &, odocstream & os,
+int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		    OutputParams const & runparams) const
 {
 	docstring const & name = getParam("name");
-	if (!name.empty())
-		os << name + ' ';
 	if (runparams.moving_arg)
 		os << "\\protect";
-	os << "\\url{" << getParam("target") << '}';
+	//set the target for the name when no name is given
+	if (!getParam("name").empty())
+		os << "\\href{" << getParam("target") << "}{" << getParam("name") << '}';
+	else
+		os << "\\href{" << getParam("target") << "}{" << getParam("target") << '}';
 	return 0;
 }
 
 
-int InsetUrl::plaintext(Buffer const &, odocstream & os,
+int InsetHyperlink::plaintext(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
 	odocstringstream oss;
@@ -87,7 +87,7 @@ int InsetUrl::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetUrl::docbook(Buffer const &, odocstream & os,
+int InsetHyperlink::docbook(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	os << "<ulink url=\""
@@ -99,16 +99,16 @@ int InsetUrl::docbook(Buffer const &, odocstream & os,
 }
 
 
-int InsetUrl::textString(Buffer const & buf, odocstream & os,
+int InsetHyperlink::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);
 }
 
 
-void InsetUrl::validate(LaTeXFeatures & features) const
+void InsetHyperlink::validate(LaTeXFeatures & features) const
 {
-	features.require("url");
+	features.require("hyperref");
 }
 
 

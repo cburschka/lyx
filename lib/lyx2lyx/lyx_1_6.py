@@ -508,6 +508,32 @@ def revert_pdf_options_2(document):
     document.header[i] = ''.join(values)
 
 
+def convert_htmlurl(document):
+    'Convert "htmlurl" and "url" to "href" insets'
+    i = 0
+    while True:
+        i = find_token(document.body, "LatexCommand htmlurl", i)
+        if i == -1:
+            return
+        document.body[i] = "LatexCommand href"
+        i = find_token(document.body, "LatexCommand url", i)
+        if i == -1:
+            return
+        document.body[i] = "LatexCommand href"
+        i = i + 1
+
+
+def revert_href(document):
+    'Reverts hyperlink insets (href) to url insets (url)'
+    i = 0
+    while True:
+        i = find_token(document.body, "LatexCommand href", i)
+        if i == -1:
+            return
+        document.body[i] = "LatexCommand url"
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -530,10 +556,12 @@ convert = [[277, [fix_wrong_tables]],
            [291, []],
            [292, []],
            [293, []],
-           [294, [convert_pdf_options]]
+           [294, [convert_pdf_options]],
+           [295, [convert_htmlurl]]
           ]
 
-revert =  [[293, [revert_pdf_options_2]],
+revert =  [[294, [revert_href]],
+           [293, [revert_pdf_options_2]],
            [292, [revert_inset_info]],
            [291, [revert_japanese, revert_japanese_encoding]],
            [290, [revert_vietnamese]],

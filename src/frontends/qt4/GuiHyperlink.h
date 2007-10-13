@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file GuiURL.h
+ * \file GuiHyperlink.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,22 +10,22 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef GUIURL_H
-#define GUIURL_H
+#ifndef GUIHYPERLINK_H
+#define GUIHYPERLINK_H
 
 #include "GuiDialog.h"
-#include "ui_URLUi.h"
+#include "ui_HyperlinkUi.h"
 #include "insets/InsetCommandParams.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiURL : public GuiCommand, public Ui::URLUi
+class GuiHyperlink : public GuiCommand, public Ui::HyperlinkUi
 {
 	Q_OBJECT
 
 public:
-	GuiURL(LyXView & lv);
+	GuiHyperlink(LyXView & lv);
 
 public Q_SLOTS:
 	void changed_adaptor();
@@ -43,4 +43,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // GUIURL_H
+#endif // GUIHYPERLINK_H

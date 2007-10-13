@@ -87,6 +87,7 @@ SOURCEFILES = \
 	GuiFontLoader.cpp \
 	GuiFontMetrics.cpp \
 	GuiGraphics.cpp \
+	GuiHyperlink.cpp \
 	GuiImage.cpp \
 	GuiImplementation.cpp \
 	GuiInclude.cpp \
@@ -119,7 +120,6 @@ SOURCEFILES = \
 	GuiToc.cpp \
 	GuiToolbar.cpp \
 	GuiToolbars.cpp \
-	GuiURL.cpp \
 	GuiView.cpp \
 	GuiViewSource.cpp \
 	GuiVSpace.cpp \
@@ -177,6 +177,7 @@ MOCHEADER = \
 	GuiFloat.h \
 	GuiFontExample.h \
 	GuiGraphics.h \
+	GuiHyperlink.h \
 	GuiImplementation.h \
 	GuiInclude.h \
 	GuiIndex.h \
@@ -205,7 +206,6 @@ MOCHEADER = \
 	GuiThesaurus.h \
 	GuiToc.h \
 	GuiToolbar.h \
-	GuiURL.h \
 	GuiView.h \
 	GuiViewSource.h \
 	GuiVSpace.h \
@@ -246,6 +246,7 @@ UIFILES = \
 	FloatUi.ui \
 	FontUi.ui \
 	GraphicsUi.ui \
+	HyperlinkUi.ui \
 	IncludeUi.ui \
 	IndexUi.ui \
 	LanguageUi.ui \
@@ -290,7 +291,6 @@ UIFILES = \
 	TextLayoutUi.ui \
 	ThesaurusUi.ui \
 	TocUi.ui \
-	URLUi.ui \
 	ViewSourceUi.ui \
 	VSpaceUi.ui \
 	WrapUi.ui

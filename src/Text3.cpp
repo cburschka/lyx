@@ -1060,8 +1060,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_URL_INSERT: {
-		InsetCommandParams p("url");
+	case LFUN_HYPERLINK_INSERT: {
+		InsetCommandParams p("href");
 		docstring content;
 		if (cur.selection()) {
 			content = cur.selectionAsString(false);
@@ -1069,28 +1069,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		p["target"] = (cmd.argument().empty()) ?
 			content : cmd.argument();
-		string const data = InsetCommandMailer::params2string("url", p);
+		string const data = InsetCommandMailer::params2string("href", p);
 		if (p["target"].empty()) {
-			bv->showInsetDialog("url", data, 0);
-		} else {
-			FuncRequest fr(LFUN_INSET_INSERT, data);
-			dispatch(cur, fr);
-		}
-		break;
-	}
-
-	case LFUN_HTML_INSERT: {
-		InsetCommandParams p("htmlurl");
-		docstring content;
-		if (cur.selection()) {
-			content = cur.selectionAsString(false);
-			cutSelection(cur, true, false);
-		}
-		p["target"] = (cmd.argument().empty()) ?
-			content : cmd.argument();
-		string const data = InsetCommandMailer::params2string("url", p);
-		if (p["target"].empty()) {
-			bv->showInsetDialog("url", data, 0);
+			bv->showInsetDialog("href", data, 0);
 		} else {
 			FuncRequest fr(LFUN_INSET_INSERT, data);
 			dispatch(cur, fr);
@@ -1637,6 +1618,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = FLOAT_CODE;
 		else if (cmd.argument() == "graphics")
 			code = GRAPHICS_CODE;
+		else if (cmd.argument() == "href")
+			code = HYPERLINK_CODE;
 		else if (cmd.argument() == "include")
 			code = INCLUDE_CODE;
 		else if (cmd.argument() == "index")
@@ -1651,8 +1634,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = REF_CODE;
 		else if (cmd.argument() == "toc")
 			code = TOC_CODE;
-		else if (cmd.argument() == "url")
-			code = URL_CODE;
 		else if (cmd.argument() == "vspace")
 			code = VSPACE_CODE;
 		else if (cmd.argument() == "wrap")
@@ -1747,9 +1728,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_TOC_INSERT:
 		code = TOC_CODE;
 		break;
-	case LFUN_HTML_INSERT:
-	case LFUN_URL_INSERT:
-		code = URL_CODE;
+	case LFUN_HYPERLINK_INSERT:
+		code = HYPERLINK_CODE;
 		break;
 	case LFUN_QUOTE_INSERT:
 		// always allow this, since we will inset a raw quote

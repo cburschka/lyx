@@ -520,6 +520,8 @@ liblyxinsets_la_SOURCES = \
 	insets/InsetGraphics.h \
 	insets/InsetHFill.cpp \
 	insets/InsetHFill.h \
+	insets/InsetHyperlink.cpp \
+	insets/InsetHyperlink.h \
 	insets/InsetInclude.cpp \
 	insets/InsetInclude.h \
 	insets/InsetIndex.cpp \
@@ -560,8 +562,6 @@ liblyxinsets_la_SOURCES = \
 	insets/InsetText.h \
 	insets/InsetTOC.cpp \
 	insets/InsetTOC.h \
-	insets/InsetUrl.cpp \
-	insets/InsetUrl.h \
 	insets/InsetVSpace.cpp \
 	insets/InsetVSpace.h \
 	insets/InsetWrap.h \

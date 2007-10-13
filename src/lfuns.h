@@ -256,8 +256,7 @@ enum kb_action {
 	LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR, // ARRae 971202
 	// 170
 	LFUN_BUFFER_CHKTEX,             // Asger 971030
-	LFUN_HTML_INSERT,               // CFO-G 971121; must co-exist with URL_INSERT as of 20060905
-	LFUN_URL_INSERT,                // CFO-G 971121
+	LFUN_HYPERLINK_INSERT,          // CFO-G 971121
 	LFUN_WORD_FIND_FORWARD,         // Etienne 980216
 	LFUN_WORD_FIND_BACKWARD,        // Etienne 980220
 	// 175

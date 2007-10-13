@@ -154,7 +154,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 294; //pavel pdfoptions
+int const LYX_FORMAT = 295; //Uwe: htmlurl, href
 
 } // namespace anon
 

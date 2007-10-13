@@ -808,7 +808,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 
 		if ((inset->lyxCode() == GRAPHICS_CODE
 		     || inset->lyxCode() == MATH_CODE
-		     || inset->lyxCode() == URL_CODE)
+		     || inset->lyxCode() == HYPERLINK_CODE)
 		    && running_font.isRightToLeft()) {
 		    	if (running_font.language()->lang() == "farsi")
 				os << "\\beginL{}";

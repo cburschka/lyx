@@ -1401,7 +1401,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			    name == "nomenclature" ||
 			    name == "ref" ||
 			    name == "toc" ||
-			    name == "url") {
+			    name == "href") {
 				InsetCommandParams p(name);
 				data = InsetCommandMailer::params2string(name, p);
 			} else if (name == "include") {
