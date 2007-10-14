@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author José Matos
+ * \authors José Matos, Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -29,6 +29,13 @@ using support::subst;
 
 using std::string;
 using std::ostream;
+using std::find;
+using std::replace;
+
+static char const * const chars_url[2] = {"%", "#"};
+
+static char const * const chars_name[6] = {
+	"&", "_", "$", "%", "#", "^"};
 
 
 InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
@@ -58,14 +65,61 @@ docstring const InsetHyperlink::getScreenLabel(Buffer const &) const
 int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		    OutputParams const & runparams) const
 {
-	docstring const & name = getParam("name");
+	string url = to_utf8(getParam("target"));
+
+	string backslash = "\\";
+	string braces = "{}";
+
+	// The characters in chars_url[] need to be changed to a command when
+	// they are in the url field.
+	if (!url.empty()) {
+		// the chars_url[] characters must be handled for both, url and href
+		for (int k = 0;	k < 2; k++) {
+			for (int i = 0, pos;
+				(pos = url.find(chars_url[k], i)) != string::npos;
+				i = pos + 2) {
+				url.replace(pos,1,backslash + chars_url[k]);
+			}
+		}
+	} // end if (!url.empty())
+
+	string name = to_utf8(getParam("name"));
+
+	// The characters in chars_name[] need to be changed to a command when
+	// they are in the name field.
+	if (!name.empty()) {
+
+		// handle the "\" character, but only when the following character
+		// is not also a "\", because "\\" is valid code
+		for (int i = 0, pos;
+			(pos = name.find("\\", i)) != string::npos;
+			i = pos + 2) {
+			if	(name[pos+1] != '\\')
+				name.replace(pos,1,"\\textbackslash{}");
+		}
+		for (int k = 0;	k < 6; k++) {
+			for (int i = 0, pos;
+				(pos = name.find(chars_name[k], i)) != string::npos;
+				i = pos + 2) {
+				name.replace(pos,1,backslash + chars_name[k] + braces);
+			}
+		}
+		// replace the tilde by the \sim character as suggested in the LaTeX FAQ
+		// for URLs
+		for (int i = 0, pos;
+			(pos = name.find("~", i)) != string::npos;
+			i = pos + 1)
+			name.replace(pos,1,"$\\sim$");
+
+	}  // end if (!name.empty())
+	
 	if (runparams.moving_arg)
 		os << "\\protect";
 	//set the target for the name when no name is given
-	if (!getParam("name").empty())
-		os << "\\href{" << getParam("target") << "}{" << getParam("name") << '}';
+	if (!name.empty())
+		os << "\\href{" << from_utf8(url) << "}{" << from_utf8(name) << '}';
 	else
-		os << "\\href{" << getParam("target") << "}{" << getParam("target") << '}';
+		os << "\\href{" << from_utf8(url) << "}{" << from_utf8(url) << '}';
 	return 0;
 }
 
