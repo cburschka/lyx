@@ -3,7 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \authors José Matos, Uwe Stöhr
+ * \author José Matos
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */

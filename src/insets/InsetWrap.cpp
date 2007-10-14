@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Dekel Tsur
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
