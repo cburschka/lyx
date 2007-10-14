@@ -33,31 +33,35 @@ InsetInfo can have type "shortcut", "lyxrc", "package", "textclass", or
 "menu". Arguments and outputs vary by type.
 
 shortcut: name of the LFUN such as "math-insert \alpha". The syntax
-	is the same as what is used in the bind and ui files.
-	The output of this inset is all shortcuts separated by comma.
+    is the same as what is used in the bind and ui files.
+    The output of this inset is all shortcuts separated by comma.
 
 lyxrc: name of the rc entry such as "bind_file". Look in src/LyXRC.h
-	for available entries. The output is the content of this RC
-	entry.
+    for available entries. The output is the content of this RC
+    entry.
 
 package: name of a latex package such as "listings". The output is
-	"yes" or "no".
+    "yes" or "no".
 
 textclass: name of a textclass such as "article". The output is "yes"
-	or "no".
+    or "no".
 
 menu: name of the LFUN such as "paste". The syntax is the same as
-	what is used in the bind and ui files. The output is the
-	menu item that trigger this LFUN. For example, "File > Paste".
-	'>' is actually \lyxarrow (an InsetSpecialChar).
+    what is used in the bind and ui files. The output is the
+    menu item that trigger this LFUN. For example, "File > Paste".
+    '>' is actually \lyxarrow (an InsetSpecialChar).
 
 
 Because this inset is intended to be used only by document maintainers,
-there is no GUI, no menu entry for this inset. A user would have to
-define a shortcut for "info-insert" (e.g. C-S-I), and
+there is no GUI, no menu entry for this inset. A user can define a 
+shortcut for "info-insert" (e.g. C-S-I), and
 
-1. input the type and argument of this inset. E.g. "menu paste".
+1. input the type and argument of this inset, e.g. "menu paste", in 
+   the work area.
 2. select the text and run "info-insert" (e.g. press C-S-I).
+
+An alternative method is to enter command "info-insert type args" in 
+the command buffer (view->Toolbar->Command Buffer).
 
 */
 
