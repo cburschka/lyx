@@ -444,7 +444,7 @@ void reconfigure(LyXView & lv, string const & option)
 	string configure_command = package().configure_command();
 	configure_command += option;
 	Systemcall one;
-	one.startscript(Systemcall::Wait, configure_command);
+	int ret = one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	// emit message signal.
 	lv.message(_("Reloading configuration..."));
@@ -452,7 +452,14 @@ void reconfigure(LyXView & lv, string const & option)
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
 
-	Alert::information(_("System reconfigured"),
+	if (ret)
+		Alert::information(_("System reconfiguration failed"),
+			   _("The system reconfiguration has failed.\n"
+					  "Default textclass is used but LyX may not "
+					  "be able to work properly.\n"
+					  "Please reconfigure again if needed."));
+	else
+		Alert::information(_("System reconfigured"),
 			   _("The system has been reconfigured.\n"
 					  "You need to restart LyX to make use of any\n"
 					  "updated document class specifications."));
