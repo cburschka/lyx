@@ -591,7 +591,9 @@ def processLayoutFile(file, bool_docbook, bool_linuxdoc):
 
     
 def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
-    ''' Explore the LaTeX configuration '''
+    ''' Explore the LaTeX configuration 
+        Return None (will be passed to sys.exit()) for success.
+    '''
     print 'checking LaTeX configuration... ',
     # if --without-latex-config is forced, or if there is no previous 
     # version of textclass.lst, re-generate a default file.
@@ -630,8 +632,10 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
                 tx.write(processLayoutFile(file, bool_docbook, bool_linuxdoc))
         tx.close()
         print '\tdone'
+    if not check_config:
+        return None
     # the following will generate textclass.lst.tmp, and packages.lst.tmp
-    if check_config:
+    else:
         print '\tauto'
         removeFiles(['wrap_chkconfig.ltx', 'chkconfig.vars', \
             'chkconfig.classes', 'chklayouts.tex'])
@@ -673,7 +677,8 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
                 break;
             if re.match('^\+', line):
                 print line,
-        fout.close()
+        # if the command succeeds, None will be returned
+        ret = fout.close()
         #
         # currently, values in chhkconfig are only used to set
         # \font_encoding
@@ -695,6 +700,7 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
             and os.path.isfile('packages.lst.tmp') and len(open('packages.lst.tmp').read()) > 0:
             shutil.move('textclass.lst.tmp', 'textclass.lst')
             shutil.move('packages.lst.tmp', 'packages.lst')
+        return ret
 
 
 def checkModulesConfig():
@@ -839,6 +845,8 @@ Options:
         addToRC(r'\tex_expects_windows_paths %s' % windows_style_tex_paths)
     checkOtherEntries()
     # --without-latex-config can disable lyx_check_config
-    checkLatexConfig( lyx_check_config and LATEX != '', bool_docbook, bool_linuxdoc)
+    ret = checkLatexConfig(lyx_check_config and LATEX != '',
+        bool_docbook, bool_linuxdoc)
     checkModulesConfig() #lyx_check_config and LATEX != '')
     removeTempFiles()
+    sys.exit(ret)
