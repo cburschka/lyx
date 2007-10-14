@@ -1,0 +1,10 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (Japanese in vertical writing)}
+# Definition file of Japanese article textclass for vertical writing.
+# Author : Koji Yokota (yokota@res.otaru-uc.ac.jp)
+
+# This style provides japanese features 
+Provides japanese 1
+
+# Input general definitions
+Input article.layout

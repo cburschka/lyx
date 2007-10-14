@@ -1,0 +1,10 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{article (Japanese)}
+# Japanese article textclass definition file.
+# Author : Koji Yokota (yokota@res.otaru-uc.ac.jp)
+
+# This style provides japanese features
+Provides japanese 1
+
+# Input general definitions
+Input article.layout

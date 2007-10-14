@@ -955,7 +955,12 @@ dist_layouts_DATA =\
 	layouts/ijmpd.layout \
 	layouts/iopart.layout \
 	layouts/isprs.layout \
+	layouts/jarticle.layout \
+	layouts/jbook.layout \
 	layouts/jgrga.layout \
+	layouts/jreport.layout \
+	layouts/jsarticle.layout \
+	layouts/jsbook.layout \
 	layouts/kluwer.layout \
 	layouts/latex8.layout \
 	layouts/letter.layout \
@@ -1025,6 +1030,9 @@ dist_layouts_DATA =\
 	layouts/theorems-std.module \
 	layouts/theorems-withinchap.module \
 	layouts/theorems-withinsec.module \
+	layouts/tarticle.layout \
+	layouts/tbook.layout \
+	layouts/treport.layout \
 	layouts/url.module
 
 scriptsdir = $(pkgdatadir)/scripts

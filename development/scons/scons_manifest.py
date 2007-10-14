@@ -2533,7 +2533,12 @@ lib_layouts_files = Split('''
     ijmpd.layout
     iopart.layout
     isprs.layout
+    jarticle.layout
+    jbook.layout
     jgrga.layout
+    jreport.layout
+    jsarticle.layout
+    jsbook.layout
     kluwer.layout
     latex8.layout
     letter.layout
@@ -2566,6 +2571,9 @@ lib_layouts_files = Split('''
     svglobal.layout
     svjog.layout
     svprobth.layout
+    tarticle.layout
+    tbook.layout
+    treport.layout
 ''')
 
 
