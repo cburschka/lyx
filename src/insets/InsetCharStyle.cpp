@@ -57,7 +57,7 @@ void InsetCharStyle::init()
 
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
-	: InsetCollapsable(bp)
+	: InsetCollapsable(bp), mouse_hover_(false)
 {
 	params_.type = s;
 	setUndefined();
@@ -67,7 +67,7 @@ InsetCharStyle::InsetCharStyle(BufferParams const & bp, string const s)
 
 InsetCharStyle::InsetCharStyle(BufferParams const & bp,
 				CharStyles::iterator cs)
-	: InsetCollapsable(bp)
+	: InsetCollapsable(bp), mouse_hover_(false)
 {
 	params_.type = cs->name;
 	setDefined(cs);
@@ -102,7 +102,7 @@ void InsetCharStyle::setUndefined()
 	params_.font = Font(Font::ALL_INHERIT);
 	params_.labelfont = Font(Font::ALL_INHERIT);
 	params_.labelfont.setColor(Color::error);
-	params_.show_label = true;
+	params_.show_label = false;
 }
 
 
@@ -113,7 +113,7 @@ void InsetCharStyle::setDefined(CharStyles::iterator cs)
 	params_.latexparam = cs->latexparam;
 	params_.font = cs->font;
 	params_.labelfont = cs->labelfont;
-	params_.show_label = true;
+	params_.show_label = false;
 }
 
 
@@ -163,8 +163,6 @@ bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		theFontMetrics(font).rectText(s, w, a, d);
 		dim.wid = max(dim.wid, w);
 	}
-	dim.asc += TEXT_TO_INSET_OFFSET;
-	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	if (params_.show_label)
@@ -197,6 +195,10 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		params_.labelfont.color());
 
 	// the name of the charstyle. Can be toggled.
+	// FIXME UNICODE
+	docstring s(from_utf8(params_.type));
+	if (undefined())
+		s = _("Undef: ") + s;
 	if (params_.show_label) {
 		Font font(params_.labelfont);
 		font.realize(Font(Font::ALL_SANE));
@@ -205,10 +207,6 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		int w = 0;
 		int a = 0;
 		int d = 0;
-		// FIXME UNICODE
-		docstring s(from_utf8(params_.type));
-		if (undefined())
-			s = _("Undef: ") + s;
 		theFontMetrics(font).rectText(s, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
 			s, font, Color::none, Color::none);
@@ -216,7 +214,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 
 	// a visual clue when the cursor is inside the inset
 	Cursor & cur = pi.base.bv->cursor();
-	if (cur.isInside(this)) {
+	if (mouse_hover_ || cur.isInside(this)) {
 		y -= ascent();
 		pi.pain.line(x, y + 4, x, y, params_.labelfont.color());
 		pi.pain.line(x + 4, y, x, y, params_.labelfont.color());
@@ -224,6 +222,8 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 			params_.labelfont.color());
 		pi.pain.line(x + dim_.wid - 7, y, x + dim_.wid - 3, y,
 			params_.labelfont.color());
+
+		pi.base.bv->message(_("CharStyle: ") + s);
 	}
 }
 
@@ -342,6 +342,13 @@ void InsetCharStyle::validate(LaTeXFeatures & features) const
 	// Force inclusion of preamble snippet in layout file
 	features.require(params_.type);
 	InsetText::validate(features);
+}
+
+
+bool InsetCharStyle::setMouseHover(bool mouse_hover)
+{
+	mouse_hover_ = mouse_hover;
+	return true;
 }
 
 

@@ -96,6 +96,8 @@ public:
 
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
+	///
+	bool setMouseHover(bool mouse_hover);
 
 protected:
 	InsetCharStyle(InsetCharStyle const &);
@@ -112,6 +114,8 @@ private:
 	void init();
 	///
 	InsetCharStyleParams params_;
+	/// show inset type when mouse enters this inset
+	bool mouse_hover_;
 };
 
 
