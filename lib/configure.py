@@ -288,7 +288,7 @@ def checkFormatEntries(dtl_tools):
         rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
     if dtl_tools:
         # Windows only: DraftDVI
-        addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	"document,vector"')
+        addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"')
     #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
