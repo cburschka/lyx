@@ -36,6 +36,10 @@ lyx_branch=""
 import os
 import sys
 
+# Reset the locale
+import locale
+locale.setlocale(locale.LC_ALL, '') 
+
 def extract_number(line, issues, prop):
     """
     line is a string like
