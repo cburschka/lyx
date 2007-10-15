@@ -509,19 +509,71 @@ def revert_pdf_options_2(document):
 
 
 def convert_htmlurl(document):
-    'Convert "htmlurl" and "url" to "href" insets'
+    'Convert "htmlurl" to "href" insets for docbook'
+    if document.backend != "docbook":
+      return
     i = 0
     while True:
-        i = find_token(document.body, "LatexCommand htmlurl", i)
-        if i == -1:
-            return
-        document.body[i] = "LatexCommand href"
-        i = find_token(document.body, "LatexCommand url", i)
-        if i == -1:
-            return
-        document.body[i] = "LatexCommand href"
-        i = i + 1
+      i = find_token(document.body, "\\begin_inset CommandInset url", i)
+      if i == -1:
+        return
+      document.body[i] = "\\begin_inset CommandInset href"
+      document.body[i + 1] = "LatexCommand href"
+      i = i + 1
 
+def convert_url(document):
+    'Convert url insets to url charstyles'
+    if document.backend == "docbook":
+      return
+    r = re.compile(r'target\s+"(.*)"')
+    didone = False
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset CommandInset url", i)
+      if i == -1:
+        break
+      j = find_token(document.body, "target", i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find target for url inset")
+        i = j
+        continue
+      m = r.match(document.body[j])
+      target = m.group(1)
+      k = find_token(document.body, "\\end_inset", j)
+      if k == -1:
+        document.warning("Malformed LyX document: Can't find end of url inset")
+        i = k
+        continue
+      newstuff = ["\\begin_inset Flex URL",
+        "status collapsed", "", 
+        "\\begin_layout Standard",
+        target,
+        "\\end_layout",
+        ""]
+      document.body[i:k] = newstuff
+      didone = True
+      i = k
+
+    #If we did one, we need to add URL to the modules
+    if didone:
+      i = find_token(document.header, "\\begin_modules", 0)
+      if i == -1:
+        #No modules yet included
+        i = find_token(document.header, "\\textclass", 0)
+        if i == -1:
+          document.warning("Malformed LyX document: No \\textclass!!")
+          return
+        modinfo = ["\\begin_modules", "URL", "\\end_modules"]
+        document.header[i + 1: i + 1] = modinfo
+        return
+      j = find_token(document.header, "\\end_modules", i)
+      if j == -1:
+        document.warning("Malformed LyX document: No \\end_modules.")
+        return
+      k = find_token(document.header, "URL", i)
+      if k != -1 and k < j:
+        return
+      document.header.insert(i + 1, "URL")
 
 def revert_href(document):
     'Reverts hyperlink insets (href) to url insets (url)'
@@ -557,7 +609,7 @@ convert = [[277, [fix_wrong_tables]],
            [292, []],
            [293, []],
            [294, [convert_pdf_options]],
-           [295, [convert_htmlurl]]
+           [295, [convert_htmlurl, convert_url]]
           ]
 
 revert =  [[294, [revert_href]],
