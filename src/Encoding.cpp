@@ -404,17 +404,19 @@ bool Encodings::isCombiningChar(char_type c)
 bool Encodings::isKnownLangChar(char_type c, string & preamble)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
-	if (it != unicodesymbols.end()) {
-		if (it->second.preamble != "textgreek" &&
-		    it->second.preamble != "textcyr")
-			return false;
-		if (preamble.empty()) {
-			preamble = it->second.preamble;
-			return true;
-		}
-		return it->second.preamble == preamble;
+
+	if (it == unicodesymbols.end())
+		return false;
+
+	if (it->second.preamble != "textgreek" &&
+	    it->second.preamble != "textcyr")
+		return false;
+
+	if (preamble.empty()) {
+		preamble = it->second.preamble;
+		return true;
 	}
-	return false;
+	return it->second.preamble == preamble;
 }
 
 
