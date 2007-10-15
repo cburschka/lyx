@@ -16,8 +16,6 @@
 #ifndef GUITOOLBAR_H
 #define GUITOOLBAR_H
 
-#include "GuiCommandBuffer.h"
-
 #include "Session.h"
 
 #include <QList>
@@ -26,11 +24,11 @@
 
 namespace lyx {
 
-class FuncRequest;
 class ToolbarItem;
 
 namespace frontend {
 
+class GuiCommandBuffer;
 class GuiViewBase;
 class Action;
 
@@ -43,7 +41,7 @@ public:
 
 	/// select the right layout in the combobox.
 	void set(docstring const & layout);
-	/// Populate the layout combox.
+	/// Populate the layout combobox.
 	void updateContents();
 
 private Q_SLOTS:
@@ -84,9 +82,6 @@ private:
 	GuiLayoutBox * layout_;
 	GuiCommandBuffer * command_buffer_;
 };
-
-/// return a full path of an .png for the given action
-std::string const getIcon(FuncRequest const & f, bool unknown = true);
 
 } // namespace frontend
 } // namespace lyx

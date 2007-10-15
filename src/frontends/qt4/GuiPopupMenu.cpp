@@ -106,7 +106,7 @@ void GuiPopupMenu::populate(QMenu * qMenu, Menu * menu)
 			addBinding(label, *m);
 
 			Action * action = new Action(*(owner_->view()),
-				QString(), toqstr(label), m->func(), QString());
+				QIcon(), toqstr(label), m->func(), QString());
 			qMenu->addAction(action);
 		}
 	}

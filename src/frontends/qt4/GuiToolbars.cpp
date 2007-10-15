@@ -14,6 +14,7 @@
 
 #include "GuiToolbars.h"
 
+#include "GuiCommandBuffer.h"
 #include "GuiToolbar.h"
 #include "GuiView.h"
 
@@ -27,6 +28,7 @@
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "TextClass.h"
+#include "ToolbarBackend.h"
 
 
 using std::endl;

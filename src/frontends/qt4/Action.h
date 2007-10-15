@@ -14,6 +14,8 @@
 
 #include <QAction>
 
+class QIcon;
+
 namespace lyx {
 
 class FuncRequest;
@@ -32,7 +34,7 @@ class Action : public QAction
 	Q_OBJECT
 
 public:
-	Action(GuiViewBase & lyxView, QString const & icon, QString const & text,
+	Action(GuiViewBase & lyxView, QIcon const & icon, QString const & text,
 		FuncRequest const & func, QString const & tooltip);
 
 	void update();

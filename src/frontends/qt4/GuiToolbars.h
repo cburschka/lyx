@@ -15,12 +15,13 @@
 #define GUI_TOOLBARS_H
 
 #include "TextClass.h"
-#include "ToolbarBackend.h"
-#include "Session.h"
 
 #include <map>
 
 namespace lyx {
+
+class ToolbarInfo;
+
 namespace frontend {
 
 class GuiLayoutBox;

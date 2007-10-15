@@ -56,6 +56,153 @@ using support::compare;
 
 namespace frontend {
 
+
+namespace {
+
+struct PngMap {
+	char const * key;
+	char const * value;
+};
+
+
+bool operator<(PngMap const & lhs, PngMap const & rhs)
+{
+		return compare(lhs.key, rhs.key) < 0;
+}
+
+
+class CompareKey {
+public:
+	CompareKey(string const & name) : name_(name) {}
+	bool operator()(PngMap const & other) const { return other.key == name_; }
+private:
+	string const name_;
+};
+
+
+PngMap sorted_png_map[] = {
+	{ "Bumpeq", "bumpeq2" },
+	{ "Cap", "cap2" },
+	{ "Cup", "cup2" },
+	{ "Delta", "delta2" },
+	{ "Downarrow", "downarrow2" },
+	{ "Gamma", "gamma2" },
+	{ "Lambda", "lambda2" },
+	{ "Leftarrow", "leftarrow2" },
+	{ "Leftrightarrow", "leftrightarrow2" },
+	{ "Longleftarrow", "longleftarrow2" },
+	{ "Longleftrightarrow", "longleftrightarrow2" },
+	{ "Longrightarrow", "longrightarrow2" },
+	{ "Omega", "omega2" },
+	{ "Phi", "phi2" },
+	{ "Pi", "pi2" },
+	{ "Psi", "psi2" },
+	{ "Rightarrow", "rightarrow2" },
+	{ "Sigma", "sigma2" },
+	{ "Subset", "subset2" },
+	{ "Supset", "supset2" },
+	{ "Theta", "theta2" },
+	{ "Uparrow", "uparrow2" },
+	{ "Updownarrow", "updownarrow2" },
+	{ "Upsilon", "upsilon2" },
+	{ "Vdash", "vdash3" },
+	{ "Xi", "xi2" },
+	{ "nLeftarrow", "nleftarrow2" },
+	{ "nLeftrightarrow", "nleftrightarrow2" },
+	{ "nRightarrow", "nrightarrow2" },
+	{ "nVDash", "nvdash3" },
+	{ "nvDash", "nvdash2" },
+	{ "textrm \\AA", "textrm_AA"},
+	{ "textrm \\O", "textrm_Oe"},
+	{ "vDash", "vdash2" }
+};
+
+size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
+
+
+string const find_png(string const & name)
+{
+	PngMap const * const begin = sorted_png_map;
+	PngMap const * const end = begin + nr_sorted_png_map;
+	BOOST_ASSERT(sorted(begin, end));
+
+	PngMap const * const it = std::find_if(begin, end, CompareKey(name));
+
+	string png_name;
+	if (it != end)
+		png_name = it->value;
+	else {
+		png_name = subst(name, "_", "underscore");
+		png_name = subst(png_name, ' ', '_');
+
+		// This way we can have "math-delim { }" on the toolbar.
+		png_name = subst(png_name, "(", "lparen");
+		png_name = subst(png_name, ")", "rparen");
+		png_name = subst(png_name, "[", "lbracket");
+		png_name = subst(png_name, "]", "rbracket");
+		png_name = subst(png_name, "{", "lbrace");
+		png_name = subst(png_name, "}", "rbrace");
+		png_name = subst(png_name, "|", "bars");
+		png_name = subst(png_name, ",", "thinspace");
+		png_name = subst(png_name, ":", "mediumspace");
+		png_name = subst(png_name, ";", "thickspace");
+		png_name = subst(png_name, "!", "negthinspace");
+	}
+
+	LYXERR(Debug::GUI) << "find_png(" << name << ")\n"
+			   << "Looking for math PNG called \""
+			   << png_name << '"' << std::endl;
+
+	return libFileSearch("images/math/", png_name, "png").absFilename();
+}
+
+} // namespace anon
+
+
+/// return a icon for the given action
+static QIcon getIcon(FuncRequest const & f, bool unknown)
+{
+	string fullname;
+
+	switch (f.action) {
+	case LFUN_MATH_INSERT:
+		if (!f.argument().empty())
+			fullname = find_png(to_utf8(f.argument()).substr(1));
+		break;
+	case LFUN_MATH_DELIM:
+	case LFUN_MATH_BIGDELIM:
+		fullname = find_png(to_utf8(f.argument()));
+		break;
+	default:
+		string const name = lyxaction.getActionName(f.action);
+		string png_name = name;
+
+		if (!f.argument().empty())
+			png_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
+
+		fullname = libFileSearch("images", png_name, "png").absFilename();
+
+		if (fullname.empty()) {
+			// try without the argument
+			fullname = libFileSearch("images", name, "png").absFilename();
+		}
+	}
+
+	if (!fullname.empty()) {
+		LYXERR(Debug::GUI) << "Full icon name is `"
+				   << fullname << '\'' << endl;
+		return QIcon(toqstr(fullname));
+	}
+
+	LYXERR(Debug::GUI) << "Cannot find icon for command \""
+			   << lyxaction.getActionName(f.action)
+			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
+	if (unknown)
+		return QIcon(toqstr(libFileSearch("images", "unknown", "png").absFilename()));
+	return QIcon();
+}
+
+
 static TextClass const & textClass(LyXView const & lv)
 {
 	return lv.buffer()->params().getTextClass();
@@ -176,7 +323,7 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiViewBase & owner)
 Action * GuiToolbar::addItem(ToolbarItem const & item)
 {
 	Action * act = new Action(owner_,
-		getIcon(item.func_, false).c_str(),
+		getIcon(item.func_, false),
 	  toqstr(item.label_), item.func_, toqstr(item.label_));
 	actions_.append(act);
 	return act;
@@ -202,7 +349,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 	case ToolbarItem::TABLEINSERT: {
 		QToolButton * tb = new QToolButton;
 		tb->setCheckable(true);
-		tb->setIcon(QPixmap(toqstr(getIcon(FuncRequest(LFUN_TABULAR_INSERT)))));
+		tb->setIcon(getIcon(FuncRequest(LFUN_TABULAR_INSERT), true));
 		tb->setToolTip(qt_(to_ascii(item.label_)));
 		tb->setStatusTip(qt_(to_ascii(item.label_)));
 		tb->setText(qt_(to_ascii(item.label_)));
@@ -235,7 +382,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 				panel->addButton(addItem(*it));
 				// use the icon of first action for the toolbar button
 				if (it == tbinfo->items.begin())
-					tb->setIcon(QPixmap(getIcon(it->func_).c_str()));
+					tb->setIcon(getIcon(it->func_, true));
 			}
 		tb->setCheckable(true);
 		connect(tb, SIGNAL(clicked(bool)), panel, SLOT(setVisible(bool)));
@@ -328,151 +475,6 @@ void GuiToolbar::updateContents()
 	updated();
 }
 
-
-namespace {
-
-struct PngMap {
-	char const * key;
-	char const * value;
-};
-
-
-bool operator<(PngMap const & lhs, PngMap const & rhs)
-{
-		return compare(lhs.key, rhs.key) < 0;
-}
-
-
-class CompareKey {
-public:
-	CompareKey(string const & name) : name_(name) {}
-	bool operator()(PngMap const & other) const { return other.key == name_; }
-private:
-	string const name_;
-};
-
-
-PngMap sorted_png_map[] = {
-	{ "Bumpeq", "bumpeq2" },
-	{ "Cap", "cap2" },
-	{ "Cup", "cup2" },
-	{ "Delta", "delta2" },
-	{ "Downarrow", "downarrow2" },
-	{ "Gamma", "gamma2" },
-	{ "Lambda", "lambda2" },
-	{ "Leftarrow", "leftarrow2" },
-	{ "Leftrightarrow", "leftrightarrow2" },
-	{ "Longleftarrow", "longleftarrow2" },
-	{ "Longleftrightarrow", "longleftrightarrow2" },
-	{ "Longrightarrow", "longrightarrow2" },
-	{ "Omega", "omega2" },
-	{ "Phi", "phi2" },
-	{ "Pi", "pi2" },
-	{ "Psi", "psi2" },
-	{ "Rightarrow", "rightarrow2" },
-	{ "Sigma", "sigma2" },
-	{ "Subset", "subset2" },
-	{ "Supset", "supset2" },
-	{ "Theta", "theta2" },
-	{ "Uparrow", "uparrow2" },
-	{ "Updownarrow", "updownarrow2" },
-	{ "Upsilon", "upsilon2" },
-	{ "Vdash", "vdash3" },
-	{ "Xi", "xi2" },
-	{ "nLeftarrow", "nleftarrow2" },
-	{ "nLeftrightarrow", "nleftrightarrow2" },
-	{ "nRightarrow", "nrightarrow2" },
-	{ "nVDash", "nvdash3" },
-	{ "nvDash", "nvdash2" },
-	{ "textrm \\AA", "textrm_AA"},
-	{ "textrm \\O", "textrm_Oe"},
-	{ "vDash", "vdash2" }
-};
-
-size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
-
-
-string const find_png(string const & name)
-{
-	PngMap const * const begin = sorted_png_map;
-	PngMap const * const end = begin + nr_sorted_png_map;
-	BOOST_ASSERT(sorted(begin, end));
-
-	PngMap const * const it = std::find_if(begin, end, CompareKey(name));
-
-	string png_name;
-	if (it != end)
-		png_name = it->value;
-	else {
-		png_name = subst(name, "_", "underscore");
-		png_name = subst(png_name, ' ', '_');
-
-		// This way we can have "math-delim { }" on the toolbar.
-		png_name = subst(png_name, "(", "lparen");
-		png_name = subst(png_name, ")", "rparen");
-		png_name = subst(png_name, "[", "lbracket");
-		png_name = subst(png_name, "]", "rbracket");
-		png_name = subst(png_name, "{", "lbrace");
-		png_name = subst(png_name, "}", "rbrace");
-		png_name = subst(png_name, "|", "bars");
-		png_name = subst(png_name, ",", "thinspace");
-		png_name = subst(png_name, ":", "mediumspace");
-		png_name = subst(png_name, ";", "thickspace");
-		png_name = subst(png_name, "!", "negthinspace");
-	}
-
-	LYXERR(Debug::GUI) << "find_png(" << name << ")\n"
-			   << "Looking for math PNG called \""
-			   << png_name << '"' << std::endl;
-
-	return libFileSearch("images/math/", png_name, "png").absFilename();
-}
-
-} // namespace anon
-
-
-string const getIcon(FuncRequest const & f, bool unknown)
-{
-	string fullname;
-
-	switch (f.action) {
-	case LFUN_MATH_INSERT:
-		if (!f.argument().empty())
-			fullname = find_png(to_utf8(f.argument()).substr(1));
-		break;
-	case LFUN_MATH_DELIM:
-	case LFUN_MATH_BIGDELIM:
-		fullname = find_png(to_utf8(f.argument()));
-		break;
-	default:
-		string const name = lyxaction.getActionName(f.action);
-		string png_name = name;
-
-		if (!f.argument().empty())
-			png_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
-
-		fullname = libFileSearch("images", png_name, "png").absFilename();
-
-		if (fullname.empty()) {
-			// try without the argument
-			fullname = libFileSearch("images", name, "png").absFilename();
-		}
-	}
-
-	if (!fullname.empty()) {
-		LYXERR(Debug::GUI) << "Full icon name is `"
-				   << fullname << '\'' << endl;
-		return fullname;
-	}
-
-	LYXERR(Debug::GUI) << "Cannot find icon for command \""
-			   << lyxaction.getActionName(f.action)
-			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
-	if (unknown)
-		return libFileSearch("images", "unknown", "png").absFilename();
-	else
-		return string();
-}
 
 
 } // namespace frontend

@@ -47,6 +47,7 @@
 #include "MenuBackend.h"
 #include "Paragraph.h"
 #include "Session.h"
+#include "ToolbarBackend.h"
 #include "version.h"
 
 #include <boost/current_function.hpp>

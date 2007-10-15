@@ -27,7 +27,7 @@ namespace lyx {
 namespace frontend {
 
 
-Action::Action(GuiViewBase & lyxView, QString const & icon,
+Action::Action(GuiViewBase & lyxView, QIcon const & icon,
 	  QString const & text, FuncRequest const & func,
 	  QString const & tooltip)
 	: QAction(&lyxView), func_(func), lyxView_(lyxView)
@@ -36,7 +36,7 @@ Action::Action(GuiViewBase & lyxView, QString const & icon,
 	// only Qt/Mac handles that
 	setMenuRole(NoRole);
 #endif
-	setIcon(QPixmap(icon));
+	setIcon(icon);
 	setText(text);
 	setToolTip(tooltip);
 	setStatusTip(tooltip);
