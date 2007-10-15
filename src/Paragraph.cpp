@@ -597,7 +597,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 	if (style.pass_thru)
 		return false;
 
-	if (i < size() - 1) {
+	if (i + 1 < size()) {
 		char_type next = getChar(i + 1);
 		if (Encodings::isCombiningChar(next)) {
 			// This space has an accent, so we must always output it.
@@ -611,7 +611,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 	    && column > lyxrc.plaintext_linelen
 	    && i
 	    && getChar(i - 1) != ' '
-	    && (i < size() - 1)
+	    && (i + 1 < size())
 	    // same in FreeSpacing mode
 	    && !owner_->isFreeSpacing()
 	    // In typewriter mode, we want to avoid
@@ -650,7 +650,7 @@ int Paragraph::Pimpl::knownLangChars(odocstream & os,
 	docstring const latex1 = rtrim(encoding.latexChar(c), "}");
 	int length = latex1.length();
 	os << latex1;
-	while (i < size() - 1) {
+	while (i + 1 < size()) {
 		char_type next = getChar(i + 1);
 		// Stop here if next character belongs to another
 		// language or there is a change tracking status.
@@ -1011,7 +1011,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 
 			if (pnr == phrases_nr && c != '\0') {
 				Encoding const & encoding = *(runparams.encoding);
-				if (i < size() - 1) {
+				if (i + 1 < size()) {
 					char_type next = getChar(i + 1);
 					if (Encodings::isCombiningChar(next)) {
 						column += latexSurrogatePair(os, c, next, encoding) - 1;
