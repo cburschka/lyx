@@ -175,8 +175,8 @@ void InsetCommand::replaceContents(std::string const & from, string const & to)
 }
 
 
-InsetCommandMailer::InsetCommandMailer(string const & name,
-				       InsetCommand & inset)
+InsetCommandMailer::InsetCommandMailer(
+	string const & name, InsetCommand & inset)
 	: name_(name), inset_(inset)
 {}
 
@@ -187,9 +187,8 @@ string const InsetCommandMailer::inset2string(Buffer const &) const
 }
 
 
-void InsetCommandMailer::string2params(string const & name,
-				       string const & in,
-				       InsetCommandParams & params)
+void InsetCommandMailer::string2params(
+	string const & name, string const & in, InsetCommandParams & params)
 {
 	params.clear();
 	if (in.empty())
