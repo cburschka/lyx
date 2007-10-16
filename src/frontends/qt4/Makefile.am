@@ -276,6 +276,7 @@ UIFILES = \
 	PrefPlaintextUi.ui \
 	PrefPrinterUi.ui \
 	PrefScreenFontsUi.ui \
+	PrefShortcutsUi.ui \
 	PrefSpellcheckerUi.ui \
 	PrefsUi.ui \
 	PrefUi.ui \

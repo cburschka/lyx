@@ -163,13 +163,6 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="bindFilePB" >
-     <property name="text" >
-      <string>B&amp;rowse...</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0" >
     <widget class="QLabel" name="uiFileLA" >
      <property name="text" >
@@ -177,16 +170,6 @@
      </property>
      <property name="buddy" >
       <cstring>uiFileED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="bindFileLA" >
-     <property name="text" >
-      <string>&amp;Bind file:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>bindFileED</cstring>
      </property>
     </widget>
    </item>
@@ -199,9 +182,6 @@
       <string>Bro&amp;wse...</string>
      </property>
     </widget>
-   </item>
-   <item row="1" column="1" >
-    <widget class="QLineEdit" name="bindFileED" />
    </item>
    <item row="2" column="0" colspan="3" >
     <widget class="QGroupBox" name="GeometryGB" >
@@ -378,8 +358,6 @@
  <tabstops>
   <tabstop>uiFileED</tabstop>
   <tabstop>uiFilePB</tabstop>
-  <tabstop>bindFileED</tabstop>
-  <tabstop>bindFilePB</tabstop>
   <tabstop>loadWindowSizeCB</tabstop>
   <tabstop>windowWidthSB</tabstop>
   <tabstop>windowHeightSB</tabstop>

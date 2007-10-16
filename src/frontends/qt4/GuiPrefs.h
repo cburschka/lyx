@@ -30,6 +30,7 @@
 #include "ui_PrefColorsUi.h"
 #include "ui_PrefDisplayUi.h"
 #include "ui_PrefPathsUi.h"
+#include "ui_PrefShortcutsUi.h"
 #include "ui_PrefSpellcheckerUi.h"
 #include "ui_PrefConvertersUi.h"
 #include "ui_PrefFileformatsUi.h"
@@ -338,8 +339,22 @@ public:
 
 public Q_SLOTS:
 	void select_ui();
-	void select_bind();
 	void on_loadWindowSizeCB_toggled(bool);
+
+};
+
+
+class PrefShortcuts : public PrefModule, public Ui::PrefShortcuts
+{
+	Q_OBJECT
+public:
+	PrefShortcuts(GuiPreferences * form, QWidget * parent = 0);
+
+	void apply(LyXRC & rc) const;
+	void update(LyXRC const & rc);
+
+public Q_SLOTS:
+	void select_bind();
 
 };
 

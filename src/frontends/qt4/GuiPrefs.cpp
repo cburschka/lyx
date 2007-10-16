@@ -1583,11 +1583,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		TextLabel1, SLOT(setEnabled(bool)));
 	connect(uiFilePB, SIGNAL(clicked()),
 		this, SLOT(select_ui()));
-	connect(bindFilePB, SIGNAL(clicked()),
-		this, SLOT(select_bind()));
 	connect(uiFileED, SIGNAL(textChanged(const QString &)),
-		this, SIGNAL(changed()));
-	connect(bindFileED, SIGNAL(textChanged(const QString &)),
 		this, SIGNAL(changed()));
 	connect(restoreCursorCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -1616,7 +1612,6 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 void PrefUserInterface::apply(LyXRC & rc) const
 {
 	rc.ui_file = internal_path(fromqstr(uiFileED->text()));
-	rc.bind_file = internal_path(fromqstr(bindFileED->text()));
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
 	if (loadWindowSizeCB->isChecked()) {
@@ -1637,7 +1632,6 @@ void PrefUserInterface::apply(LyXRC & rc) const
 void PrefUserInterface::update(LyXRC const & rc)
 {
 	uiFileED->setText(toqstr(external_path(rc.ui_file)));
-	bindFileED->setText(toqstr(external_path(rc.bind_file)));
 	restoreCursorCB->setChecked(rc.use_lastfilepos);
 	loadSessionCB->setChecked(rc.load_session);
 	bool loadWindowSize = rc.geometry_width == 0 && rc.geometry_height == 0;
@@ -1668,22 +1662,52 @@ void PrefUserInterface::select_ui()
 }
 
 
-void PrefUserInterface::select_bind()
-{
-	docstring const name =
-		from_utf8(internal_path(fromqstr(bindFileED->text())));
-	docstring file = form_->browsebind(name);
-	if (!file.empty())
-		bindFileED->setText(toqstr(file));
-}
-
-
 void PrefUserInterface::on_loadWindowSizeCB_toggled(bool loadwindowsize)
 {
 	windowWidthLA->setDisabled(loadwindowsize);
 	windowHeightLA->setDisabled(loadwindowsize);
 	windowWidthSB->setDisabled(loadwindowsize);
 	windowHeightSB->setDisabled(loadwindowsize);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// PrefShortcuts
+//
+/////////////////////////////////////////////////////////////////////
+
+PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
+	: PrefModule(_("Shortcuts"), form, parent)
+{
+	setupUi(this);
+
+	connect(bindFilePB, SIGNAL(clicked()),
+		this, SLOT(select_bind()));
+	connect(bindFileED, SIGNAL(textChanged(const QString &)),
+		this, SIGNAL(changed()));
+}
+
+
+void PrefShortcuts::apply(LyXRC & rc) const
+{
+	rc.bind_file = internal_path(fromqstr(bindFileED->text()));
+}
+
+
+void PrefShortcuts::update(LyXRC const & rc)
+{
+	bindFileED->setText(toqstr(external_path(rc.bind_file)));
+}
+
+
+void PrefShortcuts::select_bind()
+{
+	docstring const name =
+		from_utf8(internal_path(fromqstr(bindFileED->text())));
+	docstring file = form_->browsebind(name);
+	if (!file.empty())
+		bindFileED->setText(toqstr(file));
 }
 
 
@@ -1734,6 +1758,7 @@ GuiPreferences::GuiPreferences(LyXView & lv)
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
 	add(new PrefUserInterface(this));
+	add(new PrefShortcuts(this));
 	add(new PrefScreenFonts(this));
 	add(new PrefColors(this));
 	add(new PrefDisplay);
