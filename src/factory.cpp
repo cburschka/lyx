@@ -225,9 +225,6 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 		case LFUN_INFO_INSERT:
 			return new InsetInfo(params, to_utf8(cmd.argument()));
 #if 0
-		case LFUN_LIST_INSERT:
-			return new InsetList;
-
 		case LFUN_THEOREM_INSERT:
 			return new InsetTheorem;
 #endif
@@ -489,8 +486,6 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			string tmptok = lex.getString();
 			inset.reset(new InsetWrap(buf.params(), tmptok));
 #if 0
-		} else if (tmptok == "List") {
-			inset.reset(new InsetList);
 		} else if (tmptok == "Theorem") {
 			inset.reset(new InsetList);
 #endif
