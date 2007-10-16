@@ -735,6 +735,29 @@ void TabWorkArea::showBar(bool show)
 }
 
 
+GuiWorkArea * TabWorkArea::currentWorkArea()
+{
+	if (count() == 0)
+		return 0;
+
+	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(currentWidget()); 
+	BOOST_ASSERT(wa);
+	return wa;
+}
+
+
+GuiWorkArea * TabWorkArea::workArea(Buffer & buffer)
+{
+	for (int i = 0; i != count(); ++i) {
+		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
+		BOOST_ASSERT(wa);
+		if (&wa->bufferView().buffer() == &buffer)
+			return wa;
+	}
+	return 0;
+}
+
+
 void TabWorkArea::closeAll()
 {
 	while (count()) {

@@ -689,12 +689,10 @@ bool GuiViewBase::event(QEvent * e)
 	//case QEvent::Drop:
 	//	break;
 
-	case QEvent::WindowActivate:
+	case QEvent::WindowActivate: {
 		theApp()->setCurrentView(*this);
-		if (d.tab_widget_->count()) {
-			GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(
-				d.tab_widget_->currentWidget());
-			BOOST_ASSERT(wa);
+		GuiWorkArea * wa = d.tab_widget_->currentWorkArea();
+		if (wa) {
 			BufferView & bv = wa->bufferView();
 			connectBufferView(bv);
 			connectBuffer(bv.buffer());
@@ -704,7 +702,7 @@ bool GuiViewBase::event(QEvent * e)
 			getDialogs().updateBufferDependent(true);
 		}
 		return QMainWindow::event(e);
-
+	}
 	case QEvent::ShortcutOverride: {
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 		if (d.tab_widget_->count() == 0) {
@@ -746,9 +744,8 @@ void GuiViewBase::showView()
 
 void GuiViewBase::busy(bool yes)
 {
-	if (d.tab_widget_->count()) {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
-		BOOST_ASSERT(wa);
+	GuiWorkArea * wa = d.tab_widget_->currentWorkArea();
+	if (wa) {
 		wa->setUpdatesEnabled(!yes);
 		if (yes)
 			wa->stopBlinkingCursor();
@@ -812,13 +809,7 @@ GuiToolbar * GuiViewBase::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
 
 WorkArea * GuiViewBase::workArea(Buffer & buffer)
 {
-	for (int i = 0; i != d.tab_widget_->count(); ++i) {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(d.tab_widget_->widget(i));
-		BOOST_ASSERT(wa);
-		if (&wa->bufferView().buffer() == &buffer)
-			return wa;
-	}
-	return 0;
+	return d.tab_widget_->workArea(buffer);
 }
 
 
@@ -838,19 +829,13 @@ WorkArea * GuiViewBase::addWorkArea(Buffer & buffer)
 
 WorkArea * GuiViewBase::currentWorkArea()
 {
-	if (d.tab_widget_->count() == 0)
-		return 0;
-	BOOST_ASSERT(dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget()));
-	return dynamic_cast<GuiWorkArea *>(d.tab_widget_->currentWidget());
+	return d.tab_widget_->currentWorkArea();
 }
 
 
 WorkArea const * GuiViewBase::currentWorkArea() const
 {
-	if (d.tab_widget_->count() == 0)
-		return 0;
-	BOOST_ASSERT(dynamic_cast<GuiWorkArea const *>(d.tab_widget_->currentWidget()));
-	return dynamic_cast<GuiWorkArea const *>(d.tab_widget_->currentWidget());
+	return d.tab_widget_->currentWorkArea();
 }
 
 
@@ -862,7 +847,7 @@ void GuiViewBase::setCurrentWorkArea(WorkArea * work_area)
 	// update the toc in any case.
 	updateToc();
 
-	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(work_area);
+	GuiWorkArea * wa = static_cast<GuiWorkArea *>(work_area);
 	BOOST_ASSERT(wa);
 	d.tab_widget_->setCurrentWorkArea(wa);
 }
@@ -880,7 +865,7 @@ void GuiViewBase::removeWorkArea(WorkArea * work_area)
 	// update the toc in any case.
 	updateToc();
 
-	GuiWorkArea * gwa = dynamic_cast<GuiWorkArea *>(work_area);
+	GuiWorkArea * gwa = static_cast<GuiWorkArea *>(work_area);
 	BOOST_ASSERT(gwa);
 	d.tab_widget_->removeWorkArea(gwa);
 

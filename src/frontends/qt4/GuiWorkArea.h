@@ -187,6 +187,8 @@ public:
 	void closeAll();
 	bool setCurrentWorkArea(GuiWorkArea *);
 	bool removeWorkArea(GuiWorkArea *);
+	GuiWorkArea * currentWorkArea();
+	GuiWorkArea * workArea(Buffer & buffer);
 
 Q_SIGNALS:
 	///
