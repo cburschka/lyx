@@ -32,7 +32,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetCode lyxCode() const;
+	InsetCode lyxCode() const { return INDEX_CODE; }
 	///
 	///
 	void metrics(MetricsInfo &, Dimension &) const;

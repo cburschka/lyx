@@ -60,12 +60,6 @@ docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
 }
 
 
-InsetCode InsetFloatList::lyxCode() const
-{
-	return FLOAT_LIST_CODE;
-}
-
-
 void InsetFloatList::write(Buffer const &, ostream & os) const
 {
 	os << "FloatList " << to_ascii(getParam("type")) << "\n";

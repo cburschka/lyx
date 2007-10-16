@@ -70,12 +70,6 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 }
 
 
-InsetCode InsetNomencl::lyxCode() const
-{
-	return NOMENCL_CODE;
-}
-
-
 InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
 	: InsetCommand(p, string())
 {}

@@ -34,7 +34,7 @@ public:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetCode lyxCode() const;
+	InsetCode lyxCode() const { return NOMENCL_CODE; }
 	///
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;

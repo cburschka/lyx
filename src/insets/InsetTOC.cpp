@@ -48,14 +48,6 @@ docstring const InsetTOC::getScreenLabel(Buffer const & buf) const
 }
 
 
-InsetCode InsetTOC::lyxCode() const
-{
-	if (getCmdName() == "tableofcontents")
-		return TOC_CODE;
-	return NO_CODE;
-}
-
-
 int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
 			OutputParams const &) const
 {

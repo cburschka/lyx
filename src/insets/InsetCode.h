@@ -123,13 +123,17 @@ enum InsetCode {
 	LISTINGS_CODE,
 	///
 	INFO_CODE,
+	///
+	COLLAPSABLE_CODE,  // 50
 };
 
 /** returns the InsetCode corresponding to the \c name.
-*  Eg, translate("branch") == BRANCH_CODE
-* implemented in 'Inset.cpp'.
+*   Eg, insetCode("branch") == BRANCH_CODE
+*   Implemented in 'Inset.cpp'.
 */
 InsetCode insetCode(std::string const & name);
+/// the other way
+std::string insetName(InsetCode);
 
 } // namespace lyx
 

@@ -136,6 +136,8 @@ public:
 		  OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
+	///
+	virtual InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
 protected:
 	///

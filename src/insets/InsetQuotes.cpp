@@ -385,10 +385,4 @@ Inset * InsetQuotes::clone() const
 }
 
 
-InsetCode InsetQuotes::lyxCode() const
-{
-	return QUOTE_CODE;
-}
-
-
 } // namespace lyx

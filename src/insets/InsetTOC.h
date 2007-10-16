@@ -28,7 +28,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetCode lyxCode() const;
+	InsetCode lyxCode() const { return TOC_CODE; }
 	///
 	DisplayType display() const { return AlignCenter; }
 	///

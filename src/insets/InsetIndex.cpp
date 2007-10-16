@@ -50,12 +50,6 @@ int InsetIndex::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-InsetCode InsetIndex::lyxCode() const
-{
-	return INDEX_CODE;
-}
-
-
 Inset * InsetIndex::clone() const
 {
 	return new InsetIndex(*this);
