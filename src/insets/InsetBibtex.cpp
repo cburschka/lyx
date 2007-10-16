@@ -26,6 +26,7 @@
 
 #include "frontends/alert.h"
 
+#include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -90,12 +91,22 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p("bibtex");
-		InsetCommandMailer::string2params("bibtex", to_utf8(cmd.argument()), p);
-		if (!p.getCmdName().empty()) {
-			setParams(p);
-			cur.buffer().updateBibfilesCache();
-		} else
-			cur.noUpdate();
+		try {
+			if (!InsetCommandMailer::string2params("bibtex", 
+					to_utf8(cmd.argument()), p)) {
+				cur.noUpdate();
+				break;
+			}
+		} catch (support::ExceptionMessage const & message) {
+			if (message.type_ == support::WarningException) {
+				Alert::warning(message.title_, message.details_);
+				cur.noUpdate();
+			} else 
+				throw message;
+			break;
+		}
+		setParams(p);
+		cur.buffer().updateBibfilesCache();
 		break;
 	}
 

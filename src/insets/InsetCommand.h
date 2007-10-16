@@ -136,8 +136,8 @@ public:
 	virtual std::string const & name() const { return name_; }
 	///
 	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, std::string const & name,
+	/// returns true if params are successfully read
+	static bool string2params(std::string const &, std::string const & name,
 				  InsetCommandParams &);
 	///
 	static std::string const params2string(std::string const & name,

@@ -33,7 +33,7 @@ public:
 	explicit InsetCommandParams(std::string const & insetType,
 			std::string const & cmdName);
 	///
-	std::string insetType() { return insetType_; }
+	std::string insetType() const { return insetType_; }
 	///
 	void read(Lexer &);
 	/// Parse the command

@@ -187,12 +187,12 @@ string const InsetCommandMailer::inset2string(Buffer const &) const
 }
 
 
-void InsetCommandMailer::string2params(
+bool InsetCommandMailer::string2params(
 	string const & name, string const & in, InsetCommandParams & params)
 {
 	params.clear();
 	if (in.empty())
-		return;
+		return false;
 
 	istringstream data(in);
 	Lexer lex(0,0);
@@ -200,17 +200,22 @@ void InsetCommandMailer::string2params(
 
 	string n;
 	lex >> n;
-	if (!lex || n != name)
-		return print_mailer_error("InsetCommandMailer", in, 1, name);
+	if (!lex || n != name) {
+		print_mailer_error("InsetCommandMailer", in, 1, name);
+		return false;
+	}
 
 	// This is part of the inset proper that is usually swallowed
 	// by Text::readInset
 	string id;
 	lex >> id;
-	if (!lex || id != "CommandInset")
-		return print_mailer_error("InsetCommandMailer", in, 2, "LatexCommand");
+	if (!lex || id != "CommandInset") {
+		print_mailer_error("InsetCommandMailer", in, 2, "LatexCommand");
+		return false;
+	}
 
 	params.read(lex);
+	return true;
 }
 
 
