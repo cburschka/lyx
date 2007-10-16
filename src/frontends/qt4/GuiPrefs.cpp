@@ -24,6 +24,8 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "GuiFontExample.h"
+#include "KeyMap.h"
+#include "LyXAction.h"
 #include "PanelStack.h"
 #include "paper.h"
 #include "Session.h"
@@ -45,6 +47,8 @@
 #include <QPushButton>
 #include <QSpinBox>
 #include <QString>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 #include <QValidator>
 #include <QCloseEvent>
 
@@ -1682,6 +1686,12 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 {
 	setupUi(this);
 
+	shortcutsTW->setColumnCount(3);
+	shortcutsTW->headerItem()->setText(0, qt_(""));
+	shortcutsTW->headerItem()->setText(1, qt_("Function"));
+	shortcutsTW->headerItem()->setText(2, qt_("Shortcut"));
+	shortcutsTW->setSortingEnabled(false);
+
 	connect(bindFilePB, SIGNAL(clicked()),
 		this, SLOT(select_bind()));
 	connect(bindFileED, SIGNAL(textChanged(const QString &)),
@@ -1698,6 +1708,23 @@ void PrefShortcuts::apply(LyXRC & rc) const
 void PrefShortcuts::update(LyXRC const & rc)
 {
 	bindFileED->setText(toqstr(external_path(rc.bind_file)));
+
+	KeyMap & km = theTopLevelKeymap();
+	KeyMap::Table::const_iterator it = km.begin();
+	KeyMap::Table::const_iterator it_end = km.end();
+	for (; it != it_end; ++it) {
+		QTreeWidgetItem * newItem = new QTreeWidgetItem(shortcutsTW);
+		string const action = lyxaction.getActionName(it->func.action);
+		if (action == "self-insert")
+			continue;
+		QString const lfun = toqstr(from_utf8(action) + " " + it->func.argument());
+		QString const shortcut = toqstr(it->code.print(it->mod.first, true));
+		newItem->setText(1, lfun);
+		newItem->setText(2, shortcut);
+		// FIXME: TreeItem can not be user-checkable?
+		newItem->setFlags(newItem->flags() | Qt::ItemIsEditable
+			| Qt::ItemIsSelectable | Qt::ItemIsUserCheckable);
+	}
 }
 
 

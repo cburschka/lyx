@@ -90,7 +90,6 @@ public:
 
 	typedef std::pair<KeyModifier, KeyModifier> ModifierPair;
 
-private:
 	///
 	struct Key {
 		/// Keysym
@@ -106,6 +105,13 @@ private:
 		FuncRequest func;
 	};
 
+	///
+	typedef std::vector<Key> Table;
+
+	Table::const_iterator begin() const { return table.begin(); }
+	Table::const_iterator end() const { return table.end(); }
+
+private:
 	/**
 	 * Define an action for a key sequence.
 	 * @param r internal recursion level
@@ -123,8 +129,6 @@ private:
 
 	/// is the table empty ?
 	bool empty() const { return table.empty(); }
-	///
-	typedef std::vector<Key> Table;
 	///
 	Table table;
 };

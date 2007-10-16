@@ -27,14 +27,40 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="bindFilePB" >
+   <item row="3" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="editPB" >
      <property name="text" >
-      <string>B&amp;rowse...</string>
+      <string>Edit</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" >
+   <item row="1" column="0" colspan="2" >
+    <widget class="QLabel" name="shortcutsLBL" >
+     <property name="text" >
+      <string>Shortcuts:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="bindFileED" />
+   </item>
+   <item row="0" column="0" >
     <widget class="QLabel" name="bindFileLA" >
      <property name="text" >
       <string>&amp;Bind file:</string>
@@ -44,21 +70,15 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QLineEdit" name="bindFileED" />
+   <item row="0" column="2" >
+    <widget class="QPushButton" name="bindFilePB" >
+     <property name="text" >
+      <string>B&amp;rowse...</string>
+     </property>
+    </widget>
    </item>
-   <item row="5" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
+   <item rowspan="2" row="2" column="0" colspan="2" >
+    <widget class="QTreeWidget" name="shortcutsTW" />
    </item>
   </layout>
  </widget>
