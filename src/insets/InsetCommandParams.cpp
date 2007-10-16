@@ -193,11 +193,11 @@ std::string InsetCommandParams::getDefaultCmd(std::string insetType) {
 	if (insetType == "bibitem")
 		return "bibitem";
 	if (insetType == "bibtex") 
-		return "";
+		return "bibtex"; //this is an unused dummy
 	if (insetType == "citation")
 		return "cite";
 	if (insetType == "floatlist")
-		return "";
+		return "listoftables";
 	if (insetType == "hfill")
 		return "hfill";
 	if (insetType == "href")
@@ -218,7 +218,8 @@ std::string InsetCommandParams::getDefaultCmd(std::string insetType) {
 		return "ref";
 	if (insetType == "toc")
 		return "tableofcontents";
-	return "";	
+	BOOST_ASSERT(false);
+	return "";
 }
 
 
