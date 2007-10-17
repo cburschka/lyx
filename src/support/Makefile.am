@@ -106,8 +106,14 @@ liblyxsupport_la_SOURCES = \
 
 ############################## Tests ##################################
 
-EXTRA_DIST += tests/test_convert tests/test_filetools \
-	tests/test_lstrings tests/regfiles
+EXTRA_DIST += \
+	tests/test_convert \
+	tests/test_filetools \
+	tests/test_lstrings \
+	tests/regfiles/convert \
+	tests/regfiles/filetools \
+	tests/regfiles/lstrings
+
 
 TESTS = \
 	test_convert \
