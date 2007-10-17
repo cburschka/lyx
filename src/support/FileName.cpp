@@ -17,8 +17,10 @@
 #include "support/qstring_helpers.h"
 
 #include <QFile>
+#include <QFileInfo>
 
-#include <boost/assert.hpp>
+#include <boost/filesystem/exception.hpp>
+#include <boost/filesystem/operations.hpp>
 
 #include <map>
 #include <sstream>
@@ -28,17 +30,15 @@
 using std::map;
 using std::string;
 
-
 namespace lyx {
 namespace support {
 
 
-FileName::FileName()
-{}
-
-
-FileName::~FileName()
-{}
+/////////////////////////////////////////////////////////////////////
+//
+// FileName
+//
+/////////////////////////////////////////////////////////////////////
 
 
 FileName::FileName(string const & abs_filename)
@@ -81,6 +81,25 @@ FileName const FileName::fromFilesystemEncoding(string const & name)
 }
 
 
+bool FileName::exists() const
+{
+	return QFileInfo(toqstr(name_)).exists();
+}
+
+
+bool FileName::isReadOnly() const
+{
+	QFileInfo const fi(toqstr(name_));
+	return fi.isReadable() && !fi.isWritable();
+}
+
+
+std::time_t FileName::lastModified() const
+{
+	return boost::filesystem::last_write_time(toFilesystemEncoding());
+}
+
+
 bool operator==(FileName const & lhs, FileName const & rhs)
 {
 	return lhs.absFilename() == rhs.absFilename();
@@ -109,6 +128,13 @@ std::ostream & operator<<(std::ostream & os, FileName const & filename)
 {
 	return os << filename.absFilename();
 }
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// DocFileName
+//
+/////////////////////////////////////////////////////////////////////
 
 
 DocFileName::DocFileName()

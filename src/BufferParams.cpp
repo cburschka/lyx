@@ -903,7 +903,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		// when Vietnamese is used, babel must directly be loaded with the
 		// language options, not in the class options, see
 		// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
-		int viet = language_options.str().find("vietnam");
+		size_t viet = language_options.str().find("vietnam");
 		// viet = string::npos when not found
 		if (lyxrc.language_global_options && !language_options.str().empty()
 			&& viet == string::npos)
@@ -1575,7 +1575,7 @@ string const BufferParams::babelCall(string const & lang_opts) const
 	// when Vietnamese is used, babel must directly be loaded with the
 	// language options, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
-	int viet = lang_opts.find("vietnam");
+	size_t viet = lang_opts.find("vietnam");
 	// viet = string::npos when not found
 	if (!lyxrc.language_global_options || viet != string::npos)
 		return "\\usepackage[" + lang_opts + "]{babel}";

@@ -750,7 +750,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	}
 
 	lex.next();
-	string const token(lex.getString());
+	string const token = lex.getString();
 
 	if (!lex) {
 		Alert::error(_("Document could not be read"),

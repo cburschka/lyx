@@ -27,7 +27,7 @@ namespace support {
 class FileName {
 public:
 	/// Constructor for empty filenames
-	FileName();
+	FileName() {}
 	/** Constructor for nonempty filenames.
 	 * explicit because we don't want implicit conversion of relative
 	 * paths in function arguments (e.g. of unlink).
@@ -35,7 +35,7 @@ public:
 	 * Encoding is always UTF-8.
 	 */
 	explicit FileName(std::string const & abs_filename);
-	virtual ~FileName();
+	virtual ~FileName() {}
 	/** Set a new filename.
 	 * \param filename the file in question. Must have an absolute path.
 	 * Encoding is always UTF-8.
@@ -51,6 +51,14 @@ public:
 	 * Only use this for accessing the file, e.g. with an fstream.
 	 */
 	std::string const toFilesystemEncoding() const;
+
+	/// returns true if the file exists
+	bool exists() const;
+	/// returns time of last write access
+	std::time_t lastModified() const;
+	/// return true when file is readable but not writabel
+	bool isReadOnly() const;
+
 	/**
 	 * Get a FileName from \p name in the encoding used by the file system.
 	 * Only use this for filenames you got directly from the file system,
@@ -102,7 +110,7 @@ public:
 	std::string const relFilename(std::string const & buffer_path = std::string()) const;
 	/// \param buf_path if empty, uses `pwd`
 	std::string const outputFilename(std::string const & buf_path = std::string()) const;
-
+	
 	/** @returns a mangled representation of the absolute file name
 	 *  suitable for use in the temp dir when, for example, converting
 	 *  an image file to another format.
