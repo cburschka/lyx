@@ -15,8 +15,6 @@
 
 #include "GuiToc.h"
 #include "qt_helpers.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 
 #include "debug.h"
 
@@ -25,21 +23,12 @@
 #include <QTreeWidgetItem>
 
 #include <vector>
-#include <string>
-#include <stack>
 
 using std::endl;
-using std::pair;
-using std::stack;
 using std::vector;
-using std::string;
 
 
 namespace lyx {
-
-using support::FileName;
-using support::libFileSearch;
-
 namespace frontend {
 
 TocWidget::TocWidget(GuiToc & form, QWidget * parent)
@@ -50,16 +39,11 @@ TocWidget::TocWidget(GuiToc & form, QWidget * parent)
 
 	connect(&form_, SIGNAL(modelReset()), SLOT(updateGui()));
 
-	FileName icon_path = libFileSearch("images", "promote.png");
-	moveOutTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path = libFileSearch("images", "demote.png");
-	moveInTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path = libFileSearch("images", "up.png");
-	moveUpTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path = libFileSearch("images", "down.png");
-	moveDownTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path = libFileSearch("images", "reload.png");
-	updateTB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+	moveOutTB->setIcon(QIcon(":/images/promote.png"));
+	moveInTB->setIcon(QIcon(":/images/demote.png"));
+	moveUpTB->setIcon(QIcon(":/images/up.png"));
+	moveDownTB->setIcon(QIcon(":/images/down.png"));
+	updateTB->setIcon(QIcon(":/images/reload.png"));
 
 	// avoid flickering
 	tocTV->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);

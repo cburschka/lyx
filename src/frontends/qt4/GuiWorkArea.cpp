@@ -30,8 +30,6 @@
 #include "LyXRC.h"
 #include "version.h"
 
-#include "support/filetools.h" // LibFileSearch
-
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"
 
@@ -46,7 +44,6 @@
 #include <QTimer>
 
 #include <boost/bind.hpp>
-#include <boost/current_function.hpp>
 
 #ifdef Q_WS_X11
 #include <QX11Info>
@@ -288,8 +285,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 {
 	if (dc_event_.active && dc_event_ == *e) {
 		dc_event_.active = false;
-		FuncRequest cmd(LFUN_MOUSE_TRIPLE,
-			e->x(), e->y(),
+		FuncRequest cmd(LFUN_MOUSE_TRIPLE, e->x(), e->y(),
 			q_button_state(e->button()));
 		dispatch(cmd);
 		return;
@@ -693,9 +689,13 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 	}
 }
 
+
 ////////////////////////////////////////////////////////////////////
-// TabWorkArea implementation.
+//
+// TabWorkArea 
+//
 ////////////////////////////////////////////////////////////////////
+
 TabWorkArea::TabWorkArea(QWidget * parent): QTabWidget(parent)
 {
 	QPalette pal = palette();
@@ -705,13 +705,8 @@ TabWorkArea::TabWorkArea(QWidget * parent): QTabWidget(parent)
 
 	QToolButton * closeTabButton = new QToolButton(this);
     closeTabButton->setPalette(pal);
-	FileName const file = support::libFileSearch("images", "closetab", "png");
-	if (!file.empty()) {
-		QPixmap pm(toqstr(file.absFilename()));
-		closeTabButton->setIcon(QIcon(pm));
-	} else {
-		closeTabButton->setText("Close");
-	}
+	closeTabButton->setIcon(QIcon(":/images/closetab.png"));
+	closeTabButton->setText("Close");
 	closeTabButton->setAutoRaise(true);
 	closeTabButton->setCursor(Qt::ArrowCursor);
 	closeTabButton->setToolTip(tr("Close tab"));

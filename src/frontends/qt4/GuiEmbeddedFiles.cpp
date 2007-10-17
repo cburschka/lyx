@@ -24,9 +24,6 @@
 #include "frontends/LyXView.h"
 
 #include "support/FileFilterList.h"
-#include "support/convert.h"
-#include "support/FileName.h"
-#include "support/filetools.h"
 
 using std::string;
 
@@ -35,8 +32,6 @@ namespace lyx {
 namespace frontend {
 
 using support::FileFilterList;
-using support::FileName;
-using support::libFileSearch;
 
 EmbeddedFilesWidget::EmbeddedFilesWidget
 		(GuiEmbeddedFiles & controller)
@@ -44,17 +39,13 @@ EmbeddedFilesWidget::EmbeddedFilesWidget
 {
 	setupUi(this);
 	setWindowTitle("LyX: " + qt_("Embedded Files"));
-	// Temporary icons.
-	FileName icon_path = libFileSearch("images", "tabular-feature_set-all-lines.png");
-	selectPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path =  libFileSearch("images", "tabular-feature_unset-all-lines.png");
-	unselectPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path =  libFileSearch("images", "file-open.png");
-	addPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path =  libFileSearch("images", "depth-decrement.png");
-	extractPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
-	icon_path =  libFileSearch("images", "depth-increment.png");
-	updatePB->setIcon(QIcon(toqstr(icon_path.absFilename())));
+
+	// FIXME: Temporary icons.
+	selectPB->setIcon(QIcon(":/images/tabular-feature_set-all-lines.png"));
+	unselectPB->setIcon(QIcon(":/images/tabular-feature_unset-all-lines.png"));
+	addPB->setIcon(QIcon(":/images/file-open.png"));
+	extractPB->setIcon(QIcon(":/images/depth-decrement.png"));
+	updatePB->setIcon(QIcon(":/images/depth-increment.png"));
 
 	updateView();
 }
@@ -248,7 +239,8 @@ void EmbeddedFilesWidget::on_enableCB_toggled(bool enable)
 
 
 
-GuiEmbeddedFiles::GuiEmbeddedFiles(GuiViewBase & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
+GuiEmbeddedFiles::GuiEmbeddedFiles(GuiViewBase & parent,
+	Qt::DockWidgetArea area, Qt::WindowFlags flags)
 	: DockView(parent, "embedded", area, flags)
 {
 	widget_ = new EmbeddedFilesWidget(*this);

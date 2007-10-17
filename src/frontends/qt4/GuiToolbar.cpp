@@ -33,7 +33,6 @@
 #include "qt_helpers.h"
 #include "InsertTableWidget.h"
 
-#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
 
@@ -43,18 +42,26 @@
 #include <QAction>
 #include <QPixmap>
 
+
+static void initializeResources()
+{
+	extern void qInitResources();
+	static bool initialized = false;
+	if (!initialized) {
+		qInitResources();
+		initialized = true;
+	}
+}
+
+
 namespace lyx {
+namespace frontend {
 
 using std::string;
 using std::endl;
 
-using support::FileName;
-using support::libFileSearch;
 using support::subst;
 using support::compare;
-
-
-namespace frontend {
 
 
 namespace {
@@ -152,8 +159,7 @@ string const find_png(string const & name)
 	LYXERR(Debug::GUI) << "find_png(" << name << ")\n"
 			   << "Looking for math PNG called \""
 			   << png_name << '"' << std::endl;
-
-	return libFileSearch("images/math/", png_name, "png").absFilename();
+	return png_name;
 }
 
 } // namespace anon
@@ -162,44 +168,41 @@ string const find_png(string const & name)
 /// return a icon for the given action
 static QIcon getIcon(FuncRequest const & f, bool unknown)
 {
-	string fullname;
+	initializeResources();
+	QPixmap pm;
+	string name1;
+	string name2;
 
 	switch (f.action) {
 	case LFUN_MATH_INSERT:
 		if (!f.argument().empty())
-			fullname = find_png(to_utf8(f.argument()).substr(1));
+			name1 = "math/" + find_png(to_utf8(f.argument()).substr(1));
 		break;
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
-		fullname = find_png(to_utf8(f.argument()));
+		name1 = find_png(to_utf8(f.argument()));
 		break;
 	default:
-		string const name = lyxaction.getActionName(f.action);
-		string png_name = name;
+		name2 = lyxaction.getActionName(f.action);
+		name1 = name2;
 
 		if (!f.argument().empty())
-			png_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
-
-		fullname = libFileSearch("images", png_name, "png").absFilename();
-
-		if (fullname.empty()) {
-			// try without the argument
-			fullname = libFileSearch("images", name, "png").absFilename();
-		}
+			name1 = subst(name2 + ' ' + to_utf8(f.argument()), ' ', '_');
 	}
 
-	if (!fullname.empty()) {
-		LYXERR(Debug::GUI) << "Full icon name is `"
-				   << fullname << '\'' << endl;
-		return QIcon(toqstr(fullname));
-	}
+	if (pm.load(":/images/" + toqstr(name1) + ".png"))
+		return pm;
+
+	if (pm.load(":/images/" + toqstr(name2) + ".png"))
+		return pm;
 
 	LYXERR(Debug::GUI) << "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
 			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
 	if (unknown)
-		return QIcon(toqstr(libFileSearch("images", "unknown", "png").absFilename()));
-	return QIcon();
+		pm.load(":/images/unknown.png");
+
+	return pm;
 }
 
 
@@ -261,8 +264,7 @@ void GuiLayoutBox::updateContents()
 	TextClass::const_iterator const end = tc.end();
 	for (; it != end; ++it) {
 		// ignore obsolete entries
-		if ((*it)->obsoleted_by().empty())
-			addItem(toqstr(translateIfPossible((*it)->name())));
+		addItem(toqstr(translateIfPossible((*it)->name())));
 	}
 
 	// needed to recalculate size hint
@@ -290,8 +292,7 @@ void GuiLayoutBox::selected(const QString & str)
 			return;
 		}
 	}
-	lyxerr << "ERROR (layoutSelected): layout not found!"
-	       << endl;
+	lyxerr << "ERROR (layoutSelected): layout not found!" << endl;
 }
 
 
@@ -396,8 +397,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		tb->setToolTip(qt_(to_ascii(item.label_)));
 		tb->setStatusTip(qt_(to_ascii(item.label_)));
 		tb->setText(qt_(to_ascii(item.label_)));
-		FileName icon_path = libFileSearch("images/math", item.name_, "png");
-		tb->setIcon(QIcon(toqstr(icon_path.absFilename())));
+		tb->setIcon(QPixmap(":images/math/" + toqstr(item.name_) + ".png"));
 		connect(this, SIGNAL(iconSizeChanged(QSize)),
 			tb, SLOT(setIconSize(QSize)));
 
@@ -474,7 +474,6 @@ void GuiToolbar::updateContents()
 	// emit signal
 	updated();
 }
-
 
 
 } // namespace frontend

@@ -12,8 +12,6 @@
 
 #include <config.h>
 
-// Qt defines a macro 'signals' that clashes with a boost namespace.
-// All is well if the namespace is visible first.
 #include "GuiView.h"
 
 #include "GuiCommandBuffer.h"
@@ -30,7 +28,6 @@
 
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
-#include "support/filetools.h"
 
 #include <QHBoxLayout>
 #include <QKeyEvent>
@@ -52,7 +49,6 @@ namespace lyx {
 namespace frontend {
 
 using support::prefixIs;
-using support::libFileSearch;
 
 
 namespace {
@@ -98,8 +94,8 @@ GuiCommandBuffer::GuiCommandBuffer(GuiViewBase * view)
 	transform(lyxaction.func_begin(), lyxaction.func_end(),
 		back_inserter(commands_), firster());
 
-	QPixmap qpup(toqstr(libFileSearch("images", "up", "png").absFilename()));
-	QPixmap qpdown(toqstr(libFileSearch("images", "down", "png").absFilename()));
+	QPixmap qpup(":/images/up.png");
+	QPixmap qpdown(":/images/down.png");
 
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * layout = new QHBoxLayout(0);

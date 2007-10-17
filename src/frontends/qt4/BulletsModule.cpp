@@ -13,18 +13,11 @@
 #include "BulletsModule.h"
 #include "qt_helpers.h"
 
-#include "support/filetools.h"
-
 #include <QPixmap>
 #include <QPainter>
 
-#include <boost/assert.hpp>
 
 namespace lyx {
-
-using support::libFileSearch;
-
-using std::string;
 
 BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
 {
@@ -67,7 +60,7 @@ void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
 	bulletpaneCO->addItem(panelname);
 
 	// get pixmap with bullets
-	QPixmap pixmap = QPixmap(toqstr(libFileSearch("images", fname, "png").absFilename()));
+	QPixmap pixmap(":/images/" + toqstr(fname) + ".png");
 
 	int const w = pixmap.width() / 6;
 	int const h = pixmap.height() / 6;

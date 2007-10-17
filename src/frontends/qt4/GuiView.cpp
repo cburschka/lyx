@@ -50,8 +50,6 @@
 #include "ToolbarBackend.h"
 #include "version.h"
 
-#include <boost/current_function.hpp>
-
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
@@ -74,8 +72,6 @@ using std::vector;
 
 namespace lyx {
 
-using support::FileName;
-using support::libFileSearch;
 using support::makeDisplayPath;
 
 extern bool quitting;
@@ -192,11 +188,7 @@ struct GuiViewBase::GuiViewPrivate
 		LYXERR(Debug::GUI) << "show banner: " << lyxrc.show_banner << endl;
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
-		FileName const file = support::libFileSearch("images", "banner", "png");
-		if (file.empty())
-			return;
-
-		bg_widget_ = new BackgroundWidget(toqstr(file.absFilename()), text);
+		bg_widget_ = new BackgroundWidget(":/images/banner.png", text);
 	}
 
 	void setBackground()
@@ -229,9 +221,7 @@ GuiViewBase::GuiViewBase(int id)
 #ifndef Q_WS_MACX
 	// assign an icon to main form. We do not do it under Qt/Mac,
 	// since the icon is provided in the application bundle.
-	FileName const iconname = libFileSearch("images", "lyx", "png");
-	if (!iconname.empty())
-		setWindowIcon(QPixmap(toqstr(iconname.absFilename())));
+	setWindowIcon(QPixmap(":/images/lyx.png"));
 #endif
 
 	d.tab_widget_ = new TabWorkArea;
