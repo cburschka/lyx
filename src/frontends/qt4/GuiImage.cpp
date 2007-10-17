@@ -72,7 +72,7 @@ Image::FormatList GuiImage::loadableFormats()
 //			<< "pictureFormat not returned NULL\n" << endl;
 //			<< "Supported formats are: " << Pic.inputFormats() << endl;
 
-	QList<QByteArray> qt_formats = QImageReader::supportedImageFormats ();
+	QList<QByteArray> qt_formats = QImageReader::supportedImageFormats();
 
 	LYXERR(Debug::GRAPHICS)
 		<< "\nThe image loader can load the following directly:\n";
@@ -82,7 +82,7 @@ Image::FormatList GuiImage::loadableFormats()
 			<< "\nQt4 Problem: No Format available!" << endl;
 	}
 
-	for (QList<QByteArray>::const_iterator it =qt_formats.begin(); it != qt_formats.end(); ++it) {
+	for (QList<QByteArray>::const_iterator it = qt_formats.begin(); it != qt_formats.end(); ++it) {
 
 		LYXERR(Debug::GRAPHICS) << (const char *) *it << ", ";
 
