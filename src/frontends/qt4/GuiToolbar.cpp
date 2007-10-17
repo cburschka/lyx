@@ -180,7 +180,7 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 		break;
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
-		name1 = find_png(to_utf8(f.argument()));
+		name1 = "math/" + find_png(to_utf8(f.argument()));
 		break;
 	default:
 		name2 = lyxaction.getActionName(f.action);
