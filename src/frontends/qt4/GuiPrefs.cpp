@@ -42,6 +42,7 @@
 #include <QCheckBox>
 #include <QColorDialog>
 #include <QFontDatabase>
+#include <QHeaderView>
 #include <QLineEdit>
 #include <QPixmapCache>
 #include <QPushButton>
@@ -74,6 +75,7 @@ using support::os::external_path_list;
 using support::os::internal_path;
 using support::os::internal_path_list;
 using support::FileFilterList;
+using support::contains;
 
 
 /////////////////////////////////////////////////////////////////////
@@ -1686,11 +1688,11 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 {
 	setupUi(this);
 
-	shortcutsTW->setColumnCount(3);
-	shortcutsTW->headerItem()->setText(0, qt_(""));
-	shortcutsTW->headerItem()->setText(1, qt_("Function"));
-	shortcutsTW->headerItem()->setText(2, qt_("Shortcut"));
-	shortcutsTW->setSortingEnabled(false);
+	shortcutsTW->setColumnCount(2);
+	shortcutsTW->headerItem()->setText(0, qt_("Function"));
+	shortcutsTW->headerItem()->setText(1, qt_("Shortcut"));
+	shortcutsTW->setSortingEnabled(true);
+	shortcutsTW->header()->resizeSection(0, 200);
 
 	connect(bindFilePB, SIGNAL(clicked()),
 		this, SLOT(select_bind()));
@@ -1705,26 +1707,87 @@ void PrefShortcuts::apply(LyXRC & rc) const
 }
 
 
-void PrefShortcuts::update(LyXRC const & rc)
+// because KeyMap are nested, we need to add all LFUNC iteratively.
+void addKeyMap(QTreeWidgetItem * mathItem, 
+	QTreeWidgetItem * editItem,
+	QTreeWidgetItem * bufferItem,
+	QTreeWidgetItem * fontItem,
+	QTreeWidgetItem * layoutItem,
+	QTreeWidgetItem * miscItem,
+	KeyMap & km, string prefix)
 {
-	bindFileED->setText(toqstr(external_path(rc.bind_file)));
-
-	KeyMap & km = theTopLevelKeymap();
 	KeyMap::Table::const_iterator it = km.begin();
 	KeyMap::Table::const_iterator it_end = km.end();
 	for (; it != it_end; ++it) {
-		QTreeWidgetItem * newItem = new QTreeWidgetItem(shortcutsTW);
+		// a LFUN_COMMAND_PREFIX
+		if (it->table.get()) {
+			addKeyMap(mathItem, editItem, bufferItem, fontItem, layoutItem, miscItem,
+				*it->table.get(), prefix + " " + km.printKeySym(it->code, it->mod.first));
+			continue;
+		}
+		QTreeWidgetItem * newItem = NULL;
 		string const action = lyxaction.getActionName(it->func.action);
 		if (action == "self-insert")
 			continue;
+		else if (contains(action, "math"))
+			newItem = new QTreeWidgetItem(mathItem);
+		else if (contains(action, "buffer") || contains(action, "window")
+			|| contains(action, "file"))
+			newItem = new QTreeWidgetItem(bufferItem);
+		else if (contains(action, "forward") || contains(action, "backward")
+			|| contains(action, "increment") || contains(action, "decrement")
+			|| contains(action, "copy") || contains(action, "cut") 
+			|| contains(action, "paste") || contains(action, "break")
+			|| contains(action, "begin") || contains(action, "end")
+			|| contains(action, "screen") || contains(action, "tabular"))
+			newItem = new QTreeWidgetItem(editItem);
+		else if (contains(action, "font"))
+			newItem = new QTreeWidgetItem(fontItem);
+		else if (contains(action, "layout"))
+			newItem = new QTreeWidgetItem(layoutItem);
+		else
+			newItem = new QTreeWidgetItem(miscItem);
+			
 		QString const lfun = toqstr(from_utf8(action) + " " + it->func.argument());
-		QString const shortcut = toqstr(it->code.print(it->mod.first, true));
-		newItem->setText(1, lfun);
-		newItem->setText(2, shortcut);
+		QString const shortcut = toqstr(prefix + " " + km.printKeySym(it->code, it->mod.first));
+		newItem->setText(0, lfun);
+		newItem->setText(1, shortcut);
 		// FIXME: TreeItem can not be user-checkable?
 		newItem->setFlags(newItem->flags() | Qt::ItemIsEditable
 			| Qt::ItemIsSelectable | Qt::ItemIsUserCheckable);
 	}
+}
+
+
+void PrefShortcuts::update(LyXRC const & rc)
+{
+	bindFileED->setText(toqstr(external_path(rc.bind_file)));
+	shortcutsTW->clear();
+
+	// first insert a few categories
+	QTreeWidgetItem * mathItem = new QTreeWidgetItem(shortcutsTW, 2);
+	mathItem->setText(0, toqstr("Mathematical Symbols"));
+	
+	QTreeWidgetItem * editItem = new QTreeWidgetItem(shortcutsTW, 3);
+	editItem->setText(0, toqstr("Edit"));
+
+	QTreeWidgetItem * bufferItem = new QTreeWidgetItem(shortcutsTW, 4);
+	bufferItem->setText(0, toqstr("Buffer and window"));
+	
+	QTreeWidgetItem * fontItem = new QTreeWidgetItem(shortcutsTW, 4);
+	fontItem->setText(0, toqstr("Font"));
+
+	QTreeWidgetItem * layoutItem = new QTreeWidgetItem(shortcutsTW, 4);
+	layoutItem->setText(0, toqstr("Layouts"));
+
+	QTreeWidgetItem * miscItem = new QTreeWidgetItem(shortcutsTW, 5);
+	miscItem->setText(0, toqstr("Miscellaneous"));
+
+	// iteratively add all LFUN in the current Keymap
+	addKeyMap(mathItem, editItem, bufferItem, fontItem, layoutItem, miscItem, 
+		theTopLevelKeymap(), string());
+
+	shortcutsTW->sortItems(0, Qt::AscendingOrder);
 }
 
 
