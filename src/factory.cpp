@@ -231,97 +231,111 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 
 		case LFUN_INSET_INSERT: {
 			string const name = cmd.getArg(0);
+			InsetCode code = insetCode(name);
+			switch (code) {
+			case NO_CODE:
+				lyxerr << "No such inset '" << name << "'.";
+				return 0;
+			
+				case BIBITEM_CODE: {
+					InsetCommandParams icp(name);
+					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+					return new InsetBibitem(icp);
+				}
+		
+				case BIBTEX_CODE: {
+					InsetCommandParams icp(name);
+					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+					return new InsetBibtex(icp);
+				}
 
-			if (name == "bibitem") {
-				InsetCommandParams icp(name);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetBibitem(icp);
+				case CITE_CODE: {
+					InsetCommandParams icp("citation");
+					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+					return new InsetCitation(icp);
+				}
+		
+				case ERT_CODE: {
+					InsetCollapsable::CollapseStatus st;
+					InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
+					return new InsetERT(params, st);
+				}
 
-			} else if (name == "bibtex") {
-				InsetCommandParams icp(name);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetBibtex(icp);
+				case LISTINGS_CODE: {
+					InsetListingsParams par;
+					InsetListingsMailer::string2params(to_utf8(cmd.argument()), par);
+					return new InsetListings(params, par);
+				}
 
-			} else if (name == "citation") {
-				InsetCommandParams icp("citation");
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetCitation(icp);
+				case EXTERNAL_CODE: {
+					Buffer const & buffer = bv->buffer();
+					InsetExternalParams iep;
+					InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, iep);
+					auto_ptr<InsetExternal> inset(new InsetExternal);
+					inset->setParams(iep, buffer);
+					return inset.release();
+				}
 
-			} else if (name == "ert") {
-				InsetCollapsable::CollapseStatus st;
-				InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
-				return new InsetERT(params, st);
+				case GRAPHICS_CODE: {
+					Buffer const & buffer = bv->buffer();
+					InsetGraphicsParams igp;
+					InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, igp);
+					auto_ptr<InsetGraphics> inset(new InsetGraphics);
+					inset->setParams(igp);
+					return inset.release();
+				}
 
-			} else if (name == "listings") {
-				InsetListingsParams par;
-				InsetListingsMailer::string2params(to_utf8(cmd.argument()), par);
-				return new InsetListings(params, par);
+				case HYPERLINK_CODE: {
+					InsetCommandParams icp(name);
+					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+					return new InsetHyperlink(icp);
+				}
 
-			} else if (name == "external") {
-				Buffer const & buffer = bv->buffer();
-				InsetExternalParams iep;
-				InsetExternalMailer::string2params(to_utf8(cmd.argument()),
-					buffer, iep);
-				auto_ptr<InsetExternal> inset(new InsetExternal);
-				inset->setParams(iep, buffer);
-				return inset.release();
+				case INCLUDE_CODE: {
+					InsetCommandParams iip(name);
+					InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
+					return new InsetInclude(iip);
+				}
 
-			} else if (name == "graphics") {
-				Buffer const & buffer = bv->buffer();
-				InsetGraphicsParams igp;
-				InsetGraphicsMailer::string2params(to_utf8(cmd.argument()),
-					buffer, igp);
-				auto_ptr<InsetGraphics> inset(new InsetGraphics);
-				inset->setParams(igp);
-				return inset.release();
-
-			} else if (name == "href") {
-				InsetCommandParams icp(name);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetHyperlink(icp);
-
-			} else if (name == "include") {
-				InsetCommandParams iip(name);
-				InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
-				return new InsetInclude(iip);
-
-			} else if (name == "index") {
+			case INDEX_CODE:
 				return new InsetIndex(params);
 
-			} else if (name == "nomenclature") {
-				InsetCommandParams icp(name);
-				InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
-					icp);
-				return new InsetNomencl(icp);
+				case NOMENCL_CODE: {
+					InsetCommandParams icp(name);
+					InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), icp);
+					return new InsetNomencl(icp);
+				}
 
-			} else if (name == "label") {
-				InsetCommandParams icp(name);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetLabel(icp);
+				case LABEL_CODE: {
+					InsetCommandParams icp(name);
+					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+					return new InsetLabel(icp);
+				}
 
-			} else if (name == "ref") {
-				InsetCommandParams icp(name);
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetRef(icp, bv->buffer());
+				case REF_CODE: {
+					InsetCommandParams icp(name);
+					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+					return new InsetRef(icp, bv->buffer());
+				}
 
-			} else if (name == "toc") {
-				InsetCommandParams icp("toc");
-				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
-					icp);
-				return new InsetTOC(icp);
+				case TOC_CODE: {
+					InsetCommandParams icp("toc");
+					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+					return new InsetTOC(icp);
+				}
 
-			} else if (name == "vspace") {
-				VSpace vspace;
-				InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
-				return new InsetVSpace(vspace);
+				case VSPACE_CODE: {
+					VSpace vspace;
+					InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
+					return new InsetVSpace(vspace);
+				}
+		
+				default:
+					lyxerr << "Inset '" << name << "' not permitted with LFUN_INSET_INSERT."
+							<< std::endl;
+					return 0;
 			}
-		}
+			} //end LFUN_INSET_INSERT
 
 		case LFUN_SPACE_INSERT: {
 			string const name = to_utf8(cmd.argument());
@@ -384,53 +398,83 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 	string tmptok = lex.getString();
 
 	// test the different insets
+	
+	//FIXME It would be better if we did not have this branch and could
+	//just do one massive switch for all insets. But at present, it's easier 
+	//to do it this way, and we can't do the massive switch until the conversion 
+	//mentioned below. 
+	//Note that if we do want to do a single switch, we need to remove
+	//this "CommandInset" line---or replace it with a single "InsetType" line
+	//that would be used in all insets.
 	if (tmptok == "CommandInset") {
 		lex.next();
 		string const insetType = lex.getString();
 		lex.pushToken(insetType);
-
-		//FIXME 
-		//InsetCode const code = Inset::translate(insetType);
-		//if (code == NO_CODE) { choke as below; }
-		//InsetCommandParams inscmd();
+		
+		InsetCode const code = insetCode(insetType);
+		
+		//FIXME If we do the one massive switch, we cannot do this here, since
+		//we do not know in advance that we're dealing with a command inset.
+		//Worst case, we could put it in each case below. Better, we could
+		//pass the lexer to the constructor and let the params be built there.
 		InsetCommandParams inscmd(insetType);
 		inscmd.read(lex);
 
-		if (insetType == "citation") {
-			inset.reset(new InsetCitation(inscmd));
-		} else if (insetType == "bibitem") {
-			inset.reset(new InsetBibitem(inscmd));
-		} else if (insetType == "bibtex") {
-			inset.reset(new InsetBibtex(inscmd));
-		} else if (insetType == "index") {
-			inset.reset(new InsetIndex(buf.params()));
-		} else if (insetType == "href") {
-			inset.reset(new InsetHyperlink(inscmd));
-		} else if (insetType == "include") {
-			inset.reset(new InsetInclude(inscmd));
-		} else if (insetType == "label") {
-			inset.reset(new InsetLabel(inscmd));
-		} else if (insetType == "nomenclature") {
-			inset.reset(new InsetNomencl(inscmd));
-		} else if (insetType == "ref") {
-			if (!inscmd["name"].empty()
-			    || !inscmd["reference"].empty()) {
-				inset.reset(new InsetRef(inscmd, buf));
-			}
-		} else if (insetType == "toc") {
-			inset.reset(new InsetTOC(inscmd));
-		} else if (insetType == "index_print") {
-			inset.reset(new InsetPrintIndex(inscmd));
-		} else if (insetType == "nomencl_print") {
-			inset.reset(new InsetPrintNomencl(inscmd));
-		} else {
-			lyxerr << "unknown CommandInset '" << insetType
-			       << "'" << std::endl;
-			while (lex.isOK() && lex.getString() != "\\end_inset")
-				lex.next();
-			return 0;
+		switch (code) {
+			case BIBITEM_CODE:
+				inset.reset(new InsetBibitem(inscmd));
+				break;
+			case BIBTEX_CODE:
+				inset.reset(new InsetBibtex(inscmd));
+				break;
+			case CITE_CODE: 
+				inset.reset(new InsetCitation(inscmd));
+				break;
+			case HYPERLINK_CODE:
+				inset.reset(new InsetHyperlink(inscmd));
+				break;
+			// FIXME Currently non-functional, since InsetInclude
+			// does not write itself as a CommandInset.
+			case INCLUDE_CODE:
+				inset.reset(new InsetInclude(inscmd));
+				break;
+			case INDEX_CODE:
+				inset.reset(new InsetIndex(buf.params()));
+				break;
+			case INDEX_PRINT_CODE:
+				inset.reset(new InsetPrintIndex(inscmd));
+				break;
+			case LABEL_CODE:
+				inset.reset(new InsetLabel(inscmd));
+				break;
+			case NOMENCL_CODE:
+				inset.reset(new InsetNomencl(inscmd));
+				break;
+			case NOMENCL_PRINT_CODE:
+				inset.reset(new InsetPrintNomencl(inscmd));
+				break;
+			case REF_CODE:
+				if (!inscmd["name"].empty() || !inscmd["reference"].empty())
+					inset.reset(new InsetRef(inscmd, buf));
+				break;
+			case TOC_CODE:
+				inset.reset(new InsetTOC(inscmd));
+				break;
+			case NO_CODE:
+			default:
+				lyxerr << "unknown CommandInset '" << insetType
+							<< "'" << std::endl;
+				while (lex.isOK() && lex.getString() != "\\end_inset")
+					lex.next();
+				return 0;
 		}
-	} else {
+	} else { 
+		// FIXME This branch should be made to use inset codes as the preceding 
+		// branch does. Unfortunately, that will take some doing. It requires
+		// converting the representation of the insets in LyX files so that they
+		// use the inset names listed in Inset.cpp. Then, as above, the inset names
+		// can be translated to inset codes using insetCode(). And the insets'
+		// write() routines should use insetName() rather than hardcoding it.
 		if (tmptok == "Quotes") {
 			inset.reset(new InsetQuotes);
 		} else if (tmptok == "External") {
@@ -454,6 +498,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetBranch(buf.params(),
 						    InsetBranchParams()));
 		} else if (tmptok == "Include") {
+			//FIXME
 			InsetCommandParams p("include");
 			inset.reset(new InsetInclude(p));
 		} else if (tmptok == "Environment") {
