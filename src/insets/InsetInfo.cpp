@@ -48,7 +48,7 @@ using support::ExceptionMessage;
 using support::WarningException;
 
 InsetInfo::InsetInfo(BufferParams const & bp, string const & name) 
-	: InsetText(bp), bp_(bp), type_(UNKNOWN_INFO), name_(),
+	: InsetText(bp), type_(UNKNOWN_INFO), name_(), bp_(bp),
 	  mouse_hover_(false)
 {
 	setAutoBreakRows(true);
@@ -57,7 +57,7 @@ InsetInfo::InsetInfo(BufferParams const & bp, string const & name)
 }
 
 
-Inset * InsetInfo::editXY(Cursor & cur, int x, int y)
+Inset * InsetInfo::editXY(Cursor &, int, int)
 {
 	return this;
 }
@@ -102,7 +102,7 @@ Translator<InsetInfo::info_type, std::string> const & InsetInfo::nameTranslator(
 
 	
 
-void InsetInfo::read(Buffer const & buf, Lexer & lex)
+void InsetInfo::read(Buffer const &, Lexer & lex)
 {
 	string token;
 	while (lex.isOK()) {
@@ -128,7 +128,7 @@ void InsetInfo::read(Buffer const & buf, Lexer & lex)
 }
 
 
-void InsetInfo::write(Buffer const & buf, std::ostream & os) const
+void InsetInfo::write(Buffer const &, std::ostream & os) const
 {
 	os << "Info\ntype  \""
 	   << nameTranslator().find(type_)
