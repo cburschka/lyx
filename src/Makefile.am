@@ -172,7 +172,7 @@ liblyxcore_la_SOURCES = \
 	LaTeX.h \
 	Layout.cpp \
 	Layout.h \
-	LayoutEnum.h \
+	LayoutEnums.h \
 	Length.cpp \
 	Length.h \
 	lengthcommon.cpp \
