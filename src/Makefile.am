@@ -567,10 +567,10 @@ liblyxinsets_la_SOURCES = \
 	insets/InsetWrap.h \
 	insets/InsetWrap.cpp
 
-#	insets/insetlist.C \
-#	insets/insetlist.h \
-#	insets/insetsection.h \
-#	insets/insetsection.C \
+#	insets/InsetList.cpp \
+#	insets/InsetList.h \
+#	insets/InsetSection.h \
+#	insets/InsetSection.cpp \
 #	insets/InsetTheorem.cpp \
 #	insets/InsetTheorem.h
 

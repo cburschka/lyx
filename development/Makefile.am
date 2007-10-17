@@ -4,7 +4,7 @@ if INSTALL_MACOSX
 SUBDIRS = MacOSX
 endif
 
-EXTRA_DIST = boostworkaround.txt cmake Code_rules FORMAT \
-	lazy_lyxtext.txt lyx3 lyx.rpm.README \
+EXTRA_DIST = boostworkaround.txt cmake coding/Rules coding/Recommendations \
+	FORMAT lyx.rpm.README \
 	lyxserver lyx.spec.in lyx.spec Seminar.txt \
-	TodoPlan-1.3 tools Win32 scons
+	tools Win32 scons
