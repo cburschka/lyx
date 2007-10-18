@@ -21,6 +21,7 @@
 #include "debug.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Changes.h"
 #include "Encoding.h"
 #include "gettext.h"
 #include "Language.h"

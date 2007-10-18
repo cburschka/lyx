@@ -30,6 +30,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "InsetIterator.h"
+#include "InsetList.h"
 #include "Language.h"
 #include "LaTeX.h"
 #include "LaTeXFeatures.h"
@@ -1801,7 +1802,7 @@ void Buffer::buildMacros()
 	for (size_t i = 0, n = pars.size(); i != n; ++i) {
 		//lyxerr << "searching main par " << i
 		//	<< " for macro definitions" << std::endl;
-		InsetList const & insets = pars[i].insetlist;
+		InsetList const & insets = pars[i].insetList();
 		InsetList::const_iterator it = insets.begin();
 		InsetList::const_iterator end = insets.end();
 		for ( ; it != end; ++it) {

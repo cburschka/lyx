@@ -21,6 +21,7 @@
 #include "CutAndPaste.h"
 #include "buffer_funcs.h"
 #include "BufferView.h"
+#include "Changes.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "gettext.h"

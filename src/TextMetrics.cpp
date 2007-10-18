@@ -29,6 +29,7 @@
 #include "debug.h"
 #include "FontIterator.h"
 #include "FuncRequest.h"
+#include "InsetList.h"
 #include "Layout.h"
 #include "Length.h"
 #include "LyXRC.h"
@@ -381,8 +382,8 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// FIXME: We should always use getFont(), see documentation of
 	// noFontChange() in Inset.h.
 	Font const bufferfont = buffer.params().getFont();
-	InsetList::const_iterator ii = par.insetlist.begin();
-	InsetList::const_iterator iend = par.insetlist.end();
+	InsetList::const_iterator ii = par.insetList().begin();
+	InsetList::const_iterator iend = par.insetList().end();
 	for (; ii != iend; ++ii) {
 		Dimension dim;
 		int const w = max_width_ - leftMargin(max_width_, pit, ii->pos)
@@ -863,8 +864,8 @@ boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const
 
 	// insets may be taller
 	ParagraphMetrics const & pm = par_metrics_[pit];
-	InsetList::const_iterator ii = par.insetlist.begin();
-	InsetList::const_iterator iend = par.insetlist.end();
+	InsetList::const_iterator ii = par.insetList().begin();
+	InsetList::const_iterator iend = par.insetList().end();
 	for ( ; ii != iend; ++ii) {
 		Dimension const & dim = pm.insetDimension(ii->inset);
 		if (ii->pos >= first && ii->pos < end) {
@@ -1411,8 +1412,8 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 		<< " y: " << y
 		<< "  pit: " << pit
 		<< endl;
-	InsetList::const_iterator iit = par.insetlist.begin();
-	InsetList::const_iterator iend = par.insetlist.end();
+	InsetList::const_iterator iit = par.insetList().begin();
+	InsetList::const_iterator iend = par.insetList().end();
 	for (; iit != iend; ++iit) {
 		Inset * inset = iit->inset;
 

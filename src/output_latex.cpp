@@ -16,6 +16,7 @@
 #include "BufferParams.h"
 #include "debug.h"
 #include "Encoding.h"
+#include "InsetList.h"
 #include "Language.h"
 #include "Layout.h"
 #include "LyXRC.h"
@@ -223,8 +224,8 @@ int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
 {
 	int lines = 0;
 
-	InsetList::const_iterator it = par.insetlist.begin();
-	InsetList::const_iterator end = par.insetlist.end();
+	InsetList::const_iterator it = par.insetList().begin();
+	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end && number > 0 ; ++it) {
 		if (it->inset->lyxCode() == OPTARG_CODE) {
 			InsetOptArg * ins =

@@ -38,6 +38,7 @@ class FuncRequest;
 class FuncStatus;
 class InsetIterator;
 class InsetLayout;
+class InsetList;
 class InsetMath;
 class InsetText;
 class LaTeXFeatures;
@@ -46,7 +47,6 @@ class MathAtom;
 class MetricsInfo;
 class OutputParams;
 class PainterInfo;
-class Paragraph;
 class ParConstIterator;
 class ParIterator;
 class Text;
@@ -391,7 +391,7 @@ protected:
 	Inset();
 
 	/// replicate ourselves
-	friend class Paragraph;
+	friend class InsetList;
 	friend class MathAtom;
 	virtual Inset * clone() const = 0;
 

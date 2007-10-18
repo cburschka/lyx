@@ -15,8 +15,9 @@
 #include "DocIterator.h"
 
 #include "debug.h"
-#include "Text.h"
+#include "InsetList.h"
 #include "Paragraph.h"
+#include "Text.h"
 
 #include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
@@ -303,7 +304,7 @@ void DocIterator::forwardPar()
 			pos_type const lastp = lastpos();
 			Paragraph const & par = paragraph();
 			pos_type & pos = top().pos();
-			if (par.insetlist.empty())
+			if (par.insetList().empty())
 				pos = lastp;
 			else
 				while (pos < lastp && !par.isInset(pos))

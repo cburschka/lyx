@@ -28,6 +28,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Bullet.h"
+#include "Changes.h"
 #include "Color.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"

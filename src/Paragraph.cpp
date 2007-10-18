@@ -21,10 +21,12 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Changes.h"
 #include "Counters.h"
 #include "Encoding.h"
 #include "debug.h"
 #include "gettext.h"
+#include "InsetList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Color.h"
@@ -229,6 +231,9 @@ public:
 
 	/// Who owns us?
 	Paragraph * owner_;
+
+	///
+	InsetList insetlist_;
 };
 
 
@@ -277,6 +282,8 @@ Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner)
 	inset_owner = p.inset_owner;
 	fontlist = p.fontlist;
 	id_ = paragraph_id++;
+	insetlist_ = p.insetlist_;
+	insetlist_.clone();
 }
 
 
@@ -461,7 +468,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 	}
 
 	// Update the insets
-	owner_->insetlist.increasePosAfterPos(pos);
+	insetlist_.increasePosAfterPos(pos);
 }
 
 
@@ -474,8 +481,8 @@ void Paragraph::Pimpl::insertInset(pos_type pos, Inset * inset,
 	insertChar(pos, META_INSET, change);
 	BOOST_ASSERT(owner_->text_[pos] == META_INSET);
 
-	// Add a new entry in the insetlist.
-	owner_->insetlist.insert(inset, pos);
+	// Add a new entry in the insetlist_.
+	insetlist_.insert(inset, pos);
 }
 
 
@@ -514,7 +521,7 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 
 	// if it is an inset, delete the inset entry
 	if (owner_->text_[pos] == Paragraph::META_INSET) {
-		owner_->insetlist.erase(pos);
+		insetlist_.erase(pos);
 	}
 
 	owner_->text_.erase(owner_->text_.begin() + pos);
@@ -549,8 +556,8 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 	for (; it != fend; ++it)
 		it->pos(it->pos() - 1);
 
-	// Update the insetlist
-	owner_->insetlist.decreasePosAfterPos(pos);
+	// Update the insetlist_
+	insetlist_.decreasePosAfterPos(pos);
 
 	return true;
 }
@@ -1104,8 +1111,8 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		features.require("ParagraphLeftIndent");
 
 	// then the insets
-	InsetList::const_iterator icit = owner_->insetlist.begin();
-	InsetList::const_iterator iend = owner_->insetlist.end();
+	InsetList::const_iterator icit = insetlist_.begin();
+	InsetList::const_iterator iend = insetlist_.end();
 	for (; icit != iend; ++icit) {
 		if (icit->inset) {
 			icit->inset->validate(features);
@@ -1149,16 +1156,11 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & par)
-	: itemdepth(par.itemdepth), insetlist(par.insetlist),
+	: itemdepth(par.itemdepth),
 	layout_(par.layout_),
 	text_(par.text_), begin_of_body_(par.begin_of_body_),
 	pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
 {
-	//lyxerr << "Paragraph::Paragraph(Paragraph const&)" << endl;
-	InsetList::iterator it = insetlist.begin();
-	InsetList::iterator end = insetlist.end();
-	for (; it != end; ++it)
-		it->inset = it->inset->clone();
 }
 
 
@@ -1167,13 +1169,6 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 	// needed as we will destroy the pimpl_ before copying it
 	if (&par != this) {
 		itemdepth = par.itemdepth;
-
-		insetlist = par.insetlist;
-		InsetList::iterator it = insetlist.begin();
-		InsetList::iterator end = insetlist.end();
-		for (; it != end; ++it)
-			it->inset = it->inset->clone();
-
 		layout_ = par.layout();
 		text_ = par.text_;
 		begin_of_body_ = par.begin_of_body_;
@@ -1804,8 +1799,8 @@ void Paragraph::setBeginOfBody()
 int Paragraph::getPositionOfInset(Inset const * inset) const
 {
 	// Find the entry.
-	InsetList::const_iterator it = insetlist.begin();
-	InsetList::const_iterator end = insetlist.end();
+	InsetList::const_iterator it = pimpl_->insetlist_.begin();
+	InsetList::const_iterator end = pimpl_->insetlist_.end();
 	for (; it != end; ++it)
 		if (it->inset == inset)
 			return it->pos;
@@ -1815,8 +1810,8 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 
 InsetBibitem * Paragraph::bibitem() const
 {
-	if (!insetlist.empty()) {
-		Inset * inset = insetlist.begin()->inset;
+	if (!pimpl_->insetlist_.empty()) {
+		Inset * inset = pimpl_->insetlist_.begin()->inset;
 		if (inset->lyxCode() == BIBITEM_CODE)
 			return static_cast<InsetBibitem *>(inset);
 	}
@@ -2707,10 +2702,10 @@ int Paragraph::checkBiblio(bool track_changes)
 	if (layout()->labeltype != LABEL_BIBLIO)
 		return 0;
 
-	bool hasbibitem = !insetlist.empty()
+	bool hasbibitem = !pimpl_->insetlist_.empty()
 		// Insist on it being in pos 0
 		&& getChar(0) == Paragraph::META_INSET
-		&& insetlist.begin()->inset->lyxCode() == BIBITEM_CODE;
+		&& pimpl_->insetlist_.begin()->inset->lyxCode() == BIBITEM_CODE;
 
 	docstring oldkey;
 	docstring oldlabel;
@@ -2721,8 +2716,8 @@ int Paragraph::checkBiblio(bool track_changes)
 	// we're assuming there's only one of these, which there
 	// should be.
 	int erasedInsetPosition = -1;
-	InsetList::iterator it = insetlist.begin();
-	InsetList::iterator end = insetlist.end();
+	InsetList::iterator it = pimpl_->insetlist_.begin();
+	InsetList::iterator end = pimpl_->insetlist_.end();
 	for (; it != end; ++it)
 		if (it->inset->lyxCode() == BIBITEM_CODE
 		    && it->pos > 0) {
@@ -2743,7 +2738,7 @@ int Paragraph::checkBiblio(bool track_changes)
 	//erase one. So we give its properties to the beginning inset.
 	if (hasbibitem) {
 		InsetBibitem * inset =
-			static_cast<InsetBibitem *>(insetlist.begin()->inset);
+			static_cast<InsetBibitem *>(pimpl_->insetlist_.begin()->inset);
 		if (!oldkey.empty())
 			inset->setParam("key", oldkey);
 		inset->setParam("label", oldlabel);
@@ -2767,6 +2762,51 @@ int Paragraph::checkBiblio(bool track_changes)
 void Paragraph::checkAuthors(AuthorList const & authorList)
 {
 	pimpl_->changes_.checkAuthors(authorList);
+}
+
+
+bool Paragraph::isUnchanged(pos_type pos) const
+{
+	return lookupChange(pos).type == Change::UNCHANGED;
+}
+
+
+bool Paragraph::isInserted(pos_type pos) const
+{
+	return lookupChange(pos).type == Change::INSERTED;
+}
+
+
+bool Paragraph::isDeleted(pos_type pos) const
+{
+	return lookupChange(pos).type == Change::DELETED;
+}
+
+
+InsetList const & Paragraph::insetList() const
+{
+	return pimpl_->insetlist_;
+}
+
+
+Inset * Paragraph::releaseInset(pos_type pos)
+{
+	Inset * inset = pimpl_->insetlist_.release(pos);
+	/// does not honour change tracking!
+	eraseChar(pos, false);
+	return inset;
+}
+
+
+Inset * Paragraph::getInset(pos_type pos)
+{
+	return pimpl_->insetlist_.get(pos);
+}
+
+
+Inset const * Paragraph::getInset(pos_type pos) const
+{
+	return pimpl_->insetlist_.get(pos);
 }
 
 } // namespace lyx

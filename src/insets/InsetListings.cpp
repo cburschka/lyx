@@ -17,13 +17,15 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Counters.h"
-#include "Language.h"
-#include "gettext.h"
+#include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "gettext.h"
+#include "InsetList.h"
+#include "Language.h"
 #include "MetricsInfo.h"
-#include "Cursor.h"
+
 #include "support/lstrings.h"
 
 #include <sstream>
@@ -326,8 +328,8 @@ docstring InsetListings::getCaption(Buffer const & buf,
 
 	ParagraphList::const_iterator pit = paragraphs().begin();
 	for (; pit != paragraphs().end(); ++pit) {
-		InsetList::const_iterator it = pit->insetlist.begin();
-		for (; it != pit->insetlist.end(); ++it) {
+		InsetList::const_iterator it = pit->insetList().begin();
+		for (; it != pit->insetList().end(); ++it) {
 			Inset & inset = *it->inset;
 			if (inset.lyxCode() == CAPTION_CODE) {
 				odocstringstream ods;

@@ -138,4 +138,12 @@ void InsetList::decreasePosAfterPos(pos_type pos)
 }
 
 
+void InsetList::clone()
+{
+	List::iterator it = list_.begin();
+	List::iterator end = list_.end();
+	for (; it != end; ++it)
+		it->inset = it->inset->clone();
+}
+
 } // namespace lyx

@@ -25,6 +25,7 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Changes.h"
 #include "Cursor.h"
 #include "ParIterator.h"
 #include "CutAndPaste.h"

@@ -25,6 +25,7 @@
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "gettext.h"
+#include "InsetList.h"
 #include "Intl.h"
 #include "Color.h"
 #include "lyxfind.h"
@@ -403,8 +404,8 @@ void InsetText::addPreview(PreviewLoader & loader) const
 	ParagraphList::const_iterator pend = paragraphs().end();
 
 	for (; pit != pend; ++pit) {
-		InsetList::const_iterator it  = pit->insetlist.begin();
-		InsetList::const_iterator end = pit->insetlist.end();
+		InsetList::const_iterator it  = pit->insetList().begin();
+		InsetList::const_iterator end = pit->insetList().end();
 		for (; it != end; ++it)
 			it->inset->addPreview(loader);
 	}

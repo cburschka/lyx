@@ -16,23 +16,29 @@
 #ifndef PARAGRAPH_H
 #define PARAGRAPH_H
 
-#include "Changes.h"
-#include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
 
 #include "insets/InsetCode.h"
 
+#include "support/docstring.h"
+// FIXME: would be nice to forward declare odocstream instead of
+// including this:
+#include "support/docstream.h"
+
+#include <vector>
 
 namespace lyx {
 
-
+class AuthorList;
 class Buffer;
 class BufferParams;
+class Change;
 class Counters;
 class Inset;
 class InsetBibitem;
 class LaTeXFeatures;
 class Inset_code;
+class InsetList;
 class Language;
 class Font;
 class Font_size;
@@ -186,17 +192,11 @@ public:
 	/// is there a change within the given range ?
 	bool isChanged(pos_type start, pos_type end) const;
 	/// is there an unchanged char at the given pos ?
-	bool isUnchanged(pos_type pos) const {
-		return lookupChange(pos).type == Change::UNCHANGED;
-	}
+	bool isUnchanged(pos_type pos) const;
 	/// is there an insertion at the given pos ?
-	bool isInserted(pos_type pos) const {
-		return lookupChange(pos).type == Change::INSERTED;
-	}
+	bool isInserted(pos_type pos) const;
 	/// is there a deletion at the given pos ?
-	bool isDeleted(pos_type pos) const {
-		return lookupChange(pos).type == Change::DELETED;
-	}
+	bool isDeleted(pos_type pos) const;
 
 	/// will the paragraph be physically merged with the next
 	/// one if the imaginary end-of-par character is logically deleted?
@@ -309,13 +309,18 @@ public:
 	///
 	bool insetAllowed(InsetCode code);
 	///
-	Inset * getInset(pos_type pos) {
-		return insetlist.get(pos);
-	}
+	Inset * getInset(pos_type pos);
 	///
-	Inset const * getInset(pos_type pos) const {
-		return insetlist.get(pos);
-	}
+	Inset const * getInset(pos_type pos) const;
+
+	/// Release inset at given position.
+	/// \warning does not honour change tracking!
+	/// Therefore, it should only be used for breaking and merging
+	/// paragraphs
+	Inset * releaseInset(pos_type pos);
+
+	///
+	InsetList const & insetList() const;
 
 	///
 	bool isHfill(pos_type pos) const;
@@ -365,10 +370,6 @@ public:
 	/// For each author, set 'used' to true if there is a change
 	/// by this author in the paragraph.
 	void checkAuthors(AuthorList const & authorList);
-
-public:
-	///
-	InsetList insetlist;
 
 private:
 

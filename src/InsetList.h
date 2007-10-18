@@ -22,7 +22,6 @@ namespace lyx {
 class Inset;
 class Buffer;
 
-
 ///
 class InsetList {
 public:
@@ -71,6 +70,11 @@ public:
 	void increasePosAfterPos(pos_type pos);
 	///
 	void decreasePosAfterPos(pos_type pos);
+
+	/// replicate ourselves.
+	/// Warning: this should be used with care, only
+	/// Paragraph::Pimpl should use it actually.
+	void clone();
 
 private:
 	///

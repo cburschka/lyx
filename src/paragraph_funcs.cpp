@@ -13,11 +13,13 @@
 #include "paragraph_funcs.h"
 
 #include "BufferParams.h"
+#include "Changes.h"
 #include "debug.h"
+#include "InsetList.h"
 #include "Layout.h"
-#include "Text.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
+#include "Text.h"
 
 #include <boost/next_prior.hpp>
 
@@ -41,10 +43,8 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 		Inset * tmpInset = 0;
 		if (fromPar.getInset(fromPos)) {
 			// the inset is not in the paragraph any more
-			tmpInset = fromPar.insetlist.release(fromPos);
+			tmpInset = fromPar.releaseInset(fromPos);
 		}
-
-		fromPar.eraseChar(fromPos, false);
 
 		if (!toPar.insetAllowed(tmpInset->lyxCode())) {
 			delete tmpInset;
@@ -313,8 +313,8 @@ int numberOfOptArgs(Paragraph const & par)
 {
 	int num = 0;
 
-	InsetList::const_iterator it = par.insetlist.begin();
-	InsetList::const_iterator end = par.insetlist.end();
+	InsetList::const_iterator it = par.insetList().begin();
+	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end ; ++it) {
 		if (it->inset->lyxCode() == OPTARG_CODE)
 			++num;

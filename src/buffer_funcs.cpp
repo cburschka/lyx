@@ -23,6 +23,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "gettext.h"
+#include "InsetList.h"
 #include "InsetIterator.h"
 #include "Language.h"
 #include "LaTeX.h"
@@ -575,8 +576,8 @@ void updateLabels(Buffer const & buf, ParIterator & parit)
 		setLabel(buf, parit);
 
 		// Now the insets
-		InsetList::const_iterator iit = parit->insetlist.begin();
-		InsetList::const_iterator end = parit->insetlist.end();
+		InsetList::const_iterator iit = parit->insetList().begin();
+		InsetList::const_iterator end = parit->insetList().end();
 		for (; iit != end; ++iit) {
 			parit.pos() = iit->pos;
 			iit->inset->updateLabels(buf, parit);

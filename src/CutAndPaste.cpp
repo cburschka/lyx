@@ -19,12 +19,14 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Changes.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "InsetIterator.h"
+#include "InsetList.h"
 #include "Language.h"
 #include "lfuns.h"
 #include "LyXFunc.h"
@@ -218,8 +220,8 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 	ParIterator fend = par_iterator_end(in);
 
 	for (; fpit != fend; ++fpit) {
-		InsetList::const_iterator lit = fpit->insetlist.begin();
-		InsetList::const_iterator eit = fpit->insetlist.end();
+		InsetList::const_iterator lit = fpit->insetList().begin();
+		InsetList::const_iterator eit = fpit->insetList().end();
 
 		for (; lit != eit; ++lit) {
 			switch (lit->inset->lyxCode()) {

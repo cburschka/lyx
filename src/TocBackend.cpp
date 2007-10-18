@@ -19,6 +19,7 @@
 #include "debug.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
+#include "InsetList.h"
 #include "Layout.h"
 #include "LyXAction.h"
 #include "Paragraph.h"
@@ -109,8 +110,8 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 
 	// For each paragraph, traverse its insets and let them add
 	// their toc items
-	InsetList::const_iterator it = toc_item->par_it_->insetlist.begin();
-	InsetList::const_iterator end = toc_item->par_it_->insetlist.end();
+	InsetList::const_iterator it = toc_item->par_it_->insetList().begin();
+	InsetList::const_iterator end = toc_item->par_it_->insetList().end();
 	for (; it != end; ++it) {
 		Inset & inset = *it->inset;
 		if (inset.lyxCode() == OPTARG_CODE) {
@@ -152,8 +153,8 @@ void TocBackend::update()
 
 		// For each paragraph, traverse its insets and let them add
 		// their toc items
-		InsetList::const_iterator it = pit->insetlist.begin();
-		InsetList::const_iterator end = pit->insetlist.end();
+		InsetList::const_iterator it = pit->insetList().begin();
+		InsetList::const_iterator end = pit->insetList().end();
 		for (; it != end; ++it) {
 			Inset & inset = *it->inset;
 			inset.addToToc(tocs_, *buffer_, pit);
