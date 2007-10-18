@@ -29,9 +29,6 @@
 namespace lyx {
 
 class BufferParams;
-// FIXME: Remove!
-class BufferView;
-class Cursor;
 class EmbeddedFiles;
 class ErrorItem;
 class ErrorList;
