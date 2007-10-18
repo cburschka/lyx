@@ -582,7 +582,7 @@ def revert_href(document):
       i = find_token(document.body, "\\begin_inset CommandInset href", i)
       if i == -1:
           return
-      document.body[i : i + 2] = 
+      document.body[i : i + 2] = \
         ["\\begin_inset CommandInset url", "LatexCommand url"]
       i = i + 2
 
