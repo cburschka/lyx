@@ -44,7 +44,6 @@
 #include "support/types.h"
 
 #include <boost/bind.hpp>
-#include <boost/filesystem/operations.hpp>
 
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -67,8 +66,6 @@ using std::transform;
 using std::make_pair;
 using std::pair;
 using std::vector;
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 namespace frontend {
@@ -765,8 +762,8 @@ docstring const GuiGraphics::browse(docstring const & in_name) const
 
 	// Does user clipart directory exist?
 	string clipdir = addName(package().user_support().absFilename(), "clipart");
-	string const encoded_clipdir = FileName(clipdir).toFilesystemEncoding();
-	if (!(fs::exists(encoded_clipdir) && fs::is_directory(encoded_clipdir)))
+	FileName clip(clipdir);
+	if (!clip.exists() && clip.isDirectory())
 		// No - bail out to system clipart directory
 		clipdir = addName(package().system_support().absFilename(), "clipart");
 	pair<docstring, docstring> dir1(_("Clipart|#C#c"), from_utf8(clipdir));

@@ -771,8 +771,7 @@ namespace {
 
 bool insertIfExists(FileName const & absname, DepTable & head)
 {
-	if (absname.exists() &&
-	    !fs::is_directory(absname.toFilesystemEncoding())) {
+	if (absname.exists() && !absname.isDirectory()) {
 		head.insert(absname, true);
 		return true;
 	}
@@ -851,8 +850,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
-	if (absname.exists() &&
-	    !fs::is_directory(absname.toFilesystemEncoding())) {
+	if (absname.exists() && !absname.isDirectory()) {
 		// FIXME: This regex contained glo, but glo is used by the old
 		// version of nomencl.sty. Do we need to put it back?
 		static regex const unwanted("^.*\\.(aux|log|dvi|bbl|ind)$");

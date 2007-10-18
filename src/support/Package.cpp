@@ -695,8 +695,7 @@ bool check_env_var_dir(FileName const & dir,
 bool check_env_var_dir(FileName const & dir,
 		       string const & env_var)
 {
-	string const encoded = dir.toFilesystemEncoding();
-	bool const success = (dir.exists() && fs::is_directory(encoded));
+	bool const success = dir.exists() && dir.isDirectory();
 
 	if (!success) {
 		// Put this string on a single line so that the gettext

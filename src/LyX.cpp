@@ -62,7 +62,6 @@
 #include "support/Systemcall.h"
 
 #include <boost/bind.hpp>
-#include <boost/filesystem/operations.hpp>
 
 #include <algorithm>
 #include <iostream>
@@ -83,8 +82,6 @@ using std::exit;
 using std::signal;
 using std::system;
 #endif
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -985,8 +982,7 @@ bool LyX::init()
 		prependEnvPath("PATH", lyxrc.path_prefix);
 
 	FileName const document_path(lyxrc.document_path);
-	if (document_path.exists() &&
-	    fs::is_directory(document_path.toFilesystemEncoding()))
+	if (document_path.exists() && document_path.isDirectory())
 		package().document_dir() = document_path;
 
 	package().temp_dir() = createLyXTmpDir(FileName(lyxrc.tempdir_path));
@@ -1114,38 +1110,32 @@ void LyX::deadKeyBindings(KeyMap * kbmap)
 }
 
 
-namespace {
-
 // return true if file does not exist or is older than configure.py.
-bool needsUpdate(string const & file)
+static bool needsUpdate(string const & file)
 {
 	// We cannot initialize configure_script directly because the package
 	// is not initialized yet when  static objects are constructed.
-	static string configure_script;
+	static FileName configure_script;
 	static bool firstrun = true;
 	if (firstrun) {
-		configure_script = FileName(addName(
-				package().system_support().absFilename(),
-				"configure.py")).toFilesystemEncoding();
+		configure_script =
+			FileName(addName(package().system_support().absFilename(),
+				"configure.py"));
 		firstrun = false;
 	}
 
-	string const absfile = FileName(addName(
-		package().user_support().absFilename(), file)).toFilesystemEncoding();
-	return (! fs::exists(absfile))
-		|| (fs::last_write_time(configure_script)
-		    > fs::last_write_time(absfile));
-}
-
+	FileName absfile = 
+		FileName(addName(package().user_support().absFilename(), file));
+	return !absfile.exists()
+		|| configure_script.lastModified() > absfile.lastModified();
 }
 
 
 bool LyX::queryUserLyXDir(bool explicit_userdir)
 {
 	// Does user directory exist?
-	string const user_support =
-		package().user_support().toFilesystemEncoding();
-	if (fs::exists(user_support) && fs::is_directory(user_support)) {
+	FileName const sup = package().user_support();
+	if (sup.exists() && sup.isDirectory()) {
 		first_start = false;
 
 		return needsUpdate("lyxrc.defaults")
@@ -1173,10 +1163,9 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	}
 
 	lyxerr << to_utf8(bformat(_("LyX: Creating directory %1$s"),
-			  from_utf8(package().user_support().absFilename())))
-	       << endl;
+			  from_utf8(sup.absFilename()))) << endl;
 
-	if (!createDirectory(package().user_support(), 0755)) {
+	if (!createDirectory(sup, 0755)) {
 		// Failed, so let's exit.
 		lyxerr << to_utf8(_("Failed to create directory. Exiting."))
 		       << endl;

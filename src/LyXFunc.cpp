@@ -2077,7 +2077,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 		filename = addName(lyxrc.document_path,
 			    "newfile" + convert<string>(++newfile_number) + ".lyx");
 		while (theBufferList().exists(filename) ||
-		       fs::is_readable(FileName(filename).toFilesystemEncoding())) {
+		       FileName(filename).isReadable()) {
 			++newfile_number;
 			filename = addName(lyxrc.document_path,
 					   "newfile" +	convert<string>(newfile_number) +
@@ -2403,9 +2403,8 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DISPLAY_GRAPHICS:
 	case LyXRC::RC_DOCUMENTPATH:
 		if (lyxrc_orig.document_path != lyxrc_new.document_path) {
-			string const encoded = FileName(
-				lyxrc_new.document_path).toFilesystemEncoding();
-			if (fs::exists(encoded) && fs::is_directory(encoded))
+			FileName path(lyxrc_new.document_path);
+			if (path.exists() && path.isDirectory())
 				support::package().document_dir() = FileName(lyxrc.document_path);
 		}
 	case LyXRC::RC_ESC_CHARS:

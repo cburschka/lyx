@@ -87,7 +87,7 @@ bool FileName::exists() const
 }
 
 
-bool FileName::isDir() const
+bool FileName::isDirectory() const
 {
 	return QFileInfo(toqstr(name_)).isDir();
 }
@@ -97,6 +97,13 @@ bool FileName::isReadOnly() const
 {
 	QFileInfo const fi(toqstr(name_));
 	return fi.isReadable() && !fi.isWritable();
+}
+
+
+bool FileName::isReadable() const
+{
+	QFileInfo const fi(toqstr(name_));
+	return fi.isReadable();
 }
 
 

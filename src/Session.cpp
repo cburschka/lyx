@@ -16,8 +16,6 @@
 #include "support/Package.h"
 #include "support/filetools.h"
 
-#include <boost/filesystem/operations.hpp>
-
 #include <fstream>
 #include <sstream>
 #include <algorithm>
@@ -27,8 +25,6 @@ using lyx::support::absolutePath;
 using lyx::support::addName;
 using lyx::support::FileName;
 using lyx::support::package;
-
-namespace fs = boost::filesystem;
 
 using std::vector;
 using std::getline;
@@ -78,9 +74,8 @@ void LastFilesSection::read(istream & is)
 
 		// read lastfiles
 		FileName const file(tmp);
-		if (file.exists() &&
-		    !fs::is_directory(file.toFilesystemEncoding()) &&
-		    lastfiles.size() < num_lastfiles)
+		if (file.exists() && !file.isDirectory()
+		    && lastfiles.size() < num_lastfiles)
 			lastfiles.push_back(file);
 		else
 			LYXERR(Debug::INIT) << "LyX: Warning: Ignore last file: " << tmp << endl;
@@ -133,8 +128,7 @@ void LastOpenedSection::read(istream & is)
 			continue;
 
 		FileName const file(tmp);
-		if (file.exists() &&
-		    !fs::is_directory(file.toFilesystemEncoding()))
+		if (file.exists() && !file.isDirectory())
 			lastopened.push_back(file);
 		else
 			LYXERR(Debug::INIT) << "LyX: Warning: Ignore last opened file: " << tmp << endl;
@@ -188,9 +182,8 @@ void LastFilePosSection::read(istream & is)
 			if (!absolutePath(fname))
 				continue;
 			FileName const file(fname);
-			if (file.exists() &&
-			    !fs::is_directory(file.toFilesystemEncoding()) &&
-			    lastfilepos.size() < num_lastfilepos)
+			if (file.exists() && !file.isDirectory()
+			    && lastfilepos.size() < num_lastfilepos)
 				lastfilepos[file] = boost::tie(pit, pos);
 			else
 				LYXERR(Debug::INIT) << "LyX: Warning: Ignore pos of last file: " << fname << endl;
@@ -269,9 +262,7 @@ void BookmarksSection::read(istream & is)
 				continue;
 			FileName const file(fname);
 			// only load valid bookmarks
-			if (file.exists() &&
-			    !fs::is_directory(file.toFilesystemEncoding()) &&
-			    idx <= max_bookmarks)
+			if (file.exists() && !file.isDirectory() && idx <= max_bookmarks)
 				bookmarks[idx] = Bookmark(file, pit, pos, 0, 0);
 			else
 				LYXERR(Debug::INIT) << "LyX: Warning: Ignore bookmark of file: " << fname << endl;

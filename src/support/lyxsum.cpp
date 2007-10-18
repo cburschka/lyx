@@ -11,20 +11,15 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
-
 #include "debug.h"
-
 #include "support/FileName.h"
 
 #include <boost/crc.hpp>
-#include <boost/filesystem/operations.hpp>
 
 #include <algorithm>
 
 using std::endl;
 using std::string;
-
-namespace fs = boost::filesystem;
 
 // OK, this is ugly, but it is the only workaround I found to compile
 // with gcc (any version) on a system which uses a non-GNU toolchain.
@@ -124,10 +119,10 @@ unsigned long sum(FileName const & file)
 	LYXERR(Debug::FILES) << "lyx::sum() using istreambuf_iterator (fast)"
 			     << endl;
 
-	string filename = file.toFilesystemEncoding();
 	// a directory may be passed here so we need to test it. (bug 3622)
-	if (fs::is_directory(filename))
+	if (file.isDirectory())
 		return 0;
+	string filename = file.toFilesystemEncoding();
 	ifstream ifs(filename.c_str());
 	if (!ifs)
 		return 0;
@@ -148,10 +143,11 @@ unsigned long sum(FileName const & file)
 		<< "lyx::sum() using istream_iterator (slow as a snail)"
 		<< endl;
 
-	string filename = file.toFilesystemEncoding();
 	// a directory may be passed here so we need to test it. (bug 3622)
-	if (fs::is_directory(filename))
+	if (file.isDirectory())
 		return 0;
+
+	string filename = file.toFilesystemEncoding();
 	ifstream ifs(filename.c_str());
 	if (!ifs)
 		return 0;

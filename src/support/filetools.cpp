@@ -224,8 +224,7 @@ vector<FileName> const dirList(FileName const & dir, string const & ext)
 	// EXCEPTIONS FIXME. Rewrite needed when we turn on exceptions. (Lgb)
 	vector<FileName> dirlist;
 
-	string const encoded_dir = dir.toFilesystemEncoding();
-	if (!(fs::exists(encoded_dir) && fs::is_directory(encoded_dir))) {
+	if (!(dir.exists() && dir.isDirectory())) {
 		LYXERR(Debug::FILES)
 			<< "Directory \"" << dir
 			<< "\" does not exist to DirList." << endl;
@@ -237,6 +236,7 @@ vector<FileName> const dirList(FileName const & dir, string const & ext)
 		extension += '.';
 	extension += ext;
 
+	string const encoded_dir = dir.toFilesystemEncoding();
 	fs::directory_iterator dit(encoded_dir);
 	fs::directory_iterator end;
 	for (; dit != end; ++dit) {
@@ -1224,23 +1224,20 @@ string const readBB_from_PSFile(FileName const & file)
 }
 
 
-int compare_timestamps(FileName const & filename1, FileName const & filename2)
+int compare_timestamps(FileName const & file1, FileName const & file2)
 {
 	// If the original is newer than the copy, then copy the original
 	// to the new directory.
 
-	string const file1 = filename1.toFilesystemEncoding();
-	string const file2 = filename2.toFilesystemEncoding();
 	int cmp = 0;
-	if (fs::exists(file1) && fs::exists(file2)) {
-		double const tmp = difftime(fs::last_write_time(file1),
-					    fs::last_write_time(file2));
+	if (file1.exists() && file2.exists()) {
+		double const tmp = difftime(file1.lastModified(), file2.lastModified());
 		if (tmp != 0)
 			cmp = tmp > 0 ? 1 : -1;
 
-	} else if (fs::exists(file1)) {
+	} else if (file1.exists()) {
 		cmp = 1;
-	} else if (fs::exists(file2)) {
+	} else if (file2.exists()) {
 		cmp = -1;
 	}
 

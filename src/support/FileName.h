@@ -60,7 +60,9 @@ public:
 	/// return true when file is readable but not writabel
 	bool isReadOnly() const;
 	/// return true when it names a directory
-	bool isDir() const;
+	bool isDirectory() const;
+	/// return true when file is readable
+	bool isReadable() const;
 
 	/**
 	 * Get a FileName from \p name in the encoding used by the file system.
