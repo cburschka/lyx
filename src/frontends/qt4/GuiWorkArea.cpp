@@ -43,6 +43,7 @@
 #include <QTabBar>
 #include <QTimer>
 
+#include <boost/current_function.hpp>
 #include <boost/bind.hpp>
 
 #ifdef Q_WS_X11

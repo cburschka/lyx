@@ -66,6 +66,8 @@
 #include <QToolBar>
 #include <QUrl>
 
+#include <boost/current_function.hpp>
+
 using std::endl;
 using std::string;
 using std::vector;
