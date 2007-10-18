@@ -1401,62 +1401,97 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_DIALOG_SHOW_NEW_INSET: {
 			BOOST_ASSERT(lyx_view_);
 			string const name = cmd.getArg(0);
+			InsetCode code = insetCode(name);
 			string data = trim(to_utf8(cmd.argument()).substr(name.size()));
-			if (name == "bibitem" ||
-			    name == "bibtex" ||
-			    name == "index" ||
-			    name == "label" ||
-			    name == "nomenclature" ||
-			    name == "ref" ||
-			    name == "toc" ||
-			    name == "href") {
+			bool insetCodeOK = true;
+			switch (code) {
+			case BIBITEM_CODE:
+			case BIBTEX_CODE:
+			case INDEX_CODE:
+			case LABEL_CODE:
+			case NOMENCL_CODE:
+			case REF_CODE:
+			case TOC_CODE:
+			case HYPERLINK_CODE: {
 				InsetCommandParams p(name);
 				data = InsetCommandMailer::params2string(name, p);
-			} else if (name == "include") {
+				break;
+			} 
+			case INCLUDE_CODE: {
 				// data is the include type: one of "include",
 				// "input", "verbatiminput" or "verbatiminput*"
 				if (data.empty())
 					// default type is requested
 					data = "include";
-				InsetCommandParams p(data);
+				InsetCommandParams p("include", data);
 				data = InsetIncludeMailer::params2string(p);
-			} else if (name == "box") {
+				break;
+			} 
+			case BOX_CODE: {
 				// \c data == "Boxed" || "Frameless" etc
 				InsetBoxParams p(data);
 				data = InsetBoxMailer::params2string(p);
-			} else if (name == "branch") {
+				break;
+			} 
+			case BRANCH_CODE: {
 				InsetBranchParams p;
 				data = InsetBranchMailer::params2string(p);
-			} else if (name == "citation") {
-				InsetCommandParams p("citation");
+				break;
+			} 
+			case CITE_CODE: {
+				InsetCommandParams p("cite");
 				data = InsetCommandMailer::params2string(name, p);
-			} else if (name == "ert") {
+				break;
+			} 
+			case ERT_CODE: {
 				data = InsetERTMailer::params2string(InsetCollapsable::Open);
-			} else if (name == "external") {
+				break;
+			} 
+			case EXTERNAL_CODE: {
 				InsetExternalParams p;
 				Buffer const & buffer = *lyx_view_->buffer();
 				data = InsetExternalMailer::params2string(p, buffer);
-			} else if (name == "float") {
+				break;
+			} 
+			case FLOAT_CODE:  {
 				InsetFloatParams p;
 				data = InsetFloatMailer::params2string(p);
-			} else if (name == "listings") {
+				break;
+			} 
+			case LISTINGS_CODE: {
 				InsetListingsParams p;
 				data = InsetListingsMailer::params2string(p);
-			} else if (name == "graphics") {
+				break;
+			} 
+			case GRAPHICS_CODE: {
 				InsetGraphicsParams p;
 				Buffer const & buffer = *lyx_view_->buffer();
 				data = InsetGraphicsMailer::params2string(p, buffer);
-			} else if (name == "note") {
+				break;
+			} 
+			case NOTE_CODE: {
 				InsetNoteParams p;
 				data = InsetNoteMailer::params2string(p);
-			} else if (name == "vspace") {
+				break;
+			} 
+			case VSPACE_CODE: {
 				VSpace space;
 				data = InsetVSpaceMailer::params2string(space);
-			} else if (name == "wrap") {
+				break;
+			} 
+			case WRAP_CODE: {
 				InsetWrapParams p;
 				data = InsetWrapMailer::params2string(p);
+				break;
 			}
-			lyx_view_->getDialogs().show(name, data, 0);
+			default:
+				lyxerr << "Inset type '" << name << 
+					"' not recognized in LFUN_DIALOG_SHOW_NEW_INSET" << std:: endl;
+				insetCodeOK = false;
+				break;
+			} // end switch(code)
+			if (insetCodeOK)
+				lyx_view_->getDialogs().show(name, data, 0);
 			break;
 		}
 
@@ -1508,7 +1543,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					arg = token(argument, '|', 0);
 					opt1 = token(argument, '|', 1);
 				}
-				InsetCommandParams icp("citation");
+				InsetCommandParams icp("cite");
 				icp["key"] = from_utf8(arg);
 				if (!opt1.empty())
 					icp["before"] = from_utf8(opt1);
