@@ -33,6 +33,17 @@ class FuncRequest;
  * argument. They are used for things like the menus.
  */
 class LyXAction : boost::noncopyable {
+public:
+	/// category of an action, used in the Shortcuts dialog
+	enum func_type {
+		Hidden,  //< Not listed for configuration
+		Edit,    //< Cursor and mouse movement, copy/paste etc
+		Math,    //< Mathematics
+		Buffer,  //< Buffer and window related
+		Layout,  //< Font, Layout and textclass related
+		System,  //< Lyx preference, server etc
+	};
+
 private:
 	/// information for an action
 	struct func_info {
@@ -40,6 +51,8 @@ private:
 		std::string name;
 		/// the func_attrib values set
 		unsigned int attrib;
+		/// the category of this func
+		func_type type;
 	};
 
 public:
@@ -70,6 +83,8 @@ public:
 	/// Return the name (and argument) associated with the given (pseudo) action
 	std::string const getActionName(kb_action action) const;
 
+	func_type const getActionType(kb_action action) const;
+
 	/// True if the command has `flag' set
 	bool funcHasFlag(kb_action action, func_attrib flag) const;
 
@@ -86,7 +101,7 @@ private:
 	/// populate the action container with our actions
 	void init();
 	/// add the given action
-	void newFunc(kb_action, std::string const & name, unsigned int attrib);
+	void newFunc(kb_action, std::string const & name, unsigned int attrib, func_type type);
 
 	/**
 	 * This is a list of all the LyXFunc names with the

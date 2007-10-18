@@ -71,6 +71,14 @@ public:
 	/// Given an action, print the keybindings.
 	docstring const printbindings(FuncRequest const & func) const;
 
+	typedef std::pair<FuncRequest, KeySequence> Binding; 
+	typedef std::vector<Binding> BindingList;
+	/**
+	 * Return all lfun and their associated bindings.
+	 * @param unbound list unbound (func without any keybinding) as well
+	 */
+	BindingList const listBindings(bool unbound) const;
+
 	/**
 	 *  Given an action, find the first 1-key binding (if it exists).
 	 *  The KeySymbol pointer is 0 is no key is found.
@@ -90,6 +98,8 @@ public:
 
 	typedef std::pair<KeyModifier, KeyModifier> ModifierPair;
 
+
+private:
 	///
 	struct Key {
 		/// Keysym
@@ -105,13 +115,6 @@ public:
 		FuncRequest func;
 	};
 
-	///
-	typedef std::vector<Key> Table;
-
-	Table::const_iterator begin() const { return table.begin(); }
-	Table::const_iterator end() const { return table.end(); }
-
-private:
 	/**
 	 * Define an action for a key sequence.
 	 * @param r internal recursion level
@@ -126,9 +129,14 @@ private:
 	 */
 	Bindings findbindings(FuncRequest const & func,
 			      KeySequence const & prefix) const;
+	
+	void listBindings(BindingList & list,
+				  KeySequence const & prefix) const;
 
 	/// is the table empty ?
 	bool empty() const { return table.empty(); }
+	///
+	typedef std::vector<Key> Table;
 	///
 	Table table;
 };

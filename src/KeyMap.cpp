@@ -23,9 +23,11 @@
 #include "support/filetools.h"
 
 #include <sstream>
+#include <utility>
 
 using std::endl;
 using std::string;
+using std::make_pair;
 
 
 namespace lyx {
@@ -321,6 +323,51 @@ KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func,
 	}
 
 	return res;
+}
+
+
+KeyMap::BindingList const KeyMap::listBindings(bool unbound) const
+{
+	BindingList list;
+	listBindings(list, KeySequence(0, 0));
+	if (unbound) {
+		LyXAction::const_func_iterator fit = lyxaction.func_begin();
+		LyXAction::const_func_iterator fit_end = lyxaction.func_end();
+		for (; fit != fit_end; ++fit) {
+			kb_action action = fit->second;
+			bool has_action = false;
+			BindingList::const_iterator it = list.begin();
+			BindingList::const_iterator it_end = list.end();
+			for (; it != it_end; ++it)
+				if (it->first.action == action) {
+					has_action = true;
+					break;
+				}
+			if (!has_action)
+				list.push_back(make_pair(action, KeySequence(0, 0)));
+		}	
+	}
+	return list;
+}
+
+
+void KeyMap::listBindings(BindingList & list,
+	KeySequence const & prefix) const
+{
+	Table::const_iterator it = table.begin();
+	Table::const_iterator it_end = table.end();
+	for (; it != it_end; ++it) {
+		// a LFUN_COMMAND_PREFIX
+		if (it->table.get()) {
+			KeySequence seq = prefix;
+			seq.addkey(it->code, it->mod.first);
+			it->table->listBindings(list, seq);
+		} else {
+			KeySequence seq = prefix;
+			seq.addkey(it->code, it->mod.first);
+			list.push_back(make_pair(it->func, seq));
+		}
+	}
 }
 
 
