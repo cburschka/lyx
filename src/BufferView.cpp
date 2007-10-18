@@ -852,10 +852,10 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
-		flag.enabled(!buffer_.undo().hasUndoStack());
+		flag.enabled(buffer_.undo().hasUndoStack());
 		break;
 	case LFUN_REDO:
-		flag.enabled(!buffer_.undo().hasRedoStack());
+		flag.enabled(buffer_.undo().hasRedoStack());
 		break;
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
