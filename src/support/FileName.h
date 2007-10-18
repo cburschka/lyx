@@ -59,6 +59,8 @@ public:
 	std::time_t lastModified() const;
 	/// return true when file is readable but not writabel
 	bool isReadOnly() const;
+	/// return true when it names a directory
+	bool isDir() const;
 
 	/**
 	 * Get a FileName from \p name in the encoding used by the file system.
