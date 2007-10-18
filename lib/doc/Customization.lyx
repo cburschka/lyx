@@ -1,5 +1,5 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 286
+\lyxformat 295
 \begin_document
 \begin_header
 \textclass book
@@ -57,6 +57,10 @@
 % used for multi-column text
 \usepackage{multicol}
 \end_preamble
+\begin_modules
+URL
+Logical Markup
+\end_modules
 \language english
 \inputencoding default
 \font_roman default
@@ -70,6 +74,7 @@
 \graphics none
 \paperfontsize default
 \spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -122,7 +127,8 @@ Mike Ressler
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand tableofcontents
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -149,7 +155,8 @@ LyX configuration files
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "chap:config"
 
 \end_inset
@@ -312,7 +319,8 @@ bind/
 \family default
  that define the keybindings used in LyX (see section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bindings"
 
 \end_inset
@@ -325,13 +333,15 @@ $LANG_xxx.bind
 , that will be used first.
  See Chapter\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "chap:i18n"
 
 \end_inset
 
 , and section 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bindings"
 
 \end_inset
@@ -373,7 +383,8 @@ $LANG_
  prepended to the name, that will be used first.
  See Chapter\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "chap:i18n"
 
 \end_inset
@@ -423,7 +434,8 @@ kbd/
  contains keyboard keymapping files.
  See Chapter\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:keymap"
 
 \end_inset
@@ -441,7 +453,8 @@ layouts/
 \series default
  contains the text class files described in Chapter\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "chap:textclass"
 
 \end_inset
@@ -471,7 +484,8 @@ templates/
 \family default
  contains the standard LyX template files described in Chapter\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:templates"
 
 \end_inset
@@ -503,7 +517,8 @@ ui/
  appearing on the toolbar.
  See Chapter\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:ui"
 
 \end_inset
@@ -698,7 +713,8 @@ configure
  and the resulting files are written in your local configuration directory
  (see section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:autodetected"
 
 \end_inset
@@ -841,7 +857,8 @@ ools\SpecialChar \menuseparator
 R
 \bar default
 econfigure 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:autodetected"
 
 \end_inset
@@ -1524,7 +1541,8 @@ As you can see, there are quite a few options that can be used to fine tune
 
 \begin_layout Section
 Bindings
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:bindings"
 
 \end_inset
@@ -1573,7 +1591,8 @@ Preferences
 \begin_layout Standard
 LyX supports internationalization of the user interface (see Chapter\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "chap:i18n"
 
 \end_inset
@@ -1628,7 +1647,8 @@ Reference Guide
 
 \begin_layout Section
 User Interface
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:ui"
 
 \end_inset
@@ -1746,7 +1766,8 @@ s.
 \end_layout
 
 \begin_layout Section
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:converters-etc"
 
 \end_inset
@@ -1965,10 +1986,11 @@ HTML\InsetSpace ~
  copied.
  All these files are written to a subdirectory of the directory in which
  the original LyX file was found.
-\end_layout
+\begin_inset Foot
+status collapsed
 
 \begin_layout Standard
-Copier can of course be customized.
+This copier can be customized.
  The optional 
 \begin_inset Quotes eld
 \end_inset
@@ -2012,6 +2034,11 @@ LyXconv
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 The definitions of the copiers may use four variables:
 \end_layout
@@ -2051,6 +2078,88 @@ The latter is to be given in a form suitable for inclusion in a LaTeX's
 include
 \series default
  command and is relevant only when exporting files suitable for such inclusion.
+\end_layout
+
+\begin_layout Standard
+Copiers can be used to do almost anything with output files.
+ For example, suppose you want generated pdf files to be copied to a special
+ directory, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+/home/you/pdf/
+\end_layout
+
+\end_inset
+
+.
+ Then you could write a shell script such as this one:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+#!/bin/bash
+\end_layout
+
+\begin_layout Standard
+
+FROMFILE=$1
+\end_layout
+
+\begin_layout Standard
+
+TOFILE=`basename $2`
+\end_layout
+
+\begin_layout Standard
+
+cp $FROMFILE /home/you/pdf/$TOFILE
+\end_layout
+
+\end_inset
+
+Save that in your local LyX directory---say, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+/home/you/.lyx/scripts/pdfcopier.sh
+\end_layout
+
+\end_inset
+
+---and make it executable, if you need to do so on your platform.
+ Then, in the 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences:Copiers
+\family default
+ dialog, select the 
+\family sans
+PDF(pdflatex)
+\family default
+ format---or one of the other pdf formats---and enter 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Standard
+pdfcopier.sh $$i $$o
+\end_layout
+
+\end_inset
+
+ into the 
+\family sans
+Copier
+\family default
+ field.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -2241,7 +2350,8 @@ resultfile Determines the output filename and may, contain $$b.
 None of these last three are presently used in any of the converters that
  are installed with LyX.
  But see section 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sub:LyX-and-Literate"
 
 \end_inset
@@ -2978,7 +3088,8 @@ The autodetected settings
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:autodetected"
 
 \end_inset
@@ -3126,7 +3237,8 @@ There are many other configuration options that can be used to customize
 
 \begin_layout Chapter
 Internationalizing LyX
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "chap:i18n"
 
 \end_inset
@@ -3301,7 +3413,7 @@ xx
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3449,7 +3561,7 @@ xx
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3651,9 +3763,12 @@ DocStyle.lyx
 
 \begin_layout Itemize
 Check out the documentation translation web page at 
-\begin_inset LatexCommand url
-name "The LyX Developer's Web Site"
-target "http://www.devel.lyx.org"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+http://www.devel.lyx.org
+\end_layout
 
 \end_inset
 
@@ -3715,8 +3830,12 @@ Make a copy of the document.
 \begin_layout Itemize
 Sometimes the original document (from the LyX-team) will be updated.
  Use the ViewCVS tool available at 
-\begin_inset LatexCommand htmlurl
-target "http://www.lyx.org/viewcvs.cgi/lyxdoc/"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Standard
+http://www.lyx.org/viewcvs.cgi/lyxdoc/
+\end_layout
 
 \end_inset
 
@@ -3882,7 +4001,7 @@ underbar (underb)
 \hfill
 
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3907,7 +4026,7 @@ underdot (underd)
 \hfill
 
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3938,7 +4057,7 @@ tie (tie)
 \hfill
 
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3957,7 +4076,7 @@ breve (bre)
 \hfill
 ă
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -3994,7 +4113,7 @@ dot (dot)
 \hfill
 ż
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -4145,7 +4264,8 @@ kinclude
 
 \begin_layout Section
 International Keymap Stuff
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:keymap"
 
 \end_inset
@@ -5290,7 +5410,8 @@ Saving your Language Configuration
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:savlang"
 
 \end_inset
@@ -5313,7 +5434,8 @@ references
 
 \begin_layout Chapter
 Installing New Document Classes, Layouts, and Templates 
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "chap:textclass"
 
 \end_inset
@@ -5611,7 +5733,8 @@ texmf.cnf
 \end_layout
 
 \begin_layout Section
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Layouts"
 
 \end_inset
@@ -6193,7 +6316,8 @@ layout-reload
 .
  There is no default binding for this function---though, of course, you
  can bind it to a key yourself (see section 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:bindings"
 
 \end_inset
@@ -6262,7 +6386,7 @@ These are the general parameters which describe the form of the entire document:
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -6407,7 +6531,8 @@ End
  class.
  See Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:classoptions"
 
 \end_inset
@@ -6455,7 +6580,8 @@ DefaultFont
  This is used to describe the default font of the document.
  See Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -6602,7 +6728,8 @@ End
  If the style already exists, it will redefine some of its parameters instead.
  See Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:style"
 
 \end_inset
@@ -6633,7 +6760,8 @@ End
  This sequence defines a new float.
  See Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:floats"
 
 \end_inset
@@ -6666,7 +6794,8 @@ End
  e.g., a new character style.
  See Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:charstyle"
 
 \end_inset
@@ -6685,7 +6814,8 @@ End
  This sequence defines a new counter.
  See Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:counter"
 
 \end_inset
@@ -6695,7 +6825,7 @@ reference "sec:counter"
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -6718,7 +6848,8 @@ ClassOptions
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:classoptions"
 
 \end_inset
@@ -6809,7 +6940,8 @@ Specific Paragraph Layouts
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:style"
 
 \end_inset
@@ -6848,7 +6980,7 @@ where the following commands are allowed:
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -7537,7 +7669,8 @@ string=""
 \newline
 The name of the counter for automatic numbering (see Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:counter"
 
 \end_inset
@@ -7637,7 +7770,8 @@ LabelCounter
  is set, this string can be contain the special formatting commands described
  in Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:counter"
 
 \end_inset
@@ -7665,7 +7799,8 @@ style-name
  This feature is now obsolete and should be replaced by the mechanisms of
  Section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:counter"
 
 \end_inset
@@ -8109,7 +8244,8 @@ and
  the label.
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -8132,7 +8268,8 @@ TextFont
  The font used for the text body .
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -8150,7 +8287,8 @@ LabelFont
  The font used for the label.
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -8202,7 +8340,7 @@ Note that, besides that functionality, there is no way to ensure any ordering
 
 \begin_layout Standard
 \begin_inset ERT
-status inlined
+status open
 
 \begin_layout Standard
 
@@ -8221,7 +8359,8 @@ Floats
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:floats"
 
 \end_inset
@@ -8561,7 +8700,8 @@ Inset layouts and Flex insets
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:charstyle"
 
 \end_inset
@@ -8732,7 +8872,8 @@ and
  the label.
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -8755,7 +8896,8 @@ LabelFont
  The font used for the label.
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:fonts"
 
 \end_inset
@@ -8809,7 +8951,8 @@ LatexType
 \series default
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:style"
 
 \end_inset
@@ -8827,7 +8970,8 @@ EndPreamble
 \series default
  See section\InsetSpace ~
 
-\begin_inset LatexCommand ref
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "sec:style"
 
 \end_inset
@@ -8840,7 +8984,8 @@ Counters
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:counter"
 
 \end_inset
@@ -9134,7 +9279,8 @@ Font description
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:fonts"
 
 \end_inset
@@ -9326,7 +9472,8 @@ numrevtex.inc
 
 \begin_layout Section
 Creating Templates
-\begin_inset LatexCommand label
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:templates"
 
 \end_inset
