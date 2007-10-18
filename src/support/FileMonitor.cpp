@@ -16,13 +16,10 @@
 #include "support/Timeout.h"
 
 #include <boost/bind.hpp>
-#include <boost/filesystem/operations.hpp>
 #include <boost/signals/trackable.hpp>
 
 
 using std::string;
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 namespace support {
@@ -90,10 +87,10 @@ void FileMonitor::start() const
 	if (monitoring())
 		return;
 
-	if (!fs::exists(pimpl_->filename_.toFilesystemEncoding()))
+	if (!pimpl_->filename_.exists())
 		return;
 
-	pimpl_->timestamp_ = fs::last_write_time(pimpl_->filename_.toFilesystemEncoding());
+	pimpl_->timestamp_ = pimpl_->filename_.lastModified();
 	pimpl_->checksum_ = sum(pimpl_->filename_);
 
 	if (pimpl_->timestamp_ && pimpl_->checksum_) {
@@ -155,13 +152,13 @@ void FileMonitor::Impl::monitorFile()
 {
 	bool changed = false;
 
-	if (!fs::exists(filename_.toFilesystemEncoding())) {
+	if (!filename_.exists()) {
 		changed = timestamp_ || checksum_;
 		timestamp_ = 0;
 		checksum_ = 0;
 
 	} else {
-		time_t const new_timestamp = fs::last_write_time(filename_.toFilesystemEncoding());
+		time_t const new_timestamp = filename_.lastModified();
 
 		if (new_timestamp != timestamp_) {
 			timestamp_ = new_timestamp;

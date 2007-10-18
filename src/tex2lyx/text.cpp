@@ -360,7 +360,7 @@ string find_file(string const & name, string const & path,
 	// expects utf8)
 	for (char const * const * what = extensions; *what; ++what) {
 		string const trial = addExtension(name, *what);
-		if (fs::exists(makeAbsPath(trial, path).toFilesystemEncoding()))
+		if (makeAbsPath(trial, path).exists())
 			return trial;
 	}
 	return string();
@@ -1539,7 +1539,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// therefore path is only used for testing
 			// FIXME UNICODE encoding of name and path may be
 			// wrong (makeAbsPath expects utf8)
-			if (!fs::exists(makeAbsPath(name, path).toFilesystemEncoding())) {
+			if (!makeAbsPath(name, path).exists()) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const dvips_name =
@@ -1571,7 +1571,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 			// FIXME UNICODE encoding of name and path may be
 			// wrong (makeAbsPath expects utf8)
-			if (fs::exists(makeAbsPath(name, path).toFilesystemEncoding()))
+			if (makeAbsPath(name, path).exists())
 				fix_relative_filename(name);
 			else
 				cerr << "Warning: Could not find graphics file '"
@@ -2203,7 +2203,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// FIXME UNICODE encoding of filename and path may be
 			// wrong (makeAbsPath expects utf8)
 			if ((t.cs() == "include" || t.cs() == "input") &&
-			    !fs::exists(makeAbsPath(filename, path).toFilesystemEncoding())) {
+			    !makeAbsPath(filename, path).exists()) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const tex_name =
@@ -2214,7 +2214,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			// FIXME UNICODE encoding of filename and path may be
 			// wrong (makeAbsPath expects utf8)
-			if (fs::exists(makeAbsPath(filename, path).toFilesystemEncoding())) {
+			if (makeAbsPath(filename, path).exists()) {
 				string const abstexname =
 					makeAbsPath(filename, path).absFilename();
 				string const abslyxname =

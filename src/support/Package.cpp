@@ -356,14 +356,12 @@ FileName const get_locale_dir(FileName const & system_support_dir)
 	FileName path(normalizePath(addPath(system_support_dir.absFilename(),
 	                                    relative_locale_dir())));
 
-	if (fs::exists(path.toFilesystemEncoding()) &&
-	    fs::is_directory(path.toFilesystemEncoding()))
+	if (path.exists() && fs::is_directory(path.toFilesystemEncoding()))
 		return path;
 
 	// 3. Fall back to the hard-coded LOCALEDIR.
 	path = hardcoded_localedir();
-	if (fs::exists(path.toFilesystemEncoding()) &&
-	    fs::is_directory(path.toFilesystemEncoding()))
+	if (path.exists() && fs::is_directory(path.toFilesystemEncoding()))
 		return path;
 
 	return FileName();
@@ -415,7 +413,7 @@ FileName const get_binary_path(string const & exe)
 	// Two possibilities present themselves.
 	// 1. The binary is relative to the CWD.
 	FileName const abs_exe_path = makeAbsPath(exe_path);
-	if (fs::exists(abs_exe_path.toFilesystemEncoding()))
+	if (abs_exe_path.exists())
 		return abs_exe_path;
 
 	// 2. exe must be the name of the binary only and it
@@ -432,7 +430,7 @@ FileName const get_binary_path(string const & exe)
 		string const exe_dir = makeAbsPath(*it).absFilename();
 
 		FileName const exe_path(addName(exe_dir, exe_name));
-		if (fs::exists(exe_path.toFilesystemEncoding()))
+		if (exe_path.exists())
 			return exe_path;
 	}
 
@@ -697,8 +695,8 @@ bool check_env_var_dir(FileName const & dir,
 bool check_env_var_dir(FileName const & dir,
 		       string const & env_var)
 {
-	string const encoded(dir.toFilesystemEncoding());
-	bool const success = (fs::exists(encoded) && fs::is_directory(encoded));
+	string const encoded = dir.toFilesystemEncoding();
+	bool const success = (dir.exists() && fs::is_directory(encoded));
 
 	if (!success) {
 		// Put this string on a single line so that the gettext

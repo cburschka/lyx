@@ -78,7 +78,7 @@ vector<string> const Backends(Buffer const & buffer)
 /// ask the user what to do if a file already exists
 int checkOverwrite(FileName const & filename)
 {
-	if (fs::exists(filename.toFilesystemEncoding())) {
+	if (filename.exists()) {
 		docstring text = bformat(_("The file %1$s already exists.\n\n"
 						     "Do you want to overwrite that file?"),
 				      makeDisplayPath(filename.absFilename()));
@@ -243,7 +243,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		}
 		if (status == CANCEL) {
 			buffer->message(_("Document export cancelled."));
-		} else if (fs::exists(tmp_result_file.toFilesystemEncoding())) {
+		} else if (tmp_result_file.exists()) {
 			// Finally copy the main file
 			status = copyFile(format, tmp_result_file,
 					  FileName(result_file), result_file,

@@ -48,7 +48,6 @@
 #include "support/convert.h"
 
 #include <boost/bind.hpp>
-#include <boost/filesystem/operations.hpp>
 
 
 namespace lyx {
@@ -88,7 +87,6 @@ using std::ostringstream;
 using std::vector;
 
 namespace Alert = frontend::Alert;
-namespace fs = boost::filesystem;
 
 
 namespace {
@@ -386,6 +384,7 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 
 } // namespace anon
 
+
 /// return true if the file is or got loaded.
 Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 {
@@ -402,7 +401,7 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 	Buffer * child = theBufferList().getBuffer(included_file.absFilename());
 	if (!child) {
 		// the readonly flag can/will be wrong, not anymore I think.
-		if (!fs::exists(included_file.toFilesystemEncoding()))
+		if (!included_file.exists())
 			return 0;
 
 		child = theBufferList().newBuffer(included_file.absFilename());

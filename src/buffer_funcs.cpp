@@ -82,7 +82,7 @@ bool readFile(Buffer * const b, FileName const & s)
 	BOOST_ASSERT(b);
 
 	// File information about normal file
-	if (!fs::exists(s.toFilesystemEncoding())) {
+	if (!s.exists()) {
 		docstring const file = makeDisplayPath(s.absFilename(), 50);
 		docstring text = bformat(_("The specified document\n%1$s"
 						     "\ncould not be read."), file);
@@ -93,10 +93,7 @@ bool readFile(Buffer * const b, FileName const & s)
 	// Check if emergency save file exists and is newer.
 	FileName const e(s.absFilename() + ".emergency");
 
-	if (fs::exists(e.toFilesystemEncoding()) &&
-	    fs::exists(s.toFilesystemEncoding()) &&
-	    fs::last_write_time(e.toFilesystemEncoding()) > fs::last_write_time(s.toFilesystemEncoding()))
-	{
+	if (e.exists() && s.exists() && e.lastModified() > s.lastModified()) {
 		docstring const file = makeDisplayPath(s.absFilename(), 20);
 		docstring const text =
 			bformat(_("An emergency save of the document "
@@ -120,10 +117,7 @@ bool readFile(Buffer * const b, FileName const & s)
 	// Now check if autosave file is newer.
 	FileName const a(onlyPath(s.absFilename()) + '#' + onlyFilename(s.absFilename()) + '#');
 
-	if (fs::exists(a.toFilesystemEncoding()) &&
-	    fs::exists(s.toFilesystemEncoding()) &&
-	    fs::last_write_time(a.toFilesystemEncoding()) > fs::last_write_time(s.toFilesystemEncoding()))
-	{
+	if (a.exists() && s.exists() && a.lastModified() > s.lastModified()) {
 		docstring const file = makeDisplayPath(s.absFilename(), 20);
 		docstring const text =
 			bformat(_("The backup of the document "

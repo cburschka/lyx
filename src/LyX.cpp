@@ -985,7 +985,7 @@ bool LyX::init()
 		prependEnvPath("PATH", lyxrc.path_prefix);
 
 	FileName const document_path(lyxrc.document_path);
-	if (fs::exists(document_path.toFilesystemEncoding()) &&
+	if (document_path.exists() &&
 	    fs::is_directory(document_path.toFilesystemEncoding()))
 		package().document_dir() = document_path;
 

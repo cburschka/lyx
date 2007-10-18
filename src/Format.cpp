@@ -26,8 +26,6 @@
 #include "support/os.h"
 #include "support/Systemcall.h"
 
-#include <boost/filesystem/operations.hpp>
-
 using std::find_if;
 using std::string;
 using std::distance;
@@ -49,7 +47,6 @@ using support::Systemcall;
 using support::token;
 
 namespace Alert = frontend::Alert;
-namespace fs = boost::filesystem;
 namespace os = support::os;
 
 namespace {
@@ -266,7 +263,7 @@ void Formats::setViewer(string const & name, string const & command)
 bool Formats::view(Buffer const & buffer, FileName const & filename,
 		   string const & format_name) const
 {
-	if (filename.empty() || !fs::exists(filename.toFilesystemEncoding())) {
+	if (filename.empty() || !filename.exists()) {
 		Alert::error(_("Cannot view file"),
 			bformat(_("File does not exist: %1$s"),
 				from_utf8(filename.absFilename())));
@@ -336,7 +333,7 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 bool Formats::edit(Buffer const & buffer, FileName const & filename,
 			 string const & format_name) const
 {
-	if (filename.empty() || !fs::exists(filename.toFilesystemEncoding())) {
+	if (filename.empty() || !filename.exists()) {
 		Alert::error(_("Cannot edit file"),
 			bformat(_("File does not exist: %1$s"),
 				from_utf8(filename.absFilename())));

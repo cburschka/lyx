@@ -78,7 +78,7 @@ void LastFilesSection::read(istream & is)
 
 		// read lastfiles
 		FileName const file(tmp);
-		if (fs::exists(file.toFilesystemEncoding()) &&
+		if (file.exists() &&
 		    !fs::is_directory(file.toFilesystemEncoding()) &&
 		    lastfiles.size() < num_lastfiles)
 			lastfiles.push_back(file);
@@ -133,7 +133,7 @@ void LastOpenedSection::read(istream & is)
 			continue;
 
 		FileName const file(tmp);
-		if (fs::exists(file.toFilesystemEncoding()) &&
+		if (file.exists() &&
 		    !fs::is_directory(file.toFilesystemEncoding()))
 			lastopened.push_back(file);
 		else
@@ -188,7 +188,7 @@ void LastFilePosSection::read(istream & is)
 			if (!absolutePath(fname))
 				continue;
 			FileName const file(fname);
-			if (fs::exists(file.toFilesystemEncoding()) &&
+			if (file.exists() &&
 			    !fs::is_directory(file.toFilesystemEncoding()) &&
 			    lastfilepos.size() < num_lastfilepos)
 				lastfilepos[file] = boost::tie(pit, pos);
@@ -269,7 +269,7 @@ void BookmarksSection::read(istream & is)
 				continue;
 			FileName const file(fname);
 			// only load valid bookmarks
-			if (fs::exists(file.toFilesystemEncoding()) &&
+			if (file.exists() &&
 			    !fs::is_directory(file.toFilesystemEncoding()) &&
 			    idx <= max_bookmarks)
 				bookmarks[idx] = Bookmark(file, pit, pos, 0, 0);

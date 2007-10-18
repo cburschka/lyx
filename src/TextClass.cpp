@@ -30,11 +30,7 @@
 #include "support/filetools.h"
 #include "support/os.h"
 
-#include <boost/filesystem/operations.hpp>
-
 #include <sstream>
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -1014,7 +1010,7 @@ bool TextClass::load(string const & path) const
 	FileName layout_file;
 	if (!path.empty())
 		layout_file = FileName(addName(path, name_ + ".layout"));
-	if (layout_file.empty() || !fs::exists(layout_file.toFilesystemEncoding()))
+	if (layout_file.empty() || !layout_file.exists())
 		layout_file = libFileSearch("layouts", name_, "layout");
 	loaded_ = const_cast<TextClass*>(this)->read(layout_file) == 0;
 

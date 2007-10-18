@@ -416,9 +416,8 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 
 	// If no Latex log or Build log is newer, show Build log
 
-	if (fs::exists(bname.toFilesystemEncoding()) &&
-	    (!fs::exists(fname.toFilesystemEncoding()) ||
-	     fs::last_write_time(fname.toFilesystemEncoding()) < fs::last_write_time(bname.toFilesystemEncoding()))) {
+	if (bname.exists() &&
+	    (!fname.exists() || fname.lastModified() < bname.lastModified())) {
 		LYXERR(Debug::FILES) << "Log name calculated as: " << bname << endl;
 		return make_pair(Buffer::buildlog, bname.absFilename());
 	}
@@ -688,7 +687,7 @@ bool Buffer::readFile(FileName const & filename)
 		//
 		FileName lyxfile(addName(temppath(), "content.lyx"));
 		// if both manifest.txt and file.lyx exist, this is am embedded file
-		if (fs::exists(lyxfile.toFilesystemEncoding())) {
+		if (lyxfile.exists()) {
 			params().embedded = true;
 			fname = lyxfile;
 		}
@@ -1645,10 +1644,10 @@ bool Buffer::isBakClean() const
 
 bool Buffer::isExternallyModified(CheckMethod method) const
 {
-	BOOST_ASSERT(fs::exists(pimpl_->filename.toFilesystemEncoding()));
+	BOOST_ASSERT(pimpl_->filename.exists());
 	// if method == timestamp, check timestamp before checksum
 	return (method == checksum_method 
-		|| pimpl_->timestamp_ != fs::last_write_time(pimpl_->filename.toFilesystemEncoding()))
+		|| pimpl_->timestamp_ != pimpl_->filename.lastModified())
 		&& pimpl_->checksum_ != sum(pimpl_->filename);
 }
 
@@ -2136,7 +2135,7 @@ bool Buffer::writeAs(string const & newname)
 	} else 
 		fname = makeAbsPath(newname, onlyPath(oldname)).absFilename();
 
-	if (fs::exists(FileName(fname).toFilesystemEncoding())) {
+	if (FileName(fname).exists()) {
 		docstring const file = makeDisplayPath(fname, 30);
 		docstring text = bformat(_("The document %1$s already "
 					   "exists.\n\nDo you want to "
