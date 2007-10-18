@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>398</width>
+    <width>409</width>
     <height>418</height>
    </rect>
   </property>
@@ -27,7 +27,13 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="3" column="2" >
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="bindFileED" />
+   </item>
+   <item rowspan="7" row="2" column="0" colspan="2" >
+    <widget class="QTreeWidget" name="shortcutsTW" />
+   </item>
+   <item row="8" column="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -37,28 +43,74 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>20</width>
-       <height>20</height>
+       <width>51</width>
+       <height>83</height>
       </size>
      </property>
     </spacer>
    </item>
+   <item row="7" column="2" >
+    <widget class="QPushButton" name="modifyPB" >
+     <property name="text" >
+      <string>Modify</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2" >
+    <widget class="QPushButton" name="removePB" >
+     <property name="text" >
+      <string>Remove</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" >
+    <widget class="QPushButton" name="editNew" >
+     <property name="text" >
+      <string>New</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>21</width>
+       <height>83</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="2" >
+    <widget class="QPushButton" name="editSearch" >
+     <property name="text" >
+      <string>Search</string>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="2" >
-    <widget class="QPushButton" name="editPB" >
-     <property name="text" >
-      <string>Edit</string>
+    <widget class="QLineEdit" name="lineEdit" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>1</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QLabel" name="shortcutsLBL" >
+   <item row="0" column="2" >
+    <widget class="QPushButton" name="bindFilePB" >
      <property name="text" >
-      <string>Shortcuts:</string>
+      <string>B&amp;rowse...</string>
      </property>
     </widget>
-   </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="bindFileED" />
    </item>
    <item row="0" column="0" >
     <widget class="QLabel" name="bindFileLA" >
@@ -70,15 +122,12 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="2" >
-    <widget class="QPushButton" name="bindFilePB" >
+   <item row="1" column="0" colspan="2" >
+    <widget class="QLabel" name="shortcutsLBL" >
      <property name="text" >
-      <string>B&amp;rowse...</string>
+      <string>Shortcuts:</string>
      </property>
     </widget>
-   </item>
-   <item rowspan="2" row="2" column="0" colspan="2" >
-    <widget class="QTreeWidget" name="shortcutsTW" />
    </item>
   </layout>
  </widget>

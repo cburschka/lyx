@@ -1741,7 +1741,7 @@ void PrefShortcuts::update(LyXRC const & rc)
 		QString const shortcut = toqstr(it->second.print(false));
 		
 		QTreeWidgetItem * newItem = NULL;
-		// if a item with the same lfun already exists, insert as a
+		// if an item with the same lfun already exists, insert as a
 		// child item to that item.
 		// WARNING: this can be slow.
 		QList<QTreeWidgetItem*> items = shortcutsTW->findItems(lfun, 
