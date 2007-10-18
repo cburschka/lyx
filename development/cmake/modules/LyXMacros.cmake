@@ -204,3 +204,29 @@ macro(lyx_const_touched_files _allinone_name _list)
 endmacro(lyx_const_touched_files)
 
 
+macro(lyx_qt_resources_file _qrc_name _to_dir _list) 
+   if (NOT EXISTS ${_qrc_name})
+      set(_rebuild_file 1)
+   else()
+      FILE(READ ${_qrc_name} _file_content)
+      if (NOT _file_content)
+         set(_rebuild_file 1)
+      endif()
+   endif()
+   
+   if (_rebuild_file)
+      message(STATUS "Generating ${_qrc_name}")
+      file(WRITE  ${_qrc_name} "<!DOCTYPE RCC><RCC version=\"1.0\">\n")
+      file(APPEND  ${_qrc_name} "<qresource>\n")
+     
+      foreach (_current_FILE ${${_list}})
+         get_filename_component(_abs_FILE ${_current_FILE} ABSOLUTE)
+         string(REGEX REPLACE "${_to_dir}" "" _file_name ${_abs_FILE})
+         file(APPEND  ${_qrc_name} "    <file alias=\"${_file_name}\">${_abs_FILE}</file>\n")
+      endforeach (_current_FILE)
+   
+      file(APPEND  ${_qrc_name} "</qresource>\n")
+      file(APPEND  ${_qrc_name} "</RCC>\n")
+   endif()
+endmacro(lyx_const_touched_files)
+

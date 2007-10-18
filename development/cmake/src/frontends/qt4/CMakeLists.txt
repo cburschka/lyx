@@ -19,6 +19,12 @@ lyx_automoc(${frontends_qt4_sources})
 
 lyx_add_ui_files(frontends_qt4_sources ui_files ${frontend_qt4_UI})
 
+file(GLOB_RECURSE frontend_qt4_images      ${TOP_SRC_DIR}/lib/images/*.png)
+set(resource_name ${CMAKE_CURRENT_BINARY_DIR}/Resources.qrc)
+lyx_qt_resources_file(${resource_name} "${TOP_SRC_DIR}/lib/" frontend_qt4_images)
+qt4_add_resources(resource_files ${resource_name})
+	
+
 add_definitions(-DQT_GENUINE_STR -DLYX_BUILD_QT4_FRONTEND)
 
 include_directories(	
@@ -34,11 +40,12 @@ if(MERGE_FILES)
 	set_source_files_properties(_allinone_touched.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
 	add_library(frontend_qt4 ${library_type} 
-		${_allinone_files} ${frontends_qt4_headers} ${ui_files})
+		${_allinone_files} ${frontends_qt4_headers} ${ui_files} ${resource_files})
 else()
 	add_library(frontend_qt4 ${library_type}
-		${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files})
+		${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files} ${resource_files})
 endif()
+
 
 target_link_libraries(frontend_qt4 
 	frontends
