@@ -51,7 +51,7 @@ public:
 	 * Get the file name in the encoding used by the file system.
 	 * Only use this for accessing the file, e.g. with an fstream.
 	 */
-	std::string const toFilesystemEncoding() const;
+	std::string toFilesystemEncoding() const;
 
 	/// returns true if the file exists
 	bool exists() const;
@@ -61,8 +61,14 @@ public:
 	bool isReadOnly() const;
 	/// return true when it names a directory
 	bool isDirectory() const;
-	/// return true when file is readable
+	/// return true when file/directory is readable
 	bool isReadable() const;
+	/// return true when it is a file and readable
+	bool isFileReadable() const;
+	/// return true when file/directory is writable
+	bool isWritable() const;
+	/// return true when file/directory is writable (write test file)
+	bool isDirWritable() const;
 
 	/**
 	 * Get a FileName from \p name in the encoding used by the file system.
@@ -70,7 +76,11 @@ public:
 	 * e.g. from reading a directory.
 	 * \p name must have an absolute path.
 	 */
-	static FileName const fromFilesystemEncoding(std::string const & name);
+	static FileName fromFilesystemEncoding(std::string const & name);
+	/// (securely) create a temporary file in the given dir with the given mask
+	/// \p mask must be in filesystem encoding
+	static FileName tempName(FileName const & dir = FileName(),
+						std::string const & mask = std::string());
 protected:
 	/// The absolute file name.
 	/// The encoding is currently unspecified, anything else than ASCII

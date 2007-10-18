@@ -106,8 +106,6 @@ using support::bformat;
 using support::FileFilterList;
 using support::FileName;
 using support::fileSearch;
-using support::isDirWriteable;
-using support::isFileReadable;
 using support::makeDisplayPath;
 using support::makeAbsPath;
 using support::package;
@@ -1928,7 +1926,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		string initpath = lyxrc.document_path;
 		string const trypath = buffer_.filePath();
 		// If directory is writeable, use this as default.
-		if (isDirWriteable(FileName(trypath)))
+		if (FileName(trypath).isDirWritable())
 			initpath = trypath;
 
 		// FIXME UNICODE

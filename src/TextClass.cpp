@@ -173,7 +173,7 @@ enum TextClassTags {
 // Reads a textclass structure from file.
 bool TextClass::read(FileName const & filename, ReadType rt)
 {
-	if (!support::isFileReadable(filename)) {
+	if (!filename.isFileReadable()) {
 		lyxerr << "Cannot read layout file `" << filename << "'."
 		       << endl;
 		return true;

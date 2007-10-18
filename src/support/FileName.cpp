@@ -16,6 +16,9 @@
 #include "support/os.h"
 #include "support/qstring_helpers.h"
 
+#include "debug.h"
+#include "lyxlib.h"
+
 #include <QFile>
 #include <QFileInfo>
 
@@ -67,14 +70,14 @@ void FileName::erase()
 }
 
 
-string const FileName::toFilesystemEncoding() const
+string FileName::toFilesystemEncoding() const
 {
 	QByteArray const encoded = QFile::encodeName(toqstr(name_));
 	return string(encoded.begin(), encoded.end());
 }
 
 
-FileName const FileName::fromFilesystemEncoding(string const & name)
+FileName FileName::fromFilesystemEncoding(string const & name)
 {
 	QByteArray const encoded(name.c_str(), name.length());
 	return FileName(fromqstr(QFile::decodeName(encoded)));
@@ -104,6 +107,40 @@ bool FileName::isReadable() const
 {
 	QFileInfo const fi(toqstr(name_));
 	return fi.isReadable();
+}
+
+
+bool FileName::isFileReadable() const
+{
+	QFileInfo const fi(toqstr(name_));
+	return fi.isFile() && fi.isReadable();
+}
+
+
+bool FileName::isWritable() const
+{
+	QFileInfo const fi(toqstr(name_));
+	return fi.isReadable();
+}
+
+
+bool FileName::isDirWritable() const
+{
+	LYXERR(Debug::FILES) << "isDirWriteable: " << *this << std::endl;
+
+	FileName const tmpfl(tempName(*this, "lyxwritetest"));
+
+	if (tmpfl.empty())
+		return false;
+
+	unlink(tmpfl);
+	return true;
+}
+
+
+FileName FileName::tempName(FileName const & dir, std::string const & mask)
+{
+	return support::tempName(dir, mask);
 }
 
 

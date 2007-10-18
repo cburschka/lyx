@@ -47,7 +47,6 @@ using support::copy;
 using support::DocFileName;
 using support::FileName;
 using support::findtexfile;
-using support::isFileReadable;
 using support::isValidLaTeXFilename;
 using support::latex_path;
 using support::ltrim;
@@ -129,14 +128,14 @@ string normalize_name(Buffer const & buffer, OutputParams const & runparams,
 		      string const & name, string const & ext)
 {
 	string const fname = makeAbsPath(name, buffer.filePath()).absFilename();
-	if (absolutePath(name) || !isFileReadable(FileName(fname + ext)))
+	if (absolutePath(name) || !FileName(fname + ext).isFileReadable())
 		return name;
-	else if (!runparams.nice)
+	if (!runparams.nice)
 		return fname;
-	else
-		// FIXME UNICODE
-		return to_utf8(makeRelPath(from_utf8(fname),
-					   from_utf8(buffer.getMasterBuffer()->filePath())));
+
+	// FIXME UNICODE
+	return to_utf8(makeRelPath(from_utf8(fname),
+					 from_utf8(buffer.getMasterBuffer()->filePath())));
 }
 
 }
@@ -184,7 +183,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		string database =
 			normalize_name(buffer, runparams, utf8input, ".bib");
 		FileName const try_in_file(makeAbsPath(database + ".bib", buffer.filePath()));
-		bool const not_from_texmf = isFileReadable(try_in_file);
+		bool const not_from_texmf = try_in_file.isFileReadable();
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    not_from_texmf) {
@@ -245,7 +244,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		string base =
 			normalize_name(buffer, runparams, style, ".bst");
 		FileName const try_in_file(makeAbsPath(base + ".bst", buffer.filePath()));
-		bool const not_from_texmf = isFileReadable(try_in_file);
+		bool const not_from_texmf = try_in_file.isFileReadable();
 		// If this style does not come from texmf and we are not
 		// exporting to .tex copy it to the tmp directory.
 		// This prevents problems with spaces and 8bit charcaters

@@ -31,7 +31,6 @@ namespace lyx {
 
 using support::FileMonitor;
 using support::FileName;
-using support::isFileReadable;
 using support::makeDisplayPath;
 using support::onlyFilename;
 using support::tempName;
@@ -269,7 +268,7 @@ void CacheItem::Impl::imageConverted(bool success)
 	converter_.reset();
 	cc_.disconnect();
 
-	success = !file_to_load_.empty() && isFileReadable(file_to_load_);
+	success = !file_to_load_.empty() && file_to_load_.isFileReadable();
 
 	if (!success) {
 		LYXERR(Debug::GRAPHICS) << "Unable to find converted file!"
@@ -372,7 +371,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	setStatus(Converting);
 
 	// First, check that the file exists!
-	if (!isFileReadable(filename_)) {
+	if (!filename_.isFileReadable()) {
 		if (status_ != ErrorNoFile) {
 			setStatus(ErrorNoFile);
 			LYXERR(Debug::GRAPHICS)

@@ -50,7 +50,6 @@ using support::contains;
 using support::dirList;
 using support::FileName;
 using support::getExtension;
-using support::isFileReadable;
 using support::libFileSearch;
 using support::libScriptSearch;
 using support::makeAbsPath;
@@ -323,7 +322,7 @@ bool Converters::convert(Buffer const * buffer,
 				<< command << endl;
 			Systemcall one;
 			one.startscript(Systemcall::Wait, command);
-			if (isFileReadable(to_file)) {
+			if (to_file.isFileReadable()) {
 				if (conversionflags & try_cache)
 					ConverterCache::get().add(orig_from,
 							to_format, to_file);

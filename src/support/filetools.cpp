@@ -79,10 +79,7 @@ bool isSGMLFilename(string const & filename)
 bool isValidLaTeXFilename(string const & filename)
 {
 	string const invalid_chars("#$%{}()[]\"^");
-	if (filename.find_first_of(invalid_chars) != string::npos)
-		return false;
-	else
-		return true;
+	return filename.find_first_of(invalid_chars) == string::npos;
 }
 
 
@@ -154,29 +151,6 @@ string const quoteName(string const & name, quote_style style)
 	}
 	// shut up stupid compiler
 	return string();
-}
-
-
-bool isFileReadable(FileName const & filename)
-{
-	std::string const path = filename.toFilesystemEncoding();
-	return fs::exists(path) && !fs::is_directory(path) && fs::is_readable(path);
-}
-
-
-//returns true: dir writeable
-//	  false: not writeable
-bool isDirWriteable(FileName const & path)
-{
-	LYXERR(Debug::FILES) << "isDirWriteable: " << path << endl;
-
-	FileName const tmpfl(tempName(path, "lyxwritetest"));
-
-	if (tmpfl.empty())
-		return false;
-
-	unlink(tmpfl);
-	return true;
 }
 
 
@@ -259,7 +233,7 @@ FileName const fileSearch(string const & path, string const & name,
 	string const tmpname = replaceEnvironmentPath(name);
 	FileName fullname(makeAbsPath(tmpname, path));
 	// search first without extension, then with it.
-	if (isFileReadable(fullname))
+	if (fullname.isReadable())
 		return fullname;
 	if (ext.empty())
 		// We are done.
@@ -268,7 +242,7 @@ FileName const fileSearch(string const & path, string const & name,
 	// fullname.
 	if (getExtension(fullname.absFilename()) != ext)
 		fullname = FileName(addExtension(fullname.absFilename(), ext));
-	if (isFileReadable(fullname) || mode == allow_unreadable)
+	if (fullname.isReadable() || mode == allow_unreadable)
 		return fullname;
 	return FileName();
 }
@@ -440,7 +414,7 @@ FileName const createLyXTmpDir(FileName const & deflt)
 {
 	if (!deflt.empty() && deflt.absFilename() != "/tmp") {
 		if (mkdir(deflt, 0777)) {
-			if (isDirWriteable(deflt)) {
+			if (deflt.isDirWritable()) {
 				// deflt could not be created because it
 				// did exist already, so let's create our own
 				// dir inside deflt.
@@ -814,7 +788,7 @@ string const getExtension(string const & name)
 string const getFormatFromContents(FileName const & filename)
 {
 	// paranoia check
-	if (filename.empty() || !isFileReadable(filename))
+	if (filename.empty() || !filename.isReadable())
 		return string();
 
 	ifstream ifs(filename.toFilesystemEncoding().c_str());

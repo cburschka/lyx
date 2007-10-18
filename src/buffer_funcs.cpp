@@ -53,7 +53,6 @@
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
-#include <boost/filesystem/operations.hpp>
 
 using std::min;
 using std::string;
@@ -73,7 +72,6 @@ using support::onlyPath;
 using support::unlink;
 
 namespace Alert = frontend::Alert;
-namespace fs = boost::filesystem;
 
 namespace {
 
@@ -151,10 +149,10 @@ bool loadLyXFile(Buffer * b, FileName const & s)
 {
 	BOOST_ASSERT(b);
 
-	if (fs::is_readable(s.toFilesystemEncoding())) {
+	if (s.isReadable()) {
 		if (readFile(b, s)) {
 			b->lyxvc().file_found_hook(s);
-			if (!fs::is_writable(s.toFilesystemEncoding()))
+			if (!s.isWritable())
 				b->setReadonly(true);
 			return true;
 		}
@@ -211,7 +209,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 			return 0;
 	}
 
-	if (isFileReadable(filename)) {
+	if (filename.isReadable()) {
 		Buffer * b = theBufferList().newBuffer(filename.absFilename());
 		if (!lyx::loadLyXFile(b, filename)) {
 			theBufferList().release(b);

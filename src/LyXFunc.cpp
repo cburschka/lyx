@@ -124,11 +124,8 @@ using support::FileFilterList;
 using support::FileName;
 using support::fileSearch;
 using support::i18nLibFileSearch;
-using support::isDirWriteable;
-using support::isFileReadable;
-using support::isStrInt;
-using support::makeAbsPath;
 using support::makeDisplayPath;
+using support::makeAbsPath;
 using support::package;
 using support::quoteName;
 using support::rtrim;
@@ -586,7 +583,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			}
 		}
 		else if (name == "latexlog")
-			enable = isFileReadable(FileName(buf->getLogName().second));
+			enable = FileName(buf->getLogName().second).isFileReadable();
 		else if (name == "spellchecker")
 #if defined (USE_ASPELL) || defined (USE_ISPELL) || defined (USE_PSPELL)
 			enable = !buf->isReadonly();
@@ -2067,7 +2064,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	if (lyx_view_->buffer()) {
 		string const trypath = lyx_view_->buffer()->filePath();
 		// If directory is writeable, use this as default.
-		if (isDirWriteable(FileName(trypath)))
+		if (FileName(trypath).isDirWritable())
 			initpath = trypath;
 	}
 
@@ -2118,7 +2115,7 @@ void LyXFunc::open(string const & fname)
 	if (lyx_view_->buffer()) {
 		string const trypath = lyx_view_->buffer()->filePath();
 		// If directory is writeable, use this as default.
-		if (isDirWriteable(FileName(trypath)))
+		if (FileName(trypath).isDirWritable())
 			initpath = trypath;
 	}
 
@@ -2195,7 +2192,7 @@ void LyXFunc::doImport(string const & argument)
 		if (lyx_view_->buffer()) {
 			string const trypath = lyx_view_->buffer()->filePath();
 			// If directory is writeable, use this as default.
-			if (isDirWriteable(FileName(trypath)))
+			if (FileName(trypath).isDirWritable())
 				initpath = trypath;
 		}
 

@@ -65,7 +65,6 @@ using support::DocFileName;
 using support::FileName;
 using support::getFileContents;
 using support::getVectorFromString;
-using support::isFileReadable;
 using support::isLyXFilename;
 using support::isValidLaTeXFilename;
 using support::latex_path;
@@ -858,7 +857,7 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 	FileName const included_file = includedFilename(buffer, params);
 
 	return type(params) == INPUT && params.preview() &&
-		isFileReadable(included_file);
+		included_file.isFileReadable();
 }
 
 

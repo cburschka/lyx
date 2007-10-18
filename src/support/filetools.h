@@ -76,18 +76,6 @@ FileName const fileSearch(std::string const & path,
 std::vector<FileName> const dirList(FileName const & dir,
 				       std::string const & ext = std::string());
 
-/** Is directory read only?
-  returns
-    true: dir writeable
-    false: not writeable
-*/
-bool isDirWriteable(FileName const & path);
-
-/** Is a file readable ?
-  Returns true if the file `path' is readable.
- */
-bool isFileReadable(FileName const & path);
-
 ///
 bool isLyXFilename(std::string const & filename);
 

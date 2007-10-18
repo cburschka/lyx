@@ -74,7 +74,6 @@ using support::addName;
 using support::FileFilterList;
 using support::FileName;
 using support::float_equal;
-using support::isFileReadable;
 using support::makeAbsPath;
 using support::os::internal_path;
 using support::package;
@@ -776,7 +775,7 @@ docstring const GuiGraphics::browse(docstring const & in_name) const
 
 string const GuiGraphics::readBB(string const & file)
 {
-	FileName const abs_file(makeAbsPath(file, bufferFilepath()));
+	FileName const abs_file = makeAbsPath(file, bufferFilepath());
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -805,7 +804,7 @@ string const GuiGraphics::readBB(string const & file)
 bool GuiGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	return isFileReadable(makeAbsPath(fname, bufferFilepath()));
+	return makeAbsPath(fname, bufferFilepath()).isReadable();
 }
 
 

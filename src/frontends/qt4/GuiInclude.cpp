@@ -51,7 +51,6 @@ namespace frontend {
 
 using support::FileFilterList;
 using support::FileName;
-using support::isFileReadable;
 using support::makeAbsPath;
 using support::onlyPath;
 using support::os::internal_path;
@@ -378,7 +377,7 @@ void GuiInclude::edit(string const & file)
 	else
 		// tex file or other text file in verbatim mode
 		formats.edit(buffer(), 
-			FileName(makeAbsPath(file, onlyPath(buffer().fileName()))),
+			makeAbsPath(file, onlyPath(buffer().fileName())),
 			"text");
 }
 

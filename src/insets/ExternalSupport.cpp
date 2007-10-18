@@ -187,7 +187,7 @@ string const doSubstitution(InsetExternalParams const & params,
 
 		FileName const absfile(
 			support::makeAbsPath(file, m_buffer->temppath()));
-		if (support::isFileReadable(absfile))
+		if (absfile.isFileReadable())
 			contents = support::getFileContents(absfile);
 
 		string::size_type const pos = result.find("$$Contents(\"");
