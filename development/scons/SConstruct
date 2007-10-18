@@ -1294,6 +1294,7 @@ if platform_name == 'cygwin':
 #
 if frontend == 'qt4':
     frontend_env = env.Copy()
+    frontend_env['BUILDERS']['qtResource'] = Builder(action = utils.env_qtResource)
 
     # handle qt related user specified paths
     # set environment so that moc etc can be found even if its path is not set properly
@@ -1565,15 +1566,18 @@ frontend_env['QT4_MOCHSUFFIX'] = '_moc.cpp'
 # (or are actually generated).
 qt4_moced_files = [frontend_env.Moc4('$BUILDDIR/src/frontends/qt4/%s' % x)
     for x in src_frontends_qt4_header_files ]
-resources = [frontend_env.Uic4('$BUILDDIR/src/frontends/qt4/ui/%s' % x.split('.')[0])
+ui_files = [frontend_env.Uic4('$BUILDDIR/src/frontends/qt4/ui/%s' % x.split('.')[0])
     for x in src_frontends_qt4_ui_files]
-
+resource = frontend_env.Qrc(frontend_env.qtResource(
+    '$BUILDDIR/src/frontends/qt4/Resource.qrc',
+    ['$TOP_SRCDIR/lib/images/%s' % x for x in lib_images_files] +
+    ['$TOP_SRCDIR/lib/images/math/%s' % x for x in lib_images_math_files]))
 #
 # moc qt4_moc_files, the moced files are included in the original files
 #
 qt4 = frontend_env.StaticLibrary(
     target = '$LOCALLIBPATH/qt4',
-    source = ['$BUILDDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files],
+    source = ['$BUILDDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files] + resource,
     CPPPATH = [
         '$CPPPATH',
         '$BUILDDIR/src',

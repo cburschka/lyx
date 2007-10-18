@@ -186,6 +186,17 @@ def createResFromIcon(env, icon_file, rc_file):
         return []
 
 
+def env_qtResource(target, source, env):
+    '''Create resource.qrc'''
+    qrc = open(str(target[0]), 'w')
+    print >> qrc, "<!DOCTYPE RCC><RCC version='1.0'><qresource>"
+    for file in source:
+        rel_file = relativePath(str(file), env.subst('$TOP_SRCDIR/lib'))
+        abs_file = str(file.abspath)
+        print >> qrc, '<file alias="%s">%s</file>' % (rel_file, abs_file)
+    print >> qrc, '</qresource></RCC>'
+    qrc.close()
+
 #
 # autoconf tests
 #
