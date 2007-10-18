@@ -2625,16 +2625,16 @@ lib_layouts_inc_files = Split('''
 
 
 lib_layouts_module_files = Split('''
-    lib/layouts/endnotes.module
-    lib/layouts/foottoend.module
-    lib/layouts/hanging.module
-    lib/layouts/logicalmkup.module
-    lib/layouts/theorems-ams.module
-    lib/layouts/theorems-ams-withinsec.module
-    lib/layouts/theorems-std.module
-    lib/layouts/theorems-withinsec.module
-    lib/layouts/theorems-withinchap.module
-    lib/layouts/url.module
+    endnotes.module
+    foottoend.module
+    hanging.module
+    logicalmkup.module
+    theorems-ams.module
+    theorems-ams-withinsec.module
+    theorems-std.module
+    theorems-withinsec.module
+    theorems-withinchap.module
+    url.module
 ''')
 
 lib_scripts_files = Split('''
