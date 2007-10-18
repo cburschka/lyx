@@ -284,6 +284,7 @@ UIFILES = \
 	RefUi.ui \
 	SearchUi.ui \
 	SendtoUi.ui \
+	ShortcutUi.ui \
 	ShowFileUi.ui \
 	SpellcheckerUi.ui \
 	TabularCreateUi.ui \

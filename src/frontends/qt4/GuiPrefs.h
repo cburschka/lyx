@@ -38,6 +38,7 @@
 #include "ui_PrefPrinterUi.h"
 #include "ui_PrefUi.h"
 #include "ui_PrefIdentityUi.h"
+#include "ui_ShortcutUi.h"
 
 #include <QDialog>
 #include <QValidator>
@@ -344,6 +345,17 @@ public Q_SLOTS:
 };
 
 
+class GuiShortcutDialog : public QDialog, public Ui::ShortcutUi
+{
+public:
+	GuiShortcutDialog(QWidget * parent) : QDialog(parent)
+	{
+		Ui::ShortcutUi::setupUi(this);
+		QDialog::setModal(true);
+	}
+};
+
+
 class PrefShortcuts : public PrefModule, public Ui::PrefShortcuts
 {
 	Q_OBJECT
@@ -355,7 +367,12 @@ public:
 
 public Q_SLOTS:
 	void select_bind();
-
+	void on_newPB_pressed();
+	void on_modifyPB_pressed();
+	void on_removePB_pressed();
+	void on_searchPB_pressed();
+private:
+	GuiShortcutDialog * shortcut_;
 };
 
 

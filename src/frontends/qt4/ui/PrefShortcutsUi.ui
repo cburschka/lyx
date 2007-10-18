@@ -27,12 +27,6 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="bindFileED" />
-   </item>
-   <item rowspan="7" row="2" column="0" colspan="2" >
-    <widget class="QTreeWidget" name="shortcutsTW" />
-   </item>
    <item row="8" column="2" >
     <spacer>
      <property name="orientation" >
@@ -49,28 +43,7 @@
      </property>
     </spacer>
    </item>
-   <item row="7" column="2" >
-    <widget class="QPushButton" name="modifyPB" >
-     <property name="text" >
-      <string>Modify</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="2" >
-    <widget class="QPushButton" name="removePB" >
-     <property name="text" >
-      <string>Remove</string>
-     </property>
-    </widget>
-   </item>
    <item row="5" column="2" >
-    <widget class="QPushButton" name="editNew" >
-     <property name="text" >
-      <string>New</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -80,21 +53,14 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>21</width>
+       <width>51</width>
        <height>83</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="3" column="2" >
-    <widget class="QPushButton" name="editSearch" >
-     <property name="text" >
-      <string>Search</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <widget class="QLineEdit" name="lineEdit" >
+   <item row="6" column="2" >
+    <widget class="QLineEdit" name="searchLE" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>1</hsizetype>
@@ -102,6 +68,26 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="bindFileED" />
+   </item>
+   <item rowspan="7" row="2" column="0" colspan="2" >
+    <widget class="QTreeWidget" name="shortcutsTW" />
+   </item>
+   <item row="3" column="2" >
+    <widget class="QPushButton" name="removePB" >
+     <property name="text" >
+      <string>Remove</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="newPB" >
+     <property name="text" >
+      <string>New</string>
      </property>
     </widget>
    </item>
@@ -126,6 +112,20 @@
     <widget class="QLabel" name="shortcutsLBL" >
      <property name="text" >
       <string>Shortcuts:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="2" >
+    <widget class="QPushButton" name="searchPB" >
+     <property name="text" >
+      <string>Search</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" >
+    <widget class="QPushButton" name="modifyPB" >
+     <property name="text" >
+      <string>Modify</string>
      </property>
     </widget>
    </item>

@@ -1698,6 +1698,8 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 		this, SLOT(select_bind()));
 	connect(bindFileED, SIGNAL(textChanged(const QString &)),
 		this, SIGNAL(changed()));
+	
+	shortcut_ = new GuiShortcutDialog(this);
 }
 
 
@@ -1790,6 +1792,32 @@ void PrefShortcuts::select_bind()
 	docstring file = form_->browsebind(name);
 	if (!file.empty())
 		bindFileED->setText(toqstr(file));
+}
+
+
+void PrefShortcuts::on_newPB_pressed()
+{
+	// FIXME
+	shortcut_->exec();
+}
+
+
+void PrefShortcuts::on_modifyPB_pressed()
+{
+	// FIXME
+	shortcut_->exec();
+}
+
+
+void PrefShortcuts::on_removePB_pressed()
+{
+	//
+}
+
+
+void PrefShortcuts::on_searchPB_pressed()
+{
+	//
 }
 
 

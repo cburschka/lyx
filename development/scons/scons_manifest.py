@@ -982,6 +982,7 @@ src_frontends_qt4_ui_files = Split('''
     RefUi.ui
     SearchUi.ui
     SendtoUi.ui
+    ShortcutUi.ui
     ShowFileUi.ui
     SpellcheckerUi.ui
     TabularCreateUi.ui
