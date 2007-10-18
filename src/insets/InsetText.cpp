@@ -44,7 +44,6 @@
 #include "sgml.h"
 #include "TextMetrics.h"
 #include "TexRow.h"
-#include "Undo.h"
 
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
@@ -217,7 +216,7 @@ void InsetText::edit(Cursor & cur, bool left)
 	int const pos = left ? 0 : paragraphs().back().size();
 	text_.setCursor(cur.top(), pit, pos);
 	cur.clearSelection();
-	finishUndo();
+	cur.finishUndo();
 }
 
 

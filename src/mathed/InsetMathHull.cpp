@@ -42,7 +42,6 @@
 #include "sgml.h"
 #include "Text.h"
 #include "TextPainter.h"
-#include "Undo.h"
 
 #include "insets/RenderPreview.h"
 #include "insets/InsetLabel.h"
@@ -1052,7 +1051,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BREAK_LINE:
 		// some magic for the common case
 		if (type_ == hullSimple || type_ == hullEquation) {
-			recordUndoInset(cur);
+			cur.recordUndoInset();
 			bool const align =
 				cur.bv().buffer().params().use_amsmath == BufferParams::package_on;
 			mutate(align ? hullAlign : hullEqnArray);
@@ -1065,7 +1064,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_NUMBER:
 		//lyxerr << "toggling all numbers" << endl;
 		if (display()) {
-			recordUndoInset(cur);
+			cur.recordUndoInset();
 			bool old = numberedType();
 			if (type_ == hullMultline)
 				numbered(nrows() - 1, !old);
@@ -1079,7 +1078,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_NONUMBER:
 		if (display()) {
-			recordUndoInset(cur);
+			cur.recordUndoInset();
 			row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			bool old = numbered(r);
 			cur.message(old ? _("No number") : _("Number"));
@@ -1088,7 +1087,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_LABEL_INSERT: {
-		recordUndoInset(cur);
+		cur.recordUndoInset();
 		row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		docstring old_label = label(r);
 		docstring const default_label = from_ascii(
@@ -1116,7 +1115,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			InsetCommandParams p("label");
 			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), p);
 			docstring str = p["name"];
-			recordUndoInset(cur);
+			cur.recordUndoInset();
 			row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			str = support::trim(str);
 			if (!str.empty())
@@ -1134,12 +1133,12 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MATH_EXTERN:
-		recordUndoInset(cur);
+		cur.recordUndoInset();
 		doExtern(cur, cmd);
 		break;
 
 	case LFUN_MATH_MUTATE: {
-		recordUndoInset(cur);
+		cur.recordUndoInset();
 		row_type row = cur.row();
 		col_type col = cur.col();
 		mutate(hullType(cmd.argument()));
@@ -1155,7 +1154,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MATH_DISPLAY: {
-		recordUndoInset(cur);
+		cur.recordUndoInset();
 		mutate(type_ == hullSimple ? hullEquation : hullSimple);
 		cur.idx() = 0;
 		cur.pos() = cur.lastpos();
@@ -1287,7 +1286,7 @@ void InsetMathHull::handleFont(Cursor & cur, docstring const & arg,
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-	recordUndo(cur);
+	cur.recordUndo();
 	if (cur.inset().asInsetMath()->name() == font)
 		cur.handleFont(to_utf8(font));
 	else {
@@ -1299,7 +1298,7 @@ void InsetMathHull::handleFont(Cursor & cur, docstring const & arg,
 
 void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 {
-	recordUndo(cur);
+	cur.recordUndo();
 	Font font;
 	bool b;
 	font.fromString(to_utf8(arg), b);

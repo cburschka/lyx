@@ -29,6 +29,9 @@
 namespace lyx {
 
 class BufferParams;
+// FIXME: Remove!
+class BufferView;
+class Cursor;
 class EmbeddedFiles;
 class ErrorItem;
 class ErrorList;
@@ -301,14 +304,6 @@ public:
 	///
 	bool isMultiLingual() const;
 
-	/// Does this mean that this is buffer local?
-	limited_stack<Undo> & undostack();
-	limited_stack<Undo> const & undostack() const;
-
-	/// Does this mean that this is buffer local?
-	limited_stack<Undo> & redostack();
-	limited_stack<Undo> const & redostack() const;
-
 	///
 	BufferParams & params();
 	BufferParams const & params() const;
@@ -390,6 +385,8 @@ public:
 	EmbeddedFiles & embeddedFiles();
 	EmbeddedFiles const & embeddedFiles() const;
 	//@}
+
+	Undo & undo();
        
 	/// This function is called when the buffer is changed.
 	void changed() const;

@@ -20,7 +20,6 @@
 #include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
-#include "Undo.h"
 
 #include <boost/assert.hpp>
 
@@ -673,18 +672,18 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 		// Case of two scripts. In this case, 1 = super, 2 = sub
 		if (cur.idx() == 2 && cell(2).empty()) {
 			// must be a subscript...
-			recordUndoInset(cur);
+			cur.recordUndoInset();
 			removeScript(false);
 			return true;
 		} else if (cur.idx() == 1 && cell(1).empty()) {
 			// must be a superscript...
-			recordUndoInset(cur);
+			cur.recordUndoInset();
 			removeScript(true);
 			return true;
 		}
 	} else if (nargs() > 1 && cur.idx() == 1 && cell(1).empty()) {
 		// could be either subscript or super script
-		recordUndoInset(cur);
+		cur.recordUndoInset();
 		removeScript(cell_1_is_up_);
 		// Let the script inset commit suicide. This is
 		// modelled on Cursor.pullArg(), but tries not to

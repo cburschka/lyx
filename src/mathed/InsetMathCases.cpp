@@ -20,7 +20,6 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "gettext.h"
-#include "Undo.h"
 
 #include "support/lstrings.h"
 
@@ -72,7 +71,7 @@ void InsetMathCases::doDispatch(Cursor & cur, FuncRequest & cmd)
 	//lyxerr << "*** InsetMathCases: request: " << cmd << endl;
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		recordUndo(cur);
+		cur.recordUndo();
 		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			cur.undispatched();

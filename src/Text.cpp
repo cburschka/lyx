@@ -44,7 +44,6 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "Undo.h"
 #include "TextMetrics.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"
@@ -438,7 +437,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(c != Paragraph::META_INSET);
 
-	recordUndo(cur, Undo::INSERT);
+	cur.recordUndo(INSERT_UNDO);
 
 	TextMetrics const & tm = cur.bv().textMetrics(this);
 	Buffer const & buffer = cur.buffer();
@@ -566,11 +565,11 @@ void Text::insertChar(Cursor & cur, char_type c)
 
 //		cur.updateFlags(Update::Force);
 	setCursor(cur.top(), cur.pit(), cur.pos() + 1);
-	charInserted();
+	charInserted(cur);
 }
 
 
-void Text::charInserted()
+void Text::charInserted(Cursor & cur)
 {
 	// Here we call finishUndo for every 20 characters inserted.
 	// This is from my experience how emacs does it. (Lgb)
@@ -578,7 +577,7 @@ void Text::charInserted()
 	if (counter < 20) {
 		++counter;
 	} else {
-		finishUndo();
+		cur.finishUndo();
 		counter = 0;
 	}
 }
@@ -664,7 +663,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	if (!cur.selection())
 		return;
 
-	recordUndoSelection(cur, Undo::ATOMIC);
+	cur.recordUndoSelection();
 
 	pit_type begPit = cur.selectionBegin().pit();
 	pit_type endPit = cur.selectionEnd().pit();
@@ -753,7 +752,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 	//
 
-	finishUndo();
+	cur.finishUndo();
 	cur.clearSelection();
 	setCursorIntern(cur, begPit, begPos);
 	cur.updateFlags(Update::Force);
@@ -851,7 +850,7 @@ void Text::changeCase(Cursor & cur, Text::TextCase action)
 		cursorRightOneWord(cur);
 	}
 
-	recordUndoSelection(cur, Undo::ATOMIC);
+	cur.recordUndoSelection();
 
 	pit_type begPit = from.pit();
 	pit_type endPit = to.pit();
@@ -953,7 +952,7 @@ bool Text::handleBibitems(Cursor & cur)
 		}
 		Paragraph const & prevpar = prevcur.paragraph();
 		if (cur.pit() > 0 && par.layout() == prevpar.layout()) {
-			recordUndo(cur, Undo::ATOMIC, prevcur.pit());
+			cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
 			mergeParagraph(bufparams, cur.text()->paragraphs(),
 				       prevcur.pit());
 			updateLabels(cur.buffer());
@@ -978,7 +977,7 @@ bool Text::erase(Cursor & cur)
 	if (cur.pos() != cur.lastpos()) {
 		// this is the code for a normal delete, not pasting
 		// any paragraphs
-		recordUndo(cur, Undo::DELETE);
+		cur.recordUndo(DELETE_UNDO);
 		if(!par.eraseChar(cur.pos(), cur.buffer().params().trackChanges)) {
 			// the character has been logically deleted only => skip it
 			cur.top().forwardPos();
@@ -1032,14 +1031,14 @@ bool Text::backspacePos0(Cursor & cur)
 	// is it an empty paragraph?
 	if (cur.lastpos() == 0
 	    || (cur.lastpos() == 1 && par.isSeparator(0))) {
-		recordUndo(cur, Undo::ATOMIC, prevcur.pit(), cur.pit());
+		cur.recordUndo(ATOMIC_UNDO, prevcur.pit(), cur.pit());
 		plist.erase(boost::next(plist.begin(), cur.pit()));
 		needsUpdate = true;
 	}
 	// is previous par empty?
 	else if (prevcur.lastpos() == 0
 		 || (prevcur.lastpos() == 1 && prevpar.isSeparator(0))) {
-		recordUndo(cur, Undo::ATOMIC, prevcur.pit(), cur.pit());
+		cur.recordUndo(ATOMIC_UNDO, prevcur.pit(), cur.pit());
 		plist.erase(boost::next(plist.begin(), prevcur.pit()));
 		needsUpdate = true;
 	}
@@ -1049,7 +1048,7 @@ bool Text::backspacePos0(Cursor & cur)
 	// Correction: Pasting is always allowed with standard-layout
 	else if (par.layout() == prevpar.layout()
 		 || par.layout() == tclass.defaultLayout()) {
-		recordUndo(cur, Undo::ATOMIC, prevcur.pit());
+		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
 		mergeParagraph(bufparams, plist, prevcur.pit());
 		needsUpdate = true;
 	}
@@ -1085,7 +1084,7 @@ bool Text::backspace(Cursor & cur)
 	} else {
 		// this is the code for a normal backspace, not pasting
 		// any paragraphs
-		recordUndo(cur, Undo::DELETE);
+		cur.recordUndo(DELETE_UNDO);
 		// We used to do cursorLeftIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a cursorLeftIntern()-lite,
@@ -1115,7 +1114,7 @@ bool Text::dissolveInset(Cursor & cur) {
 	if (isMainText(cur.bv().buffer()) || cur.inset().nargs() != 1)
 		return false;
 
-	recordUndoInset(cur);
+	cur.recordUndoInset();
 	cur.selHandle(false);
 	// save position
 	pos_type spos = cur.pos();
@@ -1456,7 +1455,7 @@ void Text::charsTranspose(Cursor & cur)
 	// Track the changes if Change Tracking is enabled.
 	bool const trackChanges = cur.buffer().params().trackChanges;
 
-	recordUndo(cur);
+	cur.recordUndo();
 
 	par.eraseChar(pos2, trackChanges);
 	par.eraseChar(pos1, trackChanges);

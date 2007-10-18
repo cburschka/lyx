@@ -38,7 +38,6 @@
 #include "ParIterator.h"
 #include "rowpainter.h"
 #include "Text.h"
-#include "Undo.h"
 #include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
@@ -1592,7 +1591,7 @@ void TextMetrics::cursorPrevious(Cursor & cur)
 		// simplest solution is to move to the previous row instead.
 		cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
 
-	finishUndo();
+	cur.finishUndo();
 	cur.updateFlags(Update::Force | Update::FitCursor);
 }
 
@@ -1612,7 +1611,7 @@ void TextMetrics::cursorNext(Cursor & cur)
 		cur.dispatch(
 			FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
 
-	finishUndo();
+	cur.finishUndo();
 	cur.updateFlags(Update::Force | Update::FitCursor);
 }
 

@@ -518,7 +518,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 		saveSelection(cur);
 
 		// make sure that the depth behind the selection are restored, too
-		recordUndoSelection(cur);
+		cur.recordUndoSelection();
 		pit_type begpit = cur.selBegin().pit();
 		pit_type endpit = cur.selEnd().pit();
 
@@ -566,11 +566,11 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 		if (cur.selBegin().idx() != cur.selEnd().idx()) {
 			// The current selection spans more than one cell.
 			// Record all cells
-			recordUndoInset(cur);
+			cur.recordUndoInset();
 		} else {
 			// Record only the current cell to avoid a jumping
 			// cursor after undo
-			recordUndo(cur);
+			cur.recordUndo();
 		}
 		if (realcut)
 			copySelection(cur);
@@ -733,7 +733,7 @@ void pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 	if (!checkPastePossible(sel_index))
 		return;
 
-	recordUndo(cur);
+	cur.recordUndo();
 	pasteParagraphList(cur, theCuts[sel_index].first,
 			   theCuts[sel_index].second, errorList);
 	cur.setSelection();
@@ -757,7 +757,7 @@ void pasteClipboard(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 			Buffer buffer("", false);
 			buffer.setUnnamed(true);
 			if (buffer.readString(lyx)) {
-				recordUndo(cur);
+				cur.recordUndo();
 				pasteParagraphList(cur, buffer.paragraphs(),
 					buffer.params().getTextClassPtr(), errorList);
 				cur.setSelection();
@@ -770,7 +770,7 @@ void pasteClipboard(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 	docstring const text = theClipboard().getAsText();
 	if (text.empty())
 		return;
-	recordUndo(cur);
+	cur.recordUndo();
 	if (asParagraphs)
 		cur.text()->insertStringAsParagraphs(cur, text);
 	else
@@ -782,7 +782,7 @@ void pasteSelection(Cursor & cur, ErrorList & errorList)
 {
 	if (selectionBuffer.empty())
 		return;
-	recordUndo(cur);
+	cur.recordUndo();
 	pasteParagraphList(cur, selectionBuffer[0].first,
 			   selectionBuffer[0].second, errorList);
 }
@@ -790,7 +790,7 @@ void pasteSelection(Cursor & cur, ErrorList & errorList)
 
 void replaceSelectionWithString(Cursor & cur, docstring const & str, bool backwards)
 {
-	recordUndo(cur);
+	cur.recordUndo();
 	DocIterator selbeg = cur.selectionBegin();
 
 	// Get font setting before we cut

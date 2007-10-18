@@ -59,7 +59,6 @@
 #include "Session.h"
 #include "TextClassList.h"
 #include "ToolbarBackend.h"
-#include "Undo.h"
 
 #include "insets/InsetBox.h"
 #include "insets/InsetBranch.h"
@@ -1798,7 +1797,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Buffer * buffer = lyx_view_->buffer();
 
 			TextClassPtr oldClass = buffer->params().getTextClassPtr();
-			recordUndoFullDocument(view());
+
+			Cursor & cur = view()->cursor();
+			cur.recordUndoFullDocument();
 			
 			istringstream ss(argument);
 			Lexer lex(0,0);
@@ -1818,7 +1819,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					lyx_view_->buffer()->params().getEngine();
 			
 			if (oldEngine != newEngine) {
-				Cursor & cur = view()->cursor();
 				FuncRequest fr(LFUN_INSET_REFRESH);
 	
 				Inset & inset = lyx_view_->buffer()->inset();
@@ -1837,7 +1837,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 			TextClassPtr oldClass = buffer->params().getTextClassPtr();
-			recordUndoFullDocument(view());
+			view()->cursor().recordUndoFullDocument();
 			buffer->params().clearLayoutModules();
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
@@ -1848,7 +1848,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 			TextClassPtr oldClass = buffer->params().getTextClassPtr();
-			recordUndoFullDocument(view());
+			view()->cursor().recordUndoFullDocument();
 			buffer->params().addLayoutModule(argument);
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;
@@ -1876,7 +1876,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			//Save the old, possibly modular, layout for use in conversion.
 			TextClassPtr oldClass = buffer->params().getTextClassPtr();
-			recordUndoFullDocument(view());
+			view()->cursor().recordUndoFullDocument();
 			buffer->params().setBaseClass(new_class);
 			updateLayout(oldClass, buffer);
 			updateFlags = Update::Force | Update::FitCursor;

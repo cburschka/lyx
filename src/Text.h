@@ -287,7 +287,7 @@ private:
 	/// handle the case where bibitems were deleted
 	bool handleBibitems(Cursor & cur);
 	///
-	void charInserted();
+	void charInserted(Cursor & cur);
 	/// set 'number' font property
 	void number(Cursor & cur);
 

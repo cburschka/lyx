@@ -48,7 +48,6 @@
 #include "Server.h"
 #include "ServerSocket.h"
 #include "TextMetrics.h"
-#include "Undo.h"
 #include "VSpace.h"
 
 #include "frontends/FontMetrics.h"
@@ -292,7 +291,7 @@ void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 	BOOST_ASSERT(this == cur.text());
 	pit_type const beg = cur.selBegin().pit();
 	pit_type const end = cur.selEnd().pit() + 1;
-	recordUndoSelection(cur);
+	cur.recordUndoSelection();
 	int max_depth = (beg != 0 ? pars_[beg - 1].getMaxDepthAfter() : 0);
 
 	for (pit_type pit = beg; pit != end; ++pit) {
@@ -340,7 +339,7 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 		return;
 
 	// Ok, we have a selection.
-	recordUndoSelection(cur);
+	cur.recordUndoSelection();
 
 	setFont(cur.bv(), cur.selectionBegin().top(), 
 		cur.selectionEnd().top(), font, toggleall);
@@ -812,7 +811,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 	if (oldpar.empty() || (oldpar.size() == 1 && oldpar.isLineSeparator(0))) {
 		// Delete old par.
-		recordUndo(old, Undo::ATOMIC,
+		old.recordUndo(ATOMIC_UNDO,
 			   max(old.pit() - 1, pit_type(0)),
 			   min(old.pit() + 1, old.lastpit()));
 		ParagraphList & plist = old.text()->paragraphs();
@@ -893,13 +892,13 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 
 void Text::recUndo(Cursor & cur, pit_type first, pit_type last) const
 {
-	recordUndo(cur, Undo::ATOMIC, first, last);
+	cur.recordUndo(ATOMIC_UNDO, first, last);
 }
 
 
 void Text::recUndo(Cursor & cur, pit_type par) const
 {
-	recordUndo(cur, Undo::ATOMIC, par, par);
+	cur.recordUndo(ATOMIC_UNDO, par, par);
 }
 
 } // namespace lyx

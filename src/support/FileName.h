@@ -13,6 +13,7 @@
 #define FILENAME_H
 
 #include <string>
+#include <ctime>
 
 
 namespace lyx {

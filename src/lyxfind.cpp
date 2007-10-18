@@ -16,6 +16,7 @@
 #include "lyxfind.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "buffer_funcs.h"
@@ -26,7 +27,6 @@
 #include "Text.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
-#include "Undo.h"
 
 #include "frontends/alert.h"
 
@@ -177,7 +177,7 @@ int replaceAll(BufferView * bv,
 	if (!searchAllowed(bv, searchstr) || buf.isReadonly())
 		return 0;
 
-	recordUndoFullDocument(bv);
+	bv->cursor().recordUndoFullDocument();
 
 	MatchString const match(searchstr, cs, mw);
 	int num = 0;

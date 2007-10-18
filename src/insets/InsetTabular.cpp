@@ -44,7 +44,6 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "TextMetrics.h"
-#include "Undo.h"
 
 #include "support/convert.h"
 #include "support/lstrings.h"
@@ -3154,7 +3153,7 @@ docstring const InsetTabular::editMessage() const
 void InsetTabular::edit(Cursor & cur, bool left)
 {
 	//lyxerr << "InsetTabular::edit: " << this << endl;
-	finishUndo();
+	cur.finishUndo();
 	cur.selection() = false;
 	cur.push(*this);
 	if (left) {
@@ -3384,7 +3383,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CUT:
 		if (tablemode(cur)) {
 			if (copySelection(cur)) {
-				recordUndoInset(cur, Undo::DELETE);
+				cur.recordUndoInset(DELETE_UNDO);
 				cutSelection(cur);
 			}
 		}
@@ -3395,7 +3394,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_DELETE_BACKWARD:
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (tablemode(cur)) {
-			recordUndoInset(cur, Undo::DELETE);
+			cur.recordUndoInset(DELETE_UNDO);
 			cutSelection(cur);
 		}
 		else
@@ -3406,7 +3405,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (!cur.selection())
 			break;
 		if (tablemode(cur)) {
-			finishUndo();
+			cur.finishUndo();
 			copySelection(cur);
 		} else
 			cell(cur.idx())->dispatch(cur, cmd);
@@ -3437,7 +3436,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE:
 		if (tabularStackDirty() && theClipboard().isInternal()) {
-			recordUndoInset(cur, Undo::INSERT);
+			cur.recordUndoInset(INSERT_UNDO);
 			pasteClipboard(cur);
 			break;
 		}
@@ -4127,7 +4126,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 	}
 
-	recordUndoInset(cur, Undo::ATOMIC);
+	cur.recordUndoInset(ATOMIC_UNDO);
 
 	getSelection(cur, sel_row_start, sel_row_end, sel_col_start, sel_col_end);
 	row_type const row = tabular.cellRow(cur.idx());

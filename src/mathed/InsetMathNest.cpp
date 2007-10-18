@@ -46,7 +46,6 @@
 #include "gettext.h"
 #include "Text.h"
 #include "OutputParams.h"
-#include "Undo.h"
 
 #include "support/lstrings.h"
 #include "support/textutils.h"
@@ -416,10 +415,10 @@ void InsetMathNest::handleFont
 	// changes...
 
 	if (cur.inset().asInsetMath()->name() == font) {
-		recordUndoInset(cur, Undo::ATOMIC);
+		cur.recordUndoInset();
 		cur.handleFont(to_utf8(font));
 	} else {
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		cur.handleNest(createInsetMath(font));
 		cur.insert(arg);
 	}
@@ -428,7 +427,7 @@ void InsetMathNest::handleFont
 
 void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 {
-	recordUndo(cur, Undo::ATOMIC);
+	cur.recordUndo();
 	Font font;
 	bool b;
 	font.fromString(to_utf8(arg), b);
@@ -447,7 +446,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_PASTE: {
-		recordUndo(cur);
+		cur.recordUndo();
 		cur.message(_("Paste"));
 		replaceSelection(cur);
 		docstring topaste;
@@ -461,12 +460,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		cur.niceInsert(topaste);
 		cur.clearSelection(); // bug 393
-		finishUndo();
+		cur.finishUndo();
 		break;
 	}
 
 	case LFUN_CUT:
-		recordUndo(cur);
+		cur.recordUndo();
 		cutSelection(cur, true, true);
 		cur.message(_("Cut"));
 		// Prevent stale position >= size crash
@@ -670,9 +669,9 @@ goto_char_backwards:
 	case LFUN_CHAR_DELETE_BACKWARD:
 		if (cur.pos() == 0)
 			// May affect external cell:
-			recordUndoInset(cur, Undo::ATOMIC);
+			cur.recordUndoInset();
 		else
-			recordUndo(cur, Undo::ATOMIC);
+			cur.recordUndo();
 		// if the inset can not be removed from within, delete it
 		if (!cur.backspace()) {
 			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
@@ -684,9 +683,9 @@ goto_char_backwards:
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (cur.pos() == cur.lastpos())
 			// May affect external cell:
-			recordUndoInset(cur, Undo::ATOMIC);
+			cur.recordUndoInset();
 		else
-			recordUndo(cur, Undo::ATOMIC);
+			cur.recordUndo();
 		// if the inset can not be removed from within, delete it
 		if (!cur.erase()) {
 			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
@@ -704,14 +703,14 @@ goto_char_backwards:
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		recordUndo(cur);
+		cur.recordUndo();
 		lock(!lock());
 		cur.popRight();
 		break;
 
 	case LFUN_SELF_INSERT:
 		if (cmd.argument().size() != 1) {
-			recordUndo(cur);
+			cur.recordUndo();
 			docstring const arg = cmd.argument();
 			if (!interpretString(cur, arg))
 				cur.insert(arg);
@@ -727,7 +726,7 @@ goto_char_backwards:
 		// A side effect is that an undo before the macro is finished
 		// undoes the complete macro, not only the last character.
 		if (!cur.inMacroMode())
-			recordUndo(cur);
+			cur.recordUndo();
 
 		// spacial handling of space. If we insert an inset
 		// via macro mode, we want to put the cursor inside it
@@ -766,7 +765,7 @@ goto_char_backwards:
 		if (cmd.argument().empty()) {
 			// do superscript if LyX handles
 			// deadkeys
-			recordUndo(cur, Undo::ATOMIC);
+			cur.recordUndo();
 			script(cur, true, grabAndEraseSelection(cur));
 		}
 		break;
@@ -875,13 +874,13 @@ goto_char_backwards:
 
 	case LFUN_MATH_SIZE:
 #if 0
-		recordUndo(cur);
+		cur.recordUndo();
 		cur.setSize(arg);
 #endif
 		break;
 
 	case LFUN_MATH_MATRIX: {
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		unsigned int m = 1;
 		unsigned int n = 1;
 		docstring v_align;
@@ -906,7 +905,7 @@ goto_char_backwards:
 			ls = '(';
 		if (rs.empty())
 			rs = ')';
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		cur.handleNest(MathAtom(new InsetMathDelim(ls, rs)));
 		break;
 	}
@@ -925,7 +924,7 @@ goto_char_backwards:
 		// We mimic LFUN_MATH_DELIM in case we have an empty left
 		// or right delimiter.
 		if (have_l || have_r) {
-			recordUndo(cur, Undo::ATOMIC);
+			cur.recordUndo();
 			docstring const selection = grabAndEraseSelection(cur);
 			selClearOrDel(cur);
 			if (have_l)
@@ -943,31 +942,31 @@ goto_char_backwards:
 
 	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		cur.insert(MathAtom(new InsetMathSpace(from_ascii(","))));
 		break;
 
 	case LFUN_ERT_INSERT:
 		// interpret this as if a backslash was typed
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		interpretChar(cur, '\\');
 		break;
 
 	case LFUN_MATH_SUBSCRIPT:
 		// interpret this as if a _ was typed
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		interpretChar(cur, '_');
 		break;
 
 	case LFUN_MATH_SUPERSCRIPT:
 		// interpret this as if a ^ was typed
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		interpretChar(cur, '^');
 		break;
 
 	case LFUN_QUOTE_INSERT:
 		// interpret this as if a straight " was typed
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		interpretChar(cur, '\"');
 		break;
 
@@ -975,7 +974,7 @@ goto_char_backwards:
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
 	case LFUN_MATH_INSERT: {
-		recordUndo(cur, Undo::ATOMIC);
+		cur.recordUndo();
 		if (cmd.argument() == "^" || cmd.argument() == "_") {
 			interpretChar(cur, cmd.argument()[0]);
 		} else
@@ -997,7 +996,7 @@ goto_char_backwards:
 	case LFUN_INSET_INSERT: {
 		MathData ar;
 		if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
-			recordUndo(cur);
+			cur.recordUndo();
 			cur.insert(ar);
 		} else
 			cur.undispatched();
@@ -1005,7 +1004,7 @@ goto_char_backwards:
 	}
 	case LFUN_INSET_DISSOLVE:
 		if (!asHullInset()) {
-			recordUndoInset(cur, Undo::ATOMIC);
+			cur.recordUndoInset();
 			cur.pullArg();
 		}
 		break;

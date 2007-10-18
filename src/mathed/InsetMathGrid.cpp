@@ -23,7 +23,6 @@
 #include "debug.h"
 #include "FuncRequest.h"
 #include "gettext.h"
-#include "Undo.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
@@ -1081,7 +1080,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// multiple cells. Unfortunately this puts the cursor in front
 		// of the inset after undo. This is (especilally for large
 		// grids) annoying.
-		recordUndoInset(cur);
+		cur.recordUndoInset();
 		//autocorrect_ = false;
 		//macroModeClose();
 		//if (selection_) {
@@ -1097,7 +1096,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CELL_SPLIT:
-		recordUndo(cur);
+		cur.recordUndo();
 		splitCell(cur);
 		break;
 
@@ -1121,7 +1120,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_BREAK_LINE: {
-		recordUndoInset(cur);
+		cur.recordUndoInset();
 		row_type const r = cur.row();
 		addRow(r);
 
@@ -1142,7 +1141,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_TABULAR_FEATURE: {
-		recordUndoInset(cur);
+		cur.recordUndoInset();
 		//lyxerr << "handling tabular-feature " << to_utf8(cmd.argument()) << endl;
 		istringstream is(to_utf8(cmd.argument()));
 		string s;
@@ -1272,12 +1271,12 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
-			recordUndo(cur);
+			cur.recordUndo();
 			cur.cell().insert(cur.pos(), grid.cell(0));
 			cur.pos() += grid.cell(0).size();
 		} else {
 			// multiple cells
-			recordUndoInset(cur);
+			cur.recordUndoInset();
 			col_type const numcols =
 				min(grid.ncols(), ncols() - col(cur.idx()));
 			row_type const numrows =
@@ -1299,7 +1298,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cell(i).append(grid.cell(grid.index(r, c)));
 		}
 		cur.clearSelection(); // bug 393
-		finishUndo();
+		cur.finishUndo();
 		break;
 	}
 

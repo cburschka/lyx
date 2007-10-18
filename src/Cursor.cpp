@@ -1552,4 +1552,78 @@ void Cursor::setCurrentFont()
 	}
 }
 
+
+bool Cursor::textUndo()
+{
+	DocIterator dit = *this;
+	// Undo::textUndo() will modify dit.
+	if (!bv_->buffer().undo().textUndo(dit))
+		return false;
+	// Set cursor
+	setCursor(dit);
+	selection() = false;
+	resetAnchor();
+	fixIfBroken();
+	return true;
+}
+
+
+bool Cursor::textRedo()
+{
+	DocIterator dit = *this;
+	// Undo::textRedo() will modify dit.
+	if (!bv_->buffer().undo().textRedo(dit))
+		return false;
+	// Set cursor
+	setCursor(dit);
+	selection() = false;
+	resetAnchor();
+	fixIfBroken();
+	return true;
+}
+
+
+void Cursor::finishUndo()
+{
+	bv_->buffer().undo().finishUndo();
+}
+
+
+void Cursor::recordUndo(UndoKind kind, pit_type from, pit_type to)
+{
+	bv_->buffer().undo().recordUndo(*this, kind, from, to);
+}
+
+
+void Cursor::recordUndo(UndoKind kind, pit_type from)
+{
+	bv_->buffer().undo().recordUndo(*this, kind, from);
+}
+
+
+void Cursor::recordUndo(UndoKind kind)
+{
+	bv_->buffer().undo().recordUndo(*this, kind);
+}
+
+
+void Cursor::recordUndoInset(UndoKind kind)
+{
+	bv_->buffer().undo().recordUndoInset(*this, kind);
+}
+
+
+void Cursor::recordUndoFullDocument()
+{
+	bv_->buffer().undo().recordUndoFullDocument(*this);
+}
+
+
+void Cursor::recordUndoSelection()
+{
+	bv_->buffer().undo().recordUndo(*this, ATOMIC_UNDO,
+		selBegin().pit(), selEnd().pit());
+}
+
+
 } // namespace lyx

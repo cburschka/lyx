@@ -8,6 +8,7 @@
  * \author John Levon
  * \author André Pönitz
  * \author Jürgen Vigna
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -17,13 +18,13 @@
 #include "Undo.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "buffer_funcs.h"
-#include "Cursor.h"
 #include "debug.h"
-#include "BufferView.h"
-#include "Text.h"
+#include "DocIterator.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
+#include "Text.h"
 
 #include "mathed/MathSupport.h"
 #include "mathed/MathData.h"
@@ -32,20 +33,117 @@
 
 #include <algorithm>
 
+using std::advance;
+using std::endl;
 
 namespace lyx {
 
-using std::advance;
-using std::endl;
+
+/**
+These are the elements put on the undo stack. Each object contains complete
+paragraphs from some cell and sufficient information to restore the cursor
+state.
+
+The cell is given by a DocIterator pointing to this cell, the 'interesting'
+range of paragraphs by counting them from begin and end of cell,
+respectively.
+
+The cursor is also given as DocIterator and should point to some place in
+the stored paragraph range.  In case of math, we simply store the whole
+cell, as there usually is just a simple paragraph in a cell.
+
+The idea is to store the contents of 'interesting' paragraphs in some
+structure ('Undo') _before_ it is changed in some edit operation.
+Obviously, the stored ranged should be as small as possible. However, it
+there is a lower limit: The StableDocIterator pointing stored in the undo
+class must be valid after the changes, too, as it will used as a pointer
+where to insert the stored bits when performining undo.
+
+*/
+struct UndoElement
+{
+	/// Which kind of operation are we recording for?
+	UndoKind kind;
+	/// the position of the cursor
+	StableDocIterator cursor;
+	/// the position of the cell described
+	StableDocIterator cell;
+	/// counted from begin of cell
+	pit_type from;
+	/// complement to end of this cell
+	pit_type end;
+	/// the contents of the saved Paragraphs (for texted)
+	ParagraphList * pars;
+	/// the contents of the saved MathData (for mathed)
+	MathData * array;
+	/// Only used in case of full backups
+	BufferParams bparams;
+	/// Only used in case of full backups
+	bool isFullBuffer;
+};
+
+
+struct Undo::Private
+{
+	Private(Buffer & buffer): buffer_(buffer) {}
+	
+	// Returns false if no undo possible.
+	bool textUndoOrRedo(DocIterator & cur, bool isUndoOperation);
+	///
+	void doRecordUndo(UndoKind kind,
+		DocIterator const & cell,
+		pit_type first_pit,
+		pit_type last_pit,
+		DocIterator const & cur,
+		bool isFullBuffer,
+		bool isUndoOperation);
+
+	///
+	void recordUndo(UndoKind kind,
+		DocIterator & cur,
+		pit_type first_pit,
+		pit_type last_pit);
+
+	///
+	Buffer & buffer_;
+	/// Undo stack.
+	limited_stack<UndoElement> undostack;
+	/// Redo stack.
+	limited_stack<UndoElement> redostack;
+
+	/// The flag used by Undo::finishUndo().
+	bool undo_finished;
+};
+
+
+Undo::Undo(Buffer & buffer): d(new Undo::Private(buffer))
+{
+}
+
+
+Undo::~Undo()
+{
+	delete d;
+}
+
+
+bool Undo::hasUndoStack() const
+{
+	return !d->undostack.empty();
+}
+
+
+bool Undo::hasRedoStack() const
+{
+	return !d->redostack.empty();
+}
+
+
 
 
 namespace {
 
-/// The flag used by finishUndo().
-bool undo_finished;
-
-
-std::ostream & operator<<(std::ostream & os, Undo const & undo)
+std::ostream & operator<<(std::ostream & os, UndoElement const & undo)
 {
 	return os << " from: " << undo.from << " end: " << undo.end
 		<< " cell:\n" << undo.cell
@@ -60,25 +158,26 @@ bool samePar(StableDocIterator const & i1, StableDocIterator const & i2)
 	return i1 == tmpi2;
 }
 
+} // namespace anon
 
-void doRecordUndo(Undo::undo_kind kind,
+
+void Undo::Private::doRecordUndo(UndoKind kind,
 	DocIterator const & cell,
 	pit_type first_pit, pit_type last_pit,
 	DocIterator const & cur,
-	BufferParams const & bparams,
 	bool isFullBuffer,
-	limited_stack<Undo> & stack)
+	bool isUndoOperation)
 {
 	if (first_pit > last_pit)
 		std::swap(first_pit, last_pit);
 	// create the position information of the Undo entry
-	Undo undo;
+	UndoElement undo;
 	undo.array = 0;
 	undo.pars = 0;
 	undo.kind = kind;
 	undo.cell = cell;
 	undo.cursor = cur;
-	undo.bparams = bparams ;
+	undo.bparams = buffer_.params();
 	undo.isFullBuffer = isFullBuffer;
 	//lyxerr << "recordUndo: cur: " << cur << endl;
 	//lyxerr << "recordUndo: pos: " << cur.pos() << endl;
@@ -86,11 +185,14 @@ void doRecordUndo(Undo::undo_kind kind,
 	undo.from = first_pit;
 	undo.end = cell.lastpit() - last_pit;
 
+	limited_stack<UndoElement> & stack = isUndoOperation ?
+		undostack : redostack;
+
 	// Undo::ATOMIC are always recorded (no overlapping there).
 	// As nobody wants all removed character appear one by one when undoing,
 	// we want combine 'similar' non-ATOMIC undo recordings to one.
 	if (!undo_finished
-	    && kind != Undo::ATOMIC
+	    && kind != ATOMIC_UNDO
 	    && !stack.empty()
 	    && samePar(stack.top().cell, undo.cell)
 	    && stack.top().kind == undo.kind
@@ -125,53 +227,58 @@ void doRecordUndo(Undo::undo_kind kind,
 }
 
 
-void recordUndo(Undo::undo_kind kind,
-	Cursor & cur, pit_type first_pit, pit_type last_pit,
-	limited_stack<Undo> & stack)
+void Undo::Private::recordUndo(UndoKind kind, DocIterator & cur,
+	pit_type first_pit, pit_type last_pit)
 {
 	BOOST_ASSERT(first_pit <= cur.lastpit());
 	BOOST_ASSERT(last_pit <= cur.lastpit());
 
 	doRecordUndo(kind, cur, first_pit, last_pit, cur,
-		cur.bv().buffer().params(), false, stack);
+		false, true);
+
+	undo_finished = false;
+	redostack.clear();
+	//lyxerr << "undostack:\n";
+	//for (size_t i = 0, n = buf.undostack().size(); i != n && i < 6; ++i)
+	//	lyxerr << "  " << i << ": " << buf.undostack()[i] << std::endl;
 }
 
 
-
-// Returns false if no undo possible.
-bool textUndoOrRedo(BufferView & bv,
-	limited_stack<Undo> & stack, limited_stack<Undo> & otherstack)
+bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 {
-	finishUndo();
+	undo_finished = true;
 
-	if (stack.empty()) {
+	limited_stack<UndoElement> & stack = isUndoOperation ?
+		undostack : redostack;
+
+	if (stack.empty())
 		// Nothing to do.
 		return false;
-	}
+
+	limited_stack<UndoElement> & otherstack = isUndoOperation ?
+		redostack : undostack;
 
 	// Adjust undo stack and get hold of current undo data.
-	Undo undo = stack.top();
+	UndoElement undo = stack.top();
 	stack.pop();
 
 	// We will store in otherstack the part of the document under 'undo'
-	Buffer & buf = bv.buffer();
-	DocIterator cell_dit = undo.cell.asDocIterator(&buf.inset());
+	DocIterator cell_dit = undo.cell.asDocIterator(&buffer_.inset());
 
-	doRecordUndo(Undo::ATOMIC, cell_dit,
-		   undo.from, cell_dit.lastpit() - undo.end, bv.cursor(),
-			 undo.bparams, undo.isFullBuffer,
-		   otherstack);
+	doRecordUndo(ATOMIC_UNDO, cell_dit,
+		undo.from, cell_dit.lastpit() - undo.end, cur,
+		undo.isFullBuffer, !isUndoOperation);
 
 	// This does the actual undo/redo.
 	//lyxerr << "undo, performing: " << undo << std::endl;
 	bool labelsUpdateNeeded = false;
-	DocIterator dit = undo.cell.asDocIterator(&buf.inset());
+	DocIterator dit = undo.cell.asDocIterator(&buffer_.inset());
 	if (undo.isFullBuffer) {
 		BOOST_ASSERT(undo.pars);
 		// This is a full document
-		otherstack.top().bparams = buf.params();
-		buf.params() = undo.bparams;
-		std::swap(buf.paragraphs(), *undo.pars);
+		otherstack.top().bparams = buffer_.params();
+		buffer_.params() = undo.bparams;
+		std::swap(buffer_.paragraphs(), *undo.pars);
 		delete undo.pars;
 		undo.pars = 0;
 	} else if (dit.inMathed()) {
@@ -215,103 +322,71 @@ bool textUndoOrRedo(BufferView & bv,
 	BOOST_ASSERT(undo.pars == 0);
 	BOOST_ASSERT(undo.array == 0);
 
-	// Set cursor
-	Cursor & cur = bv.cursor();
-	cur.setCursor(undo.cursor.asDocIterator(&buf.inset()));
-	cur.selection() = false;
-	cur.resetAnchor();
-	cur.fixIfBroken();
+	cur = undo.cursor.asDocIterator(&buffer_.inset());
 	
 	if (labelsUpdateNeeded)
-		updateLabels(buf);
-	finishUndo();
+		updateLabels(buffer_);
+	undo_finished = true;
 	return true;
 }
 
-} // namespace anon
 
-
-void finishUndo()
+void Undo::finishUndo()
 {
 	// Make sure the next operation will be stored.
-	undo_finished = true;
+	d->undo_finished = true;
 }
 
 
-bool textUndo(BufferView & bv)
+bool Undo::textUndo(DocIterator & cur)
 {
-	return textUndoOrRedo(bv, bv.buffer().undostack(),
-			      bv.buffer().redostack());
+	return d->textUndoOrRedo(cur, true);
 }
 
 
-bool textRedo(BufferView & bv)
+bool Undo::textRedo(DocIterator & cur)
 {
-	return textUndoOrRedo(bv, bv.buffer().redostack(),
-			      bv.buffer().undostack());
+	return d->textUndoOrRedo(cur, false);
 }
 
 
-void recordUndo(Undo::undo_kind kind,
-	Cursor & cur, pit_type first, pit_type last)
+void Undo::recordUndo(DocIterator & cur, UndoKind kind)
 {
-	Buffer & buf = cur.bv().buffer();
-	recordUndo(kind, cur, first, last, buf.undostack());
-	buf.redostack().clear();
-	//lyxerr << "undostack:\n";
-	//for (size_t i = 0, n = buf.undostack().size(); i != n && i < 6; ++i)
-	//	lyxerr << "  " << i << ": " << buf.undostack()[i] << std::endl;
+	d->recordUndo(kind, cur, cur.pit(), cur.pit());
 }
 
 
-void recordUndo(Cursor & cur, Undo::undo_kind kind)
+void Undo::recordUndoInset(DocIterator & cur, UndoKind kind)
 {
-	recordUndo(kind, cur, cur.pit(), cur.pit());
+	DocIterator c = cur;
+	c.pop_back();
+	d->doRecordUndo(kind, c, c.pit(), c.pit(),	cur, false, true);
 }
 
 
-void recordUndoInset(Cursor & cur, Undo::undo_kind kind)
+void Undo::recordUndo(DocIterator & cur, UndoKind kind, pit_type from)
 {
-	Cursor c = cur;
-	c.pop();
-	Buffer & buf = cur.bv().buffer();
-	doRecordUndo(kind, c, c.pit(), c.pit(),	cur,
-		     buf.params(), false, buf.undostack());
+	d->recordUndo(kind, cur, cur.pit(), from);
 }
 
 
-void recordUndoSelection(Cursor & cur, Undo::undo_kind kind)
-{
-	recordUndo(kind, cur, cur.selBegin().pit(), cur.selEnd().pit());
-}
-
-
-void recordUndo(Cursor & cur, Undo::undo_kind kind, pit_type from)
-{
-	recordUndo(kind, cur, cur.pit(), from);
-}
-
-
-void recordUndo(Cursor & cur, Undo::undo_kind kind,
+void Undo::recordUndo(DocIterator & cur, UndoKind kind,
 	pit_type from, pit_type to)
 {
-	recordUndo(kind, cur, from, to);
+	d->recordUndo(kind, cur, from, to);
 }
 
 
-void recordUndoFullDocument(BufferView * bv)
+void Undo::recordUndoFullDocument(DocIterator & cur)
 {
-	Buffer & buf = bv->buffer();
-	doRecordUndo(
-		Undo::ATOMIC,
-		doc_iterator_begin(buf.inset()),
-		0, buf.paragraphs().size() - 1,
-		bv->cursor(),
-		buf.params(),
+	d->doRecordUndo(
+		ATOMIC_UNDO,
+		doc_iterator_begin(d->buffer_.inset()),
+		0, d->buffer_.paragraphs().size() - 1,
+		cur,
 		true,
-		buf.undostack()
+		true
 	);
-	undo_finished = false;
 }
 
 

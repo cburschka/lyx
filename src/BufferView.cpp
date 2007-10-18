@@ -50,7 +50,6 @@
 #include "TextClass.h"
 #include "TextMetrics.h"
 #include "TexRow.h"
-#include "Undo.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"
 
@@ -273,7 +272,7 @@ void outline(OutlineOp mode, Cursor & cur)
 			pit_type const newpit = std::distance(bgn, dest);
 			pit_type const len = std::distance(start, finish);
 			pit_type const deletepit = pit + len;
-			recordUndo(cur, Undo::ATOMIC, newpit, deletepit - 1);
+			buf.undo().recordUndo(cur, ATOMIC_UNDO, newpit, deletepit - 1);
 			pars.insert(dest, start, finish);
 			start = boost::next(pars.begin(), deletepit);
 			pit = newpit;
@@ -305,7 +304,7 @@ void outline(OutlineOp mode, Cursor & cur)
 			// One such was found:
 			pit_type newpit = std::distance(bgn, dest);
 			pit_type const len = std::distance(start, finish);
-			recordUndo(cur, Undo::ATOMIC, pit, newpit - 1);
+			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, newpit - 1);
 			pars.insert(dest, start, finish);
 			start = boost::next(bgn, pit);
 			pit = newpit - len;
@@ -313,7 +312,7 @@ void outline(OutlineOp mode, Cursor & cur)
 			break;
 		}
 		case OutlineIn:
-			recordUndo(cur);
+			buf.undo().recordUndo(cur);
 			for (; lit != lend; ++lit) {
 				if ((*lit)->toclevel == thistoclevel + 1 &&
 				    start->layout()->labeltype == (*lit)->labeltype) {
@@ -323,7 +322,7 @@ void outline(OutlineOp mode, Cursor & cur)
 			}
 			break;
 		case OutlineOut:
-			recordUndo(cur);
+			buf.undo().recordUndo(cur);
 			for (; lit != lend; ++lit) {
 				if ((*lit)->toclevel == thistoclevel - 1 &&
 				    start->layout()->labeltype == (*lit)->labeltype) {
@@ -853,10 +852,10 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
-		flag.enabled(!buffer_.undostack().empty());
+		flag.enabled(!buffer_.undo().hasUndoStack());
 		break;
 	case LFUN_REDO:
-		flag.enabled(!buffer_.redostack().empty());
+		flag.enabled(!buffer_.undo().hasRedoStack());
 		break;
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
@@ -1018,7 +1017,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_UNDO:
 		cur.message(_("Undo"));
 		cur.clearSelection();
-		if (!textUndo(*this)) {
+		if (!cur.textUndo()) {
 			cur.message(_("No further undo information"));
 			updateFlags = Update::None;
 		}
@@ -1027,7 +1026,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_REDO:
 		cur.message(_("Redo"));
 		cur.clearSelection();
-		if (!textRedo(*this)) {
+		if (!cur.textRedo()) {
 			cur.message(_("No further redo information"));
 			updateFlags = Update::None;
 		}
@@ -1346,7 +1345,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		cur.reset(buffer_.inset());
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
 		//FIXME: what to do with cur.x_target()?
-		finishUndo();
+		cur.finishUndo();
 		// The metrics are already up to date. see scroll()
 		updateFlags = Update::None;
 		break;
@@ -1361,7 +1360,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		// FIXME: We need to verify if the cursor stayed within an inset...
 		//cur.reset(buffer_.inset());
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
-		finishUndo();
+		cur.finishUndo();
 		while (cur.depth() > initial_depth) {
 			cur.forwardInset();
 		}
@@ -1748,7 +1747,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	else
 		d->cursor_.clearSelection();
 
-	finishUndo();
+	d->cursor_.finishUndo();
 	return update;
 }
 
@@ -1973,7 +1972,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		ErrorList & el = buffer_.errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");
-		recordUndo(d->cursor_);
+		buffer_.undo().recordUndo(d->cursor_);
 		cap::pasteParagraphList(d->cursor_, buf.paragraphs(),
 					     buf.params().getTextClassPtr(), el);
 		res = _("Document %1$s inserted.");
@@ -2261,12 +2260,11 @@ void BufferView::insertPlaintextFile(string const & f, bool asParagraph)
 
 	Cursor & cur = cursor();
 	cap::replaceSelection(cur);
-	recordUndo(cur);
+	buffer_.undo().recordUndo(cur);
 	if (asParagraph)
 		cur.innerText()->insertStringAsParagraphs(cur, tmpstr);
 	else
 		cur.innerText()->insertStringAsLines(cur, tmpstr);
 }
-
 
 } // namespace lyx

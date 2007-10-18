@@ -165,9 +165,7 @@ class Buffer::Impl
 {
 public:
 	Impl(Buffer & parent, FileName const & file, bool readonly);
-
-	limited_stack<Undo> undostack;
-	limited_stack<Undo> redostack;
+	
 	BufferParams params;
 	LyXVC lyxvc;
 	string temppath;
@@ -219,6 +217,9 @@ public:
 
 	///
 	frontend::WorkAreaManager * wa_;
+
+	///
+	Undo undo_;
 };
 
 
@@ -226,7 +227,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), file_fully_loaded(false), inset(params),
 	  toc_backend(&parent), embedded_files(&parent), timestamp_(0),
-	  checksum_(0), wa_(0)
+	  checksum_(0), wa_(0), undo_(parent)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
@@ -301,30 +302,6 @@ Text & Buffer::text() const
 Inset & Buffer::inset() const
 {
 	return const_cast<InsetText &>(pimpl_->inset);
-}
-
-
-limited_stack<Undo> & Buffer::undostack()
-{
-	return pimpl_->undostack;
-}
-
-
-limited_stack<Undo> const & Buffer::undostack() const
-{
-	return pimpl_->undostack;
-}
-
-
-limited_stack<Undo> & Buffer::redostack()
-{
-	return pimpl_->redostack;
-}
-
-
-limited_stack<Undo> const & Buffer::redostack() const
-{
-	return pimpl_->redostack;
 }
 
 
@@ -404,6 +381,12 @@ EmbeddedFiles const & Buffer::embeddedFiles() const
 {
 	return pimpl_->embedded_files;
 }
+
+Undo & Buffer::undo()
+{
+	return pimpl_->undo_;
+}
+
 
 
 string const Buffer::getLatexName(bool const no_path) const

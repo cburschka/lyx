@@ -15,6 +15,7 @@
 #include "DispatchResult.h"
 #include "DocIterator.h"
 #include "Font.h"
+#include "Undo.h"
 
 #include <iosfwd>
 #include <vector>
@@ -188,6 +189,33 @@ public:
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, Cursor const & cur);
+
+	///
+	bool textUndo();
+	///
+	bool textRedo();
+
+	/// makes sure the next operation will be stored
+	void finishUndo();
+
+	/// The general case: prepare undo for an arbitrary range.
+	void recordUndo(UndoKind kind, pit_type from, pit_type to);
+
+	/// Convenience: prepare undo for the range between 'from' and cursor.
+	void recordUndo(UndoKind kind, pit_type from);
+
+	/// Convenience: prepare undo for the single paragraph or cell
+	/// containing the cursor
+	void recordUndo(UndoKind kind = ATOMIC_UNDO);
+
+	/// Convenience: prepare undo for the inset containing the cursor
+	void recordUndoInset(UndoKind kind = ATOMIC_UNDO);
+
+	/// Convenience: prepare undo for the whole buffer
+	void recordUndoFullDocument();
+
+	/// Convenience: prepare undo for the selected paragraphs
+	void recordUndoSelection();
 
 public:
 	///

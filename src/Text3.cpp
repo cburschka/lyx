@@ -44,7 +44,6 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "TextMetrics.h"
-#include "Undo.h"
 #include "VSpace.h"
 #include "ParIterator.h"
 
@@ -118,14 +117,14 @@ static void moveCursor(Cursor & cur, bool selecting)
 
 static void finishChange(Cursor & cur, bool selecting)
 {
-	finishUndo();
+	cur.finishUndo();
 	moveCursor(cur, selecting);
 }
 
 
 static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 {
-	recordUndo(cur);
+	cur.recordUndo();
 	docstring sel = cur.selectionAsString(false);
 
 	// It may happen that sel is empty but there is a selection
@@ -176,7 +175,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 
 static void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 {
-	recordUndo(cur);
+	cur.recordUndo();
 	cap::replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
 	cur.posRight();
@@ -190,7 +189,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (!inset)
 		return false;
 
-	recordUndo(cur);
+	cur.recordUndo();
 	if (cmd.action == LFUN_INDEX_INSERT) {
 		docstring ds = support::subst(text->getStringToIndex(cur), '\n', ' ');
 		text->insertInset(cur, inset);
@@ -290,7 +289,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_PARAGRAPH_MOVE_DOWN: {
 		pit_type const pit = cur.pit();
 		recUndo(cur, pit, pit + 1);
-		finishUndo();
+		cur.finishUndo();
 		std::swap(pars_[pit], pars_[pit + 1]);
 		updateLabels(cur.buffer());
 		needsUpdate = true;
@@ -301,7 +300,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_PARAGRAPH_MOVE_UP: {
 		pit_type const pit = cur.pit();
 		recUndo(cur, pit - 1, pit);
-		finishUndo();
+		cur.finishUndo();
 		std::swap(pars_[pit], pars_[pit - 1]);
 		updateLabels(cur.buffer());
 		--cur.pit();
@@ -325,7 +324,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 
-		recordUndo(cur);
+		cur.recordUndo();
 		par.params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
@@ -508,7 +507,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// this avoids a double undo
 			// FIXME: should not be needed, ideally
 			if (!cur.selection())
-				recordUndo(cur);
+				cur.recordUndo();
 			cap::replaceSelection(cur);
 			cur.insert(new InsetNewline);
 			cur.posRight();
@@ -639,7 +638,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_INSERT: {
-		recordUndo(cur);
+		cur.recordUndo();
 		Inset * inset = createInset(bv, cmd);
 		if (inset) {
 			// FIXME (Abdel 01/02/2006):
@@ -740,7 +739,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		bv->buffer().errors("Paste");
 		cur.clearSelection(); // bug 393
-		finishUndo();
+		cur.finishUndo();
 		break;
 
 	case LFUN_CUT:
@@ -870,7 +869,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// this avoids a double undo
 			// FIXME: should not be needed, ideally
 			if (!cur.selection())
-				recordUndo(cur);
+				cur.recordUndo();
 			cap::replaceSelection(cur);
 			pos = cur.pos();
 			char_type c;
@@ -947,7 +946,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 						    bv->buffer().errorList("Paste"));
 				bv->buffer().errors("Paste");
 				bv->buffer().markDirty();
-				finishUndo();
+				bv->cursor().finishUndo();
 			} else {
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
 			}
@@ -1200,7 +1199,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Inset * inset = createInset(&cur.bv(), cmd);
 		if (!inset)
 			break;
-		recordUndo(cur);
+		cur.recordUndo();
 		cur.clearSelection();
 		insertInset(cur, inset);
 		// Show the dialog for the nomenclature entry, since the
@@ -1437,7 +1436,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FLOAT_LIST: {
 		TextClass const & tclass = bv->buffer().params().getTextClass();
 		if (tclass.floats().typeExist(to_utf8(cmd.argument()))) {
-			recordUndo(cur);
+			cur.recordUndo();
 			if (cur.selection())
 				cutSelection(cur, true, false);
 			breakParagraph(cur);
@@ -1958,7 +1957,7 @@ void Text::pasteString(Cursor & cur, docstring const & clip,
 {
 	cur.clearSelection();
 	if (!clip.empty()) {
-		recordUndo(cur);
+		cur.recordUndo();
 		if (asParagraphs)
 			insertStringAsParagraphs(cur, clip);
 		else
