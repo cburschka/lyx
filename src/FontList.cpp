@@ -211,4 +211,20 @@ Font_size FontList::highestInRange
 	return maxsize;
 }
 
+
+bool FontList::hasChangeInRange(pos_type pos, int len) const
+{
+	// FIXME: can't we use fontIterator(pos) instead?
+	const_iterator cit = list_.begin();
+	const_iterator end = list_.end();
+	for (; cit != end; ++cit) {
+		if (cit->pos() >= pos)
+			break;
+	}
+	if (cit != end && pos + len - 1 > cit->pos())
+		return false;
+
+	return true;
+}
+
 } // namespace lyx

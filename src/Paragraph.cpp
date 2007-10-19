@@ -600,17 +600,7 @@ bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
 			return false;
 	}
 
-	// is there a font change in middle of the word?
-	FontList::const_iterator cit = fontlist_.begin();
-	FontList::const_iterator end = fontlist_.end();
-	for (; cit != end; ++cit) {
-		if (cit->pos() >= pos)
-			break;
-	}
-	if (cit != end && pos + len - 1 > cit->pos())
-		return false;
-
-	return true;
+	return fontlist_.hasChangeInRange(pos, len);
 }
 
 

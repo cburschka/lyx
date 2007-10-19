@@ -103,6 +103,12 @@ public:
 		Font_size def_size
 		) const;
 
+	/// is there a font change in middle of the word?
+	bool hasChangeInRange(
+		pos_type pos, ///< position in the paragraph.
+		int len ///< length of the range to check.
+		) const;
+
 private:
 	///
 	List list_;
