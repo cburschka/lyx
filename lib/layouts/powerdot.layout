@@ -117,6 +117,7 @@ End
 # Slide styles definition
 ###
 Style Slide
+  TocLevel      3
   Margin        Static
   LatexType     Command
   LatexName     lyxend\lyxslide
@@ -140,14 +141,16 @@ Style Slide
 End
 
 Style EndSlide
-  CopyStyle     Slide
-  KeepEmpty     1
-  LatexName     lyxend
+  KeepEmpty         1
+  LatexType         Command
+  LatexName         lyxend
   Margin            Static
   ParSkip           0
   TopSep            0
   BottomSep         1
   ParSep            0
+  Align             Center
+  AlignPossible     Center
   LabelType         Static
   LabelBottomSep    0
   LeftMargin        MMMMMMM
@@ -193,15 +196,24 @@ End
 # Note style definition
 ###
 Style Note
-  CopyStyle     Slide
+  Margin        Static
+  LatexType     Command
   LatexName     lyxend\lyxnote
-  LeftMargin        MMMMMMM
-  LabelString       "Note:"
+  LabelSep      xxx
+  ParSkip       0.4
+  TopSep        1.3
+  BottomSep     0.7
+  ParSep        0.7
+  Align         Center
+  AlignPossible     Center
   LabelType         Static
+  LabelString       "Note:"
+  LeftMargin        MMMMMMM
   KeepEmpty     1
   OptionalArgs      0
-
   Font
+    Series      Bold
+    Size        Large
     Color       Red
   EndFont
 End
@@ -211,6 +223,7 @@ End
 ###
 Style Section
   CopyStyle     Slide
+  TocLevel      1
   LatexName     lyxend\section
   LabelType     Counter
   LabelCounter section

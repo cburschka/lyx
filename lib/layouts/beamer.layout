@@ -225,6 +225,7 @@ End
 
 # Frame control definition
 Style BeginFrame
+  TocLevel         4
   KeepEmpty        1
   LatexType        Command
   LatexName        lyxframeend{}\lyxframe
@@ -268,6 +269,7 @@ Style BeginFrame
 End
 
 Style BeginPlainFrame
+  TocLevel          4
   KeepEmpty         1
   LatexType         Command
   LatexName         lyxframeend{}\lyxplainframe

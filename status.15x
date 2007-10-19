@@ -17,22 +17,27 @@ order of importance. This is, of course, subjective...]
 What's new
 ==========
 
+
 ** Updates:
 ***********
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Update Japanese and Traditional Chinese translations of the interface
+- Updated Japanese and Traditional Chinese translations of the interface.
 
 
 * USER INTERFACE
 
 - the behaviour of Return and M-Return has changed: they now allow to either
-  keep current paragraph and depth or to to nesting paragraph (bug 2445). 
-  
+  keep current paragraph and depth or to to nesting paragraph (bug 2445).
+
 - Add the esint font to the private math fonts. This font assures a
   consistent on screen looking for all kinds of supported integral signs.
-  
+
+- The slides/foils of presentation classes such as beamer, powerdot, foils
+  and slides are now displayed in the outliner. This makes it easy to navigate
+  to specific slides or move them up and down (bug 78).
+
 
 ** Bug fixes:
 *************
@@ -47,6 +52,7 @@ What's new
 
 - Add Erlang support for listings (bug 4263).
 
+
 * USER INTERFACE:
 
 - Repair wasy font such that it can also be used on Mac (bug 2326).
@@ -58,14 +64,15 @@ What's new
 
 - Check and show proper error message if configure.py fails (part of bug 2829).
 
-- Does not display the type of charstyle insets by default. Display type of
-  an charstyle inset under mouse in the status line. 
+- Do not display the type of charstyle insets by default. Display type of
+  an charstyle inset under mouse in the status line.
 
 - Fix DraftDVI preference settings (Windows only).
 
+
 * DOCUMENTATION
 
-- Fix wrong character in the User's Guide (including the translations)
+- Fix wrong character in the User's Guide (including the translations).
 
 
 * BUILD/INSTALLATION:
