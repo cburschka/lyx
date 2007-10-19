@@ -28,6 +28,7 @@ namespace lyx {
 class Lexer;
 class BufferParams;
 class Language;
+class LaTeXFeatures;
 class OutputParams;
 
 ///
@@ -320,6 +321,9 @@ public:
 
 	///
 	Color_color realColor() const;
+
+	///
+	void validate(LaTeXFeatures & features) const;
 
 	///
 	friend

@@ -17,11 +17,12 @@
 #include "Font.h"
 
 #include "BufferParams.h" // stateText
+#include "Color.h"
 #include "debug.h"
 #include "Encoding.h"
 #include "gettext.h"
 #include "Language.h"
-#include "Color.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "output_latex.h"
@@ -1067,6 +1068,47 @@ bool Font::fromString(string const & data, bool & toggle)
 		++nset;
 	}
 	return (nset > 0);
+}
+
+
+void Font::validate(LaTeXFeatures & features) const
+{
+	BufferParams const & bparams = features.bufferParams();
+	Language const * doc_language = bparams.language;
+
+	if (noun() == Font::ON) {
+		LYXERR(Debug::LATEX) << "font.noun: "
+			<< noun()
+			<< endl;
+		features.require("noun");
+		LYXERR(Debug::LATEX) << "Noun enabled. Font: "
+			<< to_utf8(stateText(0))
+			<< endl;
+	}
+	switch (color()) {
+		case Color::none:
+		case Color::inherit:
+		case Color::ignore:
+			// probably we should put here all interface colors used for
+			// font displaying! For now I just add this ones I know of (Jug)
+		case Color::latex:
+		case Color::note:
+			break;
+		default:
+			features.require("color");
+			LYXERR(Debug::LATEX) << "Color enabled. Font: "
+				<< to_utf8(stateText(0))
+				<< endl;
+	}
+
+	if (lang->babel() != doc_language->babel() &&
+		lang != ignore_language &&
+		lang != latex_language)
+	{
+		features.useLanguage(lang);
+		LYXERR(Debug::LATEX) << "Found language "
+			<< lang->lang() << endl;
+	}
 }
 
 

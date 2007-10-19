@@ -20,11 +20,6 @@
 
 #include "FontList.h"
 
-#include "BufferParams.h"
-#include "debug.h"
-#include "Language.h"
-#include "LaTeXFeatures.h"
-
 #include <boost/next_prior.hpp>
 
 #include <algorithm>
@@ -235,47 +230,10 @@ bool FontList::hasChangeInRange(pos_type pos, int len) const
 
 void FontList::validate(LaTeXFeatures & features) const
 {
-	BufferParams const & bparams = features.bufferParams();
-	Language const * doc_language = bparams.language;
-
 	const_iterator fcit = list_.begin();
 	const_iterator fend = list_.end();
-	for (; fcit != fend; ++fcit) {
-		if (fcit->font().noun() == Font::ON) {
-			LYXERR(Debug::LATEX) << "font.noun: "
-					     << fcit->font().noun()
-					     << endl;
-			features.require("noun");
-			LYXERR(Debug::LATEX) << "Noun enabled. Font: "
-					     << to_utf8(fcit->font().stateText(0))
-					     << endl;
-		}
-		switch (fcit->font().color()) {
-		case Color::none:
-		case Color::inherit:
-		case Color::ignore:
-			// probably we should put here all interface colors used for
-			// font displaying! For now I just add this ones I know of (Jug)
-		case Color::latex:
-		case Color::note:
-			break;
-		default:
-			features.require("color");
-			LYXERR(Debug::LATEX) << "Color enabled. Font: "
-					     << to_utf8(fcit->font().stateText(0))
-					     << endl;
-		}
-
-		Language const * language = fcit->font().language();
-		if (language->babel() != doc_language->babel() &&
-		    language != ignore_language &&
-		    language != latex_language)
-		{
-			features.useLanguage(language);
-			LYXERR(Debug::LATEX) << "Found language "
-					     << language->lang() << endl;
-		}
-	}
+	for (; fcit != fend; ++fcit)
+		fcit->font().validate(features);
 }
 
 } // namespace lyx
