@@ -120,7 +120,7 @@ bool FileName::isFileReadable() const
 bool FileName::isWritable() const
 {
 	QFileInfo const fi(toqstr(name_));
-	return fi.isReadable();
+	return fi.isWritable();
 }
 
 
