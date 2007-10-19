@@ -46,6 +46,7 @@
 #include "mathed/InsetMath.h"
 #include "mathed/MathSupport.h"
 
+#include "support/limited_stack.h"
 #include "support/lstrings.h"
 
 #include "frontends/Clipboard.h"
