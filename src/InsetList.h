@@ -26,6 +26,11 @@ class Buffer;
 class InsetList {
 public:
 	///
+	InsetList() {}
+	///
+	InsetList(InsetList const &);
+
+	///
 	class InsetTable {
 	public:
 		///
@@ -70,11 +75,6 @@ public:
 	void increasePosAfterPos(pos_type pos);
 	///
 	void decreasePosAfterPos(pos_type pos);
-
-	/// replicate ourselves.
-	/// Warning: this should be used with care, only
-	/// Paragraph::Pimpl should use it actually.
-	void clone();
 
 private:
 	///

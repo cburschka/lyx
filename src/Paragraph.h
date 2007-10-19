@@ -384,11 +384,11 @@ private:
 	pos_type begin_of_body_;
 
 	/// Pimpl away stuff
-	class Pimpl;
+	class Private;
 	///
-	friend class Paragraph::Pimpl;
+	friend class Paragraph::Private;
 	///
-	Pimpl * pimpl_;
+	Private * d;
 };
 
 } // namespace lyx

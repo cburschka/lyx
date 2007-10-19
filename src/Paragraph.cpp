@@ -73,10 +73,67 @@ using support::suffixIs;
 using support::rsplit;
 using support::rtrim;
 
+namespace {
+/** A font entry covers a range of positions. Notice that the
+    entries in the list are inserted in random order.
+    I don't think it's worth the effort to implement a more effective
+    datastructure, because the number of different fonts in a paragraph
+    is limited. (Asger)
+    Nevertheless, I decided to store fontlist_ using a sorted vector:
+    fontlist_ = { {pos_1,font_1} , {pos_2,font_2} , ... } where
+    pos_1 < pos_2 < ..., font_{i-1} != font_i for all i,
+    and font_i covers the chars in positions pos_{i-1}+1,...,pos_i
+    (font_1 covers the chars 0,...,pos_1) (Dekel)
+*/
+class FontTable
+{
+public:
+	///
+	FontTable(pos_type p, Font const & f)
+		: pos_(p), font_(f)
+	{}
+	///
+	pos_type pos() const { return pos_; }
+	///
+	void pos(pos_type p) { pos_ = p; }
+	///
+	Font const & font() const { return font_; }
+	///
+	void font(Font const & f) { font_ = f;}
+
+private:
+	/// End position of paragraph this font attribute covers
+	pos_type pos_;
+	/** Font. Interpretation of the font values:
+	If a value is Font::INHERIT_*, it means that the font
+	attribute is inherited from either the layout of this
+	paragraph or, in the case of nested paragraphs, from the
+	layout in the environment one level up until completely
+	resolved.
+	The values Font::IGNORE_* and Font::TOGGLE are NOT
+	allowed in these font tables.
+	*/
+	Font font_;
+};
+
+
+class matchFT
+{
+public:
+	/// used by lower_bound and upper_bound
+	int operator()(FontTable const & a, FontTable const & b) const {
+		return a.pos() < b.pos();
+	}
+};
+
+
+typedef std::vector<FontTable> FontList;
+
+}
 
 /////////////////////////////////////////////////////////////////////
 //
-// Paragraph::Pimpl
+// Paragraph::Private
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -84,104 +141,24 @@ class Encoding;
 class Layout;
 
 
-class Paragraph::Pimpl {
+class Paragraph::Private
+{
 public:
 	///
-	Pimpl(Paragraph * owner);
+	Private(Paragraph * owner);
 	/// "Copy constructor"
-	Pimpl(Pimpl const &, Paragraph * owner);
-
-	//
-	// Change tracking
-	//
-	/// look up change at given pos
-	Change const & lookupChange(pos_type pos) const;
-	/// is there a change within the given range ?
-	bool isChanged(pos_type start, pos_type end) const;
-	/// will the paragraph be physically merged with the next
-	/// one if the imaginary end-of-par character is logically deleted?
-	bool isMergedOnEndOfParDeletion(bool trackChanges) const;
-	/// set change for the entire par
-	void setChange(Change const & change);
-	/// set change at given pos
-	void setChange(pos_type pos, Change const & change);
-	/// accept changes within the given range
-	void acceptChanges(BufferParams const & bparams, pos_type start, pos_type end);
-	/// reject changes within the given range
-	void rejectChanges(BufferParams const & bparams, pos_type start, pos_type end);
+	Private(Private const &, Paragraph * owner);
 
 	///
 	value_type getChar(pos_type pos) const;
 	///
 	void insertChar(pos_type pos, value_type c, Change const & change);
-	///
-	void insertInset(pos_type pos, Inset * inset, Change const & change);
-	/// (logically) erase the char at pos; return true if it was actually erased
-	bool eraseChar(pos_type pos, bool trackChanges);
-	/// (logically) erase the given range; return the number of chars actually erased
-	int eraseChars(pos_type start, pos_type end, bool trackChanges);
-	///
-	Inset * inset_owner;
-
-	/** A font entry covers a range of positions. Notice that the
-	    entries in the list are inserted in random order.
-	    I don't think it's worth the effort to implement a more effective
-	    datastructure, because the number of different fonts in a paragraph
-	    is limited. (Asger)
-	    Nevertheless, I decided to store fontlist using a sorted vector:
-	    fontlist = { {pos_1,font_1} , {pos_2,font_2} , ... } where
-	    pos_1 < pos_2 < ..., font_{i-1} != font_i for all i,
-	    and font_i covers the chars in positions pos_{i-1}+1,...,pos_i
-	    (font_1 covers the chars 0,...,pos_1) (Dekel)
-	*/
-	class FontTable  {
-	public:
-		///
-		FontTable(pos_type p, Font const & f)
-			: pos_(p), font_(f)
-		{}
-		///
-		pos_type pos() const { return pos_; }
-		///
-		void pos(pos_type p) { pos_ = p; }
-		///
-		Font const & font() const { return font_; }
-		///
-		void font(Font const & f) { font_ = f;}
-	private:
-		/// End position of paragraph this font attribute covers
-		pos_type pos_;
-		/** Font. Interpretation of the font values:
-		    If a value is Font::INHERIT_*, it means that the font
-		    attribute is inherited from either the layout of this
-		    paragraph or, in the case of nested paragraphs, from the
-		    layout in the environment one level up until completely
-		    resolved.
-		    The values Font::IGNORE_* and Font::TOGGLE are NOT
-		    allowed in these font tables.
-		*/
-		Font font_;
-	};
-	///
-	friend class matchFT;
-	///
-	class matchFT {
-	public:
-		/// used by lower_bound and upper_bound
-		int operator()(FontTable const & a, FontTable const & b) const {
-			return a.pos() < b.pos();
-		}
-	};
-
-	///
-	typedef std::vector<FontTable> FontList;
-	///
-	FontList fontlist;
 
 	/// Output the surrogate pair formed by \p c and \p next to \p os.
 	/// \return the number of characters written.
 	int latexSurrogatePair(odocstream & os, value_type c, value_type next,
 			       Encoding const &);
+
 	/// Output a space in appropriate formatting (or a surrogate pair
 	/// if the next character is a combining character).
 	/// \return whether a surrogate pair was output.
@@ -191,6 +168,7 @@ public:
 			     unsigned int & column,
 			     Font const & font,
 			     Layout const & style);
+
 	/// Output consecutive known unicode chars, belonging to the same
 	/// language as specified by \p preamble, to \p os starting from \p c.
 	/// \return the number of characters written.
@@ -214,23 +192,29 @@ public:
 		      Layout const & layout) const;
 
 	///
+	pos_type size() const { return owner_->size(); }
+
+	/// match a string against a particular point in the paragraph
+	bool isTextAt(std::string const & str, pos_type pos) const;
+	
+	/// Which Paragraph owns us?
+	Paragraph * owner_;
+
+	/// In which Inset?
+	Inset * inset_owner_;
+
+	///
+	FontList fontlist_;
+
+	///
 	unsigned int id_;
 	///
 	static unsigned int paragraph_id;
 	///
-	ParagraphParameters params;
-
-//private:
-	///
-	pos_type size() const { return owner_->size(); }
-	/// match a string against a particular point in the paragraph
-	bool isTextAt(std::string const & str, pos_type pos) const;
+	ParagraphParameters params_;
 
 	/// for recording and looking up changes
 	Changes changes_;
-
-	/// Who owns us?
-	Paragraph * owner_;
 
 	///
 	InsetList insetlist_;
@@ -246,7 +230,7 @@ using std::string;
 
 
 // Initialization of the counter for the paragraph id's,
-unsigned int Paragraph::Pimpl::paragraph_id = 0;
+unsigned int Paragraph::Private::paragraph_id = 0;
 
 namespace {
 
@@ -268,51 +252,48 @@ size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 } // namespace anon
 
 
-Paragraph::Pimpl::Pimpl(Paragraph * owner)
+Paragraph::Private::Private(Paragraph * owner)
 	: owner_(owner)
 {
-	inset_owner = 0;
+	inset_owner_ = 0;
 	id_ = paragraph_id++;
 }
 
 
-Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner)
-	: params(p.params), changes_(p.changes_), owner_(owner)
+Paragraph::Private::Private(Private const & p, Paragraph * owner)
+	: owner_(owner), inset_owner_(p.inset_owner_), params_(p.params_),
+	changes_(p.changes_), insetlist_(p.insetlist_), fontlist_(p.fontlist_)
 {
-	inset_owner = p.inset_owner;
-	fontlist = p.fontlist;
 	id_ = paragraph_id++;
-	insetlist_ = p.insetlist_;
-	insetlist_.clone();
 }
 
 
-bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
+bool Paragraph::isChanged(pos_type start, pos_type end) const
 {
 	BOOST_ASSERT(start >= 0 && start <= size());
 	BOOST_ASSERT(end > start && end <= size() + 1);
 
-	return changes_.isChanged(start, end);
+	return d->changes_.isChanged(start, end);
 }
 
 
-bool Paragraph::Pimpl::isMergedOnEndOfParDeletion(bool trackChanges) const {
+bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const {
 	// keep the logic here in sync with the logic of eraseChars()
 
 	if (!trackChanges) {
 		return true;
 	}
 
-	Change change = changes_.lookup(size());
+	Change change = d->changes_.lookup(size());
 
 	return change.type == Change::INSERTED && change.author == 0;
 }
 
 
-void Paragraph::Pimpl::setChange(Change const & change)
+void Paragraph::setChange(Change const & change)
 {
 	// beware of the imaginary end-of-par character!
-	changes_.set(change, 0, size() + 1);
+	d->changes_.set(change, 0, size() + 1);
 
 	/*
 	 * Propagate the change recursively - but not in case of DELETED!
@@ -328,38 +309,38 @@ void Paragraph::Pimpl::setChange(Change const & change)
 
 	if (change.type != Change::DELETED) {
 		for (pos_type pos = 0; pos < size(); ++pos) {
-			if (owner_->isInset(pos)) {
-				owner_->getInset(pos)->setChange(change);
-			}
+			if (isInset(pos))
+				getInset(pos)->setChange(change);
 		}
 	}
 }
 
 
-void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
+void Paragraph::setChange(pos_type pos, Change const & change)
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
-	changes_.set(change, pos);
+	d->changes_.set(change, pos);
 
 	// see comment in setChange(Change const &) above
 
 	if (change.type != Change::DELETED &&
-	    pos < size() && owner_->isInset(pos)) {
-		owner_->getInset(pos)->setChange(change);
+	    pos < size() && isInset(pos)) {
+		getInset(pos)->setChange(change);
 	}
 }
 
 
-Change const & Paragraph::Pimpl::lookupChange(pos_type pos) const
+Change const & Paragraph::lookupChange(pos_type pos) const
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
-	return changes_.lookup(pos);
+	return d->changes_.lookup(pos);
 }
 
 
-void Paragraph::Pimpl::acceptChanges(BufferParams const & bparams, pos_type start, pos_type end)
+void Paragraph::acceptChanges(BufferParams const & bparams, pos_type start,
+		pos_type end)
 {
 	BOOST_ASSERT(start >= 0 && start <= size());
 	BOOST_ASSERT(end > start && end <= size() + 1);
@@ -368,17 +349,16 @@ void Paragraph::Pimpl::acceptChanges(BufferParams const & bparams, pos_type star
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
 				// accept changes in nested inset
-				if (pos < size() && owner_->isInset(pos)) {
-					owner_->getInset(pos)->acceptChanges(bparams);
-				}
+				if (pos < size() && isInset(pos))
+					getInset(pos)->acceptChanges(bparams);
 
 				break;
 
 			case Change::INSERTED:
-				changes_.set(Change(Change::UNCHANGED), pos);
+				d->changes_.set(Change(Change::UNCHANGED), pos);
 				// also accept changes in nested inset
-				if (pos < size() && owner_->isInset(pos)) {
-					owner_->getInset(pos)->acceptChanges(bparams);
+				if (pos < size() && isInset(pos)) {
+					getInset(pos)->acceptChanges(bparams);
 				}
 				break;
 
@@ -397,7 +377,8 @@ void Paragraph::Pimpl::acceptChanges(BufferParams const & bparams, pos_type star
 }
 
 
-void Paragraph::Pimpl::rejectChanges(BufferParams const & bparams, pos_type start, pos_type end)
+void Paragraph::rejectChanges(BufferParams const & bparams,
+		pos_type start, pos_type end)
 {
 	BOOST_ASSERT(start >= 0 && start <= size());
 	BOOST_ASSERT(end > start && end <= size() + 1);
@@ -406,8 +387,8 @@ void Paragraph::Pimpl::rejectChanges(BufferParams const & bparams, pos_type star
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
 				// reject changes in nested inset
-				if (pos < size() && owner_->isInset(pos)) {
-					owner_->getInset(pos)->rejectChanges(bparams);
+				if (pos < size() && isInset(pos)) {
+					getInset(pos)->rejectChanges(bparams);
 				}
 				break;
 
@@ -422,7 +403,7 @@ void Paragraph::Pimpl::rejectChanges(BufferParams const & bparams, pos_type star
 				break;
 
 			case Change::DELETED:
-				changes_.set(Change(Change::UNCHANGED), pos);
+				d->changes_.set(Change(Change::UNCHANGED), pos);
 
 				// Do NOT reject changes within a deleted inset!
 				// There may be insertions of a co-author inside of it!
@@ -433,7 +414,7 @@ void Paragraph::Pimpl::rejectChanges(BufferParams const & bparams, pos_type star
 }
 
 
-Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
+Paragraph::value_type Paragraph::Private::getChar(pos_type pos) const
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
@@ -441,7 +422,8 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 }
 
 
-void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & change)
+void Paragraph::Private::insertChar(pos_type pos, value_type c,
+		Change const & change)
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
@@ -461,8 +443,8 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 	// Update the font table.
 	FontTable search_font(pos, Font());
 	for (FontList::iterator it
-	      = lower_bound(fontlist.begin(), fontlist.end(), search_font, matchFT());
-	     it != fontlist.end(); ++it)
+	      = lower_bound(fontlist_.begin(), fontlist_.end(), search_font, matchFT());
+	     it != fontlist_.end(); ++it)
 	{
 		it->pos(it->pos() + 1);
 	}
@@ -472,28 +454,28 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 }
 
 
-void Paragraph::Pimpl::insertInset(pos_type pos, Inset * inset,
+void Paragraph::insertInset(pos_type pos, Inset * inset,
 				   Change const & change)
 {
 	BOOST_ASSERT(inset);
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
-	insertChar(pos, META_INSET, change);
+	d->insertChar(pos, META_INSET, change);
 	BOOST_ASSERT(owner_->text_[pos] == META_INSET);
 
 	// Add a new entry in the insetlist_.
-	insetlist_.insert(inset, pos);
+	d->insetlist_.insert(inset, pos);
 }
 
 
-bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
+bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
 	// keep the logic here in sync with the logic of isMergedOnEndOfParDeletion()
 
 	if (trackChanges) {
-		Change change = changes_.lookup(pos);
+		Change change = d->changes_.lookup(pos);
 
 		// set the character to DELETED if
 		//  a) it was previously unchanged or
@@ -517,53 +499,53 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 	}
 
 	// track change
-	changes_.erase(pos);
+	d->changes_.erase(pos);
 
 	// if it is an inset, delete the inset entry
-	if (owner_->text_[pos] == Paragraph::META_INSET) {
-		insetlist_.erase(pos);
-	}
+	if (text_[pos] == Paragraph::META_INSET)
+		d->insetlist_.erase(pos);
 
-	owner_->text_.erase(owner_->text_.begin() + pos);
+	text_.erase(text_.begin() + pos);
 
 	// Erase entries in the tables.
 	FontTable search_font(pos, Font());
 
 	FontList::iterator it =
-		lower_bound(fontlist.begin(),
-			    fontlist.end(),
+		lower_bound(d->fontlist_.begin(),
+			    d->fontlist_.end(),
 			    search_font, matchFT());
-	if (it != fontlist.end() && it->pos() == pos &&
+	FontList::iterator begin = d->fontlist_.begin();
+	if (it != d->fontlist_.end() && it->pos() == pos &&
 	    (pos == 0 ||
-	     (it != fontlist.begin()
+	     (it != begin
 	      && boost::prior(it)->pos() == pos - 1))) {
 		// If it is a multi-character font
 		// entry, we just make it smaller
 		// (see update below), otherwise we
 		// should delete it.
-		unsigned int const i = it - fontlist.begin();
-		fontlist.erase(fontlist.begin() + i);
-		it = fontlist.begin() + i;
-		if (i > 0 && i < fontlist.size() &&
-		    fontlist[i - 1].font() == fontlist[i].font()) {
-			fontlist.erase(fontlist.begin() + i - 1);
-			it = fontlist.begin() + i - 1;
+		unsigned int const i = it - begin;
+		d->fontlist_.erase(begin + i);
+		it = begin + i;
+		if (i > 0 && i < d->fontlist_.size() &&
+		    d->fontlist_[i - 1].font() == d->fontlist_[i].font()) {
+			d->fontlist_.erase(begin + i - 1);
+			it = begin + i - 1;
 		}
 	}
 
 	// Update all other entries
-	FontList::iterator fend = fontlist.end();
+	FontList::iterator fend = d->fontlist_.end();
 	for (; it != fend; ++it)
 		it->pos(it->pos() - 1);
 
 	// Update the insetlist_
-	insetlist_.decreasePosAfterPos(pos);
+	d->insetlist_.decreasePosAfterPos(pos);
 
 	return true;
 }
 
 
-int Paragraph::Pimpl::eraseChars(pos_type start, pos_type end, bool trackChanges)
+int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 {
 	BOOST_ASSERT(start >= 0 && start <= size());
 	BOOST_ASSERT(end >= start && end <= size() + 1);
@@ -577,7 +559,7 @@ int Paragraph::Pimpl::eraseChars(pos_type start, pos_type end, bool trackChanges
 }
 
 
-int Paragraph::Pimpl::latexSurrogatePair(odocstream & os, value_type c,
+int Paragraph::Private::latexSurrogatePair(odocstream & os, value_type c,
 		value_type next, Encoding const & encoding)
 {
 	// Writing next here may circumvent a possible font change between
@@ -594,7 +576,7 @@ int Paragraph::Pimpl::latexSurrogatePair(odocstream & os, value_type c,
 }
 
 
-bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
+bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 				       odocstream & os, TexRow & texrow,
 				       pos_type & i,
 				       unsigned int & column,
@@ -641,7 +623,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 }
 
 
-int Paragraph::Pimpl::knownLangChars(odocstream & os,
+int Paragraph::Private::knownLangChars(odocstream & os,
 				     value_type c,
 				     string & preamble,
 				     Change & runningChange,
@@ -662,12 +644,12 @@ int Paragraph::Pimpl::knownLangChars(odocstream & os,
 		// Stop here if next character belongs to another
 		// language or there is a change tracking status.
 		if (!Encodings::isKnownLangChar(next, preamble) ||
-		    runningChange != lookupChange(i + 1))
+		    runningChange != owner_->lookupChange(i + 1))
 			break;
 		Font prev_font;
 		bool found = false;
-		FontList::const_iterator cit = fontlist.begin();
-		FontList::const_iterator end = fontlist.end();
+		FontList::const_iterator cit = fontlist_.begin();
+		FontList::const_iterator end = fontlist_.end();
 		for (; cit != end; ++cit) {
 			if (cit->pos() >= i && !found) {
 				prev_font = cit->font();
@@ -701,7 +683,7 @@ int Paragraph::Pimpl::knownLangChars(odocstream & os,
 }
 
 
-bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
+bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
 {
 	pos_type const len = str.length();
 
@@ -718,8 +700,8 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 	}
 
 	// is there a font change in middle of the word?
-	FontList::const_iterator cit = fontlist.begin();
-	FontList::const_iterator end = fontlist.end();
+	FontList::const_iterator cit = fontlist_.begin();
+	FontList::const_iterator end = fontlist_.end();
 	for (; cit != end; ++cit) {
 		if (cit->pos() >= pos)
 			break;
@@ -731,7 +713,7 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 }
 
 
-void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
+void Paragraph::Private::simpleTeXSpecialChars(Buffer const & buf,
 					     BufferParams const & bparams,
 					     odocstream & os,
 					     TexRow & texrow,
@@ -799,9 +781,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			break;
 		}
 
-		if (lookupChange(i).type == Change::DELETED) {
+		if (owner_->lookupChange(i).type == Change::DELETED) {
 			if( ++runparams.inDeletedInset == 1)
-				runparams.changeOfDeletedInset = lookupChange(i);
+				runparams.changeOfDeletedInset = owner_->lookupChange(i);
 		}
 
 		if (inset->canTrackChanges()) {
@@ -878,7 +860,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			column += os.tellp() - len;
 		}
 
-		if (lookupChange(i).type == Change::DELETED) {
+		if (owner_->lookupChange(i).type == Change::DELETED) {
 			--runparams.inDeletedInset;
 		}
 	}
@@ -1053,13 +1035,13 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 }
 
 
-void Paragraph::Pimpl::validate(LaTeXFeatures & features,
+void Paragraph::Private::validate(LaTeXFeatures & features,
 				Layout const & layout) const
 {
 	BufferParams const & bparams = features.bufferParams();
 
 	// check the params.
-	if (!params.spacing().isDefault())
+	if (!params_.spacing().isDefault())
 		features.require("setspace");
 
 	// then the layouts
@@ -1068,8 +1050,8 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 	// then the fonts
 	Language const * doc_language = bparams.language;
 
-	FontList::const_iterator fcit = fontlist.begin();
-	FontList::const_iterator fend = fontlist.end();
+	FontList::const_iterator fcit = fontlist_.begin();
+	FontList::const_iterator fend = fontlist_.end();
 	for (; fcit != fend; ++fcit) {
 		if (fcit->font().noun() == Font::ON) {
 			LYXERR(Debug::LATEX) << "font.noun: "
@@ -1107,7 +1089,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		}
 	}
 
-	if (!params.leftIndent().zero())
+	if (!params_.leftIndent().zero())
 		features.require("ParagraphLeftIndent");
 
 	// then the insets
@@ -1148,10 +1130,10 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 namespace lyx {
 
 Paragraph::Paragraph()
-	: begin_of_body_(0), pimpl_(new Paragraph::Pimpl(this))
+	: begin_of_body_(0), d(new Paragraph::Private(this))
 {
 	itemdepth = 0;
-	params().clear();
+	d->params_.clear();
 }
 
 
@@ -1159,22 +1141,22 @@ Paragraph::Paragraph(Paragraph const & par)
 	: itemdepth(par.itemdepth),
 	layout_(par.layout_),
 	text_(par.text_), begin_of_body_(par.begin_of_body_),
-	pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
+	d(new Paragraph::Private(*par.d, this))
 {
 }
 
 
 Paragraph & Paragraph::operator=(Paragraph const & par)
 {
-	// needed as we will destroy the pimpl_ before copying it
+	// needed as we will destroy the private part before copying it
 	if (&par != this) {
 		itemdepth = par.itemdepth;
 		layout_ = par.layout();
 		text_ = par.text_;
 		begin_of_body_ = par.begin_of_body_;
 
-		delete pimpl_;
-		pimpl_ = new Pimpl(*par.pimpl_, this);
+		delete d;
+		d = new Private(*par.d, this);
 	}
 	return *this;
 }
@@ -1182,10 +1164,7 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 
 Paragraph::~Paragraph()
 {
-	delete pimpl_;
-	//
-	//lyxerr << "Paragraph::paragraph_id = "
-	//       << Paragraph::paragraph_id << endl;
+	delete d;
 }
 
 
@@ -1220,7 +1199,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 	int column = 0;
 	for (pos_type i = 0; i <= size(); ++i) {
 
-		Change change = pimpl_->lookupChange(i);
+		Change change = lookupChange(i);
 		Changes::lyxMarkChange(os, column, running_change, change);
 		running_change = change;
 
@@ -1293,19 +1272,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 
 void Paragraph::validate(LaTeXFeatures & features) const
 {
-	pimpl_->validate(features, *layout());
-}
-
-
-bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
-{
-	return pimpl_->eraseChar(pos, trackChanges);
-}
-
-
-int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
-{
-	return pimpl_->eraseChars(start, end, trackChanges);
+	d->validate(features, *layout());
 }
 
 
@@ -1320,7 +1287,7 @@ void Paragraph::insert(pos_type start, docstring const & str,
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 			   bool trackChanges)
 {
-	pimpl_->insertChar(pos, c, Change(trackChanges ?
+	d->insertChar(pos, c, Change(trackChanges ?
 			   Change::INSERTED : Change::UNCHANGED));
 }
 
@@ -1328,7 +1295,7 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 			   Font const & font, bool trackChanges)
 {
-	pimpl_->insertChar(pos, c, Change(trackChanges ?
+	d->insertChar(pos, c, Change(trackChanges ?
 			   Change::INSERTED : Change::UNCHANGED));
 	setFont(pos, font);
 }
@@ -1337,22 +1304,15 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 			   Font const & font, Change const & change)
 {
-	pimpl_->insertChar(pos, c, change);
+	d->insertChar(pos, c, change);
 	setFont(pos, font);
-}
-
-
-void Paragraph::insertInset(pos_type pos, Inset * inset,
-			    Change const & change)
-{
-	pimpl_->insertInset(pos, inset, change);
 }
 
 
 void Paragraph::insertInset(pos_type pos, Inset * inset,
 			    Font const & font, Change const & change)
 {
-	pimpl_->insertInset(pos, inset, change);
+	insertInset(pos, inset, change);
 	// Set the font/language of the inset...
 	setFont(pos, font);
 }
@@ -1360,7 +1320,7 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 
 bool Paragraph::insetAllowed(InsetCode code)
 {
-	return !pimpl_->inset_owner || pimpl_->inset_owner->insetAllowed(code);
+	return !d->inset_owner_ || d->inset_owner_->insetAllowed(code);
 }
 
 
@@ -1373,8 +1333,8 @@ Font const Paragraph::getFontSettings(BufferParams const & bparams,
 		BOOST_ASSERT(pos <= size());
 	}
 
-	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
-	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
+	FontList::const_iterator cit = d->fontlist_.begin();
+	FontList::const_iterator end = d->fontlist_.end();
 	for (; cit != end; ++cit)
 		if (cit->pos() >= pos)
 			break;
@@ -1394,8 +1354,8 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 	BOOST_ASSERT(pos <= size());
 	pos_type start = 0;
 
-	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
-	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
+	FontList::const_iterator cit = d->fontlist_.begin();
+	FontList::const_iterator end = d->fontlist_.end();
 	for (; cit != end; ++cit) {
 		if (cit->pos() >= pos) {
 			if (pos >= beginOfBody())
@@ -1419,8 +1379,8 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 // Gets uninstantiated font setting at position 0
 Font const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 {
-	if (!empty() && !pimpl_->fontlist.empty())
-		return pimpl_->fontlist[0].font();
+	if (!empty() && !d->fontlist_.empty())
+		return d->fontlist_[0].font();
 
 	return Font(Font::ALL_INHERIT, bparams.language);
 }
@@ -1477,11 +1437,11 @@ Font const Paragraph::getLayoutFont
 Font_size Paragraph::highestFontInRange
 	(pos_type startpos, pos_type endpos, Font_size def_size) const
 {
-	if (pimpl_->fontlist.empty())
+	if (d->fontlist_.empty())
 		return def_size;
 
-	Pimpl::FontList::const_iterator end_it = pimpl_->fontlist.begin();
-	Pimpl::FontList::const_iterator const end = pimpl_->fontlist.end();
+	FontList::const_iterator end_it = d->fontlist_.begin();
+	FontList::const_iterator const end = d->fontlist_.end();
 	for (; end_it != end; ++end_it) {
 		if (end_it->pos() >= endpos)
 			break;
@@ -1490,7 +1450,7 @@ Font_size Paragraph::highestFontInRange
 	if (end_it != end)
 		++end_it;
 
-	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
+	FontList::const_iterator cit = d->fontlist_.begin();
 	for (; cit != end; ++cit) {
 		if (cit->pos() >= startpos)
 			break;
@@ -1560,9 +1520,9 @@ void Paragraph::setFont(pos_type pos, Font const & font)
 	// in a new kernel. (Asger)
 	// Next search font table
 
-	Pimpl::FontList::iterator beg = pimpl_->fontlist.begin();
-	Pimpl::FontList::iterator it = beg;
-	Pimpl::FontList::iterator endit = pimpl_->fontlist.end();
+	FontList::iterator beg = d->fontlist_.begin();
+	FontList::iterator it = beg;
+	FontList::iterator endit = d->fontlist_.end();
 	for (; it != endit; ++it) {
 		if (it->pos() >= pos)
 			break;
@@ -1570,44 +1530,44 @@ void Paragraph::setFont(pos_type pos, Font const & font)
 	size_t const i = distance(beg, it);
 	bool notfound = (it == endit);
 
-	if (!notfound && pimpl_->fontlist[i].font() == font)
+	if (!notfound && d->fontlist_[i].font() == font)
 		return;
 
 	bool begin = pos == 0 || notfound ||
-		(i > 0 && pimpl_->fontlist[i - 1].pos() == pos - 1);
+		(i > 0 && d->fontlist_[i - 1].pos() == pos - 1);
 	// Is position pos is a beginning of a font block?
-	bool end = !notfound && pimpl_->fontlist[i].pos() == pos;
+	bool end = !notfound && d->fontlist_[i].pos() == pos;
 	// Is position pos is the end of a font block?
 	if (begin && end) { // A single char block
-		if (i + 1 < pimpl_->fontlist.size() &&
-		    pimpl_->fontlist[i + 1].font() == font) {
+		if (i + 1 < d->fontlist_.size() &&
+		    d->fontlist_[i + 1].font() == font) {
 			// Merge the singleton block with the next block
-			pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i);
-			if (i > 0 && pimpl_->fontlist[i - 1].font() == font)
-				pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i - 1);
-		} else if (i > 0 && pimpl_->fontlist[i - 1].font() == font) {
+			d->fontlist_.erase(d->fontlist_.begin() + i);
+			if (i > 0 && d->fontlist_[i - 1].font() == font)
+				d->fontlist_.erase(d->fontlist_.begin() + i - 1);
+		} else if (i > 0 && d->fontlist_[i - 1].font() == font) {
 			// Merge the singleton block with the previous block
-			pimpl_->fontlist[i - 1].pos(pos);
-			pimpl_->fontlist.erase(pimpl_->fontlist.begin() + i);
+			d->fontlist_[i - 1].pos(pos);
+			d->fontlist_.erase(d->fontlist_.begin() + i);
 		} else
-			pimpl_->fontlist[i].font(font);
+			d->fontlist_[i].font(font);
 	} else if (begin) {
-		if (i > 0 && pimpl_->fontlist[i - 1].font() == font)
-			pimpl_->fontlist[i - 1].pos(pos);
+		if (i > 0 && d->fontlist_[i - 1].font() == font)
+			d->fontlist_[i - 1].pos(pos);
 		else
-			pimpl_->fontlist.insert(pimpl_->fontlist.begin() + i,
-					Pimpl::FontTable(pos, font));
+			d->fontlist_.insert(d->fontlist_.begin() + i,
+					FontTable(pos, font));
 	} else if (end) {
-		pimpl_->fontlist[i].pos(pos - 1);
-		if (!(i + 1 < pimpl_->fontlist.size() &&
-		      pimpl_->fontlist[i + 1].font() == font))
-			pimpl_->fontlist.insert(pimpl_->fontlist.begin() + i + 1,
-					Pimpl::FontTable(pos, font));
+		d->fontlist_[i].pos(pos - 1);
+		if (!(i + 1 < d->fontlist_.size() &&
+		      d->fontlist_[i + 1].font() == font))
+			d->fontlist_.insert(d->fontlist_.begin() + i + 1,
+					FontTable(pos, font));
 	} else { // The general case. The block is splitted into 3 blocks
-		pimpl_->fontlist.insert(pimpl_->fontlist.begin() + i,
-				Pimpl::FontTable(pos - 1, pimpl_->fontlist[i].font()));
-		pimpl_->fontlist.insert(pimpl_->fontlist.begin() + i + 1,
-				Pimpl::FontTable(pos, font));
+		d->fontlist_.insert(d->fontlist_.begin() + i,
+				FontTable(pos - 1, d->fontlist_[i].font()));
+		d->fontlist_.insert(d->fontlist_.begin() + i + 1,
+				FontTable(pos, font));
 	}
 }
 
@@ -1616,7 +1576,7 @@ void Paragraph::makeSameLayout(Paragraph const & par)
 {
 	layout(par.layout());
 	// move to pimpl?
-	params() = par.params();
+	d->params_ = par.params();
 }
 
 
@@ -1641,7 +1601,7 @@ bool Paragraph::stripLeadingSpaces(bool trackChanges)
 
 bool Paragraph::hasSameLayout(Paragraph const & par) const
 {
-	return par.layout() == layout() && params().sameLayout(par.params());
+	return par.layout() == layout() && d->params_.sameLayout(par.params());
 }
 
 
@@ -1799,8 +1759,8 @@ void Paragraph::setBeginOfBody()
 int Paragraph::getPositionOfInset(Inset const * inset) const
 {
 	// Find the entry.
-	InsetList::const_iterator it = pimpl_->insetlist_.begin();
-	InsetList::const_iterator end = pimpl_->insetlist_.end();
+	InsetList::const_iterator it = d->insetlist_.begin();
+	InsetList::const_iterator end = d->insetlist_.end();
 	for (; it != end; ++it)
 		if (it->inset == inset)
 			return it->pos;
@@ -1810,8 +1770,8 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 
 InsetBibitem * Paragraph::bibitem() const
 {
-	if (!pimpl_->insetlist_.empty()) {
-		Inset * inset = pimpl_->insetlist_.begin()->inset;
+	if (!d->insetlist_.empty()) {
+		Inset * inset = d->insetlist_.begin()->inset;
 		if (inset->lyxCode() == BIBITEM_CODE)
 			return static_cast<InsetBibitem *>(inset);
 	}
@@ -2107,7 +2067,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		}
 
 		Change const & change = runparams.inDeletedInset ? runparams.changeOfDeletedInset
-		                                                 : pimpl_->lookupChange(i);
+		                                                 : lookupChange(i);
 
 		if (bparams.outputChanges && runningChange != change) {
 			if (open_font) {
@@ -2188,7 +2148,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			// simpleTeXSpecialChars ignores spaces if
 			// style->pass_thru is false.
 			if (i != body_pos - 1) {
-				if (pimpl_->simpleTeXBlanks(
+				if (d->simpleTeXBlanks(
 						*(runparams.encoding), os, texrow,
 						i, column, font, *style))
 					// A surrogate pair was output. We
@@ -2205,7 +2165,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		rp.free_spacing = style->free_spacing;
 		rp.local_font = &font;
 		rp.intitle = style->intitle;
-		pimpl_->simpleTeXSpecialChars(buf, bparams, os,
+		d->simpleTeXSpecialChars(buf, bparams, os,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
 					runningChange, *style, i, column, c);
@@ -2500,8 +2460,8 @@ void Paragraph::changeLanguage(BufferParams const & bparams,
 bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 {
 	Language const * doc_language =	bparams.language;
-	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
-	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
+	FontList::const_iterator cit = d->fontlist_.begin();
+	FontList::const_iterator end = d->fontlist_.end();
 
 	for (; cit != end; ++cit)
 		if (cit->font().language() != ignore_language &&
@@ -2543,56 +2503,13 @@ docstring const Paragraph::asString(Buffer const & buffer,
 
 void Paragraph::setInsetOwner(Inset * inset)
 {
-	pimpl_->inset_owner = inset;
-}
-
-
-Change const & Paragraph::lookupChange(pos_type pos) const
-{
-	BOOST_ASSERT(pos <= size());
-	return pimpl_->lookupChange(pos);
-}
-
-
-bool Paragraph::isChanged(pos_type start, pos_type end) const
-{
-	return pimpl_->isChanged(start, end);
-}
-
-
-bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const
-{
-	return pimpl_->isMergedOnEndOfParDeletion(trackChanges);
-}
-
-
-void Paragraph::setChange(Change const & change)
-{
-	pimpl_->setChange(change);
-}
-
-
-void Paragraph::setChange(pos_type pos, Change const & change)
-{
-	pimpl_->setChange(pos, change);
-}
-
-
-void Paragraph::acceptChanges(BufferParams const & bparams, pos_type start, pos_type end)
-{
-	return pimpl_->acceptChanges(bparams, start, end);
-}
-
-
-void Paragraph::rejectChanges(BufferParams const & bparams, pos_type start, pos_type end)
-{
-	return pimpl_->rejectChanges(bparams, start, end);
+	d->inset_owner_ = inset;
 }
 
 
 int Paragraph::id() const
 {
-	return pimpl_->id_;
+	return d->id_;
 }
 
 
@@ -2610,26 +2527,26 @@ void Paragraph::layout(LayoutPtr const & new_layout)
 
 Inset * Paragraph::inInset() const
 {
-	return pimpl_->inset_owner;
+	return d->inset_owner_;
 }
 
 
 InsetCode Paragraph::ownerCode() const
 {
-	return pimpl_->inset_owner
-		? pimpl_->inset_owner->lyxCode() : NO_CODE;
+	return d->inset_owner_ ?
+		d->inset_owner_->lyxCode() : NO_CODE;
 }
 
 
 ParagraphParameters & Paragraph::params()
 {
-	return pimpl_->params;
+	return d->params_;
 }
 
 
 ParagraphParameters const & Paragraph::params() const
 {
-	return pimpl_->params;
+	return d->params_;
 }
 
 
@@ -2702,10 +2619,10 @@ int Paragraph::checkBiblio(bool track_changes)
 	if (layout()->labeltype != LABEL_BIBLIO)
 		return 0;
 
-	bool hasbibitem = !pimpl_->insetlist_.empty()
+	bool hasbibitem = !d->insetlist_.empty()
 		// Insist on it being in pos 0
 		&& getChar(0) == Paragraph::META_INSET
-		&& pimpl_->insetlist_.begin()->inset->lyxCode() == BIBITEM_CODE;
+		&& d->insetlist_.begin()->inset->lyxCode() == BIBITEM_CODE;
 
 	docstring oldkey;
 	docstring oldlabel;
@@ -2716,8 +2633,8 @@ int Paragraph::checkBiblio(bool track_changes)
 	// we're assuming there's only one of these, which there
 	// should be.
 	int erasedInsetPosition = -1;
-	InsetList::iterator it = pimpl_->insetlist_.begin();
-	InsetList::iterator end = pimpl_->insetlist_.end();
+	InsetList::iterator it = d->insetlist_.begin();
+	InsetList::iterator end = d->insetlist_.end();
 	for (; it != end; ++it)
 		if (it->inset->lyxCode() == BIBITEM_CODE
 		    && it->pos > 0) {
@@ -2738,7 +2655,7 @@ int Paragraph::checkBiblio(bool track_changes)
 	//erase one. So we give its properties to the beginning inset.
 	if (hasbibitem) {
 		InsetBibitem * inset =
-			static_cast<InsetBibitem *>(pimpl_->insetlist_.begin()->inset);
+			static_cast<InsetBibitem *>(d->insetlist_.begin()->inset);
 		if (!oldkey.empty())
 			inset->setParam("key", oldkey);
 		inset->setParam("label", oldlabel);
@@ -2761,7 +2678,7 @@ int Paragraph::checkBiblio(bool track_changes)
 
 void Paragraph::checkAuthors(AuthorList const & authorList)
 {
-	pimpl_->changes_.checkAuthors(authorList);
+	d->changes_.checkAuthors(authorList);
 }
 
 
@@ -2785,13 +2702,13 @@ bool Paragraph::isDeleted(pos_type pos) const
 
 InsetList const & Paragraph::insetList() const
 {
-	return pimpl_->insetlist_;
+	return d->insetlist_;
 }
 
 
 Inset * Paragraph::releaseInset(pos_type pos)
 {
-	Inset * inset = pimpl_->insetlist_.release(pos);
+	Inset * inset = d->insetlist_.release(pos);
 	/// does not honour change tracking!
 	eraseChar(pos, false);
 	return inset;
@@ -2800,13 +2717,13 @@ Inset * Paragraph::releaseInset(pos_type pos)
 
 Inset * Paragraph::getInset(pos_type pos)
 {
-	return pimpl_->insetlist_.get(pos);
+	return d->insetlist_.get(pos);
 }
 
 
 Inset const * Paragraph::getInset(pos_type pos) const
 {
-	return pimpl_->insetlist_.get(pos);
+	return d->insetlist_.get(pos);
 }
 
 } // namespace lyx

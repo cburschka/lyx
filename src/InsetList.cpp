@@ -138,8 +138,9 @@ void InsetList::decreasePosAfterPos(pos_type pos)
 }
 
 
-void InsetList::clone()
+InsetList::InsetList(InsetList const & il)
 {
+	list_ = il.list_;
 	List::iterator it = list_.begin();
 	List::iterator end = list_.end();
 	for (; it != end; ++it)
