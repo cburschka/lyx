@@ -1852,7 +1852,7 @@ void PrefShortcuts::on_modifyPB_pressed()
 void PrefShortcuts::on_removePB_pressed()
 {
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
-	for (size_t i = 0; i < items.size(); ++i)
+	for (int i = 0; i < items.size(); ++i)
 		items[i]->setText(1, QString());
 }
 
@@ -1863,20 +1863,20 @@ void PrefShortcuts::on_searchPB_pressed()
 		searchLE->text(), 
 		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive));
 	
-	if (!matched.size() > 0)
+	if (matched.isEmpty())
 		return;
 	
 	QList<QTreeWidgetItem *> const items = shortcutsTW->selectedItems();
 	// clear current selection
-	for (size_t i = 0; i < items.size(); ++i)
+	for (int i = 0; i < items.size(); ++i)
 		items[i]->setSelected(false);
-	for (size_t i = 0; i < matched.size(); ++i) {
+	for (int i = 0; i < matched.size(); ++i) {
 		if (matched[i]->flags() & Qt::ItemIsSelectable)
 			matched[i]->setSelected(true);
 		matched[i]->setExpanded(true);
 	}
 	// scroll to the first selectable item
-	for (size_t i = 0; i < matched.size(); ++i)
+	for (int i = 0; i < matched.size(); ++i)
 		if (matched[i]->flags() & Qt::ItemIsSelectable) {
 			shortcutsTW->scrollToItem(matched[i]);
 			break;
