@@ -3,11 +3,16 @@
 Format 4
 
 InsetLayout URL
-  LyXType charstyle
-  LatexType	command
+  LyXType custom
+  LatexType command
   LatexName url
+  Decoration minimalistic
+  LabelString URL
   Font
-  	Family Typewriter
+    Family Typewriter
+  EndFont
+  LabelFont
+    Family Typewriter
   EndFont
   Preamble
     \usepackage{url}
