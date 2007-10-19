@@ -261,8 +261,8 @@ Paragraph::Private::Private(Paragraph * owner)
 
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
-	: owner_(owner), inset_owner_(p.inset_owner_), params_(p.params_),
-	changes_(p.changes_), insetlist_(p.insetlist_), fontlist_(p.fontlist_)
+	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
+	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_)
 {
 	id_ = paragraph_id++;
 }
@@ -461,7 +461,7 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
 	d->insertChar(pos, META_INSET, change);
-	BOOST_ASSERT(owner_->text_[pos] == META_INSET);
+	BOOST_ASSERT(d->owner_->text_[pos] == META_INSET);
 
 	// Add a new entry in the insetlist_.
 	d->insetlist_.insert(inset, pos);
