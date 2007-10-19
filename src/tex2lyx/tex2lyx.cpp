@@ -65,7 +65,6 @@ using support::makeAbsPath;
 using support::onlyPath;
 using support::os::internal_path;
 using support::rtrim;
-using support::isFileReadable;
 
 namespace fs = boost::filesystem;
 
@@ -473,7 +472,7 @@ bool tex2lyx(FileName const & infilename, std::ostream &os)
 
 bool tex2lyx(string const &infilename, FileName const &outfilename)
 {
-	if (isFileReadable(outfilename)) {
+	if (outfilename.isFileReadable()) {
 		if (overwrite_files) {
 			cerr << "Overwriting existing file "
 			     << outfilename << endl;
