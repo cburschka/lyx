@@ -186,7 +186,7 @@ std::string InsetCommandParams::getDefaultCmd(InsetCode code) {
 		case INDEX_CODE: 
 			return "index";
 		case INDEX_PRINT_CODE:
-			return "print_index";
+			return "printindex";
 		case LABEL_CODE:
 			return "label";
 		case NOMENCL_CODE:
