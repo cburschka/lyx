@@ -270,7 +270,7 @@ namespace lyx {
 namespace frontend {
 
 GuiCommand::GuiCommand(LyXView & lv, string const & name)
-	: GuiDialog(lv, name), params_(name), lfun_name_(name)
+	: GuiDialog(lv, name), params_(insetCode(name)), lfun_name_(name)
 {
 }
 

@@ -60,7 +60,7 @@ using support::getVectorFromString;
 
 
 GuiInclude::GuiInclude(LyXView & lv)
-	: GuiDialog(lv, "include"), params_("include")
+	: GuiDialog(lv, "include"), params_(INCLUDE_CODE)
 {
 	setupUi(this);
 	setViewTitle(_("Child Document"));

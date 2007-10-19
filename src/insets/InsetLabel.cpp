@@ -54,7 +54,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetCommandParams p("label");
+		InsetCommandParams p(LABEL_CODE);
 		// FIXME UNICODE
 		InsetCommandMailer::string2params("label", to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {

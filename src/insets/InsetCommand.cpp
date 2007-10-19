@@ -112,7 +112,7 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_MODIFY: {
-		InsetCommandParams p(p_.insetType());
+		InsetCommandParams p(p_.code());
 		InsetCommandMailer::string2params(mailer_name_, to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
 			cur.noUpdate();
@@ -187,6 +187,7 @@ string const InsetCommandMailer::inset2string(Buffer const &) const
 }
 
 
+//FIXME This could take an InsetCode instead of a string
 bool InsetCommandMailer::string2params(
 	string const & name, string const & in, InsetCommandParams & params)
 {
@@ -219,6 +220,7 @@ bool InsetCommandMailer::string2params(
 }
 
 
+//FIXME This could take an InsetCode instead of a string
 string const
 InsetCommandMailer::params2string(string const & name,
 				  InsetCommandParams const & params)

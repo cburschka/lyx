@@ -20,7 +20,7 @@ namespace lyx {
 
 
 InsetHFill::InsetHFill()
-	: InsetCommand(InsetCommandParams("hfill"), std::string())
+	: InsetCommand(InsetCommandParams(HFILL_CODE), std::string())
 {}
 
 

@@ -15,6 +15,7 @@
 
 
 #include "InsetCommand.h"
+#include "InsetCode.h"
 
 #include "BiblioInfo.h"
 
@@ -63,7 +64,7 @@ private:
 	class Cache {
 	public:
 		///
-		Cache() : engine(biblio::ENGINE_BASIC), params("citation") {}
+		Cache() : engine(biblio::ENGINE_BASIC), params(CITE_CODE) {}
 		///
 		biblio::CiteEngine engine;
 		///

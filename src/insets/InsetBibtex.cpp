@@ -89,7 +89,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetCommandParams p("bibtex");
+		InsetCommandParams p(BIBTEX_CODE);
 		try {
 			if (!InsetCommandMailer::string2params("bibtex", 
 					to_utf8(cmd.argument()), p)) {

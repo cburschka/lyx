@@ -52,7 +52,7 @@ using support::makeDisplayPath;
 static std::string const lfun_name_ = "ref";
 
 GuiRef::GuiRef(LyXView & lv)
-	: GuiDialog(lv, "ref"), params_("ref")
+	: GuiDialog(lv, "ref"), params_(REF_CODE)
 {
 	setupUi(this);
 	setViewTitle(_("Cross-reference"));

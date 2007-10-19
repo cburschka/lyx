@@ -147,7 +147,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			return new InsetOptArg(params);
 
 		case LFUN_BIBITEM_INSERT:
-			return new InsetBibitem(InsetCommandParams("bibitem"));
+			return new InsetBibitem(InsetCommandParams(BIBITEM_CODE));
 
 		case LFUN_FLOAT_INSERT: {
 			// check if the float type exists
@@ -182,7 +182,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			return new InsetIndex(params);
 
 		case LFUN_NOMENCL_INSERT: {
-			InsetCommandParams icp("nomenclature");
+			InsetCommandParams icp(NOMENCL_CODE);
 			icp["symbol"] = cmd.argument().empty() ?
 				bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
 				cmd.argument();
@@ -211,13 +211,13 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 		}
 
 		case LFUN_INDEX_PRINT:
-			return new InsetPrintIndex(InsetCommandParams("index_print"));
+			return new InsetPrintIndex(InsetCommandParams(INDEX_PRINT_CODE));
 
 		case LFUN_NOMENCL_PRINT:
-			return new InsetPrintNomencl(InsetCommandParams("nomencl_print"));
+			return new InsetPrintNomencl(InsetCommandParams(NOMENCL_PRINT_CODE));
 
 		case LFUN_TOC_INSERT:
-			return new InsetTOC(InsetCommandParams("toc"));
+			return new InsetTOC(InsetCommandParams(TOC_CODE));
 
 		case LFUN_ENVIRONMENT_INSERT:
 			return new InsetEnvironment(params, cmd.argument());
@@ -237,103 +237,104 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				lyxerr << "No such inset '" << name << "'.";
 				return 0;
 			
-				case BIBITEM_CODE: {
-					InsetCommandParams icp(name);
-					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-					return new InsetBibitem(icp);
-				}
-		
-				case BIBTEX_CODE: {
-					InsetCommandParams icp(name);
-					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-					return new InsetBibtex(icp);
-				}
-
-				case CITE_CODE: {
-					InsetCommandParams icp("citation");
-					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-					return new InsetCitation(icp);
-				}
-		
-				case ERT_CODE: {
-					InsetCollapsable::CollapseStatus st;
-					InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
-					return new InsetERT(params, st);
-				}
-
-				case LISTINGS_CODE: {
-					InsetListingsParams par;
-					InsetListingsMailer::string2params(to_utf8(cmd.argument()), par);
-					return new InsetListings(params, par);
-				}
-
-				case EXTERNAL_CODE: {
-					Buffer const & buffer = bv->buffer();
-					InsetExternalParams iep;
-					InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, iep);
-					auto_ptr<InsetExternal> inset(new InsetExternal);
-					inset->setParams(iep, buffer);
-					return inset.release();
-				}
-
-				case GRAPHICS_CODE: {
-					Buffer const & buffer = bv->buffer();
-					InsetGraphicsParams igp;
-					InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, igp);
-					auto_ptr<InsetGraphics> inset(new InsetGraphics);
-					inset->setParams(igp);
-					return inset.release();
-				}
-
-				case HYPERLINK_CODE: {
-					InsetCommandParams icp(name);
-					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-					return new InsetHyperlink(icp);
-				}
-
-				case INCLUDE_CODE: {
-					InsetCommandParams iip(name);
-					InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
-					return new InsetInclude(iip);
-				}
-
+			case BIBITEM_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetBibitem(icp);
+			}
+			
+			case BIBTEX_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetBibtex(icp);
+			}
+			
+			case CITE_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetCitation(icp);
+			}
+			
+			case ERT_CODE: {
+				InsetCollapsable::CollapseStatus st;
+				InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
+				return new InsetERT(params, st);
+			}
+				
+			case LISTINGS_CODE: {
+				InsetListingsParams par;
+				InsetListingsMailer::string2params(to_utf8(cmd.argument()), par);
+				return new InsetListings(params, par);
+			}
+			
+			case EXTERNAL_CODE: {
+				Buffer const & buffer = bv->buffer();
+				InsetExternalParams iep;
+				InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, iep);
+				auto_ptr<InsetExternal> inset(new InsetExternal);
+				inset->setParams(iep, buffer);
+				return inset.release();
+			}
+			
+			case GRAPHICS_CODE: {
+				Buffer const & buffer = bv->buffer();
+				InsetGraphicsParams igp;
+				InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, igp);
+				auto_ptr<InsetGraphics> inset(new InsetGraphics);
+				inset->setParams(igp);
+				return inset.release();
+			}
+			
+			case HYPERLINK_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetHyperlink(icp);
+			}
+			
+			case INCLUDE_CODE: {
+				InsetCommandParams iip(code);
+				InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
+				return new InsetInclude(iip);
+			}
+			
 			case INDEX_CODE:
 				return new InsetIndex(params);
-
-				case NOMENCL_CODE: {
-					InsetCommandParams icp(name);
-					InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), icp);
-					return new InsetNomencl(icp);
-				}
-
-				case LABEL_CODE: {
-					InsetCommandParams icp(name);
-					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-					return new InsetLabel(icp);
-				}
-
-				case REF_CODE: {
-					InsetCommandParams icp(name);
-					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-					return new InsetRef(icp, bv->buffer());
-				}
-
-				case TOC_CODE: {
-					InsetCommandParams icp("toc");
-					InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-					return new InsetTOC(icp);
-				}
-
-				case VSPACE_CODE: {
-					VSpace vspace;
-					InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
-					return new InsetVSpace(vspace);
-				}
-		
-				default:
-					lyxerr << "Inset '" << name << "' not permitted with LFUN_INSET_INSERT."
-							<< std::endl;
-					return 0;
+			
+			case NOMENCL_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), icp);
+				return new InsetNomencl(icp);
+			}
+			
+			case LABEL_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetLabel(icp);
+			}
+			
+			case REF_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetRef(icp, bv->buffer());
+			}
+			
+			case TOC_CODE: {
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetTOC(icp);
+			}
+			
+			case VSPACE_CODE: {
+				VSpace vspace;
+				InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
+				return new InsetVSpace(vspace);
+			}
+			
+			default:
+				lyxerr << "Inset '" << name << "' not permitted with LFUN_INSET_INSERT."
+						<< std::endl;
+				return 0;
+			
 			}
 			} //end LFUN_INSET_INSERT
 
@@ -417,7 +418,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		//we do not know in advance that we're dealing with a command inset.
 		//Worst case, we could put it in each case below. Better, we could
 		//pass the lexer to the constructor and let the params be built there.
-		InsetCommandParams inscmd(insetType);
+		InsetCommandParams inscmd(code);
 		inscmd.read(lex);
 
 		switch (code) {
@@ -499,7 +500,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 						    InsetBranchParams()));
 		} else if (tmptok == "Include") {
 			//FIXME
-			InsetCommandParams p("include");
+			InsetCommandParams p(INCLUDE_CODE);
 			inset.reset(new InsetInclude(p));
 		} else if (tmptok == "Environment") {
 			lex.next();

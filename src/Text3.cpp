@@ -1060,7 +1060,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_HYPERLINK_INSERT: {
-		InsetCommandParams p("href");
+		InsetCommandParams p(HYPERLINK_CODE);
 		docstring content;
 		if (cur.selection()) {
 			content = cur.selectionAsString(false);
@@ -1079,7 +1079,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_LABEL_INSERT: {
-		InsetCommandParams p("label");
+		InsetCommandParams p(LABEL_CODE);
 		// Try to generate a valid label
 		p["name"] = (cmd.argument().empty()) ?
 			cur.getPossibleLabel() :

@@ -139,6 +139,20 @@ InsetCode insetCode(std::string const & name)
 }
 
 
+std::string insetName(InsetCode c) 
+{
+	static TranslatorMap const translator = build_translator();
+
+	TranslatorMap::const_iterator it =  translator.begin();
+	TranslatorMap::const_iterator end = translator.end();
+	for (; it != end; ++it) {
+		if (it->second == c)
+			return it->first;
+	}
+	return std::string();
+}
+
+
 void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 {
 	cur.updateFlags(Update::Force | Update::FitCursor);

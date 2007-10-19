@@ -1095,7 +1095,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (old_label.empty())
 			old_label = default_label;
 
-		InsetCommandParams p("label");
+		InsetCommandParams p(LABEL_CODE);
 		p["name"] = cmd.argument().empty() ? old_label : cmd.argument();
 		std::string const data = InsetCommandMailer::params2string("label", p);
 
@@ -1112,7 +1112,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		//lyxerr << "arg: " << to_utf8(cmd.argument()) << endl;
 		std::string const name = cmd.getArg(0);
 		if (name == "label") {
-			InsetCommandParams p("label");
+			InsetCommandParams p(LABEL_CODE);
 			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), p);
 			docstring str = p["name"];
 			cur.recordUndoInset();

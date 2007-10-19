@@ -1409,7 +1409,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			case REF_CODE:
 			case TOC_CODE:
 			case HYPERLINK_CODE: {
-				InsetCommandParams p(name);
+				InsetCommandParams p(code);
 				data = InsetCommandMailer::params2string(name, p);
 				break;
 			} 
@@ -1419,7 +1419,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (data.empty())
 					// default type is requested
 					data = "include";
-				InsetCommandParams p("include", data);
+				InsetCommandParams p(INCLUDE_CODE, data);
 				data = InsetIncludeMailer::params2string(p);
 				break;
 			} 
@@ -1435,7 +1435,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			} 
 			case CITE_CODE: {
-				InsetCommandParams p("cite");
+				InsetCommandParams p(CITE_CODE);
 				data = InsetCommandMailer::params2string(name, p);
 				break;
 			} 
@@ -1539,7 +1539,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					arg = token(argument, '|', 0);
 					opt1 = token(argument, '|', 1);
 				}
-				InsetCommandParams icp("cite");
+				InsetCommandParams icp(CITE_CODE);
 				icp["key"] = from_utf8(arg);
 				if (!opt1.empty())
 					icp["before"] = from_utf8(opt1);

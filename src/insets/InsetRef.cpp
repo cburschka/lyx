@@ -84,7 +84,7 @@ int InsetRef::latex(Buffer const &, odocstream & os,
 {
 	// We don't want to output p_["name"], since that is only used 
 	// in docbook. So we construct new params, without it, and use that.
-	InsetCommandParams p("ref", getCmdName());
+	InsetCommandParams p(REF_CODE, getCmdName());
 	p["reference"] = getParam("reference");
 	os << escape(p.getCommand());
 	return 0;

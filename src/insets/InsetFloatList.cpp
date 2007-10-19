@@ -38,12 +38,12 @@ using std::ostream;
 
 
 InsetFloatList::InsetFloatList()
-	: InsetCommand(InsetCommandParams("floatlist"), "toc")
+	: InsetCommand(InsetCommandParams(FLOAT_LIST_CODE), "toc")
 {}
 
 
 InsetFloatList::InsetFloatList(string const & type)
-	: InsetCommand(InsetCommandParams("floatlist"), "toc")
+	: InsetCommand(InsetCommandParams(FLOAT_LIST_CODE), "toc")
 {
 	setParam("type", from_ascii(type));
 }

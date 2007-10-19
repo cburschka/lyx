@@ -174,7 +174,7 @@ int InsetMathRef::docbook(Buffer const & buf, odocstream & os,
 
 string const InsetMathRef::createDialogStr(string const & name) const
 {
-	InsetCommandParams icp(to_ascii(commandname()));
+	InsetCommandParams icp(REF_CODE, to_ascii(commandname()));
 	icp["reference"] = asString(cell(0));
 	if (!cell(1).empty())
 		icp["name"] = asString(cell(1));

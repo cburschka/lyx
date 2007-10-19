@@ -13,6 +13,7 @@
 #ifndef INSETCOMMANDPARAMS_H
 #define INSETCOMMANDPARAMS_H
 
+#include "InsetCode.h"
 #include "support/docstring.h"
 
 #include <iosfwd>
@@ -25,15 +26,16 @@ class Lexer;
 
 class InsetCommandParams {
 public:
-	/// Construct parameters for inset \p insetType, using
-	/// \p insetType as default for \p cmdName_.
-	explicit InsetCommandParams(std::string const & insetType);
-	/// Construct parameters for inset \p insetType with
+	/// Construct parameters for inset of type \p code.
+	explicit InsetCommandParams(InsetCode code);
+	/// Construct parameters for inset of type \p code with
 	/// command name \p cmdName.
-	explicit InsetCommandParams(std::string const & insetType,
+	explicit InsetCommandParams(InsetCode code,
 			std::string const & cmdName);
 	///
-	std::string insetType() const { return insetType_; }
+	std::string insetType() const { return insetName(insetCode_); }
+	///
+	InsetCode code() const { return insetCode_; }
 	///
 	void read(Lexer &);
 	/// Parse the command
@@ -82,21 +84,21 @@ private:
 		/// Tells whether a parameter is optional
 		bool const * optional;
 	};
-	/// Get information for inset type \p insetType.
+	/// Get information for inset type \p code.
 	/// Returns 0 if the inset is not known.
-	static CommandInfo const * findInfo(std::string const & insetType);
-	/// Get information for \p insetType and command \p cmdName.
+	static CommandInfo const * findInfo(InsetCode code);
+	/// Get information for \p code and command \p cmdName.
 	/// Returns 0 if the combination is not known.
 	/// Don't call this without first making sure the command name is
 	/// acceptable to the inset.
-	static CommandInfo const * findInfo(std::string const & insetType,
+	static CommandInfo const * findInfo(InsetCode code,
 	                                    std::string const & cmdName);
 	///
-	std::string getDefaultCmd(std::string insetType);
+	std::string getDefaultCmd(InsetCode);
 	/// Description of all command properties
 	CommandInfo const * info_;
 	/// what kind of inset we're the parameters for
-	std::string insetType_;
+	InsetCode insetCode_;
 	/// The name of this command as it appears in .lyx and .tex files
 	std::string cmdName_;
 	///
