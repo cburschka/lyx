@@ -929,8 +929,6 @@ void Paragraph::Private::simpleTeXSpecialChars(Buffer const & buf,
 void Paragraph::Private::validate(LaTeXFeatures & features,
 				Layout const & layout) const
 {
-	BufferParams const & bparams = features.bufferParams();
-
 	// check the params.
 	if (!params_.spacing().isDefault())
 		features.require("setspace");
@@ -939,47 +937,9 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 	features.useLayout(layout.name());
 
 	// then the fonts
-	Language const * doc_language = bparams.language;
+	fontlist_.validate(features);
 
-	FontList::const_iterator fcit = fontlist_.begin();
-	FontList::const_iterator fend = fontlist_.end();
-	for (; fcit != fend; ++fcit) {
-		if (fcit->font().noun() == Font::ON) {
-			LYXERR(Debug::LATEX) << "font.noun: "
-					     << fcit->font().noun()
-					     << endl;
-			features.require("noun");
-			LYXERR(Debug::LATEX) << "Noun enabled. Font: "
-					     << to_utf8(fcit->font().stateText(0))
-					     << endl;
-		}
-		switch (fcit->font().color()) {
-		case Color::none:
-		case Color::inherit:
-		case Color::ignore:
-			// probably we should put here all interface colors used for
-			// font displaying! For now I just add this ones I know of (Jug)
-		case Color::latex:
-		case Color::note:
-			break;
-		default:
-			features.require("color");
-			LYXERR(Debug::LATEX) << "Color enabled. Font: "
-					     << to_utf8(fcit->font().stateText(0))
-					     << endl;
-		}
-
-		Language const * language = fcit->font().language();
-		if (language->babel() != doc_language->babel() &&
-		    language != ignore_language &&
-		    language != latex_language)
-		{
-			features.useLanguage(language);
-			LYXERR(Debug::LATEX) << "Found language "
-					     << language->lang() << endl;
-		}
-	}
-
+	// then the indentation
 	if (!params_.leftIndent().zero())
 		features.require("ParagraphLeftIndent");
 
