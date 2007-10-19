@@ -31,6 +31,8 @@
 
 #include "insets/Inset.h"
 
+#include "support/limited_stack.h"
+
 #include <algorithm>
 
 using std::advance;

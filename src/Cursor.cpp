@@ -43,8 +43,6 @@
 #include "mathed/InsetMathScript.h"
 #include "mathed/MacroTable.h"
 
-#include "support/limited_stack.h"
-
 #include <boost/assert.hpp>
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
