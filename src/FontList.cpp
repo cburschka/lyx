@@ -31,6 +31,18 @@ using std::ostream;
 
 namespace lyx {
 
+namespace {
+
+class matchFT
+{
+public:
+	/// used by lower_bound and upper_bound
+	int operator()(FontTable const & a, FontTable const & b) const {
+		return a.pos() < b.pos();
+	}
+};
+
+} // anon namespace
 
 FontList::iterator FontList::fontIterator(pos_type pos)
 {

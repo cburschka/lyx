@@ -55,13 +55,8 @@
 #include "support/convert.h"
 #include "support/unicode.h"
 
-#include <boost/bind.hpp>
-#include <boost/next_prior.hpp>
-
-#include <algorithm>
 #include <sstream>
 
-using std::distance;
 using std::endl;
 using std::string;
 using std::ostream;

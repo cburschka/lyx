@@ -62,16 +62,6 @@ private:
 	Font font_;
 };
 
-
-class matchFT
-{
-public:
-	/// used by lower_bound and upper_bound
-	int operator()(FontTable const & a, FontTable const & b) const {
-		return a.pos() < b.pos();
-	}
-};
-
 ///
 class FontList
 {
