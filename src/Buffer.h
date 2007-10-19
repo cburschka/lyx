@@ -15,10 +15,9 @@
 #include "insets/InsetCode.h"
 
 #include "support/FileName.h"
-#include "support/limited_stack.h"
-#include "support/types.h"
 #include "support/docstring.h"
 #include "support/docstream.h"
+#include "support/types.h"
 
 #include <iosfwd>
 #include <string>
