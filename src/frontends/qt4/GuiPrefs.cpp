@@ -1692,8 +1692,8 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 	shortcutsTW->headerItem()->setText(0, qt_("Function"));
 	shortcutsTW->headerItem()->setText(1, qt_("Shortcut"));
 	shortcutsTW->setSortingEnabled(true);
-	// I am not sure if this is a good idea.
-	shortcutsTW->setSelectionMode(QAbstractItemView::MultiSelection);
+	// Multi-selection can be annoying.
+	// shortcutsTW->setSelectionMode(QAbstractItemView::MultiSelection);
 	shortcutsTW->header()->resizeSection(0, 200);
 
 	connect(bindFilePB, SIGNAL(clicked()),
@@ -1863,30 +1863,27 @@ void PrefShortcuts::on_searchPB_pressed()
 		searchLE->text(), 
 		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive));
 	
-	if (matched.isEmpty())
-		return;
-	
-	QList<QTreeWidgetItem *> const items = shortcutsTW->selectedItems();
-	// clear current selection
-	for (int i = 0; i < items.size(); ++i)
-		items[i]->setSelected(false);
+	// hide everyone (to avoid searching in matched QList repeatedly
+	QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Selectable);
+	while (*it)
+		shortcutsTW->setItemHidden(*it++, true);
+	// show matched items
 	for (int i = 0; i < matched.size(); ++i) {
-		if (matched[i]->flags() & Qt::ItemIsSelectable)
-			matched[i]->setSelected(true);
-		matched[i]->setExpanded(true);
+		shortcutsTW->setItemHidden(matched[i], false);
+        shortcutsTW->setItemExpanded(matched[i], true);
 	}
-	// scroll to the first selectable item
-	for (int i = 0; i < matched.size(); ++i)
-		if (matched[i]->flags() & Qt::ItemIsSelectable) {
-			shortcutsTW->scrollToItem(matched[i]);
-			break;
-		}
 }
 
 
 void PrefShortcuts::on_searchLE_textChanged()
 {
 	searchPB->setEnabled(!searchLE->text().isEmpty());
+	if (searchLE->text().isEmpty()) {
+		// show all hidden items
+		QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Hidden);
+		while (*it)
+			shortcutsTW->setItemHidden(*it++, false);
+	}
 }
 	
 
@@ -1894,6 +1891,12 @@ void PrefShortcuts::setShortcut()
 {
 }
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// PrefIdentity
+//
+/////////////////////////////////////////////////////////////////////
 
 PrefIdentity::PrefIdentity(QWidget * parent)
 	: PrefModule(_("Identity"), 0, parent)
