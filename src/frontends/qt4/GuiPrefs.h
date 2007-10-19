@@ -371,8 +371,16 @@ public Q_SLOTS:
 	void on_modifyPB_pressed();
 	void on_removePB_pressed();
 	void on_searchPB_pressed();
+	void on_searchLE_textChanged();
+	///
+	void on_shortcutsTW_itemSelectionChanged();
+	void setShortcut();
+	void on_shortcutsTW_itemDoubleClicked();
 private:
+	///
 	GuiShortcutDialog * shortcut_;
+	///
+	ButtonController shortcut_bc_;
 };
 
 

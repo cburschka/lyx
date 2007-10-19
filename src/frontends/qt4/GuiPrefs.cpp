@@ -1692,6 +1692,8 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 	shortcutsTW->headerItem()->setText(0, qt_("Function"));
 	shortcutsTW->headerItem()->setText(1, qt_("Shortcut"));
 	shortcutsTW->setSortingEnabled(true);
+	// I am not sure if this is a good idea.
+	shortcutsTW->setSelectionMode(QAbstractItemView::MultiSelection);
 	shortcutsTW->header()->resizeSection(0, 200);
 
 	connect(bindFilePB, SIGNAL(clicked()),
@@ -1700,6 +1702,16 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	
 	shortcut_ = new GuiShortcutDialog(this);
+	shortcut_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
+	shortcut_bc_.setOK(shortcut_->okPB);
+	shortcut_bc_.setCancel(shortcut_->cancelPB);
+
+	connect(shortcut_->okPB, SIGNAL(clicked()), 
+		shortcut_, SLOT(accept()));
+	connect(shortcut_->cancelPB, SIGNAL(clicked()), 
+		shortcut_, SLOT(reject()));
+	connect(shortcut_->okPB, SIGNAL(clicked()), 
+		shortcut_, SLOT(setShortcut()));
 }
 
 
@@ -1716,19 +1728,24 @@ void PrefShortcuts::update(LyXRC const & rc)
 
 	QTreeWidgetItem * editItem = new QTreeWidgetItem(shortcutsTW);
 	editItem->setText(0, toqstr("Cursor, Mouse and Editing functions"));
+	editItem->setFlags(editItem->flags() & ~Qt::ItemIsSelectable);
 
 	// first insert a few categories
 	QTreeWidgetItem * mathItem = new QTreeWidgetItem(shortcutsTW);
 	mathItem->setText(0, toqstr("Mathematical Symbols"));
+	mathItem->setFlags(mathItem->flags() & ~Qt::ItemIsSelectable);
 	
 	QTreeWidgetItem * bufferItem = new QTreeWidgetItem(shortcutsTW);
 	bufferItem->setText(0, toqstr("Buffer and Window"));
+	bufferItem->setFlags(bufferItem->flags() & ~Qt::ItemIsSelectable);
 	
 	QTreeWidgetItem * layoutItem = new QTreeWidgetItem(shortcutsTW);
 	layoutItem->setText(0, toqstr("Font, Layouts and Textclasses"));
+	layoutItem->setFlags(layoutItem->flags() & ~Qt::ItemIsSelectable);
 
 	QTreeWidgetItem * systemItem = new QTreeWidgetItem(shortcutsTW);
 	systemItem->setText(0, toqstr("System and Miscellaneous"));
+	systemItem->setFlags(systemItem->flags() & ~Qt::ItemIsSelectable);
 
 	// listBindings(unbound=true) lists all bound and unbound lfuns
 	KeyMap::BindingList const bindinglist = theTopLevelKeymap().listBindings(true);
@@ -1746,7 +1763,7 @@ void PrefShortcuts::update(LyXRC const & rc)
 		// if an item with the same lfun already exists, insert as a
 		// child item to that item.
 		// WARNING: this can be slow.
-		QList<QTreeWidgetItem*> items = shortcutsTW->findItems(lfun, 
+		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun, 
 			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
 		if (!items.empty())
 			newItem = new QTreeWidgetItem(items[0]);
@@ -1777,11 +1794,29 @@ void PrefShortcuts::update(LyXRC const & rc)
 
 		newItem->setText(0, lfun);
 		newItem->setText(1, shortcut);
-		// FIXME: TreeItem can not be user-checkable?
-		newItem->setFlags(newItem->flags() | Qt::ItemIsEditable
-			| Qt::ItemIsSelectable | Qt::ItemIsUserCheckable);
+		
+		//newItem->setFlags(newItem->flags() | Qt::ItemIsEditable
+		//	| Qt::ItemIsSelectable | Qt::ItemIsUserCheckable);
 	}
 	shortcutsTW->sortItems(0, Qt::AscendingOrder);
+	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
+	modifyPB->setEnabled(!items.isEmpty());
+	removePB->setEnabled(!items.isEmpty() && !items[0]->text(1).isEmpty());
+	searchPB->setEnabled(!searchLE->text().isEmpty());
+}
+
+
+void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
+{
+	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
+	modifyPB->setEnabled(!items.isEmpty());
+	removePB->setEnabled(!items.isEmpty() && !items[0]->text(1).isEmpty());
+}
+
+
+void PrefShortcuts::on_shortcutsTW_itemDoubleClicked()
+{
+	on_modifyPB_pressed();
 }
 
 
@@ -1797,27 +1832,66 @@ void PrefShortcuts::select_bind()
 
 void PrefShortcuts::on_newPB_pressed()
 {
-	// FIXME
+	shortcut_->lfunED->clear();
+	shortcut_->shortcutED->clear();
+	shortcut_->setWindowTitle(toqstr("Create new shortcut"));
 	shortcut_->exec();
 }
 
 
 void PrefShortcuts::on_modifyPB_pressed()
 {
-	// FIXME
+	QTreeWidgetItem * item = shortcutsTW->currentItem();
+	shortcut_->lfunED->setText(item->text(0));
+	shortcut_->shortcutED->setText(item->text(1));
+	shortcut_->setWindowTitle(toqstr("Modify shortcut"));
 	shortcut_->exec();
 }
 
 
 void PrefShortcuts::on_removePB_pressed()
 {
-	//
+	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
+	for (size_t i = 0; i < items.size(); ++i)
+		items[i]->setText(1, QString());
 }
 
 
 void PrefShortcuts::on_searchPB_pressed()
 {
-	//
+	QList<QTreeWidgetItem *> matched = shortcutsTW->findItems(
+		searchLE->text(), 
+		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive));
+	
+	if (!matched.size() > 0)
+		return;
+	
+	QList<QTreeWidgetItem *> const items = shortcutsTW->selectedItems();
+	// clear current selection
+	for (size_t i = 0; i < items.size(); ++i)
+		items[i]->setSelected(false);
+	for (size_t i = 0; i < matched.size(); ++i) {
+		if (matched[i]->flags() & Qt::ItemIsSelectable)
+			matched[i]->setSelected(true);
+		matched[i]->setExpanded(true);
+	}
+	// scroll to the first selectable item
+	for (size_t i = 0; i < matched.size(); ++i)
+		if (matched[i]->flags() & Qt::ItemIsSelectable) {
+			shortcutsTW->scrollToItem(matched[i]);
+			break;
+		}
+}
+
+
+void PrefShortcuts::on_searchLE_textChanged()
+{
+	searchPB->setEnabled(!searchLE->text().isEmpty());
+}
+	
+
+void PrefShortcuts::setShortcut()
+{
 }
 
 
