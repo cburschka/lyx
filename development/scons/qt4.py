@@ -207,7 +207,7 @@ def generate(env):
 	env['QT4_UICDECLFLAGS'] = CLVar('')
 	env['QT4_MOCFROMHFLAGS'] = CLVar('')
 	env['QT4_MOCFROMCXXFLAGS'] = CLVar('-i')
-	env['QT4_QRCFLAGS'] = ''
+	env['QT4_QRCFLAGS'] = '-name Resources'
 
 	# suffixes/prefixes for the headers / sources to generate
 	env['QT4_MOCHPREFIX'] = ''
