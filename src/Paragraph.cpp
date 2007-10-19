@@ -1224,13 +1224,8 @@ Font const Paragraph::getFontSettings(BufferParams const & bparams,
 		BOOST_ASSERT(pos <= size());
 	}
 
-	FontList::const_iterator cit = d->fontlist_.begin();
-	FontList::const_iterator end = d->fontlist_.end();
-	for (; cit != end; ++cit)
-		if (cit->pos() >= pos)
-			break;
-
-	if (cit != end)
+	FontList::const_iterator cit = d->fontlist_.fontIterator(pos);
+	if (cit != d->fontlist_.end())
 		return cit->font();
 
 	if (pos == size() && !empty())
