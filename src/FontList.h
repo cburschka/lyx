@@ -96,6 +96,13 @@ public:
 	///
 	void decreasePosAfterPos(pos_type pos);
 
+	/// Returns the height of the highest font in range
+	Font_size highestInRange(
+		pos_type startpos,
+		pos_type endpos,
+		Font_size def_size
+		) const;
+
 private:
 	///
 	List list_;

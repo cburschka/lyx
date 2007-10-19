@@ -1338,34 +1338,7 @@ Font const Paragraph::getLayoutFont
 Font_size Paragraph::highestFontInRange
 	(pos_type startpos, pos_type endpos, Font_size def_size) const
 {
-	if (d->fontlist_.empty())
-		return def_size;
-
-	FontList::const_iterator end_it = d->fontlist_.begin();
-	FontList::const_iterator const end = d->fontlist_.end();
-	for (; end_it != end; ++end_it) {
-		if (end_it->pos() >= endpos)
-			break;
-	}
-
-	if (end_it != end)
-		++end_it;
-
-	FontList::const_iterator cit = d->fontlist_.begin();
-	for (; cit != end; ++cit) {
-		if (cit->pos() >= startpos)
-			break;
-	}
-
-	Font::FONT_SIZE maxsize = Font::SIZE_TINY;
-	for (; cit != end_it; ++cit) {
-		Font::FONT_SIZE size = cit->font().size();
-		if (size == Font::INHERIT_SIZE)
-			size = def_size;
-		if (size > maxsize && size <= Font::SIZE_HUGER)
-			maxsize = size;
-	}
-	return maxsize;
+	return d->fontlist_.highestInRange(startpos, endpos, def_size);
 }
 
 

@@ -177,4 +177,38 @@ void FontList::set(pos_type pos, Font const & font)
 	}
 }
 
+
+Font_size FontList::highestInRange
+	(pos_type startpos, pos_type endpos, Font_size def_size) const
+{
+	if (list_.empty())
+		return def_size;
+
+	const_iterator end_it = list_.begin();
+	const_iterator const end = list_.end();
+	for (; end_it != end; ++end_it) {
+		if (end_it->pos() >= endpos)
+			break;
+	}
+
+	if (end_it != end)
+		++end_it;
+
+	FontList::const_iterator cit = list_.begin();
+	for (; cit != end; ++cit) {
+		if (cit->pos() >= startpos)
+			break;
+	}
+
+	Font::FONT_SIZE maxsize = Font::SIZE_TINY;
+	for (; cit != end_it; ++cit) {
+		Font::FONT_SIZE size = cit->font().size();
+		if (size == Font::INHERIT_SIZE)
+			size = def_size;
+		if (size > maxsize && size <= Font::SIZE_HUGER)
+			maxsize = size;
+	}
+	return maxsize;
+}
+
 } // namespace lyx
