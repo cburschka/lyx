@@ -33,6 +33,7 @@
 #include "Layout.h"
 #include "Length.h"
 #include "Font.h"
+#include "FontList.h"
 #include "LyXRC.h"
 #include "Messages.h"
 #include "OutputParams.h"
@@ -73,73 +74,12 @@ using support::suffixIs;
 using support::rsplit;
 using support::rtrim;
 
-namespace {
-/** A font entry covers a range of positions. Notice that the
-    entries in the list are inserted in random order.
-    I don't think it's worth the effort to implement a more effective
-    datastructure, because the number of different fonts in a paragraph
-    is limited. (Asger)
-    Nevertheless, I decided to store fontlist_ using a sorted vector:
-    fontlist_ = { {pos_1,font_1} , {pos_2,font_2} , ... } where
-    pos_1 < pos_2 < ..., font_{i-1} != font_i for all i,
-    and font_i covers the chars in positions pos_{i-1}+1,...,pos_i
-    (font_1 covers the chars 0,...,pos_1) (Dekel)
-*/
-class FontTable
-{
-public:
-	///
-	FontTable(pos_type p, Font const & f)
-		: pos_(p), font_(f)
-	{}
-	///
-	pos_type pos() const { return pos_; }
-	///
-	void pos(pos_type p) { pos_ = p; }
-	///
-	Font const & font() const { return font_; }
-	///
-	void font(Font const & f) { font_ = f;}
-
-private:
-	/// End position of paragraph this font attribute covers
-	pos_type pos_;
-	/** Font. Interpretation of the font values:
-	If a value is Font::INHERIT_*, it means that the font
-	attribute is inherited from either the layout of this
-	paragraph or, in the case of nested paragraphs, from the
-	layout in the environment one level up until completely
-	resolved.
-	The values Font::IGNORE_* and Font::TOGGLE are NOT
-	allowed in these font tables.
-	*/
-	Font font_;
-};
-
-
-class matchFT
-{
-public:
-	/// used by lower_bound and upper_bound
-	int operator()(FontTable const & a, FontTable const & b) const {
-		return a.pos() < b.pos();
-	}
-};
-
-
-typedef std::vector<FontTable> FontList;
-
-}
 
 /////////////////////////////////////////////////////////////////////
 //
 // Paragraph::Private
 //
 /////////////////////////////////////////////////////////////////////
-
-class Encoding;
-class Layout;
-
 
 class Paragraph::Private
 {
@@ -441,13 +381,7 @@ void Paragraph::Private::insertChar(pos_type pos, value_type c,
 	owner_->text_.insert(owner_->text_.begin() + pos, c);
 
 	// Update the font table.
-	FontTable search_font(pos, Font());
-	for (FontList::iterator it
-	      = lower_bound(fontlist_.begin(), fontlist_.end(), search_font, matchFT());
-	     it != fontlist_.end(); ++it)
-	{
-		it->pos(it->pos() + 1);
-	}
+	fontlist_.increasePosAfterPos(pos);
 
 	// Update the insets
 	insetlist_.increasePosAfterPos(pos);
@@ -461,7 +395,7 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
 	d->insertChar(pos, META_INSET, change);
-	BOOST_ASSERT(d->owner_->text_[pos] == META_INSET);
+	BOOST_ASSERT(text_[pos] == META_INSET);
 
 	// Add a new entry in the insetlist_.
 	d->insetlist_.insert(inset, pos);
@@ -507,36 +441,8 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 
 	text_.erase(text_.begin() + pos);
 
-	// Erase entries in the tables.
-	FontTable search_font(pos, Font());
-
-	FontList::iterator it =
-		lower_bound(d->fontlist_.begin(),
-			    d->fontlist_.end(),
-			    search_font, matchFT());
-	FontList::iterator begin = d->fontlist_.begin();
-	if (it != d->fontlist_.end() && it->pos() == pos &&
-	    (pos == 0 ||
-	     (it != begin
-	      && boost::prior(it)->pos() == pos - 1))) {
-		// If it is a multi-character font
-		// entry, we just make it smaller
-		// (see update below), otherwise we
-		// should delete it.
-		unsigned int const i = it - begin;
-		d->fontlist_.erase(begin + i);
-		it = begin + i;
-		if (i > 0 && i < d->fontlist_.size() &&
-		    d->fontlist_[i - 1].font() == d->fontlist_[i].font()) {
-			d->fontlist_.erase(begin + i - 1);
-			it = begin + i - 1;
-		}
-	}
-
-	// Update all other entries
-	FontList::iterator fend = d->fontlist_.end();
-	for (; it != fend; ++it)
-		it->pos(it->pos() - 1);
+	// Update the fontlist_
+	d->fontlist_.erase(pos);
 
 	// Update the insetlist_
 	d->insetlist_.decreasePosAfterPos(pos);
@@ -1380,7 +1286,7 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 Font const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 {
 	if (!empty() && !d->fontlist_.empty())
-		return d->fontlist_[0].font();
+		return d->fontlist_.begin()->font();
 
 	return Font(Font::ALL_INHERIT, bparams.language);
 }
@@ -1516,59 +1422,8 @@ void Paragraph::setFont(pos_type pos, Font const & font)
 	// First, reduce font against layout/label font
 	// Update: The setCharFont() routine in text2.cpp already
 	// reduces font, so we don't need to do that here. (Asger)
-	// No need to simplify this because it will disappear
-	// in a new kernel. (Asger)
-	// Next search font table
-
-	FontList::iterator beg = d->fontlist_.begin();
-	FontList::iterator it = beg;
-	FontList::iterator endit = d->fontlist_.end();
-	for (; it != endit; ++it) {
-		if (it->pos() >= pos)
-			break;
-	}
-	size_t const i = distance(beg, it);
-	bool notfound = (it == endit);
-
-	if (!notfound && d->fontlist_[i].font() == font)
-		return;
-
-	bool begin = pos == 0 || notfound ||
-		(i > 0 && d->fontlist_[i - 1].pos() == pos - 1);
-	// Is position pos is a beginning of a font block?
-	bool end = !notfound && d->fontlist_[i].pos() == pos;
-	// Is position pos is the end of a font block?
-	if (begin && end) { // A single char block
-		if (i + 1 < d->fontlist_.size() &&
-		    d->fontlist_[i + 1].font() == font) {
-			// Merge the singleton block with the next block
-			d->fontlist_.erase(d->fontlist_.begin() + i);
-			if (i > 0 && d->fontlist_[i - 1].font() == font)
-				d->fontlist_.erase(d->fontlist_.begin() + i - 1);
-		} else if (i > 0 && d->fontlist_[i - 1].font() == font) {
-			// Merge the singleton block with the previous block
-			d->fontlist_[i - 1].pos(pos);
-			d->fontlist_.erase(d->fontlist_.begin() + i);
-		} else
-			d->fontlist_[i].font(font);
-	} else if (begin) {
-		if (i > 0 && d->fontlist_[i - 1].font() == font)
-			d->fontlist_[i - 1].pos(pos);
-		else
-			d->fontlist_.insert(d->fontlist_.begin() + i,
-					FontTable(pos, font));
-	} else if (end) {
-		d->fontlist_[i].pos(pos - 1);
-		if (!(i + 1 < d->fontlist_.size() &&
-		      d->fontlist_[i + 1].font() == font))
-			d->fontlist_.insert(d->fontlist_.begin() + i + 1,
-					FontTable(pos, font));
-	} else { // The general case. The block is splitted into 3 blocks
-		d->fontlist_.insert(d->fontlist_.begin() + i,
-				FontTable(pos - 1, d->fontlist_[i].font()));
-		d->fontlist_.insert(d->fontlist_.begin() + i + 1,
-				FontTable(pos, font));
-	}
+	
+	d->fontlist_.set(pos, font);
 }
 
 

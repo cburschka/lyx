@@ -142,6 +142,8 @@ liblyxcore_la_SOURCES = \
 	Font.h \
 	FontIterator.cpp \
 	FontIterator.h \
+	FontList.cpp \
+	FontList.h \
 	Format.cpp \
 	Format.h \
 	FuncRequest.cpp \
