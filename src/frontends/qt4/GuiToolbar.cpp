@@ -45,9 +45,10 @@
 
 static void initializeResources()
 {
+	extern void qInitResources();
 	static bool initialized = false;
 	if (!initialized) {
-		Q_INIT_RESOURCE(Resources);
+		qInitResources();
 		initialized = true;
 	}
 }

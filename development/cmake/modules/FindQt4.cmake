@@ -787,7 +787,7 @@ if(QT4_QMAKE_FOUND)
       set(outfile ${CMAKE_CURRENT_BINARY_DIR}/qrc_${outfilename}.cxx)
       ADD_CUSTOM_COMMAND(OUTPUT ${outfile}
         COMMAND ${QT_RCC_EXECUTABLE}
-        ARGS -name ${outfilename} -o ${outfile} ${infile}
+        ARGS -o ${outfile} ${infile}
         MAIN_DEPENDENCY ${infile} )
       set(${outfiles} ${${outfiles}} ${outfile})
     ENDFOREACH (it)
