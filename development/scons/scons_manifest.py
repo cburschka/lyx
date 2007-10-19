@@ -61,6 +61,7 @@ src_header_files = Split('''
     Floating.h
     Font.h
     FontIterator.h
+    FontList.h
     Format.h
     FuncRequest.h
     FuncStatus.h
@@ -171,6 +172,7 @@ src_pre_files = Split('''
     Floating.cpp
     Font.cpp
     FontIterator.cpp
+    FontList.cpp
     Format.cpp
     FuncRequest.cpp
     FuncStatus.cpp

@@ -66,7 +66,7 @@ Font & FontList::get(pos_type pos)
 {
 	iterator end = list_.end();
 	iterator it = fontIterator(pos);
-	if (it != end && it->pos == pos)
+	if (it != end && it->pos() == pos)
 		return it->font_;
 	static Font dummy;
 	return dummy;
