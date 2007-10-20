@@ -123,7 +123,7 @@ public:
 				   unsigned int & column, value_type const c);
 
 	///
-	void Private::simpleTeXSpecialChar(
+	void simpleTeXSpecialChar(
 				   odocstream & os,
 				   OutputParams & runparams,
 				   Font & running_font,
