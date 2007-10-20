@@ -22,6 +22,7 @@
 #include "support/docstream.h"
 
 #include <boost/shared_ptr.hpp>
+#include <boost/tuple/tuple.hpp>
 
 #include <vector>
 #include <deque>
@@ -42,8 +43,32 @@ public:
 	 */
 	size_t bind(std::string const & seq, FuncRequest const & func);
 
-	// Parse a bind file
-	bool read(std::string const & bind_file);
+	// Unbind a key sequence
+	size_t unbind(std::string const & seq, FuncRequest const & func);
+
+	// if a keybinding has been defined.
+	bool hasBinding(KeySequence const & seq, FuncRequest const & func,
+			unsigned int r = 0);
+
+	// clear all bindings
+	void clear();
+
+	/** Parse a bind file. If a valid unbind_map is given, put \unbind 
+	 * bindings to a separate KeyMap. This is used in the Shortcut preference
+	 * dialog where main and user bind files are loaded separately so \unbind
+	 * in user.bind can not nullify \bind in the master bind file.
+	 *
+	 * @param bind_file bind file
+	 * @param unbind_map pointer to a KeyMap that holds \unbind bindings
+	 */
+	bool read(std::string const & bind_file, KeyMap * unbind_map = NULL);
+
+	/** write to a bind file.
+	 * @param append append to the bind_file instead of overwrite it
+	 * @param unbind use \unbind instead of \bind, indicating this KeyMap
+	 *        actually record unbind maps.
+	 */
+	void write(std::string const & bind_file, bool append, bool unbind=false) const;
 
 	/**
 	 * print all available keysyms
@@ -71,13 +96,14 @@ public:
 	/// Given an action, print the keybindings.
 	docstring const printbindings(FuncRequest const & func) const;
 
-	typedef std::pair<FuncRequest, KeySequence> Binding; 
+	typedef boost::tuple<FuncRequest, KeySequence, int> Binding; 
 	typedef std::vector<Binding> BindingList;
 	/**
 	 * Return all lfun and their associated bindings.
 	 * @param unbound list unbound (func without any keybinding) as well
+	 * @param tag an optional tag to indicate the source of the bindinglist
 	 */
-	BindingList const listBindings(bool unbound) const;
+	BindingList listBindings(bool unbound, int tag = 0) const;
 
 	/**
 	 *  Given an action, find the first 1-key binding (if it exists).
@@ -121,6 +147,8 @@ private:
 	 */
 	void defkey(KeySequence * seq, FuncRequest const & func,
 		    unsigned int r = 0);
+	void delkey(KeySequence * seq, FuncRequest const & func,
+		    unsigned int r = 0);
 
 	/**
 	 * Given an action, find all keybindings
@@ -130,8 +158,8 @@ private:
 	Bindings findbindings(FuncRequest const & func,
 			      KeySequence const & prefix) const;
 	
-	void listBindings(BindingList & list,
-				  KeySequence const & prefix) const;
+	void listBindings(BindingList & list, KeySequence const & prefix,
+				  int tag) const;
 
 	/// is the table empty ?
 	bool empty() const { return table.empty(); }
