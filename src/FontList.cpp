@@ -80,19 +80,21 @@ void FontList::erase(pos_type pos)
 	iterator beg = list_.begin();
 	if (it != list_.end() && it->pos() == pos
 		&& (pos == 0 
-			|| (it != beg && boost::prior(it)->pos() == pos - 1))) {
+			|| (it != list_.begin() && boost::prior(it)->pos() == pos - 1))) {
 
 		// If it is a multi-character font
 		// entry, we just make it smaller
 		// (see update below), otherwise we
 		// should delete it.
-		unsigned int const i = it - beg;
-		list_.erase(beg + i);
-		it = beg + i;
+		unsigned int const i = it - list_.begin();
+		list_.erase(it);
+		if (i >= list_.size())
+			return;
+		it = list_.begin() + i;
 		if (i > 0 && i < list_.size() &&
 		    list_[i - 1].font() == list_[i].font()) {
 			list_.erase(beg + i - 1);
-			it = beg + i - 1;
+			it = list_.begin() + i - 1;
 		}
 	}
 
