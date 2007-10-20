@@ -141,7 +141,7 @@ docstring const MenuItem::binding(bool forgui) const
 	KeyMap::Bindings bindings = theTopLevelKeymap().findbindings(func_);
 
 	if (bindings.size()) {
-		return bindings.begin()->print(forgui);
+		return bindings.begin()->print(KeySequence::ForGui);
 	} else {
 		LYXERR(Debug::KBMAP)
 			<< "No binding for "

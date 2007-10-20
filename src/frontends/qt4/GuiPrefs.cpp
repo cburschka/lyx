@@ -1757,7 +1757,7 @@ void PrefShortcuts::update(LyXRC const & rc)
 		string const action_name = lyxaction.getActionName(action);
 		QString const lfun = toqstr(from_utf8(action_name) 
 			+ " " + it->first.argument());
-		QString const shortcut = toqstr(it->second.print(false));
+		QString const shortcut = toqstr(it->second.print(KeySequence::Portable));
 		
 		QTreeWidgetItem * newItem = NULL;
 		// if an item with the same lfun already exists, insert as a

@@ -127,14 +127,32 @@ size_t KeySequence::parse(string const & s)
 }
 
 
-docstring const KeySequence::print(bool forgui) const
+docstring const KeySequence::print(outputFormat format) const
 {
 	docstring buf;
 
 	size_t const length = sequence.size();
 
 	for (size_t i = 0; i != length; ++i) {
-		buf += sequence[i].print(modifiers[i].first, forgui);
+		switch (format) {
+		case Portable:
+			buf += sequence[i].print(modifiers[i].first, false);
+			break;
+		case ForGui:
+			buf += sequence[i].print(modifiers[i].first, true);
+			break;
+		case BindFile:
+			KeyModifier mod = modifiers[i].first;
+			if (mod & ShiftModifier)
+				buf += "S-";
+			if (mod & ControlModifier)
+				buf += "C-";
+			if (mod & AltModifier)
+				buf += "M-";
+		
+			buf += from_utf8(sequence[i].getSymbolName());
+			break;
+		}
 		// append a blank
 		if (i + 1 != length)
 			buf += ' ';
@@ -145,13 +163,13 @@ docstring const KeySequence::print(bool forgui) const
 
 docstring const KeySequence::printOptions(bool forgui) const
 {
-	docstring buf = print(forgui);
+	docstring buf = print(forgui ? ForGui : Portable);
 
 	if (!curmap)
 		return buf;
 
 	buf += _("   options: ");
-	buf += curmap->print(forgui);
+	buf += curmap->print(forgui ? ForGui : Portable);
 	return buf;
 }
 

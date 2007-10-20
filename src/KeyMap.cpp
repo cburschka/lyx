@@ -240,7 +240,7 @@ void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 			if (r + 1 == seq->length()) {
 				LYXERR(Debug::KBMAP)
 					<< "Warning: New binding for '"
-					<< to_utf8(seq->print(false))
+					<< to_utf8(seq->print(KeySequence::Portable))
 					<< "' is overriding old binding..."
 					<< endl;
 				if (it->table.get()) {
@@ -251,7 +251,7 @@ void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 				return;
 			} else if (!it->table.get()) {
 				lyxerr << "Error: New binding for '"
-				       << to_utf8(seq->print(false))
+				       << to_utf8(seq->print(KeySequence::Portable))
 				       << "' is overriding old binding..."
 					       << endl;
 				return;
@@ -286,10 +286,10 @@ docstring const KeyMap::printbindings(FuncRequest const & func) const
 	Bindings::const_iterator cit = bindings.begin();
 	Bindings::const_iterator cit_end = bindings.end();
 	// prin the first item
-	res << cit->print(true);
+	res << cit->print(KeySequence::ForGui);
 	// more than one shortcuts?
 	for (++cit; cit != cit_end; ++cit)
-		res << ", " << cit->print(true);
+		res << ", " << cit->print(KeySequence::ForGui);
 	return res.str();
 }
 

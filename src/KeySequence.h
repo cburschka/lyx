@@ -61,13 +61,18 @@ public:
 	 */
 	size_t parse(std::string const & s);
 
+	enum outputFormat {
+		Portable,	//< use a more portable format
+		ForGui,		//< use platform specific translations and special characters
+		BindFile	//< the format used in lyx bind files
+	};
+	
 	/**
 	 * Return the current sequence as a string.
-	 * @param forgui true if the string should use translations and
-	 *   special characters.
+	 * @param format output format
 	 * @see parse()
 	 */
-	docstring const print(bool forgui) const;
+	docstring const print(outputFormat format) const;
 
 	/**
 	 * Return the current sequence and available options as

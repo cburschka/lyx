@@ -382,7 +382,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
 	       << " Key [action="
 	       << func.action << "]["
-	       << to_utf8(keyseq.print(false)) << ']'
+	       << to_utf8(keyseq.print(KeySequence::Portable)) << ']'
 	       << endl;
 
 	// already here we know if it any point in going further
@@ -390,7 +390,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	// num_bytes == 0? (Lgb)
 
 	if (keyseq.length() > 1)
-		lyx_view_->message(keyseq.print(true));
+		lyx_view_->message(keyseq.print(KeySequence::ForGui));
 
 
 	// Maybe user can only reach the key via holding down shift.
@@ -894,7 +894,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_META_PREFIX:
 			meta_fake_bit = AltModifier;
-			setMessage(keyseq.print(true));
+			setMessage(keyseq.print(KeySequence::ForGui));
 			break;
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY: {
@@ -1316,7 +1316,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_SERVER_NOTIFY:
-			dispatch_buffer = keyseq.print(false);
+			dispatch_buffer = keyseq.print(KeySequence::Portable);
 			theServer().notifyClient(to_utf8(dispatch_buffer));
 			break;
 
@@ -2311,7 +2311,7 @@ docstring const LyXFunc::viewStatusMessage()
 {
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
 	if (wasMetaKey())
-		return keyseq.print(true) + "M-";
+		return keyseq.print(KeySequence::ForGui) + "M-";
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
