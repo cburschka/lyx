@@ -59,7 +59,7 @@ void DepTable::insert(FileName const & f, bool upd)
 			LYXERR(Debug::DEPEND) << "done." << endl;
 			struct stat f_info;
 			stat(f.toFilesystemEncoding().c_str(), &f_info);
-			di.mtime_cur = f_info.st_mtime;
+			di.mtime_cur = long(f_info.st_mtime);
 		} else {
 			di.crc_cur = 0;
 			di.mtime_cur = 0;
