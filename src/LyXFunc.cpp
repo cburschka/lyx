@@ -35,7 +35,6 @@
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "ErrorList.h"
-#include "Exporter.h"
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -509,7 +508,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_BUFFER_EXPORT:
 		enable = cmd.argument() == "custom"
-			|| Exporter::isExportable(*buf, to_utf8(cmd.argument()));
+			|| buf->isExportable(to_utf8(cmd.argument()));
 		break;
 
 	case LFUN_BUFFER_CHKTEX:
@@ -517,7 +516,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_BUILD_PROGRAM:
-		enable = Exporter::isExportable(*buf, "program");
+		enable = buf->isExportable("program");
 		break;
 
 	case LFUN_VC_REGISTER:
@@ -572,7 +571,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 				|| name == "prefs"
 				|| name == "texinfo";
 		else if (name == "print")
-			enable = Exporter::isExportable(*buf, "dvi")
+			enable = buf->isExportable("dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character") {
 			if (!view())
@@ -983,27 +982,27 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_UPDATE:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			Exporter::Export(lyx_view_->buffer(), argument, true);
+			lyx_view_->buffer()->doExport(argument, true);
 			break;
 
 		case LFUN_BUFFER_VIEW:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			Exporter::preview(lyx_view_->buffer(), argument);
+			lyx_view_->buffer()->preview(argument);
 			break;
 
 		case LFUN_MASTER_BUFFER_UPDATE:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer() && lyx_view_->buffer()->masterBuffer());
-			Exporter::Export(lyx_view_->buffer()->masterBuffer(), argument, true);
+			lyx_view_->buffer()->masterBuffer()->doExport(argument, true);
 			break;
 
 		case LFUN_MASTER_BUFFER_VIEW:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer() && lyx_view_->buffer()->masterBuffer());
-			Exporter::preview(lyx_view_->buffer()->masterBuffer(), argument);
+			lyx_view_->buffer()->masterBuffer()->preview(argument);
 			break;
 
 		case LFUN_BUILD_PROGRAM:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			Exporter::Export(lyx_view_->buffer(), "program", true);
+			lyx_view_->buffer()->doExport("program", true);
 			break;
 
 		case LFUN_BUFFER_CHKTEX:
@@ -1015,9 +1014,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (argument == "custom")
 				lyx_view_->getDialogs().show("sendto");
-			else {
-				Exporter::Export(lyx_view_->buffer(), argument, false);
-			}
+			else
+				lyx_view_->buffer()->doExport(argument, false);
 			break;
 
 		case LFUN_BUFFER_EXPORT_CUSTOM: {
@@ -1048,7 +1046,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					break;
 
 			} else {
-				Exporter::Export(buffer, format_name, true, filename);
+				buffer->doExport(format_name, true, filename);
 			}
 
 			// Substitute $$FName for filename
@@ -1085,7 +1083,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			Buffer * buffer = lyx_view_->buffer();
 
-			if (!Exporter::Export(buffer, "dvi", true)) {
+			if (!buffer->doExport("dvi", true)) {
 				showPrintError(buffer->absFileName());
 				break;
 			}

@@ -18,9 +18,10 @@
 #include "buffer_funcs.h"
 #include "BufferList.h"
 #include "BufferParams.h"
-#include "Counters.h"
 #include "Bullet.h"
 #include "Chktex.h"
+#include "Converter.h"
+#include "Counters.h"
 #include "debug.h"
 #include "DocIterator.h"
 #include "Encoding.h"
@@ -45,6 +46,7 @@
 #include "output.h"
 #include "output_docbook.h"
 #include "output_latex.h"
+#include "output_plaintext.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -1522,7 +1524,7 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 
 	switch (func.action) {
 		case LFUN_BUFFER_EXPORT: {
-			bool const tmp = Exporter::Export(this, to_utf8(func.argument()), false);
+			bool const tmp = doExport(to_utf8(func.argument()), false);
 			if (result)
 				*result = tmp;
 			break;
@@ -2208,6 +2210,182 @@ string Buffer::bufferFormat() const
 	if (isLiterate())
 		return "literate";
 	return "latex";
+}
+
+
+bool Buffer::doExport(string const & format,
+	bool put_in_tempdir, string & result_file)
+{
+	string backend_format;
+	OutputParams runparams(&params().encoding());
+	runparams.flavor = OutputParams::LATEX;
+	runparams.linelen = lyxrc.plaintext_linelen;
+	vector<string> backs = backends();
+	if (find(backs.begin(), backs.end(), format) == backs.end()) {
+		// Get shortest path to format
+		Graph::EdgePath path;
+		for (vector<string>::const_iterator it = backs.begin();
+		     it != backs.end(); ++it) {
+			Graph::EdgePath p = theConverters().getPath(*it, format);
+			if (!p.empty() && (path.empty() || p.size() < path.size())) {
+				backend_format = *it;
+				path = p;
+			}
+		}
+		if (!path.empty())
+			runparams.flavor = theConverters().getFlavor(path);
+		else {
+			Alert::error(_("Couldn't export file"),
+				bformat(_("No information for exporting the format %1$s."),
+				   formats.prettyName(format)));
+			return false;
+		}
+	} else {
+		backend_format = format;
+		// FIXME: Don't hardcode format names here, but use a flag
+		if (backend_format == "pdflatex")
+			runparams.flavor = OutputParams::PDFLATEX;
+	}
+
+	string filename = latexName(false);
+	filename = addName(temppath(), filename);
+	filename = changeExtension(filename,
+				   formats.extension(backend_format));
+
+	// Plain text backend
+	if (backend_format == "text")
+		writePlaintextFile(*this, FileName(filename), runparams);
+	// no backend
+	else if (backend_format == "lyx")
+		writeFile(FileName(filename));
+	// Docbook backend
+	else if (isDocBook()) {
+		runparams.nice = !put_in_tempdir;
+		makeDocBookFile(FileName(filename), runparams);
+	}
+	// LaTeX backend
+	else if (backend_format == format) {
+		runparams.nice = true;
+		if (!makeLaTeXFile(FileName(filename), string(), runparams))
+			return false;
+	} else if (!lyxrc.tex_allows_spaces
+		   && support::contains(filePath(), ' ')) {
+		Alert::error(_("File name error"),
+			   _("The directory path to the document cannot contain spaces."));
+		return false;
+	} else {
+		runparams.nice = false;
+		if (!makeLaTeXFile(FileName(filename), filePath(), runparams))
+			return false;
+	}
+
+	string const error_type = (format == "program")
+		? "Build" : bufferFormat();
+	string const ext = formats.extension(format);
+	FileName const tmp_result_file(changeExtension(filename, ext));
+	bool const success = theConverters().convert(this, FileName(filename),
+		tmp_result_file, FileName(absFileName()), backend_format, format,
+		errorList(error_type));
+	// Emit the signal to show the error list.
+	if (format != backend_format)
+		errors(error_type);
+	if (!success)
+		return false;
+
+	if (put_in_tempdir)
+		result_file = tmp_result_file.absFilename();
+	else {
+		result_file = changeExtension(absFileName(), ext);
+		// We need to copy referenced files (e. g. included graphics
+		// if format == "dvi") to the result dir.
+		vector<ExportedFile> const files =
+			runparams.exportdata->externalFiles(format);
+		string const dest = onlyPath(result_file);
+		CopyStatus status = SUCCESS;
+		for (vector<ExportedFile>::const_iterator it = files.begin();
+				it != files.end() && status != CANCEL; ++it) {
+			string const fmt =
+				formats.getFormatFromFile(it->sourceName);
+			status = copyFile(fmt, it->sourceName,
+					  makeAbsPath(it->exportName, dest),
+					  it->exportName, status == FORCE);
+		}
+		if (status == CANCEL) {
+			message(_("Document export cancelled."));
+		} else if (tmp_result_file.exists()) {
+			// Finally copy the main file
+			status = copyFile(format, tmp_result_file,
+					  FileName(result_file), result_file,
+					  status == FORCE);
+			message(bformat(_("Document exported as %1$s "
+							       "to file `%2$s'"),
+						formats.prettyName(format),
+						makeDisplayPath(result_file)));
+		} else {
+			// This must be a dummy converter like fax (bug 1888)
+			message(bformat(_("Document exported as %1$s"),
+						formats.prettyName(format)));
+		}
+	}
+
+	return true;
+}
+
+
+bool Buffer::doExport(string const & format, bool put_in_tempdir)
+{
+	string result_file;
+	return doExport(format, put_in_tempdir, result_file);
+}
+
+
+bool Buffer::preview(string const & format)
+{
+	string result_file;
+	if (!doExport(format, true, result_file))
+		return false;
+	return formats.view(*this, FileName(result_file), format);
+}
+
+
+bool Buffer::isExportable(string const & format) const
+{
+	vector<string> backs = backends();
+	for (vector<string>::const_iterator it = backs.begin();
+	     it != backs.end(); ++it)
+		if (theConverters().isReachable(*it, format))
+			return true;
+	return false;
+}
+
+
+vector<Format const *> Buffer::exportableFormats(bool only_viewable) const
+{
+	vector<string> backs = backends();
+	vector<Format const *> result =
+		theConverters().getReachable(backs[0], only_viewable, true);
+	for (vector<string>::const_iterator it = backs.begin() + 1;
+	     it != backs.end(); ++it) {
+		vector<Format const *>  r =
+			theConverters().getReachable(*it, only_viewable, false);
+		result.insert(result.end(), r.begin(), r.end());
+	}
+	return result;
+}
+
+
+vector<string> Buffer::backends() const
+{
+	vector<string> v;
+	if (params().getTextClass().isTeXClassAvailable()) {
+		v.push_back(bufferFormat());
+		// FIXME: Don't hardcode format names here, but use a flag
+		if (v.back() == "latex")
+			v.push_back("pdflatex");
+	}
+	v.push_back("text");
+	v.push_back("lyx");
+	return v;
 }
 
 

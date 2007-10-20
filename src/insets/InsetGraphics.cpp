@@ -483,7 +483,7 @@ docstring const InsetGraphics::createDocBookAttributes() const
 
 namespace {
 
-enum CopyStatus {
+enum GraphicsCopyStatus {
 	SUCCESS,
 	FAILURE,
 	IDENTICAL_PATHS,
@@ -491,7 +491,7 @@ enum CopyStatus {
 };
 
 
-std::pair<CopyStatus, FileName> const
+std::pair<GraphicsCopyStatus, FileName> const
 copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 {
 	unsigned long const checksum_in  = support::sum(file_in);
@@ -512,12 +512,12 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 			<< std::endl;
 	}
 
-	CopyStatus status = success ? SUCCESS : FAILURE;
+	GraphicsCopyStatus status = success ? SUCCESS : FAILURE;
 	return std::make_pair(status, file_out);
 }
 
 
-std::pair<CopyStatus, FileName> const
+std::pair<GraphicsCopyStatus, FileName> const
 copyToDirIfNeeded(DocFileName const & file, string const & dir)
 {
 	using support::rtrim;
@@ -619,7 +619,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// This is necessary for DVI export.
 	string const temp_path = masterBuffer->temppath();
 
-	CopyStatus status;
+	GraphicsCopyStatus status;
 	boost::tie(status, temp_file) =
 			copyToDirIfNeeded(params().filename, temp_path);
 

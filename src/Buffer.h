@@ -34,6 +34,7 @@ class ErrorList;
 class FuncRequest;
 class Inset;
 class Font;
+class Format;
 class Lexer;
 class LyXRC;
 class Text;
@@ -415,7 +416,22 @@ public:
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;
 
+	///
+	bool doExport(std::string const & format, bool put_in_tempdir,
+		std::string & result_file);
+	///
+	bool doExport(std::string const & format, bool put_in_tempdir);
+	///
+	bool preview(std::string const & format);
+	///
+	bool isExportable(std::string const & format) const;
+	///
+	std::vector<Format const *> exportableFormats(bool only_viewable) const;
+
+
 private:
+	///
+	std::vector<std::string> backends() const;
 	/** Inserts a file into a document
 	    \return \c false if method fails.
 	*/

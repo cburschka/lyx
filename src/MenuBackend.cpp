@@ -23,7 +23,6 @@
 #include "BufferParams.h"
 #include "CutAndPaste.h"
 #include "debug.h"
-#include "Exporter.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "Format.h"
@@ -549,15 +548,15 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 		action = LFUN_BUFFER_IMPORT;
 		break;
 	case MenuItem::ViewFormats:
-		formats = Exporter::getExportableFormats(*buf, true);
+		formats = buf->exportableFormats(true);
 		action = LFUN_BUFFER_VIEW;
 		break;
 	case MenuItem::UpdateFormats:
-		formats = Exporter::getExportableFormats(*buf, true);
+		formats = buf->exportableFormats(true);
 		action = LFUN_BUFFER_UPDATE;
 		break;
 	default:
-		formats = Exporter::getExportableFormats(*buf, false);
+		formats = buf->exportableFormats(false);
 		action = LFUN_BUFFER_EXPORT;
 	}
 	sort(formats.begin(), formats.end(), compare_format());

@@ -22,32 +22,24 @@
 
 namespace lyx {
 
-
-class Buffer;
-class Format;
-
-class Exporter {
-public:
-	///
-	static
-	bool Export(Buffer * buffer, std::string const & format,
-		    bool put_in_tempdir, std::string & result_file);
-	///
-	static
-	bool Export(Buffer * buffer, std::string const & format,
-		    bool put_in_tempdir);
-	///
-	static
-	bool preview(Buffer * buffer, std::string const & format);
-	///
-	static
-	bool isExportable(Buffer const & buffer, std::string const & format);
-	///
-	static
-	std::vector<Format const *> const
-	getExportableFormats(Buffer const & buffer, bool only_viewable);
-	///
+enum CopyStatus {
+	SUCCESS,
+	FORCE,
+	CANCEL
 };
+
+
+/** copy file \p sourceFile to \p destFile. If \p force is false, the user
+ *  will be asked before existing files are overwritten.
+ *  \return
+ *  - SUCCESS if this file got copied
+ *  - FORCE   if subsequent calls should not ask for confirmation before
+ *            overwriting files anymore.
+ *  - CANCEL  if the export should be cancelled
+ */
+CopyStatus copyFile(std::string const & format,
+	support::FileName const & sourceFile, support::FileName const & destFile,
+	std::string const & latexFile, bool force);
 
 
 class ExportedFile {
