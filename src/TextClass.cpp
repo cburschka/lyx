@@ -618,6 +618,7 @@ enum InsetLayoutTags {
 	IL_LYXTYPE,
 	IL_MULTIPAR,
 	IL_PREAMBLE,
+	IL_VERBATIM,
 	IL_END
 };
 
@@ -636,7 +637,8 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		{ "latextype", IL_LATEXTYPE },
 		{ "lyxtype", IL_LYXTYPE },
 		{ "multipar", IL_MULTIPAR },
-		{ "preamble", IL_PREAMBLE }
+		{ "preamble", IL_PREAMBLE },
+		{ "verbatim", IL_VERBATIM }
 	};
 
 	lexrc.pushTable(elementTags, IL_END);
@@ -652,6 +654,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	Color::color bgcolor(Color::background);
 	string preamble;
 	bool multipar(false);
+	bool verbatim(false);
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -695,6 +698,10 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			lexrc.next();
 			multipar = lexrc.getBool();
 			break;
+		case IL_VERBATIM:
+			lexrc.next();
+			verbatim = lexrc.getBool();
+			break;
 		case IL_FONT:
 			font.lyxRead(lexrc);
 			font.realize(defaultfont());
@@ -728,6 +735,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.latexname = latexname;
 		il.latexparam = latexparam;
 		il.multipar = multipar;
+		il.verbatim = verbatim;
 		il.font = font;
 		il.labelfont = labelfont;
 		il.bgcolor = bgcolor;		

@@ -46,6 +46,7 @@ public:
 	Color::color bgcolor;
 	std::string preamble;
 	bool multipar;
+	bool verbatim;
 };
 
 
