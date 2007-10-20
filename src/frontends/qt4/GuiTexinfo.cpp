@@ -68,7 +68,7 @@ static string texFileFromList(string const & file, string const & type)
 		lyxerr << "File `'" << lstfile << "' not found." << endl;
 		return string();
 	}
-	string const allClasses = getFileContents(abslstfile);
+	string const allClasses = abslstfile.fileContents();
 	int entries = 0;
 	string classfile = token(allClasses, '\n', entries);
 	int count = 0;

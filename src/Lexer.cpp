@@ -38,7 +38,6 @@ namespace lyx {
 
 using support::compare_ascii_no_case;
 using support::FileName;
-using support::getFormatFromContents;
 using support::isStrDbl;
 using support::isStrInt;
 using support::ltrim;
@@ -253,7 +252,7 @@ void Lexer::Pimpl::popTable()
 bool Lexer::Pimpl::setFile(FileName const & filename)
 {
 	// Check the format of the file.
-	string const format = getFormatFromContents(filename);
+	string const format = filename.guessFormatFromContents();
 
 	if (format == "gzip" || format == "zip" || format == "compress") {
 		LYXERR(Debug::LYXLEX) << "lyxlex: compressed" << endl;

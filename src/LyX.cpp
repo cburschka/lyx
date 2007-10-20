@@ -89,9 +89,7 @@ using support::addName;
 using support::addPath;
 using support::bformat;
 using support::changeExtension;
-using support::createDirectory;
 using support::createLyXTmpDir;
-using support::destroyDir;
 using support::FileName;
 using support::fileSearch;
 using support::getEnv;
@@ -505,7 +503,7 @@ void LyX::prepareExit()
 		LYXERR(Debug::INFO) << "Deleting tmp dir "
 				    << package().temp_dir().absFilename() << endl;
 
-		if (!destroyDir(package().temp_dir())) {
+		if (!package().temp_dir().destroyDirectory()) {
 			docstring const msg =
 				bformat(_("Unable to remove the temporary directory %1$s"),
 				from_utf8(package().temp_dir().absFilename()));
@@ -1165,7 +1163,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	lyxerr << to_utf8(bformat(_("LyX: Creating directory %1$s"),
 			  from_utf8(sup.absFilename()))) << endl;
 
-	if (!createDirectory(sup, 0755)) {
+	if (!sup.createDirectory(0755)) {
 		// Failed, so let's exit.
 		lyxerr << to_utf8(_("Failed to create directory. Exiting."))
 		       << endl;

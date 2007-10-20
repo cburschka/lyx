@@ -22,14 +22,8 @@
 namespace lyx {
 namespace support {
 
-/// remove directory and all contents, returns true on success
-bool destroyDir(FileName const & tmpdir);
-
 /// Creates the per buffer temporary directory
 std::string const createBufferTmpDir();
-
-/// Creates directory. Returns true on success
-bool createDirectory(FileName const & name, int permissions);
 
 /** Creates the global LyX temp dir.
   \p deflt can be an existing directory name. In this case a new directory
@@ -195,15 +189,6 @@ addExtension(std::string const & name, std::string const & extension);
 /// Return the extension of the file (not including the .)
 std::string const getExtension(std::string const & name);
 
-/** Guess the file format name (as in Format::name()) from contents.
- Normally you don't want to use this directly, but rather
- Formats::getFormatFromFile().
- */
-std::string const getFormatFromContents(FileName const & name);
-
-/// check for zipped file
-bool zippedFile(FileName const & name);
-
 /** \return the name that LyX will give to the unzipped file \p zipped_file
   if the second argument of unzipFile() is empty.
  */
@@ -256,9 +241,6 @@ std::string const normalizePath(std::string const & path);
 
 /// Strips path from filename
 std::string const onlyFilename(std::string const & fname);
-
-/// Get the contents of a file as a huge std::string
-std::string const getFileContents(FileName const & fname);
 
 /** Check and Replace Environmentvariables ${NAME} in Path.
     Replaces all occurences of these, if they are found in the

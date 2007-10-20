@@ -63,7 +63,7 @@ public:
 	static bool file_not_found_hook(support::FileName const & fn);
 
 	///
-	void buffer(Buffer *);
+	void setBuffer(Buffer *);
 
 	/// Register the document as an VC file.
 	void registrer();

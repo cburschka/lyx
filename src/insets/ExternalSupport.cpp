@@ -177,8 +177,8 @@ string const doSubstitution(InsetExternalParams const & params,
 		// Since use_latex_path may be true we must extract the file
 		// name from s instead of result and do the substitutions
 		// again, this time with use_latex_path false.
-		string::size_type const spos = s.find("$$Contents(\"");
-		string::size_type const send = s.find("\")", spos);
+		size_t const spos = s.find("$$Contents(\"");
+		size_t const send = s.find("\")", spos);
 		string const file_template = s.substr(spos + 12, send - (spos + 12));
 		string const file = doSubstitution(params, buffer,
 						   file_template, false,
@@ -188,10 +188,10 @@ string const doSubstitution(InsetExternalParams const & params,
 		FileName const absfile(
 			support::makeAbsPath(file, masterBuffer->temppath()));
 		if (absfile.isFileReadable())
-			contents = support::getFileContents(absfile);
+			contents = absfile.fileContents();
 
-		string::size_type const pos = result.find("$$Contents(\"");
-		string::size_type const end = result.find("\")", pos);
+		size_t const pos = result.find("$$Contents(\"");
+		size_t const end = result.find("\")", pos);
 		result.replace(pos, end + 2, contents);
 	}
 

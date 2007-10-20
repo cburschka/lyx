@@ -51,7 +51,7 @@ void GuiShowFile::updateContents()
 {
 	setWindowTitle(toqstr(onlyFilename(filename_.absFilename())));
 
-	std::string contents = support::getFileContents(filename_);
+	std::string contents = filename_.fileContents();
 	if (contents.empty())
 		contents = "Error -> Cannot load file!";
 

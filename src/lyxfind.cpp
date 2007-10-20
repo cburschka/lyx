@@ -138,7 +138,7 @@ bool findChange(DocIterator & cur)
 }
 
 
-bool searchAllowed(BufferView * bv, docstring const & str)
+bool searchAllowed(BufferView * /*bv*/, docstring const & str)
 {
 	if (str.empty()) {
 		frontend::Alert::error(_("Search error"),

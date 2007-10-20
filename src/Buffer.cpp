@@ -129,9 +129,7 @@ using support::bformat;
 using support::changeExtension;
 using support::cmd_ret;
 using support::createBufferTmpDir;
-using support::destroyDir;
 using support::FileName;
-using support::getFormatFromContents;
 using support::libFileSearch;
 using support::latex_path;
 using support::ltrim;
@@ -233,7 +231,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	  checksum_(0), wa_(0), undo_(parent)
 {
 	inset.setAutoBreakRows(true);
-	lyxvc.buffer(&parent);
+	lyxvc.setBuffer(&parent);
 	temppath = createBufferTmpDir();
 	params.filepath = onlyPath(file.absFilename());
 	// FIXME: And now do something if temppath == string(), because we
@@ -265,7 +263,7 @@ Buffer::~Buffer()
 		// Buffer.
 		updateLabels(*master);
 
-	if (!temppath().empty() && !destroyDir(FileName(temppath()))) {
+	if (!temppath().empty() && !FileName(temppath()).destroyDirectory()) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"),
 			from_utf8(temppath())));
@@ -670,7 +668,7 @@ bool Buffer::readFile(FileName const & filename)
 {
 	FileName fname(filename);
 	// Check if the file is compressed.
-	string format = getFormatFromContents(filename);
+	string format = filename.guessFormatFromContents();
 	if (format == "zip") {
 		// decompress to a temp directory
 		LYXERR(Debug::FILES) << filename << " is in zip format. Unzip to " << temppath() << endl;
@@ -684,10 +682,9 @@ bool Buffer::readFile(FileName const & filename)
 		}
 	}
 	// The embedded lyx file can also be compressed, for backward compatibility
-	format = getFormatFromContents(fname);
-	if (format == "gzip" || format == "zip" || format == "compress") {
+	format = fname.guessFormatFromContents();
+	if (format == "gzip" || format == "zip" || format == "compress")
 		params().compressed = true;
-	}
 
 	// remove dummy empty par
 	paragraphs().clear();

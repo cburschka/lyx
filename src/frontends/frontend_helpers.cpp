@@ -45,7 +45,6 @@ using support::bformat;
 using support::FileFilterList;
 using support::FileName;
 using support::getExtension;
-using support::getFileContents;
 using support::getVectorFromString;
 using support::libFileSearch;
 using support::makeAbsPath;
@@ -227,7 +226,7 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 	if (file.empty())
 		return;
 
-	list = getVectorFromString(getFileContents(file), "\n");
+	list = getVectorFromString(file.fileContents(), "\n");
 
 	// Normalise paths like /foo//bar ==> /foo/bar
 	boost::RegEx regex("/{2,}");

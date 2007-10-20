@@ -52,9 +52,6 @@
 
 namespace lyx {
 
-// Implementation is in LyX.cpp
-extern void dispatch(FuncRequest const & action);
-
 using support::addName;
 using support::absolutePath;
 using support::bformat;
@@ -63,7 +60,6 @@ using support::contains;
 using support::copy;
 using support::DocFileName;
 using support::FileName;
-using support::getFileContents;
 using support::getVectorFromString;
 using support::isLyXFilename;
 using support::isValidLaTeXFilename;
@@ -603,7 +599,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 		os << '[' << getScreenLabel(buffer) << '\n';
 		// FIXME: We don't know the encoding of the file
 		docstring const str =
-		     from_utf8(getFileContents(includedFilename(buffer, params_)));
+		     from_utf8(includedFilename(buffer, params_).fileContents());
 		os << str;
 		os << "\n]";
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
@@ -900,19 +896,20 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 }
 
 
-void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIterator const & pit) const
+void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer,
+	ParConstIterator const & pit) const
 {
 	if (isListings(params_)) {
 		InsetListingsParams params(params_.getOptions());
 		string caption = params.getParamValue("caption");
-		if (!caption.empty()) {
-			Toc & toc = toclist["listing"];
-			docstring const str = convert<docstring>(toc.size() + 1)
-				+ ". " +  from_utf8(caption);
-			// This inset does not have a valid ParConstIterator
-			// so it has to use the iterator of its parent paragraph
-			toc.push_back(TocItem(pit, 0, str));
-		}
+		if (caption.empty())
+			return;
+		Toc & toc = toclist["listing"];
+		docstring const str = convert<docstring>(toc.size() + 1)
+			+ ". " +  from_utf8(caption);
+		// This inset does not have a valid ParConstIterator
+		// so it has to use the iterator of its parent paragraph
+		toc.push_back(TocItem(pit, 0, str));
 		return;
 	}
 	Buffer const * const childbuffer = getChildBuffer(buffer, params_);
@@ -928,8 +925,7 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer, ParConstIt
 }
 
 
-void InsetInclude::updateLabels(Buffer const & buffer,
-				ParIterator const &)
+void InsetInclude::updateLabels(Buffer const & buffer, ParIterator const &)
 {
 	Buffer const * const childbuffer = getChildBuffer(buffer, params_);
 	if (childbuffer)
@@ -943,7 +939,8 @@ void InsetInclude::updateLabels(Buffer const & buffer,
 			docstring const cnt = from_ascii("listing");
 			if (counters.hasCounter(cnt)) {
 				counters.step(cnt);
-				listings_label_ = buffer.B_("Program Listing ") + convert<docstring>(counters.value(cnt));
+				listings_label_ = buffer.B_("Program Listing ")
+					+ convert<docstring>(counters.value(cnt));
 			} else
 				listings_label_ = buffer.B_("Program Listing");
 		}
@@ -963,6 +960,7 @@ void InsetInclude::registerEmbeddedFiles(Buffer const & buffer,
 
 string const InsetIncludeMailer::name_("include");
 
+
 InsetIncludeMailer::InsetIncludeMailer(InsetInclude & inset)
 	: inset_(inset)
 {}
@@ -975,7 +973,7 @@ string const InsetIncludeMailer::inset2string(Buffer const &) const
 
 
 void InsetIncludeMailer::string2params(string const & in,
-				       InsetCommandParams & params)
+	InsetCommandParams & params)
 {
 	params.clear();
 	if (in.empty())

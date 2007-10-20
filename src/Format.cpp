@@ -140,12 +140,12 @@ string Formats::getFormatFromFile(FileName const & filename) const
 	if (filename.empty())
 		return string();
 
-	string const format = support::getFormatFromContents(filename);
+	string const format = filename.guessFormatFromContents();
 	if (!format.empty())
 		return format;
 
 	// try to find a format from the file extension.
-	string const ext(support::getExtension(filename.absFilename()));
+	string const ext = support::getExtension(filename.absFilename());
 	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
@@ -162,9 +162,8 @@ string Formats::getFormatFromFile(FileName const & filename) const
 	return string();
 }
 
-namespace {
 
-string fixCommand(string const & cmd, string const & ext,
+static string fixCommand(string const & cmd, string const & ext,
 		  os::auto_open_mode mode)
 {
 	// configure.py says we do not want a viewer/editor
@@ -183,7 +182,6 @@ string fixCommand(string const & cmd, string const & ext,
 	return cmd;
 }
 
-}
 
 void Formats::setAutoOpen()
 {

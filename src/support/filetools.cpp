@@ -375,17 +375,6 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 	return tmpfl;
 }
 
-bool destroyDir(FileName const & tmpdir)
-{
-	try {
-		return fs::remove_all(tmpdir.toFilesystemEncoding()) > 0;
-	} catch (fs::filesystem_error const & fe){
-		lyxerr << "Could not delete " << tmpdir << ". (" << fe.what() << ")" << std::endl;
-		return false;
-	}
-}
-
-
 string const createBufferTmpDir()
 {
 	static int count;
@@ -423,13 +412,6 @@ FileName const createLyXTmpDir(FileName const & deflt)
 	} else {
 		return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
 	}
-}
-
-
-bool createDirectory(FileName const & path, int permission)
-{
-	BOOST_ASSERT(!path.empty());
-	return mkdir(path, permission) == 0;
 }
 
 
@@ -594,23 +576,6 @@ string const normalizePath(string const & path)
 }
 
 
-string const getFileContents(FileName const & fname)
-{
-	if (fname.exists()) {
-		string const encodedname = fname.toFilesystemEncoding();
-		ifstream ifs(encodedname.c_str());
-		ostringstream ofs;
-		if (ifs && ofs) {
-			ofs << ifs.rdbuf();
-			ifs.close();
-			return ofs.str();
-		}
-	}
-	lyxerr << "LyX was not able to read file '" << fname << '\'' << endl;
-	return string();
-}
-
-
 // Search the string for ${VAR} and $VAR and replace VAR using getenv.
 string const replaceEnvironmentPath(string const & path)
 {
@@ -750,195 +715,6 @@ string const getExtension(string const & name)
 				   name.length() - (last_dot + 1));
 	else
 		return string();
-}
-
-
-// the different filetypes and what they contain in one of the first lines
-// (dots are any characters).		(Herbert 20020131)
-// AGR	Grace...
-// BMP	BM...
-// EPS	%!PS-Adobe-3.0 EPSF...
-// FIG	#FIG...
-// FITS ...BITPIX...
-// GIF	GIF...
-// JPG	JFIF
-// PDF	%PDF-...
-// PNG	.PNG...
-// PBM	P1... or P4	(B/W)
-// PGM	P2... or P5	(Grayscale)
-// PPM	P3... or P6	(color)
-// PS	%!PS-Adobe-2.0 or 1.0,  no "EPSF"!
-// SGI	\001\332...	(decimal 474)
-// TGIF	%TGIF...
-// TIFF	II... or MM...
-// XBM	..._bits[]...
-// XPM	/* XPM */    sometimes missing (f.ex. tgif-export)
-//      ...static char *...
-// XWD	\000\000\000\151	(0x00006900) decimal 105
-//
-// GZIP	\037\213	http://www.ietf.org/rfc/rfc1952.txt
-// ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
-// Z	\037\235		UNIX compress
-
-string const getFormatFromContents(FileName const & filename)
-{
-	// paranoia check
-	if (filename.empty() || !filename.isReadable())
-		return string();
-
-	ifstream ifs(filename.toFilesystemEncoding().c_str());
-	if (!ifs)
-		// Couldn't open file...
-		return string();
-
-	// gnuzip
-	static string const gzipStamp = "\037\213";
-
-	// PKZIP
-	static string const zipStamp = "PK";
-
-	// compress
-	static string const compressStamp = "\037\235";
-
-	// Maximum strings to read
-	int const max_count = 50;
-	int count = 0;
-
-	string str;
-	string format;
-	bool firstLine = true;
-	while ((count++ < max_count) && format.empty()) {
-		if (ifs.eof()) {
-			LYXERR(Debug::GRAPHICS)
-				<< "filetools(getFormatFromContents)\n"
-				<< "\tFile type not recognised before EOF!"
-				<< endl;
-			break;
-		}
-
-		getline(ifs, str);
-		string const stamp = str.substr(0, 2);
-		if (firstLine && str.size() >= 2) {
-			// at first we check for a zipped file, because this
-			// information is saved in the first bytes of the file!
-			// also some graphic formats which save the information
-			// in the first line, too.
-			if (prefixIs(str, gzipStamp)) {
-				format =  "gzip";
-
-			} else if (stamp == zipStamp) {
-				format =  "zip";
-
-			} else if (stamp == compressStamp) {
-				format =  "compress";
-
-			// the graphics part
-			} else if (stamp == "BM") {
-				format =  "bmp";
-
-			} else if (stamp == "\001\332") {
-				format =  "sgi";
-
-			// PBM family
-			// Don't need to use str.at(0), str.at(1) because
-			// we already know that str.size() >= 2
-			} else if (str[0] == 'P') {
-				switch (str[1]) {
-				case '1':
-				case '4':
-					format =  "pbm";
-				    break;
-				case '2':
-				case '5':
-					format =  "pgm";
-				    break;
-				case '3':
-				case '6':
-					format =  "ppm";
-				}
-				break;
-
-			} else if ((stamp == "II") || (stamp == "MM")) {
-				format =  "tiff";
-
-			} else if (prefixIs(str,"%TGIF")) {
-				format =  "tgif";
-
-			} else if (prefixIs(str,"#FIG")) {
-				format =  "fig";
-
-			} else if (prefixIs(str,"GIF")) {
-				format =  "gif";
-
-			} else if (str.size() > 3) {
-				int const c = ((str[0] << 24) & (str[1] << 16) &
-					       (str[2] << 8)  & str[3]);
-				if (c == 105) {
-					format =  "xwd";
-				}
-			}
-
-			firstLine = false;
-		}
-
-		if (!format.empty())
-		    break;
-		else if (contains(str,"EPSF"))
-			// dummy, if we have wrong file description like
-			// %!PS-Adobe-2.0EPSF"
-			format = "eps";
-
-		else if (contains(str, "Grace"))
-			format = "agr";
-
-		else if (contains(str, "JFIF"))
-			format = "jpg";
-
-		else if (contains(str, "%PDF"))
-			format = "pdf";
-
-		else if (contains(str, "PNG"))
-			format = "png";
-
-		else if (contains(str, "%!PS-Adobe")) {
-			// eps or ps
-			ifs >> str;
-			if (contains(str,"EPSF"))
-				format = "eps";
-			else
-			    format = "ps";
-		}
-
-		else if (contains(str, "_bits[]"))
-			format = "xbm";
-
-		else if (contains(str, "XPM") || contains(str, "static char *"))
-			format = "xpm";
-
-		else if (contains(str, "BITPIX"))
-			format = "fits";
-	}
-
-	if (!format.empty()) {
-		LYXERR(Debug::GRAPHICS)
-			<< "Recognised Fileformat: " << format << endl;
-		return format;
-	}
-
-	LYXERR(Debug::GRAPHICS)
-		<< "filetools(getFormatFromContents)\n"
-		<< "\tCouldn't find a known format!\n";
-	return string();
-}
-
-
-/// check for zipped file
-bool zippedFile(FileName const & name)
-{
-	string const type = getFormatFromContents(name);
-	if (contains("gzip zip compress", type) && !type.empty())
-		return true;
-	return false;
 }
 
 

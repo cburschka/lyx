@@ -36,7 +36,6 @@ using support::onlyFilename;
 using support::tempName;
 using support::unlink;
 using support::unzipFile;
-using support::zippedFile;
 
 using std::endl;
 using std::string;
@@ -382,7 +381,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	// Make a local copy in case we unzip it
 	FileName filename;
-	zipped_ = zippedFile(filename_);
+	zipped_ = filename_.isZippedFile();
 	if (zipped_) {
 		unzipped_filename_ = tempName(FileName(), filename_.toFilesystemEncoding());
 		if (unzipped_filename_.empty()) {
@@ -392,8 +391,9 @@ void CacheItem::Impl::convertToDisplayFormat()
 			return;
 		}
 		filename = unzipFile(filename_, unzipped_filename_.toFilesystemEncoding());
-	} else
+	} else {
 		filename = filename_;
+	}
 
 	docstring const displayed_filename = makeDisplayPath(filename_.absFilename());
 	LYXERR(Debug::GRAPHICS) << "[graphics::CacheItem::Impl::convertToDisplayFormat]\n"

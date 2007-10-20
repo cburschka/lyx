@@ -69,13 +69,30 @@ public:
 	bool isWritable() const;
 	/// return true when file/directory is writable (write test file)
 	bool isDirWritable() const;
+	
+	/// remove directory and all contents, returns true on success
+	bool destroyDirectory() const;
+	/// Creates directory. Returns true on success
+	bool createDirectory(int permissions) const;
 
+	/// Get the contents of a file as a huge std::string
+	std::string fileContents() const;
 	/**
 	 * Get a FileName from \p name in the encoding used by the file system.
 	 * Only use this for filenames you got directly from the file system,
 	 * e.g. from reading a directory.
 	 * \p name must have an absolute path.
 	 */
+
+	/** Guess the file format name (as in Format::name()) from contents.
+	 Normally you don't want to use this directly, but rather
+	 Formats::getFormatFromFile().
+	 */
+	std::string guessFormatFromContents() const;
+
+	/// check for zipped file
+	bool isZippedFile() const;
+
 	static FileName fromFilesystemEncoding(std::string const & name);
 	/// (securely) create a temporary file in the given dir with the given mask
 	/// \p mask must be in filesystem encoding

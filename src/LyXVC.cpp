@@ -84,7 +84,7 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 }
 
 
-void LyXVC::buffer(Buffer * buf)
+void LyXVC::setBuffer(Buffer * buf)
 {
 	owner_ = buf;
 }
@@ -201,7 +201,8 @@ void LyXVC::toggleReadOnly()
 
 bool LyXVC::inUse()
 {
-	if (vcs) return true;
+	if (vcs)
+		return true;
 	return false;
 }
 
@@ -210,6 +211,7 @@ bool LyXVC::inUse()
 //{
 //	return vcs->version();
 //}
+
 
 string const LyXVC::versionString() const
 {
