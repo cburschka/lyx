@@ -28,6 +28,7 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "CmdDef.h"
 #include "Color.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
@@ -664,6 +665,23 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		FuncRequest func(lyxaction.lookupFunc(firstcmd));
 		func.origin = cmd.origin;
 		flag = getStatus(func);
+		break;
+	}
+
+	case LFUN_CALL: {
+		FuncRequest func;
+		std::string name(to_utf8(cmd.argument()));
+		if (LyX::ref().topLevelCmdDef().lock(name, func)) {
+			func.origin = cmd.origin;
+			flag = getStatus(func);
+			LyX::ref().topLevelCmdDef().release(name);
+		} else {
+			// catch recursion or unknown command definiton
+			// all operations until the recursion or unknown command 
+			// definiton occures are performed, so set the state to enabled
+			enable = true;
+		}
+		break;
 	}
 
 	case LFUN_BUFFER_NEW:
@@ -1628,6 +1646,28 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				FuncRequest func(lyxaction.lookupFunc(first));
 				func.origin = cmd.origin;
 				dispatch(func);
+			}
+			break;
+		}
+
+		case LFUN_CALL: {
+			FuncRequest func;
+			if (LyX::ref().topLevelCmdDef().lock(argument, func)) {
+				func.origin = cmd.origin;
+				dispatch(func);
+				LyX::ref().topLevelCmdDef().release(argument);
+			} else {
+				if (func.action == LFUN_UNKNOWN_ACTION) {
+					// unknown command definition
+					lyxerr << "Warning: unknown command definition `"
+						   << argument << "'"
+						   << endl;
+				} else {
+					// recursion detected
+					lyxerr << "Warning: Recursion in the command definition `"
+						   << argument << "' detected"
+						   << endl;
+				}
 			}
 			break;
 		}

@@ -100,6 +100,8 @@ liblyxcore_la_SOURCES = \
 	Changes.h \
 	Chktex.cpp \
 	Chktex.h \
+	CmdDef.cpp \
+	CmdDef.h \
 	Color.cpp \
 	Color.h \
 	config.h.in \

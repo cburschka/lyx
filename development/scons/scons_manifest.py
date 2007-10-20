@@ -2028,6 +2028,10 @@ lib_images_math_extra_files = Split('''
 ''')
 
 
+lib_images_commands_files = Split('''
+''')
+
+
 lib_images_attic_extra_files = Split('''
     dialog-show_mathpanel.png
 ''')
@@ -2692,6 +2696,11 @@ lib_bind_pt_files = Split('''
 
 lib_bind_de_files = Split('''
     menus.bind
+''')
+
+
+lib_commands_files = Split('''
+    default.def
 ''')
 
 

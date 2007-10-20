@@ -58,6 +58,7 @@ public:
 		RC_CUSTOM_EXPORT_COMMAND,
 		RC_CUSTOM_EXPORT_FORMAT,
 		RC_DATE_INSERT_FORMAT,
+		RC_DEFFILE,
 		RC_DEFAULT_LANGUAGE,
 		RC_DEFAULT_PAPERSIZE,
 		RC_DIALOGS_ICONIFY_WITH_MAIN,
@@ -170,6 +171,8 @@ public:
 	//static docstring const getDescription(LyXRCTags);
 	///
 	std::string bind_file;
+	///
+	std::string def_file;
 	///
 	std::string ui_file;
 	///

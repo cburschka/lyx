@@ -1571,7 +1571,8 @@ ui_files = [frontend_env.Uic4('$BUILDDIR/src/frontends/qt4/ui/%s' % x.split('.')
 resource = frontend_env.Qrc(frontend_env.qtResource(
     '$BUILDDIR/src/frontends/qt4/Resource.qrc',
     ['$TOP_SRCDIR/lib/images/%s' % x for x in lib_images_files] +
-    ['$TOP_SRCDIR/lib/images/math/%s' % x for x in lib_images_math_files]))
+    ['$TOP_SRCDIR/lib/images/math/%s' % x for x in lib_images_math_files] +
+    ['$TOP_SRCDIR/lib/images/commands/%s' % x for x in lib_images_commands_files]))
 #
 # moc qt4_moc_files, the moced files are included in the original files
 #
@@ -1933,6 +1934,7 @@ if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
             ('bind/fi', lib_bind_fi_files),
             ('bind/pt', lib_bind_pt_files),
             ('bind/sv', lib_bind_sv_files),
+            ('commands', lib_commands_files),
             ('doc', lib_doc_files),
             ('doc/biblio', lib_doc_biblio_files),
             ('doc/clipart', lib_doc_clipart_files),
@@ -1978,6 +1980,7 @@ if 'install' in BUILD_TARGETS or 'installer' in BUILD_TARGETS:
             ('fonts', lib_fonts_files),
             ('images', lib_images_files),
             ('images/math', lib_images_math_files),
+            ('images/commands', lib_images_commands_files),
             ('kbd', lib_kbd_files),
             ('layouts', lib_layouts_files + lib_layouts_inc_files + lib_layouts_module_files),
             ('lyx2lyx', lib_lyx2lyx_files),

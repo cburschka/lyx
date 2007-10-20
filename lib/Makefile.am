@@ -64,6 +64,10 @@ dist_bind_DATA = \
 	bind/xemacs.bind \
 	bind/aqua.bind
 
+commandsdir = $(pkgdatadir)/commands
+dist_commands_DATA = \
+	commands/default.cmd
+
 caexamplesdir = $(pkgdatadir)/examples/ca
 dist_caexamples_DATA = \
 	examples/ca/splash.lyx
@@ -853,6 +857,9 @@ dist_imagesmath_DATA = \
 	images/math/xi.png \
 	images/math/xi2.png \
 	images/math/zeta.png
+
+imagescommandsdir = $(imagesdir)/commands
+dist_imagescommands_DATA = 
 
 kbddir = $(pkgdatadir)/kbd
 dist_kbd_DATA = \

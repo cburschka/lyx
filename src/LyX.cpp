@@ -29,6 +29,7 @@
 #include "Format.h"
 #include "gettext.h"
 #include "KeyMap.h"
+#include "CmdDef.h"
 #include "Language.h"
 #include "Session.h"
 #include "Color.h"
@@ -163,6 +164,8 @@ struct LyX::Singletons
 	BufferList buffer_list_;
 	///
 	boost::scoped_ptr<KeyMap> toplevel_keymap_;
+	///
+	boost::scoped_ptr<CmdDef> toplevel_cmddef_;
 	///
 	boost::scoped_ptr<Server> lyx_server_;
 	///
@@ -312,6 +315,13 @@ KeyMap & LyX::topLevelKeymap()
 {
 	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
 	return *pimpl_->toplevel_keymap_.get();
+}
+
+
+CmdDef & LyX::topLevelCmdDef()
+{
+	BOOST_ASSERT(pimpl_->toplevel_cmddef_.get());
+	return *pimpl_->toplevel_cmddef_.get();
 }
 
 
@@ -960,6 +970,10 @@ bool LyX::init()
 
 	// Set the language defined by the user.
 	//setGuiLanguage(lyxrc.gui_language);
+
+	// Set up command definitions
+	pimpl_->toplevel_cmddef_.reset(new CmdDef);
+	pimpl_->toplevel_cmddef_->read(lyxrc.def_file);
 
 	// Set up bindings
 	pimpl_->toplevel_keymap_.reset(new KeyMap);

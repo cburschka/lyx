@@ -24,6 +24,8 @@ using std::string;
 
 namespace lyx {
 
+FuncRequest const FuncRequest::unknown(LFUN_UNKNOWN_ACTION);
+FuncRequest const FuncRequest::noaction(LFUN_NOACTION);
 
 FuncRequest::FuncRequest(Origin o)
 	: action(LFUN_NOACTION), origin(o), x(0), y(0),

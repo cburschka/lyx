@@ -404,6 +404,8 @@ enum kb_action {
 	LFUN_MASTER_BUFFER_VIEW,         // Tommaso, 20070920
 	LFUN_MASTER_BUFFER_UPDATE,       // Tommaso, 20070920
 	LFUN_INFO_INSERT,                // bpeng, 20071007
+	// 295
+	LFUN_CALL,                       // broider, 20071002
 
 	LFUN_LASTACTION                  // end of the table
 };

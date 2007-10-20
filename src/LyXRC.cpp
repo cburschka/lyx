@@ -84,6 +84,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\custom_export_command", LyXRC::RC_CUSTOM_EXPORT_COMMAND },
 	{ "\\custom_export_format", LyXRC::RC_CUSTOM_EXPORT_FORMAT },
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
+	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
@@ -189,6 +190,7 @@ LyXRC::LyXRC()
 
 void LyXRC::setDefaults() {
 	bind_file = "cua";
+	def_file = "default";
 	ui_file = "default";
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
@@ -367,6 +369,12 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_BINDFILE:
 			if (lexrc.next()) {
 				bind_file = os::internal_path(lexrc.getString());
+			}
+			break;
+
+		case RC_DEFFILE:
+			if (lexrc.next()) {
+				def_file = os::internal_path(lexrc.getString());
 			}
 			break;
 
@@ -1226,7 +1234,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		   << "###          LyX, The Document Processor\n"
 		   << "###\n"
 		   << "###          Copyright 1995 Matthias Ettrich\n"
-		   << "###          Copyright 1995-2001 The LyX Team.\n"
+		   << "###          Copyright 1995-2007 The LyX Team.\n"
 		   << "###\n"
 		   << "### ========================================================\n"
 		   << "\n"
@@ -1248,6 +1256,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    bind_file != system_lyxrc.bind_file) {
 			string const path = os::external_path(bind_file);
 			os << "\\bind_file \"" << path << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+
+	case RC_DEFFILE:
+		if (ignore_system_lyxrc ||
+		    def_file != system_lyxrc.def_file) {
+			string const path = os::external_path(def_file);
+			os << "\\def_file \"" << path << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;

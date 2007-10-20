@@ -38,6 +38,7 @@ class Mover;
 class Movers;
 class Session;
 class KeyMap;
+class CmdDef;
 
 extern bool use_gui;
 
@@ -85,6 +86,9 @@ public:
 	///
 	KeyMap & topLevelKeymap();
 	KeyMap const & topLevelKeymap() const;
+
+	///
+	CmdDef & topLevelCmdDef();
 
 	///
 	Converters & converters();

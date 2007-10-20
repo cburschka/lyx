@@ -67,6 +67,10 @@ public:
 	/// access the whole argument
 	docstring const & argument() const { return argument_; }
 
+	/// 
+	static FuncRequest const unknown;
+	/// 
+	static FuncRequest const noaction;
 public:  // should be private
 	/// the action
 	kb_action action;

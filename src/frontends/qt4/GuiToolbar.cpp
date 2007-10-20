@@ -188,6 +188,10 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 		path = "math/";
 		name1 = find_png(to_utf8(f.argument()));
 		break;
+	case LFUN_CALL:
+		path = "commands/";
+		name1 = to_utf8(f.argument());
+		break;
 	default:
 		name2 = lyxaction.getActionName(f.action);
 		name1 = name2;
