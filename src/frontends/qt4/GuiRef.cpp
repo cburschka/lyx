@@ -378,11 +378,6 @@ void GuiRef::gotoBookmark()
 }
 
 
-int GuiRef::bufferNum() const
-{
-}
-
-
 bool GuiRef::initialiseParams(string const & data)
 {
 	// The name passed with LFUN_INSET_APPLY is also the name

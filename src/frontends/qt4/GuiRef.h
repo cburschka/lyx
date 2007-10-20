@@ -58,8 +58,6 @@ private:
 	void gotoRef(std::string const &);
 	///
 	void gotoBookmark();
-	///
-	int bufferNum() const;
 
 	///
 	void closeEvent(QCloseEvent * e);
