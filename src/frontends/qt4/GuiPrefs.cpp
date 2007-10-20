@@ -31,8 +31,12 @@
 #include "paper.h"
 #include "Session.h"
 
+#include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/os.h"
+#include "support/Package.h"
 #include "support/FileFilterList.h"
 
 #include "frontend_helpers.h"
@@ -75,7 +79,12 @@ using support::os::external_path;
 using support::os::external_path_list;
 using support::os::internal_path;
 using support::os::internal_path_list;
+using support::FileName;
 using support::FileFilterList;
+using support::addPath;
+using support::addName;
+using support::mkdir;
+using support::package;
 
 
 /////////////////////////////////////////////////////////////////////
@@ -1700,123 +1709,222 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 		this, SLOT(select_bind()));
 	connect(bindFileED, SIGNAL(textChanged(const QString &)),
 		this, SIGNAL(changed()));
+	connect(removePB, SIGNAL(clicked()), 
+		this, SIGNAL(changed()));
 	
 	shortcut_ = new GuiShortcutDialog(this);
 	shortcut_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
 	shortcut_bc_.setOK(shortcut_->okPB);
 	shortcut_bc_.setCancel(shortcut_->cancelPB);
 
-	connect(shortcut_->okPB, SIGNAL(clicked()), 
+	connect(shortcut_->okPB, SIGNAL(clicked()),
 		shortcut_, SLOT(accept()));
+	connect(shortcut_->okPB, SIGNAL(clicked()), 
+		this, SIGNAL(changed()));
 	connect(shortcut_->cancelPB, SIGNAL(clicked()), 
 		shortcut_, SLOT(reject()));
 	connect(shortcut_->okPB, SIGNAL(clicked()), 
-		shortcut_, SLOT(setShortcut()));
+		this, SLOT(shortcut_okPB_pressed()));
 }
 
 
 void PrefShortcuts::apply(LyXRC & rc) const
 {
 	rc.bind_file = internal_path(fromqstr(bindFileED->text()));
+	// write user_bind and user_unbind to .lyx/bind/user.bind
+	string bind_dir = addPath(package().user_support().absFilename(), "bind");
+	if (!FileName(bind_dir).exists() && mkdir(FileName(bind_dir), 0777)) {
+		lyxerr << "LyX could not create the user bind directory '"
+		       << bind_dir << "'. All user-defined key bindings will be lost." << endl;
+		return;
+	}
+	if (!FileName(bind_dir).isDirWritable()) {
+		lyxerr << "LyX could not write to the user bind directory '"
+		       << bind_dir << "'. All user-defined key bindings will be lost." << endl;
+		return;
+	}
+	FileName user_bind_file = FileName(addName(bind_dir, "user.bind"));
+	user_bind_.write(user_bind_file.toFilesystemEncoding(), false, false);
+	user_unbind_.write(user_bind_file.toFilesystemEncoding(), true, true);
+	// immediately apply the keybindings. Why this is not done before?
+	// The good thing is that the menus are updated automatically.
+	theTopLevelKeymap().clear();
+	theTopLevelKeymap().read(rc.bind_file);
+	theTopLevelKeymap().read("user");
 }
 
 
 void PrefShortcuts::update(LyXRC const & rc)
 {
 	bindFileED->setText(toqstr(external_path(rc.bind_file)));
+	//
+	system_bind_.clear();
+	user_bind_.clear();
+	user_unbind_.clear();
+	system_bind_.read(rc.bind_file);
+	// \unbind in user.bind is added to user_unbind_
+	user_bind_.read("user", &user_unbind_);
+	updateShortcutsTW();
+}
+
+
+void PrefShortcuts::updateShortcutsTW()
+{
 	shortcutsTW->clear();
 
-	QTreeWidgetItem * editItem = new QTreeWidgetItem(shortcutsTW);
-	editItem->setText(0, toqstr("Cursor, Mouse and Editing functions"));
-	editItem->setFlags(editItem->flags() & ~Qt::ItemIsSelectable);
+	editItem_ = new QTreeWidgetItem(shortcutsTW);
+	editItem_->setText(0, toqstr("Cursor, Mouse and Editing functions"));
+	editItem_->setFlags(editItem_->flags() & ~Qt::ItemIsSelectable);
 
-	// first insert a few categories
-	QTreeWidgetItem * mathItem = new QTreeWidgetItem(shortcutsTW);
-	mathItem->setText(0, toqstr("Mathematical Symbols"));
-	mathItem->setFlags(mathItem->flags() & ~Qt::ItemIsSelectable);
+	mathItem_ = new QTreeWidgetItem(shortcutsTW);
+	mathItem_->setText(0, toqstr("Mathematical Symbols"));
+	mathItem_->setFlags(mathItem_->flags() & ~Qt::ItemIsSelectable);
 	
-	QTreeWidgetItem * bufferItem = new QTreeWidgetItem(shortcutsTW);
-	bufferItem->setText(0, toqstr("Buffer and Window"));
-	bufferItem->setFlags(bufferItem->flags() & ~Qt::ItemIsSelectable);
+	bufferItem_ = new QTreeWidgetItem(shortcutsTW);
+	bufferItem_->setText(0, toqstr("Buffer and Window"));
+	bufferItem_->setFlags(bufferItem_->flags() & ~Qt::ItemIsSelectable);
 	
-	QTreeWidgetItem * layoutItem = new QTreeWidgetItem(shortcutsTW);
-	layoutItem->setText(0, toqstr("Font, Layouts and Textclasses"));
-	layoutItem->setFlags(layoutItem->flags() & ~Qt::ItemIsSelectable);
+	layoutItem_ = new QTreeWidgetItem(shortcutsTW);
+	layoutItem_->setText(0, toqstr("Font, Layouts and Textclasses"));
+	layoutItem_->setFlags(layoutItem_->flags() & ~Qt::ItemIsSelectable);
 
-	QTreeWidgetItem * systemItem = new QTreeWidgetItem(shortcutsTW);
-	systemItem->setText(0, toqstr("System and Miscellaneous"));
-	systemItem->setFlags(systemItem->flags() & ~Qt::ItemIsSelectable);
+	systemItem_ = new QTreeWidgetItem(shortcutsTW);
+	systemItem_->setText(0, toqstr("System and Miscellaneous"));
+	systemItem_->setFlags(systemItem_->flags() & ~Qt::ItemIsSelectable);
 
 	// listBindings(unbound=true) lists all bound and unbound lfuns
-	KeyMap::BindingList const bindinglist = theTopLevelKeymap().listBindings(true);
+	// Items in this list is tagged by its source.
+	KeyMap::BindingList bindinglist = system_bind_.listBindings(true, 
+		static_cast<int>(System));
+	KeyMap::BindingList user_bindinglist = user_bind_.listBindings(false,
+		static_cast<int>(UserBind));
+	KeyMap::BindingList user_unbindinglist = user_unbind_.listBindings(false,
+		static_cast<int>(UserUnbind));
+	bindinglist.insert(bindinglist.end(), user_bindinglist.begin(),
+			user_bindinglist.end());
+	bindinglist.insert(bindinglist.end(), user_unbindinglist.begin(),
+			user_unbindinglist.end());
 
 	KeyMap::BindingList::const_iterator it = bindinglist.begin();
 	KeyMap::BindingList::const_iterator it_end = bindinglist.end();
-	for (; it != it_end; ++it) {
-		kb_action action = it->get<0>().action;
-		string const action_name = lyxaction.getActionName(action);
-		QString const lfun = toqstr(from_utf8(action_name) 
-			+ " " + it->get<0>().argument());
-		QString const shortcut = toqstr(it->get<1>().print(KeySequence::Portable));
-		
-		QTreeWidgetItem * newItem = NULL;
-		// if an item with the same lfun already exists, insert as a
-		// child item to that item.
-		// WARNING: this can be slow.
-		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun, 
-			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
-		if (!items.empty())
-			newItem = new QTreeWidgetItem(items[0]);
-		else {
-			switch(lyxaction.getActionType(action)) {
-			case LyXAction::Hidden:
-				continue;
-			case LyXAction::Edit:
-				newItem = new QTreeWidgetItem(editItem);
-				break;
-			case LyXAction::Math:
-				newItem = new QTreeWidgetItem(mathItem);
-				break;
-			case LyXAction::Buffer:
-				newItem = new QTreeWidgetItem(bufferItem);
-				break;
-			case LyXAction::Layout:
-				newItem = new QTreeWidgetItem(layoutItem);
-				break;
-			case LyXAction::System:
-				newItem = new QTreeWidgetItem(systemItem);
-				break;
-			default:
-				// this should not happen
-				newItem = new QTreeWidgetItem(shortcutsTW);
-			}
-		}
+	for (; it != it_end; ++it)
+		insertShortcutItem(it->get<0>(), it->get<1>(), 
+			static_cast<item_type>(it->get<2>()));
 
-		newItem->setText(0, lfun);
-		newItem->setText(1, shortcut);
-		
-		//newItem->setFlags(newItem->flags() | Qt::ItemIsEditable
-		//	| Qt::ItemIsSelectable | Qt::ItemIsUserCheckable);
-	}
 	shortcutsTW->sortItems(0, Qt::AscendingOrder);
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
-	modifyPB->setEnabled(!items.isEmpty());
 	removePB->setEnabled(!items.isEmpty() && !items[0]->text(1).isEmpty());
 	searchPB->setEnabled(!searchLE->text().isEmpty());
+}
+
+
+void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
+{
+	item->setData(0, Qt::UserRole, QVariant(tag));
+
+	switch (tag) {
+	case System:
+#if QT_VERSION >= 0x040200
+		item->setForeground(0, QBrush("black"));
+		item->setForeground(1, QBrush("black"));
+#else
+		item->setTextColor(QColor("black"));
+#endif
+		break;
+	case UserBind:
+#if QT_VERSION >= 0x040200
+		item->setForeground(0, QBrush("green"));
+		item->setForeground(1, QBrush("green"));
+#else
+		item->setTextColor(QColor("green"));
+#endif
+		break;
+	case UserUnbind:
+#if QT_VERSION >= 0x040200
+		item->setForeground(0, QBrush("red"));
+		item->setForeground(1, QBrush("red"));
+#else
+		item->setTextColor(QColor("red"));
+#endif
+	}
+}
+
+
+QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
+		KeySequence const & seq, item_type tag)
+{
+	kb_action action = lfun.action;
+	string const action_name = lyxaction.getActionName(action);
+	QString const lfun_name = toqstr(from_utf8(action_name) 
+			+ " " + lfun.argument());
+	// use BindFile format instead of a more verbose form Portable
+	// if the Shortcut dialog can hide all the bind file stuff,
+	// Portable format can be used.
+	QString const shortcut = toqstr(seq.print(KeySequence::BindFile));
+
+	QTreeWidgetItem * newItem = NULL;
+	// for unbind items, try to find an existing item in the system bind list
+	if (tag == UserUnbind) {
+		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name, 
+			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
+		if (!items.empty())
+			newItem = items[0];
+	}
+	if (!newItem) {
+		switch(lyxaction.getActionType(action)) {
+		case LyXAction::Hidden:
+			return NULL;
+		case LyXAction::Edit:
+			newItem = new QTreeWidgetItem(editItem_);
+			break;
+		case LyXAction::Math:
+			newItem = new QTreeWidgetItem(mathItem_);
+			break;
+		case LyXAction::Buffer:
+			newItem = new QTreeWidgetItem(bufferItem_);
+			break;
+		case LyXAction::Layout:
+			newItem = new QTreeWidgetItem(layoutItem_);
+			break;
+		case LyXAction::System:
+			newItem = new QTreeWidgetItem(systemItem_);
+			break;
+		default:
+			// this should not happen
+			newItem = new QTreeWidgetItem(shortcutsTW);
+		}
+	}
+
+	newItem->setText(0, lfun_name);
+	newItem->setText(1, shortcut);
+	setItemType(newItem, tag);
+	return newItem;
 }
 
 
 void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 {
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
-	modifyPB->setEnabled(!items.isEmpty());
 	removePB->setEnabled(!items.isEmpty() && !items[0]->text(1).isEmpty());
+	if (items.isEmpty())
+		return;
+	
+	item_type tag = static_cast<item_type>(items[0]->data(0, Qt::UserRole).toInt());
+	if (tag == UserUnbind)
+		removePB->setText(toqstr("Restore"));
+	else
+		removePB->setText(toqstr("Remove"));
 }
 
 
 void PrefShortcuts::on_shortcutsTW_itemDoubleClicked()
 {
-	on_modifyPB_pressed();
+	QTreeWidgetItem * item = shortcutsTW->currentItem();
+	if (item->flags() & Qt::ItemIsSelectable) {
+		shortcut_->lfunLE->setText(item->text(0));
+		shortcut_->shortcutLE->setText(item->text(1));
+		shortcut_->exec();
+	}
 }
 
 
@@ -1825,43 +1933,68 @@ void PrefShortcuts::select_bind()
 	docstring const name =
 		from_utf8(internal_path(fromqstr(bindFileED->text())));
 	docstring file = form_->browsebind(name);
-	if (!file.empty())
+	if (!file.empty()) {
 		bindFileED->setText(toqstr(file));
+		system_bind_ = KeyMap();
+		system_bind_.read(to_utf8(file));
+		updateShortcutsTW();
+	}
 }
 
 
 void PrefShortcuts::on_newPB_pressed()
 {
-	shortcut_->lfunED->clear();
-	shortcut_->shortcutED->clear();
-	shortcut_->setWindowTitle(toqstr("Create new shortcut"));
-	shortcut_->exec();
-}
-
-
-void PrefShortcuts::on_modifyPB_pressed()
-{
-	QTreeWidgetItem * item = shortcutsTW->currentItem();
-	shortcut_->lfunED->setText(item->text(0));
-	shortcut_->shortcutED->setText(item->text(1));
-	shortcut_->setWindowTitle(toqstr("Modify shortcut"));
+	shortcut_->lfunLE->clear();
+	shortcut_->shortcutLE->clear();
 	shortcut_->exec();
 }
 
 
 void PrefShortcuts::on_removePB_pressed()
 {
+	// it seems that only one item can be selected, but I am
+	// removing all selected items anyway.
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
-	for (int i = 0; i < items.size(); ++i)
-		items[i]->setText(1, QString());
+	for (int i = 0; i < items.size(); ++i) {
+		string shortcut = fromqstr(items[i]->text(1));
+		string lfun = fromqstr(items[i]->text(0));
+		FuncRequest func = lyxaction.lookupFunc(lfun);
+		item_type tag = static_cast<item_type>(items[i]->data(0, Qt::UserRole).toInt());
+		
+		switch (tag) {
+		case System: {
+			// for system bind, we do not touch the item
+			// but add an user unbind item
+			user_unbind_.bind(shortcut, func);
+			setItemType(items[i], UserUnbind);
+			break;
+		}
+		case UserBind: {
+			// for user_bind, we remove this bind
+			QTreeWidgetItem * parent = items[i]->parent();
+			parent->takeChild(parent->indexOfChild(items[i]));
+			user_bind_.unbind(shortcut, func);
+			break;
+		}
+		case UserUnbind: {
+			// for user_unbind, we remove the unbind, and the item
+			// become System again.
+			user_unbind_.unbind(shortcut, func);
+			setItemType(items[i], System);
+			break;
+		}
+		}
+	}
 }
 
 
 void PrefShortcuts::on_searchPB_pressed()
 {
-	QList<QTreeWidgetItem *> matched = shortcutsTW->findItems(
-		searchLE->text(), 
-		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive));
+	// search both columns
+	QList<QTreeWidgetItem *> matched = shortcutsTW->findItems(searchLE->text(),
+		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive), 0);
+	matched += shortcutsTW->findItems(searchLE->text(),
+		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive), 1);
 	
 	// hide everyone (to avoid searching in matched QList repeatedly
 	QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Selectable);
@@ -1870,7 +2003,7 @@ void PrefShortcuts::on_searchPB_pressed()
 	// show matched items
 	for (int i = 0; i < matched.size(); ++i) {
 		shortcutsTW->setItemHidden(matched[i], false);
-        shortcutsTW->setItemExpanded(matched[i], true);
+        shortcutsTW->setItemExpanded(matched[i]->parent(), true);
 	}
 }
 
@@ -1887,8 +2020,44 @@ void PrefShortcuts::on_searchLE_textChanged()
 }
 	
 
-void PrefShortcuts::setShortcut()
+void PrefShortcuts::shortcut_okPB_pressed()
 {
+	string shortcut = fromqstr(shortcut_->shortcutLE->text());
+	string lfun = fromqstr(shortcut_->lfunLE->text());
+	FuncRequest func = lyxaction.lookupFunc(lfun);
+
+	if (func.action == LFUN_UNKNOWN_ACTION) {
+		Alert::error(_("Failed to create shortcut"),
+			_("Unknown or invalid lyx function"));
+		return;
+	}
+
+	KeySequence k(0, 0);
+	string::size_type const res = k.parse(shortcut);
+	if (res != string::npos) {
+		Alert::error(_("Failed to create shortcut"),
+			_("Invalid key sequence"));
+		return;
+	}
+
+	// if both lfun and shortcut is valid
+	if (user_bind_.hasBinding(k, func) || system_bind_.hasBinding(k, func)) {
+		Alert::error(_("Failed to create shortcut"),
+			_("Shortcut is alreay defined"));
+		return;
+	}
+		
+	QTreeWidgetItem * item = insertShortcutItem(func, k, UserBind);
+	if (item) {
+		user_bind_.bind(shortcut, func);
+		shortcutsTW->sortItems(0, Qt::AscendingOrder);
+		shortcutsTW->setItemExpanded(item->parent(), true);
+		shortcutsTW->scrollToItem(item);
+	} else {
+		Alert::error(_("Failed to create shortcut"),
+			_("Can not insert shortcut to the list"));
+		return;
+	}
 }
 
 

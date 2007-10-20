@@ -17,6 +17,8 @@
 #include "Color.h"
 #include "Converter.h"
 #include "Format.h"
+#include "KeyMap.h"
+#include "lfuns.h"
 #include "LyXRC.h"
 #include "Mover.h"
 
@@ -359,28 +361,55 @@ public:
 class PrefShortcuts : public PrefModule, public Ui::PrefShortcuts
 {
 	Q_OBJECT
+private:
+	enum item_type {
+		System,		//< loaded from a bind file
+		UserBind,	//< \bind loaded from user.bind
+		UserUnbind	//< \unbind loaded from user.bind
+	};
 public:
 	PrefShortcuts(GuiPreferences * form, QWidget * parent = 0);
 
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
+	void updateShortcutsTW();
+	///
+	void setItemType(QTreeWidgetItem * item, item_type tag);
+	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun, 
+		KeySequence const & shortcut, item_type tag);
 
 public Q_SLOTS:
 	void select_bind();
 	void on_newPB_pressed();
-	void on_modifyPB_pressed();
 	void on_removePB_pressed();
 	void on_searchPB_pressed();
 	void on_searchLE_textChanged();
 	///
 	void on_shortcutsTW_itemSelectionChanged();
-	void setShortcut();
+	void shortcut_okPB_pressed();
 	void on_shortcutsTW_itemDoubleClicked();
+
 private:
 	///
 	GuiShortcutDialog * shortcut_;
 	///
 	ButtonController shortcut_bc_;
+	/// category items
+	QTreeWidgetItem * editItem_;
+	QTreeWidgetItem * mathItem_;
+	QTreeWidgetItem * bufferItem_;
+	QTreeWidgetItem * layoutItem_;
+	QTreeWidgetItem * systemItem_;
+	// system_bind_ holds bindings from rc.bind_file
+	// user_bind_ holds \bind bindings from user.bind
+	// user_unbind_ holds \unbind bindings from user.bind
+	// When an item is inserted, it is added to user_bind_
+	// When an item from system_bind_ is deleted, it is added to user_unbind_
+	// When an item in user_bind_ or user_unbind_ is deleted, it is 
+	//	deleted (unbind)
+	KeyMap system_bind_;
+	KeyMap user_bind_;
+	KeyMap user_unbind_;
 };
 
 

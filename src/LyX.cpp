@@ -965,6 +965,8 @@ bool LyX::init()
 	pimpl_->toplevel_keymap_.reset(new KeyMap);
 	defaultKeyBindings(pimpl_->toplevel_keymap_.get());
 	pimpl_->toplevel_keymap_->read(lyxrc.bind_file);
+	// load user bind file user.bind
+	pimpl_->toplevel_keymap_->read("user");
 
 	pimpl_->lyxfunc_.initKeySequences(pimpl_->toplevel_keymap_.get());
 

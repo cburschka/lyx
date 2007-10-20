@@ -94,7 +94,7 @@
     </widget>
    </item>
    <item row="1" column="1" >
-    <widget class="QLineEdit" name="shortcutED" >
+    <widget class="QLineEdit" name="shortcutLE" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>7</hsizetype>
@@ -109,7 +109,7 @@
     </widget>
    </item>
    <item row="0" column="1" >
-    <widget class="QLineEdit" name="lfunED" >
+    <widget class="QLineEdit" name="lfunLE" >
      <property name="sizePolicy" >
       <sizepolicy>
        <hsizetype>7</hsizetype>
@@ -126,7 +126,7 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>lfunED</tabstop>
+  <tabstop>lfunLE</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>cancelPB</tabstop>
  </tabstops>
