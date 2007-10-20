@@ -33,6 +33,7 @@
 #include "qt_helpers.h"
 #include "InsertTableWidget.h"
 
+#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
 
@@ -59,6 +60,7 @@ namespace frontend {
 using std::string;
 using std::endl;
 
+using support::libFileSearch;
 using support::subst;
 using support::compare;
 
@@ -171,15 +173,20 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 	QPixmap pm;
 	string name1;
 	string name2;
+	string path;
+	string fullname;
 
 	switch (f.action) {
 	case LFUN_MATH_INSERT:
-		if (!f.argument().empty())
-			name1 = "math/" + find_png(to_utf8(f.argument()).substr(1));
+		if (!f.argument().empty()) {
+			path = "math/";
+			name1 = find_png(to_utf8(f.argument()).substr(1));
+		}
 		break;
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
-		name1 = "math/" + find_png(to_utf8(f.argument()));
+		path = "math/";
+		name1 = find_png(to_utf8(f.argument()));
 		break;
 	default:
 		name2 = lyxaction.getActionName(f.action);
@@ -189,10 +196,18 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 			name1 = subst(name2 + ' ' + to_utf8(f.argument()), ' ', '_');
 	}
 
-	if (pm.load(":/images/" + toqstr(name1) + ".png"))
+	fullname = libFileSearch("images/" + path, name1, "png").absFilename();
+	if (pm.load(toqstr(fullname)))
 		return pm;
 
-	if (pm.load(":/images/" + toqstr(name2) + ".png"))
+	fullname = libFileSearch("images/" + path, name2, "png").absFilename();
+	if (pm.load(toqstr(fullname)))
+		return pm;
+
+	if (pm.load(":/images/" + toqstr(path + name1) + ".png"))
+		return pm;
+
+	if (pm.load(":/images/" + toqstr(path + name2) + ".png"))
 		return pm;
 
 	LYXERR(Debug::GUI) << "Cannot find icon for command \""
