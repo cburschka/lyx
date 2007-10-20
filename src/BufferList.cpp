@@ -100,9 +100,9 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 
 	docstring file;
 	if (buf->isUnnamed())
-		file = from_utf8(onlyFilename(buf->fileName()));
+		file = from_utf8(onlyFilename(buf->absFileName()));
 	else
-		file = makeDisplayPath(buf->fileName(), 30);
+		file = makeDisplayPath(buf->absFileName(), 30);
 
 	docstring const text =
 		bformat(_("The document %1$s has unsaved changes.\n\n"
@@ -129,7 +129,7 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 		// have no autosave file but I guess
 		// this is really inprobable (Jug)
 		if (buf->isUnnamed())
-			removeAutosaveFile(buf->fileName());
+			removeAutosaveFile(buf->absFileName());
 
 	} else {
 		return false;
@@ -156,8 +156,8 @@ bool BufferList::quitWriteAll()
 	for (; it != end; ++it) {
 		// if master/slave are both open, do not save slave since it
 		// will be automatically loaded when the master is loaded
-		if ((*it)->getMasterBuffer() == (*it))
-			LyX::ref().session().lastOpened().add(FileName((*it)->fileName()));
+		if ((*it)->masterBuffer() == (*it))
+			LyX::ref().session().lastOpened().add(FileName((*it)->absFileName()));
 	}
 
 	return true;
@@ -208,9 +208,9 @@ bool BufferList::close(Buffer * buf, bool const ask)
 
 	docstring fname;
 	if (buf->isUnnamed())
-		fname = from_utf8(onlyFilename(buf->fileName()));
+		fname = from_utf8(onlyFilename(buf->absFileName()));
 	else
-		fname = makeDisplayPath(buf->fileName(), 30);
+		fname = makeDisplayPath(buf->absFileName(), 30);
 
 	docstring const text =
 		bformat(_("The document %1$s has unsaved changes.\n\n"
@@ -228,7 +228,7 @@ bool BufferList::close(Buffer * buf, bool const ask)
 	} else if (ret == 2)
 		return false;
 		
-	removeAutosaveFile(buf->fileName());
+	removeAutosaveFile(buf->absFileName());
 
 	release(buf);
 	return true;
@@ -240,7 +240,7 @@ vector<string> const BufferList::getFileNames() const
 	vector<string> nvec;
 	transform(bstore.begin(), bstore.end(),
 		  back_inserter(nvec),
-		  boost::bind(&Buffer::fileName, _1));
+		  boost::bind(&Buffer::absFileName, _1));
 	return nvec;
 }
 
@@ -302,17 +302,17 @@ Buffer * BufferList::previous(Buffer const * buf) const
 }
 
 
-void BufferList::updateIncludedTeXfiles(string const & mastertmpdir,
+void BufferList::updateIncludedTeXfiles(string const & masterTmpDir,
 					OutputParams const & runparams)
 {
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it != end; ++it) {
-		if (!(*it)->isDepClean(mastertmpdir)) {
-			string writefile = addName(mastertmpdir, (*it)->getLatexName());
-			(*it)->makeLaTeXFile(FileName(writefile), mastertmpdir,
+		if (!(*it)->isDepClean(masterTmpDir)) {
+			string writefile = addName(masterTmpDir, (*it)->latexName());
+			(*it)->makeLaTeXFile(FileName(writefile), masterTmpDir,
 					     runparams, false);
-			(*it)->markDepClean(mastertmpdir);
+			(*it)->markDepClean(masterTmpDir);
 		}
 	}
 }
@@ -338,7 +338,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 		return;
 
 	string const doc = buf->isUnnamed()
-		? onlyFilename(buf->fileName()) : buf->fileName();
+		? onlyFilename(buf->absFileName()) : buf->absFileName();
 
 	lyxerr << to_utf8(
 		bformat(_("LyX: Attempting to save document %1$s"), from_utf8(doc)))
@@ -347,7 +347,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	// We try to save three places:
 	// 1) Same place as document. Unless it is an unnamed doc.
 	if (!buf->isUnnamed()) {
-		string s = buf->fileName();
+		string s = buf->absFileName();
 		s += ".emergency";
 		lyxerr << "  " << s << endl;
 		if (buf->writeFile(FileName(s))) {
@@ -360,7 +360,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	}
 
 	// 2) In HOME directory.
-	string s = addName(package().home_dir().absFilename(), buf->fileName());
+	string s = addName(package().home_dir().absFilename(), buf->absFileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(FileName(s))) {
@@ -374,7 +374,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
 	// drive letter on OS/2
-	s = addName(package().temp_dir().absFilename(), buf->fileName());
+	s = addName(package().temp_dir().absFilename(), buf->absFileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(FileName(s))) {
@@ -390,7 +390,7 @@ bool BufferList::exists(string const & s) const
 {
 	return find_if(bstore.begin(), bstore.end(),
 		       bind(equal_to<string>(),
-			    bind(&Buffer::fileName, _1),
+			    bind(&Buffer::absFileName, _1),
 			    s))
 		!= bstore.end();
 }
@@ -410,7 +410,7 @@ Buffer * BufferList::getBuffer(string const & s)
 	BufferStorage::iterator it =
 		find_if(bstore.begin(), bstore.end(),
 			bind(equal_to<string>(),
-			     bind(&Buffer::fileName, _1),
+			     bind(&Buffer::absFileName, _1),
 			     s));
 
 	return it != bstore.end() ? (*it) : 0;
@@ -432,9 +432,19 @@ void BufferList::setCurrentAuthor(docstring const & name, docstring const & emai
 {
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
-	for (; it != end; ++it) {
+	for (; it != end; ++it)
 		(*it)->params().authors().record(0, Author(name, email));
-	}
+}
+
+
+int BufferList::bufferNum(std::string const & name) const
+{
+	vector<string> buffers = getFileNames();
+	vector<string>::const_iterator cit =
+		std::find(buffers.begin(), buffers.end(), name);
+	if (cit == buffers.end())
+		return 0;
+	return int(cit - buffers.begin());
 }
 
 

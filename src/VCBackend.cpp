@@ -66,6 +66,12 @@ int VCS::doVCCommand(string const & cmd, FileName const & path)
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// RCS
+//
+/////////////////////////////////////////////////////////////////////
+
 RCS::RCS(FileName const & m)
 {
 	master_ = m;
@@ -175,7 +181,7 @@ void RCS::registrer(string const & msg)
 	string cmd = "ci -q -u -i -t-\"";
 	cmd += msg;
 	cmd += "\" ";
-	cmd += quoteName(onlyFilename(owner_->fileName()));
+	cmd += quoteName(onlyFilename(owner_->absFileName()));
 	doVCCommand(cmd, FileName(owner_->filePath()));
 }
 
@@ -183,7 +189,7 @@ void RCS::registrer(string const & msg)
 void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->fileName())),
+		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
@@ -191,7 +197,7 @@ void RCS::checkIn(string const & msg)
 void RCS::checkOut()
 {
 	owner_->markClean();
-	doVCCommand("co -q -l " + quoteName(onlyFilename(owner_->fileName())),
+	doVCCommand("co -q -l " + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
@@ -199,7 +205,7 @@ void RCS::checkOut()
 void RCS::revert()
 {
 	doVCCommand("co -f -u" + version() + " "
-		    + quoteName(onlyFilename(owner_->fileName())),
+		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 	// We ignore changes and just reload!
 	owner_->markClean();
@@ -210,18 +216,24 @@ void RCS::undoLast()
 {
 	LYXERR(Debug::LYXVC) << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + version() + " "
-		    + quoteName(onlyFilename(owner_->fileName())),
+		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
 
 void RCS::getLog(FileName const & tmpf)
 {
-	doVCCommand("rlog " + quoteName(onlyFilename(owner_->fileName()))
+	doVCCommand("rlog " + quoteName(onlyFilename(owner_->absFileName()))
 		    + " > " + tmpf.toFilesystemEncoding(),
 		    FileName(owner_->filePath()));
 }
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// CVS
+//
+/////////////////////////////////////////////////////////////////////
 
 CVS::CVS(FileName const & m, FileName const & f)
 {
@@ -305,7 +317,7 @@ void CVS::scanMaster()
 void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->fileName())),
+		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
@@ -313,7 +325,7 @@ void CVS::registrer(string const & msg)
 void CVS::checkIn(string const & msg)
 {
 	doVCCommand("cvs -q commit -m \"" + msg + "\" "
-		    + quoteName(onlyFilename(owner_->fileName())),
+		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
 
@@ -329,7 +341,7 @@ void CVS::revert()
 {
 	// Reverts to the version in CVS repository and
 	// gets the updated version from the repository.
-	string const fil = quoteName(onlyFilename(owner_->fileName()));
+	string const fil = quoteName(onlyFilename(owner_->absFileName()));
 
 	doVCCommand("rm -f " + fil + "; cvs update " + fil,
 		    FileName(owner_->filePath()));
@@ -348,7 +360,7 @@ void CVS::undoLast()
 
 void CVS::getLog(FileName const & tmpf)
 {
-	doVCCommand("cvs log " + quoteName(onlyFilename(owner_->fileName()))
+	doVCCommand("cvs log " + quoteName(onlyFilename(owner_->absFileName()))
 		    + " > " + tmpf.toFilesystemEncoding(),
 		    FileName(owner_->filePath()));
 }

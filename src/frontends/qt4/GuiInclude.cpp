@@ -354,7 +354,6 @@ docstring GuiInclude::browse(docstring const & in_name, Type in_type) const
 		filters = FileFilterList(_("LaTeX/LyX Documents (*.tex *.lyx)"));
 		break;
 	case VERBATIM:
-		break;
 	case LISTINGS:
 		break;
 	}
@@ -362,7 +361,7 @@ docstring GuiInclude::browse(docstring const & in_name, Type in_type) const
 	pair<docstring, docstring> dir1(_("Documents|#o#O"),
 		from_utf8(lyxrc.document_path));
 
-	docstring const docpath = from_utf8(onlyPath(buffer().fileName()));
+	docstring const docpath = from_utf8(onlyPath(buffer().absFileName()));
 
 	return browseRelFile(in_name, docpath, title,
 			     filters, false, dir1);
@@ -377,7 +376,7 @@ void GuiInclude::edit(string const & file)
 	else
 		// tex file or other text file in verbatim mode
 		formats.edit(buffer(), 
-			makeAbsPath(file, onlyPath(buffer().fileName())),
+			makeAbsPath(file, onlyPath(buffer().absFileName())),
 			"text");
 }
 

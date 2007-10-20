@@ -605,19 +605,19 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
-	Buffer const * m_buffer = buf.getMasterBuffer();
+	Buffer const * masterBuffer = buf.masterBuffer();
 
 	// Return the output name if we are inside a comment or the file does
 	// not exist.
 	// We are not going to change the extension or using the name of the
 	// temporary file, the code is already complicated enough.
 	if (runparams.inComment || !params().filename.isFileReadable())
-		return params().filename.outputFilename(m_buffer->filePath());
+		return params().filename.outputFilename(masterBuffer->filePath());
 
 	// We place all temporary files in the master buffer's temp dir.
 	// This is possible because we use mangled file names.
 	// This is necessary for DVI export.
-	string const temp_path = m_buffer->temppath();
+	string const temp_path = masterBuffer->temppath();
 
 	CopyStatus status;
 	boost::tie(status, temp_file) =
@@ -630,7 +630,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// "nice" means that the buffer is exported to LaTeX format but not
 	// run through the LaTeX compiler.
 	string output_file = runparams.nice ?
-		params().filename.outputFilename(m_buffer->filePath()) :
+		params().filename.outputFilename(masterBuffer->filePath()) :
 		onlyFilename(temp_file.absFilename());
 
 	if (runparams.nice && !isValidLaTeXFilename(output_file)) {
@@ -948,8 +948,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 	features.require("graphicx");
 
 	if (features.runparams().nice) {
-		Buffer const * m_buffer = features.buffer().getMasterBuffer();
-		string const rel_file = removeExtension(params().filename.relFilename(m_buffer->filePath()));
+		Buffer const * masterBuffer = features.buffer().masterBuffer();
+		string const rel_file = removeExtension(params().filename.relFilename(masterBuffer->filePath()));
 		if (contains(rel_file, "."))
 			features.require("lyxdot");
 	}

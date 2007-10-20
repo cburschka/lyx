@@ -261,7 +261,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 	}
 
 	b->setReadonly(false);
-	b->fully_loaded(true);
+	b->setFullyLoaded(true);
 
 	return b;
 }
@@ -290,17 +290,6 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr,
 		errorList.push_back(ErrorItem(cit->error_desc,
 			cit->error_text, id_start, pos_start, pos_end));
 	}
-}
-
-
-string const bufferFormat(Buffer const & buffer)
-{
-	if (buffer.isDocBook())
-		return "docbook";
-	else if (buffer.isLiterate())
-		return "literate";
-	else
-		return "latex";
 }
 
 
@@ -583,7 +572,7 @@ void updateLabels(Buffer const & buf, ParIterator & parit)
 // the contents of the paragraphs.
 void updateLabels(Buffer const & buf, bool childonly)
 {
-	Buffer const * const master = buf.getMasterBuffer();
+	Buffer const * const master = buf.masterBuffer();
 	// Use the master text class also for child documents
 	TextClass const & textclass = master->params().getTextClass();
 
@@ -627,11 +616,12 @@ void updateLabels(Buffer const & buf, bool childonly)
 void checkBufferStructure(Buffer & buffer, ParIterator const & par_it)
 {
 	if (par_it->layout()->toclevel != Layout::NOT_IN_TOC) {
-		Buffer * master = buffer.getMasterBuffer();
+		Buffer * master = buffer.masterBuffer();
 		master->tocBackend().updateItem(par_it);
 		master->structureChanged();
 	}
 }
+
 
 textclass_type defaultTextclass()
 {
@@ -642,24 +632,4 @@ textclass_type defaultTextclass()
 	return textclasslist.numberOfClass("article").second;
 }
 
-
-void loadChildDocuments(Buffer const & buf)
-{
-	bool parse_error = false;
-		
-	for (InsetIterator it = inset_iterator_begin(buf.inset()); it; ++it) {
-		if (it->lyxCode() != INCLUDE_CODE)
-			continue;
-		InsetInclude const & inset = static_cast<InsetInclude const &>(*it);
-		InsetCommandParams const & ip = inset.params();
-		Buffer * child = loadIfNeeded(buf, ip);
-		if (!child)
-			continue;
-		parse_error |= !child->errorList("Parse").empty();
-		loadChildDocuments(*child);
-	}
-
-	if (use_gui && buf.getMasterBuffer() == &buf)
-		updateLabels(buf);
-}
 } // namespace lyx

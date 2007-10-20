@@ -154,7 +154,7 @@ docstring const getNatbibLabel(Buffer const & buffer,
 			    biblio::CiteEngine engine)
 {
 	// Only start the process off after the buffer is loaded from file.
-	if (!buffer.fully_loaded())
+	if (!buffer.isFullyLoaded())
 		return docstring();
 
 	// Cache the labels
@@ -173,7 +173,7 @@ docstring const getNatbibLabel(Buffer const & buffer,
 			it != bibfilesCache.end(); ++ it) {
 		FileName const f = *it;
 		try {
-			std::time_t lastw = fs::last_write_time(f.toFilesystemEncoding());
+			std::time_t lastw = f.lastModified();
 			if (lastw != bibfileStatus[f]) {
 				changed = true;
 				bibfileStatus[f] = lastw;
@@ -192,9 +192,10 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	if (cached_keys[&buffer].empty() || bibfileStatus.empty() || changed) {
 		biblist.fillWithBibKeys(&buffer);
 		cached_keys[&buffer] = biblist;
-	} else
+	} else {
 		// use the cached keys
 		biblist = cached_keys[&buffer];
+	}
 
 	if (biblist.empty())
 		return docstring();
@@ -251,9 +252,9 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	// puctuation mark separating citation entries.
 	char const * const sep = ";";
 
-	docstring const op_str(' ' + docstring(1, op));
-	docstring const cp_str(docstring(1, cp) + ' ');
-	docstring const sep_str(from_ascii(sep) + ' ');
+	docstring const op_str = ' ' + docstring(1, op);
+	docstring const cp_str = docstring(1, cp) + ' ';
+	docstring const sep_str = from_ascii(sep) + ' ';
 
 	docstring label;
 	vector<docstring> keys = getVectorFromString(keyList);
@@ -366,7 +367,7 @@ docstring const getBasicLabel(docstring const & keyList, docstring const & after
 {
 	using support::contains;
 
-	docstring keys(keyList);
+	docstring keys = keyList;
 	docstring label;
 
 	if (contains(keys, ',')) {

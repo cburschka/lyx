@@ -194,7 +194,7 @@ public:
 			     OutputParams const & runparams_in,
 			     bool only_body = false);
 	/// returns the main language for the buffer (document)
-	Language const * getLanguage() const;
+	Language const * language() const;
 	/// get l10n translated to the buffers language
 	docstring const B_(std::string const & l10n) const;
 
@@ -211,7 +211,7 @@ public:
 	bool isExternallyModified(CheckMethod method) const;
 
 	/// save timestamp and checksum of the given file.
-	void saveCheckSum(std::string const & file) const;
+	void saveCheckSum(support::FileName const & file) const;
 
 	/// mark the main lyx file as not needing saving
 	void markClean() const;
@@ -232,7 +232,7 @@ public:
 	void markDirty();
 
 	/// Returns the buffer's filename. It is always an absolute path.
-	std::string const fileName() const;
+	std::string absFileName() const;
 
 	/// Returns the the path where the buffer lives.
 	/// It is always an absolute path.
@@ -241,10 +241,10 @@ public:
 	/** A transformed version of the file name, adequate for LaTeX.
 	    \param no_path optional if \c true then the path is stripped.
 	*/
-	std::string const getLatexName(bool no_path = true) const;
+	std::string latexName(bool no_path = true) const;
 
 	/// Get thee name and type of the log.
-	std::pair<LogType, std::string> const getLogName() const;
+	std::pair<LogType, std::string> logName() const;
 
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(std::string const & newfile);
@@ -255,11 +255,11 @@ public:
 	/** Get the document's master (or \c this if this is not a
 	    child document)
 	 */
-	Buffer const * getMasterBuffer() const;
+	Buffer const * masterBuffer() const;
 	/** Get the document's master (or \c this if this is not a
 	    child document)
 	 */
-	Buffer * getMasterBuffer();
+	Buffer * masterBuffer();
 
 	/// Is buffer read-only?
 	bool isReadonly() const;
@@ -335,14 +335,14 @@ public:
 	 *  Used to prevent the premature generation of previews
 	 *  and by the citation inset.
 	 */
-	bool fully_loaded() const;
+	bool isFullyLoaded() const;
 	/// Set by buffer_funcs' newFile.
-	void fully_loaded(bool);
+	void setFullyLoaded(bool);
 
 	/// Our main text (inside the top InsetText)
 	Text & text() const;
 
-	/// Our top InsetText!
+	/// Our top InsetText
 	Inset & inset() const;
 
 	//
@@ -362,15 +362,14 @@ public:
 	void changeRefsIfUnique(docstring const & from, docstring const & to,
 		InsetCode code);
 
-/// get source code (latex/docbook) for some paragraphs, or all paragraphs
-/// including preamble
-	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end, bool full_source);
+	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
+	/// including preamble
+	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end,
+		bool full_source);
 
-	/// errorLists_ accessors.
-	//@{
+	/// Access to error list
 	ErrorList const & errorList(std::string const & type) const;
 	ErrorList & errorList(std::string const & type);
-	//@}
 
 	//@{
 	TocBackend & tocBackend();
@@ -411,6 +410,10 @@ public:
 	bool writeAs(std::string const & newname = std::string());
 	///
 	bool menuWrite();
+	///
+	void loadChildDocuments() const;
+	/// return the format of the buffer on a string
+	std::string bufferFormat() const;
 
 private:
 	/** Inserts a file into a document

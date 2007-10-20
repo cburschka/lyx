@@ -219,7 +219,7 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 bool InsetBranch::isBranchSelected(Buffer const & buffer) const
 {
-	Buffer const & realbuffer = *buffer.getMasterBuffer();
+	Buffer const & realbuffer = *buffer.masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
 	BranchList::const_iterator const end = branchlist.end();
 	BranchList::const_iterator it =

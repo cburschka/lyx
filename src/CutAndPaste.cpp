@@ -377,8 +377,7 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 		// This is invalid outside of ERT, so we need to change it
 		// to the buffer language.
 		if (it->ownerCode() == ERT_CODE || it->ownerCode() == LISTINGS_CODE) {
-			it->changeLanguage(buf.params(), latex_language,
-					   buf.getLanguage());
+			it->changeLanguage(buf.params(), latex_language, buf.language());
 		}
 		it->setInsetOwner(0);
 	}

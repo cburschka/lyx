@@ -187,7 +187,7 @@ void GuiPrint::applyView()
 bool GuiPrint::initialiseParams(std::string const &)
 {
 	/// get global printer parameters
-	string const name = support::changeExtension(buffer().fileName(),
+	string const name = support::changeExtension(buffer().absFileName(),
 					lyxrc.print_file_extension);
 	params_ = PrinterParams(PrinterParams::PRINTER, lyxrc.printer, name);
 

@@ -420,7 +420,7 @@ BufferView::~BufferView()
 	// That is to say, if a cursor is in a nested inset, it will be
 	// restore to the left of the top level inset.
 	LyX::ref().session().lastFilePos().save(
-		support::FileName(buffer_.fileName()),
+		support::FileName(buffer_.absFileName()),
 		boost::tie(d->cursor_.bottom().pit(), d->cursor_.bottom().pos()) );
 
 	delete d;
@@ -721,7 +721,7 @@ void BufferView::saveBookmark(unsigned int idx)
 	// pit and pos will be updated with bottom level pit/pos
 	// when lyx exits.
 	LyX::ref().session().bookmarks().save(
-		FileName(buffer_.fileName()),
+		FileName(buffer_.absFileName()),
 		d->cursor_.bottom().pit(),
 		d->cursor_.bottom().pos(),
 		d->cursor_.paragraph().id(),
@@ -1086,7 +1086,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 				LYXERR(Debug::INFO)
 					<< "Paragraph " << par->id()
 					<< " found in buffer `"
-					<< b->fileName() << "'." << endl;
+					<< b->absFileName() << "'." << endl;
 
 				if (b == &buffer_) {
 					// Set the cursor
@@ -1094,7 +1094,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 				} else {
 					// Switch to other buffer view and resend cmd
 					theLyXFunc().dispatch(FuncRequest(
-						LFUN_BUFFER_SWITCH, b->fileName()));
+						LFUN_BUFFER_SWITCH, b->absFileName()));
 					theLyXFunc().dispatch(cmd);
 					updateFlags = Update::None;
 				}

@@ -819,7 +819,7 @@ void TabWorkArea::on_currentTabChanged(int i)
 	currentWorkAreaChanged(wa);
 
 	LYXERR(Debug::GUI) << "currentTabChanged " << i
-		<< "File" << bv.buffer().fileName() << endl;
+		<< "File" << bv.buffer().absFileName() << endl;
 }
 
 

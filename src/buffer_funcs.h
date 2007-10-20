@@ -52,9 +52,6 @@ Buffer * checkAndLoadLyXFile(support::FileName const & filename);
 Buffer * newFile(std::string const & filename, std::string const & templatename,
 		 bool isNamed = false);
 
-///return the format of the buffer on a string
-std::string const bufferFormat(Buffer const & buffer);
-
 /// Fill in the ErrorList with the TeXErrors
 void bufferErrors(Buffer const &, TeXErrors const &, ErrorList &);
 
@@ -72,9 +69,6 @@ void checkBufferStructure(Buffer &, ParIterator const &);
 
 ///
 textclass_type defaultTextclass();
-
-///
-void loadChildDocuments(Buffer const & buffer);
 
 } // namespace lyx
 

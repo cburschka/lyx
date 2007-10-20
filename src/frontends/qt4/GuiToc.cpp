@@ -130,7 +130,7 @@ void GuiToc::updateView()
 
 TocList const & GuiToc::tocs() const
 {
-	return buffer().getMasterBuffer()->tocBackend().tocs();
+	return buffer().masterBuffer()->tocBackend().tocs();
 }
 
 
@@ -141,8 +141,7 @@ bool GuiToc::initialiseParams(string const & data)
 	types_.clear();
 	type_names_.clear();
 	toc_models_.clear();
-	TocList const & tocs = buffer().getMasterBuffer()->
-		tocBackend().tocs();
+	TocList const & tocs = buffer().masterBuffer()->tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
 	TocList::const_iterator end = tocs.end();
 	for (; it != end; ++it) {
@@ -201,7 +200,7 @@ void GuiToc::outlineOut()
 
 void GuiToc::updateBackend()
 {
-	buffer().getMasterBuffer()->tocBackend().update();
+	buffer().masterBuffer()->tocBackend().update();
 	buffer().structureChanged();
 }
 
@@ -210,8 +209,7 @@ TocIterator GuiToc::currentTocItem(int type) const
 {
 	BOOST_ASSERT(bufferview());
 	ParConstIterator it(bufferview()->cursor());
-	Buffer const * master = buffer().getMasterBuffer();
-	return master->tocBackend().item(types_[type], it);
+	return buffer().masterBuffer()->tocBackend().item(types_[type], it);
 }
 
 

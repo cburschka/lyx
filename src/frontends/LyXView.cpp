@@ -109,7 +109,7 @@ void LyXView::setBuffer(Buffer * newBuffer)
 
 	WorkArea * wa = workArea(*newBuffer);
 	if (wa == 0) {
-		updateLabels(*newBuffer->getMasterBuffer());
+		updateLabels(*newBuffer->masterBuffer());
 		wa = addWorkArea(*newBuffer);
 	} else {
 		//Disconnect the old buffer...there's no new one.
@@ -267,7 +267,7 @@ void LyXView::updateWindowTitle()
 
 	Buffer * buf = buffer();
 	if (buf) {
-		string const cur_title = buf->fileName();
+		string const cur_title = buf->absFileName();
 		if (!cur_title.empty()) {
 			maximize_title += ": " + makeDisplayPath(cur_title, 30);
 			minimize_title = lyx::from_utf8(onlyFilename(cur_title));

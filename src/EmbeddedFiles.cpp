@@ -109,7 +109,7 @@ void EmbeddedFile::saveBookmark(Buffer const * buf, int idx) const
 		if (&(*it) == ptr) {
 			// this is basically BufferView::saveBookmark(0)
 			LyX::ref().session().bookmarks().save(
-				FileName(buf->fileName()),
+				FileName(buf->absFileName()),
 				it.bottom().pit(),
 				it.bottom().pos(),
 				it.paragraph().id(),

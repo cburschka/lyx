@@ -124,7 +124,7 @@ docstring const InsetBibtex::getScreenLabel(Buffer const &) const
 
 namespace {
 
-string normalize_name(Buffer const & buffer, OutputParams const & runparams,
+string normalizeName(Buffer const & buffer, OutputParams const & runparams,
 		      string const & name, string const & ext)
 {
 	string const fname = makeAbsPath(name, buffer.filePath()).absFilename();
@@ -135,7 +135,7 @@ string normalize_name(Buffer const & buffer, OutputParams const & runparams,
 
 	// FIXME UNICODE
 	return to_utf8(makeRelPath(from_utf8(fname),
-					 from_utf8(buffer.getMasterBuffer()->filePath())));
+					 from_utf8(buffer.masterBuffer()->filePath())));
 }
 
 }
@@ -179,9 +179,9 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	for (Tokenizer::const_iterator it = begin; it != end; ++it) {
 		docstring const input = trim(*it);
 		// FIXME UNICODE
-		string utf8input(to_utf8(input));
+		string utf8input = to_utf8(input);
 		string database =
-			normalize_name(buffer, runparams, utf8input, ".bib");
+			normalizeName(buffer, runparams, utf8input, ".bib");
 		FileName const try_in_file(makeAbsPath(database + ".bib", buffer.filePath()));
 		bool const not_from_texmf = try_in_file.isFileReadable();
 
@@ -191,8 +191,8 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			// mangledFilename() needs the extension
 			DocFileName const in_file = DocFileName(try_in_file);
 			database = removeExtension(in_file.mangledFilename());
-			FileName const out_file(makeAbsPath(database + ".bib",
-					buffer.getMasterBuffer()->temppath()));
+			FileName const out_file = makeAbsPath(database + ".bib",
+					buffer.masterBuffer()->temppath());
 
 			bool const success = copy(in_file, out_file);
 			if (!success) {
@@ -224,7 +224,6 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		Alert::warning(_("Export Warning!"),
 			       _("There are spaces in the paths to your BibTeX databases.\n"
 					      "BibTeX will be unable to find them."));
-
 	}
 
 	// Style-Options
@@ -232,17 +231,15 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	string bibtotoc;
 	if (prefixIs(style, "bibtotoc")) {
 		bibtotoc = "bibtotoc";
-		if (contains(style, ',')) {
+		if (contains(style, ','))
 			style = split(style, bibtotoc, ',');
-		}
 	}
 
 	// line count
 	int nlines = 0;
 
 	if (!style.empty()) {
-		string base =
-			normalize_name(buffer, runparams, style, ".bst");
+		string base = normalizeName(buffer, runparams, style, ".bst");
 		FileName const try_in_file(makeAbsPath(base + ".bst", buffer.filePath()));
 		bool const not_from_texmf = try_in_file.isFileReadable();
 		// If this style does not come from texmf and we are not
@@ -255,7 +252,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			DocFileName const in_file = DocFileName(try_in_file);
 			base = removeExtension(in_file.mangledFilename());
 			FileName const out_file(makeAbsPath(base + ".bst",
-					buffer.getMasterBuffer()->temppath()));
+					buffer.masterBuffer()->temppath()));
 			bool const success = copy(in_file, out_file);
 			if (!success) {
 				lyxerr << "Failed to copy '" << in_file
@@ -265,7 +262,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		}
 		// FIXME UNICODE
 		os << "\\bibliographystyle{"
-		   << from_utf8(latex_path(normalize_name(buffer, runparams, base, ".bst")))
+		   << from_utf8(latex_path(normalizeName(buffer, runparams, base, ".bst")))
 		   << "}\n";
 		nlines += 1;
 	}

@@ -92,7 +92,7 @@ void LyXVC::buffer(Buffer * buf)
 
 void LyXVC::registrer()
 {
-	FileName const filename(owner_->fileName());
+	FileName const filename(owner_->absFileName());
 
 	// there must be a file to save
 	if (!filename.isFileReadable()) {
@@ -166,7 +166,7 @@ void LyXVC::revert()
 {
 	LYXERR(Debug::LYXVC) << "LyXVC: revert" << endl;
 
-	docstring const file = makeDisplayPath(owner_->fileName(), 20);
+	docstring const file = makeDisplayPath(owner_->absFileName(), 20);
 	docstring text = bformat(_("Reverting to the stored version of the "
 		"document %1$s will lose all current changes.\n\n"
 					     "Do you want to revert to the saved version?"), file);

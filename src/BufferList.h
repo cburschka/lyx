@@ -81,6 +81,8 @@ public:
 	/// returns true if the buffer is loaded
 	bool isLoaded(Buffer const * b) const;
 
+	/// return index of named buffer in buffer list
+	int bufferNum(std::string const & name) const;
 	/// returns a pointer to the buffer with the given name.
 	Buffer * getBuffer(std::string const &);
 	/// returns a pointer to the buffer with the given number.

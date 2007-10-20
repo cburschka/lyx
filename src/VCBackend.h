@@ -50,9 +50,7 @@ public:
 	/// return the current version description
 	virtual std::string const versionString() const = 0;
 	/// return the current version
-	std::string const & version() const {
-		return version_;
-	}
+	std::string const & version() const { return version_; }
 	/// return the user who has locked the file
 	std::string const & locker() const { return locker_; }
 	/// set the owning buffer

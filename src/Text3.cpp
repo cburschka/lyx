@@ -1697,7 +1697,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_BRANCH_INSERT:
 		code = BRANCH_CODE;
-		if (cur.buffer().getMasterBuffer()->params().branchlist().empty())
+		if (cur.buffer().masterBuffer()->params().branchlist().empty())
 			enable = false;
 		break;
 	case LFUN_LABEL_INSERT:
@@ -1823,11 +1823,12 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
 			InsetLayout il = cur.inset().getLayout(cur.buffer().params());
-			enable = (cur.inset().lyxCode() == FLEX_CODE) 
-			      && (il.lyxtype == to_utf8(cmd.argument()));
-		} else
+			enable = cur.inset().lyxCode() == FLEX_CODE
+			         && il.lyxtype == to_utf8(cmd.argument());
+		} else {
 			enable = !isMainText(cur.bv().buffer()) 
-				&& cur.inset().nargs() == 1;
+			         && cur.inset().nargs() == 1;
+		}
 		break;
 
 	case LFUN_CHANGE_ACCEPT:

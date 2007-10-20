@@ -353,9 +353,7 @@ string const libScriptSearch(string const & command_in, quote_style style)
 }
 
 
-namespace {
-
-FileName const createTmpDir(FileName const & tempdir, string const & mask)
+static FileName createTmpDir(FileName const & tempdir, string const & mask)
 {
 	LYXERR(Debug::FILES)
 		<< "createTmpDir: tempdir=`" << tempdir << "'\n"
@@ -376,9 +374,6 @@ FileName const createTmpDir(FileName const & tempdir, string const & mask)
 
 	return tmpfl;
 }
-
-} // namespace anon
-
 
 bool destroyDir(FileName const & tmpdir)
 {
@@ -601,8 +596,8 @@ string const normalizePath(string const & path)
 
 string const getFileContents(FileName const & fname)
 {
-	string const encodedname = fname.toFilesystemEncoding();
-	if (fs::exists(encodedname)) {
+	if (fname.exists()) {
+		string const encodedname = fname.toFilesystemEncoding();
 		ifstream ifs(encodedname.c_str());
 		ostringstream ofs;
 		if (ifs && ofs) {
@@ -1094,7 +1089,7 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 	// If the file can be found directly, we just return a
 	// absolute path version of it.
 	FileName const absfile(makeAbsPath(fil));
-	if (fs::exists(absfile.toFilesystemEncoding()))
+	if (absfile.exists())
 		return absfile;
 
 	// No we try to find it using kpsewhich.
@@ -1139,7 +1134,7 @@ void removeAutosaveFile(string const & filename)
 	a += onlyFilename(filename);
 	a += '#';
 	FileName const autosave(a);
-	if (fs::exists(autosave.toFilesystemEncoding()))
+	if (autosave.exists())
 		unlink(autosave);
 }
 

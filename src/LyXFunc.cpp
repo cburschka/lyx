@@ -292,7 +292,7 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 		return;
 
 	// if the current buffer is not that one, switch to it.
-	if (lyx_view_->buffer()->fileName() != file) {
+	if (lyx_view_->buffer()->absFileName() != file) {
 		if (!switchToBuffer)
 			return;
 		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
@@ -503,7 +503,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_SWITCH:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
-		if (buf && to_utf8(cmd.argument()) == buf->fileName())
+		if (buf && to_utf8(cmd.argument()) == buf->absFileName())
 			flag.setOnOff(true);
 		break;
 
@@ -534,7 +534,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = buf->lyxvc().inUse();
 		break;
 	case LFUN_BUFFER_RELOAD:
-		enable = !buf->isUnnamed() && fs::exists(buf->fileName())
+		enable = !buf->isUnnamed() && fs::exists(buf->absFileName())
 			&& (!buf->isClean() || buf->isExternallyModified(Buffer::timestamp_method));
 		break;
 
@@ -583,7 +583,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			}
 		}
 		else if (name == "latexlog")
-			enable = FileName(buf->getLogName().second).isFileReadable();
+			enable = FileName(buf->logName().second).isFileReadable();
 		else if (name == "spellchecker")
 #if defined (USE_ASPELL) || defined (USE_ISPELL) || defined (USE_PSPELL)
 			enable = !buf->isReadonly();
@@ -769,7 +769,7 @@ bool LyXFunc::ensureBufferClean(BufferView * bv)
 	if (buf.isClean())
 		return true;
 
-	docstring const file = makeDisplayPath(buf.fileName(), 30);
+	docstring const file = makeDisplayPath(buf.absFileName(), 30);
 	docstring text = bformat(_("The document %1$s has unsaved "
 					     "changes.\n\nDo you want to save "
 					     "the document?"), file);
@@ -928,7 +928,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (!lyx_view_->buffer()->isUnnamed()) {
 				docstring const str = bformat(_("Saving document %1$s..."),
-					 makeDisplayPath(lyx_view_->buffer()->fileName()));
+					 makeDisplayPath(lyx_view_->buffer()->absFileName()));
 				lyx_view_->message(str);
 				lyx_view_->buffer()->menuWrite();
 				lyx_view_->message(str + _(" done."));
@@ -955,7 +955,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					if (!b->isClean()) {
 						if (!b->isUnnamed()) {
 							b->menuWrite();
-							lyxerr[Debug::ACTION] << "Saved " << b->fileName() << endl;
+							lyxerr[Debug::ACTION] << "Saved " << b->absFileName() << endl;
 						} else
 							b->writeAs();
 					}
@@ -970,7 +970,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_RELOAD: {
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			docstring const file = makeDisplayPath(lyx_view_->buffer()->fileName(), 20);
+			docstring const file = makeDisplayPath(lyx_view_->buffer()->absFileName(), 20);
 			docstring text = bformat(_("Any changes will be lost. Are you sure "
 							     "you want to revert to the saved version of the document %1$s?"), file);
 			int const ret = Alert::prompt(_("Revert to saved document?"),
@@ -992,13 +992,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_MASTER_BUFFER_UPDATE:
-			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer() && lyx_view_->buffer()->getMasterBuffer());
-			Exporter::Export(lyx_view_->buffer()->getMasterBuffer(), argument, true);
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer() && lyx_view_->buffer()->masterBuffer());
+			Exporter::Export(lyx_view_->buffer()->masterBuffer(), argument, true);
 			break;
 
 		case LFUN_MASTER_BUFFER_VIEW:
-			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer() && lyx_view_->buffer()->getMasterBuffer());
-			Exporter::preview(lyx_view_->buffer()->getMasterBuffer(), argument);
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer() && lyx_view_->buffer()->masterBuffer());
+			Exporter::preview(lyx_view_->buffer()->masterBuffer(), argument);
 			break;
 
 		case LFUN_BUILD_PROGRAM:
@@ -1039,8 +1039,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			// Output to filename
 			if (format->name() == "lyx") {
-				string const latexname =
-					buffer->getLatexName(false);
+				string const latexname = buffer->latexName(false);
 				filename = changeExtension(latexname,
 							   format->extension());
 				filename = addName(buffer->temppath(), filename);
@@ -1087,7 +1086,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Buffer * buffer = lyx_view_->buffer();
 
 			if (!Exporter::Export(buffer, "dvi", true)) {
-				showPrintError(buffer->fileName());
+				showPrintError(buffer->absFileName());
 				break;
 			}
 
@@ -1104,8 +1103,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			Systemcall one;
 			int res = 0;
 			string const dviname =
-				changeExtension(buffer->getLatexName(true),
-						"dvi");
+				changeExtension(buffer->latexName(true), "dvi");
 
 			if (target == "printer") {
 				if (!lyxrc.print_spool_command.empty()) {
@@ -1167,7 +1165,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			if (res != 0)
-				showPrintError(buffer->fileName());
+				showPrintError(buffer->absFileName());
 			break;
 		}
 
@@ -1313,9 +1311,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// --- lyxserver commands ----------------------------
 		case LFUN_SERVER_GET_NAME:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			setMessage(from_utf8(lyx_view_->buffer()->fileName()));
+			setMessage(from_utf8(lyx_view_->buffer()->absFileName()));
 			LYXERR(Debug::INFO) << "FNAME["
-							 << lyx_view_->buffer()->fileName()
+							 << lyx_view_->buffer()->absFileName()
 							 << "] " << endl;
 			break;
 
@@ -1374,7 +1372,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					lyx_view_->getDialogs().show("character", data);
 			} else if (name == "latexlog") {
 				pair<Buffer::LogType, string> const logfile =
-					lyx_view_->buffer()->getLogName();
+					lyx_view_->buffer()->logName();
 				switch (logfile.first) {
 				case Buffer::latexlog:
 					data = "latex ";
@@ -1570,8 +1568,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// Set the parent name of the child document.
 				// This makes insertion of citations and references in the child work,
 				// when the target is in the parent or another child document.
-				child->setParentName(parent->fileName());
-				updateLabels(*child->getMasterBuffer());
+				child->setParentName(parent->absFileName());
+				updateLabels(*child->masterBuffer());
 				lyx_view_->setBuffer(child);
 				if (parsed)
 					lyx_view_->showErrorList("Parse");
@@ -1778,7 +1776,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				       << endl;
 			}
 
-			if (defaults.writeFile(FileName(defaults.fileName())))
+			if (defaults.writeFile(FileName(defaults.absFileName())))
 				setMessage(bformat(_("Document defaults saved in %1$s"),
 						   makeDisplayPath(fname)));
 			else
@@ -2276,7 +2274,7 @@ void LyXFunc::closeBuffer()
 
 void LyXFunc::reloadBuffer()
 {
-	FileName filename(lyx_view_->buffer()->fileName());
+	FileName filename(lyx_view_->buffer()->absFileName());
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
 	closeBuffer();

@@ -554,7 +554,7 @@ void PreviewLoader::Impl::startLoading()
 		return;
 
 	// Only start the process off after the buffer is loaded from file.
-	if (!buffer_.fully_loaded())
+	if (!buffer_.isFullyLoaded())
 		return;
 
 	LYXERR(Debug::GRAPHICS) << "PreviewLoader::startLoading()" << endl;

@@ -412,7 +412,7 @@ void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
 {	
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]
-	Buffer const * const tmp = buf->getMasterBuffer();
+	Buffer const * const tmp = buf->masterBuffer();
 	BOOST_ASSERT(tmp);
 	if (tmp != buf) {
 		this->fillWithBibKeys(tmp);
@@ -420,7 +420,7 @@ void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
 	}
 
 	// Pre-load all child documents.
-	loadChildDocuments(*buf);
+	buf->loadChildDocuments();
 
 	for (InsetIterator it = inset_iterator_begin(buf->inset()); it; ++it)
 		it->fillWithBibKeys(*buf, *this, it);

@@ -64,7 +64,7 @@ vector<string> const Backends(Buffer const & buffer)
 {
 	vector<string> v;
 	if (buffer.params().getTextClass().isTeXClassAvailable()) {
-		v.push_back(bufferFormat(buffer));
+		v.push_back(buffer.bufferFormat());
 		// FIXME: Don't hardcode format names here, but use a flag
 		if (v.back() == "latex")
 			v.push_back("pdflatex");
@@ -179,7 +179,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			runparams.flavor = OutputParams::PDFLATEX;
 	}
 
-	string filename = buffer->getLatexName(false);
+	string filename = buffer->latexName(false);
 	filename = addName(buffer->temppath(), filename);
 	filename = changeExtension(filename,
 				   formats.extension(backend_format));
@@ -211,11 +211,12 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			return false;
 	}
 
-	string const error_type = (format == "program")? "Build" : bufferFormat(*buffer);
+	string const error_type = (format == "program")
+		? "Build" : buffer->bufferFormat();
 	string const ext = formats.extension(format);
 	FileName const tmp_result_file(changeExtension(filename, ext));
 	bool const success = theConverters().convert(buffer, FileName(filename),
-		tmp_result_file, FileName(buffer->fileName()), backend_format, format,
+		tmp_result_file, FileName(buffer->absFileName()), backend_format, format,
 		buffer->errorList(error_type));
 	// Emit the signal to show the error list.
 	if (format != backend_format)
@@ -226,7 +227,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	if (put_in_tempdir)
 		result_file = tmp_result_file.absFilename();
 	else {
-		result_file = changeExtension(buffer->fileName(), ext);
+		result_file = changeExtension(buffer->absFileName(), ext);
 		// We need to copy referenced files (e. g. included graphics
 		// if format == "dvi") to the result dir.
 		vector<ExportedFile> const files =

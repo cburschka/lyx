@@ -1215,7 +1215,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 	LyXRCTags tag = RC_LAST;
 	
 	if (!name.empty()) {
-		for (size_t i = 0; i < lyxrcCount; ++i)
+		for (int i = 0; i != lyxrcCount; ++i)
 			if ("\\" + name == lyxrcTags[i].tag)
 				tag = static_cast<LyXRCTags>(lyxrcTags[i].code);
 	}

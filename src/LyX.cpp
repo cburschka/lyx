@@ -439,7 +439,7 @@ int LyX::exec(int & argc, char * argv[])
 		bool final_success = false;
 		for (BufferList::iterator I = begin; I != pimpl_->buffer_list_.end(); ++I) {
 			Buffer * buf = *I;
-			if (buf != buf->getMasterBuffer())
+			if (buf != buf->masterBuffer())
 				continue;
 			bool success = false;
 			buf->dispatch(batch_command, &success);
@@ -684,7 +684,7 @@ void LyX::restoreGuiSession()
 	BufferList::iterator end = pimpl_->buffer_list_.end();
 	for (; I != end; ++I) {
 		Buffer * buf = *I;
-		if (buf != buf->getMasterBuffer())
+		if (buf != buf->masterBuffer())
 			continue;
 		updateLabels(*buf);
 	}

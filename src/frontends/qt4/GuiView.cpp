@@ -544,7 +544,7 @@ void GuiViewBase::setWindowTitle(docstring const & t, docstring const & it)
 	}
 	if (Buffer const * buf = buffer())
 		d.tab_widget_->setTabText(d.tab_widget_->currentIndex(),
-			toqstr(makeDisplayPath(buf->fileName(), 30)));
+			toqstr(makeDisplayPath(buf->absFileName(), 30)));
 }
 
 
@@ -809,7 +809,7 @@ WorkArea * GuiViewBase::addWorkArea(Buffer & buffer)
 {
 	GuiWorkArea * wa = new GuiWorkArea(buffer, *this);
 	wa->setUpdatesEnabled(false);
-	d.tab_widget_->addTab(wa, toqstr(makeDisplayPath(buffer.fileName(), 30)));
+	d.tab_widget_->addTab(wa, toqstr(makeDisplayPath(buffer.absFileName(), 30)));
 	wa->bufferView().updateMetrics(false);
 	if (d.stack_widget_)
 		d.stack_widget_->setCurrentWidget(d.tab_widget_);

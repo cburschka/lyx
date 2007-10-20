@@ -240,13 +240,13 @@ bool isInputOrInclude(InsetCommandParams const & params)
 
 string const masterFilename(Buffer const & buffer)
 {
-	return buffer.getMasterBuffer()->fileName();
+	return buffer.masterBuffer()->absFileName();
 }
 
 
 string const parentFilename(Buffer const & buffer)
 {
-	return buffer.fileName();
+	return buffer.absFileName();
 }
 
 
@@ -390,7 +390,7 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 	if (isVerbatim(params) || isListings(params))
 		return 0;
 
-	string const parent_filename = parent.fileName();
+	string const parent_filename = parent.absFileName();
 	FileName const included_file = makeAbsPath(to_utf8(params["filename"]),
 			   onlyPath(parent_filename));
 
@@ -424,14 +424,14 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	if (incfile.empty())
 		return 0;
 
-	FileName const included_file(includedFilename(buffer, params_));
+	FileName const included_file = includedFilename(buffer, params_);
 
 	//Check we're not trying to include ourselves.
 	//FIXME RECURSIVE INCLUDE
 	//This isn't sufficient, as the inclusion could be downstream.
 	//But it'll have to do for now.
 	if (isInputOrInclude(params_) &&
-		buffer.fileName() == included_file.absFilename())
+		buffer.absFileName() == included_file.absFilename())
 	{
 		Alert::error(_("Recursive input"),
 			       bformat(_("Attempted to include file %1$s in itself! "
@@ -439,14 +439,14 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		return 0;
 	}
 
-	Buffer const * const m_buffer = buffer.getMasterBuffer();
+	Buffer const * const masterBuffer = buffer.masterBuffer();
 
 	// if incfile is relative, make it relative to the master
 	// buffer directory.
 	if (!absolutePath(incfile)) {
 		// FIXME UNICODE
 		incfile = to_utf8(makeRelPath(from_utf8(included_file.absFilename()),
-					      from_utf8(m_buffer->filePath())));
+					      from_utf8(masterBuffer->filePath())));
 	}
 
 	// write it to a file (so far the complete file)
@@ -454,7 +454,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	string const mangled =
 		DocFileName(changeExtension(included_file.absFilename(),".tex")).
 			mangledFilename();
-	FileName const writefile(makeAbsPath(mangled, m_buffer->temppath()));
+	FileName const writefile(makeAbsPath(mangled, masterBuffer->temppath()));
 
 	if (!runparams.nice)
 		incfile = mangled;
@@ -480,14 +480,14 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 		Buffer * tmp = theBufferList().getBuffer(included_file.absFilename());
 
-		if (tmp->params().getBaseClass() != m_buffer->params().getBaseClass()) {
+		if (tmp->params().getBaseClass() != masterBuffer->params().getBaseClass()) {
 			// FIXME UNICODE
 			docstring text = bformat(_("Included file `%1$s'\n"
 						"has textclass `%2$s'\n"
 							     "while parent file has textclass `%3$s'."),
 					      makeDisplayPath(included_file.absFilename()),
 					      from_utf8(tmp->params().getTextClass().name()),
-					      from_utf8(m_buffer->params().getTextClass().name()));
+					      from_utf8(masterBuffer->params().getTextClass().name()));
 			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
@@ -495,7 +495,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		// Make sure modules used in child are all included in master
 		//FIXME It might be worth loading the children's modules into the master
 		//over in BufferParams rather than doing this check.
-		vector<string> const masterModules = m_buffer->params().getModules();
+		vector<string> const masterModules = masterBuffer->params().getModules();
 		vector<string> const childModules = tmp->params().getModules();
 		vector<string>::const_iterator it = childModules.begin();
 		vector<string>::const_iterator end = childModules.end();
@@ -512,7 +512,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			}
 		}
 
-		tmp->markDepClean(m_buffer->temppath());
+		tmp->markDepClean(masterBuffer->temppath());
 
 // FIXME: handle non existing files
 // FIXME: Second argument is irrelevant!
@@ -630,7 +630,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 	//FIXME RECURSIVE INCLUDE
 	//This isn't sufficient, as the inclusion could be downstream.
 	//But it'll have to do for now.
-	if (buffer.fileName() == included_file) {
+	if (buffer.absFileName() == included_file) {
 		Alert::error(_("Recursive input"),
 			       bformat(_("Attempted to include file %1$s in itself! "
 			       "Ignoring inclusion."), from_utf8(incfile)));
@@ -646,7 +646,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 
 		string const mangled = writefile.mangledFilename();
 		writefile = makeAbsPath(mangled,
-					buffer.getMasterBuffer()->temppath());
+					buffer.masterBuffer()->temppath());
 		if (!runparams.nice)
 			incfile = mangled;
 
@@ -690,7 +690,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (!features.runparams().nice && !isVerbatim(params_) && !isListings(params_)) {
 		incfile = DocFileName(writefile).mangledFilename();
 		writefile = makeAbsPath(incfile,
-					buffer.getMasterBuffer()->temppath()).absFilename();
+					buffer.masterBuffer()->temppath()).absFilename();
 	}
 
 	features.includeFile(include_label, writefile);

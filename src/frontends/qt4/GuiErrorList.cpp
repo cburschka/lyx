@@ -106,7 +106,7 @@ bool GuiErrorList::initialiseParams(string const & error_type)
 	error_type_ = error_type;
 	Buffer const & buf = bufferview()->buffer();
 	name_ = bformat(_("%1$s Errors (%2$s)"), _(error_type),
-				     from_utf8(buf.fileName()));
+				     from_utf8(buf.absFileName()));
 	return true;
 }
 

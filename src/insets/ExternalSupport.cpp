@@ -91,9 +91,9 @@ string const doSubstitution(InsetExternalParams const & params,
 			    bool external_in_tmpdir,
 			    Substitute what)
 {
-	Buffer const * m_buffer = buffer.getMasterBuffer();
+	Buffer const * masterBuffer = buffer.masterBuffer();
 	string const parentpath = external_in_tmpdir ?
-		m_buffer->temppath() :
+		masterBuffer->temppath() :
 		buffer.filePath();
 	string const filename = external_in_tmpdir ?
 		params.filename.mangledFilename() :
@@ -107,8 +107,8 @@ string const doSubstitution(InsetExternalParams const & params,
 		string const filepath = support::onlyPath(filename);
 		string const abspath = support::onlyPath(absname);
 		string const masterpath = external_in_tmpdir ?
-			m_buffer->temppath() :
-			m_buffer->filePath();
+			masterBuffer->temppath() :
+			masterBuffer->filePath();
 		// FIXME UNICODE
 		string relToMasterPath = support::onlyPath(
 				to_utf8(support::makeRelPath(from_utf8(absname),
@@ -186,7 +186,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		string contents;
 
 		FileName const absfile(
-			support::makeAbsPath(file, m_buffer->temppath()));
+			support::makeAbsPath(file, masterBuffer->temppath()));
 		if (absfile.isFileReadable())
 			contents = support::getFileContents(absfile);
 
@@ -240,7 +240,6 @@ void updateExternal(InsetExternalParams const & params,
 		from_format = formats.getFormatFromFile(params.filename);
 		if (from_format.empty())
 			return; // FAILURE
-
 	}
 
 	string const to_format = outputFormat.updateFormat;
@@ -249,13 +248,13 @@ void updateExternal(InsetExternalParams const & params,
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
-	Buffer const * m_buffer = buffer.getMasterBuffer();
+	Buffer const * masterBuffer = buffer.masterBuffer();
 
 	// We copy the source file to the temp dir and do the conversion
 	// there if necessary
 	FileName const temp_file(
 		support::makeAbsPath(params.filename.mangledFilename(),
-				     m_buffer->temppath()));
+				     masterBuffer->temppath()));
 	if (!params.filename.empty() && !params.filename.isDirectory()) {
 		unsigned long const from_checksum = support::sum(params.filename);
 		unsigned long const temp_checksum = support::sum(temp_file);
@@ -277,7 +276,7 @@ void updateExternal(InsetExternalParams const & params,
 					      outputFormat.updateResult,
 					      false, true);
 	FileName const abs_to_file(
-		support::makeAbsPath(to_file, m_buffer->temppath()));
+		support::makeAbsPath(to_file, masterBuffer->temppath()));
 
 	if (!dryrun) {
 		// Record the referenced files for the exporter.
@@ -292,7 +291,7 @@ void updateExternal(InsetExternalParams const & params,
 				FileName const source(support::makeAbsPath(
 						doSubstitution(params, buffer, *fit,
 							       false, true),
-						m_buffer->temppath()));
+						masterBuffer->temppath()));
 				// The path of the referenced file is never the
 				// temp path, but the filename may be the mangled
 				// or the real name. Therefore we substitute the

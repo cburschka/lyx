@@ -33,9 +33,6 @@
 #include <QToolTip>
 #include <QCloseEvent>
 
-#include <algorithm>
-
-using std::find;
 using std::vector;
 using std::string;
 
@@ -228,10 +225,12 @@ void GuiRef::updateContents()
 
 	// restore the buffer combo setting for new insets
 	if (params_["reference"].empty() && restored_buffer_ != -1
-	&& restored_buffer_ < bufferCO->count())
+	    && restored_buffer_ < bufferCO->count()) 
 		bufferCO->setCurrentIndex(restored_buffer_);
-	else
-		bufferCO->setCurrentIndex(bufferNum());
+	else {
+		int num = theBufferList().bufferNum(buffer().absFileName());
+		bufferCO->setCurrentIndex(num);
+	}
 
 	updateRefs();
 	bc().setValid(false);
@@ -381,13 +380,6 @@ void GuiRef::gotoBookmark()
 
 int GuiRef::bufferNum() const
 {
-	vector<string> buffers = theBufferList().getFileNames();
-	string const name = buffer().fileName();
-	vector<string>::const_iterator cit =
-		std::find(buffers.begin(), buffers.end(), name);
-	if (cit == buffers.end())
-		return 0;
-	return int(cit - buffers.begin());
 }
 
 

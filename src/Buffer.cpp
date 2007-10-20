@@ -256,7 +256,7 @@ Buffer::~Buffer()
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
-	Buffer * master = getMasterBuffer();
+	Buffer * master = masterBuffer();
 	if (master != this && use_gui)
 		// We are closing buf which was a child document so we
 		// must update the labels and section numbering of its master
@@ -383,23 +383,23 @@ EmbeddedFiles const & Buffer::embeddedFiles() const
 	return pimpl_->embedded_files;
 }
 
+
 Undo & Buffer::undo()
 {
 	return pimpl_->undo_;
 }
 
 
-
-string const Buffer::getLatexName(bool const no_path) const
+string Buffer::latexName(bool const no_path) const
 {
-	string const name = changeExtension(makeLatexName(fileName()), ".tex");
+	string const name = changeExtension(makeLatexName(absFileName()), ".tex");
 	return no_path ? onlyFilename(name) : name;
 }
 
 
-pair<Buffer::LogType, string> const Buffer::getLogName() const
+pair<Buffer::LogType, string> Buffer::logName() const
 {
-	string const filename = getLatexName(false);
+	string const filename = latexName(false);
 
 	if (filename.empty())
 		return make_pair(Buffer::latexlog, string());
@@ -439,22 +439,9 @@ void Buffer::setFileName(string const & newfile)
 {
 	pimpl_->filename = makeAbsPath(newfile);
 	params().filepath = onlyPath(pimpl_->filename.absFilename());
-	setReadonly(fs::is_readonly(pimpl_->filename.toFilesystemEncoding()));
+	setReadonly(pimpl_->filename.isReadOnly());
 	updateTitles();
 }
-
-
-// We'll remove this later. (Lgb)
-namespace {
-
-void unknownClass(string const & unknown)
-{
-	Alert::warning(_("Unknown document class"),
-		       bformat(_("Using the default document class, because the "
-					      "class %1$s is unknown."), from_utf8(unknown)));
-}
-
-} // anon
 
 
 int Buffer::readHeader(Lexer & lex)
@@ -510,7 +497,9 @@ int Buffer::readHeader(Lexer & lex)
 		string unknown = params().readToken(lex, token);
 		if (!unknown.empty()) {
 			if (unknown[0] != '\\' && token == "\\textclass") {
-				unknownClass(unknown);
+				Alert::warning(_("Unknown document class"),
+		       bformat(_("Using the default document class, because the "
+					      "class %1$s is unknown."), from_utf8(unknown)));
 			} else {
 				++unknown_tokens;
 				docstring const s = bformat(_("Unknown token: "
@@ -709,13 +698,13 @@ bool Buffer::readFile(FileName const & filename)
 }
 
 
-bool Buffer::fully_loaded() const
+bool Buffer::isFullyLoaded() const
 {
 	return pimpl_->file_fully_loaded;
 }
 
 
-void Buffer::fully_loaded(bool const value)
+void Buffer::setFullyLoaded(bool value)
 {
 	pimpl_->file_fully_loaded = value;
 }
@@ -772,7 +761,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		string diskfile = filename.toFilesystemEncoding();
 		if (suffixIs(diskfile, ".emergency"))
 			diskfile = diskfile.substr(0, diskfile.size() - 10);
-		saveCheckSum(diskfile);
+		saveCheckSum(FileName(diskfile));
 	}
 
 	if (file_format != LYX_FORMAT) {
@@ -858,7 +847,7 @@ bool Buffer::save() const
 
 	// make a backup if the file already exists
 	if (lyxrc.make_backup && fs::exists(encodedFilename)) {
-		backupName = FileName(fileName() + '~');
+		backupName = FileName(absFileName() + '~');
 		if (!lyxrc.backupdir_path.empty())
 			backupName = FileName(addName(lyxrc.backupdir_path,
 					      subst(os::internal_path(backupName.absFilename()), '/', '!')));
@@ -877,7 +866,7 @@ bool Buffer::save() const
 
 	// ask if the disk file has been externally modified (use checksum method)
 	if (fs::exists(encodedFilename) && isExternallyModified(checksum_method)) {
-		docstring const file = makeDisplayPath(fileName(), 20);
+		docstring const file = makeDisplayPath(absFileName(), 20);
 		docstring text = bformat(_("Document %1$s has been externally modified. Are you sure "
 							     "you want to overwrite this file?"), file);
 		int const ret = Alert::prompt(_("Overwrite modified file?"),
@@ -888,8 +877,8 @@ bool Buffer::save() const
 
 	if (writeFile(pimpl_->filename)) {
 		markClean();
-		removeAutosaveFile(fileName());
-		saveCheckSum(pimpl_->filename.toFilesystemEncoding());
+		removeAutosaveFile(absFileName());
+		saveCheckSum(pimpl_->filename);
 		return true;
 	} else {
 		// Saving failed, so backup is not backup
@@ -1155,7 +1144,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		params().parentname.erase();
 	}
 
-	loadChildDocuments(*this);
+	loadChildDocuments();
 
 	// the real stuff
 	latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
@@ -1278,8 +1267,8 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 			preamble += "<!ENTITY % output.print.bmp \"IGNORE\">\n";
 		}
 
-		string const name = runparams.nice ? changeExtension(fileName(), ".sgml")
-			 : fname;
+		string const name = runparams.nice
+			? changeExtension(absFileName(), ".sgml") : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
 
@@ -1308,7 +1297,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 	params().getTextClass().counters().reset();
 
-	loadChildDocuments(*this);
+	loadChildDocuments();
 
 	sgml::openTag(os, top);
 	os << '\n';
@@ -1325,7 +1314,7 @@ int Buffer::runChktex()
 
 	// get LaTeX-Filename
 	FileName const path(temppath());
-	string const name = addName(path.absFilename(), getLatexName());
+	string const name = addName(path.absFilename(), latexName());
 	string const org_path = filePath();
 
 	support::Path p(path); // path to LaTeX file
@@ -1399,7 +1388,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 	if (params().use_esint == BufferParams::package_on)
 		features.require("esint");
 
-	loadChildDocuments(*this);
+	loadChildDocuments();
 
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
@@ -1438,9 +1427,9 @@ void Buffer::getLabelList(vector<docstring> & list) const
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
-	Buffer const * tmp = getMasterBuffer();
+	Buffer const * tmp = masterBuffer();
 	if (!tmp) {
-		lyxerr << "getMasterBuffer() failed!" << endl;
+		lyxerr << "masterBuffer() failed!" << endl;
 		BOOST_ASSERT(tmp);
 	}
 	if (tmp != this) {
@@ -1448,7 +1437,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 		return;
 	}
 
-	loadChildDocuments(*this);
+	loadChildDocuments();
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
 		it.nextInset()->getLabelList(*this, list);
@@ -1459,7 +1448,7 @@ void Buffer::updateBibfilesCache()
 {
 	// if this is a child document and the parent is already loaded
 	// update the parent's cache instead
-	Buffer * tmp = getMasterBuffer();
+	Buffer * tmp = masterBuffer();
 	BOOST_ASSERT(tmp);
 	if (tmp != this) {
 		tmp->updateBibfilesCache();
@@ -1493,7 +1482,7 @@ vector<FileName> const & Buffer::getBibfilesCache() const
 {
 	// if this is a child document and the parent is already loaded
 	// use the parent's cache instead
-	Buffer const * tmp = getMasterBuffer();
+	Buffer const * tmp = masterBuffer();
 	BOOST_ASSERT(tmp);
 	if (tmp != this)
 		return tmp->getBibfilesCache();
@@ -1618,7 +1607,7 @@ ParConstIterator Buffer::par_iterator_end() const
 }
 
 
-Language const * Buffer::getLanguage() const
+Language const * Buffer::language() const
 {
 	return params().language;
 }
@@ -1652,11 +1641,11 @@ bool Buffer::isExternallyModified(CheckMethod method) const
 }
 
 
-void Buffer::saveCheckSum(string const & file) const
+void Buffer::saveCheckSum(FileName const & file) const
 {
-	if (fs::exists(file)) {
-		pimpl_->timestamp_ = fs::last_write_time(file);
-		pimpl_->checksum_ = sum(FileName(file));
+	if (file.exists()) {
+		pimpl_->timestamp_ = file.lastModified();
+		pimpl_->checksum_ = sum(file);
 	} else {
 		// in the case of save to a new file.
 		pimpl_->timestamp_ = 0;
@@ -1712,7 +1701,7 @@ void Buffer::markDirty()
 }
 
 
-string const Buffer::fileName() const
+string Buffer::absFileName() const
 {
 	return pimpl_->filename.absFilename();
 }
@@ -1740,7 +1729,7 @@ void Buffer::setParentName(string const & name)
 }
 
 
-Buffer const * Buffer::getMasterBuffer() const
+Buffer const * Buffer::masterBuffer() const
 {
 	if (!params().parentname.empty()
 	    && theBufferList().exists(params().parentname)) {
@@ -1749,14 +1738,14 @@ Buffer const * Buffer::getMasterBuffer() const
 		//FIXME RECURSIVE INCLUDE
 		//This is not sufficient, since recursive includes could be downstream.
 		if (buf && buf != this)
-			return buf->getMasterBuffer();
+			return buf->masterBuffer();
 	}
 
 	return this;
 }
 
 
-Buffer * Buffer::getMasterBuffer()
+Buffer * Buffer::masterBuffer()
 {
 	if (!params().parentname.empty()
 	    && theBufferList().exists(params().parentname)) {
@@ -1765,7 +1754,7 @@ Buffer * Buffer::getMasterBuffer()
 		//FIXME RECURSIVE INCLUDE
 		//This is not sufficient, since recursive includes could be downstream.
 		if (buf && buf != this)
-			return buf->getMasterBuffer();
+			return buf->masterBuffer();
 	}
 
 	return this;
@@ -1866,7 +1855,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
 		else {
-			writeDocBookSource(os, fileName(), runparams, false);
+			writeDocBookSource(os, absFileName(), runparams, false);
 		}
 	} else {
 		runparams.par_begin = par_begin;
@@ -2069,7 +2058,7 @@ void Buffer::autoSave() const
 	// create autosave filename
 	string fname = filePath();
 	fname += '#';
-	fname += onlyFilename(fileName());
+	fname += onlyFilename(absFileName());
 	fname += '#';
 
 	AutoSaveBuffer autosave(*this, FileName(fname));
@@ -2096,7 +2085,7 @@ void Buffer::autoSave() const
 
 bool Buffer::writeAs(string const & newname)
 {
-	string fname = fileName();
+	string fname = absFileName();
 	string const oldname = fname;
 
 	if (newname.empty()) {	/// No argument? Ask user through dialog
@@ -2153,12 +2142,12 @@ bool Buffer::writeAs(string const & newname)
 	markDirty();
 	bool unnamed = isUnnamed();
 	setUnnamed(false);
-	saveCheckSum(fname);
+	saveCheckSum(FileName(fname));
 
 	if (!menuWrite()) {
 		setFileName(oldname);
 		setUnnamed(unnamed);
-		saveCheckSum(oldname);
+		saveCheckSum(FileName(oldname));
 		return false;
 	}
 
@@ -2170,13 +2159,13 @@ bool Buffer::writeAs(string const & newname)
 bool Buffer::menuWrite()
 {
 	if (save()) {
-		LyX::ref().session().lastFiles().add(FileName(fileName()));
+		LyX::ref().session().lastFiles().add(FileName(absFileName()));
 		return true;
 	}
 
 	// FIXME: we don't tell the user *WHY* the save failed !!
 
-	docstring const file = makeDisplayPath(fileName(), 30);
+	docstring const file = makeDisplayPath(absFileName(), 30);
 
 	docstring text = bformat(_("The document %1$s could not be saved.\n\n"
 				   "Do you want to rename the document and "
@@ -2188,6 +2177,37 @@ bool Buffer::menuWrite()
 		return false;
 
 	return writeAs();
+}
+
+
+void Buffer::loadChildDocuments() const
+{
+	bool parse_error = false;
+		
+	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
+		if (it->lyxCode() != INCLUDE_CODE)
+			continue;
+		InsetInclude const & inset = static_cast<InsetInclude const &>(*it);
+		InsetCommandParams const & ip = inset.params();
+		Buffer * child = loadIfNeeded(*this, ip);
+		if (!child)
+			continue;
+		parse_error |= !child->errorList("Parse").empty();
+		child->loadChildDocuments();
+	}
+
+	if (use_gui && masterBuffer() == this)
+		updateLabels(*this);
+}
+
+
+string Buffer::bufferFormat() const
+{
+	if (isDocBook())
+		return "docbook";
+	if (isLiterate())
+		return "literate";
+	return "latex";
 }
 
 

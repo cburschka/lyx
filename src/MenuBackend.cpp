@@ -496,11 +496,12 @@ void expandDocuments(Menu & tomenu)
 		
 		// We cannot use a for loop as the buffer list cycles.
 		do {
-			docstring label = makeDisplayPath(b->fileName(), 20);
+			docstring label = makeDisplayPath(b->absFileName(), 20);
 			if (!b->isClean()) label = label + "*";
 			if (ii < 10)
 				label = convert<docstring>(ii) + ". " + label + '|' + convert<docstring>(ii);
-			tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, b->fileName())));
+			tomenu.add(MenuItem(MenuItem::Command, label,
+				FuncRequest(LFUN_BUFFER_SWITCH, b->absFileName())));
 			
 			b = theBufferList().next(b);
 			++ii;
@@ -747,7 +748,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 	cbuf->structureChanged();
 
 	// Add an entry for the master doc if this is a child doc
-	Buffer const * const master = buf->getMasterBuffer();
+	Buffer const * const master = buf->masterBuffer();
 	if (buf != master) {
 		ParIterator const pit = par_iterator_begin(master->inset());
 		string const arg = convert<string>(pit->id());
@@ -857,7 +858,7 @@ void expandBranches(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 
-	BufferParams const & params = buf->getMasterBuffer()->params();
+	BufferParams const & params = buf->masterBuffer()->params();
 	if (params.branchlist().empty()) {
 		tomenu.add(MenuItem(MenuItem::Command,
 				    _("No Branch in Document!"),

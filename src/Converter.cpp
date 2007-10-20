@@ -586,13 +586,11 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 
 namespace {
 
-class showMessage : public std::unary_function<docstring, void>, public boost::signals::trackable {
+class ShowMessage
+	: public boost::signals::trackable {
 public:
-	showMessage(Buffer const & b) : buffer_(b) {};
-	void operator()(docstring const & m) const
-	{
-		buffer_.message(m);
-	}
+	ShowMessage(Buffer const & b) : buffer_(b) {};
+	void operator()(docstring const & msg) const { buffer_.message(msg); }
 private:
 	Buffer const & buffer_;
 };
@@ -609,10 +607,10 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	runparams.document_language = buffer.params().language->babel();
 
 	// do the LaTeX run(s)
-	string const name = buffer.getLatexName();
+	string const name = buffer.latexName();
 	LaTeX latex(command, runparams, FileName(makeAbsPath(name)));
 	TeXErrors terr;
-	showMessage show(buffer);
+	ShowMessage show(buffer);
 	latex.message.connect(show);
 	int const result = latex.run(terr);
 
