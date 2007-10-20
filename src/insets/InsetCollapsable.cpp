@@ -634,7 +634,10 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 				os << from_utf8(layout_.latexparam);
 		}
 	}
-	int i = InsetText::latex(buf, os, runparams);
+	OutputParams rp = runparams;
+	if (layout_.verbatim)
+		rp.verbatim = true;
+	int i = InsetText::latex(buf, os, rp);
 	if (!layout_.latexname.empty()) {
 		if (layout_.latextype == "command") {
 			os << "}";

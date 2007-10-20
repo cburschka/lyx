@@ -25,7 +25,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  inComment(false),
 	  inDeletedInset(0), changeOfDeletedInset(Change::UNCHANGED),
 	  par_begin(0), par_end(0),
-	  dryrun(false)
+	  dryrun(false), verbatim(false)
 {}
 
 

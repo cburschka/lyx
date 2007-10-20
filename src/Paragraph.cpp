@@ -186,10 +186,10 @@ struct special_phrase {
 };
 
 special_phrase const special_phrases[] = {
-	{ "LyX", from_ascii("\\LyX{}"), false },
-	{ "TeX", from_ascii("\\TeX{}"), true },
-	{ "LaTeX2e", from_ascii("\\LaTeXe{}"), true },
-	{ "LaTeX", from_ascii("\\LaTeX{}"), true },
+	{ "LyX", from_ascii("\\protect\\LyX{}"), false },
+	{ "TeX", from_ascii("\\protect\\TeX{}"), true },
+	{ "LaTeX2e", from_ascii("\\protect\\LaTeXe{}"), true },
+	{ "LaTeX", from_ascii("\\protect\\LaTeX{}"), true },
 };
 
 size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
@@ -775,6 +775,11 @@ void Paragraph::Private::simpleTeXSpecialChar(
 					     unsigned int & column,
 					     value_type const c)
 {
+	if (runparams.verbatim) {
+		os.put(c);
+		return;
+	}
+
 	switch (c) {
 	case '\\':
 		os << "\\textbackslash{}";

@@ -8,11 +8,15 @@ InsetLayout URL
   LatexName url
   Decoration minimalistic
   LabelString URL
+  Verbatim true
   Font
     Family Typewriter
+    Color Blue
   EndFont
   LabelFont
     Family Typewriter
+    Color Blue
+    Size Small
   EndFont
   Preamble
     \usepackage{url}

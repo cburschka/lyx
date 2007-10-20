@@ -146,6 +146,8 @@ public:
 	 *  This mode will be used to preview the source code
 	 */
 	bool dryrun;
+	/// Should we output verbatim or escape LaTeX's special chars?
+	bool verbatim;
 };
 
 
