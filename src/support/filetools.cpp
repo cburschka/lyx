@@ -935,9 +935,9 @@ string const readBB_from_PSFile(FileName const & file)
 	// end of the file. Than we have in the header:
 	// %%BoundingBox: (atend)
 	// In this case we must check the end.
-	bool zipped = zippedFile(file);
+	bool zipped = file.isZippedFile();
 	FileName const file_ = zipped ? unzipFile(file) : file;
-	string const format = getFormatFromContents(file_);
+	string const format = file_.guessFormatFromContents();
 
 	if (format != "eps" && format != "ps") {
 		readBB_lyxerrMessage(file_, zipped,"no(e)ps-format");
