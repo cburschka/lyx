@@ -123,6 +123,16 @@ public:
 				   unsigned int & column, value_type const c);
 
 	///
+	void Private::simpleTeXSpecialChar(
+				   odocstream & os,
+				   OutputParams & runparams,
+				   Font & running_font,
+				   Change & running_change,
+				   pos_type & i,
+				   unsigned int & column,
+				   value_type const c);
+
+	///
 	void validate(LaTeXFeatures & features,
 		      Layout const & layout) const;
 
@@ -633,295 +643,296 @@ void Paragraph::Private::simpleTeXSpecialChars(Buffer const & buf,
 	// Two major modes:  LaTeX or plain
 	// Handle here those cases common to both modes
 	// and then split to handle the two modes separately.
-	switch (c) {
-	case Paragraph::META_INSET: {
-		Inset * inset = owner_->getInset(i);
+	if (c != Paragraph::META_INSET) {
+		simpleTeXSpecialChar(os, runparams, running_font, running_change,
+			i, column, c);
+		return;
+	}
 
-		// FIXME: remove this check
-		if (!inset)
-			break;
+	Inset * inset = owner_->getInset(i);
+	BOOST_ASSERT(inset);
 
-		// FIXME: move this to InsetNewline::latex
-		if (inset->lyxCode() == NEWLINE_CODE) {
-			// newlines are handled differently here than
-			// the default in simpleTeXSpecialChars().
-			if (!style.newline_allowed) {
-				os << '\n';
-			} else {
-				if (open_font) {
-					column += running_font.latexWriteEndChanges(
-						os, bparams, runparams,
-						basefont, basefont);
-					open_font = false;
-				}
-
-				if (running_font.family() == Font::TYPEWRITER_FAMILY)
-					os << '~';
-
-				basefont = owner_->getLayoutFont(bparams, outerfont);
-				running_font = basefont;
-
-				if (runparams.moving_arg)
-					os << "\\protect ";
-
-				os << "\\\\\n";
-			}
-			texrow.newline();
-			texrow.start(owner_->id(), i + 1);
-			column = 0;
-			break;
-		}
-
-		if (owner_->lookupChange(i).type == Change::DELETED) {
-			if( ++runparams.inDeletedInset == 1)
-				runparams.changeOfDeletedInset = owner_->lookupChange(i);
-		}
-
-		if (inset->canTrackChanges()) {
-			column += Changes::latexMarkChange(os, bparams, running_change,
-				Change(Change::UNCHANGED));
-			running_change = Change(Change::UNCHANGED);
-		}
-
-		bool close = false;
-		odocstream::pos_type const len = os.tellp();
-
-		if ((inset->lyxCode() == GRAPHICS_CODE
-		     || inset->lyxCode() == MATH_CODE
-		     || inset->lyxCode() == HYPERLINK_CODE)
-		    && running_font.isRightToLeft()) {
-		    	if (running_font.language()->lang() == "farsi")
-				os << "\\beginL{}";
-			else
-				os << "\\L{";
-			close = true;
-		}
-
-// FIXME: Bug: we can have an empty font change here!
-// if there has just been a font change, we are going to close it
-// right now, which means stupid latex code like \textsf{}. AFAIK,
-// this does not harm dvi output. A minor bug, thus (JMarc)
-		// Some insets cannot be inside a font change command.
-		// However, even such insets *can* be placed in \L or \R
-		// or their equivalents (for RTL language switches), so we don't
-		// close the language in those cases.
-		// ArabTeX, though, cannot handle this special behavior, it seems.
-		bool arabtex = basefont.language()->lang() == "arabic_arabtex" ||
-					   running_font.language()->lang() == "arabic_arabtex";
-		if (open_font && inset->noFontChange()) {
-			bool closeLanguage = arabtex ||
-				basefont.isRightToLeft() == running_font.isRightToLeft();
-			unsigned int count = running_font.latexWriteEndChanges(
-					os, bparams, runparams,
-						basefont, basefont, closeLanguage);
-			column += count;
-			// if any font properties were closed, update the running_font, 
-			// making sure, however, to leave the language as it was
-			if (count > 0) {
-				// FIXME: probably a better way to keep track of the old 
-				// language, than copying the entire font?
-				Font const copy_font(running_font);
-				basefont = owner_->getLayoutFont(bparams, outerfont);
-				running_font = basefont;
-				if (!closeLanguage)
-					running_font.setLanguage(copy_font.language());
-				// leave font open if language is still open
-				open_font = (running_font.language() == basefont.language());
-				if (closeLanguage)
-					runparams.local_font = &basefont;
-			}
-		}
-
-		int tmp = inset->latex(buf, os, runparams);
-
-		if (close) {
-		    	if (running_font.language()->lang() == "farsi")
-				os << "\\endL{}";
-			else
-				os << '}';
-		}
-
-		if (tmp) {
-			for (int j = 0; j < tmp; ++j) {
-				texrow.newline();
-			}
-			texrow.start(owner_->id(), i + 1);
-			column = 0;
+	// FIXME: move this to InsetNewline::latex
+	if (inset->lyxCode() == NEWLINE_CODE) {
+		// newlines are handled differently here than
+		// the default in simpleTeXSpecialChars().
+		if (!style.newline_allowed) {
+			os << '\n';
 		} else {
-			column += os.tellp() - len;
-		}
+			if (open_font) {
+				column += running_font.latexWriteEndChanges(
+					os, bparams, runparams,
+					basefont, basefont);
+				open_font = false;
+			}
 
-		if (owner_->lookupChange(i).type == Change::DELETED) {
-			--runparams.inDeletedInset;
+			if (running_font.family() == Font::TYPEWRITER_FAMILY)
+				os << '~';
+
+			basefont = owner_->getLayoutFont(bparams, outerfont);
+			running_font = basefont;
+
+			if (runparams.moving_arg)
+				os << "\\protect ";
+
+			os << "\\\\\n";
+		}
+		texrow.newline();
+		texrow.start(owner_->id(), i + 1);
+		column = 0;
+	}
+
+	if (owner_->lookupChange(i).type == Change::DELETED) {
+		if( ++runparams.inDeletedInset == 1)
+			runparams.changeOfDeletedInset = owner_->lookupChange(i);
+	}
+
+	if (inset->canTrackChanges()) {
+		column += Changes::latexMarkChange(os, bparams, running_change,
+			Change(Change::UNCHANGED));
+		running_change = Change(Change::UNCHANGED);
+	}
+
+	bool close = false;
+	odocstream::pos_type const len = os.tellp();
+
+	if ((inset->lyxCode() == GRAPHICS_CODE
+	     || inset->lyxCode() == MATH_CODE
+	     || inset->lyxCode() == HYPERLINK_CODE)
+	    && running_font.isRightToLeft()) {
+	    	if (running_font.language()->lang() == "farsi")
+			os << "\\beginL{}";
+		else
+			os << "\\L{";
+		close = true;
+	}
+
+	// FIXME: Bug: we can have an empty font change here!
+	// if there has just been a font change, we are going to close it
+	// right now, which means stupid latex code like \textsf{}. AFAIK,
+	// this does not harm dvi output. A minor bug, thus (JMarc)
+
+	// Some insets cannot be inside a font change command.
+	// However, even such insets *can* be placed in \L or \R
+	// or their equivalents (for RTL language switches), so we don't
+	// close the language in those cases.
+	// ArabTeX, though, cannot handle this special behavior, it seems.
+	bool arabtex = basefont.language()->lang() == "arabic_arabtex"
+		|| running_font.language()->lang() == "arabic_arabtex";
+	if (open_font && inset->noFontChange()) {
+		bool closeLanguage = arabtex
+			|| basefont.isRightToLeft() == running_font.isRightToLeft();
+		unsigned int count = running_font.latexWriteEndChanges(os,
+			bparams, runparams, basefont, basefont, closeLanguage);
+		column += count;
+		// if any font properties were closed, update the running_font, 
+		// making sure, however, to leave the language as it was
+		if (count > 0) {
+			// FIXME: probably a better way to keep track of the old 
+			// language, than copying the entire font?
+			Font const copy_font(running_font);
+			basefont = owner_->getLayoutFont(bparams, outerfont);
+			running_font = basefont;
+			if (!closeLanguage)
+				running_font.setLanguage(copy_font.language());
+			// leave font open if language is still open
+			open_font = (running_font.language() == basefont.language());
+			if (closeLanguage)
+				runparams.local_font = &basefont;
 		}
 	}
-	break;
 
-	default:
-		// And now for the special cases within each mode
+	int tmp = inset->latex(buf, os, runparams);
 
-		switch (c) {
-		case '\\':
-			os << "\\textbackslash{}";
-			column += 15;
-			break;
-
-		case '|': case '<': case '>':
-			// In T1 encoding, these characters exist
-			if (lyxrc.fontenc == "T1") {
-				os.put(c);
-				//... but we should avoid ligatures
-				if ((c == '>' || c == '<')
-				    && i <= size() - 2
-				    && getChar(i + 1) == c) {
-					//os << "\\textcompwordmark{}";
-					//column += 19;
-					// Jean-Marc, have a look at
-					// this. I think this works
-					// equally well:
-					os << "\\,{}";
-					// Lgb
-					column += 3;
-				}
-				break;
-			}
-			// Typewriter font also has them
-			if (running_font.family() == Font::TYPEWRITER_FAMILY) {
-				os.put(c);
-				break;
-			}
-			// Otherwise, we use what LaTeX
-			// provides us.
-			switch (c) {
-			case '<':
-				os << "\\textless{}";
-				column += 10;
-				break;
-			case '>':
-				os << "\\textgreater{}";
-				column += 13;
-				break;
-			case '|':
-				os << "\\textbar{}";
-				column += 9;
-				break;
-			}
-			break;
-
-		case '-': // "--" in Typewriter mode -> "-{}-"
-			if (i <= size() - 2 &&
-			    getChar(i + 1) == '-' &&
-			    running_font.family() == Font::TYPEWRITER_FAMILY) {
-				os << "-{}";
-				column += 2;
-			} else {
-				os << '-';
-			}
-			break;
-
-		case '\"':
-			os << "\\char`\\\"{}";
-			column += 9;
-			break;
-
-		case '$': case '&':
-		case '%': case '#': case '{':
-		case '}': case '_':
-			os << '\\';
-			os.put(c);
-			column += 1;
-			break;
-
-		case '~':
-			os << "\\textasciitilde{}";
-			column += 16;
-			break;
-
-		case '^':
-			os << "\\textasciicircum{}";
-			column += 17;
-			break;
-
-		case '*': case '[':
-			// avoid being mistaken for optional arguments
-			os << '{';
-			os.put(c);
+	if (close) {
+    	if (running_font.language()->lang() == "farsi")
+			os << "\\endL{}";
+		else
 			os << '}';
-			column += 2;
-			break;
+	}
 
-		case ' ':
-			// Blanks are printed before font switching.
-			// Sure? I am not! (try nice-latex)
-			// I am sure it's correct. LyX might be smarter
-			// in the future, but for now, nothing wrong is
-			// written. (Asger)
-			break;
+	if (tmp) {
+		for (int j = 0; j < tmp; ++j)
+			texrow.newline();
 
-		default:
+		texrow.start(owner_->id(), i + 1);
+		column = 0;
+	} else {
+		column += os.tellp() - len;
+	}
 
-			// I assume this is hack treating typewriter as verbatim
-			// FIXME UNICODE: This can fail if c cannot be encoded
-			// in the current encoding.
-			if (running_font.family() == Font::TYPEWRITER_FAMILY) {
-				if (c != '\0') {
-					os.put(c);
-				}
-				break;
-			}
+	if (owner_->lookupChange(i).type == Change::DELETED)
+		--runparams.inDeletedInset;
+}
 
-			// LyX, LaTeX etc.
 
-			// FIXME: if we have "LaTeX" with a font
-			// change in the middle (before the 'T', then
-			// the "TeX" part is still special cased.
-			// Really we should only operate this on
-			// "words" for some definition of word
+void Paragraph::Private::simpleTeXSpecialChar(
+					     odocstream & os,
+					     OutputParams & runparams,
+					     Font & running_font,
+					     Change & running_change,
+					     pos_type & i,
+					     unsigned int & column,
+					     value_type const c)
+{
+	switch (c) {
+	case '\\':
+		os << "\\textbackslash{}";
+		column += 15;
+		break;
 
-			size_t pnr = 0;
-
-			for (; pnr < phrases_nr; ++pnr) {
-				if (isTextAt(special_phrases[pnr].phrase, i)) {
-					os << special_phrases[pnr].macro;
-					i += special_phrases[pnr].phrase.length() - 1;
-					column += special_phrases[pnr].macro.length() - 1;
-					break;
-				}
-			}
-
-			if (pnr == phrases_nr && c != '\0') {
-				Encoding const & encoding = *(runparams.encoding);
-				if (i + 1 < size()) {
-					char_type next = getChar(i + 1);
-					if (Encodings::isCombiningChar(next)) {
-						column += latexSurrogatePair(os, c, next, encoding) - 1;
-						++i;
-						break;
-					}
-				}
-				string preamble;
-				if (Encodings::isKnownLangChar(c, preamble)) {
-					column +=
-						knownLangChars(os, c, preamble,
-							running_change,
-							encoding, i) - 1;
-					break;
-				}
-				docstring const latex = encoding.latexChar(c);
-				if (latex.length() > 1 &&
-				    latex[latex.length() - 1] != '}') {
-					// Prevent eating of a following
-					// space or command corruption by
-					// following characters
-					column += latex.length() + 1;
-					os << latex << "{}";
-				} else {
-					column += latex.length() - 1;
-					os << latex;
-				}
+	case '|':
+	case '<':
+	case '>':
+		// In T1 encoding, these characters exist
+		if (lyxrc.fontenc == "T1") {
+			os.put(c);
+			//... but we should avoid ligatures
+			if ((c == '>' || c == '<')
+			    && i <= size() - 2
+			    && getChar(i + 1) == c) {
+				//os << "\\textcompwordmark{}";
+				//column += 19;
+				// Jean-Marc, have a look at
+				// this. I think this works
+				// equally well:
+				os << "\\,{}";
+				// Lgb
+				column += 3;
 			}
 			break;
 		}
+		// Typewriter font also has them
+		if (running_font.family() == Font::TYPEWRITER_FAMILY) {
+			os.put(c);
+			break;
+		}
+		// Otherwise, we use what LaTeX
+		// provides us.
+		switch (c) {
+		case '<':
+			os << "\\textless{}";
+			column += 10;
+			break;
+		case '>':
+			os << "\\textgreater{}";
+			column += 13;
+			break;
+		case '|':
+			os << "\\textbar{}";
+			column += 9;
+			break;
+		}
+		break;
+
+	case '-': // "--" in Typewriter mode -> "-{}-"
+		if (i <= size() - 2 &&
+		    getChar(i + 1) == '-' &&
+		    running_font.family() == Font::TYPEWRITER_FAMILY) {
+			os << "-{}";
+			column += 2;
+		} else {
+			os << '-';
+		}
+		break;
+
+	case '\"':
+		os << "\\char`\\\"{}";
+		column += 9;
+		break;
+
+	case '$': case '&':
+	case '%': case '#': case '{':
+	case '}': case '_':
+		os << '\\';
+		os.put(c);
+		column += 1;
+		break;
+
+	case '~':
+		os << "\\textasciitilde{}";
+		column += 16;
+		break;
+
+	case '^':
+		os << "\\textasciicircum{}";
+		column += 17;
+		break;
+
+	case '*': case '[':
+		// avoid being mistaken for optional arguments
+		os << '{';
+		os.put(c);
+		os << '}';
+		column += 2;
+		break;
+
+	case ' ':
+		// Blanks are printed before font switching.
+		// Sure? I am not! (try nice-latex)
+		// I am sure it's correct. LyX might be smarter
+		// in the future, but for now, nothing wrong is
+		// written. (Asger)
+		break;
+
+	default:
+		// I assume this is hack treating typewriter as verbatim
+		// FIXME UNICODE: This can fail if c cannot be encoded
+		// in the current encoding.
+		if (running_font.family() == Font::TYPEWRITER_FAMILY) {
+			if (c != '\0')
+				os.put(c);
+			break;
+		}
+
+		// LyX, LaTeX etc.
+
+		// FIXME: if we have "LaTeX" with a font
+		// change in the middle (before the 'T', then
+		// the "TeX" part is still special cased.
+		// Really we should only operate this on
+		// "words" for some definition of word
+
+		size_t pnr = 0;
+
+		for (; pnr < phrases_nr; ++pnr) {
+			if (isTextAt(special_phrases[pnr].phrase, i)) {
+				os << special_phrases[pnr].macro;
+				i += special_phrases[pnr].phrase.length() - 1;
+				column += special_phrases[pnr].macro.length() - 1;
+				break;
+			}
+		}
+
+		if (pnr == phrases_nr && c != '\0') {
+			Encoding const & encoding = *(runparams.encoding);
+			if (i + 1 < size()) {
+				char_type next = getChar(i + 1);
+				if (Encodings::isCombiningChar(next)) {
+					column += latexSurrogatePair(os, c, next, encoding) - 1;
+					++i;
+					break;
+				}
+			}
+			string preamble;
+			if (Encodings::isKnownLangChar(c, preamble)) {
+				column += knownLangChars(os, c, preamble, running_change,
+					encoding, i) - 1;
+				break;
+			}
+			docstring const latex = encoding.latexChar(c);
+			if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
+				// Prevent eating of a following
+				// space or command corruption by
+				// following characters
+				column += latex.length() + 1;
+				os << latex << "{}";
+			} else {
+				column += latex.length() - 1;
+				os << latex;
+			}
+		}
+		break;
 	}
 }
 
@@ -968,17 +979,11 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 	}
 }
 
-
-} // namespace lyx
-
-
 /////////////////////////////////////////////////////////////////////
 //
 // Paragraph
 //
 /////////////////////////////////////////////////////////////////////
-
-namespace lyx {
 
 Paragraph::Paragraph()
 	: begin_of_body_(0), d(new Paragraph::Private(this))
