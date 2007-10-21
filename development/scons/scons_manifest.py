@@ -41,6 +41,7 @@ src_header_files = Split('''
     Bullet.h
     Changes.h
     Chktex.h
+    CmdDef.h
     Color.h
     Converter.h
     ConverterCache.h
@@ -154,6 +155,7 @@ src_pre_files = Split('''
     Bullet.cpp
     Changes.cpp
     Chktex.cpp
+    CmdDef.cpp
     Color.cpp
     Converter.cpp
     ConverterCache.cpp

@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <deque>
+#include <map>
 
 
 namespace lyx {
