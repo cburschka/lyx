@@ -1846,6 +1846,15 @@ void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
 #else
 		item->setTextColor(QColor("red"));
 #endif
+		break;
+	case UserExtraUnbind:
+#if QT_VERSION >= 0x040200
+		item->setForeground(0, QBrush("purple"));
+		item->setForeground(1, QBrush("purple"));
+#else
+		item->setTextColor(QColor("purple"));
+#endif
+		break;
 	}
 }
 
@@ -1861,14 +1870,21 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	// if the Shortcut dialog can hide all the bind file stuff,
 	// Portable format can be used.
 	QString const shortcut = toqstr(seq.print(KeySequence::BindFile));
+	item_type item_tag = tag;
 
 	QTreeWidgetItem * newItem = NULL;
 	// for unbind items, try to find an existing item in the system bind list
 	if (tag == UserUnbind) {
 		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name, 
 			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
-		if (!items.empty())
-			newItem = items[0];
+		for (size_t i = 0; i < items.size(); ++i) {
+			if (items[i]->text(1) == shortcut)
+				newItem = items[i];
+				break;
+			}
+		// if not found, this unbind item is UserExtraUnbind
+		if (!newItem)
+			item_tag = UserExtraUnbind;
 	}
 	if (!newItem) {
 		switch(lyxaction.getActionType(action)) {
@@ -1897,7 +1913,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 
 	newItem->setText(0, lfun_name);
 	newItem->setText(1, shortcut);
-	setItemType(newItem, tag);
+	setItemType(newItem, item_tag);
 	return newItem;
 }
 
@@ -1982,6 +1998,13 @@ void PrefShortcuts::on_removePB_pressed()
 			user_unbind_.unbind(shortcut, func);
 			setItemType(items[i], System);
 			break;
+		}
+		case UserExtraUnbind: {
+			// for user unbind that is not in system bind file,
+			// remove this unbind file
+			QTreeWidgetItem * parent = items[i]->parent();
+			parent->takeChild(parent->indexOfChild(items[i]));
+			user_unbind_.unbind(shortcut, func);
 		}
 		}
 	}

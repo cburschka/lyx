@@ -365,7 +365,10 @@ private:
 	enum item_type {
 		System,		//< loaded from a bind file
 		UserBind,	//< \bind loaded from user.bind
-		UserUnbind	//< \unbind loaded from user.bind
+		UserUnbind,	//< \unbind loaded from user.bind, with corresponding
+					//<    entry in system bind file
+		UserExtraUnbind	//< \unbind loaded from user.bind, without
+						//<    corresponding entry in system bind file.
 	};
 public:
 	PrefShortcuts(GuiPreferences * form, QWidget * parent = 0);
