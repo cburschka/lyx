@@ -174,11 +174,6 @@ def revert_flex(document):
         document.body[i] = document.body[i].replace('\\begin_inset Flex', '\\begin_inset CharStyle')
 
 
-def remove_manifest(document):
-    "Remove the manifest section"
-    document.manifest = None
-
-
 #  Discard PDF options for hyperref
 def revert_pdf_options(document):
         "Revert PDF options for hyperref."
@@ -600,7 +595,7 @@ convert = [[277, [fix_wrong_tables]],
            [282, []],
            [283, [convert_flex]],
            [284, []],
-           [285, []], # an empty manifest is automatically added
+           [285, []],
            [286, []],
            [287, [convert_wrapfig_options]],
            [288, [convert_inset_command]],
@@ -623,7 +618,7 @@ revert =  [[294, [revert_href]],
            [287, [revert_inset_command]],
            [286, [revert_wrapfig_options]],
            [285, [revert_pdf_options]],
-           [284, [remove_manifest, remove_inzip_options]],
+           [284, [remove_inzip_options]],
            [283, []],
            [282, [revert_flex]],
            [281, []],

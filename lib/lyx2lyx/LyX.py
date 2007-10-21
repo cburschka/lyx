@@ -178,7 +178,6 @@ class LyX_base:
         self.default_layout = ''
         self.header = []
         self.preamble = []
-        self.manifest = []
         self.body = []
         self.status = 0
         self.encoding = encoding
@@ -203,7 +202,7 @@ class LyX_base:
 
 
     def read(self):
-        """Reads a file into the self.header, self.manifest and
+        """Reads a file into the self.header and
         self.body parts, from self.input."""
 
         while True:
@@ -233,27 +232,6 @@ class LyX_base:
                     self.preamble.append(line)
 
             if check_token(line, '\\end_preamble'):
-                continue
-
-            if check_token(line, '\\begin_manifest'):
-                while 1:
-                    line = self.input.readline()
-                    if not line:
-                        self.error("Invalid LyX file.")
-
-                    line = trim_eol(line)
-                    if check_token(line, "\\end_manifest"):
-                        break
-
-                    if not line.startswith('\\filename') and \
-                       not line.startswith('\\inzipName') and \
-                       not line.startswith('\\embed'):
-                        self.warning("Malformed LyX file: Missing"
-                                     "'\\end_manifest'.")
-
-                    self.manifest.append(line)
-            
-            if check_token(line, '\\end_manifest'):
                 continue
 
             line = line.strip()
@@ -311,14 +289,7 @@ class LyX_base:
         else:
             header = self.header
 
-        # LyX file format <= 284 does not have a manifest section
-        # so this section is set to None
-        if self.manifest is None:
-            manifest = []
-        else:
-            manifest = ['\\begin_manifest'] + self.manifest + ['\\end_manifest', '']
-
-        for line in header + [''] + manifest + self.body:
+        for line in header + [''] + self.body:
             self.output.write(line.encode(self.encoding)+"\n")
 
 

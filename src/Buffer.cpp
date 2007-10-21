@@ -570,8 +570,6 @@ bool Buffer::readDocument(Lexer & lex)
 					 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
 		}
 	}
-	// read manifest after header
-	embeddedFiles().readManifest(lex, errorList);	
 
 	// read main text
 	bool const res = text().read(*this, lex, errorList);
@@ -961,12 +959,6 @@ bool Buffer::write(ostream & ofs) const
 	ofs << "\\begin_header\n";
 	params().writeFile(ofs);
 	ofs << "\\end_header\n";
-
-	// write the manifest after header
-	ofs << "\n\\begin_manifest\n";
-	pimpl_->embedded_files.update();
-	embeddedFiles().writeManifest(ofs);
-	ofs << "\\end_manifest\n";
 
 	// write the text
 	ofs << "\n\\begin_body\n";

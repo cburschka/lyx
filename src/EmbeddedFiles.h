@@ -227,8 +227,6 @@ public:
 	/// update all files from external, used when enable embedding
 	bool updateFromExternalFile() const;
 	///
-	bool readManifest(Lexer & lex, ErrorList & errorList);
-	void writeManifest(std::ostream & os) const;
 	/// update all insets to use embedded files when embedding status is changed
 	void updateInsets() const;
 private:
