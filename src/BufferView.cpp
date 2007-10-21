@@ -25,6 +25,7 @@
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "DispatchResult.h"
+#include "EmbeddedFiles.h"
 #include "ErrorList.h"
 #include "factory.h"
 #include "FloatList.h"
@@ -917,6 +918,11 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		flag.setOnOff(buffer_.params().compressed);
 		break;
 	}
+	
+	case LFUN_BUFFER_TOGGLE_EMBEDDING: {
+		flag.setOnOff(buffer_.params().embedded);
+		break;
+	}
 
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN:
@@ -1297,6 +1303,11 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_BUFFER_TOGGLE_COMPRESSION:
 		// turn compression on/off
 		buffer_.params().compressed = !buffer_.params().compressed;
+		break;
+	
+	case LFUN_BUFFER_TOGGLE_EMBEDDING:
+		// turn embedding on/off
+		buffer_.embeddedFiles().enable(!buffer_.params().embedded);
 		break;
 
 	case LFUN_NEXT_INSET_TOGGLE: {

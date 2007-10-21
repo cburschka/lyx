@@ -406,6 +406,7 @@ enum kb_action {
 	LFUN_INFO_INSERT,                // bpeng, 20071007
 	// 295
 	LFUN_CALL,                       // broider, 20071002
+	LFUN_BUFFER_TOGGLE_EMBEDDING,    // bpeng, 20071021
 
 	LFUN_LASTACTION                  // end of the table
 };

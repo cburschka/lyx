@@ -379,6 +379,7 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop, Layout },
 		{ LFUN_LAYOUT_RELOAD, "layout-reload", Noop, Layout },
 		{ LFUN_INFO_INSERT, "info-insert", Noop, Edit },
+		{ LFUN_BUFFER_TOGGLE_EMBEDDING, "buffer-toggle-embedding", Noop, Buffer },
 
 		{ LFUN_NOACTION, "", Noop, Hidden }
 	};
