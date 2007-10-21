@@ -28,12 +28,12 @@
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 macro(lyx_add_path _list _prefix)
-	set(_tmp)
-   	foreach(_current ${${_list}})
-   		set(_tmp ${_tmp} ${_prefix}/${_current})
-   		#message( ${_prefix}/${_current})
-   	endforeach(_current)  	 
-   	set(${_list} ${_tmp})  
+   set(_tmp)
+   foreach(_current ${${_list}})
+      set(_tmp ${_tmp} ${_prefix}/${_current})
+      #message( ${_prefix}/${_current})
+   endforeach(_current)  	 
+   set(${_list} ${_tmp})  
 endmacro(lyx_add_path _out _prefix)
 
 
@@ -96,30 +96,27 @@ macro(LYX_AUTOMOC)
                string(REGEX MATCH "[^ <\"]+_moc\\.cpp" _current_MOC "${_current_MOC_INC}")
 
                get_filename_component(_basename ${_current_MOC} NAME_WE)               
-         		
-				string(LENGTH ${_basename} _length)
-				MATH(EXPR _mocless_length ${_length}-4)
-				STRING(SUBSTRING  ${_basename} 0 ${_mocless_length} _mocless_name )
-   
-          set(_header ${_abs_PATH}/${_mocless_name}.h)
-          
-          #message(STATUS "moc : ${_header}")
 
-					 #set(_header ${CMAKE_CURRENT_SOURCE_DIR}/${_basename}.h)
-					 #set(_header ${_abs_PATH}/${_basename}.h)
-					 set(_moc    ${CMAKE_CURRENT_BINARY_DIR}/${_current_MOC})
+               string(LENGTH ${_basename} _length)
+               MATH(EXPR _mocless_length ${_length}-4)
+               STRING(SUBSTRING  ${_basename} 0 ${_mocless_length} _mocless_name )
+
+               set(_header ${_abs_PATH}/${_mocless_name}.h)
+
+               #message(STATUS "moc : ${_header}")
+               #set(_header ${CMAKE_CURRENT_SOURCE_DIR}/${_basename}.h)
+               #set(_header ${_abs_PATH}/${_basename}.h)
                
-   #set(_moc    ${_abs_PATH}/${_current_MOC})
-       add_custom_command(OUTPUT ${_moc}
-        COMMAND ${QT_MOC_EXECUTABLE}
-        ARGS ${_moc_INCS} ${_header} -o ${_moc}
-        MAIN_DEPENDENCY ${_header}
-     )
+               set(_moc  ${CMAKE_CURRENT_BINARY_DIR}/${_current_MOC})
+               #set(_moc ${_abs_PATH}/${_current_MOC})
+               add_custom_command(OUTPUT ${_moc}
+                       COMMAND ${QT_MOC_EXECUTABLE}
+                       ARGS ${_moc_INCS} ${_header} -o ${_moc}
+                       MAIN_DEPENDENCY ${_header})
                macro_add_file_dependencies(${_abs_FILE} ${_moc})
-
             endforeach (_current_MOC_INC)
          else()
-         	#message(STATUS "moc not found : ${_abs_FILE} ")
+            #message(STATUS "moc not found : ${_abs_FILE} ")
          endif()
 
       endif()
