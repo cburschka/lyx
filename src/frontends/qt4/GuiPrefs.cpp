@@ -1877,7 +1877,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	if (tag == UserUnbind) {
 		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name, 
 			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
-		for (size_t i = 0; i < items.size(); ++i) {
+		for (int i = 0; i < items.size(); ++i) {
 			if (items[i]->text(1) == shortcut)
 				newItem = items[i];
 				break;
