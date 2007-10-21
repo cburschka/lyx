@@ -37,11 +37,9 @@
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
-#include "LyXVC.h"
 #include "TexRow.h"
 #include "Text.h"
 #include "TocBackend.h"
-#include "VCBackend.h"
 
 #include "frontends/alert.h"
 
@@ -72,111 +70,6 @@ using support::onlyPath;
 using support::unlink;
 
 namespace Alert = frontend::Alert;
-
-namespace {
-
-bool readFile(Buffer * const b, FileName const & s)
-{
-	BOOST_ASSERT(b);
-
-	// File information about normal file
-	if (!s.exists()) {
-		docstring const file = makeDisplayPath(s.absFilename(), 50);
-		docstring text = bformat(_("The specified document\n%1$s"
-						     "\ncould not be read."), file);
-		Alert::error(_("Could not read document"), text);
-		return false;
-	}
-
-	// Check if emergency save file exists and is newer.
-	FileName const e(s.absFilename() + ".emergency");
-
-	if (e.exists() && s.exists() && e.lastModified() > s.lastModified()) {
-		docstring const file = makeDisplayPath(s.absFilename(), 20);
-		docstring const text =
-			bformat(_("An emergency save of the document "
-				  "%1$s exists.\n\n"
-					       "Recover emergency save?"), file);
-		switch (Alert::prompt(_("Load emergency save?"), text, 0, 2,
-				      _("&Recover"),  _("&Load Original"),
-				      _("&Cancel")))
-		{
-		case 0:
-			// the file is not saved if we load the emergency file.
-			b->markDirty();
-			return b->readFile(e);
-		case 1:
-			break;
-		default:
-			return false;
-		}
-	}
-
-	// Now check if autosave file is newer.
-	FileName const a(onlyPath(s.absFilename()) + '#' + onlyFilename(s.absFilename()) + '#');
-
-	if (a.exists() && s.exists() && a.lastModified() > s.lastModified()) {
-		docstring const file = makeDisplayPath(s.absFilename(), 20);
-		docstring const text =
-			bformat(_("The backup of the document "
-				  "%1$s is newer.\n\nLoad the "
-					       "backup instead?"), file);
-		switch (Alert::prompt(_("Load backup?"), text, 0, 2,
-				      _("&Load backup"), _("Load &original"),
-				      _("&Cancel") ))
-		{
-		case 0:
-			// the file is not saved if we load the autosave file.
-			b->markDirty();
-			return b->readFile(a);
-		case 1:
-			// Here we delete the autosave
-			unlink(a);
-			break;
-		default:
-			return false;
-		}
-	}
-	return b->readFile(s);
-}
-
-
-} // namespace anon
-
-
-
-bool loadLyXFile(Buffer * b, FileName const & s)
-{
-	BOOST_ASSERT(b);
-
-	if (s.isReadable()) {
-		if (readFile(b, s)) {
-			b->lyxvc().file_found_hook(s);
-			if (!s.isWritable())
-				b->setReadonly(true);
-			return true;
-		}
-	} else {
-		docstring const file = makeDisplayPath(s.absFilename(), 20);
-		// Here we probably should run
-		if (LyXVC::file_not_found_hook(s)) {
-			docstring const text =
-				bformat(_("Do you want to retrieve the document"
-						       " %1$s from version control?"), file);
-			int const ret = Alert::prompt(_("Retrieve from version control?"),
-				text, 0, 1, _("&Retrieve"), _("&Cancel"));
-
-			if (ret == 0) {
-				// How can we know _how_ to do the checkout?
-				// With the current VC support it has to be,
-				// a RCS file since CVS do not have special ,v files.
-				RCS::retrieve(s);
-				return loadLyXFile(b, s);
-			}
-		}
-	}
-	return false;
-}
 
 
 bool checkIfLoaded(FileName const & fn)
@@ -211,7 +104,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 
 	if (filename.isReadable()) {
 		Buffer * b = theBufferList().newBuffer(filename.absFilename());
-		if (!lyx::loadLyXFile(b, filename)) {
+		if (!b->loadLyXFile(filename)) {
 			theBufferList().release(b);
 			return 0;
 		}
@@ -227,6 +120,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 
 	return 0;
 }
+
 
 // FIXME newFile() should probably be a member method of Application...
 Buffer * newFile(string const & filename, string const & templatename,
@@ -264,32 +158,6 @@ Buffer * newFile(string const & filename, string const & templatename,
 	b->setFullyLoaded(true);
 
 	return b;
-}
-
-
-void bufferErrors(Buffer const & buf, TeXErrors const & terr,
-				  ErrorList & errorList)
-{
-	TeXErrors::Errors::const_iterator cit = terr.begin();
-	TeXErrors::Errors::const_iterator end = terr.end();
-
-	for (; cit != end; ++cit) {
-		int id_start = -1;
-		int pos_start = -1;
-		int errorrow = cit->error_in_line;
-		bool found = buf.texrow().getIdFromRow(errorrow, id_start,
-						       pos_start);
-		int id_end = -1;
-		int pos_end = -1;
-		do {
-			++errorrow;
-			found = buf.texrow().getIdFromRow(errorrow, id_end,
-							  pos_end);
-		} while (found && id_start == id_end && pos_start == pos_end);
-
-		errorList.push_back(ErrorItem(cit->error_desc,
-			cit->error_text, id_start, pos_start, pos_end));
-	}
 }
 
 
@@ -622,14 +490,5 @@ void checkBufferStructure(Buffer & buffer, ParIterator const & par_it)
 	}
 }
 
-
-textclass_type defaultTextclass()
-{
-	// We want to return the article class. if `first' is
-	// true in the returned pair, then `second' is the textclass
-	// number; if it is false, second is 0. In both cases, second
-	// is what we want.
-	return textclasslist.numberOfClass("article").second;
-}
 
 } // namespace lyx

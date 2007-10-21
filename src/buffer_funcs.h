@@ -12,10 +12,7 @@
 #ifndef BUFFER_FUNCS_H
 #define BUFFER_FUNCS_H
 
-#include "support/docstring.h"
-
 #include <string>
-
 
 namespace lyx {
 
@@ -23,8 +20,6 @@ namespace support { class FileName; }
 
 class Buffer;
 class DocIterator;
-class ErrorList;
-class TeXErrors;
 class ParIterator;
 
 
@@ -32,12 +27,6 @@ class ParIterator;
  * Returns true if the file is already loaded into a buffer.
  */
 bool checkIfLoaded(support::FileName const & fn);
-
-/**
- *  Loads a LyX file \c filename into \c Buffer
- *  and \return success status.
- */
-bool loadLyXFile(Buffer *, support::FileName const & filename);
 
 /**
  *  Checks and loads a LyX file \param filename.
@@ -52,9 +41,6 @@ Buffer * checkAndLoadLyXFile(support::FileName const & filename);
 Buffer * newFile(std::string const & filename, std::string const & templatename,
 		 bool isNamed = false);
 
-/// Fill in the ErrorList with the TeXErrors
-void bufferErrors(Buffer const &, TeXErrors const &, ErrorList &);
-
 /// Count the number of words in the text between these two iterators
 int countWords(DocIterator const & from, DocIterator const & to);
 
@@ -66,9 +52,6 @@ void updateLabels(Buffer const &, ParIterator &);
 
 ///
 void checkBufferStructure(Buffer &, ParIterator const &);
-
-///
-textclass_type defaultTextclass();
 
 } // namespace lyx
 

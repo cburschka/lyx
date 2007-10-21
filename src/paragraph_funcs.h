@@ -72,9 +72,6 @@ int getEndLabel(pit_type par, ParagraphList const & plist);
  */
 Font const outerFont(pit_type par_offset, ParagraphList const & pars);
 
-/// return the number of InsetOptArg in a paragraph
-int numberOfOptArgs(Paragraph const & par);
-
 /// accept the changes within the complete ParagraphList
 void acceptChanges(ParagraphList & pars, BufferParams const & bparams);
 

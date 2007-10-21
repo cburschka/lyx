@@ -1708,7 +1708,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_OPTIONAL_INSERT:
 		code = OPTARG_CODE;
-		enable = numberOfOptArgs(cur.paragraph())
+		enable = cur.paragraph().numberOfOptArgs()
 			< cur.paragraph().layout()->optionalargs;
 		break;
 	case LFUN_ENVIRONMENT_INSERT:

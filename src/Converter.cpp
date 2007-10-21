@@ -578,7 +578,7 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 	int const result = latex.scanLogFile(terr);
 
 	if (result & LaTeX::ERRORS)
-		bufferErrors(buffer, terr, errorList);
+		buffer.bufferErrors(terr, errorList);
 
 	return true;
 }
@@ -589,7 +589,7 @@ namespace {
 class ShowMessage
 	: public boost::signals::trackable {
 public:
-	ShowMessage(Buffer const & b) : buffer_(b) {};
+	ShowMessage(Buffer const & b) : buffer_(b) {}
 	void operator()(docstring const & msg) const { buffer_.message(msg); }
 private:
 	Buffer const & buffer_;
@@ -601,7 +601,7 @@ private:
 bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 			  OutputParams const & runparams, ErrorList & errorList)
 {
-	buffer.busy(true);
+	buffer.setBusy(true);
 	buffer.message(_("Running LaTeX..."));
 
 	runparams.document_language = buffer.params().language->babel();
@@ -615,7 +615,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	int const result = latex.run(terr);
 
 	if (result & LaTeX::ERRORS)
-		bufferErrors(buffer, terr, errorList);
+		buffer.bufferErrors(terr, errorList);
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {
@@ -630,7 +630,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	}
 
 
-	buffer.busy(false);
+	buffer.setBusy(false);
 
 	int const ERROR_MASK =
 			LaTeX::NO_LOGFILE |

@@ -602,7 +602,7 @@ void LyX::loadFiles()
 			continue;
 
 		Buffer * buf = pimpl_->buffer_list_.newBuffer(it->absFilename(), false);
-		if (loadLyXFile(buf, *it)) {
+		if (buf->loadLyXFile(*it)) {
 			ErrorList const & el = buf->errorList("Parse");
 			if (!el.empty())
 				for_each(el.begin(), el.end(),

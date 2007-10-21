@@ -68,6 +68,8 @@ private:
 
 ///
 extern TextClassList textclasslist;
+///
+textclass_type defaultTextclass();
 
 
 } // namespace lyx

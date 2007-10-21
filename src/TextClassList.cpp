@@ -229,6 +229,17 @@ TextClassList::addTextClass(std::string const & textclass, std::string const & p
 TextClassList textclasslist;
 
 
+textclass_type defaultTextclass()
+{
+	// We want to return the article class. if `first' is
+	// true in the returned pair, then `second' is the textclass
+	// number; if it is false, second is 0. In both cases, second
+	// is what we want.
+	return textclasslist.numberOfClass("article").second;
+}
+
+
+
 // Reads the style files
 bool LyXSetStyle()
 {

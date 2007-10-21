@@ -2504,4 +2504,18 @@ Inset const * Paragraph::getInset(pos_type pos) const
 	return d->insetlist_.get(pos);
 }
 
+
+int Paragraph::numberOfOptArgs() const
+{
+	int num = 0;
+	InsetList::const_iterator it = insetList().begin();
+	InsetList::const_iterator end = insetList().end();
+	for (; it != end ; ++it) {
+		if (it->inset->lyxCode() == OPTARG_CODE)
+			++num;
+	}
+	return num;
+}
+
+
 } // namespace lyx

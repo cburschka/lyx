@@ -24,6 +24,7 @@
 #include "Counters.h"
 #include "debug.h"
 #include "DocIterator.h"
+#include "EmbeddedFiles.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Exporter.h"
@@ -33,34 +34,34 @@
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Language.h"
-#include "LaTeX.h"
 #include "LaTeXFeatures.h"
+#include "LaTeX.h"
 #include "Layout.h"
-#include "LyXAction.h"
 #include "Lexer.h"
-#include "Text.h"
+#include "LyXAction.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "Messages.h"
-#include "output.h"
 #include "output_docbook.h"
+#include "output.h"
 #include "output_latex.h"
 #include "output_plaintext.h"
-#include "Paragraph.h"
 #include "paragraph_funcs.h"
+#include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
+#include "PDFOptions.h"
 #include "Session.h"
 #include "sgml.h"
 #include "TexRow.h"
-#include "TextClassList.h"
 #include "TexStream.h"
+#include "TextClassList.h"
+#include "Text.h"
 #include "TocBackend.h"
 #include "Undo.h"
+#include "VCBackend.h"
 #include "version.h"
-#include "EmbeddedFiles.h"
-#include "PDFOptions.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"
@@ -1309,7 +1310,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 // Other flags: -wall -v0 -x
 int Buffer::runChktex()
 {
-	busy(true);
+	setBusy(true);
 
 	// get LaTeX-Filename
 	FileName const path(temppath());
@@ -1333,14 +1334,12 @@ int Buffer::runChktex()
 		Alert::error(_("chktex failure"),
 			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
-		ErrorList & errorList = pimpl_->errorLists["ChkTeX"];
-		// Clear out old errors
-		errorList.clear();
-		// Fill-in the error list with the TeX errors
-		bufferErrors(*this, terr, errorList);
+		ErrorList & errlist = pimpl_->errorLists["ChkTeX"];
+		errlist.clear();
+		bufferErrors(terr, errlist);
 	}
 
-	busy(false);
+	setBusy(false);
 
 	errors("ChkTeX");
 
@@ -1927,7 +1926,7 @@ void Buffer::message(docstring const & msg) const
 }
 
 
-void Buffer::busy(bool on) const
+void Buffer::setBusy(bool on) const
 {
 	if (gui_)
 		gui_->busy(on);
@@ -2385,5 +2384,124 @@ vector<string> Buffer::backends() const
 	return v;
 }
 
+
+bool Buffer::readFileHelper(FileName const & s)
+{
+	// File information about normal file
+	if (!s.exists()) {
+		docstring const file = makeDisplayPath(s.absFilename(), 50);
+		docstring text = bformat(_("The specified document\n%1$s"
+						     "\ncould not be read."), file);
+		Alert::error(_("Could not read document"), text);
+		return false;
+	}
+
+	// Check if emergency save file exists and is newer.
+	FileName const e(s.absFilename() + ".emergency");
+
+	if (e.exists() && s.exists() && e.lastModified() > s.lastModified()) {
+		docstring const file = makeDisplayPath(s.absFilename(), 20);
+		docstring const text =
+			bformat(_("An emergency save of the document "
+				  "%1$s exists.\n\n"
+					       "Recover emergency save?"), file);
+		switch (Alert::prompt(_("Load emergency save?"), text, 0, 2,
+				      _("&Recover"),  _("&Load Original"),
+				      _("&Cancel")))
+		{
+		case 0:
+			// the file is not saved if we load the emergency file.
+			markDirty();
+			return readFile(e);
+		case 1:
+			break;
+		default:
+			return false;
+		}
+	}
+
+	// Now check if autosave file is newer.
+	FileName const a(onlyPath(s.absFilename()) + '#' + onlyFilename(s.absFilename()) + '#');
+
+	if (a.exists() && s.exists() && a.lastModified() > s.lastModified()) {
+		docstring const file = makeDisplayPath(s.absFilename(), 20);
+		docstring const text =
+			bformat(_("The backup of the document "
+				  "%1$s is newer.\n\nLoad the "
+					       "backup instead?"), file);
+		switch (Alert::prompt(_("Load backup?"), text, 0, 2,
+				      _("&Load backup"), _("Load &original"),
+				      _("&Cancel") ))
+		{
+		case 0:
+			// the file is not saved if we load the autosave file.
+			markDirty();
+			return readFile(a);
+		case 1:
+			// Here we delete the autosave
+			unlink(a);
+			break;
+		default:
+			return false;
+		}
+	}
+	return readFile(s);
+}
+
+
+bool Buffer::loadLyXFile(FileName const & s)
+{
+	if (s.isReadable()) {
+		if (readFileHelper(s)) {
+			lyxvc().file_found_hook(s);
+			if (!s.isWritable())
+				setReadonly(true);
+			return true;
+		}
+	} else {
+		docstring const file = makeDisplayPath(s.absFilename(), 20);
+		// Here we probably should run
+		if (LyXVC::file_not_found_hook(s)) {
+			docstring const text =
+				bformat(_("Do you want to retrieve the document"
+						       " %1$s from version control?"), file);
+			int const ret = Alert::prompt(_("Retrieve from version control?"),
+				text, 0, 1, _("&Retrieve"), _("&Cancel"));
+
+			if (ret == 0) {
+				// How can we know _how_ to do the checkout?
+				// With the current VC support it has to be,
+				// a RCS file since CVS do not have special ,v files.
+				RCS::retrieve(s);
+				return loadLyXFile(s);
+			}
+		}
+	}
+	return false;
+}
+
+
+void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
+{
+	TeXErrors::Errors::const_iterator cit = terr.begin();
+	TeXErrors::Errors::const_iterator end = terr.end();
+
+	for (; cit != end; ++cit) {
+		int id_start = -1;
+		int pos_start = -1;
+		int errorRow = cit->error_in_line;
+		bool found = texrow().getIdFromRow(errorRow, id_start,
+						       pos_start);
+		int id_end = -1;
+		int pos_end = -1;
+		do {
+			++errorRow;
+			found = texrow().getIdFromRow(errorRow, id_end, pos_end);
+		} while (found && id_start == id_end && pos_start == pos_end);
+
+		errorList.push_back(ErrorItem(cit->error_desc,
+			cit->error_text, id_start, pos_start, pos_end));
+	}
+}
 
 } // namespace lyx

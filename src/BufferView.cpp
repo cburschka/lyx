@@ -1966,7 +1966,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 
 	docstring res;
 	Buffer buf("", false);
-	if (lyx::loadLyXFile(&buf, FileName(filename))) {
+	if (buf.loadLyXFile(FileName(filename))) {
 		ErrorList & el = buffer_.errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");
@@ -1974,8 +1974,9 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		cap::pasteParagraphList(d->cursor_, buf.paragraphs(),
 					     buf.params().getTextClassPtr(), el);
 		res = _("Document %1$s inserted.");
-	} else
+	} else {
 		res = _("Could not insert document %1$s");
+	}
 
 	// emit message signal.
 	message(bformat(res, disp_fn));

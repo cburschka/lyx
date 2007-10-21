@@ -371,8 +371,10 @@ public:
 	/// by this author in the paragraph.
 	void checkAuthors(AuthorList const & authorList);
 
-private:
+	/// return the number of InsetOptArg in a paragraph
+	int numberOfOptArgs() const;
 
+private:
 	///
 	LayoutPtr layout_;
 	/**

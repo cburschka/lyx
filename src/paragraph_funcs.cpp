@@ -308,21 +308,6 @@ Font const outerFont(pit_type par_offset, ParagraphList const & pars)
 }
 
 
-/// return the number of InsetOptArg in a paragraph
-int numberOfOptArgs(Paragraph const & par)
-{
-	int num = 0;
-
-	InsetList::const_iterator it = par.insetList().begin();
-	InsetList::const_iterator end = par.insetList().end();
-	for (; it != end ; ++it) {
-		if (it->inset->lyxCode() == OPTARG_CODE)
-			++num;
-	}
-	return num;
-}
-
-
 void acceptChanges(ParagraphList & pars, BufferParams const & bparams)
 {
 	pit_type pars_size = static_cast<pit_type>(pars.size());

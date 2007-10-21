@@ -155,6 +155,12 @@ public:
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(support::FileName const &) const;
 
+  /// Loads LyX file \c filename into buffer, *  and \return success 
+	bool loadLyXFile(support::FileName const & s);
+
+	/// Fill in the ErrorList with the TeXErrors
+	void bufferErrors(TeXErrors const &, ErrorList &) const;
+
 	/// Just a wrapper for writeLaTeXSource, first creating the ofstream.
 	bool makeLaTeXFile(support::FileName const & filename,
 			   std::string const & original_path,
@@ -393,7 +399,7 @@ public:
 	/// This function is called when some parsing error shows up.
 	void errors(std::string const & err) const;
 	/// This function is called when the buffer busy status change.
-	void busy(bool on) const;
+	void setBusy(bool on) const;
 	/// This function is called when the buffer readonly status change.
 	void readonly(bool on) const;
 	/// Update window titles of all users.
@@ -428,8 +434,9 @@ public:
 	///
 	std::vector<Format const *> exportableFormats(bool only_viewable) const;
 
-
 private:
+  /// 
+	bool readFileHelper(support::FileName const & s);
 	///
 	std::vector<std::string> backends() const;
 	/** Inserts a file into a document

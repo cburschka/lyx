@@ -203,7 +203,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_OPTIONAL_INSERT:
-		status.enabled(numberOfOptArgs(cur.paragraph()) == 0);
+		status.enabled(cur.paragraph().numberOfOptArgs() == 0);
 		return true;
 
 	default:
