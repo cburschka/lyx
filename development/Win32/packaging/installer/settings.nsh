@@ -76,11 +76,11 @@ Settings for LyX installer
 #Names and version
 
 !define APP_NAME "LyX"
-!define /date APP_VERSION "1.5svn %Y%m%d"
-!define APP_VERSION_NUMBER "1.5.0.0"
-!define APP_SERIES_NAME "1.5"
-!define APP_SERIES_KEY "15"
-!define APP_DIR_USERDATA "LyX15"
+!define /date APP_VERSION "1.6svn %Y%m%d"
+!define APP_VERSION_NUMBER "1.6.0.0"
+!define APP_SERIES_NAME "1.6"
+!define APP_SERIES_KEY "16"
+!define APP_DIR_USERDATA "LyX16"
 !define APP_INFO "${APP_NAME} - The Document Processor"
 !define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2007 LyX Team"
 
