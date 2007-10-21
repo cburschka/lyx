@@ -65,7 +65,6 @@ Dialog * createGuiCharacter(LyXView & lv);
 Dialog * createGuiCitation(LyXView & lv);
 Dialog * createGuiDelimiter(LyXView & lv);
 Dialog * createGuiDocument(LyXView & lv);
-Dialog * createGuiEmbeddedFiles(LyXView & lv);
 Dialog * createGuiErrorList(LyXView & lv);
 Dialog * createGuiERT(LyXView & lv);
 Dialog * createGuiExternal(LyXView & lv);
@@ -127,8 +126,6 @@ Dialog * Dialogs::build(string const & name)
 		return createGuiCitation(lyxview_);
 	if (name == "document")
 		return createGuiDocument(lyxview_);
-	if (name == "embedding")
-		return createGuiEmbeddedFiles(lyxview_);
 	if (name == "errorlist")
 		return createGuiErrorList(lyxview_);
 	if (name == "ert")

@@ -78,7 +78,6 @@ SOURCEFILES = \
 	GuiDelimiter.cpp \
 	GuiDialog.cpp \
 	GuiDocument.cpp \
-	GuiEmbeddedFiles.cpp \
 	GuiErrorList.cpp \
 	GuiERT.cpp \
 	GuiExternal.cpp \
@@ -170,7 +169,6 @@ MOCHEADER = \
 	GuiDelimiter.h \
 	GuiDialog.h \
 	GuiDocument.h \
-	GuiEmbeddedFiles.h \
 	GuiErrorList.h \
 	GuiERT.h \
 	GuiExternal.h \
@@ -238,7 +236,6 @@ UIFILES = \
 	CitationUi.ui \
 	DelimiterUi.ui \
 	DocumentUi.ui \
-	EmbeddedFilesUi.ui \
 	ErrorListUi.ui \
 	ERTUi.ui \
 	ExternalUi.ui \

@@ -765,7 +765,6 @@ src_frontends_qt4_header_files = Split('''
     GuiDelimiter.h
     GuiDialog.h
     GuiDocument.h
-    GuiEmbeddedFiles.h
     GuiErrorList.h
     GuiERT.h
     GuiExternal.h
@@ -854,7 +853,6 @@ src_frontends_qt4_files = Split('''
     GuiDelimiter.cpp
     GuiDialog.cpp
     GuiDocument.cpp
-    GuiEmbeddedFiles.cpp
     GuiErrorList.cpp
     GuiERT.cpp
     GuiExternal.cpp
@@ -939,7 +937,6 @@ src_frontends_qt4_ui_files = Split('''
     CitationUi.ui
     DelimiterUi.ui
     DocumentUi.ui
-    EmbeddedFilesUi.ui
     ERTUi.ui
     ErrorListUi.ui
     ExternalUi.ui
