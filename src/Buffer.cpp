@@ -794,10 +794,13 @@ bool Buffer::save() const
 	// make a backup if the file already exists
 	if (lyxrc.make_backup && fs::exists(encodedFilename)) {
 		backupName = FileName(fileName() + '~');
-		if (!lyxrc.backupdir_path.empty())
+		if (!lyxrc.backupdir_path.empty()) {
+			string const mangledName =
+				subst(subst(os::internal_path(
+				backupName.absFilename()), '/', '!'), ':', '!');
 			backupName = FileName(addName(lyxrc.backupdir_path,
-					      subst(os::internal_path(backupName.absFilename()), '/', '!')));
-
+						      mangledName));
+		}
 		try {
 			fs::copy_file(encodedFilename, backupName.toFilesystemEncoding(), false);
 			madeBackup = true;
