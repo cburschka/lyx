@@ -66,7 +66,7 @@ dist_bind_DATA = \
 
 commandsdir = $(pkgdatadir)/commands
 dist_commands_DATA = \
-	commands/default.cmd
+	commands/default.def
 
 caexamplesdir = $(pkgdatadir)/examples/ca
 dist_caexamples_DATA = \
