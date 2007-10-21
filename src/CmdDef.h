@@ -18,8 +18,6 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include <vector>
-#include <deque>
 #include <map>
 
 
