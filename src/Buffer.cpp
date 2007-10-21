@@ -1900,13 +1900,6 @@ void Buffer::structureChanged() const
 }
 
 
-void Buffer::embeddingChanged() const
-{
-	if (gui_)
-		gui_->embeddingChanged();
-}
-
-
 void Buffer::errors(std::string const & err) const
 {
 	if (gui_)

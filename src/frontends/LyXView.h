@@ -184,8 +184,6 @@ public:
 	//
 	/// This function is called when the buffer structure is changed.
 	void structureChanged() { updateToc(); }
-	/// This function is called when an embedded file is changed
-	void embeddingChanged() { updateEmbeddedFiles(); }
 	/// This function is called when some parsing error shows up.
 	void errors(std::string const & err) { showErrorList(err); }
 	/// This function is called when the buffer busy status change.

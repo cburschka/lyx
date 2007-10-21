@@ -394,8 +394,6 @@ public:
 	void changed() const;
 	/// This function is called when the buffer structure is changed.
 	void structureChanged() const;
-	/// This function is called when an embedded file is changed
-	void embeddingChanged() const;
 	/// This function is called when some parsing error shows up.
 	void errors(std::string const & err) const;
 	/// This function is called when the buffer busy status change.
