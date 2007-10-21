@@ -204,7 +204,7 @@ void GuiMenubar::macxMenuBarInit()
 	Menu::const_iterator cit = menubackend_.specialMenu().begin();
 	Menu::const_iterator end = menubackend_.specialMenu().end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-		Action * action = new Action(*owner_, QString(), 
+		Action * action = new Action(*owner_, QIcon(), 
 					     toqstr(cit->label()),
 					     cit->func(), QString());
 		action->setMenuRole(entries[i].role);
