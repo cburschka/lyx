@@ -715,7 +715,7 @@ void InsetMathHull::splitTo3Cols()
 	BOOST_ASSERT(ncols() < 3);
 	if (ncols() < 2)
 		splitTo2Cols();
-	InsetMathGrid::addCol(1);
+	InsetMathGrid::addCol(2);
 	for (row_type row = 0; row < nrows(); ++row) {
 		idx_type const i = 3 * row + 1;
 		if (cell(i).size()) {
@@ -737,7 +737,7 @@ void InsetMathHull::changeCols(col_type cols)
 		else {
 			splitTo3Cols();
 			while (ncols() < cols)
-				InsetMathGrid::addCol(ncols() - 1);
+				InsetMathGrid::addCol(ncols());
 		}
 		return;
 	}
