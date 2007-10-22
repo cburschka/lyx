@@ -150,7 +150,7 @@ def main(argv):
 
     # External programs used by the script.
     path = string.split(os.environ["PATH"], os.pathsep)
-    latex = find_exe_or_terminate(["pplatex", "latex2e", "latex"], path)
+    latex = find_exe_or_terminate(["pplatex", "platex", "latex2e", "latex"], path)
 
     # This can go once dvipng becomes widespread.
     dvipng = find_exe(["dvipng"], path)
