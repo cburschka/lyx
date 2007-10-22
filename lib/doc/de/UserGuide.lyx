@@ -91,6 +91,14 @@
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
+\branch Frage
+\selected 1
+\color #ff0000
+\end_branch
+\branch Antwort
+\selected 0
+\color #00ff00
+\end_branch
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -125,7 +133,7 @@ status open
 \begin_layout Standard
 
 \size normal
-Übersetzung und Bearbeitung: Hartmut Haase (
+Übersetzung und Bearbeitung : Hartmut Haase (
 \size default
 \noun on
 HHa
@@ -182,7 +190,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 10.
+letzte Änderung: 19.
  Oktober 2007
 \end_layout
 
@@ -977,8 +985,8 @@ Im Menü
 \family sans
 Datei
 \family default
- finden Sie die 9 einfachen Datei-Befehle einer jeden Textverarbeitung und
- einige fortgeschrittene:
+ finden Sie die 10 einfachen Datei-Befehle einer jeden Textverarbeitung
+ und einige fortgeschrittene:
 \end_layout
 
 \begin_layout Itemize
@@ -1107,7 +1115,13 @@ unter\SpecialChar \ldots{}
 \begin_layout Itemize
 
 \family sans
-Wieder herstellen (Strg+R)
+Alles speichern
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Speicherung wieder herstellen
 \end_layout
 
 \begin_layout Itemize
@@ -1175,7 +1189,8 @@ unbenannt
 \begin_layout Standard
 Der Befehl 
 \family sans
-Wieder\InsetSpace ~
+Speicherung\InsetSpace \space{}
+wieder\InsetSpace \space{}
 herstellen
 \family default
  lädt das aktuelle Dokument neu von der Festplatte.
@@ -1183,7 +1198,7 @@ herstellen
  in den Originalzustand bringen, außerdem ist er hilfreich, wenn mehrere
  Personen an einem Text arbeiten.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 Wenn Sie das vorhaben, sollten Sie sich die Unterstützung für Versionskontrolle
@@ -4225,7 +4240,7 @@ Einstellungen
 \begin_layout Section
 Absatzumgebungen
 \begin_inset LatexCommand index
-name "Absatz!-umgebungen"
+name "Absatz!-umgebungen|("
 
 \end_inset
 
@@ -5701,7 +5716,7 @@ Strg+Eingabe
 \begin_layout Subsection
 Listen
 \begin_inset LatexCommand index
-name "Listen"
+name "Liste"
 
 \end_inset
 
@@ -5792,7 +5807,7 @@ ff lesen.
 \family sans
 Auflistung
 \begin_inset LatexCommand index
-name "Auf\\/listung"
+name "Liste ! Auf\\/listung"
 
 \end_inset
 
@@ -6006,7 +6021,7 @@ ff ausführlich beschreiben.
 \family sans
 Aufzählung
 \begin_inset LatexCommand index
-name "Aufz\"ahlung"
+name "Liste ! Aufz\"ahlung"
 
 \end_inset
 
@@ -7211,136 +7226,18 @@ Literaturverzeichnis
 \end_layout
 
 \begin_layout Standard
-Am 
-\emph on
-Anfang der
-\emph default
+Eine ausführliche Beschreibung der 
+\family sans
+Literaturverzeichnis
+\family default
+-Umgebung finden Sie in Abschnitt\InsetSpace \space{}
  
-\emph on
-ersten Zeile
-\emph default
- eines Absatzes werden Sie ein graues Kästchen mit einem Wort und einer
- Zahl in eckigen Klammern sehen.
- Wenn Sie daraufklicken, erscheint ein Menü, in dem Sie einen 
-\family sans
-Schlüssel
-\family default
- und eine 
-\family sans
-Marke
-\family default
- einfügen können.
- Der 
-\family sans
-Schlüssel
-\family default
- ist der symbolische Name, mit dem Sie auf diese Literaturangabe verweisen.
- Nehmen wir zum Beispiel an, Ihre erste Literaturangabe wäre ein Buch über
- LaTeX.
- Wir könnten dann als 
-\family sans
-Schlüssel
-\family default
- 
-\emph on
-latexbuch
-\emph default
- dafür nehmen.
- Sie können auch eine 
-\family sans
-Marke
-\family default
- benutzen, die dann in dem grauen Kästchen erscheinen würde.
-\end_layout
-
-\begin_layout Standard
-Das 
-\family sans
-Marke
-\family default
-n-Feld ist nicht nutzlos.
- Sie können auf Ihre Literaturangaben verweisen, indem Sie 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Zitat\SpecialChar \ldots{}
-
-\family default
- oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_citation.xpm
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 22bp 22bp
+\begin_inset LatexCommand vref
+reference "Literaturverzeichnis"
 
 \end_inset
 
- benutzen.
- Dann wählen Sie einen der Werte aus dem 
-\family sans
-Schlüssel
-\family default
--Feld.
- Ein Beispiel für ein Literaturverzeichnis finden Sie (wo sonst) am Ende
- dieses Dokumentes.
- 
-\begin_inset Quotes gld
-\end_inset
-
-Siehe 
-\begin_inset LatexCommand cite
-key "latexguide"
-
-\end_inset
-
- oder 
-\begin_inset LatexCommand cite
-after "Kapitel 3"
-key "latexcompanion"
-
-\end_inset
-
-
-\begin_inset Quotes grd
-\end_inset
-
- sind zwei Beispiele dafür, wie man Einträge davon zitiert.
- Im zweiten Beispiel haben wir das Feld 
-\family sans
-Text\InsetSpace \space{}
-danach:
-\family default
- des 
-\family sans
-Zitat
-\family default
--Menüs benutzt, um den Text 
-\begin_inset Quotes gld
-\end_inset
-
-Kapitel 3
-\begin_inset Quotes grd
-\end_inset
-
- hinzuzufügen.
- Die Begriffe 
-\emph on
-latexguide
-\emph default
- und 
-\emph on
-latexcompanion
-\emph default
-, die Sie hier sehen, werden beim Drucken durch die entsprechenden Nummern
- des Literaturverzeichnisses ersetzt.
-\end_layout
-
-\begin_layout Standard
-Das erweiterte LaTeX-Literaturpaket BibTeX wird von LyX auch unterstützt.
- Im Dokument 
-\emph on
-Handbuchergänzungen
-\emph default
- können Sie nachlesen, wie man es benutzt.
+.
 \end_layout
 
 \begin_layout Subsection
@@ -7450,6 +7347,12 @@ L
 \family default
 yX-Code
 \begin_inset LatexCommand index
+name "LyX-Code"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
 name "LyX-Code"
 
 \end_inset
@@ -7629,6 +7532,12 @@ LyX-Code
  rc-Dateien usw.
  Benutzen Sie diese Umgebung nur in diesen Spezialfällen, wenn der Text
  aussehen soll, als wäre er mit einer Schreibmaschine geschrieben worden.
+\begin_inset LatexCommand index
+name "Absatz!-umgebungen|)"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -14091,7 +14000,7 @@ babel
 \family default
 
 \begin_inset LatexCommand index
-name "LaTeX-Paket!babel"
+name "LaTeX ! -Paket!babel"
 
 \end_inset
 
@@ -19621,7 +19530,7 @@ Eine Tabelle kann auch in eine Gleitobjekt-Umgebung eingebettet werden,
  das ermöglicht es LaTeX, sie so gut wie möglich in die Seite einzupassen.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 Hinweis: 
 \family sans
 Lange\InsetSpace ~
@@ -19666,6 +19575,417 @@ ra\SpecialChar \-
 tion
 \family default
  nachprüfen, ob diese auf Ihrem System vorhanden sind.
+ 
+\end_layout
+
+\begin_layout Standard
+Hier ist der Anfang einer langen Tabelle, bei der Sie durch Rechtsklick
+ auf eine der ersten Zeilen auf der Karteikarte 
+\family sans
+Lange\InsetSpace \space{}
+Tabelle
+\family default
+ deren Eigenschaften sehen können.
+ Die gesamte Tabelle finden Sie unter 
+\family sans
+Strg+O\SpecialChar \menuseparator
+Beispiele
+\family default
+, TabellenBeispiel.lyx.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="3">
+<features islongtable="true" lastFootEmpty="true">
+<column alignment="block" valignment="top" leftline="true" width="5cm">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="right" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true" endfirsthead="true">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Telefonliste (ignoriere die Namen)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true" endfirsthead="true">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+NAME
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+TEL.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true" endhead="true">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Telefonliste
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true" endhead="true">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+NAME
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+TEL.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true" endfoot="true">
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+wird fortgesetzt
+\series default
+ \SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="parbox">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Kemenater
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Klaus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+111
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Maccioni
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Piero
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+111
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Pochiesa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Paolo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+999, 222
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Radina
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Claudio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+999
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Stuffer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Oskar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+999
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Tacchelli
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Ugo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+999
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Tezzele
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Margit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+999
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -22571,127 +22891,6 @@ vector
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Der Mathe-Editor für LaTeX-Freaks
-\end_layout
-
-\begin_layout Standard
-Mathematische Ausdrücke kann man in LyX auf zwei Arten editieren.
- Sie können entweder die 
-\family sans
-Mathe-Werkzeugleiste
-\family default
- benutzen, um Formeln WYSIWYM darzustellen, oder als LaTeX-Benutzer die
- Tastatur benutzen, um etwas wie 
-\family typewriter
-$
-\backslash
-alpha$
-\family default
- einzugeben, das gedruckt dann so aussieht: 
-\begin_inset Formula $\alpha$
-\end_inset
-
-, weil Sie glauben, dass das schneller ist.
- Hier ist das Bekenntnis eines alten LaTeX-Benutzers, 
-\noun on
-David Johnson:
-\end_layout
-
-\begin_layout Quotation
-Schließlich war ich überzeugt, dass der Mathe-Editor der richtige Weg war,
- nachdem ich herausfand, dass ich ihn mit ein paar Ausnahmen so benutzen
- konnte wie ich es früher beim Schreiben von LaTeX-Befehlen tat.
- Zum Beispiel habe ich dieses 
-\begin_inset Formula $\alpha$
-\end_inset
-
- erhalten, indem ich zunächst 
-\family sans
-Alt+M\InsetSpace ~
-M
-\family default
- eingab, um den 
-\family typewriter
-Mathe-Modus
-\family default
- zu starten, dann 
-\family typewriter
-
-\backslash
-alpha
-\family default
-, dann 
-\family sans
-Leertaste, 
-\family default
-wonach sofort das 
-\begin_inset Formula $\alpha$
-\end_inset
-
- zu sehen war, und schließlich 
-\family sans
-Esc
-\family default
-.
- 
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Alt+M\InsetSpace ~
-M
-\family default
- fügt eine Formel ein, das 
-\family typewriter
-
-\backslash
-alpha
-\family default
- ist natürlich der TeX-Befehl für den griechischen Buchstaben alpha und
- mit 
-\family sans
-Esc
-\family default
- verlässt man die Formel.
- Diese Vorgehensweise hat einige Vorteile:
-\end_layout
-
-\begin_layout Itemize
-Sie sehen sofort, ob Ihr LaTeX-Befehl richtig ist
-\end_layout
-
-\begin_layout Itemize
-Sie sehen den wirklichen mathematischen Ausdruck auf dem Bildschirm -- korrekt
- dargestellt --, um sich zu vergewissern, dass Ihre Mathematik richtig geschrieb
-en wird
-\end_layout
-
-\begin_layout Itemize
-LyX kümmert sich für Sie um den LaTeX-Kram mit speziellen Umgebungen
-\end_layout
-
-\begin_layout Itemize
-Sie müssen nicht mehr den Code durchforsten, um ein fehlendes 
-\family sans
-$
-\family default
--Zeichen oder eine Extra-
-\family sans
-{
-\family default
- zu finden
-\end_layout
-
-\begin_layout Itemize
-Wenn Sie sich nicht mehr an den LaTeX-Namen eines Zeichens wie 
-\begin_inset Formula $\wp$
-\end_inset
-
-erinnern, können Sie ihn in den Dialogen finden
 \end_layout
 
 \begin_layout Section
@@ -25747,6 +25946,1191 @@ reference "LyX-Einstellungen"
 \end_layout
 
 \begin_layout Section
+Literaturverzeichnis
+\begin_inset LatexCommand index
+name "Literaturverzeichnis"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "Literaturverzeichnis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es gibt zwei Möglichkeiten, in einem LyX-Dokument ein Literaturverzeichnis
+ zu erstellen:
+\end_layout
+
+\begin_layout Enumerate
+Sie können eine Literaturverzeichnis-Datenbank einfügen 
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Bekannt als 
+\begin_inset Quotes gld
+\end_inset
+
+BibTeX-Datenbank
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, was in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Literaturverzeichnis-Datenbanken-(BibTeX)"
+
+\end_inset
+
+ beschrieben wird.
+\end_layout
+
+\begin_layout Enumerate
+Sie können ein Literaturverzeichnis von Hand einfügen.
+ Dafür wird die Absatzumgebung 
+\family sans
+Literaturverzeichnis
+\family default
+ (siehe Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Literaturverzeichnis-Umgebung"
+
+\end_inset
+
+) benutzt.
+\end_layout
+
+\begin_layout Standard
+Am 
+\emph on
+Anfang der
+\emph default
+ 
+\emph on
+ersten Zeile
+\emph default
+ eines Absatzes werden Sie ein graues Kästchen mit einem Wort und einer
+ Zahl in eckigen Klammern sehen.
+ Wenn Sie daraufklicken, erscheint ein Menü, in dem Sie einen 
+\family sans
+Schlüssel
+\family default
+ und eine 
+\family sans
+Marke
+\family default
+ einfügen können.
+ Der 
+\family sans
+Schlüssel
+\family default
+ ist der symbolische Name, mit dem Sie auf diese Literaturangabe verweisen.
+ Nehmen wir zum Beispiel an, Ihre erste Literaturangabe wäre ein Buch über
+ LaTeX.
+ Wir könnten dann als 
+\family sans
+Schlüssel
+\family default
+ 
+\emph on
+latexbuch
+\emph default
+ dafür nehmen.
+ Sie können auch eine 
+\family sans
+Marke
+\family default
+ benutzen, die dann in dem grauen Kästchen erscheinen würde.
+\end_layout
+
+\begin_layout Standard
+Das 
+\family sans
+Marke
+\family default
+n-Feld ist nicht nutzlos.
+ Sie können auf Ihre Literaturangaben verweisen, indem Sie 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Zitat\SpecialChar \ldots{}
+
+\family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_citation.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+ benutzen.
+ Dann wählen Sie einen der Werte aus dem 
+\family sans
+Schlüssel
+\family default
+-Feld.
+ Ein Beispiel für ein Literaturverzeichnis finden Sie (wo sonst) am Ende
+ dieses Dokumentes.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Siehe 
+\begin_inset LatexCommand cite
+key "latexguide"
+
+\end_inset
+
+ oder 
+\begin_inset LatexCommand cite
+after "Kapitel 3"
+key "latexcompanion"
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ sind zwei Beispiele dafür, wie man Einträge davon zitiert.
+ Im zweiten Beispiel haben wir das Feld 
+\family sans
+Text\InsetSpace \space{}
+danach:
+\family default
+ des 
+\family sans
+Zitat
+\family default
+-Menüs benutzt, um den Text 
+\begin_inset Quotes gld
+\end_inset
+
+Kapitel 3
+\begin_inset Quotes grd
+\end_inset
+
+ hinzuzufügen.
+ Die Begriffe 
+\emph on
+latexguide
+\emph default
+ und 
+\emph on
+latexcompanion
+\emph default
+, die Sie hier sehen, werden beim Drucken durch die entsprechenden Nummern
+ des Literaturverzeichnisses ersetzt.
+\end_layout
+
+\begin_layout Standard
+Das erweiterte LaTeX-Paket BibTeX wird von LyX auch unterstützt.
+ Im Dokument 
+\emph on
+Handbuchergänzungen
+\emph default
+ können Sie nachlesen, wie man es benutzt.
+\end_layout
+
+\begin_layout Subsection
+Literaturverzeichnis-Datenbanken (BibTeX)
+\begin_inset LatexCommand index
+name "Literaturverzeichnis ! Datenbanken"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Literaturverzeichnis ! BibTeX"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "Literaturverzeichnis-Datenbanken-(BibTeX)"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Literaturverzeichnis-Datenbanken sind nützlich, wenn Sie dasselbe Literaturverze
+ichnis in mehreren Dokumenten benutzen wollen.
+ Außerdem sehen sie dann auch gleich aus.
+ Sie können alle Literaturangaben Ihres Arbeitsfeldes in einer Datenbank
+ sammeln.
+\end_layout
+
+\begin_layout Standard
+Die Datenbank ist eine Textdatei mit der Endung 
+\family typewriter
+.bib
+\family default
+ und enthält das Literaturverzeichnis in einem eigenen Format.
+ Diese wird in LaTeX-Bücher beschrieben (
+\begin_inset LatexCommand cite
+key "Mittelbach,Kopka,Lamport"
+
+\end_inset
+
+).
+ Normalerweise benutzt man ein besonderes Programm, um die Datenbank anzulegen
+ und zu bearbeiten.
+ Hier 
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/BibTeX/Programs"
+
+\end_inset
+
+ finden Sie eine Liste mit Programmen für Literaturverzeichnis-Datenbanken.
+\end_layout
+
+\begin_layout Standard
+Um eine Datenbank zu benutzen, wählen Sie 
+\family sans
+Einfügen\SpecialChar \menuseparator
+List
+\family default
+e\InsetSpace \space{}
+/
+\family sans
+\InsetSpace \space{}
+Inhaltsverzeichnis\SpecialChar \menuseparator
+BibT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+eX-Literaturverzeichnis
+\family default
+, woraufhin das 
+\family sans
+BibT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+eX-Literaturverzeichnis
+\family default
+-Fenster geöffnet wird.
+ Über 
+\family sans
+Hinzufügen
+\family default
+ und 
+\family sans
+Löschen
+\family default
+ können Sie Datenbanken hinzufügen und auch wieder löschen.
+ Außerdem können Sie über 
+\family sans
+Stil
+\family default
+ das Aussehen wählen.
+\end_layout
+
+\begin_layout Standard
+Die Stildatei ist eine Textdatei mit der Endung 
+\family typewriter
+.bst
+\family default
+, die das Aussehen der Lietratureinträge definiert.
+ Viele Verleger liefern eigene Stildateien, so dass Sie sich um das Aussehen
+ nicht kümmern müssen.
+\end_layout
+
+\begin_layout Standard
+Ein Querverweis auf einen Datenbankeintrag erfolgt wie oben beschrieben.
+\end_layout
+
+\begin_layout Standard
+LyX verwendet BibTeX, um eine Literaturverzeichnis aus einer Datenbank zu
+ erstellen.
+ In 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgaben\SpecialChar \menuseparator
+LaT
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family sans
+eX
+\family default
+ können Sie im Feld 
+\family sans
+BibT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+eX-Befehl
+\family default
+ Optionen angeben.
+\end_layout
+
+\begin_layout Standard
+In diesem Dokument werden zwei Literaturverzeichnisse benutzt, um die Unterschie
+de zu zeigen.
+ Wie Sie sehen, enthält das Literaturverzeichnis, das mit einer Datenbank
+ erstellt wurde, nur die Einträge, auf die verwiesen wird.
+ Als Stildatei wurde 
+\family typewriter
+alphadin.bst
+\family default
+ benutzt, damit das komplizierte deutsche Verweisschema benutzt werden konnte.
+\end_layout
+
+\begin_layout Subsection
+Literaturverzeichnis-Gestaltung
+\begin_inset LatexCommand index
+name "Literaturverzeichnis ! Gestaltung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Zitatdialog (
+\family sans
+Einfügen\SpecialChar \menuseparator
+Zitat\SpecialChar \ldots{}
+
+\family default
+ oder 
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_citation.xpm
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 22bp 22bp
+
+\end_inset
+
+) können Sie eine 
+\family sans
+Formatierung
+\family default
+ festlegen.
+ Dazu müssen Sie in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Literaturverzeichnis
+\family default
+ die Option 
+\family sans
+Natbib
+\family default
+ anklicken.
+
+\family sans
+ 
+\family default
+Damit wird die Standardeinstellung überschrieben.
+ Globale Einstellungen müssen Sie in den BibTeX-Stildateien vornehmen.
+\end_layout
+
+\begin_layout Standard
+Im Dialogfenster können Sie auch Text, der vor oder nach dem Verweis erscheinen
+ soll, festlegen.
+ Hier erscheint der Text 
+\begin_inset Quotes gld
+\end_inset
+
+Kapitel\InsetSpace \space{}
+3
+\begin_inset Quotes grd
+\end_inset
+
+ nach dem Verweis: 
+\begin_inset LatexCommand cite
+after "Kapitel 3"
+key "latexcompanion"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In den 
+\emph on
+Handbuchergänzungen
+\emph default
+ finden Sie noch ein paar weitere Dinge über Literaturverzeichnisse.
+\end_layout
+
+\begin_layout Section
+Stichwortverzeichnisse
+\begin_inset LatexCommand index
+name "Stichwortverzeichnis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Stichwort erstellen
+\end_layout
+
+\begin_layout Standard
+Ein gutes Stichwortverzeichnis zu erstellen gehört bei längeren Dokumenten
+ mit zu den schwierigsten Aufgaben.
+ Aber LyX unterstützt Sie auch hier und vereinfacht die Dinge, indem es
+ eine Schnittstelle zu einem Programm zur Erzeugung von Stichwortverzeichnissen,
+ das ist standardmäßig 
+\family typewriter
+makeindex
+\family default
+, das zu den meisten LaTeX-Distributionen gehört, bereitstellt.
+\end_layout
+
+\begin_layout Standard
+Das Einfügen eines Stichwortverzeichnisses und das Markieren von Worten,
+ die in diesem Stichwortverzeichnis erscheinen sollen, funktioniert ähnlich
+ wie das Erstellen eines Literaturver\SpecialChar \-
+zeich\SpecialChar \-
+nisses, das im vorigen Abschnitt
+ beschrieben wurde.
+\end_layout
+
+\begin_layout Standard
+Setzen Sie den Cursor zunächst ganz ans Ende und wählen Sie dort den Menüpunkt
+ 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Liste\InsetSpace ~
+/\InsetSpace ~
+Inhaltsverzeichnis\SpecialChar \menuseparator
+Stichwortverzeichnis
+\family default
+.
+ Für jedes Wort, das in dieser Liste erscheinen soll, setzen Sie nun den
+ Cursor direkt hinter dieses Wort und wählen den Menüpunkt 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Stichwort 
+\family default
+oder
+\family sans
+ 
+\family default
+
+\begin_inset Graphics
+	filename ../../images/index-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+
+\family sans
+.
+
+\family default
+ Eine Schaltfläche mit der Aufschrift 
+\family sans
+Stichwort
+\family default
+ erscheint an der Cursorposition.
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Bemerkung:
+\series default
+ Das Eingabefeld für Stichworte unterscheidet sich von allen anderen Eingabefeld
+er, weil Sie gültigen LaTeX-Code eingeben müssen.
+\end_layout
+
+\begin_layout Standard
+Deswegen können Sie zum Beispiel nicht 
+\series bold
+Suchen & Ersetzen
+\series default
+ eingeben, weil & in LaTeX benutzt wird, um Tabellenspalten zu trennen.
+ Die richtige Eingabe ist 
+\series bold
+Suchen 
+\backslash
+& Ersetzen
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Dies ist notwendig, weil Stichworte auf vielfältige Art und Weise mit LaTeX-Befe
+hlen formatiert werden können.
+ In den folgenden Abschnitten finden Sie eine Übersicht über einige Möglichkeite
+n.
+ Eine ausführlich Beschreibung des Stichwort-Mechanismus von LaTeX finden
+ Sie in LaTeX-Büchern wie 
+\begin_inset LatexCommand cite
+key "latexcompanion,latexguide,latexbook"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sie können den Text ändern, indem Sie auf die Schaltfläche klicken.
+ Wenn Sie vor dem Aufruf mehrere Worte markiert haben, stehen alle in Feld
+ 
+\family sans
+Schlagwort
+\family default
+.
+ Das ist bereits alles; LyX ruft bei Bedarf automatisch das Programm auf,
+ das in 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Ausgabe\SpecialChar \menuseparator
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+\SpecialChar \menuseparator
+im Feld 
+\family sans
+Befehl\InsetSpace ~
+für\InsetSpace ~
+Stichwortverzeichnis
+\family default
+ eingetragen ist, das ist standardmäßig 
+\family typewriter
+makeindex
+\family default
+ auf, welches dann das eigentliche Stichwortverzeichnis erzeugt.
+\end_layout
+
+\begin_layout Standard
+Achten Sie darauf, dass sich zwischen dem zu indizierenden Wort im Text
+ und der Stichwort-Marke kein Leerzeichen befindet, da auf diese Weise falsche
+ Seitennummern im Stichwortverzeichnis erzeugt werden können.
+\end_layout
+
+\begin_layout Subsection
+Stichworte gruppieren
+\begin_inset LatexCommand index
+name "Stichwort ! gruppieren"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Stichworte werden häufig gruppiert, um dem Leser eine schnelle Suche zu
+ ermöglichen.
+ Wenn wir zum Beispiel 
+\emph on
+Auflistung
+\emph default
+ und 
+\emph on
+Aufzählung
+\emph default
+ unter dem Stichwort 
+\emph on
+Liste
+\emph default
+ gruppieren wollen, erzeugen wir zunächst in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Listen"
+
+\end_inset
+
+ das Stichwort 
+\emph on
+Liste
+\emph default
+.
+ Im Textfeld für das Stichwort
+\emph on
+ Auflistung
+\emph default
+ in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Auflistung"
+
+\end_inset
+
+ fügen wir als Stichwort 
+\family typewriter
+Liste ! Auflistung
+\family default
+ und
+\series bold
+ 
+\series default
+in Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Aufzählung"
+
+\end_inset
+
+
+\series bold
+ 
+\family typewriter
+\series default
+Liste ! Aufzählung
+\family default
+ ein.
+\end_layout
+
+\begin_layout Standard
+Das Ausrufezeichen 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+!
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ markiert die Gruppierungsstufe, von denen es drei gibt.
+ Jede Stufe wird in der Druckausgabe ein wenig eingerückt.
+ Für eine höhere Stufe ist kein Stichwort nötig, es wird aber trotzdem gedruckt,
+ aber ohne Seitenzahl.
+\end_layout
+
+\begin_layout Subsection
+Mehrere Seiten
+\begin_inset LatexCommand index
+name "Stichwort ! Mehrere Seiten"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Normalerweise erscheint ein Stichwort zusammen mit der Seitenzahl, wo es
+ steht.
+ Aber manchmal wollen Sie einem Stichwort vielleicht mehrere aufeinanderfolgende
+ Seiten zuordnen.
+ Wenn Sie am Anfang von Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Absatzumgebungen"
+
+\end_inset
+
+ das Stichwort 
+\family typewriter
+Absatz ! -umgebungen|(
+\family default
+ und am Ende von Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand ref
+reference "sub:LyX-Code"
+
+\end_inset
+
+ das Stichwort 
+\family typewriter
+Absatz ! -umgebungen|)
+\family default
+ eingeben, wird im Stichwortverzeichnis folgendes erscheinen: 
+\end_layout
+
+\begin_layout Standard
+Absatz
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\qquad$
+\end_inset
+
+-umgebungen, 22-36
+\end_layout
+
+\begin_layout Standard
+Die Befehle 
+\family typewriter
+\series bold
+|(
+\family default
+\series default
+ und 
+\family typewriter
+\series bold
+|)
+\family default
+\series default
+ begrenzen den Seitenbereich des Stichwortes.
+ Sie können dasselbe an verschiedenen Stellen Ihres Dokuments wiederholen.
+ Die Seitenbereiche werden dann nacheinander, durch Komma getrennt, aufgelistet.
+\end_layout
+
+\begin_layout Subsection
+Querverweise
+\begin_inset LatexCommand index
+name "Stichwort ! Querverweis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es ist auch möglich, auf ein anderes Stichwort zu verweisen.
+ Wenn Sie zum Beispiel irgendwo den Begriff GIF
+\begin_inset LatexCommand index
+name "GIF|see{Grafikformate}"
+
+\end_inset
+
+ verwende und ihn mit einem Stichwort versehen wollen, das auf den Abschnitt
+ verweist, in dem er zum ersten Mal gebraucht wurde ( 
+\begin_inset LatexCommand vref
+reference "Grafikformate"
+
+\end_inset
+
+), so Schreiben Sie in das Stichwort-Eingabefeld 
+\family typewriter
+GIF|see{Grafikformate}
+\family default
+ .
+ Der Text in den geschweiften Klammern wird dann im Stichwortverzeichnis
+ ohne Seitenangabe erscheinen.
+\end_layout
+
+\begin_layout Subsection
+Stichwort-Reihenfolge
+\begin_inset LatexCommand index
+name "Stichwort ! Reihenfolge"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit Umlaute und ß richtig sortiert werden, gibt es zwei Möglichkeiten:
+\end_layout
+
+\begin_layout Enumerate
+Um zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+mähen
+\begin_inset Quotes grd
+\end_inset
+
+ ins Stichwortverzeichnis aufzunehmen, schreiben Sie ins Feld 
+\family sans
+Schlagwort
+\family default
+ folgendes: mahen@mähen, usw.
+ Für Soße also Sose@Soße.
+ Damit werden Umlaute und ß richtig einsortiert, und in der Ausgabe so geschrieb
+en, wie es hinter @ steht.
+\newline
+Das bedeutet natürlich auch, dass Sie durch das
+ Wort vor @ eine beliebige Sortierreihenfolge erzwingen können.
+\end_layout
+
+\begin_layout Enumerate
+Sie schreiben im Feld 
+\family sans
+Schlagwort
+\family default
+ folgendes: "a für ä, \SpecialChar \ldots{}
+ , "U für Ü und "s für ß.
+ Dann benötigen Sie aber noch die Datei 
+\family typewriter
+[n]german.ist
+\family default
+, die an der richtigen Stelle (\SpecialChar \ldots{}
+
+\family typewriter
+/texmf/makeindex/
+\family default
+) stehen muss.
+ Diese Datei könnte so aussehen:
+\newline
+
+\family typewriter
+quote '='
+\end_layout
+
+\begin_layout Standard
+Die erste Möglichkeit ist wahrscheinlich die einfachere, weil Sie sonst
+ nichts weiter beachten müssen.
+ In einem Dokument sollten Sie  nicht beide Möglichkeiten mischen.
+ 
+\end_layout
+
+\begin_layout Standard
+Um auch noch das komplette Ordnungsschema nach DIN 5007 anwenden zu können,
+ müssen Sie in 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Ausgabe\SpecialChar \menuseparator
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\family default
+ ins Feld 
+\family sans
+Befehl\InsetSpace ~
+für\InsetSpace \space{}
+Stichwortverzeichnis
+\family default
+ folgendes eintragen:
+\end_layout
+
+\begin_layout LyX-Code
+makeindex
+\family typewriter
+ -c -q -g -s [n]
+\family default
+german
+\family typewriter
+.ist
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+-g ohne die Datei geht nicht!
+\end_layout
+
+\begin_layout Subsection
+Stichwort formatieren
+\begin_inset LatexCommand index
+name "Stichwort ! formatieren"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit Hilfe von LaTeX-Befehlen können Sie die Ausgabe eines Stichwortes formatiere
+n.
+ So wird durch 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+textit{Hilfe}
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ das Stichwort Hilfe im Stichwortverzeichnis kursiv geschrieben.
+\begin_inset LatexCommand index
+name "Dummy ! This@\\textit{dies ist kursiv}"
+
+\end_inset
+
+ LaTeX Bücher wie (
+\begin_inset LatexCommand cite
+key "latexcompanion,latexguide,latexbook"
+
+\end_inset
+
+) beschreiben solche Formatierungsbefehle.
+ Das einzige Problem ist, dass Formatierungsbefehle die Sortierreihenfolge
+ zerstören.
+ Um das zu verhindern, benutzt man stattdessen einen Befehl wie diesen:
+\series bold
+ 
+\series default
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+This@
+\backslash
+textit{dies ist kursiv}
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sie können auch die Seitenzahlen formatieren wie mit dem Befehl 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+Medialziffern | oldstylenums
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+, der Mediävalziffern (siehe\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "Mediävalziffern-verwenden"
+
+\end_inset
+
+) ausgibt.
+\begin_inset LatexCommand index
+name "Dummy  ! Medialziffern|oldstylenums"
+
+\end_inset
+
+ Normalerweise beginnen alle LaTeX-Befehle mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+, aber in diesem Spezialfall bedeutet 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+|
+\family typewriter
+\series default
+ command
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+\series bold
+
+\backslash
+command{page\InsetSpace ~
+number}
+\family default
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ In Abschnitt\InsetSpace \space{}
+
+\begin_inset LatexCommand vref
+reference "LaTeX-Syntax"
+
+\end_inset
+
+ erfahren Sie mehr über die LaTeX-Syntax.
+\end_layout
+
+\begin_layout Standard
+Sie können das Aussehen für das gesamte Stichwortverzeichnis ändern.Wenn
+ Sie zum Beispiel den Absatz mit dem Kästchen 
+\family sans
+Stichwortverzeichnis
+\family default
+ am Ende des Dokumentes fett markieren, werden alle Stichworte fett gedruckt.
+\end_layout
+
+\begin_layout Subsection
+Stichwort-Programm
+\begin_inset LatexCommand index
+name "Stichwort ! Programm"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "Stichwort-Programm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX benutzt standardmäßig das Programm 
+\family typewriter
+makeindex
+\family default
+.
+ Damit sind noch weit kompliziertere Dinge als hier beschrieben möglich.
+ Ein Blick in die Dokumentation zu 
+\family typewriter
+makeindex
+\family default
+ zeigt es Ihnen.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie wollen, dass die Stichworte mit Stichwortverzeichnis statt Index
+ beginnen, sollten Sie in den LaTeX-Vorspann folgendes einfügen:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+usepackage[ngerman]{babel}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+addto
+\backslash
+captionsgerman{
+\backslash
+renewcommand{
+\backslash
+indexname}{Stich-wort-ver-zeich-nis}}
+\end_layout
+
+\begin_layout Standard
+Sie können aber auch ein anderes Programm wie 
+\family sans
+xindy
+\family default
+ benutzen, wenn Sie es in 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgaben\SpecialChar \menuseparator
+LaT
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family sans
+eX
+\family default
+ im Feld 
+\family sans
+Befehl\InsetSpace \space{}
+für\InsetSpace \space{}
+Stichwortverzeichnis 
+\family default
+eintragen.
+\end_layout
+
+\begin_layout Section
+Nomenklatur / Glossar
+\end_layout
+
+\begin_layout Standard
+Siehe 
+\emph on
+Handbuchergänzungen
+\emph default
+.
+\end_layout
+
+\begin_layout Section
 Zweige
 \begin_inset LatexCommand index
 name "Zweige"
@@ -25807,7 +27191,7 @@ Dort können Sie den Zweig
 \family sans
 Farbe
 \family default
- geben und ihn wieder 
+ geben, die aber nur in LyX zu sehen ist, und ihn wieder 
 \family sans
 Entfernen
 \family default
@@ -25829,6 +27213,410 @@ Zweig
 \begin_layout Standard
 Eine weitere mögliche Anwendung wäre eine Lehrerversion, in der die Antworten
  auf Prüfungsfragen stehen würden.
+ In der Druckausgabe sehen Sie die Schülerversion:
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Frage
+status open
+
+\begin_layout Standard
+Frage: Wer war der erste Physik-Nobelpreis-Gewinner?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Antwort
+status open
+
+\begin_layout Standard
+Antwort: Wilhelm Conrad Röntgen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+ERT und die LaTeX-Syntax
+\begin_inset LatexCommand label
+name "ERT-und-die-LaTeX-Syntax"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "LaTeX ! -Syntax"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+ERT-Kästchen
+\begin_inset LatexCommand label
+name "ERT-Kästchen"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "ERT"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Weil LyX LaTeX im Hintergrund benutzt, unterstützt es viele LaTeX-Befehle
+ und -Konstrukte, aber nicht alle.
+ LaTeX enthält hunderte von Paketen, die alle unterschiedliche Befehle haben.
+ Jeden Monat werden viele Pakete aktualisiert und neue hinzugefügt.
+ Das hat den Vorteil, dass Sie nahezu alles drucksetzen können -- für fast
+ jedes Problem gibt es ein LaTeX-Paket.
+ Aber LyX kann damit natürlich nicht schritthalten.
+\end_layout
+
+\begin_layout Standard
+Aber das ist kein Problem, denn Sie können jeden LaTeX-Befehl in LyX in
+ sogenannten ERT-Kästchen eingeben.
+ ERT heißt 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+E
+\series default
+vil 
+\series bold
+R
+\series default
+ed 
+\series bold
+T
+\series default
+ext
+\begin_inset Quotes grd
+\end_inset
+
+; evil deshalb, weil LyX eigentlich LaTeX-Befehle vermeidet.
+ Ein ERT-Kästchen erhalten Sie mit 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\family default
+ oder durch Klicken auf den 
+\begin_inset Graphics
+	filename ../../images/ert-insert.xpm
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+-Knopf.
+ Das Kästchen selber kann auf drei Arten angezeigt werden:
+\family sans
+ Eingebettet
+\family default
+, 
+\family sans
+Geschlossen
+\family default
+ und 
+\family sans
+Geöffnet
+\family default
+.
+ Um die Darstellung zu ändern, machen Sie einen Rechtsklick auf das Kästchen
+ und wählen in dem Dialogfenster aus, was Sie wollen.
+ Wenn das Kästchen geschlossen ist, öffnet ein Linksklick es und umgekehrt.
+\end_layout
+
+\begin_layout Standard
+In das ERT-Kästchen können Sie vollständige oder unvollständige LaTeX-Befehle
+ schreiben.
+ Unvollständig bedeutet, dass ein Befehlsargument Standard-LyX-Text sein
+ kann.
+ Wenn Sie zum Beispiel ein Wort im Text mit dem LaTeX-Befehl 
+\family typewriter
+
+\backslash
+fbox
+\family default
+ einrahmen wollen, können Sie den den Befehlsteil 
+\family typewriter
+
+\backslash
+fbox{
+\family default
+ in ein ERT-Kästchen, dann das Wort und schließlich 
+\family typewriter
+}
+\family default
+ in ein zweites ERT-Kästchen: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename clipart/ERT.png
+	display none
+	scale 205
+	BoundingBox 0bp 0bp 484bp 28bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ergibt
+\end_layout
+
+\begin_layout Standard
+Dies ist eine Zeile mit einem 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fbox{
+\end_layout
+
+\end_inset
+
+eingerahmten
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ Wort.
+\end_layout
+
+\begin_layout Description
+
+\series bold
+Bemerkung:
+\series default
+ Am Ende von LaTeX-Befehlen ohne Argument müssen Sie ein Leerzeichen eingeben,
+ damit LaTeX weiß, dass der Befehl zu ende ist.
+\end_layout
+
+\begin_layout Subsection
+Die LaTeX-Syntax
+\end_layout
+
+\begin_layout Standard
+Wenn Sie größere Dokumente oder Bücher schreiben, müssen Sie etwas über
+ LaTeX-Befehle wissen, die LyX im Hintergrund benutzt.
+ Weil LaTeX auf Befehlen basiert, können Sie Ihren Text 
+\emph on
+programmieren
+\emph default
+.
+ Das hat den Vorteil, dass das Aussehen des Dokuments jederzeit geändert
+ werden kann, wenn sie die die richtigen Befehle kennen.
+\end_layout
+
+\begin_layout Standard
+Stellen Sie sich vor, Sie mussten ein Handbuch für ein Produkt schreiben,
+ und der Termin wäre morgen.
+ Gerade hat Ihr Chef Sie für Ihre Arbeit gelobt, möchte aber alle Legenden-Marke
+n fett gedruckt.
+ Weil Sie aber über hundert Bild- und Tabellen-Legenden im Handbuch haben,
+ können Sie das natürlich nicht an einem Tag von Hand ändern.
+\end_layout
+
+\begin_layout Standard
+Jetzt kommt LaTeX ins Spiel.
+ Weil es für fast jedes Problem ein LaTeX-Paket gibt, müssen Sie zunächst
+ herausfinden, ob eines und welches infrage kommt.
+ Dazu sehen Sie in der LaTeX-Paket-Datenbank 
+\begin_inset LatexCommand cite
+key "TeXCatalogue"
+
+\end_inset
+
+ nach.
+\end_layout
+
+\begin_layout Standard
+Das Ergebnis ist, dass das Paket 
+\family typewriter
+caption
+\family default
+
+\begin_inset LatexCommand index
+name "LaTeX!-Paket ! caption"
+
+\end_inset
+
+ das richtige ist.
+ Um es benutzen zu können, müssen Sie in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Vorspann
+\family default
+) folgenden Befehl eintragen:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+usepackage[Optionen]{Paketname}
+\end_layout
+
+\begin_layout Standard
+Alle LaTeX-Befehle fangen mit 
+\family typewriter
+
+\backslash
+
+\family default
+ an, das Argument steht zwischen den geschweiften Klammern 
+\family typewriter
+{}
+\family default
+, und die Optionen in eckigen 
+\family typewriter
+[]
+\family default
+.
+ Nicht alle Befehle haben Optionen und Argumente.
+\end_layout
+
+\begin_layout Standard
+In diesem Fall ist der Paketname 
+\family typewriter
+caption
+\family default
+.
+ Ein Blick in die Paket-Dokumentation zeigt, dass die Option 
+\family typewriter
+labelfont=bf
+\family default
+ den Font für die Legenden-Marken ändert.
+ Also würden Sie in den LaTeX-Vorspann folgendes eintragen:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+usepackage[labelfont=bf]{caption}
+\end_layout
+
+\begin_layout Standard
+und das Problem ist gelöst.
+\end_layout
+
+\begin_layout Standard
+Manche Dokumentklassen haben eingebaute Lösungen für bekannte Probleme wie
+ das obige.
+ Wenn Sie zum Beispiel die Klasse 
+\family sans
+koma-script
+\family default
+ benutzen, benötigen Sie das Paket 
+\family typewriter
+caption
+\family default
+ nicht, stattdessen können Sie
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setkomafont{captionlabel}{
+\backslash
+bfseries}
+\end_layout
+
+\begin_layout Standard
+im LaTeX-Vorspann einfügen.
+ Bevor Sie also ein großes Dokument schreiben, ist es sinnvoll, dass Sie
+ sich zunächst die Dokumentation der Dokumentklasse durchlesen.
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+setkomafont
+\family default
+ ist ein Beispiel für einen Befehl mit mehr als einem Argument.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Befehle im LaTeX-Vorspann betreffen das gesamte Dokument, während Befehle
+ im Text nur den Text nach dem Befehl betreffen, oder nur den Text, der
+ als Argument benutzt wird.
+\end_layout
+
+\begin_layout Standard
+In LaTeX-Büchern erfahren Sie mehr über die LaTeX und seine Syntax:  
+\begin_inset LatexCommand cite
+key "latex-einführung,latex-praxisbuch,latexcompanion,latexguide"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Section
@@ -25907,30 +27695,6 @@ pnmcrop
 netpbm
 \family default
 -Paketes installieren.
-\end_layout
-
-\begin_layout Section
-ERT und die LaTeX-Syntax
-\begin_inset LatexCommand label
-name "ERT"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-ERT-Kästchen
-\begin_inset LatexCommand label
-name "ERT-Kästchen"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Die LaTeX-Syntax
 \end_layout
 
 \begin_layout Section
@@ -26905,7 +28669,7 @@ dvipost
 \family default
 
 \begin_inset LatexCommand index
-name "LaTeX-Paket!dvipost"
+name "LaTeX!-Paket!dvipost"
 
 \end_inset
 
@@ -27102,11 +28866,11 @@ utf8-plain
  für die Verwendung von LyX mit XeTeX, einem TeX-System, das Unicode direkt
  (ohne Zuhilfenahme des 
 \family typewriter
-imputenc
+inputenc
 \family default
 -Paketes
 \begin_inset LatexCommand index
-name "LaTeX-Paket!inputenc"
+name "LaTeX!-Paket!inputenc"
 
 \end_inset
 
@@ -31801,6 +33565,26 @@ erung, Extra, Überarbeitung, Tabelle, Mathe-Kontrollflächen, Mathe und Befehls
 ffer Sie sehen wollen.
 \end_layout
 
+\begin_layout Subsection
+Geöffnete Dokumente
+\begin_inset LatexCommand index
+name "Dokument ! geöffnetes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Unter dem Trennstrich nach 
+\family sans
+Werkzeugleisten
+\family default
+ werden alle geöffneten Dokumente aufgelistet.
+ Wird ein Dokument geändert, steht hinter seinem Namen ein *.
+ Dieser verschwindet wieder, nachdem Sie es speichern.
+\end_layout
+
 \begin_layout Section
 
 \family sans
@@ -34378,6 +36162,11 @@ verwenden bedeutet, einen echten Font zu benutzen, anstatt
 \end_layout
 
 \begin_layout Description
+\begin_inset LatexCommand label
+name "Mediävalziffern"
+
+\end_inset
+
 Mediävalziffern\InsetSpace ~
 verwenden bedeutet, Ziffern zu verwenden die unter die Grundlinie
  reichen wie zum Beispiel die 3.
@@ -35341,6 +37130,19 @@ lage
 \emph default
 .
  Addison-Wesley, 1996
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latex-praxisbuch"
+
+\end_inset
+
+Elke & Michael Niedermair: 
+\emph on
+LaTeX-Praxisbuch
+\emph default
+, Franzis-Verlag, 2004
 \end_layout
 
 \begin_layout Bibliography

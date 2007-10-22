@@ -2291,6 +2291,7 @@ lib_doc_de_files = Split('''
 
 
 lib_doc_de_clipart_files = Split('''
+    ERT.png
     ExternesMaterialQt4.png
     FussnoteQt4.png
     GerahmteNotizQt4.png
