@@ -65,6 +65,7 @@ dist_dedoc_DATA = \
 
 declipartdocdir = $(pkgdatadir)/doc/de/clipart
 dist_declipartdoc_DATA = \
+	de/clipart/ERT.png \
 	de/clipart/ExternesMaterialQt4.png \
 	de/clipart/FussnoteQt4.png \
 	de/clipart/GerahmteNotizQt4.png \

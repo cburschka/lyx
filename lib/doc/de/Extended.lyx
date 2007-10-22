@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -147,7 +147,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 3.
+letzte Änderung: 15.
  Oktober 2007
 \end_layout
 
@@ -3465,7 +3465,7 @@ Einen Glossar-Eintrag erstellen Sie, indem Sie den Cursor hinter ein Symbol
  oder einen Begriff stellen und 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Glossareintrag\SpecialChar \ldots{}
+Nomenklartureintrag\SpecialChar \ldots{}
 
 \family default
  oder 
@@ -3509,7 +3509,7 @@ Symbol
 \end_layout
 
 \begin_layout Subsection
-Glossar-Einträge sortieren
+Nomenklatur-Einträge sortieren
 \begin_inset LatexCommand index
 name "Glossar!sortieren"
 
@@ -3519,7 +3519,7 @@ name "Glossar!sortieren"
 \end_layout
 
 \begin_layout Standard
-Nehmen wir an, Sie hätten zwei Glossareinträge für die Symbole 
+Nehmen wir an, Sie hätten zwei Nomenklatureinträge für die Symbole 
 \begin_inset Formula $a$
 \end_inset
 
@@ -3609,9 +3609,9 @@ nomencl
 \end_layout
 
 \begin_layout Subsection
-Glossar-Verweise
+Nomenklatur-Optionen
 \begin_inset LatexCommand index
-name "Glossar!-Verweise"
+name "Glossar!-Optionen"
 
 \end_inset
 
@@ -3619,7 +3619,7 @@ name "Glossar!-Verweise"
 \end_layout
 
 \begin_layout Standard
-In den Glossareinträgen können Sie auf Gleichungen und Seiten verweisen,
+In den Nomenklatureinträgen können Sie auf Gleichungen und Seiten verweisen,
  indem Sie am Ende des 
 \family sans
 Beschreibung
@@ -3688,6 +3688,126 @@ nomencl
 -Dokumentation).
 \end_layout
 
+\begin_layout Description
+intoc fügt die Nomenklatur ins Inhaltsverzeichnis ein.
+\end_layout
+
+\begin_layout Standard
+Außerdem gibt es die Optionen 
+\series bold
+croatian
+\series default
+, 
+\series bold
+danish
+\series default
+, 
+\series bold
+english
+\series default
+, 
+\series bold
+french
+\series default
+, 
+\series bold
+german
+\series default
+, 
+\series bold
+italian
+\series default
+, 
+\series bold
+polish
+\series default
+, 
+\series bold
+portuguese
+\series default
+, 
+\series bold
+russian
+\series default
+, 
+\series bold
+spanish
+\series default
+ und 
+\series bold
+ukrainian
+\series default
+, um Verweistexte und den Nomenklaturttitel in der entsprechenden Sprache
+ zu drucken.
+\end_layout
+
+\begin_layout Standard
+Um eine oder mehrere Optionen benutzen zu können, fügen Sie sie, durch Kommas
+ getrennt, in das Feld 
+\family sans
+Optionen
+\family default
+ von 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Dokumentklasse
+\family default
+ ein.
+\end_layout
+
+\begin_layout Standard
+Die ersten Optionen können Sie auch nur gewisse Nomenklatureinträge benutzen,
+ wenn Sie als letzten Eintrag im Feld 
+\family sans
+Beschreibung
+\family default
+ folgendes schreiben:
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomrefeq wie 
+\series bold
+refeq
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomrefpage wie 
+\series bold
+refpage
+\series default
+ 
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomrefeqpage ist die Kurzform von 
+\series bold
+
+\backslash
+nomrefeq
+\backslash
+nomrefpage
+\end_layout
+
+\begin_layout Description
+
+\backslash
+nomnorefeq,\InsetSpace ~
+
+\backslash
+nomnorefpage,\InsetSpace ~
+
+\backslash
+nomnorefeqpage Schaltet die entsprechende Option ab.
+\end_layout
+
 \begin_layout Subsection
 Glossar drucken
 \begin_inset LatexCommand index
@@ -3705,7 +3825,7 @@ Einfügen\SpecialChar \menuseparator
 Liste\InsetSpace ~
 /\InsetSpace ~
 Inhaltsverzeichnis\SpecialChar \menuseparator
-Glossar
+Nomenklatur
 \family default
  können Sie ein Glossar-Verzeichnis einfügen.
  An der Stelle erscheint ein hellblaues Kästchen mit der Aufschrift 
