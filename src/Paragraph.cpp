@@ -99,7 +99,7 @@ public:
 	/// \return whether a surrogate pair was output.
 	bool simpleTeXBlanks(Encoding const &,
 			     odocstream &, TexRow & texrow,
-			     pos_type & i,
+			     pos_type i,
 			     unsigned int & column,
 			     Font const & font,
 			     Layout const & style);
@@ -110,7 +110,7 @@ public:
 	int knownLangChars(odocstream & os, value_type c, string & preamble,
 			   Change &, Encoding const &, pos_type &);
 	///
-	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
+	void latexInset(Buffer const &, BufferParams const &,
 				   odocstream &,
 				   TexRow & texrow, OutputParams &,
 				   Font & running_font,
@@ -120,17 +120,17 @@ public:
 				   Change & running_change,
 				   Layout const & style,
 				   pos_type & i,
-				   unsigned int & column, value_type const c);
+				   unsigned int & column);
 
 	///
-	void simpleTeXSpecialChar(
+	void latexSpecialChar(
 				   odocstream & os,
 				   OutputParams & runparams,
 				   Font & running_font,
 				   Change & running_change,
+				   Layout const & style,
 				   pos_type & i,
-				   unsigned int & column,
-				   value_type const c);
+				   unsigned int & column);
 
 	///
 	void validate(LaTeXFeatures & features,
@@ -489,7 +489,7 @@ int Paragraph::Private::latexSurrogatePair(odocstream & os, value_type c,
 
 bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 				       odocstream & os, TexRow & texrow,
-				       pos_type & i,
+				       pos_type i,
 				       unsigned int & column,
 				       Font const & font,
 				       Layout const & style)
@@ -502,7 +502,6 @@ bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 		if (Encodings::isCombiningChar(next)) {
 			// This space has an accent, so we must always output it.
 			column += latexSurrogatePair(os, ' ', next, encoding) - 1;
-			++i;
 			return true;
 		}
 	}
@@ -614,7 +613,7 @@ bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
 }
 
 
-void Paragraph::Private::simpleTeXSpecialChars(Buffer const & buf,
+void Paragraph::Private::latexInset(Buffer const & buf,
 					     BufferParams const & bparams,
 					     odocstream & os,
 					     TexRow & texrow,
@@ -626,31 +625,15 @@ void Paragraph::Private::simpleTeXSpecialChars(Buffer const & buf,
 					     Change & running_change,
 					     Layout const & style,
 					     pos_type & i,
-					     unsigned int & column,
-					     value_type const c)
+					     unsigned int & column)
 {
-	if (style.pass_thru) {
-		if (c != Paragraph::META_INSET) {
-			if (c != '\0')
-				// FIXME UNICODE: This can fail if c cannot
-				// be encoded in the current encoding.
-				os.put(c);
-		} else
-			owner_->getInset(i)->plaintext(buf, os, runparams);
-		return;
-	}
-
-	// Two major modes:  LaTeX or plain
-	// Handle here those cases common to both modes
-	// and then split to handle the two modes separately.
-	if (c != Paragraph::META_INSET) {
-		simpleTeXSpecialChar(os, runparams, running_font, running_change,
-			i, column, c);
-		return;
-	}
-
 	Inset * inset = owner_->getInset(i);
 	BOOST_ASSERT(inset);
+
+	if (style.pass_thru) {
+		inset->plaintext(buf, os, runparams);
+		return;
+	}
 
 	// FIXME: move this to InsetNewline::latex
 	if (inset->lyxCode() == NEWLINE_CODE) {
@@ -766,15 +749,25 @@ void Paragraph::Private::simpleTeXSpecialChars(Buffer const & buf,
 }
 
 
-void Paragraph::Private::simpleTeXSpecialChar(
+void Paragraph::Private::latexSpecialChar(
 					     odocstream & os,
 					     OutputParams & runparams,
 					     Font & running_font,
 					     Change & running_change,
+					     Layout const & style,
 					     pos_type & i,
-					     unsigned int & column,
-					     value_type const c)
+					     unsigned int & column)
 {
+	value_type const c = getChar(i);
+
+	if (style.pass_thru) {
+		if (c != '\0')
+			// FIXME UNICODE: This can fail if c cannot
+			// be encoded in the current encoding.
+			os.put(c);
+		return;
+	}
+
 	if (runparams.verbatim) {
 		os.put(c);
 		return;
@@ -1142,6 +1135,33 @@ void Paragraph::insert(pos_type start, docstring const & str,
 {
 	for (size_t i = 0, n = str.size(); i != n ; ++i)
 		insertChar(start + i, str[i], font, change);
+}
+
+
+void Paragraph::appendChar(value_type c, Font const & font,
+		Change const & change)
+{
+	// track change
+	d->changes_.insert(change, text_.size());
+	// when appending characters, no need to update tables
+	text_.push_back(c);
+	setFont(text_.size() - 1, font);
+}
+
+
+void Paragraph::appendString(docstring const & s, Font const & font,
+		Change const & change)
+{
+	size_t end = s.size();
+	// FIXME: Optimize this!
+	text_.reserve(text_.size() + end);
+	for (pos_type i = 0; i != end; ++i) {
+		// track change
+		d->changes_.insert(change, i);
+		// when appending characters, no need to update tables
+		text_.push_back(s[i]);
+		setFont(i, font);
+	}
 }
 
 
@@ -1746,7 +1766,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 
 
 // This one spits out the text of the paragraph
-bool Paragraph::simpleTeXOnePar(Buffer const & buf,
+bool Paragraph::latex(Buffer const & buf,
 				BufferParams const & bparams,
 				Font const & outerfont,
 				odocstream & os, TexRow & texrow,
@@ -1868,8 +1888,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 		++column;
 
-		value_type const c = getChar(i);
-
 		// Fully instantiated font
 		Font const font = getFont(bparams, i, outerfont);
 
@@ -1899,6 +1917,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			}
 		}
 
+		value_type const c = getChar(i);
+
 		// Do we need to change font?
 		if ((font != running_font ||
 		     font.language() != running_font.language()) &&
@@ -1921,21 +1941,22 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		}
 
 		if (c == ' ') {
+			// FIXME: integrate this case in latexSpecialChar
 			// Do not print the separation of the optional argument
 			// if style->pass_thru is false. This works because
-			// simpleTeXSpecialChars ignores spaces if
+			// latexSpecialChar ignores spaces if
 			// style->pass_thru is false.
 			if (i != body_pos - 1) {
 				if (d->simpleTeXBlanks(
 						*(runparams.encoding), os, texrow,
-						i, column, font, *style))
+						i, column, font, *style)) {
 					// A surrogate pair was output. We
-					// must not call simpleTeXSpecialChars
-					// in this iteration, since
-					// simpleTeXBlanks incremented i, and
-					// simpleTeXSpecialChars would output
+					// must not call latexSpecialChar
+					// in this iteration, since it would output
 					// the combining character again.
+					++i;
 					continue;
+				}
 			}
 		}
 
@@ -1943,10 +1964,18 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		rp.free_spacing = style->free_spacing;
 		rp.local_font = &font;
 		rp.intitle = style->intitle;
-		d->simpleTeXSpecialChars(buf, bparams, os,
+
+		// Two major modes:  LaTeX or plain
+		// Handle here those cases common to both modes
+		// and then split to handle the two modes separately.
+		if (c == Paragraph::META_INSET)
+			d->latexInset(buf, bparams, os,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
-					runningChange, *style, i, column, c);
+					runningChange, *style, i, column);
+		else
+			d->latexSpecialChar(os, rp, running_font, runningChange,
+				*style, i, column);
 
 		// Set the encoding to that returned from simpleTeXSpecialChars (see
 		// comment for encoding member in OutputParams.h)

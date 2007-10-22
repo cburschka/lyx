@@ -102,17 +102,9 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 	BufferParams const & bp = buf.params();
 
 	if (token[0] != '\\') {
-#if 0
-		string::const_iterator cit = token.begin();
-		for (; cit != token.end(); ++cit)
-			par.insertChar(par.size(), (*cit), font, change);
-#else
 		docstring dstr = lex.getDocString();
-		docstring::const_iterator cit = dstr.begin();
-		docstring::const_iterator cend = dstr.end();
-		for (; cit != cend; ++cit)
-			par.insertChar(par.size(), *cit, font, change);
-#endif
+		par.appendString(dstr, font, change);
+
 	} else if (token == "\\begin_layout") {
 		lex.eatLine();
 		docstring layoutname = lex.getDocString();
@@ -216,12 +208,12 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		// Insets don't make sense in a free-spacing context! ---Kayvan
 		if (par.isFreeSpacing()) {
 			if (token == "\\InsetSpace")
-				par.insertChar(par.size(), ' ', font, change);
+				par.appendChar(' ', font, change);
 			else if (lex.isOK()) {
 				lex.next();
 				string const next_token = lex.getString();
 				if (next_token == "\\-")
-					par.insertChar(par.size(), '-', font, change);
+					par.appendChar('-', font, change);
 				else {
 					lex.printError("Token `$$Token' "
 						       "is in free space "
@@ -239,7 +231,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 					font, change);
 		}
 	} else if (token == "\\backslash") {
-		par.insertChar(par.size(), '\\', font, change);
+		par.appendChar('\\', font, change);
 	} else if (token == "\\newline") {
 		auto_ptr<Inset> inset(new InsetNewline);
 		inset->read(buf, lex);

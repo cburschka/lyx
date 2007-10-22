@@ -128,7 +128,7 @@ public:
 
 
 	///
-	bool simpleTeXOnePar(Buffer const &, BufferParams const &,
+	bool latex(Buffer const &, BufferParams const &,
 			     Font const & outerfont, odocstream &,
 			     TexRow & texrow, OutputParams const &) const;
 
@@ -292,6 +292,12 @@ public:
 	///
 	void insert(pos_type pos, docstring const & str,
 		    Font const & font, Change const & change);
+
+	///
+	void appendString(docstring const & s, Font const & font,
+		Change const & change);
+	///
+	void appendChar(value_type c, Font const & font, Change const & change);
 	///
 	void insertChar(pos_type pos, value_type c, bool trackChanges);
 	///

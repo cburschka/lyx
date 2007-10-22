@@ -73,7 +73,7 @@ public:
 	/** Current stream encoding. Only used for LaTeX.
 	    This must be set to the document encoding (via the constructor)
 	    before output starts. Afterwards it must be kept up to date for
-	    each single character (\see Paragraph::simpleTeXOnePar).
+	    each single character (\sa Paragraph::latex).
 	    This does also mean that you need to set it back if you use a
 	    copy (e.g. in insets): \code
 	    int InsetFoo::latex(..., OutputParams const & runparams_in) const
