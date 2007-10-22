@@ -69,9 +69,11 @@ What's new
 
 - Fix DraftDVI preference settings (Windows only).
 
-- Fix problem with pressing C-Enter converting equation to eqnarray
+- Fix problem with backup directory on Windows (bug 4287). 
 
-- Fix off-by-one error in addCol()
+- Fix problem in conversion of equations to eqnarray (when pressing C-Enter).
+
+- Fix a bug when adding a math formula column.
 
 
 * DOCUMENTATION
