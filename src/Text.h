@@ -163,16 +163,16 @@ public:
 	///
 	void recUndo(Cursor & cur, pit_type first) const;
 
-	/// Move cursor one position left
+	/// Move cursor one position backwards
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
-	bool cursorLeft(Cursor & cur);
-	/// Move cursor one position right
+	bool cursorBackward(Cursor & cur);
+	/// Move cursor one position forward
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
-	bool cursorRight(Cursor & cur);
+	bool cursorForward(Cursor & cur);
 	///
 	bool cursorLeftOneWord(Cursor & cur);
 	///

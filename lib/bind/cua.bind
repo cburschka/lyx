@@ -126,8 +126,8 @@
 # Motion + select group
 #
 
-\bind "S-Right"			"forward-select"
-\bind "S-Left"			"backward-select"
+\bind "S-Right"			"char-right-select"
+\bind "S-Left"			"char-left-select"
 \bind "S-Up"			"up-select"
 \bind "S-Down"			"down-select"
 \bind "S-C-Right"		"word-forward-select"
@@ -145,8 +145,8 @@
 \bind "S-Delete"		"cut"
 
 # Numeric keypad (if Shift+KP_XXX does not switch the NumLock state)
-\bind "S-KP_Right"              "forward-select"
-\bind "S-KP_Left"               "backward-select"
+\bind "S-KP_Right"              "char-right-select"
+\bind "S-KP_Left"               "char-left-select"
 \bind "S-KP_Up"                 "up-select"
 \bind "S-KP_Down"               "down-select"
 \bind "S-C-KP_Right"            "word-forward-select"

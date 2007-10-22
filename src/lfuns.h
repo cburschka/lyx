@@ -407,6 +407,13 @@ enum kb_action {
 	// 295
 	LFUN_CALL,                       // broider, 20071002
 	LFUN_BUFFER_TOGGLE_EMBEDDING,    // bpeng, 20071021
+	LFUN_CHAR_LEFT,					 // dov, 20071022
+	LFUN_CHAR_LEFT_SELECT,			 // dov, 20071022
+	LFUN_CHAR_RIGHT,				 // dov, 20071022
+	// 300
+	LFUN_CHAR_RIGHT_SELECT,			 // dov, 20071022
+	LFUN_FINISHED_BACKWARD,			 // dov, 20071022
+	LFUN_FINISHED_FORWARD,			 // dov, 20071022
 
 	LFUN_LASTACTION                  // end of the table
 };

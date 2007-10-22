@@ -1031,8 +1031,8 @@ bool LyX::init()
 
 void LyX::defaultKeyBindings(KeyMap  * kbmap)
 {
-	kbmap->bind("Right", FuncRequest(LFUN_CHAR_FORWARD));
-	kbmap->bind("Left", FuncRequest(LFUN_CHAR_BACKWARD));
+	kbmap->bind("Right", FuncRequest(LFUN_CHAR_RIGHT));
+	kbmap->bind("Left", FuncRequest(LFUN_CHAR_LEFT));
 	kbmap->bind("Up", FuncRequest(LFUN_UP));
 	kbmap->bind("Down", FuncRequest(LFUN_DOWN));
 
@@ -1070,8 +1070,8 @@ void LyX::defaultKeyBindings(KeyMap  * kbmap)
 	//kbmap->bind("KP_Divide", FuncRequest(LFUN_SELF_INSERT));
 	//kbmap->bind("KP_Multiply", FuncRequest(LFUN_SELF_INSERT));
 	//kbmap->bind("KP_Subtract", FuncRequest(LFUN_SELF_INSERT));
-	kbmap->bind("KP_Right", FuncRequest(LFUN_CHAR_FORWARD));
-	kbmap->bind("KP_Left", FuncRequest(LFUN_CHAR_BACKWARD));
+	kbmap->bind("KP_Right", FuncRequest(LFUN_CHAR_RIGHT));
+	kbmap->bind("KP_Left", FuncRequest(LFUN_CHAR_LEFT));
 	kbmap->bind("KP_Up", FuncRequest(LFUN_UP));
 	kbmap->bind("KP_Down", FuncRequest(LFUN_DOWN));
 	kbmap->bind("KP_Home", FuncRequest(LFUN_LINE_BEGIN));

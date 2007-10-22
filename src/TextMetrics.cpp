@@ -1655,8 +1655,8 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 {
 	BOOST_ASSERT(text_ == cur.text());
 	if (cur.lastpos() == 0) {
-		// Paragraph is empty, so we just go to the right
-		text_->cursorRight(cur);
+		// Paragraph is empty, so we just go forward
+		text_->cursorForward(cur);
 	} else {
 		cur.resetAnchor();
 		cur.selection() = true; // to avoid deletion
@@ -2080,9 +2080,9 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 	while (cur < end) {
 		bool drawNow = false;
 		
-		// simplified cursorRight code below which does not
+		// simplified cursorForward code below which does not
 		// descend into insets and which does not go into the
-		// next line. Compare the logic with the original cursorRight
+		// next line. Compare the logic with the original cursorForward
 		
 		// if left of boundary -> just jump to right side
 		// but for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi

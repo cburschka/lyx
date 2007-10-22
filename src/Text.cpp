@@ -799,7 +799,7 @@ void Text::deleteWordForward(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0)
-		cursorRight(cur);
+		cursorForward(cur);
 	else {
 		cur.resetAnchor();
 		cur.selection() = true;
@@ -815,7 +815,7 @@ void Text::deleteWordBackward(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.lastpos() == 0)
-		cursorLeft(cur);
+		cursorBackward(cur);
 	else {
 		cur.resetAnchor();
 		cur.selection() = true;
@@ -1078,9 +1078,9 @@ bool Text::backspace(Cursor & cur)
 		// this is the code for a normal backspace, not pasting
 		// any paragraphs
 		cur.recordUndo(DELETE_UNDO);
-		// We used to do cursorLeftIntern() here, but it is
+		// We used to do cursorBackwardIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
-		// mechanism. So we do a cursorLeftIntern()-lite,
+		// mechanism. So we do a cursorBackwardIntern()-lite,
 		// without the dreaded mechanism. (JMarc)
 		setCursorIntern(cur, cur.pit(), cur.pos() - 1,
 				false, cur.boundary());

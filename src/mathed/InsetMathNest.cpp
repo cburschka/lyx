@@ -43,6 +43,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "LyXFunc.h"
 #include "gettext.h"
 #include "Text.h"
 #include "OutputParams.h"
@@ -490,11 +491,11 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		lfunMouseRelease(cur, cmd);
 		break;
 
-	case LFUN_FINISHED_LEFT:
+	case LFUN_FINISHED_BACKWARD:
 		cur.bv().cursor() = cur;
 		break;
 
-	case LFUN_FINISHED_RIGHT:
+	case LFUN_FINISHED_FORWARD:
 		++cur.pos();
 		cur.bv().cursor() = cur;
 		break;
@@ -506,10 +507,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
-		if (reverseDirectionNeeded(cur))
-			goto goto_char_backwards;
-
-goto_char_forwards:
 		if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
 			cur.pushLeft(*cur.nextAtom().nucleus());
 			cur.inset().idxFirst(cur);
@@ -517,7 +514,7 @@ goto_char_forwards:
 			|| cur.popRight() || cur.selection())
 			;
 		else {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();
 		}
 		break;
@@ -529,10 +526,6 @@ goto_char_forwards:
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
-		if (reverseDirectionNeeded(cur))
-			goto goto_char_forwards;
-
-goto_char_backwards:
 		if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
 			cur.posLeft();
 			cur.push(*cur.nextAtom().nucleus());
@@ -541,9 +534,35 @@ goto_char_backwards:
 			|| cur.popLeft() || cur.selection())
 			;
 		else {
-			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 			cur.undispatched();
 		}
+		break;
+
+	case LFUN_CHAR_RIGHT:
+	case LFUN_CHAR_RIGHT_SELECT:
+		//FIXME: for visual cursor, really move right
+		if (reverseDirectionNeeded(cur))
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
+		else 
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+		break;
+
+	case LFUN_CHAR_LEFT:
+	case LFUN_CHAR_LEFT_SELECT:
+		//FIXME: for visual cursor, really move left
+		if (reverseDirectionNeeded(cur))
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+		else 
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
 		break;
 
 	case LFUN_DOWN:
@@ -617,7 +636,7 @@ goto_char_backwards:
 			cur.idx() = 0;
 			cur.pos() = 0;
 		} else {
-			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 			cur.undispatched();
 		}
 		break;
@@ -640,18 +659,18 @@ goto_char_backwards:
 			cur.idx() = cur.lastidx();
 			cur.pos() = cur.lastpos();
 		} else {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();
 		}
 		break;
 
 	case LFUN_SCREEN_UP_SELECT:
-		cmd = FuncRequest(LFUN_FINISHED_LEFT);
+		cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 		cur.undispatched();
 		break;
 
 	case LFUN_SCREEN_DOWN_SELECT:
-		cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+		cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 		cur.undispatched();
 		break;
 
@@ -697,7 +716,7 @@ goto_char_backwards:
 		if (cur.selection())
 			cur.clearSelection();
 		else  {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();
 		}
 		break;
@@ -740,7 +759,7 @@ goto_char_backwards:
 				cur.pushLeft(*cur.nextInset());
 			}
 		} else if (!interpretChar(cur, cmd.argument()[0])) {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();
 		}
 		break;

@@ -381,15 +381,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		//lyxerr << BOOST_CURRENT_FUNCTION
 		//       << " LFUN_CHAR_FORWARD[SEL]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
-		if (reverseDirectionNeeded(cur))
-			needsUpdate |= cursorLeft(cur);
-		else
-			needsUpdate |= cursorRight(cur);
+		needsUpdate |= cursorForward(cur);
 
 		if (!needsUpdate && oldTopSlice == cur.top()
 				&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 		}
 		break;
 
@@ -397,15 +394,40 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_BACKWARD_SELECT:
 		//lyxerr << "handle LFUN_CHAR_BACKWARD[_SELECT]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
-		if (reverseDirectionNeeded(cur))
-			needsUpdate |= cursorRight(cur);
-		else
-			needsUpdate |= cursorLeft(cur);
+		needsUpdate |= cursorBackward(cur);
 
 		if (!needsUpdate && oldTopSlice == cur.top()
 			&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
+		}
+		break;
+
+	case LFUN_CHAR_LEFT:
+	case LFUN_CHAR_LEFT_SELECT:
+		//FIXME: for visual cursor, really move left
+		if (reverseDirectionNeeded(cur)) {
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+		} else {
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
+		}
+		break;
+
+	case LFUN_CHAR_RIGHT:
+	case LFUN_CHAR_RIGHT_SELECT:
+		//FIXME: for visual cursor, really move right
+		if (reverseDirectionNeeded(cur)) {
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
+		} else {
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
 		}
 		break;
 
@@ -536,8 +558,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Reverse the effect of LFUN_BREAK_PARAGRAPH_SKIP.
 		if (!cur.selection()) {
 			if (cur.pos() == cur.lastpos()) {
-				cursorRight(cur);
-				cursorLeft(cur);
+				cursorForward(cur);
+				cursorBackward(cur);
 			}
 			erase(cur);
 			cur.resetAnchor();
@@ -1390,6 +1412,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
+	case LFUN_FINISHED_BACKWARD:
+		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_BACKWARD:\n" << cur << endl;
+		break;
+
+	case LFUN_FINISHED_FORWARD:
+		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_FORWARD:\n" << cur << endl;
+		++cur.pos();
+		cur.setCurrentFont();
+		break;
+
 	case LFUN_LAYOUT_PARAGRAPH: {
 		string data;
 		params2string(cur.paragraph(), data);
@@ -1442,7 +1474,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			breakParagraph(cur);
 
 			if (cur.lastpos() != 0) {
-				cursorLeft(cur);
+				cursorBackward(cur);
 				breakParagraph(cur);
 			}
 
@@ -1510,7 +1542,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.selection() = false;
 		} else {
 			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			// This used to be LFUN_FINISHED_RIGHT, I think FORWARD is more
+			// correct, but I'm not 100% sure -- dov, 071019
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 		}
 		break;
 
@@ -1851,6 +1885,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_CHAR_FORWARD_SELECT:
 	case LFUN_CHAR_BACKWARD:
 	case LFUN_CHAR_BACKWARD_SELECT:
+	case LFUN_CHAR_LEFT:
+	case LFUN_CHAR_LEFT_SELECT:
+	case LFUN_CHAR_RIGHT:
+	case LFUN_CHAR_RIGHT_SELECT:
 	case LFUN_UP:
 	case LFUN_UP_SELECT:
 	case LFUN_DOWN:

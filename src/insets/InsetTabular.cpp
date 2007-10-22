@@ -37,6 +37,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "LyXFunc.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "paragraph_funcs.h"
@@ -3256,9 +3257,9 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_FORWARD:
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
-			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
+			moveNextCell(cur);
 			if (sl == cur.top())
-				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+				cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			else
 				cur.dispatched();
 		}
@@ -3268,12 +3269,38 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_BACKWARD:
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
-			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
+			movePrevCell(cur);
 			if (sl == cur.top())
-				cmd = FuncRequest(LFUN_FINISHED_LEFT);
+				cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 			else
 				cur.dispatched();
 		}
+		break;
+
+	case LFUN_CHAR_RIGHT_SELECT:
+	case LFUN_CHAR_RIGHT:
+		//FIXME: for visual cursor, really move right
+		if (isRightToLeft(cur))
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_RIGHT_SELECT ?
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
+		else
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_RIGHT_SELECT ?
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+		break;
+
+	case LFUN_CHAR_LEFT_SELECT:
+	case LFUN_CHAR_LEFT:
+		//FIXME: for visual cursor, really move left
+		if (isRightToLeft(cur))
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_LEFT_SELECT ?
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+		else
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_CHAR_LEFT_SELECT ?
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
 		break;
 
 	case LFUN_DOWN_SELECT:
@@ -3292,9 +3319,9 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
 			}
 		if (sl == cur.top()) {
-			// we trick it to go to the RIGHT after leaving the
+			// we trick it to go to forward after leaving the
 			// tabular.
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();
 		}
 		break;

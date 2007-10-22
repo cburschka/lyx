@@ -602,7 +602,7 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 }
 
 
-bool Text::cursorLeft(Cursor & cur)
+bool Text::cursorBackward(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
@@ -644,7 +644,7 @@ bool Text::cursorLeft(Cursor & cur)
 }
 
 
-bool Text::cursorRight(Cursor & cur)
+bool Text::cursorForward(Cursor & cur)
 {
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);

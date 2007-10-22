@@ -1104,7 +1104,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// See below.
 		cur.selection() = false;
 		if (!idxPrev(cur)) {
-			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 			cur.undispatched();
 		}
 		break;
@@ -1114,7 +1114,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// hard bound to LFUN_CELL_BACKWARD
 		cur.selection() = false;
 		if (!idxNext(cur)) {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();
 		}
 		break;
@@ -1136,7 +1136,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.pos() = cur.lastpos();
 
 		//mathcursor->normalize();
-		//cmd = FuncRequest(LFUN_FINISHED_LEFT);
+		//cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 		break;
 	}
 
@@ -1249,6 +1249,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			break;
 		}
+		// perhaps this should be FINISHED_BACKWARD -- just for clarity?
 		lyxerr << "returning FINISHED_LEFT" << endl;
 		break;
 	}
@@ -1318,7 +1319,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.idx() = 0;
 			cur.pos() = 0;
 		} else {
-			cmd = FuncRequest(LFUN_FINISHED_LEFT);
+			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 			cur.undispatched();
 		}
 		break;
@@ -1340,7 +1341,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.idx() = cur.lastidx();
 			cur.pos() = cur.lastpos();
 		} else {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 			cur.undispatched();
 		}
 		break;
