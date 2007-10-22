@@ -139,30 +139,10 @@ docstring const InsetERT::editMessage() const
 }
 
 
-int InsetERT::latex(Buffer const &, odocstream & os,
-		    OutputParams const &) const
+int InsetERT::latex(Buffer const & buf, odocstream & os,
+		    OutputParams const & op) const
 {
-	ParagraphList::const_iterator par = paragraphs().begin();
-	ParagraphList::const_iterator end = paragraphs().end();
-
-	int lines = 0;
-	while (par != end) {
-		pos_type siz = par->size();
-		for (pos_type i = 0; i < siz; ++i) {
-			// ignore all struck out text
-			if (par->isDeleted(i))
-				continue;
-
-			os.put(par->getChar(i));
-		}
-		++par;
-		if (par != end) {
-			os << "\n";
-			++lines;
-		}
-	}
-
-	return lines;
+	return InsetCollapsable::latex(buf, os, op);
 }
 
 
@@ -176,6 +156,7 @@ int InsetERT::plaintext(Buffer const &, odocstream &,
 int InsetERT::docbook(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
+	// FIXME can we do the same thing here as for LaTeX?
 	ParagraphList::const_iterator par = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
 

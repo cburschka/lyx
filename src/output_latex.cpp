@@ -558,7 +558,7 @@ TeXOnePar(Buffer const & buf,
 	if (closing_rtl_ltr_environment)
 		os << "}";
 
-	if (pending_newline) {
+	if (pending_newline && !runparams.verbatim) {
 		os << '\n';
 		texrow.newline();
 	}

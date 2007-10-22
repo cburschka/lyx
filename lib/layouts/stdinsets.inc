@@ -89,6 +89,7 @@ End
 
 InsetLayout ERT
 	LabelString           ERT
+	LatexType             none
 	Decoration            minimalistic
 	Font
 	  Color               latex
@@ -99,6 +100,7 @@ InsetLayout ERT
 	  Size                Small
 	EndFont
 	MultiPar              true
+	Verbatim              true
 End
 
 InsetLayout Branch
