@@ -202,7 +202,7 @@ def checkLatex(dtl_tools):
 \converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""'''
     else:
         converter_entry = r'\converter latex      dvi        "%%"	"latex"'
-    path, LATEX = checkProg('a Latex2e program', ['pplatex $$i', "platex", 'latex $$i', 'latex2e $$i'],
+    path, LATEX = checkProg('a Latex2e program', ['pplatex $$i', 'platex $$i', 'latex $$i', 'latex2e $$i'],
         rc_entry = [converter_entry])
     # no latex
     if LATEX != '':
