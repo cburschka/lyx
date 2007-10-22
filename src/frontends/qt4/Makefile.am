@@ -5,6 +5,7 @@ CLEANFILES += $(MOCEDFILES)
 
 BUILT_SOURCES = $(UIFILES:%.ui=ui_%.h)
 BUILT_SOURCES += $(MOCEDFILES)
+BUILT_SOURCES += Resources.cpp Resources.qrc
 
 #########################  Qt stuff  #############################
 # Use _() for localization instead of tr() or trUtf8()
