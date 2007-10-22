@@ -237,7 +237,7 @@ bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
 		case BN_BINDFILE:
 			if (lexrc.next()) {
 				string const tmp(lexrc.getString());
-				error != !read(tmp, unbind_map);
+				error |= !read(tmp, unbind_map);
 			} else {
 				lexrc.printError("BN_BINDFILE: Missing file name");
 				error = true;
