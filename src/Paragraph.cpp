@@ -1153,15 +1153,16 @@ void Paragraph::appendString(docstring const & s, Font const & font,
 		Change const & change)
 {
 	size_t end = s.size();
+	pos_type startpos = text_.size();
 	// FIXME: Optimize this!
-	text_.reserve(text_.size() + end);
+	text_.reserve(startpos + end);
 	for (pos_type i = 0; i != end; ++i) {
 		// track change
 		d->changes_.insert(change, i);
 		// when appending characters, no need to update tables
 		text_.push_back(s[i]);
-		setFont(i, font);
 	}
+	d->fontlist_.setRange(startpos, text_.size(), font);
 }
 
 

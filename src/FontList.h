@@ -94,6 +94,11 @@ public:
 	///
 	void set(pos_type pos, Font const & font);
 	///
+	void setRange(
+		pos_type startpos,
+		pos_type endpos,
+		Font const & font);
+	///
 	void increasePosAfterPos(pos_type pos);
 	///
 	void decreasePosAfterPos(pos_type pos);
