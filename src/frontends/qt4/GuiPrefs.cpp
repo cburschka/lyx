@@ -1821,41 +1821,30 @@ void PrefShortcuts::updateShortcutsTW()
 void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
 {
 	item->setData(0, Qt::UserRole, QVariant(tag));
+	QString color;
 
 	switch (tag) {
 	case System:
-#if QT_VERSION >= 0x040200
-		item->setForeground(0, QBrush("black"));
-		item->setForeground(1, QBrush("black"));
-#else
-		item->setTextColor(QColor("black"));
-#endif
+		color = "black";
 		break;
 	case UserBind:
-#if QT_VERSION >= 0x040200
-		item->setForeground(0, QBrush("green"));
-		item->setForeground(1, QBrush("green"));
-#else
-		item->setTextColor(QColor("green"));
-#endif
+		color = "green";
 		break;
 	case UserUnbind:
-#if QT_VERSION >= 0x040200
-		item->setForeground(0, QBrush("red"));
-		item->setForeground(1, QBrush("red"));
-#else
-		item->setTextColor(QColor("red"));
-#endif
+		color = "red";
 		break;
 	case UserExtraUnbind:
-#if QT_VERSION >= 0x040200
-		item->setForeground(0, QBrush("purple"));
-		item->setForeground(1, QBrush("purple"));
-#else
-		item->setTextColor(QColor("purple"));
-#endif
+		color = "purple";
 		break;
 	}
+
+#if QT_VERSION >= 0x040200
+	item->setForeground(0, QBrush(color));
+	item->setForeground(1, QBrush(color));
+#else
+	item->setTextColor(0, QColor(color));
+	item->setTextColor(1, QColor(color));
+#endif
 }
 
 
