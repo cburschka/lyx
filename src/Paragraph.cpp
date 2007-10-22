@@ -988,6 +988,7 @@ Paragraph::Paragraph()
 {
 	itemdepth = 0;
 	d->params_.clear();
+	text_.reserve(100);
 }
 
 
@@ -1153,16 +1154,20 @@ void Paragraph::appendString(docstring const & s, Font const & font,
 		Change const & change)
 {
 	size_t end = s.size();
-	pos_type startpos = text_.size();
+	size_t oldsize = text_.size();
+	size_t newsize = oldsize + end;
+	size_t capacity = text_.capacity();
+	if (newsize >= capacity)
+		text_.reserve(std::max(capacity + 100, newsize));
+
 	// FIXME: Optimize this!
-	text_.reserve(startpos + end);
 	for (pos_type i = 0; i != end; ++i) {
 		// track change
 		d->changes_.insert(change, i);
 		// when appending characters, no need to update tables
 		text_.push_back(s[i]);
 	}
-	d->fontlist_.setRange(startpos, text_.size(), font);
+	d->fontlist_.setRange(oldsize, newsize, font);
 }
 
 
