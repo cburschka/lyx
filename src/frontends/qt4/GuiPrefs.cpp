@@ -1839,8 +1839,8 @@ void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
 	}
 
 #if QT_VERSION >= 0x040200
-	item->setForeground(0, QBrush(color));
-	item->setForeground(1, QBrush(color));
+	item->setForeground(0, QBrush(QColor(color)));
+	item->setForeground(1, QBrush(QColor(color)));
 #else
 	item->setTextColor(0, QColor(color));
 	item->setTextColor(1, QColor(color));
