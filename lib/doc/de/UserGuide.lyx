@@ -190,7 +190,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 19.
+letzte Änderung: 22.
  Oktober 2007
 \end_layout
 
@@ -925,7 +925,10 @@ Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \ldots{}
 
 \family default
- können viele LyX-Voreinstellungen geändert werden.
+ können viele LyX-Vor\SpecialChar \-
+einstel\SpecialChar \-
+lun\SpecialChar \-
+gen geändert werden.
  Das Dokument 
 \emph on
 Anpassung
@@ -2569,7 +2572,7 @@ unnumbered
 \series default
  verzichtet vollständig auf die Nummerierung.
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -21237,7 +21240,8 @@ aus der
 Mathe-Werkzeugleiste
 \family default
  schreiben.
- Sie erhalten einen leeren Bruch mit zwei blauen Mathed-Kästchen über und
+ Sie erhalten einen leeren Bruch mit zwei blauen Math\SpecialChar \-
+ed-Kästchen über und
  unter einem Bruchstrich.
  Der Cursor steht im Zähler.
  Mit der 
@@ -26986,7 +26990,8 @@ name "Dummy  ! Medialziffern|oldstylenums"
 |
 \family typewriter
 \series default
- command
+\InsetSpace ~
+command
 \family default
 
 \begin_inset Quotes grd
@@ -27434,6 +27439,12 @@ Bemerkung:
 
 \begin_layout Subsection
 Die LaTeX-Syntax
+\begin_inset LatexCommand label
+name "LaTeX-Syntax"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -28454,7 +28465,15 @@ Farben
 
 \begin_layout Standard
 Wenn die Änderungsverfolgung aktiviert ist, erscheint oben eine weitere
- Werkzeugleiste:
+ Werkzeug\SpecialChar \-
+leiste:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
