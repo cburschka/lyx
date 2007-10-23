@@ -48,6 +48,7 @@
 #include "frontends/FontMetrics.h"
 
 #include "insets/InsetBibitem.h"
+#include "insets/InsetLabel.h"
 #include "insets/InsetOptArg.h"
 
 #include "support/lstrings.h"
@@ -2149,8 +2150,9 @@ string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) cons
 			Inset const * inset = getInset(i);
 			InsetCode lyx_code = inset->lyxCode();
 			if (lyx_code == LABEL_CODE) {
-				string const id = static_cast<InsetCommand const *>(inset)->getContents();
-				return "id='" + to_utf8(sgml::cleanID(buf, runparams, from_utf8(id))) + "'";
+				InsetLabel const * const il = static_cast<InsetLabel const *>(inset);
+				docstring const & id = il->getParam("name");
+				return "id='" + to_utf8(sgml::cleanID(buf, runparams, id)) + "'";
 			}
 		}
 

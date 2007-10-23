@@ -235,7 +235,7 @@ void GuiInclude::updateContents()
 		typeCO->setCurrentIndex(3);
 		listingsGB->setEnabled(true);
 		listingsED->setEnabled(true);
-		InsetListingsParams par(params_.getOptions());
+		InsetListingsParams par(to_utf8(params_["lstparams"]));
 		// extract caption and label and put them into their respective editboxes
 		vector<string> pars = getVectorFromString(par.separatedParams(), "\n");
 		for (vector<string>::iterator it = pars.begin();
@@ -281,7 +281,8 @@ void GuiInclude::applyView()
 			par.addParam("caption", "{" + caption + "}");
 		if (!label.empty())
 			par.addParam("label", "{" + label + "}");
-		params_.setOptions(par.params());
+		string const listparams = par.params();
+		params_["lstparams"] = from_ascii(listparams);
 	} else {
 		if (visiblespaceCB->isChecked())
 			params_.setCmdName("verbatiminput*");

@@ -226,80 +226,8 @@ void InsetCommandParams::setCmdName(string const & name)
 }
 
 
-void InsetCommandParams::scanCommand(string const & cmd)
-{
-	string tcmdname, toptions, tsecoptions, tcontents;
-
-	if (cmd.empty()) return;
-
-	enum { WS, CMDNAME, OPTION, SECOPTION, CONTENT } state = WS;
-
-	// Used to handle things like \command[foo[bar]]{foo{bar}}
-	int nestdepth = 0;
-
-	for (string::size_type i = 0; i < cmd.length(); ++i) {
-		char const c = cmd[i];
-		if ((state == CMDNAME && c == ' ') ||
-		    (state == CMDNAME && c == '[') ||
-		    (state == CMDNAME && c == '{')) {
-			state = WS;
-		}
-		if ((state == OPTION  && c == ']') ||
-		    (state == SECOPTION  && c == ']') ||
-		    (state == CONTENT && c == '}')) {
-			if (nestdepth == 0) {
-				state = WS;
-			} else {
-				--nestdepth;
-			}
-		}
-		if ((state == OPTION  && c == '[') ||
-		    (state == SECOPTION  && c == '[') ||
-		    (state == CONTENT && c == '{')) {
-			++nestdepth;
-		}
-		switch (state) {
-		case CMDNAME:	tcmdname += c; break;
-		case OPTION:	toptions += c; break;
-		case SECOPTION:	tsecoptions += c; break;
-		case CONTENT:	tcontents += c; break;
-		case WS: {
-			char const b = i? cmd[i-1]: 0;
-			if (c == '\\') {
-				state = CMDNAME;
-			} else if (c == '[' && b != ']') {
-				state = OPTION;
-				nestdepth = 0; // Just to be sure
-			} else if (c == '[' && b == ']') {
-				state = SECOPTION;
-				nestdepth = 0; // Just to be sure
-			} else if (c == '{') {
-				state = CONTENT;
-				nestdepth = 0; // Just to be sure
-			}
-			break;
-		}
-		}
-	}
-
-	// Don't mess with this.
-	if (!tcmdname.empty())  setCmdName(tcmdname);
-	if (!toptions.empty())  setOptions(toptions);
-	if (!tsecoptions.empty())  setSecOptions(tsecoptions);
-	if (!tcontents.empty()) setContents(tcontents);
-
-	LYXERR(Debug::PARSER) << "Command <" <<  cmd
-		<< "> == <" << to_utf8(getCommand())
-		<< "> == <" << getCmdName()
-		<< '|' << getContents()
-		<< '|' << getOptions()
-		<< '|' << getSecOptions() << '>' << endl;
-}
-
-
 void InsetCommandParams::read(Lexer & lex)
 {
-	//FIXME
 	if (lex.isOK()) {
 		lex.next();
 		string const insetType = lex.getString();
@@ -341,7 +269,6 @@ void InsetCommandParams::read(Lexer & lex)
 		token = lex.getString();
 		if (token == "\\end_inset")
 			break;
-		// FIXME Why is preview_ read but not written?
 		if (token == "preview") {
 			lex.next();
 			preview_ = lex.getBool();
@@ -372,6 +299,8 @@ void InsetCommandParams::write(ostream & os) const
 {
 	os << "CommandInset " << insetType() << '\n';
 	os << "LatexCommand " << cmdName_ << '\n';
+	if (preview_)
+		os << "preview true\n";
 	for (size_t i = 0; i < info_->n; ++i)
 		if (!params_[i].empty())
 			// FIXME UNICODE
@@ -417,82 +346,13 @@ docstring const InsetCommandParams::getCommand() const
 }
 
 
-std::string const InsetCommandParams::getOptions() const
-{
-	for (size_t i = 0; i < info_->n; ++i)
-		if (info_->optional[i])
-			return to_utf8(params_[i]);
-	lyxerr << "Programming error: get nonexisting option in "
-	       << insetType() << " inset." << endl;
-	return string();
-}
-
-
-std::string const InsetCommandParams::getSecOptions() const
-{
-	bool first = true;
-	for (size_t i = 0; i < info_->n; ++i)
-		if (info_->optional[i]) {
-			if (first)
-				first = false;
-			else
-				return to_utf8(params_[i]);
-		}
-	// Happens in InsetCitation
-	lyxerr << "Programming error: get nonexisting second option in "
-	       << insetType() << " inset." << endl;
-	return string();
-}
-
-
-std::string const InsetCommandParams::getContents() const
+docstring const InsetCommandParams::getFirstNonOptParam() const
 {
 	for (size_t i = 0; i < info_->n; ++i)
 		if (!info_->optional[i])
-			return to_utf8(params_[i]);
+			return params_[i];
 	BOOST_ASSERT(false);
-	return string();
-}
-
-
-void InsetCommandParams::setOptions(std::string const & o)
-{
-	for (size_t i = 0; i < info_->n; ++i)
-		if (info_->optional[i]) {
-			params_[i] = from_utf8(o);
-			return;
-		}
-	lyxerr << "Programming error: set nonexisting option in "
-	       << insetType() << " inset." << endl;
-}
-
-
-void InsetCommandParams::setSecOptions(std::string const & s)
-{
-	bool first = true;
-	for (size_t i = 0; i < info_->n; ++i)
-		if (info_->optional[i]) {
-			if (first)
-				first = false;
-			else {
-				params_[i] = from_utf8(s);
-				return;
-			}
-		}
-	// Happens in InsetCitation
-	lyxerr << "Programming error: set nonexisting second option in "
-	       << insetType() << " inset." << endl;
-}
-
-
-void InsetCommandParams::setContents(std::string const & c)
-{
-	for (size_t i = 0; i < info_->n; ++i)
-		if (!info_->optional[i]) {
-			params_[i] = from_utf8(c);
-			return;
-		}
-	BOOST_ASSERT(false);
+	return docstring();
 }
 
 

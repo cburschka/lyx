@@ -1806,6 +1806,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	// Check if the label 'from' appears more than once
 	vector<docstring> labels;
 
+	string paramName;
 	if (code == CITE_CODE) {
 		BiblioInfo keys;
 		keys.fillWithBibKeys(this);
@@ -1815,8 +1816,11 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 		for (; bit != bend; ++bit)
 			// FIXME UNICODE
 			labels.push_back(bit->first);
-	} else
+		paramName = "key";
+	} else {
 		getLabelList(labels);
+		paramName = "reference";
+	}
 
 	if (std::count(labels.begin(), labels.end(), from) > 1)
 		return;
@@ -1824,7 +1828,9 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == code) {
 			InsetCommand & inset = static_cast<InsetCommand &>(*it);
-			inset.replaceContents(to_utf8(from), to_utf8(to));
+			docstring const oldValue = inset.getParam(paramName);
+			if (oldValue == from)
+				inset.setParam(paramName, to);
 		}
 	}
 }

@@ -49,8 +49,6 @@ public:
 		OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
-	///
-	void replaceContents(std::string const & from, std::string const & to);
 
 private:
 	virtual Inset * clone() const

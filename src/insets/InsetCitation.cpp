@@ -536,14 +536,4 @@ void InsetCitation::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetCitation::replaceContents(string const & from, string const & to)
-{
-	if (tokenPos(getContents(), ',', from) != -1) {
-		vector<string> items = getVectorFromString(getContents());
-		std::replace(items.begin(), items.end(), from, to);
-		setContents(getStringFromVector(items));
-	}
-}
-
-
 } // namespace lyx

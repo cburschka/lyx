@@ -131,7 +131,7 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 	bool same_content);
 
 bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
-	string const & contents)
+	docstring const & contents)
 {
 	DocIterator tmpdit = dit;
 
@@ -140,7 +140,7 @@ bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 		if (inset
 		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()
 		    && (contents.empty() ||
-		    static_cast<InsetCommand const *>(inset)->getContents() == contents)) {
+		    static_cast<InsetCommand const *>(inset)->getFirstNonOptParam() == contents)) {
 			dit = tmpdit;
 			return true;
 		}
@@ -151,11 +151,11 @@ bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 }
 
 
-/// Looks for next inset with one of the the given code
+/// Looks for next inset with one of the given codes.
 bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 	bool same_content)
 {
-	string contents;
+	docstring contents;
 	DocIterator tmpdit = dit;
 	tmpdit.forwardInset();
 	if (!tmpdit)
@@ -165,7 +165,7 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 		Inset const * inset = tmpdit.nextInset();
 		if (inset
 		    && find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end()) {
-			contents = static_cast<InsetCommand const *>(inset)->getContents();
+			contents = static_cast<InsetCommand const *>(inset)->getFirstNonOptParam();
 		}
 	}
 

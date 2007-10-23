@@ -39,26 +39,19 @@ public:
 	///
 	void read(Lexer &);
 	/// Parse the command
-	/// FIXME remove
-	void scanCommand(std::string const &);
 	///
 	void write(std::ostream &) const;
 	/// Build the complete LaTeX command
 	docstring const getCommand() const;
 	/// Return the command name
 	std::string const & getCmdName() const { return cmdName_; }
-	/// this is used by listings package.
-	std::string const getOptions() const;
-	/// FIXME remove
-	std::string const getContents() const;
 	/// Set the name to \p n. This must be a known name. All parameters
 	/// are cleared except those that exist also in the new command.
 	/// What matters here is the parameter name, not position.
 	void setCmdName(std::string const & n);
-	/// this is used by the listings package
-	void setOptions(std::string const &);
-	/// FIXME remove
-	void setContents(std::string const &);
+	/// FIXME Would be better removed, but is used in BufferView.cpp in 
+	/// ways that make removal hard.
+	docstring const getFirstNonOptParam() const;
 	/// get parameter \p name
 	docstring const & operator[](std::string const & name) const;
 	/// set parameter \p name
@@ -71,10 +64,6 @@ public:
 	void clear();
 
 private:
-	/// FIXME remove
-	std::string const getSecOptions() const;
-	/// FIXME remove
-	void setSecOptions(std::string const &);
 	///
 	struct CommandInfo {
 		/// Number of parameters

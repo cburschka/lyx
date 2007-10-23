@@ -32,6 +32,8 @@ using std::istringstream;
 using std::ostringstream;
 
 
+// FIXME Would it now be possible to use the InsetCode in 
+// place of the mailer name and recover that information?
 InsetCommand::InsetCommand(InsetCommandParams const & p,
 			   string const & mailer_name)
 	: p_(p),
@@ -165,13 +167,6 @@ void InsetCommand::edit(Cursor & cur, bool)
 {
 	if (!mailer_name_.empty())
 		InsetCommandMailer(mailer_name_, *this).showDialog(&cur.bv());
-}
-
-
-void InsetCommand::replaceContents(std::string const & from, string const & to)
-{
-	if (getContents() == from)
-		setContents(to);
 }
 
 

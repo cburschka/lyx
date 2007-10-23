@@ -24,10 +24,7 @@ namespace lyx {
 
 
 // Created by Alejandro 970222
-/** Used to insert a LaTeX command automatically
- *
- * Similar to InsetLaTeX but having control of the basic structure of a
- *   LaTeX command: \name[options]{contents}.
+/** Used to insert a LaTeX command automatically.
  */
 
 ///
@@ -57,18 +54,10 @@ public:
 	int docbook(Buffer const &, odocstream &, OutputParams const & runparams) const;
 	///
 	InsetCode lyxCode() const { return NO_CODE; }
-
 	///
 	InsetCommandParams const & params() const { return p_; }
-	/// FIXME remove
-	std::string const getContents() const { return p_.getContents(); }
-protected:
-	/// FIXME remove
-	void setContents(std::string const & c)
-	{
-		updateButtonLabel_ = true;
-		p_.setContents(c);
-	}
+	/// FIXME Remove
+	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
 public:
 	/// tell that the button label should be recomputed.
 	void refresh() { updateButtonLabel_ = true; }
@@ -85,8 +74,6 @@ public:
 	}
 	///
 	void edit(Cursor & cur, bool left);
-	/// FIXME remove
-	virtual void replaceContents(std::string const & from, std::string const & to);
 	///
 	RenderButton & button() const { return button_; }
 	///

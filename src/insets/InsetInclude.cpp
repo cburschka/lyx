@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Richard Heck (conversion to InsetCommand)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -96,10 +97,10 @@ docstring const uniqueID()
 /// the type of inclusion
 enum Types {
 	INCLUDE = 0,
- VERB = 1,
- INPUT = 2,
- VERBAST = 3,
- LISTINGS = 4,
+	VERB = 1,
+	INPUT = 2,
+	VERBAST = 3,
+	LISTINGS = 4,
 };
 
 
@@ -128,14 +129,14 @@ bool isListings(InsetCommandParams const & params)
 bool isVerbatim(InsetCommandParams const & params)
 {
 	Types const t = type(params);
-	return (t == VERB) || (t == VERBAST);
+	return t == VERB || t == VERBAST;
 }
 
 
 bool isInputOrInclude(InsetCommandParams const & params)
 {
 	Types const t = type(params);
-	return (t == INPUT) || (t == INCLUDE);
+ 	return t == INPUT || t == INCLUDE;
 }
 
 } // namespace anon
@@ -166,8 +167,8 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandMailer::string2params("include", to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			if (isListings(p)){
-				InsetListingsParams par_old(params().getOptions());
-				InsetListingsParams par_new(p.getOptions());
+				InsetListingsParams par_old(to_utf8(params()["lstparams"]));
+				InsetListingsParams par_new(to_utf8(p["lstparams"]));
 				if (par_old.getParamValue("label") !=
 				    par_new.getParamValue("label")
 				    && !par_new.getParamValue("label").empty())
@@ -483,7 +484,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		}
 	} else if (type(params()) == LISTINGS) {
 		os << '\\' << from_ascii(params().getCmdName());
-		string opt = params().getOptions();
+		string const opt = to_utf8(params()["lstparams"]);
 		// opt is set in QInclude dialog and should have passed validation.
 		InsetListingsParams params(opt);
 		if (!params.params().empty())
@@ -585,7 +586,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 
 void InsetInclude::validate(LaTeXFeatures & features) const
 {
-	string incfile(to_utf8(params()["filename"]));
+	string incfile = to_utf8(params()["filename"]);
 	string writefile;
 
 	Buffer const & buffer = features.buffer();
@@ -636,7 +637,7 @@ void InsetInclude::getLabelList(Buffer const & buffer,
 				std::vector<docstring> & list) const
 {
 	if (isListings(params())) {
-		InsetListingsParams p(params().getOptions());
+		InsetListingsParams p(to_utf8(params()["lstparams"]));
 		string label = p.getParamValue("label");
 		if (!label.empty())
 			list.push_back(from_utf8(label));
@@ -814,7 +815,7 @@ void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer,
 	ParConstIterator const & pit) const
 {
 	if (isListings(params())) {
-		InsetListingsParams p(params().getOptions());
+		InsetListingsParams p(to_utf8(params()["lstparams"]));
 		string caption = p.getParamValue("caption");
 		if (caption.empty())
 			return;
@@ -845,7 +846,7 @@ void InsetInclude::updateLabels(Buffer const & buffer, ParIterator const &)
 	if (childbuffer)
 		lyx::updateLabels(*childbuffer, true);
 	else if (isListings(params())) {
-		InsetListingsParams const par = params().getOptions();
+		InsetListingsParams const par(to_utf8(params()["lstparams"]));
 		if (par.getParamValue("caption").empty())
 			listings_label_.clear();
 		else {
