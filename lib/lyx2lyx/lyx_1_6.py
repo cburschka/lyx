@@ -581,6 +581,73 @@ def revert_href(document):
         ["\\begin_inset CommandInset url", "LatexCommand url"]
       i = i + 2
 
+def convert_include(document):
+  'Converts include insets to new format.'
+  i = 0
+  r = re.compile(r'\\begin_inset Include\s+\\([^{]+){([^}]*)}(?:\[(.*)\])?')
+  while True:
+    i = find_token(document.body, "\\begin_inset Include", i)
+    if i == -1:
+      return
+    line = document.body[i]
+    previewline = document.body[i + 1]
+    m = r.match(line)
+    if m == None:
+      document.warning("Unable to match line " + str(i) + " of body!")
+      i += 1
+      continue
+    cmd = m.group(1)
+    fn  = m.group(2)
+    opt = m.group(3)
+    insertion = ["\\begin_inset CommandInset include", 
+       "LatexCommand " + cmd, previewline,
+       "filename \"" + fn + "\""]
+    newlines = 2
+    if opt:
+      insertion.append("lstparams " + '"' + opt + '"')
+      newlines += 1
+    document.body[i : i + 2] = insertion
+    i += newlines
+
+def revert_include(document):
+  'Reverts include insets to old format.'
+  i = 0
+  r1 = re.compile('LatexCommand (.+)')
+  r2 = re.compile('filename (.+)')
+  r3 = re.compile('options (.*)')
+  while True:
+    i = find_token(document.body, "\\begin_inset CommandInset include", i)
+    if i == -1:
+      return
+    previewline = document.body[i + 1]
+    m = r1.match(document.body[i + 2])
+    if m == None:
+      document.warning("Malformed LyX document: No LatexCommand line for `" +
+        document.body[i] + "' on line " + str(i) + ".")
+      i += 1
+      continue
+    cmd = m.group(1)
+    m = r2.match(document.body[i + 3])
+    if m == None:
+      document.warning("Malformed LyX document: No filename line for `" + \
+        document.body[i] + "' on line " + str(i) + ".")
+      i += 2
+      continue
+    fn = m.group(1)
+    options = ""
+    numlines = 4
+    if (cmd == "lstinputlisting"):
+      m = r3.match(document.body[i + 4])
+      if m != None:
+        options = m.group(1)
+        numlines = 5
+    newline = "\\begin_inset Include \\" + cmd + "{" + fn + "}"
+    if options:
+      newline += ("[" + options + "]")
+    insertion = [newline, previewline]
+    document.body[i : i + numlines] = insertion
+    i += 2
+	
 
 ##
 # Conversion hub
@@ -605,10 +672,12 @@ convert = [[277, [fix_wrong_tables]],
            [292, []],
            [293, []],
            [294, [convert_pdf_options]],
-           [295, [convert_htmlurl, convert_url]]
+           [295, [convert_htmlurl, convert_url]],
+           [296, [convert_include]]
           ]
 
-revert =  [[294, [revert_href]],
+revert =  [[295, [revert_include]],
+           [294, [revert_href]],
            [293, [revert_pdf_options_2]],
            [292, [revert_inset_info]],
            [291, [revert_japanese, revert_japanese_encoding]],

@@ -156,7 +156,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 295; //Uwe: htmlurl, href
+int const LYX_FORMAT = 296; //RGH: InsetInclude changes
 
 } // namespace anon
 
@@ -2173,7 +2173,7 @@ void Buffer::loadChildDocuments() const
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() != INCLUDE_CODE)
 			continue;
-		InsetInclude const & inset = static_cast<InsetInclude const &>(*it);
+		InsetCommand const & inset = static_cast<InsetCommand const &>(*it);
 		InsetCommandParams const & ip = inset.params();
 		Buffer * child = loadIfNeeded(*this, ip);
 		if (!child)

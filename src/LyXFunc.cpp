@@ -1434,7 +1434,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					// default type is requested
 					data = "include";
 				InsetCommandParams p(INCLUDE_CODE, data);
-				data = InsetIncludeMailer::params2string(p);
+				data = InsetCommandMailer::params2string("include", p);
 				break;
 			} 
 			case BOX_CODE: {

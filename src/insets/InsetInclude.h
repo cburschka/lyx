@@ -13,7 +13,7 @@
 #define INSET_INCLUDE_H
 
 #include "BiblioInfo.h"
-#include "Inset.h"
+#include "InsetCommand.h"
 #include "InsetCommandParams.h"
 #include "RenderButton.h"
 #include "MailInset.h"
@@ -33,11 +33,10 @@ class RenderMonitoredPreview;
 
 
 /// for including tex/lyx files
-class InsetInclude : public Inset {
+class InsetInclude : public InsetCommand {
 public:
 	///
 	InsetInclude(InsetCommandParams const &);
-	~InsetInclude();
 
 	/// Override these InsetButton methods if Previewing
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -45,10 +44,6 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	virtual DisplayType display() const;
-
-	/// get the parameters
-	InsetCommandParams const & params() const;
-
 	///
 	InsetCode lyxCode() const { return INCLUDE_CODE; }
 	/** Fills \c list
@@ -78,13 +73,9 @@ public:
 	 *  \param buffer the Buffer containing this inset.
 	 */
 	std::vector<support::FileName> const &
-	getBibfilesCache(Buffer const & buffer) const;
+		getBibfilesCache(Buffer const & buffer) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
-	///
-	void write(Buffer const &, std::ostream &) const;
-	///
-	void read(Buffer const &, Lexer &);
 	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
@@ -101,8 +92,6 @@ public:
 	///
 	void addToToc(TocList &, Buffer const &, ParConstIterator const &) const;
 	///
-	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	///
 	void updateLabels(Buffer const & buffer, ParIterator const &);
 	/// child document can be embedded
 	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
@@ -118,19 +107,10 @@ private:
 	 */
 	void fileChanged() const;
 
-	friend class InsetIncludeMailer;
-
 	/// set the parameters
 	void set(InsetCommandParams const & params, Buffer const &);
 	/// get the text displayed on the button
 	docstring const getScreenLabel(Buffer const &) const;
-	///
-	void write(std::ostream &) const;
-	///
-	void read(Lexer &);
-
-	/// the parameters
-	InsetCommandParams params_;
 	/// holds the entity name that defines the file location (SGML)
 	docstring const include_label;
 
@@ -143,27 +123,6 @@ private:
 	mutable docstring listings_label_;
 };
 
-
-class InsetIncludeMailer : public MailInset {
-public:
-	///
-	InsetIncludeMailer(InsetInclude & inset);
-	///
-	virtual Inset & inset() const { return inset_; }
-	///
-	virtual std::string const & name() const { return name_; }
-	///
-	virtual std::string const inset2string(Buffer const &) const;
-	///
-	static void string2params(std::string const &, InsetCommandParams &);
-	///
-	static std::string const params2string(InsetCommandParams const &);
-private:
-	///
-	static std::string const name_;
-	///
-	InsetInclude & inset_;
-};
 
 /// return loaded Buffer or zero if the file loading did not proceed.
 Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params);

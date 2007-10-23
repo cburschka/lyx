@@ -292,9 +292,9 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			}
 			
 			case INCLUDE_CODE: {
-				InsetCommandParams iip(code);
-				InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
-				return new InsetInclude(iip);
+				InsetCommandParams icp(code);
+				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetInclude(icp);
 			}
 			
 			case INDEX_CODE:
@@ -434,8 +434,6 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			case HYPERLINK_CODE:
 				inset.reset(new InsetHyperlink(inscmd));
 				break;
-			// FIXME Currently non-functional, since InsetInclude
-			// does not write itself as a CommandInset.
 			case INCLUDE_CODE:
 				inset.reset(new InsetInclude(inscmd));
 				break;
@@ -498,10 +496,6 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf.params(),
 						    InsetBranchParams()));
-		} else if (tmptok == "Include") {
-			//FIXME
-			InsetCommandParams p(INCLUDE_CODE);
-			inset.reset(new InsetInclude(p));
 		} else if (tmptok == "Environment") {
 			lex.next();
 			inset.reset(new InsetEnvironment(buf.params(), lex.getDocString()));

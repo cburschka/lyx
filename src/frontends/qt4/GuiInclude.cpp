@@ -59,6 +59,10 @@ using support::getStringFromVector;
 using support::getVectorFromString;
 
 
+/// Flags what action is taken by Kernel::dispatch()
+static std::string const lfun_name_ = "include";
+
+
 GuiInclude::GuiInclude(LyXView & lv)
 	: GuiDialog(lv, "include"), params_(INCLUDE_CODE)
 {
@@ -325,7 +329,7 @@ bool GuiInclude::isValid()
 
 bool GuiInclude::initialiseParams(string const & data)
 {
-	InsetIncludeMailer::string2params(data, params_);
+	InsetCommandMailer::string2params(lfun_name_, data, params_);
 	return true;
 }
 
@@ -338,7 +342,7 @@ void GuiInclude::clearParams()
 
 void GuiInclude::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), InsetIncludeMailer::params2string(params_)));
+	dispatch(FuncRequest(getLfun(), InsetCommandMailer::params2string(lfun_name_, params_)));
 }
 
 
