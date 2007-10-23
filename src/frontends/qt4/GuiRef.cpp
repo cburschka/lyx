@@ -42,9 +42,6 @@ namespace frontend {
 using support::makeAbsPath;
 using support::makeDisplayPath;
 
-//FIXME It should be possible to eliminate lfun_name_
-//now and recover that information from params().insetType().
-//But let's not do that quite yet.
 /// Flags what action is taken by Kernel::dispatch()
 static std::string const lfun_name_ = "ref";
 

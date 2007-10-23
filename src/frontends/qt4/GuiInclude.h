@@ -25,6 +25,8 @@
 namespace lyx {
 namespace frontend {
 
+//FIXME This could, and therefore probably should, inherit from
+//GuiCommand.
 class GuiInclude : public GuiDialog, public Ui::IncludeUi
 {
 	Q_OBJECT

@@ -24,6 +24,9 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
+// FIXME This could, and therefore, should inherit from
+// GuiCommand. Note, e.g., that the definitions of the first
+// three private functions all just replicate what's there.
 class GuiRef : public GuiDialog, public Ui::RefUi
 {
 	Q_OBJECT
