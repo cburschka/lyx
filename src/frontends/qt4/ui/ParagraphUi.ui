@@ -154,7 +154,7 @@
          <string>This text defines the width of the paragraph label</string>
         </property>
         <property name="text" >
-         <string>&amp;Longest label</string>
+         <string>Lo&amp;ngest label</string>
         </property>
         <property name="buddy" >
          <cstring>labelWidth</cstring>
@@ -195,14 +195,14 @@
          <string>Use the default alignment for this paragraph, whatever it is.</string>
         </property>
         <property name="text" >
-         <string>Use Paragraph's Default Alignment</string>
+         <string>Use Paragraph's &amp;Default Alignment</string>
         </property>
        </widget>
       </item>
       <item row="1" column="3" >
        <widget class="QRadioButton" name="alignRightRB" >
         <property name="text" >
-         <string>&amp;Right</string>
+         <string>Ri&amp;ght</string>
         </property>
        </widget>
       </item>
@@ -216,7 +216,7 @@
       <item row="1" column="2" >
        <widget class="QRadioButton" name="alignCenterRB" >
         <property name="text" >
-         <string>&amp;Center</string>
+         <string>C&amp;enter</string>
         </property>
        </widget>
       </item>

@@ -83,7 +83,7 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 	radioMap[LYX_ALIGN_RIGHT]  = alignRightRB;
 	radioMap[LYX_ALIGN_CENTER] = alignCenterRB;
 	
-	labelMap[LYX_ALIGN_LAYOUT] = _("Use Paragraph's Default Alignment");
+	labelMap[LYX_ALIGN_LAYOUT] = qstring_to_ucs4(alignDefaultRB->text());
 	labelMap[LYX_ALIGN_BLOCK]  = _("Justified");
 	labelMap[LYX_ALIGN_LEFT]   = _("Left");
 	labelMap[LYX_ALIGN_RIGHT]  = _("Right");
