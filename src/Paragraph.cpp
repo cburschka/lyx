@@ -133,6 +133,24 @@ public:
 				   unsigned int & column);
 
 	///
+	bool latexSpecialT1(
+		char_type const c,
+		odocstream & os,
+		pos_type & i,
+		unsigned int & column);
+	///
+	bool latexSpecialTypewriter(
+		char_type const c,
+		odocstream & os,
+		pos_type & i,
+		unsigned int & column);
+	///
+	bool latexSpecialPhrase(
+		odocstream & os,
+		pos_type & i,
+		unsigned int & column);
+
+	///
 	void validate(LaTeXFeatures & features,
 		      Layout const & layout) const;
 
@@ -773,67 +791,34 @@ void Paragraph::Private::latexSpecialChar(
 		return;
 	}
 
+	if (lyxrc.fontenc == "T1" && latexSpecialT1(c, os, i, column))
+		return;
+
+	if (running_font.family() == Font::TYPEWRITER_FAMILY
+		&& latexSpecialTypewriter(c, os, i, column))
+		return;
+
+	// Otherwise, we use what LaTeX provides us.
 	switch (c) {
 	case '\\':
 		os << "\\textbackslash{}";
 		column += 15;
 		break;
-
-	case '|':
 	case '<':
+		os << "\\textless{}";
+		column += 10;
+		break;
 	case '>':
-		// In T1 encoding, these characters exist
-		if (lyxrc.fontenc == "T1") {
-			os.put(c);
-			//... but we should avoid ligatures
-			if ((c == '>' || c == '<')
-			    && i <= size() - 2
-			    && getChar(i + 1) == c) {
-				//os << "\\textcompwordmark{}";
-				//column += 19;
-				// Jean-Marc, have a look at
-				// this. I think this works
-				// equally well:
-				os << "\\,{}";
-				// Lgb
-				column += 3;
-			}
-			break;
-		}
-		// Typewriter font also has them
-		if (running_font.family() == Font::TYPEWRITER_FAMILY) {
-			os.put(c);
-			break;
-		}
-		// Otherwise, we use what LaTeX
-		// provides us.
-		switch (c) {
-		case '<':
-			os << "\\textless{}";
-			column += 10;
-			break;
-		case '>':
-			os << "\\textgreater{}";
-			column += 13;
-			break;
-		case '|':
-			os << "\\textbar{}";
-			column += 9;
-			break;
-		}
+		os << "\\textgreater{}";
+		column += 13;
 		break;
-
-	case '-': // "--" in Typewriter mode -> "-{}-"
-		if (i <= size() - 2 &&
-		    getChar(i + 1) == '-' &&
-		    running_font.family() == Font::TYPEWRITER_FAMILY) {
-			os << "-{}";
-			column += 2;
-		} else {
-			os << '-';
-		}
+	case '|':
+		os << "\\textbar{}";
+		column += 9;
 		break;
-
+	case '-':
+		os << '-';
+		break;
 	case '\"':
 		os << "\\char`\\\"{}";
 		column += 9;
@@ -874,64 +859,129 @@ void Paragraph::Private::latexSpecialChar(
 		break;
 
 	default:
-		// I assume this is hack treating typewriter as verbatim
-		// FIXME UNICODE: This can fail if c cannot be encoded
-		// in the current encoding.
-		if (running_font.family() == Font::TYPEWRITER_FAMILY) {
-			if (c != '\0')
-				os.put(c);
-			break;
-		}
 
 		// LyX, LaTeX etc.
+		if (latexSpecialPhrase(os, i, column))
+			return;
 
-		// FIXME: if we have "LaTeX" with a font
-		// change in the middle (before the 'T', then
-		// the "TeX" part is still special cased.
-		// Really we should only operate this on
-		// "words" for some definition of word
+		if (c == '\0')
+			return;
 
-		size_t pnr = 0;
-
-		for (; pnr < phrases_nr; ++pnr) {
-			if (isTextAt(special_phrases[pnr].phrase, i)) {
-				os << special_phrases[pnr].macro;
-				i += special_phrases[pnr].phrase.length() - 1;
-				column += special_phrases[pnr].macro.length() - 1;
+		Encoding const & encoding = *(runparams.encoding);
+		if (i + 1 < size()) {
+			char_type next = getChar(i + 1);
+			if (Encodings::isCombiningChar(next)) {
+				column += latexSurrogatePair(os, c, next, encoding) - 1;
+				++i;
 				break;
 			}
 		}
-
-		if (pnr == phrases_nr && c != '\0') {
-			Encoding const & encoding = *(runparams.encoding);
-			if (i + 1 < size()) {
-				char_type next = getChar(i + 1);
-				if (Encodings::isCombiningChar(next)) {
-					column += latexSurrogatePair(os, c, next, encoding) - 1;
-					++i;
-					break;
-				}
-			}
-			string preamble;
-			if (Encodings::isKnownLangChar(c, preamble)) {
-				column += knownLangChars(os, c, preamble, running_change,
-					encoding, i) - 1;
-				break;
-			}
-			docstring const latex = encoding.latexChar(c);
-			if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
-				// Prevent eating of a following
-				// space or command corruption by
-				// following characters
-				column += latex.length() + 1;
-				os << latex << "{}";
-			} else {
-				column += latex.length() - 1;
-				os << latex;
-			}
+		string preamble;
+		if (Encodings::isKnownLangChar(c, preamble)) {
+			column += knownLangChars(os, c, preamble, running_change,
+				encoding, i) - 1;
+			break;
+		}
+		docstring const latex = encoding.latexChar(c);
+		if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
+			// Prevent eating of a following
+			// space or command corruption by
+			// following characters
+			column += latex.length() + 1;
+			os << latex << "{}";
+		} else {
+			column += latex.length() - 1;
+			os << latex;
 		}
 		break;
 	}
+}
+
+
+bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
+	pos_type & i, unsigned int & column)
+{
+	switch (c) {
+	case '>':
+	case '<':
+		os.put(c);
+		// In T1 encoding, these characters exist
+		// but we should avoid ligatures
+		if (i + 1 > size() || getChar(i + 1) != c)
+			return true;
+		os << "\\,{}";
+		column += 3;
+		// Alternative code:
+		//os << "\\textcompwordmark{}";
+		//column += 19;
+		return true;
+	case '|':
+		os.put(c);
+		return true;
+	default:
+		return false;
+	}
+}
+
+
+bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & os,
+	pos_type & i, unsigned int & column)
+{
+	switch (c) {
+	case '-':
+		if (i + 1 < size() && getChar(i + 1) == '-') {
+			// "--" in Typewriter mode -> "-{}-"
+			os << "-{}";
+			column += 2;
+		} else
+			os << '-';
+		return true;
+
+	// I assume this is hack treating typewriter as verbatim
+	// FIXME UNICODE: This can fail if c cannot be encoded
+	// in the current encoding.
+
+	case '\0':
+		return true;
+
+	// Those characters are not directly supported.
+	case '\\':
+	case '\"':
+	case '$': case '&':
+	case '%': case '#': case '{':
+	case '}': case '_':
+	case '~':
+	case '^':
+	case '*': case '[':
+	case ' ':
+		return false;
+
+	default:
+		// With Typewriter font, these characters exist.
+		os.put(c);
+		return true;
+	}
+}
+
+
+bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
+	unsigned int & column)
+{
+	// FIXME: if we have "LaTeX" with a font
+	// change in the middle (before the 'T', then
+	// the "TeX" part is still special cased.
+	// Really we should only operate this on
+	// "words" for some definition of word
+
+	for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
+		if (!isTextAt(special_phrases[pnr].phrase, i))
+			continue;
+		os << special_phrases[pnr].macro;
+		i += special_phrases[pnr].phrase.length() - 1;
+		column += special_phrases[pnr].macro.length() - 1;
+		return true;
+	}
+	return false;
 }
 
 
