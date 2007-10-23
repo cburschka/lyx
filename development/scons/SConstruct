@@ -1761,7 +1761,7 @@ if 'update_po' in BUILD_TARGETS:
         ['$TOP_SRCDIR/src/insets/%s' % x for x in  src_insets_header_files + src_insets_files] + \
         ['$TOP_SRCDIR/src/frontends/%s' % x for x in  src_frontends_header_files + src_frontends_files] + \
         ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files + src_graphics_files] + \
-        ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files + src_frontends_qt4_files + src_frontends_qt4_moc_files] + \
+        ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files + src_frontends_qt4_files] + \
         ['$TOP_SRCDIR/src/client/%s' % x for x in src_client_header_files + src_client_files ]  + \
         ['$TOP_SRCDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_header_files + src_tex2lyx_files ]
     )
