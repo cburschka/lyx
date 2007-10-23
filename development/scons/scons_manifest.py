@@ -79,6 +79,7 @@ src_header_files = Split('''
     Language.h
     Layout.h
     LayoutEnums.h
+    LayoutPtr.h
     Length.h
     Lexer.h
     LyX.h
@@ -129,7 +130,6 @@ src_header_files = Split('''
     lengthcommon.h
     lfuns.h
     lyxfind.h
-    lyxlayout_ptr_fwd.h
     output.h
     output_docbook.h
     output_latex.h
