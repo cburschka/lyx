@@ -1957,8 +1957,9 @@ bool Paragraph::latex(Buffer const & buf,
 			open_font = false;
 		}
 
-		// Switch file encoding if necessary
-		if (runparams.encoding->package() == Encoding::inputenc &&
+		// Switch file encoding if necessary (and allowed)
+		if (!runparams.verbatim && 
+		    runparams.encoding->package() == Encoding::inputenc &&
 		    font.language()->encoding()->package() == Encoding::inputenc) {
 			std::pair<bool, int> const enc_switch = switchEncoding(os, bparams,
 					runparams.moving_arg, *(runparams.encoding),

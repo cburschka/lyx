@@ -253,6 +253,18 @@ TeXOnePar(Buffer const & buf,
 	BufferParams const & bparams = buf.params();
 	LayoutPtr style;
 
+	if (runparams_in.verbatim) {
+		Font const outerfont =
+			outerFont(std::distance(paragraphs.begin(), pit),
+				  paragraphs);
+		// FIXME UNICODE
+		bool need_par = pit->latex(buf, bparams, outerfont,
+					     os, texrow, runparams_in);
+		os << '\n';
+		texrow.newline();
+		return ++pit;
+	}
+
 	// In an inset with unlimited length (all in one row),
 	// force layout to default
 	if (!pit->forceDefaultParagraphs())
@@ -558,7 +570,7 @@ TeXOnePar(Buffer const & buf,
 	if (closing_rtl_ltr_environment)
 		os << "}";
 
-	if (pending_newline && !runparams.verbatim) {
+	if (pending_newline) {
 		os << '\n';
 		texrow.newline();
 	}
