@@ -109,6 +109,15 @@ public:
 	/// \return the number of characters written.
 	int knownLangChars(odocstream & os, value_type c, string & preamble,
 			   Change &, Encoding const &, pos_type &);
+
+	/// This could go to ParagraphParameters if we want to.
+	int startTeXParParams(BufferParams const &, odocstream &, TexRow &,
+			      bool) const;
+
+	/// This could go to ParagraphParameters if we want to.
+	int endTeXParParams(BufferParams const &, odocstream &, TexRow &,
+			    bool) const;
+
 	///
 	void latexInset(Buffer const &, BufferParams const &,
 				   odocstream &,
@@ -181,6 +190,12 @@ public:
 
 	///
 	InsetList insetlist_;
+
+	///
+	LayoutPtr layout_;
+
+	/// end of label
+	pos_type begin_of_body_;
 };
 
 
@@ -216,16 +231,16 @@ size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 
 
 Paragraph::Private::Private(Paragraph * owner)
-	: owner_(owner)
+	: owner_(owner), inset_owner_(0), begin_of_body_(0)
 {
-	inset_owner_ = 0;
 	id_ = paragraph_id++;
 }
 
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
-	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_)
+	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
+	  layout_(p.layout_), begin_of_body_(p.begin_of_body_)
 {
 	id_ = paragraph_id++;
 }
@@ -1034,7 +1049,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 /////////////////////////////////////////////////////////////////////
 
 Paragraph::Paragraph()
-	: begin_of_body_(0), d(new Paragraph::Private(this))
+	: d(new Paragraph::Private(this))
 {
 	itemdepth = 0;
 	d->params_.clear();
@@ -1043,9 +1058,7 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & par)
-	: itemdepth(par.itemdepth),
-	layout_(par.layout_),
-	text_(par.text_), begin_of_body_(par.begin_of_body_),
+	: itemdepth(par.itemdepth),	text_(par.text_),
 	d(new Paragraph::Private(*par.d, this))
 {
 }
@@ -1056,9 +1069,7 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 	// needed as we will destroy the private part before copying it
 	if (&par != this) {
 		itemdepth = par.itemdepth;
-		layout_ = par.layout();
 		text_ = par.text_;
-		begin_of_body_ = par.begin_of_body_;
 
 		delete d;
 		d = new Private(*par.d, this);
@@ -1332,9 +1343,9 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 
 	pos_type const body_pos = beginOfBody();
 	if (pos < body_pos)
-		font.realize(layout_->labelfont);
+		font.realize(d->layout_->labelfont);
 	else
-		font.realize(layout_->font);
+		font.realize(d->layout_->font);
 
 	font.realize(outerfont);
 	font.realize(bparams.getFont());
@@ -1570,14 +1581,14 @@ void Paragraph::applyLayout(LayoutPtr const & new_layout)
 
 pos_type Paragraph::beginOfBody() const
 {
-	return begin_of_body_;
+	return d->begin_of_body_;
 }
 
 
 void Paragraph::setBeginOfBody()
 {
 	if (layout()->labeltype != LABEL_MANUAL) {
-		begin_of_body_ = 0;
+		d->begin_of_body_ = 0;
 		return;
 	}
 
@@ -1605,20 +1616,7 @@ void Paragraph::setBeginOfBody()
 		}
 	}
 
-	begin_of_body_ = i;
-}
-
-
-// returns -1 if inset not found
-int Paragraph::getPositionOfInset(Inset const * inset) const
-{
-	// Find the entry.
-	InsetList::const_iterator it = d->insetlist_.begin();
-	InsetList::const_iterator end = d->insetlist_.end();
-	for (; it != end; ++it)
-		if (it->inset == inset)
-			return it->pos;
-	return -1;
+	d->begin_of_body_ = i;
 }
 
 
@@ -1691,21 +1689,20 @@ void adjust_row_column(string const & str, TexRow & texrow, int & column)
 } // namespace anon
 
 
-// This could go to ParagraphParameters if we want to
-int Paragraph::startTeXParParams(BufferParams const & bparams,
+int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 				 odocstream & os, TexRow & texrow,
 				 bool moving_arg) const
 {
 	int column = 0;
 
-	if (params().noindent()) {
+	if (params_.noindent()) {
 		os << "\\noindent ";
 		column += 10;
 	}
 	
-	LyXAlignment const curAlign = params().align();
+	LyXAlignment const curAlign = params_.align();
 
-	if (curAlign == layout()->align)
+	if (curAlign == layout_->align)
 		return column;
 
 	switch (curAlign) {
@@ -1732,25 +1729,25 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		break;
 	case LYX_ALIGN_LEFT: {
 		string output;
-		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\begin", "flushleft", ownerCode());
+		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
+			output = corrected_env("\\begin", "flushleft", owner_->ownerCode());
 		else
-			output = corrected_env("\\begin", "flushright", ownerCode());
+			output = corrected_env("\\begin", "flushright", owner_->ownerCode());
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
-		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\begin", "flushright", ownerCode());
+		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
+			output = corrected_env("\\begin", "flushright", owner_->ownerCode());
 		else
-			output = corrected_env("\\begin", "flushleft", ownerCode());
+			output = corrected_env("\\begin", "flushleft", owner_->ownerCode());
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
-		output = corrected_env("\\begin", "center", ownerCode());
+		output = corrected_env("\\begin", "center", owner_->ownerCode());
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
@@ -1761,14 +1758,13 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 }
 
 
-// This could go to ParagraphParameters if we want to
-int Paragraph::endTeXParParams(BufferParams const & bparams,
+int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 			       odocstream & os, TexRow & texrow,
 			       bool moving_arg) const
 {
 	int column = 0;
 
-	switch (params().align()) {
+	switch (params_.align()) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
@@ -1784,7 +1780,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 		break;
 	}
 
-	switch (params().align()) {
+	switch (params_.align()) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
@@ -1792,25 +1788,25 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 		break;
 	case LYX_ALIGN_LEFT: {
 		string output;
-		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\n\\par\\end", "flushleft", ownerCode());
+		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
+			output = corrected_env("\n\\par\\end", "flushleft", owner_->ownerCode());
 		else
-			output = corrected_env("\n\\par\\end", "flushright", ownerCode());
+			output = corrected_env("\n\\par\\end", "flushright", owner_->ownerCode());
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
-		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\n\\par\\end", "flushright", ownerCode());
+		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
+			output = corrected_env("\n\\par\\end", "flushright", owner_->ownerCode());
 		else
-			output = corrected_env("\n\\par\\end", "flushleft", ownerCode());
+			output = corrected_env("\n\\par\\end", "flushleft", owner_->ownerCode());
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
-		output = corrected_env("\n\\par\\end", "center", ownerCode());
+		output = corrected_env("\n\\par\\end", "center", owner_->ownerCode());
 		os << from_ascii(output);
 		adjust_row_column(output, texrow, column);
 		break;
@@ -1885,7 +1881,7 @@ bool Paragraph::latex(Buffer const & buf,
 			++column;
 		}
 		if (!asdefault)
-			column += startTeXParParams(bparams, os, texrow,
+			column += d->startTeXParParams(bparams, os, texrow,
 						    runparams.moving_arg);
 	}
 
@@ -1915,7 +1911,7 @@ bool Paragraph::latex(Buffer const & buf,
 			}
 
 			if (!asdefault)
-				column += startTeXParParams(bparams, os,
+				column += d->startTeXParParams(bparams, os,
 							    texrow,
 							    runparams.moving_arg);
 		}
@@ -2068,7 +2064,7 @@ bool Paragraph::latex(Buffer const & buf,
 	}
 
 	if (!asdefault) {
-		column += endTeXParParams(bparams, os, texrow,
+		column += d->endTeXParParams(bparams, os, texrow,
 					  runparams.moving_arg);
 	}
 
@@ -2378,13 +2374,13 @@ int Paragraph::id() const
 
 LayoutPtr const & Paragraph::layout() const
 {
-	return layout_;
+	return d->layout_;
 }
 
 
 void Paragraph::layout(LayoutPtr const & new_layout)
 {
-	layout_ = new_layout;
+	d->layout_ = new_layout;
 }
 
 

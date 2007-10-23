@@ -79,8 +79,6 @@ public:
 	};
 	///
 	typedef char_type value_type;
-	///
-	typedef std::vector<value_type> TextContainer;
 
 	///
 	Paragraph();
@@ -92,7 +90,6 @@ public:
 	~Paragraph();
 	///
 	int id() const;
-
 
 	///
 	Language const * getParLanguage(BufferParams const &) const;
@@ -117,15 +114,6 @@ public:
 		   depth_type & depth) const;
 	///
 	void validate(LaTeXFeatures &) const;
-
-	///
-	int startTeXParParams(BufferParams const &, odocstream &, TexRow &,
-			      bool) const;
-
-	///
-	int endTeXParParams(BufferParams const &, odocstream &, TexRow &,
-			    bool) const;
-
 
 	///
 	bool latex(Buffer const &, BufferParams const &,
@@ -345,9 +333,6 @@ public:
 	/// Note that digits in particular are considered as letters
 	bool isLetter(pos_type pos) const;
 
-	/// returns -1 if inset not found
-	int getPositionOfInset(Inset const * inset) const;
-
 	/// returns true if at least one line break or line separator has been deleted
 	/// at the beginning of the paragraph (either physically or logically)
 	bool stripLeadingSpaces(bool trackChanges);
@@ -381,15 +366,13 @@ public:
 	int numberOfOptArgs() const;
 
 private:
-	///
-	LayoutPtr layout_;
 	/**
 	 * Keeping this here instead of in the pimpl makes LyX >10% faster
 	 * for average tasks as buffer loading/switching etc.
 	 */
+	typedef std::vector<value_type> TextContainer;
+	///
 	TextContainer text_;
-	/// end of label
-	pos_type begin_of_body_;
 
 	/// Pimpl away stuff
 	class Private;
