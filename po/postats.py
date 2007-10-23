@@ -105,6 +105,8 @@ def run_msgfmt(pofile):
     prop["langcode"] = os.path.basename(pofile)[:-3]
     prop["date"] = header['PO-Revision-Date'].split()[0]
     prop["email"] = header['Last-Translator'].split('<')[1][:-1]
+    prop["email"] = prop["email"].replace("@", " () ")
+    prop["email"] = prop["email"].replace(".", " ! ")
     translator = header['Last-Translator'].split('<')[0].strip()
     try:
         prop["translator"] = translator.decode(charset).encode('ascii','xmlcharrefreplace')
