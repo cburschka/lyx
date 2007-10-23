@@ -16,7 +16,7 @@
 #ifndef PARAGRAPH_H
 #define PARAGRAPH_H
 
-#include "lyxlayout_ptr_fwd.h"
+#include "LayoutPtr.h"
 
 #include "insets/InsetCode.h"
 

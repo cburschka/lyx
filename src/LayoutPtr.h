@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file lyxlayout_ptr_fwd.h
+ * \file LayoutPtr.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYXLAYOUT_PTR_FWD_H
-#define LYXLAYOUT_PTR_FWD_H
+#ifndef LAYOUTPTR_H
+#define LAYOUTPTR_H
 
 #include <boost/shared_ptr.hpp>
 

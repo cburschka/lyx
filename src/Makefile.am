@@ -176,6 +176,7 @@ liblyxcore_la_SOURCES = \
 	LaTeX.h \
 	Layout.cpp \
 	Layout.h \
+	LayoutPtr.h \
 	LayoutEnums.h \
 	Length.cpp \
 	Length.h \
@@ -192,7 +193,6 @@ liblyxcore_la_SOURCES = \
 	LyXFunc.cpp \
 	LyXFunc.h \
 	LyX.h \
-	lyxlayout_ptr_fwd.h \
 	LyXRC.cpp \
 	LyXRC.h \
 	Server.cpp \

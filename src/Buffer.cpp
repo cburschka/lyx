@@ -431,7 +431,7 @@ void Buffer::setReadonly(bool const flag)
 {
 	if (pimpl_->read_only != flag) {
 		pimpl_->read_only = flag;
-		readonly(flag);
+		setReadOnly(flag);
 	}
 }
 
@@ -1923,14 +1923,14 @@ void Buffer::message(docstring const & msg) const
 void Buffer::setBusy(bool on) const
 {
 	if (gui_)
-		gui_->busy(on);
+		gui_->setBusy(on);
 }
 
 
-void Buffer::readonly(bool on) const
+void Buffer::setReadOnly(bool on) const
 {
 	if (gui_)
-		gui_->readonly(on);
+		gui_->setReadOnly(on);
 }
 
 
@@ -2203,8 +2203,8 @@ string Buffer::bufferFormat() const
 }
 
 
-bool Buffer::doExport(string const & format,
-	bool put_in_tempdir, string & result_file)
+bool Buffer::doExport(string const & format, bool put_in_tempdir,
+	string & result_file)
 {
 	string backend_format;
 	OutputParams runparams(&params().encoding());

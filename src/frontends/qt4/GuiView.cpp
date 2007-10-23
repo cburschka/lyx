@@ -734,7 +734,7 @@ void GuiViewBase::showView()
 }
 
 
-void GuiViewBase::busy(bool yes)
+void GuiViewBase::setBusy(bool yes)
 {
 	GuiWorkArea * wa = d.tab_widget_->currentWorkArea();
 	if (wa) {

@@ -13,7 +13,7 @@
 #define INSETENVIRONMENT_H
 
 #include "InsetText.h"
-#include "lyxlayout_ptr_fwd.h"
+#include "LayoutPtr.h"
 
 
 namespace lyx {

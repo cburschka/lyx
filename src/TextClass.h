@@ -13,7 +13,7 @@
 #include "Color.h"
 #include "Font.h"
 #include "LayoutEnums.h"
-#include "lyxlayout_ptr_fwd.h"
+#include "LayoutPtr.h"
 
 #include <boost/shared_ptr.hpp>
 

@@ -229,10 +229,10 @@ void WorkArea::resizeBufferView()
 {
 	// WARNING: Please don't put any code that will trigger a repaint here!
 	// We are already inside a paint event.
-	lyx_view_->busy(true);
+	lyx_view_->setBusy(true);
 	buffer_view_->resize(width(), height());
 	lyx_view_->updateLayoutChoice();
-	lyx_view_->busy(false);
+	lyx_view_->setBusy(false);
 }
 
 

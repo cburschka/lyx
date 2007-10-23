@@ -66,7 +66,7 @@ public:
 		unsigned int iconSizeXY,
 		const std::string & geometryArg);
 	virtual void saveGeometry();
-	virtual void busy(bool);
+	virtual void setBusy(bool);
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
 	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
 	virtual void updateStatusBar();

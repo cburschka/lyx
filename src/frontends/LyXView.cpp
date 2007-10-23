@@ -105,7 +105,7 @@ Buffer const * LyXView::buffer() const
 void LyXView::setBuffer(Buffer * newBuffer)
 {
 	BOOST_ASSERT(newBuffer);
-	busy(true);
+	setBusy(true);
 
 	WorkArea * wa = workArea(*newBuffer);
 	if (wa == 0) {
@@ -119,20 +119,20 @@ void LyXView::setBuffer(Buffer * newBuffer)
 	connectBufferView(wa->bufferView());
 	setCurrentWorkArea(wa);
 
-	busy(false);
+	setBusy(false);
 }
 
 
 Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 {
-	busy(true);
+	setBusy(true);
 
 	Buffer * newBuffer = checkAndLoadLyXFile(filename);
 
 	if (!newBuffer) {
 		message(_("Document not loaded."));
 		updateStatusBar();
-		busy(false);
+		setBusy(false);
 		return 0;
 	}
 
@@ -153,7 +153,7 @@ Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 	if (tolastfiles)
 		LyX::ref().session().lastFiles().add(filename);
 
-	busy(false);
+	setBusy(false);
 	return newBuffer;
 }
 
@@ -218,7 +218,7 @@ void LyXView::updateDialog(string const & name, string const & data)
 }
 
 
-void LyXView::showReadonly(bool)
+void LyXView::setReadOnly(bool)
 {
 	updateWindowTitle();
 	getDialogs().updateBufferDependent(false);

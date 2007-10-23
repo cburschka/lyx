@@ -58,9 +58,9 @@ public:
 	/// This function is called when some message shows up.
 	virtual void message(docstring const &) = 0;
 	/// This function is called when the buffer busy status change.
-	virtual void busy(bool) = 0;
+	virtual void setBusy(bool) = 0;
 	/// This function is called when the buffer readonly status change.
-	virtual void readonly(bool) = 0;
+	virtual void setReadOnly(bool) = 0;
 	/// Update window titles of all users.
 	virtual void updateTitles() = 0;
 	/// Reset autosave timers for all users.

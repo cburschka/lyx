@@ -107,7 +107,7 @@ public:
 	virtual void saveGeometry() = 0;
 
 	/// show busy cursor
-	virtual void busy(bool) = 0;
+	virtual void setBusy(bool) = 0;
 
 	//@{ generic accessor functions
 
@@ -186,10 +186,8 @@ public:
 	void structureChanged() { updateToc(); }
 	/// This function is called when some parsing error shows up.
 	void errors(std::string const & err) { showErrorList(err); }
-	/// This function is called when the buffer busy status change.
-	//void busy(bool);
 	/// This function is called when the buffer readonly status change.
-	void readonly(bool on) { showReadonly(on); }
+	void setReadOnly(bool on);
 	/// Update window titles of all users.
 	void updateTitles() { updateWindowTitle(); }
 	/// Reset autosave timers for all users.
@@ -230,9 +228,6 @@ private:
 	void updateDialog(std::string const & name,
 		std::string const & data);
 	//@}
-
-	/// notify readonly status
-	void showReadonly(bool);
 
 protected:
 	///
