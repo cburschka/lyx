@@ -10,6 +10,16 @@
  * Full author contact details are available in file CREDITS.
  */
 
+/*
+	The code for the ShortcutEdit class was adapted from
+	kkeysequencewidget.cpp, which is part of the KDE libraries.
+	Copyright (C) 1998 Mark Donohoe <donohoe@kde.org>
+	Copyright (C) 2001 Ellis Whitehead <ellis@kde.org>
+	Copyright (C) 2007 Andreas Hartmetz <ahartmetz@gmail.com>
+	Licensed under version 2 of the General Public License and
+	used here in accordance with the terms of that license.
+*/
+
 #include <config.h>
 
 #include "GuiPrefs.h"
