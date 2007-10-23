@@ -94,6 +94,11 @@ GuiParagraph::GuiParagraph(LyXView & lv)
 	radioMap[LYX_ALIGN_RIGHT]  = alignRightRB;
 	radioMap[LYX_ALIGN_CENTER] = alignCenterRB;
 
+	labelMap[LYX_ALIGN_BLOCK]  = _("Justified");
+	labelMap[LYX_ALIGN_LEFT]   = _("Left");
+	labelMap[LYX_ALIGN_RIGHT]  = _("Right");
+	labelMap[LYX_ALIGN_CENTER] = _("Center");
+
 	const_cast<QString &>(alignDefaultLabel) = alignDefaultRB->text();
 }
 
@@ -114,8 +119,8 @@ void GuiParagraph::checkAlignmentRadioButtons()
 	if (haveMulitParSelection())
 		alignDefaultRB->setText(alignDefaultLabel);
 	else
-		alignDefaultRB->setText(alignDefaultLabel + " (" 
-			+ radioMap[alignDefault()]->text() + ")");
+		alignDefaultRB->setText(alignDefaultLabel + " ("
+			+ toqstr(labelMap[alignDefault()]) + ")");
 }
 
 

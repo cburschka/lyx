@@ -57,6 +57,8 @@ private:
 	///
 	typedef std::map<LyXAlignment, QRadioButton *> RadioMap;
 	RadioMap radioMap;
+	typedef std::map<LyXAlignment, docstring> AlignmentLabels;
+	AlignmentLabels labelMap;
 
 	QString const alignDefaultLabel;
 
