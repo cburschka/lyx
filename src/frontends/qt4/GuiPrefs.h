@@ -5,6 +5,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Bo Peng
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -347,14 +349,24 @@ public Q_SLOTS:
 };
 
 
-class GuiShortcutDialog : public QDialog, public Ui::ShortcutUi
+/**
+ * A lineedit for inputting shortcuts
+ */
+class ShortcutEdit : public QLineEdit {
+	Q_OBJECT
+public:
+	ShortcutEdit(QWidget * parent) : QLineEdit(parent) {}
+protected Q_SLOTS:
+	void keyPressEvent(QKeyEvent * e);
+	bool event(QEvent* e);
+};
+
+
+class GuiShortcutDialog : public QDialog, public Ui::shortcutUi
 {
 public:
-	GuiShortcutDialog(QWidget * parent) : QDialog(parent)
-	{
-		Ui::ShortcutUi::setupUi(this);
-		QDialog::setModal(true);
-	}
+	GuiShortcutDialog(QWidget * parent);
+	ShortcutEdit * shortcutLE;
 };
 
 
@@ -390,6 +402,7 @@ public Q_SLOTS:
 	///
 	void on_shortcutsTW_itemSelectionChanged();
 	void shortcut_okPB_pressed();
+	void shortcut_clearPB_pressed();
 	void on_shortcutsTW_itemDoubleClicked();
 
 private:

@@ -4,6 +4,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Bo Peng
+ * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -24,6 +26,7 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "GuiFontExample.h"
+#include "GuiKeySymbol.h"
 #include "KeyMap.h"
 #include "KeySequence.h"
 #include "LyXAction.h"
@@ -1692,6 +1695,74 @@ void PrefUserInterface::on_loadWindowSizeCB_toggled(bool loadwindowsize)
 //
 /////////////////////////////////////////////////////////////////////
 
+
+void ShortcutEdit::keyPressEvent(QKeyEvent * e)
+{
+	int keyQt = e->key();
+	switch(e->key()) {
+		case Qt::Key_AltGr: //or else we get unicode salad
+		case Qt::Key_Shift:
+		case Qt::Key_Control:
+		case Qt::Key_Alt:
+		case Qt::Key_Meta:
+			break;
+		default:
+			if (keyQt) {
+				uint modifierKeys = e->modifiers();
+				
+				QString txt;
+				if (modifierKeys & Qt::SHIFT)
+					txt += "S-";
+				if (modifierKeys & Qt::CTRL)
+					txt += "C-";
+				if (modifierKeys & Qt::ALT)
+					txt += "M-";
+
+				KeySymbol sym;
+				setKeySymbol(&sym, e);
+				txt += toqstr(sym.getSymbolName());
+
+				if (text().isEmpty())
+					setText(txt);
+				else
+					setText(text() + " " + txt);
+			}
+	}
+}
+
+
+//prevent Qt from special casing Tab and Backtab
+bool ShortcutEdit::event(QEvent* e)
+{
+	if (e->type() == QEvent::ShortcutOverride)
+		return false;
+
+	if (e->type() == QEvent::KeyPress) {
+		keyPressEvent(static_cast<QKeyEvent *>(e));
+		return true;
+	}
+
+	return QLineEdit::event(e);
+}
+
+
+GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
+{
+	Ui::shortcutUi::setupUi(this);
+	QDialog::setModal(true);
+	// adapted from ui_ShortcutUi.h
+	shortcutLE = new ShortcutEdit(parent);
+	shortcutLE->setObjectName(QString::fromUtf8("shortcutLE"));
+	QSizePolicy sp(static_cast<QSizePolicy::Policy>(7), static_cast<QSizePolicy::Policy>(0));
+	sp.setHorizontalStretch(0);
+	sp.setVerticalStretch(0);
+	sp.setHeightForWidth(shortcutLE->sizePolicy().hasHeightForWidth());
+	shortcutLE->setSizePolicy(sp);
+	gridLayout->addWidget(shortcutLE, 1, 1, 1, 1);
+	QWidget::setTabOrder(shortcutLE, okPB);
+}
+
+
 PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("Shortcuts"), form, parent)
 {
@@ -1723,6 +1794,8 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(shortcut_->cancelPB, SIGNAL(clicked()), 
 		shortcut_, SLOT(reject()));
+	connect(shortcut_->clearPB, SIGNAL(clicked()),
+		this, SLOT(shortcut_clearPB_pressed()));
 	connect(shortcut_->okPB, SIGNAL(clicked()), 
 		this, SLOT(shortcut_okPB_pressed()));
 }
@@ -2070,6 +2143,13 @@ void PrefShortcuts::shortcut_okPB_pressed()
 			_("Can not insert shortcut to the list"));
 		return;
 	}
+}
+
+
+void PrefShortcuts::shortcut_clearPB_pressed()
+{
+	shortcut_->shortcutLE->clear();
+	shortcut_->shortcutLE->setFocus();
 }
 
 
