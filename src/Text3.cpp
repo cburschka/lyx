@@ -732,15 +732,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORD_UPCASE:
-		changeCase(cur, Text::text_uppercase);
+		changeCase(cur, text_uppercase);
 		break;
 
 	case LFUN_WORD_LOWCASE:
-		changeCase(cur, Text::text_lowercase);
+		changeCase(cur, text_lowercase);
 		break;
 
 	case LFUN_WORD_CAPITALIZE:
-		changeCase(cur, Text::text_capitalization);
+		changeCase(cur, text_capitalization);
 		break;
 
 	case LFUN_CHARS_TRANSPOSE:
