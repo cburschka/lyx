@@ -159,6 +159,7 @@ End
 
 Style Corollary
 	LabelCounter          corollary
+	DependsOn	      ""
 	LabelString           "Corollary \arabic{corollary}."
 	Preamble
 	  \theoremstyle{plain}
@@ -169,6 +170,7 @@ End
 
 Style Lemma
 	LabelCounter          lemma
+	DependsOn	      ""
 	LabelString           "Lemma \arabic{lemma}."
 	Preamble
 	  \theoremstyle{plain}
@@ -179,6 +181,7 @@ End
 
 Style Proposition
 	LabelCounter          proposition
+	DependsOn	      ""
 	LabelString           "Proposition \arabic{proposition}."
 	Preamble
 	  \theoremstyle{plain}
@@ -189,6 +192,7 @@ End
 
 Style Conjecture
 	LabelCounter          conjecture
+	DependsOn	      ""
 	LabelString           "Conjecture \arabic{conjecture}."
 	Preamble
 	  \theoremstyle{plain}
@@ -199,6 +203,7 @@ End
 
 Style Criterion
 	LabelCounter          criterion
+	DependsOn	      ""
 	LabelString           "Criterion \arabic{criterion}."
 	Preamble
 	  \theoremstyle{plain}
@@ -209,6 +214,7 @@ End
 
 Style Algorithm
 	LabelCounter          algorithm
+	DependsOn	      ""
 	LabelString           "Algorithm \arabic{algorithm}."
 	Preamble
 	  \theoremstyle{plain}
@@ -219,6 +225,7 @@ End
 
 Style Fact
 	LabelCounter          fact
+	DependsOn	      ""
 	LabelString           "Fact \arabic{fact}."
 	Preamble
 	  \theoremstyle{plain}
@@ -229,6 +236,7 @@ End
 
 Style Axiom
 	LabelCounter          axiom
+	DependsOn	      ""
 	LabelString           "Axiom \arabic{axiom}."
 	Preamble
 	  \theoremstyle{plain}
@@ -239,6 +247,7 @@ End
 
 Style Definition
 	LabelCounter          definition
+	DependsOn	      ""
 	LabelString           "Definition \arabic{definition}."
 	Preamble
 	 \theoremstyle{definition}
@@ -249,6 +258,7 @@ End
 
 Style Example
 	LabelCounter          example
+	DependsOn	      ""
 	LabelString           "Example \arabic{example}."
 	Preamble
 	 \theoremstyle{definition}
@@ -259,6 +269,7 @@ End
 
 Style Condition
 	LabelCounter          condition
+	DependsOn	      ""
 	LabelString           "Condition \arabic{condition}."
 	Preamble
 	 \theoremstyle{definition}
@@ -269,6 +280,7 @@ End
 
 Style Problem
 	LabelCounter          problem
+	DependsOn	      ""
 	LabelString           "Problem \arabic{problem}."
 	Preamble
 	 \theoremstyle{definition}
@@ -279,6 +291,7 @@ End
 
 Style Exercise
 	LabelCounter          exercise
+	DependsOn	      ""
 	LabelString           "Exercise \arabic{exercise}."
 	Preamble
 	 \theoremstyle{definition}
@@ -289,6 +302,7 @@ End
 
 Style Remark
 	LabelCounter          remark
+	DependsOn	      ""
 	LabelString           "Remark \arabic{remark}."
 	Preamble
 	  \theoremstyle{remark}
@@ -299,6 +313,7 @@ End
 
 Style Claim
 	LabelCounter          claim
+	DependsOn	      ""
 	LabelString           "Claim \arabic{claim}."
 	Preamble
 	  \theoremstyle{remark}
@@ -309,6 +324,7 @@ End
 
 Style Note
 	LabelCounter          note
+	DependsOn	      ""
 	LabelString           "Note \arabic{note}."
 	Preamble
 	  \theoremstyle{remark}
@@ -319,6 +335,7 @@ End
 
 Style Notation
 	LabelCounter          notation
+	DependsOn	      ""
 	LabelString           "Notation \arabic{notation}."
 	Preamble
 	  \theoremstyle{remark}
@@ -329,6 +346,7 @@ End
 
 Style Summary
 	LabelCounter          summary
+	DependsOn	      ""
 	LabelString           "Summary \arabic{summary}."
 	Preamble
 	  \theoremstyle{remark}
@@ -339,6 +357,7 @@ End
 
 Style Acknowledgement
 	LabelCounter          acknowledgement
+	DependsOn	      ""
 	LabelString           "Acknowledgement \arabic{acknowledgement}."
 	Preamble
 	  \theoremstyle{remark}
@@ -349,6 +368,7 @@ End
 
 Style Conclusion
 	LabelCounter          conclusion
+	DependsOn	      ""
 	LabelString           "Conclusion \arabic{conclusion}."
 	Preamble
 	  \theoremstyle{remark}
@@ -359,6 +379,7 @@ End
 
 Style Assumption
 	LabelCounter          assumption
+	DependsOn	      ""
 	LabelString           "Assumption \arabic{assumption}."
 	Preamble
 	  \theoremstyle{plain}
