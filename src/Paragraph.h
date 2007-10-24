@@ -71,9 +71,8 @@ enum TextCase {
 
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph
-/// \todo FIXME: any reference to ParagraphMetrics (including inheritance)
-/// should go in order to complete the Model/View separation of this class.
-class Paragraph  {
+class Paragraph
+{
 public:
 	///
 	Paragraph();
@@ -127,10 +126,6 @@ public:
 				   odocstream & os,
 				   OutputParams const & runparams) const;
 
-	/// Checks if the paragraph contains only text and no inset or font change.
-	bool onlyText(Buffer const & buf, Font const & outerfont,
-		      pos_type initial) const;
-
 	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
 				 odocstream &,
@@ -165,9 +160,6 @@ public:
 
 	/// This is the item depth, only used by enumerate and itemize
 	signed char itemdepth;
-
-	///
-	InsetBibitem * bibitem() const;  // ale970302
 
 	/// look up change at given pos
 	Change const & lookupChange(pos_type pos) const;
@@ -353,9 +345,6 @@ public:
 	/// For each author, set 'used' to true if there is a change
 	/// by this author in the paragraph.
 	void checkAuthors(AuthorList const & authorList);
-
-	/// return the number of InsetOptArg in a paragraph
-	int numberOfOptArgs() const;
 
 	///
 	void changeCase(BufferParams const & bparams, pos_type pos,

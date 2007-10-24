@@ -169,6 +169,10 @@ public:
 	void validate(LaTeXFeatures & features,
 		      Layout const & layout) const;
 
+	/// Checks if the paragraph contains only text and no inset or font change.
+	bool onlyText(Buffer const & buf, Font const & outerfont,
+		      pos_type initial) const;
+
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(std::string const & str, pos_type pos) const;
 	
@@ -1620,17 +1624,6 @@ void Paragraph::setBeginOfBody()
 }
 
 
-InsetBibitem * Paragraph::bibitem() const
-{
-	if (!d->insetlist_.empty()) {
-		Inset * inset = d->insetlist_.begin()->inset;
-		if (inset->lyxCode() == BIBITEM_CODE)
-			return static_cast<InsetBibitem *>(inset);
-	}
-	return 0;
-}
-
-
 bool Paragraph::forceDefaultParagraphs() const
 {
 	return inInset() && inInset()->forceDefaultParagraphs(0);
@@ -2178,13 +2171,13 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputPara
 }
 
 
-bool Paragraph::onlyText(Buffer const & buf, Font const & outerfont, pos_type initial) const
+bool Paragraph::Private::onlyText(Buffer const & buf, Font const & outerfont, pos_type initial) const
 {
 	Font font_old;
-
-	for (pos_type i = initial; i < size(); ++i) {
-		Font font = getFont(buf.params(), i, outerfont);
-		if (isInset(i))
+	pos_type size = text_.size();
+	for (pos_type i = initial; i < size; ++i) {
+		Font font = owner_->getFont(buf.params(), i, outerfont);
+		if (text_[i] == META_INSET)
 			return false;
 		if (i != initial && font != font_old)
 			return false;
@@ -2207,7 +2200,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	Font font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
-	if (style->pass_thru && !onlyText(buf, outerfont, initial))
+	if (style->pass_thru && !d->onlyText(buf, outerfont, initial))
 		os << "]]>";
 
 	// parsing main loop
@@ -2245,7 +2238,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 	if (style->free_spacing)
 		os << '\n';
-	if (style->pass_thru && !onlyText(buf, outerfont, initial))
+	if (style->pass_thru && !d->onlyText(buf, outerfont, initial))
 		os << "<![CDATA[";
 }
 
@@ -2585,19 +2578,6 @@ Inset * Paragraph::getInset(pos_type pos)
 Inset const * Paragraph::getInset(pos_type pos) const
 {
 	return d->insetlist_.get(pos);
-}
-
-
-int Paragraph::numberOfOptArgs() const
-{
-	int num = 0;
-	InsetList::const_iterator it = insetList().begin();
-	InsetList::const_iterator end = insetList().end();
-	for (; it != end ; ++it) {
-		if (it->inset->lyxCode() == OPTARG_CODE)
-			++num;
-	}
-	return num;
 }
 
 

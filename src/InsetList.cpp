@@ -147,4 +147,29 @@ InsetList::InsetList(InsetList const & il)
 		it->inset = it->inset->clone();
 }
 
+
+pos_type InsetList::find(InsetCode code, pos_type startpos) const
+{
+	List::const_iterator it = insetIterator(startpos);
+	List::const_iterator end = list_.end();
+	for (; it != end ; ++it) {
+		if (it->inset->lyxCode() == code)
+			return it->pos;
+	}
+	return -1;
+}
+
+
+int InsetList::count(InsetCode code, pos_type startpos) const
+{
+	int num = 0;
+	List::const_iterator it = insetIterator(startpos);
+	List::const_iterator end = list_.end();
+	for (; it != end ; ++it) {
+		if (it->inset->lyxCode() == code)
+			++num;
+	}
+	return num;
+}
+
 } // namespace lyx

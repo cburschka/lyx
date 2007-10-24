@@ -33,6 +33,7 @@
 #include "factory.h"
 #include "FuncRequest.h"
 #include "gettext.h"
+#include "InsetList.h"
 #include "Intl.h"
 #include "Language.h"
 #include "Layout.h"
@@ -1742,7 +1743,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_OPTIONAL_INSERT:
 		code = OPTARG_CODE;
-		enable = cur.paragraph().numberOfOptArgs()
+		enable = cur.paragraph().insetList().count(OPTARG_CODE)
 			< cur.paragraph().layout()->optionalargs;
 		break;
 	case LFUN_ENVIRONMENT_INSERT:

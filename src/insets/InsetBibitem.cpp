@@ -20,6 +20,7 @@
 #include "FuncRequest.h"
 #include "Font.h"
 #include "InsetIterator.h"
+#include "InsetList.h"
 #include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
@@ -149,26 +150,29 @@ docstring const bibitemWidest(Buffer const & buffer)
 	ParagraphList::const_iterator end = buffer.paragraphs().end();
 
 	for (; it != end; ++it) {
-		if (it->bibitem()) {
-			docstring const label = it->bibitem()->getBibLabel();
+		if (it->insetList().empty())
+			continue;
+		Inset * inset = it->insetList().begin()->inset;
+		if (inset->lyxCode() != BIBITEM_CODE)
+			continue;
 
-			// FIXME: we can't be sure using the following that the GUI
-			// version and the command-line version will give the same
-			// result.
-			//
-			//int const wx = use_gui?
-			//	theFontMetrics(font).width(label): label.size();
-			//
-			// So for now we just use the label size in order to be sure
-			// that GUI and no-GUI gives the same bibitem (even if that is
-			// potentially the wrong one.
-			int const wx = label.size();
+		bitem = static_cast<InsetBibitem const *>(inset);
+		docstring const label = bitem->getBibLabel();
 
-			if (wx > w) {
-				w = wx;
-				bitem = it->bibitem();
-			}
-		}
+		// FIXME: we can't be sure using the following that the GUI
+		// version and the command-line version will give the same
+		// result.
+		//
+		//int const wx = use_gui?
+		//	theFontMetrics(font).width(label): label.size();
+		//
+		// So for now we just use the label size in order to be sure
+		// that GUI and no-GUI gives the same bibitem (even if that is
+		// potentially the wrong one.
+		int const wx = label.size();
+
+		if (wx > w)
+			w = wx;
 	}
 
 	if (bitem && !bitem->getBibLabel().empty())

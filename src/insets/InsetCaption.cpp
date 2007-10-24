@@ -16,6 +16,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Color.h"
 #include "Counters.h"
 #include "Cursor.h"
 #include "BufferView.h"
@@ -24,7 +25,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "Color.h"
+#include "InsetList.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
 #include "OutputParams.h"
@@ -203,7 +204,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_OPTIONAL_INSERT:
-		status.enabled(cur.paragraph().numberOfOptArgs() == 0);
+		status.enabled(cur.paragraph().insetList().find(OPTARG_CODE) == -1);
 		return true;
 
 	default:

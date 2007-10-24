@@ -12,6 +12,8 @@
 #ifndef INSET_LIST_H
 #define INSET_LIST_H
 
+#include "insets/InsetCode.h"
+
 #include "support/types.h"
 
 #include <vector>
@@ -75,6 +77,21 @@ public:
 	void increasePosAfterPos(pos_type pos);
 	///
 	void decreasePosAfterPos(pos_type pos);
+
+	/// search for next occurence of an \c Inset type.
+	/// \return the position of the found inset.
+	/// \retval -1 if no \c Inset is found.
+	pos_type find(
+		InsetCode code, ///< Code of inset to find.
+		pos_type startpos = 0 ///< start position for the search.
+		) const;
+
+	/// count occurences of of an \c Inset type.
+	/// \return the number of found inset(s).
+	int count(
+		InsetCode code, ///< Code of inset type to count.
+		pos_type startpos = 0 ///< start position for the counting.
+		) const;
 
 private:
 	///
