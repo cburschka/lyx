@@ -203,7 +203,7 @@ public:
 	/// end of label
 	pos_type begin_of_body_;
 
-	typedef std::vector<char_type> TextContainer;
+	typedef docstring TextContainer;
 	///
 	TextContainer text_;
 };
