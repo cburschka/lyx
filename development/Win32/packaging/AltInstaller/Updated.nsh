@@ -7,6 +7,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\symbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
@@ -27,6 +28,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\fonts\esint10.ttf"
  File "${PRODUCT_SOURCEDIR}\Resources\fonts\wasy10.ttf"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsmaths.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsmaths-seq.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\foils.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\powerdot.layout"
