@@ -67,6 +67,7 @@ using std::ostream;
 namespace lyx {
 
 using support::contains;
+using support::prefixIs;
 using support::suffixIs;
 using support::rsplit;
 
@@ -188,6 +189,11 @@ public:
 			     unsigned int & column,
 			     Font const & font,
 			     Layout const & style);
+	/// Output consecutive unicode chars, belonging to the same script as
+	/// specified by the latex macro \p ltx, to \p os starting from \p c.
+	/// \return the number of characters written.
+	int writeScriptChars(odocstream & os, value_type c, docstring const & ltx,
+			     Change &, Encoding const &, pos_type &);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
 				   odocstream &,
@@ -591,7 +597,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 	if (style.pass_thru)
 		return false;
 
-	if (i < size() - 1) {
+	if (i + 1 < size()) {
 		char_type next = getChar(i + 1);
 		if (Encodings::isCombiningChar(next)) {
 			// This space has an accent, so we must always output it.
@@ -605,7 +611,7 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 	    && column > lyxrc.plaintext_linelen
 	    && i
 	    && getChar(i - 1) != ' '
-	    && (i < size() - 1)
+	    && (i + 1 < size())
 	    // same in FreeSpacing mode
 	    && !owner_->isFreeSpacing()
 	    // In typewriter mode, we want to avoid
@@ -625,6 +631,66 @@ bool Paragraph::Pimpl::simpleTeXBlanks(Encoding const & encoding,
 		os << ' ';
 	}
 	return false;
+}
+
+
+int Paragraph::Pimpl::writeScriptChars(odocstream & os,
+				       value_type c,
+				       docstring const & ltx,
+				       Change & runningChange,
+				       Encoding const & encoding,
+				       pos_type & i)
+{
+	// We only arrive here when a proper language for character c has not
+	// been specified (i.e., it could not be translated in the current
+	// latex encoding) and it belongs to a known script.
+	// Parameter ltx contains the latex translation of c as specified in
+	// the unicodesymbols file and is something like "\textXXX{<spec>}".
+	// The latex macro name "textXXX" specifies the script to which c
+	// belongs and we use it in order to check whether characters from the
+	// same script immediately follow, such that we can collect them in a
+	// single "\textXXX" macro. So, we have to retain "\textXXX{<spec>"
+	// for the first char but only "<spec>" for all subsequent chars.
+	docstring::size_type const brace1 = ltx.find_first_of(from_ascii("{"));
+	docstring::size_type const brace2 = ltx.find_last_of(from_ascii("}"));
+	string script = to_ascii(ltx.substr(1, brace1 - 1));
+	int length = ltx.substr(0, brace2).length();
+	os << ltx.substr(0, brace2);
+	while (i + 1 < size()) {
+		char_type const next = getChar(i + 1);
+		// Stop here if next character belongs to another script
+		// or there is a change in change tracking status.
+		if (!Encodings::isKnownScriptChar(next, script) ||
+		    runningChange != lookupChange(i + 1))
+			break;
+		Font prev_font;
+		bool found = false;
+		FontList::const_iterator cit = fontlist.begin();
+		FontList::const_iterator end = fontlist.end();
+		for (; cit != end; ++cit) {
+			if (cit->pos() >= i && !found) {
+				prev_font = cit->font();
+				found = true;
+			}
+			if (cit->pos() >= i + 1)
+				break;
+		}
+		// Stop here if there is a font attribute or encoding change.
+		if (found && cit != end && prev_font != cit->font())
+			break;
+		docstring const latex = encoding.latexChar(next);
+		docstring::size_type const b1 =
+					latex.find_first_of(from_ascii("{"));
+		docstring::size_type const b2 =
+					latex.find_last_of(from_ascii("}"));
+		int const len = b2 - b1 - 1;
+		os << latex.substr(b1 + 1, len);
+		length += len;
+		++i;
+	}
+	os << '}';
+	++length;
+	return length;
 }
 
 
@@ -947,7 +1013,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 
 			if (pnr == phrases_nr && c != '\0') {
 				Encoding const & encoding = *(runparams.encoding);
-				if (i < size() - 1) {
+				if (i + 1 < size()) {
 					char_type next = getChar(i + 1);
 					if (Encodings::isCombiningChar(next)) {
 						column += latexSurrogatePair(os, c, next, encoding) - 1;
@@ -955,9 +1021,15 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 						break;
 					}
 				}
+				string script;
 				docstring const latex = encoding.latexChar(c);
-				if (latex.length() > 1 &&
-				    latex[latex.length() - 1] != '}') {
+				if (Encodings::isKnownScriptChar(c, script) &&
+				    prefixIs(latex, from_ascii("\\" + script)))
+					column += writeScriptChars(os, c, latex,
+							running_change,
+							encoding, i) - 1;
+				else if (latex.length() > 1 &&
+					   latex[latex.length() - 1] != '}') {
 					// Prevent eating of a following
 					// space or command corruption by
 					// following characters

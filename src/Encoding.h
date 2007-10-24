@@ -143,6 +143,15 @@ public:
 	/// Is this a combining char?
 	static bool isCombiningChar(char_type c);
 	/**
+	 * Is this a known char from some script?
+	 * If \p preamble is empty and code point \p c is known to belong
+	 * to a supported script, true is returned and \p preamble is set
+	 * to the corresponding entry in the unicodesymbols file.
+	 * If \p preamble is not empty, a check is made whether code point
+	 * \p c is a known character matching the preamble entry.
+	 */
+	static bool isKnownScriptChar(char_type const c, std::string & preamble);
+	/**
 	 * Add the preamble snippet needed for the output of \p c to
 	 * \p features.
 	 * This does not depend on the used encoding, since the inputenc

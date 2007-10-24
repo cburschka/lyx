@@ -401,6 +401,25 @@ bool Encodings::isCombiningChar(char_type c)
 }
 
 
+bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
+{
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+
+	if (it == unicodesymbols.end())
+		return false;
+
+	if (it->second.preamble != "textgreek" &&
+	    it->second.preamble != "textcyr")
+		return false;
+
+	if (preamble.empty()) {
+		preamble = it->second.preamble;
+		return true;
+	}
+	return it->second.preamble == preamble;
+}
+
+
 Encoding const * Encodings::getFromLyXName(string const & name) const
 {
 	EncodingList::const_iterator it = encodinglist.find(name);
