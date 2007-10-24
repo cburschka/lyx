@@ -22,12 +22,6 @@ class Buffer;
 class DocIterator;
 class ParIterator;
 
-
-/** 
- * Returns true if the file is already loaded into a buffer.
- */
-bool checkIfLoaded(support::FileName const & fn);
-
 /**
  *  Checks and loads a LyX file \param filename.
  *  \retval the newly created \c Buffer pointer if successful or 0.

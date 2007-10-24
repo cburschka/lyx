@@ -72,12 +72,6 @@ using support::unlink;
 namespace Alert = frontend::Alert;
 
 
-bool checkIfLoaded(FileName const & fn)
-{
-	return theBufferList().getBuffer(fn.absFilename());
-}
-
-
 Buffer * checkAndLoadLyXFile(FileName const & filename)
 {
 	// File already open?
@@ -97,9 +91,8 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 		if (theBufferList().close(checkBuffer, false))
 			// Load it again.
 			return checkAndLoadLyXFile(filename);
-		else
-			// The file could not be closed.
-			return 0;
+		// The file could not be closed.
+		return 0;
 	}
 
 	if (filename.isReadable()) {
