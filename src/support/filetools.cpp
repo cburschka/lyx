@@ -162,8 +162,17 @@ string const quoteName(string const & name, quote_style style)
 
 bool isFileReadable(FileName const & filename)
 {
-	std::string const path = filename.toFilesystemEncoding();
-	return fs::exists(path) && !fs::is_directory(path) && fs::is_readable(path);
+	try {
+		// it seems that fs::exists can throw an exception
+		// when the file is not readable.
+		std::string const path = filename.toFilesystemEncoding();
+		return fs::exists(path) 
+			&& !fs::is_directory(path) 
+			&& fs::is_readable(path);
+	} catch (fs::filesystem_error const & fe){
+		return false;
+	}
+
 }
 
 
