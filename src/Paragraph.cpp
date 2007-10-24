@@ -1222,12 +1222,13 @@ void Paragraph::appendString(docstring const & s, Font const & font,
 	if (newsize >= capacity)
 		d->text_.reserve(std::max(capacity + 100, newsize));
 
+	// when appending characters, no need to update tables
+	d->text_.append(s);
+
 	// FIXME: Optimize this!
 	for (pos_type i = 0; i != end; ++i) {
 		// track change
 		d->changes_.insert(change, i);
-		// when appending characters, no need to update tables
-		d->text_.push_back(s[i]);
 	}
 	d->fontlist_.setRange(oldsize, newsize, font);
 }
