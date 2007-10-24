@@ -257,9 +257,10 @@ TeXOnePar(Buffer const & buf,
 		Font const outerfont =
 			outerFont(std::distance(paragraphs.begin(), pit),
 				  paragraphs);
-		// FIXME UNICODE
-		bool need_par = pit->latex(buf, bparams, outerfont,
-					     os, texrow, runparams_in);
+
+		/*bool need_par = */ pit->latex(buf, bparams, outerfont,
+			os, texrow, runparams_in);
+
 		os << '\n';
 		texrow.newline();
 		return ++pit;
