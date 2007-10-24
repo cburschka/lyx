@@ -2067,49 +2067,6 @@ bool Paragraph::latex(Buffer const & buf,
 }
 
 
-namespace {
-
-enum PAR_TAG {
-	PAR_NONE=0,
-	TT = 1,
-	SF = 2,
-	BF = 4,
-	IT = 8,
-	SL = 16,
-	EM = 32
-};
-
-
-string tag_name(PAR_TAG const & pt) {
-	switch (pt) {
-	case PAR_NONE: return "!-- --";
-	case TT: return "tt";
-	case SF: return "sf";
-	case BF: return "bf";
-	case IT: return "it";
-	case SL: return "sl";
-	case EM: return "em";
-	}
-	return "";
-}
-
-
-inline
-void operator|=(PAR_TAG & p1, PAR_TAG const & p2)
-{
-	p1 = static_cast<PAR_TAG>(p1 | p2);
-}
-
-
-inline
-void reset(PAR_TAG & p1, PAR_TAG const & p2)
-{
-	p1 = static_cast<PAR_TAG>(p1 & ~p2);
-}
-
-} // anon
-
-
 bool Paragraph::emptyTag() const
 {
 	for (pos_type i = 0; i < size(); ++i) {
