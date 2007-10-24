@@ -169,9 +169,6 @@ public:
 	void validate(LaTeXFeatures & features,
 		      Layout const & layout) const;
 
-	///
-	pos_type size() const { return owner_->size(); }
-
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(std::string const & str, pos_type pos) const;
 	
@@ -406,14 +403,14 @@ void Paragraph::rejectChanges(BufferParams const & bparams,
 void Paragraph::Private::insertChar(pos_type pos, char_type c,
 		Change const & change)
 {
-	BOOST_ASSERT(pos >= 0 && pos <= size());
+	BOOST_ASSERT(pos >= 0 && pos <= int(text_.size()));
 
 	// track change
 	changes_.insert(change, pos);
 
 	// This is actually very common when parsing buffers (and
 	// maybe inserting ascii text)
-	if (pos == size()) {
+	if (pos == text_.size()) {
 		// when appending characters, no need to update tables
 		text_.push_back(c);
 		return;
@@ -533,7 +530,7 @@ bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 	if (style.pass_thru)
 		return false;
 
-	if (i + 1 < size()) {
+	if (i + 1 < int(text_.size())) {
 		char_type next = text_[i + 1];
 		if (Encodings::isCombiningChar(next)) {
 			// This space has an accent, so we must always output it.
@@ -546,7 +543,7 @@ bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 	    && column > lyxrc.plaintext_linelen
 	    && i
 	    && text_[i - 1] != ' '
-	    && (i + 1 < size())
+	    && (i + 1 < int(text_.size()))
 	    // same in FreeSpacing mode
 	    && !owner_->isFreeSpacing()
 	    // In typewriter mode, we want to avoid
@@ -585,7 +582,8 @@ int Paragraph::Private::knownLangChars(odocstream & os,
 	docstring const latex1 = rtrim(encoding.latexChar(c), "}");
 	int length = latex1.length();
 	os << latex1;
-	while (i + 1 < size()) {
+	int size = text_.size();
+	while (i + 1 < size) {
 		char_type next = text_[i + 1];
 		// Stop here if next character belongs to another
 		// language or there is a change tracking status.
@@ -634,7 +632,7 @@ bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
 	pos_type const len = str.length();
 
 	// is the paragraph large enough?
-	if (pos + len > size())
+	if (pos + len > int(text_.size()))
 		return false;
 
 	// does the wanted text start at point?
@@ -886,7 +884,7 @@ void Paragraph::Private::latexSpecialChar(
 			return;
 
 		Encoding const & encoding = *(runparams.encoding);
-		if (i + 1 < size()) {
+		if (i + 1 < int(text_.size())) {
 			char_type next = text_[i + 1];
 			if (Encodings::isCombiningChar(next)) {
 				column += latexSurrogatePair(os, c, next, encoding) - 1;
@@ -925,7 +923,7 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
 		os.put(c);
 		// In T1 encoding, these characters exist
 		// but we should avoid ligatures
-		if (i + 1 > size() || text_[i + 1] != c)
+		if (i + 1 > int(text_.size()) || text_[i + 1] != c)
 			return true;
 		os << "\\,{}";
 		column += 3;
@@ -947,7 +945,7 @@ bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & 
 {
 	switch (c) {
 	case '-':
-		if (i + 1 < size() && text_[i + 1] == '-') {
+		if (i + 1 < int(text_.size()) && text_[i + 1] == '-') {
 			// "--" in Typewriter mode -> "-{}-"
 			os << "-{}";
 			column += 2;
@@ -1033,7 +1031,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 	}
 
 	// then the contents
-	for (pos_type i = 0; i < size() ; ++i) {
+	for (pos_type i = 0; i < int(text_.size()) ; ++i) {
 		for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
 			if (!special_phrases[pnr].builtin
 			    && isTextAt(special_phrases[pnr].phrase, i)) {
