@@ -2618,7 +2618,7 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 		char_type newChar = oldChar;
 
 		// ignore insets and don't play with deleted text!
-		if (isInset(pos) && !isDeleted(pos)) {
+		if (oldChar != META_INSET && !isDeleted(pos)) {
 			switch (action) {
 				case text_lowercase:
 					newChar = lowercase(oldChar);
