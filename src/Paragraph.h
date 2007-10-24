@@ -361,6 +361,16 @@ public:
 	void changeCase(BufferParams const & bparams, pos_type pos,
 		pos_type right, TextCase action);
 
+	/// find \param str string inside Paragraph.
+	/// \return true if the specified string is at the specified position
+	/// \param del specifies whether deleted strings in ct mode will be considered
+	bool find(
+		docstring const & str, ///< string to search
+		bool cs, ///<
+		bool mw, ///<
+		pos_type pos, ///< start from here.
+		bool del = true) const;
+
 private:
 	/// Pimpl away stuff
 	class Private;

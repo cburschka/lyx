@@ -66,33 +66,7 @@ public:
 	// del specifies whether deleted strings in ct mode will be considered
 	bool operator()(Paragraph const & par, pos_type pos, bool del = true) const
 	{
-		docstring::size_type const size = str.length();
-		pos_type i = 0;
-		pos_type const parsize = par.size();
-		for (i = 0; pos + i < parsize; ++i) {
-			if (docstring::size_type(i) >= size)
-				break;
-			if (cs && str[i] != par.getChar(pos + i))
-				break;
-			if (!cs && uppercase(str[i]) != uppercase(par.getChar(pos + i)))
-				break;
-			if (!del && par.isDeleted(pos + i))
-				break;
-		}
-
-		if (size != docstring::size_type(i))
-			return false;
-
-		// if necessary, check whether string matches word
-		if (mw) {
-			if (pos > 0 && par.isLetter(pos - 1))
-				return false;
-			if (pos + pos_type(size) < parsize
-			    && par.isLetter(pos + size))
-				return false;
-		}
-
-		return true;
+		return par.find(str, cs, mw, pos, del);
 	}
 
 private:

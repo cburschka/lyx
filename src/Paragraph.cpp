@@ -2666,6 +2666,40 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 	}
 }
 
+
+bool Paragraph::find(docstring const & str, bool cs, bool mw,
+		pos_type pos, bool del) const
+{
+	int const strsize = str.length();
+	int i = 0;
+	pos_type const parsize = d->text_.size();
+	for (i = 0; pos + i < parsize; ++i) {
+		if (i >= strsize)
+			break;
+		if (cs && str[i] != d->text_[pos + i])
+			break;
+		if (!cs && uppercase(str[i]) != uppercase(d->text_[pos + i]))
+			break;
+		if (!del && isDeleted(pos + i))
+			break;
+	}
+
+	if (i != strsize)
+		return false;
+
+	// if necessary, check whether string matches word
+	if (mw) {
+		if (pos > 0 && isLetter(pos - 1))
+			return false;
+		if (pos + strsize < parsize
+			&& isLetter(pos + strsize))
+			return false;
+	}
+
+	return true;
+}
+
+
 char_type Paragraph::getChar(pos_type pos) const
 {
 	return d->text_[pos];
