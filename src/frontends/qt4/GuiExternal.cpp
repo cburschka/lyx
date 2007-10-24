@@ -14,11 +14,10 @@
 
 #include "GuiExternal.h"
 
-#include "GuiExternal.h"
 #include "frontend_helpers.h"
 #include "FuncRequest.h"
 #include "gettext.h"
-#include "lengthcommon.h"
+#include "Length.h"
 #include "LyXRC.h"
 
 #include "insets/ExternalSupport.h"

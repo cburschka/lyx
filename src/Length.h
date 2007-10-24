@@ -12,8 +12,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYX_LENGTH_H
-#define LYX_LENGTH_H
+#ifndef LENGTH_H
+#define LENGTH_H
 
 #include "support/docstring.h"
 
@@ -182,6 +182,22 @@ bool operator!=(GlueLength const & l1, GlueLength const & l2);
     stored into "result", if that is not 0. */
 bool isValidGlueLength(std::string const & data, GlueLength * result = 0);
 
+/// the number of units possible
+extern int const num_units;
+
+/**
+ * array of unit names
+ *
+ * FIXME: I am not sure if "mu" should be possible to select (Lgb)
+ */
+extern char const * const unit_name[];
+extern char const * const unit_name_gui[];
+
+/// return the unit given a string representation such as "cm"
+Length::UNIT unitFromString(std::string const & data);
+
+
+
 } // namespace lyx
 
-#endif // LYXLENGTH_H
+#endif // LENGTH_H

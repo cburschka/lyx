@@ -181,7 +181,6 @@ liblyxcore_la_SOURCES = \
 	Length.cpp \
 	Length.h \
 	lengthcommon.cpp \
-	lengthcommon.h \
 	Lexer.cpp \
 	Lexer.h \
 	lfuns.h \

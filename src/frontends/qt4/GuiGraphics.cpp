@@ -16,10 +16,9 @@
 
 #include "GuiGraphics.h"
 
-#include "GuiGraphics.h"
 #include "debug.h"
 #include "LengthCombo.h"
-#include "lengthcommon.h"
+#include "Length.h"
 #include "LyXRC.h"
 #include "qt_helpers.h"
 #include "Validator.h"

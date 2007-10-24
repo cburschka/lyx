@@ -11,11 +11,12 @@
 #include <config.h>
 
 #include "VSpace.h"
+
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "gettext.h"
-#include "lengthcommon.h"
+#include "Length.h"
 #include "Text.h"
 #include "TextMetrics.h" // for defaultRowHeight()
 

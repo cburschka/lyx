@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "LengthCombo.h"
-#include "lengthcommon.h"
+
 #include "qt_helpers.h"
 
 

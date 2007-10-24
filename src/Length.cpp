@@ -16,10 +16,10 @@
 #include <config.h>
 
 #include "Length.h"
-#include "lengthcommon.h"
 #include "LyXRC.h"
 
 #include "support/docstream.h"
+
 #include <sstream>
 #include <iomanip>
 

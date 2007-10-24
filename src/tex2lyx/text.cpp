@@ -14,15 +14,16 @@
 #include <config.h>
 
 #include "tex2lyx.h"
+
 #include "Context.h"
-#include "Layout.h"
 #include "FloatList.h"
-#include "lengthcommon.h"
+#include "Layout.h"
+#include "Length.h"
+
 #include "support/lstrings.h"
 #include "support/convert.h"
 #include "support/filetools.h"
 
-#include <boost/filesystem/operations.hpp>
 #include <boost/tuple/tuple.hpp>
 
 #include <iostream>
@@ -51,8 +52,6 @@ using support::rtrim;
 using support::suffixIs;
 using support::contains;
 using support::subst;
-
-namespace fs = boost::filesystem;
 
 
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,

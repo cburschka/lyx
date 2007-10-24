@@ -12,16 +12,16 @@
 
 #include <config.h>
 
-#include "LengthCombo.h"
 #include "qt_helpers.h"
 
-#include "lengthcommon.h"
+#include "LengthCombo.h"
+
+#include "debug.h"
 #include "gettext.h"
+#include "Length.h"
 
 #include "support/os.h"
 #include "support/lstrings.h"
-
-#include "debug.h"
 
 #include <QComboBox>
 #include <QCheckBox>

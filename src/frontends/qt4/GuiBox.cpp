@@ -18,8 +18,8 @@
 #include "gettext.h"
 
 #include "LengthCombo.h"
+#include "Length.h"
 #include "qt_helpers.h"
-#include "lengthcommon.h"
 #include "LyXRC.h" // to set the default length values
 #include "Validator.h"
 
