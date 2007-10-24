@@ -111,8 +111,8 @@ src_header_files = Split('''
     TexRow.h
     Text.h
     TextClass.h
-    TextClassPtr.h
     TextClassList.h
+    TextClass_sptr.h
     TextMetrics.h
     Thesaurus.h
     TocBackend.h
@@ -963,7 +963,6 @@ src_frontends_qt4_ui_files = Split('''
     PreambleUi.ui
     PrefColorsUi.ui
     PrefConvertersUi.ui
-    PrefCygwinPathUi.ui
     PrefDateUi.ui
     PrefDisplayUi.ui
     PrefFileformatsUi.ui
