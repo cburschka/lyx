@@ -852,9 +852,8 @@ void Text::changeCase(Cursor & cur, TextCase action)
 
 	for (pit_type pit = begPit; pit <= endPit; ++pit) {
 		Paragraph & par = pars_[pit];
-		pos_type parSize = par.size();
-		pos_type pos = (pit == begPit ? begPos : 0);
-		right = (pit == endPit ? endPos : parSize);
+		pos_type const pos = (pit == begPit ? begPos : 0);
+		right = (pit == endPit ? endPos : par.size());
 		par.changeCase(cur.buffer().params(), pos, right, action);
 	}
 
