@@ -428,7 +428,6 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 void Text::insertChar(Cursor & cur, char_type c)
 {
 	BOOST_ASSERT(this == cur.text());
-	BOOST_ASSERT(c != Paragraph::META_INSET);
 
 	cur.recordUndo(INSERT_UNDO);
 
@@ -873,7 +872,7 @@ void Text::changeCase(Cursor & cur, Text::TextCase action)
 			char_type newChar = oldChar;
 
 			// ignore insets and don't play with deleted text!
-			if (oldChar != Paragraph::META_INSET && !pars_[pit].isDeleted(pos)) {
+			if (pars_[pit].isInset(pos) && !pars_[pit].isDeleted(pos)) {
 				switch (action) {
 				case text_lowercase:
 					newChar = lowercase(oldChar);

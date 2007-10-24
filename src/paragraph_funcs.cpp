@@ -35,11 +35,11 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	// Note: moveItem() does not honour change tracking!
 	// Therefore, it should only be used for breaking and merging paragraphs
 
-	Paragraph::value_type const tmpChar = fromPar.getChar(fromPos);
+	char_type const tmpChar = fromPar.getChar(fromPos);
 	Font const tmpFont = fromPar.getFontSettings(params, fromPos);
 	Change const tmpChange = fromPar.lookupChange(fromPos);
 
-	if (tmpChar == Paragraph::META_INSET) {
+	if (fromPar.isInset(fromPos)) {
 		Inset * tmpInset = 0;
 		if (fromPar.getInset(fromPos)) {
 			// the inset is not in the paragraph any more

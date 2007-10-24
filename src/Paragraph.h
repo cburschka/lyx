@@ -25,8 +25,6 @@
 // including this:
 #include "support/docstream.h"
 
-#include <vector>
-
 namespace lyx {
 
 class AuthorList;
@@ -67,19 +65,6 @@ public:
 /// should go in order to complete the Model/View separation of this class.
 class Paragraph  {
 public:
-	///
-	enum {
-		/// Note that this is 1 right now to avoid
-		/// crashes where getChar() is called wrongly
-		/// (returning 0) - if this was 0, then we'd
-		/// try getInset() and crash. We should fix
-		/// all these places.
-		//META_INSET = 1 // as in trunk
-		META_INSET = 0x200001  // above 0x10ffff, for ucs-4
-	};
-	///
-	typedef char_type value_type;
-
 	///
 	Paragraph();
 	///
@@ -159,9 +144,9 @@ public:
 	bool forceDefaultParagraphs() const;
 
 	///
-	pos_type size() const { return text_.size(); }
+	pos_type size() const;
 	///
-	bool empty() const { return text_.empty(); }
+	bool empty() const;
 
 	///
 	LayoutPtr const & layout() const;
@@ -268,10 +253,9 @@ public:
 	 */
 	FontSpan fontSpan(pos_type pos) const;
 	///
-	/// this is a bottleneck.
-	value_type getChar(pos_type pos) const { return text_[pos]; }
+	char_type getChar(pos_type pos) const;
 	/// Get the char, but mirror all bracket characters if it is right-to-left
-	value_type getUChar(BufferParams const &, pos_type pos) const;
+	char_type getUChar(BufferParams const &, pos_type pos) const;
 	/// pos <= size() (there is a dummy font change at the end of each par)
 	void setFont(pos_type pos, Font const & font);
 	/// Returns the height of the highest font in range
@@ -285,14 +269,14 @@ public:
 	void appendString(docstring const & s, Font const & font,
 		Change const & change);
 	///
-	void appendChar(value_type c, Font const & font, Change const & change);
+	void appendChar(char_type c, Font const & font, Change const & change);
 	///
-	void insertChar(pos_type pos, value_type c, bool trackChanges);
+	void insertChar(pos_type pos, char_type c, bool trackChanges);
 	///
-	void insertChar(pos_type pos, value_type c,
+	void insertChar(pos_type pos, char_type c,
 			Font const &, bool trackChanges);
 	///
-	void insertChar(pos_type pos, value_type c,
+	void insertChar(pos_type pos, char_type c,
 			Font const &, Change const & change);
 	///
 	void insertInset(pos_type pos, Inset * inset,
@@ -320,13 +304,11 @@ public:
 	bool isHfill(pos_type pos) const;
 
 	/// hinted by profiler
-	bool isInset(pos_type pos) const {
-		return getChar(pos) == static_cast<value_type>(META_INSET);
-	}
+	bool isInset(pos_type pos) const;
 	///
 	bool isNewline(pos_type pos) const;
 	/// return true if the char is a word separator
-	bool isSeparator(pos_type pos) const { return getChar(pos) == ' '; }
+	bool isSeparator(pos_type pos) const;
 	///
 	bool isLineSeparator(pos_type pos) const;
 	/// True if the character/inset at this point can be part of a word.
@@ -366,14 +348,6 @@ public:
 	int numberOfOptArgs() const;
 
 private:
-	/**
-	 * Keeping this here instead of in the pimpl makes LyX >10% faster
-	 * for average tasks as buffer loading/switching etc.
-	 */
-	typedef std::vector<value_type> TextContainer;
-	///
-	TextContainer text_;
-
 	/// Pimpl away stuff
 	class Private;
 	///

@@ -215,11 +215,11 @@ int ParagraphMetrics::rightMargin(Buffer const & buffer) const
 
 int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 {
-	char_type c = par_->getChar(pos);
-
 	// The most special cases are handled first.
-	if (c == Paragraph::META_INSET)
+	if (par_->isInset(pos);)
 		return insetDimension(par_->getInset(pos)).wid;
+
+	char_type c = par_->getChar(pos);
 
 	if (!isPrintable(c))
 		return theFontMetrics(font).width(c);

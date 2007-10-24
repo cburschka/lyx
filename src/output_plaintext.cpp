@@ -192,7 +192,7 @@ void writePlaintextParagraph(Buffer const & buf,
 
 		char_type c = par.getUChar(buf.params(), i);
 
-		if (c == Paragraph::META_INSET || c == ' ') {
+		if (par.isInset(i) || c == ' ') {
 			if (runparams.linelen > 0 &&
 			    currlinelen + word.length() > runparams.linelen) {
 				os << '\n';
@@ -205,8 +205,7 @@ void writePlaintextParagraph(Buffer const & buf,
 			word.erase();
 		}
 
-		switch (c) {
-		case Paragraph::META_INSET: {
+		if (par.isInset(i)) {
 			OutputParams rp = runparams;
 			rp.depth = par.params().depth();
 			int len = par.getInset(i)->plaintext(buf, os, rp);
@@ -214,9 +213,10 @@ void writePlaintextParagraph(Buffer const & buf,
 				currlinelen = len - Inset::PLAINTEXT_NEWLINE;
 			else
 				currlinelen += len;
-			break;
+			continue;
 		}
 
+		switch (c) {
 		case ' ':
 			os << ' ';
 			currlinelen++;

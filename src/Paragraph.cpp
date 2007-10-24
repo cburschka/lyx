@@ -57,6 +57,7 @@
 #include "support/unicode.h"
 
 #include <sstream>
+#include <vector>
 
 using std::endl;
 using std::string;
@@ -70,6 +71,10 @@ using support::suffixIs;
 using support::rsplit;
 using support::rtrim;
 
+namespace {
+/// Inset identifier (above 0x10ffff, for ucs-4)
+char_type const META_INSET = 0x200001;
+};
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -86,13 +91,11 @@ public:
 	Private(Private const &, Paragraph * owner);
 
 	///
-	value_type getChar(pos_type pos) const;
-	///
-	void insertChar(pos_type pos, value_type c, Change const & change);
+	void insertChar(pos_type pos, char_type c, Change const & change);
 
 	/// Output the surrogate pair formed by \p c and \p next to \p os.
 	/// \return the number of characters written.
-	int latexSurrogatePair(odocstream & os, value_type c, value_type next,
+	int latexSurrogatePair(odocstream & os, char_type c, char_type next,
 			       Encoding const &);
 
 	/// Output a space in appropriate formatting (or a surrogate pair
@@ -108,7 +111,7 @@ public:
 	/// Output consecutive known unicode chars, belonging to the same
 	/// language as specified by \p preamble, to \p os starting from \p c.
 	/// \return the number of characters written.
-	int knownLangChars(odocstream & os, value_type c, string & preamble,
+	int knownLangChars(odocstream & os, char_type c, string & preamble,
 			   Change &, Encoding const &, pos_type &);
 
 	/// This could go to ParagraphParameters if we want to.
@@ -197,6 +200,10 @@ public:
 
 	/// end of label
 	pos_type begin_of_body_;
+
+	typedef std::vector<char_type> TextContainer;
+	///
+	TextContainer text_;
 };
 
 
@@ -235,13 +242,14 @@ Paragraph::Private::Private(Paragraph * owner)
 	: owner_(owner), inset_owner_(0), begin_of_body_(0)
 {
 	id_ = paragraph_id++;
+	text_.reserve(100);
 }
 
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
 	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
-	  layout_(p.layout_), begin_of_body_(p.begin_of_body_)
+	  layout_(p.layout_), begin_of_body_(p.begin_of_body_), text_(p.text_)
 {
 	id_ = paragraph_id++;
 }
@@ -393,15 +401,7 @@ void Paragraph::rejectChanges(BufferParams const & bparams,
 }
 
 
-Paragraph::value_type Paragraph::Private::getChar(pos_type pos) const
-{
-	BOOST_ASSERT(pos >= 0 && pos <= size());
-
-	return owner_->getChar(pos);
-}
-
-
-void Paragraph::Private::insertChar(pos_type pos, value_type c,
+void Paragraph::Private::insertChar(pos_type pos, char_type c,
 		Change const & change)
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
@@ -413,11 +413,11 @@ void Paragraph::Private::insertChar(pos_type pos, value_type c,
 	// maybe inserting ascii text)
 	if (pos == size()) {
 		// when appending characters, no need to update tables
-		owner_->text_.push_back(c);
+		text_.push_back(c);
 		return;
 	}
 
-	owner_->text_.insert(owner_->text_.begin() + pos, c);
+	text_.insert(text_.begin() + pos, c);
 
 	// Update the font table.
 	fontlist_.increasePosAfterPos(pos);
@@ -434,7 +434,7 @@ void Paragraph::insertInset(pos_type pos, Inset * inset,
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
 	d->insertChar(pos, META_INSET, change);
-	BOOST_ASSERT(text_[pos] == META_INSET);
+	BOOST_ASSERT(d->text_[pos] == META_INSET);
 
 	// Add a new entry in the insetlist_.
 	d->insetlist_.insert(inset, pos);
@@ -475,10 +475,10 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 	d->changes_.erase(pos);
 
 	// if it is an inset, delete the inset entry
-	if (text_[pos] == Paragraph::META_INSET)
+	if (d->text_[pos] == META_INSET)
 		d->insetlist_.erase(pos);
 
-	text_.erase(text_.begin() + pos);
+	d->text_.erase(d->text_.begin() + pos);
 
 	// Update the fontlist_
 	d->fontlist_.erase(pos);
@@ -504,8 +504,8 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 }
 
 
-int Paragraph::Private::latexSurrogatePair(odocstream & os, value_type c,
-		value_type next, Encoding const & encoding)
+int Paragraph::Private::latexSurrogatePair(odocstream & os, char_type c,
+		char_type next, Encoding const & encoding)
 {
 	// Writing next here may circumvent a possible font change between
 	// c and next. Since next is only output if it forms a surrogate pair
@@ -532,7 +532,7 @@ bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 		return false;
 
 	if (i + 1 < size()) {
-		char_type next = getChar(i + 1);
+		char_type next = text_[i + 1];
 		if (Encodings::isCombiningChar(next)) {
 			// This space has an accent, so we must always output it.
 			column += latexSurrogatePair(os, ' ', next, encoding) - 1;
@@ -543,17 +543,17 @@ bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 	if (lyxrc.plaintext_linelen > 0
 	    && column > lyxrc.plaintext_linelen
 	    && i
-	    && getChar(i - 1) != ' '
+	    && text_[i - 1] != ' '
 	    && (i + 1 < size())
 	    // same in FreeSpacing mode
 	    && !owner_->isFreeSpacing()
 	    // In typewriter mode, we want to avoid
 	    // ! . ? : at the end of a line
 	    && !(font.family() == Font::TYPEWRITER_FAMILY
-		 && (getChar(i - 1) == '.'
-		     || getChar(i - 1) == '?'
-		     || getChar(i - 1) == ':'
-		     || getChar(i - 1) == '!'))) {
+		 && (text_[i - 1] == '.'
+		     || text_[i - 1] == '?'
+		     || text_[i - 1] == ':'
+		     || text_[i - 1] == '!'))) {
 		os << '\n';
 		texrow.newline();
 		texrow.start(owner_->id(), i + 1);
@@ -568,7 +568,7 @@ bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 
 
 int Paragraph::Private::knownLangChars(odocstream & os,
-				     value_type c,
+				     char_type c,
 				     string & preamble,
 				     Change & runningChange,
 				     Encoding const & encoding,
@@ -584,7 +584,7 @@ int Paragraph::Private::knownLangChars(odocstream & os,
 	int length = latex1.length();
 	os << latex1;
 	while (i + 1 < size()) {
-		char_type next = getChar(i + 1);
+		char_type next = text_[i + 1];
 		// Stop here if next character belongs to another
 		// language or there is a change tracking status.
 		if (!Encodings::isKnownLangChar(next, preamble) ||
@@ -639,7 +639,7 @@ bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
 	for (string::size_type i = 0; i < str.length(); ++i) {
 		// Caution: direct comparison of characters works only
 		// because str is pure ASCII.
-		if (str[i] != owner_->text_[pos + i])
+		if (str[i] != text_[pos + i])
 			return false;
 	}
 
@@ -792,7 +792,7 @@ void Paragraph::Private::latexSpecialChar(
 					     pos_type & i,
 					     unsigned int & column)
 {
-	value_type const c = getChar(i);
+	char_type const c = text_[i];
 
 	if (style.pass_thru) {
 		if (c != '\0')
@@ -885,7 +885,7 @@ void Paragraph::Private::latexSpecialChar(
 
 		Encoding const & encoding = *(runparams.encoding);
 		if (i + 1 < size()) {
-			char_type next = getChar(i + 1);
+			char_type next = text_[i + 1];
 			if (Encodings::isCombiningChar(next)) {
 				column += latexSurrogatePair(os, c, next, encoding) - 1;
 				++i;
@@ -923,7 +923,7 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
 		os.put(c);
 		// In T1 encoding, these characters exist
 		// but we should avoid ligatures
-		if (i + 1 > size() || getChar(i + 1) != c)
+		if (i + 1 > size() || text_[i + 1] != c)
 			return true;
 		os << "\\,{}";
 		column += 3;
@@ -945,7 +945,7 @@ bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & 
 {
 	switch (c) {
 	case '-':
-		if (i + 1 < size() && getChar(i + 1) == '-') {
+		if (i + 1 < size() && text_[i + 1] == '-') {
 			// "--" in Typewriter mode -> "-{}-"
 			os << "-{}";
 			column += 2;
@@ -1039,7 +1039,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features,
 				break;
 			}
 		}
-		Encodings::validate(getChar(i), features);
+		Encodings::validate(text_[i], features);
 	}
 }
 
@@ -1054,12 +1054,11 @@ Paragraph::Paragraph()
 {
 	itemdepth = 0;
 	d->params_.clear();
-	text_.reserve(100);
 }
 
 
 Paragraph::Paragraph(Paragraph const & par)
-	: itemdepth(par.itemdepth),	text_(par.text_),
+	: itemdepth(par.itemdepth),
 	d(new Paragraph::Private(*par.d, this))
 {
 }
@@ -1070,7 +1069,6 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 	// needed as we will destroy the private part before copying it
 	if (&par != this) {
 		itemdepth = par.itemdepth;
-		text_ = par.text_;
 
 		delete d;
 		d = new Private(*par.d, this);
@@ -1131,7 +1129,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 			font1 = font2;
 		}
 
-		value_type const c = getChar(i);
+		char_type const c = d->text_[i];
 		switch (c) {
 		case META_INSET:
 		{
@@ -1157,7 +1155,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 			column = 0;
 			break;
 		case '.':
-			if (i + 1 < size() && getChar(i + 1) == ' ') {
+			if (i + 1 < size() && d->text_[i + 1] == ' ') {
 				os << ".\n";
 				column = 0;
 			} else
@@ -1201,14 +1199,14 @@ void Paragraph::insert(pos_type start, docstring const & str,
 }
 
 
-void Paragraph::appendChar(value_type c, Font const & font,
+void Paragraph::appendChar(char_type c, Font const & font,
 		Change const & change)
 {
 	// track change
-	d->changes_.insert(change, text_.size());
+	d->changes_.insert(change, d->text_.size());
 	// when appending characters, no need to update tables
-	text_.push_back(c);
-	setFont(text_.size() - 1, font);
+	d->text_.push_back(c);
+	setFont(d->text_.size() - 1, font);
 }
 
 
@@ -1216,24 +1214,24 @@ void Paragraph::appendString(docstring const & s, Font const & font,
 		Change const & change)
 {
 	size_t end = s.size();
-	size_t oldsize = text_.size();
+	size_t oldsize = d->text_.size();
 	size_t newsize = oldsize + end;
-	size_t capacity = text_.capacity();
+	size_t capacity = d->text_.capacity();
 	if (newsize >= capacity)
-		text_.reserve(std::max(capacity + 100, newsize));
+		d->text_.reserve(std::max(capacity + 100, newsize));
 
 	// FIXME: Optimize this!
 	for (pos_type i = 0; i != end; ++i) {
 		// track change
 		d->changes_.insert(change, i);
 		// when appending characters, no need to update tables
-		text_.push_back(s[i]);
+		d->text_.push_back(s[i]);
 	}
 	d->fontlist_.setRange(oldsize, newsize, font);
 }
 
 
-void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
+void Paragraph::insertChar(pos_type pos, char_type c,
 			   bool trackChanges)
 {
 	d->insertChar(pos, c, Change(trackChanges ?
@@ -1241,7 +1239,7 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 }
 
 
-void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
+void Paragraph::insertChar(pos_type pos, char_type c,
 			   Font const & font, bool trackChanges)
 {
 	d->insertChar(pos, c, Change(trackChanges ?
@@ -1250,7 +1248,7 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 }
 
 
-void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
+void Paragraph::insertChar(pos_type pos, char_type c,
 			   Font const & font, Change const & change)
 {
 	d->insertChar(pos, c, change);
@@ -1385,14 +1383,14 @@ Font_size Paragraph::highestFontInRange
 }
 
 
-Paragraph::value_type
+char_type
 Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 {
-	value_type c = getChar(pos);
+	char_type c = d->text_[pos];
 	if (!lyxrc.rtl_support)
 		return c;
 
-	value_type uc = c;
+	char_type uc = c;
 	switch (c) {
 	case '(':
 		uc = ')';
@@ -1603,11 +1601,11 @@ void Paragraph::setBeginOfBody()
 		char_type previous_char = 0;
 		char_type temp = 0;
 		if (i < end) {
-			previous_char = text_[i];
+			previous_char = d->text_[i];
 			if (!isNewline(i)) {
 				++i;
 				while (i < end && previous_char != ' ') {
-					temp = text_[i];
+					temp = d->text_[i];
 					if (isNewline(i))
 						break;
 					++i;
@@ -1971,7 +1969,7 @@ bool Paragraph::latex(Buffer const & buf,
 			}
 		}
 
-		value_type const c = getChar(i);
+		char_type const c = d->text_[i];
 
 		// Do we need to change font?
 		if ((font != running_font ||
@@ -2022,7 +2020,7 @@ bool Paragraph::latex(Buffer const & buf,
 		// Two major modes:  LaTeX or plain
 		// Handle here those cases common to both modes
 		// and then split to handle the two modes separately.
-		if (c == Paragraph::META_INSET)
+		if (c == META_INSET)
 			d->latexInset(buf, bparams, os,
 					texrow, rp, running_font,
 					basefont, outerfont, open_font,
@@ -2134,7 +2132,7 @@ bool Paragraph::emptyTag() const
 				return false;
 			}
 		} else {
-			value_type c = getChar(i);
+			char_type c = d->text_[i];
 			if (c != ' ' && c != '\t')
 				return false;
 		}
@@ -2169,7 +2167,7 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputPara
 			Inset const * inset = getInset(i);
 			inset->docbook(buf, os, runparams);
 		} else {
-			value_type c = getChar(i);
+			char_type c = d->text_[i];
 			if (c == ' ')
 				break;
 			os << sgml::escapeChar(c);
@@ -2230,7 +2228,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			Inset const * inset = getInset(i);
 			inset->docbook(buf, os, runparams);
 		} else {
-			value_type c = getChar(i);
+			char_type c = d->text_[i];
 
 			if (style->pass_thru)
 				os.put(c);
@@ -2267,9 +2265,9 @@ bool Paragraph::isNewline(pos_type pos) const
 
 bool Paragraph::isLineSeparator(pos_type pos) const
 {
-	value_type const c = getChar(pos);
+	char_type const c = d->text_[pos];
 	return isLineSeparatorChar(c)
-		|| (c == Paragraph::META_INSET && getInset(pos) &&
+		|| (c == META_INSET && getInset(pos) &&
 		getInset(pos)->isLineSeparator());
 }
 
@@ -2280,7 +2278,7 @@ bool Paragraph::isLetter(pos_type pos) const
 	if (isInset(pos))
 		return getInset(pos)->isLetter();
 	else {
-		value_type const c = getChar(pos);
+		char_type const c = d->text_[pos];
 		return isLetterChar(c) || isDigit(c);
 	}
 }
@@ -2352,7 +2350,7 @@ docstring const Paragraph::asString(Buffer const & buffer,
 		os << params().labelString() << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
-		value_type const c = getChar(i);
+		char_type const c = d->text_[i];
 		if (isPrintable(c))
 			os.put(c);
 		else if (c == META_INSET)
@@ -2436,11 +2434,11 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 	if (!Encodings::is_arabic(c))
 		return c;
 
-	value_type prev_char = ' ';
-	value_type next_char = ' ';
+	char_type prev_char = ' ';
+	char_type next_char = ' ';
 
 	for (pos_type i = pos - 1; i >= 0; --i) {
-		value_type const par_char = getChar(i);
+		char_type const par_char = d->text_[i];
 		if (!Encodings::isComposeChar_arabic(par_char)) {
 			prev_char = par_char;
 			break;
@@ -2448,7 +2446,7 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 	}
 
 	for (pos_type i = pos + 1, end = size(); i < end; ++i) {
-		value_type const par_char = getChar(i);
+		char_type const par_char = d->text_[i];
 		if (!Encodings::isComposeChar_arabic(par_char)) {
 			next_char = par_char;
 			break;
@@ -2483,7 +2481,7 @@ int Paragraph::checkBiblio(bool track_changes)
 
 	bool hasbibitem = !d->insetlist_.empty()
 		// Insist on it being in pos 0
-		&& getChar(0) == Paragraph::META_INSET
+		&& d->text_[0] == META_INSET
 		&& d->insetlist_.begin()->inset->lyxCode() == BIBITEM_CODE;
 
 	docstring oldkey;
@@ -2599,6 +2597,37 @@ int Paragraph::numberOfOptArgs() const
 			++num;
 	}
 	return num;
+}
+
+
+char_type Paragraph::getChar(pos_type pos) const
+{
+	return d->text_[pos];
+}
+
+
+pos_type Paragraph::size() const
+{
+	return d->text_.size();
+}
+
+
+bool Paragraph::empty() const
+{
+	return d->text_.empty();
+}
+
+
+bool Paragraph::isInset(pos_type pos) const
+{
+	return d->text_[pos] == META_INSET;
+}
+
+
+bool Paragraph::isSeparator(pos_type pos) const
+{
+	//FIXME: Are we sure this can be the only separator?
+	return d->text_[pos] == ' ';
 }
 
 

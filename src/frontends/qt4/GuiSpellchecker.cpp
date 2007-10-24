@@ -294,8 +294,7 @@ static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 			// Insets like optional hyphens and ligature
 			// break are part of a word.
 			if (!cur.paragraph().isInset(cur.pos())) {
-				Paragraph::value_type const c =
-					cur.paragraph().getChar(cur.pos());
+				char_type const c = cur.paragraph().getChar(cur.pos());
 				word += c;
 				if (isDigit(c))
 					ignoreword = true;
