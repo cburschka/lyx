@@ -126,7 +126,6 @@ src_header_files = Split('''
     debug.h
     factory.h
     gettext.h
-    lengthcommon.h
     lfuns.h
     lyxfind.h
     output.h
