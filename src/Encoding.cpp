@@ -401,7 +401,7 @@ bool Encodings::isCombiningChar(char_type c)
 }
 
 
-bool Encodings::isKnownLangChar(char_type c, string & preamble)
+bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 {
 	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 

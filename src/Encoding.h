@@ -145,12 +145,12 @@ public:
 	/**
 	 * Is this a known char from some language?
 	 * If \p preamble is empty and code point \p c is known to belong
-	 * to a supported language, true is returned and \p preamble is set
+	 * to a supported script, true is returned and \p preamble is set
 	 * to the corresponding entry in the unicodesymbols file.
 	 * If \p preamble is not empty, a check is made whether code point
 	 * \p c is a known character matching the preamble entry.
 	 */
-	static bool isKnownLangChar(char_type c, std::string & preamble);
+	static bool isKnownScriptChar(char_type const c, std::string & preamble);
 	/**
 	 * Add the preamble snippet needed for the output of \p c to
 	 * \p features.

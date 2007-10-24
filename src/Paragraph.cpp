@@ -70,7 +70,6 @@ using support::lowercase;
 using support::prefixIs;
 using support::suffixIs;
 using support::rsplit;
-using support::rtrim;
 using support::uppercase;
 
 namespace {
@@ -110,10 +109,10 @@ public:
 			     Font const & font,
 			     Layout const & style);
 
-	/// Output consecutive known unicode chars, belonging to the same
-	/// language as specified by \p preamble, to \p os starting from \p c.
+	/// Output consecutive unicode chars, belonging to the same script as
+	/// specified by the latex macro \p ltx, to \p os starting from \p c.
 	/// \return the number of characters written.
-	int knownLangChars(odocstream & os, char_type c, string & preamble,
+	int writeScriptChars(odocstream & os, char_type c, docstring const & ltx,
 			   Change &, Encoding const &, pos_type &);
 
 	/// This could go to ParagraphParameters if we want to.
@@ -570,28 +569,34 @@ bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
 }
 
 
-int Paragraph::Private::knownLangChars(odocstream & os,
-				     char_type c,
-				     string & preamble,
-				     Change & runningChange,
-				     Encoding const & encoding,
-				     pos_type & i)
+int Paragraph::Private::writeScriptChars(odocstream & os,
+					 char_type c,
+					 docstring const & ltx,
+					 Change & runningChange,
+					 Encoding const & encoding,
+					 pos_type & i)
 {
-	// When the character is marked by the proper language, we simply
-	// get its code point in some encoding, otherwise we get the
-	// translation specified in the unicodesymbols file, which is
-	// something like "\textLANG{<spec>}". So, we have to retain
-	// "\textLANG{<spec>" for the first char but only "<spec>" for
-	// all subsequent chars.
-	docstring const latex1 = rtrim(encoding.latexChar(c), "}");
-	int length = latex1.length();
-	os << latex1;
+	// We only arrive here when a proper language for character c has not
+	// been specified (i.e., it could not be translated in the current
+	// latex encoding) and it belongs to a known script.
+	// Parameter ltx contains the latex translation of c as specified in
+	// the unicodesymbols file and is something like "\textXXX{<spec>}".
+	// The latex macro name "textXXX" specifies the script to which c
+	// belongs and we use it in order to check whether characters from the
+	// same script immediately follow, such that we can collect them in a
+	// single "\textXXX" macro. So, we have to retain "\textXXX{<spec>"
+	// for the first char but only "<spec>" for all subsequent chars.
+	docstring::size_type const brace1 = ltx.find_first_of(from_ascii("{"));
+	docstring::size_type const brace2 = ltx.find_last_of(from_ascii("}"));
+	string script = to_ascii(ltx.substr(1, brace1 - 1));
+	int length = ltx.substr(0, brace2).length();
+	os << ltx.substr(0, brace2);
 	int size = text_.size();
 	while (i + 1 < size) {
-		char_type next = text_[i + 1];
-		// Stop here if next character belongs to another
-		// language or there is a change tracking status.
-		if (!Encodings::isKnownLangChar(next, preamble) ||
+		char_type const next = text_[i + 1];
+		// Stop here if next character belongs to another script
+		// or there is a change in change tracking status.
+		if (!Encodings::isKnownScriptChar(next, script) ||
 		    runningChange != owner_->lookupChange(i + 1))
 			break;
 		Font prev_font;
@@ -606,27 +611,21 @@ int Paragraph::Private::knownLangChars(odocstream & os,
 			if (cit->pos() >= i + 1)
 				break;
 		}
-		// Stop here if there is a font attribute change.
+		// Stop here if there is a font attribute or encoding change.
 		if (found && cit != end && prev_font != cit->font())
 			break;
-		docstring const latex = rtrim(encoding.latexChar(next), "}");
-		docstring::size_type const j =
+		docstring const latex = encoding.latexChar(next);
+		docstring::size_type const b1 =
 					latex.find_first_of(from_ascii("{"));
-		if (j == docstring::npos) {
-			os << latex;
-			length += latex.length();
-		} else {
-			os << latex.substr(j + 1);
-			length += latex.substr(j + 1).length();
-		}
+		docstring::size_type const b2 =
+					latex.find_last_of(from_ascii("}"));
+		int const len = b2 - b1 - 1;
+		os << latex.substr(b1 + 1, len);
+		length += len;
 		++i;
 	}
-	// When the proper language is set, we are simply passed a code
-	// point, so we should not try to close the \textLANG command.
-	if (prefixIs(latex1, from_ascii("\\" + preamble))) {
-		os << '}';
-		++length;
-	}
+	os << '}';
+	++length;
 	return length;
 }
 
@@ -896,14 +895,13 @@ void Paragraph::Private::latexSpecialChar(
 				break;
 			}
 		}
-		string preamble;
-		if (Encodings::isKnownLangChar(c, preamble)) {
-			column += knownLangChars(os, c, preamble, running_change,
-				encoding, i) - 1;
-			break;
-		}
+		string script;
 		docstring const latex = encoding.latexChar(c);
-		if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
+		if (Encodings::isKnownScriptChar(c, script)
+		    && prefixIs(latex, from_ascii("\\" + script)))
+			column += writeScriptChars(os, c, latex,
+					running_change, encoding, i) - 1;
+		else if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
 			// Prevent eating of a following
 			// space or command corruption by
 			// following characters
