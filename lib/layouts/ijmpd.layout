@@ -135,7 +135,7 @@ Style Definition
 	Align                 Block
 	LabelType             Counter
 	LabelCounter          definition
-	LabelString           "Definition @Section@.\arabic{definition}."
+	LabelString           "Definition \thedefinition."
 	LabelSep              M
 	NextNoIndent          1
 	LabelFont
@@ -150,7 +150,7 @@ Style Step
         CopyStyle             Definition
 	LatexName             step
 	LabelCounter          step
-	LabelString           "Step \arabic{step}."
+	LabelString           "Step \thestep."
 	LabelFont
 	  Series              Bold
 	EndFont
@@ -164,7 +164,7 @@ Style Example
         CopyStyle             Definition
 	LatexName             example
 	LabelCounter          example
-	LabelString           "Example @Section@.\arabic{example}."
+	LabelString           "Example \theexample."
 End
 
 Counter
@@ -175,7 +175,7 @@ Style Remark
         CopyStyle             Definition
 	LatexName             remark
 	LabelCounter          remark
-	LabelString           "Remark @Section@.\arabic{remark}."
+	LabelString           "Remark \theremark."
 End
 
 Counter
@@ -186,7 +186,7 @@ Style Notation
         CopyStyle             Definition
 	LatexName             notation
 	LabelCounter          notation
-	LabelString           "Notation @Section@.\arabic{notation}."
+	LabelString           "Notation \thenotation."
 	LabelFont
 	  Series              Medium
 	EndFont
@@ -206,7 +206,7 @@ Style Theorem
 	NextNoIndent          1
 	LabelType             Counter
 	LabelCounter          theorem
-	LabelString           "Theorem @Section@.\arabic{theorem}."
+	LabelString           "Theorem \thetheorem."
 	LabelSep              M
 	LabelFont
 	  Series              Bold
@@ -238,7 +238,7 @@ Style Corollary
         CopyStyle             Theorem
 	LatexName             corollary
 	LabelCounter          corollary
-	LabelString           "Corollary @Section@.\arabic{corollary}."
+	LabelString           "Corollary \thecorollary."
 	TextFont
 	  Shape               Italic
 	EndFont
@@ -252,7 +252,7 @@ Style Lemma
         CopyStyle             Corollary
 	LatexName             lemma
 	LabelCounter          lemma
-	LabelString           "Lemma @Section@.\arabic{lemma}."
+	LabelString           "Lemma \thelemma."
 End
 
 Counter
@@ -263,7 +263,7 @@ Style Proposition
         CopyStyle             Corollary
 	LatexName             proposition
 	LabelCounter          proposition
-	LabelString           "Proposition @Section@.\arabic{proposition}."
+	LabelString           "Proposition \theproposition."
 End
 
 Counter
@@ -274,7 +274,7 @@ Style Prop
         CopyStyle             Notation
 	LatexName             prop
 	LabelCounter          prop
-	LabelString           "Prop @Section@.\arabic{prop}."
+	LabelString           "Prop \theprop."
 End
 
 Counter
@@ -285,7 +285,7 @@ Style Question
         CopyStyle             Notation
 	LatexName             question
 	LabelCounter          question
-	LabelString           "Question @Section@.\arabic{question}."
+	LabelString           "Question \thequestion."
 End
 
 Counter
@@ -296,7 +296,7 @@ Style Claim
         CopyStyle             Notation
 	LatexName             claim
 	LabelCounter          claim
-	LabelString           "Claim @Section@.\arabic{claim}."
+	LabelString           "Claim \theclaim."
 End
 
 Counter
@@ -307,7 +307,7 @@ Style Conjecture
         CopyStyle             Notation
 	LatexName             conjecture
 	LabelCounter          conjecture
-	LabelString           "Conjecture @Section@.\arabic{conjecture}."
+	LabelString           "Conjecture \theconjecture."
 End
 
 Style Appendices_Section
