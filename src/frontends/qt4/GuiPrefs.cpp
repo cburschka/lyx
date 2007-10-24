@@ -2123,7 +2123,7 @@ void PrefShortcuts::shortcut_okPB_pressed()
 
 	if (func.action == LFUN_UNKNOWN_ACTION) {
 		Alert::error(_("Failed to create shortcut"),
-			_("Unknown or invalid lyx function"));
+			_("Unknown or invalid LyX function"));
 		return;
 	}
 

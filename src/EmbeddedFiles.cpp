@@ -199,7 +199,7 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 		// other wise, ask if overwrite
 		int const ret = Alert::prompt(
 			_("Update embedded file?"),
-			bformat(_("Embeddedl file %1$s already exists, do you want to overwrite it"),
+			bformat(_("Embedded file %1$s already exists, do you want to overwrite it"),
 				from_utf8(ext_file)), 1, 1, _("&Overwrite"), _("&Cancel"));
 		if (ret != 0)
 			// if the user does not want to overwrite, we still consider it
