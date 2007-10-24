@@ -855,7 +855,8 @@ void Text::changeCase(Cursor & cur, Text::TextCase action)
 	pos_type right = 0; // needed after the for loop
 
 	for (pit_type pit = begPit; pit <= endPit; ++pit) {
-		pos_type parSize = pars_[pit].size();
+		Paragraph & par = pars_[pit];
+		pos_type parSize = par.size();
 
 		pos_type pos = (pit == begPit ? begPos : 0);
 		right = (pit == endPit ? endPos : parSize);
@@ -868,11 +869,11 @@ void Text::changeCase(Cursor & cur, Text::TextCase action)
 		bool capitalize = true;
 
 		for (; pos < right; ++pos) {
-			char_type oldChar = pars_[pit].getChar(pos);
+			char_type oldChar = par.getChar(pos);
 			char_type newChar = oldChar;
 
 			// ignore insets and don't play with deleted text!
-			if (pars_[pit].isInset(pos) && !pars_[pit].isDeleted(pos)) {
+			if (par.isInset(pos) && !par.isDeleted(pos)) {
 				switch (action) {
 				case text_lowercase:
 					newChar = lowercase(oldChar);
@@ -889,7 +890,7 @@ void Text::changeCase(Cursor & cur, Text::TextCase action)
 				}
 			}
 
-			if (!pars_[pit].isLetter(pos) || pars_[pit].isDeleted(pos)) {
+			if (!par.isLetter(pos) || par.isDeleted(pos)) {
 				capitalize = true; // permit capitalization again
 			}
 
@@ -903,11 +904,11 @@ void Text::changeCase(Cursor & cur, Text::TextCase action)
 				}
 				int erasePos = pos - changes.size();
 				for (size_t i = 0; i < changes.size(); i++) {
-					pars_[pit].insertChar(pos, changes[i],
-						pars_[pit].getFontSettings(cur.buffer().params(),
+					par.insertChar(pos, changes[i],
+						par.getFontSettings(cur.buffer().params(),
 								erasePos),
 						trackChanges);
-					if (!pars_[pit].eraseChar(erasePos, trackChanges)) {
+					if (!par.eraseChar(erasePos, trackChanges)) {
 						++erasePos;
 						++pos; // advance
 						++right; // expand selection
