@@ -66,10 +66,12 @@ using std::ostream;
 namespace lyx {
 
 using support::contains;
+using support::lowercase;
 using support::prefixIs;
 using support::suffixIs;
 using support::rsplit;
 using support::rtrim;
+using support::uppercase;
 
 namespace {
 /// Inset identifier (above 0x10ffff, for ucs-4)
@@ -2599,6 +2601,70 @@ int Paragraph::numberOfOptArgs() const
 	return num;
 }
 
+
+void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
+		pos_type right, TextCase action)
+{
+	// process sequences of modified characters; in change
+	// tracking mode, this approach results in much better
+	// usability than changing case on a char-by-char basis
+	docstring changes;
+
+	bool const trackChanges = bparams.trackChanges;
+
+	bool capitalize = true;
+
+	for (; pos < right; ++pos) {
+		char_type oldChar = d->text_[pos];
+		char_type newChar = oldChar;
+
+		// ignore insets and don't play with deleted text!
+		if (isInset(pos) && !isDeleted(pos)) {
+			switch (action) {
+				case text_lowercase:
+					newChar = lowercase(oldChar);
+					break;
+				case text_capitalization:
+					if (capitalize) {
+						newChar = uppercase(oldChar);
+						capitalize = false;
+					}
+					break;
+				case text_uppercase:
+					newChar = uppercase(oldChar);
+					break;
+			}
+		}
+
+		if (!isLetter(pos) || isDeleted(pos)) {
+			// permit capitalization again
+			capitalize = true;
+		}
+
+		if (oldChar != newChar)
+			changes += newChar;
+
+		if (oldChar == newChar || pos == right - 1) {
+			if (oldChar != newChar) {
+				// step behind the changing area
+				pos++;
+			}
+			int erasePos = pos - changes.size();
+			for (size_t i = 0; i < changes.size(); i++) {
+				insertChar(pos, changes[i],
+					getFontSettings(bparams,
+					erasePos),
+					trackChanges);
+				if (!eraseChar(erasePos, trackChanges)) {
+					++erasePos;
+					++pos; // advance
+					++right; // expand selection
+				}
+			}
+			changes.clear();
+		}
+	}
+}
 
 char_type Paragraph::getChar(pos_type pos) const
 {

@@ -59,6 +59,16 @@ public:
 	pos_type first, last;
 };
 
+///
+enum TextCase {
+	///
+	text_lowercase = 0,
+	///
+	text_capitalization = 1,
+	///
+	text_uppercase = 2
+};
+
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 /// \todo FIXME: any reference to ParagraphMetrics (including inheritance)
@@ -346,6 +356,10 @@ public:
 
 	/// return the number of InsetOptArg in a paragraph
 	int numberOfOptArgs() const;
+
+	///
+	void changeCase(BufferParams const & bparams, pos_type pos,
+		pos_type right, TextCase action);
 
 private:
 	/// Pimpl away stuff

@@ -200,15 +200,6 @@ public:
 	bool dissolveInset(Cursor & cur);
 	///
 	bool selectWordWhenUnderCursor(Cursor & cur, word_location);
-	///
-	enum TextCase {
-		///
-		text_lowercase = 0,
-		///
-		text_capitalization = 1,
-		///
-		text_uppercase = 2
-	};
 	/// Change the case of the word at cursor position.
 	void changeCase(Cursor & cur, TextCase action);
 	/// Transposes the character at the cursor with the one before it
