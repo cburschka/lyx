@@ -23,7 +23,7 @@ InsetOptArg::InsetOptArg(BufferParams const & ins)
 	: InsetCollapsable(ins)
 {
 	Font font(Font::ALL_SANE);
-	font.setColor(Color::collapsable);
+	font.setColor(Color_collapsable);
 	setLabelFont(font);
 	setLabel(_("opt"));
 }
@@ -33,7 +33,7 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 	: InsetCollapsable(in)
 {
 	Font font(Font::ALL_SANE);
-	font.setColor(Color::collapsable);
+	font.setColor(Color_collapsable);
 	setLabelFont(font);
 	setLabel(_("opt"));
 }

@@ -14,7 +14,6 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "Color.h"
 #include "Text.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -54,7 +53,7 @@ void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 {
 	Font font;
-	font.setColor(Color::pagebreak);
+	font.setColor(Color_pagebreak);
 	font.decSize();
 
 	Dimension const dim = dimension(*pi.base.bv);
@@ -68,12 +67,12 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 	int const text_end = text_start + w;
 
 	pi.pain.rectText(text_start, y + d, insetLabel(), font,
-		Color::none, Color::none);
+		Color_none, Color_none);
 
 	pi.pain.line(x, y, text_start, y,
-		   Color::pagebreak, Painter::line_onoffdash);
+		   Color_pagebreak, Painter::line_onoffdash);
 	pi.pain.line(text_end, y, int(x + dim.wid), y,
-		   Color::pagebreak, Painter::line_onoffdash);
+		   Color_pagebreak, Painter::line_onoffdash);
 }
 
 

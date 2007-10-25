@@ -22,7 +22,6 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "CoordCache.h"
-#include "Color.h"
 #include "Cursor.h"
 #include "debug.h"
 
@@ -297,7 +296,7 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 	Dimension const & dim = bv.coordCache().getArrays().dim(this);
 
 	if (empty()) {
-		pi.pain.rectangle(x, y - dim.ascent(), dim.width(), dim.height(), Color::mathline);
+		pi.pain.rectangle(x, y - dim.ascent(), dim.width(), dim.height(), Color_mathline);
 		return;
 	}
 

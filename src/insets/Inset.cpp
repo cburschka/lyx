@@ -19,7 +19,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Color.h"
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "debug.h"
@@ -297,8 +296,8 @@ void Inset::metricsMarkers2(Dimension & dim, int framesize) const
 
 void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 {
-	Color::color pen_color = mouseHovered() || editing(pi.base.bv)?
-		Color::mathframe : Color::mathcorners;
+	ColorCode pen_color = mouseHovered() || editing(pi.base.bv)?
+		Color_mathframe : Color_mathcorners;
 
 	Dimension const dim = dimension(*pi.base.bv);
 
@@ -314,8 +313,8 @@ void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 
 void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
 {
-	Color::color pen_color = mouseHovered() || editing(pi.base.bv)?
-		Color::mathframe : Color::mathcorners;
+	ColorCode pen_color = mouseHovered() || editing(pi.base.bv)?
+		Color_mathframe : Color_mathcorners;
 
 	drawMarkers(pi, x, y);
 	Dimension const dim = dimension(*pi.base.bv);
@@ -366,9 +365,9 @@ void Inset::dump() const
 }
 
 
-Color_color Inset::backgroundColor() const
+ColorCode Inset::backgroundColor() const
 {
-	return Color::background;
+	return Color_background;
 }
 
 

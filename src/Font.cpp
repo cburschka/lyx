@@ -124,7 +124,7 @@ Font::FontBits Font::sane = {
 	MEDIUM_SERIES,
 	UP_SHAPE,
 	SIZE_NORMAL,
-	Color::none,
+	Color_none,
 	OFF,
 	OFF,
 	OFF,
@@ -136,7 +136,7 @@ Font::FontBits Font::inherit = {
 	INHERIT_SERIES,
 	INHERIT_SHAPE,
 	INHERIT_SIZE,
-	Color::inherit,
+	Color_inherit,
 	INHERIT,
 	INHERIT,
 	INHERIT,
@@ -148,7 +148,7 @@ Font::FontBits Font::ignore = {
 	IGNORE_SERIES,
 	IGNORE_SHAPE,
 	IGNORE_SIZE,
-	Color::ignore,
+	Color_ignore,
 	IGNORE,
 	IGNORE,
 	IGNORE,
@@ -206,9 +206,9 @@ Font::Font(Font::FONT_INIT3, Language const * l)
 
 
 
-Color_color Font::color() const
+ColorCode Font::color() const
 {
-	return Color::color(bits.color);
+	return ColorCode(bits.color);
 }
 
 
@@ -267,9 +267,9 @@ void Font::setNoun(Font::FONT_MISC_STATE n)
 }
 
 
-void Font::setColor(Color_color c)
+void Font::setColor(ColorCode c)
 {
-	bits.color = int(c);
+	bits.color = c;
 }
 
 
@@ -425,8 +425,8 @@ void Font::update(Font const & newfont,
 		setLanguage(newfont.language());
 
 	if (newfont.color() == color() && toggleall)
-		setColor(Color::inherit); // toggle 'back'
-	else if (newfont.color() != Color::ignore)
+		setColor(Color_inherit); // toggle 'back'
+	else if (newfont.color() != Color_ignore)
 		setColor(newfont.color());
 }
 
@@ -449,7 +449,7 @@ void Font::reduce(Font const & tmplt)
 	if (noun() == tmplt.noun())
 		setNoun(INHERIT);
 	if (color() == tmplt.color())
-		setColor(Color::inherit);
+		setColor(Color_inherit);
 }
 
 
@@ -482,7 +482,7 @@ Font & Font::realize(Font const & tmplt)
 	if (bits.noun == INHERIT)
 		bits.noun = tmplt.bits.noun;
 
-	if (bits.color == Color::inherit)
+	if (bits.color == Color_inherit)
 		bits.color = tmplt.bits.color;
 
 	return *this;
@@ -496,7 +496,7 @@ bool Font::resolved() const
 		shape() != INHERIT_SHAPE && size() != INHERIT_SIZE &&
 		emph() != INHERIT && underbar() != INHERIT &&
 		noun() != INHERIT &&
-		color() != Color::inherit);
+		color() != Color_inherit);
 }
 
 
@@ -511,7 +511,7 @@ docstring const Font::stateText(BufferParams * params) const
 		os << _(GUIShapeNames[shape()]) << ", ";
 	if (size() != INHERIT_SIZE)
 		os << _(GUISizeNames[size()]) << ", ";
-	if (color() != Color::inherit)
+	if (color() != Color_inherit)
 		os << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
 		os << bformat(_("Emphasis %1$s, "),
@@ -836,7 +836,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		count += strlen(LaTeXShapeNames[f.shape()]) + 2;
 		env = true; //We have opened a new environment
 	}
-	if (f.color() != Color::inherit && f.color() != Color::ignore) {
+	if (f.color() != Color_inherit && f.color() != Color_ignore) {
 		os << "\\textcolor{"
 		   << from_ascii(lcolor.getLaTeXName(f.color()))
 		   << "}{";
@@ -907,7 +907,7 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
-	if (f.color() != Color::inherit && f.color() != Color::ignore) {
+	if (f.color() != Color_inherit && f.color() != Color_ignore) {
 		os << '}';
 		++count;
 		env = true; // Size change need not bother about closing env.
@@ -970,10 +970,10 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 }
 
 
-Color_color Font::realColor() const
+ColorCode Font::realColor() const
 {
-	if (color() == Color::none)
-		return Color::foreground;
+	if (color() == Color_none)
+		return Color_foreground;
 	return color();
 }
 
@@ -1048,7 +1048,7 @@ bool Font::fromString(string const & data, bool & toggle)
 
 		} else if (token == "color") {
 			int const next = lex.getInteger();
-			setColor(Color::color(next));
+			setColor(ColorCode(next));
 
 		} else if (token == "language") {
 			string const next = lex.getString();
@@ -1086,13 +1086,13 @@ void Font::validate(LaTeXFeatures & features) const
 			<< endl;
 	}
 	switch (color()) {
-		case Color::none:
-		case Color::inherit:
-		case Color::ignore:
+		case Color_none:
+		case Color_inherit:
+		case Color_ignore:
 			// probably we should put here all interface colors used for
 			// font displaying! For now I just add this ones I know of (Jug)
-		case Color::latex:
-		case Color::note:
+		case Color_latex:
+		case Color_note:
 			break;
 		default:
 			features.require("color");

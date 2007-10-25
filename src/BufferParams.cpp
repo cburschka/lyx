@@ -28,7 +28,6 @@
 #include "LaTeXFeatures.h"
 #include "Messages.h"
 #include "ModuleList.h"
-#include "Color.h"
 #include "Font.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -584,7 +583,7 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 					branch_ptr->setColor(color);
 				// Update also the Color table:
 				if (color == "none")
-					color = lcolor.getX11Name(Color::background);
+					color = lcolor.getX11Name(Color_background);
 				// FIXME UNICODE
 				lcolor.setColor(to_utf8(branch), color);
 

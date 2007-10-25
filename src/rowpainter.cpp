@@ -16,7 +16,6 @@
 #include "Bidi.h"
 #include "Buffer.h"
 #include "CoordCache.h"
-#include "Color.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "BufferParams.h"
@@ -96,23 +95,23 @@ void RowPainter::paintHfill(pos_type const pos, pos_type const body_pos)
 	int const y0 = yo_;
 	int const y1 = y0 - defaultRowHeight() / 2;
 
-	pi_.pain.line(int(x_), y1, int(x_), y0, Color::added_space);
+	pi_.pain.line(int(x_), y1, int(x_), y0, Color_added_space);
 
 	if (pm_.hfillExpansion(row_, pos)) {
 		int const y2 = (y0 + y1) / 2;
 
 		if (pos >= body_pos) {
 			pi_.pain.line(int(x_), y2, int(x_ + row_.hfill), y2,
-				Color::added_space,
+				Color_added_space,
 				Painter::line_onoffdash);
 			x_ += row_.hfill;
 		} else {
 			pi_.pain.line(int(x_), y2, int(x_ + row_.label_hfill), y2,
-				Color::added_space,
+				Color_added_space,
 				Painter::line_onoffdash);
 			x_ += row_.label_hfill;
 		}
-		pi_.pain.line(int(x_), y1, int(x_), y0, Color::added_space);
+		pi_.pain.line(int(x_), y1, int(x_), y0, Color_added_space);
 	}
 	x_ += 2;
 }
@@ -172,10 +171,10 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	int const x2 = x1 + dim.wid;
 	int const y1 = yo_ + dim.des;
 	int const y2 = yo_ - dim.asc;
-	pi_.pain.line(x1, y1, x1, y2, Color::green);
-	pi_.pain.line(x1, y1, x2, y1, Color::green);
-	pi_.pain.line(x2, y1, x2, y2, Color::green);
-	pi_.pain.line(x1, y2, x2, y2, Color::green);
+	pi_.pain.line(x1, y1, x1, y2, Color_green);
+	pi_.pain.line(x1, y1, x2, y1, Color_green);
+	pi_.pain.line(x2, y1, x2, y2, Color_green);
+	pi_.pain.line(x1, y2, x2, y2, Color_green);
 #endif
 }
 
@@ -325,9 +324,9 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font,
 	if (prev_change != Change::UNCHANGED) {
 		Font copy(font);
 		if (prev_change == Change::DELETED) {
-			copy.setColor(Color::deletedtext);
+			copy.setColor(Color_deletedtext);
 		} else if (prev_change == Change::INSERTED) {
-			copy.setColor(Color::addedtext);
+			copy.setColor(Color_addedtext);
 		}
 		x_ += pi_.pain.text(int(x_), yo_, s, copy);
 	} else {
@@ -346,7 +345,7 @@ void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
 		return;
 
 	int const y = yo_ + 1 + desc;
-	pi_.pain.line(int(orig_x), y, int(x_), y, Color::language);
+	pi_.pain.line(int(orig_x), y, int(x_), y, Color_language);
 }
 
 
@@ -398,7 +397,7 @@ void RowPainter::paintChangeBar()
 		? row_.ascent()
 		: row_.height();
 
-	pi_.pain.fillRectangle(5, yo_ - row_.ascent(), 3, height, Color::changebar);
+	pi_.pain.fillRectangle(5, yo_ - row_.ascent(), 3, height, Color_changebar);
 }
 
 
@@ -413,8 +412,8 @@ void RowPainter::paintAppendix()
 	if (par_.params().startOfAppendix())
 		y += 2 * defaultRowHeight();
 
-	pi_.pain.line(1, y, 1, yo_ + row_.height(), Color::appendix);
-	pi_.pain.line(width_ - 2, y, width_ - 2, yo_ + row_.height(), Color::appendix);
+	pi_.pain.line(1, y, 1, yo_ + row_.height(), Color_appendix);
+	pi_.pain.line(width_ - 2, y, width_ - 2, yo_ + row_.height(), Color_appendix);
 }
 
 
@@ -451,12 +450,12 @@ void RowPainter::paintDepthBar()
 		int const starty = yo_ - row_.ascent();
 		int const h =  row_.height() - 1 - (i - next_depth - 1) * 3;
 
-		pi_.pain.line(x, starty, x, starty + h, Color::depthbar);
+		pi_.pain.line(x, starty, x, starty + h, Color_depthbar);
 
 		if (i > prev_depth)
-			pi_.pain.fillRectangle(x, starty, w, 2, Color::depthbar);
+			pi_.pain.fillRectangle(x, starty, w, 2, Color_depthbar);
 		if (i > next_depth)
-			pi_.pain.fillRectangle(x, starty + h, w, 2, Color::depthbar);
+			pi_.pain.fillRectangle(x, starty + h, w, 2, Color_depthbar);
 	}
 }
 
@@ -464,7 +463,7 @@ void RowPainter::paintDepthBar()
 int RowPainter::paintAppendixStart(int y)
 {
 	Font pb_font;
-	pb_font.setColor(Color::appendix);
+	pb_font.setColor(Color_appendix);
 	pb_font.decSize();
 
 	int w = 0;
@@ -477,10 +476,10 @@ int RowPainter::paintAppendixStart(int y)
 	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
 
-	pi_.pain.rectText(text_start, y + d, label, pb_font, Color::none, Color::none);
+	pi_.pain.rectText(text_start, y + d, label, pb_font, Color_none, Color_none);
 
-	pi_.pain.line(int(xo_ + 1), y, text_start, y, Color::appendix);
-	pi_.pain.line(text_end, y, int(xo_ + width_ - 2), y, Color::appendix);
+	pi_.pain.line(int(xo_ + 1), y, text_start, y, Color_appendix);
+	pi_.pain.line(text_end, y, int(xo_ + width_ - 2), y, Color_appendix);
 
 	return 3 * defaultRowHeight();
 }
@@ -617,7 +616,7 @@ void RowPainter::paintLast()
 	if (par_.isInserted(par_.size()) || par_.isDeleted(par_.size())) {
 		FontMetrics const & fm = theFontMetrics(pi_.base.bv->buffer().params().getFont());
 		int const length = fm.maxAscent() / 2;
-		Color::color col = par_.isInserted(par_.size()) ? Color::addedtext : Color::deletedtext;
+		ColorCode col = par_.isInserted(par_.size()) ? Color_addedtext : Color_deletedtext;
 
 		pi_.pain.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
 			   Painter::line_solid, Painter::line_thick);
@@ -640,9 +639,9 @@ void RowPainter::paintLast()
 			x += (size - width_ + row_.width() + 1) * (is_rtl ? -1 : 1);
 
 		if (endlabel == END_LABEL_BOX)
-			pi_.pain.rectangle(x, y, size, size, Color::eolmarker);
+			pi_.pain.rectangle(x, y, size, size, Color_eolmarker);
 		else
-			pi_.pain.fillRectangle(x, y, size, size, Color::eolmarker);
+			pi_.pain.fillRectangle(x, y, size, size, Color_eolmarker);
 		break;
 	}
 
@@ -761,7 +760,7 @@ void RowPainter::paintText()
 				= theFontMetrics(pi_.base.bv->buffer().params().getFont());
 			int const middle = yo_ - fm.maxAscent() / 3;
 			pi_.pain.line(last_strikeout_x, middle, int(x_), middle,
-				Color::deletedtext, Painter::line_solid, Painter::line_thin);
+				Color_deletedtext, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
 		}
 
@@ -805,7 +804,7 @@ void RowPainter::paintText()
 			= theFontMetrics(pi_.base.bv->buffer().params().getFont());
 		int const middle = yo_ - fm.maxAscent() / 3;
 		pi_.pain.line(last_strikeout_x, middle, int(x_), middle,
-			Color::deletedtext, Painter::line_solid, Painter::line_thin);
+			Color_deletedtext, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
 	}
 }

@@ -11,14 +11,13 @@
 
 #include <config.h>
 
-#include "MathSupport.h"
-#include "MathData.h"
 #include "InsetMath.h"
-#include "MathStream.h"
+#include "MathData.h"
 #include "MathParser.h"
+#include "MathStream.h"
+#include "MathSupport.h"
 
 #include "debug.h"
-#include "Color.h"
 
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
@@ -410,7 +409,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 {
 	if (name == ".") {
 		pi.pain.line(x + w/2, y, x + w/2, y + h,
-			  Color::cursor, Painter::line_onoffdash);
+			  Color_cursor, Painter::line_onoffdash);
 		return;
 	}
 
@@ -452,7 +451,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 			pi.pain.line(
 				int(x + xx + 0.5), int(y + yy + 0.5),
 				int(x + x2 + 0.5), int(y + y2 + 0.5),
-				Color::math);
+				Color_math);
 		} else {
 			int xp[32];
 			int yp[32];
@@ -469,7 +468,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 				yp[j] = int(y + yy + 0.5);
 				//  lyxerr << "P[" << j ' ' << xx << ' ' << yy << ' ' << x << ' ' << y << ']';
 			}
-			pi.pain.lines(xp, yp, n, Color::math);
+			pi.pain.lines(xp, yp, n, Color_math);
 		}
 	}
 }
@@ -478,7 +477,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 void drawStrRed(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	Font f = pi.base.font;
-	f.setColor(Color::latex);
+	f.setColor(Color_latex);
 	pi.pain.text(x, y, str, f);
 }
 
@@ -486,7 +485,7 @@ void drawStrRed(PainterInfo & pi, int x, int y, docstring const & str)
 void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	Font f = pi.base.font;
-	f.setColor(Color::foreground);
+	f.setColor(Color_foreground);
 	pi.pain.text(x, y, str, f);
 }
 
@@ -504,7 +503,7 @@ struct fontinfo {
 	Font::FONT_FAMILY family_;
 	Font::FONT_SERIES series_;
 	Font::FONT_SHAPE  shape_;
-	Color::color        color_;
+	ColorCode        color_;
 };
 
 
@@ -518,87 +517,87 @@ Font::FONT_SHAPE  const inh_shape  = Font::INHERIT_SHAPE;
 fontinfo fontinfos[] = {
 	// math fonts
 	{"mathnormal",    Font::ROMAN_FAMILY, Font::MEDIUM_SERIES,
-			  Font::ITALIC_SHAPE, Color::math},
+			  Font::ITALIC_SHAPE, Color_math},
 	{"mathbf",        inh_family, Font::BOLD_SERIES,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"mathcal",       Font::CMSY_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"mathfrak",      Font::EUFRAK_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"mathrm",        Font::ROMAN_FAMILY, inh_series,
-			  Font::UP_SHAPE, Color::math},
+			  Font::UP_SHAPE, Color_math},
 	{"mathsf",        Font::SANS_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"mathbb",        Font::MSB_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"mathtt",        Font::TYPEWRITER_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"mathit",        inh_family, inh_series,
-			  Font::ITALIC_SHAPE, Color::math},
+			  Font::ITALIC_SHAPE, Color_math},
 	{"cmex",          Font::CMEX_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"cmm",           Font::CMM_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"cmr",           Font::CMR_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"cmsy",          Font::CMSY_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"eufrak",        Font::EUFRAK_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"msa",           Font::MSA_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"msb",           Font::MSB_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"wasy",          Font::WASY_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"esint",         Font::ESINT_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 
 	// Text fonts
 	{"text",          inh_family, inh_series,
-			  inh_shape, Color::foreground},
+			  inh_shape, Color_foreground},
 	{"textbf",        inh_family, Font::BOLD_SERIES,
-			  inh_shape, Color::foreground},
+			  inh_shape, Color_foreground},
 	{"textit",        inh_family, inh_series,
-			  Font::ITALIC_SHAPE, Color::foreground},
+			  Font::ITALIC_SHAPE, Color_foreground},
 	{"textmd",        inh_family, Font::MEDIUM_SERIES,
-			  inh_shape, Color::foreground},
+			  inh_shape, Color_foreground},
 	{"textnormal",    inh_family, inh_series,
-			  Font::UP_SHAPE, Color::foreground},
+			  Font::UP_SHAPE, Color_foreground},
 	{"textrm",        Font::ROMAN_FAMILY,
-			  inh_series, Font::UP_SHAPE,Color::foreground},
+			  inh_series, Font::UP_SHAPE,Color_foreground},
 	{"textsc",        inh_family, inh_series,
-			  Font::SMALLCAPS_SHAPE, Color::foreground},
+			  Font::SMALLCAPS_SHAPE, Color_foreground},
 	{"textsf",        Font::SANS_FAMILY, inh_series,
-			  inh_shape, Color::foreground},
+			  inh_shape, Color_foreground},
 	{"textsl",        inh_family, inh_series,
-			  Font::SLANTED_SHAPE, Color::foreground},
+			  Font::SLANTED_SHAPE, Color_foreground},
 	{"texttt",        Font::TYPEWRITER_FAMILY, inh_series,
-			  inh_shape, Color::foreground},
+			  inh_shape, Color_foreground},
 	{"textup",        inh_family, inh_series,
-			  Font::UP_SHAPE, Color::foreground},
+			  Font::UP_SHAPE, Color_foreground},
 
 	// TIPA support
 	{"textipa",       inh_family, inh_series,
-			  inh_shape, Color::foreground},
+			  inh_shape, Color_foreground},
 
 	// LyX internal usage
 	{"lyxtex",        inh_family, inh_series,
-			  Font::UP_SHAPE, Color::latex},
+			  Font::UP_SHAPE, Color_latex},
 	{"lyxsymbol",     Font::SYMBOL_FAMILY, inh_series,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"lyxboldsymbol", Font::SYMBOL_FAMILY, Font::BOLD_SERIES,
-			  inh_shape, Color::math},
+			  inh_shape, Color_math},
 	{"lyxblacktext",  Font::ROMAN_FAMILY, Font::MEDIUM_SERIES,
-			  Font::UP_SHAPE, Color::foreground},
+			  Font::UP_SHAPE, Color_foreground},
 	{"lyxnochange",   inh_family, inh_series,
-			  inh_shape, Color::foreground},
+			  inh_shape, Color_foreground},
 	{"lyxfakebb",     Font::TYPEWRITER_FAMILY, Font::BOLD_SERIES,
-			  Font::UP_SHAPE, Color::math},
+			  Font::UP_SHAPE, Color_math},
 	{"lyxfakecal",    Font::SANS_FAMILY, Font::MEDIUM_SERIES,
-			  Font::ITALIC_SHAPE, Color::math},
+			  Font::ITALIC_SHAPE, Color_math},
 	{"lyxfakefrak",   Font::ROMAN_FAMILY, Font::BOLD_SERIES,
-			  Font::ITALIC_SHAPE, Color::math}
+			  Font::ITALIC_SHAPE, Color_math}
 };
 
 
@@ -673,7 +672,7 @@ void augmentFont(Font & font, docstring const & name)
 		font.setSeries(info->series_);
 	if (info->shape_ != inh_shape)
 		font.setShape(info->shape_);
-	if (info->color_ != Color::none)
+	if (info->color_ != Color_none)
 		font.setColor(info->color_);
 }
 

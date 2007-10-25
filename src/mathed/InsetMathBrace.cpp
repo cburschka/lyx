@@ -14,7 +14,6 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "Color.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -58,7 +57,7 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 {
 	Font font = pi.base.font;
-	font.setColor(Color::latex);
+	font.setColor(Color_latex);
 	Dimension t = theFontMetrics(font).dimension('{');
 	pi.pain.text(x, y, '{', font);
 	cell(0).draw(pi, x + t.wid, y);

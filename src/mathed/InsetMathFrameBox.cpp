@@ -14,7 +14,6 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "Color.h"
 #include "frontends/Painter.h"
 
 
@@ -50,7 +49,7 @@ void InsetMathFrameBox::draw(PainterInfo & pi, int x, int y) const
 	FontSetChanger dummy(pi.base, "textnormal");
 	Dimension const dim = dimension(*pi.base.bv);
 	pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
-		dim.width() - 2, dim.height() - 2, Color::foreground);
+		dim.width() - 2, dim.height() - 2, Color_foreground);
 	x += 5;
 	BufferView const & bv = *pi.base.bv;
 

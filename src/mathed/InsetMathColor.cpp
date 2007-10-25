@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "Color.h"
 #include "InsetMathColor.h"
 #include "MathData.h"
 #include "MathStream.h"
@@ -21,7 +22,7 @@
 
 namespace lyx {
 
-InsetMathColor::InsetMathColor(bool oldstyle, Color_color const & color)
+InsetMathColor::InsetMathColor(bool oldstyle, ColorCode color)
 	: InsetMathNest(1), oldstyle_(oldstyle),
 	  color_(from_utf8(lcolor.getLaTeXName(color)))
 {}
@@ -49,7 +50,7 @@ void InsetMathColor::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathColor::draw(PainterInfo & pi, int x, int y) const
 {
-	Color_color origcol = pi.base.font.color();
+	ColorCode origcol = pi.base.font.color();
 	pi.base.font.setColor(lcolor.getFromLaTeXName(to_utf8(color_)));
 	cell(0).draw(pi, x + 1, y);
 	pi.base.font.setColor(origcol);

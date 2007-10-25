@@ -133,7 +133,7 @@ void InsetMathXYArrow::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.text(x, y, "X");
 		MathData const & s = sourceCell();
 		MathData const & t = targetCell();
-		pi.pain.line(s.xm(), s.ym(), t.xm(), t.ym(), Color::math);
+		pi.pain.line(s.xm(), s.ym(), t.xm(), t.ym(), Color_math);
 		cell(1).draw(pi, (s.xm() + t.xm())/2, (s.ym() + t.ym())/2);
 
 	}

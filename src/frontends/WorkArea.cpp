@@ -23,7 +23,6 @@
 #include "BufferView.h"
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "Color.h"
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "debug.h"

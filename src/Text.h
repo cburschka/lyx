@@ -28,7 +28,6 @@ class Font;
 class FuncRequest;
 class FuncStatus;
 class Inset;
-class Color_color;
 class Cursor;
 class Lexer;
 class PainterInfo;

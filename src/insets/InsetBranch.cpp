@@ -21,7 +21,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "OutputParams.h"
 
@@ -97,8 +96,8 @@ void InsetBranch::setButtonLabel()
 	docstring s = _("Branch: ") + params_.branch;
 	if (!params_.branch.empty()) {
 		// FIXME UNICODE
-		Color_color c = lcolor.getFromLyXName(to_utf8(params_.branch));
-		if (c == Color::none) {
+		ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
+		if (c == Color_none) {
 			s = _("Undef: ") + s;
 		}
 	}
@@ -109,13 +108,13 @@ void InsetBranch::setButtonLabel()
 }
 
 
-Color_color InsetBranch::backgroundColor() const
+ColorCode InsetBranch::backgroundColor() const
 {
 	if (!params_.branch.empty()) {
 		// FIXME UNICODE
-		Color_color c = lcolor.getFromLyXName(to_utf8(params_.branch));
-		if (c == Color::none) {
-			c = Color::error;
+		ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
+		if (c == Color_none) {
+			c = Color_error;
 		}
 		return c;
 	} else

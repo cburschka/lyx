@@ -24,8 +24,6 @@
 
 namespace lyx {
 
-class Color_color;
-
 namespace frontend {
 
 enum FontState {
@@ -46,7 +44,7 @@ typedef std::pair<QString, Font::FONT_SERIES> SeriesPair;
 typedef std::pair<QString, Font::FONT_SHAPE>  ShapePair;
 typedef std::pair<QString, Font::FONT_SIZE>   SizePair;
 typedef std::pair<QString, FontState> BarPair;
-typedef std::pair<QString, Color_color> ColorPair;
+typedef std::pair<QString, ColorCode> ColorPair;
 
 class GuiCharacter : public GuiDialog, public Ui::CharacterUi
 {
@@ -95,7 +93,7 @@ private:
 	///
 	void setBar(FontState);
 	///
-	void setColor(Color_color);
+	void setColor(ColorCode);
 	///
 	void setLanguage(std::string const &);
 
@@ -110,7 +108,7 @@ private:
 	///
 	FontState getBar() const;
 	///
-	Color_color getColor() const;
+	ColorCode getColor() const;
 	///
 	std::string getLanguage() const;
 

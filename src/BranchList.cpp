@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "BranchList.h"
-#include "Color.h"
 
 #include "frontends/Application.h"
 
@@ -26,7 +25,7 @@ Branch::Branch() : selected_(false)
 {
 	// no theApp() with command line export
 	if (theApp())
-		theApp()->getRgbColor(Color::background, color_);
+		theApp()->getRgbColor(Color_background, color_);
 }
 
 
@@ -75,7 +74,7 @@ void Branch::setColor(string const & c)
 		color_ = RGBColor(c);
 	else
 		// no color set or invalid color - use normal background
-		theApp()->getRgbColor(Color::background, color_);
+		theApp()->getRgbColor(Color_background, color_);
 }
 
 

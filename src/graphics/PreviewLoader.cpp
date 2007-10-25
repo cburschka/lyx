@@ -21,7 +21,6 @@
 #include "Encoding.h"
 #include "Format.h"
 #include "InsetIterator.h"
-#include "Color.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "output.h"
@@ -610,8 +609,8 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << support::quoteName(latexfile.toFilesystemEncoding()) << ' '
 	   << int(font_scaling_factor_) << ' '
-	   << theApp()->hexName(Color::preview) << ' '
-	   << theApp()->hexName(Color::background);
+	   << theApp()->hexName(Color_preview) << ' '
+	   << theApp()->hexName(Color_background);
 
 	string const command = support::libScriptSearch(cs.str());
 

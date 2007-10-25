@@ -11,6 +11,8 @@
 #ifndef LYX_APPLICATION_H
 #define LYX_APPLICATION_H
 
+#include "ColorCode.h"
+
 #include <boost/function.hpp>
 
 #include <string>
@@ -18,7 +20,6 @@
 namespace lyx {
 
 class BufferView;
-class Color_color;
 struct RGBColor;
 
 namespace frontend {
@@ -187,17 +188,17 @@ public:
 	* The function returns true if successful.
 	* It returns false on failure and sets r, g, b to 0.
 	*/
-	virtual bool getRgbColor(Color_color col, RGBColor & rgbcol) = 0;
+	virtual bool getRgbColor(ColorCode col, RGBColor & rgbcol) = 0;
 
-	/** Eg, passing Color::black returns "000000",
-	*      passing Color::white returns "ffffff".
+	/** Eg, passing Color_black returns "000000",
+	*      passing Color_white returns "ffffff".
 	*/
-	virtual std::string const hexName(Color_color col) = 0;
+	virtual std::string const hexName(ColorCode col) = 0;
 
 	/**
 	* update an altered GUI color
 	*/
-	virtual void updateColor(Color_color col) = 0;
+	virtual void updateColor(ColorCode col) = 0;
 
 	/**
 	* add a callback for socket read notification

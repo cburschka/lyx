@@ -16,7 +16,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "Color.h"
 #include "Counters.h"
 #include "Cursor.h"
 #include "BufferView.h"
@@ -54,7 +53,7 @@ InsetCaption::InsetCaption(InsetCaption const & ic)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
-	setFrameColor(Color::captionframe);
+	setFrameColor(Color_captionframe);
 }
 
 InsetCaption::InsetCaption(BufferParams const & bp)
@@ -62,7 +61,7 @@ InsetCaption::InsetCaption(BufferParams const & bp)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
-	setFrameColor(Color::captionframe);
+	setFrameColor(Color_captionframe);
 }
 
 

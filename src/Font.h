@@ -19,7 +19,8 @@
 #include "tex2lyx/Font.h"
 #else
 
-#include "Color.h"
+#include "ColorCode.h"
+
 #include "support/docstream.h"
 
 
@@ -174,10 +175,8 @@ public:
 		FONT_SHAPE shape;
 		///
 		FONT_SIZE size;
-		/** We store the Color::color value as an int to get Color.h out
-		 *  of the header file.
-		 */
-		int color;
+		///
+		ColorCode color;
 		///
 		FONT_MISC_STATE emph;
 		///
@@ -224,7 +223,7 @@ public:
 	///
 	FONT_MISC_STATE number() const { return bits.number; }
 	///
-	Color_color color() const;
+	ColorCode color() const;
 	///
 	Language const * language() const { return lang; }
 	///
@@ -243,7 +242,7 @@ public:
 	void setUnderbar(Font::FONT_MISC_STATE u);
 	void setNoun(Font::FONT_MISC_STATE n);
 	void setNumber(Font::FONT_MISC_STATE n);
-	void setColor(Color_color c);
+	void setColor(ColorCode c);
 	void setLanguage(Language const * l);
 
 	/// Set family after LyX text format
@@ -320,7 +319,7 @@ public:
 	docstring const stateText(BufferParams * params) const;
 
 	///
-	Color_color realColor() const;
+	ColorCode realColor() const;
 
 	///
 	void validate(LaTeXFeatures & features) const;

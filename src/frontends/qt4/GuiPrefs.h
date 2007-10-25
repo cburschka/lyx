@@ -16,7 +16,7 @@
 
 #include "GuiDialog.h"
 
-#include "Color.h"
+#include "ColorCode.h"
 #include "Converter.h"
 #include "Format.h"
 #include "KeyMap.h"
@@ -53,7 +53,6 @@
 
 namespace lyx {
 
-class Color_color;
 class Converters;
 class Formats;
 class Movers;
@@ -167,7 +166,7 @@ private Q_SLOTS:
 	void change_lyxObjects_selection();
 
 private:
-	std::vector<Color_color> lcolors_;
+	std::vector<ColorCode> lcolors_;
 	// FIXME the use of mutable here is required due to the
 	// fact that initialization is not done in the controller
 	// but in the constructor.
@@ -473,7 +472,7 @@ public:
 				    docstring const & title) const;
 
 	/// set a color
-	void setColor(Color_color col, std::string const & hex);
+	void setColor(ColorCode col, std::string const & hex);
 
 	/// update the screen fonts after change
 	void updateScreenFonts();

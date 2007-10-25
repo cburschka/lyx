@@ -15,8 +15,6 @@
 
 #include "frontends/Painter.h"
 
-#include "Color.h"
-
 #include <QPainter>
 
 class QString;
@@ -39,7 +37,7 @@ public:
 	virtual void line(
 		int x1, int y1,
 		int x2, int y2,
-		Color_color,
+		ColorCode,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -53,7 +51,7 @@ public:
 		int const * xp,
 		int const * yp,
 		int np,
-		Color_color,
+		ColorCode,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -61,7 +59,7 @@ public:
 	virtual void rectangle(
 		int x, int y,
 		int w, int h,
-		Color_color,
+		ColorCode,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -69,19 +67,19 @@ public:
 	virtual void fillRectangle(
 		int x, int y,
 		int w, int h,
-		Color_color);
+		ColorCode);
 
 	/// draw an arc
 	virtual void arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
-		Color_color);
+		ColorCode);
 
 	/// draw a pixel
 	virtual void point(
 		int x, int y,
-		Color_color);
+		ColorCode);
 
 	/// draw an image from the image cache
 	virtual void image(int x, int y,
@@ -104,11 +102,11 @@ private:
 		QString const & str, Font const & f);
 
 	/// set pen parameters
-	void setQPainterPen(Color_color col,
+	void setQPainterPen(ColorCode col,
 		line_style ls = line_solid,
 		line_width lw = line_thin);
 
-	Color::color current_color_;
+	ColorCode current_color_;
 	Painter::line_style current_ls_;
 	Painter::line_width current_lw_;
 };

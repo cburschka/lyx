@@ -24,7 +24,6 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Color.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "FontIterator.h"
@@ -1935,7 +1934,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		if (row_selection || (!pi.full_repaint && row_has_changed)) {
 			pi.pain.fillRectangle(x, y - rit->ascent(),
 				width(), rit->height(),
-				Color_color(Color::color(pi.background_color)));
+				ColorCode(ColorCode(pi.background_color)));
 		}
 		if (row_selection) {
 			DocIterator beg = bv_->cursor().selectionBegin();
@@ -2028,7 +2027,7 @@ void TextMetrics::drawSelection(PainterInfo & pi,
 		if (middleTop < middleBottom) {
 			// draw middle rectangle
 			pi.pain.fillRectangle(x, middleTop, width(), middleBottom - middleTop,
-				Color::selection);
+				Color_selection);
 		}
 
 		if (!clipBelow) {
@@ -2058,16 +2057,16 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 	// draw the margins
 	if (drawOnBegMargin) {
 		if (text_->isRTL(buffer, beg.paragraph()))
-			pi.pain.fillRectangle(x + x1, y1, width() - x1, y2 - y1, Color::selection);
+			pi.pain.fillRectangle(x + x1, y1, width() - x1, y2 - y1, Color_selection);
 		else
-			pi.pain.fillRectangle(x, y1, x1, y2 - y1, Color::selection);
+			pi.pain.fillRectangle(x, y1, x1, y2 - y1, Color_selection);
 	}
 	
 	if (drawOnEndMargin) {
 		if (text_->isRTL(buffer, beg.paragraph()))
-			pi.pain.fillRectangle(x, y1, x2, y2 - y1, Color::selection);
+			pi.pain.fillRectangle(x, y1, x2, y2 - y1, Color_selection);
 		else
-			pi.pain.fillRectangle(x + x2, y1, width() - x2, y2 - y1, Color::selection);
+			pi.pain.fillRectangle(x + x2, y1, width() - x2, y2 - y1, Color_selection);
 	}
 	
 	// if we are on a boundary from the beginning, it's probably
@@ -2111,7 +2110,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 		if (!(cur < end) || drawNow) {
 			x2 = cursorX(cur.top(), cur.boundary());
 			pi.pain.fillRectangle(x + min(x1,x2), y1, abs(x2 - x1), y2 - y1,
-				Color::selection);
+				Color_selection);
 			
 			// reset x1, so it is set again next round (which will be on the 
 			// right side of a boundary or at the selection end)

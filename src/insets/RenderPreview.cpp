@@ -14,7 +14,6 @@
 #include "insets/Inset.h"
 
 #include "BufferView.h"
-#include "Color.h"
 #include "Dimension.h"
 #include "gettext.h"
 #include "LyX.h"
@@ -164,7 +163,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 				  y - dim_.asc,
 				  dim_.wid - 2 * offset,
 				  dim_.asc + dim_.des,
-				  Color::foreground);
+				  Color_foreground);
 
 		Font font(pi.base.font);
 		font.setFamily(Font::SANS_FAMILY);

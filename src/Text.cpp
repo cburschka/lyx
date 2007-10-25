@@ -38,7 +38,6 @@
 #include "FontIterator.h"
 #include "gettext.h"
 #include "Language.h"
-#include "Color.h"
 #include "Length.h"
 #include "Lexer.h"
 #include "LyXRC.h"

@@ -35,7 +35,6 @@
 
 #include "Bidi.h"
 #include "BufferView.h"
-#include "Color.h"
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
@@ -229,7 +228,7 @@ void InsetMathNest::draw(PainterInfo & pi, int x, int y) const
 #if 0
 	if (lock_)
 		pi.pain.fillRectangle(x, y - ascent(), width(), height(),
-					Color::mathlockbg);
+					Color_mathlockbg);
 #endif
 	setPosCache(pi, x, y);
 }
@@ -262,7 +261,7 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 		int y1 = g.pos.y_ - g.dim.ascent();
 		int x2 = g.pos.x_ + c.pos2x(s2.pos());
 		int y2 = g.pos.y_ + g.dim.descent();
-		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color::selection);
+		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color_selection);
 	//lyxerr << "InsetMathNest::drawing selection 3: "
 	//	<< " x1: " << x1 << " x2: " << x2
 	//	<< " y1: " << y1 << " y2: " << y2 << endl;
@@ -275,7 +274,7 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 				int y1 = g.pos.y_ - g.dim.ascent();
 				int x2 = g.pos.x_ + g.dim.width();
 				int y2 = g.pos.y_ + g.dim.descent();
-				pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color::selection);
+				pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color_selection);
 			}
 		}
 	}
@@ -432,7 +431,7 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 	Font font;
 	bool b;
 	font.fromString(to_utf8(arg), b);
-	if (font.color() != Color::inherit) {
+	if (font.color() != Color_inherit) {
 		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);
 	}

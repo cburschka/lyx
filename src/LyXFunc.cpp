@@ -29,7 +29,6 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CmdDef.h"
-#include "Color.h"
 #include "Converter.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
@@ -1769,8 +1768,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			bool const graphicsbg_changed =
-				(lyx_name == lcolor.getLyXName(Color::graphicsbg) &&
-				 x11_name != lcolor.getX11Name(Color::graphicsbg));
+				(lyx_name == lcolor.getLyXName(Color_graphicsbg) &&
+				 x11_name != lcolor.getX11Name(Color_graphicsbg));
 
 			if (!lcolor.setColor(lyx_name, x11_name)) {
 				setErrorMessage(

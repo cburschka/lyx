@@ -2128,14 +2128,14 @@ void BufferView::draw(frontend::Painter & pain)
 //	lyxerr << "par ascent: " << text.getPar(d->metrics_info_.p1).ascent() << endl;
 	if (d->metrics_info_.y1 > 0
 		&& d->metrics_info_.update_strategy == FullScreenUpdate)
-		pain.fillRectangle(0, 0, width_, d->metrics_info_.y1, Color::bottomarea);
+		pain.fillRectangle(0, 0, width_, d->metrics_info_.y1, Color_bottomarea);
 
 	// and possibly grey out below
 //	lyxerr << "par descent: " << text.getPar(d->metrics_info_.p1).ascent() << endl;
 	if (d->metrics_info_.y2 < height_
 		&& d->metrics_info_.update_strategy == FullScreenUpdate)
 		pain.fillRectangle(0, d->metrics_info_.y2, width_,
-			height_ - d->metrics_info_.y2, Color::bottomarea);
+			height_ - d->metrics_info_.y2, Color_bottomarea);
 }
 
 

@@ -43,7 +43,7 @@ Inset.heorem::InsetTheorem()
 	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(Color::collapsable);
+	font.setColor(Color_collapsable);
 	setLabelFont(font);
 #if 0
 	setAutoCollapse(false);

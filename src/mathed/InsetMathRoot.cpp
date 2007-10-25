@@ -15,7 +15,6 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "Cursor.h"
-#include "Color.h"
 
 #include "frontends/Painter.h"
 
@@ -63,12 +62,12 @@ void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 	int xp[4];
 	int yp[4];
 	pi.pain.line(x + dim.width(), y - a + 1,
-							 x + w + 4, y - a + 1, Color::math);
+							 x + w + 4, y - a + 1, Color_math);
 	xp[0] = x + w + 4;         yp[0] = y - a + 1;
 	xp[1] = x + w;             yp[1] = y + d;
 	xp[2] = x + w - 2;         yp[2] = y + (d - a)/2 + 2;
 	xp[3] = x + w - 5;         yp[3] = y + (d - a)/2 + 4;
-	pi.pain.lines(xp, yp, 4, Color::math);
+	pi.pain.lines(xp, yp, 4, Color_math);
 	drawMarkers(pi, x, y);
 }
 

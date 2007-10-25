@@ -15,13 +15,11 @@
 #include "GuiCharacter.h"
 
 #include "qt_helpers.h"
-#include "Color.h"
 #include "Font.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"
 #include "Language.h"
-#include "Color.h"
 
 #include <QCloseEvent>
 
@@ -169,47 +167,47 @@ static vector<ColorPair> const getColorData()
 	ColorPair pr;
 
 	pr.first = qt_("No change");
-	pr.second = Color::ignore;
+	pr.second = Color_ignore;
 	color[0] = pr;
 
 	pr.first = qt_("No color");
-	pr.second = Color::none;
+	pr.second = Color_none;
 	color[1] = pr;
 
 	pr.first = qt_("Black");
-	pr.second = Color::black;
+	pr.second = Color_black;
 	color[2] = pr;
 
 	pr.first = qt_("White");
-	pr.second = Color::white;
+	pr.second = Color_white;
 	color[3] = pr;
 
 	pr.first = qt_("Red");
-	pr.second = Color::red;
+	pr.second = Color_red;
 	color[4] = pr;
 
 	pr.first = qt_("Green");
-	pr.second = Color::green;
+	pr.second = Color_green;
 	color[5] = pr;
 
 	pr.first = qt_("Blue");
-	pr.second = Color::blue;
+	pr.second = Color_blue;
 	color[6] = pr;
 
 	pr.first = qt_("Cyan");
-	pr.second = Color::cyan;
+	pr.second = Color_cyan;
 	color[7] = pr;
 
 	pr.first = qt_("Magenta");
-	pr.second = Color::magenta;
+	pr.second = Color_magenta;
 	color[8] = pr;
 
 	pr.first = qt_("Yellow");
-	pr.second = Color::yellow;
+	pr.second = Color_yellow;
 	color[9] = pr;
 
 	pr.first = qt_("Reset");
-	pr.second = Color::inherit;
+	pr.second = Color_inherit;
 	color[10] = pr;
 
 	return color;
@@ -432,7 +430,7 @@ bool GuiCharacter::initialiseParams(string const &)
 	    || getShape()  != Font::IGNORE_SHAPE
 	    || getSize()   != Font::IGNORE_SIZE
 	    || getBar()    != IGNORE
-	    || getColor()  != Color::ignore
+	    || getColor()  != Color_ignore
 	    || font_.language() != ignore_language)
 		setButtonsValid(true);
 
@@ -544,26 +542,26 @@ void GuiCharacter::setBar(FontState val)
 }
 
 
-Color_color GuiCharacter::getColor() const
+ColorCode GuiCharacter::getColor() const
 {
 	return font_.color();
 }
 
 
-void GuiCharacter::setColor(Color_color val)
+void GuiCharacter::setColor(ColorCode val)
 {
 	switch (val) {
-	case Color::ignore:
-	case Color::none:
-	case Color::black:
-	case Color::white:
-	case Color::red:
-	case Color::green:
-	case Color::blue:
-	case Color::cyan:
-	case Color::magenta:
-	case Color::yellow:
-	case Color::inherit:
+	case Color_ignore:
+	case Color_none:
+	case Color_black:
+	case Color_white:
+	case Color_red:
+	case Color_green:
+	case Color_blue:
+	case Color_cyan:
+	case Color_magenta:
+	case Color_yellow:
+	case Color_inherit:
 		font_.setColor(val);
 		break;
 	default:

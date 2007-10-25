@@ -15,6 +15,7 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
+#include "ColorCode.h"
 #include "InsetCode.h"
 
 #include "Dimension.h"
@@ -31,7 +32,6 @@ class Buffer;
 class BufferParams;
 class BufferView;
 class Change;
-class Color_color;
 class Cursor;
 class CursorSlice;
 class FuncRequest;
@@ -381,7 +381,7 @@ public:
 	///
 	int scroll() const { return 0; }
 	///
-	virtual Color_color backgroundColor() const;
+	virtual ColorCode backgroundColor() const;
 	///
 	enum CollapseStatus {
 		Collapsed,

@@ -10,10 +10,12 @@
 #ifndef LYXTEXTCLASS_H
 #define LYXTEXTCLASS_H
 
-#include "Color.h"
+#include "ColorCode.h"
 #include "Font.h"
 #include "LayoutEnums.h"
 #include "LayoutPtr.h"
+
+#include "support/docstring.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -43,7 +45,7 @@ public:
 	std::string latexparam;
 	Font font;
 	Font labelfont;
-	Color::color bgcolor;
+	ColorCode bgcolor;
 	std::string preamble;
 	bool multipar;
 	bool passthru;

@@ -18,7 +18,6 @@
 #include "debug.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "LyX.h"
 
@@ -206,7 +205,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			auto_ptr<InsetCaption> inset(new InsetCaption(params));
 			inset->setAutoBreakRows(true);
 			inset->setDrawFrame(true);
-			inset->setFrameColor(Color::captionframe);
+			inset->setFrameColor(Color_captionframe);
 			return inset.release();
 		}
 

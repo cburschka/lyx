@@ -18,7 +18,6 @@
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "FuncStatus.h"
-#include "Color.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
@@ -530,7 +529,7 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
 			pi.pain.line(x + lmargin + 1, yy,
 				     x + dim.width() - rmargin - 1, yy,
-				     Color::foreground);
+				     Color_foreground);
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
@@ -539,7 +538,7 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
 			pi.pain.line(xx, y - dim.ascent() + 1,
 				     xx, y + dim.descent() - 1,
-				     Color::foreground);
+				     Color_foreground);
 		}
 	drawMarkers2(pi, x, y);
 }

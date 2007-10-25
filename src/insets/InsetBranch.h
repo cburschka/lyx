@@ -53,7 +53,7 @@ public:
 	///
 	void setButtonLabel();
 	///
-	virtual Color_color backgroundColor() const;
+	virtual ColorCode backgroundColor() const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///

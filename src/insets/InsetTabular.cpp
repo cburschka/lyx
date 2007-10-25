@@ -24,7 +24,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Color.h"
 #include "CoordCache.h"
 #include "Counters.h"
 #include "Cursor.h"
@@ -53,6 +52,8 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
+
+#include <boost/scoped_ptr.hpp>
 
 #include <sstream>
 #include <iostream>
@@ -3089,7 +3090,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				int const w = tabular.columnWidth(cell);
 				if (i >= cs && i <= ce && j >= rs && j <= re)
 					pi.pain.fillRectangle(xx, y, w, h,
-							      Color::selection);
+							      Color_selection);
 				xx += w;
 			}
 			y += h;
@@ -3108,12 +3109,12 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 {
 	int x2 = x + tabular.columnWidth(cell);
 	bool on_off = false;
-	Color::color col = Color::tabularline;
-	Color::color onoffcol = Color::tabularonoffline;
+	ColorCode col = Color_tabularline;
+	ColorCode onoffcol = Color_tabularonoffline;
 
 	if (erased) {
-		col = Color::deletedtext;
-		onoffcol = Color::deletedtext;
+		col = Color_deletedtext;
+		onoffcol = Color_deletedtext;
 	}
 
 	if (!tabular.topAlreadyDrawn(cell)) {

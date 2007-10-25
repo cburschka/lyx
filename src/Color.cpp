@@ -19,6 +19,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "Color.h"
+
 #include "support/lstrings.h"
 
 #include <map>
@@ -40,14 +41,15 @@ using std::ostringstream;
 using std::string;
 using std::endl;
 
-using lyx::support::compare_ascii_no_case;
-using lyx::support::ascii_lowercase;
+namespace lyx {
 
+using support::compare_ascii_no_case;
+using support::ascii_lowercase;
 
 namespace {
 
 struct ColorEntry {
-	lyx::Color::color lcolor;
+	ColorCode lcolor;
 	char const * guiname;
 	char const * latexname;
 	char const * x11name;
@@ -65,10 +67,6 @@ int hexstrToInt(string const & str)
 }
 
 } // namespace anon
-
-
-
-namespace lyx {
 
 
 /////////////////////////////////////////////////////////////////////
@@ -136,11 +134,11 @@ public:
 	}
 
 	///
-	typedef std::map<Color::color, information> InfoTab;
+	typedef std::map<ColorCode, information> InfoTab;
 	/// the table of color information
 	InfoTab infotab;
 
-	typedef std::map<string, Color::color> Transform;
+	typedef std::map<string, ColorCode> Transform;
 	/// the transform between LyX color name string and integer code.
 	Transform lyxcolors;
 	/// the transform between LaTeX color name string and integer code.
@@ -152,67 +150,67 @@ public:
 Color::Color()
 	: pimpl_(new Pimpl)
 {
-	//  Color::color, gui, latex, x11, lyx
+	//  ColorCode, gui, latex, x11, lyx
 	static ColorEntry const items[] = {
-	{ none, N_("none"), "none", "black", "none" },
-	{ black, N_("black"), "black", "black", "black" },
-	{ white, N_("white"), "white", "white", "white" },
-	{ red, N_("red"), "red", "red", "red" },
-	{ green, N_("green"), "green", "green", "green" },
-	{ blue, N_("blue"), "blue", "blue", "blue" },
-	{ cyan, N_("cyan"), "cyan", "cyan", "cyan" },
-	{ magenta, N_("magenta"), "magenta", "magenta", "magenta" },
-	{ yellow, N_("yellow"), "yellow", "yellow", "yellow" },
-	{ cursor, N_("cursor"), "cursor", "black", "cursor" },
-	{ background, N_("background"), "background", "linen", "background" },
-	{ foreground, N_("text"), "foreground", "black", "foreground" },
-	{ selection, N_("selection"), "selection", "LightBlue", "selection" },
-	{ latex, N_("LaTeX text"), "latex", "DarkRed", "latex" },
-	{ preview, N_("previewed snippet"), "preview", "black", "preview" },
-	{ note, N_("note"), "note", "blue", "note" },
-	{ notebg, N_("note background"), "notebg", "yellow", "notebg" },
-	{ comment, N_("comment"), "comment", "magenta", "comment" },
-	{ commentbg, N_("comment background"), "commentbg", "linen", "commentbg" },
-	{ greyedout, N_("greyedout inset"), "greyedout", "red", "greyedout" },
-	{ greyedoutbg, N_("greyedout inset background"), "greyedoutbg", "linen", "greyedoutbg" },
-	{ shadedbg, N_("shaded box"), "shaded", "#ff0000", "shaded" },
-	{ depthbar, N_("depth bar"), "depthbar", "IndianRed", "depthbar" },
-	{ language, N_("language"), "language", "Blue", "language" },
-	{ command, N_("command inset"), "command", "black", "command" },
-	{ commandbg, N_("command inset background"), "commandbg", "azure", "commandbg" },
-	{ commandframe, N_("command inset frame"), "commandframe", "black", "commandframe" },
-	{ special, N_("special character"), "special", "RoyalBlue", "special" },
-	{ math, N_("math"), "math", "DarkBlue", "math" },
-	{ mathbg, N_("math background"), "mathbg", "linen", "mathbg" },
-	{ graphicsbg, N_("graphics background"), "graphicsbg", "linen", "graphicsbg" },
-	{ mathmacrobg, N_("Math macro background"), "mathmacrobg", "linen", "mathmacrobg" },
-	{ mathframe, N_("math frame"), "mathframe", "Magenta", "mathframe" },
-	{ mathcorners, N_("math corners"), "mathcorners", "linen", "mathcorners" },
-	{ mathline, N_("math line"), "mathline", "Blue", "mathline" },
-	{ captionframe, N_("caption frame"), "captionframe", "DarkRed", "captionframe" },
-	{ collapsable, N_("collapsable inset text"), "collapsable", "DarkRed", "collapsable" },
-	{ collapsableframe, N_("collapsable inset frame"), "collapsableframe", "IndianRed", "collapsableframe" },
-	{ insetbg, N_("inset background"), "insetbg", "grey80", "insetbg" },
-	{ insetframe, N_("inset frame"), "insetframe", "IndianRed", "insetframe" },
-	{ error, N_("LaTeX error"), "error", "Red", "error" },
-	{ eolmarker, N_("end-of-line marker"), "eolmarker", "Brown", "eolmarker" },
-	{ appendix, N_("appendix marker"), "appendix", "Brown", "appendix" },
-	{ changebar, N_("change bar"), "changebar", "Blue", "changebar" },
-	{ deletedtext, N_("Deleted text"), "deletedtext", "#ff0000", "deletedtext" },
-	{ addedtext, N_("Added text"), "addedtext", "#0000ff", "addedtext" },
-	{ added_space, N_("added space markers"), "added_space", "Brown", "added_space" },
-	{ topline, N_("top/bottom line"), "topline", "Brown", "topline" },
-	{ tabularline, N_("table line"), "tabularline", "black", "tabularline" },
-	{ tabularonoffline, N_("table on/off line"), "tabularonoffline",
+	{ Color_none, N_("none"), "none", "black", "none" },
+	{ Color_black, N_("black"), "black", "black", "black" },
+	{ Color_white, N_("white"), "white", "white", "white" },
+	{ Color_red, N_("red"), "red", "red", "red" },
+	{ Color_green, N_("green"), "green", "green", "green" },
+	{ Color_blue, N_("blue"), "blue", "blue", "blue" },
+	{ Color_cyan, N_("cyan"), "cyan", "cyan", "cyan" },
+	{ Color_magenta, N_("magenta"), "magenta", "magenta", "magenta" },
+	{ Color_yellow, N_("yellow"), "yellow", "yellow", "yellow" },
+	{ Color_cursor, N_("cursor"), "cursor", "black", "cursor" },
+	{ Color_background, N_("background"), "background", "linen", "background" },
+	{ Color_foreground, N_("text"), "foreground", "black", "foreground" },
+	{ Color_selection, N_("selection"), "selection", "LightBlue", "selection" },
+	{ Color_latex, N_("LaTeX text"), "latex", "DarkRed", "latex" },
+	{ Color_preview, N_("previewed snippet"), "preview", "black", "preview" },
+	{ Color_note, N_("note"), "note", "blue", "note" },
+	{ Color_notebg, N_("note background"), "notebg", "yellow", "notebg" },
+	{ Color_comment, N_("comment"), "comment", "magenta", "comment" },
+	{ Color_commentbg, N_("comment background"), "commentbg", "linen", "commentbg" },
+	{ Color_greyedout, N_("greyedout inset"), "greyedout", "red", "greyedout" },
+	{ Color_greyedoutbg, N_("greyedout inset background"), "greyedoutbg", "linen", "greyedoutbg" },
+	{ Color_shadedbg, N_("shaded box"), "shaded", "#ff0000", "shaded" },
+	{ Color_depthbar, N_("depth bar"), "depthbar", "IndianRed", "depthbar" },
+	{ Color_language, N_("language"), "language", "Blue", "language" },
+	{ Color_command, N_("command inset"), "command", "black", "command" },
+	{ Color_commandbg, N_("command inset background"), "commandbg", "azure", "commandbg" },
+	{ Color_commandframe, N_("command inset frame"), "commandframe", "black", "commandframe" },
+	{ Color_special, N_("special character"), "special", "RoyalBlue", "special" },
+	{ Color_math, N_("math"), "math", "DarkBlue", "math" },
+	{ Color_mathbg, N_("math background"), "mathbg", "linen", "mathbg" },
+	{ Color_graphicsbg, N_("graphics background"), "graphicsbg", "linen", "graphicsbg" },
+	{ Color_mathmacrobg, N_("Math macro background"), "mathmacrobg", "linen", "mathmacrobg" },
+	{ Color_mathframe, N_("math frame"), "mathframe", "Magenta", "mathframe" },
+	{ Color_mathcorners, N_("math corners"), "mathcorners", "linen", "mathcorners" },
+	{ Color_mathline, N_("math line"), "mathline", "Blue", "mathline" },
+	{ Color_captionframe, N_("caption frame"), "captionframe", "DarkRed", "captionframe" },
+	{ Color_collapsable, N_("collapsable inset text"), "collapsable", "DarkRed", "collapsable" },
+	{ Color_collapsableframe, N_("collapsable inset frame"), "collapsableframe", "IndianRed", "collapsableframe" },
+	{ Color_insetbg, N_("inset background"), "insetbg", "grey80", "insetbg" },
+	{ Color_insetframe, N_("inset frame"), "insetframe", "IndianRed", "insetframe" },
+	{ Color_error, N_("LaTeX error"), "error", "Red", "error" },
+	{ Color_eolmarker, N_("end-of-line marker"), "eolmarker", "Brown", "eolmarker" },
+	{ Color_appendix, N_("appendix marker"), "appendix", "Brown", "appendix" },
+	{ Color_changebar, N_("change bar"), "changebar", "Blue", "changebar" },
+	{ Color_deletedtext, N_("Deleted text"), "deletedtext", "#ff0000", "deletedtext" },
+	{ Color_addedtext, N_("Added text"), "addedtext", "#0000ff", "addedtext" },
+	{ Color_added_space, N_("added space markers"), "added_space", "Brown", "added_space" },
+	{ Color_topline, N_("top/bottom line"), "topline", "Brown", "topline" },
+	{ Color_tabularline, N_("table line"), "tabularline", "black", "tabularline" },
+	{ Color_tabularonoffline, N_("table on/off line"), "tabularonoffline",
 	     "LightSteelBlue", "tabularonoffline" },
-	{ bottomarea, N_("bottom area"), "bottomarea", "grey40", "bottomarea" },
-	{ pagebreak, N_("page break"), "pagebreak", "RoyalBlue", "pagebreak" },
-	{ buttonframe, N_("frame of button"), "buttonframe", "#dcd2c8", "buttonframe" },
-	{ buttonbg, N_("button background"), "buttonbg", "#dcd2c8", "buttonbg" },
-	{ buttonhoverbg, N_("button background under focus"), "buttonhoverbg", "#C7C7CA", "buttonhoverbg" },
-	{ inherit, N_("inherit"), "inherit", "black", "inherit" },
-	{ ignore, N_("ignore"), "ignore", "black", "ignore" },
-	{ ignore, 0, 0, 0, 0 }
+	{ Color_bottomarea, N_("bottom area"), "bottomarea", "grey40", "bottomarea" },
+	{ Color_pagebreak, N_("page break"), "pagebreak", "RoyalBlue", "pagebreak" },
+	{ Color_buttonframe, N_("frame of button"), "buttonframe", "#dcd2c8", "buttonframe" },
+	{ Color_buttonbg, N_("button background"), "buttonbg", "#dcd2c8", "buttonbg" },
+	{ Color_buttonhoverbg, N_("button background under focus"), "buttonhoverbg", "#C7C7CA", "buttonhoverbg" },
+	{ Color_inherit, N_("inherit"), "inherit", "black", "inherit" },
+	{ Color_ignore, N_("ignore"), "ignore", "black", "ignore" },
+	{ Color_ignore, 0, 0, 0, 0 }
 	};
 
 	for (int i = 0; items[i].guiname; ++i)
@@ -236,7 +234,7 @@ Color & Color::operator=(Color tmp)
 }
 
 
-docstring const Color::getGUIName(Color::color c) const
+docstring const Color::getGUIName(ColorCode c) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
 	if (it != pimpl_->infotab.end())
@@ -245,7 +243,7 @@ docstring const Color::getGUIName(Color::color c) const
 }
 
 
-string const Color::getX11Name(Color::color c) const
+string const Color::getX11Name(ColorCode c) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
 	if (it != pimpl_->infotab.end())
@@ -258,7 +256,7 @@ string const Color::getX11Name(Color::color c) const
 }
 
 
-string const Color::getLaTeXName(Color::color c) const
+string const Color::getLaTeXName(ColorCode c) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
 	if (it != pimpl_->infotab.end())
@@ -267,7 +265,7 @@ string const Color::getLaTeXName(Color::color c) const
 }
 
 
-string const Color::getLyXName(Color::color c) const
+string const Color::getLyXName(ColorCode c) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
 	if (it != pimpl_->infotab.end())
@@ -276,7 +274,7 @@ string const Color::getLyXName(Color::color c) const
 }
 
 
-bool Color::setColor(Color::color col, string const & x11name)
+bool Color::setColor(ColorCode col, string const & x11name)
 {
 	Pimpl::InfoTab::iterator it = pimpl_->infotab.find(col);
 	if (it == pimpl_->infotab.end()) {
@@ -287,7 +285,7 @@ bool Color::setColor(Color::color col, string const & x11name)
 
 	// "inherit" is returned for colors not in the database
 	// (and anyway should not be redefined)
-	if (col == none || col == inherit || col == ignore) {
+	if (col == Color_none || col == Color_inherit || col == Color_ignore) {
 		lyxerr << "Color " << getLyXName(col)
 		       << " may not be redefined" << endl;
 		return false;
@@ -305,39 +303,39 @@ bool Color::setColor(string const & lyxname, string const &x11name)
 		LYXERR(Debug::GUI)
 			<< "Color::setColor: Unknown color \""
 		       << lyxname << '"' << endl;
-		addColor(static_cast<color>(pimpl_->infotab.size()), lcname);
+		addColor(static_cast<ColorCode>(pimpl_->infotab.size()), lcname);
 	}
 
 	return setColor(pimpl_->lyxcolors[lcname], x11name);
 }
 
 
-void Color::addColor(Color::color c, string const & lyxname) const
+void Color::addColor(ColorCode c, string const & lyxname) const
 {
 	ColorEntry ce = { c, "", "", "", lyxname.c_str() };
 	pimpl_->fill(ce);
 }
 
 
-Color::color Color::getFromLyXName(string const & lyxname) const
+ColorCode Color::getFromLyXName(string const & lyxname) const
 {
 	string const lcname = ascii_lowercase(lyxname);
 	if (pimpl_->lyxcolors.find(lcname) == pimpl_->lyxcolors.end()) {
 		lyxerr << "Color::getFromLyXName: Unknown color \""
 		       << lyxname << '"' << endl;
-		return none;
+		return Color_none;
 	}
 
 	return pimpl_->lyxcolors[lcname];
 }
 
 
-Color::color Color::getFromLaTeXName(string const & latexname) const
+ColorCode Color::getFromLaTeXName(string const & latexname) const
 {
 	if (pimpl_->latexcolors.find(latexname) == pimpl_->latexcolors.end()) {
 		lyxerr << "Color::getFromLaTeXName: Unknown color \""
 		       << latexname << '"' << endl;
-		return none;
+		return Color_none;
 	}
 
 	return pimpl_->latexcolors[latexname];

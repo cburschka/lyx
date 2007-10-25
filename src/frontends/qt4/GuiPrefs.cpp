@@ -553,7 +553,7 @@ namespace {
 
 struct ColorSorter
 {
-	bool operator()(Color::color const & lhs, Color::color const & rhs) const {
+	bool operator()(ColorCode lhs, ColorCode rhs) const {
 		return lcolor.getGUIName(lhs) < lcolor.getGUIName(rhs);
 	}
 };
@@ -569,25 +569,25 @@ PrefColors::PrefColors(GuiPreferences * form, QWidget * parent)
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg113301.html
 	// for some discussion of why that is not trivial.
 	QPixmap icon(32, 32);
-	for (int i = 0; i < Color::ignore; ++i) {
-		Color::color lc = static_cast<Color::color>(i);
-		if (lc == Color::none
-			|| lc == Color::black
-			|| lc == Color::white
-			|| lc == Color::red
-			|| lc == Color::green
-			|| lc == Color::blue
-			|| lc == Color::cyan
-			|| lc == Color::magenta
-			|| lc == Color::yellow
-			|| lc == Color::inherit
-			|| lc == Color::ignore) continue;
+	for (int i = 0; i < Color_ignore; ++i) {
+		ColorCode lc = static_cast<ColorCode>(i);
+		if (lc == Color_none
+			|| lc == Color_black
+			|| lc == Color_white
+			|| lc == Color_red
+			|| lc == Color_green
+			|| lc == Color_blue
+			|| lc == Color_cyan
+			|| lc == Color_magenta
+			|| lc == Color_yellow
+			|| lc == Color_inherit
+			|| lc == Color_ignore) continue;
 
 		lcolors_.push_back(lc);
 	}
 	std::sort(lcolors_.begin(), lcolors_.end(), ColorSorter());
-	vector<Color_color>::const_iterator cit = lcolors_.begin();
-	vector<Color_color>::const_iterator const end = lcolors_.end();
+	vector<ColorCode>::const_iterator cit = lcolors_.begin();
+	vector<ColorCode>::const_iterator const end = lcolors_.end();
 	for (; cit != end; ++cit) {
 			(void) new QListWidgetItem(QIcon(icon),
 			toqstr(lcolor.getGUIName(*cit)), lyxObjectsLW);
@@ -2279,7 +2279,7 @@ void GuiPreferences::dispatchParams()
 }
 
 
-void GuiPreferences::setColor(Color_color col, string const & hex)
+void GuiPreferences::setColor(ColorCode col, string const & hex)
 {
 	colors_.push_back(lcolor.getLyXName(col) + ' ' + hex);
 }

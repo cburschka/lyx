@@ -23,7 +23,6 @@
 #include "FloatList.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "Color.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "FuncRequest.h"
@@ -79,10 +78,10 @@ InsetCollapsable::InsetCollapsable
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
-	setFrameColor(Color::collapsableframe);
+	setFrameColor(Color_collapsableframe);
 	setButtonLabel();
 	// Fallback for lacking inset layout item
-	layout_.bgcolor = Color::background;
+	layout_.bgcolor = Color_background;
 }
 
 
@@ -321,7 +320,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			theFontMetrics(font).rectText(s, w, a, d);
 			int const ww = max(textdim.wid, w);
 			pi.pain.rectText(x + (ww - w) / 2, y + desc + a,
-				s, font, Color::none, Color::none);
+				s, font, Color_none, Color_none);
 			desc += d;
 		}
 

@@ -19,7 +19,6 @@
 #include "Cursor.h"
 #include "debug.h"
 #include "gettext.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "OutputParams.h"
 
@@ -139,7 +138,7 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 {
 	// label
 	Font font = p.base.font;
-	font.setColor(Color::math);
+	font.setColor(Color_math);
 
 	PainterInfo pi(p.base.bv, p.pain);
 	pi.base.style = LM_ST_TEXT;
@@ -149,9 +148,9 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 	int const w = dim_.wid - 2;
 	int const h = dim_.height() - 2;
 
-	// Color::mathbg used to be "AntiqueWhite" but is "linen" now, too
-	pi.pain.fillRectangle(x, a, w, h, Color::mathmacrobg);
-	pi.pain.rectangle(x, a, w, h, Color::mathframe);
+	// Color_mathbg used to be "AntiqueWhite" but is "linen" now, too
+	pi.pain.fillRectangle(x, a, w, h, Color_mathmacrobg);
+	pi.pain.rectangle(x, a, w, h, Color_mathframe);
 
 	// FIXME
 #if 0

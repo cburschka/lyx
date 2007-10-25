@@ -17,6 +17,7 @@
 
 #include "LyX.h"
 
+#include "Color.h"
 #include "ConverterCache.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
@@ -32,7 +33,6 @@
 #include "CmdDef.h"
 #include "Language.h"
 #include "Session.h"
-#include "Color.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
 #include "Lexer.h"

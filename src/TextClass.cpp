@@ -15,13 +15,15 @@
 #include <config.h>
 
 #include "TextClass.h"
-#include "debug.h"
-#include "Layout.h"
-#include "Lexer.h"
+
+#include "Color.h"
 #include "Counters.h"
+#include "debug.h"
 #include "gettext.h"
 #include "Floating.h"
 #include "FloatList.h"
+#include "Layout.h"
+#include "Lexer.h"
 
 #include "frontends/alert.h"
 
@@ -657,7 +659,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	string latexparam;
 	Font font(defaultfont());
 	Font labelfont(defaultfont());
-	Color::color bgcolor(Color::background);
+	ColorCode bgcolor(Color_background);
 	string preamble;
 	bool multipar(false);
 	bool passthru(false);
@@ -1096,7 +1098,7 @@ InsetLayout const & TextClass::insetlayout(docstring const & name) const
 	}
 	static InsetLayout empty;
 	empty.labelstring = from_utf8("UNDEFINED");
-	empty.bgcolor = Color::error;
+	empty.bgcolor = Color_error;
 	return empty;
 }
 

@@ -16,8 +16,8 @@
 
 #include "LaTeXFeatures.h"
 
-#include "BufferParams.h"
 #include "Color.h"
+#include "BufferParams.h"
 #include "debug.h"
 #include "Encoding.h"
 #include "Floating.h"
@@ -512,7 +512,7 @@ string const LaTeXFeatures::getPackages() const
 	}
 	// shadecolor for shaded
 	if (mustProvide("framed") && mustProvide("color")) {
-		RGBColor c = RGBColor(lcolor.getX11Name(Color::shadedbg));
+		RGBColor c = RGBColor(lcolor.getX11Name(Color_shadedbg));
 		//255.0 to force conversion to double
 		//NOTE As Jürgen Spitzmüller pointed out, an alternative would be
 		//to use the xcolor package instead, and then we can do
@@ -687,11 +687,11 @@ string const LaTeXFeatures::getMacros() const
 	if (mustProvide("ct-xcolor-soul")) {
 		int const prec = macros.precision(2);
 	
-		RGBColor cadd = RGBColor(lcolor.getX11Name(Color::addedtext));
+		RGBColor cadd = RGBColor(lcolor.getX11Name(Color_addedtext));
 		macros << "\\providecolor{lyxadded}{rgb}{"
 		       << cadd.r / 255.0 << ',' << cadd.g / 255.0 << ',' << cadd.b / 255.0 << "}\n";
 
-		RGBColor cdel = RGBColor(lcolor.getX11Name(Color::deletedtext));
+		RGBColor cdel = RGBColor(lcolor.getX11Name(Color_deletedtext));
 		macros << "\\providecolor{lyxdeleted}{rgb}{"
 		       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
 

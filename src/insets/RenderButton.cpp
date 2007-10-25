@@ -12,7 +12,6 @@
 
 #include "RenderButton.h"
 
-#include "Color.h"
 #include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
@@ -61,14 +60,14 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 {
 	// Draw it as a box with the LaTeX text
 	Font font(Font::ALL_SANE);
-	font.setColor(Color::command);
+	font.setColor(Color_command);
 	font.decSize();
 
 	if (editable_) {
 		pi.pain.buttonText(x + 2, y, text_, font, renderState());
 	} else {
 		pi.pain.rectText(x + 2, y, text_, font,
-				 Color::commandbg, Color::commandframe);
+				 Color_commandbg, Color_commandframe);
 	}
 }
 

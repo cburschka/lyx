@@ -13,7 +13,6 @@
 #include "InsetLine.h"
 
 #include "debug.h"
-#include "Color.h"
 #include "Text.h"
 #include "MetricsInfo.h"
 #include "LaTeXFeatures.h"
@@ -54,7 +53,7 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
-	pi.pain.line(x, y, x + dim.wid, y, Color::topline,
+	pi.pain.line(x, y, x + dim.wid, y, Color_topline,
 		Painter::line_solid, Painter::line_thick);
 }
 

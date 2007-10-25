@@ -21,6 +21,8 @@
 
 #include <QFont>
 
+#include <boost/scoped_ptr.hpp>
+
 namespace lyx {
 namespace frontend {
 

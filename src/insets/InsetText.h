@@ -25,7 +25,6 @@ class BufferParams;
 class BufferView;
 class CursorSlice;
 class Dimension;
-class Color_color;
 class ParagraphList;
 class InsetTabular;
 
@@ -87,9 +86,9 @@ public:
 	///
 	void setDrawFrame(bool);
 	///
-	Color_color frameColor() const;
+	ColorCode frameColor() const;
 	///
-	void setFrameColor(Color_color);
+	void setFrameColor(ColorCode);
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
@@ -149,7 +148,7 @@ private:
 
 	///
 	bool drawFrame_;
-	/** We store the Color::color value as an int to get Color.h out
+	/** We store the ColorCode value as an int to get Color.h out
 	 *  of the header file.
 	 */
 	int frame_color_;

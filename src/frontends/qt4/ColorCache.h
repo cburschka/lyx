@@ -12,7 +12,7 @@
 #ifndef COLORCACHE_H
 #define COLORCACHE_H
 
-#include "Color.h"
+#include "ColorCode.h"
 
 #include <QColor>
 
@@ -33,13 +33,13 @@ public:
 	ColorCache() {}
 
 	/// get the given color
-	QColor const & get(Color_color color) const;
+	QColor const & get(ColorCode color) const;
 
 	/// clear all colors
 	void clear();
 
 private:
-	typedef std::map<Color_color, QColor> lcolor_map;
+	typedef std::map<ColorCode, QColor> lcolor_map;
 
 	mutable lcolor_map colormap;
 };

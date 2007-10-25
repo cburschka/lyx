@@ -15,7 +15,6 @@
 #include "MathStream.h"
 
 #include "LaTeXFeatures.h"
-#include "Color.h"
 
 #include "frontends/Painter.h"
 
@@ -101,7 +100,7 @@ void InsetMathSpace::draw(PainterInfo & pi, int x, int y) const
 	xp[2] = x + w - 2;  yp[2] = y;
 	xp[3] = x + w - 2;  yp[3] = y - 3;
 
-	pi.pain.lines(xp, yp, 4, (space_ < 3) ? Color::latex : Color::math);
+	pi.pain.lines(xp, yp, 4, (space_ < 3) ? Color_latex : Color_math);
 }
 
 

@@ -18,7 +18,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Color.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
 #include "frontend_helpers.h"

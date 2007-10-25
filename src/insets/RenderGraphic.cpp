@@ -15,7 +15,6 @@
 #include "insets/Inset.h"
 
 #include "gettext.h"
-#include "Color.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -202,7 +201,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 				  y - dim_.asc,
 				  dim_.wid - 2 * Inset::TEXT_TO_INSET_OFFSET,
 				  dim_.asc + dim_.des,
-				  Color::foreground);
+				  Color_foreground);
 
 		// Print the file name.
 		Font msgFont = pi.base.font;

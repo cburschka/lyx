@@ -22,7 +22,6 @@
 
 #include "debug.h"
 #include "Language.h"
-#include "Color.h"
 
 #include "support/unicode.h"
 
@@ -64,7 +63,7 @@ GuiPainter::GuiPainter(QPaintDevice * device)
 	: QPainter(device), Painter()
 {
 	// new QPainter has default QPen:
-	current_color_ = Color::black;
+	current_color_ = Color_black;
 	current_ls_ = line_solid;
 	current_lw_ = line_thin;
 }
@@ -77,7 +76,7 @@ GuiPainter::~GuiPainter()
 }
 
 
-void GuiPainter::setQPainterPen(Color_color col,
+void GuiPainter::setQPainterPen(ColorCode col,
 	Painter::line_style ls, Painter::line_width lw)
 {
 	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
@@ -105,7 +104,7 @@ void GuiPainter::setQPainterPen(Color_color col,
 }
 
 
-void GuiPainter::point(int x, int y, Color_color col)
+void GuiPainter::point(int x, int y, ColorCode col)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -116,7 +115,7 @@ void GuiPainter::point(int x, int y, Color_color col)
 
 
 void GuiPainter::line(int x1, int y1, int x2, int y2,
-	Color_color col,
+	ColorCode col,
 	line_style ls,
 	line_width lw)
 {
@@ -133,7 +132,7 @@ void GuiPainter::line(int x1, int y1, int x2, int y2,
 
 
 void GuiPainter::lines(int const * xp, int const * yp, int np,
-	Color_color col,
+	ColorCode col,
 	line_style ls,
 	line_width lw)
 {
@@ -161,7 +160,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 
 
 void GuiPainter::rectangle(int x, int y, int w, int h,
-	Color_color col,
+	ColorCode col,
 	line_style ls,
 	line_width lw)
 {
@@ -173,14 +172,14 @@ void GuiPainter::rectangle(int x, int y, int w, int h,
 }
 
 
-void GuiPainter::fillRectangle(int x, int y, int w, int h, Color_color col)
+void GuiPainter::fillRectangle(int x, int y, int w, int h, ColorCode col)
 {
 	fillRect(x, y, w, h, guiApp->colorCache().get(col));
 }
 
 
 void GuiPainter::arc(int x, int y, unsigned int w, unsigned int h,
-	int a1, int a2, Color_color col)
+	int a1, int a2, ColorCode col)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -199,7 +198,7 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 	graphics::GuiImage const & qlimage =
 		static_cast<graphics::GuiImage const &>(i);
 
-	fillRectangle(x, y, w, h, Color::graphicsbg);
+	fillRectangle(x, y, w, h, Color_graphicsbg);
 
 	if (!isDrawingEnabled())
 		return;

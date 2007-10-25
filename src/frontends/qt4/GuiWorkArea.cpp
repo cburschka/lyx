@@ -22,7 +22,6 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
-#include "Color.h"
 #include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
@@ -135,7 +134,7 @@ public:
 
 	void update(int x, int y, int h, CursorShape shape)
 	{
-		color_ = guiApp->colorCache().get(Color::cursor);
+		color_ = guiApp->colorCache().get(Color_cursor);
 		shape_ = shape;
 		switch (shape) {
 		case L_SHAPE:

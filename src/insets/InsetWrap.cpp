@@ -26,7 +26,6 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "OutputParams.h"
 #include "TocBackend.h"
@@ -50,7 +49,7 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(Color::collapsable);
+	font.setColor(Color_collapsable);
 	setLabelFont(font);
 	params_.type = type;
 	params_.lines = 0;

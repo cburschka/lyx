@@ -22,7 +22,6 @@
 #include "FuncStatus.h"
 #include "Cursor.h"
 #include "gettext.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "Text.h"
 #include "MetricsInfo.h"

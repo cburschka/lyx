@@ -330,7 +330,7 @@ void GuiApplication::syncEvents()
 }
 
 
-bool GuiApplication::getRgbColor(Color_color col,
+bool GuiApplication::getRgbColor(ColorCode col,
 	RGBColor & rgbcol)
 {
 	QColor const & qcol = color_cache_.get(col);
@@ -347,13 +347,13 @@ bool GuiApplication::getRgbColor(Color_color col,
 }
 
 
-string const GuiApplication::hexName(Color_color col)
+string const GuiApplication::hexName(ColorCode col)
 {
 	return support::ltrim(fromqstr(color_cache_.get(col).name()), "#");
 }
 
 
-void GuiApplication::updateColor(Color_color)
+void GuiApplication::updateColor(ColorCode)
 {
 	// FIXME: Bleh, can't we just clear them all at once ?
 	color_cache_.clear();

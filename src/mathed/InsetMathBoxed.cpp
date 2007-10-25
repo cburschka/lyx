@@ -14,7 +14,6 @@
 #include "MathData.h"
 #include "MathStream.h"
 #include "LaTeXFeatures.h"
-#include "Color.h"
 
 #include "support/std_ostream.h"
 #include "frontends/Painter.h"
@@ -46,7 +45,7 @@ void InsetMathBoxed::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 	pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
-		dim.width() - 2, dim.height() - 2, Color::foreground);
+		dim.width() - 2, dim.height() - 2, Color_foreground);
 	cell(0).draw(pi, x + 3, y);
 	setPosCache(pi, x, y);
 }

@@ -14,7 +14,6 @@
 #include "MathStream.h"
 #include "MathStream.h"
 
-#include "Color.h"
 
 #include "frontends/Painter.h"
 
@@ -49,8 +48,8 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 	static int const arrow_size = 4;
 
 	// We first draw the text and then an arrow
-	Color_color const origcol = pi.base.font.color();
-	pi.base.font.setColor(Color::special);
+	ColorCode const origcol = pi.base.font.color();
+	pi.base.font.setColor(Color_special);
 	cell(0).draw(pi, x + 1, y);
 	pi.base.font.setColor(origcol);
 	Dimension const dim = dimension(*pi.base.bv);
@@ -78,15 +77,15 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 		int const y3 = y4 - arrow_size;
 
 		// top arrow
-		pi.pain.line(x2, y1, x1, y2, Color::added_space);
-		pi.pain.line(x2, y1, x3, y2, Color::added_space);
+		pi.pain.line(x2, y1, x1, y2, Color_added_space);
+		pi.pain.line(x2, y1, x3, y2, Color_added_space);
 
 		// bottom arrow
-		pi.pain.line(x2, y4, x1, y3, Color::added_space);
-		pi.pain.line(x2, y4, x3, y3, Color::added_space);
+		pi.pain.line(x2, y4, x1, y3, Color_added_space);
+		pi.pain.line(x2, y4, x3, y3, Color_added_space);
 
 		// joining line
-		pi.pain.line(x2, y1, x2, y4, Color::added_space);
+		pi.pain.line(x2, y1, x2, y4, Color_added_space);
 	}
 
 	if (kind_ == phantom || kind_ == hphantom) {
@@ -108,15 +107,15 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 		int const y3 = y2 + arrow_size;
 
 		// left arrow
-		pi.pain.line(x1, y2, x2, y3, Color::added_space);
-		pi.pain.line(x1, y2, x2, y1, Color::added_space);
+		pi.pain.line(x1, y2, x2, y3, Color_added_space);
+		pi.pain.line(x1, y2, x2, y1, Color_added_space);
 
 		// right arrow
-		pi.pain.line(x4, y2, x3, y3, Color::added_space);
-		pi.pain.line(x4, y2, x3, y1, Color::added_space);
+		pi.pain.line(x4, y2, x3, y3, Color_added_space);
+		pi.pain.line(x4, y2, x3, y1, Color_added_space);
 
 		// joining line
-		pi.pain.line(x1, y2, x4, y2, Color::added_space);
+		pi.pain.line(x1, y2, x4, y2, Color_added_space);
 	}
 
 	drawMarkers(pi, x, y);

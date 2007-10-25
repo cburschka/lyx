@@ -22,11 +22,11 @@
 #include "LyXRC.h"
 
 #include "debug.h"
+#include "Color.h"
 #include "Converter.h"
 #include "Format.h"
 #include "gettext.h"
 #include "Session.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "Font.h"
 #include "Mover.h"
@@ -820,11 +820,11 @@ int LyXRC::read(Lexer & lexrc)
 				break;
 			}
 
-			Color::color const col =
+			ColorCode const col =
 				lcolor.getFromLyXName(lyx_name);
-			if (col == Color::none ||
-			    col == Color::inherit ||
-			    col == Color::ignore)
+			if (col == Color_none ||
+			    col == Color_inherit ||
+			    col == Color_ignore)
 				break;
 
 			if (!lcolor.setColor(col, x11_name)) {
@@ -1696,8 +1696,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		   << "#\n\n";
 
 	case RC_SET_COLOR:
-		for (int i = 0; i < Color::ignore; ++i) {
-			Color::color lc = static_cast<Color::color>(i);
+		for (int i = 0; i < Color_ignore; ++i) {
+			ColorCode lc = static_cast<ColorCode>(i);
 
 			string const col(lcolor.getX11Name(lc));
 			if (ignore_system_lyxrc ||

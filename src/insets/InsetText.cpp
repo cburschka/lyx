@@ -27,7 +27,6 @@
 #include "gettext.h"
 #include "InsetList.h"
 #include "Intl.h"
-#include "Color.h"
 #include "lyxfind.h"
 #include "Lexer.h"
 #include "LyXRC.h"
@@ -76,7 +75,7 @@ using std::vector;
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: drawFrame_(false), frame_color_(Color::insetframe)
+	: drawFrame_(false), frame_color_(Color_insetframe)
 {
 	paragraphs().push_back(Paragraph());
 	paragraphs().back().layout(bp.getTextClass().defaultLayout());
@@ -366,13 +365,13 @@ void InsetText::setDrawFrame(bool flag)
 }
 
 
-Color_color InsetText::frameColor() const
+ColorCode InsetText::frameColor() const
 {
-	return Color::color(frame_color_);
+	return ColorCode(frame_color_);
 }
 
 
-void InsetText::setFrameColor(Color_color col)
+void InsetText::setFrameColor(ColorCode col)
 {
 	frame_color_ = col;
 }

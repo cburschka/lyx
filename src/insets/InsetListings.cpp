@@ -50,7 +50,7 @@ void InsetListings::init()
 	Font font(Font::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(Color::none);
+	font.setColor(Color_none);
 	setLabelFont(font);
 	// FIXME: what to do with those?
 	//text_.current_font.setLanguage(latex_language);
@@ -315,8 +315,8 @@ void InsetListings::getDrawFont(Font & font) const
 {
 	font = Font(Font::ALL_INHERIT, latex_language);
 	font.setFamily(Font::TYPEWRITER_FAMILY);
-	// FIXME: define Color::listing?
-	font.setColor(Color::foreground);
+	// FIXME: define Color_listing?
+	font.setColor(Color_foreground);
 }
 
 

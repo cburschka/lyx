@@ -30,7 +30,6 @@
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "FuncStatus.h"
-#include "Color.h"
 #include "LaTeXFeatures.h"
 #include "Cursor.h"
 #include "debug.h"
@@ -334,7 +333,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	// selection at the top level of nested inset is difficult to handle.
 	if (!editing(pi.base.bv))
 		pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
-				dim.asc + dim.des - 1, Color::mathbg);
+				dim.asc + dim.des - 1, Color_mathbg);
 
 	if (use_preview_) {
 		// one pixel gap in front
@@ -1302,7 +1301,7 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 	Font font;
 	bool b;
 	font.fromString(to_utf8(arg), b);
-	if (font.color() != Color::inherit) {
+	if (font.color() != Color_inherit) {
 		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);
 	}

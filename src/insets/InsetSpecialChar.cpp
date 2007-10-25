@@ -16,7 +16,6 @@
 
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "Color.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 
@@ -72,25 +71,25 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	switch (kind_) {
 	case HYPHENATION:
 	{
-		font.setColor(Color::special);
+		font.setColor(Color_special);
 		pi.pain.text(x, y, char_type('-'), font);
 		break;
 	}
 	case LIGATURE_BREAK:
 	{
-		font.setColor(Color::special);
+		font.setColor(Color_special);
 		pi.pain.text(x, y, char_type('|'), font);
 		break;
 	}
 	case END_OF_SENTENCE:
 	{
-		font.setColor(Color::special);
+		font.setColor(Color_special);
 		pi.pain.text(x, y, char_type('.'), font);
 		break;
 	}
 	case LDOTS:
 	{
-		font.setColor(Color::special);
+		font.setColor(Color_special);
 		string ell = ". . . ";
 		docstring dell(ell.begin(), ell.end());
 		pi.pain.text(x, y, dell, font);
@@ -112,7 +111,7 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 		xp[2] = ox + w; yp[2] = y - h/2;
 		xp[3] = ox;     yp[3] = y;
 
-		pi.pain.lines(xp, yp, 4, Color::special);
+		pi.pain.lines(xp, yp, 4, Color_special);
 		break;
 	}
 	}
