@@ -86,8 +86,6 @@ CommandInfo const * InsetCommandParams::findInfo(
 		return InsetHyperlink::findInfo(cmdName);
 	case INCLUDE_CODE:
 		return InsetInclude::findInfo(cmdName);
-	case INDEX_CODE: 
-		return InsetIndex::findInfo(cmdName);
 	case INDEX_PRINT_CODE:
 		return InsetPrintIndex::findInfo(cmdName);
 	case LABEL_CODE:
@@ -123,8 +121,6 @@ std::string InsetCommandParams::getDefaultCmd(InsetCode code) {
 			return InsetHyperlink::defaultCommand();
 		case INCLUDE_CODE:
 			return InsetInclude::defaultCommand();
-		case INDEX_CODE: 
-			return InsetIndex::defaultCommand();
 		case INDEX_PRINT_CODE:
 			return InsetPrintIndex::defaultCommand();
 		case LABEL_CODE:
@@ -162,8 +158,6 @@ bool InsetCommandParams::isCompatibleCommand(
 			return InsetHyperlink::isCompatibleCommand(s);
 		case INCLUDE_CODE:
 			return InsetInclude::isCompatibleCommand(s);
-		case INDEX_CODE: 
-			return InsetIndex::isCompatibleCommand(s);
 		case INDEX_PRINT_CODE:
 			return InsetPrintIndex::isCompatibleCommand(s);
 		case LABEL_CODE:

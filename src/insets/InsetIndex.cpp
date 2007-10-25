@@ -40,15 +40,6 @@ InsetIndex::InsetIndex(InsetIndex const & in)
 {}
 
 
-CommandInfo const * InsetIndex::findInfo(std::string const & /* cmdName */)
-{
-	static const char * const paramnames[] = {"name", ""};
-	static const bool isoptional[] = {false};
-	static const CommandInfo info = {1, paramnames, isoptional};
-	return &info;
-}
-
-
 int InsetIndex::docbook(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {

@@ -436,9 +436,6 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			case INCLUDE_CODE:
 				inset.reset(new InsetInclude(inscmd));
 				break;
-			case INDEX_CODE:
-				inset.reset(new InsetIndex(buf.params()));
-				break;
 			case INDEX_PRINT_CODE:
 				inset.reset(new InsetPrintIndex(inscmd));
 				break;
