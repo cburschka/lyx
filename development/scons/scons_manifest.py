@@ -469,7 +469,6 @@ src_mathed_header_files = Split('''
     InsetMathAMSArray.h
     InsetMathArray.h
     InsetMathBig.h
-    InsetMathBinom.h
     InsetMathBoldSymbol.h
     InsetMathBox.h
     InsetMathBoxed.h
@@ -478,7 +477,6 @@ src_mathed_header_files = Split('''
     InsetMathChar.h
     InsetMathColor.h
     InsetMathComment.h
-    InsetMathDFrac.h
     InsetMathDecoration.h
     InsetMathDelim.h
     InsetMathDiff.h
@@ -490,7 +488,6 @@ src_mathed_header_files = Split('''
     InsetMathFont.h
     InsetMathFontOld.h
     InsetMathFrac.h
-    InsetMathFracBase.h
     InsetMathFrameBox.h
     InsetMathGrid.h
     InsetMathHull.h
@@ -515,7 +512,6 @@ src_mathed_header_files = Split('''
     InsetMathString.h
     InsetMathSubstack.h
     InsetMathSymbol.h
-    InsetMathTFrac.h
     InsetMathTabular.h
     InsetMathUnderset.h
     InsetMathUnknown.h
@@ -545,7 +541,6 @@ src_mathed_files = Split('''
     InsetMathAMSArray.cpp
     InsetMathArray.cpp
     InsetMathBig.cpp
-    InsetMathBinom.cpp
     InsetMathBoldSymbol.cpp
     InsetMathBox.cpp
     InsetMathBoxed.cpp
@@ -554,7 +549,6 @@ src_mathed_files = Split('''
     InsetMathChar.cpp
     InsetMathColor.cpp
     InsetMathComment.cpp
-    InsetMathDFrac.cpp
     InsetMathDecoration.cpp
     InsetMathDelim.cpp
     InsetMathDiff.cpp
@@ -566,7 +560,6 @@ src_mathed_files = Split('''
     InsetMathFont.cpp
     InsetMathFontOld.cpp
     InsetMathFrac.cpp
-    InsetMathFracBase.cpp
     InsetMathFrameBox.cpp
     InsetMathGrid.cpp
     InsetMathHull.cpp
@@ -591,7 +584,6 @@ src_mathed_files = Split('''
     InsetMathString.cpp
     InsetMathSubstack.cpp
     InsetMathSymbol.cpp
-    InsetMathTFrac.cpp
     InsetMathTabular.cpp
     InsetMathUnderset.cpp
     InsetMathUnknown.cpp
