@@ -38,36 +38,6 @@ struct CommandInfo {
 	bool const * optional;
 };
 
-///
-struct ICPInfo {
-	///
-	ICPInfo(std::string const & s, bool b);
-	/// Parameter name.
-	std::string paramName;
-	/// Whether it is optional.
-	bool optional;
-};
-///
-typedef std::list<ICPInfo> PList;
-///
-class ICPList {
-	public:
-		///
-		PList::const_iterator begin() { return plist_.begin(); }
-		///
-		PList::const_iterator end()   { return plist_.end(); }
-		///
-		void clear() { plist_.clear(); }
-		///
-		void addParam(std::string const & s, bool b = false);
-		///
-		bool hasParam(std::string const & s);
-	private:
-		///
-		PList plist_;
-	
-};
-
 
 class InsetCommandParams {
 public:

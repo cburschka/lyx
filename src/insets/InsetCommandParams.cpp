@@ -48,27 +48,6 @@ using std::ostream;
 using support::ExceptionMessage;
 using support::WarningException;
 
-ICPInfo::ICPInfo(std::string const & s, bool b)
-	: paramName(s), optional(b)
-{}
-
-
-void ICPList::addParam(std::string const & s, bool b) {
-	plist_.push_back(ICPInfo(s, b));
-}
-
-
-bool ICPList::hasParam(std::string const & s) {
-	PList::const_iterator it = begin();
-	PList::const_iterator et = end();
-	for (; it != et; ++it) {
-		if (it->paramName == s)
-			return true;
-	}
-	return false;
-}
-
-
 InsetCommandParams::InsetCommandParams(InsetCode code)
 	: insetCode_(code), preview_(false)
 {
