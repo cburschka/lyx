@@ -43,7 +43,8 @@ using support::makeAbsPath;
 using support::makeDisplayPath;
 
 /// Flags what action is taken by Kernel::dispatch()
-static std::string const lfun_name_ = "ref";
+/// Needed because we're not inheriting from GuiCommand
+static std::string const lfun_ref_ = "ref";
 
 GuiRef::GuiRef(LyXView & lv)
 	: GuiDialog(lv, "ref"), params_(REF_CODE)
@@ -379,7 +380,7 @@ bool GuiRef::initialiseParams(string const & data)
 {
 	// The name passed with LFUN_INSET_APPLY is also the name
 	// used to identify the mailer.
-	InsetCommandMailer::string2params(lfun_name_, data, params_);
+	InsetCommandMailer::string2params(lfun_ref_, data, params_);
 	return true;
 }
 
@@ -392,7 +393,7 @@ void GuiRef::clearParams()
 
 void GuiRef::dispatchParams()
 {
-	string const lfun = InsetCommandMailer::params2string(lfun_name_, params_);
+	string const lfun = InsetCommandMailer::params2string(lfun_ref_, params_);
 	dispatch(FuncRequest(getLfun(), lfun));
 }
 
