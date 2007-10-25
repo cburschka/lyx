@@ -5,6 +5,7 @@
  *
  * \author Angus Leeming
  * \author Georg Baum
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,6 +13,19 @@
 #include <config.h>
 
 #include "InsetCommandParams.h"
+
+#include "InsetBibitem.h"
+#include "InsetBibtex.h"
+#include "InsetCitation.h"
+#include "InsetFloatList.h"
+#include "InsetHFill.h"
+#include "InsetHyperlink.h"
+#include "InsetInclude.h"
+#include "InsetIndex.h"
+#include "InsetLabel.h"
+#include "InsetNomencl.h"
+#include "InsetRef.h"
+#include "InsetTOC.h"
 
 #include "debug.h"
 #include "gettext.h"
@@ -34,6 +48,26 @@ using std::ostream;
 using support::ExceptionMessage;
 using support::WarningException;
 
+ICPInfo::ICPInfo(std::string const & s, bool b)
+	: paramName(s), optional(b)
+{}
+
+
+void ICPList::addParam(std::string const & s, bool b) {
+	plist_.push_back(ICPInfo(s, b));
+}
+
+
+bool ICPList::hasParam(std::string const & s) {
+	PList::const_iterator it = begin();
+	PList::const_iterator et = end();
+	for (; it != et; ++it) {
+		if (it->paramName == s)
+			return true;
+	}
+	return false;
+}
+
 
 InsetCommandParams::InsetCommandParams(InsetCode code)
 	: insetCode_(code), preview_(false)
@@ -55,101 +89,38 @@ InsetCommandParams::InsetCommandParams(InsetCode code,
 }
 
 
-//FIXME This should go into the Insets themselves...so they will tell
-//us what parameters they want.
-//Should this just vanish in favor of the two arg version, or is there
-//a reason to use it in some cases? What should happen in the single
-//arg case, then? Maybe use the default? or leave that up to the inset?
-InsetCommandParams::CommandInfo const *
-	InsetCommandParams::findInfo(InsetCode code)
+CommandInfo const * InsetCommandParams::findInfo(
+	InsetCode code, std::string const & cmdName)
 {
-	// No parameter may be named "preview", because that is a required
-	// flag for all commands.
-
 	switch (code) {
-	case BIBITEM_CODE: {
-		static const char * const paramnames[] = {"label", "key", ""};
-		static const bool isoptional[] = {true, false};
-		static const CommandInfo info = {2, paramnames, isoptional};
-		return &info;
-	}
-	case BIBTEX_CODE: {
-		static const char * const paramnames[] =
-				{"options", "btprint", "bibfiles", ""};
-		static const bool isoptional[] = {true, true, false};
-		static const CommandInfo info = {3, paramnames, isoptional};
-		return &info;
-	}
-	case CITE_CODE: {
-		// standard cite does only take one argument if jurabib is
-		// not used, but jurabib extends this to two arguments, so
-		// we have to allow both here. InsetCitation takes care that
-		// LaTeX output is nevertheless correct.
-		static const char * const paramnames[] =
-				{"after", "before", "key", ""};
-		static const bool isoptional[] = {true, true, false};
-		static const CommandInfo info = {3, paramnames, isoptional};
-		return &info;
-	}
-	case FLOAT_LIST_CODE: {
-		static const char * const paramnames[] = {"type", ""};
-		static const bool isoptional[] = {false};
-		static const CommandInfo info = {1, paramnames, isoptional};
-		return &info;
-	}
-	case HFILL_CODE: {
-		static const char * const paramnames[] = {""};
-		static const CommandInfo info = {0, paramnames, 0};
-		return &info;
-	}
-	case HYPERLINK_CODE: {
-		static const char * const paramnames[] =
-				{"name", "target", ""};
-		static const bool isoptional[] = {true, false};
-		static const CommandInfo info = {2, paramnames, isoptional};
-		return &info;
-	}
-	case INCLUDE_CODE: {
-		//This is only correct for the case of listings, but it'll do for now.
-		//In the other cases, this second parameter should just be empty.
-		static const char * const paramnames[] = {"filename", "lstparams", ""};
-		static const bool isoptional[] = {false, true};
-		static const CommandInfo info = {2, paramnames, isoptional};
-		return &info;
-	}
+	case BIBITEM_CODE:
+		return InsetBibitem::findInfo(cmdName);
+	case BIBTEX_CODE:
+		return InsetBibtex::findInfo(cmdName);
+	case CITE_CODE:
+		return InsetCitation::findInfo(cmdName);	
+	case FLOAT_LIST_CODE:
+		return InsetFloatList::findInfo(cmdName);
+	case HFILL_CODE:
+		return InsetHFill::findInfo(cmdName);
+	case HYPERLINK_CODE:
+		return InsetHyperlink::findInfo(cmdName);
+	case INCLUDE_CODE:
+		return InsetInclude::findInfo(cmdName);
 	case INDEX_CODE: 
+		return InsetIndex::findInfo(cmdName);
 	case INDEX_PRINT_CODE:
-	case LABEL_CODE: {
-		static const char * const paramnames[] = {"name", ""};
-		static const bool isoptional[] = {false};
-		static const CommandInfo info = {1, paramnames, isoptional};
-		return &info;
-	}
-	case NOMENCL_CODE: {
-		static const char * const paramnames[] = {"prefix", "symbol", "description", ""};
-		static const bool isoptional[] = {true, false, false};
-		static const CommandInfo info = {3, paramnames, isoptional};
-		return &info;
-	}
-	case NOMENCL_PRINT_CODE: {
-		static const char * const paramnames[] = {"labelwidth", ""};
-		static const bool isoptional[] = {true};
-		static const CommandInfo info = {1, paramnames, isoptional};
-		return &info;
-	}
-	case REF_CODE: {
-		static const char * const paramnames[] =
-				{"name", "reference", ""};
-		static const bool isoptional[] = {true, false};
-		static const CommandInfo info = {2, paramnames, isoptional};
-		return &info;
-	}
-	case TOC_CODE: {
-		static const char * const paramnames[] = {"type", ""};
-		static const bool isoptional[] = {false};
-		static const CommandInfo info = {1, paramnames, isoptional};
-		return &info;
-	}
+		return InsetPrintIndex::findInfo(cmdName);
+	case LABEL_CODE:
+		return InsetLabel::findInfo(cmdName);	
+	case NOMENCL_CODE:
+		return InsetNomencl::findInfo(cmdName);
+	case NOMENCL_PRINT_CODE:
+		return InsetPrintNomencl::findInfo(cmdName);
+	case REF_CODE:
+		return InsetRef::findInfo(cmdName);
+	case TOC_CODE:
+		return InsetTOC::findInfo(cmdName);
 	default:
 		BOOST_ASSERT(false);
 	}
@@ -157,56 +128,91 @@ InsetCommandParams::CommandInfo const *
 }
 
 
-//FIXME Will eventually call a static method, etc.
-InsetCommandParams::CommandInfo const *
-		InsetCommandParams::findInfo(InsetCode code,
-		                             std::string const &/* cmdName*/)
-{
-	return findInfo(code);
-}
-
-
-//FIXME Should call InsetBibitem::getDefaultCmd(), eg
 std::string InsetCommandParams::getDefaultCmd(InsetCode code) {
 	switch (code) {
 		case BIBITEM_CODE: 
-			return "bibitem";
+			return InsetBibitem::defaultCommand();
 		case BIBTEX_CODE:
-			return "bibtex"; //this is an unused dummy
+			return InsetBibtex::defaultCommand();
 		case CITE_CODE:
-			return "cite";
+			return InsetCitation::defaultCommand();
 		case FLOAT_LIST_CODE:
-			return "listoftables";
+			return InsetFloatList::defaultCommand();
 		case HFILL_CODE:
-			return "hfill";
+			return InsetHFill::defaultCommand();
 		case HYPERLINK_CODE:
-			return "href";
+			return InsetHyperlink::defaultCommand();
 		case INCLUDE_CODE:
-			return "include";
+			return InsetInclude::defaultCommand();
 		case INDEX_CODE: 
-			return "index";
+			return InsetIndex::defaultCommand();
 		case INDEX_PRINT_CODE:
-			return "printindex";
+			return InsetPrintIndex::defaultCommand();
 		case LABEL_CODE:
-			return "label";
+			return InsetLabel::defaultCommand();
 		case NOMENCL_CODE:
-			return "nomenclature";
+			return InsetNomencl::defaultCommand();
 		case NOMENCL_PRINT_CODE:
-			return "printnomenclature";
+			return InsetPrintNomencl::defaultCommand();
 		case REF_CODE:
-			return "ref";
+			return InsetRef::defaultCommand();
 		case TOC_CODE:
-			return "tableofcontents";
+			return InsetTOC::defaultCommand();
 		default:
 			BOOST_ASSERT(false);
 	}
-	return "";
+	return string(); //silence the warning
+}
+
+
+bool InsetCommandParams::isCompatibleCommand(
+		InsetCode code, std::string const & s)
+{
+	switch (code) {
+		case BIBITEM_CODE: 
+			return InsetBibitem::isCompatibleCommand(s);
+		case BIBTEX_CODE:
+			return InsetBibtex::isCompatibleCommand(s);
+		case CITE_CODE:
+			return InsetCitation::isCompatibleCommand(s);
+		case FLOAT_LIST_CODE:
+			return InsetFloatList::isCompatibleCommand(s);
+		case HFILL_CODE:
+			return InsetHFill::isCompatibleCommand(s);
+		case HYPERLINK_CODE:
+			return InsetHyperlink::isCompatibleCommand(s);
+		case INCLUDE_CODE:
+			return InsetInclude::isCompatibleCommand(s);
+		case INDEX_CODE: 
+			return InsetIndex::isCompatibleCommand(s);
+		case INDEX_PRINT_CODE:
+			return InsetPrintIndex::isCompatibleCommand(s);
+		case LABEL_CODE:
+			return InsetLabel::isCompatibleCommand(s);
+		case NOMENCL_CODE:
+			return InsetNomencl::isCompatibleCommand(s);
+		case NOMENCL_PRINT_CODE:
+			return InsetPrintNomencl::isCompatibleCommand(s);
+		case REF_CODE:
+			return InsetRef::isCompatibleCommand(s);
+		case TOC_CODE:
+			return InsetTOC::isCompatibleCommand(s);
+		default:
+			BOOST_ASSERT(false);
+	}
+	return false; //silence the warning
 }
 
 
 void InsetCommandParams::setCmdName(string const & name)
 {
-	//FIXME Check command compatibility
+	if (!isCompatibleCommand(insetCode_, cmdName_)){
+		lyxerr << "InsetCommand: Incompatible command name " << 
+				name << "." << std::endl;
+		throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
+		                       from_utf8("Incompatible command name."));
+	}
+
 	cmdName_ = name;
 	CommandInfo const * const info = findInfo(insetCode_, cmdName_);
 	if (!info) {
@@ -250,12 +256,12 @@ void InsetCommandParams::read(Lexer & lex)
 	}
 	lex.next();
 	cmdName_ = lex.getString();
-	//FIXME
-	//check that this command is ok with the inset...
-	//so that'll be some kind of static call, depending 
-	//upon what insetType_ is.
-	//it's possible that should go into InsetCommand.cpp,
-	//or maybe it's a standalone function.
+	if (!isCompatibleCommand(insetCode_, cmdName_)){
+		lex.printError("InsetCommand: Incompatible command name " + cmdName_ + ".");
+		throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
+		                       from_utf8("Incompatible command name."));
+	}
+
 	info_ = findInfo(insetCode_, cmdName_);
 	if (!info_) {
 		lex.printError("InsetCommand: Unknown inset name `$$Token'");

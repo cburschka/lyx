@@ -49,7 +49,16 @@ public:
 		OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
-
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	//FIXME This is the locus of the design problem we have.
+	//It really ought to do what default_cite_command() does,
+	//but to do that it needs to know what CiteEngine we are
+	//using.
+	///
+	static std::string defaultCommand() { return "cite"; };
+	///
+	static bool isCompatibleCommand(std::string const & cmd);
 private:
 	virtual Inset * clone() const
 	{

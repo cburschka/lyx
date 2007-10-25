@@ -40,6 +40,13 @@ public:
 		    OutputParams const &) const;
 	///
 	int docbookGlossary(odocstream &) const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "nomenclature"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "nomenclature"; }
 private:
 	virtual Inset * clone() const {
 		return new InsetNomencl(params());
@@ -70,6 +77,13 @@ public:
 	DisplayType display() const { return AlignCenter; }
 	///
 	docstring const getScreenLabel(Buffer const &) const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "printnomenclature"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "printnomenclature"; }
 private:
 	virtual Inset * clone() const {
 		return new InsetPrintNomencl(params());

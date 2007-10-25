@@ -47,6 +47,15 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 }
 
 
+CommandInfo const * InsetBibitem::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = {"label", "key", ""};
+	static const bool isoptional[] = {true, false};
+	static const CommandInfo info = {2, paramnames, isoptional};
+	return &info;
+}
+
+
 Inset * InsetBibitem::clone() const
 {
 	InsetBibitem * b = new InsetBibitem(params());

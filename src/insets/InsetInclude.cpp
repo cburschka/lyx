@@ -96,27 +96,29 @@ docstring const uniqueID()
 
 /// the type of inclusion
 enum Types {
-	INCLUDE = 0,
-	VERB = 1,
-	INPUT = 2,
-	VERBAST = 3,
-	LISTINGS = 4,
+	INCLUDE, VERB, INPUT, VERBAST, LISTINGS, NONE
 };
+
+
+Types type(std::string const & s) {
+	if (s == "input")
+		return INPUT;
+	if (s == "verbatiminput")
+		return VERB;
+	if (s == "verbatiminput*")
+		return VERBAST;
+	if (s == "lstinputlisting")
+		return LISTINGS;
+	if (s == "include")
+		return INCLUDE;
+	return NONE;
+}
 
 
 Types type(InsetCommandParams const & params)
 {
 	string const command_name = params.getCmdName();
-
-	if (command_name == "input")
-		return INPUT;
-	if  (command_name == "verbatiminput")
-		return VERB;
-	if  (command_name == "verbatiminput*")
-		return VERBAST;
-	if  (command_name == "lstinputlisting")
-		return LISTINGS;
-	return INCLUDE;
+	return type(command_name);
 }
 
 
@@ -155,6 +157,22 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	  preview_(new RenderMonitoredPreview(this)), set_label_(false)
 {
 	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
+}
+
+
+CommandInfo const * InsetInclude::findInfo(std::string const & /* cmdName */)
+{
+	//This is only correct for the case of listings, but it'll do for now.
+	//In the other cases, this second parameter should just be empty.
+	static const char * const paramnames[] = {"filename", "lstparams", ""};
+	static const bool isoptional[] = {false, true};
+	static const CommandInfo info = {2, paramnames, isoptional};
+	return &info;
+}
+
+
+bool InsetInclude::isCompatibleCommand(std::string const & s) {
+	return type(s) != NONE;
 }
 
 
@@ -255,9 +273,10 @@ docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 		case INCLUDE:
 			temp = buf.B_("Include");
 			break;
-		case LISTINGS: {
+		case LISTINGS:
 			temp = listings_label_;
-		}
+		case NONE:
+			BOOST_ASSERT(false);
 	}
 
 	temp += ": ";

@@ -49,6 +49,22 @@ InsetFloatList::InsetFloatList(string const & type)
 }
 
 
+CommandInfo const * InsetFloatList::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = {"type", ""};
+	static const bool isoptional[] = {false};
+	static const CommandInfo info = {1, paramnames, isoptional};
+	return &info;
+}
+
+
+//HACK
+bool InsetFloatList::isCompatibleCommand(std::string const & s) {
+	std::string str = s.substr(0, 6);
+	return str == "listof";
+}
+
+
 docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
 {
 	FloatList const & floats = buf.params().getTextClass().floats();

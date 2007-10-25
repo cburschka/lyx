@@ -35,6 +35,13 @@ public:
 	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "label"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "label"; }
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:

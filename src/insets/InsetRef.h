@@ -57,6 +57,12 @@ public:
 		OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "ref"; };
+	///
+	static bool isCompatibleCommand(std::string const & s);
 protected:
 	InsetRef(InsetRef const &);
 

@@ -6,6 +6,7 @@
  *
  * \author Angus Leeming
  * \author Georg Baum
+ * \author Richard Heck
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -17,12 +18,56 @@
 #include "support/docstring.h"
 
 #include <iosfwd>
+#include <list>
+#include <string>
 #include <vector>
 
 
 namespace lyx {
 
 class Lexer;
+
+// No parameter may be named "preview", because that is a required
+// flag for all commands.
+struct CommandInfo {
+	/// Number of parameters
+	size_t n;
+	/// Parameter names. paramnames[n] must be "".
+	char const * const * paramnames;
+	/// Tells whether a parameter is optional
+	bool const * optional;
+};
+
+///
+struct ICPInfo {
+	///
+	ICPInfo(std::string const & s, bool b);
+	/// Parameter name.
+	std::string paramName;
+	/// Whether it is optional.
+	bool optional;
+};
+///
+typedef std::list<ICPInfo> PList;
+///
+class ICPList {
+	public:
+		///
+		PList::const_iterator begin() { return plist_.begin(); }
+		///
+		PList::const_iterator end()   { return plist_.end(); }
+		///
+		void clear() { plist_.clear(); }
+		///
+		void addParam(std::string const & s, bool b = false);
+		///
+		bool hasParam(std::string const & s);
+	private:
+		///
+		PList plist_;
+	
+};
+
 
 class InsetCommandParams {
 public:
@@ -65,14 +110,6 @@ public:
 
 private:
 	///
-	struct CommandInfo {
-		/// Number of parameters
-		size_t n;
-		/// Parameter names. paramnames[n] must be "".
-		char const * const * paramnames;
-		/// Tells whether a parameter is optional
-		bool const * optional;
-	};
 	/// Get information for inset type \p code.
 	/// Returns 0 if the inset is not known.
 	static CommandInfo const * findInfo(InsetCode code);
@@ -82,6 +119,8 @@ private:
 	/// acceptable to the inset.
 	static CommandInfo const * findInfo(InsetCode code,
 	                                    std::string const & cmdName);
+	///
+	static bool isCompatibleCommand(InsetCode code, std::string const & s);
 	///
 	std::string getDefaultCmd(InsetCode);
 	/// Description of all command properties

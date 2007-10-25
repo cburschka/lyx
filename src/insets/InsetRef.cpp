@@ -42,6 +42,27 @@ InsetRef::InsetRef(InsetRef const & ir)
 {}
 
 
+bool InsetRef::isCompatibleCommand(std::string const & s) {
+	//FIXME This is likely not the best way to handle this.
+	//But this stuff is hardcoded elsewhere already.
+	return s == "ref" 
+		|| s == "pageref"
+		|| s == "vref" 
+		|| s == "vpageref"
+		|| s == "prettyref"
+		|| s == "eqref";
+}
+
+
+CommandInfo const * InsetRef::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = {"name", "reference", ""};
+	static const bool isoptional[] = {true, false};
+	static const CommandInfo info = {2, paramnames, isoptional};
+	return &info;
+}
+
+
 void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {

@@ -37,6 +37,13 @@ public:
 	///
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "tableofcontents"; };
+	///
+	static bool isCompatibleCommand(std::string const & cmd)
+		{return cmd == defaultCommand(); }
 private:
 	virtual Inset * clone() const;
 };

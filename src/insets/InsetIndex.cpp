@@ -40,6 +40,15 @@ InsetIndex::InsetIndex(InsetIndex const & in)
 {}
 
 
+CommandInfo const * InsetIndex::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = {"name", ""};
+	static const bool isoptional[] = {false};
+	static const CommandInfo info = {1, paramnames, isoptional};
+	return &info;
+}
+
+
 int InsetIndex::docbook(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
@@ -110,6 +119,15 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 	: InsetCommand(p, string())
 {}
+
+
+CommandInfo const * InsetPrintIndex::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = {"name", ""};
+	static const bool isoptional[] = {false};
+	static const CommandInfo info = {1, paramnames, isoptional};
+	return &info;
+}
 
 
 docstring const InsetPrintIndex::getScreenLabel(Buffer const &) const

@@ -44,6 +44,16 @@ InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
 {}
 
 
+CommandInfo const * InsetHyperlink::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] =
+		{"name", "target", ""};
+	static const bool isoptional[] = {true, false};
+	static const CommandInfo info = {2, paramnames, isoptional};
+	return &info;
+}
+
+
 docstring const InsetHyperlink::getScreenLabel(Buffer const &) const
 {
 	docstring const temp = from_ascii("Hyperlink: ");

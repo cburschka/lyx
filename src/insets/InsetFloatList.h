@@ -49,6 +49,12 @@ public:
 		      OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	static CommandInfo const * findInfo(std::string const & cmdName = "");
+	///
+	static std::string defaultCommand() { return "listoftables"; };
+	///
+	static bool isCompatibleCommand(std::string const & s);
 private:
 	virtual Inset * clone() const
 	{

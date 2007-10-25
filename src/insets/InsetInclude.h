@@ -96,6 +96,12 @@ public:
 	void updateLabels(Buffer const & buffer, ParIterator const &);
 	/// child document can be embedded
 	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "include"; };
+	///
+	static bool isCompatibleCommand(std::string const & s);
 protected:
 	InsetInclude(InsetInclude const &);
 	///

@@ -34,6 +34,15 @@ InsetNomencl::InsetNomencl(InsetCommandParams const & p)
 {}
 
 
+CommandInfo const * InsetNomencl::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = {"prefix", "symbol", "description", ""};
+	static const bool isoptional[] = {true, false, false};
+	static const CommandInfo info = {3, paramnames, isoptional};
+	return &info;
+}
+
+
 docstring const InsetNomencl::getScreenLabel(Buffer const &) const
 {
 	return _("Nom");
@@ -73,6 +82,15 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
 	: InsetCommand(p, string())
 {}
+
+
+CommandInfo const * InsetPrintNomencl::findInfo(std::string const & /* cmdName */)
+{
+		static const char * const paramnames[] = {"labelwidth", ""};
+		static const bool isoptional[] = {true};
+		static const CommandInfo info = {1, paramnames, isoptional};
+		return &info;
+}
 
 
 docstring const InsetPrintNomencl::getScreenLabel(Buffer const &) const

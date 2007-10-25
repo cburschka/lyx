@@ -49,6 +49,13 @@ public:
 	/// the string that is passed to the TOC
 	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "href"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "href"; }
 private:
 	virtual Inset * clone() const {
 		return new InsetHyperlink(params());

@@ -49,7 +49,13 @@ public:
 		    OutputParams const &) const;
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
-
+	///
+	static CommandInfo const * findInfo(std::string const & cmdName = "");
+	///
+	static std::string defaultCommand() { return "index"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "index"; }
 private:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
@@ -72,6 +78,13 @@ public:
 	DisplayType display() const { return AlignCenter; }
 	///
 	docstring const getScreenLabel(Buffer const &) const;
+	///
+	static CommandInfo const * findInfo(std::string const & cmdName = "");
+	///
+	static std::string defaultCommand() { return "printindex"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "printindex"; }
 private:
 	virtual Inset * clone() const {
 		return new InsetPrintIndex(params());

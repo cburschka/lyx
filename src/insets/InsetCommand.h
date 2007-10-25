@@ -58,8 +58,7 @@ public:
 	InsetCommandParams const & params() const { return p_; }
 	/// FIXME Remove
 	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
-public:
-	/// tell that the button label should be recomputed.
+	/// Whether the button label should be recomputed.
 	void refresh() { updateButtonLabel_ = true; }
 	///
 	void setParam(std::string const & name, docstring const & value)
@@ -78,6 +77,15 @@ public:
 	RenderButton & button() const { return button_; }
 	///
 	bool setMouseHover(bool mouse_hover);
+	/// Return parameter information for command cmdName.
+	/// Not implemented here. Must be implemented in derived class.
+	static CommandInfo const * findInfo(std::string const & cmdName);
+	/// Return default command for this inset.
+	/// Not implemented here. Must be implemented in derived class.
+	static std::string defaultCommand();
+	/// Whether this is a command this inset can represent.
+	/// Not implemented here. Must be implemented in derived class.
+	static bool isCompatibleCommand(std::string const & cmd);
 
 protected:
 	///

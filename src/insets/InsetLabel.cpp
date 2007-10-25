@@ -31,6 +31,15 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 {}
 
 
+CommandInfo const * InsetLabel::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = {"name", ""};
+	static const bool isoptional[] = {false};
+	static const CommandInfo info = {1, paramnames, isoptional};
+	return &info;
+}
+
+
 Inset * InsetLabel::clone() const
 {
 	return new InsetLabel(params());

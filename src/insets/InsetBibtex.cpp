@@ -78,6 +78,16 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 {}
 
 
+CommandInfo const * InsetBibtex::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = 
+		{"options", "btprint", "bibfiles", ""};
+	static const bool isoptional[] = {true, true, false};
+	static const CommandInfo info = {3, paramnames, isoptional};
+	return &info;
+}
+
+
 Inset * InsetBibtex::clone() const
 {
 	return new InsetBibtex(*this);

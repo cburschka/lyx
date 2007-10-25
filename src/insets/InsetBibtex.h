@@ -48,6 +48,13 @@ public:
 	bool delDatabase(std::string const &);
 	///
 	void validate(LaTeXFeatures &) const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "bibtex"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "bibtex"; }
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:

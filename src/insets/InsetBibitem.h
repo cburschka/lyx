@@ -45,7 +45,13 @@ public:
 		BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
 	virtual void updateLabels(Buffer const &, ParIterator const &);
-
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "bibitem"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "bibitem"; }
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

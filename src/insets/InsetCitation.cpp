@@ -75,14 +75,7 @@ vector<string> const & possible_cite_commands()
 }
 
 
-bool is_possible_cite_command(string const & input)
-{
-	vector<string> const & possibles = possible_cite_commands();
-	vector<string>::const_iterator const end = possibles.end();
-	return std::find(possibles.begin(), end, input) != end;
-}
-
-
+//FIXME See the header for the issue.
 string const default_cite_command(biblio::CiteEngine engine)
 {
 	string str;
@@ -108,7 +101,7 @@ string const
 		asValidLatexCommand(string const & input, biblio::CiteEngine const engine)
 {
 	string const default_str = default_cite_command(engine);
-	if (!is_possible_cite_command(input))
+	if (!InsetCitation::isCompatibleCommand(input))
 		return default_str;
 
 	string output;
@@ -393,6 +386,28 @@ docstring const getBasicLabel(docstring const & keyList, docstring const & after
 InsetCitation::InsetCitation(InsetCommandParams const & p)
 	: InsetCommand(p, "citation")
 {}
+
+
+CommandInfo const * InsetCitation::findInfo(std::string const & /* cmdName */)
+{
+	// standard cite does only take one argument if jurabib is
+	// not used, but jurabib extends this to two arguments, so
+	// we have to allow both here. InsetCitation takes care that
+	// LaTeX output is nevertheless correct.
+	static const char * const paramnames[] =
+		{"after", "before", "key", ""};
+	static const bool isoptional[] = {true, true, false};
+	static const CommandInfo info = {3, paramnames, isoptional};
+	return &info;
+}
+
+
+bool InsetCitation::isCompatibleCommand(std::string const & cmd)
+{
+	vector<string> const & possibles = possible_cite_commands();
+	vector<string>::const_iterator const end = possibles.end();
+	return std::find(possibles.begin(), end, cmd) != end;
+}
 
 
 docstring const InsetCitation::generateLabel(Buffer const & buffer) const

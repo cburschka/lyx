@@ -41,6 +41,13 @@ public:
 	/// is this equivalent to a space (which is BTW different from
 	// a line separator)?
 	bool isSpace() const;
+	///
+	static CommandInfo const * findInfo(std::string const &);
+	///
+	static std::string defaultCommand() { return "hfill"; };
+	///
+	static bool isCompatibleCommand(std::string const & s) 
+		{ return s == "hfill"; }
 private:
 	virtual Inset * clone() const;
 };

@@ -24,6 +24,14 @@ InsetHFill::InsetHFill()
 {}
 
 
+CommandInfo const * InsetHFill::findInfo(std::string const & /* cmdName */)
+{
+	static const char * const paramnames[] = {""};
+	static const CommandInfo info = {0, paramnames, 0};
+	return &info;
+}
+
+
 Inset * InsetHFill::clone() const
 {
 	return new InsetHFill;
