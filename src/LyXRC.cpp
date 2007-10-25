@@ -1327,7 +1327,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			os << "# Display graphics within LyX\n"
 			   << "# monochrome|grayscale|color|none\n"
 			   << "\\display_graphics "
-			   << graphics::displayTranslator().find(display_graphics)
+			   << graphics::displayTranslator().find(
+			         graphics::DisplayType(display_graphics))
 			   << '\n';
 		}
 		if (tag != RC_LAST)

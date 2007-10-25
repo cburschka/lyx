@@ -577,7 +577,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 		BOOST_ASSERT(false);
 	}
 	if (gparams.display == graphics::DefaultDisplay)
-		gparams.display = lyxrc.display_graphics;
+		gparams.display = graphics::DisplayType(lyxrc.display_graphics);
 	// Override the above if we're not using a gui
 	if (!use_gui)
 		gparams.display = graphics::NoDisplay;

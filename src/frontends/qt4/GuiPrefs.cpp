@@ -41,6 +41,8 @@
 #include "support/Package.h"
 #include "support/FileFilterList.h"
 
+#include "graphics/GraphicsTypes.h"
+
 #include "frontend_helpers.h"
 
 #include "frontends/alert.h"
@@ -206,7 +208,7 @@ PrefPlaintext::PrefPlaintext(QWidget * parent)
 	setupUi(this);
 	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(plaintextRoffED, SIGNAL(textChanged(const QString&)),
+	connect(plaintextRoffED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 }
 
@@ -235,7 +237,7 @@ PrefDate::PrefDate(QWidget * parent)
 	: PrefModule(_("Date format"), 0, parent)
 {
 	setupUi(this);
-	connect(DateED, SIGNAL(textChanged(const QString &)),
+	connect(DateED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 }
 
@@ -265,9 +267,9 @@ PrefKeyboard::PrefKeyboard(GuiPreferences * form, QWidget * parent)
 
 	connect(keymapCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(firstKeymapED, SIGNAL(textChanged(const QString&)),
+	connect(firstKeymapED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(secondKeymapED, SIGNAL(textChanged(const QString&)),
+	connect(secondKeymapED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 }
 
@@ -333,17 +335,17 @@ PrefLatex::PrefLatex(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("LaTeX"), form, parent)
 {
 	setupUi(this);
-	connect(latexEncodingED, SIGNAL(textChanged(const QString&)),
+	connect(latexEncodingED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(latexChecktexED, SIGNAL(textChanged(const QString&)),
+	connect(latexChecktexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(latexBibtexED, SIGNAL(textChanged(const QString&)),
+	connect(latexBibtexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(latexIndexED, SIGNAL(textChanged(const QString&)),
+	connect(latexIndexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(latexAutoresetCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(latexDviPaperED, SIGNAL(textChanged(const QString&)),
+	connect(latexDviPaperED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(latexPaperSizeCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
@@ -401,12 +403,12 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form, QWidget * parent)
 {
 	setupUi(this);
 
-	connect(screenRomanCO, SIGNAL(activated(const QString&)),
-		this, SLOT(select_roman(const QString&)));
-	connect(screenSansCO, SIGNAL(activated(const QString&)),
-		this, SLOT(select_sans(const QString&)));
-	connect(screenTypewriterCO, SIGNAL(activated(const QString&)),
-		this, SLOT(select_typewriter(const QString&)));
+	connect(screenRomanCO, SIGNAL(activated(QString)),
+		this, SLOT(select_roman(QString)));
+	connect(screenSansCO, SIGNAL(activated(QString)),
+		this, SLOT(select_sans(QString)));
+	connect(screenTypewriterCO, SIGNAL(activated(QString)),
+		this, SLOT(select_typewriter(QString)));
 
 	QFontDatabase fontdb;
 	QStringList families(fontdb.families());
@@ -415,35 +417,35 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form, QWidget * parent)
 		screenSansCO->addItem(*it);
 		screenTypewriterCO->addItem(*it);
 	}
-	connect(screenRomanCO, SIGNAL(activated(const QString&)),
+	connect(screenRomanCO, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
-	connect(screenSansCO, SIGNAL(activated(const QString&)),
+	connect(screenSansCO, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
-	connect(screenTypewriterCO, SIGNAL(activated(const QString&)),
+	connect(screenTypewriterCO, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
 	connect(screenZoomSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(screenDpiSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(screenTinyED, SIGNAL(textChanged(const QString&)),
+	connect(screenTinyED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenSmallestED, SIGNAL(textChanged(const QString&)),
+	connect(screenSmallestED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenSmallerED, SIGNAL(textChanged(const QString&)),
+	connect(screenSmallerED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenSmallED, SIGNAL(textChanged(const QString&)),
+	connect(screenSmallED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenNormalED, SIGNAL(textChanged(const QString&)),
+	connect(screenNormalED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenLargeED, SIGNAL(textChanged(const QString&)),
+	connect(screenLargeED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenLargerED, SIGNAL(textChanged(const QString&)),
+	connect(screenLargerED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenLargestED, SIGNAL(textChanged(const QString&)),
+	connect(screenLargestED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenHugeED, SIGNAL(textChanged(const QString&)),
+	connect(screenHugeED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(screenHugerED, SIGNAL(textChanged(const QString&)),
+	connect(screenHugerED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 
 	screenTinyED->setValidator(new QDoubleValidator(screenTinyED));
@@ -525,19 +527,20 @@ void PrefScreenFonts::update(LyXRC const & rc)
 	screenHugerED->setText(toqstr(rc.font_sizes[Font::SIZE_HUGER]));
 }
 
-void PrefScreenFonts::select_roman(const QString& name)
+
+void PrefScreenFonts::select_roman(const QString & name)
 {
 	screenRomanFE->set(QFont(name), name);
 }
 
 
-void PrefScreenFonts::select_sans(const QString& name)
+void PrefScreenFonts::select_sans(const QString & name)
 {
 	screenSansFE->set(QFont(name), name);
 }
 
 
-void PrefScreenFonts::select_typewriter(const QString& name)
+void PrefScreenFonts::select_typewriter(const QString & name)
 {
 	screenTypewriterFE->set(QFont(name), name);
 }
@@ -679,18 +682,18 @@ void PrefDisplay::apply(LyXRC & rc) const
 
 	lyx::graphics::DisplayType dtype;
 	switch (displayGraphicsCO->currentIndex()) {
-		case 3:	dtype = lyx::graphics::NoDisplay; break;
-		case 2:	dtype = lyx::graphics::ColorDisplay; break;
-		case 1: dtype = lyx::graphics::GrayscaleDisplay;	break;
-		case 0: dtype = lyx::graphics::MonochromeDisplay; break;
-		default: dtype = lyx::graphics::GrayscaleDisplay;
+		case 3:	dtype = graphics::NoDisplay; break;
+		case 2:	dtype = graphics::ColorDisplay; break;
+		case 1: dtype = graphics::GrayscaleDisplay;	break;
+		case 0: dtype = graphics::MonochromeDisplay; break;
+		default: dtype = graphics::GrayscaleDisplay;
 	}
 	rc.display_graphics = dtype;
 
 	// FIXME!! The graphics cache no longer has a changeDisplay method.
 #if 0
 	if (old_value != rc.display_graphics) {
-		lyx::graphics::GCache & gc = lyx::graphics::GCache::get();
+		graphics::GCache & gc = graphics::GCache::get();
 		gc.changeDisplay();
 	}
 #endif
@@ -713,10 +716,10 @@ void PrefDisplay::update(LyXRC const & rc)
 
 	int item = 2;
 	switch (rc.display_graphics) {
-		case lyx::graphics::NoDisplay:		item = 3; break;
-		case lyx::graphics::ColorDisplay:	item = 2; break;
-		case lyx::graphics::GrayscaleDisplay:	item = 1; break;
-		case lyx::graphics::MonochromeDisplay:	item = 0; break;
+		case graphics::NoDisplay:		item = 3; break;
+		case graphics::ColorDisplay:	item = 2; break;
+		case graphics::GrayscaleDisplay:	item = 1; break;
+		case graphics::MonochromeDisplay:	item = 0; break;
 		default: break;
 	}
 	displayGraphicsCO->setCurrentIndex(item);
@@ -738,17 +741,17 @@ PrefPaths::PrefPaths(GuiPreferences * form, QWidget * parent)
 	connect(backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
 	connect(workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
 	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
-	connect(workingDirED, SIGNAL(textChanged(const QString&)),
+	connect(workingDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(templateDirED, SIGNAL(textChanged(const QString&)),
+	connect(templateDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(backupDirED, SIGNAL(textChanged(const QString&)),
+	connect(backupDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(tempDirED, SIGNAL(textChanged(const QString&)),
+	connect(tempDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(lyxserverDirED, SIGNAL(textChanged(const QString&)),
+	connect(lyxserverDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(pathPrefixED, SIGNAL(textChanged(const QString&)),
+	connect(pathPrefixED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 }
 
@@ -845,11 +848,11 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form, QWidget * parent)
 #else
 	spellCommandCO->setEnabled(false);
 #endif
-	connect(altLanguageED, SIGNAL(textChanged(const QString&)),
+	connect(altLanguageED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(escapeCharactersED, SIGNAL(textChanged(const QString&)),
+	connect(escapeCharactersED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(persDictionaryED, SIGNAL(textChanged(const QString&)),
+	connect(persDictionaryED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(compoundWordCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -956,13 +959,13 @@ PrefConverters::PrefConverters(GuiPreferences * form, QWidget * parent)
 		this, SLOT(update_converter()));
 	connect(convertersLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switch_converter()));
-	connect(converterFromCO, SIGNAL(activated(const QString&)),
+	connect(converterFromCO, SIGNAL(activated(QString)),
 		this, SLOT(converter_changed()));
-	connect(converterToCO, SIGNAL(activated(const QString&)),
+	connect(converterToCO, SIGNAL(activated(QString)),
 		this, SLOT(converter_changed()));
-	connect(converterED, SIGNAL(textEdited(const QString&)),
+	connect(converterED, SIGNAL(textEdited(QString)),
 		this, SLOT(converter_changed()));
-	connect(converterFlagED, SIGNAL(textEdited(const QString&)),
+	connect(converterFlagED, SIGNAL(textEdited(QString)),
 		this, SLOT(converter_changed()));
 	connect(converterNewPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -970,7 +973,7 @@ PrefConverters::PrefConverters(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(converterModifyPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(maxAgeLE, SIGNAL(textEdited(const QString&)),
+	connect(maxAgeLE, SIGNAL(textEdited(QString)),
 		this, SIGNAL(changed()));
 
 	maxAgeLE->setValidator(new QDoubleValidator(maxAgeLE));
@@ -1069,7 +1072,7 @@ void PrefConverters::updateButtons()
 	Format const & from = form_->formats().get(converterFromCO->currentIndex());
 	Format const & to = form_->formats().get(converterToCO->currentIndex());
 	int const sel = form_->converters().getNumber(from.name(), to.name());
-	bool const known = !(sel < 0);
+	bool const known = sel >= 0;
 	bool const valid = !(converterED->text().isEmpty()
 		|| from.name() == to.name());
 
@@ -1080,7 +1083,7 @@ void PrefConverters::updateButtons()
 	string const new_command(fromqstr(converterED->text()));
 	string const new_flag(fromqstr(converterFlagED->text()));
 
-	bool modified = ((old_command != new_command) || (old_flag != new_flag));
+	bool modified = (old_command != new_command) || (old_flag != new_flag);
 
 	converterModifyPB->setEnabled(valid && known && modified);
 	converterNewPB->setEnabled(valid && !known);
@@ -1143,6 +1146,7 @@ void PrefConverters::on_cacheCB_stateChanged(int state)
 // PrefFileformats
 //
 /////////////////////////////////////////////////////////////////////
+//
 FormatValidator::FormatValidator(QWidget * parent, Formats const & f) 
 	: QValidator(parent), formats_(f)
 {
@@ -1225,7 +1229,7 @@ PrefFileformats::PrefFileformats(GuiPreferences * form, QWidget * parent)
 		this, SLOT(setFlags()));
 	connect(formatsCB->lineEdit(), SIGNAL(editingFinished()),
 		this, SLOT(updatePrettyname()));
-	connect(formatsCB->lineEdit(), SIGNAL(textEdited(const QString &)),
+	connect(formatsCB->lineEdit(), SIGNAL(textEdited(QString)),
 		this, SIGNAL(changed()));
 }
 
@@ -1428,11 +1432,11 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(globalCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(languagePackageED, SIGNAL(textChanged(const QString&)),
+	connect(languagePackageED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(startCommandED, SIGNAL(textChanged(const QString&)),
+	connect(startCommandED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(endCommandED, SIGNAL(textChanged(const QString&)),
+	connect(endCommandED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(defaultLanguageCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
@@ -1498,39 +1502,39 @@ PrefPrinter::PrefPrinter(QWidget * parent)
 
 	connect(printerAdaptCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(printerCommandED, SIGNAL(textChanged(const QString&)),
+	connect(printerCommandED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerNameED, SIGNAL(textChanged(const QString&)),
+	connect(printerNameED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerPageRangeED, SIGNAL(textChanged(const QString&)),
+	connect(printerPageRangeED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerCopiesED, SIGNAL(textChanged(const QString&)),
+	connect(printerCopiesED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerReverseED, SIGNAL(textChanged(const QString&)),
+	connect(printerReverseED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerToPrinterED, SIGNAL(textChanged(const QString&)),
+	connect(printerToPrinterED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerExtensionED, SIGNAL(textChanged(const QString&)),
+	connect(printerExtensionED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerSpoolCommandED, SIGNAL(textChanged(const QString&)),
+	connect(printerSpoolCommandED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerPaperTypeED, SIGNAL(textChanged(const QString&)),
+	connect(printerPaperTypeED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerEvenED, SIGNAL(textChanged(const QString&)),
+	connect(printerEvenED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerOddED, SIGNAL(textChanged(const QString&)),
+	connect(printerOddED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerCollatedED, SIGNAL(textChanged(const QString&)),
+	connect(printerCollatedED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerLandscapeED, SIGNAL(textChanged(const QString&)),
+	connect(printerLandscapeED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerToFileED, SIGNAL(textChanged(const QString&)),
+	connect(printerToFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerExtraED, SIGNAL(textChanged(const QString&)),
+	connect(printerExtraED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerSpoolPrefixED, SIGNAL(textChanged(const QString&)),
+	connect(printerSpoolPrefixED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(printerPaperSizeED, SIGNAL(textChanged(const QString&)),
+	connect(printerPaperSizeED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 }
 
@@ -1600,7 +1604,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		TextLabel1, SLOT(setEnabled(bool)));
 	connect(uiFilePB, SIGNAL(clicked()),
 		this, SLOT(select_ui()));
-	connect(uiFileED, SIGNAL(textChanged(const QString &)),
+	connect(uiFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(restoreCursorCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -1717,7 +1721,7 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 
 	connect(bindFilePB, SIGNAL(clicked()),
 		this, SLOT(select_bind()));
-	connect(bindFileED, SIGNAL(textChanged(const QString &)),
+	connect(bindFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(removePB, SIGNAL(clicked()), 
 		this, SIGNAL(changed()));
@@ -2099,9 +2103,9 @@ PrefIdentity::PrefIdentity(QWidget * parent)
 {
 	setupUi(this);
 
-	connect(nameED, SIGNAL(textChanged(const QString&)),
+	connect(nameED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(emailED, SIGNAL(textChanged(const QString&)),
+	connect(emailED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 }
 

@@ -19,7 +19,6 @@
 #define LYXRC_H
 
 #include "paper.h"
-#include "graphics/GraphicsTypes.h"
 
 #include <iosfwd>
 #include <string>
@@ -340,7 +339,8 @@ public:
 	///
 	int label_init_length;
 	///
-	graphics::DisplayType display_graphics;
+	///graphics::DisplayType
+	int display_graphics;
 	///
 	bool show_banner;
 	///

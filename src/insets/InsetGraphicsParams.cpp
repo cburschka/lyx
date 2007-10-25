@@ -20,6 +20,7 @@
 #include "Buffer.h"
 
 #include "graphics/GraphicsParams.h"
+#include "graphics/GraphicsTypes.h"
 
 #include "support/convert.h"
 #include "support/filetools.h"
@@ -116,7 +117,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 bool operator==(InsetGraphicsParams const & left,
 		InsetGraphicsParams const & right)
 {
-	if (left.filename == right.filename &&
+	return left.filename == right.filename &&
 	    left.lyxscale == right.lyxscale &&
 	    left.display == right.display &&
 	    left.scale == right.scale &&
@@ -127,7 +128,6 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.noUnzip == right.noUnzip &&
 	    left.scaleBeforeRotation == right.scaleBeforeRotation &&
 
-
 	    left.bb == right.bb &&
 	    left.clip == right.clip &&
 
@@ -135,11 +135,7 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.rotateOrigin == right.rotateOrigin &&
 	    left.subcaption == right.subcaption &&
 	    left.subcaptionText == right.subcaptionText &&
-	    left.special == right.special
-	   )
-		return true;
-
-	return false;
+	    left.special == right.special;
 }
 
 
@@ -332,15 +328,14 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 	}
 
 	if (display == graphics::DefaultDisplay) {
-		pars.display = lyxrc.display_graphics;
+		pars.display = graphics::DisplayType(lyxrc.display_graphics);
 	} else {
 		pars.display = display;
 	}
 
 	// Override the above if we're not using a gui
-	if (!use_gui) {
+	if (!use_gui)
 		pars.display = graphics::NoDisplay;
-	}
 
 	return pars;
 }
