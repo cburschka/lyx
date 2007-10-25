@@ -26,7 +26,7 @@ public:
 	ShortcutLineEdit(QWidget * parent) : QLineEdit(parent) {}
 protected Q_SLOTS:
 	void keyPressEvent(QKeyEvent * e);
-	bool event(QEvent* e);
+	bool event(QEvent * e);
 };
 
 
@@ -37,7 +37,7 @@ protected Q_SLOTS:
 class SearchLineEdit : public QLineEdit {
 	Q_OBJECT
 public:
-	QString const hintMessage();
+	QString const hintMessage() const;
 	SearchLineEdit(QWidget * parent) : QLineEdit(parent) {}
 protected Q_SLOTS:
 	void focusInEvent(QFocusEvent * e);

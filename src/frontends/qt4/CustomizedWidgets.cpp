@@ -33,7 +33,7 @@ using lyx::toqstr;
 void ShortcutLineEdit::keyPressEvent(QKeyEvent * e)
 {
 	int keyQt = e->key();
-	switch(e->key()) {
+	switch (e->key()) {
 		case Qt::Key_AltGr: //or else we get unicode salad
 		case Qt::Key_Shift:
 		case Qt::Key_Control:
@@ -80,7 +80,7 @@ bool ShortcutLineEdit::event(QEvent* e)
 }
 
 
-QString const SearchLineEdit::hintMessage()
+QString const SearchLineEdit::hintMessage() const
 {
 	return toqstr("Search ...");
 }
