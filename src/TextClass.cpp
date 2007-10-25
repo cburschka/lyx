@@ -610,15 +610,18 @@ enum InsetLayoutTags {
 	IL_FONT = 1,
 	IL_BGCOLOR,
 	IL_DECORATION,
+	IL_FREESPACING,
 	IL_LABELFONT,
 	IL_LABELSTRING,
 	IL_LATEXNAME,
 	IL_LATEXPARAM,
 	IL_LATEXTYPE,
 	IL_LYXTYPE,
+	IL_KEEPEMPTY,
 	IL_MULTIPAR,
+	IL_NEEDPROTECT,
+	IL_PASSTHRU,
 	IL_PREAMBLE,
-	IL_VERBATIM,
 	IL_END
 };
 
@@ -630,6 +633,8 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		{ "decoration", IL_DECORATION },
 		{ "end", IL_END },
 		{ "font", IL_FONT },
+		{ "freespacing", IL_FREESPACING },
+		{ "keepempty", IL_KEEPEMPTY },
 		{ "labelfont", IL_LABELFONT },
 		{ "labelstring", IL_LABELSTRING },
 		{ "latexname", IL_LATEXNAME },
@@ -637,8 +642,9 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		{ "latextype", IL_LATEXTYPE },
 		{ "lyxtype", IL_LYXTYPE },
 		{ "multipar", IL_MULTIPAR },
-		{ "preamble", IL_PREAMBLE },
-		{ "verbatim", IL_VERBATIM }
+		{ "needprotect", IL_NEEDPROTECT },
+		{ "passthru", IL_PASSTHRU },
+		{ "preamble", IL_PREAMBLE }
 	};
 
 	lexrc.pushTable(elementTags, IL_END);
@@ -654,7 +660,10 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	Color::color bgcolor(Color::background);
 	string preamble;
 	bool multipar(false);
-	bool verbatim(false);
+	bool passthru(false);
+	bool needprotect(false);
+	bool keepempty(false);
+	bool freespacing(false);
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -698,9 +707,21 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			lexrc.next();
 			multipar = lexrc.getBool();
 			break;
-		case IL_VERBATIM:
+		case IL_PASSTHRU:
 			lexrc.next();
-			verbatim = lexrc.getBool();
+			passthru = lexrc.getBool();
+			break;
+		case IL_KEEPEMPTY:
+			lexrc.next();
+			keepempty = lexrc.getBool();
+			break;
+		case IL_FREESPACING:
+			lexrc.next();
+			freespacing = lexrc.getBool();
+			break;
+		case IL_NEEDPROTECT:
+			lexrc.next();
+			needprotect = lexrc.getBool();
 			break;
 		case IL_FONT:
 			font.lyxRead(lexrc);
@@ -735,7 +756,10 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.latexname = latexname;
 		il.latexparam = latexparam;
 		il.multipar = multipar;
-		il.verbatim = verbatim;
+		il.passthru = passthru;
+		il.needprotect = needprotect;
+		il.freespacing = freespacing;
+		il.keepempty = keepempty;
 		il.font = font;
 		il.labelfont = labelfont;
 		il.bgcolor = bgcolor;		

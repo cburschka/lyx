@@ -648,7 +648,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_TABULAR_INSERT:
 		case LFUN_TOC_INSERT:
 		case LFUN_WRAP_INSERT:
-		if (layout_.verbatim) {
+		if (layout_.passthru) {
 			flag.enabled(false);
 			return true;
 		} else
@@ -732,7 +732,7 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 		}
 	}
 	OutputParams rp = runparams;
-	if (layout_.verbatim)
+	if (layout_.passthru)
 		rp.verbatim = true;
 	int i = InsetText::latex(buf, os, rp);
 	if (!layout_.latexname.empty()) {

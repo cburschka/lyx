@@ -139,6 +139,11 @@ public:
 	///
 	virtual InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
+	/// Allow multiple blanks
+	virtual bool isFreeSpacing() const { return layout_.freespacing; }
+	/// Don't eliminate empty paragraphs
+	virtual bool allowEmpty() const { return layout_.keepempty; }
+
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

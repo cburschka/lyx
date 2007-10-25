@@ -2363,10 +2363,7 @@ bool Paragraph::isFreeSpacing() const
 {
 	if (layout()->free_spacing)
 		return true;
-
-	// for now we just need this, later should we need this in some
-	// other way we can always add a function to Inset too.
-	return ownerCode() == ERT_CODE || ownerCode() == LISTINGS_CODE;
+	return d->inset_owner_ && d->inset_owner_->isFreeSpacing();
 }
 
 
@@ -2374,7 +2371,7 @@ bool Paragraph::allowEmpty() const
 {
 	if (layout()->keepempty)
 		return true;
-	return ownerCode() == ERT_CODE || ownerCode() == LISTINGS_CODE;
+	return d->inset_owner_ && d->inset_owner_->allowEmpty();
 }
 
 

@@ -157,6 +157,11 @@ public:
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 
+	///
+	virtual bool isFreeSpacing() const { return false; }
+	///
+	virtual bool allowEmpty() const { return false; }
+
 	/// is this an inset that can be moved into?
 	/// FIXME: merge with editable()
 	virtual bool isActive() const { return nargs() > 0; }

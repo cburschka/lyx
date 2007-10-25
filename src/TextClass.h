@@ -46,7 +46,10 @@ public:
 	Color::color bgcolor;
 	std::string preamble;
 	bool multipar;
-	bool verbatim;
+	bool passthru;
+	bool needprotect;
+	bool freespacing;
+	bool keepempty;
 };
 
 

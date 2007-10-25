@@ -100,7 +100,9 @@ InsetLayout ERT
 	  Size                Small
 	EndFont
 	MultiPar              true
-	Verbatim              true
+	PassThru              true
+	KeepEmpty             true
+	FreeSpacing           true
 End
 
 InsetLayout Branch
@@ -131,4 +133,5 @@ End
 InsetLayout Box
 	MultiPar              true
 End
+
 
