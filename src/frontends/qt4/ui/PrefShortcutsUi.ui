@@ -27,54 +27,42 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="8" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>51</width>
-       <height>83</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="5" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>51</width>
-       <height>83</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="6" column="2" >
-    <widget class="QLineEdit" name="searchLE" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>51</width>
+       <height>83</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>51</width>
+       <height>83</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="0" column="1" >
     <widget class="QLineEdit" name="bindFileED" />
    </item>
-   <item rowspan="7" row="2" column="0" colspan="2" >
+   <item rowspan="5" row="2" column="0" colspan="2" >
     <widget class="QTreeWidget" name="shortcutsTW" />
    </item>
    <item row="3" column="2" >
@@ -115,15 +103,30 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="2" >
-    <widget class="QPushButton" name="searchPB" >
+   <item row="5" column="2" >
+    <widget class="SearchLineEdit" name="searchLE" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>1</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text" >
-      <string>Search</string>
+      <string>Search ...</string>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SearchLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>CustomizedWidgets.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>bindFileED</tabstop>
   <tabstop>bindFilePB</tabstop>

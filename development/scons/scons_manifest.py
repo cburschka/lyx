@@ -742,6 +742,7 @@ src_frontends_qt4_header_files = Split('''
     BulletsModule.h
     ButtonController.h
     ColorCache.h
+    CustomizedWidgets.h
     DialogView.h
     DockView.h
     EmptyTable.h
@@ -831,6 +832,7 @@ src_frontends_qt4_files = Split('''
     BulletsModule.cpp
     ButtonController.cpp
     ColorCache.cpp
+    CustomizedWidgets.cpp
     Dialogs.cpp
     EmptyTable.cpp
     FileDialog.cpp

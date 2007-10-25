@@ -59,6 +59,7 @@ SOURCEFILES = \
 	BulletsModule.cpp \
 	ButtonController.cpp \
 	ColorCache.cpp \
+	CustomizedWidgets.cpp \
 	Dialogs.cpp \
 	EmptyTable.cpp \
 	FileDialog.cpp \
@@ -151,6 +152,7 @@ MOCHEADER = \
 	Action.h \
 	BulletsModule.h \
 	ColorCache.h \
+	CustomizedWidgets.h \
 	DockView.h \
 	EmptyTable.h \
 	FloatPlacement.h \

@@ -349,24 +349,10 @@ public Q_SLOTS:
 };
 
 
-/**
- * A lineedit for inputting shortcuts
- */
-class ShortcutEdit : public QLineEdit {
-	Q_OBJECT
-public:
-	ShortcutEdit(QWidget * parent) : QLineEdit(parent) {}
-protected Q_SLOTS:
-	void keyPressEvent(QKeyEvent * e);
-	bool event(QEvent* e);
-};
-
-
 class GuiShortcutDialog : public QDialog, public Ui::shortcutUi
 {
 public:
 	GuiShortcutDialog(QWidget * parent);
-	ShortcutEdit * shortcutLE;
 };
 
 
@@ -397,7 +383,6 @@ public Q_SLOTS:
 	void select_bind();
 	void on_newPB_pressed();
 	void on_removePB_pressed();
-	void on_searchPB_pressed();
 	void on_searchLE_textChanged();
 	///
 	void on_shortcutsTW_itemSelectionChanged();

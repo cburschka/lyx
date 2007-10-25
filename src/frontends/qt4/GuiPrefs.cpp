@@ -5,20 +5,9 @@
  *
  * \author John Levon
  * \author Bo Peng
- * \author Edwin Leuven
  *
  * Full author contact details are available in file CREDITS.
  */
-
-/*
-	The code for the ShortcutEdit class was adapted from
-	kkeysequencewidget.cpp, which is part of the KDE libraries.
-	Copyright (C) 1998 Mark Donohoe <donohoe@kde.org>
-	Copyright (C) 2001 Ellis Whitehead <ellis@kde.org>
-	Copyright (C) 2007 Andreas Hartmetz <ahartmetz@gmail.com>
-	Licensed under version 2 of the General Public License and
-	used here in accordance with the terms of that license.
-*/
 
 #include <config.h>
 
@@ -1706,70 +1695,10 @@ void PrefUserInterface::on_loadWindowSizeCB_toggled(bool loadwindowsize)
 /////////////////////////////////////////////////////////////////////
 
 
-void ShortcutEdit::keyPressEvent(QKeyEvent * e)
-{
-	int keyQt = e->key();
-	switch(e->key()) {
-		case Qt::Key_AltGr: //or else we get unicode salad
-		case Qt::Key_Shift:
-		case Qt::Key_Control:
-		case Qt::Key_Alt:
-		case Qt::Key_Meta:
-			break;
-		default:
-			if (keyQt) {
-				uint modifierKeys = e->modifiers();
-				
-				QString txt;
-				if (modifierKeys & Qt::SHIFT)
-					txt += "S-";
-				if (modifierKeys & Qt::CTRL)
-					txt += "C-";
-				if (modifierKeys & Qt::ALT)
-					txt += "M-";
-
-				KeySymbol sym;
-				setKeySymbol(&sym, e);
-				txt += toqstr(sym.getSymbolName());
-
-				if (text().isEmpty())
-					setText(txt);
-				else
-					setText(text() + " " + txt);
-			}
-	}
-}
-
-
-//prevent Qt from special casing Tab and Backtab
-bool ShortcutEdit::event(QEvent* e)
-{
-	if (e->type() == QEvent::ShortcutOverride)
-		return false;
-
-	if (e->type() == QEvent::KeyPress) {
-		keyPressEvent(static_cast<QKeyEvent *>(e));
-		return true;
-	}
-
-	return QLineEdit::event(e);
-}
-
-
 GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 {
 	Ui::shortcutUi::setupUi(this);
 	QDialog::setModal(true);
-	// adapted from ui_ShortcutUi.h
-	shortcutLE = new ShortcutEdit(parent);
-	shortcutLE->setObjectName(QString::fromUtf8("shortcutLE"));
-	QSizePolicy sp(static_cast<QSizePolicy::Policy>(7), static_cast<QSizePolicy::Policy>(0));
-	sp.setHorizontalStretch(0);
-	sp.setVerticalStretch(0);
-	sp.setHeightForWidth(shortcutLE->sizePolicy().hasHeightForWidth());
-	shortcutLE->setSizePolicy(sp);
-	gridLayout->addWidget(shortcutLE, 1, 1, 1, 1);
-	QWidget::setTabOrder(shortcutLE, okPB);
 }
 
 
@@ -1897,7 +1826,6 @@ void PrefShortcuts::updateShortcutsTW()
 	shortcutsTW->sortItems(0, Qt::AscendingOrder);
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
 	removePB->setEnabled(!items.isEmpty() && !items[0]->text(1).isEmpty());
-	searchPB->setEnabled(!searchLE->text().isEmpty());
 }
 
 
@@ -2083,8 +2011,17 @@ void PrefShortcuts::on_removePB_pressed()
 }
 
 
-void PrefShortcuts::on_searchPB_pressed()
+void PrefShortcuts::on_searchLE_textChanged()
 {
+	if (searchLE->text() == searchLE->hintMessage())
+		return;
+	if (searchLE->text().isEmpty()) {
+		// show all hidden items
+		QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Hidden);
+		while (*it)
+			shortcutsTW->setItemHidden(*it++, false);
+		return;
+	}
 	// search both columns
 	QList<QTreeWidgetItem *> matched = shortcutsTW->findItems(searchLE->text(),
 		Qt::MatchFlags(Qt::MatchContains | Qt::MatchRecursive), 0);
@@ -2103,25 +2040,13 @@ void PrefShortcuts::on_searchPB_pressed()
 }
 
 
-void PrefShortcuts::on_searchLE_textChanged()
-{
-	searchPB->setEnabled(!searchLE->text().isEmpty());
-	if (searchLE->text().isEmpty()) {
-		// show all hidden items
-		QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Hidden);
-		while (*it)
-			shortcutsTW->setItemHidden(*it++, false);
-	}
-}
-	
-
 void PrefShortcuts::shortcut_okPB_pressed()
 {
 	string shortcut = fromqstr(shortcut_->shortcutLE->text());
 	string lfun = fromqstr(shortcut_->lfunLE->text());
 	FuncRequest func = lyxaction.lookupFunc(lfun);
 
-	if (func.action == LFUN_UNKNOWN_ACTION) {
+	if (shortcut.empty() || func.action == LFUN_UNKNOWN_ACTION) {
 		Alert::error(_("Failed to create shortcut"),
 			_("Unknown or invalid LyX function"));
 		return;
