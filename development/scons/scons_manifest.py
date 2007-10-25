@@ -43,6 +43,7 @@ src_header_files = Split('''
     Chktex.h
     CmdDef.h
     Color.h
+    ColorCode.h
     Converter.h
     ConverterCache.h
     CoordCache.h
