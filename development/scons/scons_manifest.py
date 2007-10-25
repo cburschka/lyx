@@ -68,7 +68,6 @@ src_header_files = Split('''
     FuncStatus.h
     Graph.h
     ISpell.h
-    Importer.h
     InsetIterator.h
     InsetList.h
     Intl.h
@@ -177,7 +176,6 @@ src_pre_files = Split('''
     FuncRequest.cpp
     FuncStatus.cpp
     Graph.cpp
-    Importer.cpp
     InsetIterator.cpp
     InsetList.cpp
     Intl.cpp
