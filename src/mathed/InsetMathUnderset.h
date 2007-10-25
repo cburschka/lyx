@@ -13,7 +13,7 @@
 #define MATH_UNDERSETINSET_H
 
 
-#include "InsetMathFracBase.h"
+#include "InsetMathFrac.h"
 
 
 namespace lyx {

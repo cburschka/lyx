@@ -10,13 +10,27 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef MATH_FRACINSET_H
-#define MATH_FRACINSET_H
+#ifndef MATH_FRAC_H
+#define MATH_FRAC_H
 
-#include "InsetMathFracBase.h"
+#include "InsetMathNest.h"
 
 
 namespace lyx {
+
+
+class InsetMathFracBase : public InsetMathNest {
+public:
+	///
+	explicit InsetMathFracBase(idx_type ncells = 2);
+	///
+	bool idxUpDown(Cursor &, bool up) const;
+	///
+	bool idxLeft(Cursor &) const { return false; }
+	///
+	bool idxRight(Cursor &) const { return false; }
+};
+
 
 
 /// Fraction like objects (frac, binom)
@@ -68,12 +82,79 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 public:
-	virtual Inset * clone() const;
+	Inset * clone() const;
 	///
 	Kind kind_;
 };
 
 
+/// \dfrac support
+class InsetMathDFrac : public InsetMathFrac {
+public:
+	///
+	InsetMathDFrac() {}
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo &, int x, int y) const;
+	///
+	docstring name() const;
+	///
+	void mathmlize(MathStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
+private:
+	Inset * clone() const;
+};
+
+
+/// \tfrac support
+class InsetMathTFrac : public InsetMathFrac {
+public:
+	///
+	InsetMathTFrac() {}
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo &, int x, int y) const;
+	///
+	docstring name() const;
+	///
+	void mathmlize(MathStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
+private:
+	Inset * clone() const;
+};
+
+
+/// Binom like objects
+class InsetMathBinom : public InsetMathFracBase {
+public:
+	///
+	explicit InsetMathBinom(bool choose = false);
+	///
+	void write(WriteStream & os) const;
+	///
+	void normalize(NormalStream &) const;
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo &, int x, int y) const;
+	/// draw decorations.
+	void drawDecoration(PainterInfo & pi, int x, int y) const
+	{ drawMarkers2(pi, x, y); }
+	///
+	bool extraBraces() const;
+private:
+	Inset * clone() const;
+	///
+	int dw(int height) const;
+	///
+	bool choose_;
+};
+
 
 } // namespace lyx
+
 #endif

@@ -316,8 +316,6 @@ liblyxmathed_la_SOURCES = \
 	mathed/InsetMathArray.h \
 	mathed/InsetMathBig.cpp \
 	mathed/InsetMathBig.h \
-	mathed/InsetMathBinom.cpp \
-	mathed/InsetMathBinom.h \
 	mathed/InsetMathBoldSymbol.cpp \
 	mathed/InsetMathBoldSymbol.h \
 	mathed/InsetMathBox.cpp \
@@ -341,8 +339,6 @@ liblyxmathed_la_SOURCES = \
 	mathed/InsetMathDecoration.h \
 	mathed/InsetMathDelim.cpp \
 	mathed/InsetMathDelim.h \
-	mathed/InsetMathDFrac.cpp \
-	mathed/InsetMathDFrac.h \
 	mathed/InsetMathDiff.cpp \
 	mathed/InsetMathDiff.h \
 	mathed/InsetMathDots.cpp \
@@ -359,8 +355,6 @@ liblyxmathed_la_SOURCES = \
 	mathed/InsetMathFont.h \
 	mathed/InsetMathFontOld.cpp \
 	mathed/InsetMathFontOld.h \
-	mathed/InsetMathFracBase.cpp \
-	mathed/InsetMathFracBase.h \
 	mathed/InsetMathFrac.cpp \
 	mathed/InsetMathFrac.h \
 	mathed/InsetMathFrameBox.cpp \
@@ -416,8 +410,6 @@ liblyxmathed_la_SOURCES = \
 	mathed/InsetMathSymbol.h \
 	mathed/InsetMathTabular.cpp \
 	mathed/InsetMathTabular.h \
-	mathed/InsetMathTFrac.cpp \
-	mathed/InsetMathTFrac.h \
 	mathed/InsetMathUnderset.cpp \
 	mathed/InsetMathUnderset.h \
 	mathed/InsetMathUnknown.cpp \

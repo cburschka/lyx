@@ -1,5 +1,5 @@
 /**
- * \file InsetMathFrac.cpp
+ * \file InsetMathFracBase.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,15 +12,49 @@
 #include <config.h>
 
 #include "InsetMathFrac.h"
+
+#include "Cursor.h"
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
+#include "MathSupport.h"
 #include "TextPainter.h"
-#include "LaTeXFeatures.h"
-#include "Cursor.h"
+
 #include "frontends/Painter.h"
 
 
 namespace lyx {
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetMathFracBase
+//
+/////////////////////////////////////////////////////////////////////
+
+
+InsetMathFracBase::InsetMathFracBase(idx_type ncells)
+	: InsetMathNest(ncells)
+{}
+
+
+bool InsetMathFracBase::idxUpDown(Cursor & cur, bool up) const
+{
+	InsetMath::idx_type target = !up; // up ? 0 : 1, since upper cell has idx 0
+	if (cur.idx() == target)
+		return false;
+	cur.idx() = target;
+	cur.pos() = cell(target).x2pos(cur.x_target());
+	return true;
+}
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetMathFrac
+//
+/////////////////////////////////////////////////////////////////////
+
 
 InsetMathFrac::InsetMathFrac(Kind kind, InsetMath::idx_type ncells)
 	: InsetMathFracBase(ncells), kind_(kind)
@@ -316,5 +350,203 @@ void InsetMathFrac::validate(LaTeXFeatures & features) const
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// InsetMathDFrac
+//
+/////////////////////////////////////////////////////////////////////
+
+
+Inset * InsetMathDFrac::clone() const
+{
+	return new InsetMathDFrac(*this);
+}
+
+
+void InsetMathDFrac::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	Dimension dim0, dim1;
+	cell(0).metrics(mi, dim0);
+	cell(1).metrics(mi, dim1);
+	dim.wid = std::max(dim0.wid, dim1.wid) + 2;
+	dim.asc = dim0.height() + 2 + 5;
+	dim.des = dim1.height() + 2 - 5;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
+}
+
+
+void InsetMathDFrac::draw(PainterInfo & pi, int x, int y) const
+{
+	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	int m = x + dim.wid / 2;
+	cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
+	cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc  + 2 - 5);
+	pi.pain.line(x + 1, y - 5, x + dim.wid - 2, y - 5, Color_math);
+	setPosCache(pi, x, y);
+}
+
+
+docstring InsetMathDFrac::name() const
+{
+	return from_ascii("dfrac");
+}
+
+
+void InsetMathDFrac::mathmlize(MathStream & os) const
+{
+	os << MTag("mdfrac") << cell(0) << cell(1) << ETag("mdfrac");
+}
+
+
+void InsetMathDFrac::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	InsetMathNest::validate(features);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetMathTFrac
+//
+/////////////////////////////////////////////////////////////////////
+
+
+Inset * InsetMathTFrac::clone() const
+{
+	return new InsetMathTFrac(*this);
+}
+
+
+void InsetMathTFrac::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	StyleChanger dummy(mi.base, LM_ST_SCRIPT);
+	Dimension dim0;
+	cell(0).metrics(mi, dim0);
+	Dimension dim1;
+	cell(1).metrics(mi, dim1);
+	dim.wid = std::max(dim0.width(), dim1.width()) + 2;
+	dim.asc = dim0.height() + 2 + 5;
+	dim.des = dim1.height() + 2 - 5;
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
+}
+
+
+void InsetMathTFrac::draw(PainterInfo & pi, int x, int y) const
+{
+	StyleChanger dummy(pi.base, LM_ST_SCRIPT);
+	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	int m = x + dim.wid / 2;
+	cell(0).draw(pi, m - dim0.width() / 2, y - dim0.descent() - 2 - 5);
+	cell(1).draw(pi, m - dim1.width() / 2, y + dim1.ascent()  + 2 - 5);
+	pi.pain.line(x + 1, y - 5, x + dim.wid - 2, y - 5, Color_math);
+	setPosCache(pi, x, y);
+}
+
+
+docstring InsetMathTFrac::name() const
+{
+	return from_ascii("tfrac");
+}
+
+
+void InsetMathTFrac::mathmlize(MathStream & os) const
+{
+	os << MTag("mtfrac") << cell(0) << cell(1) << ETag("mtfrac");
+}
+
+
+void InsetMathTFrac::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	InsetMathNest::validate(features);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetMathBinom
+//
+/////////////////////////////////////////////////////////////////////
+
+
+InsetMathBinom::InsetMathBinom(bool choose)
+	: choose_(choose)
+{}
+
+
+Inset * InsetMathBinom::clone() const
+{
+	return new InsetMathBinom(*this);
+}
+
+
+int InsetMathBinom::dw(int height) const
+{
+	int w = height / 5;
+	if (w > 15)
+		w = 15;
+	if (w < 6)
+		w = 6;
+	return w;
+}
+
+
+void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	ScriptChanger dummy(mi.base);
+	Dimension dim0, dim1;
+	cell(0).metrics(mi, dim0);
+	cell(1).metrics(mi, dim1);
+	dim.asc = dim0.height() + 4 + 5;
+	dim.des = dim1.height() + 4 - 5;
+	dim.wid = std::max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
+	metricsMarkers2(dim);
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
+}
+
+
+void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
+{
+	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	int m = x + dim.width() / 2;
+	ScriptChanger dummy(pi.base);
+	cell(0).draw(pi, m - dim0.width() / 2, y - dim0.des - 3 - 5);
+	cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc  + 3 - 5);
+	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()), dim.height(), from_ascii("("));
+	mathed_draw_deco(pi, x + dim.width() - dw(dim.height()), y - dim.ascent(),
+		dw(dim.height()), dim.height(), from_ascii(")"));
+	drawMarkers2(pi, x, y);
+}
+
+
+bool InsetMathBinom::extraBraces() const
+{
+	return choose_;
+}
+
+
+void InsetMathBinom::write(WriteStream & os) const
+{
+	if (choose_)
+		os << '{' << cell(0) << " \\choose " << cell(1) << '}';
+	else
+		os << "\\binom{" << cell(0) << "}{" << cell(1) << '}';
+}
+
+
+void InsetMathBinom::normalize(NormalStream & os) const
+{
+	os << "[binom " << cell(0) << ' ' << cell(1) << ']';
+}
 
 } // namespace lyx

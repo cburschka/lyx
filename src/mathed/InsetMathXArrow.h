@@ -12,7 +12,7 @@
 #ifndef MATH_XARROWINSET_H
 #define MATH_XARROWINSET_H
 
-#include "InsetMathFracBase.h"
+#include "InsetMathFrac.h"
 
 
 namespace lyx {

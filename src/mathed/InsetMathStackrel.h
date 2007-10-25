@@ -12,7 +12,7 @@
 #ifndef MATH_STACKRELINSET_H
 #define MATH_STACKRELINSET_H
 
-#include "InsetMathFracBase.h"
+#include "InsetMathFrac.h"
 
 
 namespace lyx {
