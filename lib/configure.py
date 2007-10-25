@@ -158,17 +158,19 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
         ac_word = ac_prog.split(' ')[0]
         print '+checking for "' + ac_word + '"... ',
         path = os.environ["PATH"].split(os.pathsep) + path
+        extlist = ['']
+        if os.environ.has_key("PATHEXT"):
+            extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
         for ac_dir in path:
-            # check both ac_word and ac_word.exe (for windows system)
-            if os.path.isfile( os.path.join(ac_dir, ac_word) ) or \
-                os.path.isfile( os.path.join(ac_dir, ac_word + ".exe") ):
-                print ' yes'
-                # write rc entries for this command
-                if len(rc_entry) == 1:
-                    addToRC(rc_entry[0].replace('%%', ac_prog))
-                elif len(rc_entry) > 1:
-                    addToRC(rc_entry[idx].replace('%%', ac_prog))
-                return [ac_dir, ac_word]
+            for ext in extlist:
+                if os.path.isfile( os.path.join(ac_dir, ac_word + ext) ):
+                    print ' yes'
+                    # write rc entries for this command
+                    if len(rc_entry) == 1:
+                        addToRC(rc_entry[0].replace('%%', ac_prog))
+                    elif len(rc_entry) > 1:
+                        addToRC(rc_entry[idx].replace('%%', ac_prog))
+                    return [ac_dir, ac_word]
         # if not successful
         print ' no'
     # write rc entries for 'not found'

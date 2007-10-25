@@ -96,3 +96,6 @@ What's new
 * BUILD/INSTALLATION:
 
 - Fix installation of the Spanish User's Guide when building with scons.
+
+- Fix configure.py such that all possible extensions for executables are
+  taken into account when searching for programs (Windows only).
