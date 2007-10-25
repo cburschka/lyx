@@ -32,9 +32,7 @@ namespace support { class FileName; }
 class Lexer;
 
 /// This contains the runtime configuration of LyX
-class LyXRC //: public noncopyable
-// after 1.1.6 I will use a LyXRCStruct here and then this can be made
-// noncopyable again.  For now I want to minimise changes.  ARRae 20001010
+class LyXRC
 {
 public:
 	enum LyXRCTags {
@@ -384,7 +382,7 @@ class LyXRC_PreviewStatus {
 	LyXRC::PreviewStatus val_;
 public:
 	LyXRC_PreviewStatus(LyXRC::PreviewStatus val) : val_(val) {}
-	operator LyXRC::PreviewStatus() const{ return val_; }
+	operator LyXRC::PreviewStatus() const { return val_; }
 };
 
 

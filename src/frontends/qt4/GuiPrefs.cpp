@@ -461,7 +461,7 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form, QWidget * parent)
 
 void PrefScreenFonts::apply(LyXRC & rc) const
 {
-	LyXRC const oldrc(rc);
+	LyXRC const oldrc = rc;
 
 	boost::tie(rc.roman_font_name, rc.roman_font_foundry)
 		= parseFontName(fromqstr(screenRomanCO->currentText()));
