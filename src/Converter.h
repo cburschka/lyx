@@ -98,10 +98,15 @@ public:
 	std::vector<Format const *> const
 	getReachable(std::string const & from, bool only_viewable,
 		     bool clear_visited);
+
+	std::vector<Format const *> importableFormats();
+
+	std::vector<std::string> loaders() const;
+
 	/// Does a conversion path from format \p from to format \p to exist?
 	bool isReachable(std::string const & from, std::string const & to);
 	///
-	Graph::EdgePath const getPath(std::string const & from, std::string const & to);
+	Graph::EdgePath getPath(std::string const & from, std::string const & to);
 	///
 	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path);
 	/// Flags for converting files

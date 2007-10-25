@@ -701,11 +701,34 @@ bool Converters::isReachable(string const & from, string const & to)
 }
 
 
-Graph::EdgePath const
-Converters::getPath(string const & from, string const & to)
+Graph::EdgePath Converters::getPath(string const & from, string const & to)
 {
 	return G_.getPath(formats.getNumber(from),
 			  formats.getNumber(to));
 }
+
+
+vector<Format const *> Converters::importableFormats()
+{
+	vector<string> l = loaders();
+	vector<Format const *> result = getReachableTo(l[0], true);
+	for (vector<string>::const_iterator it = l.begin() + 1;
+	     it != l.end(); ++it) {
+		vector<Format const *> r = getReachableTo(*it, false);
+		result.insert(result.end(), r.begin(), r.end());
+	}
+	return result;
+}
+
+
+vector<string> Converters::loaders() const
+{
+	vector<string> v;
+	v.push_back("lyx");
+	v.push_back("text");
+	v.push_back("textparagraph");
+	return v;
+}
+
 
 } // namespace lyx

@@ -156,8 +156,6 @@ liblyxcore_la_SOURCES = \
 	gettext.h \
 	Graph.cpp \
 	Graph.h \
-	Importer.cpp \
-	Importer.h \
 	InsetIterator.cpp \
 	InsetIterator.h \
 	InsetList.cpp \

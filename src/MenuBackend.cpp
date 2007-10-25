@@ -21,13 +21,13 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
+#include "Converter.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "Format.h"
 #include "gettext.h"
-#include "Importer.h"
 #include "KeyMap.h"
 #include "Session.h"
 #include "LyXAction.h"
@@ -544,7 +544,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 
 	switch (kind) {
 	case MenuItem::ImportFormats:
-		formats = Importer::GetImportableFormats();
+		formats = theConverters().importableFormats();
 		action = LFUN_BUFFER_IMPORT;
 		break;
 	case MenuItem::ViewFormats:

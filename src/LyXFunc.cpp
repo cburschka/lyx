@@ -30,6 +30,7 @@
 #include "BufferView.h"
 #include "CmdDef.h"
 #include "Color.h"
+#include "Converter.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -40,7 +41,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
-#include "Importer.h"
 #include "InsetIterator.h"
 #include "Intl.h"
 #include "KeyMap.h"
@@ -107,6 +107,8 @@ using std::pair;
 using std::string;
 using std::istringstream;
 using std::ostringstream;
+using std::find;
+using std::vector;
 
 namespace fs = boost::filesystem;
 
@@ -136,11 +138,79 @@ using support::token;
 using support::trim;
 using support::prefixIs;
 
+
 namespace Alert = frontend::Alert;
 
 extern bool quitting;
 
 namespace {
+
+
+bool import(LyXView * lv, FileName const & filename,
+		      string const & format, ErrorList & errorList)
+{
+	docstring const displaypath = makeDisplayPath(filename.absFilename());
+	lv->message(bformat(_("Importing %1$s..."), displaypath));
+
+	FileName const lyxfile(changeExtension(filename.absFilename(), ".lyx"));
+
+	string loader_format;
+	vector<string> loaders = theConverters().loaders();
+	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
+		for (vector<string>::const_iterator it = loaders.begin();
+		     it != loaders.end(); ++it) {
+			if (theConverters().isReachable(format, *it)) {
+				string const tofile =
+					changeExtension(filename.absFilename(),
+						formats.extension(*it));
+				if (!theConverters().convert(0, filename, FileName(tofile),
+							filename, format, *it, errorList))
+					return false;
+				loader_format = *it;
+				break;
+			}
+		}
+		if (loader_format.empty()) {
+			frontend::Alert::error(_("Couldn't import file"),
+				     bformat(_("No information for importing the format %1$s."),
+					 formats.prettyName(format)));
+			return false;
+		}
+	} else {
+		loader_format = format;
+	}
+
+
+	if (loader_format == "lyx") {
+		Buffer * buf = lv->loadLyXFile(lyxfile);
+		if (!buf) {
+			// we are done
+			lv->message(_("file not imported!"));
+			return false;
+		}
+		updateLabels(*buf);
+		lv->setBuffer(buf);
+		lv->showErrorList("Parse");
+	} else {
+		Buffer * const b = newFile(lyxfile.absFilename(), string(), true);
+		if (b)
+			lv->setBuffer(b);
+		else
+			return false;
+		bool as_paragraphs = loader_format == "textparagraph";
+		string filename2 = (loader_format == format) ? filename.absFilename()
+			: changeExtension(filename.absFilename(),
+					  formats.extension(loader_format));
+		lv->view()->insertPlaintextFile(filename2, as_paragraphs);
+		lv->dispatch(FuncRequest(LFUN_MARK_OFF));
+	}
+
+	// we are done
+	lv->message(_("imported."));
+	return true;
+}
+
+
 
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
@@ -2295,7 +2365,7 @@ void LyXFunc::doImport(string const & argument)
 	}
 
 	ErrorList errorList;
-	Importer::Import(lyx_view_, fullname, format, errorList);
+	import(lyx_view_, fullname, format, errorList);
 	// FIXME (Abdel 12/08/06): Is there a need to display the error list here?
 }
 
