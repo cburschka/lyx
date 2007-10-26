@@ -123,7 +123,7 @@ unsigned long sum(FileName const & file)
 	if (file.isDirectory())
 		return 0;
 	string filename = file.toFilesystemEncoding();
-	ifstream ifs(filename.c_str());
+	ifstream ifs(filename.c_str(), std::ios_base::in | std::ios_base::binary);
 	if (!ifs)
 		return 0;
 
