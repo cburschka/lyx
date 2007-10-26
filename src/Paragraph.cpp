@@ -101,7 +101,7 @@ public:
 	/// Output a space in appropriate formatting (or a surrogate pair
 	/// if the next character is a combining character).
 	/// \return whether a surrogate pair was output.
-	bool simpleTeXBlanks(Encoding const &,
+	bool simpleTeXBlanks(OutputParams const &,
 			     odocstream &, TexRow & texrow,
 			     pos_type i,
 			     unsigned int & column,
@@ -522,19 +522,20 @@ int Paragraph::Private::latexSurrogatePair(odocstream & os, char_type c,
 }
 
 
-bool Paragraph::Private::simpleTeXBlanks(Encoding const & encoding,
+bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 				       odocstream & os, TexRow & texrow,
 				       pos_type i,
 				       unsigned int & column,
 				       Font const & font,
 				       Layout const & style)
 {
-	if (style.pass_thru)
+	if (style.pass_thru || runparams.verbatim)
 		return false;
 
 	if (i + 1 < int(text_.size())) {
 		char_type next = text_[i + 1];
 		if (Encodings::isCombiningChar(next)) {
+			Encoding const & encoding = *(runparams.encoding);
 			// This space has an accent, so we must always output it.
 			column += latexSurrogatePair(os, ' ', next, encoding) - 1;
 			return true;
@@ -1991,7 +1992,7 @@ bool Paragraph::latex(Buffer const & buf,
 			// style->pass_thru is false.
 			if (i != body_pos - 1) {
 				if (d->simpleTeXBlanks(
-						*(runparams.encoding), os, texrow,
+						runparams, os, texrow,
 						i, column, font, *style)) {
 					// A surrogate pair was output. We
 					// must not call latexSpecialChar
