@@ -132,7 +132,7 @@ unsigned long sum(FileName const & file)
 	// a directory may be passed here so we need to test it. (bug 3622)
 	if (fs::is_directory(filename))
 		return 0;
-	ifstream ifs(filename.c_str());
+	ifstream ifs(filename.c_str(), std::ios_base::in | std::ios_base::binary);
 	if (!ifs)
 		return 0;
 
@@ -156,7 +156,7 @@ unsigned long sum(FileName const & file)
 	// a directory may be passed here so we need to test it. (bug 3622)
 	if (fs::is_directory(filename))
 		return 0;
-	ifstream ifs(filename.c_str());
+	ifstream ifs(filename.c_str(), std::ios_base::in | std::ios_base::binary);
 	if (!ifs)
 		return 0;
 
