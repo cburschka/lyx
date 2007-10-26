@@ -67,7 +67,7 @@ size_t KeyMap::bind(string const & seq, FuncRequest const & func)
 
 	string::size_type const res = k.parse(seq);
 	if (res == string::npos) {
-		defkey(&k, func);
+		bind(&k, func);
 	} else {
 		LYXERR(Debug::KBMAP) << "Parse error at position " << res
 				     << " in key sequence '" << seq << "'."
@@ -84,7 +84,7 @@ size_t KeyMap::unbind(string const & seq, FuncRequest const & func)
 
 	string::size_type const res = k.parse(seq);
 	if (res == string::npos)
-		delkey(&k, func);
+		unbind(&k, func);
 	else
 		LYXERR(Debug::KBMAP) << "Parse error at position " << res
 				     << " in key sequence '" << seq << "'."
@@ -336,7 +336,7 @@ docstring const KeyMap::print(bool forgui) const
 }
 
 
-void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
+void KeyMap::bind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 {
 	KeySymbol code = seq->sequence[r];
 	if (!code.isOK())
@@ -371,7 +371,7 @@ void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 					       << endl;
 				return;
 			} else {
-				it->table->defkey(seq, func, r + 1);
+				it->table->bind(seq, func, r + 1);
 				return;
 			}
 		}
@@ -386,12 +386,12 @@ void KeyMap::defkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 		newone->table.reset();
 	} else {
 		newone->table.reset(new KeyMap);
-		newone->table->defkey(seq, func, r + 1);
+		newone->table->bind(seq, func, r + 1);
 	}
 }
 
 
-void KeyMap::delkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
+void KeyMap::unbind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 {
 	KeySymbol code = seq->sequence[r];
 	if (!code.isOK())
@@ -415,7 +415,7 @@ void KeyMap::delkey(KeySequence * seq, FuncRequest const & func, unsigned int r)
 						it->table.reset();
 					}
 			} else if (it->table.get()) {
-				it->table->delkey(seq, func, r + 1);
+				it->table->unbind(seq, func, r + 1);
 				if (it->table->empty())
 					remove = it;
 				return;

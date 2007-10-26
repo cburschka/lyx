@@ -13,9 +13,11 @@
 #ifndef CUSTOMIZEDWIDGETS_H
 #define CUSTOMIZEDWIDGETS_H
 
-#include <QEvent>
-#include <QCloseEvent>
 #include <QLineEdit>
+#include "KeySequence.h"
+
+class QEvent;
+class QKeyEvent;
 
 /**
  * A lineedit for inputting shortcuts
@@ -23,10 +25,17 @@
 class ShortcutLineEdit : public QLineEdit {
 	Q_OBJECT
 public:
-	ShortcutLineEdit(QWidget * parent) : QLineEdit(parent) {}
+	ShortcutLineEdit(QWidget * parent);
+	void reset();
+	bool eventFilter(QObject*, QEvent* e );
+	lyx::KeySequence const getKeySequence() const;
 protected Q_SLOTS:
+	bool event(QEvent* e);
 	void keyPressEvent(QKeyEvent * e);
-	bool event(QEvent * e);
+private:
+	void appendToSequence(QKeyEvent * e);
+	lyx::KeySequence keysequence_;
+	bool has_cursor_;
 };
 
 

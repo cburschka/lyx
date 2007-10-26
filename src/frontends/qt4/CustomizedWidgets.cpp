@@ -24,16 +24,63 @@
 #include "CustomizedWidgets.h"
 #include "GuiKeySymbol.h"
 
+#include <QApplication>
+#include <QCloseEvent>
+
 #include "support/qstring_helpers.h"
 
 
 using lyx::KeySymbol;
+using lyx::KeySequence;
+using lyx::KeyModifier;
 using lyx::toqstr;
+
+ShortcutLineEdit::ShortcutLineEdit(QWidget * parent)
+	: QLineEdit(parent), keysequence_()
+{
+	QApplication::instance()->installEventFilter(this);
+	has_cursor_ = false;
+}
+
+
+void ShortcutLineEdit::reset()
+{
+	clear();
+	keysequence_ = KeySequence();
+}
+
+
+bool ShortcutLineEdit::eventFilter(QObject * obj, QEvent * e)
+{
+	if (!has_cursor_)
+		return false;
+
+	switch (e->type()) {
+		// swallow these if we have focus and they come from elsewhere
+		case QEvent::Shortcut:
+		case QEvent::ShortcutOverride:
+			if (obj != this)
+				return true;
+		default: 
+			break;
+	}        
+	return false;
+}
+
+
+KeySequence const ShortcutLineEdit::getKeySequence() const
+{
+	return keysequence_;
+}
+
 
 void ShortcutLineEdit::keyPressEvent(QKeyEvent * e)
 {
-	int keyQt = e->key();
-	switch (e->key()) {
+	int const keyQt = e->key();
+	if (!keyQt)
+		return;
+
+	switch(keyQt) {
 		case Qt::Key_AltGr: //or else we get unicode salad
 		case Qt::Key_Shift:
 		case Qt::Key_Control:
@@ -41,42 +88,49 @@ void ShortcutLineEdit::keyPressEvent(QKeyEvent * e)
 		case Qt::Key_Meta:
 			break;
 		default:
-			if (keyQt) {
-				uint modifierKeys = e->modifiers();
-
-				QString txt;
-				if (modifierKeys & Qt::SHIFT)
-					txt += "S-";
-				if (modifierKeys & Qt::CTRL)
-					txt += "C-";
-				if (modifierKeys & Qt::ALT)
-					txt += "M-";
-
-				KeySymbol sym;
-				setKeySymbol(&sym, e);
-				txt += toqstr(sym.getSymbolName());
-
-				if (text().isEmpty())
-					setText(txt);
-				else
-					setText(text() + " " + txt);
-			}
+			appendToSequence(e);
+			setText(toqstr(keysequence_.print(KeySequence::BindFile)));
 	}
 }
 
 
-//prevent Qt from special casing Tab and Backtab
-bool ShortcutLineEdit::event(QEvent* e)
+bool ShortcutLineEdit::event(QEvent * e)
 {
-	if (e->type() == QEvent::ShortcutOverride)
-		return false;
-
-	if (e->type() == QEvent::KeyPress) {
-		keyPressEvent(static_cast<QKeyEvent *>(e));
-		return true;
+	switch (e->type()) {
+		case QEvent::FocusOut:
+			has_cursor_ = false;
+			break;
+		case QEvent::FocusIn:
+			has_cursor_ = true;
+			break;
+		case QEvent::ShortcutOverride:
+			keyPressEvent(static_cast<QKeyEvent *>(e));
+			return true;
+		case QEvent::KeyRelease:
+		case QEvent::Shortcut:
+		case QEvent::KeyPress:
+			return true;
+		default: 
+			break;
 	}
-
 	return QLineEdit::event(e);
+}
+
+
+void ShortcutLineEdit::appendToSequence(QKeyEvent * e)
+{
+	KeySymbol sym;
+	setKeySymbol(&sym, e);
+
+	KeyModifier mod = lyx::NoModifier;
+	if (e->modifiers() & Qt::SHIFT)
+		mod |= lyx::ShiftModifier;
+	if (e->modifiers() & Qt::CTRL)
+		mod |= lyx::ControlModifier;
+	if (e->modifiers() & Qt::ALT | e->modifiers() & Qt::META)
+		mod |= lyx::AltModifier;
+	
+	keysequence_.addkey(sym, mod, lyx::NoModifier);
 }
 
 

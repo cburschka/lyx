@@ -36,15 +36,23 @@ class KeySequence;
 class KeyMap {
 public:
 	/**
-	 * Bind a key sequence to an action.
+	 * Bind/Unbind a key sequence to an action.
 	 * @return 0 on success, or position in string seq where error
 	 * occurs.
 	 * See KeySequence::parse for the syntax of the seq string
 	 */
 	size_t bind(std::string const & seq, FuncRequest const & func);
-
-	// Unbind a key sequence
 	size_t unbind(std::string const & seq, FuncRequest const & func);
+
+	/**
+	 * Define/Undefine an action for a key sequence.
+	 * @param r internal recursion level
+	 */
+	void bind(KeySequence * seq, FuncRequest const & func,
+		    unsigned int r = 0);
+	void unbind(KeySequence * seq, FuncRequest const & func,
+		    unsigned int r = 0);
+
 
 	// if a keybinding has been defined.
 	bool hasBinding(KeySequence const & seq, FuncRequest const & func,
@@ -140,15 +148,6 @@ private:
 		/// Action for !prefix keys
 		FuncRequest func;
 	};
-
-	/**
-	 * Define an action for a key sequence.
-	 * @param r internal recursion level
-	 */
-	void defkey(KeySequence * seq, FuncRequest const & func,
-		    unsigned int r = 0);
-	void delkey(KeySequence * seq, FuncRequest const & func,
-		    unsigned int r = 0);
 
 	/**
 	 * Given an action, find all keybindings

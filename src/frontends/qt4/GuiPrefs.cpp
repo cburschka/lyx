@@ -1711,9 +1711,10 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 {
 	setupUi(this);
 
-	shortcutsTW->setColumnCount(2);
+	shortcutsTW->setColumnCount(3);
 	shortcutsTW->headerItem()->setText(0, qt_("Function"));
 	shortcutsTW->headerItem()->setText(1, qt_("Shortcut"));
+	shortcutsTW->headerItem()->setText(2, qt_("Type"));
 	shortcutsTW->setSortingEnabled(true);
 	// Multi-selection can be annoying.
 	// shortcutsTW->setSelectionMode(QAbstractItemView::MultiSelection);
@@ -1841,24 +1842,27 @@ void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
 	switch (tag) {
 	case System:
 		color = "black";
+		item->setText(2, "System shortcut");
 		break;
 	case UserBind:
 		color = "green";
+		item->setText(2, "User defined shortcut");
 		break;
 	case UserUnbind:
 		color = "red";
+		item->setText(2, "Removed system shortcut");
 		break;
 	case UserExtraUnbind:
 		color = "purple";
+		item->setText(2, "Unmatched removed system shortcut");
 		break;
 	}
 
+	for (int col = 0; col < shortcutsTW->columnCount(); ++col) 
 #if QT_VERSION >= 0x040200
-	item->setForeground(0, QBrush(QColor(color)));
-	item->setForeground(1, QBrush(QColor(color)));
+		item->setForeground(col, QBrush(QColor(color)));
 #else
-	item->setTextColor(0, QColor(color));
-	item->setTextColor(1, QColor(color));
+		item->setTextColor(col, QColor(color));
 #endif
 }
 
@@ -1870,9 +1874,9 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	string const action_name = lyxaction.getActionName(action);
 	QString const lfun_name = toqstr(from_utf8(action_name) 
 			+ " " + lfun.argument());
-	// use BindFile format instead of a more verbose form Portable
-	// if the Shortcut dialog can hide all the bind file stuff,
-	// Portable format can be used.
+	// use BindFile format instead of a more verbose form Portable. If the
+	// Shortcut dialog can hide all the bind file stuff, and on_removePB_pressed
+	// can parse Portable format, Portable format can be used. 
 	QString const shortcut = toqstr(seq.print(KeySequence::BindFile));
 	item_type item_tag = tag;
 
@@ -1942,7 +1946,10 @@ void PrefShortcuts::on_shortcutsTW_itemDoubleClicked()
 	QTreeWidgetItem * item = shortcutsTW->currentItem();
 	if (item->flags() & Qt::ItemIsSelectable) {
 		shortcut_->lfunLE->setText(item->text(0));
-		shortcut_->shortcutLE->setText(item->text(1));
+		// clear the shortcut because I assume that a user will enter
+		// a new shortcut.
+		shortcut_->shortcutLE->reset();
+		shortcut_->shortcutLE->setFocus();
 		shortcut_->exec();
 	}
 }
@@ -1965,7 +1972,7 @@ void PrefShortcuts::select_bind()
 void PrefShortcuts::on_newPB_pressed()
 {
 	shortcut_->lfunLE->clear();
-	shortcut_->shortcutLE->clear();
+	shortcut_->shortcutLE->reset();
 	shortcut_->exec();
 }
 
@@ -2046,21 +2053,19 @@ void PrefShortcuts::on_searchLE_textChanged()
 
 void PrefShortcuts::shortcut_okPB_pressed()
 {
-	string shortcut = fromqstr(shortcut_->shortcutLE->text());
 	string lfun = fromqstr(shortcut_->lfunLE->text());
 	FuncRequest func = lyxaction.lookupFunc(lfun);
 
-	if (shortcut.empty() || func.action == LFUN_UNKNOWN_ACTION) {
+	if (func.action == LFUN_UNKNOWN_ACTION) {
 		Alert::error(_("Failed to create shortcut"),
 			_("Unknown or invalid LyX function"));
 		return;
 	}
 
-	KeySequence k(0, 0);
-	string::size_type const res = k.parse(shortcut);
-	if (res != string::npos) {
+	KeySequence k = shortcut_->shortcutLE->getKeySequence();
+	if (k.length() == 0) {
 		Alert::error(_("Failed to create shortcut"),
-			_("Invalid key sequence"));
+			_("Invalid or empty key sequence"));
 		return;
 	}
 
@@ -2073,7 +2078,7 @@ void PrefShortcuts::shortcut_okPB_pressed()
 		
 	QTreeWidgetItem * item = insertShortcutItem(func, k, UserBind);
 	if (item) {
-		user_bind_.bind(shortcut, func);
+		user_bind_.bind(&k, func);
 		shortcutsTW->sortItems(0, Qt::AscendingOrder);
 		shortcutsTW->setItemExpanded(item->parent(), true);
 		shortcutsTW->scrollToItem(item);
@@ -2087,7 +2092,7 @@ void PrefShortcuts::shortcut_okPB_pressed()
 
 void PrefShortcuts::shortcut_clearPB_pressed()
 {
-	shortcut_->shortcutLE->clear();
+	shortcut_->shortcutLE->reset();
 	shortcut_->shortcutLE->setFocus();
 }
 
