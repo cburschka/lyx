@@ -22,6 +22,7 @@
 #include <config.h>
 
 #include "CustomizedWidgets.h"
+#include "FuncRequest.h"
 #include "GuiKeySymbol.h"
 
 #include <QApplication>
