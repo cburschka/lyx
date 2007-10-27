@@ -84,7 +84,11 @@ What's new
 - Fix several duplicated keyboard accelerators in the paragraph settings dialog
   (bug 4277).
 
-- fix crash when some files or directories are not readable.
+- Fix crash when some files or directories are not readable.
+
+- Fix bug that external modifications of e.g. image files were not taken into
+  account by LyX (bug 3172).
+
 
 * DOCUMENTATION
 
