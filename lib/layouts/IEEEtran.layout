@@ -254,9 +254,10 @@ NoStyle TheoremTemplate
 
 
 ##
-## stdsections and stdstarsections
+## stdcounters, stdsections, and stdstarsections
 ##
 
+Input stdcounters.inc
 Input stdsections.inc
 Input stdstarsections.inc
 
@@ -479,7 +480,6 @@ End
 ##
 
 Input stdfloats.inc
-Input stdcounters.inc
 Input lyxmacros.inc
 
 
