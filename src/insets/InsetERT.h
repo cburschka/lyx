@@ -82,6 +82,9 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
+	void resetParagraphsFont();
+
 private:
 	virtual Inset * clone() const;
 	///

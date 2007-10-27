@@ -101,6 +101,22 @@ InsetERT::~InsetERT()
 }
 
 
+void InsetERT::resetParagraphsFont()
+{
+	Font font(Font::ALL_INHERIT, latex_language);
+	ParagraphList::iterator par = paragraphs().begin();
+	ParagraphList::iterator const end = paragraphs().end();
+	while (par != end) {
+		pos_type siz = par->size();
+		for (pos_type i = 0; i <= siz; ++i) {
+			par->setFont(i, font);
+		}
+		par->params().clear();
+		++par;
+	}
+}
+
+
 void InsetERT::write(Buffer const & buf, ostream & os) const
 {
 	os << "ERT" << "\n";
@@ -119,16 +135,7 @@ void InsetERT::read(Buffer const & buf, Lexer & lex)
 	// inherits the language from the last position of the existing text.
 	// As a side effect this makes us also robust against bugs in LyX
 	// that might lead to font changes in ERT in .lyx files.
-	Font font(Font::ALL_INHERIT, latex_language);
-	ParagraphList::iterator par = paragraphs().begin();
-	ParagraphList::iterator const end = paragraphs().end();
-	while (par != end) {
-		pos_type siz = par->size();
-		for (pos_type i = 0; i <= siz; ++i) {
-			par->setFont(i, font);
-		}
-		++par;
-	}
+	resetParagraphsFont();
 }
 
 
@@ -213,20 +220,8 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// attributes.
 		// FIXME: Change only the pasted paragraphs
 
-		Font font = layout->font;
 		// ERT contents has always latex_language
-		font.setLanguage(latex_language);
-		ParagraphList::iterator const end = paragraphs().end();
-		for (ParagraphList::iterator par = paragraphs().begin();
-		     par != end; ++par) {
-			// in case par had a manual label
-			par->setBeginOfBody();
-			pos_type const siz = par->size();
-			for (pos_type i = 0; i < siz; ++i) {
-				par->setFont(i, font);
-			}
-			par->params().clear();
-		}
+		resetParagraphsFont();
 		break;
 	}
 	default:
