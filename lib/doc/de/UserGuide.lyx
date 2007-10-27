@@ -1,4 +1,4 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -190,7 +190,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 22.
+letzte Änderung: 24.
  Oktober 2007
 \end_layout
 
@@ -3439,6 +3439,12 @@ verwenden Manche Fonts erlauben auch, echte Kapitälchen
 \begin_layout Description
 Mediävalziffern\InsetSpace ~
 verwenden
+\begin_inset LatexCommand index
+name "Mediävalziffern"
+
+\end_inset
+
+
 \begin_inset LatexCommand label
 name "Mediävalziffern-verwenden"
 
@@ -3463,8 +3469,12 @@ Roman
  wählen.
  Eine weitere Möglichkeit, bei der Sie keinen Font kennen müssen, ist, den
  Befehl 
+\family typewriter
+
 \backslash
-usepackage[osf]{mathpazo} In den 
+usepackage[osf]{mathpazo}
+\family default
+ in den 
 \family sans
 LaTe
 \begin_inset ERT
@@ -10424,7 +10434,8 @@ Formatierung
 \SpecialChar \menuseparator
 
 \family sans
-Seitenumbruch
+Neue\InsetSpace \space{}
+Seite
 \family default
  einfügen.
 \end_layout
@@ -10473,8 +10484,10 @@ Enthält eine Seite auch Gleitobjekte, wird mit dem Befehl
 \family sans
  Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
+Neue\InsetSpace \space{}
 Seite\InsetSpace \space{}
-leeren
+(Gleitobjekte\InsetSpace \space{}
+ausgeben)
 \family default
  die Seite umgebrochen, und alle noch nicht gedruckten Gleitobjekte kommen
  auf die neue Seite oder folgende.
@@ -10482,8 +10495,11 @@ leeren
 \family sans
  Einfügen\SpecialChar \menuseparator
 Formatierung\SpecialChar \menuseparator
-Doppelseite\InsetSpace \space{}
-leeren
+Neue\InsetSpace \space{}
+ungerade\InsetSpace \space{}
+Seite\InsetSpace \space{}
+(Gleitobjekte\InsetSpace \space{}
+ausgeben)
 \family default
  dasselbe, aber die neue Seite ist auf jeden Fall eine ungerade, eventuell
  mit einer Leerseite dazwischen.
@@ -26162,6 +26178,12 @@ name "Literaturverzeichnis ! BibTeX"
 \end_inset
 
 
+\begin_inset LatexCommand index
+name "BibTeX"
+
+\end_inset
+
+
 \begin_inset LatexCommand label
 name "Literaturverzeichnis-Datenbanken-(BibTeX)"
 
@@ -26948,7 +26970,7 @@ Sie können auch die Seitenzahlen formatieren wie mit dem Befehl
 
 
 \family typewriter
-Medialziffern | oldstylenums
+Mediävalziffern | oldstylenums
 \family default
 
 \begin_inset Quotes grd
@@ -27084,7 +27106,9 @@ captionsgerman{
 \backslash
 renewcommand{
 \backslash
-indexname}{Stich-wort-ver-zeich-nis}}
+indexname}
+\newline
+    {Stichwortverzeichnis}}
 \end_layout
 
 \begin_layout Standard
@@ -36187,8 +36211,8 @@ name "Mediävalziffern"
 \end_inset
 
 Mediävalziffern\InsetSpace ~
-verwenden bedeutet, Ziffern zu verwenden die unter die Grundlinie
- reichen wie zum Beispiel die 3.
+verwenden bedeutet, Ziffern zu verwenden, die unter die Grundlini
+e reichen wie zum Beispiel die 3.
  Weitere Erkärungen hierzu finden Sie hier: 
 \begin_inset LatexCommand url
 target "http://de.wikipedia.org/wiki/Mediävalziffer"
@@ -37238,6 +37262,72 @@ target "http://wiki.lyx.org/Windows/Arabic"
 \end_layout
 
 \begin_layout Standard
+
+\newpage
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand bibtex
+options "../biblio/alphadin"
+bibfiles "../biblio/LyXDocs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das obige Literaturverzeichnis stammt aus einer BibTeX-Datenbank.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+addcontentsline{toc}{chapter}{
+\backslash
+bibname
+\backslash
+; 2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Der Befehl 
+\family typewriter
+
+\backslash
+addcontentsline
+\family default
+ wird in den 
+\emph on
+Hanbuchergänzungen
+\emph default
+ erklärt.
+ Er erzeugt einen Eintrag im Inhaltsverzeichnis.
+ Dieser Eintrag wird gebraucht, weil hier zwei Literaturverzeichnisse benutzt
+ werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -37300,7 +37390,7 @@ babel
 \end_layout
 
 \begin_layout Standard
-Möchte man andere Legendeen ändern, ersetzt man 
+Möchte man andere Legenden ändern, ersetzt man 
 \series bold
 
 \backslash
