@@ -2348,7 +2348,6 @@ lib_examples_de_files = Split('''
     ItemizeBullets.lyx
     Lebenslauf.lyx
     Minipage.lyx
-    TabellenBeispiel.lyx
     Waehrungen.lyx
     beispiel_gelyxt.lyx
     beispiel_roh.lyx

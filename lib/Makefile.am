@@ -85,7 +85,6 @@ dist_deexamples_DATA = \
 	examples/de/ItemizeBullets.lyx \
 	examples/de/Lebenslauf.lyx \
 	examples/de/Minipage.lyx \
-	examples/de/TabellenBeispiel.lyx \
 	examples/de/Waehrungen.lyx \
 	examples/de/beispiel_gelyxt.lyx \
 	examples/de/beispiel_roh.lyx \
