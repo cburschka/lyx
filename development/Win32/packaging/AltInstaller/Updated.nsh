@@ -24,6 +24,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\clipart\ERT.png"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\TabellenBeispiel.lyx"
+ SetOutPath "$INSTDIR\Resources\examples\es"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\es\ItemizeBullets.lyx"
  SetOutPath "$INSTDIR\Resources\fonts"
  File "${PRODUCT_SOURCEDIR}\Resources\fonts\esint10.ttf"
  File "${PRODUCT_SOURCEDIR}\Resources\fonts\wasy10.ttf"

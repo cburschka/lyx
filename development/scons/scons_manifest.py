@@ -2534,7 +2534,6 @@ lib_examples_fa_files = Split('''
 
 lib_examples_fr_files = Split('''
     AlignementDecimal.lyx
-    simplecv.lyx
     ExemplesTableaux.lyx
     Foils.lyx
     ListesPuces.lyx
@@ -2543,11 +2542,13 @@ lib_examples_fr_files = Split('''
     exemple_lyxifie.lyx
     mathed.lyx
     multicol.lyx
+    simplecv.lyx
     splash.lyx
 ''')
 
 
 lib_examples_es_files = Split('''
+    ItemizeBullets.lyx
     ejemplo_con_lyx.lyx
     ejemplo_sin_lyx.lyx
     splash.lyx
