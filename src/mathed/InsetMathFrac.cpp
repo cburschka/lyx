@@ -500,7 +500,7 @@ int InsetMathBinom::dw(int height) const
 
 void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	ScriptChanger dummy(mi.base);
+	FracChanger dummy(mi.base);
 	Dimension dim0, dim1;
 	cell(0).metrics(mi, dim0);
 	cell(1).metrics(mi, dim1);
@@ -519,7 +519,7 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
 	int m = x + dim.width() / 2;
-	ScriptChanger dummy(pi.base);
+	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - dim0.width() / 2, y - dim0.des - 3 - 5);
 	cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc  + 3 - 5);
 	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()), dim.height(), from_ascii("("));
