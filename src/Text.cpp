@@ -575,7 +575,7 @@ void Text::charInserted(Cursor & cur)
 // the cursor set functions have a special mechanism. When they
 // realize, that you left an empty paragraph, they will delete it.
 
-bool Text::cursorRightOneWord(Cursor & cur)
+bool Text::cursorForwardOneWord(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -596,7 +596,7 @@ bool Text::cursorRightOneWord(Cursor & cur)
 }
 
 
-bool Text::cursorLeftOneWord(Cursor & cur)
+bool Text::cursorBackwardOneWord(Cursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -799,7 +799,7 @@ void Text::deleteWordForward(Cursor & cur)
 	else {
 		cur.resetAnchor();
 		cur.selection() = true;
-		cursorRightOneWord(cur);
+		cursorForwardOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
 		checkBufferStructure(cur.buffer(), cur);
@@ -815,7 +815,7 @@ void Text::deleteWordBackward(Cursor & cur)
 	else {
 		cur.resetAnchor();
 		cur.selection() = true;
-		cursorLeftOneWord(cur);
+		cursorBackwardOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
 		checkBufferStructure(cur.buffer(), cur);
@@ -836,7 +836,7 @@ void Text::changeCase(Cursor & cur, TextCase action)
 	} else {
 		from = cur.top();
 		getWord(from, to, PARTIAL_WORD);
-		cursorRightOneWord(cur);
+		cursorForwardOneWord(cur);
 	}
 
 	cur.recordUndoSelection();

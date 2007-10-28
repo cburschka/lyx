@@ -620,10 +620,13 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_LINE_BEGIN:
 	case LFUN_WORD_BACKWARD:
+	case LFUN_WORD_LEFT:
 		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_WORD_BACKWARD_SELECT:
+	case LFUN_WORD_LEFT_SELECT:
 		cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT ||
+				cmd.action == LFUN_WORD_LEFT_SELECT || 
 				cmd.action == LFUN_LINE_BEGIN_SELECT);
 		cur.macroModeClose();
 		if (cur.pos() != 0) {
@@ -641,11 +644,14 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORD_FORWARD:
+	case LFUN_WORD_RIGHT:
 	case LFUN_LINE_END:
 		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_WORD_FORWARD_SELECT:
+	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_LINE_END_SELECT:
 		cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT ||
+				cmd.action == LFUN_WORD_RIGHT_SELECT ||
 				cmd.action == LFUN_LINE_END_SELECT);
 		cur.macroModeClose();
 		cur.clearTargetX();

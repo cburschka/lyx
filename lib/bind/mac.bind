@@ -91,8 +91,8 @@
 # Motion group
 #
 
-\bind "M-Right"			"word-forward"
-\bind "M-Left"			"word-backward"
+\bind "M-Right"			"word-right"
+\bind "M-Left"			"word-left"
 \bind "M-Up"			"paragraph-up"
 \bind "M-Down"			"paragraph-down"
 \bind "C-Up"			"buffer-begin"
@@ -112,8 +112,8 @@
 \bind "S-Left"			"char-left-select"
 \bind "S-Up"			"up-select"
 \bind "S-Down"			"down-select"
-\bind "S-M-Right"		"word-forward-select"
-\bind "S-M-Left"		"word-backward-select"
+\bind "S-M-Right"		"word-right-select"
+\bind "S-M-Left"		"word-left-select"
 \bind "S-M-Up"			"paragraph-up-select"
 \bind "S-M-Down"		"paragraph-down-select"
 \bind "S-C-Left"			"line-begin-select"
@@ -131,8 +131,8 @@
 \bind "S-KP_Left"               "char-left-select"
 \bind "S-KP_Up"                 "up-select"
 \bind "S-KP_Down"               "down-select"
-\bind "S-M-KP_Right"            "word-forward-select"
-\bind "S-M-KP_Left"             "word-backward-select"
+\bind "S-M-KP_Right"            "word-right-select"
+\bind "S-M-KP_Left"             "word-left-select"
 \bind "S-M-KP_Up"               "paragraph-up-select"
 \bind "S-M-KP_Down"             "paragraph-down-select"
 \bind "S-KP_Home"               "line-begin-select"

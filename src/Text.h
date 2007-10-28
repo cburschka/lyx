@@ -174,9 +174,9 @@ public:
 	 */
 	bool cursorForward(Cursor & cur);
 	///
-	bool cursorLeftOneWord(Cursor & cur);
+	bool cursorBackwardOneWord(Cursor & cur);
 	///
-	bool cursorRightOneWord(Cursor & cur);
+	bool cursorForwardOneWord(Cursor & cur);
 	/// Delete from cursor up to the end of the current or next word.
 	void deleteWordForward(Cursor & cur);
 	/// Delete from cursor to start of current or prior word.

@@ -500,22 +500,44 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		needsUpdate |= tm.cursorEnd(cur);
 		break;
 
+	case LFUN_WORD_RIGHT:
+	case LFUN_WORD_RIGHT_SELECT:
+		//FIXME: for visual cursor mode, really move right
+		if (reverseDirectionNeeded(cur)) {
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_WORD_RIGHT_SELECT ?
+					LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD));
+		} else {
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_WORD_RIGHT_SELECT ?
+					LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD));
+		}
+		break;
+
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_FORWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT);
-		if (reverseDirectionNeeded(cur))
-			needsUpdate |= cursorLeftOneWord(cur);
-		else
-			needsUpdate |= cursorRightOneWord(cur);
+		needsUpdate |= cursorForwardOneWord(cur);
+		break;
+
+	case LFUN_WORD_LEFT:
+	case LFUN_WORD_LEFT_SELECT:
+		//FIXME: for visual cursor mode, really move left
+		if (reverseDirectionNeeded(cur)) {
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_WORD_LEFT_SELECT ?
+					LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD));
+		} else {
+			lyx::dispatch(FuncRequest(
+				cmd.action == LFUN_WORD_LEFT_SELECT ?
+					LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD));
+		}
 		break;
 
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_BACKWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT);
-		if (reverseDirectionNeeded(cur))
-			needsUpdate |= cursorRightOneWord(cur);
-		else
-			needsUpdate |= cursorLeftOneWord(cur);
+		needsUpdate |= cursorBackwardOneWord(cur);
 		break;
 
 	case LFUN_WORD_SELECT: {
@@ -1883,6 +1905,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LINE_DELETE:
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_BACKWARD:
+	case LFUN_WORD_RIGHT:
+	case LFUN_WORD_LEFT:
 	case LFUN_CHAR_FORWARD:
 	case LFUN_CHAR_FORWARD_SELECT:
 	case LFUN_CHAR_BACKWARD:
@@ -1903,6 +1927,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LINE_END_SELECT:
 	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_WORD_BACKWARD_SELECT:
+	case LFUN_WORD_RIGHT_SELECT:
+	case LFUN_WORD_LEFT_SELECT:
 	case LFUN_WORD_SELECT:
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:

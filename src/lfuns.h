@@ -414,6 +414,11 @@ enum kb_action {
 	LFUN_CHAR_RIGHT_SELECT,			 // dov, 20071022
 	LFUN_FINISHED_BACKWARD,			 // dov, 20071022
 	LFUN_FINISHED_FORWARD,			 // dov, 20071022
+	LFUN_WORD_LEFT,					 // dov, 20071028
+	LFUN_WORD_LEFT_SELECT,			 // dov, 20071028
+	// 305
+	LFUN_WORD_RIGHT,				 // dov, 20071028
+	LFUN_WORD_RIGHT_SELECT,			 // dov, 20071028
 
 	LFUN_LASTACTION                  // end of the table
 };
