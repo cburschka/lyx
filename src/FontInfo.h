@@ -92,7 +92,7 @@ public:
 	ColorCode realColor() const;
 
 	/// Converts logical attributes to concrete shape attribute
-	// Try hard to inline this as it shows up with 4.6 % in the profiler.
+	/// Try hard to inline this as it shows up with 4.6 % in the profiler.
 	FontShape realShape() const
 	{
 		if (noun_ == FONT_ON)
@@ -118,22 +118,6 @@ public:
 			return false;
 		}
 	}
-
-	/*
-	FontInfo & operator=(FontInfo const & rhs)
-	{
-		family_ = rhs.family_;
-		series_ = rhs.series_;
-		shape_ = rhs.shape_;
-		size_ = rhs.size_;
-		color_ = rhs.color_;
-		background_ = rhs.background_;
-		emph_ = rhs.emph_;
-		underbar_ = rhs.underbar_;
-		noun_ = rhs.noun_;
-		number_ = rhs.number_;
-	}
-	*/
 
 private:
 	friend bool operator==(FontInfo const & lhs, FontInfo const & rhs);
