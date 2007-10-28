@@ -1,4 +1,4 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -147,7 +147,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 15.
+letzte Änderung: 29.
  Oktober 2007
 \end_layout
 
@@ -3319,7 +3319,9 @@ captionsgerman{
 \backslash
 renewcommand{
 \backslash
-indexname}{Stich-wort-ver-zeich-nis}}
+indexname}
+\newline
+    {Stichwortverzeichnis}}
 \end_layout
 
 \begin_layout Standard
@@ -4042,7 +4044,53 @@ Querverweis
 \family default
 \SpecialChar \ldots{}
 \InsetSpace ~
-und wählen die gewünschte .
+und wählen die gewünschte.
+\end_layout
+
+\begin_layout Subsection
+Druckvorschau
+\end_layout
+
+\begin_layout Standard
+Wenn Sie alle zum Hauptdokument gehörenden Unterdokumente geöffnet haben
+ und eins davon gerade bearbeiten, müssen Sie nicht zum Hauptdokument wechseln,
+ um dessen Druckvorschau zu starten oder zu aktualisieren.
+ Sie können das auch vom Unterdokument aus mit den Tastenkombinationen 
+\family sans
+Strg+Alt+D
+\family default
+ und 
+\family sans
+Strg+Alt+Umschalt+D
+\family default
+ machen.
+ KDE-Benutzer müssen aber vorher 
+\family sans
+Strg+Alt+D
+\family default
+ in 
+\family sans
+K-Menü\SpecialChar \menuseparator
+Systemeinstellungen\SpecialChar \menuseparator
+Regional\SpecialChar \-
+ein\SpecialChar \-
+stellungen\InsetSpace \space{}
+&\InsetSpace \space{}
+Zugangshilfen\SpecialChar \menuseparator
+Tastenkürzel\SpecialChar \menuseparator
+Allgemei
+ne\InsetSpace \space{}
+Tastenkürzel\SpecialChar \menuseparator
+Arbeits\SpecialChar \-
+flä\SpecialChar \-
+che anzeigen\InsetSpace \space{}
+an/aus
+\family default
+ ändern, zum Beispiel in 
+\family sans
+Strg+Alt+W
+\family default
+, weil die KDE-Tastenkürzel Vorrang haben.
 \end_layout
 
 \begin_layout Section
@@ -4271,7 +4319,18 @@ Die Einstellungen für Kopf- und Fußzeile können durch die Befehle
 
 \backslash
 thispage\SpecialChar \-
-style{empty}
+style
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+""
+\end_layout
+
+\end_inset
+
+{empty}
 \family default
 , 
 \family typewriter
@@ -7117,7 +7176,9 @@ prüfen
 chktex
 \family default
 -Programm installiert ist.
- Sie können es bei CTAN oder von der Seite 
+ Sie können es bei CTAN oder von der Seite
+\newline
+ 
 \begin_inset LatexCommand url
 target "http://www.ifi.uio.no/~jensthi/chktex/"
 
@@ -10727,7 +10788,8 @@ Wenn Sie Text in zwei Spalten setzen wollen, müssen Sie den LaTeX-Modus
 \family typewriter
 
 \backslash
-begin{multicols}{2}
+begin{multi\SpecialChar \-
+cols}{2}
 \family default
  einfügen und am Ende den Befehl 
 \family typewriter
@@ -11163,7 +11225,18 @@ end{multicols}
 Für fortgeschrittenere Beispiele (Abstände, Trennlinien) lesen Sie bitte
  die Datei 
 \family typewriter
-/de/multicols.lyx
+/de/
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+""
+\end_layout
+
+\end_inset
+
+multicols.lyx
 \family default
  im Verzeichnis mit den Beispielen.
 \end_layout
@@ -11289,7 +11362,8 @@ Wie Sie am Beispiel sehen, gibt es für jede Ebene eigene Markierungsbefehle,
 \family typewriter
 
 \backslash
-labelenumi
+label\SpecialChar \-
+enumi
 \family default
  \SpecialChar \ldots{}
  
@@ -12951,7 +13025,18 @@ Vorlage
 \SpecialChar \ldots{}
 , 
 \family sans
-Strg+Umschalt+N
+Strg+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+""
+\end_layout
+
+\end_inset
+
+Umschalt+N
 \family default
 ) finden Sie ein Beispiel als Vorlage.
 \end_layout
@@ -14019,7 +14104,8 @@ makeatletter
 \family typewriter
 
 \backslash
-makeatother
+make\SpecialChar \-
+atother
 \family default
 , mit Ausnahme derjenigen Einträge, die Sie selber in den LaTeX-Vorspann
  eingefügt haben (diese sollten direkt nach den 
@@ -15050,27 +15136,32 @@ ws-ijmpd.cls
 \family default
 , respectively.
  These files, together with instructions for the authors, can be downloaded
- from the sites 
+ from the sites
+\newline
+
 \begin_inset LatexCommand url
 target "http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml"
 
 \end_inset
 
- 
+ and 
 \newline
-and 
+
 \begin_inset LatexCommand url
 target "http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml"
 
 \end_inset
 
 .
- Both packages are modified versions of the standard 
-\begin_inset Quotes eld
+\end_layout
+
+\begin_layout Standard
+Both packages are modified versions of the standard 
+\begin_inset Quotes gld
 \end_inset
 
 article
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  package, and they are almost (but not exactly) identical.
@@ -17035,7 +17126,7 @@ Eine genaue deutsche Beschreibung solcher LaTeX-Befehle findet sich in der
 \emph on
 scrguide
 \emph default
- (zum Beispiel /usr/share/texmf/doc/latex/
+ (zum Beispiel /usr/share/texmf/doc/latex/koma-script/
 \begin_inset ERT
 status collapsed
 
@@ -17048,7 +17139,7 @@ status collapsed
 
 \end_inset
 
-koma-script/scrguide.pdf).
+scrguide.pdf).
  Damit kann der Briefautor ein persönliches Brief\SpecialChar \textcompwordmark{}
 format erzeugen.
 \end_layout
@@ -17773,7 +17864,8 @@ svjog.layout
 
 \begin_layout Standard
 Das bedeutet, dass die Implementierung der Unterstützung für irgendeine
- andere Springer-Zeit\SpecialChar \-
+ andere Sprin\SpecialChar \-
+ger-Zeit\SpecialChar \-
 schrift so einfach ist als würden Sie Ihre eigene 
 \family typewriter
 sv<
@@ -18085,7 +18177,8 @@ jgrga.layout
 Fügen Sie Ihr eigenes hinzu, es ist nicht so schwer! Sehen Sie sich die
  Beispiele 
 \family typewriter
-jgrga.layout
+jgrga.lay\SpecialChar \-
+out
 \family default
  und 
 \family typewriter
@@ -18392,7 +18485,9 @@ Seiten-Stil
 \family default
  des Dialogfensters 
 \family sans
-Dokument-Einstellungen
+Dokument-Ein\SpecialChar \-
+stel\SpecialChar \-
+lungen
 \family default
  unterscheiden sich etwas von dem normalen Verhalten.
  Sie können unter folgenden Versionen wählen:
@@ -20054,7 +20149,8 @@ Optionen
 \family default
  im Menüfenster 
 \family sans
-Dokument-Einstellungen
+Dokument-Einstellun\SpecialChar \-
+gen
 \family default
 \SpecialChar \menuseparator
 
@@ -21776,7 +21872,8 @@ E
 \family default
 Eine neue Kameraeinstellung (außen).
  Alles in dieser Zeile wird in GROSS\SpecialChar \-
-BUCHSTABEN gesetzt.
+BUCH\SpecialChar \-
+STABEN gesetzt.
 \end_layout
 
 \begin_layout Itemize
@@ -22725,7 +22822,8 @@ Rod Pinna
 Elsevier Science Publishers B.V.
  stellt eine Standard-LaTeX-Dokumentenklasse (
 \family typewriter
-elsart.cls
+els\SpecialChar \-
+art.cls
 \family default
 ) zur Verfügung, mit der man Artikel für ihre verschiedenen Journale einreichen
  kann.
