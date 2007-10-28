@@ -55,7 +55,7 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	void getDrawFont(Font &) const;
+	void getDrawFont(FontInfo &) const;
 	///
 	InsetListingsParams const & params() const { return params_; }
 	///

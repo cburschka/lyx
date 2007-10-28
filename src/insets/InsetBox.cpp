@@ -142,7 +142,7 @@ void InsetBox::read(Buffer const & buf, Lexer & lex)
 
 void InsetBox::setButtonLabel()
 {
-	Font font(Font::ALL_SANE);
+	FontInfo font = sane_font;
 	font.decSize();
 	font.decSize();
 

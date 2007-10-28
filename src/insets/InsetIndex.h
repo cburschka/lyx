@@ -41,7 +41,7 @@ public:
 	///
 	docstring name() const { return from_ascii("Index"); }
 	///
-	void getDrawFont(Font &) const;
+	void getDrawFont(FontInfo &) const;
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///

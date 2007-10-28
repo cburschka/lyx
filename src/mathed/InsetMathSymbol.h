@@ -14,8 +14,6 @@
 
 #include "InsetMath.h"
 
-#include "Font.h"
-
 namespace lyx {
 
 class latexkeys;

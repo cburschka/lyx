@@ -15,9 +15,10 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
+#include "Font.h"
 #include "BiblioInfo.h"
-#include "TextClass.h"
 #include "paper.h"
+#include "TextClass.h"
 
 #include "insets/InsetQuotes.h"
 

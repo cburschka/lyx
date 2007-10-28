@@ -474,7 +474,7 @@ TeXOnePar(Buffer const & buf,
 
 	bool is_command = style->isCommand();
 
-	if (style->resfont.size() != font.size()
+	if (style->resfont.size() != font.fontInfo().size()
 	    && boost::next(pit) != paragraphs.end()
 	    && !is_command) {
 		if (!need_par)

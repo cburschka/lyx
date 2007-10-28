@@ -100,6 +100,12 @@ frontend::FontLoader & theFontLoader()
 
 frontend::FontMetrics const & theFontMetrics(Font const & f)
 {
+	return theFontMetrics(f.fontInfo());
+}
+
+
+frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
+{
 	static frontend::NoGuiFontMetrics no_gui_font_metrics;
 
 	if (!use_gui)

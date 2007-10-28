@@ -60,7 +60,7 @@ public:
 	///
 	void draw(PainterInfo &, int, int) const;
 	///
-	void getDrawFont(Font &) const;
+	void getDrawFont(FontInfo &) const;
 	///
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 

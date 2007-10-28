@@ -25,6 +25,7 @@ class CursorSlice;
 class DocIterator;
 class ErrorList;
 class Font;
+class FontInfo;
 class FuncRequest;
 class FuncStatus;
 class Inset;
@@ -46,9 +47,9 @@ public:
 	bool empty() const;
 
 	///
-	Font getLayoutFont(Buffer const & buffer, pit_type pit) const;
+	FontInfo getLayoutFont(Buffer const & buffer, pit_type pit) const;
 	///
-	Font getLabelFont(Buffer const & buffer,
+	FontInfo getLabelFont(Buffer const & buffer,
 		Paragraph const & par) const;
 	/** Set font of character at position \p pos in paragraph \p pit.
 	 *  Must not be called if \p pos denotes an inset with text contents,

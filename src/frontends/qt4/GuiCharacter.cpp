@@ -37,27 +37,27 @@ static vector<ShapePair> const getShapeData()
 	ShapePair pr;
 
 	pr.first = qt_("No change");
-	pr.second = Font::IGNORE_SHAPE;
+	pr.second = IGNORE_SHAPE;
 	shape[0] = pr;
 
 	pr.first = qt_("Upright");
-	pr.second = Font::UP_SHAPE;
+	pr.second = UP_SHAPE;
 	shape[1] = pr;
 
 	pr.first = qt_("Italic");
-	pr.second = Font::ITALIC_SHAPE;
+	pr.second = ITALIC_SHAPE;
 	shape[2] = pr;
 
 	pr.first = qt_("Slanted");
-	pr.second = Font::SLANTED_SHAPE;
+	pr.second = SLANTED_SHAPE;
 	shape[3] = pr;
 
 	pr.first = qt_("Small Caps");
-	pr.second = Font::SMALLCAPS_SHAPE;
+	pr.second = SMALLCAPS_SHAPE;
 	shape[4] = pr;
 
 	pr.first = qt_("Reset");
-	pr.second = Font::INHERIT_SHAPE;
+	pr.second = INHERIT_SHAPE;
 	shape[5] = pr;
 
 	return shape;
@@ -71,59 +71,59 @@ static vector<SizePair> const getSizeData()
 	SizePair pr;
 
 	pr.first = qt_("No change");
-	pr.second = Font::IGNORE_SIZE;
+	pr.second = FONT_SIZE_IGNORE;
 	size[0] = pr;
 
 	pr.first = qt_("Tiny");
-	pr.second = Font::SIZE_TINY;
+	pr.second = FONT_SIZE_TINY;
 	size[1] = pr;
 
 	pr.first = qt_("Smallest");
-	pr.second = Font::SIZE_SCRIPT;
+	pr.second = FONT_SIZE_SCRIPT;
 	size[2] = pr;
 
 	pr.first = qt_("Smaller");
-	pr.second = Font::SIZE_FOOTNOTE;
+	pr.second = FONT_SIZE_FOOTNOTE;
 	size[3] = pr;
 
 	pr.first = qt_("Small");
-	pr.second = Font::SIZE_SMALL;
+	pr.second = FONT_SIZE_SMALL;
 	size[4] = pr;
 
 	pr.first = qt_("Normal");
-	pr.second = Font::SIZE_NORMAL;
+	pr.second = FONT_SIZE_NORMAL;
 	size[5] = pr;
 
 	pr.first = qt_("Large");
-	pr.second = Font::SIZE_LARGE;
+	pr.second = FONT_SIZE_LARGE;
 	size[6] = pr;
 
 	pr.first = qt_("Larger");
-	pr.second = Font::SIZE_LARGER;
+	pr.second = FONT_SIZE_LARGER;
 	size[7] = pr;
 
 	pr.first = qt_("Largest");
-	pr.second = Font::SIZE_LARGEST;
+	pr.second = FONT_SIZE_LARGEST;
 	size[8] = pr;
 
 	pr.first = qt_("Huge");
-	pr.second = Font::SIZE_HUGE;
+	pr.second = FONT_SIZE_HUGE;
 	size[9] = pr;
 
 	pr.first = qt_("Huger");
-	pr.second = Font::SIZE_HUGER;
+	pr.second = FONT_SIZE_HUGER;
 	size[10] = pr;
 
 	pr.first = qt_("Increase");
-	pr.second = Font::INCREASE_SIZE;
+	pr.second = FONT_SIZE_INCREASE;
 	size[11] = pr;
 
 	pr.first = qt_("Decrease");
-	pr.second = Font::DECREASE_SIZE;
+	pr.second = FONT_SIZE_DECREASE;
 	size[12] = pr;
 
 	pr.first = qt_("Reset");
-	pr.second = Font::INHERIT_SIZE;
+	pr.second = FONT_SIZE_INHERIT;
 	size[13] = pr;
 
 	return size;
@@ -221,19 +221,19 @@ static vector<SeriesPair> const getSeriesData()
 	SeriesPair pr;
 
 	pr.first = qt_("No change");
-	pr.second = Font::IGNORE_SERIES;
+	pr.second = IGNORE_SERIES;
 	series[0] = pr;
 
 	pr.first = qt_("Medium");
-	pr.second = Font::MEDIUM_SERIES;
+	pr.second = MEDIUM_SERIES;
 	series[1] = pr;
 
 	pr.first = qt_("Bold");
-	pr.second = Font::BOLD_SERIES;
+	pr.second = BOLD_SERIES;
 	series[2] = pr;
 
 	pr.first = qt_("Reset");
-	pr.second = Font::INHERIT_SERIES;
+	pr.second = INHERIT_SERIES;
 	series[3] = pr;
 
 	return series;
@@ -247,23 +247,23 @@ static vector<FamilyPair> const getFamilyData()
 	FamilyPair pr;
 
 	pr.first = qt_("No change");
-	pr.second = Font::IGNORE_FAMILY;
+	pr.second = IGNORE_FAMILY;
 	family[0] = pr;
 
 	pr.first = qt_("Roman");
-	pr.second = Font::ROMAN_FAMILY;
+	pr.second = ROMAN_FAMILY;
 	family[1] = pr;
 
 	pr.first = qt_("Sans Serif");
-	pr.second = Font::SANS_FAMILY;
+	pr.second = SANS_FAMILY;
 	family[2] = pr;
 
 	pr.first = qt_("Typewriter");
-	pr.second = Font::TYPEWRITER_FAMILY;
+	pr.second = TYPEWRITER_FAMILY;
 	family[3] = pr;
 
 	pr.first = qt_("Reset");
-	pr.second = Font::INHERIT_FAMILY;
+	pr.second = INHERIT_FAMILY;
 	family[4] = pr;
 
 	return family;
@@ -271,7 +271,7 @@ static vector<FamilyPair> const getFamilyData()
 
 
 GuiCharacter::GuiCharacter(LyXView & lv)
-	: GuiDialog(lv, "character"), font_(Font::ALL_IGNORE),
+	: GuiDialog(lv, "character"), font_(ignore_font),
 	  toggleall_(false), reset_lang_(false)
 {
 	setupUi(this);
@@ -425,10 +425,10 @@ void GuiCharacter::applyView()
 bool GuiCharacter::initialiseParams(string const &)
 {
 	// so that the user can press Ok
-	if (getFamily()    != Font::IGNORE_FAMILY
-	    || getSeries() != Font::IGNORE_SERIES
-	    || getShape()  != Font::IGNORE_SHAPE
-	    || getSize()   != Font::IGNORE_SIZE
+	if (getFamily()    != IGNORE_FAMILY
+	    || getSeries() != IGNORE_SERIES
+	    || getShape()  != IGNORE_SHAPE
+	    || getSize()   != FONT_SIZE_IGNORE
 	    || getBar()    != IGNORE
 	    || getColor()  != Color_ignore
 	    || font_.language() != ignore_language)
@@ -444,68 +444,68 @@ void GuiCharacter::dispatchParams()
 }
 
 
-Font::FONT_FAMILY GuiCharacter::getFamily() const
+FontFamily GuiCharacter::getFamily() const
 {
-	return font_.family();
+	return font_.fontInfo().family();
 }
 
 
-void GuiCharacter::setFamily(Font::FONT_FAMILY val)
+void GuiCharacter::setFamily(FontFamily val)
 {
-	font_.setFamily(val);
+	font_.fontInfo().setFamily(val);
 }
 
 
-Font::FONT_SERIES GuiCharacter::getSeries() const
+FontSeries GuiCharacter::getSeries() const
 {
-	return font_.series();
+	return font_.fontInfo().series();
 }
 
 
-void GuiCharacter::setSeries(Font::FONT_SERIES val)
+void GuiCharacter::setSeries(FontSeries val)
 {
-	font_.setSeries(val);
+	font_.fontInfo().setSeries(val);
 }
 
 
-Font::FONT_SHAPE GuiCharacter::getShape() const
+FontShape GuiCharacter::getShape() const
 {
-	return font_.shape();
+	return font_.fontInfo().shape();
 }
 
 
-void GuiCharacter::setShape(Font::FONT_SHAPE val)
+void GuiCharacter::setShape(FontShape val)
 {
-	font_.setShape(val);
+	font_.fontInfo().setShape(val);
 }
 
 
-Font::FONT_SIZE GuiCharacter::getSize() const
+FontSize GuiCharacter::getSize() const
 {
-	return font_.size();
+	return font_.fontInfo().size();
 }
 
 
-void GuiCharacter::setSize(Font::FONT_SIZE val)
+void GuiCharacter::setSize(FontSize val)
 {
-	font_.setSize(val);
+	font_.fontInfo().setSize(val);
 }
 
 
 FontState GuiCharacter::getBar() const
 {
-	if (font_.emph() == Font::TOGGLE)
+	if (font_.fontInfo().emph() == FONT_TOGGLE)
 		return EMPH_TOGGLE;
 
-	if (font_.underbar() == Font::TOGGLE)
+	if (font_.fontInfo().underbar() == FONT_TOGGLE)
 		return UNDERBAR_TOGGLE;
 
-	if (font_.noun() == Font::TOGGLE)
+	if (font_.fontInfo().noun() == FONT_TOGGLE)
 		return NOUN_TOGGLE;
 
-	if (font_.emph() == Font::IGNORE
-	    && font_.underbar() == Font::IGNORE
-	    && font_.noun() == Font::IGNORE)
+	if (font_.fontInfo().emph() == FONT_IGNORE
+	    && font_.fontInfo().underbar() == FONT_IGNORE
+	    && font_.fontInfo().noun() == FONT_IGNORE)
 		return IGNORE;
 
 	return INHERIT;
@@ -516,27 +516,27 @@ void GuiCharacter::setBar(FontState val)
 {
 	switch (val) {
 	case IGNORE:
-		font_.setEmph(Font::IGNORE);
-		font_.setUnderbar(Font::IGNORE);
-		font_.setNoun(Font::IGNORE);
+		font_.fontInfo().setEmph(FONT_IGNORE);
+		font_.fontInfo().setUnderbar(FONT_IGNORE);
+		font_.fontInfo().setNoun(FONT_IGNORE);
 		break;
 
 	case EMPH_TOGGLE:
-		font_.setEmph(Font::TOGGLE);
+		font_.fontInfo().setEmph(FONT_TOGGLE);
 		break;
 
 	case UNDERBAR_TOGGLE:
-		font_.setUnderbar(Font::TOGGLE);
+		font_.fontInfo().setUnderbar(FONT_TOGGLE);
 		break;
 
 	case NOUN_TOGGLE:
-		font_.setNoun(Font::TOGGLE);
+		font_.fontInfo().setNoun(FONT_TOGGLE);
 		break;
 
 	case INHERIT:
-		font_.setEmph(Font::INHERIT);
-		font_.setUnderbar(Font::INHERIT);
-		font_.setNoun(Font::INHERIT);
+		font_.fontInfo().setEmph(FONT_INHERIT);
+		font_.fontInfo().setUnderbar(FONT_INHERIT);
+		font_.fontInfo().setNoun(FONT_INHERIT);
 		break;
 	}
 }
@@ -544,7 +544,7 @@ void GuiCharacter::setBar(FontState val)
 
 ColorCode GuiCharacter::getColor() const
 {
-	return font_.color();
+	return font_.fontInfo().color();
 }
 
 
@@ -562,7 +562,7 @@ void GuiCharacter::setColor(ColorCode val)
 	case Color_magenta:
 	case Color_yellow:
 	case Color_inherit:
-		font_.setColor(val);
+		font_.fontInfo().setColor(val);
 		break;
 	default:
 		break;

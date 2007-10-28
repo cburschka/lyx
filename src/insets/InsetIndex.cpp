@@ -65,7 +65,7 @@ void InsetIndex::write(Buffer const & buf, std::ostream & os) const
 
 void InsetIndex::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Font tmpfont = mi.base.font;
+	FontInfo tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
 	mi.base.font.realize(tmpfont);
 	InsetCollapsable::metrics(mi, dim);
@@ -75,7 +75,7 @@ void InsetIndex::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetIndex::draw(PainterInfo & pi, int x, int y) const
 {
-	Font tmpfont = pi.base.font;
+	FontInfo tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
 	pi.base.font.realize(tmpfont);
 	InsetCollapsable::draw(pi, x, y);
@@ -83,9 +83,9 @@ void InsetIndex::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetIndex::getDrawFont(Font & font) const
+void InsetIndex::getDrawFont(FontInfo & font) const
 {
-	font = Font(Font::ALL_INHERIT);
+	font = inherit_font;
 	font.realize(layout_.font);
 }
 

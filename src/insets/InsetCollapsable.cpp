@@ -185,8 +185,8 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	case SubLabel: {
 		InsetText::metrics(mi, dim);
 		// consider width of the inset label
-		Font font(layout_.labelfont);
-		font.realize(Font(Font::ALL_SANE));
+		FontInfo font(layout_.labelfont);
+		font.realize(sane_font);
 		font.decSize();
 		font.decSize();
 		int w = 0;
@@ -309,8 +309,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 
 		// the label below the text. Can be toggled.
 		if (geometry() == SubLabel) {
-			Font font(layout_.labelfont);
-			font.realize(Font(Font::ALL_SANE));
+			FontInfo font(layout_.labelfont);
+			font.realize(sane_font);
 			font.decSize();
 			font.decSize();
 			int w = 0;
@@ -682,7 +682,7 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 }
 
 
-void InsetCollapsable::setLabelFont(Font const & font)
+void InsetCollapsable::setLabelFont(FontInfo const & font)
 {
 	layout_.labelfont = font;
 }

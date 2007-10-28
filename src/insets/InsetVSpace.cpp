@@ -123,7 +123,7 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (space_.length().len().value() >= 0.0)
 		height = max(height, space_.inPixels(*mi.base.bv));
 
-	Font font;
+	FontInfo font;
 	font.decSize();
 	font.decSize();
 
@@ -175,7 +175,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	int a = 0;
 	int d = 0;
 
-	Font font;
+	FontInfo font;
 	font.setColor(Color_added_space);
 	font.decSize();
 	font.decSize();

@@ -235,8 +235,8 @@ int TextMetrics::rightMargin(pit_type const pit) const
 void TextMetrics::applyOuterFont(Font & font) const
 {
 	Font lf(font_);
-	lf.reduce(bv_->buffer().params().getFont());
-	lf.realize(font);
+	lf.fontInfo().reduce(bv_->buffer().params().getFont().fontInfo());
+	lf.fontInfo().realize(font.fontInfo());
 	lf.setLanguage(font.language());
 	font = lf;
 }
@@ -261,21 +261,22 @@ Font TextMetrics::getDisplayFont(pit_type pit, pos_type pos) const
 			applyOuterFont(f);
 		bool lab = layout->labeltype == LABEL_MANUAL && pos < body_pos;
 
-		Font const & lf = lab ? layout->labelfont : layout->font;
-		Font rlf = lab ? layout->reslabelfont : layout->resfont;
+		FontInfo const & lf = lab ? layout->labelfont : layout->font;
+		FontInfo rlf = lab ? layout->reslabelfont : layout->resfont;
 		
 		// In case the default family has been customized
-		if (lf.family() == Font::INHERIT_FAMILY)
-			rlf.setFamily(params.getFont().family());
-		return f.realize(rlf);
+		if (lf.family() == INHERIT_FAMILY)
+			rlf.setFamily(params.getFont().fontInfo().family());
+		f.fontInfo().realize(rlf);
+		return f;
 	}
 
 	// The uncommon case need not be optimized as much
-	Font const & layoutfont = pos < body_pos ? 
+	FontInfo const & layoutfont = pos < body_pos ? 
 		layout->labelfont : layout->font;
 
 	Font font = par.getFontSettings(params, pos);
-	font.realize(layoutfont);
+	font.fontInfo().realize(layoutfont);
 
 	if (!text_->isMainText(buffer))
 		applyOuterFont(font);
@@ -284,10 +285,10 @@ Font TextMetrics::getDisplayFont(pit_type pit, pos_type pos) const
 	// NOTE: the cast to pit_type should be removed when pit_type
 	// changes to a unsigned integer.
 	if (pit < pit_type(pars.size()))
-		font.realize(outerFont(pit, pars));
+		font.fontInfo().realize(outerFont(pit, pars).fontInfo());
 
 	// Realize with the fonts of lesser depth.
-	font.realize(params.getFont());
+	font.fontInfo().realize(params.getFont().fontInfo());
 
 	return font;
 }
@@ -389,7 +390,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			- right_margin;
 		Font const & font = ii->inset->noFontChange() ?
 			bufferfont : getDisplayFont(pit, ii->pos);
-		MetricsInfo mi(bv_, font, w);
+		MetricsInfo mi(bv_, font.fontInfo(), w);
 		ii->inset->metrics(mi, dim);
 		Dimension const old_dim = pm.insetDimension(ii->inset);
 		pm.setInsetDimension(ii->inset, dim);
@@ -844,12 +845,12 @@ boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const
 	// often.
 	Buffer const & buffer = bv_->buffer();
 	Font font = getDisplayFont(pit, first);
-	Font::FONT_SIZE const tmpsize = font.size();
+	FontSize const tmpsize = font.fontInfo().size();
 	font = text_->getLayoutFont(buffer, pit);
-	Font::FONT_SIZE const size = font.size();
-	font.setSize(tmpsize);
+	FontSize const size = font.fontInfo().size();
+	font.fontInfo().setSize(tmpsize);
 
-	Font labelfont = text_->getLabelFont(buffer, par);
+	FontInfo labelfont = text_->getLabelFont(buffer, par);
 
 	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
 	FontMetrics const & fontmetrics = theFontMetrics(font);
@@ -878,11 +879,11 @@ boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const
 	// cosmetic error for now.
 	int labeladdon = 0;
 
-	Font::FONT_SIZE maxsize =
+	FontSize maxsize =
 		par.highestFontInRange(first, end, size);
-	if (maxsize > font.size()) {
+	if (maxsize > font.fontInfo().size()) {
 		// use standard paragraph font with the maximal size
-		Font maxfont = font;
+		FontInfo maxfont = font.fontInfo();
 		maxfont.setSize(maxsize);
 		FontMetrics const & maxfontmetrics = theFontMetrics(maxfont);
 		maxasc  = max(maxasc,  maxfontmetrics.maxAscent());
@@ -2130,7 +2131,7 @@ void TextMetrics::drawRowSelection(PainterInfo & pi, int x, Row const & row,
 
 int defaultRowHeight()
 {
-	return int(theFontMetrics(Font(Font::ALL_SANE)).maxHeight() *  1.2);
+	return int(theFontMetrics(sane_font).maxHeight() *  1.2);
 }
 
 } // namespace lyx

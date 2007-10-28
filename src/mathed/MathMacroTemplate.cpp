@@ -143,7 +143,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 	Dimension const dim = dimension(*p.base.bv);
 
 	// label
-	Font font = p.base.font;
+	FontInfo font = p.base.font;
 	font.setColor(Color_math);
 
 	PainterInfo pi(p.base.bv, p.pain);

@@ -46,7 +46,7 @@ namespace {
 
 bool const usePixmapCache = USE_PIXMAP_CACHE;
 
-QString generateStringSignature(QString const & str, Font const & f)
+QString generateStringSignature(QString const & str, FontInfo const & f)
 {
 	QString sig = str;
 	sig.append(QChar(static_cast<short>(f.family())));
@@ -207,7 +207,7 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 }
 
 
-int GuiPainter::text(int x, int y, char_type c, Font const & f)
+int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 {
 	docstring s(1, c);
 	return text(x, y, s, f);
@@ -215,10 +215,10 @@ int GuiPainter::text(int x, int y, char_type c, Font const & f)
 
 
 int GuiPainter::smallCapsText(int x, int y,
-	QString const & s, Font const & f)
+	QString const & s, FontInfo const & f)
 {
-	Font smallfont(f);
-	smallfont.decSize().decSize().setShape(Font::UP_SHAPE);
+	FontInfo smallfont(f);
+	smallfont.decSize().decSize().setShape(UP_SHAPE);
 
 	QFont const & qfont = guiApp->guiFontLoader().get(f);
 	QFont const & qsmallfont = guiApp->guiFontLoader().get(smallfont);
@@ -242,7 +242,7 @@ int GuiPainter::smallCapsText(int x, int y,
 
 
 int GuiPainter::text(int x, int y, docstring const & s,
-		Font const & f)
+		FontInfo const & f)
 {
 	if (s.empty())
 		return 0;
@@ -271,9 +271,9 @@ int GuiPainter::text(int x, int y, docstring const & s,
 
 	int textwidth;
 
-	if (f.realShape() == Font::SMALLCAPS_SHAPE) {
+	if (f.realShape() == SMALLCAPS_SHAPE) {
 		textwidth = smallCapsText(x, y, str, f);
-		if (f.underbar() == Font::ON)
+		if (f.underbar() == FONT_ON)
 			underline(f, x, y, textwidth);
 		return textwidth;
 	}
@@ -282,7 +282,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	//   textwidth = fontMetrics().width(str);
 	// because the above is awfully expensive on MacOSX
 	textwidth = fi.metrics->width(s);
-	if (f.underbar() == Font::ON)
+	if (f.underbar() == FONT_ON)
 		underline(f, x, y, textwidth);
 
 	if (!isDrawingEnabled())

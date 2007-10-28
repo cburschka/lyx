@@ -83,42 +83,42 @@ bool Text::isMainText(Buffer const & buffer) const
 }
 
 
-Font Text::getLayoutFont(Buffer const & buffer, pit_type const pit) const
+FontInfo Text::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 {
 	LayoutPtr const & layout = pars_[pit].layout();
 
 	if (!pars_[pit].getDepth())  {
-		Font lf = layout->resfont;
+		FontInfo lf = layout->resfont;
 		// In case the default family has been customized
-		if (layout->font.family() == Font::INHERIT_FAMILY)
-			lf.setFamily(buffer.params().getFont().family());
+		if (layout->font.family() == INHERIT_FAMILY)
+			lf.setFamily(buffer.params().getFont().fontInfo().family());
 		return lf;
 	}
 
-	Font font = layout->font;
+	FontInfo font = layout->font;
 	// Realize with the fonts of lesser depth.
 	//font.realize(outerFont(pit, paragraphs()));
-	font.realize(buffer.params().getFont());
+	font.realize(buffer.params().getFont().fontInfo());
 
 	return font;
 }
 
 
-Font Text::getLabelFont(Buffer const & buffer, Paragraph const & par) const
+FontInfo Text::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 {
 	LayoutPtr const & layout = par.layout();
 
 	if (!par.getDepth()) {
-		Font lf = layout->reslabelfont;
+		FontInfo lf = layout->reslabelfont;
 		// In case the default family has been customized
-		if (layout->labelfont.family() == Font::INHERIT_FAMILY)
-			lf.setFamily(buffer.params().getFont().family());
+		if (layout->labelfont.family() == INHERIT_FAMILY)
+			lf.setFamily(buffer.params().getFont().fontInfo().family());
 		return lf;
 	}
 
-	Font font = layout->labelfont;
+	FontInfo font = layout->labelfont;
 	// Realize with the fonts of lesser depth.
-	font.realize(buffer.params().getFont());
+	font.realize(buffer.params().getFont().fontInfo());
 
 	return font;
 }
@@ -131,7 +131,7 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 	LayoutPtr const & layout = pars_[pit].layout();
 
 	// Get concrete layout font to reduce against
-	Font layoutfont;
+	FontInfo layoutfont;
 
 	if (pos < pars_[pit].beginOfBody())
 		layoutfont = layout->labelfont;
@@ -153,12 +153,12 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 	// Inside inset, apply the inset's font attributes if any
 	// (charstyle!)
 	if (!isMainText(buffer))
-		layoutfont.realize(display_font);
+		layoutfont.realize(display_font.fontInfo());
 
-	layoutfont.realize(buffer.params().getFont());
+	layoutfont.realize(buffer.params().getFont().fontInfo());
 
 	// Now, reduce font against full layout font
-	font.reduce(layoutfont);
+	font.fontInfo().reduce(layoutfont);
 
 	pars_[pit].setFont(pos, font);
 }
@@ -316,7 +316,7 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	BOOST_ASSERT(this == cur.text());
 	// Set the current_font
 	// Determine basis font
-	Font layoutfont;
+	FontInfo layoutfont;
 	pit_type pit = cur.pit();
 	if (cur.pos() < pars_[pit].beginOfBody())
 		layoutfont = getLabelFont(cur.buffer(), pars_[pit]);
@@ -330,9 +330,9 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 
 	// Reduce to implicit settings
 	cur.current_font = cur.real_current_font;
-	cur.current_font.reduce(layoutfont);
+	cur.current_font.fontInfo().reduce(layoutfont);
 	// And resolve it completely
-	cur.real_current_font.realize(layoutfont);
+	cur.real_current_font.fontInfo().realize(layoutfont);
 
 	// if there is no selection that's all we need to do
 	if (!cur.selection())
@@ -395,7 +395,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(this == cur.text());
 	// If the mask is completely neutral, tell user
-	if (font == Font(Font::ALL_IGNORE)) {
+	if (font == ignore_font) {
 		// Could only happen with user style
 		cur.message(_("No font change defined."));
 		return;
@@ -407,7 +407,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 	CursorSlice resetCursor = cur.top();
 	bool implicitSelection =
 		font.language() == ignore_language
-		&& font.number() == Font::IGNORE
+		&& font.fontInfo().number() == FONT_IGNORE
 		&& selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);
 
 	// Set font

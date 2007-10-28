@@ -66,7 +66,7 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		FontSetChanger dummy(mi.base, "cmm");
 		dim = theFontMetrics(mi.base.font).dimension(char_);
 	} else if (!slanted(char_) && mi.base.fontname == "mathnormal") {
-		ShapeChanger dummy(mi.base.font, Font::UP_SHAPE);
+		ShapeChanger dummy(mi.base.font, UP_SHAPE);
 		dim = theFontMetrics(mi.base.font).dimension(char_);
 	} else {
 		frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
@@ -106,7 +106,7 @@ void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 		FontSetChanger dummy(pi.base, "cmm");
 		pi.draw(x, y, char_);
 	} else if (!slanted(char_) && pi.base.fontname == "mathnormal") {
-		ShapeChanger dummy(pi.base.font, Font::UP_SHAPE);
+		ShapeChanger dummy(pi.base.font, UP_SHAPE);
 		pi.draw(x, y, char_);
 	} else {
 		pi.draw(x, y, char_);

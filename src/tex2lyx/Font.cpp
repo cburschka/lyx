@@ -14,15 +14,20 @@
 #include "Lexer.h"
 #include "support/lstrings.h"
 
+using std::string;
 
 namespace lyx {
 
 using lyx::support::ascii_lowercase;
 
-using std::string;
+/// Sane font.
+FontInfo const sane_font;
+/// All inherit font.
+FontInfo const inherit_font;
+/// All ignore font.
+FontInfo const ignore_font;
 
-
-Font & Font::lyxRead(Lexer & lex)
+FontInfo lyxRead(Lexer & lex)
 {
 	bool error = false;
 	bool finished = false;
@@ -51,7 +56,7 @@ Font & Font::lyxRead(Lexer & lex)
 			error = true;
 		}
 	}
-	return *this;
+	return FontInfo();
 }
 
 

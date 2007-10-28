@@ -151,21 +151,21 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		int font_width = 0;
 
-		Font msgFont(mi.base.font);
-		msgFont.setFamily(Font::SANS_FAMILY);
+		FontInfo msgFont(mi.base.font);
+		msgFont.setFamily(SANS_FAMILY);
 
 		// FIXME UNICODE
 		docstring const justname =
 			from_utf8(onlyFilename(params_.filename.absFilename()));
 		if (!justname.empty()) {
-			msgFont.setSize(Font::SIZE_FOOTNOTE);
+			msgFont.setSize(FONT_SIZE_FOOTNOTE);
 			font_width = theFontMetrics(msgFont)
 				.width(justname);
 		}
 
 		docstring const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
-			msgFont.setSize(Font::SIZE_TINY);
+			msgFont.setSize(FONT_SIZE_TINY);
 			font_width = std::max(font_width,
 				theFontMetrics(msgFont).width(msg));
 		}
@@ -204,12 +204,12 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 				  Color_foreground);
 
 		// Print the file name.
-		Font msgFont = pi.base.font;
-		msgFont.setFamily(Font::SANS_FAMILY);
+		FontInfo msgFont = pi.base.font;
+		msgFont.setFamily(SANS_FAMILY);
 		string const justname = onlyFilename(params_.filename.absFilename());
 
 		if (!justname.empty()) {
-			msgFont.setSize(Font::SIZE_FOOTNOTE);
+			msgFont.setSize(FONT_SIZE_FOOTNOTE);
 			pi.pain.text(x + Inset::TEXT_TO_INSET_OFFSET + 6,
 				   y - theFontMetrics(msgFont).maxAscent() - 4,
 				   from_utf8(justname), msgFont);
@@ -218,7 +218,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		// Print the message.
 		docstring const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
-			msgFont.setSize(Font::SIZE_TINY);
+			msgFont.setSize(FONT_SIZE_TINY);
 			pi.pain.text(x + Inset::TEXT_TO_INSET_OFFSET + 6,
 				     y - 4, msg, msgFont);
 		}

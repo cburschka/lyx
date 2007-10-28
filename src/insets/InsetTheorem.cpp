@@ -16,7 +16,7 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "Font.h"
+#include "FontInfo.h"
 #include "Text.h"
 #include "MetricsInfo.h"
 
@@ -40,7 +40,7 @@ Inset.heorem::InsetTheorem()
 	: InsetCollapsable()
 {
 	setLabel(_("theorem"));
-	Font font(Font::ALL_SANE);
+	FontInfo font = sane_font;
 	font.decSize();
 	font.decSize();
 	font.setColor(Color_collapsable);

@@ -106,7 +106,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		lex.eatLine();
 		docstring layoutname = lex.getDocString();
 
-		font = Font(Font::ALL_INHERIT, bp.language);
+		font = Font(inherit_font, bp.language);
 		change = Change(Change::UNCHANGED);
 
 		TextClass const & tclass = bp.getTextClass();
@@ -155,16 +155,16 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		}
 	} else if (token == "\\family") {
 		lex.next();
-		font.setLyXFamily(lex.getString());
+		setLyXFamily(lex.getString(), font.fontInfo());
 	} else if (token == "\\series") {
 		lex.next();
-		font.setLyXSeries(lex.getString());
+		setLyXSeries(lex.getString(), font.fontInfo());
 	} else if (token == "\\shape") {
 		lex.next();
-		font.setLyXShape(lex.getString());
+		setLyXShape(lex.getString(), font.fontInfo());
 	} else if (token == "\\size") {
 		lex.next();
-		font.setLyXSize(lex.getString());
+		setLyXSize(lex.getString(), font.fontInfo());
 	} else if (token == "\\lang") {
 		lex.next();
 		string const tok = lex.getString();
@@ -177,29 +177,29 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		}
 	} else if (token == "\\numeric") {
 		lex.next();
-		font.setNumber(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setNumber(font.setLyXMisc(lex.getString()));
 	} else if (token == "\\emph") {
 		lex.next();
-		font.setEmph(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setEmph(font.setLyXMisc(lex.getString()));
 	} else if (token == "\\bar") {
 		lex.next();
 		string const tok = lex.getString();
 
 		if (tok == "under")
-			font.setUnderbar(Font::ON);
+			font.fontInfo().setUnderbar(FONT_ON);
 		else if (tok == "no")
-			font.setUnderbar(Font::OFF);
+			font.fontInfo().setUnderbar(FONT_OFF);
 		else if (tok == "default")
-			font.setUnderbar(Font::INHERIT);
+			font.fontInfo().setUnderbar(FONT_INHERIT);
 		else
 			lex.printError("Unknown bar font flag "
 				       "`$$Token'");
 	} else if (token == "\\noun") {
 		lex.next();
-		font.setNoun(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setNoun(font.setLyXMisc(lex.getString()));
 	} else if (token == "\\color") {
 		lex.next();
-		font.setLyXColor(lex.getString());
+		setLyXColor(lex.getString(), font.fontInfo());
 	} else if (token == "\\InsetSpace" || token == "\\SpecialChar") {
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
@@ -442,13 +442,13 @@ void Text::insertChar(Cursor & cur, char_type c)
 		static docstring const number_unary_operators = from_ascii("+-");
 		static docstring const number_seperators = from_ascii(".,:");
 
-		if (cur.current_font.number() == Font::ON) {
+		if (cur.current_font.fontInfo().number() == FONT_ON) {
 			if (!isDigit(c) && !contains(number_operators, c) &&
 			    !(contains(number_seperators, c) &&
 			      cur.pos() != 0 &&
 			      cur.pos() != cur.lastpos() &&
-			      tm.getDisplayFont(pit, cur.pos()).number() == Font::ON &&
-			      tm.getDisplayFont(pit, cur.pos() - 1).number() == Font::ON)
+			      tm.getDisplayFont(pit, cur.pos()).fontInfo().number() == FONT_ON &&
+			      tm.getDisplayFont(pit, cur.pos() - 1).fontInfo().number() == FONT_ON)
 			   )
 				number(cur); // Set current_font.number to OFF
 		} else if (isDigit(c) &&
@@ -466,7 +466,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 						tm.font_);
 				} else if (contains(number_seperators, c)
 				     && cur.pos() >= 2
-				     && tm.getDisplayFont(pit, cur.pos() - 2).number() == Font::ON) {
+				     && tm.getDisplayFont(pit, cur.pos() - 2).fontInfo().number() == FONT_ON) {
 					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font,
 						tm.font_);
 				}
@@ -499,7 +499,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 	if ((cur.pos() >= 2) && (par.isLineSeparator(cur.pos() - 1))) {
 		// get font in front and behind the space in question. But do NOT 
 		// use getFont(cur.pos()) because the character c is not inserted yet
-		Font const & pre_space_font  = tm.getDisplayFont(cur.pit(), cur.pos() - 2);
+		Font const pre_space_font  = tm.getDisplayFont(cur.pit(), cur.pos() - 2);
 		Font const & post_space_font = cur.real_current_font;
 		bool pre_space_rtl  = pre_space_font.isVisibleRightToLeft();
 		bool post_space_rtl = post_space_font.isVisibleRightToLeft();
@@ -1162,7 +1162,7 @@ bool Text::read(Buffer const & buf, Lexer & lex, ErrorList & errorList)
 
 			Paragraph par;
 			par.params().depth(depth);
-			par.setFont(0, Font(Font::ALL_INHERIT, buf.params().language));
+			par.setFont(0, Font(inherit_font, buf.params().language));
 			pars_.push_back(par);
 
 			// FIXME: goddamn InsetTabular makes us pass a Buffer
@@ -1212,7 +1212,7 @@ docstring Text::currentState(Cursor & cur)
 	// font. (Asger)
 	// No, from the document font (MV)
 	Font font = cur.real_current_font;
-	font.reduce(buf.params().getFont());
+	font.fontInfo().reduce(buf.params().getFont().fontInfo());
 
 	os << bformat(_("Font: %1$s"), font.stateText(&buf.params()));
 

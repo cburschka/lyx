@@ -21,6 +21,7 @@ namespace lyx {
 class Bidi;
 class BufferView;
 class Font;
+class FontInfo;
 class Inset;
 class PainterInfo;
 class Paragraph;
@@ -55,9 +56,9 @@ public:
 
 private:
 	void paintForeignMark(double orig_x, Font const & font, int desc = 0);
-	void paintHebrewComposeChar(pos_type & vpos, Font const & font);
-	void paintArabicComposeChar(pos_type & vpos, Font const & font);
-	void paintChars(pos_type & vpos, Font const & font,
+	void paintHebrewComposeChar(pos_type & vpos, FontInfo const & font);
+	void paintArabicComposeChar(pos_type & vpos, FontInfo const & font);
+	void paintChars(pos_type & vpos, FontInfo const & font,
 			bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
 	void paintFromPos(pos_type & vpos);
@@ -68,7 +69,7 @@ private:
 	int leftMargin() const;
 
 	/// return the label font for this row
-	Font const getLabelFont() const;
+	FontInfo const getLabelFont() const;
 
 	/// contains painting related information.
 	PainterInfo & pi_;

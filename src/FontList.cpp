@@ -188,8 +188,8 @@ void FontList::set(pos_type pos, Font const & font)
 }
 
 
-Font_size FontList::highestInRange
-	(pos_type startpos, pos_type endpos, Font_size def_size) const
+FontSize FontList::highestInRange
+	(pos_type startpos, pos_type endpos, FontSize def_size) const
 {
 	if (list_.empty())
 		return def_size;
@@ -210,12 +210,12 @@ Font_size FontList::highestInRange
 			break;
 	}
 
-	Font::FONT_SIZE maxsize = Font::SIZE_TINY;
+	FontSize maxsize = FONT_SIZE_TINY;
 	for (; cit != end_it; ++cit) {
-		Font::FONT_SIZE size = cit->font().size();
-		if (size == Font::INHERIT_SIZE)
+		FontSize size = cit->font().fontInfo().size();
+		if (size == FONT_SIZE_INHERIT)
 			size = def_size;
-		if (size > maxsize && size <= Font::SIZE_HUGER)
+		if (size > maxsize && size <= FONT_SIZE_HUGER)
 			maxsize = size;
 	}
 	return maxsize;

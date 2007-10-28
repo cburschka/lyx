@@ -33,8 +33,8 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 
 void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Font tmpfont = mi.base.font;
-	mi.base.font = mi.base.bv->buffer().params().getFont();
+	FontInfo tmpfont = mi.base.font;
+	mi.base.font = mi.base.bv->buffer().params().getFont().fontInfo();
 	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
 }
@@ -42,8 +42,8 @@ void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
 {
-	Font tmpfont = pi.base.font;
-	pi.base.font = pi.base.bv->buffer().params().getFont();
+	FontInfo tmpfont = pi.base.font;
+	pi.base.font = pi.base.bv->buffer().params().getFont().fontInfo();
 	InsetCollapsable::draw(pi, x, y);
 	pi.base.font = tmpfont;
 }

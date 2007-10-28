@@ -117,9 +117,11 @@ public:
 } // namespace frontend
 
 class Font;
+class FontInfo;
 
 /// Implementation is in Application.cpp
 frontend::FontMetrics const & theFontMetrics(Font const & f);
+frontend::FontMetrics const & theFontMetrics(FontInfo const & fi);
 
 } // namespace lyx
 

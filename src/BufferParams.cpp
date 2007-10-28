@@ -1392,15 +1392,14 @@ void BufferParams::clearLayoutModules() {
 
 Font const BufferParams::getFont() const
 {
-	Font f = getTextClass().defaultfont();
-	f.setLanguage(language);
+	FontInfo f = getTextClass().defaultfont();
 	if (fontsDefaultFamily == "rmdefault")
-		f.setFamily(Font::ROMAN_FAMILY);
+		f.setFamily(ROMAN_FAMILY);
 	else if (fontsDefaultFamily == "sfdefault")
-		f.setFamily(Font::SANS_FAMILY);
+		f.setFamily(SANS_FAMILY);
 	else if (fontsDefaultFamily == "ttdefault")
-		f.setFamily(Font::TYPEWRITER_FAMILY);
-	return f;
+		f.setFamily(TYPEWRITER_FAMILY);
+	return Font(f, language);
 }
 
 

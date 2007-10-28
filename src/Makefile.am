@@ -143,6 +143,9 @@ liblyxcore_la_SOURCES = \
 	FloatList.h \
 	Font.cpp \
 	Font.h \
+	FontEnums.h \
+	FontInfo.cpp \
+	FontInfo.h \
 	FontIterator.cpp \
 	FontIterator.h \
 	FontList.cpp \

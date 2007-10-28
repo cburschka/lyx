@@ -158,7 +158,7 @@ InsetMathHull::InsetMathHull()
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
 	//lyxerr << "sizeof InsetMathChar: " << sizeof(InsetMathChar) << endl;
-	//lyxerr << "sizeof Font: " << sizeof(Font) << endl;
+	//lyxerr << "sizeof FontInfo: " << sizeof(FontInfo) << endl;
 	initMath();
 	setDefaults();
 }
@@ -1301,8 +1301,8 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 	Font font;
 	bool b;
 	font.fromString(to_utf8(arg), b);
-	if (font.color() != Color_inherit) {
-		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
+	if (font.fontInfo().color() != Color_inherit) {
+		MathAtom at = MathAtom(new InsetMathColor(true, font.fontInfo().color()));
 		cur.handleNest(at, 0);
 	}
 }

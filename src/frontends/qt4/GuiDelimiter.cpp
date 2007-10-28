@@ -93,7 +93,7 @@ GuiDelimiter::GuiDelimiter(LyXView & lv)
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
 		lwi->setToolTip(toqstr(delim));
-		Font lyxfont;
+		FontInfo lyxfont;
 		lyxfont.setFamily(ms.fontfamily);
 		QFont const & symbol_font = guiApp->guiFontLoader().get(lyxfont);
 		lwi->setFont(symbol_font);

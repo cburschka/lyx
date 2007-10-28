@@ -19,14 +19,15 @@
 
 #include "support/lstrings.h"
 
+using std::endl;
+using std::string;
 
 namespace lyx {
 
 using support::subst;
 using support::trim;
 
-using std::endl;
-using std::string;
+extern FontInfo lyxRead(Lexer &);
 
 /// Special value of toclevel for layouts that to not belong in a TOC
 const int Layout::NOT_IN_TOC = -1000;
@@ -102,10 +103,10 @@ Layout::Layout()
 	optionalargs = 0;
 	needprotect = false;
 	keepempty = false;
-	font = Font(Font::ALL_INHERIT);
-	labelfont = Font(Font::ALL_INHERIT);
-	resfont = Font(Font::ALL_SANE);
-	reslabelfont = Font(Font::ALL_SANE);
+	font = inherit_font;
+	labelfont = inherit_font;
+	resfont = sane_font;
+	reslabelfont = sane_font;
 	nextnoindent = false;
 	parskip = 0.0;
 	itemsep = 0;
@@ -310,16 +311,16 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 			break;
 
 		case LT_FONT:
-			font.lyxRead(lexrc);
-			labelfont= font;
+			font = lyxRead(lexrc);
+			labelfont = font;
 			break;
 
 		case LT_TEXTFONT:
-			font.lyxRead(lexrc);
+			font = lyxRead(lexrc);
 			break;
 
 		case LT_LABELFONT:
-			labelfont.lyxRead(lexrc);
+			labelfont = lyxRead(lexrc);
 			break;
 
 		case LT_NEXTNOINDENT:	// Indent next paragraph?

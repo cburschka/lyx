@@ -14,7 +14,7 @@
 
 #include "GuiDialog.h"
 #include "lfuns.h" // for kb_action
-#include "Font.h"
+#include "FontEnums.h"
 
 #include <map>
 
@@ -24,12 +24,12 @@ namespace frontend {
 
 struct MathSymbol {
 	MathSymbol(char_type uc = '?', unsigned char fc = 0,
-		Font::FONT_FAMILY ff = Font::SYMBOL_FAMILY)
+		FontFamily ff = SYMBOL_FAMILY)
 		: unicode(uc), fontcode(fc), fontfamily(ff)
 	{}
 	char_type unicode;
 	unsigned char fontcode;
-	Font::FONT_FAMILY fontfamily;
+	FontFamily fontfamily;
 };
 
 

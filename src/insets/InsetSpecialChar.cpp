@@ -66,7 +66,7 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 {
-	Font font = pi.base.font;
+	FontInfo font = pi.base.font;
 
 	switch (kind_) {
 	case HYPHENATION:

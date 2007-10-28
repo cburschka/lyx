@@ -110,9 +110,9 @@ void Bidi::computeTables(Paragraph const & par,
 			? lpos + 1 : lpos;
 		Font font = par.getFontSettings(bufparams, pos);
 		if (pos != lpos && 0 < lpos && rtl0 && font.isRightToLeft() &&
-		    font.number() == Font::ON &&
-		    par.getFontSettings(bufparams, lpos - 1).number()
-		    == Font::ON) {
+		    font.fontInfo().number() == FONT_ON &&
+		    par.getFontSettings(bufparams, lpos - 1).fontInfo().number()
+		    == FONT_ON) {
 			font = par.getFontSettings(bufparams, lpos);
 			is_space = false;
 		}

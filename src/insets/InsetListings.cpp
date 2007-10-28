@@ -47,7 +47,7 @@ char const lstinline_delimiters[] =
 void InsetListings::init()
 {
 	setButtonLabel();
-	Font font(Font::ALL_SANE);
+	FontInfo font = sane_font;
 	font.decSize();
 	font.decSize();
 	font.setColor(Color_none);
@@ -279,7 +279,7 @@ void InsetListings::setButtonLabel()
 
 void InsetListings::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Font tmpfont = mi.base.font;
+	FontInfo tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
 	mi.base.font.realize(tmpfont);
 	InsetCollapsable::metrics(mi, dim);
@@ -289,7 +289,7 @@ void InsetListings::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetListings::draw(PainterInfo & pi, int x, int y) const
 {
-	Font tmpfont = pi.base.font;
+	FontInfo tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
 	pi.base.font.realize(tmpfont);
 	InsetCollapsable::draw(pi, x, y);
@@ -311,10 +311,10 @@ bool InsetListings::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetListings::getDrawFont(Font & font) const
+void InsetListings::getDrawFont(FontInfo & font) const
 {
-	font = Font(Font::ALL_INHERIT, latex_language);
-	font.setFamily(Font::TYPEWRITER_FAMILY);
+	font = inherit_font;
+	font.setFamily(TYPEWRITER_FAMILY);
 	// FIXME: define Color_listing?
 	font.setColor(Color_foreground);
 }

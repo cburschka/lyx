@@ -97,9 +97,9 @@ void InsetFlex::read(Buffer const & buf, Lexer & lex)
 
 void InsetFlex::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Font tmpfont = mi.base.font;
+	FontInfo tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
-	mi.base.font.reduce(Font(Font::ALL_SANE));
+	mi.base.font.reduce(sane_font);
 	mi.base.font.realize(tmpfont);
 	InsetCollapsable::metrics(mi, dim);
 	mi.base.font = tmpfont;
@@ -108,7 +108,7 @@ void InsetFlex::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetFlex::draw(PainterInfo & pi, int x, int y) const
 {
-	Font tmpfont = pi.base.font;
+	FontInfo tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
 	// I don't understand why the above .reduce and .realize aren't
 	//needed, or even wanted, here. It just works. -- MV 10.04.2005
@@ -117,7 +117,7 @@ void InsetFlex::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetFlex::getDrawFont(Font & font) const
+void InsetFlex::getDrawFont(FontInfo & font) const
 {
 	font = layout_.font;
 }

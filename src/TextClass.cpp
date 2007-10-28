@@ -34,6 +34,12 @@
 
 #include <sstream>
 
+using std::endl;
+using std::find_if;
+using std::remove_if;
+using std::string;
+using std::ostream;
+
 namespace lyx {
 
 using support::FileName;
@@ -44,12 +50,7 @@ using support::rtrim;
 using support::subst;
 using support::addName;
 
-using std::endl;
-using std::find_if;
-using std::remove_if;
-using std::string;
-using std::ostream;
-
+extern FontInfo lyxRead(Lexer &);
 
 namespace {
 
@@ -113,7 +114,7 @@ TextClass::TextClass(string const & fn, string const & cln,
 	secnumdepth_ = 3;
 	tocdepth_ = 3;
 	pagestyle_ = "default";
-	defaultfont_ = Font(Font::ALL_SANE);
+	defaultfont_ = sane_font;
 	opt_fontsize_ = "10|11|12";
 	opt_pagestyle_ = "empty|plain|headings|fancy";
 	titletype_ = TITLE_COMMAND_AFTER;
@@ -365,11 +366,11 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			break;
 
 		case TC_DEFAULTFONT:
-			defaultfont_.lyxRead(lexrc);
+			defaultfont_ = lyxRead(lexrc);
 			if (!defaultfont_.resolved()) {
 				lexrc.printError("Warning: defaultfont should "
 						 "be fully instantiated!");
-				defaultfont_.realize(Font(Font::ALL_SANE));
+				defaultfont_.realize(sane_font);
 			}
 			break;
 
@@ -657,8 +658,8 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	string decoration;
 	string latexname;
 	string latexparam;
-	Font font(defaultfont());
-	Font labelfont(defaultfont());
+	FontInfo font(defaultfont());
+	FontInfo labelfont(defaultfont());
 	ColorCode bgcolor(Color_background);
 	string preamble;
 	bool multipar(false);
@@ -702,7 +703,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			latexparam = subst(lexrc.getString(), "&quot;", "\"");
 			break;
 		case IL_LABELFONT:
-			labelfont.lyxRead(lexrc);
+			labelfont = lyxRead(lexrc);
 			labelfont.realize(defaultfont());
 			break;
 		case IL_MULTIPAR:
@@ -726,7 +727,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			needprotect = lexrc.getBool();
 			break;
 		case IL_FONT:
-			font.lyxRead(lexrc);
+			font = lyxRead(lexrc);
 			font.realize(defaultfont());
 			// So: define font before labelfont
 			labelfont = font;
@@ -963,7 +964,7 @@ void TextClass::readCounter(Lexer & lexrc)
 }
 
 
-Font const & TextClass::defaultfont() const
+FontInfo const & TextClass::defaultfont() const
 {
 	return defaultfont_;
 }

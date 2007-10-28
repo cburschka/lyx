@@ -85,7 +85,7 @@ InsetERT::InsetERT(BufferParams const & bp,
 		   Language const *, string const & contents, CollapseStatus status)
 	: InsetCollapsable(bp, status)
 {
-	Font font(Font::ALL_INHERIT, latex_language);
+	Font font(FONT_INHERIT, latex_language);
 	paragraphs().begin()->insert(0, contents, font);
 
 	// the init has to be after the initialization of the paragraph
@@ -103,7 +103,7 @@ InsetERT::~InsetERT()
 
 void InsetERT::resetParagraphsFont()
 {
-	Font font(Font::ALL_INHERIT, latex_language);
+	Font font(inherit_font, latex_language);
 	ParagraphList::iterator par = paragraphs().begin();
 	ParagraphList::iterator const end = paragraphs().end();
 	while (par != end) {
@@ -287,7 +287,7 @@ bool InsetERT::insetAllowed(InsetCode /* code */) const
 
 void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Font tmpfont = mi.base.font;
+	FontInfo tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
 	mi.base.font.realize(tmpfont);
 	InsetCollapsable::metrics(mi, dim);
@@ -297,7 +297,7 @@ void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
-	Font tmpfont = pi.base.font;
+	FontInfo tmpfont = pi.base.font;
 	getDrawFont(pi.base.font);
 	pi.base.font.realize(tmpfont);
 	const_cast<InsetERT &>(*this).setButtonLabel();
@@ -313,9 +313,9 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetERT::getDrawFont(Font & font) const
+void InsetERT::getDrawFont(FontInfo & font) const
 {
-	font = Font(Font::ALL_INHERIT, latex_language);
+	font = inherit_font;
 	font.realize(layout_.font);
 }
 

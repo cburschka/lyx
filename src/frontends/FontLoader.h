@@ -14,7 +14,7 @@
 
 namespace lyx {
 
-class Font;
+class FontInfo;
 
 namespace frontend {
 
@@ -33,10 +33,10 @@ public:
 	virtual void update() = 0;
 
 	/// Is the given font available ?
-	virtual bool available(Font const & f) = 0;
+	virtual bool available(FontInfo const & f) = 0;
 
-	/// Get the Font metrics for this Font
-	virtual FontMetrics const & metrics(Font const & f) = 0;
+	/// Get the Font metrics for this FontInfo
+	virtual FontMetrics const & metrics(FontInfo const & f) = 0;
 };
 
 

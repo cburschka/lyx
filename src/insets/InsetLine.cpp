@@ -13,10 +13,11 @@
 #include "InsetLine.h"
 
 #include "debug.h"
-#include "Text.h"
+#include "Font.h"
 #include "MetricsInfo.h"
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
+#include "Text.h"
 
 #include "frontends/Painter.h"
 

@@ -21,7 +21,6 @@
 #include "Color.h"
 #include "ConverterCache.h"
 #include "debug.h"
-#include "Font.h"
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "GuiFontExample.h"
@@ -474,16 +473,16 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 
 	rc.zoom = screenZoomSB->value();
 	rc.dpi = screenDpiSB->value();
-	rc.font_sizes[Font::SIZE_TINY] = fromqstr(screenTinyED->text());
-	rc.font_sizes[Font::SIZE_SCRIPT] = fromqstr(screenSmallestED->text());
-	rc.font_sizes[Font::SIZE_FOOTNOTE] = fromqstr(screenSmallerED->text());
-	rc.font_sizes[Font::SIZE_SMALL] = fromqstr(screenSmallED->text());
-	rc.font_sizes[Font::SIZE_NORMAL] = fromqstr(screenNormalED->text());
-	rc.font_sizes[Font::SIZE_LARGE] = fromqstr(screenLargeED->text());
-	rc.font_sizes[Font::SIZE_LARGER] = fromqstr(screenLargerED->text());
-	rc.font_sizes[Font::SIZE_LARGEST] = fromqstr(screenLargestED->text());
-	rc.font_sizes[Font::SIZE_HUGE] = fromqstr(screenHugeED->text());
-	rc.font_sizes[Font::SIZE_HUGER] = fromqstr(screenHugerED->text());
+	rc.font_sizes[FONT_SIZE_TINY] = fromqstr(screenTinyED->text());
+	rc.font_sizes[FONT_SIZE_SCRIPT] = fromqstr(screenSmallestED->text());
+	rc.font_sizes[FONT_SIZE_FOOTNOTE] = fromqstr(screenSmallerED->text());
+	rc.font_sizes[FONT_SIZE_SMALL] = fromqstr(screenSmallED->text());
+	rc.font_sizes[FONT_SIZE_NORMAL] = fromqstr(screenNormalED->text());
+	rc.font_sizes[FONT_SIZE_LARGE] = fromqstr(screenLargeED->text());
+	rc.font_sizes[FONT_SIZE_LARGER] = fromqstr(screenLargerED->text());
+	rc.font_sizes[FONT_SIZE_LARGEST] = fromqstr(screenLargestED->text());
+	rc.font_sizes[FONT_SIZE_HUGE] = fromqstr(screenHugeED->text());
+	rc.font_sizes[FONT_SIZE_HUGER] = fromqstr(screenHugerED->text());
 
 	if (rc.font_sizes != oldrc.font_sizes
 		|| rc.roman_font_name != oldrc.roman_font_name
@@ -515,16 +514,16 @@ void PrefScreenFonts::update(LyXRC const & rc)
 
 	screenZoomSB->setValue(rc.zoom);
 	screenDpiSB->setValue(rc.dpi);
-	screenTinyED->setText(toqstr(rc.font_sizes[Font::SIZE_TINY]));
-	screenSmallestED->setText(toqstr(rc.font_sizes[Font::SIZE_SCRIPT]));
-	screenSmallerED->setText(toqstr(rc.font_sizes[Font::SIZE_FOOTNOTE]));
-	screenSmallED->setText(toqstr(rc.font_sizes[Font::SIZE_SMALL]));
-	screenNormalED->setText(toqstr(rc.font_sizes[Font::SIZE_NORMAL]));
-	screenLargeED->setText(toqstr(rc.font_sizes[Font::SIZE_LARGE]));
-	screenLargerED->setText(toqstr(rc.font_sizes[Font::SIZE_LARGER]));
-	screenLargestED->setText(toqstr(rc.font_sizes[Font::SIZE_LARGEST]));
-	screenHugeED->setText(toqstr(rc.font_sizes[Font::SIZE_HUGE]));
-	screenHugerED->setText(toqstr(rc.font_sizes[Font::SIZE_HUGER]));
+	screenTinyED->setText(toqstr(rc.font_sizes[FONT_SIZE_TINY]));
+	screenSmallestED->setText(toqstr(rc.font_sizes[FONT_SIZE_SCRIPT]));
+	screenSmallerED->setText(toqstr(rc.font_sizes[FONT_SIZE_FOOTNOTE]));
+	screenSmallED->setText(toqstr(rc.font_sizes[FONT_SIZE_SMALL]));
+	screenNormalED->setText(toqstr(rc.font_sizes[FONT_SIZE_NORMAL]));
+	screenLargeED->setText(toqstr(rc.font_sizes[FONT_SIZE_LARGE]));
+	screenLargerED->setText(toqstr(rc.font_sizes[FONT_SIZE_LARGER]));
+	screenLargestED->setText(toqstr(rc.font_sizes[FONT_SIZE_LARGEST]));
+	screenHugeED->setText(toqstr(rc.font_sizes[FONT_SIZE_HUGE]));
+	screenHugerED->setText(toqstr(rc.font_sizes[FONT_SIZE_HUGER]));
 }
 
 

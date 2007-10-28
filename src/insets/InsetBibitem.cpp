@@ -18,7 +18,6 @@
 #include "Counters.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "Font.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Lexer.h"
@@ -149,11 +148,10 @@ docstring const bibitemWidest(Buffer const & buffer)
 	It is very important that the result of this function is the same both with
 	and without GUI. After thinking about this it is clear that no Font
 	metrics should be used here, since these come from the gui. If we can't
-	easily get the LaTeX font metrics we should make our own poor mans front
+	easily get the LaTeX font metrics we should make our own poor mans font
 	metrics replacement, e.g. by hardcoding the metrics of the standard TeX
 	font.
 	*/
-	Font font;
 
 	ParagraphList::const_iterator it = buffer.paragraphs().begin();
 	ParagraphList::const_iterator end = buffer.paragraphs().end();

@@ -39,10 +39,10 @@ enum FontState {
 	INHERIT
 };
 
-typedef std::pair<QString, Font::FONT_FAMILY> FamilyPair;
-typedef std::pair<QString, Font::FONT_SERIES> SeriesPair;
-typedef std::pair<QString, Font::FONT_SHAPE>  ShapePair;
-typedef std::pair<QString, Font::FONT_SIZE>   SizePair;
+typedef std::pair<QString, FontFamily> FamilyPair;
+typedef std::pair<QString, FontSeries> SeriesPair;
+typedef std::pair<QString, FontShape>  ShapePair;
+typedef std::pair<QString, FontSize>   SizePair;
 typedef std::pair<QString, FontState> BarPair;
 typedef std::pair<QString, ColorCode> ColorPair;
 
@@ -83,13 +83,13 @@ private:
 	kb_action getLfun() const { return LFUN_FONT_FREE_UPDATE; }
 
 	///
-	void setFamily(Font::FONT_FAMILY);
+	void setFamily(FontFamily);
 	///
-	void setSeries(Font::FONT_SERIES);
+	void setSeries(FontSeries);
 	///
-	void setShape(Font::FONT_SHAPE);
+	void setShape(FontShape);
 	///
-	void setSize(Font::FONT_SIZE);
+	void setSize(FontSize);
 	///
 	void setBar(FontState);
 	///
@@ -98,13 +98,13 @@ private:
 	void setLanguage(std::string const &);
 
 	///
-	Font::FONT_FAMILY getFamily() const;
+	FontFamily getFamily() const;
 	///
-	Font::FONT_SERIES getSeries() const;
+	FontSeries getSeries() const;
 	///
-	Font::FONT_SHAPE getShape() const;
+	FontShape getShape() const;
 	///
-	Font::FONT_SIZE getSize() const;
+	FontSize getSize() const;
 	///
 	FontState getBar() const;
 	///

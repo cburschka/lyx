@@ -101,7 +101,7 @@ public:
 		// The font used to display the version info
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Bold);
-		font.setPointSize(convert<int>(lyxrc.font_sizes[Font::SIZE_LARGE]));
+		font.setPointSize(convert<int>(lyxrc.font_sizes[FONT_SIZE_LARGE]));
 		pain.setFont(font);
 		pain.drawText(260, 270, text);
 	}

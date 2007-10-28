@@ -291,7 +291,7 @@ int getEndLabel(pit_type p, ParagraphList const & pars)
 Font const outerFont(pit_type par_offset, ParagraphList const & pars)
 {
 	depth_type par_depth = pars[par_offset].getDepth();
-	Font tmpfont(Font::ALL_INHERIT);
+	FontInfo tmpfont = inherit_font;
 
 	// Resolve against environment font information
 	while (par_offset != pit_type(pars.size())
@@ -304,7 +304,7 @@ Font const outerFont(pit_type par_offset, ParagraphList const & pars)
 		}
 	}
 
-	return tmpfont;
+	return Font(tmpfont);
 }
 
 

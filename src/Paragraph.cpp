@@ -551,7 +551,7 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 	    && !owner_->isFreeSpacing()
 	    // In typewriter mode, we want to avoid
 	    // ! . ? : at the end of a line
-	    && !(font.family() == Font::TYPEWRITER_FAMILY
+	    && !(font.fontInfo().family() == TYPEWRITER_FAMILY
 		 && (text_[i - 1] == '.'
 		     || text_[i - 1] == '?'
 		     || text_[i - 1] == ':'
@@ -686,7 +686,7 @@ void Paragraph::Private::latexInset(Buffer const & buf,
 				open_font = false;
 			}
 
-			if (running_font.family() == Font::TYPEWRITER_FAMILY)
+			if (running_font.fontInfo().family() == TYPEWRITER_FAMILY)
 				os << '~';
 
 			basefont = owner_->getLayoutFont(bparams, outerfont);
@@ -813,7 +813,7 @@ void Paragraph::Private::latexSpecialChar(
 	if (lyxrc.fontenc == "T1" && latexSpecialT1(c, os, i, column))
 		return;
 
-	if (running_font.family() == Font::TYPEWRITER_FAMILY
+	if (running_font.fontInfo().family() == TYPEWRITER_FAMILY
 		&& latexSpecialTypewriter(c, os, i, column))
 		return;
 
@@ -1109,7 +1109,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 
 	params().write(os);
 
-	Font font1(Font::ALL_INHERIT, bparams.language);
+	Font font1(inherit_font, bparams.language);
 
 	Change running_change = Change(Change::UNCHANGED);
 
@@ -1274,6 +1274,11 @@ bool Paragraph::insetAllowed(InsetCode code)
 }
 
 
+void Paragraph::resetFonts(Font const & font)
+{
+	d->fontlist_.setRange(0, d->text_.size(), font);
+}
+
 // Gets uninstantiated font setting at position.
 Font const Paragraph::getFontSettings(BufferParams const & bparams,
 					 pos_type pos) const
@@ -1290,7 +1295,7 @@ Font const Paragraph::getFontSettings(BufferParams const & bparams,
 	if (pos == size() && !empty())
 		return getFontSettings(bparams, pos - 1);
 
-	return Font(Font::ALL_INHERIT, getParLanguage(bparams));
+	return Font(inherit_font, getParLanguage(bparams));
 }
 
 
@@ -1327,7 +1332,7 @@ Font const Paragraph::getFirstFontSettings(BufferParams const & bparams) const
 	if (!empty() && !d->fontlist_.empty())
 		return d->fontlist_.begin()->font();
 
-	return Font(Font::ALL_INHERIT, bparams.language);
+	return Font(inherit_font, bparams.language);
 }
 
 
@@ -1345,12 +1350,12 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 
 	pos_type const body_pos = beginOfBody();
 	if (pos < body_pos)
-		font.realize(d->layout_->labelfont);
+		font.fontInfo().realize(d->layout_->labelfont);
 	else
-		font.realize(d->layout_->font);
+		font.fontInfo().realize(d->layout_->font);
 
-	font.realize(outerfont);
-	font.realize(bparams.getFont());
+	font.fontInfo().realize(outerfont.fontInfo());
+	font.fontInfo().realize(bparams.getFont().fontInfo());
 
 	return font;
 }
@@ -1361,8 +1366,8 @@ Font const Paragraph::getLabelFont
 {
 	Font tmpfont = layout()->labelfont;
 	tmpfont.setLanguage(getParLanguage(bparams));
-	tmpfont.realize(outerfont);
-	tmpfont.realize(bparams.getFont());
+	tmpfont.fontInfo().realize(outerfont.fontInfo());
+	tmpfont.fontInfo().realize(bparams.getFont().fontInfo());
 	return tmpfont;
 }
 
@@ -1370,17 +1375,16 @@ Font const Paragraph::getLabelFont
 Font const Paragraph::getLayoutFont
 	(BufferParams const & bparams, Font const & outerfont) const
 {
-	Font tmpfont = layout()->font;
-	tmpfont.setLanguage(getParLanguage(bparams));
-	tmpfont.realize(outerfont);
-	tmpfont.realize(bparams.getFont());
-	return tmpfont;
+	FontInfo tmpfont = layout()->font;
+	tmpfont.realize(outerfont.fontInfo());
+	tmpfont.realize(bparams.getFont().fontInfo());
+	return Font(tmpfont, getParLanguage(bparams));
 }
 
 
 /// Returns the height of the highest font in range
-Font_size Paragraph::highestFontInRange
-	(pos_type startpos, pos_type endpos, Font_size def_size) const
+FontSize Paragraph::highestFontInRange
+	(pos_type startpos, pos_type endpos, FontSize def_size) const
 {
 	return d->fontlist_.highestInRange(startpos, endpos, def_size);
 }
@@ -2163,8 +2167,8 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		Font font = getFont(buf.params(), i, outerfont);
 
 		// handle <emphasis> tag
-		if (font_old.emph() != font.emph()) {
-			if (font.emph() == Font::ON) {
+		if (font_old.fontInfo().emph() != font.fontInfo().emph()) {
+			if (font.fontInfo().emph() == FONT_ON) {
 				os << "<emphasis>";
 				emph_flag = true;
 			} else if (i != initial) {

@@ -12,7 +12,7 @@
 #ifndef METRICSINFO_H
 #define METRICSINFO_H
 
-#include "Font.h"
+#include "FontInfo.h"
 #include "support/docstring.h"
 #include <string>
 
@@ -44,12 +44,12 @@ public:
 	///
 	MetricsBase();
 	///
-	MetricsBase(BufferView * bv, Font const & font, int textwidth);
+	MetricsBase(BufferView * bv, FontInfo const & font, int textwidth);
 
 	/// the current view
 	BufferView * bv;
 	/// current font
-	Font font;
+	FontInfo font;
 	/// current math style (display/text/script/..)
 	Styles style;
 	/// name of current font - mathed specific
@@ -68,7 +68,7 @@ public:
 	///
 	MetricsInfo();
 	///
-	MetricsInfo(BufferView * bv, Font const & font, int textwidth);
+	MetricsInfo(BufferView * bv, FontInfo const & font, int textwidth);
 
 	///
 	MetricsBase base;
@@ -151,10 +151,10 @@ protected:
 
 
 // temporarily change some aspect of a font
-class FontChanger : public Changer<Font> {
+class FontChanger : public Changer<FontInfo> {
 public:
 	///
-	FontChanger(Font & orig, docstring const & font);
+	FontChanger(FontInfo & orig, docstring const & font);
 	FontChanger(MetricsBase & mb, char const * const font);
 	///
 	~FontChanger();
@@ -208,10 +208,10 @@ public:
 
 
 // temporarily change the shape of a font
-class ShapeChanger : public Changer<Font, Font::FONT_SHAPE> {
+class ShapeChanger : public Changer<FontInfo, FontShape> {
 public:
 	///
-	ShapeChanger(Font & font, Font::FONT_SHAPE shape);
+	ShapeChanger(FontInfo & font, FontShape shape);
 	///
 	~ShapeChanger();
 };
@@ -229,10 +229,10 @@ public:
 
 
 // temporarily change the used color
-class ColorChanger : public Changer<Font, std::string> {
+class ColorChanger : public Changer<FontInfo, std::string> {
 public:
 	///
-	ColorChanger(Font & font, std::string const & color);
+	ColorChanger(FontInfo & font, std::string const & color);
 	///
 	~ColorChanger();
 };

@@ -127,8 +127,8 @@ void InsetCaption::addToToc(TocList & toclist, Buffer const & buf, ParConstItera
 
 void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Font tmpfont = mi.base.font;
-	mi.base.font = mi.base.bv->buffer().params().getFont();
+	FontInfo tmpfont = mi.base.font;
+	mi.base.font = mi.base.bv->buffer().params().getFont().fontInfo();
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
 	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
@@ -155,8 +155,8 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 	// Answer: the text inset (in buffer_funcs.cpp: setCaption).
 
-	Font tmpfont = pi.base.font;
-	pi.base.font = pi.base.bv->buffer().params().getFont();
+	FontInfo tmpfont = pi.base.font;
+	pi.base.font = pi.base.bv->buffer().params().getFont().fontInfo();
 	pi.pain.text(x, y, full_label_, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
 	pi.base.font = tmpfont;

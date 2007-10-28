@@ -79,10 +79,6 @@ public:
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-#if 0
-	///
-	Font const convertFont(Font const & font) const;
-#endif
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

@@ -14,7 +14,7 @@
 #ifndef LAYOUT_H
 #define LAYOUT_H
 
-#include "Font.h"
+#include "FontInfo.h"
 #include "LayoutEnums.h"
 #include "Spacing.h"
 #include "support/docstring.h"
@@ -94,30 +94,30 @@ public:
 	}
 	/** Default font for this layout/environment.
 	    The main font for this kind of environment. If an attribute has
-	    Font::INHERITED_*, it means that the value is specified by
+	    INHERITED_*, it means that the value is specified by
 	    the defaultfont for the entire layout. If we are nested, the
 	    font is inherited from the font in the environment one level
-	    up until the font is resolved. The values Font::IGNORE_*
-	    and Font::TOGGLE are illegal here.
+	    up until the font is resolved. The values :IGNORE_*
+	    and FONT_TOGGLE are illegal here.
 	*/
-	Font font;
+	FontInfo font;
 
 	/** Default font for labels.
 	    Interpretation the same as for font above
 	*/
-	Font labelfont;
+	FontInfo labelfont;
 
 	/** Resolved version of the font for this layout/environment.
 	    This is a resolved version the default font. The font is resolved
 	    against the defaultfont of the entire layout.
 	*/
-	Font resfont;
+	FontInfo resfont;
 
 	/** Resolved version of the font used for labels.
 	    This is a resolved version the label font. The font is resolved
 	    against the defaultfont of the entire layout.
 	*/
-	Font reslabelfont;
+	FontInfo reslabelfont;
 
 	/// Text that dictates how wide the left margin is on the screen
 	docstring leftmargin;
@@ -251,7 +251,6 @@ private:
 	/// Macro definitions needed for this layout
 	docstring preamble_;
 };
-
 
 } // namespace lyx
 

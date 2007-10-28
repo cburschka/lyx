@@ -16,6 +16,7 @@
 #ifndef PARAGRAPH_H
 #define PARAGRAPH_H
 
+#include "FontEnums.h"
 #include "LayoutPtr.h"
 
 #include "insets/InsetCode.h"
@@ -225,6 +226,9 @@ public:
 	/// (logically) erase the given range; return the number of chars actually erased
 	int eraseChars(pos_type start, pos_type end, bool trackChanges);
 
+	///
+	void resetFonts(Font const & font);
+
 	/** Get uninstantiated font setting. Returns the difference
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable
@@ -238,8 +242,8 @@ public:
 	    font attached to this paragraph.
 	    If pos == -2, use the label font of the layout attached here.
 	    In all cases, the font is instantiated, i.e. does not have any
-	    attributes with values Font::INHERIT, Font::IGNORE or
-	    Font::TOGGLE.
+	    attributes with values FONT_INHERIT, FONT_IGNORE or
+	    FONT_TOGGLE.
 	*/
 	Font const getFont(BufferParams const &, pos_type pos,
 			      Font const & outerfont) const;
@@ -261,8 +265,8 @@ public:
 	/// pos <= size() (there is a dummy font change at the end of each par)
 	void setFont(pos_type pos, Font const & font);
 	/// Returns the height of the highest font in range
-	Font_size highestFontInRange(pos_type startpos,
-					pos_type endpos, Font_size def_size) const;
+	FontSize highestFontInRange(pos_type startpos,
+					pos_type endpos, FontSize def_size) const;
 	///
 	void insert(pos_type pos, docstring const & str,
 		    Font const & font, Change const & change);

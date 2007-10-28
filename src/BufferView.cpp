@@ -468,7 +468,7 @@ bool BufferView::fitCursor()
 {
 	if (cursorStatus(d->cursor_) == CUR_INSIDE) {
 		frontend::FontMetrics const & fm =
-			theFontMetrics(d->cursor_.getFont());
+			theFontMetrics(d->cursor_.getFont().fontInfo());
 		int const asc = fm.maxAscent();
 		int const des = fm.maxDescent();
 		Point const p = getPos(d->cursor_, d->cursor_.boundary());

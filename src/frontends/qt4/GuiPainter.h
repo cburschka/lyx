@@ -21,7 +21,7 @@ class QString;
 
 namespace lyx {
 
-class Font;
+class FontInfo;
 
 namespace frontend {
 
@@ -88,10 +88,10 @@ public:
 
 	/// draw a string at position x, y (y is the baseline)
 	virtual int text(int x, int y,
-		docstring const & str, Font const & f);
+		docstring const & str, FontInfo const & f);
 
 	/// draw a char at position x, y (y is the baseline)
-	virtual int text(int x, int y, char_type c, Font const & f);
+	virtual int text(int x, int y, char_type c, FontInfo const & f);
 
 private:
 	/// draw small caps text
@@ -99,7 +99,7 @@ private:
 	\return width of the drawn text.
 	*/
 	int smallCapsText(int x, int y,
-		QString const & str, Font const & f);
+		QString const & str, FontInfo const & f);
 
 	/// set pen parameters
 	void setQPainterPen(ColorCode col,

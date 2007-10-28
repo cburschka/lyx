@@ -266,7 +266,8 @@ namespace {
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
 	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1), textTargetOffset_(0),
-	  selection_(false), mark_(false), logicalpos_(false), current_font(Font::ALL_INHERIT)
+	  selection_(false), mark_(false), logicalpos_(false),
+	  current_font(inherit_font)
 {}
 
 
@@ -1544,9 +1545,9 @@ void Cursor::setCurrentFont()
 	    && !boundary()) {
 		Language const * lang = par.getParLanguage(bufparams);
 		current_font.setLanguage(lang);
-		current_font.setNumber(Font::OFF);
+		current_font.fontInfo().setNumber(FONT_OFF);
 		real_current_font.setLanguage(lang);
-		real_current_font.setNumber(Font::OFF);
+		real_current_font.fontInfo().setNumber(FONT_OFF);
 	}
 }
 

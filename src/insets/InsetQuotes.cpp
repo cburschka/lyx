@@ -14,6 +14,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "debug.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -216,14 +217,16 @@ docstring const InsetQuotes::dispString(Language const * loclang) const
 
 void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Font & font = mi.base.font;
+	FontInfo & font = mi.base.font;
 	frontend::FontMetrics const & fm =
 		theFontMetrics(font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 	dim.wid = 0;
 
-	docstring const text = dispString(font.language());
+	// FIXME: should we add a language or a font parameter member?
+	docstring const text = dispString(
+		mi.base.bv->buffer().params().language);
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
 			dim.wid += fm.width('i');
@@ -235,22 +238,11 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-#if 0
-Font const InsetQuotes::convertFont(Font const & f) const
-{
-#if 1
-	return f;
-#else
-	Font font(f);
-	return font;
-#endif
-}
-#endif
-
-
 void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
-	docstring const text = dispString(pi.base.font.language());
+	// FIXME: should we add a language or a font parameter member?
+	docstring const text = dispString(
+		pi.base.bv->buffer().params().language);
 
 	if (text.length() == 2 && text[0] == text[1]) {
 		pi.pain.text(x, y, text[0], pi.base.font);

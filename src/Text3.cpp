@@ -90,7 +90,7 @@ using support::isStrUnsignedInt;
 using support::token;
 
 // globals...
-static Font freefont(Font::ALL_IGNORE);
+static Font freefont(ignore_font);
 static bool toggleall = false;
 
 static void toggleAndShow(Cursor & cur, Text * text,
@@ -99,7 +99,7 @@ static void toggleAndShow(Cursor & cur, Text * text,
 	text->toggleFree(cur, font, toggleall);
 
 	if (font.language() != ignore_language ||
-			font.number() != Font::IGNORE) {
+			font.fontInfo().number() != FONT_IGNORE) {
 		TextMetrics const & tm = cur.bv().textMetrics(text);
 		if (cur.boundary() != tm.isRTLBoundary(cur.pit(),
 														cur.pos(), cur.real_current_font))
@@ -246,9 +246,9 @@ string const freefont2string()
 
 void Text::number(Cursor & cur)
 {
-	Font font(Font::ALL_IGNORE);
-	font.setNumber(Font::TOGGLE);
-	toggleAndShow(cur, this, font);
+	FontInfo font = ignore_font;
+	font.setNumber(FONT_TOGGLE);
+	toggleAndShow(cur, this, Font(font));
 }
 
 
@@ -795,9 +795,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_SERVER_GET_FONT:
-		if (cur.current_font.shape() == Font::ITALIC_SHAPE)
+		if (cur.current_font.fontInfo().shape() == ITALIC_SHAPE)
 			cur.message(from_ascii("E"));
-		else if (cur.current_font.shape() == Font::SMALLCAPS_SHAPE)
+		else if (cur.current_font.fontInfo().shape() == SMALLCAPS_SHAPE)
 			cur.message(from_ascii("N"));
 		else
 			cur.message(from_ascii("0"));
@@ -1307,63 +1307,63 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_FONT_EMPH: {
-		Font font(Font::ALL_IGNORE);
-		font.setEmph(Font::TOGGLE);
+		Font font(ignore_font);
+		font.fontInfo().setEmph(FONT_TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_BOLD: {
-		Font font(Font::ALL_IGNORE);
-		font.setSeries(Font::BOLD_SERIES);
+		Font font(ignore_font);
+		font.fontInfo().setSeries(BOLD_SERIES);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_NOUN: {
-		Font font(Font::ALL_IGNORE);
-		font.setNoun(Font::TOGGLE);
+		Font font(ignore_font);
+		font.fontInfo().setNoun(FONT_TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_TYPEWRITER: {
-		Font font(Font::ALL_IGNORE);
-		font.setFamily(Font::TYPEWRITER_FAMILY); // no good
+		Font font(ignore_font);
+		font.fontInfo().setFamily(TYPEWRITER_FAMILY); // no good
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_SANS: {
-		Font font(Font::ALL_IGNORE);
-		font.setFamily(Font::SANS_FAMILY);
+		Font font(ignore_font);
+		font.fontInfo().setFamily(SANS_FAMILY);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_ROMAN: {
-		Font font(Font::ALL_IGNORE);
-		font.setFamily(Font::ROMAN_FAMILY);
+		Font font(ignore_font);
+		font.fontInfo().setFamily(ROMAN_FAMILY);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_DEFAULT: {
-		Font font(Font::ALL_INHERIT, ignore_language);
+		Font font(inherit_font, ignore_language);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_UNDERLINE: {
-		Font font(Font::ALL_IGNORE);
-		font.setUnderbar(Font::TOGGLE);
+		Font font(ignore_font);
+		font.fontInfo().setUnderbar(FONT_TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_SIZE: {
-		Font font(Font::ALL_IGNORE);
-		font.setLyXSize(to_utf8(cmd.argument()));
+		Font font(ignore_font);
+		setLyXSize(to_utf8(cmd.argument()), font.fontInfo());
 		toggleAndShow(cur, this, font);
 		break;
 	}
@@ -1372,7 +1372,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Language const * lang = languages.getLanguage(to_utf8(cmd.argument()));
 		if (!lang)
 			break;
-		Font font(Font::ALL_IGNORE);
+		Font font(ignore_font);
 		font.setLanguage(lang);
 		toggleAndShow(cur, this, font);
 		break;
@@ -1613,6 +1613,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	BOOST_ASSERT(cur.text() == this);
 
 	Font const & font = cur.real_current_font;
+	FontInfo const & fontinfo = font.fontInfo();
 	bool enable = true;
 	InsetCode code = NO_CODE;
 
@@ -1794,27 +1795,27 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_FONT_EMPH:
-		flag.setOnOff(font.emph() == Font::ON);
+		flag.setOnOff(fontinfo.emph() == FONT_ON);
 		return true;
 
 	case LFUN_FONT_NOUN:
-		flag.setOnOff(font.noun() == Font::ON);
+		flag.setOnOff(fontinfo.noun() == FONT_ON);
 		return true;
 
 	case LFUN_FONT_BOLD:
-		flag.setOnOff(font.series() == Font::BOLD_SERIES);
+		flag.setOnOff(fontinfo.series() == BOLD_SERIES);
 		return true;
 
 	case LFUN_FONT_SANS:
-		flag.setOnOff(font.family() == Font::SANS_FAMILY);
+		flag.setOnOff(fontinfo.family() == SANS_FAMILY);
 		return true;
 
 	case LFUN_FONT_ROMAN:
-		flag.setOnOff(font.family() == Font::ROMAN_FAMILY);
+		flag.setOnOff(fontinfo.family() == ROMAN_FAMILY);
 		return true;
 
 	case LFUN_FONT_TYPEWRITER:
-		flag.setOnOff(font.family() == Font::TYPEWRITER_FAMILY);
+		flag.setOnOff(fontinfo.family() == TYPEWRITER_FAMILY);
 		return true;
 
 	case LFUN_CUT:

@@ -17,26 +17,36 @@
 #ifndef TEX2LYX_FONT_H
 #define TEX2LYX_FONT_H
 
+//#include "FontInfo.h"
+
 namespace lyx {
 
 class Lexer;
 
-class Font {
+class FontInfo
+{
 public:
-	/// Trick to overload constructor and make it megafast
-	enum FONT_INIT1 { ALL_INHERIT };
-	enum FONT_INIT3 { ALL_SANE };
-
-	Font() {}
-	explicit Font(Font::FONT_INIT1) {}
-	explicit Font(Font::FONT_INIT3) {}
-
-	Font & lyxRead(Lexer &);
-
-	Font & realize(Font const &) { return *this; }
+	FontInfo() {}
+	FontInfo & realize(FontInfo const &) { return *this; }
 	bool resolved() const { return true; }
 };
 
+/// Sane font.
+extern FontInfo const sane_font;
+/// All inherit font.
+extern FontInfo const inherit_font;
+/// All ignore font.
+extern FontInfo const ignore_font;
+
+class Font
+{
+public:
+	Font() {}
+	Font(FontInfo const &) {}
+};
+
+/// Read a font specification from Lexer. Used for layout files.
+FontInfo lyxRead(Lexer &);
 
 } // namespace lyx
 

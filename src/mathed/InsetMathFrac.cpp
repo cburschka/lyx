@@ -121,21 +121,21 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
-			ShapeChanger dummy2(mi.base.font, Font::UP_SHAPE);
+			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
 			cell(0).metrics(mi, dim0);
 			dim.wid = dim0.width()+ 3;
 			dim.asc = dim0.asc;
 			dim.des = dim0.des;
 		} else if (nargs() == 2) {
 			cell(0).metrics(mi, dim0);
-			ShapeChanger dummy2(mi.base.font, Font::UP_SHAPE);
+			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
 			cell(1).metrics(mi, dim1);
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = std::max(dim0.asc, dim1.asc);
 			dim.des = std::max(dim0.des, dim1.des);
 		} else {
 			cell(2).metrics(mi, dim2);
-			ShapeChanger dummy2(mi.base.font, Font::UP_SHAPE);
+			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
 			FracChanger dummy(mi.base);
 			cell(0).metrics(mi, dim0);
 			cell(1).metrics(mi, dim1);
@@ -155,7 +155,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.asc = dim0.height() + 5;
 			dim.des = dim1.height() - 5;
 		} else if (kind_ == UNITFRAC) {
-			ShapeChanger dummy2(mi.base.font, Font::UP_SHAPE);
+			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = dim0.height() + 5;
 			dim.des = dim1.height() - 5;
@@ -179,15 +179,15 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	int m = x + dim.wid / 2;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
-			ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
+			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
 			cell(0).draw(pi, x + 1, y);
 		} else if (nargs() == 2) {
 			cell(0).draw(pi, x + 1, y);
-			ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
+			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
 			cell(1).draw(pi, x + dim0.width() + 5, y);
 		} else {
 			cell(2).draw(pi, x + 1, y);
-			ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
+			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
 			FracChanger dummy(pi.base);
 			Dimension const dim1 = cell(1).dimension(*pi.base.bv);
 			Dimension const dim2 = cell(2).dimension(*pi.base.bv);
@@ -206,7 +206,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			cell(1).draw(pi, x + dim0.width() + 5,
 					y + dim1.asc / 2);
 		} else if (kind_ == UNITFRAC) {
-			ShapeChanger dummy2(pi.base.font, Font::UP_SHAPE);
+			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
 			cell(0).draw(pi, x + 2,
 					y - dim0.des - 5);
 			cell(1).draw(pi, x + dim0.width() + 5,

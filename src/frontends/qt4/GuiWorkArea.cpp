@@ -570,7 +570,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	GuiPainter pain(&screen_);
 	buffer_view_->updateMetrics(false);
 	buffer_view_->draw(pain);
-	Font font = buffer_view_->cursor().getFont();
+	FontInfo font = buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
 	int height = fm.maxHeight();
 	int cur_x = cursor_->rect().left();

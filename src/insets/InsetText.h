@@ -13,7 +13,6 @@
 #define INSETTEXT_H
 
 #include "Inset.h"
-#include "Font.h"
 #include "Text.h"
 
 #include "support/types.h"

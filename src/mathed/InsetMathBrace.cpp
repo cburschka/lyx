@@ -56,7 +56,7 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 {
-	Font font = pi.base.font;
+	FontInfo font = pi.base.font;
 	font.setColor(Color_latex);
 	Dimension t = theFontMetrics(font).dimension('{');
 	pi.pain.text(x, y, '{', font);

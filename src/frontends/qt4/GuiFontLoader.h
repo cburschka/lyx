@@ -14,10 +14,11 @@
 
 #include "frontends/FontLoader.h"
 
+#include "FontInfo.h"
+
 #include "GuiFontMetrics.h"
 
 #include "Encoding.h"
-#include "Font.h"
 
 #include <QFont>
 
@@ -33,7 +34,7 @@ namespace frontend {
 class GuiFontInfo
 {
 public:
-	GuiFontInfo(Font const & f);
+	GuiFontInfo(FontInfo const & f);
 
 	/// The font instance
 	QFont font;
@@ -53,19 +54,19 @@ public:
 	virtual ~GuiFontLoader() {}
 
 	virtual void update();
-	virtual bool available(Font const & f);
-	inline virtual FontMetrics const & metrics(Font const & f) {
+	virtual bool available(FontInfo const & f);
+	inline virtual FontMetrics const & metrics(FontInfo const & f) {
 		return *fontinfo(f).metrics.get();
 	}
 
-	/// Get the QFont for this Font
-	QFont const & get(Font const & f) {
+	/// Get the QFont for this FontInfo
+	QFont const & get(FontInfo const & f) {
 		return fontinfo(f).font;
 	}
 
 
 	/// Get font info (font + metrics) for the given LyX font.
-	GuiFontInfo & fontinfo(Font const & f) {
+	GuiFontInfo & fontinfo(FontInfo const & f) {
 		// fi is a reference to the pointer type (GuiFontInfo *) in the
 		// fontinfo_ table.
 		GuiFontInfo * & fi =
@@ -77,7 +78,7 @@ public:
 
 private:
 	/// BUTT ugly !
-	GuiFontInfo * fontinfo_[Font::NUM_FAMILIES][2][4][10];
+	GuiFontInfo * fontinfo_[NUM_FAMILIES][2][4][10];
 };
 
 

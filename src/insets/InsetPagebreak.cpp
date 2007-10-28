@@ -52,7 +52,7 @@ void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 {
-	Font font;
+	FontInfo font;
 	font.setColor(Color_pagebreak);
 	font.decSize();
 

@@ -56,7 +56,7 @@ private:
 	paragraph or, in the case of nested paragraphs, from the
 	layout in the environment one level up until completely
 	resolved.
-	The values Font::IGNORE_* and Font::TOGGLE are NOT
+	The values Font::IGNORE_* and FONT_TOGGLE are NOT
 	allowed in these font tables.
 	*/
 	Font font_;
@@ -104,10 +104,10 @@ public:
 	void decreasePosAfterPos(pos_type pos);
 
 	/// Returns the height of the highest font in range
-	Font_size highestInRange(
+	FontSize highestInRange(
 		pos_type startpos,
 		pos_type endpos,
-		Font_size def_size
+		FontSize def_size
 		) const;
 
 	/// is there a font change in middle of the word?

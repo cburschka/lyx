@@ -41,7 +41,7 @@ void RenderButton::update(docstring const & text, bool editable)
 
 void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 {
-	Font font(Font::ALL_SANE);
+	FontInfo font = sane_font;
 	font.decSize();
 	frontend::FontMetrics const & fm =
 		theFontMetrics(font);
@@ -59,7 +59,7 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 void RenderButton::draw(PainterInfo & pi, int x, int y) const
 {
 	// Draw it as a box with the LaTeX text
-	Font font(Font::ALL_SANE);
+	FontInfo font = sane_font;
 	font.setColor(Color_command);
 	font.decSize();
 

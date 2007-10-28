@@ -48,54 +48,57 @@ int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
 
 
 namespace lyx {
+
+extern docstring const stateText(FontInfo const & f);
+
 namespace frontend {
 
 namespace {
 
 struct SymbolFont {
-	Font::FONT_FAMILY lyx_family;
+	FontFamily lyx_family;
 	QString family;
 	QString xlfd;
 };
 
 SymbolFont symbol_fonts[] = {
-	{ Font::SYMBOL_FAMILY,
+	{ SYMBOL_FAMILY,
 		"symbol",
 		"-*-symbol-*-*-*-*-*-*-*-*-*-*-adobe-fontspecific" },
 
-	{ Font::CMR_FAMILY,
+	{ CMR_FAMILY,
 		"cmr10",
 		"-*-cmr10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ Font::CMSY_FAMILY,
+	{ CMSY_FAMILY,
 		"cmsy10",
 		"-*-cmsy10-*-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ Font::CMM_FAMILY,
+	{ CMM_FAMILY,
 		"cmmi10",
 		"-*-cmmi10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ Font::CMEX_FAMILY,
+	{ CMEX_FAMILY,
 		"cmex10",
 		"-*-cmex10-*-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ Font::MSA_FAMILY,
+	{ MSA_FAMILY,
 		"msam10",
 		"-*-msam10-*-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ Font::MSB_FAMILY,
+	{ MSB_FAMILY,
 		"msbm10",
 		"-*-msbm10-*-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ Font::EUFRAK_FAMILY,
+	{ EUFRAK_FAMILY,
 		"eufm10",
 		"-*-eufm10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ Font::WASY_FAMILY,
+	{ WASY_FAMILY,
 		"wasy10",
 		"-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" },
 
-	{ Font::ESINT_FAMILY,
+	{ ESINT_FAMILY,
 		"esint10",
 		"-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
 };
@@ -114,7 +117,7 @@ QString getRawName(QString const & family)
 }
 
 
-QString const symbolFamily(Font::FONT_FAMILY family)
+QString const symbolFamily(FontFamily family)
 {
 	for (size_t i = 0; i < nr_symbol_fonts; ++i) {
 		if (family == symbol_fonts[i].lyx_family)
@@ -124,10 +127,10 @@ QString const symbolFamily(Font::FONT_FAMILY family)
 }
 
 
-bool isSymbolFamily(Font::FONT_FAMILY family)
+bool isSymbolFamily(FontFamily family)
 {
-	return family >= Font::SYMBOL_FAMILY &&
-	       family <= Font::ESINT_FAMILY;
+	return family >= SYMBOL_FAMILY &&
+	       family <= ESINT_FAMILY;
 }
 
 
@@ -209,7 +212,7 @@ GuiFontLoader::GuiFontLoader()
 	}
 #endif
 
-	for (int i1 = 0; i1 < Font::NUM_FAMILIES; ++i1)
+	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3)
 				for (int i4 = 0; i4 < 10; ++i4)
@@ -219,7 +222,7 @@ GuiFontLoader::GuiFontLoader()
 
 void GuiFontLoader::update()
 {
-	for (int i1 = 0; i1 < Font::NUM_FAMILIES; ++i1) {
+	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1) {
 		for (int i2 = 0; i2 < 2; ++i2)
 			for (int i3 = 0; i3 < 4; ++i3)
 				for (int i4 = 0; i4 < 10; ++i4) {
@@ -242,7 +245,7 @@ static QString makeFontName(QString const & family, QString const & foundry)
 }
 
 
-GuiFontInfo::GuiFontInfo(Font const & f)
+GuiFontInfo::GuiFontInfo(FontInfo const & f)
 {
 	font.setKerning(false);
 	QString const pat = symbolFamily(f.family());
@@ -251,7 +254,7 @@ GuiFontInfo::GuiFontInfo(Font const & f)
 		boost::tie(font, tmp) = getSymbolFont(pat);
 	} else {
 		switch (f.family()) {
-		case Font::ROMAN_FAMILY: {
+		case ROMAN_FAMILY: {
 			QString family = makeFontName(toqstr(lyxrc.roman_font_name),
 																		toqstr(lyxrc.roman_font_foundry)); 
 			font.setFamily(family);
@@ -266,11 +269,11 @@ GuiFontInfo::GuiFontInfo(Font const & f)
 #endif
 			break;
 		}
-		case Font::SANS_FAMILY:
+		case SANS_FAMILY:
 			font.setFamily(makeFontName(toqstr(lyxrc.sans_font_name),
 						    toqstr(lyxrc.sans_font_foundry)));
 			break;
-		case Font::TYPEWRITER_FAMILY:
+		case TYPEWRITER_FAMILY:
 			font.setFamily(makeFontName(toqstr(lyxrc.typewriter_font_name),
 						    toqstr(lyxrc.typewriter_font_foundry)));
 			break;
@@ -280,10 +283,10 @@ GuiFontInfo::GuiFontInfo(Font const & f)
 	}
 
 	switch (f.series()) {
-		case Font::MEDIUM_SERIES:
+		case MEDIUM_SERIES:
 			font.setWeight(QFont::Normal);
 			break;
-		case Font::BOLD_SERIES:
+		case BOLD_SERIES:
 			font.setWeight(QFont::Bold);
 			break;
 		default:
@@ -291,15 +294,15 @@ GuiFontInfo::GuiFontInfo(Font const & f)
 	}
 
 	switch (f.realShape()) {
-		case Font::ITALIC_SHAPE:
-		case Font::SLANTED_SHAPE:
+		case ITALIC_SHAPE:
+		case SLANTED_SHAPE:
 			font.setItalic(true);
 			break;
 		default:
 			break;
 	}
 
-	LYXERR(Debug::FONT) << "Font '" << to_utf8(f.stateText(0))
+	LYXERR(Debug::FONT) << "Font '" << to_utf8(stateText(f))
 		<< "' matched by\n" << fromqstr(font.family()) << endl;
 
 	// Is this an exact match?
@@ -317,13 +320,13 @@ GuiFontInfo::GuiFontInfo(Font const & f)
 	LYXERR(Debug::FONT) << "The font has size: "
 			    << font.pointSizeF() << endl;
 
-	if (f.realShape() != Font::SMALLCAPS_SHAPE) {
+	if (f.realShape() != SMALLCAPS_SHAPE) {
 		metrics.reset(new GuiFontMetrics(font));
 	}
 	else {
 		// handle small caps ourselves ...
-		Font smallfont = f;
-		smallfont.decSize().decSize().setShape(Font::UP_SHAPE);
+		FontInfo smallfont = f;
+		smallfont.decSize().decSize().setShape(UP_SHAPE);
 		QFont font2(font);
 		font2.setKerning(false);
 		font2.setPointSizeF(convert<double>(lyxrc.font_sizes[smallfont.size()])
@@ -335,12 +338,12 @@ GuiFontInfo::GuiFontInfo(Font const & f)
 }
 
 
-bool GuiFontLoader::available(Font const & f)
+bool GuiFontLoader::available(FontInfo const & f)
 {
-	static vector<int> cache_set(Font::NUM_FAMILIES, false);
-	static vector<int> cache(Font::NUM_FAMILIES, false);
+	static vector<int> cache_set(NUM_FAMILIES, false);
+	static vector<int> cache(NUM_FAMILIES, false);
 
-	Font::FONT_FAMILY family = f.family();
+	FontFamily family = f.family();
 	if (cache_set[family])
 		return cache[family];
 	cache_set[family] = true;

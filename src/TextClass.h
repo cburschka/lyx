@@ -11,7 +11,7 @@
 #define LYXTEXTCLASS_H
 
 #include "ColorCode.h"
-#include "Font.h"
+#include "FontInfo.h"
 #include "LayoutEnums.h"
 #include "LayoutPtr.h"
 
@@ -43,8 +43,8 @@ public:
 	std::string latextype;
 	std::string latexname;
 	std::string latexparam;
-	Font font;
-	Font labelfont;
+	FontInfo font;
+	FontInfo labelfont;
 	ColorCode bgcolor;
 	std::string preamble;
 	bool multipar;
@@ -178,7 +178,7 @@ public:
 	OutputType outputType() const;
 
 	///
-	Font const & defaultfont() const;
+	FontInfo const & defaultfont() const;
 
 	/// Text that dictates how wide the left margin is on the screen
 	docstring const & leftmargin() const;
@@ -241,10 +241,10 @@ private:
 	OutputType outputType_;
 	/** Base font. The paragraph and layout fonts are resolved against
 	    this font. This has to be fully instantiated. Attributes
-	    Font::INHERIT, Font::IGNORE, and Font::TOGGLE are
+	    FONT_INHERIT, FONT_IGNORE, and FONT_TOGGLE are
 	    extremely illegal.
 	*/
-	Font defaultfont_;
+	FontInfo defaultfont_;
 	/// Text that dictates how wide the left margin is on the screen
 	docstring leftmargin_;
 

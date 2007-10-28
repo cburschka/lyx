@@ -153,7 +153,7 @@ int Length::inPixels(int text_width, int em_width_base) const
 		? em_width_base
 		: 10*(dpi/72.27)*zoom;
 	// A different estimate for em_width is
-	// theFontMetrics(Font(Font::ALL_SANE)).width('M')
+	// theFontMetrics(FontInfo(sane_font)).width('M')
 	// but this estimate might not be more accurate as the screen font
 	// is different then the latex font.
 

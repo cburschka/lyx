@@ -19,16 +19,16 @@
 #include "TextClass.h"
 
 #include "Box.h"
-#include "Font.h"
 
 #include <string>
 
 namespace lyx {
 
-class Text;
-class Paragraph;
 class CursorSlice;
+class FontInfo;
 class InsetLayout;
+class Paragraph;
+class Text;
 
 namespace frontend { class Painter; }
 
@@ -74,7 +74,7 @@ public:
 	///
 	virtual void setButtonLabel() {}
 	///
-	void setLabelFont(Font const & f);
+	void setLabelFont(FontInfo const & f);
 	///
 	bool isOpen() const { return geometry() != ButtonOnly; }
 	///

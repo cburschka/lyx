@@ -120,7 +120,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (macro.locked()) {
 			mathed_string_dim(mi.base.font, "Self reference: " + name(), dim);
 		} else if (editing(mi.base.bv)) {
-			Font font = mi.base.font;
+			FontInfo font = mi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			tmpl_.metrics(mi, dim);
 			// FIXME UNICODE
@@ -164,7 +164,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			// FIXME UNICODE
 			drawStrRed(pi, x, y, "Self reference: " + name());
 		} else if (editing_) {
-			Font font = pi.base.font;
+			FontInfo font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			Dimension const dim = dimension(*pi.base.bv);
 			Dimension const & dim_tmpl = tmpl_.dimension(*pi.base.bv);
