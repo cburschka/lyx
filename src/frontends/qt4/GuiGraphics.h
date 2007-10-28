@@ -21,7 +21,6 @@
 #include "support/docstring.h"
 #include "insets/InsetGraphics.h"
 
-#include <utility>
 #include <vector>
 
 class QString;
@@ -95,11 +94,6 @@ private:
 
 /// get the units for the bounding box
 std::vector<std::string> const getBBUnits();
-
-/// The (tranlated) GUI std::string and it's LaTeX equivalent.
-typedef std::pair<docstring, std::string> RotationOriginPair;
-///
-std::vector<RotationOriginPair> getRotationOriginData();
 
 } // namespace frontend
 } // namespace lyx

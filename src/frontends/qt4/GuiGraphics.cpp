@@ -129,6 +129,12 @@ getSecond(vector<Pair> const & pr)
 	 return tmp;
 }
 
+/// The (tranlated) GUI std::string and it's LaTeX equivalent.
+typedef std::pair<docstring, std::string> RotationOriginPair;
+///
+std::vector<RotationOriginPair> getRotationOriginData();
+
+
 GuiGraphics::GuiGraphics(LyXView & lv)
 	: GuiDialog(lv, "graphics")
 {
