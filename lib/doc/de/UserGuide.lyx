@@ -190,7 +190,7 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 24.
+letzte Änderung: 28.
  Oktober 2007
 \end_layout
 
@@ -4275,17 +4275,10 @@ Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei
 \family typewriter
 
 \backslash
-begin
-\family default
- 
-\family typewriter
-{
+begin{
 \family default
 \emph on
-en\SpecialChar \-
-vi\SpecialChar \-
-ron\SpecialChar \-
-ment
+environment
 \family typewriter
 \emph default
 } ...
@@ -4295,13 +4288,15 @@ ment
 \family typewriter
 
 \backslash
-end
+end{
 \family default
- {
 \emph on
 environment
+\family typewriter
 \emph default
-}.
+}
+\family default
+.
  Alles zwischen den beiden Befehlen ist ein Absatz.
 \end_layout
 
@@ -4325,9 +4320,8 @@ key "latex-einführung"
 21 und S.\InsetSpace \space{}
 101.
  LaTeX hat offensichtlich Probleme, den Schreibmaschinenfont richtig umzubrechen.
-\end_layout
+\newline
 
-\begin_layout Quotation
 Man kann das mit der Trennhilfe 
 \begin_inset Quotes gld
 \end_inset
@@ -4361,9 +4355,7 @@ reference "URLs"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Quotation
+\newline
 Manchmal hilft 
 \family typewriter
 sloppypar
@@ -14095,6 +14087,60 @@ A-b c
 \end_inset
 
  in einer Zeile gedruckt werden.
+\end_layout
+
+\begin_layout Description
+Anmerkung: Wenn Sie manuelle Trennhilfen innerhalb einer 
+\family sans
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\family default
+-Umgebung benötigen, müssen Sie statt 
+\family sans
+Strg+
+\family default
+\InsetSpace \thinspace{}
+- 
+\begin_inset Quotes gld
+\end_inset
+
+
+\backslash
+-
+\begin_inset Quotes grd
+\end_inset
+
+ als ERT benutzen, weil LyX mit 
+\family sans
+Strg+
+\family default
+\InsetSpace \thinspace{}
+- in 
+\family sans
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Code
+\family default
+-Umgebungen (noch) nicht klarkommt.
 \end_layout
 
 \begin_layout Subsection
@@ -27106,9 +27152,59 @@ captionsgerman{
 \backslash
 renewcommand{
 \backslash
-indexname}
-\newline
-    {Stichwortverzeichnis}}
+indexname}{Stich
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+wort
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+ver
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+zeich
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+nis}}
 \end_layout
 
 \begin_layout Standard
