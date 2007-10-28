@@ -123,13 +123,7 @@ void ShortcutLineEdit::appendToSequence(QKeyEvent * e)
 	KeySymbol sym;
 	setKeySymbol(&sym, e);
 
-	KeyModifier mod = lyx::NoModifier;
-	if (e->modifiers() & Qt::SHIFT)
-		mod |= lyx::ShiftModifier;
-	if (e->modifiers() & Qt::CTRL)
-		mod |= lyx::ControlModifier;
-	if (e->modifiers() & Qt::ALT | e->modifiers() & Qt::META)
-		mod |= lyx::AltModifier;
+	KeyModifier mod = lyx::q_key_state(e->modifiers());
 	
 	keysequence_.addkey(sym, mod, lyx::NoModifier);
 }
