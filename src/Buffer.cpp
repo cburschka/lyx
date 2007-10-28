@@ -2083,12 +2083,10 @@ bool Buffer::writeAs(string const & newname)
 	if (newname.empty()) {	/// No argument? Ask user through dialog
 
 		// FIXME UNICODE
-		FileDialog fileDlg(_("Choose a filename to save document as"),
-				   LFUN_BUFFER_WRITE_AS,
-				   make_pair(_("Documents|#o#O"), 
-					     from_utf8(lyxrc.document_path)),
-				   make_pair(_("Templates|#T#t"), 
-					     from_utf8(lyxrc.template_path)));
+		FileDialog dlg(_("Choose a filename to save document as"),
+				   LFUN_BUFFER_WRITE_AS);
+		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		dlg.setButton2(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
 
 		if (!support::isLyXFilename(fname))
 			fname += ".lyx";
@@ -2096,7 +2094,7 @@ bool Buffer::writeAs(string const & newname)
 		support::FileFilterList const filter(_("LyX Documents (*.lyx)"));
 
 		FileDialog::Result result =
-			fileDlg.save(from_utf8(onlyPath(fname)),
+			dlg.save(from_utf8(onlyPath(fname)),
 				     filter,
 				     from_utf8(onlyFilename(fname)));
 

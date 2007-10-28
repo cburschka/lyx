@@ -16,7 +16,6 @@
 #include "lfuns.h"
 #include "support/docstring.h"
 
-#include <utility>
 #include <string>
 
 
@@ -55,13 +54,12 @@ public:
 	 * additional directories in the navigation (an empty
 	 * directory is interpreted as getcwd())
 	 */
-	FileDialog(docstring const & title,
-		   kb_action a = LFUN_SELECT_FILE_SYNC,
-		   Button b1 = Button(docstring(), docstring()),
-		   Button b2 = Button(docstring(), docstring()));
-
+	FileDialog(docstring const & title, kb_action a = LFUN_SELECT_FILE_SYNC);
 
 	~FileDialog();
+
+	void setButton1(docstring const & label, docstring const & dir);
+	void setButton2(docstring const & label, docstring const & dir);
 
 	/// Choose a file for opening, starting in directory \c path.
 	Result const open(docstring const & path,

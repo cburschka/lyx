@@ -761,14 +761,15 @@ docstring const GuiGraphics::browse(docstring const & in_name) const
 	// Does user clipart directory exist?
 	string clipdir = addName(package().user_support().absFilename(), "clipart");
 	FileName clip(clipdir);
+
+	// bail out to system clipart directory
 	if (!clip.exists() && clip.isDirectory())
-		// No - bail out to system clipart directory
 		clipdir = addName(package().system_support().absFilename(), "clipart");
-	pair<docstring, docstring> dir1(_("Clipart|#C#c"), from_utf8(clipdir));
-	pair<docstring, docstring> dir2(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-	// Show the file browser dialog
+
 	return browseRelFile(in_name, from_utf8(bufferFilepath()),
-		title, FileFilterList(), false, dir1, dir2);
+		title, FileFilterList(), false, 
+		_("Clipart|#C#c"), from_utf8(clipdir),
+		_("Documents|#o#O"), from_utf8(lyxrc.document_path));
 }
 
 

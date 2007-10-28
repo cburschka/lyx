@@ -2190,13 +2190,12 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	// The template stuff
 	string templname;
 	if (fromTemplate) {
-		FileDialog fileDlg(_("Select template file"),
-			LFUN_SELECT_FILE_SYNC,
-			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Templates|#T#t"), from_utf8(lyxrc.template_path)));
+		FileDialog dlg(_("Select template file"));
+		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		dlg.setButton1(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
 
 		FileDialog::Result result =
-			fileDlg.open(from_utf8(lyxrc.template_path),
+			dlg.open(from_utf8(lyxrc.template_path),
 				     FileFilterList(_("LyX Documents (*.lyx)")),
 				     docstring());
 
@@ -2227,13 +2226,13 @@ void LyXFunc::open(string const & fname)
 	string filename;
 
 	if (fname.empty()) {
-		FileDialog fileDlg(_("Select document to open"),
-			LFUN_FILE_OPEN,
-			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support().absFilename(), "examples"))));
+		FileDialog dlg(_("Select document to open"), LFUN_FILE_OPEN);
+		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		dlg.setButton2(_("Examples|#E#e"),
+				from_utf8(addPath(package().system_support().absFilename(), "examples")));
 
 		FileDialog::Result result =
-			fileDlg.open(from_utf8(initpath),
+			dlg.open(from_utf8(initpath),
 				     FileFilterList(_("LyX Documents (*.lyx)")),
 				     docstring());
 
@@ -2304,11 +2303,10 @@ void LyXFunc::doImport(string const & argument)
 		docstring const text = bformat(_("Select %1$s file to import"),
 			formats.prettyName(format));
 
-		FileDialog fileDlg(text,
-			LFUN_BUFFER_IMPORT,
-			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Examples|#E#e"),
-				  from_utf8(addPath(package().system_support().absFilename(), "examples"))));
+		FileDialog dlg(text, LFUN_BUFFER_IMPORT);
+		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		dlg.setButton2(_("Examples|#E#e"),
+			from_utf8(addPath(package().system_support().absFilename(), "examples")));
 
 		docstring filter = formats.prettyName(format);
 		filter += " (*.";
@@ -2317,7 +2315,7 @@ void LyXFunc::doImport(string const & argument)
 		filter += ')';
 
 		FileDialog::Result result =
-			fileDlg.open(from_utf8(initpath),
+			dlg.open(from_utf8(initpath),
 				     FileFilterList(filter),
 				     docstring());
 

@@ -364,13 +364,10 @@ docstring GuiInclude::browse(docstring const & in_name, Type in_type) const
 		break;
 	}
 
-	pair<docstring, docstring> dir1(_("Documents|#o#O"),
-		from_utf8(lyxrc.document_path));
-
 	docstring const docpath = from_utf8(onlyPath(buffer().absFileName()));
 
-	return browseRelFile(in_name, docpath, title,
-			     filters, false, dir1);
+	return browseRelFile(in_name, docpath, title, filters, false, 
+		_("Documents|#o#O"), from_utf8(lyxrc.document_path));
 }
 
 

@@ -793,14 +793,14 @@ docstring const GuiExternal::browse(docstring const & input,
 {
 	docstring const title =  _("Select external file");
 
-	docstring const bufpath = lyx::from_utf8(bufferFilepath());
+	docstring const bufpath = from_utf8(bufferFilepath());
 	FileFilterList const filter =
-		FileFilterList(lyx::from_utf8(getTemplateFilters(lyx::to_utf8(template_name))));
+		FileFilterList(from_utf8(getTemplateFilters(to_utf8(template_name))));
 
-	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),
-		lyx::from_utf8(lyxrc.document_path));
+	docstring const label1 = _("Documents|#o#O");
+	docstring const dir1 = from_utf8(lyxrc.document_path);
 
-	return browseRelFile(input, bufpath, title, filter, false, dir1);
+	return browseRelFile(input, bufpath, title, filter, false, label1, dir1);
 }
 
 

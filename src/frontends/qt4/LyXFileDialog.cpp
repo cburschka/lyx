@@ -50,8 +50,7 @@ LyXFileDialog::LyXFileDialog(docstring const & t,
 			     FileDialog::Button const & b2)
 				 // FIXME replace that with theApp->gui()->currentView()
 	: QFileDialog(qApp->focusWidget(),
-		      toqstr(t), toqstr(p), toqstr(filters.as_string())),
-		      b1_(0), b2_(0)
+		      toqstr(t), toqstr(p), toqstr(filters.as_string()))
 {
 	setWindowTitle(toqstr(t));
 
@@ -59,28 +58,31 @@ LyXFileDialog::LyXFileDialog(docstring const & t,
 
 	if (!b1.first.empty()) {
 		b1_dir_ = b1.second;
-		b1_ = new QToolButton(this);
-		connect(b1_, SIGNAL(clicked()), this, SLOT(buttonClicked()));
-		b1_->setText(toqstr(getLabel(b1.first)));
-		layout.at(0)->addWidget(b1_);
+		QToolButton * tb = new QToolButton(this);
+		connect(tb, SIGNAL(clicked()), this, SLOT(buttonClicked()));
+		tb->setText(toqstr(getLabel(b1.first)));
+		layout.at(0)->addWidget(tb);
 	}
 
 	if (!b2.first.empty()) {
 		b2_dir_ = b2.second;
-		b2_ = new QToolButton(this);
-		connect(b2_, SIGNAL(clicked()), this, SLOT(buttonClicked()));
-		b2_->setText(toqstr(getLabel(b2.first)));
-		layout.at(0)->addWidget(b2_);
+		QToolButton * tb = new QToolButton(this);
+		connect(tb, SIGNAL(clicked()), this, SLOT(buttonClicked()));
+		tb->setText(toqstr(getLabel(b2.first)));
+		layout.at(0)->addWidget(tb);
 	}
 }
 
 
-void LyXFileDialog::buttonClicked()
+void LyXFileDialog::button1Clicked()
 {
-	if (sender() == b1_)
-		setDirectory(toqstr(b1_dir_));
-	else if (sender() == b2_)
-		setDirectory(toqstr(b2_dir_));
+	setDirectory(toqstr(b1_dir_));
+}
+
+
+void LyXFileDialog::button2Clicked()
+{
+	setDirectory(toqstr(b2_dir_));
 }
 
 } // namespace lyx

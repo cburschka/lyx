@@ -15,9 +15,7 @@
 
 #include "support/docstring.h"
 
-#include <utility>
 #include <vector>
-#include <string>
 
 namespace lyx {
 
@@ -39,15 +37,14 @@ std::vector<LanguagePair> const getLanguageData(bool character_dlg);
 	pattern: *.ps etc.
 	dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-docstring const
-browseFile(docstring const & filename,
-	 docstring const & title,
-	 support::FileFilterList const & filters,
-	 bool save = false,
-	 std::pair<docstring, docstring> const & dir1 =
-	 std::make_pair(docstring(), docstring()),
-	 std::pair<docstring, docstring> const & dir2 =
-	 std::make_pair(docstring(), docstring()));
+docstring browseFile(docstring const & filename,
+	docstring const & title,
+	support::FileFilterList const & filters,
+	bool save = false,
+	docstring const & label1 = docstring(),
+	docstring const & dir1 = docstring(),
+	docstring const & label2 = docstring(),
+	docstring const & dir2 = docstring());
 
 
 /** Wrapper around browseFile which tries to provide a filename
@@ -56,16 +53,15 @@ browseFile(docstring const & filename,
 	of the form "../baz/foo.txt", an absolute path is returned. This is
 	intended to be useful for insets which encapsulate files/
 */
-docstring const
-browseRelFile(docstring const & filename,
-			docstring const & refpath,
-			docstring const & title,
-			support::FileFilterList const & filters,
-			bool save = false,
-			std::pair<docstring, docstring> const & dir1 =
-			std::make_pair(docstring(), docstring()),
-			std::pair<docstring, docstring> const & dir2 =
-			std::make_pair(docstring(), docstring()));
+docstring browseRelFile(docstring const & filename,
+	docstring const & refpath,
+	docstring const & title,
+	support::FileFilterList const & filters,
+	bool save = false,
+	docstring const & label1 = docstring(),
+	docstring const & dir1 = docstring(),
+	docstring const & label2 = docstring(),
+	docstring const & dir2 = docstring());
 
 
 /** Wrapper around browseFile which tries to provide a filename
@@ -73,12 +69,11 @@ browseRelFile(docstring const & filename,
 *  parameters have the same meaning as in the
 *  support::LibFileSearch function.
 */
-docstring const
-browseLibFile(docstring const & dir,
-			docstring const & name,
-			docstring const & ext,
-			docstring const & title,
-			support::FileFilterList const & filters);
+docstring browseLibFile(docstring const & dir,
+	docstring const & name,
+	docstring const & ext,
+	docstring const & title,
+	support::FileFilterList const & filters);
 
 
 /** Launch a file dialog and return the chosen directory.
@@ -86,13 +81,12 @@ browseLibFile(docstring const & dir,
 	title: the title of the dialog.
 	dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-docstring const
-browseDir(docstring const & pathname,
-	 docstring const & title,
-	 std::pair<docstring, docstring> const & dir1 =
-	 std::make_pair(docstring(), docstring()),
-	 std::pair<docstring, docstring> const & dir2 =
-	 std::make_pair(docstring(), docstring()));
+docstring browseDir(docstring const & pathname,
+	docstring const & title,
+	docstring const & label1 = docstring(),
+	docstring const & dir1 = docstring(),
+	docstring const & label2 = docstring(),
+	docstring const & dir2 = docstring());
 
 
 /** Build filelists of all availabe bst/cls/sty-files. Done through

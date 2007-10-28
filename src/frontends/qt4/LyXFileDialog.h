@@ -25,19 +25,20 @@ namespace support { class FileFilterList; }
 class LyXFileDialog : public QFileDialog
 {
 	Q_OBJECT
+
 public:
 	LyXFileDialog(docstring const & title,
 		      docstring const & path,
 		      support::FileFilterList const & filters,
 		      FileDialog::Button const & b1,
 		      FileDialog::Button const & b2);
-public Q_SLOTS:
-	void buttonClicked();
-private:
-	QToolButton * b1_;
-	docstring b1_dir_;
 
-	QToolButton * b2_;
+public Q_SLOTS:
+	void button1Clicked();
+	void button2Clicked();
+
+private:
+	docstring b1_dir_;
 	docstring b2_dir_;
 };
 

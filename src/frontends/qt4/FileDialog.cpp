@@ -58,18 +58,28 @@ public:
 };
 
 
-FileDialog::FileDialog(docstring const & t,
-		       kb_action s, Button b1, Button b2)
+FileDialog::FileDialog(docstring const & t, kb_action s)
 	: private_(new FileDialog::Private), title_(t), success_(s)
-{
-	private_->b1 = b1;
-	private_->b2 = b2;
-}
+{}
 
 
 FileDialog::~FileDialog()
 {
 	delete private_;
+}
+
+
+void FileDialog::setButton1(docstring const & label, docstring const & dir)
+{
+	private_->b1.first = label;
+	private_->b1.second = dir;
+}
+
+
+void FileDialog::setButton2(docstring const & label, docstring const & dir)
+{
+	private_->b2.first = label;
+	private_->b2.second = dir;
 }
 
 

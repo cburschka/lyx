@@ -90,7 +90,7 @@ GuiBibtex::GuiBibtex(LyXView & lv)
 	add_bc_.setCancel(add_->closePB);
 	add_bc_.addCheckedLineEdit(add_->bibED, 0);
 
-	connect(add_->bibED, SIGNAL(textChanged(const QString &)),
+	connect(add_->bibED, SIGNAL(textChanged(QString)),
 		this, SLOT(bibEDChanged()));
 	connect(add_->addPB, SIGNAL(clicked()),
 		this, SLOT(addDatabase()));
@@ -379,23 +379,22 @@ bool GuiBibtex::isValid()
 docstring const GuiBibtex::browseBib(docstring const & in_name) const
 {
 	// FIXME UNICODE
-	pair<docstring, docstring> dir1(_("Documents|#o#O"),
-				  from_utf8(lyxrc.document_path));
+	docstring const label1 = _("Documents|#o#O");
+	docstring const dir1 = from_utf8(lyxrc.document_path);
 	FileFilterList const filter(_("BibTeX Databases (*.bib)"));
 	return browseRelFile(in_name, from_utf8(bufferFilepath()),
-			     _("Select a BibTeX database to add"),
-			     filter, false, dir1);
+		_("Select a BibTeX database to add"), filter, false, label1, dir1);
 }
 
 
 docstring const GuiBibtex::browseBst(docstring const & in_name) const
 {
 	// FIXME UNICODE
-	pair<docstring, docstring> dir1(_("Documents|#o#O"),
-				  from_utf8(lyxrc.document_path));
+	docstring const label1 = _("Documents|#o#O");
+	docstring const dir1 = from_utf8(lyxrc.document_path);
 	FileFilterList const filter(_("BibTeX Styles (*.bst)"));
 	return browseRelFile(in_name, from_utf8(bufferFilepath()),
-			     _("Select a BibTeX style"), filter, false, dir1);
+		_("Select a BibTeX style"), filter, false, label1, dir1);
 }
 
 

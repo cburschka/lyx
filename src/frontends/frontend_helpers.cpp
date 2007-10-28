@@ -34,7 +34,6 @@
 
 using std::string;
 using std::vector;
-using std::pair;
 using std::endl;
 
 namespace lyx {
@@ -104,45 +103,42 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 }
 
 
-docstring const browseFile(docstring const & filename,
-			docstring const & title,
-			FileFilterList const & filters,
-			bool save,
-			pair<docstring,docstring> const & dir1,
-			pair<docstring,docstring> const & dir2)
+docstring browseFile(docstring const & filename, docstring const & title,
+	FileFilterList const & filters, bool save,
+	docstring const & label1, docstring const & dir1,
+	docstring const & label2, docstring const & dir2)
 {
 	docstring lastPath = from_ascii(".");
 	if (!filename.empty())
 		lastPath = from_utf8(onlyPath(to_utf8(filename)));
 
-	FileDialog fileDlg(title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
+	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
+	dlg.setButton1(label1, dir1);
+	dlg.setButton2(label2, dir2);
 
 	FileDialog::Result result;
 
 	if (save)
-		result = fileDlg.save(lastPath, filters,
+		result = dlg.save(lastPath, filters,
 				      from_utf8(onlyFilename(to_utf8(filename))));
 	else
-		result = fileDlg.open(lastPath, filters,
+		result = dlg.open(lastPath, filters,
 				      from_utf8(onlyFilename(to_utf8(filename))));
 
 	return result.second;
 }
 
 
-docstring const browseRelFile(docstring const & filename,
-			   docstring const & refpath,
-			   docstring const & title,
-			   FileFilterList const & filters,
-			   bool save,
-			   pair<docstring,docstring> const & dir1,
-			   pair<docstring,docstring> const & dir2)
+docstring browseRelFile(docstring const & filename, docstring const & refpath,
+	docstring const & title, FileFilterList const & filters, bool save,
+	docstring const & label1, docstring const & dir1,
+	docstring const & label2, docstring const & dir2)
 {
 	docstring const fname = from_utf8(makeAbsPath(
 		to_utf8(filename), to_utf8(refpath)).absFilename());
 
 	docstring const outname = browseFile(fname, title, filters, save,
-					  dir1, dir2);
+					  label1, dir1, label2, dir2);
 	docstring const reloutname = makeRelPath(outname, refpath);
 	if (prefixIs(reloutname, from_ascii("../")))
 		return outname;
@@ -151,18 +147,18 @@ docstring const browseRelFile(docstring const & filename,
 }
 
 
-docstring const browseLibFile(docstring const & dir,
-			   docstring const & name,
-			   docstring const & ext,
-			   docstring const & title,
-			   FileFilterList const & filters)
+docstring browseLibFile(docstring const & dir, docstring const & name,
+	docstring const & ext, docstring const & title,
+	FileFilterList const & filters)
 {
 	// FIXME UNICODE
-	pair<docstring, docstring> const dir1(_("System files|#S#s"),
-		from_utf8(addName(package().system_support().absFilename(), to_utf8(dir))));
+	docstring const label1 = _("System files|#S#s");
+	docstring const dir1 =
+		from_utf8(addName(package().system_support().absFilename(), to_utf8(dir)));
 
-	pair<docstring, docstring> const dir2(_("User files|#U#u"),
-		from_utf8(addName(package().user_support().absFilename(), to_utf8(dir))));
+	docstring const label2 = _("User files|#U#u");
+	docstring const dir2 =
+		from_utf8(addName(package().user_support().absFilename(), to_utf8(dir)));
 
 	docstring const result = browseFile(from_utf8(
 		libFileSearch(to_utf8(dir), to_utf8(name), to_utf8(ext)).absFilename()),
@@ -184,19 +180,20 @@ docstring const browseLibFile(docstring const & dir,
 }
 
 
-docstring const browseDir(docstring const & pathname,
-		       docstring const & title,
-		       pair<docstring,docstring> const & dir1,
-		       pair<docstring,docstring> const & dir2)
+docstring browseDir(docstring const & pathname, docstring const & title,
+	docstring const & label1, docstring const & dir1,
+	docstring const & label2, docstring const & dir2)
 {
 	docstring lastPath = from_ascii(".");
 	if (!pathname.empty())
 		lastPath = from_utf8(onlyPath(to_utf8(pathname)));
 
-	FileDialog fileDlg(title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
+	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
+	dlg.setButton1(label1, dir1);
+	dlg.setButton2(label2, dir2);
 
 	FileDialog::Result const result =
-		fileDlg.opendir(lastPath, from_utf8(onlyFilename(to_utf8(pathname))));
+		dlg.opendir(lastPath, from_utf8(onlyFilename(to_utf8(pathname))));
 
 	return result.second;
 }

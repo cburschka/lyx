@@ -1941,15 +1941,14 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 			initpath = trypath;
 
 		// FIXME UNICODE
-		FileDialog fileDlg(_("Select LyX document to insert"),
-			LFUN_FILE_INSERT,
-			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
-			make_pair(_("Examples|#E#e"),
-				    from_utf8(addPath(package().system_support().absFilename(),
-				    "examples"))));
+		FileDialog dlg(_("Select LyX document to insert"), LFUN_FILE_INSERT);
+		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		dlg.setButton2(_("Examples|#E#e"),
+			from_utf8(addPath(package().system_support().absFilename(),
+			"examples")));
 
 		FileDialog::Result result =
-			fileDlg.open(from_utf8(initpath),
+			dlg.open(from_utf8(initpath),
 				     FileFilterList(_("LyX Documents (*.lyx)")),
 				     docstring());
 
@@ -2189,13 +2188,13 @@ docstring BufferView::contentsOfPlaintextFile(string const & f,
 	FileName fname(f);
 
 	if (fname.empty()) {
-		FileDialog fileDlg(_("Select file to insert"),
+		FileDialog dlg(_("Select file to insert"),
 				   ( asParagraph
 				     ? LFUN_FILE_INSERT_PLAINTEXT_PARA 
 				     : LFUN_FILE_INSERT_PLAINTEXT) );
 
 		FileDialog::Result result =
-			fileDlg.open(from_utf8(buffer().filePath()),
+			dlg.open(from_utf8(buffer().filePath()),
 				     FileFilterList(), docstring());
 
 		if (result.first == FileDialog::Later)
