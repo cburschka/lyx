@@ -392,6 +392,10 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathDFrac);
 	if (s == "tfrac")
 		return MathAtom(new InsetMathTFrac);
+	if (s == "dbinom")
+		return MathAtom(new InsetMathDBinom);
+	if (s == "tbinom")
+		return MathAtom(new InsetMathTBinom);
 	if (s == "hphantom")
 		return MathAtom(new InsetMathPhantom(InsetMathPhantom::hphantom));
 	if (s == "phantom")

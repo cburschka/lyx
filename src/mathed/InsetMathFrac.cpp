@@ -549,4 +549,144 @@ void InsetMathBinom::normalize(NormalStream & os) const
 	os << "[binom " << cell(0) << ' ' << cell(1) << ']';
 }
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetMathDBinom
+//
+/////////////////////////////////////////////////////////////////////
+
+Inset * InsetMathDBinom::clone() const
+{
+	return new InsetMathDBinom(*this);
+}
+
+
+int InsetMathDBinom::dw(int height) const
+{
+	int w = height / 5;
+	if (w > 15)
+		w = 15;
+	if (w < 6)
+		w = 6;
+	return w;
+}
+
+
+void InsetMathDBinom::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	Dimension dim0, dim1;
+	cell(0).metrics(mi, dim0);
+	cell(1).metrics(mi, dim1);
+	dim.asc = dim0.height() + 4 + 5;
+	dim.des = dim1.height() + 4 - 5;
+	dim.wid = std::max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
+	metricsMarkers2(dim);
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
+}
+
+
+void InsetMathDBinom::draw(PainterInfo & pi, int x, int y) const
+{
+	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	int m = x + dim.width() / 2;
+	cell(0).draw(pi, m - dim0.width() / 2, y - dim0.des - 3 - 5);
+	cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc  + 3 - 5);
+	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()), dim.height(), from_ascii("("));
+	mathed_draw_deco(pi, x + dim.width() - dw(dim.height()), y - dim.ascent(),
+		dw(dim.height()), dim.height(), from_ascii(")"));
+	drawMarkers2(pi, x, y);
+}
+
+
+docstring InsetMathDBinom::name() const
+{
+	return from_ascii("dbinom");
+}
+
+void InsetMathDBinom::mathmlize(MathStream & os) const
+{
+	os << MTag("mdbinom") << cell(0) << cell(1) << ETag("mdbinom");
+}
+
+void InsetMathDBinom::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	InsetMathNest::validate(features);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetMathTBinom
+//
+/////////////////////////////////////////////////////////////////////
+
+Inset * InsetMathTBinom::clone() const
+{
+	return new InsetMathTBinom(*this);
+}
+
+
+int InsetMathTBinom::dw(int height) const
+{
+	int w = height / 5;
+	if (w > 15)
+		w = 15;
+	if (w < 6)
+		w = 6;
+	return w;
+}
+
+
+void InsetMathTBinom::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	StyleChanger dummy(mi.base, LM_ST_SCRIPT);
+	Dimension dim0, dim1;
+	cell(0).metrics(mi, dim0);
+	cell(1).metrics(mi, dim1);
+	dim.asc = dim0.height() + 4 + 5;
+	dim.des = dim1.height() + 4 - 5;
+	dim.wid = std::max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
+	metricsMarkers2(dim);
+	// Cache the inset dimension. 
+	setDimCache(mi, dim);
+}
+
+
+void InsetMathTBinom::draw(PainterInfo & pi, int x, int y) const
+{
+	StyleChanger dummy(pi.base, LM_ST_SCRIPT);
+	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	int m = x + dim.width() / 2;
+	cell(0).draw(pi, m - dim0.width() / 2, y - dim0.des - 3 - 5);
+	cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc  + 3 - 5);
+	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()), dim.height(), from_ascii("("));
+	mathed_draw_deco(pi, x + dim.width() - dw(dim.height()), y - dim.ascent(),
+		dw(dim.height()), dim.height(), from_ascii(")"));
+	drawMarkers2(pi, x, y);
+}
+
+
+docstring InsetMathTBinom::name() const
+{
+	return from_ascii("tbinom");
+}
+
+void InsetMathTBinom::mathmlize(MathStream & os) const
+{
+	os << MTag("mtbinom") << cell(0) << cell(1) << ETag("mtbinom");
+}
+
+void InsetMathTBinom::validate(LaTeXFeatures & features) const
+{
+	features.require("amsmath");
+	InsetMathNest::validate(features);
+}
+
 } // namespace lyx

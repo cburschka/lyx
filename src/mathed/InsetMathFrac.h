@@ -155,6 +155,50 @@ private:
 };
 
 
+/// \dbinom support
+class InsetMathDBinom : public InsetMathFracBase {
+public:
+	///
+	InsetMathDBinom() {}
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo &, int x, int y) const;
+	///
+	docstring name() const;
+	///
+	void mathmlize(MathStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
+private:
+	Inset * clone() const;
+	///
+	int dw(int height) const;
+};
+
+
+/// \tbinom support
+class InsetMathTBinom : public InsetMathFracBase {
+public:
+	///
+	InsetMathTBinom() {}
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo &, int x, int y) const;
+	///
+	docstring name() const;
+	///
+	void mathmlize(MathStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
+private:
+	Inset * clone() const;
+	///
+	int dw(int height) const;
+};
+
+
 } // namespace lyx
 
 #endif
