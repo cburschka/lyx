@@ -124,14 +124,14 @@ void RowPainter::paintHfill(pos_type const pos, pos_type const body_pos)
 
 void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 {
-	FontInfo font = text_metrics_.getDisplayFont(pit_, pos).fontInfo();
+	Font font = text_metrics_.getDisplayFont(pit_, pos);
 
 	BOOST_ASSERT(inset);
 	// FIXME: We should always use font, see documentation of
 	// noFontChange() in Inset.h.
 	pi_.base.font = inset->noFontChange() ?
 		pi_.base.bv->buffer().params().getFont().fontInfo() :
-		font;
+		font.fontInfo();
 	pi_.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	pi_.erased_ = erased_ || par_.isDeleted(pos);
 	pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
@@ -151,7 +151,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	BOOST_ASSERT(max_witdh_ > 0);
 	int right_margin = text_metrics_.rightMargin(pm_);
 	int const w = max_witdh_ - leftMargin() - right_margin;
-	MetricsInfo mi(pi_.base.bv, font, w);
+	MetricsInfo mi(pi_.base.bv, font.fontInfo(), w);
 	inset->metrics(mi, dim2);
 	if (dim.wid != dim2.wid)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
@@ -198,7 +198,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, FontInfo const & font)
 		if (!Encodings::isComposeChar_hebrew(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
-					text_metrics_.getDisplayFont(pit_, i).fontInfo());
+					text_metrics_.getDisplayFont(pit_, i));
 				dx = (c == 0x05e8 || // resh
 				      c == 0x05d3)   // dalet
 					? width2 - width
@@ -232,7 +232,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, FontInfo const & font)
 		if (!Encodings::isComposeChar_arabic(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 = pm_.singleWidth(i,
-						text_metrics_.getDisplayFont(pit_, i).fontInfo());
+						text_metrics_.getDisplayFont(pit_, i));
 				dx = (width2 - width) / 2;
 			}
 			break;
@@ -352,7 +352,7 @@ void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
 void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = bidi_.vis2log(vpos);
-	Font orig_font = text_metrics_.getDisplayFont(pit_, pos).fontInfo();
+	Font orig_font = text_metrics_.getDisplayFont(pit_, pos);
 	double const orig_x = x_;
 
 	// usual characters, no insets
@@ -704,7 +704,7 @@ void RowPainter::paintText()
 
 	// Use font span to speed things up, see below
 	FontSpan font_span;
-	FontInfo font;
+	Font font;
 
 	// If the last logical character is a separator, don't paint it, unless
 	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
@@ -731,7 +731,7 @@ void RowPainter::paintText()
 		// Use font span to speed things up, see above
 		if (vpos < font_span.first || vpos > font_span.last) {
 			font_span = par_.fontSpan(vpos);
-			font = text_metrics_.getDisplayFont(pit_, vpos).fontInfo();
+			font = text_metrics_.getDisplayFont(pit_, vpos);
 		}
 
 		const int width_pos = pm_.singleWidth(pos, font);
@@ -776,7 +776,7 @@ void RowPainter::paintText()
 			++vpos;
 
 		} else if (par_.isSeparator(pos)) {
-			FontInfo orig_font = text_metrics_.getDisplayFont(pit_, pos).fontInfo();
+			Font orig_font = text_metrics_.getDisplayFont(pit_, pos);
 			double const orig_x = x_;
 			x_ += width_pos;
 			if (pos >= body_pos)
