@@ -231,8 +231,8 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// start of an existing paragraph get the buffer language
 		// and not latex_language, so we take this brute force
 		// approach.
-		cur.current_font = layout->font;
-		cur.real_current_font = layout->font;
+		cur.current_font.fontInfo() = layout->font;
+		cur.real_current_font.fontInfo() = layout->font;
 		cur.current_font.setLanguage(latex_language);
 		cur.real_current_font.setLanguage(latex_language);
 		InsetCollapsable::doDispatch(cur, cmd);

@@ -395,7 +395,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 {
 	BOOST_ASSERT(this == cur.text());
 	// If the mask is completely neutral, tell user
-	if (font == ignore_font) {
+	if (font.fontInfo() == ignore_font) {
 		// Could only happen with user style
 		cur.message(_("No font change defined."));
 		return;

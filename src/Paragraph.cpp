@@ -1364,11 +1364,10 @@ Font const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 Font const Paragraph::getLabelFont
 	(BufferParams const & bparams, Font const & outerfont) const
 {
-	Font tmpfont = layout()->labelfont;
-	tmpfont.setLanguage(getParLanguage(bparams));
-	tmpfont.fontInfo().realize(outerfont.fontInfo());
-	tmpfont.fontInfo().realize(bparams.getFont().fontInfo());
-	return tmpfont;
+	FontInfo tmpfont = layout()->labelfont;
+	tmpfont.realize(outerfont.fontInfo());
+	tmpfont.realize(bparams.getFont().fontInfo());
+	return Font(tmpfont, getParLanguage(bparams));
 }
 
 
@@ -2156,7 +2155,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 	bool emph_flag = false;
 
 	LayoutPtr const & style = layout();
-	Font font_old =
+	FontInfo font_old =
 		style->labeltype == LABEL_MANUAL ? style->labelfont : style->font;
 
 	if (style->pass_thru && !d->onlyText(buf, outerfont, initial))
@@ -2167,7 +2166,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		Font font = getFont(buf.params(), i, outerfont);
 
 		// handle <emphasis> tag
-		if (font_old.fontInfo().emph() != font.fontInfo().emph()) {
+		if (font_old.emph() != font.fontInfo().emph()) {
 			if (font.fontInfo().emph() == FONT_ON) {
 				os << "<emphasis>";
 				emph_flag = true;
@@ -2188,7 +2187,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			else
 				os << sgml::escapeChar(c);
 		}
-		font_old = font;
+		font_old = font.fontInfo();
 	}
 
 	if (emph_flag) {

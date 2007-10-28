@@ -38,7 +38,7 @@ class Font {
 
 public:
 	///
-	Font(FontInfo = sane_font, Language const * l = 0);
+	explicit Font(FontInfo = sane_font, Language const * l = 0);
 
 	///
 	FontInfo & fontInfo() { return bits_; }

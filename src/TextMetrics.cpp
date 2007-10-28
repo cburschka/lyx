@@ -846,7 +846,7 @@ boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const
 	Buffer const & buffer = bv_->buffer();
 	Font font = getDisplayFont(pit, first);
 	FontSize const tmpsize = font.fontInfo().size();
-	font = text_->getLayoutFont(buffer, pit);
+	font.fontInfo() = text_->getLayoutFont(buffer, pit);
 	FontSize const size = font.fontInfo().size();
 	font.fontInfo().setSize(tmpsize);
 
@@ -1742,7 +1742,7 @@ int TextMetrics::leftMargin(int max_width,
 	    && pit > 0 && pars[pit - 1].layout()->nextnoindent)
 		parindent.erase();
 
-	Font const labelfont = text_->getLabelFont(buffer, par);
+	FontInfo const labelfont = text_->getLabelFont(buffer, par);
 	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
 
 	switch (layout->margintype) {
