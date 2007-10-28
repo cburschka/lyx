@@ -173,7 +173,6 @@ src_pre_files = Split('''
     FloatList.cpp
     Floating.cpp
     Font.cpp
-    FontEnums.cpp
     FontInfo.cpp
     FontIterator.cpp
     FontList.cpp
