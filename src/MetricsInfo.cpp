@@ -114,7 +114,6 @@ ArrayChanger::ArrayChanger(MetricsBase & mb)
 {}
 
 
-
 ShapeChanger::ShapeChanger(FontInfo & font, FontShape shape)
 	: Changer<FontInfo, FontShape>(font)
 {
