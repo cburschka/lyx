@@ -29,9 +29,9 @@ class FontInfo
 {
 public:
 	///
-	FontInfo::FontInfo();
+	FontInfo();
 	///
-	FontInfo::FontInfo(
+	FontInfo(
 		FontFamily family,
 		FontSeries series,
 		FontShape shape,
