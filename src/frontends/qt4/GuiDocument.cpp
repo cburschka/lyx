@@ -623,6 +623,18 @@ GuiDocument::GuiDocument(LyXView & lv)
 	connect(bulletsModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
+	// embedded files
+	embeddedFilesModule = new UiWidget<Ui::EmbeddedFilesUi>;
+	connect(embeddedFilesModule, SIGNAL(changed()),
+		this, SLOT(change_adaptor()));
+	
+	connect(embeddedFilesModule->bundleCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(embeddedFilesModule->addPB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(embeddedFilesModule->removePB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+
 	// PDF support
 	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
 
@@ -679,6 +691,7 @@ GuiDocument::GuiDocument(LyXView & lv)
 	docPS->addPanel(floatModule, _("Float Placement"));
 	docPS->addPanel(bulletsModule, _("Bullets"));
 	docPS->addPanel(branchesModule, _("Branches"));
+	docPS->addPanel(embeddedFilesModule, _("Embedded Files"));
 	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
 	docPS->setCurrentPanel(_("Document Class"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
@@ -1258,6 +1271,9 @@ void GuiDocument::apply(BufferParams & params)
 	else
 		pdf.pagemode.clear();
 	pdf.quoted_options = fromqstr(pdfSupportModule->optionsLE->text());
+
+	// Embedded files
+	// FIXME
 }
 
 
