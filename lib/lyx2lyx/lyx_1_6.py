@@ -718,7 +718,7 @@ convert = [[277, [fix_wrong_tables]],
           ]
 
 revert =  [[296, [revert_albanian, revert_lowersorbian]],
-           [295, [revert_include, revert_albanian, revert_lowersorbian]],
+           [295, [revert_include]],
            [294, [revert_href]],
            [293, [revert_pdf_options_2]],
            [292, [revert_inset_info]],
