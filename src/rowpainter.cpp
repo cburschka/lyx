@@ -124,7 +124,7 @@ void RowPainter::paintHfill(pos_type const pos, pos_type const body_pos)
 
 void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 {
-	Font font = text_metrics_.getDisplayFont(pit_, pos);
+	Font const font = text_metrics_.getDisplayFont(pit_, pos);
 
 	BOOST_ASSERT(inset);
 	// FIXME: We should always use font, see documentation of
@@ -322,7 +322,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	docstring s(&str[0], str.size());
 
 	if (prev_change != Change::UNCHANGED) {
-		FontInfo copy(font);
+		FontInfo copy = font;
 		if (prev_change == Change::DELETED) {
 			copy.setColor(Color_deletedtext);
 		} else if (prev_change == Change::INSERTED) {
@@ -352,7 +352,7 @@ void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
 void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = bidi_.vis2log(vpos);
-	Font orig_font = text_metrics_.getDisplayFont(pit_, pos);
+	Font const orig_font = text_metrics_.getDisplayFont(pit_, pos);
 	double const orig_x = x_;
 
 	// usual characters, no insets
@@ -462,7 +462,7 @@ void RowPainter::paintDepthBar()
 
 int RowPainter::paintAppendixStart(int y)
 {
-	FontInfo pb_font;
+	FontInfo pb_font = sane_font;
 	pb_font.setColor(Color_appendix);
 	pb_font.decSize();
 
@@ -573,7 +573,7 @@ void RowPainter::paintFirst()
 		(layout->labeltype == LABEL_TOP_ENVIRONMENT ||
 		layout->labeltype == LABEL_BIBLIO ||
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
-		FontInfo font = getLabelFont();
+		FontInfo const font = getLabelFont();
 		if (!par_.getLabelstring().empty()) {
 			docstring const str = par_.getLabelstring();
 			double spacing_val = 1.0;
@@ -646,7 +646,7 @@ void RowPainter::paintLast()
 	}
 
 	case END_LABEL_STATIC: {
-		FontInfo font = getLabelFont();
+		FontInfo const font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 		docstring const & str = par_.layout()->endlabelstring();
 		double const x = is_rtl ?
@@ -776,7 +776,7 @@ void RowPainter::paintText()
 			++vpos;
 
 		} else if (par_.isSeparator(pos)) {
-			Font orig_font = text_metrics_.getDisplayFont(pit_, pos);
+			Font const orig_font = text_metrics_.getDisplayFont(pit_, pos);
 			double const orig_x = x_;
 			x_ += width_pos;
 			if (pos >= body_pos)
