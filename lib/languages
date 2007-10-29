@@ -1,5 +1,6 @@
 # name      babel name	GUI name	RTL?   encoding	  code	latex options
 afrikaans   afrikaans	"Afrikaans"	false  iso8859-15 af_ZA	 ""
+albanian    albanian	"Albanian"	false  iso8859-2  sq_AL	 ""
 american    american	"American"	false  iso8859-15 en_US	 ""
 # FIXME: dummy babel language for arabic_arabtex to be able to switch the language the way of the ArabTeX-package
 arabic_arabtex arabtex	"Arabic (ArabTeX)" true  cp1256   ar_SA	 ""
@@ -47,8 +48,7 @@ japanese-plain ""	"Japanese (non-CJK)"	false  euc-jp-plain ja_JP	 ""
 kazakh	    kazakh	"Kazakh"	false  pt154      kk_KZ	 ""
 # there is no country code for Korean because ko_KR is the same as ko_KI
 korean      ""		"Korean"	false  euc-kr     ko	 ""
-# babel's sorbian is currently broken (reenable this when the next babel version comes out!)
-#lsorbian    lowersorbian	"Lower Sorbian"	false  iso8859-2  dsb_DE	 ""
+lowersorbian    lowersorbian	"Lower Sorbian"	false  iso8859-2  dsb_DE	 ""
 lithuanian  lithuanian	"Lithuanian"	false  iso8859-13 lt_LT	 ""
 latvian     latvian	"Latvian"	false  iso8859-13 lv_LV	 ""
 icelandic   icelandic	"Icelandic"	false  iso8859-15 is_IS	 ""
@@ -69,7 +69,6 @@ swedish     swedish	"Swedish"	false  iso8859-15 sv_SE	 ""
 thai        thai	"Thai"		false  tis620-0   th_TH	 "\usepackage{thswitch}"
 turkish     turkish	"Turkish"	false  iso8859-9  tr_TR	 ""
 ukrainian   ukrainian	"Ukrainian"	false  koi8-u     uk_UA	 ""
-# babel's sorbian is currently broken (reenable this when the next babel version comes out!)
-#usorbian    uppersorbian	"Upper Sorbian"	false  iso8859-2  hsb_DE	 ""
+uppersorbian    uppersorbian	"Upper Sorbian"	false  iso8859-2  hsb_DE	 ""
 vietnamese  vietnam	"Vietnamese"	false  utf8       vi_VN	 ""
 welsh       welsh	"Welsh"		false  iso8859-15 cy_GB	 ""
