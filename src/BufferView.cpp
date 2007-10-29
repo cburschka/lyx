@@ -1757,6 +1757,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 		d->cursor_.clearSelection();
 
 	d->cursor_.finishUndo();
+	d->cursor_.setCurrentFont();
 	return update;
 }
 
