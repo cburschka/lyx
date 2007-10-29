@@ -660,8 +660,7 @@ std::string Font::toString(bool const toggle) const
 		lang = language()->lang();
 
 	ostringstream os;
-	os << "font: " << '\n'
-	   << "family " << bits_.family() << '\n'
+	os << "family " << bits_.family() << '\n'
 	   << "series " << bits_.series() << '\n'
 	   << "shape " << bits_.shape() << '\n'
 	   << "size " << bits_.size() << '\n'

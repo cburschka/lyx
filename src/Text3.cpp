@@ -1415,6 +1415,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			toggleall = toggle;
 			toggleAndShow(cur, this, freefont, toggleall);
 			cur.message(_("Character set"));
+		} else {
+			lyxerr << "Argument not ok";
 		}
 		break;
 	}
