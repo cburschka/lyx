@@ -1765,6 +1765,7 @@ void PrefShortcuts::apply(LyXRC & rc) const
 	// immediately apply the keybindings. Why this is not done before?
 	// The good thing is that the menus are updated automatically.
 	theTopLevelKeymap().clear();
+	theTopLevelKeymap().read("site");
 	theTopLevelKeymap().read(rc.bind_file);
 	theTopLevelKeymap().read("user");
 }

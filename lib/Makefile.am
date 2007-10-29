@@ -61,6 +61,7 @@ dist_bind_DATA = \
 	bind/math.bind \
 	bind/menus.bind \
 	bind/sciword.bind \
+	bind/site.bind \
 	bind/xemacs.bind \
 	bind/aqua.bind
 

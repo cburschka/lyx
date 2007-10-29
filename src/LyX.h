@@ -144,8 +144,6 @@ private:
 
 	/// initial LyX set up
 	bool init();
-	/// set up the default key bindings
-	void defaultKeyBindings(KeyMap * kbmap);
 	/// set up the default dead key bindings if requested
 	void deadKeyBindings(KeyMap * kbmap);
 	/** Check for the existence of the user's support directory and,

@@ -977,7 +977,7 @@ bool LyX::init()
 
 	// Set up bindings
 	pimpl_->toplevel_keymap_.reset(new KeyMap);
-	defaultKeyBindings(pimpl_->toplevel_keymap_.get());
+	pimpl_->toplevel_keymap_->read("site");
 	pimpl_->toplevel_keymap_->read(lyxrc.bind_file);
 	// load user bind file user.bind
 	pimpl_->toplevel_keymap_->read("user");
@@ -1026,58 +1026,6 @@ bool LyX::init()
 	ConverterCache::init();
 
 	return true;
-}
-
-
-void LyX::defaultKeyBindings(KeyMap  * kbmap)
-{
-	kbmap->bind("Right", FuncRequest(LFUN_CHAR_RIGHT));
-	kbmap->bind("Left", FuncRequest(LFUN_CHAR_LEFT));
-	kbmap->bind("Up", FuncRequest(LFUN_UP));
-	kbmap->bind("Down", FuncRequest(LFUN_DOWN));
-
-	kbmap->bind("Tab", FuncRequest(LFUN_CELL_FORWARD));
-	kbmap->bind("C-Tab", FuncRequest(LFUN_CELL_SPLIT));
-	kbmap->bind("~S-ISO_Left_Tab", FuncRequest(LFUN_CELL_BACKWARD));
-	kbmap->bind("~S-BackTab", FuncRequest(LFUN_CELL_BACKWARD));
-
-	kbmap->bind("Home", FuncRequest(LFUN_LINE_BEGIN));
-	kbmap->bind("End", FuncRequest(LFUN_LINE_END));
-	kbmap->bind("Prior", FuncRequest(LFUN_SCREEN_UP));
-	kbmap->bind("Next", FuncRequest(LFUN_SCREEN_DOWN));
-
-	kbmap->bind("Return", FuncRequest(LFUN_BREAK_PARAGRAPH));
-	//kbmap->bind("~C-~S-~M-nobreakspace", FuncRequest(LFUN_PROTECTEDSPACE));
-
-	kbmap->bind("Delete", FuncRequest(LFUN_CHAR_DELETE_FORWARD));
-	kbmap->bind("BackSpace", FuncRequest(LFUN_CHAR_DELETE_BACKWARD));
-
-	// kbmap->bindings to enable the use of the numeric keypad
-	// e.g. Num Lock set
-	//kbmap->bind("KP_0", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_Decimal", FuncRequest(LFUN_SELF_INSERT));
-	kbmap->bind("KP_Enter", FuncRequest(LFUN_BREAK_PARAGRAPH));
-	//kbmap->bind("KP_1", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_2", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_3", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_4", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_5", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_6", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_Add", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_7", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_8", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_9", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_Divide", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_Multiply", FuncRequest(LFUN_SELF_INSERT));
-	//kbmap->bind("KP_Subtract", FuncRequest(LFUN_SELF_INSERT));
-	kbmap->bind("KP_Right", FuncRequest(LFUN_CHAR_RIGHT));
-	kbmap->bind("KP_Left", FuncRequest(LFUN_CHAR_LEFT));
-	kbmap->bind("KP_Up", FuncRequest(LFUN_UP));
-	kbmap->bind("KP_Down", FuncRequest(LFUN_DOWN));
-	kbmap->bind("KP_Home", FuncRequest(LFUN_LINE_BEGIN));
-	kbmap->bind("KP_End", FuncRequest(LFUN_LINE_END));
-	kbmap->bind("KP_Prior", FuncRequest(LFUN_SCREEN_UP));
-	kbmap->bind("KP_Next", FuncRequest(LFUN_SCREEN_DOWN));
 }
 
 

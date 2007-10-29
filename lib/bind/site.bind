@@ -1,0 +1,50 @@
+# -*- text -*-
+
+# file cua.bind
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+#	author Alfredo Braunstein
+#	author Lars Gullik Bjønnes
+#	author Jean-Marc Lasgouttes
+#	author John Levon
+#	author André Pönitz
+
+# Full author contact details are available in file CREDITS.
+
+# This is the site bind file that defines essential keybindings, and
+# will always be loaded by lyx before other bind files. Package
+# maintainers can customize this file for specific platform.
+
+# DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
+# with every new install of LyX and your changes will be lost.
+# 
+
+\bind "Right"      "char-right"
+\bind "Left"       "char-left"
+\bind "Up"         "up"
+\bind "Down"       "down"
+
+\bind "Tab"        "cell-forward"
+\bind "C-Tab"      "cell-split"
+\bind "~S-ISO_Left_Tab"    "cell-backward"
+\bind "~S-BackTab" "cell-backward"
+
+\bind "Home"       "line-begin"
+\bind "End"        "line-end"
+
+\bind "Prior"      "screen-up"
+\bind "Next"       "screen-down"
+\bind "Return"     "break-paragraph"
+\bind "Delete"     "delete-forward"
+\bind "BackSpace"  "delete-backward"
+
+\bind "KP_Enter"   "break-paragraph"
+\bind "KP_Right"   "char-right"
+\bind "KP_Left"    "char-left"
+\bind "KP_Up"	   "up"
+\bind "KP_Down"    "down"
+\bind "KP_Home"    "line-begin"
+\bind "KP_End"     "line-end"
+\bind "KP_Prior"   "screen-up"
+\bind "KP_Next"    "screen-down"

@@ -2669,6 +2669,7 @@ lib_bind_files = Split('''
     math.bind
     menus.bind
     sciword.bind
+    site.bind
     xemacs.bind
 ''')
 
