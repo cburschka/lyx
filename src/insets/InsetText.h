@@ -13,6 +13,8 @@
 #define INSETTEXT_H
 
 #include "Inset.h"
+
+#include "ColorCode.h"
 #include "Text.h"
 
 #include "support/types.h"
@@ -147,10 +149,8 @@ private:
 
 	///
 	bool drawFrame_;
-	/** We store the ColorCode value as an int to get Color.h out
-	 *  of the header file.
-	 */
-	int frame_color_;
+	///
+	ColorCode frame_color_;
 	///
 	mutable pit_type old_pit;
 

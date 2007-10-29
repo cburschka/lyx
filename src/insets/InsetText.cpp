@@ -367,7 +367,7 @@ void InsetText::setDrawFrame(bool flag)
 
 ColorCode InsetText::frameColor() const
 {
-	return ColorCode(frame_color_);
+	return frame_color_;
 }
 
 
