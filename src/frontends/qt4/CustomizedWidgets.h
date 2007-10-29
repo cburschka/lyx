@@ -19,6 +19,9 @@
 class QEvent;
 class QKeyEvent;
 
+namespace lyx {
+namespace frontend {
+
 /**
  * A lineedit for inputting shortcuts
  */
@@ -38,20 +41,7 @@ private:
 	bool has_cursor_;
 };
 
-
-/**
-  * A lineedit that displays a hint message when there is no
-  * text and not under focus.
-  */
-class SearchLineEdit : public QLineEdit {
-	Q_OBJECT
-public:
-	QString const hintMessage() const;
-	SearchLineEdit(QWidget * parent) : QLineEdit(parent) {}
-protected Q_SLOTS:
-	void focusInEvent(QFocusEvent * e);
-	void focusOutEvent(QFocusEvent * e);
-};
-
+} // namespace frontend
+} // namespace lyx
 
 #endif // CUSTOMIZEDWIDGETS_H

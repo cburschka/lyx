@@ -382,7 +382,7 @@ public Q_SLOTS:
 	void select_bind();
 	void on_newPB_pressed();
 	void on_removePB_pressed();
-	void on_searchLE_textChanged();
+	void on_searchLE_textEdited();
 	///
 	void on_shortcutsTW_itemSelectionChanged();
 	void shortcut_okPB_pressed();

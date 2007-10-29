@@ -1,4 +1,7 @@
 <ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
  <class>PrefShortcuts</class>
  <widget class="QWidget" name="PrefShortcuts" >
   <property name="geometry" >
@@ -6,7 +9,7 @@
     <x>0</x>
     <y>0</y>
     <width>409</width>
-    <height>418</height>
+    <height>494</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -27,57 +30,78 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="6" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+   <item row="1" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
+     <property name="spacing" >
+      <number>6</number>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>51</width>
-       <height>83</height>
-      </size>
-     </property>
-    </spacer>
+     <item>
+      <widget class="QLabel" name="shortcutsLBL" >
+       <property name="text" >
+        <string>Show commands containing:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>searchLE</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="searchLE" />
+     </item>
+    </layout>
    </item>
-   <item row="4" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+   <item row="1" column="2" >
+    <widget class="QPushButton" name="pushButton" >
+     <property name="text" >
+      <string>&lt;- Clea&amp;r</string>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>51</width>
-       <height>83</height>
-      </size>
+     <property name="spacing" >
+      <number>6</number>
      </property>
-    </spacer>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="removePB" >
+       <property name="text" >
+        <string>&amp;Remove</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="newPB" >
+       <property name="text" >
+        <string>New</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QTreeWidget" name="shortcutsTW" />
    </item>
    <item row="0" column="1" >
     <widget class="QLineEdit" name="bindFileED" />
-   </item>
-   <item rowspan="5" row="2" column="0" colspan="2" >
-    <widget class="QTreeWidget" name="shortcutsTW" />
-   </item>
-   <item row="3" column="2" >
-    <widget class="QPushButton" name="removePB" >
-     <property name="text" >
-      <string>Remove</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <widget class="QPushButton" name="newPB" >
-     <property name="text" >
-      <string>New</string>
-     </property>
-    </widget>
    </item>
    <item row="0" column="2" >
     <widget class="QPushButton" name="bindFilePB" >
@@ -96,44 +120,37 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QLabel" name="shortcutsLBL" >
-     <property name="text" >
-      <string>Shortcuts:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2" >
-    <widget class="SearchLineEdit" name="searchLE" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>1</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text" >
-      <string>Search ...</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>SearchLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>CustomizedWidgets.h</header>
-  </customwidget>
- </customwidgets>
+ <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>bindFileED</tabstop>
   <tabstop>bindFilePB</tabstop>
+  <tabstop>searchLE</tabstop>
+  <tabstop>shortcutsTW</tabstop>
+  <tabstop>removePB</tabstop>
+  <tabstop>newPB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>
  </includes>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>searchLE</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>349</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>265</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

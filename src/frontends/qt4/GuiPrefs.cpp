@@ -2021,10 +2021,8 @@ void PrefShortcuts::on_removePB_pressed()
 }
 
 
-void PrefShortcuts::on_searchLE_textChanged()
+void PrefShortcuts::on_searchLE_textEdited()
 {
-	if (searchLE->text() == searchLE->hintMessage())
-		return;
 	if (searchLE->text().isEmpty()) {
 		// show all hidden items
 		QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Hidden);

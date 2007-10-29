@@ -36,6 +36,9 @@ using lyx::KeySequence;
 using lyx::KeyModifier;
 using lyx::toqstr;
 
+namespace lyx {
+namespace frontend {
+
 ShortcutLineEdit::ShortcutLineEdit(QWidget * parent)
 	: QLineEdit(parent), keysequence_()
 {
@@ -128,25 +131,7 @@ void ShortcutLineEdit::appendToSequence(QKeyEvent * e)
 	keysequence_.addkey(sym, mod, lyx::NoModifier);
 }
 
-
-QString const SearchLineEdit::hintMessage() const
-{
-	return toqstr("Search ...");
-}
-
-
-void SearchLineEdit::focusInEvent(QFocusEvent * e)
-{
-	if (text() == hintMessage())
-		clear();
-}
-
-
-void SearchLineEdit::focusOutEvent(QFocusEvent * e)
-{
-	if (text().isEmpty())
-		setText(hintMessage());
-}
-
+} // namespace frontend
+} // namespace lyx
 
 #include "CustomizedWidgets_moc.cpp"
