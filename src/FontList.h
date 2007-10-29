@@ -84,6 +84,8 @@ public:
 	///
 	bool empty() const { return list_.empty(); }
 	///
+	void clear() { return list_.clear(); }
+	///
 	void erase(pos_type pos);
 	///
 	iterator fontIterator(pos_type pos);

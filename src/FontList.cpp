@@ -139,22 +139,36 @@ void FontList::set(pos_type pos, Font const & font)
 	iterator beg = list_.begin();
 	iterator it = beg;
 	iterator endit = list_.end();
+	bool found = false;
 	for (; it != endit; ++it) {
-		if (it->pos() >= pos)
+		if (it->pos() >= pos) {
+			found = true;
 			break;
+		}
 	}
-	size_t const i = distance(beg, it);
-	bool notfound = (it == endit);
-
-	if (!notfound && list_[i].font() == font)
+	if (found && it->font() == font)
 		return;
 
-	bool begin = pos == 0 || notfound ||
-		(i > 0 && list_[i - 1].pos() == pos - 1);
+	size_t const i = distance(beg, it);
+
 	// Is position pos is a beginning of a font block?
-	bool end = !notfound && list_[i].pos() == pos;
+	bool begin = pos == 0 || !found 
+		|| (i > 0 && list_[i - 1].pos() == pos - 1);
+
 	// Is position pos is the end of a font block?
-	if (begin && end) { // A single char block
+	bool end = found && list_[i].pos() == pos;
+
+	if (!begin && !end) {
+		// The general case: The block is splitted into 3 blocks
+		list_.insert(list_.begin() + i,
+				FontTable(pos - 1, list_[i].font()));
+		list_.insert(list_.begin() + i + 1,
+				FontTable(pos, font));
+		return;
+	}
+
+	if (begin && end) {
+		// A single char block
 		if (i + 1 < list_.size() &&
 		    list_[i + 1].font() == font) {
 			// Merge the singleton block with the next block
@@ -179,11 +193,6 @@ void FontList::set(pos_type pos, Font const & font)
 		      list_[i + 1].font() == font))
 			list_.insert(list_.begin() + i + 1,
 					FontTable(pos, font));
-	} else { // The general case. The block is splitted into 3 blocks
-		list_.insert(list_.begin() + i,
-				FontTable(pos - 1, list_[i].font()));
-		list_.insert(list_.begin() + i + 1,
-				FontTable(pos, font));
 	}
 }
 

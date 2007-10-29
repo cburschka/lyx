@@ -1230,7 +1230,8 @@ void Paragraph::appendString(docstring const & s, Font const & font,
 		// track change
 		d->changes_.insert(change, i);
 	}
-	d->fontlist_.setRange(oldsize, newsize, font);
+	d->fontlist_.set(oldsize, font);
+	d->fontlist_.set(newsize - 1, font);
 }
 
 
@@ -1276,7 +1277,9 @@ bool Paragraph::insetAllowed(InsetCode code)
 
 void Paragraph::resetFonts(Font const & font)
 {
-	d->fontlist_.setRange(0, d->text_.size(), font);
+	d->fontlist_.clear();
+	d->fontlist_.set(0, font);
+	d->fontlist_.set(d->text_.size() - 1, font);
 }
 
 // Gets uninstantiated font setting at position.
