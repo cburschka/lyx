@@ -1,6 +1,6 @@
 Function UpdateModifiedFiles
 
- # list with modified files for LyX 1.5.3svn
+ # list with modified files for LyX 1.5.3
  SetOutPath "$INSTDIR\bin"
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
@@ -22,8 +22,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de\clipart"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\clipart\ERT.png"
- SetOutPath "$INSTDIR\Resources\examples\de"
- File "${PRODUCT_SOURCEDIR}\Resources\examples\de\TabellenBeispiel.lyx"
  SetOutPath "$INSTDIR\Resources\examples\es"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\es\ItemizeBullets.lyx"
  SetOutPath "$INSTDIR\Resources\fonts"

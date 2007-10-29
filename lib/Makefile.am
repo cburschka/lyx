@@ -81,8 +81,6 @@ dist_deexamples_DATA = \
 	examples/de/ItemizeBullets.lyx \
 	examples/de/Lebenslauf.lyx \
 	examples/de/Minipage.lyx \
-	examples/de/TabellenBeispiel.lyx \
-	examples/de/Waehrungen.lyx \
 	examples/de/beispiel_gelyxt.lyx \
 	examples/de/beispiel_roh.lyx \
 	examples/de/Dezimal.lyx \
@@ -202,7 +200,6 @@ dist_examples_DATA = \
 	examples/biblioExample.bib \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
-	examples/currency.lyx \
 	examples/docbook_article.lyx \
 	examples/europeCV.lyx \
 	examples/example_lyxified.lyx \

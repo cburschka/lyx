@@ -2475,7 +2475,6 @@ lib_examples_files = Split('''
     biblioExample.bib
     chess-article.lyx
     chessgame.lyx
-    currency.lyx
     docbook_article.lyx
     europeCV.lyx
     example_lyxified.lyx
@@ -2517,8 +2516,6 @@ lib_examples_de_files = Split('''
     ItemizeBullets.lyx
     Lebenslauf.lyx
     Minipage.lyx
-    TabellenBeispiel.lyx
-    Waehrungen.lyx
     beispiel_gelyxt.lyx
     beispiel_roh.lyx
     mathed.lyx

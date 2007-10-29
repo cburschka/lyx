@@ -61,7 +61,7 @@ What's new
 - Fix LaTeX output when using layouts like Definition but not using
   also Theorem (bug 4282).
 
-- Fix support for the upper Sorbian language
+- Fix support for the upper Sorbian language.
 
 
 * USER INTERFACE:
@@ -99,7 +99,13 @@ What's new
 
 - Fix wrong character in the User's Guide (including the translations).
 
-- Fix broken German example file "TabellenBeispiel.lyx".
+- Remove the obsolete example file "currency.lyx" and its German translation
+  "Waehrungen.lyx" because one can since LyX 1.5.0 insert currency symbols
+  directly.
+
+- Remove the now obsolete German example file "TabellenBeispiel.lyx" because
+  its content is described in the EmbeddedObjects manual that is available
+  also in German since LyX 1.5.2
 
 
 * BUILD/INSTALLATION:
