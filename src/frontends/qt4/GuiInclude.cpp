@@ -59,13 +59,8 @@ using support::getStringFromVector;
 using support::getVectorFromString;
 
 
-/// Flags what action is taken by Kernel::dispatch()
-/// Needed because we're not inheriting from GuiCommand
-static std::string const lfun_include_ = "include";
-
-
 GuiInclude::GuiInclude(LyXView & lv)
-	: GuiDialog(lv, "include"), params_(INCLUDE_CODE)
+	: GuiCommand(lv, "include")
 {
 	setupUi(this);
 	setViewTitle(_("Child Document"));
@@ -326,25 +321,6 @@ void GuiInclude::edit()
 bool GuiInclude::isValid()
 {
 	return !filenameED->text().isEmpty() && validate_listings_params().empty();
-}
-
-
-bool GuiInclude::initialiseParams(string const & data)
-{
-	InsetCommandMailer::string2params(lfun_include_, data, params_);
-	return true;
-}
-
-
-void GuiInclude::clearParams()
-{
-	params_.clear();
-}
-
-
-void GuiInclude::dispatchParams()
-{
-	dispatch(FuncRequest(getLfun(), InsetCommandMailer::params2string(lfun_include_, params_)));
 }
 
 

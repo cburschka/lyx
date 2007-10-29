@@ -42,12 +42,8 @@ namespace frontend {
 using support::makeAbsPath;
 using support::makeDisplayPath;
 
-/// Flags what action is taken by Kernel::dispatch()
-/// Needed because we're not inheriting from GuiCommand
-static std::string const lfun_ref_ = "ref";
-
 GuiRef::GuiRef(LyXView & lv)
-	: GuiDialog(lv, "ref"), params_(REF_CODE)
+	: GuiCommand(lv, "ref")
 {
 	setupUi(this);
 	setViewTitle(_("Cross-reference"));
@@ -373,28 +369,6 @@ void GuiRef::gotoRef(string const & ref)
 void GuiRef::gotoBookmark()
 {
 	dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
-}
-
-
-bool GuiRef::initialiseParams(string const & data)
-{
-	// The name passed with LFUN_INSET_APPLY is also the name
-	// used to identify the mailer.
-	InsetCommandMailer::string2params(lfun_ref_, data, params_);
-	return true;
-}
-
-
-void GuiRef::clearParams()
-{
-	params_.clear();
-}
-
-
-void GuiRef::dispatchParams()
-{
-	string const lfun = InsetCommandMailer::params2string(lfun_ref_, params_);
-	dispatch(FuncRequest(getLfun(), lfun));
 }
 
 

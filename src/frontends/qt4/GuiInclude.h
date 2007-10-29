@@ -25,9 +25,7 @@
 namespace lyx {
 namespace frontend {
 
-//FIXME This could, and therefore probably should, inherit from
-//GuiCommand.
-class GuiInclude : public GuiDialog, public Ui::IncludeUi
+class GuiInclude : public GuiCommand, public Ui::IncludeUi
 {
 	Q_OBJECT
 
@@ -50,21 +48,6 @@ private Q_SLOTS:
 	void set_listings_msg();
 
 private:
-	void closeEvent(QCloseEvent * e);
-	///
-	void updateLists();
-	/// validate listings parameters and return an error message, if any
-	docstring validate_listings_params();
-	///
-	void edit(std::string const & file);
-
-	///
-	bool isValid();
-	/// Apply changes
-	void applyView();
-	/// update
-	void updateContents();
-
 	///
 	enum Type {
 		///
@@ -76,22 +59,24 @@ private:
 		///
 		LISTINGS,
 	};
-
 	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams();
-	/// clean-up on hide.
-	void dispatchParams();
+	void closeEvent(QCloseEvent * e);
+	///
+	void updateLists();
+	/// validate listings parameters and return an error message, if any
+	docstring validate_listings_params();
+	///
+	void edit(std::string const & file);
+	///
+	bool isValid();
+	/// Apply changes
+	void applyView();
+	/// update
+	void updateContents();
 	///
 	bool isBufferDependent() const { return true; }
-
 	/// Browse for a file
 	docstring browse(docstring const &, Type) const;
-
-private:
-	///
-	InsetCommandParams params_;
 };
 
 } // namespace frontend

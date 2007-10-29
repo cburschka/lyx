@@ -24,10 +24,7 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-// FIXME This could, and therefore, should inherit from
-// GuiCommand. Note, e.g., that the definitions of the first
-// three private functions all just replicate what's there.
-class GuiRef : public GuiDialog, public Ui::RefUi
+class GuiRef : public GuiCommand, public Ui::RefUi
 {
 	Q_OBJECT
 
@@ -46,14 +43,7 @@ private Q_SLOTS:
 
 private:
 	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams();
-	/// clean-up on hide.
-	void dispatchParams();
-	///
 	bool isBufferDependent() const { return true; }
-
 	/** disconnect from the inset when the Apply button is pressed.
 	 Allows easy insertion of multiple references. */
 	bool disconnectOnApply() const { return true; }
@@ -61,7 +51,6 @@ private:
 	void gotoRef(std::string const &);
 	///
 	void gotoBookmark();
-
 	///
 	void closeEvent(QCloseEvent * e);
 	///
@@ -96,9 +85,6 @@ private:
 	int restored_buffer_;
 	/// the references
 	std::vector<docstring> refs_;
-
-	///
-	InsetCommandParams params_;
 };
 
 } // namespace frontend

@@ -152,6 +152,7 @@ class GuiCommand : public GuiDialog
 {
 public:
 	/// We need to know with what sort of inset we're associated.
+	// FIXME This should probably be an InsetCode
 	GuiCommand(LyXView &, std::string const & name);
 	///
 	bool initialiseParams(std::string const & data);
