@@ -1934,8 +1934,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// (if paragraph background was not cleared)
 		if (row_selection || (!pi.full_repaint && row_has_changed)) {
 			pi.pain.fillRectangle(x, y - rit->ascent(),
-				width(), rit->height(),
-				ColorCode(ColorCode(pi.background_color)));
+				width(), rit->height(), pi.background_color);
 		}
 		if (row_selection) {
 			DocIterator beg = bv_->cursor().selectionBegin();

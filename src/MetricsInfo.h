@@ -12,6 +12,7 @@
 #ifndef METRICSINFO_H
 #define METRICSINFO_H
 
+#include "ColorCode.h"
 #include "FontInfo.h"
 #include "support/docstring.h"
 #include <string>
@@ -99,7 +100,7 @@ public:
 	///
 	bool full_repaint;
 	///
-	int background_color;
+	ColorCode background_color;
 };
 
 class TextMetricsInfo {};

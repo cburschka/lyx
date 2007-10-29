@@ -231,7 +231,7 @@ bool InsetCollapsable::setMouseHover(bool mouse_hover)
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
 	autoOpen_ = pi.base.bv->cursor().isInside(this);
-	int const old_color = pi.background_color;
+	ColorCode old_color = pi.background_color;
 	pi.background_color = backgroundColor();
 
 	// Draw button first -- top, left or only
