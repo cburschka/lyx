@@ -516,6 +516,7 @@ def convert_htmlurl(document):
       document.body[i + 1] = "LatexCommand href"
       i = i + 1
 
+
 def convert_url(document):
     'Convert url insets to url charstyles'
     if document.backend == "docbook":
@@ -570,6 +571,7 @@ def convert_url(document):
         return
       document.header.insert(i + 1, "URL")
 
+
 def revert_href(document):
     'Reverts hyperlink insets (href) to url insets (url)'
     i = 0
@@ -580,6 +582,7 @@ def revert_href(document):
       document.body[i : i + 2] = \
         ["\\begin_inset CommandInset url", "LatexCommand url"]
       i = i + 2
+
 
 def convert_include(document):
   'Converts include insets to new format.'
@@ -608,6 +611,7 @@ def convert_include(document):
       newlines += 1
     document.body[i : i + 2] = insertion
     i += newlines
+
 
 def revert_include(document):
   'Reverts include insets to old format.'
@@ -647,7 +651,43 @@ def revert_include(document):
     insertion = [newline, previewline]
     document.body[i : i + numlines] = insertion
     i += 2
-	
+
+
+def revert_albanian(document):
+    "Set language Albanian to English"
+    # Set document language from Vietnamese to English
+    i = 0
+    if document.language == "albanian":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang albanian", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang albanian", "\\lang english")
+        j = j + 1
+
+
+def revert_lowersorbian(document):
+    "Set language lower Sorbian to English"
+    # Set document language from Vietnamese to English
+    i = 0
+    if document.language == "lowersorbian":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang lowersorbian", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang lowersorbian", "\\lang english")
+        j = j + 1
+
 
 ##
 # Conversion hub
@@ -673,10 +713,12 @@ convert = [[277, [fix_wrong_tables]],
            [293, []],
            [294, [convert_pdf_options]],
            [295, [convert_htmlurl, convert_url]],
-           [296, [convert_include]]
+           [296, [convert_include]],
+           [297, []]
           ]
 
-revert =  [[295, [revert_include]],
+revert =  [[296, [revert_albanian, revert_lowersorbian]],
+           [295, [revert_include, revert_albanian, revert_lowersorbian]],
            [294, [revert_href]],
            [293, [revert_pdf_options_2]],
            [292, [revert_inset_info]],

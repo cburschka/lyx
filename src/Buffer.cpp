@@ -156,7 +156,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 296; //RGH: InsetInclude changes
+int const LYX_FORMAT = 297; //Uwe: Albanian, lower Sorbian
 
 } // namespace anon
 
