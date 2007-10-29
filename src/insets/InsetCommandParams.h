@@ -18,7 +18,6 @@
 #include "support/docstring.h"
 
 #include <iosfwd>
-#include <list>
 #include <string>
 #include <vector>
 
