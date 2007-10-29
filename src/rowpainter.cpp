@@ -141,7 +141,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 
 	Dimension const & dim = pm_.insetDimension(inset);
 
-	paintForeignMark(x_, font, dim.descent());
+	paintForeignMark(x_, font.language(), dim.descent());
 
 	x_ += dim.width();
 
@@ -335,13 +335,14 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 }
 
 
-void RowPainter::paintForeignMark(double orig_x, Font const & font, int desc)
+void RowPainter::paintForeignMark(double orig_x, Language const * lang,
+		int desc)
 {
 	if (!lyxrc.mark_foreign_language)
 		return;
-	if (font.language() == latex_language)
+	if (lang == latex_language)
 		return;
-	if (font.language() == pi_.base.bv->buffer().params().language)
+	if (lang == pi_.base.bv->buffer().params().language)
 		return;
 
 	int const y = yo_ + 1 + desc;
@@ -375,7 +376,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 		paintArabicComposeChar(vpos, orig_font.fontInfo());
 	}
 
-	paintForeignMark(orig_x, orig_font);
+	paintForeignMark(orig_x, orig_font.language());
 }
 
 
@@ -781,7 +782,7 @@ void RowPainter::paintText()
 			x_ += width_pos;
 			if (pos >= body_pos)
 				x_ += row_.separator;
-			paintForeignMark(orig_x, orig_font);
+			paintForeignMark(orig_x, orig_font.language());
 			++vpos;
 
 		} else if (par_.isInset(pos)) {

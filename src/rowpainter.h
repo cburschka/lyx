@@ -23,6 +23,7 @@ class BufferView;
 class Font;
 class FontInfo;
 class Inset;
+class Language;
 class PainterInfo;
 class Paragraph;
 class ParagraphList;
@@ -55,7 +56,7 @@ public:
 	void paintOnlyInsets();
 
 private:
-	void paintForeignMark(double orig_x, Font const & font, int desc = 0);
+	void paintForeignMark(double orig_x, Language const * lang, int desc = 0);
 	void paintHebrewComposeChar(pos_type & vpos, FontInfo const & font);
 	void paintArabicComposeChar(pos_type & vpos, FontInfo const & font);
 	void paintChars(pos_type & vpos, FontInfo const & font,
