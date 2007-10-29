@@ -52,6 +52,7 @@ public:
 	bool needprotect;
 	bool freespacing;
 	bool keepempty;
+	bool forceltr;
 };
 
 

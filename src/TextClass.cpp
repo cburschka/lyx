@@ -614,6 +614,7 @@ enum InsetLayoutTags {
 	IL_BGCOLOR,
 	IL_DECORATION,
 	IL_FREESPACING,
+	IL_FORCELTR,
 	IL_LABELFONT,
 	IL_LABELSTRING,
 	IL_LATEXNAME,
@@ -636,6 +637,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		{ "decoration", IL_DECORATION },
 		{ "end", IL_END },
 		{ "font", IL_FONT },
+		{ "forceltr", IL_FORCELTR },
 		{ "freespacing", IL_FREESPACING },
 		{ "keepempty", IL_KEEPEMPTY },
 		{ "labelfont", IL_LABELFONT },
@@ -667,6 +669,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	bool needprotect(false);
 	bool keepempty(false);
 	bool freespacing(false);
+	bool forceltr(false);
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -705,6 +708,10 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		case IL_LABELFONT:
 			labelfont = lyxRead(lexrc);
 			labelfont.realize(defaultfont());
+			break;
+		case IL_FORCELTR:
+			lexrc.next();
+			forceltr = lexrc.getBool();
 			break;
 		case IL_MULTIPAR:
 			lexrc.next();
@@ -762,6 +769,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.passthru = passthru;
 		il.needprotect = needprotect;
 		il.freespacing = freespacing;
+		il.forceltr = forceltr;
 		il.keepempty = keepempty;
 		il.font = font;
 		il.labelfont = labelfont;
