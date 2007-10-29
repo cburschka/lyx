@@ -58,7 +58,6 @@ Style Theorem
 	LabelType             Counter
 	LabelCounter          theorem
 	LabelString           "Theorem \thetheorem."
-	KeepEmpty             1
 	Font
 	  Shape               Italic
 	  Size                Normal
