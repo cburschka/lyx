@@ -107,10 +107,7 @@ void InsetERT::resetParagraphsFont()
 	ParagraphList::iterator par = paragraphs().begin();
 	ParagraphList::iterator const end = paragraphs().end();
 	while (par != end) {
-		pos_type siz = par->size();
-		for (pos_type i = 0; i <= siz; ++i) {
-			par->setFont(i, font);
-		}
+		par->resetFonts(font);
 		par->params().clear();
 		++par;
 	}
