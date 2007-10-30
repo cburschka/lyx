@@ -147,7 +147,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 29.
+letzte Änderung: 30.
  Oktober 2007
 \end_layout
 
@@ -1034,11 +1034,7 @@ tex2lyx
 \family typewriter
 lyx
 \family default
- kopiert (zum Beispiel 
-\family typewriter
-/usr/local/bin
-\family default
-).
+ kopiert.
  
 \family typewriter
 tex2lyx
@@ -7170,9 +7166,9 @@ Einstellungen
 \family default
  speichern können, können Sie aber Ihre 
 \family typewriter
-.lyx/preference
+.lyx/preferences
 \family default
-s-Datei editieren und folgende Zeile hinzufügen:
+-Datei editieren und folgende Zeile hinzufügen:
 \end_layout
 
 \begin_layout LyX-Code
@@ -9736,27 +9732,14 @@ listerrors
 \end_layout
 
 \begin_layout Standard
-Der Konverter sucht zuerst im Verzeichnis ~/.lyx/scripts, dann in 
-\emph on
-Ly
-\family sans
-\emph default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
+Der Konverter sucht zuerst im Verzeichnis 
+\family typewriter
+~/.lyx/scripts
 \family default
-\emph on
-XDir/scripts
-\emph default
+, dann in 
+\family typewriter
+LyXDir/scripts
+\family default
  und dann im Pfad des 
 \family typewriter
 listerrors
@@ -9839,86 +9822,33 @@ fi
 
 \begin_layout Standard
 Sehen Sie sich die Dateien 
-\emph on
-Ly
-\family sans
-\emph default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
+\family typewriter
+LyXDir/examples/listerrors.lyx
 \family default
-\emph on
-XDir/examples/listerrors.lyx
-\emph default
  und 
-\emph on
-Ly
-\family sans
-\emph default
-
+\family typewriter
+LyXDir/examples/
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-\emph on
-XDir/examples/
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
- 
+""
 \end_layout
 
 \end_inset
 
 Literate.lyx
-\emph default
+\family default
  mit Beispielen, wie das 
 \family typewriter
-"listerrors"
+listerrors
 \family default
 -Programm implementiert werden kann und all diese Teile zusammenwirken,
  oder 
-\emph on
-Ly
-\family sans
-\emph default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-
+\family typewriter
+LyXDir/noweb2lyx.lyx
 \family default
-\emph on
-XDir/noweb2lyx.lyx
-\emph default
  an.
  Interessanterweise zeigen diese drei Dateien die sprachunabhängige Unterstützun
 g von LyX für Literarische Programmierung, denn sie wurden in Python, C
@@ -12129,9 +12059,9 @@ Der dritte Parameter gibt den zu verwendenden Zeichensatz an: Hier kann
 \family typewriter
 tfm
 \family default
--Datei gibt (schauen Sie sich ruhig einmal im Verzeichnis 
+-Datei gibt (schauen Sie sich ruhig einmal im Verzeichnis \SpecialChar \ldots{}
+
 \family typewriter
-\SpecialChar \ldots{}
 /texmf/fonts/tfm
 \family default
  um).
@@ -13210,18 +13140,7 @@ article (A&A V4)
  beibehalten.
  Bitte lesen Sie dazu die Kommentare in der Datei 
 \family typewriter
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{}
-\end_layout
-
-\end_inset
-
-XDir/layouts/aapaper.layout
+LyXDir/layouts/aapaper.layout
 \family default
 .
 \end_layout
@@ -14929,7 +14848,7 @@ aastex.layout
 \family default
  entweder in 
 \family typewriter
-<LyXDir>/lay\SpecialChar \-
+LyXDir/lay\SpecialChar \-
 outs
 \family default
  oder in 
@@ -16434,7 +16353,7 @@ tion
 \emph on
 scrguide
 \emph default
- (zum Beispiel /usr/share/texmf/doc/latex/koma-script/scrguide.
+ (zum Beispiel /usr/share/ texmf/doc/latex/koma-script/scrguide.
  pdf).
 \end_layout
 
