@@ -30,7 +30,6 @@ class QSearchDialog : public QDialog, public Ui::QSearchUi {
 public:
 	QSearchDialog(QSearch * form);
 
-	virtual void show();
 protected Q_SLOTS:
 	void findChanged();
 	void findClicked();
@@ -59,7 +58,7 @@ private:
 	/// Apply changes
 	virtual void apply() {}
 	/// update
-	virtual void update_contents() {}
+	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
 

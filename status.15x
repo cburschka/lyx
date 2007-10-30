@@ -23,10 +23,10 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Update Japanese, Spanish and Traditional Chinese translations of the 
-  interface
+- Update Japanese, Spanish and Traditional Chinese translations of the
+  user interface.
 
-- Spanish translation of the example file "ItemizeBullets.lyx"
+- Spanish translation of the example file "ItemizeBullets.lyx".
 
 
 * USER INTERFACE
@@ -82,7 +82,7 @@ What's new
 
 - Fix DraftDVI preference settings (Windows only).
 
-- Fix a problem on Windows were invalid names were given to backup files
+- Fix a problem on Windows where invalid names were given to backup files
   (bug 4287).
 
 - Fix problem in conversion of equations to eqnarray (when pressing C-Enter).
@@ -93,6 +93,8 @@ What's new
   (bug 4277).
 
 - Fix math display problem with binoms (bug 4308).
+
+- Really highlight search text (bug 3999).
 
 
 * DOCUMENTATION

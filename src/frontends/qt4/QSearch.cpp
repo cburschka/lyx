@@ -50,20 +50,13 @@ QSearchDialog::QSearchDialog(QSearch * form)
 	setupUi(this);
 
 	connect(closePB, SIGNAL(clicked()), form_, SLOT(slotClose()));
-  connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));
-  connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));
-  connect(replaceallPB, SIGNAL(clicked()), this, SLOT(replaceallClicked()));
-  connect(findCO, SIGNAL(editTextChanged(const QString &)),
+	connect(findPB, SIGNAL(clicked()), this, SLOT(findClicked()));
+	connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));
+	connect(replaceallPB, SIGNAL(clicked()), this, SLOT(replaceallClicked()));
+	connect(findCO, SIGNAL(editTextChanged(const QString &)),
 		this, SLOT(findChanged()));
 
 	setFocusProxy(findCO);
-}
-
-
-void QSearchDialog::show()
-{
-	QDialog::show();
-	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
 }
 
 
@@ -96,7 +89,6 @@ void QSearchDialog::findClicked()
 		wordsCB->isChecked(),
 		backwardsCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
-	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
 }
 
 
@@ -152,6 +144,12 @@ void QSearch::build_dialog()
 
 	dialog_->replacePB->setEnabled(false);
 	dialog_->replaceallPB->setEnabled(false);
+}
+
+
+void QSearch::update_contents()
+{
+	dialog_->findCO->lineEdit()->selectAll();
 }
 
 
