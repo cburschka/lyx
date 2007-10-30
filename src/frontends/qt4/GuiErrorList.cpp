@@ -51,7 +51,7 @@ GuiErrorList::GuiErrorList(LyXView & lv)
 		this, SLOT(slotClose()));
 	connect(errorsLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		this, SLOT(slotClose()));
-	connect( errorsLW, SIGNAL(itemClicked(QListWidgetItem *)),
+	connect(errorsLW, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(select(QListWidgetItem *)));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
