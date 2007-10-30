@@ -23,10 +23,12 @@
 #include "FloatList.h"
 #include "FuncStatus.h"
 #include "gettext.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "FuncRequest.h"
 #include "MetricsInfo.h"
+#include "ParagraphParameters.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -157,6 +159,15 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 		status_ = isOpen() ? Open : Collapsed;
 
 	setButtonLabel();
+
+	// Force default font, if so requested
+	// This avoids paragraphs in buffer language that would have a
+	// foreign language after a document language change, and it ensures
+	// that all new text in ERT and similar gets the "latex" language,
+	// since new text inherits the language from the last position of the
+	// existing text.  As a side effect this makes us also robust against
+	// bugs in LyX that might lead to font changes in ERT in .lyx files.
+	resetParagraphsFont();
 }
 
 
@@ -172,6 +183,10 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
+
+	FontInfo tmpfont = mi.base.font;
+	getDrawFont(mi.base.font);
+	mi.base.font.realize(tmpfont);
 
 	switch (geometry()) {
 	case NoButton:
@@ -218,6 +233,8 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 		break;
 	}
+
+	mi.base.font = tmpfont;
 }
 
 
@@ -233,6 +250,10 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	autoOpen_ = pi.base.bv->cursor().isInside(this);
 	ColorCode const old_color = pi.background_color;
 	pi.background_color = backgroundColor();
+
+	FontInfo tmpfont = pi.base.font;
+	getDrawFont(pi.base.font);
+	pi.base.font.realize(tmpfont);
 
 	// Draw button first -- top, left or only
 	Dimension dimc = dimensionCollapsed();
@@ -339,6 +360,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		break;
 	}
 	pi.background_color = old_color;
+
+	pi.base.font = tmpfont;
 }
 
 
@@ -538,7 +561,29 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.dispatched();
 		break;
 
+	case LFUN_PASTE:
+	case LFUN_CLIPBOARD_PASTE:
+	case LFUN_PRIMARY_SELECTION_PASTE: {
+		InsetText::doDispatch(cur, cmd);
+		// Since we can only store plain text, we must reset all
+		// attributes.
+		// FIXME: Change only the pasted paragraphs
+
+		resetParagraphsFont();
+		break;
+	}
+
 	default:
+		if (layout_.forceltr) {
+			// Force any new text to latex_language
+			// FIXME: This should only be necessary in constructor, but
+			// new paragraphs that are created by pressing enter at the
+			// start of an existing paragraph get the buffer language
+			// and not latex_language, so we take this brute force
+			// approach.
+			cur.current_font.setLanguage(latex_language);
+			cur.real_current_font.setLanguage(latex_language);
+		}
 		InsetText::doDispatch(cur, cmd);
 		break;
 	}
@@ -551,107 +596,130 @@ bool InsetCollapsable::allowMultiPar() const
 }
 
 
+void InsetCollapsable::resetParagraphsFont()
+{
+	Font font;
+	font.fontInfo() = layout_.font;
+	if (layout_.forceltr)
+		font.setLanguage(latex_language);
+	if (layout_.passthru) {
+		ParagraphList::iterator par = paragraphs().begin();
+		ParagraphList::iterator const end = paragraphs().end();
+		while (par != end) {
+			par->resetFonts(font);
+			par->params().clear();
+			++par;
+		}
+	}
+}
+
+
+void InsetCollapsable::getDrawFont(FontInfo & font) const
+{
+	font = layout_.font;
+}
+
+
 bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
-		// suppress these
-		case LFUN_ACCENT_ACUTE:
-		case LFUN_ACCENT_BREVE:
-		case LFUN_ACCENT_CARON:
-		case LFUN_ACCENT_CEDILLA:
-		case LFUN_ACCENT_CIRCLE:
-		case LFUN_ACCENT_CIRCUMFLEX:
-		case LFUN_ACCENT_DOT:
-		case LFUN_ACCENT_GRAVE:
-		case LFUN_ACCENT_HUNGARIAN_UMLAUT:
-		case LFUN_ACCENT_MACRON:
-		case LFUN_ACCENT_OGONEK:
-		case LFUN_ACCENT_SPECIAL_CARON:
-		case LFUN_ACCENT_TIE:
-		case LFUN_ACCENT_TILDE:
-		case LFUN_ACCENT_UMLAUT:
-		case LFUN_ACCENT_UNDERBAR:
-		case LFUN_ACCENT_UNDERDOT:
-		case LFUN_APPENDIX:
-		case LFUN_BIBITEM_INSERT:
-		case LFUN_BOX_INSERT:
-		case LFUN_BRANCH_INSERT:
-		case LFUN_BREAK_LINE:
-		case LFUN_CAPTION_INSERT:
-		case LFUN_CLEARPAGE_INSERT:
-		case LFUN_CLEARDOUBLEPAGE_INSERT:
-		case LFUN_DEPTH_DECREMENT:
-		case LFUN_DEPTH_INCREMENT:
-		case LFUN_DOTS_INSERT:
-		case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
-		case LFUN_ENVIRONMENT_INSERT:
-		case LFUN_ERT_INSERT:
-		case LFUN_FILE_INSERT:
-		case LFUN_FLEX_INSERT:
-		case LFUN_FLOAT_INSERT:
-		case LFUN_FLOAT_LIST:
-		case LFUN_FLOAT_WIDE_INSERT:
-		case LFUN_FONT_BOLD:
-		case LFUN_FONT_TYPEWRITER:
-		case LFUN_FONT_DEFAULT:
-		case LFUN_FONT_EMPH:
-		case LFUN_FONT_FREE_APPLY:
-		case LFUN_FONT_FREE_UPDATE:
-		case LFUN_FONT_NOUN:
-		case LFUN_FONT_ROMAN:
-		case LFUN_FONT_SANS:
-		case LFUN_FONT_FRAK:
-		case LFUN_FONT_ITAL:
-		case LFUN_FONT_SIZE:
-		case LFUN_FONT_STATE:
-		case LFUN_FONT_UNDERLINE:
-		case LFUN_FOOTNOTE_INSERT:
-		case LFUN_HFILL_INSERT:
-		case LFUN_HYPERLINK_INSERT:
-		case LFUN_HYPHENATION_POINT_INSERT:
-		case LFUN_INDEX_INSERT:
-		case LFUN_INDEX_PRINT:
-		case LFUN_INSET_INSERT:
-		case LFUN_LABEL_GOTO:
-		case LFUN_LABEL_INSERT:
-		case LFUN_LIGATURE_BREAK_INSERT:
-		case LFUN_LINE_INSERT:
-		case LFUN_PAGEBREAK_INSERT:
-		case LFUN_LANGUAGE:
-		case LFUN_LAYOUT:
-		case LFUN_LAYOUT_PARAGRAPH:
-		case LFUN_LAYOUT_TABULAR:
-		case LFUN_MARGINALNOTE_INSERT:
-		case LFUN_MATH_DISPLAY:
-		case LFUN_MATH_INSERT:
-		case LFUN_MATH_MATRIX:
-		case LFUN_MATH_MODE:
-		case LFUN_MENU_OPEN:
-		case LFUN_MENU_SEPARATOR_INSERT:
-		case LFUN_NOACTION:
-		case LFUN_NOMENCL_INSERT:
-		case LFUN_NOMENCL_PRINT:
-		case LFUN_NOTE_INSERT:
-		case LFUN_NOTE_NEXT:
-		case LFUN_OPTIONAL_INSERT:
-		case LFUN_PARAGRAPH_PARAMS:
-		case LFUN_PARAGRAPH_PARAMS_APPLY:
-		case LFUN_PARAGRAPH_SPACING:
-		case LFUN_PARAGRAPH_UPDATE:
-		case LFUN_REFERENCE_NEXT:
-		case LFUN_SERVER_GOTO_FILE_ROW:
-		case LFUN_SERVER_NOTIFY:
-		case LFUN_SERVER_SET_XY:
-		case LFUN_SPACE_INSERT:
-		case LFUN_TABULAR_INSERT:
-		case LFUN_TOC_INSERT:
-		case LFUN_WRAP_INSERT:
-		if (layout_.passthru) {
-			flag.enabled(false);
-			return true;
-		} else
-			return InsetText::getStatus(cur, cmd, flag);
+	// suppress these
+	case LFUN_ACCENT_ACUTE:
+	case LFUN_ACCENT_BREVE:
+	case LFUN_ACCENT_CARON:
+	case LFUN_ACCENT_CEDILLA:
+	case LFUN_ACCENT_CIRCLE:
+	case LFUN_ACCENT_CIRCUMFLEX:
+	case LFUN_ACCENT_DOT:
+	case LFUN_ACCENT_GRAVE:
+	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
+	case LFUN_ACCENT_MACRON:
+	case LFUN_ACCENT_OGONEK:
+	case LFUN_ACCENT_SPECIAL_CARON:
+	case LFUN_ACCENT_TIE:
+	case LFUN_ACCENT_TILDE:
+	case LFUN_ACCENT_UMLAUT:
+	case LFUN_ACCENT_UNDERBAR:
+	case LFUN_ACCENT_UNDERDOT:
+	case LFUN_APPENDIX:
+	case LFUN_BIBITEM_INSERT:
+	case LFUN_BOX_INSERT:
+	case LFUN_BRANCH_INSERT:
+	case LFUN_BREAK_LINE:
+	case LFUN_CAPTION_INSERT:
+	case LFUN_CLEARPAGE_INSERT:
+	case LFUN_CLEARDOUBLEPAGE_INSERT:
+	case LFUN_DEPTH_DECREMENT:
+	case LFUN_DEPTH_INCREMENT:
+	case LFUN_DOTS_INSERT:
+	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
+	case LFUN_ENVIRONMENT_INSERT:
+	case LFUN_ERT_INSERT:
+	case LFUN_FILE_INSERT:
+	case LFUN_FLEX_INSERT:
+	case LFUN_FLOAT_INSERT:
+	case LFUN_FLOAT_LIST:
+	case LFUN_FLOAT_WIDE_INSERT:
+	case LFUN_FONT_BOLD:
+	case LFUN_FONT_TYPEWRITER:
+	case LFUN_FONT_DEFAULT:
+	case LFUN_FONT_EMPH:
+	case LFUN_FONT_FREE_APPLY:
+	case LFUN_FONT_FREE_UPDATE:
+	case LFUN_FONT_NOUN:
+	case LFUN_FONT_ROMAN:
+	case LFUN_FONT_SANS:
+	case LFUN_FONT_FRAK:
+	case LFUN_FONT_ITAL:
+	case LFUN_FONT_SIZE:
+	case LFUN_FONT_STATE:
+	case LFUN_FONT_UNDERLINE:
+	case LFUN_FOOTNOTE_INSERT:
+	case LFUN_HFILL_INSERT:
+	case LFUN_HYPERLINK_INSERT:
+	case LFUN_HYPHENATION_POINT_INSERT:
+	case LFUN_INDEX_INSERT:
+	case LFUN_INDEX_PRINT:
+	case LFUN_INSET_INSERT:
+	case LFUN_LABEL_GOTO:
+	case LFUN_LABEL_INSERT:
+	case LFUN_LIGATURE_BREAK_INSERT:
+	case LFUN_LINE_INSERT:
+	case LFUN_PAGEBREAK_INSERT:
+	case LFUN_LAYOUT:
+	case LFUN_LAYOUT_PARAGRAPH:
+	case LFUN_LAYOUT_TABULAR:
+	case LFUN_MARGINALNOTE_INSERT:
+	case LFUN_MATH_DISPLAY:
+	case LFUN_MATH_INSERT:
+	case LFUN_MATH_MATRIX:
+	case LFUN_MATH_MODE:
+	case LFUN_MENU_OPEN:
+	case LFUN_MENU_SEPARATOR_INSERT:
+	case LFUN_NOACTION:
+	case LFUN_NOMENCL_INSERT:
+	case LFUN_NOMENCL_PRINT:
+	case LFUN_NOTE_INSERT:
+	case LFUN_NOTE_NEXT:
+	case LFUN_OPTIONAL_INSERT:
+	case LFUN_PARAGRAPH_PARAMS:
+	case LFUN_PARAGRAPH_PARAMS_APPLY:
+	case LFUN_PARAGRAPH_SPACING:
+	case LFUN_PARAGRAPH_UPDATE:
+	case LFUN_REFERENCE_NEXT:
+	case LFUN_SERVER_GOTO_FILE_ROW:
+	case LFUN_SERVER_NOTIFY:
+	case LFUN_SERVER_SET_XY:
+	case LFUN_SPACE_INSERT:
+	case LFUN_TABULAR_INSERT:
+	case LFUN_TOC_INSERT:
+	case LFUN_WRAP_INSERT:
+	if (layout_.passthru) {
+		flag.enabled(false);
+		return true;
+	} else
+		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "open" || cmd.argument() == "close" ||
@@ -659,6 +727,15 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.enabled(true);
 		else
 			flag.enabled(false);
+		return true;
+
+	case LFUN_LANGUAGE:
+		flag.enabled(layout_.forceltr);
+		return InsetText::getStatus(cur, cmd, flag);
+
+	case LFUN_BREAK_PARAGRAPH:
+	case LFUN_BREAK_PARAGRAPH_SKIP:
+		flag.enabled(layout_.multipar);
 		return true;
 
 	default:

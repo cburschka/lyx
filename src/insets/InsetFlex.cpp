@@ -95,56 +95,6 @@ void InsetFlex::read(Buffer const & buf, Lexer & lex)
 }
 
 
-void InsetFlex::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	FontInfo tmpfont = mi.base.font;
-	getDrawFont(mi.base.font);
-	mi.base.font.reduce(sane_font);
-	mi.base.font.realize(tmpfont);
-	InsetCollapsable::metrics(mi, dim);
-	mi.base.font = tmpfont;
-}
-
-
-void InsetFlex::draw(PainterInfo & pi, int x, int y) const
-{
-	FontInfo tmpfont = pi.base.font;
-	getDrawFont(pi.base.font);
-	// I don't understand why the above .reduce and .realize aren't
-	//needed, or even wanted, here. It just works. -- MV 10.04.2005
-	InsetCollapsable::draw(pi, x, y);
-	pi.base.font = tmpfont;
-}
-
-
-void InsetFlex::getDrawFont(FontInfo & font) const
-{
-	font = layout_.font;
-}
-
-
-void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
-{
-	InsetCollapsable::doDispatch(cur, cmd);
-}
-
-
-bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
-	FuncStatus & status) const
-{
-	switch (cmd.action) {
-		// paragraph breaks not allowed in flex insets
-		case LFUN_BREAK_PARAGRAPH:
-		case LFUN_BREAK_PARAGRAPH_SKIP:
-			status.enabled(layout_.multipar);
-			return true;
-
-		default:
-			return InsetCollapsable::getStatus(cur, cmd, status);
-		}
-}
-
-
 int InsetFlex::plaintext(Buffer const & buf, odocstream & os,
 			      OutputParams const & runparams) const
 {

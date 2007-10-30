@@ -121,21 +121,6 @@ void InsetERT::write(Buffer const & buf, ostream & os) const
 }
 
 
-void InsetERT::read(Buffer const & buf, Lexer & lex)
-{
-	InsetCollapsable::read(buf, lex);
-
-	// Force default font
-	// This avoids paragraphs in buffer language that would have a
-	// foreign language after a document langauge change, and it ensures
-	// that all new text in ERT gets the "latex" language, since new text
-	// inherits the language from the last position of the existing text.
-	// As a side effect this makes us also robust against bugs in LyX
-	// that might lead to font changes in ERT in .lyx files.
-	resetParagraphsFont();
-}
-
-
 docstring const InsetERT::editMessage() const
 {
 	return _("Opened ERT Inset");
@@ -208,19 +193,6 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		setStatus(cur, st);
 		break;
 	}
-	case LFUN_PASTE:
-	case LFUN_CLIPBOARD_PASTE:
-	case LFUN_PRIMARY_SELECTION_PASTE: {
-		InsetCollapsable::doDispatch(cur, cmd);
-
-		// Since we can only store plain text, we must reset all
-		// attributes.
-		// FIXME: Change only the pasted paragraphs
-
-		// ERT contents has always latex_language
-		resetParagraphsFont();
-		break;
-	}
 	default:
 		// Force any new text to latex_language
 		// FIXME: This should only be necessary in init(), but
@@ -230,8 +202,6 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// approach.
 		cur.current_font.fontInfo() = layout->font;
 		cur.real_current_font.fontInfo() = layout->font;
-		cur.current_font.setLanguage(latex_language);
-		cur.real_current_font.setLanguage(latex_language);
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}

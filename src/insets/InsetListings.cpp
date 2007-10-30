@@ -59,14 +59,15 @@ void InsetListings::init()
 
 
 InsetListings::InsetListings(BufferParams const & bp, InsetListingsParams const & par)
-	: InsetERT(bp, par.status())
+	: InsetCollapsable(bp, par.status())
 {
+	setLayout(bp);
 	init();
 }
 
 
 InsetListings::InsetListings(InsetListings const & in)
-	: InsetERT(in), params_(in.params_)
+	: InsetCollapsable(in), params_(in.params_)
 {
 	init();
 }
@@ -139,7 +140,7 @@ void InsetListings::read(Buffer const & buf, Lexer & lex)
 			break;
 		}
 	}
-	InsetERT::read(buf, lex);
+	InsetCollapsable::read(buf, lex);
 }
 
 
@@ -244,11 +245,11 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 			InsetListingsMailer(*this).showDialog(&cur.bv());
 			break;
 		}
-		InsetERT::doDispatch(cur, cmd);
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
 	default:
-		InsetERT::doDispatch(cur, cmd);
+		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -265,7 +266,7 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.enabled(!params().isInline());
 			return true;
 		default:
-			return InsetERT::getStatus(cur, cmd, status);
+			return InsetCollapsable::getStatus(cur, cmd, status);
 	}
 }
 
@@ -273,34 +274,17 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetListings::setButtonLabel()
 {
 	// FIXME UNICODE
-	setLabel(isOpen() ?  _("Listing") : getNewLabel(_("Listing")));
-}
-
-
-void InsetListings::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	FontInfo tmpfont = mi.base.font;
-	getDrawFont(mi.base.font);
-	mi.base.font.realize(tmpfont);
-	InsetCollapsable::metrics(mi, dim);
-	mi.base.font = tmpfont;
-}
-
-
-void InsetListings::draw(PainterInfo & pi, int x, int y) const
-{
-	FontInfo tmpfont = pi.base.font;
-	getDrawFont(pi.base.font);
-	pi.base.font.realize(tmpfont);
-	InsetCollapsable::draw(pi, x, y);
-	pi.base.font = tmpfont;
+	if (decoration() == Classic)
+		setLabel(isOpen() ?  _("Listing") : getNewLabel(_("Listing")));
+	else
+		setLabel(getNewLabel(_("Listing")));
 }
 
 
 void InsetListings::validate(LaTeXFeatures & features) const
 {
 	features.require("listings");
-	InsetERT::validate(features);
+	InsetCollapsable::validate(features);
 }
 
 
@@ -308,15 +292,6 @@ bool InsetListings::showInsetDialog(BufferView * bv) const
 {
 	InsetListingsMailer(const_cast<InsetListings &>(*this)).showDialog(bv);
 	return true;
-}
-
-
-void InsetListings::getDrawFont(FontInfo & font) const
-{
-	font = inherit_font;
-	font.setFamily(TYPEWRITER_FAMILY);
-	// FIXME: define Color_listing?
-	font.setColor(Color_foreground);
 }
 
 

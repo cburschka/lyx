@@ -63,50 +63,6 @@ void InsetIndex::write(Buffer const & buf, std::ostream & os) const
 }
 
 
-void InsetIndex::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	FontInfo tmpfont = mi.base.font;
-	getDrawFont(mi.base.font);
-	mi.base.font.realize(tmpfont);
-	InsetCollapsable::metrics(mi, dim);
-	mi.base.font = tmpfont;
-}
-
-
-void InsetIndex::draw(PainterInfo & pi, int x, int y) const
-{
-	FontInfo tmpfont = pi.base.font;
-	getDrawFont(pi.base.font);
-	pi.base.font.realize(tmpfont);
-	InsetCollapsable::draw(pi, x, y);
-	pi.base.font = tmpfont;
-}
-
-
-void InsetIndex::getDrawFont(FontInfo & font) const
-{
-	font = inherit_font;
-	font.realize(layout_.font);
-}
-
-
-bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
-	FuncStatus & status) const
-{
-	switch (cmd.action) {
-		// paragraph breaks not allowed
-		case LFUN_BREAK_PARAGRAPH:
-		case LFUN_BREAK_PARAGRAPH_SKIP:
-			status.enabled(false);
-			return true;
-
-		default:
-			return InsetCollapsable::getStatus(cur, cmd, status);
-		}
-}
-
-
-
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 	: InsetCommand(p, string())
 {}

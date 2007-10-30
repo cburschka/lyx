@@ -48,8 +48,6 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	void read(Buffer const & buf, Lexer & lex);
-	///
 	virtual docstring const editMessage() const;
 	///
 	bool insetAllowed(InsetCode code) const;
@@ -71,8 +69,6 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	void getDrawFont(FontInfo &) const;
-	///
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
@@ -84,6 +80,8 @@ protected:
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	void resetParagraphsFont();
+	///
+	void getDrawFont(FontInfo &) const;
 
 private:
 	virtual Inset * clone() const;

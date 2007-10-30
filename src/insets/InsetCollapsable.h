@@ -157,6 +157,10 @@ protected:
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
 	docstring floatName(std::string const & type, BufferParams const &) const;
+	///
+	virtual void resetParagraphsFont();
+	///
+	virtual void getDrawFont(FontInfo &) const;
 
 protected:
 	///

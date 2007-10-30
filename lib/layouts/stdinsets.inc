@@ -103,6 +103,25 @@ InsetLayout ERT
 	PassThru              true
 	KeepEmpty             true
 	FreeSpacing           true
+	ForceLTR              true
+End
+
+InsetLayout Listings
+	LabelString           Listings
+	LatexType             none
+	Decoration            minimalistic
+	Font
+	  Color               black
+	  Family              typewriter
+	EndFont
+	LabelFont
+	  Color               black
+	  Size                Small
+	EndFont
+	MultiPar              true
+	PassThru              true
+	KeepEmpty             true
+	FreeSpacing           true
 End
 
 InsetLayout Branch

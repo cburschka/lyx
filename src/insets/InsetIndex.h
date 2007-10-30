@@ -34,14 +34,7 @@ public:
 	///
 	InsetCode lyxCode() const { return INDEX_CODE; }
 	///
-	///
-	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	void draw(PainterInfo &, int, int) const;
-	///
 	docstring name() const { return from_ascii("Index"); }
-	///
-	void getDrawFont(FontInfo &) const;
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
@@ -50,8 +43,6 @@ public:
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
 private:
-	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	virtual Inset * clone() const;
 };

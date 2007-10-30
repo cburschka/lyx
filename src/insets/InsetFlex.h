@@ -56,12 +56,6 @@ public:
 	///
 	void read(Buffer const & buf, Lexer & lex);
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	void draw(PainterInfo &, int, int) const;
-	///
-	void getDrawFont(FontInfo &) const;
-	///
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 
 	///
@@ -81,9 +75,6 @@ public:
 
 protected:
 	InsetFlex(InsetFlex const &);
-	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
-	///
-	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 private:
 	friend class InsetFlexParams;

@@ -24,7 +24,7 @@ namespace lyx {
  */
 
 
-class InsetListings : public InsetERT {
+class InsetListings : public InsetCollapsable {
 public:
 	///
 	InsetListings(BufferParams const &, InsetListingsParams const & par = InsetListingsParams());
@@ -49,13 +49,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
-	///
 	bool showInsetDialog(BufferView *) const;
-	///
-	void getDrawFont(FontInfo &) const;
 	///
 	InsetListingsParams const & params() const { return params_; }
 	///
