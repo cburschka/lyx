@@ -1,4 +1,4 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -16,11 +16,11 @@
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
-  % set fonts for nicer pdf view
-  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
-  \usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier} }
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{%
+ \usepackage[scaled=0.92]{helvet}
+ \usepackage{mathptmx}
+ \usepackage{courier} }
 
  % link all cross references and URLs in pdf output
  \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
@@ -40,7 +40,7 @@
 
  % the pages of the TOC are numbered roman
  % and a pdf-bookmark for the TOC is added
- \pagenumbering{Roman}
+ \pagenumbering{roman}
  \let\myTOC\tableofcontents
  \renewcommand\tableofcontents{%
    \pdfbookmark[1]{Índice general}{}
@@ -126,19 +126,19 @@ lyx-docs@lists.lyx.org
 
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 
 \emph on
-N.
- del t
+N.\InsetSpace \thinspace{}
+del t
 \emph default
 .: En este documento muchos términos aparecen sin traducir.
  En la mayoría de los casos se trata de comandos o argumentos de LaTeX que
  deben utilizarse tal como están.
  En menos casos se trata de menús o diálogos de la interfaz gráfica de LyX
- que aún están sin traducir, y cuya traducción no es obvia.
+ que aún están sin traducir.
 \end_layout
 
 \end_inset
@@ -147,7 +147,7 @@ N.
 \newline
 
 \newline
-Versión 1.5.2 
+Versión 1.5.2
 \end_layout
 
 \begin_layout Standard
@@ -161,10 +161,41 @@ Para exportar este documento a PDF, Postscript, o DVI, debe estar instalado
 hyperref
 \series default
 .
+ Este paquete se incluye en todas las distribuciones habituales de LaTeX.
 \end_layout
 
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Standard
-Este paquete se incluye en todas las distribuciones habituales de LaTeX.
+
+\emph on
+N.
+ del t.
+\emph default
+: Si al intentar ver la salida pdf-latex obtienes un mensaje «Archivo de
+ salida vacío» y errores de LaTeX (Use of 
+\backslash
+@xfootnotenext...), cambia en el preámbulo del documento «roman» por «Roman».
+ O mejor, actualiza  los archivos
+\family typewriter
+ spanish 
+\family default
+de 
+\series bold
+babel
+\series default
+.
+ Más información sobre estos archivos en la sección 
+\begin_inset LatexCommand ref
+reference "sub:Estilo-spanish"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -1280,7 +1311,11 @@ teclas de aceleración de menú
 \emph default
 : usada en combinación con la tecla de la letra subrayada en el nombre de
  un menú, acciona ese menú.
- Por ejemplo, la secuencia 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Por ejemplo, la secuencia 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1307,7 +1342,9 @@ M-a
 \end_inset
 
  abre el menú «Archivo».
-\newline
+\end_layout
+
+\begin_layout Standard
 Más cosas relativas a la tecla 
 \family sans
 Meta
@@ -1319,8 +1356,8 @@ Reference
 .
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\end_deeper
+\begin_layout Standard
 Aprenderás más y más combinaciones de teclas y atajos de teclado conforme
  uses LyX, porque casi todas las acciones muestran, en la barra de estado
  situada en la parte inferior de la ventana, un corto mensaje que describe
@@ -2845,7 +2882,7 @@ name "Entornos de párrafo|("
 \end_layout
 
 \begin_layout Subsection
-Vista general
+Visión general
 \end_layout
 
 \begin_layout Standard
@@ -4016,9 +4053,7 @@ Enumeración*
 
 \begin_layout Standard
 Hemos dicho que los distintos niveles usan distintos símbolos para sus marcas.
- Aquí hay un ejemplo de las cuatro posibilidades.
- Observa que si lees esto en LyX verás diferencias en algunas de las marcas
- respecto a las que aparecen en la salida.
+ Aquí hay un ejemplo con las cuatro posibilidades.
 \end_layout
 
 \begin_layout Itemize
@@ -4026,12 +4061,35 @@ La marca para el primer nivel de
 \family sans
 Enumeración*
 \family default
- es un punto grueso.
+ es un topo.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\emph on
+N.\InsetSpace \thinspace{}
+del t.
+\emph default
+: En la salida del documento en español las marcas no corresponden con su
+ descripción; la causa se explica en la sección\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Estilo-spanish"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-La marca del segundo nivel es un guión.
+La marca del segundo nivel es una raya.
 \end_layout
 
 \begin_deeper
@@ -4065,7 +4123,7 @@ Estas son las marcas predeterminadas para una lista
 Enumeración*
 \family default
 .
- Puedes personalizar estas marcas en el submenú 
+  Puedes personalizar estas marcas en el submenú 
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración
@@ -4087,30 +4145,27 @@ status open
 \begin_layout Standard
 
 \emph on
-\begin_inset LatexCommand label
-name "fn:N.-del-t.1"
+N.\InsetSpace \thinspace{}
+del t.
+\emph default
+: Para documentos en español véase  la sección\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Estilo-spanish"
 
 \end_inset
 
-N.
- del t.:
-\emph default
- Si el documento es en español y usas el sistema 
-\series bold
-babel
-\series default
-, esto no es posible porque el archivo 
-\family typewriter
-spanish.ldf
-\family default
- establece ciertos símbolos de forma predeterminada, y por tanto los cambios
- en el diálogo 
-\family sans
-Marcas
-\family default
- no tienen efecto.
+.
 \end_layout
 
+\end_inset
+
+
+\begin_inset Formula $^{}$
+\end_inset
+
+
+\begin_inset Formula $^{\text{}}$
 \end_inset
 
  
@@ -4208,7 +4263,7 @@ Permite hasta cuatro niveles de anidación.
 
 \end_deeper
 \begin_layout Standard
-A diferencia de la lista 
+Como en una lista 
 \family sans
 Enumeración*
 \family default
@@ -4217,31 +4272,19 @@ Enumeración*
 Enumeración
 \family default
  las distintas etiquetas para cada nivel de profundidad se ven igual en
- LyX y en la salida, como se ve en el siguiente ejemplo:
+ LyX y en la salida
 \begin_inset Foot
 status open
 
 \begin_layout Standard
 
 \emph on
-\begin_inset LatexCommand label
-name "fn:N.-del-t.2"
-
-\end_inset
-
- N.
- del t.:
+N.\InsetSpace \thinspace{}
+del t.:
 \emph default
- No es así en los documentos en español, que cargan el archivo 
-\family typewriter
-spanish.ldf
-\family default
- de 
-\series bold
-babel
-\series default
-; en la salida verás las siguientes etiquetas predeterminadas para cada
- nivel: 1.
+ En los documentos en español, en la salida verás las siguientes etiquetas
+ para cada nivel: <\InsetSpace ~
+ 1.
  \InsetSpace ~
  
 \emph on
@@ -4255,12 +4298,34 @@ a
 1) 
 \emph on
 \InsetSpace ~
- a'
+ a
+\begin_inset Formula $^{\prime}$
+\end_inset
+
+ 
+\emph default
+>
+\emph on
+.
+ 
+\emph default
+Más información en la sección
+\emph on
+\InsetSpace ~
+
+\emph default
+
+\begin_inset LatexCommand ref
+reference "sub:Estilo-spanish"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
 
-
+, como se ve en el siguiente ejemplo:
 \end_layout
 
 \begin_layout Enumerate
@@ -4315,14 +4380,6 @@ Características extendidas
 ).
  Como se dijo antes, tal personalización sólo se aprecia en la versión impresa,
  no en LyX.
- (Véase nota\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "fn:N.-del-t.2"
-
-\end_inset
-
-)
 \end_layout
 
 \begin_layout Standard
@@ -4335,6 +4392,285 @@ Enumeración
 
 \begin_inset LatexCommand ref
 reference "sec:Anidación"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Enumeración* y Enumeración en documentos en español
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+
+\emph on
+N.\InsetSpace \thinspace{}
+del t.
+\emph default
+: Esta sección no está en el original en inglés.
+ Más detalles en los documentos 
+\family typewriter
+lists-spanish.lyx
+\family default
+, 
+\family typewriter
+lists-spanish.pdf
+\family default
+, en la página: 
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/Manuals"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset OptArg
+status open
+
+\begin_layout Standard
+Enumeración* y Enumeración en español
+\end_layout
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sub:Estilo-spanish"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si el idioma establecido en las preferencias de LyX es español,
+\family sans
+ 
+\family default
+todos los documentos nuevos tienen este idioma como predeterminado.
+ Por defecto, LyX carga el paquete 
+\series bold
+babel
+\series default
+ (opción 
+\family sans
+Usar babel
+\family default
+ marcada) con la opción del idioma del documento, y entonces, al procesar
+ el archivo con LaTeX, interviene el estilo 
+\family typewriter
+spanish
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+El estilo 
+\family typewriter
+spanish
+\family default
+ establece por defecto un conjunto de formatos y características adaptado
+ a los usos tipográficos propios del español.
+ En particular, las marcas que aparecen en los ítems de una lista sin numerar
+ y los caracteres que aparecen en una lista numerada, (entornos 
+\family sans
+Enumeración
+\family default
+* y 
+\family sans
+Enumeración
+\family default
+, respectivamente), no son como los que se han descrito en las dos secciones
+ anteriores.
+ 
+\end_layout
+
+\begin_layout Standard
+Las marcas predifinidas por 
+\family typewriter
+spanish
+\family default
+ para una 
+\family sans
+Enumeración
+\family default
+*
+\family sans
+ 
+\family default
+se pueden cambiar en el diálogo 
+\family sans
+Marcas
+\family default
+ (
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración
+\family default
+) o mediante los siguientes comandos, que se escriben en ERT en el texto
+ del documento:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+spanishdashitems 
+\series default
+hace que todas las listas no numeradas siguientes en el documento lleven
+ una raya en todos los niveles como marcas de ítems.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+spanishsignitems
+\series default
+ hace que todas las listas no numeradas siguientes al comando tengan los
+ símbolos: topo, círculo, diamante y triángulo para los cuatro niveles.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Nota
+\series default
+: Solo funcionan en español, si no generan error («undefined control sequence»),
+ porque solo el estilo 
+\family typewriter
+spanish 
+\family default
+los reconoce
+\family typewriter
+.
+
+\family default
+ Tampoco funcionan (aunque sin error) si se desactivan las listas de 
+\family typewriter
+spanish
+\family default
+ con el comando descrito a continuación.
+
+\family typewriter
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A partir de la versión 
+\family typewriter
+5.0a
+\family default
+, 
+\family typewriter
+spanish
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+
+\emph on
+N.\InsetSpace \thinspace{}
+del t.
+\emph default
+: Se compone de los archivos 
+\family typewriter
+romanidx.sty
+\family default
+ y 
+\family typewriter
+spanish.ldf
+\family default
+, y se pueden obtener en la página 
+\begin_inset LatexCommand url
+target "http://www.texytipografia.com/spanish.html"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\family default
+ ofrece la posibilidad de anular su predefinición de marcas y símbolos mediante
+ la opción de paquete «es-nolists», insertada en el comando:
+\family typewriter
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage[es-nolists]{babel}
+\end_layout
+
+\begin_layout Standard
+Si este comando se añade en el preámbulo LaTeX del documento, en la salida
+ se mostrarán las marcas y caracteres predefinidos por LyX (no por 
+\family typewriter
+spanish
+\family default
+), tanto para
+\family typewriter
+ 
+\family sans
+Enumeración*
+\family default
+ como para 
+\family sans
+Enumeración
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Si el comando se introduce en el campo 
+\family sans
+Paquete de idioma
+\family default
+, en el diálogo 
+\family sans
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Idioma
+\family default
+, el cambio afectará a 
+\emph on
+todos 
+\emph default
+los documentos en español.
+\end_layout
+
+\begin_layout Standard
+Para más información sobre otras opciones y comandos de 
+\family typewriter
+spanish
+\family default
+, consulta su documentación, 
+\begin_inset LatexCommand cite
+key "spanish"
 
 \end_inset
 
@@ -8511,7 +8847,10 @@ reference "sub:Cambiar-el-espacios"
 
  o mediante el 
 \family sans
-buffer de comandos
+\emph on
+buffer
+\emph default
+ de comandos
 \family default
 .
  Esto implica escribir
@@ -11503,7 +11842,7 @@ name "LaTeX-paquetes ! pstricks"
 \end_inset
 
 .
- Por esto los archivos suelen ser más grandes que los PDFs.
+ Por esto los archivos suelen ser más grandes que los PDF.
 \end_layout
 
 \begin_layout Standard
@@ -12132,7 +12471,7 @@ Los tres tipos de guión son distintos del signo menos, que se usa en modo
 \end_layout
 
 \begin_layout Enumerate
-saltos de línea- y de página-
+División de palabras a final de lí-nea
 \hfill
 (
 \emph on
@@ -12153,7 +12492,7 @@ semiraya
 
 \begin_layout Enumerate
 Incisos y diálogos.
- Oh --- aquí hay rayas---.
+ ¡Oh! ---aquí hay rayas---.
 \hfill
 (
 \emph on
@@ -14110,7 +14449,7 @@ pdf
 
 )
 \begin_inset LatexCommand index
-name "PDF|see{Formatos de Imagen}"
+name "PDF|see{Formatos de imagen}"
 
 \end_inset
 
@@ -21205,7 +21544,11 @@ Argumentos
 \end_layout
 
 \begin_layout Standard
-en el minibuffer que hay en la parte inferior de la ventana de LyX.
+en el 
+\emph on
+minibuffer
+\emph default
+ que hay en la parte inferior de la ventana de LyX.
  Nombre es el que le damos a la nueva macro, y no debe contener números.
  El número de argumentos es un número entre 1 y 9.
  Si quieres definir una macro sin argumentos, no declares número de argumentos.
@@ -30775,7 +31118,7 @@ ISO8859--2
 \begin_layout Standard
 ĤĴĥĵĈĜŜĉĝŝ
 \hfill
-ĵcircunflejo
+circunflejo
 \end_layout
 
 \begin_layout Standard
@@ -33161,13 +33504,13 @@ status open
 \begin_layout Standard
 
 \emph on
-N.
- del t.: 
+N.\InsetSpace \thinspace{}
+del t.: 
 \emph default
-En documentos en español, véase la nota\InsetSpace ~
+En documentos en español, véase la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "fn:N.-del-t.1"
+reference "sub:Estilo-spanish"
 
 \end_inset
 
@@ -35277,18 +35620,22 @@ name "Personalización ! de menús"
 
 \begin_layout Standard
 El aspecto de los menús y de las barras de herramientas depende del archivo
- de interfaz de usuario (.ui) elegido.
+ de interfaz de usuario (.
+\family typewriter
+ui
+\family default
+) elegido.
  Es un archivo de texto con una lista de los menús y de las barras de herramient
 as.
  Los botones de las barras de herramientas y las entradas de los menús se
  especifican en los archivos 
-\emph on
+\family typewriter
 stdtoolbars.inc
-\emph default
+\family default
  y 
-\emph on
+\family typewriter
 stdmenus.inc
-\emph default
+\family default
 , respectivamente.
  Para crear tus propios formatos de menú y de barras de herramientas comienza
  con una copia de estos archivos y edita las entradas.
@@ -35339,10 +35686,10 @@ Separators
 Icons
 \family default
  y en el caso del 
-\family typewriter
-Menu
+\family sans
+Menu "file_lastfiles"
 \family default
- "file_lastfiles", una entrada 
+, una entrada 
 \family sans
 Lastfiles
 \family default
@@ -35871,7 +36218,9 @@ Normalmente la configuración del teclado se hace en el sistema operativo.
 romanian.kmap
 \family default
 .
- 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -35885,10 +36234,6 @@ Los mapas de teclado son provisionales y no siempre funcionan.
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -36123,7 +36468,7 @@ status collapsed
 N.
  del t.: 
 \emph default
-LyX y LaTeX (babel) traducen algunos términos de forma distinta.
+LyX y LaTeX (babel-spanish) traducen algunos términos de forma distinta.
  P.\InsetSpace \thinspace{}
 e., LyX traduce en pantalla automáticamente 
 \begin_inset Quotes fld
@@ -36142,15 +36487,14 @@ Tabla
 \end_inset
 
 .
- En la salida, en cambio, si el idioma del documento es español el sistema
- 
+ En la salida, en cambio, el sistema 
 \series bold
 babel
 \series default
  (archivo 
-\emph on
+\family typewriter
 spanish.ldf
-\emph default
+\family default
 ) traduce 
 \begin_inset Quotes fld
 \end_inset
@@ -36165,6 +36509,25 @@ Table
 
 Cuadro
 \begin_inset Quotes frd
+\end_inset
+
+.
+ Más información sobre el estilo 
+\family typewriter
+spanish 
+\family default
+en la sección\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Estilo-spanish"
+
+\end_inset
+
+ y en el documento\InsetSpace ~
+
+\begin_inset LatexCommand cite
+key "spanish"
+
 \end_inset
 
 .
@@ -36205,7 +36568,7 @@ Por defecto, es el comando de
 \series bold
 babel
 \series default
- 
+  
 \family sans
 
 \backslash
@@ -36248,7 +36611,8 @@ babel
 
 \begin_layout Description
 Auto-iniciar Con esta opción los documentos comienzan con el idioma de documento
- elegido.Sin ella, el 
+ elegido.
+ Sin ella, el 
 \family sans
 Comienzo\InsetSpace ~
 del\InsetSpace ~
@@ -36347,14 +36711,14 @@ Comando de Impresión
 \newline
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 
 \series bold
 Nota:
 \series default
- En Windows puedes dejar el campo en blanco porque no tiene ningún efecto.
+ En Windows puedes dejar el campo en blanco porque no tiene efecto.
 \end_layout
 
 \end_inset
@@ -36811,7 +37175,7 @@ Converters
 \emph default
  del manual 
 \emph on
-Customization
+Personalización
 \emph default
  encontrarás más información sobre convertidores, como variables y opciones
  que se pueden poner en su definición.
@@ -36855,11 +37219,11 @@ Añadir
 \begin_layout Standard
 En la sección 
 \emph on
-Formatos
+Layouts
 \emph default
  del manual 
 \emph on
-Customization
+Personalización
 \emph default
  encontrarás más información sobre formatos, como opciones que se pueden
  emplear en su definición.
@@ -36891,7 +37255,7 @@ Copiers
 \emph default
  del manual 
 \emph on
-Customization
+Personalización
 \emph default
  encontrarás más información sobre este tema.
 \end_layout
@@ -38291,6 +38655,55 @@ status collapsed
 
 \begin_inset LatexCommand url
 target "http://wiki.lyx.org/LyX/LyxFunctionList"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "spanish"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://www.texytipografia.com/archive/spanish.pdf}{
+\end_layout
+
+\end_inset
+
+Documentación
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ del estilo 
+\family sans
+spanish 
+\family default
+incluido en el paquete 
+\series bold
+babel
+\series default
+:
+\newline
+
+\begin_inset LatexCommand url
+target "http://www.texytipografia.com/archive/spanish.pdf"
 
 \end_inset
 
