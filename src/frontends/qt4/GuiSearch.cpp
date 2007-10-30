@@ -66,7 +66,7 @@ GuiSearch::GuiSearch(LyXView & lv)
 
 void GuiSearch::showView()
 {
-	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
+	findCO->lineEdit()->selectAll();
 	GuiDialog::showView();
 }
 
@@ -98,7 +98,7 @@ void GuiSearch::findClicked()
 	find(needle, caseCB->isChecked(), wordsCB->isChecked(),
 		!backwardsCB->isChecked());
 	uniqueInsert(findCO, findCO->currentText());
-	findCO->lineEdit()->setSelection(0, findCO->lineEdit()->text().length());
+	findCO->lineEdit()->selectAll();
 }
 
 
