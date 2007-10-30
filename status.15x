@@ -31,7 +31,7 @@ What's new
 
 * USER INTERFACE
 
-- the behaviour of Return and M-Return has changed: they now allow to either
+- The behaviour of Return and M-Return has changed: they now allow to either
   keep current paragraph and depth or to to nesting paragraph (bug 2445).
 
 - Add the esint font to the private math fonts. This font assures a
@@ -53,7 +53,7 @@ What's new
 - Fix a crash when exporting a file with a branch from the command line
   (bug 4255).
 
-- Remove obsolete LaTeX-preamble code that was set when a document contains
+- Remove obsolete LaTeX preamble code that was set when a document contained
   URLs (bug 2265).
 
 - Add Erlang support for listings (bug 4263).
@@ -64,21 +64,26 @@ What's new
 
 * USER INTERFACE:
 
+- Fix a crash when some files or directories are not readable.
+
+- Fix updating of externally modified files on Windows (bug 3172).
+
 - Repair wasy font such that it can also be used on Mac (bug 2326).
 
 - Fix color of some math symbols (bug 2330).
 
-- Correctly adjust screen fonts when the zoom or dpi settings are changed in
-  the preferences.
+- Correctly adjust screen fonts after the zoom or dpi settings were changed in
+  the preferences (Mac and Windows only).
 
 - Check and show proper error message if configure.py fails (part of bug 2829).
 
-- Do not display the type of charstyle insets by default. Display type of
-  an charstyle inset under mouse in the status line.
+- Do not display the label of charstyle insets by default. Display type of
+  a charstyle inset under mouse in the status line.
 
 - Fix DraftDVI preference settings (Windows only).
 
-- Fix problem with backup directory on Windows (bug 4287). 
+- Fix a problem on Windows were invalid names were given to backup files
+  (bug 4287).
 
 - Fix problem in conversion of equations to eqnarray (when pressing C-Enter).
 
@@ -87,11 +92,6 @@ What's new
 - Fix several duplicated keyboard accelerators in the paragraph settings dialog
   (bug 4277).
 
-- Fix crash when some files or directories are not readable.
-
-- Fix bug that external modifications of e.g. image files were not taken into
-  account by LyX (bug 3172).
-
 - Fix math display problem with binoms (bug 4308).
 
 
@@ -99,13 +99,12 @@ What's new
 
 - Fix wrong character in the User's Guide (including the translations).
 
-- Remove the obsolete example file "currency.lyx" and its German translation
-  "Waehrungen.lyx" because one can since LyX 1.5.0 insert currency symbols
-  directly.
+- Remove the example file "currency.lyx" and its German translation 
+  "Waehrungen.lyx". The file is obsolete, since LyX allows direct insertion
+  of currency symbols as of version 1.5.0.
 
-- Remove the now obsolete German example file "TabellenBeispiel.lyx" because
-  its content is described in the EmbeddedObjects manual that is available
-  also in German since LyX 1.5.2
+- Remove the German example file "TabellenBeispiel.lyx". The file has been
+  obsoleted by the EmbeddedObjects documentation.
 
 
 * BUILD/INSTALLATION:
