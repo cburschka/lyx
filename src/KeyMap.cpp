@@ -45,12 +45,12 @@ string const KeyMap::printKeySym(KeySymbol const & key, KeyModifier mod)
 
 	string const s = key.getSymbolName();
 
-	if (mod & ShiftModifier)
-		buf += "S-";
 	if (mod & ControlModifier)
 		buf += "C-";
 	if (mod & AltModifier)
 		buf += "M-";
+	if (mod & ShiftModifier)
+		buf += "S-";
 
 	buf += s;
 	return buf;

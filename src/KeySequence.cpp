@@ -143,12 +143,12 @@ docstring const KeySequence::print(outputFormat format) const
 			break;
 		case BindFile:
 			KeyModifier mod = modifiers[i].first;
-			if (mod & ShiftModifier)
-				buf += "S-";
 			if (mod & ControlModifier)
 				buf += "C-";
 			if (mod & AltModifier)
 				buf += "M-";
+			if (mod & ShiftModifier)
+				buf += "S-";
 		
 			buf += from_utf8(sequence[i].getSymbolName());
 			break;
