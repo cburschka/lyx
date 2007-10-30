@@ -254,7 +254,7 @@ TeXOnePar(Buffer const & buf,
 	LayoutPtr style;
 
 	if (runparams_in.verbatim) {
-		int dist = std::distance(paragraphs.begin(), pit);
+		int const dist = std::distance(paragraphs.begin(), pit);
 		Font const outerfont = outerFont(dist, paragraphs);
 
 		// No newline if only one paragraph in this lyxtext
