@@ -1,4 +1,4 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -5609,15 +5609,11 @@ Make certain that
 \family typewriter
 aastex.layout
 \family default
- appears in 
+ appears in LyX's 
 \family typewriter
-/usr/.../share/lyx/layouts
+layouts
 \family default
- or 
-\family typewriter
-~/.lyx/layouts
-\family default
-.
+ folder
 \end_layout
 
 \begin_layout Enumerate
@@ -15411,7 +15407,7 @@ ChkTeX
 \family default
  installation configuration file (usually with the file 
 \family typewriter
-/usr/local/share/chktexrc
+chktexrc
 \family default
 ).
  See below to learn what warnings can be enabled and disabled on the command
