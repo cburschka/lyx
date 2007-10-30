@@ -655,7 +655,7 @@ def revert_include(document):
 
 def revert_albanian(document):
     "Set language Albanian to English"
-    # Set document language from Vietnamese to English
+    # Set document language from Albanian to English
     i = 0
     if document.language == "albanian":
         document.language = "english"
@@ -673,7 +673,7 @@ def revert_albanian(document):
 
 def revert_lowersorbian(document):
     "Set language lower Sorbian to English"
-    # Set document language from Vietnamese to English
+    # Set document language from lower Sorbian to English
     i = 0
     if document.language == "lowersorbian":
         document.language = "english"
@@ -686,6 +686,42 @@ def revert_lowersorbian(document):
         if j == -1:
             return
         document.body[j] = document.body[j].replace("\\lang lowersorbian", "\\lang english")
+        j = j + 1
+
+
+def revert_uppersorbian(document):
+    "Set language uppersorbian to usorbian as this was used in LyX 1.5"
+    # Set document language from uppersorbian to usorbian
+    i = 0
+    if document.language == "uppersorbian":
+        document.language = "usorbian"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language usorbian"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang uppersorbian", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang uppersorbian", "\\lang usorbian")
+        j = j + 1
+
+
+def convert_usorbian(document):
+    "Set language uppersorbian to usorbian as this was used in LyX 1.5"
+    # Set document language from uppersorbian to usorbian
+    i = 0
+    if document.language == "usorbian":
+        document.language = "uppersorbian"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language uppersorbian"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang usorbian", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang usorbian", "\\lang uppersorbian")
         j = j + 1
 
 
@@ -714,10 +750,10 @@ convert = [[277, [fix_wrong_tables]],
            [294, [convert_pdf_options]],
            [295, [convert_htmlurl, convert_url]],
            [296, [convert_include]],
-           [297, []]
+           [297, [convert_usorbian]]
           ]
 
-revert =  [[296, [revert_albanian, revert_lowersorbian]],
+revert =  [[296, [revert_albanian, revert_lowersorbian, revert_uppersorbian]],
            [295, [revert_include]],
            [294, [revert_href]],
            [293, [revert_pdf_options_2]],

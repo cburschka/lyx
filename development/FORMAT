@@ -1,6 +1,13 @@
 LyX file-format changes
 -----------------------
 
+2007-10-29 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 297: support for Albanian, lower Sorbian,
+	  fixed upper Sorbian language
+
+2007-10-?? Richard Heck <rgheck@bobjweil.com>
+	* Format incremented to 296: ??
+
 2007-10-12 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 295: get rid of the htmlurl command that was
 	  needed for docbook, add the option to create a hyperlink instead
@@ -877,6 +884,4 @@ renamed as "size_kind" and "lyxsize_kind" respectively.
 	lyxwidth 4cm
 
  \end_inset
-
-
 
