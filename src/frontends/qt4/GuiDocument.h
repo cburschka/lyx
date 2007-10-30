@@ -108,6 +108,7 @@ private Q_SLOTS:
 	void portraitChanged();
 	void classChanged();
 	void updateModuleInfo();
+	void updateEmbeddedFileList();
 	
 private:
 	void closeEvent(QCloseEvent * e);
