@@ -82,6 +82,11 @@ void setKeySymbol(KeySymbol * sym, QKeyEvent * ev)
 		sym->setText(docstring());
 		return;
 	}
+	LYXERR(Debug::KEY) << "Getting key " << ev->key() << ", with text '"
+		<< fromqstr(ev->text()) << "'" << std::endl;
+	// This is unsafe because ev->text() is the unicode representation of the
+	// key, not the name of the key. For example, Ctrl-x and Alt-x produce 
+	// different texts.
 	sym->setText(qstring_to_ucs4(ev->text()));
 	LYXERR(Debug::KEY) << "Setting key to " << sym->key() << ", "
 		<< to_utf8(sym->text()) << endl;
@@ -117,7 +122,7 @@ string KeySymbol::getSymbolName() const
 {
 	string name = qkey_to_string(key_);
 
-	// e.g. A-Za-z, and others
+	// others
 	if (name.empty())
 		name = to_utf8(text_);
 
