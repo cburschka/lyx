@@ -1891,8 +1891,12 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 				break;
 			}
 		// if not found, this unbind item is UserExtraUnbind
-		if (!newItem)
+		// Such an item is not displayed to avoid confusion (what is 
+		// unmatched removed?).
+		if (!newItem) {
 			item_tag = UserExtraUnbind;
+			return NULL;
+		}
 	}
 	if (!newItem) {
 		switch(lyxaction.getActionType(action)) {
