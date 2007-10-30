@@ -18,6 +18,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "EmbeddedFiles.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
 #include "frontend_helpers.h"
@@ -627,6 +628,28 @@ GuiDocument::GuiDocument(LyXView & lv)
 	embeddedFilesModule = new UiWidget<Ui::EmbeddedFilesUi>;
 	connect(embeddedFilesModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
+	
+	// add current embedded files
+	EmbeddedFiles & files = buffer().embeddedFiles();
+	files.update();
+	EmbeddedFiles::EmbeddedFileList::iterator fit = files.begin();
+	EmbeddedFiles::EmbeddedFileList::iterator fit_end = files.end();
+	for (; fit != fit_end; ++fit) {
+		QString label = toqstr(fit->relFilename(buffer().filePath()));
+		if (fit->refCount() > 1)
+			label += " (" + QString::number(fit->refCount()) + ")";
+		QListWidgetItem * item = new QListWidgetItem(label);
+		Qt::ItemFlags flag = Qt::ItemIsSelectable;
+		if (!buffer().isReadonly())
+			flag |= Qt::ItemIsUserCheckable;
+		item->setFlags(flag);
+		if(fit->embedded())
+			item->setCheckState(Qt::Checked);
+		else
+			item->setCheckState(Qt::Unchecked);
+		// index of the currently used ParConstIterator
+		embeddedFilesModule->filesLW->addItem(item);
+	}
 	
 	connect(embeddedFilesModule->bundleCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
