@@ -74,7 +74,7 @@ using support::makedir;
 EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,
 	bool embed, Inset const * inset)
 	: DocFileName(file, true), inzip_name_(inzip_name), embedded_(embed),
-		valid_(true), inset_list_()
+		inset_list_()
 {
 	if (inset != NULL)
 		inset_list_.push_back(inset);
@@ -125,24 +125,12 @@ void EmbeddedFile::saveBookmark(Buffer const * buf, int idx) const
 
 string EmbeddedFile::availableFile(Buffer const * buf) const
 {
-	if (embedded())
-		return embeddedFile(buf);
-	else
-		return absFilename();
-}
-
-
-void EmbeddedFile::invalidate()
-{
-	// Clear inset_list_ because they will be registered again.
-	inset_list_.clear();
-	valid_ = false;
+	return embedded() ? embeddedFile(buf) : absFilename();
 }
 
 
 bool EmbeddedFile::extract(Buffer const * buf) const
 {
-
 	string ext_file = absFilename();
 	string emb_file = embeddedFile(buf);
 
@@ -270,10 +258,9 @@ EmbeddedFile & EmbeddedFiles::registerFile(string const & filename,
 	// find this filename, keep the original embedding status
 	if (it != file_list_.end()) {
 		it->addInset(inset);
-		it->validate();
 		return *it;
 	}
-	// try to be more careful
+	//
 	file_list_.push_back(EmbeddedFile(abs_filename, 
 		getInzipName(abs_filename, inzipName), embed, inset));
 	return file_list_.back();
@@ -282,16 +269,7 @@ EmbeddedFile & EmbeddedFiles::registerFile(string const & filename,
 
 void EmbeddedFiles::update()
 {
-	// invalidate all files, obsolete files will then not be validated by the
-	// following document scan. These files will still be kept though, because
-	// they may be added later and their embedding status will be meaningful
-	// again (thinking of cut/paste of an InsetInclude).
-	EmbeddedFileList::iterator it = file_list_.begin();
-	EmbeddedFileList::iterator it_end = file_list_.end();
-	for (; it != it_end; ++it)
-		// we do not update items that are manually inserted
-		if (it->refCount() > 0)
-			it->invalidate();
+	file_list_.clear();
 
 	for (InsetIterator it = inset_iterator_begin(buffer_->inset()); it; ++it)
 		it->registerEmbeddedFiles(*buffer_, *this);
@@ -311,7 +289,7 @@ bool EmbeddedFiles::writeFile(DocFileName const & filename)
 	EmbeddedFileList::iterator it = file_list_.begin();
 	EmbeddedFileList::iterator it_end = file_list_.end();
 	for (; it != it_end; ++it) {
-		if (it->valid() && it->embedded()) {
+		if (it->embedded()) {
 			string file = it->availableFile(buffer_);
 			if (file.empty())
 				lyxerr << "File " << it->absFilename() << " does not exist. Skip embedding it. " << endl;
@@ -356,7 +334,7 @@ bool EmbeddedFiles::extract() const
 	EmbeddedFileList::const_iterator it = file_list_.begin();
 	EmbeddedFileList::const_iterator it_end = file_list_.end();
 	for (; it != it_end; ++it)
-		if (it->valid() && it->embedded())
+		if (it->embedded())
 			if(!it->extract(buffer_))
 				return false;
 	return true;
@@ -368,7 +346,7 @@ bool EmbeddedFiles::updateFromExternalFile() const
 	EmbeddedFileList::const_iterator it = file_list_.begin();
 	EmbeddedFileList::const_iterator it_end = file_list_.end();
 	for (; it != it_end; ++it)
-		if (it->valid() && it->embedded())
+		if (it->embedded())
 			if (!it->updateFromExternalFile(buffer_))
 				return false;
 	return true;
@@ -415,7 +393,7 @@ void EmbeddedFiles::updateInsets() const
 	EmbeddedFiles::EmbeddedFileList::const_iterator it = begin();
 	EmbeddedFiles::EmbeddedFileList::const_iterator it_end = end();
 	for (; it != it_end; ++it)
-		if (it->valid() && it->refCount() > 0)
+		if (it->refCount() > 0)
 			it->updateInsets(buffer_);
 }
 
