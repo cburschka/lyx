@@ -47,7 +47,7 @@ int InsetMathBinom::dw() const
 
 bool InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	ScriptChanger dummy(mi.base);
+	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim.asc = cell(0).height() + 4 + 5;
@@ -63,7 +63,7 @@ bool InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 {
 	int m = x + dim_.width() / 2;
-	ScriptChanger dummy(pi.base);
+	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 3 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 3 - 5);
 	mathed_draw_deco(pi, x, y - dim_.ascent(), dw(), dim_.height(), from_ascii("("));
