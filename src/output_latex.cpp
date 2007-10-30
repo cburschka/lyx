@@ -254,15 +254,18 @@ TeXOnePar(Buffer const & buf,
 	LayoutPtr style;
 
 	if (runparams_in.verbatim) {
-		Font const outerfont =
-			outerFont(std::distance(paragraphs.begin(), pit),
-				  paragraphs);
+		int dist = std::distance(paragraphs.begin(), pit);
+		Font const outerfont = outerFont(dist, paragraphs);
+
+		// No newline if only one paragraph in this lyxtext
+		if (dist > 0) {
+			os << '\n';
+			texrow.newline();
+		}
 
 		/*bool need_par = */ pit->latex(buf, bparams, outerfont,
 			os, texrow, runparams_in);
 
-		os << '\n';
-		texrow.newline();
 		return ++pit;
 	}
 
