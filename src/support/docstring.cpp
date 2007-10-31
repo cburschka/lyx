@@ -109,10 +109,16 @@ docstring const from_local8bit(std::string const & s)
 }
 
 
-const char* to_local8bit_failure::what() const throw()
-{
-	return "A string could not be converted from unicode to the local 8 bit encoding.";
-}
+/// Exception thrown by to_local8bit if the string could not be converted
+class to_local8bit_failure : public std::bad_cast {
+public:
+	to_local8bit_failure() throw() : std::bad_cast() {}
+	virtual ~to_local8bit_failure() throw() {}
+	virtual const char* what() const throw()
+	{
+		return "A string could not be converted from unicode to the local 8 bit encoding.";
+	}
+};
 
 
 std::string const to_local8bit(docstring const & s)

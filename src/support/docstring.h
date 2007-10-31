@@ -16,7 +16,6 @@
 #include "support/types.h"
 
 #include <string>
-//#include <typeinfo>
 
 namespace lyx {
 
@@ -40,14 +39,6 @@ std::string const to_utf8(docstring const &);
 
 /// convert \p s from the encoding of the locale to ucs4.
 docstring const from_local8bit(std::string const & s);
-
-/// Exception thrown by to_local8bit if the string could not be converted
-class to_local8bit_failure /*: public std::bad_cast*/ {
-public:
-	to_local8bit_failure() throw() /*: std::bad_cast()*/ {}
-	virtual ~to_local8bit_failure() throw() {}
-	virtual const char* what() const throw();
-};
 
 /**
  * Convert \p s from ucs4 to the encoding of the locale.
