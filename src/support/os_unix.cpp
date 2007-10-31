@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "support/os.h"
+#include "support/docstring.h"
 
 #ifdef __APPLE__
 #include <Carbon/Carbon.h>

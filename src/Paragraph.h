@@ -21,7 +21,8 @@
 
 #include "insets/InsetCode.h"
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
+#include "support/types.h"
 // FIXME: would be nice to forward declare odocstream instead of
 // including this:
 #include "support/docstream.h"

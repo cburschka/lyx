@@ -13,8 +13,9 @@
 #include <config.h>
 
 #include "Length.h"
-
 #include "gettext.h"
+
+#include <string>
 
 
 namespace lyx {

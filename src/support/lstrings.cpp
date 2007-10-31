@@ -518,6 +518,19 @@ std::basic_string<Ch> const subst_char(std::basic_string<Ch> const & a,
 	return tmp;
 }
 
+/// Substitute all \a oldchar with \a newchar
+docstring const subst_char(docstring const & a,
+	docstring::value_type oldchar, docstring::value_type newchar)
+{
+	docstring tmp(a);
+	docstring::iterator lit = tmp.begin();
+	docstring::iterator end = tmp.end();
+	for (; lit != end; ++lit)
+		if ((*lit) == oldchar)
+			(*lit) = newchar;
+	return tmp;
+}
+
 
 /// substitutes all instances of \a oldstr with \a newstr
 template<typename String> inline
@@ -528,6 +541,21 @@ String const subst_string(String const & a,
 	String lstr = a;
 	typename String::size_type i = 0;
 	typename String::size_type const olen = oldstr.length();
+	while ((i = lstr.find(oldstr, i)) != string::npos) {
+		lstr.replace(i, olen, newstr);
+		i += newstr.length(); // We need to be sure that we dont
+		// use the same i over and over again.
+	}
+	return lstr;
+}
+
+docstring const subst_string(docstring const & a,
+		docstring const & oldstr, docstring const & newstr)
+{
+	BOOST_ASSERT(!oldstr.empty());
+	docstring lstr = a;
+	docstring::size_type i = 0;
+	docstring::size_type const olen = oldstr.length();
 	while ((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont
@@ -670,6 +698,25 @@ String const doSplit(String const & a, String & piece, Char delim)
 	if (i == a.length() - 1) {
 		piece = a.substr(0, i);
 	} else if (i != String::npos) {
+		piece = a.substr(0, i);
+		tmp = a.substr(i + 1);
+	} else if (i == 0) {
+		piece.erase();
+		tmp = a.substr(i + 1);
+	} else {
+		piece = a;
+	}
+	return tmp;
+}
+
+template<typename Char> inline
+docstring const doSplit(docstring const & a, docstring & piece, Char delim)
+{
+	docstring tmp;
+	typename docstring::size_type i = a.find(delim);
+	if (i == a.length() - 1) {
+		piece = a.substr(0, i);
+	} else if (i != docstring::npos) {
 		piece = a.substr(0, i);
 		tmp = a.substr(i + 1);
 	} else if (i == 0) {

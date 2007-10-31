@@ -18,6 +18,8 @@
 
 #include <iconv.h>
 
+#include <boost/cstdint.hpp>
+
 #include <cerrno>
 #include <iomanip>
 #include <map>

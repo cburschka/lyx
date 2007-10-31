@@ -14,6 +14,8 @@
 
 #include "Color.h"
 
+#include <string>
+
 namespace lyx {
 
 const QColor grey40(0x66, 0x66, 0x66);

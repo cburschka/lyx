@@ -18,7 +18,7 @@
 #include "Dimension.h"
 #include "update_flags.h"
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 #include "support/types.h"
 
 #include <boost/noncopyable.hpp>

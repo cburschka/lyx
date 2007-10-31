@@ -194,7 +194,9 @@ lyx::docstring operator+(char const * l, lyx::docstring const & r)
 lyx::docstring operator+(lyx::docstring const & l, char r)
 {
 	BOOST_ASSERT(static_cast<unsigned char>(r) < 0x80);
-	return l + lyx::docstring::value_type(r);
+	docstring s = l;
+	s += docstring::value_type(r);
+	return s;
 }
 
 

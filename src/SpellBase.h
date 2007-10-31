@@ -13,7 +13,7 @@
 #ifndef SPELL_BASE_H
 #define SPELL_BASE_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {

@@ -16,22 +16,9 @@
 #ifndef LYX_TYPES_H
 #define LYX_TYPES_H
 
-#include <boost/cstdint.hpp>
-
 #include <cstddef>
 
 namespace lyx {
-
-	/// The type used to hold characters in paragraphs
-#ifdef USE_WCHAR_T
-	// Prefer this if possible because GNU libstdc++ has usable
-	// std::ctype<wchar_t> locale facets but not
-	// std::ctype<boost::uint32_t>. gcc older than 3.4 is also missing
-	// usable std::char_traits<boost::uint32_t>.
-	typedef wchar_t char_type;
-#else
-	typedef boost::uint32_t char_type;
-#endif
 
 	/// a type for positions used in paragraphs
 	// needs to be signed for a while to hold the special value -1 that is

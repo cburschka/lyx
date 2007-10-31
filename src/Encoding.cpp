@@ -23,6 +23,8 @@
 #include "support/lstrings.h"
 #include "support/unicode.h"
 
+#include <boost/cstdint.hpp>
+
 #include <sstream>
 
 #ifndef CXX_GLOBAL_CSTD

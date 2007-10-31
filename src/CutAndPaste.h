@@ -14,8 +14,10 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
-#include "support/docstring.h"
 #include "TextClass.h"
+
+#include "support/types.h"
+#include "support/docstring.h"
 
 #include <vector>
 

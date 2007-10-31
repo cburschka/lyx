@@ -77,6 +77,7 @@ liblyxsupport_la_SOURCES = \
 	rename.cpp \
 	socktools.cpp \
 	socktools.h \
+	strfwd.h \
 	std_istream.h \
 	std_ostream.h \
 	Systemcall.cpp \

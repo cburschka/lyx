@@ -16,6 +16,7 @@
 #define CHANGES_H
 
 #include "support/docstream.h"
+#include "support/types.h"
 #include "support/lyxtime.h"
 
 #include <vector>

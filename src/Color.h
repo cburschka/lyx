@@ -21,7 +21,7 @@
 
 #include "ColorCode.h"
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include <boost/scoped_ptr.hpp>
 

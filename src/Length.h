@@ -15,7 +15,7 @@
 #ifndef LENGTH_H
 #define LENGTH_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {
@@ -67,12 +67,8 @@ public:
 	/// "data" must be a decimal number, followed by a unit
 	explicit Length(std::string const & data);
 
-	void swap(Length & rhs)
-	{
-		std::swap(val_, rhs.val_);
-		std::swap(unit_, rhs.unit_);
-	}
-
+	///
+	void swap(Length & rhs);
 	///
 	double value() const;
 	///
@@ -100,7 +96,7 @@ public:
 
 private:
 	///
-	double          val_;
+	double val_;
 	///
 	Length::UNIT unit_;
 };

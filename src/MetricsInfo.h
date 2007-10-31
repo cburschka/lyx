@@ -14,7 +14,10 @@
 
 #include "ColorCode.h"
 #include "FontInfo.h"
-#include "support/docstring.h"
+
+#include "support/strfwd.h"
+#include "support/types.h"
+
 #include <string>
 
 class BufferView;

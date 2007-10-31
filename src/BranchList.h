@@ -32,6 +32,8 @@
 
 #include "Color.h"
 
+#include "support/docstring.h"
+
 #include <list>
 
 

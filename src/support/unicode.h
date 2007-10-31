@@ -13,7 +13,7 @@
 #ifndef LYX_SUPPORT_UNICODE_H
 #define LYX_SUPPORT_UNICODE_H
 
-#include "support/types.h"
+#include "support/strfwd.h"
 
 #include <boost/scoped_ptr.hpp>
 

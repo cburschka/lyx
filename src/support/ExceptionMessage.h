@@ -34,7 +34,7 @@ public:
 	ExceptionMessage(ExceptionType type, docstring const & title,
 		docstring const & details)
 	: type_(type), title_(title), details_(details),
-	  message_(to_utf8(title_ + '\n' + details_)) {}
+	  message_(to_utf8(title_ + docstring::value_type('\n') + details_)) {}
 
 	virtual const char * what() const throw() { return message_.c_str(); }
 	virtual ~ExceptionMessage() throw() {}

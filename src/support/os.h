@@ -14,7 +14,8 @@
 #ifndef OS_H
 #define OS_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
+#include <cstddef>
 
 
 namespace lyx {
@@ -43,7 +44,7 @@ std::string const python();
 
 /// Extract the path common to both @c p1 and @c p2. DBCS aware!
 /// \p p1, \p p2 and the return value are encoded in utf8.
-docstring::size_type common_path(docstring const & p1, docstring const & p2);
+std::size_t common_path(docstring const & p1, docstring const & p2);
 
 /// Converts a unix style path to host OS style.
 /// \p p and the return value are encoded in utf8.

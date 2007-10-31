@@ -13,7 +13,6 @@
 #ifndef LATEXFEATURES_H
 #define LATEXFEATURES_H
 
-
 #include "OutputParams.h"
 #include "support/docstring.h"
 
@@ -125,7 +124,7 @@ private:
 	///
 	UsedFloats usedFloats_;
 	///
-	typedef std::map<docstring , std::string> FileMap;
+	typedef std::map<docstring, std::string> FileMap;
 	///
 	FileMap IncludedFiles_;
 	/** Buffer of the file being processed.

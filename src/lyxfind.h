@@ -15,7 +15,7 @@
 #ifndef LYXFIND_H
 #define LYXFIND_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 

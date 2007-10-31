@@ -17,9 +17,7 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-#include "support/docstring.h"
-
-#include <boost/noncopyable.hpp>
+#include "support/strfwd.h"
 
 #include <iosfwd>
 
@@ -55,7 +53,7 @@ struct keyword_item {
 
     @see LyXRC.cpp for an example of usage.
   */
-class Lexer : boost::noncopyable {
+class Lexer {
 public:
 	///
 	Lexer(keyword_item *, int);
@@ -175,6 +173,11 @@ public:
 	static std::string const quoteString(std::string const &);
 
 private:
+	/// noncopiable
+	Lexer(Lexer const &);
+	void operator=(Lexer const &);
+
+	///
 	class Pimpl;
 	///
 	Pimpl * pimpl_;
