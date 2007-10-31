@@ -39,7 +39,7 @@ namespace lyx { typedef wchar_t char_type; }
 #else
 
 #include <boost/cstdint.hpp>
-namepace lyx { typedef boost::uint32_t char_type; }
+namespace lyx { typedef boost::uint32_t char_type; }
 
 #endif
 
