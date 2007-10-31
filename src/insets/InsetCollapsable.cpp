@@ -730,7 +730,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_LANGUAGE:
-		flag.enabled(layout_.forceltr);
+		flag.enabled(!layout_.forceltr);
 		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_BREAK_PARAGRAPH:
