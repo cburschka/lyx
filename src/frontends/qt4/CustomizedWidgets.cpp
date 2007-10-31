@@ -93,7 +93,7 @@ void ShortcutLineEdit::keyPressEvent(QKeyEvent * e)
 			break;
 		default:
 			appendToSequence(e);
-			setText(toqstr(keysequence_.print(KeySequence::BindFile)));
+			setText(toqstr(keysequence_.print(KeySequence::ForGui)));
 	}
 }
 

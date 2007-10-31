@@ -1874,10 +1874,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	string const action_name = lyxaction.getActionName(action);
 	QString const lfun_name = toqstr(from_utf8(action_name) 
 			+ " " + lfun.argument());
-	// use BindFile format instead of a more verbose form Portable. If the
-	// Shortcut dialog can hide all the bind file stuff, and on_removePB_pressed
-	// can parse Portable format, Portable format can be used. 
-	QString const shortcut = toqstr(seq.print(KeySequence::BindFile));
+	QString const shortcut = toqstr(seq.print(KeySequence::ForGui));
 	item_type item_tag = tag;
 
 	QTreeWidgetItem * newItem = NULL;
@@ -1925,6 +1922,8 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 
 	newItem->setText(0, lfun_name);
 	newItem->setText(1, shortcut);
+	// record BindFile representation to recover KeySequence when needed.
+	newItem->setData(1, Qt::UserRole, QVariant(toqstr(seq.print(KeySequence::BindFile))));
 	setItemType(newItem, item_tag);
 	return newItem;
 }
@@ -1987,7 +1986,7 @@ void PrefShortcuts::on_removePB_pressed()
 	// removing all selected items anyway.
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
 	for (int i = 0; i < items.size(); ++i) {
-		string shortcut = fromqstr(items[i]->text(1));
+		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
 		string lfun = fromqstr(items[i]->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
 		item_type tag = static_cast<item_type>(items[i]->data(0, Qt::UserRole).toInt());
