@@ -109,10 +109,10 @@ public:
 			     Layout const & style);
 
 	/// Output consecutive unicode chars, belonging to the same script as
-	/// specified by the latex macro \p ltx, to \p os starting from \p c.
+	/// specified by the latex macro \p ltx, to \p os starting from \p i.
 	/// \return the number of characters written.
-	int writeScriptChars(odocstream & os, char_type c, docstring const & ltx,
-			   Change &, Encoding const &, pos_type &);
+	int writeScriptChars(odocstream & os, docstring const & ltx,
+			   Change &, Encoding const &, pos_type & i);
 
 	/// This could go to ParagraphParameters if we want to.
 	int startTeXParParams(BufferParams const &, odocstream &, TexRow &,
@@ -412,7 +412,7 @@ void Paragraph::Private::insertChar(pos_type pos, char_type c,
 
 	// This is actually very common when parsing buffers (and
 	// maybe inserting ascii text)
-	if (pos == text_.size()) {
+	if (pos == pos_type(text_.size())) {
 		// when appending characters, no need to update tables
 		text_.push_back(c);
 		return;
@@ -570,18 +570,19 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 
 
 int Paragraph::Private::writeScriptChars(odocstream & os,
-					 char_type c,
 					 docstring const & ltx,
 					 Change & runningChange,
 					 Encoding const & encoding,
 					 pos_type & i)
 {
-	// We only arrive here when a proper language for character c has not
-	// been specified (i.e., it could not be translated in the current
+	// FIXME: modifying i here is not very nice...
+
+	// We only arrive here when a proper language for character text_[i] has
+	// not been specified (i.e., it could not be translated in the current
 	// latex encoding) and it belongs to a known script.
-	// Parameter ltx contains the latex translation of c as specified in
+	// Parameter ltx contains the latex translation of text_[i] as specified in
 	// the unicodesymbols file and is something like "\textXXX{<spec>}".
-	// The latex macro name "textXXX" specifies the script to which c
+	// The latex macro name "textXXX" specifies the script to which text_[i]
 	// belongs and we use it in order to check whether characters from the
 	// same script immediately follow, such that we can collect them in a
 	// single "\textXXX" macro. So, we have to retain "\textXXX{<spec>"
@@ -899,7 +900,7 @@ void Paragraph::Private::latexSpecialChar(
 		docstring const latex = encoding.latexChar(c);
 		if (Encodings::isKnownScriptChar(c, script)
 		    && prefixIs(latex, from_ascii("\\" + script)))
-			column += writeScriptChars(os, c, latex,
+			column += writeScriptChars(os, latex,
 					running_change, encoding, i) - 1;
 		else if (latex.length() > 1 && latex[latex.length() - 1] != '}') {
 			// Prevent eating of a following
@@ -1215,7 +1216,7 @@ void Paragraph::appendChar(char_type c, Font const & font,
 void Paragraph::appendString(docstring const & s, Font const & font,
 		Change const & change)
 {
-	size_t end = s.size();
+	pos_type end = s.size();
 	size_t oldsize = d->text_.size();
 	size_t newsize = oldsize + end;
 	size_t capacity = d->text_.capacity();
