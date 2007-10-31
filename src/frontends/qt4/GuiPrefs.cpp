@@ -1710,10 +1710,9 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form, QWidget * parent)
 {
 	setupUi(this);
 
-	shortcutsTW->setColumnCount(3);
+	shortcutsTW->setColumnCount(2);
 	shortcutsTW->headerItem()->setText(0, qt_("Function"));
 	shortcutsTW->headerItem()->setText(1, qt_("Shortcut"));
-	shortcutsTW->headerItem()->setText(2, qt_("Type"));
 	shortcutsTW->setSortingEnabled(true);
 	// Multi-selection can be annoying.
 	// shortcutsTW->setSelectionMode(QAbstractItemView::MultiSelection);
@@ -1837,33 +1836,24 @@ void PrefShortcuts::updateShortcutsTW()
 void PrefShortcuts::setItemType(QTreeWidgetItem * item, item_type tag)
 {
 	item->setData(0, Qt::UserRole, QVariant(tag));
-	QString color;
+	QFont font;
 
 	switch (tag) {
 	case System:
-		color = "black";
-		item->setText(2, "System shortcut");
 		break;
 	case UserBind:
-		color = "green";
-		item->setText(2, "User defined shortcut");
+		font.setBold(true);
 		break;
 	case UserUnbind:
-		color = "red";
-		item->setText(2, "Removed system shortcut");
+		font.setStrikeOut(true);
 		break;
+	// this item is not displayed now.
 	case UserExtraUnbind:
-		color = "purple";
-		item->setText(2, "Unmatched removed system shortcut");
+		font.setStrikeOut(true);
 		break;
 	}
 
-	for (int col = 0; col < shortcutsTW->columnCount(); ++col) 
-#if QT_VERSION >= 0x040200
-		item->setForeground(col, QBrush(QColor(color)));
-#else
-		item->setTextColor(col, QColor(color));
-#endif
+	item->setFont(1, font);
 }
 
 
@@ -1997,12 +1987,18 @@ void PrefShortcuts::on_removePB_pressed()
 			// but add an user unbind item
 			user_unbind_.bind(shortcut, func);
 			setItemType(items[i], UserUnbind);
+			removePB->setText(toqstr("Restore"));
 			break;
 		}
 		case UserBind: {
 			// for user_bind, we remove this bind
 			QTreeWidgetItem * parent = items[i]->parent();
-			parent->takeChild(parent->indexOfChild(items[i]));
+			int itemIdx = parent->indexOfChild(items[i]);
+			parent->takeChild(itemIdx);
+			if (itemIdx > 0)
+				shortcutsTW->scrollToItem(parent->child(itemIdx - 1));
+			else
+				shortcutsTW->scrollToItem(parent);
 			user_bind_.unbind(shortcut, func);
 			break;
 		}
@@ -2011,6 +2007,7 @@ void PrefShortcuts::on_removePB_pressed()
 			// become System again.
 			user_unbind_.unbind(shortcut, func);
 			setItemType(items[i], System);
+			removePB->setText(toqstr("Remove"));
 			break;
 		}
 		case UserExtraUnbind: {
