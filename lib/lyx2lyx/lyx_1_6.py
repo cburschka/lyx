@@ -521,20 +521,28 @@ def convert_url(document):
     'Convert url insets to url charstyles'
     if document.backend == "docbook":
       return
-    r = re.compile(r'target\s+"(.*)"')
     didone = False
     i = 0
     while True:
       i = find_token(document.body, "\\begin_inset CommandInset url", i)
       if i == -1:
         break
+      n = find_token(document.body, "name", i)
+      if n == i + 2:
+        # place the URL name in typewriter before the new URL insert
+        # grab the name 'bla' from the e.g. the line 'name "bla"',
+        # therefore start with the 6th character
+        name = document.body[n][6:-1]
+        newname = ["\\begin_layout Standard",
+          name + " "]
+        document.body[i-1:i-1] = newname
+        i = i + 1
       j = find_token(document.body, "target", i)
       if j == -1:
         document.warning("Malformed LyX document: Can't find target for url inset")
         i = j
         continue
-      m = r.match(document.body[j])
-      target = m.group(1)
+      target = document.body[j][8:-1]
       k = find_token(document.body, "\\end_inset", j)
       if k == -1:
         document.warning("Malformed LyX document: Can't find end of url inset")
@@ -543,6 +551,7 @@ def convert_url(document):
       newstuff = ["\\begin_inset Flex URL",
         "status collapsed", "", 
         "\\begin_layout Standard",
+        "",
         target,
         "\\end_layout",
         ""]
