@@ -533,9 +533,8 @@ def convert_url(document):
         # grab the name 'bla' from the e.g. the line 'name "bla"',
         # therefore start with the 6th character
         name = document.body[n][6:-1]
-        newname = ["\\begin_layout Standard",
-          name + " "]
-        document.body[i-1:i-1] = newname
+        newname = [name + " "]
+        document.body[i:i] = newname
         i = i + 1
       j = find_token(document.body, "target", i)
       if j == -1:
