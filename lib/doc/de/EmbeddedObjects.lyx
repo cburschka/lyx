@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -307,20 +307,8 @@ Version 1.5.2-0
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-today
-\end_layout
-
-\end_inset
-
-
+letzte Änderung: 31.
+ Oktober 2007
 \end_layout
 
 \begin_layout Standard
@@ -12905,7 +12893,10 @@ Rahmen
 \family default
  des 
 \family sans
-Tabellen-Einstellungen
+Tabellen-Ein\SpecialChar \-
+stel\SpecialChar \-
+lun\SpecialChar \-
+gen
 \family default
 -Dialogs hinzugefügt werden, wie in Abschnitt\InsetSpace ~
 
@@ -17323,7 +17314,7 @@ phantom{
 
 
 \backslash
-newcolumntype{S}[2]
+newcolumntype
 \begin_inset ERT
 status collapsed
 
@@ -18979,7 +18970,10 @@ Ein Gleitobjekt wird mit
 Einfügen\SpecialChar \menuseparator
 Gleitobjekt\SpecialChar \menuseparator
 Algorithmus/Abbildung/Ta\SpecialChar \-
-belle/Umflossenes\InsetSpace ~
+belle/Um\SpecialChar \-
+flos\SpecialChar \-
+se\SpecialChar \-
+nes\InsetSpace ~
 Gleitobjekt
 \family default
  eingefügt.
@@ -19451,9 +19445,11 @@ Dies ist eine umflossene Gleitobjekt-Abbildung
 
  
 \family sans
-Einfügen\SpecialChar \menuseparator
-Gleitobjekt\SpecialChar \menuseparator
-Umflossenes Gleit-ob\SpecialChar \-
+Einfügen \SpecialChar \menuseparator
+ Gleitobjekt \SpecialChar \menuseparator
+ Umflossenes\InsetSpace \space{}
+Gleit\SpecialChar \-
+ob\SpecialChar \-
 jekt
 \family default
  eingefügt, wenn das LaTeX-Paket 
@@ -19640,7 +19636,9 @@ Der Text, der um die Abbildung herumfließt, sollte zwischen
 \series bold
 
 \backslash
-begin{sloppypar}
+begin{slop\SpecialChar \-
+py\SpecialChar \-
+par}
 \series default
  und 
 \series bold
@@ -20068,7 +20066,8 @@ reference "abb:Zwei-Teilabbildungen"
 \begin_layout Description
 Formatierter\InsetSpace ~
 Querverweis: druckt ein selbst definiertes Querverweisformat
- 
+\newline
+
 \begin_inset Note Greyedout
 status open
 
@@ -20077,7 +20076,7 @@ status open
 \series bold
 Bemerkung:
 \series default
- Dies ist nur möglich wenn das LaTeX-Paket 
+ Dies ist nur möglich, wenn das LaTeX-Paket 
 \series bold
 prettyref
 \series default
@@ -20235,7 +20234,10 @@ autoref{#1}}}}
 \series bold
 hyperref
 \series default
- wird benutzt, um Marken und Querverweise in der DVI- und PDF-Dokumenten
+ wird benutzt, um Marken und Querverweise in der DVI- und PDF-Do\SpecialChar \-
+ku\SpecialChar \-
+men\SpecialChar \-
+ten
  zu verlinken, das heißt der Leser der entsprechenden Datei kann auf solch
  einen Link klicken, und die angeklickte Stelle wird gezeigt.
  In DVI-Dateien ist ein Link blau unterstrichen, in der PDF-Datei ändert
@@ -20574,8 +20576,8 @@ immer
  Das heißt wenn Sie die Standard-Platzierung verwenden, wird LaTeX zuerst
  versuchen 
 \family sans
-Hier\InsetSpace ~
-wenn\InsetSpace ~
+Hier\InsetSpace \space{}
+wenn\InsetSpace \space{}
 möglich
 \family default
 , dann 
@@ -21309,7 +21311,11 @@ setkomafont
 \series bold
 koma-script
 \series default
--Dokumentation 
+-Do\SpecialChar \-
+ku\SpecialChar \-
+men\SpecialChar \-
+ta\SpecialChar \-
+tion 
 \begin_inset LatexCommand cite
 key "koma-script,koma-script-de"
 
@@ -22852,7 +22858,9 @@ farbig
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
 Farben\SpecialChar \menuseparator
-Schattierte\InsetSpace ~
+Schat\SpecialChar \-
+tier\SpecialChar \-
+te\InsetSpace \space{}
 Box
 \family default
  definiert ist, und sieht so aus:
@@ -24252,7 +24260,7 @@ theendnote
 \backslash
 @addtoreset
 \series default
- wie in Abschnitt\InsetSpace ~
+ wie in Abschnitt\InsetSpace \space{}
 
 \begin_inset LatexCommand ref
 reference "uab:Fußnoten-Nummerierung"
@@ -25969,7 +25977,8 @@ fboxrule
 \series default
  festgelegt, der Schatten ist 4\InsetSpace \thinspace{}
 pt breit.
- 
+\newline
+
 \begin_inset Box Shadowbox
 position "c"
 hor_pos "c"
@@ -27075,7 +27084,7 @@ In dieser Zeile wird ein sehr langes Wort getrennt, nämlich
 \begin_inset Quotes gld
 \end_inset
 
-einsehrserlangeswort
+einsehrsehrsehrlangeswort
 \begin_inset Quotes grd
 \end_inset
 
@@ -27130,7 +27139,7 @@ mbox{
 \begin_inset Quotes gld
 \end_inset
 
-einsehrserlangeswort
+einsehrsehrsehrlangeswort
 \begin_inset Quotes grd
 \end_inset
 
@@ -27184,7 +27193,7 @@ status collapsed
 
 \end_inset
 
-einsehrserlangeswort
+einsehrsehrsehrlangeswort
 \begin_inset Quotes grd
 \end_inset
 
@@ -27195,7 +27204,7 @@ einsehrserlangeswort
 Natürlich ragt das Wort jetzt in den Seitenrand hinein.
  Wenn Sie das nicht wollen, müssen Sie einen manuellen Zeilenumbruch (
 \series bold
-Strg-Return
+Strg-Eingabe
 \series default
 ) einfügen: 
 \end_layout
@@ -27220,7 +27229,7 @@ mbox{
 \begin_inset Quotes gld
 \end_inset
 
-einsehrserlangeswort
+einsehrsehrsehrlangeswort
 \begin_inset Quotes grd
 \end_inset
 
@@ -30500,7 +30509,9 @@ name "Programm-Code"
 Um Programm-Code-Listen einzufügen und zu drucken, können Sie 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Programmlisting
+Pro\SpecialChar \-
+gramm\SpecialChar \-
+listing
 \family default
  verwenden.
  Das LaTeX-Paket 
@@ -30710,7 +30721,8 @@ Bemerkung:
 \series default
  Wenn sie keine fettgedruckten Schlüsselwörter im Schriftstil 
 \family typewriter
-Schreibmaschine
+Schreib\SpecialChar \-
+maschine
 \family default
  erhalten, enthält die von Ihnen verwendete Schrift in diesem Stil wahrscheinlic
 h keine fett gedruckten Buchstaben.
@@ -30996,7 +31008,9 @@ Dokumentweite Listing-Eigenschaften können in
 \family sans
  Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
-Textformat\SpecialChar \menuseparator
+Text\SpecialChar \-
+for\SpecialChar \-
+mat\SpecialChar \menuseparator
 Listing-Einstellungen
 \family default
  festgelegt werden.
@@ -31771,7 +31785,10 @@ name "EPS"
 
 \end_inset
 
- (Encapsulated PostScript, Datei-Erweiterung 
+ (Encapsulated PostScript, Datei-Er\SpecialChar \-
+wei\SpecialChar \-
+te\SpecialChar \-
+rung 
 \begin_inset Quotes gld
 \end_inset
 
@@ -32014,7 +32031,8 @@ PDF\InsetSpace ~
  ohne Probleme arbeitet.
  Das Programm 
 \family typewriter
-dvipdfm
+dvi\SpecialChar \-
+pdfm
 \family default
  wird nicht weiterentwickelt und ist deshalb nicht sehr aktuell.
 \end_layout
