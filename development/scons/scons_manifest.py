@@ -1449,6 +1449,16 @@ lib_images_files = Split('''
     marginalnote-insert.png
     math-display.png
     math-matrix.png
+    math-macro-add-param.png
+    math-macro-add-greedy-optional-param.png
+    math-macro-append-greedy-param.png
+    math-macro-remove-param.png
+    math-macro-make-nonoptional.png
+    math-macro-remove-greedy-param.png
+    math-macro-remove-optional-param.png
+    math-macro-add-optional-param.png
+    math-macro-make-optional.png
+    math-macro_newmacroname_newcommand.png
     math-mode.png
     math-subscript.png
     math-superscript.png
