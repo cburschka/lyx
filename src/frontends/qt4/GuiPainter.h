@@ -16,6 +16,7 @@
 #include "frontends/Painter.h"
 
 #include <QPainter>
+#include <stack>
 
 class QString;
 
@@ -93,6 +94,12 @@ public:
 	/// draw a char at position x, y (y is the baseline)
 	virtual int text(int x, int y, char_type c, FontInfo const & f);
 
+	/// start monochrome painting mode, i.e. map every color into [min,max]
+	virtual void enterMonochromeMode(ColorCode const & min, 
+		ColorCode const & max);
+	/// leave monochrome painting mode
+	virtual void leaveMonochromeMode();
+	
 private:
 	/// draw small caps text
 	/**
@@ -102,13 +109,23 @@ private:
 		QString const & str, FontInfo const & f);
 
 	/// set pen parameters
-	void setQPainterPen(ColorCode col,
+	void setQPainterPen(QColor const & col,
 		line_style ls = line_solid,
 		line_width lw = line_thin);
 
-	ColorCode current_color_;
+	QColor current_color_;
 	Painter::line_style current_ls_;
 	Painter::line_width current_lw_;
+	///
+	std::stack<QColor> monochrome_min_;
+	///
+	std::stack<QColor> monochrome_max_;
+	/// convert into Qt color, possibly applying the monochrome mode
+	QColor computeColor(ColorCode col);
+	/// possibly apply monochrome mode
+	QColor filterColor(QColor const & col);
+	///
+	QString generateStringSignature(QString const & str, FontInfo const & f);	
 };
 
 } // namespace frontend

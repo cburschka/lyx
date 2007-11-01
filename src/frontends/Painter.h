@@ -170,6 +170,12 @@ public:
 	int preeditText(int x, int y,
 		char_type c, FontInfo const & f, preedit_style style);
 
+	/// start monochrome painting mode, i.e. map every color into [min,max]
+	virtual void enterMonochromeMode(ColorCode const & min, 
+		ColorCode const & max) = 0;
+	/// leave monochrome painting mode
+	virtual void leaveMonochromeMode() = 0;
+
 protected:
 	/// check the font, and if set, draw an underline
 	void underline(FontInfo const & f,

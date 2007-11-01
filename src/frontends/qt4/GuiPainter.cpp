@@ -46,24 +46,13 @@ namespace {
 
 bool const usePixmapCache = USE_PIXMAP_CACHE;
 
-QString generateStringSignature(QString const & str, FontInfo const & f)
-{
-	QString sig = str;
-	sig.append(QChar(static_cast<short>(f.family())));
-	sig.append(QChar(static_cast<short>(f.series())));
-	sig.append(QChar(static_cast<short>(f.realShape())));
-	sig.append(QChar(static_cast<short>(f.size())));
-	sig.append(QChar(static_cast<short>(f.color())));
-	return sig;
-}
-
 } // anon namespace
 
 GuiPainter::GuiPainter(QPaintDevice * device)
 	: QPainter(device), Painter()
 {
 	// new QPainter has default QPen:
-	current_color_ = Color_black;
+	current_color_ = guiApp->colorCache().get(Color_black);
 	current_ls_ = line_solid;
 	current_lw_ = line_thin;
 }
@@ -76,7 +65,7 @@ GuiPainter::~GuiPainter()
 }
 
 
-void GuiPainter::setQPainterPen(ColorCode col,
+void GuiPainter::setQPainterPen(QColor const & col,
 	Painter::line_style ls, Painter::line_width lw)
 {
 	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
@@ -87,8 +76,7 @@ void GuiPainter::setQPainterPen(ColorCode col,
 	current_lw_ = lw;
 
 	QPen pen = QPainter::pen();
-
-	pen.setColor(guiApp->colorCache().get(col));
+	pen.setColor(col);
 
 	switch (ls) {
 		case line_solid: pen.setStyle(Qt::SolidLine); break;
@@ -104,12 +92,78 @@ void GuiPainter::setQPainterPen(ColorCode col,
 }
 
 
+QString GuiPainter::generateStringSignature(QString const & str, FontInfo const & f)
+{
+	QString sig = str;
+	sig.append(QChar(static_cast<short>(f.family())));
+	sig.append(QChar(static_cast<short>(f.series())));
+	sig.append(QChar(static_cast<short>(f.realShape())));
+	sig.append(QChar(static_cast<short>(f.size())));
+	sig.append(QChar(static_cast<short>(f.color())));
+	if (!monochrome_min_.empty()) {
+		QColor const & min = monochrome_min_.top();
+		QColor const & max = monochrome_max_.top();
+		sig.append(QChar(static_cast<short>(min.red())));
+		sig.append(QChar(static_cast<short>(min.green())));
+		sig.append(QChar(static_cast<short>(min.blue())));
+		sig.append(QChar(static_cast<short>(max.red())));
+		sig.append(QChar(static_cast<short>(max.green())));
+		sig.append(QChar(static_cast<short>(max.blue())));
+	}
+	return sig;
+}
+
+
+QColor GuiPainter::computeColor(ColorCode col)
+{
+	return filterColor(guiApp->colorCache().get(col));
+}
+
+
+QColor GuiPainter::filterColor(QColor const & col)
+{
+	if (monochrome_min_.empty())
+		return col;
+
+	// map into [min,max] interval
+	QColor const & min = monochrome_min_.top();
+	QColor const & max = monochrome_max_.top();
+			
+	qreal v = col.valueF();
+	v = v * v; // make it a bit steeper (i.e. darker)
+		
+	qreal minr, ming, minb;
+	qreal maxr, maxg, maxb;
+	min.getRgbF(&minr, &ming, &minb);
+	max.getRgbF(&maxr, &maxg, &maxb);
+			
+	return QColor(v*minr+(1-v)*maxr, v*ming+(1-v)*maxg, v*minb+(1-v)*maxb);
+}
+
+
+void GuiPainter::enterMonochromeMode(ColorCode const & min, ColorCode const & max)
+{
+	QColor qmin = filterColor(guiApp->colorCache().get(min));
+	QColor qmax = filterColor(guiApp->colorCache().get(max));
+	monochrome_min_.push(qmin);
+	monochrome_max_.push(qmax);
+}
+
+
+void GuiPainter::leaveMonochromeMode()
+{
+	BOOST_ASSERT(!monochrome_min_.empty());
+	monochrome_min_.pop();
+	monochrome_max_.pop();
+}
+
+
 void GuiPainter::point(int x, int y, ColorCode col)
 {
 	if (!isDrawingEnabled())
 		return;
 
-	setQPainterPen(col);
+	setQPainterPen(computeColor(col));
 	drawPoint(x, y);
 }
 
@@ -122,7 +176,7 @@ void GuiPainter::line(int x1, int y1, int x2, int y2,
 	if (!isDrawingEnabled())
 		return;
 
-	setQPainterPen(col, ls, lw);
+	setQPainterPen(computeColor(col), ls, lw);
 	bool const do_antialiasing = renderHints() & TextAntialiasing
 		&& x1 != x2 && y1 != y2;
 	setRenderHint(Antialiasing, do_antialiasing);
@@ -151,7 +205,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 		if (i != 0)
 			antialias |= xp[i-1] != xp[i] && yp[i-1] != yp[i];
 	}
-	setQPainterPen(col, ls, lw);
+	setQPainterPen(computeColor(col), ls, lw);
 	bool const text_is_antialiased = renderHints() & TextAntialiasing;
 	setRenderHint(Antialiasing, antialias && text_is_antialiased);
 	drawPolyline(points.data(), np);
@@ -167,7 +221,7 @@ void GuiPainter::rectangle(int x, int y, int w, int h,
 	if (!isDrawingEnabled())
 		return;
 
-	setQPainterPen(col, ls, lw);
+	setQPainterPen(computeColor(col), ls, lw);
 	drawRect(x, y, w, h);
 }
 
@@ -185,7 +239,7 @@ void GuiPainter::arc(int x, int y, unsigned int w, unsigned int h,
 		return;
 
 	// LyX usings 1/64ths degree, Qt usings 1/16th
-	setQPainterPen(col);
+	setQPainterPen(computeColor(col));
 	bool const do_antialiasing = renderHints() & TextAntialiasing;
 	setRenderHint(Antialiasing, do_antialiasing);
 	drawArc(x, y, w, h, a1 / 4, a2 / 4);
@@ -223,7 +277,7 @@ int GuiPainter::smallCapsText(int x, int y,
 	QFont const & qfont = guiApp->guiFontLoader().get(f);
 	QFont const & qsmallfont = guiApp->guiFontLoader().get(smallfont);
 
-	setQPainterPen(f.realColor());
+	setQPainterPen(computeColor(f.realColor()));
 	int textwidth = 0;
 	size_t const ls = s.length();
 	for (unsigned int i = 0; i < ls; ++i) {
@@ -293,7 +347,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// occurs at a line-break. As a kludge, we force Qt to
 	// render this glyph using a one-column line.
 	if (s.size() == 1 && str[0].unicode() == 0x00ad) {
-		setQPainterPen(f.realColor());
+		setQPainterPen(computeColor(f.realColor()));
 		QTextLayout adsymbol(str);
 		adsymbol.setFont(fi.font);
 		adsymbol.beginLayout();
@@ -308,7 +362,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	if (!usePixmapCache) {
 		// don't use the pixmap cache,
 		// draw directly onto the painting device
-		setQPainterPen(f.realColor());
+		setQPainterPen(computeColor(f.realColor()));
 		if (font() != fi.font)
 			setFont(fi.font);
 		// We need to draw the text as LTR as we use our own bidi code.
@@ -342,7 +396,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		pm = QPixmap(w, h);
 		pm.fill(Qt::transparent);
 		GuiPainter p(&pm);
-		p.setQPainterPen(f.realColor());
+		p.setQPainterPen(computeColor(f.realColor()));
 		if (p.font() != fi.font)
 			p.setFont(fi.font);
 		// We need to draw the text as LTR as we use our own bidi code.
