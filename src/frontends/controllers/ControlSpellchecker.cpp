@@ -219,6 +219,11 @@ void ControlSpellchecker::check()
 
 		// end of document
 		if (getWord().empty()) {
+			// FIXME: if we used a lfun like in find/replace, dispatch
+			// would do that for us
+			kernel().bufferview()->update();
+			// FIXME: this Controller is very badly designed...
+			kernel().lyxview().currentWorkArea()->redraw();
 			showSummary();
 			exitEarly_ = true;
 			return;
