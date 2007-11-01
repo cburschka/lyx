@@ -1,12 +1,19 @@
 LyX file-format changes
 -----------------------
 
+2007-11-01 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 299: support for hyperlink types
+
+2007-11-01 Stefan Schimanski <sts@1stein.org>
+	* Format incremented to 298: math-macro code has been rewritten,
+	  now it supports definitions with optional parameters
+
 2007-10-29 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 297: support for Albanian, lower Sorbian,
 	  fixed upper Sorbian language
 
 2007-10-?? Richard Heck <rgheck@bobjweil.com>
-	* Format incremented to 296: ??
+	* Format incremented to 296: ?Include insets are no longer insets?
 
 2007-10-12 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 295: get rid of the htmlurl command that was

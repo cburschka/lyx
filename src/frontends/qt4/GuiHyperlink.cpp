@@ -38,6 +38,12 @@ GuiHyperlink::GuiHyperlink(LyXView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(nameED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changed_adaptor()));
+	connect(WebRB, SIGNAL(clicked()),
+		this, SLOT(changed_adaptor()));
+	connect(EmailRB, SIGNAL(clicked()),
+		this, SLOT(changed_adaptor()));
+	connect(FileRB, SIGNAL(clicked()),
+		this, SLOT(changed_adaptor()));
 
 	setFocusProxy(urlED);
 
@@ -45,6 +51,9 @@ GuiHyperlink::GuiHyperlink(LyXView & lv)
 	bc().setCancel(closePB);
 	bc().addReadOnly(urlED);
 	bc().addReadOnly(nameED);
+	bc().addReadOnly(WebRB);
+	bc().addReadOnly(EmailRB);
+	bc().addReadOnly(FileRB);
 }
 
 
@@ -65,6 +74,12 @@ void GuiHyperlink::updateContents()
 {
 	urlED->setText(toqstr(params_["target"]));
 	nameED->setText(toqstr(params_["name"]));
+	if (params_["type"] == "")
+		WebRB->setChecked(true);
+	else if (params_["type"] == "mailto:")
+		EmailRB->setChecked(true);
+	else if (params_["type"] == "file:")
+		FileRB->setChecked(true);
 	bc().setValid(isValid());
 }
 
@@ -73,6 +88,12 @@ void GuiHyperlink::applyView()
 {
 	params_["target"] = qstring_to_ucs4(urlED->text());
 	params_["name"] = qstring_to_ucs4(nameED->text());
+	if (WebRB->isChecked())
+		params_["type"] = qstring_to_ucs4("");
+	else if (EmailRB->isChecked())
+		params_["type"] = qstring_to_ucs4("mailto:");
+	else if (FileRB->isChecked())
+		params_["type"] = qstring_to_ucs4("file:");
 	params_.setCmdName("href");
 }
 

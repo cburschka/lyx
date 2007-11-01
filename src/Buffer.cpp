@@ -157,7 +157,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 298; //Schimmi: Optional parameters in macros
+int const LYX_FORMAT = 299; //Uwe: Hyperlink types
 
 } // namespace anon
 

@@ -47,9 +47,9 @@ InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
 CommandInfo const * InsetHyperlink::findInfo(std::string const & /* cmdName */)
 {
 	static const char * const paramnames[] =
-		{"name", "target", ""};
+		{"name", "target", "type", ""};
 	static const bool isoptional[] = {true, false};
-	static const CommandInfo info = {2, paramnames, isoptional};
+	static const CommandInfo info = {3, paramnames, isoptional};
 	return &info;
 }
 
@@ -124,13 +124,18 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 
 	}  // end if (!name.empty())
 	
+	//for the case there is no name given, the target is set as name
+	string urlname = url;
+	// set the hyperlink type
+	url = to_utf8(getParam("type")) + url;
+
 	if (runparams.moving_arg)
 		os << "\\protect";
 	//set the target for the name when no name is given
 	if (!name.empty())
 		os << "\\href{" << from_utf8(url) << "}{" << from_utf8(name) << '}';
 	else
-		os << "\\href{" << from_utf8(url) << "}{" << from_utf8(url) << '}';
+		os << "\\href{" << from_utf8(url) << "}{" << from_utf8(urlname) << '}';
 	return 0;
 }
 
