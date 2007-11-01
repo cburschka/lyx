@@ -401,19 +401,18 @@ bool DocIterator::hasPart(DocIterator const & it) const
 void DocIterator::updateInsets(Inset * inset)
 {
 	// this function re-creates the cache of inset pointers.
-	// code taken in part from StableDocIterator::asDocIterator.
 	//lyxerr << "converting:\n" << *this << endl;
-	DocIterator dit = DocIterator(*inset);
+	DocIterator dit = *this;
 	size_t const n = slices_.size();
+	slices_.resize(0);
 	for (size_t i = 0 ; i < n; ++i) {
 		BOOST_ASSERT(inset);
-		dit.push_back(slices_[i]);
-		dit.top().inset_ = inset;
+		push_back(dit[i]);
+		top().inset_ = inset;
 		if (i + 1 != n)
-			inset = dit.nextInset();
+			inset = nextInset();
 	}
 	//lyxerr << "converted:\n" << *this << endl;
-	operator=(dit);
 }
 
 
@@ -468,6 +467,53 @@ bool DocIterator::fixIfBroken()
 		return true;
 	} else
 		return false;
+}
+
+
+DocIterator::idx_type DocIterator::find(MathData const & cell) const
+{
+	for (size_t l = 0; l != slices_.size(); ++l) {
+		if (slices_[l].asInsetMath() && &slices_[l].cell() == &cell)
+			return l;
+	}
+	return -1;
+}
+
+
+DocIterator::idx_type DocIterator::find(InsetMath const * inset) const 
+{
+	for (size_t l = 0; l != slices_.size(); ++l) {
+		if (slices_[l].asInsetMath() == inset)
+			return l;
+	}
+	return -1;
+}
+
+
+void DocIterator::cutOff(DocIterator::idx_type above, std::vector<CursorSlice> & cut)
+{
+	cut = std::vector<CursorSlice>(slices_.begin() + above + 1, slices_.end());
+	slices_.resize(above + 1);
+}
+
+
+void DocIterator::cutOff(DocIterator::idx_type above) 
+{
+	slices_.resize(above + 1);
+}
+
+
+void DocIterator::append(std::vector<CursorSlice> const & x) 
+{
+	slices_.insert(slices_.end(), x.begin(), x.end());
+}
+
+
+void DocIterator::append(DocIterator::idx_type idx, pos_type pos) 
+{
+	slices_.push_back(CursorSlice());
+	top().idx() = idx;
+	top().pos() = pos;
 }
 
 

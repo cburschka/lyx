@@ -212,6 +212,19 @@ public:
 	/// \return true if the DocIterator was fixed.
 	bool fixIfBroken();
 
+	/// find index of CursorSlice with &cell() == &cell (or -1 if not found)
+	idx_type find(MathData const & cell) const;
+	/// find index of CursorSlice with inset() == inset (or -1 of not found)
+	idx_type find(InsetMath const * inset) const;
+	/// cut off CursorSlices with index > above and store cut off slices in cut
+	void cutOff(idx_type above, std::vector<CursorSlice> & cut);
+	/// cut off CursorSlices with index > above
+	void cutOff(idx_type above);
+	/// push CursorSlices on top
+	void append(std::vector<CursorSlice> const & x);
+	/// push one CursorSlice on top and set its index and position
+	void append(idx_type idx, pos_type pos);
+
 private:
 	/**
 	 * When the cursor position is i, is the cursor after the i-th char
