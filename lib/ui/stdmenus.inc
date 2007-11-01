@@ -219,7 +219,6 @@ Menuset
 		Item "Append Parameter Eating From The Right" "math-macro-append-greedy-param"
                 Item "Append Optional Parameter Eating From The Right" "math-macro-add-greedy-optional-param"
 		Item "Remove Last Parameter Spitting Out To The Right" "math-macro-remove-greedy-param"
-		Separator
 	End
 
 	Menu "edit_math_limits"

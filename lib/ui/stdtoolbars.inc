@@ -103,6 +103,7 @@ ToolbarSet
 		Item "Insert note" "note-insert"
 		Item "Insert Hyperlink" "href-insert"
 		Item "Insert TeX code" "ert-insert"
+		Item "Insert math macro" "math-macro newmacroname newcommand"
 		Item "Include file" "dialog-show-new-inset include"
 		Separator
 		Item "Text style" "dialog-show character"
@@ -161,6 +162,21 @@ ToolbarSet
 		Item "Delete column" "tabular-feature delete-column"
 		Separator
 		Item "Toggle Math Panels" "toolbar-toggle math_panels"
+	End
+
+	Toolbar "math_macros" "Math Macros"
+		Item "Remove Last Parameter" "math-macro-remove-param"
+		Item "Append Parameter" "math-macro-add-param"
+                Separator
+		Item "Make First Non-Optional into Optional Parameter" "math-macro-make-optional"
+		Item "Make Last Optional into Non-Optional Parameter"
+		"math-macro-make-nonoptional"
+                Item "Remove Optional Parameter" "math-macro-remove-optional-param"
+                Item "Insert Optional Parameter" "math-macro-add-optional-param"
+		Separator
+		Item "Remove Last Parameter Spitting Out To The Right" "math-macro-remove-greedy-param"
+		Item "Append Parameter Eating From The Right" "math-macro-append-greedy-param"
+                Item "Append Optional Parameter Eating From The Right" "math-macro-add-greedy-optional-param"
 	End
 	
 	Toolbar "minibuffer" "Command Buffer"
