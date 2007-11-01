@@ -316,6 +316,16 @@ dist_images_DATA = \
 	images/lyx.png \
 	images/marginalnote-insert.png \
 	images/math-display.png \
+	images/math-macro-add-greedy-optional-param.png \
+	images/math-macro-add-optional-param.png \
+	images/math-macro-add-param.png \
+	images/math-macro-append-greedy-param.png \
+	images/math-macro-make-nonoptional.png \
+	images/math-macro-make-optional.png \
+	images/math-macro-remove-greedy-param.png \
+	images/math-macro-remove-optional-param.png \
+	images/math-macro-remove-param.png \
+	images/math-macro_newmacroname_newcommand.png \
 	images/math-matrix.png \
 	images/math-mode.png \
 	images/math-subscript.png \
