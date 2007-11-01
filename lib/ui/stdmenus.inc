@@ -186,6 +186,7 @@ Menuset
 		Item "Toggle Numbering|N" "math-number"
 		Item "Toggle Numbering of Line|u" "math-nonumber"
 		Submenu "Change Limits Type|L" "edit_math_limits"
+		Submenu "Macro Definition" "edit_math_macro_definition"
 		Separator
 		Submenu "Change Formula Type|F" "edit_math_mutate"
 		Separator
@@ -204,6 +205,21 @@ Menuset
 		Item "Add Line to Right" "tabular-feature add-vline-right"
 		Item "Delete Line to Left" "tabular-feature delete-vline-left"
 		Item "Delete Line to Right" "tabular-feature delete-vline-right"
+	End
+
+	Menu "edit_math_macro_definition"
+		Item "Append Parameter" "math-macro-add-param"
+		Item "Remove Last Parameter" "math-macro-remove-param"
+                Separator
+		Item "Make First Non-Optional into Optional Parameter" "math-macro-make-optional"
+		Item "Make Last Optional into Non-Optional Parameter" "math-macro-make-nonoptional"
+                Item "Insert Optional Parameter" "math-macro-add-optional-param"
+                Item "Remove Optional Parameter" "math-macro-remove-optional-param"
+		Separator
+		Item "Append Parameter Eating From The Right" "math-macro-append-greedy-param"
+                Item "Append Optional Parameter Eating From The Right" "math-macro-add-greedy-optional-param"
+		Item "Remove Last Parameter Spitting Out To The Right" "math-macro-remove-greedy-param"
+		Separator
 	End
 
 	Menu "edit_math_limits"
@@ -266,6 +282,9 @@ Menuset
 	Menu "view"
 		Item "Open All Insets|O" "all-insets-toggle open"
 		Item "Close All Insets|C" "all-insets-toggle close"
+		Separator
+		Item "Unfold Math Macro" "math-macro-unfold"
+		Item "Fold Math Macro" "math-macro-fold"
 		Separator
 		Item "View Source|S" "dialog-toggle view-source"
 		Submenu "Update|U" "view_update"
@@ -368,6 +387,7 @@ Menuset
 		Separator
 		Item "Delimiters|r" "dialog-show mathdelimiter"
 		Item "Matrix|x" "dialog-show mathmatrix"
+		Item "Macro|o" "math-macro newmacroname newcommand"
 		Separator
 		Item "Toggle Math Panels" "toolbar-toggle math_panels"
 	End

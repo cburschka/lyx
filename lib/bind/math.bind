@@ -138,6 +138,10 @@
 \bind "C-Tab"          "cell-split"
 \bind "M-m space"      "math-space"
 
+# math-macros
+\bind "C-plus"         "math-macro-unfold"
+\bind "C-minus"        "math-macro-fold"
+
 # This should be handled properly by some "get the next key" method
 
 \bind "M-m g a"      "math-insert \alpha"
