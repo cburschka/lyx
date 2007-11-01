@@ -17,7 +17,7 @@
   </property>
   <layout class="QGridLayout" >
    <item row="0" column="0" >
-    <widget class="QLabel" name="urlLA" >
+    <widget class="QLabel" name="targetLA" >
      <property name="toolTip" >
       <string>URL</string>
      </property>
@@ -25,12 +25,12 @@
       <string>&amp;Target:</string>
      </property>
      <property name="buddy" >
-      <cstring>urlED</cstring>
+      <cstring>targetED</cstring>
      </property>
     </widget>
    </item>
    <item row="0" column="1" colspan="2" >
-    <widget class="QLineEdit" name="urlED" >
+    <widget class="QLineEdit" name="targetED" >
      <property name="toolTip" >
       <string>URL</string>
      </property>
@@ -57,11 +57,11 @@
     </widget>
    </item>
    <item row="2" column="1" >
-    <widget class="QGroupBox" name="TypeGB" >
+    <widget class="QGroupBox" name="typeGB" >
      <property name="toolTip" >
-      <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
-p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
+      <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">&#xd;
+p, li { white-space: pre-wrap; }&#xd;
+&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">&#xd;
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">specify the link target&lt;/p>&lt;/body>&lt;/html></string>
      </property>
      <property name="title" >
@@ -69,11 +69,11 @@ p, li { white-space: pre-wrap; }
      </property>
      <layout class="QGridLayout" >
       <item row="0" column="0" >
-       <widget class="QRadioButton" name="WebRB" >
+       <widget class="QRadioButton" name="webRB" >
         <property name="toolTip" >
-         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
-p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
+         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">&#xd;
+p, li { white-space: pre-wrap; }&#xd;
+&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">&#xd;
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">Link to the web or to every other target&lt;/p>&lt;/body>&lt;/html></string>
         </property>
         <property name="text" >
@@ -82,11 +82,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QRadioButton" name="EmailRB" >
+       <widget class="QRadioButton" name="emailRB" >
         <property name="toolTip" >
-         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
-p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
+         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">&#xd;
+p, li { white-space: pre-wrap; }&#xd;
+&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">&#xd;
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">Link to an email address&lt;/p>&lt;/body>&lt;/html></string>
         </property>
         <property name="text" >
@@ -95,11 +95,11 @@ p, li { white-space: pre-wrap; }
        </widget>
       </item>
       <item row="0" column="2" >
-       <widget class="QRadioButton" name="FileRB" >
+       <widget class="QRadioButton" name="fileRB" >
         <property name="toolTip" >
-         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
-p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
+         <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">&#xd;
+p, li { white-space: pre-wrap; }&#xd;
+&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">&#xd;
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Link to a file&lt;/p>&lt;/body>&lt;/html></string>
         </property>
         <property name="text" >
@@ -178,11 +178,11 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <tabstops>
-  <tabstop>urlED</tabstop>
+  <tabstop>targetED</tabstop>
   <tabstop>nameED</tabstop>
-  <tabstop>WebRB</tabstop>
-  <tabstop>EmailRB</tabstop>
-  <tabstop>FileRB</tabstop>
+  <tabstop>webRB</tabstop>
+  <tabstop>emailRB</tabstop>
+  <tabstop>fileRB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>

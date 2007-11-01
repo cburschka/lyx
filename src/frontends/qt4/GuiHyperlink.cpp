@@ -34,26 +34,26 @@ GuiHyperlink::GuiHyperlink(LyXView & lv)
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(urlED, SIGNAL(textChanged(const QString &)),
+	connect(targetED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changed_adaptor()));
 	connect(nameED, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changed_adaptor()));
-	connect(WebRB, SIGNAL(clicked()),
+	connect(webRB, SIGNAL(clicked()),
 		this, SLOT(changed_adaptor()));
-	connect(EmailRB, SIGNAL(clicked()),
+	connect(emailRB, SIGNAL(clicked()),
 		this, SLOT(changed_adaptor()));
-	connect(FileRB, SIGNAL(clicked()),
+	connect(fileRB, SIGNAL(clicked()),
 		this, SLOT(changed_adaptor()));
 
-	setFocusProxy(urlED);
+	setFocusProxy(targetED);
 
 	bc().setOK(okPB);
 	bc().setCancel(closePB);
-	bc().addReadOnly(urlED);
+	bc().addReadOnly(targetED);
 	bc().addReadOnly(nameED);
-	bc().addReadOnly(WebRB);
-	bc().addReadOnly(EmailRB);
-	bc().addReadOnly(FileRB);
+	bc().addReadOnly(webRB);
+	bc().addReadOnly(emailRB);
+	bc().addReadOnly(fileRB);
 }
 
 
@@ -72,27 +72,27 @@ void GuiHyperlink::closeEvent(QCloseEvent * e)
 
 void GuiHyperlink::updateContents()
 {
-	urlED->setText(toqstr(params_["target"]));
+	targetED->setText(toqstr(params_["target"]));
 	nameED->setText(toqstr(params_["name"]));
 	if (params_["type"] == "")
-		WebRB->setChecked(true);
+		webRB->setChecked(true);
 	else if (params_["type"] == "mailto:")
-		EmailRB->setChecked(true);
+		emailRB->setChecked(true);
 	else if (params_["type"] == "file:")
-		FileRB->setChecked(true);
+		fileRB->setChecked(true);
 	bc().setValid(isValid());
 }
 
 
 void GuiHyperlink::applyView()
 {
-	params_["target"] = qstring_to_ucs4(urlED->text());
+	params_["target"] = qstring_to_ucs4(targetED->text());
 	params_["name"] = qstring_to_ucs4(nameED->text());
-	if (WebRB->isChecked())
+	if (webRB->isChecked())
 		params_["type"] = qstring_to_ucs4("");
-	else if (EmailRB->isChecked())
+	else if (emailRB->isChecked())
 		params_["type"] = qstring_to_ucs4("mailto:");
-	else if (FileRB->isChecked())
+	else if (fileRB->isChecked())
 		params_["type"] = qstring_to_ucs4("file:");
 	params_.setCmdName("href");
 }
@@ -100,7 +100,7 @@ void GuiHyperlink::applyView()
 
 bool GuiHyperlink::isValid()
 {
-	QString const u = urlED->text();
+	QString const u = targetED->text();
 	QString const n = nameED->text();
 
 	return !u.isEmpty() || !n.isEmpty();
