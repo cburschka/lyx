@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "gettext.h"
+#include "../support/docstring.h"
 
 
 namespace lyx {
