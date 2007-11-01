@@ -17,7 +17,7 @@
 #include "InsetMathSqrt.h"
 
 #include "InsetMathNest.h"
-#include "buffer.h"
+#include "Buffer.h"
 
 #include "debug.h"
 #include "DocIterator.h"
