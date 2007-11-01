@@ -50,7 +50,7 @@ using support::rtrim;
 using support::subst;
 using support::addName;
 
-extern FontInfo lyxRead(Lexer &);
+extern FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
 
 namespace {
 
@@ -660,16 +660,16 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 	string decoration;
 	string latexname;
 	string latexparam;
-	FontInfo font(defaultfont());
-	FontInfo labelfont(defaultfont());
+	FontInfo font = inherit_font;
+	FontInfo labelfont = inherit_font;
 	ColorCode bgcolor(Color_background);
 	string preamble;
-	bool multipar(false);
-	bool passthru(false);
-	bool needprotect(false);
-	bool keepempty(false);
-	bool freespacing(false);
-	bool forceltr(false);
+	bool multipar = false;
+	bool passthru = false;
+	bool needprotect = false;
+	bool keepempty = false;
+	bool freespacing = false;
+	bool forceltr = false;
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -706,8 +706,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			latexparam = subst(lexrc.getString(), "&quot;", "\"");
 			break;
 		case IL_LABELFONT:
-			labelfont = lyxRead(lexrc);
-			labelfont.realize(defaultfont());
+			labelfont = lyxRead(lexrc, inherit_font);
 			break;
 		case IL_FORCELTR:
 			lexrc.next();
@@ -734,8 +733,7 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			needprotect = lexrc.getBool();
 			break;
 		case IL_FONT:
-			font = lyxRead(lexrc);
-			font.realize(defaultfont());
+			font = lyxRead(lexrc, inherit_font);
 			// So: define font before labelfont
 			labelfont = font;
 			break;

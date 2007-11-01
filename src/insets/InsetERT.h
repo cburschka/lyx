@@ -63,8 +63,6 @@ public:
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	bool showInsetDialog(BufferView *) const;
@@ -78,10 +76,6 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
-	///
-	void resetParagraphsFont();
-	///
-	void getDrawFont(FontInfo &) const;
 
 private:
 	virtual Inset * clone() const;

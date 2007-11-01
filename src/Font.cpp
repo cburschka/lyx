@@ -303,9 +303,9 @@ string const Font::latexSize() const
 
 // Read a font definition from given file in lyx format
 // Used for layouts
-FontInfo lyxRead(Lexer & lex)
+FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 {
-	FontInfo f;
+	FontInfo f = fi;
 	bool error = false;
 	bool finished = false;
 	while (!finished && lex.isOK() && !error) {

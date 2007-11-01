@@ -101,19 +101,6 @@ InsetERT::~InsetERT()
 }
 
 
-void InsetERT::resetParagraphsFont()
-{
-	Font font(inherit_font, latex_language);
-	ParagraphList::iterator par = paragraphs().begin();
-	ParagraphList::iterator const end = paragraphs().end();
-	while (par != end) {
-		par->resetFonts(font);
-		par->params().clear();
-		++par;
-	}
-}
-
-
 void InsetERT::write(Buffer const & buf, ostream & os) const
 {
 	os << "ERT" << "\n";
@@ -252,24 +239,10 @@ bool InsetERT::insetAllowed(InsetCode /* code */) const
 }
 
 
-void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	FontInfo tmpfont = mi.base.font;
-	getDrawFont(mi.base.font);
-	mi.base.font.realize(tmpfont);
-	InsetCollapsable::metrics(mi, dim);
-	mi.base.font = tmpfont;
-}
-
-
 void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
-	FontInfo tmpfont = pi.base.font;
-	getDrawFont(pi.base.font);
-	pi.base.font.realize(tmpfont);
 	const_cast<InsetERT &>(*this).setButtonLabel();
 	InsetCollapsable::draw(pi, x, y);
-	pi.base.font = tmpfont;
 }
 
 
@@ -277,13 +250,6 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 {
 	InsetERTMailer(const_cast<InsetERT &>(*this)).showDialog(bv);
 	return true;
-}
-
-
-void InsetERT::getDrawFont(FontInfo & font) const
-{
-	font = inherit_font;
-	font.realize(layout_.font);
 }
 
 

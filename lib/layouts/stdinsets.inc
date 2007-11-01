@@ -8,6 +8,16 @@ InsetLayout Marginal
 	LabelString           margin
 	LatexType             command
 	LatexName             marginpar
+	Font
+	  Color               foreground
+	  Size                Small
+	  Family              Roman
+	  Shape               Up
+	  Series              Medium
+	  Misc                No_Emph
+	  Misc                No_Noun
+	  Misc                No_Bar
+	EndFont
 	LabelFont
 	  Color               Red
 	  Size                Small
@@ -19,6 +29,16 @@ InsetLayout Foot
 	LabelString           foot
 	LatexType             command
 	LatexName             footnote
+	Font
+	  Color               foreground
+	  Size                Small
+	  Family              Roman
+	  Shape               Up
+	  Series              Medium
+	  Misc                No_Emph
+	  Misc                No_Noun
+	  Misc                No_Bar
+	EndFont
 	LabelFont
 	  Color               Green
 	  Size                Small
@@ -111,11 +131,11 @@ InsetLayout Listings
 	LatexType             none
 	Decoration            minimalistic
 	Font
-	  Color               black
+	  Color               foreground
 	  Family              typewriter
 	EndFont
 	LabelFont
-	  Color               black
+	  Color               foreground
 	  Size                Small
 	EndFont
 	MultiPar              true
@@ -141,6 +161,12 @@ InsetLayout Index
 	Font
 	  Color               Green
 	  Size                Small
+	  Family              Roman
+	  Shape               Up
+	  Series              Medium
+	  Misc                No_Emph
+	  Misc                No_Noun
+	  Misc                No_Bar
 	EndFont
 	LabelFont
 	  Color               Green

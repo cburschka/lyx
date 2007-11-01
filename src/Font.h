@@ -163,7 +163,7 @@ void setLyXSize(std::string const &, FontInfo &);
 void setLyXColor(std::string const &, FontInfo &);
 
 /// Read a font specification from Lexer. Used for layout files.
-FontInfo lyxRead(Lexer &);
+FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
 
 } // namespace lyx
 

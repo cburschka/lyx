@@ -797,6 +797,8 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 	if (!layout_.latexname.empty()) {
 		if (layout_.latextype == "command") {
 			// FIXME UNICODE
+			if (runparams.moving_arg)
+				os << "\\protect";
 			os << '\\' << from_utf8(layout_.latexname);
 			if (!layout_.latexparam.empty())
 				os << from_utf8(layout_.latexparam);
@@ -810,6 +812,8 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 	OutputParams rp = runparams;
 	if (layout_.passthru)
 		rp.verbatim = true;
+	if (layout_.needprotect)
+		rp.moving_arg = true;
 	int i = InsetText::latex(buf, os, rp);
 	if (!layout_.latexname.empty()) {
 		if (layout_.latextype == "command") {
