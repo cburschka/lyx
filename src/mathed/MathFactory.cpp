@@ -28,7 +28,6 @@
 #include "InsetMathFrameBox.h"
 #include "InsetMathKern.h"
 #include "InsetMathLefteqn.h"
-#include "MathMacro.h"
 #include "InsetMathMakebox.h"
 #include "InsetMathOverset.h"
 #include "InsetMathPhantom.h"
@@ -46,8 +45,9 @@
 #include "InsetMathUnknown.h"
 #include "InsetMathXArrow.h"
 #include "InsetMathXYMatrix.h"
-#include "MathMacroArgument.h"
 #include "MacroTable.h"
+#include "MathMacro.h"
+#include "MathMacroArgument.h"
 #include "MathParser.h"
 #include "MathSupport.h"
 
