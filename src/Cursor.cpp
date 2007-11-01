@@ -38,10 +38,11 @@
 #include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
 
-#include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathScript.h"
 #include "mathed/MacroTable.h"
+#include "mathed/MathData.h"
+#include "mathed/MathMacro.h"
 
 #include <boost/assert.hpp>
 #include <boost/bind.hpp>
@@ -943,7 +944,13 @@ bool Cursor::macroModeClose()
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
 	if (in && in->interpretString(*this, s))
 		return true;
-	plainInsert(createInsetMath(name));
+	MathAtom atom = createInsetMath(name);
+	if (atom.nucleus()->asMacro()) {
+		// make non-greedy, i.e. don't eat parameters from the right
+		MathMacro * macro = atom.nucleus()->asMacro();
+		macro->setDisplayMode(MathMacro::DISPLAY_NONGREEDY_INIT);
+	}
+	plainInsert(atom);
 	return true;
 }
 

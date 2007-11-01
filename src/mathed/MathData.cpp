@@ -378,12 +378,18 @@ void MathData::updateMacros(MetricsInfo & mi)
 						|| macroInset->optionals() != macroOptionals)) {
 			// is it a virgin macro which was never attached to parameters?
 			bool fromInitToNormalMode
-			= oldDisplayMode == MathMacro::DISPLAY_INIT
+			= (oldDisplayMode == MathMacro::DISPLAY_INIT 
+				 || oldDisplayMode == MathMacro::DISPLAY_NONGREEDY_INIT)
 				&& newDisplayMode == MathMacro::DISPLAY_NORMAL;
+			bool greedy = (oldDisplayMode != MathMacro::DISPLAY_NONGREEDY_INIT);
 			
 			// attach parameters
 			attachMacroParameters(cur, i, macroNumArgs, macroOptionals,
-				fromInitToNormalMode);
+				fromInitToNormalMode, greedy);
+			
+			// FIXME: proper anchor handling, this removes the selection
+			cur.updateInsets(&cur.bottom().inset());
+			cur.clearSelection();	
 		}
 
 		// give macro the chance to adapt to new situation
@@ -512,15 +518,15 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 
 void MathData::attachMacroParameters(Cursor & cur, 
 	const size_type macroPos, const size_type macroNumArgs,
-	const int macroOptionals, const bool fromInitToNormalMode)
+	const int macroOptionals, const bool fromInitToNormalMode,
+	const bool greedy)
 {
 	MathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
 
 	// start at atom behind the macro again, maybe with some new arguments from above
 	// to add them back into the macro inset
 	size_t p = macroPos + 1;
-	size_t j = 0;
-	std::vector<MathData>detachedArgs;
+	std::vector<MathData> detachedArgs;
 	MathAtom scriptToPutAround;
 	
 	// find cursor slice again
@@ -529,112 +535,15 @@ void MathData::attachMacroParameters(Cursor & cur,
 	if (thisSlice != -1)
 		thisPos = cur[thisSlice].pos();
 	
-	// insert optional arguments?
-	for (; j < macroOptionals && p < size(); ++j) {
-		// is a [] block following which could be an optional parameter?
-		if (operator[](p)->getChar() != '[') {
-			detachedArgs.push_back(MathData());
-			continue;
-		}
-				
-		// found optional argument, look for "]"
-		size_t right = p + 1;
-		for (; right < size(); ++right) {
-			if (operator[](right)->getChar() == ']')
-				// found right end
-				break;
-		}
-		
-		// found?
-		if (right < size()) {
-			// add everything between [ and ] as optional argument
-			MathData optarg(begin() + p + 1, begin() + right);
-			// a brace?
-			bool brace = false;
-			if (optarg.size() == 1 && optarg[0]->asBraceInset()) {
-				brace = true;
-				detachedArgs.push_back(optarg[0]->asBraceInset()->cell(0));
-			} else
-				detachedArgs.push_back(optarg);
-			// place cursor in optional argument of macro
-			if (thisPos >= int(p) && thisPos <= int(right)) {
-				int pos = std::max(0, thisPos - int(p) - 1);
-				std::vector<CursorSlice> x;
-				cur.cutOff(thisSlice, x);
-				cur[thisSlice].pos() = macroPos;
-				if (brace) {
-					pos = x[0].pos();
-					x.erase(x.begin());
-				}
-				cur.append(0, pos);
-				cur.append(x);
-			}
-			p = right + 1;
-		} else {
-			// no ] found, so it's not an optional argument
-			// Note: This was "macroPos = p" before, which probably
-			//       does not make sense. We want to stop with optional
-			//       argument handling instead, so go back to the beginning.
-			j = 0; 
-			break;
-		}
+	// find arguments behind the macro
+	if (greedy) {
+		collectOptionalParameters(cur, macroOptionals, detachedArgs, p,
+			macroPos, thisPos, thisSlice);
+		collectParameters(cur, macroNumArgs, detachedArgs, p,
+			scriptToPutAround, 
+			macroPos, thisPos, thisSlice);
 	}
-	
-	// insert normal arguments
-	for (; j < macroNumArgs && p < size(); ++j) {
-		MathAtom & cell = operator[](p);
-
-		// fix cursor
-		std::vector<CursorSlice> argSlices;
-		int argPos = 0;
-		if (thisPos == int(p)) {
-			cur.cutOff(thisSlice, argSlices);
-		}
 		
-		InsetMathBrace const * brace = cell->asBraceInset();
-		if (brace) {
-			// found brace, convert into argument
-			detachedArgs.push_back(brace->cell(0));
-			
-			// cursor inside of the brace or just in front of?
-			if (thisPos == int(p) && !argSlices.empty()) {
-				argPos = argSlices[0].pos();
-				argSlices.erase(argSlices.begin());
-			}
-		} else if (cell->asScriptInset() && j + 1 == macroNumArgs) {
-			// last inset with scripts without braces
-			// -> they belong to the macro, not the argument
-			InsetMathScript * script = cell.nucleus()->asScriptInset();
-			if (script->nuc().size() == 1 && script->nuc()[0]->asBraceInset())
-				// nucleus in brace? Unpack!
-				detachedArgs.push_back(script->nuc()[0]->asBraceInset()->cell(0));
-			else
-				detachedArgs.push_back(script->nuc());
-			
-			// script will be put around below
-			scriptToPutAround = cell;
-			
-			// this should only happen after loading, so make cursor handling simple
-			if (thisPos >= int(macroPos) && thisPos <= int(macroPos + macroNumArgs)) {
-				argSlices.clear();
-				cur.append(0, 0);
-			}
-		} else {
-			MathData array;
-			array.insert(0, cell);
-			detachedArgs.push_back(array);
-		}
-		
-		// put cursor in argument again
-		if (thisPos == int(p)) {
-			cur.append(j, argPos);
-			cur.append(argSlices);
-			cur[thisSlice].pos() = macroPos;
-		}
-		
-		++p;
-	}
-	
 	// attach arguments back to macro inset
 	macroInset->attachArguments(detachedArgs, macroNumArgs, macroOptionals);
 	
@@ -666,10 +575,128 @@ void MathData::attachMacroParameters(Cursor & cur,
 		cur.push_back(CursorSlice(*macroInset));
 		macroInset->idxFirst(cur);
 	}
-	
-	// FIXME: proper anchor handling, this removes the selection
-	cur.updateInsets(&cur.bottom().inset());
-	cur.clearSelection();	
+}
+
+
+void MathData::collectOptionalParameters(Cursor & cur, 
+	const size_type numOptionalParams, std::vector<MathData> & params, 
+	size_t & pos, const pos_type macroPos, const int thisPos, const int thisSlice)
+{
+	// insert optional arguments?
+	while (params.size() < numOptionalParams && pos < size()) {
+		// is a [] block following which could be an optional parameter?
+		if (operator[](pos)->getChar() != '[')
+			break;
+				
+		// found possible optional argument, look for "]"
+		size_t right = pos + 1;
+		for (; right < size(); ++right) {
+			if (operator[](right)->getChar() == ']')
+				// found right end
+				break;
+		}
+		
+		// found?
+		if (right >= size()) {
+			// no ] found, so it's not an optional argument
+			break;
+		}
+		
+		// add everything between [ and ] as optional argument
+		MathData optarg(begin() + pos + 1, begin() + right);
+		
+		// a brace?
+		bool brace = false;
+		if (optarg.size() == 1 && optarg[0]->asBraceInset()) {
+			brace = true;
+			params.push_back(optarg[0]->asBraceInset()->cell(0));
+		} else
+			params.push_back(optarg);
+		
+		// place cursor in optional argument of macro
+		if (thisPos >= int(pos) && thisPos <= int(right)) {
+			int paramPos = std::max(0, thisPos - int(pos) - 1);
+			std::vector<CursorSlice> x;
+			cur.cutOff(thisSlice, x);
+			cur[thisSlice].pos() = macroPos;
+			if (brace) {
+				paramPos = x[0].pos();
+				x.erase(x.begin());
+			}
+			cur.append(0, paramPos);
+			cur.append(x);
+		}
+		pos = right + 1;
+	}
+
+	// fill up empty optional parameters
+	while (params.size() < numOptionalParams) {
+		params.push_back(MathData());
+	}
+}
+
+
+void MathData::collectParameters(Cursor & cur, 
+	const size_type numParams, std::vector<MathData> & params, 
+	size_t & pos, MathAtom & scriptToPutAround,
+	const pos_type macroPos, const int thisPos, const int thisSlice) 
+{
+	// insert normal arguments
+	for (; params.size() < numParams && pos < size();) {
+		MathAtom & cell = operator[](pos);
+		
+		// fix cursor
+		std::vector<CursorSlice> argSlices;
+		int argPos = 0;
+		if (thisPos == int(pos)) {
+			cur.cutOff(thisSlice, argSlices);
+		}
+		
+		// which kind of parameter is it? In {}? With index x^n?
+		InsetMathBrace const * brace = cell->asBraceInset();
+		if (brace) {
+			// found brace, convert into argument
+			params.push_back(brace->cell(0));
+			
+			// cursor inside of the brace or just in front of?
+			if (thisPos == int(pos) && !argSlices.empty()) {
+				argPos = argSlices[0].pos();
+				argSlices.erase(argSlices.begin());
+			}
+		} else if (cell->asScriptInset() && params.size() + 1 == numParams) {
+			// last inset with scripts without braces
+			// -> they belong to the macro, not the argument
+			InsetMathScript * script = cell.nucleus()->asScriptInset();
+			if (script->nuc().size() == 1 && script->nuc()[0]->asBraceInset())
+				// nucleus in brace? Unpack!
+				params.push_back(script->nuc()[0]->asBraceInset()->cell(0));
+			else
+				params.push_back(script->nuc());
+			
+			// script will be put around below
+			scriptToPutAround = cell;
+			
+			// this should only happen after loading, so make cursor handling simple
+			if (thisPos >= int(macroPos) && thisPos <= int(macroPos + numParams)) {
+				argSlices.clear();
+				cur.append(0, 0);
+			}
+		} else {
+			// the simplest case: plain inset
+			MathData array;
+			array.insert(0, cell);
+			params.push_back(array);
+		}
+		
+		// put cursor in argument again
+		if (thisPos == int(pos)) {
+			cur.append(params.size() - 1, argPos);
+			cur.append(argSlices);
+			cur[thisSlice].pos() = macroPos;
+		}
+		
+		++pos;
+	}	
 }
 
 

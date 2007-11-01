@@ -87,6 +87,7 @@ public:
 		
 	enum DisplayMode {
 		DISPLAY_INIT,
+		DISPLAY_NONGREEDY_INIT,
 		DISPLAY_UNFOLDED,
 		DISPLAY_NORMAL,
 	};
@@ -121,6 +122,7 @@ public:
 protected:
 	friend class MathData;
 	friend class ArgumentProxy;
+	friend class Cursor;
 
 	/// update the display mode (should only be called after detaching arguments)
 	void setDisplayMode(DisplayMode mode);
