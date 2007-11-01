@@ -13,6 +13,8 @@
 #include <config.h>
 
 #include "support/environment.h"
+
+#include "support/docstring.h"
 #include "support/os.h"
 
 #include <boost/tokenizer.hpp>

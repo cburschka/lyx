@@ -63,6 +63,7 @@
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetTabular.h"
 
+#include "support/docstream.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 #include "support/convert.h"

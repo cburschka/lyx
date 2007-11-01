@@ -15,6 +15,8 @@
 #include "debug.h"
 #include "gettext.h"
 
+#include "support/docstream.h"
+
 
 namespace lyx {
 

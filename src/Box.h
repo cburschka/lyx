@@ -12,7 +12,7 @@
 #ifndef BOX_H
 #define BOX_H
 
-#include <iosfwd>
+#include "support/strfwd.h"
 
 
 namespace lyx {

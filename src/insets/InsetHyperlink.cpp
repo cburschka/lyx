@@ -20,8 +20,7 @@
 #include "OutputParams.h"
 
 #include "support/lstrings.h"
-
-#include "support/std_ostream.h"
+#include "support/docstream.h"
 
 
 namespace lyx {
@@ -88,7 +87,7 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 	if (!url.empty()) {
 		// the chars_url[] characters must be handled for both, url and href
 		for (int k = 0;	k < 2; k++) {
-			for (int i = 0, pos;
+			for (size_t i = 0, pos;
 				(pos = url.find(chars_url[k], i)) != string::npos;
 				i = pos + 2) {
 				url.replace(pos,1,backslash + chars_url[k]);
@@ -104,14 +103,14 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 
 		// handle the "\" character, but only when the following character
 		// is not also a "\", because "\\" is valid code
-		for (int i = 0, pos;
+		for (size_t i = 0, pos;
 			(pos = name.find("\\", i)) != string::npos;
 			i = pos + 2) {
 			if	(name[pos+1] != '\\')
 				name.replace(pos,1,"\\textbackslash{}");
 		}
 		for (int k = 0;	k < 6; k++) {
-			for (int i = 0, pos;
+			for (size_t i = 0, pos;
 				(pos = name.find(chars_name[k], i)) != string::npos;
 				i = pos + 2) {
 				name.replace(pos,1,backslash + chars_name[k] + braces);

@@ -42,6 +42,7 @@
 #include "insets/InsetListingsParams.h"
 
 #include "support/convert.h"
+#include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/Translator.h"
 #include "support/lstrings.h"

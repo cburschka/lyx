@@ -27,6 +27,7 @@
 #include "frontends/alert.h"
 
 #include "support/ExceptionMessage.h"
+#include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"

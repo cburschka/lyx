@@ -1,31 +1,6 @@
 #include <config.h>
 
-#include <boost/any.hpp>
-#include <boost/array.hpp>
-#include <boost/assert.hpp>
-#include <boost/crc.hpp>
-#include <boost/cregex.hpp>
-#include <boost/current_function.hpp>
-#include <boost/function.hpp>
-#include <boost/iterator/indirect_iterator.hpp>
-#include <boost/optional.hpp>
-#include <boost/regex.hpp>
-#include <boost/scoped_array.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/tokenizer.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/version.hpp>
-
 #include <algorithm>
-#include <cerrno>
-#include <clocale>
-#include <cmath>
-#include <csignal>
-#include <cstddef>
-#include <cstdio>
-#include <cstdlib>
 #include <deque>
 #include <exception>
 #include <fstream>

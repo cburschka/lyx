@@ -22,7 +22,7 @@
 #include "ColorCode.h"
 #include "FontInfo.h"
 
-#include "support/docstream.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {

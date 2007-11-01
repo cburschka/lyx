@@ -15,7 +15,6 @@
 #include "CursorSlice.h"
 
 #include <vector>
-#include <iosfwd>
 
 
 namespace lyx {
@@ -23,14 +22,6 @@ namespace lyx {
 class Text;
 class MathAtom;
 class Paragraph;
-
-
-// only needed for gcc 2.95, remove when support terminated
-template <typename A, typename B>
-bool ptr_cmp(A const * a, B const * b)
-{
-	return a == b;
-}
 
 
 // The public inheritance should go in favour of a suitable data member

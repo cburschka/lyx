@@ -26,6 +26,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/docstring.h"
 #include "support/lstrings.h"
 
 
@@ -59,23 +60,27 @@ char const * const quote_char = ",'`<>";
 // Index of chars used for the quote. Index is [side, language]
 int quote_index[2][6] = {
 	{ 2, 1, 0, 0, 3, 4 },    // "'',,<>"
-	{ 1, 1, 2, 1, 4, 3 } };  // "`'`'><"
+	{ 1, 1, 2, 1, 4, 3 }     // "`'`'><"
+};
 
 // Corresponding LaTeX code, for double and single quotes.
-char const * const latex_quote_t1[2][5] =
-{ { "\\quotesinglbase ",  "'", "`",
+char const * const latex_quote_t1[2][5] = {
+	{ "\\quotesinglbase ",  "'", "`",
     "\\guilsinglleft{}", "\\guilsinglright{}" },
-  { ",,", "''", "``", "<<", ">>" } };
+  { ",,", "''", "``", "<<", ">>" }
+};
 
-char const * const latex_quote_ot1[2][5] =
-{ { "\\quotesinglbase ",  "'", "`",
+char const * const latex_quote_ot1[2][5] = {
+	{ "\\quotesinglbase ",  "'", "`",
     "\\guilsinglleft{}", "\\guilsinglright{}" },
   { "\\quotedblbase ", "''", "``",
-    "\\guillemotleft{}", "\\guillemotright{}" } };
+    "\\guillemotleft{}", "\\guillemotright{}" }
+};
 
-char const * const latex_quote_babel[2][5] =
-{ { "\\glq ",  "'", "`", "\\flq{}", "\\frq{}" },
-  { "\\glqq ", "''", "``", "\\flqq{}", "\\frqq{}" } };
+char const * const latex_quote_babel[2][5] = {
+	{ "\\glq ",  "'", "`", "\\flq{}", "\\frq{}" },
+  { "\\glqq ", "''", "``", "\\flqq{}", "\\frqq{}" }
+};
 
 } // namespace anon
 
@@ -106,11 +111,19 @@ InsetQuotes::InsetQuotes(char_type c, quote_language l, quote_times t)
 }
 
 
+docstring InsetQuotes::name() const
+{
+	return from_ascii("Quotes");
+}
+
+
 void InsetQuotes::getPosition(char_type c)
 {
 	// Decide whether left or right
 	switch (c) {
-	case ' ': case '(': case '[':
+	case ' ':
+	case '(':
+	case '[':
 		side_ = LeftQ;   // left quote
 		break;
 	default:
@@ -201,14 +214,14 @@ docstring const InsetQuotes::dispString(Language const * loclang) const
 		retdisp = docstring(1, 0x2018);
 #endif
 	else
-		retdisp = lyx::from_ascii(disp);
+		retdisp = from_ascii(disp);
 
 	// in french, spaces are added inside double quotes
 	if (times_ == DoubleQ && prefixIs(loclang->code(), "fr")) {
 		if (side_ == LeftQ)
 			retdisp += ' ';
 		else
-			retdisp.insert(docstring::size_type(0), 1, ' ');
+			retdisp.insert(size_t(0), 1, ' ');
 	}
 
 	return retdisp;
@@ -355,7 +368,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	    && lyxrc.fontenc != "T1") {
 		if (times_ == SingleQ)
 			switch (type) {
-				case ',': features.require("quotesinglbase");  break;
+			case ',': features.require("quotesinglbase"); break;
 			case '<': features.require("guilsinglleft");  break;
 			case '>': features.require("guilsinglright"); break;
 			default: break;

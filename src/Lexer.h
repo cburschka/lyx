@@ -19,8 +19,6 @@
 
 #include "support/strfwd.h"
 
-#include <iosfwd>
-
 
 namespace lyx {
 

@@ -18,10 +18,8 @@
 #define CURSORSLICE_H
 
 #include "support/types.h"
+#include "support/strfwd.h"
 #include "insets/Inset.h"
-
-#include <cstddef>
-#include <iosfwd>
 
 
 namespace lyx {

@@ -13,7 +13,7 @@
 #ifndef OUTPUT_DOCBOOK_H
 #define OUTPUT_DOCBOOK_H
 
-#include "support/docstream.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 

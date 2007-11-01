@@ -29,6 +29,8 @@
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
 #include "TextClassList.h"
+
+#include "support/docstream.h"
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
 

@@ -24,6 +24,8 @@
 #include "Paragraph.h"
 #include "TexRow.h"
 
+#include "support/docstream.h"
+
 #include <QTextCursor>
 #include <QTextDocument>
 #include <boost/tuple/tuple.hpp>

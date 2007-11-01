@@ -76,6 +76,7 @@ TODO
 #include "frontends/alert.h"
 
 #include "support/convert.h"
+#include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h" // sum
 #include "support/lstrings.h"
@@ -449,7 +450,8 @@ docstring const InsetGraphics::createDocBookAttributes() const
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we copied the code from createLatexParams() ;-)
 
-	// FIXME: av: need to translate spec -> Docbook XSL spec (http://www.sagehill.net/docbookxsl/ImageSizing.html)
+	// FIXME: av: need to translate spec -> Docbook XSL spec
+	// (http://www.sagehill.net/docbookxsl/ImageSizing.html)
 	// Right now it only works with my version of db2latex :-)
 
 	odocstringstream options;

@@ -401,12 +401,15 @@ string Buffer::latexName(bool const no_path) const
 }
 
 
-pair<Buffer::LogType, string> Buffer::logName() const
+string Buffer::logName(LogType * type) const
 {
 	string const filename = latexName(false);
 
-	if (filename.empty())
-		return make_pair(Buffer::latexlog, string());
+	if (filename.empty()) {
+		if (type)
+			*type = latexlog;
+		return string();
+	}
 
 	string const path = temppath();
 
@@ -423,10 +426,14 @@ pair<Buffer::LogType, string> Buffer::logName() const
 	if (bname.exists() &&
 	    (!fname.exists() || fname.lastModified() < bname.lastModified())) {
 		LYXERR(Debug::FILES) << "Log name calculated as: " << bname << endl;
-		return make_pair(Buffer::buildlog, bname.absFilename());
+		if (type)
+			*type = buildlog;
+		return bname.absFilename();
 	}
 	LYXERR(Debug::FILES) << "Log name calculated as: " << fname << endl;
-	return make_pair(Buffer::latexlog, fname.absFilename());
+	if (type)
+			*type = latexlog;
+	return fname.absFilename();
 }
 
 
@@ -947,7 +954,7 @@ bool Buffer::write(ostream & ofs) const
 	AuthorList::Authors::const_iterator a_it = params().authors().begin();
 	AuthorList::Authors::const_iterator a_end = params().authors().end();
 	for (; a_it != a_end; ++a_it)
-		a_it->second.used(false);
+		a_it->second.setUsed(false);
 
 	ParIterator const end = par_iterator_end();
 	ParIterator it = par_iterator_begin();

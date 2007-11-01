@@ -119,8 +119,10 @@ static TranslatorMap const build_translator()
 }
 
 
-Inset::Inset()
-{}
+docstring Inset::name() const
+{
+	return from_ascii("unknown");
+}
 
 
 Dimension const Inset::dimension(BufferView const & bv) const

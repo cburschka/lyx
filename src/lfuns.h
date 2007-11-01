@@ -16,7 +16,7 @@
 #ifndef LFUNS_H
 #define LFUNS_H
 
-#include <iosfwd>
+#include "support/strfwd.h"
 
 
 namespace lyx {

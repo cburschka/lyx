@@ -675,7 +675,7 @@ bool Cursor::openable(MathAtom const & t) const
 	// we can't move into anything new during selection
 	if (depth() >= anchor_.depth())
 		return false;
-	if (!ptr_cmp(t.nucleus(), &anchor_[depth()].inset()))
+	if (t.nucleus() != &anchor_[depth()].inset())
 		return false;
 
 	return true;

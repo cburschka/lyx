@@ -12,7 +12,7 @@
 #ifndef OUTPUT_PLAINTEXT_H
 #define OUTPUT_PLAINTEXT_H
 
-#include "support/docstream.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {

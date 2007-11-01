@@ -42,6 +42,7 @@
 #include "insets/RenderPreview.h"
 #include "insets/InsetListingsParams.h"
 
+#include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"

@@ -12,6 +12,7 @@
 
 #include "support/userinfo.h"
 #include "support/environment.h"
+#include "support/docstring.h"
 
 #include <boost/assert.hpp>
 
@@ -44,7 +45,7 @@ docstring const user_name()
 		return _("Unknown user");
 	return from_local8bit(name);
 #else
-	struct passwd * pw(getpwuid(geteuid()));
+	struct passwd * pw = getpwuid(geteuid());
 	BOOST_ASSERT(pw);
 
 	string name = pw->pw_gecos;

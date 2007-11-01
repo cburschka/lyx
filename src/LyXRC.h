@@ -20,7 +20,8 @@
 
 #include "paper.h"
 
-#include <iosfwd>
+#include "support/strfwd.h"
+
 #include <string>
 
 

@@ -26,6 +26,7 @@
 #include "Language.h"
 #include "MetricsInfo.h"
 
+#include "support/docstream.h"
 #include "support/lstrings.h"
 
 #include <sstream>
@@ -220,8 +221,7 @@ int InsetListings::latex(Buffer const & buf, odocstream & os,
 			os << from_utf8(param_string) << "]\n";
 		}
 		lines += 4;
-                os << code
-                   << "\n\\end{lstlisting}\n\\endgroup\n";
+		os << code << "\n\\end{lstlisting}\n\\endgroup\n";
 		lines += 3;
 	}
 
@@ -296,7 +296,7 @@ bool InsetListings::showInsetDialog(BufferView * bv) const
 
 
 docstring InsetListings::getCaption(Buffer const & buf,
-		    OutputParams const & runparams) const
+	OutputParams const & runparams) const
 {
 	if (paragraphs().empty())
 		return docstring();

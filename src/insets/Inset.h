@@ -18,11 +18,8 @@
 #include "ColorCode.h"
 #include "InsetCode.h"
 
-#include "Dimension.h"
+#include "support/strfwd.h"
 
-#include "support/docstream.h"
-
-#include <memory>
 #include <vector>
 
 namespace lyx {
@@ -34,6 +31,7 @@ class BufferView;
 class Change;
 class Cursor;
 class CursorSlice;
+class Dimension;
 class FuncRequest;
 class FuncStatus;
 class InsetIterator;
@@ -280,7 +278,7 @@ public:
 	virtual bool hasFixedWidth() const { return false; }
 
 	///
-	virtual docstring name() const { return from_ascii("unknown"); }
+	virtual docstring name() const;
 	///
 	virtual InsetLayout const & getLayout(BufferParams const & bp) const;
 	/// used to toggle insets
@@ -339,12 +337,12 @@ public:
 	/// pit is the ParConstIterator of the paragraph containing the inset
 	virtual void addToToc(TocList &, Buffer const &, ParConstIterator const &) const {}
 	/// report files that can be embedded with the lyx file
-	virtual void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const {};
+	virtual void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const {}
 	/// use embedded or external file after the embedding status of a file is changed
 	virtual void updateEmbeddedFile(Buffer const &, EmbeddedFile const &) {}
 	/// Fill keys with BibTeX information
 	virtual void fillWithBibKeys(Buffer const &,
-		BiblioInfo &, InsetIterator const &) const { return; }
+		BiblioInfo &, InsetIterator const &) const {}
 	/// Update the counters of this inset and of its contents
 	virtual void updateLabels(Buffer const &, ParIterator const &) {}
 
@@ -393,7 +391,7 @@ public:
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 
 protected:
-	Inset();
+	Inset() {}
 
 	/// replicate ourselves
 	friend class InsetList;

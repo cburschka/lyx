@@ -26,6 +26,7 @@
 
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
+#include "support/docstream.h"
 #include "support/convert.h"
 
 

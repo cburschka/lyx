@@ -20,6 +20,7 @@
 #include "LyXAction.h"
 #include "Lexer.h"
 
+#include "support/docstream.h"
 #include "support/filetools.h"
 
 #include <fstream>

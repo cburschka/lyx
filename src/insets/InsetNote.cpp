@@ -31,6 +31,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 
+#include "support/docstream.h"
 #include "support/Translator.h"
 
 #include <algorithm>

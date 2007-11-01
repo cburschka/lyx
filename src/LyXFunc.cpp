@@ -652,7 +652,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			}
 		}
 		else if (name == "latexlog")
-			enable = FileName(buf->logName().second).isFileReadable();
+			enable = FileName(buf->logName()).isFileReadable();
 		else if (name == "spellchecker")
 #if defined (USE_ASPELL) || defined (USE_ISPELL) || defined (USE_PSPELL)
 			enable = !buf->isReadonly();
@@ -1456,9 +1456,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (!data.empty())
 					lyx_view_->getDialogs().show("character", data);
 			} else if (name == "latexlog") {
-				pair<Buffer::LogType, string> const logfile =
-					lyx_view_->buffer()->logName();
-				switch (logfile.first) {
+				Buffer::LogType type; 
+				string const logfile = lyx_view_->buffer()->logName(&type);
+				switch (type) {
 				case Buffer::latexlog:
 					data = "latex ";
 					break;
@@ -1466,7 +1466,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					data = "literate ";
 					break;
 				}
-				data += Lexer::quoteString(logfile.second);
+				data += Lexer::quoteString(logfile);
 				lyx_view_->getDialogs().show("log", data);
 			} else if (name == "vclog") {
 				string const data = "vc " +

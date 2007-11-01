@@ -64,14 +64,14 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s);
 protected:
+	///
 	InsetRef(InsetRef const &);
 
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:
-	virtual Inset * clone() const {
-		return new InsetRef(*this);
-	}
+	///
+	Inset * clone() const { return new InsetRef(*this); }
 	///
 	bool isLatex;
 };

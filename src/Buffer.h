@@ -15,13 +15,10 @@
 #include "insets/InsetCode.h"
 
 #include "support/FileName.h"
-#include "support/docstring.h"
-#include "support/docstream.h"
+#include "support/strfwd.h"
 #include "support/types.h"
 
-#include <iosfwd>
 #include <string>
-#include <utility>
 #include <vector>
 
 
@@ -252,7 +249,7 @@ public:
 	std::string latexName(bool no_path = true) const;
 
 	/// Get thee name and type of the log.
-	std::pair<LogType, std::string> logName() const;
+	std::string logName(LogType * type = 0) const;
 
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(std::string const & newfile);

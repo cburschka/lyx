@@ -26,6 +26,7 @@
 #include "insets/InsetInclude.h"
 
 #include "support/lstrings.h"
+#include "support/docstream.h"
 
 #include "boost/regex.hpp"
 

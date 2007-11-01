@@ -72,8 +72,7 @@ class MenuNamesEqual : public std::unary_function<Menu, bool> {
 public:
 	MenuNamesEqual(docstring const & name)
 		: name_(name) {}
-	bool operator()(Menu const & menu) const
-	{
+	bool operator()(Menu const & menu) const {
 		return menu.name() == name_;
 	}
 private:

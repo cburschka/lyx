@@ -41,13 +41,11 @@ namespace lyx {
 
 bool Change::isSimilarTo(Change const & change)
 {
-	if (type != change.type) {
+	if (type != change.type)
 		return false;
-	}
 
-	if (type == Change::UNCHANGED) {
+	if (type == Change::UNCHANGED)
 		return true;
-	}
 
 	return author == change.author;
 }
@@ -55,17 +53,14 @@ bool Change::isSimilarTo(Change const & change)
 
 bool operator==(Change const & l, Change const & r)
 {
-	if (l.type != r.type) {
+	if (l.type != r.type)
 		return false;
-	}
 
 	// two changes of type UNCHANGED are always equal
-	if (l.type == Change::UNCHANGED) {
+	if (l.type == Change::UNCHANGED)
 		return true;
-	}
 
-	return l.author == r.author &&
-	       l.changetime == r.changetime;
+	return l.author == r.author && l.changetime == r.changetime;
 }
 
 
@@ -154,9 +149,8 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 		}
 
 		// new change precedes existing change
-		if (it->range.start >= end) {
+		if (it->range.start >= end)
 			break;
-		}
 
 		// new change intersects with existing change
 		it->range.start = end;
@@ -179,13 +173,11 @@ void Changes::erase(pos_type const pos)
 
 	for (; it != end; ++it) {
 		// range (pos,pos+x) becomes (pos,pos+x-1)
-		if (it->range.start > pos) {
+		if (it->range.start > pos)
 			--(it->range.start);
-		}
 		// range (pos-x,pos) stays (pos-x,pos)
-		if (it->range.end > pos) {
+		if (it->range.end > pos)
 			--(it->range.end);
-		}
 	}
 
 	merge();
@@ -204,14 +196,12 @@ void Changes::insert(Change const & change, lyx::pos_type pos)
 
 	for (; it != end; ++it) {
 		// range (pos,pos+x) becomes (pos+1,pos+x+1)
-		if (it->range.start >= pos) {
+		if (it->range.start >= pos)
 			++(it->range.start);
-		}
 
 		// range (pos-x,pos) stays as it is
-		if (it->range.end > pos) {
+		if (it->range.end > pos)
 			++(it->range.end);
-		}
 	}
 
 	set(change, pos, pos + 1); // set will call merge
@@ -362,7 +352,7 @@ void Changes::checkAuthors(AuthorList const & authorList)
 	ChangeTable::const_iterator endit = table_.end();
 	for ( ; it != endit ; ++it) 
 		if (it->change.type != Change::UNCHANGED)
-			authorList.get(it->change.author).used(true);
+			authorList.get(it->change.author).setUsed(true);
 }
 
 } // namespace lyx

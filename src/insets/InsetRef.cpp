@@ -21,6 +21,7 @@
 #include "OutputParams.h"
 #include "sgml.h"
 
+#include "support/docstream.h"
 #include "support/lstrings.h"
 
 

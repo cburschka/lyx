@@ -17,6 +17,7 @@
 #include "BufferParams.h"
 #include "MetricsInfo.h"
 
+#include <iostream>
 
 namespace lyx {
 
@@ -58,8 +59,7 @@ void InsetFootlike::write(Buffer const & buf, std::ostream & os) const
 
 bool InsetFootlike::insetAllowed(InsetCode code) const
 {
-	if (code == FOOT_CODE || code == MARGIN_CODE
-	    || code == FLOAT_CODE)
+	if (code == FOOT_CODE || code == MARGIN_CODE || code == FLOAT_CODE)
 		return false;
 	return InsetCollapsable::insetAllowed(code);
 }

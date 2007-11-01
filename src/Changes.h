@@ -15,7 +15,7 @@
 #ifndef CHANGES_H
 #define CHANGES_H
 
-#include "support/docstream.h"
+#include "support/strfwd.h"
 #include "support/types.h"
 #include "support/lyxtime.h"
 

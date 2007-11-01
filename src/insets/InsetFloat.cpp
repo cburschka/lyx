@@ -30,6 +30,7 @@
 #include "OutputParams.h"
 
 #include "support/lstrings.h"
+#include "support/docstream.h"
 #include "support/convert.h"
 
 

@@ -46,6 +46,7 @@
 #include "TextMetrics.h"
 
 #include "support/convert.h"
+#include "support/docstream.h"
 #include "support/lstrings.h"
 
 #include "frontends/alert.h"
@@ -3068,7 +3069,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 
 	if (!cur.selection())
 		return;
-	if (!ptr_cmp(&cur.inset(), this))
+	if (&cur.inset() != this)
 		return;
 
 	//resetPos(cur);

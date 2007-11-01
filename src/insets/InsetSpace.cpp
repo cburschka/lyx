@@ -16,6 +16,7 @@
 #include "InsetSpace.h"
 
 #include "debug.h"
+#include "Dimension.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -48,8 +49,7 @@ InsetSpace::Kind InsetSpace::kind() const
 
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	frontend::FontMetrics const & fm =
-		theFontMetrics(mi.base.font);
+	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 

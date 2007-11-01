@@ -67,14 +67,13 @@ public:
 	    \item etc.
 	  \end{itemize}
 	  */
-	explicit
-	InsetQuotes(std::string const & str = "eld");
+	explicit InsetQuotes(std::string const & str = "eld");
 	/// Create the right quote inset after character c
 	InsetQuotes(char_type c, BufferParams const & params);
 	/// Direct access to inner/outer quotation marks
 	InsetQuotes(char_type c, quote_language l, quote_times t);
 	///
-	docstring name() const { return from_ascii("Quotes"); }
+	docstring name() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

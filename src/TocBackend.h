@@ -22,7 +22,7 @@
 
 #include "ParIterator.h"
 
-#include "support/docstream.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {
@@ -74,11 +74,10 @@ protected:
 ///
 typedef std::vector<TocItem> Toc;
 typedef Toc::const_iterator TocIterator;
+
 /// The ToC list.
 /// A class and no typedef because we want to forward declare it.
-class TocList : public std::map<std::string, Toc>
-{
-};
+class TocList : public std::map<std::string, Toc> {};
 
 
 ///

@@ -21,7 +21,7 @@
 #include "OutputParams.h"
 #include "Paragraph.h"
 
-#include "support/docstring.h"
+#include "support/docstream.h"
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 #include "support/convert.h"

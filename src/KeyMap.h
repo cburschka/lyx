@@ -19,7 +19,7 @@
 #include "frontends/KeyModifier.h"
 #include "frontends/KeySymbol.h"
 
-#include "support/docstream.h"
+#include "support/strfwd.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/tuple/tuple.hpp>

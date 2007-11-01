@@ -86,7 +86,7 @@ void PDFOptions::writeFile(ostream & os) const
 		os << "\\pdf_quoted_options \"" << quoted_options << "\"\n";
 }
 
-void PDFOptions::writeLaTeX(odocstringstream & os, bool hyper_required) const
+void PDFOptions::writeLaTeX(odocstream & os, bool hyper_required) const
 {
 	if (!use_hyperref && !hyper_required)
 		return;

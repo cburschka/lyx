@@ -31,6 +31,7 @@
 #include "TocBackend.h"
 
 #include "support/convert.h"
+#include "support/docstream.h"
 
 
 namespace lyx {

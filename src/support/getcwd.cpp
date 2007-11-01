@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
+#include "support/docstring.h"
 #include "support/os.h"
 
 #include <boost/scoped_array.hpp>

@@ -160,8 +160,7 @@ public:
 	///
 	typedef ItemList::size_type size_type;
 	///
-	explicit Menu(docstring const & name = docstring())
-		: name_(name) {}
+	explicit Menu(docstring const & name = docstring()) : name_(name) {}
 	/// Add the menu item unconditionally
 	Menu & add(MenuItem const &);
 	/// Checks the associated FuncRequest status before adding the
@@ -182,13 +181,9 @@ public:
 	///
 	bool hasFunc(FuncRequest const &) const;
 	///
-	const_iterator begin() const {
-		return items_.begin();
-	}
+	const_iterator begin() const { return items_.begin(); }
 	///
-	const_iterator end() const {
-		return items_.end();
-	}
+	const_iterator end() const { return items_.end(); }
 
 	// Check whether the menu shortcuts are unique
 	void checkShortcuts() const;
@@ -247,21 +242,14 @@ public:
 	void expand(Menu const & frommenu, Menu & tomenu,
 		    Buffer const *) const;
 	///
-	const_iterator begin() const {
-		return menulist_.begin();
-	}
+	const_iterator begin() const { return menulist_.begin(); }
 	///
-	iterator begin() {
-		return menulist_.begin();
-	}
+	iterator begin() { return menulist_.begin(); }
 	///
-	const_iterator end() const {
-		return menulist_.end();
-	}
+	const_iterator end() const { return menulist_.end(); }
 	///
-	iterator end() {
-		return menulist_.end();
-	}
+	iterator end() { return menulist_.end(); }
+
 private:
 	///
 	MenuList menulist_;
@@ -277,4 +265,4 @@ extern MenuBackend menubackend;
 
 } // namespace lyx
 
-#endif /* MENUBACKEND_H */
+#endif // MENUBACKEND_H

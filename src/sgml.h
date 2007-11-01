@@ -14,12 +14,7 @@
 #define SGML_H
 
 #include "support/types.h"
-#include "support/docstream.h"
-
-#include <iosfwd>
-#include <string>
-#include <utility>
-
+#include "support/docstring.h"
 
 namespace lyx {
 

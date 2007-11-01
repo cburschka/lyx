@@ -13,6 +13,7 @@
 #include "Bidi.h"
 #include "Buffer.h"
 #include "BufferView.h"
+#include "Cursor.h"
 #include "Font.h"
 #include "Row.h"
 #include "LyXRC.h"
@@ -127,10 +128,11 @@ void Bidi::computeTables(Paragraph const & par,
 			new_level = rtl_par ? 1 : 0;
 			new_rtl0 = rtl_par;
 			new_rtl = rtl_par;
-		} else if (new_rtl0)
+		} else if (new_rtl0) {
 			new_level = new_rtl ? 1 : 2;
-		else
+		} else {
 			new_level = rtl_par ? 2 : 0;
+		}
 
 		if (is_space && new_level >= lev) {
 			new_level = lev;
@@ -147,8 +149,9 @@ void Bidi::computeTables(Paragraph const & par,
 			log2vis_list_[lpos - start_] = rtl ? -1 : 1;
 			if (new_level > 0 && !rtl_par)
 				same_direction_ = false;
-		} else
+		} else {
 			log2vis_list_[lpos - start_] = new_rtl ? -1 : 1;
+		}
 		rtl = new_rtl;
 		rtl0 = new_rtl0;
 		levels_[lpos - start_] = new_level;

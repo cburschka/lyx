@@ -17,7 +17,6 @@
 #include "Font.h"
 #include "Undo.h"
 
-#include <iosfwd>
 #include <vector>
 
 

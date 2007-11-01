@@ -16,7 +16,7 @@
 #include "tex2lyx/Spacing.h"
 #else
 
-#include <iosfwd>
+#include "support/strfwd.h"
 #include <string>
 
 

@@ -21,9 +21,6 @@
 #include "support/types.h"
 #include "support/docstring.h"
 
-#include <iosfwd>
-#include <string>
-
 
 namespace lyx {
 

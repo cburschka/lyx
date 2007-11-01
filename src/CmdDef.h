@@ -14,11 +14,12 @@
 
 #include "FuncRequest.h"
 
-#include "support/docstream.h"
+#include "support/strfwd.h"
 
 #include <boost/shared_ptr.hpp>
 
 #include <map>
+#include <string>
 
 
 namespace lyx {

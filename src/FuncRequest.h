@@ -17,8 +17,6 @@
 
 #include "support/docstring.h"
 
-#include <iosfwd>
-
 
 namespace lyx {
 

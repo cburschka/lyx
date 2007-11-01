@@ -22,6 +22,8 @@
 #include "MetricsInfo.h"
 #include "sgml.h"
 
+#include "support/docstream.h"
+
 
 namespace lyx {
 

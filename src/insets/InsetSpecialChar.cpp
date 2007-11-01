@@ -15,6 +15,7 @@
 #include "InsetSpecialChar.h"
 
 #include "debug.h"
+#include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"

@@ -20,7 +20,6 @@
 #include "InsetMathComment.h"
 #include "InsetMathDelim.h"
 #include "InsetMathHull.h"
-//#include "InsetMathMBox.h"
 #include "InsetMathRef.h"
 #include "InsetMathScript.h"
 #include "InsetMathSpace.h"
@@ -111,7 +110,7 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 // to touch all (math)inset's draw() methods. Right now, we'll store
 // absolute value, and make them here relative, only to make them
 // absolute again when actually drawing the cursor. What a mess.
-	BOOST_ASSERT(ptr_cmp(&sl.inset(), this));
+	BOOST_ASSERT(&sl.inset() == this);
 	MathData const & ar = sl.cell();
 	CoordCache const & coord_cache = bv.coordCache();
 	if (!coord_cache.getArrays().has(&ar)) {
@@ -156,7 +155,7 @@ void InsetMathNest::metrics(MetricsInfo const & mi) const
 
 bool InsetMathNest::idxNext(Cursor & cur) const
 {
-	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
+	BOOST_ASSERT(&cur.inset() == this);
 	if (cur.idx() == cur.lastidx())
 		return false;
 	++cur.idx();
@@ -173,7 +172,7 @@ bool InsetMathNest::idxRight(Cursor & cur) const
 
 bool InsetMathNest::idxPrev(Cursor & cur) const
 {
-	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
+	BOOST_ASSERT(&cur.inset() == this);
 	if (cur.idx() == 0)
 		return false;
 	--cur.idx();
@@ -190,7 +189,7 @@ bool InsetMathNest::idxLeft(Cursor & cur) const
 
 bool InsetMathNest::idxFirst(Cursor & cur) const
 {
-	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
+	BOOST_ASSERT(&cur.inset() == this);
 	if (nargs() == 0)
 		return false;
 	cur.idx() = 0;
@@ -201,7 +200,7 @@ bool InsetMathNest::idxFirst(Cursor & cur) const
 
 bool InsetMathNest::idxLast(Cursor & cur) const
 {
-	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
+	BOOST_ASSERT(&cur.inset() == this);
 	if (nargs() == 0)
 		return false;
 	cur.idx() = cur.lastidx();
@@ -242,7 +241,7 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 	Cursor & cur = bv.cursor();
 	if (!cur.selection())
 		return;
-	if (!ptr_cmp(&cur.inset(), this))
+	if (&cur.inset() != this)
 		return;
 
 	// FIXME: hack to get position cache warm

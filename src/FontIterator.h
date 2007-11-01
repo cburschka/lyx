@@ -31,7 +31,7 @@ class Paragraph;
 class TextMetrics;
 
 
-class FontIterator : std::iterator<std::forward_iterator_tag, Font>
+class FontIterator
 {
 public:
 	///
