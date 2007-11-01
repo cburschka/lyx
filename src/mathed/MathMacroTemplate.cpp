@@ -481,7 +481,9 @@ void MathMacroTemplate::makeOptional(Cursor & cur) {
 void MathMacroTemplate::makeNonOptional(Cursor & cur) {
 	if (numargs_ > 0 && optionals_ > 0) {
 		--optionals_;
-		optionalValues_[optionals_ - 1] = cell(optIdx(optionals_));
+		
+		// store default value for later if the use changes his mind
+		optionalValues_[optionals_] = cell(optIdx(optionals_));
 		cells_.erase(cells_.begin() + optIdx(optionals_));
 
 		// fix cursor
