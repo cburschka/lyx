@@ -87,6 +87,14 @@ enum ColorCode
 	Color_mathbg,
 	/// Macro math inset background color
 	Color_mathmacrobg,
+	/// Macro math inset background color hovered
+	Color_mathmacrohoverbg,
+	/// Macro math label color
+	Color_mathmacrolabel,
+	/// Macro math frame color
+	Color_mathmacroframe,
+	/// Macro math blended color 
+	Color_mathmacroblend,
 	/// Math inset frame color under focus
 	Color_mathframe,
 	/// Math inset frame color not under focus
