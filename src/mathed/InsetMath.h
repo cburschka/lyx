@@ -112,6 +112,7 @@ public:
 	virtual InsetMathAMSArray const * asAMSArrayInset() const { return 0; }
 	virtual InsetMathArray          * asArrayInset()          { return 0; }
 	virtual InsetMathArray const    * asArrayInset() const    { return 0; }
+	virtual InsetMathBrace          * asBraceInset()          { return 0; }
 	virtual InsetMathBrace const    * asBraceInset() const    { return 0; }
 	virtual InsetMathChar const     * asCharInset() const     { return 0; }
 	virtual InsetMathDelim          * asDelimInset()          { return 0; }

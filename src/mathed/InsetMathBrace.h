@@ -25,7 +25,9 @@ public:
 	InsetMathBrace();
 	///
 	InsetMathBrace(MathData const & ar);
-	///
+	/// identifies brace insets
+	InsetMathBrace * asBraceInset() { return this; }
+	/// identifies brace insets
 	InsetMathBrace const * asBraceInset() const { return this; }
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
