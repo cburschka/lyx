@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author André Pönitz
+ * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -25,6 +26,7 @@ class BufferView;
 namespace lyx {
 
 namespace frontend { class Painter; }
+class MacroContext;
 
 
 /// Standard Sizes (mode styles)
@@ -72,10 +74,12 @@ public:
 	///
 	MetricsInfo();
 	///
-	MetricsInfo(BufferView * bv, FontInfo const & font, int textwidth);
+	MetricsInfo(BufferView * bv, FontInfo const & font, int textwidth, MacroContext const & mc);
 
 	///
 	MetricsBase base;
+	/// The context to resolve macros
+	MacroContext const & macrocontext;
 };
 
 

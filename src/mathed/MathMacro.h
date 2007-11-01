@@ -14,10 +14,9 @@
 #define MATH_MACRO_H
 
 #include "InsetMathNest.h"
-#include "MathData.h"
-#include "InsetMathNest.h"
+#include "InsetMathSqrt.h"
 #include "MacroTable.h"
-
+#include "MathData.h"
 
 namespace lyx {
 
@@ -26,11 +25,13 @@ namespace lyx {
 class MathMacro : public InsetMathNest {
 public:
 	/// A macro can be built from an existing template
-	MathMacro(docstring const & name, int numargs);
+	MathMacro(docstring const & name);
+	///
+	virtual MathMacro * asMacro() { return this; }
+	///
+	virtual MathMacro const * asMacro() const { return this; }
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	///
-	void drawExpanded(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	/// draw decorations.
@@ -38,29 +39,34 @@ public:
 	{ drawMarkers2(pi, x, y); }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	int kerning() const;
 	/// get cursor position
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
 	///
+	void edit(Cursor & cur, bool left);
+	///
 	Inset * editXY(Cursor & cur, int x, int y);
+
 	/// target pos when we enter the inset from the left by pressing "Right"
 	bool idxFirst(Cursor &) const;
 	/// target pos when we enter the inset from the right by pressing "Left"
 	bool idxLast(Cursor &) const;
-	///
-	bool idxUpDown(Cursor & cur, bool up) const;
+
 	///
 	virtual bool notifyCursorLeaves(Cursor &);
-	///
-	docstring name() const;
-	///
-	int kerning() const { return kerning_; }
-	///
-	void setExpansion(MathData const & exp, MathData const & args) const;
+	
+	/// Remove cell (starting from 0)
+	void removeArgument(size_t pos);
+	/// Insert empty cell (starting from 0)
+	void insertArgument(size_t pos);
 
 	///
 	void validate(LaTeXFeatures &) const;
 
+	///
+	void MathMacro::write(WriteStream & os) const;
 	///
 	void maple(MapleStream &) const;
 	///
@@ -72,27 +78,104 @@ public:
 	///
 	void infoize2(odocstream &) const;
 
-private:
-	virtual Inset * clone() const;
-	///
-	void updateExpansion() const;
+	/// fold the macro in the next metrics call
+	void fold(Cursor & cur);
+	/// unfold the macro in the next metrics call
+	void unfold(Cursor & cur);
+	/// will it be folded or unfolded in the next metric call?
+	bool folded() const;
+		
+	enum DisplayMode {
+		DISPLAY_INIT,
+		DISPLAY_UNFOLDED,
+		DISPLAY_NORMAL,
+	};
 
+	///
+	DisplayMode displayMode() const { return displayMode_; }
+
+	///
+	bool extraBraces() const { return displayMode_ == DISPLAY_NORMAL && arity() > 0; }
+
+	
+	///
+	docstring name() const;
+	///
+	bool validName() const;
+	///
+	size_t arity() const { 
+		if (displayMode_ == DISPLAY_NORMAL )
+			return cells_.size();
+		else
+			return 0;
+	}
+		
+	///
+	int optionals() const { return optionals_; }
+	///
+	void setOptionals(int n) { 
+		if (n <= int(nargs()))
+			optionals_ = n;
+	}
+	
+protected:
+	friend class MathData;
+	friend class ArgumentProxy;
+
+	/// update the display mode (should only be called after detaching arguments)
+	void setDisplayMode(DisplayMode mode);
+	/// compute the next display mode
+	DisplayMode computeDisplayMode(MetricsInfo const & mi) const;
+	/// update macro definition
+	void updateMacro(MetricsInfo & mi);
+	/// check if macro definition changed, argument changed etc. and adapt
+	void updateRepresentation(MetricsInfo & mi);
+	/// empty macro, put arguments into args, possibly strip arity-attachedArgsNum_ empty ones.
+	/// Includes the optional arguments.
+	void detachArguments(std::vector<MathData> & args, bool strip);
+	/// attach arguments (maybe less than arity at the end of an MathData),
+	/// including the optional ones (even if it can be empty here)
+	void attachArguments(std::vector<MathData> const & args, size_t arity, int optionals);
+	///
+	bool editing() { return editing_; }
+	///
+	MacroData const * macro() { return macro_; }
+
+private:
+	///
+	virtual Inset * clone() const;
+	/// the index of the cursor slice of the macro, or -1 if it is not edited
+	int cursorIdx(Cursor const & cur) const;
+	///
+	bool editMode(Cursor const & cur) const;
+	
 	/// name of macro
 	docstring name_;
-	/// the unexpanded macro defintition
-	mutable MathData tmpl_;
-	/// the macro substituted with our args
-	mutable MathData expanded_;
+	/// current display mode
+	DisplayMode displayMode_;
+	/// display mode before change
+	InsetMathSqrt expanded_;
+	/// number of arguments that were really attached
+	size_t attachedArgsNum_;
+	/// cursor position during last draw
+	int previousCurIdx_;
+	/// optional argument attached? (only in DISPLAY_NORMAL mode)
+	int optionals_;
+	/// fold mode to be set in next metrics call?
+	bool nextFoldMode_;
+	/// if macro_ == true, then here is a copy of the macro
+	/// don't use it for locking
+	MacroData macroBackup_;
+	/// if macroNotFound_ == false, then here is a reference to the macro
+	/// this might invalidate after metrics was called
+	MacroData const * macro_;
 	///
-	mutable MacroData macroBackup_;
+	bool editing_;
 	///
-	mutable bool editing_;
-	///
-	mutable int kerning_;
+	std::string requires_;
+	/// update macro representation
+	bool needsUpdate_;
 };
-
-
-
 
 } // namespace lyx
 #endif

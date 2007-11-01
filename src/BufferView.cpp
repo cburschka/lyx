@@ -507,7 +507,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	// Update macro store
 	if (!(cursor().inMathed() && cursor().inMacroMode()))
-		buffer_.buildMacros();
+		buffer_.updateMacros();
 
 	// Now do the first drawing step if needed. This consists on updating
 	// the CoordCache in updateMetrics().

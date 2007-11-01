@@ -905,6 +905,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			docstring const type = t.cs();
 			docstring name;
 			int nargs = 0;
+			int optionals = 0;
+			std::vector<MathData> optionalValues;
 			if (t.cs() == "def") {
 				// get name
 				name = getToken().cs();
@@ -919,7 +921,6 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				//lyxerr << "read \\def parameter list '" << pars << "'" << endl;
 
 			} else { // t.cs() == "newcommand" || t.cs() == "renewcommand"
-
 				if (getToken().cat() != catBegin) {
 					error("'{' in \\newcommand expected (1) ");
 					return;
@@ -936,27 +937,27 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				if (!arg.empty())
 					nargs = convert<int>(arg);
 
+				// optional argument given?
+				skipSpaces();
+				while (nextToken().character() == '[') {
+					getToken();
+					optionalValues.push_back(MathData());
+					parse(optionalValues[optionals], FLAG_BRACK_LAST, mode);
+					++optionals;
+				}
 			}
 
-			MathData ar1;
-			parse(ar1, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
-
-			// we cannot handle recursive stuff at all
-			//MathData test;
-			//test.push_back(createInsetMath(name));
-			//if (ar1.contains(test)) {
-			//	error("we cannot handle recursive macros at all.");
-			//	return;
-			//}
+			MathData def;
+			parse(def, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
 
 			// is a version for display attached?
 			skipSpaces();
-			MathData ar2;
+			MathData display;
 			if (nextToken().cat() == catBegin)
-				parse(ar2, FLAG_ITEM, InsetMath::MATH_MODE);
+				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
 
-			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs, type,
-				ar1, ar2)));
+			cell->push_back(MathAtom(new MathMacroTemplate(name, nargs, optionals, type, 
+																										 optionalValues, def, display)));
 		}
 
 		else if (t.cs() == "(") {

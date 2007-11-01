@@ -31,6 +31,8 @@ public:
 	///
 	std::size_t number() const { return number_; }
 	///
+	void setNumber(std::size_t n);
+	///
 	InsetCode lyxCode() const { return MATHMACROARG_CODE; }
 
 	///

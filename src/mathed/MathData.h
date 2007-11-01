@@ -7,6 +7,7 @@
  * \author Alejandro Aguilar Sierra
  * \author André Pönitz
  * \author Lars Gullik Bjønnes
+ * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -16,8 +17,9 @@
 
 #include <vector>
 
-#include "MathAtom.h"
+#include "Cursor.h"
 #include "Dimension.h"
+#include "MathAtom.h"
 
 #include "support/docstream.h"
 
@@ -27,6 +29,7 @@ namespace lyx {
 class BufferView;
 class LaTeXFeatures;
 class ReplaceData;
+class MathMacro;
 class MetricsInfo;
 class PainterInfo;
 class TextMetricsInfo;
@@ -158,11 +161,19 @@ protected:
 	mutable int slevel_;
 	mutable int sshift_;
 	mutable int kerning_;
-
+	
 private:
 	/// is this an exact match at this position?
 	bool find1(MathData const & ar, size_type pos) const;
 
+	/// attach/detach arguments to macros
+	void updateMacros(MetricsInfo & mi);
+	///
+	void detachMacroParameters(Cursor & cur, const size_type macroPos);
+	///
+	void attachMacroParameters(Cursor & cur, const size_type macroPos, 
+		const size_type macroNumArgs, const int macroOptionals,
+		const bool fromInitToNormalMode);
 	///
 	mutable std::vector<Dimension> atom_dims_;
 };

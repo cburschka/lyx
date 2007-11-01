@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -68,8 +69,8 @@
 #include "insets/InsetInclude.h"
 #include "insets/InsetText.h"
 
-#include "mathed/MathMacroTemplate.h"
 #include "mathed/MacroTable.h"
+#include "mathed/MathMacroTemplate.h"
 #include "mathed/MathSupport.h"
 
 #include "frontends/alert.h"
@@ -201,10 +202,12 @@ public:
 	InsetText inset;
 
 	///
-	MacroTable macros;
-
-	///
 	TocBackend toc_backend;
+
+	/// macro table
+	typedef std::map<unsigned int, MacroData, std::greater<int> > PositionToMacroMap;
+	typedef std::map<docstring, PositionToMacroMap> NameToPositionMacroMap;
+	NameToPositionMacroMap macros;
 
 	/// Container for all sort of Buffer dependant errors.
 	map<string, ErrorList> errorLists;
@@ -822,10 +825,6 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 						    " that it is probably corrupted."),
 				       from_utf8(filename.absFilename())));
 	}
-
-	//lyxerr << "removing " << MacroTable::localMacros().size()
-	//	<< " temporary macro entries" << endl;
-	//MacroTable::localMacros().clear();
 
 	pimpl_->file_fully_loaded = true;
 	return success;
@@ -1725,7 +1724,7 @@ void Buffer::setParentName(string const & name)
 Buffer const * Buffer::masterBuffer() const
 {
 	if (!params().parentname.empty()
-	    && theBufferList().exists(params().parentname)) {
+		&& theBufferList().exists(params().parentname)) {
 		Buffer const * buf = theBufferList().getBuffer(params().parentname);
 		//We need to check if the parent is us...
 		//FIXME RECURSIVE INCLUDE
@@ -1754,44 +1753,103 @@ Buffer * Buffer::masterBuffer()
 }
 
 
-MacroData const & Buffer::getMacro(docstring const & name) const
+bool Buffer::hasMacro(docstring const & name, Paragraph const & par) const
 {
-	return pimpl_->macros.get(name);
+	Impl::PositionToMacroMap::iterator it;
+	it = pimpl_->macros[name].upper_bound(par.macrocontextPosition());
+	if( it != pimpl_->macros[name].end() )
+		return true;
+
+	// If there is a master buffer, query that
+	const Buffer *master = masterBuffer();
+	if (master && master!=this)
+		return master->hasMacro(name);
+
+	return MacroTable::globalMacros().has(name);
 }
 
 
 bool Buffer::hasMacro(docstring const & name) const
 {
-	return pimpl_->macros.has(name);
+	if( !pimpl_->macros[name].empty() )
+		return true;
+
+	// If there is a master buffer, query that
+	const Buffer *master = masterBuffer();
+	if (master && master!=this)
+		return master->hasMacro(name);
+
+	return MacroTable::globalMacros().has(name);
 }
 
 
-void Buffer::insertMacro(docstring const & name, MacroData const & data)
+MacroData const & Buffer::getMacro(docstring const & name, Paragraph const & par) const
 {
-	MacroTable::globalMacros().insert(name, data);
-	pimpl_->macros.insert(name, data);
+	Impl::PositionToMacroMap::iterator it;
+	it = pimpl_->macros[name].upper_bound(par.macrocontextPosition());
+	if( it != pimpl_->macros[name].end() )
+		return it->second;
+
+	// If there is a master buffer, query that
+	const Buffer *master = masterBuffer();
+	if (master && master!=this)
+		return master->getMacro(name);
+
+	return MacroTable::globalMacros().get(name);
 }
 
 
-void Buffer::buildMacros()
+MacroData const & Buffer::getMacro(docstring const & name) const
 {
-	// Start with global table.
-	pimpl_->macros = MacroTable::globalMacros();
+	Impl::PositionToMacroMap::iterator it;
+	it = pimpl_->macros[name].begin();
+	if( it != pimpl_->macros[name].end() )
+		return it->second;
 
-	// Now add our own.
-	ParagraphList const & pars = text().paragraphs();
+	// If there is a master buffer, query that
+	const Buffer *master = masterBuffer();
+	if (master && master!=this)
+		return master->getMacro(name);
+
+	return MacroTable::globalMacros().get(name);
+}
+
+
+void Buffer::updateMacros()
+{
+	// start with empty table
+	pimpl_->macros = Impl::NameToPositionMacroMap();
+
+	// Iterate over buffer
+	ParagraphList & pars = text().paragraphs();
 	for (size_t i = 0, n = pars.size(); i != n; ++i) {
+		// set position again
+		pars[i].setMacrocontextPosition(i);
+
 		//lyxerr << "searching main par " << i
 		//	<< " for macro definitions" << std::endl;
 		InsetList const & insets = pars[i].insetList();
 		InsetList::const_iterator it = insets.begin();
 		InsetList::const_iterator end = insets.end();
 		for ( ; it != end; ++it) {
-			//lyxerr << "found inset code " << it->inset->lyxCode() << std::endl;
-			if (it->inset->lyxCode() == MATHMACRO_CODE) {
-				MathMacroTemplate const & mac
-					= static_cast<MathMacroTemplate const &>(*it->inset);
-				insertMacro(mac.name(), mac.asMacroData());
+			if (it->inset->lyxCode() != MATHMACRO_CODE)
+				continue;
+			
+			// get macro data
+			MathMacroTemplate const & macroTemplate
+			= static_cast<MathMacroTemplate const &>(*it->inset);
+
+			// valid?
+			if (macroTemplate.validMacro()) {
+				MacroData macro = macroTemplate.asMacroData();
+
+				// redefinition?
+				// call hasMacro here instead of directly querying mc to
+				// also take the master document into consideration
+				macro.setRedefinition(hasMacro(macroTemplate.name()));
+
+				// register macro (possibly overwrite the previous one of this paragraph)
+				pimpl_->macros[macroTemplate.name()][i] = macro;
 			}
 		}
 	}

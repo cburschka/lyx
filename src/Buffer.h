@@ -43,6 +43,7 @@ class LaTeXFeatures;
 class Language;
 class MacroData;
 class OutputParams;
+class Paragraph;
 class ParConstIterator;
 class ParIterator;
 class ParagraphList;
@@ -355,14 +356,16 @@ public:
 	//
 	// Macro handling
 	//
-	///
-	void buildMacros();
-	///
+	/// Collect macros in paragraphs
+	void updateMacros();
+	/// Look for macro defined before par (or in the master buffer)
+	bool hasMacro(docstring const & name, Paragraph const & par) const;
+	/// Look for macro defined anywhere in the buffer (or in the master buffer)
 	bool hasMacro(docstring const & name) const;
-	///
+	/// Return macro defined before par (or in the master buffer)
+	MacroData const & getMacro(docstring const & name, Paragraph const & par) const;
+	/// Return macro defined anywhere in the buffer (or in the master buffer)
 	MacroData const & getMacro(docstring const & name) const;
-	///
-	void insertMacro(docstring const & name, MacroData const & data);
 
 	/// Replace the inset contents for insets which InsetCode is equal
 	/// to the passed \p inset_code.

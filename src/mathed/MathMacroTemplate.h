@@ -13,9 +13,9 @@
 #ifndef MATH_MACROTEMPLATE_H
 #define MATH_MACROTEMPLATE_H
 
-#include "MathData.h"
-#include "MacroTable.h"
 #include "InsetMathNest.h"
+#include "MacroTable.h"
+#include "MathData.h"
 
 #include "support/types.h"
 
@@ -28,14 +28,13 @@ public:
 	///
 	MathMacroTemplate();
 	///
-	MathMacroTemplate(docstring const & name, int nargs,
-		docstring const & type,
-		MathData const & = MathData(),
-		MathData const & = MathData());
+	MathMacroTemplate(docstring const & name, int nargs, int optional, 
+		docstring const & type, 
+		std::vector<MathData> const & optionalValues = std::vector<MathData>(),
+		MathData const & def = MathData(),
+		MathData const & display = MathData());
 	///
 	explicit MathMacroTemplate(const docstring & str);
-	///
-	void edit(Cursor & cur, bool left);
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -46,14 +45,14 @@ public:
 	void write(WriteStream & os) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-		      OutputParams const &) const;
+		OutputParams const &) const;
 
-	/// Number of arguments
-	int numargs() const;
-	///
-	void numargs(int);
 	///
 	docstring name() const;
+	/// check name and possible other formal properties
+	bool validMacro() const;
+	///
+	bool validName() const;
 	///
 	MacroData asMacroData() const;
 	///
@@ -67,17 +66,44 @@ public:
 	///
 	InsetCode lyxCode() const { return MATHMACRO_CODE; }
 
+protected:
+	///
+	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
+	/// do we want to handle this event?
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & status) const;
+
 private:
 	virtual Inset * clone() const;
-	/// prefix in inset
-	docstring prefix() const;
 
+	/// remove #n with from<=n<=to
+	void removeArguments(Cursor & cur, int from, int to);
+	/// shift every #n with from<=n, i.e. #n -> #(n-by)
+	void shiftArguments(size_t from, int by);
 	///
-	int numargs_;
+	void insertParameter(Cursor & cur, int pos, bool greedy = false);
 	///
-	docstring name_;
+	void removeParameter(Cursor & cur, int pos, bool greedy = false );
+	///
+	void makeOptional(Cursor & cur);
+	///
+	void makeNonOptional(Cursor & cur);
+	///
+	pos_type defIdx() const { return optionals_ + 1; }
+	/// index of default value cell of optional parameter (#1 -> n=0)
+	pos_type optIdx(int n) const { return n + 1; }
+	///
+	pos_type displayIdx() const { return optionals_ + 2; }
+	/// The label with some holes to edit
+	mutable MathData label_;
+	///
+	mutable int numargs_;
+	///
+	int optionals_;
+	/// keeps the old optional default value when an optional argument is disabled
+	std::vector<MathData> optionalValues_;
 	/// newcommand or renewcommand or def
-	docstring type_;
+	mutable docstring type_;
 };
 
 

@@ -14,6 +14,7 @@
 #include "MathMacroArgument.h"
 #include "MathStream.h"
 #include "MathSupport.h"
+
 #include "debug.h"
 
 
@@ -30,6 +31,7 @@ MathMacroArgument::MathMacroArgument(size_t n)
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
 			<< n << endl;
 	}
+
 	// The profiler tells us not to use
 	// str_ = '#' + convert<docstring>(n);
 	// so we do the conversion of n to ASCII manually.
@@ -43,6 +45,18 @@ MathMacroArgument::MathMacroArgument(size_t n)
 Inset * MathMacroArgument::clone() const
 {
 	return new MathMacroArgument(*this);
+}
+
+
+void MathMacroArgument::setNumber(std::size_t n)
+{
+	if (n < 1 || n > 9) {
+		lyxerr << "MathMacroArgument::setNumber: wrong Argument id: "
+		<< n << endl;
+	}
+
+	number_ = n;
+	str_[1] = '0' + n;
 }
 
 

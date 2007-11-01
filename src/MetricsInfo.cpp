@@ -38,15 +38,10 @@ MetricsBase::MetricsBase(BufferView * b, FontInfo const & f, int w)
 {}
 
 
-
-MetricsInfo::MetricsInfo()
+MetricsInfo::MetricsInfo(BufferView * bv, FontInfo const & font, int textwidth, 
+	MacroContext const & mc)
+	: base(bv, font, textwidth), macrocontext(mc)
 {}
-
-
-MetricsInfo::MetricsInfo(BufferView * bv, FontInfo const & font, int textwidth)
-	: base(bv, font, textwidth)
-{}
-
 
 
 PainterInfo::PainterInfo(BufferView * bv, lyx::frontend::Painter & painter)

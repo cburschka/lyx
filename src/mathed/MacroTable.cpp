@@ -16,6 +16,9 @@
 #include "MathSupport.h"
 #include "InsetMathSqrt.h"
 
+#include "InsetMathNest.h"
+#include "buffer.h"
+
 #include "debug.h"
 #include "DocIterator.h"
 
@@ -36,20 +39,25 @@ using std::size_t;
 
 
 MacroData::MacroData()
-	: numargs_(0), lockCount_(0)
+	: numargs_(0), lockCount_(0), redefinition_(false)
 {}
 
 
-MacroData::MacroData(docstring const & def, int numargs, docstring const & disp, string const & requires)
-	: def_(def), numargs_(numargs), disp_(disp), requires_(requires), lockCount_(0)
-{}
+MacroData::MacroData(docstring const & definition, std::vector<docstring> const & defaults, 
+										 int numargs, int optionals, docstring const & display, string const & requires)
+	: definition_(definition), numargs_(numargs), display_(display),
+		requires_(requires), lockCount_(0), redefinition_(false), optionals_(optionals),
+		defaults_(defaults)
+{
+	defaults_.resize(optionals);
+}
 
 
 void MacroData::expand(vector<MathData> const & args, MathData & to) const
 {
 	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
 	// FIXME UNICODE
-	asArray(disp_.empty() ? def_ : disp_, inset.cell(0));
+	asArray(display_.empty() ? definition_ : display_, inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
 	//lyxerr << "MathData::expand: ar: " << inset.cell(0) << endl;
 	for (DocIterator it = doc_iterator_begin(inset); it; it.forwardChar()) {
@@ -67,6 +75,18 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 	}
 	//lyxerr << "MathData::expand: res: " << inset.cell(0) << endl;
 	to = inset.cell(0);
+}
+
+
+int MacroData::optionals() const
+{
+	return optionals_;
+}
+
+
+std::vector<docstring> const &  MacroData::defaults() const
+{
+	return defaults_;
 }
 
 
@@ -114,10 +134,44 @@ void MacroTable::dump()
 	lyxerr << "\n------------------------------------------" << endl;
 	for (const_iterator it = begin(); it != end(); ++it)
 		lyxerr << to_utf8(it->first)
-			<< " [" << to_utf8(it->second.def()) << "] : "
-			<< " [" << to_utf8(it->second.disp()) << "] : "
+			<< " [" << to_utf8(it->second.definition()) << "] : "
+			<< " [" << to_utf8(it->second.display()) << "] : "
 			<< endl;
 	lyxerr << "------------------------------------------" << endl;
+}
+
+
+MacroContext::MacroContext(Buffer const & buf, Paragraph const & par)
+	: buf_(buf), par_(par)
+{
+}
+
+
+bool MacroContext::has(docstring const & name) const
+{
+	// check if it's a local macro
+	if (macros_.has(name))
+		return true;
+	
+	// otherwise ask the buffer
+	return buf_.hasMacro(name, par_);
+}
+
+
+MacroData const & MacroContext::get(docstring const & name) const
+{
+	// check if it's a local macro
+	if (macros_.has(name))
+		return macros_.get(name);
+	
+	// ask the buffer for its macros
+	return buf_.getMacro(name, par_);
+}
+
+
+void MacroContext::insert(docstring const & name, MacroData const & data)
+{
+	macros_.insert(name, data);
 }
 
 

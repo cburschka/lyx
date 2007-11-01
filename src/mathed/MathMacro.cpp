@@ -5,6 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author André Pönitz
+ * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -17,12 +18,17 @@
 #include "MathStream.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
 #include "Cursor.h"
 #include "debug.h"
-#include "BufferView.h"
 #include "LaTeXFeatures.h"
+#include "FuncStatus.h"
+#include "FuncRequest.h"
+#include "Undo.h"
+
 #include "frontends/Painter.h"
 
+#include <vector>
 
 namespace lyx {
 
@@ -30,70 +36,85 @@ using std::string;
 using std::max;
 
 
-/// This class is the value of a macro argument, technically
-/// a wrapper of the cells of MathMacro.
-class MathMacroArgumentValue : public InsetMath {
+/// A proxy for the macro values
+class ArgumentProxy : public InsetMath {
 public:
 	///
-	MathMacroArgumentValue(MathMacro const & mathMacro, size_t idx)
+	ArgumentProxy(MathMacro & mathMacro, size_t idx) 
 		: mathMacro_(mathMacro), idx_(idx) {}
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	ArgumentProxy(MathMacro & mathMacro, size_t idx, docstring const & def) 
+		: mathMacro_(mathMacro), idx_(idx) 
+	{
+			asArray(def, def_);
+	}
 	///
-	void draw(PainterInfo &, int x, int y) const;
+	void metrics(MetricsInfo & mi, Dimension & dim) const {
+		mathMacro_.macro()->unlock();
+		mathMacro_.cell(idx_).metrics(mi, dim);
+		if (!mathMacro_.editing() && !def_.empty())
+			def_.metrics(mi, dim);
+		mathMacro_.macro()->lock();
+	}
+	///
+	void draw(PainterInfo & pi, int x, int y) const {
+		if (mathMacro_.editing()) {
+			pi.pain.leaveMonochromeMode();
+			mathMacro_.cell(idx_).draw(pi, x, y);
+			// FIXME: use real min/max colors here, not necessarely the ones of MathMacro are set
+			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+		} else {
+			if (def_.empty())
+				mathMacro_.cell(idx_).draw(pi, x, y);
+			else {
+				mathMacro_.cell(idx_).setXY(*pi.base.bv, x, y);
+				def_.draw(pi, x, y);
+			}
+		}
+	}
+	///
+	size_t idx() const { return idx_; }
 	///
 	int kerning() const { return mathMacro_.cell(idx_).kerning(); }
 
 private:
-	Inset * clone() const;
-	MathMacro const & mathMacro_;
+	///
+	Inset * clone() const 
+	{
+		return new ArgumentProxy(*this);
+	}
+	///
+	MathMacro & mathMacro_;
+	///
 	size_t idx_;
+	///
+	MathData def_;
 };
 
 
-Inset * MathMacroArgumentValue::clone() const
-{
-	return new MathMacroArgumentValue(*this);
-}
-
-
-void MathMacroArgumentValue::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	// unlock outer macro in arguments, and lock it again later
-	MacroData const & macro = MacroTable::globalMacros().get(mathMacro_.name());
-	macro.unlock();
-	mathMacro_.cell(idx_).metrics(mi, dim);
-	macro.lock();
-}
-
-
-void MathMacroArgumentValue::draw(PainterInfo & pi, int x, int y) const
-{
-	// unlock outer macro in arguments, and lock it again later
-	MacroData const & macro = MacroTable::globalMacros().get(mathMacro_.name());
-	macro.unlock();
-	mathMacro_.cell(idx_).draw(pi, x, y);
-	macro.lock();
-}
-
-
-MathMacro::MathMacro(docstring const & name, int numargs)
-	: InsetMathNest(numargs), name_(name), editing_(false)
+MathMacro::MathMacro(docstring const & name)
+	: InsetMathNest(0), name_(name), displayMode_(DISPLAY_INIT),
+		attachedArgsNum_(0), previousCurIdx_(-1), 
+		optionals_(0), nextFoldMode_(true),
+		macro_(0), editing_(false), needsUpdate_(false)
 {}
 
 
 Inset * MathMacro::clone() const
 {
-	MathMacro * x = new MathMacro(*this);
-	x->expanded_ = MathData();
-	x->macroBackup_ = MacroData();
-	return x;
+	MathMacro * copy = new MathMacro(*this);
+	copy->needsUpdate_ = true;
+	copy->expanded_.cell(0).clear();
+	return copy;
 }
 
 
 docstring MathMacro::name() const
 {
-	return name_;
+	if (displayMode_ == DISPLAY_UNFOLDED)
+		return asString(cell(0));
+	else
+		return name_;
 }
 
 
@@ -106,115 +127,279 @@ void MathMacro::cursorPos(BufferView const & bv,
 }
 
 
+int MathMacro::cursorIdx(Cursor const & cur) const {
+	for (size_t i = 0; i != cur.depth(); ++i)
+			if (&cur[i].inset() == this)
+				return cur[i].idx();
+	return -1;
+}
+
+
+bool MathMacro::editMode(Cursor const & cur) const {
+	// find this in cursor trace
+	for (size_t i = 0; i != cur.depth(); ++i)
+		if (&cur[i].inset() == this) {
+			// look if there is no other macro in edit mode above
+			++i;
+			for (; i != cur.depth(); ++i) {
+				MathMacro const * macro = dynamic_cast<MathMacro const *>(&cur[i].inset());
+				if (macro && macro->displayMode() == DISPLAY_NORMAL)
+					return false;
+			}
+
+			// ok, none found, I am the highest one
+			return true;
+		}
+
+	return false;
+}
+
+
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	kerning_ = 0;
-	if (!MacroTable::globalMacros().has(name())) {
-		mathed_string_dim(mi.base.font, "Unknown: " + name(), dim);
+	// calculate new metrics according to display mode
+	if (displayMode_ == DISPLAY_INIT) {
+		mathed_string_dim(mi.base.font, from_ascii("\\") + name(), dim);
+	} else if (displayMode_ == DISPLAY_UNFOLDED) {
+		cell(0).metrics(mi, dim);
+		Dimension bsdim;
+		mathed_string_dim(mi.base.font, from_ascii("\\"), bsdim);
+		dim.wid += bsdim.width() + 1;
+		dim.asc = std::max(bsdim.ascent(), dim.ascent());
+		dim.des = std::max(bsdim.descent(), dim.descent());
+		metricsMarkers(dim);
 	} else {
-		MacroData const & macro = MacroTable::globalMacros().get(name());
+		BOOST_ASSERT(macro_ != 0);
 
-		if (macroBackup_ != macro)
-			updateExpansion();
+		// calculate metric finally
+		macro_->lock();
+		expanded_.cell(0).metrics(mi, dim);
+		macro_->unlock();
 
-		if (macro.locked()) {
-			mathed_string_dim(mi.base.font, "Self reference: " + name(), dim);
-		} else if (editing(mi.base.bv)) {
+		// calculate dimension with label while editing
+		if (editing_) {
 			FontInfo font = mi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
-			tmpl_.metrics(mi, dim);
-			// FIXME UNICODE
-			dim.wid += mathed_string_width(font, name()) + 10;
-			// FIXME UNICODE
-			int ww = mathed_string_width(font, from_ascii("#1: "));
-			for (idx_type i = 0; i < nargs(); ++i) {
-				MathData const & c = cell(i);
-				Dimension dimc;
-				c.metrics(mi, dimc);
-				dim.wid  = max(dim.wid, dimc.width() + ww);
-				dim.des += dimc.height() + 10;
-			}
-			editing_ = true;
-		} else {
-			macro.lock();
-			expanded_.metrics(mi, dim);
-			macro.unlock();
-			kerning_ = expanded_.kerning();
-			editing_ = false;
+			Dimension namedim;
+			mathed_string_dim(font, name(), namedim);
+#if 0
+			dim.wid += 2 + namedim.wid + 2 + 2;
+			dim.asc = std::max(dim.asc, namedim.asc) + 2;
+			dim.des = std::max(dim.des, namedim.des) + 2;
+#endif
+			dim.wid = std::max(1 + namedim.wid + 1, 2 + dim.wid + 2);
+			dim.asc += 1 + namedim.height() + 1;
+			dim.des += 2;
 		}
 	}
+
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
 }
 
 
+int MathMacro::kerning() const {
+	if (displayMode_ == DISPLAY_NORMAL && !editing_)
+		return expanded_.kerning();
+	else
+		return 0;
+}
+
+
+void MathMacro::updateMacro(MetricsInfo & mi) 
+{
+	if (validName() && mi.macrocontext.has(name())) {
+		macro_ = &mi.macrocontext.get(name());
+		if (macroBackup_ != *macro_) {
+			macroBackup_ = *macro_;
+			needsUpdate_ = true;
+		}
+	} else {
+		macro_ = 0;
+	}
+}
+
+
+void MathMacro::updateRepresentation(MetricsInfo & mi) 
+{
+	// index of child where the cursor is (or -1 if none is edited)
+	int curIdx = cursorIdx(mi.base.bv->cursor());
+	previousCurIdx_ = curIdx;
+
+	// known macro?
+	if (macro_) {
+		requires_ = macro_->requires();
+
+		if (displayMode_ == DISPLAY_NORMAL) {
+			// set edit mode to draw box around if needed
+			bool prevEditing = editing_; 
+			editing_ = editMode(mi.base.bv->cursor());
+
+			// editMode changed and we have to switch default value and hole of optional?
+			if (optionals_ > 0 && nargs() > 0 && 
+					prevEditing != editing_)
+				needsUpdate_ = true;
+
+			// macro changed?
+			if (needsUpdate_) {
+				needsUpdate_ = false;
+
+				// get default values of macro
+				std::vector<docstring> const & defaults = macro_->defaults();
+
+				// create MathMacroArgumentValue objects pointing to the cells of the macro
+				std::vector<MathData> values(nargs());
+				for (size_t i = 0; i < nargs(); ++i) {
+					if (!cell(i).empty() || i >= defaults.size() || 
+							defaults[i].empty() || curIdx == (int)i)
+						values[i].insert(0, MathAtom(new ArgumentProxy(*this, i)));
+					else
+						values[i].insert(0, MathAtom(new ArgumentProxy(*this, i, defaults[i])));
+				}
+
+				// expanding macro with the values
+				macro_->expand(values, expanded_.cell(0));
+			}
+		}
+	}
+}
+
+
 void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
-	if (!MacroTable::globalMacros().has(name())) {
-		// FIXME UNICODE
-		drawStrRed(pi, x, y, "Unknown: " + name());
-	} else {
-		MacroData const & macro = MacroTable::globalMacros().get(name());
+	Dimension const dim = dimension(*pi.base.bv);
 
-		// warm up cache
+	setPosCache(pi, x, y);
+	int expx = x;
+	int expy = y;
+
+	if (displayMode_ == DISPLAY_INIT) {		
+		PainterInfo pi2(pi.base.bv, pi.pain);
+		pi2.base.font.setColor(macro_ ? Color_latex : Color_error);
+		//pi2.base.style = LM_ST_TEXT;
+		pi2.pain.text(x, y, from_ascii("\\") + name(), pi2.base.font);
+	} else if (displayMode_ == DISPLAY_UNFOLDED) {
+		PainterInfo pi2(pi.base.bv, pi.pain);
+		pi2.base.font.setColor(macro_ ? Color_latex : Color_error);
+		//pi2.base.style = LM_ST_TEXT;
+		pi2.pain.text(x, y, from_ascii("\\"), pi2.base.font);
+		x += mathed_string_width(pi2.base.font, from_ascii("\\")) + 1;
+		cell(0).draw(pi2, x, y);
+		drawMarkers(pi2, expx, expy);
+	} else {
+		// warm up cells
 		for (size_t i = 0; i < nargs(); ++i)
 			cell(i).setXY(*pi.base.bv, x, y);
 
-		if (macro.locked()) {
-			// FIXME UNICODE
-			drawStrRed(pi, x, y, "Self reference: " + name());
-		} else if (editing_) {
+		if (editing_) {
+			// draw header and rectangle around
 			FontInfo font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
-			Dimension const dim = dimension(*pi.base.bv);
-			Dimension const & dim_tmpl = tmpl_.dimension(*pi.base.bv);
-			int h = y - dim.ascent() + 2 + dim_tmpl.ascent();
-			pi.pain.text(x + 3, h, name(), font);
-			int const w = mathed_string_width(font, name());
-			tmpl_.draw(pi, x + w + 12, h);
-			h += dim_tmpl.descent();
-			Dimension ldim;
-			docstring t = from_ascii("#1: ");
-			mathed_string_dim(font, t, ldim);
-			for (idx_type i = 0; i < nargs(); ++i) {
-				MathData const & c = cell(i);
-				Dimension const & dimc = c.dimension(*pi.base.bv);
-				h += max(dimc.ascent(), ldim.asc) + 5;
-				c.draw(pi, x + ldim.wid, h);
-				char_type str[] = { '#', '1', ':', '\0' };
-				str[1] += static_cast<char_type>(i);
-				pi.pain.text(x + 3, h, str, font);
-				h += max(dimc.descent(), ldim.des) + 5;
-			}
-		} else {
-			macro.lock();
-			expanded_.draw(pi, x, y);
-			macro.unlock();
-		}
+			font.setSize(FONT_SIZE_TINY);
+			font.setColor(Color_mathmacrolabel);
+			Dimension namedim;
+			mathed_string_dim(font, name(), namedim);
+#if 0
+			pi.pain.fillRectangle(x, y - dim.asc, 2 + namedim.width() + 2, dim.height(), Color_mathmacrobg);
+			pi.pain.text(x + 2, y, name(), font);
+			expx += 2 + namew + 2;
+#endif
+			pi.pain.fillRectangle(x, y - dim.asc, dim.wid, 1 + namedim.height() + 1, Color_mathmacrobg);
+			pi.pain.text(x + 1, y - dim.asc + namedim.asc + 2, name(), font);
+			expx += (dim.wid - expanded_.cell(0).dimension(*pi.base.bv).width()) / 2;
 
-		// edit mode changed?
-		if (editing_ != editing(pi.base.bv) || macroBackup_ != macro)
-			pi.base.bv->cursor().updateFlags(Update::Force);
+			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+			expanded_.cell(0).draw(pi, expx, expy);
+			pi.pain.leaveMonochromeMode();
+		} else
+			expanded_.cell(0).draw(pi, expx, expy);
+
+		// draw frame while editing
+		if (editing_)
+			pi.pain.rectangle(x, y - dim.asc, dim.wid, dim.height(), Color_mathmacroframe);
 	}
+
+	// another argument selected?
+	int curIdx = cursorIdx(pi.base.bv->cursor());
+	if (previousCurIdx_ != curIdx || editing_ != editMode(pi.base.bv->cursor()))
+		pi.base.bv->cursor().updateFlags(Update::Force);
 }
 
 
 void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
-	if (nargs() > 0)
+	if (cells_.size() > 0)
 		InsetMathNest::drawSelection(pi, x, y);
+}
+
+
+void MathMacro::setDisplayMode(MathMacro::DisplayMode mode)
+{
+	if (displayMode_ != mode) {		
+		// transfer name if changing from or to DISPLAY_UNFOLDED
+		if (mode == DISPLAY_UNFOLDED) {
+			cells_.resize(1);
+			asArray(name_, cell(0));
+		} else if (displayMode_ == DISPLAY_UNFOLDED) {
+			name_ = asString(cell(0));
+			cells_.resize(0);
+		}
+
+		displayMode_ = mode;
+		needsUpdate_ = true;
+	}
+}
+
+
+MathMacro::DisplayMode MathMacro::computeDisplayMode(MetricsInfo const & mi) const
+{
+	if (nextFoldMode_ == true && macro_ && !macro_->locked())
+		return DISPLAY_NORMAL;
+	else
+		return DISPLAY_UNFOLDED;
+}
+
+
+bool MathMacro::validName() const
+{
+	docstring n = name();
+
+	// empty name?
+	if (n.size() == 0)
+		return false;
+
+	// converting back and force doesn't swallow anything?
+	/*MathData ma;
+	asArray(n, ma);
+	if (asString(ma) != n)
+		return false;*/
+
+	// valid characters?
+	for (size_t i = 0; i<n.size(); ++i) {
+		if (!(n[i] >= 'a' && n[i] <= 'z') &&
+				!(n[i] >= 'A' && n[i] <= 'Z')) 
+			return false;
+	}
+
+	return true;
 }
 
 
 void MathMacro::validate(LaTeXFeatures & features) const
 {
-	string const require = MacroTable::globalMacros().get(name()).requires();
-	if (!require.empty())
-		features.require(require);
+	if (!requires_.empty())
+		features.require(requires_);
 
 	if (name() == "binom" || name() == "mathcircumflex")
 		features.require(to_utf8(name()));
+}
+
+
+void MathMacro::edit(Cursor & cur, bool left)
+{
+	cur.updateFlags(Update::Force);
+	InsetMathNest::edit(cur, left);
 }
 
 
@@ -222,47 +407,87 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0) {
-		// Prevent crash due to cold coordcache
-		// FIXME: This is only a workaround, the call of
-		// InsetMathNest::editXY is correct. The correct fix would
-		// ensure that the coordcache of the arguments is valid.
-		if (!editing(&cur.bv())) {
-			edit(cur, true);
-			return this;
-		}
-		return InsetMathNest::editXY(cur, x, y);
-	}
-	return this;
+		cur.updateFlags(Update::Force);
+		return InsetMathNest::editXY(cur, x, y);		
+	} else
+		return this;
 }
 
 
-bool MathMacro::idxFirst(Cursor & cur) const
+void MathMacro::removeArgument(size_t pos) {
+	if (displayMode_ == DISPLAY_NORMAL) {
+		BOOST_ASSERT(pos >= 0 && pos < cells_.size());
+		cells_.erase(cells_.begin() + pos);
+		if (pos < attachedArgsNum_)
+			--attachedArgsNum_;
+		if (pos < optionals_) {
+			--optionals_;
+		}
+
+		needsUpdate_ = true;
+	}
+}
+
+
+void MathMacro::insertArgument(size_t pos) {
+	if (displayMode_ == DISPLAY_NORMAL) {
+		BOOST_ASSERT(pos >= 0 && pos <= cells_.size());
+		cells_.insert(cells_.begin() + pos, MathData());
+		if (pos < attachedArgsNum_)
+			++attachedArgsNum_;
+		if (pos < optionals_)
+			++optionals_;
+
+		needsUpdate_ = true;
+	}
+}
+
+
+void MathMacro::detachArguments(std::vector<MathData> & args, bool strip)
+{
+	BOOST_ASSERT(displayMode_ == DISPLAY_NORMAL);	
+	args = cells_;
+
+	// strip off empty cells, but not more than arity-attachedArgsNum_
+	if (strip) {
+		size_t i;
+		for (i = cells_.size(); i > attachedArgsNum_; --i)
+			if (!cell(i - 1).empty()) break;
+		args.resize(i);
+	}
+
+	attachedArgsNum_ = 0;
+	expanded_.cell(0) = MathData();
+	cells_.resize(0);
+
+	needsUpdate_ = true;
+}
+
+
+void MathMacro::attachArguments(std::vector<MathData> const & args, size_t arity, int optionals)
+{
+	BOOST_ASSERT(displayMode_ == DISPLAY_NORMAL);
+	cells_ = args;
+	attachedArgsNum_ = args.size();
+	cells_.resize(arity);
+	expanded_.cell(0) = MathData();
+	optionals_ = optionals;
+
+	needsUpdate_ = true;
+}
+
+
+bool MathMacro::idxFirst(Cursor & cur) const 
 {
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::idxFirst(cur);
 }
 
 
-bool MathMacro::idxLast(Cursor & cur) const
+bool MathMacro::idxLast(Cursor & cur) const 
 {
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::idxLast(cur);
-}
-
-
-bool MathMacro::idxUpDown(Cursor & cur, bool up) const
-{
-	if (up) {
-		if (cur.idx() == 0)
-			return false;
-		--cur.idx();
-	} else {
-		if (cur.idx() + 1 >= nargs())
-			return false;
-		++cur.idx();
-	}
-	cur.pos() = cell(cur.idx()).x2pos(cur.x_target());
-	return true;
 }
 
 
@@ -273,38 +498,98 @@ bool MathMacro::notifyCursorLeaves(Cursor & cur)
 }
 
 
+void MathMacro::fold(Cursor & cur)
+{
+	if (!nextFoldMode_) {
+		nextFoldMode_ = true;
+		cur.updateFlags(Update::Force);
+	}
+}
+
+
+void MathMacro::unfold(Cursor & cur)
+{
+	if (nextFoldMode_) {
+		nextFoldMode_ = false;
+		cur.updateFlags(Update::Force);
+	}
+}
+
+
+bool MathMacro::folded() const
+{
+	return nextFoldMode_;
+}
+
+
+void MathMacro::write(WriteStream & os) const
+{
+	if (displayMode_ == DISPLAY_NORMAL) {
+		BOOST_ASSERT(macro_);
+
+		os << "\\" << name();
+		bool first = true;
+		size_t i = 0;
+
+		// Use macroBackup_ instead of macro_ here, because
+		// this is outside the metrics/draw calls, hence the macro_
+		// variable can point to a MacroData which was freed already.
+		std::vector<docstring> const & defaults = macroBackup_.defaults();
+
+		// Optional argument
+		if (os.latex()) {
+			if (i < optionals_) {
+				// the first real optional, the others are non-optional in latex
+				if (!cell(i).empty()) {
+					first = false;
+					os << "[" << cell(0) << "]";
+				}
+
+				++i;
+			}
+		} else {
+			// In lyx mode print all in any case
+			for (; i < cells_.size() && i < optionals_; ++i) {
+				first = false;
+				os << "[" << cell(i) << "]";
+			}
+		}
+
+		for (; i < cells_.size(); ++i) {
+			if (cell(i).empty() && i < optionals_) {
+				os << "{" << defaults[i] << "}";
+			} else if (cell(i).size() == 1 && cell(i)[0].nucleus()->asCharInset()) {
+				if (first)
+					os << " ";
+				os << cell(i);
+			}	else
+				os << "{" << cell(i) << "}";
+			first = false;
+		}
+		if (first)
+			os.pendingSpace(true);
+	} else {
+		os << "\\" << name() << " ";
+		os.pendingSpace(true);
+	}
+}
+
+
 void MathMacro::maple(MapleStream & os) const
 {
-	updateExpansion();
-	lyx::maple(expanded_, os);
+	lyx::maple(expanded_.cell(0), os);
 }
 
 
 void MathMacro::mathmlize(MathStream & os) const
 {
-	updateExpansion();
-	lyx::mathmlize(expanded_, os);
+	lyx::mathmlize(expanded_.cell(0), os);
 }
 
 
 void MathMacro::octave(OctaveStream & os) const
 {
-	updateExpansion();
-	lyx::octave(expanded_, os);
-}
-
-
-void MathMacro::updateExpansion() const
-{
-	MacroData const & macro = MacroTable::globalMacros().get(name());
-
-	// create MathMacroArgumentValue object pointing to the cells of the macro
-	std::vector<MathData> values(nargs());
-	for (size_t i = 0; i != nargs(); ++i)
-				values[i].insert(0, MathAtom(new MathMacroArgumentValue(*this, i)));
-	macro.expand(values, expanded_);
-	asArray(macro.def(), tmpl_);
-	macroBackup_ = macro;
+	lyx::octave(expanded_.cell(0), os);
 }
 
 

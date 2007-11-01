@@ -542,18 +542,6 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		}
 
 		inset->read(buf, lex);
-
-// FIXME: hack..
-		if (inset->lyxCode() == MATHMACRO_CODE) {
-			MathMacroTemplate const * tmpl =
-				static_cast<MathMacroTemplate*>(inset.get());
-			MacroTable::globalMacros().insert
-				(tmpl->name(), tmpl->asMacroData());
-			LYXERR(Debug::DEBUG)
-				<< BOOST_CURRENT_FUNCTION
-				<< ": creating local macro " << to_utf8(tmpl->name())
-				<< endl;
-		}
 	}
 
 	return inset.release();
