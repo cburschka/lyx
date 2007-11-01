@@ -945,10 +945,10 @@ bool Cursor::macroModeClose()
 	if (in && in->interpretString(*this, s))
 		return true;
 	MathAtom atom = createInsetMath(name);
-	if (atom.nucleus()->asMacro()) {
+	MathMacro * atomAsMacro = atom.nucleus()->asMacro();
+	if (atomAsMacro) {
 		// make non-greedy, i.e. don't eat parameters from the right
-		MathMacro * macro = atom.nucleus()->asMacro();
-		macro->setDisplayMode(MathMacro::DISPLAY_NONGREEDY_INIT);
+		atomAsMacro->setDisplayMode(MathMacro::DISPLAY_NONGREEDY_INIT);
 	}
 	plainInsert(atom);
 	return true;
