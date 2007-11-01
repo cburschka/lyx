@@ -58,9 +58,9 @@ public:
 	virtual bool notifyCursorLeaves(Cursor &);
 	
 	/// Remove cell (starting from 0)
-	void removeArgument(size_t pos);
+	void removeArgument(pos_type pos);
 	/// Insert empty cell (starting from 0)
-	void insertArgument(size_t pos);
+	void insertArgument(pos_type pos);
 
 	///
 	void validate(LaTeXFeatures &) const;
@@ -112,7 +112,7 @@ public:
 	}
 		
 	///
-	int optionals() const { return optionals_; }
+	size_t optionals() const { return optionals_; }
 	///
 	void setOptionals(int n) { 
 		if (n <= int(nargs()))
@@ -160,9 +160,9 @@ private:
 	/// number of arguments that were really attached
 	size_t attachedArgsNum_;
 	/// cursor position during last draw
-	int previousCurIdx_;
+	idx_type previousCurIdx_;
 	/// optional argument attached? (only in DISPLAY_NORMAL mode)
-	int optionals_;
+	size_t optionals_;
 	/// fold mode to be set in next metrics call?
 	bool nextFoldMode_;
 	/// if macro_ == true, then here is a copy of the macro

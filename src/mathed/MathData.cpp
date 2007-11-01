@@ -337,7 +337,7 @@ void MathData::updateMacros(MetricsInfo & mi)
 		// get macro
 		macroInset->updateMacro(mi);
 		size_t macroNumArgs = 0;
-		int macroOptionals = 0;
+		size_t macroOptionals = 0;
 		MacroData const * macro = macroInset->macro();
 		if (macro) {
 			macroNumArgs = macro->numargs();
@@ -416,8 +416,8 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 	
 	// find cursor slice
 	int curMacroSlice = cur.find(macroInset);
-	int curMacroIdx = -1;
-	int curMacroPos = -1;
+	idx_type curMacroIdx = -1;
+	pos_type curMacroPos = -1;
 	std::vector<CursorSlice> argSlices;
 	if (curMacroSlice != -1) {
 				curMacroPos = cur[curMacroSlice].pos();
@@ -434,7 +434,7 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 	}
 	
 	// optional arguments to be put back?
-	size_t p = macroPos + 1;
+	pos_type p = macroPos + 1;
 	size_t j = 0;
 	for (; j < detachedArgs.size() && j < macroInset->optionals(); ++j) {
 		// another non-empty parameter follows?
@@ -495,7 +495,7 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 			insert(p, MathAtom(new InsetMathBrace(arg)));
 		
 		// cursor in j-th argument of macro?
-		if (curMacroIdx == int(j)) {
+		if (curMacroIdx == j) {
 			if (operator[](p).nucleus()->asBraceInset()) {
 				cur[curMacroSlice - 1].pos() = p;
 				cur.append(0, curMacroPos);

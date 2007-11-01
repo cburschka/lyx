@@ -320,7 +320,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	// another argument selected?
-	int curIdx = cursorIdx(pi.base.bv->cursor());
+	idx_type curIdx = cursorIdx(pi.base.bv->cursor());
 	if (previousCurIdx_ != curIdx || editing_ != editMode(pi.base.bv->cursor()))
 		pi.base.bv->cursor().updateFlags(Update::Force);
 }
@@ -414,13 +414,13 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 }
 
 
-void MathMacro::removeArgument(size_t pos) {
+void MathMacro::removeArgument(Inset::pos_type pos) {
 	if (displayMode_ == DISPLAY_NORMAL) {
-		BOOST_ASSERT(pos >= 0 && pos < cells_.size());
+		BOOST_ASSERT(size_t(pos) < cells_.size());
 		cells_.erase(cells_.begin() + pos);
-		if (pos < attachedArgsNum_)
+		if (size_t(pos) < attachedArgsNum_)
 			--attachedArgsNum_;
-		if (pos < optionals_) {
+		if (size_t(pos) < optionals_) {
 			--optionals_;
 		}
 
@@ -429,13 +429,13 @@ void MathMacro::removeArgument(size_t pos) {
 }
 
 
-void MathMacro::insertArgument(size_t pos) {
+void MathMacro::insertArgument(Inset::pos_type pos) {
 	if (displayMode_ == DISPLAY_NORMAL) {
-		BOOST_ASSERT(pos >= 0 && pos <= cells_.size());
+		BOOST_ASSERT(size_t(pos) <= cells_.size());
 		cells_.insert(cells_.begin() + pos, MathData());
-		if (pos < attachedArgsNum_)
+		if (size_t(pos) < attachedArgsNum_)
 			++attachedArgsNum_;
-		if (pos < optionals_)
+		if (size_t(pos) < optionals_)
 			++optionals_;
 
 		needsUpdate_ = true;
@@ -529,7 +529,7 @@ void MathMacro::write(WriteStream & os) const
 
 		os << "\\" << name();
 		bool first = true;
-		size_t i = 0;
+		idx_type i = 0;
 
 		// Use macroBackup_ instead of macro_ here, because
 		// this is outside the metrics/draw calls, hence the macro_

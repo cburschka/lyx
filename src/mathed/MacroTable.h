@@ -40,11 +40,11 @@ public:
 	///
 	docstring const & display() const { return display_; }
 	/// arity including optional arguments (if there is any)
-	int numargs() const { return numargs_; }
+	size_t numargs() const { return numargs_; }
 	/// replace #1,#2,... by given MathAtom 0,1,.., _including_ the possible optional argument
 	void expand(std::vector<MathData> const & from, MathData & to) const;
 	/// number of optional arguments
-	int optionals() const;
+	size_t optionals() const;
 	///
 	std::vector<docstring> const & defaults() const;
 	///
@@ -80,7 +80,7 @@ private:
 	///
 	docstring definition_;
 	///
-	int numargs_;
+	size_t numargs_;
 	///
 	docstring display_;
 	///
@@ -90,7 +90,7 @@ private:
 	///
 	bool redefinition_;
 	///
-	int optionals_;
+	size_t optionals_;
 	///
 	std::vector<docstring> defaults_;
 };

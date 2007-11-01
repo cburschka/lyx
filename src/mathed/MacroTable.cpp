@@ -78,7 +78,7 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 }
 
 
-int MacroData::optionals() const
+size_t MacroData::optionals() const
 {
 	return optionals_;
 }

@@ -89,11 +89,11 @@ private:
 	///
 	void makeNonOptional(Cursor & cur);
 	///
-	pos_type defIdx() const { return optionals_ + 1; }
+	idx_type defIdx() const { return optionals_ + 1; }
 	/// index of default value cell of optional parameter (#1 -> n=0)
-	pos_type optIdx(int n) const { return n + 1; }
+	idx_type optIdx(idx_type n) const { return n + 1; }
 	///
-	pos_type displayIdx() const { return optionals_ + 2; }
+	idx_type displayIdx() const { return optionals_ + 2; }
 	/// The label with some holes to edit
 	mutable MathData label_;
 	///
