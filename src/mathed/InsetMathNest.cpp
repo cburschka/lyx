@@ -28,6 +28,7 @@
 #include "InsetMathUnknown.h"
 #include "MathData.h"
 #include "MathFactory.h"
+#include "MathMacro.h"
 #include "MathMacroArgument.h"
 #include "MathParser.h"
 #include "MathStream.h"
@@ -987,6 +988,21 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.recordUndo();
 		interpretChar(cur, '^');
 		break;
+		
+	case LFUN_MATH_MACRO_FOLD:
+	case LFUN_MATH_MACRO_UNFOLD: {
+		Cursor it = cur;
+		bool fold = cmd.action == LFUN_MATH_MACRO_FOLD;
+		bool found = findMacroToFoldUnfold(it, fold);
+		if (found) {
+			cur.recordUndo();
+			if (fold)
+				it.nextInset()->asInsetMath()->asMacro()->fold(cur);
+			else
+				it.nextInset()->asInsetMath()->asMacro()->unfold(cur);
+		}
+		break;
+	}
 
 	case LFUN_QUOTE_INSERT:
 		// interpret this as if a straight " was typed
@@ -1037,6 +1053,37 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetMath::doDispatch(cur, cmd);
 		break;
 	}
+}
+
+
+bool InsetMathNest::findMacroToFoldUnfold(Cursor & it, bool fold) const {
+	// look for macro to open/close, but stay in mathed
+	for (; !it.empty(); it.pop_back()) {
+			
+		// go backward through the current cell
+		Inset * inset = it.nextInset();
+		while (inset && inset->asInsetMath()) {
+			MathMacro * macro = inset->asInsetMath()->asMacro();
+			if (macro) {
+				// found the an macro to open/close?
+				if (macro->folded() != fold)
+					return true;
+				
+				// wrong folding state -> go up one level
+				break;
+			}
+			
+			// go up if this was the left most position
+			if (it.pos() == 0)
+				break;
+			
+			// go left
+			it.pos()--;
+			inset = it.nextInset();
+		}
+	}
+	
+	return false;
 }
 
 
@@ -1131,7 +1178,15 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// Don't do this with multi-cell selections
 		flag.enabled(cur.selBegin().idx() == cur.selEnd().idx());
 		break;
-
+		
+	case LFUN_MATH_MACRO_FOLD:
+	case LFUN_MATH_MACRO_UNFOLD: {
+		Cursor it = cur;
+		bool found = findMacroToFoldUnfold(it, cmd.action == LFUN_MATH_MACRO_FOLD);
+		flag.enabled(found);
+		break;
+	}
+		
 	case LFUN_HYPHENATION_POINT_INSERT:
 	case LFUN_LIGATURE_BREAK_INSERT:
 	case LFUN_MENU_SEPARATOR_INSERT:

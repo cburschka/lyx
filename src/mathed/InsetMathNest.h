@@ -149,6 +149,9 @@ private:
 	void lfunMouseRelease(Cursor &, FuncRequest &);
 	///
 	void lfunMouseMotion(Cursor &, FuncRequest &);
+	/// Find a macro to fold or unfold, starting at searchCur and searchCur.nextInset() pointing to a macro
+	/// afterwards if found
+	bool findMacroToFoldUnfold(Cursor & searchCur, bool fold) const;
 
 protected:
 	/// we store the cells in a vector
