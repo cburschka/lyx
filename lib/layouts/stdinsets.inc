@@ -173,6 +173,7 @@ InsetLayout Index
 	  Size                Small
 	EndFont
 	MultiPar              false
+	NeedProtect           true
 End
 
 InsetLayout Box
