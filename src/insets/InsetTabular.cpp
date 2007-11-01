@@ -2794,7 +2794,7 @@ void Tabular::plaintext(Buffer const & buf, odocstream & os,
 			if (isPartOfMultiColumn(i, j))
 				continue;
 			if (onlydata && j > 0)
-				os << delim;
+				os.put(delim);
 			plaintextPrintCell(buf, os, runparams,
 					   cell, i, j, clen, onlydata);
 			++cell;
