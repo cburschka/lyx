@@ -27,7 +27,7 @@ FontInfo const inherit_font;
 /// All ignore font.
 FontInfo const ignore_font;
 
-FontInfo lyxRead(Lexer & lex)
+FontInfo lyxRead(Lexer & lex, FontInfo const &)
 {
 	bool error = false;
 	bool finished = false;
