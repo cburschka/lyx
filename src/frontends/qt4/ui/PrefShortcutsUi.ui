@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PrefShortcuts</class>
  <widget class="QWidget" name="PrefShortcuts" >
   <property name="geometry" >
@@ -30,7 +27,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="0" colspan="2" >
+   <item row="1" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -53,12 +50,28 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="pushButton" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="bindFileLA" >
      <property name="text" >
-      <string>&lt;- Clea&amp;r</string>
+      <string>&amp;Bind file:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>bindFileED</cstring>
      </property>
     </widget>
+   </item>
+   <item row="0" column="2" >
+    <widget class="QPushButton" name="bindFilePB" >
+     <property name="text" >
+      <string>B&amp;rowse...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="bindFileED" />
+   </item>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QTreeWidget" name="shortcutsTW" />
    </item>
    <item row="3" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
@@ -97,32 +110,8 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" colspan="3" >
-    <widget class="QTreeWidget" name="shortcutsTW" />
-   </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="bindFileED" />
-   </item>
-   <item row="0" column="2" >
-    <widget class="QPushButton" name="bindFilePB" >
-     <property name="text" >
-      <string>B&amp;rowse...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="bindFileLA" >
-     <property name="text" >
-      <string>&amp;Bind file:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>bindFileED</cstring>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>bindFileED</tabstop>
   <tabstop>bindFilePB</tabstop>
@@ -135,22 +124,5 @@
   <include location="local" >qt_helpers.h</include>
  </includes>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>searchLE</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>349</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>265</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
