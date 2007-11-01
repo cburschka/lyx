@@ -36,8 +36,6 @@ QErrorListDialog::QErrorListDialog(QErrorList * form)
 	setupUi(this);
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
-	connect(errorsLW, SIGNAL( itemActivated(QListWidgetItem *)),
-		form, SLOT(slotClose()));
 	connect( errorsLW, SIGNAL( itemClicked(QListWidgetItem *)),
 		this, SLOT(select_adaptor(QListWidgetItem *)));
 }
