@@ -66,7 +66,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	///
-	void MathMacro::write(WriteStream & os) const;
+	void write(WriteStream & os) const;
 	///
 	void maple(MapleStream &) const;
 	///
