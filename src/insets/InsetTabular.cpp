@@ -2730,7 +2730,7 @@ void Tabular::plaintextPrintCell(Buffer const & buf, odocstream & os,
 
 void Tabular::plaintext(Buffer const & buf, odocstream & os,
 			   OutputParams const & runparams, int const depth,
-			   bool onlydata, unsigned char delim) const
+			   bool onlydata, char_type delim) const
 {
 	// first calculate the width of the single columns
 	vector<unsigned int> clen(columnCount());
@@ -2774,7 +2774,9 @@ void Tabular::plaintext(Buffer const & buf, odocstream & os,
 			if (isPartOfMultiColumn(i, j))
 				continue;
 			if (onlydata && j > 0)
-				os << delim;
+				// we don't use operator<< for single UCS4 character.
+				// see explanation in docstream.h
+				os.put(delim);
 			plaintextPrintCell(buf, os, runparams,
 					   cell, i, j, clen, onlydata);
 			++cell;

@@ -359,7 +359,7 @@ public:
 	///
 	void plaintext(Buffer const &, odocstream &,
 		       OutputParams const & runparams, int const depth,
-		       bool onlydata, unsigned char delim) const;
+		       bool onlydata, char_type delim) const;
 	///
 	bool isMultiColumn(idx_type cell) const;
 	///
