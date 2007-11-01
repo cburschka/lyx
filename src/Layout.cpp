@@ -311,16 +311,16 @@ bool Layout::read(Lexer & lexrc, TextClass const & tclass)
 			break;
 
 		case LT_FONT:
-			font = lyxRead(lexrc);
+			font = lyxRead(lexrc, sane_font);
 			labelfont = font;
 			break;
 
 		case LT_TEXTFONT:
-			font = lyxRead(lexrc);
+			font = lyxRead(lexrc, sane_font);
 			break;
 
 		case LT_LABELFONT:
-			labelfont = lyxRead(lexrc);
+			labelfont = lyxRead(lexrc, sane_font);
 			break;
 
 		case LT_NEXTNOINDENT:	// Indent next paragraph?
