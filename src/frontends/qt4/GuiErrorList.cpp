@@ -49,8 +49,6 @@ GuiErrorList::GuiErrorList(LyXView & lv)
 
 	connect(closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
-	connect(errorsLW, SIGNAL(itemActivated(QListWidgetItem *)),
-		this, SLOT(slotClose()));
 	connect(errorsLW, SIGNAL(itemClicked(QListWidgetItem *)),
 		this, SLOT(select(QListWidgetItem *)));
 
