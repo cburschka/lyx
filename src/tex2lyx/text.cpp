@@ -2317,14 +2317,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					   opt1 + opt2 +
 					   '{' + p.verbatim_item() + '}';
 
-			if (opt2.empty()) {
-				context.check_layout(os);
-				begin_inset(os, "FormulaMacro");
-				os << "\n" << ert;
-				end_inset(os);
-			} else
-				// we cannot handle optional argument, so only output ERT
-				handle_ert(os, ert, context);
+			context.check_layout(os);
+			begin_inset(os, "FormulaMacro");
+			os << "\n" << ert;
+			end_inset(os);
 		}
 
 		else if (t.cs() == "vspace") {
