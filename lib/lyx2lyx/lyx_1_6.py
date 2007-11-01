@@ -689,6 +689,12 @@ def revert_lowersorbian(document):
         j = j + 1
 
 
+def revert_macro_optional_params(document):
+    "Convert macro definitions with optional parameters into ERTs"
+    # Stub to convert macro definitions with one or more optional parameters
+    # into uninterpreted ERT insets
+
+
 def revert_uppersorbian(document):
     "Set language uppersorbian to usorbian as this was used in LyX 1.5"
     # Set document language from uppersorbian to usorbian
@@ -750,10 +756,12 @@ convert = [[277, [fix_wrong_tables]],
            [294, [convert_pdf_options]],
            [295, [convert_htmlurl, convert_url]],
            [296, [convert_include]],
-           [297, [convert_usorbian]]
+           [297, [convert_usorbian]],
+           [298, []]
           ]
 
-revert =  [[296, [revert_albanian, revert_lowersorbian, revert_uppersorbian]],
+revert =  [[297, [revert_macro_optional_params]],
+           [296, [revert_albanian, revert_lowersorbian, revert_uppersorbian]],
            [295, [revert_include]],
            [294, [revert_href]],
            [293, [revert_pdf_options_2]],

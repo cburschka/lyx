@@ -156,7 +156,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 297; //Uwe: Albanian, lower Sorbian
+int const LYX_FORMAT = 298; //Schimmi: Optional parameters in macros
 
 } // namespace anon
 
