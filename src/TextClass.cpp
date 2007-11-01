@@ -366,7 +366,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			break;
 
 		case TC_DEFAULTFONT:
-			defaultfont_ = lyxRead(lexrc, sane_font);
+			defaultfont_ = lyxRead(lexrc);
 			if (!defaultfont_.resolved()) {
 				lexrc.printError("Warning: defaultfont should "
 						 "be fully instantiated!");
