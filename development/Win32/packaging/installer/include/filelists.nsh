@@ -134,6 +134,7 @@ Lists of files to include in the installer
   ${FILE}locale.py"
   ${FILE}ntpath.py"
   ${FILE}os.py"
+  ${FILE}optparse.py"
   ${FILE}pipes.py"
   ${FILE}posixpath.py"
   ${FILE}random.py"
@@ -149,6 +150,7 @@ Lists of files to include in the installer
   ${FILE}struct.py"  
   ${FILE}tempfile.py"
   ${FILE}tempfile.py"
+  ${FILE}textwrap.py"
   ${FILE}types.py"
   ${FILE}warnings.py"
 
