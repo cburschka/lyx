@@ -33,6 +33,7 @@ using std::ostream;
 using std::find;
 using std::replace;
 
+//FIXME: these should be lists of char_type and not char
 static char const * const chars_url[2] = {"%", "#"};
 
 static char const * const chars_name[6] = {
@@ -76,6 +77,7 @@ docstring const InsetHyperlink::getScreenLabel(Buffer const &) const
 int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		    OutputParams const & runparams) const
 {
+	//FIXME: all strings in this routine should be docstrings
 	string url = to_utf8(getParam("target"));
 
 	string backslash = "\\";
