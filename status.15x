@@ -31,6 +31,12 @@ What's new
 
 * USER INTERFACE
 
+- The pixmap cache that was introduced in LyX 1.5.2 to improve performance
+  can now be switched on and off in Preferences, since it might decrease
+  on-screen display quality of fonts (subpixel hinting). By default, the
+  cache is disabled. If you experience performance problems, turn in on
+  (Mac and Windows only).
+
 - The behaviour of Return and M-Return has changed: they now allow to either
   keep current paragraph and depth or to to nesting paragraph (bug 2445).
 

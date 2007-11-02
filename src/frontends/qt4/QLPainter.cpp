@@ -23,6 +23,7 @@
 #include "debug.h"
 #include "Language.h"
 #include "Color.h"
+#include "LyXRC.h"
 
 #include "support/unicode.h"
 
@@ -45,7 +46,6 @@ namespace frontend {
 
 namespace {
 
-bool const usePixmapCache = USE_PIXMAP_CACHE;
 
 QString generateStringSignature(QString const & str, Font const & f)
 {
@@ -61,7 +61,8 @@ QString generateStringSignature(QString const & str, Font const & f)
 } // anon namespace
 
 QLPainter::QLPainter(QPaintDevice * device)
-	: QPainter(device), Painter()
+	: QPainter(device), Painter(),
+	use_pixmap_cache_(lyxrc.use_pixmap_cache && USE_PIXMAP_CACHE)
 {
 	// new QPainter has default QPen:
 	current_color_ = Color::black;
@@ -306,7 +307,7 @@ int QLPainter::text(int x, int y, docstring const & s,
 		return textwidth;
 	}
 
-	if (!usePixmapCache) {
+	if (!use_pixmap_cache_) {
 		// don't use the pixmap cache,
 		// draw directly onto the painting device
 		setQPainterPen(f.realColor());

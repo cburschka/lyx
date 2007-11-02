@@ -164,6 +164,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\use_input_encoding", LyXRC::RC_USE_INP_ENC },
 	{ "\\use_lastfilepos", LyXRC::RC_USELASTFILEPOS },
 	{ "\\use_personal_dictionary", LyXRC::RC_USE_PERS_DICT },
+	{ "\\use_pixmap_cache", LyXRC::RC_USE_PIXMAP_CACHE },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\use_pspell", LyXRC::RC_USE_SPELL_LIB },
 	{ "\\use_spell_lib", LyXRC::RC_USE_SPELL_LIB },
@@ -278,6 +279,7 @@ void LyXRC::setDefaults() {
 	preview_hashed_labels  = false;
 	preview_scale_factor = "0.9";
 	use_converter_cache = true;
+	use_pixmap_cache = false;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
 
 	user_name = to_utf8(support::user_name());
@@ -891,6 +893,11 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_USE_PERS_DICT:
 			if (lexrc.next()) {
 				isp_use_pers_dict = lexrc.getBool();
+			}
+			break;
+		case RC_USE_PIXMAP_CACHE:
+			if (lexrc.next()) {
+				use_pixmap_cache = lexrc.getBool();
 			}
 			break;
 		case RC_USE_ESC_CHARS:
@@ -1869,6 +1876,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			   << convert<string>(isp_use_pers_dict)
 			   << '\n';
 		}
+	case RC_USE_PIXMAP_CACHE:
+		if (ignore_system_lyxrc ||
+		    use_pixmap_cache != system_lyxrc.use_pixmap_cache) {
+			os << "\\use_pixmap_cache "
+			   << convert<string>(use_pixmap_cache)
+			   << '\n';
+		}
 	case RC_PERS_DICT:
 		if (isp_pers_dict != system_lyxrc.isp_pers_dict) {
 			string const path = os::external_path(isp_pers_dict);
@@ -2264,6 +2278,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_PERS_DICT:
 	case RC_USE_PERS_DICT:
 		str = _("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
+		break;
+
+	case RC_USE_PIXMAP_CHACHE:
+		str = _("Enable the pixmap cache that might improve performance on Mac and Windows.");
 		break;
 
 	case RC_PREVIEW:

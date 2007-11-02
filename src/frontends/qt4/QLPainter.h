@@ -111,6 +111,8 @@ private:
 	Color::color current_color_;
 	Painter::line_style current_ls_;
 	Painter::line_width current_lw_;
+	///
+	bool const use_pixmap_cache_;
 };
 
 } // namespace frontend
