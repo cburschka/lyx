@@ -65,36 +65,28 @@ docstring const InsetHyperlink::getScreenLabel(Buffer const &) const
 }
 
 
-static void replaceAny(docstring & s, docstring const & items,
-		docstring const & replacement)
-{
-	if (s.empty())
-		return;
-
-	size_t i = 0;
-	while (i < s.size()) {
-		if ((i = s.find_first_of(items, i)) == string::npos)
-			break;
-		s.insert(i, replacement);
-		i += 2;
-	}
-}
-
-
 int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		    OutputParams const & runparams) const
 {
 	docstring url = getParam("target");
 	static docstring const backslash = from_ascii("\\");
 	static docstring const braces = from_ascii("{}");
+	static char_type const chars_url[2] = {'%', '#'};
 	static char_type const chars_name[6] = {
 		'&', '_', '$', '%', '#', '^'};
 
 	// The characters in chars_url[] need to be changed to a command when
 	// they are in the url field.
-	// the chars_url[] characters must be handled for both, url and href
-	static docstring const chars_url = from_ascii("%#");
-	replaceAny(url, chars_url, backslash);
+	if (!url.empty()) {
+		// the chars_url[] characters must be handled for both, url and href
+		for (int k = 0;	k < 2; k++) {
+			for (size_t i = 0, pos;
+				(pos = url.find(chars_url[k], i)) != string::npos;
+				i = pos + 2) {
+				url.replace(pos, 1, backslash + chars_url[k]);
+			}
+		}
+	} // end if (!url.empty())
 
 	docstring name = getParam("name");
 
