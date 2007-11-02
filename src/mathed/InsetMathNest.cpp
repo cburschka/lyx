@@ -1068,8 +1068,11 @@ bool InsetMathNest::findMacroToFoldUnfold(Cursor & it, bool fold) const {
 				if (macro->folded() != fold)
 					return true;
 				
-				// wrong folding state -> go up one level
-				break;
+				// Wrong folding state.
+				// If this was the first we see in this slice, look further left,
+				// otherwise go up.
+				if (inset != it.nextInset())
+					break;
 			}
 			
 			// go up if this was the left most position
