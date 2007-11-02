@@ -25,9 +25,6 @@
 #include <algorithm>
 
 using std::distance;
-using std::endl;
-using std::string;
-using std::ostream;
 
 namespace lyx {
 
