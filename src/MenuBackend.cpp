@@ -137,7 +137,7 @@ docstring const MenuItem::binding(bool forgui) const
 
 	// Get the keys bound to this action, but keep only the
 	// first one later
-	KeyMap::Bindings bindings = theTopLevelKeymap().findbindings(func_);
+	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func_);
 
 	if (bindings.size()) {
 		return bindings.begin()->print(KeySequence::ForGui);

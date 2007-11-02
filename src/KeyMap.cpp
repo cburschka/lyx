@@ -429,9 +429,9 @@ void KeyMap::unbind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 }
 
 
-docstring const KeyMap::printbindings(FuncRequest const & func) const
+docstring KeyMap::printBindings(FuncRequest const & func) const
 {
-	Bindings bindings = findbindings(func);
+	Bindings bindings = findBindings(func);
 	if (bindings.empty())
 		return docstring();
 	
@@ -447,26 +447,25 @@ docstring const KeyMap::printbindings(FuncRequest const & func) const
 }
 
 
-KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func) const
+KeyMap::Bindings KeyMap::findBindings(FuncRequest const & func) const
 {
-	return findbindings(func, KeySequence(0, 0));
+	return findBindings(func, KeySequence(0, 0));
 }
 
 
-KeyMap::Bindings KeyMap::findbindings(FuncRequest const & func,
+KeyMap::Bindings KeyMap::findBindings(FuncRequest const & func,
 			KeySequence const & prefix) const
 {
 	Bindings res;
-	if (table.empty()) return res;
+	if (table.empty())
+		return res;
 
 	Table::const_iterator end = table.end();
-	for (Table::const_iterator cit = table.begin();
-	    cit != end; ++cit) {
+	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
 		if (cit->table.get()) {
 			KeySequence seq = prefix;
 			seq.addkey(cit->code, cit->mod.first);
-			Bindings res2 =
-				cit->table->findbindings(func, seq);
+			Bindings res2 = cit->table->findBindings(func, seq);
 			res.insert(res.end(), res2.begin(), res2.end());
 		} else if (cit->func == func) {
 			KeySequence seq = prefix;

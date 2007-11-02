@@ -182,7 +182,7 @@ void InsetInfo::updateInfo()
 	case SHORTCUT_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		if (func.action != LFUN_UNKNOWN_ACTION)
-			setText(theTopLevelKeymap().printbindings(func),
+			setText(theTopLevelKeymap().printBindings(func),
 				bp_.getFont(), false);
 		break;
 	}

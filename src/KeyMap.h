@@ -22,7 +22,6 @@
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
-#include <deque>
 
 
 namespace lyx {
@@ -91,13 +90,13 @@ public:
 	lookup(KeySymbol const & key, KeyModifier mod, KeySequence * seq) const;
 
 	///
-	typedef std::deque<KeySequence> Bindings;
+	typedef std::vector<KeySequence> Bindings;
 
 	/// Given an action, find all keybindings.
-	Bindings findbindings(FuncRequest const & func) const;
+	Bindings findBindings(FuncRequest const & func) const;
 
 	/// Given an action, print the keybindings.
-	docstring const printbindings(FuncRequest const & func) const;
+	docstring printBindings(FuncRequest const & func) const;
 
 	struct Binding {
 		Binding(FuncRequest const & r, KeySequence const & s, int t)
@@ -139,13 +138,10 @@ private:
 	struct Key {
 		/// Keysym
 		KeySymbol code;
-
 		/// Modifier masks
 		ModifierPair mod;
-
 		/// Keymap for prefix keys
 		boost::shared_ptr<KeyMap> table;
-
 		/// Action for !prefix keys
 		FuncRequest func;
 	};
@@ -155,7 +151,7 @@ private:
 	 * @param func the action
 	 * @param prefix a sequence to prepend the results
 	 */
-	Bindings findbindings(FuncRequest const & func,
+	Bindings findBindings(FuncRequest const & func,
 			      KeySequence const & prefix) const;
 	
 	void listBindings(BindingList & list, KeySequence const & prefix,
