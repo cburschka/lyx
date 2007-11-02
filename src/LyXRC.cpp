@@ -2280,7 +2280,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
 		break;
 
-	case RC_USE_PIXMAP_CHACHE:
+	case RC_USE_PIXMAP_CACHE:
 		str = _("Enable the pixmap cache that might improve performance on Mac and Windows.");
 		break;
 
