@@ -43,6 +43,8 @@
 #include <QAction>
 #include <QPixmap>
 
+#include <boost/assert.hpp>
+
 
 static void initializeResources()
 {

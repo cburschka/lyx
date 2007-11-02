@@ -420,9 +420,11 @@ BufferView::~BufferView()
 	// currently can only handle bottom (whole document) level pit and pos.
 	// That is to say, if a cursor is in a nested inset, it will be
 	// restore to the left of the top level inset.
+	LastFilePosSection::FilePos fp;
+	fp.pit = d->cursor_.bottom().pit();
+	fp.pos = d->cursor_.bottom().pos();
 	LyX::ref().session().lastFilePos().save(
-		support::FileName(buffer_.absFileName()),
-		boost::tie(d->cursor_.bottom().pit(), d->cursor_.bottom().pos()) );
+		support::FileName(buffer_.absFileName()), fp);
 
 	delete d;
 }

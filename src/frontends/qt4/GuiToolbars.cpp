@@ -122,28 +122,32 @@ void GuiToolbars::init()
 		initFlags(*cit);
 
 	// add toolbars according the order in session
-	ToolbarSection::ToolbarList::const_iterator tb = LyX::ref().session().toolbars().begin();
-	ToolbarSection::ToolbarList::const_iterator te = LyX::ref().session().toolbars().end();
-	ToolbarSection::ToolbarInfo::Location last_loc = ToolbarSection::ToolbarInfo::NOTSET;
+	ToolbarSection::ToolbarList::const_iterator tb =
+		LyX::ref().session().toolbars().begin();
+	ToolbarSection::ToolbarList::const_iterator te =
+		LyX::ref().session().toolbars().end();
+	ToolbarSection::ToolbarInfo::Location last_loc =
+		ToolbarSection::ToolbarInfo::NOTSET;
 	int last_posx = 0;
 	int last_posy = 0;
 	for (; tb != te; ++tb) {
-		LYXERR(Debug::INIT) << "Adding " << tb->get<0>() << " at position " << tb->get<1>().posx << " " << tb->get<1>().posy << endl;
+		LYXERR(Debug::INIT) << "Adding " << tb->key << " at position "
+			<< tb->info.posx << " " << tb->info.posy << endl;
 		// add toolbar break if posx or posy changes
-		bool newline = tb->get<1>().location == last_loc && (
+		bool newline = tb->info.location == last_loc && (
 			// if two toolbars at the same location, assume uninitialized and add toolbar break
-			(tb->get<1>().posx == last_posx && tb->get<1>().posy == last_posy) ||
-			(last_loc == ToolbarSection::ToolbarInfo::TOP && tb->get<1>().posy != last_posy) ||
-			(last_loc == ToolbarSection::ToolbarInfo::BOTTOM && tb->get<1>().posy != last_posy) ||
-			(last_loc == ToolbarSection::ToolbarInfo::LEFT && tb->get<1>().posx != last_posx) ||
-			(last_loc == ToolbarSection::ToolbarInfo::RIGHT && tb->get<1>().posx != last_posx) );
+			(tb->info.posx == last_posx && tb->info.posy == last_posy) ||
+			(last_loc == ToolbarSection::ToolbarInfo::TOP && tb->info.posy != last_posy) ||
+			(last_loc == ToolbarSection::ToolbarInfo::BOTTOM && tb->info.posy != last_posy) ||
+			(last_loc == ToolbarSection::ToolbarInfo::LEFT && tb->info.posx != last_posx) ||
+			(last_loc == ToolbarSection::ToolbarInfo::RIGHT && tb->info.posx != last_posx) );
 		// find the backend item and add
 		for (cit = toolbarbackend.begin(); cit != end; ++cit)
-			if (cit->name == tb->get<0>()) {
+			if (cit->name == tb->key) {
 				add(*cit, newline);
-				last_loc = tb->get<1>().location;
-				last_posx = tb->get<1>().posx;
-				last_posy = tb->get<1>().posy;
+				last_loc = tb->info.location;
+				last_posx = tb->info.posx;
+				last_posy = tb->info.posy;
 				break;
 			}
 	}

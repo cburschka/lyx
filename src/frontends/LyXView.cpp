@@ -142,12 +142,11 @@ Buffer * LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 
 	// scroll to the position when the file was last closed
 	if (lyxrc.use_lastfilepos) {
-		pit_type pit;
-		pos_type pos;
-		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
+		LastFilePosSection::FilePos filepos =
+			LyX::ref().session().lastFilePos().load(filename);
 		// if successfully move to pit (returned par_id is not zero),
 		// update metrics and reset font
-		wa->bufferView().moveToPosition(pit, pos, 0, 0);
+		wa->bufferView().moveToPosition(filepos.pit, filepos.pos, 0, 0);
 	}
 
 	if (tolastfiles)

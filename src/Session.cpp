@@ -170,13 +170,12 @@ void LastFilePosSection::read(istream & is)
 		try {
 			// read lastfilepos
 			// pos, file\n
-			pit_type pit;
-			pos_type pos;
+			FilePos filepos;
 			string fname;
 			istringstream itmp(tmp);
-			itmp >> pit;
+			itmp >> filepos.pit;
 			itmp.ignore(2);  // ignore ", "
-			itmp >> pos;
+			itmp >> filepos.pos;
 			itmp.ignore(2);  // ignore ", "
 			getline(itmp, fname);
 			if (!absolutePath(fname))
@@ -184,7 +183,7 @@ void LastFilePosSection::read(istream & is)
 			FileName const file(fname);
 			if (file.exists() && !file.isDirectory()
 			    && lastfilepos.size() < num_lastfilepos)
-				lastfilepos[file] = boost::tie(pit, pos);
+				lastfilepos[file] = filepos;
 			else
 				LYXERR(Debug::INIT) << "LyX: Warning: Ignore pos of last file: " << fname << endl;
 		} catch (...) {
@@ -199,14 +198,13 @@ void LastFilePosSection::write(ostream & os) const
 	os << '\n' << sec_lastfilepos << '\n';
 	for (FilePosMap::const_iterator file = lastfilepos.begin();
 		file != lastfilepos.end(); ++file) {
-		os << file->second.get<0>() << ", "
-		    << file->second.get<1>() << ", "
-		    << file->first << '\n';
+		os << file->second.pit << ", " << file->second.pos << ", "
+		   << file->first << '\n';
 	}
 }
 
 
-void LastFilePosSection::save(FileName const & fname, FilePos pos)
+void LastFilePosSection::save(FileName const & fname, FilePos const & pos)
 {
 	lastfilepos[fname] = pos;
 }
@@ -219,8 +217,7 @@ LastFilePosSection::FilePos LastFilePosSection::load(FileName const & fname) con
 	if (entry != lastfilepos.end())
 		return entry->second;
 	// Not found, return the first paragraph
-	else
-		return 0;
+	return FilePos();
 }
 
 
@@ -286,7 +283,8 @@ void BookmarksSection::write(ostream & os) const
 }
 
 
-void BookmarksSection::save(FileName const & fname, pit_type bottom_pit, pos_type bottom_pos,
+void BookmarksSection::save(FileName const & fname,
+	pit_type bottom_pit, pos_type bottom_pos,
 	int top_id, pos_type top_pos, unsigned int idx)
 {
 	// silently ignore bookmarks when idx is out of range
@@ -321,20 +319,21 @@ void ToolbarSection::read(istream & is)
 		try {
 			// Read session info, saved as key/value pairs
 			// would better yell if pos returns npos
-			string::size_type pos = tmp.find_first_of(" = ");
+			size_t pos = tmp.find_first_of(" = ");
 			// silently ignore lines without " = "
 			if (pos != string::npos) {
-				string key = tmp.substr(0, pos);
+				ToolbarItem item;
+				item.key = tmp.substr(0, pos);
 				int state;
 				int location;
-				int posx;
-				int posy;
 				istringstream value(tmp.substr(pos + 3));
 				value >> state;
 				value >> location;
-				value >> posx;
-				value >> posy;
-				toolbars.push_back(boost::make_tuple(key, ToolbarInfo(state, location, posx, posy)));
+				value >> item.info.posx;
+				value >> item.info.posy;
+				item.info.state = ToolbarInfo::State(state);
+				item.info.location = ToolbarInfo::Location(location);
+				toolbars.push_back(item);
 			} else
 				LYXERR(Debug::INIT) << "LyX: Warning: Ignore toolbar info: " << tmp << endl;
 		} catch (...) {
@@ -351,11 +350,11 @@ void ToolbarSection::write(ostream & os) const
 	os << '\n' << sec_toolbars << '\n';
 	for (ToolbarList::const_iterator tb = toolbars.begin();
 		tb != toolbars.end(); ++tb) {
-		os << tb->get<0>() << " = "
-		  << static_cast<int>(tb->get<1>().state) << " "
-		  << static_cast<int>(tb->get<1>().location) << " "
-		  << tb->get<1>().posx << " "
-		  << tb->get<1>().posy << '\n';
+		os << tb->key << " = "
+		  << static_cast<int>(tb->info.state) << " "
+		  << static_cast<int>(tb->info.location) << " "
+		  << tb->info.posx << " "
+		  << tb->info.posy << '\n';
 	}
 }
 
@@ -364,18 +363,21 @@ ToolbarSection::ToolbarInfo & ToolbarSection::load(string const & name)
 {
 	for (ToolbarList::iterator tb = toolbars.begin();
 		tb != toolbars.end(); ++tb)
-		if (tb->get<0>() == name)
-			return tb->get<1>();
+		if (tb->key == name)
+			return tb->info;
+
 	// add a new item
-	toolbars.push_back(boost::make_tuple(name, ToolbarSection::ToolbarInfo()));
-	return toolbars.back().get<1>();
+	ToolbarItem item;
+	item.key = name;
+	toolbars.push_back(item);
+	return toolbars.back().info;
 }
 
 
 bool operator<(ToolbarSection::ToolbarItem const & a, ToolbarSection::ToolbarItem const & b)
 {
-	ToolbarSection::ToolbarInfo lhs = a.get<1>();
-	ToolbarSection::ToolbarInfo rhs = b.get<1>();
+	ToolbarSection::ToolbarInfo lhs = a.info;
+	ToolbarSection::ToolbarInfo rhs = b.info;
 	// on if before off
 	if (lhs.state != rhs.state)
 		return static_cast<int>(lhs.state) < static_cast<int>(rhs.state);
@@ -389,8 +391,7 @@ bool operator<(ToolbarSection::ToolbarItem const & a, ToolbarSection::ToolbarIte
 	else if (lhs.location == ToolbarSection::ToolbarInfo::LEFT ||
 		lhs.location == ToolbarSection::ToolbarInfo::RIGHT)
 		return lhs.posx < rhs.posx || (lhs.posx == rhs.posx && lhs.posy < rhs.posy);
-	else
-		return true;
+	return true;
 }
 
 
