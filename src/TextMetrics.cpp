@@ -24,6 +24,7 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "CoordCache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "FontIterator.h"
@@ -157,17 +158,15 @@ pair<pit_type, ParagraphMetrics const *> TextMetrics::last() const
 }
 
 
-ParagraphMetrics & TextMetrics::parMetrics(pit_type pit,
-		bool redo)
+ParagraphMetrics & TextMetrics::parMetrics(pit_type pit, bool redo)
 {
 	ParMetricsCache::iterator pmc_it = par_metrics_.find(pit);
 	if (pmc_it == par_metrics_.end()) {
 		pmc_it = par_metrics_.insert(
 			make_pair(pit, ParagraphMetrics(text_->getPar(pit)))).first;
 	}
-	if (pmc_it->second.rows().empty() && redo) {
+	if (pmc_it->second.rows().empty() && redo)
 		redoParagraph(pit);
-	}
 	return pmc_it->second;
 }
 
@@ -176,7 +175,7 @@ int TextMetrics::parPosition(pit_type pit) const
 {
 	if (pit < par_metrics_.begin()->first)
 		return -1000000;
-	else if (pit > par_metrics_.rbegin()->first)
+	if (pit > par_metrics_.rbegin()->first)
 		return +1000000;
 
 	return par_metrics_[pit].position();
@@ -461,8 +460,8 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			// for the computeRowMetrics() below.
 			dim_.wid = max_width_;
 
+		dim = rowHeight(pit, first, end);
 		dim.wid = rowWidth(right_margin, pit, first, end);
-		boost::tie(dim.asc, dim.des) = rowHeight(pit, first, end);
 		if (row_index == pm.rows().size())
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
@@ -490,9 +489,8 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// Make sure that if a par ends in newline, there is one more row
 	// under it
 	if (first > 0 && par.isNewline(first - 1)) {
-		Dimension dim;
+		Dimension dim = rowHeight(pit, first, first);
 		dim.wid = rowWidth(right_margin, pit, first, first);
-		boost::tie(dim.asc, dim.des) = rowHeight(pit, first, first);
 		if (row_index == pm.rows().size())
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
@@ -582,21 +580,19 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		// The test on par.size() is to catch zero-size pars, which
 		// would trigger the assert in Paragraph::getInset().
 		//inset = par.size() ? par.getInset(row.pos()) : 0;
-		if (row.pos() < par.size()
-		    && par.isInset(row.pos()))
-		{
-		    switch(par.getInset(row.pos())->display()) {
-			case Inset::AlignLeft:
-				align = LYX_ALIGN_BLOCK;
-				break;
-			case Inset::AlignCenter:
-				align = LYX_ALIGN_CENTER;
-				break;
-                        case Inset::Inline:
-                        case Inset::AlignRight:
-                                // unchanged (use align)
-                                break;
-                    }
+		if (row.pos() < par.size() && par.isInset(row.pos())) {
+			switch(par.getInset(row.pos())->display()) {
+				case Inset::AlignLeft:
+					align = LYX_ALIGN_BLOCK;
+					break;
+				case Inset::AlignCenter:
+					align = LYX_ALIGN_CENTER;
+					break;
+				case Inset::Inline:
+				case Inset::AlignRight:
+					// unchanged (use align)
+					break;
+			}
 		}
 
 		switch (align) {
@@ -679,10 +675,8 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 }
 
 
-namespace {
-
 // this needs special handling - only newlines count as a break point
-pos_type addressBreakPoint(pos_type i, Paragraph const & par)
+static pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
 	pos_type const end = par.size();
 
@@ -692,8 +686,6 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 
 	return end;
 }
-
-};
 
 
 int TextMetrics::labelEnd(pit_type const pit) const
@@ -765,7 +757,6 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 					point = i;
 				else
 					point = i + 1;
-
 			}
 			// exit on last registered breakpoint:
 			break;
@@ -853,7 +844,7 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 }
 
 
-boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const first,
+Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		pos_type const end) const
 {
 	Paragraph const & par = text_->getPar(pit);
@@ -1040,7 +1031,7 @@ boost::tuple<int, int> TextMetrics::rowHeight(pit_type const pit, pos_type const
 			maxdesc += 20;
 	}
 
-	return boost::make_tuple(maxasc + labeladdon, maxdesc);
+	return Dimension(0, maxasc + labeladdon, maxdesc);
 }
 
 

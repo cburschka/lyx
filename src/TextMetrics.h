@@ -15,13 +15,9 @@
 #define TEXT_METRICS_H
 
 #include "Font.h"
-// FIXME: We only need Point class definition, not the full CoordCache.
-#include "CoordCache.h"
 #include "ParagraphMetrics.h"
 
 #include "support/types.h"
-
-#include <boost/tuple/tuple.hpp>
 
 namespace lyx {
 
@@ -161,8 +157,8 @@ private:
 		pos_type const end
 		) const;
 
-	/// Calculate and set the height of the row
-	boost::tuple<int, int> rowHeight(
+	/// Calculate and set the height of the row (width member is set to 0)
+	Dimension rowHeight(
 		pit_type const pit,
 		pos_type const first,
 		pos_type const end
