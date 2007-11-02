@@ -1625,6 +1625,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
+	connect(pixmapCacheCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
 	lastfilesSB->setMaximum(maxlastfiles);
 }
 
@@ -1646,6 +1648,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.autosave = autoSaveSB->value() * 60;
 	rc.make_backup = autoSaveCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
+	rc.use_pixmap_cache = pixmapCacheCB->isChecked();
 }
 
 
@@ -1669,6 +1672,10 @@ void PrefUserInterface::update(LyXRC const & rc)
 	autoSaveSB->setValue(mins);
 	autoSaveCB->setChecked(rc.make_backup);
 	lastfilesSB->setValue(rc.num_lastfiles);
+	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
+#if (QT_VERSION < 0x040200) || defined(Q_WS_X11)
+	pixmapCacheGB->setEnabled(false);
+#endif
 }
 
 

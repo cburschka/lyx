@@ -117,6 +117,8 @@ private:
 	Painter::line_style current_ls_;
 	Painter::line_width current_lw_;
 	///
+	bool const use_pixmap_cache_;
+	///
 	std::stack<QColor> monochrome_min_;
 	///
 	std::stack<QColor> monochrome_max_;

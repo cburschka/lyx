@@ -22,6 +22,7 @@
 
 #include "debug.h"
 #include "Language.h"
+#include "LyXRC.h"
 
 #include "support/unicode.h"
 
@@ -44,12 +45,12 @@ namespace frontend {
 
 namespace {
 
-bool const usePixmapCache = USE_PIXMAP_CACHE;
 
 } // anon namespace
 
 GuiPainter::GuiPainter(QPaintDevice * device)
-	: QPainter(device), Painter()
+	: QPainter(device), Painter(),
+	  use_pixmap_cache_(lyxrc.use_pixmap_cache && USE_PIXMAP_CACHE)
 {
 	// new QPainter has default QPen:
 	current_color_ = guiApp->colorCache().get(Color_black);
@@ -359,7 +360,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		return textwidth;
 	}
 
-	if (!usePixmapCache) {
+	if (!use_pixmap_cache_) {
 		// don't use the pixmap cache,
 		// draw directly onto the painting device
 		setQPainterPen(computeColor(f.realColor()));

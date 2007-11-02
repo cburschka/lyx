@@ -138,6 +138,7 @@ public:
 		RC_USE_ESC_CHARS,
 		RC_USE_INP_ENC,
 		RC_USE_PERS_DICT,
+		RC_USE_PIXMAP_CACHE,
 		RC_USE_SPELL_LIB,
 		RC_VIEWDVI_PAPEROPTION,
 		RC_VIEWER,
@@ -291,6 +292,8 @@ public:
 	bool isp_use_alt_lang;
 	/// Use personal dictionary?
 	bool isp_use_pers_dict;
+	/// Use pixmap cache?
+	bool use_pixmap_cache;
 	/// Use escape chars?
 	bool isp_use_esc_chars;
 	/// Alternate language for ispell
