@@ -31,7 +31,6 @@ using std::endl;
 using std::ios;
 using std::ofstream;
 using std::string;
-using boost::make_tuple;
 
 
 namespace lyx {
@@ -270,11 +269,11 @@ void KeyMap::write(string const & bind_file, bool append, bool unbind) const
 	BindingList::const_iterator it = list.begin();
 	BindingList::const_iterator it_end = list.end();
 	for (; it != it_end; ++it) {
-		kb_action action = it->get<0>().action;
-		string arg = to_utf8(it->get<0>().argument());
+		kb_action action = it->request.action;
+		string arg = to_utf8(it->request.argument());
 
 		os << tag << " \""
-				<< to_utf8(it->get<1>().print(KeySequence::BindFile))
+				<< to_utf8(it->sequence.print(KeySequence::BindFile))
 				<< "\" \""
 				<< lyxaction.getActionName(action)
 				<< (arg.empty() ? "" : " ") << arg
@@ -493,12 +492,12 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, int tag) const
 			BindingList::const_iterator it = list.begin();
 			BindingList::const_iterator it_end = list.end();
 			for (; it != it_end; ++it)
-				if (it->get<0>().action == action) {
+				if (it->request.action == action) {
 					has_action = true;
 					break;
 				}
 			if (!has_action)
-				list.push_back(make_tuple(action, KeySequence(0, 0), tag));
+				list.push_back(Binding(FuncRequest(action), KeySequence(0, 0), tag));
 		}	
 	}
 	return list;
@@ -519,7 +518,7 @@ void KeyMap::listBindings(BindingList & list,
 		} else {
 			KeySequence seq = prefix;
 			seq.addkey(it->code, it->mod.first);
-			list.push_back(make_tuple(it->func, seq, tag));
+			list.push_back(Binding(it->func, seq, tag));
 		}
 	}
 }

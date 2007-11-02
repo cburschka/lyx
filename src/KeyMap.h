@@ -15,22 +15,17 @@
 #define KEYMAP_H
 
 #include "FuncRequest.h"
-
-#include "frontends/KeyModifier.h"
-#include "frontends/KeySymbol.h"
+#include "KeySequence.h"
 
 #include "support/strfwd.h"
 
 #include <boost/shared_ptr.hpp>
-#include <boost/tuple/tuple.hpp>
 
 #include <vector>
 #include <deque>
 
 
 namespace lyx {
-
-class KeySequence;
 
 /// Defines key maps and actions for key sequences
 class KeyMap {
@@ -104,7 +99,13 @@ public:
 	/// Given an action, print the keybindings.
 	docstring const printbindings(FuncRequest const & func) const;
 
-	typedef boost::tuple<FuncRequest, KeySequence, int> Binding; 
+	struct Binding {
+		Binding(FuncRequest const & r, KeySequence const & s, int t)
+			: request(r), sequence(s), tag(t) {}
+		FuncRequest request;
+		KeySequence sequence;
+		int tag;
+	}; 
 	typedef std::vector<Binding> BindingList;
 	/**
 	 * Return all lfun and their associated bindings.

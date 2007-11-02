@@ -61,6 +61,8 @@
 #include <QValidator>
 #include <QCloseEvent>
 
+#include <boost/tuple/tuple.hpp>
+
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
@@ -1831,8 +1833,7 @@ void PrefShortcuts::updateShortcutsTW()
 	KeyMap::BindingList::const_iterator it = bindinglist.begin();
 	KeyMap::BindingList::const_iterator it_end = bindinglist.end();
 	for (; it != it_end; ++it)
-		insertShortcutItem(it->get<0>(), it->get<1>(), 
-			static_cast<item_type>(it->get<2>()));
+		insertShortcutItem(it->request, it->sequence, item_type(it->tag));
 
 	shortcutsTW->sortItems(0, Qt::AscendingOrder);
 	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
@@ -1920,7 +1921,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	newItem->setText(0, lfun_name);
 	newItem->setText(1, shortcut);
 	// record BindFile representation to recover KeySequence when needed.
-	newItem->setData(1, Qt::UserRole, QVariant(toqstr(seq.print(KeySequence::BindFile))));
+	newItem->setData(1, Qt::UserRole, toqstr(seq.print(KeySequence::BindFile)));
 	setItemType(newItem, item_tag);
 	return newItem;
 }
