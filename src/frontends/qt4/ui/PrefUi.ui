@@ -10,7 +10,9 @@
    </rect>
   </property>
   <property name="sizePolicy" >
-   <sizepolicy vsizetype="Minimum" hsizetype="Minimum" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -19,6 +21,12 @@
    <string/>
   </property>
   <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
    <item row="0" column="0" >
     <widget class="QLabel" name="uiFileLA" >
      <property name="text" >
@@ -42,7 +50,9 @@
    <item row="1" column="0" colspan="3" >
     <widget class="QGroupBox" name="GeometryGB" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -54,22 +64,10 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
-      <property name="leftMargin" >
+      <property name="margin" >
        <number>9</number>
       </property>
-      <property name="topMargin" >
-       <number>9</number>
-      </property>
-      <property name="rightMargin" >
-       <number>9</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>9</number>
-      </property>
-      <property name="horizontalSpacing" >
-       <number>6</number>
-      </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>6</number>
       </property>
       <item row="0" column="0" colspan="2" >
@@ -124,20 +122,11 @@
       </item>
       <item row="1" column="0" >
        <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
         <property name="spacing" >
          <number>6</number>
-        </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>0</number>
         </property>
         <item>
          <spacer>
@@ -170,11 +159,11 @@
           <property name="enabled" >
            <bool>false</bool>
           </property>
-          <property name="minimum" >
-           <number>200</number>
-          </property>
           <property name="maximum" >
            <number>9999</number>
+          </property>
+          <property name="minimum" >
+           <number>200</number>
           </property>
           <property name="singleStep" >
            <number>10</number>
@@ -196,11 +185,11 @@
           <property name="enabled" >
            <bool>false</bool>
           </property>
-          <property name="minimum" >
-           <number>200</number>
-          </property>
           <property name="maximum" >
            <number>9999</number>
+          </property>
+          <property name="minimum" >
+           <number>200</number>
           </property>
           <property name="singleStep" >
            <number>10</number>
@@ -237,31 +226,19 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
-      <property name="leftMargin" >
+      <property name="margin" >
        <number>9</number>
       </property>
-      <property name="topMargin" >
-       <number>9</number>
-      </property>
-      <property name="rightMargin" >
-       <number>9</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>9</number>
-      </property>
-      <property name="horizontalSpacing" >
-       <number>6</number>
-      </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>6</number>
       </property>
       <item row="0" column="1" >
        <widget class="QSpinBox" name="autoSaveSB" >
-        <property name="minimum" >
-         <number>1</number>
-        </property>
         <property name="maximum" >
          <number>300</number>
+        </property>
+        <property name="minimum" >
+         <number>1</number>
         </property>
        </widget>
       </item>
@@ -294,20 +271,11 @@
       </item>
       <item row="1" column="0" colspan="4" >
        <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
         <property name="spacing" >
          <number>6</number>
-        </property>
-        <property name="leftMargin" >
-         <number>0</number>
-        </property>
-        <property name="topMargin" >
-         <number>0</number>
-        </property>
-        <property name="rightMargin" >
-         <number>0</number>
-        </property>
-        <property name="bottomMargin" >
-         <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="lastfilesLA" >
@@ -356,22 +324,10 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
-      <property name="leftMargin" >
+      <property name="margin" >
        <number>9</number>
       </property>
-      <property name="topMargin" >
-       <number>9</number>
-      </property>
-      <property name="rightMargin" >
-       <number>9</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>9</number>
-      </property>
-      <property name="horizontalSpacing" >
-       <number>6</number>
-      </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>6</number>
       </property>
       <item row="0" column="0" >
@@ -396,22 +352,10 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" >
-      <property name="leftMargin" >
+      <property name="margin" >
        <number>9</number>
       </property>
-      <property name="topMargin" >
-       <number>9</number>
-      </property>
-      <property name="rightMargin" >
-       <number>9</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>9</number>
-      </property>
-      <property name="horizontalSpacing" >
-       <number>6</number>
-      </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>6</number>
       </property>
       <item row="0" column="0" >
