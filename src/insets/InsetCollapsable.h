@@ -38,10 +38,6 @@ namespace frontend { class Painter; }
 class InsetCollapsable : public InsetText {
 public:
 	///
-	static int const TEXT_TO_TOP_OFFSET = 2;
-	///
-	static int const TEXT_TO_BOTTOM_OFFSET = 2;
-	///
 	InsetCollapsable(BufferParams const &, CollapseStatus status = Inset::Open);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
