@@ -84,6 +84,12 @@ InsetCollapsable::InsetCollapsable
 	setButtonLabel();
 	// Fallback for lacking inset layout item
 	layout_.bgcolor = Color_background;
+
+	// FIXME: it seems some insets don't properly initialise that!
+	layout_.labelfont = sane_font;
+	layout_.labelfont.decSize();
+	layout_.labelfont.decSize();
+	layout_.labelfont.setColor(Color_collapsable);
 }
 
 
@@ -227,7 +233,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 				dim.des = max(dim.des - textdim.asc + dim.asc, textdim.des);
 				dim.asc = textdim.asc;
 			} else {
-				dim.des += textdim.height() + TEXT_TO_BOTTOM_OFFSET;
+				dim.des += textdim.height() + TEXT_TO_INSET_OFFSET;
 				dim.wid = max(dim.wid, textdim.wid);
 			}
 		}
@@ -763,6 +769,13 @@ void InsetCollapsable::setLabelFont(FontInfo const & font)
 {
 	layout_.labelfont = font;
 }
+
+
+void InsetCollapsable::setLabelColor(ColorCode code)
+{
+	layout_.labelfont.setColor(code);
+}
+
 
 docstring InsetCollapsable::floatName(string const & type, BufferParams const & bp) const
 {
