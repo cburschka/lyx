@@ -1161,10 +1161,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_THEOREM_INSERT:
 #endif
 	case LFUN_CAPTION_INSERT:
+	case LFUN_FOOTNOTE_INSERT:
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
+		// These insets are numbered.
 		updateLabels(bv->buffer());
 		break;
 	case LFUN_NOTE_INSERT:
@@ -1174,7 +1176,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BIBITEM_INSERT:
 	case LFUN_ERT_INSERT:
 	case LFUN_LISTING_INSERT:
-	case LFUN_FOOTNOTE_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_OPTIONAL_INSERT:
 	case LFUN_ENVIRONMENT_INSERT:
