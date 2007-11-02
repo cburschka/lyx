@@ -2,14 +2,6 @@
 
 #include <config.h>
 
-#include <boost/array.hpp>
-#include <boost/assert.hpp>
-#include <boost/function.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <boost/noncopyable.hpp>
-
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
