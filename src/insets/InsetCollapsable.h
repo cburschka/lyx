@@ -72,10 +72,6 @@ public:
 	///
 	virtual void setButtonLabel() {}
 	///
-	void setLabelFont(FontInfo const & f);
-	///
-	void setLabelColor(ColorCode code);
-	///
 	bool isOpen() const { return geometry() != ButtonOnly; }
 	///
 	CollapseStatus status() const;
@@ -159,8 +155,6 @@ protected:
 	docstring floatName(std::string const & type, BufferParams const &) const;
 	///
 	virtual void resetParagraphsFont();
-	///
-	virtual void getDrawFont(FontInfo &) const;
 
 protected:
 	///

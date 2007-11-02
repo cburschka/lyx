@@ -155,8 +155,6 @@ void InsetBox::setButtonLabel()
 	label += ")";
 
 	setLabel(label);
-
-	setLabelColor(Color_foreground);
 }
 
 

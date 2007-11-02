@@ -177,6 +177,10 @@ InsetLayout Index
 End
 
 InsetLayout Box
+	LabelFont
+	  Color               foreground
+	  Size                Small
+	EndFont
 	MultiPar              true
 End
 

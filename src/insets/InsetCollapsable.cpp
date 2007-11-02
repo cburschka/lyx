@@ -191,7 +191,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
 
 	FontInfo tmpfont = mi.base.font;
-	getDrawFont(mi.base.font);
+	mi.base.font = layout_.font;
 	mi.base.font.realize(tmpfont);
 
 	switch (geometry()) {
@@ -258,7 +258,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	pi.background_color = backgroundColor();
 
 	FontInfo tmpfont = pi.base.font;
-	getDrawFont(pi.base.font);
+	pi.base.font = layout_.font;
 	pi.base.font.realize(tmpfont);
 
 	// Draw button first -- top, left or only
@@ -620,12 +620,6 @@ void InsetCollapsable::resetParagraphsFont()
 }
 
 
-void InsetCollapsable::getDrawFont(FontInfo & font) const
-{
-	font = layout_.font;
-}
-
-
 bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
@@ -762,18 +756,6 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 	setButtonLabel();
 	if (status_ == Collapsed)
 		cur.leaveInset(*this);
-}
-
-
-void InsetCollapsable::setLabelFont(FontInfo const & font)
-{
-	layout_.labelfont = font;
-}
-
-
-void InsetCollapsable::setLabelColor(ColorCode code)
-{
-	layout_.labelfont.setColor(code);
 }
 
 
