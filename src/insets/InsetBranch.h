@@ -94,8 +94,6 @@ private:
 
 	virtual Inset * clone() const;
 
-	/// used by the constructors
-	void init();
 	///
 	InsetBranchParams params_;
 };

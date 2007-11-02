@@ -35,24 +35,18 @@ using std::ostream;
 using std::ostringstream;
 
 
-void InsetBranch::init()
-{
-	setButtonLabel();
-}
-
-
 InsetBranch::InsetBranch(BufferParams const & bp,
 			 InsetBranchParams const & params)
 	: InsetCollapsable(bp), params_(params)
 {
-	init();
+	setButtonLabel();
 }
 
 
 InsetBranch::InsetBranch(InsetBranch const & in)
 	: InsetCollapsable(in), params_(in.params_)
 {
-	init();
+	setButtonLabel();
 }
 
 
