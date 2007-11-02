@@ -23,19 +23,13 @@
 
 #include "support/strfwd.h"
 
-#include <boost/scoped_ptr.hpp>
-
+#include <map>
+#include <string>
 
 namespace lyx {
 
 /**
- * This is a stateless class.
- *
- * It has one basic purposes:
- * To serve as a color-namespace container (the Color enum).
- */
-/**
- * \class Color
+ * \class ColorSet
  *
  * A class holding color definitions and associated names for
  * LaTeX, X11, the GUI, and LyX internally.
@@ -46,19 +40,15 @@ namespace lyx {
  * - A logical color, such as no color, inherit, math
  */
 
-class Color
+
 // made copyable for same reasons as LyXRC was made copyable. See there for
 // explanation.
+
+class ColorSet
 {
 public:
 	///
-	Color();
-	///
-	Color(Color const &);
-	///
-	~Color();
-	///
-	Color & operator=(Color);
+	ColorSet();
 
 	/** set the given LyX color to the color defined by the X11 name given
 	 *  \returns true if successful.
@@ -87,48 +77,47 @@ public:
 	ColorCode getFromLyXName(std::string const & lyxname) const;
 	/// \returns the ColorCode associated with the LaTeX name.
 	ColorCode getFromLaTeXName(std::string const & latexname) const;
+
 private:
 	///
-	void addColor(ColorCode c, std::string const & lyxname) const;
+	void addColor(ColorCode c, std::string const & lyxname); 
 	///
-	class Pimpl;
+	class Information {
+	public:
+		/// the name as it appears in the GUI
+		std::string guiname;
+		/// the name used in LaTeX
+		std::string latexname;
+		/// the name for X11
+		std::string x11name;
+		/// the name for LyX
+		std::string lyxname;
+	};
+
+	/// initialise a color entry
+	struct ColorEntry;
+	void fill(ColorEntry const & entry);
+
 	///
-	boost::scoped_ptr<Pimpl> pimpl_;
+	typedef std::map<ColorCode, Information> InfoTab;
+	/// the table of color Information
+	InfoTab infotab;
+
+	typedef std::map<std::string, ColorCode> Transform;
+	/// the transform between LyX color name string and integer code.
+	Transform lyxcolors;
+	/// the transform between LaTeX color name string and integer code.
+	Transform latexcolors;
 };
 
 
 /// the current color definitions
-extern Color lcolor;
+extern ColorSet lcolor;
 /// the system color definitions
-extern Color system_lcolor;
+extern ColorSet system_lcolor;
 
-
-struct RGBColor {
-	unsigned int r;
-	unsigned int g;
-	unsigned int b;
-	RGBColor() : r(0), g(0), b(0) {}
-	RGBColor(unsigned int red, unsigned int green, unsigned int blue)
-		: r(red), g(green), b(blue) {}
-	/// \param x11hexname is of the form "#ffa071"
-	RGBColor(std::string const & x11hexname);
-};
-
-inline
-bool operator==(RGBColor const & c1, RGBColor const & c2)
-{
-	return (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b);
-}
-
-
-inline
-bool operator!=(RGBColor const & c1, RGBColor const & c2)
-{
-	return !(c1 == c2);
-}
-
-/// returns a string of form #rrggbb, given an RGBColor struct
 std::string const X11hexname(RGBColor const & col);
+RGBColor rgbFromHexName(std::string const & x11hexname);
 
 } // namespace lyx
 

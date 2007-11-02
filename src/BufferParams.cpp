@@ -21,6 +21,7 @@
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Bullet.h"
+#include "Color.h"
 #include "debug.h"
 #include "Encoding.h"
 #include "gettext.h"

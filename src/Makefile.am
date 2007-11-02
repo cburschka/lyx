@@ -196,10 +196,6 @@ liblyxcore_la_SOURCES = \
 	LyX.h \
 	LyXRC.cpp \
 	LyXRC.h \
-	Server.cpp \
-	Server.h \
-	ServerSocket.cpp \
-	ServerSocket.h \
 	LyXVC.cpp \
 	LyXVC.h \
 	MenuBackend.cpp \
@@ -240,6 +236,10 @@ liblyxcore_la_SOURCES = \
 	Row.h \
 	rowpainter.cpp \
 	rowpainter.h \
+	Server.cpp \
+	Server.h \
+	ServerSocket.cpp \
+	ServerSocket.h \
 	Session.cpp \
 	Session.h \
 	sgml.cpp \

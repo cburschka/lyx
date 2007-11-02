@@ -30,7 +30,6 @@
 
 #include "BufferList.h"
 #include "BufferView.h"
-#include "Color.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "gettext.h"

@@ -512,7 +512,7 @@ string const LaTeXFeatures::getPackages() const
 	}
 	// shadecolor for shaded
 	if (mustProvide("framed") && mustProvide("color")) {
-		RGBColor c = RGBColor(lcolor.getX11Name(Color_shadedbg));
+		RGBColor c = rgbFromHexName(lcolor.getX11Name(Color_shadedbg));
 		//255.0 to force conversion to double
 		//NOTE As Jürgen Spitzmüller pointed out, an alternative would be
 		//to use the xcolor package instead, and then we can do
@@ -616,9 +616,8 @@ string const LaTeXFeatures::getMacros() const
 		macros << '\n';
 	FeaturesList::const_iterator pit  = preamble_snippets_.begin();
 	FeaturesList::const_iterator pend = preamble_snippets_.end();
-	for (; pit != pend; ++pit) {
+	for (; pit != pend; ++pit)
 		macros << *pit << '\n';
-	}
 
 	if (mustProvide("LyX"))
 		macros << lyx_def << '\n';
@@ -681,17 +680,17 @@ string const LaTeXFeatures::getMacros() const
 	getFloatDefinitions(macros);
 
 	// change tracking
-	if (mustProvide("ct-dvipost")) {
+	if (mustProvide("ct-dvipost"))
 		macros << changetracking_dvipost_def;
-	}
+
 	if (mustProvide("ct-xcolor-soul")) {
 		int const prec = macros.precision(2);
 	
-		RGBColor cadd = RGBColor(lcolor.getX11Name(Color_addedtext));
+		RGBColor cadd = rgbFromHexName(lcolor.getX11Name(Color_addedtext));
 		macros << "\\providecolor{lyxadded}{rgb}{"
 		       << cadd.r / 255.0 << ',' << cadd.g / 255.0 << ',' << cadd.b / 255.0 << "}\n";
 
-		RGBColor cdel = RGBColor(lcolor.getX11Name(Color_deletedtext));
+		RGBColor cdel = rgbFromHexName(lcolor.getX11Name(Color_deletedtext));
 		macros << "\\providecolor{lyxdeleted}{rgb}{"
 		       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
 
@@ -700,9 +699,9 @@ string const LaTeXFeatures::getMacros() const
 		macros << "\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
 		       << "\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\st{#3}}}\n";
 	}
-	if (mustProvide("ct-none")) {
+
+	if (mustProvide("ct-none"))
 		macros << changetracking_none_def;
-	}
 
 	return macros.str();
 }

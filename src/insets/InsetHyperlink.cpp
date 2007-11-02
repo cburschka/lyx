@@ -100,7 +100,7 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		for (size_t i = 0, pos;
 			(pos = name.find('\\', i)) != string::npos;
 			i = pos + 2) {
-			if	(name[pos + 1] != '\\')
+			if (name[pos + 1] != '\\')
 				name.replace(pos, 1, textbackslash);
 		}
 		for (int k = 0;	k < 6; k++) {
@@ -113,7 +113,7 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		// replace the tilde by the \sim character as suggested in the LaTeX FAQ
 		// for URLs
 		docstring const sim = from_ascii("$\\sim$");
-		for (int i = 0, pos;
+		for (size_t i = 0, pos;
 			(pos = name.find('~', i)) != string::npos;
 			i = pos + 1)
 			name.replace(pos, 1, sim);

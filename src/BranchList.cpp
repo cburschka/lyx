@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "BranchList.h"
+#include "Color.h"
 
 #include "frontends/Application.h"
 
@@ -68,10 +69,10 @@ void Branch::setColor(RGBColor const & c)
 }
 
 
-void Branch::setColor(string const & c)
+void Branch::setColor(string const & str)
 {
-	if (c.size() == 7 && c[0] == '#')
-		color_ = RGBColor(c);
+	if (str.size() == 7 && str[0] == '#')
+		color_ = rgbFromHexName(str);
 	else
 		// no color set or invalid color - use normal background
 		theApp()->getRgbColor(Color_background, color_);

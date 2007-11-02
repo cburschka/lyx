@@ -156,6 +156,27 @@ enum ColorCode
 	Color_ignore
 };
 
+
+struct RGBColor {
+	unsigned int r;
+	unsigned int g;
+	unsigned int b;
+	RGBColor() : r(0), g(0), b(0) {}
+	RGBColor(unsigned int red, unsigned int green, unsigned int blue)
+		: r(red), g(green), b(blue) {}
+};
+
+inline bool operator==(RGBColor const & c1, RGBColor const & c2)
+{
+	return (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b);
+}
+
+
+inline bool operator!=(RGBColor const & c1, RGBColor const & c2)
+{
+	return !(c1 == c2);
+}
+
 } // namespace lyx
 
 #endif
