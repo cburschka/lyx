@@ -120,18 +120,13 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 
 	}  // end if (!name.empty())
 	
-	//for the case there is no name given, the target is set as name
-	docstring const urlname = url;
-	// set the hyperlink type
-	url += getParam("type");
-
 	if (runparams.moving_arg)
 		os << "\\protect";
-	//set the target for the name when no name is given
-	if (!name.empty())
-		os << "\\href{" << url << "}{" << name << '}';
-	else
-		os << "\\href{" << url << "}{" << urlname << '}';
+
+	//for the case there is no name given, the target is set as name
+	os << "\\href{" << getParam("type") << url << "}{"
+		<< (name.empty()? url : name) << '}';
+
 	return 0;
 }
 
