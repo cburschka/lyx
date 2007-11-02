@@ -63,8 +63,6 @@ protected:
 private:
 	virtual Inset * clone() const;
 	///
-	void init();
-	///
 	void setButtonLabel();
 	///
 	docstring getCaption(Buffer const &, OutputParams const &) const;

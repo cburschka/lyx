@@ -31,43 +31,28 @@
 
 #include <sstream>
 
+using std::istringstream;
+using std::ostream;
+using std::ostringstream;
+using std::string;
+
 namespace lyx {
 
 using support::token;
 using support::contains;
 using support::subst;
 
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-using std::string;
-
 char const lstinline_delimiters[] =
 	"!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
-void InsetListings::init()
-{
-	setButtonLabel();
-	layout_.labelfont.setColor(Color_none);
-
-	// FIXME: what to do with those?
-	//text_.current_font.setLanguage(latex_language);
-	//text_.real_current_font.setLanguage(latex_language);
-}
-
-
 InsetListings::InsetListings(BufferParams const & bp, InsetListingsParams const & par)
 	: InsetCollapsable(bp, par.status())
-{
-	init();
-}
+{}
 
 
 InsetListings::InsetListings(InsetListings const & in)
 	: InsetCollapsable(in), params_(in.params_)
-{
-	init();
-}
+{}
 
 
 Inset * InsetListings::clone() const
