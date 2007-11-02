@@ -24,9 +24,6 @@ namespace lyx {
 InsetOptArg::InsetOptArg(BufferParams const & ins)
 	: InsetCollapsable(ins)
 {
-	FontInfo font = sane_font;
-	font.setColor(Color_collapsable);
-	setLabelFont(font);
 	setLabel(_("opt"));
 }
 
@@ -34,9 +31,6 @@ InsetOptArg::InsetOptArg(BufferParams const & ins)
 InsetOptArg::InsetOptArg(InsetOptArg const & in)
 	: InsetCollapsable(in)
 {
-	FontInfo font = sane_font;
-	font.setColor(Color_collapsable);
-	setLabelFont(font);
 	setLabel(_("opt"));
 }
 

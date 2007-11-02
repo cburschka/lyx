@@ -52,7 +52,6 @@ using std::string;
 void InsetERT::init()
 {
 	setButtonLabel();
-
 	// FIXME: what to do with those?
 	//text_.current_font.setLanguage(latex_language);
 	//text_.real_current_font.setLanguage(latex_language);

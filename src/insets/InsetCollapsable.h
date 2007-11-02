@@ -72,6 +72,8 @@ public:
 	///
 	void setLabelFont(FontInfo const & f);
 	///
+	void setLabelColor(ColorCode code);
+	///
 	bool isOpen() const { return geometry() != ButtonOnly; }
 	///
 	CollapseStatus status() const;

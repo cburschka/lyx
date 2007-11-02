@@ -48,11 +48,8 @@ char const lstinline_delimiters[] =
 void InsetListings::init()
 {
 	setButtonLabel();
-	FontInfo font = sane_font;
-	font.decSize();
-	font.decSize();
-	font.setColor(Color_none);
-	setLabelFont(font);
+	layout_.labelfont.setColor(Color_none);
+
 	// FIXME: what to do with those?
 	//text_.current_font.setLanguage(latex_language);
 	//text_.real_current_font.setLanguage(latex_language);

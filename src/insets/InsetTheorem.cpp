@@ -40,11 +40,6 @@ Inset.heorem::InsetTheorem()
 	: InsetCollapsable()
 {
 	setLabel(_("theorem"));
-	FontInfo font = sane_font;
-	font.decSize();
-	font.decSize();
-	font.setColor(Color_collapsable);
-	setLabelFont(font);
 #if 0
 	setAutoCollapse(false);
 #endif

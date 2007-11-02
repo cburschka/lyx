@@ -142,10 +142,6 @@ void InsetBox::read(Buffer const & buf, Lexer & lex)
 
 void InsetBox::setButtonLabel()
 {
-	FontInfo font = sane_font;
-	font.decSize();
-	font.decSize();
-
 	BoxType btype = boxtranslator().find(params_.type);
 
 	docstring label;
@@ -162,8 +158,7 @@ void InsetBox::setButtonLabel()
 
 	setLabel(label);
 
-	font.setColor(Color_foreground);
-	setLabelFont(font);
+	setLabelColor(Color_foreground);
 }
 
 
