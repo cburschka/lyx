@@ -22,6 +22,7 @@
 
 #include <QFont>
 
+#include <boost/assert.hpp>
 #include <boost/scoped_ptr.hpp>
 
 namespace lyx {
@@ -67,6 +68,10 @@ public:
 
 	/// Get font info (font + metrics) for the given LyX font.
 	GuiFontInfo & fontinfo(FontInfo const & f) {
+		BOOST_ASSERT(f.family() < NUM_FAMILIES);
+		BOOST_ASSERT(f.series() < 2);
+		BOOST_ASSERT(f.realShape() < 4);
+		BOOST_ASSERT(f.size() < 10);
 		// fi is a reference to the pointer type (GuiFontInfo *) in the
 		// fontinfo_ table.
 		GuiFontInfo * & fi =
