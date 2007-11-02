@@ -81,8 +81,6 @@ InsetCollapsable::InsetCollapsable
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
-	setButtonLabel();
-	setLayout(bp);
 }
 
 
@@ -108,15 +106,11 @@ void  InsetCollapsable::setLayout(BufferParams const & bp)
 	layout_.bgcolor = Color_background;
 
 	layout_ = getLayout(bp);
-	if (layout_.labelfont != inherit_font)
-		return;
 
 	// FIXME: put this in the InsetLayout parsing?
-	// Fallback for lacking inset layout labelfont.
-	layout_.labelfont = sane_font;
-	layout_.labelfont.decSize();
-	layout_.labelfont.decSize();
-	layout_.labelfont.setColor(Color_collapsable);
+	layout_.labelfont.realize(sane_font);
+
+	setButtonLabel();
 }
 
 
@@ -170,7 +164,6 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 	if (!token_found)
 		status_ = isOpen() ? Open : Collapsed;
 
-	setButtonLabel();
 	setLayout(buf.params());
 
 	// Force default font, if so requested

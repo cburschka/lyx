@@ -199,7 +199,6 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 		//lyxerr << "InsetBox::dispatch MODIFY" << endl;
 		InsetBoxMailer::string2params(to_utf8(cmd.argument()), params_);
 		setLayout(cur.buffer().params());
-		setButtonLabel();
 		break;
 	}
 

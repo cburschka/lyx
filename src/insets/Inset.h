@@ -35,6 +35,7 @@ class Dimension;
 class FuncRequest;
 class FuncStatus;
 class InsetIterator;
+class InsetCollapsable;
 class InsetLayout;
 class InsetList;
 class InsetMath;
@@ -88,6 +89,10 @@ public:
 	virtual InsetText * asTextInset() { return 0; }
 	/// is this inset based on the TextInset class?
 	virtual InsetText const * asTextInset() const { return 0; }
+	/// is this inset based on the InsetCollapsable class?
+	virtual InsetCollapsable * asInsetCollapsable() { return 0; }
+	/// is this inset based on the InsetCollapsable class?
+	virtual InsetCollapsable const * asInsetCollapsable() const { return 0; }
 	
 	/// the real dispatcher
 	void dispatch(Cursor & cur, FuncRequest & cmd);

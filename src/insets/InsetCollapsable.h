@@ -41,7 +41,9 @@ public:
 	InsetCollapsable(BufferParams const &, CollapseStatus status = Inset::Open);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
-	///
+	
+	InsetCollapsable * asInsetCollapsable() { return this; }
+	InsetCollapsable const * asInsetCollapsable() const { return this; }
 	docstring name() const { return from_ascii("Collapsable"); }
 	///
 	void setLayout(BufferParams const &);
