@@ -28,11 +28,9 @@ namespace lyx {
 using support::subst;
 
 using std::string;
-using std::ostream;
 using std::find;
 using std::replace;
 
-//FIXME: these should be lists of char_type and not char
 static char_type const chars_url[2] = {'%', '#'};
 
 static char_type const chars_name[6] = {
@@ -44,7 +42,7 @@ InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetHyperlink::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetHyperlink::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] =
 		{"name", "target", "type", ""};
@@ -76,9 +74,7 @@ docstring const InsetHyperlink::getScreenLabel(Buffer const &) const
 int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		    OutputParams const & runparams) const
 {
-	//FIXME: all strings in this routine should be docstrings
 	docstring url = getParam("target");
-
 	docstring backslash = from_ascii("\\");
 	docstring braces = from_ascii("{}");
 
