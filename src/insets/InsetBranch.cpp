@@ -45,7 +45,6 @@ InsetBranch::InsetBranch(BufferParams const & bp,
 			 InsetBranchParams const & params)
 	: InsetCollapsable(bp), params_(params)
 {
-	setLayout(bp);
 	init();
 }
 
@@ -86,8 +85,6 @@ void InsetBranch::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
-	setLayout(buf.params());
-	setButtonLabel();
 }
 
 
@@ -137,7 +134,6 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetBranchMailer::string2params(to_utf8(cmd.argument()), params);
 		params_.branch = params.branch;
 		setLayout(cur.buffer().params());
-		setButtonLabel();
 		break;
 	}
 

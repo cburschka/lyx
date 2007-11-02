@@ -116,7 +116,6 @@ InsetNote::InsetNote(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp)
 {
 	params_.type = notetranslator().find(label);
-	setLayout(bp);
 	setButtonLabel();
 }
 
@@ -175,8 +174,6 @@ void InsetNote::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
-	setLayout(buf.params());
-	setButtonLabel();
 }
 
 
@@ -202,7 +199,6 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetNoteMailer::string2params(to_utf8(cmd.argument()), params_);
 		// get a bp from cur:
 		setLayout(cur.buffer().params());
-		setButtonLabel();
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:

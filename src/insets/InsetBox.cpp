@@ -94,7 +94,6 @@ void InsetBox::init()
 InsetBox::InsetBox(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp), params_(label)
 {
-	setLayout(bp);
 	init();
 }
 
@@ -135,7 +134,6 @@ void InsetBox::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
-	setLayout(buf.params());
 	setButtonLabel();
 }
 

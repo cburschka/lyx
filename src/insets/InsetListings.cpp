@@ -59,7 +59,6 @@ void InsetListings::init()
 InsetListings::InsetListings(BufferParams const & bp, InsetListingsParams const & par)
 	: InsetCollapsable(bp, par.status())
 {
-	setLayout(bp);
 	init();
 }
 

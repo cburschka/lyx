@@ -61,7 +61,6 @@ void InsetERT::init()
 InsetERT::InsetERT(BufferParams const & bp, CollapseStatus status)
 	: InsetCollapsable(bp, status)
 {
-	setLayout(bp);
 	init();
 }
 

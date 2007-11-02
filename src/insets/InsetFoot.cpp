@@ -36,9 +36,7 @@ using std::ostream;
 
 InsetFoot::InsetFoot(BufferParams const & bp)
 	: InsetFootlike(bp)
-{
-	setLayout(bp);
-}
+{}
 
 
 InsetFoot::InsetFoot(InsetFoot const & in)

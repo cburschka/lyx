@@ -30,9 +30,7 @@ using std::ostream;
 
 InsetIndex::InsetIndex(BufferParams const & bp)
 	: InsetCollapsable(bp)
-{
-	setLayout(bp);
-}
+{}
 
 
 InsetIndex::InsetIndex(InsetIndex const & in)
