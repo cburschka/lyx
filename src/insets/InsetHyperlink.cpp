@@ -22,14 +22,13 @@
 #include "support/lstrings.h"
 #include "support/docstream.h"
 
+using std::string;
+using std::find;
+using std::replace;
 
 namespace lyx {
 
 using support::subst;
-
-using std::string;
-using std::find;
-using std::replace;
 
 
 InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
