@@ -31,11 +31,6 @@ using std::string;
 using std::find;
 using std::replace;
 
-static char_type const chars_url[2] = {'%', '#'};
-
-static char_type const chars_name[6] = {
-	'&', '_', '$', '%', '#', '^'};
-
 
 InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
 	: InsetCommand(p, "href")
@@ -75,8 +70,11 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		    OutputParams const & runparams) const
 {
 	docstring url = getParam("target");
-	docstring backslash = from_ascii("\\");
-	docstring braces = from_ascii("{}");
+	static docstring const backslash = from_ascii("\\");
+	static docstring const braces = from_ascii("{}");
+	static char_type const chars_url[2] = {'%', '#'};
+	static char_type const chars_name[6] = {
+		'&', '_', '$', '%', '#', '^'};
 
 	// The characters in chars_url[] need to be changed to a command when
 	// they are in the url field.
@@ -99,7 +97,7 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 
 		// handle the "\" character, but only when the following character
 		// is not also a "\", because "\\" is valid code
-		docstring textbackslash = from_ascii("\\textbackslash{}");
+		docstring const textbackslash = from_ascii("\\textbackslash{}");
 		for (size_t i = 0, pos;
 			(pos = name.find('\\', i)) != string::npos;
 			i = pos + 2) {
@@ -115,7 +113,7 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 		}
 		// replace the tilde by the \sim character as suggested in the LaTeX FAQ
 		// for URLs
-		docstring sim = from_ascii("$\\sim$");
+		docstring const sim = from_ascii("$\\sim$");
 		for (int i = 0, pos;
 			(pos = name.find('~', i)) != string::npos;
 			i = pos + 1)
@@ -124,7 +122,7 @@ int InsetHyperlink::latex(Buffer const &, odocstream & os,
 	}  // end if (!name.empty())
 	
 	//for the case there is no name given, the target is set as name
-	docstring urlname = url;
+	docstring const urlname = url;
 	// set the hyperlink type
 	url += getParam("type");
 
