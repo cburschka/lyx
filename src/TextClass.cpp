@@ -707,6 +707,9 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			break;
 		case IL_LABELFONT:
 			labelfont = lyxRead(lexrc, inherit_font);
+			// The label font is generally used as-is without
+			// any realization against a given context.
+			labelfont.realize(sane_font);
 			break;
 		case IL_FORCELTR:
 			lexrc.next();

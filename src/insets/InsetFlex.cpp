@@ -44,7 +44,7 @@ using std::ostream;
 
 
 InsetFlex::InsetFlex(BufferParams const & bp,
-				InsetLayout il)
+				InsetLayout const & il)
 	: InsetCollapsable(bp, Collapsed)
 {
 	params_.name = il.name;
@@ -54,7 +54,9 @@ InsetFlex::InsetFlex(BufferParams const & bp,
 
 InsetFlex::InsetFlex(InsetFlex const & in)
 	: InsetCollapsable(in), params_(in.params_)
-{}
+{
+	setLayout(*in.layout_);
+}
 
 
 Inset * InsetFlex::clone() const
@@ -65,13 +67,13 @@ Inset * InsetFlex::clone() const
 
 bool InsetFlex::undefined() const
 {
-	return layout_.labelstring == from_utf8("UNDEFINED");
+	return layout_->labelstring == from_utf8("UNDEFINED");
 }
 
 
-void InsetFlex::setLayout(InsetLayout il)
+void InsetFlex::setLayout(InsetLayout const & il)
 {
-	layout_ = il;
+	layout_ = &il;
 }
 
 
@@ -111,8 +113,8 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 
 	if (!undefined())
 		// FIXME UNICODE
-		sgml::openTag(os, layout_.latexname,
-			      par->getID(buf, runparams) + layout_.latexparam);
+		sgml::openTag(os, layout_->latexname,
+			      par->getID(buf, runparams) + layout_->latexparam);
 
 	for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,
@@ -121,7 +123,7 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 	}
 
 	if (!undefined())
-		sgml::closeTag(os, layout_.latexname);
+		sgml::closeTag(os, layout_->latexname);
 
 	return 0;
 }

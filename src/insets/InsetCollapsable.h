@@ -126,7 +126,7 @@ public:
 	///
 	bool setMouseHover(bool mouse_hover);
 	///
-	virtual ColorCode backgroundColor() const {return layout_.bgcolor; }
+	virtual ColorCode backgroundColor() const {return layout_->bgcolor; }
 
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
@@ -136,9 +136,9 @@ public:
 	virtual InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
 	/// Allow multiple blanks
-	virtual bool isFreeSpacing() const { return layout_.freespacing; }
+	virtual bool isFreeSpacing() const { return layout_->freespacing; }
 	/// Don't eliminate empty paragraphs
-	virtual bool allowEmpty() const { return layout_.keepempty; }
+	virtual bool allowEmpty() const { return layout_->keepempty; }
 
 protected:
 	///
@@ -164,10 +164,12 @@ protected:
 	///
 	mutable int topbaseline;
 	///
-	mutable InsetLayout layout_;
+	InsetLayout const * layout_;
 	///
 	CollapseStatus internalStatus() const { return status_; }
 private:
+	///
+	docstring labelstring_;
 	///
 	mutable CollapseStatus status_;
 	/// a substatus of the Open status, determined automatically in metrics

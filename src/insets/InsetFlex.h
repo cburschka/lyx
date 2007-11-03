@@ -37,16 +37,17 @@ public:
 class InsetFlex : public InsetCollapsable {
 public:
 	///
-	InsetFlex(BufferParams const &, InsetLayout);
+	InsetFlex(BufferParams const &, InsetLayout const &);
 	///
 	docstring name() const { return from_ascii("Flex"); }
 	///
-	InsetLayout const & getLayout(BufferParams const &) const { return layout_; } 
+	InsetLayout const & getLayout(BufferParams const &) const
+	{ return *layout_; } 
 	/// Is this character style defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
 	bool undefined() const;
 	/// (Re-)set the character style parameters from \p il
-	void setLayout(InsetLayout il);
+	void setLayout(InsetLayout const & il);
 	///
 	virtual docstring const editMessage() const;
 	///

@@ -80,8 +80,6 @@ protected:
 private:
 	virtual Inset * clone() const;
 	///
-	void init();
-	///
 	void setButtonLabel();
 	///
 	bool allowSpellCheck() const { return false; }

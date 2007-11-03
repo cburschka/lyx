@@ -448,7 +448,7 @@ void switchBetweenClasses(TextClassPtr const & c1,
 			InsetFlex & inset =
 				static_cast<InsetFlex &>(*it);
 			string const name = inset.params().name;
-			InsetLayout const il = 
+			InsetLayout const & il = 
 				tclass2.insetlayout(from_utf8(name));
 			inset.setLayout(il);
 			if (il.labelstring == from_utf8("UNDEFINED")) {

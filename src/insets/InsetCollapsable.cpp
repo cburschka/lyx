@@ -101,14 +101,8 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 
 void  InsetCollapsable::setLayout(BufferParams const & bp)
 {
-	// FIXME: put this in the InsetLayout parsing?
-	// Fallback for lacking inset layout background
-	layout_.bgcolor = Color_background;
-
-	layout_ = getLayout(bp);
-
-	// FIXME: put this in the InsetLayout parsing?
-	layout_.labelfont.realize(sane_font);
+	layout_ = &getLayout(bp);
+	labelstring_ = layout_->labelstring;
 
 	setButtonLabel();
 }
@@ -180,8 +174,8 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 Dimension InsetCollapsable::dimensionCollapsed() const
 {
 	Dimension dim;
-	theFontMetrics(layout_.labelfont).buttonText(
-		layout_.labelstring, dim.wid, dim.asc, dim.des);
+	theFontMetrics(layout_->labelfont).buttonText(
+		labelstring_, dim.wid, dim.asc, dim.des);
 	return dim;
 }
 
@@ -191,7 +185,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
 
 	FontInfo tmpfont = mi.base.font;
-	mi.base.font = layout_.font;
+	mi.base.font = layout_->font;
 	mi.base.font.realize(tmpfont);
 
 	switch (geometry()) {
@@ -206,15 +200,14 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	case SubLabel: {
 		InsetText::metrics(mi, dim);
 		// consider width of the inset label
-		FontInfo font(layout_.labelfont);
+		FontInfo font(layout_->labelfont);
 		font.realize(sane_font);
 		font.decSize();
 		font.decSize();
 		int w = 0;
 		int a = 0;
 		int d = 0;
-		docstring s = layout_.labelstring;
-		theFontMetrics(font).rectText(s, w, a, d);
+		theFontMetrics(font).rectText(labelstring_, w, a, d);
 		dim.des += a + d;
 		break;
 		}
@@ -258,7 +251,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	pi.background_color = backgroundColor();
 
 	FontInfo tmpfont = pi.base.font;
-	pi.base.font = layout_.font;
+	pi.base.font = layout_->font;
 	pi.base.font.realize(tmpfont);
 
 	// Draw button first -- top, left or only
@@ -272,7 +265,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = y - dimc.asc;
 		button_dim.y2 = y + dimc.des;
 
-		pi.pain.buttonText(x, y, layout_.labelstring, layout_.labelfont, mouse_hover_);
+		pi.pain.buttonText(x, y, labelstring_, layout_->labelfont,
+			mouse_hover_);
 	} else {
 		button_dim.x1 = 0;
 		button_dim.y1 = 0;
@@ -317,37 +311,36 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		const int xx2 = x + textdim.wid - TEXT_TO_INSET_OFFSET + 1;
 		pi.pain.line(xx1, y + desc - 4, 
 			     xx1, y + desc, 
-			layout_.labelfont.color());
+			layout_->labelfont.color());
 		if (internalStatus() == Open)
 			pi.pain.line(xx1, y + desc, 
 				xx2, y + desc,
-				layout_.labelfont.color());
+				layout_->labelfont.color());
 		else {
 			// Make status_ value visible:
 			pi.pain.line(xx1, y + desc,
 				xx1 + 4, y + desc,
-				layout_.labelfont.color());
+				layout_->labelfont.color());
 			pi.pain.line(xx2 - 4, y + desc,
 				xx2, y + desc,
-				layout_.labelfont.color());
+				layout_->labelfont.color());
 		}
 		pi.pain.line(x + textdim.wid - 3, y + desc, x + textdim.wid - 3, y + desc - 4,
-			layout_.labelfont.color());
+			layout_->labelfont.color());
 
 		// the label below the text. Can be toggled.
 		if (geometry() == SubLabel) {
-			FontInfo font(layout_.labelfont);
+			FontInfo font(layout_->labelfont);
 			font.realize(sane_font);
 			font.decSize();
 			font.decSize();
 			int w = 0;
 			int a = 0;
 			int d = 0;
-			docstring s = layout_.labelstring;
-			theFontMetrics(font).rectText(s, w, a, d);
+			theFontMetrics(font).rectText(labelstring_, w, a, d);
 			int const ww = max(textdim.wid, w);
 			pi.pain.rectText(x + (ww - w) / 2, y + desc + a,
-				s, font, Color_none, Color_none);
+				labelstring_, font, Color_none, Color_none);
 			desc += d;
 		}
 
@@ -356,12 +349,12 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		if (cur.isInside(this)) {
 			y -= textdim.asc;
 			y += 3;
-			pi.pain.line(xx1, y + 4, xx1, y, layout_.labelfont.color());
-			pi.pain.line(xx1 + 4, y, xx1, y, layout_.labelfont.color());
+			pi.pain.line(xx1, y + 4, xx1, y, layout_->labelfont.color());
+			pi.pain.line(xx1 + 4, y, xx1, y, layout_->labelfont.color());
 			pi.pain.line(xx2, y + 4, xx2, y,
-				layout_.labelfont.color());
+				layout_->labelfont.color());
 			pi.pain.line(xx2 - 4, y, xx2, y,
-				layout_.labelfont.color());
+				layout_->labelfont.color());
 		}
 		break;
 	}
@@ -580,7 +573,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		if (layout_.forceltr) {
+		if (layout_->forceltr) {
 			// Force any new text to latex_language
 			// FIXME: This should only be necessary in constructor, but
 			// new paragraphs that are created by pressing enter at the
@@ -598,7 +591,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 bool InsetCollapsable::allowMultiPar() const
 {
-	return layout_.multipar;
+	return layout_->multipar;
 }
 
 
@@ -606,9 +599,9 @@ void InsetCollapsable::resetParagraphsFont()
 {
 	Font font;
 	font.fontInfo() = sane_font;
-	if (layout_.forceltr)
+	if (layout_->forceltr)
 		font.setLanguage(latex_language);
-	if (layout_.passthru) {
+	if (layout_->passthru) {
 		ParagraphList::iterator par = paragraphs().begin();
 		ParagraphList::iterator const end = paragraphs().end();
 		while (par != end) {
@@ -715,7 +708,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_TABULAR_INSERT:
 	case LFUN_TOC_INSERT:
 	case LFUN_WRAP_INSERT:
-	if (layout_.passthru) {
+	if (layout_->passthru) {
 		flag.enabled(false);
 		return true;
 	} else
@@ -730,12 +723,12 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_LANGUAGE:
-		flag.enabled(!layout_.forceltr);
+		flag.enabled(!layout_->forceltr);
 		return InsetText::getStatus(cur, cmd, flag);
 
 	case LFUN_BREAK_PARAGRAPH:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
-		flag.enabled(layout_.multipar);
+		flag.enabled(layout_->multipar);
 		return true;
 
 	default:
@@ -746,7 +739,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetCollapsable::setLabel(docstring const & l)
 {
-	layout_.labelstring = l;
+	labelstring_ = l;
 }
 
 
@@ -770,11 +763,11 @@ docstring InsetCollapsable::floatName(string const & type, BufferParams const & 
 
 InsetCollapsable::Decoration InsetCollapsable::decoration() const
 {
-	if (layout_.decoration == "classic")
+	if (layout_->decoration == "classic")
 		return Classic;
-	if (layout_.decoration == "minimalistic")
+	if (layout_->decoration == "minimalistic")
 		return Minimalistic;
-	if (layout_.decoration == "conglomerate")
+	if (layout_->decoration == "conglomerate")
 		return Conglomerate;
 	if (name() == from_ascii("Flex"))
 		return Conglomerate;
@@ -789,32 +782,32 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 	// a collapsable inset, either a command or an environment. Standard 
 	// collapsable insets should not redefine this, non-standard ones may
 	// call this.
-	if (!layout_.latexname.empty()) {
-		if (layout_.latextype == "command") {
+	if (!layout_->latexname.empty()) {
+		if (layout_->latextype == "command") {
 			// FIXME UNICODE
 			if (runparams.moving_arg)
 				os << "\\protect";
-			os << '\\' << from_utf8(layout_.latexname);
-			if (!layout_.latexparam.empty())
-				os << from_utf8(layout_.latexparam);
+			os << '\\' << from_utf8(layout_->latexname);
+			if (!layout_->latexparam.empty())
+				os << from_utf8(layout_->latexparam);
 			os << '{';
-		} else if (layout_.latextype == "environment") {
-			os << "%\n\\begin{" << from_utf8(layout_.latexname) << "}\n";
-			if (!layout_.latexparam.empty())
-				os << from_utf8(layout_.latexparam);
+		} else if (layout_->latextype == "environment") {
+			os << "%\n\\begin{" << from_utf8(layout_->latexname) << "}\n";
+			if (!layout_->latexparam.empty())
+				os << from_utf8(layout_->latexparam);
 		}
 	}
 	OutputParams rp = runparams;
-	if (layout_.passthru)
+	if (layout_->passthru)
 		rp.verbatim = true;
-	if (layout_.needprotect)
+	if (layout_->needprotect)
 		rp.moving_arg = true;
 	int i = InsetText::latex(buf, os, rp);
-	if (!layout_.latexname.empty()) {
-		if (layout_.latextype == "command") {
+	if (!layout_->latexname.empty()) {
+		if (layout_->latextype == "command") {
 			os << "}";
-		} else if (layout_.latextype == "environment") {
-			os << "\n\\end{" << from_utf8(layout_.latexname) << "}\n";
+		} else if (layout_->latextype == "environment") {
+			os << "\n\\end{" << from_utf8(layout_->latexname) << "}\n";
 			i += 4;
 		}
 	}
@@ -825,7 +818,7 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
 	// Force inclusion of preamble snippet in layout file
-	features.require(layout_.name);
+	features.require(layout_->name);
 	InsetText::validate(features);
 }
 

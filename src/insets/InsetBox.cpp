@@ -85,24 +85,14 @@ BoxTranslatorLoc const & boxtranslator_loc()
 } // anon
 
 
-void InsetBox::init()
-{
-	setButtonLabel();
-}
-
-
 InsetBox::InsetBox(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp), params_(label)
-{
-	init();
-}
+{}
 
 
 InsetBox::InsetBox(InsetBox const & in)
 	: InsetCollapsable(in), params_(in.params_)
-{
-	init();
-}
+{}
 
 
 InsetBox::~InsetBox()
@@ -134,7 +124,6 @@ void InsetBox::read(Buffer const & buf, Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
-	setButtonLabel();
 }
 
 

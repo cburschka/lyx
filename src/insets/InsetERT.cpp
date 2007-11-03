@@ -49,48 +49,20 @@ using std::ostringstream;
 using std::string;
 
 
-void InsetERT::init()
-{
-	setButtonLabel();
-	// FIXME: what to do with those?
-	//text_.current_font.setLanguage(latex_language);
-	//text_.real_current_font.setLanguage(latex_language);
-}
-
-
 InsetERT::InsetERT(BufferParams const & bp, CollapseStatus status)
 	: InsetCollapsable(bp, status)
-{
-	init();
-}
+{}
 
 
 InsetERT::InsetERT(InsetERT const & in)
 	: InsetCollapsable(in)
-{
-	init();
-}
+{}
 
 
 Inset * InsetERT::clone() const
 {
 	return new InsetERT(*this);
 }
-
-
-#if 0
-InsetERT::InsetERT(BufferParams const & bp,
-		   Language const *, string const & contents, CollapseStatus status)
-	: InsetCollapsable(bp, status)
-{
-	Font font(FONT_INHERIT, latex_language);
-	paragraphs().begin()->insert(0, contents, font);
-
-	// the init has to be after the initialization of the paragraph
-	// because of the label settings (draw_label for ert insets).
-	init();
-}
-#endif
 
 
 InsetERT::~InsetERT()
@@ -180,7 +152,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 	default:
 		// Force any new text to latex_language
-		// FIXME: This should only be necessary in init(), but
+		// FIXME: This should not be necessary but
 		// new paragraphs that are created by pressing enter at the
 		// start of an existing paragraph get the buffer language
 		// and not latex_language, so we take this brute force

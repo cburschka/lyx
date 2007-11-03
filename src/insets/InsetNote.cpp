@@ -116,15 +116,12 @@ InsetNote::InsetNote(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp)
 {
 	params_.type = notetranslator().find(label);
-	setButtonLabel();
 }
 
 
 InsetNote::InsetNote(InsetNote const & in)
 	: InsetCollapsable(in), params_(in.params_)
-{
-	setButtonLabel();
-}
+{}
 
 
 InsetNote::~InsetNote()

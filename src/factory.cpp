@@ -104,8 +104,8 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 
 		case LFUN_FLEX_INSERT: {
 			string s = cmd.getArg(0);
-			TextClass tclass = params.getTextClass();
-			InsetLayout il = tclass.insetlayout(from_utf8(s));
+			TextClass const & tclass = params.getTextClass();
+			InsetLayout const & il = tclass.insetlayout(from_utf8(s));
 			return new InsetFlex(params, il);
 		}
 
@@ -392,7 +392,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 
 	auto_ptr<Inset> inset;
 
-	TextClass tclass = buf.params().getTextClass();
+	TextClass const & tclass = buf.params().getTextClass();
 
 	lex.next();
 	string tmptok = lex.getString();
@@ -487,7 +487,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "Flex") {
 			lex.next();
 			string s = lex.getString();
-			InsetLayout il = tclass.insetlayout(from_utf8(s));
+			InsetLayout const & il = tclass.insetlayout(from_utf8(s));
 			inset.reset(new InsetFlex(buf.params(), il));
 		} else if (tmptok == "Branch") {
 			inset.reset(new InsetBranch(buf.params(),
