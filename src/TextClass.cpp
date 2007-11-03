@@ -707,9 +707,6 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 			break;
 		case IL_LABELFONT:
 			labelfont = lyxRead(lexrc, inherit_font);
-			// The label font is generally used as-is without
-			// any realization against a given context.
-			labelfont.realize(sane_font);
 			break;
 		case IL_FORCELTR:
 			lexrc.next();
@@ -755,7 +752,6 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		}
 	}
 
-	//
 	// Here add element to list if getout == true
 	if (getout) {
 		InsetLayout il;
@@ -773,6 +769,9 @@ void TextClass::readInsetLayout(Lexer & lexrc, docstring const & name)
 		il.forceltr = forceltr;
 		il.keepempty = keepempty;
 		il.font = font;
+		// The label font is generally used as-is without
+		// any realization against a given context.
+		labelfont.realize(sane_font);
 		il.labelfont = labelfont;
 		il.bgcolor = bgcolor;		
 		il.preamble = preamble;
@@ -1108,6 +1107,8 @@ InsetLayout const & TextClass::insetlayout(docstring const & name) const
 	}
 	static InsetLayout empty;
 	empty.labelstring = from_utf8("UNDEFINED");
+	empty.labelfont = sane_font;
+	empty.labelfont.setColor(Color_error);
 	empty.bgcolor = Color_error;
 	return empty;
 }
