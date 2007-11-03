@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-02 13:34+0100\n"
+"POT-Creation-Date: 2007-11-03 13:21+0100\n"
 "PO-Revision-Date: 2007-09-26 20:26-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -4535,7 +4535,6 @@ msgstr "PS"
 
 #: lib/layouts/dinbrief.layout:120 lib/layouts/g-brief-en.layout:221
 #: lib/layouts/g-brief2.layout:932 lib/layouts/stdletter.inc:101
-#: src/lengthcommon.cpp:38
 msgid "cc"
 msgstr "cc"
 
@@ -16319,6 +16318,10 @@ msgstr ""
 #, fuzzy
 msgid "pc"
 msgstr "Spaþiu protejat|S"
+
+#: src/lengthcommon.cpp:38
+msgid "cc[[unit of measure]]"
+msgstr ""
 
 #: src/lengthcommon.cpp:38
 msgid "cm"

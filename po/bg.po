@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-02 13:34+0100\n"
+"POT-Creation-Date: 2007-11-03 13:21+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -5979,7 +5979,6 @@ msgstr ""
 # src/ext_l10n.h:418
 #: lib/layouts/dinbrief.layout:120 lib/layouts/g-brief-en.layout:221
 #: lib/layouts/g-brief2.layout:932 lib/layouts/stdletter.inc:101
-#: src/lengthcommon.cpp:38
 msgid "cc"
 msgstr ""
 
@@ -20266,6 +20265,10 @@ msgstr ""
 
 #: src/lengthcommon.cpp:37
 msgid "pc"
+msgstr ""
+
+#: src/lengthcommon.cpp:38
+msgid "cc[[unit of measure]]"
 msgstr ""
 
 #: src/lengthcommon.cpp:38

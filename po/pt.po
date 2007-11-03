@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-02 13:34+0100\n"
+"POT-Creation-Date: 2007-11-03 13:21+0100\n"
 "PO-Revision-Date: 2007-10-04 22:57+0100\n"
 "Last-Translator: Susana Barbosa <susana.barbosa@fc.up.pt>\n"
 "Language-Team:  <en@li.org>\n"
@@ -4526,7 +4526,6 @@ msgstr "PS:"
 
 #: lib/layouts/dinbrief.layout:120 lib/layouts/g-brief-en.layout:221
 #: lib/layouts/g-brief2.layout:932 lib/layouts/stdletter.inc:101
-#: src/lengthcommon.cpp:38
 msgid "cc"
 msgstr "cc"
 
@@ -16089,6 +16088,10 @@ msgstr "mm"
 #: src/lengthcommon.cpp:37
 msgid "pc"
 msgstr "pc"
+
+#: src/lengthcommon.cpp:38
+msgid "cc[[unit of measure]]"
+msgstr ""
 
 #: src/lengthcommon.cpp:38
 msgid "cm"

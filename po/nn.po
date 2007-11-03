@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-02 13:34+0100\n"
+"POT-Creation-Date: 2007-11-03 13:21+0100\n"
 "PO-Revision-Date: 2007-06-26 21:34+0200\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -4546,7 +4546,6 @@ msgstr "PS:"
 
 #: lib/layouts/dinbrief.layout:120 lib/layouts/g-brief-en.layout:221
 #: lib/layouts/g-brief2.layout:932 lib/layouts/stdletter.inc:101
-#: src/lengthcommon.cpp:38
 msgid "cc"
 msgstr "Kopi til"
 
@@ -15664,6 +15663,10 @@ msgstr "mm"
 #: src/lengthcommon.cpp:37
 msgid "pc"
 msgstr "pc"
+
+#: src/lengthcommon.cpp:38
+msgid "cc[[unit of measure]]"
+msgstr ""
 
 #: src/lengthcommon.cpp:38
 msgid "cm"
