@@ -34,8 +34,8 @@ class CursorSlice;
 class Dimension;
 class FuncRequest;
 class FuncStatus;
-class InsetIterator;
 class InsetCollapsable;
+class InsetIterator;
 class InsetLayout;
 class InsetList;
 class InsetMath;
@@ -85,15 +85,15 @@ public:
 	virtual InsetMath * asInsetMath() { return 0; }
 	/// true for 'math' math inset, but not for e.g. mbox
 	virtual bool inMathed() const { return false; }
-	/// is this inset based on the TextInset class?
-	virtual InsetText * asTextInset() { return 0; }
-	/// is this inset based on the TextInset class?
-	virtual InsetText const * asTextInset() const { return 0; }
+	/// is this inset based on the InsetText class?
+	virtual InsetText * asInsetText() { return 0; }
+	/// is this inset based on the InsetText class?
+	virtual InsetText const * asInsetText() const { return 0; }
 	/// is this inset based on the InsetCollapsable class?
 	virtual InsetCollapsable * asInsetCollapsable() { return 0; }
 	/// is this inset based on the InsetCollapsable class?
 	virtual InsetCollapsable const * asInsetCollapsable() const { return 0; }
-	
+
 	/// the real dispatcher
 	void dispatch(Cursor & cur, FuncRequest & cmd);
 	/**

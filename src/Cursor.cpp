@@ -1078,7 +1078,7 @@ bool Cursor::upDownInMath(bool up)
 	// target
 	if (x_target_ == -1)
 		setTargetX(xo);
-	else if (inset().asTextInset() && xo - textTargetOffset() != x_target()) {
+	else if (inset().asInsetText() && xo - textTargetOffset() != x_target()) {
 		// In text mode inside the line (not left or right) possibly set a new target_x,
 		// but only if we are somewhere else than the previous target-offset.
 		
