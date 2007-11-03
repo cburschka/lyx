@@ -67,8 +67,8 @@ struct IconvProcessor::Private {
 };
 
 
-IconvProcessor::IconvProcessor(char const * tocode,
-		char const * fromcode): tocode_(tocode), fromcode_(fromcode),
+IconvProcessor::IconvProcessor(char const * tocode, char const * fromcode)
+	: tocode_(tocode), fromcode_(fromcode),
 		pimpl_(new IconvProcessor::Private)
 {
 }
