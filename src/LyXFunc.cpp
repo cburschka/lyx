@@ -97,7 +97,6 @@
 #include "support/os.h"
 
 #include <boost/current_function.hpp>
-#include <boost/filesystem/operations.hpp>
 
 #include <sstream>
 
@@ -109,8 +108,6 @@ using std::istringstream;
 using std::ostringstream;
 using std::find;
 using std::vector;
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -604,7 +601,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = buf->lyxvc().inUse();
 		break;
 	case LFUN_BUFFER_RELOAD:
-		enable = !buf->isUnnamed() && fs::exists(buf->absFileName())
+		enable = !buf->isUnnamed() && buf->fileName().exists()
 			&& (!buf->isClean() || buf->isExternallyModified(Buffer::timestamp_method));
 		break;
 
@@ -856,7 +853,7 @@ bool LyXFunc::ensureBufferClean(BufferView * bv)
 	if (buf.isClean())
 		return true;
 
-	docstring const file = makeDisplayPath(buf.absFileName(), 30);
+	docstring const file = buf.fileName().displayName(30);
 	docstring text = bformat(_("The document %1$s has unsaved "
 					     "changes.\n\nDo you want to save "
 					     "the document?"), file);

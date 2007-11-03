@@ -116,6 +116,18 @@ bool FileName::isReadable() const
 }
 
 
+std::string FileName::onlyFileName() const
+{
+	return support::onlyFilename(absFilename());
+}
+
+
+std::string FileName::onlyPath() const
+{
+	return support::onlyPath(absFilename());
+}
+
+
 bool FileName::isFileReadable() const
 {
 	QFileInfo const fi(toqstr(name_));
@@ -172,6 +184,12 @@ bool FileName::createDirectory(int permission) const
 {
 	BOOST_ASSERT(!empty());
 	return mkdir(*this, permission) == 0;
+}
+
+
+docstring FileName::displayName(int threshold) const
+{
+	return makeDisplayPath(absFilename(), threshold);
 }
 
 

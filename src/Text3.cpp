@@ -186,7 +186,7 @@ static void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 static bool doInsertInset(Cursor & cur, Text * text,
 	FuncRequest const & cmd, bool edit, bool pastesel)
 {
-	Inset * inset = createInset(&cur.bv(), cmd);
+	Inset * inset = createInset(cur.bv().buffer(), cmd);
 	if (!inset)
 		return false;
 
@@ -687,7 +687,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_INSERT: {
 		cur.recordUndo();
-		Inset * inset = createInset(bv, cmd);
+		Inset * inset = createInset(bv->buffer(), cmd);
 		if (inset) {
 			// FIXME (Abdel 01/02/2006):
 			// What follows would be a partial fix for bug 2154:
@@ -1144,7 +1144,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INFO_INSERT: {
-		Inset * inset = createInset(&cur.bv(), cmd);
+		Inset * inset = createInset(cur.bv().buffer(), cmd);
 		if (!inset)
 			break;
 		// if an empty inset is created (cmd.argument() is empty)
@@ -1244,8 +1244,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
 		break;
+
 	case LFUN_NOMENCL_INSERT: {
-		Inset * inset = createInset(&cur.bv(), cmd);
+		FuncRequest cmd1 = cmd;
+		if (cmd.argument().empty())
+			cmd1 = FuncRequest(cmd,
+				bv->cursor().innerText()->getStringToIndex(bv->cursor()));
+		Inset * inset = createInset(cur.bv().buffer(), cmd1);
 		if (!inset)
 			break;
 		cur.recordUndo();

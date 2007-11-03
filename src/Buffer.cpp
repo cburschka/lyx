@@ -1700,6 +1700,12 @@ void Buffer::markDirty()
 }
 
 
+FileName Buffer::fileName() const
+{
+	return pimpl_->filename;
+}
+
+
 string Buffer::absFileName() const
 {
 	return pimpl_->filename.absFilename();

@@ -16,10 +16,6 @@
 #include "support/FileName.h"
 
 #include <vector>
-#include <utility>
-
-#include "ParIterator.h"
-#include "Paragraph.h"
 
 /**
 
@@ -91,6 +87,7 @@ is why external filename will exist even if a file is at "EMBEDDED" status.
 namespace lyx {
 
 class Buffer;
+class Inset;
 class Lexer;
 class ErrorList;
 

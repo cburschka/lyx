@@ -67,7 +67,6 @@ using support::isLyXFilename;
 using support::isValidLaTeXFilename;
 using support::latex_path;
 using support::makeAbsPath;
-using support::makeDisplayPath;
 using support::makeRelPath;
 using support::onlyFilename;
 using support::onlyPath;
@@ -101,7 +100,8 @@ enum Types {
 };
 
 
-Types type(std::string const & s) {
+Types type(std::string const & s)
+{
 	if (s == "input")
 		return INPUT;
 	if (s == "verbatiminput")
@@ -118,8 +118,7 @@ Types type(std::string const & s) {
 
 Types type(InsetCommandParams const & params)
 {
-	string const command_name = params.getCmdName();
-	return type(command_name);
+	return type(params.getCmdName());
 }
 
 
@@ -163,8 +162,8 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 
 CommandInfo const * InsetInclude::findInfo(std::string const & /* cmdName */)
 {
-	//This is only correct for the case of listings, but it'll do for now.
-	//In the other cases, this second parameter should just be empty.
+	// This is only correct for the case of listings, but it'll do for now.
+	// In the other cases, this second parameter should just be empty.
 	static const char * const paramnames[] = {"filename", "lstparams", ""};
 	static const bool isoptional[] = {false, true};
 	static const CommandInfo info = {2, paramnames, isoptional};
@@ -172,7 +171,8 @@ CommandInfo const * InsetInclude::findInfo(std::string const & /* cmdName */)
 }
 
 
-bool InsetInclude::isCompatibleCommand(std::string const & s) {
+bool InsetInclude::isCompatibleCommand(std::string const & s)
+{
 	return type(s) != NONE;
 }
 
@@ -213,9 +213,9 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 namespace {
 
-string const masterFilename(Buffer const & buffer)
+FileName const masterFileName(Buffer const & buffer)
 {
-	return buffer.masterBuffer()->absFileName();
+	return buffer.masterBuffer()->fileName();
 }
 
 
@@ -416,7 +416,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			docstring text = bformat(_("Included file `%1$s'\n"
 						"has textclass `%2$s'\n"
 							     "while parent file has textclass `%3$s'."),
-					      makeDisplayPath(included_file.absFilename()),
+					      included_file.displayName(),
 					      from_utf8(tmp->params().getTextClass().name()),
 					      from_utf8(masterBuffer->params().getTextClass().name()));
 			Alert::warning(_("Different textclasses"), text);
@@ -438,7 +438,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 				docstring text = bformat(_("Included file `%1$s'\n"
 							"uses module `%2$s'\n"
 							"which is not used in parent file."),
-				       makeDisplayPath(included_file.absFilename()), from_utf8(module));
+				       included_file.displayName(), from_utf8(module));
 				Alert::warning(_("Module not found"), text);
 			}
 		}
@@ -454,7 +454,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		Encoding const * const oldEnc = runparams.encoding;
 		runparams.encoding = &tmp->params().encoding();
 		tmp->makeLaTeXFile(writefile,
-				   onlyPath(masterFilename(buffer)),
+				   masterFileName(buffer).onlyPath(),
 				   runparams, false);
 		runparams.encoding = oldEnc;
 	} else {

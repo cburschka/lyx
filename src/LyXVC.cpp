@@ -32,7 +32,6 @@ namespace lyx {
 using support::bformat;
 using support::FileName;
 using support::makeAbsPath;
-using support::makeDisplayPath;
 using support::tempName;
 
 using std::endl;
@@ -92,7 +91,7 @@ void LyXVC::setBuffer(Buffer * buf)
 
 void LyXVC::registrer()
 {
-	FileName const filename(owner_->absFileName());
+	FileName const filename = owner_->fileName();
 
 	// there must be a file to save
 	if (!filename.isFileReadable()) {
@@ -109,14 +108,14 @@ void LyXVC::registrer()
 		if (cvs_entries.isFileReadable()) {
 			LYXERR(Debug::LYXVC)
 				<< "LyXVC: registering "
-				<< to_utf8(makeDisplayPath(filename.absFilename()))
+				<< to_utf8(filename.displayName())
 				<< " with CVS" << endl;
 			vcs.reset(new CVS(cvs_entries, filename));
 
 		} else {
 			LYXERR(Debug::LYXVC)
 				<< "LyXVC: registering "
-				<< to_utf8(makeDisplayPath(filename.absFilename()))
+				<< to_utf8(filename.displayName())
 				<< " with RCS" << endl;
 			vcs.reset(new RCS(filename));
 		}
@@ -166,7 +165,7 @@ void LyXVC::revert()
 {
 	LYXERR(Debug::LYXVC) << "LyXVC: revert" << endl;
 
-	docstring const file = makeDisplayPath(owner_->absFileName(), 20);
+	docstring const file = owner_->fileName().displayName(20);
 	docstring text = bformat(_("Reverting to the stored version of the "
 		"document %1$s will lose all current changes.\n\n"
 					     "Do you want to revert to the saved version?"), file);

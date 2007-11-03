@@ -13,7 +13,6 @@
 #include "factory.h"
 
 #include "Buffer.h"
-#include "BufferView.h"
 #include "BufferParams.h"
 #include "debug.h"
 #include "FloatList.h"
@@ -80,9 +79,9 @@ namespace Alert = frontend::Alert;
 using support::compare_ascii_no_case;
 
 
-Inset * createInset(BufferView * bv, FuncRequest const & cmd)
+Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 {
-	BufferParams const & params = bv->buffer().params();
+	BufferParams const & params = buf.params();
 
 	try {
 
@@ -154,7 +153,6 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			if (params.getTextClass().floats().typeExist(argument))
 				return new InsetFloat(params, argument);
 			lyxerr << "Non-existent float type: " << argument << endl;
-			return 0;
 		}
 
 		case LFUN_FLOAT_WIDE_INSERT: {
@@ -182,9 +180,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 
 		case LFUN_NOMENCL_INSERT: {
 			InsetCommandParams icp(NOMENCL_CODE);
-			icp["symbol"] = cmd.argument().empty() ?
-				bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
-				cmd.argument();
+			icp["symbol"] = cmd.argument();
 			return new InsetNomencl(icp);
 		}
 
@@ -198,7 +194,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 				r = 2;
 			if (c <= 0)
 				c = 2;
-			return new InsetTabular(bv->buffer(), r, c);
+			return new InsetTabular(buf, r, c);
 		}
 
 		case LFUN_CAPTION_INSERT: {
@@ -267,18 +263,16 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			}
 			
 			case EXTERNAL_CODE: {
-				Buffer const & buffer = bv->buffer();
 				InsetExternalParams iep;
-				InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, iep);
+				InsetExternalMailer::string2params(to_utf8(cmd.argument()), buf, iep);
 				auto_ptr<InsetExternal> inset(new InsetExternal);
-				inset->setParams(iep, buffer);
+				inset->setParams(iep, buf);
 				return inset.release();
 			}
 			
 			case GRAPHICS_CODE: {
-				Buffer const & buffer = bv->buffer();
 				InsetGraphicsParams igp;
-				InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, igp);
+				InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buf, igp);
 				auto_ptr<InsetGraphics> inset(new InsetGraphics);
 				inset->setParams(igp);
 				return inset.release();
@@ -314,7 +308,7 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			case REF_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetRef(icp, bv->buffer());
+				return new InsetRef(icp, buf);
 			}
 			
 			case TOC_CODE: {
@@ -341,21 +335,21 @@ Inset * createInset(BufferView * bv, FuncRequest const & cmd)
 			string const name = to_utf8(cmd.argument());
 			if (name == "normal")
 				return new InsetSpace(InsetSpace::NORMAL);
-			else if (name == "protected")
+			if (name == "protected")
 				return new InsetSpace(InsetSpace::PROTECTED);
-			else if (name == "thin")
+			if (name == "thin")
 				return new InsetSpace(InsetSpace::THIN);
-			else if (name == "quad")
+			if (name == "quad")
 				return new InsetSpace(InsetSpace::QUAD);
-			else if (name == "qquad")
+			if (name == "qquad")
 				return new InsetSpace(InsetSpace::QQUAD);
-			else if (name == "enspace")
+			if (name == "enspace")
 				return new InsetSpace(InsetSpace::ENSPACE);
-			else if (name == "enskip")
+			if (name == "enskip")
 				return new InsetSpace(InsetSpace::ENSKIP);
-			else if (name == "negthinspace")
+			if (name == "negthinspace")
 				return new InsetSpace(InsetSpace::NEGTHIN);
-			else if (name.empty())
+			if (name.empty())
 				lyxerr << "LyX function 'space' needs an argument." << endl;
 			else
 				lyxerr << "Wrong argument for LyX function 'space'." << endl;

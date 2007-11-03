@@ -99,10 +99,12 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 	BOOST_ASSERT(buf);
 
 	docstring file;
+
+	// FIXME: Unicode?
 	if (buf->isUnnamed())
-		file = from_utf8(onlyFilename(buf->absFileName()));
+		file = from_utf8(buf->fileName().onlyFileName());
 	else
-		file = makeDisplayPath(buf->absFileName(), 30);
+		file = buf->fileName().displayName(30);
 
 	docstring const text =
 		bformat(_("The document %1$s has unsaved changes.\n\n"

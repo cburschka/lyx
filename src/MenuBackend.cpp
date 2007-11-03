@@ -139,16 +139,14 @@ docstring const MenuItem::binding(bool forgui) const
 	// first one later
 	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func_);
 
-	if (bindings.size()) {
+	if (bindings.size())
 		return bindings.begin()->print(KeySequence::ForGui);
-	} else {
-		LYXERR(Debug::KBMAP)
-			<< "No binding for "
-			<< lyxaction.getActionName(func_.action)
-			<< '(' << to_utf8(func_.argument()) << ')' << endl;
-		return docstring();
-	}
 
+	LYXERR(Debug::KBMAP)
+		<< "No binding for "
+		<< lyxaction.getActionName(func_.action)
+		<< '(' << to_utf8(func_.argument()) << ')' << endl;
+	return docstring();
 }
 
 
@@ -494,8 +492,9 @@ void expandDocuments(Menu & tomenu)
 		
 		// We cannot use a for loop as the buffer list cycles.
 		do {
-			docstring label = makeDisplayPath(b->absFileName(), 20);
-			if (!b->isClean()) label = label + "*";
+			docstring label = b->fileName().displayName(20);
+			if (!b->isClean())
+				label = label + "*";
 			if (ii < 10)
 				label = convert<docstring>(ii) + ". " + label + '|' + convert<docstring>(ii);
 			tomenu.add(MenuItem(MenuItem::Command, label,
@@ -507,7 +506,6 @@ void expandDocuments(Menu & tomenu)
 	} else {
 		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),
 		           FuncRequest(LFUN_NOACTION)));
-		return;
 	}
 }
 

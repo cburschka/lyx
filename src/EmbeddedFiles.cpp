@@ -60,7 +60,6 @@ using support::FileName;
 using support::DocFileName;
 using support::makeAbsPath;
 using support::addName;
-using support::onlyPath;
 using support::absolutePath;
 using support::onlyFilename;
 using support::makeRelPath;
@@ -155,7 +154,7 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	// copy file
 	try {
 		// need to make directory?
-		string path = onlyPath(ext_file);
+		string path = support::onlyPath(ext_file);
 		if (!fs::is_directory(path))
 			makedir(const_cast<char*>(path.c_str()), 0755);
 		fs::copy_file(emb_file, ext_file, false);
@@ -197,7 +196,7 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 	// copy file
 	try {
 		// need to make directory?
-		string path = onlyPath(emb_file);
+		string path = support::onlyPath(emb_file);
 		if (!fs::is_directory(path))
 			makedir(const_cast<char*>(path.c_str()), 0755);
 		fs::copy_file(ext_file, emb_file, false);

@@ -423,8 +423,7 @@ BufferView::~BufferView()
 	LastFilePosSection::FilePos fp;
 	fp.pit = d->cursor_.bottom().pit();
 	fp.pos = d->cursor_.bottom().pos();
-	LyX::ref().session().lastFilePos().save(
-		support::FileName(buffer_.absFileName()), fp);
+	LyX::ref().session().lastFilePos().save(buffer_.fileName(), fp);
 
 	delete d;
 }
@@ -724,7 +723,7 @@ void BufferView::saveBookmark(unsigned int idx)
 	// pit and pos will be updated with bottom level pit/pos
 	// when lyx exits.
 	LyX::ref().session().bookmarks().save(
-		FileName(buffer_.absFileName()),
+		buffer_.fileName(),
 		d->cursor_.bottom().pit(),
 		d->cursor_.bottom().pos(),
 		d->cursor_.paragraph().id(),

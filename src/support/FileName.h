@@ -12,6 +12,8 @@
 #ifndef FILENAME_H
 #define FILENAME_H
 
+#include "strfwd.h"
+
 #include <string>
 #include <ctime>
 
@@ -98,6 +100,15 @@ public:
 	/// \p mask must be in filesystem encoding
 	static FileName tempName(FileName const & dir = FileName(),
 						std::string const & mask = std::string());
+
+	/// filename without path
+	std::string onlyFileName() const;
+	/// path without file name
+	std::string onlyPath() const;
+	/// used for display in the Gui
+	docstring displayName(int threshold = 1000) const;
+
+
 protected:
 	/// The absolute file name.
 	/// The encoding is currently unspecified, anything else than ASCII

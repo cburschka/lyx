@@ -237,6 +237,9 @@ public:
 	void markDirty();
 
 	/// Returns the buffer's filename. It is always an absolute path.
+	support::FileName fileName() const;
+
+	/// Returns the buffer's filename. It is always an absolute path.
 	std::string absFileName() const;
 
 	/// Returns the the path where the buffer lives.

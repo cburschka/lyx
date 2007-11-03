@@ -14,8 +14,6 @@
 
 #include "support/docstring.h"
 
-#include <boost/noncopyable.hpp>
-
 #include <vector>
 
 
@@ -28,7 +26,7 @@ class OutputParams;
  * The class holds all all open buffers, and handles construction
  * and deletions of new ones.
  */
-class BufferList : boost::noncopyable {
+class BufferList {
 public:
 	typedef std::vector<Buffer *>::iterator iterator;
 	typedef std::vector<Buffer *>::const_iterator const_iterator;
@@ -106,6 +104,10 @@ public:
 	void setCurrentAuthor(docstring const & name, docstring const & email);
 
 private:
+	/// noncopiable
+	BufferList(BufferList const &);
+	void operator=(BufferList const &);
+
 	/// ask to save a buffer on quit, returns false if should cancel
 	bool quitWriteBuffer(Buffer * buf);
 
