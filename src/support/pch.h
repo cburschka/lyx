@@ -1,26 +1,6 @@
 // -*- C++ -*-
 #include <config.h>
 
-#include <boost/assert.hpp>
-#include <boost/crc.hpp>
-// #include <boost/format.hpp> // mult def symbols problem (_1,_2 etc)
-#include <boost/regex.hpp>
-#include <boost/scoped_array.hpp>
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/signal.hpp>
-#include <boost/signals/trackable.hpp>
-#include <boost/version.hpp>
-
-#if BOOST_VERSION < 103300
-# include <boost/test/detail/nullstream.hpp>
-#else
-# include <boost/test/utils/nullstream.hpp>
-#endif
-
-#include <boost/tokenizer.hpp>
-#include <boost/noncopyable.hpp>
-
 #include <fcntl.h>
 #ifdef HAVE_SYS_STAT_H
 # include <sys/stat.h>
