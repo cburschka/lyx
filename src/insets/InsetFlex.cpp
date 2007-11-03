@@ -103,7 +103,6 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 	ParagraphList::const_iterator end = paragraphs().end();
 
 	if (!undefined())
-		// FIXME UNICODE
 		sgml::openTag(os, layout_->latexname,
 			      par->getID(buf, runparams) + layout_->latexparam);
 

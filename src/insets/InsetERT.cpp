@@ -195,7 +195,6 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetERT::setButtonLabel()
 {
-	// FIXME UNICODE
 	if (decoration() == Classic)
 		setLabel(isOpen() ? _("ERT") : getNewLabel(_("ERT")));
 	else
