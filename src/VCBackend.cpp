@@ -20,7 +20,6 @@
 #include "support/lstrings.h"
 #include "support/Systemcall.h"
 
-#include <boost/filesystem/operations.hpp>
 #include <boost/regex.hpp>
 
 #include <fstream>
@@ -53,8 +52,6 @@ using std::getline;
 using std::string;
 using std::ifstream;
 
-namespace fs = boost::filesystem;
-
 
 int VCS::doVCCommand(string const & cmd, FileName const & path)
 {
@@ -85,21 +82,22 @@ FileName const RCS::find_file(FileName const & file)
 	FileName tmp(file.absFilename() + ",v");
 	LYXERR(Debug::LYXVC) << "Checking if file is under rcs: "
 			     << tmp << endl;
-	if (fs::is_readable(tmp.toFilesystemEncoding())) {
+	if (tmp.isReadable()) {
 		LYXERR(Debug::LYXVC) << "Yes " << file
 				     << " is under rcs." << endl;
 		return tmp;
-	} else {
-		// Check if RCS/*,v exists.
-		tmp = FileName(addName(addPath(onlyPath(file.absFilename()), "RCS"), file.absFilename()) + ",v");
-		LYXERR(Debug::LYXVC) << "Checking if file is under rcs: "
-				     << tmp << endl;
-		if (fs::is_readable(tmp.toFilesystemEncoding())) {
-			LYXERR(Debug::LYXVC) << "Yes " << file
-					     << " it is under rcs."<< endl;
-			return tmp;
-		}
 	}
+
+	// Check if RCS/*,v exists.
+	tmp = FileName(addName(addPath(onlyPath(file.absFilename()), "RCS"), file.absFilename()) + ",v");
+	LYXERR(Debug::LYXVC) << "Checking if file is under rcs: "
+					 << tmp << endl;
+	if (tmp.isReadable()) {
+		LYXERR(Debug::LYXVC) << "Yes " << file
+						 << " it is under rcs."<< endl;
+		return tmp;
+	}
+
 	return FileName();
 }
 
@@ -251,7 +249,7 @@ FileName const CVS::find_file(FileName const & file)
 	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
 	LYXERR(Debug::LYXVC) << "LyXVC: checking in `" << dir
 			     << "' for `" << tmpf << '\'' << endl;
-	if (fs::is_readable(dir.toFilesystemEncoding())) {
+	if (dir.isReadable()) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
 		// and see if we can find this file. We do a fast and
 		// dirty parse here.
@@ -293,7 +291,7 @@ void CVS::scanMaster()
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
 			// FIXME: must double check file is stattable/existing
-			time_t mod = fs::last_write_time(file_.toFilesystemEncoding());
+			time_t mod = file_.lastModified();
 			string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 			LYXERR(Debug::LYXVC)
 				<<  "Date in Entries: `" << file_date
