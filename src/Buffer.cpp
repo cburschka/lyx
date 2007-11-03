@@ -850,7 +850,7 @@ bool Buffer::save() const
 	bool madeBackup = false;
 
 	// make a backup if the file already exists
-	if (lyxrc.make_backup && fs::exists(encodedFilename)) {
+	if (lyxrc.make_backup && fileName().exists()) {
 		backupName = FileName(absFileName() + '~');
 		if (!lyxrc.backupdir_path.empty()) {
 			string const mangledName =
@@ -872,7 +872,7 @@ bool Buffer::save() const
 	}
 
 	// ask if the disk file has been externally modified (use checksum method)
-	if (fs::exists(encodedFilename) && isExternallyModified(checksum_method)) {
+	if (fileName().exists() && isExternallyModified(checksum_method)) {
 		docstring const file = makeDisplayPath(absFileName(), 20);
 		docstring text = bformat(_("Document %1$s has been externally modified. Are you sure "
 							     "you want to overwrite this file?"), file);

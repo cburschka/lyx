@@ -48,8 +48,6 @@
 #include "support/Translator.h"
 #include "support/lstrings.h"
 
-#include <boost/array.hpp>
-
 #include <algorithm>
 #include <sstream>
 
@@ -288,8 +286,8 @@ public:
 
 	AuthorList authorlist;
 	BranchList branchlist;
-	boost::array<Bullet, 4> temp_bullets;
-	boost::array<Bullet, 4> user_defined_bullets;
+	Bullet temp_bullets[4];
+	Bullet user_defined_bullets[4];
 	Spacing spacing;
 	/** This is the amount of space used for paragraph_separation "skip",
 	 * and for detached paragraphs in "indented" documents.
