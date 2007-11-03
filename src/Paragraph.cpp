@@ -161,7 +161,8 @@ public:
 	bool latexSpecialPhrase(
 		odocstream & os,
 		pos_type & i,
-		unsigned int & column);
+		unsigned int & column,
+		OutputParams & runparams);
 
 	///
 	void validate(LaTeXFeatures & features,
@@ -232,10 +233,10 @@ struct special_phrase {
 };
 
 special_phrase const special_phrases[] = {
-	{ "LyX", from_ascii("\\protect\\LyX{}"), false },
-	{ "TeX", from_ascii("\\protect\\TeX{}"), true },
-	{ "LaTeX2e", from_ascii("\\protect\\LaTeXe{}"), true },
-	{ "LaTeX", from_ascii("\\protect\\LaTeX{}"), true },
+	{ "LyX", from_ascii("\\LyX{}"), false },
+	{ "TeX", from_ascii("\\TeX{}"), true },
+	{ "LaTeX2e", from_ascii("\\LaTeXe{}"), true },
+	{ "LaTeX", from_ascii("\\LaTeX{}"), true },
 };
 
 size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
@@ -886,7 +887,7 @@ void Paragraph::Private::latexSpecialChar(
 	default:
 
 		// LyX, LaTeX etc.
-		if (latexSpecialPhrase(os, i, column))
+		if (latexSpecialPhrase(os, i, column, runparams))
 			return;
 
 		if (c == '\0')
@@ -989,7 +990,7 @@ bool Paragraph::Private::latexSpecialTypewriter(char_type const c, odocstream & 
 
 
 bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
-	unsigned int & column)
+	unsigned int & column, OutputParams & runparams)
 {
 	// FIXME: if we have "LaTeX" with a font
 	// change in the middle (before the 'T', then
@@ -1000,6 +1001,8 @@ bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
 	for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
 		if (!isTextAt(special_phrases[pnr].phrase, i))
 			continue;
+		if (runparams.moving_arg)
+			os << "\\protect";
 		os << special_phrases[pnr].macro;
 		i += special_phrases[pnr].phrase.length() - 1;
 		column += special_phrases[pnr].macro.length() - 1;
