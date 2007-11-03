@@ -38,15 +38,23 @@ namespace frontend { class Painter; }
 class InsetCollapsable : public InsetText {
 public:
 	///
-	InsetCollapsable(BufferParams const &, CollapseStatus status = Inset::Open);
+	InsetCollapsable(
+		BufferParams const &,
+		CollapseStatus status = Inset::Open,
+		InsetLayout const * il = 0
+		);
 	///
 	InsetCollapsable(InsetCollapsable const & rhs);
 	
 	InsetCollapsable * asInsetCollapsable() { return this; }
 	InsetCollapsable const * asInsetCollapsable() const { return this; }
 	docstring name() const { return from_ascii("Collapsable"); }
+	InsetLayout const & getLayout(BufferParams const &) const
+	{ return *layout_; } 
 	///
 	void setLayout(BufferParams const &);
+	/// (Re-)set the character style parameters from \p il
+	void setLayout(InsetLayout const & il);
 	///
 	void read(Buffer const &, Lexer &);
 	///

@@ -444,27 +444,28 @@ void switchBetweenClasses(TextClassPtr const & c1,
 	// character styles
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		if (it->lyxCode() == FLEX_CODE) {
-			InsetFlex & inset =
-				static_cast<InsetFlex &>(*it);
-			string const name = inset.params().name;
-			InsetLayout const & il = 
-				tclass2.insetlayout(from_utf8(name));
-			inset.setLayout(il);
-			if (il.labelstring == from_utf8("UNDEFINED")) {
-				// The flex inset is undefined in tclass2
-				docstring const s = bformat(_(
-					"Flex inset %1$s is "
-					"undefined because of class "
-					"conversion from\n%2$s to %3$s"),
-					 from_utf8(name), from_utf8(tclass1.name()),
-					 from_utf8(tclass2.name()));
-				// To warn the user that something had to be done.
-				errorlist.push_back(ErrorItem(
-					_("Undefined flex inset"),
-					s, it.paragraph().id(),	it.pos(), it.pos() + 1));
-			} 
-		}
+		InsetCollapsable * inset = it->asInsetCollapsable();
+		if (!inset)
+			continue;
+		if (inset->lyxCode() != FLEX_CODE)
+			// FIXME: Should we verify all InsetCollapsable?
+			continue;
+		docstring const name = inset->name();
+		InsetLayout const & il = tclass2.insetlayout(name);
+		inset->setLayout(il);
+		if (il.labelstring != from_utf8("UNDEFINED"))
+			continue;
+		// The flex inset is undefined in tclass2
+		docstring const s = bformat(_(
+			"Flex inset %1$s is "
+			"undefined because of class "
+			"conversion from\n%2$s to %3$s"),
+			name, from_utf8(tclass1.name()),
+			from_utf8(tclass2.name()));
+		// To warn the user that something had to be done.
+		errorlist.push_back(ErrorItem(
+				_("Undefined flex inset"),
+				s, it.paragraph().id(),	it.pos(), it.pos() + 1));
 	}
 }
 

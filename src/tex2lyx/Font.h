@@ -28,6 +28,7 @@ class FontInfo
 public:
 	FontInfo() {}
 	FontInfo & realize(FontInfo const &) { return *this; }
+	void setColor(int) {}
 	bool resolved() const { return true; }
 };
 

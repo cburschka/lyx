@@ -45,10 +45,9 @@ using std::ostream;
 
 InsetFlex::InsetFlex(BufferParams const & bp,
 				InsetLayout const & il)
-	: InsetCollapsable(bp, Collapsed)
+	: InsetCollapsable(bp, Collapsed, &il)
 {
 	params_.name = il.name;
-	setLayout(il);
 }
 
 
@@ -66,12 +65,6 @@ Inset * InsetFlex::clone() const
 bool InsetFlex::undefined() const
 {
 	return layout_->labelstring == from_utf8("UNDEFINED");
-}
-
-
-void InsetFlex::setLayout(InsetLayout const & il)
-{
-	layout_ = &il;
 }
 
 

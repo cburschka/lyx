@@ -73,9 +73,9 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 }
 
 
-InsetCollapsable::InsetCollapsable
-		(BufferParams const & bp, CollapseStatus status)
-	: InsetText(bp), status_(status),
+InsetCollapsable::InsetCollapsable(BufferParams const & bp,
+		CollapseStatus status, InsetLayout const * il)
+	: InsetText(bp), layout_(il), status_(status),
 	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
 	setAutoBreakRows(true);
@@ -102,7 +102,13 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 
 void  InsetCollapsable::setLayout(BufferParams const & bp)
 {
-	layout_ = &getLayout(bp);
+	setLayout(bp.getTextClass().insetlayout(name()));
+}
+
+
+void InsetCollapsable::setLayout(InsetLayout const & il)
+{
+	layout_ = &il;
 	labelstring_ = layout_->labelstring;
 
 	setButtonLabel();
@@ -156,10 +162,10 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 	}
 	InsetText::read(buf, lex);
 
+	setLayout(buf.params());
+
 	if (!token_found)
 		status_ = isOpen() ? Open : Collapsed;
-
-	setLayout(buf.params());
 
 	// Force default font, if so requested
 	// This avoids paragraphs in buffer language that would have a
@@ -174,6 +180,7 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 
 Dimension InsetCollapsable::dimensionCollapsed() const
 {
+	BOOST_ASSERT(layout_);
 	Dimension dim;
 	theFontMetrics(layout_->labelfont).buttonText(
 		labelstring_, dim.wid, dim.asc, dim.des);
@@ -183,6 +190,8 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	BOOST_ASSERT(layout_);
+
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
 
 	FontInfo tmpfont = mi.base.font;
@@ -247,6 +256,8 @@ bool InsetCollapsable::setMouseHover(bool mouse_hover)
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
+	BOOST_ASSERT(layout_);
+
 	autoOpen_ = pi.base.bv->cursor().isInside(this);
 	ColorCode const old_color = pi.background_color;
 	pi.background_color = backgroundColor();
@@ -574,7 +585,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		if (layout_->forceltr) {
+		if (layout_ && layout_->forceltr) {
 			// Force any new text to latex_language
 			// FIXME: This should only be necessary in constructor, but
 			// new paragraphs that are created by pressing enter at the
@@ -764,13 +775,14 @@ docstring InsetCollapsable::floatName(string const & type, BufferParams const & 
 
 InsetCollapsable::Decoration InsetCollapsable::decoration() const
 {
-	if (layout_->decoration == "classic")
+	if (!layout_ || layout_->decoration == "classic")
 		return Classic;
 	if (layout_->decoration == "minimalistic")
 		return Minimalistic;
 	if (layout_->decoration == "conglomerate")
 		return Conglomerate;
-	if (name() == from_ascii("Flex"))
+	if (lyxCode() == FLEX_CODE)
+		// FIXME: Is this really necessary?
 		return Conglomerate;
 	return Classic;
 }
@@ -779,6 +791,12 @@ InsetCollapsable::Decoration InsetCollapsable::decoration() const
 int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 			  OutputParams const & runparams) const
 {
+	// FIXME: What should we do layout_ is 0?
+	// 1) assert
+	// 2) through an error
+	if (!layout_)
+		return 0;
+
 	// This implements the standard way of handling the LaTeX output of
 	// a collapsable inset, either a command or an environment. Standard 
 	// collapsable insets should not redefine this, non-standard ones may
@@ -818,6 +836,9 @@ int InsetCollapsable::latex(Buffer const & buf, odocstream & os,
 
 void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
+	if (!layout_)
+		return;
+
 	// Force inclusion of preamble snippet in layout file
 	features.require(layout_->name);
 	InsetText::validate(features);
