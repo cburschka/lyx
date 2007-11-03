@@ -90,6 +90,7 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 		topx(rhs.topx),
 		topbaseline(rhs.topbaseline),
 		layout_(rhs.layout_),
+		labelstring_(rhs.labelstring_),
 		status_(rhs.status_),
 		openinlined_(rhs.openinlined_),
 		autoOpen_(rhs.autoOpen_),

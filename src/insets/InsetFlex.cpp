@@ -54,9 +54,7 @@ InsetFlex::InsetFlex(BufferParams const & bp,
 
 InsetFlex::InsetFlex(InsetFlex const & in)
 	: InsetCollapsable(in), params_(in.params_)
-{
-	setLayout(*in.layout_);
-}
+{}
 
 
 Inset * InsetFlex::clone() const
