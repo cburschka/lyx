@@ -16,6 +16,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "Dimension.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"

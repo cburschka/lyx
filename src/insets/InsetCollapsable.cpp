@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "debug.h"
+#include "Dimension.h"
 #include "DispatchResult.h"
 #include "FloatList.h"
 #include "FuncStatus.h"

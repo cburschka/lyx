@@ -15,17 +15,10 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
-#include "Dimension.h"
 #include "update_flags.h"
 
 #include "support/strfwd.h"
 #include "support/types.h"
-
-#include <boost/noncopyable.hpp>
-
-#include <utility>
-#include <string>
-
 
 namespace lyx {
 
@@ -45,6 +38,7 @@ class Intl;
 class Inset;
 class ParIterator;
 class ParagraphMetrics;
+class Point;
 class Text;
 class TextMetrics;
 class ViewMetricsInfo;
@@ -85,7 +79,7 @@ struct ScrollbarParameters
  * \sa Buffer
  * \sa CoordCache
  */
-class BufferView : boost::noncopyable {
+class BufferView {
 public:
 	///
 	BufferView(Buffer & buffer);
@@ -262,6 +256,10 @@ public:
 	void insertPlaintextFile(std::string const & fileName, bool asParagraph);
 
 private:
+	/// noncopyable
+	BufferView(BufferView const &);
+	void operator=(BufferView const &);
+
 	// the position relative to (0, baseline) of outermost paragraph
 	Point coordOffset(DocIterator const & dit, bool boundary) const;
 	/// Update current paragraph metrics.
