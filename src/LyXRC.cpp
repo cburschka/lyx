@@ -2399,6 +2399,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");
 		break;
 
+	case RC_DEFFILE:
+		//FIXME: fix description.
+		str = _("Command definition file.");
+		break;
+
 	case RC_DEFAULT_LANGUAGE:
 		str = _("New documents will be assigned this language.");
 		break;
@@ -2510,10 +2515,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_PERS_DICT:
 	case RC_USE_PERS_DICT:
 		str = _("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
-		break;
-
-	case RC_USE_PIXMAP_CACHE:
-		str = _("Enable the pixmap cache that might improve performance on Mac and Windows.");
 		break;
 
 	case RC_PREVIEW:
@@ -2685,6 +2686,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_USE_INP_ENC:
 		str = _("Specify whether to pass the -T input encoding option to ispell. Enable this if you cannot check the spelling of words containing accented letters. This may not work with all dictionaries.");
+		break;
+
+	case RC_USE_PIXMAP_CACHE:
+		str = _("Enable the pixmap cache that might improve performance on Mac and Windows.");
 		break;
 
 	case RC_USE_SPELL_LIB:
