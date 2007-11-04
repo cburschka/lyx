@@ -2280,10 +2280,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
 		break;
 
-	case RC_USE_PIXMAP_CACHE:
-		str = _("Enable the pixmap cache that might improve performance on Mac and Windows.");
-		break;
-
 	case RC_PREVIEW:
 		str = _("Shows a typeset preview of things such as math");
 		break;
@@ -2453,6 +2449,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_USE_INP_ENC:
 		str = _("Specify whether to pass the -T input encoding option to ispell. Enable this if you cannot check the spelling of words containing accented letters. This may not work with all dictionaries.");
+		break;
+
+	case RC_USE_PIXMAP_CACHE:
+		str = _("Enable the pixmap cache that might improve performance on Mac and Windows.");
 		break;
 
 	case RC_USE_SPELL_LIB:
