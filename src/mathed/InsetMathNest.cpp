@@ -1003,6 +1003,12 @@ goto_char_backwards:
 			cur.undispatched();
 		break;
 	}
+	case LFUN_INSET_DISSOLVE:
+		if (!asHullInset()) {
+			recordUndoInset(cur, Undo::ATOMIC);
+			cur.pullArg();
+		}
+		break;
 
 	default:
 		InsetMath::doDispatch(cur, cmd);
@@ -1110,6 +1116,10 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
 		// FIXME: These would probably make sense in math-text mode
 		flag.enabled(false);
+		break;
+
+	case LFUN_INSET_DISSOLVE:
+		flag.enabled(!asHullInset());
 		break;
 
 	default:
