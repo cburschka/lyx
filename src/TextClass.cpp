@@ -129,7 +129,7 @@ bool TextClass::isTeXClassAvailable() const
 }
 
 
-bool TextClass::do_readStyle(Lexer & lexrc, Layout & lay)
+bool TextClass::readStyle(Lexer & lexrc, Layout & lay)
 {
 	LYXERR(Debug::TCLASS) << "Reading style " << to_utf8(lay.name()) << endl;
 	if (!lay.read(lexrc, *this)) {
@@ -298,16 +298,16 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 						+ lexrc.getString() + " is probably not valid UTF-8!";
 					lexrc.printError(s.c_str());
 					Layout lay;
-					error = do_readStyle(lexrc, lay);
+					error = readStyle(lexrc, lay);
 				} else if (hasLayout(name)) {
 					Layout * lay = operator[](name).get();
-					error = do_readStyle(lexrc, *lay);
+					error = readStyle(lexrc, *lay);
 				} else {
 					Layout lay;
 					lay.setName(name);
 					if (le == TC_ENVIRONMENT)
 						lay.is_environment = true;
-					error = do_readStyle(lexrc, lay);
+					error = readStyle(lexrc, lay);
 					if (!error)
 						layoutlist_.push_back(
 							boost::shared_ptr<Layout>(new Layout(lay))
@@ -332,7 +332,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 			if (lexrc.next()) {
 				docstring const style = from_utf8(subst(lexrc.getString(),
 						     '_', ' '));
-				if (!delete_layout(style))
+				if (!deleteLayout(style))
 					lyxerr << "Cannot delete style `"
 					       << to_utf8(style) << '\'' << endl;
 //					lexrc.printError("Cannot delete style"
@@ -1022,12 +1022,11 @@ LayoutPtr const & TextClass::operator[](docstring const & name) const
 		BOOST_ASSERT(false);
 	}
 
-	return (*cit);
+	return *cit;
 }
 
 
-
-bool TextClass::delete_layout(docstring const & name)
+bool TextClass::deleteLayout(docstring const & name)
 {
 	if (name == defaultLayoutName())
 		return false;

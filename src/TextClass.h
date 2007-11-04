@@ -7,8 +7,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYXTEXTCLASS_H
-#define LYXTEXTCLASS_H
+#ifndef TEXTCLASS_H
+#define TEXTCLASS_H
 
 #include "ColorCode.h"
 #include "FontInfo.h"
@@ -202,9 +202,9 @@ public:
 	bool hasTocLevels() const;
 private:
 	///
-	bool delete_layout(docstring const &);
+	bool deleteLayout(docstring const &);
 	///
-	bool do_readStyle(Lexer &, Layout &);
+	bool readStyle(Lexer &, Layout &);
 	/// Layout file name
 	std::string name_;
 	/// document class name
