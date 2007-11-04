@@ -2078,7 +2078,7 @@ void PrefShortcuts::shortcut_okPB_pressed()
 	// if both lfun and shortcut is valid
 	if (user_bind_.hasBinding(k, func) || system_bind_.hasBinding(k, func)) {
 		Alert::error(_("Failed to create shortcut"),
-			_("Shortcut is alreay defined"));
+			_("Shortcut is already defined"));
 		return;
 	}
 		
