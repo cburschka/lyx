@@ -190,8 +190,8 @@ status collapsed
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 28.
- Oktober 2007
+letzte Änderung: 2.
+ November 2007
 \end_layout
 
 \begin_layout Standard
@@ -27491,7 +27491,7 @@ In das ERT-Kästchen können Sie vollständige oder unvollständige LaTeX-Befehl
 \backslash
 fbox
 \family default
- einrahmen wollen, können Sie den den Befehlsteil 
+ einrahmen wollen, können Sie den Befehlsteil 
 \family typewriter
 
 \backslash
@@ -27508,7 +27508,7 @@ fbox{
 \begin_inset Graphics
 	filename clipart/ERT.png
 	display none
-	scale 205
+	scale 240
 	BoundingBox 0bp 0bp 484bp 28bp
 
 \end_inset
@@ -27534,7 +27534,11 @@ fbox{
 
 \end_inset
 
+
+\series bold
 eingerahmten
+\series default
+
 \begin_inset ERT
 status collapsed
 
@@ -27545,7 +27549,56 @@ status collapsed
 
 \end_inset
 
- Wort.
+ fetten Wort.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das hat den Vorteil, dass Formatierungen einfach mit LyX-Mitteln durchgeführt
+ werden können.
+ Hier ist ein Beispiel, in dem formatierter 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fbox{
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Text
+\series default
+ und ein Bild 
+\begin_inset Graphics
+	filename ../../images/ert-insert.png
+	scale 70
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ eingerahmt werden.
 \end_layout
 
 \begin_layout Description
