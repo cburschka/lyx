@@ -1,36 +1,38 @@
 Some results on running  'g++ -E | wc -l' with the appropriate
 includes/defines and a single #include in a compilation unit:
 
-boost/signal.hpp                        : 62141
-boost/signals/trackable.hpp             : 40849
-boost/tokenizer.hpp                     : 39490
-boost/iterator/indirect_iterator.hpp    : 36922
-boost/signals/connection.hpp            : 34957
-boost/function.hpp                      : 31379
-boost/array.hpp                         : 30205
-boost/utility.hpp                       : 30063
-boost/cregex.hpp                        : 21575
-boost/shared_ptr.hpp                    : 17469
-boost/scoped_ptr.hpp                    : 11411
-boost/crc.hpp                           : 5851
-boost/tuple/tuple.hpp                   : 4927
-boost/scoped_array.hpp                  : 3029
-boost/assert.hpp                        : 52
-boost/current_function.hpp              : 21
+boost/signal.hpp                 : 62141
+boost/signals/trackable.hpp      : 40849
+boost/tokenizer.hpp              : 39490
+boost/iterator/indirect_iterator : 36922
+boost/signals/connection.hpp     : 34957
+boost/function.hpp               : 31379
+boost/array.hpp                  : 30205
+boost/utility.hpp                : 30063
+boost/cregex.hpp                 : 21575
+boost/shared_ptr.hpp             : 17469
+boost/scoped_ptr.hpp             : 11411
+boost/crc.hpp                    : 5851
+boost/tuple/tuple.hpp            : 4927
+boost/scoped_array.hpp           : 3029
+boost/assert.hpp                 : 52
+boost/current_function.hpp       : 21
 
-string                                  : 18781
-vector                                  : 11994
-map                                     : 12467
-list                                    : 11134
-deque                                   : 11805
-iosfwd                                  : 6462
-iostream                                : 29529
+string                           : 18781
+vector                           : 11994
+map                              : 12467
+list                             : 11134
+deque                            : 11805
+iosfwd                           : 6462
+iostream                         : 29529
 
-QObject                                 : 5601
-QString                                 : 3876
-QList                                   : 1931
-QVector                                 : 4165
-QMap                                    : 2831
-QHash                                   : 7098
-QRegExp                                 : 3959
+QObject                          : 5601
+QString                          : 3876
+QList                            : 1931
+QVector                          : 4165
+QMap                             : 2831
+QHash                            : 7098
+QRegExp                          : 3959   (boost/cregex.hpp     : 21575 
+QSharedData                      : 838    (boost/shared_ptr.hpp : 17469)
+
 
