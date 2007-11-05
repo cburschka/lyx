@@ -168,7 +168,7 @@ public:
 	void idxGlue(idx_type idx);
 
 	/// add a row, one row down
-	virtual void appendRow(row_type r);
+	virtual void addRow(row_type r);
 	/// delete a row
 	virtual void delRow(row_type r);
 	/// copy a row

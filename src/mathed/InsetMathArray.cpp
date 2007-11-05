@@ -63,7 +63,7 @@ InsetMathArray::InsetMathArray(docstring const & name, docstring const & str)
 	}
 
 	for (row_type row = 1; row < dat.size(); ++row)
-		appendRow(0);
+		addRow(0);
 	for (col_type col = 1; col < dat[0].size(); ++col)
 		addCol(0);
 	for (row_type row = 0; row < dat.size(); ++row)

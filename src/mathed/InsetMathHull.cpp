@@ -622,7 +622,7 @@ void InsetMathHull::addRow(row_type row)
 		return;
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, docstring());
-	InsetMathGrid::appendRow(row);
+	InsetMathGrid::addRow(row);
 }
 
 
@@ -1019,7 +1019,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		MathData ar = cur.cell();
 		lyxerr << "use cell: " << ar << endl;
 		// FIXME: temporarily disabled
-		appendRow(cur.row());
+		addRow(cur.row());
 		++cur.idx();
 		++cur.idx();
 		cur.cell() = eq;
