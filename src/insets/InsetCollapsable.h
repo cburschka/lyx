@@ -147,7 +147,7 @@ public:
 	virtual bool isFreeSpacing() const { return layout_->freespacing; }
 	/// Don't eliminate empty paragraphs
 	virtual bool allowEmpty() const { return layout_->keepempty; }
-	/// Force inset into LTR environment if surroundings are RTL
+	/// Force inset into LTR environment if surroundings are RTL?
 	virtual bool forceLTR() const { return layout_->forceltr; }
 
 protected:

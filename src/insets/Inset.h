@@ -164,6 +164,8 @@ public:
 	virtual bool isFreeSpacing() const { return false; }
 	///
 	virtual bool allowEmpty() const { return false; }
+	/// Force inset into LTR environment if surroundings are RTL?
+	virtual bool forceLTR() const { return false; }
 
 	/// is this an inset that can be moved into?
 	/// FIXME: merge with editable()

@@ -56,6 +56,8 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "href"; }
+	/// Force inset into LTR environment if surroundings are RTL?
+	virtual bool forceLTR() const { return true; }
 private:
 	virtual Inset * clone() const {
 		return new InsetHyperlink(params());

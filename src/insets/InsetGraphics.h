@@ -82,6 +82,8 @@ public:
 	void registerEmbeddedFiles(Buffer const &, EmbeddedFiles &) const;
 	///
 	void updateEmbeddedFile(Buffer const &, EmbeddedFile const &);
+	/// Force inset into LTR environment if surroundings are RTL?
+	virtual bool forceLTR() const { return true; }
 protected:
 	InsetGraphics(InsetGraphics const &);
 	///

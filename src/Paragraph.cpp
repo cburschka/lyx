@@ -723,14 +723,10 @@ void Paragraph::Private::latexInset(Buffer const & buf,
 	bool close = false;
 	odocstream::pos_type const len = os.tellp();
 
-	if ((inset->lyxCode() == GRAPHICS_CODE
-	     || inset->lyxCode() == MATH_CODE
-	     || inset->lyxCode() == HYPERLINK_CODE
-		 || (inset->asInsetCollapsable()
-		 	 && inset->asInsetCollapsable()->forceLTR()
-			 // ERT is an exception, since it doesn't go to output
-			 && inset->lyxCode() != ERT_CODE))
-	    && running_font.isRightToLeft()) {
+	if (inset->forceLTR() 
+	    && running_font.isRightToLeft()
+		// ERT is an exception, it should be output with no decorations at all
+		&& inset->lyxCode() != ERT_CODE) {
 	    	if (running_font.language()->lang() == "farsi")
 			os << "\\beginL{}";
 		else
