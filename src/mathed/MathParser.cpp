@@ -1027,7 +1027,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			} else if (good())
 				added = addRow(grid, cellrow, getArg('[', ']'));
 			else
-				added = addRow(grid, cellrow, docstring());
+				error("missing token after \\\\");
 			if (added) {
 				cellcol = 0;
 				if (grid.asHullInset())
