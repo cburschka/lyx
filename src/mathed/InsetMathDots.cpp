@@ -12,9 +12,11 @@
 #include <config.h>
 
 #include "InsetMathDots.h"
+
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MathParser.h"
+#include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
 

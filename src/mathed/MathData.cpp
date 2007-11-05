@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "MathData.h"
+
 #include "InsetMathBrace.h"
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
@@ -19,6 +20,7 @@
 #include "MathMacro.h"
 #include "MathStream.h"
 #include "MathSupport.h"
+#include "MetricsInfo.h"
 #include "ReplaceData.h"
 
 #include "Buffer.h"
@@ -26,6 +28,8 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "debug.h"
+
+#include "support/docstream.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

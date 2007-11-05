@@ -12,8 +12,10 @@
 #include <config.h>
 
 #include "InsetMathChar.h"
+
 #include "MathSupport.h"
 #include "MathStream.h"
+#include "MetricsInfo.h"
 
 #include "debug.h"
 #include "Dimension.h"
@@ -28,19 +30,16 @@ namespace lyx {
 
 extern bool has_math_fonts;
 
-namespace {
 
-	bool isBinaryOp(char_type c)
-	{
-		return support::contains("+-<>=/*", static_cast<char>(c));
-	}
+static bool isBinaryOp(char_type c)
+{
+	return support::contains("+-<>=/*", static_cast<char>(c));
+}
 
 
-	bool slanted(char_type c)
-	{
-		return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
-	}
-
+static bool slanted(char_type c)
+{
+	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 }
 
 

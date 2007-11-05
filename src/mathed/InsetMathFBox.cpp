@@ -11,11 +11,14 @@
 #include <config.h>
 
 #include "InsetMathFBox.h"
+
 #include "MathData.h"
 #include "MathStream.h"
+#include "MetricsInfo.h"
 
-#include "support/std_ostream.h"
 #include "frontends/Painter.h"
+
+#include <ostream>
 
 
 namespace lyx {

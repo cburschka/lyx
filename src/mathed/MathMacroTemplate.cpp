@@ -1,5 +1,5 @@
 /**
- * \file math_macrotemplate.C
+ * \file MathMacroTemplate.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,13 +10,14 @@
 
 #include <config.h>
 
+#include "MathMacroTemplate.h"
+
 #include "DocIterator.h"
 #include "InsetMathBrace.h"
 #include "InsetMathChar.h"
 #include "InsetMathSqrt.h"
 #include "MathMacro.h"
 #include "MathMacroArgument.h"
-#include "MathMacroTemplate.h"
 #include "MathStream.h"
 #include "MathParser.h"
 #include "MathSupport.h"
@@ -37,13 +38,10 @@
 #include "frontends/Painter.h"
 
 #include "support/convert.h"
+#include "support/docstream.h"
 #include "support/lstrings.h"
 
 #include "debug.h"
-
-#include <boost/assert.hpp>
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
 
 #include <sstream>
 
@@ -100,10 +98,10 @@ MathMacroTemplate::MathMacroTemplate()
 }
 
 
-MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs, int optionals,
-																		 docstring const & type, 
-																		 std::vector<MathData> const & optionalValues, 
-																		 MathData const & def, MathData const & display)
+MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
+	int optionals, docstring const & type, 
+	std::vector<MathData> const & optionalValues, 
+	MathData const & def, MathData const & display)
 : InsetMathNest(optionals + 3), numargs_(numargs), 
 	optionals_(optionals), optionalValues_(optionalValues), type_(type)
 {
@@ -586,7 +584,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-bool MathMacroTemplate::getStatus(Cursor & cur, FuncRequest const & cmd,
+bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 	FuncStatus & flag) const
 {
 	bool ret = true;

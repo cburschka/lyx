@@ -17,6 +17,7 @@
 #include "gettext.h"
 #include "debug.h"
 
+#include "support/docstream.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 

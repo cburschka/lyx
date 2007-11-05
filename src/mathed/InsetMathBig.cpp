@@ -11,9 +11,10 @@
 #include <config.h>
 
 #include "InsetMathBig.h"
+
 #include "MathSupport.h"
 #include "MathStream.h"
-#include "MathStream.h"
+#include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
 

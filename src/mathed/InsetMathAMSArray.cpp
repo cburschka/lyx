@@ -10,12 +10,13 @@
 
 #include <config.h>
 
-#include "LaTeXFeatures.h"
 #include "InsetMathAMSArray.h"
+
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "MathStream.h"
 #include "MathSupport.h"
+#include "MetricsInfo.h"
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"

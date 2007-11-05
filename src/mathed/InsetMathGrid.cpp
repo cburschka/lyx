@@ -11,9 +11,11 @@
 #include <config.h>
 
 #include "InsetMathGrid.h"
+
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
+#include "MetricsInfo.h"
 
 #include "BufferView.h"
 #include "CutAndPaste.h"
@@ -27,6 +29,7 @@
 #include "frontends/Painter.h"
 
 #include "support/lstrings.h"
+#include "support/docstream.h"
 
 #include <sstream>
 

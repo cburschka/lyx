@@ -1468,28 +1468,29 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 	docstring bname = name;
 	if (!label(0).empty())
 		bname += " id='" + sgml::cleanID(buf, runparams, label(0)) + "'";
-	ms << MTag(bname);
+
+	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
 
 	odocstringstream ls;
 	if (runparams.flavor == OutputParams::XML) {
-		ms << MTag(from_ascii("alt role='tex' "));
+		ms << MTag("alt role='tex' ");
 		// Workaround for db2latex: db2latex always includes equations with
 		// \ensuremath{} or \begin{display}\end{display}
 		// so we strip LyX' math environment
 		WriteStream wi(ls, false, false);
 		InsetMathGrid::write(wi);
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
-		ms << ETag(from_ascii("alt"));
-		ms << MTag(from_ascii("math"));
-		ms << ETag(from_ascii("alt"));
-		ms << MTag(from_ascii("math"));
+		ms << ETag("alt");
+		ms << MTag("math");
+		ms << ETag("alt");
+		ms << MTag("math");
 		InsetMathGrid::mathmlize(ms);
-		ms << ETag(from_ascii("math"));
+		ms << ETag("math");
 	} else {
-		ms << MTag(from_ascii("alt role='tex'"));
+		ms << MTag("alt role='tex'");
 		res = latex(buf, ls, runparams);
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
-		ms << ETag(from_ascii("alt"));
+		ms << ETag("alt");
 	}
 
 	ms << from_ascii("<graphic fileref=\"eqn/");
@@ -1503,7 +1504,8 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 	else
 		ms << from_ascii("\">");
 
-	ms << ETag(name);
+	ms.cr(); --ms.tab(); ms.os() << "</" << name << '>';
+
 	return ms.line() + res;
 }
 

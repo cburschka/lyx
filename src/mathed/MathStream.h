@@ -12,14 +12,10 @@
 #ifndef MATH_MATHMLSTREAM_H
 #define MATH_MATHMLSTREAM_H
 
+#include "support/strfwd.h"
 
-// Please keep all four streams in one file until the interface has
-// settled.
-
-
+// FIXME: Move to individual insets
 #include "MetricsInfo.h"
-#include "support/docstream.h"
-#include "support/docstring.h"
 
 
 namespace lyx {
@@ -95,21 +91,17 @@ WriteStream & operator<<(WriteStream &, unsigned int);
 class MTag {
 public:
 	///
-	MTag(docstring const tag) : tag_(tag) {}
+	MTag(char const * const tag) : tag_(tag) {}
 	///
-	MTag(char const * const tag) : tag_(from_ascii(tag)) {}
-	///
-	docstring const tag_;
+	char const * const tag_;
 };
 
 class ETag {
 public:
 	///
-	ETag(docstring const tag) : tag_(tag) {}
+	ETag(char const * const tag) : tag_(tag) {}
 	///
-	ETag(char const * const tag) : tag_(from_ascii(tag)) {}
-	///
-	docstring const tag_;
+	char const * const tag_;
 };
 
 class MathStream {

@@ -10,14 +10,17 @@
 
 #include <config.h>
 
+#include "MathStream.h"
+
 #include "InsetMath.h"
 #include "MathData.h"
 #include "MathExtern.h"
-#include "MathStream.h"
 
 #include "support/textutils.h"
 
 #include <algorithm>
+#include <ostream>
+
 
 namespace lyx {
 
@@ -225,7 +228,7 @@ MathStream & operator<<(MathStream & ms, MTag const & t)
 {
 	++ms.tab();
 	ms.cr();
-	ms.os() << '<' << t.tag_ << '>';
+	ms.os() << '<' << from_ascii(t.tag_) << '>';
 	return ms;
 }
 
@@ -235,7 +238,7 @@ MathStream & operator<<(MathStream & ms, ETag const & t)
 	ms.cr();
 	if (ms.tab() > 0)
 		--ms.tab();
-	ms.os() << "</" << t.tag_ << '>';
+	ms.os() << "</" << from_ascii(t.tag_) << '>';
 	return ms;
 }
 

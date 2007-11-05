@@ -11,10 +11,13 @@
 #include <config.h>
 
 #include "InsetMathExFunc.h"
+
 #include "MathData.h"
 #include "MathStream.h"
-#include "MathStream.h"
 #include "MathSupport.h"
+#include "MetricsInfo.h"
+
+#include "support/docstream.h"
 
 
 namespace lyx {
@@ -124,7 +127,9 @@ void InsetMathExFunc::mathematica(MathematicaStream & os) const
 
 void InsetMathExFunc::mathmlize(MathStream & os) const
 {
-	os << MTag(name_.c_str()) << cell(0) << ETag(name_.c_str());
+	++os.tab(); os.cr(); os.os() << '<' << name_ << '>';
+	os << cell(0);
+	os.cr(); --os.tab(); os.os() << "</" << name_ << '>';
 }
 
 

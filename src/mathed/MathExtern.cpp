@@ -15,10 +15,11 @@
 #include <config.h>
 
 #include "MathExtern.h"
+
+#include "debug.h"
 #include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathDelim.h"
-#include "MathData.h"
 #include "InsetMathDiff.h"
 #include "InsetMathExFunc.h"
 #include "InsetMathExInt.h"
@@ -26,13 +27,15 @@
 #include "InsetMathFrac.h"
 #include "InsetMathLim.h"
 #include "InsetMathMatrix.h"
-#include "MathStream.h"
 #include "InsetMathNumber.h"
 #include "InsetMathScript.h"
 #include "InsetMathString.h"
 #include "InsetMathSymbol.h"
+#include "MathData.h"
 #include "MathParser.h"
-#include "debug.h"
+#include "MathStream.h"
+
+#include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"

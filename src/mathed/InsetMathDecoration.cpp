@@ -12,15 +12,17 @@
 #include <config.h>
 
 #include "InsetMathDecoration.h"
+
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathSupport.h"
 #include "MathStream.h"
+#include "MetricsInfo.h"
 
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
-#include "support/std_ostream.h"
+#include <ostream>
 
 
 namespace lyx {

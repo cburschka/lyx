@@ -11,17 +11,20 @@
 #include <config.h>
 
 #include "InsetMathCases.h"
+
+#include "Cursor.h"
+#include "FuncRequest.h"
+#include "FuncStatus.h"
+#include "gettext.h"
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "FuncStatus.h"
-#include "LaTeXFeatures.h"
-#include "support/std_ostream.h"
-#include "Cursor.h"
-#include "FuncRequest.h"
-#include "gettext.h"
+#include "MetricsInfo.h"
 
 #include "support/lstrings.h"
+
+#include <ostream>
 
 
 namespace lyx {

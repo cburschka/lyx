@@ -11,13 +11,16 @@
 
 #include <config.h>
 
+#include "MathSupport.h"
+
 #include "InsetMath.h"
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
-#include "MathSupport.h"
 
 #include "debug.h"
+
+#include "support/docstream.h"
 
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
@@ -33,7 +36,6 @@ using frontend::Painter;
 
 using std::max;
 using std::endl;
-using std::vector;
 
 
 ///

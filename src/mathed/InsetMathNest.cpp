@@ -49,6 +49,7 @@
 
 #include "support/lstrings.h"
 #include "support/textutils.h"
+#include "support/docstream.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
