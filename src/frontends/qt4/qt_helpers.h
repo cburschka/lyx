@@ -15,8 +15,7 @@
 
 #include "Length.h"
 #include "support/qstring_helpers.h"
-
-#include <string>
+#include "support/strfwd.h"
 
 class QComboBox;
 class QLineEdit;
