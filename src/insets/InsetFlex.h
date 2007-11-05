@@ -20,17 +20,6 @@
 namespace lyx {
 
 
-class InsetFlexParams {
-public:
-	///
-	void write(std::ostream & os) const;
-	///
-	void read(Lexer & lex);
-	///
-	std::string name;
-};
-
-
 /** The Flex inset, e.g., CharStyle, Custom inset or XML short element
 
 */
@@ -39,7 +28,7 @@ public:
 	///
 	InsetFlex(BufferParams const &, InsetLayout const &);
 	///
-	docstring name() const { return from_utf8(params_.name); }
+	docstring name() const { return from_utf8(name_); }
 
 	/// Is this character style defined in the document's textclass?
 	/// May be wrong after textclass change or paste from another document
@@ -64,9 +53,6 @@ public:
 	/// the string that is passed to the TOC
 	virtual void textString(Buffer const &, odocstream &) const;
 
-	///
-	InsetFlexParams const & params() const { return params_; }
-
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent(Buffer const &) const { return true; }
 
@@ -74,12 +60,10 @@ protected:
 	InsetFlex(InsetFlex const &);
 
 private:
-	friend class InsetFlexParams;
-
 	virtual Inset * clone() const;
 
 	///
-	InsetFlexParams params_;
+	std::string name_;
 };
 
 

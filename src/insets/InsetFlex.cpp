@@ -47,12 +47,12 @@ InsetFlex::InsetFlex(BufferParams const & bp,
 				InsetLayout const & il)
 	: InsetCollapsable(bp, Collapsed, &il)
 {
-	params_.name = il.name;
+	name_ = il.name;
 }
 
 
 InsetFlex::InsetFlex(InsetFlex const & in)
-	: InsetCollapsable(in), params_(in.params_)
+	: InsetCollapsable(in), name_(in.name_)
 {}
 
 
@@ -76,14 +76,28 @@ docstring const InsetFlex::editMessage() const
 
 void InsetFlex::write(Buffer const & buf, ostream & os) const
 {
-	params_.write(os);
+	os << "Flex " << name_ << "\n";
 	InsetCollapsable::write(buf, os);
 }
 
 
 void InsetFlex::read(Buffer const & buf, Lexer & lex)
 {
-	params_.read(lex);
+	while (lex.isOK()) {
+		lex.next();
+		string token = lex.getString();
+
+		if (token == "Flex") {
+			lex.next();
+			name_ = lex.getString();
+		}
+
+		// This is handled in Collapsable
+		else if (token == "status") {
+			lex.pushToken(token);
+			break;
+		}
+	}
 	InsetCollapsable::read(buf, lex);
 }
 
@@ -123,32 +137,5 @@ void InsetFlex::textString(Buffer const & buf, odocstream & os) const
 {
 	os << paragraphs().begin()->asString(buf, true);
 }
-
-
-void InsetFlexParams::write(ostream & os) const
-{
-	os << "Flex " << name << "\n";
-}
-
-
-void InsetFlexParams::read(Lexer & lex)
-{
-	while (lex.isOK()) {
-		lex.next();
-		string token = lex.getString();
-
-		if (token == "Flex") {
-			lex.next();
-			name = lex.getString();
-		}
-
-		// This is handled in Collapsable
-		else if (token == "status") {
-			lex.pushToken(token);
-			break;
-		}
-	}
-}
-
 
 } // namespace lyx
