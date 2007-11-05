@@ -630,7 +630,7 @@ void InsetMathHull::addRow(row_type row)
 		return;
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, docstring());
-	InsetMathGrid::appendRow(row);
+	InsetMathGrid::addRow(row);
 }
 
 
@@ -1031,7 +1031,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
 #endif
-		appendRow(cur.row());
+		addRow(cur.row());
 		++cur.idx();
 		++cur.idx();
 		cur.cell() = eq;

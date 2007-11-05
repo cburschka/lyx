@@ -679,7 +679,7 @@ docstring InsetMathGrid::eocString(col_type col, col_type lastcol) const
 }
 
 
-void InsetMathGrid::appendRow(row_type row)
+void InsetMathGrid::addRow(row_type row)
 {
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
 	cells_.insert
@@ -717,7 +717,7 @@ void InsetMathGrid::delRow(row_type row)
 
 void InsetMathGrid::copyRow(row_type row)
 {
-	appendRow(row);
+	addRow(row);
 	for (col_type col = 0; col < ncols(); ++col)
 		cells_[(row + 1) * ncols() + col] = cells_[row * ncols() + col];
 }
@@ -1122,7 +1122,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BREAK_LINE: {
 		recordUndoInset(cur);
 		row_type const r = cur.row();
-		appendRow(r);
+		addRow(r);
 
 		// split line
 		for (col_type c = col(cur.idx()) + 1; c < ncols(); ++c)
@@ -1160,7 +1160,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			halign('c', cur.col());
 		else if (s == "append-row")
 			for (int i = 0, n = extractInt(is); i < n; ++i)
-				appendRow(cur.row());
+				addRow(cur.row());
 		else if (s == "delete-row") {
 			cur.clearSelection(); // bug 4323
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
@@ -1197,7 +1197,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			row_type const r = cur.row();
 			col_type const c = cur.col();
 			for (int i = 0, n = extractInt(is); i < n; ++i)
-				addCol(cur.col() + 1);
+				addCol(cur.col());
 			cur.idx() = index(r, c);
 		}
 		else if (s == "delete-column") {
