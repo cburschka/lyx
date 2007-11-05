@@ -82,6 +82,9 @@ What's new
 
 - Fix a crash when pasting into a math formula (bug 4318).
 
+- Fix a crash when deleting a row or column of a math matrix while its
+  content is selected (bug 4323).
+
 - Fix updating of externally modified files on Windows (bug 3172).
 
 - Repair wasy font such that it can also be used on Mac (bug 2326).
