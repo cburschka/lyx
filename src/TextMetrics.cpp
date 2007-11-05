@@ -143,16 +143,21 @@ ParagraphMetrics & TextMetrics::parMetrics(pit_type pit,
 bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 {
 	BOOST_ASSERT(mi.base.textwidth);
-	max_width_ = mi.base.textwidth;
 
 	//lyxerr << "Text::metrics: width: " << mi.base.textwidth
 	//	<< " maxWidth: " << max_width_ << "\nfont: " << mi.base.font << endl;
 
 	bool changed = false;
+	max_width_ = mi.base.textwidth;
 
+	pit_type const npar = text_->paragraphs().size();
 	unsigned int h = 0;
 	unsigned int w = min_width;
-	for (pit_type pit = 0, n = text_->paragraphs().size(); pit != n; ++pit) {
+	if (npar > 1)
+		// If there is more than one row, expand the text to 
+		// the full allowable width.
+		w = max_width_;
+	for (pit_type pit = 0, n = npar; pit != n; ++pit) {
 		changed |= redoParagraph(pit);
 		ParagraphMetrics const & pm = parMetrics(pit);
 		h += pm.height();
@@ -237,6 +242,10 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	do {
 		Row row(z);
 		rowBreakPoint(width, pit, row);
+		if (!pm.rows().empty() || row.endpos() < par.size())
+			// If there is more than one row, expand the text to 
+			// the full allowable width.
+			pm.dim().wid = width;
 		setRowWidth(right_margin, pit, row);
 		setHeightOfRow(pit, row);
 		pm.rows().push_back(row);
@@ -263,13 +272,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// redoParagraph() recursively inside parMetrics.
 	Dimension old_dim = parMetrics(pit, false).dim();
 
-	changed |= old_dim.height() != pm.dim().height();
+	changed |= old_dim != pm.dim();
 
 	par_metrics_[pit] = pm;
-
-	// Update the row change statuses. The painter will need that info
-	// in order to know which row has to be repainted.
-	par_metrics_[pit].updateRowChangeStatus();
 
 	return changed;
 }

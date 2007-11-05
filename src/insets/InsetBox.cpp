@@ -182,10 +182,8 @@ bool InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 		mi.base.textwidth = params_.width.inPixels(m.base.textwidth);
 	InsetCollapsable::metrics(mi, dim);
 	if (hasFixedWidth()) {
-		TextMetrics & tm = mi.base.bv->textMetrics(&text_);
-		int min_size = tm.width() + 2 * border_ + (int) (1.5 * TEXT_TO_INSET_OFFSET);
-		if (min_size > mi.base.textwidth) {
-			mi.base.textwidth = min_size;
+		if (dim.width() > mi.base.textwidth) {
+			mi.base.textwidth = dim.width();
 			InsetCollapsable::metrics(mi, dim);
 		}
 	}

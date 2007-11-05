@@ -74,11 +74,8 @@ using std::ostream;
 using std::vector;
 
 
-int InsetText::border_ = 2;
-
-
 InsetText::InsetText(BufferParams const & bp)
-	: drawFrame_(false), frame_color_(Color::insetframe)
+	: drawFrame_(false), frame_color_(Color::insetframe), fixed_width_(false)
 {
 	paragraphs().push_back(Paragraph());
 	paragraphs().back().layout(bp.getTextClass().defaultLayout());
@@ -90,7 +87,7 @@ InsetText::InsetText(BufferParams const & bp)
 
 
 InsetText::InsetText(InsetText const & in)
-	: Inset(in), text_()
+	: Inset(in), text_(), fixed_width_(fixed_width_)
 {
 	text_.autoBreakRows_ = in.text_.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
@@ -170,18 +167,21 @@ bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	TextMetrics & tm = mi.base.bv->textMetrics(&text_);
 
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
-	mi.base.textwidth -= 2 * border_;
+	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	font_ = mi.base.font;
 	// Hand font through to contained lyxtext:
 	text_.font_ = mi.base.font;
+	// Expand the inset if
+	fixed_width_ = text_.paragraphs().size() > 1;
 	if (hasFixedWidth())
 		tm.metrics(mi, dim, mi.base.textwidth);
 	else
 		tm.metrics(mi, dim);
-	dim.asc += border_;
-	dim.des += border_;
-	dim.wid += 2 * border_;
-	mi.base.textwidth += 2 * border_;
+	fixed_width_ |= tm.parMetrics(0).rows().size() > 1;
+	dim.asc += TEXT_TO_INSET_OFFSET;
+	dim.des += TEXT_TO_INSET_OFFSET;
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;
@@ -196,15 +196,14 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 
 	text_.background_color_ = backgroundColor();
-	text_.draw(pi, x + border_, y);
+	text_.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
 
 	if (drawFrame_) {
-		int const w = tm.width() + 2 * border_;
-		int const a = tm.ascent() + border_;
-		int const h = a + tm.descent() + border_;
-		pi.pain.rectangle(x, y - a,
-				  ((wide() || hasFixedWidth()) ? tm.maxWidth() : w),
-				  h, frameColor());
+		int w = hasFixedWidth() ? tm.maxWidth() : tm.width();
+		w += 2 * TEXT_TO_INSET_OFFSET;
+		int const a = tm.ascent() + TEXT_TO_INSET_OFFSET;
+		int const h = a + tm.descent() + TEXT_TO_INSET_OFFSET;
+		pi.pain.rectangle(x, y - a, w, h, frameColor());
 	}
 }
 
@@ -213,25 +212,13 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 
-	int const w = tm.width() + 2 * border_;
-	int const a = tm.ascent() + border_;
-	int const h = a + tm.descent() + border_;
-	pi.pain.fillRectangle(x, y - a,
-			      ((wide() || hasFixedWidth()) ? tm.maxWidth() : w),
-			      h, backgroundColor());
-	text_.drawSelection(pi, x + border_, y);
-}
+	int w = hasFixedWidth() ? tm.maxWidth() : tm.width();
+	w += 2 * TEXT_TO_INSET_OFFSET;
 
-
-bool InsetText::covers(BufferView const & bv, int x, int y) const
-{
-	TextMetrics const & tm = bv.textMetrics(&text_);
-
-	return bv.coordCache().getInsets().has(this)
-			&& x >= xo(bv)
-			&& x <= xo(bv) + width() + (wide() ? tm.maxWidth() : 0)
-			&& y >= yo(bv) - ascent()
-			&& y <= yo(bv) + descent();
+	int const a = tm.ascent() + TEXT_TO_INSET_OFFSET;
+	int const h = a + tm.descent() + TEXT_TO_INSET_OFFSET;
+	pi.pain.fillRectangle(x, y - a, w, h, backgroundColor());
+	text_.drawSelection(pi, x + TEXT_TO_INSET_OFFSET, y);
 }
 
 
@@ -347,17 +334,10 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-bool InsetText::notifyCursorLeaves(Cursor & cur) { 
-	if(wide()) 
-		cur.updateFlags(cur.disp_.update() | Update::Force); 
-	return false; 
-} 
-
-
 void InsetText::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = text_.cursorX(bv, sl, boundary) + border_;
+	x = text_.cursorX(bv, sl, boundary) + TEXT_TO_INSET_OFFSET;
 	y = text_.cursorY(bv, sl, boundary);
 }
 

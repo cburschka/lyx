@@ -59,8 +59,6 @@ public:
 	///
 	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
-	virtual bool wide() const { return false; }
-	///
 	int latex(Buffer const & buf, odocstream & os,
 		  OutputParams const &) const;
 	///

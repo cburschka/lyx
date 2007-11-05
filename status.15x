@@ -31,6 +31,12 @@ What's new
 
 * USER INTERFACE
 
+- The way collapsable insets (foot notes, comments etc) are widen has seen
+  a complete overhaul in order to speedup painting when typing within
+  insets. Now these insets are widen as soon as they contain more than one
+  row of text. Users of Mac/PPC and of Unixes with slow X11 server should
+  feel a significant boost in performance thanks to this change.
+
 - The pixmap cache that was introduced in LyX 1.5.2 to improve performance
   can now be switched on and off in Preferences, since it might decrease
   on-screen display quality of fonts (subpixel hinting). By default, the

@@ -88,18 +88,27 @@ ParagraphMetrics & ParagraphMetrics::operator=(
 }
 
 
-size_type ParagraphMetrics::calculateRowSignature(Row const & row)
+size_type ParagraphMetrics::calculateRowSignature(Row const & row,
+		BufferParams const & bparams) const
 {
 	boost::crc_32_type crc;
 	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
 		char_type const b[] = { par_->getChar(i) };
 		crc.process_bytes(b, 1);
+		if (bparams.trackChanges) {
+			Change change = par_->lookupChange(i);
+			char_type const b[] = { change.type };
+			crc.process_bytes(b, 1);
+		}			
 	}
+	char_type const b[] = { row.width(), row.ascent(), row.descent()};
+	crc.process_bytes(b, 3);
 	return crc.checksum();
 }
 
 
-void ParagraphMetrics::updateRowChangeStatus()
+void ParagraphMetrics::updateRowChangeStatus(
+		BufferParams const & bparams) const
 {
 	size_t const size = rows_.size();
 	row_change_status_.resize(size);
@@ -107,7 +116,7 @@ void ParagraphMetrics::updateRowChangeStatus()
 
 	for (size_t i = 0; i != size; ++i) {
 		// Row signature; has row changed since last update?
-		size_type const row_sig = calculateRowSignature(rows_[i]);
+		size_type const row_sig = calculateRowSignature(rows_[i], bparams);
 		row_change_status_[i] = row_signature_[i] != row_sig;
 		row_signature_[i] = row_sig;
 	}

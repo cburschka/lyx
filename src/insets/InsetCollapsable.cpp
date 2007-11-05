@@ -150,7 +150,6 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
-	mi.base.textwidth -= (int) (1.5 * TEXT_TO_INSET_OFFSET);
 
 	if (status() == Inlined) {
 		InsetText::metrics(mi, dim);
@@ -158,28 +157,21 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = dimensionCollapsed();
 		if (status() == Open) {
 			InsetText::metrics(mi, textdim_);
-			// This expression should not contain mi.base.texwidth
 			openinlined_ = !hasFixedWidth()
-				&& textdim_.wid < 0.5 * mi.base.bv->workWidth();
+				&& (textdim_.wid + dim.wid) <= mi.base.textwidth;
 			if (openinlined_) {
-				// Correct for button width, and re-fit
-				mi.base.textwidth -= dim.wid;
-				InsetText::metrics(mi, textdim_);
+				// Correct for button width
 				dim.wid += textdim_.wid;
 				dim.des = max(dim.des - textdim_.asc + dim.asc, textdim_.des);
 				dim.asc = textdim_.asc;
 			} else {
-				dim.des += textdim_.height() + TEXT_TO_BOTTOM_OFFSET;
+				dim.des += textdim_.height();
 				dim.wid = max(dim.wid, textdim_.wid);
 				if (hasFixedWidth())
 					dim.wid = max(dim.wid, mi.base.textwidth);
 			}
 		}
 	}
-	dim.asc += TEXT_TO_INSET_OFFSET;
-	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += (int) (1.5 * TEXT_TO_INSET_OFFSET);
-	mi.base.textwidth += (int) (1.5 * TEXT_TO_INSET_OFFSET);
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;
@@ -195,26 +187,25 @@ bool InsetCollapsable::setMouseHover(bool mouse_hover)
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
-	const int xx = x + TEXT_TO_INSET_OFFSET;
 	if (status() == Inlined) {
-		InsetText::draw(pi, xx, y);
+		InsetText::draw(pi, x, y);
 	} else {
 		Dimension dimc = dimensionCollapsed();
-		int const top  = y - ascent() + TEXT_TO_INSET_OFFSET;
-		button_dim.x1 = xx + 0;
-		button_dim.x2 = xx + dimc.width();
+		int const top  = y - ascent();
+		button_dim.x1 = x + 0;
+		button_dim.x2 = x + dimc.width();
 		button_dim.y1 = top;
 		button_dim.y2 = top + dimc.height();
 
-		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_, mouse_hover_);
+		pi.pain.buttonText(x, top + dimc.asc, label, labelfont_, mouse_hover_);
 
 		if (status() == Open) {
 			int textx, texty;
 			if (openinlined_) {
-				textx = xx + dimc.width();
+				textx = x + dimc.width();
 				texty = top + textdim_.asc;
 			} else {
-				textx = xx;
+				textx = x;
 				texty = top + dimc.height() + textdim_.asc;
 			}
 			InsetText::draw(pi, textx, texty);
@@ -226,7 +217,6 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 
 void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	x += TEXT_TO_INSET_OFFSET;
 	if (status() == Open) {
 		if (openinlined_)
 			x += dimensionCollapsed().wid;
@@ -249,10 +239,8 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 		if (openinlined_)
 			x += dimensionCollapsed().wid;
 		else
-			y += dimensionCollapsed().height() - ascent()
-				+ TEXT_TO_INSET_OFFSET + textdim_.asc;
+			y += dimensionCollapsed().height() - ascent() + textdim_.asc;
 	}
-	x += TEXT_TO_INSET_OFFSET;
 }
 
 

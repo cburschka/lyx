@@ -318,8 +318,8 @@ int QLPainter::text(int x, int y, docstring const & s,
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
 		drawText(x, y, str);
-		LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
-			<< " at " << x << "," << y << std::endl;
+		//LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
+		//	<< " at " << x << "," << y << std::endl;
 		return textwidth;
 	}
 

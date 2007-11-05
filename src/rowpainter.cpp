@@ -75,6 +75,7 @@ public:
 	void paintChangeBar();
 	void paintFirst();
 	void paintLast();
+	void paintOnlyInsets();
 	void paintText();
 	int maxWidth() { return max_width_; }
 
@@ -112,7 +113,6 @@ private:
 	pit_type const pit_;
 	Paragraph const & par_;
 	ParagraphMetrics const & pm_;
-	int max_width_;
 
 	/// bidi cache, comes from outside the rowpainter because
 	/// rowpainters are normally created in a for loop and there only
@@ -130,6 +130,7 @@ private:
 	double separator_;
 	double hfill_;
 	double label_hfill_;
+	int max_width_;
 };
 
 
@@ -140,8 +141,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
 	  pm_(text_metrics_.parMetrics(pit)),
-	  max_width_(bv_.workWidth()),
-		bidi_(bidi), erased_(pi.erased_),
+	  bidi_(bidi), erased_(pi.erased_),
 	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
 	RowMetrics m = text_metrics_.computeRowMetrics(pit_, row_);
@@ -157,6 +157,9 @@ RowPainter::RowPainter(PainterInfo & pi,
 
 	BOOST_ASSERT(pit >= 0);
 	BOOST_ASSERT(pit < int(text.paragraphs().size()));
+	
+	max_width_ = text_.isMainText(*bv_.buffer())?
+		bv_.workWidth(): text_metrics_.maxWidth() + Inset::TEXT_TO_INSET_OFFSET;
 }
 
 
@@ -168,7 +171,8 @@ Font const RowPainter::getLabelFont() const
 
 int RowPainter::leftMargin() const
 {
-	return text_.leftMargin(*bv_.buffer(), max_width_, pit_, row_.pos());
+	return text_.leftMargin(*bv_.buffer(), text_metrics_.width(),
+		pit_, row_.pos());
 }
 
 
@@ -193,15 +197,16 @@ void RowPainter::paintInset(pos_type const pos, Font const & font)
 	int const x1 = int(x_);
 #endif
 	bv_.coordCache().insets().add(inset, int(x_), yo_);
-	InsetText const * const in = inset->asTextInset();
-	// non-wide insets are painted completely. Recursive
+	// Backup refreshInside (modified recursively below)
 	bool tmp = refreshInside;
-	if (!in || !in->wide()) {
+	InsetText const * in = inset->asTextInset();
+	// non fixed-width text insets are painted completely.
+	if (!in || !in->hasFixedWidth())
 		refreshInside = true;
-	}
 	if (refreshInside)
 		inset->drawSelection(pi, int(x_), yo_);
 	inset->draw(pi, int(x_), yo_);
+	// Restore refreshInside.
 	refreshInside = tmp;
 	x_ += inset->width();
 #ifdef DEBUG_METRICS
@@ -731,6 +736,25 @@ void RowPainter::paintLast()
 }
 
 
+void RowPainter::paintOnlyInsets()
+{
+	pos_type const end = row_.endpos();
+	for (pos_type pos = row_.pos(); pos != end; ++pos) {
+		if (!par_.isInset(pos))
+			continue;
+
+		if (x_ > bv_.workWidth())
+			continue;
+
+		// If outer row has changed, nested insets are repaint completely.
+		Inset const * inset = par_.getInset(pos);
+		x_ = bv_.coordCache().getInsets().x(inset);
+		pos_type vpos = pos;
+		paintFromPos(vpos); // vpos is modified by paintFromPos.
+	}
+}
+
+
 void RowPainter::paintText()
 {
 	pos_type const end = row_.endpos();
@@ -876,68 +900,6 @@ void RowPainter::paintText()
 }
 
 
-bool CursorOnRow(PainterInfo & pi, pit_type const pit,
-	RowList::const_iterator rit, Text const & text)
-{
-	// Is there a cursor on this row (or inside inset on row)
-	Cursor & cur = pi.base.bv->cursor();
-	for (size_type d = 0; d < cur.depth(); ++d) {
-		CursorSlice const & sl = cur[d];
-		if (sl.text() == &text
-		    && sl.pit() == pit
-		    && sl.pos() >= rit->pos()
-		    && sl.pos() <= rit->endpos())
-			return true;
-	}
-	return false;
-}
-
-
-bool innerCursorOnRow(PainterInfo & pi, pit_type pit,
-	RowList::const_iterator rit, Text const & text)
-{
-	// Is there a cursor inside an inset on this row, and is this inset
-	// the only "character" on this row
-	Cursor & cur = pi.base.bv->cursor();
-	if (rit->pos() + 1 != rit->endpos())
-		return false;
-	for (size_type d = 0; d < cur.depth(); d++) {
-		CursorSlice const & sl = cur[d];
-		if (sl.text() == &text
-		    && sl.pit() == pit
-		    && sl.pos() == rit->pos())
-			return d < cur.depth() - 1;
-	}
-	return false;
-}
-
-
-// FIXME: once wide() is obsolete, remove this as well!
-bool inNarrowInset(PainterInfo & pi)
-{
-	// check whether the current inset is nested in a non-wide inset
-	Cursor & cur = pi.base.bv->cursor();
-	Inset const * cur_in = &cur.inset();
-	// check all higher nested insets
-	for (size_type i = 1; i < cur.depth(); ++i) {
-		Inset * const in = &cur[i].inset();
-		if (in == cur_in)
-			// we reached the level of the current inset, so stop
-			return false;
-		else if (in) {
-			if (in->hasFixedWidth())
-				return true;
-			InsetText * t =
-				const_cast<InsetText *>(in->asTextInset());
-			if (t && !t->wide())
-				// OK, we are in a non-wide() inset
-				return true;
-		}
-	}
-	return false;
-}
-
-
 void paintPar
 	(PainterInfo & pi, Text const & text, pit_type pit, int x, int y,
 	 bool repaintAll)
@@ -947,10 +909,12 @@ void paintPar
 
 	pi.base.bv->coordCache().parPos()[&text][pit] = Point(x, y);
 
-	Paragraph const & par = text.paragraphs()[pit];
 	ParagraphMetrics const & pm = pi.base.bv->parMetrics(&text, pit);
 	if (pm.rows().empty())
 		return;
+	// Update the row change statuses. The painter will need that info
+	// in order to know which row has to be repainted.
+	pm.updateRowChangeStatus(pi.base.bv->buffer()->params());
 
 	RowList::const_iterator const rb = pm.rows().begin();
 	RowList::const_iterator const re = pm.rows().end();
@@ -968,49 +932,20 @@ void paintPar
 		// Row signature; has row changed since last paint?
 		bool row_has_changed = pm.rowChangeStatus()[rowno];
 
-		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
-		bool in_inset_alone_on_row =
-			innerCursorOnRow(pi, pit, rit, text);
-		bool leftEdgeFixed =
-			(par.getAlign() == LYX_ALIGN_LEFT ||
-			 par.getAlign() == LYX_ALIGN_BLOCK);
-		bool inNarrowIns = inNarrowInset(pi);
+		bool const inside = (y + rit->descent() >= 0
+			&& y - rit->ascent() < ww);
+		// it is not needed to draw on screen if we are not inside.
+		pi.pain.setDrawingEnabled(inside);
+		RowPainter rp(pi, text, pit, *rit, bidi, x, y);
 
-		// If this is the only object on the row, we can make it wide
-		//
-		// FIXME: there is a const_cast here because paintPar() is not supposed
-		// to touch the paragraph contents. So either we move this "wide"
-		// property out of InsetText or we localize the feature to the painting
-		// done here.
-		// JSpitzm: We should aim at removing wide() altogether while retaining
-		// typing speed within insets.
-		for (pos_type i = rit->pos() ; i != rit->endpos(); ++i) {
-			Inset const * const in = par.getInset(i);
-			if (in) {
-				InsetText * t = const_cast<InsetText *>(in->asTextInset());
-				if (t)
-					t->setWide(in_inset_alone_on_row
-						   && leftEdgeFixed
-						   && !inNarrowIns);
-			}
-		}
-
-		// If selection is on, the current row signature differs
-		// from cache, or cursor is inside an inset _on this row_,
-		// then paint the row
-		if (repaintAll || row_has_changed || cursor_on_row) {
-			bool const inside = (y + rit->descent() >= 0
-				&& y - rit->ascent() < ww);
-			// it is not needed to draw on screen if we are not inside.
-			pi.pain.setDrawingEnabled(inside);
-			RowPainter rp(pi, text, pit, *rit, bidi, x, y);
+		// If selection is on if the current row signature differs
+		// from cache, then paint the row.
+		if (repaintAll || row_has_changed) {
 			// Clear background of this row
 			// (if paragraph background was not cleared)
-			if (!repaintAll &&
-			    (!(in_inset_alone_on_row && leftEdgeFixed && !inNarrowIns)
-				|| row_has_changed)) {
+			if (!repaintAll && row_has_changed) {
 				pi.pain.fillRectangle(x, y - rit->ascent(),
-				    rp.maxWidth(), rit->height(),
+					rp.maxWidth(), rit->height(),
 				    text.backgroundColor());
 				// If outer row has changed, force nested
 				// insets to repaint completely
@@ -1037,7 +972,9 @@ void paintPar
 			rp.paintText();
 			if (rit + 1 == re)
 				rp.paintLast();
-		}
+		} else
+			rp.paintOnlyInsets();
+
 		y += rit->descent();
 		// Restore, see above
 		refreshInside = tmp;

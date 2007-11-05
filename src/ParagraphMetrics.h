@@ -71,7 +71,7 @@ public:
 	std::vector<bool> const & rowChangeStatus() const
 	{ return row_change_status_; }
 	///
-	void updateRowChangeStatus();
+	void updateRowChangeStatus(BufferParams const &) const;
 	///
 	int rightMargin(Buffer const & buffer) const;
 
@@ -82,13 +82,13 @@ private:
 	///
 	typedef std::vector<size_type> RowSignature;
 	///
-	size_type calculateRowSignature(Row const &);
+	size_type calculateRowSignature(Row const &, BufferParams const &) const;
 	///
 	mutable RowList rows_;
 	///
-	RowSignature row_signature_;
+	mutable RowSignature row_signature_;
 	///
-	std::vector<bool> row_change_status_;
+	mutable std::vector<bool> row_change_status_;
 	/// cached dimensions of paragraph
 	Dimension dim_;
 	///

@@ -42,6 +42,8 @@ public:
 	explicit InsetText(BufferParams const &);
 	///
 	InsetText();
+	///
+	bool hasFixedWidth() const { return fixed_width_; }
 
 	/// empty inset to empty par
 	void clear();
@@ -55,8 +57,6 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw inset selection
 	void drawSelection(PainterInfo & pi, int x, int y) const;
-	/// are we inside the area covered by the inset?
-	virtual bool covers(BufferView const & bv, int x, int y) const;
 	///
 	virtual docstring const editMessage() const;
 	///
@@ -75,9 +75,6 @@ public:
 	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-	//FIXME The following should be removed when wide is.
-	/// Overridden to force an update if the inset was wide().
-	virtual bool notifyCursorLeaves(Cursor & cur);
 
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
@@ -137,10 +134,6 @@ public:
 	bool neverIndent(Buffer const &) const;
 	///
 	InsetText(InsetText const &);
-	///
-	virtual bool wide() const { return wide_inset_; }
-	///
-	void setWide(bool wide_inset) { wide_inset_ = wide_inset; }
 
 protected:
 	///
@@ -160,16 +153,15 @@ private:
 	int frame_color_;
 	///
 	mutable pit_type old_pit;
-	///
-	bool wide_inset_;
+	/// Does the inset has fixed width?
+	/// Allow horizontal maximization of the inset.
+	mutable bool fixed_width_;
 
 public:
 	///
 	mutable Text text_;
 	///
 	mutable Font font_;
-	///
-	static int border_;
 };
 
 } // namespace lyx
