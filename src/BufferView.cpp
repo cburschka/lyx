@@ -546,7 +546,7 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 					break;
 				}
 			setCursor(dit);
-			buffer_->text().setCurrentFont(cursor_);
+			cursor_.text()->setCurrentFont(cursor_);
 			// Note: return bottom (document) level pit.
 			return boost::make_tuple(cursor_.bottom().pit(), cursor_.bottom().pos(), top_id);
 		}
@@ -562,7 +562,7 @@ boost::tuple<pit_type, pos_type, int> BufferView::moveToPosition(pit_type bottom
 		it.pit() = bottom_pit;
 		it.pos() = min(bottom_pos, it.paragraph().size());
 		setCursor(it);
-		buffer_->text().setCurrentFont(cursor_);
+		cursor_.text()->setCurrentFont(cursor_);
 		return boost::make_tuple(it.pit(), it.pos(),
 					 it.paragraph().id());
 	}
