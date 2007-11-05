@@ -1020,12 +1020,14 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "\\") {
 			if (flags & FLAG_ALIGN)
 				return;
-			bool added;
+			bool added = false;
 			if (nextToken().asInput() == "*") {
 				getToken();
 				added = addRow(grid, cellrow, docstring(), false);
-			} else
+			} else if (good())
 				added = addRow(grid, cellrow, getArg('[', ']'));
+			else
+				added = addRow(grid, cellrow, docstring());
 			if (added) {
 				cellcol = 0;
 				if (grid.asHullInset())
