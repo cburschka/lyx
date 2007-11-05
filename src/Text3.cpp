@@ -179,7 +179,7 @@ static void specialChar(Cursor & cur, InsetSpecialChar::Kind kind)
 	cur.recordUndo();
 	cap::replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
-	cur.posRight();
+	cur.posForward();
 }
 
 
@@ -558,7 +558,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cur.recordUndo();
 			cap::replaceSelection(cur);
 			cur.insert(new InsetNewline);
-			cur.posRight();
+			cur.posForward();
 			moveCursor(cur, false);
 		}
 		break;
@@ -714,7 +714,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (cur.selection())
 				cutSelection(cur, true, false);
 			insertInset(cur, inset);
-			cur.posRight();
+			cur.posForward();
 		}
 		break;
 	}
@@ -732,7 +732,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			insertChar(cur, ' ');
 		else {
 			doInsertInset(cur, this, cmd, false, false);
-			cur.posRight();
+			cur.posForward();
 		}
 		moveCursor(cur, false);
 		break;
@@ -936,7 +936,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cur.insert(new InsetQuotes(c,
 				    bufparams.quotes_language,
 				    InsetQuotes::DoubleQ));
-			cur.posRight();
+			cur.posForward();
 		}
 		else
 			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, "\""));
@@ -1156,7 +1156,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			static_cast<InsetInfo *>(inset)->setInfo(to_utf8(ds));
 		}
 		insertInset(cur, inset);
-		cur.posRight();
+		cur.posForward();
 		break;
 	}
 #if 0
@@ -1168,7 +1168,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
-		cur.posRight();
+		cur.posForward();
 		// These insets are numbered.
 		updateLabels(bv->buffer());
 		break;
@@ -1185,13 +1185,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Open the inset, and move the current selection
 		// inside it.
 		doInsertInset(cur, this, cmd, true, true);
-		cur.posRight();
+		cur.posForward();
 		break;
 
 	case LFUN_TABULAR_INSERT:
 		// if there were no arguments, just open the dialog
 		if (doInsertInset(cur, this, cmd, false, true))
-			cur.posRight();
+			cur.posForward();
 		else
 			bv->showDialog("tabularcreate");
 
@@ -1203,7 +1203,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool content = cur.selection();  // will some text be moved into the inset?
 
 		doInsertInset(cur, this, cmd, true, true);
-		cur.posRight();
+		cur.posForward();
 		ParagraphList & pars = cur.text()->paragraphs();
 
 		TextClass const & tclass = bv->buffer().params().getTextClass();
@@ -1242,7 +1242,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INDEX_INSERT:
 		doInsertInset(cur, this, cmd, true, true);
-		cur.posRight();
+		cur.posForward();
 		break;
 
 	case LFUN_NOMENCL_INSERT: {
@@ -1260,7 +1260,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// description entry still needs to be filled in.
 		if (cmd.action == LFUN_NOMENCL_INSERT)
 			inset->edit(cur, true);
-		cur.posRight();
+		cur.posForward();
 		break;
 	}
 
@@ -1274,7 +1274,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CLEARDOUBLEPAGE_INSERT:
 		// do nothing fancy
 		doInsertInset(cur, this, cmd, false, false);
-		cur.posRight();
+		cur.posForward();
 		break;
 
 	case LFUN_DEPTH_DECREMENT:
@@ -1516,7 +1516,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			ParagraphParameters p;
 			setParagraphs(cur, p);
 			insertInset(cur, new InsetFloatList(to_utf8(cmd.argument())));
-			cur.posRight();
+			cur.posForward();
 		} else {
 			lyxerr << "Non-existent float type: "
 			       << to_utf8(cmd.argument()) << endl;

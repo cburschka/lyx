@@ -48,14 +48,14 @@ public:
 	DispatchResult result() const;
 	/// add a new cursor slice
 	void push(Inset & inset);
-	/// add a new cursor slice, place cursor on left end
-	void pushLeft(Inset & inset);
+	/// add a new cursor slice, place cursor at front (move backwards)
+	void pushBackward(Inset & inset);
 	/// pop one level off the cursor
 	void pop();
-	/// pop one slice off the cursor stack and go left
-	bool popLeft();
-	/// pop one slice off the cursor stack and go right
-	bool popRight();
+	/// pop one slice off the cursor stack and go backwards
+	bool popBackward();
+	/// pop one slice off the cursor stack and go forward
+	bool popForward();
 	/// make sure we are outside of given inset
 	void leaveInset(Inset const & inset);
 	/// sets cursor part
@@ -112,10 +112,10 @@ public:
 	//
 	// common part
 	//
-	/// move one step to the left
-	bool posLeft();
-	/// move one step to the right
-	bool posRight();
+	/// move one step backwards
+	bool posBackward();
+	/// move one step forward
+	bool posForward();
 
 	/// insert an inset
 	void insert(Inset *);

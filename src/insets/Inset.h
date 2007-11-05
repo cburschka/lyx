@@ -180,9 +180,9 @@ public:
 	/// Move one physical cell down
 	virtual bool idxPrev(Cursor &) const { return false; }
 
-	/// Target pos when we enter the inset from the left by pressing "Right"
+	/// Target pos when we enter the inset while moving forward
 	virtual bool idxFirst(Cursor &) const { return false; }
-	/// Target pos when we enter the inset from the right by pressing "Left"
+	/// Target pos when we enter the inset while moving backwards
 	virtual bool idxLast(Cursor &) const { return false; }
 
 	/// Delete a cell and move cursor

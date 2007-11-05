@@ -47,9 +47,9 @@ public:
 	bool idxRight(Cursor & cur) const;
 	/// move cursor up or down
 	bool idxUpDown(Cursor & cur, bool up) const;
-	/// Target pos when we enter the inset from the left by pressing "Right"
+	/// Target pos when we enter the inset while moving forward
 	bool idxFirst(Cursor & cur) const;
-	/// Target pos when we enter the inset from the right by pressing "Left"
+	/// Target pos when we enter the inset while moving backwards
 	bool idxLast(Cursor & cur) const;
 
 	/// write LaTeX and Lyx code

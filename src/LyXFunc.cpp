@@ -1841,7 +1841,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				    && (inset_code == NO_CODE
 				    || inset_code == it->lyxCode())) {
 					Cursor tmpcur = cur;
-					tmpcur.pushLeft(*it);
+					tmpcur.pushBackward(*it);
 					it->dispatch(tmpcur, fr);
 				}
 			}

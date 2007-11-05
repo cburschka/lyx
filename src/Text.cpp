@@ -1053,7 +1053,7 @@ bool Text::dissolveInset(Cursor & cur) {
 	ParagraphList plist;
 	if (cur.lastpit() != 0 || cur.lastpos() != 0)
 		plist = paragraphs();
-	cur.popLeft();
+	cur.popBackward();
 	// store cursor offset
 	if (spit == 0)
 		spos += cur.pos();

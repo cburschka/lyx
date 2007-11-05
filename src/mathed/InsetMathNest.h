@@ -62,9 +62,9 @@ public:
 	/// move one physical cell down
 	bool idxPrev(Cursor &) const;
 
-	/// target pos when we enter the inset from the left by pressing "Right"
+	/// target pos when we enter the inset while moving forward
 	bool idxFirst(Cursor &) const;
-	/// target pos when we enter the inset from the right by pressing "Left"
+	/// target pos when we enter the inset while moving backwards
 	bool idxLast(Cursor &) const;
 
 	/// number of cells currently governed by us

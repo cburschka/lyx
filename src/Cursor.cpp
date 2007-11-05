@@ -370,19 +370,19 @@ void Cursor::push(Inset & p)
 }
 
 
-void Cursor::pushLeft(Inset & p)
+void Cursor::pushBackward(Inset & p)
 {
 	BOOST_ASSERT(!empty());
-	//lyxerr << "Entering inset " << t << " left" << endl;
+	//lyxerr << "Entering inset " << t << " front" << endl;
 	push(p);
 	p.idxFirst(*this);
 }
 
 
-bool Cursor::popLeft()
+bool Cursor::popBackward()
 {
 	BOOST_ASSERT(!empty());
-	//lyxerr << "Leaving inset to the left" << endl;
+	//lyxerr << "Leaving inset from in front" << endl;
 	inset().notifyCursorLeaves(*this);
 	if (depth() == 1)
 		return false;
@@ -391,10 +391,10 @@ bool Cursor::popLeft()
 }
 
 
-bool Cursor::popRight()
+bool Cursor::popForward()
 {
 	BOOST_ASSERT(!empty());
-	//lyxerr << "Leaving inset to the right" << endl;
+	//lyxerr << "Leaving inset from in back" << endl;
 	const pos_type lp = (depth() > 1) ? (*this)[depth() - 2].lastpos() : 0;
 	inset().notifyCursorLeaves(*this);
 	if (depth() == 1)
@@ -440,7 +440,7 @@ void Cursor::resetAnchor()
 
 
 
-bool Cursor::posLeft()
+bool Cursor::posBackward()
 {
 	if (pos() == 0)
 		return false;
@@ -449,7 +449,7 @@ bool Cursor::posLeft()
 }
 
 
-bool Cursor::posRight()
+bool Cursor::posForward()
 {
 	if (pos() == lastpos())
 		return false;
@@ -772,10 +772,10 @@ void Cursor::niceInsert(MathAtom const & t)
 	plainInsert(t);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
-		posLeft();
-		// be careful here: don't use 'pushLeft(t)' as this we need to
+		posBackward();
+		// be careful here: don't use 'pushBackward(t)' as this we need to
 		// push the clone, not the original
-		pushLeft(*nextInset());
+		pushBackward(*nextInset());
 		// We may not use niceInsert here (recursion)
 		MathData ar;
 		asArray(safe, ar);
@@ -806,7 +806,7 @@ bool Cursor::backspace()
 	if (pos() == 0) {
 		// If empty cell, and not part of a big cell
 		if (lastpos() == 0 && inset().nargs() == 1) {
-			popLeft();
+			popBackward();
 			// Directly delete empty cell: [|[]] => [|]
 			if (inMathed()) {
 				plainErase();
@@ -819,7 +819,7 @@ bool Cursor::backspace()
 			if (inMathed())
 				pullArg();
 			else
-				popLeft();
+				popBackward();
 			return true;
 		}
 	}
@@ -865,7 +865,7 @@ bool Cursor::erase()
 	if (pos() == lastpos()) {
 		bool one_cell = inset().nargs() == 1;
 		if (one_cell && lastpos() == 0) {
-			popLeft();
+			popBackward();
 			// Directly delete empty cell: [|[]] => [|]
 			if (inMathed()) {
 				plainErase();
@@ -967,8 +967,8 @@ void Cursor::handleNest(MathAtom const & a, int c)
 	MathAtom t = a;
 	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
 	insert(t);
-	posLeft();
-	pushLeft(*nextInset());
+	posBackward();
+	pushBackward(*nextInset());
 }
 
 
@@ -1019,7 +1019,7 @@ void Cursor::pullArg()
 {
 	// FIXME: Look here
 	MathData ar = cell();
-	if (popLeft() && inMathed()) {
+	if (popBackward() && inMathed()) {
 		plainErase();
 		cell().insert(pos(), ar);
 		resetAnchor();
@@ -1161,8 +1161,8 @@ bool Cursor::upDownInMath(bool up)
 	}
 	
 	// any improvement going just out of inset?
-	if (popLeft() && inMathed()) {
-		//lyxerr << "updown: popLeft succeeded" << endl;
+	if (popBackward() && inMathed()) {
+		//lyxerr << "updown: popBackward succeeded" << endl;
 		int xnew;
 		int ynew;
 		getPos(xnew, ynew);
@@ -1303,17 +1303,17 @@ void Cursor::handleFont(string const & font)
 		// something left in the cell
 		if (pos() == 0) {
 			// cursor in first position
-			popLeft();
+			popBackward();
 		} else if (pos() == lastpos()) {
 			// cursor in last position
-			popRight();
+			popForward();
 		} else {
 			// cursor in between. split cell
 			MathData::iterator bt = cell().begin();
 			MathAtom at = createInsetMath(from_utf8(font));
 			at.nucleus()->cell(0) = MathData(bt, bt + pos());
 			cell().erase(bt, bt + pos());
-			popLeft();
+			popBackward();
 			plainInsert(at);
 		}
 	} else {

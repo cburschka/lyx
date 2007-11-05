@@ -369,11 +369,11 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// when layout is set; when material is pasted.
 	int const moveCursor = par.checkBiblio(buffer.params().trackChanges);
 	if (moveCursor > 0)
-		const_cast<Cursor &>(bv_->cursor()).posRight();
+		const_cast<Cursor &>(bv_->cursor()).posForward();
 	else if (moveCursor < 0) {
 		Cursor & cursor = const_cast<Cursor &>(bv_->cursor());
 		if (cursor.pos() >= -moveCursor)
-			cursor.posLeft();
+			cursor.posBackward();
 	}
 
 	// Optimisation: this is used in the next two loops

@@ -1320,7 +1320,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		if (inset) {
 			if (inset->isActive()) {
 				Cursor tmpcur = cur;
-				tmpcur.pushLeft(*inset);
+				tmpcur.pushBackward(*inset);
 				inset->dispatch(tmpcur, tmpcmd);
 				if (tmpcur.result().dispatched()) {
 					cur.dispatched();

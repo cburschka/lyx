@@ -196,7 +196,7 @@ public:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
-	void edit(Cursor & cur, bool left);
+	void edit(Cursor & cur, bool front);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///

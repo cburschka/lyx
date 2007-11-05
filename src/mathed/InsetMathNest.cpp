@@ -507,10 +507,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.clearTargetX();
 		cur.macroModeClose();
 		if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
-			cur.pushLeft(*cur.nextAtom().nucleus());
+			cur.pushBackward(*cur.nextAtom().nucleus());
 			cur.inset().idxFirst(cur);
-		} else if (cur.posRight() || idxRight(cur)
-			|| cur.popRight() || cur.selection())
+		} else if (cur.posForward() || idxRight(cur)
+			|| cur.popForward() || cur.selection())
 			;
 		else {
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
@@ -526,11 +526,11 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.clearTargetX();
 		cur.macroModeClose();
 		if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
-			cur.posLeft();
+			cur.posBackward();
 			cur.push(*cur.nextAtom().nucleus());
 			cur.inset().idxLast(cur);
-		} else if (cur.posLeft() || idxLeft(cur)
-			|| cur.popLeft() || cur.selection())
+		} else if (cur.posBackward() || idxLeft(cur)
+			|| cur.popBackward() || cur.selection())
 			;
 		else {
 			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
@@ -729,7 +729,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_TOGGLE:
 		cur.recordUndo();
 		lock(!lock());
-		cur.popRight();
+		cur.popForward();
 		break;
 
 	case LFUN_SELF_INSERT:
@@ -760,8 +760,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		    && cur.macroModeClose()) {
 			MathAtom const atom = cur.prevAtom();
 			if (atom->asNestInset() && atom->isActive()) {
-				cur.posLeft();
-				cur.pushLeft(*cur.nextInset());
+				cur.posBackward();
+				cur.pushBackward(*cur.nextInset());
 			}
 		} else if (!interpretChar(cur, cmd.argument()[0])) {
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
@@ -881,8 +881,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		selClearOrDel(cur);
 		//cur.plainInsert(MathAtom(new InsetMathMBox(cur.bv())));
 		cur.plainInsert(MathAtom(new InsetMathBox(from_ascii("mbox"))));
-		cur.posLeft();
-		cur.pushLeft(*cur.nextInset());
+		cur.posBackward();
+		cur.pushBackward(*cur.nextInset());
 		cur.niceInsert(save_selection);
 #else
 		if (currentMode() == Inset::TEXT_MODE) {
@@ -1463,7 +1463,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 			return true;
 		}
 
-		if (cur.popRight()) {
+		if (cur.popForward()) {
 			// FIXME: we have to enable full redraw here because of the
 			// visual box corners that define the inset. If we know for
 			// sure that we stay within the same cell we can optimize for
