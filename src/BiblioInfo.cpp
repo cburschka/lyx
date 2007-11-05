@@ -37,19 +37,21 @@ using std::endl;
 using std::set;
 
 namespace lyx {
+
 using support::bformat;
 using support::compare_no_case;
 using support::getVectorFromString;
 using support::ltrim;
 using support::rtrim;
 
-////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //
 // BibTeXInfo
 //
-////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
-BibTeXInfo::BibTeXInfo() : isBibTeX(true)
+BibTeXInfo::BibTeXInfo()
+	: isBibTeX(true)
 {}
 
 	
@@ -75,33 +77,30 @@ docstring const & BibTeXInfo::getValueForField(string const & field) const
 }
 
 
-namespace {
-	docstring const familyName(docstring const & name)
-	{
-		if (name.empty())
-			return docstring();
+static docstring familyName(docstring const & name)
+{
+	if (name.empty())
+		return docstring();
 
-		// Very simple parser
-		docstring fname = name;
+	// Very simple parser
+	docstring fname = name;
 
-		// possible authorname combinations are:
-		// "Surname, FirstName"
-		// "Surname, F."
-		// "FirstName Surname"
-		// "F. Surname"
-		docstring::size_type idx = fname.find(',');
-		if (idx != docstring::npos)
-			return ltrim(fname.substr(0, idx));
-		idx = fname.rfind('.');
-		if (idx != docstring::npos && idx + 1 < fname.size())
-			fname = ltrim(fname.substr(idx + 1));
-		// test if we have a LaTeX Space in front
-		if (fname[0] == '\\')
-			return fname.substr(2);
-		return rtrim(fname);
-	}
-} // namespace anon
-
+	// possible authorname combinations are:
+	// "Surname, FirstName"
+	// "Surname, F."
+	// "FirstName Surname"
+	// "F. Surname"
+	docstring::size_type idx = fname.find(',');
+	if (idx != docstring::npos)
+		return ltrim(fname.substr(0, idx));
+	idx = fname.rfind('.');
+	if (idx != docstring::npos && idx + 1 < fname.size())
+		fname = ltrim(fname.substr(idx + 1));
+	// test if we have a LaTeX Space in front
+	if (fname[0] == '\\')
+		return fname.substr(2);
+	return rtrim(fname);
+}
 
 
 docstring const BibTeXInfo::getAbbreviatedAuthor() const
@@ -117,19 +116,21 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 			return bibKey;
 	}
 
-	//OK, we've got some names. Let's format them.
-	//Try to split the author list on " and "
+	// OK, we've got some names. Let's format them.
+	// Try to split the author list on " and "
 	vector<docstring> const authors =
 		getVectorFromString(author, from_ascii(" and "));
 	
 	if (authors.size() == 2)
 		return bformat(_("%1$s and %2$s"),
 			familyName(authors[0]), familyName(authors[1]));
-	else if (authors.size() > 2)
+
+	if (authors.size() > 2)
 		return bformat(_("%1$s et al."), familyName(authors[0]));
-	else  
-		return familyName(authors[0]);
+
+	return familyName(authors[0]);
 }
+
 
 docstring const BibTeXInfo::getYear() const
 {
@@ -150,11 +151,11 @@ docstring const BibTeXInfo::getInfo() const
 		return it->second;
 	}
  
-	//FIXME
-	//This could be made alot better using the entryType
-	//field to customize the output based upon entry type.
+	// FIXME
+	// This could be made a lot better using the entryType
+	// field to customize the output based upon entry type.
 	
-	//Search for all possible "required" fields
+	// Search for all possible "required" fields
 	docstring author = getValueForField("author");
 	if (author.empty())
 		author = getValueForField("editor");
@@ -166,45 +167,47 @@ docstring const BibTeXInfo::getInfo() const
 		docLoc = getValueForField("chapter");
 		if (!docLoc.empty())
 			docLoc = from_ascii("Ch. ") + docLoc;
-	}	else 
+	}	else {
 		docLoc = from_ascii("pp. ") + docLoc;
-		docstring media = getValueForField("journal");
+	}
+
+	docstring media = getValueForField("journal");
+	if (media.empty()) {
+		media = getValueForField("publisher");
 		if (media.empty()) {
-			media = getValueForField("publisher");
-			if (media.empty()) {
-				media = getValueForField("school");
-				if (media.empty())
-					media = getValueForField("institution");
-			}
+			media = getValueForField("school");
+			if (media.empty())
+				media = getValueForField("institution");
 		}
-		docstring volume = getValueForField("volume");
- 
-		odocstringstream result;
-		if (!author.empty())
-			result << author << ", ";
-		if (!title.empty())
-			result << title;
-		if (!media.empty())
-			result << ", " << media;
-		if (!year.empty())
-			result << ", " << year;
-		if (!docLoc.empty())
-			result << ", " << docLoc;
- 
-		docstring const result_str = rtrim(result.str());
-		if (!result_str.empty())
-			return result_str;
- 
- 	// This should never happen (or at least be very unusual!)
-		return docstring();
+	}
+	docstring volume = getValueForField("volume");
+
+	odocstringstream result;
+	if (!author.empty())
+		result << author << ", ";
+	if (!title.empty())
+		result << title;
+	if (!media.empty())
+		result << ", " << media;
+	if (!year.empty())
+		result << ", " << year;
+	if (!docLoc.empty())
+		result << ", " << docLoc;
+
+	docstring const result_str = rtrim(result.str());
+	if (!result_str.empty())
+		return result_str;
+
+	// This should never happen (or at least be very unusual!)
+	return docstring();
 }
 
 
-////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //
 // BiblioInfo
 //
-////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 namespace {
 // A functor for use with std::sort, leading to case insensitive sorting
@@ -309,7 +312,7 @@ vector<docstring> const BiblioInfo::getNumericalStrings(
 		biblio::getCiteStyles(buf.params().getEngine());
 	
 	vector<docstring> vec(styles.size());
-	for (vector<docstring>::size_type i = 0; i != vec.size(); ++i) {
+	for (size_t i = 0; i != vec.size(); ++i) {
 		docstring str;
 
 		switch (styles[i]) {
@@ -430,11 +433,11 @@ void BiblioInfo::fillWithBibKeys(Buffer const * const buf)
 
 namespace biblio {
 
-////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //
 // CitationStyle
 //
-////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 namespace {
 
@@ -539,7 +542,7 @@ vector<CiteStyle> const getCiteStyles(CiteEngine const engine)
 	typedef vector<CiteStyle> cite_vec;
 
 	cite_vec styles(nStyles);
-	cite_vec::size_type i = 0;
+	size_t i = 0;
 	int j = start;
 	for (; i != styles.size(); ++i, ++j)
 		styles[i] = citeStyles[j];

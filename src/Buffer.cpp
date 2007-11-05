@@ -157,7 +157,7 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-int const LYX_FORMAT = 299; //Uwe: Hyperlink types
+int const LYX_FORMAT = 299; // Uwe: Hyperlink types
 
 } // namespace anon
 
@@ -1770,12 +1770,12 @@ bool Buffer::hasMacro(docstring const & name, Paragraph const & par) const
 {
 	Impl::PositionToMacroMap::iterator it;
 	it = pimpl_->macros[name].upper_bound(par.macrocontextPosition());
-	if( it != pimpl_->macros[name].end() )
+	if (it != pimpl_->macros[name].end())
 		return true;
 
 	// If there is a master buffer, query that
-	const Buffer *master = masterBuffer();
-	if (master && master!=this)
+	const Buffer * master = masterBuffer();
+	if (master && master != this)
 		return master->hasMacro(name);
 
 	return MacroTable::globalMacros().has(name);
@@ -1788,15 +1788,16 @@ bool Buffer::hasMacro(docstring const & name) const
 		return true;
 
 	// If there is a master buffer, query that
-	const Buffer *master = masterBuffer();
-	if (master && master!=this)
+	const Buffer * master = masterBuffer();
+	if (master && master != this)
 		return master->hasMacro(name);
 
 	return MacroTable::globalMacros().has(name);
 }
 
 
-MacroData const & Buffer::getMacro(docstring const & name, Paragraph const & par) const
+MacroData const & Buffer::getMacro(docstring const & name,
+	Paragraph const & par) const
 {
 	Impl::PositionToMacroMap::iterator it;
 	it = pimpl_->macros[name].upper_bound(par.macrocontextPosition());
@@ -1804,8 +1805,8 @@ MacroData const & Buffer::getMacro(docstring const & name, Paragraph const & par
 		return it->second;
 
 	// If there is a master buffer, query that
-	const Buffer *master = masterBuffer();
-	if (master && master!=this)
+	const Buffer * master = masterBuffer();
+	if (master && master != this)
 		return master->getMacro(name);
 
 	return MacroTable::globalMacros().get(name);
@@ -1820,8 +1821,8 @@ MacroData const & Buffer::getMacro(docstring const & name) const
 		return it->second;
 
 	// If there is a master buffer, query that
-	const Buffer *master = masterBuffer();
-	if (master && master!=this)
+	const Buffer * master = masterBuffer();
+	if (master && master != this)
 		return master->getMacro(name);
 
 	return MacroTable::globalMacros().get(name);
