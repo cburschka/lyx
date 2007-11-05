@@ -35999,6 +35999,29 @@ El cursor sigue a la barra de desplazamiento
 , aunque éste se deslice.
 \end_layout
 
+\begin_layout Subsubsection
+
+\lang english
+Pixmap Cache
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the option 
+\family sans
+Enable Pixmap Cache
+\family default
+ enabled, LyX needs to redraw the screen less often.
+ This results in better performance, especially on slow systems.
+ On the other hand, the characters might look more fuzzy on screen.
+ So whether you enable this or not depends on whether you prefer speed over
+ aesthetics.
+ Note that the Pixmap Cache is only available and useful under Mac\InsetSpace ~
+OS and
+ Windows.
+\end_layout
+
 \begin_layout Subsection
 Fuentes de pantalla
 \begin_inset LatexCommand index

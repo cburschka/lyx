@@ -34817,6 +34817,30 @@ Rollbalken Wenn der Cursor aus dem Fenster zu verschwinden droht,
 \end_layout
 
 \end_deeper
+\begin_layout Description
+Pixmap\InsetSpace ~
+Cache
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Pixmap\InsetSpace ~
+Cache Wenn die Option 
+\family sans
+Enable Pixmap Cache
+\family default
+ verwendet wird, muss LyX die Bildschirmansicht nicht so häufig neu aufbauen.
+ Dies führt zu einer besseren Performance, besonders bei langsameren Systemen.
+ Auf der anderen Seite können dadurch die Bildschirmschriften etwas pixelig
+ aussehen.
+ Die Verwendung dieser Option hängt also davon ab, ob Sie Geschwindigkeit
+ oder gute Ansicht bevorzugen.
+ Beachten Sie dass der Pixmap Cache nur unter Mac\InsetSpace ~
+OS und Windows verfügbar
+ und nützlich ist.
+\end_layout
+
+\end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Subsection

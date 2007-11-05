@@ -1,4 +1,4 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -35162,6 +35162,25 @@ Cursor follows scrollbar
 \family default
  sets the cursor to the top of the currently displayed document part when
  scrolling.
+\end_layout
+
+\begin_layout Subsubsection
+Pixmap Cache
+\end_layout
+
+\begin_layout Standard
+With the option 
+\family sans
+Enable Pixmap Cache
+\family default
+ enabled, LyX needs to redraw the screen less often.
+ This results in better performance, especially on slow systems.
+ On the other hand, the characters might look more fuzzy on screen.
+ So whether you enable this or not depends on whether you prefer speed over
+ aesthetics.
+ Note that the Pixmap Cache is only available and useful under Mac\InsetSpace ~
+OS and
+ Windows.
 \end_layout
 
 \begin_layout Subsection
