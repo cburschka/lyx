@@ -29,7 +29,7 @@ class ToolbarItem;
 namespace frontend {
 
 class GuiCommandBuffer;
-class GuiViewBase;
+class GuiView;
 class Action;
 
 
@@ -37,7 +37,7 @@ class GuiLayoutBox : public QComboBox
 {
 	Q_OBJECT
 public:
-	GuiLayoutBox(GuiViewBase &);
+	GuiLayoutBox(GuiView &);
 
 	/// select the right layout in the combobox.
 	void set(docstring const & layout);
@@ -48,7 +48,7 @@ private Q_SLOTS:
 	void selected(const QString & str);
 
 private:
-	GuiViewBase & owner_;
+	GuiView & owner_;
 };
 
 
@@ -56,7 +56,7 @@ class GuiToolbar : public QToolBar
 {
 	Q_OBJECT
 public:
-	GuiToolbar(ToolbarInfo const &, GuiViewBase &);
+	GuiToolbar(ToolbarInfo const &, GuiView &);
 
 	/// Add a button to the bar.
 	void add(ToolbarItem const & item);
@@ -77,7 +77,7 @@ private:
 	Action * addItem(ToolbarItem const & item);
 
 	QList<Action *> actions_;
-	GuiViewBase & owner_;
+	GuiView & owner_;
 
 	GuiLayoutBox * layout_;
 	GuiCommandBuffer * command_buffer_;

@@ -26,7 +26,7 @@ namespace lyx {
 namespace frontend {
 
 class LyXView;
-class GuiViewBase;
+class GuiView;
 class GuiCommandEdit;
 
 class GuiCommandBuffer : public QWidget
@@ -34,7 +34,7 @@ class GuiCommandBuffer : public QWidget
 	Q_OBJECT
 
 public:
-	GuiCommandBuffer(GuiViewBase * view);
+	GuiCommandBuffer(GuiView * view);
 
 public Q_SLOTS:
 	/// cancel command compose
@@ -53,7 +53,7 @@ public Q_SLOTS:
 	void hideParent();
 private:
 	/// owning view
-	GuiViewBase * view_;
+	GuiView * view_;
 	///
 	LyXView & lv_;
 	/// command widget

@@ -48,7 +48,7 @@ LyXView& GuiImplementation::createRegisteredView()
 	int id = 0;
 	while (views_.find(id) != views_.end())
 		id++;
-	views_.insert(std::pair<int, GuiViewBase *>(id, new GuiViewBase(id)));
+	views_.insert(std::pair<int, GuiView *>(id, new GuiView(id)));
 	updateIds(views_, view_ids_);
 	return *views_[id];
 }
@@ -60,7 +60,7 @@ bool GuiImplementation::unregisterView(int id)
 	BOOST_ASSERT(views_.find(id) != views_.end());
 	BOOST_ASSERT(views_[id]);
 
-	std::map<int, GuiViewBase *>::iterator it;
+	std::map<int, GuiView *>::iterator it;
 	for (it = views_.begin(); it != views_.end(); ++it) {
 		if (it->first == id) {
 			views_.erase(id);
@@ -82,8 +82,8 @@ bool GuiImplementation::closeAllViews()
 		return true;
 	}
 
-	std::map<int, GuiViewBase*> const cmap = views_;
-	std::map<int, GuiViewBase*>::const_iterator it;
+	std::map<int, GuiView*> const cmap = views_;
+	std::map<int, GuiView*>::const_iterator it;
 	for (it = cmap.begin(); it != cmap.end(); ++it)
 	{
 		// TODO: return false when close event was ignored

@@ -24,7 +24,7 @@ class MenuBackend;
 
 namespace frontend {
 
-class GuiViewBase;
+class GuiView;
 class GuiPopupMenu;
 class LyXView;
 
@@ -40,7 +40,7 @@ public:
 	void openByName(QString const & name);
 
 	/// return the owning view
-	GuiViewBase * view() { return owner_; }
+	GuiView * view() { return owner_; }
 
 	/// return the menu controller
 	MenuBackend const & backend() { return menubackend_; }
@@ -56,7 +56,7 @@ private:
 	void macxMenuBarInit();
 
 	/// owning view
-	GuiViewBase * owner_;
+	GuiView * owner_;
 
 	/// menu controller
 	MenuBackend & menubackend_;

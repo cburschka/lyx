@@ -36,7 +36,7 @@ class DialogView : public QDialog, public Dialog
 {
 public:
 	DialogView(
-		GuiViewBase & parent, ///< the main window where to dock.
+		GuiView & parent, ///< the main window where to dock.
 		std::string const & name, ///< dialog identifier.
 		bool modal = false, ///< Window modality.
 		Qt::WindowFlags flags = 0

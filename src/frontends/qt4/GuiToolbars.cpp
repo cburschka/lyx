@@ -40,7 +40,7 @@ namespace frontend {
 #define TurnOnFlag(x)   flags |= ToolbarInfo::x
 #define TurnOffFlag(x)  flags &= ~ToolbarInfo::x
 
-GuiToolbars::GuiToolbars(GuiViewBase & owner)
+GuiToolbars::GuiToolbars(GuiView & owner)
 	: owner_(owner),
 	  layout_(0),
 	  last_textclass_(TextClassPtr())

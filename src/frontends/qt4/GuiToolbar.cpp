@@ -238,7 +238,7 @@ static TextClass const & textClass(LyXView const & lv)
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiLayoutBox::GuiLayoutBox(GuiViewBase & owner)
+GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 	: owner_(owner)
 {
 	setSizeAdjustPolicy(QComboBox::AdjustToContents);
@@ -324,7 +324,7 @@ void GuiLayoutBox::selected(const QString & str)
 /////////////////////////////////////////////////////////////////////
 
 
-GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiViewBase & owner)
+GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	: QToolBar(qt_(tbinfo.gui_name), &owner), owner_(owner),
 	  layout_(0), command_buffer_(0)
 {

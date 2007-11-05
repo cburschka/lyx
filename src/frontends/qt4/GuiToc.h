@@ -40,7 +40,7 @@ class GuiToc : public DockView
 public:
 	///
 	GuiToc(
-		GuiViewBase & parent, ///< the main window where to dock.
+		GuiView & parent, ///< the main window where to dock.
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0);
 

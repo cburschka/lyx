@@ -46,14 +46,14 @@ QWidget * mainWindow();
  * is deleted. This might be useful for closing other dialogs
  * depending on a given GuiView.
  */
-class GuiViewBase : public QMainWindow, public LyXView
+class GuiView : public QMainWindow, public LyXView
 {
 	Q_OBJECT
 public:
 	/// create a main window of the given dimensions
-	GuiViewBase(int id);
+	GuiView(int id);
 
-	~GuiViewBase();
+	~GuiView();
 
 	virtual void init();
 	virtual void close();

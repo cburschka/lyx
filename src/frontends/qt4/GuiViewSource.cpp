@@ -88,7 +88,7 @@ void ViewSourceWidget::update(bool full_source)
 }
 
 
-GuiViewSource::GuiViewSource(GuiViewBase & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
+GuiViewSource::GuiViewSource(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
 	: DockView(parent, "view-source", area, flags)
 {
 	widget_ = new ViewSourceWidget(*this);
@@ -172,7 +172,7 @@ QString GuiViewSource::title() const
 
 Dialog * createGuiViewSource(LyXView & lv)
 {
-	return new GuiViewSource(static_cast<GuiViewBase &>(lv));
+	return new GuiViewSource(static_cast<GuiView &>(lv));
 }
 
 

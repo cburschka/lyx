@@ -332,7 +332,7 @@ LyXAlignment GuiParagraph::alignDefault() const
 Dialog * createGuiParagraph(LyXView & lv)
 {
 #if 0
-	GuiViewBase & guiview = static_cast<GuiViewBase &>(lv);
+	GuiView & guiview = static_cast<GuiView &>(lv);
 #ifdef USE_DOCK_WIDGET
 	return new DockView<ControlParagraph, GuiParagraph>(guiview, "paragraph",
 		Qt::TopDockWidgetArea);

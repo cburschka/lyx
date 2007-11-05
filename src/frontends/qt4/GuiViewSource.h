@@ -63,7 +63,7 @@ class GuiViewSource : public DockView
 
 public:
 	GuiViewSource(
-		GuiViewBase & parent, ///< the main window where to dock.
+		GuiView & parent, ///< the main window where to dock.
 		Qt::DockWidgetArea area = Qt::BottomDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0);
 

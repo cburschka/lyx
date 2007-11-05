@@ -26,13 +26,13 @@ namespace frontend {
 
 class GuiLayoutBox;
 class GuiToolbar;
-class GuiViewBase;
+class GuiView;
 
 class GuiToolbars
 {
 public:
 	///
-	GuiToolbars(GuiViewBase & owner);
+	GuiToolbars(GuiView & owner);
 
 	/// Initialize the toolbars using the backend database.
 	void init();
@@ -88,7 +88,7 @@ private:
 	void initFlags(ToolbarInfo & tbinfo);
 
 	/// The parent window.
-	GuiViewBase & owner_;
+	GuiView & owner_;
 
 	/** The layout box is actually owned by whichever toolbar
 	 *  contains it. All the Toolbars class needs is a means of

@@ -22,7 +22,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiViewBase;
+class GuiView;
 class LyXView;
 
 /**
@@ -50,7 +50,7 @@ private:
 	* object is handled by Qt when the view is closed
 	* \sa Qt::WA_DeleteOnClose attribute.
 	*/
-	std::map<int, GuiViewBase *> views_;
+	std::map<int, GuiView *> views_;
 };
 
 } // namespace frontend

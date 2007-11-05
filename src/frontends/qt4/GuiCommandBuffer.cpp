@@ -88,7 +88,7 @@ protected:
 } // end of anon
 
 
-GuiCommandBuffer::GuiCommandBuffer(GuiViewBase * view)
+GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	: view_(view), lv_(*view), history_pos_(history_.end())
 {
 	transform(lyxaction.func_begin(), lyxaction.func_end(),

@@ -27,7 +27,7 @@ namespace lyx {
 namespace frontend {
 
 
-Action::Action(GuiViewBase & lyxView, QIcon const & icon,
+Action::Action(GuiView & lyxView, QIcon const & icon,
 	  QString const & text, FuncRequest const & func,
 	  QString const & tooltip)
 	: QAction(&lyxView), func_(func), lyxView_(lyxView)

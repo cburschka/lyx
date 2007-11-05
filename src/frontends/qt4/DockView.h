@@ -29,7 +29,7 @@ class DockView : public QDockWidget, public Dialog
 {
 public:
 	DockView(
-		GuiViewBase & parent, ///< the main window where to dock.
+		GuiView & parent, ///< the main window where to dock.
 		std::string const & name, ///< dialog identifier.
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0
