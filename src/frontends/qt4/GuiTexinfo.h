@@ -15,7 +15,7 @@
 
 #include "GuiDialog.h"
 #include "ui_TexinfoUi.h"
-#include "frontend_helpers.h"
+#include "qt_helpers.h"
 
 #include <map>
 #include <vector>

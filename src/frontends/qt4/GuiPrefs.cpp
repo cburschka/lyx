@@ -42,8 +42,6 @@
 
 #include "graphics/GraphicsTypes.h"
 
-#include "frontend_helpers.h"
-
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
@@ -1445,7 +1443,7 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 	defaultLanguageCO->clear();
 
 	// store the lang identifiers for later
-	std::vector<LanguagePair> const langs = frontend::getLanguageData(false);
+	std::vector<LanguagePair> const langs = getLanguageData(false);
 	std::vector<LanguagePair>::const_iterator lit  = langs.begin();
 	std::vector<LanguagePair>::const_iterator lend = langs.end();
 	lang_.clear();

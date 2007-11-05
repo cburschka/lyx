@@ -22,7 +22,6 @@
 #include "LyXRC.h"
 #include "qt_helpers.h"
 #include "Validator.h"
-#include "frontend_helpers.h"
 
 #include "FuncRequest.h"
 #include "gettext.h"
@@ -95,7 +94,7 @@ using support::token;
  * checkbox is unchecked and clearing the line edit if it previously
  * said "text".
 */
-void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
+static void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 	LengthCombo * lengthCombo/*, string text = "auto"*/)
 {
 	if (!checkBox->isChecked())
@@ -105,8 +104,6 @@ void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 		lengthToWidgets(lineEdit, lengthCombo, string(),
 				lengthCombo->currentLengthItem());
 }
-
-
 
 template<class Pair>
 vector<typename Pair::first_type> const

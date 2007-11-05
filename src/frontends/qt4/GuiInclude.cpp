@@ -14,8 +14,6 @@
 
 #include "GuiInclude.h"
 
-#include "frontend_helpers.h"
-
 #include "Buffer.h"
 #include "Format.h"
 #include "FuncRequest.h"

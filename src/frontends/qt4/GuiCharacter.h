@@ -16,7 +16,7 @@
 
 #include "GuiDialog.h"
 #include "ui_CharacterUi.h"
-#include "frontend_helpers.h" // for LanguagePair
+#include "qt_helpers.h" // for LanguagePair
 #include "Font.h"
 
 #include <vector>

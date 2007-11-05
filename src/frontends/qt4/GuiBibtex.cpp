@@ -30,9 +30,6 @@
 #include "support/lstrings.h"
 #include "support/FileFilterList.h"
 
-#include "frontend_helpers.h"
-
-
 #include <QPushButton>
 #include <QListWidget>
 #include <QCheckBox>

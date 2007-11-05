@@ -22,7 +22,6 @@
 #include "debug.h"
 //#include "DialogView.h"
 //#include "DockView.h"
-#include "frontend_helpers.h"
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "GuiView.h"

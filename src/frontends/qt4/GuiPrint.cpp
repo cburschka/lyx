@@ -17,8 +17,6 @@
 #include "qt_helpers.h"
 #include "PrinterParams.h"
 
-#include "frontend_helpers.h"
-
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"

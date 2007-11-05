@@ -22,7 +22,6 @@
 #include "EmbeddedFiles.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
-#include "frontend_helpers.h"
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "GuiBranches.h"

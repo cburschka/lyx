@@ -17,7 +17,6 @@
 
 #include "debug.h"
 #include "gettext.h"
-#include "frontend_helpers.h"
 #include "qt_helpers.h"
 #include "Buffer.h"
 #include "BufferParams.h"

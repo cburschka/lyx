@@ -50,8 +50,6 @@ SOURCEFILES = \
 	../ButtonPolicy.h \
 	../Dialog.cpp \
 	../Dialog.h \
-	../frontend_helpers.cpp \
-	../frontend_helpers.h \
 	Resources.cpp \
 	Action.cpp \
 	alert_pimpl.cpp \
