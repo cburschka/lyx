@@ -2585,6 +2585,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_ESC_CHARS:
 	case LyXRC::RC_USE_INP_ENC:
 	case LyXRC::RC_USE_PERS_DICT:
+	case LyXRC::RC_USE_PIXMAP_CACHE:
 	case LyXRC::RC_USE_SPELL_LIB:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
 	case LyXRC::RC_VIEWER:
