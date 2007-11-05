@@ -1129,14 +1129,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// true (on).
 
 		if (lyxrc.auto_region_delete && cur.selection()) {
+			pit_type const begpit = cur.selBegin().pit();
+			pit_type const endpit = cur.selEnd().pit();
 			cutSelection(cur, false, false);
-			// When change tracking is set to off, the metrics update
-			// mechanism correctly detects if a full update is needed or not.
-			// This detection fails when a selection spans multiple rows and
-			// change tracking is enabled because the paragraph metrics stays
-			// the same. In this case, we force the full update:
-			// (see http://bugzilla.lyx.org/show_bug.cgi?id=3992)
-			if (cur.buffer().params().trackChanges)
+			// When a selection spans multiple paragraphs, the metrics update
+			// mechanism sometimes fails to detect that a full update is
+			// needed. In this case, we force the full update:
+			// (see http://bugzilla.lyx.org/show_bug.cgi?id=4317)
+			if (isMainText(*cur.bv().buffer()) && begpit != endpit)
 				cur.updateFlags(Update::Force);
 		}
 
