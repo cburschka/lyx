@@ -16,11 +16,8 @@
 #include "support/types.h"
 #include "support/docstring.h"
 
-#include <string>
-#include <vector>
 
 namespace lyx {
-
 
 class MathAtom;
 class MathData;
