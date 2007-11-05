@@ -15,18 +15,18 @@
 #ifndef MATH_DATA_H
 #define MATH_DATA_H
 
-#include <vector>
-
-#include "Cursor.h"
 #include "Dimension.h"
 #include "MathAtom.h"
 
-#include "support/docstream.h"
+#include "support/strfwd.h"
+
+#include <vector>
 
 
 namespace lyx {
 
 class BufferView;
+class Cursor;
 class LaTeXFeatures;
 class ReplaceData;
 class MathMacro;

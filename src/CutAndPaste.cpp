@@ -48,6 +48,7 @@
 
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
+#include "support/docstream.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"

@@ -11,8 +11,8 @@
 #include <config.h>
 
 #include "InsetMathLefteqn.h"
-#include "MathData.h"
-#include "support/std_ostream.h"
+
+#include "support/docstream.h"
 
 
 namespace lyx {

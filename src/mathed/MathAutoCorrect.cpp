@@ -18,6 +18,7 @@
 #include "debug.h"
 
 #include "support/filetools.h" //  LibFileSearch
+#include "support/docstream.h"
 
 #include <fstream>
 #include <sstream>

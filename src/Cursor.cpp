@@ -35,6 +35,8 @@
 #include "ParIterator.h"
 #include "TextMetrics.h"
 
+#include "support/docstream.h"
+
 #include "insets/InsetTabular.h"
 #include "insets/InsetText.h"
 

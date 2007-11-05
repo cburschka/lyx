@@ -66,6 +66,7 @@ following hack as starting point to write some macros:
 #include "debug.h"
 
 #include "support/convert.h"
+#include "support/docstream.h"
 
 #include <sstream>
 

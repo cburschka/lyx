@@ -25,6 +25,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CoordCache.h"
+#include "Cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "FontIterator.h"
