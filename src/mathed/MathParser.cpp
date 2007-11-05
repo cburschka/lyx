@@ -116,7 +116,7 @@ bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
 	++cellrow;
 	if (cellrow == grid.nrows()) {
 		//lyxerr << "adding row " << cellrow << endl;
-		grid.addRow(cellrow - 1);
+		grid.appendRow(cellrow - 1);
 		if (cellrow == grid.nrows()) {
 			// We can't add a row to this grid, so let's
 			// append the content of this cell to the previous

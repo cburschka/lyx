@@ -167,15 +167,15 @@ public:
 	/// pulls cell after pressing erase
 	void idxGlue(idx_type idx);
 
-	/// add a row
-	virtual void addRow(row_type r);
+	/// add a row, one row down
+	virtual void appendRow(row_type r);
 	/// delete a row
 	virtual void delRow(row_type r);
 	/// copy a row
 	virtual void copyRow(row_type r);
 	/// swap two rows
 	virtual void swapRow(row_type r);
-	/// add a column
+	/// add a column, here
 	virtual void addCol(col_type c);
 	/// delete a column
 	virtual void delCol(col_type c);
