@@ -1197,7 +1197,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			row_type const r = cur.row();
 			col_type const c = cur.col();
 			for (int i = 0, n = extractInt(is); i < n; ++i)
-				addCol(cur.col());
+				addCol(cur.col() + 1);
 			cur.idx() = index(r, c);
 		}
 		else if (s == "delete-column") {
