@@ -1161,6 +1161,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			for (int i = 0, n = extractInt(is); i < n; ++i)
 				appendRow(cur.row());
 		else if (s == "delete-row") {
+			cur.clearSelection(); // bug 4323
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
 				delRow(cur.row());
 				if (cur.idx() >= nargs())
@@ -1199,6 +1200,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.idx() = index(r, c);
 		}
 		else if (s == "delete-column") {
+			cur.clearSelection(); // bug 4323
 			row_type const r = cur.row();
 			col_type const c = cur.col();
 			for (int i = 0, n = extractInt(is); i < n; ++i)
