@@ -74,6 +74,8 @@ What's new
 
 - Fix a crash when some files or directories are not readable.
 
+- Fix a crash when pasting into a math formula (bug 4318).
+
 - Fix updating of externally modified files on Windows (bug 3172).
 
 - Repair wasy font such that it can also be used on Mac (bug 2326).
@@ -104,8 +106,8 @@ What's new
 
 - Really highlight search text (bug 3999).
 
-- Fix bug where the spellchecker didn't update the screen display on the last of
-  several misspelt words (bug 3586).
+- Fix a bug where the spellchecker didn't update the screen display on the last
+  of several misspelt words (bug 3586).
 
 - Do not close the error dialog on double click (bug 4090).
 
