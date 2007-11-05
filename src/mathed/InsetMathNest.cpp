@@ -164,7 +164,7 @@ bool InsetMathNest::idxNext(Cursor & cur) const
 }
 
 
-bool InsetMathNest::idxRight(Cursor & cur) const
+bool InsetMathNest::idxForward(Cursor & cur) const
 {
 	return idxNext(cur);
 }
@@ -181,7 +181,7 @@ bool InsetMathNest::idxPrev(Cursor & cur) const
 }
 
 
-bool InsetMathNest::idxLeft(Cursor & cur) const
+bool InsetMathNest::idxBackward(Cursor & cur) const
 {
 	return idxPrev(cur);
 }
@@ -509,7 +509,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
 			cur.pushBackward(*cur.nextAtom().nucleus());
 			cur.inset().idxFirst(cur);
-		} else if (cur.posForward() || idxRight(cur)
+		} else if (cur.posForward() || idxForward(cur)
 			|| cur.popForward() || cur.selection())
 			;
 		else {
@@ -529,7 +529,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.posBackward();
 			cur.push(*cur.nextAtom().nucleus());
 			cur.inset().idxLast(cur);
-		} else if (cur.posBackward() || idxLeft(cur)
+		} else if (cur.posBackward() || idxBackward(cur)
 			|| cur.popBackward() || cur.selection())
 			;
 		else {

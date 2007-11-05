@@ -830,9 +830,9 @@ bool InsetMathGrid::idxUpDown(Cursor & cur, bool up) const
 }
 
 
-bool InsetMathGrid::idxLeft(Cursor & cur) const
+bool InsetMathGrid::idxBackward(Cursor & cur) const
 {
-	// leave matrix if on the left hand edge
+	// leave matrix if at the front edge
 	if (cur.col() == 0)
 		return false;
 	--cur.idx();
@@ -841,9 +841,9 @@ bool InsetMathGrid::idxLeft(Cursor & cur) const
 }
 
 
-bool InsetMathGrid::idxRight(Cursor & cur) const
+bool InsetMathGrid::idxForward(Cursor & cur) const
 {
-	// leave matrix if on the right hand edge
+	// leave matrix if at the back edge
 	if (cur.col() + 1 == ncols())
 		return false;
 	++cur.idx();

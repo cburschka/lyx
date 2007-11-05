@@ -170,14 +170,14 @@ public:
 	virtual bool isActive() const { return nargs() > 0; }
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(Cursor & cur, bool up) const;
-	/// Move one cell to the left
-	virtual bool idxLeft(Cursor &) const { return false; }
-	/// Move one cell to the right
-	virtual bool idxRight(Cursor &) const { return false; }
+	/// Move one cell backwards
+	virtual bool idxBackward(Cursor &) const { return false; }
+	/// Move one cell forward
+	virtual bool idxForward(Cursor &) const { return false; }
 
-	/// Move one physical cell up
+	/// Move to the next cell
 	virtual bool idxNext(Cursor &) const { return false; }
-	/// Move one physical cell down
+	/// Move to the previous cell
 	virtual bool idxPrev(Cursor &) const { return false; }
 
 	/// Target pos when we enter the inset while moving forward

@@ -41,10 +41,10 @@ public:
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
 
-	/// move cursor left
-	bool idxLeft(Cursor & cur) const;
-	/// move cursor right
-	bool idxRight(Cursor & cur) const;
+	/// move cursor backwards
+	bool idxBackward(Cursor & cur) const;
+	/// move cursor forward
+	bool idxForward(Cursor & cur) const;
 	/// move cursor up or down
 	bool idxUpDown(Cursor & cur, bool up) const;
 	/// Target pos when we enter the inset while moving forward

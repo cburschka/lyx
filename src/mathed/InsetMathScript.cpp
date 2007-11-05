@@ -468,13 +468,13 @@ Inset::idx_type InsetMathScript::idxOfScript(bool up) const
 }
 
 
-bool InsetMathScript::idxRight(Cursor &) const
+bool InsetMathScript::idxForward(Cursor &) const
 {
 	return false;
 }
 
 
-bool InsetMathScript::idxLeft(Cursor &) const
+bool InsetMathScript::idxBackward(Cursor &) const
 {
 	return false;
 }

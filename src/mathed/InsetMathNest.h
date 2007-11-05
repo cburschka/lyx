@@ -52,14 +52,14 @@ public:
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 
-	/// order of movement through the cells when pressing the left key
-	bool idxLeft(Cursor &) const;
-	/// order of movement through the cells when pressing the right key
-	bool idxRight(Cursor &) const;
+	/// order of movement through the cells when moving backwards
+	bool idxBackward(Cursor &) const;
+	/// order of movement through the cells when moving forward
+	bool idxForward(Cursor &) const;
 
-	/// move one physical cell up
+	/// move to next cell
 	bool idxNext(Cursor &) const;
-	/// move one physical cell down
+	/// move to previous cell
 	bool idxPrev(Cursor &) const;
 
 	/// target pos when we enter the inset while moving forward

@@ -26,9 +26,9 @@ public:
 	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
-	bool idxLeft(Cursor &) const { return false; }
+	bool idxBackward(Cursor &) const { return false; }
 	///
-	bool idxRight(Cursor &) const { return false; }
+	bool idxForward(Cursor &) const { return false; }
 };
 
 
@@ -49,9 +49,9 @@ public:
 	///
 	explicit InsetMathFrac(Kind kind = FRAC, idx_type ncells = 2);
 	///
-	bool idxRight(Cursor &) const;
+	bool idxForward(Cursor &) const;
 	///
-	bool idxLeft(Cursor &) const;
+	bool idxBackward(Cursor &) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

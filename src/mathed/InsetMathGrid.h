@@ -155,9 +155,9 @@ public:
 	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
-	bool idxLeft(Cursor &) const;
+	bool idxBackward(Cursor &) const;
 	///
-	bool idxRight(Cursor &) const;
+	bool idxForward(Cursor &) const;
 	///
 	bool idxFirst(Cursor &) const;
 	///

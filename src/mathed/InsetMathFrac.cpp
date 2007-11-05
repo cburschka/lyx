@@ -79,7 +79,7 @@ InsetMathFrac const * InsetMathFrac::asFracInset() const
 }
 
 
-bool InsetMathFrac::idxRight(Cursor & cur) const
+bool InsetMathFrac::idxForward(Cursor & cur) const
 {
 	InsetMath::idx_type target = 0;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
@@ -97,7 +97,7 @@ bool InsetMathFrac::idxRight(Cursor & cur) const
 }
 
 
-bool InsetMathFrac::idxLeft(Cursor & cur) const
+bool InsetMathFrac::idxBackward(Cursor & cur) const
 {
 	InsetMath::idx_type target = 0;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
