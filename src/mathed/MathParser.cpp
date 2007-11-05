@@ -463,8 +463,11 @@ bool Parser::good() const
 
 char_type Parser::getChar()
 {
-	if (!good())
+	if (!good()) {
 		error("The input stream is not well...");
+		putback();
+		return char_type();
+	}
 	return tokens_[pos_++].character();
 }
 
