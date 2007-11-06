@@ -3013,6 +3013,8 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	x += scx_;
 	x += ADD_TO_TABULAR_WIDTH;
 
+	bool const original_drawing_state = pi.pain.isDrawingEnabled();
+
 	idx_type idx = 0;
 	first_visible_cell = Tabular::npos;
 	for (row_type i = 0; i < tabular.rowCount(); ++i) {
@@ -3036,7 +3038,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				pi.pain.setDrawingEnabled(false);
 				cell(idx)->draw(pi, cx, y);
 				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);
-				pi.pain.setDrawingEnabled(true);
+				pi.pain.setDrawingEnabled(original_drawing_state);
 			} else {
 				cell(idx)->draw(pi, cx, y);
 				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);

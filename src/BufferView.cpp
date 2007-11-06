@@ -1334,6 +1334,8 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			updateMetrics();
 			//FIXME: updateMetrics() does not update paragraph position
 			// This is done at draw() time. So we need a redraw!
+			// But no screen update is needed.
+			d->metrics_info_.update_strategy = NoScreenUpdate;
 			buffer_.changed();
 			p = getPos(cur, cur.boundary());
 		}
@@ -1361,6 +1363,8 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			cur.forwardInset();
 		}
 		// FIXME: we need to do a redraw again because of the selection
+		// But no screen update is needed.
+		d->metrics_info_.update_strategy = NoScreenUpdate;
 		buffer_.changed();
 		updateFlags = Update::Force | Update::FitCursor;
 		break;
@@ -2084,41 +2088,56 @@ Point BufferView::getPos(DocIterator const & dit, bool boundary) const
 
 void BufferView::draw(frontend::Painter & pain)
 {
+	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
+	Text & text = buffer_.text();
+	TextMetrics const & tm = d->text_metrics_[&text];
+	int const y = d->metrics_info_.y1 
+		+ tm.parMetrics(d->metrics_info_.p1).ascent();
 	PainterInfo pi(this, pain);
-	// Should the whole screen, including insets, be refreshed?
-	// FIXME: We should also distinguish DecorationUpdate to avoid text
-	// drawing if possible. This is not possible to do easily right now
-	// because of the single backing pixmap.
-	pi.full_repaint = d->metrics_info_.update_strategy != SingleParUpdate;
 
-	if (pi.full_repaint)
+	switch (d->metrics_info_.update_strategy) {
+
+	case NoScreenUpdate:
+		// If no screen painting is actually needed, only some the different
+		// coordinates of insets and paragraphs needs to be updated.
+		pi.pain.setDrawingEnabled(false);
+		pi.full_repaint = true;
+		break;
+
+	case SingleParUpdate:
+		// Only the current outermost paragraph will be redrawn.
+		pi.full_repaint = false;
+		tm.drawParagraph(pi, d->metrics_info_.p1, 0, y);
+		break;
+
+	case DecorationUpdate:
+		// FIXME: We should also distinguish DecorationUpdate to avoid text
+		// drawing if possible. This is not possible to do easily right now
+		// because of the single backing pixmap.
+
+	case FullScreenUpdate:
+		// The whole screen, including insets, will be refreshed.
+		pi.full_repaint = true;
+
 		// Clear background (if not delegated to rows)
 		pain.fillRectangle(0, d->metrics_info_.y1, width_,
 			d->metrics_info_.y2 - d->metrics_info_.y1,
 			buffer_.inset().backgroundColor());
-
-	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
-	Text & text = buffer_.text();
-	TextMetrics const & tm = d->text_metrics_[&text];
-	int y = d->metrics_info_.y1 + tm.parMetrics(d->metrics_info_.p1).ascent();
-	if (!pi.full_repaint)
-		tm.drawParagraph(pi, d->metrics_info_.p1, 0, y);
-	else
 		tm.draw(pi, 0, y);
+
+		// and grey out above (should not happen later)
+		if (d->metrics_info_.y1 > 0)
+			pain.fillRectangle(0, 0, width_,
+				d->metrics_info_.y1, Color_bottomarea);
+
+		// and possibly grey out below
+		if (d->metrics_info_.y2 < height_)
+			pain.fillRectangle(0, d->metrics_info_.y2, width_,
+				height_ - d->metrics_info_.y2, Color_bottomarea);
+		break;
+	}
+
 	LYXERR(Debug::PAINTING) << "\n\t\t*** END DRAWING  ***" << endl;
-
-	// and grey out above (should not happen later)
-//	lyxerr << "par ascent: " << text.getPar(d->metrics_info_.p1).ascent() << endl;
-	if (d->metrics_info_.y1 > 0
-		&& d->metrics_info_.update_strategy == FullScreenUpdate)
-		pain.fillRectangle(0, 0, width_, d->metrics_info_.y1, Color_bottomarea);
-
-	// and possibly grey out below
-//	lyxerr << "par descent: " << text.getPar(d->metrics_info_.p1).ascent() << endl;
-	if (d->metrics_info_.y2 < height_
-		&& d->metrics_info_.update_strategy == FullScreenUpdate)
-		pain.fillRectangle(0, d->metrics_info_.y2, width_,
-			height_ - d->metrics_info_.y2, Color_bottomarea);
 }
 
 

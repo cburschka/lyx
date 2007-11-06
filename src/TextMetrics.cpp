@@ -1925,6 +1925,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 
 	Bidi bidi;
 
+	bool const original_drawing_state = pi.pain.isDrawingEnabled();
+
 	y -= rb->ascent();
 	for (RowList::const_iterator rit = rb; rit != re; ++rit) {
 		y += rit->ascent();
@@ -1932,7 +1934,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		bool const inside = (y + rit->descent() >= 0
 			&& y - rit->ascent() < ww);
 		// it is not needed to draw on screen if we are not inside.
-		pi.pain.setDrawingEnabled(inside);
+		pi.pain.setDrawingEnabled(inside && original_drawing_state);
 		RowPainter rp(pi, *text_, pit, *rit, bidi, x, y);
 
 		// Row signature; has row changed since last paint?
@@ -1998,7 +2000,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		pi.full_repaint = tmp;
 	}
 	// Re-enable screen drawing for future use of the painter.
-	pi.pain.setDrawingEnabled(true);
+	pi.pain.setDrawingEnabled(original_drawing_state);
 
 	//LYXERR(Debug::PAINTING) << "." << endl;
 }

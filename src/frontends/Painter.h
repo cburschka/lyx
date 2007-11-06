@@ -144,6 +144,9 @@ public:
 	void setDrawingEnabled(bool drawing_enabled = true)
 	{ drawing_enabled_ = drawing_enabled; }
 
+	/// Indicate wether real screen drawing shall be done or not.
+	bool isDrawingEnabled() const { return drawing_enabled_; }
+
 	/// draw a char at position x, y (y is the baseline)
 	/**
 	* \return the width of the drawn text.
@@ -187,9 +190,6 @@ protected:
 
 	/// draw a bevelled button border
 	void buttonFrame(int x, int y, int w, int h);
-
-	/// Indicate wether real screen drawing shall be done or not.
-	bool isDrawingEnabled() const { return drawing_enabled_; }
 
 private:
 	///
