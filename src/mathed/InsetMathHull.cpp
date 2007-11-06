@@ -53,8 +53,6 @@
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
-
 #include <sstream>
 
 

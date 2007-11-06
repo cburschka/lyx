@@ -38,16 +38,24 @@ using std::vector;
 using std::size_t;
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// MacroData
+//
+/////////////////////////////////////////////////////////////////////
+
 MacroData::MacroData()
 	: numargs_(0), lockCount_(0), redefinition_(false)
 {}
 
 
-MacroData::MacroData(docstring const & definition, std::vector<docstring> const & defaults, 
-										 int numargs, int optionals, docstring const & display, string const & requires)
+MacroData::MacroData(docstring const & definition,
+		std::vector<docstring> const & defaults, 
+		int numargs, int optionals, docstring const & display,
+		string const & requires)
 	: definition_(definition), numargs_(numargs), display_(display),
-		requires_(requires), lockCount_(0), redefinition_(false), optionals_(optionals),
-		defaults_(defaults)
+		requires_(requires), lockCount_(0), redefinition_(false),
+		optionals_(optionals), defaults_(defaults)
 {
 	defaults_.resize(optionals);
 }
@@ -90,7 +98,19 @@ std::vector<docstring> const &  MacroData::defaults() const
 }
 
 
-// The global table.
+void MacroData::unlock() const
+{
+	--lockCount_;
+	BOOST_ASSERT(lockCount_ >= 0);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// The global table of macros
+//
+/////////////////////////////////////////////////////////////////////
+
 MacroTable & MacroTable::globalMacros()
 {
 	static MacroTable theGlobalMacros;

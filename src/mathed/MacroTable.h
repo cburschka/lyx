@@ -15,8 +15,6 @@
 
 #include "support/docstring.h"
 
-#include <boost/assert.hpp>
-
 #include <map>
 #include <vector>
 
@@ -32,16 +30,17 @@ public:
 	///
 	MacroData();
 	///
-	MacroData(docstring const & definition, std::vector<docstring> const & defaults, 
-						int nargs, int optionals, 
-						docstring const & display, std::string const & requires);
+	MacroData(docstring const & definition,
+		std::vector<docstring> const & defaults, int nargs, int optionals, 
+		docstring const & display, std::string const & requires);
 	///
 	docstring const & definition() const { return definition_; }
 	///
 	docstring const & display() const { return display_; }
 	/// arity including optional arguments (if there is any)
 	size_t numargs() const { return numargs_; }
-	/// replace #1,#2,... by given MathAtom 0,1,.., _including_ the possible optional argument
+	/// replace #1,#2,... by given MathAtom 0,1,.., _including_ the possible
+	/// optional argument
 	void expand(std::vector<MathData> const & from, MathData & to) const;
 	/// number of optional arguments
 	size_t optionals() const;
@@ -57,7 +56,7 @@ public:
 	/// is it being drawn?
 	bool locked() const { return lockCount_ != 0; }
  	///
-	void unlock() const { --lockCount_; BOOST_ASSERT(lockCount_ >= 0); }
+	void unlock() const;
 	
 	///
 	bool redefinition() const { return redefinition_; }
@@ -132,7 +131,8 @@ public:
  **/
 class MacroContext {
 public:
-	/// construct context for insets in par (not including the ones defined in par itself)
+	/// construct context for insets in par (not including the ones
+	/// defined in par itself)
 	MacroContext(Buffer const & buf, Paragraph const & par);
 	
 	/// Look for macro
