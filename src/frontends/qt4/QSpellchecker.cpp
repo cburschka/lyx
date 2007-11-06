@@ -147,8 +147,30 @@ void QSpellchecker::build_dialog()
 
 void QSpellchecker::update_contents()
 {
-	if (isVisible() || controller().exitEarly())
+	// The clauses below are needed because the spellchecker
+	// controller has many flaws (see bugs 1950, 2218).
+	// Basically, we have to distinguish the case where a
+	// spellcheck has already been performed for the whole
+	// document (exitEarly() == true, isVisible() == false) 
+	// from the rest (exitEarly() == false, isVisible() == true).
+	static bool check_after_early_exit;
+	if (controller().exitEarly()) {
+		// a spellcheck has already been performed,
 		controller().check();
+		check_after_early_exit = true;
+	}
+	else if (isVisible()) {
+		// the above check triggers a second update,
+		// and isVisible() is true then. Prevent a
+		// second check that skips the first word
+		if (check_after_early_exit)
+			// don't check, but reset the bool.
+			// business as usual after this.
+			check_after_early_exit = false;
+		else
+			// perform spellcheck (default case)
+			controller().check();
+	}
 }
 
 

@@ -123,6 +123,9 @@ What's new
 - Fix a bug where the spellchecker didn't update the screen display on the last
   of several misspelt words (bug 3586).
 
+- Fix a bug where the spellchecker skipped the first misspelled word on a second
+  run (bug 2218).
+
 - Do not close the error dialog on double click (bug 4090).
 
 - Fix cut and paste of tabular cells via the external clipboard (bug 4147).
