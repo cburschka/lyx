@@ -297,7 +297,7 @@ void GuiParagraph::dispatchParams()
 		return;
 	}
 
-	bufferview()->updateMetrics(false);
+	bufferview()->updateMetrics();
 	bufferview()->buffer().changed();
 }
 

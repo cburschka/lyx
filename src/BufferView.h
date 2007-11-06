@@ -201,8 +201,7 @@ public:
 	/// \sa ViewMetricsInfo
 	ViewMetricsInfo const & viewMetricsInfo();
 	/// update the internal \c ViewMetricsInfo.
-	/// \param singlepar indicates wether
-	void updateMetrics(bool singlepar = false);
+	void updateMetrics();
 
 	///
 	TextMetrics const & textMetrics(Text const * t) const;

@@ -507,7 +507,7 @@ void GuiWorkArea::updateScreen()
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
 	if (schedule_redraw_) {
-		buffer_view_->updateMetrics(false);
+		buffer_view_->updateMetrics();
 		updateScreen();
 		viewport()->update(QRect(0, 0, viewport()->width(), viewport()->height()));
 		schedule_redraw_ = false;
@@ -568,7 +568,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	}
 
 	GuiPainter pain(&screen_);
-	buffer_view_->updateMetrics(false);
+	buffer_view_->updateMetrics();
 	buffer_view_->draw(pain);
 	FontInfo font = buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
@@ -809,7 +809,7 @@ void TabWorkArea::on_currentTabChanged(int i)
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
 	BOOST_ASSERT(wa);
 	BufferView & bv = wa->bufferView();
-	bv.updateMetrics(false);
+	bv.updateMetrics();
 	bv.cursor().fixIfBroken();
 	wa->setUpdatesEnabled(true);
 	wa->redraw();

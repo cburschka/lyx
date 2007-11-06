@@ -810,7 +810,7 @@ WorkArea * GuiView::addWorkArea(Buffer & buffer)
 	GuiWorkArea * wa = new GuiWorkArea(buffer, *this);
 	wa->setUpdatesEnabled(false);
 	d.tab_widget_->addTab(wa, toqstr(buffer.fileName().displayName(30)));
-	wa->bufferView().updateMetrics(false);
+	wa->bufferView().updateMetrics();
 	if (d.stack_widget_)
 		d.stack_widget_->setCurrentWidget(d.tab_widget_);
 	// Hide tabbar if there's only one tab.

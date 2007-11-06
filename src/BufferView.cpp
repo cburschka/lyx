@@ -532,7 +532,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		bool const fit_cursor = fitCursor();
 		// tell the frontend to update the screen if needed.
 		if (fit_cursor) {
-			updateMetrics(false);
+			updateMetrics();
 			buffer_.changed();
 			return;
 		}
@@ -550,8 +550,9 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	if (flags & Update::MultiParSel)
 		full_metrics |= multiParSel();
 
-	bool const single_par = !full_metrics;
-	updateMetrics(single_par);
+	if (full_metrics || singleParUpdate())
+		// We have to update the full screen metrics.
+		updateMetrics();
 
 	if (!(flags & Update::FitCursor)) {
 		buffer_.changed();
@@ -569,7 +570,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	// The screen has been recentered around the cursor position so
 	// refresh it:
-	updateMetrics(false);
+	updateMetrics();
 	buffer_.changed();
 }
 
@@ -653,7 +654,7 @@ void BufferView::scrollDocView(int value)
 	tm.redoParagraph(d->anchor_ref_);
 	int const h = tm.parMetrics(d->anchor_ref_).height();
 	d->offset_ref_ = int((bar * t.paragraphs().size() - d->anchor_ref_) * h);
-	updateMetrics(false);
+	updateMetrics();
 	buffer_.changed();
 }
 
@@ -1345,7 +1346,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		if (p.y_ < 0 || p.y_ > height_) {
 			// The cursor is off-screen so recenter before proceeding.
 			center();
-			updateMetrics(false);
+			updateMetrics();
 			//FIXME: updateMetrics() does not update paragraph position
 			// This is done at draw() time. So we need a redraw!
 			buffer_.changed();
@@ -1430,7 +1431,7 @@ void BufferView::resize(int width, int height)
 	width_ = width;
 	height_ = height;
 
-	updateMetrics(false);
+	updateMetrics();
 }
 
 
@@ -1584,7 +1585,7 @@ void BufferView::scrollDown(int offset)
 		tm.newParMetricsDown();
 	}
 	d->offset_ref_ += offset;
-	updateMetrics(false);
+	updateMetrics();
 	buffer_.changed();
 }
 
@@ -1608,7 +1609,7 @@ void BufferView::scrollUp(int offset)
 		tm.newParMetricsUp();
 	}
 	d->offset_ref_ -= offset;
-	updateMetrics(false);
+	updateMetrics();
 	buffer_.changed();
 }
 
@@ -1701,7 +1702,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 
 	updateLabels(buffer_);
 
-	updateMetrics(false);
+	updateMetrics();
 	buffer_.changed();
 	return true;
 }
@@ -1837,12 +1838,8 @@ bool BufferView::singleParUpdate()
 }
 
 
-void BufferView::updateMetrics(bool singlepar)
+void BufferView::updateMetrics()
 {
-	if (singlepar && singleParUpdate())
-		// No need to update the full screen metrics.
-		return;
-
 	Text & buftext = buffer_.text();
 	pit_type const npit = int(buftext.paragraphs().size());
 
@@ -1993,7 +1990,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 	// emit message signal.
 	message(bformat(res, disp_fn));
 	buffer_.errors("Parse");
-	updateMetrics(false);
+	updateMetrics();
 }
 
 

@@ -131,7 +131,7 @@ void WorkArea::redraw()
 	// metrics are already up to date.
 	if (lyx_view_ != theApp()->currentView()) {
 		// FIXME: it would be nice to optimize for the off-screen case.
-		buffer_view_->updateMetrics(false);
+		buffer_view_->updateMetrics();
 		buffer_view_->cursor().fixIfBroken();
 	}
 
