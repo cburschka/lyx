@@ -19,11 +19,7 @@
 
 namespace lyx {
 
-
-class Font;
-
 /// Support for \\mbox
-
 class InsetMathBox : public InsetMathNest {
 public:
 	///
@@ -42,13 +38,105 @@ public:
 	void infoize(odocstream & os) const;
 
 private:
-	virtual Inset * clone() const;
+	Inset * clone() const { return new InsetMathBox(*this); }
 	///
 	docstring name_;
 };
 
 
+/// Non-AMS-style frame
+class InsetMathFBox : public InsetMathNest {
+public:
+	///
+	InsetMathFBox();
+	///
+	mode_type currentMode() const { return TEXT_MODE; }
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	void write(WriteStream & os) const;
+	/// write normalized content
+	void normalize(NormalStream & ns) const;
+	///
+	void infoize(odocstream & os) const;
+private:
+	///
+	Inset * clone() const { return new InsetMathFBox(*this); }
+};
+
+
+/// Extra nesting
+class InsetMathFrameBox : public InsetMathNest {
+public:
+	///
+	InsetMathFrameBox();
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	void write(WriteStream & os) const;
+	/// write normalized content
+	void normalize(NormalStream & ns) const;
+	///
+	mode_type currentMode() const { return TEXT_MODE; }
+private:
+	Inset * clone() const { return new InsetMathFrameBox(*this); }
+	/// width of '[' in current font
+	mutable int w_;
+};
+
+
+/// Extra nesting: \\makebox.
+// consolidate with InsetMathFrameBox?
+class InsetMathMakebox : public InsetMathNest {
+public:
+	///
+	InsetMathMakebox();
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	void write(WriteStream & os) const;
+	/// write normalized content
+	void normalize(NormalStream & ns) const;
+	///
+	mode_type currentMode() const { return TEXT_MODE; }
+	///
+	void infoize(odocstream & os) const;
+private:
+	Inset * clone() const { return new InsetMathMakebox(*this); }
+	/// width of '[' in current font
+	mutable int w_;
+};
+
+
+
+/// AMS-style frame
+class InsetMathBoxed : public InsetMathNest {
+public:
+	///
+	InsetMathBoxed();
+	///
+	void validate(LaTeXFeatures & features) const;
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	void write(WriteStream & os) const;
+	/// write normalized content
+	void normalize(NormalStream & ns) const;
+	///
+	void infoize(odocstream & os) const;
+private:
+	Inset * clone() const { return new InsetMathBoxed(*this); }
+};
+
 
 } // namespace lyx
 
-#endif
+#endif // MATH_MBOX

@@ -322,8 +322,6 @@ liblyxmathed_la_SOURCES = \
 	mathed/InsetMathBoldSymbol.cpp \
 	mathed/InsetMathBoldSymbol.h \
 	mathed/InsetMathBox.cpp \
-	mathed/InsetMathBoxed.cpp \
-	mathed/InsetMathBoxed.h \
 	mathed/InsetMathBox.h \
 	mathed/InsetMathBrace.cpp \
 	mathed/InsetMathBrace.h \
@@ -352,16 +350,12 @@ liblyxmathed_la_SOURCES = \
 	mathed/InsetMathExFunc.h \
 	mathed/InsetMathExInt.cpp \
 	mathed/InsetMathExInt.h \
-	mathed/InsetMathFBox.cpp \
-	mathed/InsetMathFBox.h \
 	mathed/InsetMathFont.cpp \
 	mathed/InsetMathFont.h \
 	mathed/InsetMathFontOld.cpp \
 	mathed/InsetMathFontOld.h \
 	mathed/InsetMathFrac.cpp \
 	mathed/InsetMathFrac.h \
-	mathed/InsetMathFrameBox.cpp \
-	mathed/InsetMathFrameBox.h \
 	mathed/InsetMathGrid.cpp \
 	mathed/InsetMathGrid.h \
 	mathed/InsetMath.h \
@@ -375,8 +369,6 @@ liblyxmathed_la_SOURCES = \
 	mathed/InsetMathLim.h \
 	mathed/MathMacro.cpp \
 	mathed/MathMacro.h \
-	mathed/InsetMathMakebox.cpp \
-	mathed/InsetMathMakebox.h \
 	mathed/InsetMathMatrix.cpp \
 	mathed/InsetMathMatrix.h \
 	mathed/InsetMathNest.cpp \
@@ -447,8 +439,6 @@ liblyxmathed_la_SOURCES = \
 	mathed/MathSupport.h \
 	mathed/TextPainter.cpp \
 	mathed/TextPainter.h 
-#	mathed/InsetMathMBox.cpp
-#	mathed/InsetMathMBox.h
 
 ############################### Insets  ##############################
 
