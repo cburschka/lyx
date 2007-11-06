@@ -544,22 +544,24 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_RIGHT_SELECT:
 		//FIXME: for visual cursor, really move right
 		if (reverseDirectionNeeded(cur))
-			doDispatch(cur, FuncRequest(cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
+			cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
 		else 
-			doDispatch(cur, FuncRequest(cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+			cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
+		doDispatch(cur, cmd);
 		break;
 
 	case LFUN_CHAR_LEFT:
 	case LFUN_CHAR_LEFT_SELECT:
 		//FIXME: for visual cursor, really move left
 		if (reverseDirectionNeeded(cur))
-			doDispatch(cur, FuncRequest(cmd.action == LFUN_CHAR_LEFT_SELECT ? 
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+			cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
 		else 
-			doDispatch(cur, FuncRequest(cmd.action == LFUN_CHAR_LEFT_SELECT ? 
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
+			cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
+		doDispatch(cur, cmd);
 		break;
 
 	case LFUN_DOWN:
