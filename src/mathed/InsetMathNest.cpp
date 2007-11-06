@@ -543,12 +543,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_RIGHT_SELECT:
 		//FIXME: for visual cursor, really move right
 		if (reverseDirectionNeeded(cur))
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+			doDispatch(cur, FuncRequest(cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
 					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
 		else 
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+			doDispatch(cur, FuncRequest(cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
 					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
 		break;
 
@@ -556,12 +554,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_LEFT_SELECT:
 		//FIXME: for visual cursor, really move left
 		if (reverseDirectionNeeded(cur))
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+			doDispatch(cur, FuncRequest(cmd.action == LFUN_CHAR_LEFT_SELECT ? 
 					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
 		else 
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+			doDispatch(cur, FuncRequest(cmd.action == LFUN_CHAR_LEFT_SELECT ? 
 					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
 		break;
 
