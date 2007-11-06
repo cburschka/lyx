@@ -78,15 +78,15 @@ GuiSpellchecker::GuiSpellchecker(LyXView & lv)
 	setViewTitle(_("Spellchecker"));
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(replacePB, SIGNAL(clicked()), this, SLOT(replaceClicked()));
-	connect(ignorePB, SIGNAL(clicked()), this, SLOT(ignoreClicked()));
-	connect(replacePB_3, SIGNAL(clicked()), this, SLOT(acceptClicked()));
-	connect(addPB, SIGNAL(clicked()), this, SLOT(addClicked()));
+	connect(replacePB, SIGNAL(clicked()), this, SLOT(replace()));
+	connect(ignorePB, SIGNAL(clicked()), this, SLOT(ignore()));
+	connect(replacePB_3, SIGNAL(clicked()), this, SLOT(accept()));
+	connect(addPB, SIGNAL(clicked()), this, SLOT(add()));
 
 	connect(replaceCO, SIGNAL(highlighted(QString)),
 		this, SLOT(replaceChanged(QString)));
 	connect(suggestionsLW, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
-		this, SLOT(replaceClicked()));
+		this, SLOT(replace()));
 	connect(suggestionsLW, SIGNAL(itemClicked(QListWidgetItem*)),
 		this, SLOT(suggestionChanged(QListWidgetItem*)));
 
@@ -144,8 +144,31 @@ void GuiSpellchecker::reject()
 
 void GuiSpellchecker::updateContents()
 {
-	if (isVisibleView() || exitEarly())
+	// The clauses below are needed because the spellchecker
+	// has many flaws (see bugs 1950, 2218).
+	// Basically, we have to distinguish the case where a
+	// spellcheck has already been performed for the whole
+	// document (exitEarly() == true, isVisible() == false) 
+	// from the rest (exitEarly() == false, isVisible() == true).
+	// FIXME: rewrite the whole beast!
+	static bool check_after_early_exit;
+	if (exitEarly()) {
+		// a spellcheck has already been performed,
 		check();
+		check_after_early_exit = true;
+	}
+	else if (isVisible()) {
+		// the above check triggers a second update,
+		// and isVisible() is true then. Prevent a
+		// second check that skips the first word
+		if (check_after_early_exit)
+			// don't check, but reset the bool.
+			// business as usual after this.
+			check_after_early_exit = false;
+		else
+			// perform spellcheck (default case)
+			check();
+	}
 }
 
 
@@ -356,7 +379,7 @@ void GuiSpellchecker::check()
 			LYXERR(Debug::GUI) << "Updating spell progress." << endl;
 			oldval_ = newvalue_;
 			// set progress bar
-			partialUpdateView(SPELL_PROGRESSED);
+			partialUpdate(SPELL_PROGRESSED);
 		}
 
 		// speller might be dead ...
@@ -383,7 +406,7 @@ void GuiSpellchecker::check()
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
 		LYXERR(Debug::GUI) << "Found a word needing checking." << endl;
-		partialUpdateView(SPELL_FOUND_WORD);
+		partialUpdate(SPELL_FOUND_WORD);
 	}
 }
 
