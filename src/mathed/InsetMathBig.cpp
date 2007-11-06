@@ -18,6 +18,7 @@
 
 #include "frontends/FontMetrics.h"
 
+#include "support/docstream.h"
 #include "support/lstrings.h"
 
 
