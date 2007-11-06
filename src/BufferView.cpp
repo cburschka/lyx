@@ -550,7 +550,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	if (flags & Update::MultiParSel)
 		full_metrics |= multiParSel();
 
-	if (full_metrics || singleParUpdate())
+	if (full_metrics || !singleParUpdate())
 		// We have to update the full screen metrics.
 		updateMetrics();
 
