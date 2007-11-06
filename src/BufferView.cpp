@@ -2100,8 +2100,9 @@ void BufferView::draw(frontend::Painter & pain)
 	case NoScreenUpdate:
 		// If no screen painting is actually needed, only some the different
 		// coordinates of insets and paragraphs needs to be updated.
-		pi.pain.setDrawingEnabled(false);
 		pi.full_repaint = true;
+		pi.pain.setDrawingEnabled(false);
+ 		tm.draw(pi, 0, y);
 		break;
 
 	case SingleParUpdate:
