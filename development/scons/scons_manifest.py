@@ -474,7 +474,6 @@ src_mathed_header_files = Split('''
     InsetMathBig.h
     InsetMathBoldSymbol.h
     InsetMathBox.h
-    InsetMathBoxed.h
     InsetMathBrace.h
     InsetMathCases.h
     InsetMathChar.h
@@ -487,11 +486,9 @@ src_mathed_header_files = Split('''
     InsetMathEnv.h
     InsetMathExFunc.h
     InsetMathExInt.h
-    InsetMathFBox.h
     InsetMathFont.h
     InsetMathFontOld.h
     InsetMathFrac.h
-    InsetMathFrameBox.h
     InsetMathGrid.h
     InsetMathHull.h
     InsetMathKern.h
@@ -546,7 +543,6 @@ src_mathed_files = Split('''
     InsetMathBig.cpp
     InsetMathBoldSymbol.cpp
     InsetMathBox.cpp
-    InsetMathBoxed.cpp
     InsetMathBrace.cpp
     InsetMathCases.cpp
     InsetMathChar.cpp
@@ -559,11 +555,9 @@ src_mathed_files = Split('''
     InsetMathEnv.cpp
     InsetMathExFunc.cpp
     InsetMathExInt.cpp
-    InsetMathFBox.cpp
     InsetMathFont.cpp
     InsetMathFontOld.cpp
     InsetMathFrac.cpp
-    InsetMathFrameBox.cpp
     InsetMathGrid.cpp
     InsetMathHull.cpp
     InsetMathKern.cpp
