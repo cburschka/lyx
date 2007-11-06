@@ -61,7 +61,6 @@ liblyxsupport_la_SOURCES = \
 	lstrings.h \
 	lyxalgo.h \
 	lyxlib.h \
-	lyxmanip.h \
 	lyxtime.cpp \
 	lyxtime.h \
 	lyxsum.cpp \
