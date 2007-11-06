@@ -69,6 +69,7 @@
 #include "mathed/MathMacroTemplate.h"
 
 #include <boost/current_function.hpp>
+#include <boost/next_prior.hpp>
 
 #include <clocale>
 #include <sstream>
@@ -99,12 +100,12 @@ static void toggleAndShow(Cursor & cur, Text * text,
 	text->toggleFree(cur, font, toggleall);
 
 	if (font.language() != ignore_language ||
-			font.fontInfo().number() != FONT_IGNORE) {
+	    font.fontInfo().number() != FONT_IGNORE) {
 		TextMetrics const & tm = cur.bv().textMetrics(text);
-		if (cur.boundary() != tm.isRTLBoundary(cur.pit(),
-														cur.pos(), cur.real_current_font))
+		if (cur.boundary() != tm.isRTLBoundary(cur.pit(), cur.pos(),
+						       cur.real_current_font))
 			text->setCursor(cur, cur.pit(), cur.pos(),
-											false, !cur.boundary());
+					false, !cur.boundary());
 	}
 }
 
@@ -244,6 +245,129 @@ static bool doInsertInset(Cursor & cur, Text * text,
 string const freefont2string()
 {
 	return freefont.toString(toggleall);
+}
+
+
+/// the type of outline operation
+enum OutlineOp {
+	OutlineUp, // Move this header with text down
+	OutlineDown,   // Move this header with text up
+	OutlineIn, // Make this header deeper
+	OutlineOut // Make this header shallower
+};
+
+
+static void outline(OutlineOp mode, Cursor & cur)
+{
+	Buffer & buf = cur.buffer();
+	pit_type & pit = cur.pit();
+	ParagraphList & pars = buf.text().paragraphs();
+	ParagraphList::iterator bgn = pars.begin();
+	// The first paragraph of the area to be copied:
+	ParagraphList::iterator start = boost::next(bgn, pit);
+	// The final paragraph of area to be copied:
+	ParagraphList::iterator finish = start;
+	ParagraphList::iterator end = pars.end();
+
+	TextClass::const_iterator lit =
+		buf.params().getTextClass().begin();
+	TextClass::const_iterator const lend =
+		buf.params().getTextClass().end();
+
+	int const thistoclevel = start->layout()->toclevel;
+	int toclevel;
+	switch (mode) {
+		case OutlineUp: {
+			// Move out (down) from this section header
+			if (finish != end)
+				++finish;
+			// Seek the one (on same level) below
+			for (; finish != end; ++finish) {
+				toclevel = finish->layout()->toclevel;
+				if (toclevel != Layout::NOT_IN_TOC
+				    && toclevel <= thistoclevel) {
+					break;
+				}
+			}
+			ParagraphList::iterator dest = start;
+			// Move out (up) from this header
+			if (dest == bgn)
+				break;
+			// Search previous same-level header above
+			do {
+				--dest;
+				toclevel = dest->layout()->toclevel;
+			} while(dest != bgn
+				&& (toclevel == Layout::NOT_IN_TOC
+				    || toclevel > thistoclevel));
+			// Not found; do nothing
+			if (toclevel == Layout::NOT_IN_TOC || toclevel > thistoclevel)
+				break;
+			pit_type const newpit = std::distance(bgn, dest);
+			pit_type const len = std::distance(start, finish);
+			pit_type const deletepit = pit + len;
+			buf.undo().recordUndo(cur, ATOMIC_UNDO, newpit, deletepit - 1);
+			pars.insert(dest, start, finish);
+			start = boost::next(pars.begin(), deletepit);
+			pit = newpit;
+			pars.erase(start, finish);
+			break;
+		}
+		case OutlineDown: {
+			// Go down out of current header:
+			if (finish != end)
+				++finish;
+			// Find next same-level header:
+			for (; finish != end; ++finish) {
+				toclevel = finish->layout()->toclevel;
+				if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
+					break;
+			}
+			ParagraphList::iterator dest = finish;
+			// Go one down from *this* header:
+			if (dest != end)
+				++dest;
+			else
+				break;
+			// Go further down to find header to insert in front of:
+			for (; dest != end; ++dest) {
+				toclevel = dest->layout()->toclevel;
+				if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
+					break;
+			}
+			// One such was found:
+			pit_type newpit = std::distance(bgn, dest);
+			pit_type const len = std::distance(start, finish);
+			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, newpit - 1);
+			pars.insert(dest, start, finish);
+			start = boost::next(bgn, pit);
+			pit = newpit - len;
+			pars.erase(start, finish);
+			break;
+		}
+		case OutlineIn:
+			buf.undo().recordUndo(cur);
+			for (; lit != lend; ++lit) {
+				if ((*lit)->toclevel == thistoclevel + 1 &&
+				    start->layout()->labeltype == (*lit)->labeltype) {
+					start->layout((*lit));
+					break;
+				}
+			}
+			break;
+		case OutlineOut:
+			buf.undo().recordUndo(cur);
+			for (; lit != lend; ++lit) {
+				if ((*lit)->toclevel == thistoclevel - 1 &&
+				    start->layout()->labeltype == (*lit)->labeltype) {
+					start->layout((*lit));
+					break;
+				}
+			}
+			break;
+		default:
+			break;
+	}
 }
 
 
@@ -1582,6 +1706,32 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
+	case LFUN_OUTLINE_UP:
+		outline(OutlineUp, cur);
+		setCursor(cur, cur.pit(), 0);
+		updateLabels(cur.buffer());
+		needsUpdate = true;
+		break;
+
+	case LFUN_OUTLINE_DOWN:
+		outline(OutlineDown, cur);
+		setCursor(cur, cur.pit(), 0);
+		updateLabels(cur.buffer());
+		needsUpdate = true;
+		break;
+
+	case LFUN_OUTLINE_IN:
+		outline(OutlineIn, cur);
+		updateLabels(cur.buffer());
+		needsUpdate = true;
+		break;
+
+	case LFUN_OUTLINE_OUT:
+		outline(OutlineOut, cur);
+		updateLabels(cur.buffer());
+		needsUpdate = true;
+		break;
+
 	default:
 		LYXERR(Debug::ACTION)
 			<< BOOST_CURRENT_FUNCTION
@@ -1908,6 +2058,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// result in unacceptable performance - just imagine a user who
 		// wants to select the complete content of a long document.
 		enable = true;
+		break;
+
+	case LFUN_OUTLINE_UP:
+	case LFUN_OUTLINE_DOWN:
+	case LFUN_OUTLINE_IN:
+	case LFUN_OUTLINE_OUT:
+		enable = (cur.paragraph().layout()->toclevel != Layout::NOT_IN_TOC);
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:
