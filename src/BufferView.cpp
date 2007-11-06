@@ -49,7 +49,6 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "TexRow.h"
-#include "toc.h"
 #include "Undo.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"
@@ -645,11 +644,6 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
 	case LFUN_PARAGRAPH_GOTO:
-	// FIXME handle non-trivially
-	case LFUN_OUTLINE_UP:
-	case LFUN_OUTLINE_DOWN:
-	case LFUN_OUTLINE_IN:
-	case LFUN_OUTLINE_OUT:
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_WORD_FIND:
@@ -819,25 +813,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		}
 		break;
 	}
-
-	case LFUN_OUTLINE_UP:
-		toc::outline(toc::Up, cursor_);
-		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
-		updateLabels(*buffer_);
-		break;
-	case LFUN_OUTLINE_DOWN:
-		toc::outline(toc::Down, cursor_);
-		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
-		updateLabels(*buffer_);
-		break;
-	case LFUN_OUTLINE_IN:
-		toc::outline(toc::In, cursor_);
-		updateLabels(*buffer_);
-		break;
-	case LFUN_OUTLINE_OUT:
-		toc::outline(toc::Out, cursor_);
-		updateLabels(*buffer_);
-		break;
 
 	case LFUN_NOTE_NEXT:
 		bv_funcs::gotoInset(this, Inset::NOTE_CODE, false);

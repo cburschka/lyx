@@ -44,6 +44,7 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "toc.h"
 #include "Undo.h"
 #include "VSpace.h"
 #include "ParIterator.h"
@@ -1605,6 +1606,32 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
+	case LFUN_OUTLINE_UP:
+		toc::outline(toc::Up, cur);
+		setCursor(cur, cur.pit(), 0);
+		updateLabels(cur.buffer());
+		needsUpdate = true;
+		break;
+
+	case LFUN_OUTLINE_DOWN:
+		toc::outline(toc::Down, cur);
+		setCursor(cur, cur.pit(), 0);
+		updateLabels(cur.buffer());
+		needsUpdate = true;
+		break;
+
+	case LFUN_OUTLINE_IN:
+		toc::outline(toc::In, cur);
+		updateLabels(cur.buffer());
+		needsUpdate = true;
+		break;
+
+	case LFUN_OUTLINE_OUT:
+		toc::outline(toc::Out, cur);
+		updateLabels(cur.buffer());
+		needsUpdate = true;
+		break;
+
 	default:
 		LYXERR(Debug::ACTION)
 			<< BOOST_CURRENT_FUNCTION
@@ -1917,6 +1944,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// result in unacceptable performance - just imagine a user who
 		// wants to select the complete content of a long document.
 		enable = true;
+		break;
+
+	case LFUN_OUTLINE_UP:
+	case LFUN_OUTLINE_DOWN:
+	case LFUN_OUTLINE_IN:
+	case LFUN_OUTLINE_OUT:
+		enable = (cur.paragraph().layout()->toclevel != Layout::NOT_IN_TOC);
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:
