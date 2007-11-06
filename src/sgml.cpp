@@ -16,19 +16,18 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Counters.h"
-#include "Text.h"
 #include "Layout.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
+#include "Text.h"
 
+#include "support/convert.h"
 #include "support/docstream.h"
 #include "support/lstrings.h"
-#include "support/std_ostream.h"
-#include "support/convert.h"
 #include "support/textutils.h"
 
 #include <map>
-#include <sstream>
+#include <ostream>
 
 
 namespace lyx {
@@ -98,12 +97,12 @@ docstring sgml::escapeChar(char_type c)
 
 docstring sgml::escapeString(docstring const & raw)
 {
-	odocstringstream bin;
+	docstring bin;
+	bin.reserve(raw.size() * 2); // crude approximation is sufficient
+	for (size_t i = 0; i != raw.size(); ++i)
+		bin += sgml::escapeChar(raw[i]);
 
-	for(docstring::size_type i = 0; i < raw.size(); ++i) {
-		bin  << sgml::escapeChar(raw[i]);
-	}
-	return bin.str();
+	return bin;
 }
 
 
@@ -167,12 +166,11 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 			mangle = true;
 		}
 	}
-	if (mangle) {
+
+	if (mangle)
 		content += "-" + convert<docstring>(mangleID++);
-	}
-	else if (isDigitASCII(content[content.size() - 1])) {
+	else if (isDigitASCII(content[content.size() - 1]))
 		content += ".";
-	}
 
 	mangledNames[orig] = content;
 

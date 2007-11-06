@@ -10,11 +10,11 @@
 
 #include <config.h>
 
-#include "LaTeXFeatures.h"
 #include "InsetMathSubstack.h"
+
+#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "support/std_ostream.h"
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -22,6 +22,7 @@
 
 #include "support/lstrings.h"
 
+#include <ostream>
 
 namespace lyx {
 

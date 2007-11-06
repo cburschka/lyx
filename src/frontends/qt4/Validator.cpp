@@ -22,12 +22,9 @@
 
 #include "support/docstring.h"
 #include "support/lstrings.h"
-#include "support/std_ostream.h"
 
 #include <QLineEdit>
 #include <QWidget>
-
-#include <sstream>
 
 using lyx::support::isStrDbl;
 using std::string;

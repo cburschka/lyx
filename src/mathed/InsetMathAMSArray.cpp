@@ -23,7 +23,8 @@
 #include "gettext.h"
 
 #include "support/lstrings.h"
-#include "support/std_ostream.h"
+
+#include <ostream>
 
 
 namespace lyx {

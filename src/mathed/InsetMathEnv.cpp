@@ -11,10 +11,12 @@
 #include <config.h>
 
 #include "InsetMathEnv.h"
+
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
-#include "support/std_ostream.h"
+
+#include <ostream>
 
 
 namespace lyx {

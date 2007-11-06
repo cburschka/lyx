@@ -19,7 +19,7 @@
 #include "MetricsInfo.h"
 #include "sgml.h"
 
-#include "support/std_ostream.h"
+#include <ostream>
 
 
 namespace lyx {

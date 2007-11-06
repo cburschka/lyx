@@ -11,12 +11,14 @@
 #include <config.h>
 
 #include "InsetMathSize.h"
+
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
 
 #include "support/convert.h"
-#include "support/std_ostream.h"
+
+#include <ostream>
 
 
 namespace lyx {

@@ -11,14 +11,14 @@
 #include <config.h>
 
 #include "InsetMathTabular.h"
+
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
 
 #include "support/lstrings.h"
-#include "support/std_ostream.h"
 
-#include <iterator>
+#include <ostream>
 
 
 namespace lyx {

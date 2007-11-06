@@ -20,7 +20,7 @@
 #include "OutputParams.h"
 #include "TocBackend.h"
 
-#include "support/std_ostream.h"
+#include <ostream>
 
 
 namespace lyx {

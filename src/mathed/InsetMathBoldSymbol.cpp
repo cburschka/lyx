@@ -11,10 +11,12 @@
 #include <config.h>
 
 #include "InsetMathBoldSymbol.h"
+
 #include "MathStream.h"
 #include "MathData.h"
 #include "LaTeXFeatures.h"
-#include "support/std_ostream.h"
+
+#include <ostream>
 
 
 namespace lyx {

@@ -16,7 +16,7 @@
 
 #include <boost/assert.hpp>
 
-#include "support/std_istream.h"
+#include <istream>
 
 using std::string;
 

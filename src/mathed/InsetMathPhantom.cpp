@@ -11,13 +11,11 @@
 #include <config.h>
 
 #include "InsetMathPhantom.h"
-#include "MathStream.h"
-#include "MathStream.h"
 
-
+#include "MathStream.h"
 #include "frontends/Painter.h"
 
-#include "support/std_ostream.h"
+#include <ostream>
 
 
 namespace lyx {

@@ -17,7 +17,7 @@
 #include "gettext.h"
 #include "OutputParams.h"
 
-#include "support/std_ostream.h"
+#include <ostream>
 
 
 namespace lyx {

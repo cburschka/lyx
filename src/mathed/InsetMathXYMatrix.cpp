@@ -11,10 +11,11 @@
 #include <config.h>
 
 #include "InsetMathXYMatrix.h"
-#include "MathStream.h"
 
 #include "LaTeXFeatures.h"
-#include "support/std_ostream.h"
+#include "MathStream.h"
+
+#include <ostream>
 
 
 namespace lyx {

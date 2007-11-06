@@ -20,7 +20,7 @@
 #include "Text.h"
 #include "MetricsInfo.h"
 
-#include "support/std_ostream.h"
+#include <ostream>
 
 
 namespace lyx {

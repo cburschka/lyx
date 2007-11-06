@@ -14,7 +14,7 @@
 
 #include "Box.h"
 
-#include "support/std_ostream.h"
+#include <ostream>
 
 using std::ostream;
 

@@ -13,7 +13,7 @@
 #include "InsetHFill.h"
 #include "gettext.h"
 
-#include "support/std_ostream.h"
+#include <ostream>
 
 
 namespace lyx {

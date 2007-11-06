@@ -24,8 +24,9 @@
 #include "OutputParams.h"
 #include "ParIterator.h"
 
-#include "support/std_ostream.h"
 #include "support/lstrings.h"
+
+#include <ostream>
 
 namespace lyx {
 

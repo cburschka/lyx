@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "InsetMathSplit.h"
+
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
@@ -21,7 +22,8 @@
 #include "LaTeXFeatures.h"
 
 #include "support/lstrings.h"
-#include "support/std_ostream.h"
+
+#include <ostream>
 
 
 namespace lyx {
