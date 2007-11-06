@@ -74,15 +74,13 @@
 #include "support/filetools.h"
 #include "support/Package.h"
 #include "support/types.h"
-#include "support/fs_extras.h"
 
-#include <boost/bind.hpp>
 #include <boost/current_function.hpp>
-#include <boost/filesystem/operations.hpp>
 
 #include <cerrno>
 #include <fstream>
 #include <functional>
+#include <iterator>
 #include <vector>
 
 using std::distance;
@@ -96,8 +94,6 @@ using std::max;
 using std::mem_fun_ref;
 using std::string;
 using std::vector;
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 
@@ -2062,7 +2058,7 @@ docstring BufferView::contentsOfPlaintextFile(string const & f,
 			return docstring();
 	}
 
-	if (!fs::is_readable(fname.toFilesystemEncoding())) {
+	if (!fname.isReadable()) {
 		docstring const error = from_ascii(strerror(errno));
 		docstring const file = makeDisplayPath(fname.absFilename(), 50);
 		docstring const text =

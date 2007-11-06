@@ -212,7 +212,7 @@ void sgml::openTag(Buffer const & buf, odocstream & os,
 	string id = par.getID(buf, runparams);
 
 	string attribute;
-	if(!id.empty()) {
+	if (!id.empty()) {
 		if (param.find('#') != string::npos) {
 			string::size_type pos = param.find("id=<");
 			string::size_type end = param.find(">");
@@ -223,7 +223,7 @@ void sgml::openTag(Buffer const & buf, odocstream & os,
 	} else {
 		if (param.find('#') != string::npos) {
 			// FIXME UNICODE
-			if(!style->counter.empty())
+			if (!style->counter.empty())
 				counters.step(style->counter);
 			else
 				counters.step(from_ascii(name));
