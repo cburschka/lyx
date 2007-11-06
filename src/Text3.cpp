@@ -1613,8 +1613,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		    == olddim.height()) {
 			// if so, update _only_ this paragraph
 			cur.updateFlags(Update::SinglePar |
-				Update::FitCursor |
-				Update::MultiParSel);
+				Update::FitCursor);
 			return;
 		} else
 			needsUpdate = true;

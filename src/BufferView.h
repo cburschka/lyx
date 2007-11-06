@@ -264,8 +264,6 @@ private:
 	/// Update current paragraph metrics.
 	/// \return true if no further update is needed.
 	bool singleParUpdate();
-	///
-	bool multiParSel();
 
 	/// Search recursively for the the innermost inset that covers (x, y) position.
 	/// \retval 0 if no inset is found.

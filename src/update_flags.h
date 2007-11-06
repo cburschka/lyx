@@ -25,12 +25,9 @@ namespace Update {
 		Force = 2,
 		/// Try to rebreak only the current paragraph metrics.
 		SinglePar = 4,
-		/// Indicate a selection that spans multiple paragraphs.
-		/// FIXME: get rid of this.
-		MultiParSel = 8,
 		/// Only the inset decorations need to be redrawn, no text metrics
 		/// update is needed.
-		Decoration = 16
+		Decoration = 8
 	};
 
 inline flags operator|(flags const f, flags const g)

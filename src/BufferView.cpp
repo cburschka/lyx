@@ -350,8 +350,8 @@ typedef std::map<Text const *, TextMetrics> TextMetricsCache;
 struct BufferView::Private
 {
 	Private(BufferView & bv): wh_(0), cursor_(bv),
-		multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
-		need_centering_(false), last_inset_(0), gui_(0)
+		anchor_ref_(0), offset_ref_(0), need_centering_(false),
+		last_inset_(0), gui_(0)
 	{}
 
 	///
@@ -371,8 +371,6 @@ struct BufferView::Private
 	} xsel_cache_;
 	///
 	Cursor cursor_;
-	///
-	bool multiparsel_cache_;
 	///
 	pit_type anchor_ref_;
 	///
@@ -481,17 +479,6 @@ bool BufferView::fitCursor()
 }
 
 
-bool BufferView::multiParSel()
-{
-	if (!d->cursor_.selection())
-		return false;
-	bool ret = d->multiparsel_cache_;
-	d->multiparsel_cache_ = d->cursor_.selBegin().pit() != d->cursor_.selEnd().pit();
-	// Either this, or previous selection spans paragraphs
-	return ret || d->multiparsel_cache_;
-}
-
-
 void BufferView::processUpdateFlags(Update::flags flags)
 {
 	// last_inset_ points to the last visited inset. This pointer may become
@@ -546,9 +533,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		return;
 	}
 
-	bool full_metrics = flags & Update::Force;
-	if (flags & Update::MultiParSel)
-		full_metrics |= multiParSel();
+	bool const full_metrics = flags & Update::Force;
 
 	if (full_metrics || !singleParUpdate())
 		// We have to update the full screen metrics.
