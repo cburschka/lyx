@@ -517,6 +517,7 @@ liblyxinsets_la_SOURCES = \
 	insets/InsetInfo.h \
 	insets/InsetLabel.cpp \
 	insets/InsetLabel.h \
+	insets/InsetLayout.h \
 	insets/InsetLine.cpp \
 	insets/InsetLine.h \
 	insets/InsetListings.h \

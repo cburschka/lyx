@@ -15,6 +15,8 @@
 #include "LayoutEnums.h"
 #include "LayoutPtr.h"
 
+#include "insets/InsetLayout.h"
+
 #include "support/docstring.h"
 
 #include <boost/shared_ptr.hpp>
@@ -31,30 +33,6 @@ class Layout;
 class Lexer;
 class Counters;
 class FloatList;
-
-
-///
-class InsetLayout {
-public:
-	std::string name;
-	std::string lyxtype;
-	docstring labelstring;
-	std::string decoration;
-	std::string latextype;
-	std::string latexname;
-	std::string latexparam;
-	FontInfo font;
-	FontInfo labelfont;
-	ColorCode bgcolor;
-	std::string preamble;
-	bool multipar;
-	bool passthru;
-	bool needprotect;
-	bool freespacing;
-	bool keepempty;
-	bool forceltr;
-};
-
 
 /// List of inset layouts
 typedef std::map<docstring, InsetLayout> InsetLayouts;

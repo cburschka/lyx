@@ -15,8 +15,8 @@
 #define INSETCOLLAPSABLE_H
 
 #include "Inset.h"
+#include "InsetLayout.h"
 #include "InsetText.h"
-#include "TextClass.h"
 
 #include "Box.h"
 
