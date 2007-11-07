@@ -14,9 +14,6 @@
 #ifndef LYX_H
 #define LYX_H
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/noncopyable.hpp>
-
 #include <string>
 
 namespace lyx {
@@ -48,7 +45,7 @@ class LyXView;
 }
 
 /// initial startup
-class LyX : boost::noncopyable {
+class LyX {
 public:
 
 	LyX();
@@ -118,6 +115,10 @@ public:
 	void addFileToLoad(support::FileName const &);
 
 private:
+	/// noncopyable
+	LyX(LyX const &);
+	void operator=(LyX const &);
+
 	/// Do some cleanup in preparation of an exit.
 	void prepareExit();
 
@@ -176,7 +177,7 @@ private:
 
 	/// Use the Pimpl idiom to hide the internals.
 	struct Singletons;
-	boost::scoped_ptr<Singletons> pimpl_;
+	Singletons * pimpl_;
 
 	friend Movers & theMovers();
 	friend Mover const & getMover(std::string  const & fmt);

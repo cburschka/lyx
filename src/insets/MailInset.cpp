@@ -16,6 +16,8 @@
 #include "debug.h"
 #include "LyX.h"
 
+#include <boost/assert.hpp>
+
 
 namespace lyx {
 
@@ -25,8 +27,7 @@ using std::string;
 void MailInset::showDialog(BufferView * bv) const
 {
 	BOOST_ASSERT(bv);
-	bv->showInsetDialog(name(), inset2string(bv->buffer()),
-				       &inset());
+	bv->showInsetDialog(name(), inset2string(bv->buffer()), &inset());
 }
 
 

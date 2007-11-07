@@ -63,6 +63,7 @@
 #include "support/Systemcall.h"
 
 #include <boost/bind.hpp>
+#include <boost/scoped_ptr.hpp>
 
 #include <algorithm>
 #include <iostream>
@@ -107,10 +108,9 @@ namespace os = support::os;
 
 
 
-/// are we using the GUI at all?
-/**
-* We default to true and this is changed to false when the export feature is used.
-*/
+// Are we using the GUI at all?  We default to true and this is changed
+// to false when the export feature is used.
+
 bool use_gui = true;
 
 bool quitting;	// flag, that we are quitting the program
@@ -206,6 +206,7 @@ frontend::Application * theApp()
 
 LyX::~LyX()
 {
+	delete pimpl_;
 }
 
 
@@ -227,7 +228,7 @@ LyX::LyX()
 	: first_start(false)
 {
 	singleton_ = this;
-	pimpl_.reset(new Singletons);
+	pimpl_ = new Singletons;
 }
 
 
@@ -1339,6 +1340,7 @@ int parse_help(string const &, string const &)
 	return 0;
 }
 
+
 int parse_version(string const &, string const &)
 {
 	lyxerr << "LyX " << lyx_version
@@ -1349,6 +1351,7 @@ int parse_version(string const &, string const &)
 	exit(0);
 	return 0;
 }
+
 
 int parse_sysdir(string const & arg, string const &)
 {
@@ -1361,6 +1364,7 @@ int parse_sysdir(string const & arg, string const &)
 	return 1;
 }
 
+
 int parse_userdir(string const & arg, string const &)
 {
 	if (arg.empty()) {
@@ -1371,6 +1375,7 @@ int parse_userdir(string const & arg, string const &)
 	cl_user_support = arg;
 	return 1;
 }
+
 
 int parse_execute(string const & arg, string const &)
 {
@@ -1383,6 +1388,7 @@ int parse_execute(string const & arg, string const &)
 	return 1;
 }
 
+
 int parse_export(string const & type, string const &)
 {
 	if (type.empty()) {
@@ -1394,6 +1400,7 @@ int parse_export(string const & type, string const &)
 	use_gui = false;
 	return 1;
 }
+
 
 int parse_import(string const & type, string const & file)
 {
@@ -1410,6 +1417,7 @@ int parse_import(string const & type, string const & file)
 	batch = "buffer-import " + type + ' ' + file;
 	return 2;
 }
+
 
 int parse_geometry(string const & arg1, string const &)
 {
@@ -1454,8 +1462,10 @@ void LyX::easyParse(int & argc, char * argv[])
 		if (it == cmdmap.end())
 			continue;
 
-		string const arg((i + 1 < argc) ? to_utf8(from_local8bit(argv[i + 1])) : string());
-		string const arg2((i + 2 < argc) ? to_utf8(from_local8bit(argv[i + 2])) : string());
+		string const arg =
+			(i + 1 < argc) ? to_utf8(from_local8bit(argv[i + 1])) : string();
+		string const arg2 =
+			(i + 2 < argc) ? to_utf8(from_local8bit(argv[i + 2])) : string();
 
 		int const remove = 1 + it->second(arg, arg2);
 
