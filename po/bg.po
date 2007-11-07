@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-03 13:21+0100\n"
+"POT-Creation-Date: 2007-11-07 23:44+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -2323,7 +2323,7 @@ msgid "L&ine spacing:"
 msgstr "Разстояние"
 
 # src/bufferview_funcs.C:280
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1854
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1855
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Единично"
@@ -2333,7 +2333,7 @@ msgid "1.5"
 msgstr ""
 
 # src/bufferview_funcs.C:286
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1860
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1861
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Двойно"
@@ -2601,7 +2601,7 @@ msgstr ""
 # src/frontends/xforms/form_preferences.C:1013
 # src/frontends/xforms/form_preferences.C:1028
 # src/frontends/xforms/form_preferences.C:1038
-#: src/frontends/qt4/ui/PrefKeyboardUi.ui:58 src/frontends/qt4/ui/PrefUi.ui:38
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:58 src/frontends/qt4/ui/PrefUi.ui:46
 #, fuzzy
 msgid "Bro&wse..."
 msgstr "Търси..."
@@ -3192,12 +3192,12 @@ msgstr "Приемане на съставни думи(w)|#w"
 msgid "Use input encod&ing"
 msgstr "Използнай input|#i"
 
-#: src/frontends/qt4/ui/PrefUi.ui:25
+#: src/frontends/qt4/ui/PrefUi.ui:33
 msgid "&User interface file:"
 msgstr ""
 
 # src/lyx.C:90
-#: src/frontends/qt4/ui/PrefUi.ui:45
+#: src/frontends/qt4/ui/PrefUi.ui:53
 #, fuzzy
 msgid "&Bind file:"
 msgstr "Редактирай файл(E)|#E"
@@ -3210,39 +3210,39 @@ msgstr "Редактирай файл(E)|#E"
 # src/frontends/xforms/form_preferences.C:1013
 # src/frontends/xforms/form_preferences.C:1028
 # src/frontends/xforms/form_preferences.C:1038
-#: src/frontends/qt4/ui/PrefUi.ui:58
+#: src/frontends/qt4/ui/PrefUi.ui:66
 #, fuzzy
 msgid "B&rowse..."
 msgstr "Търси..."
 
 # src/lyxfunc.C:1125
-#: src/frontends/qt4/ui/PrefUi.ui:71
+#: src/frontends/qt4/ui/PrefUi.ui:81
 #, fuzzy
 msgid "Session"
 msgstr "LyX версия "
 
 # src/ext_l10n.h:320
-#: src/frontends/qt4/ui/PrefUi.ui:95
+#: src/frontends/qt4/ui/PrefUi.ui:93
 #, fuzzy
 msgid "Save/restore window size, or use fixed size"
 msgstr "Допускане"
 
-#: src/frontends/qt4/ui/PrefUi.ui:118
+#: src/frontends/qt4/ui/PrefUi.ui:116
 msgid "Load opened files from last session"
 msgstr ""
 
 # src/ext_l10n.h:320
-#: src/frontends/qt4/ui/PrefUi.ui:125
+#: src/frontends/qt4/ui/PrefUi.ui:123
 #, fuzzy
 msgid "Restore cursor positions"
 msgstr "Допускане"
 
-#: src/frontends/qt4/ui/PrefUi.ui:135
+#: src/frontends/qt4/ui/PrefUi.ui:133
 msgid "Restore to cursor position when the file was last closed"
 msgstr ""
 
 # src/ext_l10n.h:320
-#: src/frontends/qt4/ui/PrefUi.ui:138
+#: src/frontends/qt4/ui/PrefUi.ui:136
 #, fuzzy
 msgid "Save/restore window position"
 msgstr "Допускане"
@@ -3250,7 +3250,7 @@ msgstr "Допускане"
 # src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
-#: src/frontends/qt4/ui/PrefUi.ui:181
+#: src/frontends/qt4/ui/PrefUi.ui:170
 #: src/frontends/controllers/ControlBox.cpp:83 src/frontends/qt4/QBox.cpp:292
 #: src/frontends/qt4/QBox.cpp:326
 #, fuzzy
@@ -3258,7 +3258,7 @@ msgid "Width"
 msgstr "Ширина"
 
 # src/form1.C:157 src/frontends/xforms/form_graphics.C:46
-#: src/frontends/qt4/ui/PrefUi.ui:207
+#: src/frontends/qt4/ui/PrefUi.ui:196
 #: src/frontends/controllers/ControlBox.cpp:80 src/frontends/qt4/QBox.cpp:283
 #: src/frontends/qt4/QBox.cpp:317
 #, fuzzy
@@ -3268,56 +3268,56 @@ msgstr "Височина"
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/frontends/qt4/ui/PrefUi.ui:251
+#: src/frontends/qt4/ui/PrefUi.ui:240
 #, fuzzy
 msgid "Documents"
 msgstr "Документ"
 
 # src/bufferlist.C:113 src/bufferlist.C:189
-#: src/frontends/qt4/ui/PrefUi.ui:272
+#: src/frontends/qt4/ui/PrefUi.ui:252
 #, fuzzy
 msgid "B&ackup documents "
 msgstr "Запазване на документа?"
 
 # src/frontends/xforms/form_preferences.C:896
-#: src/frontends/qt4/ui/PrefUi.ui:312
+#: src/frontends/qt4/ui/PrefUi.ui:283
 #, fuzzy
 msgid " every"
 msgstr "обърнато"
 
 # src/frontends/xforms/form_paragraph.C:145
-#: src/frontends/qt4/ui/PrefUi.ui:332
+#: src/frontends/qt4/ui/PrefUi.ui:303
 #, fuzzy
 msgid "minutes"
 msgstr "Редове"
 
-#: src/frontends/qt4/ui/PrefUi.ui:358
+#: src/frontends/qt4/ui/PrefUi.ui:320
 msgid "&Maximum last files:"
 msgstr ""
 
 # src/mathed/math_panel.C:128
-#: src/frontends/qt4/ui/PrefUi.ui:380
+#: src/frontends/qt4/ui/PrefUi.ui:342
 #, fuzzy
 msgid "Scrolling"
 msgstr "Разстояние"
 
 # src/LyXAction.C:402
-#: src/frontends/qt4/ui/PrefUi.ui:404
+#: src/frontends/qt4/ui/PrefUi.ui:357
 #, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "Превключи курсорът не/следва скролер"
 
-#: src/frontends/qt4/ui/PrefUi.ui:427
+#: src/frontends/qt4/ui/PrefUi.ui:380
 msgid "Pixmap Cache"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:433
+#: src/frontends/qt4/ui/PrefUi.ui:392
 msgid ""
 "Checking this improves the performance, but might reduce the on-screen "
 "display of fonts"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:436
+#: src/frontends/qt4/ui/PrefUi.ui:395
 msgid "Enable Pi&xmap Cache"
 msgstr ""
 
@@ -4749,7 +4749,7 @@ msgstr "Библиография"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:540
+#: src/rowpainter.cpp:545
 msgid "Appendix"
 msgstr "Приложение"
 
@@ -11120,20 +11120,20 @@ msgid "Redo|R"
 msgstr "Повтори(d)|d"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:843
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:844
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Отрежи"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:848
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:849
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Копирай"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
-#: src/mathed/InsetMathGrid.cpp:1257 src/mathed/InsetMathNest.cpp:449
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:826
+#: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Залепи"
 
@@ -11846,12 +11846,12 @@ msgid "Check spelling"
 msgstr ""
 
 # src/BufferView2.C:435 src/LyXAction.C:406
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:733
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:727
 msgid "Undo"
 msgstr "Отмени"
 
 # src/BufferView2.C:456 src/LyXAction.C:357
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:742
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:736
 msgid "Redo"
 msgstr "Повтори"
 
@@ -15061,7 +15061,7 @@ msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/Buffer.cpp:470 src/Text.cpp:295
+#: src/Buffer.cpp:470 src/Text.cpp:296
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Непознато действие"
@@ -15092,12 +15092,12 @@ msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:866
-#: src/BufferView.cpp:872
+#: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:841
+#: src/BufferView.cpp:847
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:524 src/BufferView.cpp:867
+#: src/Buffer.cpp:524 src/BufferView.cpp:842
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -15105,7 +15105,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:530 src/BufferView.cpp:873
+#: src/Buffer.cpp:530 src/BufferView.cpp:848
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -15330,79 +15330,79 @@ msgid "LyX will not be able to produce output."
 msgstr "LyX не може да изработи правилен резултат."
 
 # src/frontends/xforms/form_paragraph.C:244
-#: src/BufferView.cpp:520
+#: src/BufferView.cpp:519
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Долу(B)|#B"
 
 # src/BufferView2.C:440
-#: src/BufferView.cpp:736
+#: src/BufferView.cpp:730
 msgid "No further undo information"
 msgstr "Няма нищо повече за отменяне"
 
 # src/BufferView2.C:461
-#: src/BufferView.cpp:745
+#: src/BufferView.cpp:739
 msgid "No further redo information"
 msgstr "Няма нищо повече за повтаряне"
 
 # src/lyxfunc.C:1949
-#: src/BufferView.cpp:932
+#: src/BufferView.cpp:907
 msgid "Mark off"
 msgstr "Маркиране изкл."
 
 # src/lyxfunc.C:1962
-#: src/BufferView.cpp:939
+#: src/BufferView.cpp:914
 msgid "Mark on"
 msgstr "Маркиране вкл."
 
 # src/lyxfunc.C:1839
-#: src/BufferView.cpp:946
+#: src/BufferView.cpp:921
 msgid "Mark removed"
 msgstr "Маркиране премахнато"
 
 # src/lyxfunc.C:1844
-#: src/BufferView.cpp:949
+#: src/BufferView.cpp:924
 msgid "Mark set"
 msgstr "Маркиране установено"
 
 # src/converter.C:783 src/converter.C:853
-#: src/BufferView.cpp:995
+#: src/BufferView.cpp:970
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Открита е една грешка"
 
 # src/lyxfunc.C:3185
-#: src/BufferView.cpp:998
+#: src/BufferView.cpp:973
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Неуспех при отварянето"
 
 # src/converter.C:783 src/converter.C:853
-#: src/BufferView.cpp:1003
+#: src/BufferView.cpp:978
 #, fuzzy
 msgid "One word in selection."
 msgstr "Открита е една грешка"
 
 # src/lyxfunc.C:2761
-#: src/BufferView.cpp:1005
+#: src/BufferView.cpp:980
 #, fuzzy
 msgid "One word in document."
 msgstr "Отварям поддокумент "
 
 # src/ext_l10n.h:263
-#: src/BufferView.cpp:1008
+#: src/BufferView.cpp:983
 #, fuzzy
 msgid "Count words"
 msgstr "Ключови дума"
 
 # src/lyxfunc.C:3291
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1586
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/MenuBackend.C:446 src/ext_l10n.h:10
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
+#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
 #: src/LyXFunc.cpp:2108 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -15414,13 +15414,13 @@ msgid "Documents|#o#O"
 msgstr "Документи(D)|D"
 
 # src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
-#: src/BufferView.cpp:1608 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
+#: src/BufferView.cpp:1589 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Примери"
 
 # src/ext_l10n.h:116
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
 #: src/callback.cpp:156
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
@@ -15428,25 +15428,25 @@ msgstr "LyX документ(X)...|X"
 
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
-#: src/BufferView.cpp:1626 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
+#: src/BufferView.cpp:1607 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
 #: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
 msgid "Canceled."
 msgstr "Прекъснат."
 
 # src/lyxfunc.C:3309
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1618
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Вмъквам документ"
 
 # src/exporter.C:89
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1629
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Документът ще бъде експортиран във формат "
 
 # src/lyxfunc.C:3317
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1631
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Неуспех при вмъкването"
@@ -16578,7 +16578,7 @@ msgid "Exiting."
 msgstr "Изход(x)|x"
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: src/LyXFunc.cpp:1189 src/Text3.cpp:1344
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1345
 msgid "Missing argument"
 msgstr "Липсващ аргумент"
 
@@ -16982,34 +16982,29 @@ msgid ""
 msgstr "Укажете файл за алтернативен личен речник, напр. \".ispell_bulg\"."
 
 #: src/LyXRC.cpp:2284
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr ""
-
-#: src/LyXRC.cpp:2288
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 
-#: src/LyXRC.cpp:2292
+#: src/LyXRC.cpp:2288
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 
-#: src/LyXRC.cpp:2296
+#: src/LyXRC.cpp:2292
 msgid "Scale the preview size to suit."
 msgstr ""
 
 # src/lyxrc.C:1672
-#: src/LyXRC.cpp:2300
+#: src/LyXRC.cpp:2296
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Опзия за указване дали копията да бъдат подреждани."
 
 # src/lyxrc.C:1668
-#: src/LyXRC.cpp:2304
+#: src/LyXRC.cpp:2300
 msgid "The option for specifying the number of copies to print."
 msgstr "Опция за указване на брой копия за печат."
 
 # src/lyxrc.C:1648
-#: src/LyXRC.cpp:2308
+#: src/LyXRC.cpp:2304
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -17018,12 +17013,12 @@ msgstr ""
 "на средата PRINTER."
 
 # src/lyxrc.C:1656
-#: src/LyXRC.cpp:2312
+#: src/LyXRC.cpp:2308
 msgid "The option to print only even pages."
 msgstr "Опция за печат само на четни страници."
 
 # src/lyxrc.C:1708
-#: src/LyXRC.cpp:2316
+#: src/LyXRC.cpp:2312
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -17032,42 +17027,42 @@ msgstr ""
 "преди името на DVI файла за печат."
 
 # src/lyxrc.C:1704
-#: src/LyXRC.cpp:2320
+#: src/LyXRC.cpp:2316
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Разширение на изходния файл.  Обикновено \".ps\"."
 
 # src/lyxrc.C:1680
-#: src/LyXRC.cpp:2324
+#: src/LyXRC.cpp:2320
 msgid "The option to print out in landscape."
 msgstr "Опция за печат на пейзаж."
 
 # src/lyxrc.C:1660
-#: src/LyXRC.cpp:2328
+#: src/LyXRC.cpp:2324
 msgid "The option to print only odd pages."
 msgstr "Опция за печат само на нечетни страници."
 
 # src/lyxrc.C:1664
-#: src/LyXRC.cpp:2332
+#: src/LyXRC.cpp:2328
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Опция за указване на списък от страници за печат."
 
 # src/lyxrc.C:1688
-#: src/LyXRC.cpp:2336
+#: src/LyXRC.cpp:2332
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Опция за указване на размерите на хартията."
 
 # src/lyxrc.C:1684
-#: src/LyXRC.cpp:2340
+#: src/LyXRC.cpp:2336
 msgid "The option to specify paper type."
 msgstr "Опция за указване на вида хартия."
 
 # src/lyxrc.C:1676
-#: src/LyXRC.cpp:2344
+#: src/LyXRC.cpp:2340
 msgid "The option to reverse the order of the pages printed."
 msgstr "Опция за обръщане на реда за печат на страниците."
 
 # src/lyxrc.C:1712
-#: src/LyXRC.cpp:2348
+#: src/LyXRC.cpp:2344
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -17077,7 +17072,7 @@ msgstr ""
 "отделна програма с дадено име и аргументи."
 
 # src/lyxrc.C:1716
-#: src/LyXRC.cpp:2352
+#: src/LyXRC.cpp:2348
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -17086,18 +17081,18 @@ msgstr ""
 "подаден заедно името на принтера след командата."
 
 # src/lyxrc.C:1700
-#: src/LyXRC.cpp:2356
+#: src/LyXRC.cpp:2352
 msgid "Option to pass to the print program to print to a file."
 msgstr "Опция за подаване към командата за печат, за да печата във файл."
 
 # src/lyxrc.C:1692
-#: src/LyXRC.cpp:2360
+#: src/LyXRC.cpp:2356
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Опции за подаване към печатащата програма за печат на специфичен принтер."
 
 # src/lyxrc.C:1696
-#: src/LyXRC.cpp:2364
+#: src/LyXRC.cpp:2360
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -17105,12 +17100,12 @@ msgstr ""
 "Изберете, за да бъде подавано името на принтера към вашата команда за печат."
 
 # src/lyxrc.C:1652
-#: src/LyXRC.cpp:2368
+#: src/LyXRC.cpp:2364
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Вашата предпочитана програма за печат, напр. \"dvips\", \"dvilj4\"."
 
 # src/lyxrc.C:1900
-#: src/LyXRC.cpp:2372
+#: src/LyXRC.cpp:2368
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -17118,7 +17113,7 @@ msgstr ""
 "иврид."
 
 # src/lyxrc.C:1720
-#: src/LyXRC.cpp:2376
+#: src/LyXRC.cpp:2372
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -17127,11 +17122,11 @@ msgstr ""
 "от LyX.  Ако се определи неправилно, изберете стойността оттук."
 
 # src/lyxrc.C:1735
-#: src/LyXRC.cpp:2382
+#: src/LyXRC.cpp:2378
 msgid "The screen fonts used to display the text while editing."
 msgstr "Екранните шрифтове за изобразяване на текст по време на редактиране."
 
-#: src/LyXRC.cpp:2391
+#: src/LyXRC.cpp:2387
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -17139,13 +17134,13 @@ msgid ""
 msgstr ""
 
 # src/lyxrc.C:1729
-#: src/LyXRC.cpp:2395
+#: src/LyXRC.cpp:2391
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Размерите на шрифтовете за изчисляване на мащабирането на екранните шрифтове."
 
 # src/lyxrc.C:1725
-#: src/LyXRC.cpp:2400
+#: src/LyXRC.cpp:2396
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -17154,18 +17149,18 @@ msgstr ""
 "Процент на мащабиране на екранните шрифтове. Стойността 100% ще направи "
 "размерът приблизително както на хартията."
 
-#: src/LyXRC.cpp:2405
+#: src/LyXRC.cpp:2401
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
 
-#: src/LyXRC.cpp:2409
+#: src/LyXRC.cpp:2405
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
 
 # src/lyxrc.C:1791
-#: src/LyXRC.cpp:2413
+#: src/LyXRC.cpp:2409
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -17174,18 +17169,18 @@ msgstr ""
 "\" und \".out\".  Само за напреднали потребители."
 
 # src/lyxrc.C:1945
-#: src/LyXRC.cpp:2420
+#: src/LyXRC.cpp:2416
 msgid "De-select if you don't want the startup banner."
 msgstr "Изключете ако не искате началното лого"
 
 # src/lyxrc.C:1849
-#: src/LyXRC.cpp:2424
+#: src/LyXRC.cpp:2420
 #, fuzzy
 msgid "What command runs the spellchecker?"
 msgstr "Коя команда стартира правописната проверка?"
 
 # src/lyxrc.C:1770
-#: src/LyXRC.cpp:2428
+#: src/LyXRC.cpp:2424
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -17194,7 +17189,7 @@ msgstr ""
 "изтрити, когато излезете от LyX."
 
 # src/lyxrc.C:1766
-#: src/LyXRC.cpp:2432
+#: src/LyXRC.cpp:2428
 #, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
@@ -17202,7 +17197,7 @@ msgid ""
 msgstr "Пътя, който LyX ще покаже, когато предлага избор на шаблон."
 
 # src/lyxrc.C:1799
-#: src/LyXRC.cpp:2442
+#: src/LyXRC.cpp:2438
 #, fuzzy
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
@@ -17212,7 +17207,7 @@ msgstr ""
 "LyX ще търси в глобалната и локалната ui/ директории."
 
 # src/lyxrc.C:1853
-#: src/LyXRC.cpp:2455
+#: src/LyXRC.cpp:2451
 #, fuzzy
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
@@ -17222,6 +17217,11 @@ msgstr ""
 "Укажете дали опцията за кодировка -T да се предава на ispell. Изберете това "
 "ако не можете да проверявате думи с нелатински букви в тях.  Това може да не "
 "работи с всички речници."
+
+#: src/LyXRC.cpp:2455
+msgid ""
+"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgstr ""
 
 #: src/LyXRC.cpp:2462
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -17358,12 +17358,12 @@ msgid "Native OS API not yet supported."
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/Text.cpp:135
+#: src/Text.cpp:136
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Непознато действие"
 
-#: src/Text.cpp:136
+#: src/Text.cpp:137
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
@@ -17371,35 +17371,35 @@ msgid ""
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/Text.cpp:167
+#: src/Text.cpp:168
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Непознато действие"
 
 # src/LyXAction.C:263
-#: src/Text.cpp:273 src/Text.cpp:286
+#: src/Text.cpp:274 src/Text.cpp:287
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Смяна на език"
 
-#: src/Text.cpp:274
+#: src/Text.cpp:275
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:287
+#: src/Text.cpp:288
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/Text.cpp:294
+#: src/Text.cpp:295
 #, fuzzy
 msgid "Unknown token"
 msgstr "Непознато действие"
 
 # src/text.C:2003
-#: src/Text.cpp:767
+#: src/Text.cpp:768
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -17409,88 +17409,88 @@ msgstr ""
 "Sie das Tutorium."
 
 # src/text.C:2005
-#: src/Text.cpp:778
+#: src/Text.cpp:779
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Не можете да въведете два интервала така.  Моля прочетете Ръководството."
 
 # src/LyXAction.C:263
-#: src/Text.cpp:1820
+#: src/Text.cpp:1821
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Смяна на език"
 
 # src/frontends/xforms/form_print.C:112
-#: src/Text.cpp:1826
+#: src/Text.cpp:1827
 #, fuzzy
 msgid "Change: "
 msgstr "Страници:"
 
 # src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
 # src/converter.C:554
-#: src/Text.cpp:1830
+#: src/Text.cpp:1831
 #, fuzzy
 msgid " at "
 msgstr " на "
 
 # src/bufferview_funcs.C:267
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт:"
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1845
+#: src/Text.cpp:1846
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Дълбочина: "
 
 # src/bufferview_funcs.C:277
-#: src/Text.cpp:1851
+#: src/Text.cpp:1852
 msgid ", Spacing: "
 msgstr ", Отместване: "
 
 # src/bufferview_funcs.C:283
-#: src/Text.cpp:1857 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1858 src/frontends/qt4/QDocument.cpp:247
 #, fuzzy
 msgid "OneHalf"
 msgstr "Половин"
 
 # src/bufferview_funcs.C:289
-#: src/Text.cpp:1863
+#: src/Text.cpp:1864
 msgid "Other ("
 msgstr "Друго ("
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1872
+#: src/Text.cpp:1873
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:303
-#: src/Text.cpp:1873
+#: src/Text.cpp:1874
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Абзац"
 
 # src/bufferview_funcs.C:271
-#: src/Text.cpp:1874
+#: src/Text.cpp:1875
 #, fuzzy
 msgid ", Id: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:320
-#: src/Text.cpp:1875
+#: src/Text.cpp:1876
 #, fuzzy
 msgid ", Position: "
 msgstr "Допускане"
 
-#: src/Text.cpp:1881
+#: src/Text.cpp:1882
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1883
+#: src/Text.cpp:1884
 msgid ", Boundary: "
 msgstr ""
 
@@ -17513,35 +17513,35 @@ msgid "Cannot index more than one paragraph!"
 msgstr "Невъзможност за включване на повече от един абзац!"
 
 # src/lyxfunc.C:2565 src/mathed/formula.C:486
-#: src/Text3.cpp:178 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:179 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Матем. редактор"
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/Text3.cpp:728
+#: src/Text3.cpp:729
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr " към избрания документ клас!"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/Text3.cpp:902
+#: src/Text3.cpp:903
 msgid "Layout "
 msgstr "Непознато "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1261
-#: src/Text3.cpp:903
+#: src/Text3.cpp:904
 msgid " not known"
 msgstr " оформление"
 
 # src/form1.C:33
-#: src/Text3.cpp:1455 src/Text3.cpp:1467
+#: src/Text3.cpp:1456 src/Text3.cpp:1468
 #, fuzzy
 msgid "Character set"
 msgstr "Кодировка(H):|#H"
 
 # src/frontends/kde/FormParagraph.C:183
 # src/frontends/xforms/FormParagraph.C:148
-#: src/Text3.cpp:1584 src/Text3.cpp:1595
+#: src/Text3.cpp:1585 src/Text3.cpp:1596
 msgid "Paragraph layout set"
 msgstr "Оформяне на абзаци"
 
@@ -20123,7 +20123,7 @@ msgid "You cannot set multicolumn vertically."
 msgstr ""
 
 # src/insets/insettext.C:478
-#: src/insets/InsetText.cpp:240
+#: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
 msgstr "Отворен Text Inset"
 
@@ -20360,27 +20360,27 @@ msgstr ""
 msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1362
+#: src/mathed/InsetMathGrid.cpp:1364
 msgid "Only one row"
 msgstr ""
 
 # src/ext_l10n.h:75
-#: src/mathed/InsetMathGrid.cpp:1368
+#: src/mathed/InsetMathGrid.cpp:1370
 #, fuzzy
 msgid "Only one column"
 msgstr "Изтрий колона(D)|D"
 
 # src/text2.C:456
-#: src/mathed/InsetMathGrid.cpp:1376
+#: src/mathed/InsetMathGrid.cpp:1378
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Няма нищо за правене"
 
-#: src/mathed/InsetMathGrid.cpp:1385
+#: src/mathed/InsetMathGrid.cpp:1387
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1403
+#: src/mathed/InsetMathGrid.cpp:1405
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""

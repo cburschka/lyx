@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-03 13:21+0100\n"
+"POT-Creation-Date: 2007-11-07 23:44+0100\n"
 "PO-Revision-Date: 2007-06-01 12:45+0200\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -1753,7 +1753,7 @@ msgstr "&Justert"
 msgid "L&ine spacing:"
 msgstr "L&injeavstand:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1854
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1855
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Enkel"
@@ -1762,7 +1762,7 @@ msgstr "Enkel"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1860
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1861
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Dobbel"
@@ -1944,7 +1944,7 @@ msgstr "&Navn:"
 msgid "Your E-mail address"
 msgstr "E-postadressen din"
 
-#: src/frontends/qt4/ui/PrefKeyboardUi.ui:58 src/frontends/qt4/ui/PrefUi.ui:38
+#: src/frontends/qt4/ui/PrefKeyboardUi.ui:58 src/frontends/qt4/ui/PrefUi.ui:46
 msgid "Bro&wse..."
 msgstr "Se igjennom..."
 
@@ -2380,93 +2380,93 @@ msgstr "Tillat sammensatte &ord"
 msgid "Use input encod&ing"
 msgstr "Bruk \"input-encod&ing\""
 
-#: src/frontends/qt4/ui/PrefUi.ui:25
+#: src/frontends/qt4/ui/PrefUi.ui:33
 msgid "&User interface file:"
 msgstr "&Brukergrensesnittfil:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:45
+#: src/frontends/qt4/ui/PrefUi.ui:53
 msgid "&Bind file:"
 msgstr "&Hurtigtast-fil:"
 
-#: src/frontends/qt4/ui/PrefUi.ui:58
+#: src/frontends/qt4/ui/PrefUi.ui:66
 msgid "B&rowse..."
 msgstr "Se igjennom..."
 
-#: src/frontends/qt4/ui/PrefUi.ui:71
+#: src/frontends/qt4/ui/PrefUi.ui:81
 msgid "Session"
 msgstr "Økt"
 
-#: src/frontends/qt4/ui/PrefUi.ui:95
+#: src/frontends/qt4/ui/PrefUi.ui:93
 msgid "Save/restore window size, or use fixed size"
 msgstr "Lagre vindusstørrelse, eller bruke fast størrelse"
 
-#: src/frontends/qt4/ui/PrefUi.ui:118
+#: src/frontends/qt4/ui/PrefUi.ui:116
 msgid "Load opened files from last session"
 msgstr "Les inn åpne dokumenter fra forrige økt"
 
-#: src/frontends/qt4/ui/PrefUi.ui:125
+#: src/frontends/qt4/ui/PrefUi.ui:123
 msgid "Restore cursor positions"
 msgstr "Husk markørposisjoner i dokumentene"
 
-#: src/frontends/qt4/ui/PrefUi.ui:135
+#: src/frontends/qt4/ui/PrefUi.ui:133
 msgid "Restore to cursor position when the file was last closed"
 msgstr "Gå til posisjonen markøren var i sist gang dokumentet ble lukket"
 
-#: src/frontends/qt4/ui/PrefUi.ui:138
+#: src/frontends/qt4/ui/PrefUi.ui:136
 msgid "Save/restore window position"
 msgstr "Lagre og gjenskape vindusposisjoner"
 
-#: src/frontends/qt4/ui/PrefUi.ui:181
+#: src/frontends/qt4/ui/PrefUi.ui:170
 #: src/frontends/controllers/ControlBox.cpp:83 src/frontends/qt4/QBox.cpp:292
 #: src/frontends/qt4/QBox.cpp:326
 msgid "Width"
 msgstr "Bredde"
 
-#: src/frontends/qt4/ui/PrefUi.ui:207
+#: src/frontends/qt4/ui/PrefUi.ui:196
 #: src/frontends/controllers/ControlBox.cpp:80 src/frontends/qt4/QBox.cpp:283
 #: src/frontends/qt4/QBox.cpp:317
 msgid "Height"
 msgstr "Høyde"
 
-#: src/frontends/qt4/ui/PrefUi.ui:251
+#: src/frontends/qt4/ui/PrefUi.ui:240
 msgid "Documents"
 msgstr "Dokumenter"
 
-#: src/frontends/qt4/ui/PrefUi.ui:272
+#: src/frontends/qt4/ui/PrefUi.ui:252
 msgid "B&ackup documents "
 msgstr "Sikkerhetskopiér dokumenter "
 
-#: src/frontends/qt4/ui/PrefUi.ui:312
+#: src/frontends/qt4/ui/PrefUi.ui:283
 msgid " every"
 msgstr " hvert"
 
-#: src/frontends/qt4/ui/PrefUi.ui:332
+#: src/frontends/qt4/ui/PrefUi.ui:303
 msgid "minutes"
 msgstr "minutt"
 
-#: src/frontends/qt4/ui/PrefUi.ui:358
+#: src/frontends/qt4/ui/PrefUi.ui:320
 msgid "&Maximum last files:"
 msgstr "Max antall tidligere filer"
 
-#: src/frontends/qt4/ui/PrefUi.ui:380
+#: src/frontends/qt4/ui/PrefUi.ui:342
 msgid "Scrolling"
 msgstr "Rullefelt"
 
-#: src/frontends/qt4/ui/PrefUi.ui:404
+#: src/frontends/qt4/ui/PrefUi.ui:357
 msgid "Cursor follows &scrollbar"
 msgstr "Markøren følger &rullefeltet"
 
-#: src/frontends/qt4/ui/PrefUi.ui:427
+#: src/frontends/qt4/ui/PrefUi.ui:380
 msgid "Pixmap Cache"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:433
+#: src/frontends/qt4/ui/PrefUi.ui:392
 msgid ""
 "Checking this improves the performance, but might reduce the on-screen "
 "display of fonts"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:436
+#: src/frontends/qt4/ui/PrefUi.ui:395
 msgid "Enable Pi&xmap Cache"
 msgstr ""
 
@@ -3575,7 +3575,7 @@ msgstr "Referanseliste"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:540
+#: src/rowpainter.cpp:545
 msgid "Appendix"
 msgstr "Appendiks"
 
@@ -8340,18 +8340,18 @@ msgstr "Steng vindu|d"
 msgid "Redo|R"
 msgstr "Gjør om|G"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:843
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:844
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Klipp"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:848
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:849
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopier"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
-#: src/mathed/InsetMathGrid.cpp:1257 src/mathed/InsetMathNest.cpp:449
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:826
+#: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -8850,11 +8850,11 @@ msgstr "Skriv ut dokumentet"
 msgid "Check spelling"
 msgstr "Stavesjekk"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:733
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:727
 msgid "Undo"
 msgstr "Angre"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:742
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:736
 msgid "Redo"
 msgstr "Gjør omigjen"
 
@@ -11424,7 +11424,7 @@ msgstr "Ukjent dokumentklasse"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Bruker standard dokumentklasse, fordi klassen %1$s er ukjent."
 
-#: src/Buffer.cpp:470 src/Text.cpp:295
+#: src/Buffer.cpp:470 src/Text.cpp:296
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukjent symbol: %1$s %2$s\n"
@@ -11453,12 +11453,12 @@ msgid ""
 msgstr ""
 "Bruker standard dokumentklasse, fordi klassen %1$s ikke kunne lastes inn."
 
-#: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:866
-#: src/BufferView.cpp:872
+#: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:841
+#: src/BufferView.cpp:847
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:524 src/BufferView.cpp:867
+#: src/Buffer.cpp:524 src/BufferView.cpp:842
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
@@ -11466,7 +11466,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:530 src/BufferView.cpp:873
+#: src/Buffer.cpp:530 src/BufferView.cpp:848
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
@@ -11662,61 +11662,61 @@ msgstr "Dokumentklassen er ikke tilgjengelig"
 msgid "LyX will not be able to produce output."
 msgstr "LyX får ikke produsert utdata."
 
-#: src/BufferView.cpp:520
+#: src/BufferView.cpp:519
 msgid "Save bookmark"
 msgstr "Lagre bokmerke"
 
-#: src/BufferView.cpp:736
+#: src/BufferView.cpp:730
 msgid "No further undo information"
 msgstr "Ikke mer \"Angre\" informasjon"
 
-#: src/BufferView.cpp:745
+#: src/BufferView.cpp:739
 msgid "No further redo information"
 msgstr "Ikke mer \"Gjør om\" informasjon"
 
-#: src/BufferView.cpp:932
+#: src/BufferView.cpp:907
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView.cpp:939
+#: src/BufferView.cpp:914
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView.cpp:946
+#: src/BufferView.cpp:921
 msgid "Mark removed"
 msgstr "Fjernet merke"
 
-#: src/BufferView.cpp:949
+#: src/BufferView.cpp:924
 msgid "Mark set"
 msgstr "Merke satt"
 
-#: src/BufferView.cpp:995
+#: src/BufferView.cpp:970
 #, c-format
 msgid "%1$d words in selection."
 msgstr "Det er %1$d ord i utvalget"
 
-#: src/BufferView.cpp:998
+#: src/BufferView.cpp:973
 #, c-format
 msgid "%1$d words in document."
 msgstr "Det er %1$d ord i dokumentet."
 
-#: src/BufferView.cpp:1003
+#: src/BufferView.cpp:978
 msgid "One word in selection."
 msgstr "Det er ett ord i utvalget."
 
-#: src/BufferView.cpp:1005
+#: src/BufferView.cpp:980
 msgid "One word in document."
 msgstr "Ett ord i dokumentet."
 
-#: src/BufferView.cpp:1008
+#: src/BufferView.cpp:983
 msgid "Count words"
 msgstr "Telle ord"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1586
 msgid "Select LyX document to insert"
 msgstr "Velg LyX dokument som skal settes inn"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
+#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
 #: src/LyXFunc.cpp:2108 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11726,31 +11726,31 @@ msgstr "Velg LyX dokument som skal settes inn"
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
 
-#: src/BufferView.cpp:1608 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
+#: src/BufferView.cpp:1589 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumenter (*.lyx)"
 
-#: src/BufferView.cpp:1626 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
+#: src/BufferView.cpp:1607 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
 #: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
 msgid "Canceled."
 msgstr "Avbrutt."
 
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1618
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Setter inn dokumentet %1$s..."
 
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1629
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Satt inn document %1$s."
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1631
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke sette inn dokumentet %1$s"
@@ -12679,7 +12679,7 @@ msgstr "&Tilbake til lagret"
 msgid "Exiting."
 msgstr "Avslutter."
 
-#: src/LyXFunc.cpp:1189 src/Text3.cpp:1344
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1345
 msgid "Missing argument"
 msgstr "Mangler argument"
 
@@ -13008,176 +13008,171 @@ msgid ""
 msgstr "Oppgi en annen personlig ordliste enn standard"
 
 #: src/LyXRC.cpp:2284
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr ""
-
-#: src/LyXRC.cpp:2288
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 
-#: src/LyXRC.cpp:2292
+#: src/LyXRC.cpp:2288
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 
-#: src/LyXRC.cpp:2296
+#: src/LyXRC.cpp:2292
 msgid "Scale the preview size to suit."
 msgstr ""
 
-#: src/LyXRC.cpp:2300
+#: src/LyXRC.cpp:2296
 msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
-#: src/LyXRC.cpp:2304
+#: src/LyXRC.cpp:2300
 #, fuzzy
 msgid "The option for specifying the number of copies to print."
 msgstr "Skriv ut i omvendt rekkefølge."
 
-#: src/LyXRC.cpp:2308
+#: src/LyXRC.cpp:2304
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr ""
 
-#: src/LyXRC.cpp:2312
+#: src/LyXRC.cpp:2308
 msgid "The option to print only even pages."
 msgstr "Mulighet for å bare skrive ut sider hvor sidetallet er partall"
 
-#: src/LyXRC.cpp:2316
+#: src/LyXRC.cpp:2312
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/LyXRC.cpp:2320
+#: src/LyXRC.cpp:2316
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2324
+#: src/LyXRC.cpp:2320
 #, fuzzy
 msgid "The option to print out in landscape."
 msgstr "Mulighet for å bare skrive ut sider hvor sidetallet er partall"
 
-#: src/LyXRC.cpp:2328
+#: src/LyXRC.cpp:2324
 #, fuzzy
 msgid "The option to print only odd pages."
 msgstr "Mulighet for å bare skrive ut sider hvor sidetallet er partall"
 
-#: src/LyXRC.cpp:2332
+#: src/LyXRC.cpp:2328
 #, fuzzy
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Skriv ut i omvendt rekkefølge."
 
-#: src/LyXRC.cpp:2336
+#: src/LyXRC.cpp:2332
 #, fuzzy
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Skriv ut i omvendt rekkefølge."
 
-#: src/LyXRC.cpp:2340
+#: src/LyXRC.cpp:2336
 #, fuzzy
 msgid "The option to specify paper type."
 msgstr "Mulighet for å bare skrive ut sider hvor sidetallet er partall"
 
-#: src/LyXRC.cpp:2344
+#: src/LyXRC.cpp:2340
 msgid "The option to reverse the order of the pages printed."
 msgstr "Skriv ut i omvendt rekkefølge."
 
-#: src/LyXRC.cpp:2348
+#: src/LyXRC.cpp:2344
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/LyXRC.cpp:2352
+#: src/LyXRC.cpp:2348
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/LyXRC.cpp:2356
+#: src/LyXRC.cpp:2352
 #, fuzzy
 msgid "Option to pass to the print program to print to a file."
 msgstr "Utskrift til fil"
 
-#: src/LyXRC.cpp:2360
+#: src/LyXRC.cpp:2356
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/LyXRC.cpp:2364
+#: src/LyXRC.cpp:2360
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/LyXRC.cpp:2368
+#: src/LyXRC.cpp:2364
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2372
+#: src/LyXRC.cpp:2368
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 
-#: src/LyXRC.cpp:2376
+#: src/LyXRC.cpp:2372
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
 msgstr ""
 
-#: src/LyXRC.cpp:2382
+#: src/LyXRC.cpp:2378
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/LyXRC.cpp:2391
+#: src/LyXRC.cpp:2387
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:2395
+#: src/LyXRC.cpp:2391
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:2400
+#: src/LyXRC.cpp:2396
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/LyXRC.cpp:2405
+#: src/LyXRC.cpp:2401
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
 
-#: src/LyXRC.cpp:2409
+#: src/LyXRC.cpp:2405
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
 
-#: src/LyXRC.cpp:2413
+#: src/LyXRC.cpp:2409
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/LyXRC.cpp:2420
+#: src/LyXRC.cpp:2416
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 
-#: src/LyXRC.cpp:2424
+#: src/LyXRC.cpp:2420
 msgid "What command runs the spellchecker?"
 msgstr ""
 
-#: src/LyXRC.cpp:2428
+#: src/LyXRC.cpp:2424
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/LyXRC.cpp:2432
+#: src/LyXRC.cpp:2428
 #, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
@@ -13186,17 +13181,22 @@ msgstr ""
 "Standardsti for dokumenter. Hvis det ikke står noe, brukes mappa LyX startet "
 "fra."
 
-#: src/LyXRC.cpp:2442
+#: src/LyXRC.cpp:2438
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2455
+#: src/LyXRC.cpp:2451
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
+msgstr ""
+
+#: src/LyXRC.cpp:2455
+msgid ""
+"Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
 #: src/LyXRC.cpp:2462
@@ -13306,11 +13306,11 @@ msgstr ""
 msgid "Native OS API not yet supported."
 msgstr ""
 
-#: src/Text.cpp:135
+#: src/Text.cpp:136
 msgid "Unknown layout"
 msgstr "Ukjent stil"
 
-#: src/Text.cpp:136
+#: src/Text.cpp:137
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
@@ -13319,99 +13319,99 @@ msgstr ""
 "Avsnittstype '%1$s' fins ikke i klassen '%2$s'\n"
 "Prøver med standard i stedet.\n"
 
-#: src/Text.cpp:167
+#: src/Text.cpp:168
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Ukjent bruker"
 
-#: src/Text.cpp:273 src/Text.cpp:286
+#: src/Text.cpp:274 src/Text.cpp:287
 msgid "Change tracking error"
 msgstr "Feil i endringssporing"
 
-#: src/Text.cpp:274
+#: src/Text.cpp:275
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:287
+#: src/Text.cpp:288
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:294
+#: src/Text.cpp:295
 #, fuzzy
 msgid "Unknown token"
 msgstr "Ukjent operasjon"
 
-#: src/Text.cpp:767
+#: src/Text.cpp:768
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Det er ikke mulig å bruke to mellomrom på denne måten. Les 'Innføring.'"
 
-#: src/Text.cpp:778
+#: src/Text.cpp:779
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Det er ikke mulig å bruke to mellomrom på denne måten. Les 'Innføring.'"
 
-#: src/Text.cpp:1820
+#: src/Text.cpp:1821
 msgid "[Change Tracking] "
 msgstr "[Endringssporing] "
 
-#: src/Text.cpp:1826
+#: src/Text.cpp:1827
 msgid "Change: "
 msgstr "Endring: "
 
-#: src/Text.cpp:1830
+#: src/Text.cpp:1831
 #, fuzzy
 msgid " at "
 msgstr "Del "
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1846
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$d"
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1852
 msgid ", Spacing: "
 msgstr ", Linjeavstand: "
 
-#: src/Text.cpp:1857 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1858 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Halvannen"
 
-#: src/Text.cpp:1863
+#: src/Text.cpp:1864
 msgid "Other ("
 msgstr "Annet ("
 
-#: src/Text.cpp:1872
+#: src/Text.cpp:1873
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1874
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
-#: src/Text.cpp:1874
+#: src/Text.cpp:1875
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1876
 msgid ", Position: "
 msgstr ", Posisjon : "
 
-#: src/Text.cpp:1881
+#: src/Text.cpp:1882
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1883
+#: src/Text.cpp:1884
 msgid ", Boundary: "
 msgstr ""
 
@@ -13428,27 +13428,27 @@ msgstr "Ingenting å indeksere!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere mer enn ett avsnitt!"
 
-#: src/Text3.cpp:178 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:179 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Matte editerings modus"
 
-#: src/Text3.cpp:728
+#: src/Text3.cpp:729
 msgid "Unknown spacing argument: "
 msgstr "Ukjent argument til linjeavstand: "
 
-#: src/Text3.cpp:902
+#: src/Text3.cpp:903
 msgid "Layout "
 msgstr "Stil "
 
-#: src/Text3.cpp:903
+#: src/Text3.cpp:904
 msgid " not known"
 msgstr " ukjent"
 
-#: src/Text3.cpp:1455 src/Text3.cpp:1467
+#: src/Text3.cpp:1456 src/Text3.cpp:1468
 msgid "Character set"
 msgstr "Tegnsett"
 
-#: src/Text3.cpp:1584 src/Text3.cpp:1595
+#: src/Text3.cpp:1585 src/Text3.cpp:1596
 msgid "Paragraph layout set"
 msgstr "Avsnittstil satt"
 
@@ -15495,7 +15495,7 @@ msgstr "Feil bruk av multikolonne"
 msgid "You cannot set multicolumn vertically."
 msgstr "Multikolonne kan ikke brukes vertikalt."
 
-#: src/insets/InsetText.cpp:240
+#: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
 msgstr "Åpnet text inset"
 
@@ -15676,23 +15676,23 @@ msgstr ""
 msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.cpp:1362
+#: src/mathed/InsetMathGrid.cpp:1364
 msgid "Only one row"
 msgstr "Bare én rad"
 
-#: src/mathed/InsetMathGrid.cpp:1368
+#: src/mathed/InsetMathGrid.cpp:1370
 msgid "Only one column"
 msgstr "Bare én kolonne"
 
-#: src/mathed/InsetMathGrid.cpp:1376
+#: src/mathed/InsetMathGrid.cpp:1378
 msgid "No hline to delete"
 msgstr "Ingen horisontal linje å fjerne"
 
-#: src/mathed/InsetMathGrid.cpp:1385
+#: src/mathed/InsetMathGrid.cpp:1387
 msgid "No vline to delete"
 msgstr "Ingen vertikal linje å fjerne"
 
-#: src/mathed/InsetMathGrid.cpp:1403
+#: src/mathed/InsetMathGrid.cpp:1405
 #, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ukjent symbol: %1$s %2$s\n"

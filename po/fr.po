@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-07 15:37+0100\n"
+"POT-Creation-Date: 2007-11-07 23:44+0100\n"
 "PO-Revision-Date: 2007-11-07 15:06+0100\n"
 "Last-Translator: Siegfried MEUNIER-GUTTIN-CLUZEL <meunier@coria.fr>\n"
 "Language-Team: lyxfr\n"
@@ -1918,7 +1918,7 @@ msgstr "&Justifié"
 msgid "L&ine spacing:"
 msgstr "&Interligne :"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1854
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1855
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "Simple"
@@ -1927,7 +1927,7 @@ msgstr "Simple"
 msgid "1.5"
 msgstr "Un et demi"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1860
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1861
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "Double"
@@ -11634,7 +11634,7 @@ msgstr ""
 "Utilise la classe de document par défaut, parce que la classe %1$s est "
 "inconnue."
 
-#: src/Buffer.cpp:470 src/Text.cpp:295
+#: src/Buffer.cpp:470 src/Text.cpp:296
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Élément inconnu : %1$s %2$s\n"
@@ -13618,11 +13618,11 @@ msgstr ""
 msgid "Native OS API not yet supported."
 msgstr "API native du système d'exploitation pas encore supportée."
 
-#: src/Text.cpp:135
+#: src/Text.cpp:136
 msgid "Unknown layout"
 msgstr "Environnement inconnu"
 
-#: src/Text.cpp:136
+#: src/Text.cpp:137
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
@@ -13631,29 +13631,29 @@ msgstr ""
 "L'environnement '%1$s' n'existe pas dans la classe '%2$s'\n"
 "Tentative d'utiliser à la place l'environnement par défaut.\n"
 
-#: src/Text.cpp:167
+#: src/Text.cpp:168
 msgid "Unknown Inset"
 msgstr "Insert inconnu"
 
-#: src/Text.cpp:273 src/Text.cpp:286
+#: src/Text.cpp:274 src/Text.cpp:287
 msgid "Change tracking error"
 msgstr "Erreur dans le suivi des modifications"
 
-#: src/Text.cpp:274
+#: src/Text.cpp:275
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr "Index d'auteur inconnu pour l'insertion : %1$d\n"
 
-#: src/Text.cpp:287
+#: src/Text.cpp:288
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr "Index d'auteur inconnu pour la suppression : %1$d\n"
 
-#: src/Text.cpp:294
+#: src/Text.cpp:295
 msgid "Unknown token"
 msgstr "Élément inconnu"
 
-#: src/Text.cpp:767
+#: src/Text.cpp:768
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -13661,67 +13661,67 @@ msgstr ""
 "Vous ne pouvez pas entrer d'espace en début de paragraphe. Lisez le Manuel "
 "d'Apprentissage."
 
-#: src/Text.cpp:778
+#: src/Text.cpp:779
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Vous ne pouvez pas entrer deux espaces ainsi. Lisez le Manuel "
 "d'Apprentissage."
 
-#: src/Text.cpp:1820
+#: src/Text.cpp:1821
 msgid "[Change Tracking] "
 msgstr "[Suivi des Modifications]"
 
-#: src/Text.cpp:1826
+#: src/Text.cpp:1827
 msgid "Change: "
 msgstr "Modification : "
 
-#: src/Text.cpp:1830
+#: src/Text.cpp:1831
 msgid " at "
 msgstr " le "
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 #, c-format
 msgid "Font: %1$s"
 msgstr "Police : %1$s"
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1846
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profondeur : %1$d"
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1852
 msgid ", Spacing: "
 msgstr ", Espacement : "
 
-#: src/Text.cpp:1857 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1858 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "Un et Demi"
 
-#: src/Text.cpp:1863
+#: src/Text.cpp:1864
 msgid "Other ("
 msgstr "Autre ("
 
-#: src/Text.cpp:1872
+#: src/Text.cpp:1873
 msgid ", Inset: "
 msgstr ", Insert : "
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1874
 msgid ", Paragraph: "
 msgstr ", Paragraphe : "
 
-#: src/Text.cpp:1874
+#: src/Text.cpp:1875
 msgid ", Id: "
 msgstr ", Identifiant : "
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1876
 msgid ", Position: "
 msgstr ", Position : "
 
-#: src/Text.cpp:1881
+#: src/Text.cpp:1882
 msgid ", Char: 0x"
 msgstr ", Char: 0x"
 
-#: src/Text.cpp:1883
+#: src/Text.cpp:1884
 msgid ", Boundary: "
 msgstr ", Frontière : "
 
@@ -14650,19 +14650,19 @@ msgstr "Plan"
 msgid "Directories"
 msgstr "Répertoires"
 
-#: src/frontends/qt4/GuiApplication.cpp:397
+#: src/frontends/qt4/GuiApplication.cpp:390
 msgid "About %1"
 msgstr "À Propos de %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:397 src/frontends/qt4/QPrefs.cpp:2045
+#: src/frontends/qt4/GuiApplication.cpp:390 src/frontends/qt4/QPrefs.cpp:2045
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/frontends/qt4/GuiApplication.cpp:398
+#: src/frontends/qt4/GuiApplication.cpp:391
 msgid "Reconfigure"
 msgstr "Reconfigurer"
 
-#: src/frontends/qt4/GuiApplication.cpp:398
+#: src/frontends/qt4/GuiApplication.cpp:391
 msgid "Quit %1"
 msgstr "Quitter %1"
 
