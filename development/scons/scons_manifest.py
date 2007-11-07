@@ -1017,6 +1017,7 @@ src_insets_header_files = Split('''
     InsetIndex.h
     InsetInfo.h
     InsetLabel.h
+    InsetLayout.h
     InsetLine.h
     InsetListings.h
     InsetListingsParams.h
