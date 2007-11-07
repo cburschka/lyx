@@ -40,13 +40,9 @@
 using std::endl;
 using std::string;
 
+
 namespace lyx {
 namespace frontend {
-
-namespace {
-
-
-} // anon namespace
 
 GuiPainter::GuiPainter(QPaintDevice * device)
 	: QPainter(device), Painter(),
@@ -138,7 +134,9 @@ QColor GuiPainter::filterColor(QColor const & col)
 	min.getRgbF(&minr, &ming, &minb);
 	max.getRgbF(&maxr, &maxg, &maxb);
 			
-	return QColor(v*minr+(1-v)*maxr, v*ming+(1-v)*maxg, v*minb+(1-v)*maxb);
+	QColor c;
+	c.setRgbF(v*minr+(1-v)*maxr, v*ming+(1-v)*maxg, v*minb+(1-v)*maxb);
+	return c;
 }
 
 
