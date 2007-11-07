@@ -88,8 +88,6 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
 		button_dim(rhs.button_dim),
-		topx(rhs.topx),
-		topbaseline(rhs.topbaseline),
 		layout_(rhs.layout_),
 		labelstring_(rhs.labelstring_),
 		status_(rhs.status_),
@@ -325,7 +323,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.line(xx1, y + desc - 4, 
 			     xx1, y + desc, 
 			layout_->labelfont.color());
-		if (internalStatus() == Open)
+		if (status_ == Open)
 			pi.pain.line(xx1, y + desc, 
 				xx2, y + desc,
 				layout_->labelfont.color());
@@ -511,7 +509,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (geometry() == Corners ||
 			    geometry() == SubLabel ||
 			    geometry() == NoButton)  {
-				if (internalStatus() == Open)
+				if (status_ == Open)
 					setStatus(cur, Collapsed);
 				else
 					setStatus(cur, Open);
@@ -562,7 +560,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else if (cmd.argument() == "close")
 			setStatus(cur, Collapsed);
 		else if (cmd.argument() == "toggle" || cmd.argument().empty())
-			if (internalStatus() == Open) {
+			if (status_ == Open) {
 				setStatus(cur, Collapsed);
 				if (geometry() == ButtonOnly)
 					cur.top().forwardPos();

@@ -154,10 +154,6 @@ protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	Dimension dimensionCollapsed() const;
-	///
-	Box const & buttonDim() const;
-	///
 	void edit(Cursor & cur, bool left);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
@@ -168,18 +164,14 @@ protected:
 
 protected:
 	///
-	mutable Box button_dim;
-	///
-	mutable int topx;
-	///
-	mutable int topbaseline;
-	///
 	InsetLayout const * layout_;
-	///
-	CollapseStatus internalStatus() const { return status_; }
 private:
 	///
+	Dimension dimensionCollapsed() const;
+	///
 	docstring labelstring_;
+	///
+	mutable Box button_dim;
 	///
 	mutable CollapseStatus status_;
 	/// a substatus of the Open status, determined automatically in metrics
@@ -189,9 +181,6 @@ private:
 	/// changes color when mouse enters/leaves this inset
 	bool mouse_hover_;
 };
-
-// A helper function that pushes the cursor out of the inset.
-void leaveInset(Cursor & cur, Inset const & in);
 
 } // namespace lyx
 
