@@ -94,6 +94,8 @@ What's new
 - Fix a crash when deleting a row or column of a math matrix while its
   content is selected (bug 4323).
 
+- Fix a crash when inserting a label after a math matrix (bug 4334).
+
 - Fix a crash when overwriting a selection that spans multiple paragraphs
   (bug 4317).
 
