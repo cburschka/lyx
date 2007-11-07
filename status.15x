@@ -14,6 +14,7 @@ Juergen
 [In this list, I try to group things by topic and in decreasing
 order of importance. This is, of course, subjective...]
 
+
 What's new
 ==========
 
@@ -31,7 +32,7 @@ What's new
 
 * USER INTERFACE
 
-- The way collapsable insets (foot notes, comments etc) are widen has seen
+- The way collapsable insets (footnotes, comments etc) are widen has seen
   a complete overhaul in order to speedup painting when typing within
   insets. Now these insets are widen as soon as they contain more than one
   row of text. Users of Mac/PPC and of Unixes with slow X11 server should
@@ -44,7 +45,7 @@ What's new
   (Mac and Windows only).
 
 - The behaviour of Return and M-Return has changed: they now allow to either
-  keep current paragraph and depth or to to nesting paragraph (bug 2445).
+  keep current paragraph and depth or to nesting paragraph (bug 2445).
 
 - Add the esint font to the private math fonts. This font assures a
   consistent on screen looking for all kinds of supported integral signs.
@@ -56,7 +57,15 @@ What's new
 - It is now possible to enter greek and cyrillic characters and have them
   typesetted without switching to the proper language.
 
-- Inset dissolve now works in mathed.
+- Inset-dissolve now works in mathed.
+
+- Add native Erlang support for listings (bug 4263).
+
+- The on-screen represenation of charstyle insets has been polished: they now
+  integrate better in the line. Furthermore, their label is not displayed anymore
+  by default (it can be toggled globally by "View->Open all Insets" and individually
+  by clicking the right mouse button). As a new type of information, the type of a 
+  charstyle inset is now displayed in the status bar when the mouse hovers over it.
 
 
 ** Bug fixes:
@@ -67,13 +76,11 @@ What's new
 - Fix a crash when exporting a file with a branch from the command line
   (bug 4255).
 
+- Fix LaTeX output of AMS classes when using layouts like Definition but
+  not using also Theorem (bug 4282).
+
 - Remove obsolete LaTeX preamble code that was set when a document contained
   URLs (bug 2265).
-
-- Add Erlang support for listings (bug 4263).
-
-- Fix LaTeX output when using layouts like Definition but not using
-  also Theorem (bug 4282).
 
 
 * USER INTERFACE:
@@ -87,40 +94,19 @@ What's new
 - Fix a crash when deleting a row or column of a math matrix while its
   content is selected (bug 4323).
 
-- Fix a crash when using the outline-* lfuns within mathed (bug 4330).
-
 - Fix a crash when overwriting a selection that spans multiple paragraphs
   (bug 4317).
 
-- Fix updating of externally modified files on Windows (bug 3172).
-
-- Repair wasy font such that it can also be used on Mac (bug 2326).
-
-- Fix color of some math symbols (bug 2330).
+- Fix a crash when using the outline-* lfuns within mathed (bug 4330).
 
 - Correctly adjust screen fonts after the zoom or dpi settings were changed in
   the preferences (Mac and Windows only) (bug 4268).
 
-- Check and show proper error message if configure.py fails (part of bug 2829).
-
-- Do not display the label of charstyle insets by default. Display type of
-  a charstyle inset under mouse in the status line.
-
-- Fix DraftDVI preference settings (Windows only).
+- Fix updating of externally modified files on Windows both in the workarea and
+  in the output (bug 3172).
 
 - Fix a problem on Windows where invalid names were given to backup files
   (bug 4287).
-
-- Fix problem in conversion of equations to eqnarray (when pressing C-Enter).
-
-- Fix a bug when adding a math formula column.
-
-- Fix several duplicated keyboard accelerators in the paragraph settings dialog
-  (bug 4277).
-
-- Fix math display problem with binoms (bug 4308).
-
-- Really highlight search text (bug 3999).
 
 - Fix a bug where the spellchecker didn't update the screen display on the last
   of several misspelt words (bug 3586).
@@ -128,14 +114,33 @@ What's new
 - Fix a bug where the spellchecker skipped the first misspelled word on a second
   run (bug 2218).
 
+- Fix cut and paste of tabular cells via the external clipboard (bug 4147).
+
+- Repair wasy font such that it can also be used on Mac (bug 2326).
+
+- Fix color of some math symbols (bug 2330).
+
+- Fix math display problem with binoms (bug 4308).
+
+- Fix problem in conversion of equations to eqnarray (when pressing C-Enter).
+
+- Fix a bug when adding a math formula column.
+
+- Check and show proper error message if configure.py fails (part of bug 2829).
+
+- Fix DraftDVI preference settings (Windows only).
+
+- Fix several duplicated keyboard accelerators in the paragraph settings dialog
+  (bug 4277).
+
 - Do not close the error dialog on double click (bug 4090).
 
-- Fix cut and paste of tabular cells via the external clipboard (bug 4147).
+- Really highlight search text in the find and replace dialog (bug 3999).
 
 
 * DOCUMENTATION
 
-- Fix wrong character in the User's Guide (including the translations).
+- Fix corrupted character in the User's Guide (including the translations).
 
 - Remove the example file "currency.lyx" and its German translation 
   "Waehrungen.lyx". The file is obsolete, since LyX allows direct insertion
