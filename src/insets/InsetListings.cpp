@@ -25,6 +25,7 @@
 #include "InsetList.h"
 #include "Language.h"
 #include "MetricsInfo.h"
+#include "TextClass.h"
 
 #include "support/docstream.h"
 #include "support/lstrings.h"

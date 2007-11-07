@@ -44,6 +44,7 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "TextClass.h"
 #include "TextMetrics.h"
 #include "VSpace.h"
 #include "WordLangTuple.h"

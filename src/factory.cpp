@@ -19,6 +19,7 @@
 #include "FuncRequest.h"
 #include "Lexer.h"
 #include "LyX.h"
+#include "TextClass.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"

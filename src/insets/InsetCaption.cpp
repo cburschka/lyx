@@ -31,6 +31,7 @@
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
+#include "TextClass.h"
 #include "TocBackend.h"
 
 #include "frontends/FontMetrics.h"

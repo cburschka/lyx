@@ -13,10 +13,10 @@
 #define INSETCAPTION_H
 
 #include "InsetText.h"
-#include "TextClass.h"
-
 
 namespace lyx {
+
+class TextClass;
 
 /** A caption inset
 */
