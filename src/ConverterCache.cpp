@@ -30,6 +30,7 @@
 #include <boost/crc.hpp>
 #include <boost/current_function.hpp>
 
+#include <algorithm>
 #include <fstream>
 #include <iomanip>
 #include <map>
