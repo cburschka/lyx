@@ -312,7 +312,6 @@ src_support_header_files = Split('''
     docstring.h
     environment.h
     filetools.h
-    fs_extras.h
     gzstream.h
     limited_stack.h
     lstrings.h
@@ -352,7 +351,6 @@ src_support_files = Split('''
     docstring.cpp
     environment.cpp
     filetools.cpp
-    fs_extras.cpp
     gzstream.cpp
     getcwd.cpp
     kill.cpp
@@ -494,7 +492,6 @@ src_mathed_header_files = Split('''
     InsetMathKern.h
     InsetMathLefteqn.h
     InsetMathLim.h
-    InsetMathMakebox.h
     InsetMathMatrix.h
     InsetMathNest.h
     InsetMathNumber.h
@@ -563,7 +560,6 @@ src_mathed_files = Split('''
     InsetMathKern.cpp
     InsetMathLefteqn.cpp
     InsetMathLim.cpp
-    InsetMathMakebox.cpp
     InsetMathMatrix.cpp
     InsetMathNest.cpp
     InsetMathNumber.cpp
@@ -725,7 +721,6 @@ src_frontends_controllers_tests_regfiles_extra_files = Split('''
 src_frontends_qt4_header_files = Split('''
 		../ButtonPolicy.h
 		../Dialog.h
-		../frontend_helpers.h
     Action.h
     BulletsModule.h
     ButtonController.h
@@ -815,7 +810,6 @@ src_frontends_qt4_header_files = Split('''
 src_frontends_qt4_files = Split('''
 		../ButtonPolicy.cpp
 		../Dialog.cpp
-		../frontend_helpers.cpp
     Action.cpp
     BulletsModule.cpp
     ButtonController.cpp
