@@ -31,6 +31,8 @@ extern bool LyXSetStyle();
 class TextClassList {
 public:
 	///
+	TextClassList() {}
+	///
 	typedef std::vector<TextClass> ClassList;
 	///
 	typedef ClassList::const_iterator const_iterator;
