@@ -108,7 +108,7 @@ public:
 	///by modules.
 	TextClass const & getTextClass() const;
 	///Returns a pointer to the TextClass currently in use: the BaseClass 
-	///as modified by modules. (See \file TextClass.h for the typedef.)
+	///as modified by modules. (See \file TextClassPtr.h for the typedef.)
 	TextClassPtr getTextClassPtr() const;
 	///Set the LyX TextClass---layout file---this document is using.
 	///This does NOT call makeTextClass() and so should be used with
