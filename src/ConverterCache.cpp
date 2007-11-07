@@ -213,6 +213,26 @@ CacheItem * ConverterCache::Impl::find(FileName const & from,
 }
 
 
+/////////////////////////////////////////////////////////////////////
+//
+// ConverterCache
+//
+/////////////////////////////////////////////////////////////////////
+
+ConverterCache::ConverterCache()
+	: pimpl_(new Impl)
+{}
+
+
+ConverterCache::~ConverterCache()
+{
+	if (!lyxrc.use_converter_cache)
+		return;
+	pimpl_->writeIndex();
+	delete pimpl_;
+}
+
+
 ConverterCache & ConverterCache::get()
 {
 	// Now return the cache
@@ -235,19 +255,6 @@ void ConverterCache::init()
 			exit(EXIT_FAILURE);
 		}
 	get().pimpl_->readIndex();
-}
-
-
-ConverterCache::ConverterCache()
-	: pimpl_(new Impl)
-{}
-
-
-ConverterCache::~ConverterCache()
-{
-	if (!lyxrc.use_converter_cache)
-		return;
-	pimpl_->writeIndex();
 }
 
 
