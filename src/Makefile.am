@@ -182,6 +182,7 @@ liblyxcore_la_SOURCES = \
 	LayoutEnums.h \
 	Length.cpp \
 	Length.h \
+	lengthcommon.cpp \
 	Lexer.cpp \
 	Lexer.h \
 	lfuns.h \
