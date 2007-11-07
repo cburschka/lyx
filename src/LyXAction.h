@@ -15,8 +15,6 @@
 
 #include "lfuns.h"
 
-#include <boost/noncopyable.hpp>
-
 #include <map>
 #include <string>
 
@@ -32,7 +30,7 @@ class FuncRequest;
  * dynamically, for encapsulating a real action and an
  * argument. They are used for things like the menus.
  */
-class LyXAction : boost::noncopyable {
+class LyXAction {
 public:
 	/// category of an action, used in the Shortcuts dialog
 	enum func_type {
@@ -56,6 +54,10 @@ private:
 	};
 
 public:
+	/// noncopyable
+	LyXAction(LyXAction const &);
+	void operator=(LyXAction const &);
+
 	/// type for map between a function name and its action
 	typedef std::map<std::string, kb_action> func_map;
 	/// type for map between an action and its info

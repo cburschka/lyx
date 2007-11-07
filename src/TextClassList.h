@@ -9,16 +9,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYXTEXTCLASSLIST_H
-#define LYXTEXTCLASSLIST_H
+#ifndef TEXTCLASSLIST_H
+#define TEXTCLASSLIST_H
 
 #include "TextClass.h"
 
+#include "support/strfwd.h"
 #include "support/types.h"
 
-#include <boost/noncopyable.hpp>
-
-#include <string>
 #include <vector>
 
 
@@ -30,7 +28,7 @@ class Layout;
 extern bool LyXSetStyle();
 
 ///
-class TextClassList : boost::noncopyable {
+class TextClassList {
 public:
 	///
 	typedef std::vector<TextClass> ClassList;
@@ -62,6 +60,10 @@ public:
 	addTextClass(std::string const & textclass, std::string const & path);
 
 private:
+	/// noncopyable
+	TextClassList(TextClassList const &);
+	void operator=(TextClassList const &);
+
 	///
 	mutable ClassList classlist_;
 };

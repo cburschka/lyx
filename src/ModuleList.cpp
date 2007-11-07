@@ -11,11 +11,11 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "Lexer.h"
 #include "ModuleList.h"
 
-#include "support/docstring.h"
+#include "debug.h"
+#include "Lexer.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
@@ -26,7 +26,7 @@ using std::map;
 using std::string;
 using std::vector;
 
-namespace lyx{
+namespace lyx {
 
 using support::FileName;
 using support::libFileSearch;
@@ -37,20 +37,19 @@ ModuleList moduleList;
 
 
 // used when sorting the module list.
-class moduleSorter
-	: public std::binary_function<LyXModule, LyXModule, int>
+class ModuleSorter
 {
-	public:
-		int operator()(LyXModule const & lm1,
-								 LyXModule const & lm2) const
-		{
-			return (lm1.name < lm2.name);
-		}
+public:
+	int operator()(LyXModule const & lm1, LyXModule const & lm2) const
+	{
+		return lm1.name < lm2.name;
+	}
 };
 
 
 //Much of this is borrowed from TextClassList::read()
-bool ModuleList::load() {
+bool ModuleList::load()
+{
 	support::FileName const real_file = libFileSearch("", "lyxmodules.lst");
 	LYXERR(Debug::TCLASS) << "Reading modules from `"
 			<< real_file << '\'' << endl;
@@ -120,13 +119,15 @@ bool ModuleList::load() {
 	LYXERR(Debug::TCLASS) << "End of parsing of lyxmodules.lst" << endl;
 
 	if (!moduleList.empty())
-		std::sort(moduleList.begin(), moduleList.end(), moduleSorter());
+		std::sort(moduleList.begin(), moduleList.end(), ModuleSorter());
 	return true;
 }
 
 
-void ModuleList::addLayoutModule(string moduleName, 
-		string filename, string description, vector<string> pkgs) {
+void ModuleList::addLayoutModule(string const & moduleName, 
+	string const & filename, string const & description,
+	vector<string> const & pkgs)
+{
 	LyXModule lm;
 	lm.name = moduleName;
 	lm.filename = filename;
@@ -160,7 +161,8 @@ LyXModuleList::iterator ModuleList::end()
 }
 
 
-LyXModule * ModuleList::operator[](string const str) {
+LyXModule * ModuleList::operator[](string const & str)
+{
 	LyXModuleList::iterator it = modlist_.begin();
 	for (; it != modlist_.end(); ++it)
 		if (it->name == str) {
@@ -170,4 +172,4 @@ LyXModule * ModuleList::operator[](string const str) {
 	return 0;
 }
 
-}
+} // namespace lyx
