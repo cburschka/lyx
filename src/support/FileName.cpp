@@ -89,7 +89,7 @@ static bool copy_file(std::string const & source, std::string const & target, bo
 
 	int const outfile = ::open(target.c_str(), flags, source_stat.st_mode);
 	if (outfile == -1) {
-		int err = errno;
+		//int err = errno;
 		::close(infile);
 		return false;
 	}
@@ -113,7 +113,7 @@ static bool copy_file(std::string const & source, std::string const & target, bo
 		}
 	}
 
-	int err = errno;
+	//int err = errno;
 
 	::close(infile);
 	::close(outfile);
@@ -129,7 +129,9 @@ static bool copy_file(std::string const & source, std::string const & target, bo
 		return false;
 	}
 #endif
+	return true;
 }
+
 
 namespace lyx {
 namespace support {

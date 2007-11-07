@@ -33,7 +33,7 @@ namespace std {
 
 template<typename Char> struct char_traits;
 template<> struct char_traits<char>;
-template<> struct char_traits<wchar_t>;
+template<> struct char_traits<lyx::char_type>;
 
 template<typename Alloc> class allocator;
 
