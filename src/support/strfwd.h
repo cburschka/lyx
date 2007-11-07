@@ -33,7 +33,9 @@ namespace std {
 
 template<typename Char> struct char_traits;
 template<> struct char_traits<char>;
-template<> struct char_traits<lyx::char_type>;
+#ifdef USE_WCHAR_T
+template<> struct char_traits<wchar_t>;
+#endif
 
 template<typename Alloc> class allocator;
 
