@@ -26,8 +26,8 @@
 #include "support/lyxtime.h"
 #include "support/Package.h"
 
+#include <boost/assert.hpp>
 #include <boost/crc.hpp>
-#include <boost/filesystem/operations.hpp>
 #include <boost/current_function.hpp>
 
 #include <fstream>
@@ -35,15 +35,12 @@
 #include <map>
 #include <sstream>
 
-using lyx::support::addName;
-
 using std::string;
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 
 using support::FileName;
+using support::addName;
 
 namespace {
 
@@ -402,7 +399,7 @@ bool ConverterCache::inCache(FileName const & orig_from,
 		LYXERR(Debug::FILES) << "not in cache." << std::endl;
 		return false;
 	}
-	time_t const timestamp = fs::last_write_time(orig_from.toFilesystemEncoding());
+	time_t const timestamp = orig_from.lastModified();
 	if (item->timestamp == timestamp) {
 		LYXERR(Debug::FILES) << "identical timestamp." << std::endl;
 		return true;
