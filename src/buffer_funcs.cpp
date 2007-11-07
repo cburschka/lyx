@@ -47,10 +47,7 @@
 #include "insets/InsetInclude.h"
 
 #include "support/filetools.h"
-#include "support/fs_extras.h"
 #include "support/lyxlib.h"
-
-#include <boost/bind.hpp>
 
 using std::min;
 using std::string;
@@ -216,19 +213,16 @@ depth_type getItemDepth(ParIterator const & it)
 		Paragraph & prev_par = *prev_it;
 		depth_type const prev_depth = getDepth(prev_it);
 		if (labeltype == prev_par.layout()->labeltype) {
-			if (prev_depth < min_depth) {
+			if (prev_depth < min_depth)
 				return prev_par.itemdepth + 1;
-			}
-			else if (prev_depth == min_depth) {
+			if (prev_depth == min_depth)
 				return prev_par.itemdepth;
-			}
 		}
 		min_depth = std::min(min_depth, prev_depth);
 		// small optimization: if we are at depth 0, we won't
 		// find anything else
-		if (prev_depth == 0) {
+		if (prev_depth == 0)
 			return 0;
-		}
 	}
 }
 

@@ -16,7 +16,6 @@
 
 #include "support/Path.h"
 #include "support/filetools.h"
-#include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/Systemcall.h"
 

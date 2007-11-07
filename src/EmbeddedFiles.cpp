@@ -28,7 +28,6 @@
 #include <boost/filesystem/operations.hpp>
 
 #include "support/filetools.h"
-#include "support/fs_extras.h"
 #include "support/convert.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
@@ -152,20 +151,20 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 			return true;
 	}
 	// copy file
-	try {
-		// need to make directory?
-		string path = support::onlyPath(ext_file);
-		if (!fs::is_directory(path))
-			makedir(const_cast<char*>(path.c_str()), 0755);
-		fs::copy_file(emb_file, ext_file, false);
+
+	// need to make directory?
+	string path = support::onlyPath(ext_file);
+	if (!fs::is_directory(path))
+		makedir(const_cast<char*>(path.c_str()), 0755);
+	FileName emb(emb_file);
+	FileName ext(ext_file);
+	if (emb.copyTo(ext, false))
 		return true;
-	} catch (fs::filesystem_error const & fe) {
-		Alert::error(_("Copy file failure"),
-			 bformat(_("Cannot copy file %1$s to %2$s.\n"
-				   "Please check whether the directory exists and is writeable."),
-					from_utf8(emb_file), from_utf8(ext_file)));
-		LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
-	}
+	Alert::error(_("Copy file failure"),
+		 bformat(_("Cannot copy file %1$s to %2$s.\n"
+				 "Please check whether the directory exists and is writeable."),
+				from_utf8(emb_file), from_utf8(ext_file)));
+	//LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 	return false;
 }
 
@@ -194,20 +193,19 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 			return true;
 	}
 	// copy file
-	try {
-		// need to make directory?
-		string path = support::onlyPath(emb_file);
-		if (!fs::is_directory(path))
-			makedir(const_cast<char*>(path.c_str()), 0755);
-		fs::copy_file(ext_file, emb_file, false);
+	FileName emb(emb_file);
+	FileName ext(ext_file);
+	// need to make directory?
+	string path = support::onlyPath(emb_file);
+	if (!fs::is_directory(path))
+		makedir(const_cast<char*>(path.c_str()), 0755);
+	if (ext.copyTo(emb, false))
 		return true;
-	} catch (fs::filesystem_error const & fe) {
-		Alert::error(_("Copy file failure"),
-			 bformat(_("Cannot copy file %1$s to %2$s.\n"
-				   "Please check whether the directory exists and is writeable."),
-					from_utf8(ext_file), from_utf8(emb_file)));
-		LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
-	}
+	Alert::error(_("Copy file failure"),
+		 bformat(_("Cannot copy file %1$s to %2$s.\n"
+			   "Please check whether the directory exists and is writeable."),
+				from_utf8(ext_file), from_utf8(emb_file)));
+	//LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 	return false;
 }
 
@@ -304,20 +302,19 @@ bool EmbeddedFiles::writeFile(DocFileName const & filename)
 
 	::zipFiles(zipfile.toFilesystemEncoding(), filenames);
 	// copy file back
-	try {
-		fs::copy_file(zipfile.toFilesystemEncoding(), filename.toFilesystemEncoding(), false);
-	} catch (fs::filesystem_error const & fe) {
+	if (!zipfile.copyTo(filename, false)) {
 		Alert::error(_("Save failure"),
 				 bformat(_("Cannot create file %1$s.\n"
 					   "Please check whether the directory exists and is writeable."),
 					 from_utf8(filename.absFilename())));
-		LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
+		//LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 	}
 	return true;
 }
 
 
-EmbeddedFiles::EmbeddedFileList::const_iterator EmbeddedFiles::find(std::string filename) const
+EmbeddedFiles::EmbeddedFileList::const_iterator
+EmbeddedFiles::find(std::string filename) const
 {
 	EmbeddedFileList::const_iterator it = file_list_.begin();
 	EmbeddedFileList::const_iterator it_end = file_list_.end();

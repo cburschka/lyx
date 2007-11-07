@@ -20,7 +20,6 @@
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 
-#include "support/fs_extras.h"
 #include "support/lstrings.h"
 
 #include <algorithm>

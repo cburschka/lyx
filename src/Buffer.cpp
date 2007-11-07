@@ -85,7 +85,6 @@
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/Forkedcall.h"
-#include "support/fs_extras.h"
 #include "support/gzstream.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -98,8 +97,6 @@
 #endif
 
 #include <boost/bind.hpp>
-#include <boost/filesystem/exception.hpp>
-#include <boost/filesystem/operations.hpp>
 #include <boost/shared_ptr.hpp>
 
 #include <algorithm>
@@ -153,7 +150,6 @@ using support::suffixIs;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
-namespace fs = boost::filesystem;
 
 namespace {
 
@@ -859,15 +855,14 @@ bool Buffer::save() const
 			backupName = FileName(addName(lyxrc.backupdir_path,
 						      mangledName));
 		}
-		try {
-			fs::copy_file(encodedFilename, backupName.toFilesystemEncoding(), false);
+		if (fileName().copyTo(backupName, false)) {
 			madeBackup = true;
-		} catch (fs::filesystem_error const & fe) {
+		} else {
 			Alert::error(_("Backup failure"),
 				     bformat(_("Cannot create backup file %1$s.\n"
 					       "Please check whether the directory exists and is writeable."),
 					     from_utf8(backupName.absFilename())));
-			LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
+			//LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
 		}
 	}
 

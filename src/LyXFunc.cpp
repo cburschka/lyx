@@ -88,7 +88,6 @@
 #include "support/environment.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
-#include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/Path.h"
 #include "support/Package.h"

@@ -50,8 +50,6 @@ liblyxsupport_la_SOURCES = \
 	ForkedCallQueue.h \
 	ForkedcallsController.cpp \
 	ForkedcallsController.h \
-	fs_extras.cpp \
-	fs_extras.h \
 	getcwd.cpp \
 	gzstream.cpp \
 	gzstream.h \

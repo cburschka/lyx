@@ -72,6 +72,9 @@ public:
 	/// return true when file/directory is writable (write test file)
 	bool isDirWritable() const;
 	
+	/// return true when file/directory is writable (write test file)
+	bool copyTo(FileName const & target, bool noclobber) const;
+
 	/// remove directory and all contents, returns true on success
 	bool destroyDirectory() const;
 	/// Creates directory. Returns true on success

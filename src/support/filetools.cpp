@@ -24,7 +24,6 @@
 #include "support/convert.h"
 #include "support/environment.h"
 #include "support/filetools.h"
-#include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -396,20 +395,19 @@ string const createBufferTmpDir()
 
 FileName const createLyXTmpDir(FileName const & deflt)
 {
-	if (!deflt.empty() && deflt.absFilename() != "/tmp") {
-		if (mkdir(deflt, 0777)) {
-			if (deflt.isDirWritable()) {
-				// deflt could not be created because it
-				// did exist already, so let's create our own
-				// dir inside deflt.
-				return createTmpDir(deflt, "lyx_tmpdir");
-			} else {
-				// some other error occured.
-				return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
-			}
-		} else
-			return deflt;
+	if (deflt.empty() || deflt.absFilename() == "/tmp")
+		return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
+
+	if (!mkdir(deflt, 0777)) 
+		return deflt;
+
+	if (deflt.isDirWritable()) {
+		// deflt could not be created because it
+		// did exist already, so let's create our own
+		// dir inside deflt.
+		return createTmpDir(deflt, "lyx_tmpdir");
 	} else {
+		// some other error occured.
 		return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
 	}
 }
@@ -423,7 +421,7 @@ string const onlyPath(string const & filename)
 		return filename;
 
 	// Find last / or start of filename
-	string::size_type j = filename.rfind('/');
+	size_t j = filename.rfind('/');
 	return j == string::npos ? "./" : filename.substr(0, j + 1);
 }
 
