@@ -30,6 +30,7 @@
 #include "FuncRequest.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
+#include "TextClass.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

@@ -24,6 +24,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "TocBackend.h"
+#include "TextClass.h"
 
 #include "support/lstrings.h"
 

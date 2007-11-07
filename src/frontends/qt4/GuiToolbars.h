@@ -14,7 +14,9 @@
 #ifndef GUI_TOOLBARS_H
 #define GUI_TOOLBARS_H
 
-#include "TextClass.h"
+#include "TextClassPtr.h"
+
+#include "support/docstring.h"
 
 #include <map>
 

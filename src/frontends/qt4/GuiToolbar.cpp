@@ -23,6 +23,7 @@
 #include "IconPalette.h"
 #include "Layout.h"
 #include "LyXFunc.h"
+#include "TextClass.h"
 #include "ToolbarBackend.h"
 
 #include "GuiView.h"

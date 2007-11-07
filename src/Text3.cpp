@@ -44,9 +44,10 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "ParIterator.h"
+#include "TextClass.h"
 #include "TextMetrics.h"
 #include "VSpace.h"
-#include "ParIterator.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"

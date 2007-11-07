@@ -23,6 +23,7 @@
 #include "Layout.h"
 #include "LyXAction.h"
 #include "Paragraph.h"
+#include "TextClass.h"
 
 #include "insets/InsetOptArg.h"
 

@@ -35,6 +35,7 @@
 #include "OutputParams.h"
 #include "paragraph_funcs.h"
 #include "sgml.h"
+#include "TextClass.h"
 #include "TexRow.h"
 #include "VSpace.h"
 

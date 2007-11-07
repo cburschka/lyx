@@ -23,6 +23,7 @@
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "TextClass.h"
 
 #include "frontends/alert.h"
 
@@ -306,7 +307,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		// all well
 		if (!contains(buffer.params().getTextClass().name(),
 			      "art")) {
-			if (buffer.params().sides == TextClass::OneSide) {
+			if (buffer.params().sides == OneSide) {
 				// oneside
 				os << "\\clearpage";
 			} else {

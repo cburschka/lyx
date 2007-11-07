@@ -23,6 +23,7 @@
 // paragraph. This seems a bit too much to me (JMarc)
 #include "OutputParams.h"
 #include "ParIterator.h"
+#include "TextClass.h"
 
 #include "support/lstrings.h"
 

@@ -259,6 +259,7 @@ liblyxcore_la_SOURCES = \
 	TextClass.h \
 	TextClassList.cpp \
 	TextClassList.h \
+	TextClassPtr.h \
 	TextMetrics.cpp \
 	TextMetrics.h \
 	TocBackend.cpp \

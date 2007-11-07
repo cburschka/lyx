@@ -20,6 +20,7 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "Text.h"
+#include "TextClass.h"
 
 #include <boost/next_prior.hpp>
 

@@ -14,7 +14,6 @@
 #define INSETFLEX_H
 
 #include "InsetCollapsable.h"
-#include "TextClass.h"
 
 
 namespace lyx {

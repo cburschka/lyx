@@ -90,6 +90,14 @@ namespace lyx {
 		NEXT_WORD
 	};
 
+	///
+	enum PageSides {
+		///
+		OneSide,
+		///
+		TwoSides
+	};
+
 } // namespace lyx
 
 #endif // LYX_TYPES_H

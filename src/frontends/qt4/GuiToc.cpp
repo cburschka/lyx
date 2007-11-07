@@ -29,6 +29,7 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "gettext.h"
+#include "TextClass.h"
 
 #include "frontends/LyXView.h"
 

@@ -1244,9 +1244,9 @@ void GuiDocument::apply(BufferParams & params)
 		pageLayoutModule->paperheightUnitCO);
 
 	if (pageLayoutModule->facingPagesCB->isChecked())
-		params.sides = TextClass::TwoSides;
+		params.sides = TwoSides;
 	else
-		params.sides = TextClass::OneSide;
+		params.sides = OneSide;
 
 	if (pageLayoutModule->landscapeRB->isChecked())
 		params.orientation = ORIENTATION_LANDSCAPE;
@@ -1541,7 +1541,7 @@ void GuiDocument::updateParams(BufferParams const & params)
 	pageLayoutModule->portraitRB->setChecked(!landscape);
 
 	pageLayoutModule->facingPagesCB->setChecked(
-		params.sides == TextClass::TwoSides);
+		params.sides == TwoSides);
 
 
 	lengthToWidgets(pageLayoutModule->paperwidthLE,

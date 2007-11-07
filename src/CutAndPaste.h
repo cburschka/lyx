@@ -14,7 +14,7 @@
 #ifndef CUTANDPASTE_H
 #define CUTANDPASTE_H
 
-#include "TextClass.h"
+#include "TextClassPtr.h"
 
 #include "support/types.h"
 #include "support/docstring.h"
@@ -26,7 +26,6 @@ namespace lyx {
 class Buffer;
 class ErrorList;
 class InsetText;
-class TextClass;
 class Cursor;
 class ParagraphList;
 

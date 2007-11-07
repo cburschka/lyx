@@ -18,6 +18,7 @@
 #include "insets/InsetLayout.h"
 
 #include "support/docstring.h"
+#include "support/types.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -140,13 +141,6 @@ public:
 	///
 	unsigned int columns() const;
 	///
-	enum PageSides {
-		///
-		OneSide,
-		///
-		TwoSides
-	};
-	///
 	PageSides sides() const;
 	///
 	int secnumdepth() const;
@@ -261,14 +255,7 @@ private:
 
 
 /// convert page sides option to text 1 or 2
-std::ostream & operator<<(std::ostream & os, TextClass::PageSides p);
-
-/** Shared pointer for possibly modular layout. Needed so that paste,
- *  for example, will still be able to retain the pointer, even when
- *  the buffer itself is closed.
- */
-typedef boost::shared_ptr<TextClass> TextClassPtr;
-
+std::ostream & operator<<(std::ostream & os, PageSides p);
 
 } // namespace lyx
 

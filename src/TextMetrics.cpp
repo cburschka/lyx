@@ -40,6 +40,7 @@
 #include "ParIterator.h"
 #include "rowpainter.h"
 #include "Text.h"
+#include "TextClass.h"
 #include "VSpace.h"
 
 #include "mathed/MacroTable.h"

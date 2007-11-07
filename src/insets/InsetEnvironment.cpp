@@ -18,6 +18,7 @@
 #include "OutputParams.h"
 #include "output_latex.h"
 #include "TexRow.h"
+#include "TextClass.h"
 
 
 namespace lyx {

@@ -23,6 +23,7 @@
 #include "Lexer.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
+#include "TextClass.h"
 
 #include "support/lstrings.h"
 #include "support/docstream.h"

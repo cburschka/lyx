@@ -195,13 +195,13 @@ PaperOrientationTranslator const & paperorientationtranslator()
 
 
 // Page sides
-typedef Translator<int, TextClass::PageSides> SidesTranslator;
+typedef Translator<int, PageSides> SidesTranslator;
 
 
 SidesTranslator const init_sidestranslator()
 {
-	SidesTranslator translator(1, TextClass::OneSide);
-	translator.addPair(2, TextClass::TwoSides);
+	SidesTranslator translator(1, OneSide);
+	translator.addPair(2, TwoSides);
 	return translator;
 }
 
@@ -352,7 +352,7 @@ BufferParams::BufferParams()
 	fontsTypewriterScale = 100;
 	inputenc = "auto";
 	graphicsDriver = "default";
-	sides = TextClass::OneSide;
+	sides = OneSide;
 	columns = 1;
 	listings_params = string();
 	pagestyle = "default";
@@ -863,10 +863,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// if needed
 	if (sides != tclass.sides()) {
 		switch (sides) {
-		case TextClass::OneSide:
+		case OneSide:
 			clsoptions << "oneside,";
 			break;
-		case TextClass::TwoSides:
+		case TwoSides:
 			clsoptions << "twoside,";
 			break;
 		}

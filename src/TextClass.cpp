@@ -1181,7 +1181,7 @@ docstring const & TextClass::preamble() const
 }
 
 
-TextClass::PageSides TextClass::sides() const
+PageSides TextClass::sides() const
 {
 	return sides_;
 }
@@ -1253,13 +1253,13 @@ bool TextClass::hasTocLevels() const
 }
 
 
-ostream & operator<<(ostream & os, TextClass::PageSides p)
+ostream & operator<<(ostream & os, PageSides p)
 {
 	switch (p) {
-	case TextClass::OneSide:
+	case OneSide:
 		os << '1';
 		break;
-	case TextClass::TwoSides:
+	case TwoSides:
 		os << '2';
 		break;
 	}

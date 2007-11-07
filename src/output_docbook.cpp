@@ -25,6 +25,7 @@
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
+#include "TextClass.h"
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"

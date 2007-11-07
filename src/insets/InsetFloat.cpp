@@ -28,6 +28,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "OutputParams.h"
+#include "TextClass.h"
 
 #include "support/lstrings.h"
 #include "support/docstream.h"

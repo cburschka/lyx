@@ -35,6 +35,7 @@
 #include "LyXFunc.h"
 #include "Lexer.h"
 #include "Paragraph.h"
+#include "TextClass.h"
 #include "TocBackend.h"
 #include "ToolbarBackend.h"
 

@@ -24,6 +24,7 @@
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "TextClass.h"
 #include "TexRow.h"
 #include "VSpace.h"
 

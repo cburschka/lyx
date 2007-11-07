@@ -26,6 +26,7 @@
 #include "Layout.h"
 #include "Lexer.h"
 #include "LyXRC.h"
+#include "TextClass.h"
 
 #include "support/docstream.h"
 #include "support/filetools.h"

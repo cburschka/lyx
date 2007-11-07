@@ -43,6 +43,7 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
+#include "TextClass.h"
 #include "TextMetrics.h"
 
 #include "support/convert.h"

@@ -18,7 +18,7 @@
 #include "Font.h"
 #include "BiblioInfo.h"
 #include "paper.h"
-#include "TextClass.h"
+#include "TextClassPtr.h"
 
 #include "insets/InsetQuotes.h"
 
@@ -34,13 +34,14 @@ class AuthorList;
 class BranchList;
 class Bullet;
 class Encoding;
+class Language;
 class Lexer;
 class LatexFeatures;
+class PDFOptions;
 class Spacing;
+class TextClass;
 class TexRow;
 class VSpace;
-class Language;
-class PDFOptions;
 
 /** Buffer parameters.
  *  This class contains all the parameters for this buffer's use. Some
@@ -222,7 +223,7 @@ public:
 	/// parameters for the listings package
 	std::string listings_params;
 	///
-	TextClass::PageSides sides;
+	PageSides sides;
 	///
 	std::string pagestyle;
 	/// \param index should lie in the range 0 <= \c index <= 3.

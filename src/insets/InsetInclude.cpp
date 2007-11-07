@@ -32,6 +32,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "TocBackend.h"
+#include "TextClass.h"
 
 #include "frontends/alert.h"
 #include "frontends/Painter.h"

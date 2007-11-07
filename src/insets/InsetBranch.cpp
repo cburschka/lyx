@@ -24,6 +24,7 @@
 #include "gettext.h"
 #include "Lexer.h"
 #include "OutputParams.h"
+#include "TextClass.h"
 
 #include <sstream>
 
