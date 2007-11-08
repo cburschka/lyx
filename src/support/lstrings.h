@@ -266,39 +266,6 @@ docstring const externalLineEnding(docstring const & str);
 docstring const internalLineEnding(docstring const & str);
 
 
-#ifdef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
-
-#include <boost/format.hpp>
-
-template<class Arg1>
-docstring bformat(docstring const & fmt, Arg1 arg1)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1).str();
-}
-
-
-template<class Arg1, class Arg2>
-docstring bformat(docstring const & fmt, Arg1 arg1, Arg2 arg2)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1 % arg2).str();
-}
-
-
-template<class Arg1, class Arg2, class Arg3>
-docstring bformat(docstring const & fmt, Arg1 arg1, Arg2 arg2, Arg3 arg3)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1 % arg2 % arg3).str();
-}
-
-
-template<class Arg1, class Arg2, class Arg3, class Arg4>
-docstring bformat(docstring const & fmt, Arg1 arg1, Arg2 arg2, Arg3 arg3, Arg4 arg4)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1 % arg2 % arg3 % arg4).str();
-}
-
-#else
-
 template <class Arg1>
 docstring bformat(docstring const & fmt, Arg1);
 
@@ -311,7 +278,6 @@ docstring bformat(docstring const & fmt, Arg1, Arg2, Arg3);
 template <class Arg1, class Arg2, class Arg3, class Arg4>
 docstring bformat(docstring const & fmt, Arg1, Arg2, Arg3, Arg4);
 
-#endif
 
 } // namespace support
 } // namespace lyx
