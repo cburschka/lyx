@@ -29,9 +29,9 @@ namespace frontend {
 GuiFloat::GuiFloat(LyXView & lv)
 	: GuiDialog(lv, "float")
 {
+	setupUi(this);
 	setViewTitle(_("Float Settings"));
 
-	setupUi(this);
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
