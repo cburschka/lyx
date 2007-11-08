@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -3645,44 +3645,6 @@ Esc
  Das ist gut, wenn ein Punkt oder ein Komma folgt; wenn Sie aber ein Wort
  nach einer Formel schreiben möchten, dann müssen Sie explizit ein Leerzeichen
  eingeben.
-\end_layout
-
-\begin_layout Standard
-Damit Sie nicht aus Versehen 
-\begin_inset Quotes gld
-\end_inset
-
-
-\begin_inset Formula $f=ma$
-\end_inset
-
-ist meine liebste Gleichung
-\begin_inset Quotes grd
-\end_inset
-
- anstelle von 
-\begin_inset Quotes gld
-\end_inset
-
-
-\begin_inset Formula $f=ma$
-\end_inset
-
- ist meine liebste Gleichung
-\begin_inset Quotes grd
-\end_inset
-
- schreiben, gibt es eine kleine Besonderheit: Befindet sich der Cursor wirklich
- am Ende eines Ausdruckes im Mathematik-Editor, dann genügt als Abkürzung
- das Drücken der 
-\family sans
-Leerzeichen
-\family default
--Taste, um den Mathematikeditor zu verlassen 
-\emph on
-und
-\emph default
- ein Leerzeichen zu setzen.
 \end_layout
 
 \begin_layout Section
