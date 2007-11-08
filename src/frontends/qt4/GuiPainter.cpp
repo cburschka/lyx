@@ -127,7 +127,7 @@ QColor GuiPainter::filterColor(QColor const & col)
 	QColor const & max = monochrome_max_.top();
 			
 	qreal v = col.valueF();
-	v = v * v; // make it a bit steeper (i.e. darker)
+	v *= v; // make it a bit steeper (i.e. darker)
 		
 	qreal minr, ming, minb;
 	qreal maxr, maxg, maxb;
@@ -135,7 +135,10 @@ QColor GuiPainter::filterColor(QColor const & col)
 	max.getRgbF(&maxr, &maxg, &maxb);
 			
 	QColor c;
-	c.setRgbF(v*minr+(1-v)*maxr, v*ming+(1-v)*maxg, v*minb+(1-v)*maxb);
+	c.setRgbF(
+		v * (minr - maxr) + maxr,
+		v * (ming - maxg) + maxg,
+		v * (minb - maxb) + maxb);
 	return c;
 }
 
