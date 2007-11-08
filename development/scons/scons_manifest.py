@@ -364,7 +364,6 @@ src_support_files = Split('''
     rename.cpp
     socktools.cpp
     tempname.cpp
-    textutils.cpp
     unicode.cpp
     unlink.cpp
     userinfo.cpp
