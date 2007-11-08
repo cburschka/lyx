@@ -15,8 +15,9 @@
 
 #include "debug.h"
 
-#include <climits>
+#include <boost/assert.hpp>
 
+#include <climits>
 #include <vector>
 #include <string>
 

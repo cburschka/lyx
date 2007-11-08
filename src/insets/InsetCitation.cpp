@@ -24,9 +24,6 @@
 
 #include <algorithm>
 
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/exception.hpp>
-
 
 namespace lyx {
 
@@ -42,9 +39,6 @@ using support::tokenPos;
 using std::endl;
 using std::string;
 using std::vector;
-
-namespace fs = boost::filesystem;
-
 
 namespace {
 
@@ -164,19 +158,10 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	for (vector<FileName>::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
 		FileName const f = *it;
-		try {
-			std::time_t lastw = f.lastModified();
-			if (lastw != bibfileStatus[f]) {
-				changed = true;
-				bibfileStatus[f] = lastw;
-			}
-		}
-		catch (fs::filesystem_error & fserr) {
+		std::time_t lastw = f.lastModified();
+		if (lastw != bibfileStatus[f]) {
 			changed = true;
-			lyxerr << "Couldn't find or read bibtex file "
-			       << f << endl;
-			LYXERR(Debug::DEBUG) << "Fs error: "
-					     << fserr.what() << endl;
+			bibfileStatus[f] = lastw;
 		}
 	}
 
@@ -422,9 +407,8 @@ docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 	}
 
 	// Fallback to fail-safe
-	if (label.empty()) {
+	if (label.empty())
 		label = getBasicLabel(getParam("key"), after);
-	}
 
 	return label;
 }

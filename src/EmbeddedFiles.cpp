@@ -132,11 +132,14 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	string ext_file = absFilename();
 	string emb_file = embeddedFile(buf);
 
-	if (!fs::exists(emb_file))
+	FileName emb(emb_file);
+	FileName ext(ext_file);
+
+	if (!emb.exists())
 		return false;
 
 	// if external file already exists ...
-	if (fs::exists(ext_file)) {
+	if (ext.exists()) {
 		// no need to copy if the files are the same
 		if (sum(*this) == sum(FileName(emb_file)))
 			return true;
@@ -156,8 +159,6 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	string path = support::onlyPath(ext_file);
 	if (!fs::is_directory(path))
 		makedir(const_cast<char*>(path.c_str()), 0755);
-	FileName emb(emb_file);
-	FileName ext(ext_file);
 	if (emb.copyTo(ext, false))
 		return true;
 	Alert::error(_("Copy file failure"),
@@ -174,11 +175,14 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 	string ext_file = absFilename();
 	string emb_file = embeddedFile(buf);
 
-	if (!fs::exists(ext_file))
+	FileName emb(emb_file);
+	FileName ext(ext_file);
+
+	if (!ext.exists())
 		return false;
 	
 	// if embedded file already exists ...
-	if (fs::exists(emb_file)) {
+	if (emb.exists()) {
 		// no need to copy if the files are the same
 		if (sum(*this) == sum(FileName(emb_file)))
 			return true;
@@ -193,8 +197,6 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 			return true;
 	}
 	// copy file
-	FileName emb(emb_file);
-	FileName ext(ext_file);
 	// need to make directory?
 	string path = support::onlyPath(emb_file);
 	if (!fs::is_directory(path))

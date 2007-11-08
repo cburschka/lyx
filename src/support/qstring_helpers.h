@@ -14,10 +14,7 @@
 
 #include "support/docstring.h"
 
-#include <QChar>
 #include <QString>
-
-#include <boost/assert.hpp>
 
 namespace lyx {
 
@@ -50,34 +47,6 @@ inline bool is_utf16(char_type c)
 {
 	// 0xd800 ... 0xdfff is the range of surrogate pairs.
 	return c < 0xd800 || (c > 0xdfff && c < 0x10000);
-}
-
-
-/**
- * Convert a QChar into a UCS4 character.
- * This is a hack (it does only make sense for the common part of the UCS4
- * and UTF16 encodings) and should not be used.
- * This does only exist because of performance reasons (a real conversion
- * using iconv is too slow on windows).
- */
-inline char_type qchar_to_ucs4(QChar const & qchar)
-{
-	BOOST_ASSERT(is_utf16(static_cast<char_type>(qchar.unicode())));
-	return static_cast<char_type>(qchar.unicode());
-}
-
-
-/**
- * Convert a UCS4 character into a QChar.
- * This is a hack (it does only make sense for the common part of the UCS4
- * and UTF16 encodings) and should not be used.
- * This does only exist because of performance reasons (a real conversion
- * using iconv is too slow on windows).
- */
-inline QChar const ucs4_to_qchar(char_type const ucs4)
-{
-	BOOST_ASSERT(is_utf16(ucs4));
-	return QChar(static_cast<unsigned short>(ucs4));
 }
 
 

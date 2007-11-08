@@ -78,7 +78,6 @@ liblyxsupport_la_SOURCES = \
 	Systemcall.cpp \
 	Systemcall.h \
 	tempname.cpp \
-	textutils.cpp \
 	textutils.h \
 	Translator.h \
 	Timeout.cpp \

@@ -20,10 +20,26 @@
 
 #include "support/unicode.h"
 
+#include <boost/assert.hpp>
+
 using std::string;
 
 namespace lyx {
 namespace frontend {
+
+/**
+ * Convert a UCS4 character into a QChar.
+ * This is a hack (it does only make sense for the common part of the UCS4
+ * and UTF16 encodings) and should not be used.
+ * This does only exist because of performance reasons (a real conversion
+ * using iconv is too slow on windows).
+ */
+static inline QChar const ucs4_to_qchar(char_type const ucs4)
+{
+	BOOST_ASSERT(is_utf16(ucs4));
+	return QChar(static_cast<unsigned short>(ucs4));
+}
+
 
 // Caution: When using ucs4_to_qchar() in these methods, this is no
 // real conversion but a simple cast in reality. This is the reason
@@ -223,7 +239,7 @@ int GuiFontMetrics::width(char_type c) const
 	if (is_utf16(c))
 		value = metrics_.width(ucs4_to_qchar(c));
 	else
-		value = metrics_.width(toqstr(docstring(1,c)));
+		value = metrics_.width(toqstr(docstring(1, c)));
 
 	width_cache_.insert(c, value);
 

@@ -12,20 +12,16 @@
 #include <config.h>
 
 #include "support/lstrings.h"
+
 #include "support/lyxlib.h"
 #include "support/convert.h"
 #include "support/qstring_helpers.h"
+#include "support/textutils.h"
 
 #include "debug.h"
 
 #include <boost/tokenizer.hpp>
 #include <boost/assert.hpp>
-
-#ifndef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
-#if USE_BOOST_FORMAT
-#include <boost/format.hpp>
-#endif
-#endif
 
 #include <cctype>
 #include <cstdlib>
@@ -46,6 +42,115 @@ using std::toupper;
 
 
 namespace lyx {
+
+/**
+ * Convert a QChar into a UCS4 character.
+ * This is a hack (it does only make sense for the common part of the UCS4
+ * and UTF16 encodings) and should not be used.
+ * This does only exist because of performance reasons (a real conversion
+ * using iconv is too slow on windows).
+ */
+static inline char_type qchar_to_ucs4(QChar const & qchar)
+{
+	BOOST_ASSERT(is_utf16(static_cast<char_type>(qchar.unicode())));
+	return static_cast<char_type>(qchar.unicode());
+}
+
+
+/**
+ * Convert a UCS4 character into a QChar.
+ * This is a hack (it does only make sense for the common part of the UCS4
+ * and UTF16 encodings) and should not be used.
+ * This does only exist because of performance reasons (a real conversion
+ * using iconv is too slow on windows).
+ */
+static inline QChar const ucs4_to_qchar(char_type const ucs4)
+{
+	BOOST_ASSERT(is_utf16(ucs4));
+	return QChar(static_cast<unsigned short>(ucs4));
+}
+
+
+namespace {
+	/// Maximum valid UCS4 code point
+	char_type const ucs4_max = 0x10ffff;
+}
+
+
+bool isLetterChar(char_type c)
+{
+	if (!is_utf16(c)) {
+		if (c > ucs4_max)
+			// outside the UCS4 range
+			return false;
+		// assume that all non-utf16 characters are letters
+		return true;
+	}
+	return ucs4_to_qchar(c).isLetter();
+}
+
+
+bool isAlphaASCII(char_type c)
+{
+	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+}
+
+
+bool isPrintable(char_type c)
+{
+	if (!is_utf16(c)) {
+		if (c > ucs4_max)
+			// outside the UCS4 range
+			return false;
+		// assume that all non-utf16 characters are printable
+		return true;
+	}
+	return ucs4_to_qchar(c).isPrint();
+}
+
+
+bool isPrintableNonspace(char_type c)
+{
+	if (!is_utf16(c)) {
+		if (c > ucs4_max)
+			// outside the UCS4 range
+			return false;
+		// assume that all non-utf16 characters are printable and
+		// no space
+		return true;
+	}
+	QChar const qc = ucs4_to_qchar(c);
+	return qc.isPrint() && !qc.isSpace();
+}
+
+
+bool isSpace(char_type c)
+{
+	if (!is_utf16(c)) {
+		// assume that no non-utf16 character is a space
+		// c outside the UCS4 range is catched as well
+		return false;
+	}
+	QChar const qc = ucs4_to_qchar(c);
+	return qc.isSpace();
+}
+
+
+bool isDigit(char_type c)
+{
+	if (!is_utf16(c))
+		// assume that no non-utf16 character is a digit
+		// c outside the UCS4 range is catched as well
+		return false;
+	return ucs4_to_qchar(c).isDigit();
+}
+
+
+bool isDigitASCII(char_type c)
+{
+	return '0' <= c && c <= '9';
+}
+
 namespace support {
 
 int compare_no_case(docstring const & s, docstring const & s2)
@@ -728,7 +833,7 @@ docstring const doSplit(docstring const & a, docstring & piece, Char delim)
 	return tmp;
 }
 
-}
+} // anon
 
 
 string const split(string const & a, string & piece, char delim)
@@ -832,7 +937,7 @@ getVectorFromStringT(String const & str, String const & delim)
 #endif
 }
 
-}
+} // anon
 
 
 vector<string> const getVectorFromString(string const & str,
@@ -901,81 +1006,6 @@ docstring const internalLineEnding(docstring const & str)
 	return subst(s, '\r', '\n');
 }
 
-
-#ifndef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
-#if USE_BOOST_FORMAT
-
-template<>
-docstring bformat(docstring const & fmt, int arg1)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1).str();
-}
-
-
-template<>
-docstring bformat(docstring const & fmt, long arg1)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1).str();
-}
-
-
-template<>
-docstring bformat(docstring const & fmt, unsigned int arg1)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1).str();
-}
-
-
-template<>
-docstring bformat<docstring>(docstring const & fmt, docstring arg1)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1).str();
-}
-
-
-template<>
-docstring bformat(docstring const & fmt, char * arg1)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1).str();
-}
-
-
-template<>
-docstring bformat(docstring const & fmt, int arg1, int arg2)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1 % arg2).str();
-}
-
-
-template<>
-docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1 % arg2).str();
-}
-
-
-template<>
-docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1 % arg2).str();
-}
-
-
-template<>
-docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1 % arg2 % arg3).str();
-}
-
-
-template<>
-docstring bformat(docstring const & fmt,
-	       docstring arg1, docstring arg2, docstring arg3, docstring arg4)
-{
-	return (boost::basic_format<char_type>(fmt) % arg1 % arg2 % arg3 % arg4).str();
-}
-
-#else
 
 template<>
 docstring bformat(docstring const & fmt, int arg1)
@@ -1082,9 +1112,6 @@ docstring bformat(docstring const & fmt,
 	str = subst(str, lyx::from_ascii("%4$s"), arg4);
 	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
 }
-
-#endif
-#endif
 
 } // namespace support
 } // namespace lyx
