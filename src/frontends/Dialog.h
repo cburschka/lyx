@@ -14,8 +14,7 @@
 
 #include "lfuns.h"
 
-#include "support/docstring.h"
-#include <string>
+#include "support/strfwd.h"
 
 namespace lyx {
 

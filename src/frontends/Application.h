@@ -8,14 +8,14 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYX_APPLICATION_H
-#define LYX_APPLICATION_H
+#ifndef APPLICATION_H
+#define APPLICATION_H
 
 #include "ColorCode.h"
 
-#include <boost/function.hpp>
+#include "support/strfwd.h"
 
-#include <string>
+#include <boost/function.hpp>
 
 namespace lyx {
 
@@ -243,4 +243,4 @@ frontend::Application * createApplication(int & argc, char * argv[]);
 } // namespace lyx
 
 
-#endif // LYX_APPLICATION_H
+#endif // APPLICATION_H
