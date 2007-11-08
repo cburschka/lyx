@@ -339,6 +339,15 @@ odocstream & operator<<(odocstream & os, SetEnc e)
 	return os;
 }
 
+
+#if ! defined(USE_WCHAR_T)
+odocstream & operator<<(odocstream & os, char c)
+{
+	os.put(c);
+	return os;
+}
+#endif
+
 }
 
 #if ! defined(USE_WCHAR_T) && defined(__GNUC__)

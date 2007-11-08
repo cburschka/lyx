@@ -70,13 +70,6 @@ typedef std::basic_istringstream<char_type> idocstringstream;
 /// UCS4 output stringstream
 typedef std::basic_ostringstream<char_type> odocstringstream;
 
-inline
-odocstream & operator<<(odocstream & os, char c)
-{
-    os.put(c);
-    return os;
-}
-
 /// Helper struct for changing stream encoding
 struct SetEnc {
 	SetEnc(std::string const & e) : encoding(e) {}

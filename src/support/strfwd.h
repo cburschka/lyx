@@ -1,14 +1,14 @@
 // -*- C++ -*-
-
-// Heavily inspired by /usr/include/c++/4.1/bits
-//
-// Copyright (C) 2001, 2002 Free Software Foundation, Inc.
-//
-// This file is part of the GNU ISO C++ Library.  This library is free
-// software; you can redistribute it and/or modify it under the
-// terms of the GNU General Public License as published by the
-// Free Software Foundation; either version 2, or (at your option)
-// any later version.
+/**
+ * \file strfwd.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ * \author Enrico Forestieri
+ *
+ * Full author contact details are available in file CREDITS.
+ */
 
 #ifndef STRFWD_H
 #define STRFWD_H
@@ -28,43 +28,22 @@ namespace lyx { typedef boost::uint32_t char_type; }
 
 #endif
 
-
-namespace std {
-
-template<typename Char> struct char_traits;
-template<> struct char_traits<char>;
-#ifdef USE_WCHAR_T
-template<> struct char_traits<wchar_t>;
-#endif
-
-template<typename Alloc> class allocator;
-
-template<typename Char, typename Traits, typename Alloc> class basic_string;
-
-typedef basic_string<char, char_traits<char>, allocator<char> > string;
-
-template<class Char, class Traits> class basic_istream;
-template<class Char, class Traits> class basic_ostream;
-
-typedef basic_istream<char, char_traits<char> > istream;
-typedef basic_ostream<char, char_traits<char> > ostream;
-
-}
-
+#include<iosfwd>
 
 namespace lyx {
 
-typedef std::basic_string<char_type, std::char_traits<char_type>,
-	std::allocator<char_type> > docstring;
+/// String type for storing the main text in UCS4 encoding
+typedef std::basic_string<char_type> docstring;
 
 /// Base class for UCS4 input streams
-typedef std::basic_istream<char_type, std::char_traits<char_type> >
-	idocstream;
+typedef std::basic_istream<char_type> idocstream;
 
 /// Base class for UCS4 output streams
-typedef std::basic_ostream<char_type, std::char_traits<char_type> >
-	odocstream;
+typedef std::basic_ostream<char_type> odocstream;
 
+#if ! defined(USE_WCHAR_T)
+extern odocstream & operator<<(odocstream &, char);
+#endif
 
 } // namespace lyx
 
