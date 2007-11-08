@@ -59,9 +59,16 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
 		if (mathMacro_.editing()) {
+			// The only way a ArgumentProxy can appear is in a cell of the 
+			// MathMacro. Moreover the cells are only drawn in the DISPLAY_FOLDED 
+			// mode and then, in the case of "editing_ == true" the monochrome 
+			// mode is entered by the MathMacro before calling the cells' draw
+			// method. Then eventually this code is reached and the proxy leaves
+			// monochrome mode temporarely. Hence, if it is not in monochrome 
+			// here (and the assert triggers in pain.leaveMonochromeMode()) 
+			// it's a bug.
 			pi.pain.leaveMonochromeMode();
 			mathMacro_.cell(idx_).draw(pi, x, y);
-			// FIXME: use real min/max colors here, not necessarely the ones of MathMacro are set
 			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
 		} else {
 			if (def_.empty())
