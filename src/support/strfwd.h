@@ -28,23 +28,23 @@ namespace lyx { typedef boost::uint32_t char_type; }
 
 #endif
 
-#include<iosfwd>
+#include <iosfwd>
 
-#ifdef  _MSC_VER
-namespace std {
+// We have to forward declare the string type as not all compilers
+// do that in the iosfwd header.
+namespace std
+{
+
 template<typename Char, typename Traits, typename Alloc> class basic_string;
 typedef basic_string<char, char_traits<char>, allocator<char> > string;
+
 }
-#endif
 
 namespace lyx {
 
 /// String type for storing the main text in UCS4 encoding
-#ifdef  _MSC_VER
-typedef std::basic_string<char_type, std::char_traits<char_type>, std::allocator<char_type> > docstring;
-#else
-typedef std::basic_string<char_type> docstring;
-#endif
+typedef std::basic_string<char_type, std::char_traits<char_type>,
+	std::allocator<char_type> > docstring;
 
 /// Base class for UCS4 input streams
 typedef std::basic_istream<char_type> idocstream;
