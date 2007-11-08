@@ -194,6 +194,7 @@ ToolbarSet
 
 	Toolbar "math_panels" "Math Panels"
 		PopupMenu "space" "Math Spacings"
+		PopupMenu "phantom" "Placeholders"
 		PopupMenu "style" "Styles"
 		PopupMenu "frac-square" "Fractions"
 		PopupMenu "font" "Fonts"
@@ -258,6 +259,12 @@ ToolbarSet
 		Item "Negative space	\\!" "math-insert \!"
 	End
 	
+	Toolbar "phantom" "Placeholders"
+		Item "Placeholder	\\phantom" "math-insert \phantom"
+		Item "Horizontal placeholder	\\hphantom" "math-insert \hphantom"
+		Item "Vertical placeholder	\\vphantom" "math-insert \vphantom"
+	End
+	
 	Toolbar "sqrt-square" "Roots"
 		Item "Square root	\\sqrt" "math-insert \sqrt"
 		Item "Other root	\\root" "math-insert \root"
@@ -272,11 +279,11 @@ ToolbarSet
 	
 	Toolbar "frac-square" "Fractions"
 		Item "Standard	\\frac" "math-insert \frac"
-		Item "No hor. line	\\atop" "math-insert \atop"
-		Item "Nice	\\nicefrac" "math-insert \nicefrac"
-		Item "Text frac (amsmath)	\\tfrac" "math-insert \tfrac"
-		Item "Display frac (amsmath)	\\dfrac" "math-insert \dfrac"
-		Item "Binomial	\\choose"  "math-insert \choose"
+		Item "No horizontal line	\\atop" "math-insert \atop"
+		Item "Nice fraction (3/4)	\\nicefrac" "math-insert \nicefrac"
+		Item "Text fraction (amsmath)	\\tfrac" "math-insert \tfrac"
+		Item "Display fraction (amsmath)	\\dfrac" "math-insert \dfrac"
+		Item "Binomial	\\choose" "math-insert \choose"
 	End
 	
 	Toolbar "font" "Fonts"
