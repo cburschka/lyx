@@ -1,10 +1,61 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
-\textclass book
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
+  {\usepackage[scaled=0.92]{helvet}
+    \usepackage{mathptmx}
+    \usepackage{courier} }
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={Introduction à LyX},pdfsubject={Documentation Introduction},
+  pdfkeywords={LyX, documentation}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Table des matières}{}
+   \myTOC
+   \cleardoublepage
+   \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+\end_preamble
 \language french
-\inputencoding latin1
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -14,7 +65,7 @@
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
@@ -23,16 +74,19 @@
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\secnumdepth 2
+\secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language french
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -65,15 +119,8 @@ par l'Équipe LyX
 status collapsed
 
 \begin_layout Standard
-Le principal responsable de la rédaction de ce fichier est 
-\noun on
-John Weiss
-\noun default
-.
- Merci d'envoyer vos commentaires et corrections à la liste de diffusion
- de la documentation de LyX,
-\family default
- 
+Merci d'envoyer vos commentaires et corrections à la liste de diffusion
+ de la documentation de LyX, 
 \family typewriter
 <lyx-docs@lists.lyx.org>
 \family default
@@ -105,7 +152,7 @@ Denis
 \noun on
 Valdenaire
 \noun default
- et 
+, 
 \noun on
 Adrien
 \noun default
@@ -113,17 +160,21 @@ Adrien
 \noun on
 Rebollo
 \noun default
-
-\family default
  
 \family typewriter
 <adrien.rebollo@gmx.fr>
 \family default
+ et 
+\noun on
+Siegfried Meunier-Guttin-Cluzel
+\noun default
+ 
+\family typewriter
+<meunier@coria.fr>
+\family default
 .
  Merci d'envoyer vos commentaires et corrections sur la traduction à cette
- dernière adresse, ou à la liste de diffusion de LyX en français
-\family default
- 
+ dernière adresse, ou à la liste de diffusion de LyX en français 
 \family typewriter
 <lyx-fr@lists.lyx.org>
 \family default
@@ -137,16 +188,17 @@ Rebollo
 
 \begin_layout Standard
 \begin_inset LatexCommand tableofcontents
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 La philosophie de LyX
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Qu'est-ce que LyX ?
 \end_layout
 
@@ -217,6 +269,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 oe{}
 \end_layout
@@ -226,15 +279,11 @@ oe{}
 , c'est-à-dire 
 \backslash
 oe{} en mode TeX.
- Consultez la section
-\emph default
- 
+ Consultez la section 
 \emph on
 LyX et la typographie française
 \emph default
- du
-\emph default
- 
+ du 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
@@ -316,16 +365,11 @@ Vous n'obtenez que ce que vous voyez.
 \begin_layout Standard
 C'est là-dessus que LyX diffère d'un traitement de texte ordinaire.
  Vous ne vous souciez pas de savoir où sera placé tel ou tel caractère.
- Vous dites à LyX
-\shape default
- 
+ Vous dites à LyX 
 \shape slanted
 ce que vous voulez faire
 \shape default
- 
-et LyX se charge du reste, appliquant un ensemble de règles appelé un
-\emph default
- 
+ et LyX se charge du reste, appliquant un ensemble de règles appelé un 
 \emph on
 style
 \emph default
@@ -379,9 +423,7 @@ Introduction
 
 \begin_layout Standard
 Avec LyX, vous allez sur le menu déroulant tout à fait à gauche de la barre
- d'outils, sélectionnez
-\family default
- 
+ d'outils, sélectionnez 
 \family sans
 Section
 \family default
@@ -422,7 +464,7 @@ e de celle de la Section\InsetSpace ~
 
 \begin_layout Standard
 Voici un autre exemple.
- Supposons que vous écrivez une liste.
+ Supposons que vous écriviez une liste.
  Avec d'autres traitements de texte, une liste est juste un ensemble de
  tabulations et de retours chariot.
  Vous devez décider où mettre le marqueur pour chaque élément de la liste,
@@ -458,18 +500,14 @@ NdT : Vous voyez ce que vous obtenez.
 \begin_inset Quotes fld
 \end_inset
 
-What You See Is What You
-\emph default
- 
+What You See Is What You 
 \emph on
 Mean
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-NdT : Vous voyez ce que vous
-\emph default
- 
+NdT : Vous voyez ce que vous 
 \emph on
 voulez dire.
 \end_layout
@@ -494,9 +532,7 @@ WYSIWYM
  C'est une idée puissante qui simplifie grandement le processus d'écriture
  de documents.
  C'est aussi pour ça que LyX n'est pas très adapté pour créer des affiches
- et des tracts -- dans ce cas, vous
-\emph default
- 
+ et des tracts -- dans ce cas, vous 
 \emph on
 voulez
 \emph default
@@ -509,7 +545,7 @@ elles comme des paragraphes, des sections, etc\SpecialChar \ldots{}
  à vie).
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Différences entre LyX et les autres traitements de texte
 \begin_inset OptArg
 status collapsed
@@ -544,7 +580,7 @@ Voici une liste de choses que vous ne trouverez pas dans LyX :
 \end_layout
 
 \begin_layout Itemize
-la règle ;
+une règle ;
 \end_layout
 
 \begin_layout Itemize
@@ -552,15 +588,11 @@ des taquets de tabulation ;
 \end_layout
 
 \begin_layout Itemize
-des espaces superflues (c'est-à-dire taper
-\family default
- 
+des espaces superflues (c'est-à-dire taper 
 \family sans
 Entrée
 \family default
- ou
-\family default
- 
+ ou 
 \family sans
 Espace
 \family default
@@ -626,18 +658,13 @@ status collapsed
 Il y a des façons d'ajuster manuellement toutes ces propriétés (et seules
  quelques-unes nécessitent des connaissances en LaTeX), que ce soit pour
  l'ensemble du document ou seulement pour une partie.
- Référez-vous au
-\emph default
- 
+ Référez-vous au 
 \emph on
 Guide\InsetSpace ~
 de\InsetSpace ~
 l'Utilisateur
 \emph default
- 
-et/ou aux
-\emph default
- 
+ et/ou aux 
 \emph on
 Options\InsetSpace ~
 Avancées
@@ -681,14 +708,12 @@ D'accord, un certain nombre de traitements de texte modernes peuvent gérer
  adopté des définitions de style et ont évolué en direction du concept WYSIWYM.
  Cependant, ils ne le font que depuis peu, alors que LyX est construit sur
  le système de préparation de document LaTeX.
- LaTeX est là depuis plus de 15 ans, et
-\shape default
- 
+ LaTeX est là depuis plus de 15 ans, et 
 \shape slanted
 fonctionne.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Qu'est-ce donc que LaTeX (et en quoi ça me concerne) ?
 \end_layout
 
@@ -712,9 +737,7 @@ A Guide to LaTeX2e
 \end_inset
 
 , par Helmut Kopka et Patrick Daly, ouvrage inclus dans la bibliographie
- du
-\emph default
- 
+ du 
 \emph on
 Guide\InsetSpace ~
 de\InsetSpace ~
@@ -778,8 +801,12 @@ trucs
 
  du métier d'imprimeur ont été modélisés par Knuth sous la forme d'algorithmes
  informatiques et incorporés dans TeX, d'où son excellent rendu d'impression.
- Dans tous les cas, la sortie produite par TeX est le format de fichier
- 
+ Dans tous les cas, la sortie produite par TeX est le format de document
+ portable 
+\family typewriter
+pdf
+\family default
+ ou le format de fichier 
 \begin_inset Quotes fld
 \end_inset
 
@@ -805,22 +832,16 @@ indépendant du périphérique
 \begin_inset Quotes frd
 \end_inset
 
-, en abrégé
-\family default
- 
+, en abrégé 
 \family typewriter
 dvi
 \family default
 .
- Vous pouvez alors envoyer le fichier
-\family default
- 
+ Vous pouvez alors envoyer le fichier 
 \family typewriter
 dvi
 \family default
- à tout ce qui comprend le
-\family default
- 
+ à tout ce qui comprend le 
 \family typewriter
 dvi
 \family default
@@ -870,9 +891,7 @@ Parallèlement au développement et au déploiement de LaTeX, d'autres personnes
 
 \begin_layout Standard
 Il y a deux façons d'étendre LaTeX : les classes et les styles.
- Une
-\shape default
- 
+ Une 
 \shape slanted
 classe
 \shape default
@@ -881,16 +900,12 @@ classe
  On trouve des classes pour des transparents, pour des articles de journaux
  de physique et de maths\SpecialChar \ldots{}
  de nombreuses universités ont même une classe pour
- la composition de leurs thèses ! Le
-\shape default
- 
+ la composition de leurs thèses ! Le 
 \shape slanted
 style
 \shape default
  diffère de la classe en ceci qu'il ne définit pas de nouveau document,
- mais un
-\shape default
- 
+ mais un 
 \shape slanted
 comportement
 \shape default
@@ -908,61 +923,48 @@ comportement
 Voici un résumé :
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 TeX\InsetSpace ~
-: Langage de composition avec possibilité de macros.
+: langage de composition avec possibilité de macros.
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 LaTeX\InsetSpace ~
-: Paquetage de macros basé sur TeX\SpecialChar \@.
+: paquetage de macros basé sur TeX\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 classes\InsetSpace ~
-: Définitions d'un type de document, utilisant LaTeX\SpecialChar \@.
+: définitions d'un type de document, utilisant LaTeX\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 styles\InsetSpace ~
-: Modifient le comportement par défaut de LaTeX d'une façon donnée.
+: modifications du comportement par défaut de LaTeX d'une façon donnée.
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 LyX\InsetSpace ~
-: Traitement de texte visuel, WYSIWYM, qui à l'impression utilise LaTeX
+: traitement de texte visuel, WYSIWYM, qui à l'impression utilise LaTeX
  dans toute sa splendeur.
 \end_layout
 
 \begin_layout Standard
-Le but de cette section était d'expliquer
-\shape default
- 
+Le but de cette section était d'expliquer 
 \shape italic
 pourquoi
 \shape default
- 
-LyX fonctionne un peu différemment des autres traitements de texte.
+ LyX fonctionne un peu différemment des autres traitements de texte.
  La raison est simple : LyX utilise LaTeX comme outil d'impression.
  Exactement comme LaTeX, LyX se focalise sur le contexte de vos écrits --
- le
-\shape default
- 
+ le 
 \shape italic
 quoi.
 
 \shape default
- 
-L'ordinateur s'occupe lui du
-\shape default
- 
+ L'ordinateur s'occupe lui du 
 \shape slanted
 comment
 \shape default
@@ -1068,14 +1070,12 @@ word
 \end_inset
 
 .
-
-\family default
  
 \family typewriter
 :-)
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Naviguer dans la documentation
 \end_layout
 
@@ -1108,6 +1108,7 @@ vrai
 
 \begin_inset LatexCommand ref
 reference "sec:Contrib"
+
 \end_inset
 
  de ce document.
@@ -1117,25 +1118,21 @@ reference "sec:Contrib"
 D'autre part, faites-nous une faveur -- s'il arrivait que dans cette documentati
 on quelque chose vous embrouille, ne soit pas bien clair, ou carrément faux,
  faites-le nous savoir ! Vous pouvez contacter les préposés à la mise à
- jour de la documentation à l'adresse email
-\family default
- 
+ jour de la documentation à l'adresse email 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
 .
  Si vous avez des questions à laquelle la documentation ne répond pas de
  manière évidente, et que vous avez besoin d'une aide urgente, vous pouvez
- joindre la liste de diffusion des utilisateurs à l'adresse
-\family default
- 
+ joindre la liste de diffusion des utilisateurs à l'adresse 
 \family typewriter
 lyx-users@lists.lyx.org
 \family default
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Le Format des Manuels
 \end_layout
 
@@ -1172,9 +1169,7 @@ bas
 
 , sont accessibles en cliquant dessus avec le bouton gauche de la souris.
  Vous pouvez consulter la table des matières soit en cliquant sur la boîte
- grise située sous le titre, soit en utilisant le menu
-\family default
- 
+ grise située sous le titre, soit en utilisant le menu 
 \family sans
 Naviguer
 \family default
@@ -1189,6 +1184,7 @@ Sur la version papier, les références croisées sont affichées avec les bons
  : 
 \begin_inset LatexCommand ref
 reference "sec:Contrib"
+
 \end_inset
 
 .
@@ -1199,39 +1195,30 @@ reference "sec:Contrib"
 \begin_inset Quotes fld
 \end_inset
 
- sec:Contrib 
+sec:Contrib
 \begin_inset Quotes frd
 \end_inset
 
 .
  Vous pouvez vous rendre à la section mentionnée en cliquant sur le bouton
-
-\family default
  
 \family sans
 Aller\InsetSpace ~
 à\InsetSpace ~
-la\InsetSpace ~
-référence
+l'étiquette
 \family default
 .
  Revenir d'où vous venez est tout aussi simple, il suffit de cliquer sur
- le bouton
-\family default
- 
+ le bouton 
 \family sans
 Revenir
 \family default
- ou de taper
-\family default
- 
+ ou de taper 
 \family sans
 C-<
 \family default
 .
- (Que signifie
-\family default
- 
+ (Que signifie 
 \family sans
 C-<
 \family default
@@ -1245,52 +1232,52 @@ Maintenant que nous avons décrit les différences entre les versions papier
 \end_layout
 
 \begin_layout Itemize
-Le style
-\emph default
- 
+le style 
 \emph on
-En Évidence
+Mise En Évidence
 \emph default
  sert à mettre l'accent sur un point et à écrire les paramètres génériques,
  les titres de livres, les noms de sections d'autres manuels, et les notes
- des auteurs.
+ des auteurs;
 \end_layout
 
 \begin_layout Itemize
-La police à
-\family default
- 
+la police à 
 \family typewriter
 Chasse fixe
 \family default
  sert pour les sources de programmes et les noms de fichiers, le code LaTeX,
- ainsi que les codes et fonctions LyX.
+ ainsi que les codes et fonctions LyX;
 \end_layout
 
 \begin_layout Itemize
-La police
-\family default
- 
+la police 
 \family sans
 Sans Empattement
 \family default
  sert pour les menus, les boutons, les noms des fenêtres et des touches
- clavier.
+ clavier;
 \end_layout
 
 \begin_layout Itemize
-Le style 
+le style 
 \noun on
 Nom Propre
 \noun default
- sert pour les noms propres.
+ sert pour les noms propres;
+\end_layout
+
+\begin_layout Itemize
+le style
+\series bold
+ Gras 
+\series default
+sert pour le code LaTeX.
 \end_layout
 
 \begin_layout Standard
 Pour les accélérateurs de menus et d'autres raccourcis clavier plus obscurs,
- consultez la section
-\emph default
- 
+ consultez la section 
 \emph on
 Raccourcis Clavier
 \emph default
@@ -1299,9 +1286,7 @@ Raccourcis Clavier
 Options\InsetSpace ~
 Avancées
 \emph default
- (le fichier
-\family default
- 
+ (le fichier 
 \family typewriter
 Extended.lyx
 \family default
@@ -1321,16 +1306,11 @@ C-
 \begin_inset Quotes frd
 \end_inset
 
- pour la touche
-\family default
- 
+ pour la touche 
 \family sans
 Control-
 \family default
- 
-ou
-\family default
- 
+ ou 
 \family sans
 Ctrl- ;
 \end_layout
@@ -1351,8 +1331,6 @@ S-
 \begin_inset Quotes fld
 \end_inset
 
-
-\family default
  
 \family sans
 Shift
@@ -1361,9 +1339,7 @@ Shift
 \begin_inset Quotes frd
 \end_inset
 
- pour la touche
-\family default
- 
+ pour la touche 
 \family sans
 Majuscule- ;
 \end_layout
@@ -1380,15 +1356,11 @@ M-
 \begin_inset Quotes frd
 \end_inset
 
- pour la touche
-\family default
- 
+ pour la touche 
 \family sans
 Meta-
 \family default
-, ou
-\family default
- 
+, ou 
 \family sans
 Alt-
 \family default
@@ -1435,9 +1407,7 @@ Esc
 \begin_inset Quotes frd
 \end_inset
 
- la touche
-\family default
- 
+ la touche 
 \family sans
 Échap
 \family default
@@ -1633,9 +1603,7 @@ Return
 \begin_inset Quotes frd
 \end_inset
 
-,
-\family default
- 
+, 
 \family sans
 
 \begin_inset Quotes fld
@@ -1647,9 +1615,7 @@ Enter
 
 
 \family default
- et
-\family default
- 
+ et 
 \family sans
 
 \begin_inset Quotes fld
@@ -1662,9 +1628,7 @@ Entrée
 
 \family default
  font référence à la même touche.
- La touche
-\family default
- 
+ La touche 
 \family sans
 Return
 \family default
@@ -1718,22 +1682,15 @@ Entr
 
  sur les différents claviers.
  Certains ont même deux de ces touches.
- LyX les traite toutes de la même façon, nous utiliserons
-\family default
- 
+ LyX les traite toutes de la même façon, nous utiliserons 
 \family sans
 Return
 \family default
-,
-\family default
- 
+, 
 \family sans
 Enter
 \family default
- 
-ou
-\family default
- 
+ ou 
 \family sans
 Entrée
 \family default
@@ -1787,7 +1744,544 @@ Emacs
  pour découvrir les raccourcis par vous-même.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
+
+\series medium
+Unités utilisées dans le manuels
+\end_layout
+
+\begin_layout Standard
+Le tableau\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "tab:Unités"
+
+\end_inset
+
+ décrit les unités utilisées dans Lyx.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "tab:Unités"
+
+\end_inset
+
+Unités
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+unité
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+nom/description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+millimètre
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+centimètre
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+inch/pouce
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+point (72.27
+\begin_inset Formula $\,$
+\end_inset
+
+pt = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pica (1
+\begin_inset Formula $\,$
+\end_inset
+
+pc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+scaled point/point divisé (65536
+\begin_inset Formula $\,$
+\end_inset
+
+sp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+big point/point arrondi (72
+\begin_inset Formula $\,$
+\end_inset
+
+bp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+didot (72
+\begin_inset Formula $\,$
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset Formula $\,$
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cicero (1
+\begin_inset Formula $\,$
+\end_inset
+
+cc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% largeur originale
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% largeur du texte
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% largeur de la colonne
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% largeur du papier
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% of line width
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% hauteur du texte
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% hauteur du papier
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+hauteur de la lettre 
+\emph on
+x
+\emph default
+ dans la police courante
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+largeur de la lettre 
+\emph on
+M
+\emph default
+ dans la police courante
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+unité mathématique (1
+\begin_inset Formula $\,$
+\end_inset
+
+mu = 1/18
+\begin_inset Formula $\,$
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\series medium
 Les Manuels
 \end_layout
 
@@ -1821,23 +2315,18 @@ Si vous commencez avec LyX, et n'avez jamais touché à LaTeX, vous devriez
  commencer par là.
  Si vous pensez que le LaTeX est ce qui sert à faire les préservatifs, c'est
  qu'il vous faut relire le Chapitre\InsetSpace ~
-1, puis lire le
-\emph default
- 
+1, puis lire le 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
 \emph default
 .
  Après sa lecture, vous penserez encore que le LaTeX est une substance extensibl
-e -- mais au moins, vous
-\emph default
- 
+e -- mais au moins, vous 
 \emph on
 saurez
 \emph default
- 
-comment utiliser LyX.
+ comment utiliser LyX.
  
 \end_layout
 
@@ -1855,15 +2344,12 @@ LyX pour les connaisseurs de LaTeX
 
 \begin_layout Standard
 Et lorsque vous vous sentez un peu perdu avec LyX, essayez de lire attentivement
- le
-\emph default
- 
+ le 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
 \emph default
- 
-avant de consulter les autres manuels.
+ avant de consulter les autres manuels.
  C'est un bon tremplin.
 \end_layout
 
@@ -1884,16 +2370,12 @@ tilisateur
 \begin_deeper
 \begin_layout Standard
 Le document de base.
- Il couvre la
-\emph default
- 
+ Il couvre la 
 \emph on
 majeure partie
 \emph default
  des opérations et fonctions de base disponibles avec LyX.
- Pour bien en tirer profit, il faut avoir lu le
-\emph default
- 
+ Pour bien en tirer profit, il faut avoir lu le 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage\SpecialChar \@.
@@ -1901,6 +2383,22 @@ d'Apprentissage\SpecialChar \@.
 \end_layout
 
 \end_deeper
+\begin_layout Description
+Embedded\InsetSpace ~
+Objects Extension
+\emph on
+ 
+\emph default
+du
+\emph on
+ Guide\InsetSpace ~
+de L'Utilisateur
+\emph default
+, il explique en détail comment utiliser les tableaux, les graphiques, les
+ objets flottants, les notes et le boîtes.
+ Il inclut également de nombreuses astuces connus des spécialistes de LaTeX.
+\end_layout
+
 \begin_layout Description
 
 \emph on
@@ -1910,20 +2408,14 @@ Avancées
 
 \begin_deeper
 \begin_layout Standard
-Extension du
-\emph default
- 
+Extension du 
 \emph on
 Guide\InsetSpace ~
 de\InsetSpace ~
 l'Utilisateur
 \emph default
-.
- Décrit comment utiliser des commandes LaTeX brut, des formats supplémentaires,
- des fonctions d'édition particulières, et comprend quelques secrets (plutôt
- bizarres, mais sympas) des maîtres de LaTeX.
-\newline
-
+, il décrit comment utiliser des commandes LaTeX brutes, des formats supplémenta
+ires, des fonctions d'édition particulières.
 \end_layout
 
 \end_deeper
@@ -1939,9 +2431,7 @@ C'est une description de certaines fonctions avancées de LyX, notamment
  la façon de personnaliser son comportement général.
  Y sont abordés la configuration du clavier (raccourcis), l'internationalisation
 , et les fichiers de configuration.
- Inutile de le consulter avant d'avoir lu le
-\emph default
- 
+ Inutile de le consulter avant d'avoir lu le 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
@@ -1968,30 +2458,18 @@ Pendant son installation, LyX analyse votre système.
 \end_deeper
 \begin_layout Standard
 Tous ces fichiers se référencent les uns les autres quand c'est nécessaire.
- Le
-\emph default
- 
+ Le 
 \emph on
 Guide\InsetSpace ~
 de\InsetSpace ~
 l'Utilisateur
 \emph default
- 
-contient par exemple
-\emph default
- 
+ contient par exemple 
 \emph on
 quelques
 \emph default
  informations sur l'installation et la personnalisation, mais fait référence
- au manuel
-\emph on
-
-\emph default
- 
-de
-\emph default
- 
+ au manuel de 
 \emph on
 Personnalisation
 \emph default
@@ -2011,9 +2489,7 @@ Répétons un point important :
 
 \begin_layout Standard
 \align center
-Si vous commencez avec LyX, lisez le
-\emph default
- 
+Si vous commencez avec LyX, lisez le 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
@@ -2035,26 +2511,27 @@ Sinon, vous vous poserez des problèmes inutilement.
  une approche différente.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 \begin_inset LatexCommand label
 name "sec:Contrib"
+
 \end_inset
 
 Contribuer au projet LyX
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Contribuer à LyX
 \end_layout
 
 \begin_layout Standard
 LyX est pour l'essentiel écrit en C++ (l'importation LaTeX est écrite en
- Perl).
+ Python).
  C'est un vaste projet, il n'est donc pas exempt de bogues, et des améliorations
  peuvent être nécessaires dans le code source.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Signaler un bogue
 \end_layout
 
@@ -2068,15 +2545,11 @@ Lors de votre utilisation de LyX, vous pouvez rencontrer un comportement
 \end_layout
 
 \begin_layout Standard
-LyX a un système de recensement de bogues, que vous trouverez sur le
-\family typewriter
-
-\family default
- 
-
+LyX a un système de recensement de bogues, que vous trouverez sur le 
 \begin_inset LatexCommand htmlurl
 name "traceur de bogues de LyX"
 target "http://bugzilla.lyx.org/"
+
 \end_inset
 
 .
@@ -2085,23 +2558,17 @@ target "http://bugzilla.lyx.org/"
  Si vous avez un commentaire à faire sur un bogue déjà répertorié, ou si
  vous voulez en signaler un nouveau, vous pouvez soit utiliser le traceur
  de bogues, soit envoyer un e-mail à la liste de diffusion des développeurs,
-
-\family default
  
 \family typewriter
 lyx-devel@lists.lyx.org
 \family default
 .
  L'adresse des archives de cette liste est indiquée sur le site principal
- de LyX,
-\family typewriter
-
-\family default
- 
-
+ de LyX, 
 \begin_inset LatexCommand htmlurl
 name "le site web de LyX"
 target "http://www.lyx.org/"
+
 \end_inset
 
 .
@@ -2117,10 +2584,8 @@ Un bon rapport de bogue doit au minimum comprendre la version de LyX avec
  tourner LyX.
  Donnez les versions des bibliothèques installées sur votre système, et
  si nécessaire les versions des programmes externes utilisés par LyX.
- S'il s'agit d'un problème de configuration ou de compilation, joigneze
- le fichier
-\family default
- 
+ S'il s'agit d'un problème de configuration ou de compilation, joignez le
+ fichier 
 \family typewriter
 config.log
 \family default
@@ -2131,12 +2596,10 @@ config.log
 Si vous arrivez à faire planter LyX, veuillez prendre le temps de produire
  un backtrace
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
-NdT : Terme utilisé dans
-\family default
- 
+NdT : Terme utilisé dans 
 \family typewriter
 gdb
 \family default
@@ -2147,7 +2610,7 @@ gdb
 
  avec un exécutable lyx non allégé
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 NdT : et donc traçable (original : 
@@ -2166,9 +2629,7 @@ non-stripped executable
 .
  Par défaut, le fichier binaire installé est allégé, mais celui créé dans
  le répertoire source ne l'est pas.
- Lancez donc LyX à partir de gdb en tapant
-\family default
- 
+ Lancez donc LyX à partir de gdb en tapant 
 \family typewriter
 
 \begin_inset Quotes fld
@@ -2180,9 +2641,7 @@ gdb /users/bozo/lyx-1.x.x/src/lyx
 
 
 \family default
- puis
-\family default
- 
+ puis 
 \family typewriter
 
 \begin_inset Quotes fld
@@ -2196,9 +2655,7 @@ run
 \family default
 .
  Faites planter LyX et retournez dans gdb.
- Faites
-\family default
- 
+ Faites 
 \family typewriter
 
 \begin_inset Quotes fld
@@ -2212,12 +2669,10 @@ bt
 \family default
  pour produire un backtrace et joignez-le au rapport de bogue
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
-Si vous voulez être exhaustif, utilisez les commandes
-\family default
- 
+Si vous voulez être exhaustif, utilisez les commandes 
 \family typewriter
 
 \begin_inset Quotes fld
@@ -2229,9 +2684,7 @@ info locals
 
 
 \family default
- et
-\family default
- 
+ et 
 \family typewriter
 
 \begin_inset Quotes fld
@@ -2258,7 +2711,7 @@ up
 able, car c'est peut-être la seule chose dont nous disposerons.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Offrir des corrections et de nouvelles fonctions
 \end_layout
 
@@ -2277,7 +2730,7 @@ change log
 , et une description de ce qu'ils font.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Contribuer à la Documentation
 \end_layout
 
@@ -2290,15 +2743,13 @@ ns.
  suggestions pour améliorer la documentation.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Rapporter les erreurs dans les Manuels
 \end_layout
 
 \begin_layout Standard
 Si vous trouvez un problème dans la documentation, envoyez un message à
- la liste de diffusion
-\family default
- 
+ la liste de diffusion 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
@@ -2306,15 +2757,13 @@ lyx-docs@lists.lyx.org
  L'équipe de documentation apportera tous les changements nécessaires.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Se joindre à l'Équipe de Documentation
 \end_layout
 
 \begin_layout Standard
 Comme pour l'ensemble du projet LyX, toute aide est bienvenue pour la documentat
-ion de LyX ! Si vous êtes volontaire, merci de respecter
-\shape default
- 
+ion de LyX ! Si vous êtes volontaire, merci de respecter 
 \shape italic
 avant tout
 \shape default
@@ -2329,9 +2778,7 @@ status open
 
 \begin_layout Standard
 Les plus aventureux peuvent récupérer les sources les plus récentes sur
- le site d'archivage CVS de LyX - elles sont contenues dans le module
-\family default
- 
+ le site d'archivage SVN de LyX - elles sont contenues dans le module 
 \family typewriter
 lyxdoc
 \family default
@@ -2341,16 +2788,12 @@ lyxdoc
 \end_inset
 
 .
- Vous trouverez dans cette arborescence un répertoire appelé
-\family default
- 
+ Vous trouverez dans cette arborescence un répertoire appelé 
 \family typewriter
 lib/doc
 \family default
 .
- Il contient un fichier appelé
-\family default
- 
+ Il contient un fichier appelé 
 \family typewriter
 DocStyle.lyx
 \family default
@@ -2359,17 +2802,13 @@ DocStyle.lyx
 \end_layout
 
 \begin_layout Enumerate
-Ensuite, lisez le
-\shape default
- 
+Ensuite, lisez le 
 \shape italic
 Guide\InsetSpace ~
 de\InsetSpace ~
 l'Utilisateur
 \shape default
- et le
-\emph default
- 
+ et le 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
@@ -2381,16 +2820,12 @@ d'Apprentissage
 \begin_deeper
 \begin_layout Standard
 Le but de cet exercice est de vous donner des idées.
- Le
-\emph default
- 
+ Le 
 \emph on
 Manuel\InsetSpace ~
 d'Apprentissage
 \emph default
- et le
-\shape default
- 
+ et le 
 \shape italic
 Guide\InsetSpace ~
 de\InsetSpace ~
@@ -2425,7 +2860,7 @@ t à une restructuration majeure de la documentation.
  Toute amélioration sera la bienvenue.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Contribuer à la Traduction
 \end_layout
 
@@ -2436,6 +2871,7 @@ Pour participer à la traduction, le principe est le même que pour modifier
  francophones, à l'adresse 
 \begin_inset LatexCommand url
 target "lyx-fr@lists.lyx.org"
+
 \end_inset
 
 .
@@ -2444,6 +2880,7 @@ target "lyx-fr@lists.lyx.org"
  Pour s'inscrire sur cette liste, il faut envoyer un message vide à 
 \begin_inset LatexCommand url
 target "lyx-fr-subscribe@lists.lyx.org"
+
 \end_inset
 
 .
@@ -2452,11 +2889,12 @@ target "lyx-fr-subscribe@lists.lyx.org"
 \begin_layout Standard
 D'autre part il faut prendre garde à ne modifier que la dernière version
  de la traduction.
- C'est toujours celle qui est sur le serveur CVS.
+ C'est toujours celle qui est sur le serveur SVN.
  On peut y accéder en suivant les indications qui se trouvent sur 
 \begin_inset LatexCommand url
 name "le site des développeurs de LyX"
 target "http://www.devel.lyx.org/"
+
 \end_inset
 
 .
@@ -2464,6 +2902,7 @@ target "http://www.devel.lyx.org/"
 \begin_inset LatexCommand url
 name "page de la traduction en français"
 target "http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr.html"
+
 \end_inset
 
 , sur laquelle vous pouvez télécharger les fichiers les plus récents.
