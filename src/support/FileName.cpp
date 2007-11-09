@@ -626,7 +626,7 @@ string const DocFileName::mangledFilename(std::string const & dir) const
 	// If dir.size() > max length, all bets are off for YAP. We truncate
 	// the filename nevertheless, keeping a minimum of 10 chars.
 
-	string::size_type max_length = max(100 - ((int)dir.size() + 1), 10);
+	string::size_type max_length = std::max(100 - ((int)dir.size() + 1), 10);
 
 	// If the mangled file name is too long, hack it to fit.
 	// We know we're guaranteed to have a unique file name because
