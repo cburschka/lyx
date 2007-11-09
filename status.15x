@@ -103,6 +103,8 @@ What's new
 
 - Fix a crash when using the outline-* lfuns within mathed (bug 4330).
 
+- Fix an assertion when entering a math object in a list environment (bug 4335).
+
 - Correctly adjust screen fonts after the zoom or dpi settings were changed in
   the preferences (Mac and Windows only) (bug 4268).
 

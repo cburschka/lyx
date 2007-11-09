@@ -143,18 +143,22 @@ namespace {
 #endif
 			cur.insert(new InsetMathHull(hullSimple));
 			BOOST_ASSERT(old_pos == cur.pos());
-			cur.nextInset()->edit(cur, true);
+			Inset * inset = cur.nextInset();
+			inset->edit(cur, true);
 			// don't do that also for LFUN_MATH_MODE
 			// unless you want end up with always changing
 			// to mathrm when opening an inlined inset --
 			// I really hate "LyXfunc overloading"...
-			if (display)
-				cur.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
+			if (display) {
+				FuncRequest cmdm(LFUN_MATH_DISPLAY);
+				inset->dispatch(cur, cmdm);
+			}
 			// Avoid an unnecessary undo step if cmd.argument
 			// is empty
-			if (!cmd.argument().empty())
-				cur.dispatch(FuncRequest(LFUN_MATH_INSERT,
-							 cmd.argument()));
+			if (!cmd.argument().empty()) {
+				FuncRequest cmdm(LFUN_MATH_INSERT, cmd.argument());
+				inset->dispatch(cur, cmdm);
+			}
 		} else {
 			// create a macro if we see "\\newcommand"
 			// somewhere, and an ordinary formula
@@ -1372,10 +1376,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// should be used (but it asserts with Bidi enabled)
 		// cf. http://bugzilla.lyx.org/show_bug.cgi?id=4055
 		// cap::replaceSelection(cur);
-		cur.insert(new InsetMathHull(hullSimple));
+		InsetMathHull * inset = new InsetMathHull(hullSimple);
+		cur.insert(inset);
 		checkAndActivateInset(cur, true);
 		BOOST_ASSERT(cur.inMathed());
-		cur.dispatch(cmd);
+		inset->dispatch(cur, cmd);
 		break;
 	}
 
