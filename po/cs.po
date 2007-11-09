@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Lyx 1.5.0svn\n"
+"Project-Id-Version: Lyx 1.5.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-11-07 23:44+0100\n"
-"PO-Revision-Date: 2007-08-31 04:42+0200\n"
+"PO-Revision-Date: 2007-11-08 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1723,7 +1723,6 @@ msgid "This text defines the width of the paragraph label"
 msgstr "Tento text definuje ¹íøku znaèky v odstavci"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:157
-#, fuzzy
 msgid "Lo&ngest label"
 msgstr "&Nejdel¹í znaèka"
 
@@ -1732,23 +1731,20 @@ msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr "Pou¾ít standardní zarovnání pro tento odstavec, a» u¾ je jakékoliv."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:198
-#, fuzzy
 msgid "Use Paragraph's &Default Alignment"
-msgstr "Pou¾ít standardní zarovnání odstavce"
+msgstr "Pou¾ít standardní &zarovnání odstavce"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:205
-#, fuzzy
 msgid "Ri&ght"
-msgstr "Napravo"
+msgstr "Na&pravo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:212
 msgid "&Left"
 msgstr "Na&levo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219
-#, fuzzy
 msgid "C&enter"
-msgstr "Na støed"
+msgstr "Na &støed"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:226
 msgid "&Justified"
@@ -1781,7 +1777,7 @@ msgstr "Vlastní"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:300
 msgid "Indent &Paragraph"
-msgstr "&Odsadit odstavec"
+msgstr "Ods&adit odstavec"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:25
 msgid "&Colors"
@@ -2454,17 +2450,19 @@ msgstr "&Kurzor následuje posuvník"
 
 #: src/frontends/qt4/ui/PrefUi.ui:380
 msgid "Pixmap Cache"
-msgstr ""
+msgstr "Vyrovnávací pamì» pro Pixmap"
 
 #: src/frontends/qt4/ui/PrefUi.ui:392
 msgid ""
 "Checking this improves the performance, but might reduce the on-screen "
 "display of fonts"
 msgstr ""
+"Mù¾e zlep¹it rychlost vykreslování, ale mù¾e zhor¹it zobrazení "
+"fontù na obrazovce."
 
 #: src/frontends/qt4/ui/PrefUi.ui:395
 msgid "Enable Pi&xmap Cache"
-msgstr ""
+msgstr "Zapnout &pamì» pro Pixmap"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:768
@@ -8376,7 +8374,7 @@ msgstr "Zmen¹it hloubku seznamu|m"
 
 #: lib/ui/stdmenus.inc:116
 msgid "Dissolve Inset|l"
-msgstr "Rozpustit vlo¾ky do textu|R"
+msgstr "Rozpustit vlo¾ku do textu|R"
 
 #: lib/ui/stdmenus.inc:117
 msgid "TeX Code Settings...|C"
@@ -9361,7 +9359,7 @@ msgstr "Celoøádkový\t\\displaystyle"
 
 #: lib/ui/stdtoolbars.inc:268
 msgid "Normal text style\t\\textstyle"
-msgstr "Normalní text\t\\textstyle"
+msgstr "Normální text\t\\textstyle"
 
 #: lib/ui/stdtoolbars.inc:269
 msgid "Script (small) style\t\\scriptstyle"
@@ -13241,7 +13239,7 @@ msgstr ""
 #: src/LyXRC.cpp:2455
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr ""
+msgstr "Zapnout vyrovnávací pamì» pro pixmap, která mù¾e zlep¹it výkonnost na Mac-u a Windows."
 
 #: src/LyXRC.cpp:2462
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -13768,16 +13766,17 @@ msgid "Reloading configuration..."
 msgstr "Znovunaètení konfigurace..."
 
 #: src/callback.cpp:456
-#, fuzzy
 msgid "System reconfiguration failed"
-msgstr "Systém pøekonfigurován"
+msgstr "Rekonfigurace systému selhala"
 
 #: src/callback.cpp:457
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
 "Please reconfigure again if needed."
-msgstr ""
+msgstr "Rekonfigurace systému selhala.\n"
+"Byla nastavena standardní tøída (textclass), ale LyX mo¾ná nebude schopen pracovat správnì.\n"
+"Je-li zapotøebí, zkuste prosím rekonfigurovat znovu."
 
 #: src/callback.cpp:462
 msgid "System reconfigured"
@@ -15028,7 +15027,7 @@ msgid ""
 "file through LaTeX: "
 msgstr ""
 "Následující jméno souboru pravdìpodobnì zpùsobí problémy pøi pøekladu "
-"exportovaného souboru LaTeX-em:"
+"exportovaného souboru LaTeX-em: "
 
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
@@ -15120,9 +15119,8 @@ msgid "Opened CharStyle Inset"
 msgstr "Styl znaku - otevøená vlo¾ka"
 
 #: src/insets/InsetCharStyle.cpp:226
-#, fuzzy
 msgid "CharStyle: "
-msgstr "Zmìna: "
+msgstr "Styl znaku: "
 
 #: src/insets/InsetCommand.cpp:99
 msgid "LaTeX Command: "
@@ -15639,7 +15637,7 @@ msgstr "pc"
 
 #: src/lengthcommon.cpp:38
 msgid "cc[[unit of measure]]"
-msgstr ""
+msgstr "cc"
 
 #: src/lengthcommon.cpp:38
 msgid "cm"
