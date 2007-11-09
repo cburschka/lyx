@@ -20841,6 +20841,12 @@ name "Math ! Macros"
 \end_inset
 
 
+\begin_inset LatexCommand label
+name "sec:math-macros"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24397,6 +24403,140 @@ Answer: Wilhelm Conrad Röntgen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Making branches available to LaTeX
+\end_layout
+
+\begin_layout Standard
+One problem with branches is, that it is not easily possible to use conditional
+ output inside places where you cannot insert branch insets.
+ Such places are, e.g., phrases found inside equations, or the LaTeX-processable
+ 
+\begin_inset Quotes eld
+\end_inset
+
+special
+\begin_inset Quotes erd
+\end_inset
+
+ strings inside XFig graphics.
+ In these cases, it is possible to code special LaTeX definitions for each
+ branch, as follows (visible only in the LyX source of this doc):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Question
+status open
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+que}[1]{#1}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+ans}[1]{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Answer
+status open
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+que}[1]{}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+ans}[1]{#1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note the use of the ERT inset inside the branch insets to encapsulate the
+ raw LaTeX code; see below.
+\end_layout
+
+\begin_layout Standard
+Now it is possible to use the commands 
+\series bold
+
+\backslash
+que{\SpecialChar \ldots{}
+}
+\series default
+ and 
+\series bold
+
+\backslash
+ans{\SpecialChar \ldots{}
+}
+\series default
+ to obtain conditional output, both inside math and inside XFig graphics.
+ Like
+\begin_inset Formula \[
+x^{2}-2x+1=\que{?}\ans{\left(x-1\right)^{2}}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inside math, the same effect can be achieved using math macros, cf.
+ Section 
+\begin_inset LatexCommand ref
+reference "sec:math-macros"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
