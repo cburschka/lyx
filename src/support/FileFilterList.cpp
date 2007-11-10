@@ -21,8 +21,6 @@
 
 #include <sstream>
 
-using lyx::docstring;
-
 using std::distance;
 using std::ostringstream;
 using std::string;
@@ -83,7 +81,7 @@ string const convert_brace_glob(string const & glob)
 namespace lyx {
 namespace support {
 
-FileFilterList::Filter::Filter(lyx::docstring const & description,
+FileFilterList::Filter::Filter(docstring const & description,
 			       std::string const & globs)
 	: desc_(description)
 {
@@ -104,9 +102,9 @@ FileFilterList::Filter::Filter(lyx::docstring const & description,
 FileFilterList::FileFilterList(docstring const & qt_style_filter)
 {
 	// FIXME UNICODE
-	string const filter = lyx::to_utf8(qt_style_filter)
+	string const filter = to_utf8(qt_style_filter)
 		+ (qt_style_filter.empty() ? string() : ";;")
-		+ lyx::to_utf8(_("All files (*)"));
+		+ to_utf8(_("All files (*)"));
 
 	// Split data such as "TeX documents (*.tex);;LyX Documents (*.lyx)"
 	// into individual filters.
@@ -144,7 +142,7 @@ void FileFilterList::parse_filter(string const & filter)
 		filters_.push_back(Filter(docstring(), trim(filter)));
 	} else {
 		// FIXME UNICODE
-		docstring const desc = lyx::from_utf8(string(what[1].first, what[1].second));
+		docstring const desc = from_utf8(string(what[1].first, what[1].second));
 		string const globs = string(what[2].first, what[2].second);
 		filters_.push_back(Filter(trim(desc), trim(globs)));
 	}
@@ -169,7 +167,7 @@ docstring const FileFilterList::as_string() const
 
 		bool const has_description = !fit->description().empty();
 		if (has_description)
-			ss << lyx::to_utf8(fit->description()) << " (";
+			ss << to_utf8(fit->description()) << " (";
 
 		for (Filter::glob_iterator git = gbegin; git != gend; ++git) {
 			if (git != gbegin)
@@ -181,7 +179,7 @@ docstring const FileFilterList::as_string() const
 			ss << ')';
 	}
 
-	return lyx::from_utf8(ss.str());
+	return from_utf8(ss.str());
 }
 
 } // namespace support

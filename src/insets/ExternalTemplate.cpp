@@ -235,7 +235,7 @@ TemplateManager::getPreambleDefByName(string const & name) const
 
 void TemplateManager::readTemplates(support::FileName const & path)
 {
-	support::Path p(path);
+	support::PathChanger p(path);
 
 	enum TemplateTags {
 		TM_PREAMBLEDEF = 1,

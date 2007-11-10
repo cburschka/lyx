@@ -10,20 +10,19 @@
 
 #include <config.h>
 
-// Needed to prevent the definition of the unnamed_Path macro in the header file.
+// Needed to prevent the definition of the unnamed_Path macro
+// in the header file.
+
 #define PATH_C
 
 #include "support/Path.h"
 #include "support/lyxlib.h"
 
 
-using std::string;
-
-
 namespace lyx {
 namespace support {
 
-Path::Path(FileName const & path)
+PathChanger::PathChanger(FileName const & path)
 	: popped_(false)
 {
 	if (!path.empty()) {
@@ -38,13 +37,14 @@ Path::Path(FileName const & path)
 }
 
 
-Path::~Path()
+PathChanger::~PathChanger()
 {
-	if (!popped_) pop();
+	if (!popped_)
+		pop();
 }
 
 
-int Path::pop()
+int PathChanger::pop()
 {
 	if (popped_) {
 		// should throw an exception

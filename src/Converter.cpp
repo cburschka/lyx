@@ -350,7 +350,7 @@ bool Converters::convert(Buffer const * buffer,
 	string const path(onlyPath(from_file.absFilename()));
 	// Prevent the compiler from optimizing away p
 	FileName pp(path);
-	support::Path p(pp);
+	support::PathChanger p(pp);
 
 	// empty the error list before any new conversion takes place.
 	errorList.clear();

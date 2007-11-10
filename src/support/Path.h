@@ -14,9 +14,6 @@
 
 #include "support/FileName.h"
 
-#include <boost/noncopyable.hpp>
-
-#include <string>
 
 namespace lyx {
 namespace support {
@@ -34,17 +31,21 @@ namespace support {
  *
  * At the end of p's scope the cwd is reset to its previous value.
  */
-class Path : boost::noncopyable {
+class PathChanger {
 public:
 	/// change to the given directory
-	explicit Path(FileName const & path);
+	explicit PathChanger(FileName const & path);
 
 	/// set cwd to the previous value if needed
-	~Path();
+	~PathChanger();
 
 	/// set cwd to the previous value if needed
 	int pop();
 private:
+	/// noncopyable
+	PathChanger(PathChanger const &);
+	void operator=(PathChanger const &);
+
 	/// whether we are in the new cwd or not
 	bool popped_;
 	/// the previous cwd

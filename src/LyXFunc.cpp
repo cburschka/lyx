@@ -216,7 +216,7 @@ void reconfigure(LyXView & lv, string const & option)
 	lv.message(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	support::Path p(package().user_support());
+	support::PathChanger p(package().user_support());
 	string configure_command = package().configure_command();
 	configure_command += option;
 	Systemcall one;
@@ -1176,7 +1176,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			string const path = buffer->temppath();
 			// Prevent the compiler from optimizing away p
 			FileName pp(path);
-			support::Path p(pp);
+			support::PathChanger p(pp);
 
 			// there are three cases here:
 			// 1. we print to a file

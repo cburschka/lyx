@@ -30,17 +30,17 @@ class FileFilterList {
 public:
 	// FIXME UNICODE: globs_ should be unicode...
 	class Filter {
-		lyx::docstring desc_;
+		docstring desc_;
 		std::vector<std::string> globs_;
 	public:
 		/* \param description text describing the filters.
 		 * \param one or more wildcard patterns, separated by
 		 * whitespace.
 		 */
-		Filter(lyx::docstring const & description,
+		Filter(docstring const & description,
 		       std::string const & globs);
 
-		lyx::docstring const & description() const { return desc_; }
+		docstring const & description() const { return desc_; }
 
 		typedef std::vector<std::string>::const_iterator glob_iterator;
 		glob_iterator begin() const { return globs_.begin(); }
@@ -51,8 +51,8 @@ public:
 	 *  Eg. "TeX documents (*.tex);;LyX Documents (*.lyx)".
 	 *  The "All files (*)" filter is always added to the list.
 	 */
-	explicit FileFilterList(lyx::docstring const & qt_style_filter =
-				lyx::docstring());
+	explicit FileFilterList(docstring const & qt_style_filter =
+				docstring());
 
 	typedef std::vector<Filter>::size_type size_type;
 
@@ -65,7 +65,7 @@ public:
 	 *  although any brace expressions are expanded.
 	 *  (E.g. "*.{png,jpg}" -> "*.png *.jpg")
 	 */
-	lyx::docstring const as_string() const;
+	docstring const as_string() const;
 
 private:
 	void parse_filter(std::string const & filter);

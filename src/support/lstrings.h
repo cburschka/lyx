@@ -66,9 +66,9 @@ bool isStrUnsignedInt(std::string const & str);
 ///
 bool isStrDbl(std::string const & str);
 
-bool isHex(lyx::docstring const & str);
+bool isHex(docstring const & str);
 
-int hexToInt(lyx::docstring const & str);
+int hexToInt(docstring const & str);
 
 /// is \p str pure ascii?
 bool isAscii(docstring const & str);

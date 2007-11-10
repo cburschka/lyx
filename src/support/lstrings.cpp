@@ -425,9 +425,7 @@ struct local_uppercase {
 };
 
 template<typename Char> struct local_ascii_lowercase {
-	Char operator()(Char c) const {
-		return ascii_tolower(c);
-	}
+	Char operator()(Char c) const { return ascii_tolower(c); }
 };
 
 } // end of anon namespace
@@ -476,25 +474,23 @@ bool prefixIs(docstring const & a, char_type c)
 
 bool prefixIs(string const & a, string const & pre)
 {
-	string::size_type const prelen = pre.length();
-	string::size_type const alen = a.length();
+	size_t const prelen = pre.length();
+	size_t const alen = a.length();
 
 	if (prelen > alen || a.empty())
 		return false;
-	else {
 #if defined(STD_STRING_IS_GOOD)
-		return a.compare(0, prelen, pre) == 0;
+	return a.compare(0, prelen, pre) == 0;
 #else
-		return ::strncmp(a.c_str(), pre.c_str(), prelen) == 0;
+	return ::strncmp(a.c_str(), pre.c_str(), prelen) == 0;
 #endif
-	}
 }
 
 
 bool prefixIs(docstring const & a, docstring const & pre)
 {
-	docstring::size_type const prelen = pre.length();
-	docstring::size_type const alen = a.length();
+	size_t const prelen = pre.length();
+	size_t const alen = a.length();
 
 	if (prelen > alen || a.empty())
 		return false;
@@ -520,19 +516,18 @@ bool suffixIs(docstring const & a, char_type c)
 
 bool suffixIs(string const & a, string const & suf)
 {
-	string::size_type const suflen = suf.length();
-	string::size_type const alen = a.length();
+	size_t const suflen = suf.length();
+	size_t const alen = a.length();
 
-	if (suflen > alen) {
+	if (suflen > alen)
 		return false;
-	} else {
+
 #if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
-		string tmp(a, alen - suflen);
-		return ::strncmp(tmp.c_str(), suf.c_str(), suflen) == 0;
+	string tmp(a, alen - suflen);
+	return ::strncmp(tmp.c_str(), suf.c_str(), suflen) == 0;
 #else
-		return a.compare(alen - suflen, suflen, suf) == 0;
+	return a.compare(alen - suflen, suflen, suf) == 0;
 #endif
-	}
 }
 
 
@@ -546,19 +541,24 @@ bool containsOnly(string const & s, string const & cset)
 // rewritten to use new string (Lgb)
 string const token(string const & a, char delim, int n)
 {
-	if (a.empty()) return string();
+	if (a.empty())
+		return string();
 
-	string::size_type k = 0;
-	string::size_type i = 0;
+	size_t k = 0;
+	size_t i = 0;
 
 	// Find delimiter or end of string
-	for (; n--;)
+	for (; n--;) {
 		if ((i = a.find(delim, i)) == string::npos)
 			break;
 		else
 			++i; // step delim
+	}
+
 	// i is now the n'th delim (or string::npos)
-	if (i == string::npos) return string();
+	if (i == string::npos)
+		return string();
+
 	k = a.find(delim, i);
 	// k is now the n'th + 1 delim (or string::npos)
 
@@ -570,17 +570,21 @@ docstring const token(docstring const & a, char_type delim, int n)
 {
 	if (a.empty()) return docstring();
 
-	string::size_type k = 0;
-	string::size_type i = 0;
+	size_t k = 0;
+	size_t i = 0;
 
 	// Find delimiter or end of string
-	for (; n--;)
+	for (; n--;) {
 		if ((i = a.find(delim, i)) == docstring::npos)
 			break;
 		else
 			++i; // step delim
+	}
+
 	// i is now the n'th delim (or string::npos)
-	if (i == docstring::npos) return docstring();
+	if (i == docstring::npos)
+		return docstring();
+
 	k = a.find(delim, i);
 	// k is now the n'th + 1 delim (or string::npos)
 
@@ -593,7 +597,7 @@ docstring const token(docstring const & a, char_type delim, int n)
 int tokenPos(string const & a, char delim, string const & tok)
 {
 	int i = 0;
-	string str(a);
+	string str = a;
 	string tmptok;
 
 	while (!str.empty()) {
@@ -644,8 +648,8 @@ String const subst_string(String const & a,
 {
 	BOOST_ASSERT(!oldstr.empty());
 	String lstr = a;
-	typename String::size_type i = 0;
-	typename String::size_type const olen = oldstr.length();
+	size_t i = 0;
+	size_t const olen = oldstr.length();
 	while ((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont
@@ -659,8 +663,8 @@ docstring const subst_string(docstring const & a,
 {
 	BOOST_ASSERT(!oldstr.empty());
 	docstring lstr = a;
-	docstring::size_type i = 0;
-	docstring::size_type const olen = oldstr.length();
+	size_t i = 0;
+	size_t const olen = oldstr.length();
 	while ((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont
@@ -706,9 +710,9 @@ docstring const trim(docstring const & a, char const * p)
 	if (a.empty() || !*p)
 		return a;
 
-	docstring s = lyx::from_ascii(p);
-	docstring::size_type r = a.find_last_not_of(s);
-	docstring::size_type l = a.find_first_not_of(s);
+	docstring s = from_ascii(p);
+	size_t r = a.find_last_not_of(s);
+	size_t l = a.find_first_not_of(s);
 
 	// Is this the minimal test? (lgb)
 	if (r == docstring::npos && l == docstring::npos)
@@ -725,8 +729,8 @@ string const trim(string const & a, char const * p)
 	if (a.empty() || !*p)
 		return a;
 
-	string::size_type r = a.find_last_not_of(p);
-	string::size_type l = a.find_first_not_of(p);
+	size_t r = a.find_last_not_of(p);
+	size_t l = a.find_first_not_of(p);
 
 	// Is this the minimal test? (lgb)
 	if (r == string::npos && l == string::npos)
@@ -743,7 +747,7 @@ string const rtrim(string const & a, char const * p)
 	if (a.empty() || !*p)
 		return a;
 
-	string::size_type r = a.find_last_not_of(p);
+	size_t r = a.find_last_not_of(p);
 
 	// Is this test really needed? (Lgb)
 	if (r == string::npos)
@@ -760,7 +764,7 @@ docstring const rtrim(docstring const & a, char const * p)
 	if (a.empty() || !*p)
 		return a;
 
-	docstring::size_type r = a.find_last_not_of(from_ascii(p));
+	size_t r = a.find_last_not_of(from_ascii(p));
 
 	// Is this test really needed? (Lgb)
 	if (r == docstring::npos)
@@ -775,7 +779,7 @@ string const ltrim(string const & a, char const * p)
 	BOOST_ASSERT(p);
 	if (a.empty() || !*p)
 		return a;
-	string::size_type l = a.find_first_not_of(p);
+	size_t l = a.find_first_not_of(p);
 	if (l == string::npos)
 		return string();
 	return a.substr(l, string::npos);
@@ -799,7 +803,7 @@ template<typename String, typename Char> inline
 String const doSplit(String const & a, String & piece, Char delim)
 {
 	String tmp;
-	typename String::size_type i = a.find(delim);
+	size_t i = a.find(delim);
 	if (i == a.length() - 1) {
 		piece = a.substr(0, i);
 	} else if (i != String::npos) {
@@ -818,7 +822,7 @@ template<typename Char> inline
 docstring const doSplit(docstring const & a, docstring & piece, Char delim)
 {
 	docstring tmp;
-	typename docstring::size_type i = a.find(delim);
+	size_t i = a.find(delim);
 	if (i == a.length() - 1) {
 		piece = a.substr(0, i);
 	} else if (i != docstring::npos) {
@@ -851,7 +855,7 @@ docstring const split(docstring const & a, docstring & piece, char_type delim)
 string const split(string const & a, char delim)
 {
 	string tmp;
-	string::size_type i = a.find(delim);
+	size_t i = a.find(delim);
 	if (i != string::npos) // found delim
 		tmp = a.substr(i + 1);
 	return tmp;
@@ -862,7 +866,7 @@ string const split(string const & a, char delim)
 string const rsplit(string const & a, string & piece, char delim)
 {
 	string tmp;
-	string::size_type i = a.rfind(delim);
+	size_t i = a.rfind(delim);
 	if (i != string::npos) { // delimiter was found
 		piece = a.substr(0, i);
 		tmp = a.substr(i + 1);
@@ -878,7 +882,7 @@ docstring const escape(docstring const & lab)
 	char_type hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
 				   '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	docstring enc;
-	for (docstring::size_type i = 0; i < lab.length(); ++i) {
+	for (size_t i = 0; i < lab.length(); ++i) {
 		char_type c = lab[i];
 		if (c >= 128 || c == '=' || c == '%') {
 			// Although char_type is a 32 bit type we know that
@@ -915,8 +919,8 @@ getVectorFromStringT(String const & str, String const & delim)
 	if (str.empty())
 		return vec;
 	String keys = rtrim(str);
-	for(;;) {
-		typename String::size_type const idx = keys.find(delim);
+	while (true) {
+		size_t const idx = keys.find(delim);
 		if (idx == String::npos) {
 			vec.push_back(ltrim(keys));
 			break;
@@ -924,7 +928,7 @@ getVectorFromStringT(String const & str, String const & delim)
 		String const key = trim(keys.substr(0, idx));
 		if (!key.empty())
 			vec.push_back(key);
-		typename String::size_type const start = idx + delim.size();
+		size_t const start = idx + delim.size();
 		keys = keys.substr(start);
 	}
 	return vec;
@@ -937,7 +941,7 @@ getVectorFromStringT(String const & str, String const & delim)
 #endif
 }
 
-} // anon
+} // namespace anon
 
 
 vector<string> const getVectorFromString(string const & str,
@@ -992,7 +996,7 @@ docstring const externalLineEnding(docstring const & str)
 	return subst(str, '\n', '\r');
 #elif defined (_WIN32) || (defined (__CYGWIN__) && defined (X_DISPLAY_MISSING))
 	// Windows clipboard uses \r\n for lineendings, and we use \n
-	return subst(str, lyx::from_ascii("\n"), lyx::from_ascii("\r\n"));
+	return subst(str, from_ascii("\n"), from_ascii("\r\n"));
 #else
 	return str;
 #endif
@@ -1001,8 +1005,7 @@ docstring const externalLineEnding(docstring const & str)
 
 docstring const internalLineEnding(docstring const & str)
 {
-	docstring const s = subst(str,
-			lyx::from_ascii("\r\n"), lyx::from_ascii("\n"));
+	docstring const s = subst(str, from_ascii("\r\n"), from_ascii("\n"));
 	return subst(s, '\r', '\n');
 }
 
@@ -1010,91 +1013,91 @@ docstring const internalLineEnding(docstring const & str)
 template<>
 docstring bformat(docstring const & fmt, int arg1)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$d")));
-	docstring const str = subst(fmt, lyx::from_ascii("%1$d"), convert<docstring>(arg1));
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$d")));
+	docstring const str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
 template<>
 docstring bformat(docstring const & fmt, long arg1)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$d")));
-	docstring const str = subst(fmt, lyx::from_ascii("%1$d"), convert<docstring>(arg1));
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$d")));
+	docstring const str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
 template<>
 docstring bformat(docstring const & fmt, unsigned int arg1)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$d")));
-	docstring const str = subst(fmt, lyx::from_ascii("%1$d"), convert<docstring>(arg1));
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$d")));
+	docstring const str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
 template<>
 docstring bformat(docstring const & fmt, docstring arg1)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
-	docstring const str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$s")));
+	docstring const str = subst(fmt, from_ascii("%1$s"), arg1);
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
 template<>
 docstring bformat(docstring const & fmt, char * arg1)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
-	docstring const str = subst(fmt, lyx::from_ascii("%1$s"), lyx::from_ascii(arg1));
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$s")));
+	docstring const str = subst(fmt, from_ascii("%1$s"), from_ascii(arg1));
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
 template<>
 docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$s")));
-	docstring str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
-	str = subst(str, lyx::from_ascii("%2$s"), arg2);
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$s")));
+	BOOST_ASSERT(contains(fmt, from_ascii("%2$s")));
+	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
+	str = subst(str, from_ascii("%2$s"), arg2);
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
 template<>
 docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$s")));
-	docstring str = subst(fmt, lyx::from_ascii("%1$s"), lyx::from_ascii(arg1));
-	str = subst(fmt, lyx::from_ascii("%2$s"), arg2);
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$s")));
+	BOOST_ASSERT(contains(fmt, from_ascii("%2$s")));
+	docstring str = subst(fmt, from_ascii("%1$s"), from_ascii(arg1));
+	str = subst(fmt, from_ascii("%2$s"), arg2);
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
 template<>
 docstring bformat(docstring const & fmt, int arg1, int arg2)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$d")));
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$d")));
-	docstring str = subst(fmt, lyx::from_ascii("%1$d"), convert<docstring>(arg1));
-	str = subst(str, lyx::from_ascii("%2$d"), convert<docstring>(arg2));
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$d")));
+	BOOST_ASSERT(contains(fmt, from_ascii("%2$d")));
+	docstring str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
+	str = subst(str, from_ascii("%2$d"), convert<docstring>(arg2));
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
 template<>
 docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$s")));
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%3$s")));
-	docstring str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
-	str = subst(str, lyx::from_ascii("%2$s"), arg2);
-	str = subst(str, lyx::from_ascii("%3$s"), arg3);
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$s")));
+	BOOST_ASSERT(contains(fmt, from_ascii("%2$s")));
+	BOOST_ASSERT(contains(fmt, from_ascii("%3$s")));
+	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
+	str = subst(str, from_ascii("%2$s"), arg2);
+	str = subst(str, from_ascii("%3$s"), arg3);
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 
@@ -1102,15 +1105,15 @@ template<>
 docstring bformat(docstring const & fmt,
 	       docstring arg1, docstring arg2, docstring arg3, docstring arg4)
 {
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%1$s")));
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%2$s")));
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%3$s")));
-	BOOST_ASSERT(contains(fmt, lyx::from_ascii("%4$s")));
-	docstring str = subst(fmt, lyx::from_ascii("%1$s"), arg1);
-	str = subst(str, lyx::from_ascii("%2$s"), arg2);
-	str = subst(str, lyx::from_ascii("%3$s"), arg3);
-	str = subst(str, lyx::from_ascii("%4$s"), arg4);
-	return subst(str, lyx::from_ascii("%%"), lyx::from_ascii("%"));
+	BOOST_ASSERT(contains(fmt, from_ascii("%1$s")));
+	BOOST_ASSERT(contains(fmt, from_ascii("%2$s")));
+	BOOST_ASSERT(contains(fmt, from_ascii("%3$s")));
+	BOOST_ASSERT(contains(fmt, from_ascii("%4$s")));
+	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
+	str = subst(str, from_ascii("%2$s"), arg2);
+	str = subst(str, from_ascii("%3$s"), arg3);
+	str = subst(str, from_ascii("%4$s"), arg4);
+	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
 } // namespace support

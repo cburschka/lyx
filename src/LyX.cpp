@@ -139,7 +139,7 @@ void reconfigureUserLyXDir()
 	string const configure_command = package().configure_command();
 
 	lyxerr << to_utf8(_("LyX: reconfiguring user directory")) << endl;
-	support::Path p(package().user_support());
+	support::PathChanger p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
 	lyxerr << "LyX: " << to_utf8(_("Done!")) << endl;

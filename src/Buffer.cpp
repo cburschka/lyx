@@ -1313,7 +1313,7 @@ int Buffer::runChktex()
 	string const name = addName(path.absFilename(), latexName());
 	string const org_path = filePath();
 
-	support::Path p(path); // path to LaTeX file
+	support::PathChanger p(path); // path to LaTeX file
 	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary

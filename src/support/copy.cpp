@@ -23,16 +23,16 @@
 #endif
 
 
-namespace lyx {
-
-
 using std::ifstream;
 using std::ofstream;
 using std::ios;
 using std::string;
 
 
-bool lyx::support::chmod(FileName const & file, unsigned long int mode)
+namespace lyx {
+namespace support {
+
+bool chmod(FileName const & file, unsigned long int mode)
 {
 #if defined (HAVE_CHMOD) && defined (HAVE_MODE_T)
 	if (::chmod(file.toFilesystemEncoding().c_str(), mode_t(mode)) != 0)
@@ -44,14 +44,15 @@ bool lyx::support::chmod(FileName const & file, unsigned long int mode)
 }
 
 
-bool lyx::support::copy(FileName const & from, FileName const & to, unsigned long int mode)
+bool copy(FileName const & from, FileName const & to, unsigned long int mode)
 {
 	ifstream ifs(from.toFilesystemEncoding().c_str(), ios::binary | ios::in);
 	if (!ifs)
 		return false;
 
 	if (mode != (unsigned long int)-1) {
-		ofstream ofs(to.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
+		ofstream ofs(to.toFilesystemEncoding().c_str(),
+			ios::binary | ios::out | ios::trunc);
 		if (!ofs)
 			return false;
 		ofs.close();
@@ -59,7 +60,8 @@ bool lyx::support::copy(FileName const & from, FileName const & to, unsigned lon
 			return false;
 	}
 
-	ofstream ofs(to.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
+	ofstream ofs(to.toFilesystemEncoding().c_str(),
+			ios::binary | ios::out | ios::trunc);
 	if (!ofs)
 		return false;
 
@@ -67,5 +69,5 @@ bool lyx::support::copy(FileName const & from, FileName const & to, unsigned lon
 	return ofs.good();
 }
 
-
+} // namespace support
 } // namespace lyx

@@ -20,7 +20,7 @@ namespace lyx {
 #endif
 
 
-void lyx::support::abort()
+void support::abort()
 {
 	::abort();
 }

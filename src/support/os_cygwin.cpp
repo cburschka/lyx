@@ -30,8 +30,6 @@
 using std::endl;
 using std::string;
 
-using lyx::support::contains;
-
 
 namespace lyx {
 namespace support {

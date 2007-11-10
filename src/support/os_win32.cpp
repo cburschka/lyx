@@ -66,9 +66,6 @@
 using std::endl;
 using std::string;
 
-using lyx::support::runCommand;
-using lyx::support::split;
-
 
 namespace lyx {
 namespace support {
@@ -174,9 +171,9 @@ string current_root()
 
 docstring::size_type common_path(docstring const & p1, docstring const & p2)
 {
-	docstring::size_type i = 0;
-	docstring::size_type const p1_len = p1.length();
-	docstring::size_type const p2_len = p2.length();
+	size_t i = 0;
+	size_t const p1_len = p1.length();
+	size_t const p2_len = p2.length();
 	while (i < p1_len && i < p2_len && uppercase(p1[i]) == uppercase(p2[i]))
 		++i;
 	if ((i < p1_len && i < p2_len)
@@ -204,9 +201,7 @@ string external_path(string const & p)
 }
 
 
-namespace {
-
-string const get_long_path(string const & short_path)
+static string const get_long_path(string const & short_path)
 {
 	// GetLongPathName needs the path in file system encoding.
 	// We can use to_local8bit, since file system encoding and the
@@ -224,8 +219,6 @@ string const get_long_path(string const & short_path)
 
 	return (result == 0) ? short_path : to_utf8(from_filesystem8bit(&long_path[0]));
 }
-
-} // namespace anon
 
 
 string internal_path(string const & p)
@@ -386,8 +379,9 @@ bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
 
 bool autoOpenFile(string const & filename, auto_open_mode const mode)
 {
-	// reference: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc
-	//                 /platform/shell/reference/functions/shellexecute.asp
+	// reference: http://msdn.microsoft.com/library/default.asp
+	// ?url=/library/en-us/shellcc/platform/shell/reference/functions/
+	// shellexecute.asp
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	return reinterpret_cast<int>(ShellExecute(NULL, action,
 		to_local8bit(from_utf8(filename)).c_str(), NULL, NULL, 1)) > 32;

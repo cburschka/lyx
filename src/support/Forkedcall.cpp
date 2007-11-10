@@ -76,7 +76,7 @@ public:
 		if (secs > 0) {
 			new Murder(secs, pid);
 		} else if (pid != 0) {
-			lyx::support::kill(pid, SIGKILL);
+			support::kill(pid, SIGKILL);
 		}
 	}
 
@@ -84,7 +84,7 @@ public:
 	void kill()
 	{
 		if (pid_ != 0) {
-			lyx::support::kill(pid_, SIGKILL);
+			support::kill(pid_, SIGKILL);
 		}
 		lyxerr << "Killed " << pid_ << std::endl;
 		delete this;
@@ -166,7 +166,7 @@ bool ForkedProcess::running() const
 #endif
 
 	// Racy of course, but it will do.
-	if (lyx::support::kill(pid(), 0) && errno == ESRCH)
+	if (support::kill(pid(), 0) && errno == ESRCH)
 		return false;
 	return true;
 }
@@ -188,7 +188,7 @@ void ForkedProcess::kill(int tol)
 		Murder::killItDead(0, pid());
 
 	} else {
-		int ret = lyx::support::kill(pid(), SIGHUP);
+		int ret = support::kill(pid(), SIGHUP);
 
 		// The process is already dead if wait_for_death is false
 		bool const wait_for_death = (ret == 0 && errno != ESRCH);
