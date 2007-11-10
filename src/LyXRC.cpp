@@ -107,6 +107,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\language_global_options", LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS },
 	{ "\\language_package", LyXRC::RC_LANGUAGE_PACKAGE },
 	{ "\\language_use_babel", LyXRC::RC_LANGUAGE_USE_BABEL },
+	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\load_session", LyXRC::RC_LOADSESSION },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
@@ -269,6 +270,7 @@ void LyXRC::setDefaults() {
 	language_package = "\\usepackage{babel}";
 	language_command_begin = "\\selectlanguage{$$lang}";
 	language_command_local = "\\foreignlanguage{$$lang}{";
+	sort_layouts = false;
 	default_language = "english";
 	show_banner = true;
 	windows_style_tex_paths = false;
@@ -1178,6 +1180,11 @@ int LyXRC::read(Lexer & lexrc)
 					convert<unsigned int>(lexrc.getString());
 			break;
 
+		case RC_SORT_LAYOUTS:
+			if (lexrc.next())
+				sort_layouts = lexrc.getBool();
+			break;
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1340,7 +1347,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-
+	case RC_SORT_LAYOUTS:
+		if (ignore_system_lyxrc ||
+		    sort_layouts != system_lyxrc.sort_layouts) {
+			os << "# Sort layouts alphabetically.\n"
+			   << "\\sort_layouts " << convert<string>(sort_layouts) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_VIEWDVI_PAPEROPTION:
 		if (ignore_system_lyxrc ||
 		    view_dvi_paper_option

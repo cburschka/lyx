@@ -76,7 +76,7 @@ public:
 	void showMiniBuffer(bool);
 	void openMenu(docstring const &);
 	void openLayoutList();
-	void updateLayoutChoice();
+	void updateLayoutChoice(bool force);
 	bool isToolbarVisible(std::string const & id);
 	void updateToolbars();
 	ToolbarInfo * getToolbarInfo(std::string const & name);

@@ -295,10 +295,10 @@ void GuiToolbars::setLayout(docstring const & layout)
 }
 
 
-bool GuiToolbars::updateLayoutList(TextClassPtr textclass)
+bool GuiToolbars::updateLayoutList(TextClassPtr textclass, bool force)
 {
 	// update the layout display
-	if (last_textclass_ != textclass) {
+	if (last_textclass_ != textclass || force) {
 		if (layout_)
 			layout_->updateContents();
 		last_textclass_ = textclass;

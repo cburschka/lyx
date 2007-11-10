@@ -79,6 +79,7 @@ public:
 		RC_LANGUAGE_GLOBAL_OPTIONS,
 		RC_LANGUAGE_PACKAGE,
 		RC_LANGUAGE_USE_BABEL,
+		RC_SORT_LAYOUTS,
 		RC_USELASTFILEPOS,
 		RC_LOADSESSION,
 		RC_MAKE_BACKUP,
@@ -375,6 +376,8 @@ public:
 	bool use_converter_cache;
 	/// The maximum age of cache files in seconds
 	unsigned int converter_cache_maxage;
+	/// Sort layouts alphabetically
+	bool sort_layouts;
 };
 
 

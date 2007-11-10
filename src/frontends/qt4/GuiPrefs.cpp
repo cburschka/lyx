@@ -1619,6 +1619,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(cursorFollowsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(sortEnvironmentsCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(autoSaveSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(autoSaveCB, SIGNAL(clicked()),
@@ -1645,6 +1647,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	}
 	rc.geometry_xysaved = loadWindowLocationCB->isChecked();
 	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
+	rc.sort_layouts = sortEnvironmentsCB->isChecked();
 	rc.autosave = autoSaveSB->value() * 60;
 	rc.make_backup = autoSaveCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
@@ -1665,6 +1668,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 	}
 	loadWindowLocationCB->setChecked(rc.geometry_xysaved);
 	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
+	sortEnvironmentsCB->setChecked(rc.sort_layouts);
 	// convert to minutes
 	int mins(rc.autosave / 60);
 	if (rc.autosave && !mins)

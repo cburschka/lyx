@@ -2013,6 +2013,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 
+			if (lyx_view_ && lyx_view_->buffer())
+				lyx_view_->updateLayoutChoice(true);
+
 			/// We force the redraw in any case because there might be
 			/// some screen font changes.
 			/// FIXME: only the current view will be updated. the Gui
@@ -2098,7 +2101,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			theSelection().haveSelection(view()->cursor().selection());
 
 			if (view()->cursor().inTexted()) {
-				lyx_view_->updateLayoutChoice();
+				lyx_view_->updateLayoutChoice(false);
 			}
 		}
 	}
@@ -2587,6 +2590,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USE_PIXMAP_CACHE:
 	case LyXRC::RC_USE_SPELL_LIB:
 	case LyXRC::RC_VIEWDVI_PAPEROPTION:
+	case LyXRC::RC_SORT_LAYOUTS:
 	case LyXRC::RC_VIEWER:
 	case LyXRC::RC_LAST:
 		break;

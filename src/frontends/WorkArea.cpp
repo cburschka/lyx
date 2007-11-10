@@ -206,7 +206,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
-		lyx_view_->updateLayoutChoice();
+		lyx_view_->updateLayoutChoice(false);
 		lyx_view_->updateToolbars();
 	}
 
@@ -230,7 +230,7 @@ void WorkArea::resizeBufferView()
 	// We are already inside a paint event.
 	lyx_view_->setBusy(true);
 	buffer_view_->resize(width(), height());
-	lyx_view_->updateLayoutChoice();
+	lyx_view_->updateLayoutChoice(false);
 	lyx_view_->setBusy(false);
 }
 

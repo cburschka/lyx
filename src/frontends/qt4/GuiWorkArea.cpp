@@ -256,7 +256,7 @@ void GuiWorkArea::adjustViewWithScrollBar(int action)
 
 	if (lyxrc.cursor_follows_scrollbar) {
 		buffer_view_->setCursorFromScrollbar();
-		lyx_view_->updateLayoutChoice();
+		lyx_view_->updateLayoutChoice(false);
 	}
 	// Show the cursor immediately after any operation.
 	startBlinkingCursor();

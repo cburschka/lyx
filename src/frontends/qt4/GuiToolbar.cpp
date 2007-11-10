@@ -33,6 +33,7 @@
 #include "Action.h"
 #include "qt_helpers.h"
 #include "InsertTableWidget.h"
+#include "LyXRC.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -274,6 +275,29 @@ void GuiLayoutBox::set(docstring const & layout)
 }
 
 
+void GuiLayoutBox::addItemSort(QString const & item, bool sorted)
+{
+	int const end = count();
+	if (!sorted || end < 2 || item[0].category() != QChar::Letter_Uppercase) {
+		addItem(item);
+		return;
+	}
+
+	// Let the default one be at the beginning
+	int i = 1;
+	for (setCurrentIndex(i); currentText() < item;) {
+		// e.g. --Separator--
+		if (currentText()[0].category() != QChar::Letter_Uppercase)
+			break;
+		if (++i == end)
+			break;
+		setCurrentIndex(i);
+	}
+
+	insertItem(i, item);
+}
+
+
 void GuiLayoutBox::updateContents()
 {
 	TextClass const & tc = textClass(owner_);
@@ -285,8 +309,10 @@ void GuiLayoutBox::updateContents()
 	TextClass::const_iterator const end = tc.end();
 	for (; it != end; ++it) {
 		// ignore obsolete entries
-		addItem(toqstr(translateIfPossible((*it)->name())));
+		addItemSort(toqstr(translateIfPossible((*it)->name())), lyxrc.sort_layouts);
 	}
+
+	setCurrentIndex(0);
 
 	// needed to recalculate size hint
 	hide();

@@ -611,7 +611,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	// require bv_->text.
 	getDialogs().updateBufferDependent(true);
 	updateToolbars();
-	updateLayoutChoice();
+	updateLayoutChoice(false);
 	updateWindowTitle();
 	updateStatusBar();
 }
@@ -888,7 +888,7 @@ void GuiView::openLayoutList()
 }
 
 
-void GuiView::updateLayoutChoice()
+void GuiView::updateLayoutChoice(bool force)
 {
 	// Don't show any layouts without a buffer
 	if (!buffer()) {
@@ -897,7 +897,7 @@ void GuiView::updateLayoutChoice()
 	}
 
 	// Update the layout display
-	if (d.toolbars_->updateLayoutList(buffer()->params().getTextClassPtr())) {
+	if (d.toolbars_->updateLayoutList(buffer()->params().getTextClassPtr(), force)) {
 		d.current_layout = buffer()->params().getTextClass().defaultLayoutName();
 	}
 

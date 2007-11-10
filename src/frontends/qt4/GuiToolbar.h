@@ -43,6 +43,8 @@ public:
 	void set(docstring const & layout);
 	/// Populate the layout combobox.
 	void updateContents();
+	/// Add Item to Layout box according to sorting settings from preferences
+	void addItemSort(QString const & item, bool sorted);
 
 private Q_SLOTS:
 	void selected(const QString & str);

@@ -65,7 +65,7 @@ public:
 	/** Populate the layout combox - returns whether we did a full
 	 *  update or not
 	 */
-	bool updateLayoutList(TextClassPtr textclass);
+	bool updateLayoutList(TextClassPtr textclass, bool force);
 
 	/// Drop down the layout list.
 	void openLayoutList();

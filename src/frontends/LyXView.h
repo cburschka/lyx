@@ -141,7 +141,7 @@ public:
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 
 	/// updates the possible layouts selectable
-	virtual void updateLayoutChoice() = 0;
+	virtual void updateLayoutChoice(bool force) = 0;
 
 	/// update the toolbar
 	virtual void updateToolbars() = 0;
