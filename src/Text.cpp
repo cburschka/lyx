@@ -90,7 +90,7 @@ using support::bformat;
 using support::contains;
 using support::lowercase;
 using support::split;
-using support::rsplit;
+using support::subst;
 using support::uppercase;
 
 using cap::cutSelection;
@@ -1899,8 +1899,7 @@ docstring Text::getPossibleLabel(Cursor & cur) const
 	docstring par_text = pars_[pit].asString(cur.buffer(), false);
 	string piece;
 	// the return string of math matrices might contain linebreaks
-	// FIXME: unicode
-	par_text = from_utf8(rsplit(to_utf8(par_text), piece, '\n'));
+	par_text = subst(par_text, '\n', '-');
 	for (int i = 0; i < lyxrc.label_init_length; ++i) {
 		if (par_text.empty())
 			break;
