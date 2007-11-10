@@ -2499,6 +2499,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DATE_INSERT_FORMAT:
 	case LyXRC::RC_DEFAULT_LANGUAGE:
 	case LyXRC::RC_DEFAULT_PAPERSIZE:
+	case LyXRC::RC_DEFFILE:
 	case LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN:
 	case LyXRC::RC_DISPLAY_GRAPHICS:
 	case LyXRC::RC_DOCUMENTPATH:
