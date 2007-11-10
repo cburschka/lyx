@@ -21460,6 +21460,12 @@ Esto no es intuitivo y se corregirá en la siguiente versión de LyX.
 
 \begin_layout Section
 Definición de macros de ecuación
+\begin_inset LatexCommand label
+name "sec:Definición de macros"
+
+\end_inset
+
+
 \begin_inset LatexCommand index
 name "Matemáticas ! Macros de ecuación"
 
@@ -25058,7 +25064,7 @@ Pregunta: ¿Quién fue el primer Nobel de Física?
 
 \begin_layout Standard
 \begin_inset Branch Respuesta
-status collapsed
+status open
 
 \begin_layout Standard
 Respuesta: Wilhelm Conrad Röntgen
@@ -25067,6 +25073,219 @@ Respuesta: Wilhelm Conrad Röntgen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To use conditional output inside places where you cannot insert branch insets,
+ like inside equations, you can code special LaTeX definitions for each
+ branch.
+ For example you can define for the question branch
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+
+\lang english
+For an introduction to the LaTeX-syntax, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:LaTeX-Syntax"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+newcommand{
+\backslash
+question}[1]{#1}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+newcommand{
+\backslash
+answer}[1]{}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+and for the answer branch
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+newcommand{
+\backslash
+question}[1]{}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+newcommand{
+\backslash
+answer}[1]{#1}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Branch Pregunta
+status open
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+question}[1]{#1}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+answer}[1]{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Branch Respuesta
+status open
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+question}[1]{}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+answer}[1]{#1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Now it is possible to use the commands 
+\series bold
+
+\backslash
+question{\SpecialChar \ldots{}
+}
+\series default
+ and 
+\series bold
+
+\backslash
+answer{\SpecialChar \ldots{}
+}
+\series default
+ to obtain conditional output.
+ Here is an example formula where only the 
+\series bold
+
+\backslash
+question
+\series default
+ part appears:
+\begin_inset Formula \[
+x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Inside math, the same effect can be achieved using math macros, see section
+\lang spanish
+\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Definición de macros"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -35044,7 +35263,7 @@ LyX
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../../images/href-insert.png
+	filename ../../images/url-insert.png
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35061,7 +35280,7 @@ LyX
 
 \family sans
 Insertar\SpecialChar \menuseparator
-Hyperlink
+URL
 \end_layout
 
 \end_inset
