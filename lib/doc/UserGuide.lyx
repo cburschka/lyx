@@ -24405,25 +24405,79 @@ Answer: Wilhelm Conrad Röntgen
 
 \end_layout
 
-\begin_layout Subsection
-Making branches available to LaTeX
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-One problem with branches is, that it is not easily possible to use conditional
- output inside places where you cannot insert branch insets.
- Such places are, e.g., phrases found inside equations, or the LaTeX-processable
- 
-\begin_inset Quotes eld
+To use conditional output inside places where you cannot insert branch insets,
+ like inside equations, you can code special LaTeX definitions for each
+ branch.
+ For example you can define for the question branch
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+For an introduction to the LaTeX-syntax, see section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:LaTeX-Syntax"
+
 \end_inset
 
-special
-\begin_inset Quotes erd
+.
+\end_layout
+
 \end_inset
 
- strings inside XFig graphics.
- In these cases, it is possible to code special LaTeX definitions for each
- branch, as follows (visible only in the LyX source of this doc):
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+question}[1]{#1}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+answer}[1]{}
+\end_layout
+
+\begin_layout Standard
+and for the answer branch
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+question}[1]{}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+answer}[1]{#1}
 \end_layout
 
 \begin_layout Standard
@@ -24440,7 +24494,7 @@ status open
 \backslash
 newcommand{
 \backslash
-que}[1]{#1}
+question}[1]{#1}
 \end_layout
 
 \begin_layout Standard
@@ -24449,7 +24503,7 @@ que}[1]{#1}
 \backslash
 newcommand{
 \backslash
-ans}[1]{}
+answer}[1]{}
 \end_layout
 
 \end_inset
@@ -24476,7 +24530,7 @@ status open
 \backslash
 newcommand{
 \backslash
-que}[1]{}
+question}[1]{}
 \end_layout
 
 \begin_layout Standard
@@ -24485,7 +24539,7 @@ que}[1]{}
 \backslash
 newcommand{
 \backslash
-ans}[1]{#1}
+answer}[1]{#1}
 \end_layout
 
 \end_inset
@@ -24496,11 +24550,6 @@ ans}[1]{#1}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Note the use of the ERT inset inside the branch insets to encapsulate the
- raw LaTeX code; see below.
 \end_layout
 
 \begin_layout Standard
@@ -24508,20 +24557,26 @@ Now it is possible to use the commands
 \series bold
 
 \backslash
-que{\SpecialChar \ldots{}
+question{\SpecialChar \ldots{}
 }
 \series default
  and 
 \series bold
 
 \backslash
-ans{\SpecialChar \ldots{}
+answer{\SpecialChar \ldots{}
 }
 \series default
- to obtain conditional output, both inside math and inside XFig graphics.
- Like
+ to obtain conditional output.
+ Here is an example formula where only the 
+\series bold
+
+\backslash
+question
+\series default
+ part appears:
 \begin_inset Formula \[
-x^{2}-2x+1=\que{?}\ans{\left(x-1\right)^{2}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
 
 \end_inset
 
@@ -24529,8 +24584,8 @@ x^{2}-2x+1=\que{?}\ans{\left(x-1\right)^{2}}.\]
 \end_layout
 
 \begin_layout Standard
-Inside math, the same effect can be achieved using math macros, cf.
- Section 
+Inside math, the same effect can be achieved using math macros, see section\InsetSpace ~
+
 \begin_inset LatexCommand ref
 reference "sec:math-macros"
 

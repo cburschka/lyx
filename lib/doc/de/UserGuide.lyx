@@ -93,11 +93,11 @@
 \paperorientation portrait
 \branch Frage
 \selected 1
-\color #ff0000
+\color #00ff00
 \end_branch
 \branch Antwort
 \selected 0
-\color #00ff00
+\color #aa55ff
 \end_branch
 \secnumdepth 3
 \tocdepth 3
@@ -27288,8 +27288,7 @@ Zuerst müssen Sie die verschiedenen Zweige definieren.
  Das machen Sie in 
 \family sans
 Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Zweige
 \family default
 .
@@ -27369,6 +27368,206 @@ Antwort: Wilhelm Conrad Röntgen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um konditionale Ausgaben zu erzeugen wo keine Zweige angegeben werden können,
+ wie in Formeln, können spezielle LaTeX-Definitionen für jeden Zweig angegeben
+ werden.
+ Man kann z.\InsetSpace \thinspace{}
+B.
+ für den Frage Zweig definieren:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Eine Einführung in die LaTeX-Syntax ist in Abschnitt\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:LaTeX-Syntax"
+
+\end_inset
+
+ zu finden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+Frage}[1]{#1}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+Antwort}[1]{}
+\end_layout
+
+\begin_layout Standard
+und für den Antwort Zweig
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+Frage}[1]{}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand{
+\backslash
+Antwort}[1]{#1}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Branch Frage
+status open
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+Frage}[1]{#1}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+Antwort}[1]{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Branch Antwort
+status open
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+Frage}[1]{}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+Antwort}[1]{#1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nun ist es möglich die Befehle 
+\series bold
+
+\backslash
+Frage{\SpecialChar \ldots{}
+}
+\series default
+ und 
+\series bold
+
+\backslash
+Antwort{\SpecialChar \ldots{}
+}
+\series default
+ zu verwenden um eine konditionale Ausgabe zu erhalten.
+ Hier ist eine Beispielformel in der nur der 
+\series bold
+
+\backslash
+Frage
+\series default
+ Teil erscheint:
+\begin_inset Formula \[
+x^{2}-2x-2\Rightarrow\Frage{x_{1}}\Antwort{x_{2}}=1\Frage{+\sqrt{3}}\Antwort{-\sqrt{3}}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Innerhalb von Formeln, kann dasselbe auch mit Hilfe von Makros geschehen,
+ siehe Abschnitt\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "Makro-erzeugen"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -27769,7 +27968,7 @@ im LaTeX-Vorspann einfügen.
  Bevor Sie also ein großes Dokument schreiben, ist es sinnvoll, dass Sie
  sich zunächst die Dokumentation der Dokumentklasse durchlesen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 
