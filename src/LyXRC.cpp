@@ -107,7 +107,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\language_global_options", LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS },
 	{ "\\language_package", LyXRC::RC_LANGUAGE_PACKAGE },
 	{ "\\language_use_babel", LyXRC::RC_LANGUAGE_USE_BABEL },
-	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\load_session", LyXRC::RC_LOADSESSION },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
@@ -154,6 +153,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
+	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
@@ -176,7 +176,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\user_name", LyXRC::RC_USER_NAME },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
 	// compatibility with versions older than 1.4.0 only
-	{ "\\viewer" ,LyXRC::RC_VIEWER}
+	{ "\\viewer", LyXRC::RC_VIEWER}
 };
 
 const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
