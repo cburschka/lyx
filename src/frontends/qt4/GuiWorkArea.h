@@ -117,6 +117,12 @@ public:
 	/// hide the cursor
 	virtual void removeCursor();
 
+	void setWindowTitle(docstring const & t, docstring const & it);
+
+Q_SIGNALS:
+	///
+	void titleChanged(GuiWorkArea *);
+
 private:
 	///
 	void focusInEvent(QFocusEvent *);
@@ -183,6 +189,7 @@ class TabWorkArea : public QTabWidget
 	Q_OBJECT
 public:
 	TabWorkArea(QWidget * parent = 0);
+
 	void showBar(bool show);
 	void closeAll();
 	bool setCurrentWorkArea(GuiWorkArea *);
@@ -199,6 +206,8 @@ public Q_SLOTS:
 	void on_currentTabChanged(int index);
 	///
 	void closeCurrentTab();
+	///
+	void updateTabText(GuiWorkArea *);
 }; // TabWorkArea
 
 } // namespace frontend

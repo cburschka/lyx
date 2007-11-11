@@ -104,9 +104,23 @@ public:
 	/// Slot for Buffer::closing signal.
 	void close();
 
+	/// This function is called when the buffer readonly status change.
+	virtual void setReadOnly(bool);
+
+	/// Update window titles of all users.
+	virtual void updateWindowTitle();
+
 protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
+
+	/// set title of window.
+	/**
+	 * @param t main window title
+	 * @param it iconified (short) title
+	 */
+	virtual void setWindowTitle(docstring const & t, docstring const & it) = 0;
+
 	///
 	void dispatch(FuncRequest const & cmd0, KeyModifier = NoModifier);
 

@@ -158,9 +158,6 @@ public:
 	/// clear any temporary message and replace with current status
 	virtual void clearMessage() = 0;
 
-	/// updates the title of the window
-	void updateWindowTitle();
-
 	/// reset autosave timer
 	void resetAutosaveTimer();
 
@@ -186,10 +183,6 @@ public:
 	void structureChanged() { updateToc(); }
 	/// This function is called when some parsing error shows up.
 	void errors(std::string const & err) { showErrorList(err); }
-	/// This function is called when the buffer readonly status change.
-	void setReadOnly(bool on);
-	/// Update window titles of all users.
-	void updateTitles() { updateWindowTitle(); }
 	/// Reset autosave timers for all users.
 	void resetAutosaveTimers() { resetAutosaveTimer(); }
 
@@ -203,13 +196,6 @@ public:
 	void disconnectBuffer();
 
 private:
-	/**
-	 * setWindowTitle - set title of window
-	 * @param t main window title
-	 * @param it iconified (short) title
-	 */
-	virtual void setWindowTitle(docstring const & t, docstring const & it) = 0;
-
 	/// called on timeout
 	void autoSave();
 

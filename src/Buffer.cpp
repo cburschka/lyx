@@ -1996,15 +1996,15 @@ void Buffer::setBusy(bool on) const
 
 void Buffer::setReadOnly(bool on) const
 {
-	if (gui_)
-		gui_->setReadOnly(on);
+	if (pimpl_->wa_)
+		pimpl_->wa_->setReadOnly(on);
 }
 
 
 void Buffer::updateTitles() const
 {
-	if (gui_)
-		gui_->updateTitles();
+	if (pimpl_->wa_)
+		pimpl_->wa_->updateTitles();
 }
 
 

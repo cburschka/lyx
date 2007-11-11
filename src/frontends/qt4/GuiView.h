@@ -100,6 +100,9 @@ public Q_SLOTS:
 	void update_view_state_qt();
 
 	///
+	void updateWindowTitle(GuiWorkArea * wa);
+
+	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 
 	/// slots to change the icon size
@@ -133,13 +136,6 @@ private:
 	void dragEnterEvent(QDragEnterEvent * ev);
 	///
 	void dropEvent(QDropEvent * ev);
-
-	/**
-	 * setWindowTitle - set title of window
-	 * @param t main window title
-	 * @param it iconified (short) title
-	 */
-	virtual void setWindowTitle(docstring const & t, docstring const & it);
 
 	/// in order to catch Tab key press.
 	bool event(QEvent * e);

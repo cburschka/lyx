@@ -76,8 +76,6 @@ using std::vector;
 
 namespace lyx {
 
-using support::makeDisplayPath;
-
 extern bool quitting;
 
 namespace frontend {
@@ -541,10 +539,6 @@ void GuiView::setGeometry(unsigned int width,
 	
 	show();
 
-	// For an unknown reason, the Window title update is not effective for
-	// the second windows up until it is shown on screen (Qt bug?).
-	updateWindowTitle();
-
 	// after show geometry() has changed (Qt bug?)
 	// we compensate the drift when storing the position
 	d.posx_offset = 0;
@@ -563,23 +557,6 @@ void GuiView::setGeometry(unsigned int width,
 #endif
 #endif
 		}
-}
-
-
-void GuiView::setWindowTitle(docstring const & t, docstring const & it)
-{
-	QString title = windowTitle();
-	QString new_title = toqstr(t);
-	if (title != new_title) {
-		QMainWindow::setWindowTitle(new_title);
-		QMainWindow::setWindowIconText(toqstr(it));
-	}
-	if (Buffer const * buf = buffer()) {
-		QString tabtext = toqstr(buf->fileName().displayName(30));
-		d.current_work_area_->setWindowTitle(tabtext);
-		TabWorkArea * twa = d.currentTabWorkArea();
-		twa->setTabText(twa->currentIndex(), tabtext);
-	}
 }
 
 
@@ -632,12 +609,25 @@ void GuiView::update_view_state_qt()
 }
 
 
+void GuiView::updateWindowTitle(GuiWorkArea * wa)
+{
+	if (wa != d.current_work_area_)
+		return;
+	setWindowTitle(qt_("LyX: ") + wa->windowTitle());
+	setWindowIconText(wa->windowIconText());
+}
+
+
 void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 {
 	disconnectBuffer();
 	disconnectBufferView();
 	connectBufferView(wa->bufferView());
 	connectBuffer(wa->bufferView().buffer());
+	d.current_work_area_ = wa;
+	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
+		this, SLOT(updateWindowTitle(GuiWorkArea *)));
+	updateWindowTitle(wa);
 
 	updateToc();
 	// Buffer-dependent dialogs should be updated or
@@ -646,7 +636,6 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	getDialogs().updateBufferDependent(true);
 	updateToolbars();
 	updateLayoutChoice(false);
-	updateWindowTitle();
 	updateStatusBar();
 }
 
@@ -724,8 +713,10 @@ bool GuiView::event(QEvent * e)
 			connectBuffer(bv.buffer());
 			// The document structure, name and dialogs might have
 			// changed in another view.
-			updateWindowTitle();
 			getDialogs().updateBufferDependent(true);
+		} else {
+			setWindowTitle(qt_("LyX"));
+			setWindowIconText(qt_("LyX"));
 		}
 		return QMainWindow::event(e);
 	}
@@ -762,8 +753,8 @@ bool GuiView::focusNextPrevChild(bool /*next*/)
 
 void GuiView::showView()
 {
-	QMainWindow::setWindowTitle(qt_("LyX"));
-	QMainWindow::show();
+	setWindowTitle(qt_("LyX"));
+	show();
 	updateFloatingGeometry();
 }
 
@@ -853,7 +844,10 @@ WorkArea * GuiView::addWorkArea(Buffer & buffer)
 		addTabWorkArea();
 
 	TabWorkArea * tab_widget = d.currentTabWorkArea();
-	tab_widget->addTab(wa, toqstr(buffer.fileName().displayName(30)));
+	tab_widget->addTab(wa, wa->windowTitle());
+	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
+		tab_widget, SLOT(updateTabText(GuiWorkArea *)));
+
 	wa->bufferView().updateMetrics();
 
 	// Hide tabbar if there's only one tab.

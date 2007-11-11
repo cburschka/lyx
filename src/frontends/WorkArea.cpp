@@ -16,6 +16,7 @@
 #include "frontends/WorkArea.h"
 
 #include "frontends/Application.h"
+#include "frontends/Dialogs.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/LyXView.h"
 #include "frontends/WorkAreaManager.h"
@@ -35,14 +36,13 @@
 #include "MetricsInfo.h"
 
 #include "gettext.h"
-#include "support/ForkedcallsController.h"
 #include "support/FileName.h"
+#include "support/filetools.h"
+#include "support/ForkedcallsController.h"
 
 #include <boost/noncopyable.hpp>
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
-
-using lyx::support::ForkedcallsController;
 
 using std::endl;
 using std::min;
@@ -62,6 +62,11 @@ boost::signals::connection timecon;
 } // anon namespace
 
 namespace lyx {
+
+using support::ForkedcallsController;
+using support::makeDisplayPath;
+using support::onlyFilename;
+
 namespace frontend {
 
 WorkArea::WorkArea(Buffer & buffer, LyXView & lv)
@@ -309,6 +314,35 @@ void WorkArea::toggleCursor()
 	fcc.handleCompletedProcesses();
 
 	cursor_timeout_.restart();
+}
+
+void WorkArea::updateWindowTitle()
+{
+	docstring maximize_title;
+	docstring minimize_title;
+
+	Buffer & buf = buffer_view_->buffer();
+	string const cur_title = buf.absFileName();
+	if (!cur_title.empty()) {
+		maximize_title = makeDisplayPath(cur_title, 30);
+		minimize_title = from_utf8(onlyFilename(cur_title));
+		if (!buf.isClean()) {
+			maximize_title += _(" (changed)");
+			minimize_title += char_type('*');
+		}
+		if (buf.isReadonly())
+			maximize_title += _(" (read only)");
+	}
+
+	setWindowTitle(maximize_title, minimize_title);
+}
+
+
+void WorkArea::setReadOnly(bool)
+{
+	updateWindowTitle();
+	if (this == lyx_view_->currentWorkArea())
+		lyx_view_->getDialogs().updateBufferDependent(false);
 }
 
 } // namespace frontend

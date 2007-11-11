@@ -187,6 +187,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buf, LyXView & lv)
 	setAcceptDrops(true);
 	setMouseTracking(true);
 	setMinimumSize(100, 70);
+	updateWindowTitle();
 
 	viewport()->setAutoFillBackground(false);
 	// We don't need double-buffering nor SystemBackground on
@@ -493,6 +494,19 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 {
 	updateScreen();
 	update(x, y, w, h);
+}
+
+
+void GuiWorkArea::setWindowTitle(docstring const & t, docstring const & it)
+{
+	QString title = windowTitle();
+	QString new_title = toqstr(t);
+	if (title == new_title)
+		return;
+
+	QWidget::setWindowTitle(new_title);
+	QWidget::setWindowIconText(toqstr(it));
+	titleChanged(this);
 }
 
 
@@ -825,6 +839,15 @@ void TabWorkArea::on_currentTabChanged(int i)
 void TabWorkArea::closeCurrentTab()
 {
 	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
+}
+
+
+void TabWorkArea::updateTabText(GuiWorkArea * wa)
+{
+	int const i = indexOf(wa);
+	if (i < 0)
+		return;
+	setTabText(i, wa->windowTitle());
 }
 
 } // namespace frontend

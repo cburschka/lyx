@@ -52,6 +52,26 @@ void WorkAreaManager::closeAll()
 		(*work_areas_.begin())->close();
 }
 
+
+void WorkAreaManager::setReadOnly(bool on)
+{
+	for (list<WorkArea *>::iterator it = work_areas_.begin();
+		it != work_areas_.end(); ) {
+		(*it)->setReadOnly(on);
+		++it;
+	}
+}
+
+
+void WorkAreaManager::updateTitles()
+{
+	for (list<WorkArea *>::iterator it = work_areas_.begin();
+		it != work_areas_.end(); ) {
+		(*it)->updateWindowTitle();
+		++it;
+	}
+}
+
 } // namespace frontend
 } // namespace lyx
 

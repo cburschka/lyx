@@ -42,6 +42,12 @@ public:
 	///
 	void closeAll();
 
+	/// This function is called when the buffer readonly status change.
+	virtual void setReadOnly(bool);
+
+	/// Update window titles of all users.
+	virtual void updateTitles();
+
 private:
 	std::list<WorkArea *> work_areas_;
 };
