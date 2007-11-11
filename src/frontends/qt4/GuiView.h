@@ -90,6 +90,8 @@ public:
 
 	QMenu* createPopupMenu();
 
+	void addTabWorkArea();
+
 Q_SIGNALS:
 	void closing(int);
 

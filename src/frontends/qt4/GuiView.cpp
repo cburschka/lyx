@@ -62,6 +62,7 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QPushButton>
+#include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
 #include <QToolBar>
@@ -132,7 +133,8 @@ struct GuiView::GuiViewPrivate
 	int posx_offset;
 	int posy_offset;
 
-	TabWorkArea * tab_widget_;
+	GuiWorkArea * current_work_area_;
+	QSplitter * splitter_;
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
 	/// view's menubar
@@ -142,7 +144,18 @@ struct GuiView::GuiViewPrivate
 	///
 	docstring current_layout;
 
-	GuiViewPrivate() : posx_offset(0), posy_offset(0) {}
+	GuiViewPrivate()
+		: current_work_area_(0), posx_offset(0), posy_offset(0)
+	{}
+
+	~GuiViewPrivate()
+	{
+		delete splitter_;
+		delete bg_widget_;
+		delete stack_widget_;
+		delete menubar_;
+		delete toolbars_;
+	}
 
 	unsigned int smallIconSize;
 	unsigned int normalIconSize;
@@ -187,7 +200,6 @@ struct GuiView::GuiViewPrivate
 
 	void initBackground()
 	{
-		bg_widget_ = 0;
 		LYXERR(Debug::GUI) << "show banner: " << lyxrc.show_banner << endl;
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
@@ -196,11 +208,32 @@ struct GuiView::GuiViewPrivate
 
 	void setBackground()
 	{
-		if (!bg_widget_)
-			return;
-
 		stack_widget_->setCurrentWidget(bg_widget_);
 		bg_widget_->setUpdatesEnabled(true);
+	}
+
+	TabWorkArea * tabWorkArea(int i)
+	{
+		return dynamic_cast<TabWorkArea *>(splitter_->widget(i));
+	}
+
+	TabWorkArea * currentTabWorkArea()
+	{
+		if (splitter_->count() == 1)
+			// The first TabWorkArea is always the first one, if any.
+			return tabWorkArea(0);
+
+		TabWorkArea * tab_widget = 0;
+		for (int i = 0; i != splitter_->count(); ++i) {
+			QWidget * w = splitter_->widget(i);
+			if (!w->hasFocus())
+				continue;
+			tab_widget = dynamic_cast<TabWorkArea *>(w);
+			if (tab_widget)
+				break;
+		}
+
+		return tab_widget;
 	}
 };
 
@@ -227,21 +260,15 @@ GuiView::GuiView(int id)
 	setWindowIcon(QPixmap(":/images/lyx.png"));
 #endif
 
-	d.tab_widget_ = new TabWorkArea;
-	QObject::connect(d.tab_widget_, SIGNAL(currentWorkAreaChanged(GuiWorkArea *)),
-		this, SLOT(on_currentWorkAreaChanged(GuiWorkArea *)));
+
+	d.splitter_ = new QSplitter;
 
 	d.initBackground();
-	if (d.bg_widget_) {
-		LYXERR(Debug::GUI) << "stack widget!" << endl;
-		d.stack_widget_ = new QStackedWidget;
-		d.stack_widget_->addWidget(d.bg_widget_);
-		d.stack_widget_->addWidget(d.tab_widget_);
-		setCentralWidget(d.stack_widget_);
-	} else {
-		d.stack_widget_ = 0;
-		setCentralWidget(d.tab_widget_);
-	}
+	LYXERR(Debug::GUI) << "stack widget!" << endl;
+	d.stack_widget_ = new QStackedWidget;
+	d.stack_widget_->addWidget(d.bg_widget_);
+	d.stack_widget_->addWidget(d.splitter_);
+	setCentralWidget(d.stack_widget_);
 
 	// For Drag&Drop.
 	setAcceptDrops(true);
@@ -250,8 +277,6 @@ GuiView::GuiView(int id)
 
 GuiView::~GuiView()
 {
-	delete d.menubar_;
-	delete d.toolbars_;
 	delete &d;
 }
 
@@ -259,7 +284,12 @@ GuiView::~GuiView()
 void GuiView::close()
 {
 	quitting_by_menu_ = true;
-	d.tab_widget_->closeAll();
+	d.current_work_area_ = 0;
+	for (int i = 0; i != d.splitter_->count(); ++i) {
+		TabWorkArea * twa = d.tabWorkArea(i);
+		if (twa)
+			twa->closeAll();
+	}
 	QMainWindow::close();
 	quitting_by_menu_ = false;
 }
@@ -267,8 +297,10 @@ void GuiView::close()
 
 void GuiView::setFocus()
 {
-	if (d.tab_widget_->count())
-		d.tab_widget_->currentWidget()->setFocus();
+	if (d.current_work_area_)
+		d.current_work_area_->setFocus();
+	else
+		QWidget::setFocus();
 }
 
 
@@ -293,8 +325,7 @@ void GuiView::init()
 	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(update_view_state_qt()));
 
-	if (d.stack_widget_)
-		d.stack_widget_->setCurrentWidget(d.bg_widget_);
+	d.setBackground();
 }
 
 
@@ -543,9 +574,12 @@ void GuiView::setWindowTitle(docstring const & t, docstring const & it)
 		QMainWindow::setWindowTitle(new_title);
 		QMainWindow::setWindowIconText(toqstr(it));
 	}
-	if (Buffer const * buf = buffer())
-		d.tab_widget_->setTabText(d.tab_widget_->currentIndex(),
-			toqstr(buf->fileName().displayName(30)));
+	if (Buffer const * buf = buffer()) {
+		QString tabtext = toqstr(buf->fileName().displayName(30));
+		d.current_work_area_->setWindowTitle(tabtext);
+		TabWorkArea * twa = d.currentTabWorkArea();
+		twa->setTabText(twa->currentIndex(), tabtext);
+	}
 }
 
 
@@ -684,9 +718,8 @@ bool GuiView::event(QEvent * e)
 
 	case QEvent::WindowActivate: {
 		theApp()->setCurrentView(*this);
-		GuiWorkArea * wa = d.tab_widget_->currentWorkArea();
-		if (wa) {
-			BufferView & bv = wa->bufferView();
+		if (d.current_work_area_) {
+			BufferView & bv = d.current_work_area_->bufferView();
 			connectBufferView(bv);
 			connectBuffer(bv.buffer());
 			// The document structure, name and dialogs might have
@@ -698,7 +731,7 @@ bool GuiView::event(QEvent * e)
 	}
 	case QEvent::ShortcutOverride: {
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-		if (d.tab_widget_->count() == 0) {
+		if (!d.current_work_area_) {
 			theLyXFunc().setLyXView(this);
 			KeySymbol sym;
 			setKeySymbol(&sym, ke);
@@ -709,7 +742,7 @@ bool GuiView::event(QEvent * e)
 		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
 			KeySymbol sym;
 			setKeySymbol(&sym, ke);
-			currentWorkArea()->processKeySym(sym, NoModifier);
+			d.current_work_area_->processKeySym(sym, NoModifier);
 			e->accept();
 			return true;
 		}
@@ -737,13 +770,12 @@ void GuiView::showView()
 
 void GuiView::setBusy(bool yes)
 {
-	GuiWorkArea * wa = d.tab_widget_->currentWorkArea();
-	if (wa) {
-		wa->setUpdatesEnabled(!yes);
+	if (d.current_work_area_) {
+		d.current_work_area_->setUpdatesEnabled(!yes);
 		if (yes)
-			wa->stopBlinkingCursor();
+			d.current_work_area_->stopBlinkingCursor();
 		else
-			wa->startBlinkingCursor();
+			d.current_work_area_->startBlinkingCursor();
 	}
 
 	if (yes)
@@ -802,7 +834,12 @@ GuiToolbar * GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
 
 WorkArea * GuiView::workArea(Buffer & buffer)
 {
-	return d.tab_widget_->workArea(buffer);
+	for (int i = 0; i != d.splitter_->count(); ++i) {
+		GuiWorkArea * wa = d.tabWorkArea(i)->workArea(buffer);
+		if (wa)
+			return wa;
+	}
+	return 0;
 }
 
 
@@ -810,25 +847,40 @@ WorkArea * GuiView::addWorkArea(Buffer & buffer)
 {
 	GuiWorkArea * wa = new GuiWorkArea(buffer, *this);
 	wa->setUpdatesEnabled(false);
-	d.tab_widget_->addTab(wa, toqstr(buffer.fileName().displayName(30)));
+
+	// Automatically create a TabWorkArea if there are none yet.
+	if (!d.splitter_->count())
+		addTabWorkArea();
+
+	TabWorkArea * tab_widget = d.currentTabWorkArea();
+	tab_widget->addTab(wa, toqstr(buffer.fileName().displayName(30)));
 	wa->bufferView().updateMetrics();
-	if (d.stack_widget_)
-		d.stack_widget_->setCurrentWidget(d.tab_widget_);
+
 	// Hide tabbar if there's only one tab.
-	d.tab_widget_->showBar(d.tab_widget_->count() > 1);
+	tab_widget->showBar(tab_widget->count() > 1);
 	return wa;
+}
+
+
+void GuiView::addTabWorkArea()
+{
+	TabWorkArea * twa = new TabWorkArea;
+	QObject::connect(twa, SIGNAL(currentWorkAreaChanged(GuiWorkArea *)),
+		this, SLOT(on_currentWorkAreaChanged(GuiWorkArea *)));
+	d.splitter_->addWidget(twa);
+	d.stack_widget_->setCurrentWidget(d.splitter_);
 }
 
 
 WorkArea * GuiView::currentWorkArea()
 {
-	return d.tab_widget_->currentWorkArea();
+	return d.current_work_area_;
 }
 
 
 WorkArea const * GuiView::currentWorkArea() const
 {
-	return d.tab_widget_->currentWorkArea();
+	return d.current_work_area_;
 }
 
 
@@ -841,30 +893,52 @@ void GuiView::setCurrentWorkArea(WorkArea * work_area)
 	updateToc();
 
 	GuiWorkArea * wa = static_cast<GuiWorkArea *>(work_area);
-	BOOST_ASSERT(wa);
-	d.tab_widget_->setCurrentWorkArea(wa);
+	d.current_work_area_ = wa;
+	for (int i = 0; i != d.splitter_->count(); ++i) {
+		if (d.tabWorkArea(i)->setCurrentWorkArea(wa))
+			return;
+	}
 }
 
 
 void GuiView::removeWorkArea(WorkArea * work_area)
 {
 	BOOST_ASSERT(work_area);
-	if (work_area == currentWorkArea()) {
+	GuiWorkArea * gwa = static_cast<GuiWorkArea *>(work_area);
+	if (gwa == d.current_work_area_) {
 		disconnectBuffer();
 		disconnectBufferView();
+		getDialogs().hideBufferDependent();
+		d.current_work_area_ = 0;
 	}
 
 	// removing a work area often results from closing a file so
 	// update the toc in any case.
 	updateToc();
 
-	GuiWorkArea * gwa = static_cast<GuiWorkArea *>(work_area);
-	BOOST_ASSERT(gwa);
-	d.tab_widget_->removeWorkArea(gwa);
+	for (int i = 0; i != d.splitter_->count(); ++i) {
+		TabWorkArea * twa = d.tabWorkArea(i);
+		if (!twa->removeWorkArea(gwa))
+			// Not found in this tab group.
+			continue;
 
-	getDialogs().hideBufferDependent();
+		// We found and removed the WorkArea.
+		if (twa->count()) {
+			// No more WorkAreas in this tab group, so delete it.
+			delete twa;
+			break;
+		}
 
-	if (d.tab_widget_->count() == 0 && d.stack_widget_)
+		if (d.current_work_area_)
+			// This means that we are not closing the current WorkArea;
+			break;
+
+		// Switch to the next WorkArea in the found TabWorkArea.
+		d.current_work_area_ = twa->currentWorkArea();
+		break;
+	}
+
+	if (d.splitter_->count() == 0)
 		// No more work area, switch to the background widget.
 		d.setBackground();
 }
@@ -901,7 +975,7 @@ void GuiView::updateLayoutChoice(bool force)
 		d.current_layout = buffer()->params().getTextClass().defaultLayoutName();
 	}
 
-	docstring const & layout = currentWorkArea()->bufferView().cursor().
+	docstring const & layout = d.current_work_area_->bufferView().cursor().
 		innerParagraph().layout()->name();
 
 	if (layout != d.current_layout) {
@@ -918,10 +992,9 @@ bool GuiView::isToolbarVisible(std::string const & id)
 
 void GuiView::updateToolbars()
 {
-	WorkArea * wa = currentWorkArea();
-	if (wa) {
+	if (d.current_work_area_) {
 		bool const math =
-			wa->bufferView().cursor().inMathed();
+			d.current_work_area_->bufferView().cursor().inMathed();
 		bool const table =
 			lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
 		bool const review =
