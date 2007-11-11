@@ -54,6 +54,8 @@
 #ifdef Q_WS_X11
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
+#undef CursorShape
+#undef None
 #endif
 
 #include <boost/bind.hpp>
