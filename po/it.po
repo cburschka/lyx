@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-11-11 19:00+0100\n"
-"PO-Revision-Date: 2007-10-01 00:10+0200\n"
+"PO-Revision-Date: 2007-11-12 16:11+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1714,7 +1714,6 @@ msgid "This text defines the width of the paragraph label"
 msgstr "Questo testo definisce la larghezza dell'etichetta del paragrafo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:157
-#, fuzzy
 msgid "Lo&ngest label"
 msgstr "Etichetta più &lunga"
 
@@ -1724,12 +1723,10 @@ msgstr ""
 "Usa l'allineamento predefinito per questo paragrafo, qualunque esso sia."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:198
-#, fuzzy
 msgid "Use Paragraph's &Default Alignment"
 msgstr "Usa l'allineamento predefinito del paragrafo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:205
-#, fuzzy
 msgid "Ri&ght"
 msgstr "A destra"
 
@@ -1738,7 +1735,6 @@ msgid "&Left"
 msgstr "A sinistra"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:219
-#, fuzzy
 msgid "C&enter"
 msgstr "Centrato"
 
@@ -2393,15 +2389,15 @@ msgstr "Sessione"
 
 #: src/frontends/qt4/ui/PrefUi.ui:93
 msgid "Save/restore window size, or use fixed size"
-msgstr "Salva/ripristina dimensione finestra, o usa dimensione fissa"
+msgstr "Salva/ripristina &dimensione finestra, o usa dimensione fissa"
 
 #: src/frontends/qt4/ui/PrefUi.ui:116
 msgid "Load opened files from last session"
-msgstr "Carica i file aperti nell'ultima sessione"
+msgstr "Carica i file aper&ti nell'ultima sessione"
 
 #: src/frontends/qt4/ui/PrefUi.ui:123
 msgid "Restore cursor positions"
-msgstr "Ripristina la posizione del cursore"
+msgstr "Ripristina la posi&zione del cursore"
 
 #: src/frontends/qt4/ui/PrefUi.ui:133
 msgid "Restore to cursor position when the file was last closed"
@@ -2409,7 +2405,7 @@ msgstr "Ritorna alla posizione del cursore quando il file è stato chiuso"
 
 #: src/frontends/qt4/ui/PrefUi.ui:136
 msgid "Save/restore window position"
-msgstr "Salva/ripristina la posizione della finestra"
+msgstr "Salva/ripristina la &posizione della finestra"
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
 #: src/frontends/controllers/ControlBox.cpp:83 src/frontends/qt4/QBox.cpp:292
@@ -2429,7 +2425,7 @@ msgstr "Documenti"
 
 #: src/frontends/qt4/ui/PrefUi.ui:252
 msgid "B&ackup documents "
-msgstr "Documenti di b&ackup "
+msgstr "Documenti di bac&kup "
 
 #: src/frontends/qt4/ui/PrefUi.ui:283
 msgid " every"
@@ -2445,25 +2441,27 @@ msgstr "&Massimo numero di ultimi file:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:342
 msgid "Scrolling"
-msgstr "Scrolling"
+msgstr "Scorrimento"
 
 #: src/frontends/qt4/ui/PrefUi.ui:357
 msgid "Cursor follows &scrollbar"
-msgstr "Il cursore &segue la barra di scorrimento"
+msgstr "Il cursore segue la &barra di scorrimento"
 
 #: src/frontends/qt4/ui/PrefUi.ui:380
 msgid "Pixmap Cache"
-msgstr ""
+msgstr "Cache grafica del testo"
 
 #: src/frontends/qt4/ui/PrefUi.ui:392
 msgid ""
 "Checking this improves the performance, but might reduce the on-screen "
 "display of fonts"
 msgstr ""
+"Abilitando la cache si ottengono prestazioni migliori\n"
+"ma a scapito della qualità dei caratteri su schermo"
 
 #: src/frontends/qt4/ui/PrefUi.ui:395
 msgid "Enable Pi&xmap Cache"
-msgstr ""
+msgstr "Abilita la cac&he"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:768
@@ -3964,7 +3962,7 @@ msgstr "Quattro affiliazioni"
 
 #: lib/layouts/apa.layout:192 lib/layouts/egs.layout:336
 msgid "Journal"
-msgstr "Giornale"
+msgstr "Rivista"
 
 #: lib/layouts/apa.layout:206
 msgid "CopNum"
@@ -4604,7 +4602,7 @@ msgstr "Affiliazione:"
 
 #: lib/layouts/egs.layout:350
 msgid "Journal:"
-msgstr "Giornale:"
+msgstr "Rivista:"
 
 #: lib/layouts/egs.layout:359
 msgid "msnumber"
@@ -6471,11 +6469,11 @@ msgstr "Sezione speciale:"
 
 #: lib/layouts/agu_stdtitle.inc:47
 msgid "AGU-journal"
-msgstr "Giornale AGU"
+msgstr "Rivista AGU"
 
 #: lib/layouts/agu_stdtitle.inc:51
 msgid "AGU-journal:"
-msgstr "Giornale AGU:"
+msgstr "Rivista AGU:"
 
 #: lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
@@ -9172,9 +9170,8 @@ msgid "Math Spacings"
 msgstr "Spaziature matematiche"
 
 #: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:262
-#, fuzzy
 msgid "Placeholders"
-msgstr "Posiziona tabella"
+msgstr "Segnaposto"
 
 #: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:273
 msgid "Styles"
@@ -9355,15 +9352,15 @@ msgstr "Spazio negativo\t\\!"
 
 #: lib/ui/stdtoolbars.inc:263
 msgid "Placeholder\t\\phantom"
-msgstr ""
+msgstr "Segnaposto\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:264
 msgid "Horizontal placeholder\t\\hphantom"
-msgstr ""
+msgstr "Segnaposto orizzontale\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:265
 msgid "Vertical placeholder\t\\vphantom"
-msgstr ""
+msgstr "Segnaposto verticale\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:268
 msgid "Roots"
@@ -9398,22 +9395,18 @@ msgid "Standard\t\\frac"
 msgstr "Standard\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:282
-#, fuzzy
 msgid "No horizontal line\t\\atop"
 msgstr "Senza linea\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:283
-#, fuzzy
 msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr "Con linea diagonale\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:284
-#, fuzzy
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr "Stile testo (amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:285
-#, fuzzy
 msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr "Stile display (amsmath)\t\\dfrac"
 
@@ -13307,6 +13300,7 @@ msgstr ""
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
+"Abilita la cache grafica del testo (utile solo per Mac e Windows)."
 
 #: src/LyXRC.cpp:2462
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -13833,9 +13827,8 @@ msgid "Reloading configuration..."
 msgstr "Sto caricando di nuovo la configurazione..."
 
 #: src/callback.cpp:456
-#, fuzzy
 msgid "System reconfiguration failed"
-msgstr "Il sistema è stato riconfigurato"
+msgstr "Riconfigurazione non riuscita"
 
 #: src/callback.cpp:457
 msgid ""
@@ -13843,6 +13836,10 @@ msgid ""
 "Default textclass is used but LyX may not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
+"La riconfigurazione del sistema è fallita.\n"
+"Verrà usata la classe di documento predefinita\n"
+"ma LyX potrebbe non funzionare correttamente.\n"
+"Si consiglia di riprovare a riconfigurare il sistema."
 
 #: src/callback.cpp:462
 msgid "System reconfigured"
@@ -15194,9 +15191,8 @@ msgid "Opened CharStyle Inset"
 msgstr "È stato aperto l'inserto StileCarattere"
 
 #: src/insets/InsetCharStyle.cpp:226
-#, fuzzy
 msgid "CharStyle: "
-msgstr "Modifica: "
+msgstr "StileCarattere: "
 
 #: src/insets/InsetCommand.cpp:99
 msgid "LaTeX Command: "
@@ -15713,7 +15709,7 @@ msgstr "pc"
 
 #: src/lengthcommon.cpp:38
 msgid "cc[[unit of measure]]"
-msgstr ""
+msgstr "cc"
 
 #: src/lengthcommon.cpp:38
 msgid "cm"
