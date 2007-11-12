@@ -18,7 +18,6 @@
 #include "gettext.h"
 #include "ServerSocket.h"
 
-#include "frontends/Application.h"
 #include "frontends/alert.h" //to be removed?
 
 #include "support/filetools.h"
