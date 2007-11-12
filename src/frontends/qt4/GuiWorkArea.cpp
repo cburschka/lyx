@@ -13,24 +13,37 @@
 
 #include "GuiWorkArea.h"
 
-#include "GuiApplication.h"
-#include "GuiPainter.h"
-#include "GuiKeySymbol.h"
-#include "qt_helpers.h"
-
-#include "frontends/LyXView.h"
-
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
+#include "CoordCache.h"
 #include "Cursor.h"
 #include "debug.h"
+#include "Font.h"
 #include "FuncRequest.h"
+#include "gettext.h"
+#include "GuiApplication.h"
+#include "GuiKeySymbol.h"
+#include "GuiPainter.h"
+#include "KeySymbol.h"
+#include "Language.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
+#include "MetricsInfo.h"
+#include "qt_helpers.h"
 #include "version.h"
 
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"
+
+#include "support/FileName.h"
+#include "support/ForkedcallsController.h"
+
+#include "frontends/Application.h"
+#include "frontends/Dialogs.h"  // only used in setReadOnly
+#include "frontends/FontMetrics.h"
+#include "frontends/LyXView.h"
+#include "frontends/WorkAreaManager.h"
 
 #include <QInputContext>
 #include <QLayout>
@@ -42,8 +55,8 @@
 #include <QTabBar>
 #include <QTimer>
 
-#include <boost/current_function.hpp>
 #include <boost/bind.hpp>
+#include <boost/current_function.hpp>
 
 #ifdef Q_WS_X11
 #include <QX11Info>
@@ -60,11 +73,15 @@ int const CursorWidth = 1;
 #undef NoModifier 
 
 using std::endl;
+using std::min;
+using std::max;
 using std::string;
 
 namespace lyx {
 
 using support::FileName;
+using support::ForkedcallsController;
+
 
 /// return the LyX mouse button state from Qt's
 static mouse_button::state q_button_state(Qt::MouseButton button)
@@ -174,10 +191,31 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-GuiWorkArea::GuiWorkArea(Buffer & buf, LyXView & lv)
-	: WorkArea(buf, lv), need_resize_(false), schedule_redraw_(false),
-	  preedit_lines_(1)
+
+// All the below connection objects are needed because of a bug in some
+// versions of GCC (<=2.96 are on the suspects list.) By having and assigning
+// to these connections we avoid a segfault upon startup, and also at exit.
+// (Lgb)
+
+static boost::signals::connection timecon;
+
+// HACK: FIXME
+WorkArea::~WorkArea() {}
+
+
+GuiWorkArea::GuiWorkArea(Buffer & buffer, LyXView & lv)
+	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
+	  cursor_visible_(false), cursor_timeout_(400),
+    need_resize_(false), schedule_redraw_(false),
+		preedit_lines_(1)
 {
+	buffer.workAreaManager().add(this);
+	// Setup the signals
+	timecon = cursor_timeout_.timeout
+		.connect(boost::bind(&GuiWorkArea::toggleCursor, this));
+
+	cursor_timeout_.start();
+
 	screen_ = QPixmap(viewport()->width(), viewport()->height());
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
@@ -200,7 +238,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buf, LyXView & lv)
 
 	synthetic_mouse_event_.timeout.timeout.connect(
 		boost::bind(&GuiWorkArea::generateSyntheticMouseEvent,
-			    this));
+					this));
 
 	// Initialize the vertical Scroll Bar
 	QObject::connect(verticalScrollBar(), SIGNAL(actionTriggered(int)),
@@ -222,6 +260,237 @@ GuiWorkArea::GuiWorkArea(Buffer & buf, LyXView & lv)
 	// Enables input methods for asian languages.
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
+}
+
+
+
+GuiWorkArea::~GuiWorkArea()
+{
+	buffer_view_->buffer().workAreaManager().remove(this);
+	delete buffer_view_;
+}
+
+
+void GuiWorkArea::close()
+{
+	lyx_view_->removeWorkArea(this);
+}
+
+
+BufferView & GuiWorkArea::bufferView()
+{
+	return *buffer_view_;
+}
+
+
+BufferView const & GuiWorkArea::bufferView() const
+{
+	return *buffer_view_;
+}
+
+
+void GuiWorkArea::stopBlinkingCursor()
+{
+	cursor_timeout_.stop();
+	hideCursor();
+}
+
+
+void GuiWorkArea::startBlinkingCursor()
+{
+	showCursor();
+	cursor_timeout_.restart();
+}
+
+
+void GuiWorkArea::redraw()
+{
+	if (!isVisible())
+		// No need to redraw in this case.
+		return;
+
+	// No need to do anything if this is the current view. The BufferView
+	// metrics are already up to date.
+	if (lyx_view_ != theApp()->currentView()) {
+		// FIXME: it would be nice to optimize for the off-screen case.
+		buffer_view_->updateMetrics();
+		buffer_view_->cursor().fixIfBroken();
+	}
+
+	updateScrollbar();
+
+	// update cursor position, because otherwise it has to wait until
+	// the blinking interval is over
+	if (cursor_visible_) {
+		hideCursor();
+		showCursor();
+	}
+	
+	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
+
+	LYXERR(Debug::WORKAREA) << "WorkArea::redraw screen" << endl;
+
+	int const ymin = std::max(vi.y1, 0);
+	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : height();
+
+	expose(0, ymin, width(), ymax - ymin);
+
+	//LYXERR(Debug::WORKAREA)
+	//<< "  ymin = " << ymin << "  width() = " << width()
+//		<< "  ymax-ymin = " << ymax-ymin << std::endl;
+
+	if (lyxerr.debugging(Debug::WORKAREA))
+		buffer_view_->coordCache().dump();
+}
+
+
+void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
+{
+	// In order to avoid bad surprise in the middle of an operation,
+	// we better stop the blinking cursor.
+	stopBlinkingCursor();
+
+	theLyXFunc().setLyXView(lyx_view_);
+	theLyXFunc().processKeySym(key, mod);
+}
+
+
+void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
+{
+	// Handle drag&drop
+	if (cmd0.action == LFUN_FILE_OPEN) {
+		lyx_view_->dispatch(cmd0);
+		return;
+	}
+
+	theLyXFunc().setLyXView(lyx_view_);
+
+	FuncRequest cmd;
+
+	if (cmd0.action == LFUN_MOUSE_PRESS) {
+		if (mod == ShiftModifier)
+			cmd = FuncRequest(cmd0, "region-select");
+		else if (mod == ControlModifier)
+			cmd = FuncRequest(cmd0, "paragraph-select");
+		else
+			cmd = cmd0;
+	}
+	else
+		cmd = cmd0;
+
+	// In order to avoid bad surprise in the middle of an operation, we better stop
+	// the blinking cursor.
+	if (!(cmd.action == LFUN_MOUSE_MOTION
+		&& cmd.button() == mouse_button::none))
+		stopBlinkingCursor();
+
+	buffer_view_->mouseEventDispatch(cmd);
+
+	// Skip these when selecting
+	if (cmd.action != LFUN_MOUSE_MOTION) {
+		lyx_view_->updateLayoutChoice(false);
+		lyx_view_->updateToolbars();
+	}
+
+	// GUI tweaks except with mouse motion with no button pressed.
+	if (!(cmd.action == LFUN_MOUSE_MOTION
+		&& cmd.button() == mouse_button::none)) {
+		// Slight hack: this is only called currently when we
+		// clicked somewhere, so we force through the display
+		// of the new status here.
+		lyx_view_->clearMessage();
+
+		// Show the cursor immediately after any operation.
+		startBlinkingCursor();
+	}
+}
+
+
+void GuiWorkArea::resizeBufferView()
+{
+	// WARNING: Please don't put any code that will trigger a repaint here!
+	// We are already inside a paint event.
+	lyx_view_->setBusy(true);
+	buffer_view_->resize(width(), height());
+	lyx_view_->updateLayoutChoice(false);
+	lyx_view_->setBusy(false);
+}
+
+
+void GuiWorkArea::updateScrollbar()
+{
+	buffer_view_->updateScrollbar();
+	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
+	setScrollbarParams(scroll_.height, scroll_.position,
+		scroll_.lineScrollHeight);
+}
+
+
+void GuiWorkArea::showCursor()
+{
+	if (cursor_visible_)
+		return;
+
+	CursorShape shape = BAR_SHAPE;
+
+	Font const & realfont = buffer_view_->cursor().real_current_font;
+	BufferParams const & bp = buffer_view_->buffer().params();
+	bool const samelang = realfont.language() == bp.language;
+	bool const isrtl = realfont.isVisibleRightToLeft();
+
+	if (!samelang || isrtl != bp.language->rightToLeft()) {
+		shape = L_SHAPE;
+		if (isrtl)
+			shape = REVERSED_L_SHAPE;
+	}
+
+	// The ERT language hack needs fixing up
+	if (realfont.language() == latex_language)
+		shape = BAR_SHAPE;
+
+	Font const font = buffer_view_->cursor().getFont();
+	FontMetrics const & fm = theFontMetrics(font);
+	int const asc = fm.maxAscent();
+	int const des = fm.maxDescent();
+	int h = asc + des;
+	int x = 0;
+	int y = 0;
+	buffer_view_->cursor().getPos(x, y);
+	y -= asc;
+
+	// if it doesn't touch the screen, don't try to show it
+	if (y + h < 0 || y >= height())
+		return;
+
+	cursor_visible_ = true;
+	showCursor(x, y, h, shape);
+}
+
+
+void GuiWorkArea::hideCursor()
+{
+	if (!cursor_visible_)
+		return;
+
+	cursor_visible_ = false;
+	removeCursor();
+}
+
+
+void GuiWorkArea::toggleCursor()
+{
+	if (cursor_visible_)
+		hideCursor();
+	else
+		showCursor();
+
+	// Use this opportunity to deal with any child processes that
+	// have finished but are waiting to communicate this fact
+	// to the rest of LyX.
+	ForkedcallsController & fcc = ForkedcallsController::get();
+	fcc.handleCompletedProcesses();
+
+	cursor_timeout_.restart();
 }
 
 
@@ -441,7 +710,7 @@ void GuiWorkArea::doubleClickTimeout()
 
 void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * ev)
 {
-	dc_event_ = double_click(ev);
+	dc_event_ = DoubleClick(ev);
 	QTimer::singleShot(QApplication::doubleClickInterval(), this,
 			   SLOT(doubleClickTimeout()));
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
@@ -479,8 +748,8 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		screen_ = QPixmap(viewport()->width(), viewport()->height());
 		resizeBufferView();
 		updateScreen();
-		WorkArea::hideCursor();
-		WorkArea::showCursor();
+		hideCursor();
+		showCursor();
 		need_resize_ = false;
 	}
 
@@ -704,18 +973,51 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 }
 
 
+void GuiWorkArea::updateWindowTitle()
+{
+	docstring maximize_title;
+	docstring minimize_title;
+
+	Buffer & buf = buffer_view_->buffer();
+	FileName const fileName = buf.fileName();
+	if (!fileName.empty()) {
+		maximize_title = fileName.displayName(30);
+		minimize_title = from_utf8(fileName.onlyFileName());
+		if (!buf.isClean()) {
+			maximize_title += _(" (changed)");
+			minimize_title += char_type('*');
+		}
+		if (buf.isReadonly())
+			maximize_title += _(" (read only)");
+	}
+
+	setWindowTitle(maximize_title, minimize_title);
+}
+
+
+void GuiWorkArea::setReadOnly(bool)
+{
+	updateWindowTitle();
+	if (this == lyx_view_->currentWorkArea())
+		lyx_view_->getDialogs().updateBufferDependent(false);
+}
+
+
 ////////////////////////////////////////////////////////////////////
 //
 // TabWorkArea 
 //
 ////////////////////////////////////////////////////////////////////
 
-TabWorkArea::TabWorkArea(QWidget * parent): QTabWidget(parent)
+TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 {
 	QPalette pal = palette();
-	pal.setColor(QPalette::Active, QPalette::Button, pal.color(QPalette::Active, QPalette::Window));
-	pal.setColor(QPalette::Disabled, QPalette::Button, pal.color(QPalette::Disabled, QPalette::Window));
-	pal.setColor(QPalette::Inactive, QPalette::Button, pal.color(QPalette::Inactive, QPalette::Window));
+	pal.setColor(QPalette::Active, QPalette::Button,
+		pal.color(QPalette::Active, QPalette::Window));
+	pal.setColor(QPalette::Disabled, QPalette::Button,
+		pal.color(QPalette::Disabled, QPalette::Window));
+	pal.setColor(QPalette::Inactive, QPalette::Button,
+		pal.color(QPalette::Inactive, QPalette::Window));
 
 	QToolButton * closeTabButton = new QToolButton(this);
     closeTabButton->setPalette(pal);

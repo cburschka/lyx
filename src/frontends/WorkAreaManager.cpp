@@ -11,16 +11,12 @@
 
 #include <config.h>
 
-#include "WorkArea.h"
-
 #include "WorkAreaManager.h"
 
-using std::list;
+#include "WorkArea.h"
+
 
 namespace lyx {
-
-extern bool quitting;
-
 namespace frontend {
 
 void WorkAreaManager::add(WorkArea * wa)
@@ -37,11 +33,8 @@ void WorkAreaManager::remove(WorkArea * wa)
 
 void WorkAreaManager::redrawAll()
 {
-	for (list<WorkArea *>::iterator it = work_areas_.begin();
-		it != work_areas_.end(); ) {
+	for (iterator it = work_areas_.begin(); it != work_areas_.end(); ++it)
 		(*it)->redraw();
-		++it;
-	}
 }
 
 
@@ -55,21 +48,15 @@ void WorkAreaManager::closeAll()
 
 void WorkAreaManager::setReadOnly(bool on)
 {
-	for (list<WorkArea *>::iterator it = work_areas_.begin();
-		it != work_areas_.end(); ) {
+	for (iterator it = work_areas_.begin(); it != work_areas_.end(); ++it)
 		(*it)->setReadOnly(on);
-		++it;
-	}
 }
 
 
 void WorkAreaManager::updateTitles()
 {
-	for (list<WorkArea *>::iterator it = work_areas_.begin();
-		it != work_areas_.end(); ) {
+	for (iterator it = work_areas_.begin(); it != work_areas_.end(); ++it)
 		(*it)->updateWindowTitle();
-		++it;
-	}
 }
 
 } // namespace frontend

@@ -34,7 +34,6 @@ liblyxfrontends_la_SOURCES = \
 	Clipboard.h \
 	Gui.h \
 	Selection.h \
-	WorkArea.cpp \
 	WorkArea.h \
 	WorkAreaManager.cpp \
 	WorkAreaManager.h \

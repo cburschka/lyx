@@ -15,34 +15,16 @@
 #define BASE_WORKAREA_H
 
 #include "frontends/KeyModifier.h"
-#include "frontends/Delegates.h"
-
-#include "support/Timeout.h"
-#include "support/docstring.h"
-
-#undef CursorShape
 
 namespace lyx {
 
-class Buffer;
 class BufferView;
-class FuncRequest;
 class KeySymbol;
 
 namespace frontend {
 
 class LyXView;
 class Painter;
-
-/// types of cursor in work area
-enum CursorShape {
-	/// normal I-beam
-	BAR_SHAPE,
-	/// L-shape for locked insets of a different language
-	L_SHAPE,
-	/// reverse L-shape for RTL text
-	REVERSED_L_SHAPE
-};
 
 /**
  * The work area class represents the widget that provides the
@@ -55,22 +37,22 @@ class WorkArea
 {
 public:
 	///
-	WorkArea(Buffer & buffer, LyXView & lv);
+	WorkArea() {}
 
 	virtual ~WorkArea();
 
 	///
-	void setLyXView(LyXView & lv) { lyx_view_ = &lv; }
+	virtual void setLyXView(LyXView & lv) = 0;
 
 	///
-	BufferView & bufferView();
+	virtual BufferView & bufferView() = 0;
 	///
-	BufferView const & bufferView() const;
+	virtual BufferView const & bufferView() const = 0;
 
-	/// \return true if has the keyboard input focus.
+	/// return true if has the keyboard input focus.
 	virtual bool hasFocus() const = 0;
 
-	/// \return true if has this WorkArea is visible.
+	/// return true if has this WorkArea is visible.
 	virtual bool isVisible() const = 0;
 
 	/// return the width of the work area in pixels
@@ -91,65 +73,23 @@ public:
 	virtual void scheduleRedraw() = 0;
 
 	/// redraw the screen, without using existing pixmap
-	virtual void redraw();
+	virtual void redraw() = 0;
 	///
-	void stopBlinkingCursor();
-	void startBlinkingCursor();
+	virtual void stopBlinkingCursor() = 0;
+	virtual void startBlinkingCursor() = 0;
 
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
-	void processKeySym(KeySymbol const & key, KeyModifier mod);
+	virtual void processKeySym(KeySymbol const & key, KeyModifier mod) = 0;
 
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
-	void close();
-
+	virtual void close() = 0;
 	/// This function is called when the buffer readonly status change.
-	virtual void setReadOnly(bool);
+	virtual void setReadOnly(bool) = 0;
 
 	/// Update window titles of all users.
-	virtual void updateWindowTitle();
-
-protected:
-	/// cause the display of the given area of the work area
-	virtual void expose(int x, int y, int w, int h) = 0;
-
-	/// set title of window.
-	/**
-	 * @param t main window title
-	 * @param it iconified (short) title
-	 */
-	virtual void setWindowTitle(docstring const & t, docstring const & it) = 0;
-
-	///
-	void dispatch(FuncRequest const & cmd0, KeyModifier = NoModifier);
-
-	///
-	void resizeBufferView();
-	/// hide the visible cursor, if it is visible
-	void hideCursor();
-	/// show the cursor if it is not visible
-	void showCursor();
-	/// toggle the cursor's visibility
-	void toggleCursor();
-	/// hide the cursor
-	virtual void removeCursor() = 0;
-	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, CursorShape shape) = 0;
-	///
-	void updateScrollbar();
-
-	///
-	BufferView * buffer_view_;
-	///
-	LyXView * lyx_view_;
-
-private:
-	/// is the cursor currently displayed
-	bool cursor_visible_;
-
-	///
-	Timeout cursor_timeout_;
+	virtual void updateWindowTitle() = 0;
 };
 
 } // namespace frontend

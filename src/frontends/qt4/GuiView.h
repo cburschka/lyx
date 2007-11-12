@@ -140,14 +140,20 @@ private:
 	/// in order to catch Tab key press.
 	bool event(QEvent * e);
 	bool focusNextPrevChild(bool);
+	///
+	QRect updateFloatingGeometry();
 
+private:
+	///
+	struct GuiViewPrivate;
+	GuiViewPrivate & d;
+
+	///
 	QTimer statusbar_timer_;
 
 	/// are we quitting by the menu?
 	bool quitting_by_menu_;
 
-	///
-	QRect updateFloatingGeometry();
 	///
 	QRect floatingGeometry_;
 
@@ -161,9 +167,6 @@ private:
 	};
 
 	ToolbarSize toolbarSize_;
-
-	struct GuiViewPrivate;
-	GuiViewPrivate& d;
 };
 
 

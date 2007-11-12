@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file key_state.h
+ * \file KeyModifier.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -19,10 +19,10 @@ namespace lyx {
 /// modifier key states
 
 enum KeyModifier {
-	NoModifier  = 0, //< no modifiers held
+	NoModifier       = 0, //< no modifiers held
 	ControlModifier  = 1, //< control button held
-	AltModifier   = 2, //< alt/meta key held
-	ShiftModifier = 4  //< shift key held
+	AltModifier      = 2, //< alt/meta key held
+	ShiftModifier    =  4  //< shift key held
 };
 
 
@@ -42,4 +42,4 @@ inline void operator|=(KeyModifier & s1, KeyModifier s2)
 
 } // namespace lyx
 
-#endif // KEY_STATE_H
+#endif // KEYMODIFIER_H

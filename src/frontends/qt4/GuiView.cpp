@@ -121,7 +121,7 @@ private:
 	QPixmap * splash_;
 };
 
-};
+} // namespace anon
 
 
 struct GuiView::GuiViewPrivate

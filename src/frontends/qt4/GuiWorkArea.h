@@ -39,23 +39,38 @@ class QPaintEvent;
 #endif
 
 namespace lyx {
+
+class Buffer;
+
 namespace frontend {
 
+class LyXView;
+
+/// types of cursor in work area
+enum CursorShape {
+	/// normal I-beam
+	BAR_SHAPE,
+	/// L-shape for locked insets of a different language
+	L_SHAPE,
+	/// reverse L-shape for RTL text
+	REVERSED_L_SHAPE
+};
+
 /// for emulating triple click
-class double_click {
+class DoubleClick {
 public:
+	///
+	DoubleClick() : state(Qt::NoButton), active(false) {}
+	///
+	DoubleClick(QMouseEvent * e) : state(e->button()), active(true) {}
+	///
+	bool operator==(QMouseEvent const & e) { return state == e.button(); }
+	///
+public:
+	///
 	Qt::MouseButton state;
+	///
 	bool active;
-
-	bool operator==(QMouseEvent const & e) {
-		return state == e.button();
-	}
-
-	double_click()
-		: state(Qt::NoButton), active(false) {}
-
-	double_click(QMouseEvent * e)
-		: state(e->button()), active(true) {}
 };
 
 /** Qt only emits mouse events when the mouse is being moved, but
@@ -79,11 +94,12 @@ public:
 	double scrollbar_value_old;
 };
 
+
 /**
- * Qt-specific implementation of the work area
- * (buffer view GUI)
+ * Implementation of the work area (buffer view GUI)
 */
-	class CursorWidget;
+class CursorWidget;
+
 class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 {
 	Q_OBJECT
@@ -91,6 +107,8 @@ class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 public:
 	///
 	GuiWorkArea(Buffer & buffer, LyXView & lv);
+	///
+	~GuiWorkArea();
 
 	///
 	bool hasFocus() const { return QAbstractScrollArea::hasFocus(); }
@@ -116,7 +134,36 @@ public:
 
 	/// hide the cursor
 	virtual void removeCursor();
+	///
+	void setLyXView(LyXView & lv) { lyx_view_ = &lv; }
+	///
+	BufferView & bufferView();
+	///
+	BufferView const & bufferView() const;
+	///
+	void redraw();
+	///
+	void stopBlinkingCursor();
+	///
+	void startBlinkingCursor();
+	///
+	void processKeySym(KeySymbol const & key, KeyModifier mod);
 
+public Q_SLOTS:
+	/// Adjust the LyX buffer view with the position of the scrollbar.
+	/**
+	* The action argument is not used in the the code, it is there
+	* only for the connection to the vertical srollbar signal which
+	* emits an 'int' action.
+	*/
+	void adjustViewWithScrollBar(int action = 0);
+	/// timer to limit triple clicks
+	void doubleClickTimeout();
+
+	/// close this work area.
+	/// Slot for Buffer::closing signal.
+	void close();
+	////
 	void setWindowTitle(docstring const & t, docstring const & it);
 
 Q_SIGNALS:
@@ -124,6 +171,11 @@ Q_SIGNALS:
 	void titleChanged(GuiWorkArea *);
 
 private:
+	/// This function is called when the buffer readonly status change.
+	void setReadOnly(bool);
+
+	/// Update window titles of all users.
+	void updateWindowTitle();
 	///
 	void focusInEvent(QFocusEvent *);
 	///
@@ -149,25 +201,34 @@ private:
 	/// IM query
 	QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
 
-public Q_SLOTS:
-	/// Adjust the LyX buffer view with the position of the scrollbar.
-	/**
-	* The action argument is not used in the the code, it is there
-	* only for the connection to the vertical srollbar signal which
-	* emits an 'int' action.
-	*/
-	void adjustViewWithScrollBar(int action = 0);
-	/// timer to limit triple clicks
-	void doubleClickTimeout();
-
-private:
 	/// The slot connected to SyntheticMouseEvent::timeout.
 	void generateSyntheticMouseEvent();
+	///
+	void dispatch(FuncRequest const & cmd0, KeyModifier = NoModifier);
+	///
+	void resizeBufferView();
+	/// hide the visible cursor, if it is visible
+	void hideCursor();
+	/// show the cursor if it is not visible
+	void showCursor();
+	/// toggle the cursor's visibility
+	void toggleCursor();
+	///
+	void updateScrollbar();
 
+	///
+	BufferView * buffer_view_;
+	///
+	LyXView * lyx_view_;
+	/// is the cursor currently displayed
+	bool cursor_visible_;
+
+	///
+	Timeout cursor_timeout_;
 	///
 	SyntheticMouseEvent synthetic_mouse_event_;
 	///
-	double_click dc_event_;
+	DoubleClick dc_event_;
 
 	///
 	CursorWidget * cursor_;
@@ -181,7 +242,8 @@ private:
 	bool schedule_redraw_;
 	///
 	int preedit_lines_;
-}; //GuiWorkArea
+}; // GuiWorkArea
+
 
 /// A tabbed set of GuiWorkAreas.
 class TabWorkArea : public QTabWidget
