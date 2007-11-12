@@ -686,7 +686,6 @@ src_frontends_files = Split('''
     Dialogs.cpp
     LyXView.cpp
     Painter.cpp
-    WorkArea.cpp
     WorkAreaManager.cpp
     alert.cpp
 ''')
