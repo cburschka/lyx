@@ -30,9 +30,6 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
-
 
 namespace lyx {
 namespace frontend {

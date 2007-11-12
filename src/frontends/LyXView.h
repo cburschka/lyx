@@ -194,18 +194,7 @@ private:
 	LyXView(LyXView const &);
 	void operator=(LyXView const &);
 
-	/// Bind methods for BufferView messages signal connection
-	//@{
-	virtual void showDialog(std::string const & name) = 0;
-	virtual void showDialogWithData(std::string const & name,
-		std::string const & data) = 0;
-	virtual void showInsetDialog(std::string const & name,
-		std::string const & data, Inset * inset) = 0;
-	virtual void updateDialog(std::string const & name,
-		std::string const & data) = 0;
-	//@}
-
-private:
+	///
 	int id_;
 };
 
