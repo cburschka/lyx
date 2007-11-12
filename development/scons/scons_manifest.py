@@ -2194,6 +2194,7 @@ lib_doc_eu_files = Split('''
 
 lib_doc_fr_files = Split('''
     Customization.lyx
+    EmbeddedObjects.lyx
     Extended.lyx
     FAQ.lyx
     Intro.lyx
@@ -2365,7 +2366,6 @@ lib_examples_fa_files = Split('''
 
 lib_examples_fr_files = Split('''
     AlignementDecimal.lyx
-    ExemplesTableaux.lyx
     Foils.lyx
     ListesPuces.lyx
     Minipage.lyx
