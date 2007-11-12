@@ -23,9 +23,6 @@ class KeySymbol;
 
 namespace frontend {
 
-class LyXView;
-class Painter;
-
 /**
  * The work area class represents the widget that provides the
  * view onto a document. It is owned by the BufferView, and
@@ -38,11 +35,8 @@ class WorkArea
 public:
 	///
 	WorkArea() {}
-
-	virtual ~WorkArea();
-
 	///
-	virtual void setLyXView(LyXView & lv) = 0;
+	virtual ~WorkArea();
 
 	///
 	virtual BufferView & bufferView() = 0;

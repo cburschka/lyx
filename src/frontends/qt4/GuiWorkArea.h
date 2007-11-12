@@ -135,8 +135,6 @@ public:
 	/// hide the cursor
 	virtual void removeCursor();
 	///
-	void setLyXView(LyXView & lv) { lyx_view_ = &lv; }
-	///
 	BufferView & bufferView();
 	///
 	BufferView const & bufferView() const;
