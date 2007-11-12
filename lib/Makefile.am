@@ -109,7 +109,6 @@ frexamplesdir = $(pkgdatadir)/examples/fr
 dist_frexamples_DATA = \
 	examples/fr/AlignementDecimal.lyx \
 	examples/fr/simplecv.lyx \
-	examples/fr/ExemplesTableaux.lyx \
 	examples/fr/Foils.lyx \
 	examples/fr/ListesPuces.lyx \
 	examples/fr/Minipage.lyx \

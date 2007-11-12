@@ -124,6 +124,7 @@ dist_eudoc_DATA = \
 frdocdir = $(pkgdatadir)/doc/fr
 dist_frdoc_DATA = \
 	fr/Customization.lyx \
+	fr/EmbeddedObjects.lyx \
 	fr/Extended.lyx \
 	fr/FAQ.lyx \
 	fr/Intro.lyx \
