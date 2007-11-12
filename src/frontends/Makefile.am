@@ -27,7 +27,6 @@ liblyxfrontends_la_SOURCES = \
 	FontMetrics.h \
 	KeyModifier.h \
 	KeySymbol.h \
-	LyXView.cpp \
 	LyXView.h \
 	Painter.cpp \
 	Painter.h \

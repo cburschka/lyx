@@ -21,6 +21,10 @@
 #include "GuiMenubar.h"
 #include "GuiToolbar.h"
 #include "GuiToolbars.h"
+#include "Dialogs.h"
+#include "WorkArea.h"
+#include "Gui.h"
+
 #include "qt_helpers.h"
 
 #include "frontends/Application.h"
@@ -33,23 +37,32 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
+#include "buffer_funcs.h"
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "BufferList.h"
 #include "Cursor.h"
 #include "debug.h"
+#include "ErrorList.h"
 #include "FuncRequest.h"
+#include "gettext.h"
+#include "Intl.h"
 #include "Layout.h"
-#include "LyX.h"
 #include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "MenuBackend.h"
 #include "Paragraph.h"
 #include "Session.h"
 #include "TextClass.h"
+#include "Text.h"
 #include "ToolbarBackend.h"
 #include "version.h"
+
+#include "support/lstrings.h"
+#include "support/filetools.h" // OnlyFilename()
+#include "support/Timeout.h"
 
 #include <QAction>
 #include <QApplication>
@@ -68,7 +81,15 @@
 #include <QToolBar>
 #include <QUrl>
 
+#include <boost/bind.hpp>
 #include <boost/current_function.hpp>
+
+#ifdef HAVE_SYS_TIME_H
+# include <sys/time.h>
+#endif
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
 
 using std::endl;
 using std::string;
@@ -79,6 +100,11 @@ namespace lyx {
 extern bool quitting;
 
 namespace frontend {
+
+using support::bformat;
+using support::FileName;
+using support::makeDisplayPath;
+using support::onlyFilename;
 
 namespace {
 
@@ -126,22 +152,6 @@ private:
 
 struct GuiView::GuiViewPrivate
 {
-	string cur_title;
-
-	int posx_offset;
-	int posy_offset;
-
-	GuiWorkArea * current_work_area_;
-	QSplitter * splitter_;
-	QStackedWidget * stack_widget_;
-	BackgroundWidget * bg_widget_;
-	/// view's menubar
-	GuiMenubar * menubar_;
-	/// view's toolbars
-	GuiToolbars * toolbars_;
-	///
-	docstring current_layout;
-
 	GuiViewPrivate()
 		: current_work_area_(0), posx_offset(0), posy_offset(0)
 	{}
@@ -170,19 +180,22 @@ struct GuiView::GuiViewPrivate
 		QAction * smallIcons = new QAction(iconSizeGroup);
 		smallIcons->setText(qt_("Small-sized icons"));
 		smallIcons->setCheckable(true);
-		QObject::connect(smallIcons, SIGNAL(triggered()), parent, SLOT(smallSizedIcons()));
+		QObject::connect(smallIcons, SIGNAL(triggered()),
+			parent, SLOT(smallSizedIcons()));
 		menu->addAction(smallIcons);
 
 		QAction * normalIcons = new QAction(iconSizeGroup);
 		normalIcons->setText(qt_("Normal-sized icons"));
 		normalIcons->setCheckable(true);
-		QObject::connect(normalIcons, SIGNAL(triggered()), parent, SLOT(normalSizedIcons()));
+		QObject::connect(normalIcons, SIGNAL(triggered()),
+			parent, SLOT(normalSizedIcons()));
 		menu->addAction(normalIcons);
 
 		QAction * bigIcons = new QAction(iconSizeGroup);
 		bigIcons->setText(qt_("Big-sized icons"));
 		bigIcons->setCheckable(true);
-		QObject::connect(bigIcons, SIGNAL(triggered()), parent, SLOT(bigSizedIcons()));
+		QObject::connect(bigIcons, SIGNAL(triggered()),
+			parent, SLOT(bigSizedIcons()));
 		menu->addAction(bigIcons);
 
 		unsigned int cur = parent->iconSize().width();
@@ -233,16 +246,48 @@ struct GuiView::GuiViewPrivate
 
 		return tab_widget;
 	}
+
+public:
+	///
+	string cur_title;
+
+	GuiWorkArea * current_work_area_;
+	int posx_offset;
+	int posy_offset;
+
+	QSplitter * splitter_;
+	QStackedWidget * stack_widget_;
+	BackgroundWidget * bg_widget_;
+	/// view's menubar
+	GuiMenubar * menubar_;
+	/// view's toolbars
+	GuiToolbars * toolbars_;
+	///
+	docstring current_layout;
 };
 
 
 unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
 
 
+/// FIXME
+LyXView::~LyXView() {}
+
+
 GuiView::GuiView(int id)
-	: QMainWindow(), LyXView(id), quitting_by_menu_(false),
-	  d(*new GuiViewPrivate)
+	: QMainWindow(), LyXView(id),
+	  d(*new GuiViewPrivate),
+		quitting_by_menu_(false),
+	 	autosave_timeout_(new Timeout(5000)),
+	  dialogs_(new Dialogs(*this))
 {
+	// Start autosave timer
+	if (lyxrc.autosave) {
+		autosave_timeout_->timeout.connect(boost::bind(&GuiView::autoSave, this));
+		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
+		autosave_timeout_->start();
+	}
+
 	// Qt bug? signal lastWindowClosed does not work
 	setAttribute(Qt::WA_QuitOnClose, false);
 	setAttribute(Qt::WA_DeleteOnClose, true);
@@ -275,6 +320,8 @@ GuiView::GuiView(int id)
 
 GuiView::~GuiView()
 {
+	delete dialogs_;
+	delete autosave_timeout_;
 	delete &d;
 }
 
@@ -1023,6 +1070,201 @@ void GuiView::toggleToolbarState(string const & name, bool allowauto)
 	updateToolbars();
 }
 
+
+Buffer * GuiView::buffer()
+{
+	WorkArea * work_area = currentWorkArea();
+	if (work_area)
+		return &work_area->bufferView().buffer();
+	return 0;
+}
+
+
+Buffer const * GuiView::buffer() const
+{
+	WorkArea const * work_area = currentWorkArea();
+	if (work_area)
+		return &work_area->bufferView().buffer();
+	return 0;
+}
+
+
+void GuiView::setBuffer(Buffer * newBuffer)
+{
+	BOOST_ASSERT(newBuffer);
+	setBusy(true);
+
+	WorkArea * wa = workArea(*newBuffer);
+	if (wa == 0) {
+		updateLabels(*newBuffer->masterBuffer());
+		wa = addWorkArea(*newBuffer);
+	} else {
+		//Disconnect the old buffer...there's no new one.
+		disconnectBuffer();
+	}
+	connectBuffer(*newBuffer);
+	connectBufferView(wa->bufferView());
+	setCurrentWorkArea(wa);
+
+	setBusy(false);
+}
+
+
+Buffer * GuiView::loadLyXFile(FileName const & filename, bool tolastfiles)
+{
+	setBusy(true);
+
+	Buffer * newBuffer = checkAndLoadLyXFile(filename);
+
+	if (!newBuffer) {
+		message(_("Document not loaded."));
+		updateStatusBar();
+		setBusy(false);
+		return 0;
+	}
+
+	WorkArea * wa = workArea(*newBuffer);
+	if (wa == 0)
+		wa = addWorkArea(*newBuffer);
+
+	// scroll to the position when the file was last closed
+	if (lyxrc.use_lastfilepos) {
+		LastFilePosSection::FilePos filepos =
+			LyX::ref().session().lastFilePos().load(filename);
+		// if successfully move to pit (returned par_id is not zero),
+		// update metrics and reset font
+		wa->bufferView().moveToPosition(filepos.pit, filepos.pos, 0, 0);
+	}
+
+	if (tolastfiles)
+		LyX::ref().session().lastFiles().add(filename);
+
+	setBusy(false);
+	return newBuffer;
+}
+
+
+void GuiView::connectBuffer(Buffer & buf)
+{
+	buf.setGuiDelegate(this);
+}
+
+
+void GuiView::disconnectBuffer()
+{
+	if (WorkArea * work_area = currentWorkArea())
+		work_area->bufferView().setGuiDelegate(0);
+}
+
+
+void GuiView::connectBufferView(BufferView & bv)
+{
+	bv.setGuiDelegate(this);
+}
+
+
+void GuiView::disconnectBufferView()
+{
+	if (WorkArea * work_area = currentWorkArea())
+		work_area->bufferView().setGuiDelegate(0);
+}
+
+
+void GuiView::showErrorList(string const & error_type)
+{
+	ErrorList & el = buffer()->errorList(error_type);
+	if (!el.empty())
+		getDialogs().show("errorlist", error_type);
+}
+
+
+void GuiView::showDialog(string const & name)
+{
+	getDialogs().show(name);
+}
+
+
+void GuiView::showDialogWithData(string const & name, string const & data)
+{
+	getDialogs().show(name, data);
+}
+
+
+void GuiView::showInsetDialog(string const & name, string const & data,
+		Inset * inset)
+{
+	getDialogs().show(name, data, inset);
+}
+
+
+void GuiView::updateDialog(string const & name, string const & data)
+{
+	if (getDialogs().visible(name))
+		getDialogs().update(name, data);
+}
+
+
+BufferView * GuiView::view()
+{
+	WorkArea * wa = currentWorkArea();
+	return wa ? &wa->bufferView() : 0;
+}
+
+
+void GuiView::updateToc()
+{
+	updateDialog("toc", "");
+}
+
+
+void GuiView::updateEmbeddedFiles()
+{
+	updateDialog("embedding", "");
+}
+
+
+void GuiView::autoSave()
+{
+	LYXERR(Debug::INFO) << "Running autoSave()" << endl;
+
+	if (buffer())
+		view()->buffer().autoSave();
+}
+
+
+void GuiView::resetAutosaveTimer()
+{
+	if (lyxrc.autosave)
+		autosave_timeout_->restart();
+}
+
+
+void GuiView::dispatch(FuncRequest const & cmd)
+{
+	string const argument = to_utf8(cmd.argument());
+	switch(cmd.action) {
+		case LFUN_BUFFER_SWITCH:
+			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
+			break;
+		default:
+			theLyXFunc().setLyXView(this);
+			lyx::dispatch(cmd);
+	}
+}
+
+
+Buffer const * GuiView::updateInset(Inset const * inset)
+{
+	WorkArea * work_area = currentWorkArea();
+	if (!work_area)
+		return 0;
+
+	if (inset) {
+		BOOST_ASSERT(work_area);
+		work_area->scheduleRedraw();
+	}
+	return &work_area->bufferView().buffer();
+}
 
 } // namespace frontend
 } // namespace lyx

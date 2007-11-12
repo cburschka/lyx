@@ -13,9 +13,8 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
-#include "frontends/Application.h"
 #include "frontends/Delegates.h"
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 #include <vector>
 
@@ -23,12 +22,10 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class Font;
 class Buffer;
 class BufferView;
 class FuncRequest;
 class Inset;
-class Timeout;
 class ToolbarInfo;
 
 namespace frontend {
@@ -54,7 +51,7 @@ class LyXView
 {
 public:
 	///
-	LyXView(int id);
+	LyXView(int id) : id_(id) {}
 	///
 	virtual ~LyXView();
 	///
@@ -110,11 +107,13 @@ public:
 	//@{ generic accessor functions
 
 	/// \return the current buffer view.
-	BufferView * view();
+	virtual BufferView * view() = 0;
 
 	/// \return the buffer currently shown in this window
-	Buffer * buffer();
-	Buffer const * buffer() const;
+	virtual Buffer * buffer() = 0;
+	virtual Buffer const * buffer() const = 0;
+	/// set a buffer to the current workarea.
+	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 
 	///
 	virtual void openLayoutList() = 0;
@@ -125,18 +124,15 @@ public:
 	virtual void openMenu(docstring const & name) = 0;
 
 	/// get access to the dialogs
-	Dialogs & getDialogs() { return *dialogs_; }
+	virtual Dialogs & getDialogs() = 0;
 	///
-	Dialogs const & getDialogs() const { return *dialogs_; }
+	virtual Dialogs const & getDialogs() const = 0;
 
 	//@}
 
 	/// load a buffer into the current workarea.
-	Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
-		bool tolastfiles = true);  ///< append to the "Open recent" menu?
-
-	/// set a buffer to the current workarea.
-	void setBuffer(Buffer * b); ///< \c Buffer to set.
+	virtual Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true) = 0;  ///< append to the "Open recent" menu?
 
 	/// updates the possible layouts selectable
 	virtual void updateLayoutChoice(bool force) = 0;
@@ -157,71 +153,57 @@ public:
 	virtual void clearMessage() = 0;
 
 	/// reset autosave timer
-	void resetAutosaveTimer();
+	virtual void resetAutosaveTimer() = 0;
 
 	/// dispatch to current BufferView
-	void dispatch(FuncRequest const & cmd);
+	virtual void dispatch(FuncRequest const & cmd) = 0;
 
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
-	Buffer const * updateInset(Inset const *);
+	virtual Buffer const * updateInset(Inset const *) = 0;
 
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
 
 	/// show the error list to the user
-	void showErrorList(std::string const &);
+	virtual void showErrorList(std::string const &) = 0;
 
 	
 	//
 	// GuiBufferDelegate
 	//
 	/// This function is called when the buffer structure is changed.
-	void structureChanged() { updateToc(); }
+	virtual void structureChanged() = 0;
 	/// This function is called when some parsing error shows up.
 	void errors(std::string const & err) { showErrorList(err); }
 	/// Reset autosave timers for all users.
 	void resetAutosaveTimers() { resetAutosaveTimer(); }
 
 	/// connect to signals in the given BufferView
-	void connectBufferView(BufferView & bv);
+	virtual void connectBufferView(BufferView & bv) = 0;
 	/// disconnect from signals in the given BufferView
-	void disconnectBufferView();
+	virtual void disconnectBufferView() = 0;
 	/// connect to signals in the given buffer
-	void connectBuffer(Buffer & buf);
+	virtual void connectBuffer(Buffer & buf) = 0;
 	/// disconnect from signals in the given buffer
-	void disconnectBuffer();
+	virtual void disconnectBuffer() = 0;
 
 private:
 	/// noncopyable
 	LyXView(LyXView const &);
 	void operator=(LyXView const &);
 
-	/// called on timeout
-	void autoSave();
-
-	/// auto-saving of buffers
-	Timeout * const autosave_timeout_;
-	/// dialogs for this view
-	Dialogs * dialogs_;
-
 	/// Bind methods for BufferView messages signal connection
 	//@{
-	void showDialog(std::string const & name);
-	void showDialogWithData(std::string const & name,
-		std::string const & data);
-	void showInsetDialog(std::string const & name,
-		std::string const & data, Inset * inset);
-	void updateDialog(std::string const & name,
-		std::string const & data);
+	virtual void showDialog(std::string const & name) = 0;
+	virtual void showDialogWithData(std::string const & name,
+		std::string const & data) = 0;
+	virtual void showInsetDialog(std::string const & name,
+		std::string const & data, Inset * inset) = 0;
+	virtual void updateDialog(std::string const & name,
+		std::string const & data) = 0;
 	//@}
-
-protected:
-	///
-	void updateToc();
-	///
-	void updateEmbeddedFiles();
 
 private:
 	int id_;

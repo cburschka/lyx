@@ -16,20 +16,20 @@
 #define GUI_VIEW_H
 
 #include "frontends/LyXView.h"
-#include "FuncRequest.h"
 
-#include <QAction>
-#include <QCloseEvent>
 #include <QMainWindow>
-#include <QTabWidget>
 #include <QTimer>
 
+class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
 class QMenu;
-class QToolBar;
+
 
 namespace lyx {
+
+class Timeout;
+
 namespace frontend {
 
 class GuiToolbar;
@@ -88,9 +88,20 @@ public:
 	/// menu item has been selected
 	void activated(FuncRequest const &);
 
-	QMenu* createPopupMenu();
+	///
+	QMenu * createPopupMenu();
 
+	///
 	void addTabWorkArea();
+
+	/// dispatch to current BufferView
+	void dispatch(FuncRequest const & cmd);
+
+	/// \return the buffer currently shown in this window
+	Buffer * buffer();
+	Buffer const * buffer() const;
+	/// set a buffer to the current workarea.
+	void setBuffer(Buffer * b); ///< \c Buffer to set.
 
 Q_SIGNALS:
 	void closing(int);
@@ -110,7 +121,7 @@ public Q_SLOTS:
 	void normalSizedIcons();
 	void bigSizedIcons();
 
-protected:
+private:
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
 	///
@@ -131,7 +142,32 @@ protected:
 	WorkArea const * currentWorkArea() const;
 	WorkArea * currentWorkArea();
 
-private:
+	///
+	void resetAutosaveTimer();
+	///
+	void showErrorList(std::string const & error_type);
+	///
+	void structureChanged() { updateToc(); }
+	///
+	void connectBuffer(Buffer & buf);
+	///
+	void disconnectBuffer();
+	///
+	void connectBufferView(BufferView & bv);
+	///
+	void disconnectBufferView();
+	////
+	void showDialog(std::string const & name);
+	void showDialogWithData(std::string const & name,
+		std::string const & data);
+	void showInsetDialog(std::string const & name,
+		std::string const & data, Inset * inset);
+	void updateDialog(std::string const & name,
+		std::string const & data);
+	
+	///
+	void updateToc();
+
 	///
 	void dragEnterEvent(QDragEnterEvent * ev);
 	///
@@ -142,6 +178,30 @@ private:
 	bool focusNextPrevChild(bool);
 	///
 	QRect updateFloatingGeometry();
+	/// called on timeout
+	void autoSave();
+	///
+	void updateEmbeddedFiles();
+
+	/// \return the current buffer view.
+	BufferView * view();
+
+	/// get access to the dialogs
+	Dialogs & getDialogs() { return *dialogs_; }
+	///
+	Dialogs const & getDialogs() const { return *dialogs_; }
+
+	//@}
+
+	/// load a buffer into the current workarea.
+	Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true);  ///< append to the "Open recent" menu?
+
+	/** redraw \c inset in all the BufferViews in which it is currently
+	 *  visible. If successful return a pointer to the owning Buffer.
+	 */
+	Buffer const * updateInset(Inset const *);
+
 
 private:
 	///
@@ -167,6 +227,11 @@ private:
 	};
 
 	ToolbarSize toolbarSize_;
+
+	/// auto-saving of buffers
+	Timeout * const autosave_timeout_;
+	/// dialogs for this view
+	Dialogs * dialogs_;
 };
 
 
