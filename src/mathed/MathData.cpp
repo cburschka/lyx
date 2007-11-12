@@ -564,20 +564,23 @@ void MathData::attachMacroParameters(Cursor & cur,
 	
 	// remove them from the MathData
 	erase(begin() + macroPos + 1, begin() + p);
+
+	// fix up cursor
+	if (thisSlice != -1) {
+		// fix cursor if right of p
+		if (thisPos >= int(p))
+			cur[thisSlice].pos() -= p - (macroPos + 1);
 	
-	// fix cursor if right of p
-	if (thisPos >= int(p))
-		cur[thisSlice].pos() -= p - (macroPos + 1);
-	
-	// was the macro inset just inserted and was now folded?
-	if (cur[thisSlice].pos() == int(macroPos + 1)
-			&& fromInitToNormalMode
-			&& macroInset->arity() > 0
-			&& thisSlice + 1 == int(cur.depth())) {
-		// then enter it if the cursor was just behind
-		cur[thisSlice].pos() = macroPos;
-		cur.push_back(CursorSlice(*macroInset));
-		macroInset->idxFirst(cur);
+		// was the macro inset just inserted and was now folded?
+		if (cur[thisSlice].pos() == int(macroPos + 1)
+				&& fromInitToNormalMode
+				&& macroInset->arity() > 0
+				&& thisSlice + 1 == int(cur.depth())) {
+			// then enter it if the cursor was just behind
+			cur[thisSlice].pos() = macroPos;
+			cur.push_back(CursorSlice(*macroInset));
+			macroInset->idxFirst(cur);
+		}
 	}
 }
 
@@ -618,7 +621,8 @@ void MathData::collectOptionalParameters(Cursor & cur,
 			params.push_back(optarg);
 		
 		// place cursor in optional argument of macro
-		if (thisPos >= int(pos) && thisPos <= int(right)) {
+		if (thisSlice != -1
+				&& thisPos >= int(pos) && thisPos <= int(right)) {
 			int paramPos = std::max(0, thisPos - int(pos) - 1);
 			std::vector<CursorSlice> x;
 			cur.cutOff(thisSlice, x);
@@ -652,7 +656,7 @@ void MathData::collectParameters(Cursor & cur,
 		// fix cursor
 		std::vector<CursorSlice> argSlices;
 		int argPos = 0;
-		if (thisPos == int(pos)) {
+		if (thisSlice != -1 && thisPos == int(pos)) {
 			cur.cutOff(thisSlice, argSlices);
 		}
 		
@@ -693,7 +697,7 @@ void MathData::collectParameters(Cursor & cur,
 		}
 		
 		// put cursor in argument again
-		if (thisPos == int(pos)) {
+		if (thisSlice != - 1 && thisPos == int(pos)) {
 			cur.append(params.size() - 1, argPos);
 			cur.append(argSlices);
 			cur[thisSlice].pos() = macroPos;
