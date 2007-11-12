@@ -484,18 +484,17 @@ void GuiView::saveGeometry()
 	} else {
 		maximized = NotMaximized;
 	}
-
-
 #endif
+
 	// save windows size and position
-	Session & session = LyX::ref().session();
-	session.sessionInfo().save("WindowWidth", convert<string>(normal_geometry.width()));
-	session.sessionInfo().save("WindowHeight", convert<string>(normal_geometry.height()));
-	session.sessionInfo().save("WindowMaximized", convert<string>(maximized));
-	session.sessionInfo().save("IconSizeXY", convert<string>(iconSize().width()));
+	SessionInfoSection & info = LyX::ref().session().sessionInfo();
+	info.save("WindowWidth", convert<string>(normal_geometry.width()));
+	info.save("WindowHeight", convert<string>(normal_geometry.height()));
+	info.save("WindowMaximized", convert<string>(maximized));
+	info.save("IconSizeXY", convert<string>(iconSize().width()));
 	if (lyxrc.geometry_xysaved) {
-		session.sessionInfo().save("WindowPosX", convert<string>(normal_geometry.x() + d.posx_offset));
-		session.sessionInfo().save("WindowPosY", convert<string>(normal_geometry.y() + d.posy_offset));
+		info.save("WindowPosX", convert<string>(normal_geometry.x() + d.posx_offset));
+		info.save("WindowPosY", convert<string>(normal_geometry.y() + d.posy_offset));
 	}
 	d.toolbars_->saveToolbarInfo();
 }
