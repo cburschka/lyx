@@ -17,8 +17,6 @@
 #include "frontends/Delegates.h"
 #include "support/docstring.h"
 
-#include <boost/noncopyable.hpp>
-
 #include <vector>
 
 namespace lyx {
@@ -51,8 +49,8 @@ class WorkArea;
  * Additionally we would like to support multiple views
  * in a single LyXView.
  */
-class LyXView : boost::noncopyable,
-	public GuiBufferViewDelegate, public GuiBufferDelegate
+class LyXView
+	: public GuiBufferViewDelegate, public GuiBufferDelegate
 {
 public:
 	///
@@ -196,6 +194,10 @@ public:
 	void disconnectBuffer();
 
 private:
+	/// noncopyable
+	LyXView(LyXView const &);
+	void operator=(LyXView const &);
+
 	/// called on timeout
 	void autoSave();
 
