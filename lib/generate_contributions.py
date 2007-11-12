@@ -889,7 +889,15 @@ contributers = [
                  "31 October 2005",
                  u"Dutch translation coordinator"),
 
-     contributer(u"Joan Montané",
+     contributer(u"Siegfried Meunier-Guttin-Cluzel",
+                 "meunier () coria ! fr",
+                 "GPL",
+                 "French translations",
+                 "m=119485816312776",
+                 "12 November 2007",
+                 u"French translations of the documentation"),
+
+    contributer(u"Joan Montané",
                  "jmontane () gmail ! com",
                  "GPL",
                  "Re: LyX translation updates needed",
