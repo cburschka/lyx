@@ -1,5 +1,5 @@
 /**
- * \file qtTimeout.cpp
+ * \file Timeout.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -23,46 +23,34 @@ namespace lyx {
  * This class executes the callback when the timeout expires
  * using Qt mechanisms
  */
-class qtTimeout : QObject, public Timeout::Impl {
+class Timeout::Impl : QObject {
 public:
 	///
-	qtTimeout(Timeout & owner_);
+	Impl(Timeout & owner) : owner_(owner), timeout_id(-1) {}
 	///
-	virtual bool running() const;
+	bool running() const { return timeout_id != -1; } 
 	/// start the timer
-	virtual void start();
+	void start();
 	/// stop the timer
-	virtual void stop();
+	void stop();
 	/// reset
-	virtual void reset();
+	void reset();
+	///
+	unsigned int timeout_ms() const { return owner_.timeout_ms; }
 
 protected:
-	/// slot
-	virtual void timerEvent(QTimerEvent *);
+	/// 
+	void timerEvent(QTimerEvent *) { owner_.emit(); }
 
 private:
+	///
+	Timeout & owner_;
 	/// timout id
 	int timeout_id;
 };
 
 
-Timeout::Timeout(unsigned int msec, Type t)
-	: pimpl_(new qtTimeout(*this)), type(t), timeout_ms(msec)
-{}
-
-
-qtTimeout::qtTimeout(Timeout & owner)
-	: Timeout::Impl(owner), timeout_id(-1)
-{}
-
-
-void qtTimeout::timerEvent(QTimerEvent *)
-{
-	emit();
-}
-
-
-void qtTimeout::reset()
+void Timeout::Impl::reset()
 {
 	if (timeout_id != -1)
 		killTimer(timeout_id);
@@ -70,13 +58,7 @@ void qtTimeout::reset()
 }
 
 
-bool qtTimeout::running() const
-{
-	return timeout_id != -1;
-}
-
-
-void qtTimeout::start()
+void Timeout::Impl::start()
 {
 	if (running())
 		lyxerr << "Timeout::start: already running!" << std::endl;
@@ -84,7 +66,7 @@ void qtTimeout::start()
 }
 
 
-void qtTimeout::stop()
+void Timeout::Impl::stop()
 {
 	if (running())
 		reset();
@@ -92,12 +74,18 @@ void qtTimeout::stop()
 
 
 //
-// Timeoute
+// Timeout
 //
+
+Timeout::Timeout(unsigned int msec, Type t)
+	: pimpl_(new Impl(*this)), type(t), timeout_ms(msec)
+{}
+
 
 Timeout::~Timeout()
 {
 	pimpl_->stop();
+	delete pimpl_;
 }
 
 
@@ -138,7 +126,7 @@ void Timeout::emit()
 Timeout & Timeout::setType(Type t)
 {
 	type = t;
-	return * this;
+	return *this;
 }
 
 
@@ -148,7 +136,7 @@ Timeout & Timeout::setTimeout(unsigned int msec)
 	BOOST_ASSERT(msec);
 
 	timeout_ms = msec;
-	return * this;
+	return *this;
 }
 
 

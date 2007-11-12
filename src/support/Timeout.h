@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file qtTimeout.h
+ * \file Timeout.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -48,42 +48,16 @@ public:
 	/// set the timeout value
 	Timeout & setTimeout(unsigned int msec);
 
-	/** Base class for the GUI implementation.
-	    It must be public so that C callback functions can access its
-	    daughter classes.
-	 */
-	class Impl
-	{
-	public:
-		///
-		Impl(Timeout & owner) : owner_(owner) {}
-		///
-		virtual ~Impl() {}
-		/// Is the timer running?
-		virtual bool running() const = 0;
-		/// start the timer
-		virtual void start() = 0;
-		/// stop the timer
-		virtual void stop() = 0;
-		/// reset
-		virtual void reset() = 0;
-
-	protected:
-		///
-		void emit() { owner_.emit(); }
-		///
-		unsigned int timeout_ms() const { return owner_.timeout_ms; }
-
-	private:
-		///
-		Timeout & owner_;
-	};
-
 private:
+	/// noncopyable
+	Timeout(Timeout const &);
+	void operator=(Timeout const &);
+	///
+	class Impl;
 	///
 	friend class Impl;
 	///
-	boost::scoped_ptr<Impl> const pimpl_;
+	Impl * const pimpl_;
 	/// one-shot or repeating
 	Type type;
 	/// timeout value in milliseconds
