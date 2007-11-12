@@ -5,6 +5,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  SetOutPath "$INSTDIR\Resources"
+ File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\symbols"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
