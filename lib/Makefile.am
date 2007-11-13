@@ -1047,8 +1047,7 @@ dist_layouts_DATA =\
 	layouts/theorems-withinsec.module \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
-	layouts/treport.layout \
-	layouts/url.module
+	layouts/treport.layout
 
 scriptsdir = $(pkgdatadir)/scripts
 # Note that we "chmod 755" manually these files in install-data-hook.
