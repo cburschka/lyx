@@ -27,8 +27,8 @@
 #include "Paragraph.h"
 
 #include "support/textutils.h"
-#include "support/convert.h"
 #include "support/docstring.h"
+#include "support/lstrings.h"
 
 #include <QProgressBar>
 #include <QLineEdit>

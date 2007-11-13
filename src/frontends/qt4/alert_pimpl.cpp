@@ -11,16 +11,18 @@
 
 #include <config.h>
 
-#include "Alert_pimpl.h"
 #include "alert.h"
-
-#include "qt_helpers.h"
-
-#include "ui_AskForTextUi.h"
 
 #include "frontends/Application.h"
 
+#include "qt_helpers.h"
+#include "debug.h"
+#include "LyX.h" // for lyx::use_gui
+#include "ui_AskForTextUi.h"
 #include "gettext.h"
+
+#include "support/docstring.h"
+#include "support/lstrings.h"
 
 #include <QApplication>
 #include <QMessageBox>
@@ -28,6 +30,9 @@
 #include <QLineEdit>
 #include <QDialog>
 #include <QInputDialog>
+
+using std::endl;
+using std::string;
 
 
 namespace lyx {
@@ -190,4 +195,83 @@ bool askForText_pimpl(docstring & response, docstring const & msg,
 }
 
 
+namespace Alert {
+
+int prompt(docstring const & title, docstring const & question,
+		  int default_button, int escape_button,
+		  docstring const & b1, docstring const & b2, docstring const & b3)
+{
+	if (!use_gui || lyxerr.debugging()) {
+		lyxerr << to_utf8(title) << '\n'
+		       << "----------------------------------------\n"
+		       << to_utf8(question) << endl;
+
+		lyxerr << "Assuming answer is ";
+		switch (default_button) {
+		case 0: lyxerr << to_utf8(b1) << endl;
+		case 1: lyxerr << to_utf8(b2) << endl;
+		case 2: lyxerr << to_utf8(b3) << endl;
+		}
+		if (!use_gui)
+			return default_button;
+	}
+
+	return prompt_pimpl(title, question,
+			    default_button, escape_button, b1, b2, b3);
+
+}
+
+
+void warning(docstring const & title, docstring const & message)
+{
+	lyxerr << "Warning: " << to_utf8(title) << '\n'
+	       << "----------------------------------------\n"
+	       << to_utf8(message) << endl;
+
+	if (use_gui)
+		warning_pimpl(title, message);
+}
+
+
+void error(docstring const & title, docstring const & message)
+{
+	lyxerr << "Error: " << to_utf8(title) << '\n'
+	       << "----------------------------------------\n"
+	       << to_utf8(message) << endl;
+
+	if (use_gui)
+		error_pimpl(title, message);
+}
+
+
+void information(docstring const & title, docstring const & message)
+{
+	if (!use_gui || lyxerr.debugging())
+		lyxerr << to_utf8(title) << '\n'
+		       << "----------------------------------------\n"
+		       << to_utf8(message) << endl;
+
+	if (use_gui)
+		information_pimpl(title, message);
+}
+
+
+bool askForText(docstring & response, docstring const & msg,
+	docstring const & dflt)
+{
+	if (!use_gui || lyxerr.debugging()) {
+		lyxerr << "----------------------------------------\n"
+		       << to_utf8(msg) << '\n'
+		       << "Assuming answer is " << to_utf8(dflt) << '\n'
+		       << "----------------------------------------" << endl;
+		if (!use_gui) {
+			response = dflt;
+			return true;
+		}
+	}
+
+	return askForText_pimpl(response, msg, dflt);
+}
+
+} // namespace Alert
 } // namespace lyx

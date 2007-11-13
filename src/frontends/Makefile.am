@@ -9,9 +9,7 @@ noinst_LTLIBRARIES = liblyxfrontends.la
 AM_CPPFLAGS += -I$(srcdir)/..  $(BOOST_INCLUDES)
 
 liblyxfrontends_la_SOURCES = \
-	alert.cpp \
 	alert.h \
-	Alert_pimpl.h \
 	Application.cpp \
 	Application.h \
 	NoGuiFontLoader.h \
