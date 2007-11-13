@@ -684,7 +684,6 @@ src_frontends_header_files = Split('''
 src_frontends_files = Split('''
     Application.cpp
     Dialogs.cpp
-    LyXView.cpp
     Painter.cpp
     WorkAreaManager.cpp
     alert.cpp
@@ -2630,7 +2629,6 @@ lib_layouts_module_files = Split('''
     theorems-std.module
     theorems-withinsec.module
     theorems-withinchap.module
-    url.module
 ''')
 
 lib_scripts_files = Split('''
