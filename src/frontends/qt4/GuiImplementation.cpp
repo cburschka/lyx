@@ -42,7 +42,7 @@ GuiImplementation::GuiImplementation()
 }
 
 
-LyXView& GuiImplementation::createRegisteredView()
+int GuiImplementation::createRegisteredView()
 {
 	updateIds(views_, view_ids_);
 	int id = 0;
@@ -50,7 +50,7 @@ LyXView& GuiImplementation::createRegisteredView()
 		id++;
 	views_.insert(std::pair<int, GuiView *>(id, new GuiView(id)));
 	updateIds(views_, view_ids_);
-	return *views_[id];
+	return id;
 }
 
 

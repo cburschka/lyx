@@ -59,6 +59,14 @@ public:
 	virtual void init();
 	virtual void close();
 	virtual void setFocus();
+
+	enum Maximized {
+		NotMaximized = 0, // LyX::newLyXView() relies on this to be zero!
+		VerticallyMaximized,
+		HorizontallyMaximized,
+		CompletelyMaximized
+	};
+	///
 	virtual void setGeometry(
 		unsigned int width,
 		unsigned int height,
@@ -197,9 +205,6 @@ private:
 	QRect updateFloatingGeometry();
 	///
 	void setIconSize(unsigned int size);
-
-	/// toggle toolbar state
-	void toggleToolbarState(std::string const & name, bool allowauto);
 
 	///
 	struct GuiViewPrivate;

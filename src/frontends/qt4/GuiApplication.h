@@ -70,6 +70,10 @@ public:
 	virtual void updateColor(ColorCode col);
 	virtual void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
+	/// Create the main window with given geometry settings.
+	LyXView & createView(unsigned int width, unsigned int height,
+		int posx, int posy, int maximized,
+		unsigned int iconSizeXY, const std::string & geometryArg);
 	//@}
 
 	/// Methods inherited from \c QApplication class

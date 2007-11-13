@@ -36,7 +36,7 @@ public:
 	GuiImplementation();
 	virtual ~GuiImplementation() {}
 
-	virtual LyXView& createRegisteredView();
+	virtual int createRegisteredView();
 	virtual bool closeAllViews();
 	virtual bool unregisterView(int id);
 

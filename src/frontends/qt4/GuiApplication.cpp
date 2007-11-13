@@ -14,11 +14,11 @@
 
 #include "GuiApplication.h"
 
+#include "GuiView.h"
 #include "qt_helpers.h"
 #include "GuiImage.h"
 
 #include "frontends/alert.h"
-#include "frontends/LyXView.h"
 
 #include "graphics/LoaderQueue.h"
 
@@ -192,6 +192,31 @@ GuiApplication::~GuiApplication()
 {
 	socket_notifiers_.clear();
 }
+
+
+LyXView & GuiApplication::createView(unsigned int width,
+				  unsigned int height,
+				  int posx, int posy,
+				  int maximized,
+				  unsigned int iconSizeXY,
+				  const std::string & geometryArg)
+{
+	int const id = gui_.createRegisteredView();
+	GuiView & view = static_cast<GuiView &>(gui_.view(id));
+	theLyXFunc().setLyXView(&view);
+
+	view.init();
+	view.setGeometry(width, height, posx, posy, GuiView::Maximized(maximized),
+		iconSizeXY, geometryArg);
+
+	view.setFocus();
+
+	setCurrentView(view);
+
+	return view;
+}
+
+
 
 
 Clipboard & GuiApplication::clipboard()

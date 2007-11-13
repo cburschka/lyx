@@ -40,28 +40,6 @@ Application::Application(int &, char **)
 }
 
 
-LyXView & Application::createView(unsigned int width,
-				  unsigned int height,
-				  int posx, int posy,
-				  int maximized,
-				  unsigned int iconSizeXY,
-				  const std::string & geometryArg)
-{
-	LyXView & view = gui().createRegisteredView();
-	theLyXFunc().setLyXView(&view);
-
-	view.init();
-	view.setGeometry(width, height, posx, posy, LyXView::Maximized(maximized),
-		iconSizeXY, geometryArg);
-
-	view.setFocus();
-
-	setCurrentView(view);
-
-	return view;
-}
-
-
 LyXView const * Application::currentView() const
 {
 	return current_view_;

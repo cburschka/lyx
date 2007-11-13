@@ -711,13 +711,16 @@ LyXView * LyX::newLyXView()
 	if (!lyx::use_gui)
 		return 0;
 
+	// FIXME: transfer all this geometry stuff to the frontend.
+
 	// determine windows size and position, from lyxrc and/or session
 	// initial geometry
 	unsigned int width = 690;
 	unsigned int height = 510;
 	// default icon size, will be overwritten by  stored session value
 	unsigned int iconSizeXY = 0;
-	int maximized = LyXView::NotMaximized;
+	// FIXME: 0 means GuiView::NotMaximized by default!
+	int maximized = 0;
 	// first try lyxrc
 	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
 		width = lyxrc.geometry_width;
@@ -758,7 +761,8 @@ LyXView * LyX::newLyXView()
 	}
 
 	// create the main window
-	LyXView * view = &pimpl_->application_->createView(width, height, posx, posy, maximized, iconSizeXY, geometryArg);
+	LyXView * view = &pimpl_->application_->createView(width, height,
+		posx, posy, maximized, iconSizeXY, geometryArg);
 
 	return view;
 }

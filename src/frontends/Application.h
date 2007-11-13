@@ -214,9 +214,9 @@ public:
 	virtual void unregisterSocketCallback(int fd) = 0;
 
 	/// Create the main window with given geometry settings.
-	LyXView & createView(unsigned int width, unsigned int height,
+	virtual LyXView & createView(unsigned int width, unsigned int height,
 		int posx, int posy, int maximized,
-		unsigned int iconSizeXY, const std::string & geometryArg);
+		unsigned int iconSizeXY, const std::string & geometryArg) = 0;
 
 	///
 	LyXView const * currentView() const;

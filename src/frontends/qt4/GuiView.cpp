@@ -497,7 +497,7 @@ void GuiView::saveGeometry()
 void GuiView::setGeometry(unsigned int width,
 			  unsigned int height,
 			  int posx, int posy,
-			  LyXView::Maximized maximized,
+			  GuiView::Maximized maximized,
 			  unsigned int iconSizeXY,
 			  const string & geometryArg)
 {

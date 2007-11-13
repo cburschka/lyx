@@ -64,22 +64,6 @@ public:
 	 */
 	virtual void init() = 0;
 
-	enum Maximized {
-		NotMaximized,
-		VerticallyMaximized,
-		HorizontallyMaximized,
-		CompletelyMaximized
-	};
-
-	///
-	virtual void setGeometry(
-		unsigned int width,
-		unsigned int height,
-		int posx, int posy,
-		Maximized maximize,
-		unsigned int iconSizeXY,
-		const std::string & geometryArg) = 0;
-
 	/// show busy cursor
 	virtual void setBusy(bool) = 0;
 

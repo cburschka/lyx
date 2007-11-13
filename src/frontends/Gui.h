@@ -38,7 +38,7 @@ public:
 	virtual ~Gui() {}
 
 	///
-	virtual LyXView& createRegisteredView() = 0;
+	virtual int createRegisteredView() = 0;
 	///
 	virtual bool unregisterView(int id) = 0;
 	///
