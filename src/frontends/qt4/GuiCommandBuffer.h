@@ -25,7 +25,6 @@ class QListWidgetItem;
 namespace lyx {
 namespace frontend {
 
-class LyXView;
 class GuiView;
 class GuiCommandEdit;
 
@@ -54,8 +53,6 @@ public Q_SLOTS:
 private:
 	/// owning view
 	GuiView * view_;
-	///
-	LyXView & lv_;
 	/// command widget
 	GuiCommandEdit * edit_;
 

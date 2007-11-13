@@ -684,12 +684,6 @@ void GuiView::updateStatusBar()
 }
 
 
-void GuiView::activated(FuncRequest const & func)
-{
-	dispatch(func);
-}
-
-
 bool GuiView::hasFocus() const
 {
 	return qApp->activeWindow() == this;
@@ -782,14 +776,6 @@ bool GuiView::focusNextPrevChild(bool /*next*/)
 {
 	setFocus();
 	return true;
-}
-
-
-void GuiView::showView()
-{
-	setWindowTitle(qt_("LyX"));
-	show();
-	updateFloatingGeometry();
 }
 
 
@@ -897,12 +883,6 @@ void GuiView::addTabWorkArea()
 		this, SLOT(on_currentWorkAreaChanged(GuiWorkArea *)));
 	d.splitter_->addWidget(twa);
 	d.stack_widget_->setCurrentWidget(d.splitter_);
-}
-
-
-GuiWorkArea * GuiView::currentWorkArea()
-{
-	return d.current_work_area_;
 }
 
 
@@ -1225,11 +1205,15 @@ void GuiView::resetAutosaveTimers()
 
 void GuiView::dispatch(FuncRequest const & cmd)
 {
-	string const argument = to_utf8(cmd.argument());
 	switch(cmd.action) {
 		case LFUN_BUFFER_SWITCH:
 			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
 			break;
+
+		case LFUN_COMMAND_EXECUTE:
+			showMiniBuffer(true);
+			break;
+
 		default:
 			theLyXFunc().setLyXView(this);
 			lyx::dispatch(cmd);

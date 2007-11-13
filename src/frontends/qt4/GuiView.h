@@ -81,18 +81,8 @@ public:
 	void updateToolbars();
 	ToolbarInfo * getToolbarInfo(std::string const & name);
 	void toggleToolbarState(std::string const & name, bool allowauto);
-
-	/// show - display the top-level window
-	void showView();
-
-	/// menu item has been selected
-	void activated(FuncRequest const &);
-
 	///
 	QMenu * createPopupMenu();
-
-	///
-	void addTabWorkArea();
 
 	/// dispatch to current BufferView
 	void dispatch(FuncRequest const & cmd);
@@ -103,34 +93,45 @@ public:
 	/// set a buffer to the current workarea.
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 
-Q_SIGNALS:
-	void closing(int);
+	/// GuiBufferDelegate.
+	///@{
+	void resetAutosaveTimers();
+	void errors(std::string const &);
+	void structureChanged() { updateToc(); }
+	///@}
 
-public Q_SLOTS:
-	/// idle timeout.
-	/// clear any temporary message and replace with current status.
-	void clearMessage();
-
+	////
+	void showDialog(std::string const & name);
+	void showDialogWithData(std::string const & name,
+		std::string const & data);
+	void showInsetDialog(std::string const & name,
+		std::string const & data, Inset * inset);
+	void updateDialog(std::string const & name,
+		std::string const & data);
+	
+	/// called on timeout
+	void autoSave();
 	///
-	void updateWindowTitle(GuiWorkArea * wa);
+	void updateEmbeddedFiles();
 
+	/// \return the current buffer view.
+	BufferView * view();
+
+	/// get access to the dialogs
+	Dialogs & getDialogs() { return *dialogs_; }
 	///
-	void on_currentWorkAreaChanged(GuiWorkArea *);
+	Dialogs const & getDialogs() const { return *dialogs_; }
 
-	/// slots to change the icon size
-	void smallSizedIcons();
-	void normalSizedIcons();
-	void bigSizedIcons();
+	/// load a buffer into the current workarea.
+	Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true);  ///< append to the "Open recent" menu?
 
-private:
-	friend class GuiWorkArea;
-
-	/// make sure we quit cleanly
-	virtual void closeEvent(QCloseEvent * e);
+	/** redraw \c inset in all the BufferViews in which it is currently
+	 *  visible. If successful return a pointer to the owning Buffer.
+	 */
+	Buffer const * updateInset(Inset const *);
 	///
-	virtual void resizeEvent(QResizeEvent * e);
-	///
-	virtual void moveEvent(QMoveEvent * e);
+	void restartCursor();
 
 	/// \return the \c Workarea associated to \p  Buffer
 	/// \retval 0 if no \c WorkArea is found.
@@ -146,17 +147,30 @@ private:
 	void removeWorkArea(GuiWorkArea * work_area);
 	/// return the current WorkArea (the one that has the focus).
 	GuiWorkArea const * currentWorkArea() const;
-	/// FIXME: This non-const access is needed because of
-	/// a mis-designed \c ControlSpellchecker.
-	GuiWorkArea * currentWorkArea();
 
-	/// GuiBufferDelegate.
-	///@{
-	void resetAutosaveTimers();
-	void errors(std::string const &);
-	void structureChanged() { updateToc(); }
-	///@}
+Q_SIGNALS:
+	void closing(int);
 
+public Q_SLOTS:
+	/// idle timeout.
+	/// clear any temporary message and replace with current status.
+	void clearMessage();
+
+private Q_SLOTS:
+	///
+	void updateWindowTitle(GuiWorkArea * wa);
+
+	///
+	void on_currentWorkAreaChanged(GuiWorkArea *);
+
+	/// slots to change the icon size
+	void smallSizedIcons();
+	void normalSizedIcons();
+	void bigSizedIcons();
+
+private:
+	///
+	void addTabWorkArea();
 
 	/// connect to signals in the given BufferView
 	void connectBufferView(BufferView & bv);
@@ -166,57 +180,27 @@ private:
 	void connectBuffer(Buffer & buf);
 	/// disconnect from signals in the given buffer
 	void disconnectBuffer();
-
-	////
-	void showDialog(std::string const & name);
-	void showDialogWithData(std::string const & name,
-		std::string const & data);
-	void showInsetDialog(std::string const & name,
-		std::string const & data, Inset * inset);
-	void updateDialog(std::string const & name,
-		std::string const & data);
-	
 	///
 	void updateToc();
-
 	///
 	void dragEnterEvent(QDragEnterEvent * ev);
 	///
 	void dropEvent(QDropEvent * ev);
+	/// make sure we quit cleanly
+	virtual void closeEvent(QCloseEvent * e);
+	///
+	virtual void resizeEvent(QResizeEvent * e);
+	///
+	virtual void moveEvent(QMoveEvent * e);
 
 	/// in order to catch Tab key press.
 	bool event(QEvent * e);
 	bool focusNextPrevChild(bool);
 	///
 	QRect updateFloatingGeometry();
-	/// called on timeout
-	void autoSave();
 	///
-	void updateEmbeddedFiles();
+	void setIconSize(unsigned int size);
 
-	/// \return the current buffer view.
-	BufferView * view();
-
-	/// get access to the dialogs
-	Dialogs & getDialogs() { return *dialogs_; }
-	///
-	Dialogs const & getDialogs() const { return *dialogs_; }
-
-	//@}
-
-	/// load a buffer into the current workarea.
-	Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
-		bool tolastfiles = true);  ///< append to the "Open recent" menu?
-
-	/** redraw \c inset in all the BufferViews in which it is currently
-	 *  visible. If successful return a pointer to the owning Buffer.
-	 */
-	Buffer const * updateInset(Inset const *);
-	///
-	void restartCursor();
-
-
-private:
 	///
 	struct GuiViewPrivate;
 	GuiViewPrivate & d;
@@ -229,8 +213,6 @@ private:
 
 	///
 	QRect floatingGeometry_;
-
-	void setIconSize(unsigned int size);
 
 	struct ToolbarSize {
 		int top_width;

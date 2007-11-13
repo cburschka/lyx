@@ -12,10 +12,10 @@
 
 #include <config.h>
 
-#include "GuiView.h"
-
 #include "GuiCommandBuffer.h"
+
 #include "GuiCommandEdit.h"
+#include "GuiView.h"
 #include "qt_helpers.h"
 
 #include "BufferView.h"
@@ -87,7 +87,7 @@ protected:
 
 
 GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
-	: view_(view), lv_(*view), history_pos_(history_.end())
+	: view_(view), history_pos_(history_.end())
 {
 	transform(lyxaction.func_begin(), lyxaction.func_end(),
 		back_inserter(commands_), firster());
@@ -266,13 +266,13 @@ string const GuiCommandBuffer::historyDown()
 
 docstring const GuiCommandBuffer::getCurrentState() const
 {
-	return lv_.view()->cursor().currentState();
+	return view_->view()->cursor().currentState();
 }
 
 
 void GuiCommandBuffer::hide() const
 {
-	lv_.showMiniBuffer(false);
+	view_->showMiniBuffer(false);
 }
 
 
@@ -324,7 +324,7 @@ void GuiCommandBuffer::dispatch(string const & str)
 	history_pos_ = history_.end();
 	FuncRequest func = lyxaction.lookupFunc(str);
 	func.origin = FuncRequest::COMMANDBUFFER;
-	lv_.dispatch(func);
+	view_->dispatch(func);
 }
 
 } // namespace frontend

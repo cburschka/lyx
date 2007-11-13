@@ -100,7 +100,6 @@ public:
 	///
 	virtual bool isToolbarVisible(std::string const & id) = 0;
 	///
-	virtual void showMiniBuffer(bool visible) = 0;
 	virtual void openMenu(docstring const & name) = 0;
 
 	/// get access to the dialogs
