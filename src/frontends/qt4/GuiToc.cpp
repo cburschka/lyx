@@ -31,8 +31,6 @@
 #include "gettext.h"
 #include "TextClass.h"
 
-#include "frontends/LyXView.h"
-
 #include "support/convert.h"
 
 #include <algorithm>

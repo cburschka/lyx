@@ -24,8 +24,6 @@
 #include "LyXAction.h"
 #include "FuncRequest.h"
 
-#include "frontends/LyXView.h"
-
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
 

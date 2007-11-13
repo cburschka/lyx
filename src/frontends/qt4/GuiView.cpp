@@ -362,7 +362,7 @@ void GuiView::init()
 	statusBar()->setSizeGripEnabled(true);
 
 	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
-		this, SLOT(update_view_state_qt()));
+		this, SLOT(clearMessage()));
 
 	d.setBackground();
 }
@@ -608,12 +608,6 @@ void GuiView::message(docstring const & str)
 }
 
 
-void GuiView::clearMessage()
-{
-	update_view_state_qt();
-}
-
-
 void GuiView::setIconSize(unsigned int size)
 {
 	d.lastIconSize = size;
@@ -639,7 +633,7 @@ void GuiView::bigSizedIcons()
 }
 
 
-void GuiView::update_view_state_qt()
+void GuiView::clearMessage()
 {
 	if (!hasFocus())
 		return;

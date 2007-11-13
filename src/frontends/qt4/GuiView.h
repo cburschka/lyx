@@ -72,7 +72,6 @@ public:
 	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
 	virtual void updateStatusBar();
 	virtual void message(docstring const & str);
-	virtual void clearMessage();
 	virtual bool hasFocus() const;
 	void showMiniBuffer(bool);
 	void openMenu(docstring const &);
@@ -108,8 +107,9 @@ Q_SIGNALS:
 	void closing(int);
 
 public Q_SLOTS:
-	/// idle timeout
-	void update_view_state_qt();
+	/// idle timeout.
+	/// clear any temporary message and replace with current status.
+	void clearMessage();
 
 	///
 	void updateWindowTitle(GuiWorkArea * wa);
@@ -123,7 +123,7 @@ public Q_SLOTS:
 	void bigSizedIcons();
 
 private:
-	friend GuiWorkArea;
+	friend class GuiWorkArea;
 
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);

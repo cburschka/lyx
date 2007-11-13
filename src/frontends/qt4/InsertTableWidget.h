@@ -13,12 +13,12 @@
 #ifndef INSERTTABLEWIDGET_H
 #define INSERTTABLEWIDGET_H
 
-#include "frontends/LyXView.h"
 #include <QWidget>
 
 namespace lyx {
 namespace frontend {
 
+class LyXView;
 
 class InsertTableWidget : public QWidget {
 	Q_OBJECT

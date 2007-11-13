@@ -116,7 +116,6 @@ public:
 
 	/// updates the possible layouts selectable
 	virtual void updateLayoutChoice(bool force) = 0;
-
 	/// update the toolbar
 	virtual void updateToolbars() = 0;
 	/// get toolbar info
@@ -125,12 +124,8 @@ public:
 	virtual void toggleToolbarState(std::string const & name, bool allowauto) = 0;
 	/// update the status bar
 	virtual void updateStatusBar() = 0;
-
 	/// display a message in the view
 	virtual void message(docstring const &) = 0;
-
-	/// clear any temporary message and replace with current status
-	virtual void clearMessage() = 0;
 
 	/// dispatch to current BufferView
 	virtual void dispatch(FuncRequest const & cmd) = 0;
@@ -142,7 +137,6 @@ public:
 
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
-
 
 	///
 	virtual void restartCursor() = 0;
