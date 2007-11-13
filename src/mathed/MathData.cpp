@@ -565,22 +565,24 @@ void MathData::attachMacroParameters(Cursor & cur,
 	// remove them from the MathData
 	erase(begin() + macroPos + 1, begin() + p);
 
-	// fix up cursor
-	if (thisSlice != -1) {
-		// fix cursor if right of p
-		if (thisPos >= int(p))
-			cur[thisSlice].pos() -= p - (macroPos + 1);
 	
-		// was the macro inset just inserted and was now folded?
-		if (cur[thisSlice].pos() == int(macroPos + 1)
-				&& fromInitToNormalMode
-				&& macroInset->arity() > 0
-				&& thisSlice + 1 == int(cur.depth())) {
-			// then enter it if the cursor was just behind
-			cur[thisSlice].pos() = macroPos;
-			cur.push_back(CursorSlice(*macroInset));
-			macroInset->idxFirst(cur);
-		}
+	// no need to update the cursor?
+	if (thisSlice == -1)
+		return;
+
+	// fix cursor if right of p
+	if (thisPos >= int(p))
+		cur[thisSlice].pos() -= p - (macroPos + 1);
+	
+	// was the macro inset just inserted and was now folded?
+	if (cur[thisSlice].pos() == int(macroPos + 1)
+			&& fromInitToNormalMode
+			&& macroInset->arity() > 0
+			&& thisSlice + 1 == int(cur.depth())) {
+		// then enter it if the cursor was just behind
+		cur[thisSlice].pos() = macroPos;
+		cur.push_back(CursorSlice(*macroInset));
+		macroInset->idxFirst(cur);
 	}
 }
 
