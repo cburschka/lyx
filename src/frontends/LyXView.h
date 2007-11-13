@@ -24,7 +24,6 @@ class Buffer;
 class BufferView;
 class FuncRequest;
 class Inset;
-class ToolbarInfo;
 
 namespace frontend {
 
@@ -96,11 +95,7 @@ public:
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 
 	///
-	virtual void openLayoutList() = 0;
-	///
 	virtual bool isToolbarVisible(std::string const & id) = 0;
-	///
-	virtual void openMenu(docstring const & name) = 0;
 
 	/// get access to the dialogs
 	virtual Dialogs & getDialogs() = 0;
@@ -117,10 +112,6 @@ public:
 	virtual void updateLayoutChoice(bool force) = 0;
 	/// update the toolbar
 	virtual void updateToolbars() = 0;
-	/// get toolbar info
-	virtual ToolbarInfo * getToolbarInfo(std::string const & name) = 0;
-	/// toggle toolbar state
-	virtual void toggleToolbarState(std::string const & name, bool allowauto) = 0;
 	/// update the status bar
 	virtual void updateStatusBar() = 0;
 	/// display a message in the view

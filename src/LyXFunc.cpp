@@ -920,6 +920,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		setErrorMessage(flag.message());
 	} else {
 		switch (action) {
+		// Let lyx_view_ dispatch its own actions.
+		case LFUN_COMMAND_EXECUTE:
+		case LFUN_DROP_LAYOUTS_CHOICE:
+		case LFUN_MENU_OPEN:
+		case LFUN_TOOLBAR_TOGGLE:
+			BOOST_ASSERT(lyx_view_);
+			lyx_view_->dispatch(cmd);
+			break;
 
 		case LFUN_WORD_FIND_FORWARD:
 		case LFUN_WORD_FIND_BACKWARD: {
@@ -947,11 +955,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_COMMAND_PREFIX:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->message(keyseq.printOptions(true));
-			break;
-
-		case LFUN_COMMAND_EXECUTE:
-			BOOST_ASSERT(lyx_view_);
-			lyx_view_->dispatch(cmd);
 			break;
 
 		case LFUN_CANCEL:
@@ -1366,16 +1369,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			open(argument);
 			updateFlags = Update::None;
-			break;
-
-		case LFUN_DROP_LAYOUTS_CHOICE:
-			BOOST_ASSERT(lyx_view_);
-			lyx_view_->openLayoutList();
-			break;
-
-		case LFUN_MENU_OPEN:
-			BOOST_ASSERT(lyx_view_);
-			lyx_view_->openMenu(from_utf8(argument));
 			break;
 
 		// --- lyxserver commands ----------------------------
@@ -2036,30 +2029,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BOOKMARK_CLEAR:
 			LyX::ref().session().bookmarks().clear();
 			break;
-
-		case LFUN_TOOLBAR_TOGGLE: {
-			BOOST_ASSERT(lyx_view_);
-			string const name = cmd.getArg(0);
-			bool const allowauto = cmd.getArg(1) == "allowauto";
-			lyx_view_->toggleToolbarState(name, allowauto);
-			ToolbarInfo * tbi = lyx_view_->getToolbarInfo(name);
-			if (!tbi) {
-				setMessage(bformat(_("Unknown toolbar \"%1$s\""),
-				                   from_utf8(name)));
-				break;
-			}
-			docstring state;
-			if (tbi->flags & ToolbarInfo::ON)
-				state = _("on");
-			else if (tbi->flags & ToolbarInfo::OFF)
-				state = _("off");
-			else if (tbi->flags & ToolbarInfo::AUTO)
-				state = _("auto");
-
-			setMessage(bformat(_("Toolbar \"%1$s\" state set to %2$s"), 
-			                   _(tbi->gui_name), state));
-			break;
-		}
 
 		default: {
 			BOOST_ASSERT(lyx_view_);

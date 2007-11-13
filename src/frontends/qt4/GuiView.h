@@ -29,6 +29,7 @@ class QMenu;
 namespace lyx {
 
 class Timeout;
+class ToolbarInfo;
 
 namespace frontend {
 
@@ -74,13 +75,9 @@ public:
 	virtual void message(docstring const & str);
 	virtual bool hasFocus() const;
 	void showMiniBuffer(bool);
-	void openMenu(docstring const &);
-	void openLayoutList();
 	void updateLayoutChoice(bool force);
 	bool isToolbarVisible(std::string const & id);
 	void updateToolbars();
-	ToolbarInfo * getToolbarInfo(std::string const & name);
-	void toggleToolbarState(std::string const & name, bool allowauto);
 	///
 	QMenu * createPopupMenu();
 
@@ -200,6 +197,9 @@ private:
 	QRect updateFloatingGeometry();
 	///
 	void setIconSize(unsigned int size);
+
+	/// toggle toolbar state
+	void toggleToolbarState(std::string const & name, bool allowauto);
 
 	///
 	struct GuiViewPrivate;

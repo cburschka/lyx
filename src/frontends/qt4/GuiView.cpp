@@ -958,18 +958,6 @@ void GuiView::showMiniBuffer(bool visible)
 }
 
 
-void GuiView::openMenu(docstring const & name)
-{
-	d.menubar_->openByName(toqstr(name));
-}
-
-
-void GuiView::openLayoutList()
-{
-	d.toolbars_->openLayoutList();
-}
-
-
 void GuiView::updateLayoutChoice(bool force)
 {
 	// Don't show any layouts without a buffer
@@ -1015,26 +1003,6 @@ void GuiView::updateToolbars()
 
 	// update read-only status of open dialogs.
 	dialogs_->checkStatus();
-}
-
-
-ToolbarInfo * GuiView::getToolbarInfo(string const & name)
-{
-	return d.toolbars_->getToolbarInfo(name);
-}
-
-
-void GuiView::toggleToolbarState(string const & name, bool allowauto)
-{
-	// it is possible to get current toolbar status like this,...
-	// but I decide to obey the order of ToolbarBackend::flags
-	// and disregard real toolbar status.
-	// toolbars_->saveToolbarInfo();
-	//
-	// toggle state on/off/auto
-	d.toolbars_->toggleToolbarState(name, allowauto);
-	// update toolbar
-	updateToolbars();
 }
 
 
@@ -1211,8 +1179,47 @@ void GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_COMMAND_EXECUTE:
-			showMiniBuffer(true);
+			d.toolbars_->showCommandBuffer(true);
 			break;
+
+		case LFUN_DROP_LAYOUTS_CHOICE:
+			d.toolbars_->openLayoutList();
+			break;
+
+		case LFUN_MENU_OPEN:
+			d.menubar_->openByName(toqstr(cmd.argument()));
+			break;
+
+		case LFUN_TOOLBAR_TOGGLE: {
+			string const name = cmd.getArg(0);
+			bool const allowauto = cmd.getArg(1) == "allowauto";
+			// it is possible to get current toolbar status like this,...
+			// but I decide to obey the order of ToolbarBackend::flags
+			// and disregard real toolbar status.
+			// toolbars_->saveToolbarInfo();
+			//
+			// toggle state on/off/auto
+			d.toolbars_->toggleToolbarState(name, allowauto);
+			// update toolbar
+			updateToolbars();
+
+			ToolbarInfo * tbi = d.toolbars_->getToolbarInfo(name);
+			if (!tbi) {
+				message(bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name)));
+				break;
+			}
+			docstring state;
+			if (tbi->flags & ToolbarInfo::ON)
+				state = _("on");
+			else if (tbi->flags & ToolbarInfo::OFF)
+				state = _("off");
+			else if (tbi->flags & ToolbarInfo::AUTO)
+				state = _("auto");
+
+			message(bformat(_("Toolbar \"%1$s\" state set to %2$s"), 
+			                   _(tbi->gui_name), state));
+			break;
+		}
 
 		default:
 			theLyXFunc().setLyXView(this);
