@@ -957,7 +957,7 @@ void GuiView::removeWorkArea(GuiWorkArea * work_area)
 			continue;
 
 		// We found and removed the GuiWorkArea.
-		if (twa->count()) {
+		if (!twa->count()) {
 			// No more WorkAreas in this tab group, so delete it.
 			delete twa;
 			break;
