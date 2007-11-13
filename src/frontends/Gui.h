@@ -14,19 +14,12 @@
 #ifndef BASE_GUI_H
 #define BASE_GUI_H
 
-#include <boost/shared_ptr.hpp>
-
-#include <map>
 #include <vector>
 
 namespace lyx {
-
-class BufferView;
-
 namespace frontend {
 
 class LyXView;
-class WorkArea;
 
 
 /**
@@ -42,18 +35,15 @@ public:
 	///
 	virtual bool unregisterView(int id) = 0;
 	///
-	virtual bool closeAllViews()= 0;
+	virtual bool closeAllViews() = 0;
 
 	///
-	virtual LyXView& view(int id) const = 0;
+	virtual LyXView & view(int id) const = 0;
 	///
-	std::vector<int> const & viewIds()
-	{
-		return view_ids_;
-	}
+	std::vector<int> const & viewIds() { return view_ids_; }
 
 protected:
-
+	///
 	std::vector<int> view_ids_;
 };
 

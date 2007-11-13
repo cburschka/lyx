@@ -12,18 +12,16 @@
 #include <config.h>
 
 #include "frontends/Painter.h"
-
 #include "frontends/FontMetrics.h"
 
 #include "FontInfo.h"
 
-using lyx::docstring;
-
-using std::max;
-using std::string;
-
 namespace lyx {
 namespace frontend {
+
+
+static int max(int a, int b) { return a > b ? a : b; }
+
 
 void Painter::button(int x, int y, int w, int h, bool mouseHover)
 {

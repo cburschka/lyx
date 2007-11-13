@@ -13,22 +13,25 @@
 #include <config.h>
 
 #include "GuiSelection.h"
-#include "qt_helpers.h"
 
+#include "qt_helpers.h"
 #include "debug.h"
+
+#include "support/lstrings.h"
 
 #include <QApplication>
 #include <QClipboard>
 #include <QString>
 
-#include "support/lstrings.h"
-using lyx::support::internalLineEnding;
-using lyx::support::externalLineEnding;
 
 using std::endl;
 
 namespace lyx {
 namespace frontend {
+
+using support::internalLineEnding;
+using support::externalLineEnding;
+
 
 GuiSelection::GuiSelection()
 	: selection_supported_(qApp->clipboard()->supportsSelection())

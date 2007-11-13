@@ -17,13 +17,10 @@
 #include "LyX.h" // for lyx::use_gui
 
 using std::endl;
-using std::make_pair;
-using std::pair;
 using std::string;
 
 
 namespace lyx {
-
 namespace frontend {
 
 int Alert::prompt(docstring const & title, docstring const & question,
@@ -85,19 +82,21 @@ void Alert::information(docstring const & title, docstring const & message)
 }
 
 
-pair<bool, docstring> const Alert::askForText(docstring const & msg,
-					   docstring const & dflt)
+bool Alert::askForText(docstring & response, docstring const & msg,
+	docstring const & dflt)
 {
 	if (!use_gui || lyxerr.debugging()) {
 		lyxerr << "----------------------------------------\n"
 		       << to_utf8(msg) << '\n'
 		       << "Assuming answer is " << to_utf8(dflt) << '\n'
 		       << "----------------------------------------" << endl;
-		if (!use_gui)
-			return make_pair<bool, docstring>(true, dflt);
+		if (!use_gui) {
+			response = dflt;
+			return true;
+		}
 	}
 
-	return askForText_pimpl(msg, dflt);
+	return askForText_pimpl(response, msg, dflt);
 }
 
 } // namespace frontend

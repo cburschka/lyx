@@ -4,13 +4,9 @@ SUBDIRS = $(FRONTENDS_SUBDIRS) .
 
 DIST_SUBDIRS = qt4 .
 
-EXTRA_DIST = pch.h
-
-BUILT_SOURCES = $(PCH_FILE)
-
 noinst_LTLIBRARIES = liblyxfrontends.la
 
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/..  $(BOOST_INCLUDES)
+AM_CPPFLAGS += -I$(srcdir)/..  $(BOOST_INCLUDES)
 
 liblyxfrontends_la_SOURCES = \
 	alert.cpp \
@@ -40,7 +36,7 @@ liblyxfrontends_la_SOURCES = \
 
 ################################# Tests ################################
 
-EXTRA_DIST += tests/test_biblio
+EXTRA_DIST = tests/test_biblio
 
 TESTS = \
 	test_biblio

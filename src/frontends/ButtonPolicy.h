@@ -16,7 +16,7 @@
 #define BUTTONPOLICY_H
 
 #include <vector>
-#include <iostream>
+#include <iosfwd>
 
 namespace lyx {
 namespace frontend {
@@ -280,19 +280,8 @@ private:
 };
 
 
-inline
-std::ostream & operator<<(std::ostream & os, ButtonPolicy::State st)
-{
-	return os << int(st);
-}
-
-
-inline
-std::ostream & operator<<(std::ostream & os, ButtonPolicy::SMInput smi)
-{
-	return os << int(smi);
-}
-
+std::ostream & operator<<(std::ostream & os, ButtonPolicy::State st);
+std::ostream & operator<<(std::ostream & os, ButtonPolicy::SMInput smi);
 
 } // namespace frontend
 } // namespace lyx

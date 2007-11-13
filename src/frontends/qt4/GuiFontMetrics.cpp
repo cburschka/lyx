@@ -101,11 +101,12 @@ int GuiFontMetrics::rbearing(char_type c) const
 	if (is_utf16(c)) {
 		QChar sc = ucs4_to_qchar(c);
 		value = width(c) - metrics_.rightBearing(sc);
-	} else
-		// FIXME: QFontMetrics::leftBearingdoes not support the
+	} else {
+		// FIXME: QFontMetrics::leftBearing does not support the
 		//        full unicode range. Once it does, we could use:
 		// metrics_.rightBearing(toqstr(docstring(1,c)));
 		value = width(c);
+	}
 
 	rbearing_cache_.insert(c, value);
 
@@ -272,5 +273,5 @@ int GuiFontMetrics::descent(char_type c) const
 	return value.descent;
 }
 
-} // frontend
-} // lyx
+} // namespace frontend
+} // namespace lyx

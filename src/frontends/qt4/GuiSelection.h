@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef SELECTION_H
-#define SELECTION_H
+#ifndef GUISELECTION_H
+#define GUISELECTION_H
 
 #include "frontends/Selection.h"
 
@@ -51,4 +51,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // SELECTION_H
+#endif // GUISELECTION_H

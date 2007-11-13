@@ -126,7 +126,7 @@ GuiApplication * guiApp;
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), Application(argc, argv)
+	: QApplication(argc, argv), Application()
 {
 	QCoreApplication::setOrganizationName("The LyX Community");
 	QCoreApplication::setOrganizationDomain("lyx.org");
@@ -311,21 +311,20 @@ bool GuiApplication::event(QEvent * e)
 
 bool GuiApplication::notify(QObject * receiver, QEvent * event)
 {
-	bool return_value = false;
 	try {
-		return_value = QApplication::notify(receiver, event);
+		return QApplication::notify(receiver, event);
 	}
-	catch (support::ExceptionMessage  const & e) {
+	catch (support::ExceptionMessage const & e) {
 		if (e.type_ == support::ErrorException) {
 			Alert::error(e.title_, e.details_);
 			LyX::cref().emergencyCleanup();
 			QApplication::exit(1);
 		} else if (e.type_ == support::WarningException) {
 			Alert::warning(e.title_, e.details_);
-			return return_value;
+			return false;
 		}
 	}
-	catch (std::exception  const & e) {
+	catch (std::exception const & e) {
 		docstring s = _("LyX has caught an exception, it will now "
 			"attemp to save all unsaved documents and exit."
 			"\n\nException: ");
@@ -342,7 +341,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 		QApplication::exit(1);
 	}
 
-	return return_value;
+	return false;
 }
 
 
@@ -356,8 +355,7 @@ void GuiApplication::syncEvents()
 }
 
 
-bool GuiApplication::getRgbColor(ColorCode col,
-	RGBColor & rgbcol)
+bool GuiApplication::getRgbColor(ColorCode col, RGBColor & rgbcol)
 {
 	QColor const & qcol = color_cache_.get(col);
 	if (!qcol.isValid()) {

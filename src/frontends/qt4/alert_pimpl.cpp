@@ -29,13 +29,10 @@
 #include <QDialog>
 #include <QInputDialog>
 
-#include <algorithm>
-
-using std::pair;
-using std::make_pair;
-using lyx::support::bformat;
 
 namespace lyx {
+
+using support::bformat;
 
 static docstring const formatted(docstring const & text)
 {
@@ -45,13 +42,13 @@ static docstring const formatted(docstring const & text)
 	if (text.empty())
 		return sout;
 
-	docstring::size_type curpos = 0;
+	size_t curpos = 0;
 	docstring line;
 
-	for (;;) {
-		docstring::size_type const nxtpos1 = text.find(' ',  curpos);
-		docstring::size_type const nxtpos2 = text.find('\n', curpos);
-		docstring::size_type const nxtpos = std::min(nxtpos1, nxtpos2);
+	while (true) {
+		size_t const nxtpos1 = text.find(' ',  curpos);
+		size_t const nxtpos2 = text.find('\n', curpos);
+		size_t const nxtpos = std::min(nxtpos1, nxtpos2);
 
 		docstring const word =
 			nxtpos == docstring::npos ?
@@ -172,8 +169,8 @@ void information_pimpl(docstring const & tit, docstring const & message)
 }
 
 
-pair<bool, docstring> const
-askForText_pimpl(docstring const & msg, docstring const & dflt)
+bool askForText_pimpl(docstring & response, docstring const & msg,
+	docstring const & dflt)
 {
 	docstring const title = bformat(_("LyX: %1$s"), msg);
 
@@ -184,10 +181,12 @@ askForText_pimpl(docstring const & msg, docstring const & dflt)
 		QLineEdit::Normal,
 		toqstr(dflt), &ok);
 
-	if (ok && !text.isEmpty())
-		return make_pair<bool, docstring>(true, qstring_to_ucs4(text));
-	else
-		return make_pair<bool, docstring>(false, docstring());
+	if (ok && !text.isEmpty()) {
+		response = qstring_to_ucs4(text);
+		return true;
+	}
+	response.clear();
+	return false;
 }
 
 

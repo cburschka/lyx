@@ -55,8 +55,8 @@ void error(docstring const & title, docstring const & message);
 void information(docstring const & title, docstring const & message);
 
 /// Asks for a text. DO NOT USE !!
-std::pair<bool, docstring> const
-askForText(docstring const & msg, docstring const & dflt = docstring());
+bool askForText(docstring & response, docstring const & msg,
+	docstring const & dflt = docstring());
 
 } // namespace Alert
 } // namespace frontend

@@ -16,7 +16,7 @@
 
 #include "Dimension.h"
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 namespace frontend {

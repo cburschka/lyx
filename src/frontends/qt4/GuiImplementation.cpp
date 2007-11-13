@@ -13,27 +13,27 @@
 #include <config.h>
 
 #include "GuiImplementation.h"
-
 #include "GuiView.h"
+
+#include <boost/assert.hpp>
 
 #include <QApplication>
 
-
-namespace
-{
-	template<class T>
-	void updateIds(std::map<int, T*> const & stdmap, std::vector<int> & ids)
-	{
-		ids.clear();
-		typename std::map<int, T*>::const_iterator it;
-		for (it = stdmap.begin(); it != stdmap.end(); ++it)
-			ids.push_back(it->first);
-	}
-}
+using std::map;
+using std::vector;
 
 
 namespace lyx {
 namespace frontend {
+
+
+static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
+{
+	ids.clear();
+	map<int, GuiView *>::const_iterator it;
+	for (it = stdmap.begin(); it != stdmap.end(); ++it)
+		ids.push_back(it->first);
+}
 
 
 GuiImplementation::GuiImplementation()
@@ -48,7 +48,7 @@ int GuiImplementation::createRegisteredView()
 	int id = 0;
 	while (views_.find(id) != views_.end())
 		id++;
-	views_.insert(std::pair<int, GuiView *>(id, new GuiView(id)));
+	views_[id] = new GuiView(id);
 	updateIds(views_, view_ids_);
 	return id;
 }
@@ -60,7 +60,7 @@ bool GuiImplementation::unregisterView(int id)
 	BOOST_ASSERT(views_.find(id) != views_.end());
 	BOOST_ASSERT(views_[id]);
 
-	std::map<int, GuiView *>::iterator it;
+	map<int, GuiView *>::iterator it;
 	for (it = views_.begin(); it != views_.end(); ++it) {
 		if (it->first == id) {
 			views_.erase(id);
@@ -75,17 +75,15 @@ bool GuiImplementation::unregisterView(int id)
 bool GuiImplementation::closeAllViews()
 {
 	updateIds(views_, view_ids_);
-	if (views_.empty())
-	{
+	if (views_.empty()) {
 		// quit in CloseEvent will not be triggert
 		qApp->quit();
 		return true;
 	}
 
-	std::map<int, GuiView*> const cmap = views_;
-	std::map<int, GuiView*>::const_iterator it;
-	for (it = cmap.begin(); it != cmap.end(); ++it)
-	{
+	map<int, GuiView*> const cmap = views_;
+	map<int, GuiView*>::const_iterator it;
+	for (it = cmap.begin(); it != cmap.end(); ++it) {
 		// TODO: return false when close event was ignored
 		//       e.g. quitWriteAll()->'Cancel'
 		//       maybe we need something like 'bool closeView()'
@@ -99,7 +97,7 @@ bool GuiImplementation::closeAllViews()
 }
 
 
-LyXView& GuiImplementation::view(int id) const
+LyXView & GuiImplementation::view(int id) const
 {
 	BOOST_ASSERT(views_.find(id) != views_.end());
 	return *views_.find(id)->second;

@@ -144,7 +144,7 @@ class Application
 {
 public:
 	///
-	Application(int & argc, char ** argv);
+	Application() : current_view_(0) {}
 	///
 	virtual ~Application() {}
 
@@ -219,20 +219,17 @@ public:
 		unsigned int iconSizeXY, const std::string & geometryArg) = 0;
 
 	///
-	LyXView const * currentView() const;
-
+	LyXView const * currentView() const { return current_view_; }
 	///
-	LyXView * currentView();
-
+	LyXView * currentView() { return current_view_; }
 	///
-	void setCurrentView(LyXView & current_view);
+	void setCurrentView(LyXView & view) { current_view_ = &view; }
 
 private:
 	/// This LyXView is the one receiving Clipboard and Selection
-	/// Events
+	/// events
 	LyXView * current_view_;
-
-}; // Application
+};
 
 } // namespace frontend
 

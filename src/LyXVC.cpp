@@ -124,16 +124,16 @@ void LyXVC::registrer()
 	}
 
 	LYXERR(Debug::LYXVC) << "LyXVC: registrer" << endl;
-	pair<bool, docstring> tmp =
-		Alert::askForText(_("LyX VC: Initial description"),
-			   _("(no initial description)"));
-	if (!tmp.first || tmp.second.empty()) {
-		// should we insist on checking tmp.second.empty()?
+	docstring response;
+	bool ok = Alert::askForText(response, _("LyX VC: Initial description"),
+			_("(no initial description)"));
+	if (!ok || response.empty()) {
+		// should we insist on checking response.empty()?
 		LYXERR(Debug::LYXVC) << "LyXVC: user cancelled" << endl;
 		return;
 	}
 
-	vcs->registrer(to_utf8(tmp.second));
+	vcs->registrer(to_utf8(response));
 }
 
 
@@ -141,12 +141,12 @@ void LyXVC::checkIn()
 {
 
 	LYXERR(Debug::LYXVC) << "LyXVC: checkIn" << endl;
-	pair<bool, docstring> tmp = Alert::askForText(_("LyX VC: Log Message"));
-	if (tmp.first) {
-		if (tmp.second.empty()) {
-			tmp.second = _("(no log message)");
-		}
-		vcs->checkIn(to_utf8(tmp.second));
+	docstring response;
+	bool ok = Alert::askForText(response, _("LyX VC: Log Message"));
+	if (ok) {
+		if (response.empty())
+			response = _("(no log message)");
+		vcs->checkIn(to_utf8(response));
 	} else {
 		LYXERR(Debug::LYXVC) << "LyXVC: user cancelled" << endl;
 	}

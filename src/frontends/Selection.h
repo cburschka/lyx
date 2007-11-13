@@ -11,10 +11,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef BASE_SELECTION_H
-#define BASE_SELECTION_H
+#ifndef SELECTION_H
+#define SELECTION_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 namespace frontend {
@@ -73,4 +73,4 @@ extern frontend::Selection & theSelection();
 } // namespace lyx
 
 
-#endif // BASE_SELECTION_H
+#endif // SELECTION_H

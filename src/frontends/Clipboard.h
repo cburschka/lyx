@@ -14,7 +14,7 @@
 #ifndef BASE_CLIPBOARD_H
 #define BASE_CLIPBOARD_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 namespace frontend {

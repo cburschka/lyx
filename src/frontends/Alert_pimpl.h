@@ -9,12 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-// GUI-specific implementations
 
-#include "support/docstring.h"
-
-#include <utility>
-
+#include "support/strfwd.h"
 
 namespace lyx {
 
@@ -28,6 +24,7 @@ void warning_pimpl(docstring const & title, docstring const & warning);
 void error_pimpl(docstring const & title, docstring const & warning);
 void information_pimpl(docstring const & title, docstring const & warning);
 
-std::pair<bool, docstring> const askForText_pimpl(docstring const & msg, docstring const & dflt);
+bool askForText_pimpl(docstring & response,
+	docstring const & msg, docstring const & dflt);
 
 } // namespace lyx

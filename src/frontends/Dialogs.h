@@ -14,7 +14,6 @@
 #define DIALOGS_H
 
 #include <boost/signal.hpp>
-#include <boost/noncopyable.hpp>
 
 #include <map>
 
@@ -29,7 +28,7 @@ class LyXView;
 
 /** Container of all dialogs.
  */
-class Dialogs : boost::noncopyable {
+class Dialogs {
 public:
 	///
 	Dialogs(LyXView &);
@@ -89,7 +88,12 @@ public:
 	void disconnect(std::string const & name);
 	///
 	Inset * getOpenInset(std::string const & name) const;
+
 private:
+	/// noncopyable
+	Dialogs(Dialogs const &);
+	void operator=(Dialogs const &);
+	
 	///
 	void redraw() const;
 	///

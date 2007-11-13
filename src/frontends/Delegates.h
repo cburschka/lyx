@@ -12,7 +12,7 @@
 #ifndef DELEGATES_H
 #define DELEGATES_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 

@@ -13,6 +13,7 @@
 #include "ButtonPolicy.h"
 #include "debug.h"
 
+#include <iostream>
 
 namespace lyx {
 namespace frontend {
@@ -562,6 +563,18 @@ void ButtonPolicy::initNoRepeatedApply()
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
 	state_machine_[INVALID][SMI_VALID] = VALID;
 	state_machine_[INVALID][SMI_RESTORE] = INITIAL;
+}
+
+
+std::ostream & operator<<(std::ostream & os, ButtonPolicy::State st)
+{
+	return os << int(st);
+}
+
+
+std::ostream & operator<<(std::ostream & os, ButtonPolicy::SMInput smi)
+{
+	return os << int(smi);
 }
 
 

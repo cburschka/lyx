@@ -31,34 +31,6 @@
 
 
 namespace lyx {
-namespace frontend {
-
-
-Application::Application(int &, char **)
-	: current_view_(0)
-{
-}
-
-
-LyXView const * Application::currentView() const
-{
-	return current_view_;
-}
-
-
-LyXView * Application::currentView()
-{
-	return current_view_;
-}
-
-
-void Application::setCurrentView(LyXView & current_view)
-{
-	current_view_ = &current_view;
-}
-
-} // namespace frontend
-
 
 
 frontend::FontLoader & theFontLoader()
