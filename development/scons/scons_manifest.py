@@ -659,7 +659,6 @@ src_tex2lyx_extra_files = Split('''
 
 
 src_frontends_header_files = Split('''
-    Alert_pimpl.h
     Application.h
     Clipboard.h
     Dialogs.h
@@ -818,6 +817,7 @@ src_frontends_qt4_files = Split('''
     FileDialog.cpp
     FloatPlacement.cpp
     GuiAbout.cpp
+    GuiAlert.cpp
     GuiApplication.cpp
     GuiBibitem.cpp
     GuiBibtex.cpp
@@ -888,7 +888,6 @@ src_frontends_qt4_files = Split('''
     TocModel.cpp
     TocWidget.cpp
     Validator.cpp
-    alert_pimpl.cpp
     qt_helpers.cpp
 ''')
 
