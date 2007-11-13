@@ -521,7 +521,6 @@ def convert_url(document):
     'Convert url insets to url charstyles'
     if document.backend == "docbook":
       return
-    didone = False
     i = 0
     while True:
       i = find_token(document.body, "\\begin_inset CommandInset url", i)
@@ -555,29 +554,7 @@ def convert_url(document):
         "\\end_layout",
         ""]
       document.body[i:k] = newstuff
-      didone = True
       i = k
-
-    #If we did one, we need to add URL to the modules
-    if didone:
-      i = find_token(document.header, "\\begin_modules", 0)
-      if i == -1:
-        #No modules yet included
-        i = find_token(document.header, "\\textclass", 0)
-        if i == -1:
-          document.warning("Malformed LyX document: No \\textclass!!")
-          return
-        modinfo = ["\\begin_modules", "URL", "\\end_modules"]
-        document.header[i + 1: i + 1] = modinfo
-        return
-      j = find_token(document.header, "\\end_modules", i)
-      if j == -1:
-        document.warning("Malformed LyX document: No \\end_modules.")
-        return
-      k = find_token(document.header, "URL", i)
-      if k != -1 and k < j:
-        return
-      document.header.insert(i + 1, "URL")
 
 
 def revert_href(document):
