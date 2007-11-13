@@ -31,7 +31,6 @@ class ToolbarInfo;
 namespace frontend {
 
 class Dialogs;
-class WorkArea;
 
 /**
  * LyXView - main LyX window
@@ -53,27 +52,13 @@ public:
 	///
 	LyXView(int id) : id_(id) {}
 	///
-	virtual ~LyXView();
+	virtual ~LyXView() {}
 	///
 	int id() const { return id_; }
 	///
 	virtual void close() = 0;
 	///
 	virtual void setFocus() = 0;
-
-	///
-	virtual WorkArea * workArea(Buffer & buffer) = 0;
-	///
-	virtual WorkArea * addWorkArea(Buffer & buffer) = 0;
-	///
-	virtual void setCurrentWorkArea(WorkArea * work_area) = 0;
-	///
-	virtual void removeWorkArea(WorkArea * work_area) = 0;
-	/// return the current WorkArea (the one that has the focus).
-	virtual WorkArea const * currentWorkArea() const = 0;
-	/// FIXME: This non-const access is needed because of
-	/// a mis-designed \c ControlSpellchecker.
-	virtual WorkArea * currentWorkArea() = 0;
 
 	/**
 	 * This is called after the concrete view has been created.
@@ -97,9 +82,6 @@ public:
 		int maximize,
 		unsigned int iconSizeXY,
 		const std::string & geometryArg) = 0;
-
-	/// save the geometry state in the session manager.
-	virtual void saveGeometry() = 0;
 
 	/// show busy cursor
 	virtual void setBusy(bool) = 0;
@@ -152,9 +134,6 @@ public:
 	/// clear any temporary message and replace with current status
 	virtual void clearMessage() = 0;
 
-	/// reset autosave timer
-	virtual void resetAutosaveTimer() = 0;
-
 	/// dispatch to current BufferView
 	virtual void dispatch(FuncRequest const & cmd) = 0;
 
@@ -166,28 +145,14 @@ public:
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
 
-	/// show the error list to the user
-	virtual void showErrorList(std::string const &) = 0;
 
+	///
+	virtual void restartCursor() = 0;
 	
 	//
 	// GuiBufferDelegate
 	//
-	/// This function is called when the buffer structure is changed.
-	virtual void structureChanged() = 0;
-	/// This function is called when some parsing error shows up.
-	void errors(std::string const & err) { showErrorList(err); }
-	/// Reset autosave timers for all users.
-	void resetAutosaveTimers() { resetAutosaveTimer(); }
-
-	/// connect to signals in the given BufferView
-	virtual void connectBufferView(BufferView & bv) = 0;
-	/// disconnect from signals in the given BufferView
-	virtual void disconnectBufferView() = 0;
-	/// connect to signals in the given buffer
-	virtual void connectBuffer(Buffer & buf) = 0;
-	/// disconnect from signals in the given buffer
-	virtual void disconnectBuffer() = 0;
+	virtual void errors(std::string const &) = 0;
 
 private:
 	/// noncopyable

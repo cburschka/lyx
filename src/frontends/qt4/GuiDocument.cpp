@@ -40,12 +40,6 @@
 #include "TextClassList.h"
 #include "Validator.h"
 
-
-// FIXME: those two headers are needed because of the
-// WorkArea::redraw() call below.
-#include "frontends/LyXView.h"
-#include "frontends/WorkArea.h"
-
 #include "insets/InsetListingsParams.h"
 
 #include "support/lstrings.h"

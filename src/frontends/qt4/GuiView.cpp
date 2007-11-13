@@ -22,7 +22,6 @@
 #include "GuiToolbar.h"
 #include "GuiToolbars.h"
 #include "Dialogs.h"
-#include "WorkArea.h"
 #include "Gui.h"
 
 #include "qt_helpers.h"
@@ -30,7 +29,6 @@
 #include "frontends/Application.h"
 #include "frontends/Dialogs.h"
 #include "frontends/Gui.h"
-#include "frontends/WorkArea.h"
 
 #include "support/filetools.h"
 #include "support/convert.h"
@@ -268,10 +266,6 @@ public:
 
 
 unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
-
-
-/// FIXME
-LyXView::~LyXView() {}
 
 
 GuiView::GuiView(int id)
@@ -869,7 +863,7 @@ GuiToolbar * GuiView::makeToolbar(ToolbarInfo const & tbinfo, bool newline)
 }
 
 
-WorkArea * GuiView::workArea(Buffer & buffer)
+GuiWorkArea * GuiView::workArea(Buffer & buffer)
 {
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		GuiWorkArea * wa = d.tabWorkArea(i)->workArea(buffer);
@@ -880,7 +874,7 @@ WorkArea * GuiView::workArea(Buffer & buffer)
 }
 
 
-WorkArea * GuiView::addWorkArea(Buffer & buffer)
+GuiWorkArea * GuiView::addWorkArea(Buffer & buffer)
 {
 	GuiWorkArea * wa = new GuiWorkArea(buffer, *this);
 	wa->setUpdatesEnabled(false);
@@ -912,19 +906,19 @@ void GuiView::addTabWorkArea()
 }
 
 
-WorkArea * GuiView::currentWorkArea()
+GuiWorkArea * GuiView::currentWorkArea()
 {
 	return d.current_work_area_;
 }
 
 
-WorkArea const * GuiView::currentWorkArea() const
+GuiWorkArea const * GuiView::currentWorkArea() const
 {
 	return d.current_work_area_;
 }
 
 
-void GuiView::setCurrentWorkArea(WorkArea * work_area)
+void GuiView::setCurrentWorkArea(GuiWorkArea * work_area)
 {
 	BOOST_ASSERT(work_area);
 
@@ -941,7 +935,7 @@ void GuiView::setCurrentWorkArea(WorkArea * work_area)
 }
 
 
-void GuiView::removeWorkArea(WorkArea * work_area)
+void GuiView::removeWorkArea(GuiWorkArea * work_area)
 {
 	BOOST_ASSERT(work_area);
 	GuiWorkArea * gwa = static_cast<GuiWorkArea *>(work_area);
@@ -962,7 +956,7 @@ void GuiView::removeWorkArea(WorkArea * work_area)
 			// Not found in this tab group.
 			continue;
 
-		// We found and removed the WorkArea.
+		// We found and removed the GuiWorkArea.
 		if (twa->count()) {
 			// No more WorkAreas in this tab group, so delete it.
 			delete twa;
@@ -970,10 +964,10 @@ void GuiView::removeWorkArea(WorkArea * work_area)
 		}
 
 		if (d.current_work_area_)
-			// This means that we are not closing the current WorkArea;
+			// This means that we are not closing the current GuiWorkArea;
 			break;
 
-		// Switch to the next WorkArea in the found TabWorkArea.
+		// Switch to the next GuiWorkArea in the found TabWorkArea.
 		d.current_work_area_ = twa->currentWorkArea();
 		break;
 	}
@@ -1072,18 +1066,16 @@ void GuiView::toggleToolbarState(string const & name, bool allowauto)
 
 Buffer * GuiView::buffer()
 {
-	WorkArea * work_area = currentWorkArea();
-	if (work_area)
-		return &work_area->bufferView().buffer();
+	if (d.current_work_area_)
+		return &d.current_work_area_->bufferView().buffer();
 	return 0;
 }
 
 
 Buffer const * GuiView::buffer() const
 {
-	WorkArea const * work_area = currentWorkArea();
-	if (work_area)
-		return &work_area->bufferView().buffer();
+	if (d.current_work_area_)
+		return &d.current_work_area_->bufferView().buffer();
 	return 0;
 }
 
@@ -1093,7 +1085,7 @@ void GuiView::setBuffer(Buffer * newBuffer)
 	BOOST_ASSERT(newBuffer);
 	setBusy(true);
 
-	WorkArea * wa = workArea(*newBuffer);
+	GuiWorkArea * wa = workArea(*newBuffer);
 	if (wa == 0) {
 		updateLabels(*newBuffer->masterBuffer());
 		wa = addWorkArea(*newBuffer);
@@ -1122,7 +1114,7 @@ Buffer * GuiView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		return 0;
 	}
 
-	WorkArea * wa = workArea(*newBuffer);
+	GuiWorkArea * wa = workArea(*newBuffer);
 	if (wa == 0)
 		wa = addWorkArea(*newBuffer);
 
@@ -1151,8 +1143,8 @@ void GuiView::connectBuffer(Buffer & buf)
 
 void GuiView::disconnectBuffer()
 {
-	if (WorkArea * work_area = currentWorkArea())
-		work_area->bufferView().setGuiDelegate(0);
+	if (d.current_work_area_)
+		d.current_work_area_->bufferView().setGuiDelegate(0);
 }
 
 
@@ -1164,12 +1156,12 @@ void GuiView::connectBufferView(BufferView & bv)
 
 void GuiView::disconnectBufferView()
 {
-	if (WorkArea * work_area = currentWorkArea())
-		work_area->bufferView().setGuiDelegate(0);
+	if (d.current_work_area_)
+		d.current_work_area_->bufferView().setGuiDelegate(0);
 }
 
 
-void GuiView::showErrorList(string const & error_type)
+void GuiView::errors(string const & error_type)
 {
 	ErrorList & el = buffer()->errorList(error_type);
 	if (!el.empty())
@@ -1205,8 +1197,7 @@ void GuiView::updateDialog(string const & name, string const & data)
 
 BufferView * GuiView::view()
 {
-	WorkArea * wa = currentWorkArea();
-	return wa ? &wa->bufferView() : 0;
+	return d.current_work_area_ ? &d.current_work_area_->bufferView() : 0;
 }
 
 
@@ -1231,7 +1222,7 @@ void GuiView::autoSave()
 }
 
 
-void GuiView::resetAutosaveTimer()
+void GuiView::resetAutosaveTimers()
 {
 	if (lyxrc.autosave)
 		autosave_timeout_->restart();
@@ -1254,15 +1245,23 @@ void GuiView::dispatch(FuncRequest const & cmd)
 
 Buffer const * GuiView::updateInset(Inset const * inset)
 {
-	WorkArea * work_area = currentWorkArea();
-	if (!work_area)
+	if (!d.current_work_area_)
 		return 0;
 
-	if (inset) {
-		BOOST_ASSERT(work_area);
-		work_area->scheduleRedraw();
-	}
-	return &work_area->bufferView().buffer();
+	if (inset)
+		d.current_work_area_->scheduleRedraw();
+
+	return &d.current_work_area_->bufferView().buffer();
+}
+
+
+void GuiView::restartCursor()
+{
+	/* When we move around, or type, it's nice to be able to see
+	 * the cursor immediately after the keypress.
+	 */
+	if (d.current_work_area_)
+		d.current_work_area_->startBlinkingCursor();
 }
 
 } // namespace frontend

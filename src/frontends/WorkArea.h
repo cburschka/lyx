@@ -36,41 +36,10 @@ public:
 	///
 	WorkArea() {}
 	///
-	virtual ~WorkArea();
-
-	///
-	virtual BufferView & bufferView() = 0;
-	///
-	virtual BufferView const & bufferView() const = 0;
-
-	/// return true if has the keyboard input focus.
-	virtual bool hasFocus() const = 0;
-
-	/// return true if has this WorkArea is visible.
-	virtual bool isVisible() const = 0;
-
-	/// return the width of the work area in pixels
-	virtual int width() const = 0;
-
-	/// return the height of the work area in pixels
-	virtual int height() const = 0;
-
-	/**
-	 * Update the scrollbar.
-	 * @param height the total document height in pixels
-	 * @param pos the current position in the document, in pixels
-	 * @param line_height the line-scroll amount, in pixels
-	 */
-	virtual void setScrollbarParams(int height, int pos, int line_height) = 0;
-
-	///
-	virtual void scheduleRedraw() = 0;
+	virtual ~WorkArea() {}
 
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw() = 0;
-	///
-	virtual void stopBlinkingCursor() = 0;
-	virtual void startBlinkingCursor() = 0;
 
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.

@@ -53,10 +53,6 @@
 #endif
 
 #include "frontends/alert.h"
-// FIXME: those two headers are needed because of the
-// WorkArea::redraw() call below.
-#include "frontends/LyXView.h"
-#include "frontends/WorkArea.h"
 
 using std::advance;
 using std::distance;

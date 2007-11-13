@@ -83,7 +83,6 @@
 #include "frontends/KeySymbol.h"
 #include "frontends/LyXView.h"
 #include "frontends/Selection.h"
-#include "frontends/WorkArea.h"
 
 #include "support/environment.h"
 #include "support/FileFilterList.h"
@@ -186,7 +185,7 @@ bool import(LyXView * lv, FileName const & filename,
 		}
 		updateLabels(*buf);
 		lv->setBuffer(buf);
-		lv->showErrorList("Parse");
+		lv->errors("Parse");
 	} else {
 		Buffer * const b = newFile(lyxfile.absFilename(), string(), true);
 		if (b)
@@ -384,17 +383,6 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 }
 
 
-namespace {
-void restartCursor(LyXView * lv)
-{
-	/* When we move around, or type, it's nice to be able to see
-	 * the cursor immediately after the keypress.
-	 */
-	if (lv && lv->currentWorkArea())
-		lv->currentWorkArea()->startBlinkingCursor();
-}
-}
-
 void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 {
 	LYXERR(Debug::KEY) << "KeySym is " << keysym.getSymbolName() << endl;
@@ -403,13 +391,13 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	if (!keysym.isOK()) {
 		LYXERR(Debug::KEY) << "Empty kbd action (probably composing)"
 				   << endl;
-		restartCursor(lyx_view_);
+		lyx_view_->restartCursor();
 		return;
 	}
 
 	if (keysym.isModifier()) {
 		LYXERR(Debug::KEY) << "isModifier true" << endl;
-		restartCursor(lyx_view_);
+		lyx_view_->restartCursor();
 		return;
 	}
 
@@ -479,7 +467,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		} else {
 			LYXERR(Debug::KEY) << "Unknown, !isText() - giving up" << endl;
 			lyx_view_->message(_("Unknown function."));
-			restartCursor(lyx_view_);
+			lyx_view_->restartCursor();
 			return;
 		}
 	}
@@ -496,7 +484,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		dispatch(func);
 	}
 
-	restartCursor(lyx_view_);
+	lyx_view_->restartCursor();
 }
 
 
@@ -1292,7 +1280,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (buf) {
 				updateLabels(*buf);
 				lyx_view_->setBuffer(buf);
-				lyx_view_->showErrorList("Parse");
+				lyx_view_->errors("Parse");
 			}
 			updateFlags = Update::None;
 			break;
@@ -1438,7 +1426,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			lyx_view_->setBuffer(buf);
 			view()->setCursorFromRow(row);
 			if (loaded)
-				lyx_view_->showErrorList("Parse");
+				lyx_view_->errors("Parse");
 			updateFlags = Update::FitCursor;
 			break;
 		}
@@ -1654,7 +1642,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				updateLabels(*child->masterBuffer());
 				lyx_view_->setBuffer(child);
 				if (parsed)
-					lyx_view_->showErrorList("Parse");
+					lyx_view_->errors("Parse");
 			}
 
 			// If a screen update is required (in case where auto_open is false), 
@@ -2272,7 +2260,7 @@ void LyXFunc::open(string const & fname)
 	if (buf) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
-		lyx_view_->showErrorList("Parse");
+		lyx_view_->errors("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
 	} else {
 		str2 = bformat(_("Could not open document %1$s"), disp_fn);
@@ -2387,7 +2375,7 @@ void LyXFunc::reloadBuffer()
 	if (buf) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
-		lyx_view_->showErrorList("Parse");
+		lyx_view_->errors("Parse");
 		str = bformat(_("Document %1$s reloaded."), disp_fn);
 	} else {
 		str = bformat(_("Could not reload document %1$s"), disp_fn);

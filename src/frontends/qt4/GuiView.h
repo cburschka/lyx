@@ -65,6 +65,7 @@ public:
 		int maximized,
 		unsigned int iconSizeXY,
 		const std::string & geometryArg);
+	/// save the geometry state in the session manager.
 	virtual void saveGeometry();
 	virtual void setBusy(bool);
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
@@ -122,6 +123,8 @@ public Q_SLOTS:
 	void bigSizedIcons();
 
 private:
+	friend GuiWorkArea;
+
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
 	///
@@ -131,31 +134,39 @@ private:
 
 	/// \return the \c Workarea associated to \p  Buffer
 	/// \retval 0 if no \c WorkArea is found.
-	WorkArea * workArea(Buffer & buffer);
+	GuiWorkArea * workArea(Buffer & buffer);
 
 	/// Add a \c WorkArea 
 	/// \return the \c Workarea associated to \p  Buffer
 	/// \retval 0 if no \c WorkArea is found.
-	WorkArea * addWorkArea(Buffer & buffer);
-	void setCurrentWorkArea(WorkArea * work_area);
-	void removeWorkArea(WorkArea * work_area);
-	WorkArea const * currentWorkArea() const;
-	WorkArea * currentWorkArea();
+	GuiWorkArea * addWorkArea(Buffer & buffer);
+	///
+	void setCurrentWorkArea(GuiWorkArea * work_area);
+	///
+	void removeWorkArea(GuiWorkArea * work_area);
+	/// return the current WorkArea (the one that has the focus).
+	GuiWorkArea const * currentWorkArea() const;
+	/// FIXME: This non-const access is needed because of
+	/// a mis-designed \c ControlSpellchecker.
+	GuiWorkArea * currentWorkArea();
 
-	///
-	void resetAutosaveTimer();
-	///
-	void showErrorList(std::string const & error_type);
-	///
+	/// GuiBufferDelegate.
+	///@{
+	void resetAutosaveTimers();
+	void errors(std::string const &);
 	void structureChanged() { updateToc(); }
-	///
-	void connectBuffer(Buffer & buf);
-	///
-	void disconnectBuffer();
-	///
+	///@}
+
+
+	/// connect to signals in the given BufferView
 	void connectBufferView(BufferView & bv);
-	///
+	/// disconnect from signals in the given BufferView
 	void disconnectBufferView();
+	/// connect to signals in the given buffer
+	void connectBuffer(Buffer & buf);
+	/// disconnect from signals in the given buffer
+	void disconnectBuffer();
+
 	////
 	void showDialog(std::string const & name);
 	void showDialogWithData(std::string const & name,
@@ -201,6 +212,8 @@ private:
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
 	Buffer const * updateInset(Inset const *);
+	///
+	void restartCursor();
 
 
 private:

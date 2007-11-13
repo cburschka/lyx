@@ -25,6 +25,7 @@
 #include "GuiApplication.h"
 #include "GuiKeySymbol.h"
 #include "GuiPainter.h"
+#include "GuiView.h"
 #include "KeySymbol.h"
 #include "Language.h"
 #include "LyXFunc.h"
@@ -42,7 +43,6 @@
 #include "frontends/Application.h"
 #include "frontends/Dialogs.h"  // only used in setReadOnly
 #include "frontends/FontMetrics.h"
-#include "frontends/LyXView.h"
 #include "frontends/WorkAreaManager.h"
 
 #include <QInputContext>
@@ -199,11 +199,8 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 static boost::signals::connection timecon;
 
-// HACK: FIXME
-WorkArea::~WorkArea() {}
 
-
-GuiWorkArea::GuiWorkArea(Buffer & buffer, LyXView & lv)
+GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
 	  cursor_visible_(false), cursor_timeout_(400),
     need_resize_(false), schedule_redraw_(false),

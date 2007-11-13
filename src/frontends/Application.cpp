@@ -18,7 +18,6 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Gui.h"
 #include "frontends/LyXView.h"
-#include "frontends/WorkArea.h"
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"

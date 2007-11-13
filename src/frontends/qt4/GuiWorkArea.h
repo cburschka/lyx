@@ -44,7 +44,7 @@ class Buffer;
 
 namespace frontend {
 
-class LyXView;
+class GuiView;
 
 /// types of cursor in work area
 enum CursorShape {
@@ -106,22 +106,19 @@ class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 
 public:
 	///
-	GuiWorkArea(Buffer & buffer, LyXView & lv);
+	GuiWorkArea(Buffer & buffer, GuiView & lv);
 	///
 	~GuiWorkArea();
 
+	/**
+	 * Update the scrollbar.
+	 * @param height the total document height in pixels
+	 * @param pos the current position in the document, in pixels
+	 * @param line_height the line-scroll amount, in pixels
+	 */
+	void setScrollbarParams(int height, int pos, int line_height);
 	///
-	bool hasFocus() const { return QAbstractScrollArea::hasFocus(); }
-	bool isVisible() const { return QAbstractScrollArea::isVisible(); }
-
-	/// return the width of the content pane
-	virtual int width() const { return viewport()->width(); }
-	/// return the height of the content pane
-	virtual int height() const { return viewport()->height(); }
-	///
-	virtual void setScrollbarParams(int height, int pos, int line_height);
-	///
-	virtual void scheduleRedraw() { schedule_redraw_ = true; }
+	void scheduleRedraw() { schedule_redraw_ = true; }
 
 	/// update the passed area.
 	void update(int x, int y, int w, int h);
@@ -144,7 +141,8 @@ public:
 	void stopBlinkingCursor();
 	///
 	void startBlinkingCursor();
-	///
+	/// Process Key pressed event.
+	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, KeyModifier mod);
 
 public Q_SLOTS:
@@ -217,7 +215,7 @@ private:
 	///
 	BufferView * buffer_view_;
 	///
-	LyXView * lyx_view_;
+	GuiView * lyx_view_;
 	/// is the cursor currently displayed
 	bool cursor_visible_;
 
