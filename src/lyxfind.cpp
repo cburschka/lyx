@@ -33,6 +33,7 @@
 
 #include "support/convert.h"
 #include "support/docstream.h"
+#include "support/lstrings.h"
 
 namespace lyx {
 
@@ -115,16 +116,15 @@ bool findChange(DocIterator & cur)
 bool searchAllowed(BufferView * /*bv*/, docstring const & str)
 {
 	if (str.empty()) {
-		frontend::Alert::error(_("Search error"),
-					    _("Search string is empty"));
+		frontend::Alert::error(_("Search error"), _("Search string is empty"));
 		return false;
 	}
 	return true;
 }
 
 
-bool find(BufferView * bv, docstring const & searchstr, bool cs, bool mw, bool fw,
-	  bool find_del = true)
+bool find(BufferView * bv, docstring const & searchstr,
+	bool cs, bool mw, bool fw, bool find_del = true)
 {
 	if (!searchAllowed(bv, searchstr))
 		return false;

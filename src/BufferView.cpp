@@ -54,7 +54,6 @@
 #include "VSpace.h"
 #include "WordLangTuple.h"
 
-
 #include "insets/InsetBibtex.h"
 #include "insets/InsetCommand.h" // ChangeRefs
 #include "insets/InsetRef.h"
@@ -70,6 +69,7 @@
 #include "graphics/Previews.h"
 
 #include "support/convert.h"
+#include "support/lstrings.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/Package.h"

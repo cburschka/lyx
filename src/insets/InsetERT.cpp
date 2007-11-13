@@ -33,6 +33,8 @@
 
 #include "frontends/alert.h"
 
+#include "support/lstrings.h"
+
 #include <sstream>
 
 

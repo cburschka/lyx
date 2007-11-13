@@ -54,6 +54,7 @@
 
 #include "support/environment.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"
 #include "support/ExceptionMessage.h"

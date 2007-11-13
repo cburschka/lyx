@@ -23,9 +23,8 @@
 #include "frontends/alert.h"
 
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/Package.h"
-
-#include <boost/filesystem/operations.hpp>
 
 using std::find;
 using std::string;
@@ -43,7 +42,6 @@ using support::package;
 using support::prefixIs;
 
 namespace Alert = frontend::Alert;
-namespace fs = boost::filesystem;
 
 /// ask the user what to do if a file already exists
 static int checkOverwrite(FileName const & filename)

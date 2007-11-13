@@ -48,9 +48,7 @@
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-
-using std::min;
-using std::string;
+#include "support/lstrings.h"
 
 
 namespace lyx {

@@ -24,6 +24,7 @@
 #include "frontends/alert.h"
 
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 
 

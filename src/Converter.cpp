@@ -27,6 +27,7 @@
 #include "frontends/alert.h"
 
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -101,7 +102,7 @@ string const dvipdfm_options(BufferParams const & bp)
 }
 
 
-class ConverterEqual : public std::binary_function<string, string, bool> {
+class ConverterEqual {
 public:
 	ConverterEqual(string const & from, string const & to)
 		: from_(from), to_(to) {}

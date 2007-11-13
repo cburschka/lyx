@@ -52,7 +52,6 @@ SOURCEFILES = \
 	../Dialog.h \
 	Resources.cpp \
 	Action.cpp \
-	alert_pimpl.cpp \
 	BulletsModule.cpp \
 	ButtonController.cpp \
 	ColorCache.cpp \
@@ -62,6 +61,7 @@ SOURCEFILES = \
 	FileDialog.cpp \
 	FloatPlacement.cpp \
 	GuiAbout.cpp \
+	GuiAlert.cpp \
 	GuiApplication.cpp \
 	GuiBibitem.cpp \
 	GuiBibtex.cpp \

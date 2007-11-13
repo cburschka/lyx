@@ -49,13 +49,10 @@
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
 
-#include "support/lyxalgo.h" // count
+#include "support/lstrings.h"
 
 #include <boost/bind.hpp>
-#include <boost/current_function.hpp>
-#include <boost/signal.hpp>
-
-#include <sstream>
+#include <boost/assert.hpp>
 
 
 namespace lyx {
@@ -229,7 +226,7 @@ Inset * InsetText::editXY(Cursor & cur, int x, int y)
 
 void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::ACTION) << "InsetText::doDispatch()"
 			     << " [ cmd.action = "
 			     << cmd.action << ']' << endl;
 	text_.dispatch(cur, cmd);

@@ -86,6 +86,7 @@
 #include "support/filetools.h"
 #include "support/Forkedcall.h"
 #include "support/gzstream.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/Path.h"
