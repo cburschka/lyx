@@ -277,6 +277,7 @@ docstring const InsetInclude::getScreenLabel(Buffer const & buf) const
 			break;
 		case LISTINGS:
 			temp = listings_label_;
+			break;
 		case NONE:
 			BOOST_ASSERT(false);
 	}
