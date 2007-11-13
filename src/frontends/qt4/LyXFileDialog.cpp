@@ -59,7 +59,7 @@ LyXFileDialog::LyXFileDialog(docstring const & t,
 	if (!b1.first.empty()) {
 		b1_dir_ = b1.second;
 		QToolButton * tb = new QToolButton(this);
-		connect(tb, SIGNAL(clicked()), this, SLOT(buttonClicked()));
+		connect(tb, SIGNAL(clicked()), this, SLOT(button1Clicked()));
 		tb->setText(toqstr(getLabel(b1.first)));
 		layout.at(0)->addWidget(tb);
 	}
@@ -67,7 +67,7 @@ LyXFileDialog::LyXFileDialog(docstring const & t,
 	if (!b2.first.empty()) {
 		b2_dir_ = b2.second;
 		QToolButton * tb = new QToolButton(this);
-		connect(tb, SIGNAL(clicked()), this, SLOT(buttonClicked()));
+		connect(tb, SIGNAL(clicked()), this, SLOT(button2Clicked()));
 		tb->setText(toqstr(getLabel(b2.first)));
 		layout.at(0)->addWidget(tb);
 	}
