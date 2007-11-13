@@ -202,3 +202,24 @@ InsetLayout table
 	MultiPar              true
 End
 
+InsetLayout URL
+	LyXType               standard
+	LatexName             url
+	Decoration            minimalistic
+	LabelString           URL
+	PassThru              true
+	ForceLTR              true
+	Font
+	  Family              Typewriter
+	  Color               Blue
+	EndFont
+	LabelFont
+	  Family              Typewriter
+	  Color               Blue
+	  Size                Small
+	EndFont
+	Preamble
+	  \usepackage{url}
+	EndPreamble
+End
+

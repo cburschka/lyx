@@ -1907,7 +1907,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		InsetLayout il =  cur.buffer().params().getTextClass().insetlayout(from_utf8(s));
 		if (il.lyxtype != "charstyle" &&
 		    il.lyxtype != "custom" &&
-		    il.lyxtype != "element")
+		    il.lyxtype != "element" &&
+		    il.lyxtype != "standard")
 			enable = false;
 		break;
 		}

@@ -328,6 +328,7 @@ Menuset
 		Separator
 		Item "Table...|T" "tabular-insert"
 		Item "Graphics...|G" "dialog-show-new-inset graphics"
+		Item "URL" "flex-insert URL"
 		Item "Hyperlink|k" "href-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
