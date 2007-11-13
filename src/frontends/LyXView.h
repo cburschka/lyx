@@ -16,8 +16,6 @@
 #include "frontends/Delegates.h"
 #include "support/strfwd.h"
 
-#include <vector>
-
 namespace lyx {
 
 namespace support { class FileName; }
@@ -79,7 +77,7 @@ public:
 		unsigned int width,
 		unsigned int height,
 		int posx, int posy,
-		int maximize,
+		Maximized maximize,
 		unsigned int iconSizeXY,
 		const std::string & geometryArg) = 0;
 

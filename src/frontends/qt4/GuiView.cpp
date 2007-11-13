@@ -447,7 +447,7 @@ void GuiView::saveGeometry()
 	// adjust GuiView::setGeometry()
 
 	QRect normal_geometry;
-	int maximized;
+	Maximized maximized;
 #ifdef Q_WS_WIN
 	normal_geometry = normalGeometry();
 	if (isMaximized()) {
@@ -497,7 +497,7 @@ void GuiView::saveGeometry()
 void GuiView::setGeometry(unsigned int width,
 			  unsigned int height,
 			  int posx, int posy,
-			  int maximized,
+			  Maximized maximized,
 			  unsigned int iconSizeXY,
 			  const string & geometryArg)
 {
@@ -673,7 +673,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	// Buffer-dependent dialogs should be updated or
 	// hidden. This should go here because some dialogs (eg ToC)
 	// require bv_->text.
-	getDialogs().updateBufferDependent(true);
+	dialogs_->updateBufferDependent(true);
 	updateToolbars();
 	updateLayoutChoice(false);
 	updateStatusBar();
@@ -753,7 +753,7 @@ bool GuiView::event(QEvent * e)
 			connectBuffer(bv.buffer());
 			// The document structure, name and dialogs might have
 			// changed in another view.
-			getDialogs().updateBufferDependent(true);
+			dialogs_->updateBufferDependent(true);
 		} else {
 			setWindowTitle(qt_("LyX"));
 			setWindowIconText(qt_("LyX"));
@@ -942,7 +942,7 @@ void GuiView::removeWorkArea(GuiWorkArea * work_area)
 	if (gwa == d.current_work_area_) {
 		disconnectBuffer();
 		disconnectBufferView();
-		getDialogs().hideBufferDependent();
+		dialogs_->hideBufferDependent();
 		d.current_work_area_ = 0;
 	}
 
@@ -1040,7 +1040,7 @@ void GuiView::updateToolbars()
 		d.toolbars_->update(false, false, false);
 
 	// update read-only status of open dialogs.
-	getDialogs().checkStatus();
+	dialogs_->checkStatus();
 }
 
 
@@ -1165,33 +1165,33 @@ void GuiView::errors(string const & error_type)
 {
 	ErrorList & el = buffer()->errorList(error_type);
 	if (!el.empty())
-		getDialogs().show("errorlist", error_type);
+		dialogs_->show("errorlist", error_type);
 }
 
 
 void GuiView::showDialog(string const & name)
 {
-	getDialogs().show(name);
+	dialogs_->show(name);
 }
 
 
 void GuiView::showDialogWithData(string const & name, string const & data)
 {
-	getDialogs().show(name, data);
+	dialogs_->show(name, data);
 }
 
 
 void GuiView::showInsetDialog(string const & name, string const & data,
 		Inset * inset)
 {
-	getDialogs().show(name, data, inset);
+	dialogs_->show(name, data, inset);
 }
 
 
 void GuiView::updateDialog(string const & name, string const & data)
 {
-	if (getDialogs().visible(name))
-		getDialogs().update(name, data);
+	if (dialogs_->visible(name))
+		dialogs_->update(name, data);
 }
 
 
