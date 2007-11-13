@@ -484,7 +484,7 @@ void GuiView::saveGeometry()
 	SessionInfoSection & info = LyX::ref().session().sessionInfo();
 	info.save("WindowWidth", convert<string>(normal_geometry.width()));
 	info.save("WindowHeight", convert<string>(normal_geometry.height()));
-	info.save("WindowMaximized", convert<string>(maximized));
+	info.save("WindowMaximized", convert<string>(int(maximized)));
 	info.save("IconSizeXY", convert<string>(iconSize().width()));
 	if (lyxrc.geometry_xysaved) {
 		info.save("WindowPosX", convert<string>(normal_geometry.x() + d.posx_offset));
@@ -497,7 +497,7 @@ void GuiView::saveGeometry()
 void GuiView::setGeometry(unsigned int width,
 			  unsigned int height,
 			  int posx, int posy,
-			  Maximized maximized,
+			  LyXView::Maximized maximized,
 			  unsigned int iconSizeXY,
 			  const string & geometryArg)
 {

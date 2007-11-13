@@ -62,7 +62,7 @@ public:
 		unsigned int width,
 		unsigned int height,
 		int posx, int posy,
-		int maximized,
+		Maximized maximized,
 		unsigned int iconSizeXY,
 		const std::string & geometryArg);
 	/// save the geometry state in the session manager.
