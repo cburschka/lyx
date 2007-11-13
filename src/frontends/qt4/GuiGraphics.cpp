@@ -766,7 +766,7 @@ docstring const GuiGraphics::browse(docstring const & in_name) const
 	FileName clip(clipdir);
 
 	// bail out to system clipart directory
-	if (!clip.exists() && clip.isDirectory())
+	if (!(clip.exists() && clip.isDirectory()))
 		clipdir = addName(package().system_support().absFilename(), "clipart");
 
 	return browseRelFile(in_name, from_utf8(bufferFilepath()),
