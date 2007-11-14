@@ -762,7 +762,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		// Save the timestamp and checksum of disk file. If filename is an
 		// emergency file, save the timestamp and sum of the original lyx file
 		// because isExternallyModified will check for this file. (BUG4193)
-		string diskfile = filename.toFilesystemEncoding();
+		string diskfile = filename.absFilename();
 		if (suffixIs(diskfile, ".emergency"))
 			diskfile = diskfile.substr(0, diskfile.size() - 10);
 		saveCheckSum(FileName(diskfile));
