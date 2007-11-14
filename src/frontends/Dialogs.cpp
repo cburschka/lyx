@@ -15,9 +15,6 @@
 #include "Dialogs.h"
 #include "Dialog.h"
 
-#include <boost/signal.hpp>
-#include <boost/bind.hpp>
-
 using std::string;
 
 namespace lyx {

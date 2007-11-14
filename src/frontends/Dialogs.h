@@ -13,9 +13,10 @@
 #ifndef DIALOGS_H
 #define DIALOGS_H
 
-#include <boost/signal.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <map>
+#include <string>
 
 namespace lyx {
 
@@ -116,9 +117,6 @@ private:
 	/// flag against a race condition due to multiclicks in Qt frontend,
 	/// see bug #1119
 	bool in_show_;
-
-	///
-	boost::signals::connection connection_;
 };
 
 } // namespace frontend
