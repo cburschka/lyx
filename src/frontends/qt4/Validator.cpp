@@ -108,18 +108,19 @@ LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed)
 }
 
 
-DoubleAutoValidator::DoubleAutoValidator(QWidget * parent) :
-	QDoubleValidator(parent) {}
+DoubleAutoValidator::DoubleAutoValidator(QWidget * parent)
+	: QDoubleValidator(parent)
+{}
 
 
 DoubleAutoValidator::DoubleAutoValidator(double bottom,
-	double top, int decimals, QObject * parent) :
-	QDoubleValidator(bottom, top, decimals, parent) {}
+		double top, int decimals, QObject * parent)
+	: QDoubleValidator(bottom, top, decimals, parent)
+{}
 
 
 QValidator::State DoubleAutoValidator::validate(QString & input, int & pos) const {
-	string const text = fromqstr(input);
-	if (text == "auto")
+	if (input == "auto")
 		return QValidator::Acceptable;
 	return QDoubleValidator::validate(input, pos);
 }
@@ -159,9 +160,9 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 	if (!latex_doc_)
 		return QValidator::Acceptable;
 
-	docstring const text = lyx::support::trim(qstring_to_ucs4(qtext));
+	docstring const text = support::trim(qstring_to_ucs4(qtext));
 	if (text.empty())
-		return	acceptable_if_empty_ ?
+		return acceptable_if_empty_ ?
 			QValidator::Acceptable : QValidator::Intermediate;
 
 	docstring invalid_chars = from_ascii("#$%{}()[]\"^");
@@ -172,7 +173,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 
 		static int counter = 0;
 		if (counter == 0) {
-			lyx::frontend::Alert::error(_("Invalid filename"),
+			frontend::Alert::error(_("Invalid filename"),
 				     _("LyX does not provide LaTeX support for file names containing any of these characters:\n") +
 					 printable_list(invalid_chars));
 		}
@@ -184,7 +185,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 }
 
 
-void PathValidator::setChecker(lyx::frontend::KernelDocType const & type,
+void PathValidator::setChecker(frontend::KernelDocType const & type,
 			       LyXRC const & lyxrc)
 {
 	latex_doc_ = type == frontend::LATEX;
