@@ -26,6 +26,8 @@
 #include "support/lstrings.h"
 #include "support/Package.h"
 
+#include <algorithm>
+
 using std::find;
 using std::string;
 using std::vector;
