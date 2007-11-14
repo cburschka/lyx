@@ -205,6 +205,7 @@ End
 InsetLayout URL
 	LyXType               standard
 	LatexName             url
+	LatexType             command
 	Decoration            minimalistic
 	LabelString           URL
 	PassThru              true
