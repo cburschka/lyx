@@ -565,9 +565,10 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM:
-		if (optionals_ > 0)
+		if (optionals_ > 0) {
+			cur.recordUndoFullDocument();
 			removeParameter(cur, optionals_ - 1);
-		break;
+		} break;
 
 	case LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM:
 		if (numargs_ == optionals_) {
