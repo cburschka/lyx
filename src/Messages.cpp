@@ -24,10 +24,6 @@
 
 #include <cerrno>
 
-namespace {
-boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
-};
-
 #ifdef ENABLE_NLS
 
 #ifdef HAVE_LOCALE_H
@@ -46,6 +42,8 @@ using std::map;
 using std::string;
 
 namespace lyx {
+
+static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
 
 using support::package;
 using support::getEnv;

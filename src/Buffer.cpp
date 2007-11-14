@@ -43,7 +43,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
-#include "Messages.h"
 #include "output_docbook.h"
 #include "output.h"
 #include "output_latex.h"
