@@ -17,8 +17,7 @@
 #include "InsetMathSymbol.h"
 #include "debug.h"
 
-#include <boost/scoped_ptr.hpp>
-
+#include "support/docstring.h"
 
 namespace lyx {
 
@@ -90,7 +89,7 @@ void InsetMathExInt::maple(MapleStream & os) const
 
 void InsetMathExInt::maxima(MaximaStream & os) const
 {
-	if ( symbol_ == "int" )
+	if (symbol_ == "int")
 		os << "integrate(";
 	else
 		os << symbol_ << '(';
@@ -107,7 +106,7 @@ void InsetMathExInt::maxima(MaximaStream & os) const
 
 void InsetMathExInt::mathematica(MathematicaStream & os) const
 {
-	if ( symbol_ == "int" )
+	if (symbol_ == "int")
 		os << "Integrate[";
 	else if (symbol_ == "sum")
 		os << "Sum[";
@@ -127,11 +126,11 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 
 void InsetMathExInt::mathmlize(MathStream & os) const
 {
-	boost::scoped_ptr<InsetMathSymbol> sym(new InsetMathSymbol(symbol_));
+	InsetMathSymbol sym(symbol_);
 	//if (hasScripts())
 	//	mathmlize(sym, os);
 	//else
-		sym->mathmlize(os);
+		sym.mathmlize(os);
 	os << cell(0) << "<mo> &InvisibleTimes; </mo>"
 	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
 	   << cell(1) << ETag("mrow");

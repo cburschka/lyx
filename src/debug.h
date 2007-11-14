@@ -19,7 +19,7 @@
 #define LYXDEBUG_H
 
 #include "support/debugstream.h"
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {

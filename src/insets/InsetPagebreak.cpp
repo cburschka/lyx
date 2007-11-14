@@ -22,6 +22,8 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/docstring.h"
+
 
 namespace lyx {
 
