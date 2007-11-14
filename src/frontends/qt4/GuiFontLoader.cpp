@@ -40,11 +40,9 @@ using std::make_pair;
 using std::pair;
 using std::vector;
 
-#if QT_VERSION >= 0x040200
 QString const math_fonts[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
 	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
 int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
-#endif
 
 
 namespace lyx {
@@ -197,7 +195,6 @@ static pair<QFont, bool> const getSymbolFont(QString const & family)
 
 GuiFontLoader::GuiFontLoader()
 {
-#if QT_VERSION >= 0x040200
 	QString const fonts_dir =
 		toqstr(addPath(package().system_support().absFilename(), "fonts"));
 
@@ -210,7 +207,6 @@ GuiFontLoader::GuiFontLoader()
 					(fontID < 0 ? " FAIL" : " OK")
 				    << endl;
 	}
-#endif
 
 	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)

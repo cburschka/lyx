@@ -150,7 +150,6 @@ void GuiMenubar::macxMenuBarInit()
 #ifdef Q_WS_MACX
 	mac_menubar_ = new QMenuBar;
 
-# if QT_VERSION >= 0x040200
 	/* Since Qt 4.2, the qt/mac menu code has special code for
 	   specifying the role of a menu entry. However, it does not
 	   work very well with our scheme of creating menus on demand,
@@ -211,9 +210,6 @@ void GuiMenubar::macxMenuBarInit()
 		qMenu->addAction(action);
 
 	}
-# else
-	qt_mac_set_menubar_merge(false);
-# endif // QT_VERSION >= 0x040200
 #endif // Q_WS_MACX
 }
 

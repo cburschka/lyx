@@ -1025,9 +1025,7 @@ TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 		this, SLOT(closeCurrentTab()));
 
 	setCornerWidget(closeTabButton);
-#if QT_VERSION >= 0x040200
 	setUsesScrollButtons(true);
-#endif
 }
 
 

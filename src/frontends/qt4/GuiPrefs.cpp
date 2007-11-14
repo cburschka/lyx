@@ -1677,7 +1677,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 	autoSaveCB->setChecked(rc.make_backup);
 	lastfilesSB->setValue(rc.num_lastfiles);
 	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
-#if (QT_VERSION < 0x040200) || defined(Q_WS_X11)
+#if defined(Q_WS_X11)
 	pixmapCacheGB->setEnabled(false);
 #endif
 }

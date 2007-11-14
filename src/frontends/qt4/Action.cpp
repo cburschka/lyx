@@ -30,10 +30,8 @@ Action::Action(GuiView & lyxView, QIcon const & icon,
 	  QString const & tooltip)
 	: QAction(&lyxView), func_(func), lyxView_(lyxView)
 {
-#if QT_VERSION >= 0x040200
 	// only Qt/Mac handles that
 	setMenuRole(NoRole);
-#endif
 	setIcon(icon);
 	setText(text);
 	setToolTip(tooltip);

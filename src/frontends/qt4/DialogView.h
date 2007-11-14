@@ -94,22 +94,18 @@ private:
 
 	void showEvent(QShowEvent * e)
 	{
-#if (QT_VERSION >= 0x040200)
 		QSettings settings;
 		std::string key = name_ + "/geometry";
 		QDialog::restoreGeometry(settings.value(key.c_str()).toByteArray());
-#endif
 	    QDialog::showEvent(e);
 	}
 
 	void closeEvent(QCloseEvent * e)
 	{
-#if (QT_VERSION >= 0x040200)
 		QSettings settings;
 		std::string key = name_ + "/geometry";
 		settings.setValue(key.c_str(), QDialog::saveGeometry());
-#endif
-	  QDialog::closeEvent(e);
+		QDialog::closeEvent(e);
 	}
 };
 

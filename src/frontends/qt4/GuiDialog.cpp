@@ -231,22 +231,18 @@ void GuiDialog::apply()
 
 void GuiDialog::showEvent(QShowEvent * e)
 {
-#if (QT_VERSION >= 0x040200)
 	QSettings settings;
 	string key = name_ + "/geometry";
 	restoreGeometry(settings.value(key.c_str()).toByteArray());
-#endif
 	QDialog::showEvent(e);
 }
 
 
 void GuiDialog::closeEvent(QCloseEvent * e)
 {
-#if (QT_VERSION >= 0x040200)
 	QSettings settings;
 	string key = name_ + "/geometry";
 	settings.setValue(key.c_str(), saveGeometry());
-#endif
 	QDialog::closeEvent(e);
 }
 
