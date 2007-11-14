@@ -80,9 +80,9 @@ int const numErrorTags = sizeof(errorTags)/sizeof(error_item);
 lyx_debug_trait::type lyx_debug_trait::value(string const & val)
 {
 	type l = Debug::NONE;
-	string v(val);
+	string v = val;
 	while (!v.empty()) {
-		string::size_type const st = v.find(',');
+		size_t const st = v.find(',');
 		string const tmp(ascii_lowercase(v.substr(0, st)));
 		if (tmp.empty())
 			break;
@@ -106,7 +106,7 @@ lyx_debug_trait::type lyx_debug_trait::value(string const & val)
 void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 {
 	// Show what features are traced
-	for (int i = 0; i < numErrorTags ; ++i) {
+	for (int i = 0; i != numErrorTags; ++i) {
 		if (errorTags[i].level != Debug::ANY
 		    && errorTags[i].level != Debug::NONE
 		    && errorTags[i].level & level) {
@@ -123,7 +123,7 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 
 void lyx_debug_trait::showTags(ostream & os)
 {
-	for (int i = 0; i < numErrorTags ; ++i)
+	for (int i = 0; i != numErrorTags ; ++i)
 		os << setw(10) << static_cast<unsigned int>(errorTags[i].level)
 		   << setw(13) << errorTags[i].name
 		   << "  " << to_utf8(_(errorTags[i].desc)) << '\n';

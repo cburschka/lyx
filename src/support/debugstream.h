@@ -30,25 +30,6 @@
 # undef DEBUG
 #endif
 
-struct debug_trait {
-	enum type {
-		NONE   = 0,
-		EMERG  = 1,
-		ALERT  = 2,
-		CRIT   = 3,
-		ERR    = 4,
-		WARN   = 5,
-		NOTICE = 6,
-		INFO   = 7,
-		DEBUG  = 8,
-		ANY = 0xffffff
-	};
-
-	static bool match(type a, type b) {
-		return (b <= a || (b == ANY && a > NONE));
-	}
-};
-
 #ifdef TEMPORARY_DEBUG_MACRO
 # define DEBUG TEMPORARY_DEBUG_MACRO
 # undef TEMPORARY_DEBUG_MACRO
@@ -128,8 +109,6 @@ private:
 	/// Is the stream enabled?
 	bool enabled_;
 };
-
-typedef basic_debugstream<debug_trait> debugstream;
 
 
 //} // namespace lyx
