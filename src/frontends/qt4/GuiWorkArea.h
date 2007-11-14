@@ -159,8 +159,6 @@ public Q_SLOTS:
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
 	void close();
-	////
-	void setWindowTitle(docstring const & t, docstring const & it);
 
 Q_SIGNALS:
 	///

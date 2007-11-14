@@ -763,19 +763,6 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 }
 
 
-void GuiWorkArea::setWindowTitle(docstring const & t, docstring const & it)
-{
-	QString title = windowTitle();
-	QString new_title = toqstr(t);
-	if (title == new_title)
-		return;
-
-	QWidget::setWindowTitle(new_title);
-	QWidget::setWindowIconText(toqstr(it));
-	titleChanged(this);
-}
-
-
 void GuiWorkArea::updateScreen()
 {
 	GuiPainter pain(&screen_);
@@ -988,7 +975,14 @@ void GuiWorkArea::updateWindowTitle()
 			maximize_title += _(" (read only)");
 	}
 
-	setWindowTitle(maximize_title, minimize_title);
+	QString title = windowTitle();
+	QString new_title = toqstr(maximize_title);
+	if (title == new_title)
+		return;
+
+	QWidget::setWindowTitle(new_title);
+	QWidget::setWindowIconText(toqstr(minimize_title));
+	titleChanged(this);
 }
 
 
