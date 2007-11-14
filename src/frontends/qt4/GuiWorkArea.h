@@ -110,27 +110,8 @@ public:
 	///
 	~GuiWorkArea();
 
-	/**
-	 * Update the scrollbar.
-	 * @param height the total document height in pixels
-	 * @param pos the current position in the document, in pixels
-	 * @param line_height the line-scroll amount, in pixels
-	 */
-	void setScrollbarParams(int height, int pos, int line_height);
 	///
 	void scheduleRedraw() { schedule_redraw_ = true; }
-
-	/// update the passed area.
-	void update(int x, int y, int w, int h);
-
-	/// copies specified area of pixmap to screen
-	virtual void expose(int x, int y, int exp_width, int exp_height);
-
-	/// paint the cursor and store the background
-	virtual void showCursor(int x, int y, int h, CursorShape shape);
-
-	/// hide the cursor
-	virtual void removeCursor();
 	///
 	BufferView & bufferView();
 	///
@@ -145,7 +126,11 @@ public:
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, KeyModifier mod);
 
-public Q_SLOTS:
+Q_SIGNALS:
+	///
+	void titleChanged(GuiWorkArea *);
+
+private Q_SLOTS:
 	/// Adjust the LyX buffer view with the position of the scrollbar.
 	/**
 	* The action argument is not used in the the code, it is there
@@ -160,11 +145,18 @@ public Q_SLOTS:
 	/// Slot for Buffer::closing signal.
 	void close();
 
-Q_SIGNALS:
-	///
-	void titleChanged(GuiWorkArea *);
-
 private:
+	/// update the passed area.
+	void update(int x, int y, int w, int h);
+	///
+	void updateScreen();
+
+	/// paint the cursor and store the background
+	virtual void showCursor(int x, int y, int h, CursorShape shape);
+
+	/// hide the cursor
+	virtual void removeCursor();
+
 	/// This function is called when the buffer readonly status change.
 	void setReadOnly(bool);
 
@@ -226,8 +218,6 @@ private:
 
 	///
 	CursorWidget * cursor_;
-	///
-	void updateScreen();
 	///
 	QPixmap screen_;
 	///

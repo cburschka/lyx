@@ -328,7 +328,8 @@ void GuiWorkArea::redraw()
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : viewport()->height();
 
-	expose(0, ymin, viewport()->width(), ymax - ymin);
+	updateScreen();
+	update(0, ymin, viewport()->width(), ymax - ymin);
 
 	//LYXERR(Debug::WORKAREA)
 	//<< "  ymin = " << ymin << "  width() = " << width()
@@ -412,15 +413,6 @@ void GuiWorkArea::resizeBufferView()
 }
 
 
-void GuiWorkArea::updateScrollbar()
-{
-	buffer_view_->updateScrollbar();
-	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
-	setScrollbarParams(scroll_.height, scroll_.position,
-		scroll_.lineScrollHeight);
-}
-
-
 void GuiWorkArea::showCursor()
 {
 	if (cursor_visible_)
@@ -489,21 +481,23 @@ void GuiWorkArea::toggleCursor()
 }
 
 
-void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
+void GuiWorkArea::updateScrollbar()
 {
 	if (verticalScrollBarPolicy() != Qt::ScrollBarAlwaysOn)
 		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-
 	verticalScrollBar()->setTracking(false);
 
+	buffer_view_->updateScrollbar();
+	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
+
 	// do what cursor movement does (some grey)
-	h += viewport()->height() / 4;
+	int const h = scroll_.height + viewport()->height() / 4;
 	int scroll_max_ = std::max(0, h - viewport()->height());
 
 	verticalScrollBar()->setRange(0, scroll_max_);
-	verticalScrollBar()->setSliderPosition(scroll_pos);
-	verticalScrollBar()->setSingleStep(scroll_line_step);
-	verticalScrollBar()->setValue(scroll_pos);
+	verticalScrollBar()->setSliderPosition(scroll_.position);
+	verticalScrollBar()->setSingleStep(scroll_.lineScrollHeight);
+	verticalScrollBar()->setValue(scroll_.position);
 
 	verticalScrollBar()->setTracking(true);
 }
@@ -751,13 +745,6 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	QPainter pain(viewport());
 	pain.drawPixmap(rc, screen_, rc);
 	cursor_->draw(pain);
-}
-
-
-void GuiWorkArea::expose(int x, int y, int w, int h)
-{
-	updateScreen();
-	update(x, y, w, h);
 }
 
 
