@@ -92,7 +92,7 @@ using support::isStrUnsignedInt;
 using support::token;
 
 // globals...
-static Font freefont(ignore_font);
+static Font freefont(ignore_font, ignore_language);
 static bool toggleall = false;
 
 static void toggleAndShow(Cursor & cur, Text * text,
@@ -1463,42 +1463,42 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_FONT_EMPH: {
-		Font font(ignore_font);
+		Font font(ignore_font, ignore_language);
 		font.fontInfo().setEmph(FONT_TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_BOLD: {
-		Font font(ignore_font);
+		Font font(ignore_font, ignore_language);
 		font.fontInfo().setSeries(BOLD_SERIES);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_NOUN: {
-		Font font(ignore_font);
+		Font font(ignore_font, ignore_language);
 		font.fontInfo().setNoun(FONT_TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_TYPEWRITER: {
-		Font font(ignore_font);
+		Font font(ignore_font, ignore_language);
 		font.fontInfo().setFamily(TYPEWRITER_FAMILY); // no good
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_SANS: {
-		Font font(ignore_font);
+		Font font(ignore_font, ignore_language);
 		font.fontInfo().setFamily(SANS_FAMILY);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_ROMAN: {
-		Font font(ignore_font);
+		Font font(ignore_font, ignore_language);
 		font.fontInfo().setFamily(ROMAN_FAMILY);
 		toggleAndShow(cur, this, font);
 		break;
@@ -1511,14 +1511,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_FONT_UNDERLINE: {
-		Font font(ignore_font);
+		Font font(ignore_font, ignore_language);
 		font.fontInfo().setUnderbar(FONT_TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_FONT_SIZE: {
-		Font font(ignore_font);
+		Font font(ignore_font, ignore_language);
 		setLyXSize(to_utf8(cmd.argument()), font.fontInfo());
 		toggleAndShow(cur, this, font);
 		break;
@@ -1528,8 +1528,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Language const * lang = languages.getLanguage(to_utf8(cmd.argument()));
 		if (!lang)
 			break;
-		Font font(ignore_font);
-		font.setLanguage(lang);
+		Font font(ignore_font, lang);
 		toggleAndShow(cur, this, font);
 		break;
 	}
