@@ -149,9 +149,9 @@ void reconfigureUserLyXDir()
 
 
 /// The main application class private implementation.
-struct LyX::Singletons
+struct LyX::Impl
 {
-	Singletons()
+	Impl()
 	{
 		// Set the default User Interface language as soon as possible.
 		// The language used will be derived from the environment
@@ -189,9 +189,13 @@ struct LyX::Singletons
 
 	///
 	Movers movers_;
-
 	///
 	Movers system_movers_;
+
+	/// has this user started lyx for the first time?
+	bool first_start;
+	/// the parsed command line batch command if any
+	std::string batch_command;
 };
 
 ///
@@ -228,7 +232,7 @@ LyX::LyX()
 	: first_start(false)
 {
 	singleton_ = this;
-	pimpl_ = new Singletons;
+	pimpl_ = new Impl;
 }
 
 
@@ -438,7 +442,7 @@ int LyX::exec(int & argc, char * argv[])
 
 		loadFiles();
 
-		if (batch_command.empty() || pimpl_->buffer_list_.empty()) {
+		if (pimpl_->batch_command.empty() || pimpl_->buffer_list_.empty()) {
 			prepareExit();
 			return EXIT_SUCCESS;
 		}
@@ -451,7 +455,7 @@ int LyX::exec(int & argc, char * argv[])
 			if (buf != buf->masterBuffer())
 				continue;
 			bool success = false;
-			buf->dispatch(batch_command, &success);
+			buf->dispatch(pimpl_->batch_command, &success);
 			final_success |= success;
 		}
 		prepareExit();
@@ -649,13 +653,13 @@ void LyX::execBatchCommands()
 	}
 	
 	// Execute batch commands if available
-	if (batch_command.empty())
+	if (pimpl_->batch_command.empty())
 		return;
 
 	LYXERR(Debug::INIT) << "About to handle -x '"
-		<< batch_command << '\'' << endl;
+		<< pimpl_->batch_command << '\'' << endl;
 
-	pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(batch_command));
+	pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(pimpl_->batch_command));
 }
 
 
@@ -1433,7 +1437,7 @@ void LyX::easyParse(int & argc, char * argv[])
 		}
 	}
 
-	batch_command = batch;
+	pimpl_->batch_command = batch;
 }
 
 

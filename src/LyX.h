@@ -14,7 +14,7 @@
 #ifndef LYX_H
 #define LYX_H
 
-#include <string>
+#include "support/strfwd.h"
 
 namespace lyx {
 
@@ -170,14 +170,13 @@ private:
 	/// shows up a parsing error on screen
 	void printError(ErrorItem const &);
 
+	/// Use the Pimpl idiom to hide the internals.
+	// Mostly used for singletons.
+	struct Impl;
+	Impl * pimpl_;
+
 	/// has this user started lyx for the first time?
 	bool first_start;
-	/// the parsed command line batch command if any
-	std::string batch_command;
-
-	/// Use the Pimpl idiom to hide the internals.
-	struct Singletons;
-	Singletons * pimpl_;
 
 	friend Movers & theMovers();
 	friend Mover const & getMover(std::string  const & fmt);
