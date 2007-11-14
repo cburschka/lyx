@@ -194,21 +194,14 @@ GuiApplication::~GuiApplication()
 }
 
 
-LyXView & GuiApplication::createView(unsigned int width,
-				  unsigned int height,
-				  int posx, int posy,
-				  int maximized,
-				  unsigned int iconSizeXY,
-				  const std::string & geometryArg)
+LyXView & GuiApplication::createView(string const & geometryArg)
 {
 	int const id = gui_.createRegisteredView();
 	GuiView & view = static_cast<GuiView &>(gui_.view(id));
 	theLyXFunc().setLyXView(&view);
 
 	view.init();
-	view.setGeometry(width, height, posx, posy, GuiView::Maximized(maximized),
-		iconSizeXY, geometryArg);
-
+	view.setGeometry(geometryArg);
 	view.setFocus();
 
 	setCurrentView(view);

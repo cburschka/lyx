@@ -494,13 +494,69 @@ void GuiView::saveGeometry()
 }
 
 
-void GuiView::setGeometry(unsigned int width,
-			  unsigned int height,
-			  int posx, int posy,
-			  GuiView::Maximized maximized,
-			  unsigned int iconSizeXY,
-			  const string & geometryArg)
+void GuiView::setGeometry(string const & geometryArg)
 {
+	// *******************************************
+	// Beginning of the session handling stuff
+
+	//FIXME: Instead of the stuff below, we should use QSettings:
+	/*
+	QSettings settings;
+	QString key = "view " + QString::number(id) + "/geometry";
+	view.restoreGeometry(settings.value(key).toByteArray());
+	*/
+
+	// determine windows size and position, from lyxrc and/or session
+	// initial geometry
+	unsigned int width = 690;
+	unsigned int height = 510;
+	// default icon size, will be overwritten by  stored session value
+	unsigned int iconSizeXY = 0;
+	Maximized maximized = NotMaximized;
+	SessionInfoSection & session = LyX::ref().session().sessionInfo();
+
+	// first try lyxrc
+	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
+		width = lyxrc.geometry_width;
+		height = lyxrc.geometry_height;
+	}
+	// if lyxrc returns (0,0), then use session info
+	else {
+		string val = session.load("WindowWidth");
+		if (!val.empty())
+			width = convert<unsigned int>(val);
+		val = session.load("WindowHeight");
+		if (!val.empty())
+			height = convert<unsigned int>(val);
+		val = session.load("WindowMaximized");
+		if (!val.empty())
+			maximized = GuiView::Maximized(convert<int>(val));
+		val = session.load("IconSizeXY");
+		if (!val.empty())
+			iconSizeXY = convert<unsigned int>(val);
+	}
+
+	// if user wants to restore window position
+	int posx = -1;
+	int posy = -1;
+	if (lyxrc.geometry_xysaved) {
+		string val = session.load("WindowPosX");
+		if (!val.empty())
+			posx = convert<int>(val);
+		val = session.load("WindowPosY");
+		if (!val.empty())
+			posy = convert<int>(val);
+	}
+
+	if (!geometryArg.empty())
+	{
+		width = 0;
+		height = 0;
+	}
+
+	// End of the sesssion handling stuff
+	// *******************************************
+
 	// use last value (not at startup)
 	if (d.lastIconSize != 0)
 		setIconSize(d.lastIconSize);

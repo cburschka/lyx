@@ -56,7 +56,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/convert.h"
 #include "support/ExceptionMessage.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -712,58 +711,8 @@ LyXView * LyX::newLyXView()
 	if (!lyx::use_gui)
 		return 0;
 
-	// FIXME: transfer all this geometry stuff to the frontend.
-
-	// determine windows size and position, from lyxrc and/or session
-	// initial geometry
-	unsigned int width = 690;
-	unsigned int height = 510;
-	// default icon size, will be overwritten by  stored session value
-	unsigned int iconSizeXY = 0;
-	// FIXME: 0 means GuiView::NotMaximized by default!
-	int maximized = 0;
-	// first try lyxrc
-	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
-		width = lyxrc.geometry_width;
-		height = lyxrc.geometry_height;
-	}
-	// if lyxrc returns (0,0), then use session info
-	else {
-		string val = session().sessionInfo().load("WindowWidth");
-		if (!val.empty())
-			width = convert<unsigned int>(val);
-		val = session().sessionInfo().load("WindowHeight");
-		if (!val.empty())
-			height = convert<unsigned int>(val);
-		val = session().sessionInfo().load("WindowMaximized");
-		if (!val.empty())
-			maximized = convert<int>(val);
-		val = session().sessionInfo().load("IconSizeXY");
-		if (!val.empty())
-			iconSizeXY = convert<unsigned int>(val);
-	}
-
-	// if user wants to restore window position
-	int posx = -1;
-	int posy = -1;
-	if (lyxrc.geometry_xysaved) {
-		string val = session().sessionInfo().load("WindowPosX");
-		if (!val.empty())
-			posx = convert<int>(val);
-		val = session().sessionInfo().load("WindowPosY");
-		if (!val.empty())
-			posy = convert<int>(val);
-	}
-
-	if (!geometryArg.empty())
-	{
-		width = 0;
-		height = 0;
-	}
-
 	// create the main window
-	LyXView * view = &pimpl_->application_->createView(width, height,
-		posx, posy, maximized, iconSizeXY, geometryArg);
+	LyXView * view = &pimpl_->application_->createView(geometryArg);
 
 	return view;
 }

@@ -67,13 +67,7 @@ public:
 		CompletelyMaximized
 	};
 	///
-	virtual void setGeometry(
-		unsigned int width,
-		unsigned int height,
-		int posx, int posy,
-		Maximized maximized,
-		unsigned int iconSizeXY,
-		const std::string & geometryArg);
+	virtual void setGeometry(std::string const & geometryArg);
 	/// save the geometry state in the session manager.
 	virtual void saveGeometry();
 	virtual void setBusy(bool);
