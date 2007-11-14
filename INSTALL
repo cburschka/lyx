@@ -55,7 +55,7 @@ library to be able to compile this version of LyX. Users of gcc 2.95.x
 will have to install the STLPort version of these libraries as the
 ones that come with gcc 2.95.x are too broken for us to use.
 
-LyX has been tested with Qt 4.1.5. The only special point to 
+LyX has been tested with Qt 4.2.0. The only special point to 
 make is that you must ensure that both LyX and the Qt libraries are 
 compiled with the same C++ compiler.
 
