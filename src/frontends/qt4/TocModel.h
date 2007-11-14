@@ -23,7 +23,8 @@
 namespace lyx {
 namespace frontend {
 
-class TocModel: public QStandardItemModel {
+class TocModel : public QStandardItemModel
+{
 	Q_OBJECT
 
 public:
@@ -44,12 +45,11 @@ public:
 	///
 	QModelIndex const modelIndex(TocIterator const & it) const;
 	///
-	int modelDepth();
+	int modelDepth() const;
 
 private:
 	///
-	void populate(TocIterator & it,
-		TocIterator const & end,
+	void populate(TocIterator & it, TocIterator const & end,
 		QModelIndex const & parent);
 	///
 	typedef std::map<QModelIndex, TocIterator> TocMap;

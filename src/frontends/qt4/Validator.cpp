@@ -26,11 +26,11 @@
 #include <QLineEdit>
 #include <QWidget>
 
-using lyx::support::isStrDbl;
 using std::string;
 
 
 namespace lyx {
+namespace frontend {
 
 LengthValidator::LengthValidator(QWidget * parent)
 	: QValidator(parent),
@@ -41,7 +41,7 @@ LengthValidator::LengthValidator(QWidget * parent)
 QValidator::State LengthValidator::validate(QString & qtext, int &) const
 {
 	string const text = fromqstr(qtext);
-	if (text.empty() || isStrDbl(text))
+	if (text.empty() || support::isStrDbl(text))
 		return QValidator::Acceptable;
 
 	if (glue_length_) {
@@ -173,7 +173,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 
 		static int counter = 0;
 		if (counter == 0) {
-			frontend::Alert::error(_("Invalid filename"),
+			Alert::error(_("Invalid filename"),
 				     _("LyX does not provide LaTeX support for file names containing any of these characters:\n") +
 					 printable_list(invalid_chars));
 		}
@@ -185,10 +185,9 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 }
 
 
-void PathValidator::setChecker(frontend::KernelDocType const & type,
-			       LyXRC const & lyxrc)
+void PathValidator::setChecker(KernelDocType const & type, LyXRC const & lyxrc)
 {
-	latex_doc_ = type == frontend::LATEX;
+	latex_doc_ = type == LATEX;
 	tex_allows_spaces_ = lyxrc.tex_allows_spaces;
 }
 
@@ -203,6 +202,7 @@ PathValidator * getPathValidator(QLineEdit * ed)
 	return dynamic_cast<PathValidator *>(validator);
 }
 
+} // namespace frontend
 } // namespace lyx
 
 #include "Validator_moc.cpp"

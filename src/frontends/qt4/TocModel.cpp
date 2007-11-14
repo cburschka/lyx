@@ -1,5 +1,5 @@
 /**
- * \file GuiTocDialog.C
+ * \file TocModel.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -17,16 +17,8 @@
 
 #include <boost/assert.hpp>
 
-#include <climits>
-#include <vector>
-#include <string>
-
 using std::endl;
-using std::pair;
 using std::map;
-using std::vector;
-using std::string;
-using std::make_pair;
 using std::max;
 using std::min;
 
@@ -126,9 +118,8 @@ void TocModel::populate(Toc const & toc)
 }
 
 
-void TocModel::populate(TocIterator & iter,
-						TocIterator const & end,
-						QModelIndex const & parent)
+void TocModel::populate(TocIterator & iter, TocIterator const & end,
+	QModelIndex const & parent)
 {
 	int curdepth = iter->depth() + 1;
 
@@ -166,7 +157,7 @@ void TocModel::populate(TocIterator & iter,
 }
 
 
-int TocModel::modelDepth()
+int TocModel::modelDepth() const
 {
 	return maxdepth_ - mindepth_;
 }
