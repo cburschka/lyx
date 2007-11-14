@@ -41,6 +41,7 @@
 
 #include <algorithm>
 #include <fstream>
+#include <locale>
 
 using std::string;
 using std::vector;
@@ -162,11 +163,34 @@ QString const qt_(string const & str)
 
 namespace {
 
-struct Sorter
+class Sorter
 {
+public:
+#if !defined(USE_WCHAR_T) && defined(__GNUC__)
 	bool operator()(LanguagePair const & lhs, LanguagePair const & rhs) const {
 		return lhs.first < rhs.first;
 	}
+#else
+	Sorter() : loc_ok(true)
+	{
+		try {
+			loc_ = std::locale("");
+		} catch (...) {
+			loc_ok = false;
+		}
+	};
+
+	bool operator()(LanguagePair const & lhs,
+			LanguagePair const & rhs) const {
+		if (loc_ok)
+			return loc_(lhs.first, rhs.first);
+		else
+			return lhs.first < rhs.first;
+	}
+private:
+	std::locale loc_;
+	bool loc_ok;
+#endif
 };
 
 
