@@ -383,20 +383,26 @@ void MathData::updateMacros(MetricsInfo & mi)
 			// is it a virgin macro which was never attached to parameters?
 			bool fromInitToNormalMode
 			= (oldDisplayMode == MathMacro::DISPLAY_INIT 
-				 || oldDisplayMode == MathMacro::DISPLAY_NONGREEDY_INIT)
+				 || oldDisplayMode == MathMacro::DISPLAY_INTERACTIVE_INIT)
 				&& newDisplayMode == MathMacro::DISPLAY_NORMAL;
-			bool greedy = (oldDisplayMode != MathMacro::DISPLAY_NONGREEDY_INIT);
+			
+			// if the macro was entered interactively (i.e. not by paste or during
+			// loading), it should not be greedy, but the cursor should
+			// automatically jump into the macro when behind
+			bool interactive = (oldDisplayMode == MathMacro::DISPLAY_INTERACTIVE_INIT);
 			
 			// attach parameters
 			attachMacroParameters(cur, i, macroNumArgs, macroOptionals,
-				fromInitToNormalMode, greedy);
+				fromInitToNormalMode, interactive);
 			
 			// FIXME: proper anchor handling, this removes the selection
 			cur.updateInsets(&cur.bottom().inset());
 			cur.clearSelection();	
 		}
 
-		// give macro the chance to adapt to new situation
+		// Give macro the chance to adapt to new situation.
+		// The macroInset could be invalid now because it was put into a script 
+		// inset and therefore "deep" copied. So get it again from the MathData.
 		InsetMath * inset = operator[](i).nucleus();
 		if (inset->asScriptInset())
 			inset = inset->asScriptInset()->nuc()[0].nucleus();
@@ -477,6 +483,10 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 		insert(p, optarg);
 		p += optarg.size();
 		
+		// cursor in macro?
+		if (curMacroSlice == -1)
+			continue;
+		
 		// cursor in optional argument of macro?
 		if (curMacroIdx == j) {
 			if (brace) {
@@ -491,12 +501,16 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 	}
 	
 	// put them back into the MathData
-	for (; j < detachedArgs.size(); ++j) {				
+	for (; j < detachedArgs.size(); ++j, ++p) {
 		MathData const & arg = detachedArgs[j];
 		if (arg.size() == 1 && !arg[0]->asScriptInset()) // && arg[0]->asCharInset())
 			insert(p, arg[0]);
 		else
 			insert(p, MathAtom(new InsetMathBrace(arg)));
+
+		// cursor in macro?
+		if (curMacroSlice == -1)
+			continue;
 		
 		// cursor in j-th argument of macro?
 		if (curMacroIdx == j) {
@@ -510,8 +524,6 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 			}
 		} else if (cur[curMacroSlice - 1].pos() >= int(p))
 			++cur[curMacroSlice - 1].pos();
-		
-		++p;
 	}
 	
 	// FIXME: proper anchor handling, this removes the selection
@@ -523,29 +535,28 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 void MathData::attachMacroParameters(Cursor & cur, 
 	const size_type macroPos, const size_type macroNumArgs,
 	const int macroOptionals, const bool fromInitToNormalMode,
-	const bool greedy)
+	const bool interactiveInit)
 {
 	MathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
 
-	// start at atom behind the macro again, maybe with some new arguments from above
-	// to add them back into the macro inset
+	// start at atom behind the macro again, maybe with some new arguments 
+	// from the detach phase above, to add them back into the macro inset
 	size_t p = macroPos + 1;
 	std::vector<MathData> detachedArgs;
 	MathAtom scriptToPutAround;
 	
-	// find cursor slice again
+	// find cursor slice again of this MathData
 	int thisSlice = cur.find(*this);
 	int thisPos = -1;
 	if (thisSlice != -1)
 		thisPos = cur[thisSlice].pos();
 	
 	// find arguments behind the macro
-	if (greedy) {
+	if (!interactiveInit) {
 		collectOptionalParameters(cur, macroOptionals, detachedArgs, p,
 			macroPos, thisPos, thisSlice);
 		collectParameters(cur, macroNumArgs, detachedArgs, p,
-			scriptToPutAround, 
-			macroPos, thisPos, thisSlice);
+			scriptToPutAround, macroPos, thisPos, thisSlice);
 	}
 		
 	// attach arguments back to macro inset
@@ -557,16 +568,21 @@ void MathData::attachMacroParameters(Cursor & cur,
 		scriptToPutAround.nucleus()->asScriptInset()->nuc()[0] 
 		= operator[](macroPos);
 		operator[](macroPos) = scriptToPutAround;
-		
+
+		// go into the script inset nucleus
 		if (thisPos == int(macroPos))
 			cur.append(0, 0);
+		
+		// get pointer to "deep" copied macro inset
+		InsetMathScript * scriptInset 
+		= operator[](macroPos).nucleus()->asScriptInset();
+		macroInset = scriptInset->nuc()[0].nucleus()->asMacro();	
 	}
 	
 	// remove them from the MathData
 	erase(begin() + macroPos + 1, begin() + p);
 
-	
-	// no need to update the cursor?
+	// cursor outside this MathData?
 	if (thisSlice == -1)
 		return;
 
@@ -574,8 +590,10 @@ void MathData::attachMacroParameters(Cursor & cur,
 	if (thisPos >= int(p))
 		cur[thisSlice].pos() -= p - (macroPos + 1);
 	
-	// was the macro inset just inserted and was now folded?
+	// was the macro inset just inserted interactively and was now folded
+	// and the cursor is just behind?
 	if (cur[thisSlice].pos() == int(macroPos + 1)
+			&& interactiveInit
 			&& fromInitToNormalMode
 			&& macroInset->arity() > 0
 			&& thisSlice + 1 == int(cur.depth())) {

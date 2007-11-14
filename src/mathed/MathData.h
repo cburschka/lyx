@@ -173,7 +173,7 @@ private:
 	///
 	void attachMacroParameters(Cursor & cur, const size_type macroPos, 
 		const size_type macroNumArgs, const int macroOptionals,
-		const bool fromInitToNormalMode, const bool greedy);
+		const bool fromInitToNormalMode, const bool interactiveInit);
 	///
 	void collectOptionalParameters(Cursor & cur, 
 		const size_type numOptionalParams, std::vector<MathData> & params, 

@@ -950,7 +950,7 @@ bool Cursor::macroModeClose()
 	MathMacro * atomAsMacro = atom.nucleus()->asMacro();
 	if (atomAsMacro) {
 		// make non-greedy, i.e. don't eat parameters from the right
-		atomAsMacro->setDisplayMode(MathMacro::DISPLAY_NONGREEDY_INIT);
+		atomAsMacro->setDisplayMode(MathMacro::DISPLAY_INTERACTIVE_INIT);
 	}
 	plainInsert(atom);
 	return true;

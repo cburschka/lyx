@@ -165,7 +165,7 @@ bool MathMacro::editMode(Cursor const & cur) const {
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// calculate new metrics according to display mode
-	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_NONGREEDY_INIT) {
+	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {
 		mathed_string_dim(mi.base.font, from_ascii("\\") + name(), dim);
 	} else if (displayMode_ == DISPLAY_UNFOLDED) {
 		cell(0).metrics(mi, dim);
@@ -280,7 +280,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	int expx = x;
 	int expy = y;
 
-	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_NONGREEDY_INIT) {		
+	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {		
 		PainterInfo pi2(pi.base.bv, pi.pain);
 		pi2.base.font.setColor(macro_ ? Color_latex : Color_error);
 		//pi2.base.style = LM_ST_TEXT;
