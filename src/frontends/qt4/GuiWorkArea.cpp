@@ -248,8 +248,6 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	verticalScrollBar()->setPageStep(viewport()->height());
 
 	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
-		<< "\n Area width\t" << width()
-		<< "\n Area height\t" << height()
 		<< "\n viewport width\t" << viewport()->width()
 		<< "\n viewport height\t" << viewport()->height()
 		<< endl;
@@ -328,9 +326,9 @@ void GuiWorkArea::redraw()
 	LYXERR(Debug::WORKAREA) << "WorkArea::redraw screen" << endl;
 
 	int const ymin = std::max(vi.y1, 0);
-	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : height();
+	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : viewport()->height();
 
-	expose(0, ymin, width(), ymax - ymin);
+	expose(0, ymin, viewport()->width(), ymax - ymin);
 
 	//LYXERR(Debug::WORKAREA)
 	//<< "  ymin = " << ymin << "  width() = " << width()
@@ -408,7 +406,7 @@ void GuiWorkArea::resizeBufferView()
 	// WARNING: Please don't put any code that will trigger a repaint here!
 	// We are already inside a paint event.
 	lyx_view_->setBusy(true);
-	buffer_view_->resize(width(), height());
+	buffer_view_->resize(viewport()->width(), viewport()->height());
 	lyx_view_->updateLayoutChoice(false);
 	lyx_view_->setBusy(false);
 }
@@ -456,7 +454,7 @@ void GuiWorkArea::showCursor()
 	y -= asc;
 
 	// if it doesn't touch the screen, don't try to show it
-	if (y + h < 0 || y >= height())
+	if (y + h < 0 || y >= viewport()->height())
 		return;
 
 	cursor_visible_ = true;
@@ -499,8 +497,8 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 	verticalScrollBar()->setTracking(false);
 
 	// do what cursor movement does (some grey)
-	h += height() / 4;
-	int scroll_max_ = std::max(0, h - height());
+	h += viewport()->height() / 4;
+	int scroll_max_ = std::max(0, h - viewport()->height());
 
 	verticalScrollBar()->setRange(0, scroll_max_);
 	verticalScrollBar()->setSliderPosition(scroll_pos);
@@ -844,7 +842,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	int cur_y = cursor_->rect().bottom();
 
 	// redraw area of preedit string.
-	update(0, cur_y - height, GuiWorkArea::width(),
+	update(0, cur_y - height, viewport()->width(),
 		(height + 1) * preedit_lines_);
 
 	if (preedit_string.empty()) {
@@ -907,7 +905,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		ps = Painter::preedit_default;
 
 		// if we reached the right extremity of the screen, go to next line.
-		if (cur_x + fm.width(typed_char) > GuiWorkArea::width() - right_margin) {
+		if (cur_x + fm.width(typed_char) > viewport()->width() - right_margin) {
 			cur_x = right_margin;
 			cur_y += height + 1;
 			++preedit_lines_;
@@ -931,7 +929,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	}
 
 	// update the preedit string screen area.
-	update(0, cur_y - preedit_lines_*height, GuiWorkArea::width(),
+	update(0, cur_y - preedit_lines_*height, viewport()->width(),
 		(height + 1) * preedit_lines_);
 
 	// Don't forget to accept the event!
