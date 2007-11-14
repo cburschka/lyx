@@ -82,7 +82,6 @@ public:
 	virtual void updateStatusBar();
 	virtual void message(docstring const & str);
 	virtual bool hasFocus() const;
-	void showMiniBuffer(bool);
 	void updateLayoutChoice(bool force);
 	bool isToolbarVisible(std::string const & id);
 	void updateToolbars();

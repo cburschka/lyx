@@ -952,12 +952,6 @@ void GuiView::removeWorkArea(GuiWorkArea * work_area)
 }
 
 
-void GuiView::showMiniBuffer(bool visible)
-{
-	d.toolbars_->showCommandBuffer(visible);
-}
-
-
 void GuiView::updateLayoutChoice(bool force)
 {
 	// Don't show any layouts without a buffer
@@ -1178,10 +1172,11 @@ void GuiView::dispatch(FuncRequest const & cmd)
 			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
 			break;
 
-		case LFUN_COMMAND_EXECUTE:
-			d.toolbars_->showCommandBuffer(true);
+		case LFUN_COMMAND_EXECUTE: {
+			bool const show_it = cmd.argument() != "off";
+			d.toolbars_->showCommandBuffer(show_it);
 			break;
-
+		}
 		case LFUN_DROP_LAYOUTS_CHOICE:
 			d.toolbars_->openLayoutList();
 			break;

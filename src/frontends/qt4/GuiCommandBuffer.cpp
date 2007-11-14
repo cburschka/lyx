@@ -272,7 +272,8 @@ docstring const GuiCommandBuffer::getCurrentState() const
 
 void GuiCommandBuffer::hide() const
 {
-	view_->showMiniBuffer(false);
+	FuncRequest cmd(LFUN_COMMAND_EXECUTE, "off");
+	view_->dispatch(cmd);
 }
 
 

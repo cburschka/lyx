@@ -378,11 +378,13 @@ void GuiToolbars::showCommandBuffer(bool show_it)
 		if (!cb)
 			continue;
 		if (!show_it) {
-			it->second->hide();
+			// FIXME: this is a hack, "minibuffer" should not be
+			// hardcoded.
+			display("minibuffer", false);
 			return;
 		}
 		if (!it->second->isVisible())
-			it->second->show();
+			display("minibuffer", true);
 		cb->setFocus();
 		return;
 	}
