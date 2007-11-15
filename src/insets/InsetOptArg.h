@@ -52,6 +52,8 @@ public:
 	virtual bool neverIndent(Buffer const &) const { return true; }
 protected:
 	InsetOptArg(InsetOptArg const &);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
 	virtual std::auto_ptr<Inset> doClone() const;
 };

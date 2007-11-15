@@ -12,6 +12,9 @@
 
 #include "InsetOptArg.h"
 
+#include "FuncRequest.h"
+#include "FuncStatus.h"
+
 #include "debug.h"
 #include "gettext.h"
 
@@ -52,6 +55,23 @@ auto_ptr<Inset> InsetOptArg::doClone() const
 docstring const InsetOptArg::editMessage() const
 {
 	return _("Opened Optional Argument Inset");
+}
+
+
+bool InsetOptArg::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+		// paragraph breaks not allowed
+		case LFUN_BREAK_PARAGRAPH:
+		case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
+		case LFUN_BREAK_PARAGRAPH_SKIP:
+			status.enabled(false);
+			return true;
+
+		default:
+			return InsetCollapsable::getStatus(cur, cmd, status);
+		}
 }
 
 
