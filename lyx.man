@@ -65,6 +65,7 @@ where command is a lyx command.
 .TP
 \fB \-e [\-\-export]\fP \fIfmt
 where fmt is the export format of choice.
+Look on Tools->Preferences->File formats->Format to get an idea which parameters should be passed.
 .TP
 \fB \-i [\-\-import]\fP \fIfmt file.xxx
 where fmt is the import format of choice and file.xxx is the file to be imported.
