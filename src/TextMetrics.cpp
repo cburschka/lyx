@@ -1962,15 +1962,13 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		if (row_selection) {
 			DocIterator beg = bv_->cursor().selectionBegin();
 			DocIterator end = bv_->cursor().selectionEnd();
+			bool const beg_margin = beg.pit() < pit;
+			bool const end_margin = end.pit() > pit;
 			beg.pit() = pit;
 			beg.pos() = rit->sel_beg;
-			if (pit == end.pit()) {
-				end.pos() = rit->sel_end;
-			} else {
-				end.pit() = pit + 1;
-				end.pos() = 0;
-			}
-			drawSelection(pi, beg, end, x);
+			end.pit() = pit;
+			end.pos() = rit->sel_end;
+			drawRowSelection(pi, x, *rit, beg, end, beg_margin, end_margin);
 		}
 
 		// Instrumentation for testing row cache (see also
@@ -2004,65 +2002,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	pi.pain.setDrawingEnabled(original_drawing_state);
 
 	//LYXERR(Debug::PAINTING) << "." << endl;
-}
-
-
-// FIXME: only take care of one row!
-void TextMetrics::drawSelection(PainterInfo & pi,
-	DocIterator const & beg, DocIterator const & end, int x) const
-{
-	ParagraphMetrics const & pm1 = parMetrics(beg.pit());
-	ParagraphMetrics const & pm2 = parMetrics(end.pit());
-	Row const & row1 = pm1.getRow(beg.pos(), beg.boundary());
-	Row const & row2 = pm2.getRow(end.pos(), end.boundary());
-
-	// clip above
-	int middleTop;
-	bool const clipAbove = (bv_->cursorStatus(beg) == CUR_ABOVE);
-	if (clipAbove)
-		middleTop = 0;
-	else
-		middleTop = bv_->getPos(beg, beg.boundary()).y_ + row1.descent();
-	
-	// clip below
-	int middleBottom;
-	bool const clipBelow = (bv_->cursorStatus(end) == CUR_BELOW);
-	if (clipBelow)
-		middleBottom = bv_->workHeight();
-	else
-		middleBottom = bv_->getPos(end, end.boundary()).y_ - row2.ascent();
-
-	// start and end in the same line?
-	if (!clipAbove && !clipBelow && &row1 == &row2)
-		// then only draw this row's selection
-		drawRowSelection(pi, x, row1, beg, end, false, false);
-	else {
-		if (!clipAbove) {
-			// get row end
-			DocIterator begRowEnd = beg;
-			begRowEnd.pos() = row1.endpos();
-			begRowEnd.boundary(true);
-			
-			// draw upper rectangle
-			drawRowSelection(pi, x, row1, beg, begRowEnd, false, true);
-		}
-			
-		if (middleTop < middleBottom) {
-			// draw middle rectangle
-			pi.pain.fillRectangle(x, middleTop, width(), middleBottom - middleTop,
-				Color_selection);
-		}
-
-		if (!clipBelow) {
-			// get row begin
-			DocIterator endRowBeg = end;
-			endRowBeg.pos() = row2.pos();
-			endRowBeg.boundary(false);
-			
-			// draw low rectangle
-			drawRowSelection(pi, x, row2, endRowBeg, end, true, false);
-		}
-	}
 }
 
 

@@ -128,13 +128,6 @@ private:
 	///
 	ParagraphMetrics & parMetrics(pit_type, bool redo_paragraph);
 
-	/// draw textselection.
-	/// FIXME: simplify to just to single row painting.
-	void drawSelection(PainterInfo & pi,
-		DocIterator const & beg, ///< selection begin.
-		DocIterator const & end, ///< selection end.
-		int x) const;
-
 	/// the minimum space a manual label needs on the screen in pixels
 	int labelFill(pit_type const pit, Row const & row) const;
 
