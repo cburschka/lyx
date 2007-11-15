@@ -56,16 +56,12 @@ inline bool is_utf16(char_type c)
  * This is the preferred method of converting anything that possibly
  * contains non-ASCII stuff to QString.
  */
-#if QT_VERSION >= 0x040200
 inline QString const toqstr(docstring const & ucs4)
 {
 	// If possible we let qt do the work, since this version does not
 	// need to be superfast.
 	return QString::fromUcs4(reinterpret_cast<uint const *>(ucs4.data()), ucs4.length());
 }
-#else
-QString const toqstr(docstring const & ucs4);
-#endif
 
 
 /**
