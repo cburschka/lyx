@@ -41,6 +41,7 @@ using lyx::support::contains;
 using lyx::support::getEnv;
 
 
+#if 0
 static char encode(string const & encoding, QString const & str)
 {
 	typedef map<string, QTextCodec *> EncodingMap;
@@ -50,46 +51,45 @@ static char encode(string const & encoding, QString const & str)
 
 	EncodingMap::const_iterator cit = encoding_map.find(encoding);
 	if (cit == encoding_map.end()) {
-		LYXERR(Debug::KEY) << "Unrecognised encoding '" << encoding
-				   << "'." << endl;
+		LYXERR(Debug::KEY, "Unrecognised encoding '" << encoding << "'.");
 		codec = encoding_map.find("")->second;
 	} else {
 		codec = cit->second;
 	}
 
 	if (!codec) {
-		LYXERR(Debug::KEY) << "No codec for encoding '" << encoding
-				   << "' found." << endl;
+		LYXERR(Debug::KEY, "No codec for encoding '" << encoding << "' found.");
 		return 0;
 	}
 
-	LYXERR(Debug::KEY) << "Using codec " << fromqstr(codec->name()) << endl;
+	LYXERR(Debug::KEY, "Using codec " << fromqstr(codec->name()));
 
 	if (!codec->canEncode(str)) {
-		LYXERR(Debug::KEY) << "Oof. Can't encode the text !" << endl;
+		LYXERR(Debug::KEY, "Oof. Can't encode the text !");
 		return 0;
 	}
 
 	return codec->fromUnicode(str).data()[0];
 }
+#endif
 
 
 void setKeySymbol(KeySymbol * sym, QKeyEvent * ev)
 {
 	sym->setKey(ev->key());
 	if (ev->text().isNull()) {
-		LYXERR(Debug::KEY) << "keyevent has isNull() text !" << endl;
+		LYXERR(Debug::KEY, "keyevent has isNull() text !");
 		sym->setText(docstring());
 		return;
 	}
-	LYXERR(Debug::KEY) << "Getting key " << ev->key() << ", with text '"
-		<< fromqstr(ev->text()) << "'" << std::endl;
+	LYXERR(Debug::KEY, "Getting key " << ev->key() << ", with text '"
+		<< fromqstr(ev->text()) << "'");
 	// This is unsafe because ev->text() is the unicode representation of the
 	// key, not the name of the key. For example, Ctrl-x and Alt-x produce 
 	// different texts.
 	sym->setText(qstring_to_ucs4(ev->text()));
-	LYXERR(Debug::KEY) << "Setting key to " << sym->key() << ", "
-		<< to_utf8(sym->text()) << endl;
+	LYXERR(Debug::KEY, "Setting key to " << sym->key() << ", "
+		<< to_utf8(sym->text()));
 }
 
 
@@ -97,15 +97,14 @@ void KeySymbol::init(string const & symbolname)
 {
 	key_ = string_to_qkey(symbolname);
 	text_ = from_utf8(symbolname);
-	LYXERR(Debug::KEY) << "Init key to " << key_ << ", "
-		<< to_utf8(text_) << endl;
+	LYXERR(Debug::KEY, "Init key to " << key_ << ", " << to_utf8(text_));
 }
 
 
 bool KeySymbol::isOK() const
 {
 	bool const ok = !(text_.empty() && key_ == Qt::Key_unknown);
-	LYXERR(Debug::KEY) << "isOK is " << ok << endl;
+	LYXERR(Debug::KEY, "isOK is " << ok);
 	return ok;
 }
 
@@ -113,7 +112,7 @@ bool KeySymbol::isOK() const
 bool KeySymbol::isModifier() const
 {
 	bool const mod = q_is_modifier(key_);
-	LYXERR(Debug::KEY) << "isMod is " << mod << endl;
+	LYXERR(Debug::KEY, "isModifier is " << mod);
 	return mod;
 }
 
@@ -140,11 +139,9 @@ char_type KeySymbol::getUCSEncoded() const
 
 	if (lyxerr.debugging() && text_.size() > 1) {
 		// We don't know yet how well support the full ucs4 range.
-		LYXERR(Debug::KEY) << "KeySymbol::getUCSEncoded()" << endl;
-		for (int i = 0; i != int(text_.size()); ++i) {
-			LYXERR(Debug::KEY) << "char " << i << ": "
-				<< int(text_[i]) << endl;
-		}
+		LYXERR(Debug::KEY, "KeySymbol::getUCSEncoded()");
+		for (int i = 0; i != int(text_.size()); ++i)
+			LYXERR(Debug::KEY, "char " << i << ": " << int(text_[i]));
 	}
 
 	return text_[0];
@@ -173,7 +170,7 @@ bool KeySymbol::isText() const
 {
 	if (!text_.empty())
 		return true;
-	LYXERR(Debug::KEY) << "text_ empty, isText() == false" << endl;
+	LYXERR(Debug::KEY, "text_ empty, isText() == false");
 	return false;
 }
 

@@ -190,10 +190,10 @@ void ButtonPolicy::nextState(SMInput input)
 
 	State tmp = state_machine_[state_][input];
 
-	LYXERR(Debug::GUI) << "Transition from state "
+	LYXERR(Debug::GUI, "Transition from state "
 			   << printState(state_) << " to state "
 			   << printState(tmp) << " after input "
-			   << printInput(input) << std::endl;
+			   << printInput(input));
 
 	if (tmp != BOGUS) {
 		state_ = tmp;

@@ -71,14 +71,12 @@ QStandardItemModel * GuiToc::tocModel(int type)
 		return 0;
 
 	if (toc_models_.empty()) {
-		LYXERR(Debug::GUI) << "GuiToc::tocModel(): no types available " << endl;
+		LYXERR(Debug::GUI, "GuiToc::tocModel(): no types available ");
 		return 0;
 	}
 
-	LYXERR(Debug::GUI)
-		<< "GuiToc: type " << type
-		<< "  toc_models_.size() " << toc_models_.size()
-		<< endl;
+	LYXERR(Debug::GUI, "GuiToc: type " << type
+		<< "  toc_models_.size() " << toc_models_.size());
 
 	BOOST_ASSERT(type >= 0 && type < int(toc_models_.size()));
 	return toc_models_[type];
@@ -104,9 +102,7 @@ void GuiToc::goTo(int type, QModelIndex const & index)
 {
 	if (type < 0 || !index.isValid()
 		|| index.model() != toc_models_[type]) {
-		LYXERR(Debug::GUI)
-			<< "GuiToc::goTo(): QModelIndex is invalid!"
-			<< endl;
+		LYXERR(Debug::GUI, "GuiToc::goTo(): QModelIndex is invalid!");
 		return;
 	}
 
@@ -114,7 +110,7 @@ void GuiToc::goTo(int type, QModelIndex const & index)
 
 	TocIterator const it = toc_models_[type]->tocIterator(index);
 
-	LYXERR(Debug::GUI) << "GuiToc::goTo " << to_utf8(it->str()) << endl;
+	LYXERR(Debug::GUI, "GuiToc::goTo " << to_utf8(it->str()));
 
 	string const tmp = convert<string>(it->id());
 	lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));

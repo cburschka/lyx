@@ -63,28 +63,24 @@ Image::FormatList GuiImage::loadableFormats()
 	Formats::const_iterator end   = formats.end();
 
 
-//	LYXERR(Debug::GRAPHICS)
-//		<< "D:/msys/home/yns/src/lyx-devel/lib/images/banner.png mis of format: "
-//		<< fromqstr(Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.png"))
-//		<< endl;
+//	LYXERR(Debug::GRAPHICS,
+//		"D:/msys/home/yns/src/lyx-devel/lib/images/banner.png mis of format: "
+//		<< fromqstr(Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.png")))
 //	if (Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.png"))
-//		LYXERR(Debug::GRAPHICS)
-//			<< "pictureFormat not returned NULL\n" << endl;
-//			<< "Supported formats are: " << Pic.inputFormats() << endl;
+//		LYXERR(Debug::GRAPHICS, "pictureFormat not returned NULL\n"
+//			<< "Supported formats are: " << Pic.inputFormats());
 
 	QList<QByteArray> qt_formats = QImageReader::supportedImageFormats();
 
-	LYXERR(Debug::GRAPHICS)
-		<< "\nThe image loader can load the following directly:\n";
+	LYXERR(Debug::GRAPHICS,
+		"\nThe image loader can load the following directly:\n");
 
-	if (qt_formats.empty()) {
-		LYXERR(Debug::GRAPHICS)
-			<< "\nQt4 Problem: No Format available!" << endl;
-	}
+	if (qt_formats.empty())
+		LYXERR(Debug::GRAPHICS, "\nQt4 Problem: No Format available!");
 
 	for (QList<QByteArray>::const_iterator it = qt_formats.begin(); it != qt_formats.end(); ++it) {
 
-		LYXERR(Debug::GRAPHICS) << (const char *) *it << ", ";
+		LYXERR(Debug::GRAPHICS, (const char *) *it << ", ");
 
 		string ext = ascii_lowercase((const char *) *it);
 
@@ -102,18 +98,16 @@ Image::FormatList GuiImage::loadableFormats()
 	}
 
 	if (lyxerr.debugging()) {
-		LYXERR(Debug::GRAPHICS)
-			<< "\nOf these, LyX recognises the following formats:\n";
+		LYXERR(Debug::GRAPHICS, "\nOf these, LyX recognises the following formats:");
 
 		FormatList::const_iterator fbegin = fmts.begin();
 		FormatList::const_iterator fend   = fmts.end();
 		for (FormatList::const_iterator fit = fbegin; fit != fend; ++fit) {
-			if (fit != fbegin) {
-				LYXERR(Debug::GRAPHICS) << ", ";
-			}
-			LYXERR(Debug::GRAPHICS) << *fit;
+			if (fit != fbegin)
+				LYXERR(Debug::GRAPHICS, ", ");
+			LYXERR(Debug::GRAPHICS, *fit);
 		}
-		LYXERR(Debug::GRAPHICS) << '\n' << endl;
+		LYXERR(Debug::GRAPHICS, '\n');
 	}
 
 	return fmts;
@@ -148,15 +142,13 @@ unsigned int GuiImage::getHeight_impl() const
 void GuiImage::load_impl(support::FileName const & filename)
 {
 	if (!original_.isNull()) {
-		LYXERR(Debug::GRAPHICS)
-			<< "Image is loaded already!" << endl;
+		LYXERR(Debug::GRAPHICS, "Image is loaded already!");
 		finishedLoading(false);
 		return;
 	}
 
 	if (!original_.load(toqstr(filename.absFilename()))) {
-		LYXERR(Debug::GRAPHICS)
-			<< "Unable to open image" << endl;
+		LYXERR(Debug::GRAPHICS, "Unable to open image");
 		finishedLoading(false);
 		return;
 	}

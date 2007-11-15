@@ -161,9 +161,8 @@ string const find_png(string const & name)
 		png_name = subst(png_name, "!", "negthinspace");
 	}
 
-	LYXERR(Debug::GUI) << "find_png(" << name << ")\n"
-			   << "Looking for math PNG called \""
-			   << png_name << '"' << std::endl;
+	LYXERR(Debug::GUI, "find_png(" << name << ")\n"
+		<< "Looking for math PNG called \"" << png_name << '"');
 	return png_name;
 }
 
@@ -218,9 +217,9 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 	if (pm.load(":/images/" + toqstr(path + name2) + ".png"))
 		return pm;
 
-	LYXERR(Debug::GUI) << "Cannot find icon for command \""
+	LYXERR(Debug::GUI, "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
-			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
+			   << '(' << to_utf8(f.argument()) << ")\"");
 	if (unknown)
 		pm.load(":/images/unknown.png");
 

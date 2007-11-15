@@ -135,9 +135,8 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				docstring const tooltip = translateIfPossible(lex.getDocString());
 				lex.next(true);
 				string const func_arg = lex.getString();
-				LYXERR(Debug::PARSER)
-					<< "ToolbarInfo::read TO_COMMAND func: `"
-					<< func_arg << '\'' << endl;
+				LYXERR(Debug::PARSER, "ToolbarInfo::read TO_COMMAND func: `"
+					<< func_arg << '\'');
 
 				FuncRequest func =
 					lyxaction.lookupFunc(func_arg);

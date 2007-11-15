@@ -126,7 +126,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 {
 	// Are we using latex or pdflatex?
 	if (runparams.flavor == OutputParams::PDFLATEX) {
-		LYXERR(Debug::GRAPHICS) << "findTargetFormat: PDF mode" << endl;
+		LYXERR(Debug::GRAPHICS, "findTargetFormat: PDF mode");
 		Format const * const f = formats.getFormat(format);
 		// Convert vector graphics to pdf
 		if (f && f->vectorFormat())
@@ -138,7 +138,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 		return "png";
 	}
 	// If it's postscript, we always do eps.
-	LYXERR(Debug::GRAPHICS) << "findTargetFormat: PostScript mode" << endl;
+	LYXERR(Debug::GRAPHICS, "findTargetFormat: PostScript mode");
 	if (format != "ps")
 		// any other than ps is changed to eps
 		return "eps";
@@ -244,10 +244,9 @@ void InsetGraphics::updateEmbeddedFile(Buffer const & buf,
 {
 	BOOST_ASSERT(buf.embeddedFiles().enabled());
 	params_.filename = file;
-	LYXERR(Debug::FILES) << "Update InsetGraphic with File " 
+	LYXERR(Debug::FILES, "Update InsetGraphic with File " 
 		<< params_.filename.toFilesystemEncoding() 
-		<< ", embedding status: "
-		<< params_.filename.embedded() << std::endl;
+		<< ", embedding status: " << params_.filename.embedded());
 }
 
 
@@ -289,7 +288,7 @@ void InsetGraphics::read(Buffer const & buf, Lexer & lex)
 	if (token == "Graphics")
 		readInsetGraphics(lex, buf.filePath());
 	else
-		LYXERR(Debug::GRAPHICS) << "Not a Graphics inset!" << endl;
+		LYXERR(Debug::GRAPHICS, "Not a Graphics inset!");
 
 	// InsetGraphics is read, with filename in params_. We do not know if this file actually
 	// exists or is embedded so we need to get the 'availableFile' from buf.embeddedFiles()
@@ -313,12 +312,12 @@ void InsetGraphics::readInsetGraphics(Lexer & lex, string const & bufpath)
 		lex.next();
 
 		string const token = lex.getString();
-		LYXERR(Debug::GRAPHICS) << "Token: '" << token << '\''
-				    << endl;
+		LYXERR(Debug::GRAPHICS, "Token: '" << token << '\'');
 
-		if (token.empty()) {
+		if (token.empty())
 			continue;
-		} else if (token == "\\end_inset") {
+
+		if (token == "\\end_inset") {
 			finished = true;
 		} else {
 			if (!params_.Read(lex, token, bufpath))
@@ -507,11 +506,10 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 	bool const success = mover.copy(file_in, file_out);
 	if (!success) {
 		// FIXME UNICODE
-		LYXERR(Debug::GRAPHICS)
-			<< to_utf8(support::bformat(_("Could not copy the file\n%1$s\n"
+		LYXERR(Debug::GRAPHICS,
+			to_utf8(support::bformat(_("Could not copy the file\n%1$s\n"
 							   "into the temporary directory."),
-						from_utf8(file_in.absFilename())))
-			<< std::endl;
+						from_utf8(file_in.absFilename()))));
 	}
 
 	GraphicsCopyStatus status = success ? SUCCESS : FAILURE;
@@ -655,8 +653,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// this file, but we can't check, because that would
 			// mean to unzip the file and thereby making the
 			// noUnzip parameter meaningless.
-			LYXERR(Debug::GRAPHICS)
-				<< "\tpass zipped file to LaTeX.\n";
+			LYXERR(Debug::GRAPHICS, "\tpass zipped file to LaTeX.");
 
 			FileName const bb_orig_file = FileName(changeExtension(orig_file, "bb"));
 			if (runparams.nice) {
@@ -692,33 +689,27 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// temp_file has been unzipped already and
 			// orig_file has not changed in the meantime.
 			temp_file = unzipped_temp_file;
-			LYXERR(Debug::GRAPHICS)
-				<< "\twas already unzipped to " << temp_file
-				<< endl;
+			LYXERR(Debug::GRAPHICS, "\twas already unzipped to " << temp_file);
 		} else {
 			// unzipped_temp_file does not exist or is too old
 			temp_file = unzipFile(temp_file);
-			LYXERR(Debug::GRAPHICS)
-				<< "\tunzipped to " << temp_file << endl;
+			LYXERR(Debug::GRAPHICS, "\tunzipped to " << temp_file);
 		}
 	}
 
 	string const from = formats.getFormatFromFile(temp_file);
-	if (from.empty()) {
-		LYXERR(Debug::GRAPHICS)
-			<< "\tCould not get file format." << endl;
-	}
+	if (from.empty())
+		LYXERR(Debug::GRAPHICS, "\tCould not get file format.");
+
 	string const to   = findTargetFormat(from, runparams);
 	string const ext  = formats.extension(to);
-	LYXERR(Debug::GRAPHICS)
-		<< "\t we have: from " << from << " to " << to << '\n';
+	LYXERR(Debug::GRAPHICS, "\t we have: from " << from << " to " << to);
 
 	// We're going to be running the exported buffer through the LaTeX
 	// compiler, so must ensure that LaTeX can cope with the graphics
 	// file format.
 
-	LYXERR(Debug::GRAPHICS)
-		<< "\tthe orig file is: " << orig_file << endl;
+	LYXERR(Debug::GRAPHICS, "\tthe orig file is: " << orig_file);
 
 	if (from == to) {
 		if (!runparams.nice && getExtension(temp_file.absFilename()) != ext) {
@@ -730,11 +721,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 				temp_file = new_file;
 				output_file = changeExtension(output_file, ext);
 				source_file = FileName(changeExtension(source_file.absFilename(), ext));
-			} else
-				LYXERR(Debug::GRAPHICS)
-					<< "Could not rename file `"
-					<< temp_file << "' to `" << new_file
-					<< "'." << endl;
+			} else {
+				LYXERR(Debug::GRAPHICS, "Could not rename file `"
+					<< temp_file << "' to `" << new_file << "'.");
+			}
 		}
 		// The extension of temp_file might be != ext!
 		runparams.exportdata->addExternalFile(tex_format, source_file,
@@ -751,10 +741,9 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// Yes if to_file does not exist or if temp_file is newer than to_file
 	if (compare_timestamps(temp_file, to_file) < 0) {
 		// FIXME UNICODE
-		LYXERR(Debug::GRAPHICS)
-			<< to_utf8(bformat(_("No conversion of %1$s is needed after all"),
-				   from_utf8(rel_file)))
-			<< std::endl;
+		LYXERR(Debug::GRAPHICS,
+			to_utf8(bformat(_("No conversion of %1$s is needed after all"),
+				   from_utf8(rel_file))));
 		runparams.exportdata->addExternalFile(tex_format, to_file,
 						      output_to_file);
 		runparams.exportdata->addExternalFile("dvi", to_file,
@@ -762,11 +751,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		return stripExtensionIfPossible(output_to_file, runparams.nice);
 	}
 
-	LYXERR(Debug::GRAPHICS)
-		<< "\tThe original file is " << orig_file << "\n"
+	LYXERR(Debug::GRAPHICS,"\tThe original file is " << orig_file << "\n"
 		<< "\tA copy has been made and convert is to be called with:\n"
 		<< "\tfile to convert = " << temp_file << '\n'
-		<< "\t from " << from << " to " << to << '\n';
+		<< "\t from " << from << " to " << to);
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
@@ -788,9 +776,8 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 {
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
-	LYXERR(Debug::GRAPHICS)
-		<< "insetgraphics::latex: Filename = "
-		<< params().filename.absFilename() << endl;
+	LYXERR(Debug::GRAPHICS, "insetgraphics::latex: Filename = "
+		<< params().filename.absFilename());
 
 	string const relative_file =
 		params().filename.relFilename(buf.filePath());
@@ -803,8 +790,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	// "filename" found. In this case LaTeX
 	// draws only a rectangle with the above bb and the
 	// not found filename in it.
-	LYXERR(Debug::GRAPHICS)
-		<< "\tMessage = \"" << message << '\"' << endl;
+	LYXERR(Debug::GRAPHICS, "\tMessage = \"" << message << '\"');
 
 	// These variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
@@ -826,16 +812,14 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 
 	// Write the options if there are any.
 	string const opts = createLatexOptions();
-	LYXERR(Debug::GRAPHICS) << "\tOpts = " << opts << endl;
+	LYXERR(Debug::GRAPHICS, "\tOpts = " << opts);
 
 	if (!opts.empty() && !message.empty())
 		before += ('[' + opts + ',' + message + ']');
 	else if (!opts.empty() || !message.empty())
 		before += ('[' + opts + message + ']');
 
-	LYXERR(Debug::GRAPHICS)
-		<< "\tBefore = " << before
-		<< "\n\tafter = " << after << endl;
+	LYXERR(Debug::GRAPHICS, "\tBefore = " << before << "\n\tafter = " << after);
 
 	string latex_str = before + '{';
 	// Convert the file if necessary.
@@ -846,8 +830,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	// FIXME UNICODE
 	os << from_utf8(latex_str);
 
-	LYXERR(Debug::GRAPHICS) << "InsetGraphics::latex outputting:\n"
-				<< latex_str << endl;
+	LYXERR(Debug::GRAPHICS, "InsetGraphics::latex outputting:\n" << latex_str);
 	// Return how many newlines we issued.
 	return int(std::count(latex_str.begin(), latex_str.end(),'\n'));
 }
@@ -872,39 +855,32 @@ int InsetGraphics::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-namespace {
-
-int writeImageObject(char const * format,
-                     odocstream & os,
-                     OutputParams const & runparams,
-		     docstring const & graphic_label,
-                     docstring const & attributes)
+static int writeImageObject(char const * format, odocstream & os,
+	OutputParams const & runparams, docstring const & graphic_label,
+	docstring const & attributes)
 {
-		if (runparams.flavor != OutputParams::XML) {
-			os << "<![ %output.print."
-			   << format
-			   << "; ["
-			   << std::endl;
-		}
-		os <<"<imageobject><imagedata fileref=\"&"
-		   << graphic_label
-		   << ";."
-		   << format
-		   << "\" "
-		   << attributes;
-		if (runparams.flavor == OutputParams::XML) {
-			os <<  " role=\"" << format << "\"/>" ;
-		}
-		else {
-			os << " format=\"" << format << "\">" ;
-		}
-		os << "</imageobject>";
-		if (runparams.flavor != OutputParams::XML) {
-			os << std::endl << "]]>" ;
-		}
-		return runparams.flavor == OutputParams::XML ? 0 : 2;
-}
-// end anonymous namespace
+	if (runparams.flavor != OutputParams::XML)
+		os << "<![ %output.print." << format
+			 << "; [" << std::endl;
+
+	os <<"<imageobject><imagedata fileref=\"&"
+		 << graphic_label
+		 << ";."
+		 << format
+		 << "\" "
+		 << attributes;
+
+	if (runparams.flavor == OutputParams::XML)
+		os <<  " role=\"" << format << "\"/>" ;
+	else
+		os << " format=\"" << format << "\">" ;
+
+	os << "</imageobject>";
+
+	if (runparams.flavor != OutputParams::XML)
+		os << std::endl << "]]>" ;
+
+	return runparams.flavor == OutputParams::XML ? 0 : 2;
 }
 
 
@@ -917,13 +893,13 @@ int InsetGraphics::docbook(Buffer const &, odocstream & os,
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
 	// need to switch to MediaObject. However, for now this is sufficient and
 	// easier to use.
-	if (runparams.flavor == OutputParams::XML) {
+	if (runparams.flavor == OutputParams::XML)
 		runparams.exportdata->addExternalFile("docbook-xml",
 						      params().filename);
-	} else {
+	else
 		runparams.exportdata->addExternalFile("docbook",
 						      params().filename);
-	}
+
 	os << "<inlinemediaobject>";
 
 	int r = 0;

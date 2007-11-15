@@ -81,7 +81,7 @@ void ButtonController::setValid(bool v)
 
 bool ButtonController::setReadOnly(bool ro)
 {
-	LYXERR(Debug::GUI) << "Setting controller ro: " << ro << std::endl;
+	LYXERR(Debug::GUI, "Setting controller ro: " << ro);
 
 	policy_.input(ro ?
 		ButtonPolicy::SMI_READ_ONLY : ButtonPolicy::SMI_READ_WRITE);
@@ -96,7 +96,7 @@ bool ButtonController::setReadOnly(bool ro)
 
 void ButtonController::refresh() const
 {
-	LYXERR(Debug::GUI) << "Calling BC refresh()" << std::endl;
+	LYXERR(Debug::GUI, "Calling BC refresh()");
 
 	bool const all_valid = checkWidgets();
 
@@ -118,9 +118,9 @@ void ButtonController::refresh() const
 	if (cancel_) {
 		bool const enabled = policy().buttonStatus(ButtonPolicy::CANCEL);
 		if (enabled)
-			cancel_->setText(toqstr(_("Cancel")));
+			cancel_->setText(qt_("Cancel"));
 		else
-			cancel_->setText(toqstr(_("Close")));
+			cancel_->setText(qt_("Close"));
 	}
 }
 

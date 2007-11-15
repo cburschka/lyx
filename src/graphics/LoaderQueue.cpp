@@ -36,9 +36,8 @@ LoaderQueue & LoaderQueue::get()
 
 void LoaderQueue::loadNext()
 {
-	LYXERR(Debug::GRAPHICS) << "LoaderQueue: "
-				<< cache_queue_.size()
-				<< " items in the queue" << endl;
+	LYXERR(Debug::GRAPHICS, "LoaderQueue: "
+		<< cache_queue_.size() << " items in the queue");
 	int counter = s_numimages_;
 	while (cache_queue_.size() && counter--) {
 		Cache::ItemPtr ptr = cache_queue_.front();
@@ -59,10 +58,9 @@ void LoaderQueue::setPriority(int numimages , int millisecs)
 {
 	s_numimages_ = numimages;
 	s_millisecs_ = millisecs;
-	LYXERR(Debug::GRAPHICS) << "LoaderQueue:  priority set to "
+	LYXERR(Debug::GRAPHICS, "LoaderQueue:  priority set to "
 				<< s_numimages_ << " images at a time, "
-				<< s_millisecs_ << " milliseconds between calls"
-				<< endl;
+				<< s_millisecs_ << " milliseconds between calls");
 }
 
 
@@ -75,7 +73,7 @@ LoaderQueue::LoaderQueue() : timer(s_millisecs_, Timeout::ONETIME),
 
 void LoaderQueue::startLoader()
 {
-	LYXERR(Debug::GRAPHICS) << "LoaderQueue: waking up" << endl;
+	LYXERR(Debug::GRAPHICS, "LoaderQueue: waking up");
 	running_ = true ;
 	timer.setTimeout(s_millisecs_);
 	timer.start();
@@ -86,7 +84,7 @@ void LoaderQueue::stopLoader()
 {
 	timer.stop();
 	running_ = false ;
-	LYXERR(Debug::GRAPHICS) << "LoaderQueue: I'm going to sleep" << endl;
+	LYXERR(Debug::GRAPHICS, "LoaderQueue: I'm going to sleep");
 }
 
 

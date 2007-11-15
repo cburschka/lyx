@@ -42,12 +42,10 @@ Image::getScaledDimensions(Params const & params) const
 		height = getHeight();
 	}
 
-	LYXERR(Debug::GRAPHICS)
-		<< "graphics::Image::getScaledDimensions()"
+	LYXERR(Debug::GRAPHICS, "graphics::Image::getScaledDimensions()"
 		<< "\n\tparams.scale       : " << params.scale
 		<< "\n\twidth              : " << width
-		<< "\n\theight             : " << height
-		<< std::endl;
+		<< "\n\theight             : " << height);
 
 	return std::make_pair(width, height);
 }

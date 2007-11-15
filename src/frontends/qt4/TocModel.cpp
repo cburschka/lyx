@@ -100,10 +100,8 @@ void TocModel::populate(Toc const & toc)
 		toc_map_.insert( TocPair(top_level_item, iter) );
 		model_map_[iter] = top_level_item;
 
-		LYXERR(Debug::GUI)
-			<< "Toc: at depth " << iter->depth()
-			<< ", added item " << to_utf8(iter->str())
-			<< endl;
+		LYXERR(Debug::GUI, "Toc: at depth " << iter->depth()
+			<< ", added item " << to_utf8(iter->str()));
 
 		populate(iter, end, top_level_item);
 

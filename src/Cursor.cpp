@@ -119,8 +119,8 @@ namespace {
 			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 			// '<=' in order to take the last possible position
 			// this is important for clicking behind \sum in e.g. '\sum_i a'
-			LYXERR(Debug::DEBUG) << "i: " << i << " d: " << d
-				<< " best: " << best_dist << endl;
+			LYXERR(Debug::DEBUG, "i: " << i << " d: " << d
+				<< " best: " << best_dist);
 			if (d <= best_dist) {
 				best_dist = d;
 				result = it;
@@ -294,9 +294,8 @@ void Cursor::setCursor(DocIterator const & cur)
 
 void Cursor::dispatch(FuncRequest const & cmd0)
 {
-	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION
-			     << " cmd: " << cmd0 << '\n'
-			     << *this << endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+			     << " cmd: " << cmd0 << '\n' << *this);
 	if (empty())
 		return;
 
@@ -308,8 +307,8 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	getPos(beforeDispX_, beforeDispY_);
 	beforeDispatchCursor_ = *this;
 	for (; depth(); pop()) {
-		LYXERR(Debug::DEBUG) << "Cursor::dispatch: cmd: "
-			<< cmd0 << endl << *this << endl;
+		LYXERR(Debug::DEBUG, "Cursor::dispatch: cmd: "
+			<< cmd0 << endl << *this);
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
 		BOOST_ASSERT(pit() <= lastpit());
@@ -327,7 +326,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	// it completely to get a 'bomb early' behaviour in case this
 	// object will be used again.
 	if (!disp_.dispatched()) {
-		LYXERR(Debug::DEBUG) << "RESTORING OLD CURSOR!" << endl;
+		LYXERR(Debug::DEBUG, "RESTORING OLD CURSOR!");
 		operator=(safe);
 		disp_.update(Update::None);
 		disp_.dispatched(false);
@@ -1294,7 +1293,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 
 void Cursor::handleFont(string const & font)
 {
-	LYXERR(Debug::DEBUG) << BOOST_CURRENT_FUNCTION << ": " << font << endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << ": " << font);
 	docstring safe;
 	if (selection()) {
 		macroModeClose();

@@ -255,7 +255,7 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 	string const format = filename.guessFormatFromContents();
 
 	if (format == "gzip" || format == "zip" || format == "compress") {
-		LYXERR(Debug::LYXLEX) << "lyxlex: compressed" << endl;
+		LYXERR(Debug::LYXLEX, "lyxlex: compressed");
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
@@ -268,14 +268,14 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 		lineno = 0;
 		return gz_.is_open() && is.good();
 	} else {
-		LYXERR(Debug::LYXLEX) << "lyxlex: UNcompressed" << endl;
+		LYXERR(Debug::LYXLEX, "lyxlex: UNcompressed");
 
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
 		if (fb_.is_open() || istream::off_type(is.tellg()) > 0) {
-			LYXERR(Debug::LYXLEX) << "Error in Lexer::setFile: "
-				"file or stream already set." << endl;
+			LYXERR(Debug::LYXLEX, "Error in Lexer::setFile: "
+				"file or stream already set.");
 		}
 		fb_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&fb_);
@@ -289,8 +289,8 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 void Lexer::Pimpl::setStream(istream & i)
 {
 	if (fb_.is_open() || istream::off_type(is.tellg()) > 0) {
-		LYXERR(Debug::LYXLEX)  << "Error in Lexer::setStream: "
-			"file or stream already set." << endl;
+		LYXERR(Debug::LYXLEX, "Error in Lexer::setStream: "
+			"file or stream already set.");
 	}
 	is.rdbuf(i.rdbuf());
 	lineno = 0;
@@ -333,8 +333,7 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 				string dummy;
 				getline(is, dummy);
 
-				LYXERR(Debug::LYXLEX) << "Comment read: `" << c
-						      << dummy << '\'' << endl;
+				LYXERR(Debug::LYXLEX, "Comment read: `" << c << dummy << '\'');
 #else
 				// unfortunately ignore is buggy (Lgb)
 				is.ignore(100, '\n');
@@ -422,8 +421,7 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 				string dummy;
 				getline(is, dummy);
 
-				LYXERR(Debug::LYXLEX) << "Comment read: `" << c
-						      << dummy << '\'' << endl;
+				LYXERR(Debug::LYXLEX, "Comment read: `" << c << dummy << '\'');
 #else
 				// but ignore is also still buggy (Lgb)
 				// This is fast (Lgb)
@@ -535,8 +533,7 @@ bool Lexer::Pimpl::eatLine()
 	while (is && c != '\n') {
 		is.get(cc);
 		c = cc;
-		//LYXERR(Debug::LYXLEX) << "Lexer::EatLine read char: `"
-		//		      << c << '\'' << endl;
+		//LYXERR(Debug::LYXLEX, "Lexer::EatLine read char: `" << c << '\'');
 		if (c != '\r')
 			buff.push_back(c);
 	}
@@ -789,8 +786,7 @@ string const Lexer::getLongString(string const & endtoken)
 
 		string const token = trim(getString(), " \t");
 
-		LYXERR(Debug::PARSER) << "LongString: `"
-				      << getString() << '\'' << endl;
+		LYXERR(Debug::PARSER, "LongString: `" << getString() << '\'');
 
 		// We do a case independent comparison, like search_kw does.
 		if (compare_ascii_no_case(token, endtoken) == 0)
@@ -802,8 +798,7 @@ string const Lexer::getLongString(string const & endtoken)
 			if (i != string::npos)
 				prefix = tmpstr.substr(0, i);
 			firstline = false;
-			LYXERR(Debug::PARSER)
-				<< "Prefix = `" << prefix << "\'" << endl;
+			LYXERR(Debug::PARSER, "Prefix = `" << prefix << "\'");
 		}
 
 		// further lines in long strings may have the same

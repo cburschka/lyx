@@ -116,20 +116,17 @@ public:
 		char const * c = bindtextdomain(PACKAGE, locale_dir.c_str());
 		int e = errno;
 		if (e) {
-			LYXERR(Debug::DEBUG)
-				<< BOOST_CURRENT_FUNCTION << '\n'
+			LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << '\n'
 				<< "Error code: " << errno << '\n'
 				<< "Lang, mess: " << lang_ << " " << m << '\n'
 				<< "Directory : " << package().locale_dir().absFilename() << '\n'
-				<< "Rtn value : " << c << endl;
+				<< "Rtn value : " << c);
 		}
 
 		if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
-			LYXERR(Debug::DEBUG)
-				<< BOOST_CURRENT_FUNCTION << '\n'
+			LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << '\n'
 				<< "Error code: " << errno << '\n'
-				<< "Codeset   : " << ucs4_codeset << '\n'
-				<< endl;
+				<< "Codeset   : " << ucs4_codeset << '\n');
 		}
 
 		textdomain(PACKAGE);
@@ -144,7 +141,7 @@ public:
 			//lyxerr << "Same as entered returned" << endl;
 			translated = from_ascii(tmp);
 		} else {
-			LYXERR(Debug::DEBUG) << "We got a translation" << endl;
+			LYXERR(Debug::DEBUG, "We got a translation");
 			char_type const * ucs4 = reinterpret_cast<char_type const *>(msg);
 			translated = ucs4;
 		}

@@ -34,7 +34,6 @@
 #include "support/Path.h"
 #include "support/Systemcall.h"
 
-using std::endl;
 using std::find_if;
 using std::string;
 using std::vector;
@@ -317,10 +316,8 @@ bool Converters::convert(Buffer const * buffer,
 				quoteName(from_ext + ':' + from_file.toFilesystemEncoding()) +
 				' ' +
 				quoteName(to_ext + ':' + to_file.toFilesystemEncoding());
-			LYXERR(Debug::FILES)
-				<< "No converter defined! "
-				   "I use convertDefault.py:\n\t"
-				<< command << endl;
+			LYXERR(Debug::FILES, "No converter defined! "
+				   "I use convertDefault.py:\n\t" << command);
 			Systemcall one;
 			one.startscript(Systemcall::Wait, command);
 			if (to_file.isFileReadable()) {
@@ -366,8 +363,8 @@ bool Converters::convert(Buffer const * buffer,
 		Converter const & conv = converterlist_[*cit];
 		bool dummy = conv.To->dummy() && conv.to != "program";
 		if (!dummy) {
-			LYXERR(Debug::FILES) << "Converting from  "
-			       << conv.from << " to " << conv.to << endl;
+			LYXERR(Debug::FILES, "Converting from  "
+			       << conv.from << " to " << conv.to);
 		}
 		infile = outfile;
 		outfile = FileName(conv.result_dir.empty()
@@ -393,15 +390,14 @@ bool Converters::convert(Buffer const * buffer,
 		if (conv.latex) {
 			run_latex = true;
 			string const command = subst(conv.command, token_from, "");
-			LYXERR(Debug::FILES) << "Running " << command << endl;
+			LYXERR(Debug::FILES, "Running " << command);
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
 		} else {
 			if (conv.need_aux && !run_latex
 			    && !latex_command_.empty()) {
-				LYXERR(Debug::FILES)
-					<< "Running " << latex_command_
-					<< " to update aux file"<<  endl;
+				LYXERR(Debug::FILES, "Running " << latex_command_
+					<< " to update aux file");
 				runLaTeX(*buffer, latex_command_, runparams, errorList);
 			}
 
@@ -427,7 +423,7 @@ bool Converters::convert(Buffer const * buffer,
 				command = add_options(command,
 						      dvipdfm_options(buffer->params()));
 
-			LYXERR(Debug::FILES) << "Calling " << command << endl;
+			LYXERR(Debug::FILES, "Calling " << command);
 			if (buffer)
 				buffer->message(_("Executing command: ")
 				+ from_utf8(command));
@@ -447,10 +443,8 @@ bool Converters::convert(Buffer const * buffer,
 					if (!mover.rename(outfile, real_outfile))
 						res = -1;
 					else
-						LYXERR(Debug::FILES)
-							<< "renaming file " << outfile
-							<< " to " << real_outfile
-							<< endl;
+						LYXERR(Debug::FILES, "renaming file " << outfile
+							<< " to " << real_outfile);
 					// Finally, don't forget to tell any future
 					// converters to use the renamed file...
 					outfile = real_outfile;
@@ -536,8 +530,7 @@ bool Converters::move(string const & fmt,
 			string const to2 = changeExtension(
 				to_base + file2.substr(base.length()),
 				to_extension);
-			LYXERR(Debug::FILES) << "moving " << from2
-					     << " to " << to2 << endl;
+			LYXERR(Debug::FILES, "moving " << from2 << " to " << to2);
 
 			Mover const & mover = getMover(fmt);
 			bool const moved = copy

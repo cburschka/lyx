@@ -1225,10 +1225,8 @@ void TextMetrics::newParMetricsUp()
 pit_type TextMetrics::getPitNearY(int y)
 {
 	BOOST_ASSERT(!text_->paragraphs().empty());
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": y: " << y << " cache size: " << par_metrics_.size()
-		<< endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+		<< ": y: " << y << " cache size: " << par_metrics_.size());
 
 	// look for highest numbered paragraph with y coordinate less than given y
 	pit_type pit = 0;
@@ -1272,11 +1270,9 @@ pit_type TextMetrics::getPitNearY(int y)
 	}
 
 	for (; it != et; ++it) {
-		LYXERR(Debug::DEBUG)
-			<< BOOST_CURRENT_FUNCTION
+		LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
 			<< "  examining: pit: " << it->first
-			<< " y: " << it->second.position()
-			<< endl;
+			<< " y: " << it->second.position());
 
 		ParagraphMetrics const & pm = par_metrics_[it->first];
 
@@ -1286,10 +1282,8 @@ pit_type TextMetrics::getPitNearY(int y)
 		}
 	}
 
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": found best y: " << yy << " for pit: " << pit
-		<< endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+		<< ": found best y: " << yy << " for pit: " << pit);
 
 	return pit;
 }
@@ -1378,12 +1372,8 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
 	int yy = pm.position() - pm.ascent();
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": x: " << x
-		<< " y: " << y
-		<< " pit: " << pit
-		<< " yy: " << yy << endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+		<< ": x: " << x << " y: " << y << " pit: " << pit << " yy: " << yy);
 
 	int r = 0;
 	BOOST_ASSERT(pm.rows().size());
@@ -1396,21 +1386,15 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 
 	Row const & row = pm.rows()[r];
 
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": row " << r
-		<< " from pos: " << row.pos()
-		<< endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+		<< ": row " << r << " from pos: " << row.pos());
 
 	bool bound = false;
 	int xx = x;
 	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
 
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": setting cursor pit: " << pit
-		<< " pos: " << pos
-		<< endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+		<< ": setting cursor pit: " << pit << " pos: " << pos);
 
 	text_->setCursor(cur, pit, pos, true, bound);
 	// remember new position.
@@ -1427,51 +1411,41 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 	Paragraph const & par = text_->paragraphs()[pit];
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": x: " << x
-		<< " y: " << y
-		<< "  pit: " << pit
-		<< endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+		<< ": x: " << x << " y: " << y << "  pit: " << pit);
+
 	InsetList::const_iterator iit = par.insetList().begin();
 	InsetList::const_iterator iend = par.insetList().end();
 	for (; iit != iend; ++iit) {
 		Inset * inset = iit->inset;
 
-		LYXERR(Debug::DEBUG)
-			<< BOOST_CURRENT_FUNCTION
-			<< ": examining inset " << inset << endl;
+		LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+			<< ": examining inset " << inset);
 
 		if (!bv_->coordCache().getInsets().has(inset)) {
-			LYXERR(Debug::DEBUG)
-				<< BOOST_CURRENT_FUNCTION
-				<< ": inset has no cached position" << endl;
+			LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+				<< ": inset has no cached position");
 			return 0;
 		}
 
 		Dimension const & dim = pm.insetDimension(inset);
 		Point p = bv_->coordCache().getInsets().xy(inset);
 
-		LYXERR(Debug::DEBUG)
-			<< BOOST_CURRENT_FUNCTION
+		LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
 			<< ": xo: " << p.x_ << "..." << p.x_ + dim.wid
-			<< " yo: " << p.y_ - dim.asc << "..." << p.y_ + dim.des
-			<< endl;
+			<< " yo: " << p.y_ - dim.asc << "..." << p.y_ + dim.des);
 
 		if (x >= p.x_
 			&& x <= p.x_ + dim.wid
 			&& y >= p.y_ - dim.asc
 			&& y <= p.y_ + dim.des) {
-			LYXERR(Debug::DEBUG)
-				<< BOOST_CURRENT_FUNCTION
-				<< ": Hit inset: " << inset << endl;
+			LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
+				<< ": Hit inset: " << inset);
 			return inset;
 		}
 	}
 
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
-		<< ": No inset hit. " << endl;
+	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << ": No inset hit. ");
 	return 0;
 }
 
@@ -1975,11 +1949,11 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING)) {
 			if (text_->isMainText(bv_->buffer()))
-				LYXERR(Debug::PAINTING) << "\n{" << inside <<
-				pi.full_repaint << row_has_changed << "}";
+				LYXERR(Debug::PAINTING, "\n{" << inside <<
+				pi.full_repaint << row_has_changed << "}");
 			else
-				LYXERR(Debug::PAINTING) << "[" << inside <<
-				pi.full_repaint << row_has_changed << "]";
+				LYXERR(Debug::PAINTING, "[" << inside <<
+				pi.full_repaint << row_has_changed << "]");
 		}
 
 		// Backup full_repaint status and force full repaint

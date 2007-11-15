@@ -69,8 +69,8 @@ ServerSocket::ServerSocket(LyXFunc * f, support::FileName const & addr)
 		boost::bind(&ServerSocket::serverCallback, this)
 		);
 
-	LYXERR(Debug::LYXSERVER) << "lyx: New server socket "
-				 << fd_ << ' ' << address_.absFilename() << endl;
+	LYXERR(Debug::LYXSERVER, "lyx: New server socket "
+				 << fd_ << ' ' << address_.absFilename());
 }
 
 
@@ -85,7 +85,7 @@ ServerSocket::~ServerSocket()
 			       << " IO error on closing: " << strerror(errno);
 	}
 	support::unlink(address_);
-	LYXERR(Debug::LYXSERVER) << "lyx: Server socket quitting" << endl;
+	LYXERR(Debug::LYXSERVER, "lyx: Server socket quitting");
 }
 
 
@@ -102,8 +102,7 @@ void ServerSocket::serverCallback()
 	int const client_fd = support::socktools::accept(fd_);
 
 	if (fd_ == -1) {
-		LYXERR(Debug::LYXSERVER) << "lyx: Failed to accept new client"
-					 << endl;
+		LYXERR(Debug::LYXSERVER, "lyx: Failed to accept new client");
 		return;
 	}
 
@@ -203,7 +202,7 @@ void ServerSocket::writeln(string const & line)
 LyXDataSocket::LyXDataSocket(int fd)
 	: fd_(fd), connected_(true)
 {
-	LYXERR(Debug::LYXSERVER) << "lyx: New data socket " << fd_ << endl;
+	LYXERR(Debug::LYXSERVER, "lyx: New data socket " << fd_);
 }
 
 
@@ -214,8 +213,7 @@ LyXDataSocket::~LyXDataSocket()
 		       << " IO error on closing: " << strerror(errno);
 
 	theApp()->unregisterSocketCallback(fd_);
-	LYXERR(Debug::LYXSERVER) << "lyx: Data socket " << fd_ << " quitting."
-				 << endl;
+	LYXERR(Debug::LYXSERVER, "lyx: Data socket " << fd_ << " quitting.");
 }
 
 
@@ -240,8 +238,8 @@ bool LyXDataSocket::readln(string & line)
 	// Error conditions. The buffer must still be
 	// processed for lines read
 	if (count == 0) { // EOF -- connection closed
-		LYXERR(Debug::LYXSERVER) << "lyx: Data socket " << fd_
-					 << ": connection closed." << endl;
+		LYXERR(Debug::LYXSERVER, "lyx: Data socket " << fd_
+					 << ": connection closed.");
 		connected_ = false;
 	} else if ((count == -1) && (errno != EAGAIN)) { // IO error
 		lyxerr << "lyx: Data socket " << fd_
@@ -252,8 +250,8 @@ bool LyXDataSocket::readln(string & line)
 	// Cut a line from buffer
 	string::size_type pos = buffer_.find('\n');
 	if (pos == string::npos) {
-		LYXERR(Debug::LYXSERVER) << "lyx: Data socket " << fd_
-					 << ": line not completed." << endl;
+		LYXERR(Debug::LYXSERVER, "lyx: Data socket " << fd_
+					 << ": line not completed.");
 		return false; // No complete line stored
 	}
 	line = buffer_.substr(0, pos);

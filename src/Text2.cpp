@@ -233,7 +233,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	LayoutPtr const & lyxlayout = params.getTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
-		LYXERR(Debug::DEBUG) << "setting layout " << to_utf8(layout) << endl;
+		LYXERR(Debug::DEBUG, "setting layout " << to_utf8(layout));
 		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));
 		lyx::dispatch(FuncRequest(LFUN_LINE_END_SELECT));
 		lyx::dispatch(FuncRequest(LFUN_CUT));
@@ -747,7 +747,7 @@ void Text::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		Cursor & old, bool & need_anchor_change)
 {
-	//LYXERR(Debug::DEBUG) << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
+	//LYXERR(Debug::DEBUG, "DEPM: cur:\n" << cur << "old:\n" << old);
 
 	Paragraph & oldpar = old.paragraph();
 

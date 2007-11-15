@@ -94,9 +94,8 @@ bool math_font_available(docstring & name)
 		return true;
 	}
 
-	LYXERR(Debug::MATHED)
-		<< "font " << to_utf8(name) << " not available and I can't fake it"
-		<< endl;
+	LYXERR(Debug::MATHED,
+		"font " << to_utf8(name) << " not available and I can't fake it");
 	return false;
 }
 
@@ -104,7 +103,7 @@ bool math_font_available(docstring & name)
 void initSymbols()
 {
 	support::FileName const filename = libFileSearch(string(), "symbols");
-	LYXERR(Debug::MATHED) << "read symbols from " << filename << endl;
+	LYXERR(Debug::MATHED, "read symbols from " << filename);
 	if (filename.empty()) {
 		lyxerr << "Could not find symbols file" << endl;
 		return;
@@ -158,9 +157,9 @@ void initSymbols()
 		if (is)
 			is >> tmp.requires;
 		else {
-			LYXERR(Debug::MATHED) << "skipping line '" << line << '\'' << endl;
-			LYXERR(Debug::MATHED)
-				<< to_utf8(tmp.name) << ' ' << to_utf8(tmp.inset) << ' ' << to_utf8(tmp.extra) << endl;
+			LYXERR(Debug::MATHED, "skipping line '" << line << "'\n"
+				<< to_utf8(tmp.name) << ' ' << to_utf8(tmp.inset) << ' '
+				<< to_utf8(tmp.extra));
 			continue;
 		}
 
@@ -180,44 +179,40 @@ void initSymbols()
 			docstring symbol_font = from_ascii("lyxsymbol");
 
 			if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra == "special") {
-				LYXERR(Debug::MATHED) << "symbol abuse for " << to_utf8(tmp.name) << endl;
+				LYXERR(Debug::MATHED, "symbol abuse for " << to_utf8(tmp.name));
 				tmp.draw = tmp.name;
 			} else if (math_font_available(tmp.inset)) {
-				LYXERR(Debug::MATHED) << "symbol available for " << to_utf8(tmp.name) << endl;
+				LYXERR(Debug::MATHED, "symbol available for " << to_utf8(tmp.name));
 				tmp.draw.push_back(char_type(charid));
 			} else if (fallbackid && math_font_available(symbol_font)) {
 				if (tmp.inset == "cmex")
 					tmp.inset = from_ascii("lyxsymbol");
 				else
 					tmp.inset = from_ascii("lyxboldsymbol");
-				LYXERR(Debug::MATHED) << "symbol fallback for " << to_utf8(tmp.name) << endl;
+				LYXERR(Debug::MATHED, "symbol fallback for " << to_utf8(tmp.name));
 				tmp.draw.push_back(char_type(fallbackid));
 			} else {
-				LYXERR(Debug::MATHED) << "faking " << to_utf8(tmp.name) << endl;
+				LYXERR(Debug::MATHED, "faking " << to_utf8(tmp.name));
 				tmp.draw = tmp.name;
 				tmp.inset = from_ascii("lyxtex");
 			}
 		} else {
 			// it's a proper inset
-			LYXERR(Debug::MATHED) << "inset " << to_utf8(tmp.inset)
-					      << " used for " << to_utf8(tmp.name)
-					      << endl;
+			LYXERR(Debug::MATHED, "inset " << to_utf8(tmp.inset)
+					      << " used for " << to_utf8(tmp.name));
 		}
 
 		if (theWordList.find(tmp.name) != theWordList.end())
-			LYXERR(Debug::MATHED)
-				<< "readSymbols: inset " << to_utf8(tmp.name)
-				<< " already exists." << endl;
+			LYXERR(Debug::MATHED, "readSymbols: inset " << to_utf8(tmp.name)
+				<< " already exists.");
 		else
 			theWordList[tmp.name] = tmp;
 
-		LYXERR(Debug::MATHED)
-			<< "read symbol '" << to_utf8(tmp.name)
+		LYXERR(Debug::MATHED, "read symbol '" << to_utf8(tmp.name)
 			<< "  inset: " << to_utf8(tmp.inset)
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << to_utf8(tmp.extra)
-			<< "  requires: " << to_utf8(tmp.requires)
-			<< '\'' << endl;
+			<< "  requires: " << to_utf8(tmp.requires) << '\'');
 	}
 	docstring tmp = from_ascii("cmm");
 	docstring tmp2 = from_ascii("cmsy");

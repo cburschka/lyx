@@ -42,17 +42,17 @@ GuiMenubar::GuiMenubar(LyXView * view, MenuBackend & mbe)
 {
 	macxMenuBarInit();
 
-	LYXERR(Debug::GUI) << "populating menu bar" << to_utf8(menubackend_.getMenubar().name()) << endl;
+	LYXERR(Debug::GUI, "populating menu bar" << to_utf8(menubackend_.getMenubar().name()));
 
 	if (menubackend_.getMenubar().size() == 0) {
-		LYXERR(Debug::GUI) << "\tERROR: empty menu bar"
-			<< to_utf8(menubackend_.getMenubar().name()) << endl;
+		LYXERR(Debug::GUI, "\tERROR: empty menu bar"
+			<< to_utf8(menubackend_.getMenubar().name()));
 		return;
 		//			continue;
 	}
 	else {
-		LYXERR(Debug::GUI) << "menu bar entries "
-			<< menubackend_.getMenubar().size();
+		LYXERR(Debug::GUI, "menu bar entries "
+			<< menubackend_.getMenubar().size());
 	}
 
 	Menu menu;
@@ -64,18 +64,17 @@ GuiMenubar::GuiMenubar(LyXView * view, MenuBackend & mbe)
 	for (; m != end; ++m) {
 
 		if (m->kind() != MenuItem::Submenu) {
-			LYXERR(Debug::GUI) << "\tERROR: not a submenu "
-				<< to_utf8(m->label()) << endl;
+			LYXERR(Debug::GUI, "\tERROR: not a submenu " << to_utf8(m->label()));
 			continue;
 		}
 
-		LYXERR(Debug::GUI) << "menu bar item " << to_utf8(m->label())
-			<< " is a submenu named " << to_utf8(m->submenuname()) << endl;
+		LYXERR(Debug::GUI, "menu bar item " << to_utf8(m->label())
+			<< " is a submenu named " << to_utf8(m->submenuname()));
 
 		docstring name = m->submenuname();
 		if (!menubackend_.hasMenu(name)) {
-			LYXERR(Debug::GUI) << "\tERROR: " << to_utf8(name)
-				<< " submenu has no menu!" << endl;
+			LYXERR(Debug::GUI, "\tERROR: " << to_utf8(name)
+				<< " submenu has no menu!");
 			continue;
 		}
 

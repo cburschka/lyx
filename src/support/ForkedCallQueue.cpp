@@ -63,20 +63,21 @@ void ForkedCallQueue::callNext()
 
 void ForkedCallQueue::callback(pid_t, int)
 {
-	if (callQueue_.empty()) {
+	if (callQueue_.empty())
 		stopCaller();
-	} else {
+	else
 		callNext();
-	}
 }
 
-ForkedCallQueue::ForkedCallQueue() : running_(false)
+
+ForkedCallQueue::ForkedCallQueue()
+	: running_(false)
 {}
 
 
 void ForkedCallQueue::startCaller()
 {
-	LYXERR(Debug::GRAPHICS) << "ForkedCallQueue: waking up" << endl;
+	LYXERR(Debug::GRAPHICS, "ForkedCallQueue: waking up");
 	running_ = true ;
 	callNext();
 }
@@ -85,8 +86,7 @@ void ForkedCallQueue::startCaller()
 void ForkedCallQueue::stopCaller()
 {
 	running_ = false ;
-	LYXERR(Debug::GRAPHICS) << "ForkedCallQueue: I'm going to sleep"
-				<< endl;
+	LYXERR(Debug::GRAPHICS, "ForkedCallQueue: I'm going to sleep");
 }
 
 

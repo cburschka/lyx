@@ -51,8 +51,7 @@ public:
 bool ModuleList::load()
 {
 	support::FileName const real_file = libFileSearch("", "lyxmodules.lst");
-	LYXERR(Debug::TCLASS) << "Reading modules from `"
-			<< real_file << '\'' << endl;
+	LYXERR(Debug::TCLASS, "Reading modules from `" << real_file << '\'');
 
 	if (real_file.empty()) {
 		lyxerr << "ModuleList::load(): unable to find "
@@ -81,29 +80,29 @@ bool ModuleList::load()
 
 	bool finished = false;
 	// Parse modules files
-	LYXERR(Debug::TCLASS) << "Starting parsing of lyxmodules.lst" << endl;
+	LYXERR(Debug::TCLASS, "Starting parsing of lyxmodules.lst");
 	while (lex.isOK() && !finished) {
-		LYXERR(Debug::TCLASS) << "\tline by line" << endl;
+		LYXERR(Debug::TCLASS, "\tline by line");
 		switch (lex.lex()) {
 		case Lexer::LEX_FEOF:
 			finished = true;
 			break;
 		default:
 			string const modName = lex.getString();
-			LYXERR(Debug::TCLASS) << "Module name: " << modName << endl;
+			LYXERR(Debug::TCLASS, "Module name: " << modName);
 			if (!lex.next())
 				break;
 			string const fname = lex.getString();
-			LYXERR(Debug::TCLASS) << "Filename: " << fname << endl;
+			LYXERR(Debug::TCLASS, "Filename: " << fname);
 			if (!lex.next())
 				break;
 			string const desc = lex.getString();
-			LYXERR(Debug::TCLASS) << "Description: " << desc << endl;
+			LYXERR(Debug::TCLASS, "Description: " << desc);
 			//FIXME Add packages
 			if (!lex.next())
 				break;
 			string packages = lex.getString();
-			LYXERR(Debug::TCLASS) << "Packages: " << packages << endl;
+			LYXERR(Debug::TCLASS, "Packages: " << packages);
 			vector<string> pkgs;
 			while (!packages.empty()) {
 				string p;
@@ -116,7 +115,7 @@ bool ModuleList::load()
 		} // end switch
 	} //end while
 	
-	LYXERR(Debug::TCLASS) << "End of parsing of lyxmodules.lst" << endl;
+	LYXERR(Debug::TCLASS, "End of parsing of lyxmodules.lst");
 
 	if (!moduleList.empty())
 		std::sort(moduleList.begin(), moduleList.end(), ModuleSorter());

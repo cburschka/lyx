@@ -193,10 +193,8 @@ string external_path(string const & p)
 {
 	string const dos_path = subst(p, "/", "\\");
 
-	LYXERR(Debug::LATEX)
-		<< "<Win32 path correction> ["
-		<< p << "]->>["
-		<< dos_path << ']' << endl;
+	LYXERR(Debug::LATEX, "<Win32 path correction> ["
+		<< p << "]->>[" << dos_path << ']');
 	return dos_path;
 }
 
@@ -249,10 +247,8 @@ string latex_path(string const & p)
 		string const drive = p.substr(0, 2);
 		string const cygprefix = cygdrive + "/" + drive.substr(0, 1);
 		string const cygpath = subst(subst(p, '\\', '/'), drive, cygprefix);
-		LYXERR(Debug::LATEX)
-			<< "<Path correction for LaTeX> ["
-			<< p << "]->>["
-			<< cygpath << ']' << endl;
+		LYXERR(Debug::LATEX, << "<Path correction for LaTeX> ["
+			<< p << "]->>[" << cygpath << ']');
 		return cygpath;
 	}
 	return subst(p, '\\', '/');

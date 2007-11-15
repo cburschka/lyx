@@ -287,7 +287,7 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 
 		// Get the original Bounding Box from the file
 		string const tmp = readBB_from_PSFile(filename);
-		LYXERR(Debug::GRAPHICS) << "BB_from_File: " << tmp << std::endl;
+		LYXERR(Debug::GRAPHICS, "BB_from_File: " << tmp);
 		if (!tmp.empty()) {
 			// FIXME: why not convert to unsigned int? (Lgb)
 			unsigned int const bb_orig_xl = convert<int>(token(tmp, ' ', 0));

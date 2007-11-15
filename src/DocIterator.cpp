@@ -429,22 +429,22 @@ bool DocIterator::fixIfBroken()
 		if (&cs.inset() != inset) {
 			// the whole slice is wrong, chop off this as well
 			--i;
-			LYXERR(Debug::DEBUG) << "fixIfBroken(): inset changed" << endl;
+			LYXERR(Debug::DEBUG, "fixIfBroken(): inset changed");
 			break;
 		} else if (cs.idx() > cs.lastidx()) {
 			cs.idx() = cs.lastidx();
 			cs.pit() = cs.lastpit();
 			cs.pos() = cs.lastpos();
-			LYXERR(Debug::DEBUG) << "fixIfBroken(): idx fixed" << endl;
+			LYXERR(Debug::DEBUG, "fixIfBroken(): idx fixed");
 			break;
 		} else if (cs.pit() > cs.lastpit()) {
 			cs.pit() = cs.lastpit();
 			cs.pos() = cs.lastpos();
-			LYXERR(Debug::DEBUG) << "fixIfBroken(): pit fixed" << endl;
+			LYXERR(Debug::DEBUG, "fixIfBroken(): pit fixed");
 			break;
 		} else if (cs.pos() > cs.lastpos()) {
 			cs.pos() = cs.lastpos();
-			LYXERR(Debug::DEBUG) << "fixIfBroken(): pos fixed" << endl;
+			LYXERR(Debug::DEBUG, "fixIfBroken(): pos fixed");
 			break;
 		} else if (i != n - 1 && cs.pos() != cs.lastpos()) {
 			// get inset which is supposed to be in the next slice
@@ -462,7 +462,7 @@ bool DocIterator::fixIfBroken()
 	// Did we make it through the whole slice stack? Otherwise there
 	// was a problem at slice i, and we have to chop off above
 	if (i < n) {
-		LYXERR(Debug::DEBUG) << "fixIfBroken(): cursor chopped at " << i << endl;
+		LYXERR(Debug::DEBUG, "fixIfBroken(): cursor chopped at " << i);
 		resize(i + 1);
 		return true;
 	} else

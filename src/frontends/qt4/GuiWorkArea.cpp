@@ -247,10 +247,9 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	// PageStep only depends on the viewport height.
 	verticalScrollBar()->setPageStep(viewport()->height());
 
-	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::GUI, BOOST_CURRENT_FUNCTION
 		<< "\n viewport width\t" << viewport()->width()
-		<< "\n viewport height\t" << viewport()->height()
-		<< endl;
+		<< "\n viewport height\t" << viewport()->height());
 
 	// Enables input methods for asian languages.
 	// Must be set when creating custom text editing widgets.
@@ -323,7 +322,7 @@ void GuiWorkArea::redraw()
 	
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
 
-	LYXERR(Debug::WORKAREA) << "WorkArea::redraw screen" << endl;
+	LYXERR(Debug::WORKAREA, "WorkArea::redraw screen");
 
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : viewport()->height();
@@ -331,9 +330,8 @@ void GuiWorkArea::redraw()
 	updateScreen();
 	update(0, ymin, viewport()->width(), ymax - ymin);
 
-	//LYXERR(Debug::WORKAREA)
-	//<< "  ymin = " << ymin << "  width() = " << width()
-//		<< "  ymax-ymin = " << ymax-ymin << std::endl;
+	//LYXERR(Debug::WORKAREA, "  ymin = " << ymin << "  width() = " << width()
+	//		<< "  ymax-ymin = " << ymax-ymin);
 
 	if (lyxerr.debugging(Debug::WORKAREA))
 		buffer_view_->coordCache().dump();
@@ -670,20 +668,18 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 #ifdef Q_WS_X11
 	if (XEventsQueued(QX11Info::display(), 0) > 1 && ev->isAutoRepeat() 
 			&& (Qt::Key_PageDown || Qt::Key_PageUp)) {
-		LYXERR(Debug::KEY)	
-			<< BOOST_CURRENT_FUNCTION << endl
-			<< "system is busy: scroll key event ignored" << endl;
+		LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
+			<< "\nsystem is busy: scroll key event ignored");
 		ev->ignore();
 		return;
 	}
 #endif
 
-	LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
 		<< " count=" << ev->count()
 		<< " text=" << fromqstr(ev->text())
 		<< " isAutoRepeat=" << ev->isAutoRepeat()
-		<< " key=" << ev->key()
-		<< endl;
+		<< " key=" << ev->key());
 
 	KeySymbol sym;
 	setKeySymbol(&sym, ev);
@@ -791,10 +787,9 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	if (!commit_string.isEmpty()) {
 
-		LYXERR(Debug::KEY) << BOOST_CURRENT_FUNCTION
+		LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
 			<< " preeditString =" << fromqstr(e->preeditString())
-			<< " commitString  =" << fromqstr(e->commitString())
-			<< endl;
+			<< " commitString  =" << fromqstr(e->commitString()));
 
 		int key = 0;
 
@@ -1107,8 +1102,8 @@ void TabWorkArea::on_currentTabChanged(int i)
 	///
 	currentWorkAreaChanged(wa);
 
-	LYXERR(Debug::GUI) << "currentTabChanged " << i
-		<< "File" << bv.buffer().absFileName() << endl;
+	LYXERR(Debug::GUI, "currentTabChanged " << i
+		<< "File" << bv.buffer().absFileName());
 }
 
 

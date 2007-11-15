@@ -191,10 +191,8 @@ string latex_path(string const & p)
 
 	if (windows_style_tex_paths_ && is_absolute_path(p)) {
 		string dos_path = convert_path(p, PathStyle(windows));
-		LYXERR(Debug::LATEX)
-			<< "<Path correction for LaTeX> ["
-			<< p << "]->>["
-			<< dos_path << ']' << endl;
+		LYXERR(Debug::LATEX, "<Path correction for LaTeX> ["
+			<< p << "]->>[" << dos_path << ']');
 		return dos_path;
 	}
 

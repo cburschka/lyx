@@ -1831,7 +1831,7 @@ bool Paragraph::latex(Buffer const & buf,
 				odocstream & os, TexRow & texrow,
 				OutputParams const & runparams) const
 {
-	LYXERR(Debug::LATEX) << "SimpleTeXOnePar...     " << this << endl;
+	LYXERR(Debug::LATEX, "SimpleTeXOnePar...     " << this);
 
 	bool return_value = false;
 
@@ -2076,7 +2076,7 @@ bool Paragraph::latex(Buffer const & buf,
 					  runparams.moving_arg);
 	}
 
-	LYXERR(Debug::LATEX) << "SimpleTeXOnePar...done " << this << endl;
+	LYXERR(Debug::LATEX, "SimpleTeXOnePar...done " << this);
 	return return_value;
 }
 

@@ -414,8 +414,8 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	font_scaling_factor_ = 0.01 * lyxrc.dpi * lyxrc.zoom *
 		convert<double>(lyxrc.preview_scale_factor);
 
-	LYXERR(Debug::GRAPHICS) << "The font scaling factor is "
-				<< font_scaling_factor_ << endl;
+	LYXERR(Debug::GRAPHICS, "The font scaling factor is "
+				<< font_scaling_factor_);
 
 	if (!pconverter_)
 		pconverter_ = setConverter();
@@ -494,7 +494,7 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 	if (snippet.empty())
 		return;
 
-	LYXERR(Debug::GRAPHICS) << "adding snippet:\n" << snippet << endl;
+	LYXERR(Debug::GRAPHICS, "adding snippet:\n" << snippet);
 
 	pending_.push_back(snippet);
 }
@@ -556,7 +556,7 @@ void PreviewLoader::Impl::startLoading()
 	if (!buffer_.isFullyLoaded())
 		return;
 
-	LYXERR(Debug::GRAPHICS) << "PreviewLoader::startLoading()" << endl;
+	LYXERR(Debug::GRAPHICS, "PreviewLoader::startLoading()");
 
 	// As used by the LaTeX file and by the resulting image files
 	string const directory = buffer_.temppath();
@@ -584,9 +584,8 @@ void PreviewLoader::Impl::startLoading()
 		return;
 
 	if (!of) {
-		LYXERR(Debug::GRAPHICS) << "PreviewLoader::startLoading()\n"
-					<< "Unable to create LaTeX file\n"
-					<< latexfile << endl;
+		LYXERR(Debug::GRAPHICS, "PreviewLoader::startLoading()\n"
+					<< "Unable to create LaTeX file\n" << latexfile);
 		return;
 	}
 	of << "\\batchmode\n";
@@ -598,9 +597,8 @@ void PreviewLoader::Impl::startLoading()
 	of << "\n\\end{document}\n";
 	of.close();
 	if (of.fail()) {
-		LYXERR(Debug::GRAPHICS)  << "PreviewLoader::startLoading()\n"
-					 << "File was not closed properly."
-					 << endl;
+		LYXERR(Debug::GRAPHICS, "PreviewLoader::startLoading()\n"
+					 << "File was not closed properly.");
 		return;
 	}
 
@@ -623,9 +621,8 @@ void PreviewLoader::Impl::startLoading()
 	int ret = call.startscript(command, convert_ptr);
 
 	if (ret != 0) {
-		LYXERR(Debug::GRAPHICS) << "PreviewLoader::startLoading()\n"
-					<< "Unable to start process\n"
-					<< command << endl;
+		LYXERR(Debug::GRAPHICS, "PreviewLoader::startLoading()\n"
+					<< "Unable to start process\n" << command);
 		return;
 	}
 
@@ -648,9 +645,9 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 
 	string const command = git->second.command;
 	string const status = retval > 0 ? "failed" : "succeeded";
-	LYXERR(Debug::GRAPHICS) << "PreviewLoader::finishedInProgress("
+	LYXERR(Debug::GRAPHICS, "PreviewLoader::finishedInProgress("
 				<< retval << "): processing " << status
-				<< " for " << command << endl;
+				<< " for " << command);
 	if (retval > 0)
 		return;
 

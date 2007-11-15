@@ -37,9 +37,7 @@ public:
 		ANY = 0xffffffff
 	};
 
-	static bool match(type a, type b) {
-		return (a & b);
-	}
+	static bool match(type a, type b) { return (a & b); }
 
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
@@ -72,7 +70,9 @@ extern LyXErr lyxerr;
 
 } // namespace lyx
 
-#define LYXERR(type) if (!lyx::lyxerr.debugging(type)) ; else lyx::lyxerr
+#define LYXERR(type, msg) \
+	do { if (!lyx::lyxerr.debugging(type)) {} \
+       else lyx::lyxerr << msg  << std::endl; } while (0)
 
 
 #endif

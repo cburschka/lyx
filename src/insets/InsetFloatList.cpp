@@ -90,12 +90,14 @@ void InsetFloatList::read(Buffer const & buf, Lexer & lex)
 
 	if (lex.eatLine()) {
 		setParam("type", lex.getDocString());
-		LYXERR(Debug::INSETS) << "FloatList::float_type: "
-				      << to_ascii(getParam("type")) << endl;
+		LYXERR(Debug::INSETS, "FloatList::float_type: "
+				      << to_ascii(getParam("type")));
 		if (!floats.typeExist(to_ascii(getParam("type"))))
 			lex.printError("InsetFloatList: Unknown float type: `$$Token'");
-	} else
+	} else {
 		lex.printError("InsetFloatList: Parse error: `$$Token'");
+	}
+
 	while (lex.isOK()) {
 		lex.next();
 		token = lex.getString();

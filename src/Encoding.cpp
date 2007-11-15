@@ -506,11 +506,9 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		if (!info.preamble.empty())
 			info.feature = info.preamble[0] != '\\';
 
-		LYXERR(Debug::INFO)
-			<< "Read unicode symbol " << symbol << " '"
+		LYXERR(Debug::INFO, "Read unicode symbol " << symbol << " '"
 			<< to_utf8(info.command) << "' '" << info.preamble
-			<< "' " << info.combining << ' ' << info.feature
-			<< endl;
+			<< "' " << info.combining << ' ' << info.feature);
 		unicodesymbols[symbol] = info;
 	}
 
@@ -564,7 +562,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 					       "Unknown package: `$$Token'");
                         }
                         
-			LYXERR(Debug::INFO) << "Reading encoding " << name << endl;
+			LYXERR(Debug::INFO, "Reading encoding " << name);
 			encodinglist[name] = Encoding(name, latexname,
 						      iconvname, fixedwidth,
 						      package);

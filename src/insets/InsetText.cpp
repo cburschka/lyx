@@ -226,9 +226,8 @@ Inset * InsetText::editXY(Cursor & cur, int x, int y)
 
 void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LYXERR(Debug::ACTION) << "InsetText::doDispatch()"
-			     << " [ cmd.action = "
-			     << cmd.action << ']' << endl;
+	LYXERR(Debug::ACTION, "InsetText::doDispatch()"
+		<< " [ cmd.action = " << cmd.action << ']');
 	text_.dispatch(cur, cmd);
 }
 

@@ -252,7 +252,7 @@ bool FileName::isWritable() const
 
 bool FileName::isDirWritable() const
 {
-	LYXERR(Debug::FILES) << "isDirWriteable: " << *this << std::endl;
+	LYXERR(Debug::FILES, "isDirWriteable: " << *this);
 
 	FileName const tmpfl(tempName(*this, "lyxwritetest"));
 
@@ -374,10 +374,8 @@ string FileName::guessFormatFromContents() const
 	bool firstLine = true;
 	while ((count++ < max_count) && format.empty()) {
 		if (ifs.eof()) {
-			LYXERR(Debug::GRAPHICS)
-				<< "filetools(getFormatFromContents)\n"
-				<< "\tFile type not recognised before EOF!"
-				<< endl;
+			LYXERR(Debug::GRAPHICS, "filetools(getFormatFromContents)\n"
+				<< "\tFile type not recognised before EOF!");
 			break;
 		}
 
@@ -485,14 +483,12 @@ string FileName::guessFormatFromContents() const
 	}
 
 	if (!format.empty()) {
-		LYXERR(Debug::GRAPHICS)
-			<< "Recognised Fileformat: " << format << endl;
+		LYXERR(Debug::GRAPHICS, "Recognised Fileformat: " << format);
 		return format;
 	}
 
-	LYXERR(Debug::GRAPHICS)
-		<< "filetools(getFormatFromContents)\n"
-		<< "\tCouldn't find a known format!\n";
+	LYXERR(Debug::GRAPHICS, "filetools(getFormatFromContents)\n"
+		<< "\tCouldn't find a known format!");
 	return string();
 }
 

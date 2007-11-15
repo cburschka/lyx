@@ -358,12 +358,11 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// causes screen update(), I reset last_inset_ to avoid such a problem.
 	d->last_inset_ = 0;
 	// This is close to a hot-path.
-	LYXERR(Debug::DEBUG)
-		<< BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::DEBUG, "BufferView::processUpdateFlags()"
 		<< "[fitcursor = " << (flags & Update::FitCursor)
 		<< ", forceupdate = " << (flags & Update::Force)
 		<< ", singlepar = " << (flags & Update::SinglePar)
-		<< "]  buffer: " << &buffer_ << endl;
+		<< "]  buffer: " << &buffer_);
 
 	// Update macro store
 	if (!(cursor().inMathed() && cursor().inMacroMode()))
@@ -443,11 +442,10 @@ void BufferView::updateScrollbar()
 		d->offset_ref_ = 0;
 	}
 
-	LYXERR(Debug::GUI)
-		<< BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::GUI, BOOST_CURRENT_FUNCTION
 		<< " Updating scrollbar: height: " << t.paragraphs().size()
 		<< " curr par: " << d->cursor_.bottom().pit()
-		<< " default height " << defaultRowHeight() << endl;
+		<< " default height " << defaultRowHeight());
 
 	// It would be better to fix the scrollbar to understand
 	// values in [0..1] and divide everything by wh
@@ -496,8 +494,7 @@ ScrollbarParameters const & BufferView::scrollbarParameters() const
 
 void BufferView::scrollDocView(int value)
 {
-	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
-			   << "[ value = " << value << "]" << endl;
+	LYXERR(Debug::GUI, BOOST_CURRENT_FUNCTION << "[ value = " << value << "]");
 
 	Text & t = buffer_.text();
 	TextMetrics & tm = d->text_metrics_[&t];
@@ -858,13 +855,12 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 	//       << [ cmd = " << cmd << "]" << endl;
 
 	// Make sure that the cached BufferView is correct.
-	LYXERR(Debug::ACTION) << BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::ACTION, BOOST_CURRENT_FUNCTION
 		<< " action[" << cmd.action << ']'
 		<< " arg[" << to_utf8(cmd.argument()) << ']'
 		<< " x[" << cmd.x << ']'
 		<< " y[" << cmd.y << ']'
-		<< " button[" << cmd.button() << ']'
-		<< endl;
+		<< " button[" << cmd.button() << ']');
 
 	Cursor & cur = d->cursor_;
 	// Default Update flags.
@@ -939,14 +935,11 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 			ParIterator par = b->getParFromID(id);
 			if (par == b->par_iterator_end()) {
-				LYXERR(Debug::INFO)
-					<< "No matching paragraph found! ["
-					<< id << "]." << endl;
+				LYXERR(Debug::INFO, "No matching paragraph found! [" << id << "].");
 			} else {
-				LYXERR(Debug::INFO)
-					<< "Paragraph " << par->id()
+				LYXERR(Debug::INFO, "Paragraph " << par->id()
 					<< " found in buffer `"
-					<< b->absFileName() << "'." << endl;
+					<< b->absFileName() << "'.");
 
 				if (b == &buffer_) {
 					// Set the cursor
@@ -1354,10 +1347,10 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		// Reinitialize anchor to first pit.
 		d->anchor_ref_ = firstpm.first;
 		d->offset_ref_ = -y1;
-		LYXERR(Debug::PAINTING)
-			<< "Mouse hover detected at: (" << cmd.x << ", " << cmd.y << ")"
+		LYXERR(Debug::PAINTING,
+			 "Mouse hover detected at: (" << cmd.x << ", " << cmd.y << ")"
 			<< "\nTriggering redraw: y1: " << y1 << " y2: " << y2
-			<< " pit1: " << firstpm.first << " pit2: " << lastpm.first << endl;
+			<< " pit1: " << firstpm.first << " pit2: " << lastpm.first);
 
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
@@ -1664,13 +1657,11 @@ bool BufferView::singleParUpdate()
 	int y2 = pm.position() + pm.descent();
 	d->metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
 		SingleParUpdate, buftext.paragraphs().size());
-	LYXERR(Debug::PAINTING)
-		<< BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::PAINTING, BOOST_CURRENT_FUNCTION
 		<< "\ny1: " << y1
 		<< " y2: " << y2
 		<< " pit: " << bottom_pit
-		<< " singlepar: 1"
-		<< endl;
+		<< " singlepar: 1");
 	return true;
 }
 
@@ -1742,21 +1733,19 @@ void BufferView::updateMetrics()
 	// Take care of descent of last line
 	y2 += tm.parMetrics(pit2).descent();
 
-	LYXERR(Debug::PAINTING)
-		<< BOOST_CURRENT_FUNCTION
+	LYXERR(Debug::PAINTING, BOOST_CURRENT_FUNCTION
 		<< "\n y1: " << y1
 		<< " y2: " << y2
 		<< " pit1: " << pit1
 		<< " pit2: " << pit2
 		<< " npit: " << npit
-		<< " singlepar: 0"
-		<< endl;
+		<< " singlepar: 0");
 
 	d->metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2,
 		FullScreenUpdate, npit);
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
-		LYXERR(Debug::WORKAREA) << "BufferView::updateMetrics" << endl;
+		LYXERR(Debug::WORKAREA, "BufferView::updateMetrics");
 		d->coord_cache_.dump();
 	}
 }
@@ -1936,7 +1925,7 @@ Point BufferView::getPos(DocIterator const & dit, bool boundary) const
 
 void BufferView::draw(frontend::Painter & pain)
 {
-	LYXERR(Debug::PAINTING) << "\t\t*** START DRAWING ***" << endl;
+	LYXERR(Debug::PAINTING, "\t\t*** START DRAWING ***");
 	Text & text = buffer_.text();
 	TextMetrics const & tm = d->text_metrics_[&text];
 	int const y = d->metrics_info_.y1 
@@ -1986,7 +1975,7 @@ void BufferView::draw(frontend::Painter & pain)
 		break;
 	}
 
-	LYXERR(Debug::PAINTING) << "\n\t\t*** END DRAWING  ***" << endl;
+	LYXERR(Debug::PAINTING, "\n\t\t*** END DRAWING  ***");
 }
 
 

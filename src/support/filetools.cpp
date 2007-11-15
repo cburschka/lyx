@@ -198,9 +198,8 @@ vector<FileName> const dirList(FileName const & dir, string const & ext)
 	vector<FileName> dirlist;
 
 	if (!(dir.exists() && dir.isDirectory())) {
-		LYXERR(Debug::FILES)
-			<< "Directory \"" << dir
-			<< "\" does not exist to DirList." << endl;
+		LYXERR(Debug::FILES, "Directory \"" << dir
+			<< "\" does not exist to DirList.");
 		return dirlist;
 	}
 
@@ -354,9 +353,8 @@ string const libScriptSearch(string const & command_in, quote_style style)
 
 static FileName createTmpDir(FileName const & tempdir, string const & mask)
 {
-	LYXERR(Debug::FILES)
-		<< "createTmpDir: tempdir=`" << tempdir << "'\n"
-		<< "createTmpDir:    mask=`" << mask << '\'' << endl;
+	LYXERR(Debug::FILES, "createTmpDir: tempdir=`" << tempdir << "'\n"
+		<< "createTmpDir:    mask=`" << mask << '\'');
 
 	FileName const tmpfl(tempName(tempdir, mask));
 	// lyx::tempName actually creates a file to make sure that it
@@ -890,9 +888,8 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 
 	cmd_ret const c = runCommand(kpsecmd);
 
-	LYXERR(Debug::LATEX) << "kpse status = " << c.first << '\n'
-		 << "kpse result = `" << rtrim(c.second, "\n\r")
-		 << '\'' << endl;
+	LYXERR(Debug::LATEX, "kpse status = " << c.first << '\n'
+		 << "kpse result = `" << rtrim(c.second, "\n\r") << '\'');
 	if (c.first != -1)
 		return FileName(os::internal_path(rtrim(to_utf8(from_filesystem8bit(c.second)),
 							"\n\r")));
@@ -916,8 +913,7 @@ void removeAutosaveFile(string const & filename)
 void readBB_lyxerrMessage(FileName const & file, bool & zipped,
 	string const & message)
 {
-	LYXERR(Debug::GRAPHICS) << "[readBB_from_PSFile] "
-		<< message << std::endl;
+	LYXERR(Debug::GRAPHICS, "[readBB_from_PSFile] " << message);
 	// FIXME: Why is this func deleting a file? (Lgb)
 	if (zipped)
 		unlink(file);

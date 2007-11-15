@@ -227,10 +227,8 @@ void InsetMathGrid::halign(docstring const & hh)
 				colinfo_[col].lines_ = std::count(
 					colinfo_[col].special_.begin(),
 					colinfo_[col].special_.end(), '|');
-				LYXERR(Debug::MATHED)
-					<< "special column separator: `"
-					<< to_utf8(colinfo_[col].special_)
-					<< '\'' << endl;
+				LYXERR(Debug::MATHED, "special column separator: `"
+					<< to_utf8(colinfo_[col].special_) << '\'');
 				++col;
 				colinfo_[col].lines_ = 0;
 				colinfo_[col].special_.clear();
@@ -246,10 +244,8 @@ void InsetMathGrid::halign(docstring const & hh)
 				colinfo_[col].lines_ = std::count(
 						colinfo_[col].special_.begin(),
 						colinfo_[col].special_.end(), '|');
-				LYXERR(Debug::MATHED)
-					<< "special column separator: `"
-					<< to_utf8(colinfo_[col].special_)
-					<< '\'' << endl;
+				LYXERR(Debug::MATHED, "special column separator: `"
+					<< to_utf8(colinfo_[col].special_) << '\'');
 			}
 			++col;
 			colinfo_[col].lines_ = 0;

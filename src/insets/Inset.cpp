@@ -203,16 +203,13 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 
 void Inset::edit(Cursor &, bool)
 {
-	LYXERR(Debug::INSETS) << BOOST_CURRENT_FUNCTION
-			      << ": edit left/right" << std::endl;
+	LYXERR(Debug::INSETS, BOOST_CURRENT_FUNCTION << ": edit left/right");
 }
 
 
 Inset * Inset::editXY(Cursor &, int x, int y)
 {
-	LYXERR(Debug::INSETS) << BOOST_CURRENT_FUNCTION
-			      << ": x=" << x << " y= " << y
-			      << std::endl;
+	LYXERR(Debug::INSETS, BOOST_CURRENT_FUNCTION << ": x=" << x << " y= " << y);
 	return this;
 }
 

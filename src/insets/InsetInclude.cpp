@@ -75,7 +75,6 @@ using support::prefixIs;
 using support::subst;
 using support::sum;
 
-using std::endl;
 using std::find;
 using std::string;
 using std::istringstream;
@@ -397,9 +396,9 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 					   "when running the exported file through LaTeX: ") +
 					    from_utf8(incfile));
 	}
-	LYXERR(Debug::LATEX) << "incfile:" << incfile << endl;
-	LYXERR(Debug::LATEX) << "exportfile:" << exportfile << endl;
-	LYXERR(Debug::LATEX) << "writefile:" << writefile << endl;
+	LYXERR(Debug::LATEX, "incfile:" << incfile);
+	LYXERR(Debug::LATEX, "exportfile:" << exportfile);
+	LYXERR(Debug::LATEX, "writefile:" << writefile);
 
 	if (runparams.inComment || runparams.dryrun) {
 		//Don't try to load or copy the file if we're
@@ -470,11 +469,10 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		if (checksum_in != checksum_out) {
 			if (!copy(included_file, writefile)) {
 				// FIXME UNICODE
-				LYXERR(Debug::LATEX)
-					<< to_utf8(bformat(_("Could not copy the file\n%1$s\n"
+				LYXERR(Debug::LATEX,
+					to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 								  "into the temporary directory."),
-						   from_utf8(included_file.absFilename())))
-					<< endl;
+						   from_utf8(included_file.absFilename()))));
 				return 0;
 			}
 		}
@@ -583,9 +581,9 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 		if (!runparams.nice)
 			incfile = mangled;
 
-		LYXERR(Debug::LATEX) << "incfile:" << incfile << endl;
-		LYXERR(Debug::LATEX) << "exportfile:" << exportfile << endl;
-		LYXERR(Debug::LATEX) << "writefile:" << writefile << endl;
+		LYXERR(Debug::LATEX, "incfile:" << incfile);
+		LYXERR(Debug::LATEX, "exportfile:" << exportfile);
+		LYXERR(Debug::LATEX, "writefile:" << writefile);
 
 		tmp->makeDocBookFile(writefile, runparams, true);
 	}

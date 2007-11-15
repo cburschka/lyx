@@ -125,7 +125,7 @@ LyXComm::LyXComm(std::string const & pip, Server * cli, ClientCallbackfct ccb)
 
 void LyXComm::openConnection()
 {
-	LYXERR(Debug::LYXSERVER) << "LyXComm: Opening connection" << endl;
+	LYXERR(Debug::LYXSERVER, "LyXComm: Opening connection");
 
 	// If we are up, that's an error
 	if (ready_) {
@@ -136,9 +136,7 @@ void LyXComm::openConnection()
 	ready_ = false;
 
 	if (pipename_.empty()) {
-		LYXERR(Debug::LYXSERVER)
-			<< "LyXComm: server is disabled, nothing to do"
-			<< endl;
+		LYXERR(Debug::LYXSERVER, "LyXComm: server is disabled, nothing to do");
 		return;
 	}
 
@@ -160,19 +158,17 @@ void LyXComm::openConnection()
 
 	// We made it!
 	ready_ = true;
-	LYXERR(Debug::LYXSERVER) << "LyXComm: Connection established" << endl;
+	LYXERR(Debug::LYXSERVER, "LyXComm: Connection established");
 }
 
 
 /// Close pipes
 void LyXComm::closeConnection()
 {
-	LYXERR(Debug::LYXSERVER) << "LyXComm: Closing connection" << endl;
+	LYXERR(Debug::LYXSERVER, "LyXComm: Closing connection");
 
 	if (pipename_.empty()) {
-		LYXERR(Debug::LYXSERVER)
-			<< "LyXComm: server is disabled, nothing to do"
-			<< endl;
+		LYXERR(Debug::LYXSERVER, "LyXComm: server is disabled, nothing to do");
 		return;
 	}
 
@@ -278,10 +274,9 @@ void LyXComm::read_ready()
 				// the delim /wasn't/ found. ?:-P
 				string cmd;
 				read_buffer_= split(read_buffer_, cmd,'\n');
-				LYXERR(Debug::LYXSERVER)
-					<< "LyXComm: status:" << status
+				LYXERR(Debug::LYXSERVER, "LyXComm: status:" << status
 					<< ", read_buffer_:" << read_buffer_
-					<< ", cmd:" << cmd << endl;
+					<< ", cmd:" << cmd);
 				if (!cmd.empty())
 					clientcb_(client_, cmd);
 					//\n or not \n?
@@ -318,7 +313,7 @@ void LyXComm::send(string const & msg)
 		return;
 	}
 
-	LYXERR(Debug::LYXSERVER) << "LyXComm: Sending '" << msg << '\'' << endl;
+	LYXERR(Debug::LYXSERVER, "LyXComm: Sending '" << msg << '\'');
 
 	if (pipename_.empty()) return;
 
@@ -381,8 +376,7 @@ Server::~Server()
 // Handle data gotten from communication, called by LyXComm
 void Server::callback(string const & msg)
 {
-	LYXERR(Debug::LYXSERVER) << "Server: Received: '"
-				 << msg << '\'' << endl;
+	LYXERR(Debug::LYXSERVER, "Server: Received: '" << msg << '\'');
 
 	char const * p = msg.c_str();
 
@@ -425,10 +419,8 @@ void Server::callback(string const & msg)
 			if (*p) ++p;
 		}
 
-		LYXERR(Debug::LYXSERVER)
-			<< "Server: Client: '" << client
-			<< "' Command: '" << cmd
-			<< "' Argument: '" << arg << '\'' << endl;
+		LYXERR(Debug::LYXSERVER, "Server: Client: '" << client
+			<< "' Command: '" << cmd << "' Argument: '" << arg << '\'');
 
 		// --- lookup and exec the command ------------------
 
@@ -439,9 +431,7 @@ void Server::callback(string const & msg)
 			if (cmd == "hello") {
 				// One more client
 				if (numclients_ == MAX_CLIENTS) { //paranoid check
-					LYXERR(Debug::LYXSERVER)
-						<< "Server: too many clients..."
-						<< endl;
+					LYXERR(Debug::LYXSERVER, "Server: too many clients...");
 					return;
 				}
 				int i = 0;
@@ -450,9 +440,7 @@ void Server::callback(string const & msg)
 				clients_[i] = client;
 				++numclients_;
 				buf = "LYXSRV:" + client + ":hello\n";
-				LYXERR(Debug::LYXSERVER)
-					<< "Server: Greeting "
-					<< client << endl;
+				LYXERR(Debug::LYXSERVER, "Server: Greeting " << client);
 				pipes_.send(buf);
 			} else if (cmd == "bye") {
 				// If clients_ == 0 maybe we should reset the pipes
@@ -465,14 +453,11 @@ void Server::callback(string const & msg)
 				if (i < numclients_) {
 					--numclients_;
 					clients_[i].erase();
-					LYXERR(Debug::LYXSERVER)
-						<< "Server: Client "
-						<< client << " said goodbye"
-						<< endl;
+					LYXERR(Debug::LYXSERVER, "Server: Client "
+						<< client << " said goodbye");
 				} else {
-					LYXERR(Debug::LYXSERVER)
-						<< "Server: ignoring bye messge from unregistered client"
-						<< client << endl;
+					LYXERR(Debug::LYXSERVER,
+						"Server: ignoring bye messge from unregistered client" << client);
 				}
 			} else {
 				lyxerr <<"Server: Undefined server command "

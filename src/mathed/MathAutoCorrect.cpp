@@ -84,15 +84,14 @@ void Correction::write(odocstream & os) const
 
 bool Correction::correct(MathAtom & at, char_type c) const
 {
-	//LYXERR(Debug::MATHED)
-	//	<< "trying to correct ar: " << at << " from: '" << from1_ << '\'' << endl;
+	//LYXERR(Debug::MATHED,
+	//	"trying to correct ar: " << at << " from: '" << from1_ << '\'');
 	if (from2_ != c)
 		return false;
 	if (asString(at) != asString(from1_))
 		return false;
-	LYXERR(Debug::MATHED)
-		<< "match found! subst in " << at
-		<< " from: '" << from1_ << "' to '" << to_ << '\'' << endl;
+	LYXERR(Debug::MATHED, "match found! subst in " << at
+		<< " from: '" << from1_ << "' to '" << to_ << '\'');
 	at = to_;
 	return true;
 }
@@ -143,7 +142,7 @@ Corrections theCorrections;
 
 void initAutoCorrect()
 {
-	LYXERR(Debug::MATHED) << "reading autocorrect file" << endl;
+	LYXERR(Debug::MATHED, "reading autocorrect file");
 	support::FileName const file = libFileSearch(string(), "autocorrect");
 	if (file.empty()) {
 		lyxerr << "Could not find autocorrect file" << endl;
@@ -154,20 +153,20 @@ void initAutoCorrect()
 	ifstream is(file.toFilesystemEncoding().c_str());
 	while (getline(is, line)) {
 		if (line.size() == 0 || line[0] == '#') {
-			//LYXERR(Debug::MATHED) << "ignoring line '" << line << '\'' << endl;
+			//LYXERR(Debug::MATHED, "ignoring line '" << line << '\'');
 			continue;
 		}
 		idocstringstream il(from_utf8(line));
 
-		//LYXERR(Debug::MATHED) << "line '" << line << '\'' << endl;
+		//LYXERR(Debug::MATHED, "line '" << line << '\'');
 		Correction corr;
 		if (corr.read(il)) {
-			//LYXERR(Debug::MATHED) << "parsed: '" << corr << '\'' << endl;
+			//LYXERR(Debug::MATHED, "parsed: '" << corr << '\'');
 			theCorrections.insert(corr);
 		}
 	}
 
-	LYXERR(Debug::MATHED) << "done reading autocorrections." << endl;
+	LYXERR(Debug::MATHED, "done reading autocorrections.");
 }
 
 

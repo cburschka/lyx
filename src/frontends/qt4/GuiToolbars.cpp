@@ -131,8 +131,8 @@ void GuiToolbars::init()
 	int last_posx = 0;
 	int last_posy = 0;
 	for (; tb != te; ++tb) {
-		LYXERR(Debug::INIT) << "Adding " << tb->key << " at position "
-			<< tb->info.posx << " " << tb->info.posy << endl;
+		LYXERR(Debug::INIT, "Adding " << tb->key << " at position "
+			<< tb->info.posx << " " << tb->info.posy);
 		// add toolbar break if posx or posy changes
 		bool newline = tb->info.location == last_loc && (
 			// if two toolbars at the same location, assume uninitialized and add toolbar break
@@ -174,8 +174,7 @@ void GuiToolbars::display(string const & name, bool show)
 		}
 	}
 
-	LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
-		<< name << endl;
+	LYXERR(Debug::GUI, "Toolbar::display: no toolbar named " << name);
 }
 
 
@@ -190,8 +189,7 @@ void GuiToolbars::toggleToolbarState(string const & name, bool allowauto)
 	ToolbarInfo * tbi = toolbarbackend.getUsedToolbarInfo(name);
 
 	if (!tbi) {
-		LYXERR(Debug::GUI) << "Toolbar::display: no toolbar named "
-			<< name << endl;
+		LYXERR(Debug::GUI, "Toolbar::display: no toolbar named " << name);
 		return;
 	}
 

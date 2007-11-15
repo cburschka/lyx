@@ -29,11 +29,6 @@
 #include <QFontInfo>
 #include <QFontDatabase>
 
-using lyx::support::contains;
-using lyx::support::package;
-using lyx::support::addPath;
-using lyx::support::addName;
-
 using std::endl;
 using std::make_pair;
 
@@ -46,6 +41,11 @@ int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
 
 
 namespace lyx {
+
+using support::contains;
+using support::package;
+using support::addPath;
+using support::addName;
 
 extern docstring const stateText(FontInfo const & f);
 
@@ -110,7 +110,7 @@ QString getRawName(QString const & family)
 		if (family == symbol_fonts[i].family)
 			return symbol_fonts[i].xlfd;
 
-	LYXERR(Debug::FONT) << "BUG: family not found !" << endl;
+	LYXERR(Debug::FONT, "BUG: family not found !");
 	return QString();
 }
 
@@ -127,8 +127,7 @@ QString const symbolFamily(FontFamily family)
 
 bool isSymbolFamily(FontFamily family)
 {
-	return family >= SYMBOL_FAMILY &&
-	       family <= ESINT_FAMILY;
+	return family >= SYMBOL_FAMILY && family <= ESINT_FAMILY;
 }
 
 
@@ -140,10 +139,10 @@ static bool isChosenFont(QFont & font, QString const & family)
 	// positions.
 	QFontInfo fi(font);
 
-	LYXERR(Debug::FONT) << "got: " << fromqstr(fi.family()) << endl;
+	LYXERR(Debug::FONT, "got: " << fromqstr(fi.family()));
 
 	if (fi.family().contains(family)) {
-		LYXERR(Debug::FONT) << " got it ";
+		LYXERR(Debug::FONT, " got it ");
 		return true;
 	}
 
@@ -153,8 +152,8 @@ static bool isChosenFont(QFont & font, QString const & family)
 
 static pair<QFont, bool> const getSymbolFont(QString const & family)
 {
-	LYXERR(Debug::FONT) << "Looking for font family "
-		<< fromqstr(family) << " ... ";
+	LYXERR(Debug::FONT, "Looking for font family "
+		<< fromqstr(family) << " ... ");
 	QString upper = family;
 	upper[0] = family[0].toUpper();
 
@@ -163,30 +162,30 @@ static pair<QFont, bool> const getSymbolFont(QString const & family)
 	font.setFamily(family);
 
 	if (isChosenFont(font, family)) {
-		LYXERR(Debug::FONT) << "normal!" << endl;
+		LYXERR(Debug::FONT, "normal!");
 		return make_pair<QFont, bool>(font, true);
 	}
 
-	LYXERR(Debug::FONT) << "Trying " << fromqstr(upper) << " ... ";
+	LYXERR(Debug::FONT, "Trying " << fromqstr(upper) << " ... ");
 	font.setFamily(upper);
 
 	if (isChosenFont(font, upper)) {
-		LYXERR(Debug::FONT) << "upper!" << endl;
+		LYXERR(Debug::FONT, "upper!");
 		return make_pair<QFont, bool>(font, true);
 	}
 
 	// A simple setFamily() fails on Qt 2
 
 	QString const rawName = getRawName(family);
-	LYXERR(Debug::FONT) << "Trying " << fromqstr(rawName) << " ... ";
+	LYXERR(Debug::FONT, "Trying " << fromqstr(rawName) << " ... ");
 	font.setRawName(rawName);
 
 	if (isChosenFont(font, family)) {
-		LYXERR(Debug::FONT) << "raw version!" << endl;
+		LYXERR(Debug::FONT, "raw version!");
 		return make_pair<QFont, bool>(font, true);
 	}
 
-	LYXERR(Debug::FONT) << " FAILED :-(" << endl;
+	LYXERR(Debug::FONT, " FAILED :-(");
 	return make_pair<QFont, bool>(font, false);
 }
 
@@ -202,10 +201,9 @@ GuiFontLoader::GuiFontLoader()
 		QString const font_file = fonts_dir + '/' + math_fonts[i] + ".ttf";
 		int fontID = QFontDatabase::addApplicationFont(font_file);
 
-		LYXERR(Debug::FONT) << "Adding font " << fromqstr(font_file)
+		LYXERR(Debug::FONT, "Adding font " << fromqstr(font_file)
 				    << static_cast<const char *>
-					(fontID < 0 ? " FAIL" : " OK")
-				    << endl;
+					(fontID < 0 ? " FAIL" : " OK"));
 	}
 
 	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1)
@@ -298,28 +296,25 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 			break;
 	}
 
-	LYXERR(Debug::FONT) << "Font '" << to_utf8(stateText(f))
-		<< "' matched by\n" << fromqstr(font.family()) << endl;
+	LYXERR(Debug::FONT, "Font '" << to_utf8(stateText(f))
+		<< "' matched by\n" << fromqstr(font.family()));
 
 	// Is this an exact match?
 	if (font.exactMatch())
-		LYXERR(Debug::FONT) << "This font is an exact match" << endl;
+		LYXERR(Debug::FONT, "This font is an exact match");
 	else
-		LYXERR(Debug::FONT) << "This font is NOT an exact match"
-				    << endl;
+		LYXERR(Debug::FONT, "This font is NOT an exact match");
 
-	LYXERR(Debug::FONT) << "XFLD: " << fromqstr(font.rawName()) << endl;
+	LYXERR(Debug::FONT, "XFLD: " << fromqstr(font.rawName()));
 
 	font.setPointSizeF(convert<double>(lyxrc.font_sizes[f.size()])
 			       * lyxrc.zoom / 100.0);
 
-	LYXERR(Debug::FONT) << "The font has size: "
-			    << font.pointSizeF() << endl;
+	LYXERR(Debug::FONT, "The font has size: " << font.pointSizeF());
 
 	if (f.realShape() != SMALLCAPS_SHAPE) {
 		metrics.reset(new GuiFontMetrics(font));
-	}
-	else {
+	} else {
 		// handle small caps ourselves ...
 		FontInfo smallfont = f;
 		smallfont.decSize().decSize().setShape(UP_SHAPE);

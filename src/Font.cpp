@@ -758,13 +758,9 @@ void Font::validate(LaTeXFeatures & features) const
 	Language const * doc_language = bparams.language;
 
 	if (bits_.noun() == FONT_ON) {
-		LYXERR(Debug::LATEX) << "font.noun: "
-			<< bits_.noun()
-			<< endl;
+		LYXERR(Debug::LATEX, "font.noun: " << bits_.noun());
 		features.require("noun");
-		LYXERR(Debug::LATEX) << "Noun enabled. Font: "
-			<< to_utf8(stateText(0))
-			<< endl;
+		LYXERR(Debug::LATEX, "Noun enabled. Font: " << to_utf8(stateText(0)));
 	}
 	switch (bits_.color()) {
 		case Color_none:
@@ -777,9 +773,7 @@ void Font::validate(LaTeXFeatures & features) const
 			break;
 		default:
 			features.require("color");
-			LYXERR(Debug::LATEX) << "Color enabled. Font: "
-				<< to_utf8(stateText(0))
-				<< endl;
+			LYXERR(Debug::LATEX, "Color enabled. Font: " << to_utf8(stateText(0)));
 	}
 
 	// FIXME: Do something for background and soul package?
@@ -789,8 +783,7 @@ void Font::validate(LaTeXFeatures & features) const
 		lang_ != latex_language)
 	{
 		features.useLanguage(lang_);
-		LYXERR(Debug::LATEX) << "Found language "
-			<< lang_->lang() << endl;
+		LYXERR(Debug::LATEX, "Found language " << lang_->lang());
 	}
 }
 

@@ -98,8 +98,7 @@ bool TextClassList::read()
 {
 	Lexer lex(0, 0);
 	support::FileName const real_file = libFileSearch("", "textclass.lst");
-	LYXERR(Debug::TCLASS) << "Reading textclasses from `"
-			      << real_file << '\'' << endl;
+	LYXERR(Debug::TCLASS, "Reading textclasses from `" << real_file << '\'');
 
 	if (real_file.empty()) {
 		lyxerr << "TextClassList::Read: unable to find "
@@ -131,25 +130,25 @@ bool TextClassList::read()
 
 	bool finished = false;
 	// Parse config-file
-	LYXERR(Debug::TCLASS) << "Starting parsing of textclass.lst" << endl;
+	LYXERR(Debug::TCLASS, "Starting parsing of textclass.lst");
 	while (lex.isOK() && !finished) {
-		LYXERR(Debug::TCLASS) << "\tline by line" << endl;
+		LYXERR(Debug::TCLASS, "\tline by line");
 		switch (lex.lex()) {
 		case Lexer::LEX_FEOF:
 			finished = true;
 			break;
 		default:
 			string const fname = lex.getString();
-			LYXERR(Debug::TCLASS) << "Fname: " << fname << endl;
+			LYXERR(Debug::TCLASS, "Fname: " << fname);
 			if (lex.next()) {
 				string const clname = lex.getString();
-				LYXERR(Debug::TCLASS) << "Clname: " << clname << endl;
+				LYXERR(Debug::TCLASS, "Clname: " << clname);
 				if (lex.next()) {
 					string const desc = lex.getString();
-					LYXERR(Debug::TCLASS) << "Desc: " << desc << endl;
+					LYXERR(Debug::TCLASS, "Desc: " << desc);
 					if (lex.next()) {
 						bool avail = lex.getBool();
-						LYXERR(Debug::TCLASS) << "Avail: " << avail << endl;
+						LYXERR(Debug::TCLASS, "Avail: " << avail);
 						// This code is run when we have
 						// fname, clname, desc, and avail
 						TextClass tmpl(fname, clname, desc, avail);
@@ -162,7 +161,7 @@ bool TextClassList::read()
 			}
 		}
 	}
-	LYXERR(Debug::TCLASS) << "End of parsing of textclass.lst" << endl;
+	LYXERR(Debug::TCLASS, "End of parsing of textclass.lst");
 
 	// lyx will start with an empty classlist_, but only reconfigure is allowed
 	// in this case. This gives users a second chance to configure lyx if
@@ -194,7 +193,7 @@ TextClassList::addTextClass(std::string const & textclass, std::string const & p
 	// NOTE: latex class name is defined in textclass.layout, which can be different from textclass
 	FileName const layout_file(addName(path, textclass + ".layout"));
 	if (layout_file.exists()) {
-		LYXERR(Debug::TCLASS) << "Adding class " << textclass << " from directory " << path << endl;
+		LYXERR(Debug::TCLASS, "Adding class " << textclass << " from directory " << path);
 		// Read .layout file and get description, real latex classname etc
 		//
 		// This is a C++ version of function processLayoutFile in configure.py,
@@ -243,15 +242,15 @@ textclass_type defaultTextclass()
 // Reads the style files
 bool LyXSetStyle()
 {
-	LYXERR(Debug::TCLASS) << "LyXSetStyle: parsing configuration..." << endl;
+	LYXERR(Debug::TCLASS, "LyXSetStyle: parsing configuration...");
 
 	if (!textclasslist.read()) {
-		LYXERR(Debug::TCLASS) << "LyXSetStyle: an error occured "
-			"during parsing.\n             Exiting." << endl;
+		LYXERR(Debug::TCLASS, "LyXSetStyle: an error occured "
+			"during parsing.\n             Exiting.");
 		return false;
 	}
 
-	LYXERR(Debug::TCLASS) << "LyXSetStyle: configuration parsed." << endl;
+	LYXERR(Debug::TCLASS, "LyXSetStyle: configuration parsed.");
 	return true;
 }
 

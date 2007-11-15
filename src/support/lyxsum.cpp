@@ -53,8 +53,7 @@ namespace support {
 
 unsigned long sum(FileName const & file)
 {
-	LYXERR(Debug::FILES) << "lyx::sum() using mmap (lightning fast)"
-			     << endl;
+	LYXERR(Debug::FILES, "lyx::sum() using mmap (lightning fast)");
 
 	int fd = open(file.toFilesystemEncoding().c_str(), O_RDONLY);
 	if (!fd)
@@ -116,8 +115,7 @@ using std::istreambuf_iterator;
 
 unsigned long sum(FileName const & file)
 {
-	LYXERR(Debug::FILES) << "lyx::sum() using istreambuf_iterator (fast)"
-			     << endl;
+	LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
 
 	// a directory may be passed here so we need to test it. (bug 3622)
 	if (file.isDirectory())
@@ -139,9 +137,7 @@ using std::ios;
 
 unsigned long sum(FileName const & file)
 {
-	LYXERR(Debug::FILES)
-		<< "lyx::sum() using istream_iterator (slow as a snail)"
-		<< endl;
+	LYXERR(Debug::FILES, "lyx::sum() using istream_iterator (slow as a snail)");
 
 	// a directory may be passed here so we need to test it. (bug 3622)
 	if (file.isDirectory())

@@ -70,7 +70,7 @@ TeXDeeper(Buffer const & buf,
 	  odocstream & os, TexRow & texrow,
 	  OutputParams const & runparams)
 {
-	LYXERR(Debug::LATEX) << "TeXDeeper...     " << &*pit << endl;
+	LYXERR(Debug::LATEX, "TeXDeeper...     " << &*pit);
 	ParagraphList::const_iterator par = pit;
 
 	while (par != paragraphs.end() &&
@@ -83,7 +83,7 @@ TeXDeeper(Buffer const & buf,
 					     os, texrow, runparams);
 		}
 	}
-	LYXERR(Debug::LATEX) << "TeXDeeper...done " << endl;
+	LYXERR(Debug::LATEX, "TeXDeeper...done ");
 
 	return par;
 }
@@ -96,7 +96,7 @@ TeXEnvironment(Buffer const & buf,
 	       odocstream & os, TexRow & texrow,
 	       OutputParams const & runparams)
 {
-	LYXERR(Debug::LATEX) << "TeXEnvironment...     " << &*pit << endl;
+	LYXERR(Debug::LATEX, "TeXEnvironment...     " << &*pit);
 
 	BufferParams const & bparams = buf.params();
 
@@ -211,9 +211,9 @@ TeXEnvironment(Buffer const & buf,
 		texrow.newline();
 	}
 
-	if (par != paragraphs.end()) {
-		LYXERR(Debug::LATEX) << "TeXEnvironment...done " << &*par << endl;
-	}
+	if (par != paragraphs.end())
+		LYXERR(Debug::LATEX, "TeXEnvironment...done " << &*par);
+
 	return par;
 }
 
@@ -249,8 +249,8 @@ TeXOnePar(Buffer const & buf,
 	  OutputParams const & runparams_in,
 	  string const & everypar)
 {
-	LYXERR(Debug::LATEX) << "TeXOnePar...     " << &*pit << " '"
-		<< everypar << "'" << endl;
+	LYXERR(Debug::LATEX, "TeXOnePar...     " << &*pit << " '"
+		<< everypar << "'");
 	BufferParams const & bparams = buf.params();
 	LayoutPtr style;
 
@@ -606,9 +606,8 @@ TeXOnePar(Buffer const & buf,
 		texrow.newline();
 	}
 
-	if (boost::next(pit) != paragraphs.end()) {
-		LYXERR(Debug::LATEX) << "TeXOnePar...done " << &*boost::next(pit) << endl;
-	}
+	if (boost::next(pit) != paragraphs.end())
+		LYXERR(Debug::LATEX, "TeXOnePar...done " << &*boost::next(pit));
 
 	return ++pit;
 }
@@ -734,14 +733,13 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		|| newEnc.package() == Encoding::none)
 		return make_pair(false, 0);
 
-	LYXERR(Debug::LATEX) << "Changing LaTeX encoding from "
-		<< oldEnc.name() << " to "
-		<< newEnc.name() << endl;
+	LYXERR(Debug::LATEX, "Changing LaTeX encoding from "
+		<< oldEnc.name() << " to " << newEnc.name());
 	os << setEncoding(newEnc.iconvName());
 	if (bparams.inputenc == "default")
 		return make_pair(true, 0);
 
-	docstring const inputenc(from_ascii(newEnc.latexName()));
+	docstring const inputenc = from_ascii(newEnc.latexName());
 	switch (newEnc.package()) {
 		case Encoding::none:
 			// shouldn't ever reach here, see above
@@ -754,7 +752,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 			}
 			os << "\\inputencoding{" << inputenc << '}';
 			return make_pair(true, count + 16);
-		 }
+		}
 		case Encoding::CJK: {
 			int count = inputenc.length();
 			if (oldEnc.package() == Encoding::CJK) {

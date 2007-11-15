@@ -35,13 +35,13 @@ PSpell::PSpell(BufferParams const &, string const & lang)
 	: els(0), spell_error_object(0)
 {
 	addManager(lang);
-	LYXERR(Debug::GUI) << "created pspell" << endl;
+	LYXERR(Debug::GUI, "created pspell");
 }
 
 
 PSpell::~PSpell()
 {
-	LYXERR(Debug::GUI) << "killed pspell" << endl;
+	LYXERR(Debug::GUI, "killed pspell");
 
 	if (spell_error_object) {
 		delete_pspell_can_have_error(spell_error_object);

@@ -185,8 +185,7 @@ Buffer * BufferList::newBuffer(string const & s, bool const ronly)
 {
 	auto_ptr<Buffer> tmpbuf(new Buffer(s, ronly));
 	tmpbuf->params().useClassDefaults();
-	LYXERR(Debug::INFO) << "Assigning to buffer "
-			    << bstore.size() << endl;
+	LYXERR(Debug::INFO, "Assigning to buffer " << bstore.size());
 	bstore.push_back(tmpbuf.get());
 	return tmpbuf.release();
 }

@@ -60,7 +60,7 @@ bool CmdDef::read(string const & def_file)
 		return false;
 	}
 
-//	LYXERR(Debug::KBMAP) << "Reading def file:" << tmp << endl;
+	//LYXERR(Debug::KBMAP, "Reading def file:" << tmp);
 
 	bool error = false;
 	while (lexrc.isOK()) {

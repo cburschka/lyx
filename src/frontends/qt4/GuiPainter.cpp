@@ -372,8 +372,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
 		drawText(x, y, str);
-		//LYXERR(Debug::PAINTING) << "draw " << std::string(str.toUtf8())
-		//	<< " at " << x << "," << y << std::endl;
+		//LYXERR(Debug::PAINTING, "draw " << std::string(str.toUtf8())
+		//	<< " at " << x << "," << y);
 		return textwidth;
 	}
 
@@ -405,9 +405,9 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		p.setLayoutDirection(Qt::LeftToRight);
 		p.drawText(-lb, mA, str);
 		QPixmapCache::insert(key, pm);
-		//LYXERR(Debug::PAINTING) << "h=" << h << "  mA=" << mA << "  mD=" << mD
+		//LYXERR(Debug::PAINTING, "h=" << h << "  mA=" << mA << "  mD=" << mD
 		//	<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth 
-		//	<< "  rb=" << rb << endl;
+		//	<< "  rb=" << rb);
 	}
 	// Draw the cached pixmap.
 	drawPixmap(x + lb, y - mA, pm);

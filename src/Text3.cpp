@@ -388,7 +388,7 @@ bool Text::isRTL(Buffer const & buffer, Paragraph const & par) const
 
 void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LYXERR(Debug::ACTION) << "Text::dispatch: cmd: " << cmd << endl;
+	LYXERR(Debug::ACTION, "Text::dispatch: cmd: " << cmd);
 
 	// FIXME: We use the update flag to indicates wether a singlePar or a
 	// full screen update is needed. We reset it here but shall we restore it
@@ -955,7 +955,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_LAYOUT: {
 		docstring layout = cmd.argument();
-		LYXERR(Debug::INFO) << "LFUN_LAYOUT: (arg) " << to_utf8(layout) << endl;
+		LYXERR(Debug::INFO, "LFUN_LAYOUT: (arg) " << to_utf8(layout));
 
 		docstring const old_layout = cur.paragraph().layout()->name();
 
@@ -1551,7 +1551,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_FINISHED_LEFT:
-		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_LEFT:\n" << cur << endl;
+		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_LEFT:\n" << cur);
 		if (reverseDirectionNeeded(cur)) {
 			++cur.pos();
 			cur.setCurrentFont();
@@ -1559,7 +1559,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FINISHED_RIGHT:
-		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_RIGHT:\n" << cur << endl;
+		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_RIGHT:\n" << cur);
 		if (!reverseDirectionNeeded(cur)) {
 			++cur.pos();
 			cur.setCurrentFont();
@@ -1567,11 +1567,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FINISHED_BACKWARD:
-		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_BACKWARD:\n" << cur << endl;
+		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_BACKWARD:\n" << cur);
 		break;
 
 	case LFUN_FINISHED_FORWARD:
-		LYXERR(Debug::DEBUG) << "handle LFUN_FINISHED_FORWARD:\n" << cur << endl;
+		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_FORWARD:\n" << cur);
 		++cur.pos();
 		cur.setCurrentFont();
 		break;
@@ -1729,10 +1729,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		LYXERR(Debug::ACTION)
-			<< BOOST_CURRENT_FUNCTION
-			<< ": Command " << cmd
-			<< " not DISPATCHED by Text" << endl;
+		LYXERR(Debug::ACTION, BOOST_CURRENT_FUNCTION
+			<< ": Command " << cmd << " not DISPATCHED by Text");
 		cur.undispatched();
 		break;
 	}
@@ -1755,14 +1753,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// Inserting characters does not change par height
 		ParagraphMetrics const & pms
 			= cur.bv().parMetrics(cur.bottom().text(), cur.bottom().pit());
-		if (pms.dim().height()
-		    == olddim.height()) {
+		if (pms.dim().height() == olddim.height()) {
 			// if so, update _only_ this paragraph
 			cur.updateFlags(Update::SinglePar |
 				Update::FitCursor);
 			return;
-		} else
-			needsUpdate = true;
+		}
+		needsUpdate = true;
 	}
 
 	if (!needsUpdate

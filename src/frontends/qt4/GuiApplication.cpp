@@ -157,13 +157,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 		installTranslator(&qt_trans_);
 		// even if the language calls for RtL, don't do that
 		setLayoutDirection(Qt::LeftToRight);
-		LYXERR(Debug::GUI)
-			<< "Successfully installed Qt translations for locale "
-			<< fromqstr(language_name) << std::endl;
+		LYXERR(Debug::GUI, "Successfully installed Qt translations for locale "
+			<< fromqstr(language_name));
 	} else
-		LYXERR(Debug::GUI)
-			<< "Could not find  Qt translations for locale "
-			<< fromqstr(language_name) << std::endl;
+		LYXERR(Debug::GUI, "Could not find  Qt translations for locale "
+			<< fromqstr(language_name));
 
 #ifdef Q_WS_MACX
 	// This allows to translate the strings that appear in the LyX menu.
@@ -436,7 +434,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	case SelectionRequest: {
 		if (xev->xselectionrequest.selection != XA_PRIMARY)
 			break;
-		LYXERR(Debug::GUI) << "X requested selection." << endl;
+		LYXERR(Debug::GUI, "X requested selection.");
 		BufferView * bv = currentView()->view();
 		if (bv) {
 			docstring const sel = bv->requestSelection();
@@ -448,7 +446,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	case SelectionClear: {
 		if (xev->xselectionclear.selection != XA_PRIMARY)
 			break;
-		LYXERR(Debug::GUI) << "Lost selection." << endl;
+		LYXERR(Debug::GUI, "Lost selection.");
 		BufferView * bv = currentView()->view();
 		if (bv)
 			bv->clearSelection();

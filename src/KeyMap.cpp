@@ -59,9 +59,8 @@ string const KeyMap::printKeySym(KeySymbol const & key, KeyModifier mod)
 
 size_t KeyMap::bind(string const & seq, FuncRequest const & func)
 {
-	LYXERR(Debug::KBMAP) << "BIND: Sequence `"
-	       << seq << "' Action `"
-	       << func.action << '\'' << endl;
+	LYXERR(Debug::KBMAP, "BIND: Sequence `" << seq << "' Action `"
+	       << func.action << '\'');
 
 	KeySequence k(0, 0);
 
@@ -69,9 +68,8 @@ size_t KeyMap::bind(string const & seq, FuncRequest const & func)
 	if (res == string::npos) {
 		bind(&k, func);
 	} else {
-		LYXERR(Debug::KBMAP) << "Parse error at position " << res
-				     << " in key sequence '" << seq << "'."
-				     << endl;
+		LYXERR(Debug::KBMAP, "Parse error at position " << res
+				     << " in key sequence '" << seq << "'.");
 	}
 
 	return res == string::npos ? 0 : res;
@@ -86,9 +84,8 @@ size_t KeyMap::unbind(string const & seq, FuncRequest const & func)
 	if (res == string::npos)
 		unbind(&k, func);
 	else
-		LYXERR(Debug::KBMAP) << "Parse error at position " << res
-				     << " in key sequence '" << seq << "'."
-				     << endl;
+		LYXERR(Debug::KBMAP, "Parse error at position " << res
+				     << " in key sequence '" << seq << "'.");
 	return res == string::npos ? 0 : res;
 }
 
@@ -158,7 +155,7 @@ bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
 		return false;
 	}
 
-	LYXERR(Debug::KBMAP) << "Reading bind file:" << tmp << endl;
+	LYXERR(Debug::KBMAP, "Reading bind file:" << tmp);
 
 	bool error = false;
 	while (lexrc.isOK()) {
@@ -353,11 +350,9 @@ void KeyMap::bind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 		    && mod2 == it->mod.second) {
 			// overwrite binding
 			if (r + 1 == seq->length()) {
-				LYXERR(Debug::KBMAP)
-					<< "Warning: New binding for '"
+				LYXERR(Debug::KBMAP, "Warning: New binding for '"
 					<< to_utf8(seq->print(KeySequence::Portable))
-					<< "' is overriding old binding..."
-					<< endl;
+					<< "' is overriding old binding...");
 				if (it->table.get()) {
 					it->table.reset();
 				}

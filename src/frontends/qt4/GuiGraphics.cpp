@@ -282,7 +282,7 @@ void GuiGraphics::change_adaptor()
 void GuiGraphics::change_bb()
 {
 	bbChanged = true;
-	LYXERR(Debug::GRAPHICS) << "[bb_Changed set to true]\n";
+	LYXERR(Debug::GRAPHICS, "[bb_Changed set to true]");
 	changed();
 }
 

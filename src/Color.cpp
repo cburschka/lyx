@@ -253,9 +253,8 @@ bool ColorSet::setColor(string const & lyxname, string const &x11name)
 {
 	string const lcname = ascii_lowercase(lyxname);
 	if (lyxcolors.find(lcname) == lyxcolors.end()) {
-		LYXERR(Debug::GUI)
-			<< "ColorSet::setColor: Unknown color \""
-		       << lyxname << '"' << endl;
+		LYXERR(Debug::GUI, "ColorSet::setColor: Unknown color \""
+		       << lyxname << '"');
 		addColor(static_cast<ColorCode>(infotab.size()), lcname);
 	}
 

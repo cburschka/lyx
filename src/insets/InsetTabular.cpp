@@ -2824,8 +2824,8 @@ Tabular::getCellFromInset(Inset const * inset) const
 
 	for (idx_type cell = 0, n = cellCount(); cell < n; ++cell)
 		if (getCellInset(cell).get() == inset) {
-			LYXERR(Debug::INSETTEXT) << "Tabular::getCellFromInset: "
-				<< "cell=" << cell << endl;
+			LYXERR(Debug::INSETTEXT, "Tabular::getCellFromInset: "
+				<< "cell=" << cell);
 			return cell;
 		}
 
@@ -3207,8 +3207,8 @@ void InsetTabular::updateLabels(Buffer const & buf, ParIterator const & it)
 
 void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LYXERR(Debug::DEBUG) << "# InsetTabular::doDispatch: cmd: " << cmd
-			     << "\n  cur:" << cur << endl;
+	LYXERR(Debug::DEBUG, "# InsetTabular::doDispatch: cmd: " << cmd
+			     << "\n  cur:" << cur);
 	CursorSlice sl = cur.top();
 	Cursor & bvcur = cur.bv().cursor();
 

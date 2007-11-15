@@ -73,8 +73,7 @@ docstring const GuiSelection::get() const
 {
 	QString const str = qApp->clipboard()->text(QClipboard::Selection)
 				.normalized(QString::NormalizationForm_C);
-	LYXERR(Debug::ACTION) << "GuiSelection::get: " << fromqstr(str)
-			      << endl;
+	LYXERR(Debug::ACTION, "GuiSelection::get: " << fromqstr(str));
 	if (str.isNull())
 		return docstring();
 
@@ -84,7 +83,7 @@ docstring const GuiSelection::get() const
 
 void GuiSelection::put(docstring const & str)
 {
-	LYXERR(Debug::ACTION) << "GuiSelection::put: " << to_utf8(str) << endl;
+	LYXERR(Debug::ACTION, "GuiSelection::put: " << to_utf8(str));
 
 	qApp->clipboard()->setText(toqstr(externalLineEnding(str)),
 				   QClipboard::Selection);

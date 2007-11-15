@@ -86,7 +86,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 		<< ' ' << quoteName(tempfile.toFilesystemEncoding());
 	string const command_str = command.str();
 
-	LYXERR(Debug::TCLASS) << "Running `" << command_str << '\'' << endl;
+	LYXERR(Debug::TCLASS, "Running `" << command_str << '\'');
 
 	support::cmd_ret const ret =
 		support::runCommand(command_str);
@@ -131,7 +131,7 @@ bool TextClass::isTeXClassAvailable() const
 
 bool TextClass::readStyle(Lexer & lexrc, Layout & lay)
 {
-	LYXERR(Debug::TCLASS) << "Reading style " << to_utf8(lay.name()) << endl;
+	LYXERR(Debug::TCLASS, "Reading style " << to_utf8(lay.name()));
 	if (!lay.read(lexrc, *this)) {
 		// Resolve fonts
 		lay.resfont = lay.font;
@@ -211,19 +211,18 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 
 	switch (rt) {
 	case BASECLASS:
-		LYXERR(Debug::TCLASS) << "Reading textclass ";
+		LYXERR(Debug::TCLASS, "Reading textclass ");
 		break;
 	case MERGE:
-		LYXERR(Debug::TCLASS) << "Reading input file ";
+		LYXERR(Debug::TCLASS, "Reading input file ");
 	  break;
 	case MODULE:
-		LYXERR(Debug::TCLASS) << "Reading module file ";
+		LYXERR(Debug::TCLASS, "Reading module file ");
 		break;
 	default:
 		BOOST_ASSERT(false);
 	}
-	LYXERR(Debug::TCLASS) << to_utf8(makeDisplayPath(filename.absFilename()))
-		<< endl;
+	LYXERR(Debug::TCLASS, to_utf8(makeDisplayPath(filename.absFilename())));
 
 	Lexer lexrc(textClassTags,
 		sizeof(textClassTags) / sizeof(textClassTags[0]));
@@ -444,8 +443,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	}
 
 	if (format != FORMAT) {
-		LYXERR(Debug::TCLASS) << "Converting layout file from format "
-				      << format << " to " << FORMAT << endl;
+		LYXERR(Debug::TCLASS, "Converting layout file from format "
+				      << format << " to " << FORMAT);
 		FileName const tempfile(support::tempName());
 		error = !layout2layout(filename, tempfile);
 		if (!error)
@@ -455,17 +454,14 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	}
 
 	if (rt == MODULE) 
-		LYXERR(Debug::TCLASS) << "Finished reading module file "
-				<< to_utf8(makeDisplayPath(filename.absFilename()))
-				<< endl;
+		LYXERR(Debug::TCLASS, "Finished reading module file "
+				<< to_utf8(makeDisplayPath(filename.absFilename())));
 	else if (rt == MERGE)
-		LYXERR(Debug::TCLASS) << "Finished reading input file "
-				<< to_utf8(makeDisplayPath(filename.absFilename()))
-				<< endl;
+		LYXERR(Debug::TCLASS, "Finished reading input file "
+				<< to_utf8(makeDisplayPath(filename.absFilename())));
 	else { // we are at top level here.
-		LYXERR(Debug::TCLASS) << "Finished reading textclass "
-				      << to_utf8(makeDisplayPath(filename.absFilename()))
-				      << endl;
+		LYXERR(Debug::TCLASS, "Finished reading textclass "
+				      << to_utf8(makeDisplayPath(filename.absFilename())));
 		if (defaultlayout_.empty()) {
 			lyxerr << "Error: Textclass '" << name_
 			       << "' is missing a defaultstyle." << endl;
@@ -488,9 +484,8 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 							 toclevel);
 			}
 		}
-		LYXERR(Debug::TCLASS)
-			<< "Minimum TocLevel is " << min_toclevel_
-			<< ", maximum is " << max_toclevel_ <<endl;
+		LYXERR(Debug::TCLASS, "Minimum TocLevel is " << min_toclevel_
+			<< ", maximum is " << max_toclevel_);
 
 	}
 
@@ -903,6 +898,7 @@ enum CounterTags {
 	CT_END
 };
 
+
 void TextClass::readCounter(Lexer & lexrc)
 {
 	keyword_item counterTags[] = {
@@ -934,13 +930,9 @@ void TextClass::readCounter(Lexer & lexrc)
 			lexrc.next();
 			name = lexrc.getDocString();
 			if (counters_->hasCounter(name))
-				LYXERR(Debug::TCLASS) 
-					<< "Reading existing counter " 
-					<< to_utf8(name) << endl;
+				LYXERR(Debug::TCLASS, "Reading existing counter " << to_utf8(name));
 			else
-				LYXERR(Debug::TCLASS) 
-					<< "Reading new counter " 
-					<< to_utf8(name) << endl;
+				LYXERR(Debug::TCLASS, "Reading new counter " << to_utf8(name));
 			break;
 		case CT_WITHIN:
 			lexrc.next();

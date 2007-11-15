@@ -165,7 +165,7 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 		 bformat(_("Cannot copy file %1$s to %2$s.\n"
 				 "Please check whether the directory exists and is writeable."),
 				from_utf8(emb_file), from_utf8(ext_file)));
-	//LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
+	//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 	return false;
 }
 
@@ -207,7 +207,7 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 		 bformat(_("Cannot copy file %1$s to %2$s.\n"
 			   "Please check whether the directory exists and is writeable."),
 				from_utf8(ext_file), from_utf8(emb_file)));
-	//LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
+	//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 	return false;
 }
 
@@ -309,7 +309,7 @@ bool EmbeddedFiles::writeFile(DocFileName const & filename)
 				 bformat(_("Cannot create file %1$s.\n"
 					   "Please check whether the directory exists and is writeable."),
 					 from_utf8(filename.absFilename())));
-		//LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
+		//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 	}
 	return true;
 }

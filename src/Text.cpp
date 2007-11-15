@@ -310,8 +310,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
 			break;
 		}
 
-		LYXERR(Debug::PARSER) << "Handling paragraph token: `"
-				      << token << '\'' << endl;
+		LYXERR(Debug::PARSER, "Handling paragraph token: `" << token << '\'');
 		if (token == "\\begin_layout" || token == "\\end_document"
 		    || token == "\\end_inset" || token == "\\begin_deeper"
 		    || token == "\\end_deeper") {

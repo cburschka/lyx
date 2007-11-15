@@ -246,7 +246,7 @@ static SpellBase * getSpeller(BufferParams const & bp)
 
 bool GuiSpellchecker::initialiseParams(std::string const &)
 {
-	LYXERR(Debug::GUI) << "Spellchecker::initialiseParams" << endl;
+	LYXERR(Debug::GUI, "Spellchecker::initialiseParams");
 
 	speller_ = getSpeller(buffer().params());
 	if (!speller_)
@@ -273,7 +273,7 @@ bool GuiSpellchecker::initialiseParams(std::string const &)
 
 void GuiSpellchecker::clearParams()
 {
-	LYXERR(Debug::GUI) << "Spellchecker::clearParams" << endl;
+	LYXERR(Debug::GUI, "Spellchecker::clearParams");
 	delete speller_;
 	speller_ = 0;
 }
@@ -337,7 +337,7 @@ static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 
 void GuiSpellchecker::check()
 {
-	LYXERR(Debug::GUI) << "Check the spelling of a word" << endl;
+	LYXERR(Debug::GUI, "Check the spelling of a word");
 
 	SpellBase::Result res = SpellBase::OK;
 
@@ -372,7 +372,7 @@ void GuiSpellchecker::check()
 		float progress = total ? float(start)/total : 1;
 		newvalue_ = int(100.0 * progress);
 		if (newvalue_!= oldval_) {
-			LYXERR(Debug::GUI) << "Updating spell progress." << endl;
+			LYXERR(Debug::GUI, "Updating spell progress.");
 			oldval_ = newvalue_;
 			// set progress bar
 			partialUpdate(SPELL_PROGRESSED);
@@ -389,7 +389,7 @@ void GuiSpellchecker::check()
 			return;
 	}
 
-	LYXERR(Debug::GUI) << "Found word \"" << to_utf8(getWord()) << "\"" << endl;
+	LYXERR(Debug::GUI, "Found word \"" << to_utf8(getWord()) << "\"");
 
 	int const size = cur.selEnd().pos() - cur.selBegin().pos();
 	cur.pos() -= size;
@@ -401,7 +401,7 @@ void GuiSpellchecker::check()
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
-		LYXERR(Debug::GUI) << "Found a word needing checking." << endl;
+		LYXERR(Debug::GUI, "Found a word needing checking.");
 		partialUpdate(SPELL_FOUND_WORD);
 	}
 }
@@ -446,8 +446,8 @@ void GuiSpellchecker::showSummary()
 
 void GuiSpellchecker::replace(docstring const & replacement)
 {
-	LYXERR(Debug::GUI) << "GuiSpellchecker::replace("
-			   << to_utf8(replacement) << ")" << std::endl;
+	LYXERR(Debug::GUI, "GuiSpellchecker::replace("
+			   << to_utf8(replacement) << ")");
 	cap::replaceSelectionWithString(bufferview()->cursor(), replacement, true);
 	buffer().markDirty();
 	// If we used an LFUN, we would not need that

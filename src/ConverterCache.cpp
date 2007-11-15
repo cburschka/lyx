@@ -67,10 +67,9 @@ public:
 		os << std::setw(10) << std::setfill('0') << do_crc(orig_from.absFilename())
 		   << '-' << to_format;
 		cache_name = FileName(addName(cache_dir.absFilename(), os.str()));
-		LYXERR(Debug::FILES) << "Add file cache item " << orig_from
+		LYXERR(Debug::FILES, "Add file cache item " << orig_from
 				     << ' ' << to_format << ' ' << cache_name
-				     << ' ' << timestamp << ' ' << checksum
-				     << '.' << std::endl;
+				     << ' ' << timestamp << ' ' << checksum << '.');
 	}
 	~CacheItem() {}
 	FileName cache_name;
@@ -134,9 +133,8 @@ void ConverterCache::Impl::readIndex()
 
 		// Don't cache files that do not exist anymore
 		if (!orig_from_name.exists()) {
-			LYXERR(Debug::FILES) << "Not caching file `"
-				<< orig_from << "' (does not exist anymore)."
-				<< std::endl;
+			LYXERR(Debug::FILES, "Not caching file `"
+				<< orig_from << "' (does not exist anymore).");
 			support::unlink(item.cache_name);
 			continue;
 		}
@@ -145,18 +143,16 @@ void ConverterCache::Impl::readIndex()
 		// This can happen if two instances of LyX are running
 		// at the same time and update the index file independantly.
 		if (!item.cache_name.exists()) {
-			LYXERR(Debug::FILES) << "Not caching file `"
-				<< orig_from
-				<< "' (cached copy does not exist anymore)."
-				<< std::endl;
+			LYXERR(Debug::FILES, "Not caching file `" << orig_from
+				<< "' (cached copy does not exist anymore).");
 			continue;
 		}
 
 		// Delete the cached file if it is too old
 		if (difftime(now, item.cache_name.lastModified())
 				> lyxrc.converter_cache_maxage) {
-			LYXERR(Debug::FILES) << "Not caching file `"
-				<< orig_from << "' (too old)." << std::endl;
+			LYXERR(Debug::FILES, "Not caching file `"
+				<< orig_from << "' (too old).");
 			support::unlink(item.cache_name);
 			continue;
 		}
@@ -262,9 +258,8 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	if (!lyxrc.use_converter_cache || orig_from.empty() ||
 	    converted_file.empty())
 		return;
-	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format << ' ' << converted_file
-			     << std::endl;
+	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
+			     << ' ' << to_format << ' ' << converted_file);
 
 	// FIXME: Should not hardcode this (see bug 3819 for details)
 	if (to_format == "pstex") {
@@ -281,31 +276,25 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	time_t const timestamp = orig_from.lastModified();
 	Mover const & mover = getMover(to_format);
 	if (item) {
-		LYXERR(Debug::FILES) << "ConverterCache::add(" << orig_from << "):\n"
-					"The file is already in the cache."
-				     << std::endl;
+		LYXERR(Debug::FILES, "ConverterCache::add(" << orig_from << "):\n"
+					"The file is already in the cache.");
 		// First test for timestamp
 		if (timestamp == item->timestamp) {
-			LYXERR(Debug::FILES) << "Same timestamp."
-					     << std::endl;
+			LYXERR(Debug::FILES, "Same timestamp.");
 			return;
-		} else {
-			// Maybe the contents is still the same?
-			item->timestamp = timestamp;
-			unsigned long const checksum = support::sum(orig_from);
-			if (checksum == item->checksum) {
-				LYXERR(Debug::FILES) << "Same checksum."
-						     << std::endl;
-				return;
-			}
-			item->checksum = checksum;
 		}
+		// Maybe the contents is still the same?
+		item->timestamp = timestamp;
+		unsigned long const checksum = support::sum(orig_from);
+		if (checksum == item->checksum) {
+			LYXERR(Debug::FILES, "Same checksum.");
+			return;
+		}
+		item->checksum = checksum;
 		if (!mover.copy(converted_file, item->cache_name,
 		                support::onlyFilename(item->cache_name.absFilename()), 0600)) {
-			LYXERR(Debug::FILES) << "ConverterCache::add("
-					     << orig_from << "):\n"
-						"Could not copy file."
-					     << std::endl;
+			LYXERR(Debug::FILES, "ConverterCache::add(" << orig_from << "):\n"
+						"Could not copy file.");
 		}
 	} else {
 		CacheItem new_item(orig_from, to_format, timestamp,
@@ -318,10 +307,8 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 					formats.getFormatFromFile(orig_from);
 			format_cache.cache[to_format] = new_item;
 		} else
-			LYXERR(Debug::FILES) << "ConverterCache::add("
-					     << orig_from << "):\n"
-						"Could not copy file."
-				     << std::endl;
+			LYXERR(Debug::FILES, "ConverterCache::add(" << orig_from << "):\n"
+						"Could not copy file.");
 	}
 }
 
@@ -331,8 +318,8 @@ void ConverterCache::remove(FileName const & orig_from,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return;
-	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format << std::endl;
+	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
+			     << ' ' << to_format);
 
 	CacheType::iterator const it1 = pimpl_->cache.find(orig_from);
 	if (it1 == pimpl_->cache.end())
@@ -363,25 +350,25 @@ void ConverterCache::remove_all(string const & from_format,
 		FormatCacheType::iterator it2 = format_cache.begin();
 		while (it2 != format_cache.end()) {
 			if (it2->first == to_format) {
-				LYXERR(Debug::FILES)
-					<< "Removing file cache item "
-					<< it1->first
-					<< ' ' << to_format << std::endl;
+				LYXERR(Debug::FILES, "Removing file cache item "
+					<< it1->first << ' ' << to_format);
 				support::unlink(it2->second.cache_name);
 				format_cache.erase(it2);
 				// Have to start over again since items in a
 				// map are not ordered
 				it2 = format_cache.begin();
-			} else
+			} else {
 				++it2;
+			}
 		}
 		if (format_cache.empty()) {
 			pimpl_->cache.erase(it1);
 			// Have to start over again since items in a map are
 			// not ordered
 			it1 = pimpl_->cache.begin();
-		} else
+		} else {
 			++it1;
+		}
 	}
 	pimpl_->writeIndex();
 }
@@ -392,25 +379,25 @@ bool ConverterCache::inCache(FileName const & orig_from,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return false;
-	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format << std::endl;
+	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
+			     << ' ' << to_format);
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	if (!item) {
-		LYXERR(Debug::FILES) << "not in cache." << std::endl;
+		LYXERR(Debug::FILES, "not in cache.");
 		return false;
 	}
 	time_t const timestamp = orig_from.lastModified();
 	if (item->timestamp == timestamp) {
-		LYXERR(Debug::FILES) << "identical timestamp." << std::endl;
+		LYXERR(Debug::FILES, "identical timestamp.");
 		return true;
 	}
 	if (item->checksum == support::sum(orig_from)) {
 		item->timestamp = timestamp;
-		LYXERR(Debug::FILES) << "identical checksum." << std::endl;
+		LYXERR(Debug::FILES, "identical checksum.");
 		return true;
 	}
-	LYXERR(Debug::FILES) << "in cache, but too old." << std::endl;
+	LYXERR(Debug::FILES, "in cache, but too old.");
 	return false;
 }
 
@@ -418,8 +405,8 @@ bool ConverterCache::inCache(FileName const & orig_from,
 FileName const & ConverterCache::cacheName(FileName const & orig_from,
 		string const & to_format) const
 {
-	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format << std::endl;
+	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
+			     << ' ' << to_format);
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	BOOST_ASSERT(item);
@@ -432,8 +419,8 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty() || dest.empty())
 		return false;
-	LYXERR(Debug::FILES) << BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format << ' ' << dest << std::endl;
+	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
+			     << ' ' << to_format << ' ' << dest);
 
 	// FIXME: Should not hardcode this (see bug 3819 for details)
 	if (to_format == "pstex") {

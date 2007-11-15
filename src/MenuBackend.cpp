@@ -143,10 +143,9 @@ docstring const MenuItem::binding(bool forgui) const
 	if (bindings.size())
 		return bindings.begin()->print(KeySequence::ForGui);
 
-	LYXERR(Debug::KBMAP)
-		<< "No binding for "
+	LYXERR(Debug::KBMAP, "No binding for "
 		<< lyxaction.getActionName(func_.action)
-		<< '(' << to_utf8(func_.argument()) << ')' << endl;
+		<< '(' << to_utf8(func_.argument()) << ')');
 	return docstring();
 }
 

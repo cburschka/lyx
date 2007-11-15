@@ -47,23 +47,23 @@ GuiClipboard::GuiClipboard()
 
 string const GuiClipboard::getAsLyX() const
 {
-	LYXERR(Debug::ACTION) << "GuiClipboard::getAsLyX(): `";
+	LYXERR(Debug::ACTION, "GuiClipboard::getAsLyX(): `");
 	// We don't convert encodings here since the encoding of the
 	// clipboard contents is specified in the data itself
 	QMimeData const * source =
 		qApp->clipboard()->mimeData(QClipboard::Clipboard);
 	if (!source) {
-		LYXERR(Debug::ACTION) << "' (no QMimeData)" << endl;
+		LYXERR(Debug::ACTION, "' (no QMimeData)");
 		return string();
 	}
 	if (source->hasFormat(mime_type)) {
 		// data from ourself or some other LyX instance
 		QByteArray const ar = source->data(mime_type);
 		string const s(ar.data(), ar.count());
-		LYXERR(Debug::ACTION) << s << "'" << endl;
+		LYXERR(Debug::ACTION, s << "'");
 		return s;
 	}
-	LYXERR(Debug::ACTION) << "'" << endl;
+	LYXERR(Debug::ACTION, "'");
 	return string();
 }
 
@@ -73,8 +73,7 @@ docstring const GuiClipboard::getAsText() const
 	// text data from other applications
 	QString const str = qApp->clipboard()->text(QClipboard::Clipboard)
 				.normalized(QString::NormalizationForm_C);
-	LYXERR(Debug::ACTION) << "GuiClipboard::getAsText(): `"
-			      << fromqstr(str) << "'" << endl;
+	LYXERR(Debug::ACTION, "GuiClipboard::getAsText(): `" << fromqstr(str) << "'");
 	if (str.isNull())
 		return docstring();
 
@@ -84,8 +83,8 @@ docstring const GuiClipboard::getAsText() const
 
 void GuiClipboard::put(string const & lyx, docstring const & text)
 {
-	LYXERR(Debug::ACTION) << "GuiClipboard::put(`" << lyx << "' `"
-			      << to_utf8(text) << "')" << endl;
+	LYXERR(Debug::ACTION, "GuiClipboard::put(`" << lyx << "' `"
+			      << to_utf8(text) << "')");
 	// We don't convert the encoding of lyx since the encoding of the
 	// clipboard contents is specified in the data itself
 	QMimeData * data = new QMimeData;

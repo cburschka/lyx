@@ -246,13 +246,13 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 Buffer::Buffer(string const & file, bool readonly)
 	: pimpl_(new Impl(*this, FileName(file), readonly)), gui_(0)
 {
-	LYXERR(Debug::INFO) << "Buffer::Buffer()" << endl;
+	LYXERR(Debug::INFO, "Buffer::Buffer()");
 }
 
 
 Buffer::~Buffer()
 {
-	LYXERR(Debug::INFO) << "Buffer::~Buffer()" << endl;
+	LYXERR(Debug::INFO, "Buffer::~Buffer()");
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
@@ -421,12 +421,12 @@ string Buffer::logName(LogType * type) const
 
 	if (bname.exists() &&
 	    (!fname.exists() || fname.lastModified() < bname.lastModified())) {
-		LYXERR(Debug::FILES) << "Log name calculated as: " << bname << endl;
+		LYXERR(Debug::FILES, "Log name calculated as: " << bname);
 		if (type)
 			*type = buildlog;
 		return bname.absFilename();
 	}
-	LYXERR(Debug::FILES) << "Log name calculated as: " << fname << endl;
+	LYXERR(Debug::FILES, "Log name calculated as: " << fname);
 	if (type)
 			*type = latexlog;
 	return fname.absFilename();
@@ -498,8 +498,8 @@ int Buffer::readHeader(Lexer & lex)
 			continue;
 		}
 
-		LYXERR(Debug::PARSER) << "Handling document header token: `"
-				      << token << '\'' << endl;
+		LYXERR(Debug::PARSER, "Handling document header token: `"
+				      << token << '\'');
 
 		string unknown = params().readToken(lex, token);
 		if (!unknown.empty()) {
@@ -676,7 +676,7 @@ bool Buffer::readFile(FileName const & filename)
 	string format = filename.guessFormatFromContents();
 	if (format == "zip") {
 		// decompress to a temp directory
-		LYXERR(Debug::FILES) << filename << " is in zip format. Unzip to " << temppath() << endl;
+		LYXERR(Debug::FILES, filename << " is in zip format. Unzip to " << temppath());
 		::unzipToDir(filename.toFilesystemEncoding(), temppath());
 		//
 		FileName lyxfile(addName(temppath(), "content.lyx"));
@@ -802,9 +802,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 			<< ' ' << quoteName(filename.toFilesystemEncoding());
 		string const command_str = command.str();
 
-		LYXERR(Debug::INFO) << "Running '"
-				    << command_str << '\''
-				    << endl;
+		LYXERR(Debug::INFO, "Running '" << command_str << '\'');
 
 		cmd_ret const ret = runCommand(command_str);
 		if (ret.first != 0) {
@@ -862,7 +860,7 @@ bool Buffer::save() const
 				     bformat(_("Cannot create backup file %1$s.\n"
 					       "Please check whether the directory exists and is writeable."),
 					     from_utf8(backupName.absFilename())));
-			//LYXERR(Debug::DEBUG) << "Fs error: " << fe.what() << endl;
+			//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 		}
 	}
 
@@ -996,8 +994,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 			   bool output_preamble, bool output_body)
 {
 	string const encoding = runparams.encoding->iconvName();
-	LYXERR(Debug::LATEX) << "makeLaTeXFile encoding: "
-		<< encoding << "..." << endl;
+	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << "...");
 
 	odocfstream ofs(encoding);
 	if (!openFileWrite(ofs, fname))
@@ -1050,10 +1047,10 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	OutputParams runparams = runparams_in;
 
 	// validate the buffer.
-	LYXERR(Debug::LATEX) << "  Validating buffer..." << endl;
+	LYXERR(Debug::LATEX, "  Validating buffer...");
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
-	LYXERR(Debug::LATEX) << "  Buffer validation done." << endl;
+	LYXERR(Debug::LATEX, "  Buffer validation done.");
 
 	// The starting paragraph of the coming rows is the
 	// first paragraph of the document. (Asger)
@@ -1065,7 +1062,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		texrow().newline();
 		texrow().newline();
 	}
-	LYXERR(Debug::INFO) << "lyx document header finished" << endl;
+	LYXERR(Debug::INFO, "lyx document header finished");
 	// There are a few differences between nice LaTeX and usual files:
 	// usual is \batchmode and has a
 	// special input@path to allow the including of figures
@@ -1109,7 +1106,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 
 	texrow().start(paragraphs().begin()->id(), 0);
 	
-	LYXERR(Debug::INFO) << "preamble finished, now the body." << endl;
+	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
 	if (!lyxrc.language_auto_begin &&
 	    !params().language->babel().empty()) {
@@ -1173,20 +1170,17 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	if (output_preamble) {
 		os << "\\end{document}\n";
 		texrow().newline();
-
-		LYXERR(Debug::LATEX) << "makeLaTeXFile...done" << endl;
+		LYXERR(Debug::LATEX, "makeLaTeXFile...done");
 	} else {
-		LYXERR(Debug::LATEX) << "LaTeXFile for inclusion made."
-				     << endl;
+		LYXERR(Debug::LATEX, "LaTeXFile for inclusion made.");
 	}
 	runparams_in.encoding = runparams.encoding;
 
 	// Just to be sure. (Asger)
 	texrow().newline();
 
-	LYXERR(Debug::INFO) << "Finished making LaTeX file." << endl;
-	LYXERR(Debug::INFO) << "Row count was " << texrow().rows() - 1
-			    << '.' << endl;
+	LYXERR(Debug::INFO, "Finished making LaTeX file.");
+	LYXERR(Debug::INFO, "Row count was " << texrow().rows() - 1 << '.');
 }
 
 
@@ -1212,7 +1206,7 @@ void Buffer::makeDocBookFile(FileName const & fname,
 			      OutputParams const & runparams,
 			      bool const body_only)
 {
-	LYXERR(Debug::LATEX) << "makeDocBookFile..." << endl;
+	LYXERR(Debug::LATEX, "makeDocBookFile...");
 
 	//ofstream ofs;
 	odocfstream ofs;

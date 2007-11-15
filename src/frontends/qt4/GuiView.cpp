@@ -210,7 +210,7 @@ struct GuiView::GuiViewPrivate
 
 	void initBackground()
 	{
-		LYXERR(Debug::GUI) << "show banner: " << lyxrc.show_banner << endl;
+		LYXERR(Debug::GUI, "show banner: " << lyxrc.show_banner);
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
 		bg_widget_ = new BackgroundWidget(":/images/banner.png", text);
@@ -302,7 +302,7 @@ GuiView::GuiView(int id)
 	d.splitter_ = new QSplitter;
 
 	d.initBackground();
-	LYXERR(Debug::GUI) << "stack widget!" << endl;
+	LYXERR(Debug::GUI, "stack widget!");
 	d.stack_widget_ = new QStackedWidget;
 	d.stack_widget_->addWidget(d.bg_widget_);
 	d.stack_widget_->addWidget(d.splitter_);
@@ -446,8 +446,7 @@ void GuiView::dropEvent(QDropEvent* event)
 	if (files.isEmpty())
 		return;
 
-	LYXERR(Debug::GUI) << BOOST_CURRENT_FUNCTION
-		<< " got URLs!" << endl;
+	LYXERR(Debug::GUI, BOOST_CURRENT_FUNCTION << " got URLs!");
 	for (int i = 0; i != files.size(); ++i) {
 		string const file = support::os::internal_path(fromqstr(
 			files.at(i).toLocalFile()));
@@ -977,7 +976,7 @@ void GuiView::updateEmbeddedFiles()
 
 void GuiView::autoSave()
 {
-	LYXERR(Debug::INFO) << "Running autoSave()" << endl;
+	LYXERR(Debug::INFO, "Running autoSave()");
 
 	if (buffer())
 		view()->buffer().autoSave();

@@ -515,8 +515,8 @@ void LyX::prepareExit()
 
 	// do any other cleanup procedures now
 	if (package().temp_dir() != package().system_temp_dir()) {
-		LYXERR(Debug::INFO) << "Deleting tmp dir "
-				    << package().temp_dir().absFilename() << endl;
+		LYXERR(Debug::INFO, "Deleting tmp dir "
+				    << package().temp_dir().absFilename());
 
 		if (!package().temp_dir().destroyDirectory()) {
 			docstring const msg =
@@ -565,9 +565,9 @@ int LyX::init(int & argc, char * argv[])
 	}
 
 	// Initialization of LyX (reads lyxrc and more)
-	LYXERR(Debug::INIT) << "Initializing LyX::init..." << endl;
+	LYXERR(Debug::INIT, "Initializing LyX::init...");
 	bool success = init();
-	LYXERR(Debug::INIT) << "Initializing LyX::init...done" << endl;
+	LYXERR(Debug::INIT, "Initializing LyX::init...done");
 	if (!success)
 		return EXIT_FAILURE;
 
@@ -656,8 +656,7 @@ void LyX::execBatchCommands()
 	if (pimpl_->batch_command.empty())
 		return;
 
-	LYXERR(Debug::INIT) << "About to handle -x '"
-		<< pimpl_->batch_command << '\'' << endl;
+	LYXERR(Debug::INIT, "About to handle -x '" << pimpl_->batch_command << '\'');
 
 	pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(pimpl_->batch_command));
 }
@@ -917,7 +916,7 @@ bool LyX::init()
 		return false;
 
 	// Load the layouts
-	LYXERR(Debug::INIT) << "Reading layouts..." << endl;
+	LYXERR(Debug::INIT, "Reading layouts...");
 	if (!LyXSetStyle())
 		return false;
 	//...and the modules
@@ -973,11 +972,10 @@ bool LyX::init()
 		return false;
 	}
 
-	LYXERR(Debug::INIT) << "LyX tmp dir: `"
-			    << package().temp_dir().absFilename()
-			    << '\'' << endl;
+	LYXERR(Debug::INIT, "LyX tmp dir: `"
+			    << package().temp_dir().absFilename() << '\'');
 
-	LYXERR(Debug::INIT) << "Reading session information '.lyx/session'..." << endl;
+	LYXERR(Debug::INIT, "Reading session information '.lyx/session'...");
 	pimpl_->session_.reset(new Session(lyxrc.num_lastfiles));
 
 	// This must happen after package initialization and after lyxrc is
@@ -1099,21 +1097,19 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 
 bool LyX::readRcFile(string const & name)
 {
-	LYXERR(Debug::INIT) << "About to read " << name << "... ";
+	LYXERR(Debug::INIT, "About to read " << name << "... ");
 
 	FileName const lyxrc_path = libFileSearch(string(), name);
 	if (!lyxrc_path.empty()) {
-
-		LYXERR(Debug::INIT) << "Found in " << lyxrc_path << endl;
-
+		LYXERR(Debug::INIT, "Found in " << lyxrc_path);
 		if (lyxrc.read(lyxrc_path) < 0) {
 			showFileError(name);
 			return false;
 		}
-	} else
-		LYXERR(Debug::INIT) << "Not found." << lyxrc_path << endl;
+	} else {
+		LYXERR(Debug::INIT, "Not found." << lyxrc_path);
+	}
 	return true;
-
 }
 
 
@@ -1141,14 +1137,12 @@ bool LyX::readUIFile(string const & name, bool include)
 	std::list<string>::const_iterator end = uifiles.end();
 	it = std::find(it, end, name);
 	if (it != end) {
-		LYXERR(Debug::INIT) << "UI file '" << name
-				    << "' has been read already. "
-				    << "Is this an include loop?"
-				    << endl;
+		LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
+				    << "Is this an include loop?");
 		return false;
 	}
 
-	LYXERR(Debug::INIT) << "About to read " << name << "..." << endl;
+	LYXERR(Debug::INIT, "About to read " << name << "...");
 
 
 	FileName ui_path;
@@ -1162,15 +1156,14 @@ bool LyX::readUIFile(string const & name, bool include)
 		ui_path = libFileSearch("ui", name, "ui");
 
 	if (ui_path.empty()) {
-		LYXERR(Debug::INIT) << "Could not find " << name << endl;
+		LYXERR(Debug::INIT, "Could not find " << name);
 		showFileError(name);
 		return false;
 	}
 
 	uifiles.push_back(name);
 
-	LYXERR(Debug::INIT) << "Found " << name
-			    << " in " << ui_path << endl;
+	LYXERR(Debug::INIT, "Found " << name << " in " << ui_path);
 	Lexer lex(uitags, ui_last - 1);
 	lex.setFile(ui_path);
 	if (!lex.isOK()) {
@@ -1216,7 +1209,7 @@ bool LyX::readUIFile(string const & name, bool include)
 // Read the languages file `name'
 bool LyX::readLanguagesFile(string const & name)
 {
-	LYXERR(Debug::INIT) << "About to read " << name << "..." << endl;
+	LYXERR(Debug::INIT, "About to read " << name << "...");
 
 	FileName const lang_path = libFileSearch(string(), name);
 	if (lang_path.empty()) {
@@ -1232,8 +1225,8 @@ bool LyX::readLanguagesFile(string const & name)
 bool LyX::readEncodingsFile(string const & enc_name,
 			    string const & symbols_name)
 {
-	LYXERR(Debug::INIT) << "About to read " << enc_name << " and "
-			    << symbols_name << "..." << endl;
+	LYXERR(Debug::INIT, "About to read " << enc_name << " and "
+			    << symbols_name << "...");
 
 	FileName const symbols_path = libFileSearch(string(), symbols_name);
 	if (symbols_path.empty()) {
