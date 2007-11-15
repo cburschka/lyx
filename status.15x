@@ -147,7 +147,10 @@ What's new
 
 - Really highlight search text in the find and replace dialog (bug 3999).
 
-- Fix bug that files with nonascii names are reported as externally modified.
+- Fix bug that files with non-ascii names are reported as externally modified
+  (bug 4266).
+
+- Disallow paragraph breaks in optional arguments (aka short title) (bug 4359).
 
 
 * DOCUMENTATION
