@@ -187,6 +187,7 @@ docstring const Messages::get(string const & m) const
 {
 	// See comment above
 	boost::smatch sub;
+	static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
 	if (regex_match(m, sub, reg))
 		return from_ascii(sub.str(1));
 	else
