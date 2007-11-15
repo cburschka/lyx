@@ -23,16 +23,12 @@ namespace lyx {
 
 InsetOptArg::InsetOptArg(BufferParams const & ins)
 	: InsetCollapsable(ins)
-{
-	setLabel(_("opt"));
-}
+{}
 
 
 InsetOptArg::InsetOptArg(InsetOptArg const & in)
 	: InsetCollapsable(in)
-{
-	setLabel(_("opt"));
-}
+{}
 
 
 Inset * InsetOptArg::clone() const

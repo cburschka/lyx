@@ -224,3 +224,11 @@ InsetLayout URL
 	EndPreamble
 End
 
+InsetLayout OptArg
+	LabelString           opt
+	LabelFont
+	  Color               collapsable
+	  Size                Small
+	EndFont
+	MultiPar              false
+End

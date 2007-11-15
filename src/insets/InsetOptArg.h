@@ -29,6 +29,8 @@ public:
 
 	/// code of the inset
 	InsetCode lyxCode() const { return OPTARG_CODE; }
+	///
+	docstring name() const { return from_ascii("OptArg"); }
 	/// return an message upon editing
 	virtual docstring const editMessage() const;
 
