@@ -118,9 +118,7 @@ public:
 		RC_SCREEN_FONT_SIZES,
 		RC_SCREEN_FONT_TYPEWRITER,
 		RC_SCREEN_FONT_TYPEWRITER_FOUNDRY,
-		RC_SCREEN_GEOMETRY_HEIGHT,
-		RC_SCREEN_GEOMETRY_WIDTH,
-		RC_SCREEN_GEOMETRY_XYSAVED,
+		RC_GEOMETRY_SESSION,
 		RC_SCREEN_ZOOM,
 		RC_SERVERPIPE,
 		RC_SET_COLOR,
@@ -247,12 +245,9 @@ public:
 	bool make_backup;
 	/// A directory for storing backup files
 	std::string backupdir_path;
-	/// Width of MainWindow. if 0, value from last session will be used
-	int geometry_width;
-	/// Height of MainWindow, if 0, value from last session will be used
-	int geometry_height;
-	/// Whether or not save/restore windows position as session info
-	bool geometry_xysaved;
+	/// Whether or not save/restore session information
+	/// like windows position and geometry.
+	bool allow_geometry_session;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
 	/// Screen font sizes in points for each font size

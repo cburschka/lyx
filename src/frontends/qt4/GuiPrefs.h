@@ -343,8 +343,6 @@ public:
 
 public Q_SLOTS:
 	void select_ui();
-	void on_loadWindowSizeCB_toggled(bool);
-
 };
 
 

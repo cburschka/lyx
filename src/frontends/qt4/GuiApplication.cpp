@@ -44,6 +44,7 @@
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QPixmapCache>
+#include <QRegExp>
 #include <QSessionManager>
 #include <QSocketNotifier>
 #include <QTextCodec>
@@ -201,7 +202,21 @@ LyXView & GuiApplication::createView(string const & geometryArg)
 	theLyXFunc().setLyXView(&view);
 
 	view.init();
-	view.setGeometry(geometryArg);
+	view.show();
+	if (!geometryArg.empty())
+	{
+#ifdef Q_WS_WIN
+		int x, y;
+		int w, h;
+		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)([+-][0-9]*)){0,1}" );
+		re.indexIn(toqstr(geometryArg.c_str()));
+		w = re.cap(1).toInt();
+		h = re.cap(2).toInt();
+		x = re.cap(3).toInt();
+		y = re.cap(4).toInt();
+		view.setGeometry(x, y, w, h);
+#endif
+	}
 	view.setFocus();
 
 	setCurrentView(view);

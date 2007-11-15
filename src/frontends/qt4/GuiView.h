@@ -24,6 +24,7 @@ class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
 class QMenu;
+class QShowEvent;
 
 
 namespace lyx {
@@ -59,18 +60,8 @@ public:
 	virtual void init();
 	virtual void close();
 	virtual void setFocus();
-
-	enum Maximized {
-		NotMaximized = 0, // LyX::newLyXView() relies on this to be zero!
-		VerticallyMaximized,
-		HorizontallyMaximized,
-		CompletelyMaximized
-	};
-	///
-	virtual void setGeometry(std::string const & geometryArg);
-	/// save the geometry state in the session manager.
-	virtual void saveGeometry();
 	virtual void setBusy(bool);
+
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
 	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
 	virtual void updateStatusBar();
@@ -185,19 +176,13 @@ private:
 	///
 	void dropEvent(QDropEvent * ev);
 	/// make sure we quit cleanly
-	virtual void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e);
 	///
-	virtual void resizeEvent(QResizeEvent * e);
-	///
-	virtual void moveEvent(QMoveEvent * e);
+	void showEvent(QShowEvent *);
 
 	/// in order to catch Tab key press.
 	bool event(QEvent * e);
 	bool focusNextPrevChild(bool);
-	///
-	QRect updateFloatingGeometry();
-	///
-	void setIconSize(unsigned int size);
 
 	///
 	struct GuiViewPrivate;
@@ -208,9 +193,6 @@ private:
 
 	/// are we quitting by the menu?
 	bool quitting_by_menu_;
-
-	///
-	QRect floatingGeometry_;
 
 	struct ToolbarSize {
 		int top_width;

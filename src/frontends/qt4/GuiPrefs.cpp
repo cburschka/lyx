@@ -1609,13 +1609,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(loadSessionCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(loadWindowSizeCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(loadWindowLocationCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(windowWidthSB, SIGNAL(valueChanged(int)),
-		this, SIGNAL(changed()));
-	connect(windowHeightSB, SIGNAL(valueChanged(int)),
+	connect(allowGeometrySessionCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(cursorFollowsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -1638,14 +1632,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.ui_file = internal_path(fromqstr(uiFileED->text()));
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
-	if (loadWindowSizeCB->isChecked()) {
-		rc.geometry_width = 0;
-		rc.geometry_height = 0;
-	} else {
-		rc.geometry_width = windowWidthSB->value();
-		rc.geometry_height = windowHeightSB->value();
-	}
-	rc.geometry_xysaved = loadWindowLocationCB->isChecked();
+	rc.allow_geometry_session = allowGeometrySessionCB->isChecked();
 	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
 	rc.sort_layouts = sortEnvironmentsCB->isChecked();
 	rc.autosave = autoSaveSB->value() * 60;
@@ -1660,13 +1647,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 	uiFileED->setText(toqstr(external_path(rc.ui_file)));
 	restoreCursorCB->setChecked(rc.use_lastfilepos);
 	loadSessionCB->setChecked(rc.load_session);
-	bool loadWindowSize = rc.geometry_width == 0 && rc.geometry_height == 0;
-	loadWindowSizeCB->setChecked(loadWindowSize);
-	if (!loadWindowSize) {
-		windowWidthSB->setValue(rc.geometry_width);
-		windowHeightSB->setValue(rc.geometry_height);
-	}
-	loadWindowLocationCB->setChecked(rc.geometry_xysaved);
+	allowGeometrySessionCB->setChecked(rc.allow_geometry_session);
 	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	sortEnvironmentsCB->setChecked(rc.sort_layouts);
 	// convert to minutes
@@ -1690,15 +1671,6 @@ void PrefUserInterface::select_ui()
 	docstring file = form_->browseUI(name);
 	if (!file.empty())
 		uiFileED->setText(toqstr(file));
-}
-
-
-void PrefUserInterface::on_loadWindowSizeCB_toggled(bool loadwindowsize)
-{
-	windowWidthLA->setDisabled(loadwindowsize);
-	windowHeightLA->setDisabled(loadwindowsize);
-	windowWidthSB->setDisabled(loadwindowsize);
-	windowHeightSB->setDisabled(loadwindowsize);
 }
 
 

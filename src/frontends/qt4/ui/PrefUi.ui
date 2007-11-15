@@ -27,196 +27,6 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="uiFileLA" >
-     <property name="text" >
-      <string>&amp;User interface file:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>uiFileED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="uiFileED" />
-   </item>
-   <item row="0" column="2" >
-    <widget class="QPushButton" name="uiFilePB" >
-     <property name="text" >
-      <string>Bro&amp;wse...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="3" >
-    <widget class="QGroupBox" name="GeometryGB" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title" >
-      <string>Session</string>
-     </property>
-     <property name="flat" >
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" colspan="2" >
-       <widget class="QCheckBox" name="loadWindowSizeCB" >
-        <property name="text" >
-         <string>Save/restore window size, or use fixed size</string>
-        </property>
-        <property name="checked" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="4" column="0" >
-       <widget class="QCheckBox" name="loadSessionCB" >
-        <property name="text" >
-         <string>Load opened files from last session</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" >
-       <widget class="QCheckBox" name="restoreCursorCB" >
-        <property name="text" >
-         <string>Restore cursor positions</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QCheckBox" name="loadWindowLocationCB" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="toolTip" >
-         <string>Restore to cursor position when the file was last closed</string>
-        </property>
-        <property name="text" >
-         <string>Save/restore window position</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>30</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="windowWidthLA" >
-          <property name="enabled" >
-           <bool>false</bool>
-          </property>
-          <property name="text" >
-           <string>Width</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="windowWidthSB" >
-          <property name="enabled" >
-           <bool>false</bool>
-          </property>
-          <property name="maximum" >
-           <number>9999</number>
-          </property>
-          <property name="minimum" >
-           <number>200</number>
-          </property>
-          <property name="singleStep" >
-           <number>10</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="windowHeightLA" >
-          <property name="enabled" >
-           <bool>false</bool>
-          </property>
-          <property name="text" >
-           <string>Height</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="windowHeightSB" >
-          <property name="enabled" >
-           <bool>false</bool>
-          </property>
-          <property name="maximum" >
-           <number>9999</number>
-          </property>
-          <property name="minimum" >
-           <number>200</number>
-          </property>
-          <property name="singleStep" >
-           <number>10</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>30</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item row="2" column="0" colspan="3" >
     <widget class="QGroupBox" name="documentsGB" >
      <property name="title" >
@@ -312,13 +122,18 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3" >
-    <widget class="QGroupBox" name="scrollGB" >
-     <property name="title" >
-      <string>Editing</string>
+   <item row="1" column="0" colspan="2" >
+    <widget class="QGroupBox" name="GeometryGB" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="alignment" >
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     <property name="title" >
+      <string>Session</string>
      </property>
      <property name="flat" >
       <bool>true</bool>
@@ -331,21 +146,47 @@
        <number>6</number>
       </property>
       <item row="0" column="0" >
-       <widget class="QCheckBox" name="cursorFollowsCB" >
+       <widget class="QCheckBox" name="allowGeometrySessionCB" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="toolTip" >
+         <string>Restore to cursor position when the file was last closed</string>
+        </property>
         <property name="text" >
-         <string>Cursor follows &amp;scrollbar</string>
+         <string>Allow saving/restoring of windows geometry</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="loadSessionCB" >
+        <property name="text" >
+         <string>Load opened files from last session</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QCheckBox" name="sortEnvironmentsCB" >
+       <widget class="QCheckBox" name="restoreCursorCB" >
         <property name="text" >
-         <string>Sort &amp;Environments alphabetically</string>
+         <string>Restore cursor positions</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
+   </item>
+   <item row="5" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="4" column="0" colspan="3" >
     <widget class="QGroupBox" name="pixmapCacheGB" >
@@ -381,28 +222,67 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item row="5" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+   <item row="3" column="0" colspan="3" >
+    <widget class="QGroupBox" name="scrollGB" >
+     <property name="title" >
+      <string>Editing</string>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
-    </spacer>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="cursorFollowsCB" >
+        <property name="text" >
+         <string>Cursor follows &amp;scrollbar</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="sortEnvironmentsCB" >
+        <property name="text" >
+         <string>Sort &amp;Environments alphabetically</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="2" >
+    <widget class="QPushButton" name="uiFilePB" >
+     <property name="text" >
+      <string>Bro&amp;wse...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="uiFileED" />
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="uiFileLA" >
+     <property name="text" >
+      <string>&amp;User interface file:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>uiFileED</cstring>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>uiFileED</tabstop>
   <tabstop>uiFilePB</tabstop>
-  <tabstop>loadWindowSizeCB</tabstop>
-  <tabstop>windowWidthSB</tabstop>
-  <tabstop>windowHeightSB</tabstop>
-  <tabstop>loadWindowLocationCB</tabstop>
+  <tabstop>allowGeometrySessionCB</tabstop>
   <tabstop>restoreCursorCB</tabstop>
   <tabstop>loadSessionCB</tabstop>
   <tabstop>autoSaveCB</tabstop>

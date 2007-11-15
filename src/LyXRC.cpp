@@ -67,6 +67,7 @@ namespace {
 // when adding something to this array keep it sorted!
 keyword_item lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
+	{ "\\allow_geometry_session", LyXRC::RC_GEOMETRY_SESSION },
 	{ "\\alternate_language", LyXRC::RC_ALT_LANG },
 	{ "\\auto_number", LyXRC::RC_AUTO_NUMBER },
 	{ "\\auto_region_delete", LyXRC::RC_AUTOREGIONDELETE },
@@ -146,9 +147,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\screen_font_sizes", LyXRC::RC_SCREEN_FONT_SIZES },
 	{ "\\screen_font_typewriter", LyXRC::RC_SCREEN_FONT_TYPEWRITER },
 	{ "\\screen_font_typewriter_foundry", LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY },
-	{ "\\screen_geometry_height", LyXRC::RC_SCREEN_GEOMETRY_HEIGHT },
-	{ "\\screen_geometry_width", LyXRC::RC_SCREEN_GEOMETRY_WIDTH },
-	{ "\\screen_geometry_xysaved", LyXRC::RC_SCREEN_GEOMETRY_XYSAVED },
 	{ "\\screen_zoom", LyXRC::RC_SCREEN_ZOOM },
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
@@ -222,9 +220,7 @@ void LyXRC::setDefaults() {
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
 	zoom = 150;
-	geometry_width = 0;
-	geometry_height = 0;
-	geometry_xysaved = true;
+	allow_geometry_session = true;
 	// Default LaTeX font size:
 	font_sizes[FONT_SIZE_TINY] = "5.0";
 	font_sizes[FONT_SIZE_SCRIPT] = "7.0";
@@ -641,21 +637,9 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 
-		case RC_SCREEN_GEOMETRY_HEIGHT:
+		case RC_GEOMETRY_SESSION:
 			if (lexrc.next()) {
-				geometry_height = lexrc.getInteger();
-			}
-			break;
-
-		case RC_SCREEN_GEOMETRY_WIDTH:
-			if (lexrc.next()) {
-				geometry_width = lexrc.getInteger();
-			}
-			break;
-
-		case RC_SCREEN_GEOMETRY_XYSAVED:
-			if (lexrc.next()) {
-				geometry_xysaved = lexrc.getBool();
+				allow_geometry_session = lexrc.getBool();
 			}
 			break;
 
@@ -1573,26 +1557,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_SCREEN_GEOMETRY_HEIGHT:
+	case RC_GEOMETRY_SESSION:
 		if (ignore_system_lyxrc ||
-		    geometry_height != system_lyxrc.geometry_height) {
-			os << "\\screen_geometry_height " << geometry_height
-			   << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_SCREEN_GEOMETRY_WIDTH:
-		if (ignore_system_lyxrc ||
-		    geometry_width != system_lyxrc.geometry_width) {
-			os << "\\screen_geometry_width " << geometry_width
-			   << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_SCREEN_GEOMETRY_XYSAVED:
-		if (ignore_system_lyxrc ||
-		    geometry_xysaved != system_lyxrc.geometry_xysaved) {
-			os << "\\screen_geometry_xysaved " << convert<string>(geometry_xysaved)
+		    allow_geometry_session != system_lyxrc.allow_geometry_session) {
+			os << "\\allow_geometry_session " << convert<string>(allow_geometry_session)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
@@ -2647,13 +2615,8 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper.");
 		break;
 
-	case RC_SCREEN_GEOMETRY_HEIGHT:
-	case RC_SCREEN_GEOMETRY_WIDTH:
-		str = _("Specify geometry of the main view in width x height (values from last session will not be used if non-zero values are specified).");
-		break;
-
-	case RC_SCREEN_GEOMETRY_XYSAVED:
-		str = _("Allow session manager to save and restore windows position.");
+	case RC_GEOMETRY_SESSION:
+		str = _("Allow session manager to save and restore windows geometry.");
 		break;
 
 	case RC_SERVERPIPE:

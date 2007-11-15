@@ -52,7 +52,6 @@
 #include "LyXRC.h"
 #include "MenuBackend.h"
 #include "Paragraph.h"
-#include "Session.h"
 #include "TextClass.h"
 #include "Text.h"
 #include "ToolbarBackend.h"
@@ -73,6 +72,8 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QPushButton>
+#include <QSettings>
+#include <QShowEvent>
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
@@ -368,6 +369,25 @@ void GuiView::init()
 }
 
 
+void GuiView::showEvent(QShowEvent * e)
+{
+	if (lyxrc.allow_geometry_session) {
+		QSettings settings;
+		QString const key = "view-" + QString::number(id());
+		if (!restoreGeometry(settings.value(key + "/geometry").toByteArray()))
+			setGeometry(50, 50, 690, 510);
+		setIconSize(settings.value(key + "/icon_size").toSize());
+	} else
+		setGeometry(50, 50, 690, 510);
+
+	if (d.splitter_->count() == 0)
+		// No work area, switch to the background widget.
+		d.setBackground();
+
+	QMainWindow::showEvent(e);
+}
+
+
 void GuiView::closeEvent(QCloseEvent * close_event)
 {
 	// we may have been called through the close window button
@@ -384,6 +404,14 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// Make sure the timer time out will not trigger a statusbar update.
 	statusbar_timer_.stop();
 
+	if (lyxrc.allow_geometry_session) {
+		QSettings settings;
+		QString const key = "view-" + QString::number(id());
+		settings.setValue(key + "/geometry", saveGeometry());
+		settings.setValue(key + "/icon_size", iconSize());
+		d.toolbars_->saveToolbarInfo();
+	}
+
 	theApp()->gui().unregisterView(id());
 	if (!theApp()->gui().viewIds().empty()) {
 		// Just close the window and do nothing else if this is not the
@@ -396,7 +424,6 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 
 	// this is the place where we leave the frontend.
 	// it is the only point at which we start quitting.
-	saveGeometry();
 	close_event->accept();
 	// quit the event loop
 	qApp->quit();
@@ -430,232 +457,6 @@ void GuiView::dropEvent(QDropEvent* event)
 }
 
 
-void GuiView::saveGeometry()
-{
-	static bool done = false;
-	if (done)
-		return;
-	else
-		done = true;
-
-	// FIXME:
-	// change the ifdef to 'geometry = normalGeometry();' only
-	// when Trolltech has fixed the broken normalGeometry on X11:
-	// http://www.trolltech.com/developer/task-tracker/index_html?id=119684+&method=entry
-	// Then also the moveEvent, resizeEvent, and the
-	// code for floatingGeometry_ can be removed;
-	// adjust GuiView::setGeometry()
-
-	QRect normal_geometry;
-	Maximized maximized;
-#ifdef Q_WS_WIN
-	normal_geometry = normalGeometry();
-	if (isMaximized()) {
-		maximized = CompletelyMaximized;
-	} else {
-		maximized = NotMaximized;
-	}
-#else
-	normal_geometry = updateFloatingGeometry();
-
-	QDesktopWidget& dw = *qApp->desktop();
-	QRect desk = dw.availableGeometry(dw.primaryScreen());
-	// Qt bug on Linux: load completely maximized, vert max. save-> frameGeometry().height() is wrong
-	if (isMaximized() && desk.width() <= frameGeometry().width() && desk.height() <= frameGeometry().height()) {
-		maximized = CompletelyMaximized;
-		// maximizing does not work when the window is allready hor. or vert. maximized
-		// Tested only on KDE
-		int dh = frameGeometry().height() - height();
-		if (desk.height() <= normal_geometry.height() + dh)
-			normal_geometry.setHeight(normal_geometry.height() - 1);
-		int dw = frameGeometry().width() - width();
-		if (desk.width() <= normal_geometry.width() + dw)
-			normal_geometry.setWidth(normal_geometry.width() - 1);
-	} else if (desk.height() <= frameGeometry().height()) {
-		maximized = VerticallyMaximized;
-	} else if (desk.width() <= frameGeometry().width()) {
-		maximized = HorizontallyMaximized;
-	} else {
-		maximized = NotMaximized;
-	}
-#endif
-
-	// save windows size and position
-	SessionInfoSection & info = LyX::ref().session().sessionInfo();
-	info.save("WindowWidth", convert<string>(normal_geometry.width()));
-	info.save("WindowHeight", convert<string>(normal_geometry.height()));
-	info.save("WindowMaximized", convert<string>(int(maximized)));
-	info.save("IconSizeXY", convert<string>(iconSize().width()));
-	if (lyxrc.geometry_xysaved) {
-		info.save("WindowPosX", convert<string>(normal_geometry.x() + d.posx_offset));
-		info.save("WindowPosY", convert<string>(normal_geometry.y() + d.posy_offset));
-	}
-	d.toolbars_->saveToolbarInfo();
-}
-
-
-void GuiView::setGeometry(string const & geometryArg)
-{
-	// *******************************************
-	// Beginning of the session handling stuff
-
-	//FIXME: Instead of the stuff below, we should use QSettings:
-	/*
-	QSettings settings;
-	QString key = "view " + QString::number(id) + "/geometry";
-	view.restoreGeometry(settings.value(key).toByteArray());
-	*/
-
-	// determine windows size and position, from lyxrc and/or session
-	// initial geometry
-	unsigned int width = 690;
-	unsigned int height = 510;
-	// default icon size, will be overwritten by  stored session value
-	unsigned int iconSizeXY = 0;
-	Maximized maximized = NotMaximized;
-	SessionInfoSection & session = LyX::ref().session().sessionInfo();
-
-	// first try lyxrc
-	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
-		width = lyxrc.geometry_width;
-		height = lyxrc.geometry_height;
-	}
-	// if lyxrc returns (0,0), then use session info
-	else {
-		string val = session.load("WindowWidth");
-		if (!val.empty())
-			width = convert<unsigned int>(val);
-		val = session.load("WindowHeight");
-		if (!val.empty())
-			height = convert<unsigned int>(val);
-		val = session.load("WindowMaximized");
-		if (!val.empty())
-			maximized = GuiView::Maximized(convert<int>(val));
-		val = session.load("IconSizeXY");
-		if (!val.empty())
-			iconSizeXY = convert<unsigned int>(val);
-	}
-
-	// if user wants to restore window position
-	int posx = -1;
-	int posy = -1;
-	if (lyxrc.geometry_xysaved) {
-		string val = session.load("WindowPosX");
-		if (!val.empty())
-			posx = convert<int>(val);
-		val = session.load("WindowPosY");
-		if (!val.empty())
-			posy = convert<int>(val);
-	}
-
-	if (!geometryArg.empty())
-	{
-		width = 0;
-		height = 0;
-	}
-
-	// End of the sesssion handling stuff
-	// *******************************************
-
-	// use last value (not at startup)
-	if (d.lastIconSize != 0)
-		setIconSize(d.lastIconSize);
-	else if (iconSizeXY != 0)
-		setIconSize(iconSizeXY);
-	else
-		setIconSize(d.normalIconSize);
-
-	// only true when the -geometry option was NOT used
-	if (width != 0 && height != 0) {
-		if (posx != -1 && posy != -1) {
-			// if there are startup positioning problems:
-			// http://doc.trolltech.com/4.2/qdesktopwidget.html
-			QDesktopWidget& dw = *qApp->desktop();
-			if (dw.isVirtualDesktop()) {
-				if(!dw.geometry().contains(posx, posy)) {
-					posx = 50;
-					posy = 50;
-				}
-			} else {
-				// Which system doesn't use a virtual desktop?
-				// TODO save also last screen number and check if it is still availabe.
-			}
-#ifdef Q_WS_WIN
-			// FIXME: use setGeometry only when Trolltech has fixed the qt4/X11 bug
-			QWidget::setGeometry(posx, posy, width, height);
-#else
-			resize(width, height);
-			move(posx, posy);
-#endif
-		} else {
-			resize(width, height);
-		}
-
-		// remember original size
-		floatingGeometry_ = QRect(posx, posy, width, height);
-
-		if (maximized != NotMaximized) {
-			if (maximized == CompletelyMaximized) {
-				setWindowState(Qt::WindowMaximized);
-			} else {
-#ifndef Q_WS_WIN
-				// TODO How to set by the window manager?
-				//      setWindowState(Qt::WindowVerticallyMaximized);
-				//      is not possible
-				QDesktopWidget& dw = *qApp->desktop();
-				QRect desk = dw.availableGeometry(dw.primaryScreen());
-				if (maximized == VerticallyMaximized)
-					resize(width, desk.height());
-				if (maximized == HorizontallyMaximized)
-					resize(desk.width(), height);
-#endif
-			}
-		}
-	}
-	else
-	{
-		// FIXME: move this code into parse_geometry() (LyX.cpp)
-#ifdef Q_WS_WIN
-		int x, y;
-		int w, h;
-		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)([+-][0-9]*)){0,1}" );
-		re.indexIn(toqstr(geometryArg.c_str()));
-		w = re.cap(1).toInt();
-		h = re.cap(2).toInt();
-		x = re.cap(3).toInt();
-		y = re.cap(4).toInt();
-		QWidget::setGeometry( x, y, w, h );
-#else
-		// silence warning
-		(void)geometryArg;
-#endif
-	}
-	
-	d.setBackground();
-	
-	show();
-
-	// after show geometry() has changed (Qt bug?)
-	// we compensate the drift when storing the position
-	d.posx_offset = 0;
-	d.posy_offset = 0;
-	if (width != 0 && height != 0)
-		if (posx != -1 && posy != -1) {
-#ifdef Q_WS_WIN
-			d.posx_offset = posx - normalGeometry().x();
-			d.posy_offset = posy - normalGeometry().y();
-#else
-#ifndef Q_WS_MACX
-			if (maximized == NotMaximized) {
-				d.posx_offset = posx - geometry().x();
-				d.posy_offset = posy - geometry().y();
-			}
-#endif
-#endif
-		}
-}
-
-
 void GuiView::message(docstring const & str)
 {
 	statusBar()->showMessage(toqstr(str));
@@ -664,28 +465,21 @@ void GuiView::message(docstring const & str)
 }
 
 
-void GuiView::setIconSize(unsigned int size)
-{
-	d.lastIconSize = size;
-	QMainWindow::setIconSize(QSize(size, size));
-}
-
-
 void GuiView::smallSizedIcons()
 {
-	setIconSize(d.smallIconSize);
+	setIconSize(QSize(d.smallIconSize, d.smallIconSize));
 }
 
 
 void GuiView::normalSizedIcons()
 {
-	setIconSize(d.normalIconSize);
+	setIconSize(QSize(d.normalIconSize, d.normalIconSize));
 }
 
 
 void GuiView::bigSizedIcons()
 {
-	setIconSize(d.bigIconSize);
+	setIconSize(QSize(d.bigIconSize, d.bigIconSize));
 }
 
 
@@ -743,30 +537,6 @@ void GuiView::updateStatusBar()
 bool GuiView::hasFocus() const
 {
 	return qApp->activeWindow() == this;
-}
-
-
-QRect  GuiView::updateFloatingGeometry()
-{
-	QDesktopWidget& dw = *qApp->desktop();
-	QRect desk = dw.availableGeometry(dw.primaryScreen());
-	// remember only non-maximized sizes
-	if (!isMaximized() && desk.width() > frameGeometry().width() && desk.height() > frameGeometry().height()) {
-		floatingGeometry_ = QRect(x(), y(), width(), height());
-	}
-	return floatingGeometry_;
-}
-
-
-void GuiView::resizeEvent(QResizeEvent *)
-{
-	updateFloatingGeometry();
-}
-
-
-void GuiView::moveEvent(QMoveEvent *)
-{
-	updateFloatingGeometry();
 }
 
 
