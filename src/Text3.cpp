@@ -536,29 +536,27 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_LEFT_SELECT:
 		//FIXME: for visual cursor, really move left
 		if (reverseDirectionNeeded(cur)) {
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_LEFT_SELECT ? 
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+			cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
 		} else {
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_LEFT_SELECT ? 
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
+			cmd.action = cmd.action == LFUN_CHAR_LEFT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
 		}
-		break;
+		dispatch(cur, cmd);
+		return;
 
 	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_RIGHT_SELECT:
 		//FIXME: for visual cursor, really move right
 		if (reverseDirectionNeeded(cur)) {
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
-					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD));
+			cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD;
 		} else {
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
-					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD));
+			cmd.action = cmd.action == LFUN_CHAR_RIGHT_SELECT ? 
+					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD;
 		}
-		break;
+		dispatch(cur, cmd);
+		return;
 
 	case LFUN_UP_SELECT:
 	case LFUN_DOWN_SELECT:
@@ -632,15 +630,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_RIGHT_SELECT:
 		//FIXME: for visual cursor mode, really move right
 		if (reverseDirectionNeeded(cur)) {
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_WORD_RIGHT_SELECT ?
-					LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD));
+			cmd.action = cmd.action == LFUN_WORD_RIGHT_SELECT ?
+					LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD;
 		} else {
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_WORD_RIGHT_SELECT ?
-					LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD));
+			cmd.action = cmd.action == LFUN_WORD_RIGHT_SELECT ?
+					LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD;
 		}
-		break;
+		dispatch(cur, cmd);
+		return;
 
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_FORWARD_SELECT:
@@ -652,15 +649,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_LEFT_SELECT:
 		//FIXME: for visual cursor mode, really move left
 		if (reverseDirectionNeeded(cur)) {
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_WORD_LEFT_SELECT ?
-					LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD));
+			cmd.action = cmd.action == LFUN_WORD_LEFT_SELECT ?
+					LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD;
 		} else {
-			lyx::dispatch(FuncRequest(
-				cmd.action == LFUN_WORD_LEFT_SELECT ?
-					LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD));
+			cmd.action = cmd.action == LFUN_WORD_LEFT_SELECT ?
+					LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD;
 		}
-		break;
+		dispatch(cur, cmd);
+		return;
 
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_BACKWARD_SELECT:
