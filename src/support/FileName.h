@@ -59,9 +59,7 @@ public:
 	 */
 	static FileName const fromFilesystemEncoding(std::string const & name);
 protected:
-	/// The absolute file name.
-	/// The encoding is currently unspecified, anything else than ASCII
-	/// may or may not work.
+	/// The absolute file name in UTF-8 encoding.
 	std::string name_;
 };
 

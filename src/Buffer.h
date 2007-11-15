@@ -230,7 +230,7 @@ public:
 	bool isExternallyModified(CheckMethod method) const;
 
 	/// save timestamp and checksum of the given file.
-	void saveCheckSum(std::string const & file) const;
+	void saveCheckSum(support::FileName const & file) const;
 
 	/// mark the main lyx file as not needing saving
 	void markClean() const;

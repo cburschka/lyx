@@ -704,10 +704,10 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 		// Save the timestamp and checksum of disk file. If filename is an
 		// emergency file, save the timestamp and sum of the original lyx file
 		// because isExternallyModified will check for this file. (BUG4193)
-		string diskfile = filename.toFilesystemEncoding();
+		string diskfile = filename.absFilename();
 		if (suffixIs(diskfile, ".emergency"))
 			diskfile = diskfile.substr(0, diskfile.size() - 10);
-		saveCheckSum(diskfile);
+		saveCheckSum(FileName(diskfile));
 	}
 
 	if (file_format != LYX_FORMAT) {
@@ -827,7 +827,7 @@ bool Buffer::save() const
 	if (writeFile(pimpl_->filename)) {
 		markClean();
 		removeAutosaveFile(fileName());
-		saveCheckSum(pimpl_->filename.toFilesystemEncoding());
+		saveCheckSum(pimpl_->filename);
 		return true;
 	} else {
 		// Saving failed, so backup is not backup
@@ -1602,11 +1602,12 @@ bool Buffer::isExternallyModified(CheckMethod method) const
 }
 
 
-void Buffer::saveCheckSum(string const & file) const
+void Buffer::saveCheckSum(FileName const & file) const
 {
-	if (fs::exists(file)) {
-		pimpl_->timestamp_ = fs::last_write_time(file);
-		pimpl_->checksum_ = sum(FileName(file));
+	if (fs::exists(file.toFilesystemEncoding())) {
+		pimpl_->timestamp_ =
+			fs::last_write_time(file.toFilesystemEncoding());
+		pimpl_->checksum_ = sum(file);
 	} else {
 		// in the case of save to a new file.
 		pimpl_->timestamp_ = 0;

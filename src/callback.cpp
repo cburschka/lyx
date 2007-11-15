@@ -194,12 +194,12 @@ bool writeAs(Buffer * buffer, string const & newname)
 	buffer->markDirty();
 	bool unnamed = buffer->isUnnamed();
 	buffer->setUnnamed(false);
-	buffer->saveCheckSum(fname);
+	buffer->saveCheckSum(FileName(fname));
 
 	if (!menuWrite(buffer)) {
 		buffer->setFileName(oldname);
 		buffer->setUnnamed(unnamed);
-		buffer->saveCheckSum(oldname);
+		buffer->saveCheckSum(FileName(oldname));
 		return false;
 	}
 
