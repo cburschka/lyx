@@ -14,9 +14,16 @@
 #ifndef BASE_GUI_H
 #define BASE_GUI_H
 
+#include "support/strfwd.h"
+
 #include <vector>
 
+
 namespace lyx {
+
+class Buffer;
+class Inset;
+
 namespace frontend {
 
 class LyXView;
@@ -41,6 +48,11 @@ public:
 	virtual LyXView & view(int id) const = 0;
 	///
 	std::vector<int> const & viewIds() { return view_ids_; }
+
+	///
+	virtual void hideDialogs(std::string const & name, Inset * inset) const = 0;
+	///
+	virtual Buffer const * updateInset(Inset const * inset) const = 0;
 
 protected:
 	///

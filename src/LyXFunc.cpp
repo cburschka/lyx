@@ -137,6 +137,7 @@ using support::prefixIs;
 namespace Alert = frontend::Alert;
 
 extern bool quitting;
+extern bool use_gui;
 
 namespace {
 
@@ -1560,9 +1561,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_DIALOG_HIDE:
+		case LFUN_DIALOG_HIDE: {
 			LyX::cref().hideDialogs(argument, 0);
 			break;
+		}
 
 		case LFUN_DIALOG_TOGGLE: {
 			BOOST_ASSERT(lyx_view_);

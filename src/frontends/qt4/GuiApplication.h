@@ -59,6 +59,7 @@ public:
 	virtual FontLoader & fontLoader() { return font_loader_; }
 	virtual int exec();
 	virtual Gui & gui() { return gui_; }
+	virtual Gui const & gui() const { return gui_; }
 	virtual void exit(int status);
 	virtual bool event(QEvent * e);
 	void syncEvents();

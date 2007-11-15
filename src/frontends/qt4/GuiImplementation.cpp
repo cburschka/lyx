@@ -14,6 +14,7 @@
 
 #include "GuiImplementation.h"
 #include "GuiView.h"
+#include "Dialogs.h"
 
 #include <boost/assert.hpp>
 
@@ -21,6 +22,7 @@
 
 using std::map;
 using std::vector;
+using std::string;
 
 
 namespace lyx {
@@ -101,6 +103,29 @@ LyXView & GuiImplementation::view(int id) const
 {
 	BOOST_ASSERT(views_.find(id) != views_.end());
 	return *views_.find(id)->second;
+}
+
+
+void GuiImplementation::hideDialogs(string const & name, Inset * inset) const
+{
+	vector<int>::const_iterator it = view_ids_.begin();
+	vector<int>::const_iterator const end = view_ids_.end();
+	for (; it != end; ++it)
+		view(*it).getDialogs().hide(name, inset);
+}
+
+
+Buffer const * GuiImplementation::updateInset(Inset const * inset) const
+{
+	Buffer const * buffer_ptr = 0;
+	vector<int>::const_iterator it = view_ids_.begin();
+	vector<int>::const_iterator const end = view_ids_.end();
+	for (; it != end; ++it) {
+		Buffer const * ptr = view(*it).updateInset(inset);
+		if (ptr)
+			buffer_ptr = ptr;
+	}
+	return buffer_ptr;
 }
 
 

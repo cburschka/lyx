@@ -150,6 +150,7 @@ public:
 
 	///
 	virtual Gui & gui() = 0;
+	virtual Gui const & gui() const = 0;
 
 	/// Start the main event loop.
 	/// The batch command is programmed to be execute once

@@ -41,9 +41,12 @@ public:
 	virtual bool unregisterView(int id);
 
 	virtual LyXView& view(int id) const;
+	///
+	virtual void hideDialogs(std::string const & name, Inset * inset) const;
+	///
+	virtual Buffer const * updateInset(Inset const * inset) const;
 
 private:
-
 	/// Multiple views container.
 	/**
 	* Warning: This must not be a smart pointer as the destruction of the
