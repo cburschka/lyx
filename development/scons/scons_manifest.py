@@ -685,7 +685,6 @@ src_frontends_files = Split('''
     Dialogs.cpp
     Painter.cpp
     WorkAreaManager.cpp
-    alert.cpp
 ''')
 
 
