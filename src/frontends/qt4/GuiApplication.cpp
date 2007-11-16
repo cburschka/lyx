@@ -129,7 +129,7 @@ GuiApplication * guiApp;
 GuiApplication::GuiApplication(int & argc, char ** argv)
 	: QApplication(argc, argv), Application()
 {
-	QCoreApplication::setOrganizationName("The LyX Community");
+	QCoreApplication::setOrganizationName("LyX");
 	QCoreApplication::setOrganizationDomain("lyx.org");
 	QCoreApplication::setApplicationName("LyX");
 
