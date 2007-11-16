@@ -36,6 +36,7 @@
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
+#include "version.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -129,9 +130,10 @@ GuiApplication * guiApp;
 GuiApplication::GuiApplication(int & argc, char ** argv)
 	: QApplication(argc, argv), Application()
 {
-	QCoreApplication::setOrganizationName("LyX");
+	QString app_name = "LyX";
+	QCoreApplication::setOrganizationName(app_name);
 	QCoreApplication::setOrganizationDomain("lyx.org");
-	QCoreApplication::setApplicationName("LyX");
+	QCoreApplication::setApplicationName(app_name + lyx_version);
 
 	// Qt bug? setQuitOnLastWindowClosed(true); does not work
 	setQuitOnLastWindowClosed(false);
