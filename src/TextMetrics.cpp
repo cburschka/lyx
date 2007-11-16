@@ -1902,26 +1902,28 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 
 	bool const original_drawing_state = pi.pain.isDrawingEnabled();
 
-	y -= rb->ascent();
-	for (RowList::const_iterator rit = rb; rit != re; ++rit) {
-		y += rit->ascent();
+	size_t nrows = pm.rows().size();
+	for (size_t i = 0; i != nrows; ++i) {
+		Row const & row = pm.rows()[i];
+		if (i)
+			y += row.ascent();
 
-		bool const inside = (y + rit->descent() >= 0
-			&& y - rit->ascent() < ww);
+		bool const inside = (y + row.descent() >= 0
+			&& y - row.ascent() < ww);
 		// it is not needed to draw on screen if we are not inside.
 		pi.pain.setDrawingEnabled(inside && original_drawing_state);
-		RowPainter rp(pi, *text_, pit, *rit, bidi, x, y);
+		RowPainter rp(pi, *text_, pit, row, bidi, x, y);
 
 		// Row signature; has row changed since last paint?
-		bool row_has_changed = rit->changed();
+		bool row_has_changed = row.changed();
 		
-		bool row_selection = rit->sel_beg != -1 && rit->sel_end != -1;
+		bool row_selection = row.sel_beg != -1 && row.sel_end != -1;
 
 		if (!row_selection && !pi.full_repaint && !row_has_changed) {
 			// Paint the only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
-			y += rit->descent();
+			y += row.descent();
 			continue;
 		}
 
@@ -1930,19 +1932,19 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// Clear background of this row
 		// (if paragraph background was not cleared)
 		if (row_selection || (!pi.full_repaint && row_has_changed)) {
-			pi.pain.fillRectangle(x, y - rit->ascent(),
-				width(), rit->height(), pi.background_color);
+			pi.pain.fillRectangle(x, y - row.ascent(),
+				width(), row.height(), pi.background_color);
 		}
 		if (row_selection) {
 			DocIterator beg = bv_->cursor().selectionBegin();
 			DocIterator end = bv_->cursor().selectionEnd();
-			bool const beg_margin = beg.pit() < pit;
-			bool const end_margin = end.pit() > pit;
+			bool const beg_margin = beg.pit() < pit && i == 0;
+			bool const end_margin = end.pit() > pit && i == nrows - 1;
 			beg.pit() = pit;
-			beg.pos() = rit->sel_beg;
+			beg.pos() = row.sel_beg;
 			end.pit() = pit;
-			end.pos() = rit->sel_end;
-			drawRowSelection(pi, x, *rit, beg, end, beg_margin, end_margin);
+			end.pos() = row.sel_end;
+			drawRowSelection(pi, x, row, beg, end, beg_margin, end_margin);
 		}
 
 		// Instrumentation for testing row cache (see also
@@ -1963,12 +1965,12 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		rp.paintAppendix();
 		rp.paintDepthBar();
 		rp.paintChangeBar();
-		if (rit == rb)
+		if (i == 0)
 			rp.paintFirst();
 		rp.paintText();
-		if (rit + 1 == re)
+		if (i == nrows - 1)
 			rp.paintLast();
-		y += rit->descent();
+		y += row.descent();
 		// Restore full_repaint status.
 		pi.full_repaint = tmp;
 	}
