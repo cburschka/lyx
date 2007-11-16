@@ -71,6 +71,7 @@
 #include <QMenu>
 #include <QPainter>
 #include <QPixmap>
+#include <QPoint>
 #include <QPushButton>
 #include <QSettings>
 #include <QShowEvent>
@@ -367,26 +368,31 @@ void GuiView::init()
 		this, SLOT(clearMessage()));
 
 	d.setBackground();
+
+	if (!lyxrc.allow_geometry_session)
+		setGeometry(50, 50, 690, 510);
+
+	// Now take care of session management.
+	QSettings settings;
+	QString const key = "view-" + QString::number(id());
+#ifdef Q_WS_X11
+	QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
+	QSize size = settings.value(key + "/size", QSize(690, 510)).toSize();
+	resize(size);
+	move(pos);
+#else
+	if (!restoreGeometry(settings.value(key + "/geometry").toByteArray()))
+		setGeometry(50, 50, 690, 510);
+#endif
+	setIconSize(settings.value(key + "/icon_size").toSize());
 }
 
 
 void GuiView::showEvent(QShowEvent * e)
 {
-	if (lyxrc.allow_geometry_session) {
-		QSettings settings;
-		QString const key = "view-" + QString::number(id());
-#ifdef Q_WS_X11
-		QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
-		QSize size = settings.value(key + "/size", QSize(690, 510)).toSize();
-		resize(size);
-		move(pos);
-#else
-		if (!restoreGeometry(settings.value(key + "/geometry").toByteArray()))
-			setGeometry(50, 50, 690, 510);
-#endif
-		setIconSize(settings.value(key + "/icon_size").toSize());
-	} else
-		setGeometry(50, 50, 690, 510);
+	LYXERR(Debug::GUI, "Passed Geometry "
+		<< size().height() << "x" << size().width()
+		<< "+" << pos().x() << "+" << pos().y());
 
 	if (d.splitter_->count() == 0)
 		// No work area, switch to the background widget.
