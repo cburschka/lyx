@@ -247,7 +247,7 @@ string latex_path(string const & p)
 		string const drive = p.substr(0, 2);
 		string const cygprefix = cygdrive + "/" + drive.substr(0, 1);
 		string const cygpath = subst(subst(p, '\\', '/'), drive, cygprefix);
-		LYXERR(Debug::LATEX, << "<Path correction for LaTeX> ["
+		LYXERR(Debug::LATEX, "<Path correction for LaTeX> ["
 			<< p << "]->>[" << cygpath << ']');
 		return cygpath;
 	}
