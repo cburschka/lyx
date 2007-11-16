@@ -15,35 +15,57 @@
 
 #include "support/docstring.h"
 #include "support/environment.h"
-#include "support/filetools.h"
 #include "support/Package.h"
 #include "support/unicode.h"
 
 #include <boost/current_function.hpp>
-#include <boost/regex.hpp>
 
 #include <cerrno>
 
+using std::endl;
+using std::map;
+using std::string;
+
 namespace {
-boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
-};
+
+using lyx::docstring;
+using lyx::from_ascii;
+
+void cleanTranslation(docstring & trans) 
+{
+	/*
+	  Some english words have different translations, depending on
+	  context. In these cases the original string is augmented by
+	  context information (e.g. "To:[[as in 'From page x to page
+	  y']]" and "To:[[as in 'From format x to format y']]". This
+	  means that we need to filter out everything in double square
+	  brackets at the end of the string, otherwise the user sees
+	  bogus messages. If we are unable to honour the request we
+	  just return what we got in.
+	*/
+	docstring::size_type const pos1 = trans.find(from_ascii("[["));
+	if (pos1 != docstring::npos) {
+		docstring::size_type const pos2 
+			= trans.find(from_ascii("]]"), pos1);
+		if (pos2 != docstring::npos) 
+			trans.erase(pos1, pos2 - pos1 + 2);
+	}
+}
+
+}
+
 
 #ifdef ENABLE_NLS
 
-#ifdef HAVE_LOCALE_H
-#  include <locale.h>
-#endif
+#  ifdef HAVE_LOCALE_H
+#    include <locale.h>
+#  endif
 
 #  if HAVE_GETTEXT
 #    include <libintl.h>      // use the header already in the system *EK*
 #  else
 #    include "../intl/libintl.h"
 #  endif
-
-using std::endl;
-using std::make_pair;
-using std::map;
-using std::string;
 
 namespace lyx {
 
@@ -120,35 +142,23 @@ docstring const Messages::get(string const & m) const
 #endif
 	}
 
-	char const * tmp = m.c_str();
-	char const * msg = gettext(tmp);
-	docstring translated;
-	if (!msg || msg == tmp) {
-		if (!msg)
-			lyxerr << "Undefined result from gettext" << endl;
-		//else
-		//	lyxerr << "Same as entered returned" << endl;
-		// Some english words have different translations,
-		// depending on context. In these cases the original
-		// string is augmented by context information (e.g.
-		// "To:[[as in 'From page x to page y']]" and
-		// "To:[[as in 'From format x to format y']]".
-		// This means that we need to filter out everything
-		// in double square brackets at the end of the
-		// string, otherwise the user sees bogus messages.
-		// If we are unable to honour the request we just
-		// return what we got in.
-		boost::smatch sub;
-		if (regex_match(m, sub, reg))
-			translated = from_ascii(sub.str(1));
-		else
-			translated = from_ascii(tmp);
+	char const * m_c = m.c_str();
+	char const * trans_c = gettext(m_c);
+	docstring trans;
+	if (!trans_c)
+		lyxerr << "Undefined result from gettext" << endl;
+	else if (trans_c == m_c) {
+		LYXERR(Debug::DEBUG) << "Same as entered returned"  << endl;
+		trans = from_ascii(m);
 	} else {
 		LYXERR(Debug::DEBUG) << "We got a translation" << endl;
 		// m is actually not a char const * but ucs4 data
-		translated = reinterpret_cast<char_type const *>(msg);
+		trans = reinterpret_cast<char_type const *>(trans_c);
 	}
 
+	cleanTranslation(trans);
+
+	// Reset environment variables as they were.
 	if (!lang_.empty()) {
 		// Reset everything as it was.
 		setEnv("LANGUAGE", oldLANGUAGE);
@@ -159,7 +169,7 @@ docstring const Messages::get(string const & m) const
 	}
 
 	std::pair<TranslationCache::iterator, bool> result =
-		cache_.insert(std::make_pair(m, translated));
+		cache_.insert(std::make_pair(m, trans));
 
 	BOOST_ASSERT(result.second);
 
@@ -170,11 +180,6 @@ docstring const Messages::get(string const & m) const
 
 #else // ENABLE_NLS
 // This is the dummy variant.
-
-using std::endl;
-using std::make_pair;
-using std::map;
-using std::string;
 
 namespace lyx {
 
@@ -187,12 +192,9 @@ void Messages::init()
 
 docstring const Messages::get(string const & m) const
 {
-	// See comment above
-	boost::smatch sub;
-	if (regex_match(m, sub, reg))
-		return from_ascii(sub.str(1));
-	else
-		return from_ascii(m);
+	docstring trans = from_ascii(m);
+	cleanTranslation(trans);
+	return trans;
 }
 
 } // namespace lyx
