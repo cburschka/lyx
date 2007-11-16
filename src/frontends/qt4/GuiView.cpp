@@ -352,6 +352,7 @@ QMenu* GuiView::createPopupMenu()
 
 void GuiView::init()
 {
+	setMinimumSize(300, 200);
 	// GuiToolbars *must* be initialised before GuiMenubar.
 	d.toolbars_ = new GuiToolbars(*this);
 	// FIXME: GuiToolbars::init() cannot be integrated in the ctor
@@ -374,8 +375,15 @@ void GuiView::showEvent(QShowEvent * e)
 	if (lyxrc.allow_geometry_session) {
 		QSettings settings;
 		QString const key = "view-" + QString::number(id());
+#ifdef Q_WS_X11
+		QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
+		QSize size = settings.value(key + "/size", QSize(690, 510)).toSize();
+		resize(size);
+		move(pos);
+#else
 		if (!restoreGeometry(settings.value(key + "/geometry").toByteArray()))
 			setGeometry(50, 50, 690, 510);
+#endif
 		setIconSize(settings.value(key + "/icon_size").toSize());
 	} else
 		setGeometry(50, 50, 690, 510);
@@ -407,7 +415,12 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	if (lyxrc.allow_geometry_session) {
 		QSettings settings;
 		QString const key = "view-" + QString::number(id());
+#ifdef Q_WS_X11
+		settings.setValue(key + "/pos", pos());
+		settings.setValue(key + "/size", size());
+#else
 		settings.setValue(key + "/geometry", saveGeometry());
+#endif
 		settings.setValue(key + "/icon_size", iconSize());
 		d.toolbars_->saveToolbarInfo();
 	}
