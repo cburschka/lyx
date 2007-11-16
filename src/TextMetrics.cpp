@@ -1888,29 +1888,24 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 
 void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const
 {
-//	lyxerr << "  paintPar: pit: " << pit << " at y: " << y << endl;
-	int const ww = bv_->workHeight();
-
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	if (pm.rows().empty())
 		return;
 
-	RowList::const_iterator const rb = pm.rows().begin();
-	RowList::const_iterator const re = pm.rows().end();
-
 	Bidi bidi;
-
 	bool const original_drawing_state = pi.pain.isDrawingEnabled();
+	int const ww = bv_->workHeight();
+	size_t const nrows = pm.rows().size();
 
-	size_t nrows = pm.rows().size();
 	for (size_t i = 0; i != nrows; ++i) {
+
 		Row const & row = pm.rows()[i];
 		if (i)
 			y += row.ascent();
 
 		bool const inside = (y + row.descent() >= 0
 			&& y - row.ascent() < ww);
-		// it is not needed to draw on screen if we are not inside.
+		// It is not needed to draw on screen if we are not inside.
 		pi.pain.setDrawingEnabled(inside && original_drawing_state);
 		RowPainter rp(pi, *text_, pit, row, bidi, x, y);
 
