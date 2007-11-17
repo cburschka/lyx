@@ -152,10 +152,6 @@ public:
 	virtual ~Application() {}
 
 	///
-	virtual int createRegisteredView() = 0;
-	///
-	virtual bool unregisterView(int id) = 0;
-	///
 	virtual bool closeAllViews() = 0;
 
 	///

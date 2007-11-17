@@ -15,6 +15,7 @@
 
 #include "GuiView.h"
 
+#include "GuiApplication.h"
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
 #include "GuiMenubar.h"
@@ -24,7 +25,6 @@
 
 #include "qt_helpers.h"
 
-#include "frontends/Application.h"
 #include "frontends/Dialogs.h"
 
 #include "support/filetools.h"
@@ -403,7 +403,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 {
 	// we may have been called through the close window button
 	// which bypasses the LFUN machinery.
-	if (!quitting_by_menu_ && theApp()->viewCount() == 1) {
+	if (!quitting_by_menu_ && guiApp->viewCount() == 1) {
 		if (!theBufferList().quitWriteAll()) {
 			close_event->ignore();
 			return;
@@ -428,8 +428,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		d.toolbars_->saveToolbarInfo();
 	}
 
-	theApp()->unregisterView(id());
-	if (theApp()->viewCount() > 0) {
+	guiApp->unregisterView(id());
+	if (guiApp->viewCount() > 0) {
 		// Just close the window and do nothing else if this is not the
 		// last window.
 		close_event->accept();
@@ -575,7 +575,7 @@ bool GuiView::event(QEvent * e)
 	//	break;
 
 	case QEvent::WindowActivate: {
-		theApp()->setCurrentView(*this);
+		guiApp->setCurrentView(*this);
 		if (d.current_work_area_) {
 			BufferView & bv = d.current_work_area_->bufferView();
 			connectBufferView(bv);
