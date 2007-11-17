@@ -1620,7 +1620,7 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 			os << "]{inputenc}\n";
 			texrow.newline();
 		}
-		if (package == Encoding::CJK) {
+		if (package == Encoding::CJK || features.mustProvide("CJK")) {
 			os << "\\usepackage{CJK}\n";
 			texrow.newline();
 		}
