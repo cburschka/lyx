@@ -16,7 +16,6 @@
 #include "frontends/NoGuiFontMetrics.h"
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
-#include "frontends/Gui.h"
 #include "frontends/LyXView.h"
 
 #include "FuncRequest.h"

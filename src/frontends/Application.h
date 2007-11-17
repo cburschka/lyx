@@ -17,10 +17,15 @@
 
 #include <boost/function.hpp>
 
+#include <vector>
+
+
 namespace lyx {
 
 class BufferView;
 struct RGBColor;
+class Buffer;
+class Inset;
 
 namespace frontend {
 
@@ -149,8 +154,21 @@ public:
 	virtual ~Application() {}
 
 	///
-	virtual Gui & gui() = 0;
-	virtual Gui const & gui() const = 0;
+	virtual int createRegisteredView() = 0;
+	///
+	virtual bool unregisterView(int id) = 0;
+	///
+	virtual bool closeAllViews() = 0;
+
+	///
+	virtual LyXView & view(int id) const = 0;
+	///
+	std::vector<int> const & viewIds() { return view_ids_; }
+
+	///
+	virtual void hideDialogs(std::string const & name, Inset * inset) const = 0;
+	///
+	virtual Buffer const * updateInset(Inset const * inset) const = 0;
 
 	/// Start the main event loop.
 	/// The batch command is programmed to be execute once
@@ -225,17 +243,18 @@ public:
 	///
 	void setCurrentView(LyXView & view) { current_view_ = &view; }
 
-private:
+protected:
 	/// This LyXView is the one receiving Clipboard and Selection
 	/// events
 	LyXView * current_view_;
+	///
+	std::vector<int> view_ids_;
 };
 
 } // namespace frontend
 
 frontend::Application * theApp();
 frontend::Application * createApplication(int & argc, char * argv[]);
-
 
 } // namespace lyx
 

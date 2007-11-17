@@ -16,13 +16,15 @@
 #include "ColorCache.h"
 #include "GuiFontLoader.h"
 #include "GuiClipboard.h"
-#include "GuiImplementation.h"
 #include "GuiSelection.h"
 
 #include "frontends/Application.h"
 
+#include <QObject>
 #include <QApplication>
 #include <QTranslator>
+
+#include <map>
 
 class QSessionManager;
 
@@ -32,6 +34,8 @@ class BufferView;
 
 namespace frontend {
 
+class GuiView;
+class LyXView;
 class GuiWorkArea;
 class SocketNotifier;
 
@@ -58,8 +62,6 @@ public:
 	virtual Selection & selection();
 	virtual FontLoader & fontLoader() { return font_loader_; }
 	virtual int exec();
-	virtual Gui & gui() { return gui_; }
-	virtual Gui const & gui() const { return gui_; }
 	virtual void exit(int status);
 	virtual bool event(QEvent * e);
 	void syncEvents();
@@ -83,8 +85,18 @@ public:
 	///
 	ColorCache & colorCache() { return color_cache_; }
 	///
-	///
 	GuiFontLoader & guiFontLoader() { return font_loader_; }
+
+
+	virtual int createRegisteredView();
+	virtual bool closeAllViews();
+	virtual bool unregisterView(int id);
+
+	virtual LyXView & view(int id) const;
+	///
+	virtual void hideDialogs(std::string const & name, Inset * inset) const;
+	///
+	virtual Buffer const * updateInset(Inset const * inset) const;
 
 private Q_SLOTS:
 	///
@@ -93,8 +105,6 @@ private Q_SLOTS:
 	void socketDataReceived(int fd);
 
 private:
-	///
-	GuiImplementation gui_;
 	///
 	GuiClipboard clipboard_;
 	///
@@ -115,6 +125,14 @@ public:
 	/// A translator suitable for the entries in the LyX menu.
 	/// Only needed with Qt/Mac.
 	void addMenuTranslator();
+
+	/// Multiple views container.
+	/**
+	* Warning: This must not be a smart pointer as the destruction of the
+	* object is handled by Qt when the view is closed
+	* \sa Qt::WA_DeleteOnClose attribute.
+	*/
+	std::map<int, GuiView *> views_;
 }; // GuiApplication
 
 extern GuiApplication * guiApp;

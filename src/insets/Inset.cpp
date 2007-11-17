@@ -34,7 +34,6 @@
 
 #include "frontends/Painter.h"
 #include "frontends/Application.h"
-#include "frontends/Gui.h"
 
 #include "support/convert.h"
 
@@ -390,7 +389,7 @@ Buffer const * Inset::updateFrontend() const
 {
 	if (quitting)
 		return 0;
-	return theApp()->gui().updateInset(this);
+	return theApp()->updateInset(this);
 }
 
 } // namespace lyx

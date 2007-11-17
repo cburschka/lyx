@@ -14,9 +14,10 @@
 
 #include "GuiApplication.h"
 
-#include "GuiView.h"
 #include "qt_helpers.h"
 #include "GuiImage.h"
+#include "GuiView.h"
+#include "Dialogs.h"
 
 #include "frontends/alert.h"
 
@@ -64,8 +65,10 @@
 
 #include <exception>
 
-using std::string;
 using std::endl;
+using std::map;
+using std::string;
+using std::vector;
 
 
 namespace lyx {
@@ -197,12 +200,12 @@ GuiApplication::~GuiApplication()
 
 LyXView & GuiApplication::createView(string const & geometry_arg)
 {
-	int const id = gui_.createRegisteredView();
-	GuiView & view = static_cast<GuiView &>(gui_.view(id));
-	theLyXFunc().setLyXView(&view);
+	int const id = createRegisteredView();
+	GuiView * view  = views_[id];
+	theLyXFunc().setLyXView(view);
 
-	view.init();
-	view.show();
+	view->init();
+	view->show();
 	if (!geometry_arg.empty()) {
 #ifdef Q_WS_WIN
 		int x, y;
@@ -213,14 +216,14 @@ LyXView & GuiApplication::createView(string const & geometry_arg)
 		h = re.cap(2).toInt();
 		x = re.cap(3).toInt();
 		y = re.cap(4).toInt();
-		view.setGeometry(x, y, w, h);
+		view->setGeometry(x, y, w, h);
 #endif
 	}
-	view.setFocus();
+	view->setFocus();
 
-	setCurrentView(view);
+	setCurrentView(*view);
 
-	return view;
+	return *view;
 }
 
 
@@ -424,6 +427,106 @@ void GuiApplication::commitData(QSessionManager & sm)
 }
 
 
+void GuiApplication::addMenuTranslator()
+{
+	installTranslator(new MenuTranslator(this));
+}
+
+
+static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
+{
+	ids.clear();
+	map<int, GuiView *>::const_iterator it;
+	for (it = stdmap.begin(); it != stdmap.end(); ++it)
+		ids.push_back(it->first);
+}
+
+
+int GuiApplication::createRegisteredView()
+{
+	updateIds(views_, view_ids_);
+	int id = 0;
+	while (views_.find(id) != views_.end())
+		id++;
+	views_[id] = new GuiView(id);
+	updateIds(views_, view_ids_);
+	return id;
+}
+
+
+bool GuiApplication::unregisterView(int id)
+{
+	updateIds(views_, view_ids_);
+	BOOST_ASSERT(views_.find(id) != views_.end());
+	BOOST_ASSERT(views_[id]);
+
+	map<int, GuiView *>::iterator it;
+	for (it = views_.begin(); it != views_.end(); ++it) {
+		if (it->first == id) {
+			views_.erase(id);
+			break;
+		}
+	}
+	updateIds(views_, view_ids_);
+	return true;
+}
+
+
+bool GuiApplication::closeAllViews()
+{
+	updateIds(views_, view_ids_);
+	if (views_.empty()) {
+		// quit in CloseEvent will not be triggert
+		qApp->quit();
+		return true;
+	}
+
+	map<int, GuiView*> const cmap = views_;
+	map<int, GuiView*>::const_iterator it;
+	for (it = cmap.begin(); it != cmap.end(); ++it) {
+		// TODO: return false when close event was ignored
+		//       e.g. quitWriteAll()->'Cancel'
+		//       maybe we need something like 'bool closeView()'
+		it->second->close();
+		// unregisterd by the CloseEvent
+	}
+
+	views_.clear();
+	view_ids_.clear();
+	return true;
+}
+
+
+LyXView & GuiApplication::view(int id) const
+{
+	BOOST_ASSERT(views_.find(id) != views_.end());
+	return *views_.find(id)->second;
+}
+
+
+void GuiApplication::hideDialogs(string const & name, Inset * inset) const
+{
+	vector<int>::const_iterator it = view_ids_.begin();
+	vector<int>::const_iterator const end = view_ids_.end();
+	for (; it != end; ++it)
+		view(*it).getDialogs().hide(name, inset);
+}
+
+
+Buffer const * GuiApplication::updateInset(Inset const * inset) const
+{
+	Buffer const * buffer_ = 0;
+	vector<int>::const_iterator it = view_ids_.begin();
+	vector<int>::const_iterator const end = view_ids_.end();
+	for (; it != end; ++it) {
+		Buffer const * ptr = view(*it).updateInset(inset);
+		if (ptr)
+			buffer_ = ptr;
+	}
+	return buffer_;
+}
+
+
 ////////////////////////////////////////////////////////////////////////
 // X11 specific stuff goes here...
 #ifdef Q_WS_X11
@@ -458,12 +561,6 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	return false;
 }
 #endif
-
-void GuiApplication::addMenuTranslator()
-{
-	installTranslator(new MenuTranslator(this));
-}
-
 
 } // namespace frontend
 } // namespace lyx

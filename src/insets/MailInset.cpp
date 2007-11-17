@@ -16,7 +16,6 @@
 #include "debug.h"
 
 #include "frontends/Application.h"
-#include "frontends/Gui.h"
 
 #include <boost/assert.hpp>
 
@@ -42,7 +41,7 @@ void MailInset::updateDialog(BufferView * bv) const
 
 void MailInset::hideDialog() const
 {
-	theApp()->gui().hideDialogs(name(), &inset());
+	theApp()->hideDialogs(name(), &inset());
 }
 
 

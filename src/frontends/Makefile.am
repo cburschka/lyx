@@ -24,7 +24,6 @@ liblyxfrontends_la_SOURCES = \
 	Painter.cpp \
 	Painter.h \
 	Clipboard.h \
-	Gui.h \
 	Selection.h \
 	WorkArea.h \
 	WorkAreaManager.cpp \

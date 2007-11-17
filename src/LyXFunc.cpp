@@ -79,7 +79,6 @@
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontLoader.h"
-#include "frontends/Gui.h"
 #include "frontends/KeySymbol.h"
 #include "frontends/LyXView.h"
 #include "frontends/Selection.h"
@@ -702,7 +701,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 	case LFUN_WINDOW_CLOSE: {
-		enable = (theApp()->gui().viewIds().size() > 1);
+		enable = (theApp()->viewIds().size() > 1);
 		break;
 	}
 
@@ -1245,7 +1244,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// (leaving the event loop).
 			lyx_view_->message(from_utf8(N_("Exiting.")));
 			if (theBufferList().quitWriteAll())
-				theApp()->gui().closeAllViews();
+				theApp()->closeAllViews();
 			break;
 
 		case LFUN_BUFFER_AUTO_SAVE:
@@ -1564,7 +1563,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_DIALOG_HIDE: {
 			if (quitting || !use_gui)
 				break;
-			theApp()->gui().hideDialogs(argument, 0);
+			theApp()->hideDialogs(argument, 0);
 			break;
 		}
 
