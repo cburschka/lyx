@@ -1137,37 +1137,40 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		// ignore motions deeper nested than the real anchor
 		Cursor & bvcur = cur.bv().cursor();
-		if (bvcur.anchor_.hasPart(cur)) {
-			CursorSlice old = bvcur.top();
+		if (!bvcur.anchor_.hasPart(cur)) {
+			cur.undispatched();
+			break;
+		}
+		CursorSlice old = bvcur.top();
 
-			int const wh = bv->workHeight();
-			int const y = std::max(0, std::min(wh - 1, cmd.y));
+		int const wh = bv->workHeight();
+		int const y = std::max(0, std::min(wh - 1, cmd.y));
 
-			tm.setCursorFromCoordinates(cur, cmd.x, y);
-			cur.setTargetX(cmd.x);
+		tm.setCursorFromCoordinates(cur, cmd.x, y);
+		cur.setTargetX(cmd.x);
+		if (cmd.y >= wh)
+			lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
+		else if (cmd.y < 0)
+			lyx::dispatch(FuncRequest(LFUN_UP_SELECT));
+		// This is to allow jumping over large insets
+		if (cur.top() == old) {
 			if (cmd.y >= wh)
 				lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
 			else if (cmd.y < 0)
 				lyx::dispatch(FuncRequest(LFUN_UP_SELECT));
-			// This is to allow jumping over large insets
-			if (cur.top() == old) {
-				if (cmd.y >= wh)
-					lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
-				else if (cmd.y < 0)
-					lyx::dispatch(FuncRequest(LFUN_UP_SELECT));
-			}
+		}
 
-			if (cur.top() == old)
-				cur.noUpdate();
-			else {
-				// don't set anchor_
-				bvcur.setCursor(cur);
-				bvcur.selection() = true;
-				//lyxerr << "MOTION: " << bv->cursor() << endl;
-			}
-
-		} else
-			cur.undispatched();
+		if (cur.top() == old)
+			cur.noUpdate();
+		else {
+			// FIXME: This is brute force! But without it the selected
+			// area is not corrected updated while moving the mouse.
+			cur.updateFlags(Update::Force | Update::FitCursor);
+			// don't set anchor_
+			bvcur.setCursor(cur);
+			bvcur.selection() = true;
+			//lyxerr << "MOTION: " << bv->cursor() << endl;
+		}
 		break;
 	}
 
