@@ -120,6 +120,8 @@ What's new
 - Fix updating of externally modified files on Windows both in the workarea and
   in the output (bug 3172).
 
+- Fix loading of the CJK package in multilingual documents (part of bug 4337).
+
 - Fix a problem on Windows where invalid names were given to backup files
   (bug 4287).
 
