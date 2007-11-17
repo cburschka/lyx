@@ -88,9 +88,9 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
-		button_dim(rhs.button_dim),
 		layout_(rhs.layout_),
 		labelstring_(rhs.labelstring_),
+		button_dim(rhs.button_dim),
 		status_(rhs.status_),
 		openinlined_(rhs.openinlined_),
 		autoOpen_(rhs.autoOpen_),
