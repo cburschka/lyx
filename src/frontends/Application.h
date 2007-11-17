@@ -187,10 +187,6 @@ public:
 	*/
 	virtual void syncEvents() = 0;
 	///
-	virtual Clipboard & clipboard() = 0;
-	///
-	virtual Selection & selection() = 0;
-	///
 	virtual FontLoader & fontLoader() = 0;
 
 	/// return a suitable serif font name.

@@ -20,6 +20,11 @@
 #include "Dialogs.h"
 
 #include "frontends/alert.h"
+#include "frontends/Application.h"
+#include "frontends/NoGuiFontLoader.h"
+#include "frontends/NoGuiFontMetrics.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 
 #include "graphics/LoaderQueue.h"
 
@@ -32,6 +37,7 @@
 #include "BufferList.h"
 #include "BufferView.h"
 #include "debug.h"
+#include "Font.h"
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "LyX.h"
@@ -563,6 +569,57 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 #endif
 
 } // namespace frontend
+
+
+////////////////////////////////////////////////////////////////////
+//
+// Font stuff
+//
+////////////////////////////////////////////////////////////////////
+
+frontend::FontLoader & theFontLoader()
+{
+	static frontend::NoGuiFontLoader no_gui_font_loader;
+
+	if (!use_gui)
+		return no_gui_font_loader;
+
+	BOOST_ASSERT(theApp());
+	return theApp()->fontLoader();
+}
+
+
+frontend::FontMetrics const & theFontMetrics(Font const & f)
+{
+	return theFontMetrics(f.fontInfo());
+}
+
+
+frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
+{
+	static frontend::NoGuiFontMetrics no_gui_font_metrics;
+
+	if (!use_gui)
+		return no_gui_font_metrics;
+
+	BOOST_ASSERT(theApp());
+	return theApp()->fontLoader().metrics(f);
+}
+
+
+frontend::Clipboard & theClipboard()
+{
+	BOOST_ASSERT(frontend::guiApp);
+	return frontend::guiApp->clipboard();
+}
+
+
+frontend::Selection & theSelection()
+{
+	BOOST_ASSERT(frontend::guiApp);
+	return frontend::guiApp->selection();
+}
+
 } // namespace lyx
 
 #include "GuiApplication_moc.cpp"

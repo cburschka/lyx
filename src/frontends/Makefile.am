@@ -10,7 +10,6 @@ AM_CPPFLAGS += -I$(srcdir)/..  $(BOOST_INCLUDES)
 
 liblyxfrontends_la_SOURCES = \
 	alert.h \
-	Application.cpp \
 	Application.h \
 	NoGuiFontLoader.h \
 	NoGuiFontMetrics.h \

@@ -43,9 +43,6 @@ class SocketNotifier;
 /**
 There should be only one instance of this class. No Qt object
 initialisation should be done before the instanciation of this class.
-
-\todo The work areas handling could be moved to a base virtual class
-comon to all frontends.
 */
 class GuiApplication : public QApplication, public Application
 {
