@@ -97,8 +97,8 @@ void ParagraphMetrics::reset(Paragraph const & par)
 }
 
 
-void ParagraphMetrics::computeRowSignature(Row & row,
-		BufferParams const & bparams)
+size_t ParagraphMetrics::computeRowSignature(Row const & row,
+		BufferParams const & bparams) const
 {
 	boost::crc_32_type crc;
 	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
@@ -110,7 +110,12 @@ void ParagraphMetrics::computeRowSignature(Row & row,
 			crc.process_bytes(b, 1);
 		}			
 	}
-	row.setCrc(crc.checksum());
+
+	Dimension const & d = row.dimension();
+	char_type const b[] = { row.sel_beg, row.sel_end, d.wid, d.asc, d.des};
+	crc.process_bytes(b, 5);
+
+	return crc.checksum();
 }
 
 

@@ -41,7 +41,6 @@ class ParagraphMetrics;
 class Point;
 class Text;
 class TextMetrics;
-class ViewMetricsInfo;
 
 enum CursorStatus {
 	CUR_INSIDE,
@@ -195,11 +194,6 @@ public:
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
 
-	/// return the internal \c ViewMetricsInfo.
-	/// This is used specifically by the \c Workrea.
-	/// \sa WorkArea
-	/// \sa ViewMetricsInfo
-	ViewMetricsInfo const & viewMetricsInfo();
 	/// update the internal \c ViewMetricsInfo.
 	void updateMetrics();
 

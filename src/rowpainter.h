@@ -31,7 +31,6 @@ class ParagraphMetrics;
 class Row;
 class Text;
 class TextMetrics;
-class ViewMetricsInfo;
 
 namespace frontend { class Painter; }
 

@@ -1203,17 +1203,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// "auto_region_delete", which defaults to
 		// true (on).
 
-		if (lyxrc.auto_region_delete && cur.selection()) {
-			pit_type const begpit = cur.selBegin().pit();
-			pit_type const endpit = cur.selEnd().pit();
+		if (lyxrc.auto_region_delete && cur.selection())
 			cutSelection(cur, false, false);
-			// When a selection spans multiple paragraphs, the metrics update
-			// mechanism sometimes fail to detect that a full update is needed.
-			// In this case, we force the full update:
-			// (see http://bugzilla.lyx.org/show_bug.cgi?id=4317)
-			if (isMainText(cur.bv().buffer()) && begpit != endpit)
-				cur.updateFlags(Update::Force);
-		}
 
 		cur.clearSelection();
 		Font const old_font = cur.real_current_font;

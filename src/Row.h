@@ -38,7 +38,7 @@ public:
 	///
 	void setChanged(bool c) { changed_ = c; }
 	///
-	void setCrc(size_type crc);
+	void setCrc(size_type crc) const;
 	///
 	void setSelection(pos_type sel_beg, pos_type sel_end);
 
@@ -80,9 +80,9 @@ public:
 	pos_type sel_end;
 private:
 	/// has the Row appearance changed since last drawing?
-	bool changed_;
+	mutable bool changed_;
 	/// CRC of row contents.
-	size_type crc_;
+	mutable size_type crc_;
 	/// first pos covered by this row
 	pos_type pos_;
 	/// one behind last pos covered by this row

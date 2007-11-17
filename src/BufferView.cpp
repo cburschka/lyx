@@ -210,6 +210,13 @@ void gotoInset(BufferView * bv, InsetCode code, bool same_content)
 /// A map from a Text to the associated text metrics
 typedef std::map<Text const *, TextMetrics> TextMetricsCache;
 
+enum ScreenUpdateStrategy {
+	NoScreenUpdate,
+	SingleParUpdate,
+	FullScreenUpdate,
+	DecorationUpdate
+};
+
 } // anon namespace
 
 
@@ -229,7 +236,7 @@ struct BufferView::Private
 	///
 	ScrollbarParameters scrollbarParameters_;
 	///
-	ViewMetricsInfo metrics_info_;
+	ScreenUpdateStrategy update_strategy_;
 	///
 	CoordCache coord_cache_;
 
@@ -375,12 +382,12 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// Case when no explicit update is requested.
 	if (!flags) {
 		// no need to redraw anything.
-		d->metrics_info_.update_strategy = NoScreenUpdate;
+		d->update_strategy_ = NoScreenUpdate;
 		return;
 	}
 
 	if (flags == Update::Decoration) {
-		d->metrics_info_.update_strategy = DecorationUpdate;
+		d->update_strategy_ = DecorationUpdate;
 		buffer_.changed();
 		return;
 	}
@@ -395,12 +402,12 @@ void BufferView::processUpdateFlags(Update::flags flags)
 			return;
 		}
 		if (flags & Update::Decoration) {
-			d->metrics_info_.update_strategy = DecorationUpdate;
+			d->update_strategy_ = DecorationUpdate;
 			buffer_.changed();
 			return;
 		}
 		// no screen update is needed.
-		d->metrics_info_.update_strategy = NoScreenUpdate;
+		d->update_strategy_ = NoScreenUpdate;
 		return;
 	}
 
@@ -1176,7 +1183,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			//FIXME: updateMetrics() does not update paragraph position
 			// This is done at draw() time. So we need a redraw!
 			// But no screen update is needed.
-			d->metrics_info_.update_strategy = NoScreenUpdate;
+			d->update_strategy_ = NoScreenUpdate;
 			buffer_.changed();
 			p = getPos(cur, cur.boundary());
 		}
@@ -1205,7 +1212,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		}
 		// FIXME: we need to do a redraw again because of the selection
 		// But no screen update is needed.
-		d->metrics_info_.update_strategy = NoScreenUpdate;
+		d->update_strategy_ = NoScreenUpdate;
 		buffer_.changed();
 		updateFlags = Update::Force | Update::FitCursor;
 		break;
@@ -1334,23 +1341,10 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		if (!need_redraw)
 			return;
 
-		// if last metrics update was in singlepar mode, WorkArea::redraw() will
-		// not expose the button for redraw. We adjust here the metrics dimension
-		// to enable a full redraw in any case as this is not costly.
-		TextMetrics & tm = d->text_metrics_[&buffer_.text()];
-		std::pair<pit_type, ParagraphMetrics const *> firstpm = tm.first();
-		std::pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
-		int y1 = firstpm.second->position() - firstpm.second->ascent();
-		int y2 = lastpm.second->position() + lastpm.second->descent();
-		d->metrics_info_ = ViewMetricsInfo(firstpm.first, lastpm.first, y1, y2,
-			FullScreenUpdate, buffer_.text().paragraphs().size());
-		// Reinitialize anchor to first pit.
-		d->anchor_ref_ = firstpm.first;
-		d->offset_ref_ = -y1;
-		LYXERR(Debug::PAINTING,
-			 "Mouse hover detected at: (" << cmd.x << ", " << cmd.y << ")"
-			<< "\nTriggering redraw: y1: " << y1 << " y2: " << y2
-			<< " pit1: " << firstpm.first << " pit2: " << lastpm.first);
+		LYXERR(Debug::PAINTING, "Mouse hover detected at: ("
+			<< cmd.x << ", " << cmd.y << ")");
+
+		d->update_strategy_ = DecorationUpdate;
 
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
@@ -1629,12 +1623,6 @@ pit_type BufferView::anchor_ref() const
 }
 
 
-ViewMetricsInfo const & BufferView::viewMetricsInfo()
-{
-	return d->metrics_info_;
-}
-
-
 bool BufferView::singleParUpdate()
 {
 	Text & buftext = buffer_.text();
@@ -1653,13 +1641,11 @@ bool BufferView::singleParUpdate()
 		// the singlePar optimisation.
 		return false;
 
-	int y1 = pm.position() - pm.ascent();
-	int y2 = pm.position() + pm.descent();
-	d->metrics_info_ = ViewMetricsInfo(bottom_pit, bottom_pit, y1, y2,
-		SingleParUpdate, buftext.paragraphs().size());
+	d->update_strategy_ = SingleParUpdate;
+
 	LYXERR(Debug::PAINTING, BOOST_CURRENT_FUNCTION
-		<< "\ny1: " << y1
-		<< " y2: " << y2
+		<< "\ny1: " << pm.position() - pm.ascent()
+		<< " y2: " << pm.position() + pm.descent()
 		<< " pit: " << bottom_pit
 		<< " singlepar: 1");
 	return true;
@@ -1741,8 +1727,7 @@ void BufferView::updateMetrics()
 		<< " npit: " << npit
 		<< " singlepar: 0");
 
-	d->metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2,
-		FullScreenUpdate, npit);
+	d->update_strategy_ = FullScreenUpdate;
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		LYXERR(Debug::WORKAREA, "BufferView::updateMetrics");
@@ -1928,11 +1913,10 @@ void BufferView::draw(frontend::Painter & pain)
 	LYXERR(Debug::PAINTING, "\t\t*** START DRAWING ***");
 	Text & text = buffer_.text();
 	TextMetrics const & tm = d->text_metrics_[&text];
-	int const y = d->metrics_info_.y1 
-		+ tm.parMetrics(d->metrics_info_.p1).ascent();
+	int const y = - d->offset_ref_ + tm.parMetrics(d->anchor_ref_).ascent();
 	PainterInfo pi(this, pain);
 
-	switch (d->metrics_info_.update_strategy) {
+	switch (d->update_strategy_) {
 
 	case NoScreenUpdate:
 		// If no screen painting is actually needed, only some the different
@@ -1943,9 +1927,11 @@ void BufferView::draw(frontend::Painter & pain)
 		break;
 
 	case SingleParUpdate:
-		// Only the current outermost paragraph will be redrawn.
 		pi.full_repaint = false;
-		tm.drawParagraph(pi, d->metrics_info_.p1, 0, y);
+		// In general, only the current row of the outermost paragraph
+		// will be redrawn. Particular cases where selection spans
+		// multiple paragraph are correctly detected in TextMetrics.
+ 		tm.draw(pi, 0, y);
 		break;
 
 	case DecorationUpdate:
@@ -1957,21 +1943,16 @@ void BufferView::draw(frontend::Painter & pain)
 		// The whole screen, including insets, will be refreshed.
 		pi.full_repaint = true;
 
-		// Clear background (if not delegated to rows)
-		pain.fillRectangle(0, d->metrics_info_.y1, width_,
-			d->metrics_info_.y2 - d->metrics_info_.y1,
+		// Clear background.
+		pain.fillRectangle(0, 0, width_, height_,
 			buffer_.inset().backgroundColor());
 		tm.draw(pi, 0, y);
 
-		// and grey out above (should not happen later)
-		if (d->metrics_info_.y1 > 0)
-			pain.fillRectangle(0, 0, width_,
-				d->metrics_info_.y1, Color_bottomarea);
-
 		// and possibly grey out below
-		if (d->metrics_info_.y2 < height_)
-			pain.fillRectangle(0, d->metrics_info_.y2, width_,
-				height_ - d->metrics_info_.y2, Color_bottomarea);
+		std::pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
+		int const y2 = lastpm.second->position() + lastpm.second->descent();
+		if (y2 < height_)
+			pain.fillRectangle(0, y2, width_, height_ - y2, Color_bottomarea);
 		break;
 	}
 

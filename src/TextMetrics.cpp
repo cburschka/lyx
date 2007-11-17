@@ -359,7 +359,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	pm.reset(par);
 
 	Buffer & buffer = bv_->buffer();
-	BufferParams const & bparams = buffer.params();
 	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
 
@@ -477,7 +476,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.setDimension(dim);
 		int const max_row_width = max(dim_.wid, dim.wid);
 		computeRowMetrics(pit, row, max_row_width);
-		pm.computeRowSignature(row, bparams);
 		first = end;
 		++row_index;
 
@@ -502,7 +500,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.setDimension(dim);
 		int const max_row_width = max(dim_.wid, dim.wid);
 		computeRowMetrics(pit, row, max_row_width);
-		pm.computeRowSignature(row, bparams);
 		pm.dim().des += dim.height();
 	}
 
@@ -1862,7 +1859,6 @@ int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
 }
 
 
-// only used for inset right now. should also be used for main text
 void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 {
 	if (par_metrics_.empty())
@@ -1888,6 +1884,7 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 
 void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const
 {
+	BufferParams const & bparams = bv_->buffer().params();
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	if (pm.rows().empty())
 		return;
@@ -1910,26 +1907,27 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		RowPainter rp(pi, *text_, pit, row, bidi, x, y);
 
 		// Row signature; has row changed since last paint?
+		row.setCrc(pm.computeRowSignature(row, bparams));
 		bool row_has_changed = row.changed();
 		
-		bool row_selection = row.sel_beg != -1 && row.sel_end != -1;
-
-		if (!row_selection && !pi.full_repaint && !row_has_changed) {
-			// Paint the only the insets if the text itself is
+		// Don't paint the row if a full repaint has not been requested
+		// or if it has not changed.
+		if (!pi.full_repaint && !row_has_changed) {
+			// Paint only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
 			y += row.descent();
 			continue;
 		}
 
-		// Paint the row if a full repaint has been requested or it has
-		// changed.
-		// Clear background of this row
-		// (if paragraph background was not cleared)
-		if (row_selection || (!pi.full_repaint && row_has_changed)) {
+		// Clear background of this row if paragraph background was not
+		// already cleared because of a full repaint.
+		if (!pi.full_repaint && row_has_changed) {
 			pi.pain.fillRectangle(x, y - row.ascent(),
 				width(), row.height(), pi.background_color);
 		}
+
+		bool row_selection = row.sel_beg != -1 && row.sel_end != -1;
 		if (row_selection) {
 			DocIterator beg = bv_->cursor().selectionBegin();
 			DocIterator end = bv_->cursor().selectionEnd();
@@ -1944,13 +1942,14 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 
 		// Instrumentation for testing row cache (see also
 		// 12 lines lower):
-		if (lyxerr.debugging(Debug::PAINTING)) {
-			if (text_->isMainText(bv_->buffer()))
-				LYXERR(Debug::PAINTING, "\n{" << inside <<
-				pi.full_repaint << row_has_changed << "}");
-			else
-				LYXERR(Debug::PAINTING, "[" << inside <<
-				pi.full_repaint << row_has_changed << "]");
+		if (lyxerr.debugging(Debug::PAINTING) && inside
+			&& (row_selection || pi.full_repaint || row_has_changed)) {
+				std::string const foreword = text_->isMainText(bv_->buffer()) ?
+					"main text redraw " : "inset text redraw: ";
+			LYXERR(Debug::PAINTING, foreword << "pit=" << pit << " row=" << i
+				<< " row_selection="	<< row_selection
+				<< " full_repaint="	<< pi.full_repaint
+				<< " row_has_changed="	<< row_has_changed);
 		}
 
 		// Backup full_repaint status and force full repaint

@@ -320,18 +320,9 @@ void GuiWorkArea::redraw()
 		showCursor();
 	}
 	
-	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
-
 	LYXERR(Debug::WORKAREA, "WorkArea::redraw screen");
-
-	int const ymin = std::max(vi.y1, 0);
-	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : viewport()->height();
-
 	updateScreen();
-	update(0, ymin, viewport()->width(), ymax - ymin);
-
-	//LYXERR(Debug::WORKAREA, "  ymin = " << ymin << "  width() = " << width()
-	//		<< "  ymax-ymin = " << ymax-ymin);
+	update(0, 0, viewport()->width(), viewport()->height());
 
 	if (lyxerr.debugging(Debug::WORKAREA))
 		buffer_view_->coordCache().dump();
