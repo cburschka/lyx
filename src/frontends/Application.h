@@ -17,8 +17,6 @@
 
 #include <boost/function.hpp>
 
-#include <vector>
-
 
 namespace lyx {
 
@@ -163,7 +161,7 @@ public:
 	///
 	virtual LyXView & view(int id) const = 0;
 	///
-	std::vector<int> const & viewIds() { return view_ids_; }
+	virtual size_t viewCount() const = 0;
 
 	///
 	virtual void hideDialogs(std::string const & name, Inset * inset) const = 0;
@@ -243,8 +241,6 @@ protected:
 	/// This LyXView is the one receiving Clipboard and Selection
 	/// events
 	LyXView * current_view_;
-	///
-	std::vector<int> view_ids_;
 };
 
 } // namespace frontend

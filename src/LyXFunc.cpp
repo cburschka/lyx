@@ -701,7 +701,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 	case LFUN_WINDOW_CLOSE: {
-		enable = (theApp()->viewIds().size() > 1);
+		enable = theApp()->viewCount() > 0;
 		break;
 	}
 
@@ -718,7 +718,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_CALL: {
 		FuncRequest func;
-		std::string name(to_utf8(cmd.argument()));
+		std::string name = to_utf8(cmd.argument());
 		if (LyX::ref().topLevelCmdDef().lock(name, func)) {
 			func.origin = cmd.origin;
 			flag = getStatus(func);

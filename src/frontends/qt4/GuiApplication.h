@@ -25,6 +25,7 @@
 #include <QTranslator>
 
 #include <map>
+#include <vector>
 
 class QSessionManager;
 
@@ -79,6 +80,9 @@ public:
 	void commitData(QSessionManager & sm);
 	//@}
 
+	virtual size_t viewCount() const { return view_ids_.size(); }
+	std::vector<int> const & viewIds() { return view_ids_; }
+
 	///
 	ColorCache & colorCache() { return color_cache_; }
 	///
@@ -130,6 +134,8 @@ public:
 	* \sa Qt::WA_DeleteOnClose attribute.
 	*/
 	std::map<int, GuiView *> views_;
+	///
+	std::vector<int> view_ids_;
 }; // GuiApplication
 
 extern GuiApplication * guiApp;

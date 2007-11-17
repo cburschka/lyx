@@ -403,7 +403,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 {
 	// we may have been called through the close window button
 	// which bypasses the LFUN machinery.
-	if (!quitting_by_menu_ && theApp()->viewIds().size() == 1) {
+	if (!quitting_by_menu_ && theApp()->viewCount() == 1) {
 		if (!theBufferList().quitWriteAll()) {
 			close_event->ignore();
 			return;
@@ -429,7 +429,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	}
 
 	theApp()->unregisterView(id());
-	if (!theApp()->viewIds().empty()) {
+	if (theApp()->viewCount() > 0) {
 		// Just close the window and do nothing else if this is not the
 		// last window.
 		close_event->accept();
