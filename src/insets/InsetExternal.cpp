@@ -26,7 +26,6 @@
 #include "FuncRequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "LyX.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -65,6 +64,8 @@ string defaultTemplateName;
 
 namespace lyx {
 
+extern bool use_gui;
+
 namespace external {
 
 TempName::TempName()
@@ -89,8 +90,7 @@ TempName::~TempName()
 }
 
 
-TempName &
-TempName::operator=(TempName const & other)
+TempName & TempName::operator=(TempName const & other)
 {
 	if (this != &other)
 		tempname_ = TempName()();
@@ -385,8 +385,7 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 			break;
 
 		default:
-			lex.printError("ExternalInset::read: "
-				       "Wrong tag: $$Token");
+			lex.printError("ExternalInset::read: Wrong tag: $$Token");
 			read_error = true;
 			break;
 		}
@@ -437,7 +436,7 @@ InsetExternal::~InsetExternal()
 
 void InsetExternal::statusChanged() const
 {
-	LyX::cref().updateInset(this);
+	updateFrontend();
 }
 
 
@@ -633,8 +632,9 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 
 		button_ptr->update(getScreenLabel(params_, buffer), true);
 		break;
+	}
 
-	} case RENDERGRAPHIC: {
+	case RENDERGRAPHIC: {
 		RenderGraphic * graphic_ptr = renderer_->asGraphic();
 		if (!graphic_ptr) {
 			renderer_.reset(new RenderGraphic(this));
@@ -644,8 +644,9 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 		graphic_ptr->update(get_grfx_params(params_));
 
 		break;
+	}
 
-	} case RENDERPREVIEW: {
+	case RENDERPREVIEW: {
 		RenderMonitoredPreview * preview_ptr =
 			renderer_->asMonitoredPreview();
 		if (!preview_ptr) {
@@ -667,16 +668,15 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 
 void InsetExternal::fileChanged() const
 {
-	Buffer const * const buffer_ptr = LyX::cref().updateInset(this);
-	if (!buffer_ptr)
+	Buffer const * const buffer = updateFrontend();
+	if (!buffer)
 		return;
 
 	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
 	BOOST_ASSERT(ptr);
 
-	Buffer const & buffer = *buffer_ptr;
-	ptr->removePreview(buffer);
-	add_preview_and_start_loading(*ptr, *this, buffer);
+	ptr->removePreview(*buffer);
+	add_preview_and_start_loading(*ptr, *this, *buffer);
 }
 
 

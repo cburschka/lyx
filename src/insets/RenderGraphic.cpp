@@ -31,26 +31,17 @@
 
 namespace lyx {
 
-using support::onlyFilename;
-
-using std::string;
-
 
 RenderGraphic::RenderGraphic(Inset const * inset)
 {
-	loader_.connect(boost::bind(&LyX::updateInset,
-				    boost::cref(LyX::cref()), inset));
+	loader_.connect(boost::bind(&Inset::updateFrontend, inset));
 }
 
 
-RenderGraphic::RenderGraphic(RenderGraphic const & other,
-			     Inset const * inset)
-	: RenderBase(other),
-	  loader_(other.loader_),
-	  params_(other.params_)
+RenderGraphic::RenderGraphic(RenderGraphic const & other, Inset const * inset)
+	: RenderBase(other), loader_(other.loader_), params_(other.params_)
 {
-	loader_.connect(boost::bind(&LyX::updateInset,
-				    boost::cref(LyX::cref()), inset));
+	loader_.connect(boost::bind(&Inset::updateFrontend, inset));
 }
 
 
@@ -64,9 +55,8 @@ void RenderGraphic::update(graphics::Params const & params)
 {
 	params_ = params;
 
-	if (!params_.filename.empty()) {
+	if (!params_.filename.empty())
 		loader_.reset(params_.filename, params_);
-	}
 }
 
 
@@ -155,12 +145,10 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		msgFont.setFamily(SANS_FAMILY);
 
 		// FIXME UNICODE
-		docstring const justname =
-			from_utf8(onlyFilename(params_.filename.absFilename()));
+		docstring const justname = from_utf8(params_.filename.onlyFileName());
 		if (!justname.empty()) {
 			msgFont.setSize(FONT_SIZE_FOOTNOTE);
-			font_width = theFontMetrics(msgFont)
-				.width(justname);
+			font_width = theFontMetrics(msgFont).width(justname);
 		}
 
 		docstring const msg = statusMessage(params_, loader_.status());
@@ -206,7 +194,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		// Print the file name.
 		FontInfo msgFont = pi.base.font;
 		msgFont.setFamily(SANS_FAMILY);
-		string const justname = onlyFilename(params_.filename.absFilename());
+		std::string const justname = params_.filename.onlyFileName();
 
 		if (!justname.empty()) {
 			msgFont.setSize(FONT_SIZE_FOOTNOTE);

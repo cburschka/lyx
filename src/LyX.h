@@ -101,13 +101,6 @@ public:
 	///
 	frontend::LyXView * newLyXView();
 
-	/** redraw \c inset in all the BufferViews in which it is currently
-	 *  visible. If successful return a pointer to the owning Buffer.
-	 */
-	Buffer const * updateInset(Inset const *) const;
-
-	void hideDialogs(std::string const & name, Inset * inset) const;
-
 	/// Execute batch commands if available.
 	void execBatchCommands();
 

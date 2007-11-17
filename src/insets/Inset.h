@@ -353,6 +353,8 @@ public:
 	/// Update the counters of this inset and of its contents
 	virtual void updateLabels(Buffer const &, ParIterator const &) {}
 
+	/// Updates the inset's dialog
+	virtual Buffer const * updateFrontend() const;
 
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)

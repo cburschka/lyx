@@ -770,14 +770,13 @@ Inset::DisplayType InsetInclude::display() const
 
 void InsetInclude::fileChanged() const
 {
-	Buffer const * const buffer_ptr = LyX::cref().updateInset(this);
-	if (!buffer_ptr)
+	Buffer const * const buffer = updateFrontend();
+	if (!buffer)
 		return;
 
-	Buffer const & buffer = *buffer_ptr;
-	preview_->removePreview(buffer);
-	add_preview(*preview_.get(), *this, buffer);
-	preview_->startLoading(buffer);
+	preview_->removePreview(*buffer);
+	add_preview(*preview_.get(), *this, *buffer);
+	preview_->startLoading(*buffer);
 }
 
 

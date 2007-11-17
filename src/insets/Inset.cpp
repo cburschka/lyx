@@ -33,6 +33,8 @@
 #include "MetricsInfo.h"
 
 #include "frontends/Painter.h"
+#include "frontends/Application.h"
+#include "frontends/Gui.h"
 
 #include "support/convert.h"
 
@@ -44,10 +46,11 @@
 
 namespace lyx {
 
+extern bool quitting;
+
 class InsetName {
 public:
-	InsetName(std::string const & n, InsetCode c)
-		: name(n), code(c) {}
+	InsetName(std::string const & n, InsetCode c) : name(n), code(c) {}
 	std::string name;
 	InsetCode code;
 };
@@ -380,6 +383,14 @@ void Inset::setPosCache(PainterInfo const & pi, int x, int y) const
 void Inset::setDimCache(MetricsInfo const & mi, Dimension const & dim) const
 {
 	mi.base.bv->coordCache().insets().add(this, dim);
+}
+
+
+Buffer const * Inset::updateFrontend() const
+{
+	if (quitting)
+		return 0;
+	return theApp()->gui().updateInset(this);
 }
 
 } // namespace lyx

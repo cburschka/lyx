@@ -1562,7 +1562,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_DIALOG_HIDE: {
-			LyX::cref().hideDialogs(argument, 0);
+			if (quitting || !use_gui)
+				break;
+			theApp()->gui().hideDialogs(argument, 0);
 			break;
 		}
 

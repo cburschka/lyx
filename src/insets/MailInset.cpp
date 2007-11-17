@@ -14,7 +14,9 @@
 
 #include "BufferView.h"
 #include "debug.h"
-#include "LyX.h"
+
+#include "frontends/Application.h"
+#include "frontends/Gui.h"
 
 #include <boost/assert.hpp>
 
@@ -40,7 +42,7 @@ void MailInset::updateDialog(BufferView * bv) const
 
 void MailInset::hideDialog() const
 {
-	LyX::cref().hideDialogs(name(), &inset());
+	theApp()->gui().hideDialogs(name(), &inset());
 }
 
 

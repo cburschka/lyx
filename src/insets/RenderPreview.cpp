@@ -240,13 +240,12 @@ void RenderPreview::imageReady(graphics::PreviewImage const & pimage)
 {
 	// Check the current snippet is the same as that previewed.
 	if (snippet_ == pimage.snippet())
-		LyX::cref().updateInset(parent_);
+		parent_->updateFrontend();
 }
 
 
 RenderMonitoredPreview::RenderMonitoredPreview(Inset const * inset)
-	: RenderPreview(inset),
-	  monitor_(FileName(), 2000)
+	: RenderPreview(inset), monitor_(FileName(), 2000)
 {}
 
 

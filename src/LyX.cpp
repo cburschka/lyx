@@ -48,7 +48,6 @@
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
-#include "frontends/Gui.h"
 #include "frontends/LyXView.h"
 
 #include "support/environment.h"
@@ -372,22 +371,6 @@ Messages & LyX::getGuiMessages()
 void LyX::setGuiLanguage(std::string const & language)
 {
 	pimpl_->messages_["GUI"] = Messages(language);
-}
-
-
-Buffer const * LyX::updateInset(Inset const * inset) const
-{
-	if (quitting || !inset)
-		return 0;
-	return application().gui().updateInset(inset);
-}
-
-
-void LyX::hideDialogs(std::string const & name, Inset * inset) const
-{
-	if (quitting || !use_gui)
-		return;
-	application().gui().hideDialogs(name, inset);
 }
 
 
