@@ -61,12 +61,6 @@ public:
 
 	~GuiView();
 
-	/**
-	 * This is called after the concrete view has been created.
-	 * We have to have the toolbar and the other stuff created
-	 * before we can populate it with this call.
-	 */
-	virtual void init();
 	///
 	virtual void close();
 	virtual void setFocus();

@@ -609,7 +609,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_DIALOG_TOGGLE:
-		flag.setOnOff(lyx_view_->isDialogVisible(cmd.getArg(0)));
+		flag.setOnOff(lyx_view_?
+			lyx_view_->isDialogVisible(cmd.getArg(0)) : false);
 		// fall through to set "enable"
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
@@ -695,7 +696,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_TOOLBAR_TOGGLE: {
-		bool const current = lyx_view_->isToolbarVisible(cmd.getArg(0));
+		bool const current = lyx_view_?
+			lyx_view_->isToolbarVisible(cmd.getArg(0)) : false;
 		flag.setOnOff(current);
 		break;
 	}
