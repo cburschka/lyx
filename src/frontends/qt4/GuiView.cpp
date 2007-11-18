@@ -323,6 +323,8 @@ GuiView::GuiView(int id)
 
 	// For Drag&Drop.
 	setAcceptDrops(true);
+
+	init();
 }
 
 
@@ -1416,12 +1418,6 @@ Dialog * GuiView::build(string const & name)
 	return 0;
 }
 
-
-/// Are the tooltips on or off?
-bool GuiView::tooltipsEnabled()
-{
-	return false;
-}
 
 } // namespace frontend
 } // namespace lyx

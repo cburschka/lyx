@@ -234,7 +234,6 @@ LyXView & GuiApplication::createView(string const & geometry_arg)
 	GuiView * view  = views_[id];
 	theLyXFunc().setLyXView(view);
 
-	view->init();
 	view->show();
 	if (!geometry_arg.empty()) {
 #ifdef Q_WS_WIN
