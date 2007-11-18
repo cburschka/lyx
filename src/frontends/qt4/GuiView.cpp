@@ -156,8 +156,22 @@ typedef boost::shared_ptr<Dialog> DialogPtr;
 struct GuiView::GuiViewPrivate
 {
 	GuiViewPrivate()
-		: current_work_area_(0), posx_offset(0), posy_offset(0)
-	{}
+		: current_work_area_(0), posx_offset(0), posy_offset(0),
+		autosave_timeout_(new Timeout(5000)), quitting_by_menu_(false),
+		in_show_(false)
+	{
+		// hardcode here the platform specific icon size
+		smallIconSize = 14;	// scaling problems
+		normalIconSize = 20;	// ok, default
+		bigIconSize = 26;		// better for some math icons
+
+		splitter_ = new QSplitter;
+		initBackground();
+		stack_widget_ = new QStackedWidget;
+		stack_widget_->addWidget(bg_widget_);
+		stack_widget_->addWidget(splitter_);
+		setBackground();
+	}
 
 	~GuiViewPrivate()
 	{
@@ -166,13 +180,8 @@ struct GuiView::GuiViewPrivate
 		delete stack_widget_;
 		delete menubar_;
 		delete toolbars_;
+		delete autosave_timeout_;
 	}
-
-	unsigned int smallIconSize;
-	unsigned int normalIconSize;
-	unsigned int bigIconSize;
-	// static needed by "New Window"
-	static unsigned int lastIconSize;
 
 	QMenu * toolBarPopup(GuiView * parent)
 	{
@@ -273,76 +282,66 @@ public:
 
 	///
 	std::map<std::string, DialogPtr> dialogs_;
+
+	unsigned int smallIconSize;
+	unsigned int normalIconSize;
+	unsigned int bigIconSize;
 	///
-	/// flag against a race condition due to multiclicks
+	QTimer statusbar_timer_;
+	/// are we quitting by the menu?
+	bool quitting_by_menu_;
+	/// auto-saving of buffers
+	Timeout * const autosave_timeout_;
+	///
+	/// flag against a race condition due to multiclicks in Qt frontend,
 	/// see bug #1119
 	bool in_show_;
 };
 
 
-unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
-
-
 GuiView::GuiView(int id)
-	: QMainWindow(), LyXView(id),
-	  d(*new GuiViewPrivate),
-		quitting_by_menu_(false),
-	 	autosave_timeout_(new Timeout(5000)),
-		in_show_(false)
+	: d(*new GuiViewPrivate),  id_(id)
 {
+	// GuiToolbars *must* be initialised before GuiMenubar.
+	d.toolbars_ = new GuiToolbars(*this);
+	d.menubar_ = new GuiMenubar(this, menubackend);
+
+	setCentralWidget(d.stack_widget_);
+
 	// Start autosave timer
 	if (lyxrc.autosave) {
-		autosave_timeout_->timeout.connect(boost::bind(&GuiView::autoSave, this));
-		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
-		autosave_timeout_->start();
+		d.autosave_timeout_->timeout.connect(boost::bind(&GuiView::autoSave, this));
+		d.autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
+		d.autosave_timeout_->start();
 	}
+	QObject::connect(&d.statusbar_timer_, SIGNAL(timeout()),
+		this, SLOT(clearMessage()));
 
 	// Qt bug? signal lastWindowClosed does not work
 	setAttribute(Qt::WA_QuitOnClose, false);
 	setAttribute(Qt::WA_DeleteOnClose, true);
-
-	// hardcode here the platform specific icon size
-	d.smallIconSize = 14;	// scaling problems
-	d.normalIconSize = 20;	// ok, default
-	d.bigIconSize = 26;		// better for some math icons
-
 #ifndef Q_WS_MACX
 	// assign an icon to main form. We do not do it under Qt/Mac,
 	// since the icon is provided in the application bundle.
 	setWindowIcon(QPixmap(":/images/lyx.png"));
 #endif
 
-	d.splitter_ = new QSplitter;
-
-	d.initBackground();
-	LYXERR(Debug::GUI, "stack widget!");
-	d.stack_widget_ = new QStackedWidget;
-	d.stack_widget_->addWidget(d.bg_widget_);
-	d.stack_widget_->addWidget(d.splitter_);
-	setCentralWidget(d.stack_widget_);
-
 	// For Drag&Drop.
 	setAcceptDrops(true);
 
-	setMinimumSize(300, 200);
-	// GuiToolbars *must* be initialised before GuiMenubar.
-	d.toolbars_ = new GuiToolbars(*this);
-	d.toolbars_->init();
-	d.menubar_ = new GuiMenubar(this, menubackend);
-
 	statusBar()->setSizeGripEnabled(true);
 
-	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
-		this, SLOT(clearMessage()));
-
-	d.setBackground();
+	// Forbid too small unresizable window because it can happen
+	// with some window manager under X11.
+	setMinimumSize(300, 200);
 
 	if (!lyxrc.allow_geometry_session)
+		// No session handling, default to a sane size.
 		setGeometry(50, 50, 690, 510);
 
 	// Now take care of session management.
 	QSettings settings;
-	QString const key = "view-" + QString::number(id);
+	QString const key = "view-" + QString::number(id_);
 #ifdef Q_WS_X11
 	QPoint pos = settings.value(key + "/pos", QPoint(50, 50)).toPoint();
 	QSize size = settings.value(key + "/size", QSize(690, 510)).toSize();
@@ -358,14 +357,13 @@ GuiView::GuiView(int id)
 
 GuiView::~GuiView()
 {
-	delete autosave_timeout_;
 	delete &d;
 }
 
 
 void GuiView::close()
 {
-	quitting_by_menu_ = true;
+	d.quitting_by_menu_ = true;
 	d.current_work_area_ = 0;
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		TabWorkArea * twa = d.tabWorkArea(i);
@@ -373,7 +371,7 @@ void GuiView::close()
 			twa->closeAll();
 	}
 	QMainWindow::close();
-	quitting_by_menu_ = false;
+	d.quitting_by_menu_ = false;
 }
 
 
@@ -410,7 +408,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 {
 	// we may have been called through the close window button
 	// which bypasses the LFUN machinery.
-	if (!quitting_by_menu_ && guiApp->viewCount() == 1) {
+	if (!d.quitting_by_menu_ && guiApp->viewCount() == 1) {
 		if (!theBufferList().quitWriteAll()) {
 			close_event->ignore();
 			return;
@@ -420,11 +418,11 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// Make sure that no LFUN use this close to be closed View.
 	theLyXFunc().setLyXView(0);
 	// Make sure the timer time out will not trigger a statusbar update.
-	statusbar_timer_.stop();
+	d.statusbar_timer_.stop();
 
 	if (lyxrc.allow_geometry_session) {
 		QSettings settings;
-		QString const key = "view-" + QString::number(id());
+		QString const key = "view-" + QString::number(id_);
 #ifdef Q_WS_X11
 		settings.setValue(key + "/pos", pos());
 		settings.setValue(key + "/size", size());
@@ -435,7 +433,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		d.toolbars_->saveToolbarInfo();
 	}
 
-	guiApp->unregisterView(id());
+	guiApp->unregisterView(id_);
 	if (guiApp->viewCount() > 0) {
 		// Just close the window and do nothing else if this is not the
 		// last window.
@@ -482,8 +480,8 @@ void GuiView::dropEvent(QDropEvent* event)
 void GuiView::message(docstring const & str)
 {
 	statusBar()->showMessage(toqstr(str));
-	statusbar_timer_.stop();
-	statusbar_timer_.start(statusbar_timer_value);
+	d.statusbar_timer_.stop();
+	d.statusbar_timer_.start(statusbar_timer_value);
 }
 
 
@@ -511,7 +509,7 @@ void GuiView::clearMessage()
 		return;
 	theLyXFunc().setLyXView(this);
 	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
-	statusbar_timer_.stop();
+	d.statusbar_timer_.stop();
 }
 
 
@@ -549,7 +547,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 void GuiView::updateStatusBar()
 {
 	// let the user see the explicit message
-	if (statusbar_timer_.isActive())
+	if (d.statusbar_timer_.isActive())
 		return;
 
 	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
@@ -998,7 +996,7 @@ void GuiView::autoSave()
 void GuiView::resetAutosaveTimers()
 {
 	if (lyxrc.autosave)
-		autosave_timeout_->restart();
+		d.autosave_timeout_->restart();
 }
 
 
@@ -1100,17 +1098,17 @@ Dialog * GuiView::find_or_build(string const & name)
 void GuiView::showDialog(string const & name, string const & data,
 	Inset * inset)
 {
-	if (in_show_)
+	if (d.in_show_)
 		return;
 
-	in_show_ = true;
+	d.in_show_ = true;
 	Dialog * dialog = find_or_build(name);
 	if (dialog) {
 		dialog->showData(data);
 		if (inset)
 			d.open_insets_[name] = inset;
 	}
-	in_show_ = false;
+	d.in_show_ = false;
 }
 
 

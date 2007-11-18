@@ -44,7 +44,9 @@ GuiToolbars::GuiToolbars(GuiView & owner)
 	: owner_(owner),
 	  layout_(0),
 	  last_textclass_(TextClassPtr())
-{}
+{
+	init();
+}
 
 
 void GuiToolbars::initFlags(ToolbarInfo & tbinfo)

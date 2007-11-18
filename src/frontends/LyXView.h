@@ -45,11 +45,11 @@ class LyXView
 {
 public:
 	///
-	LyXView(int id) : id_(id) {}
+	LyXView() {}
 	///
 	virtual ~LyXView() {}
 	///
-	int id() const { return id_; }
+	virtual int id() const = 0;
 	///
 	virtual void close() = 0;
 
@@ -150,9 +150,6 @@ private:
 	/// noncopyable
 	LyXView(LyXView const &);
 	void operator=(LyXView const &);
-
-	///
-	int id_;
 };
 
 } // namespace frontend

@@ -62,9 +62,11 @@ public:
 	~GuiView();
 
 	///
-	virtual void close();
-	virtual void setFocus();
-	virtual void setBusy(bool);
+	///
+	int id() const { return id_; }
+	void close();
+	void setFocus();
+	void setBusy(bool);
 
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
 	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
@@ -92,7 +94,6 @@ public:
 	void errors(std::string const &);
 	void structureChanged() { updateToc(); }
 	///@}
-
 	
 	/// called on timeout
 	void autoSave();
@@ -179,24 +180,6 @@ private:
 	struct GuiViewPrivate;
 	GuiViewPrivate & d;
 
-	///
-	QTimer statusbar_timer_;
-
-	/// are we quitting by the menu?
-	bool quitting_by_menu_;
-
-	struct ToolbarSize {
-		int top_width;
-		int bottom_width;
-		int left_height;
-		int right_height;
-	};
-
-	ToolbarSize toolbarSize_;
-
-	/// auto-saving of buffers
-	Timeout * const autosave_timeout_;
-
 public:
 	///
 	/// dialogs for this view
@@ -265,10 +248,8 @@ private:
 	///
 	Dialog * build(std::string const & name);
 
-	///
-	/// flag against a race condition due to multiclicks in Qt frontend,
-	/// see bug #1119
-	bool in_show_;
+	/// This view ID.
+	int id_;
 };
 
 } // namespace frontend
