@@ -16,6 +16,8 @@
 #include "frontends/Delegates.h"
 #include "support/strfwd.h"
 
+#include <string>
+
 namespace lyx {
 
 namespace support { class FileName; }
@@ -81,11 +83,6 @@ public:
 	///
 	virtual bool isToolbarVisible(std::string const & id) = 0;
 
-	/// get access to the dialogs
-	virtual Dialogs & getDialogs() = 0;
-	///
-	virtual Dialogs const & getDialogs() const = 0;
-
 	//@}
 
 	/// load a buffer into the current workarea.
@@ -119,6 +116,67 @@ public:
 	// GuiBufferDelegate
 	//
 	virtual void errors(std::string const &) = 0;
+
+
+	//
+	// This View's Dialogs
+	//
+	
+	/** Check the status of all visible dialogs and disable or reenable
+	 *  them as appropriate.
+	 *
+	 *  Disabling is needed for example when a dialog is open and the
+	 *  cursor moves to a position where the corresponding inset is not
+	 *  allowed.
+	 */
+	virtual void checkStatus() = 0;
+
+	/// Are the tooltips on or off?
+	virtual bool tooltipsEnabled() = 0;
+
+	/// Hide all visible dialogs
+	virtual void hideAll() const = 0;
+	/// Hide any dialogs that require a buffer for them to operate
+	virtual void hideBufferDependent() const = 0;
+	/** Update visible, buffer-dependent dialogs
+	    If the bool is true then a buffer change has occurred
+	    else it is still the same buffer.
+	 */
+	virtual void updateBufferDependent(bool) const = 0;
+
+	/** \param name == "bibtex", "citation" etc; an identifier used to
+	    launch a particular dialog.
+	    \param data is a string representation of the Inset contents.
+	    It is often little more than the output from Inset::write.
+	    It is passed to, and parsed by, the frontend dialog.
+	    Several of these dialogs do not need any data,
+	    so it defaults to string().
+	    \param inset ownership is _not_ passed to the frontend dialog.
+	    It is stored internally and used by the kernel to ascertain
+	    what to do with the FuncRequest dispatched from the frontend
+	    dialog on 'Apply'; should it be used to create a new inset at
+	    the current cursor position or modify an existing, 'open' inset?
+	*/
+	virtual void showDialog(std::string const & name,
+		std::string const & data = std::string(), Inset * inset = 0) = 0;
+
+	/** \param name == "citation", "bibtex" etc; an identifier used
+	    to update the contents of a particular dialog with \param data.
+	    See the comments to 'show', above.
+	*/
+	virtual void updateDialog(std::string const & name, std::string const & data) = 0;
+
+	/// Is the dialog currently visible?
+	virtual bool isDialogVisible(std::string const & name) const = 0;
+
+	/** All Dialogs of the given \param name will be closed if they are
+	    connected to the given \param inset.
+	*/
+	virtual void hideDialog(std::string const & name, Inset * inset) = 0;
+	///
+	virtual void disconnectDialog(std::string const & name) = 0;
+	///
+	virtual Inset * getOpenInset(std::string const & name) const = 0;
 
 private:
 	/// noncopyable

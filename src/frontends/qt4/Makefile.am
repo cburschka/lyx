@@ -56,7 +56,6 @@ SOURCEFILES = \
 	ButtonController.cpp \
 	ColorCache.cpp \
 	CustomizedWidgets.cpp \
-	Dialogs.cpp \
 	EmptyTable.cpp \
 	FileDialog.cpp \
 	FloatPlacement.cpp \

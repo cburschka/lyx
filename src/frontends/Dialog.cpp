@@ -12,14 +12,12 @@
 
 #include "Dialog.h"
 
+#include "Buffer.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyXFunc.h"
 
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h" // FIXME
-
-#include "Buffer.h"
+#include "LyXView.h"
 
 
 namespace lyx {
@@ -52,7 +50,7 @@ void Dialog::updateDialog(std::string const & name) const
 
 void Dialog::disconnect(std::string const & name) const
 {
-	lyxview_->getDialogs().disconnect(name);
+	lyxview_->disconnectDialog(name);
 }
 
 

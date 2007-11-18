@@ -41,7 +41,6 @@
 #include "support/ForkedcallsController.h"
 
 #include "frontends/Application.h"
-#include "frontends/Dialogs.h"  // only used in setReadOnly
 #include "frontends/FontMetrics.h"
 #include "frontends/WorkAreaManager.h"
 
@@ -961,7 +960,7 @@ void GuiWorkArea::setReadOnly(bool)
 {
 	updateWindowTitle();
 	if (this == lyx_view_->currentWorkArea())
-		lyx_view_->getDialogs().updateBufferDependent(false);
+		lyx_view_->updateBufferDependent(false);
 }
 
 

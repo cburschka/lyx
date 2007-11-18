@@ -14,6 +14,13 @@
 #include <config.h>
 
 #include "GuiView.h"
+#include "Dialog.h"
+
+#include <boost/assert.hpp>
+
+using std::string;
+
+#include "GuiView.h"
 
 #include "GuiApplication.h"
 #include "GuiWorkArea.h"
@@ -21,11 +28,8 @@
 #include "GuiMenubar.h"
 #include "GuiToolbar.h"
 #include "GuiToolbars.h"
-#include "Dialogs.h"
 
 #include "qt_helpers.h"
-
-#include "frontends/Dialogs.h"
 
 #include "support/filetools.h"
 #include "support/convert.h"
@@ -147,6 +151,8 @@ private:
 } // namespace anon
 
 
+typedef boost::shared_ptr<Dialog> DialogPtr;
+
 struct GuiView::GuiViewPrivate
 {
 	GuiViewPrivate()
@@ -261,6 +267,16 @@ public:
 	GuiToolbars * toolbars_;
 	///
 	docstring current_layout;
+
+	///
+	std::map<std::string, Inset *> open_insets_;
+
+	///
+	std::map<std::string, DialogPtr> dialogs_;
+	///
+	/// flag against a race condition due to multiclicks
+	/// see bug #1119
+	bool in_show_;
 };
 
 
@@ -272,7 +288,7 @@ GuiView::GuiView(int id)
 	  d(*new GuiViewPrivate),
 		quitting_by_menu_(false),
 	 	autosave_timeout_(new Timeout(5000)),
-	  dialogs_(new Dialogs(*this))
+		in_show_(false)
 {
 	// Start autosave timer
 	if (lyxrc.autosave) {
@@ -296,7 +312,6 @@ GuiView::GuiView(int id)
 	setWindowIcon(QPixmap(":/images/lyx.png"));
 #endif
 
-
 	d.splitter_ = new QSplitter;
 
 	d.initBackground();
@@ -313,7 +328,6 @@ GuiView::GuiView(int id)
 
 GuiView::~GuiView()
 {
-	delete dialogs_;
 	delete autosave_timeout_;
 	delete &d;
 }
@@ -532,7 +546,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	// Buffer-dependent dialogs should be updated or
 	// hidden. This should go here because some dialogs (eg ToC)
 	// require bv_->text.
-	dialogs_->updateBufferDependent(true);
+	updateBufferDependent(true);
 	updateToolbars();
 	updateLayoutChoice(false);
 	updateStatusBar();
@@ -582,7 +596,7 @@ bool GuiView::event(QEvent * e)
 			connectBuffer(bv.buffer());
 			// The document structure, name and dialogs might have
 			// changed in another view.
-			dialogs_->updateBufferDependent(true);
+			updateBufferDependent(true);
 		} else {
 			setWindowTitle(qt_("LyX"));
 			setWindowIconText(qt_("LyX"));
@@ -757,7 +771,7 @@ void GuiView::removeWorkArea(GuiWorkArea * work_area)
 	if (gwa == d.current_work_area_) {
 		disconnectBuffer();
 		disconnectBufferView();
-		dialogs_->hideBufferDependent();
+		hideBufferDependent();
 		d.current_work_area_ = 0;
 	}
 
@@ -837,7 +851,7 @@ void GuiView::updateToolbars()
 		d.toolbars_->update(false, false, false);
 
 	// update read-only status of open dialogs.
-	dialogs_->checkStatus();
+	checkStatus();
 }
 
 
@@ -942,33 +956,40 @@ void GuiView::errors(string const & error_type)
 {
 	ErrorList & el = buffer()->errorList(error_type);
 	if (!el.empty())
-		dialogs_->show("errorlist", error_type);
+		showDialog("errorlist", error_type);
 }
 
 
-void GuiView::showDialog(string const & name)
+void GuiView::showDialog(std::string const & name)
 {
-	dialogs_->show(name);
+	showDialog(name, string());
 }
-
 
 void GuiView::showDialogWithData(string const & name, string const & data)
 {
-	dialogs_->show(name, data);
+	showDialog(name, data);
 }
 
 
 void GuiView::showInsetDialog(string const & name, string const & data,
 		Inset * inset)
 {
-	dialogs_->show(name, data, inset);
+	showDialog(name, data, inset);
 }
 
 
 void GuiView::updateDialog(string const & name, string const & data)
 {
-	if (dialogs_->visible(name))
-		dialogs_->update(name, data);
+	if (!isDialogVisible(name))
+		return;
+
+	std::map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
+	if (it == d.dialogs_.end())
+		return;
+
+	Dialog * const dialog = it->second.get();
+	if (dialog->isVisibleView())
+		dialog->updateData(data);
 }
 
 
@@ -1083,6 +1104,341 @@ void GuiView::restartCursor()
 	 */
 	if (d.current_work_area_)
 		d.current_work_area_->startBlinkingCursor();
+}
+
+
+Dialog * GuiView::find_or_build(string const & name)
+{
+	if (!isValidName(name))
+		return 0;
+
+	std::map<string, DialogPtr>::iterator it = d.dialogs_.find(name);
+
+	if (it != d.dialogs_.end())
+		return it->second.get();
+
+	d.dialogs_[name].reset(build(name));
+	return d.dialogs_[name].get();
+}
+
+
+void GuiView::showDialog(string const & name, string const & data,
+	Inset * inset)
+{
+	if (in_show_)
+		return;
+
+	in_show_ = true;
+	Dialog * dialog = find_or_build(name);
+	if (dialog) {
+		dialog->showData(data);
+		if (inset)
+			d.open_insets_[name] = inset;
+	}
+	in_show_ = false;
+}
+
+
+bool GuiView::isDialogVisible(string const & name) const
+{
+	std::map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
+	if (it == d.dialogs_.end())
+		return false;
+	return it->second.get()->isVisibleView();
+}
+
+
+void GuiView::hideDialog(string const & name, Inset * inset)
+{
+	// Don't send the signal if we are quitting, because on MSVC it is
+	// destructed before the cut stack in CutAndPaste.cpp, and this method
+	// is called from some inset destructor if the cut stack is not empty
+	// on exit.
+	if (quitting)
+		return;
+
+	std::map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
+	if (it == d.dialogs_.end())
+		return;
+
+	if (inset && inset != getOpenInset(name))
+		return;
+
+	Dialog * const dialog = it->second.get();
+	if (dialog->isVisibleView())
+		dialog->hide();
+	d.open_insets_[name] = 0;
+}
+
+
+void GuiView::disconnectDialog(string const & name)
+{
+	if (!isValidName(name))
+		return;
+
+	if (d.open_insets_.find(name) != d.open_insets_.end())
+		d.open_insets_[name] = 0;
+}
+
+
+Inset * GuiView::getOpenInset(string const & name) const
+{
+	if (!isValidName(name))
+		return 0;
+
+	std::map<string, Inset *>::const_iterator it = d.open_insets_.find(name);
+	return it == d.open_insets_.end() ? 0 : it->second;
+}
+
+
+void GuiView::hideAll() const
+{
+	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+
+	for(; it != end; ++it)
+		it->second->hide();
+}
+
+
+void GuiView::hideBufferDependent() const
+{
+	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+
+	for(; it != end; ++it) {
+		Dialog * dialog = it->second.get();
+		if (dialog->isBufferDependent())
+			dialog->hide();
+	}
+}
+
+
+void GuiView::updateBufferDependent(bool switched) const
+{
+	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+
+	for(; it != end; ++it) {
+		Dialog * dialog = it->second.get();
+		if (switched && dialog->isBufferDependent()) {
+			if (dialog->isVisibleView() && dialog->initialiseParams(""))
+				dialog->updateView();
+			else
+				dialog->hide();
+		} else {
+			// A bit clunky, but the dialog will request
+			// that the kernel provides it with the necessary
+			// data.
+			dialog->slotRestore();
+		}
+	}
+}
+
+
+void GuiView::redrawDialog() const
+{
+	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+
+	for(; it != end; ++it)
+		it->second->redraw();
+}
+
+
+void GuiView::checkStatus()
+{
+	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+
+	for(; it != end; ++it) {
+		Dialog * const dialog = it->second.get();
+		if (dialog && dialog->isVisibleView())
+			dialog->checkStatus();
+	}
+}
+
+
+namespace {
+
+// This list should be kept in sync with the list of insets in
+// src/insets/Inset.cpp.  I.e., if a dialog goes with an inset, the
+// dialog should have the same name as the inset.
+
+char const * const dialognames[] = {
+"aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
+"citation", "document", "embedding", "errorlist", "ert", "external", "file",
+"findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
+"mathdelimiter", "mathmatrix", "note", "paragraph",
+"prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
+
+#ifdef HAVE_LIBAIKSAURUS
+"thesaurus",
+#endif
+
+"texinfo", "toc", "href", "view-source", "vspace", "wrap", "listings" };
+
+char const * const * const end_dialognames =
+	dialognames + (sizeof(dialognames) / sizeof(char *));
+
+class cmpCStr {
+public:
+	cmpCStr(char const * name) : name_(name) {}
+	bool operator()(char const * other) {
+		return strcmp(other, name_) == 0;
+	}
+private:
+	char const * name_;
+};
+
+
+} // namespace anon
+
+// will be replaced by a proper factory...
+Dialog * createGuiAbout(LyXView & lv);
+Dialog * createGuiBibitem(LyXView & lv);
+Dialog * createGuiBibtex(LyXView & lv);
+Dialog * createGuiBox(LyXView & lv);
+Dialog * createGuiBranch(LyXView & lv);
+Dialog * createGuiChanges(LyXView & lv);
+Dialog * createGuiCharacter(LyXView & lv);
+Dialog * createGuiCitation(LyXView & lv);
+Dialog * createGuiDelimiter(LyXView & lv);
+Dialog * createGuiDocument(LyXView & lv);
+Dialog * createGuiErrorList(LyXView & lv);
+Dialog * createGuiERT(LyXView & lv);
+Dialog * createGuiExternal(LyXView & lv);
+Dialog * createGuiFloat(LyXView & lv);
+Dialog * createGuiGraphics(LyXView & lv);
+Dialog * createGuiInclude(LyXView & lv);
+Dialog * createGuiIndex(LyXView & lv);
+Dialog * createGuiLabel(LyXView & lv);
+Dialog * createGuiListings(LyXView & lv);
+Dialog * createGuiLog(LyXView & lv);
+Dialog * createGuiMathMatrix(LyXView & lv);
+Dialog * createGuiNomenclature(LyXView & lv);
+Dialog * createGuiNote(LyXView & lv);
+Dialog * createGuiParagraph(LyXView & lv);
+Dialog * createGuiPreferences(LyXView & lv);
+Dialog * createGuiPrint(LyXView & lv);
+Dialog * createGuiRef(LyXView & lv);
+Dialog * createGuiSearch(LyXView & lv);
+Dialog * createGuiSendTo(LyXView & lv);
+Dialog * createGuiShowFile(LyXView & lv);
+Dialog * createGuiSpellchecker(LyXView & lv);
+Dialog * createGuiTabularCreate(LyXView & lv);
+Dialog * createGuiTabular(LyXView & lv);
+Dialog * createGuiTexInfo(LyXView & lv);
+Dialog * createGuiToc(LyXView & lv);
+Dialog * createGuiThesaurus(LyXView & lv);
+Dialog * createGuiHyperlink(LyXView & lv);
+Dialog * createGuiVSpace(LyXView & lv);
+Dialog * createGuiViewSource(LyXView & lv);
+Dialog * createGuiWrap(LyXView & lv);
+
+
+bool GuiView::isValidName(string const & name) const
+{
+	return std::find_if(dialognames, end_dialognames,
+			    cmpCStr(name.c_str())) != end_dialognames;
+}
+
+
+Dialog * GuiView::build(string const & name)
+{
+	BOOST_ASSERT(isValidName(name));
+
+	if (name == "aboutlyx")
+		return createGuiAbout(*this);
+	if (name == "bibitem")
+		return createGuiBibitem(*this);
+	if (name == "bibtex")
+		return createGuiBibtex(*this);
+	if (name == "box")
+		return createGuiBox(*this);
+	if (name == "branch")
+		return createGuiBranch(*this);
+	if (name == "changes")
+		return createGuiChanges(*this);
+	if (name == "character")
+		return createGuiCharacter(*this);
+	if (name == "citation")
+		return createGuiCitation(*this);
+	if (name == "document")
+		return createGuiDocument(*this);
+	if (name == "errorlist")
+		return createGuiErrorList(*this);
+	if (name == "ert")
+		return createGuiERT(*this);
+	if (name == "external")
+		return createGuiExternal(*this);
+	if (name == "file")
+		return createGuiShowFile(*this);
+	if (name == "findreplace")
+		return createGuiSearch(*this);
+	if (name == "float")
+		return createGuiFloat(*this);
+	if (name == "graphics")
+		return createGuiGraphics(*this);
+	if (name == "include")
+		return createGuiInclude(*this);
+	if (name == "index")
+		return createGuiIndex(*this);
+	if (name == "nomenclature")
+		return createGuiNomenclature(*this);
+	if (name == "label")
+		return createGuiLabel(*this);
+	if (name == "log")
+		return createGuiLog(*this);
+	if (name == "view-source")
+		return createGuiViewSource(*this);
+	if (name == "mathdelimiter")
+		return createGuiDelimiter(*this);
+	if (name == "mathmatrix")
+		return createGuiMathMatrix(*this);
+	if (name == "note")
+		return createGuiNote(*this);
+	if (name == "paragraph")
+		return createGuiParagraph(*this);
+	if (name == "prefs")
+		return createGuiPreferences(*this);
+	if (name == "print")
+		return createGuiPrint(*this);
+	if (name == "ref")
+		return createGuiRef(*this);
+	if (name == "sendto")
+		return createGuiSendTo(*this);
+	if (name == "spellchecker")
+		return createGuiSpellchecker(*this);
+	if (name == "tabular")
+		return createGuiTabular(*this);
+	if (name == "tabularcreate")
+		return createGuiTabularCreate(*this);
+	if (name == "texinfo")
+		return createGuiTexInfo(*this);
+#ifdef HAVE_LIBAIKSAURUS
+	if (name == "thesaurus")
+		return createGuiThesaurus(*this);
+#endif
+	if (name == "toc")
+		return createGuiToc(*this);
+	if (name == "href")
+		return createGuiHyperlink(*this);
+	if (name == "vspace")
+		return createGuiVSpace(*this);
+	if (name == "wrap")
+		return createGuiWrap(*this);
+	if (name == "listings")
+		return createGuiListings(*this);
+
+	return 0;
+}
+
+
+/// Are the tooltips on or off?
+bool GuiView::tooltipsEnabled()
+{
+	return false;
 }
 
 } // namespace frontend

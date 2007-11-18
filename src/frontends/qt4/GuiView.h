@@ -17,6 +17,9 @@
 
 #include "frontends/LyXView.h"
 
+#include <string>
+
+
 #include <QMainWindow>
 #include <QTimer>
 
@@ -36,6 +39,7 @@ namespace frontend {
 
 class GuiToolbar;
 class GuiWorkArea;
+class Dialog;
 
 QWidget * mainWindow();
 
@@ -95,8 +99,6 @@ public:
 		std::string const & data);
 	void showInsetDialog(std::string const & name,
 		std::string const & data, Inset * inset);
-	void updateDialog(std::string const & name,
-		std::string const & data);
 	
 	/// called on timeout
 	void autoSave();
@@ -105,11 +107,6 @@ public:
 
 	/// \return the current buffer view.
 	BufferView * view();
-
-	/// get access to the dialogs
-	Dialogs & getDialogs() { return *dialogs_; }
-	///
-	Dialogs const & getDialogs() const { return *dialogs_; }
 
 	/// load a buffer into the current workarea.
 	Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
@@ -205,10 +202,83 @@ private:
 
 	/// auto-saving of buffers
 	Timeout * const autosave_timeout_;
-	/// dialogs for this view
-	Dialogs * dialogs_;
-};
 
+public:
+	///
+	/// dialogs for this view
+	///
+
+	/** Check the status of all visible dialogs and disable or reenable
+	 *  them as appropriate.
+	 *
+	 *  Disabling is needed for example when a dialog is open and the
+	 *  cursor moves to a position where the corresponding inset is not
+	 *  allowed.
+	 */
+	void checkStatus();
+
+	/// Are the tooltips on or off?
+	bool tooltipsEnabled();
+
+	/// Hide all visible dialogs
+	void hideAll() const;
+	/// Hide any dialogs that require a buffer for them to operate
+	void hideBufferDependent() const;
+	/** Update visible, buffer-dependent dialogs
+	    If the bool is true then a buffer change has occurred
+	    else it is still the same buffer.
+	 */
+	void updateBufferDependent(bool) const;
+
+	/** \param name == "bibtex", "citation" etc; an identifier used to
+	    launch a particular dialog.
+	    \param data is a string representation of the Inset contents.
+	    It is often little more than the output from Inset::write.
+	    It is passed to, and parsed by, the frontend dialog.
+	    Several of these dialogs do not need any data,
+	    so it defaults to string().
+	    \param inset ownership is _not_ passed to the frontend dialog.
+	    It is stored internally and used by the kernel to ascertain
+	    what to do with the FuncRequest dispatched from the frontend
+	    dialog on 'Apply'; should it be used to create a new inset at
+	    the current cursor position or modify an existing, 'open' inset?
+	*/
+	void showDialog(std::string const & name,
+		std::string const & data = std::string(), Inset * inset = 0);
+
+	/** \param name == "citation", "bibtex" etc; an identifier used
+	    to update the contents of a particular dialog with \param data.
+	    See the comments to 'show', above.
+	*/
+	void updateDialog(std::string const & name, std::string const & data);
+
+	/// Is the dialog currently visible?
+	bool isDialogVisible(std::string const & name) const;
+
+	/** All Dialogs of the given \param name will be closed if they are
+	    connected to the given \param inset.
+	*/
+	void hideDialog(std::string const & name, Inset * inset);
+	///
+	void disconnectDialog(std::string const & name);
+	///
+	Inset * getOpenInset(std::string const & name) const;
+
+private:
+	///
+	void redrawDialog() const;
+	///
+	bool isValidName(std::string const & name) const;
+	///
+	Dialog * find_or_build(std::string const & name);
+	///
+	Dialog * build(std::string const & name);
+
+	///
+	/// flag against a race condition due to multiclicks in Qt frontend,
+	/// see bug #1119
+	bool in_show_;
+};
 
 } // namespace frontend
 } // namespace lyx

@@ -17,7 +17,6 @@
 #include "qt_helpers.h"
 #include "GuiImage.h"
 #include "GuiView.h"
-#include "Dialogs.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -515,7 +514,7 @@ void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 	vector<int>::const_iterator it = view_ids_.begin();
 	vector<int>::const_iterator const end = view_ids_.end();
 	for (; it != end; ++it)
-		view(*it).getDialogs().hide(name, inset);
+		view(*it).hideDialog(name, inset);
 }
 
 

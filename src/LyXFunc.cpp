@@ -74,9 +74,8 @@
 #include "insets/InsetVSpace.h"
 #include "insets/InsetWrap.h"
 
-#include "frontends/Application.h"
 #include "frontends/alert.h"
-#include "frontends/Dialogs.h"
+#include "frontends/Application.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontLoader.h"
 #include "frontends/KeySymbol.h"
@@ -592,7 +591,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			break;
 		}
 		string const name = cmd.getArg(0);
-		Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
+		Inset * inset = lyx_view_->getOpenInset(name);
 		if (inset) {
 			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 			FuncStatus fs;
@@ -610,7 +609,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_DIALOG_TOGGLE:
-		flag.setOnOff(lyx_view_->getDialogs().visible(cmd.getArg(0)));
+		flag.setOnOff(lyx_view_->isDialogVisible(cmd.getArg(0)));
 		// fall through to set "enable"
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
@@ -1540,7 +1539,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			} // end switch(code)
 			if (insetCodeOK)
-				lyx_view_->getDialogs().show(name, data, 0);
+				lyx_view_->showDialog(name, data, 0);
 			break;
 		}
 
@@ -1548,7 +1547,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			string const & name = argument;
 			// Can only update a dialog connected to an existing inset
-			Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
+			Inset * inset = lyx_view_->getOpenInset(name);
 			if (inset) {
 				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
 				inset->dispatch(view()->cursor(), fr);
@@ -1569,7 +1568,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DIALOG_TOGGLE: {
 			BOOST_ASSERT(lyx_view_);
-			if (lyx_view_->getDialogs().visible(cmd.getArg(0)))
+			if (lyx_view_->isDialogVisible(cmd.getArg(0)))
 				dispatch(FuncRequest(LFUN_DIALOG_HIDE, argument));
 			else
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, argument));
@@ -1578,7 +1577,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DIALOG_DISCONNECT_INSET:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->getDialogs().disconnect(argument);
+			lyx_view_->disconnectDialog(argument);
 			break;
 
 
@@ -1785,7 +1784,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_INSET_APPLY: {
 			BOOST_ASSERT(lyx_view_);
 			string const name = cmd.getArg(0);
-			Inset * inset = lyx_view_->getDialogs().getOpenInset(name);
+			Inset * inset = lyx_view_->getOpenInset(name);
 			if (inset) {
 				FuncRequest fr(LFUN_INSET_MODIFY, argument);
 				inset->dispatch(view()->cursor(), fr);
