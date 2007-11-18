@@ -93,21 +93,21 @@ private:
 	std::string name() const { return "paragraph"; }
 
 private:
-	std::string name_;
+	QString name_;
 
 	void showEvent(QShowEvent * e)
 	{
 		QSettings settings;
-		std::string key = name_ + "/geometry";
-		QDialog::restoreGeometry(settings.value(key.c_str()).toByteArray());
+		QString key = name_ + "/geometry";
+		QDialog::restoreGeometry(settings.value(key).toByteArray());
 	    QDialog::showEvent(e);
 	}
 
 	void closeEvent(QCloseEvent * e)
 	{
 		QSettings settings;
-		std::string key = name_ + "/geometry";
-		settings.setValue(key.c_str(), QDialog::saveGeometry());
+		QString key = name_ + "/geometry";
+		settings.setValue(key, QDialog::saveGeometry());
 		QDialog::closeEvent(e);
 	}
 
