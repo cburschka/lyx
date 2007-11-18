@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-11 19:00+0100\n"
+"POT-Creation-Date: 2007-11-18 12:55+0100\n"
 "PO-Revision-Date: 2007-05-15 16:13+0900\n"
 "Last-Translator: cghan <cghan@pusan.ac.kr>\n"
 "Language-Team: hangul <ko@li.org>\n"
@@ -11676,16 +11676,16 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "class를 변경시킬 수 없습니다."
 
-#: src/Buffer.cpp:1821
+#: src/Buffer.cpp:1822
 msgid "Preview source code"
 msgstr ""
 
-#: src/Buffer.cpp:1832
+#: src/Buffer.cpp:1833
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr ""
 
-#: src/Buffer.cpp:1836
+#: src/Buffer.cpp:1837
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
@@ -15466,11 +15466,11 @@ msgstr "저장|S"
 msgid "Opened Note Inset"
 msgstr "열려있는 노우트(Note) 삽입구"
 
-#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
+#: src/insets/InsetOptArg.cpp:35 src/insets/InsetOptArg.cpp:45
 msgid "opt"
 msgstr ""
 
-#: src/insets/InsetOptArg.cpp:54
+#: src/insets/InsetOptArg.cpp:57
 msgid "Opened Optional Argument Inset"
 msgstr "열려있는 선택적 인수 삽입구(Optional Argument Inset)"
 

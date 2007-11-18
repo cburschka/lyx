@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-13 16:27+0100\n"
+"POT-Creation-Date: 2007-11-18 12:55+0100\n"
 "PO-Revision-Date: 2007-11-13 01:35+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -8322,17 +8322,17 @@ msgstr "Steng vindu|d"
 msgid "Redo|R"
 msgstr "Gjør om|G"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:844
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "Klipp"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:849
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:853
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "Kopier"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:826
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:830
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "Lim inn"
@@ -11592,16 +11592,16 @@ msgstr "chktex mislyktes"
 msgid "Could not run chktex successfully."
 msgstr "Mislyktes med chktex."
 
-#: src/Buffer.cpp:1821
+#: src/Buffer.cpp:1822
 msgid "Preview source code"
 msgstr "Forhåndsvist kildekode"
 
-#: src/Buffer.cpp:1832
+#: src/Buffer.cpp:1833
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Forhåndsvist kildekode for avsnitt %1$s"
 
-#: src/Buffer.cpp:1836
+#: src/Buffer.cpp:1837
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Forhåndsvist kildekode for avsnitt %1$s til %2$s"
@@ -12675,7 +12675,7 @@ msgstr "&Tilbake til lagret"
 msgid "Exiting."
 msgstr "Avslutter."
 
-#: src/LyXFunc.cpp:1189 src/Text3.cpp:1345
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1349
 msgid "Missing argument"
 msgstr "Mangler argument"
 
@@ -13419,27 +13419,27 @@ msgstr "Ingenting å indeksere!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikke indeksere mer enn ett avsnitt!"
 
-#: src/Text3.cpp:179 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "Matte editerings modus"
 
-#: src/Text3.cpp:729
+#: src/Text3.cpp:733
 msgid "Unknown spacing argument: "
 msgstr "Ukjent argument til linjeavstand: "
 
-#: src/Text3.cpp:903
+#: src/Text3.cpp:907
 msgid "Layout "
 msgstr "Stil "
 
-#: src/Text3.cpp:904
+#: src/Text3.cpp:908
 msgid " not known"
 msgstr " ukjent"
 
-#: src/Text3.cpp:1456 src/Text3.cpp:1468
+#: src/Text3.cpp:1461 src/Text3.cpp:1473
 msgid "Character set"
 msgstr "Tegnsett"
 
-#: src/Text3.cpp:1585 src/Text3.cpp:1596
+#: src/Text3.cpp:1590 src/Text3.cpp:1601
 msgid "Paragraph layout set"
 msgstr "Avsnittstil satt"
 
@@ -15404,11 +15404,11 @@ msgstr "Skyggelagt"
 msgid "Opened Note Inset"
 msgstr "Åpnet \"float inset\""
 
-#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
+#: src/insets/InsetOptArg.cpp:35 src/insets/InsetOptArg.cpp:45
 msgid "opt"
 msgstr "alt"
 
-#: src/insets/InsetOptArg.cpp:54
+#: src/insets/InsetOptArg.cpp:57
 #, fuzzy
 msgid "Opened Optional Argument Inset"
 msgstr "Åpen programlisting"

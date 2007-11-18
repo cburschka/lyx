@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-11 19:00+0100\n"
+"POT-Creation-Date: 2007-11-18 12:55+0100\n"
 "PO-Revision-Date: 2007-11-12 16:11+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -11613,16 +11613,16 @@ msgstr "chktex ha fallito"
 msgid "Could not run chktex successfully."
 msgstr "Non è stato possibile eseguire chktex con successo"
 
-#: src/Buffer.cpp:1821
+#: src/Buffer.cpp:1822
 msgid "Preview source code"
 msgstr "Anteprima del sorgente"
 
-#: src/Buffer.cpp:1832
+#: src/Buffer.cpp:1833
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Anteprima del sorgente per il paragrafo %1$d"
 
-#: src/Buffer.cpp:1836
+#: src/Buffer.cpp:1837
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Anteprima del sorgente dal paragrafo %1$s al %2$s"
@@ -13299,8 +13299,7 @@ msgstr ""
 #: src/LyXRC.cpp:2455
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
-msgstr ""
-"Abilita la cache grafica del testo (utile solo per Mac e Windows)."
+msgstr "Abilita la cache grafica del testo (utile solo per Mac e Windows)."
 
 #: src/LyXRC.cpp:2462
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -15522,11 +15521,11 @@ msgstr "Evidenziata"
 msgid "Opened Note Inset"
 msgstr "E' stato aperto l'inserto Nota"
 
-#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
+#: src/insets/InsetOptArg.cpp:35 src/insets/InsetOptArg.cpp:45
 msgid "opt"
 msgstr "opz"
 
-#: src/insets/InsetOptArg.cpp:54
+#: src/insets/InsetOptArg.cpp:57
 msgid "Opened Optional Argument Inset"
 msgstr "E' stato aperto l'inserto Argomento opzionale"
 

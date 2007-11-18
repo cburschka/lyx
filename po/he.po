@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-11 19:00+0100\n"
+"POT-Creation-Date: 2007-11-18 12:55+0100\n"
 "PO-Revision-Date: 2007-10-01 23:07+0200\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team:  <en@li.org>\n"
@@ -11580,16 +11580,16 @@ msgstr "chktex נכשל"
 msgid "Could not run chktex successfully."
 msgstr "לא מצליח להריץ את chktex בהצלחה."
 
-#: src/Buffer.cpp:1821
+#: src/Buffer.cpp:1822
 msgid "Preview source code"
 msgstr "תצוגה מקדימה של קוד המקור"
 
-#: src/Buffer.cpp:1832
+#: src/Buffer.cpp:1833
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "תצוגה מקדימה של קוד המקור של פסקה %1$d"
 
-#: src/Buffer.cpp:1836
+#: src/Buffer.cpp:1837
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "תצוגה מקדימה של קוד המקור מפיסקה %1$s עד לפיסקה %2$s"
@@ -15390,12 +15390,12 @@ msgstr "&צבועה"
 msgid "Opened Note Inset"
 msgstr "התוסף \"אובייקט צף\" פתוח"
 
-#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
+#: src/insets/InsetOptArg.cpp:35 src/insets/InsetOptArg.cpp:45
 #, fuzzy
 msgid "opt"
 msgstr "pt"
 
-#: src/insets/InsetOptArg.cpp:54
+#: src/insets/InsetOptArg.cpp:57
 #, fuzzy
 msgid "Opened Optional Argument Inset"
 msgstr "התוסף \"כותרת\" פתוח"

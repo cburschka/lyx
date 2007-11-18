@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.1b\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-11 19:00+0100\n"
+"POT-Creation-Date: 2007-11-18 12:55+0100\n"
 "PO-Revision-Date: 2005-12-18 15:05+0100\n"
 "Last-Translator: Joacim Persson <>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -13140,17 +13140,17 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex kört utan klagomål"
 
-#: src/Buffer.cpp:1821
+#: src/Buffer.cpp:1822
 #, fuzzy
 msgid "Preview source code"
 msgstr "Omvänd sidföljd|#O"
 
-#: src/Buffer.cpp:1832
+#: src/Buffer.cpp:1833
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Omvänd sidföljd|#O"
 
-#: src/Buffer.cpp:1836
+#: src/Buffer.cpp:1837
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
@@ -17179,12 +17179,12 @@ msgstr "Form:|#m"
 msgid "Opened Note Inset"
 msgstr "Öppnat insättning"
 
-#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
+#: src/insets/InsetOptArg.cpp:35 src/insets/InsetOptArg.cpp:45
 #, fuzzy
 msgid "opt"
 msgstr "Topp:|#T"
 
-#: src/insets/InsetOptArg.cpp:54
+#: src/insets/InsetOptArg.cpp:57
 #, fuzzy
 msgid "Opened Optional Argument Inset"
 msgstr "Öppnat insättning"

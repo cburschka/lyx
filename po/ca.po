@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-11 19:00+0100\n"
+"POT-Creation-Date: 2007-11-18 12:55+0100\n"
 "PO-Revision-Date: 2007-08-19 23:35+0200\n"
 "Last-Translator: Joan Montané <jmontane@gmail.com>\n"
 "Language-Team: catalan <ca@li.org>\n"
@@ -11774,17 +11774,17 @@ msgstr "Fallada del chktex"
 msgid "Could not run chktex successfully."
 msgstr "No s'ha pogut executar el chktex satisfactòriament"
 
-#: src/Buffer.cpp:1821
+#: src/Buffer.cpp:1822
 #, fuzzy
 msgid "Preview source code"
 msgstr "La vista preliminar està llesta"
 
-#: src/Buffer.cpp:1832
+#: src/Buffer.cpp:1833
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "La vista preliminar està llesta"
 
-#: src/Buffer.cpp:1836
+#: src/Buffer.cpp:1837
 #, fuzzy, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "La vista preliminar està llesta"
@@ -15668,12 +15668,12 @@ msgstr "Ombrejat"
 msgid "Opened Note Inset"
 msgstr "Taula oberta"
 
-#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
+#: src/insets/InsetOptArg.cpp:35 src/insets/InsetOptArg.cpp:45
 #, fuzzy
 msgid "opt"
 msgstr "pt"
 
-#: src/insets/InsetOptArg.cpp:54
+#: src/insets/InsetOptArg.cpp:57
 msgid "Opened Optional Argument Inset"
 msgstr ""
 
