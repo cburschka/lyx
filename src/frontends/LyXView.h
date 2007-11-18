@@ -27,8 +27,6 @@ class Inset;
 
 namespace frontend {
 
-class Dialogs;
-
 /**
  * LyXView - main LyX window
  *
@@ -54,15 +52,6 @@ public:
 	int id() const { return id_; }
 	///
 	virtual void close() = 0;
-	///
-	virtual void setFocus() = 0;
-
-	/**
-	 * This is called after the concrete view has been created.
-	 * We have to have the toolbar and the other stuff created
-	 * before we can populate it with this call.
-	 */
-	virtual void init() = 0;
 
 	/// show busy cursor
 	virtual void setBusy(bool) = 0;
@@ -120,27 +109,8 @@ public:
 	// This View's Dialogs
 	//
 	
-	/** Check the status of all visible dialogs and disable or reenable
-	 *  them as appropriate.
-	 *
-	 *  Disabling is needed for example when a dialog is open and the
-	 *  cursor moves to a position where the corresponding inset is not
-	 *  allowed.
-	 */
-	virtual void checkStatus() = 0;
-
-	/// Are the tooltips on or off?
-	virtual bool tooltipsEnabled() = 0;
-
 	/// Hide all visible dialogs
 	virtual void hideAll() const = 0;
-	/// Hide any dialogs that require a buffer for them to operate
-	virtual void hideBufferDependent() const = 0;
-	/** Update visible, buffer-dependent dialogs
-	    If the bool is true then a buffer change has occurred
-	    else it is still the same buffer.
-	 */
-	virtual void updateBufferDependent(bool) const = 0;
 
 	/** \param name == "bibtex", "citation" etc; an identifier used to
 	    launch a particular dialog.
