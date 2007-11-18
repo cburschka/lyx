@@ -103,8 +103,7 @@ size_t ParagraphMetrics::computeRowSignature(Row const & row,
 	boost::crc_32_type crc;
 	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
 		char_type const b[] = { par_->getChar(i) };
-		// char_type is 4 bytes!
-		crc.process_bytes(b, 4);
+		crc.process_bytes(b, sizeof(char_type));
 		if (bparams.trackChanges) {
 			Change change = par_->lookupChange(i);
 			char_type const b[] = { change.type };
