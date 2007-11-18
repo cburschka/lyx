@@ -430,8 +430,6 @@ int LyX::exec(int & argc, char * argv[])
 	// Let the frontend parse and remove all arguments that it knows
 	pimpl_->application_.reset(createApplication(argc, argv));
 
-	initGuiFont();
-
 	// Parse and remove all known arguments in the LyX singleton
 	// Give an error for all remaining ones.
 	int exit_status = init(argc, argv);
@@ -789,20 +787,6 @@ void LyX::printError(ErrorItem const & ei)
 	docstring tmp = _("LyX: ") + ei.error + char_type(':')
 		+ ei.description;
 	std::cerr << to_utf8(tmp) << std::endl;
-}
-
-
-void LyX::initGuiFont()
-{
-	if (lyxrc.roman_font_name.empty())
-		lyxrc.roman_font_name = pimpl_->application_->romanFontName();
-
-	if (lyxrc.sans_font_name.empty())
-		lyxrc.sans_font_name = pimpl_->application_->sansFontName();
-
-	if (lyxrc.typewriter_font_name.empty())
-		lyxrc.typewriter_font_name
-			= pimpl_->application_->typewriterFontName();
 }
 
 

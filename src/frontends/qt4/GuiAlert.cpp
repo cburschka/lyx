@@ -125,7 +125,7 @@ int prompt(docstring const & title0, docstring const & question,
 	// This call has no effect if the cursor has not been overridden.
 	qApp->changeOverrideCursor(Qt::ArrowCursor);
 
-	// FIXME replace that with theApp->gui()->currentView()
+	// FIXME replace that with guiApp->currentView()
 	int res = QMessageBox::information(qApp->focusWidget(),
 					   toqstr(title),
 					   toqstr(formatted(question)),

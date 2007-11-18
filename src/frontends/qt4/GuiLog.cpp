@@ -13,11 +13,10 @@
 
 #include "GuiLog.h"
 
+#include "GuiApplication.h"
 #include "qt_helpers.h"
 #include "gettext.h"
 #include "Lexer.h"
-
-#include "frontends/Application.h"
 
 #include <QCloseEvent>
 #include <QTextBrowser>
@@ -117,7 +116,7 @@ GuiLog::GuiLog(LyXView & lv)
 	highlighter = new LogHighlighter(logTB->document());
 
 	logTB->setReadOnly(true);
-	QFont font(toqstr(theApp()->typewriterFontName()));
+	QFont font(guiApp->typewriterFontName());
 	font.setKerning(false);
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);

@@ -12,11 +12,11 @@
 
 #include <config.h>
 
+#include "GuiApplication.h"
 #include "GuiViewSource.h"
 #include "LaTeXHighlighter.h"
 #include "qt_helpers.h"
 
-#include "Application.h"
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
@@ -57,7 +57,7 @@ ViewSourceWidget::ViewSourceWidget(GuiViewSource & controller)
 	viewSourceTV->setReadOnly(true);
 	///dialog_->viewSourceTV->setAcceptRichText(false);
 	// this is personal. I think source code should be in fixed-size font
-	QFont font(toqstr(theApp()->typewriterFontName()));
+	QFont font(guiApp->typewriterFontName());
 	font.setKerning(false);
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);

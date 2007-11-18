@@ -136,7 +136,7 @@ GuiApplication * guiApp;
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv), Application()
+	: QApplication(argc, argv), Application(), current_view_(0)
 {
 	QString app_name = "LyX";
 	QCoreApplication::setOrganizationName(app_name);
@@ -194,6 +194,16 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// Set the cache to 5120 kilobytes which corresponds to screen size of
 	// 1280 by 1024 pixels with a color depth of 32 bits.
 	QPixmapCache::setCacheLimit(5120);
+
+	// Initialize RC Fonts
+	if (lyxrc.roman_font_name.empty())
+		lyxrc.roman_font_name = fromqstr(romanFontName());
+
+	if (lyxrc.sans_font_name.empty())
+		lyxrc.sans_font_name = fromqstr(sansFontName());
+
+	if (lyxrc.typewriter_font_name.empty())
+		lyxrc.typewriter_font_name = fromqstr(typewriterFontName());
 }
 
 
@@ -203,9 +213,24 @@ GuiApplication::~GuiApplication()
 }
 
 
+static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
+{
+	ids.clear();
+	map<int, GuiView *>::const_iterator it;
+	for (it = stdmap.begin(); it != stdmap.end(); ++it)
+		ids.push_back(it->first);
+}
+
+
 LyXView & GuiApplication::createView(string const & geometry_arg)
 {
-	int const id = createRegisteredView();
+	updateIds(views_, view_ids_);
+	int id = 0;
+	while (views_.find(id) != views_.end())
+		id++;
+	views_[id] = new GuiView(id);
+	updateIds(views_, view_ids_);
+
 	GuiView * view  = views_[id];
 	theLyXFunc().setLyXView(view);
 
@@ -265,36 +290,36 @@ void GuiApplication::execBatchCommands()
 }
 
 
-string const GuiApplication::romanFontName()
+QString const GuiApplication::romanFontName()
 {
 	QFont font;
 	font.setKerning(false);
 	font.setStyleHint(QFont::Serif);
 	font.setFamily("serif");
 
-	return fromqstr(QFontInfo(font).family());
+	return QFontInfo(font).family();
 }
 
 
-string const GuiApplication::sansFontName()
+QString const GuiApplication::sansFontName()
 {
 	QFont font;
 	font.setKerning(false);
 	font.setStyleHint(QFont::SansSerif);
 	font.setFamily("sans");
 
-	return fromqstr(QFontInfo(font).family());
+	return QFontInfo(font).family();
 }
 
 
-string const GuiApplication::typewriterFontName()
+QString const GuiApplication::typewriterFontName()
 {
 	QFont font;
 	font.setKerning(false);
 	font.setStyleHint(QFont::TypeWriter);
 	font.setFamily("monospace");
 
-	return fromqstr(QFontInfo(font).family());
+	return QFontInfo(font).family();
 }
 
 
@@ -305,7 +330,7 @@ bool GuiApplication::event(QEvent * e)
 		// Open a file; this happens only on Mac OS X for now
 		QFileOpenEvent * foe = static_cast<QFileOpenEvent *>(e);
 
-		if (!currentView() || !currentView()->view())
+		if (!current_view_ || !current_view_->view())
 			// The application is not properly initialized yet.
 			// So we acknowledge the event and delay the file opening
 			// until LyX is ready.
@@ -357,16 +382,6 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	}
 
 	return false;
-}
-
-
-void GuiApplication::syncEvents()
-{
-	// This is the ONLY place where processEvents may be called.
-	// During screen update/ redraw, this method is disabled to
-	// prevent keyboard events being handed to the LyX core, where
-	// they could cause re-entrant calls to screen update.
-	processEvents(QEventLoop::ExcludeUserInputEvents);
 }
 
 
@@ -435,27 +450,6 @@ void GuiApplication::commitData(QSessionManager & sm)
 void GuiApplication::addMenuTranslator()
 {
 	installTranslator(new MenuTranslator(this));
-}
-
-
-static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
-{
-	ids.clear();
-	map<int, GuiView *>::const_iterator it;
-	for (it = stdmap.begin(); it != stdmap.end(); ++it)
-		ids.push_back(it->first);
-}
-
-
-int GuiApplication::createRegisteredView()
-{
-	updateIds(views_, view_ids_);
-	int id = 0;
-	while (views_.find(id) != views_.end())
-		id++;
-	views_[id] = new GuiView(id);
-	updateIds(views_, view_ids_);
-	return id;
 }
 
 
@@ -537,7 +531,7 @@ Buffer const * GuiApplication::updateInset(Inset const * inset) const
 #ifdef Q_WS_X11
 bool GuiApplication::x11EventFilter(XEvent * xev)
 {
-	if (!currentView())
+	if (!current_view_)
 		return false;
 
 	switch (xev->type) {
@@ -545,7 +539,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 		if (xev->xselectionrequest.selection != XA_PRIMARY)
 			break;
 		LYXERR(Debug::GUI, "X requested selection.");
-		BufferView * bv = currentView()->view();
+		BufferView * bv = current_view_->view();
 		if (bv) {
 			docstring const sel = bv->requestSelection();
 			if (!sel.empty())
@@ -557,7 +551,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 		if (xev->xselectionclear.selection != XA_PRIMARY)
 			break;
 		LYXERR(Debug::GUI, "Lost selection.");
-		BufferView * bv = currentView()->view();
+		BufferView * bv = current_view_->view();
 		if (bv)
 			bv->clearSelection();
 		break;
@@ -583,8 +577,8 @@ frontend::FontLoader & theFontLoader()
 	if (!use_gui)
 		return no_gui_font_loader;
 
-	BOOST_ASSERT(theApp());
-	return theApp()->fontLoader();
+	BOOST_ASSERT(frontend::guiApp);
+	return frontend::guiApp->fontLoader();
 }
 
 
@@ -601,8 +595,8 @@ frontend::FontMetrics const & theFontMetrics(FontInfo const & f)
 	if (!use_gui)
 		return no_gui_font_metrics;
 
-	BOOST_ASSERT(theApp());
-	return theApp()->fontLoader().metrics(f);
+	BOOST_ASSERT(frontend::guiApp);
+	return frontend::guiApp->fontLoader().metrics(f);
 }
 
 

@@ -48,7 +48,7 @@ LyXFileDialog::LyXFileDialog(docstring const & t,
 			     support::FileFilterList const & filters,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)
-				 // FIXME replace that with theApp->gui()->currentView()
+				 // FIXME replace that with guiApp->currentView()
 	: QFileDialog(qApp->focusWidget(),
 		      toqstr(t), toqstr(p), toqstr(filters.as_string()))
 {

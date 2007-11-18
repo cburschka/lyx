@@ -161,15 +161,16 @@ static void setComboxFont(QComboBox * cb, string const & family,
 	QFont font;
 	font.setKerning(false);
 
-	if (family == theApp()->romanFontName()) {
+	QString const font_family = toqstr(family);
+	if (font_family == guiApp->romanFontName()) {
 		font.setStyleHint(QFont::Serif);
-		font.setFamily(family.c_str());
-	} else if (family == theApp()->sansFontName()) {
+		font.setFamily(font_family);
+	} else if (font_family == guiApp->sansFontName()) {
 		font.setStyleHint(QFont::SansSerif);
-		font.setFamily(family.c_str());
-	} else if (family == theApp()->typewriterFontName()) {
+		font.setFamily(font_family);
+	} else if (font_family == guiApp->typewriterFontName()) {
 		font.setStyleHint(QFont::TypeWriter);
-		font.setFamily(family.c_str());
+		font.setFamily(font_family);
 	} else {
 		lyxerr << "FAILED to find the default font: '"
 		       << foundry << "', '" << family << '\''<< endl;

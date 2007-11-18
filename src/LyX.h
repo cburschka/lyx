@@ -133,9 +133,6 @@ private:
 	/// Create a View, load files and restore GUI Session.
 	void restoreGuiSession();
 
-	/// Initialize RC font for the GUI.
-	void initGuiFont();
-
 	/// initial LyX set up
 	bool init();
 	/// set up the default dead key bindings if requested

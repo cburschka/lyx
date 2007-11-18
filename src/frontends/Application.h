@@ -147,18 +147,16 @@ class Application
 {
 public:
 	///
-	Application() : current_view_(0) {}
+	Application() {}
 	///
 	virtual ~Application() {}
 
 	///
 	virtual bool closeAllViews() = 0;
-
 	///
 	virtual LyXView & view(int id) const = 0;
 	///
 	virtual size_t viewCount() const = 0;
-
 	///
 	virtual void hideDialogs(std::string const & name, Inset * inset) const = 0;
 	///
@@ -175,22 +173,6 @@ public:
 	* and only stop the event loop.
 	*/
 	virtual void exit(int status) = 0;
-
-	/**
-	* Synchronise all pending events.
-	*/
-	virtual void syncEvents() = 0;
-	///
-	virtual FontLoader & fontLoader() = 0;
-
-	/// return a suitable serif font name.
-	virtual std::string const romanFontName() = 0;
-
-	/// return a suitable sans serif font name.
-	virtual std::string const sansFontName() = 0;
-
-	/// return a suitable monospaced font name.
-	virtual std::string const typewriterFontName() = 0;
 
 	/**
 	* Given col, fills r, g, b in the range 0-255.
@@ -225,18 +207,6 @@ public:
 	/// Create the main window with given geometry settings.
 	/// \param geometry_arg: only for Windows platform.
 	virtual LyXView & createView(std::string const & geometry_arg) = 0;
-
-	///
-	LyXView const * currentView() const { return current_view_; }
-	///
-	LyXView * currentView() { return current_view_; }
-	///
-	void setCurrentView(LyXView & view) { current_view_ = &view; }
-
-protected:
-	/// This LyXView is the one receiving Clipboard and Selection
-	/// events
-	LyXView * current_view_;
 };
 
 } // namespace frontend

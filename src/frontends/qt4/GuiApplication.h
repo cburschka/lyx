@@ -62,10 +62,6 @@ public:
 	virtual int exec();
 	virtual void exit(int status);
 	virtual bool event(QEvent * e);
-	void syncEvents();
-	virtual std::string const romanFontName();
-	virtual std::string const sansFontName();
-	virtual std::string const typewriterFontName();
 	virtual bool getRgbColor(ColorCode col, RGBColor & rgbcol);
 	virtual std::string const hexName(ColorCode col);
 	virtual void updateColor(ColorCode col);
@@ -80,7 +76,15 @@ public:
 	void commitData(QSessionManager & sm);
 	//@}
 
+	///
+	GuiView const * currentView() const { return current_view_; }
+	///
+	GuiView * currentView() { return current_view_; }
+	///
+	void setCurrentView(GuiView & view) { current_view_ = &view; }
+	///
 	virtual size_t viewCount() const { return view_ids_.size(); }
+	///
 	std::vector<int> const & viewIds() { return view_ids_; }
 
 	///
@@ -88,11 +92,19 @@ public:
 	///
 	GuiFontLoader & guiFontLoader() { return font_loader_; }
 
+	/// return a suitable serif font name.
+	virtual QString const romanFontName();
 
-	virtual int createRegisteredView();
+	/// return a suitable sans serif font name.
+	virtual QString const sansFontName();
+
+	/// return a suitable monospaced font name.
+	virtual QString const typewriterFontName();
+	///
 	virtual bool closeAllViews();
+	///
 	virtual bool unregisterView(int id);
-
+	///
 	virtual LyXView & view(int id) const;
 	///
 	virtual void hideDialogs(std::string const & name, Inset * inset) const;
@@ -136,6 +148,9 @@ public:
 	std::map<int, GuiView *> views_;
 	///
 	std::vector<int> view_ids_;
+	/// This LyXView is the one receiving Clipboard and Selection
+	/// events
+	GuiView * current_view_;
 }; // GuiApplication
 
 extern GuiApplication * guiApp;
