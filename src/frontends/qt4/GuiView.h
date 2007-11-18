@@ -21,7 +21,6 @@
 
 
 #include <QMainWindow>
-#include <QTimer>
 
 class QCloseEvent;
 class QDragEnterEvent;
@@ -32,16 +31,13 @@ class QShowEvent;
 
 namespace lyx {
 
-class Timeout;
 class ToolbarInfo;
 
 namespace frontend {
 
+class Dialog;
 class GuiToolbar;
 class GuiWorkArea;
-class Dialog;
-
-QWidget * mainWindow();
 
 /**
  * GuiView - Qt4 implementation of LyXView
@@ -239,10 +235,6 @@ public:
 	Inset * getOpenInset(std::string const & name) const;
 
 private:
-	///
-	void redrawDialog() const;
-	///
-	bool isValidName(std::string const & name) const;
 	///
 	Dialog * find_or_build(std::string const & name);
 	///

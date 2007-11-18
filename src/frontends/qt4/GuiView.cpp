@@ -79,6 +79,7 @@ using std::string;
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
+#include <QTimer>
 #include <QToolBar>
 #include <QUrl>
 
@@ -1079,6 +1080,47 @@ void GuiView::restartCursor()
 		d.current_work_area_->startBlinkingCursor();
 }
 
+namespace {
+
+// This list should be kept in sync with the list of insets in
+// src/insets/Inset.cpp.  I.e., if a dialog goes with an inset, the
+// dialog should have the same name as the inset.
+
+char const * const dialognames[] = {
+"aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
+"citation", "document", "embedding", "errorlist", "ert", "external", "file",
+"findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
+"mathdelimiter", "mathmatrix", "note", "paragraph",
+"prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
+
+#ifdef HAVE_LIBAIKSAURUS
+"thesaurus",
+#endif
+
+"texinfo", "toc", "href", "view-source", "vspace", "wrap", "listings" };
+
+char const * const * const end_dialognames =
+	dialognames + (sizeof(dialognames) / sizeof(char *));
+
+class cmpCStr {
+public:
+	cmpCStr(char const * name) : name_(name) {}
+	bool operator()(char const * other) {
+		return strcmp(other, name_) == 0;
+	}
+private:
+	char const * name_;
+};
+
+
+bool isValidName(string const & name)
+{
+	return std::find_if(dialognames, end_dialognames,
+			    cmpCStr(name.c_str())) != end_dialognames;
+}
+
+} // namespace anon
+
 
 Dialog * GuiView::find_or_build(string const & name)
 {
@@ -1209,16 +1251,6 @@ void GuiView::updateBufferDependent(bool switched) const
 }
 
 
-void GuiView::redrawDialog() const
-{
-	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
-
-	for(; it != end; ++it)
-		it->second->redraw();
-}
-
-
 void GuiView::checkStatus()
 {
 	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
@@ -1232,40 +1264,6 @@ void GuiView::checkStatus()
 }
 
 
-namespace {
-
-// This list should be kept in sync with the list of insets in
-// src/insets/Inset.cpp.  I.e., if a dialog goes with an inset, the
-// dialog should have the same name as the inset.
-
-char const * const dialognames[] = {
-"aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "document", "embedding", "errorlist", "ert", "external", "file",
-"findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
-"mathdelimiter", "mathmatrix", "note", "paragraph",
-"prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
-
-#ifdef HAVE_LIBAIKSAURUS
-"thesaurus",
-#endif
-
-"texinfo", "toc", "href", "view-source", "vspace", "wrap", "listings" };
-
-char const * const * const end_dialognames =
-	dialognames + (sizeof(dialognames) / sizeof(char *));
-
-class cmpCStr {
-public:
-	cmpCStr(char const * name) : name_(name) {}
-	bool operator()(char const * other) {
-		return strcmp(other, name_) == 0;
-	}
-private:
-	char const * name_;
-};
-
-
-} // namespace anon
 
 // will be replaced by a proper factory...
 Dialog * createGuiAbout(LyXView & lv);
@@ -1308,13 +1306,6 @@ Dialog * createGuiHyperlink(LyXView & lv);
 Dialog * createGuiVSpace(LyXView & lv);
 Dialog * createGuiViewSource(LyXView & lv);
 Dialog * createGuiWrap(LyXView & lv);
-
-
-bool GuiView::isValidName(string const & name) const
-{
-	return std::find_if(dialognames, end_dialognames,
-			    cmpCStr(name.c_str())) != end_dialognames;
-}
 
 
 Dialog * GuiView::build(string const & name)
