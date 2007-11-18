@@ -86,7 +86,7 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			// Eventually trigger dialog with button 3, not 1
 			string const data = createDialogStr("ref");
-			cur.bv().showInsetDialog("ref", data, this);
+			cur.bv().showDialog("ref", data, this);
 			break;
 		}
 		cur.undispatched();

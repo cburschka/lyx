@@ -29,17 +29,9 @@ public:
 	/// This function is called when some message shows up.
 	virtual void message(docstring const & msg) = 0;
 
-	/// This function is called when some dialog needs to be shown.
-	virtual void showDialog(std::string const & name) = 0;
-
-	/// This function is called when some dialog needs to be shown with
-	/// some data.
-	virtual void showDialogWithData(std::string const & name,
-		std::string const & data) = 0;
-
 	/// This function is called when some inset dialogs needs to be shown.
-	virtual void showInsetDialog(std::string const & name,
-		std::string const & data, Inset * inset) = 0;
+	virtual void showDialog(std::string const & name,
+		std::string const & data, Inset * inset = 0) = 0;
 
 	/// This function is called when some dialogs needs to be updated.
 	virtual void updateDialog(std::string const & name,

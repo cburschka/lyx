@@ -22,7 +22,7 @@ enum KeyModifier {
 	NoModifier       = 0, //< no modifiers held
 	ControlModifier  = 1, //< control button held
 	AltModifier      = 2, //< alt/meta key held
-	ShiftModifier    =  4  //< shift key held
+	ShiftModifier    = 4  //< shift key held
 };
 
 

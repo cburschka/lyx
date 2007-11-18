@@ -28,7 +28,7 @@ using std::string;
 void MailInset::showDialog(BufferView * bv) const
 {
 	BOOST_ASSERT(bv);
-	bv->showInsetDialog(name(), inset2string(bv->buffer()), &inset());
+	bv->showDialog(name(), inset2string(bv->buffer()), &inset());
 }
 
 

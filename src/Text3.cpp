@@ -1233,7 +1233,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			content : cmd.argument();
 		string const data = InsetCommandMailer::params2string("href", p);
 		if (p["target"].empty()) {
-			bv->showInsetDialog("href", data, 0);
+			bv->showDialog("href", data);
 		} else {
 			FuncRequest fr(LFUN_INSET_INSERT, data);
 			dispatch(cur, fr);
@@ -1250,7 +1250,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		string const data = InsetCommandMailer::params2string("label", p);
 
 		if (cmd.argument().empty()) {
-			bv->showInsetDialog("label", data, 0);
+			bv->showDialog("label", data);
 		} else {
 			FuncRequest fr(LFUN_INSET_INSERT, data);
 			dispatch(cur, fr);
@@ -1574,7 +1574,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		string data;
 		params2string(cur.paragraph(), data);
 		data = "show\n" + data;
-		bv->showDialogWithData("paragraph", data);
+		bv->showDialog("paragraph", data);
 		break;
 	}
 
@@ -1659,7 +1659,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				arg = cur.selectionAsString(false);
 			}
 		}
-		bv->showDialogWithData("thesaurus", to_utf8(arg));
+		bv->showDialog("thesaurus", to_utf8(arg));
 		break;
 	}
 

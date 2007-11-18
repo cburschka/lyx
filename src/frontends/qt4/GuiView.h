@@ -93,12 +93,6 @@ public:
 	void structureChanged() { updateToc(); }
 	///@}
 
-	////
-	void showDialog(std::string const & name);
-	void showDialogWithData(std::string const & name,
-		std::string const & data);
-	void showInsetDialog(std::string const & name,
-		std::string const & data, Inset * inset);
 	
 	/// called on timeout
 	void autoSave();
@@ -244,7 +238,7 @@ public:
 	    the current cursor position or modify an existing, 'open' inset?
 	*/
 	void showDialog(std::string const & name,
-		std::string const & data = std::string(), Inset * inset = 0);
+		std::string const & data, Inset * inset = 0);
 
 	/** \param name == "citation", "bibtex" etc; an identifier used
 	    to update the contents of a particular dialog with \param data.

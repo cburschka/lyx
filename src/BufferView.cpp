@@ -1970,23 +1970,15 @@ void BufferView::message(docstring const & msg)
 void BufferView::showDialog(std::string const & name)
 {
 	if (d->gui_)
-		d->gui_->showDialog(name);
+		d->gui_->showDialog(name, string());
 }
 
 
-void BufferView::showDialogWithData(std::string const & name,
-	std::string const & data)
-{
-	if (d->gui_)
-		d->gui_->showDialogWithData(name, data);
-}
-
-
-void BufferView::showInsetDialog(std::string const & name,
+void BufferView::showDialog(std::string const & name,
 	std::string const & data, Inset * inset)
 {
 	if (d->gui_)
-		d->gui_->showInsetDialog(name, data, inset);
+		d->gui_->showDialog(name, data, inset);
 }
 
 

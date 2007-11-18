@@ -960,24 +960,6 @@ void GuiView::errors(string const & error_type)
 }
 
 
-void GuiView::showDialog(std::string const & name)
-{
-	showDialog(name, string());
-}
-
-void GuiView::showDialogWithData(string const & name, string const & data)
-{
-	showDialog(name, data);
-}
-
-
-void GuiView::showInsetDialog(string const & name, string const & data,
-		Inset * inset)
-{
-	showDialog(name, data, inset);
-}
-
-
 void GuiView::updateDialog(string const & name, string const & data)
 {
 	if (!isDialogVisible(name))

@@ -231,11 +231,8 @@ public:
 
 	/// This signal is emitted when some dialog needs to be shown with
 	/// some data.
-	void showDialogWithData(std::string const & name, std::string const & data);
-
-	/// This signal is emitted when some inset dialogs needs to be shown.
-	void showInsetDialog(std::string const & name, std::string const & data,
-		Inset * inset);
+	void showDialog(std::string const & name, std::string const & data,
+		Inset * inset = 0);
 
 	/// This signal is emitted when some dialogs needs to be updated.
 	void updateDialog(std::string const & name, std::string const & data);

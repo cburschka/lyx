@@ -1028,7 +1028,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			InsetMathRef tmp(name);
 			data = tmp.createDialogStr(to_utf8(name));
 		}
-		cur.bv().showInsetDialog(to_utf8(name), data, 0);
+		cur.bv().showDialog(to_utf8(name), data);
 		break;
 	}
 

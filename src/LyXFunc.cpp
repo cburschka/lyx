@@ -1080,7 +1080,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BUFFER_EXPORT:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (argument == "custom")
-				lyx_view_->showDialog("sendto");
+				lyx_view_->showDialog("sendto", string());
 			else
 				lyx_view_->buffer()->doExport(argument, false);
 			break;
@@ -1423,7 +1423,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (name == "character") {
 				data = freefont2string();
 				if (!data.empty())
-					lyx_view_->showDialogWithData("character", data);
+					lyx_view_->showDialog("character", data);
 			} else if (name == "latexlog") {
 				Buffer::LogType type; 
 				string const logfile = lyx_view_->buffer()->logName(&type);
@@ -1436,13 +1436,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					break;
 				}
 				data += Lexer::quoteString(logfile);
-				lyx_view_->showDialogWithData("log", data);
+				lyx_view_->showDialog("log", data);
 			} else if (name == "vclog") {
 				string const data = "vc " +
 					Lexer::quoteString(lyx_view_->buffer()->lyxvc().getLogFile());
-				lyx_view_->showDialogWithData("log", data);
+				lyx_view_->showDialog("log", data);
 			} else
-				lyx_view_->showDialogWithData(name, data);
+				lyx_view_->showDialog(name, data);
 			break;
 		}
 

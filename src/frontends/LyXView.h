@@ -16,8 +16,6 @@
 #include "frontends/Delegates.h"
 #include "support/strfwd.h"
 
-#include <string>
-
 namespace lyx {
 
 namespace support { class FileName; }
@@ -158,7 +156,7 @@ public:
 	    the current cursor position or modify an existing, 'open' inset?
 	*/
 	virtual void showDialog(std::string const & name,
-		std::string const & data = std::string(), Inset * inset = 0) = 0;
+		std::string const & data, Inset * inset = 0) = 0;
 
 	/** \param name == "citation", "bibtex" etc; an identifier used
 	    to update the contents of a particular dialog with \param data.
