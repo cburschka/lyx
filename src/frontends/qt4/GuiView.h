@@ -70,12 +70,9 @@ public:
 	virtual void message(docstring const & str);
 	virtual bool hasFocus() const;
 	void updateLayoutChoice(bool force);
-	bool isToolbarVisible(std::string const & id);
 	void updateToolbars();
-	///
 	QMenu * createPopupMenu();
-
-	/// dispatch to current BufferView
+	FuncStatus getStatus(FuncRequest const & cmd);
 	void dispatch(FuncRequest const & cmd);
 
 	/// \return the buffer currently shown in this window
@@ -218,9 +215,6 @@ public:
 	*/
 	void updateDialog(std::string const & name, std::string const & data);
 
-	/// Is the dialog currently visible?
-	bool isDialogVisible(std::string const & name) const;
-
 	/** All Dialogs of the given \param name will be closed if they are
 	    connected to the given \param inset.
 	*/
@@ -231,6 +225,8 @@ public:
 	Inset * getOpenInset(std::string const & name) const;
 
 private:
+	/// Is the dialog currently visible?
+	bool isDialogVisible(std::string const & name) const;
 	///
 	Dialog * find_or_build(std::string const & name);
 	///

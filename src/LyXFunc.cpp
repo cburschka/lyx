@@ -544,6 +544,16 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	// to handle (Andre')
 	bool enable = true;
 	switch (cmd.action) {
+
+	case LFUN_DIALOG_TOGGLE:
+	case LFUN_DIALOG_SHOW:
+	case LFUN_DIALOG_UPDATE:
+	case LFUN_TOOLBAR_TOGGLE:
+		if (lyx_view_)
+			return lyx_view_->getStatus(cmd);
+		enable = false;
+		break;
+
 	case LFUN_BUFFER_TOGGLE_READ_ONLY:
 		flag.setOnOff(buf->isReadonly());
 		break;
@@ -609,48 +619,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_DIALOG_TOGGLE:
-		flag.setOnOff(lyx_view_?
-			lyx_view_->isDialogVisible(cmd.getArg(0)) : false);
-		// fall through to set "enable"
-	case LFUN_DIALOG_SHOW: {
-		string const name = cmd.getArg(0);
-		if (!buf)
-			enable = name == "aboutlyx"
-				|| name == "file" //FIXME: should be removed.
-				|| name == "prefs"
-				|| name == "texinfo";
-		else if (name == "print")
-			enable = buf->isExportable("dvi")
-				&& lyxrc.print_command != "none";
-		else if (name == "character") {
-			if (!view())
-				enable = false;
-			else {
-				InsetCode ic = view()->cursor().inset().lyxCode();
-				enable = ic != ERT_CODE && ic != LISTINGS_CODE;
-			}
-		}
-		else if (name == "latexlog")
-			enable = FileName(buf->logName()).isFileReadable();
-		else if (name == "spellchecker")
-#if defined (USE_ASPELL) || defined (USE_ISPELL) || defined (USE_PSPELL)
-			enable = !buf->isReadonly();
-#else
-			enable = false;
-#endif
-		else if (name == "vclog")
-			enable = buf->lyxvc().inUse();
-		break;
-	}
-
-	case LFUN_DIALOG_UPDATE: {
-		string const name = cmd.getArg(0);
-		if (!buf)
-			enable = name == "prefs";
-		break;
-	}
-
 	case LFUN_CITATION_INSERT: {
 		FuncRequest fr(LFUN_INSET_INSERT, "citation");
 		enable = getStatus(fr).enabled();
@@ -696,16 +664,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = LyX::ref().session().bookmarks().size() > 0;
 		break;
 
-	case LFUN_TOOLBAR_TOGGLE: {
-		bool const current = lyx_view_?
-			lyx_view_->isToolbarVisible(cmd.getArg(0)) : false;
-		flag.setOnOff(current);
-		break;
-	}
-	case LFUN_WINDOW_CLOSE: {
+	case LFUN_WINDOW_CLOSE:
 		enable = theApp()->viewCount() > 0;
 		break;
-	}
 
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
@@ -920,6 +881,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_DROP_LAYOUTS_CHOICE:
 		case LFUN_MENU_OPEN:
 		case LFUN_TOOLBAR_TOGGLE:
+		case LFUN_DIALOG_UPDATE:
+		case LFUN_DIALOG_TOGGLE:
+		case LFUN_DIALOG_DISCONNECT_INSET:
+		case LFUN_DIALOG_HIDE:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->dispatch(cmd);
 			break;
@@ -1418,36 +1383,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_DIALOG_SHOW: {
-			BOOST_ASSERT(lyx_view_);
-			string const name = cmd.getArg(0);
-			string data = trim(to_utf8(cmd.argument()).substr(name.size()));
-
-			if (name == "character") {
-				data = freefont2string();
-				if (!data.empty())
-					lyx_view_->showDialog("character", data);
-			} else if (name == "latexlog") {
-				Buffer::LogType type; 
-				string const logfile = lyx_view_->buffer()->logName(&type);
-				switch (type) {
-				case Buffer::latexlog:
-					data = "latex ";
-					break;
-				case Buffer::buildlog:
-					data = "literate ";
-					break;
-				}
-				data += Lexer::quoteString(logfile);
-				lyx_view_->showDialog("log", data);
-			} else if (name == "vclog") {
-				string const data = "vc " +
-					Lexer::quoteString(lyx_view_->buffer()->lyxvc().getLogFile());
-				lyx_view_->showDialog("log", data);
-			} else
-				lyx_view_->showDialog(name, data);
-			break;
-		}
 
 		case LFUN_DIALOG_SHOW_NEW_INSET: {
 			BOOST_ASSERT(lyx_view_);
@@ -1545,44 +1480,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				lyx_view_->showDialog(name, data, 0);
 			break;
 		}
-
-		case LFUN_DIALOG_UPDATE: {
-			BOOST_ASSERT(lyx_view_);
-			string const & name = argument;
-			// Can only update a dialog connected to an existing inset
-			Inset * inset = lyx_view_->getOpenInset(name);
-			if (inset) {
-				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
-				inset->dispatch(view()->cursor(), fr);
-			} else if (name == "paragraph") {
-				dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
-			} else if (name == "prefs") {
-				lyx_view_->updateDialog(name, string());
-			}
-			break;
-		}
-
-		case LFUN_DIALOG_HIDE: {
-			if (quitting || !use_gui)
-				break;
-			theApp()->hideDialogs(argument, 0);
-			break;
-		}
-
-		case LFUN_DIALOG_TOGGLE: {
-			BOOST_ASSERT(lyx_view_);
-			if (lyx_view_->isDialogVisible(cmd.getArg(0)))
-				dispatch(FuncRequest(LFUN_DIALOG_HIDE, argument));
-			else
-				dispatch(FuncRequest(LFUN_DIALOG_SHOW, argument));
-			break;
-		}
-
-		case LFUN_DIALOG_DISCONNECT_INSET:
-			BOOST_ASSERT(lyx_view_);
-			lyx_view_->disconnectDialog(argument);
-			break;
-
 
 		case LFUN_CITATION_INSERT: {
 			BOOST_ASSERT(lyx_view_);

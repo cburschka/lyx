@@ -43,9 +43,11 @@ using std::string;
 #include "gettext.h"
 #include "Intl.h"
 #include "Layout.h"
+#include "Lexer.h"
 #include "LyXFunc.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "LyXVC.h"
 #include "MenuBackend.h"
 #include "Paragraph.h"
 #include "TextClass.h"
@@ -54,6 +56,7 @@ using std::string;
 #include "version.h"
 
 #include "support/convert.h"
+#include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Timeout.h"
@@ -100,6 +103,8 @@ extern bool quitting;
 namespace frontend {
 
 using support::bformat;
+using support::FileName;
+using support::trim;
 
 namespace {
 
@@ -805,11 +810,6 @@ void GuiView::updateLayoutChoice(bool force)
 }
 
 
-bool GuiView::isToolbarVisible(std::string const & id)
-{
-	return d.toolbars_->visible(id);
-}
-
 void GuiView::updateToolbars()
 {
 	if (d.current_work_area_) {
@@ -950,8 +950,75 @@ void GuiView::resetAutosaveTimers()
 }
 
 
+FuncStatus GuiView::getStatus(FuncRequest const & cmd)
+{
+	FuncStatus flag;
+	bool enable = true;
+	Buffer * buf = buffer();
+
+	switch(cmd.action) {
+	case LFUN_TOOLBAR_TOGGLE:
+		flag.setOnOff(d.toolbars_->visible(cmd.getArg(0)));
+		break;
+
+	case LFUN_DIALOG_TOGGLE:
+		flag.setOnOff(isDialogVisible(cmd.getArg(0)));
+		// fall through to set "enable"
+	case LFUN_DIALOG_SHOW: {
+		string const name = cmd.getArg(0);
+		if (!buf)
+			enable = name == "aboutlyx"
+				|| name == "file" //FIXME: should be removed.
+				|| name == "prefs"
+				|| name == "texinfo";
+		else if (name == "print")
+			enable = buf->isExportable("dvi")
+				&& lyxrc.print_command != "none";
+		else if (name == "character") {
+			if (!view())
+				enable = false;
+			else {
+				InsetCode ic = view()->cursor().inset().lyxCode();
+				enable = ic != ERT_CODE && ic != LISTINGS_CODE;
+			}
+		}
+		else if (name == "latexlog")
+			enable = FileName(buf->logName()).isFileReadable();
+		else if (name == "spellchecker")
+#if defined (USE_ASPELL) || defined (USE_ISPELL) || defined (USE_PSPELL)
+			enable = !buf->isReadonly();
+#else
+			enable = false;
+#endif
+		else if (name == "vclog")
+			enable = buf->lyxvc().inUse();
+		break;
+	}
+
+	case LFUN_DIALOG_UPDATE: {
+		string const name = cmd.getArg(0);
+		if (!buf)
+			enable = name == "prefs";
+		break;
+	}
+
+	default:
+		if (!view()) {
+			enable = false;
+			break;
+		}
+	}
+
+	if (!enable)
+		flag.enabled(false);
+
+	return flag;
+}
+
+
 void GuiView::dispatch(FuncRequest const & cmd)
 {
+	Buffer * buf = buffer();
 	switch(cmd.action) {
 		case LFUN_BUFFER_SWITCH:
 			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
@@ -998,6 +1065,70 @@ void GuiView::dispatch(FuncRequest const & cmd)
 
 			message(bformat(_("Toolbar \"%1$s\" state set to %2$s"), 
 			                   _(tbi->gui_name), state));
+			break;
+		}
+
+		case LFUN_DIALOG_UPDATE: {
+			string const name = to_utf8(cmd.argument());
+			// Can only update a dialog connected to an existing inset
+			Inset * inset = getOpenInset(name);
+			if (inset) {
+				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
+				inset->dispatch(view()->cursor(), fr);
+			} else if (name == "paragraph") {
+				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+			} else if (name == "prefs") {
+				updateDialog(name, string());
+			}
+			break;
+		}
+
+		case LFUN_DIALOG_TOGGLE: {
+			if (isDialogVisible(cmd.getArg(0)))
+				dispatch(FuncRequest(LFUN_DIALOG_HIDE, cmd.argument()));
+			else
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW, cmd.argument()));
+			break;
+		}
+
+		case LFUN_DIALOG_DISCONNECT_INSET:
+			disconnectDialog(to_utf8(cmd.argument()));
+			break;
+
+		case LFUN_DIALOG_HIDE: {
+			if (quitting)
+				break;
+			guiApp->hideDialogs(to_utf8(cmd.argument()), 0);
+			break;
+		}
+
+		case LFUN_DIALOG_SHOW: {
+			string const name = cmd.getArg(0);
+			string data = trim(to_utf8(cmd.argument()).substr(name.size()));
+
+			if (name == "character") {
+				data = freefont2string();
+				if (!data.empty())
+					showDialog("character", data);
+			} else if (name == "latexlog") {
+				Buffer::LogType type; 
+				string const logfile = buf->logName(&type);
+				switch (type) {
+				case Buffer::latexlog:
+					data = "latex ";
+					break;
+				case Buffer::buildlog:
+					data = "literate ";
+					break;
+				}
+				data += Lexer::quoteString(logfile);
+				showDialog("log", data);
+			} else if (name == "vclog") {
+				string const data = "vc " +
+					Lexer::quoteString(buf->lyxvc().getLogFile());
+				showDialog("log", data);
+			} else
+				showDialog(name, data);
 			break;
 		}
 

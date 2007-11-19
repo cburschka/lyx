@@ -22,6 +22,7 @@ namespace support { class FileName; }
 
 class Buffer;
 class BufferView;
+class FuncStatus;
 class FuncRequest;
 class Inset;
 
@@ -67,9 +68,6 @@ public:
 	/// set a buffer to the current workarea.
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 
-	///
-	virtual bool isToolbarVisible(std::string const & id) = 0;
-
 	//@}
 
 	/// updates the possible layouts selectable
@@ -81,6 +79,8 @@ public:
 	/// display a message in the view
 	virtual void message(docstring const &) = 0;
 
+	///
+	virtual FuncStatus getStatus(FuncRequest const & cmd) = 0;
 	/// dispatch to current BufferView
 	virtual void dispatch(FuncRequest const & cmd) = 0;
 
@@ -124,19 +124,6 @@ public:
 	virtual void showDialog(std::string const & name,
 		std::string const & data, Inset * inset = 0) = 0;
 
-	/** \param name == "citation", "bibtex" etc; an identifier used
-	    to update the contents of a particular dialog with \param data.
-	    See the comments to 'show', above.
-	*/
-	virtual void updateDialog(std::string const & name, std::string const & data) = 0;
-
-	/// Is the dialog currently visible?
-	virtual bool isDialogVisible(std::string const & name) const = 0;
-
-	/** All Dialogs of the given \param name will be closed if they are
-	    connected to the given \param inset.
-	*/
-	virtual void hideDialog(std::string const & name, Inset * inset) = 0;
 	///
 	virtual void disconnectDialog(std::string const & name) = 0;
 	///

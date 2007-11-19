@@ -495,7 +495,7 @@ bool GuiApplication::closeAllViews()
 }
 
 
-LyXView & GuiApplication::view(int id) const
+GuiView & GuiApplication::view(int id) const
 {
 	BOOST_ASSERT(views_.find(id) != views_.end());
 	return *views_.find(id)->second;

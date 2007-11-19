@@ -105,7 +105,7 @@ public:
 	///
 	virtual bool unregisterView(int id);
 	///
-	virtual LyXView & view(int id) const;
+	virtual GuiView & view(int id) const;
 	///
 	virtual void hideDialogs(std::string const & name, Inset * inset) const;
 	///

@@ -154,8 +154,6 @@ public:
 	///
 	virtual bool closeAllViews() = 0;
 	///
-	virtual LyXView & view(int id) const = 0;
-	///
 	virtual size_t viewCount() const = 0;
 	///
 	virtual void hideDialogs(std::string const & name, Inset * inset) const = 0;
