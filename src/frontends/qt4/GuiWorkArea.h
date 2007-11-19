@@ -125,6 +125,8 @@ public:
 	/// Process Key pressed event.
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, KeyModifier mod);
+	///
+	void resizeBufferView();
 
 Q_SIGNALS:
 	///
@@ -191,8 +193,6 @@ private:
 	void generateSyntheticMouseEvent();
 	///
 	void dispatch(FuncRequest const & cmd0, KeyModifier = NoModifier);
-	///
-	void resizeBufferView();
 	/// hide the visible cursor, if it is visible
 	void hideCursor();
 	/// show the cursor if it is not visible
@@ -239,6 +239,7 @@ public:
 	void showBar(bool show);
 	void closeAll();
 	bool setCurrentWorkArea(GuiWorkArea *);
+	GuiWorkArea * addWorkArea(Buffer & buffer, GuiView & view);
 	bool removeWorkArea(GuiWorkArea *);
 	GuiWorkArea * currentWorkArea();
 	GuiWorkArea * workArea(Buffer & buffer);

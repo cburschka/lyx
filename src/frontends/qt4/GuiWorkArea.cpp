@@ -216,7 +216,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
 
-	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
 	setMouseTracking(true);
@@ -398,6 +398,7 @@ void GuiWorkArea::resizeBufferView()
 	buffer_view_->resize(viewport()->width(), viewport()->height());
 	lyx_view_->updateLayoutChoice(false);
 	lyx_view_->setBusy(false);
+	need_resize_ = false;
 }
 
 
@@ -471,8 +472,6 @@ void GuiWorkArea::toggleCursor()
 
 void GuiWorkArea::updateScrollbar()
 {
-	if (verticalScrollBarPolicy() != Qt::ScrollBarAlwaysOn)
-		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	verticalScrollBar()->setTracking(false);
 
 	buffer_view_->updateScrollbar();
@@ -725,7 +724,6 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		updateScreen();
 		hideCursor();
 		showCursor();
-		need_resize_ = false;
 	}
 
 	QPainter pain(viewport());
@@ -1058,6 +1056,22 @@ bool TabWorkArea::setCurrentWorkArea(GuiWorkArea * work_area)
 }
 
 
+GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
+{
+	GuiWorkArea * wa = new GuiWorkArea(buffer, view);
+	wa->setUpdatesEnabled(false);
+	// Hide tabbar if there's no tab (avoid a resize when hiding it again).
+	showBar(count() > 0);
+	addTab(wa, wa->windowTitle());
+	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
+		this, SLOT(updateTabText(GuiWorkArea *)));
+	// Hide tabbar if there's only one tab.
+	showBar(count() > 1);
+	wa->resizeBufferView();
+	return wa;
+}
+
+
 bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 {
 	BOOST_ASSERT(work_area);
@@ -1084,8 +1098,8 @@ void TabWorkArea::on_currentTabChanged(int i)
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
 	BOOST_ASSERT(wa);
 	BufferView & bv = wa->bufferView();
-	bv.updateMetrics();
 	bv.cursor().fixIfBroken();
+	bv.updateMetrics();
 	wa->setUpdatesEnabled(true);
 	wa->redraw();
 	wa->setFocus();

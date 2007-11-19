@@ -703,23 +703,13 @@ GuiWorkArea * GuiView::workArea(Buffer & buffer)
 
 GuiWorkArea * GuiView::addWorkArea(Buffer & buffer)
 {
-	GuiWorkArea * wa = new GuiWorkArea(buffer, *this);
-	wa->setUpdatesEnabled(false);
 
 	// Automatically create a TabWorkArea if there are none yet.
 	if (!d.splitter_->count())
 		addTabWorkArea();
 
 	TabWorkArea * tab_widget = d.currentTabWorkArea();
-	tab_widget->addTab(wa, wa->windowTitle());
-	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
-		tab_widget, SLOT(updateTabText(GuiWorkArea *)));
-
-	wa->bufferView().updateMetrics();
-
-	// Hide tabbar if there's only one tab.
-	tab_widget->showBar(tab_widget->count() > 1);
-	return wa;
+	return tab_widget->addWorkArea(buffer, *this);
 }
 
 
