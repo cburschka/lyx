@@ -661,11 +661,9 @@ src_tex2lyx_extra_files = Split('''
 src_frontends_header_files = Split('''
     Application.h
     Clipboard.h
-    Dialogs.h
     FileDialog.h
     FontLoader.h
     FontMetrics.h
-    Gui.h
     KeyModifier.h
     KeySymbol.h
     LyXView.h
@@ -681,8 +679,6 @@ src_frontends_header_files = Split('''
 
 
 src_frontends_files = Split('''
-    Application.cpp
-    Dialogs.cpp
     Painter.cpp
     WorkAreaManager.cpp
 ''')
@@ -753,7 +749,6 @@ src_frontends_qt4_header_files = Split('''
     GuiGraphicsUi.h
     GuiHyperlink.h
     GuiImage.h
-    GuiImplementation.h
     GuiInclude.h
     GuiIndex.h
     GuiKeySymbol.h
@@ -811,7 +806,6 @@ src_frontends_qt4_files = Split('''
     ButtonController.cpp
     ColorCache.cpp
     CustomizedWidgets.cpp
-    Dialogs.cpp
     EmptyTable.cpp
     FileDialog.cpp
     FloatPlacement.cpp
@@ -842,7 +836,6 @@ src_frontends_qt4_files = Split('''
     GuiGraphics.cpp
     GuiHyperlink.cpp
     GuiImage.cpp
-    GuiImplementation.cpp
     GuiInclude.cpp
     GuiIndex.cpp
     GuiKeySymbol.cpp
