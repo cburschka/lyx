@@ -359,12 +359,28 @@ def convert_latexcommand_index(document):
             return
         if document.body[i + 1] != "LatexCommand index": # Might also be index_print
             return
-        fullcommand = document.body[i + 2]
-        document.body[i] = "\\begin_inset Index"
-        document.body[i + 1] = "status collapsed"
-        document.body[i + 2] = "\\begin_layout standard"
-        document.body.insert(i + 3, fullcommand[6:].strip('"'))
-        document.body.insert(i + 4, "\\end_layout")
+        fullcontent = document.body[i + 2][6:].strip('"')
+        document.body[i:i + 2] = ["\\begin_inset Index",
+          "status collapsed",
+          "\\begin_layout standard"]
+        # Put here the conversions needed from LaTeX string
+        # to LyXText:
+        # Math:
+        r = re.compile('^(.*?)(\$.*?\$)(.*)')
+        g = fullcontent
+        while r.match(g):
+          m = r.match(g)
+          s = m.group(1)
+          f = m.group(2).replace('\\\\', '\\')
+          g = m.group(3)
+          if s:
+            document.body.insert(i + 3, s)
+            i += 1
+          document.body.insert(i + 3, "\\begin_inset Formula " + f)
+          document.body.insert(i + 4, "\\end_inset")
+          i += 2
+        document.body.insert(i + 3, g)
+        document.body[i + 4] = "\\end_layout"
         i = i + 5
 
 
