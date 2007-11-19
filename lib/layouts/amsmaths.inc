@@ -46,6 +46,7 @@ Style Theorem
 	LatexType             Environment
 	LatexName             thm
 	NextNoIndent          1
+	OptionalArgs          1
 	LabelSep              xx
 	ParIndent             MMM
 	ParSkip               0.4
