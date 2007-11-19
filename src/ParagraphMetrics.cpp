@@ -94,15 +94,15 @@ size_type ParagraphMetrics::calculateRowSignature(Row const & row,
 	boost::crc_32_type crc;
 	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
 		char_type const b[] = { par_->getChar(i) };
-		crc.process_bytes(b, 1);
+		crc.process_bytes(b, sizeof(char_type));
 		if (bparams.trackChanges) {
 			Change change = par_->lookupChange(i);
 			char_type const b[] = { change.type };
 			crc.process_bytes(b, 1);
 		}			
 	}
-	char_type const b[] = { row.width(), row.ascent(), row.descent()};
-	crc.process_bytes(b, 3);
+	int const b[] = { row.width(), row.ascent(), row.descent()};
+	crc.process_bytes(b, 3 * sizeof(int));
 	return crc.checksum();
 }
 
