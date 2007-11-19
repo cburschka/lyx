@@ -1911,7 +1911,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		bool row_has_changed = row.changed();
 		
 		// Don't paint the row if a full repaint has not been requested
-		// or if it has not changed.
+		// and if it has not changed.
 		if (!pi.full_repaint && !row_has_changed) {
 			// Paint only the insets if the text itself is
 			// unchanged.
