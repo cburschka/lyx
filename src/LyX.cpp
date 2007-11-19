@@ -638,7 +638,7 @@ void LyX::restoreGuiSession()
 	if (!pimpl_->files_to_load_.empty()) {
 		for_each(pimpl_->files_to_load_.begin(),
 			pimpl_->files_to_load_.end(),
-			bind(&LyXView::loadLyXFile, view, _1, true));
+			bind(&LyXFunc::loadAndViewFile, pimpl_->lyxfunc_, _1, true));
 		// clear this list to save a few bytes of RAM
 		pimpl_->files_to_load_.clear();
 		pimpl_->session_->lastOpened().clear();
@@ -649,7 +649,7 @@ void LyX::restoreGuiSession()
 		// last session, and should be already there (regular files), or should
 		// not be added at all (help files).
 		for_each(lastopened.begin(), lastopened.end(),
-			bind(&LyXView::loadLyXFile, view, _1, false));
+			bind(&LyXFunc::loadAndViewFile, pimpl_->lyxfunc_, _1, false));
 
 		// clear this list to save a few bytes of RAM
 		pimpl_->session_->lastOpened().clear();

@@ -1060,12 +1060,14 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 {
 	GuiWorkArea * wa = new GuiWorkArea(buffer, view);
 	wa->setUpdatesEnabled(false);
+	// Hide tabbar if there's no tab (avoid a resize and a flashing tabbar
+	// when hiding it again below).
+	showBar(count() > 0);
 	addTab(wa, wa->windowTitle());
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
 		this, SLOT(updateTabText(GuiWorkArea *)));
 	// Hide tabbar if there's only one tab.
 	showBar(count() > 1);
-	wa->resizeBufferView();
 	return wa;
 }
 

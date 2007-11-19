@@ -72,10 +72,6 @@ public:
 
 	//@}
 
-	/// load a buffer into the current workarea.
-	virtual Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
-		bool tolastfiles = true) = 0;  ///< append to the "Open recent" menu?
-
 	/// updates the possible layouts selectable
 	virtual void updateLayoutChoice(bool force) = 0;
 	/// update the toolbar

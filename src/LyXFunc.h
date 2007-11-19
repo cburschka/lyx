@@ -30,6 +30,10 @@ class FuncStatus;
 class KeySymbol;
 class Text;
 
+namespace support {
+class FileName;
+}
+
 namespace frontend {
 class LyXView;
 }
@@ -82,6 +86,10 @@ public:
 	/// switchToBuffer: whether or not switch to buffer if the buffer is
 	///		not the current buffer
 	void gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer);
+
+	/// load a buffer into the current workarea.
+	Buffer * loadAndViewFile(support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true);  ///< append to the "Open recent" menu?
 
 private:
 	///

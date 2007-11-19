@@ -31,11 +31,6 @@ using std::string;
 
 #include "qt_helpers.h"
 
-#include "support/filetools.h"
-#include "support/convert.h"
-#include "support/lstrings.h"
-#include "support/os.h"
-
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferList.h"
@@ -58,8 +53,9 @@ using std::string;
 #include "ToolbarBackend.h"
 #include "version.h"
 
+#include "support/convert.h"
 #include "support/lstrings.h"
-#include "support/filetools.h" // OnlyFilename()
+#include "support/os.h"
 #include "support/Timeout.h"
 
 #include <QAction>
@@ -104,9 +100,6 @@ extern bool quitting;
 namespace frontend {
 
 using support::bformat;
-using support::FileName;
-using support::makeDisplayPath;
-using support::onlyFilename;
 
 namespace {
 
@@ -871,40 +864,6 @@ void GuiView::setBuffer(Buffer * newBuffer)
 	setCurrentWorkArea(wa);
 
 	setBusy(false);
-}
-
-
-Buffer * GuiView::loadLyXFile(FileName const & filename, bool tolastfiles)
-{
-	setBusy(true);
-
-	Buffer * newBuffer = checkAndLoadLyXFile(filename);
-
-	if (!newBuffer) {
-		message(_("Document not loaded."));
-		updateStatusBar();
-		setBusy(false);
-		return 0;
-	}
-
-	GuiWorkArea * wa = workArea(*newBuffer);
-	if (wa == 0)
-		wa = addWorkArea(*newBuffer);
-
-	// scroll to the position when the file was last closed
-	if (lyxrc.use_lastfilepos) {
-		LastFilePosSection::FilePos filepos =
-			LyX::ref().session().lastFilePos().load(filename);
-		// if successfully move to pit (returned par_id is not zero),
-		// update metrics and reset font
-		wa->bufferView().moveToPosition(filepos.pit, filepos.pos, 0, 0);
-	}
-
-	if (tolastfiles)
-		LyX::ref().session().lastFiles().add(filename);
-
-	setBusy(false);
-	return newBuffer;
 }
 
 

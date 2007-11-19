@@ -84,6 +84,7 @@
 
 #include "support/environment.h"
 #include "support/FileFilterList.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/Path.h"
@@ -176,7 +177,7 @@ bool import(LyXView * lv, FileName const & filename,
 
 
 	if (loader_format == "lyx") {
-		Buffer * buf = lv->loadLyXFile(lyxfile);
+		Buffer * buf = theLyXFunc().loadAndViewFile(lyxfile);
 		if (!buf) {
 			// we are done
 			lv->message(_("file not imported!"));
@@ -1273,7 +1274,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			lyx_view_->message(bformat(_("Opening help file %1$s..."),
 				makeDisplayPath(fname.absFilename())));
-			Buffer * buf = lyx_view_->loadLyXFile(fname, false);
+			Buffer * buf = loadAndViewFile(fname, false);
 			if (buf) {
 				updateLabels(*buf);
 				lyx_view_->setBuffer(buf);
@@ -1398,7 +1399,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (theBufferList().exists(s.absFilename()))
 					buf = theBufferList().getBuffer(s.absFilename());
 				else {
-					buf = lyx_view_->loadLyXFile(s);
+					buf = loadAndViewFile(s);
 					loaded = true;
 				}
 			}
@@ -1620,7 +1621,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} else {
 				setMessage(bformat(_("Opening child document %1$s..."),
 					makeDisplayPath(filename.absFilename())));
-				child = lyx_view_->loadLyXFile(filename, true);
+				child = loadAndViewFile(filename, true);
 				parsed = true;
 			}
 			if (child) {
@@ -2164,6 +2165,36 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 }
 
 
+Buffer * LyXFunc::loadAndViewFile(FileName const & filename, bool tolastfiles)
+{
+	lyx_view_->setBusy(true);
+
+	Buffer * newBuffer = checkAndLoadLyXFile(filename);
+
+	if (!newBuffer) {
+		lyx_view_->message(_("Document not loaded."));
+		lyx_view_->updateStatusBar();
+		lyx_view_->setBusy(false);
+		return 0;
+	}
+
+	lyx_view_->setBuffer(newBuffer);
+
+	// scroll to the position when the file was last closed
+	if (lyxrc.use_lastfilepos) {
+		LastFilePosSection::FilePos filepos =
+			LyX::ref().session().lastFilePos().load(filename);
+		lyx_view_->view()->moveToPosition(filepos.pit, filepos.pos, 0, 0);
+	}
+
+	if (tolastfiles)
+		LyX::ref().session().lastFiles().add(filename);
+
+	lyx_view_->setBusy(false);
+	return newBuffer;
+}
+
+
 void LyXFunc::open(string const & fname)
 {
 	string initpath = lyxrc.document_path;
@@ -2220,7 +2251,7 @@ void LyXFunc::open(string const & fname)
 	lyx_view_->message(bformat(_("Opening document %1$s..."), disp_fn));
 
 	docstring str2;
-	Buffer * buf = lyx_view_->loadLyXFile(fullname);
+	Buffer * buf = loadAndViewFile(fullname);
 	if (buf) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
@@ -2335,7 +2366,7 @@ void LyXFunc::reloadBuffer()
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
 	closeBuffer();
-	Buffer * buf = lyx_view_->loadLyXFile(filename);
+	Buffer * buf = loadAndViewFile(filename);
 	if (buf) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);

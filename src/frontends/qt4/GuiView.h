@@ -99,10 +99,6 @@ public:
 	/// \return the current buffer view.
 	BufferView * view();
 
-	/// load a buffer into the current workarea.
-	Buffer * loadLyXFile(support::FileName const &  name, ///< File to load.
-		bool tolastfiles = true);  ///< append to the "Open recent" menu?
-
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
