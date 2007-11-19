@@ -185,3 +185,6 @@ What's new
 
 - Fix configure.py such that all possible extensions for executables are
   taken into account when searching for programs (Windows only).
+
+- Make sure that all the files created when compiling are removed by
+  "make clean".

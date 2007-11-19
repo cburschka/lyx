@@ -5,7 +5,7 @@ SUBDIRS = ui
 
 EXTRA_DIST = pch.h Makefile.dialogs
 
-DISTCLEANFILES += *_moc.cpp
+CLEANFILES += *_moc.cpp
 
 libqt4_la_DEPENDENCIES = $(MOCEDFILES)
 
