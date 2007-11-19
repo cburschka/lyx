@@ -735,7 +735,6 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 void GuiWorkArea::updateScreen()
 {
 	GuiPainter pain(&screen_);
-	verticalScrollBar()->show();
 	buffer_view_->draw(pain);
 }
 
@@ -999,6 +998,7 @@ TabWorkArea::TabWorkArea(QWidget * parent) : QTabWidget(parent)
 
 void TabWorkArea::showBar(bool show)
 {
+	tabBar()->setEnabled(show);
 	tabBar()->setVisible(show);
 }
 
@@ -1060,8 +1060,6 @@ GuiWorkArea * TabWorkArea::addWorkArea(Buffer & buffer, GuiView & view)
 {
 	GuiWorkArea * wa = new GuiWorkArea(buffer, view);
 	wa->setUpdatesEnabled(false);
-	// Hide tabbar if there's no tab (avoid a resize when hiding it again).
-	showBar(count() > 0);
 	addTab(wa, wa->windowTitle());
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
 		this, SLOT(updateTabText(GuiWorkArea *)));
