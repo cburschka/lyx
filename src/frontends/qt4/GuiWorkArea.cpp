@@ -338,8 +338,6 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 
 	theLyXFunc().setLyXView(lyx_view_);
 	theLyXFunc().processKeySym(key, mod);
-	lyx_view_->updateLayoutList();
-	lyx_view_->updateToolbars();
 }
 
 
