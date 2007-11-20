@@ -247,6 +247,7 @@ GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 	QObject::connect(this, SIGNAL(activated(QString)),
 			 this, SLOT(selected(QString)));
 	owner_.setLayoutDialog(this);
+	updateContents(true);
 }
 
 
