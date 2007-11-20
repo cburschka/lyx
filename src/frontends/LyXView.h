@@ -70,12 +70,6 @@ public:
 
 	//@}
 
-	/// updates the possible layouts selectable
-	virtual void updateLayoutChoice(bool force) = 0;
-	/// update the toolbar
-	virtual void updateToolbars() = 0;
-	/// update the status bar
-	virtual void updateStatusBar() = 0;
 	/// display a message in the view
 	virtual void message(docstring const &) = 0;
 
@@ -83,14 +77,6 @@ public:
 	virtual FuncStatus getStatus(FuncRequest const & cmd) = 0;
 	/// dispatch to current BufferView
 	virtual void dispatch(FuncRequest const & cmd) = 0;
-
-	/** redraw \c inset in all the BufferViews in which it is currently
-	 *  visible. If successful return a pointer to the owning Buffer.
-	 */
-	virtual Buffer const * updateInset(Inset const *) = 0;
-
-	/// returns true if this view has the focus.
-	virtual bool hasFocus() const = 0;
 
 	///
 	virtual void restartCursor() = 0;
@@ -100,14 +86,10 @@ public:
 	//
 	virtual void errors(std::string const &) = 0;
 
-
 	//
 	// This View's Dialogs
 	//
 	
-	/// Hide all visible dialogs
-	virtual void hideAll() const = 0;
-
 	/** \param name == "bibtex", "citation" etc; an identifier used to
 	    launch a particular dialog.
 	    \param data is a string representation of the Inset contents.

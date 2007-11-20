@@ -24,6 +24,7 @@
 
 namespace lyx {
 
+class TextClass;
 class ToolbarItem;
 
 namespace frontend {
@@ -42,7 +43,7 @@ public:
 	/// select the right layout in the combobox.
 	void set(docstring const & layout);
 	/// Populate the layout combobox.
-	void updateContents();
+	void updateContents(bool reset);
 	/// Add Item to Layout box according to sorting settings from preferences
 	void addItemSort(QString const & item, bool sorted);
 
@@ -51,6 +52,7 @@ private Q_SLOTS:
 
 private:
 	GuiView & owner_;
+	TextClass const * text_class_;
 };
 
 
@@ -68,7 +70,6 @@ public:
 	void saveInfo(ToolbarSection::ToolbarInfo & info);
 	/// Refresh the contents of the bar.
 	void updateContents();
-	GuiLayoutBox * layout() const { return layout_; }
 	///
 	GuiCommandBuffer * commandBuffer() { return command_buffer_; }
 

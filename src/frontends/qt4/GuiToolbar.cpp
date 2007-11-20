@@ -16,6 +16,8 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
+#include "Cursor.h"
 #include "debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -23,6 +25,7 @@
 #include "IconPalette.h"
 #include "Layout.h"
 #include "LyXFunc.h"
+#include "Paragraph.h"
 #include "TextClass.h"
 #include "ToolbarBackend.h"
 
@@ -227,12 +230,6 @@ static QIcon getIcon(FuncRequest const & f, bool unknown)
 }
 
 
-static TextClass const & textClass(LyXView const & lv)
-{
-	return lv.buffer()->params().getTextClass();
-}
-
-
 /////////////////////////////////////////////////////////////////////
 //
 // GuiLayoutBox
@@ -249,22 +246,23 @@ GuiLayoutBox::GuiLayoutBox(GuiView & owner)
 
 	QObject::connect(this, SIGNAL(activated(QString)),
 			 this, SLOT(selected(QString)));
+	owner_.setLayoutDialog(this);
 }
 
 
 void GuiLayoutBox::set(docstring const & layout)
 {
-	TextClass const & tc = textClass(owner_);
+	if (!text_class_)
+		return;
 
-	QString const & name = toqstr(translateIfPossible(tc[layout]->name()));
+	QString const & name = toqstr(translateIfPossible(
+		(*text_class_)[layout]->name()));
 
-	int i = 0;
-	for (; i < count(); ++i) {
-		if (name == itemText(i))
-			break;
-	}
+	if (name == currentText())
+		return;
 
-	if (i == count()) {
+	int i = findText(name);
+	if (i == -1) {
 		lyxerr << "Trying to select non existent layout type "
 			<< fromqstr(name) << endl;
 		return;
@@ -297,15 +295,30 @@ void GuiLayoutBox::addItemSort(QString const & item, bool sorted)
 }
 
 
-void GuiLayoutBox::updateContents()
+void GuiLayoutBox::updateContents(bool reset)
 {
-	TextClass const & tc = textClass(owner_);
+	Buffer const * buffer = owner_.buffer();
+	if (!buffer) {
+		clear();
+		setEnabled(false);
+		text_class_ = 0;
+		return;
+	}
+
+	setEnabled(true);
+	TextClass const * text_class = &buffer->params().getTextClass();
+	if (!reset && text_class_ == text_class) {
+		set(owner_.view()->cursor().innerParagraph().layout()->name());
+		return;
+	}
+
+	text_class_ = text_class;
 
 	setUpdatesEnabled(false);
 	clear();
 
-	TextClass::const_iterator it = tc.begin();
-	TextClass::const_iterator const end = tc.end();
+	TextClass::const_iterator it = text_class_->begin();
+	TextClass::const_iterator const end = text_class_->end();
 	for (; it != end; ++it) {
 		// ignore obsolete entries
 		addItemSort(toqstr(translateIfPossible((*it)->name())), lyxrc.sort_layouts);
@@ -316,6 +329,7 @@ void GuiLayoutBox::updateContents()
 	// needed to recalculate size hint
 	hide();
 	setMinimumWidth(sizeHint().width());
+	set(owner_.view()->cursor().innerParagraph().layout()->name());
 	show();
 
 	setUpdatesEnabled(true);
@@ -325,10 +339,13 @@ void GuiLayoutBox::updateContents()
 void GuiLayoutBox::selected(const QString & str)
 {
 	owner_.setFocus();
-	TextClass const & tc = owner_.buffer()->params().getTextClass();
+	updateContents(false);
+	if (!text_class_)
+		return;
+
 	docstring const name = qstring_to_ucs4(str);
-	TextClass::const_iterator it  = tc.begin();
-	TextClass::const_iterator const end = tc.end();
+	TextClass::const_iterator it  = text_class_->begin();
+	TextClass::const_iterator const end = text_class_->end();
 	for (; it != end; ++it) {
 		docstring const & itname = (*it)->name();
 		if (translateIfPossible(itname) == name) {
@@ -516,6 +533,9 @@ void GuiToolbar::updateContents()
 	// and update calls getStatus, which copies the cursor at least two times
 	for (int i = 0; i < actions_.size(); ++i)
 		actions_[i]->update();
+
+	if (layout_)
+		layout_->setEnabled(lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled());
 
 	// emit signal
 	updated();

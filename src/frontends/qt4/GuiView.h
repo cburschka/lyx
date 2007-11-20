@@ -36,6 +36,7 @@ class ToolbarInfo;
 namespace frontend {
 
 class Dialog;
+class GuiLayoutBox;
 class GuiToolbar;
 class GuiWorkArea;
 
@@ -63,17 +64,23 @@ public:
 	void close();
 	void setFocus();
 	void setBusy(bool);
+	/// returns true if this view has the focus.
+	bool hasFocus() const;
 
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
 	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
 	virtual void updateStatusBar();
 	virtual void message(docstring const & str);
-	virtual bool hasFocus() const;
-	void updateLayoutChoice(bool force);
+
+	/// updates the possible layouts selectable
+	void updateLayoutList();
 	void updateToolbars();
 	QMenu * createPopupMenu();
 	FuncStatus getStatus(FuncRequest const & cmd);
 	void dispatch(FuncRequest const & cmd);
+
+	///
+	void setLayoutDialog(GuiLayoutBox *);
 
 	/// \return the buffer currently shown in this window
 	Buffer * buffer();

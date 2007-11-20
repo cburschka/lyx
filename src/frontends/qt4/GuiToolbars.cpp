@@ -41,9 +41,7 @@ namespace frontend {
 #define TurnOffFlag(x)  flags &= ~ToolbarInfo::x
 
 GuiToolbars::GuiToolbars(GuiView & owner)
-	: owner_(owner),
-	  layout_(0),
-	  last_textclass_(TextClassPtr())
+	: owner_(owner)
 {
 	init();
 }
@@ -288,41 +286,6 @@ void GuiToolbars::saveToolbarInfo()
 }
 
 
-void GuiToolbars::setLayout(docstring const & layout)
-{
-	if (layout_)
-		layout_->set(layout);
-}
-
-
-bool GuiToolbars::updateLayoutList(TextClassPtr textclass, bool force)
-{
-	// update the layout display
-	if (last_textclass_ != textclass || force) {
-		if (layout_)
-			layout_->updateContents();
-		last_textclass_ = textclass;
-		return true;
-	} else
-		return false;
-}
-
-
-void GuiToolbars::openLayoutList()
-{
-	if (layout_)
-		layout_->showPopup();
-}
-
-
-void GuiToolbars::clearLayoutList()
-{
-	last_textclass_ = TextClassPtr();
-	if (layout_)
-		layout_->clear();
-}
-
-
 void GuiToolbars::add(ToolbarInfo const & tbinfo, bool newline)
 {
 	GuiToolbar * tb_ptr = owner_.makeToolbar(tbinfo, newline);
@@ -332,9 +295,6 @@ void GuiToolbars::add(ToolbarInfo const & tbinfo, bool newline)
 		tb_ptr->show();
 	else
 		tb_ptr->hide();
-
-	if (tb_ptr->layout())
-		layout_ = tb_ptr->layout();
 }
 
 
@@ -360,12 +320,6 @@ void GuiToolbars::updateIcons()
 	ToolbarsMap::const_iterator const end = toolbars_.end();
 	for (; it != end; ++it)
 		it->second->updateContents();
-
-	bool const enable =
-		lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
-
-	if (layout_)
-		layout_->setEnabled(enable);
 }
 
 

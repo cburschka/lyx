@@ -155,7 +155,7 @@ typedef boost::shared_ptr<Dialog> DialogPtr;
 struct GuiView::GuiViewPrivate
 {
 	GuiViewPrivate()
-		: current_work_area_(0), posx_offset(0), posy_offset(0),
+		: current_work_area_(0), layout_(0),
 		autosave_timeout_(new Timeout(5000)), quitting_by_menu_(false),
 		in_show_(false)
 	{
@@ -263,9 +263,6 @@ public:
 	string cur_title;
 
 	GuiWorkArea * current_work_area_;
-	int posx_offset;
-	int posy_offset;
-
 	QSplitter * splitter_;
 	QStackedWidget * stack_widget_;
 	BackgroundWidget * bg_widget_;
@@ -273,8 +270,16 @@ public:
 	GuiMenubar * menubar_;
 	/// view's toolbars
 	GuiToolbars * toolbars_;
-	///
-	docstring current_layout;
+	/// The main layout box.
+	/** 
+	 * \warning Don't Delete! The layout box is actually owned by
+	 * whichever toolbar contains it. All the GuiView class needs is a
+	 * means of accessing it.
+	 *
+	 * FIXME: replace that with a proper model so that we are not limited
+	 * to only one dialog.
+	 */
+	GuiLayoutBox * layout_;
 
 	///
 	std::map<std::string, Inset *> open_insets_;
@@ -538,7 +543,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	// require bv_->text.
 	updateBufferDependent(true);
 	updateToolbars();
-	updateLayoutChoice(false);
+	updateLayoutList();
 	updateStatusBar();
 }
 
@@ -787,26 +792,16 @@ void GuiView::removeWorkArea(GuiWorkArea * work_area)
 }
 
 
-void GuiView::updateLayoutChoice(bool force)
+void GuiView::setLayoutDialog(GuiLayoutBox * layout)
 {
-	// Don't show any layouts without a buffer
-	if (!buffer()) {
-		d.toolbars_->clearLayoutList();
-		return;
-	}
+	d.layout_ = layout;
+}
 
-	// Update the layout display
-	if (d.toolbars_->updateLayoutList(buffer()->params().getTextClassPtr(), force)) {
-		d.current_layout = buffer()->params().getTextClass().defaultLayoutName();
-	}
 
-	docstring const & layout = d.current_work_area_->bufferView().cursor().
-		innerParagraph().layout()->name();
-
-	if (layout != d.current_layout) {
-		d.toolbars_->setLayout(layout);
-		d.current_layout = layout;
-	}
+void GuiView::updateLayoutList()
+{
+	if (d.layout_)
+		d.layout_->updateContents(false);
 }
 
 
@@ -956,6 +951,17 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 	bool enable = true;
 	Buffer * buf = buffer();
 
+	/* In LyX/Mac, when a dialog is open, the menus of the
+	   application can still be accessed without giving focus to
+	   the main window. In this case, we want to disable the menu
+	   entries that are buffer-related.
+
+	   Note that this code is not perfect, as bug 1941 attests:
+	   http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
+	*/
+	if (cmd.origin == FuncRequest::MENU && !hasFocus())
+		buf = 0;
+
 	switch(cmd.action) {
 	case LFUN_TOOLBAR_TOGGLE:
 		flag.setOnOff(d.toolbars_->visible(cmd.getArg(0)));
@@ -1030,7 +1036,8 @@ void GuiView::dispatch(FuncRequest const & cmd)
 			break;
 		}
 		case LFUN_DROP_LAYOUTS_CHOICE:
-			d.toolbars_->openLayoutList();
+			if (d.layout_)
+				d.layout_->showPopup();
 			break;
 
 		case LFUN_MENU_OPEN:

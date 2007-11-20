@@ -487,17 +487,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
 
-	/* In LyX/Mac, when a dialog is open, the menus of the
-	   application can still be accessed without giving focus to
-	   the main window. In this case, we want to disable the menu
-	   entries that are buffer-related.
-
-	   Note that this code is not perfect, as bug 1941 attests:
-	   http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
-	*/
 	Buffer * buf = lyx_view_? lyx_view_->buffer() : 0;
-	if (lyx_view_ && cmd.origin == FuncRequest::MENU && !lyx_view_->hasFocus())
-		buf = 0;
 
 	if (cmd.action == LFUN_NOACTION) {
 		flag.message(from_utf8(N_("Nothing to do")));
@@ -1888,9 +1878,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 
-			if (lyx_view_ && lyx_view_->buffer())
-				lyx_view_->updateLayoutChoice(true);
-
 			/// We force the redraw in any case because there might be
 			/// some screen font changes.
 			/// FIXME: only the current view will be updated. the Gui
@@ -1940,7 +1927,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// (at least partially) visible top-level paragraphs.
 			// We will redraw the screen only if needed.
 			view()->processUpdateFlags(updateFlags);
-			lyx_view_->updateStatusBar();
 
 			// if we executed a mutating lfun, mark the buffer as dirty
 			if (flag.enabled()
@@ -1952,12 +1938,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			theSelection().haveSelection(view()->cursor().selection());
 
 			if (view()->cursor().inTexted()) {
-				lyx_view_->updateLayoutChoice(false);
 			}
 		}
 	}
 	if (!quitting && lyx_view_) {
-		lyx_view_->updateToolbars();
 		// Some messages may already be translated, so we cannot use _()
 		sendDispatchMessage(translateIfPossible(getMessage()), cmd);
 	}
@@ -2070,7 +2054,6 @@ Buffer * LyXFunc::loadAndViewFile(FileName const & filename, bool tolastfiles)
 
 	if (!newBuffer) {
 		lyx_view_->message(_("Document not loaded."));
-		lyx_view_->updateStatusBar();
 		lyx_view_->setBusy(false);
 		return 0;
 	}

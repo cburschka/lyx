@@ -26,7 +26,6 @@ class ToolbarInfo;
 
 namespace frontend {
 
-class GuiLayoutBox;
 class GuiToolbar;
 class GuiView;
 
@@ -59,19 +58,6 @@ public:
 	/// save toolbar information
 	void saveToolbarInfo();
 
-	/// Select the right layout in the combox.
-	void setLayout(docstring const & layout);
-
-	/** Populate the layout combox - returns whether we did a full
-	 *  update or not
-	 */
-	bool updateLayoutList(TextClassPtr textclass, bool force);
-
-	/// Drop down the layout list.
-	void openLayoutList();
-	/// Erase the layout list.
-	void clearLayoutList();
-
 	/// Show or hide the command buffer.
 	void showCommandBuffer(bool show_it);
 
@@ -91,15 +77,6 @@ private:
 
 	/// The parent window.
 	GuiView & owner_;
-
-	/** The layout box is actually owned by whichever toolbar
-	 *  contains it. All the Toolbars class needs is a means of
-	 *  accessing it.
-	 *
-	 *  We don't need to use boost::weak_ptr here because the toolbars
-	 *  are also stored here. There are, therefore, no lifetime issues.
-	 */
-	GuiLayoutBox * layout_;
 
 	/// Toolbar store providing access to individual toolbars by name.
 	typedef std::map<std::string, GuiToolbar *> ToolbarsMap;

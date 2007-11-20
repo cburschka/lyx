@@ -323,6 +323,8 @@ void GuiWorkArea::redraw()
 	updateScreen();
 	update(0, 0, viewport()->width(), viewport()->height());
 
+	lyx_view_->updateStatusBar();
+
 	if (lyxerr.debugging(Debug::WORKAREA))
 		buffer_view_->coordCache().dump();
 }
@@ -336,6 +338,8 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 
 	theLyXFunc().setLyXView(lyx_view_);
 	theLyXFunc().processKeySym(key, mod);
+	lyx_view_->updateLayoutList();
+	lyx_view_->updateToolbars();
 }
 
 
@@ -372,7 +376,7 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
-		lyx_view_->updateLayoutChoice(false);
+		lyx_view_->updateLayoutList();
 		lyx_view_->updateToolbars();
 	}
 
@@ -396,7 +400,7 @@ void GuiWorkArea::resizeBufferView()
 	// We are already inside a paint event.
 	lyx_view_->setBusy(true);
 	buffer_view_->resize(viewport()->width(), viewport()->height());
-	lyx_view_->updateLayoutChoice(false);
+	lyx_view_->updateLayoutList();
 	lyx_view_->setBusy(false);
 	need_resize_ = false;
 }
@@ -502,7 +506,7 @@ void GuiWorkArea::adjustViewWithScrollBar(int action)
 
 	if (lyxrc.cursor_follows_scrollbar) {
 		buffer_view_->setCursorFromScrollbar();
-		lyx_view_->updateLayoutChoice(false);
+		lyx_view_->updateLayoutList();
 	}
 	// Show the cursor immediately after any operation.
 	startBlinkingCursor();
