@@ -19,18 +19,16 @@
 #include "support/Timeout.h"
 
 #include <QAbstractScrollArea>
-#include <QKeyEvent>
 #include <QMouseEvent>
 #include <QPixmap>
 #include <QResizeEvent>
 #include <QTabWidget>
 #include <QTimer>
 
-#include <queue>
-
 class QWidget;
 class QDragEnterEvent;
 class QDropEvent;
+class QKeyEvent;
 class QWheelEvent;
 class QPaintEvent;
 
