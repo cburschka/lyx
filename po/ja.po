@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-18 12:55+0100\n"
-"PO-Revision-Date: 2007-11-06 02:57+0900\n"
+"POT-Creation-Date: 2007-11-20 20:05+0900\n"
+"PO-Revision-Date: 2007-11-21 14:49+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
-"Language-Team:  <lyx-devel@lists.lyx.org>\n"
+"Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2868,8 +2868,7 @@ msgstr "下の境界線"
 
 #: src/frontends/qt4/ui/TabularUi.ui:905
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
-"この行を，全てのページ（最初のページをのぞく）にヘッダとして現れるようにする"
+msgstr "この行を，全てのページ（最初のページをのぞく）にヘッダとして現れるようにする"
 
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:921
 #: src/frontends/qt4/ui/TabularUi.ui:931 src/frontends/qt4/ui/TabularUi.ui:941
@@ -2883,8 +2882,7 @@ msgstr "この行が最初のページのヘッダとなる"
 
 #: src/frontends/qt4/ui/TabularUi.ui:928
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
-"この行を，全てのページ（最初のページをのぞく）にフッタとして現れるようにする"
+msgstr "この行を，全てのページ（最初のページをのぞく）にフッタとして現れるようにする"
 
 #: src/frontends/qt4/ui/TabularUi.ui:938
 msgid "This row is the footer of the last page"
@@ -2944,8 +2942,7 @@ msgid "&Rescan"
 msgstr "再走査(&R)"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "選択したフィルの中身を表示する。ファイルのパスが表示されている時のみ有効であ"
 "る。"
@@ -3915,11 +3912,11 @@ msgstr "要約:"
 
 #: lib/layouts/apa.layout:92
 msgid "ShortTitle"
-msgstr "短縮したタイトル"
+msgstr "小見出し"
 
 #: lib/layouts/apa.layout:100
 msgid "Short title:"
-msgstr "短縮したタイトル:"
+msgstr "小見出し:"
 
 #: lib/layouts/apa.layout:129
 msgid "TwoAuthors"
@@ -4318,7 +4315,7 @@ msgstr "場面*"
 
 #: lib/layouts/broadway.layout:111 lib/layouts/broadway.layout:123
 msgid "AT RISE:"
-msgstr ""
+msgstr "幕間に:"
 
 #: lib/layouts/broadway.layout:128 lib/layouts/hollywood.layout:150
 msgid "Speaker"
@@ -4326,7 +4323,7 @@ msgstr "話者"
 
 #: lib/layouts/broadway.layout:142 lib/layouts/hollywood.layout:166
 msgid "Parenthetical"
-msgstr ""
+msgstr "括弧付き"
 
 #: lib/layouts/broadway.layout:154 lib/layouts/hollywood.layout:178
 msgid "("
@@ -4788,19 +4785,19 @@ msgstr "ブリット付きアイテム:"
 
 #: lib/layouts/europecv.layout:70
 msgid "Begin"
-msgstr ""
+msgstr "開始"
 
 #: lib/layouts/europecv.layout:80
 msgid "Begin of CV"
-msgstr ""
+msgstr "CVの開始"
 
 #: lib/layouts/europecv.layout:87
 msgid "PersonalInfo"
-msgstr ""
+msgstr "個人情報"
 
 #: lib/layouts/europecv.layout:91
 msgid "Personal Info"
-msgstr ""
+msgstr "個人情報"
 
 #: lib/layouts/europecv.layout:94
 msgid "MotherTongue"
@@ -4840,11 +4837,11 @@ msgstr ""
 
 #: lib/layouts/europecv.layout:136
 msgid "End"
-msgstr ""
+msgstr "終了"
 
 #: lib/layouts/europecv.layout:146
 msgid "End of CV"
-msgstr ""
+msgstr "CVの終了"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -7826,7 +7823,7 @@ msgstr "傍注(M)|M"
 
 #: lib/ui/classic.ui:222
 msgid "Short Title"
-msgstr "短縮したタイトル"
+msgstr "小見出し"
 
 #: lib/ui/classic.ui:223
 msgid "Index Entry|I"
@@ -8625,7 +8622,7 @@ msgstr "表(T)...|T"
 
 #: lib/ui/stdmenus.inc:313
 msgid "Short Title|S"
-msgstr "短縮したタイトル(S)|S"
+msgstr "小見出し(S)|S"
 
 #: lib/ui/stdmenus.inc:314
 msgid "TeX Code|X"
@@ -9160,9 +9157,8 @@ msgid "Math Spacings"
 msgstr "数式の空白"
 
 #: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:262
-#, fuzzy
 msgid "Placeholders"
-msgstr "表挿入"
+msgstr "埋め草"
 
 #: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:273
 msgid "Styles"
@@ -9343,15 +9339,15 @@ msgstr "負の空白\t\\!"
 
 #: lib/ui/stdtoolbars.inc:263
 msgid "Placeholder\t\\phantom"
-msgstr ""
+msgstr "埋め草\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:264
 msgid "Horizontal placeholder\t\\hphantom"
-msgstr ""
+msgstr "水平方向の埋め草\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:265
 msgid "Vertical placeholder\t\\vphantom"
-msgstr ""
+msgstr "垂直方向の埋め草\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:268
 msgid "Roots"
@@ -9386,22 +9382,18 @@ msgid "Standard\t\\frac"
 msgstr "標準\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:282
-#, fuzzy
 msgid "No horizontal line\t\\atop"
 msgstr "横線なし\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:283
-#, fuzzy
 msgid "Nice fraction (3/4)\t\\nicefrac"
-msgstr "斜め分数\t\\nicefrac"
+msgstr "斜め分数(3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:284
-#, fuzzy
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr "文中用分数(amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:285
-#, fuzzy
 msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr "提示用分数(amsmath)\t\\dfrac"
 
@@ -11450,8 +11442,7 @@ msgstr "文書クラスを読み込むことができません"
 
 #: src/Buffer.cpp:512
 #, c-format
-msgid ""
-"Using the default document class, because the class %1$s could not be loaded."
+msgid "Using the default document class, because the class %1$s could not be loaded."
 msgstr "%1$s というクラスを読み込めなかったので，既定の文書クラスを使います。"
 
 #: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:841
@@ -12830,8 +12821,7 @@ msgstr ""
 "は，チェックを外してください。"
 
 #: src/LyXRC.cpp:2123
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動保存の間の間隔（秒単位)。0 は自動保存しないことを示します。"
 
 #: src/LyXRC.cpp:2130
@@ -12860,8 +12850,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2142
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2146
 msgid ""
@@ -12912,8 +12901,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2192
 msgid "Specify additional chars that can be part of a word."
@@ -12957,8 +12945,7 @@ msgid ""
 msgstr "文書の最初に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2224
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "文書の最後に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2228
@@ -13004,8 +12991,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2252
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2256
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -13030,8 +13016,7 @@ msgstr ""
 #: src/LyXRC.cpp:2268
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2273
 msgid ""
@@ -13042,8 +13027,7 @@ msgstr ""
 "マットを使ってください。"
 
 #: src/LyXRC.cpp:2280
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "代替の個人用辞書を指定してください。例：\".ispell_english\"。"
 
 #: src/LyXRC.cpp:2284
@@ -13155,8 +13139,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "お好みの印刷プログラム。例：\"dvips\", \"dvilj4\"。"
 
 #: src/LyXRC.cpp:2368
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "右から左へ書く言語（ヘブライ語，アラビア語など）をサポートするときに選択して"
 "ください。"
@@ -13262,8 +13245,7 @@ msgstr ""
 "全ての辞書で動くとは限りません。"
 
 #: src/LyXRC.cpp:2455
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "pixmapのキャッシュを有効にします。MacやWindowsでのパフォーマンスが向上する可"
 "能性があります。"
@@ -13415,8 +13397,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。チュートリアルを読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。チュートリアルを読んでください。"
 
 #: src/Text.cpp:779
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -14640,8 +14621,7 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:655
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -14807,8 +14787,7 @@ msgstr "図"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -15365,8 +15344,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "%1$sのうちの1つ以上で構成されなくてはなりません。"
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "\\footnotesize, \\small, \\itshape, \\ttfamily 等を使ってください"
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -15481,7 +15459,7 @@ msgstr "注釈挿入枠を展開しました"
 
 #: src/insets/InsetOptArg.cpp:35 src/insets/InsetOptArg.cpp:45
 msgid "opt"
-msgstr "別題"
+msgstr "オプション"
 
 #: src/insets/InsetOptArg.cpp:57
 msgid "Opened Optional Argument Inset"
@@ -15558,6 +15536,14 @@ msgstr "連結列を垂直方向に設定することはできません。"
 #: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
 msgstr "展開されたテキスト挿入枠"
+
+#: src/insets/InsetTheorem.cpp:41
+msgid "theorem"
+msgstr "定理"
+
+#: src/insets/InsetTheorem.cpp:91
+msgid "Opened Theorem Inset"
+msgstr "定理挿入枠を展開しました"
 
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
@@ -15723,6 +15709,11 @@ msgstr "文字列が置換されました。"
 msgid " strings have been replaced."
 msgstr "個の文字列が置換されました。"
 
+#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " マクロ: %1$s: "
+
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -15790,11 +15781,6 @@ msgstr "挿入された数式テキストモード(textrm)"
 msgid "Standard[[mathref]]"
 msgstr "標準"
 
-#: src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " マクロ: %1$s: "
-
 #: src/mathed/MathMacroTemplate.cpp:241
 msgid "math macro"
 msgstr "数式マクロ"
@@ -15826,8 +15812,7 @@ msgstr "LyXバイナリが見つかりません"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "コマンドライン %1$s からは，LyX バイナリへのパスを決定することができませんで"
 "した。"
@@ -15911,3 +15896,4 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "未知のユーザー"
+
