@@ -9,11 +9,11 @@
  *
  * Full author contact details are available in file CREDITS.
  *
- * The graphics cache is a container of lyx::graphics::CacheItems.
- * Each lyx::graphics::CacheItem, defined here represents a separate image file.
+ * The graphics cache is a container of graphics::CacheItems.
+ * Each graphics::CacheItem, defined here represents a separate image file.
  *
  * The routines here can be used to load the graphics file into memory at
- * which point (status() == lyx::graphics::Loaded).
+ * which point (status() == graphics::Loaded).
  * The user is then free to access image() in order to copy it and to then
  * transform the copy (rotate, scale, clip) and to generate the pixmap.
  *
@@ -21,8 +21,8 @@
  * file conversion to a loadable format;
  * file loading.
  *
- * Whether you get that, of course, depends on lyx::graphics::Converter and
- * on the lyx::graphics::Image-derived image class.
+ * Whether you get that, of course, depends on graphics::Converter and
+ * on the graphics::Image-derived image class.
  */
 
 #ifndef GRAPHICSCACHEITEM_H
@@ -30,7 +30,6 @@
 
 #include "GraphicsTypes.h"
 
-#include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
@@ -44,8 +43,8 @@ namespace graphics {
 class Image;
 class Converter;
 
-/// A lyx::graphics::Cache item holder.
-class CacheItem : boost::noncopyable {
+/// A graphics::Cache item holder.
+class CacheItem {
 public:
 	///
 	CacheItem(support::FileName const & file);
@@ -91,6 +90,10 @@ public:
 	boost::signals::connection connect(slot_type const &) const;
 
 private:
+	/// noncopyable
+	CacheItem(CacheItem const &);
+	void operator=(CacheItem const &);
+
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 

@@ -20,7 +20,6 @@
 #ifndef GRAPHICSCACHE_H
 #define GRAPHICSCACHE_H
 
-#include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -36,7 +35,7 @@ namespace graphics {
 
 class CacheItem;
 
-class Cache : boost::noncopyable {
+class Cache {
 public:
 
 	/// This is a singleton class. Get the instance.
@@ -72,6 +71,10 @@ public:
 	ItemPtr const item(support::FileName const & file) const;
 
 private:
+	/// noncopyable
+	Cache(Cache const &);
+	void operator=(Cache const &);
+
 	/** Make the c-tor, d-tor private so we can control how many objects
 	 *  are instantiated.
 	 */

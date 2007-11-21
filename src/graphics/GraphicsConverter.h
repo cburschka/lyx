@@ -19,7 +19,6 @@
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
-#include <boost/noncopyable.hpp>
 
 namespace lyx {
 
@@ -27,7 +26,7 @@ namespace support { class FileName; }
 
 namespace graphics {
 
-class Converter : boost::noncopyable {
+class Converter {
 public:
 	/// Can the conversion be performed?
 	static bool isReachable(std::string const & from_format_name,
@@ -62,6 +61,10 @@ public:
 	support::FileName const & convertedFile() const;
 
 private:
+	/// noncopyable
+	Converter(Converter const &);
+	void operator=(Converter const &);
+
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 

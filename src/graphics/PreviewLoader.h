@@ -8,7 +8,7 @@
  *
  * Full author contact details are available in file CREDITS.
  *
- * lyx::graphics::PreviewLoader collects latex snippets together. Then, on a
+ * graphics::PreviewLoader collects latex snippets together. Then, on a
  * startLoading() call, these are dumped to file and processed, converting
  * each snippet to a separate bitmap image file. Once a bitmap file is ready
  * to be loaded back into LyX, the PreviewLoader emits a signal to inform
@@ -18,7 +18,6 @@
 #ifndef PREVIEWLOADER_H
 #define PREVIEWLOADER_H
 
-#include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
@@ -31,7 +30,7 @@ namespace graphics {
 
 class PreviewImage;
 
-class PreviewLoader : boost::noncopyable {
+class PreviewLoader {
 public:
 	/** We need buffer because we require the preamble to the
 	 *  LaTeX file.
@@ -89,6 +88,10 @@ public:
 	Buffer const & buffer() const;
 
 private:
+	/// noncopyable
+	PreviewLoader(PreviewLoader const &);
+	void operator=(PreviewLoader const &);
+
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
