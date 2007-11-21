@@ -1878,6 +1878,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 
+			theApp()->resetGui();
+
 			/// We force the redraw in any case because there might be
 			/// some screen font changes.
 			/// FIXME: only the current view will be updated. the Gui

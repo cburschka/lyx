@@ -112,6 +112,11 @@ void GuiToolbars::initFlags(ToolbarInfo & tbinfo)
 
 void GuiToolbars::init()
 {
+	ToolbarsMap::const_iterator it = toolbars_.begin();
+	for (; it != toolbars_.end(); ++it)
+		delete it->second;
+	toolbars_.clear();
+
 	// extracts the toolbars from the backend
 	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();

@@ -213,6 +213,14 @@ GuiApplication::~GuiApplication()
 }
 
 
+void GuiApplication::resetGui()
+{
+	map<int, GuiView *>::iterator it;
+	for (it = views_.begin(); it != views_.end(); ++it)
+		it->second->resetDialogs();
+}
+
+
 static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
 {
 	ids.clear();

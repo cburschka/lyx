@@ -56,6 +56,7 @@ public:
 
 	/// Method inherited from \c Application class
 	//@{
+	virtual void resetGui();
 	virtual Clipboard & clipboard();
 	virtual Selection & selection();
 	virtual FontLoader & fontLoader() { return font_loader_; }

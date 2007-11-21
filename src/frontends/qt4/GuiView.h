@@ -59,7 +59,6 @@ public:
 	~GuiView();
 
 	///
-	///
 	int id() const { return id_; }
 	void close();
 	void setFocus();
@@ -180,6 +179,9 @@ public:
 	///
 	/// dialogs for this view
 	///
+
+	///
+	void resetDialogs();
 
 	/** Check the status of all visible dialogs and disable or reenable
 	 *  them as appropriate.

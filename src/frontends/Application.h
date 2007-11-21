@@ -152,6 +152,9 @@ public:
 	virtual ~Application() {}
 
 	///
+	virtual void resetGui() = 0;
+
+	///
 	virtual bool closeAllViews() = 0;
 	///
 	virtual size_t viewCount() const = 0;

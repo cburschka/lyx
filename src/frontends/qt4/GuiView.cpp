@@ -1213,6 +1213,18 @@ bool isValidName(string const & name)
 } // namespace anon
 
 
+void GuiView::resetDialogs()
+{
+	// Make sure that no LFUN uses any LyXView.
+	theLyXFunc().setLyXView(0);
+	delete d.menubar_;
+	d.toolbars_->init();
+	d.menubar_ = new GuiMenubar(this, menubackend);
+	if (d.layout_)
+		d.layout_->updateContents(true);
+}
+
+
 Dialog * GuiView::find_or_build(string const & name)
 {
 	if (!isValidName(name))
