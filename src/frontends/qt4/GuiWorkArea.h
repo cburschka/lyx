@@ -140,6 +140,8 @@ private Q_SLOTS:
 	void adjustViewWithScrollBar(int action = 0);
 	/// timer to limit triple clicks
 	void doubleClickTimeout();
+	/// toggle the cursor's visibility
+	void toggleCursor();
 
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
@@ -195,8 +197,6 @@ private:
 	void hideCursor();
 	/// show the cursor if it is not visible
 	void showCursor();
-	/// toggle the cursor's visibility
-	void toggleCursor();
 	///
 	void updateScrollbar();
 
@@ -208,7 +208,7 @@ private:
 	bool cursor_visible_;
 
 	///
-	Timeout cursor_timeout_;
+	QTimer cursor_timeout_;
 	///
 	SyntheticMouseEvent synthetic_mouse_event_;
 	///

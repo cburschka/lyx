@@ -191,24 +191,17 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 
-// All the below connection objects are needed because of a bug in some
-// versions of GCC (<=2.96 are on the suspects list.) By having and assigning
-// to these connections we avoid a segfault upon startup, and also at exit.
-// (Lgb)
-
-static boost::signals::connection timecon;
-
-
 GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
-	  cursor_visible_(false), cursor_timeout_(400),
+	  cursor_visible_(false),
     need_resize_(false), schedule_redraw_(false),
 		preedit_lines_(1)
 {
 	buffer.workAreaManager().add(this);
 	// Setup the signals
-	timecon = cursor_timeout_.timeout
-		.connect(boost::bind(&GuiWorkArea::toggleCursor, this));
+	cursor_timeout_.setInterval(400);
+	connect(&cursor_timeout_, SIGNAL(timeout()),
+		this, SLOT(toggleCursor()));
 
 	cursor_timeout_.start();
 
@@ -292,7 +285,7 @@ void GuiWorkArea::stopBlinkingCursor()
 void GuiWorkArea::startBlinkingCursor()
 {
 	showCursor();
-	cursor_timeout_.restart();
+	cursor_timeout_.start();
 }
 
 
@@ -467,8 +460,6 @@ void GuiWorkArea::toggleCursor()
 	// to the rest of LyX.
 	ForkedcallsController & fcc = ForkedcallsController::get();
 	fcc.handleCompletedProcesses();
-
-	cursor_timeout_.restart();
 }
 
 
