@@ -1217,9 +1217,8 @@ void GuiView::resetDialogs()
 {
 	// Make sure that no LFUN uses any LyXView.
 	theLyXFunc().setLyXView(0);
-	delete d.menubar_;
 	d.toolbars_->init();
-	d.menubar_ = new GuiMenubar(this, menubackend);
+	d.menubar_->init();
 	if (d.layout_)
 		d.layout_->updateContents(true);
 }

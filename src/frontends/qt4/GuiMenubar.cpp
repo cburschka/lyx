@@ -40,6 +40,12 @@ namespace frontend {
 GuiMenubar::GuiMenubar(LyXView * view, MenuBackend & mbe)
 	: owner_(static_cast<GuiView*>(view)), menubackend_(mbe)
 {
+	init();
+}
+
+
+void GuiMenubar::init()
+{
 	macxMenuBarInit();
 
 	LYXERR(Debug::GUI, "populating menu bar" << to_utf8(menubackend_.getMenubar().name()));
@@ -54,6 +60,9 @@ GuiMenubar::GuiMenubar(LyXView * view, MenuBackend & mbe)
 		LYXERR(Debug::GUI, "menu bar entries "
 			<< menubackend_.getMenubar().size());
 	}
+
+	// Clear all menubar contents before filling it.
+	owner_->menuBar()->clear();
 
 	Menu menu;
 	menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());

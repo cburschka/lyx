@@ -36,6 +36,9 @@ public:
 
 	~GuiMenubar();
 
+	///
+	void init();
+
 	/// opens a top-level submenu given its name
 	void openByName(QString const & name);
 
