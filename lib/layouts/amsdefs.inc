@@ -31,6 +31,7 @@ Style Proof
 	LatexType             Environment
 	LatexName             proof
 	NextNoIndent          1
+	OptionalArgs          1
 	LabelSep              xx
 	ParIndent             MMM
 	ParSkip               0.4

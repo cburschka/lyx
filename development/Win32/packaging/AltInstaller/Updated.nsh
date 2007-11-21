@@ -39,6 +39,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\fonts\esint10.ttf"
  File "${PRODUCT_SOURCEDIR}\Resources\fonts\wasy10.ttf"
  SetOutPath "$INSTDIR\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsdefs.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsmaths.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsmaths-seq.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
