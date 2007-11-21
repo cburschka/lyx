@@ -49,7 +49,8 @@ class GuiWorkArea;
  * is deleted. This might be useful for closing other dialogs
  * depending on a given GuiView.
  */
-class GuiView : public QMainWindow, public LyXView
+class GuiView : public QMainWindow, public LyXView, public GuiBufferViewDelegate,
+	public GuiBufferDelegate
 {
 	Q_OBJECT
 public:

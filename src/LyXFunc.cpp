@@ -875,6 +875,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_DIALOG_TOGGLE:
 		case LFUN_DIALOG_DISCONNECT_INSET:
 		case LFUN_DIALOG_HIDE:
+		case LFUN_DIALOG_SHOW:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->dispatch(cmd);
 			break;
@@ -1038,7 +1039,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BUFFER_EXPORT:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (argument == "custom")
-				lyx_view_->showDialog("sendto", string());
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"));
 			else
 				lyx_view_->buffer()->doExport(argument, false);
 			break;
@@ -1467,7 +1468,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			} // end switch(code)
 			if (insetCodeOK)
-				lyx_view_->showDialog(name, data, 0);
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW, name + " " + data));
 			break;
 		}
 

@@ -42,7 +42,6 @@ namespace frontend {
  * in a single LyXView.
  */
 class LyXView
-	: public GuiBufferViewDelegate, public GuiBufferDelegate
 {
 public:
 	///
@@ -90,22 +89,6 @@ public:
 	// This View's Dialogs
 	//
 	
-	/** \param name == "bibtex", "citation" etc; an identifier used to
-	    launch a particular dialog.
-	    \param data is a string representation of the Inset contents.
-	    It is often little more than the output from Inset::write.
-	    It is passed to, and parsed by, the frontend dialog.
-	    Several of these dialogs do not need any data,
-	    so it defaults to string().
-	    \param inset ownership is _not_ passed to the frontend dialog.
-	    It is stored internally and used by the kernel to ascertain
-	    what to do with the FuncRequest dispatched from the frontend
-	    dialog on 'Apply'; should it be used to create a new inset at
-	    the current cursor position or modify an existing, 'open' inset?
-	*/
-	virtual void showDialog(std::string const & name,
-		std::string const & data, Inset * inset = 0) = 0;
-
 	///
 	virtual void disconnectDialog(std::string const & name) = 0;
 	///
