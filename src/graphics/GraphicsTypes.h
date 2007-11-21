@@ -16,8 +16,7 @@
 #define GRAPHICSTYPES_H
 
 #include "support/Translator.h"
-
-#include <string>
+#include "support/strfwd.h"
 
 
 namespace lyx {
