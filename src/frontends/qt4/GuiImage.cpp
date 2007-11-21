@@ -121,25 +121,25 @@ GuiImage::GuiImage(GuiImage const & other)
 {}
 
 
-Image * GuiImage::clone_impl() const
+Image * GuiImage::clone() const
 {
 	return new GuiImage(*this);
 }
 
 
-unsigned int GuiImage::getWidth_impl() const
+unsigned int GuiImage::getWidth() const
 {
 	return transformed_.width();
 }
 
 
-unsigned int GuiImage::getHeight_impl() const
+unsigned int GuiImage::getHeight() const
 {
 	return transformed_.height();
 }
 
 
-void GuiImage::load_impl(support::FileName const & filename)
+void GuiImage::load(support::FileName const & filename)
 {
 	if (!original_.isNull()) {
 		LYXERR(Debug::GRAPHICS, "Image is loaded already!");
@@ -178,7 +178,7 @@ static QImage & toGray(QImage & img)
 }
 
 
-bool GuiImage::setPixmap_impl(Params const & params)
+bool GuiImage::setPixmap(Params const & params)
 {
 	if (original_.isNull() || params.display == NoDisplay)
 		return false;
@@ -203,7 +203,7 @@ bool GuiImage::setPixmap_impl(Params const & params)
 }
 
 
-void GuiImage::clip_impl(Params const & params)
+void GuiImage::clip(Params const & params)
 {
 	if (transformed_.isNull())
 		return;
@@ -234,7 +234,7 @@ void GuiImage::clip_impl(Params const & params)
 }
 
 
-void GuiImage::rotate_impl(Params const & params)
+void GuiImage::rotate(Params const & params)
 {
 	if (transformed_.isNull())
 		return;
@@ -249,7 +249,7 @@ void GuiImage::rotate_impl(Params const & params)
 }
 
 
-void GuiImage::scale_impl(Params const & params)
+void GuiImage::scale(Params const & params)
 {
 	if (transformed_.isNull())
 		return;

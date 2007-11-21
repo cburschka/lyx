@@ -38,31 +38,31 @@ public:
 
 private:
 	/// Create a copy
-	virtual Image * clone_impl() const;
+	virtual Image * clone() const;
 	/// Get the image width
-	virtual unsigned int getWidth_impl() const;
+	virtual unsigned int getWidth() const;
 	/// Get the image height
-	virtual unsigned int getHeight_impl() const;
+	virtual unsigned int getHeight() const;
 	// FIXME Is the image drawable ?
-	virtual bool isDrawable_impl() const { return true; }
+	virtual bool isDrawable() const { return true; }
 	/**
 	 * Load the image file into memory.
 	 * The process is asynchronous, so this method starts the loading.
 	 * When finished, the Image::finishedLoading signal is emitted.
 	 */
-	virtual void load_impl(support::FileName const & filename);
+	virtual void load(support::FileName const & filename);
 	/**
 	 * Finishes the process of modifying transformed_, using
 	 * \c params to decide on color, grayscale etc.
 	 * \returns true if successful.
 	 */
-	virtual bool setPixmap_impl(Params const & params);
+	virtual bool setPixmap(Params const & params);
 	/// Clip the image using params.
-	virtual void clip_impl(Params const & params);
+	virtual void clip(Params const & params);
 	/// Rotate the image using params.
-	virtual void rotate_impl(Params const & params);
+	virtual void rotate(Params const & params);
 	/// Scale the image using params.
-	virtual void scale_impl(Params const & params);
+	virtual void scale(Params const & params);
 
 	/// Access to the class is through newImage() and clone.
 	GuiImage() {}
