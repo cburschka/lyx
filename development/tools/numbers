@@ -35,4 +35,11 @@ QHash                            : 7098
 QRegExp                          : 3959   (boost/cregex.hpp     : 21575 
 QSharedData                      : 838    (boost/shared_ptr.hpp : 17469)
 
-
+Revision 21692:
+Total:         compiled: 17310566  real: 150056  ratio: 115
+graphics:      compiled:   669162  real:   2617  ratio: 255
+frontends/qt4: compiled:  4386626  real:  27020  ratio: 162
+support:       compiled:  1432410  real:   9600  ratio: 149
+mathed:        compiled:  2357984  real:  19339  ratio: 121
+insets:        compiled:  2415915  real:  21566  ratio: 112
+src/*.cpp:     compiled:  4318608  real:  54814  ratio:  78
