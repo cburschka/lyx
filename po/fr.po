@@ -171,7 +171,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-11-18 12:55+0100\n"
-"PO-Revision-Date: 2007-11-13 09:12+0100\n"
+"PO-Revision-Date: 2007-11-19 19:20+0100\n"
 "Last-Translator: Siegfried MEUNIER-GUTTIN-CLUZEL <meunier@coria.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -927,7 +927,7 @@ msgstr "&Taille :"
 #: src/frontends/qt4/ui/DelimiterUi.ui:180
 #: src/frontends/qt4/QDelimiterDialog.cpp:190
 msgid "TeX Code: "
-msgstr "Code TeX :"
+msgstr "Code TeX : "
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:289
 msgid "Match delimiter types"
@@ -1520,7 +1520,7 @@ msgstr "Style de base pour la police du texte"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:128
 msgid "Font Famil&y:"
-msgstr "&Famille de Police"
+msgstr "&Famille de Police :"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:144
 msgid "Use extended character table"
@@ -1621,7 +1621,7 @@ msgstr "&Dialecte :"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:399
 msgid "Lan&guage:"
-msgstr "Lan&guage :"
+msgstr "Lan&gue :"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:409
 msgid "Select the programming language"
@@ -2318,7 +2318,7 @@ msgstr "Option utilisée pour imprimer dans un fichier."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:85
 msgid "Print to &file:"
-msgstr "Imprimer dans un &fichier"
+msgstr "Imprimer dans un &fichier :"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:95
 msgid "Option used to print to non-default printer."
@@ -2873,7 +2873,7 @@ msgstr "Remplace par le mot sélectionné"
 
 #: src/frontends/qt4/ui/TabularUi.ui:41
 msgid "&Table Settings"
-msgstr "&Tableau"
+msgstr "Paramètres du &Tableau"
 
 #: src/frontends/qt4/ui/TabularUi.ui:53
 msgid "Column Width"
@@ -2996,7 +2996,7 @@ msgstr "&Haut de ligne :"
 
 #: src/frontends/qt4/ui/TabularUi.ui:745
 msgid "Botto&m of row:"
-msgstr "&Bas de ligne"
+msgstr "&Bas de ligne :"
 
 #: src/frontends/qt4/ui/TabularUi.ui:758
 msgid "Bet&ween rows:"
@@ -5432,19 +5432,19 @@ msgstr "AdresseRetour :"
 
 #: lib/layouts/g-brief-en.layout:95 lib/layouts/g-brief2.layout:736
 msgid "MyRef"
-msgstr "MesRéfs"
+msgstr "Ma_Réf"
 
 #: lib/layouts/g-brief-en.layout:98 lib/layouts/g-brief2.layout:747
 msgid "MyRef:"
-msgstr "MesRéfs :"
+msgstr "Ma_Réf :"
 
 #: lib/layouts/g-brief-en.layout:102 lib/layouts/g-brief2.layout:757
 msgid "YourRef"
-msgstr "VosRéfs"
+msgstr "Votre_Réf"
 
 #: lib/layouts/g-brief-en.layout:105 lib/layouts/g-brief2.layout:768
 msgid "YourRef:"
-msgstr "VosRéfs :"
+msgstr "Votre_Réf :"
 
 #: lib/layouts/g-brief-en.layout:109 lib/layouts/g-brief2.layout:779
 msgid "YourMail"
@@ -6355,7 +6355,7 @@ msgstr "P.J."
 #: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:140
 #: lib/layouts/stdletter.inc:122
 msgid "encl:"
-msgstr "PJ :"
+msgstr "P.J. :"
 
 #: lib/layouts/scrlettr.layout:151 lib/layouts/scrlttr2.layout:183
 #: lib/layouts/stdletter.inc:135
@@ -6551,7 +6551,7 @@ msgstr "ContenuDiapo"
 
 #: lib/layouts/seminar.layout:105
 msgid "Slidecontents"
-msgstr "Contenu Diapo"
+msgstr "ContenuDiapo"
 
 #: lib/layouts/seminar.layout:109
 msgid "ProgressContents"
@@ -6632,7 +6632,7 @@ msgstr "InfoAuteur :"
 
 #: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
-msgstr "ABSTRACT"
+msgstr "RÉSUMÉ"
 
 #: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
@@ -8030,7 +8030,7 @@ msgstr "Étiquette...|q"
 
 #: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:311
 msgid "Footnote|F"
-msgstr "Note en Bas de Page|B"
+msgstr "Note de bas de page|b"
 
 #: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:312
 msgid "Marginal Note|M"
@@ -8358,7 +8358,7 @@ msgstr "Augmenter la profondeur d'environnement"
 
 #: lib/ui/classic.ui:347
 msgid "Start Appendix Here|S"
-msgstr "Appendice à Partir d'Ici|A"
+msgstr "Début appendice ici|a"
 
 #: lib/ui/classic.ui:356 lib/ui/stdmenus.inc:413
 msgid "Build Program|B"
@@ -8475,7 +8475,7 @@ msgstr "À Propos de LyX...|L"
 
 #: lib/ui/classic.ui:424 src/frontends/qt4/QAbout.cpp:44
 msgid "About LyX"
-msgstr "À Propos de LyX"
+msgstr "À Propos de LyX..."
 
 #: lib/ui/classic.ui:425
 msgid "Preferences..."
@@ -8967,7 +8967,7 @@ msgstr "Suivi des Modifications|S"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Start Appendix Here|A"
-msgstr "Appendice|A"
+msgstr "Début appendice ici|a"
 
 #: lib/ui/stdmenus.inc:418
 msgid "Compressed|m"
@@ -9167,15 +9167,15 @@ msgstr "Ajouter une ligne"
 
 #: lib/ui/stdtoolbars.inc:115 lib/ui/stdtoolbars.inc:159
 msgid "Add column"
-msgstr "Ajouter une colonne"
+msgstr "Ajouter colonne"
 
 #: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:160
 msgid "Delete row"
-msgstr "Supprimer la ligne"
+msgstr "Supprimer ligne"
 
 #: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:161
 msgid "Delete column"
-msgstr "Supprimer la colonne"
+msgstr "Supprimer colonne"
 
 #: lib/ui/stdtoolbars.inc:119
 msgid "Set top line"
@@ -9603,22 +9603,18 @@ msgid "Standard\t\\frac"
 msgstr "Standard\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:282
-#, fuzzy
 msgid "No horizontal line\t\\atop"
-msgstr "Pas de barre horizontale\t\\atop"
+msgstr "Sans barre horizontale\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:283
-#, fuzzy
 msgid "Nice fraction (3/4)\t\\nicefrac"
-msgstr "Jolie fraction\t\\nicefrac"
+msgstr "Fraction esthétique (3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:284
-#, fuzzy
 msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr "Fraction en ligne (amsmath)\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:285
-#, fuzzy
 msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr "Fraction hors ligne (amsmath)\t\\dfrac"
 
@@ -15314,9 +15310,7 @@ msgstr "LyX : %1$s"
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
-msgstr ""
-"Le nom de fichier suivant risque de causer des problèmes quand le fichier "
-"exporté sera traité avec LaTeX :"
+msgstr "Le nom de fichier suivant risque de causer des problèmes quand le fichier exporté sera traité avec LaTeX : "
 
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
@@ -15384,7 +15378,7 @@ msgstr "Insert de branche ouvert"
 
 #: src/insets/InsetBranch.cpp:99
 msgid "Branch: "
-msgstr "Branche :"
+msgstr "Branche : "
 
 #: src/insets/InsetBranch.cpp:104 src/insets/InsetCharStyle.cpp:162
 #: src/insets/InsetCharStyle.cpp:201
@@ -15393,7 +15387,7 @@ msgstr "Undef : "
 
 #: src/insets/InsetBranch.cpp:248
 msgid "branch"
-msgstr "branche "
+msgstr "branche"
 
 #: src/insets/InsetCaption.cpp:95
 msgid "Opened Caption Inset"
@@ -15401,7 +15395,7 @@ msgstr "Insert de légende ouvert"
 
 #: src/insets/InsetCaption.cpp:304
 msgid "Senseless!!! "
-msgstr "Absurde !"
+msgstr "Absurde ! "
 
 #: src/insets/InsetCharStyle.cpp:122
 msgid "Opened CharStyle Inset"
@@ -15413,15 +15407,15 @@ msgstr "Style de texte : "
 
 #: src/insets/InsetCommand.cpp:99
 msgid "LaTeX Command: "
-msgstr "Commande LaTeX :"
+msgstr "Commande LaTeX : "
 
 #: src/insets/InsetCommandParams.cpp:275
 msgid "Unknown inset name: "
-msgstr "Nom d'insert inconnu :"
+msgstr "Nom d'insert inconnu : "
 
 #: src/insets/InsetCommandParams.cpp:299
 msgid "Inset Command: "
-msgstr "Commande d'insert :"
+msgstr "Commande d'insert : "
 
 #: src/insets/InsetCommandParams.cpp:300
 msgid "Unknown parameter name: "
@@ -15441,7 +15435,7 @@ msgstr "TeX"
 
 #: src/insets/InsetEnvironment.cpp:64
 msgid "Opened Environment Inset: "
-msgstr "Insert d'environnement ouvert"
+msgstr "Insert d'environnement ouvert : "
 
 #: src/insets/InsetExternal.cpp:583
 #, c-format
@@ -15459,7 +15453,7 @@ msgstr "Insert de flottant ouvert"
 
 #: src/insets/InsetFloat.cpp:330
 msgid "float"
-msgstr "flottant "
+msgstr "flottant"
 
 #: src/insets/InsetFloat.cpp:381
 msgid " (sideways)"
@@ -15522,7 +15516,7 @@ msgstr "Incorporation Verbatim*"
 
 #: src/insets/InsetInclude.cpp:352
 msgid "Program Listing "
-msgstr "Listing de Code Source"
+msgstr "Listing de Code Source "
 
 #: src/insets/InsetInclude.cpp:448 src/insets/InsetInclude.cpp:628
 msgid "Recursive input"
@@ -15551,7 +15545,7 @@ msgstr "Classes de document différentes"
 
 #: src/insets/InsetIndex.cpp:44
 msgid "Idx: "
-msgstr "Idx :"
+msgstr "Idx : "
 
 #: src/insets/InsetIndex.cpp:82
 msgid "Index"
@@ -15687,14 +15681,12 @@ msgstr "Nom de paramètre de listing invalide (vide)."
 #: src/insets/InsetListingsParams.cpp:646
 #, c-format
 msgid "Available listing parameters are %1$s"
-msgstr "Les paramètre de listing disponibles sont %1$s "
+msgstr "Les paramètre de listing disponibles sont %1$s"
 
 #: src/insets/InsetListingsParams.cpp:649
 #, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
-msgstr ""
-"Les paramètres de listings disponibles contenant la chaîne \"%1$s\" sont %2"
-"$s "
+msgstr "Les paramètres de listings disponibles contenant la chaîne \"%1$s\" sont %2$s"
 
 #: src/insets/InsetListingsParams.cpp:660
 #, c-format
@@ -15757,7 +15749,7 @@ msgstr "Insert de paramètre optionnel ouvert"
 
 #: src/insets/InsetPagebreak.h:65
 msgid "Clear Page"
-msgstr "Saut Page"
+msgstr "Saut Page (vide le tampon)"
 
 #: src/insets/InsetPagebreak.h:81
 msgid "Clear Double Page"
@@ -15805,7 +15797,7 @@ msgstr "PrettyRef"
 
 #: src/insets/InsetRef.cpp:152 src/mathed/InsetMathRef.cpp:192
 msgid "FormatRef: "
-msgstr "FormatRef :"
+msgstr "FormatRef : "
 
 #: src/insets/InsetTOC.cpp:47
 msgid "Unknown TOC type"
