@@ -102,9 +102,10 @@ Converter::Converter(FileName const & from_file, string const & to_file_base,
 {}
 
 
-// Empty d-tor out-of-line to keep boost::scoped_ptr happy.
 Converter::~Converter()
-{}
+{
+	delete pimpl_;
+}
 
 
 void Converter::startConversion() const

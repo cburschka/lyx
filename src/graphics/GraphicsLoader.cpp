@@ -98,7 +98,9 @@ Loader::Loader(Loader const & other)
 
 
 Loader::~Loader()
-{}
+{
+	delete pimpl_;
+}
 
 
 Loader & Loader::operator=(Loader const & other)

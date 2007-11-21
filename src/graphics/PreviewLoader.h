@@ -18,7 +18,6 @@
 #ifndef PREVIEWLOADER_H
 #define PREVIEWLOADER_H
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
 
@@ -95,7 +94,7 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
-	boost::scoped_ptr<Impl> const pimpl_;
+	Impl * const pimpl_;
 };
 
 } // namespace graphics

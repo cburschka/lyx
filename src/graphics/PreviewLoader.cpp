@@ -210,7 +210,6 @@ typedef InProgressProcesses::value_type InProgressProcess;
 
 
 namespace lyx {
-
 namespace graphics {
 
 class PreviewLoader::Impl : public boost::signals::trackable {
@@ -288,7 +287,9 @@ PreviewLoader::PreviewLoader(Buffer const & b)
 
 
 PreviewLoader::~PreviewLoader()
-{}
+{
+	delete pimpl_;
+}
 
 
 PreviewImage const * PreviewLoader::preview(string const & latex_snippet) const

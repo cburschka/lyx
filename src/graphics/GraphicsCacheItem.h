@@ -30,7 +30,6 @@
 
 #include "GraphicsTypes.h"
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
 
@@ -48,8 +47,7 @@ class CacheItem {
 public:
 	///
 	CacheItem(support::FileName const & file);
-
-	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
+	/// Needed for the pimpl
 	~CacheItem();
 
 	///
@@ -96,9 +94,8 @@ private:
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
-
 	/// The pointer never changes although *pimpl_'s contents may.
-	boost::scoped_ptr<Impl> const pimpl_;
+	Impl * const pimpl_;
 };
 
 } // namespace graphics

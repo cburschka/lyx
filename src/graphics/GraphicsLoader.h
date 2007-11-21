@@ -26,7 +26,6 @@
 
 #include "GraphicsTypes.h"
 
-#include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
 namespace lyx {
@@ -48,8 +47,7 @@ public:
 	Loader(support::FileName const & file_with_path, Params const &);
 	///
 	Loader(Loader const &);
-
-	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
+	/// Needed for the pimpl
 	~Loader();
 
 	Loader & operator=(Loader const &);
@@ -104,7 +102,7 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
-	boost::scoped_ptr<Impl> const pimpl_;
+	Impl * const pimpl_;
 };
 
 } // namespace graphics

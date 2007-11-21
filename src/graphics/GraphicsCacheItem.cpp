@@ -141,7 +141,9 @@ CacheItem::CacheItem(FileName const & file)
 
 
 CacheItem::~CacheItem()
-{}
+{
+	delete pimpl_;
+}
 
 
 FileName const & CacheItem::filename() const

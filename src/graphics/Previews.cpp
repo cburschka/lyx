@@ -54,7 +54,9 @@ Previews::Previews()
 
 
 Previews::~Previews()
-{}
+{
+	delete pimpl_;
+}
 
 
 PreviewLoader & Previews::loader(Buffer const & buffer) const

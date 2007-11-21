@@ -56,7 +56,9 @@ Cache::Cache()
 
 
 Cache::~Cache()
-{}
+{
+	delete pimpl_;
+}
 
 
 std::vector<string> Cache::loadableFormats() const

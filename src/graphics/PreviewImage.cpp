@@ -63,7 +63,9 @@ PreviewImage::PreviewImage(PreviewLoader & l,
 
 
 PreviewImage::~PreviewImage()
-{}
+{
+	delete pimpl_;
+}
 
 
 string const & PreviewImage::snippet() const
