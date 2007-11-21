@@ -31,6 +31,11 @@ def find_end_of_inset(lines, i):
     " Find end of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
+def wrap_into_ert(string, src, dst):
+    " Wrap a something into an ERT"
+    return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout standard\n' 
+      + dst + '\n\\end_layout\n\\end_inset\n')
+
 
 ####################################################################
 
@@ -363,8 +368,14 @@ def convert_latexcommand_index(document):
         document.body[i:i + 2] = ["\\begin_inset Index",
           "status collapsed",
           "\\begin_layout standard"]
-        # Put here the conversions needed from LaTeX string
-        # to LyXText:
+        # Put here the conversions needed from LaTeX string to LyXText.
+        # Here we do a minimal conversion to prevent crashes and data loss.
+        # Manual patch-up may be needed.
+        # Umlauted characters (most common ones, can be extended):
+        fullcontent = fullcontent.replace(r'\\\"a', u'ä').replace(r'\\\"o', u'ö').replace(r'\\\"u', u'ü')
+        # Generic, \" -> ":
+        fullcontent = wrap_into_ert(fullcontent, r'\"', '"')
+        #fullcontent = fullcontent.replace(r'\"', '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout standard\n"\n\\end_layout\n\\end_inset\n')
         # Math:
         r = re.compile('^(.*?)(\$.*?\$)(.*)')
         g = fullcontent
@@ -374,11 +385,19 @@ def convert_latexcommand_index(document):
           f = m.group(2).replace('\\\\', '\\')
           g = m.group(3)
           if s:
+            # this is non-math!
+            s = wrap_into_ert(s, r'\\', '\\backslash')
+            s = wrap_into_ert(s, '{', '{')
+            s = wrap_into_ert(s, '}', '}')
             document.body.insert(i + 3, s)
             i += 1
           document.body.insert(i + 3, "\\begin_inset Formula " + f)
           document.body.insert(i + 4, "\\end_inset")
           i += 2
+        # Generic, \\ -> \backslash:
+        g = wrap_into_ert(g, r'\\', '\\backslash{}')
+        g = wrap_into_ert(g, '{', '{')
+        g = wrap_into_ert(g, '}', '}')
         document.body.insert(i + 3, g)
         document.body[i + 4] = "\\end_layout"
         i = i + 5
@@ -390,13 +409,34 @@ def revert_latexcommand_index(document):
     while True:
         i = find_token(document.body, "\\begin_inset Index", i)
         if i == -1:
-            return
-        j = find_end_of_inset(document.body, i)
+          return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+          return
         del document.body[j - 1]
         del document.body[j - 2] # \end_layout
         document.body[i] =  "\\begin_inset CommandInset index"
         document.body[i + 1] =  "LatexCommand index"
-        document.body[i + 3] = "name " + '"' + document.body[i + 3] + '"'
+        # clean up multiline stuff
+        content = ""
+        for k in range(i + 3, j - 2):
+          line = document.body[k]
+          if line.startswith("\\begin_inset ERT"):
+            line = line[16:]
+          if line.startswith("\\begin_inset Formula"):
+            line = line[20:]
+          if line.startswith("\\begin_layout standard"):
+            line = line[22:]
+          if line.startswith("\\end_layout"):
+            line = line[11:]
+          if line.startswith("\\end_inset"):
+            line = line[10:]
+          if line.startswith("status collapsed"):
+            line = line[16:]
+          content = content + line;
+        document.body[i + 3] = "name " + '"' + content + '"'
+        for k in range(i + 4, j - 2):
+          del document.body[i + 4]
         document.body.insert(i + 4, "")
         del document.body[i + 2] # \begin_layout standard
         i = i + 5
