@@ -23,8 +23,8 @@ using std::list;
 namespace lyx {
 namespace graphics {
 
-int LoaderQueue::s_numimages_ = 5;
-int LoaderQueue::s_millisecs_ = 500;
+static int s_numimages_ = 5;
+static int s_millisecs_ = 500;
 
 
 LoaderQueue & LoaderQueue::get()

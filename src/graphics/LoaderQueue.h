@@ -44,7 +44,7 @@ public:
 	 *  millisecs is the time interval between calls.
 	 *  Higher numimages, lower millisecs means higher priority.
 	 */
-	static void setPriority(int numimages , int millisecs);
+	static void setPriority(int numimages, int millisecs);
 private:
 	/// This class is a singleton class... use LoaderQueue::get() instead
 	LoaderQueue();
@@ -58,10 +58,6 @@ private:
 	Timeout timer;
 	///
 	bool running_;
-	///
-	static int s_numimages_ ;
-	///
-	static int s_millisecs_ ;
 
 	/** This is the 'threaded' method, that does the loading in the
 	 *  background.
