@@ -1221,6 +1221,9 @@ void GuiView::resetDialogs()
 	d.menubar_->init();
 	if (d.layout_)
 		d.layout_->updateContents(true);
+	// Now update controls with current buffer.
+	theLyXFunc().setLyXView(this);
+	restartCursor();
 }
 
 
