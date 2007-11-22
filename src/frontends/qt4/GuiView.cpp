@@ -57,6 +57,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
+#include <QDebug>
 #include <QDesktopWidget>
 #include <QDragEnterEvent>
 #include <QDropEvent>
@@ -104,16 +105,20 @@ namespace {
 class BackgroundWidget : public QWidget
 {
 public:
-	BackgroundWidget(QString const & file, QString const & text)
-		: splash_(file)
+	BackgroundWidget()
 	{
+		LYXERR(Debug::GUI, "show banner: " << lyxrc.show_banner);
+		/// The text to be written on top of the pixmap
+		QString const text = lyx_version ? lyx_version : qt_("unknown version");
+		splash_ = QPixmap(":/images/banner.png");
+
 		QPainter pain(&splash_);
 		pain.setPen(QColor(255, 255, 0));
 		QFont font;
 		// The font used to display the version info
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Bold);
-		font.setPointSize(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toInt());
+		font.setPointSize(int(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble()));
 		pain.setFont(font);
 		pain.drawText(260, 270, text);
 	}
@@ -147,7 +152,7 @@ struct GuiView::GuiViewPrivate
 		bigIconSize = 26;		// better for some math icons
 
 		splitter_ = new QSplitter;
-		initBackground();
+		bg_widget_ = new BackgroundWidget;
 		stack_widget_ = new QStackedWidget;
 		stack_widget_->addWidget(bg_widget_);
 		stack_widget_->addWidget(splitter_);
@@ -157,8 +162,8 @@ struct GuiView::GuiViewPrivate
 	~GuiViewPrivate()
 	{
 		delete splitter_;
-		delete bg_widget_;
 		delete stack_widget_;
+		delete bg_widget_;
 		delete menubar_;
 		delete toolbars_;
 	}
@@ -201,14 +206,6 @@ struct GuiView::GuiViewPrivate
 		return menu;
 	}
 
-	void initBackground()
-	{
-		LYXERR(Debug::GUI, "show banner: " << lyxrc.show_banner);
-		/// The text to be written on top of the pixmap
-		QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
-		bg_widget_ = new BackgroundWidget(":/images/banner.png", text);
-	}
-
 	void setBackground()
 	{
 		stack_widget_->setCurrentWidget(bg_widget_);
@@ -240,9 +237,6 @@ struct GuiView::GuiViewPrivate
 	}
 
 public:
-	///
-	string cur_title;
-
 	GuiWorkArea * current_work_area_;
 	QSplitter * splitter_;
 	QStackedWidget * stack_widget_;
@@ -277,15 +271,13 @@ public:
 	bool quitting_by_menu_;
 	/// auto-saving of buffers
 	Timeout autosave_timeout_;
-	///
-	/// flag against a race condition due to multiclicks in Qt frontend,
-	/// see bug #1119
+	/// flag against a race condition due to multiclicks, see bug #1119
 	bool in_show_;
 };
 
 
 GuiView::GuiView(int id)
-	: d(*new GuiViewPrivate),  id_(id)
+	: d(*new GuiViewPrivate), id_(id)
 {
 	// GuiToolbars *must* be initialised before GuiMenubar.
 	d.toolbars_ = new GuiToolbars(*this);
@@ -369,7 +361,7 @@ void GuiView::setFocus()
 }
 
 
-QMenu* GuiView::createPopupMenu()
+QMenu * GuiView::createPopupMenu()
 {
 	return d.toolBarPopup(this);
 }
