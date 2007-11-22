@@ -295,7 +295,7 @@ void CacheItem::Impl::loadImage()
 	setStatus(Loading);
 	LYXERR(Debug::GRAPHICS, "Loading image.");
 
-	image_ = Image::newImage();
+	image_.reset(Image::newImage());
 
 	cl_.disconnect();
 	cl_ = image_->finishedLoading.connect(

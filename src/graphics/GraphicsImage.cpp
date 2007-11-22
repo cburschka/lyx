@@ -22,7 +22,7 @@ namespace graphics {
 
 // This is to be connected to a function that will return a new
 // instance of a viable derived class.
-boost::function<Image::ImagePtr()> Image::newImage;
+boost::function<Image *()> Image::newImage;
 
 /// Return the list of loadable formats.
 boost::function<Image::FormatList()> Image::loadableFormats;

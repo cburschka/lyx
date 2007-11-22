@@ -25,7 +25,6 @@
 #define GRAPHICSIMAGE_H
 
 #include <boost/function.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/signal.hpp>
 
 #include <vector>
@@ -44,9 +43,7 @@ public:
 	/** This is to be connected to a function that will return a new
 	 *  instance of a viable derived class.
 	 */
-	typedef boost::shared_ptr<Image> ImagePtr;
-	///
-	static boost::function<ImagePtr()> newImage;
+	static boost::function<Image *()> newImage;
 
 	///
 	typedef std::vector<std::string> FormatList;
