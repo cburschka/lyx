@@ -16,12 +16,6 @@
 #include "GuiView.h"
 #include "Dialog.h"
 
-#include <boost/assert.hpp>
-
-using std::string;
-
-#include "GuiView.h"
-
 #include "GuiApplication.h"
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
@@ -55,7 +49,6 @@ using std::string;
 #include "ToolbarBackend.h"
 #include "version.h"
 
-#include "support/convert.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -82,8 +75,8 @@ using std::string;
 #include <QToolBar>
 #include <QUrl>
 
+#include <boost/assert.hpp>
 #include <boost/bind.hpp>
-#include <boost/current_function.hpp>
 
 #ifdef HAVE_SYS_TIME_H
 # include <sys/time.h>
@@ -120,7 +113,7 @@ public:
 		// The font used to display the version info
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Bold);
-		font.setPointSize(convert<int>(lyxrc.font_sizes[FONT_SIZE_LARGE]));
+		font.setPointSize(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toInt());
 		pain.setFont(font);
 		pain.drawText(260, 270, text);
 	}
@@ -459,7 +452,7 @@ void GuiView::dropEvent(QDropEvent* event)
 	if (files.isEmpty())
 		return;
 
-	LYXERR(Debug::GUI, BOOST_CURRENT_FUNCTION << " got URLs!");
+	LYXERR(Debug::GUI, "GuiView::dropEvent: got URLs!");
 	for (int i = 0; i != files.size(); ++i) {
 		string const file = support::os::internal_path(fromqstr(
 			files.at(i).toLocalFile()));
