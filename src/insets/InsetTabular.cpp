@@ -3423,6 +3423,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// pass to InsertPlaintextString, but
 		// only if we have multi-cell content
 		if (clip.find_first_of(from_ascii("\t\n")) != docstring::npos) {
+			recordUndoInset(cur, Undo::INSERT);
 			if (insertPlaintextString(cur.bv(), clip, false)) {
 				// content has been replaced,
 				// so cursor might be invalid
