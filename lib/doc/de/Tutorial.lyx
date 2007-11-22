@@ -296,7 +296,7 @@ Tutorium
  Um den besten Nutzen aus dem Dokument zu ziehen, sollten Sie es in Ruhe
  durchlesen und all die kleinen Übungen ausprobieren um zu sehen, ob Sie
  sie nachvollziehen können.
- Zum besseren Verständnis kann es hilfreich sein, die PostScript®-Version
+ Zum besseren Verständnis kann es hilfreich sein, die PostScript-Version
  des Textes auszudrucken.
 \end_layout
 
@@ -520,7 +520,7 @@ xdvi
 \family typewriter
 dvips
 \family default
- (oder ein entsprechendes Programm zur Umwandlung von DVI in PostScript®)
+ (oder ein entsprechendes Programm zur Umwandlung von DVI in PostScript)
  und einen funktionierenden Drucker.
  Das sind eine ganze Menge Voraussetzungen.
  Ist eine davon nicht erfüllt, müssen Sie (oder ein freundlicher Administrator)
@@ -1656,9 +1656,9 @@ Eingabe
 Auflistung
 \family default
  aus dem Auswahlmenü.
- LyX schreibt jetzt einen Stern an den Anfang der Zeile (in der endgültigen
- Ausgabe wird dieser Stern ein gefüllter Kreis sein -- im englischen mit
- bullet bezeichnet).
+ LyX schreibt jetzt einen Aufzählungspunkt an den Anfang der Zeile (in der
+ endgültigen Ausgabe wird dieser Stern ein gefüllter Kreis sein -- im englischen
+ mit bullet bezeichnet).
  Zählen Sie nun die Gründe auf:
 \end_layout
 
@@ -2790,7 +2790,7 @@ Fußnoten können Sie entweder über den Menüpunkt
 Einfügen\SpecialChar \menuseparator
 Fußnote
 \family default
- oder das Symbol 
+ oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/footnote-insert.png
 	scale 70
@@ -2798,7 +2798,7 @@ Fußnote
 
 \end_inset
 
- in der zweiten Werkzeugleiste einfügen.
+ einfügen.
  Setzen Sie beispielsweise den Cursor hinter das Wort 
 \emph on
 LyX
@@ -2864,7 +2864,7 @@ Eine Fußnote kann man übrigens auch ausschneiden und wie gewöhnlichen Text
  kopieren.
  Sie müssen dazu lediglich die Fußnoten-Markierung selektieren
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Es ist wahrscheinlich einfacher, dies über die Tastatur zu tun, da sich
@@ -2909,7 +2909,7 @@ Randnotizen werden über den Menüpunkt
 Einfügen\SpecialChar \menuseparator
 Randnotiz
 \family default
- oder das Symbol 
+ oder den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
 	scale 70
@@ -2917,9 +2917,7 @@ Randnotiz
 
 \end_inset
 
- in der Werk\SpecialChar \-
-zeug\SpecialChar \-
-leiste eingefügt.
+ eingefügt.
  Eine Randnotiz ist fast wie eine Fußnote, mit den folgenden Unterschieden:
 \end_layout
 
@@ -3714,42 +3712,82 @@ de_beispiel_roh.lyx
 \end_layout
 
 \begin_layout Section
-Die Tafel der Mathematiksymbole
+Die Mathe-Werkzeugleiste
 \end_layout
 
 \begin_layout Standard
-Mit der Tafel der Mathematiksymbole kann man mathematische Symbole bequem
- per Mausklick eingeben oder komplizierte Funktionen im Mathematikeditor
- durchführen.
+Mit der 
+\family sans
+Mathe-Werkzeugleiste
+\family default
+ kann man mathematische Symbole bequem per Mausklick eingeben oder komplizierte
+ Funktionen im Mathematikeditor durchführen.
  Viele davon können Sie auch über die Tastatur oder das 
 \family sans
 Einfügen
 \family default
 -Menü aufrufen, an dieser Stelle konzentrieren wir uns aber auf den Gebrauch
- der Symboltafel, damit Sie lernen, wie sie benutzt werden kann.
- Tastaturkontrollsequenzen können Sie später aus anderen Anleitungen lernen
- (ein Wink mit dem Zaunpfahl\SpecialChar \ldots{}
-).
- Falls die Symboltafel nicht zu senen ist, kreuzen Sie über den Menüpunkt
- 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Mathe\SpecialChar \menuseparator
-Mathe-Kontrollflächen\InsetSpace \space{}
-an/aus
-\family default
- oder 
-\family sans
-Ansicht
-\family default
-\SpecialChar \menuseparator
+ der Werkzeugleiste, damit Sie lernen, wie sie benutzt werden kann.
+ Tastaturkontrollsequenzen können Sie später aus anderen Anleitungen lernen.
+\end_layout
 
+\begin_layout Standard
+Die 
 \family sans
-Werkzeugleisten\SpecialChar \menuseparator
-Mathe-Kontrollflächen
+Mathe-Werkzeugleiste
 \family default
-\SpecialChar \menuseparator
- an.
+ kann über das Menü 
+\family sans
+Ansicht\SpecialChar \menuseparator
+Werkzeugleisten
+\family default
+ eingeblendet werden.
+ Wenn dort auf 
+\begin_inset Quotes eld
+\end_inset
+
+Mathe
+\begin_inset Quotes erd
+\end_inset
+
+ geklickt wird, wird die Werkzeugleiste permanent am unteren Rand eingeblendet;
+ diese Einstellung wird durch ein Häkchen im Menü 
+\family sans
+Werkzeugleisten
+\family default
+ angezeigt.
+ Wenn nun im Menü 
+\family sans
+Werkzeugleisten
+\family default
+ nochmal auf 
+\begin_inset Quotes eld
+\end_inset
+
+Mathe
+\begin_inset Quotes erd
+\end_inset
+
+ geklickt wird, wird die Werkzeugleiste nur angezeigt, wenn sich der Cursor
+ in einer Formel befindet; diese Einstellung wird durch die Umbenennung
+ des Menüeintrags von 
+\begin_inset Quotes eld
+\end_inset
+
+Mathe
+\begin_inset Quotes erd
+\end_inset
+
+ zu 
+\begin_inset Quotes eld
+\end_inset
+
+Mathe\InsetSpace ~
+(automatisch)
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt.
 \end_layout
 
 \begin_layout Subsection
@@ -3759,7 +3797,7 @@ Symbole
 \begin_layout Standard
 Über die 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  können viele in der Mathematik benutzte Symbole ausgewählt werden: verschiedene
  Pfeile, Relationen, Operatoren, Summen, Integrale, usw.
@@ -3795,9 +3833,9 @@ Eine Variable (
 \end_inset
 
 ) zum Beispiel mit einem Pfeil zu versehen, wird genauso gemacht.
- Sie müssen auf der 
+ Sie müssen in der 
 \family sans
-Mathe-Kontrollfläche
+Mathe-Werkzeugleiste
 \family default
  unter 
 \family sans
@@ -4749,14 +4787,11 @@ Einstellungen
 \end_layout
 
 \begin_layout Itemize
-LyX erlaubt die einfache Einbindung von Abbildungen in unterschiedlichen
- Formaten (einschließlich JPEG und anderer Bitmap-Formate sowie PostScript®
- und LaTeX).
- Die Auswahl 
+LyX erlaubt die einfache Einbindung von Abbildungen in jedem Format.
+ Das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Grafik\SpecialChar \ldots{}
-
+Grafik
 \family default
  oder ein Klick auf 
 \begin_inset Graphics
@@ -5200,7 +5235,6 @@ Dokument
 \family sans
 Einstellungen
 \family default
-\SpecialChar \ldots{}
  werden praktisch alle Optionen eingestellt, die man dem Befehl 
 \family typewriter
 

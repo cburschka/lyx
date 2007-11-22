@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -214,7 +214,7 @@ Tutorial
  tecleando todos los pequeños detalles que te vayamos explicando (por simples
  que sean) e intentando hacer todos los ejercicios para comprobar que lo
  entiendes.
- Por comodidad, puede interesarte imprimir la versión PostScript® de este
+ Por comodidad, puede interesarte imprimir la versión PostScript de este
  documento.
 \end_layout
 
@@ -840,7 +840,7 @@ dvi
 dvi
 \family default
  puede ser leído depués por otro programa que acepte este formato, o convertido
- a otros formatos, como PostScript®.
+ a otros formatos, como PostScript.
 \end_layout
 
 \begin_layout Standard
@@ -1132,7 +1132,7 @@ dvips
 \family typewriter
 dvi
 \family default
- a PostScript®, y una impresora.
+ a PostScript, y una impresora.
  Esto es asumir mucho.
  Si alguna de estas condiciones no se cumple, tú mismo deberás configurar
  aquello que falte (o bien tu administrador del sistema).
@@ -1364,7 +1364,7 @@ dvi
 ), que abrirá una nueva ventana mostrándote el aspecto de tu documento cuando
  esté impreso.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Puedes ahorrar tiempo dejando que 
@@ -1648,7 +1648,7 @@ eemplazar
 \family default
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Cierra la ventana cuando hayas acabado, o déjala abierta si lo encuentras
@@ -2404,8 +2404,7 @@ Viñeta*
 Entorno
 \family default
 .
- LyX pondrá un bolo (realmente un asterisco, que se convertirá en un círculo
- en la salida final) en la línea.
+ LyX pondrá un bolo en la línea.
  Introduce tus razones:
 \end_layout
 
@@ -3448,20 +3447,10 @@ Notas a pie de página y notas al margen
 
 \begin_layout Standard
 Las notas a pie de página se pueden añadir usando el botón 
-\family sans
-Insertar\InsetSpace ~
-nota\InsetSpace ~
-al\InsetSpace ~
-pie
-\family default
- en la barra de herramientas
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-El botón muestra una flecha señalando texto en rojo, justo debajo de texto
- en negro.
-\end_layout
+\begin_inset Graphics
+	filename ../../images/footnote-insert.png
+	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
@@ -3470,9 +3459,7 @@ El botón muestra una flecha señalando texto en rojo, justo debajo de texto
 \bar under
 I
 \bar default
-nsertar\InsetSpace ~
-\SpecialChar \menuseparator
-\InsetSpace ~
+nsertar\SpecialChar \menuseparator
 Nota\InsetSpace ~
 al\InsetSpace ~
 
@@ -3491,12 +3478,13 @@ LyX
 \end_inset
 
  en cualquier parte de tu documento y pulsa el botón 
-\family sans
-Insertar\InsetSpace ~
-nota\InsetSpace ~
-al\InsetSpace ~
-pie
-\family default
+\begin_inset Graphics
+	filename ../../images/footnote-insert.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
 .
  Una línea de pie de página se abrirá debajo de la línea en la que estabas
  escribiendo.
@@ -3605,41 +3593,26 @@ gar
 lo.
  Además, puedes convertir texto normal en una nota, basta que lo selecciones
  y pulses el botón 
-\family sans
-Insertar\InsetSpace ~
-nota\InsetSpace ~
-al\InsetSpace ~
-pie
-\family default
+\begin_inset Graphics
+	filename ../../images/footnote-insert.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
 ; convierte una nota en texto normal pulsando el mismo botón cuando el cursor
  esté dentro de la nota.
 \end_layout
 
 \begin_layout Standard
 Las notas al margen se pueden añadir mediante el botón 
-\family sans
-Insertar\InsetSpace ~
-nota\InsetSpace ~
-al\InsetSpace ~
-margen
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-El botón muestra una flecha apuntando a texto en rojo, al lado de (al margen
- de) texto en negro, y se encuentra cerca del botón 
-\family sans
-Insertar Nota\InsetSpace ~
-a\InsetSpace ~
-pie
-\family default
-; en la barra de herramientas.
-\end_layout
+\begin_inset Graphics
+	filename ../../images/marginalnote-insert.png
+	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
-
-\family default
  o bien el menú 
 \family sans
 \bar under
@@ -3775,9 +3748,7 @@ Ahora escoge un lugar cualquiera del documento donde quisieras insertar
 \bar under
 I
 \bar default
-nsertar\InsetSpace ~
-\SpecialChar \menuseparator
-\InsetSpace ~
+nsertar\SpecialChar \menuseparator
 Referen
 \bar under
 c
@@ -3925,18 +3896,14 @@ No te desesperes tratando de pinchar o borrar un número de sección.
 \bar under
 I
 \bar default
-nsertar\InsetSpace ~
-\SpecialChar \menuseparator
-\InsetSpace ~
+nsertar\SpecialChar \menuseparator
 Lis
 \bar under
 t
 \bar default
 as\InsetSpace ~
 e\InsetSpace ~
-Índices\InsetSpace ~
-\SpecialChar \menuseparator
-\InsetSpace ~
+Índices\SpecialChar \menuseparator
 Índice\InsetSpace ~
 
 \bar under
@@ -3985,7 +3952,7 @@ er\SpecialChar \menuseparator
 Indice\InsetSpace ~
 General
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 La instrucción del menú funcionará incluso si no tienes recuadro de índice
@@ -4549,49 +4516,107 @@ ejemplo_sin_lyx.lyx
 \end_layout
 
 \begin_layout Section
-El 
-\family sans
-Panel de Ecuaciones
+
+\lang english
+The Math Toolbar
 \end_layout
 
 \begin_layout Standard
-El 
+
+\lang english
+The 
 \family sans
-Panel\InsetSpace ~
-de\InsetSpace ~
-ecuaciones
+Math\InsetSpace ~
+Toolbar
 \family default
- (que se obtiene mediante 
+ is a convenient way to enter symbols or to perform many complicated Mathed
+ functions.
+ Many of these functions can be accomplished from the keyboard or the 
 \family sans
-\bar under
-I
-\bar default
-nsertar\InsetSpace ~
-\SpecialChar \menuseparator
-\InsetSpace ~
-E
-\bar under
-c
-\bar default
-uación\InsetSpace ~
-\SpecialChar \menuseparator
-\InsetSpace ~
-Panel\InsetSpace ~
-de\InsetSpace ~
-ecuaciones)
+Edit\SpecialChar \menuseparator
+Math
 \family default
- es una forma práctica de introducir símbolos o de construir complicadas
- funciones matemáticas.
- Muchas de estas funciones pueden obtenerse con el teclado o con el panel.
- Sin embargo, nos vamos a centrar en el uso del panel para que conozcas
- todo lo que hay; podrás aprender atajos con el teclado más tarde en otros
- manuales (esto es una indirecta).
- Así que abre el 
+ or 
 \family sans
-Panel de\InsetSpace ~
-ecuaciones
+Insert\SpecialChar \menuseparator
+Math
 \family default
- y déjalo abierto durante toda la sección.
+ menus.
+ However, we're going to concentrate on using the 
+\family sans
+Math\InsetSpace ~
+Toolbars
+\family default
+, just to let you know what's out there; you can learn keyboard shortcuts
+ later, from other manuals.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+math toolbar
+\family default
+ can be turned on in the menu 
+\family sans
+View\SpecialChar \menuseparator
+Toolbars
+\family default
+.
+ When you click there on 
+\begin_inset Quotes eld
+\end_inset
+
+Math
+\begin_inset Quotes erd
+\end_inset
+
+ the toolbar will be shown permanently at the bottom; this state is visualized
+ in the 
+\family sans
+Toolbars
+\family default
+ menu with a checkmark.
+ When you click in this state again on 
+\begin_inset Quotes eld
+\end_inset
+
+Math
+\begin_inset Quotes erd
+\end_inset
+
+ in the 
+\family sans
+Toolbars
+\family default
+ menu, the 
+\family sans
+math toolbar
+\family default
+ is only shown when the cursor is within a formula; this state is visualized
+ by the renaming of the menu entry from 
+\begin_inset Quotes eld
+\end_inset
+
+Math
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Math\InsetSpace ~
+(auto)
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
@@ -4604,7 +4629,11 @@ Si pinchas en el botón
 Letras\InsetSpace ~
 griegas
 \family default
- del panel, obtendrás un menú desde el que podrás elegir una letra griega.
+ del 
+\lang english
+Toolbar
+\lang spanish
+, obtendrás un menú desde el que podrás elegir una letra griega.
  Ésta aparecerá allí donde esté situado el cursor.
  Observa que hay un par de variantes de épsilon, pi, theta y sigma.
  Un atajo: si estás escribiendo texto normal e insertas algo desde el panel,
@@ -5493,7 +5522,7 @@ tabla
 \end_layout
 
 \begin_layout Itemize
-LyX también permite incluir gráficos PostScript® (o LaTeX puro).
+LyX también permite incluir gráficos PostScript (o LaTeX puro).
  Lo adivinaste: 
 \family sans
 \bar under
@@ -5908,15 +5937,12 @@ Puede que desees convertir un documento LyX en un archivo LaTeX.
 \bar under
 A
 \bar default
-rchivo\InsetSpace ~
-\SpecialChar \menuseparator
+rchivo\SpecialChar \menuseparator
 
 \bar under
-\InsetSpace ~
 E
 \bar default
 xportar\SpecialChar \menuseparator
-\InsetSpace ~
 
 \bar under
 L
@@ -5952,11 +5978,9 @@ El menú
 \bar under
 F
 \bar default
-ormato\InsetSpace ~
-\SpecialChar \menuseparator
+ormato\SpecialChar \menuseparator
 
 \bar under
-\InsetSpace ~
 D
 \bar default
 ocumento
@@ -5993,9 +6017,12 @@ Si tienes que poner instrucciones especiales en el preámbulo de un archivo
 \bar under
 F
 \bar default
-ormato\InsetSpace ~
-\SpecialChar \menuseparator
-\InsetSpace ~
+ormato\SpecialChar \menuseparator
+
+\bar under
+D
+\bar default
+ocumento\SpecialChar \menuseparator
 Preámbulo
 \family default
  y escribe en la ventana que aparecerá.

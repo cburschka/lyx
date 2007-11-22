@@ -1,4 +1,4 @@
-#LyX 1.5.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 276
 \begin_document
 \begin_header
@@ -55,7 +55,7 @@
   {LyX }}
 \end_preamble
 \language english
-\inputencoding latin1
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -64,7 +64,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-\graphics none
+\graphics default
 \paperfontsize default
 \spacing single
 \papersize default
@@ -218,7 +218,7 @@ This tutorial consists of examples and exercises.
  To get the most out of this document, you should read through the document,
  typing all the silly little things we're telling you to type and trying
  out all of the exercises to see if you get them right.
- For convenience, you might want to print out the PostScript® version of
+ For convenience, you might want to print out the PostScript version of
  this document.
 \end_layout
 
@@ -445,7 +445,7 @@ dvips
 \family typewriter
 dvi
 \family default
- documents to PostScript® documents, and a working printer.
+ documents to PostScript documents, and a working printer.
  This is a lot to assume.
  If any of this is not true, you (or a friendly system administrator) will
  need to set up your system.
@@ -1597,7 +1597,6 @@ bullet
 \begin_inset Quotes erd
 \end_inset
 
- (actually, an asterisk, which will be converted to a round circle on output)
  on the line.
  Type in your reasons: 
 \end_layout
@@ -2718,35 +2717,20 @@ Footnotes and Margin Notes
 \end_layout
 
 \begin_layout Standard
-Footnotes can be added using the 
-\family sans
-Insert\InsetSpace ~
-Footnote
-\family default
- button in the toolbar
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-The button shows an arrow pointing to red text, which is just below some
- black text.
-\end_layout
+Footnotes can be added using the toolbar button 
+\begin_inset Graphics
+	filename ../images/footnote-insert.png
+	scale 85
+	scaleBeforeRotation
 
 \end_inset
 
- or 
+ or the menu 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-
-\bar under
-F
-\bar default
-ootnote
+Insert\SpecialChar \menuseparator
+Footnote
 \family default
-\SpecialChar \@.
+.
  Click at the end of the word 
 \begin_inset Quotes eld
 \end_inset
@@ -2755,11 +2739,14 @@ LyX
 \begin_inset Quotes erd
 \end_inset
 
- somewhere in your document and hit the 
-\family sans
-Insert\InsetSpace ~
-Footnote
-\family default
+ somewhere in your document and click the 
+\begin_inset Graphics
+	filename ../images/footnote-insert.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
  button.
  A footnote box appears where you can enter the text of the footnote.
  LyX should place the cursor at the beginning of the footnote box.
@@ -2840,10 +2827,13 @@ Paste
  it.
  In addition, you can change regular text to a footnote, by selecting it
  and hitting the 
-\family sans
-Insert\InsetSpace ~
-Footnote
-\family default
+\begin_inset Graphics
+	filename ../images/footnote-insert.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
  button; change a footnote to regular text by hitting the 
 \family sans
 Backspace
@@ -2857,26 +2847,20 @@ Delete
 \end_layout
 
 \begin_layout Standard
-Margin notes can be added using the toolbar button (the button shows an
- arrow pointing to red text next to (i.e., in the margin of) black text, and
- should be next to the 
+Margin notes can be added using the menu 
 \family sans
-Insert\InsetSpace ~
-Footnote
-\family default
- button in the toolbar.) or 
-\family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-arginal\InsetSpace ~
+Insert\SpecialChar \menuseparator
+Marginal\InsetSpace ~
 Note
 \family default
+ or the toolbar button 
+\begin_inset Graphics
+	filename ../images/marginalnote-insert.png
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
 \SpecialChar \@.
  Margin notes are like footnotes, except that: 
 \end_layout
@@ -3573,84 +3557,97 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-The 
-\family sans
-Math Panel
+The Math Toolbar
 \end_layout
 
 \begin_layout Standard
 The 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
  is a convenient way to enter symbols or to perform many complicated Mathed
  functions.
  Many of these functions can be accomplished from the keyboard or the 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-ath
+Edit\SpecialChar \menuseparator
+Math
 \family default
  or 
 \family sans
-\bar under
-I
-\bar default
-nsert
-\bar under
-\SpecialChar \menuseparator
-
-\bar default
-Mat
-\bar under
-h
+Insert\SpecialChar \menuseparator
+Math
 \family default
-\bar default
  menus.
  However, we're going to concentrate on using the 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbars
 \family default
 , just to let you know what's out there; you can learn keyboard shortcuts
  later, from other manuals.
- So open it using 
-\family sans
-\bar under
-I
-\bar default
-nsert
-\bar under
-\SpecialChar \menuseparator
-
-\bar default
-Mat
-\bar under
-h
-\bar default
-\SpecialChar \menuseparator
-Math\InsetSpace ~
-Pane
-\bar under
-l
-\family default
-\bar default
- now and leave it open while reading this section.
 \end_layout
 
 \begin_layout Standard
-Right-clicking on a formula will open the 
+The 
 \family sans
-Math Panel
+math toolbar
 \family default
- for you.
+ can be turned on in the menu 
+\family sans
+View\SpecialChar \menuseparator
+Toolbars
+\family default
+.
+ When you click there on 
+\begin_inset Quotes eld
+\end_inset
+
+Math
+\begin_inset Quotes erd
+\end_inset
+
+ the toolbar will be shown permanently at the bottom; this state is visualized
+ in the 
+\family sans
+Toolbars
+\family default
+ menu with a checkmark.
+ When you click in this state again on 
+\begin_inset Quotes eld
+\end_inset
+
+Math
+\begin_inset Quotes erd
+\end_inset
+
+ in the 
+\family sans
+Toolbars
+\family default
+ menu, the 
+\family sans
+math toolbar
+\family default
+ is only shown when the cursor is within a formula; this state is visualized
+ by the renaming of the menu entry from 
+\begin_inset Quotes eld
+\end_inset
+
+Math
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Math\InsetSpace ~
+(auto)
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -3661,7 +3658,7 @@ Greek and symbols
 The 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
  which allow you to choose from a large array of symbols used in math: various
  arrows, relations, operators, and sums and integrals.
@@ -3714,7 +3711,7 @@ Accenting a character (
 \family sans
 Decoration
 \family default
- types are available from the panel.
+ types are available from the toolbar.
  Click on a decoration, and LyX will insert that decoration with an insertion
  point under (or over) it.
  Just type what you want in the insertion point.
@@ -3780,7 +3777,7 @@ You can also put delimiters or a square root sign or a decoration on already
  on the button you want from the 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
 .
  Try using this to change Newton's second law from scalar to vector form
@@ -3810,7 +3807,7 @@ Fraction
  button in the 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
 , which shows a fraction with blue squares in the numerator and the denominator.
  LyX writes two insertion points in a fraction.
@@ -3958,7 +3955,7 @@ Functions
  list in the 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
 .
  The word 
@@ -4056,7 +4053,7 @@ Matrix
  button in the 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
 .
  The dialog has two sliding bars which allow you to choose how many rows
@@ -4192,7 +4189,7 @@ Display
  button in the 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
 , which represents a couple lines of text before and after a centered blue
  box.
@@ -4408,8 +4405,7 @@ Settings
 \end_layout
 
 \begin_layout Itemize
-LyX also supports including pictures in a number of formats (including JPEG
- and other bitmap formats, PostScript® and raw LaTeX) within documents.
+LyX also supports including pictures in any format within documents.
  (You guessed it: 
 \family sans
 \bar under
@@ -4423,9 +4419,9 @@ G
 raphics
 \family default
 .
- Then click on the figure to choose the file to include, rotate or scale
- it, etc.) Tables and figures can have captions, and LyX will automatically
- generate lists of figures and/or tables.
+ Then browse for the figure file, rotate or scale it, etc.) Tables and figures
+ can have captions, and LyX will automatically generate lists of figures
+ and/or tables.
 \end_layout
 
 \begin_layout Itemize
@@ -4666,7 +4662,7 @@ gamma
  This may be faster than using the 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
 , and will be especially convenient for experienced LaTeX users.
 \end_layout
@@ -4889,6 +4885,11 @@ If you have special commands to put in the preamble of a LaTeX file, you
 D
 \bar default
 ocument\SpecialChar \menuseparator
+
+\bar under
+S
+\bar default
+ettings\SpecialChar \menuseparator
 
 \bar under
 L
