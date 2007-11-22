@@ -46,10 +46,10 @@ AM_CPPFLAGS += \
 	$(QT4_INCLUDES) $(BOOST_INCLUDES)
 
 SOURCEFILES = \
-	../ButtonPolicy.cpp \
-	../ButtonPolicy.h \
-	../Dialog.cpp \
-	../Dialog.h \
+	ButtonPolicy.cpp \
+	ButtonPolicy.h \
+	Dialog.cpp \
+	Dialog.h \
 	Resources.cpp \
 	Action.cpp \
 	BulletsModule.cpp \
