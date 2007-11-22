@@ -42,11 +42,9 @@ namespace lyx {
 namespace graphics {
 
 /// Access to this class is through this static method.
-Image::ImagePtr GuiImage::newImage()
+Image * GuiImage::newImage()
 {
-	ImagePtr ptr;
-	ptr.reset(new GuiImage);
-	return ptr;
+	return new GuiImage;
 }
 
 

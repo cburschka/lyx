@@ -25,7 +25,7 @@ class GuiImage : public Image
 {
 public:
 	/// Access to this class is through this static method.
-	static ImagePtr newImage();
+	static Image * newImage();
 
 	/// Return the list of loadable formats.
 	static FormatList loadableFormats();
