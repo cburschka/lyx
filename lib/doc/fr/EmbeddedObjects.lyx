@@ -22302,6 +22302,50 @@ reference "sec:Boîtes-colorées"
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\lang english
+When you use the toolbar button 
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX1.5.x/lib/images/note-insert.xpm
+	scale 85
+	scaleBeforeRotation
+
+\end_inset
+
+ to insert notes, a 
+\family sans
+LyX\InsetSpace ~
+Note
+\family default
+ is inserted.
+ You can switch between the five note types by right-clicking on the note-box.
+ 
+\family roman
+\series medium
+\bar no
+If you want to turn existing text into a note, mark it and click on the
+ note
+\family default
+\series default
+\bar default
+ toolbar 
+\family roman
+\series medium
+\bar no
+button
+\family default
+\series default
+\bar default
+.
+ To change a note to text, press the backspace key when the cursor is in
+ the first position of a note, or press the deletey key when the cursor
+ is in the very last position of the note, respectively.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Vous pouvez changer la couleur du texte des notes grisées en mettant les
  commandes suivantes dans le préambule :
 \end_layout
@@ -22719,6 +22763,35 @@ de\InsetSpace ~
 Page
 \family default
  de la barre d'outils.
+ 
+\lang english
+To change a 
+\family roman
+\series medium
+\bar no
+footnote
+\family default
+\series default
+\bar default
+ to text, press the Backspace key when the cursor is in the first position
+ of a 
+\family roman
+\series medium
+\bar no
+footnote
+\family default
+\series default
+\bar default
+, or press the Delete key when the cursor is in the very last position of
+ the 
+\family roman
+\series medium
+\bar no
+footnote
+\family default
+\series default
+\bar default
+, respectively.
 \end_layout
 
 \begin_layout Standard
