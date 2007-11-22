@@ -820,7 +820,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		bool const soa = oldpar.params().startOfAppendix();
 		plist.erase(boost::next(plist.begin(), old.pit()));
 		// do not lose start of appendix marker (bug 4212)
-		if (soa && old.pit() < plist.size())
+		if (soa && old.pit() < pit_type(plist.size()))
 			plist[old.pit()].params().startOfAppendix(true);
 
 		// see #warning (FIXME?) above 
