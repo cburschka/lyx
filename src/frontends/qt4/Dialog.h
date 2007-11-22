@@ -62,16 +62,6 @@ public:
 
 	virtual void hide() {}
 
-	// Override in GuiDialog
-	virtual void slotOK() {}
-	virtual void slotApply() {}
-	virtual void slotRestore() {}
-	virtual void slotClose() {}
-
-	/** This function is called, for example, if the GUI colours
-	 *  have been changed.
-	 */
-	virtual void redraw() {}
 	//@}
 
 	/** Check whether we may apply our data.
@@ -106,9 +96,6 @@ public:
 	/// Hide the dialog from sight
 	virtual void hideView() = 0;
 
-	/// Redraw the dialog (e.g. if the colors have been remapped).
-	virtual void redrawView() = 0;
-
 	/// Create the dialog if necessary, update it and display it.
 	virtual void showView() = 0;
 
@@ -118,13 +105,6 @@ public:
 	/// \return true if the dialog is visible.
 	virtual bool isVisibleView() const = 0;
 	//@}
-
-	/** Defaults to nothing. Can be used by the Controller, however, to
-	 *  indicate to the View that something has changed and that the
-	 *  dialog therefore needs updating.
-	 *  \param id identifies what should be updated.
-	 */
-	virtual void partialUpdateView(int /*id*/) = 0;
 
 	///
 	virtual std::string name() const = 0;

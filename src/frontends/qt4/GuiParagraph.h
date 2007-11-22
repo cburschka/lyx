@@ -82,14 +82,11 @@ private:
 	}
 	bool isVisibleView() const { return QDialog::isVisible(); }
 	void checkStatus() { updateView(); }
-	void redraw() { redrawView(); }
-	void redrawView() {}
 	void updateData(std::string const & data)
 	{
 		initialiseParams(data);
 		updateView();
 	}
-	void partialUpdateView(int /*id*/) {}
 	std::string name() const { return "paragraph"; }
 
 private:

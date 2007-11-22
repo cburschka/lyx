@@ -73,8 +73,6 @@ public:
 	}
 	bool isVisibleView() const { return QDialog::isVisible(); }
 	void checkStatus() { updateView(); }
-	void redraw() { redrawView(); }
-	void redrawView() {}
 	void updateData(std::string const & data)
 	{
 		initialiseParams(data);
@@ -84,7 +82,6 @@ public:
 	{
 		widget_->updateView();
 	}
-	void partialUpdateView(int /*id*/) {}
 	std::string name() const { return name_; }
 	//@}
 private:

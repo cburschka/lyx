@@ -12,8 +12,8 @@
 #ifndef BUTTONCONTROLLER_H
 #define BUTTONCONTROLLER_H
 
-#include <list>
 #include "ButtonPolicy.h"
+
 #include "gettext.h"
 
 #include <list>

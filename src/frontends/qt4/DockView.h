@@ -59,15 +59,12 @@ public:
 	}
 	bool isVisibleView() const { return QDockWidget::isVisible(); }
 	void checkStatus() { updateView(); }
-	void redraw() { redrawView(); }
-	void redrawView() {}
 	void updateData(std::string const & data)
 	{
 		initialiseParams(data);
 		updateView();
 	}
 	bool isClosing() const { return false; }
-	void partialUpdateView(int /*id*/) {}
 	std::string name() const { return name_; }
 	//@}
 private:

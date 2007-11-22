@@ -40,8 +40,6 @@ public:
 	void applyView();
 	/// Hide the dialog from sight
 	void hideView();
-	/// Redraw the dialog (e.g. if the colors have been remapped).
-	void redrawView() {}
 	/// Create the dialog if necessary, update it and display it.
 	void showView();
 	/// \return true if the dialog is visible.

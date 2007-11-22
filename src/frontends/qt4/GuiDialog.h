@@ -108,10 +108,6 @@ public:
 
 	void hide();
 
-	/** This function is called, for example, if the GUI colours
-	 *  have been changed.
-	 */
-	void redraw() { redrawView(); }
 	//@}
 
 	/** When applying, it's useful to know whether the dialog is about
@@ -119,18 +115,10 @@ public:
 	 */
 	bool isClosing() const { return is_closing_; }
 
-	/** Defaults to nothing. Can be used by the Controller, however, to
-	 *  indicate to the View that something has changed and that the
-	 *  dialog therefore needs updating.
-	 *  \param id identifies what should be updated.
-	 */
-	virtual void partialUpdateView(int /*id*/) {}
-
 	///
 	std::string name() const { return name_; }
 
 	void apply();
-	void redrawView() {}
 
 	/// Update the display of the dialog whilst it is still visible.
 	virtual void updateView();
