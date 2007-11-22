@@ -105,7 +105,7 @@ Das LyX-Tutorium
 \begin_layout Author
 vom LyX-Team
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Deutsche Übersetzung 
@@ -461,7 +461,7 @@ Tutorium
  Auf diese Weise können Sie sie einfach lesen, während Sie Ihren eigenen
  Text schreiben.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Außerdem bieten beide Texte gute Beispiele, wie man die verschiedenen Fähigkeite
@@ -512,20 +512,10 @@ In diesem
 Tutorium
 \emph default
  gehen wir davon aus, dass Sie eine voll funktionsfähige LyX-Version besitzen,
- das heißt LyX, LaTeX, 
-\family typewriter
-xdvi
-\family default
- (oder ein anderes Programm, um DVI anzuzeigen), 
-\family typewriter
-dvips
-\family default
- (oder ein entsprechendes Programm zur Umwandlung von DVI in PostScript)
- und einen funktionierenden Drucker.
- Das sind eine ganze Menge Voraussetzungen.
- Ist eine davon nicht erfüllt, müssen Sie (oder ein freundlicher Administrator)
- Ihr System richtig konfigurieren.
- Ein paar Tipps dazu finden Sie in den anderen Hilfetexten.
+ das heißt LyX, LaTeX, ein Programm zum Anzeigen von DVI- und PDF-Dokumenten.
+ Diese Voraussetzungen sollten auf jeder Linux und BSD-Distribution erfüllt
+ sein.
+ Bei Windows wird dies durch das LyX-Installationsprogramm sichergestellt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -577,26 +567,13 @@ Die Beispieldateien finden Sie im Verzeichnis
 \family typewriter
 examples/de
 \family default
- des systemweiten LyX-Verzeichnis\SpecialChar \-
-ses.
- Sie finden es im Menü 
-\family sans
-Datei\SpecialChar \menuseparator
-Öffnen\SpecialChar \ldots{}
-,
-\family default
- wenn Sie auf den Knopf 
-\family sans
-Beispiele
-\family default
- klicken.
+ des LyX-Installationsordners.
  Laden Sie die nicht modifizierte Datei und verwenden Sie 
 \family sans
 Datei\SpecialChar \menuseparator
 Speichern\InsetSpace ~
 unter
 \family default
-\SpecialChar \ldots{}
 , um eine editierbare Kopie in Ihrem privaten LyX-Verzeichnis anzulegen.
  Sie können die Auswirkungen Ihrer Änderungen in der DVI-Vorschau betrachten.
 \end_layout
