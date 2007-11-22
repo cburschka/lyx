@@ -108,20 +108,13 @@ using support::trim;
 
 namespace {
 
-int const statusbar_timer_value = 3000;
-
 class BackgroundWidget : public QWidget
 {
 public:
 	BackgroundWidget(QString const & file, QString const & text)
+		: splash_(file)
 	{
-		splash_ = new QPixmap(file);
-		if (!splash_) {
-			lyxerr << "could not load splash screen: '" << fromqstr(file) << "'" << endl;
-			return;
-		}
-
-		QPainter pain(splash_);
+		QPainter pain(&splash_);
 		pain.setPen(QColor(255, 255, 0));
 		QFont font;
 		// The font used to display the version info
@@ -134,17 +127,14 @@ public:
 
 	void paintEvent(QPaintEvent *)
 	{
-		if (!splash_)
-			return;
-
-		int x = (width() - splash_->width()) / 2;
-		int y = (height() - splash_->height()) / 2;
+		int x = (width() - splash_.width()) / 2;
+		int y = (height() - splash_.height()) / 2;
 		QPainter pain(this);
-		pain.drawPixmap(x, y, *splash_);
+		pain.drawPixmap(x, y, splash_);
 	}
 
 private:
-	QPixmap * splash_;
+	QPixmap splash_;
 };
 
 } // namespace anon
@@ -156,8 +146,7 @@ struct GuiView::GuiViewPrivate
 {
 	GuiViewPrivate()
 		: current_work_area_(0), layout_(0),
-		autosave_timeout_(new Timeout(5000)), quitting_by_menu_(false),
-		in_show_(false)
+		quitting_by_menu_(false), autosave_timeout_(5000), in_show_(false)
 	{
 		// hardcode here the platform specific icon size
 		smallIconSize = 14;	// scaling problems
@@ -179,7 +168,6 @@ struct GuiView::GuiViewPrivate
 		delete stack_widget_;
 		delete menubar_;
 		delete toolbars_;
-		delete autosave_timeout_;
 	}
 
 	QMenu * toolBarPopup(GuiView * parent)
@@ -295,7 +283,7 @@ public:
 	/// are we quitting by the menu?
 	bool quitting_by_menu_;
 	/// auto-saving of buffers
-	Timeout * const autosave_timeout_;
+	Timeout autosave_timeout_;
 	///
 	/// flag against a race condition due to multiclicks in Qt frontend,
 	/// see bug #1119
@@ -314,11 +302,11 @@ GuiView::GuiView(int id)
 
 	// Start autosave timer
 	if (lyxrc.autosave) {
-		d.autosave_timeout_->timeout.connect(boost::bind(&GuiView::autoSave, this));
-		d.autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
-		d.autosave_timeout_->start();
+		d.autosave_timeout_.timeout.connect(boost::bind(&GuiView::autoSave, this));
+		d.autosave_timeout_.setTimeout(lyxrc.autosave * 1000);
+		d.autosave_timeout_.start();
 	}
-	QObject::connect(&d.statusbar_timer_, SIGNAL(timeout()),
+	connect(&d.statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(clearMessage()));
 
 	// Qt bug? signal lastWindowClosed does not work
@@ -485,7 +473,7 @@ void GuiView::message(docstring const & str)
 {
 	statusBar()->showMessage(toqstr(str));
 	d.statusbar_timer_.stop();
-	d.statusbar_timer_.start(statusbar_timer_value);
+	d.statusbar_timer_.start(3000);
 }
 
 
@@ -941,7 +929,7 @@ void GuiView::autoSave()
 void GuiView::resetAutosaveTimers()
 {
 	if (lyxrc.autosave)
-		d.autosave_timeout_->restart();
+		d.autosave_timeout_.restart();
 }
 
 

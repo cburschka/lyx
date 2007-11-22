@@ -17,8 +17,7 @@
 
 #include "frontends/LyXView.h"
 
-#include <string>
-
+#include "support/strfwd.h"
 
 #include <QMainWindow>
 
