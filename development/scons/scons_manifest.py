@@ -679,7 +679,6 @@ src_frontends_header_files = Split('''
 
 
 src_frontends_files = Split('''
-    Painter.cpp
     WorkAreaManager.cpp
 ''')
 
