@@ -38,13 +38,6 @@ public:
 	bool running() const;
 	///get the and only instance of the class
 	static LoaderQueue & get();
-	/** Adjusts the queue priority:
-	 *  numimages is the number of images loaded in a particular call
-	 *  from the timer.
-	 *  millisecs is the time interval between calls.
-	 *  Higher numimages, lower millisecs means higher priority.
-	 */
-	static void setPriority(int numimages, int millisecs);
 private:
 	/// This class is a singleton class... use LoaderQueue::get() instead
 	LoaderQueue();

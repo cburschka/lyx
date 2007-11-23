@@ -25,8 +25,6 @@
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 
-#include "graphics/LoaderQueue.h"
-
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
@@ -186,8 +184,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// needs to be done before reading lyxrc
 	QWidget w;
 	lyxrc.dpi = (w.logicalDpiX() + w.logicalDpiY()) / 2;
-
-	LoaderQueue::setPriority(10,100);
 
 	guiApp = this;
 

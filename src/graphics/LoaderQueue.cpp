@@ -23,9 +23,11 @@ using std::list;
 namespace lyx {
 namespace graphics {
 
-static int s_numimages_ = 5;
-static int s_millisecs_ = 500;
+//static int s_numimages_ = 5;
+//static int s_millisecs_ = 500;
 
+static int s_numimages_ = 10;
+static int s_millisecs_ = 500;
 
 LoaderQueue & LoaderQueue::get()
 {
@@ -51,16 +53,6 @@ void LoaderQueue::loadNext()
 	} else {
 		stopLoader();
 	}
-}
-
-
-void LoaderQueue::setPriority(int numimages , int millisecs)
-{
-	s_numimages_ = numimages;
-	s_millisecs_ = millisecs;
-	LYXERR(Debug::GRAPHICS, "LoaderQueue:  priority set to "
-				<< s_numimages_ << " images at a time, "
-				<< s_millisecs_ << " milliseconds between calls");
 }
 
 
