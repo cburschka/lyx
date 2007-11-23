@@ -2019,10 +2019,10 @@ docstring BufferView::contentsOfPlaintextFile(string const & f,
 		if (result.first == FileDialog::Later)
 			return docstring();
 
-		fname = makeAbsPath(to_utf8(result.second));
-
-		if (fname.empty())
+		if (result.second.empty())
 			return docstring();
+
+		fname = makeAbsPath(to_utf8(result.second));
 	}
 
 	if (!fname.isReadable()) {
