@@ -105,7 +105,7 @@ static TranslatorMap const build_translator()
 		InsetName("listings", LISTINGS_CODE),
 		InsetName("info", INFO_CODE),
 		InsetName("collapsable", COLLAPSABLE_CODE),
-		InsetName("pagebreak", PAGEBREAK_CODE),
+		InsetName("newpage", NEWPAGE_CODE),
 	};
 
 	std::size_t const insetnames_size =

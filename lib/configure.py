@@ -198,17 +198,14 @@ def checkDTLtools():
 
 def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
-    path, LATEX = checkProg('a Latex2e program', ['platex $$i', 'latex $$i', 'latex2e $$i'])
-    path, PPLATEX = checkProg('a DVI postprocessing program', ['pplatex $$i'])
-    # use LATEX to convert from latex to dvi if PPLATEX is not available    
-    if PPLATEX == '':
-        PPLATEX = LATEX
     if dtl_tools:
         # Windows only: DraftDVI
-        addToRC(r'''\converter latex      dvi2       "%s"	"latex"
-\converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""''' % PPLATEX)
+        converter_entry = r'''\converter latex      dvi2       "%%"	"latex"
+\converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""'''
     else:
-        addToRC(r'\converter latex      dvi        "%s"	"latex"' % PPLATEX)
+        converter_entry = r'\converter latex      dvi        "%%"	"latex"'
+    path, LATEX = checkProg('a Latex2e program', ['pplatex $$i', 'platex $$i', 'latex $$i', 'latex2e $$i'],
+        rc_entry = [converter_entry])
     # no latex
     if LATEX != '':
         # Check if latex is usable
@@ -854,7 +851,4 @@ Options:
         bool_docbook, bool_linuxdoc)
     checkModulesConfig() #lyx_check_config and LATEX != '')
     removeTempFiles()
-    # The return error code can be 256. Because most systems expect an error code
-    # in the range 0-127, 256 can be interpretted as 'success'. Because we expect
-    # a None for success, 'ret is not None' is used to exit.
-    sys.exit(ret is not None)
+    sys.exit(ret)

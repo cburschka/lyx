@@ -206,6 +206,7 @@ void LyXAction::init()
 		{ LFUN_BIBTEX_DATABASE_ADD, "bibtex-database-add", Noop, Edit },
 		{ LFUN_BIBTEX_DATABASE_DEL, "bibtex-database-del", Noop, Edit },
 		{ LFUN_LINE_INSERT, "line-insert", Noop, Edit },
+		{ LFUN_NEWPAGE_INSERT, "newpage-insert", Noop, Edit },
 		{ LFUN_PAGEBREAK_INSERT, "pagebreak-insert", Noop, Edit },
 		{ LFUN_LANGUAGE, "language", Noop, Edit },
 		{ LFUN_LAYOUT, "layout", Noop, Layout },

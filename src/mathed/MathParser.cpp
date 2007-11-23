@@ -112,7 +112,7 @@ bool stared(docstring const & s)
  * environments like "equation" that have a fixed number of rows.
  */
 bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
-	    docstring const & vskip, bool allow_pagebreak = true)
+	    docstring const & vskip, bool allow_newpage_ = true)
 {
 	++cellrow;
 	if (cellrow == grid.nrows()) {
@@ -129,14 +129,14 @@ bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
 			lyxerr << "ignoring extra row";
 			if (!vskip.empty())
 				lyxerr << " with extra space " << to_utf8(vskip);
-			if (!allow_pagebreak)
+			if (!allow_newpage_)
 				lyxerr << " with no page break allowed";
 			lyxerr << '.' << endl;
 			return false;
 		}
 	}
 	grid.vcrskip(Length(to_utf8(vskip)), cellrow - 1);
-	grid.rowinfo(cellrow - 1).allow_pagebreak_ = allow_pagebreak;
+	grid.rowinfo(cellrow - 1).allow_newpage_ = allow_newpage_;
 	return true;
 }
 

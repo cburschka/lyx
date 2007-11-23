@@ -63,7 +63,7 @@ public:
 		/// extra distance between lines
 		int skip_;
 		/// Is a page break allowed after this row?
-		bool allow_pagebreak_;
+		bool allow_newpage_;
 	};
 
 	// additional per-row information

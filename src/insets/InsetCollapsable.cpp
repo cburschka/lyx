@@ -691,6 +691,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LABEL_INSERT:
 	case LFUN_LIGATURE_BREAK_INSERT:
 	case LFUN_LINE_INSERT:
+	case LFUN_NEWPAGE_INSERT:
 	case LFUN_PAGEBREAK_INSERT:
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH:

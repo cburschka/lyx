@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file InsetPagebreak.h
+ * \file InsetNewpage.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef INSET_PAGEBREAK_H
-#define INSET_PAGEBREAK_H
+#ifndef INSET_NEWPAGE_H
+#define INSET_NEWPAGE_H
 
 
 #include "Inset.h"
@@ -19,11 +19,11 @@
 
 namespace lyx {
 
-class InsetPagebreak : public Inset {
+class InsetNewpage : public Inset {
 public:
-	InsetPagebreak() {}
+	InsetNewpage() {}
 
-	InsetCode lyxCode() const { return PAGEBREAK_CODE; }
+	InsetCode lyxCode() const { return NEWPAGE_CODE; }
 
 	void metrics(MetricsInfo &, Dimension &) const;
 
@@ -46,9 +46,25 @@ public:
 
 	DisplayType display() const { return AlignCenter; }
 
-	virtual docstring insetLabel() const { return _("Page Break"); }
+	virtual docstring insetLabel() const { return _("New Page"); }
 
 	virtual std::string getCmdName() const { return "\\newpage"; }
+
+private:
+	virtual Inset * clone() const
+	{
+		return new InsetNewpage;
+	}
+};
+
+
+class InsetPagebreak : public InsetNewpage {
+public:
+	InsetPagebreak() {}
+
+	docstring insetLabel() const { return _("Page Break"); }
+
+	std::string getCmdName() const { return "\\pagebreak"; }
 
 private:
 	virtual Inset * clone() const
@@ -58,7 +74,7 @@ private:
 };
 
 
-class InsetClearPage : public InsetPagebreak {
+class InsetClearPage : public InsetNewpage {
 public:
 	InsetClearPage() {}
 
@@ -74,7 +90,7 @@ private:
 };
 
 
-class InsetClearDoublePage : public InsetPagebreak {
+class InsetClearDoublePage : public InsetNewpage {
 public:
 	InsetClearDoublePage() {}
 
@@ -91,4 +107,4 @@ private:
 
 } // namespace lyx
 
-#endif // INSET_PAGEBREAK_H
+#endif // INSET_NEWPAGE_H

@@ -58,7 +58,7 @@
 #include "insets/InsetHFill.h"
 #include "insets/InsetLine.h"
 #include "insets/InsetNewline.h"
-#include "insets/InsetPagebreak.h"
+#include "insets/InsetNewpage.h"
 #include "insets/InsetOptArg.h"
 #include "insets/InsetSpace.h"
 #include "insets/InsetSpecialChar.h"
@@ -245,6 +245,8 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 	} else if (token == "\\lyxline") {
 		par.insertInset(par.size(), new InsetLine, font, change);
 	} else if (token == "\\newpage") {
+		par.insertInset(par.size(), new InsetNewpage, font, change);
+	} else if (token == "\\pagebreak") {
 		par.insertInset(par.size(), new InsetPagebreak, font, change);
 	} else if (token == "\\clearpage") {
 		par.insertInset(par.size(), new InsetClearPage, font, change);

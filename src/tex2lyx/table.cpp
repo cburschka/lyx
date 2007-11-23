@@ -87,7 +87,7 @@ public:
 	/// These are for longtabulars only
 	/// row type (head, foot, firsthead etc.)
 	LTRowType type;
-	/// row for a pagebreak
+	/// row for a newpage
 	bool newpage;
 };
 

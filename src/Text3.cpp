@@ -1384,6 +1384,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_TOC_INSERT:
 	case LFUN_HFILL_INSERT:
 	case LFUN_LINE_INSERT:
+	case LFUN_NEWPAGE_INSERT:
 	case LFUN_PAGEBREAK_INSERT:
 	case LFUN_CLEARPAGE_INSERT:
 	case LFUN_CLEARDOUBLEPAGE_INSERT:
@@ -2110,6 +2111,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_DATE_INSERT:
 	case LFUN_SELF_INSERT:
 	case LFUN_LINE_INSERT:
+	case LFUN_NEWPAGE_INSERT:
 	case LFUN_PAGEBREAK_INSERT:
 	case LFUN_CLEARPAGE_INSERT:
 	case LFUN_CLEARDOUBLEPAGE_INSERT:

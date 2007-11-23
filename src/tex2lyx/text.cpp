@@ -2290,10 +2290,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "newpage" ||
-			 t.cs() == "clearpage" ||
-			 t.cs() == "cleardoublepage") {
+			t.cs() == "pagebreak" ||
+			t.cs() == "clearpage" ||
+			t.cs() == "cleardoublepage") {
 			context.check_layout(os);
-			// FIXME: what about \\pagebreak?
 			os << "\n\\" << t.cs() << "\n";
 			skip_braces(p); // eat {}
 		}

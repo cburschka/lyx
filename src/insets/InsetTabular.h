@@ -539,7 +539,7 @@ public:
 		bool endfoot;
 		/// row of endlastfoot
 		bool endlastfoot;
-		/// row for a pagebreak
+		/// row for a newpage
 		bool newpage;
 	};
 	///

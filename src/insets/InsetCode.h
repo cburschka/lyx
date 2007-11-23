@@ -118,7 +118,7 @@ enum InsetCode {
 	///
 	NOMENCL_PRINT_CODE,
 	///
-	PAGEBREAK_CODE,
+	NEWPAGE_CODE,
 	///
 	LISTINGS_CODE,
 	///

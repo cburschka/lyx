@@ -186,7 +186,7 @@ bool InsetCaption::insetAllowed(InsetCode code) const
 	case TABULAR_CODE:
 	case WRAP_CODE:
 	case CAPTION_CODE:
-	case PAGEBREAK_CODE:
+	case NEWPAGE_CODE:
 		return false;
 	default:
 		return InsetText::insetAllowed(code);

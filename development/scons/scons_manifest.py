@@ -1012,10 +1012,10 @@ src_insets_header_files = Split('''
     InsetListingsParams.h
     InsetMarginal.h
     InsetNewline.h
+    InsetNewpage.h
     InsetNomencl.h
     InsetNote.h
     InsetOptArg.h
-    InsetPagebreak.h
     InsetQuotes.h
     InsetRef.h
     InsetSpace.h
@@ -1068,10 +1068,10 @@ src_insets_files = Split('''
     InsetListingsParams.cpp
     InsetMarginal.cpp
     InsetNewline.cpp
+    InsetNewpage.cpp
     InsetNomencl.cpp
     InsetNote.cpp
     InsetOptArg.cpp
-    InsetPagebreak.cpp
     InsetQuotes.cpp
     InsetRef.cpp
     InsetSpace.cpp

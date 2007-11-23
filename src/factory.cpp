@@ -46,7 +46,7 @@
 #include "insets/InsetBox.h"
 #include "insets/InsetBranch.h"
 #include "insets/InsetOptArg.h"
-#include "insets/InsetPagebreak.h"
+#include "insets/InsetNewpage.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetSpace.h"
 #include "insets/InsetTabular.h"
@@ -92,6 +92,9 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 
 		case LFUN_LINE_INSERT:
 			return new InsetLine;
+
+		case LFUN_NEWPAGE_INSERT:
+			return new InsetNewpage;
 
 		case LFUN_PAGEBREAK_INSERT:
 			return new InsetPagebreak;

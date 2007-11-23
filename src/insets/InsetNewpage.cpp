@@ -1,5 +1,5 @@
 /**
- * \file InsetPagebreak.cpp
+ * \file InsetNewpage.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "InsetPagebreak.h"
+#include "InsetNewpage.h"
 
 #include "debug.h"
 #include "gettext.h"
@@ -30,19 +30,19 @@ namespace lyx {
 using frontend::Painter;
 
 
-void InsetPagebreak::read(Buffer const &, Lexer &)
+void InsetNewpage::read(Buffer const &, Lexer &)
 {
 	/* Nothing to read */
 }
 
 
-void InsetPagebreak::write(Buffer const &, std::ostream & os) const
+void InsetNewpage::write(Buffer const &, std::ostream & os) const
 {
 	os << "\n" << getCmdName() << '\n';
 }
 
 
-void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetNewpage::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = defaultRowHeight();
 	dim.des = defaultRowHeight();
@@ -52,7 +52,7 @@ void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
+void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 {
 	FontInfo font;
 	font.setColor(Color_pagebreak);
@@ -78,7 +78,7 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetPagebreak::latex(Buffer const &, odocstream & os,
+int InsetNewpage::latex(Buffer const &, odocstream & os,
 			  OutputParams const &) const
 {
 	os << from_ascii(getCmdName()) << "{}";
@@ -86,7 +86,7 @@ int InsetPagebreak::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetPagebreak::plaintext(Buffer const &, odocstream & os,
+int InsetNewpage::plaintext(Buffer const &, odocstream & os,
 			      OutputParams const &) const
 {
 	os << '\n';
@@ -94,7 +94,7 @@ int InsetPagebreak::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetPagebreak::docbook(Buffer const &, odocstream & os,
+int InsetNewpage::docbook(Buffer const &, odocstream & os,
 			    OutputParams const &) const
 {
 	os << '\n';

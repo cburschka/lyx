@@ -788,6 +788,17 @@ def revert_hyperlinktype(document):
       i = i + 1
 
 
+def revert_pagebreak(document):
+    'Reverts pagebreak to newpage'
+    i = 0
+    while True:
+      i = find_token(document.body, "\\pagebreak", i)
+      if i == -1:
+          return
+      document.body[i] = document.body[i].replace("\\pagebreak", "\\newpage")
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -815,10 +826,12 @@ convert = [[277, [fix_wrong_tables]],
            [296, [convert_include]],
            [297, [convert_usorbian]],
            [298, []],
-           [299, []]
+           [299, []],
+           [300, []]
           ]
 
-revert =  [[298, [revert_hyperlinktype]],
+revert =  [[299, [revert_pagebreak]],
+           [298, [revert_hyperlinktype]],
            [297, [revert_macro_optional_params]],
            [296, [revert_albanian, revert_lowersorbian, revert_uppersorbian]],
            [295, [revert_include]],

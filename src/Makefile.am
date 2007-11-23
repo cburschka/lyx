@@ -525,10 +525,10 @@ SOURCEFILESINSETS = \
 	insets/InsetListingsParams.cpp \
 	insets/InsetMarginal.cpp \
 	insets/InsetNewline.cpp \
+	insets/InsetNewpage.cpp \
 	insets/InsetNomencl.cpp \
 	insets/InsetNote.cpp \
 	insets/InsetOptArg.cpp \
-	insets/InsetPagebreak.cpp \
 	insets/InsetQuotes.cpp \
 	insets/InsetRef.cpp \
 	insets/InsetSpace.cpp \
@@ -581,10 +581,10 @@ HEADERFILESINSETS = \
 	insets/InsetListingsParams.h \
 	insets/InsetMarginal.h \
 	insets/InsetNewline.h \
+	insets/InsetNewpage.h \
 	insets/InsetNomencl.h \
 	insets/InsetNote.h \
 	insets/InsetOptArg.h \
-	insets/InsetPagebreak.h \
 	insets/InsetQuotes.h \
 	insets/InsetRef.h \
 	insets/InsetSpace.h \

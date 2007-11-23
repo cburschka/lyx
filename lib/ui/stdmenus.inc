@@ -362,6 +362,7 @@ Menuset
 		Item "Ligature Break|k" "ligature-break-insert"
 		Item "Line Break|B" "break-line"
 		Separator
+		Item "New Page|N" "newpage-insert"
 		Item "Page Break|a" "pagebreak-insert"
 		Item "Clear Page|C" "clearpage-insert"
 		Item "Clear Double Page|D" "cleardoublepage-insert"
