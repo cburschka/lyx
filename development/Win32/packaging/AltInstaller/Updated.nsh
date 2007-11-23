@@ -34,6 +34,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Intro.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Tutorial.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\examples\es"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\es\ItemizeBullets.lyx"
