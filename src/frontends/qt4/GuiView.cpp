@@ -1020,8 +1020,10 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 
 void GuiView::dispatch(FuncRequest const & cmd)
 {
-	// By default we won't need any new update.
-	Update::flags update_flags = Update::None;
+	BufferView * bv = view();	
+	// By default we won't need any update.
+	if (bv)
+		bv->cursor().updateFlags(Update::None);
 
 	switch(cmd.action) {
 		case LFUN_BUFFER_SWITCH:
@@ -1143,9 +1145,6 @@ void GuiView::dispatch(FuncRequest const & cmd)
 			if (inset) {
 				FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 				inset->dispatch(view()->cursor(), fr);
-				// ideally, the update flag should be set by the insets,
-				// but this is not possible currently
-				update_flags = Update::Force | Update::FitCursor;
 			} else {
 				FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
 				lyx::dispatch(fr);
@@ -1156,10 +1155,14 @@ void GuiView::dispatch(FuncRequest const & cmd)
 		default:
 			theLyXFunc().setLyXView(this);
 			lyx::dispatch(cmd);
+			return;
 	}
 
-	if (view())
-		view()->cursor().updateFlags(update_flags);
+	if (!bv)
+		return;
+	bv->processUpdateFlags(bv->cursor().result().update());
+	// We won't need any new update.
+	bv->cursor().updateFlags(Update::None);
 }
 
 
