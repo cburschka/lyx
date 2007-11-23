@@ -126,9 +126,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		getPreviewImage(mi.base.bv->buffer());
 
 	if (pimage) {
-		dim.asc = pimage->ascent();
-		dim.des = pimage->descent();
-		dim.wid = pimage->width();
+		dim = pimage->dim();
 	} else {
 		dim.asc = 50;
 		dim.des = 0;
