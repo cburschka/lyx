@@ -14,8 +14,6 @@
 
 #include "Dimension.h"
 
-#include <memory>
-
 
 namespace lyx {
 
