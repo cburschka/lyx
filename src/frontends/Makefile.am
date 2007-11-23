@@ -19,7 +19,6 @@ liblyxfrontends_la_SOURCES = \
 	KeyModifier.h \
 	KeySymbol.h \
 	LyXView.h \
-	Painter.cpp \
 	Painter.h \
 	Clipboard.h \
 	Selection.h \

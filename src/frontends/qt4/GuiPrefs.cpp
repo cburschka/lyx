@@ -110,7 +110,7 @@ static size_t findPos_helper(std::vector<A> const & vec, A const & val)
 
 static std::pair<string, string> parseFontName(string const & name)
 {
-	string::size_type const idx = name.find('[');
+	size_t const idx = name.find('[');
 	if (idx == string::npos || idx == 0)
 		return make_pair(name, string());
 	return make_pair(name.substr(0, idx - 1),
@@ -147,7 +147,7 @@ static void setComboxFont(QComboBox * cb, string const & family,
 	pair<string, string> tmpfam = parseFontName(family);
 
 	// We count in reverse in order to prefer the Xft foundry
-	for (int i = cb->count() - 1; i >= 0; --i) {
+	for (int i = cb->count(); --i >= 0; ) {
 		pair<string, string> tmp = parseFontName(fromqstr(cb->itemText(i)));
 		if (compare_ascii_no_case(tmp.first, tmpfam.first) == 0) {
 			cb->setCurrentIndex(i);

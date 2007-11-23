@@ -78,13 +78,10 @@ public:
 		ColorCode);
 
 	/// draw a pixel
-	virtual void point(
-		int x, int y,
-		ColorCode);
+	virtual void point(int x, int y, ColorCode);
 
 	/// draw an image from the image cache
-	virtual void image(int x, int y,
-		int w, int h,
+	virtual void image(int x, int y, int w, int h,
 		lyx::graphics::Image const & image);
 
 	/// draw a string at position x, y (y is the baseline)
@@ -94,13 +91,44 @@ public:
 	/// draw a char at position x, y (y is the baseline)
 	virtual int text(int x, int y, char_type c, FontInfo const & f);
 
+	/// draw a string and enclose it inside a button frame
+	virtual void buttonText(int x, int baseline, docstring const & s,
+		FontInfo const & font, bool mouseHover);
+
 	/// start monochrome painting mode, i.e. map every color into [min,max]
 	virtual void enterMonochromeMode(ColorCode const & min, 
 		ColorCode const & max);
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode();
 	
+	/**
+	 * Draw a string and enclose it inside a rectangle. If
+	 * back color is specified, the background is cleared with
+	 * the given color. If frame is specified, a thin frame is drawn
+	 * around the text with the given color.
+	 */
+	virtual void rectText(int x, int baseline, docstring const & str,
+		FontInfo const & font, ColorCode back, ColorCode frame);
+
+	/// draw a filled rectangle with the shape of a 3D button
+	virtual void button(int x, int y, int w, int h, bool mouseHover);
+
+	/// draw a character of a preedit string for cjk support.
+	virtual int preeditText(int x, int y,
+		char_type c, FontInfo const & f, preedit_style style);
+
 private:
+	/// check the font, and if set, draw an underline
+	void underline(FontInfo const & f,
+		int x, int y, int width);
+
+	/// check the font, and if set, draw an dashed underline
+	void dashedUnderline(FontInfo const & f,
+		int x, int y, int width);
+
+	/// draw a bevelled button border
+	void buttonFrame(int x, int y, int w, int h);
+
 	/// draw small caps text
 	/**
 	\return width of the drawn text.
@@ -110,8 +138,7 @@ private:
 
 	/// set pen parameters
 	void setQPainterPen(QColor const & col,
-		line_style ls = line_solid,
-		line_width lw = line_thin);
+		line_style ls = line_solid, line_width lw = line_thin);
 
 	QColor current_color_;
 	Painter::line_style current_ls_;

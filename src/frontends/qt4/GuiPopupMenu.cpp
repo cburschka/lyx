@@ -119,7 +119,7 @@ docstring const GuiPopupMenu::getLabel(MenuItem const & mi)
 	from_ascii("&"), from_ascii("&&"));
 
 	if (!shortcut.empty()) {
-		docstring::size_type pos = label.find(shortcut);
+		size_t pos = label.find(shortcut);
 		if (pos != docstring::npos)
 			label.insert(pos, 1, char_type('&'));
 	}

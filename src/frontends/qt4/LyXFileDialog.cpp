@@ -35,10 +35,9 @@ static docstring const getLabel(docstring const & ucs4str)
 	string sc = split(str, label, '|');
 	if (sc.length() < 2)
 		return from_utf8(label);
-	string::size_type pos = label.find(sc[1]);
-	if (pos == string::npos)
-		return from_utf8(label);
-	label.insert(pos, 1, '&');
+	size_t pos = label.find(sc[1]);
+	if (pos != string::npos)
+		label.insert(pos, 1, '&');
 	return from_utf8(label);
 }
 

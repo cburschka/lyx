@@ -489,11 +489,12 @@ void GuiListings::updateContents()
 			string dialect;
 			bool in_gui = false;
 			if (prefixIs(arg, "[") && contains(arg, "]")) {
-				string::size_type end_dialect = arg.find("]");
+				size_t end_dialect = arg.find("]");
 				dialect = arg.substr(1, end_dialect - 1);
 				language = arg.substr(end_dialect + 1);
-			} else
+			} else {
 				language = arg;
+			}
 			int n = findToken(languages, language);
 			if (n >= 0) {
 				languageCO->setCurrentIndex(n);
