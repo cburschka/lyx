@@ -199,8 +199,7 @@ private:
 
 vector<LanguagePair> const getLanguageData(bool character_dlg)
 {
-	vector<LanguagePair>::size_type const size = character_dlg ?
-		languages.size() + 2 : languages.size();
+	size_t const size = languages.size() + character_dlg ? 2 : 0;
 
 	vector<LanguagePair> langs(size);
 
@@ -211,7 +210,7 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 		langs[1].second = "reset";
 	}
 
-	vector<string>::size_type i = character_dlg ? 2 : 0;
+	size_t i = character_dlg ? 2 : 0;
 	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {
 		langs[i].first  = _(cit->second.display());
