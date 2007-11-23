@@ -28,26 +28,22 @@ boost::function<Image *()> Image::newImage;
 boost::function<Image::FormatList()> Image::loadableFormats;
 
 
-std::pair<unsigned int, unsigned int>
-Image::getScaledDimensions(Params const & params) const
+Dimension Image::scaledDimension(Params const & params) const
 {
 	// scale only when value > 0
-	unsigned int width;
-	unsigned int height;
+	unsigned int w = width();
+	unsigned int h = height();
 	if (params.scale) {
-		width  = (getWidth() * params.scale) / 100;
-		height = (getHeight() * params.scale) / 100;
-	} else {
-		width = getWidth();
-		height = getHeight();
+		w = (w * params.scale) / 100;
+		h = (h * params.scale) / 100;
 	}
 
 	LYXERR(Debug::GRAPHICS, "graphics::Image::getScaledDimensions()"
 		<< "\n\tparams.scale       : " << params.scale
-		<< "\n\twidth              : " << width
-		<< "\n\theight             : " << height);
+		<< "\n\twidth              : " << w
+		<< "\n\theight             : " << h);
 
-	return std::make_pair(width, height);
+	return Dimension(w, h, 0);
 }
 
 } // namespace graphics

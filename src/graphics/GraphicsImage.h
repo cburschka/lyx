@@ -24,11 +24,12 @@
 #ifndef GRAPHICSIMAGE_H
 #define GRAPHICSIMAGE_H
 
+#include "Dimension.h"
+
 #include <boost/function.hpp>
 #include <boost/signal.hpp>
 
 #include <vector>
-#include <utility>
 
 namespace lyx {
 
@@ -57,10 +58,10 @@ public:
 	virtual Image * clone() const = 0;
 
 	/// Get the image width
-	virtual unsigned int getWidth() const = 0;
+	virtual unsigned int width() const = 0;
 
 	/// Get the image height
-	virtual unsigned int getHeight() const = 0;
+	virtual unsigned int height() const = 0;
 
 	/// Is the image drawable ?
 	virtual bool isDrawable() const = 0;
@@ -100,11 +101,10 @@ protected:
 	Image(Image const &) {}
 
 	/** Uses the params to ascertain the dimensions of the scaled image.
-	 *  Returned as make_pair(width, height).
-	 *  If something goes wrong, returns make_pair(getWidth(), getHeight())
+	 *  Returned as Dimension(width, height, 0 descend).
+	 *  If something goes wrong, returns make_pair(getWidth(), getHeight(), 0)
 	 */
-	std::pair<unsigned int, unsigned int>
-	getScaledDimensions(Params const & params) const;
+	Dimension scaledDimension(Params const & params) const;
 };
 
 

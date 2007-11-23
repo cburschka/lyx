@@ -40,9 +40,9 @@ private:
 	/// Create a copy
 	virtual Image * clone() const;
 	/// Get the image width
-	virtual unsigned int getWidth() const;
+	virtual unsigned int width() const;
 	/// Get the image height
-	virtual unsigned int getHeight() const;
+	virtual unsigned int height() const;
 	// FIXME Is the image drawable ?
 	virtual bool isDrawable() const { return true; }
 	/**

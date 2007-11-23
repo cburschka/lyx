@@ -710,22 +710,22 @@ void GuiGraphics::applyView()
 void GuiGraphics::getBB()
 {
 	string const fn = fromqstr(filename->text());
-	if (!fn.empty()) {
-		string const bb = readBB(fn);
-		if (!bb.empty()) {
-			lbX->setText(toqstr(token(bb, ' ', 0)));
-			lbY->setText(toqstr(token(bb, ' ', 1)));
-			rtX->setText(toqstr(token(bb, ' ', 2)));
-			rtY->setText(toqstr(token(bb, ' ', 3)));
-			// the default units for the bb values when reading
-			// it from the file
-			lbXunit->setCurrentIndex(0);
-			lbYunit->setCurrentIndex(0);
-			rtXunit->setCurrentIndex(0);
-			rtYunit->setCurrentIndex(0);
-		}
-		bbChanged = false;
-	}
+	if (fn.empty())
+		return;
+	string const bb = readBB(fn);
+	bbChanged = false;
+	if (bb.empty())
+		return;
+	lbX->setText(toqstr(token(bb, ' ', 0)));
+	lbY->setText(toqstr(token(bb, ' ', 1)));
+	rtX->setText(toqstr(token(bb, ' ', 2)));
+	rtY->setText(toqstr(token(bb, ' ', 3)));
+	// the default units for the bb values when reading
+	// it from the file
+	lbXunit->setCurrentIndex(0);
+	lbYunit->setCurrentIndex(0);
+	rtXunit->setCurrentIndex(0);
+	rtYunit->setCurrentIndex(0);
 }
 
 
@@ -795,8 +795,8 @@ string const GuiGraphics::readBB(string const & file)
 		graphics::Image const * image = gc.item(abs_file)->image();
 
 		if (image) {
-			width  = image->getWidth();
-			height = image->getHeight();
+			width  = image->width();
+			height = image->height();
 		}
 	}
 

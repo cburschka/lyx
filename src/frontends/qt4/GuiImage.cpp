@@ -125,13 +125,13 @@ Image * GuiImage::clone() const
 }
 
 
-unsigned int GuiImage::getWidth() const
+unsigned int GuiImage::width() const
 {
 	return transformed_.width();
 }
 
 
-unsigned int GuiImage::getHeight() const
+unsigned int GuiImage::height() const
 {
 	return transformed_.height();
 }
@@ -252,15 +252,13 @@ void GuiImage::scale(Params const & params)
 	if (transformed_.isNull())
 		return;
 
-	unsigned int width;
-	unsigned int height;
-	boost::tie(width, height) = getScaledDimensions(params);
+	Dimension dim = scaledDimension(params);
 
-	if (width == getWidth() && height == getHeight())
+	if (dim.width() == width() && dim.height() == height())
 		return;
 
 	QMatrix m;
-	m.scale(double(width) / getWidth(), double(height) / getHeight());
+	m.scale(double(dim.width()) / width(), double(dim.height()) / height());
 	transformed_ = transformed_.transformed(m);
 }
 

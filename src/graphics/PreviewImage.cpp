@@ -80,7 +80,7 @@ int PreviewImage::ascent() const
 	if (!image)
 		return 0;
 
-	return int(pimpl_->ascent_frac_ * double(image->getHeight()));
+	return int(pimpl_->ascent_frac_ * double(image->height()));
 }
 
 
@@ -91,14 +91,14 @@ int PreviewImage::descent() const
 		return 0;
 
 	// Avoids rounding errors.
-	return image->getHeight() - ascent();
+	return image->height() - ascent();
 }
 
 
 int PreviewImage::width() const
 {
 	Image const * const image = pimpl_->iloader_.image();
-	return image ? image->getWidth() : 0;
+	return image ? image->width() : 0;
 }
 
 

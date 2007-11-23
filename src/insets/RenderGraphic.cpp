@@ -132,12 +132,11 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	bool image_ready = displayGraphic(params_) && readyToDisplay(loader_);
 
-	dim.asc = image_ready ? loader_.image()->getHeight() : 50;
+	dim.asc = image_ready ? loader_.image()->height() : 50;
 	dim.des = 0;
 
 	if (image_ready) {
-		dim.wid = loader_.image()->getWidth() +
-			2 * Inset::TEXT_TO_INSET_OFFSET;
+		dim.wid = loader_.image()->width() + 2 * Inset::TEXT_TO_INSET_OFFSET;
 	} else {
 		int font_width = 0;
 

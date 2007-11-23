@@ -822,8 +822,8 @@ string const GuiExternal::readBB(string const & file)
 		graphics::Image const * image = gc.item(abs_file)->image();
 
 		if (image) {
-			width  = image->getWidth();
-			height = image->getHeight();
+			width  = image->width();
+			height = image->height();
 		}
 	}
 
