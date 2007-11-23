@@ -79,11 +79,6 @@ public:
 
 	///
 	virtual void restartCursor() = 0;
-	
-	//
-	// GuiBufferDelegate
-	//
-	virtual void errors(std::string const &) = 0;
 
 private:
 	/// noncopyable

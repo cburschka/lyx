@@ -185,7 +185,7 @@ bool import(LyXView * lv, FileName const & filename,
 		}
 		updateLabels(*buf);
 		lv->setBuffer(buf);
-		lv->errors("Parse");
+		buf->errors("Parse");
 	} else {
 		Buffer * const b = newFile(lyxfile.absFilename(), string(), true);
 		if (b)
@@ -1215,7 +1215,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (buf) {
 				updateLabels(*buf);
 				lyx_view_->setBuffer(buf);
-				lyx_view_->errors("Parse");
+				buf->errors("Parse");
 			}
 			updateFlags = Update::None;
 			break;
@@ -1350,7 +1350,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			lyx_view_->setBuffer(buf);
 			view()->setCursorFromRow(row);
 			if (loaded)
-				lyx_view_->errors("Parse");
+				buf->errors("Parse");
 			updateFlags = Update::FitCursor;
 			break;
 		}
@@ -1501,7 +1501,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				updateLabels(*child->masterBuffer());
 				lyx_view_->setBuffer(child);
 				if (parsed)
-					lyx_view_->errors("Parse");
+					child->errors("Parse");
 			}
 
 			// If a screen update is required (in case where auto_open is false), 
@@ -2102,7 +2102,7 @@ void LyXFunc::open(string const & fname)
 	if (buf) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
-		lyx_view_->errors("Parse");
+		buf->errors("Parse");
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
 	} else {
 		str2 = bformat(_("Could not open document %1$s"), disp_fn);
@@ -2217,7 +2217,7 @@ void LyXFunc::reloadBuffer()
 	if (buf) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
-		lyx_view_->errors("Parse");
+		buf->errors("Parse");
 		str = bformat(_("Document %1$s reloaded."), disp_fn);
 	} else {
 		str = bformat(_("Could not reload document %1$s"), disp_fn);
