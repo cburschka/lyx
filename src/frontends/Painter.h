@@ -117,7 +117,7 @@ public:
 	*/
 	virtual int text(int x, int y, docstring const & str, FontInfo const & f) = 0;
 
-	void setDrawingEnabled(bool drawing_enabled = true)
+	void setDrawingEnabled(bool drawing_enabled)
 	{ drawing_enabled_ = drawing_enabled; }
 
 	/// Indicate wether real screen drawing shall be done or not.

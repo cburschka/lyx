@@ -199,7 +199,7 @@ private:
 
 vector<LanguagePair> const getLanguageData(bool character_dlg)
 {
-	size_t const size = languages.size() + character_dlg ? 2 : 0;
+	size_t const size = languages.size() + (character_dlg ? 2 : 0);
 
 	vector<LanguagePair> langs(size);
 
