@@ -1030,6 +1030,14 @@ void GuiView::dispatch(FuncRequest const & cmd)
 			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
 			break;
 
+		case LFUN_BUFFER_NEXT:
+			setBuffer(theBufferList().next(buffer()));
+			break;
+
+		case LFUN_BUFFER_PREVIOUS:
+			setBuffer(theBufferList().previous(buffer()));
+			break;
+
 		case LFUN_COMMAND_EXECUTE: {
 			bool const show_it = cmd.argument() != "off";
 			d.toolbars_->showCommandBuffer(show_it);

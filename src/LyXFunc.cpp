@@ -845,6 +845,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	} else {
 		switch (action) {
 		// Let lyx_view_ dispatch its own actions.
+		case LFUN_BUFFER_SWITCH:
+		case LFUN_BUFFER_NEXT:
+		case LFUN_BUFFER_PREVIOUS:
 		case LFUN_COMMAND_EXECUTE:
 		case LFUN_DROP_LAYOUTS_CHOICE:
 		case LFUN_MENU_OPEN:
@@ -1268,23 +1271,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		// --- buffers ----------------------------------------
-		case LFUN_BUFFER_SWITCH:
-			BOOST_ASSERT(lyx_view_);
-			lyx_view_->setBuffer(theBufferList().getBuffer(argument));
-			updateFlags = Update::None;
-			break;
-
-		case LFUN_BUFFER_NEXT:
-			BOOST_ASSERT(lyx_view_);
-			lyx_view_->setBuffer(theBufferList().next(lyx_view_->buffer()));
-			updateFlags = Update::None;
-			break;
-
-		case LFUN_BUFFER_PREVIOUS:
-			BOOST_ASSERT(lyx_view_);
-			lyx_view_->setBuffer(theBufferList().previous(lyx_view_->buffer()));
-			updateFlags = Update::None;
-			break;
 
 		case LFUN_FILE_NEW: {
 			BOOST_ASSERT(lyx_view_);
