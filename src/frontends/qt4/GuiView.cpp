@@ -162,8 +162,8 @@ struct GuiView::GuiViewPrivate
 	~GuiViewPrivate()
 	{
 		delete splitter_;
-		delete stack_widget_;
 		delete bg_widget_;
+		delete stack_widget_;
 		delete menubar_;
 		delete toolbars_;
 	}
