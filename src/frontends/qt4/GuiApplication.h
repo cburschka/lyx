@@ -68,7 +68,7 @@ public:
 	virtual void updateColor(ColorCode col);
 	virtual void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
-	LyXView & createView(std::string const & geometry_arg);
+	void createView(std::string const & geometry_arg = std::string());
 	//@}
 
 	/// Methods inherited from \c QApplication class

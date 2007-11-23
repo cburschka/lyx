@@ -1854,7 +1854,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_WINDOW_NEW:
-			LyX::ref().newLyXView();
+			theApp()->createView();
 			break;
 
 		case LFUN_WINDOW_CLOSE:

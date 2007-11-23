@@ -230,7 +230,7 @@ static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
 }
 
 
-LyXView & GuiApplication::createView(string const & geometry_arg)
+void GuiApplication::createView(string const & geometry_arg)
 {
 	updateIds(views_, view_ids_);
 	int id = 0;
@@ -259,8 +259,6 @@ LyXView & GuiApplication::createView(string const & geometry_arg)
 	view->setFocus();
 
 	setCurrentView(*view);
-
-	return *view;
 }
 
 

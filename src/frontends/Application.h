@@ -207,7 +207,7 @@ public:
 
 	/// Create the main window with given geometry settings.
 	/// \param geometry_arg: only for Windows platform.
-	virtual LyXView & createView(std::string const & geometry_arg) = 0;
+	virtual void createView(std::string const & geometry_arg = std::string()) = 0;
 };
 
 } // namespace frontend

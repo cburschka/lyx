@@ -48,7 +48,6 @@
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
-#include "frontends/LyXView.h"
 
 #include "support/environment.h"
 #include "support/filetools.h"
@@ -99,7 +98,6 @@ using support::package;
 using support::prependEnvPath;
 using support::rtrim;
 using support::Systemcall;
-using frontend::LyXView;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
@@ -627,7 +625,8 @@ void LyX::execBatchCommands()
 
 void LyX::restoreGuiSession()
 {
-	LyXView * view = newLyXView();
+	// create the main window
+	pimpl_->application_->createView(geometryArg);
 
 	// if there is no valid class list, do not load any file. 
 	if (textclasslist.empty())
@@ -663,24 +662,6 @@ void LyX::restoreGuiSession()
 			continue;
 		updateLabels(*buf);
 	}
-
-	// FIXME: Switch to the last loaded Buffer. This must not be the first one
-	// because the Buffer won't be connected in this case. The correct solution
-	// would be to avoid the manual connection of the current Buffer in LyXView.
-	if (!pimpl_->buffer_list_.empty())
-		view->setBuffer(pimpl_->buffer_list_.last());
-}
-
-
-LyXView * LyX::newLyXView()
-{
-	if (!lyx::use_gui)
-		return 0;
-
-	// create the main window
-	LyXView * view = &pimpl_->application_->createView(geometryArg);
-
-	return view;
 }
 
 /*
