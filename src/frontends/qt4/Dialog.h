@@ -47,7 +47,8 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	Dialog(GuiView & lv) : lyxview_(&lv) {}
+	Dialog(GuiView & lv, std::string const & name);
+
 	virtual ~Dialog();
 
 	/** \name Container Access
@@ -107,7 +108,7 @@ public:
 	//@}
 
 	///
-	virtual std::string name() const = 0;
+	std::string name() const;
 
 	//@{
 	/** Enable the controller to initialise its data structures.
@@ -188,7 +189,7 @@ public:
 	 *  It must, therefore, ask the kernel to provide this information.
 	 *  \param name is used to identify the dialog to the kernel.
 	 */
-	void updateDialog(std::string const & name) const;
+	void updateDialog() const;
 
 	/** A request from the Controller that future changes to the data
 	 *  stored by the dialog are not applied to the inset currently
@@ -196,7 +197,7 @@ public:
 	 *  a new inset at the cursor position.
 	 *  \param name is used to identify the dialog to the kernel.
 	 */
-	void disconnect(std::string const & name) const;
+	void disconnect() const;
 
 	/** \name Kernel Wrappers
 	 *  Simple wrapper functions to Buffer methods.
@@ -229,9 +230,13 @@ protected:
 	virtual void apply() {}
 
 private:
+	/** The Dialog's name is the means by which a dialog identifies
+	 *  itself to the LyXView.
+	 */
+	char const * const name_;
+	///
 	GuiView * lyxview_;
 
-private:
 	/// intentionally unimplemented, therefore uncopiable
 	Dialog(Dialog const &);
 	void operator=(Dialog const &);

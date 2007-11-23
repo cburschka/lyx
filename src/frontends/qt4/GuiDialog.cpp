@@ -24,7 +24,7 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(GuiView & lv, std::string const & name)
-	: Dialog(lv), is_closing_(false), name_(name)
+	: Dialog(lv, name), is_closing_(false)
 {}
 
 
@@ -74,7 +74,7 @@ void GuiDialog::slotRestore()
 	// Tell the controller that a request to refresh the dialog's contents
 	// has been received. It's up to the controller to supply the necessary
 	// info by calling GuiDialog::updateView().
-	updateDialog(name_);
+	updateDialog();
 	bc().restore();
 }
 
@@ -167,7 +167,7 @@ void GuiDialog::showData(string const & data)
 		return;
 
 	if (!initialiseParams(data)) {
-		lyxerr << "Dialog \"" << name_
+		lyxerr << "Dialog \"" << name()
 		       << "\" failed to translate the data "
 			"string passed to show()" << std::endl;
 		return;
@@ -186,7 +186,7 @@ void GuiDialog::updateData(string const & data)
 		return;
 
 	if (!initialiseParams(data)) {
-		lyxerr << "Dialog \"" << name_
+		lyxerr << "Dialog \"" << name()
 		       << "\" could not be initialized" << std::endl;
 		return;
 	}
@@ -205,7 +205,7 @@ void GuiDialog::hide()
 
 	clearParams();
 	hideView();
-	Dialog::disconnect(name_);
+	Dialog::disconnect();
 }
 
 
@@ -221,7 +221,7 @@ void GuiDialog::apply()
 	dispatchParams();
 
 	if (disconnectOnApply() && !is_closing_) {
-		Dialog::disconnect(name_);
+		Dialog::disconnect();
 		initialiseParams(string());
 		updateView();
 	}
@@ -231,7 +231,7 @@ void GuiDialog::apply()
 void GuiDialog::showEvent(QShowEvent * e)
 {
 	QSettings settings;
-	string key = name_ + "/geometry";
+	string key = name() + "/geometry";
 	restoreGeometry(settings.value(key.c_str()).toByteArray());
 	QDialog::showEvent(e);
 }
@@ -240,7 +240,7 @@ void GuiDialog::showEvent(QShowEvent * e)
 void GuiDialog::closeEvent(QCloseEvent * e)
 {
 	QSettings settings;
-	string key = name_ + "/geometry";
+	string key = name() + "/geometry";
 	settings.setValue(key.c_str(), saveGeometry());
 	QDialog::closeEvent(e);
 }

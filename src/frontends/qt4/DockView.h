@@ -34,7 +34,7 @@ public:
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0
 	)
-		: QDockWidget(&parent, flags), Dialog(parent), name_(name)
+		: QDockWidget(&parent, flags), Dialog(parent, name)
 	{
 		if (flags & Qt::Drawer)
 			setFeatures(QDockWidget::NoDockWidgetFeatures);
@@ -65,10 +65,7 @@ public:
 		updateView();
 	}
 	bool isClosing() const { return false; }
-	std::string name() const { return name_; }
 	//@}
-private:
-	std::string name_;
 };
 
 } // frontend

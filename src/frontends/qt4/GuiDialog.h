@@ -115,9 +115,6 @@ public:
 	 */
 	bool isClosing() const { return is_closing_; }
 
-	///
-	std::string name() const { return name_; }
-
 	void apply();
 
 	/// Update the display of the dialog whilst it is still visible.
@@ -129,10 +126,6 @@ private:
 	bool updating_;
 
 	bool is_closing_;
-	/** The Dialog's name is the means by which a dialog identifies
-	 *  itself to the kernel.
-	 */
-	std::string name_;
 };
 
 

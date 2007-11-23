@@ -41,7 +41,7 @@ public:
 		bool modal = false, ///< Window modality.
 		Qt::WindowFlags flags = 0
 		)
-		: QDialog(&parent, flags), name_(name)
+		: QDialog(&parent, flags), Dialog(parent, name)
 	{
 		setModal(modal);
 		QGridLayout * gridLayout = new QGridLayout(this);
@@ -82,17 +82,15 @@ public:
 	{
 		widget_->updateView();
 	}
-	std::string name() const { return name_; }
 	//@}
 private:
 	/// The encapsulated widget.
 	MyWidget * widget_;
-	std::string name_;
 
 	void showEvent(QShowEvent * e)
 	{
 		QSettings settings;
-		std::string key = name_ + "/geometry";
+		std::string key = name() + "/geometry";
 		QDialog::restoreGeometry(settings.value(key.c_str()).toByteArray());
 	    QDialog::showEvent(e);
 	}
@@ -100,7 +98,7 @@ private:
 	void closeEvent(QCloseEvent * e)
 	{
 		QSettings settings;
-		std::string key = name_ + "/geometry";
+		std::string key = name() + "/geometry";
 		settings.setValue(key.c_str(), QDialog::saveGeometry());
 		QDialog::closeEvent(e);
 	}

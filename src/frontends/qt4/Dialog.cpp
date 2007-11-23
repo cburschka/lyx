@@ -19,18 +19,29 @@
 #include "FuncStatus.h"
 #include "LyXFunc.h"
 
+#include <string>
 
 namespace lyx {
 namespace frontend {
+
+
+Dialog::Dialog(GuiView & lv, std::string const & name)
+	: lyxview_(&lv), name_(name.c_str())
+{}
 
 
 Dialog::~Dialog()
 {}
 
 
+std::string Dialog::name() const
+{
+	return name_;
+}
+
 bool Dialog::canApply() const
 {
-	FuncRequest const fr(getLfun(), name());
+	FuncRequest const fr(getLfun(), name_);
 	FuncStatus const fs(getStatus(fr));
 	return fs.enabled();
 }
@@ -42,15 +53,15 @@ void Dialog::dispatch(FuncRequest const & fr) const
 }
 
 
-void Dialog::updateDialog(std::string const & name) const
+void Dialog::updateDialog() const
 {
-	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, name));
+	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, name_));
 }
 
 
-void Dialog::disconnect(std::string const & name) const
+void Dialog::disconnect() const
 {
-	lyxview_->disconnectDialog(name);
+	lyxview_->disconnectDialog(name_);
 }
 
 

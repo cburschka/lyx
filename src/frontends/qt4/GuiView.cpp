@@ -1367,7 +1367,7 @@ void GuiView::updateBufferDependent(bool switched) const
 			// A bit clunky, but the dialog will request
 			// that the kernel provides it with the necessary
 			// data.
-			dialog->updateDialog(dialog->name());
+			dialog->updateDialog();
 		}
 	}
 }

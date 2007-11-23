@@ -49,7 +49,7 @@ namespace lyx {
 namespace frontend {
 
 GuiParagraph::GuiParagraph(GuiView & lv)
-	: Dialog(lv)
+	: Dialog(lv, "paragraph")
 {
 	setupUi(this);
 	setWindowTitle(qt_("Paragraph Settings"));
