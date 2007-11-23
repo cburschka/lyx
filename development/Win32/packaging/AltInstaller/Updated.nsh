@@ -47,6 +47,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsmaths-seq.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\foils.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\numarticle.inc" 
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\numreport.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\powerdot.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\slides.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
