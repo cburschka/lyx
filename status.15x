@@ -133,6 +133,9 @@ What's new
 - Fix a bug where the spellchecker skipped the first misspelled word on a second
   run (bug 2218).
 
+- If the text of footnotes is in a different language than the main text, it
+  was not aligned correctly. This is fixed.
+
 - Fix cut and paste of tabular cells via the external clipboard (bug 4147).
 
 - Fix undo in tabulars after pasting via the external clipboard (bug 4371).

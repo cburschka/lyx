@@ -113,7 +113,8 @@ TeXEnvironment(Buffer const & buf,
 				lyxrc.language_command_end,
 				"$$lang",
 				prev_par_language->babel()))
-			   << '\n';
+			   // the '%' is necessary to prevent unwanted whitespace
+			   << "%\n";
 			texrow.newline();
 		}
 
@@ -124,7 +125,8 @@ TeXEnvironment(Buffer const & buf,
 				lyxrc.language_command_begin,
 				"$$lang",
 				par_language->babel()))
-			   << '\n';
+			   // the '%' is necessary to prevent unwanted whitespace
+			   << "%\n";
 			texrow.newline();
 		}
 	}
@@ -263,7 +265,7 @@ TeXOnePar(Buffer const & buf,
 	Language const * const par_language = pit->getParLanguage(bparams);
 	// The document's language
 	Language const * const doc_language = bparams.language;
-	// The language that was in effect when the environemnt this paragraph is 
+	// The language that was in effect when the environment this paragraph is 
 	// inside of was opened
 	Language const * const outer_language = 
 		(runparams.local_font != 0) ?
@@ -290,7 +292,8 @@ TeXOnePar(Buffer const & buf,
 			os << from_ascii(subst(lyxrc.language_command_end,
 				"$$lang",
 				prev_language->babel()))
-			   << '\n';
+			   // the '%' is necessary to prevent unwanted whitespace
+			   << "%\n";
 			texrow.newline();
 		}
 
@@ -343,7 +346,8 @@ TeXOnePar(Buffer const & buf,
 				lyxrc.language_command_begin,
 				"$$lang",
 				par_language->babel()))
-			   << '\n';
+			   // the '%' is necessary to prevent unwanted whitespace
+			   << "%\n";
 			texrow.newline();
 		}
 	}
@@ -373,7 +377,8 @@ TeXOnePar(Buffer const & buf,
 			if (encoding->package() == Encoding::inputenc && enc_switch.first) {
 				runparams.encoding = encoding;
 				if (enc_switch.second > 0) {
-					os << '\n';
+					// the '%' is necessary to prevent unwanted whitespace
+					os << "%\n";
 					texrow.newline();
 				}
 			}
