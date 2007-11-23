@@ -28,7 +28,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiNomenclature::GuiNomenclature(LyXView & lv)
+GuiNomenclature::GuiNomenclature(GuiView & lv)
 	: GuiCommand(lv, "nomenclature")
 {
 	setupUi(this);
@@ -99,7 +99,7 @@ bool GuiNomenclature::isValid()
 }
 
 
-Dialog * createGuiNomenclature(LyXView & lv)
+Dialog * createGuiNomenclature(GuiView & lv)
 {
 	return new GuiNomenclature(lv);
 }

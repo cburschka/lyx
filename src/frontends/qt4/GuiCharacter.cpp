@@ -270,7 +270,7 @@ static vector<FamilyPair> const getFamilyData()
 }
 
 
-GuiCharacter::GuiCharacter(LyXView & lv)
+GuiCharacter::GuiCharacter(GuiView & lv)
 	: GuiDialog(lv, "character"), font_(ignore_font),
 	  toggleall_(false), reset_lang_(false)
 {
@@ -594,7 +594,7 @@ void GuiCharacter::setLanguage(string const & val)
 }
 
 
-Dialog * createGuiCharacter(LyXView & lv) { return new GuiCharacter(lv); }
+Dialog * createGuiCharacter(GuiView & lv) { return new GuiCharacter(lv); }
 
 
 } // namespace frontend

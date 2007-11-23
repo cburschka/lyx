@@ -27,7 +27,7 @@ class GuiTabular : public GuiDialog, public Ui::TabularUi
 	Q_OBJECT
 
 public:
-	GuiTabular(LyXView & lv);
+	GuiTabular(GuiView & lv);
 	~GuiTabular();
 
 private Q_SLOTS:

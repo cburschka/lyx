@@ -24,7 +24,7 @@ class GuiERT : public GuiDialog, public Ui::ERTUi
 	Q_OBJECT
 
 public:
-	GuiERT(LyXView & lv);
+	GuiERT(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

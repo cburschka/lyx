@@ -27,7 +27,7 @@ class GuiBranch : public GuiDialog, public Ui::BranchUi
 	Q_OBJECT
 
 public:
-	GuiBranch(LyXView & lv);
+	GuiBranch(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

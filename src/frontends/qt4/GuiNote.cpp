@@ -25,7 +25,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiNote::GuiNote(LyXView & lv)
+GuiNote::GuiNote(GuiView & lv)
 	: GuiDialog(lv, "note")
 {
 	setupUi(this);
@@ -115,7 +115,7 @@ void GuiNote::dispatchParams()
 }
 
 
-Dialog * createGuiNote(LyXView & lv) { return new GuiNote(lv); }
+Dialog * createGuiNote(GuiView & lv) { return new GuiNote(lv); }
 
 
 } // namespace frontend

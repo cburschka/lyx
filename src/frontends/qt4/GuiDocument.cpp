@@ -212,7 +212,7 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 
 
 
-GuiDocument::GuiDocument(LyXView & lv)
+GuiDocument::GuiDocument(GuiView & lv)
 	: GuiDialog(lv, "document")
 {
 	setupUi(this);
@@ -1841,7 +1841,7 @@ void GuiDocument::loadModuleNames ()
 }
 
 
-Dialog * createGuiDocument(LyXView & lv) { return new GuiDocument(lv); }
+Dialog * createGuiDocument(GuiView & lv) { return new GuiDocument(lv); }
 
 
 } // namespace frontend

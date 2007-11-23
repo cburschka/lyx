@@ -26,7 +26,7 @@ class GuiShowFile : public GuiDialog, public Ui::ShowFileUi
 	Q_OBJECT
 
 public:
-	GuiShowFile(LyXView & lv);
+	GuiShowFile(GuiView & lv);
 
 private:
 	///

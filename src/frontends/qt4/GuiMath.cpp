@@ -20,7 +20,7 @@ using std::map;
 namespace lyx {
 namespace frontend {
 
-GuiMath::GuiMath(LyXView & lv, std::string const & name)
+GuiMath::GuiMath(GuiView & lv, std::string const & name)
 	: GuiDialog(lv, name)
 {
 	// FIXME: Ideally, those unicode codepoints would be defined

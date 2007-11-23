@@ -13,7 +13,6 @@
 #include "GuiDialog.h"
 #include "debug.h"
 #include "qt_helpers.h"
-#include "frontends/LyXView.h"
 
 #include <QCloseEvent>
 #include <QSettings>
@@ -24,7 +23,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiDialog::GuiDialog(LyXView & lv, std::string const & name)
+GuiDialog::GuiDialog(GuiView & lv, std::string const & name)
 	: Dialog(lv), is_closing_(false), name_(name)
 {}
 
@@ -265,7 +264,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiCommand::GuiCommand(LyXView & lv, string const & name)
+GuiCommand::GuiCommand(GuiView & lv, string const & name)
 	: GuiDialog(lv, name), params_(insetCode(name)), lfun_name_(name)
 {
 }

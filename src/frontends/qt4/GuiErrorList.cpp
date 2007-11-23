@@ -37,7 +37,7 @@ namespace frontend {
 
 using support::bformat;
 
-GuiErrorList::GuiErrorList(LyXView & lv)
+GuiErrorList::GuiErrorList(GuiView & lv)
 	: GuiDialog(lv, "errorlist")
 {
 	setupUi(this);
@@ -133,7 +133,7 @@ void GuiErrorList::goTo(int item)
 }
 
 
-Dialog * createGuiErrorList(LyXView & lv) { return new GuiErrorList(lv); }
+Dialog * createGuiErrorList(GuiView & lv) { return new GuiErrorList(lv); }
 
 } // namespace frontend
 } // namespace lyx

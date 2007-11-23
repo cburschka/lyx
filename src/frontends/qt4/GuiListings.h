@@ -23,7 +23,7 @@ class GuiListings : public GuiDialog, public Ui::ListingsUi
 {
 	Q_OBJECT
 public:
-	GuiListings(LyXView & lv);
+	GuiListings(GuiView & lv);
 	/// get values from all the widgets and form a string
 	std::string construct_params();
 	/// validate listings parameters and return an error message, if any

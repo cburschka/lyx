@@ -170,7 +170,7 @@ QString GuiViewSource::title() const
 }
 
 
-Dialog * createGuiViewSource(LyXView & lv)
+Dialog * createGuiViewSource(GuiView & lv)
 {
 	return new GuiViewSource(static_cast<GuiView &>(lv));
 }

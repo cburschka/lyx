@@ -31,7 +31,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiThesaurus::GuiThesaurus(LyXView & lv)
+GuiThesaurus::GuiThesaurus(GuiView & lv)
 	: GuiDialog(lv, "thesaurus")
 {
 	setupUi(this);
@@ -185,7 +185,7 @@ Thesaurus::Meanings const & GuiThesaurus::getMeanings(docstring const & str)
 }
 
 
-Dialog * createGuiThesaurus(LyXView & lv) { return new GuiThesaurus(lv); }
+Dialog * createGuiThesaurus(GuiView & lv) { return new GuiThesaurus(lv); }
 
 
 } // namespace frontend

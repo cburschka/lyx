@@ -30,7 +30,7 @@ class GuiInclude : public GuiCommand, public Ui::IncludeUi
 	Q_OBJECT
 
 public:
-	GuiInclude(LyXView & lv);
+	GuiInclude(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

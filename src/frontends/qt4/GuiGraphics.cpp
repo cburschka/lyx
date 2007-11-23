@@ -132,7 +132,7 @@ typedef std::pair<docstring, std::string> RotationOriginPair;
 std::vector<RotationOriginPair> getRotationOriginData();
 
 
-GuiGraphics::GuiGraphics(LyXView & lv)
+GuiGraphics::GuiGraphics(GuiView & lv)
 	: GuiDialog(lv, "graphics")
 {
 	setupUi(this);
@@ -870,7 +870,7 @@ vector<RotationOriginPair> getRotationOriginData()
 }
 
 
-Dialog * createGuiGraphics(LyXView & lv) { return new GuiGraphics(lv); }
+Dialog * createGuiGraphics(GuiView & lv) { return new GuiGraphics(lv); }
 
 
 } // namespace frontend

@@ -26,7 +26,7 @@ class GuiThesaurus : public GuiDialog, public Ui::ThesaurusUi
 	Q_OBJECT
 
 public:
-	GuiThesaurus(LyXView & lv);
+	GuiThesaurus(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

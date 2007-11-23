@@ -25,7 +25,7 @@ class GuiNomenclature : public GuiCommand, public Ui::NomenclUi
 	Q_OBJECT
 
 public:
-	GuiNomenclature(LyXView & lv);
+	GuiNomenclature(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

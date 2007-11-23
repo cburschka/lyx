@@ -74,7 +74,7 @@ public:
 
 	///
 	virtual FuncStatus getStatus(FuncRequest const & cmd) = 0;
-	/// dispatch to current BufferView
+	/// dispatch command.
 	virtual void dispatch(FuncRequest const & cmd) = 0;
 
 	///
@@ -84,15 +84,6 @@ public:
 	// GuiBufferDelegate
 	//
 	virtual void errors(std::string const &) = 0;
-
-	//
-	// This View's Dialogs
-	//
-	
-	///
-	virtual void disconnectDialog(std::string const & name) = 0;
-	///
-	virtual Inset * getOpenInset(std::string const & name) const = 0;
 
 private:
 	/// noncopyable

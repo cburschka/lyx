@@ -34,7 +34,7 @@ class GuiCitation : public GuiCommand, public Ui::CitationUi
 
 public:
 	///
-	GuiCitation(LyXView & lv);
+	GuiCitation(GuiView & lv);
 
 	///
 	void applyView();

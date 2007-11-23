@@ -28,7 +28,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiMathMatrix::GuiMathMatrix(LyXView & lv)
+GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 	: GuiMath(lv, "mathmatrix")
 {
 	setupUi(this);
@@ -109,7 +109,7 @@ void GuiMathMatrix::slotClose()
 }
 
 
-Dialog * createGuiMathMatrix(LyXView & lv) { return new GuiMathMatrix(lv); }
+Dialog * createGuiMathMatrix(GuiView & lv) { return new GuiMathMatrix(lv); }
 
 
 } // namespace frontend

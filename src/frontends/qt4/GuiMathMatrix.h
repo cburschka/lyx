@@ -27,7 +27,7 @@ class GuiMathMatrix : public GuiMath, public Ui::MathMatrixUi
 	Q_OBJECT
 
 public:
-	GuiMathMatrix(LyXView & lv);
+	GuiMathMatrix(GuiView & lv);
 
 public Q_SLOTS:
 	void slotOK();

@@ -981,6 +981,29 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_INSET_APPLY: {
+		if (!buf) {
+			enable = false;
+			break;
+		}
+		string const name = cmd.getArg(0);
+		Inset * inset = getOpenInset(name);
+		if (inset) {
+			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
+			FuncStatus fs;
+			if (!inset->getStatus(view()->cursor(), fr, fs)) {
+				// Every inset is supposed to handle this
+				BOOST_ASSERT(false);
+			}
+			flag |= fs;
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
+			flag |= getStatus(fr);
+		}
+		enable = flag.enabled();
+		break;
+	}
+
 	default:
 		if (!view()) {
 			enable = false;
@@ -997,7 +1020,9 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 
 void GuiView::dispatch(FuncRequest const & cmd)
 {
-	Buffer * buf = buffer();
+	// By default we won't need any new update.
+	Update::flags update_flags = Update::None;
+
 	switch(cmd.action) {
 		case LFUN_BUFFER_SWITCH:
 			setBuffer(theBufferList().getBuffer(to_utf8(cmd.argument())));
@@ -1092,7 +1117,7 @@ void GuiView::dispatch(FuncRequest const & cmd)
 					showDialog("character", data);
 			} else if (name == "latexlog") {
 				Buffer::LogType type; 
-				string const logfile = buf->logName(&type);
+				string const logfile = buffer()->logName(&type);
 				switch (type) {
 				case Buffer::latexlog:
 					data = "latex ";
@@ -1105,10 +1130,26 @@ void GuiView::dispatch(FuncRequest const & cmd)
 				showDialog("log", data);
 			} else if (name == "vclog") {
 				string const data = "vc " +
-					Lexer::quoteString(buf->lyxvc().getLogFile());
+					Lexer::quoteString(buffer()->lyxvc().getLogFile());
 				showDialog("log", data);
 			} else
 				showDialog(name, data);
+			break;
+		}
+
+		case LFUN_INSET_APPLY: {
+			string const name = cmd.getArg(0);
+			Inset * inset = getOpenInset(name);
+			if (inset) {
+				FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
+				inset->dispatch(view()->cursor(), fr);
+				// ideally, the update flag should be set by the insets,
+				// but this is not possible currently
+				update_flags = Update::Force | Update::FitCursor;
+			} else {
+				FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
+				lyx::dispatch(fr);
+			}
 			break;
 		}
 
@@ -1116,6 +1157,9 @@ void GuiView::dispatch(FuncRequest const & cmd)
 			theLyXFunc().setLyXView(this);
 			lyx::dispatch(cmd);
 	}
+
+	if (view())
+		view()->cursor().updateFlags(update_flags);
 }
 
 
@@ -1344,46 +1388,46 @@ void GuiView::checkStatus()
 
 
 // will be replaced by a proper factory...
-Dialog * createGuiAbout(LyXView & lv);
-Dialog * createGuiBibitem(LyXView & lv);
-Dialog * createGuiBibtex(LyXView & lv);
-Dialog * createGuiBox(LyXView & lv);
-Dialog * createGuiBranch(LyXView & lv);
-Dialog * createGuiChanges(LyXView & lv);
-Dialog * createGuiCharacter(LyXView & lv);
-Dialog * createGuiCitation(LyXView & lv);
-Dialog * createGuiDelimiter(LyXView & lv);
-Dialog * createGuiDocument(LyXView & lv);
-Dialog * createGuiErrorList(LyXView & lv);
-Dialog * createGuiERT(LyXView & lv);
-Dialog * createGuiExternal(LyXView & lv);
-Dialog * createGuiFloat(LyXView & lv);
-Dialog * createGuiGraphics(LyXView & lv);
-Dialog * createGuiInclude(LyXView & lv);
-Dialog * createGuiIndex(LyXView & lv);
-Dialog * createGuiLabel(LyXView & lv);
-Dialog * createGuiListings(LyXView & lv);
-Dialog * createGuiLog(LyXView & lv);
-Dialog * createGuiMathMatrix(LyXView & lv);
-Dialog * createGuiNomenclature(LyXView & lv);
-Dialog * createGuiNote(LyXView & lv);
-Dialog * createGuiParagraph(LyXView & lv);
-Dialog * createGuiPreferences(LyXView & lv);
-Dialog * createGuiPrint(LyXView & lv);
-Dialog * createGuiRef(LyXView & lv);
-Dialog * createGuiSearch(LyXView & lv);
-Dialog * createGuiSendTo(LyXView & lv);
-Dialog * createGuiShowFile(LyXView & lv);
-Dialog * createGuiSpellchecker(LyXView & lv);
-Dialog * createGuiTabularCreate(LyXView & lv);
-Dialog * createGuiTabular(LyXView & lv);
-Dialog * createGuiTexInfo(LyXView & lv);
-Dialog * createGuiToc(LyXView & lv);
-Dialog * createGuiThesaurus(LyXView & lv);
-Dialog * createGuiHyperlink(LyXView & lv);
-Dialog * createGuiVSpace(LyXView & lv);
-Dialog * createGuiViewSource(LyXView & lv);
-Dialog * createGuiWrap(LyXView & lv);
+Dialog * createGuiAbout(GuiView & lv);
+Dialog * createGuiBibitem(GuiView & lv);
+Dialog * createGuiBibtex(GuiView & lv);
+Dialog * createGuiBox(GuiView & lv);
+Dialog * createGuiBranch(GuiView & lv);
+Dialog * createGuiChanges(GuiView & lv);
+Dialog * createGuiCharacter(GuiView & lv);
+Dialog * createGuiCitation(GuiView & lv);
+Dialog * createGuiDelimiter(GuiView & lv);
+Dialog * createGuiDocument(GuiView & lv);
+Dialog * createGuiErrorList(GuiView & lv);
+Dialog * createGuiERT(GuiView & lv);
+Dialog * createGuiExternal(GuiView & lv);
+Dialog * createGuiFloat(GuiView & lv);
+Dialog * createGuiGraphics(GuiView & lv);
+Dialog * createGuiInclude(GuiView & lv);
+Dialog * createGuiIndex(GuiView & lv);
+Dialog * createGuiLabel(GuiView & lv);
+Dialog * createGuiListings(GuiView & lv);
+Dialog * createGuiLog(GuiView & lv);
+Dialog * createGuiMathMatrix(GuiView & lv);
+Dialog * createGuiNomenclature(GuiView & lv);
+Dialog * createGuiNote(GuiView & lv);
+Dialog * createGuiParagraph(GuiView & lv);
+Dialog * createGuiPreferences(GuiView & lv);
+Dialog * createGuiPrint(GuiView & lv);
+Dialog * createGuiRef(GuiView & lv);
+Dialog * createGuiSearch(GuiView & lv);
+Dialog * createGuiSendTo(GuiView & lv);
+Dialog * createGuiShowFile(GuiView & lv);
+Dialog * createGuiSpellchecker(GuiView & lv);
+Dialog * createGuiTabularCreate(GuiView & lv);
+Dialog * createGuiTabular(GuiView & lv);
+Dialog * createGuiTexInfo(GuiView & lv);
+Dialog * createGuiToc(GuiView & lv);
+Dialog * createGuiThesaurus(GuiView & lv);
+Dialog * createGuiHyperlink(GuiView & lv);
+Dialog * createGuiVSpace(GuiView & lv);
+Dialog * createGuiViewSource(GuiView & lv);
+Dialog * createGuiWrap(GuiView & lv);
 
 
 Dialog * GuiView::build(string const & name)

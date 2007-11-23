@@ -66,7 +66,7 @@ namespace frontend {
 using support::bformat;
 using support::contains;
 
-GuiSpellchecker::GuiSpellchecker(LyXView & lv)
+GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 	: GuiDialog(lv, "spellchecker"), exitEarly_(false),
 	  oldval_(0), newvalue_(0), count_(0), speller_(0)
 {
@@ -491,7 +491,7 @@ void GuiSpellchecker::ignoreAll()
 }
 
 
-Dialog * createGuiSpellchecker(LyXView & lv) { return new GuiSpellchecker(lv); }
+Dialog * createGuiSpellchecker(GuiView & lv) { return new GuiSpellchecker(lv); }
 
 } // namespace frontend
 } // namespace lyx

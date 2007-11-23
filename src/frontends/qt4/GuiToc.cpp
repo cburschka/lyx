@@ -229,7 +229,7 @@ void GuiToc::dispatchParams()
 }
 
 
-Dialog * createGuiToc(LyXView & lv)
+Dialog * createGuiToc(GuiView & lv)
 {
 	GuiView & guiview = static_cast<GuiView &>(lv);
 #ifdef Q_WS_MACX

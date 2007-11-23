@@ -31,7 +31,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiWrap::GuiWrap(LyXView & lv)
+GuiWrap::GuiWrap(GuiView & lv)
 	: GuiDialog(lv, "wrap")
 {
 	setupUi(this);
@@ -196,7 +196,7 @@ void GuiWrap::dispatchParams()
 }
 
 
-Dialog * createGuiWrap(LyXView & lv) { return new GuiWrap(lv); }
+Dialog * createGuiWrap(GuiView & lv) { return new GuiWrap(lv); }
 
 
 } // namespace frontend

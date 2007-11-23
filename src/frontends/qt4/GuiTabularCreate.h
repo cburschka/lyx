@@ -26,7 +26,7 @@ class GuiTabularCreate : public GuiDialog, public Ui::TabularCreateUi
 	Q_OBJECT
 
 public:
-	GuiTabularCreate(LyXView & lv);
+	GuiTabularCreate(GuiView & lv);
 
 private Q_SLOTS:
 	void columnsChanged(int);

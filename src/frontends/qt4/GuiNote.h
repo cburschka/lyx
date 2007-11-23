@@ -23,7 +23,7 @@ class GuiNote : public GuiDialog, public Ui::NoteUi
 {
 	Q_OBJECT
 public:
-	GuiNote(LyXView & lv);
+	GuiNote(GuiView & lv);
 private Q_SLOTS:
 	void change_adaptor();
 private:

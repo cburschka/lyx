@@ -24,7 +24,7 @@ class GuiWrap : public GuiDialog, public Ui::WrapUi
 	Q_OBJECT
 
 public:
-	GuiWrap(LyXView & lv);
+	GuiWrap(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

@@ -539,6 +539,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_DIALOG_SHOW:
 	case LFUN_DIALOG_UPDATE:
 	case LFUN_TOOLBAR_TOGGLE:
+	case LFUN_INSET_APPLY:
 		if (lyx_view_)
 			return lyx_view_->getStatus(cmd);
 		enable = false;
@@ -585,29 +586,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = !buf->isUnnamed() && buf->fileName().exists()
 			&& (!buf->isClean() || buf->isExternallyModified(Buffer::timestamp_method));
 		break;
-
-	case LFUN_INSET_APPLY: {
-		if (!view()) {
-			enable = false;
-			break;
-		}
-		string const name = cmd.getArg(0);
-		Inset * inset = lyx_view_->getOpenInset(name);
-		if (inset) {
-			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
-			FuncStatus fs;
-			if (!inset->getStatus(view()->cursor(), fr, fs)) {
-				// Every inset is supposed to handle this
-				BOOST_ASSERT(false);
-			}
-			flag |= fs;
-		} else {
-			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
-			flag |= getStatus(fr);
-		}
-		enable = flag.enabled();
-		break;
-	}
 
 	case LFUN_CITATION_INSERT: {
 		FuncRequest fr(LFUN_INSET_INSERT, "citation");
@@ -876,8 +854,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_DIALOG_DISCONNECT_INSET:
 		case LFUN_DIALOG_HIDE:
 		case LFUN_DIALOG_SHOW:
+		case LFUN_INSET_APPLY:
 			BOOST_ASSERT(lyx_view_);
 			lyx_view_->dispatch(cmd);
+			if (lyx_view_->view())
+				updateFlags = lyx_view_->view()->cursor().result().update();
 			break;
 
 		case LFUN_WORD_FIND_FORWARD:
@@ -1669,23 +1650,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_GRAPHICS_EDIT: {
 			FuncRequest fr(action, argument);
 			InsetGraphics().dispatch(view()->cursor(), fr);
-			break;
-		}
-
-		case LFUN_INSET_APPLY: {
-			BOOST_ASSERT(lyx_view_);
-			string const name = cmd.getArg(0);
-			Inset * inset = lyx_view_->getOpenInset(name);
-			if (inset) {
-				FuncRequest fr(LFUN_INSET_MODIFY, argument);
-				inset->dispatch(view()->cursor(), fr);
-			} else {
-				FuncRequest fr(LFUN_INSET_INSERT, argument);
-				dispatch(fr);
-			}
-			// ideally, the update flag should be set by the insets,
-			// but this is not possible currently
-			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
 

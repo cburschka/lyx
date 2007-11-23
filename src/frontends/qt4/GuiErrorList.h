@@ -26,7 +26,7 @@ class GuiErrorList : public GuiDialog, public Ui::ErrorListUi
 	Q_OBJECT
 
 public:
-	GuiErrorList(LyXView & lv);
+	GuiErrorList(GuiView & lv);
 
 public Q_SLOTS:
 	/// select an entry

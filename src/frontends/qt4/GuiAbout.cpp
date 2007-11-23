@@ -95,7 +95,7 @@ static QString version()
 }
 
 
-GuiAbout::GuiAbout(LyXView & lv)
+GuiAbout::GuiAbout(GuiView & lv)
 	: GuiDialog(lv, "aboutlyx")
 {
 	setupUi(this);
@@ -114,7 +114,7 @@ GuiAbout::GuiAbout(LyXView & lv)
 }
 
 
-Dialog * createGuiAbout(LyXView & lv) { return new GuiAbout(lv); }
+Dialog * createGuiAbout(GuiView & lv) { return new GuiAbout(lv); }
 
 
 } // namespace frontend

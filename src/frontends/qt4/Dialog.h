@@ -24,7 +24,7 @@ class FuncRequest;
 
 namespace frontend {
 
-class LyXView;
+class GuiView;
 
 /** \enum KernelDocType used to flag the different kinds of buffer
  *  without making the kernel header files available to the
@@ -47,7 +47,7 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	Dialog(LyXView & lv) : lyxview_(&lv) {}
+	Dialog(GuiView & lv) : lyxview_(&lv) {}
 	virtual ~Dialog();
 
 	/** \name Container Access
@@ -215,8 +215,8 @@ public:
 	 *  We should aim to reduce/remove these from the interface.
 	 */
 	//@{
-	LyXView & lyxview() { return *lyxview_; }
-	LyXView const & lyxview() const { return *lyxview_; }
+	GuiView & lyxview() { return *lyxview_; }
+	GuiView const & lyxview() const { return *lyxview_; }
 
 	Buffer & buffer();
 	Buffer const & buffer() const;
@@ -229,7 +229,7 @@ protected:
 	virtual void apply() {}
 
 private:
-	LyXView * lyxview_;
+	GuiView * lyxview_;
 
 private:
 	/// intentionally unimplemented, therefore uncopiable

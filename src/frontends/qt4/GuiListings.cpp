@@ -165,7 +165,7 @@ char const * font_styles_gui[] =
 
 
 
-GuiListings::GuiListings(LyXView & lv)
+GuiListings::GuiListings(GuiView & lv)
 	: GuiDialog(lv, "listings")
 {
 	setupUi(this);
@@ -642,7 +642,7 @@ void GuiListings::setParams(InsetListingsParams const & params)
 }
 
 
-Dialog * createGuiListings(LyXView & lv) { return new GuiListings(lv); }
+Dialog * createGuiListings(GuiView & lv) { return new GuiListings(lv); }
 
 
 } // namespace frontend

@@ -23,7 +23,7 @@ namespace lyx {
 namespace frontend {
 
 
-GuiBibitem::GuiBibitem(LyXView & lv)
+GuiBibitem::GuiBibitem(GuiView & lv)
 	: GuiCommand(lv, "bibitem")
 {
 	setupUi(this);
@@ -78,7 +78,7 @@ bool GuiBibitem::isValid()
 }
 
 
-Dialog * createGuiBibitem(LyXView & lv) { return new GuiBibitem(lv); }
+Dialog * createGuiBibitem(GuiView & lv) { return new GuiBibitem(lv); }
 
 
 } // namespace frontend

@@ -24,7 +24,7 @@ class GuiAbout : public GuiDialog, public Ui::AboutUi
 
 public:
 	// Constructor
-	GuiAbout(LyXView & lv);
+	GuiAbout(GuiView & lv);
 
 	// Controller stuff
 	bool initialiseParams(std::string const &) { return true; }

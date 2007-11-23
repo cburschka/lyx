@@ -36,7 +36,7 @@ struct MathSymbol {
 class GuiMath : public GuiDialog
 {
 public:
-	GuiMath(LyXView & lv, std::string const & name);
+	GuiMath(GuiView & lv, std::string const & name);
 
 	/// Nothing to initialise in this case.
 	bool initialiseParams(std::string const &) { return true; }

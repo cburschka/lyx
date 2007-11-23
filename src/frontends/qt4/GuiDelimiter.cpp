@@ -69,7 +69,7 @@ namespace lyx {
 namespace frontend {
 
 
-GuiDelimiter::GuiDelimiter(LyXView & lv)
+GuiDelimiter::GuiDelimiter(GuiView & lv)
 	: GuiMath(lv, "mathdelimiter")
 {
 	setupUi(this);
@@ -243,7 +243,7 @@ void GuiDelimiter::on_matchCB_stateChanged(int state)
 }
 
 
-Dialog * createGuiDelimiter(LyXView & lv) { return new GuiDelimiter(lv); }
+Dialog * createGuiDelimiter(GuiView & lv) { return new GuiDelimiter(lv); }
 
 
 } // namespace frontend

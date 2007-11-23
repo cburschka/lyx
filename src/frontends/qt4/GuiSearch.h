@@ -24,7 +24,7 @@ class GuiSearch : public GuiDialog, public Ui::SearchUi
 	Q_OBJECT
 
 public:
-	GuiSearch(LyXView & lv);
+	GuiSearch(GuiView & lv);
 
 private Q_SLOTS:
 	void findChanged();

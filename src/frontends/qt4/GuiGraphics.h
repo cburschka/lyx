@@ -32,14 +32,12 @@ class InsetGraphicsParams;
 
 namespace frontend {
 
-class LyXView;
-
 class GuiGraphics : public GuiDialog, public Ui::GraphicsUi
 {
 	Q_OBJECT
 
 public:
-	GuiGraphics(LyXView & lv);
+	GuiGraphics(GuiView & lv);
 	void setAutoText();
 
 private Q_SLOTS:

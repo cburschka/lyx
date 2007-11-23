@@ -51,7 +51,7 @@ class GuiCharacter : public GuiDialog, public Ui::CharacterUi
 	Q_OBJECT
 
 public:
-	GuiCharacter(LyXView & lv);
+	GuiCharacter(GuiView & lv);
 
 protected Q_SLOTS:
 	void change_adaptor();

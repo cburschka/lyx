@@ -75,7 +75,7 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 }
 
 
-GuiCitation::GuiCitation(LyXView & lv)
+GuiCitation::GuiCitation(GuiView & lv)
 	: GuiCommand(lv, "citation")
 {
 	setupUi(this);
@@ -741,7 +741,7 @@ vector<docstring> GuiCitation::searchKeys(
 }
 
 
-Dialog * createGuiCitation(LyXView & lv) { return new GuiCitation(lv); }
+Dialog * createGuiCitation(GuiView & lv) { return new GuiCitation(lv); }
 
 
 } // namespace frontend

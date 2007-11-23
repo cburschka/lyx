@@ -42,7 +42,7 @@ class GuiParagraph
 {
 	Q_OBJECT
 public:
-	GuiParagraph(LyXView & lv);
+	GuiParagraph(GuiView & lv);
 
 	/// update
 	void updateView();

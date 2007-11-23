@@ -38,7 +38,7 @@ static void uniqueInsert(QComboBox * box, QString const & text)
 }
 
 
-GuiSearch::GuiSearch(LyXView & lv)
+GuiSearch::GuiSearch(GuiView & lv)
 	: GuiDialog(lv, "findreplace")
 {
 	setupUi(this);
@@ -142,7 +142,7 @@ void GuiSearch::replace(docstring const & search, docstring const & replace,
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }
 
-Dialog * createGuiSearch(LyXView & lv) { return new GuiSearch(lv); }
+Dialog * createGuiSearch(GuiView & lv) { return new GuiSearch(lv); }
 
 
 } // namespace frontend

@@ -230,10 +230,11 @@ public:
 	void hideDialog(std::string const & name, Inset * inset);
 	///
 	void disconnectDialog(std::string const & name);
+
+private:
 	///
 	Inset * getOpenInset(std::string const & name) const;
 
-private:
 	/// Is the dialog currently visible?
 	bool isDialogVisible(std::string const & name) const;
 	///

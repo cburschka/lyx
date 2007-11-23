@@ -85,7 +85,7 @@ static string texFileFromList(string const & file, string const & type)
 }
 
 
-GuiTexInfo::GuiTexInfo(LyXView & lv)
+GuiTexInfo::GuiTexInfo(GuiView & lv)
 	: GuiDialog(lv, "texinfo")
 {
 	setupUi(this);
@@ -240,7 +240,7 @@ string GuiTexInfo::fileType(TexFileType type) const
 }
 
 
-Dialog * createGuiTexInfo(LyXView & lv) { return new GuiTexInfo(lv); }
+Dialog * createGuiTexInfo(GuiView & lv) { return new GuiTexInfo(lv); }
 
 
 } // namespace frontend

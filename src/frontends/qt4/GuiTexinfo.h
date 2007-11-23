@@ -30,7 +30,7 @@ class GuiTexInfo : public GuiDialog, public Ui::TexinfoUi
 
 public:
 	///
-	GuiTexInfo(LyXView & lv);
+	GuiTexInfo(GuiView & lv);
 	/// the file extensions. order matters in GuiTexInfo::fileType()
 	enum TexFileType { ClsType, StyType, BstType };
 

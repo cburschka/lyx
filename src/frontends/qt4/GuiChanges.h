@@ -26,7 +26,7 @@ class GuiChanges : public GuiDialog, public Ui::ChangesUi
 	Q_OBJECT
 
 public:
-	GuiChanges(LyXView & lv);
+	GuiChanges(GuiView & lv);
 
 protected Q_SLOTS:
 	/// accept the current change

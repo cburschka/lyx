@@ -75,7 +75,7 @@ class GuiDocument : public GuiDialog, public Ui::DocumentUi
 {
 	Q_OBJECT
 public:
-	GuiDocument(LyXView & lv);
+	GuiDocument(GuiView & lv);
 
 	void updateParams(BufferParams const & params);
 	void apply(BufferParams & params);

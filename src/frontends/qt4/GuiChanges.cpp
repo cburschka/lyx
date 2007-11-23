@@ -36,7 +36,7 @@ namespace frontend {
 
 using support::bformat;
 
-GuiChanges::GuiChanges(LyXView & lv)
+GuiChanges::GuiChanges(GuiView & lv)
 	: GuiDialog(lv, "changes")
 {
 	setupUi(this);
@@ -124,7 +124,7 @@ void GuiChanges::rejectChange()
 }
 
 
-Dialog * createGuiChanges(LyXView & lv) { return new GuiChanges(lv); }
+Dialog * createGuiChanges(GuiView & lv) { return new GuiChanges(lv); }
 
 
 } // namespace frontend

@@ -29,7 +29,7 @@ class GuiRef : public GuiCommand, public Ui::RefUi
 	Q_OBJECT
 
 public:
-	GuiRef(LyXView & lv);
+	GuiRef(GuiView & lv);
 
 private Q_SLOTS:
 	void changed_adaptor();

@@ -25,7 +25,7 @@ class GuiHyperlink : public GuiCommand, public Ui::HyperlinkUi
 	Q_OBJECT
 
 public:
-	GuiHyperlink(LyXView & lv);
+	GuiHyperlink(GuiView & lv);
 
 public Q_SLOTS:
 	void changed_adaptor();

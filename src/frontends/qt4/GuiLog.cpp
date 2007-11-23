@@ -102,7 +102,7 @@ void LogHighlighter::highlightBlock(QString const & text)
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiLog::GuiLog(LyXView & lv)
+GuiLog::GuiLog(GuiView & lv)
 	: GuiDialog(lv, "log"), type_(LatexLog)
 {
 	setupUi(this);
@@ -237,7 +237,7 @@ void GuiLog::on_copyPB_clicked()
 }
 
 
-Dialog * createGuiLog(LyXView & lv) { return new GuiLog(lv); }
+Dialog * createGuiLog(GuiView & lv) { return new GuiLog(lv); }
 
 
 } // namespace frontend

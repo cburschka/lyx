@@ -31,7 +31,7 @@ class GuiSendTo : public GuiDialog, public Ui::SendtoUi
 	Q_OBJECT
 
 public:
-	GuiSendTo(LyXView & lv);
+	GuiSendTo(GuiView & lv);
 
 private Q_SLOTS:
 	void changed_adaptor();

@@ -53,7 +53,7 @@ using support::split;
 using support::trim;
 
 
-GuiBibtex::GuiBibtex(LyXView & lv)
+GuiBibtex::GuiBibtex(GuiView & lv)
 	: GuiCommand(lv, "bibtex")
 {
 	setupUi(this);
@@ -495,7 +495,7 @@ string const GuiBibtex::getStylefile() const
 }
 
 
-Dialog * createGuiBibtex(LyXView & lv) { return new GuiBibtex(lv); }
+Dialog * createGuiBibtex(GuiView & lv) { return new GuiBibtex(lv); }
 
 
 } // namespace frontend

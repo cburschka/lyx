@@ -29,7 +29,7 @@ class GuiLog : public GuiDialog, public Ui::LogUi
 	Q_OBJECT
 
 public:
-	GuiLog(LyXView & lv);
+	GuiLog(GuiView & lv);
 
 private Q_SLOTS:
 	void updateContents();

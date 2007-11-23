@@ -27,7 +27,7 @@ class GuiVSpace : public GuiDialog, public Ui::VSpaceUi
 	Q_OBJECT
 
 public:
-	GuiVSpace(LyXView & lv);
+	GuiVSpace(GuiView & lv);
 
 private Q_SLOTS:
 	///

@@ -26,7 +26,7 @@ class GuiBibitem : public GuiCommand, public Ui::BibitemUi
 	Q_OBJECT
 
 public:
-	GuiBibitem(LyXView & lv);
+	GuiBibitem(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

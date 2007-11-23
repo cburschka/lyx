@@ -2117,7 +2117,7 @@ void PrefIdentity::update(LyXRC const & rc)
 //
 /////////////////////////////////////////////////////////////////////
 
-GuiPreferences::GuiPreferences(LyXView & lv)
+GuiPreferences::GuiPreferences(GuiView & lv)
 	: GuiDialog(lv, "prefs"), update_screen_font_(false)
 {
 	setupUi(this);
@@ -2386,7 +2386,7 @@ int GuiPreferences::fromPaperSize(PAPER_SIZE papersize) const
 }
 
 
-Dialog * createGuiPreferences(LyXView & lv) { return new GuiPreferences(lv); }
+Dialog * createGuiPreferences(GuiView & lv) { return new GuiPreferences(lv); }
 
 
 } // namespace frontend

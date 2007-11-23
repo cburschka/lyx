@@ -41,7 +41,7 @@ class GuiExternal : public GuiDialog, public Ui::ExternalUi
 	Q_OBJECT
 
 public:
-	GuiExternal(LyXView & lv);
+	GuiExternal(GuiView & lv);
 
 private Q_SLOTS:
 	void bbChanged();

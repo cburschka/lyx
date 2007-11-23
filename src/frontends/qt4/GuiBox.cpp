@@ -73,7 +73,7 @@ void box_gui_tokens_special_length(vector<string> & ids,
 }
 
 
-GuiBox::GuiBox(LyXView & lv)
+GuiBox::GuiBox(GuiView & lv)
 	: GuiDialog(lv, "box"), params_("")
 {
 	setupUi(this);
@@ -436,7 +436,7 @@ void GuiBox::dispatchParams()
 }
 
 
-Dialog * createGuiBox(LyXView & lv) { return new GuiBox(lv); }
+Dialog * createGuiBox(GuiView & lv) { return new GuiBox(lv); }
 
 
 } // namespace frontend

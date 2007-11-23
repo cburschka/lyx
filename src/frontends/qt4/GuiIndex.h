@@ -24,7 +24,7 @@ class GuiIndexDialogBase : public GuiCommand, public Ui::IndexUi
 	Q_OBJECT
 
 public:
-	GuiIndexDialogBase(LyXView & lv, docstring const & title,
+	GuiIndexDialogBase(GuiView & lv, docstring const & title,
 		QString const & label, std::string const & name);
 
 private Q_SLOTS:
@@ -49,14 +49,14 @@ private:
 class GuiIndex : public GuiIndexDialogBase
 {
 public:
-	GuiIndex(LyXView & lv);
+	GuiIndex(GuiView & lv);
 };
 
 
 class GuiLabel : public GuiIndexDialogBase
 {
 public:
-	GuiLabel(LyXView & lv);
+	GuiLabel(GuiView & lv);
 };
 
 

@@ -100,7 +100,7 @@ char const * const origin_gui_strs[] = {
 } // namespace anon
 
 
-GuiExternal::GuiExternal(LyXView & lv)
+GuiExternal::GuiExternal(GuiView & lv)
 	: GuiDialog(lv, "external"), bbChanged_(false)
 {
 	setupUi(this);
@@ -831,7 +831,7 @@ string const GuiExternal::readBB(string const & file)
 }
 
 
-Dialog * createGuiExternal(LyXView & lv) { return new GuiExternal(lv); }
+Dialog * createGuiExternal(GuiView & lv) { return new GuiExternal(lv); }
 
 
 } // namespace frontend

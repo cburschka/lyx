@@ -11,24 +11,25 @@
 
 #include <config.h>
 
-#include "LyXFunc.h"
-#include "FuncStatus.h"
-#include "FuncRequest.h"
-#include "LyXView.h"
+#include "InsertTableWidget.h"
 
+#include "GuiView.h"
 #include "qt_helpers.h"
 
-#include "InsertTableWidget.h"
+#include "FuncStatus.h"
+#include "FuncRequest.h"
+#include "LyXFunc.h"
+
 #include <QMouseEvent>
+#include <QPainter>
 #include <QString>
 #include <QToolTip>
-#include <QPainter>
 
 
 namespace lyx {
 namespace frontend {
 
-InsertTableWidget::InsertTableWidget(LyXView & lyxView, QWidget * parent)
+InsertTableWidget::InsertTableWidget(GuiView & lyxView, QWidget * parent)
 	: QWidget(parent, Qt::Popup), colwidth_(20), rowheight_(12), lyxView_(lyxView)
 {
 	init();

@@ -28,7 +28,7 @@ class GuiBox : public GuiDialog, public Ui::BoxUi
 	Q_OBJECT
 
 public:
-	GuiBox(LyXView & lv);
+	GuiBox(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

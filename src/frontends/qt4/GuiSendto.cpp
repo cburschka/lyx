@@ -36,7 +36,7 @@ namespace frontend {
 
 using support::trim;
 
-GuiSendTo::GuiSendTo(LyXView & lv)
+GuiSendTo::GuiSendTo(GuiView & lv)
 	: GuiDialog(lv, "sendto")
 {
 	setupUi(this);
@@ -190,7 +190,7 @@ vector<Format const *> GuiSendTo::allFormats() const
 }
 
 
-Dialog * createGuiSendTo(LyXView & lv) { return new GuiSendTo(lv); }
+Dialog * createGuiSendTo(GuiView & lv) { return new GuiSendTo(lv); }
 
 
 } // namespace frontend

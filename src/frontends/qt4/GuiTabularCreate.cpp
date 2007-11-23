@@ -27,7 +27,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiTabularCreate::GuiTabularCreate(LyXView & lv)
+GuiTabularCreate::GuiTabularCreate(GuiView & lv)
 	: GuiDialog(lv, "tabularcreate")
 {
 	setupUi(this);
@@ -91,7 +91,7 @@ void GuiTabularCreate::dispatchParams()
 }
 
 
-Dialog * createGuiTabularCreate(LyXView & lv)
+Dialog * createGuiTabularCreate(GuiView & lv)
 {
 	return new GuiTabularCreate(lv);
 }

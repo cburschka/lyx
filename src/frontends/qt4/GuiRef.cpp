@@ -42,7 +42,7 @@ namespace frontend {
 using support::makeAbsPath;
 using support::makeDisplayPath;
 
-GuiRef::GuiRef(LyXView & lv)
+GuiRef::GuiRef(GuiView & lv)
 	: GuiCommand(lv, "ref")
 {
 	setupUi(this);
@@ -372,7 +372,7 @@ void GuiRef::gotoBookmark()
 }
 
 
-Dialog * createGuiRef(LyXView & lv) { return new GuiRef(lv); }
+Dialog * createGuiRef(GuiView & lv) { return new GuiRef(lv); }
 
 
 } // namespace frontend

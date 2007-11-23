@@ -30,7 +30,7 @@ class GuiPrint : public GuiDialog, public Ui::PrintUi
 	Q_OBJECT
 
 public:
-	GuiPrint(LyXView & lv);
+	GuiPrint(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

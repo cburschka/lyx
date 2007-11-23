@@ -25,7 +25,7 @@ class GuiDelimiter : public GuiMath, public Ui::DelimiterUi
 	Q_OBJECT
 
 public:
-	GuiDelimiter(LyXView & lv);
+	GuiDelimiter(GuiView & lv);
 
 public Q_SLOTS:
 	void on_leftLW_itemActivated(QListWidgetItem *);

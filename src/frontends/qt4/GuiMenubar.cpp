@@ -37,8 +37,8 @@ namespace frontend {
 
 // MacOSX specific stuff is at the end.
 
-GuiMenubar::GuiMenubar(LyXView * view, MenuBackend & mbe)
-	: owner_(static_cast<GuiView*>(view)), menubackend_(mbe)
+GuiMenubar::GuiMenubar(GuiView * view, MenuBackend & mbe)
+	: owner_(view), menubackend_(mbe)
 {
 	init();
 }

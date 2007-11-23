@@ -12,12 +12,12 @@
 
 #include "Dialog.h"
 
+#include "GuiView.h"
+
 #include "Buffer.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyXFunc.h"
-
-#include "LyXView.h"
 
 
 namespace lyx {

@@ -33,7 +33,7 @@ using std::vector;
 namespace lyx {
 namespace frontend {
 
-GuiBranch::GuiBranch(LyXView & lv)
+GuiBranch::GuiBranch(GuiView & lv)
 	: GuiDialog(lv, "branch")
 {
 	setupUi(this);
@@ -111,7 +111,7 @@ void GuiBranch::dispatchParams()
 }
 
 
-Dialog * createGuiBranch(LyXView & lv) { return new GuiBranch(lv); }
+Dialog * createGuiBranch(GuiView & lv) { return new GuiBranch(lv); }
 
 
 } // namespace frontend

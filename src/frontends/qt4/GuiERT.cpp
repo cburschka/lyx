@@ -24,7 +24,7 @@
 namespace lyx {
 namespace frontend {
 
-GuiERT::GuiERT(LyXView & lv)
+GuiERT::GuiERT(GuiView & lv)
 	: GuiDialog(lv, "ert"), status_(InsetERT::Collapsed)
 {
 	setupUi(this);
@@ -91,7 +91,7 @@ void GuiERT::dispatchParams()
 }
 
 
-Dialog * createGuiERT(LyXView & lv) { return new GuiERT(lv); }
+Dialog * createGuiERT(GuiView & lv) { return new GuiERT(lv); }
 
 
 } // namespace frontend

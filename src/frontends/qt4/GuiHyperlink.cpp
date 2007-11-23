@@ -26,7 +26,7 @@
 namespace lyx {
 namespace frontend {
 
-GuiHyperlink::GuiHyperlink(LyXView & lv)
+GuiHyperlink::GuiHyperlink(GuiView & lv)
 	: GuiCommand(lv, "href")
 {
 	setupUi(this);
@@ -107,7 +107,7 @@ bool GuiHyperlink::isValid()
 }
 
 
-Dialog * createGuiHyperlink(LyXView & lv) { return new GuiHyperlink(lv); }
+Dialog * createGuiHyperlink(GuiView & lv) { return new GuiHyperlink(lv); }
 
 
 } // namespace frontend

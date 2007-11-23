@@ -42,7 +42,7 @@ namespace frontend {
 using support::FileFilterList;
 
 
-GuiPrint::GuiPrint(LyXView & lv)
+GuiPrint::GuiPrint(GuiView & lv)
 	: GuiDialog(lv, "print")
 {
 	setupUi(this);
@@ -257,7 +257,7 @@ void GuiPrint::dispatchParams()
 }
 
 
-Dialog * createGuiPrint(LyXView & lv) { return new GuiPrint(lv); }
+Dialog * createGuiPrint(GuiView & lv) { return new GuiPrint(lv); }
 
 
 } // namespace frontend

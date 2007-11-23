@@ -426,7 +426,7 @@ class GuiPreferences : public GuiDialog, public Ui::PrefsUi
 {
 	Q_OBJECT
 public:
-	GuiPreferences(LyXView & lv);
+	GuiPreferences(GuiView & lv);
 
 	void apply(LyXRC & rc) const;
 	void updateRc(LyXRC const & rc);

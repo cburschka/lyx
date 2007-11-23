@@ -48,7 +48,7 @@ using std::endl;
 namespace lyx {
 namespace frontend {
 
-GuiParagraph::GuiParagraph(LyXView & lv)
+GuiParagraph::GuiParagraph(GuiView & lv)
 	: Dialog(lv)
 {
 	setupUi(this);
@@ -328,7 +328,7 @@ LyXAlignment GuiParagraph::alignDefault() const
 }
 
 
-Dialog * createGuiParagraph(LyXView & lv)
+Dialog * createGuiParagraph(GuiView & lv)
 {
 #if 0
 	GuiView & guiview = static_cast<GuiView &>(lv);

@@ -37,7 +37,7 @@ public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
-	explicit GuiDialog(LyXView & lv, std::string const & name);
+	explicit GuiDialog(GuiView & lv, std::string const & name);
 	~GuiDialog();
 
 public Q_SLOTS:
@@ -141,7 +141,7 @@ class GuiCommand : public GuiDialog
 public:
 	/// We need to know with what sort of inset we're associated.
 	// FIXME This should probably be an InsetCode
-	GuiCommand(LyXView &, std::string const & name);
+	GuiCommand(GuiView &, std::string const & name);
 	///
 	bool initialiseParams(std::string const & data);
 	/// clean-up on hide.

@@ -25,7 +25,7 @@ class GuiFloat : public GuiDialog, public Ui::FloatUi
 	Q_OBJECT
 
 public:
-	GuiFloat(LyXView & lv);
+	GuiFloat(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

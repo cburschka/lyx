@@ -44,7 +44,7 @@ class GuiBibtex : public GuiCommand, public Ui::BibtexUi
 	Q_OBJECT
 
 public:
-	GuiBibtex(LyXView & lv);
+	GuiBibtex(GuiView & lv);
 
 private Q_SLOTS:
 	void change_adaptor();

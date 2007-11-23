@@ -26,7 +26,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiFloat::GuiFloat(LyXView & lv)
+GuiFloat::GuiFloat(GuiView & lv)
 	: GuiDialog(lv, "float")
 {
 	setupUi(this);
@@ -99,7 +99,7 @@ void GuiFloat::dispatchParams()
 }
 
 
-Dialog * createGuiFloat(LyXView & lv) { return new GuiFloat(lv); }
+Dialog * createGuiFloat(GuiView & lv) { return new GuiFloat(lv); }
 
 
 } // namespace frontend

@@ -40,7 +40,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiVSpace::GuiVSpace(LyXView & lv)
+GuiVSpace::GuiVSpace(GuiView & lv)
 	: GuiDialog(lv, "vspace")
 {
 	setupUi(this);
@@ -196,7 +196,7 @@ void GuiVSpace::dispatchParams()
 }
 
 
-Dialog * createGuiVSpace(LyXView & lv) { return new GuiVSpace(lv); }
+Dialog * createGuiVSpace(GuiView & lv) { return new GuiVSpace(lv); }
 
 
 } // namespace frontend

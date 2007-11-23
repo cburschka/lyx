@@ -32,7 +32,7 @@ class GuiSpellchecker : public GuiDialog, public Ui::SpellcheckerUi
 	Q_OBJECT
 
 public:
-	GuiSpellchecker(LyXView & lv);
+	GuiSpellchecker(GuiView & lv);
 	~GuiSpellchecker();
 
 public Q_SLOTS:

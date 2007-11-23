@@ -57,7 +57,7 @@ using support::getStringFromVector;
 using support::getVectorFromString;
 
 
-GuiInclude::GuiInclude(LyXView & lv)
+GuiInclude::GuiInclude(GuiView & lv)
 	: GuiCommand(lv, "include")
 {
 	setupUi(this);
@@ -358,7 +358,7 @@ void GuiInclude::edit(string const & file)
 }
 
 
-Dialog * createGuiInclude(LyXView & lv) { return new GuiInclude(lv); }
+Dialog * createGuiInclude(GuiView & lv) { return new GuiInclude(lv); }
 
 
 } // namespace frontend

@@ -37,7 +37,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-GuiTabular::GuiTabular(LyXView & lv)
+GuiTabular::GuiTabular(GuiView & lv)
 	: GuiDialog(lv, "tabular")
 {
 	active_cell_ = Tabular::npos;
@@ -1155,7 +1155,7 @@ void GuiTabular::longTabular(bool yes)
 }
 
 
-Dialog * createGuiTabular(LyXView & lv) { return new GuiTabular(lv); }
+Dialog * createGuiTabular(GuiView & lv) { return new GuiTabular(lv); }
 
 
 } // namespace frontend

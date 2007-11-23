@@ -32,7 +32,7 @@ namespace frontend {
 //
 /////////////////////////////////////////////////////////////////
 
-GuiIndexDialogBase::GuiIndexDialogBase(LyXView & lv,
+GuiIndexDialogBase::GuiIndexDialogBase(GuiView & lv,
 		docstring const & title, QString const & label, std::string const & name)
 	: GuiCommand(lv, name)
 {
@@ -118,7 +118,7 @@ bool GuiIndexDialogBase::isValid()
 /////////////////////////////////////////////////////////////////
 
 
-GuiIndex::GuiIndex(LyXView & lv)
+GuiIndex::GuiIndex(GuiView & lv)
 	: GuiIndexDialogBase(lv, _("Index Entry"), qt_("&Keyword:"), "index") 
 {
 	keywordED->setWhatsThis( qt_(
@@ -139,7 +139,7 @@ GuiIndex::GuiIndex(LyXView & lv)
 }
 
 
-Dialog * createGuiIndex(LyXView & lv) { return new GuiIndex(lv); }
+Dialog * createGuiIndex(GuiView & lv) { return new GuiIndex(lv); }
 
 
 /////////////////////////////////////////////////////////////////
@@ -148,12 +148,12 @@ Dialog * createGuiIndex(LyXView & lv) { return new GuiIndex(lv); }
 //
 /////////////////////////////////////////////////////////////////
 
-GuiLabel::GuiLabel(LyXView & lv)
+GuiLabel::GuiLabel(GuiView & lv)
 	: GuiIndexDialogBase(lv, _("Label"), qt_("&Label:"), "label")
 {}
 
 
-Dialog * createGuiLabel(LyXView & lv) { return new GuiLabel(lv); }
+Dialog * createGuiLabel(GuiView & lv) { return new GuiLabel(lv); }
 
 
 } // namespace frontend

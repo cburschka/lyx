@@ -27,7 +27,7 @@ namespace frontend {
 using support::FileName;
 using support::onlyFilename;
 
-GuiShowFile::GuiShowFile(LyXView & lv)
+GuiShowFile::GuiShowFile(GuiView & lv)
 	: GuiDialog(lv, "file")
 {
 	setupUi(this);
@@ -72,7 +72,7 @@ void GuiShowFile::clearParams()
 }
 
 
-Dialog * createGuiShowFile(LyXView & lv) { return new GuiShowFile(lv); }
+Dialog * createGuiShowFile(GuiView & lv) { return new GuiShowFile(lv); }
 
 
 } // namespace frontend
