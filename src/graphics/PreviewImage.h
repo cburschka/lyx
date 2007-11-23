@@ -18,6 +18,8 @@ namespace lyx {
 
 namespace support { class FileName; }
 
+class Dimension;
+
 namespace graphics {
 
 class PreviewLoader;
@@ -38,11 +40,7 @@ public:
 	///
 	std::string const & snippet() const;
 	///
-	int ascent() const;
-	///
-	int descent() const;
-	///
-	int width() const;
+	Dimension dim() const;
 
 	/** If the image is not yet loaded (WaitingToLoad), then this method
 	 *  triggers that.

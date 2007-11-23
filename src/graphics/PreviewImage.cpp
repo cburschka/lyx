@@ -74,31 +74,17 @@ string const & PreviewImage::snippet() const
 }
 
 
-int PreviewImage::ascent() const
+Dimension PreviewImage::dim() const
 {
+	Dimension dim;
 	Image const * const image = pimpl_->iloader_.image();
 	if (!image)
-		return 0;
+		return dim;
 
-	return int(pimpl_->ascent_frac_ * double(image->height()));
-}
-
-
-int PreviewImage::descent() const
-{
-	Image const * const image = pimpl_->iloader_.image();
-	if (!image)
-		return 0;
-
-	// Avoids rounding errors.
-	return image->height() - ascent();
-}
-
-
-int PreviewImage::width() const
-{
-	Image const * const image = pimpl_->iloader_.image();
-	return image ? image->width() : 0;
+	dim.asc = int(pimpl_->ascent_frac_ * double(image->height()));
+	dim.des = image->height() - dim.asc;
+	dim.wid = image->width();
+	return dim;
 }
 
 
