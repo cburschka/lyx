@@ -10,11 +10,8 @@ End
 
 
 Style Chapter
-	LabelType             Counter
-	LabelCounter          chapter
 	LabelString           "Chapter \arabic{chapter}"
 	LabelStringAppendix   "Appendix \Alph{chapter}"
-	TocLevel              0
 End
 
 

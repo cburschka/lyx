@@ -10,6 +10,14 @@ Style Part
 End
 
 
+# this will be removed later for real articles
+Style Chapter
+	LabelType             Counter
+	LabelCounter          chapter
+	TocLevel              0
+End
+
+
 Style Section
 	LabelType             Counter
 	LabelCounter          section
