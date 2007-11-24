@@ -348,7 +348,7 @@ string FileName::guessFormatFromContents() const
 	// Z	\037\235		UNIX compress
 	// paranoia check
 
-	if (empty() || !isReadable())
+	if (empty() || !isFileReadable())
 		return string();
 
 	ifstream ifs(toFilesystemEncoding().c_str());

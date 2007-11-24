@@ -231,7 +231,7 @@ FileName const fileSearch(string const & path, string const & name,
 	string const tmpname = replaceEnvironmentPath(name);
 	FileName fullname(makeAbsPath(tmpname, path));
 	// search first without extension, then with it.
-	if (fullname.isReadable())
+	if (fullname.isFileReadable())
 		return fullname;
 	if (ext.empty())
 		// We are done.
@@ -240,7 +240,7 @@ FileName const fileSearch(string const & path, string const & name,
 	// fullname.
 	if (getExtension(fullname.absFilename()) != ext)
 		fullname = FileName(addExtension(fullname.absFilename(), ext));
-	if (fullname.isReadable() || mode == allow_unreadable)
+	if (fullname.isFileReadable() || mode == allow_unreadable)
 		return fullname;
 	return FileName();
 }
