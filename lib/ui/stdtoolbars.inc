@@ -549,9 +549,6 @@ ToolbarSet
 		Item "mathcal L" "math-insert \mathcal L"
 		Item "mathcal H" "math-insert \mathcal H"
 		Item "mathcal O" "math-insert \mathcal O"
-		Item "phantom" "math-insert \phantom"
-		Item "vphantom" "math-insert \vphantom"
-		Item "hphantom" "math-insert \hphantom"
 	End
 	
 	Toolbar "latex_varsz" "Big Operators"
