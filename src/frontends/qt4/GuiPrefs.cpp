@@ -59,18 +59,14 @@
 #include <QValidator>
 #include <QCloseEvent>
 
-#include <boost/tuple/tuple.hpp>
-
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
-#include <utility>
 
 using namespace Ui;
 
 using std::endl;
 using std::ostringstream;
-using std::pair;
 using std::string;
 using std::vector;
 
@@ -108,13 +104,18 @@ static size_t findPos_helper(std::vector<A> const & vec, A const & val)
 }
 
 
-static std::pair<string, string> parseFontName(string const & name)
+static void parseFontName(QString const & mangled0,
+	string & name, string & foundry)
 {
-	size_t const idx = name.find('[');
-	if (idx == string::npos || idx == 0)
-		return make_pair(name, string());
-	return make_pair(name.substr(0, idx - 1),
-			 name.substr(idx + 1, name.size() - idx - 2));
+	std::string mangled = fromqstr(mangled0);
+	size_t const idx = mangled.find('[');
+	if (idx == string::npos || idx == 0) {
+		name = mangled;
+		foundry.clear();
+	} else {
+		name = mangled.substr(0, idx - 1),
+		foundry = mangled.substr(idx + 1, mangled.size() - idx - 2);
+	}
 }
 
 
@@ -136,20 +137,23 @@ static void setComboxFont(QComboBox * cb, string const & family,
 
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count(); --i >= 0;) {
-		pair<string, string> tmp = parseFontName(fromqstr(cb->itemText(i)));
-		if (compare_ascii_no_case(tmp.first, family) == 0) {
+		string name, foundry;
+		parseFontName(cb->itemText(i), name, foundry);
+		if (compare_ascii_no_case(name, family) == 0) {
 			cb->setCurrentIndex(i);
 			return;
 		}
 	}
 
 	// family alone can contain e.g. "Helvetica [Adobe]"
-	pair<string, string> tmpfam = parseFontName(family);
+	string tmpname, tmpfoundry;
+	parseFontName(toqstr(family), tmpname, tmpfoundry);
 
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count(); --i >= 0; ) {
-		pair<string, string> tmp = parseFontName(fromqstr(cb->itemText(i)));
-		if (compare_ascii_no_case(tmp.first, tmpfam.first) == 0) {
+		string name, foundry;
+		parseFontName(cb->itemText(i), name, foundry);
+		if (compare_ascii_no_case(name, foundry) == 0) {
 			cb->setCurrentIndex(i);
 			return;
 		}
@@ -178,8 +182,8 @@ static void setComboxFont(QComboBox * cb, string const & family,
 	}
 
 	QFontInfo info(font);
-	pair<string, string> tmp = parseFontName(fromqstr(info.family()));
-	string const & default_font_name = tmp.first;
+	string default_font_name, dummyfoundry;
+	parseFontName(info.family(), default_font_name, dummyfoundry);
 	lyxerr << "Apparent font is " << default_font_name << endl;
 
 	for (int i = 0; i < cb->count(); ++i) {
@@ -465,12 +469,12 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 {
 	LyXRC const oldrc = rc;
 
-	boost::tie(rc.roman_font_name, rc.roman_font_foundry)
-		= parseFontName(fromqstr(screenRomanCO->currentText()));
-	boost::tie(rc.sans_font_name, rc.sans_font_foundry) =
-		parseFontName(fromqstr(screenSansCO->currentText()));
-	boost::tie(rc.typewriter_font_name, rc.typewriter_font_foundry) =
-		parseFontName(fromqstr(screenTypewriterCO->currentText()));
+	parseFontName(screenRomanCO->currentText(),
+		rc.roman_font_name, rc.roman_font_foundry);
+	parseFontName(screenSansCO->currentText(),
+		rc.sans_font_name, rc.sans_font_foundry);
+	parseFontName(screenTypewriterCO->currentText(),
+		rc.typewriter_font_name, rc.typewriter_font_foundry);
 
 	rc.zoom = screenZoomSB->value();
 	rc.dpi = screenDpiSB->value();
@@ -680,7 +684,7 @@ void PrefDisplay::apply(LyXRC & rc) const
 		case 2:	rc.preview = LyXRC::PREVIEW_ON;	break;
 	}
 
-	lyx::graphics::DisplayType dtype;
+	graphics::DisplayType dtype;
 	switch (displayGraphicsCO->currentIndex()) {
 		case 3:	dtype = graphics::NoDisplay; break;
 		case 2:	dtype = graphics::ColorDisplay; break;
