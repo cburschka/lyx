@@ -33,7 +33,7 @@
 
 using std::cerr;
 using std::endl;
-
+using std::find;
 using std::map;
 using std::ostream;
 using std::ostringstream;
@@ -104,7 +104,7 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 }
 
 
-char const * const known_latex_commands[] = { "ref", "cite", "label", "href",
+char const * const known_latex_commands[] = { "ref", "cite", "label",
  "index", "printindex", "pageref", "url", "vref", "vpageref", "prettyref",
  "eqref", 0 };
 
@@ -2211,6 +2211,32 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << "\n";
 			skip_braces(p); // eat {}
+		}
+
+		else if (t.cs() == "href") {
+			context.check_layout(os);
+			begin_inset(os, "CommandInset ");
+			os << t.cs() << "\n";
+			os << "LatexCommand " << t.cs() << "\n";
+			bool erase = false;
+			size_t pos;
+			// the first argument is "type:target", "type:" is optional
+			// the second argument the name
+			string href_target = subst(p.verbatim_item(), "\n", " ");
+			string href_name = subst(p.verbatim_item(), "\n", " ");
+			string href_type;
+			// serach for the ":" to divide type from target
+			if ((pos = href_target.find(":", 0)) != string::npos){
+				href_type = href_target;
+				href_type.erase(pos + 1, href_type.length());
+				href_target.erase(0, pos + 1);
+			    erase = true;											
+			}
+			os << "name " << '"' << href_name << '"' << "\n";
+			os << "target " << '"' << href_target << '"' << "\n";
+			if(erase)
+				os << "type " << '"' << href_type << '"' << "\n";
+			end_inset(os);
 		}
 
 		else if (t.cs() == "input" || t.cs() == "include"
