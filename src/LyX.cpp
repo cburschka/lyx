@@ -626,7 +626,7 @@ void LyX::execBatchCommands()
 void LyX::restoreGuiSession()
 {
 	// create the main window
-	pimpl_->application_->createView(geometryArg);
+	pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_WINDOW_NEW, geometryArg));
 
 	// if there is no valid class list, do not load any file. 
 	if (textclasslist.empty())

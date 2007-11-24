@@ -209,10 +209,6 @@ public:
 	* @param fd socket descriptor (file/socket/etc)
 	*/
 	virtual void unregisterSocketCallback(int fd) = 0;
-
-	/// Create the main window with given geometry settings.
-	/// \param geometry_arg: only for Windows platform.
-	virtual void createView(std::string const & geometry_arg = std::string()) = 0;
 };
 
 } // namespace frontend

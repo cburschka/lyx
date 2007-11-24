@@ -242,7 +242,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 	switch(cmd.action) {
 
 	case LFUN_WINDOW_NEW:
-		createView();
+		createView(toqstr(cmd.argument()));
 		break;
 
 	case LFUN_WINDOW_CLOSE:
@@ -305,7 +305,7 @@ static void updateIds(map<int, GuiView *> const & stdmap, vector<int> & ids)
 }
 
 
-void GuiApplication::createView(string const & geometry_arg)
+void GuiApplication::createView(QString const & geometry_arg)
 {
 	updateIds(views_, view_ids_);
 	int id = 0;
@@ -318,12 +318,12 @@ void GuiApplication::createView(string const & geometry_arg)
 	theLyXFunc().setLyXView(view);
 
 	view->show();
-	if (!geometry_arg.empty()) {
+	if (!geometry_arg.isEmpty()) {
 #ifdef Q_WS_WIN
 		int x, y;
 		int w, h;
 		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)([+-][0-9]*)){0,1}" );
-		re.indexIn(toqstr(geometry_arg.c_str()));
+		re.indexIn(geometry_arg);
 		w = re.cap(1).toInt();
 		h = re.cap(2).toInt();
 		x = re.cap(3).toInt();

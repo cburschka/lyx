@@ -70,7 +70,6 @@ public:
 	virtual void updateColor(ColorCode col);
 	virtual void registerSocketCallback(int fd, SocketCallback func);
 	void unregisterSocketCallback(int fd);
-	void createView(std::string const & geometry_arg = std::string());
 	//@}
 
 	/// Methods inherited from \c QApplication class
@@ -79,6 +78,9 @@ public:
 	void commitData(QSessionManager & sm);
 	//@}
 
+	/// Create the main window with given geometry settings.
+	/// \param geometry_arg: only for Windows platform.
+	void createView(QString const & geometry_arg);
 	///
 	GuiView const * currentView() const { return current_view_; }
 	///
