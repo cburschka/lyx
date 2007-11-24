@@ -49,7 +49,6 @@
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
-#include "insets/InsetOptArg.h"
 
 #include "support/lstrings.h"
 #include "support/textutils.h"
