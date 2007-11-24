@@ -315,8 +315,6 @@ liblyxgraphics_la_SOURCES = \
 	graphics/GraphicsLoader.cpp \
 	graphics/GraphicsParams.cpp \
 	graphics/GraphicsParams.h \
-	graphics/LoaderQueue.h \
-	graphics/LoaderQueue.cpp \
 	graphics/GraphicsTypes.h \
 	graphics/GraphicsTypes.cpp \
 	graphics/PreviewImage.h \
