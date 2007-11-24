@@ -787,6 +787,26 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		p.skip_spaces();
 	}
 
+	else if (name == "framed") {
+		eat_whitespace(p, os, parent_context, false);
+		parent_context.check_layout(os);
+		begin_inset(os, "Note Framed\n");
+		os << "status open\n";
+		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+		end_inset(os);
+		p.skip_spaces();
+	}
+
+	else if (name == "shaded") {
+		eat_whitespace(p, os, parent_context, false);
+		parent_context.check_layout(os);
+		begin_inset(os, "Note Shaded\n");
+		os << "status open\n";
+		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
+		end_inset(os);
+		p.skip_spaces();
+	}
+
 	else if (!parent_context.new_layout_allowed)
 		parse_unknown_environment(p, name, os, FLAG_END, outer,
 					  parent_context);
@@ -2185,6 +2205,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			else {
 				os << "\n\\newline\n";
 			}
+		}
+
+		else if (t.cs() == "newline") {
+			context.check_layout(os);
+			os << "\n\\" << t.cs() << "\n";
+			skip_braces(p); // eat {}
 		}
 
 		else if (t.cs() == "input" || t.cs() == "include"
