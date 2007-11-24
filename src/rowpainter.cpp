@@ -773,6 +773,8 @@ void RowPainter::paintText()
 		}
 
 		if (par_.isHfill(pos)) {
+			Inset const * inset = par_.getInset(pos);
+			pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
 			paintHfill(pos, body_pos);
 			++vpos;
 
