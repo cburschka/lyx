@@ -535,6 +535,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	bool enable = true;
 	switch (cmd.action) {
 
+	case LFUN_WINDOW_CLOSE:
+		if (theApp())
+			return theApp()->getStatus(cmd);
+		enable = false;
+		break;
+
 	case LFUN_DIALOG_TOGGLE:
 	case LFUN_DIALOG_SHOW:
 	case LFUN_DIALOG_UPDATE:
@@ -630,10 +636,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_BOOKMARK_CLEAR:
 		enable = LyX::ref().session().bookmarks().size() > 0;
-		break;
-
-	case LFUN_WINDOW_CLOSE:
-		enable = theApp()->viewCount() > 0;
 		break;
 
 	// this one is difficult to get right. As a half-baked
@@ -844,6 +846,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		setErrorMessage(flag.message());
 	} else {
 		switch (action) {
+
+		// Let the frontend dispatch its own actions.
+		case LFUN_WINDOW_NEW:
+		case LFUN_WINDOW_CLOSE:
+		case LFUN_LYX_QUIT:
+			BOOST_ASSERT(theApp());
+			theApp()->dispatch(cmd);
+			// Nothing more to do.
+			return;
+
 		// Let lyx_view_ dispatch its own actions.
 		case LFUN_BUFFER_SWITCH:
 		case LFUN_BUFFER_NEXT:
@@ -1179,14 +1191,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_IMPORT:
 			doImport(argument);
-			break;
-
-		case LFUN_LYX_QUIT:
-			// quitting is triggered by the gui code
-			// (leaving the event loop).
-			lyx_view_->message(from_utf8(N_("Exiting.")));
-			if (theBufferList().quitWriteAll())
-				theApp()->closeAllViews();
 			break;
 
 		case LFUN_BUFFER_AUTO_SAVE:
@@ -1578,15 +1582,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_SCREEN_FONT_UPDATE:
-			BOOST_ASSERT(lyx_view_);
-			// handle the screen font changes.
-			theFontLoader().update();
-			/// FIXME: only the current view will be updated. the Gui
-			/// class is able to furnish the list of views.
-			updateFlags = Update::Force;
-			break;
-
 		case LFUN_SET_COLOR: {
 			string lyx_name;
 			string const x11_name = split(argument, lyx_name, ' ');
@@ -1838,22 +1833,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			updateFlags = Update::Force;
 			break;
 		}
-
-		case LFUN_WINDOW_NEW:
-			theApp()->createView();
-			break;
-
-		case LFUN_WINDOW_CLOSE:
-			BOOST_ASSERT(lyx_view_);
-			BOOST_ASSERT(theApp());
-			// update bookmark pit of the current buffer before window close
-			for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
-				gotoBookmark(i+1, false, false);
-			// ask the user for saving changes or cancel quit
-			if (!theBufferList().quitWriteAll())
-				break;
-			lyx_view_->close();
-			return;
 
 		case LFUN_BOOKMARK_GOTO:
 			// go to bookmark, open unopened file and switch to buffer if necessary

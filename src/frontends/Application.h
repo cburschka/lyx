@@ -21,9 +21,11 @@
 namespace lyx {
 
 class BufferView;
-struct RGBColor;
 class Buffer;
+class FuncRequest;
+class FuncStatus;
 class Inset;
+struct RGBColor;
 
 namespace frontend {
 
@@ -152,12 +154,15 @@ public:
 	virtual ~Application() {}
 
 	///
+	virtual FuncStatus getStatus(FuncRequest const & cmd) = 0;
+	/// dispatch command.
+	virtual void dispatch(FuncRequest const & cmd) = 0;
+
+	///
 	virtual void resetGui() = 0;
 
 	///
 	virtual bool closeAllViews() = 0;
-	///
-	virtual size_t viewCount() const = 0;
 	///
 	virtual void hideDialogs(std::string const & name, Inset * inset) const = 0;
 	///

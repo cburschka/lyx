@@ -31,15 +31,18 @@
 #include "support/os.h"
 #include "support/Package.h"
 
+#include "Buffer.h"
 #include "BufferList.h"
 #include "BufferView.h"
 #include "debug.h"
 #include "Font.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
+#include "Session.h"
 #include "version.h"
 
 #include <QApplication>
@@ -209,11 +212,87 @@ GuiApplication::~GuiApplication()
 }
 
 
+FuncStatus GuiApplication::getStatus(FuncRequest const & cmd)
+{
+	FuncStatus flag;
+	bool enable = true;
+
+	switch(cmd.action) {
+
+	case LFUN_WINDOW_CLOSE:
+		enable = view_ids_.size() > 0;
+		break;
+
+	default:
+		if (!current_view_) {
+			enable = false;
+			break;
+		}
+	}
+
+	if (!enable)
+		flag.enabled(false);
+
+	return flag;
+}
+
+	
+void GuiApplication::dispatch(FuncRequest const & cmd)
+{
+	switch(cmd.action) {
+
+	case LFUN_WINDOW_NEW:
+		createView();
+		break;
+
+	case LFUN_WINDOW_CLOSE:
+		// update bookmark pit of the current buffer before window close
+		for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
+			theLyXFunc().gotoBookmark(i+1, false, false);
+		// ask the user for saving changes or cancel quit
+		if (!theBufferList().quitWriteAll())
+			break;
+		current_view_->close();
+		break;
+
+	case LFUN_LYX_QUIT:
+		// quitting is triggered by the gui code
+		// (leaving the event loop).
+		current_view_->message(from_utf8(N_("Exiting.")));
+		if (theBufferList().quitWriteAll())
+			closeAllViews();
+		break;
+
+	case LFUN_SCREEN_FONT_UPDATE: {
+		// handle the screen font changes.
+		font_loader_.update();
+		// Backup current_view_
+		GuiView * view = current_view_;
+		// Set current_view_ to zero to forbid GuiWorkArea::redraw()
+		// to skip the refresh.
+		current_view_ = 0;
+		BufferList::iterator it = theBufferList().begin();
+		BufferList::iterator const end = theBufferList().end();
+		for (; it != end; ++it)
+			(*it)->changed();
+		// Restore current_view_
+		current_view_ = view;
+		break;
+	}
+
+	default:
+		break;
+	}
+}
+
+
 void GuiApplication::resetGui()
 {
 	map<int, GuiView *>::iterator it;
 	for (it = views_.begin(); it != views_.end(); ++it)
 		it->second->resetDialogs();
+
+	dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 }
 
 
