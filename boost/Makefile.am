@@ -24,10 +24,6 @@ else
 
 liblyxboost_la_SOURCES = \
 	\
-	libs/iostreams/src/file_descriptor.cpp \
-	libs/iostreams/src/mapped_file.cpp \
-	libs/iostreams/src/zlib.cpp \
-	\
 	libs/filesystem/src/exception.cpp \
 	libs/filesystem/src/operations.cpp \
 	libs/filesystem/src/path.cpp \

@@ -18,8 +18,6 @@
 #include <cerrno>
 #include <climits>
 #include <clocale>
-#include <cstdio>      // for remove, rename
-#include <cstring> // SGI MIPSpro compilers need this
 #include <cwchar>
 #include <iostream>
 #include <list>
