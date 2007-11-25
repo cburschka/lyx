@@ -302,6 +302,8 @@ src_support_header_files = Split('''
     Package.h
     Path.h
     RandomAccessList.h
+    SignalSlot.h
+    SignalSlotPrivate.h
     Systemcall.h
     Timeout.h
     Translator.h
@@ -342,6 +344,7 @@ src_support_files = Split('''
     ForkedcallsController.cpp
     Package.cpp
     Path.cpp
+    SignalSlot.cpp
     Systemcall.cpp
     Timeout.cpp
     abort.cpp
@@ -2758,24 +2761,6 @@ boost_libs_filesystem_src_files = Split('''
 
 
 boost_libs_filesystem_src_extra_files = Split('''
-    Makefile.am
-    pch.h
-''')
-
-
-boost_libs_iostreams_extra_files = Split('''
-    Makefile.am
-''')
-
-
-boost_libs_iostreams_src_files = Split('''
-    file_descriptor.cpp
-    mapped_file.cpp
-    zlib.cpp
-''')
-
-
-boost_libs_iostreams_src_extra_files = Split('''
     Makefile.am
     pch.h
 ''')
