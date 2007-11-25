@@ -50,9 +50,8 @@ using support::rtrim;
 using support::subst;
 using support::addName;
 
-#if !defined(TEX2LYX_FONT_H) && !defined(FONT_H)
 extern FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
-#endif
+
 
 namespace {
 
