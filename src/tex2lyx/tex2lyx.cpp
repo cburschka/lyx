@@ -92,7 +92,7 @@ string const trim(string const & a, char const * p)
 
 
 void split(string const & s, vector<string> & result, char delim)
-:{
+{
 	//cerr << "split 1: '" << s << "'\n";
 	istringstream is(s);
 	string t;
