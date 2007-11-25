@@ -57,6 +57,10 @@ public:
 
 	/// returns true if the file exists
 	bool exists() const;
+	/// \return true if this object points to a symbolic link.
+	bool isSymLink() const;
+	/// \return true if the file is empty.
+	bool isFileEmpty() const;
 	/// returns time of last write access
 	std::time_t lastModified() const;
 	/// return true when file is readable but not writabel
@@ -107,7 +111,7 @@ public:
 	/// filename without path
 	std::string onlyFileName() const;
 	/// path without file name
-	std::string onlyPath() const;
+	FileName onlyPath() const;
 	/// used for display in the Gui
 	docstring displayName(int threshold = 1000) const;
 

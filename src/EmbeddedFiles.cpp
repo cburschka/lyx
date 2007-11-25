@@ -25,8 +25,6 @@
 
 #include "frontends/alert.h"
 
-#include <boost/filesystem/operations.hpp>
-
 #include "support/filetools.h"
 #include "support/convert.h"
 #include "support/lyxlib.h"
@@ -52,7 +50,6 @@ using std::istringstream;
 
 namespace lyx {
 
-namespace fs = boost::filesystem;
 namespace Alert = frontend::Alert;
 
 using support::FileName;
@@ -156,9 +153,9 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	// copy file
 
 	// need to make directory?
-	string path = support::onlyPath(ext_file);
-	if (!fs::is_directory(path))
-		makedir(const_cast<char*>(path.c_str()), 0755);
+	FileName path = ext.onlyPath();
+	if (!path.isDirectory())
+		makedir(const_cast<char*>(path.absFilename().c_str()), 0755);
 	if (emb.copyTo(ext, false))
 		return true;
 	Alert::error(_("Copy file failure"),
@@ -198,9 +195,9 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 	}
 	// copy file
 	// need to make directory?
-	string path = support::onlyPath(emb_file);
-	if (!fs::is_directory(path))
-		makedir(const_cast<char*>(path.c_str()), 0755);
+	FileName path = emb.onlyPath();
+	if (!path.isDirectory())
+		makedir(const_cast<char*>(path.absFilename().c_str()), 0755);
 	if (ext.copyTo(emb, false))
 		return true;
 	Alert::error(_("Copy file failure"),

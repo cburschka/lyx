@@ -455,7 +455,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		Encoding const * const oldEnc = runparams.encoding;
 		runparams.encoding = &tmp->params().encoding();
 		tmp->makeLaTeXFile(writefile,
-				   masterFileName(buffer).onlyPath(),
+				   masterFileName(buffer).onlyPath().absFilename(),
 				   runparams, false);
 		runparams.encoding = oldEnc;
 	} else {

@@ -23,8 +23,6 @@
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
-#include <boost/filesystem/operations.hpp>
-
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QListWidget>

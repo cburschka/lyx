@@ -26,7 +26,6 @@
 # include "support/os_win32.h"
 #endif
 
-#include <boost/filesystem/operations.hpp>
 #include <boost/tuple/tuple.hpp>
 
 #include <list>
@@ -43,8 +42,6 @@
 #endif
 
 using std::string;
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 namespace support {
@@ -295,7 +292,7 @@ get_build_dirs(FileName const & abs_binary,
 
 		// Check whether binary is a symbolic link.
 		// If so, resolve it and repeat the exercise.
-		if (!fs::symbolic_link_exists(binary.toFilesystemEncoding()))
+		if (!binary.isSymLink())
 			break;
 
 		FileName link;
@@ -356,12 +353,12 @@ FileName const get_locale_dir(FileName const & system_support_dir)
 	FileName path(normalizePath(addPath(system_support_dir.absFilename(),
 	                                    relative_locale_dir())));
 
-	if (path.exists() && fs::is_directory(path.toFilesystemEncoding()))
+	if (path.exists() && path.isDirectory())
 		return path;
 
 	// 3. Fall back to the hard-coded LOCALEDIR.
 	path = hardcoded_localedir();
-	if (path.exists() && fs::is_directory(path.toFilesystemEncoding()))
+	if (path.exists() && path.isDirectory())
 		return path;
 
 	return FileName();
@@ -508,7 +505,7 @@ get_system_support_dir(FileName const & abs_binary,
 
 		// Check whether binary is a symbolic link.
 		// If so, resolve it and repeat the exercise.
-		if (!fs::symbolic_link_exists(binary.toFilesystemEncoding()))
+		if (!binary.isSymLink())
 			break;
 
 		FileName link;
@@ -526,7 +523,7 @@ get_system_support_dir(FileName const & abs_binary,
 		// This time test whether the directory is a symbolic link
 		// *before* looking for "chkconfig.ltx".
 		// (We've looked relative to the original already.)
-		if (!fs::symbolic_link_exists(binary.toFilesystemEncoding()))
+		if (!binary.isSymLink())
 			break;
 
 		FileName link;

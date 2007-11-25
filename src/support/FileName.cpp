@@ -204,6 +204,18 @@ bool FileName::exists() const
 }
 
 
+bool FileName::isSymLink() const
+{
+	return QFileInfo(toqstr(name_)).isSymLink();
+}
+
+
+bool FileName::isFileEmpty() const
+{
+	return QFileInfo(toqstr(name_)).size() == 0;
+}
+
+
 bool FileName::isDirectory() const
 {
 	return QFileInfo(toqstr(name_)).isDir();
@@ -230,9 +242,9 @@ std::string FileName::onlyFileName() const
 }
 
 
-std::string FileName::onlyPath() const
+FileName FileName::onlyPath() const
 {
-	return support::onlyPath(absFilename());
+	return FileName(support::onlyPath(absFilename()));
 }
 
 

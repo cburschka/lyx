@@ -29,8 +29,6 @@
 #include "support/Systemcall.h"
 #include "support/os.h"
 
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
 #include <boost/regex.hpp>
 
 #include <fstream>
@@ -74,7 +72,6 @@ using support::unlink;
 using support::trim;
 
 namespace os = support::os;
-namespace fs = boost::filesystem;
 
 // TODO: in no particular order
 // - get rid of the call to
@@ -288,7 +285,7 @@ int LaTeX::run(TeXErrors & terr)
 	// memoir (at least) writes an empty *idx file in the first place.
 	// A second latex run is needed.
 	FileName const idxfile(changeExtension(file.absFilename(), ".idx"));
-	rerun = idxfile.exists() && fs::is_empty(idxfile.toFilesystemEncoding());
+	rerun = idxfile.exists() && idxfile.isFileEmpty();
 
 	// run makeindex
 	if (head.haschanged(idxfile)) {
