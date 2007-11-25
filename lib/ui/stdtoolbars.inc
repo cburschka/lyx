@@ -194,7 +194,6 @@ ToolbarSet
 
 	Toolbar "math_panels" "Math Panels"
 		PopupMenu "space" "Math Spacings"
-		PopupMenu "phantom" "Placeholders"
 		PopupMenu "style" "Styles"
 		PopupMenu "frac-square" "Fractions"
 		PopupMenu "font" "Fonts"
@@ -257,9 +256,6 @@ ToolbarSet
 		Item "Quadratin space	\\quad" "math-insert \quad"
 		Item "Double quadratin space	\\qquad" "math-insert \qquad"
 		Item "Negative space	\\!" "math-insert \!"
-	End
-	
-	Toolbar "phantom" "Placeholders"
 		Item "Placeholder	\\phantom" "math-insert \phantom"
 		Item "Horizontal placeholder	\\hphantom" "math-insert \hphantom"
 		Item "Vertical placeholder	\\vphantom" "math-insert \vphantom"
