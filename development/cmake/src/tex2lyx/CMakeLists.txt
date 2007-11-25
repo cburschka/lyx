@@ -56,7 +56,6 @@ endif()
 
 target_link_libraries(tex2lyx  
 	support
-	boost_iostreams
 	boost_filesystem
 	boost_regex
 	${QT_QTCORE_LIBRARY} 

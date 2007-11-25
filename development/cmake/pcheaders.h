@@ -20,9 +20,9 @@
 #include <boost/current_function.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/function.hpp>
-#include <boost/iostreams/device/file.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/iostreams/filtering_streambuf.hpp>
+//#include <boost/iostreams/device/file.hpp>
+//#include <boost/iostreams/filter/gzip.hpp>
+//#include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iterator/indirect_iterator.hpp>
 #include <boost/optional.hpp>
 #include <boost/regex.hpp>
