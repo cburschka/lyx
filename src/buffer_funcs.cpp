@@ -90,7 +90,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 		return 0;
 	}
 
-	if (filename.isFileReadable()) {
+	if (filename.isReadableFile()) {
 		Buffer * b = theBufferList().newBuffer(filename.absFilename());
 		if (!b->loadLyXFile(filename)) {
 			theBufferList().release(b);

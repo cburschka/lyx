@@ -101,7 +101,7 @@ public:
 	RCS(support::FileName const & m);
 
 	/// return the revision file for the given file, if found
-	static support::FileName const find_file(support::FileName const & file);
+	static support::FileName const findFile(support::FileName const & file);
 
 	static void retrieve(support::FileName const & file);
 
@@ -134,7 +134,7 @@ public:
 	CVS(support::FileName const & m, support::FileName const & f);
 
 	/// return the revision file for the given file, if found
-	static support::FileName const find_file(support::FileName const & file);
+	static support::FileName const findFile(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
 

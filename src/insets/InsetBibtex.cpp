@@ -140,7 +140,7 @@ string normalizeName(Buffer const & buffer, OutputParams const & runparams,
 		      string const & name, string const & ext)
 {
 	string const fname = makeAbsPath(name, buffer.filePath()).absFilename();
-	if (absolutePath(name) || !FileName(fname + ext).isFileReadable())
+	if (absolutePath(name) || !FileName(fname + ext).isReadableFile())
 		return name;
 	if (!runparams.nice)
 		return fname;
@@ -195,7 +195,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		string database =
 			normalizeName(buffer, runparams, utf8input, ".bib");
 		FileName const try_in_file(makeAbsPath(database + ".bib", buffer.filePath()));
-		bool const not_from_texmf = try_in_file.isFileReadable();
+		bool const not_from_texmf = try_in_file.isReadableFile();
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    not_from_texmf) {
@@ -253,7 +253,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	if (!style.empty()) {
 		string base = normalizeName(buffer, runparams, style, ".bst");
 		FileName const try_in_file(makeAbsPath(base + ".bst", buffer.filePath()));
-		bool const not_from_texmf = try_in_file.isFileReadable();
+		bool const not_from_texmf = try_in_file.isReadableFile();
 		// If this style does not come from texmf and we are not
 		// exporting to .tex copy it to the tmp directory.
 		// This prevents problems with spaces and 8bit charcaters

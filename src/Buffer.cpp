@@ -2504,7 +2504,7 @@ bool Buffer::readFileHelper(FileName const & s)
 
 bool Buffer::loadLyXFile(FileName const & s)
 {
-	if (s.isReadable()) {
+	if (s.isReadableFile()) {
 		if (readFileHelper(s)) {
 			lyxvc().file_found_hook(s);
 			if (!s.isWritable())

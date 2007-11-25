@@ -817,7 +817,7 @@ namespace {
 bool preview_wanted(InsetExternalParams const & params)
 {
 	return params.display == external::PreviewDisplay &&
-		params.filename.isFileReadable();
+		params.filename.isReadableFile();
 }
 
 

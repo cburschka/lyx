@@ -611,7 +611,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// not exist.
 	// We are not going to change the extension or using the name of the
 	// temporary file, the code is already complicated enough.
-	if (runparams.inComment || !params().filename.isFileReadable())
+	if (runparams.inComment || !params().filename.isReadableFile())
 		return params().filename.outputFilename(masterBuffer->filePath());
 
 	// We place all temporary files in the master buffer's temp dir.
@@ -783,7 +783,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 		params().filename.relFilename(buf.filePath());
 
 	bool const file_exists = !params().filename.empty()
-			&& params().filename.isFileReadable();
+			&& params().filename.isReadableFile();
 	string const message = file_exists ?
 		string() : string("bb = 0 0 200 100, draft, type=eps");
 	// if !message.empty() then there was no existing file

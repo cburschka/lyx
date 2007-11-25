@@ -57,13 +57,13 @@ bool LyXVC::file_found_hook(FileName const & fn)
 {
 	FileName found_file;
 	// Check if file is under RCS
-	if (!(found_file = RCS::find_file(fn)).empty()) {
+	if (!(found_file = RCS::findFile(fn)).empty()) {
 		vcs.reset(new RCS(found_file));
 		vcs->owner(owner_);
 		return true;
 	}
 	// Check if file is under CVS
-	if (!(found_file = CVS::find_file(fn)).empty()) {
+	if (!(found_file = CVS::findFile(fn)).empty()) {
 		vcs.reset(new CVS(found_file, fn));
 		vcs->owner(owner_);
 		return true;
@@ -76,9 +76,9 @@ bool LyXVC::file_found_hook(FileName const & fn)
 bool LyXVC::file_not_found_hook(FileName const & fn)
 {
 	// Check if file is under RCS
-	if (!RCS::find_file(fn).empty())
+	if (!RCS::findFile(fn).empty())
 		return true;
-	if (!CVS::find_file(fn).empty())
+	if (!CVS::findFile(fn).empty())
 		return true;
 	return false;
 }
@@ -95,7 +95,7 @@ void LyXVC::registrer()
 	FileName const filename = owner_->fileName();
 
 	// there must be a file to save
-	if (!filename.isFileReadable()) {
+	if (!filename.isReadableFile()) {
 		Alert::error(_("Document not saved"),
 			     _("You must save the document "
 					    "before it can be registered."));
@@ -106,7 +106,7 @@ void LyXVC::registrer()
 	if (!vcs) {
 		FileName const cvs_entries(makeAbsPath("CVS/Entries"));
 
-		if (cvs_entries.isFileReadable()) {
+		if (cvs_entries.isReadableFile()) {
 			LYXERR(Debug::LYXVC, "LyXVC: registering "
 				<< to_utf8(filename.displayName()) << " with CVS");
 			vcs.reset(new CVS(cvs_entries, filename));

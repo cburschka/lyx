@@ -787,7 +787,7 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 	FileName const included_file = includedFilename(buffer, params);
 
 	return type(params) == INPUT && params.preview() &&
-		included_file.isFileReadable();
+		included_file.isReadableFile();
 }
 
 

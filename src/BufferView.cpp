@@ -2025,7 +2025,7 @@ docstring BufferView::contentsOfPlaintextFile(string const & f,
 		fname = makeAbsPath(to_utf8(result.second));
 	}
 
-	if (!fname.isReadable()) {
+	if (!fname.isReadableFile()) {
 		docstring const error = from_ascii(strerror(errno));
 		docstring const file = makeDisplayPath(fname.absFilename(), 50);
 		docstring const text =

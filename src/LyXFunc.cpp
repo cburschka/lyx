@@ -1945,7 +1945,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 		filename = addName(lyxrc.document_path,
 			    "newfile" + convert<string>(++newfile_number) + ".lyx");
 		while (theBufferList().exists(filename) ||
-		       FileName(filename).isReadable()) {
+		       FileName(filename).isReadableFile()) {
 			++newfile_number;
 			filename = addName(lyxrc.document_path,
 					   "newfile" +	convert<string>(newfile_number) +

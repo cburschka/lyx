@@ -64,9 +64,9 @@ public:
 	/// return true when it names a directory
 	bool isDirectory() const;
 	/// return true when file/directory is readable
-	bool isReadable() const;
+	bool isReadableDirectory() const;
 	/// return true when it is a file and readable
-	bool isFileReadable() const;
+	bool isReadableFile() const;
 	/// return true when file/directory is writable
 	bool isWritable() const;
 	/// return true when file/directory is writable (write test file)

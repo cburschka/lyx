@@ -269,7 +269,7 @@ void CacheItem::Impl::imageConverted(bool success)
 	converter_.reset();
 	cc_.disconnect();
 
-	success = !file_to_load_.empty() && file_to_load_.isFileReadable();
+	success = !file_to_load_.empty() && file_to_load_.isReadableFile();
 
 	if (!success) {
 		LYXERR(Debug::GRAPHICS, "Unable to find converted file!");
@@ -370,7 +370,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	setStatus(Converting);
 
 	// First, check that the file exists!
-	if (!filename_.isFileReadable()) {
+	if (!filename_.isReadableFile()) {
 		if (status_ != ErrorNoFile) {
 			setStatus(ErrorNoFile);
 			LYXERR(Debug::GRAPHICS, "\tThe file is not readable");

@@ -320,7 +320,7 @@ bool Converters::convert(Buffer const * buffer,
 				   "I use convertDefault.py:\n\t" << command);
 			Systemcall one;
 			one.startscript(Systemcall::Wait, command);
-			if (to_file.isFileReadable()) {
+			if (to_file.isReadableFile()) {
 				if (conversionflags & try_cache)
 					ConverterCache::get().add(orig_from,
 							to_format, to_file);

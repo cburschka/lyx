@@ -807,7 +807,7 @@ string const GuiGraphics::readBB(string const & file)
 bool GuiGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	return makeAbsPath(fname, bufferFilepath()).isFileReadable();
+	return makeAbsPath(fname, bufferFilepath()).isReadableFile();
 }
 
 

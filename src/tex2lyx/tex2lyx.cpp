@@ -92,7 +92,7 @@ string const trim(string const & a, char const * p)
 
 
 void split(string const & s, vector<string> & result, char delim)
-{
+:{
 	//cerr << "split 1: '" << s << "'\n";
 	istringstream is(s);
 	string t;
@@ -420,7 +420,7 @@ namespace {
  *  You must ensure that \p parentFilePath is properly set before calling
  *  this function!
  */
-void tex2lyx(std::istream &is, std::ostream &os)
+void tex2lyx(std::istream & is, std::ostream & os)
 {
 	Parser p(is);
 	//p.dump();
@@ -451,7 +451,7 @@ void tex2lyx(std::istream &is, std::ostream &os)
 
 
 /// convert TeX from \p infilename to LyX and write it to \p os
-bool tex2lyx(FileName const & infilename, std::ostream &os)
+bool tex2lyx(FileName const & infilename, std::ostream & os)
 {
 	ifstream is(infilename.toFilesystemEncoding().c_str());
 	if (!is.good()) {
@@ -469,9 +469,9 @@ bool tex2lyx(FileName const & infilename, std::ostream &os)
 } // anonymous namespace
 
 
-bool tex2lyx(string const &infilename, FileName const &outfilename)
+bool tex2lyx(string const & infilename, FileName const & outfilename)
 {
-	if (outfilename.isFileReadable()) {
+	if (outfilename.isReadableFile()) {
 		if (overwrite_files) {
 			cerr << "Overwriting existing file "
 			     << outfilename << endl;

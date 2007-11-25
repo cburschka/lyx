@@ -962,7 +962,7 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 			}
 		}
 		else if (name == "latexlog")
-			enable = FileName(buf->logName()).isFileReadable();
+			enable = FileName(buf->logName()).isReadableFile();
 		else if (name == "spellchecker")
 #if defined (USE_ASPELL) || defined (USE_ISPELL) || defined (USE_PSPELL)
 			enable = !buf->isReadonly();

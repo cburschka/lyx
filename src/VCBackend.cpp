@@ -75,12 +75,12 @@ RCS::RCS(FileName const & m)
 }
 
 
-FileName const RCS::find_file(FileName const & file)
+FileName const RCS::findFile(FileName const & file)
 {
 	// Check if *,v exists.
 	FileName tmp(file.absFilename() + ",v");
 	LYXERR(Debug::LYXVC, "Checking if file is under rcs: " << tmp);
-	if (tmp.isReadable()) {
+	if (tmp.isReadableFile()) {
 		LYXERR(Debug::LYXVC, "Yes " << file << " is under rcs.");
 		return tmp;
 	}
@@ -88,7 +88,7 @@ FileName const RCS::find_file(FileName const & file)
 	// Check if RCS/*,v exists.
 	tmp = FileName(addName(addPath(onlyPath(file.absFilename()), "RCS"), file.absFilename()) + ",v");
 	LYXERR(Debug::LYXVC, "Checking if file is under rcs: " << tmp);
-	if (tmp.isReadable()) {
+	if (tmp.isReadableFile()) {
 		LYXERR(Debug::LYXVC, "Yes " << file << " it is under rcs.");
 		return tmp;
 	}
@@ -232,7 +232,7 @@ CVS::CVS(FileName const & m, FileName const & f)
 }
 
 
-FileName const CVS::find_file(FileName const & file)
+FileName const CVS::findFile(FileName const & file)
 {
 	// First we look for the CVS/Entries in the same dir
 	// where we have file.
@@ -240,7 +240,7 @@ FileName const CVS::find_file(FileName const & file)
 	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
 	LYXERR(Debug::LYXVC, "LyXVC: checking in `" << dir
 			     << "' for `" << tmpf << '\'');
-	if (dir.isReadable()) {
+	if (dir.isReadableDirectory()) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
 		// and see if we can find this file. We do a fast and
 		// dirty parse here.

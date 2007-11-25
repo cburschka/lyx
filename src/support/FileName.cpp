@@ -217,10 +217,10 @@ bool FileName::isReadOnly() const
 }
 
 
-bool FileName::isReadable() const
+bool FileName::isReadableDirectory() const
 {
 	QFileInfo const fi(toqstr(name_));
-	return fi.isReadable();
+	return fi.isDir() && fi.isReadable();
 }
 
 
@@ -236,7 +236,7 @@ std::string FileName::onlyPath() const
 }
 
 
-bool FileName::isFileReadable() const
+bool FileName::isReadableFile() const
 {
 	QFileInfo const fi(toqstr(name_));
 	return fi.isFile() && fi.isReadable();
@@ -348,7 +348,7 @@ string FileName::guessFormatFromContents() const
 	// Z	\037\235		UNIX compress
 	// paranoia check
 
-	if (empty() || !isFileReadable())
+	if (empty() || !isReadableFile())
 		return string();
 
 	ifstream ifs(toFilesystemEncoding().c_str());
