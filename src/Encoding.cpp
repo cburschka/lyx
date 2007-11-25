@@ -280,7 +280,7 @@ void Encoding::init() const
 		// We do not need to check all UCS4 code points, it is enough
 		// if we check all 256 code points of this encoding.
 		for (unsigned short j = 0; j < 256; ++j) {
-			char const c = j;
+			char const c = char(j);
 			std::vector<char_type> const ucs4 = eightbit_to_ucs4(&c, 1, iconvName_);
 			if (ucs4.size() == 1) {
 				char_type const c = ucs4[0];
