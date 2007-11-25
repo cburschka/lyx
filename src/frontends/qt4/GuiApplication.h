@@ -106,8 +106,6 @@ public:
 	/// return a suitable monospaced font name.
 	virtual QString const typewriterFontName();
 	///
-	virtual bool closeAllViews();
-	///
 	virtual bool unregisterView(int id);
 	///
 	virtual GuiView & view(int id) const;
@@ -123,6 +121,8 @@ private Q_SLOTS:
 	void socketDataReceived(int fd);
 
 private:
+	///
+	bool closeAllViews();
 	///
 	GuiClipboard clipboard_;
 	///
