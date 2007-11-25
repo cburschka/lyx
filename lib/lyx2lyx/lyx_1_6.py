@@ -696,7 +696,6 @@ def revert_include(document):
 
 def revert_albanian(document):
     "Set language Albanian to English"
-    # Set document language from Albanian to English
     i = 0
     if document.language == "albanian":
         document.language = "english"
@@ -714,7 +713,6 @@ def revert_albanian(document):
 
 def revert_lowersorbian(document):
     "Set language lower Sorbian to English"
-    # Set document language from lower Sorbian to English
     i = 0
     if document.language == "lowersorbian":
         document.language = "english"
@@ -732,7 +730,6 @@ def revert_lowersorbian(document):
 
 def revert_uppersorbian(document):
     "Set language uppersorbian to usorbian as this was used in LyX 1.5"
-    # Set document language from uppersorbian to usorbian
     i = 0
     if document.language == "uppersorbian":
         document.language = "usorbian"
@@ -749,8 +746,7 @@ def revert_uppersorbian(document):
 
 
 def convert_usorbian(document):
-    "Set language uppersorbian to usorbian as this was used in LyX 1.5"
-    # Set document language from uppersorbian to usorbian
+    "Set language usorbian to uppersorbian"
     i = 0
     if document.language == "usorbian":
         document.language = "uppersorbian"
@@ -844,6 +840,23 @@ def revert_samin(document):
         j = j + 1
 
 
+def convert_serbocroatian(document):
+    "Set language Serbocroatian to Croatian as this was really Croatian in LyX 1.5"
+    i = 0
+    if document.language == "serbocroatian":
+        document.language = "croatian"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language croatian"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang serbocroatian", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang serbocroatian", "\\lang croatian")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -874,10 +887,12 @@ convert = [[277, [fix_wrong_tables]],
            [299, []],
            [300, []],
            [301, []],
-           [302, []]
+           [302, []],
+           [303, [convert_serbocroatian]]
           ]
 
-revert =  [[301, [revert_latin, revert_samin]],
+revert =  [[302, []],
+           [301, [revert_latin, revert_samin]],
            [300, [revert_linebreak]],
            [299, [revert_pagebreak]],
            [298, [revert_hyperlinktype]],
