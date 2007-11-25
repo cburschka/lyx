@@ -232,6 +232,10 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		}
 	} else if (token == "\\backslash") {
 		par.appendChar('\\', font, change);
+	} else if (token == "\\linebreak") {
+		auto_ptr<Inset> inset(new InsetLinebreak);
+		inset->read(buf, lex);
+		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\newline") {
 		auto_ptr<Inset> inset(new InsetNewline);
 		inset->read(buf, lex);

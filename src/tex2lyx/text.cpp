@@ -2207,7 +2207,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
-		else if (t.cs() == "newline") {
+		else if (t.cs() == "newline" ||
+			t.cs() == "linebreak") {
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << "\n";
 			skip_braces(p); // eat {}

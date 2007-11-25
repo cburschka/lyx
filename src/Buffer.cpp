@@ -153,7 +153,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 300; // Uwe: \pagebreak
+int const LYX_FORMAT = 301; // Uwe: \linebreak
 
 } // namespace anon
 

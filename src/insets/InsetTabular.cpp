@@ -3769,7 +3769,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	// disable in non-fixed-width cells
-	case LFUN_BREAK_LINE:
+	case LFUN_NEW_LINE:
 	case LFUN_BREAK_PARAGRAPH:
 	case LFUN_BREAK_PARAGRAPH_SKIP: {
 		if (tabular.getPWidth(cur.idx()).zero()) {

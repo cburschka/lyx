@@ -1117,7 +1117,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_BREAK_LINE: {
+	case LFUN_NEW_LINE: {
 		cur.recordUndoInset();
 		row_type const r = cur.row();
 		addRow(r);

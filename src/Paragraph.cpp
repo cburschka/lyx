@@ -702,7 +702,6 @@ void Paragraph::Private::latexInset(Buffer const & buf,
 			if (runparams.moving_arg)
 				os << "\\protect ";
 
-			os << "\\\\\n";
 		}
 		texrow.newline();
 		texrow.start(owner_->id(), i + 1);

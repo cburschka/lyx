@@ -799,6 +799,17 @@ def revert_pagebreak(document):
       i = i + 1
 
 
+def revert_linebreak(document):
+    'Reverts linebreak to newline'
+    i = 0
+    while True:
+      i = find_token(document.body, "\\linebreak", i)
+      if i == -1:
+          return
+      document.body[i] = document.body[i].replace("\\linebreak", "\\newline")
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -827,10 +838,12 @@ convert = [[277, [fix_wrong_tables]],
            [297, [convert_usorbian]],
            [298, []],
            [299, []],
-           [300, []]
+           [300, []],
+           [301, []]
           ]
 
-revert =  [[299, [revert_pagebreak]],
+revert =  [[300, [revert_linebreak]],
+           [299, [revert_pagebreak]],
            [298, [revert_hyperlinktype]],
            [297, [revert_macro_optional_params]],
            [296, [revert_albanian, revert_lowersorbian, revert_uppersorbian]],

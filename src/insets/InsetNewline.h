@@ -14,6 +14,7 @@
 
 
 #include "Inset.h"
+#include "gettext.h"
 
 
 namespace lyx {
@@ -37,16 +38,44 @@ public:
 
 	virtual void read(Buffer const &, Lexer & lex);
 
-	virtual void write(Buffer const & buf, std::ostream & os) const;
+	virtual void write(Buffer const &, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset
 	virtual bool directWrite() const { return true; }
 	/// is this equivalent to a space (which is BTW different from
 	// a line separator)?
 	bool isSpace() const;
+
+	virtual docstring insetLabel() const { return _(""); }
+
+	virtual std::string getLyXName() const { return "\\newline"; }
+
+	virtual std::string getCmdName() const { return "\\\\"; }
+
+	virtual ColorCode ColorName() const { return Color_eolmarker; }
+
 private:
 	virtual Inset * clone() const
 	{
 		return new InsetNewline;
+	}
+};
+
+class InsetLinebreak : public InsetNewline {
+public:
+	InsetLinebreak() {}
+
+	docstring insetLabel() const { return _("line break"); }
+
+	std::string getLyXName() const { return "\\linebreak"; }
+
+	std::string getCmdName() const { return "\\linebreak{}"; }
+
+	ColorCode ColorName() const { return Color_pagebreak; }
+
+private:
+	virtual Inset * clone() const
+	{
+		return new InsetLinebreak;
 	}
 };
 
