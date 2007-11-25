@@ -153,7 +153,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 301; // Uwe: \linebreak
+int const LYX_FORMAT = 302; // Uwe: Latin and North Sami
 
 } // namespace anon
 

@@ -810,6 +810,40 @@ def revert_linebreak(document):
       i = i + 1
 
 
+def revert_latin(document):
+    "Set language Latin to English"
+    i = 0
+    if document.language == "latin":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang latin", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang latin", "\\lang english")
+        j = j + 1
+
+
+def revert_samin(document):
+    "Set language North Sami to English"
+    i = 0
+    if document.language == "samin":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang samin", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang samin", "\\lang english")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -839,10 +873,12 @@ convert = [[277, [fix_wrong_tables]],
            [298, []],
            [299, []],
            [300, []],
-           [301, []]
+           [301, []],
+           [302, []]
           ]
 
-revert =  [[300, [revert_linebreak]],
+revert =  [[301, [revert_latin, revert_samin]],
+           [300, [revert_linebreak]],
            [299, [revert_pagebreak]],
            [298, [revert_hyperlinktype]],
            [297, [revert_macro_optional_params]],
