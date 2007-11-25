@@ -26,25 +26,14 @@
 #include <QList>
 
 #include <boost/assert.hpp>
+#include <boost/filesystem/config.hpp>
+#include <boost/detail/workaround.hpp>
+#include <boost/throw_exception.hpp>
 
 #include <map>
 #include <sstream>
 #include <fstream>
 #include <algorithm>
-
-
-using std::map;
-using std::string;
-using std::ifstream;
-using std::ostringstream;
-using std::endl;
-
-
-// FIXME: merge this
-//
-#include <boost/filesystem/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/throw_exception.hpp>
 
 #ifdef HAVE_SYS_TYPES_H
 # include <sys/types.h>
@@ -56,6 +45,15 @@ using std::endl;
 #include <fcntl.h>
 
 
+using std::map;
+using std::string;
+using std::ifstream;
+using std::ostringstream;
+using std::endl;
+
+
+// FIXME: merge this
+//
 // BOOST_POSIX or BOOST_WINDOWS specify which API to use.
 # if !defined( BOOST_WINDOWS ) && !defined( BOOST_POSIX )
 #   if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__CYGWIN__)

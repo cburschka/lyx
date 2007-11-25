@@ -26,10 +26,8 @@
 # include "support/os_win32.h"
 #endif
 
-#include <boost/tuple/tuple.hpp>
 
 #include <list>
-#include <utility>
 
 #if !defined (USE_WINDOWS_PACKAGING) && \
     !defined (USE_MACOSX_PACKAGING) && \
@@ -85,9 +83,9 @@ namespace {
 
 FileName const abs_path_from_binary_name(string const & exe);
 
-std::pair<FileName, FileName> const
-get_build_dirs(FileName const & abs_binary,
-	       exe_build_dir_to_top_build_dir top_build_dir_location);
+void buildDirs(FileName const & abs_binary,
+	exe_build_dir_to_top_build_dir top_build_dir_location,
+	FileName &, FileName &);
 
 FileName const get_document_dir(FileName const & home_dir);
 
@@ -102,9 +100,8 @@ FileName const get_temp_dir();
 
 FileName const get_default_user_support_dir(FileName const & home_dir);
 
-std::pair<FileName, bool> const
-get_user_support_dir(FileName const & default_user_support_dir,
-		     string const & command_line_user_support_dir);
+bool userSupportDir(FileName const & default_user_support_dir,
+		     string const & command_line_user_support_dir, FileName & result);
 
 
 string const & with_version_suffix();
@@ -132,8 +129,8 @@ Package::Package(string const & command_line_arg0,
 		binary_dir_ = FileName(bdir);
 
 	// Is LyX being run in-place from the build tree?
-	boost::tie(build_support_dir_, system_support_dir_) =
-		get_build_dirs(abs_binary, top_build_dir_location);
+	buildDirs(abs_binary, top_build_dir_location,
+		build_support_dir_, system_support_dir_);
 
 	if (build_support_dir_.empty())
 		system_support_dir_ =
@@ -144,9 +141,9 @@ Package::Package(string const & command_line_arg0,
 
 	FileName const default_user_support_dir =
 		get_default_user_support_dir(home_dir_);
-	boost::tie(user_support_dir_, explicit_user_support_dir_) =
-		get_user_support_dir(default_user_support_dir,
-				     command_line_user_support_dir);
+	FileName user_support_dir_;
+	explicit_user_support_dir_ = userSupportDir(default_user_support_dir,
+				     command_line_user_support_dir, user_support_dir_);
 
 	FileName const configure_script(addName(system_support().absFilename(), "configure.py"));
 	configure_command_ = os::python() + ' ' +
@@ -238,8 +235,7 @@ string const fix_dir_name(string const & name)
 }
 
 
-FileName const
-get_build_support_dir(string const & binary_dir,
+FileName buildSupportDir(string const & binary_dir,
 		      exe_build_dir_to_top_build_dir top_build_dir_location)
 {
 	string indirection;
@@ -255,9 +251,9 @@ get_build_support_dir(string const & binary_dir,
 }
 
 
-std::pair<FileName, FileName> const
-get_build_dirs(FileName const & abs_binary,
-	       exe_build_dir_to_top_build_dir top_build_dir_location)
+void buildDirs(FileName const & abs_binary,
+  exe_build_dir_to_top_build_dir top_build_dir_location,
+	FileName & build_support_dir, FileName & system_support_dir)
 {
 	string const check_text = "Checking whether LyX is run in place...";
 
@@ -276,17 +272,16 @@ get_build_dirs(FileName const & abs_binary,
 		// We may be using libtools with static linking.
 		if (suffixIs(binary_dir, ".libs/"))
 			binary_dir = addPath(binary_dir, "../");
-		FileName const build_support_dir =
-			get_build_support_dir(binary_dir, top_build_dir_location);
+		build_support_dir = buildSupportDir(binary_dir, top_build_dir_location);
 		if (!fileSearch(build_support_dir.absFilename(), "Makefile").empty()) {
 			// Try and find "chkconfig.ltx".
-			string const system_support_dir =
-				addPath(Package::top_srcdir().absFilename(), "lib");
+			system_support_dir =
+				FileName(addPath(Package::top_srcdir().absFilename(), "lib"));
 
-			if (!fileSearch(system_support_dir, "chkconfig.ltx").empty()) {
+			if (!fileSearch(system_support_dir.absFilename(), "chkconfig.ltx").empty()) {
 				lyxerr[Debug::INIT] << check_text << " yes"
 						    << std::endl;
-				return std::make_pair(build_support_dir, system_support_dir);
+				return;
 			}
 		}
 
@@ -305,7 +300,8 @@ get_build_dirs(FileName const & abs_binary,
 	}
 
 	lyxerr[Debug::INIT] << check_text << " no" << std::endl;
-	return std::make_pair(FileName(), FileName());
+	system_support_dir = FileName();
+	build_support_dir = FileName();
 }
 
 
@@ -581,26 +577,22 @@ get_system_support_dir(FileName const & abs_binary,
 // Returns the absolute path to the user lyxdir, together with a flag
 // indicating whether this directory was specified explicitly (as -userdir
 // or through an environment variable) or whether it was deduced.
-std::pair<FileName, bool> const
-get_user_support_dir(FileName const & default_user_support_dir,
-		     string const & command_line_user_support_dir)
+bool userSupportDir(FileName const & default_user_support_dir,
+	string const & command_line_user_support_dir, FileName & result)
 {
-	bool explicit_userdir = true;
-
 	// 1. Use the -userdir command line parameter.
-	FileName path =
-		abs_path_from_command_line(command_line_user_support_dir);
-	if (!path.empty())
-		return std::make_pair(path, explicit_userdir);
+	result = abs_path_from_command_line(command_line_user_support_dir);
+	if (!result.empty())
+		return true;
 
 	// 2. Use the LYX_USERDIR_15x environment variable.
-	path = extract_env_var_dir("LYX_USERDIR_15x");
-	if (!path.empty())
-		return std::make_pair(path, explicit_userdir);
+	result = extract_env_var_dir("LYX_USERDIR_15x");
+	if (!result.empty())
+		return true;
 
 	// 3. Use the OS-dependent default_user_support_dir
-	explicit_userdir = false;
-	return std::make_pair(default_user_support_dir, explicit_userdir);
+	result = default_user_support_dir;
+	return false;
 }
 
 
