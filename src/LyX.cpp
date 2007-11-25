@@ -785,6 +785,10 @@ bool LyX::init()
 	lyxrc.tempdir_path = package().temp_dir().absFilename();
 	lyxrc.document_path = package().document_dir().absFilename();
 
+	if (lyxrc.example_path.empty()) {
+		lyxrc.example_path = addPath(package().system_support().absFilename(),
+					      "examples");
+	}
 	if (lyxrc.template_path.empty()) {
 		lyxrc.template_path = addPath(package().system_support().absFilename(),
 					      "templates");

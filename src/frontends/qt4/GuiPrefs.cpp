@@ -740,12 +740,15 @@ PrefPaths::PrefPaths(GuiPreferences * form, QWidget * parent)
 	: PrefModule(_("Paths"), form, parent)
 {
 	setupUi(this);
+	connect(exampleDirPB, SIGNAL(clicked()), this, SLOT(select_exampledir()));
 	connect(templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
 	connect(tempDirPB, SIGNAL(clicked()), this, SLOT(select_tempdir()));
 	connect(backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
 	connect(workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
 	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
 	connect(workingDirED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(exampleDirPB, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(templateDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
@@ -763,6 +766,7 @@ PrefPaths::PrefPaths(GuiPreferences * form, QWidget * parent)
 void PrefPaths::apply(LyXRC & rc) const
 {
 	rc.document_path = internal_path(fromqstr(workingDirED->text()));
+	rc.example_path = internal_path(fromqstr(exampleDirED->text()));
 	rc.template_path = internal_path(fromqstr(templateDirED->text()));
 	rc.backupdir_path = internal_path(fromqstr(backupDirED->text()));
 	rc.tempdir_path = internal_path(fromqstr(tempDirED->text()));
@@ -775,12 +779,23 @@ void PrefPaths::apply(LyXRC & rc) const
 void PrefPaths::update(LyXRC const & rc)
 {
 	workingDirED->setText(toqstr(external_path(rc.document_path)));
+	exampleDirED->setText(toqstr(external_path(rc.example_path)));
 	templateDirED->setText(toqstr(external_path(rc.template_path)));
 	backupDirED->setText(toqstr(external_path(rc.backupdir_path)));
 	tempDirED->setText(toqstr(external_path(rc.tempdir_path)));
 	pathPrefixED->setText(toqstr(external_path_list(rc.path_prefix)));
 	// FIXME: should be a checkbox only
 	lyxserverDirED->setText(toqstr(external_path(rc.lyxpipes)));
+}
+
+
+void PrefPaths::select_exampledir()
+{
+	docstring file(form_->browsedir(
+		from_utf8(internal_path(fromqstr(exampleDirED->text()))),
+		_("Select a document templates directory")));
+	if (!file.empty())
+		exampleDirED->setText(toqstr(file));
 }
 
 

@@ -92,6 +92,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
+	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
@@ -702,6 +703,13 @@ int LyXRC::read(Lexer & lexrc)
 			if (lexrc.next()) {
 				document_path = os::internal_path(lexrc.getString());
 				document_path = expandPath(document_path);
+			}
+			break;
+
+		case RC_EXAMPLEPATH:
+			if (lexrc.next()) {
+				example_path = os::internal_path(lexrc.getString());
+				example_path = expandPath(example_path);
 			}
 			break;
 
@@ -1932,6 +1940,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_EXAMPLEPATH:
+		if (ignore_system_lyxrc ||
+		    example_path != system_lyxrc.example_path) {
+			string const path = os::external_path(example_path);
+			os << "\\example_path \"" << path << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_TEMPLATEPATH:
 		if (ignore_system_lyxrc ||
 		    template_path != system_lyxrc.template_path) {
@@ -2409,6 +2425,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_ESC_CHARS:
 	case RC_USE_ESC_CHARS:
 		str = _("Specify additional chars that can be part of a word.");
+		break;
+
+	case RC_EXAMPLEPATH:
+		str = _("The path that LyX will set when offering to choose an example. An empty value selects the directory LyX was started from.");
 		break;
 
 	case RC_FONT_ENCODING:

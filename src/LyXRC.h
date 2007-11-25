@@ -63,6 +63,7 @@ public:
 		RC_DISPLAY_GRAPHICS,
 		RC_DOCUMENTPATH,
 		RC_ESC_CHARS,
+		RC_EXAMPLEPATH,
 		RC_FONT_ENCODING,
 		RC_FORMAT,
 		RC_INDEX_COMMAND,
@@ -225,6 +226,8 @@ public:
 	std::string index_command;
 	///
 	std::string document_path;
+	///
+	std::string example_path;
 	///
 	std::string template_path;
 	///
