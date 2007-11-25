@@ -50,6 +50,8 @@ public:
 
 	virtual std::string getCmdName() const { return "\\newpage"; }
 
+	virtual ColorCode ColorName() const { return Color_newpage; }
+
 private:
 	virtual Inset * clone() const
 	{
@@ -65,6 +67,8 @@ public:
 	docstring insetLabel() const { return _("Page Break"); }
 
 	std::string getCmdName() const { return "\\pagebreak"; }
+
+	ColorCode ColorName() const { return Color_pagebreak; }
 
 private:
 	virtual Inset * clone() const

@@ -55,7 +55,7 @@ void InsetNewpage::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 {
 	FontInfo font;
-	font.setColor(Color_pagebreak);
+	font.setColor(ColorName());
 	font.decSize();
 
 	Dimension const dim = dimension(*pi.base.bv);
@@ -72,9 +72,9 @@ void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 		Color_none, Color_none);
 
 	pi.pain.line(x, y, text_start, y,
-		   Color_pagebreak, Painter::line_onoffdash);
+		   ColorName(), Painter::line_onoffdash);
 	pi.pain.line(text_end, y, int(x + dim.wid), y,
-		   Color_pagebreak, Painter::line_onoffdash);
+		   ColorName(), Painter::line_onoffdash);
 }
 
 

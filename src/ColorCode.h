@@ -137,6 +137,8 @@ enum ColorCode
 	Color_tabularonoffline,
 	/// Bottom area color
 	Color_bottomarea,
+	/// New page color
+	Color_newpage,
 	/// Page break color
 	Color_pagebreak,
 
