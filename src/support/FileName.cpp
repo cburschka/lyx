@@ -19,11 +19,13 @@
 #include "debug.h"
 #include "lyxlib.h"
 
+#include <QDateTime>
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QList>
 
-#include <boost/filesystem/exception.hpp>
-#include <boost/filesystem/operations.hpp>
+#include <boost/assert.hpp>
 
 #include <map>
 #include <sstream>
@@ -37,7 +39,6 @@ using std::ifstream;
 using std::ostringstream;
 using std::endl;
 
-namespace fs = boost::filesystem;
 
 // FIXME: merge this
 //
@@ -284,19 +285,43 @@ FileName FileName::tempName(FileName const & dir, std::string const & mask)
 
 std::time_t FileName::lastModified() const
 {
-	return fs::last_write_time(toFilesystemEncoding());
+	return QFileInfo(toqstr(name_)).lastModified().toTime_t();
+}
+
+
+static bool rmdir(QFileInfo const & fi)
+{
+	QDir dir(fi.absoluteFilePath());
+	QFileInfoList list = dir.entryInfoList();
+	for (int i = 0; i < list.size(); ++i) {
+		if (list.at(i).fileName() == ".")
+			continue;
+		if (list.at(i).fileName() == "..")
+			continue;
+		if (list.at(i).isDir()) {
+			LYXERR(Debug::FILES, "Erasing dir " 
+				<< fromqstr(list.at(i).absoluteFilePath()) << endl);
+			if (!rmdir(list.at(i)))
+				return false;
+		}
+		else {
+			LYXERR(Debug::FILES, "Erasing file " 
+				<< fromqstr(list.at(i).absoluteFilePath()) << endl);
+			dir.remove(list.at(i).fileName());
+		}
+	} 
+	QDir parent = fi.absolutePath();
+	return parent.rmdir(fi.fileName());
 }
 
 
 bool FileName::destroyDirectory() const
 {
-	try {
-		return fs::remove_all(toFilesystemEncoding()) > 0;
-	} catch (fs::filesystem_error const & fe){
-		lyxerr << "Could not delete " << *this << ". (" << fe.what() << ")"
-			<< std::endl;
-		return false;
-	}
+	bool const success = rmdir(QFileInfo(toqstr(name_)));
+	if (!success)
+		lyxerr << "Could not delete " << *this << "." << endl;
+
+	return success;
 }
 
 
