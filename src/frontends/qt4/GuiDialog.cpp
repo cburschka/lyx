@@ -11,10 +11,12 @@
 #include <config.h>
 
 #include "GuiDialog.h"
+#include "GuiView.h"
 #include "debug.h"
 #include "qt_helpers.h"
 
 #include <QCloseEvent>
+#include <QMainWindow>
 #include <QSettings>
 #include <QShowEvent>
 
@@ -24,7 +26,7 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(GuiView & lv, std::string const & name)
-	: Dialog(lv, name), is_closing_(false)
+	: QDialog(&lv), Dialog(lv, name), is_closing_(false)
 {}
 
 
