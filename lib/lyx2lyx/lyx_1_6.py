@@ -785,24 +785,28 @@ def revert_hyperlinktype(document):
 
 
 def revert_pagebreak(document):
-    'Reverts pagebreak to newpage'
+    'Reverts pagebreak to ERT'
     i = 0
     while True:
       i = find_token(document.body, "\\pagebreak", i)
       if i == -1:
           return
-      document.body[i] = document.body[i].replace("\\pagebreak", "\\newpage")
+      document.body[i] = '\\begin_inset ERT\nstatus collapsed\n\n' \
+      '\\begin_layout Standard\n\n\n\\backslash\n' \
+      'pagebreak{}\n\\end_layout\n\n\\end_inset\n\n'
       i = i + 1
 
 
 def revert_linebreak(document):
-    'Reverts linebreak to newline'
+    'Reverts linebreak to ERT'
     i = 0
     while True:
       i = find_token(document.body, "\\linebreak", i)
       if i == -1:
           return
-      document.body[i] = document.body[i].replace("\\linebreak", "\\newline")
+      document.body[i] = '\\begin_inset ERT\nstatus collapsed\n\n' \
+      '\\begin_layout Standard\n\n\n\\backslash\n' \
+      'linebreak{}\n\\end_layout\n\n\\end_inset\n\n'
       i = i + 1
 
 
