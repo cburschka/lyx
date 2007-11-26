@@ -69,7 +69,6 @@ liblyxsupport_la_SOURCES = \
 	Path.h \
 	Package.cpp \
 	Package.h \
-	qstring_helpers.cpp \
 	qstring_helpers.h \
 	rename.cpp \
 	socktools.cpp \
@@ -124,7 +123,7 @@ check_PROGRAMS = \
 	check_lstrings
 
 check_convert_LDADD = ../debug.o convert.o docstring.o lstrings.o unicode.o \
-	qstring_helpers.o $(BOOST_LIBS) $(QT4_CORE_LIB)
+	$(BOOST_LIBS) $(QT4_CORE_LIB)
 check_convert_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_convert_SOURCES = \
 	tests/check_convert.cpp \
@@ -136,7 +135,7 @@ check_filetools_SOURCES = \
 	tests/boost.cpp
 
 check_lstrings_LDADD = ../debug.o lstrings.o convert.o docstring.o unicode.o \
-	qstring_helpers.o $(QT4_CORE_LIB)
+	$(QT4_CORE_LIB)
 check_lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS)
 check_lstrings_SOURCES = \
 	tests/check_lstrings.cpp \

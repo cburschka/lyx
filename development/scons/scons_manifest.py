@@ -363,7 +363,6 @@ src_support_files = Split('''
     lyxtime.cpp
     mkdir.cpp
     os.cpp
-    qstring_helpers.cpp
     rename.cpp
     socktools.cpp
     tempname.cpp

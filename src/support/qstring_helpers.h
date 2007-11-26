@@ -15,6 +15,7 @@
 #include "support/docstring.h"
 
 #include <QString>
+#include <QVector>
 
 namespace lyx {
 
@@ -70,8 +71,13 @@ inline QString const toqstr(docstring const & ucs4)
  * This is the preferred method of converting anything that possibly
  * contains non-ASCII stuff to docstring.
  */
-docstring const qstring_to_ucs4(QString const & qstr);
-
+inline docstring const qstring_to_ucs4(QString const & qstr)
+{
+	if (qstr.isEmpty())
+		return docstring();
+	QVector<uint> const ucs4 = qstr.toUcs4();
+	return docstring((char_type const *)(ucs4.constData()), ucs4.size());
+}
 
 /**
  * fromqstr - convert a QString into a UTF8 encoded std::string
@@ -79,7 +85,10 @@ docstring const qstring_to_ucs4(QString const & qstr);
  * This should not be used except for output to lyxerr, since all possibly
  * non-ASCII stuff should be stored in a docstring.
  */
-std::string const fromqstr(QString const & str);
+inline std::string const fromqstr(QString const & str)
+{
+	return str.isEmpty() ? std::string() : std::string(str.toUtf8());
+}
 
 } // namespace lyx
 
