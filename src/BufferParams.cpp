@@ -469,20 +469,24 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 	if (token == "\\textclass") {
 		lex.next();
 		string const classname = lex.getString();
-		pair<bool, lyx::textclass_type> pp =
-			textclasslist.numberOfClass(classname);
-		if (pp.first) {
+		// if there exists a local layout file, ignore the system one
+		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
+		pair<bool, lyx::textclass_type> pp = textclasslist.addTextClass(classname, filepath);
+		if (pp.first)
 			setBaseClass(pp.second);
-		} else {
-			// if text class does not exist, try to load it from filepath
-			pp = textclasslist.addTextClass(classname, filepath);
-			if (pp.first) {
+		else {
+			pp = textclasslist.numberOfClass(classname);
+			if (pp.first)
 				setBaseClass(pp.second);
-			} else {
+			else {
+				// a warning will be given for unknown class
 				setBaseClass(defaultTextclass());
 				return classname;
 			}
 		}
+		// FIXME: this warning will be given even if there exists a local .cls
+		// file. Even worse, the .lyx file can not be compiled or exported
+		// because the textclass is marked as unavilable.
 		if (!getTextClass().isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The layout file requested by this document,\n"
