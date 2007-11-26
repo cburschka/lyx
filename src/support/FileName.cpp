@@ -103,7 +103,6 @@ FileName & FileName::operator=(FileName const & rhs)
 
 bool FileName::empty() const
 {
-	lyxerr << "FileName::empty() '" << absFilename() << "'" << endl;
 	return d->fi.absoluteFilePath().isEmpty();
 }
 
