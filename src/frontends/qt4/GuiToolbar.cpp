@@ -352,7 +352,8 @@ void GuiLayoutBox::selected(const QString & str)
 		if (translateIfPossible(itname) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::TOOLBAR);
-			owner_.dispatch(func);
+			theLyXFunc().setLyXView(&owner_);
+			lyx::dispatch(func);
 			return;
 		}
 	}

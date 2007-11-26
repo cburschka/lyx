@@ -197,7 +197,8 @@ bool import(LyXView * lv, FileName const & filename,
 			: changeExtension(filename.absFilename(),
 					  formats.extension(loader_format));
 		lv->view()->insertPlaintextFile(filename2, as_paragraphs);
-		lv->dispatch(FuncRequest(LFUN_MARK_OFF), true);
+		theLyXFunc().setLyXView(lv);
+		lyx::dispatch(FuncRequest(LFUN_MARK_OFF));
 	}
 
 	// we are done
@@ -1823,7 +1824,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			// Let the current LyXView dispatch its own actions.
 			BOOST_ASSERT(lyx_view_);
-			if (lyx_view_->dispatch(cmd, false)) {
+			if (lyx_view_->dispatch(cmd)) {
 				if (lyx_view_->view())
 					updateFlags = lyx_view_->view()->cursor().result().update();
 				break;

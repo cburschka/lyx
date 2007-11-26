@@ -62,7 +62,8 @@ void Action::update()
 void Action::action()
 {
 	//LYXERR(Debug::ACTION, "calling LyXFunc::dispatch: func_: ");
-	lyxView_.dispatch(func_);
+	theLyXFunc().setLyXView(&lyxView_);
+	lyx::dispatch(func_);
 	triggered(this);
 }
 

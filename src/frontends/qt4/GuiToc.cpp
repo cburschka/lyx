@@ -113,7 +113,7 @@ void GuiToc::goTo(int type, QModelIndex const & index)
 	LYXERR(Debug::GUI, "GuiToc::goTo " << to_utf8(it->str()));
 
 	string const tmp = convert<string>(it->id());
-	lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
+	dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
 }
 
 

@@ -273,7 +273,8 @@ docstring const GuiCommandBuffer::getCurrentState() const
 void GuiCommandBuffer::hide() const
 {
 	FuncRequest cmd(LFUN_COMMAND_EXECUTE, "off");
-	view_->dispatch(cmd);
+	theLyXFunc().setLyXView(view_);
+	lyx::dispatch(cmd);
 }
 
 
@@ -325,7 +326,8 @@ void GuiCommandBuffer::dispatch(string const & str)
 	history_pos_ = history_.end();
 	FuncRequest func = lyxaction.lookupFunc(str);
 	func.origin = FuncRequest::COMMANDBUFFER;
-	view_->dispatch(func);
+	theLyXFunc().setLyXView(view_);
+	lyx::dispatch(func);
 }
 
 } // namespace frontend

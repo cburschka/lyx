@@ -108,7 +108,8 @@ void InsertTableWidget::mouseReleaseEvent(QMouseEvent * /*event*/)
 {
 	if (underMouse_) {
 		QString const data = QString("%1 %2").arg(bottom_).arg(right_);
-		lyxView_.dispatch(FuncRequest(LFUN_TABULAR_INSERT, fromqstr(data)));
+		theLyXFunc().setLyXView(&lyxView_);
+		lyx::dispatch(FuncRequest(LFUN_TABULAR_INSERT, fromqstr(data)));
 	}
 	// emit signal
 	visible(false);

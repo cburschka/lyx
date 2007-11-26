@@ -78,7 +78,7 @@ public:
 	/// \param propagate: indicate if the dispatch should be probagated to
 	/// the main lyx::dispatch().
 	/// \return true if the \c FuncRequest has been dispatched.
-	virtual bool dispatch(FuncRequest const & cmd, bool propagate) = 0;
+	virtual bool dispatch(FuncRequest const & cmd) = 0;
 
 	///
 	virtual void restartCursor() = 0;
