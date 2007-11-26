@@ -30,7 +30,7 @@ namespace support {
 class FileName {
 public:
 	/// Constructor for empty filenames
-	FileName() {}
+	FileName();
 	/** Constructor for nonempty filenames.
 	 * explicit because we don't want implicit conversion of relative
 	 * paths in function arguments (e.g. of unlink).
@@ -38,6 +38,13 @@ public:
 	 * Encoding is always UTF-8.
 	 */
 	explicit FileName(std::string const & abs_filename);
+
+	/// copy constructor.
+	FileName(FileName const &);
+
+	///
+	FileName & operator=(FileName const &);
+
 	virtual ~FileName() {}
 	/** Set a new filename.
 	 * \param filename the file in question. Must have an absolute path.
@@ -46,9 +53,9 @@ public:
 	virtual void set(std::string const & filename);
 	virtual void erase();
 	/// Is this filename empty?
-	bool empty() const { return name_.empty(); }
+	bool empty() const;
 	/// get the absolute file name in UTF-8 encoding
-	std::string const absFilename() const { return name_; }
+	std::string absFilename() const;
 	/**
 	 * Get the file name in the encoding used by the file system.
 	 * Only use this for accessing the file, e.g. with an fstream.
@@ -77,7 +84,7 @@ public:
 	bool isDirWritable() const;
 	
 	/// return true when file/directory is writable (write test file)
-	bool copyTo(FileName const & target, bool noclobber) const;
+	bool copyTo(FileName const & target) const;
 
 	/// remove directory and all contents, returns true on success
 	bool destroyDirectory() const;
@@ -115,10 +122,11 @@ public:
 	/// used for display in the Gui
 	docstring displayName(int threshold = 1000) const;
 
-
-protected:
-	/// The absolute file name in UTF-8 encoding.
-	std::string name_;
+private:
+	friend class DocFileName;
+	///
+	struct Private;
+	Private * const d;
 };
 
 

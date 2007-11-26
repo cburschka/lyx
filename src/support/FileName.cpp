@@ -26,9 +26,6 @@
 #include <QList>
 
 #include <boost/assert.hpp>
-#include <boost/filesystem/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/throw_exception.hpp>
 
 #include <map>
 #include <sstream>
@@ -51,92 +48,25 @@ using std::ifstream;
 using std::ostringstream;
 using std::endl;
 
-
-// FIXME: merge this
-//
-// BOOST_POSIX or BOOST_WINDOWS specify which API to use.
-# if !defined( BOOST_WINDOWS ) && !defined( BOOST_POSIX )
-#   if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__CYGWIN__)
-#     define BOOST_WINDOWS
-#   else
-#     define BOOST_POSIX
-#   endif
-# endif
-
-#if defined (BOOST_WINDOWS)
-# define WIN32_LEAN_AND_MEAN
-# include <windows.h>
-# undef min
-# undef max
-#endif
-
-
-static bool copy_file(std::string const & source, std::string const & target, bool noclobber)
-{
-
-#ifdef BOOST_POSIX
-	int const infile = ::open(source.c_str(), O_RDONLY);
-	if (infile == -1)
-		return false;
-
-	struct stat source_stat;
-	int const ret = ::fstat(infile, &source_stat);
-	if (ret == -1) {
-		//int err = errno;
-		::close(infile);
-	}
-
-	int const flags = O_WRONLY | O_CREAT | (noclobber ? O_EXCL : O_TRUNC);
-
-	int const outfile = ::open(target.c_str(), flags, source_stat.st_mode);
-	if (outfile == -1) {
-		//int err = errno;
-		::close(infile);
-		return false;
-	}
-
-	std::size_t const buf_sz = 32768;
-	char buf[buf_sz];
-	ssize_t in = -1;
-	ssize_t out = -1;
-
-	while (true) {
-		in = ::read(infile, buf, buf_sz);
-		if (in == -1) {
-			break;
-		} else if (in == 0) {
-			break;
-		} else {
-			out = ::write(outfile, buf, in);
-			if (out == -1) {
-				break;
-			}
-		}
-	}
-
-	//int err = errno;
-
-	::close(infile);
-	::close(outfile);
-
-	if (in == -1 || out == -1)
-		return false;
-#endif
-
-#ifdef BOOST_WINDOWS
-	if (::CopyFile(source.c_str(), target.c_str(), noclobber) == 0) {
-		// CopyFile is probably not setting errno so this is most
-		// likely wrong.
-		return false;
-	}
-#endif
-	return true;
-}
-
-
 namespace lyx {
 namespace support {
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// FileName::Private
+//
+/////////////////////////////////////////////////////////////////////
+
+struct FileName::Private
+{
+	Private() {}
+
+	Private(string const & abs_filename) : fi(toqstr(abs_filename))
+	{}
+	///
+	QFileInfo fi;
+};
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -145,47 +75,70 @@ namespace support {
 /////////////////////////////////////////////////////////////////////
 
 
+FileName::FileName() : d(new Private)
+{}
+
 FileName::FileName(string const & abs_filename)
-	: name_(abs_filename)
+	: d(abs_filename.empty() ? new Private : new Private(abs_filename))
 {
-	BOOST_ASSERT(empty() || absolutePath(name_));
+	BOOST_ASSERT(empty() || d->fi.isAbsolute());
 #if defined(_WIN32)
-	BOOST_ASSERT(!contains(name_, '\\'));
+	BOOST_ASSERT(!contains(abs_filename, '\\'));
 #endif
+}
+
+
+FileName::FileName(FileName const & rhs) : d(new Private)
+{
+	d->fi = rhs.d->fi;
+}
+
+
+FileName & FileName::operator=(FileName const & rhs)
+{
+	d->fi = rhs.d->fi;
+	return *this;
+}
+
+
+bool FileName::empty() const
+{
+	lyxerr << "FileName::empty() '" << absFilename() << "'" << endl;
+	return d->fi.absoluteFilePath().isEmpty();
+}
+
+
+string FileName::absFilename() const
+{
+	return fromqstr(d->fi.absoluteFilePath());
 }
 
 
 void FileName::set(string const & name)
 {
-	name_ = name;
-	BOOST_ASSERT(absolutePath(name_));
+	d->fi.setFile(toqstr(name));
+	BOOST_ASSERT(d->fi.isAbsolute());
 #if defined(_WIN32)
-	BOOST_ASSERT(!contains(name_, '\\'));
+	BOOST_ASSERT(!contains(name, '\\'));
 #endif
 }
 
 
 void FileName::erase()
 {
-	name_.erase();
+	d->fi = QFileInfo();
 }
 
 
-bool FileName::copyTo(FileName const & name, bool noclobber) const
+bool FileName::copyTo(FileName const & name) const
 {
-	try {
-		copy_file(toFilesystemEncoding(), name.toFilesystemEncoding(), noclobber);
-		return true;
-	}
-	catch (...) {
-	}
-	return false;
+	return QFile::copy(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
 }
 
 
 string FileName::toFilesystemEncoding() const
 {
-	QByteArray const encoded = QFile::encodeName(toqstr(name_));
+	QByteArray const encoded = QFile::encodeName(d->fi.absoluteFilePath());
 	return string(encoded.begin(), encoded.end());
 }
 
@@ -199,39 +152,37 @@ FileName FileName::fromFilesystemEncoding(string const & name)
 
 bool FileName::exists() const
 {
-	return QFileInfo(toqstr(name_)).exists();
+	return d->fi.exists();
 }
 
 
 bool FileName::isSymLink() const
 {
-	return QFileInfo(toqstr(name_)).isSymLink();
+	return d->fi.isSymLink();
 }
 
 
 bool FileName::isFileEmpty() const
 {
-	return QFileInfo(toqstr(name_)).size() == 0;
+	return d->fi.size() == 0;
 }
 
 
 bool FileName::isDirectory() const
 {
-	return QFileInfo(toqstr(name_)).isDir();
+	return d->fi.isDir();
 }
 
 
 bool FileName::isReadOnly() const
 {
-	QFileInfo const fi(toqstr(name_));
-	return fi.isReadable() && !fi.isWritable();
+	return d->fi.isReadable() && !d->fi.isWritable();
 }
 
 
 bool FileName::isReadableDirectory() const
 {
-	QFileInfo const fi(toqstr(name_));
-	return fi.isDir() && fi.isReadable();
+	return d->fi.isDir() && d->fi.isReadable();
 }
 
 
@@ -249,15 +200,13 @@ FileName FileName::onlyPath() const
 
 bool FileName::isReadableFile() const
 {
-	QFileInfo const fi(toqstr(name_));
-	return fi.isFile() && fi.isReadable();
+	return d->fi.isFile() && d->fi.isReadable();
 }
 
 
 bool FileName::isWritable() const
 {
-	QFileInfo const fi(toqstr(name_));
-	return fi.isWritable();
+	return d->fi.isWritable();
 }
 
 
@@ -283,7 +232,7 @@ FileName FileName::tempName(FileName const & dir, std::string const & mask)
 
 std::time_t FileName::lastModified() const
 {
-	return QFileInfo(toqstr(name_)).lastModified().toTime_t();
+	return d->fi.lastModified().toTime_t();
 }
 
 
@@ -315,7 +264,7 @@ static bool rmdir(QFileInfo const & fi)
 
 bool FileName::destroyDirectory() const
 {
-	bool const success = rmdir(QFileInfo(toqstr(name_)));
+	bool const success = rmdir(d->fi);
 	if (!success)
 		lyxerr << "Could not delete " << *this << "." << endl;
 
@@ -590,14 +539,14 @@ DocFileName::DocFileName(FileName const & abs_filename, bool save_abs)
 void DocFileName::set(string const & name, string const & buffer_path)
 {
 	save_abs_path_ = absolutePath(name);
-	name_ = save_abs_path_ ? name : makeAbsPath(name, buffer_path).absFilename();
+	FileName::set(save_abs_path_ ? name : makeAbsPath(name, buffer_path).absFilename());
 	zipped_valid_ = false;
 }
 
 
 void DocFileName::erase()
 {
-	name_.erase();
+	FileName::erase();
 	zipped_valid_ = false;
 }
 
@@ -605,14 +554,13 @@ void DocFileName::erase()
 string const DocFileName::relFilename(string const & path) const
 {
 	// FIXME UNICODE
-	return to_utf8(makeRelPath(from_utf8(name_), from_utf8(path)));
+	return to_utf8(makeRelPath(qstring_to_ucs4(d->fi.absoluteFilePath()), from_utf8(path)));
 }
 
 
 string const DocFileName::outputFilename(string const & path) const
 {
-	// FIXME UNICODE
-	return save_abs_path_ ? name_ : to_utf8(makeRelPath(from_utf8(name_), from_utf8(path)));
+	return save_abs_path_ ? absFilename() : relFilename(path);
 }
 
 
@@ -622,14 +570,15 @@ string const DocFileName::mangledFilename(std::string const & dir) const
 	// filename returns the same mangled name.
 	typedef map<string, string> MangledMap;
 	static MangledMap mangledNames;
-	MangledMap::const_iterator const it = mangledNames.find(name_);
+	MangledMap::const_iterator const it = mangledNames.find(absFilename());
 	if (it != mangledNames.end())
 		return (*it).second;
 
+	string const name = absFilename();
 	// Now the real work
-	string mname = os::internal_path(name_);
+	string mname = os::internal_path(name);
 	// Remove the extension.
-	mname = changeExtension(name_, string());
+	mname = changeExtension(name, string());
 	// The mangled name must be a valid LaTeX name.
 	// The list of characters to keep is probably over-restrictive,
 	// but it is not really a problem.
@@ -644,7 +593,7 @@ string const DocFileName::mangledFilename(std::string const & dir) const
 	while ((pos = mname.find_first_not_of(keep, pos)) != string::npos)
 		mname[pos++] = '_';
 	// Add the extension back on
-	mname = changeExtension(mname, getExtension(name_));
+	mname = changeExtension(mname, getExtension(name));
 
 	// Prepend a counter to the filename. This is necessary to make
 	// the mangled name unique.
@@ -672,7 +621,7 @@ string const DocFileName::mangledFilename(std::string const & dir) const
 		}
 	}
 
-	mangledNames[name_] = mname;
+	mangledNames[absFilename()] = mname;
 	return mname;
 }
 
@@ -689,7 +638,7 @@ bool DocFileName::isZipped() const
 
 string const DocFileName::unzippedFilename() const
 {
-	return unzippedFileName(name_);
+	return unzippedFileName(absFilename());
 }
 
 
@@ -707,6 +656,3 @@ bool operator!=(DocFileName const & lhs, DocFileName const & rhs)
 
 } // namespace support
 } // namespace lyx
-
-
-
