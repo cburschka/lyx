@@ -360,7 +360,7 @@ Menuset
 		Separator
 		Item "Hyphenation Point|H" "hyphenation-point-insert"
 		Item "Ligature Break|k" "ligature-break-insert"
-		Item "New Line|w" "new-line"
+		Item "New Line|e" "new-line"
 		Item "Line Break|B" "line-break"
 		Separator
 		Item "New Page|N" "newpage-insert"
