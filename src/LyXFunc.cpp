@@ -197,7 +197,7 @@ bool import(LyXView * lv, FileName const & filename,
 			: changeExtension(filename.absFilename(),
 					  formats.extension(loader_format));
 		lv->view()->insertPlaintextFile(filename2, as_paragraphs);
-		lv->dispatch(FuncRequest(LFUN_MARK_OFF));
+		lv->dispatch(FuncRequest(LFUN_MARK_OFF), true);
 	}
 
 	// we are done
@@ -846,35 +846,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		setErrorMessage(flag.message());
 	} else {
 		switch (action) {
-
-		// Let the frontend dispatch its own actions.
-		case LFUN_WINDOW_NEW:
-		case LFUN_WINDOW_CLOSE:
-		case LFUN_LYX_QUIT:
-			BOOST_ASSERT(theApp());
-			theApp()->dispatch(cmd);
-			// Nothing more to do.
-			return;
-
-		// Let lyx_view_ dispatch its own actions.
-		case LFUN_BUFFER_SWITCH:
-		case LFUN_BUFFER_NEXT:
-		case LFUN_BUFFER_PREVIOUS:
-		case LFUN_COMMAND_EXECUTE:
-		case LFUN_DROP_LAYOUTS_CHOICE:
-		case LFUN_MENU_OPEN:
-		case LFUN_TOOLBAR_TOGGLE:
-		case LFUN_DIALOG_UPDATE:
-		case LFUN_DIALOG_TOGGLE:
-		case LFUN_DIALOG_DISCONNECT_INSET:
-		case LFUN_DIALOG_HIDE:
-		case LFUN_DIALOG_SHOW:
-		case LFUN_INSET_APPLY:
-			BOOST_ASSERT(lyx_view_);
-			lyx_view_->dispatch(cmd);
-			if (lyx_view_->view())
-				updateFlags = lyx_view_->view()->cursor().result().update();
-			break;
 
 		case LFUN_WORD_FIND_FORWARD:
 		case LFUN_WORD_FIND_BACKWARD: {
@@ -1844,10 +1815,29 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		default: {
+			BOOST_ASSERT(theApp());
+			// Let the frontend dispatch its own actions.
+			if (theApp()->dispatch(cmd))
+				// Nothing more to do.
+				return;
+
+			// Let the current LyXView dispatch its own actions.
 			BOOST_ASSERT(lyx_view_);
+			if (lyx_view_->dispatch(cmd, false)) {
+				if (lyx_view_->view())
+					updateFlags = lyx_view_->view()->cursor().result().update();
+				break;
+			}
+
+			// FIXME: Probably a good idea to inverse the Cursor and BufferView
+			// dispatching.
+
+			// Let the current Cursor dispatch its own actions.
+			BOOST_ASSERT(lyx_view_->view());
 			view()->cursor().dispatch(cmd);
 			updateFlags = view()->cursor().result().update();
 			if (!view()->cursor().result().dispatched())
+				// Let the current BufferView dispatch its own actions.
 				updateFlags = view()->dispatch(cmd);
 			break;
 		}
@@ -1868,9 +1858,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			//Do we have a selection?
 			theSelection().haveSelection(view()->cursor().selection());
-
-			if (view()->cursor().inTexted()) {
-			}
 		}
 	}
 	if (!quitting && lyx_view_) {

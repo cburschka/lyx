@@ -237,7 +237,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd)
 }
 
 	
-void GuiApplication::dispatch(FuncRequest const & cmd)
+bool GuiApplication::dispatch(FuncRequest const & cmd)
 {
 	switch(cmd.action) {
 
@@ -281,8 +281,12 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 	}
 
 	default:
-		break;
+		// Notify the caller that the action has not been dispatched.
+		return false;
 	}
+
+	// The action has been dispatched.
+	return true;
 }
 
 

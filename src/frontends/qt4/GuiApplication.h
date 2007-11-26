@@ -57,7 +57,7 @@ public:
 	/// Method inherited from \c Application class
 	//@{
 	virtual FuncStatus getStatus(FuncRequest const &);
-	virtual void dispatch(FuncRequest const &);
+	virtual bool dispatch(FuncRequest const &);
 	virtual void resetGui();
 	virtual Clipboard & clipboard();
 	virtual Selection & selection();

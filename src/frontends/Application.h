@@ -156,7 +156,8 @@ public:
 	///
 	virtual FuncStatus getStatus(FuncRequest const & cmd) = 0;
 	/// dispatch command.
-	virtual void dispatch(FuncRequest const & cmd) = 0;
+	/// \return true if the \c FuncRequest has been dispatched.
+	virtual bool dispatch(FuncRequest const & cmd) = 0;
 
 	///
 	virtual void resetGui() = 0;

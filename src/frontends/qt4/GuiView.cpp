@@ -1018,7 +1018,7 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 }
 
 
-void GuiView::dispatch(FuncRequest const & cmd)
+bool GuiView::dispatch(FuncRequest const & cmd, bool propagate)
 {
 	BufferView * bv = view();	
 	// By default we won't need any update.
@@ -1161,16 +1161,19 @@ void GuiView::dispatch(FuncRequest const & cmd)
 		}
 
 		default:
-			theLyXFunc().setLyXView(this);
-			lyx::dispatch(cmd);
-			return;
+			if (propagate) {
+				theLyXFunc().setLyXView(this);
+				lyx::dispatch(cmd);
+			}
+			return false;
 	}
 
-	if (!bv)
-		return;
-	bv->processUpdateFlags(bv->cursor().result().update());
-	// We won't need any new update.
-	bv->cursor().updateFlags(Update::None);
+	if (bv) {
+		bv->processUpdateFlags(bv->cursor().result().update());
+		// We won't need any new update.
+		bv->cursor().updateFlags(Update::None);
+	}
+	return true;
 }
 
 

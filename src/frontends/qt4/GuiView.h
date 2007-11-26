@@ -76,7 +76,7 @@ public:
 	void updateToolbars();
 	QMenu * createPopupMenu();
 	FuncStatus getStatus(FuncRequest const & cmd);
-	void dispatch(FuncRequest const & cmd);
+	bool dispatch(FuncRequest const & cmd, bool propagate = true);
 
 	///
 	void setLayoutDialog(GuiLayoutBox *);
