@@ -47,12 +47,10 @@ using std::string;
 namespace {
 
 ParagraphList::const_iterator searchParagraph(
-	ParagraphList::const_iterator const & par,
+	ParagraphList::const_iterator p,
   ParagraphList::const_iterator const & pend)
 {
-	ParagraphList::const_iterator p = boost::next(par);
-
-	for (; p != pend && p->layout()->latextype == LATEX_PARAGRAPH; ++p)
+	for (++p; p != pend && p->layout()->latextype == LATEX_PARAGRAPH; ++p)
 		;
 
 	return p;
@@ -60,13 +58,12 @@ ParagraphList::const_iterator searchParagraph(
 
 
 ParagraphList::const_iterator searchCommand(
-		ParagraphList::const_iterator const & par,
+		ParagraphList::const_iterator p,
 		ParagraphList::const_iterator const & pend)
 {
-	LayoutPtr const & bstyle = par->layout();
-	ParagraphList::const_iterator p = boost::next(par);
+	LayoutPtr const & bstyle = p->layout();
 
-	for ( ; p != pend; ++p) {
+	for (++p; p != pend; ++p) {
 		LayoutPtr const & style = p->layout();
 		if (style->latextype == LATEX_COMMAND
 				&& style->commanddepth <= bstyle->commanddepth)
@@ -77,27 +74,27 @@ ParagraphList::const_iterator searchCommand(
 
 
 ParagraphList::const_iterator searchEnvironment(
-		ParagraphList::const_iterator const & par,
+		ParagraphList::const_iterator p,
 		ParagraphList::const_iterator const & pend)
 {
-	LayoutPtr const & bstyle = par->layout();
-	ParagraphList::const_iterator p = boost::next(par);
-	for (; p != pend; ++p) {
+	LayoutPtr const & bstyle = p->layout();
+	size_t const depth = p->params().depth();
+	for (++p; p != pend; ++p) {
 		LayoutPtr const & style = p->layout();
 		if (style->latextype == LATEX_COMMAND)
 			return p;
 
 		if (style->latextype == LATEX_PARAGRAPH) {
-			if (p->params().depth() > par->params().depth())
+			if (p->params().depth() > depth)
 				continue;
 			return p;
 		}
 
-		if (p->params().depth() < par->params().depth())
+		if (p->params().depth() < depth)
 			return p;
 
 		if (style->latexname() != bstyle->latexname()
-				&& p->params().depth() == par->params().depth() )
+				&& p->params().depth() == depth)
 			return p;
 	}
 	return pend;
