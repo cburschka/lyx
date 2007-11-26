@@ -141,7 +141,7 @@ Package::Package(string const & command_line_arg0,
 
 	FileName const default_user_support_dir =
 		get_default_user_support_dir(home_dir_);
-	FileName user_support_dir_;
+
 	explicit_user_support_dir_ = userSupportDir(default_user_support_dir,
 				     command_line_user_support_dir, user_support_dir_);
 
