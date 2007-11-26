@@ -239,25 +239,32 @@ static bool rmdir(QFileInfo const & fi)
 {
 	QDir dir(fi.absoluteFilePath());
 	QFileInfoList list = dir.entryInfoList();
+	bool global_success = true;
 	for (int i = 0; i < list.size(); ++i) {
 		if (list.at(i).fileName() == ".")
 			continue;
 		if (list.at(i).fileName() == "..")
 			continue;
+		bool success;
 		if (list.at(i).isDir()) {
 			LYXERR(Debug::FILES, "Erasing dir " 
 				<< fromqstr(list.at(i).absoluteFilePath()) << endl);
-			if (!rmdir(list.at(i)))
-				return false;
+			success = rmdir(list.at(i));
 		}
 		else {
 			LYXERR(Debug::FILES, "Erasing file " 
 				<< fromqstr(list.at(i).absoluteFilePath()) << endl);
-			dir.remove(list.at(i).fileName());
+			success = dir.remove(list.at(i).fileName());
+		}
+		if (!success) {
+			global_success = false;
+			lyxerr << "Could not delete "
+				<< fromqstr(list.at(i).absoluteFilePath()) << "." << endl;
 		}
 	} 
 	QDir parent = fi.absolutePath();
-	return parent.rmdir(fi.fileName());
+	global_success |= parent.rmdir(fi.fileName());
+	return global_success;
 }
 
 
