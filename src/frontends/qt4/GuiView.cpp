@@ -705,15 +705,14 @@ GuiWorkArea const * GuiView::currentWorkArea() const
 }
 
 
-void GuiView::setCurrentWorkArea(GuiWorkArea * work_area)
+void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 {
-	BOOST_ASSERT(work_area);
+	BOOST_ASSERT(wa);
 
 	// Changing work area can result from opening a file so
 	// update the toc in any case.
 	updateToc();
 
-	GuiWorkArea * wa = static_cast<GuiWorkArea *>(work_area);
 	d.current_work_area_ = wa;
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		if (d.tabWorkArea(i)->setCurrentWorkArea(wa))
@@ -722,11 +721,10 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * work_area)
 }
 
 
-void GuiView::removeWorkArea(GuiWorkArea * work_area)
+void GuiView::removeWorkArea(GuiWorkArea * wa)
 {
-	BOOST_ASSERT(work_area);
-	GuiWorkArea * gwa = static_cast<GuiWorkArea *>(work_area);
-	if (gwa == d.current_work_area_) {
+	BOOST_ASSERT(wa);
+	if (wa == d.current_work_area_) {
 		disconnectBuffer();
 		disconnectBufferView();
 		hideBufferDependent();
@@ -739,7 +737,7 @@ void GuiView::removeWorkArea(GuiWorkArea * work_area)
 
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		TabWorkArea * twa = d.tabWorkArea(i);
-		if (!twa->removeWorkArea(gwa))
+		if (!twa->removeWorkArea(wa))
 			// Not found in this tab group.
 			continue;
 
