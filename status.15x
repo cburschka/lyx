@@ -93,6 +93,8 @@ What's new
 - Remove obsolete LaTeX preamble code that was set when a document contained
   URLs (bug 2265).
 
+- If there exists a local layout file, use the local copy instead of the
+  system one.
 
 * USER INTERFACE:
 
