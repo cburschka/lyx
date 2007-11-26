@@ -1226,7 +1226,7 @@ pit_type TextMetrics::getPitNearY(int y)
 		<< ": y: " << y << " cache size: " << par_metrics_.size());
 
 	// look for highest numbered paragraph with y coordinate less than given y
-	pit_type pit = 0;
+	pit_type pit = -1;
 	int yy = -1;
 	ParMetricsCache::const_iterator it = par_metrics_.begin();
 	ParMetricsCache::const_iterator et = par_metrics_.end();
@@ -1234,35 +1234,31 @@ pit_type TextMetrics::getPitNearY(int y)
 
 	ParagraphMetrics const & pm = it->second;
 
-	// If we are off-screen (before the visible part)
-	if (y < 0
-		// and even before the first paragraph in the cache.
-		&& y < it->second.position() - int(pm.ascent())) {
-		//  and we are not at the first paragraph in the inset.
+	if (y < it->second.position() - int(pm.ascent())) {
+		// We are looking for a position that is before the first paragraph in
+		// the cache (which is in priciple off-screen, that is before the
+		// visible part.
 		if (it->first == 0)
+			// We are already at the first paragraph in the inset.
 			return 0;
-		// then this is the paragraph we are looking for.
+		// OK, this is the paragraph we are looking for.
 		pit = it->first - 1;
-		// rebreak it and update the CoordCache.
-		redoParagraph(pit);
-		par_metrics_[pit].setPosition(it->second.position() - pm.descent());
+		newParMetricsUp();
 		return pit;
 	}
 
 	ParagraphMetrics const & pm_last = par_metrics_[last->first];
 
-	// If we are off-screen (after the visible part)
-	if (y > bv_->workHeight()
-		// and even after the first paragraph in the cache.
-		&& y >= last->second.position() + int(pm_last.descent())) {
+	if (y >= last->second.position() + int(pm_last.descent())) {
+		// We are looking for a position that is after the last paragraph in
+		// the cache (which is in priciple off-screen, that is before the
+		// visible part.
 		pit = last->first + 1;
-		//  and we are not at the last paragraph in the inset.
 		if (pit == int(text_->paragraphs().size()))
+			//  We are already at the last paragraph in the inset.
 			return last->first;
-		// then this is the paragraph we are looking for.
-		// rebreak it and update the CoordCache.
-		redoParagraph(pit);
-		par_metrics_[pit].setPosition(last->second.position() + pm_last.ascent());
+		// OK, this is the paragraph we are looking for.
+		newParMetricsDown();
 		return pit;
 	}
 
