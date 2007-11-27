@@ -22,6 +22,7 @@
 
 #include <cerrno>
 #include <iomanip>
+#include <ostream>
 #include <map>
 
 using std::endl;
@@ -162,7 +163,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 				// something like 0xffffffc2
 				boost::uint32_t const b =
 					*reinterpret_cast<unsigned char const *>(buf + i);
-				lyxerr << " 0x" << b;
+				lyxerr << " 0x" << (unsigned int)b;
 			}
 			lyxerr << std::dec << endl;
 			break;
@@ -177,7 +178,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 				// something like 0xffffffc2
 				boost::uint32_t const b =
 					*reinterpret_cast<unsigned char const *>(buf + i);
-				lyxerr << " 0x" << b;
+				lyxerr << " 0x" << (unsigned int)b;
 			}
 			lyxerr << std::dec << endl;
 			break;

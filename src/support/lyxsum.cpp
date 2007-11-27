@@ -17,6 +17,7 @@
 #include <boost/crc.hpp>
 
 #include <algorithm>
+#include <iomanip>
 
 using std::endl;
 using std::string;

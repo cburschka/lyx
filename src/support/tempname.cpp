@@ -46,7 +46,6 @@ extern "C" int mkstemp(char *);
 using boost::scoped_array;
 
 using std::string;
-using std::endl;
 
 namespace lyx {
 namespace support {
@@ -84,10 +83,9 @@ int make_tempfile(char * templ)
 
 FileName const tempName(FileName const & dir, string const & mask)
 {
-	string const tmpdir(dir.empty() ?
-			package().temp_dir().absFilename() :
-			dir.absFilename());
-	string tmpfl(to_filesystem8bit(from_utf8(addName(tmpdir, mask))));
+	string const tmpdir = dir.empty()
+		? package().temp_dir().absFilename() : dir.absFilename();
+	string tmpfl = to_filesystem8bit(from_utf8(addName(tmpdir, mask)));
 #if defined (HAVE_GETPID)
 	tmpfl += convert<string>(getpid());
 #elif defined (HAVE__GETPID)

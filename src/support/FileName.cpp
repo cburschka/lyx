@@ -249,12 +249,12 @@ static bool rmdir(QFileInfo const & fi)
 		bool success;
 		if (list.at(i).isDir()) {
 			LYXERR(Debug::FILES, "Erasing dir " 
-				<< fromqstr(list.at(i).absoluteFilePath()) << endl);
+				<< fromqstr(list.at(i).absoluteFilePath()));
 			success = rmdir(list.at(i));
 		}
 		else {
 			LYXERR(Debug::FILES, "Erasing file " 
-				<< fromqstr(list.at(i).absoluteFilePath()) << endl);
+				<< fromqstr(list.at(i).absoluteFilePath()));
 			success = dir.remove(list.at(i).fileName());
 		}
 		if (!success) {
