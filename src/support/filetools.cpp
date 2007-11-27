@@ -191,36 +191,6 @@ FileName const fileOpenSearch(string const & path, string const & name,
 #endif
 
 
-/// Returns a vector of all files in directory dir having extension ext.
-vector<FileName> const dirList(FileName const & dir, string const & ext)
-{
-	// EXCEPTIONS FIXME. Rewrite needed when we turn on exceptions. (Lgb)
-	vector<FileName> dirlist;
-
-	if (!(dir.exists() && dir.isDirectory())) {
-		LYXERR(Debug::FILES, "Directory \"" << dir
-			<< "\" does not exist to DirList.");
-		return dirlist;
-	}
-
-	string extension;
-	if (!ext.empty() && ext[0] != '.')
-		extension += '.';
-	extension += ext;
-
-	string const encoded_dir = dir.toFilesystemEncoding();
-	fs::directory_iterator dit(encoded_dir);
-	fs::directory_iterator end;
-	for (; dit != end; ++dit) {
-		string const & fil = dit->leaf();
-		if (suffixIs(fil, extension))
-			dirlist.push_back(FileName::fromFilesystemEncoding(
-					encoded_dir + '/' + fil));
-	}
-	return dirlist;
-}
-
-
 // Returns the real name of file name in directory path, with optional
 // extension ext.
 FileName const fileSearch(string const & path, string const & name,

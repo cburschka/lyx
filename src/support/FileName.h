@@ -14,8 +14,9 @@
 
 #include "strfwd.h"
 
-#include <string>
 #include <ctime>
+#include <string>
+#include <vector>
 
 
 namespace lyx {
@@ -90,6 +91,10 @@ public:
 	bool destroyDirectory() const;
 	/// Creates directory. Returns true on success
 	bool createDirectory(int permissions) const;
+
+	/// \return list files in a directory having optional extension ext..
+	std::vector<FileName> dirList(
+		std::string const & ext = std::string());
 
 	/// Get the contents of a file as a huge std::string
 	std::string fileContents() const;

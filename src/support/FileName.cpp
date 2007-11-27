@@ -285,6 +285,42 @@ bool FileName::createDirectory(int permission) const
 }
 
 
+std::vector<FileName> FileName::dirList(std::string const & ext)
+{
+	std::vector<FileName> dirlist;
+	if (!exists() || !isDirectory()) {
+		lyxerr << "FileName::dirList(): Directory \"" << absFilename()
+			<< "\" does not exist!" << endl;
+		return dirlist;
+	}
+
+	QDir dir(d->fi.absoluteFilePath());
+
+	if (!ext.empty()) {
+		QString filter;
+		switch (ext[0]) {
+		case '.': filter = "*" + toqstr(ext); break;
+		case '*': filter = toqstr(ext); break;
+		default: filter = "*." + toqstr(ext);
+		}
+		dir.setNameFilters(QStringList(filter));
+		LYXERR(Debug::FILES, "FileName::dirList(): filtering on extension "
+			<< fromqstr(filter) << " is requested." << endl);
+	}
+
+	QFileInfoList list = dir.entryInfoList();
+	for (int i = 0; i < list.size(); ++i) {
+		FileName fi;
+		fi.d->fi = list.at(i);
+		dirlist.push_back(fi);
+		LYXERR(Debug::FILES, "FileName::dirList(): found file "
+			<< fi.absFilename() << endl);
+	}
+
+	return dirlist;
+}
+
+
 docstring FileName::displayName(int threshold) const
 {
 	return makeDisplayPath(absFilename(), threshold);

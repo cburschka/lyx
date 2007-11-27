@@ -66,10 +66,6 @@ FileName const fileSearch(std::string const & path,
 			     std::string const & ext = std::string(),
 			     search_mode mode = standard_mode);
 
-/// Returns a vector of all files in directory dir having extension ext.
-std::vector<FileName> const dirList(FileName const & dir,
-				       std::string const & ext = std::string());
-
 ///
 bool isLyXFilename(std::string const & filename);
 

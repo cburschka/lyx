@@ -47,7 +47,6 @@ using support::bformat;
 using support::changeExtension;
 using support::compare_ascii_no_case;
 using support::contains;
-using support::dirList;
 using support::FileName;
 using support::getExtension;
 using support::libFileSearch;
@@ -520,8 +519,8 @@ bool Converters::move(string const & fmt,
 	string const to_base = removeExtension(to.absFilename());
 	string const to_extension = getExtension(to.absFilename());
 
-	vector<FileName> const files = dirList(FileName(path),
-			getExtension(from.absFilename()));
+	vector<FileName> const files = FileName(path).dirList(
+		getExtension(from.absFilename()));
 	for (vector<FileName>::const_iterator it = files.begin();
 	     it != files.end(); ++it) {
 		string const from2 = it->absFilename();
