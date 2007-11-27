@@ -706,7 +706,6 @@ void Paragraph::Private::latexInset(Buffer const & buf,
 		texrow.newline();
 		texrow.start(owner_->id(), i + 1);
 		column = 0;
-		return;
 	}
 
 	if (owner_->lookupChange(i).type == Change::DELETED) {
