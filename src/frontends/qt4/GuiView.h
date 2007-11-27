@@ -15,6 +15,7 @@
 #ifndef GUI_VIEW_H
 #define GUI_VIEW_H
 
+#include "frontends/Delegates.h"
 #include "frontends/LyXView.h"
 
 #include "support/strfwd.h"

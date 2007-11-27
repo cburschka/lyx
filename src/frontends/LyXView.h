@@ -13,7 +13,6 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
-#include "frontends/Delegates.h"
 #include "support/strfwd.h"
 
 namespace lyx {
