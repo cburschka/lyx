@@ -21,10 +21,7 @@
 
 #include <boost/assert.hpp>
 
-using std::abs;
-using std::endl;
-using std::string;
-using std::max;
+#include <ostream>
 
 namespace lyx {
 
@@ -271,7 +268,7 @@ void Changes::merge()
 				<< (it + 1)->range.end << ")");
 
 			(it + 1)->range.start = it->range.start;
-			(it + 1)->change.changetime = max(it->change.changetime,
+			(it + 1)->change.changetime = std::max(it->change.changetime,
 							  (it + 1)->change.changetime);
 			table_.erase(it);
 			// start again
