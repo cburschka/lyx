@@ -77,7 +77,7 @@ int const numErrorTags = sizeof(errorTags)/sizeof(error_item);
 } // namespace anon
 
 
-lyx_debug_trait::type lyx_debug_trait::value(string const & val)
+Debug::type Debug::value(string const & val)
 {
 	type l = Debug::NONE;
 	string v = val;
@@ -103,7 +103,7 @@ lyx_debug_trait::type lyx_debug_trait::value(string const & val)
 }
 
 
-void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
+void Debug::showLevel(ostream & os, Debug::type level)
 {
 	// Show what features are traced
 	for (int i = 0; i != numErrorTags; ++i) {
@@ -121,7 +121,7 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 }
 
 
-void lyx_debug_trait::showTags(ostream & os)
+void Debug::showTags(ostream & os)
 {
 	for (int i = 0; i != numErrorTags ; ++i)
 		os << setw(10) << static_cast<unsigned int>(errorTags[i].level)
