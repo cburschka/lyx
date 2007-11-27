@@ -29,8 +29,6 @@
 #include "support/unicode.h"
 
 #include <boost/function.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
 
 #include <fstream>
 #include <iostream>
@@ -64,8 +62,6 @@ using support::makeAbsPath;
 using support::onlyPath;
 using support::os::internal_path;
 using support::rtrim;
-
-namespace fs = boost::filesystem;
 
 LayoutPtr captionlayout;
 
@@ -502,7 +498,6 @@ bool tex2lyx(string const & infilename, FileName const & outfilename)
 int main(int argc, char * argv[])
 {
 	using namespace lyx;
-	fs::path::default_name_check(fs::no_check);
 
 	easyParse(argc, argv);
 
