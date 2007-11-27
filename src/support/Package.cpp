@@ -150,8 +150,7 @@ Package::Package(string const & command_line_arg0,
 			quoteName(configure_script.toFilesystemEncoding()) +
 			with_version_suffix();
 
-	lyxerr[Debug::INIT]
-		<< "<package>\n"
+	LYXERR(Debug::INIT, "<package>\n"
 		<< "\tbinary_dir " << binary_dir().absFilename() << '\n'
 		<< "\tsystem_support " << system_support().absFilename() << '\n'
 		<< "\tbuild_support " << build_support().absFilename() << '\n'
@@ -160,7 +159,7 @@ Package::Package(string const & command_line_arg0,
 		<< "\tdocument_dir " << document_dir().absFilename() << '\n'
 		<< "\ttemp_dir " << temp_dir().absFilename() << '\n'
 		<< "\thome_dir " << home_dir().absFilename() << '\n'
-		<< "</package>\n" << std::endl;
+		<< "</package>\n");
 }
 
 
@@ -279,8 +278,7 @@ void buildDirs(FileName const & abs_binary,
 				FileName(addPath(Package::top_srcdir().absFilename(), "lib"));
 
 			if (!fileSearch(system_support_dir.absFilename(), "chkconfig.ltx").empty()) {
-				lyxerr[Debug::INIT] << check_text << " yes"
-						    << std::endl;
+				LYXERR(Debug::INIT, check_text << " yes");
 				return;
 			}
 		}
@@ -299,7 +297,7 @@ void buildDirs(FileName const & abs_binary,
 		}
 	}
 
-	lyxerr[Debug::INIT] << check_text << " no" << std::endl;
+	LYXERR(Debug::INIT, check_text << " no");
 	system_support_dir = FileName();
 	build_support_dir = FileName();
 }
