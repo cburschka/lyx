@@ -18,7 +18,6 @@
 #include "support/lstrings.h"
 
 #include <boost/filesystem/operations.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/scoped_ptr.hpp>
 
 // getpid(), getppid()
@@ -76,7 +75,9 @@ namespace support {
 
 string itoa(unsigned int i)
 {
-	return ::boost::lexical_cast<string>(i);
+	char buf[20];
+	sprintf(buf, "%d", i);
+	return buf;
 }
 
 
@@ -161,7 +162,12 @@ int connect(FileName const & name)
 
 
 
-// Class IOWatch ------------------------------------------------------------
+/////////////////////////////////////////////////////////////////////
+//
+// IOWatch
+//
+/////////////////////////////////////////////////////////////////////
+
 class IOWatch {
 public:
 	IOWatch();
@@ -213,13 +219,19 @@ bool IOWatch::wait()
 }
 
 
-bool IOWatch::isset(int fd) {
+bool IOWatch::isset(int fd)
+{
 	return FD_ISSET(fd, &act);
 }
-// ~Class IOWatch ------------------------------------------------------------
 
 
-// Class LyXDataSocket -------------------------------------------------------
+
+/////////////////////////////////////////////////////////////////////
+//
+// LyXDataSocket
+//
+/////////////////////////////////////////////////////////////////////
+
 // Modified LyXDataSocket class for use with the client
 class LyXDataSocket {
 public:
@@ -327,10 +339,14 @@ void LyXDataSocket::writeln(string const & line)
 		connected_ = false;
 	}
 }
-// ~Class LyXDataSocket -------------------------------------------------------
 
 
-// Class CmdLineParser -------------------------------------------------------
+/////////////////////////////////////////////////////////////////////
+//
+// CmdLineParser
+//
+/////////////////////////////////////////////////////////////////////
+
 class CmdLineParser {
 public:
 	typedef int (*optfunc)(vector<docstring> const & args);
@@ -387,21 +403,22 @@ namespace cmdline {
 
 void usage()
 {
-	cerr << "Usage: lyxclient [options]" << endl
-	     << "Options are:" << endl
-	     << "  -a address    set address of the lyx socket" << endl
-	     << "  -t directory  set system temporary directory" << endl
-	     << "  -p pid        select a running lyx by pid" << endl
-	     << "  -c command    send a single command and quit" << endl
-	     << "  -g file row   send a command to go to file and row" << endl
-	     << "  -n name       set client name" << endl
-	     << "  -h name       display this help end exit" << endl
-	     << "If -a is not used, lyxclient will use the arguments of -t and -p to look for" << endl
-	     << "a running lyx. If -t is not set, 'directory' defaults to /tmp. If -p is set," << endl
-	     << "lyxclient will connect only to a lyx with the specified pid. Options -c and -g" << endl
-	     << "cannot be set simultaneoulsly. If no -c or -g options are given, lyxclient" << endl
-	     << "will read commands from standard input and disconnect when command read is BYE:"
-	     << endl;
+	cerr <<
+		"Usage: lyxclient [options]\n"
+	  "Options are:\n"
+	  "  -a address    set address of the lyx socket\n"
+	  "  -t directory  set system temporary directory\n"
+	  "  -p pid        select a running lyx by pidi\n"
+	  "  -c command    send a single command and quit\n"
+	  "  -g file row   send a command to go to file and row\n"
+	  "  -n name       set client name\n"
+	  "  -h name       display this help end exit\n"
+	  "If -a is not used, lyxclient will use the arguments of -t and -p to look for\n"
+	  "a running lyx. If -t is not set, 'directory' defaults to /tmp. If -p is set,\n"
+	  "lyxclient will connect only to a lyx with the specified pid. Options -c and -g\n"
+	  "cannot be set simultaneoulsly. If no -c or -g options are given, lyxclient\n"
+	  "will read commands from standard input and disconnect when command read is BYE:"
+	   << endl;
 }
 
 
@@ -412,7 +429,8 @@ int h(vector<docstring> const &)
 }
 
 
-docstring clientName(from_ascii(support::itoa(::getppid()) + ">" + support::itoa(::getpid())));
+docstring clientName =
+	from_ascii(support::itoa(::getppid()) + ">" + support::itoa(::getpid()));
 
 int n(vector<docstring> const & arg)
 {
@@ -503,7 +521,6 @@ int p(vector<docstring> const & arg)
 
 
 } // namespace cmdline
-
 } // namespace lyx
 
 

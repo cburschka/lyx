@@ -15,14 +15,13 @@
 #include "support/Package.h"
 #include "support/unicode.h"
 
-#include <boost/current_function.hpp>
-
 #include <cerrno>
 
 
 namespace lyx {
 
-using lyx::support::package;
+using support::package;
+
 using std::endl;
 using std::string;
 
@@ -32,7 +31,7 @@ using std::string;
 
 #if 0
 
--#include <locale>
+#include <locale>
 
 // This version of the Pimpl utilizes the message capability of
 // libstdc++ that is distributed with GNU G++.
@@ -116,7 +115,7 @@ public:
 		char const * c = bindtextdomain(PACKAGE, locale_dir.c_str());
 		int e = errno;
 		if (e) {
-			LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << '\n'
+			LYXERR(Debug::DEBUG, "Messages::get()" << '\n'
 				<< "Error code: " << errno << '\n'
 				<< "Lang, mess: " << lang_ << " " << m << '\n'
 				<< "Directory : " << package().locale_dir().absFilename() << '\n'
@@ -124,7 +123,7 @@ public:
 		}
 
 		if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
-			LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << '\n'
+			LYXERR(Debug::DEBUG, "Messages::get()" << '\n'
 				<< "Error code: " << errno << '\n'
 				<< "Codeset   : " << ucs4_codeset << '\n');
 		}
