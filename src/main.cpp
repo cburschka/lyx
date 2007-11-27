@@ -17,21 +17,15 @@
 
 #include "support/os.h"
 
-#include <boost/filesystem/path.hpp>
-
 #ifdef HAVE_IOS
 #include <ios>
 #endif
-
-
-namespace fs = boost::filesystem;
 
 int main(int argc, char * argv[])
 {
 #ifdef HAVE_IOS
 	std::ios_base::sync_with_stdio(false);
 #endif
-	fs::path::default_name_check(fs::no_check);
 
 	// To avoid ordering of global object problems with some
 	// stdlibs we do the initialization here, but still as
