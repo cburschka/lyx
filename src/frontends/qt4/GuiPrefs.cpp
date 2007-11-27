@@ -748,7 +748,7 @@ PrefPaths::PrefPaths(GuiPreferences * form, QWidget * parent)
 	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
 	connect(workingDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(exampleDirPB, SIGNAL(textChanged(QString)),
+	connect(exampleDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(templateDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
@@ -793,7 +793,7 @@ void PrefPaths::select_exampledir()
 {
 	docstring file(form_->browsedir(
 		from_utf8(internal_path(fromqstr(exampleDirED->text()))),
-		_("Select a document templates directory")));
+		_("Select directory for example files")));
 	if (!file.empty())
 		exampleDirED->setText(toqstr(file));
 }
