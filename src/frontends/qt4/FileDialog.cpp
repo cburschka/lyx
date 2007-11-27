@@ -48,7 +48,6 @@ namespace lyx {
 
 using support::FileFilterList;
 using support::os::internal_path;
-using std::endl;
 
 
 class FileDialog::Private {
