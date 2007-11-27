@@ -230,11 +230,6 @@ makeRelPath(docstring const & abspath, docstring const & basepath);
 /// Strip filename from path name
 std::string const onlyPath(std::string const & fname);
 
-/** Normalize a path. Constracts path/../path
- *  Also converts paths like /foo//bar ==> /foo/bar
- */
-std::string const normalizePath(std::string const & path);
-
 /// Strips path from filename
 std::string const onlyFilename(std::string const & fname);
 

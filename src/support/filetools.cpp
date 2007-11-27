@@ -36,7 +36,6 @@
 #include "debug.h"
 
 #include <boost/assert.hpp>
-#include <boost/filesystem/operations.hpp>
 #include <boost/regex.hpp>
 
 #include <fcntl.h>
@@ -57,8 +56,6 @@ using std::ifstream;
 using std::ostringstream;
 using std::vector;
 using std::pair;
-
-namespace fs = boost::filesystem;
 
 namespace lyx {
 namespace support {
@@ -521,24 +518,6 @@ string const expandPath(string const & path)
 
 	// Don't know how to handle this
 	return copy;
-}
-
-
-// Normalize a path. Constracts path/../path
-// Can't handle "../../" or "/../" (Asger)
-// Also converts paths like /foo//bar ==> /foo/bar
-string const normalizePath(string const & path)
-{
-	// Normalize paths like /foo//bar ==> /foo/bar
-	static boost::regex regex("/{2,}");
-	string const tmppath = boost::regex_merge(path, regex, "/");
-
-	fs::path const npath = fs::path(tmppath, fs::no_check).normalize();
-
-	if (!npath.is_complete())
-		return "./" + npath.string() + '/';
-
-	return npath.string() + '/';
 }
 
 

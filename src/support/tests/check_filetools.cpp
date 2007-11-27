@@ -1,4 +1,5 @@
 #include "../filetools.h"
+#include "../FileName.h"
 
 #include <iostream>
 
@@ -13,15 +14,15 @@ namespace lyx {
 
 void test_normalizePath()
 {
-	cout << normalizePath("foo/../bar") << endl;
-	cout << normalizePath("foo/./bar") << endl;
-	cout << normalizePath("./foo/../bar") << endl;
-	cout << normalizePath("./foo/./bar") << endl;
-	cout << normalizePath("/foo/../bar") << endl;
-	cout << normalizePath("/foo/./bar") << endl;
-	cout << normalizePath("foo//bar") << endl;
-	cout << normalizePath("./foo//bar") << endl;
-	cout << normalizePath("/foo//bar") << endl;
+	cout << FileName("foo/../bar").absFilename() << endl;
+	cout << FileName("foo/./bar").absFilename() << endl;
+	cout << FileName("./foo/../bar").absFilename() << endl;
+	cout << FileName("./foo/./bar").absFilename() << endl;
+	cout << FileName("/foo/../bar").absFilename() << endl;
+	cout << FileName("/foo/./bar").absFilename() << endl;
+	cout << FileName("foo//bar").absFilename() << endl;
+	cout << FileName("./foo//bar").absFilename() << endl;
+	cout << FileName("/foo//bar").absFilename() << endl;
 }
 
 int main()

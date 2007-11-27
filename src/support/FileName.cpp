@@ -76,7 +76,8 @@ struct FileName::Private
 
 
 FileName::FileName() : d(new Private)
-{}
+{
+}
 
 FileName::FileName(string const & abs_filename)
 	: d(abs_filename.empty() ? new Private : new Private(abs_filename))

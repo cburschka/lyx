@@ -247,7 +247,7 @@ FileName buildSupportDir(string const & binary_dir,
 		indirection = "../../lib";
 		break;
 	}
-	return FileName(normalizePath(addPath(binary_dir, indirection)));
+	return FileName(addPath(binary_dir, indirection));
 }
 
 
@@ -346,8 +346,8 @@ FileName const get_locale_dir(FileName const & system_support_dir)
 	// 2. Search for system_support_dir / <relative locale dir>
 	// The <relative locale dir> is OS-dependent. (On Unix, it will
 	// be "../locale/".)
-	FileName path(normalizePath(addPath(system_support_dir.absFilename(),
-	                                    relative_locale_dir())));
+	FileName path(addPath(system_support_dir.absFilename(),
+		relative_locale_dir()));
 
 	if (path.exists() && path.isDirectory())
 		return path;
@@ -490,8 +490,7 @@ get_system_support_dir(FileName const & abs_binary,
 		// Try and find "chkconfig.ltx".
 		string const binary_dir = onlyPath(binary.absFilename());
 
-		FileName const lyxdir(
-			normalizePath(addPath(binary_dir, relative_lyxdir)));
+		FileName const lyxdir(addPath(binary_dir, relative_lyxdir));
 		searched_dirs.push_back(lyxdir);
 
 		if (!fileSearch(lyxdir.absFilename(), chkconfig_ltx).empty()) {
@@ -531,8 +530,8 @@ get_system_support_dir(FileName const & abs_binary,
 		}
 
 		// Try and find "chkconfig.ltx".
-		FileName const lyxdir(
-			normalizePath(addPath(binary_dir.absFilename(), relative_lyxdir)));
+		FileName const lyxdir(addPath(binary_dir.absFilename(),
+			relative_lyxdir));
 		searched_dirs.push_back(lyxdir);
 
 		if (!fileSearch(lyxdir.absFilename(), chkconfig_ltx).empty()) {
