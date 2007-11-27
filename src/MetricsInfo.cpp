@@ -18,6 +18,8 @@
 
 #include "frontends/Painter.h"
 
+#include "support/docstring.h"
+
 #include <boost/assert.hpp>
 
 
