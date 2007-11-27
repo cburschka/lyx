@@ -24,8 +24,6 @@
 #include <QString>
 
 
-using std::endl;
-
 namespace lyx {
 namespace frontend {
 

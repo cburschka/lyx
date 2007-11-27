@@ -30,15 +30,7 @@
 #include "support/docstring.h"
 #include "support/lstrings.h"
 
-#include <QProgressBar>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QListWidget>
 #include <QListWidgetItem>
-#include <QCloseEvent>
-#include <QSyntaxHighlighter>
-#include <QTextCharFormat>
-#include <QTextDocument>
 
 #if defined(USE_ASPELL)
 # include "ASpell_local.h"
@@ -54,9 +46,6 @@
 
 #include "frontends/alert.h"
 
-using std::advance;
-using std::distance;
-using std::endl;
 using std::string;
 
 

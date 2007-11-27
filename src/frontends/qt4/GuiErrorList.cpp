@@ -28,7 +28,6 @@
 #include <QPushButton>
 #include <QCloseEvent>
 
-using std::endl;
 using std::string;
 
 
@@ -115,7 +114,7 @@ void GuiErrorList::goTo(int item)
 	ParIterator pit = buf.getParFromID(err.par_id);
 
 	if (pit == buf.par_iterator_end()) {
-		lyxerr << "par id " << err.par_id << " not found" << endl;
+		LYXERR(Debug::ANY, "par id " << err.par_id << " not found");
 		return;
 	}
 

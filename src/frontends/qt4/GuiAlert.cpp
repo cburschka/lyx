@@ -29,6 +29,8 @@
 #include <QLineEdit>
 #include <QInputDialog>
 
+#include <iomanip>
+
 using std::endl;
 
 

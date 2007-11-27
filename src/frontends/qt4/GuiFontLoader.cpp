@@ -29,7 +29,6 @@
 #include <QFontInfo>
 #include <QFontDatabase>
 
-using std::endl;
 using std::make_pair;
 
 using std::pair;

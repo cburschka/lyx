@@ -19,7 +19,6 @@
 #include "GuiPopupMenu.h"
 
 #include "qt_helpers.h"
-#include "support/lstrings.h"
 
 #include "MenuBackend.h"
 
@@ -28,9 +27,6 @@
 #include <QCursor>
 #include <QMenuBar>
 
-using std::pair;
-using std::string;
-using std::endl;
 
 namespace lyx {
 namespace frontend {

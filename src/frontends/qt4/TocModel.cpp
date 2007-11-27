@@ -17,8 +17,6 @@
 
 #include <boost/assert.hpp>
 
-using std::endl;
-using std::map;
 using std::max;
 using std::min;
 

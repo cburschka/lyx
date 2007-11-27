@@ -1,5 +1,5 @@
 /**
- * \file qt4/KeySymbolFactory.cpp
+ * \file qt4/GuiKeySymbol.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -17,10 +17,6 @@
 
 #include "debug.h"
 
-#include "support/lstrings.h"
-#include "support/environment.h"
-#include "support/unicode.h"
-
 #include "Encoding.h"
 #include "Language.h"
 
@@ -29,17 +25,15 @@
 #include <QEvent>
 #include <QTextCodec>
 
+#include "boost/assert.hpp"
+
 #include <map>
 
 
-namespace lyx {
-
-using std::endl;
 using std::string;
 using std::map;
-using lyx::support::contains;
-using lyx::support::getEnv;
 
+namespace lyx {
 
 #if 0
 static char encode(string const & encoding, QString const & str)

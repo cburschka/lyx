@@ -35,7 +35,6 @@
 
 #include <algorithm>
 
-using std::endl;
 using std::string;
 
 

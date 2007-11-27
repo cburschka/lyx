@@ -24,12 +24,6 @@
 #include "debug.h"
 
 
-using std::make_pair;
-using std::string;
-using std::pair;
-using std::endl;
-
-
 namespace lyx {
 namespace frontend {
 

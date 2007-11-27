@@ -19,13 +19,8 @@
 #include "debug.h"
 
 #include <QHeaderView>
-#include <QPushButton>
-#include <QTreeWidgetItem>
 
 #include <vector>
-
-using std::endl;
-using std::vector;
 
 
 namespace lyx {
@@ -219,7 +214,7 @@ void TocWidget::updateView()
 
 void TocWidget::updateGui()
 {
-	vector<docstring> const & type_names = form_.typeNames();
+	std::vector<docstring> const & type_names = form_.typeNames();
 	if (type_names.empty()) {
 		enableControls(false);
 		typeCO->clear();
