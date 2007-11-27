@@ -28,7 +28,7 @@ namespace lyx {
  *  compilable on older C++ compilators too, we use a struct instead.
  *  This is all the different debug levels that we have.
  */
-class lyx_debug_trait {
+class Debug {
 public:
 	///
 	enum type {
@@ -110,14 +110,13 @@ public:
 
 
 inline
-void operator|=(lyx_debug_trait::type & d1, lyx_debug_trait::type d2)
+void operator|=(Debug::type & d1, Debug::type d2)
 {
-	d1 = static_cast<lyx_debug_trait::type>(d1 | d2);
+	d1 = static_cast<Debug::type>(d1 | d2);
 }
 
 
-typedef basic_debugstream<lyx_debug_trait> LyXErr;
-typedef LyXErr::debug Debug;
+typedef basic_debugstream<Debug> LyXErr;
 
 extern LyXErr lyxerr;
 
