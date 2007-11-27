@@ -28,8 +28,6 @@
 #include "support/Package.h"
 #include "support/unicode.h"
 
-#include <boost/function.hpp>
-
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -76,8 +74,8 @@ string const trim(string const & a, char const * p)
 	if (a.empty() || !*p)
 		return a;
 
-	string::size_type r = a.find_last_not_of(p);
-	string::size_type l = a.find_first_not_of(p);
+	size_t r = a.find_last_not_of(p);
+	size_t l = a.find_first_not_of(p);
 
 	// Is this the minimal test? (lgb)
 	if (r == string::npos && l == string::npos)
@@ -268,7 +266,7 @@ bool overwrite_files = false;
 
 
 /// return the number of arguments consumed
-typedef boost::function<int(string const &, string const &)> cmd_helper;
+typedef int (*cmd_helper)(string const &, string const &);
 
 
 int parse_help(string const &, string const &)

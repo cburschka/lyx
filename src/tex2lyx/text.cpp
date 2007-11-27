@@ -25,8 +25,6 @@
 #include "support/convert.h"
 #include "support/filetools.h"
 
-#include <boost/tuple/tuple.hpp>
-
 #include <iostream>
 #include <map>
 #include <sstream>
@@ -999,25 +997,26 @@ void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
 
 
 /// get the arguments of a natbib or jurabib citation command
-std::pair<string, string> getCiteArguments(Parser & p, bool natbibOrder)
+void get_cite_arguments(Parser & p, bool natbibOrder,
+	string & before, string & after)
 {
 	// We need to distinguish "" and "[]", so we can't use p.getOpt().
 
 	// text before the citation
-	string before;
+	before.clear();
 	// text after the citation
-	string after = p.getFullOpt();
+	after = p.getFullOpt();
 
 	if (!after.empty()) {
 		before = p.getFullOpt();
 		if (natbibOrder && !before.empty())
 			std::swap(before, after);
 	}
-	return std::make_pair(before, after);
 }
 
 
-/// Convert filenames with TeX macros and/or quotes to something LyX can understand
+/// Convert filenames with TeX macros and/or quotes to something LyX
+/// can understand
 string const normalize_filename(string const & name)
 {
 	Parser p(trim(name, "\""));
@@ -1884,8 +1883,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string before;
 			// text after the citation
 			string after;
+			get_cite_arguments(p, true, before, after);
 
-			boost::tie(before, after) = getCiteArguments(p, true);
 			if (command == "\\cite") {
 				// \cite without optional argument means
 				// \citet, \cite with at least one optional
@@ -1926,9 +1925,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string before;
 			// text after the citation
 			string after;
+			get_cite_arguments(p, argumentOrder != 'j', before, after);
 
-			boost::tie(before, after) =
-				getCiteArguments(p, argumentOrder != 'j');
 			string const citation = p.verbatim_item();
 			if (!before.empty() && argumentOrder == '\0') {
 				cerr << "Warning: Assuming argument order "
