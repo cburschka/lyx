@@ -24,6 +24,8 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/minizip/iowin32.c)
 
 lyx_add_msvc_pch(support)
+
+lyx_automoc(${support_sources})
 	
 include_directories(${TOP_SRC_DIR}/src/support
 	${TOP_SRC_DIR}/src/support/minizip
@@ -37,12 +39,17 @@ if(NOT MERGE_FILES)
 	add_library(support ${library_type} ${support_sources} ${support_headers})
 else()
 	lyx_const_touched_files(_allinone  support_sources)
+		set(depends_moc ${support_headers})
+	set_source_files_properties(_allinone_const.C
+		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
+	set_source_files_properties(_allinone_touched.C
+		PROPERTIES OBJECT_DEPENDS "${depends_moc}")	
 	add_library(support ${library_type} ${_allinone_files}
-		${support_minizip_sources} ${support_minizip_cpp_sources})
+		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_headers})
 endif()
 
 
-target_link_libraries(support boost_signals)
+target_link_libraries(support boost_signals  ${QT_QTCORE_LIBRARY} )
 
 if(WIN32)
 	target_link_libraries(support shlwapi)

@@ -58,8 +58,7 @@ target_link_libraries(lyx
 	graphics
 	support
 	intl
-	${QT_QTMAIN_LIBRARY}
-	boost_filesystem)
+	${QT_QTMAIN_LIBRARY})
 
 if(ASPELL_FOUND)
 	target_link_libraries(lyx ${ASPELL_LIBRARY})

@@ -50,8 +50,7 @@ endif()
 target_link_libraries(frontend_qt4 
 	frontends
 	${QT_QTCORE_LIBRARY} 
-	${QT_QTGUI_LIBRARY}
-	boost_filesystem)
+	${QT_QTGUI_LIBRARY})
 
 if(WIN32)
 	target_link_libraries(frontend_qt4 Gdi32)
