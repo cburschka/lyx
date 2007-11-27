@@ -16,6 +16,7 @@
 #include "MathSupport.h"
 #include "Dimension.h"
 
+#include "support/docstring.h"
 
 namespace lyx {
 

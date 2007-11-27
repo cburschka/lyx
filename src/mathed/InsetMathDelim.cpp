@@ -18,6 +18,8 @@
 #include "MathSupport.h"
 #include "MetricsInfo.h"
 
+#include "support/docstring.h"
+
 #include "frontends/FontMetrics.h"
 
 

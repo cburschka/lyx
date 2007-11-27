@@ -13,9 +13,7 @@
 #ifndef MATH_SUPPORT_H
 #define MATH_SUPPORT_H
 
-#include "support/docstring.h"
-
-#include <string>
+#include "support/strfwd.h"
 #include <vector>
 
 namespace lyx {

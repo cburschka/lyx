@@ -17,6 +17,7 @@
 #include "MathExtern.h"
 
 #include "support/textutils.h"
+#include "support/docstring.h"
 
 #include <algorithm>
 #include <ostream>

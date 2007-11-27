@@ -12,8 +12,7 @@
 #ifndef MATH_FACTORY_H
 #define MATH_FACTORY_H
 
-#include "support/docstring.h"
-#include <string>
+#include "support/strfwd.h"
 
 namespace lyx {
 
