@@ -18,7 +18,7 @@
 #include <boost/crc.hpp>
 #include <boost/cregex.hpp>
 #include <boost/current_function.hpp>
-#include <boost/filesystem/operations.hpp>
+//#include <boost/filesystem/operations.hpp>
 #include <boost/function.hpp>
 //#include <boost/iostreams/device/file.hpp>
 //#include <boost/iostreams/filter/gzip.hpp>
