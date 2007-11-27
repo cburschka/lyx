@@ -33,14 +33,14 @@ using support::isStrInt;
 
 namespace {
 
-struct error_item {
+struct ErrorItem {
 	Debug::type level;
 	char const * name;
 	char const * desc;
 };
 
 
-error_item errorTags[] = {
+ErrorItem errorTags[] = {
 	{ Debug::NONE,      "none",      N_("No debugging message")},
 	{ Debug::INFO,      "info",      N_("General information")},
 	{ Debug::INIT,      "init",      N_("Program initialisation")},
@@ -72,7 +72,7 @@ error_item errorTags[] = {
 };
 
 
-int const numErrorTags = sizeof(errorTags)/sizeof(error_item);
+int const numErrorTags = sizeof(errorTags)/sizeof(errorTags[0]);
 
 } // namespace anon
 

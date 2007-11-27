@@ -120,12 +120,12 @@ typedef basic_debugstream<Debug> LyXErr;
 
 extern LyXErr lyxerr;
 
-} // namespace lyx
-
 #define LYXERR(type, msg) \
 	do { \
 		if (!lyx::lyxerr.debugging(type)) {} else lyx::lyxerr << msg << std::endl; \
 	} while (0)
 
+
+} // namespace lyx
 
 #endif
