@@ -328,7 +328,7 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 	// stays unique. So we have to delete it before we can create
 	// a dir with the same name. Note also that we are not thread
 	// safe because of the gap between unlink and mkdir. (Lgb)
-	unlink(tmpfl);
+	tmpfl.removeFile();
 
 	if (tmpfl.empty() || mkdir(tmpfl, 0700)) {
 		lyxerr << "LyX could not create the temporary directory '"
@@ -855,7 +855,7 @@ void removeAutosaveFile(string const & filename)
 	a += '#';
 	FileName const autosave(a);
 	if (autosave.exists())
-		unlink(autosave);
+		autosave.removeFile();
 }
 
 
@@ -865,7 +865,7 @@ void readBB_lyxerrMessage(FileName const & file, bool & zipped,
 	LYXERR(Debug::GRAPHICS, "[readBB_from_PSFile] " << message);
 	// FIXME: Why is this func deleting a file? (Lgb)
 	if (zipped)
-		unlink(file);
+		file.removeFile();
 }
 
 

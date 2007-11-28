@@ -68,7 +68,6 @@ using support::split;
 using support::subst;
 using support::suffixIs;
 using support::Systemcall;
-using support::unlink;
 using support::trim;
 
 namespace os = support::os;
@@ -148,29 +147,29 @@ void LaTeX::deleteFilesOnError() const
 	// What files do we have to delete?
 
 	// This will at least make latex do all the runs
-	unlink(depfile);
+	depfile.removeFile();
 
 	// but the reason for the error might be in a generated file...
 
 	// bibtex file
 	FileName const bbl(changeExtension(file.absFilename(), ".bbl"));
-	unlink(bbl);
+	bbl.removeFile();
 
 	// makeindex file
 	FileName const ind(changeExtension(file.absFilename(), ".ind"));
-	unlink(ind);
+	ind.removeFile();
 
 	// nomencl file
 	FileName const nls(changeExtension(file.absFilename(), ".nls"));
-	unlink(nls);
+	nls.removeFile();
 
 	// nomencl file (old version of the package)
 	FileName const gls(changeExtension(file.absFilename(), ".gls"));
-	unlink(gls);
+	gls.removeFile();
 
 	// Also remove the aux file
 	FileName const aux(changeExtension(file.absFilename(), ".aux"));
-	unlink(aux);
+	aux.removeFile();
 }
 
 

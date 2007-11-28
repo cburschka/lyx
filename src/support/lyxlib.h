@@ -50,8 +50,6 @@ int mkdir(FileName const & pathname, unsigned long int mode);
 /// intermediate directories if necessary
 /// \ret return 0 if the directory is successfully created
 int makedir(char * pathname, unsigned long int mode=0755);
-/// unlink the given file
-int unlink(FileName const & file);
 /// (securely) create a temporary file in the given dir with the given mask
 /// \p mask must be in filesystem encoding
 FileName const tempName(FileName const & dir = FileName(),

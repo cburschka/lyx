@@ -130,9 +130,15 @@ void FileName::erase()
 }
 
 
-bool FileName::copyTo(FileName const & name) const
+bool FileName::copyTo(FileName const & name, bool overwrite) const
 {
-	return QFile::copy(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
+	if (overwrite)
+		QFile::remove(name.d->fi.absoluteFilePath());
+	bool success = QFile::copy(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
+	if (!success)
+		lyxerr << "FileName::copyTo(): Could not copy file "
+			<< *this << " to " << name << endl;
+	return success;
 }
 
 
@@ -219,7 +225,7 @@ bool FileName::isDirWritable() const
 	if (tmpfl.empty())
 		return false;
 
-	unlink(tmpfl);
+	tmpfl.removeFile();
 	return true;
 }
 
@@ -233,6 +239,16 @@ FileName FileName::tempName(FileName const & dir, std::string const & mask)
 std::time_t FileName::lastModified() const
 {
 	return d->fi.lastModified().toTime_t();
+}
+
+
+bool FileName::removeFile() const
+{
+	bool const success = QFile::remove(d->fi.absoluteFilePath());
+	if (!success)
+		lyxerr << "FileName::removeFile(): Could not delete file "
+			<< *this << "." << endl;
+	return success;
 }
 
 

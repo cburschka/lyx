@@ -72,7 +72,7 @@ TempName::TempName()
 {
 	support::FileName const tempname(support::tempName(support::FileName(), "lyxext"));
 	// FIXME: This is unsafe
-	support::unlink(tempname);
+	tempname.removeFile();
 	// must have an extension for the converter code to work correctly.
 	tempname_ = support::FileName(tempname.absFilename() + ".tmp");
 }
@@ -86,7 +86,7 @@ TempName::TempName(TempName const &)
 
 TempName::~TempName()
 {
-	support::unlink(tempname_);
+	tempname_.removeFile();
 }
 
 

@@ -62,7 +62,6 @@ using support::makeAbsPath;
 using support::makeDisplayPath;
 using support::onlyFilename;
 using support::onlyPath;
-using support::unlink;
 
 namespace Alert = frontend::Alert;
 

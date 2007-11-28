@@ -89,7 +89,6 @@ liblyxsupport_la_SOURCES = \
 	userinfo.h \
 	unicode.cpp \
 	unicode.h \
-	unlink.cpp \
 	minizip/crypt.h \
 	minizip/ioapi.c \
 	minizip/ioapi.h \

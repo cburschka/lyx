@@ -43,7 +43,6 @@ using support::quoteName;
 using support::quote_python;
 using support::subst;
 using support::tempName;
-using support::unlink;
 
 using std::endl;
 using std::ostream;
@@ -209,10 +208,10 @@ void Converter::Impl::converted(pid_t /* pid */, int retval)
 
 	finished_ = true;
 	// Clean-up behind ourselves
-	unlink(script_file_);
+	script_file_.removeFile();
 
 	if (retval > 0) {
-		unlink(to_file_);
+		to_file_.removeFile();
 		to_file_.erase();
 		finishedConversion(false);
 	} else {
@@ -314,7 +313,7 @@ static void build_script(FileName const & from_file,
 	static int counter = 0;
 	string const tmp = "gconvert" + convert<string>(counter++);
 	FileName const to_base(tempName(FileName(), tmp));
-	unlink(to_base);
+	to_base.removeFile();
 
 	// Create a copy of the file in case the original name contains
 	// problematic characters like ' or ". We can work around that problem

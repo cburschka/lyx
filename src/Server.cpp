@@ -65,7 +65,6 @@ using support::compare;
 using support::FileName;
 using support::rtrim;
 using support::split;
-using support::unlink;
 
 using std::endl;
 using std::string;
@@ -206,7 +205,7 @@ int LyXComm::startPipe(string const & file, bool write)
 	if (fd < 0) {
 		lyxerr << "LyXComm: Could not open pipe " << filename << '\n'
 		       << strerror(errno) << endl;
-		unlink(filename);
+		filename.removeFile();
 		return -1;
 	}
 
@@ -232,7 +231,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 		       << '\n' << strerror(errno) << endl;
 	}
 
-	if (unlink(FileName(filename)) < 0) {
+	if (FileName(filename).removeFile() < 0) {
 		lyxerr << "LyXComm: Could not remove pipe " << filename
 		       << '\n' << strerror(errno) << endl;
 	}

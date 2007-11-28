@@ -54,7 +54,6 @@ using support::runCommand;
 using support::FileName;
 using support::quoteName;
 using support::tempName;
-using support::unlink;
 using support::subst;
 
 using std::auto_ptr;
@@ -1051,7 +1050,7 @@ namespace {
 		lyxerr << "calling: " << cmd
 		       << "\ninput: '" << data << "'" << endl;
 		cmd_ret const ret = runCommand(command);
-		unlink(cas_tmpfile);
+		cas_tmpfile.removeFile();
 		return ret.second;
 	}
 

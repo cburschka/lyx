@@ -853,7 +853,7 @@ bool Buffer::save() const
 			backupName = FileName(addName(lyxrc.backupdir_path,
 						      mangledName));
 		}
-		if (fileName().copyTo(backupName)) {
+		if (fileName().copyTo(backupName, true)) {
 			madeBackup = true;
 		} else {
 			Alert::error(_("Backup failure"),
@@ -2071,7 +2071,7 @@ int AutoSaveBuffer::generateChild()
 				// filesystems unless write of tmp_ret
 				// failed so remove tmp file (if it
 				// exists)
-				unlink(tmp_ret);
+				tmp_ret.removeFile();
 			}
 		} else {
 			failed = true;
@@ -2492,7 +2492,7 @@ bool Buffer::readFileHelper(FileName const & s)
 			return readFile(a);
 		case 1:
 			// Here we delete the autosave
-			unlink(a);
+			a.removeFile();
 			break;
 		default:
 			return false;

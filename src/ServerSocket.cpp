@@ -84,7 +84,7 @@ ServerSocket::~ServerSocket()
 			lyxerr << "lyx: Server socket " << fd_
 			       << " IO error on closing: " << strerror(errno);
 	}
-	support::unlink(address_);
+	address_.removeFile();
 	LYXERR(Debug::LYXSERVER, "lyx: Server socket quitting");
 }
 

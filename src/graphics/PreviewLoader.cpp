@@ -393,13 +393,13 @@ void InProgress::stop() const
 		lyx::support::ForkedcallsController::get().kill(pid, 0);
 
 	if (!metrics_file.empty())
-		lyx::support::unlink(metrics_file);
+		metrics_file.removeFile();
 
 	BitmapFile::const_iterator vit  = snippets.begin();
 	BitmapFile::const_iterator vend = snippets.end();
 	for (; vit != vend; ++vit) {
 		if (!vit->second.empty())
-			lyx::support::unlink(vit->second);
+			vit->second.removeFile();
 	}
 }
 

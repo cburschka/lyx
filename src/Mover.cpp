@@ -88,7 +88,7 @@ bool SpecialisedMover::do_rename(support::FileName const & from, support::FileNa
 
 	if (!do_copy(from, to, latex, (unsigned long int)-1))
 		return false;
-	return support::unlink(from) == 0;
+	return from.removeFile();
 }
 
 

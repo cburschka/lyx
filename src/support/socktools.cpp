@@ -114,7 +114,7 @@ int listen(FileName const & name, int queue)
 		LYXERR(Debug::ANY, "lyx: Could not bind address '" << name.absFilename()
 		       << "' to socket descriptor: " << strerror(errno));
 		::close(fd);
-		unlink(name);
+		name.removeFile();
 		return -1;
 	}
 
@@ -127,7 +127,7 @@ int listen(FileName const & name, int queue)
 		LYXERR(Debug::ANY, "lyx: Could not put socket in 'listen' state: "
 		       << strerror(errno));
 		::close(fd);
-		unlink(name);
+		name.removeFile();
 		return -1;
 	}
 

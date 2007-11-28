@@ -82,7 +82,7 @@ public:
 
 	/**
 	 * Generate a log file and return the filename.
-	 * It is the caller's responsibility to unlink the
+	 * It is the caller's responsibility to remove the
 	 * file after use.
 	 */
 	const std::string getLogFile() const;

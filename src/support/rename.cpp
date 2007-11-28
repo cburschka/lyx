@@ -27,7 +27,7 @@ bool rename(FileName const & from, FileName const & to)
 {
 	if (::rename(from.toFilesystemEncoding().c_str(), to.toFilesystemEncoding().c_str()) == -1) {
 		if (copy(from, to)) {
-			unlink(from);
+			from.removeFile();
 			return true;
 		} else
 			return false;

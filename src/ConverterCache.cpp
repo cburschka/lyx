@@ -135,7 +135,7 @@ void ConverterCache::Impl::readIndex()
 		if (!orig_from_name.exists()) {
 			LYXERR(Debug::FILES, "Not caching file `"
 				<< orig_from << "' (does not exist anymore).");
-			support::unlink(item.cache_name);
+			item.cache_name.removeFile();
 			continue;
 		}
 
@@ -153,7 +153,7 @@ void ConverterCache::Impl::readIndex()
 				> lyxrc.converter_cache_maxage) {
 			LYXERR(Debug::FILES, "Not caching file `"
 				<< orig_from << "' (too old).");
-			support::unlink(item.cache_name);
+			item.cache_name.removeFile();
 			continue;
 		}
 
@@ -352,7 +352,7 @@ void ConverterCache::remove_all(string const & from_format,
 			if (it2->first == to_format) {
 				LYXERR(Debug::FILES, "Removing file cache item "
 					<< it1->first << ' ' << to_format);
-				support::unlink(it2->second.cache_name);
+				it2->second.cache_name.removeFile();
 				format_cache.erase(it2);
 				// Have to start over again since items in a
 				// map are not ordered

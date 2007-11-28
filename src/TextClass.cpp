@@ -450,7 +450,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 		error = !layout2layout(filename, tempfile);
 		if (!error)
 			error = read(tempfile, rt);
-		support::unlink(tempfile);
+		tempfile.removeFile();
 		return error;
 	}
 

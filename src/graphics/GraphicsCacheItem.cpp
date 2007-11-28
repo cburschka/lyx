@@ -34,7 +34,6 @@ using support::FileName;
 using support::makeDisplayPath;
 using support::onlyFilename;
 using support::tempName;
-using support::unlink;
 using support::unzipFile;
 
 using std::endl;
@@ -224,11 +223,11 @@ void CacheItem::Impl::reset()
 {
 	zipped_ = false;
 	if (!unzipped_filename_.empty())
-		unlink(unzipped_filename_);
+		unzipped_filename_.removeFile();
 	unzipped_filename_.erase();
 
 	if (remove_loaded_file_ && !file_to_load_.empty())
-		unlink(file_to_load_);
+		file_to_load_.removeFile();
 	remove_loaded_file_ = false;
 	file_to_load_.erase();
 	to_.erase();
@@ -276,7 +275,7 @@ void CacheItem::Impl::imageConverted(bool success)
 		setStatus(ErrorConverting);
 
 		if (zipped_)
-			unlink(unzipped_filename_);
+			unzipped_filename_.removeFile();
 
 		return;
 	}
@@ -311,10 +310,10 @@ void CacheItem::Impl::imageLoaded(bool success)
 
 	// Clean up after loading.
 	if (zipped_)
-		unlink(unzipped_filename_);
+		unzipped_filename_.removeFile();
 
 	if (remove_loaded_file_ && unzipped_filename_ != file_to_load_)
-		unlink(file_to_load_);
+		file_to_load_.removeFile();
 
 	cl_.disconnect();
 
@@ -430,7 +429,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	// Remove the temp file, we only want the name...
 	// FIXME: This is unsafe!
-	unlink(to_file_base);
+	to_file_base.removeFile();
 
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file

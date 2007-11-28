@@ -107,7 +107,7 @@ PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 
 PreviewImage::Impl::~Impl()
 {
-	support::unlink(iloader_.filename());
+	iloader_.filename().removeFile();
 }
 
 
@@ -135,12 +135,12 @@ void PreviewImage::Impl::statusChanged()
 	case ErrorLoading:
 	case ErrorGeneratingPixmap:
 	case ErrorUnknown:
-		//lyx::unlink(iloader_.filename());
+		//iloader_.filename().removeFile();
 		ploader_.remove(snippet_);
 		break;
 
 	case Ready:
-		support::unlink(iloader_.filename());
+		iloader_.filename().removeFile();
 		break;
 	}
 	ploader_.emitSignal(parent_);

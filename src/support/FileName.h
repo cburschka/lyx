@@ -84,8 +84,15 @@ public:
 	/// return true when file/directory is writable (write test file)
 	bool isDirWritable() const;
 	
-	/// return true when file/directory is writable (write test file)
-	bool copyTo(FileName const & target) const;
+	/// copy a file
+	/// \return true when file/directory is writable (write test file)
+	/// \param overwrite: set to true if we should erase the \c target 
+	/// file if it exists,
+	bool copyTo(FileName const & target, bool overwrite = false) const;
+
+	/// remove pointed file.
+	/// \retrun true on success.
+	bool removeFile() const;
 
 	/// remove directory and all contents, returns true on success
 	bool destroyDirectory() const;
