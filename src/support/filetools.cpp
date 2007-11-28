@@ -109,12 +109,14 @@ string const latex_path(string const & original_path,
 
 
 // Substitutes spaces with underscores in filename (and path)
-string const makeLatexName(string const & file)
+FileName const makeLatexName(FileName const & file)
 {
-	string name = onlyFilename(file);
-	string const path = onlyPath(file);
+	string name = file.onlyFileName();
+	string const path = file.onlyPath().absFilename() + "/";
 
 	// ok so we scan through the string twice, but who cares.
+	// FIXME: in Unicode time this will break for sure! There is
+	// a non-latin world out there...
 	string const keep = "abcdefghijklmnopqrstuvwxyz"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		"@!'()*+,-./0123456789:;<=>?[]`|";
@@ -123,7 +125,9 @@ string const makeLatexName(string const & file)
 	while ((pos = name.find_first_not_of(keep, pos)) != string::npos)
 		name[pos++] = '_';
 
-	return addName(path, name);
+	FileName latex_name(path + name);
+	latex_name.changeExtension(".tex");
+	return latex_name;
 }
 
 

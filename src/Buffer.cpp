@@ -392,8 +392,9 @@ Undo & Buffer::undo()
 
 string Buffer::latexName(bool const no_path) const
 {
-	string const name = changeExtension(makeLatexName(absFileName()), ".tex");
-	return no_path ? onlyFilename(name) : name;
+	FileName latex_name = makeLatexName(pimpl_->filename);
+	return no_path ? latex_name.onlyFileName()
+		: latex_name.absFilename();
 }
 
 

@@ -152,7 +152,7 @@ std::string const latex_path(std::string const & path,
 		latex_path_dots dots = LEAVE_DOTS);
 
 /// Substitutes active latex characters with underscores in filename
-std::string const makeLatexName(std::string const & file);
+FileName const makeLatexName(FileName const & file);
 
 /** Put the name in quotes suitable for the current shell or python,
     depending on \p style. */
