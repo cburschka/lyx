@@ -5,7 +5,6 @@
  *
  * \author André Pönitz
  * \author Jean-Marc Lasgouttes
- * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -104,7 +103,7 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 
 
 char const * const known_latex_commands[] = { "ref", "cite", "label",
- "index", "pageref", "url", "vref", "vpageref", "prettyref",
+ "index", "printindex", "pageref", "url", "vref", "vpageref", "prettyref",
  "eqref", 0 };
 
 /*!
@@ -144,7 +143,7 @@ char const * const known_sizes[] = { "tiny", "scriptsize", "footnotesize",
 "small", "normalsize", "large", "Large", "LARGE", "huge", "Huge", 0};
 
 /// the same as known_sizes with .lyx names
-char const * const known_coded_sizes[] = { "default", "tiny", "scriptsize", "footnotesize",
+char const * const known_coded_sizes[] = { "tiny", "scriptsize", "footnotesize",
 "small", "normal", "large", "larger", "largest",  "huge", "giant", 0};
 
 /// LaTeX 2.09 names for font families
@@ -774,8 +773,6 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 		p.skip_spaces();
-		// FIXME the comment note inset has a trailing "{}" pair
-		//p.skip_braces(p);
 	}
 
 	else if (name == "lyxgreyedout") {
@@ -1128,8 +1125,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
 	LayoutPtr newlayout;
-	// store the current selectlanguage to be used after \foreignlanguage
-	string selectlang;
 	// Store the latest bibliographystyle (needed for bibtex inset)
 	string bibliographystyle;
 	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
@@ -1742,8 +1737,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "tableofcontents") {
 			p.skip_spaces();
 			context.check_layout(os);
-			begin_inset(os, "CommandInset toc\n");
-			os << "LatexCommand tableofcontents\n";
+			begin_inset(os, "LatexCommand \\tableofcontents\n");
 			end_inset(os);
 			skip_braces(p); // swallow this
 		}
@@ -1766,16 +1760,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "listof") {
 			p.skip_spaces(true);
-			string const name = p.verbatim_item();
-			string const name2 = subst(p.verbatim_item(), "\n", " ");
+			string const name = p.get_token().asString();
 			if (context.textclass.floats().typeExist(name)) {
 				context.check_layout(os);
 				begin_inset(os, "FloatList ");
 				os << name << "\n";
 				end_inset(os);
-				// the second argument is not needed
+				p.get_token(); // swallow second arg
 			} else
-				handle_ert(os, "\\listof{" + name + "}{" + name2 + "}", context);
+				handle_ert(os, "\\listof{" + name + "}", context);
 		}
 
 		else if (t.cs() == "textrm")
@@ -2058,27 +2051,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
-		else if (t.cs() == "selectlanguage") {
-			context.check_layout(os);
-			// save the language for the case that a \foreignlanguage is used 
-			selectlang = subst(p.verbatim_item(), "\n", " ");
-			os << "\\lang " << selectlang << "\n";
-			
-		}
-
-		else if (t.cs() == "foreignlanguage") {
-			context.check_layout(os);
-			os << "\n\\lang " << subst(p.verbatim_item(), "\n", " ") << "\n";
-			os << subst(p.verbatim_item(), "\n", " ");
-			// set back to last selectlanguage
-			os << "\n\\lang " << selectlang << "\n";
-		}
-
-		else if (t.cs() == "inputencoding")
-			// write nothing because this is done by LyX using the "\lang"
-			// information given by selectlanguage and foreignlanguage
-			subst(p.verbatim_item(), "\n", " ");
-		
 		else if (t.cs() == "LyX" || t.cs() == "TeX"
 			 || t.cs() == "LaTeX") {
 			context.check_layout(os);
@@ -2102,14 +2074,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			os << "\\SpecialChar \\menuseparator\n";
 			skip_braces(p);
-		}
-
-		else if (t.cs() == "lyxline") {
-			context.check_layout(os);
-			// the argument can be omitted, is handled by LyX
-			subst(p.verbatim_item(), "\n", " ");
-			os << "\\lyxline\n ";
-			
 		}
 
 		else if (t.cs() == "textcompwordmark") {
@@ -2333,29 +2297,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "bibliography") {
 			context.check_layout(os);
-			begin_inset(os, "CommandInset bibtex");
-			os << "\nLatexCommand bibtex";
+			begin_inset(os, "LatexCommand ");
+			os << "\\bibtex";
 			// Do we have a bibliographystyle set?
-			if (!bibliographystyle.empty())	
-				os << "\noptions " << '"' << bibliographystyle << '"';
-			os << "\nbibfiles " << '"' << p.verbatim_item() << '"';
+			if (!bibliographystyle.empty()) {
+				os << '[' << bibliographystyle << ']';
+			}
+			os << '{' << p.verbatim_item() << "}\n";
 			end_inset(os);
-		}
-
-		else if (t.cs() == "printindex") {
-			context.check_layout(os);
-			begin_inset(os, "CommandInset index_print\n");
-			os << "LatexCommand printindex";
-			end_inset(os);
-			skip_braces(p);
-		}
-
-		else if (t.cs() == "printnomenclature") {
-			context.check_layout(os);
-			begin_inset(os, "CommandInset nomencl_print\n");
-			os << "LatexCommand printnomenclature";
-			end_inset(os);
-			skip_braces(p);
 		}
 
 		else if (t.cs() == "parbox")
