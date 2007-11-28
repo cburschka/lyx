@@ -82,7 +82,7 @@ FileName::FileName() : d(new Private)
 FileName::FileName(string const & abs_filename)
 	: d(abs_filename.empty() ? new Private : new Private(abs_filename))
 {
-	BOOST_ASSERT(empty() || d->fi.isAbsolute());
+	BOOST_ASSERT(empty());
 #if defined(_WIN32)
 	BOOST_ASSERT(!contains(abs_filename, '\\'));
 #endif
