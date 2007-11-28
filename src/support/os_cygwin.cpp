@@ -27,7 +27,6 @@
 
 #include <sys/cygwin.h>
 
-using std::endl;
 using std::string;
 
 
