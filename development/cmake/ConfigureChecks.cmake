@@ -105,14 +105,14 @@ check_type_size(wint_t  HAVE_WINT_T)
 #	"
 #HAVE_STD_COUNT)
 
-#check_cxx_source_compiles(
-#	"
-#	#include <streambuf>
-#	#include <istream>
-#	typedef std::istreambuf_iterator<char> type;
-#	int main(){return 0;}
-#	"
-#HAVE_DECL_ISTREAMBUF_ITERATOR)
+check_cxx_source_compiles(
+	"
+	#include <streambuf>
+	#include <istream>
+	typedef std::istreambuf_iterator<char> type;
+	int main(){return 0;}
+	"
+HAVE_DECL_ISTREAMBUF_ITERATOR)
 
 #check_cxx_source_compiles(
 #	"
