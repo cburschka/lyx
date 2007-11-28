@@ -614,8 +614,7 @@ void GuiGraphics::applyView()
 {
 	InsetGraphicsParams & igp = params_;
 
-	igp.filename.set(internal_path(fromqstr(filename->text())),
-			 bufferFilepath());
+	igp.filename.set(fromqstr(filename->text()), bufferFilepath());
 	igp.filename.setEmbed(embedCB->checkState() == Qt::Checked);
 
 	// the bb section

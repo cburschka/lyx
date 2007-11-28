@@ -650,8 +650,7 @@ void GuiExternal::updateTemplate()
 
 void GuiExternal::applyView()
 {
-	params_.filename.set(internal_path(fromqstr(fileED->text())),
-			    bufferFilepath());
+	params_.filename.set(fromqstr(fileED->text()), bufferFilepath());
 
 	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
 

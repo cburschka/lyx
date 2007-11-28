@@ -448,7 +448,7 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 	}
 
 	// returns absolute path
-	return FileName(os::internal_path(tempBase));
+	return FileName(tempBase);
 }
 
 
@@ -840,8 +840,7 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 	LYXERR(Debug::LATEX, "kpse status = " << c.first << '\n'
 		 << "kpse result = `" << rtrim(c.second, "\n\r") << '\'');
 	if (c.first != -1)
-		return FileName(os::internal_path(rtrim(to_utf8(from_filesystem8bit(c.second)),
-							"\n\r")));
+		return FileName(rtrim(to_utf8(from_filesystem8bit(c.second)), "\n\r"));
 	else
 		return FileName();
 }

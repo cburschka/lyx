@@ -233,7 +233,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	inset.setAutoBreakRows(true);
 	lyxvc.setBuffer(&parent);
 	temppath = createBufferTmpDir();
-	params.filepath = onlyPath(file.absFilename());
+
 	// FIXME: And now do something if temppath == string(), because we
 	// assume from now on that temppath points to a valid temp dir.
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg67406.html
@@ -445,7 +445,6 @@ void Buffer::setReadonly(bool const flag)
 void Buffer::setFileName(string const & newfile)
 {
 	pimpl_->filename = makeAbsPath(newfile);
-	params().filepath = onlyPath(pimpl_->filename.absFilename());
 	setReadonly(pimpl_->filename.isReadOnly());
 	updateTitles();
 }
@@ -501,7 +500,7 @@ int Buffer::readHeader(Lexer & lex)
 		LYXERR(Debug::PARSER, "Handling document header token: `"
 				      << token << '\'');
 
-		string unknown = params().readToken(lex, token);
+		string unknown = params().readToken(lex, token, pimpl_->filename.onlyPath());
 		if (!unknown.empty()) {
 			if (unknown[0] != '\\' && token == "\\textclass") {
 				Alert::warning(_("Unknown document class"),
@@ -848,8 +847,7 @@ bool Buffer::save() const
 		backupName = FileName(absFileName() + '~');
 		if (!lyxrc.backupdir_path.empty()) {
 			string const mangledName =
-				subst(subst(os::internal_path(
-				backupName.absFilename()), '/', '!'), ':', '!');
+				subst(subst(backupName.absFilename(), '/', '!'), ':', '!');
 			backupName = FileName(addName(lyxrc.backupdir_path,
 						      mangledName));
 		}
@@ -1701,9 +1699,9 @@ string Buffer::absFileName() const
 }
 
 
-string const & Buffer::filePath() const
+string Buffer::filePath() const
 {
-	return params().filepath;
+	return pimpl_->filename.onlyPath().absFilename();
 }
 
 

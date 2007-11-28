@@ -367,7 +367,7 @@ FileName const get_temp_dir()
 	// Typical example: C:/TEMP/.
 	char path[MAX_PATH];
 	GetTempPath(MAX_PATH, path);
-	return FileName(os::internal_path(to_utf8(from_local8bit(path))));
+	return FileName(to_utf8(from_local8bit(path)));
 #else // Posix-like.
 	return FileName("/tmp");
 #endif

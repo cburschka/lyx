@@ -112,6 +112,13 @@ public:
 	 * \p name must have an absolute path.
 	 */
 
+	/// Change extension.
+	/**
+	* If oldname does not have an extension, it is appended.
+	* If the extension is empty, any extension is removed from the name.
+	*/
+	 void changeExtension(std::string const & extension);
+
 	/** Guess the file format name (as in Format::name()) from contents.
 	 Normally you don't want to use this directly, but rather
 	 Formats::getFormatFromFile().

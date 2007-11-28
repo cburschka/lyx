@@ -44,6 +44,7 @@
 
 #include "support/convert.h"
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/Translator.h"
 #include "support/lstrings.h"
@@ -464,14 +465,16 @@ void BufferParams::setDefSkip(VSpace const & vs)
 }
 
 
-string const BufferParams::readToken(Lexer & lex, string const & token)
+string const BufferParams::readToken(Lexer & lex, string const & token,
+	FileName const & filepath)
 {
 	if (token == "\\textclass") {
 		lex.next();
 		string const classname = lex.getString();
 		// if there exists a local layout file, ignore the system one
 		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
-		pair<bool, lyx::textclass_type> pp = textclasslist.addTextClass(classname, filepath);
+		pair<bool, lyx::textclass_type> pp = textclasslist.addTextClass(
+			classname, filepath.absFilename());
 		if (pp.first)
 			setBaseClass(pp.second);
 		else {

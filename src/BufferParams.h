@@ -30,6 +30,10 @@
 
 namespace lyx {
 
+namespace support {
+class FileName;
+}
+
 class AuthorList;
 class BranchList;
 class Bullet;
@@ -65,7 +69,9 @@ public:
 	docstring const B_(std::string const & l10n) const;
 
 	/// read a header token, if unrecognised, return it or an unknown class name
-	std::string const readToken(Lexer & lex, std::string const & token);
+	std::string const readToken(Lexer & lex,
+		std::string const & token, ///< token to read.
+		support::FileName const & filepath); ///< where to look for local layout file.
 
 	///
 	void writeFile(std::ostream &) const;
@@ -284,8 +290,7 @@ public:
 				     std::string const & sf, std::string const & tt,
 				     bool const & sc, bool const & osf,
 				     int const & sfscale, int const & ttscale) const;
-	/// path of the current buffer
-	std::string filepath;
+
 	/// get the appropriate cite engine (natbib handling)
 	biblio::CiteEngine getEngine() const;
 

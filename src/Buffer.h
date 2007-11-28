@@ -244,7 +244,7 @@ public:
 
 	/// Returns the the path where the buffer lives.
 	/// It is always an absolute path.
-	std::string const & filePath() const;
+	std::string filePath() const;
 
 	/** A transformed version of the file name, adequate for LaTeX.
 	    \param no_path optional if \c true then the path is stripped.

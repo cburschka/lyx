@@ -79,12 +79,10 @@ FileName::FileName() : d(new Private)
 {
 }
 
+
 FileName::FileName(string const & abs_filename)
 	: d(abs_filename.empty() ? new Private : new Private(abs_filename))
 {
-#if defined(_WIN32)
-	BOOST_ASSERT(!contains(abs_filename, '\\'));
-#endif
 }
 
 
@@ -117,9 +115,6 @@ void FileName::set(string const & name)
 {
 	d->fi.setFile(toqstr(name));
 	BOOST_ASSERT(d->fi.isAbsolute());
-#if defined(_WIN32)
-	BOOST_ASSERT(!contains(name, '\\'));
-#endif
 }
 
 
@@ -357,6 +352,26 @@ string FileName::fileContents() const
 	}
 	lyxerr << "LyX was not able to read file '" << *this << '\'' << std::endl;
 	return string();
+}
+
+
+void FileName::changeExtension(std::string const & extension)
+{
+	// FIXME: use Qt native methods...
+	string const oldname = absFilename();
+	string::size_type const last_slash = oldname.rfind('/');
+	string::size_type last_dot = oldname.rfind('.');
+	if (last_dot < last_slash && last_slash != string::npos)
+		last_dot = string::npos;
+
+	string ext;
+	// Make sure the extension starts with a dot
+	if (!extension.empty() && extension[0] != '.')
+		ext= '.' + extension;
+	else
+		ext = extension;
+
+	set(oldname.substr(0, last_dot) + ext);
 }
 
 
@@ -636,7 +651,7 @@ string const DocFileName::mangledFilename(std::string const & dir) const
 	// Now the real work
 	string mname = os::internal_path(name);
 	// Remove the extension.
-	mname = changeExtension(name, string());
+	mname = support::changeExtension(name, string());
 	// The mangled name must be a valid LaTeX name.
 	// The list of characters to keep is probably over-restrictive,
 	// but it is not really a problem.
@@ -651,7 +666,7 @@ string const DocFileName::mangledFilename(std::string const & dir) const
 	while ((pos = mname.find_first_not_of(keep, pos)) != string::npos)
 		mname[pos++] = '_';
 	// Add the extension back on
-	mname = changeExtension(mname, getExtension(name));
+	mname = support::changeExtension(mname, getExtension(name));
 
 	// Prepend a counter to the filename. This is necessary to make
 	// the mangled name unique.
