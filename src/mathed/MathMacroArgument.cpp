@@ -20,16 +20,11 @@
 
 namespace lyx {
 
-using std::endl;
-using std::size_t;
-
-
 MathMacroArgument::MathMacroArgument(size_t n)
 	: number_(n)
 {
 	if (n < 1 || n > 9) {
-		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
-			<< n << endl;
+		LYXERR0("MathMacroArgument::MathMacroArgument: wrong Argument id: " << n);
 	}
 
 	// The profiler tells us not to use
@@ -48,11 +43,10 @@ Inset * MathMacroArgument::clone() const
 }
 
 
-void MathMacroArgument::setNumber(std::size_t n)
+void MathMacroArgument::setNumber(size_t n)
 {
 	if (n < 1 || n > 9) {
-		lyxerr << "MathMacroArgument::setNumber: wrong Argument id: "
-		<< n << endl;
+		LYXERR0("MathMacroArgument::setNumber: wrong Argument id: " << n);
 	}
 
 	number_ = n;

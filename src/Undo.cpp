@@ -34,9 +34,9 @@
 #include "support/limited_stack.h"
 
 #include <algorithm>
+#include <ostream>
 
 using std::advance;
-using std::endl;
 
 namespace lyx {
 
@@ -272,7 +272,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 		undo.isFullBuffer, !isUndoOperation);
 
 	// This does the actual undo/redo.
-	//lyxerr << "undo, performing: " << undo << std::endl;
+	//LYXERR0("undo, performing: " << undo);
 	bool labelsUpdateNeeded = false;
 	DocIterator dit = undo.cell.asDocIterator(&buffer_.inset());
 	if (undo.isFullBuffer) {
@@ -287,7 +287,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 		// We stored the full cell here as there is not much to be
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
-		//lyxerr << "undo.array: " << *undo.array <<endl;
+		//LYXERR0("undo.array: " << *undo.array);
 		BOOST_ASSERT(undo.array);
 		dit.cell().swap(*undo.array);
 		delete undo.array;

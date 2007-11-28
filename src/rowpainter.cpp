@@ -44,6 +44,8 @@
 
 #include <boost/crc.hpp>
 
+#include <ostream>
+
 using std::endl;
 using std::max;
 using std::string;

@@ -16,6 +16,7 @@
 
 #include "support/convert.h"
 #include "support/lstrings.h"
+#include "support/FileName.h"
 
 #include <iostream>
 #include <iomanip>
@@ -33,14 +34,14 @@ using std::ostream;
 
 namespace {
 
-struct error_item {
-	Debug::type level;
+struct ErrorItem {
+	Debug::Type level;
 	char const * name;
 	char const * desc;
 };
 
 
-error_item errorTags[] = {
+ErrorItem errorTags[] = {
 	{ Debug::NONE,      "none",      N_("No debugging message")},
 	{ Debug::INFO,      "info",      N_("General information")},
 	{ Debug::DEBUG,     "debug",     N_("Developers' general debug messages")},
@@ -48,14 +49,14 @@ error_item errorTags[] = {
 };
 
 
-int const numErrorTags = sizeof(errorTags)/sizeof(error_item);
+int const numErrorTags = sizeof(errorTags)/sizeof(errorTags[0]);
 
 } // namespace anon
 
 
-lyx_debug_trait::type lyx_debug_trait::value(string const & val)
+Debug::Type Debug::value(string const & val)
 {
-	type l = Debug::NONE;
+	Type l = Debug::NONE;
 	string v(val);
 	while (!v.empty()) {
 		string::size_type const st = v.find(',');
@@ -64,7 +65,7 @@ lyx_debug_trait::type lyx_debug_trait::value(string const & val)
 			break;
 		// Is it a number?
 		if (isStrInt(tmp))
-			l |= static_cast<type>(convert<int>(tmp));
+			l |= static_cast<Type>(convert<int>(tmp));
 		else
 		// Search for an explicit name
 		for (int i = 0 ; i < numErrorTags ; ++i)
@@ -79,7 +80,7 @@ lyx_debug_trait::type lyx_debug_trait::value(string const & val)
 }
 
 
-void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
+void Debug::showLevel(ostream & os, Debug::Type level)
 {
 	// Show what features are traced
 	for (int i = 0; i < numErrorTags ; ++i) {
@@ -97,7 +98,7 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 }
 
 
-void lyx_debug_trait::showTags(ostream & os)
+void Debug::showTags(ostream & os)
 {
 	for (int i = 0; i < numErrorTags ; ++i)
 		os << setw(10) << static_cast<unsigned int>(errorTags[i].level)
@@ -106,6 +107,57 @@ void lyx_debug_trait::showTags(ostream & os)
 	os.flush();
 }
 
+
+void LyXErr::disable()
+{
+	enabled_ = false;
+}
+
+
+void LyXErr::enable()
+{
+	enabled_ = true;
+}
+
+
+bool LyXErr::debugging(Debug::Type t) const
+{
+	return (dt & t);
+}
+
+
+void LyXErr::endl()
+{
+	stream() << std::endl;
+}
+
+
+LyXErr & operator<<(LyXErr & l, void const * t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, char const * t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, char t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, int t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, unsigned int t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, long t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, unsigned long t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, double t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, std::string const & t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, docstring const & t)
+{ l.stream() << to_utf8(t); return l; }
+LyXErr & operator<<(LyXErr & l, support::FileName const & t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, std::ostream &(*t)(std::ostream &))
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, std::ios_base &(*t)(std::ios_base &))
+{ l.stream() << t; return l; }
 
 LyXErr lyxerr;
 

@@ -188,6 +188,7 @@ public:
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, Cursor const & cur);
+	friend LyXErr & operator<<(LyXErr & os, Cursor const & cur);
 
 	///
 	bool textUndo();

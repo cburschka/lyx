@@ -17,8 +17,6 @@
 #include "debug.h"
 #include "LyXRC.h"
 
-using std::endl;
-
 
 namespace lyx {
 
@@ -39,18 +37,19 @@ void Intl::keyMapOn(bool on)
 			keyMapPrim();
 		else
 			keyMapSec();
-	} else
+	} else {
 		trans.disableKeymap();
+	}
 }
 
 
 void Intl::toggleKeyMap()
 {
-	if (keymapon && (keymap == PRIMARY)) {
+	if (keymapon && (keymap == PRIMARY))
 		keyMapSec();
-	} else if (keymapon) {
+	else if (keymapon)
 		keyMapOn(false);
-	} else
+	else
 		keyMapPrim();
 }
 

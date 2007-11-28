@@ -19,6 +19,8 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+#include <ostream>
+
 using std::endl;
 using std::string;
 

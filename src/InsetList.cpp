@@ -20,7 +20,6 @@
 
 #include "insets/InsetBranch.h"
 
-using std::endl;
 using std::lower_bound;
 
 
@@ -31,8 +30,8 @@ namespace {
 
 typedef InsetList::InsetTable Table;
 
-class InsetTablePosLess : public std::binary_function<Table, Table, bool> {
-public:
+struct InsetTablePosLess
+{
 	bool operator()(Table const & t1, Table const & t2) const
 	{
 		return t1.pos < t2.pos;
@@ -76,8 +75,8 @@ void InsetList::insert(Inset * inset, pos_type pos)
 	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
-		lyxerr << "ERROR (InsetList::insert): "
-		       << "There is an inset in position: " << pos << endl;
+		LYXERR0("ERROR (InsetList::insert): "
+		       << "There is an inset in position: " << pos);
 	} else {
 		list_.insert(it, InsetTable(pos, inset));
 	}

@@ -22,7 +22,6 @@
 
 #include <cerrno>
 
-using std::endl;
 using std::map;
 using std::string;
 
@@ -143,7 +142,7 @@ docstring const Messages::get(string const & m) const
 	char const * trans_c = gettext(m_c);
 	docstring trans;
 	if (!trans_c)
-		lyxerr << "Undefined result from gettext" << endl;
+		LYXERR0("Undefined result from gettext");
 	else if (trans_c == m_c) {
 		LYXERR(Debug::DEBUG, "Same as entered returned");
 		trans = from_ascii(m);
@@ -215,8 +214,7 @@ public:
 		  loc_gl(lang_.c_str()),
 		  mssg_gl(std::use_facet<std::messages<char> >(loc_gl))
 	{
-		//lyxerr << "Messages: language(" << l
-		//       << ") in dir(" << dir << ")" << endl;
+		//LYXERR("Messages: language(" << l << ") in dir(" << dir << ")");
 
 		string const locale_dir = package().locale_dir().toFilesystemEncoding();
 		cat_gl = mssg_gl.open(PACKAGE, loc_gl, locale_dir.c_str());

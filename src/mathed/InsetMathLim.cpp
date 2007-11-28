@@ -18,9 +18,6 @@
 
 namespace lyx {
 
-using std::endl;
-
-
 InsetMathLim::InsetMathLim
 	(MathData const & f, MathData const & x, MathData const & x0)
 	: InsetMathNest(3)
@@ -45,13 +42,13 @@ void InsetMathLim::normalize(NormalStream & os) const
 
 void InsetMathLim::metrics(MetricsInfo &, Dimension &) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 
 void InsetMathLim::draw(PainterInfo &, int, int) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 
@@ -81,7 +78,7 @@ void InsetMathLim::mathmlize(MathStream & os) const
 
 void InsetMathLim::write(WriteStream &) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 

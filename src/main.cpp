@@ -17,6 +17,7 @@
 
 #include "support/os.h"
 
+#include <iostream>
 #ifdef HAVE_IOS
 #include <ios>
 #endif
@@ -30,7 +31,7 @@ int main(int argc, char * argv[])
 	// To avoid ordering of global object problems with some
 	// stdlibs we do the initialization here, but still as
 	// early as possible.
-	lyx::lyxerr.rdbuf(std::cerr.rdbuf());
+	lyx::lyxerr.setStream(std::cerr);
 
 	lyx::support::os::init(argc, argv);
 

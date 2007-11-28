@@ -28,9 +28,7 @@ namespace lyx {
 using support::split;
 using support::trim;
 
-using std::endl;
 using std::string;
-using std::ostream;
 
 
 /*
@@ -459,7 +457,7 @@ bool LyXAction::funcHasFlag(kb_action action,
 	info_map::const_iterator ici = lyx_info_map.find(action);
 
 	if (ici == lyx_info_map.end()) {
-		lyxerr << "action: " << action << " is not known." << endl;
+		LYXERR0("action: " << action << " is not known.");
 		BOOST_ASSERT(false);
 	}
 
@@ -476,12 +474,6 @@ LyXAction::const_func_iterator LyXAction::func_begin() const
 LyXAction::const_func_iterator LyXAction::func_end() const
 {
 	return lyx_func_map.end();
-}
-
-
-ostream & operator<<(ostream & o, kb_action action)
-{
-	return o << int(action);
 }
 
 

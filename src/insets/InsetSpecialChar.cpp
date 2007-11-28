@@ -23,6 +23,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/docstream.h"
 
 namespace lyx {
 

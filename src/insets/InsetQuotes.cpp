@@ -28,6 +28,7 @@
 #include "frontends/Painter.h"
 
 #include "support/docstring.h"
+#include "support/docstream.h"
 #include "support/lstrings.h"
 
 
@@ -135,7 +136,7 @@ void InsetQuotes::getPosition(char_type c)
 
 void InsetQuotes::parseString(string const & s)
 {
-	string str(s);
+	string str = s;
 	if (str.length() != 3) {
 		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
 			" bad string length." << endl;

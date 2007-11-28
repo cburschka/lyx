@@ -18,9 +18,6 @@
 
 namespace lyx {
 
-using std::endl;
-
-
 InsetMathDiff::InsetMathDiff()
 	: InsetMathNest(1)
 {}
@@ -49,13 +46,13 @@ void InsetMathDiff::normalize(NormalStream & os) const
 
 void InsetMathDiff::metrics(MetricsInfo &, Dimension &) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 
 void InsetMathDiff::draw(PainterInfo &, int, int) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 
@@ -111,7 +108,7 @@ void InsetMathDiff::mathmlize(MathStream & os) const
 
 void InsetMathDiff::write(WriteStream &) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 

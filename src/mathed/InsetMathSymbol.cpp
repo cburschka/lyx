@@ -223,7 +223,7 @@ void InsetMathSymbol::write(WriteStream & os) const
 
 void InsetMathSymbol::infoize2(odocstream & os) const
 {
-	os << "Symbol: " << name();
+	os << from_ascii("Symbol: ") << name();
 }
 
 

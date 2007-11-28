@@ -21,6 +21,8 @@
 #include "support/Package.h"
 #include "support/Path.h"
 
+#include <ostream>
+
 using std::endl;
 using std::for_each;
 using std::string;
@@ -70,11 +72,11 @@ TemplateManager::TemplateManager()
 }
 
 
-class dumpPreambleDef {
+class DumpPreambleDef {
 public:
 	typedef TemplateManager::PreambleDefs::value_type value_type;
 
-	dumpPreambleDef(ostream & o) : ost(o) {}
+	DumpPreambleDef(ostream & o) : ost(o) {}
 
 	void operator()(value_type const & vt) {
 		ost << "PreambleDef " << vt.first << '\n'
@@ -87,11 +89,11 @@ private:
 };
 
 
-class dumpTemplate {
+class DumpTemplate {
 public:
 	typedef TemplateManager::Templates::value_type value_type;
 
-	dumpTemplate(ostream & o) : ost(o) {}
+	DumpTemplate(ostream & o) : ost(o) {}
 
 	void operator()(value_type const & vt) {
 		Template const & et = vt.second;
@@ -122,11 +124,11 @@ private:
 	ostream & ost;
 };
 
-class dumpFormat {
+class DumpFormat {
 public:
 	typedef Template::Formats::value_type value_type;
 
-	dumpFormat(ostream & o) : ost(o) {}
+	DumpFormat(ostream & o) : ost(o) {}
 
 	void operator()(value_type const & vt) const {
 		Template::Format const & ft = vt.second;
@@ -180,19 +182,19 @@ private:
 
 void Template::dumpFormats(ostream & os) const
 {
-	for_each(formats.begin(), formats.end(), dumpFormat(os));
+	for_each(formats.begin(), formats.end(), DumpFormat(os));
 }
 
 
 void TemplateManager::dumpPreambleDefs(ostream & os) const
 {
-	for_each(preambledefs.begin(), preambledefs.end(), dumpPreambleDef(os));
+	for_each(preambledefs.begin(), preambledefs.end(), DumpPreambleDef(os));
 }
 
 
 void TemplateManager::dumpTemplates(ostream & os) const
 {
-	for_each(templates.begin(), templates.end(), dumpTemplate(os));
+	for_each(templates.begin(), templates.end(), DumpTemplate(os));
 }
 
 

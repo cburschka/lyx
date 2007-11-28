@@ -54,7 +54,6 @@
 using std::make_pair;
 using std::max;
 using std::min;
-using std::endl;
 using std::pair;
 
 namespace lyx {
@@ -1303,7 +1302,7 @@ Row const & TextMetrics::getRowNearY(int y, pit_type pit) const
 Inset * TextMetrics::editXY(Cursor & cur, int x, int y)
 {
 	if (lyxerr.debugging(Debug::WORKAREA)) {
-		lyxerr << "TextMetrics::editXY(cur, " << x << ", " << y << ")" << std::endl;
+		LYXERR0("TextMetrics::editXY(cur, " << x << ", " << y << ")");
 		cur.bv().coordCache().dump();
 	}
 	pit_type pit = getPitNearY(y);
@@ -1967,7 +1966,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	// Re-enable screen drawing for future use of the painter.
 	pi.pain.setDrawingEnabled(original_drawing_state);
 
-	//LYXERR(Debug::PAINTING) << "." << endl;
+	//LYXERR(Debug::PAINTING, ".");
 }
 
 

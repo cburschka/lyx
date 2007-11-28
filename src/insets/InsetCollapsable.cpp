@@ -35,6 +35,8 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/docstream.h"
+
 
 namespace lyx {
 
@@ -154,8 +156,7 @@ void InsetCollapsable::read(Buffer const & buf, Lexer & lex)
 				lex.pushToken(token);
 			}
 		} else {
-			lyxerr << "InsetCollapsable::read: Missing 'status'-tag!"
-				   << endl;
+			LYXERR0("InsetCollapsable::read: Missing 'status'-tag!");
 			// take countermeasures
 			lex.pushToken(token);
 		}

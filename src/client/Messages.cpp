@@ -16,6 +16,7 @@
 #include "support/unicode.h"
 
 #include <cerrno>
+#include <ostream>
 
 
 namespace lyx {

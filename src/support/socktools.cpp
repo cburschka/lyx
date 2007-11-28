@@ -81,7 +81,7 @@ int listen(FileName const & name, int queue)
 	string::size_type len = localname.size();
 	// the field sun_path in sockaddr_un is a char[108]
 	if (len > 107) {
-		LYXERR(Debug::ANY, "lyx: Socket address '" << name.absFilename() << "' too long.");
+		LYXERR0("lyx: Socket address '" << name.absFilename() << "' too long.");
 		return -1;
 	}
 	// Synonims for AF_UNIX are AF_LOCAL and AF_FILE
@@ -94,14 +94,14 @@ int listen(FileName const & name, int queue)
 	// For local sockets, the protocol is always 0
 	// socket() returns -1 in case of error
 	if ((fd = ::socket(PF_UNIX, SOCK_STREAM, 0))== -1) {
-		LYXERR(Debug::ANY, "lyx: Could not create socket descriptor: "
+		LYXERR0("lyx: Could not create socket descriptor: "
 		       << strerror(errno));
 		return -1;
 	}
 
 	// Set NONBLOCK mode for the file descriptor
 	if (::fcntl(fd, F_SETFL, O_NONBLOCK) == -1) {
-		LYXERR(Debug::ANY, "lyx: Could not set NONBLOCK mode for socket descriptor: "
+		LYXERR0("lyx: Could not set NONBLOCK mode for socket descriptor: "
 		     << strerror(errno));
 		::close(fd);
 		return -1;
@@ -111,7 +111,7 @@ int listen(FileName const & name, int queue)
 	// the socket special file in the filesystem. bind() returns -1
 	// in case of error
 	if ((::bind (fd, reinterpret_cast<sockaddr *>(&addr), SUN_LEN(&addr))) == -1) {
-		LYXERR(Debug::ANY, "lyx: Could not bind address '" << name.absFilename()
+		LYXERR0("lyx: Could not bind address '" << name.absFilename()
 		       << "' to socket descriptor: " << strerror(errno));
 		::close(fd);
 		name.removeFile();
@@ -124,7 +124,7 @@ int listen(FileName const & name, int queue)
 	// It is not a restriction on the number of connections the socket
 	// can accept. Returns -1 in case of error
 	if (::listen (fd, queue) == -1) {
-		LYXERR(Debug::ANY, "lyx: Could not put socket in 'listen' state: "
+		LYXERR0("lyx: Could not put socket in 'listen' state: "
 		       << strerror(errno));
 		::close(fd);
 		name.removeFile();
@@ -144,14 +144,14 @@ int accept(int sd)
 	// Using null pointers for the second and third arguments
 	// dismiss all information about the connecting client
 	if ((fd = accept(sd, reinterpret_cast<sockaddr *>(0), reinterpret_cast<socklen_t *>(0))) == -1) {
-		LYXERR(Debug::ANY, "lyx: Could not accept connection: "
+		LYXERR0("lyx: Could not accept connection: "
 		       << strerror(errno));
 		return -1;
 	}
 
 	// Sets NONBLOCK mode for the file descriptor
 	if (::fcntl(fd, F_SETFL, O_NONBLOCK) == -1) {
-		LYXERR(Debug::ANY, "lyx: Could not set NONBLOCK mode for connection: "
+		LYXERR0("lyx: Could not set NONBLOCK mode for connection: "
 		       << strerror(errno));
 		::close(fd);
 		return -1;

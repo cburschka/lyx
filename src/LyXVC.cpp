@@ -35,9 +35,7 @@ using support::FileName;
 using support::makeAbsPath;
 using support::tempName;
 
-using std::endl;
 using std::string;
-using std::pair;
 
 namespace Alert = frontend::Alert;
 

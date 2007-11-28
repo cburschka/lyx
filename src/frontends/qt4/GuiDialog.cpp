@@ -169,7 +169,7 @@ void GuiDialog::showData(string const & data)
 		return;
 
 	if (!initialiseParams(data)) {
-		LYXERR(Debug::ANY, "Dialog \"" << name()
+		LYXERR0("Dialog \"" << name()
 			<< "\" failed to translate the data string passed to show()");
 		return;
 	}
@@ -187,7 +187,7 @@ void GuiDialog::updateData(string const & data)
 		return;
 
 	if (!initialiseParams(data)) {
-		LYXERR(Debug::ANY, "Dialog \"" << name()
+		LYXERR0("Dialog \"" << name()
 		       << "\" could not be initialized");
 		return;
 	}

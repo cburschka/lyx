@@ -27,7 +27,6 @@ namespace lyx {
 using support::compare_ascii_no_case;
 using support::getVectorFromString;
 
-using std::endl;
 using std::make_pair;
 using std::string;
 using std::vector;
@@ -36,10 +35,10 @@ using std::find_if;
 
 namespace {
 
-class ToolbarNamesEqual : public std::unary_function<ToolbarInfo, bool> {
+class ToolbarNamesEqual
+{
 public:
-	ToolbarNamesEqual(string const & name)
-		: name_(name) {}
+	ToolbarNamesEqual(string const & name) : name_(name) {}
 	bool operator()(ToolbarInfo const & tbinfo) const
 	{
 		return tbinfo.name == name_;
@@ -104,8 +103,8 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbar")) {
-		lyxerr << "ToolbarInfo::read: ERROR wrong token:`"
-		       << lex.getString() << '\'' << endl;
+		LYXERR0("ToolbarInfo::read: ERROR wrong token:`"
+		       << lex.getString() << '\'');
 	}
 
 	lex.next(true);
@@ -116,8 +115,8 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 	// FIXME what to do here?
 	if (!lex) {
-		lyxerr << "ToolbarInfo::read: Malformed toolbar "
-			"description " <<  lex.getString() << endl;
+		LYXERR0("ToolbarInfo::read: Malformed toolbar "
+			"description " <<  lex.getString());
 		return *this;
 	}
 
@@ -223,8 +222,8 @@ void ToolbarBackend::readToolbars(Lexer & lex)
 
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbarset")) {
-		lyxerr << "ToolbarBackend::readToolbars: ERROR wrong token:`"
-		       << lex.getString() << '\'' << endl;
+		LYXERR0("ToolbarBackend::readToolbars: ERROR wrong token:`"
+		       << lex.getString() << '\'');
 	}
 
 	lex.pushTable(toolTags, TO_LAST - 1);
@@ -259,8 +258,8 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 {
 	//consistency check
 	if (compare_ascii_no_case(lex.getString(), "toolbars")) {
-		lyxerr << "ToolbarBackend::readToolbarSettings: ERROR wrong token:`"
-		       << lex.getString() << '\'' << endl;
+		LYXERR0("ToolbarBackend::readToolbarSettings: ERROR wrong token:`"
+		       << lex.getString() << '\'');
 	}
 
 	lex.next(true);
@@ -280,8 +279,7 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 		}
 
 		if (tcit == tend) {
-			lyxerr << "ToolbarBackend: undefined toolbar "
-				<< name << endl;
+			LYXERR0("ToolbarBackend: undefined toolbar " << name);
 			return;
 		}
 
@@ -314,8 +312,9 @@ void ToolbarBackend::readToolbarSettings(Lexer & lex)
 			else if (!compare_ascii_no_case(*cit, "right"))
 				flag = ToolbarInfo::RIGHT;
 			else {
-				lyxerr << "ToolbarBackend::readToolbarSettings: unrecognised token:`"
-				       << *cit << '\'' << endl;
+				LYXERR(Debug::ANY,
+					"ToolbarBackend::readToolbarSettings: unrecognised token:`"
+					<< *cit << '\'');
 			}
 			tcit->flags = static_cast<ToolbarInfo::Flags>(tcit->flags | flag);
 		}

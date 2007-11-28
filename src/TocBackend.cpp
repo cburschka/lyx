@@ -28,6 +28,7 @@
 #include "insets/InsetOptArg.h"
 
 #include "support/convert.h"
+#include "support/docstring.h"
 
 using std::string;
 
@@ -97,8 +98,7 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 	if (toc("tableofcontents").empty()) {
 		// FIXME: should not happen, 
 		// a call to TocBackend::update() is missing somewhere
-		lyxerr << "TocBackend::updateItem called but the TOC is empty!"
-			<< std::endl;
+		LYXERR0("TocBackend::updateItem called but the TOC is empty!");
 		return;
 	}
 
@@ -234,7 +234,7 @@ void TocBackend::writePlaintextTocList(string const & type, odocstream & os) con
 		TocIterator ccit = cit->second.begin();
 		TocIterator end = cit->second.end();
 		for (; ccit != end; ++ccit)
-			os << ccit->asString() << '\n';
+			os << ccit->asString() << from_utf8("\n");
 	}
 }
 

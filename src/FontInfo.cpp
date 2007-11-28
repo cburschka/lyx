@@ -18,15 +18,9 @@
 
 #include "debug.h"
 
-using std::endl;
-using std::ostream;
-using std::ostringstream;
-using std::istringstream;
-using std::pair;
+#include <ostream>
 
-#ifndef CXX_GLOBAL_CSTD
-using std::strlen;
-#endif
+using std::endl;
 
 
 namespace lyx {

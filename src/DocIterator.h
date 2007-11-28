@@ -19,9 +19,10 @@
 
 namespace lyx {
 
-class Text;
+class LyXErr;
 class MathAtom;
 class Paragraph;
+class Text;
 
 
 // The public inheritance should go in favour of a suitable data member
@@ -183,6 +184,7 @@ public:
 	/// output
 	friend std::ostream &
 	operator<<(std::ostream & os, DocIterator const & cur);
+	friend LyXErr & operator<<(LyXErr & os, DocIterator const & it);
 	///
 	friend bool operator==(DocIterator const &, DocIterator const &);
 	friend bool operator<(DocIterator const &, DocIterator const &);
@@ -248,15 +250,13 @@ DocIterator doc_iterator_begin(Inset & inset);
 DocIterator doc_iterator_end(Inset & inset);
 
 
-inline
-bool operator==(DocIterator const & di1, DocIterator const & di2)
+inline bool operator==(DocIterator const & di1, DocIterator const & di2)
 {
 	return di1.slices_ == di2.slices_;
 }
 
 
-inline
-bool operator!=(DocIterator const & di1, DocIterator const & di2)
+inline bool operator!=(DocIterator const & di1, DocIterator const & di2)
 {
 	return !(di1 == di2);
 }

@@ -20,6 +20,7 @@
 #include "support/lstrings.h"
 
 #include <algorithm>
+#include <ostream>
 	
 using std::endl;
 using std::map;

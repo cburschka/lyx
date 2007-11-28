@@ -527,7 +527,7 @@ int p(vector<docstring> const & arg)
 int main(int argc, char * argv[])
 {
 	using namespace lyx;
-	lyxerr.rdbuf(cerr.rdbuf());
+	lyxerr.setStream(cerr);
 
 	char const * const lyxsocket = getenv("LYXSOCKET");
 	if (lyxsocket)

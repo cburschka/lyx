@@ -26,7 +26,7 @@
 
 #include <boost/assert.hpp>
 
-using std::endl;
+#include <ostream>
 
 
 namespace lyx {
@@ -180,8 +180,8 @@ bool operator!=(CursorSlice const & p, CursorSlice const & q)
 bool operator<(CursorSlice const & p, CursorSlice const & q)
 {
 	if (&p.inset() != &q.inset()) {
-		lyxerr << "can't compare cursor and anchor in different insets\n"
-		       << "p: " << p << '\n' << "q: " << q << endl;
+		LYXERR0("can't compare cursor and anchor in different insets\n"
+		       << "p: " << p << '\n' << "q: " << q);
 		BOOST_ASSERT(false);
 	}
 	if (p.idx() != q.idx())
@@ -207,7 +207,7 @@ bool operator<=(CursorSlice const & p, CursorSlice const & q)
 std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 {
 	return os
-	   << "inset: " << &item.inset()
+	   << "inset: " << (void *)&item.inset()
 //	   << " text: " << item.text()
 	   << " idx: " << item.idx()
 	   << " par: " << item.pit()

@@ -439,8 +439,6 @@ enum kb_action {
 	LFUN_LASTACTION                  // end of the table
 };
 
-std::ostream & operator<<(std::ostream &, kb_action);
-
 
 } // namespace lyx
 

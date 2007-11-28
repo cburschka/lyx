@@ -28,14 +28,14 @@
 
 #include "support/lstrings.h"
 
+#include <ostream>
+
 
 namespace lyx {
 
 using support::bformat;
 
-using std::endl;
 using std::string;
-using std::ostream;
 
 
 InsetFloatList::InsetFloatList()
@@ -60,7 +60,8 @@ CommandInfo const * InsetFloatList::findInfo(std::string const & /* cmdName */)
 
 
 //HACK
-bool InsetFloatList::isCompatibleCommand(std::string const & s) {
+bool InsetFloatList::isCompatibleCommand(std::string const & s)
+{
 	std::string str = s.substr(0, 6);
 	return str == "listof";
 }
@@ -77,7 +78,7 @@ docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
 }
 
 
-void InsetFloatList::write(Buffer const &, ostream & os) const
+void InsetFloatList::write(Buffer const &, std::ostream & os) const
 {
 	os << "FloatList " << to_ascii(getParam("type")) << "\n";
 }

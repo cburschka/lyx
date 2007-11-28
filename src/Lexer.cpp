@@ -260,8 +260,8 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for
 		// a fresh new filebuf.  (JMarc)
 		if (gz_.is_open() || istream::off_type(is.tellg()) > -1)
-			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
-				"file or stream already set." << endl;
+			LYXERR(Debug::LYXLEX, "Error in LyXLex::setFile: "
+				"file or stream already set.");
 		gz_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&gz_);
 		name = filename.absFilename();

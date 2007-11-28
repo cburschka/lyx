@@ -23,12 +23,13 @@
 
 #include <boost/assert.hpp>
 
+#include <ostream>
+
 
 namespace lyx {
 
 using std::string;
 using std::max;
-using std::endl;
 
 InsetMathScript::InsetMathScript()
 	: InsetMathNest(1), cell_1_is_up_(false), limits_(0)
@@ -440,16 +441,16 @@ bool InsetMathScript::has(bool up) const
 
 bool InsetMathScript::hasUp() const
 {
-	//lyxerr << "1up: " << bool(cell_1_is_up_) << endl;
-	//lyxerr << "hasUp: " << bool(idxOfScript(true)) << endl;
+	//lyxerr << "1up: " << bool(cell_1_is_up_));
+	//lyxerr << "hasUp: " << bool(idxOfScript(true)));
 	return idxOfScript(true);
 }
 
 
 bool InsetMathScript::hasDown() const
 {
-	//lyxerr << "1up: " << bool(cell_1_is_up_) << endl;
-	//lyxerr << "hasDown: " << bool(idxOfScript(false)) << endl;
+	//LYXERR0("1up: " << bool(cell_1_is_up_));
+	//LYXERR0("hasDown: " << bool(idxOfScript(false)));
 	return idxOfScript(false);
 }
 
@@ -656,7 +657,7 @@ void InsetMathScript::infoize(odocstream & os) const
 void InsetMathScript::infoize2(odocstream & os) const
 {
 	if (limits_)
-		os << (limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
+		os << from_ascii(limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
 }
 
 
@@ -664,7 +665,7 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 {
 	InsetMathNest::notifyCursorLeaves(cur);
 
-	//lyxerr << "InsetMathScript::notifyCursorLeaves: 1 " << cur << endl;
+	//LYXERR0("InsetMathScript::notifyCursorLeaves: 1 " << cur);
 
 	// remove empty scripts if possible
 	if (nargs() > 2) {
@@ -697,14 +698,14 @@ bool InsetMathScript::notifyCursorLeaves(Cursor & cur)
 		return true;
 	}
 
-	//lyxerr << "InsetMathScript::notifyCursorLeaves: 2 " << cur << endl;
+	//LYXERR0("InsetMathScript::notifyCursorLeaves: 2 " << cur);
 	return false;
 }
 
 
 void InsetMathScript::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "InsetMathScript: request: " << cmd << std::endl;
+	//LYXERR("InsetMathScript: request: " << cmd);
 
 	if (cmd.action == LFUN_MATH_LIMITS) {
 		if (!cmd.argument().empty()) {

@@ -35,8 +35,8 @@ Point::Point(int x, int y)
 // just a helper to be able to set a breakpoint
 void lyxbreaker(void const * data, const char * hint, int size)
 {
-	lyxerr << "break on pointer: " << data << " hint: " << hint
-		<< " size: " << size << std::endl;
+	LYXERR0("break on pointer: " << data << " hint: " << hint
+		<< " size: " << size);
 	BOOST_ASSERT(false);
 }
 
@@ -50,12 +50,12 @@ void CoordCache::clear()
 
 void CoordCache::dump() const
 {
-	lyxerr << "InsetCache contains:" << std::endl;
+	LYXERR0("InsetCache contains:");
 	for (CoordCacheBase<Inset>::cache_type::const_iterator it = getInsets().getData().begin(); it != getInsets().getData().end(); ++it) {
 		Inset const * inset = it->first;
 		Point const p = it->second.pos;
-		lyxerr << "Inset " << inset << "(" << to_utf8(inset->name())
-			<< ") has point " << p.x_ << "," << p.y_ << std::endl;
+		LYXERR0("Inset " << inset << "(" << to_utf8(inset->name())
+			<< ") has point " << p.x_ << "," << p.y_);
 	}
 }
 

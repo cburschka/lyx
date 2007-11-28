@@ -30,7 +30,6 @@ liblyxsupport_la_SOURCES = \
 	copy.cpp \
 	copied_ptr.h \
 	cow_ptr.h \
-	debugstream.h \
 	docstream.cpp \
 	docstream.h \
 	docstring.cpp \

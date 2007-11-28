@@ -28,12 +28,12 @@
 
 #include "insets/InsetCommand.h"
 
-
-namespace lyx {
+#include <ostream>
 
 using std::string;
-using std::endl;
 
+
+namespace lyx {
 
 InsetMathRef::InsetMathRef()
 	: CommandInset(from_ascii("ref"))
@@ -79,7 +79,7 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
-			lyxerr << "trying to goto ref '" << to_utf8(asString(cell(0))) << "'" << endl;
+			LYXERR0("trying to goto ref '" << to_utf8(asString(cell(0))) << "'");
 			cur.bv().dispatch(FuncRequest(LFUN_LABEL_GOTO, asString(cell(0))));
 			break;
 		}

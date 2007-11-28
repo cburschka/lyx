@@ -28,6 +28,8 @@
 #include "support/lstrings.h"
 #include "support/Translator.h"
 
+#include <ostream>
+
 
 namespace lyx {
 
@@ -55,14 +57,12 @@ InsetGraphicsParams::InsetGraphicsParams(InsetGraphicsParams const & igp)
 }
 
 
-InsetGraphicsParams &
-InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
+void InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
 {
 	// Are we assigning the object into itself?
 	if (this == &params)
-		return *this;
+		return;
 	copy(params);
-	return *this;
 }
 
 

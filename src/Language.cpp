@@ -21,6 +21,8 @@
 
 #include "support/FileName.h"
 
+#include <ostream>
+
 using std::endl;
 using std::string;
 

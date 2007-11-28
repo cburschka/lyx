@@ -40,7 +40,6 @@
 #include <boost/current_function.hpp>
 
 #include <map>
-#include <typeinfo>
 
 
 namespace lyx {
@@ -108,11 +107,11 @@ static TranslatorMap const build_translator()
 		InsetName("newpage", NEWPAGE_CODE),
 	};
 
-	std::size_t const insetnames_size =
+	size_t const insetnames_size =
 		sizeof(insetnames) / sizeof(insetnames[0]);
 
 	std::map<std::string, InsetCode> data;
-	for (std::size_t i = 0; i != insetnames_size; ++i) {
+	for (size_t i = 0; i != insetnames_size; ++i) {
 		InsetName const & var = insetnames[i];
 		data[var.name] = var.code;
 	}
@@ -219,11 +218,9 @@ Inset * Inset::editXY(Cursor &, int x, int y)
 Inset::idx_type Inset::index(row_type row, col_type col) const
 {
 	if (row != 0)
-		lyxerr << BOOST_CURRENT_FUNCTION
-		       << ": illegal row: " << row << std::endl;
+		LYXERR0(BOOST_CURRENT_FUNCTION << ": illegal row: " << row);
 	if (col != 0)
-		lyxerr << BOOST_CURRENT_FUNCTION
-		       << ": illegal col: " << col << std::endl;
+		LYXERR0(BOOST_CURRENT_FUNCTION << ": illegal col: " << col);
 	return 0;
 }
 
@@ -274,7 +271,7 @@ docstring const Inset::editMessage() const
 void Inset::cursorPos(BufferView const & /*bv*/, CursorSlice const &,
 		bool, int & x, int & y) const
 {
-	lyxerr << "Inset::cursorPos called directly" << std::endl;
+	LYXERR0("Inset::cursorPos called directly");
 	x = 100;
 	y = 100;
 }
@@ -374,7 +371,7 @@ ColorCode Inset::backgroundColor() const
 
 void Inset::setPosCache(PainterInfo const & pi, int x, int y) const
 {
-	//lyxerr << "Inset:: position cache to " << x << " " << y << std::endl;
+	//LYXERR("Inset: set position cache to " << x << " " << y);
 	pi.base.bv->coordCache().insets().add(this, x, y);
 }
 

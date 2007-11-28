@@ -21,6 +21,7 @@
 #include "frontends/Painter.h"
 
 #include "support/docstring.h"
+#include "support/docstream.h"
 
 
 namespace lyx {

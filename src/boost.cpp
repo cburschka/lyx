@@ -17,6 +17,7 @@
 #include <boost/assert.hpp>
 
 #include <exception>
+#include <iomanip>
 
 using std::endl;
 using lyx::lyxerr;
@@ -27,8 +28,7 @@ namespace boost {
 #ifndef BOOST_NO_EXCEPTIONS
 void throw_exception(std::exception const & e)
 {
-	lyxerr << "Exception caught:\n"
-	    << e.what() << endl;
+	lyxerr << "Exception caught:\n" << e.what() << endl;
 	BOOST_ASSERT(false);
 }
 #endif

@@ -19,10 +19,8 @@
 
 #include "support/docstring.h"
 
+
 namespace lyx {
-
-using std::endl;
-
 
 InsetMathExInt::InsetMathExInt(docstring const & name)
 	: InsetMathNest(4), symbol_(name)
@@ -63,13 +61,13 @@ void InsetMathExInt::normalize(NormalStream & os) const
 
 void InsetMathExInt::metrics(MetricsInfo &, Dimension &) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 
 void InsetMathExInt::draw(PainterInfo &, int, int) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 
@@ -139,7 +137,7 @@ void InsetMathExInt::mathmlize(MathStream & os) const
 
 void InsetMathExInt::write(WriteStream &) const
 {
-	lyxerr << "should not happen" << endl;
+	LYXERR0("should not happen");
 }
 
 

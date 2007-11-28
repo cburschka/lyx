@@ -28,6 +28,7 @@
 
 #include "frontends/Painter.h"
 
+#include <ostream>
 #include <vector>
 
 namespace lyx {
@@ -359,7 +360,7 @@ void MathMacro::setDisplayMode(MathMacro::DisplayMode mode)
 }
 
 
-MathMacro::DisplayMode MathMacro::computeDisplayMode(MetricsInfo const & mi) const
+MathMacro::DisplayMode MathMacro::computeDisplayMode(MetricsInfo const &) const
 {
 	if (nextFoldMode_ == true && macro_ && !macro_->locked())
 		return DISPLAY_NORMAL;

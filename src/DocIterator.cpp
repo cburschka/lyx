@@ -25,9 +25,8 @@
 #include "insets/InsetTabular.h"
 
 #include <boost/assert.hpp>
-#include <boost/current_function.hpp>
 
-using std::endl;
+#include <ostream>
 
 
 namespace lyx {
@@ -59,13 +58,20 @@ DocIterator doc_iterator_end(Inset & inset)
 }
 
 
+LyXErr & operator<<(LyXErr & os, DocIterator const & it)
+{
+	os.stream() << it;
+	return os;
+}
+
+
 Inset * DocIterator::nextInset() const
 {
 	BOOST_ASSERT(!empty());
 	if (pos() == lastpos())
 		return 0;
 	if (pos() > lastpos()) {
-		lyxerr << "Should not happen, but it does. " << endl;
+		LYXERR0("Should not happen, but it does. ");
 		return 0;
 	}
 	if (inMathed())
@@ -131,7 +137,7 @@ Text * DocIterator::text() const
 Paragraph & DocIterator::paragraph() const
 {
 	if (!inTexted())
-		lyxerr << *this << endl;
+		LYXERR0(*this);
 	BOOST_ASSERT(inTexted());
 	return top().paragraph();
 }
@@ -566,11 +572,11 @@ DocIterator StableDocIterator::asDocIterator(Inset * inset) const
 	for (size_t i = 0, n = data_.size(); i != n; ++i) {
 		if (inset == 0) {
 			// FIXME
-			lyxerr << BOOST_CURRENT_FUNCTION
-			       << " Should not happen, but does e.g. after C-n C-l C-z S-C-z\n"
-				   << " or when a Buffer has been concurently edited by two views"
+			LYXERR0(" Should not happen, but does e.g. after "
+				"C-n C-l C-z S-C-z\n"
+				<< " or when a Buffer has been concurrently edited by two views"
 				<< '\n' << "dit: " << dit << '\n'
-				<< " lastpos: " << dit.lastpos() << endl;
+				<< " lastpos: " << dit.lastpos());
 			dit.fixIfBroken();
 			break;
 		}

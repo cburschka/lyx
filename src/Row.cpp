@@ -80,11 +80,10 @@ void Row::setSelection(pos_type beg, pos_type end)
 
 void Row::dump(char const * s) const
 {
-	lyxerr << s << " pos: " << pos_ << " end: " << end_
+	LYXERR0(s << " pos: " << pos_ << " end: " << end_
 		<< " width: " << dim_.wid
 		<< " ascent: " << dim_.asc
-		<< " descent: " << dim_.des
-		<< std::endl;
+		<< " descent: " << dim_.des);
 }
 
 

@@ -31,6 +31,7 @@
 #include <boost/bind.hpp>
 
 #include <cerrno>
+#include <ostream>
 
 #if defined (_WIN32)
 # include <io.h>
@@ -38,7 +39,6 @@
 
 using boost::shared_ptr;
 
-using std::auto_ptr;
 using std::endl;
 using std::string;
 
@@ -129,7 +129,7 @@ void ServerSocket::dataCallback(int fd)
 	shared_ptr<LyXDataSocket> client = clients[fd];
 
 	string line;
-	string::size_type pos;
+	size_t pos;
 	bool saidbye = false;
 	while (!saidbye && client->readln(line)) {
 		// The protocol must be programmed here
@@ -248,7 +248,7 @@ bool LyXDataSocket::readln(string & line)
 	}
 
 	// Cut a line from buffer
-	string::size_type pos = buffer_.find('\n');
+	size_t pos = buffer_.find('\n');
 	if (pos == string::npos) {
 		LYXERR(Debug::LYXSERVER, "lyx: Data socket " << fd_
 					 << ": line not completed.");

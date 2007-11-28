@@ -105,10 +105,8 @@ lyx::Converter const * setConverter()
 	static bool first = true;
 	if (first) {
 		first = false;
-		lyx::lyxerr << "PreviewLoader::startLoading()\n"
-		       << "No converter from \"lyxpreview\" format has been "
-			"defined."
-		       << endl;
+		LYXERR0("PreviewLoader::startLoading()\n"
+		  << "No converter from \"lyxpreview\" format has been defined.");
 	}
 	return 0;
 }
@@ -125,9 +123,8 @@ void setAscentFractions(vector<double> & ascent_fractions,
 
 	ifstream in(metrics_file.toFilesystemEncoding().c_str());
 	if (!in.good()) {
-		lyx::lyxerr[lyx::Debug::GRAPHICS]
-			<< "setAscentFractions(" << metrics_file << ")\n"
-			<< "Unable to open file!" << endl;
+		LYXERR(lyx::Debug::GRAPHICS, "setAscentFractions(" << metrics_file << ")\n"
+			<< "Unable to open file!");
 		return;
 	}
 
@@ -160,20 +157,17 @@ void setAscentFractions(vector<double> & ascent_fractions,
 	}
 
 	if (error) {
-		lyx::lyxerr[lyx::Debug::GRAPHICS]
-			<< "setAscentFractions(" << metrics_file << ")\n"
-			<< "Error reading file!\n" << endl;
+		LYXERR(lyx::Debug::GRAPHICS, "setAscentFractions(" << metrics_file << ")\n"
+			<< "Error reading file!\n");
 	}
 }
 
 
-class FindFirst : public std::unary_function<SnippetPair, bool> {
+class FindFirst
+{
 public:
 	FindFirst(string const & comp) : comp_(comp) {}
-	bool operator()(SnippetPair const & sp) const
-	{
-		return sp.first == comp_;
-	}
+	bool operator()(SnippetPair const & sp) const { return sp.first == comp_; }
 private:
 	string const comp_;
 };

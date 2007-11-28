@@ -16,6 +16,7 @@
 
 #include "support/convert.h"
 #include "support/lstrings.h"
+#include "support/FileName.h"
 
 #include <iostream>
 #include <iomanip>
@@ -34,7 +35,7 @@ using support::isStrInt;
 namespace {
 
 struct ErrorItem {
-	Debug::type level;
+	Debug::Type level;
 	char const * name;
 	char const * desc;
 };
@@ -77,18 +78,18 @@ int const numErrorTags = sizeof(errorTags)/sizeof(errorTags[0]);
 } // namespace anon
 
 
-Debug::type Debug::value(string const & val)
+Debug::Type Debug::value(string const & val)
 {
-	type l = Debug::NONE;
+	Type l = Debug::NONE;
 	string v = val;
 	while (!v.empty()) {
 		size_t const st = v.find(',');
-		string const tmp(ascii_lowercase(v.substr(0, st)));
+		string const tmp = ascii_lowercase(v.substr(0, st));
 		if (tmp.empty())
 			break;
 		// Is it a number?
 		if (isStrInt(tmp))
-			l |= static_cast<type>(convert<int>(tmp));
+			l |= static_cast<Type>(convert<int>(tmp));
 		else
 		// Search for an explicit name
 		for (int i = 0 ; i < numErrorTags ; ++i)
@@ -96,14 +97,15 @@ Debug::type Debug::value(string const & val)
 				l |= errorTags[i].level;
 				break;
 			}
-		if (st == string::npos) break;
+		if (st == string::npos)
+		break;
 		v.erase(0, st + 1);
 	}
 	return l;
 }
 
 
-void Debug::showLevel(ostream & os, Debug::type level)
+void Debug::showLevel(ostream & os, Debug::Type level)
 {
 	// Show what features are traced
 	for (int i = 0; i != numErrorTags; ++i) {
@@ -131,6 +133,59 @@ void Debug::showTags(ostream & os)
 }
 
 
+void LyXErr::disable()
+{
+	enabled_ = false;
+}
+
+
+void LyXErr::enable()
+{
+	enabled_ = true;
+}
+
+
+bool LyXErr::debugging(Debug::Type t) const
+{
+	return (dt & t);
+}
+
+
+void LyXErr::endl()
+{
+	stream() << std::endl;
+}
+
+
+LyXErr & operator<<(LyXErr & l, void const * t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, char const * t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, char t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, int t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, unsigned int t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, long t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, unsigned long t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, double t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, std::string const & t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, docstring const & t)
+{ l.stream() << to_utf8(t); return l; }
+LyXErr & operator<<(LyXErr & l, support::FileName const & t)
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, std::ostream &(*t)(std::ostream &))
+{ l.stream() << t; return l; }
+LyXErr & operator<<(LyXErr & l, std::ios_base &(*t)(std::ios_base &))
+{ l.stream() << t; return l; }
+
+
+// The global instance
 LyXErr lyxerr;
 
 

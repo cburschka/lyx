@@ -21,6 +21,7 @@
 #include "LaTeXFeatures.h"
 
 #include "support/lstrings.h"
+#include "support/docstream.h"
 
 #include <algorithm>
 
@@ -36,7 +37,6 @@ using support::rtrim;
 using support::split;
 using support::tokenPos;
 
-using std::endl;
 using std::string;
 using std::vector;
 
@@ -477,9 +477,9 @@ static docstring const cleanupWhitespace(docstring const & citelist)
 int InsetCitation::docbook(Buffer const &, odocstream & os,
 			   OutputParams const &) const
 {
-	os << "<citation>"
+	os << from_ascii("<citation>")
 	   << cleanupWhitespace(getParam("key"))
-	   << "</citation>";
+	   << from_ascii("</citation>");
 	return 0;
 }
 

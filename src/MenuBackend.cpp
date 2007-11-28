@@ -46,6 +46,7 @@
 #include <boost/bind.hpp>
 
 #include <algorithm>
+#include <ostream>
 
 
 namespace lyx {

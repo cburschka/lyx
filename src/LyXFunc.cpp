@@ -948,7 +948,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					if (!b->isClean()) {
 						if (!b->isUnnamed()) {
 							b->menuWrite();
-							lyxerr[Debug::ACTION] << "Saved " << b->absFileName() << endl;
+							LYXERR(Debug::ACTION, "Saved " << b->absFileName());
 						} else
 							b->writeAs();
 					}

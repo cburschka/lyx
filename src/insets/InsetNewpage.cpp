@@ -23,12 +23,10 @@
 #include "frontends/Painter.h"
 
 #include "support/docstring.h"
+#include "support/docstream.h"
 
 
 namespace lyx {
-
-using frontend::Painter;
-
 
 void InsetNewpage::read(Buffer const &, Lexer &)
 {
@@ -54,6 +52,8 @@ void InsetNewpage::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetNewpage::draw(PainterInfo & pi, int x, int y) const
 {
+	using frontend::Painter;
+
 	FontInfo font;
 	font.setColor(ColorName());
 	font.decSize();

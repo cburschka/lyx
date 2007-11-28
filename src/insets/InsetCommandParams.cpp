@@ -33,18 +33,16 @@
 
 #include "support/ExceptionMessage.h"
 #include "support/lstrings.h"
+#include "support/docstream.h"
 
 #include <boost/assert.hpp>
+
+using std::string;
 
 
 namespace lyx {
 
 using support::findToken;
-
-using std::string;
-using std::endl;
-using std::ostream;
-
 using support::ExceptionMessage;
 using support::WarningException;
 
@@ -180,8 +178,8 @@ bool InsetCommandParams::isCompatibleCommand(
 void InsetCommandParams::setCmdName(string const & name)
 {
 	if (!isCompatibleCommand(insetCode_, cmdName_)){
-		lyxerr << "InsetCommand: Incompatible command name " << 
-				name << "." << std::endl;
+		LYXERR0("InsetCommand: Incompatible command name " << 
+				name << ".");
 		throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
 		                       from_utf8("Incompatible command name."));
 	}
@@ -189,8 +187,8 @@ void InsetCommandParams::setCmdName(string const & name)
 	cmdName_ = name;
 	CommandInfo const * const info = findInfo(insetCode_, cmdName_);
 	if (!info) {
-		lyxerr << "Command '" << name << "' is not compatible with a '" <<
-			insetType() << "' inset." << std::endl;
+		LYXERR0("Command '" << name << "' is not compatible with a '" <<
+			insetType() << "' inset.");
 		return;
 	}
 	ParamVector params(info->n);
@@ -274,7 +272,7 @@ void InsetCommandParams::read(Lexer & lex)
 }
 
 
-void InsetCommandParams::write(ostream & os) const
+void InsetCommandParams::write(std::ostream & os) const
 {
 	os << "CommandInset " << insetType() << '\n';
 	os << "LatexCommand " << cmdName_ << '\n';
