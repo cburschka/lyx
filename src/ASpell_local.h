@@ -16,7 +16,7 @@
 #include "SpellBase.h"
 
 #include <map>
-
+#include <string>
 
 struct AspellSpeller;
 struct AspellStringEnumeration;
