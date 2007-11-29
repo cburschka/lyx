@@ -10,10 +10,10 @@
 
 #include <config.h>
 
-// Needed to prevent the definition of the unnamed_Path macro
+// Needed to prevent the definition of the unnamed_PathChanger macro
 // in the header file.
 
-#define PATH_C
+#define PATHCHANGER_C
 
 #include "support/Path.h"
 #include "support/lyxlib.h"

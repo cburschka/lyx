@@ -53,14 +53,12 @@ private:
 };
 
 // To avoid the wrong usage:
-// Path("/tmp");   // wrong
-// Path p("/tmp");  // right
+// PathChanger("/tmp");   // wrong
+// PathChanger p("/tmp");  // right
 // we add this macro:
-///
-// With boost 1.34 this is not usable anymore
-//#ifndef PATH_C
-//#define Path(x) unnamed_Path;
-//#endif
+#ifndef PATHCHANGER_C
+#define PathChanger(x) unnamed_PathChanger;
+#endif
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
 } // namespace support
