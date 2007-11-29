@@ -96,7 +96,8 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 {
 	if (change.type != Change::UNCHANGED) {
 		LYXERR(Debug::CHANGES, "setting change (type: " << change.type
-			<< ", author: " << change.author << ", time: " << change.changetime
+			<< ", author: " << change.author 
+			<< ", time: " << long(change.changetime)
 			<< ") in range (" << start << ", " << end << ")");
 	}
 

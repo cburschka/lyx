@@ -69,7 +69,7 @@ public:
 		cache_name = FileName(addName(cache_dir.absFilename(), os.str()));
 		LYXERR(Debug::FILES, "Add file cache item " << orig_from
 				     << ' ' << to_format << ' ' << cache_name
-				     << ' ' << timestamp << ' ' << checksum << '.');
+				     << ' ' << long(timestamp) << ' ' << checksum << '.');
 	}
 	~CacheItem() {}
 	FileName cache_name;
