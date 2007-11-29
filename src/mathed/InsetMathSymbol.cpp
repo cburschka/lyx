@@ -11,16 +11,16 @@
 #include <config.h>
 
 #include "InsetMathSymbol.h"
+
 #include "Dimension.h"
-#include "MathStream.h"
+#include "LaTeXFeatures.h"
+#include "MathAtom.h"
+#include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "MathParser.h"
-#include "MathAtom.h"
-#include "LaTeXFeatures.h"
 
 #include "support/debug.h"
-
+#include "support/docstream.h"
 #include "support/textutils.h"
 
 
