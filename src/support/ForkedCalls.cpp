@@ -34,6 +34,7 @@
 # define SIGKILL 9
 # include <windows.h>
 # include <process.h>
+# undef max
 #else
 # include <csignal>
 # include <cstdlib>
@@ -72,11 +73,10 @@ public:
 	//
 	static void killItDead(int secs, pid_t pid)
 	{
-		if (secs > 0) {
+		if (secs > 0)
 			new Murder(secs, pid);
-		} else if (pid != 0) {
+		else if (pid != 0)
 			support::kill(pid, SIGKILL);
-		}
 	}
 
 	//
@@ -91,20 +91,14 @@ public:
 private:
 	//
 	Murder(int secs, pid_t pid)
-		: timeout_(0), pid_(pid)
+		: timeout_(1000*secs, Timeout::ONETIME), pid_(pid)
 	{
-		timeout_ = new Timeout(1000*secs, Timeout::ONETIME);
-		timeout_->timeout.connect(boost::bind(&Murder::kill, this));
-		timeout_->start();
+		timeout_.timeout.connect(boost::bind(&Murder::kill, this));
+		timeout_.start();
 	}
 
 	//
-	~Murder()
-	{
-		delete timeout_;
-	}
-	//
-	Timeout * timeout_;
+	Timeout timeout_;
 	//
 	pid_t pid_;
 };
@@ -134,7 +128,7 @@ void ForkedProcess::emitSignal()
 // Spawn the child process
 int ForkedProcess::run(Starttype type)
 {
-	retval_  = 0;
+	retval_ = 0;
 	pid_ = generateChild();
 	if (pid_ <= 0) { // child or fork failed.
 		retval_ = 1;
@@ -183,22 +177,18 @@ void ForkedProcess::kill(int tol)
 		return;
 	}
 
-	// The weird (std::max)(a,b) signature prevents expansion
-	// of an evil MSVC macro.
-	int const tolerance = (std::max)(0, tol);
+	int const tolerance = std::max(0, tol);
 	if (tolerance == 0) {
 		// Kill it dead NOW!
 		Murder::killItDead(0, pid());
-
 	} else {
 		int ret = support::kill(pid(), SIGHUP);
 
 		// The process is already dead if wait_for_death is false
 		bool const wait_for_death = (ret == 0 && errno != ESRCH);
 
-		if (wait_for_death) {
+		if (wait_for_death)
 			Murder::killItDead(tolerance, pid());
-		}
 	}
 }
 
