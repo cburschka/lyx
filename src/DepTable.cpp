@@ -73,7 +73,7 @@ void DepTable::insert(FileName const & f, bool upd)
 void DepTable::update()
 {
 	LYXERR(Debug::DEPEND, "Updating DepTable...");
-	time_type const start_time = current_time();
+	time_t const start_time = current_time();
 
 	DepList::iterator itr = deplist.begin();
 	while (itr != deplist.end()) {
@@ -108,9 +108,9 @@ void DepTable::update()
 		}
 		++itr;
 	}
-	time_type const time_sec = current_time() - start_time;
+	time_t const time_sec = current_time() - start_time;
 	LYXERR(Debug::DEPEND, "Finished updating DepTable ("
-		<< time_sec << " sec).");
+		<< long(time_sec) << " sec).");
 }
 
 
