@@ -28,6 +28,7 @@ lyx_add_msvc_pch(support)
 lyx_automoc(${support_sources})
 	
 include_directories(${TOP_SRC_DIR}/src/support
+	${CMAKE_BINARY_DIR}/src/support
 	${TOP_SRC_DIR}/src/support/minizip
 	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR})
