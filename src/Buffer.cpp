@@ -81,7 +81,7 @@
 #include "support/debug.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
-#include "support/Forkedcall.h"
+#include "support/ForkedCalls.h"
 #include "support/gettext.h"
 #include "support/gzstream.h"
 #include "support/lstrings.h"

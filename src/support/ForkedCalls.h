@@ -1,30 +1,18 @@
 // -*- C++ -*-
 /**
- * \file Forkedcall.h
+ * \file ForkedCalls.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
- *
- * Interface cleaned up by
  * \author Angus Leeming
+ * \author Alfredo Braunstein
  *
  * Full author contact details are available in file CREDITS.
- *
- * An instance of Class Forkedcall represents a single child process.
- *
- * Class Forkedcall uses fork() and execvp() to lauch the child process.
- *
- * Once launched, control is returned immediately to the parent process
- * but a Signal can be emitted upon completion of the child.
- *
- * The child process is not killed when the Forkedcall instance goes out of
- * scope, but it can be killed by an explicit invocation of the kill() member
- * function.
  */
 
-#ifndef FORKEDCALL_H
-#define FORKEDCALL_H
+#ifndef FORKEDCALLS_H
+#define FORKEDCALLS_H
 
 #include <boost/shared_ptr.hpp>
 #include <boost/signal.hpp>
@@ -32,6 +20,12 @@
 #ifdef HAVE_SYS_TYPES_H
 # include <sys/types.h>
 #endif
+
+#include <list>
+#include <queue>
+#include <string>
+#include <utility>
+#include <vector>
 
 
 namespace lyx {
@@ -134,18 +128,31 @@ private:
 };
 
 
-class Forkedcall : public ForkedProcess {
+/* 
+ * An instance of class ForkedCall represents a single child process.
+ *
+ * Class ForkedCall uses fork() and execvp() to lauch the child process.
+ *
+ * Once launched, control is returned immediately to the parent process
+ * but a Signal can be emitted upon completion of the child.
+ *
+ * The child process is not killed when the ForkedCall instance goes out of
+ * scope, but it can be killed by an explicit invocation of the kill() member
+ * function.
+ */
+
+class ForkedCall : public ForkedProcess {
 public:
 	///
 	virtual boost::shared_ptr<ForkedProcess> clone() const {
-		return boost::shared_ptr<ForkedProcess>(new Forkedcall(*this));
+		return boost::shared_ptr<ForkedProcess>(new ForkedCall(*this));
 	}
 
 	/** Start the child process.
 	 *
 	 *  The command "what" is passed to execvp() for execution.
 	 *
-	 *  There are two startscript commands available. They differ in that
+	 *  There are two startScript commands available. They differ in that
 	 *  the second receives a signal that is executed on completion of
 	 *  the command. This makes sense only for a command executed
 	 *  in the background, ie DontWait.
@@ -153,17 +160,107 @@ public:
 	 *  The other startscript command can be executed either blocking
 	 *  or non-blocking, but no signal will be emitted on finishing.
 	 */
-	int startscript(Starttype, std::string const & what);
+	int startScript(Starttype, std::string const & what);
 
 	///
-	int startscript(std::string const & what, SignalTypePtr);
+	int startScript(std::string const & what, SignalTypePtr);
 
 private:
 	///
 	virtual int generateChild();
 };
 
+
+/**
+ * This class implements a queue of forked processes. In order not to
+ * hose the system with multiple processes running simultaneously, you can
+ * request the addition of your process to this queue and it will be
+ * executed when its turn comes.
+ *
+ */
+
+class ForkedCallQueue {
+public:
+	/// A process in the queue
+	typedef std::pair<std::string, ForkedCall::SignalTypePtr> Process;
+	/** Add a process to the queue. Processes are forked sequentially
+	 *  only one is running at a time.
+	 *  Connect to the returned signal and you'll be informed when
+	 *  the process has ended.
+	 */
+	ForkedCall::SignalTypePtr add(std::string const & process);
+	/// Query whether the queue is running a forked process now.
+	bool running() const;
+	/// Get the and only instance of the class
+	static ForkedCallQueue & get();
+
+private:
+	/** this class is a singleton class... use
+	 *  ForkedCallQueue::get() instead
+	 */
+	ForkedCallQueue();
+	/// in-progress queue
+	std::queue<Process> callQueue_;
+	///
+	bool running_;
+	///
+	void callNext();
+	///
+	void startCaller();
+	///
+	void stopCaller();
+	///
+	void callback(pid_t, int);
+};
+
+
+/**
+ * A class for the control of child processes launched using
+ * fork() and execvp().
+ */
+
+class ForkedCallsController {
+public:
+	/// Get hold of the only controller that can exist inside the process.
+	static ForkedCallsController & get();
+
+	/// Add a new child process to the list of controlled processes.
+	void addCall(ForkedProcess const &);
+
+	/** Those child processes that are found to have finished are removed
+	 *  from the list and their callback function is passed the final
+	 *  return state.
+	 */
+	void handleCompletedProcesses();
+
+	/** Kill this process prematurely and remove it from the list.
+	 *  The process is killed within tolerance secs.
+	 *  See forkedcall.[Ch] for details.
+	 */
+	void kill(pid_t, int tolerance = 5);
+
+private:
+	ForkedCallsController();
+	ForkedCallsController(ForkedCallsController const &);
+	~ForkedCallsController();
+
+	typedef boost::shared_ptr<ForkedProcess> ForkedProcessPtr;
+	typedef std::list<ForkedProcessPtr> ListType;
+	typedef ListType::iterator iterator;
+
+	iterator find_pid(pid_t);
+
+	/// The child processes
+	ListType forkedCalls;
+};
+
+
+#if defined(_WIN32)
+// a wrapper for GetLastError() and FormatMessage().
+std::string const getChildErrorMessage();
+#endif
+
 } // namespace support
 } // namespace lyx
 
-#endif // FORKEDCALL_H
+#endif // FORKEDCALLS_H

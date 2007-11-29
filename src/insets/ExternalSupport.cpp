@@ -18,8 +18,6 @@
 
 #include "Buffer.h"
 #include "Converter.h"
-#include "support/debug.h"
-#include "support/gettext.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
@@ -27,8 +25,9 @@
 
 #include "frontends/alert.h"
 
+#include "support/debug.h"
 #include "support/filetools.h"
-#include "support/Forkedcall.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/lyxlib.h"

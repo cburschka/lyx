@@ -1,34 +1,21 @@
 /**
- * \file Forkedcall.cpp
+ * \file ForkedCalls.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
- *
- * Interface cleaned up by
  * \author Angus Leeming
+ * \author Alfredo Braunstein
  *
  * Full author contact details are available in file CREDITS.
- *
- * An instance of Class Forkedcall represents a single child process.
- *
- * Class Forkedcall uses fork() and execvp() to lauch the child process.
- *
- * Once launched, control is returned immediately to the parent process
- * but a Signal can be emitted upon completion of the child.
- *
- * The child process is not killed when the Forkedcall instance goes out of
- * scope, but it can be killed by an explicit invocation of the kill() member
- * function.
  */
 
 #include <config.h>
 
-#include "support/Forkedcall.h"
+#include "support/ForkedCalls.h"
 
 #include "support/debug.h"
 #include "support/filetools.h"
-#include "support/ForkedcallsController.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -38,13 +25,13 @@
 
 #include <vector>
 #include <cerrno>
+#include <sstream>
 
 #ifdef _WIN32
 # define SIGHUP 1
 # define SIGKILL 9
-# include <process.h>
 # include <windows.h>
-
+# include <process.h>
 #else
 # include <csignal>
 # include <cstdlib>
@@ -52,21 +39,31 @@
 #  include <unistd.h>
 # endif
 # include <sys/wait.h>
+# ifndef CXX_GLOBAL_CSTD
+  using std::signal;
+  using std::strerror;
+# endif
 #endif
 
+using boost::bind;
+
 using std::endl;
+using std::equal_to;
+using std::find_if;
 using std::string;
 using std::vector;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::strerror;
-#endif
 
 namespace lyx {
 namespace support {
 
-
 namespace {
+
+/////////////////////////////////////////////////////////////////////
+//
+// Murder
+//
+/////////////////////////////////////////////////////////////////////
 
 class Murder : public boost::signals::trackable {
 public:
@@ -83,9 +80,8 @@ public:
 	//
 	void kill()
 	{
-		if (pid_ != 0) {
+		if (pid_ != 0)
 			support::kill(pid_, SIGKILL);
-		}
 		lyxerr << "Killed " << pid_ << std::endl;
 		delete this;
 	}
@@ -113,6 +109,12 @@ private:
 
 } // namespace anon
 
+
+/////////////////////////////////////////////////////////////////////
+//
+// ForkedProcess
+//
+/////////////////////////////////////////////////////////////////////
 
 ForkedProcess::ForkedProcess()
 	: pid_(0), retval_(0)
@@ -143,7 +145,7 @@ int ForkedProcess::run(Starttype type)
 		break;
 	case DontWait: {
 		// Integrate into the Controller
-		ForkedcallsController & contr = ForkedcallsController::get();
+		ForkedCallsController & contr = ForkedCallsController::get();
 		contr.addCall(*this);
 		break;
 	}
@@ -261,10 +263,17 @@ int ForkedProcess::waitForChild()
 }
 
 
-int Forkedcall::startscript(Starttype wait, string const & what)
+/////////////////////////////////////////////////////////////////////
+//
+// ForkedCall
+//
+/////////////////////////////////////////////////////////////////////
+
+
+int ForkedCall::startScript(Starttype wait, string const & what)
 {
 	if (wait != Wait) {
-		retval_ = startscript(what, SignalTypePtr());
+		retval_ = startScript(what, SignalTypePtr());
 		return retval_;
 	}
 
@@ -274,7 +283,7 @@ int Forkedcall::startscript(Starttype wait, string const & what)
 }
 
 
-int Forkedcall::startscript(string const & what, SignalTypePtr signal)
+int ForkedCall::startScript(string const & what, SignalTypePtr signal)
 {
 	command_ = what;
 	signal_  = signal;
@@ -284,7 +293,7 @@ int Forkedcall::startscript(string const & what, SignalTypePtr signal)
 
 
 // generate child in background
-int Forkedcall::generateChild()
+int ForkedCall::generateChild()
 {
 	string line = trim(command_);
 	if (line.empty())
@@ -381,6 +390,259 @@ int Forkedcall::generateChild()
 	}
 
 	return cpid;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// ForkedCallQueue
+//
+/////////////////////////////////////////////////////////////////////
+
+
+ForkedCallQueue & ForkedCallQueue::get()
+{
+	static ForkedCallQueue singleton;
+	return singleton;
+}
+
+
+ForkedCall::SignalTypePtr ForkedCallQueue::add(string const & process)
+{
+	ForkedCall::SignalTypePtr ptr;
+	ptr.reset(new ForkedCall::SignalType);
+	callQueue_.push(Process(process, ptr));
+	if (!running_)
+		startCaller();
+	return ptr;
+}
+
+
+void ForkedCallQueue::callNext()
+{
+	if (callQueue_.empty())
+		return;
+	Process pro = callQueue_.front();
+	callQueue_.pop();
+	// Bind our chain caller
+	pro.second->connect(boost::bind(&ForkedCallQueue::callback,
+					 this, _1, _2));
+	ForkedCall call;
+	// If we fail to fork the process, then emit the signal
+	// to tell the outside world that it failed.
+	if (call.startScript(pro.first, pro.second) > 0)
+		pro.second->operator()(0,1);
+}
+
+
+void ForkedCallQueue::callback(pid_t, int)
+{
+	if (callQueue_.empty())
+		stopCaller();
+	else
+		callNext();
+}
+
+
+ForkedCallQueue::ForkedCallQueue()
+	: running_(false)
+{}
+
+
+void ForkedCallQueue::startCaller()
+{
+	LYXERR(Debug::GRAPHICS, "ForkedCallQueue: waking up");
+	running_ = true ;
+	callNext();
+}
+
+
+void ForkedCallQueue::stopCaller()
+{
+	running_ = false ;
+	LYXERR(Debug::GRAPHICS, "ForkedCallQueue: I'm going to sleep");
+}
+
+
+bool ForkedCallQueue::running() const
+{
+	return running_ ;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// ForkedCallsController
+//
+/////////////////////////////////////////////////////////////////////
+
+#if defined(_WIN32)
+string const getChildErrorMessage()
+{
+	DWORD const error_code = ::GetLastError();
+
+	HLOCAL t_message = 0;
+	bool const ok = ::FormatMessage(
+		FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		FORMAT_MESSAGE_FROM_SYSTEM,
+		0, error_code,
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		(LPTSTR) &t_message, 0, 0
+		) != 0;
+
+	std::ostringstream ss;
+	ss << "LyX: Error waiting for child: " << error_code;
+
+	if (ok) {
+		ss << ": " << (LPTSTR)t_message;
+		::LocalFree(t_message);
+	} else
+		ss << ": Error unknown.";
+
+	return ss.str();
+}
+#endif
+
+
+// Ensure, that only one controller exists inside process
+ForkedCallsController & ForkedCallsController::get()
+{
+	static ForkedCallsController singleton;
+	return singleton;
+}
+
+
+ForkedCallsController::ForkedCallsController()
+{}
+
+
+// open question: should we stop childs here?
+// Asger says no: I like to have my xdvi open after closing LyX. Maybe
+// I want to print or something.
+ForkedCallsController::~ForkedCallsController()
+{}
+
+
+void ForkedCallsController::addCall(ForkedProcess const & newcall)
+{
+	forkedCalls.push_back(newcall.clone());
+}
+
+
+// Check the list of dead children and emit any associated signals.
+void ForkedCallsController::handleCompletedProcesses()
+{
+	ListType::iterator it  = forkedCalls.begin();
+	ListType::iterator end = forkedCalls.end();
+	while (it != end) {
+		ForkedProcessPtr actCall = *it;
+		bool remove_it = false;
+
+#if defined(_WIN32)
+		HANDLE const hProcess = HANDLE(actCall->pid());
+
+		DWORD const wait_status = ::WaitForSingleObject(hProcess, 0);
+
+		switch (wait_status) {
+		case WAIT_TIMEOUT:
+			// Still running
+			break;
+		case WAIT_OBJECT_0: {
+			DWORD exit_code = 0;
+			if (!GetExitCodeProcess(hProcess, &exit_code)) {
+				lyxerr << "GetExitCodeProcess failed waiting for child\n"
+				       << getChildErrorMessage() << std::endl;
+				// Child died, so pretend it returned 1
+				actCall->setRetValue(1);
+			} else {
+				actCall->setRetValue(exit_code);
+			}
+			remove_it = true;
+			break;
+		}
+		case WAIT_FAILED:
+			lyxerr << "WaitForSingleObject failed waiting for child\n"
+			       << getChildErrorMessage() << std::endl;
+			actCall->setRetValue(1);
+			remove_it = true;
+			break;
+		}
+#else
+		pid_t pid = actCall->pid();
+		int stat_loc;
+		pid_t const waitrpid = waitpid(pid, &stat_loc, WNOHANG);
+
+		if (waitrpid == -1) {
+			lyxerr << "LyX: Error waiting for child: "
+			       << strerror(errno) << endl;
+
+			// Child died, so pretend it returned 1
+			actCall->setRetValue(1);
+			remove_it = true;
+
+		} else if (waitrpid == 0) {
+			// Still running. Move on to the next child.
+
+		} else if (WIFEXITED(stat_loc)) {
+			// Ok, the return value goes into retval.
+			actCall->setRetValue(WEXITSTATUS(stat_loc));
+			remove_it = true;
+
+		} else if (WIFSIGNALED(stat_loc)) {
+			// Child died, so pretend it returned 1
+			actCall->setRetValue(1);
+			remove_it = true;
+
+		} else if (WIFSTOPPED(stat_loc)) {
+			lyxerr << "LyX: Child (pid: " << pid
+			       << ") stopped on signal "
+			       << WSTOPSIG(stat_loc)
+			       << ". Waiting for child to finish." << endl;
+
+		} else {
+			lyxerr << "LyX: Something rotten happened while "
+				"waiting for child " << pid << endl;
+
+			// Child died, so pretend it returned 1
+			actCall->setRetValue(1);
+			remove_it = true;
+		}
+#endif
+
+		if (remove_it) {
+			forkedCalls.erase(it);
+			actCall->emitSignal();
+
+			/* start all over: emiting the signal can result
+			 * in changing the list (Ab)
+			 */
+			it = forkedCalls.begin();
+		} else {
+			++it;
+		}
+	}
+}
+
+
+ForkedCallsController::iterator ForkedCallsController::find_pid(pid_t pid)
+{
+	return find_if(forkedCalls.begin(), forkedCalls.end(),
+		       bind(equal_to<pid_t>(),
+			    bind(&ForkedCall::pid, _1),
+			    pid));
+}
+
+
+// Kill the process prematurely and remove it from the list
+// within tolerance secs
+void ForkedCallsController::kill(pid_t pid, int tolerance)
+{
+	ListType::iterator it = find_pid(pid);
+	if (it == forkedCalls.end())
+		return;
+
+	(*it)->kill(tolerance);
+	forkedCalls.erase(it);
 }
 
 } // namespace support

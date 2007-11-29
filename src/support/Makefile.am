@@ -44,12 +44,8 @@ liblyxsupport_la_SOURCES = \
 	FileName.h \
 	filetools.cpp \
 	filetools.h \
-	Forkedcall.cpp \
-	Forkedcall.h \
-	ForkedCallQueue.cpp \
-	ForkedCallQueue.h \
-	ForkedcallsController.cpp \
-	ForkedcallsController.h \
+	ForkedCalls.cpp \
+	ForkedCalls.h \
 	gettext.cpp \
 	gettext.h \
 	getcwd.cpp \

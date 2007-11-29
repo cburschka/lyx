@@ -18,10 +18,8 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "Font.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "GuiApplication.h"
 #include "GuiKeySymbol.h"
 #include "GuiPainter.h"
@@ -37,8 +35,10 @@
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/FileName.h"
-#include "support/ForkedcallsController.h"
+#include "support/ForkedCalls.h"
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
@@ -79,7 +79,7 @@ using std::string;
 namespace lyx {
 
 using support::FileName;
-using support::ForkedcallsController;
+using support::ForkedCallsController;
 
 
 /// return the LyX mouse button state from Qt's
@@ -458,7 +458,7 @@ void GuiWorkArea::toggleCursor()
 	// Use this opportunity to deal with any child processes that
 	// have finished but are waiting to communicate this fact
 	// to the rest of LyX.
-	ForkedcallsController & fcc = ForkedcallsController::get();
+	ForkedCallsController & fcc = ForkedCallsController::get();
 	fcc.handleCompletedProcesses();
 }
 

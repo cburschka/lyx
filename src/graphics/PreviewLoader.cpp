@@ -17,7 +17,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Converter.h"
-#include "support/debug.h"
 #include "Encoding.h"
 #include "Format.h"
 #include "InsetIterator.h"
@@ -31,12 +30,12 @@
 
 #include "insets/Inset.h"
 
+#include "support/convert.h"
+#include "support/debug.h"
 #include "support/filetools.h"
-#include "support/Forkedcall.h"
-#include "support/ForkedcallsController.h"
+#include "support/ForkedCalls.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/convert.h"
 
 #include <boost/bind.hpp>
 
@@ -229,7 +228,7 @@ public:
 	Buffer const & buffer() const { return buffer_; }
 
 private:
-	/// Called by the Forkedcall process that generated the bitmap files.
+	/// Called by the ForkedCall process that generated the bitmap files.
 	void finishedGenerating(pid_t, int);
 	///
 	void dumpPreamble(odocstream &) const;
@@ -384,7 +383,7 @@ InProgress::InProgress(string const & filename_base,
 void InProgress::stop() const
 {
 	if (pid)
-		lyx::support::ForkedcallsController::get().kill(pid, 0);
+		lyx::support::ForkedCallsController::get().kill(pid, 0);
 
 	if (!metrics_file.empty())
 		metrics_file.removeFile();
@@ -608,12 +607,12 @@ void PreviewLoader::Impl::startLoading()
 	string const command = support::libScriptSearch(cs.str());
 
 	// Initiate the conversion from LaTeX to bitmap images files.
-	support::Forkedcall::SignalTypePtr
-		convert_ptr(new support::Forkedcall::SignalType);
+	support::ForkedCall::SignalTypePtr
+		convert_ptr(new support::ForkedCall::SignalType);
 	convert_ptr->connect(bind(&Impl::finishedGenerating, this, _1, _2));
 
-	support::Forkedcall call;
-	int ret = call.startscript(command, convert_ptr);
+	support::ForkedCall call;
+	int ret = call.startScript(command, convert_ptr);
 
 	if (ret != 0) {
 		LYXERR(Debug::GRAPHICS, "PreviewLoader::startLoading()\n"

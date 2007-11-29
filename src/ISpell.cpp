@@ -15,14 +15,14 @@
 #include "ISpell.h"
 
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "Encoding.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
-#include "support/Forkedcall.h"
+#include "support/debug.h"
+#include "support/gettext.h"
+#include "support/ForkedCalls.h"
 #include "support/lstrings.h"
 #include "support/unicode.h"
 

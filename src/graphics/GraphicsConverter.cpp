@@ -13,12 +13,12 @@
 #include "GraphicsConverter.h"
 
 #include "Converter.h"
-#include "support/debug.h"
 #include "Format.h"
 
-#include "support/filetools.h"
-#include "support/ForkedCallQueue.h"
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/filetools.h"
+#include "support/ForkedCalls.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -33,7 +33,7 @@ namespace support = lyx::support;
 using support::addExtension;
 using support::changeExtension;
 using support::FileName;
-using support::Forkedcall;
+using support::ForkedCall;
 using support::ForkedCallQueue;
 using support::getExtension;
 using support::libScriptSearch;
@@ -193,7 +193,7 @@ void Converter::Impl::startConversion()
 		return;
 	}
 
-	Forkedcall::SignalTypePtr
+	ForkedCall::SignalTypePtr
 		ptr = ForkedCallQueue::get().add(script_command_);
 
 	ptr->connect(boost::bind(&Impl::converted, this, _1, _2));
