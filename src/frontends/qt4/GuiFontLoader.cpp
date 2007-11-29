@@ -24,15 +24,9 @@
 #include "support/Package.h"
 #include "support/os.h"
 
-#include <boost/tuple/tuple.hpp>
-
 #include <QFontInfo>
 #include <QFontDatabase>
 
-using std::make_pair;
-
-using std::pair;
-using std::vector;
 
 QString const math_fonts[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
 	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
@@ -149,7 +143,7 @@ static bool isChosenFont(QFont & font, QString const & family)
 }
 
 
-static pair<QFont, bool> const getSymbolFont(QString const & family)
+QFont symbolFont(QString const & family, bool * ok)
 {
 	LYXERR(Debug::FONT, "Looking for font family "
 		<< fromqstr(family) << " ... ");
@@ -162,7 +156,8 @@ static pair<QFont, bool> const getSymbolFont(QString const & family)
 
 	if (isChosenFont(font, family)) {
 		LYXERR(Debug::FONT, "normal!");
-		return make_pair<QFont, bool>(font, true);
+		*ok = true;
+		return font;
 	}
 
 	LYXERR(Debug::FONT, "Trying " << fromqstr(upper) << " ... ");
@@ -170,7 +165,8 @@ static pair<QFont, bool> const getSymbolFont(QString const & family)
 
 	if (isChosenFont(font, upper)) {
 		LYXERR(Debug::FONT, "upper!");
-		return make_pair<QFont, bool>(font, true);
+		*ok = true;
+		return font;
 	}
 
 	// A simple setFamily() fails on Qt 2
@@ -181,11 +177,13 @@ static pair<QFont, bool> const getSymbolFont(QString const & family)
 
 	if (isChosenFont(font, family)) {
 		LYXERR(Debug::FONT, "raw version!");
-		return make_pair<QFont, bool>(font, true);
+		*ok = true;
+		return font;
 	}
 
 	LYXERR(Debug::FONT, " FAILED :-(");
-	return make_pair<QFont, bool>(font, false);
+	*ok = false;
+	return font;
 }
 
 } // namespace anon
@@ -239,12 +237,13 @@ static QString makeFontName(QString const & family, QString const & foundry)
 
 
 GuiFontInfo::GuiFontInfo(FontInfo const & f)
+	: metrics(QFont())
 {
 	font.setKerning(false);
 	QString const pat = symbolFamily(f.family());
 	if (!pat.isEmpty()) {
-		bool tmp;
-		boost::tie(font, tmp) = getSymbolFont(pat);
+		bool ok;
+		font = symbolFont(pat, &ok);
 	} else {
 		switch (f.family()) {
 		case ROMAN_FAMILY: {
@@ -312,7 +311,7 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 	LYXERR(Debug::FONT, "The font has size: " << font.pointSizeF());
 
 	if (f.realShape() != SMALLCAPS_SHAPE) {
-		metrics.reset(new GuiFontMetrics(font));
+		metrics = GuiFontMetrics(font);
 	} else {
 		// handle small caps ourselves ...
 		FontInfo smallfont = f;
@@ -322,16 +321,15 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 		font2.setPointSizeF(convert<double>(lyxrc.font_sizes[smallfont.size()])
 			       * lyxrc.zoom / 100.0);
 
-		metrics.reset(new GuiFontMetrics(font, font2));
+		metrics = GuiFontMetrics(font, font2);
 	}
-
 }
 
 
 bool GuiFontLoader::available(FontInfo const & f)
 {
-	static vector<int> cache_set(NUM_FAMILIES, false);
-	static vector<int> cache(NUM_FAMILIES, false);
+	static std::vector<int> cache_set(NUM_FAMILIES, false);
+	static std::vector<int> cache(NUM_FAMILIES, false);
 
 	FontFamily family = f.family();
 	if (cache_set[family])
@@ -343,8 +341,9 @@ bool GuiFontLoader::available(FontInfo const & f)
 		// We don't care about non-symbol fonts
 		return false;
 
-	pair<QFont, bool> tmp = getSymbolFont(pat);
-	if (!tmp.second)
+	bool ok;
+	symbolFont(pat, &ok);
+	if (!ok)
 		return false;
 
 	cache[family] = true;

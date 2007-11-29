@@ -337,7 +337,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// Here we use the font width cache instead of
 	//   textwidth = fontMetrics().width(str);
 	// because the above is awfully expensive on MacOSX
-	textwidth = fi.metrics->width(s);
+	textwidth = fi.metrics.width(s);
 	if (f.underbar() == FONT_ON)
 		underline(f, x, y, textwidth);
 
@@ -385,15 +385,15 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// Only the left bearing of the first character is important
 	// as we always write from left to right, even for
 	// right-to-left languages.
-	int const lb = std::min(fi.metrics->lbearing(s[0]), 0);
-	int const mA = fi.metrics->maxAscent();
+	int const lb = std::min(fi.metrics.lbearing(s[0]), 0);
+	int const mA = fi.metrics.maxAscent();
 	if (!QPixmapCache::find(key, pm)) {
 		// Only the right bearing of the last character is
 		// important as we always write from left to right,
 		// even for right-to-left languages.
-		int const rb = fi.metrics->rbearing(s[s.size()-1]);
+		int const rb = fi.metrics.rbearing(s[s.size()-1]);
 		int const w = textwidth + rb - lb;
-		int const mD = fi.metrics->maxDescent();
+		int const mD = fi.metrics.maxDescent();
 		int const h = mA + mD;
 		pm = QPixmap(w, h);
 		pm.fill(Qt::transparent);
@@ -531,7 +531,7 @@ void GuiPainter::dashedUnderline(FontInfo const & f, int x, int y, int width)
 	if (height >= 2)
 		height += below;
 
-	for (int n = 0; n < height; ++n)
+	for (int n = 0; n != height; ++n)
 		line(x, y + below + n, x + width, y + below + n, f.color(), line_onoffdash);
 }
 

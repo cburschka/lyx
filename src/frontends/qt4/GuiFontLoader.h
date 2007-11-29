@@ -23,7 +23,6 @@
 #include <QFont>
 
 #include <boost/assert.hpp>
-#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 namespace frontend {
@@ -40,7 +39,7 @@ public:
 	/// The font instance
 	QFont font;
 	/// Metrics on the font
-	boost::scoped_ptr<GuiFontMetrics> metrics;
+	GuiFontMetrics metrics;
 };
 
 
@@ -57,7 +56,7 @@ public:
 	virtual void update();
 	virtual bool available(FontInfo const & f);
 	inline virtual FontMetrics const & metrics(FontInfo const & f) {
-		return *fontinfo(f).metrics.get();
+		return fontinfo(f).metrics;
 	}
 
 	/// Get the QFont for this FontInfo

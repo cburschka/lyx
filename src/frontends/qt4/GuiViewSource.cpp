@@ -20,15 +20,14 @@
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
-#include "support/gettext.h"
 #include "Paragraph.h"
 #include "TexRow.h"
 
 #include "support/docstream.h"
+#include "support/gettext.h"
 
 #include <QTextCursor>
 #include <QTextDocument>
-#include <boost/tuple/tuple.hpp>
 
 using std::string;
 
