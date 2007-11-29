@@ -159,9 +159,9 @@ struct LyX::Impl
 	///
 	BufferList buffer_list_;
 	///
-	boost::scoped_ptr<KeyMap> toplevel_keymap_;
+	KeyMap toplevel_keymap_;
 	///
-	boost::scoped_ptr<CmdDef> toplevel_cmddef_;
+	CmdDef toplevel_cmddef_;
 	///
 	boost::scoped_ptr<Server> lyx_server_;
 	///
@@ -314,15 +314,13 @@ frontend::Application const & LyX::application() const
 
 KeyMap & LyX::topLevelKeymap()
 {
-	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
-	return *pimpl_->toplevel_keymap_.get();
+	return pimpl_->toplevel_keymap_;
 }
 
 
 CmdDef & LyX::topLevelCmdDef()
 {
-	BOOST_ASSERT(pimpl_->toplevel_cmddef_.get());
-	return *pimpl_->toplevel_cmddef_.get();
+	return pimpl_->toplevel_cmddef_;
 }
 
 
@@ -340,8 +338,7 @@ Converters & LyX::systemConverters()
 
 KeyMap const & LyX::topLevelKeymap() const
 {
-	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
-	return *pimpl_->toplevel_keymap_.get();
+	return pimpl_->toplevel_keymap_;
 }
 
 
@@ -864,17 +861,15 @@ bool LyX::init()
 	//setGuiLanguage(lyxrc.gui_language);
 
 	// Set up command definitions
-	pimpl_->toplevel_cmddef_.reset(new CmdDef);
-	pimpl_->toplevel_cmddef_->read(lyxrc.def_file);
+	pimpl_->toplevel_cmddef_.read(lyxrc.def_file);
 
 	// Set up bindings
-	pimpl_->toplevel_keymap_.reset(new KeyMap);
-	pimpl_->toplevel_keymap_->read("site");
-	pimpl_->toplevel_keymap_->read(lyxrc.bind_file);
+	pimpl_->toplevel_keymap_.read("site");
+	pimpl_->toplevel_keymap_.read(lyxrc.bind_file);
 	// load user bind file user.bind
-	pimpl_->toplevel_keymap_->read("user");
+	pimpl_->toplevel_keymap_.read("user");
 
-	pimpl_->lyxfunc_.initKeySequences(pimpl_->toplevel_keymap_.get());
+	pimpl_->lyxfunc_.initKeySequences(&pimpl_->toplevel_keymap_);
 
 	// Read menus
 	if (!readUIFile(lyxrc.ui_file))
