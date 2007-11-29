@@ -58,7 +58,9 @@ FileMonitor::FileMonitor(FileName const & file_with_path, int interval)
 
 
 FileMonitor::~FileMonitor()
-{}
+{
+	delete pimpl_;
+}
 
 
 void FileMonitor::reset(FileName const & file_with_path) const

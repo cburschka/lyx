@@ -15,8 +15,6 @@
 #ifndef FILEMONITOR_H
 #define FILEMONITOR_H
 
-#include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
 namespace lyx {
@@ -24,14 +22,15 @@ namespace support {
 
 class FileName;
 
-class FileMonitor : boost::noncopyable {
+class FileMonitor
+{
 public:
 	/** Once monitoring begins, the file will be monitored every
 	 *  interval ms.
 	 */
 	FileMonitor(FileName const & file_with_path, int interval);
 
-	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
+	/// Destructor
 	~FileMonitor();
 
 	///
@@ -60,11 +59,14 @@ public:
 	boost::signals::connection connect(slot_type const &) const;
 
 private:
+	/// noncopyable
+	FileMonitor(FileMonitor const &);
+	void operator=(FileMonitor const &);
+
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
-
 	/// The pointer never changes although *pimpl_'s contents may.
-	boost::scoped_ptr<Impl> const pimpl_;
+	Impl * const pimpl_;
 };
 
 } // namespace support
