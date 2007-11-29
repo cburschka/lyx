@@ -21,12 +21,10 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "support/debug.h"
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "MetricsInfo.h"
@@ -36,8 +34,8 @@
 #include "frontends/Application.h"
 
 #include "support/convert.h"
-
-#include <boost/current_function.hpp>
+#include "support/debug.h"
+#include "support/gettext.h"
 
 #include <map>
 
@@ -204,13 +202,13 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 
 void Inset::edit(Cursor &, bool)
 {
-	LYXERR(Debug::INSETS, BOOST_CURRENT_FUNCTION << ": edit left/right");
+	LYXERR(Debug::INSETS, "edit left/right");
 }
 
 
 Inset * Inset::editXY(Cursor &, int x, int y)
 {
-	LYXERR(Debug::INSETS, BOOST_CURRENT_FUNCTION << ": x=" << x << " y= " << y);
+	LYXERR(Debug::INSETS, "x: " << x << " y: " << y);
 	return this;
 }
 
@@ -218,9 +216,9 @@ Inset * Inset::editXY(Cursor &, int x, int y)
 Inset::idx_type Inset::index(row_type row, col_type col) const
 {
 	if (row != 0)
-		LYXERR0(BOOST_CURRENT_FUNCTION << ": illegal row: " << row);
+		LYXERR0("illegal row: " << row);
 	if (col != 0)
-		LYXERR0(BOOST_CURRENT_FUNCTION << ": illegal col: " << col);
+		LYXERR0("illegal col: " << col);
 	return 0;
 }
 

@@ -1,5 +1,5 @@
 /**
- * \file src/text.cpp
+ * \file src/Text.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -29,14 +29,12 @@
 #include "Cursor.h"
 #include "ParIterator.h"
 #include "CutAndPaste.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "factory.h"
 #include "FontIterator.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "Length.h"
 #include "Lexer.h"
@@ -64,22 +62,18 @@
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetTabular.h"
 
+#include "support/convert.h"
+#include "support/debug.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
-#include "support/convert.h"
 
-#include <boost/current_function.hpp>
 #include <boost/next_prior.hpp>
 
 #include <sstream>
 
 using std::auto_ptr;
-using std::advance;
-using std::distance;
-using std::max;
-using std::min;
-using std::endl;
 using std::string;
 
 namespace lyx {
@@ -137,15 +131,11 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		par.params().read(lex);
 
 	} else if (token == "\\end_layout") {
-		lyxerr << BOOST_CURRENT_FUNCTION
-		       << ": Solitary \\end_layout in line "
-		       << lex.getLineNo() << "\n"
-		       << "Missing \\begin_layout?.\n";
+		LYXERR0("Solitary \\end_layout in line " << lex.getLineNo() << "\n"
+		       << "Missing \\begin_layout ?");
 	} else if (token == "\\end_inset") {
-		lyxerr << BOOST_CURRENT_FUNCTION
-		       << ": Solitary \\end_inset in line "
-		       << lex.getLineNo() << "\n"
-		       << "Missing \\begin_inset?.\n";
+		LYXERR0("Solitary \\end_inset in line " << lex.getLineNo() << "\n"
+		       << "Missing \\begin_inset ?");
 	} else if (token == "\\begin_inset") {
 		Inset * inset = readInset(lex, buf);
 		if (inset)
@@ -1114,8 +1104,7 @@ void Text::getWord(CursorSlice & from, CursorSlice & to,
 			--from.pos();
 		break;
 	case NEXT_WORD:
-		lyxerr << "Text::getWord: NEXT_WORD not implemented yet"
-		       << endl;
+		LYXERR0("Text::getWord: NEXT_WORD not implemented yet");
 		break;
 	case PARTIAL_WORD:
 		// no need to move the 'from' cursor
@@ -1180,14 +1169,12 @@ bool Text::read(Buffer const & buf, Lexer & lex, ErrorList & errorList)
 		} else if (token == "\\begin_deeper") {
 			++depth;
 		} else if (token == "\\end_deeper") {
-			if (!depth) {
+			if (!depth)
 				lex.printError("\\end_deeper: " "depth is already null");
-			} else {
+			else
 				--depth;
-			}
 		} else {
-			lyxerr << "Handling unknown body token: `"
-			       << token << '\'' << endl;
+			LYXERR0("Handling unknown body token: `" << token << '\'');
 		}
 	}
 	return true;

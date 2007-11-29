@@ -48,7 +48,6 @@
 
 #include <boost/assert.hpp>
 #include <boost/bind.hpp>
-#include <boost/current_function.hpp>
 
 #include <sstream>
 #include <limits>
@@ -293,8 +292,7 @@ void Cursor::setCursor(DocIterator const & cur)
 
 void Cursor::dispatch(FuncRequest const & cmd0)
 {
-	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
-			     << " cmd: " << cmd0 << '\n' << *this);
+	LYXERR(Debug::DEBUG, "cmd: " << cmd0 << '\n' << *this);
 	if (empty())
 		return;
 
@@ -1301,7 +1299,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 
 void Cursor::handleFont(string const & font)
 {
-	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << ": " << font);
+	LYXERR(Debug::DEBUG, font);
 	docstring safe;
 	if (selection()) {
 		macroModeClose();

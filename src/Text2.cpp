@@ -31,11 +31,9 @@
 #include "Changes.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "support/debug.h"
 #include "DispatchResult.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "Layout.h"
 #include "Lexer.h"
@@ -57,9 +55,10 @@
 
 #include "mathed/InsetMathHull.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/textutils.h"
 
-#include <boost/current_function.hpp>
 #include <boost/next_prior.hpp>
 
 #include <sstream>

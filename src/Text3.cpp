@@ -69,7 +69,6 @@
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathMacroTemplate.h"
 
-#include <boost/current_function.hpp>
 #include <boost/next_prior.hpp>
 
 #include <clocale>
@@ -507,8 +506,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CHAR_FORWARD:
 	case LFUN_CHAR_FORWARD_SELECT:
-		//lyxerr << BOOST_CURRENT_FUNCTION
-		//       << " LFUN_CHAR_FORWARD[SEL]:\n" << cur << endl;
+		//LYXERR0(" LFUN_CHAR_FORWARD[SEL]:\n" << cur);
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
 		needsUpdate |= cursorForward(cur);
 
@@ -1739,8 +1737,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		LYXERR(Debug::ACTION, BOOST_CURRENT_FUNCTION
-			<< ": Command " << cmd << " not DISPATCHED by Text");
+		LYXERR(Debug::ACTION, "Command " << cmd << " not DISPATCHED by Text");
 		cur.undispatched();
 		break;
 	}

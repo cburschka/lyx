@@ -93,8 +93,6 @@
 #include "support/convert.h"
 #include "support/os.h"
 
-#include <boost/current_function.hpp>
-
 #include <sstream>
 
 using std::endl;
@@ -412,8 +410,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	cancel_meta_seq.reset();
 
 	FuncRequest func = cancel_meta_seq.addkey(keysym, state);
-	LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
-			   << " action first set to [" << func.action << ']');
+	LYXERR(Debug::KEY, "action first set to [" << func.action << ']');
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
@@ -421,8 +418,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
 		// remove Caps Lock and Mod2 as a modifiers
 		func = keyseq.addkey(keysym, (state | meta_fake_bit));
-		LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
-			<< "action now set to [" << func.action << ']');
+		LYXERR(Debug::KEY, "action now set to [" << func.action << ']');
 	}
 
 	// Dont remove this unless you know what you are doing.
@@ -432,9 +428,8 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	if (func.action == LFUN_NOACTION)
 		func = FuncRequest(LFUN_COMMAND_PREFIX);
 
-	LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
-		<< " Key [action=" << func.action << "]["
-		<< to_utf8(keyseq.print(KeySequence::Portable)) << ']');
+	LYXERR(Debug::KEY, " Key [action=" << func.action << "]["
+		<< keyseq.print(KeySequence::Portable) << ']');
 
 	// already here we know if it any point in going further
 	// why not return already here if action == -1 and

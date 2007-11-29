@@ -18,7 +18,6 @@
 #include "support/unicode.h"
 
 #include <boost/assert.hpp>
-#include <boost/current_function.hpp>
 
 #include <cerrno>
 
@@ -77,10 +76,9 @@ Messages::Messages(string const & l)
 	: lang_(l), warned_(false)
 {
 	// strip off any encoding suffix, i.e., assume 8-bit po files
-	string::size_type i = lang_.find(".");
+	size_t i = lang_.find(".");
 	lang_ = lang_.substr(0, i);
-	LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION
-		<< ": language(" << lang_ << ")");
+	LYXERR(Debug::DEBUG, "language(" << lang_ << ")");
 }
 
 
@@ -91,16 +89,14 @@ void Messages::init()
 	char const * c = bindtextdomain(PACKAGE, locale_dir.c_str());
 	int e = errno;
 	if (e) {
-		LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << '\n'
-			<< "Error code: " << errno << '\n'
+		LYXERR(Debug::DEBUG, "Error code: " << errno << '\n'
 			<< "Directory : " << package().locale_dir().absFilename() << '\n'
 			<< "Rtn value : " << c);
 	}
 
 	if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
-		LYXERR(Debug::DEBUG, BOOST_CURRENT_FUNCTION << '\n'
-			<< "Error code: " << errno << '\n'
-			<< "Codeset   : " << ucs4_codeset << '\n');
+		LYXERR(Debug::DEBUG, "Error code: " << errno << '\n'
+			<< "Codeset   : " << ucs4_codeset);
 	}
 
 	textdomain(PACKAGE);

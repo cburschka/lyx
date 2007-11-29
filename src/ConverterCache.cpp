@@ -28,7 +28,6 @@
 
 #include <boost/assert.hpp>
 #include <boost/crc.hpp>
-#include <boost/current_function.hpp>
 
 #include <algorithm>
 #include <fstream>
@@ -258,7 +257,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	if (!lyxrc.use_converter_cache || orig_from.empty() ||
 	    converted_file.empty())
 		return;
-	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
+	LYXERR(Debug::FILES, ' ' << orig_from
 			     << ' ' << to_format << ' ' << converted_file);
 
 	// FIXME: Should not hardcode this (see bug 3819 for details)
@@ -318,8 +317,7 @@ void ConverterCache::remove(FileName const & orig_from,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return;
-	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format);
+	LYXERR(Debug::FILES, orig_from << ' ' << to_format);
 
 	CacheType::iterator const it1 = pimpl_->cache.find(orig_from);
 	if (it1 == pimpl_->cache.end())
@@ -379,8 +377,7 @@ bool ConverterCache::inCache(FileName const & orig_from,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return false;
-	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format);
+	LYXERR(Debug::FILES, orig_from << ' ' << to_format);
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	if (!item) {
@@ -405,8 +402,7 @@ bool ConverterCache::inCache(FileName const & orig_from,
 FileName const & ConverterCache::cacheName(FileName const & orig_from,
 		string const & to_format) const
 {
-	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format);
+	LYXERR(Debug::FILES, orig_from << ' ' << to_format);
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	BOOST_ASSERT(item);
@@ -419,8 +415,7 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 {
 	if (!lyxrc.use_converter_cache || orig_from.empty() || dest.empty())
 		return false;
-	LYXERR(Debug::FILES, BOOST_CURRENT_FUNCTION << ' ' << orig_from
-			     << ' ' << to_format << ' ' << dest);
+	LYXERR(Debug::FILES, orig_from << ' ' << to_format << ' ' << dest);
 
 	// FIXME: Should not hardcode this (see bug 3819 for details)
 	if (to_format == "pstex") {

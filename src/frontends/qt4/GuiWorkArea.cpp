@@ -55,7 +55,6 @@
 #include <QTimer>
 
 #include <boost/bind.hpp>
-#include <boost/current_function.hpp>
 
 #ifdef Q_WS_X11
 #include <QX11Info>
@@ -238,9 +237,8 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	// PageStep only depends on the viewport height.
 	verticalScrollBar()->setPageStep(viewport()->height());
 
-	LYXERR(Debug::GUI, BOOST_CURRENT_FUNCTION
-		<< "\n viewport width\t" << viewport()->width()
-		<< "\n viewport height\t" << viewport()->height());
+	LYXERR(Debug::GUI, "viewport width: " << viewport()->width()
+		<< "  viewport height: " << viewport()->height());
 
 	// Enables input methods for asian languages.
 	// Must be set when creating custom text editing widgets.
@@ -648,18 +646,15 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 #ifdef Q_WS_X11
 	if (XEventsQueued(QX11Info::display(), 0) > 1 && ev->isAutoRepeat() 
 			&& (Qt::Key_PageDown || Qt::Key_PageUp)) {
-		LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
-			<< "\nsystem is busy: scroll key event ignored");
+		LYXERR(Debug::KEY, "system is busy: scroll key event ignored");
 		ev->ignore();
 		return;
 	}
 #endif
 
-	LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
-		<< " count=" << ev->count()
-		<< " text=" << fromqstr(ev->text())
-		<< " isAutoRepeat=" << ev->isAutoRepeat()
-		<< " key=" << ev->key());
+	LYXERR(Debug::KEY, " count: " << ev->count()
+		<< " text: " << fromqstr(ev->text())
+		<< " isAutoRepeat: " << ev->isAutoRepeat() << " key: " << ev->key());
 
 	KeySymbol sym;
 	setKeySymbol(&sym, ev);
@@ -701,12 +696,8 @@ void GuiWorkArea::update(int x, int y, int w, int h)
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
 	QRect const rc = ev->rect();
-	/*
-	LYXERR(Debug::PAINTING) << "paintEvent begin: x: " << rc.x()
-		<< " y: " << rc.y()
-		<< " w: " << rc.width()
-		<< " h: " << rc.height() << endl;
-	*/
+	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
+	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
 	if (need_resize_) {
 		verticalScrollBar()->setPageStep(viewport()->height());
@@ -765,14 +756,13 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	if (!commit_string.isEmpty()) {
 
-		LYXERR(Debug::KEY, BOOST_CURRENT_FUNCTION
-			<< " preeditString =" << fromqstr(e->preeditString())
-			<< " commitString  =" << fromqstr(e->commitString()));
+		LYXERR(Debug::KEY, "preeditString: " << fromqstr(e->preeditString())
+			<< " commitString: " << fromqstr(e->commitString()));
 
 		int key = 0;
 
 		// FIXME Iwami 04/01/07: we should take care also of UTF16 surrogates here.
-		for (int i = 0; i < commit_string.size(); ++i) {
+		for (int i = 0; i != commit_string.size(); ++i) {
 			QKeyEvent ev(QEvent::KeyPress, key, Qt::NoModifier, commit_string[i]);
 			keyPressEvent(&ev);
 		}
@@ -820,7 +810,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	// cursor_pos : cursor position in preedit string.
 	size_t cursor_pos = 0;
 	bool cursor_is_visible = false;
-	for (int i = 0; i < att.size(); ++i) {
+	for (int i = 0; i != att.size(); ++i) {
 		if (att.at(i).type == QInputMethodEvent::Cursor) {
 			cursor_pos = att.at(i).start;
 			cursor_is_visible = att.at(i).length != 0;
@@ -837,7 +827,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	// rLength : selected string length in IM.
 	size_t rLength = 0;
 	if (cursor_pos < preedit_length) {
-		for (int i = 0; i < att.size(); ++i) {
+		for (int i = 0; i != att.size(); ++i) {
 			if (att.at(i).type == QInputMethodEvent::TextFormat) {
 				if (att.at(i).start <= int(cursor_pos)
 					&& int(cursor_pos) < att.at(i).start + att.at(i).length) {

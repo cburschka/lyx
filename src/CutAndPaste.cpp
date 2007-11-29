@@ -53,7 +53,6 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
-#include <boost/current_function.hpp>
 #include <boost/tuple/tuple.hpp>
 #include <boost/next_prior.hpp>
 
@@ -658,8 +657,9 @@ void copySelection(Cursor & cur, docstring const & plaintext)
 		par.insert(0, plaintext, Font(), Change(Change::UNCHANGED));
 		pars.push_back(par);
 		theCuts.push(make_pair(pars, bp.getTextClassPtr()));
-	} else
+	} else {
 		copySelectionToStack(cur, theCuts);
+	}
 
 	// stuff the selection onto the X clipboard, from an explicit copy request
 	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
@@ -674,8 +674,7 @@ void saveSelection(Cursor & cur)
 	if (cur.selection() 
 	    && cur.selBegin() == cur.bv().cursor().selBegin()
 	    && cur.selEnd() == cur.bv().cursor().selEnd()) {
-		LYXERR(Debug::ACTION, BOOST_CURRENT_FUNCTION << ": `"
-			   << to_utf8(cur.selectionAsString(true)) << "'.");
+		LYXERR(Debug::ACTION, "'" << cur.selectionAsString(true) << "'");
 		copySelectionToStack(cur, selectionBuffer);
 	}
 }

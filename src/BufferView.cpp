@@ -75,8 +75,6 @@
 #include "support/Package.h"
 #include "support/types.h"
 
-#include <boost/current_function.hpp>
-
 #include <cerrno>
 #include <fstream>
 #include <functional>
@@ -449,8 +447,8 @@ void BufferView::updateScrollbar()
 		d->offset_ref_ = 0;
 	}
 
-	LYXERR(Debug::GUI, BOOST_CURRENT_FUNCTION
-		<< " Updating scrollbar: height: " << t.paragraphs().size()
+	LYXERR(Debug::GUI, " Updating scrollbar: height: "
+		<< t.paragraphs().size()
 		<< " curr par: " << d->cursor_.bottom().pit()
 		<< " default height " << defaultRowHeight());
 
@@ -501,7 +499,7 @@ ScrollbarParameters const & BufferView::scrollbarParameters() const
 
 void BufferView::scrollDocView(int value)
 {
-	LYXERR(Debug::GUI, BOOST_CURRENT_FUNCTION << "[ value = " << value << "]");
+	LYXERR(Debug::GUI, "[ value = " << value << "]");
 
 	Text & t = buffer_.text();
 	TextMetrics & tm = d->text_metrics_[&t];

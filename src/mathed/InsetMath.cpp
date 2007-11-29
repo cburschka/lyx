@@ -21,19 +21,17 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include <boost/current_function.hpp>
 #include <boost/assert.hpp>
 
 using std::endl;
 
+
 namespace lyx {
-
-
 
 MathData & InsetMath::cell(idx_type)
 {
 	static MathData dummyCell;
-	lyxerr << BOOST_CURRENT_FUNCTION << ": I don't have any cell" << endl;
+	LYXERR0("I don't have any cell");
 	return dummyCell;
 }
 
@@ -41,7 +39,7 @@ MathData & InsetMath::cell(idx_type)
 MathData const & InsetMath::cell(idx_type) const
 {
 	static MathData dummyCell;
-	lyxerr << BOOST_CURRENT_FUNCTION << ": I don't have any cell" << endl;
+	LYXERR0("I don't have any cell");
 	return dummyCell;
 }
 
@@ -59,13 +57,13 @@ void InsetMath::dump() const
 
 void InsetMath::metricsT(TextMetricsInfo const &, Dimension &) const
 {
-	lyxerr << "InsetMath::metricsT(Text) called directly!" << endl;
+	LYXERR0("InsetMath::metricsT(Text) called directly!");
 }
 
 
 void InsetMath::drawT(TextPainter &, int, int) const
 {
-	lyxerr << "InsetMath::drawT(Text) called directly!" << endl;
+	LYXERR0("InsetMath::drawT(Text) called directly!");
 }
 
 

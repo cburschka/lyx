@@ -64,7 +64,6 @@
 #include "support/ExceptionMessage.h"
 
 #include <boost/assert.hpp>
-#include <boost/current_function.hpp>
 
 #include <sstream>
 

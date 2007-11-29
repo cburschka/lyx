@@ -19,11 +19,9 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
-#include "support/debug.h"
 //#include "DialogView.h"
 //#include "DockView.h"
 #include "FuncRequest.h"
-#include "support/gettext.h"
 #include "GuiView.h"
 #include "Lexer.h"
 #include "Paragraph.h"
@@ -31,12 +29,13 @@
 #include "qt_helpers.h"
 #include "Spacing.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
+
 #include <QCheckBox>
 #include <QCloseEvent>
 #include <QLineEdit>
 #include <QPushButton>
-
-#include <boost/current_function.hpp>
 
 #include <sstream>
 
