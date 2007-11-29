@@ -29,7 +29,8 @@ liblyxsupport_la_SOURCES = \
 	convert.h \
 	copy.cpp \
 	copied_ptr.h \
-	cow_ptr.h \
+	debug.cpp \
+	debug.h \
 	docstream.cpp \
 	docstream.h \
 	docstring.cpp \
@@ -49,6 +50,8 @@ liblyxsupport_la_SOURCES = \
 	ForkedCallQueue.h \
 	ForkedcallsController.cpp \
 	ForkedcallsController.h \
+	gettext.cpp \
+	gettext.h \
 	getcwd.cpp \
 	gzstream.cpp \
 	gzstream.h \
@@ -61,6 +64,8 @@ liblyxsupport_la_SOURCES = \
 	lyxtime.cpp \
 	lyxtime.h \
 	lyxsum.cpp \
+	Messages.cpp \
+	Messages.h \
 	mkdir.cpp \
 	os.cpp \
 	os.h \

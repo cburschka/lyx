@@ -14,7 +14,7 @@
 #include "GuiFontLoader.h"
 #include "qt_helpers.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "LyXRC.h"
 
 #include "support/convert.h"

@@ -18,7 +18,7 @@
 #include "InsetMathFont.h"
 #include "DispatchResult.h"
 #include "Cursor.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "FuncRequest.h"
 
 #include <boost/assert.hpp>

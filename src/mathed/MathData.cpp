@@ -27,7 +27,7 @@
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
-#include "debug.h"
+#include "support/debug.h"
 
 #include "support/docstream.h"
 

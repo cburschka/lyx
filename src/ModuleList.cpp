@@ -13,7 +13,7 @@
 
 #include "ModuleList.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "Lexer.h"
 
 #include "support/filetools.h"

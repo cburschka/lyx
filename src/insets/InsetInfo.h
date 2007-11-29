@@ -14,7 +14,7 @@
 
 #include "InsetText.h"
 #include "RenderButton.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Cursor.h"
 #include "support/Translator.h"
 

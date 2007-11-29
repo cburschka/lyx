@@ -23,7 +23,6 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "debug.h"
 #include "DispatchResult.h"
 #include "EmbeddedFiles.h"
 #include "ErrorList.h"
@@ -31,7 +30,6 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "gettext.h"
 #include "Intl.h"
 #include "InsetIterator.h"
 #include "Language.h"
@@ -69,9 +67,11 @@
 #include "graphics/Previews.h"
 
 #include "support/convert.h"
-#include "support/lstrings.h"
+#include "support/debug.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 #include "support/Package.h"
 #include "support/types.h"
 

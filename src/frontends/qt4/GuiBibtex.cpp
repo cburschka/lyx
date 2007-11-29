@@ -17,12 +17,12 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "ui_BibtexAddUi.h"
 #include "qt_helpers.h"
 #include "Validator.h"
 #include "LyXRC.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "ButtonPolicy.h"
 

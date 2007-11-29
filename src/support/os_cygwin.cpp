@@ -15,9 +15,9 @@
 #include <config.h>
 
 #include "support/os.h"
-#include "support/lstrings.h"
 
-#include "debug.h"
+#include "support/lstrings.h"
+#include "support/debug.h"
 
 #include <windows.h>
 #include <io.h>

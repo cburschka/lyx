@@ -23,7 +23,7 @@
 #include "ParagraphParameters.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
-#include "debug.h"
+#include "support/debug.h"
 
 #include <QCloseEvent>
 #include <QDialog>

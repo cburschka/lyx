@@ -13,7 +13,7 @@
 #include "MailInset.h"
 
 #include "BufferView.h"
-#include "debug.h"
+#include "support/debug.h"
 
 #include "frontends/Application.h"
 

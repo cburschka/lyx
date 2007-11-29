@@ -16,7 +16,7 @@
 
 #include "FontInfo.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include <ostream>
 
@@ -202,8 +202,8 @@ static FontState setMisc(FontState newfont,
 		else if (org == FONT_OFF)
 			return FONT_ON;
 		else {
-			lyxerr <<"Font::setMisc: Need state"
-				" FONT_ON or FONT_OFF to toggle. Setting to FONT_ON" << endl;
+			LYXERR0("Font::setMisc: Need state"
+				" FONT_ON or FONT_OFF to toggle. Setting to FONT_ON");
 			return FONT_ON;
 		}
 	} else if (newfont == FONT_IGNORE)

@@ -14,7 +14,7 @@
 
 #include "KeySequence.h"
 
-#include "gettext.h"
+#include "support/gettext.h"
 #include "KeyMap.h"
 #include "lfuns.h"
 

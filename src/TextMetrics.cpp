@@ -27,7 +27,7 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "FontIterator.h"
 #include "FuncRequest.h"
 #include "InsetList.h"

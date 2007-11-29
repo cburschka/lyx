@@ -11,13 +11,13 @@
 #include <config.h>
 
 #include "support/FileName.h"
+
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/qstring_helpers.h"
-
-#include "debug.h"
-#include "lyxlib.h"
 
 #include <QDateTime>
 #include <QDir>

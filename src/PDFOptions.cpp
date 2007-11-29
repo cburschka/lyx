@@ -14,7 +14,7 @@
 
 #include "support/convert.h"
 #include "support/lstrings.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Lexer.h"
 
 #include <sstream>

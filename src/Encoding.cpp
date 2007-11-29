@@ -14,11 +14,11 @@
 
 #include "Encoding.h"
 
-#include "debug.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 
+#include "support/debug.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/unicode.h"

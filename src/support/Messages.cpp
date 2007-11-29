@@ -9,10 +9,9 @@
 
 #include <config.h>
 
-#include "Messages.h"
+#include "support/Messages.h"
 
-#include "debug.h"
-
+#include "support/debug.h"
 #include "support/docstring.h"
 #include "support/environment.h"
 #include "support/Package.h"
@@ -42,10 +41,9 @@ void cleanTranslation(docstring & trans)
 	  bogus messages. If we are unable to honour the request we
 	  just return what we got in.
 	*/
-	docstring::size_type const pos1 = trans.find(from_ascii("[["));
+	size_t const pos1 = trans.find(from_ascii("[["));
 	if (pos1 != docstring::npos) {
-		docstring::size_type const pos2 
-			= trans.find(from_ascii("]]"), pos1);
+		size_t const pos2 = trans.find(from_ascii("]]"), pos1);
 		if (pos2 != docstring::npos) 
 			trans.erase(pos1, pos2 - pos1 + 2);
 	}
@@ -63,7 +61,7 @@ void cleanTranslation(docstring & trans)
 #  if HAVE_GETTEXT
 #    include <libintl.h>      // use the header already in the system *EK*
 #  else
-#    include "../intl/libintl.h"
+#    include "../../intl/libintl.h"
 #  endif
 
 namespace lyx {

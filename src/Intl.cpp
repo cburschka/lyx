@@ -14,7 +14,7 @@
 #include <config.h>
 
 #include "Intl.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "LyXRC.h"
 
 

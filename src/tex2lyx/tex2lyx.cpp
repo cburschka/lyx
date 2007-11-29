@@ -15,15 +15,15 @@
 #include "tex2lyx.h"
 #include "Context.h"
 
-#include "debug.h"
 #include "TextClass.h"
 #include "Layout.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/ExceptionMessage.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/unicode.h"
@@ -61,10 +61,9 @@ using support::onlyPath;
 using support::os::internal_path;
 using support::rtrim;
 
-LayoutPtr captionlayout;
 
 // Hacks to allow the thing to link in the lyxlayout stuff
-LyXErr lyxerr(std::cerr.rdbuf());
+LayoutPtr captionlayout;
 
 
 string const trim(string const & a, char const * p)
@@ -99,7 +98,7 @@ void split(string const & s, vector<string> & result, char delim)
 string join(vector<string> const & input, char const * delim)
 {
 	ostringstream os;
-	for (size_t i = 0; i < input.size(); ++i) {
+	for (size_t i = 0; i != input.size(); ++i) {
 		if (i)
 			os << delim;
 		os << input[i];
@@ -170,7 +169,8 @@ namespace {
 /*!
  * Read one command definition from the syntax file
  */
-void read_command(Parser & p, string command, CommandMap & commands) {
+void read_command(Parser & p, string command, CommandMap & commands)
+{
 	if (p.next_token().asInput() == "*") {
 		p.get_token();
 		command += '*';
@@ -496,6 +496,8 @@ bool tex2lyx(string const & infilename, FileName const & outfilename)
 int main(int argc, char * argv[])
 {
 	using namespace lyx;
+
+	lyxerr.setStream(std::cerr);
 
 	easyParse(argc, argv);
 

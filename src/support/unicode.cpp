@@ -12,9 +12,8 @@
 
 #include <config.h>
 
-#include "unicode.h"
-
-#include "debug.h"
+#include "support/unicode.h"
+#include "support/debug.h"
 
 #include <iconv.h>
 

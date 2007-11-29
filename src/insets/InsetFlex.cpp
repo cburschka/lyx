@@ -21,7 +21,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Cursor.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Lexer.h"
 #include "Text.h"
 #include "MetricsInfo.h"

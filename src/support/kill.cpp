@@ -18,8 +18,8 @@
 #include <csignal>
 
 #ifdef _WIN32
-#include "debug.h"
-#include "os.h"
+#include "support/debug.h"
+#include "support/os.h"
 
 #include <windows.h>
 #include <cerrno>

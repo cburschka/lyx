@@ -15,8 +15,8 @@
 
 #include "GuiCitation.h"
 
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "qt_helpers.h"
 #include "Buffer.h"
 #include "BufferParams.h"

@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Length.h"
 
 #include <string>

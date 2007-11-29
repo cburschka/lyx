@@ -11,13 +11,13 @@
 #include <config.h>
 
 #include "Chktex.h"
-#include "gettext.h"
 
 #include "LaTeX.h" // TeXErrors
 
 #include "support/convert.h"
 #include "support/docstream.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Systemcall.h"
 

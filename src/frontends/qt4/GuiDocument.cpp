@@ -23,7 +23,7 @@
 #include "Encoding.h"
 #include "FloatPlacement.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "GuiBranches.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"

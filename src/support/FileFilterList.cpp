@@ -11,10 +11,9 @@
 #include <config.h>
 
 #include "support/FileFilterList.h"
-#include "support/lstrings.h"
 
-// FIXME Interface violation
-#include "gettext.h"
+#include "support/lstrings.h"
+#include "support/gettext.h"
 
 #include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>

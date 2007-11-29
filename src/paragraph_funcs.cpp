@@ -14,7 +14,7 @@
 
 #include "BufferParams.h"
 #include "Changes.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "InsetList.h"
 #include "Layout.h"
 #include "Paragraph.h"

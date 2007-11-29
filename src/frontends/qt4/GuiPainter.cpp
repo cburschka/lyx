@@ -20,7 +20,7 @@
 #include "GuiApplication.h"
 #include "qt_helpers.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "Language.h"
 #include "LyXRC.h"
 

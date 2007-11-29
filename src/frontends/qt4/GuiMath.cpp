@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "GuiMath.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "FuncRequest.h"
 
 using std::string;

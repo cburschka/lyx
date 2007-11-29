@@ -16,13 +16,11 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferParams.h"
-#include "debug.h"
 #include "DocIterator.h"
 #include "Counters.h"
 #include "ErrorList.h"
 #include "Floating.h"
 #include "FloatList.h"
-#include "gettext.h"
 #include "InsetList.h"
 #include "InsetIterator.h"
 #include "Language.h"
@@ -46,9 +44,11 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetInclude.h"
 
+#include "support/debug.h"
 #include "support/filetools.h"
-#include "support/lyxlib.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 
 
 namespace lyx {

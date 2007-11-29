@@ -18,8 +18,8 @@
 
 #include "Buffer.h"
 #include "Converter.h"
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"

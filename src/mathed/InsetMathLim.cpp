@@ -13,7 +13,7 @@
 #include "InsetMathLim.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "debug.h"
+#include "support/debug.h"
 
 
 namespace lyx {

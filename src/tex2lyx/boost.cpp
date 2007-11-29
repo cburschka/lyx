@@ -10,12 +10,13 @@
 
 #include <config.h>
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include <boost/assert.hpp>
 
 #include <cstdlib>
 #include <exception>
+#include <ostream>
 
 
 using std::endl;

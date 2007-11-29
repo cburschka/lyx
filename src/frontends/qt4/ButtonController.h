@@ -14,7 +14,7 @@
 
 #include "ButtonPolicy.h"
 
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include <list>
 

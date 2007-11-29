@@ -10,10 +10,11 @@
 
 #include <config.h>
 
-#include "docstring.h"
-#include "qstring_helpers.h"
-#include "unicode.h"
-#include "lstrings.h"
+#include "support/docstring.h"
+
+#include "support/lstrings.h"
+#include "support/qstring_helpers.h"
+#include "support/unicode.h"
 
 #include <locale>
 #include <iostream>

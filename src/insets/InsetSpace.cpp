@@ -15,7 +15,7 @@
 
 #include "InsetSpace.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "Dimension.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"

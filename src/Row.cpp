@@ -17,7 +17,7 @@
 #include <config.h>
 
 #include "Row.h"
-#include "debug.h"
+#include "support/debug.h"
 
 
 namespace lyx {

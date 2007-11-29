@@ -17,7 +17,7 @@
 #include "GraphicsImage.h"
 
 #include "ConverterCache.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Format.h"
 
 #include "support/filetools.h"

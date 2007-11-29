@@ -14,7 +14,7 @@
 
 #include "DocIterator.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "InsetList.h"
 #include "Paragraph.h"
 #include "Text.h"

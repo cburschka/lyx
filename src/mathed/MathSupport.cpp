@@ -18,7 +18,7 @@
 #include "MathParser.h"
 #include "MathStream.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include "support/docstream.h"
 

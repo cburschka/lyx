@@ -13,25 +13,25 @@
 #include <config.h>
 
 #include "EmbeddedFiles.h"
+
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "Paragraph.h"
-#include "InsetIterator.h"
-#include "debug.h"
-#include "gettext.h"
-#include "Format.h"
-#include "Lexer.h"
 #include "ErrorList.h"
+#include "Format.h"
+#include "InsetIterator.h"
+#include "Lexer.h"
+#include "LyX.h"
+#include "Paragraph.h"
+#include "Session.h"
 
 #include "frontends/alert.h"
 
+#include "support/debug.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/convert.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
-
-#include "LyX.h"
-#include "Session.h"
 
 #include <sstream>
 #include <fstream>

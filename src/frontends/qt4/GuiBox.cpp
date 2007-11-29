@@ -15,7 +15,7 @@
 #include "GuiBox.h"
 
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "LengthCombo.h"
 #include "Length.h"

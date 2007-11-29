@@ -16,7 +16,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BranchList.h"
-#include "debug.h"
+#include "support/debug.h"
 
 #include "insets/InsetBranch.h"
 

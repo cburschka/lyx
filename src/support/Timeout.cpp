@@ -10,12 +10,11 @@
 
 #include <config.h>
 
+#include "support/Timeout.h"
+#include "support/debug.h"
+
 #include <QObject>
 #include <QTimerEvent>
-
-#include "debug.h"
-#include "Timeout.h"
-
 
 namespace lyx {
 

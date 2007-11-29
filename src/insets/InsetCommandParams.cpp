@@ -27,8 +27,8 @@
 #include "InsetRef.h"
 #include "InsetTOC.h"
 
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "Lexer.h"
 
 #include "support/ExceptionMessage.h"

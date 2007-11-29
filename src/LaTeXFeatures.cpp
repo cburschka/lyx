@@ -18,7 +18,7 @@
 
 #include "Color.h"
 #include "BufferParams.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Encoding.h"
 #include "Floating.h"
 #include "FloatList.h"

@@ -25,14 +25,14 @@
 #include <config.h>
 
 #include "support/Forkedcall.h"
+
+#include "support/debug.h"
+#include "support/filetools.h"
 #include "support/ForkedcallsController.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/filetools.h"
 #include "support/os.h"
 #include "support/Timeout.h"
-
-#include "debug.h"
 
 #include <boost/bind.hpp>
 

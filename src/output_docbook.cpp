@@ -17,7 +17,7 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "Counters.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Layout.h"
 #include "OutputParams.h"
 #include "Paragraph.h"

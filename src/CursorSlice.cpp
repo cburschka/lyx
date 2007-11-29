@@ -15,9 +15,10 @@
 
 #include "CursorSlice.h"
 
-#include "debug.h"
 #include "Text.h"
 #include "Paragraph.h"
+
+#include "support/debug.h"
 
 #include "insets/Inset.h"
 

@@ -21,10 +21,8 @@
 #include "BufferView.h"
 #include "Changes.h"
 #include "Cursor.h"
-#include "debug.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
-#include "gettext.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Language.h"
@@ -46,9 +44,11 @@
 #include "mathed/InsetMath.h"
 #include "mathed/MathSupport.h"
 
+#include "support/debug.h"
+#include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
-#include "support/docstream.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"

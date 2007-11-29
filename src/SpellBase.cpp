@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "SpellBase.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "support/docstring.h"
 
 

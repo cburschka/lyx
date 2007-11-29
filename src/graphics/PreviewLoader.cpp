@@ -17,7 +17,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Converter.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Encoding.h"
 #include "Format.h"
 #include "InsetIterator.h"

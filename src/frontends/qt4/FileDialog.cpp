@@ -16,8 +16,8 @@
 #include "LyXFileDialog.h"
 #include "qt_helpers.h"
 
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 
 #include "support/FileFilterList.h"
 #include "support/os.h"

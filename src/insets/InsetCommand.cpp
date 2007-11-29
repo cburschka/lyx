@@ -18,7 +18,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 

@@ -16,7 +16,7 @@
 
 #include "MathExtern.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathDelim.h"

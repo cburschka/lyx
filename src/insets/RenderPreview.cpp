@@ -15,7 +15,7 @@
 
 #include "BufferView.h"
 #include "Dimension.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"

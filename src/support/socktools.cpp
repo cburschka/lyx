@@ -39,7 +39,7 @@ int accept(int)
 
 #include "support/lyxlib.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include <sys/socket.h>
 #include <sys/un.h>

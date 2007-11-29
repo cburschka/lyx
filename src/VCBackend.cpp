@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "VCBackend.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Buffer.h"
 
 #include "support/Path.h"

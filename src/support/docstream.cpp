@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "docstream.h"
-#include "unicode.h"
+#include "support/docstream.h"
+#include "support/unicode.h"
 
 #include <cerrno>
 #include <cstdio>

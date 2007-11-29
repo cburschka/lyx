@@ -17,7 +17,7 @@
 #include "MathStream.h"
 #include "MetricsInfo.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "Dimension.h"
 #include "TextPainter.h"
 

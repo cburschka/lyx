@@ -17,7 +17,7 @@
 #include "ParagraphParameters.h"
 
 #include "Buffer.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Layout.h"
 #include "Lexer.h"
 #include "Text.h"

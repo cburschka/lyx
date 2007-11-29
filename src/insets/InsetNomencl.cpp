@@ -16,7 +16,7 @@
 #include "Buffer.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "InsetIterator.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"

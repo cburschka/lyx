@@ -13,7 +13,7 @@
 #include "InsetEnvironment.h"
 
 #include "BufferParams.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Layout.h"
 #include "OutputParams.h"
 #include "output_latex.h"

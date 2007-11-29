@@ -15,7 +15,7 @@
 #include "qlkey.h"
 #include "qt_helpers.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include "Encoding.h"
 #include "Language.h"

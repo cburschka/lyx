@@ -17,7 +17,7 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "Text.h"

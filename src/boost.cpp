@@ -11,7 +11,8 @@
 #include <config.h>
 
 #include "LyX.h"
-#include "debug.h"
+
+#include "support/debug.h"
 #include "support/lyxlib.h"
 
 #include <boost/assert.hpp>

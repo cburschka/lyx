@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "support/FileName.h"
 
 #include <boost/crc.hpp>

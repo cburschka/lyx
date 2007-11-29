@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file package.C
+ * \file package.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,13 +13,12 @@
 
 #include "support/Package.h"
 
-#include "debug.h"
-#include "gettext.h"
-
+#include "support/debug.h"
 #include "support/environment.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
+#include "support/filetools.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 #include "support/os.h"
 
 #if defined (USE_WINDOWS_PACKAGING)

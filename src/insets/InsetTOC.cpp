@@ -15,7 +15,7 @@
 #include "Buffer.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "TocBackend.h"

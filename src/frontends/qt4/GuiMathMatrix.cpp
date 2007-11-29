@@ -14,7 +14,7 @@
 
 #include "EmptyTable.h"
 #include "qt_helpers.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include <sstream>
 

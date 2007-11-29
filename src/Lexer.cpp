@@ -15,7 +15,7 @@
 
 #include "Lexer.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include "support/convert.h"
 #include "support/filetools.h"

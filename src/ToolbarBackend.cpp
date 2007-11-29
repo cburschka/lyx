@@ -14,8 +14,8 @@
 #include "ToolbarBackend.h"
 #include "FuncRequest.h"
 #include "Lexer.h"
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "LyXAction.h"
 #include "support/lstrings.h"
 

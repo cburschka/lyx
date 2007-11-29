@@ -15,9 +15,9 @@
 #include <config.h>
 
 #include "support/ForkedcallsController.h"
-#include "support/Forkedcall.h"
 
-#include "debug.h"
+#include "support/debug.h"
+#include "support/Forkedcall.h"
 
 #ifdef _WIN32
 # include <sstream>

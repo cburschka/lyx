@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file src/gettext.h
+ * \file src/support/gettext.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -32,7 +32,7 @@ namespace lyx {
  *	_(str)
  *
  * Every file where there are strings needs:
- *	#include "gettext.h"
+ *	#include "support/gettext.h"
  *
  * Remember to mention each of these files in "po/POFILES.in"
  *

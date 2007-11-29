@@ -13,7 +13,7 @@
 #include "GuiAbout.h"
 
 #include "qt_helpers.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "version.h"
 
 #include "support/filetools.h"

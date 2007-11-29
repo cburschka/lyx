@@ -13,12 +13,11 @@
 
 #include "support/lstrings.h"
 
-#include "support/lyxlib.h"
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/lyxlib.h"
 #include "support/qstring_helpers.h"
 #include "support/textutils.h"
-
-#include "debug.h"
 
 #include <boost/tokenizer.hpp>
 #include <boost/assert.hpp>

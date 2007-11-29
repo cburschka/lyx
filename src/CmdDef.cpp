@@ -13,9 +13,9 @@
 #include "CmdDef.h"
 
 #include "LyXAction.h"
-#include "debug.h"
 #include "Lexer.h"
 
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 

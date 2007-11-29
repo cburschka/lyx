@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "debug.h"
+#include "support/debug.h"
 
 #define USE_ORIGINAL_MANAGER_FUNCS 1
 // new aspell pspell missing extern "C"

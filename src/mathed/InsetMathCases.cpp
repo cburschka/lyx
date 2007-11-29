@@ -15,7 +15,7 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"

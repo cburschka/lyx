@@ -15,7 +15,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Length.h"
 #include "Text.h"
 #include "TextMetrics.h" // for defaultRowHeight()

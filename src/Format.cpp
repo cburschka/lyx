@@ -14,13 +14,13 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "LyXRC.h"
-#include "debug.h"
-#include "gettext.h"
 #include "ServerSocket.h"
 
 #include "frontends/alert.h" //to be removed?
 
+#include "support/debug.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Systemcall.h"

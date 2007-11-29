@@ -97,7 +97,6 @@ SOURCEFILESCORE = \
 	Cursor.cpp \
 	CursorSlice.cpp \
 	CutAndPaste.cpp \
-	debug.cpp \
 	DepTable.cpp \
 	DocIterator.cpp \
 	EmbeddedFiles.cpp \
@@ -114,7 +113,6 @@ SOURCEFILESCORE = \
 	Format.cpp \
 	FuncRequest.cpp \
 	FuncStatus.cpp \
-	gettext.cpp \
 	Graph.cpp \
 	InsetIterator.cpp \
 	InsetList.cpp \
@@ -133,7 +131,6 @@ SOURCEFILESCORE = \
 	LyXRC.cpp \
 	LyXVC.cpp \
 	MenuBackend.cpp \
-	Messages.cpp \
 	MetricsInfo.cpp \
 	ModuleList.cpp \
 	Mover.cpp \
@@ -195,7 +192,6 @@ HEADERFILESCORE = \
 	Cursor.h \
 	CursorSlice.h \
 	CutAndPaste.h \
-	debug.h \
 	DepTable.h \
 	DispatchResult.h \
 	DocIterator.h \
@@ -214,7 +210,6 @@ HEADERFILESCORE = \
 	Format.h \
 	FuncRequest.h \
 	FuncStatus.h \
-	gettext.h \
 	Graph.h \
 	InsetIterator.h \
 	InsetList.h \
@@ -237,7 +232,6 @@ HEADERFILESCORE = \
 	LyXRC.h \
 	LyXVC.h \
 	MenuBackend.h \
-	Messages.h \
 	MetricsInfo.h \
 	ModuleList.h \
 	Mover.h \

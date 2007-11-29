@@ -24,8 +24,6 @@
 #include "Changes.h"
 #include "Counters.h"
 #include "Encoding.h"
-#include "debug.h"
-#include "gettext.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -34,7 +32,6 @@
 #include "Font.h"
 #include "FontList.h"
 #include "LyXRC.h"
-#include "Messages.h"
 #include "OutputParams.h"
 #include "output_latex.h"
 #include "paragraph_funcs.h"
@@ -50,9 +47,12 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
 
-#include "support/lstrings.h"
-#include "support/textutils.h"
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
+#include "support/Messages.h"
+#include "support/textutils.h"
 #include "support/unicode.h"
 
 #include <sstream>

@@ -17,9 +17,9 @@
 
 #include "LyXVC.h"
 #include "VCBackend.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Buffer.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "frontends/alert.h"
 

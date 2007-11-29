@@ -16,8 +16,8 @@
 
 #include "LengthCombo.h"
 
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "Language.h"
 #include "Length.h"
 

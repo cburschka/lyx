@@ -16,7 +16,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "buffer_funcs.h"
-#include "gettext.h"
 #include "InsetIterator.h"
 #include "Paragraph.h"
 
@@ -25,8 +24,9 @@
 #include "insets/InsetBibtex.h"
 #include "insets/InsetInclude.h"
 
-#include "support/lstrings.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include "boost/regex.hpp"
 

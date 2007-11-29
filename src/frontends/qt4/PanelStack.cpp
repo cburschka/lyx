@@ -14,7 +14,7 @@
 
 #include "qt_helpers.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include <QFontMetrics>
 #include <QStackedWidget>

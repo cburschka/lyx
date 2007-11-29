@@ -14,7 +14,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Encoding.h"
 #include "InsetList.h"
 #include "Language.h"

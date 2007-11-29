@@ -15,9 +15,9 @@
 #include "ISpell.h"
 
 #include "BufferParams.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "Encoding.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Language.h"
 #include "LyXRC.h"
 #include "WordLangTuple.h"

@@ -11,9 +11,9 @@
 
 #include "CoordCache.h"
 
-#include "debug.h"
 #include "Text.h"
 
+#include "support/debug.h"
 #include "support/docstring.h"
 
 #include "insets/Inset.h"

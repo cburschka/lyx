@@ -18,7 +18,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Cursor.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
 #include "OutputParams.h"

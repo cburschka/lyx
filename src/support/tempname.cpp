@@ -13,10 +13,9 @@
 #include "support/lyxlib.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/Package.h"
-
-#include "debug.h"
 
 #include <boost/scoped_array.hpp>
 

@@ -12,7 +12,7 @@
 
 #include "support/ForkedCallQueue.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include <boost/bind.hpp>
 

@@ -15,7 +15,7 @@
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "LaTeXFeatures.h"
 #include "LyXFunc.h"
 #include "OutputParams.h"

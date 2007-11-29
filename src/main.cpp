@@ -11,9 +11,9 @@
 
 #include <config.h>
 
-#include "debug.h"
+#include "support/debug.h"
 #include "LyX.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "support/os.h"
 

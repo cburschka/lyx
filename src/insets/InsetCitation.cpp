@@ -15,7 +15,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"

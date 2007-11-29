@@ -14,7 +14,7 @@
 #include "InsetMarginal.h"
 
 #include "Buffer.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "OutputParams.h"
 
 #include <ostream>

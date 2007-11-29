@@ -16,9 +16,9 @@
 
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "InsetSpecialChar.h"
 #include "KeyMap.h"
 #include "LaTeXFeatures.h"

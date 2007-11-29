@@ -20,7 +20,7 @@
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "support/lstrings.h"
 

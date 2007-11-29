@@ -15,7 +15,7 @@
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include "support/filetools.h"
 

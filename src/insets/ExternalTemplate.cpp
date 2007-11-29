@@ -13,7 +13,7 @@
 
 #include "ExternalTemplate.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "Lexer.h"
 
 #include "support/filetools.h"

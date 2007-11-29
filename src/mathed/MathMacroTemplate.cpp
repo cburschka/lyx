@@ -26,11 +26,11 @@
 #include "Buffer.h"
 #include "Color.h"
 #include "Cursor.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Lexer.h"
 #include "Undo.h"
 
@@ -41,7 +41,7 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include <sstream>
 

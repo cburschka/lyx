@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "Session.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "support/Package.h"
 #include "support/filetools.h"
 

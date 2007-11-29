@@ -11,8 +11,8 @@
 
 #include <config.h>
 
-#include "SignalSlot.h"
-#include "SignalSlotPrivate.h"
+#include "support/SignalSlot.h"
+#include "support/SignalSlotPrivate.h"
 
 namespace lyx {
 

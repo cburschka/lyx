@@ -25,10 +25,10 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "BufferParams.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "TextClass.h"
 
 #include "support/convert.h"

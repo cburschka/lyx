@@ -11,10 +11,10 @@
 
 #include <config.h>
 
-#include "gettext.h"
-#include "Messages.h"
+#include "support/gettext.h"
 
 #include "support/lstrings.h"
+#include "support/Messages.h"
 
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>

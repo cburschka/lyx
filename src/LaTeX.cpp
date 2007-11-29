@@ -17,9 +17,9 @@
 
 #include "BufferList.h"
 #include "LaTeX.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "LyXRC.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "DepTable.h"
 
 #include "support/filetools.h"

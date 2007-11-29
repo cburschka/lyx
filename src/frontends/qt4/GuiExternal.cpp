@@ -15,7 +15,7 @@
 #include "GuiExternal.h"
 
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Length.h"
 #include "LyXRC.h"
 

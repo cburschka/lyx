@@ -12,7 +12,7 @@
 
 #include "Thesaurus.h"
 
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "support/lstrings.h"
 

@@ -19,7 +19,6 @@
 #include "Cursor.h"
 #include "CoordCache.h"
 #include "CutAndPaste.h"
-#include "debug.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
@@ -35,6 +34,7 @@
 #include "ParIterator.h"
 #include "TextMetrics.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 
 #include "insets/InsetTabular.h"

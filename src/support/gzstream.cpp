@@ -28,7 +28,8 @@
 
 #include <config.h>
 
-#include "gzstream.h"
+#include "support/gzstream.h"
+
 #include <iostream>
 #ifdef HAVE_STRING_H
 # include <string.h> // for memcpy

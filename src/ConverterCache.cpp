@@ -18,9 +18,9 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "Mover.h"
-#include "debug.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/lyxtime.h"

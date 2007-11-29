@@ -15,7 +15,7 @@
 
 #include "KeyMap.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "KeySequence.h"
 #include "LyXAction.h"
 #include "Lexer.h"

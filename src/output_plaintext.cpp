@@ -14,8 +14,8 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "Layout.h"
 #include "output.h"
 #include "OutputParams.h"
@@ -132,7 +132,7 @@ void writePlaintextParagraph(Buffer const & buf,
 
 	//--
 	// we should probably change to the paragraph language in the
-	// gettext here (if possible) so that strings are output in
+	// support/gettext.here (if possible) so that strings are output in
 	// the correct language! (20012712 Jug)
 	//--
 	switch (ltype) {

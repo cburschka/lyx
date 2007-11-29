@@ -17,7 +17,7 @@
 #include "Buffer.h"
 #include "Format.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "LyXRC.h"
 
 #include "qt_helpers.h"

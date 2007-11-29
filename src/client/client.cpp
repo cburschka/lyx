@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "debug.h"
+#include "support/debug.h"
 #include "support/FileName.h"
 #include "support/unicode.h"
 #include "support/lstrings.h"

@@ -19,7 +19,7 @@
 #include "InsetMathNest.h"
 #include "Buffer.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "DocIterator.h"
 
 #include <boost/assert.hpp>

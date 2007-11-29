@@ -20,7 +20,7 @@
 #include "BufferView.h"
 #include "Buffer.h"
 #include "Cursor.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Paragraph.h"
 #include "TexRow.h"
 

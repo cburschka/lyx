@@ -14,7 +14,7 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "frontends/Painter.h"
-#include "debug.h"
+#include "support/debug.h"
 
 
 namespace lyx {

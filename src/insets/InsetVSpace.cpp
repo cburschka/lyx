@@ -18,7 +18,7 @@
 #include "Dimension.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Lexer.h"
 #include "Text.h"
 #include "MetricsInfo.h"

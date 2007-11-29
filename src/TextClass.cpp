@@ -18,8 +18,8 @@
 
 #include "Color.h"
 #include "Counters.h"
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "Layout.h"

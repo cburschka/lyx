@@ -21,11 +21,11 @@
 
 #include "LyXRC.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "Color.h"
 #include "Converter.h"
 #include "Format.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Session.h"
 #include "Lexer.h"
 #include "FontEnums.h"

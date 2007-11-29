@@ -23,7 +23,6 @@
 #include "Chktex.h"
 #include "Converter.h"
 #include "Counters.h"
-#include "debug.h"
 #include "DocIterator.h"
 #include "EmbeddedFiles.h"
 #include "Encoding.h"
@@ -31,7 +30,6 @@
 #include "Exporter.h"
 #include "Format.h"
 #include "FuncRequest.h"
-#include "gettext.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Language.h"
@@ -79,18 +77,20 @@
 
 #include "graphics/Previews.h"
 
-#include "support/types.h"
-#include "support/lyxalgo.h"
+#include "support/convert.h"
+#include "support/debug.h"
 #include "support/FileFilterList.h"
 #include "support/filetools.h"
 #include "support/Forkedcall.h"
+#include "support/gettext.h"
 #include "support/gzstream.h"
 #include "support/lstrings.h"
+#include "support/lyxalgo.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/Path.h"
 #include "support/textutils.h"
-#include "support/convert.h"
+#include "support/types.h"
 
 #if !defined (HAVE_FORK)
 # define fork() -1

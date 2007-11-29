@@ -17,7 +17,7 @@
 #include <boost/assert.hpp>
 
 #if defined (_WIN32)
-# include "gettext.h"
+# include "support/gettext.h"
 # include <windows.h>
 # include <lmcons.h>
 #else

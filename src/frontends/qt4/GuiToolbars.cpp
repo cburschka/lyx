@@ -20,10 +20,10 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Layout.h"
 #include "LyX.h"
 #include "LyXFunc.h"

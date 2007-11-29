@@ -14,7 +14,7 @@
 
 
 #include "Inset.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 
 namespace lyx {

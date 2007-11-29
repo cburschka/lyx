@@ -14,8 +14,8 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "Text.h"
 #include "ParIterator.h"
 

@@ -15,7 +15,7 @@
 
 #include "LyXAction.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "FuncRequest.h"
 
 #include "support/lstrings.h"

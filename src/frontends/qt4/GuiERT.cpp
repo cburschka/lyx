@@ -13,7 +13,7 @@
 #include <config.h>
 
 #include "GuiERT.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "FuncRequest.h"
 
 #include <QRadioButton>

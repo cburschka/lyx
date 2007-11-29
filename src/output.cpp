@@ -12,7 +12,7 @@
 
 #include "output.h"
 
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "frontends/alert.h"
 

@@ -22,7 +22,7 @@
 
 #include "MenuBackend.h"
 
-#include "debug.h"
+#include "support/debug.h"
 
 #include <QCursor>
 #include <QMenuBar>

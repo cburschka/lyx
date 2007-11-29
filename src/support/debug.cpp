@@ -11,10 +11,10 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "gettext.h"
+#include "support/debug.h"
 
 #include "support/convert.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/FileName.h"
 

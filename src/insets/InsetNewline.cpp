@@ -12,7 +12,7 @@
 
 #include "InsetNewline.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "Dimension.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"

@@ -15,7 +15,7 @@
 #include "InsetMath.h"
 #include "MathSupport.h"
 #include "MathParser.h"
-#include "debug.h"
+#include "support/debug.h"
 
 #include "support/filetools.h" //  LibFileSearch
 #include "support/docstream.h"

@@ -21,19 +21,18 @@
 
 #include <config.h>
 
-#include "support/convert.h"
-#include "support/environment.h"
 #include "support/filetools.h"
+
+#include "support/convert.h"
+#include "support/debug.h"
+#include "support/environment.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/Path.h"
 #include "support/Systemcall.h"
-
-// FIXME Interface violation
-#include "gettext.h"
-#include "debug.h"
 
 #include <boost/assert.hpp>
 #include <boost/regex.hpp>
@@ -246,7 +245,7 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 	   variable. But we don't use the value if the currently
 	   selected locale is the C locale. This is a GNU extension.
 
-	   Otherwise, w use a trick to guess what gettext has done:
+	   Otherwise, w use a trick to guess what support/gettext.has done:
 	   each po file is able to tell us its name. (JMarc)
 	*/
 

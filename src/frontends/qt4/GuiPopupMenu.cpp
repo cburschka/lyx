@@ -21,7 +21,7 @@
 #include "MenuBackend.h"
 
 #include "support/lstrings.h"
-#include "debug.h"
+#include "support/debug.h"
 
 
 namespace lyx {

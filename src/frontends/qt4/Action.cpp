@@ -12,7 +12,7 @@
 
 #include "Action.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "GuiView.h"

@@ -13,7 +13,7 @@
 
 #include "InsetGraphicsParams.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "LyX.h" // for use_gui
 #include "Lexer.h"
 #include "LyXRC.h"

@@ -20,7 +20,7 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "Cursor.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "LaTeXFeatures.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"

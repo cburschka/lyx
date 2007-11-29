@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "ButtonPolicy.h"
-#include "debug.h"
+#include "support/debug.h"
 
 #include <iostream>
 

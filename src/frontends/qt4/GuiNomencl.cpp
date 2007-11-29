@@ -13,7 +13,7 @@
 
 #include "GuiNomencl.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "qt_helpers.h"
 
 #include <QLabel>

@@ -11,8 +11,7 @@
 
 #include <config.h>
 
-#include "convert.h"
-
+#include "support/convert.h"
 #include "support/docstring.h"
 
 #include <boost/lexical_cast.hpp>

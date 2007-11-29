@@ -18,9 +18,7 @@
 
 #include "BufferParams.h" // stateText
 #include "Color.h"
-#include "debug.h"
 #include "Encoding.h"
-#include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -29,6 +27,8 @@
 #include "OutputParams.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 using std::endl;

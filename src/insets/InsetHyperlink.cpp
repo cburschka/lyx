@@ -16,7 +16,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "OutputParams.h"
 
 #include "support/lstrings.h"

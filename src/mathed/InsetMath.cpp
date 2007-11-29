@@ -14,8 +14,8 @@
 #include "InsetMath.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "gettext.h"
-#include "debug.h"
+#include "support/gettext.h"
+#include "support/debug.h"
 
 #include "support/docstream.h"
 #include "support/lstrings.h"

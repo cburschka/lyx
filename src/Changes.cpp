@@ -14,10 +14,11 @@
 #include <config.h>
 
 #include "Changes.h"
-#include "debug.h"
 #include "Author.h"
 #include "BufferParams.h"
 #include "LaTeXFeatures.h"
+
+#include "support/debug.h"
 
 #include <boost/assert.hpp>
 

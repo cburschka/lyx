@@ -22,12 +22,9 @@
 #include "buffer_funcs.h"
 #include "Bullet.h"
 #include "Color.h"
-#include "debug.h"
 #include "Encoding.h"
-#include "gettext.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
-#include "Messages.h"
 #include "ModuleList.h"
 #include "Font.h"
 #include "Lexer.h"
@@ -40,12 +37,16 @@
 #include "PDFOptions.h"
 
 #include "frontends/alert.h"
+
 #include "insets/InsetListingsParams.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
+#include "support/Messages.h"
 #include "support/Translator.h"
 #include "support/lstrings.h"
 

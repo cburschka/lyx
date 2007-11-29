@@ -14,7 +14,7 @@
 
 #include "Language.h"
 
-#include "debug.h"
+#include "support/debug.h"
 #include "Encoding.h"
 #include "Lexer.h"
 #include "LyXRC.h"

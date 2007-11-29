@@ -13,7 +13,7 @@
 
 #include "GuiNote.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "insets/InsetNote.h"
 

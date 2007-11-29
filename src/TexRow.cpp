@@ -13,7 +13,7 @@
 #include <config.h>
 
 #include "TexRow.h"
-#include "debug.h"
+#include "support/debug.h"
 
 #include <algorithm>
 

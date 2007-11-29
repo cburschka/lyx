@@ -29,8 +29,8 @@ bool rename(FileName const & from, FileName const & to)
 		if (copy(from, to)) {
 			from.removeFile();
 			return true;
-		} else
-			return false;
+		}
+		return false;
 	}
 	return true;
 }

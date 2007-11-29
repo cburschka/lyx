@@ -20,7 +20,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "buffer_funcs.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "DocIterator.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"

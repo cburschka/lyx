@@ -10,7 +10,7 @@
 #include <config.h>
 
 #include "Messages.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "support/filetools.h"
 #include "support/Package.h"
 #include "support/unicode.h"

@@ -20,7 +20,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "FuncRequest.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include "support/convert.h"
 #include "support/FileFilterList.h"

@@ -16,7 +16,7 @@
 #include "GuiView.h"
 
 #include "qt_helpers.h"
-#include "gettext.h"
+#include "support/gettext.h"
 
 #include <QPixmap>
 #include <QCheckBox>

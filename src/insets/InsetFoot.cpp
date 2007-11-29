@@ -10,14 +10,14 @@
  */
 
 #include <config.h>
-#include "debug.h"
+#include "support/debug.h"
 
 #include "InsetFoot.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Counters.h"
-#include "gettext.h"
+#include "support/gettext.h"
 #include "Layout.h"
 // FIXME: the following is needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)

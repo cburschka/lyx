@@ -15,7 +15,7 @@
 #include "Validator.h"
 #include "qt_helpers.h"
 
-#include "gettext.h"
+#include "support/gettext.h"
 #include "LyXRC.h"
 
 #include "frontends/alert.h"

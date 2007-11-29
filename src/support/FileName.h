@@ -12,7 +12,7 @@
 #ifndef FILENAME_H
 #define FILENAME_H
 
-#include "strfwd.h"
+#include "support/strfwd.h"
 
 #include <ctime>
 #include <string>

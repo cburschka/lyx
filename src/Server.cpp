@@ -40,7 +40,7 @@
 #include <config.h>
 
 #include "Server.h"
-#include "debug.h"
+#include "support/debug.h"
 #include "FuncRequest.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"

@@ -14,10 +14,10 @@
 #include <config.h>
 
 #include "Counters.h"
-#include "debug.h"
 
-#include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/debug.h"
+#include "support/lstrings.h"
 
 #include <boost/assert.hpp>
 
