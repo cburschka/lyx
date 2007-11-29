@@ -72,12 +72,12 @@ void ViewSourceWidget::updateView()
 	if (autoUpdateCB->isChecked())
 		update(viewFullSourceCB->isChecked());
 
-	int beg, end;
-	boost::tie(beg, end) = controller_.getRows();
+	GuiViewSource::Row row = controller_.getRows();
 	QTextCursor c = QTextCursor(viewSourceTV->document());
-	c.movePosition(QTextCursor::NextBlock, QTextCursor::MoveAnchor, beg);
+	c.movePosition(QTextCursor::NextBlock, QTextCursor::MoveAnchor, row.begin);
 	c.select(QTextCursor::BlockUnderCursor);
-	c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor, end - beg + 1);
+	c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor,
+		row.end - row.begin + 1);
 	viewSourceTV->setTextCursor(c);
 }
 
@@ -88,7 +88,8 @@ void ViewSourceWidget::update(bool full_source)
 }
 
 
-GuiViewSource::GuiViewSource(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
+GuiViewSource::GuiViewSource(GuiView & parent,
+		Qt::DockWidgetArea area, Qt::WindowFlags flags)
 	: DockView(parent, "view-source", area, flags)
 {
 	widget_ = new ViewSourceWidget(*this);
@@ -139,7 +140,7 @@ QString GuiViewSource::getContent(bool fullSource)
 }
 
 
-std::pair<int, int> GuiViewSource::getRows() const
+GuiViewSource::Row GuiViewSource::getRows() const
 {
 	BufferView const * view = bufferview();
 	CursorSlice beg = view->cursor().selectionBegin().bottom();
@@ -151,7 +152,10 @@ std::pair<int, int> GuiViewSource::getRows() const
 		getRowFromIdPos(end.paragraph().id(), end.pos());
 	int nextendrow = view->buffer().texrow().
 		getRowFromIdPos(end.paragraph().id(), end.pos() + 1);
-	return std::make_pair(begrow, endrow == nextendrow ? endrow : (nextendrow - 1));
+	Row row;
+	row.begin = begrow;
+	row.end = endrow == nextendrow ? endrow : (nextendrow - 1);
+	return row;
 }
 
 
@@ -172,7 +176,7 @@ QString GuiViewSource::title() const
 
 Dialog * createGuiViewSource(GuiView & lv)
 {
-	return new GuiViewSource(static_cast<GuiView &>(lv));
+	return new GuiViewSource(lv);
 }
 
 

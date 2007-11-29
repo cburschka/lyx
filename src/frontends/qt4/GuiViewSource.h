@@ -87,9 +87,9 @@ public:
 		\param fullSource get full source code
 	 */
 	QString getContent(bool fullSource);
-	/** get the cursor position in the source code
-	 */
-	std::pair<int, int> getRows() const;
+	// cursor position in the source code
+	struct Row { int begin; int end; };
+	Row getRows() const;
 
 private:
 	/// The encapsulated widget.
