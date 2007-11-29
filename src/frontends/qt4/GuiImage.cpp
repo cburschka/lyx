@@ -14,11 +14,11 @@
 #include "GuiImage.h"
 #include "qt_helpers.h"
 
-#include "support/debug.h"
 #include "Format.h"
 
 #include "graphics/GraphicsParams.h"
 
+#include "support/debug.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"       // ascii_lowercase
 
@@ -26,17 +26,8 @@
 #include <QImage>
 #include <QImageReader>
 
-#include <boost/bind.hpp>
-#include <boost/tuple/tuple.hpp>
-
 using lyx::support::ascii_lowercase;
 
-using boost::bind;
-
-using std::endl;
-using std::equal_to;
-using std::find_if;
-using std::string;
 
 namespace lyx {
 namespace graphics {
@@ -60,13 +51,12 @@ Image::FormatList GuiImage::loadableFormats()
 	Formats::const_iterator begin = formats.begin();
 	Formats::const_iterator end   = formats.end();
 
-
-//	LYXERR(Debug::GRAPHICS,
-//		"D:/msys/home/yns/src/lyx-devel/lib/images/banner.png mis of format: "
-//		<< fromqstr(Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.png")))
-//	if (Pic.pictureFormat("D:/msys/home/yns/src/lyx-devel/lib/images/banner.png"))
-//		LYXERR(Debug::GRAPHICS, "pictureFormat not returned NULL\n"
-//			<< "Supported formats are: " << Pic.inputFormats());
+	//LYXERR(Debug::GRAPHICS,
+	//	"D:/msys/home/yns/src/lyx-devel/lib/images/banner.png mis of format: "
+	//	<< fromqstr(Pic.pictureFormat("D:/msys/.../banner.png")))
+	//if (Pic.pictureFormat("D:/msys/.../banner.png"))
+	//	LYXERR(Debug::GRAPHICS, "pictureFormat not returned NULL\n"
+	//		<< "Supported formats are: " << Pic.inputFormats());
 
 	QList<QByteArray> qt_formats = QImageReader::supportedImageFormats();
 
@@ -80,23 +70,21 @@ Image::FormatList GuiImage::loadableFormats()
 
 		LYXERR(Debug::GRAPHICS, (const char *) *it << ", ");
 
-		string ext = ascii_lowercase((const char *) *it);
+		std::string ext = ascii_lowercase((const char *) *it);
 
 		// special case
 		if (ext == "jpeg")
 			ext = "jpg";
 
-		Formats::const_iterator fit =
-			find_if(begin, end,
-				bind(equal_to<string>(),
-				     bind(&Format::extension, _1),
-				     ext));
-		if (fit != end)
-			fmts.push_back(fit->name());
+		for (Formats::const_iterator fit = begin; fit != end; ++fit) 
+			if (fit->extension() == ext) {
+				fmts.push_back(fit->name());
+				break;
+			}
 	}
 
 	if (lyxerr.debugging()) {
-		LYXERR(Debug::GRAPHICS, "\nOf these, LyX recognises the following formats:");
+		LYXERR(Debug::GRAPHICS, "Of these, LyX recognises the following formats:");
 
 		FormatList::const_iterator fbegin = fmts.begin();
 		FormatList::const_iterator fend   = fmts.end();
