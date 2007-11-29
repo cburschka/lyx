@@ -16,7 +16,6 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "support/debug.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "InsetList.h"
@@ -28,9 +27,9 @@
 #include "insets/InsetOptArg.h"
 
 #include "support/convert.h"
-#include "support/docstring.h"
+#include "support/debug.h"
+#include "support/docstream.h"
 
-using std::string;
 
 namespace lyx {
 
