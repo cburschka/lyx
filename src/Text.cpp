@@ -262,7 +262,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		lex.eatLine();
 		std::istringstream is(lex.getString());
 		unsigned int aid;
-		time_type ct;
+		time_t ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
 			errorList.push_back(ErrorItem(_("Change tracking error"),
@@ -275,7 +275,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		lex.eatLine();
 		std::istringstream is(lex.getString());
 		unsigned int aid;
-		time_type ct;
+		time_t ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
 			errorList.push_back(ErrorItem(_("Change tracking error"),

@@ -16,13 +16,13 @@ using std::string;
 
 namespace lyx {
 
-time_type current_time()
+time_t current_time()
 {
 	return time(0);
 }
 
 
-string const formatted_time(time_type t, string const & fmt)
+string const formatted_time(time_t t, string const & fmt)
 {
 	struct tm * loc_tm = localtime(&t);
 	char date[50];

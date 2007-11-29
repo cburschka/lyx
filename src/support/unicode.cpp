@@ -23,6 +23,7 @@
 #include <iomanip>
 #include <ostream>
 #include <map>
+#include <string>
 
 using std::endl;
 using std::map;
