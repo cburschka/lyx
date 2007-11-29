@@ -15,9 +15,6 @@
 
 #include "support/strfwd.h"
 
-#include <boost/scoped_ptr.hpp>
-
-#include <string>
 #include <vector>
 
 
@@ -26,34 +23,26 @@ namespace lyx {
 class IconvProcessor
 {
 public:
-	IconvProcessor(
-		char const * tocode = "",
-		char const * fromcode = "");
+	IconvProcessor(char const * tocode = "", char const * fromcode = "");
 	/// copy constructor needed because of pimpl_
 	IconvProcessor(IconvProcessor const &);
 	/// assignment operator needed because of pimpl_
-	IconvProcessor & operator=(IconvProcessor const &);
-	/// destructor (needs to be implemented in the .C file because the
-	/// boost::scoped_ptr destructor needs a fully defined type
+	void operator=(IconvProcessor const &);
+	/// destructor
 	~IconvProcessor();
 
 	/// convert any data from \c fromcode to \c tocode unicode format.
 	/// \return the number of bytes of the converted output buffer.
-	int convert(
-		char const * in_buffer,
-		size_t in_size,
-		char * out_buffer,
-		size_t max_out_size);
+	int convert(char const * in_buffer, size_t in_size,
+		char * out_buffer, size_t max_out_size);
+
 private:
 	/// open iconv.
 	/// \return true if the processor is ready to use.
 	bool init();
-
-	std::string tocode_;
-	std::string fromcode_;
-
-	struct Private;
-	::boost::scoped_ptr<Private> pimpl_;
+	/// hide internals
+	struct Impl;
+	Impl * pimpl_;
 };
 
 // A single codepoint conversion for utf8_to_ucs4 does not make

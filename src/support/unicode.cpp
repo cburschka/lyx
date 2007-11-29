@@ -52,47 +52,47 @@ namespace lyx {
 static const iconv_t invalid_cd = (iconv_t)(-1);
 
 
-struct IconvProcessor::Private {
-	Private(): cd(invalid_cd) {}
-	~Private()
+struct IconvProcessor::Impl
+{
+	Impl(std::string const & to, std::string const & from)
+		: cd(invalid_cd), tocode_(to), fromcode_(from)
+	{}
+
+	~Impl()
 	{
-		if (cd != invalid_cd) {
-			if (iconv_close(cd) == -1) {
-				lyxerr << "Error returned from iconv_close("
-				       << errno << ")" << endl;
-			}
-		}
+		if (cd != invalid_cd && iconv_close(cd) == -1)
+				LYXERR0("Error returned from iconv_close(" << errno << ")");
 	}
+
 	iconv_t cd;
+	std::string tocode_;
+	std::string fromcode_;
 };
 
 
 IconvProcessor::IconvProcessor(char const * tocode, char const * fromcode)
-	: tocode_(tocode), fromcode_(fromcode),
-		pimpl_(new IconvProcessor::Private)
+	: pimpl_(new IconvProcessor::Impl(tocode, fromcode))
 {
 }
 
 
 IconvProcessor::IconvProcessor(IconvProcessor const & other)
-	: tocode_(other.tocode_), fromcode_(other.fromcode_),
-	  pimpl_(new IconvProcessor::Private)
+	: pimpl_(new IconvProcessor::Impl(other.pimpl_->tocode_, other.pimpl_->fromcode_))
 {
 }
 
 
-IconvProcessor & IconvProcessor::operator=(IconvProcessor const & other)
+IconvProcessor::~IconvProcessor()
 {
-	if (&other == this)
-		return *this;
-	tocode_ = other.tocode_;
-	fromcode_ = other.fromcode_;
-	pimpl_.reset(new Private);
-	return *this;
+	delete pimpl_;
 }
 
 
-IconvProcessor::~IconvProcessor() {}
+void IconvProcessor::operator=(IconvProcessor const & other)
+{
+	if (&other != this)
+		pimpl_ = new Impl(other.pimpl_->tocode_, other.pimpl_->fromcode_);
+}
 
 
 bool IconvProcessor::init()
@@ -100,15 +100,15 @@ bool IconvProcessor::init()
 	if (pimpl_->cd != invalid_cd)
 		return true;
 
-	pimpl_->cd = iconv_open(tocode_.c_str(), fromcode_.c_str());
+	pimpl_->cd = iconv_open(pimpl_->tocode_.c_str(), pimpl_->fromcode_.c_str());
 	if (pimpl_->cd != invalid_cd)
 		return true;
 
 	lyxerr << "Error returned from iconv_open" << endl;
 	switch (errno) {
 		case EINVAL:
-			lyxerr << "EINVAL The conversion from " << fromcode_
-				<< " to " << tocode_
+			lyxerr << "EINVAL The conversion from " << pimpl_->fromcode_
+				<< " to " << pimpl_->tocode_
 				<< " is not supported by the implementation."
 				<< endl;
 			break;
@@ -154,8 +154,8 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 		case EILSEQ:
 			lyxerr << "EILSEQ An invalid multibyte sequence"
 				<< " has been encountered in the input.\n"
-				<< "When converting from " << fromcode_
-				<< " to " << tocode_ << ".\n";
+				<< "When converting from " << pimpl_->fromcode_
+				<< " to " << pimpl_->tocode_ << ".\n";
 			lyxerr << "Input:" << std::hex;
 			for (size_t i = 0; i < buflen; ++i) {
 				// char may be signed, avoid output of
@@ -169,8 +169,8 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 		case EINVAL:
 			lyxerr << "EINVAL An incomplete multibyte sequence"
 				<< " has been encountered in the input.\n"
-				<< "When converting from " << fromcode_
-				<< " to " << tocode_ << ".\n";
+				<< "When converting from " << pimpl_->fromcode_
+				<< " to " << pimpl_->tocode_ << ".\n";
 			lyxerr << "Input:" << std::hex;
 			for (size_t i = 0; i < buflen; ++i) {
 				// char may be signed, avoid output of
@@ -200,9 +200,7 @@ namespace {
 
 template<typename RetType, typename InType>
 vector<RetType>
-iconv_convert(IconvProcessor & processor,
-	      InType const * buf,
-	      size_t buflen)
+iconv_convert(IconvProcessor & processor, InType const * buf, size_t buflen)
 {
 	if (buflen == 0)
 		return vector<RetType>();

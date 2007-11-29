@@ -17,6 +17,7 @@
 #include "support/Package.h"
 #include "support/unicode.h"
 
+#include <boost/assert.hpp>
 #include <boost/current_function.hpp>
 
 #include <cerrno>
