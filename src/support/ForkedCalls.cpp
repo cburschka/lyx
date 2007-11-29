@@ -23,9 +23,11 @@
 
 #include <boost/bind.hpp>
 
-#include <vector>
 #include <cerrno>
+#include <queue>
 #include <sstream>
+#include <utility>
+#include <vector>
 
 #ifdef _WIN32
 # define SIGHUP 1
@@ -145,8 +147,7 @@ int ForkedProcess::run(Starttype type)
 		break;
 	case DontWait: {
 		// Integrate into the Controller
-		ForkedCallsController & contr = ForkedCallsController::get();
-		contr.addCall(*this);
+		ForkedCallsController::addCall(*this);
 		break;
 	}
 	}
@@ -399,15 +400,31 @@ int ForkedCall::generateChild()
 //
 /////////////////////////////////////////////////////////////////////
 
+namespace ForkedCallQueue {
 
-ForkedCallQueue & ForkedCallQueue::get()
-{
-	static ForkedCallQueue singleton;
-	return singleton;
-}
+/// A process in the queue
+typedef std::pair<std::string, ForkedCall::SignalTypePtr> Process;
+/** Add a process to the queue. Processes are forked sequentially
+ *  only one is running at a time.
+ *  Connect to the returned signal and you'll be informed when
+ *  the process has ended.
+ */
+ForkedCall::SignalTypePtr add(std::string const & process);
 
+/// in-progress queue
+static std::queue<Process> callQueue_;
 
-ForkedCall::SignalTypePtr ForkedCallQueue::add(string const & process)
+/// flag whether queue is running
+static bool running_ = 0;
+
+///
+void startCaller();
+///
+void stopCaller();
+///
+void callback(pid_t, int);
+
+ForkedCall::SignalTypePtr add(string const & process)
 {
 	ForkedCall::SignalTypePtr ptr;
 	ptr.reset(new ForkedCall::SignalType);
@@ -418,15 +435,14 @@ ForkedCall::SignalTypePtr ForkedCallQueue::add(string const & process)
 }
 
 
-void ForkedCallQueue::callNext()
+void callNext()
 {
 	if (callQueue_.empty())
 		return;
 	Process pro = callQueue_.front();
 	callQueue_.pop();
 	// Bind our chain caller
-	pro.second->connect(boost::bind(&ForkedCallQueue::callback,
-					 this, _1, _2));
+	pro.second->connect(boost::bind(&ForkedCallQueue::callback, _1, _2));
 	ForkedCall call;
 	// If we fail to fork the process, then emit the signal
 	// to tell the outside world that it failed.
@@ -435,7 +451,7 @@ void ForkedCallQueue::callNext()
 }
 
 
-void ForkedCallQueue::callback(pid_t, int)
+void callback(pid_t, int)
 {
 	if (callQueue_.empty())
 		stopCaller();
@@ -444,12 +460,7 @@ void ForkedCallQueue::callback(pid_t, int)
 }
 
 
-ForkedCallQueue::ForkedCallQueue()
-	: running_(false)
-{}
-
-
-void ForkedCallQueue::startCaller()
+void startCaller()
 {
 	LYXERR(Debug::GRAPHICS, "ForkedCallQueue: waking up");
 	running_ = true ;
@@ -457,17 +468,20 @@ void ForkedCallQueue::startCaller()
 }
 
 
-void ForkedCallQueue::stopCaller()
+void stopCaller()
 {
 	running_ = false ;
 	LYXERR(Debug::GRAPHICS, "ForkedCallQueue: I'm going to sleep");
 }
 
 
-bool ForkedCallQueue::running() const
+bool running()
 {
-	return running_ ;
+	return running_;
 }
+
+} // namespace ForkedCallsQueue
+
 
 
 /////////////////////////////////////////////////////////////////////
@@ -504,33 +518,33 @@ string const getChildErrorMessage()
 #endif
 
 
-// Ensure, that only one controller exists inside process
-ForkedCallsController & ForkedCallsController::get()
+namespace ForkedCallsController {
+
+typedef boost::shared_ptr<ForkedProcess> ForkedProcessPtr;
+typedef std::list<ForkedProcessPtr> ListType;
+typedef ListType::iterator iterator;
+
+
+/// The child processes
+static ListType forkedCalls;
+
+iterator find_pid(pid_t pid)
 {
-	static ForkedCallsController singleton;
-	return singleton;
+	return find_if(forkedCalls.begin(), forkedCalls.end(),
+		       bind(equal_to<pid_t>(),
+			    bind(&ForkedCall::pid, _1),
+			    pid));
 }
 
 
-ForkedCallsController::ForkedCallsController()
-{}
-
-
-// open question: should we stop childs here?
-// Asger says no: I like to have my xdvi open after closing LyX. Maybe
-// I want to print or something.
-ForkedCallsController::~ForkedCallsController()
-{}
-
-
-void ForkedCallsController::addCall(ForkedProcess const & newcall)
+void addCall(ForkedProcess const & newcall)
 {
 	forkedCalls.push_back(newcall.clone());
 }
 
 
 // Check the list of dead children and emit any associated signals.
-void ForkedCallsController::handleCompletedProcesses()
+void handleCompletedProcesses()
 {
 	ListType::iterator it  = forkedCalls.begin();
 	ListType::iterator end = forkedCalls.end();
@@ -624,18 +638,9 @@ void ForkedCallsController::handleCompletedProcesses()
 }
 
 
-ForkedCallsController::iterator ForkedCallsController::find_pid(pid_t pid)
-{
-	return find_if(forkedCalls.begin(), forkedCalls.end(),
-		       bind(equal_to<pid_t>(),
-			    bind(&ForkedCall::pid, _1),
-			    pid));
-}
-
-
 // Kill the process prematurely and remove it from the list
 // within tolerance secs
-void ForkedCallsController::kill(pid_t pid, int tolerance)
+void kill(pid_t pid, int tolerance)
 {
 	ListType::iterator it = find_pid(pid);
 	if (it == forkedCalls.end())
@@ -644,6 +649,8 @@ void ForkedCallsController::kill(pid_t pid, int tolerance)
 	(*it)->kill(tolerance);
 	forkedCalls.erase(it);
 }
+
+} // namespace ForkedCallsController
 
 } // namespace support
 } // namespace lyx

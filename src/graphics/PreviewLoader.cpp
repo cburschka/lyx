@@ -383,7 +383,7 @@ InProgress::InProgress(string const & filename_base,
 void InProgress::stop() const
 {
 	if (pid)
-		lyx::support::ForkedCallsController::get().kill(pid, 0);
+		lyx::support::ForkedCallsController::kill(pid, 0);
 
 	if (!metrics_file.empty())
 		metrics_file.removeFile();
@@ -421,9 +421,8 @@ PreviewLoader::Impl::~Impl()
 	InProgressProcesses::iterator ipit  = in_progress_.begin();
 	InProgressProcesses::iterator ipend = in_progress_.end();
 
-	for (; ipit != ipend; ++ipit) {
+	for (; ipit != ipend; ++ipit)
 		ipit->second.stop();
-	}
 }
 
 
@@ -437,7 +436,7 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 
 namespace {
 
-class FindSnippet : public std::unary_function<InProgressProcess, bool> {
+class FindSnippet {
 public:
 	FindSnippet(string const & s) : snippet_(s) {}
 	bool operator()(InProgressProcess const & process) const

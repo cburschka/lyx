@@ -79,7 +79,6 @@ using std::string;
 namespace lyx {
 
 using support::FileName;
-using support::ForkedCallsController;
 
 
 /// return the LyX mouse button state from Qt's
@@ -458,8 +457,7 @@ void GuiWorkArea::toggleCursor()
 	// Use this opportunity to deal with any child processes that
 	// have finished but are waiting to communicate this fact
 	// to the rest of LyX.
-	ForkedCallsController & fcc = ForkedCallsController::get();
-	fcc.handleCompletedProcesses();
+	support::ForkedCallsController::handleCompletedProcesses();
 }
 
 

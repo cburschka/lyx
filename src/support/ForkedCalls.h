@@ -21,12 +21,7 @@
 # include <sys/types.h>
 #endif
 
-#include <list>
-#include <queue>
 #include <string>
-#include <utility>
-#include <vector>
-
 
 namespace lyx {
 namespace support {
@@ -172,87 +167,44 @@ private:
 
 
 /**
- * This class implements a queue of forked processes. In order not to
+ * This interfaces a queue of forked processes. In order not to
  * hose the system with multiple processes running simultaneously, you can
  * request the addition of your process to this queue and it will be
  * executed when its turn comes.
  *
  */
 
-class ForkedCallQueue {
-public:
-	/// A process in the queue
-	typedef std::pair<std::string, ForkedCall::SignalTypePtr> Process;
-	/** Add a process to the queue. Processes are forked sequentially
-	 *  only one is running at a time.
-	 *  Connect to the returned signal and you'll be informed when
-	 *  the process has ended.
-	 */
-	ForkedCall::SignalTypePtr add(std::string const & process);
-	/// Query whether the queue is running a forked process now.
-	bool running() const;
-	/// Get the and only instance of the class
-	static ForkedCallQueue & get();
+namespace ForkedCallQueue {
 
-private:
-	/** this class is a singleton class... use
-	 *  ForkedCallQueue::get() instead
-	 */
-	ForkedCallQueue();
-	/// in-progress queue
-	std::queue<Process> callQueue_;
-	///
-	bool running_;
-	///
-	void callNext();
-	///
-	void startCaller();
-	///
-	void stopCaller();
-	///
-	void callback(pid_t, int);
-};
+ForkedCall::SignalTypePtr add(std::string const & process);
+/// Query whether the queue is running a forked process now.
+bool running();
+
+}
 
 
 /**
- * A class for the control of child processes launched using
- * fork() and execvp().
+ * Control of child processes launched using fork() and execvp().
  */
 
-class ForkedCallsController {
-public:
-	/// Get hold of the only controller that can exist inside the process.
-	static ForkedCallsController & get();
+namespace ForkedCallsController {
 
-	/// Add a new child process to the list of controlled processes.
-	void addCall(ForkedProcess const &);
+/// Add a new child process to the list of controlled processes.
+void addCall(ForkedProcess const &);
 
-	/** Those child processes that are found to have finished are removed
-	 *  from the list and their callback function is passed the final
-	 *  return state.
-	 */
-	void handleCompletedProcesses();
+/** Those child processes that are found to have finished are removed
+ *  from the list and their callback function is passed the final
+ *  return state.
+ */
+void handleCompletedProcesses();
 
-	/** Kill this process prematurely and remove it from the list.
-	 *  The process is killed within tolerance secs.
-	 *  See forkedcall.[Ch] for details.
-	 */
-	void kill(pid_t, int tolerance = 5);
+/** Kill this process prematurely and remove it from the list.
+ *  The process is killed within tolerance secs.
+ *  See forkedcall.[Ch] for details.
+ */
+void kill(pid_t, int tolerance = 5);
 
-private:
-	ForkedCallsController();
-	ForkedCallsController(ForkedCallsController const &);
-	~ForkedCallsController();
-
-	typedef boost::shared_ptr<ForkedProcess> ForkedProcessPtr;
-	typedef std::list<ForkedProcessPtr> ListType;
-	typedef ListType::iterator iterator;
-
-	iterator find_pid(pid_t);
-
-	/// The child processes
-	ListType forkedCalls;
-};
+} // namespace ForkedCallsController
 
 
 #if defined(_WIN32)

@@ -34,7 +34,6 @@ using support::addExtension;
 using support::changeExtension;
 using support::FileName;
 using support::ForkedCall;
-using support::ForkedCallQueue;
 using support::getExtension;
 using support::libScriptSearch;
 using support::onlyPath;
@@ -193,9 +192,8 @@ void Converter::Impl::startConversion()
 		return;
 	}
 
-	ForkedCall::SignalTypePtr
-		ptr = ForkedCallQueue::get().add(script_command_);
-
+	ForkedCall::SignalTypePtr ptr =
+		support::ForkedCallQueue::add(script_command_);
 	ptr->connect(boost::bind(&Impl::converted, this, _1, _2));
 }
 
