@@ -731,10 +731,6 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 		d.current_work_area_ = 0;
 	}
 
-	// removing a work area often results from closing a file so
-	// update the toc in any case.
-	updateToc();
-
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		TabWorkArea * twa = d.tabWorkArea(i);
 		if (!twa->removeWorkArea(wa))
