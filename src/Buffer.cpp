@@ -244,7 +244,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 
 
 Buffer::Buffer(string const & file, bool readonly)
-	: pimpl_(new Impl(*this, FileName(file), readonly)), gui_(0)
+	: d(new Impl(*this, FileName(file), readonly)), gui_(0)
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
 }
@@ -274,49 +274,49 @@ Buffer::~Buffer()
 	// Remove any previewed LaTeX snippets associated with this buffer.
 	graphics::Previews::get().removeLoader(*this);
 
-	if (pimpl_->wa_) {
-		pimpl_->wa_->closeAll();
-		delete pimpl_->wa_;
+	if (d->wa_) {
+		d->wa_->closeAll();
+		delete d->wa_;
 	}
-	delete pimpl_;
+	delete d;
 }
 
 
 void Buffer::changed() const
 {
-	if (pimpl_->wa_)
-		pimpl_->wa_->redrawAll();
+	if (d->wa_)
+		d->wa_->redrawAll();
 }
 
 
 frontend::WorkAreaManager & Buffer::workAreaManager() const
 {
-	BOOST_ASSERT(pimpl_->wa_);
-	return *pimpl_->wa_;
+	BOOST_ASSERT(d->wa_);
+	return *d->wa_;
 }
 
 
 Text & Buffer::text() const
 {
-	return const_cast<Text &>(pimpl_->inset.text_);
+	return const_cast<Text &>(d->inset.text_);
 }
 
 
 Inset & Buffer::inset() const
 {
-	return const_cast<InsetText &>(pimpl_->inset);
+	return const_cast<InsetText &>(d->inset);
 }
 
 
 BufferParams & Buffer::params()
 {
-	return pimpl_->params;
+	return d->params;
 }
 
 
 BufferParams const & Buffer::params() const
 {
-	return pimpl_->params;
+	return d->params;
 }
 
 
@@ -334,55 +334,55 @@ ParagraphList const & Buffer::paragraphs() const
 
 LyXVC & Buffer::lyxvc()
 {
-	return pimpl_->lyxvc;
+	return d->lyxvc;
 }
 
 
 LyXVC const & Buffer::lyxvc() const
 {
-	return pimpl_->lyxvc;
+	return d->lyxvc;
 }
 
 
 string const & Buffer::temppath() const
 {
-	return pimpl_->temppath;
+	return d->temppath;
 }
 
 
 TexRow const & Buffer::texrow() const
 {
-	return pimpl_->texrow;
+	return d->texrow;
 }
 
 
 TocBackend & Buffer::tocBackend() const
 {
-	return pimpl_->toc_backend;
+	return d->toc_backend;
 }
 
 
 EmbeddedFiles & Buffer::embeddedFiles()
 {
-	return pimpl_->embedded_files;
+	return d->embedded_files;
 }
 
 
 EmbeddedFiles const & Buffer::embeddedFiles() const
 {
-	return pimpl_->embedded_files;
+	return d->embedded_files;
 }
 
 
 Undo & Buffer::undo()
 {
-	return pimpl_->undo_;
+	return d->undo_;
 }
 
 
 string Buffer::latexName(bool const no_path) const
 {
-	FileName latex_name = makeLatexName(pimpl_->filename);
+	FileName latex_name = makeLatexName(d->filename);
 	return no_path ? latex_name.onlyFileName()
 		: latex_name.absFilename();
 }
@@ -426,8 +426,8 @@ string Buffer::logName(LogType * type) const
 
 void Buffer::setReadonly(bool const flag)
 {
-	if (pimpl_->read_only != flag) {
-		pimpl_->read_only = flag;
+	if (d->read_only != flag) {
+		d->read_only = flag;
 		setReadOnly(flag);
 	}
 }
@@ -435,8 +435,8 @@ void Buffer::setReadonly(bool const flag)
 
 void Buffer::setFileName(string const & newfile)
 {
-	pimpl_->filename = makeAbsPath(newfile);
-	setReadonly(pimpl_->filename.isReadOnly());
+	d->filename = makeAbsPath(newfile);
+	setReadonly(d->filename.isReadOnly());
 	updateTitles();
 }
 
@@ -470,7 +470,7 @@ int Buffer::readHeader(Lexer & lex)
 		params().temp_bullet(i) = ITEMIZE_DEFAULTS[i];
 	}
 
-	ErrorList & errorList = pimpl_->errorLists["Parse"];
+	ErrorList & errorList = d->errorLists["Parse"];
 
 	while (lex.isOK()) {
 		lex.next();
@@ -491,7 +491,7 @@ int Buffer::readHeader(Lexer & lex)
 		LYXERR(Debug::PARSER, "Handling document header token: `"
 				      << token << '\'');
 
-		string unknown = params().readToken(lex, token, pimpl_->filename.onlyPath());
+		string unknown = params().readToken(lex, token, d->filename.onlyPath());
 		if (!unknown.empty()) {
 			if (unknown[0] != '\\' && token == "\\textclass") {
 				Alert::warning(_("Unknown document class"),
@@ -523,7 +523,7 @@ int Buffer::readHeader(Lexer & lex)
 // Returns false if "\end_document" is not read (Asger)
 bool Buffer::readDocument(Lexer & lex)
 {
-	ErrorList & errorList = pimpl_->errorLists["Parse"];
+	ErrorList & errorList = d->errorLists["Parse"];
 	errorList.clear();
 
 	lex.next();
@@ -694,13 +694,13 @@ bool Buffer::readFile(FileName const & filename)
 
 bool Buffer::isFullyLoaded() const
 {
-	return pimpl_->file_fully_loaded;
+	return d->file_fully_loaded;
 }
 
 
 void Buffer::setFullyLoaded(bool value)
 {
-	pimpl_->file_fully_loaded = value;
+	d->file_fully_loaded = value;
 }
 
 
@@ -748,7 +748,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	// save timestamp and checksum of the original disk file, making sure
 	// to not overwrite them with those of the file created in the tempdir
 	// when it has to be converted to the current format.
-	if (!pimpl_->checksum_) {
+	if (!d->checksum_) {
 		// Save the timestamp and checksum of disk file. If filename is an
 		// emergency file, save the timestamp and checksum of the original lyx file
 		// because isExternallyModified will check for this file. (BUG4193)
@@ -817,7 +817,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 				       from_utf8(filename.absFilename())));
 	}
 
-	pimpl_->file_fully_loaded = true;
+	d->file_fully_loaded = true;
 	return success;
 }
 
@@ -828,7 +828,7 @@ bool Buffer::save() const
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
 
-	string const encodedFilename = pimpl_->filename.toFilesystemEncoding();
+	string const encodedFilename = d->filename.toFilesystemEncoding();
 
 	FileName backupName;
 	bool madeBackup = false;
@@ -864,15 +864,15 @@ bool Buffer::save() const
 			return false;
 	}
 
-	if (writeFile(pimpl_->filename)) {
+	if (writeFile(d->filename)) {
 		markClean();
 		removeAutosaveFile(absFileName());
-		saveCheckSum(pimpl_->filename);
+		saveCheckSum(d->filename);
 		return true;
 	} else {
 		// Saving failed, so backup is not backup
 		if (madeBackup)
-			rename(backupName, pimpl_->filename);
+			rename(backupName, d->filename);
 		return false;
 	}
 }
@@ -880,7 +880,7 @@ bool Buffer::save() const
 
 bool Buffer::writeFile(FileName const & fname) const
 {
-	if (pimpl_->read_only && fname == pimpl_->filename)
+	if (d->read_only && fname == d->filename)
 		return false;
 
 	bool retval = false;
@@ -909,7 +909,7 @@ bool Buffer::writeFile(FileName const & fname) const
 	if (retval && params().embedded) {
 		// write file.lyx and all the embedded files to the zip file fname
 		// if embedding is enabled
-		return pimpl_->embedded_files.writeFile(fname);
+		return d->embedded_files.writeFile(fname);
 	}
 	return retval;
 }
@@ -993,7 +993,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 
 	bool failed_export = false;
 	try {
-		pimpl_->texrow.reset();
+		d->texrow.reset();
 		writeLaTeXSource(ofs, original_path,
 		      runparams, output_preamble, output_body);
 	}
@@ -1048,8 +1048,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			"For more info, see http://www.lyx.org/.\n"
 			"%% Do not edit unless you really know what "
 			"you are doing.\n";
-		pimpl_->texrow.newline();
-		pimpl_->texrow.newline();
+		d->texrow.newline();
+		d->texrow.newline();
 	}
 	LYXERR(Debug::INFO, "lyx document header finished");
 	// There are a few differences between nice LaTeX and usual files:
@@ -1067,7 +1067,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			// code for usual, NOT nice-latex-file
 			os << "\\batchmode\n"; // changed
 			// from \nonstopmode
-			pimpl_->texrow.newline();
+			d->texrow.newline();
 		}
 		if (!original_path.empty()) {
 			// FIXME UNICODE
@@ -1077,23 +1077,23 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			   << "\\def\\input@path{{"
 			   << inputpath << "/}}\n"
 			   << "\\makeatother\n";
-			pimpl_->texrow.newline();
-			pimpl_->texrow.newline();
-			pimpl_->texrow.newline();
+			d->texrow.newline();
+			d->texrow.newline();
+			d->texrow.newline();
 		}
 
 		// Write the preamble
-		runparams.use_babel = params().writeLaTeX(os, features, pimpl_->texrow);
+		runparams.use_babel = params().writeLaTeX(os, features, d->texrow);
 
 		if (!output_body)
 			return;
 
 		// make the body.
 		os << "\\begin{document}\n";
-		pimpl_->texrow.newline();
+		d->texrow.newline();
 	} // output_preamble
 
-	pimpl_->texrow.start(paragraphs().begin()->id(), 0);
+	d->texrow.start(paragraphs().begin()->id(), 0);
 	
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
@@ -1104,7 +1104,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 					   "$$lang",
 					   params().language->babel()))
 		   << '\n';
-		pimpl_->texrow.newline();
+		d->texrow.newline();
 	}
 
 	Encoding const & encoding = params().encoding();
@@ -1114,7 +1114,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		// the preamble if it is handled by CJK.sty.
 		os << "\\begin{CJK}{" << from_ascii(encoding.latexName())
 		   << "}{}\n";
-		pimpl_->texrow.newline();
+		d->texrow.newline();
 	}
 
 	// if we are doing a real file with body, even if this is the
@@ -1122,29 +1122,29 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	// This happens for example if only a child document is printed.
 	Buffer const * save_parent = 0;
 	if (output_preamble) {
-		save_parent = pimpl_->parent_buffer;
-		pimpl_->parent_buffer = 0;
+		save_parent = d->parent_buffer;
+		d->parent_buffer = 0;
 	}
 
 	loadChildDocuments();
 
 	// the real stuff
-	latexParagraphs(*this, paragraphs(), os, pimpl_->texrow, runparams);
+	latexParagraphs(*this, paragraphs(), os, d->texrow, runparams);
 
 	// Restore the parenthood if needed
 	if (output_preamble)
-		pimpl_->parent_buffer = save_parent;
+		d->parent_buffer = save_parent;
 
 	// add this just in case after all the paragraphs
 	os << endl;
-	pimpl_->texrow.newline();
+	d->texrow.newline();
 
 	if (encoding.package() == Encoding::CJK) {
 		// Close the open CJK environment.
 		// latexParagraphs will have opened one even if the last text
 		// was not CJK.
 		os << "\\end{CJK}\n";
-		pimpl_->texrow.newline();
+		d->texrow.newline();
 	}
 
 	if (!lyxrc.language_auto_end &&
@@ -1153,12 +1153,12 @@ void Buffer::writeLaTeXSource(odocstream & os,
 					   "$$lang",
 					   params().language->babel()))
 		   << '\n';
-		pimpl_->texrow.newline();
+		d->texrow.newline();
 	}
 
 	if (output_preamble) {
 		os << "\\end{document}\n";
-		pimpl_->texrow.newline();
+		d->texrow.newline();
 		LYXERR(Debug::LATEX, "makeLaTeXFile...done");
 	} else {
 		LYXERR(Debug::LATEX, "LaTeXFile for inclusion made.");
@@ -1166,10 +1166,10 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	runparams_in.encoding = runparams.encoding;
 
 	// Just to be sure. (Asger)
-	pimpl_->texrow.newline();
+	d->texrow.newline();
 
 	LYXERR(Debug::INFO, "Finished making LaTeX file.");
-	LYXERR(Debug::INFO, "Row count was " << pimpl_->texrow.rows() - 1 << '.');
+	LYXERR(Debug::INFO, "Row count was " << d->texrow.rows() - 1 << '.');
 }
 
 
@@ -1217,7 +1217,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 
-	pimpl_->texrow.reset();
+	d->texrow.reset();
 
 	TextClass const & tclass = params().getTextClass();
 	string const top_element = tclass.latexname();
@@ -1313,7 +1313,7 @@ int Buffer::runChktex()
 		Alert::error(_("chktex failure"),
 			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
-		ErrorList & errlist = pimpl_->errorLists["ChkTeX"];
+		ErrorList & errlist = d->errorLists["ChkTeX"];
 		errlist.clear();
 		bufferErrors(terr, errlist);
 	}
@@ -1474,8 +1474,8 @@ vector<FileName> const & Buffer::getBibfilesCache() const
 
 bool Buffer::isDepClean(string const & name) const
 {
-	DepClean::const_iterator const it = pimpl_->dep_clean.find(name);
-	if (it == pimpl_->dep_clean.end())
+	DepClean::const_iterator const it = d->dep_clean.find(name);
+	if (it == d->dep_clean.end())
 		return true;
 	return it->second;
 }
@@ -1483,7 +1483,7 @@ bool Buffer::isDepClean(string const & name) const
 
 void Buffer::markDepClean(string const & name)
 {
-	pimpl_->dep_clean[name] = true;
+	d->dep_clean[name] = true;
 }
 
 
@@ -1598,80 +1598,80 @@ docstring const Buffer::B_(string const & l10n) const
 
 bool Buffer::isClean() const
 {
-	return pimpl_->lyx_clean;
+	return d->lyx_clean;
 }
 
 
 bool Buffer::isBakClean() const
 {
-	return pimpl_->bak_clean;
+	return d->bak_clean;
 }
 
 
 bool Buffer::isExternallyModified(CheckMethod method) const
 {
-	BOOST_ASSERT(pimpl_->filename.exists());
+	BOOST_ASSERT(d->filename.exists());
 	// if method == timestamp, check timestamp before checksum
 	return (method == checksum_method 
-		|| pimpl_->timestamp_ != pimpl_->filename.lastModified())
-		&& pimpl_->checksum_ != pimpl_->filename.checksum();
+		|| d->timestamp_ != d->filename.lastModified())
+		&& d->checksum_ != d->filename.checksum();
 }
 
 
 void Buffer::saveCheckSum(FileName const & file) const
 {
 	if (file.exists()) {
-		pimpl_->timestamp_ = file.lastModified();
-		pimpl_->checksum_ = file.checksum();
+		d->timestamp_ = file.lastModified();
+		d->checksum_ = file.checksum();
 	} else {
 		// in the case of save to a new file.
-		pimpl_->timestamp_ = 0;
-		pimpl_->checksum_ = 0;
+		d->timestamp_ = 0;
+		d->checksum_ = 0;
 	}
 }
 
 
 void Buffer::markClean() const
 {
-	if (!pimpl_->lyx_clean) {
-		pimpl_->lyx_clean = true;
+	if (!d->lyx_clean) {
+		d->lyx_clean = true;
 		updateTitles();
 	}
 	// if the .lyx file has been saved, we don't need an
 	// autosave
-	pimpl_->bak_clean = true;
+	d->bak_clean = true;
 }
 
 
 void Buffer::markBakClean() const
 {
-	pimpl_->bak_clean = true;
+	d->bak_clean = true;
 }
 
 
 void Buffer::setUnnamed(bool flag)
 {
-	pimpl_->unnamed = flag;
+	d->unnamed = flag;
 }
 
 
 bool Buffer::isUnnamed() const
 {
-	return pimpl_->unnamed;
+	return d->unnamed;
 }
 
 
 // FIXME: this function should be moved to buffer_pimpl.C
 void Buffer::markDirty()
 {
-	if (pimpl_->lyx_clean) {
-		pimpl_->lyx_clean = false;
+	if (d->lyx_clean) {
+		d->lyx_clean = false;
 		updateTitles();
 	}
-	pimpl_->bak_clean = false;
+	d->bak_clean = false;
 
-	DepClean::iterator it = pimpl_->dep_clean.begin();
-	DepClean::const_iterator const end = pimpl_->dep_clean.end();
+	DepClean::iterator it = d->dep_clean.begin();
+	DepClean::const_iterator const end = d->dep_clean.end();
 
 	for (; it != end; ++it)
 		it->second = false;
@@ -1680,55 +1680,55 @@ void Buffer::markDirty()
 
 FileName Buffer::fileName() const
 {
-	return pimpl_->filename;
+	return d->filename;
 }
 
 
 string Buffer::absFileName() const
 {
-	return pimpl_->filename.absFilename();
+	return d->filename.absFilename();
 }
 
 
 string Buffer::filePath() const
 {
-	return pimpl_->filename.onlyPath().absFilename();
+	return d->filename.onlyPath().absFilename();
 }
 
 
 bool Buffer::isReadonly() const
 {
-	return pimpl_->read_only;
+	return d->read_only;
 }
 
 
 void Buffer::setParent(Buffer const * buffer)
 {
 	// Avoids recursive include.
-	pimpl_->parent_buffer = buffer == this ? 0 : buffer;
+	d->parent_buffer = buffer == this ? 0 : buffer;
 }
 
 
 Buffer const * Buffer::parent()
 {
-	return pimpl_->parent_buffer;
+	return d->parent_buffer;
 }
 
 
 Buffer const * Buffer::masterBuffer() const
 {
-	if (!pimpl_->parent_buffer)
+	if (!d->parent_buffer)
 		return this;
 	
-	return pimpl_->parent_buffer->masterBuffer();
+	return d->parent_buffer->masterBuffer();
 }
 
 
 bool Buffer::hasMacro(docstring const & name, Paragraph const & par) const
 {
 	Impl::PositionToMacroMap::iterator it;
-	it = pimpl_->macros[name].upper_bound(par.macrocontextPosition());
-	if (it != pimpl_->macros[name].end())
+	it = d->macros[name].upper_bound(par.macrocontextPosition());
+	if (it != d->macros[name].end())
 		return true;
 
 	// If there is a master buffer, query that
@@ -1742,7 +1742,7 @@ bool Buffer::hasMacro(docstring const & name, Paragraph const & par) const
 
 bool Buffer::hasMacro(docstring const & name) const
 {
-	if( !pimpl_->macros[name].empty() )
+	if( !d->macros[name].empty() )
 		return true;
 
 	// If there is a master buffer, query that
@@ -1758,8 +1758,8 @@ MacroData const & Buffer::getMacro(docstring const & name,
 	Paragraph const & par) const
 {
 	Impl::PositionToMacroMap::iterator it;
-	it = pimpl_->macros[name].upper_bound(par.macrocontextPosition());
-	if( it != pimpl_->macros[name].end() )
+	it = d->macros[name].upper_bound(par.macrocontextPosition());
+	if( it != d->macros[name].end() )
 		return it->second;
 
 	// If there is a master buffer, query that
@@ -1774,8 +1774,8 @@ MacroData const & Buffer::getMacro(docstring const & name,
 MacroData const & Buffer::getMacro(docstring const & name) const
 {
 	Impl::PositionToMacroMap::iterator it;
-	it = pimpl_->macros[name].begin();
-	if( it != pimpl_->macros[name].end() )
+	it = d->macros[name].begin();
+	if( it != d->macros[name].end() )
 		return it->second;
 
 	// If there is a master buffer, query that
@@ -1790,7 +1790,7 @@ MacroData const & Buffer::getMacro(docstring const & name) const
 void Buffer::updateMacros()
 {
 	// start with empty table
-	pimpl_->macros = Impl::NameToPositionMacroMap();
+	d->macros = Impl::NameToPositionMacroMap();
 
 	// Iterate over buffer
 	ParagraphList & pars = text().paragraphs();
@@ -1821,7 +1821,7 @@ void Buffer::updateMacros()
 				macro.setRedefinition(hasMacro(macroTemplate.name()));
 
 				// register macro (possibly overwrite the previous one of this paragraph)
-				pimpl_->macros[macroTemplate.name()][i] = macro;
+				d->macros[macroTemplate.name()][i] = macro;
 			}
 		}
 	}
@@ -1876,11 +1876,11 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
-	pimpl_->texrow.reset();
+	d->texrow.reset();
 	if (full_source) {
 		os << "% " << _("Preview source code") << "\n\n";
-		pimpl_->texrow.newline();
-		pimpl_->texrow.newline();
+		d->texrow.newline();
+		d->texrow.newline();
 		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
 		else {
@@ -1899,11 +1899,11 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 					convert<docstring>(par_begin),
 					convert<docstring>(par_end - 1))
 			   << "\n\n";
-		pimpl_->texrow.newline();
-		pimpl_->texrow.newline();
+		d->texrow.newline();
+		d->texrow.newline();
 		// output paragraphs
 		if (isLatex()) {
-			latexParagraphs(*this, paragraphs(), os, pimpl_->texrow, runparams);
+			latexParagraphs(*this, paragraphs(), os, d->texrow, runparams);
 		} else {
 			// DocBook
 			docbookParagraphs(paragraphs(), *this, os, runparams);
@@ -1915,8 +1915,8 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 ErrorList & Buffer::errorList(string const & type) const
 {
 	static ErrorList emptyErrorList;
-	std::map<string, ErrorList>::iterator I = pimpl_->errorLists.find(type);
-	if (I == pimpl_->errorLists.end())
+	std::map<string, ErrorList>::iterator I = d->errorLists.find(type);
+	if (I == d->errorLists.end())
 		return emptyErrorList;
 
 	return I->second;
@@ -1953,15 +1953,15 @@ void Buffer::setBusy(bool on) const
 
 void Buffer::setReadOnly(bool on) const
 {
-	if (pimpl_->wa_)
-		pimpl_->wa_->setReadOnly(on);
+	if (d->wa_)
+		d->wa_->setReadOnly(on);
 }
 
 
 void Buffer::updateTitles() const
 {
-	if (pimpl_->wa_)
-		pimpl_->wa_->updateTitles();
+	if (d->wa_)
+		d->wa_->updateTitles();
 }
 
 
@@ -2522,13 +2522,13 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 		int id_start = -1;
 		int pos_start = -1;
 		int errorRow = cit->error_in_line;
-		bool found = pimpl_->texrow.getIdFromRow(errorRow, id_start,
+		bool found = d->texrow.getIdFromRow(errorRow, id_start,
 						       pos_start);
 		int id_end = -1;
 		int pos_end = -1;
 		do {
 			++errorRow;
-			found = pimpl_->texrow.getIdFromRow(errorRow, id_end, pos_end);
+			found = d->texrow.getIdFromRow(errorRow, id_end, pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
 		errorList.push_back(ErrorItem(cit->error_desc,
