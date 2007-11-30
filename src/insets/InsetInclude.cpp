@@ -161,6 +161,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 
 CommandInfo const * InsetInclude::findInfo(std::string const & /* cmdName */)
 {
+	// FIXME
 	// This is only correct for the case of listings, but it'll do for now.
 	// In the other cases, this second parameter should just be empty.
 	static const char * const paramnames[] = {"filename", "lstparams", ""};

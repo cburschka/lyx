@@ -284,6 +284,12 @@ public:
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const { return false; }
 
+	
+	// FIXME This should really disappear in favor of 
+	//	docstring name() const { return from_ascii(insetName(lyxCode()))); }
+	// There's no reason to be using different names in different places.
+	// But to do this we would need to change the file format, since the names
+	// used there don't correspond to what is used here. 
 	///
 	virtual docstring name() const;
 	///
