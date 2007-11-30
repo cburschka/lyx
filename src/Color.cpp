@@ -45,7 +45,6 @@ using std::endl;
 
 namespace lyx {
 
-using support::compare_ascii_no_case;
 using support::ascii_lowercase;
 
 struct ColorSet::ColorEntry {

@@ -76,8 +76,6 @@ namespace lyx {
 
 namespace Alert = frontend::Alert;
 
-using support::compare_ascii_no_case;
-
 
 Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 {
