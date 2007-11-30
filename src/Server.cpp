@@ -172,7 +172,7 @@ void LyXComm::closeConnection()
 	}
 
 	if (!ready_) {
-		lyxerr << "LyXComm: Already disconnected" << endl;
+		LYXERR0("LyXComm: Already disconnected");
 		return;
 	}
 
@@ -286,10 +286,9 @@ void LyXComm::read_ready()
 			return;
 		}
 		if (errno != 0) {
-			lyxerr << "LyXComm: " << strerror(errno) << endl;
+			LYXERR0("LyXComm: " << strerror(errno));
 			if (!read_buffer_.empty()) {
-				lyxerr << "LyXComm: truncated command: "
-				       << read_buffer_ << endl;
+				LYXERR0("LyXComm: truncated command: " << read_buffer_);
 				read_buffer_.erase();
 			}
 			break; // reset connection
@@ -307,8 +306,7 @@ void LyXComm::read_ready()
 void LyXComm::send(string const & msg)
 {
 	if (msg.empty()) {
-		lyxerr << "LyXComm: Request to send empty string. Ignoring."
-		       << endl;
+		LYXERR0("LyXComm: Request to send empty string. Ignoring.");
 		return;
 	}
 
@@ -317,8 +315,7 @@ void LyXComm::send(string const & msg)
 	if (pipename_.empty()) return;
 
 	if (!ready_) {
-		lyxerr << "LyXComm: Pipes are closed. Could not send "
-		       << msg << endl;
+		LYXERR0("LyXComm: Pipes are closed. Could not send " << msg);
 	} else if (::write(outfd_, msg.c_str(), msg.length()) < 0) {
 		lyxerr << "LyXComm: Error sending message: " << msg
 		       << '\n' << strerror(errno)
@@ -369,6 +366,13 @@ Server::~Server()
 		message = "LYXSRV:" + clients_[i] + ":bye\n";
 		pipes_.send(message);
 	}
+}
+
+
+int compare(char const * a, char const * b, unsigned int len)
+{
+	using namespace std;
+	return strncmp(a, b, len);
 }
 
 
@@ -459,8 +463,7 @@ void Server::callback(string const & msg)
 						"Server: ignoring bye messge from unregistered client" << client);
 				}
 			} else {
-				lyxerr <<"Server: Undefined server command "
-				       << cmd << '.' << endl;
+				LYXERR0("Server: Undefined server command " << cmd << '.');
 			}
 			return;
 		}

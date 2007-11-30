@@ -48,17 +48,6 @@ int compare(char const * a, char const * b)
 }
 
 ///
-inline
-int compare(char const * a, char const * b, unsigned int len)
-{
-#ifndef CXX_GLOBAL_CSTD
-	return std::strncmp(a, b, len);
-#else
-	return strncmp(a, b, len);
-#endif
-}
-
-///
 bool isStrInt(std::string const & str);
 
 /// does the std::string represent an unsigned integer value ?
