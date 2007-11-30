@@ -84,17 +84,24 @@ string itoa(unsigned int i)
 /// Returns the absolute pathnames of all lyx local sockets in
 /// file system encoding.
 /// Parts stolen from lyx::support::DirList().
-vector<FileName> lyxSockets(string const & dir, string const & pid)
+vector<fs::path> lyxSockets(string const & dir, string const & pid)
 {
-	FileName dirpath(dir);
+	vector<fs::path> dirlist;
 
-	vector<FileName> dirlist = dirpath.dirList();
-	vector<FileName>::iterator it = dirlist.begin();
-	vector<FileName>::iterator const end = dirlist.end();
+	fs::path dirpath(dir);
 
-	for (; it != end; ++it) {
-		if (prefixIs(it->baseName(), "lyx_tmpdir" + pid)) {
-			FileName lyxsocket(it->abs() + "lyxsocket";
+	if (!fs::exists(dirpath) || !fs::is_directory(dirpath)) {
+		lyxerr << dir << " does not exist or is not a directory."
+		       << endl;
+		return dirlist;
+	}
+
+	fs::directory_iterator beg((fs::path(dir)));
+	fs::directory_iterator end;
+
+	for (; beg != end; ++beg) {
+		if (prefixIs(beg->leaf(), "lyx_tmpdir" + pid)) {
+			fs::path lyxsocket = beg->path() / "lyxsocket";
 			if (fs::exists(lyxsocket)) {
 				dirlist.push_back(lyxsocket);
 			}
@@ -555,16 +562,16 @@ int main(int argc, char * argv[])
 	} else {
 		// We have to look for an address.
 		// serverPid can be empty.
-		vector<FileName> addrs = support::lyxSockets(to_filesystem8bit(cmdline::mainTmp), cmdline::serverPid);
-		vector<FileName>::const_iterator addr = addrs.begin();
-		vector<FileName>::const_iterator end = addrs.end();
+		vector<fs::path> addrs = support::lyxSockets(to_filesystem8bit(cmdline::mainTmp), cmdline::serverPid);
+		vector<fs::path>::const_iterator addr = addrs.begin();
+		vector<fs::path>::const_iterator end = addrs.end();
 		for (; addr != end; ++addr) {
 			// Caution: addr->string() is in filesystem encoding
-			server.reset(new LyXDataSocket(*addr));
+			server.reset(new LyXDataSocket(FileName(to_utf8(from_filesystem8bit(addr->string())))));
 			if (server->connected())
 				break;
 			lyxerr << "lyxclient: " << "Could not connect to "
-			     << addr->absFileName() << endl;
+			     << addr->string() << endl;
 		}
 		if (addr == end) {
 			lyxerr << "lyxclient: No suitable server found."
