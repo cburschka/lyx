@@ -90,7 +90,6 @@ src_header_files = Split('''
     LyXRC.h
     LyXVC.h
     MenuBackend.h
-    Messages.h
     MetricsInfo.h
     ModuleList.h
     Mover.h
@@ -126,9 +125,7 @@ src_header_files = Split('''
     Variables.h
     WordLangTuple.h
     buffer_funcs.h
-    debug.h
     factory.h
-    gettext.h
     lfuns.h
     lyxfind.h
     output.h
@@ -198,7 +195,6 @@ src_pre_files = Split('''
     LyXRC.cpp
     LyXVC.cpp
     MenuBackend.cpp
-    Messages.cpp
     MetricsInfo.cpp
     Mover.cpp
     OutputParams.cpp
@@ -227,9 +223,7 @@ src_pre_files = Split('''
     VSpace.cpp
     boost.cpp
     buffer_funcs.cpp
-    debug.cpp
     factory.cpp
-    gettext.cpp
     lengthcommon.cpp
     lyxfind.cpp
     output.cpp
@@ -296,9 +290,8 @@ src_support_header_files = Split('''
     FileFilterList.h
     FileMonitor.h
     FileName.h
-    ForkedCallQueue.h
-    Forkedcall.h
-    ForkedcallsController.h
+    ForkedCalls.h
+    Messages.h
     Package.h
     Path.h
     RandomAccessList.h
@@ -309,12 +302,12 @@ src_support_header_files = Split('''
     Translator.h
     convert.h
     copied_ptr.h
-    cow_ptr.h
-    debugstream.h
+    debug.h
     docstream.h
     docstring.h
     environment.h
     filetools.h
+    gettext.h
     gzstream.h
     limited_stack.h
     lstrings.h
@@ -339,9 +332,8 @@ src_support_files = Split('''
     FileFilterList.cpp
     FileMonitor.cpp
     FileName.cpp
-    ForkedCallQueue.cpp
-    Forkedcall.cpp
-    ForkedcallsController.cpp
+    ForkedCalls.cpp
+    Messages.cpp
     Package.cpp
     Path.cpp
     SignalSlot.cpp
@@ -351,12 +343,14 @@ src_support_files = Split('''
     chdir.cpp
     convert.cpp
     copy.cpp
+    debug.cpp
     docstream.cpp
     docstring.cpp
     environment.cpp
     filetools.cpp
     gzstream.cpp
     getcwd.cpp
+    gettext.cpp
     kill.cpp
     lstrings.cpp
     lyxsum.cpp
@@ -367,7 +361,6 @@ src_support_files = Split('''
     socktools.cpp
     tempname.cpp
     unicode.cpp
-    unlink.cpp
     userinfo.cpp
 ''')
 
