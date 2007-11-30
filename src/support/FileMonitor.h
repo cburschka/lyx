@@ -27,6 +27,8 @@ class FileMonitor
 public:
 	/** Once monitoring begins, the file will be monitored every
 	 *  interval ms.
+	 *
+	 * FIXME: rewrite and simplify using an encapsulation of QFileSystemWatcher.
 	 */
 	FileMonitor(FileName const & file_with_path, int interval);
 

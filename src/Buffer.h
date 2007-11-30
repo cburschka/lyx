@@ -80,6 +80,7 @@ public:
 		wrongversion ///< The version of the file does not match ours
 	};
 
+
 	/// Method to check if a file is externally modified, used by 
 	/// isExternallyModified()
 	/**
@@ -90,6 +91,8 @@ public:
 	 * checksum is accurate but slow, which can be a problem when it is 
 	 * frequently used, or used for a large file on a slow (network) file
 	 * system.
+	 *
+	 * FIXME: replace this method with support/FileMonitor.
 	 */
 	enum CheckMethod {
 		checksum_method,  ///< Use file checksum
