@@ -167,25 +167,17 @@ extern LyXErr lyxerr;
 
 } // namespace lyx
 
-// stolen from boost/current_function.hpp
-#if defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600))
-# define CURRENT_FUNCTION __PRETTY_FUNCTION__
-#elif defined(__FUNCSIG__)
-# define CURRENT_FUNCTION __FUNCSIG__
-#elif (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 600)) || (defined(__IBMCPP__) && (__IBMCPP__ >= 500))
-# define CURRENT_FUNCTION __FUNCTION__
-#elif defined(__BORLANDC__) && (__BORLANDC__ >= 0x550)
-# define CURRENT_FUNCTION __FUNC__
-#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901)
-# define CURRENT_FUNCTION __func__
+#if USE_BOOST_CURRENT_FUNCTION
+#	include <boost/current_function.hpp>
+#	define CURRENT_POSITION BOOST_CURRENT_FUNCTION ": "
 #else
-# define CURRENT_FUNCTION "(unknown)"
+# define CURRENT_POSITION __FILE__ << "(" << __LINE__ << "): "
 #endif
 
 #define LYXERR(type, msg) \
 	do { \
 		if (!lyx::lyxerr.debugging(type)) {} \
-		else { lyx::lyxerr << CURRENT_FUNCTION <<": "<<msg; lyx::lyxerr.endl(); } \
+		else { lyx::lyxerr << CURRENT_POSITION << msg; lyx::lyxerr.endl(); } \
 	} while (0)
 
 #define LYXERR0(msg) LYXERR(lyx::Debug::ANY, msg)
