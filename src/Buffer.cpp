@@ -163,6 +163,14 @@ class Buffer::Impl
 {
 public:
 	Impl(Buffer & parent, FileName const & file, bool readonly);
+
+	~Impl()
+	{
+		if (wa_) {
+			wa_->closeAll();
+			delete wa_;
+		}
+	}
 	
 	BufferParams params;
 	LyXVC lyxvc;
@@ -273,12 +281,6 @@ Buffer::~Buffer()
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
 	graphics::Previews::get().removeLoader(*this);
-
-	if (d->wa_) {
-		d->wa_->closeAll();
-		delete d->wa_;
-	}
-	delete d;
 }
 
 
