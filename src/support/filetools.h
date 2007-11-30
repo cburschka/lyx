@@ -275,6 +275,10 @@ typedef std::pair<int, std::string> cmd_ret;
 
 cmd_ret const runCommand(std::string const & cmd);
 
+/// \return list files in a directory having optional extension ext..
+std::vector<FileName> dirList(FileName const & dir,
+		std::string const & ext = empty_string());
+
 } // namespace support
 } // namespace lyx
 

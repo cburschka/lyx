@@ -15,13 +15,10 @@
 #include "support/strfwd.h"
 
 #include <ctime>
-#include <string>
-#include <vector>
 
 
 namespace lyx {
 namespace support {
-
 
 /**
  * Class for storing file names.
@@ -101,10 +98,6 @@ public:
 	/// Creates directory. Returns true on success
 	bool createDirectory(int permissions) const;
 
-	/// \return list files in a directory having optional extension ext..
-	std::vector<FileName> dirList(
-		std::string const & ext = std::string());
-
 	/// Get the contents of a file as a huge std::string
 	std::string fileContents() const;
 	/**
@@ -119,7 +112,7 @@ public:
 	* If oldname does not have an extension, it is appended.
 	* If the extension is empty, any extension is removed from the name.
 	*/
-	 void changeExtension(std::string const & extension);
+	void changeExtension(std::string const & extension);
 
 	/** Guess the file format name (as in Format::name()) from contents.
 	 Normally you don't want to use this directly, but rather
@@ -134,7 +127,7 @@ public:
 	/// (securely) create a temporary file in the given dir with the given mask
 	/// \p mask must be in filesystem encoding
 	static FileName tempName(FileName const & dir = FileName(),
-						std::string const & mask = std::string());
+						std::string const & mask = empty_string());
 
 	/// filename without path
 	std::string onlyFileName() const;
@@ -143,7 +136,7 @@ public:
 	/// used for display in the Gui
 	docstring displayName(int threshold = 1000) const;
 
-private:
+//private:
 	friend class DocFileName;
 	///
 	struct Private;
@@ -184,9 +177,9 @@ public:
 
 	bool saveAbsPath() const { return save_abs_path_; }
 	/// \param buffer_path if empty, uses `pwd`
-	std::string const relFilename(std::string const & buffer_path = std::string()) const;
+	std::string relFilename(std::string const & buffer_path = empty_string()) const;
 	/// \param buf_path if empty, uses `pwd`
-	std::string const outputFilename(std::string const & buf_path = std::string()) const;
+	std::string outputFilename(std::string const & buf_path = empty_string()) const;
 	
 	/** @returns a mangled representation of the absolute file name
 	 *  suitable for use in the temp dir when, for example, converting
@@ -208,13 +201,13 @@ public:
 	 *  Only the mangled file name is returned. It is not prepended
 	 *  with @c dir.
 	 */
-	std::string const
-	mangledFilename(std::string const & dir = std::string()) const;
+	std::string
+	mangledFilename(std::string const & dir = empty_string()) const;
 
 	/// \return true if the file is compressed.
 	bool isZipped() const;
 	/// \return the absolute file name without its .gz, .z, .Z extension
-	std::string const unzippedFilename() const;
+	std::string unzippedFilename() const;
 
 private:
 	bool save_abs_path_;

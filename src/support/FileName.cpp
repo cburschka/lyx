@@ -268,7 +268,7 @@ static bool rmdir(QFileInfo const & fi)
 	QDir dir(fi.absoluteFilePath());
 	QFileInfoList list = dir.entryInfoList();
 	bool global_success = true;
-	for (int i = 0; i < list.size(); ++i) {
+	for (int i = 0; i != list.size(); ++i) {
 		if (list.at(i).fileName() == ".")
 			continue;
 		if (list.at(i).fileName() == "..")
@@ -313,16 +313,15 @@ bool FileName::createDirectory(int permission) const
 }
 
 
-std::vector<FileName> FileName::dirList(std::string const & ext)
+std::vector<FileName> dirList(FileName const & dirname, std::string const & ext)
 {
 	std::vector<FileName> dirlist;
-	if (!exists() || !isDirectory()) {
-		lyxerr << "FileName::dirList(): Directory \"" << absFilename()
-			<< "\" does not exist!" << endl;
+	if (!dirname.isDirectory()) {
+		LYXERR0("Directory '" << dirname << "' does not exist!");
 		return dirlist;
 	}
 
-	QDir dir(d->fi.absoluteFilePath());
+	QDir dir(dirname.d->fi.absoluteFilePath());
 
 	if (!ext.empty()) {
 		QString filter;
@@ -332,17 +331,16 @@ std::vector<FileName> FileName::dirList(std::string const & ext)
 		default: filter = "*." + toqstr(ext);
 		}
 		dir.setNameFilters(QStringList(filter));
-		LYXERR(Debug::FILES, "FileName::dirList(): filtering on extension "
-			<< fromqstr(filter) << " is requested." << endl);
+		LYXERR(Debug::FILES, "filtering on extension "
+			<< fromqstr(filter) << " is requested.");
 	}
 
 	QFileInfoList list = dir.entryInfoList();
-	for (int i = 0; i < list.size(); ++i) {
+	for (int i = 0; i != list.size(); ++i) {
 		FileName fi;
 		fi.d->fi = list.at(i);
 		dirlist.push_back(fi);
-		LYXERR(Debug::FILES, "FileName::dirList(): found file "
-			<< fi.absFilename() << endl);
+		LYXERR(Debug::FILES, "found file " << fi);
 	}
 
 	return dirlist;
@@ -641,20 +639,20 @@ void DocFileName::erase()
 }
 
 
-string const DocFileName::relFilename(string const & path) const
+string DocFileName::relFilename(string const & path) const
 {
 	// FIXME UNICODE
 	return to_utf8(makeRelPath(qstring_to_ucs4(d->fi.absoluteFilePath()), from_utf8(path)));
 }
 
 
-string const DocFileName::outputFilename(string const & path) const
+string DocFileName::outputFilename(string const & path) const
 {
 	return save_abs_path_ ? absFilename() : relFilename(path);
 }
 
 
-string const DocFileName::mangledFilename(std::string const & dir) const
+string DocFileName::mangledFilename(std::string const & dir) const
 {
 	// We need to make sure that every DocFileName instance for a given
 	// filename returns the same mangled name.
@@ -726,7 +724,7 @@ bool DocFileName::isZipped() const
 }
 
 
-string const DocFileName::unzippedFilename() const
+string DocFileName::unzippedFilename() const
 {
 	return unzippedFileName(absFilename());
 }

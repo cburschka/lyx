@@ -20,11 +20,12 @@ t=0
 #for i in `find ../../src/support -name '*.cpp'` ; do
 #for i in `find ../../src/graphics -name '*.cpp'` ; do
 #for i in `find ../../src/graphics -name '*.cpp'` ; do
-#for i in ../../src/*.cpp ; do
+#for i in `find ../../src/support/chdir.cpp` ; do
 for i in `find ../.. -name '*.cpp'` ; do
 	#echo $i
 	#echo "g++ $inc -DQT_NO_STL -E $i"
 	#g++ $inc -DQT_NO_STL -E $i > tmp/`basename $i`
+	g++ $inc -DQT_NO_STL -E $i > t
 	l=`g++ $inc -DQT_NO_STL -E $i | wc -l`
 	f=`cat $i | wc -l`
 	s=$[s + l]

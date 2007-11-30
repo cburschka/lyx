@@ -67,6 +67,9 @@ typedef std::basic_ostream<char_type, std::char_traits<char_type> > odocstream;
 extern odocstream & operator<<(odocstream &, char);
 #endif
 
+docstring const & empty_docstring();
+std::string const & empty_string();
+
 } // namespace lyx
 
 #endif

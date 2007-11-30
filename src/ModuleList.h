@@ -15,6 +15,7 @@
 #include "support/FileName.h"
 
 #include <map>
+#include <string>
 #include <vector>
 
 namespace lyx {

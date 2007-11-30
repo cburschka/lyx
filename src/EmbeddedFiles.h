@@ -15,6 +15,7 @@
 
 #include "support/FileName.h"
 
+#include <string>
 #include <vector>
 
 /**

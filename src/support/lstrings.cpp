@@ -42,6 +42,22 @@ using std::toupper;
 
 namespace lyx {
 
+// Using this allows us to have docstring default arguments in headers
+// without #include "support/docstring" there.
+docstring const & empty_docstring()
+{
+	static docstring s;
+	return s;
+}
+
+// Using this allows us to have std::string default arguments in headers
+// without #include <string>
+std::string const & empty_string()
+{
+	static std::string s;
+	return s;
+}
+
 /**
  * Convert a QChar into a UCS4 character.
  * This is a hack (it does only make sense for the common part of the UCS4
@@ -232,73 +248,77 @@ int compare_ascii_no_case(docstring const & s, docstring const & s2)
 
 bool isStrInt(string const & str)
 {
-	if (str.empty()) return false;
+	if (str.empty())
+		return false;
 
 	// Remove leading and trailing white space chars.
 	string const tmpstr = trim(str);
-	if (tmpstr.empty()) return false;
+	if (tmpstr.empty())
+		return false;
 
 	string::const_iterator cit = tmpstr.begin();
-	if ((*cit) == '-') ++cit;
+	if ((*cit) == '-')
+		++cit;
+
 	string::const_iterator end = tmpstr.end();
-	for (; cit != end; ++cit) {
-		if (!isdigit((*cit))) return false;
-	}
+	for (; cit != end; ++cit)
+		if (!isdigit((*cit)))
+			return false;
+
 	return true;
 }
 
 
 bool isStrUnsignedInt(string const & str)
 {
-	if (str.empty()) return false;
+	if (str.empty())
+		return false;
 
 	// Remove leading and trailing white space chars.
 	string const tmpstr = trim(str);
-	if (tmpstr.empty()) return false;
+	if (tmpstr.empty())
+		return false;
 
 	string::const_iterator cit = tmpstr.begin();
 	string::const_iterator end = tmpstr.end();
-	for (; cit != end; ++cit) {
-		if (!isdigit((*cit))) return false;
-	}
+	for (; cit != end; ++cit)
+		if (!isdigit((*cit)))
+			return false;
+
 	return true;
 }
 
 
 bool isStrDbl(string const & str)
 {
-	if (str.empty()) return false;
+	if (str.empty())
+		return false;
 
 	// Remove leading and trailing white space chars.
 	string const tmpstr = trim(str);
-	if (tmpstr.empty()) return false;
-	//	if (1 < tmpstr.count('.')) return false;
+	if (tmpstr.empty())
+		return false;
+	//	if (tmpstr.count('.') > 1) return false;
 
 	string::const_iterator cit = tmpstr.begin();
-	bool found_dot(false);
-	if ((*cit) == '-') ++cit;
+	bool found_dot = false;
+	if (*cit == '-')
+		++cit;
 	string::const_iterator end = tmpstr.end();
 	for (; cit != end; ++cit) {
-		if (!isdigit((*cit))
-		    && '.' != (*cit)) {
+		if (!isdigit(*cit) && *cit != '.')
 			return false;
-		}
 		if ('.' == (*cit)) {
-			if (found_dot) {
+			if (found_dot)
 				return false;
-			} else {
-				found_dot = true;
-			}
+			found_dot = true;
 		}
 	}
 	return true;
 }
 
 
-namespace {
-
-inline
-bool isHexChar(char_type c)
+static bool isHexChar(char_type c)
 {
 	return c == '0' ||
 		c == '1' ||
@@ -317,8 +337,6 @@ bool isHexChar(char_type c)
 		c == 'e' || c == 'E' ||
 		c == 'f' || c == 'F';
 }
-
-} // anon namespace
 
 
 bool isHex(docstring const & str)
@@ -567,7 +585,8 @@ string const token(string const & a, char delim, int n)
 
 docstring const token(docstring const & a, char_type delim, int n)
 {
-	if (a.empty()) return docstring();
+	if (a.empty())
+		return docstring();
 
 	size_t k = 0;
 	size_t i = 0;

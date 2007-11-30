@@ -11,10 +11,10 @@
 
 #include <config.h>
 
-#include "support/debug.h"
 #include "LyX.h"
-#include "support/gettext.h"
 
+#include "support/debug.h"
+#include "support/gettext.h"
 #include "support/os.h"
 
 #include <iostream>
@@ -32,6 +32,8 @@ int main(int argc, char * argv[])
 	// stdlibs we do the initialization here, but still as
 	// early as possible.
 	lyx::lyxerr.setStream(std::cerr);
+
+	LYXERR0("acssdc");
 
 	lyx::support::os::init(argc, argv);
 
