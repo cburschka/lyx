@@ -2287,6 +2287,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 				support::package().document_dir() = FileName(lyxrc.document_path);
 		}
 	case LyXRC::RC_ESC_CHARS:
+	case LyXRC::RC_EXAMPLEPATH:
 	case LyXRC::RC_FONT_ENCODING:
 	case LyXRC::RC_FORMAT:
 	case LyXRC::RC_INDEX_COMMAND:
