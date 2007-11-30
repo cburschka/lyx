@@ -145,7 +145,6 @@ using support::split;
 using support::subst;
 using support::tempName;
 using support::trim;
-using support::sum;
 using support::suffixIs;
 
 namespace Alert = frontend::Alert;
@@ -760,7 +759,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 	// when it has to be converted to the current format.
 	if (!pimpl_->checksum_) {
 		// Save the timestamp and checksum of disk file. If filename is an
-		// emergency file, save the timestamp and sum of the original lyx file
+		// emergency file, save the timestamp and checksum of the original lyx file
 		// because isExternallyModified will check for this file. (BUG4193)
 		string diskfile = filename.absFilename();
 		if (suffixIs(diskfile, ".emergency"))
@@ -1624,7 +1623,7 @@ bool Buffer::isExternallyModified(CheckMethod method) const
 	// if method == timestamp, check timestamp before checksum
 	return (method == checksum_method 
 		|| pimpl_->timestamp_ != pimpl_->filename.lastModified())
-		&& pimpl_->checksum_ != sum(pimpl_->filename);
+		&& pimpl_->checksum_ != pimpl_->filename.checksum();
 }
 
 
@@ -1632,7 +1631,7 @@ void Buffer::saveCheckSum(FileName const & file) const
 {
 	if (file.exists()) {
 		pimpl_->timestamp_ = file.lastModified();
-		pimpl_->checksum_ = sum(file);
+		pimpl_->checksum_ = file.checksum();
 	} else {
 		// in the case of save to a new file.
 		pimpl_->timestamp_ = 0;

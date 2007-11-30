@@ -37,8 +37,6 @@ bool rename(FileName const & from, FileName const & to);
 /// copy a file, returns false it it fails
 bool copy(FileName const & from, FileName const & to,
 	  unsigned long int mode = (unsigned long int)-1);
-/// generates a checksum of a file
-unsigned long sum(FileName const & file);
 /// FIXME: some point to this hmm ?
 int kill(int pid, int sig);
 /// FIXME: same here

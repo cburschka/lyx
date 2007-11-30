@@ -38,7 +38,6 @@ using support::FileName;
 using support::ltrim;
 using support::onlyFilename;
 using support::suffixIs;
-using support::sum;
 
 inline
 bool DepTable::dep_info::changed() const
@@ -54,7 +53,7 @@ void DepTable::insert(FileName const & f, bool upd)
 		di.crc_prev = 0;
 		if (upd) {
 			LYXERR(Debug::DEPEND, " CRC...");
-			di.crc_cur = sum(f);
+			di.crc_cur = f.checksum();
 			LYXERR(Debug::DEPEND, "done.");
 			struct stat f_info;
 			stat(f.toFilesystemEncoding().c_str(), &f_info);
@@ -87,7 +86,7 @@ void DepTable::update()
 			} else {
 				di.crc_prev = di.crc_cur;
 				LYXERR(Debug::DEPEND, itr->first << " CRC... ");
-				di.crc_cur = sum(itr->first);
+				di.crc_cur = itr->first.checksum();
 				LYXERR(Debug::DEPEND, "done");
 			}
 		} else {

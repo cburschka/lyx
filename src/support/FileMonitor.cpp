@@ -94,7 +94,7 @@ void FileMonitor::start() const
 		return;
 
 	pimpl_->timestamp_ = pimpl_->filename_.lastModified();
-	pimpl_->checksum_ = sum(pimpl_->filename_);
+	pimpl_->checksum_ = pimpl_->filename_.checksum();
 
 	if (pimpl_->timestamp_ && pimpl_->checksum_) {
 		pimpl_->timer_.start();
@@ -124,7 +124,7 @@ unsigned long FileMonitor::checksum() const
 	// If we aren't actively monitoring the file, then recompute the
 	// checksum explicitly.
 	if (!pimpl_->timer_.running() && !pimpl_->filename_.empty())
-		return sum(pimpl_->filename_);
+		return pimpl_->filename_.checksum();
 
 	return pimpl_->checksum_;
 }
@@ -166,7 +166,7 @@ void FileMonitor::Impl::monitorFile()
 		if (new_timestamp != timestamp_) {
 			timestamp_ = new_timestamp;
 
-			unsigned long const new_checksum = sum(filename_);
+			unsigned long const new_checksum = filename_.checksum();
 			if (new_checksum != checksum_) {
 				checksum_ = new_checksum;
 				changed = true;

@@ -92,7 +92,7 @@ public:
 	 * system.
 	 */
 	enum CheckMethod {
-		checksum_method,  ///< Use file check sum
+		checksum_method,  ///< Use file checksum
 		timestamp_method, ///< Use timestamp, and checksum if timestamp has changed
 	};
 	

@@ -236,6 +236,23 @@ std::time_t FileName::lastModified() const
 }
 
 
+extern unsigned long sum(char const * file);
+
+unsigned long FileName::checksum() const
+{
+	if (!exists()) {
+		LYXERR0("File \"" << absFilename() << "\" does not exist!");
+		return 0;
+	}
+	// a directory may be passed here so we need to test it. (bug 3622)
+	if (isDirectory()) {
+		LYXERR0('\\' << absFilename() << "\" is a directory!");
+		return 0;
+	}
+	return sum(absFilename().c_str());
+}
+
+
 bool FileName::removeFile() const
 {
 	bool const success = QFile::remove(d->fi.absoluteFilePath());

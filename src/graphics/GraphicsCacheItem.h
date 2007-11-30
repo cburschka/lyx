@@ -63,7 +63,7 @@ public:
 	void startMonitoring() const;
 	///
 	bool monitoring() const;
-	/** Returns the check sum of filename() so that, for example, you can
+	/** Returns the check checksum of filename() so that, for example, you can
 	 *  ascertain whether to output a new PostScript version of the file
 	 *  for a LaTeX run.
 	 */

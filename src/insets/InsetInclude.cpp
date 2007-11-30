@@ -73,7 +73,6 @@ using support::onlyFilename;
 using support::onlyPath;
 using support::prefixIs;
 using support::subst;
-using support::sum;
 
 using std::find;
 using std::string;
@@ -463,8 +462,8 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		// to the temp dir, so that .aux files etc. are not created
 		// in the original dir. Files included by this file will be
 		// found via input@path, see ../Buffer.cpp.
-		unsigned long const checksum_in  = sum(included_file);
-		unsigned long const checksum_out = sum(writefile);
+		unsigned long const checksum_in  = included_file.checksum();
+		unsigned long const checksum_out = writefile.checksum();
 
 		if (checksum_in != checksum_out) {
 			if (!copy(included_file, writefile)) {

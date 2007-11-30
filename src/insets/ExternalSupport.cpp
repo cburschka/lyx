@@ -255,8 +255,8 @@ void updateExternal(InsetExternalParams const & params,
 		support::makeAbsPath(params.filename.mangledFilename(),
 				     masterBuffer->temppath()));
 	if (!params.filename.empty() && !params.filename.isDirectory()) {
-		unsigned long const from_checksum = support::sum(params.filename);
-		unsigned long const temp_checksum = support::sum(temp_file);
+		unsigned long const from_checksum = params.filename.checksum();
+		unsigned long const temp_checksum = temp_file.checksum();
 
 		if (from_checksum != temp_checksum) {
 			Mover const & mover = getMover(from_format);

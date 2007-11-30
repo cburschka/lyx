@@ -52,11 +52,11 @@ template struct boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 namespace lyx {
 namespace support {
 
-unsigned long sum(FileName const & file)
+unsigned long sum(char const * file)
 {
 	LYXERR(Debug::FILES, "lyx::sum() using mmap (lightning fast)");
 
-	int fd = open(file.toFilesystemEncoding().c_str(), O_RDONLY);
+	int fd = open(file, O_RDONLY);
 	if (!fd)
 		return 0;
 
@@ -114,15 +114,11 @@ using std::ifstream;
 #if HAVE_DECL_ISTREAMBUF_ITERATOR
 using std::istreambuf_iterator;
 
-unsigned long sum(FileName const & file)
+unsigned long sum(char const * file)
 {
 	LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
 
-	// a directory may be passed here so we need to test it. (bug 3622)
-	if (file.isDirectory())
-		return 0;
-	string filename = file.toFilesystemEncoding();
-	ifstream ifs(filename.c_str(), std::ios_base::in | std::ios_base::binary);
+	ifstream ifs(file, std::ios_base::in | std::ios_base::binary);
 	if (!ifs)
 		return 0;
 
@@ -136,7 +132,7 @@ unsigned long sum(FileName const & file)
 using std::istream_iterator;
 using std::ios;
 
-unsigned long sum(FileName const & file)
+unsigned long sum(char const * file)
 {
 	LYXERR(Debug::FILES, "lyx::sum() using istream_iterator (slow as a snail)");
 
@@ -144,8 +140,7 @@ unsigned long sum(FileName const & file)
 	if (file.isDirectory())
 		return 0;
 
-	string filename = file.toFilesystemEncoding();
-	ifstream ifs(filename.c_str(), std::ios_base::in | std::ios_base::binary);
+	ifstream ifs(file, std::ios_base::in | std::ios_base::binary);
 	if (!ifs)
 		return 0;
 

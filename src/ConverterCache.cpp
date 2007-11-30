@@ -284,7 +284,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		}
 		// Maybe the contents is still the same?
 		item->timestamp = timestamp;
-		unsigned long const checksum = support::sum(orig_from);
+		unsigned long const checksum = orig_from.checksum();
 		if (checksum == item->checksum) {
 			LYXERR(Debug::FILES, "Same checksum.");
 			return;
@@ -297,7 +297,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		}
 	} else {
 		CacheItem new_item(orig_from, to_format, timestamp,
-				support::sum(orig_from));
+				orig_from.checksum());
 		if (mover.copy(converted_file, new_item.cache_name,
 		               support::onlyFilename(new_item.cache_name.absFilename()), 0600)) {
 			FormatCache & format_cache = pimpl_->cache[orig_from];
@@ -389,7 +389,7 @@ bool ConverterCache::inCache(FileName const & orig_from,
 		LYXERR(Debug::FILES, "identical timestamp.");
 		return true;
 	}
-	if (item->checksum == support::sum(orig_from)) {
+	if (item->checksum == orig_from.checksum()) {
 		item->timestamp = timestamp;
 		LYXERR(Debug::FILES, "identical checksum.");
 		return true;

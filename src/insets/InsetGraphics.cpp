@@ -78,7 +78,7 @@ TODO
 #include "support/convert.h"
 #include "support/docstream.h"
 #include "support/filetools.h"
-#include "support/lyxlib.h" // sum
+#include "support/lyxlib.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Systemcall.h"
@@ -495,8 +495,8 @@ enum GraphicsCopyStatus {
 std::pair<GraphicsCopyStatus, FileName> const
 copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 {
-	unsigned long const checksum_in  = support::sum(file_in);
-	unsigned long const checksum_out = support::sum(file_out);
+	unsigned long const checksum_in  = file_in.checksum();
+	unsigned long const checksum_out = file_out.checksum();
 
 	if (checksum_in == checksum_out)
 		// Nothing to do...

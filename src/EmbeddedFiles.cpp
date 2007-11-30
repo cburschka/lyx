@@ -62,7 +62,6 @@ using support::makeRelPath;
 using support::changeExtension;
 using support::bformat;
 using support::prefixIs;
-using support::sum;
 using support::makedir;
 
 
@@ -138,7 +137,7 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 	// if external file already exists ...
 	if (ext.exists()) {
 		// no need to copy if the files are the same
-		if (sum(*this) == sum(FileName(emb_file)))
+		if (checksum() == FileName(emb_file).checksum())
 			return true;
 		// otherwise, ask if overwrite
 		int ret = Alert::prompt(
@@ -181,7 +180,7 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 	// if embedded file already exists ...
 	if (emb.exists()) {
 		// no need to copy if the files are the same
-		if (sum(*this) == sum(FileName(emb_file)))
+		if (checksum() == FileName(emb_file).checksum())
 			return true;
 		// other wise, ask if overwrite
 		int const ret = Alert::prompt(
