@@ -167,7 +167,7 @@ public:
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
-			   bool output_body = true);
+			   bool output_body = true) const;
 	/** Export the buffer to LaTeX.
 	    If \p os is a file stream, and params().inputenc is "auto" or
 	    "default", and the buffer contains text in different languages
@@ -192,15 +192,15 @@ public:
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
-			   bool output_body = true);
+			   bool output_body = true) const;
 	///
 	void makeDocBookFile(support::FileName const & filename,
 			     OutputParams const & runparams_in,
-			     bool only_body = false);
+			     bool only_body = false) const;
 	///
 	void writeDocBookSource(odocstream & os, std::string const & filename,
 			     OutputParams const & runparams_in,
-			     bool only_body = false);
+			     bool only_body = false) const;
 	/// returns the main language for the buffer (document)
 	Language const * language() const;
 	/// get l10n translated to the buffers language
@@ -260,17 +260,14 @@ public:
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(std::string const & newfile);
 
-	/// Name of the document's parent
-	void setParentName(std::string const &);
+	/// Set document's parent Buffer.
+	void setParent(Buffer const *);
+	Buffer const * parent();
 
 	/** Get the document's master (or \c this if this is not a
 	    child document)
 	 */
 	Buffer const * masterBuffer() const;
-	/** Get the document's master (or \c this if this is not a
-	    child document)
-	 */
-	Buffer * masterBuffer();
 
 	/// Is buffer read-only?
 	bool isReadonly() const;
@@ -298,7 +295,7 @@ public:
 
 	/// Update the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	void updateBibfilesCache();
+	void updateBibfilesCache() const;
 	/// Return the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	std::vector<support::FileName> const & getBibfilesCache() const;
@@ -330,7 +327,6 @@ public:
 	std::string const & temppath() const;
 
 	/// Used when typesetting to place errorboxes.
-	TexRow & texrow();
 	TexRow const & texrow() const;
 
 	///
@@ -380,14 +376,18 @@ public:
 	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end,
 		bool full_source);
 
-	/// Access to error list
-	ErrorList const & errorList(std::string const & type) const;
-	ErrorList & errorList(std::string const & type);
+	/// Access to error list.
+	/// This method is used only for GUI visualisation of Buffer related
+	/// errors (like parsing or LateX compilation). This method is const
+	/// because modifying the returned ErrorList does not touch the document
+	/// contents.
+	ErrorList & errorList(std::string const & type) const;
 
-	//@{
-	TocBackend & tocBackend();
-	TocBackend const & tocBackend() const;
-	//@}
+	/// The Toc backend.
+	/// This is useful only for screen visualisation of the Buffer. This
+	/// method is const because modifying this backend does not touch
+	/// the document contents.
+	TocBackend & tocBackend() const;
 	
 	//@{
 	EmbeddedFiles & embeddedFiles();
@@ -423,16 +423,19 @@ public:
 	bool menuWrite();
 	///
 	void loadChildDocuments() const;
+	///
+	void resetChildDocuments(bool close_them) const;
+
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;
 
 	///
 	bool doExport(std::string const & format, bool put_in_tempdir,
-		std::string & result_file);
+		std::string & result_file) const;
 	///
-	bool doExport(std::string const & format, bool put_in_tempdir);
+	bool doExport(std::string const & format, bool put_in_tempdir) const;
 	///
-	bool preview(std::string const & format);
+	bool preview(std::string const & format) const;
 	///
 	bool isExportable(std::string const & format) const;
 	///

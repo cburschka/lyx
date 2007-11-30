@@ -167,7 +167,8 @@ public:
 	BufferParams params;
 	LyXVC lyxvc;
 	string temppath;
-	TexRow texrow;
+	mutable TexRow texrow;
+	Buffer const * parent_buffer;
 
 	/// need to regenerate .tex?
 	DepClean dep_clean;
@@ -197,7 +198,7 @@ public:
 	InsetText inset;
 
 	///
-	TocBackend toc_backend;
+	mutable TocBackend toc_backend;
 
 	/// macro table
 	typedef std::map<unsigned int, MacroData, std::greater<int> > PositionToMacroMap;
@@ -224,10 +225,10 @@ public:
 
 
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
-	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
-	  filename(file), file_fully_loaded(false), inset(params),
-	  toc_backend(&parent), embedded_files(&parent), timestamp_(0),
-	  checksum_(0), wa_(0), undo_(parent)
+	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
+	  read_only(readonly_), filename(file), file_fully_loaded(false),
+	  inset(params), toc_backend(&parent), embedded_files(&parent),
+	  timestamp_(0), checksum_(0), wa_(0), undo_(parent)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.setBuffer(&parent);
@@ -255,12 +256,14 @@ Buffer::~Buffer()
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
-	Buffer * master = masterBuffer();
+	Buffer const * master = masterBuffer();
 	if (master != this && use_gui)
 		// We are closing buf which was a child document so we
 		// must update the labels and section numbering of its master
 		// Buffer.
 		updateLabels(*master);
+
+	resetChildDocuments(false);
 
 	if (!temppath().empty() && !FileName(temppath()).destroyDirectory()) {
 		Alert::warning(_("Could not remove temporary directory"),
@@ -347,25 +350,13 @@ string const & Buffer::temppath() const
 }
 
 
-TexRow & Buffer::texrow()
-{
-	return pimpl_->texrow;
-}
-
-
 TexRow const & Buffer::texrow() const
 {
 	return pimpl_->texrow;
 }
 
 
-TocBackend & Buffer::tocBackend()
-{
-	return pimpl_->toc_backend;
-}
-
-
-TocBackend const & Buffer::tocBackend() const
+TocBackend & Buffer::tocBackend() const
 {
 	return pimpl_->toc_backend;
 }
@@ -989,7 +980,7 @@ bool Buffer::write(ostream & ofs) const
 bool Buffer::makeLaTeXFile(FileName const & fname,
 			   string const & original_path,
 			   OutputParams const & runparams,
-			   bool output_preamble, bool output_body)
+			   bool output_preamble, bool output_body) const
 {
 	string const encoding = runparams.encoding->iconvName();
 	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << "...");
@@ -1002,7 +993,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 
 	bool failed_export = false;
 	try {
-		texrow().reset();
+		pimpl_->texrow.reset();
 		writeLaTeXSource(ofs, original_path,
 		      runparams, output_preamble, output_body);
 	}
@@ -1040,7 +1031,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 void Buffer::writeLaTeXSource(odocstream & os,
 			   string const & original_path,
 			   OutputParams const & runparams_in,
-			   bool const output_preamble, bool const output_body)
+			   bool const output_preamble, bool const output_body) const
 {
 	OutputParams runparams = runparams_in;
 
@@ -1057,8 +1048,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			"For more info, see http://www.lyx.org/.\n"
 			"%% Do not edit unless you really know what "
 			"you are doing.\n";
-		texrow().newline();
-		texrow().newline();
+		pimpl_->texrow.newline();
+		pimpl_->texrow.newline();
 	}
 	LYXERR(Debug::INFO, "lyx document header finished");
 	// There are a few differences between nice LaTeX and usual files:
@@ -1076,7 +1067,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			// code for usual, NOT nice-latex-file
 			os << "\\batchmode\n"; // changed
 			// from \nonstopmode
-			texrow().newline();
+			pimpl_->texrow.newline();
 		}
 		if (!original_path.empty()) {
 			// FIXME UNICODE
@@ -1086,23 +1077,23 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			   << "\\def\\input@path{{"
 			   << inputpath << "/}}\n"
 			   << "\\makeatother\n";
-			texrow().newline();
-			texrow().newline();
-			texrow().newline();
+			pimpl_->texrow.newline();
+			pimpl_->texrow.newline();
+			pimpl_->texrow.newline();
 		}
 
 		// Write the preamble
-		runparams.use_babel = params().writeLaTeX(os, features, texrow());
+		runparams.use_babel = params().writeLaTeX(os, features, pimpl_->texrow);
 
 		if (!output_body)
 			return;
 
 		// make the body.
 		os << "\\begin{document}\n";
-		texrow().newline();
+		pimpl_->texrow.newline();
 	} // output_preamble
 
-	texrow().start(paragraphs().begin()->id(), 0);
+	pimpl_->texrow.start(paragraphs().begin()->id(), 0);
 	
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
@@ -1113,7 +1104,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 					   "$$lang",
 					   params().language->babel()))
 		   << '\n';
-		texrow().newline();
+		pimpl_->texrow.newline();
 	}
 
 	Encoding const & encoding = params().encoding();
@@ -1123,37 +1114,37 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		// the preamble if it is handled by CJK.sty.
 		os << "\\begin{CJK}{" << from_ascii(encoding.latexName())
 		   << "}{}\n";
-		texrow().newline();
+		pimpl_->texrow.newline();
 	}
 
 	// if we are doing a real file with body, even if this is the
 	// child of some other buffer, let's cut the link here.
 	// This happens for example if only a child document is printed.
-	string save_parentname;
+	Buffer const * save_parent = 0;
 	if (output_preamble) {
-		save_parentname = params().parentname;
-		params().parentname.erase();
+		save_parent = pimpl_->parent_buffer;
+		pimpl_->parent_buffer = 0;
 	}
 
 	loadChildDocuments();
 
 	// the real stuff
-	latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
+	latexParagraphs(*this, paragraphs(), os, pimpl_->texrow, runparams);
 
 	// Restore the parenthood if needed
 	if (output_preamble)
-		params().parentname = save_parentname;
+		pimpl_->parent_buffer = save_parent;
 
 	// add this just in case after all the paragraphs
 	os << endl;
-	texrow().newline();
+	pimpl_->texrow.newline();
 
 	if (encoding.package() == Encoding::CJK) {
 		// Close the open CJK environment.
 		// latexParagraphs will have opened one even if the last text
 		// was not CJK.
 		os << "\\end{CJK}\n";
-		texrow().newline();
+		pimpl_->texrow.newline();
 	}
 
 	if (!lyxrc.language_auto_end &&
@@ -1162,12 +1153,12 @@ void Buffer::writeLaTeXSource(odocstream & os,
 					   "$$lang",
 					   params().language->babel()))
 		   << '\n';
-		texrow().newline();
+		pimpl_->texrow.newline();
 	}
 
 	if (output_preamble) {
 		os << "\\end{document}\n";
-		texrow().newline();
+		pimpl_->texrow.newline();
 		LYXERR(Debug::LATEX, "makeLaTeXFile...done");
 	} else {
 		LYXERR(Debug::LATEX, "LaTeXFile for inclusion made.");
@@ -1175,10 +1166,10 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	runparams_in.encoding = runparams.encoding;
 
 	// Just to be sure. (Asger)
-	texrow().newline();
+	pimpl_->texrow.newline();
 
 	LYXERR(Debug::INFO, "Finished making LaTeX file.");
-	LYXERR(Debug::INFO, "Row count was " << texrow().rows() - 1 << '.');
+	LYXERR(Debug::INFO, "Row count was " << pimpl_->texrow.rows() - 1 << '.');
 }
 
 
@@ -1202,7 +1193,7 @@ bool Buffer::isDocBook() const
 
 void Buffer::makeDocBookFile(FileName const & fname,
 			      OutputParams const & runparams,
-			      bool const body_only)
+			      bool const body_only) const
 {
 	LYXERR(Debug::LATEX, "makeDocBookFile...");
 
@@ -1221,12 +1212,12 @@ void Buffer::makeDocBookFile(FileName const & fname,
 
 void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 			     OutputParams const & runparams,
-			     bool const only_body)
+			     bool const only_body) const
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 
-	texrow().reset();
+	pimpl_->texrow.reset();
 
 	TextClass const & tclass = params().getTextClass();
 	string const top_element = tclass.latexname();
@@ -1430,11 +1421,11 @@ void Buffer::getLabelList(vector<docstring> & list) const
 }
 
 
-void Buffer::updateBibfilesCache()
+void Buffer::updateBibfilesCache() const
 {
 	// if this is a child document and the parent is already loaded
 	// update the parent's cache instead
-	Buffer * tmp = masterBuffer();
+	Buffer const * tmp = masterBuffer();
 	BOOST_ASSERT(tmp);
 	if (tmp != this) {
 		tmp->updateBibfilesCache();
@@ -1711,45 +1702,25 @@ bool Buffer::isReadonly() const
 }
 
 
-void Buffer::setParentName(string const & name)
+void Buffer::setParent(Buffer const * buffer)
 {
-	if (name == pimpl_->filename.absFilename())
-		// Avoids recursive include.
-		params().parentname.clear();
-	else
-		params().parentname = name;
+	// Avoids recursive include.
+	pimpl_->parent_buffer = buffer == this ? 0 : buffer;
+}
+
+
+Buffer const * Buffer::parent()
+{
+	return pimpl_->parent_buffer;
 }
 
 
 Buffer const * Buffer::masterBuffer() const
 {
-	if (!params().parentname.empty()
-		&& theBufferList().exists(params().parentname)) {
-		Buffer const * buf = theBufferList().getBuffer(params().parentname);
-		//We need to check if the parent is us...
-		//FIXME RECURSIVE INCLUDE
-		//This is not sufficient, since recursive includes could be downstream.
-		if (buf && buf != this)
-			return buf->masterBuffer();
-	}
-
-	return this;
-}
-
-
-Buffer * Buffer::masterBuffer()
-{
-	if (!params().parentname.empty()
-	    && theBufferList().exists(params().parentname)) {
-		Buffer * buf = theBufferList().getBuffer(params().parentname);
-		//We need to check if the parent is us...
-		//FIXME RECURSIVE INCLUDE
-		//This is not sufficient, since recursive includes could be downstream.
-		if (buf && buf != this)
-			return buf->masterBuffer();
-	}
-
-	return this;
+	if (!pimpl_->parent_buffer)
+		return this;
+	
+	return pimpl_->parent_buffer->masterBuffer();
 }
 
 
@@ -1761,7 +1732,7 @@ bool Buffer::hasMacro(docstring const & name, Paragraph const & par) const
 		return true;
 
 	// If there is a master buffer, query that
-	const Buffer * master = masterBuffer();
+	Buffer const * master = masterBuffer();
 	if (master && master != this)
 		return master->hasMacro(name);
 
@@ -1775,7 +1746,7 @@ bool Buffer::hasMacro(docstring const & name) const
 		return true;
 
 	// If there is a master buffer, query that
-	const Buffer * master = masterBuffer();
+	Buffer const * master = masterBuffer();
 	if (master && master != this)
 		return master->hasMacro(name);
 
@@ -1792,7 +1763,7 @@ MacroData const & Buffer::getMacro(docstring const & name,
 		return it->second;
 
 	// If there is a master buffer, query that
-	const Buffer * master = masterBuffer();
+	Buffer const * master = masterBuffer();
 	if (master && master != this)
 		return master->getMacro(name);
 
@@ -1808,7 +1779,7 @@ MacroData const & Buffer::getMacro(docstring const & name) const
 		return it->second;
 
 	// If there is a master buffer, query that
-	const Buffer * master = masterBuffer();
+	Buffer const * master = masterBuffer();
 	if (master && master != this)
 		return master->getMacro(name);
 
@@ -1905,11 +1876,11 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
-	texrow().reset();
+	pimpl_->texrow.reset();
 	if (full_source) {
 		os << "% " << _("Preview source code") << "\n\n";
-		texrow().newline();
-		texrow().newline();
+		pimpl_->texrow.newline();
+		pimpl_->texrow.newline();
 		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
 		else {
@@ -1928,11 +1899,11 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 					convert<docstring>(par_begin),
 					convert<docstring>(par_end - 1))
 			   << "\n\n";
-		texrow().newline();
-		texrow().newline();
+		pimpl_->texrow.newline();
+		pimpl_->texrow.newline();
 		// output paragraphs
 		if (isLatex()) {
-			latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
+			latexParagraphs(*this, paragraphs(), os, pimpl_->texrow, runparams);
 		} else {
 			// DocBook
 			docbookParagraphs(paragraphs(), *this, os, runparams);
@@ -1941,20 +1912,14 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 }
 
 
-ErrorList const & Buffer::errorList(string const & type) const
+ErrorList & Buffer::errorList(string const & type) const
 {
-	static ErrorList const emptyErrorList;
-	std::map<string, ErrorList>::const_iterator I = pimpl_->errorLists.find(type);
+	static ErrorList emptyErrorList;
+	std::map<string, ErrorList>::iterator I = pimpl_->errorLists.find(type);
 	if (I == pimpl_->errorLists.end())
 		return emptyErrorList;
 
 	return I->second;
-}
-
-
-ErrorList & Buffer::errorList(string const & type)
-{
-	return pimpl_->errorLists[type];
 }
 
 
@@ -2229,6 +2194,22 @@ bool Buffer::menuWrite()
 }
 
 
+void Buffer::resetChildDocuments(bool close_them) const
+{
+	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
+		if (it->lyxCode() != INCLUDE_CODE)
+			continue;
+		InsetCommand const & inset = static_cast<InsetCommand const &>(*it);
+		InsetCommandParams const & ip = inset.params();
+
+		resetParentBuffer(this, ip, close_them);
+	}
+
+	if (use_gui && masterBuffer() == this)
+		updateLabels(*this);
+}
+
+
 void Buffer::loadChildDocuments() const
 {
 	bool parse_error = false;
@@ -2261,7 +2242,7 @@ string Buffer::bufferFormat() const
 
 
 bool Buffer::doExport(string const & format, bool put_in_tempdir,
-	string & result_file)
+	string & result_file) const
 {
 	string backend_format;
 	OutputParams runparams(&params().encoding());
@@ -2379,14 +2360,14 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 }
 
 
-bool Buffer::doExport(string const & format, bool put_in_tempdir)
+bool Buffer::doExport(string const & format, bool put_in_tempdir) const
 {
 	string result_file;
 	return doExport(format, put_in_tempdir, result_file);
 }
 
 
-bool Buffer::preview(string const & format)
+bool Buffer::preview(string const & format) const
 {
 	string result_file;
 	if (!doExport(format, true, result_file))
@@ -2541,13 +2522,13 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 		int id_start = -1;
 		int pos_start = -1;
 		int errorRow = cit->error_in_line;
-		bool found = texrow().getIdFromRow(errorRow, id_start,
+		bool found = pimpl_->texrow.getIdFromRow(errorRow, id_start,
 						       pos_start);
 		int id_end = -1;
 		int pos_end = -1;
 		do {
 			++errorRow;
-			found = texrow().getIdFromRow(errorRow, id_end, pos_end);
+			found = pimpl_->texrow.getIdFromRow(errorRow, id_end, pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
 		errorList.push_back(ErrorItem(cit->error_desc,

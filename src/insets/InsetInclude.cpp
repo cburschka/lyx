@@ -341,8 +341,39 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 			return 0;
 		}
 	}
-	child->setParentName(parent_filename);
+	child->setParent(&parent);
 	return child;
+}
+
+
+void resetParentBuffer(Buffer const * parent, InsetCommandParams const & params,
+	bool close_it)
+{
+	if (isVerbatim(params) || isListings(params))
+		return;
+
+	string const parent_filename = parent->absFileName();
+	FileName const included_file = makeAbsPath(to_utf8(params["filename"]),
+			   onlyPath(parent_filename));
+
+	if (!isLyXFilename(included_file.absFilename()))
+		return;
+
+	Buffer * child = theBufferList().getBuffer(included_file.absFilename());
+	// File not opened, nothing to close.
+	if (!child)
+		return;
+
+	// Child document has a different parent, don't close it.
+	if (child->parent() != parent)
+		return;
+
+	//close the buffer.
+	child->setParent(0);
+	if (close_it)
+		theBufferList().close(child, false);
+	else
+		updateLabels(*child);
 }
 
 
@@ -664,9 +695,9 @@ void InsetInclude::getLabelList(Buffer const & buffer,
 	else if (loadIfNeeded(buffer, params())) {
 		string const included_file = includedFilename(buffer, params()).absFilename();
 		Buffer * tmp = theBufferList().getBuffer(included_file);
-		tmp->setParentName("");
+		tmp->setParent(0);
 		tmp->getLabelList(list);
-		tmp->setParentName(parentFilename(buffer));
+		tmp->setParent(const_cast<Buffer *>(&buffer));
 	}
 }
 
@@ -678,9 +709,9 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 		string const included_file = includedFilename(buffer, params()).absFilename();
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 		//FIXME This is kind of a dirty hack and should be made reasonable.
-		tmp->setParentName("");
+		tmp->setParent(0);
 		keys.fillWithBibKeys(tmp);
-		tmp->setParentName(parentFilename(buffer));
+		tmp->setParent(&buffer);
 	}
 }
 
@@ -689,9 +720,9 @@ void InsetInclude::updateBibfilesCache(Buffer const & buffer)
 {
 	Buffer * const tmp = getChildBuffer(buffer, params());
 	if (tmp) {
-		tmp->setParentName("");
+		tmp->setParent(0);
 		tmp->updateBibfilesCache();
-		tmp->setParentName(parentFilename(buffer));
+		tmp->setParent(&buffer);
 	}
 }
 
@@ -701,9 +732,9 @@ InsetInclude::getBibfilesCache(Buffer const & buffer) const
 {
 	Buffer * const tmp = getChildBuffer(buffer, params());
 	if (tmp) {
-		tmp->setParentName("");
+		tmp->setParent(0);
 		std::vector<FileName> const & cache = tmp->getBibfilesCache();
-		tmp->setParentName(parentFilename(buffer));
+		tmp->setParent(&buffer);
 		return cache;
 	}
 	static std::vector<FileName> const empty;

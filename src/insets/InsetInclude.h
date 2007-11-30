@@ -134,6 +134,10 @@ private:
 /// return loaded Buffer or zero if the file loading did not proceed.
 Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params);
 
+///
+void resetParentBuffer(Buffer const * parent, InsetCommandParams const & params,
+	bool close_it);
+
 } // namespace lyx
 
 #endif // INSETINCLUDE_H

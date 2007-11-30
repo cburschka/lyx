@@ -1454,7 +1454,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// Set the parent name of the child document.
 				// This makes insertion of citations and references in the child work,
 				// when the target is in the parent or another child document.
-				child->setParentName(parent->absFileName());
+				child->setParent(parent);
 				updateLabels(*child->masterBuffer());
 				lyx_view_->setBuffer(child);
 				if (parsed)

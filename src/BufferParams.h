@@ -263,8 +263,6 @@ public:
 	 *  for instance, they may differ for DVI and PDF generation)
 	 */
 	bool outputChanges;
-	/// Time ago we agreed that this was a buffer property [ale990407]
-	std::string parentname;
 	///
 	bool compressed;
 	///
