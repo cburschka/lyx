@@ -269,6 +269,18 @@ template <class Arg1, class Arg2, class Arg3, class Arg4>
 docstring bformat(docstring const & fmt, Arg1, Arg2, Arg3, Arg4);
 
 
+template<> docstring bformat(docstring const & fmt, int arg1);
+template<> docstring bformat(docstring const & fmt, long arg1);
+template<> docstring bformat(docstring const & fmt, unsigned int arg1);
+template<> docstring bformat(docstring const & fmt, docstring arg1);
+template<> docstring bformat(docstring const & fmt, char * arg1);
+template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2);
+template<> docstring bformat(docstring const & fmt, char const * arg1, docstring arg2);
+template<> docstring bformat(docstring const & fmt, int arg1, int arg2);
+template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3);
+template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3, docstring arg4);
+
+
 } // namespace support
 } // namespace lyx
 
