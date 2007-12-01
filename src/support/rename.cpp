@@ -19,19 +19,14 @@
 namespace lyx {
 namespace support {
 
-
-using std::string;
-
-
 bool rename(FileName const & from, FileName const & to)
 {
-	if (::rename(from.toFilesystemEncoding().c_str(), to.toFilesystemEncoding().c_str()) == -1) {
-		if (copy(from, to)) {
-			from.removeFile();
-			return true;
-		}
+	if (::rename(from.toFilesystemEncoding().c_str(),
+			to.toFilesystemEncoding().c_str()) != -1) 
+		return true;
+	if (!copy(from, to))
 		return false;
-	}
+	from.removeFile();
 	return true;
 }
 
