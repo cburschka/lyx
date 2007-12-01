@@ -281,6 +281,8 @@ Buffer::~Buffer()
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
 	graphics::Previews::get().removeLoader(*this);
+
+	delete d;
 }
 
 
