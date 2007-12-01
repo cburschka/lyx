@@ -18,6 +18,7 @@
 #include "support/os.h"
 
 #include <boost/tokenizer.hpp>
+#include <boost/shared_array.hpp>
 
 #include <cstdlib>
 #include <map>
@@ -65,22 +66,17 @@ bool setEnv(string const & name, string const & value)
 	string const encoded = to_local8bit(from_utf8(value));
 #if defined (HAVE_SETENV)
 	return ::setenv(name.c_str(), encoded.c_str(), true);
-
 #elif defined (HAVE_PUTENV)
-	static std::map<string, char *> varmap;
+	static std::map<string, boost::shared_array<char> > varmap;
 
 	string envstr = name + '=' + encoded;
-	char * newptr = new char[envstr.size() + 1];
-	envstr.copy(newptr, envstr.length());
-	newptr[envstr.length()] = '\0';
-	int const retval = ::putenv(newptr);
+	boost::shared_array<char> newptr(new char[envstr.size() + 1]);
+	envstr.copy(newptr.get(), envstr.length());
+	newptr.get()[envstr.length()] = '\0';
+	bool const retval = ::putenv(newptr.get()) == 0;
 
-	char * oldptr = varmap[name];
-	if (oldptr)
-		delete oldptr;
 	varmap[name] = newptr;
-	return retval == 0;
-
+	return retval;
 #else
 #error No environment-setting function has been defined.
 #endif
