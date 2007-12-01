@@ -264,6 +264,9 @@ Buffer::~Buffer()
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
 
+	// GuiView already destroyed
+	gui_ = 0;
+
 	Buffer const * master = masterBuffer();
 	if (master != this && use_gui)
 		// We are closing buf which was a child document so we
