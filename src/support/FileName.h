@@ -136,6 +136,9 @@ public:
 	/// used for display in the Gui
 	docstring displayName(int threshold = 1000) const;
 
+	/// change to a directory, return success
+	bool chdir() const;
+
 //private:
 	friend class DocFileName;
 	///

@@ -24,7 +24,6 @@ liblyxsupport_la_SOURCES = \
 	FileMonitor.cpp \
 	RandomAccessList.h \
 	abort.cpp \
-	chdir.cpp \
 	convert.cpp \
 	convert.h \
 	copy.cpp \

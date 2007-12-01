@@ -25,8 +25,6 @@ namespace support {
 
 /// get the current working directory
 FileName const getcwd();
-/// change to a directory, 0 is returned on success.
-int chdir(FileName const & name);
 /// Change file permissions
 bool chmod(FileName const & file, unsigned long int mode);
 /**

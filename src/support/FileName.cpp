@@ -236,6 +236,12 @@ std::time_t FileName::lastModified() const
 }
 
 
+bool FileName::chdir() const
+{
+	return QDir::setCurrent(d->fi.absoluteFilePath());
+}
+
+
 extern unsigned long sum(char const * file);
 
 unsigned long FileName::checksum() const

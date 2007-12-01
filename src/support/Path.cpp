@@ -28,7 +28,7 @@ PathChanger::PathChanger(FileName const & path)
 	if (!path.empty()) {
 		pushedDir_ = getcwd();
 
-		if (pushedDir_.empty() || chdir(path)) {
+		if (pushedDir_.empty() || !path.chdir()) {
 			/* FIXME: throw */
 		}
 	} else {
@@ -52,7 +52,7 @@ int PathChanger::pop()
 		return 0;
 	}
 
-	if (chdir(pushedDir_)) {
+	if (!pushedDir_.chdir()) {
 		// should throw an exception
 		// throw DirChangeError();
 	}

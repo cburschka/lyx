@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
+#include "support/debug.h"
 #include "support/FileName.h"
 
 #ifdef HAVE_SYS_STAT_H
@@ -36,6 +37,7 @@ namespace support {
 
 int mymkdir(char const * pathname, unsigned long int mode)
 {
+	LYXERR0("MKDIR" << pathname);
 	// FIXME: why don't we have mode_t in lyx::mkdir prototype ??
 #if HAVE_MKDIR
 # if MKDIR_TAKES_ONE_ARG
