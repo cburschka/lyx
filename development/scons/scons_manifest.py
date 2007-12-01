@@ -340,7 +340,6 @@ src_support_files = Split('''
     Systemcall.cpp
     Timeout.cpp
     abort.cpp
-    chdir.cpp
     convert.cpp
     copy.cpp
     debug.cpp
