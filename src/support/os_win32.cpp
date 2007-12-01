@@ -62,7 +62,6 @@
 # endif
 #endif
 
-using std::endl;
 using std::string;
 
 
