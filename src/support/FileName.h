@@ -15,6 +15,7 @@
 #include "support/strfwd.h"
 
 #include <ctime>
+#include <vector>
 
 
 namespace lyx {
@@ -43,7 +44,7 @@ public:
 	///
 	FileName & operator=(FileName const &);
 
-	virtual ~FileName() {}
+	virtual ~FileName();
 	/** Set a new filename.
 	 * \param filename the file in question. Must have an absolute path.
 	 * Encoding is always UTF-8.
@@ -139,8 +140,13 @@ public:
 	/// change to a directory, return success
 	bool chdir() const;
 
-//private:
-	friend class DocFileName;
+	/// \return list other files in the directory having optional extension 'ext'.
+	std::vector<FileName> dirList(std::string const & ext = empty_string());
+	
+	/// \param buffer_path if empty, uses `pwd`
+	docstring const relPath(std::string const & path) const;
+
+private:
 	///
 	struct Private;
 	Private * const d;

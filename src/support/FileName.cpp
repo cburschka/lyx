@@ -86,6 +86,12 @@ FileName::FileName(string const & abs_filename)
 }
 
 
+FileName::~FileName()
+{
+	delete d;
+}
+
+
 FileName::FileName(FileName const & rhs) : d(new Private)
 {
 	d->fi = rhs.d->fi;
@@ -320,15 +326,15 @@ bool FileName::createDirectory(int permission) const
 }
 
 
-std::vector<FileName> dirList(FileName const & dirname, std::string const & ext)
+std::vector<FileName> FileName::dirList(std::string const & ext)
 {
 	std::vector<FileName> dirlist;
-	if (!dirname.isDirectory()) {
-		LYXERR0("Directory '" << dirname << "' does not exist!");
+	if (!isDirectory()) {
+		LYXERR0("Directory '" << *this << "' does not exist!");
 		return dirlist;
 	}
 
-	QDir dir(dirname.d->fi.absoluteFilePath());
+	QDir dir(d->fi.absoluteFilePath());
 
 	if (!ext.empty()) {
 		QString filter;
@@ -579,6 +585,13 @@ bool FileName::isZippedFile() const
 }
 
 
+docstring const FileName::relPath(string const & path) const
+{
+	// FIXME UNICODE
+	return makeRelPath(qstring_to_ucs4(d->fi.absoluteFilePath()), from_utf8(path));
+}
+
+
 bool operator==(FileName const & lhs, FileName const & rhs)
 {
 	return lhs.absFilename() == rhs.absFilename();
@@ -649,7 +662,7 @@ void DocFileName::erase()
 string DocFileName::relFilename(string const & path) const
 {
 	// FIXME UNICODE
-	return to_utf8(makeRelPath(qstring_to_ucs4(d->fi.absoluteFilePath()), from_utf8(path)));
+	return to_utf8(relPath(path));
 }
 
 
