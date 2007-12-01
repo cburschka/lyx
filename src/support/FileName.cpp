@@ -255,6 +255,7 @@ unsigned long FileName::checksum() const
 		LYXERR0('\\' << absFilename() << "\" is a directory!");
 		return 0;
 	}
+	LYXERR0("Checksumming \"" << absFilename() << "\".");
 	return sum(absFilename().c_str());
 }
 
