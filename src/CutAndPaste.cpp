@@ -646,7 +646,7 @@ void copySelectionToStack()
 void copySelection(Cursor & cur, docstring const & plaintext)
 {
 	// In tablemode, because copy and paste actually use special table stack
-	// we do not attemp to get selected paragraphs under cursor. Instead, a
+	// we do not attempt to get selected paragraphs under cursor. Instead, a
 	// paragraph with the plain text version is generated so that table cells
 	// can be pasted as pure text somewhere else.
 	if (cur.selBegin().idx() != cur.selEnd().idx()) {
