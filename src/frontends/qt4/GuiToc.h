@@ -72,6 +72,8 @@ private:
 	TocWidget * widget_;
 	///
 	std::vector<TocModel *> toc_models_;
+	///		
+	void clearTocModels();
 
 public:
 	///

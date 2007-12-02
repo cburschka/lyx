@@ -52,7 +52,18 @@ GuiToc::GuiToc(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
 
 GuiToc::~GuiToc()
 {
+	clearTocModels();
 	delete widget_;
+}
+
+
+void GuiToc::clearTocModels()
+{
+	const unsigned int size = toc_models_.size();
+	for (unsigned int i = 0; i < size; ++i) {
+		delete toc_models_[i];
+	}
+	toc_models_.clear();
 }
 
 
@@ -134,7 +145,7 @@ bool GuiToc::initialiseParams(string const & data)
 
 	types_.clear();
 	type_names_.clear();
-	toc_models_.clear();
+	clearTocModels();
 	TocList const & tocs = buffer().masterBuffer()->tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
 	TocList::const_iterator end = tocs.end();

@@ -224,6 +224,11 @@ void GuiFontLoader::update()
 }
 
 
+GuiFontLoader::~GuiFontLoader()
+{
+	update();
+}
+
 /////////////////////////////////////////////////
 
 

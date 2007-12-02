@@ -51,7 +51,7 @@ public:
 	GuiFontLoader();
 
 	/// Destructor
-	virtual ~GuiFontLoader() {}
+	virtual ~GuiFontLoader();
 
 	virtual void update();
 	virtual bool available(FontInfo const & f);

@@ -251,6 +251,7 @@ GuiWorkArea::~GuiWorkArea()
 {
 	buffer_view_->buffer().workAreaManager().remove(this);
 	delete buffer_view_;
+	delete cursor_;
 }
 
 
