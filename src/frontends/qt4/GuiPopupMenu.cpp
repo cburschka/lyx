@@ -29,7 +29,7 @@ namespace frontend {
 
 GuiPopupMenu::GuiPopupMenu(GuiMenubar * owner, MenuItem const & mi,
 		bool topLevelMenu)
-	: owner_(owner)
+	: QMenu(owner->menuBar()), owner_(owner)
 {
 	name_ = mi.submenuname();
 
