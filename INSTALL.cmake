@@ -34,7 +34,6 @@ Windows only
     program folder
 
 
-
 Building Visual C++ 2005 project files
 --------------------------------------
 
@@ -56,11 +55,24 @@ Building Visual C++ 2005 project files
       cmake/CMakeLists.txt. To make the warning an error add it
       to MSVC_W_ERROR.
       
+    * Memory leak detection
+      For MSVC the usage of 'Visual Leak Detection' could be enabled
+      (http://dmoulding.googlepages.com/vld): -Dvld=1
+      
+      Building vld requires the 'Debugging Tools For Windows' (~16MB)
+      http://www.microsoft.com/whdc/devtools/debugging/default.mspx
+      Eventually you have to copy dbghelp.dll from your Visual Studio
+      Common7\IDE folder into the binary directory. 
+      'vld.ini' is part of lyx.proj where you can configure vld.
+      
+      The docu for vld could be found in development/Win32/vld, or
+      http://www.codeproject.com/tools/visualleakdetector.asp
+      
       
 Some tips:
 
     * rename Microsoft Visual Studio 8\VC\vcpackages\feacp.dll 
-      t o disable Intellisense
+      to disable Intellisense
     * the Release build links much faster 
     * for the 'Debug' and 'Release' build all precompiled headers are enabled
       to compile without pch (non file merge mode) This is usefull to check 
@@ -119,7 +131,7 @@ Some tips:
 
 
 
-To generate other build files call 'cmake'
+To generate other build files call 'cmake' 
 which shows a list of possibilities.
 
 
