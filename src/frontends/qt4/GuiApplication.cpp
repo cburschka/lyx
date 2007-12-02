@@ -18,10 +18,12 @@
 #include "QLImage.h"
 #include "socket_callback.h"
 
+#include "frontends/alert.h"
 #include "frontends/LyXView.h"
 
 #include "graphics/LoaderQueue.h"
 
+#include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -249,19 +251,35 @@ bool GuiApplication::event(QEvent * e)
 
 bool GuiApplication::notify(QObject * receiver, QEvent * event)
 {
-	bool return_value;
+	bool return_value = false;
 	try {
 		return_value = QApplication::notify(receiver, event);
 	}
+	catch (support::ExceptionMessage  const & e) {
+		if (e.type_ == support::ErrorException) {
+			Alert::error(e.title_, e.details_);
+			LyX::cref().emergencyCleanup();
+			::exit(1);
+		} else if (e.type_ == support::WarningException) {
+			Alert::warning(e.title_, e.details_);
+			return return_value;
+		}
+	}
 	catch (std::exception  const & e) {
-		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
+		docstring s = _("LyX has caught an exception, it will now "
+			"attemp to save all unsaved documents and exit."
+			"\n\nException: ");
+		s += from_ascii(e.what());
+		Alert::error(_("Software exception Detected"), s);
 		LyX::cref().emergencyCleanup();
-		abort();
+		::exit(1);
 	}
 	catch (...) {
-		lyxerr << "Caught some really weird exception..." << endl;
+		docstring s = _("LyX has caught some really weird exception, it will "
+			"now attemp to save all unsaved documents and exit.");
+		Alert::error(_("Software exception Detected"), s);
 		LyX::cref().emergencyCleanup();
-		abort();
+		::exit(1);
 	}
 
 	return return_value;
