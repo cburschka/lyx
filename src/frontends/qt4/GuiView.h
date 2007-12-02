@@ -236,6 +236,9 @@ private:
 	///
 	void insertLyXFile(docstring const & fname);
 	///
+	void insertPlaintextFile(docstring const & fname,
+		bool asParagraph);
+	///
 	Inset * getOpenInset(std::string const & name) const;
 
 	/// Is the dialog currently visible?

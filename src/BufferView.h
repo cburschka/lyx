@@ -241,8 +241,7 @@ public:
 	void setGuiDelegate(frontend::GuiBufferViewDelegate *);
 
 	///
-	docstring contentsOfPlaintextFile(support::FileName const & f,
-		bool asParagraph);
+	docstring contentsOfPlaintextFile(support::FileName const & f);
 	// Insert plain text file (if filename is empty, prompt for one)
 	void insertPlaintextFile(support::FileName const & f, bool asParagraph);
 	///

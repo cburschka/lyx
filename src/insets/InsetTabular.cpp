@@ -3411,7 +3411,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FILE_INSERT_PLAINTEXT: {
 		// FIXME UNICODE
 		docstring const tmpstr = cur.bv().contentsOfPlaintextFile(
-			FileName(to_utf8(cmd.argument())), false);
+			FileName(to_utf8(cmd.argument())));
 		if (tmpstr.empty())
 			break;
 		cur.recordUndoInset(INSERT_UNDO);

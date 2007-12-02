@@ -1070,6 +1070,44 @@ void GuiView::insertLyXFile(docstring const & fname)
 }
 
 
+void GuiView::insertPlaintextFile(docstring const & fname,
+	bool asParagraph)
+{
+	BufferView * bv = view();
+	if (!bv)
+		return;
+
+	// FIXME UNICODE
+	FileName filename(to_utf8(fname));
+	
+	if (!filename.empty()) {
+		bv->insertPlaintextFile(filename, asParagraph);
+		return;
+	}
+
+	FileDialog dlg(_("Select file to insert"), (asParagraph ?
+		LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT));
+
+	FileDialog::Result result = dlg.open(from_utf8(bv->buffer().filePath()),
+		FileFilterList(), docstring());
+
+	if (result.first == FileDialog::Later)
+		return;
+
+	// FIXME UNICODE
+	filename.set(to_utf8(result.second));
+
+	// check selected filename
+	if (filename.empty()) {
+		// emit message signal.
+		message(_("Canceled."));
+		return;
+	}
+
+	bv->insertPlaintextFile(filename, asParagraph);
+}
+
+
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = view();	
@@ -1107,6 +1145,14 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		case LFUN_FILE_INSERT:
 			insertLyXFile(cmd.argument());
 			break;
+		case LFUN_FILE_INSERT_PLAINTEXT_PARA:
+			insertPlaintextFile(cmd.argument(), true);
+			break;
+
+		case LFUN_FILE_INSERT_PLAINTEXT:
+			insertPlaintextFile(cmd.argument(), false);
+			break;
+
 
 		case LFUN_TOOLBAR_TOGGLE: {
 			string const name = cmd.getArg(0);

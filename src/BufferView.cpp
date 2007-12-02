@@ -59,7 +59,6 @@
 
 #include "frontends/alert.h"
 #include "frontends/Delegates.h"
-#include "frontends/FileDialog.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
@@ -892,16 +891,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			cur.message(_("No further redo information"));
 			updateFlags = Update::None;
 		}
-		break;
-
-	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
-		// FIXME UNICODE
-		insertPlaintextFile(FileName(to_utf8(cmd.argument())), true);
-		break;
-
-	case LFUN_FILE_INSERT_PLAINTEXT:
-		// FIXME UNICODE
-		insertPlaintextFile(FileName(to_utf8(cmd.argument())), false);
 		break;
 
 	case LFUN_FONT_STATE:
@@ -1955,28 +1944,8 @@ void BufferView::setGuiDelegate(frontend::GuiBufferViewDelegate * gui)
 
 
 // FIXME: Move this out of BufferView again
-docstring BufferView::contentsOfPlaintextFile(FileName const & fname,
-	bool asParagraph)
+docstring BufferView::contentsOfPlaintextFile(FileName const & fname)
 {
-	if (fname.empty()) {
-		FileDialog dlg(_("Select file to insert"),
-				   ( asParagraph
-				     ? LFUN_FILE_INSERT_PLAINTEXT_PARA 
-				     : LFUN_FILE_INSERT_PLAINTEXT) );
-
-		FileDialog::Result result =
-			dlg.open(from_utf8(buffer().filePath()),
-				     FileFilterList(), docstring());
-
-		if (result.first == FileDialog::Later)
-			return docstring();
-
-		if (result.second.empty())
-			return docstring();
-
-		return contentsOfPlaintextFile(FileName(to_utf8(result.second)), false);
-	}
-
 	if (!fname.isReadableFile()) {
 		docstring const error = from_ascii(strerror(errno));
 		docstring const file = makeDisplayPath(fname.absFilename(), 50);
@@ -2013,7 +1982,7 @@ docstring BufferView::contentsOfPlaintextFile(FileName const & fname,
 
 void BufferView::insertPlaintextFile(FileName const & f, bool asParagraph)
 {
-	docstring const tmpstr = contentsOfPlaintextFile(f, asParagraph);
+	docstring const tmpstr = contentsOfPlaintextFile(f);
 
 	if (tmpstr.empty())
 		return;
@@ -2025,6 +1994,9 @@ void BufferView::insertPlaintextFile(FileName const & f, bool asParagraph)
 		cur.innerText()->insertStringAsParagraphs(cur, tmpstr);
 	else
 		cur.innerText()->insertStringAsLines(cur, tmpstr);
+
+	updateMetrics();
+	buffer_.changed();
 }
 
 } // namespace lyx
