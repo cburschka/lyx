@@ -20,6 +20,7 @@
 #include "support/lstrings.h"
 
 #include <ostream>
+#include <string>
 
 using std::endl;
 using std::string;
@@ -61,8 +62,6 @@ bool CmdDef::read(string const & def_file)
 		       << tmp << endl;
 		return false;
 	}
-
-	//LYXERR(Debug::KBMAP, "Reading def file:" << tmp);
 
 	bool error = false;
 	while (lexrc.isOK()) {
@@ -133,47 +132,36 @@ bool CmdDef::read(string const & def_file)
 
 bool CmdDef::lock(string const & name, FuncRequest & func)
 {
-	if (cmdDefMap.empty())
-	{
+	if (cmdDefMap.empty()) {
 		func = FuncRequest::unknown;
 		return false;
 	}
 
 	string const name2 = trim(name);
 
-	CmdDefMap::const_iterator pos = cmdDefMap.find(name2);
-
-	if (pos == cmdDefMap.end()) 
-	{
-		func = FuncRequest::unknown;
-		return false;
-	}
-
-	if (pos->second->locked)
-	{
+	if (lockSet.find(name2) != lockSet.end()) {
 		func = FuncRequest::noaction;
 		return false;
 	}
 
-	pos->second->locked = true;
-	func = pos->second->func;
+	CmdDefMap::const_iterator pos = cmdDefMap.find(name2);
+
+	if (pos == cmdDefMap.end()) {
+		func = FuncRequest::unknown;
+		return false;
+	}
+
+	lockSet.insert(name2);
+	func = pos->second;
 	return true;
 }
 
 
 void CmdDef::release(string const & name)
 {
-	if (cmdDefMap.empty()) 
-		return;
-
 	string const name2 = trim(name);
 
-	CmdDefMap::const_iterator pos = cmdDefMap.find(name2);
-
-	if (pos == cmdDefMap.end()) 
-		return;
-
-	pos->second->locked = false;
+	lockSet.erase(name2);
 }
 
 CmdDef::newCmdDefResult CmdDef::newCmdDef(string const & name, 
@@ -193,9 +181,7 @@ CmdDef::newCmdDefResult CmdDef::newCmdDef(string const & name,
 			return CmdDefInvalid;
 	}
 
-	boost::shared_ptr<CmdDefInfo> info;
-	info.reset(new CmdDefInfo(func));
-	cmdDefMap[name2] = info;
+	cmdDefMap[name2] = func;
 
 	return CmdDefOk;
 }

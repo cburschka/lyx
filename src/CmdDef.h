@@ -16,30 +16,18 @@
 
 #include "support/strfwd.h"
 
-#include <boost/shared_ptr.hpp>
-
 #include <map>
-#include <string>
-
+#include <set>
 
 namespace lyx {
 
 /// Creates command definitions
 class CmdDef {
 private:
-	/// information for a definition
-	struct CmdDefInfo {
-		CmdDefInfo(FuncRequest const & f): func(f), locked(false) {}
-		/// the expanded FuncRequest
-		FuncRequest func;
-		/// to avoid recursive calls
-		bool locked;
-	};
-
-
 	/// type for map between a macro name and its info
-	typedef std::map<std::string, boost::shared_ptr<CmdDefInfo> > CmdDefMap;
-
+	typedef std::map<std::string, FuncRequest> CmdDefMap;
+	/// type for a set containing all locked definitions
+	typedef std::set<std::string> LockSet;
 public:
 
 	/// Parse a def file
@@ -72,10 +60,12 @@ private:
 	 * @param name internal recursion level
 	 */
 	newCmdDefResult newCmdDef(std::string const & name, 
-		std::string const & def);
+		                      std::string const & def);
 
 	///
 	CmdDefMap cmdDefMap;
+	///
+	LockSet lockSet;
 };
 
 /// Implementation is in LyX.cpp

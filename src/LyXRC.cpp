@@ -2398,8 +2398,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_DEFFILE:
-		//FIXME: fix description.
-		str = _("Command definition file.");
+		str = _("Command definition file. Can either specify an absolute path, or LyX will look in its global and local commands/ directories.");
 		break;
 
 	case RC_DEFAULT_LANGUAGE:
