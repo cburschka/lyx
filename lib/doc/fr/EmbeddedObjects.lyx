@@ -22302,44 +22302,33 @@ reference "sec:Boîtes-colorées"
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\lang english
-When you use the toolbar button 
+Quand vous utilisez le bouton 
 \begin_inset Graphics
-	filename D:/LyXSVN/LyX1.5.x/lib/images/note-insert.png
+	filename ../../images/note-insert.png
 	scale 85
 	scaleBeforeRotation
 
 \end_inset
 
- to insert notes, a 
+ de la barre d'outils, vous insérez une 
 \family sans
-LyX\InsetSpace ~
-Note
+Note\InsetSpace ~
+LyX
 \family default
- is inserted.
- You can switch between the five note types by right-clicking on the note-box.
- 
-\family roman
-\series medium
-\bar no
-If you want to turn existing text into a note, mark it and click on the
- note
-\family default
-\series default
-\bar default
- toolbar 
-\family roman
-\series medium
-\bar no
-button
-\family default
-\series default
-\bar default
 .
- To change a note to text, press the backspace key when the cursor is in
- the first position of a note, or press the deletey key when the cursor
- is in the very last position of the note, respectively.
+ Si vous voulez transformer une portion de texte existant en note, sélectionnez-
+la et cliquez sur le bouton d'insertion de note.
+ Pour retransformer une note en texte, appuyez sur la touche 
+\family sans
+backspace
+\family default
+ quand le curseur est au tout début de la note ou appuyez sur la touche
+ 
+\family sans
+Suppr.
+
+\family default
+ quand le curseur se trouve à la fin de la note.
 \end_layout
 
 \begin_layout Standard
@@ -22538,16 +22527,14 @@ La couleur par défaut pour le fond est le rouge, ce qui peut être modifié
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor{shadebox}
+definecolor{shadebox}
 \series default
 .
  Le fonctionnement de la commande 
 \series bold
 
 \backslash
-def\SpecialChar \textcompwordmark{}
-inecolor
+definecolor
 \series default
  est expliqué dans la  section\InsetSpace ~
 
@@ -22569,12 +22556,7 @@ color
 \series bold
 
 \backslash
-def
-\series default
-\SpecialChar \textcompwordmark{}
-
-\series bold
-inecolor,
+definecolor,
 \series default
  voir la section\InsetSpace ~
 
@@ -22763,35 +22745,18 @@ de\InsetSpace ~
 Page
 \family default
  de la barre d'outils.
+ Pour retransformer une note de bas de page en texte, appuyez sur la touche
  
-\lang english
-To change a 
-\family roman
-\series medium
-\bar no
-footnote
+\family sans
+backspace
 \family default
-\series default
-\bar default
- to text, press the Backspace key when the cursor is in the first position
- of a 
-\family roman
-\series medium
-\bar no
-footnote
+ quand le curseur est au tout début de la note ou appuyez sur la touche
+ 
+\family sans
+Suppr.
+
 \family default
-\series default
-\bar default
-, or press the Delete key when the cursor is in the very last position of
- the 
-\family roman
-\series medium
-\bar no
-footnote
-\family default
-\series default
-\bar default
-, respectively.
+ quand le curseur se trouve à la fin de la note.
 \end_layout
 
 \begin_layout Standard
