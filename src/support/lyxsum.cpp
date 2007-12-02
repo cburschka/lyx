@@ -111,42 +111,30 @@ namespace lyx {
 namespace support {
 
 using std::ifstream;
-#if HAVE_DECL_ISTREAMBUF_ITERATOR
 using std::istreambuf_iterator;
-
-unsigned long sum(char const * file)
-{
-	//LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
-
-	ifstream ifs(file, std::ios_base::in | std::ios_base::binary);
-	if (!ifs)
-		return 0;
-
-	istreambuf_iterator<char> beg(ifs);
-	istreambuf_iterator<char> end;
-
-	return do_crc(beg,end);
-}
-#else
-
 using std::istream_iterator;
 using std::ios;
+using std::ios_base;
 
 unsigned long sum(char const * file)
 {
-	//LYXERR(Debug::FILES, "lyx::sum() using istream_iterator (slow as a snail)");
-
-	ifstream ifs(file, std::ios_base::in | std::ios_base::binary);
+	ifstream ifs(file, ios_base::in | ios_base::binary);
 	if (!ifs)
 		return 0;
 
+#if HAVE_DECL_ISTREAMBUF_ITERATOR
+	//LYXERR(Debug::FILES, "lyx::sum() using istreambuf_iterator (fast)");
+	istreambuf_iterator<char> beg(ifs);
+	istreambuf_iterator<char> end;
+#else
+	//LYXERR(Debug::FILES, "lyx::sum() using istream_iterator (slow as a snail)");
 	ifs.unsetf(ios::skipws);
 	istream_iterator<char> beg(ifs);
 	istream_iterator<char> end;
+#endif
 
 	return do_crc(beg,end);
 }
-#endif
 
 } // namespace support
 } // namespace lyx
