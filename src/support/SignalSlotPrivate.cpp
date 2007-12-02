@@ -9,6 +9,7 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <config.h>
 
 // trigger moc 
 #include "SignalSlotPrivate_moc.cpp"
