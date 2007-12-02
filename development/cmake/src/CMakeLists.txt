@@ -44,10 +44,17 @@ else()
 	set(lyx_sources ${_allinone_files})
 endif()
 
+if(LYX_LEAK_DETECTION)
+	configure_file(${vld_path}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/vld.ini COPYONLY)
+	configure_file(${vld_path}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt COPYONLY)
+	set(vld_files ${CMAKE_CURRENT_BINARY_DIR}/vld.ini ${CMAKE_CURRENT_BINARY_DIR}/memory_leak_report.txt)
+endif()
+
 add_executable(lyx
 	${WIN32_CONSOLE}
 	${lyx_sources} 
 	${lyx_headers}
+	${vld_files}
 	)
 
 target_link_libraries(lyx
@@ -58,7 +65,8 @@ target_link_libraries(lyx
 	graphics
 	support
 	intl
-	${QT_QTMAIN_LIBRARY})
+	${QT_QTMAIN_LIBRARY}
+	${vld_dll})
 
 if(ASPELL_FOUND)
 	target_link_libraries(lyx ${ASPELL_LIBRARY})

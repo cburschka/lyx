@@ -24,6 +24,8 @@
 
 #pragma once
 
+#ifndef VLD_BUILD
+
 #ifdef _DEBUG
 
 #pragma comment(lib, "vld.lib")
@@ -96,3 +98,6 @@ __declspec(dllimport) void VLDEnable ();
 #define VLDDisable()
 
 #endif // _DEBUG
+
+#endif //VLD_BUILD
+
