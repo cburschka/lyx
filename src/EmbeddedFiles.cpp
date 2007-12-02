@@ -32,6 +32,7 @@
 #include "support/convert.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
+#include "support/FileZipListDir.h"
 
 #include <sstream>
 #include <fstream>

@@ -15,7 +15,6 @@
 #include "support/docstring.h"
 #include "support/FileName.h"
 
-#include <vector>
 #include <utility>
 #include <string>
 
@@ -275,21 +274,10 @@ typedef std::pair<int, std::string> cmd_ret;
 
 cmd_ret const runCommand(std::string const & cmd);
 
-/// \return list other files in the directory having optional extension 'ext'.
-std::vector<FileName> dirList(FileName const & filename, std::string const & ext);
-
 
 } // namespace support
 } // namespace lyx
 
-/// The following functions are implemented in minizip/zipunzip.cpp, and are not in
-/// the lyx::support namespace
-
-/// zip several files to a zipfile. In-zip filenames are also specified
-bool zipFiles(std::string const & zipfile, std::vector<std::pair<std::string, std::string> > const & files);
-
-/// Unzip a zip file to a directory
-bool unzipToDir(std::string const & zipfile, std::string const & path);
 
 
 #endif

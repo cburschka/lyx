@@ -91,6 +91,7 @@
 #include "support/Path.h"
 #include "support/textutils.h"
 #include "support/types.h"
+#include "support/FileZipListDir.h"
 
 #if !defined (HAVE_FORK)
 # define fork() -1

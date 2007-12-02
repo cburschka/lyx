@@ -33,6 +33,7 @@
 #include "support/Package.h"
 #include "support/Path.h"
 #include "support/Systemcall.h"
+#include "support/FileZipListDir.h"
 
 using std::find_if;
 using std::string;
