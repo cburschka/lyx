@@ -241,9 +241,10 @@ public:
 	void setGuiDelegate(frontend::GuiBufferViewDelegate *);
 
 	///
-	docstring contentsOfPlaintextFile(std::string const & f, bool asParagraph);
+	docstring contentsOfPlaintextFile(support::FileName const & f,
+		bool asParagraph);
 	// Insert plain text file (if filename is empty, prompt for one)
-	void insertPlaintextFile(std::string const & fileName, bool asParagraph);
+	void insertPlaintextFile(support::FileName const & f, bool asParagraph);
 
 private:
 	/// noncopyable

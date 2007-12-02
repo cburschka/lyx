@@ -98,14 +98,12 @@ public:
 	/// Creates directory. Returns true on success
 	bool createDirectory(int permissions) const;
 
-	/// Get the contents of a file as a huge std::string
-	std::string fileContents() const;
-	/**
-	 * Get a FileName from \p name in the encoding used by the file system.
-	 * Only use this for filenames you got directly from the file system,
-	 * e.g. from reading a directory.
-	 * \p name must have an absolute path.
-	 */
+	/// Get the contents of a file as a huge docstring.
+	/// \param encoding defines the encoding of the file contents.
+	/// Only four encodings are supported:
+	/// "UTF-8", "ascii", "latin1" and "local8bit" which uses the
+	/// current system locale.
+	docstring fileContents(std::string const & encoding) const;
 
 	/// Change extension.
 	/**

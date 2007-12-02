@@ -348,14 +348,16 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 	if (file.empty())
 		return;
 
-	list = getVectorFromString(file.fileContents(), "\n");
+	// FIXME Unicode.
+	std::vector<docstring> doclist = 
+		getVectorFromString(file.fileContents("UTF-8"), from_ascii("\n"));
 
 	// Normalise paths like /foo//bar ==> /foo/bar
 	boost::RegEx regex("/{2,}");
-	std::vector<string>::iterator it  = list.begin();
-	std::vector<string>::iterator end = list.end();
+	std::vector<docstring>::iterator it  = doclist.begin();
+	std::vector<docstring>::iterator end = doclist.end();
 	for (; it != end; ++it)
-		*it = regex.Merge((*it), "/");
+		list.push_back(regex.Merge(to_utf8(*it), "/"));
 
 	// remove empty items and duplicates
 	list.erase(std::remove(list.begin(), list.end(), ""), list.end());

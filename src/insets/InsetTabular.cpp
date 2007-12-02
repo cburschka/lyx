@@ -48,6 +48,7 @@
 
 #include "support/convert.h"
 #include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/lstrings.h"
 
 #include "frontends/alert.h"
@@ -83,6 +84,7 @@ using boost::dynamic_pointer_cast;
 namespace lyx {
 
 using support::prefixIs;
+using support::FileName;
 using support::ltrim;
 using support::rtrim;
 using support::suffixIs;
@@ -3408,7 +3410,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 	case LFUN_FILE_INSERT_PLAINTEXT: {
 		// FIXME UNICODE
-		docstring const tmpstr = cur.bv().contentsOfPlaintextFile(to_utf8(cmd.argument()), false);
+		docstring const tmpstr = cur.bv().contentsOfPlaintextFile(
+			FileName(to_utf8(cmd.argument())), false);
 		if (!tmpstr.empty() && !insertPlaintextString(cur.bv(), tmpstr, false))
 			cur.undispatched();
 		break;

@@ -901,12 +901,12 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 		// FIXME UNICODE
-		insertPlaintextFile(to_utf8(cmd.argument()), true);
+		insertPlaintextFile(FileName(to_utf8(cmd.argument())), true);
 		break;
 
 	case LFUN_FILE_INSERT_PLAINTEXT:
 		// FIXME UNICODE
-		insertPlaintextFile(to_utf8(cmd.argument()), false);
+		insertPlaintextFile(FileName(to_utf8(cmd.argument())), false);
 		break;
 
 	case LFUN_FONT_STATE:
@@ -1995,11 +1995,9 @@ void BufferView::setGuiDelegate(frontend::GuiBufferViewDelegate * gui)
 
 
 // FIXME: Move this out of BufferView again
-docstring BufferView::contentsOfPlaintextFile(string const & f,
+docstring BufferView::contentsOfPlaintextFile(FileName const & fname,
 	bool asParagraph)
 {
-	FileName fname(f);
-
 	if (fname.empty()) {
 		FileDialog dlg(_("Select file to insert"),
 				   ( asParagraph
@@ -2016,7 +2014,7 @@ docstring BufferView::contentsOfPlaintextFile(string const & f,
 		if (result.second.empty())
 			return docstring();
 
-		fname = makeAbsPath(to_utf8(result.second));
+		return contentsOfPlaintextFile(FileName(to_utf8(result.second)), false);
 	}
 
 	if (!fname.isReadableFile()) {
@@ -2029,36 +2027,16 @@ docstring BufferView::contentsOfPlaintextFile(string const & f,
 		return docstring();
 	}
 
-	ifstream ifs(fname.toFilesystemEncoding().c_str());
-	if (!ifs) {
-		docstring const error = from_ascii(strerror(errno));
+	if (!fname.isReadableFile()) {
 		docstring const file = makeDisplayPath(fname.absFilename(), 50);
 		docstring const text =
-		  bformat(_("Could not open the specified document\n"
-			    "%1$s\ndue to the error: %2$s"), file, error);
+		  bformat(_("%1$s\n is not readable."), file);
 		Alert::error(_("Could not open file"), text);
 		return docstring();
 	}
 
-	ifs.unsetf(std::ios::skipws);
-	istream_iterator<char> ii(ifs);
-	istream_iterator<char> end;
-#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
-	// We use this until the compilers get better...
-	std::vector<char> tmp;
-	copy(ii, end, back_inserter(tmp));
-	string const tmpstr(tmp.begin(), tmp.end());
-#else
-	// This is what we want to use and what we will use once the
-	// compilers get good enough.
-	//string tmpstr(ii, end); // yet a reason for using std::string
-	// alternate approach to get the file into a string:
-	string tmpstr;
-	copy(ii, end, back_inserter(tmpstr));
-#endif
-
 	// FIXME UNICODE: We don't know the encoding of the file
-	docstring file_content = from_utf8(tmpstr);
+	docstring file_content = fname.fileContents("UTF-8");
 	if (file_content.empty()) {
 		Alert::error(_("Reading not UTF-8 encoded file"),
 			     _("The file is not UTF-8 encoded.\n"
@@ -2066,14 +2044,14 @@ docstring BufferView::contentsOfPlaintextFile(string const & f,
 			       "If this does not give the correct result\n"
 			       "then please change the encoding of the file\n"
 			       "to UTF-8 with a program other than LyX.\n"));
-		file_content = from_local8bit(tmpstr);
+		file_content = fname.fileContents("local8bit");
 	}
 
 	return normalize_c(file_content);
 }
 
 
-void BufferView::insertPlaintextFile(string const & f, bool asParagraph)
+void BufferView::insertPlaintextFile(FileName const & f, bool asParagraph)
 {
 	docstring const tmpstr = contentsOfPlaintextFile(f, asParagraph);
 

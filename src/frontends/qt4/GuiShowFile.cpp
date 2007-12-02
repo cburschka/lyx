@@ -51,9 +51,9 @@ void GuiShowFile::updateContents()
 {
 	setWindowTitle(toqstr(onlyFilename(filename_.absFilename())));
 
-	std::string contents = filename_.fileContents();
+	docstring contents = filename_.fileContents("UTF-8");
 	if (contents.empty())
-		contents = "Error -> Cannot load file!";
+		contents = _("Error -> Cannot load file!");
 
 	textTB->setPlainText(toqstr(contents));
 }

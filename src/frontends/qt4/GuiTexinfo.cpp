@@ -68,7 +68,8 @@ static string texFileFromList(string const & file, string const & type)
 		lyxerr << "File `'" << lstfile << "' not found." << endl;
 		return string();
 	}
-	string const allClasses = abslstfile.fileContents();
+	// FIXME UNICODE
+	string const allClasses = to_utf8(abslstfile.fileContents("UTF-8"));
 	int entries = 0;
 	string classfile = token(allClasses, '\n', entries);
 	int count = 0;

@@ -194,7 +194,7 @@ bool import(LyXView * lv, FileName const & filename,
 		string filename2 = (loader_format == format) ? filename.absFilename()
 			: changeExtension(filename.absFilename(),
 					  formats.extension(loader_format));
-		lv->view()->insertPlaintextFile(filename2, as_paragraphs);
+		lv->view()->insertPlaintextFile(FileName(filename2), as_paragraphs);
 		theLyXFunc().setLyXView(lv);
 		lyx::dispatch(FuncRequest(LFUN_MARK_OFF));
 	}

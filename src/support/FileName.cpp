@@ -338,20 +338,40 @@ docstring FileName::displayName(int threshold) const
 }
 
 
-string FileName::fileContents() const
+docstring FileName::fileContents(string const & encoding) const
 {
-	if (exists()) {
-		string const encodedname = toFilesystemEncoding();
-		ifstream ifs(encodedname.c_str());
-		ostringstream ofs;
-		if (ifs && ofs) {
-			ofs << ifs.rdbuf();
-			ifs.close();
-			return ofs.str();
-		}
+	if (!isReadableFile()) {
+		LYXERR0("File '" << *this
+			<< "' is not redable!");
+		return docstring();
 	}
-	lyxerr << "LyX was not able to read file '" << *this << '\'' << std::endl;
-	return string();
+
+	QFile file(d->fi.absoluteFilePath());
+	if (!file.open(QIODevice::ReadOnly)) {
+		LYXERR0("File '" << *this
+			<< "' could not be opened in read only mode!");
+		return docstring();
+	}
+	QByteArray contents = file.readAll();
+	file.close();
+
+	if (contents.isEmpty()) {
+		LYXERR(Debug::FILES, "File '" << *this
+			<< "' is either empty or some error happened while reading it.");
+		return docstring();
+	}
+
+	QString s;
+	if (encoding.empty() || encoding == "UTF-8")
+		s = QString::fromUtf8(contents.data());
+	else if (encoding == "ascii")
+		s = QString::fromAscii(contents.data());
+	else if (encoding == "local8bit")
+		s = QString::fromLocal8Bit(contents.data());
+	else if (encoding == "latin1")
+		s = QString::fromLatin1(contents.data());
+
+	return qstring_to_ucs4(s);
 }
 
 

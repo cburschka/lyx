@@ -187,7 +187,8 @@ string const doSubstitution(InsetExternalParams const & params,
 		FileName const absfile(
 			support::makeAbsPath(file, masterBuffer->temppath()));
 		if (absfile.isReadableFile())
-			contents = absfile.fileContents();
+			// FIXME UNICODE
+			contents = to_utf8(absfile.fileContents("UTF-8"));
 
 		size_t const pos = result.find("$$Contents(\"");
 		size_t const end = result.find("\")", pos);

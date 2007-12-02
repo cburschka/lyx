@@ -563,10 +563,8 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 {
 	if (isVerbatim(params()) || isListings(params())) {
 		os << '[' << getScreenLabel(buffer) << '\n';
-		// FIXME: We don't know the encoding of the file
-		docstring const str =
-		     from_utf8(includedFilename(buffer, params()).fileContents());
-		os << str;
+		// FIXME: We don't know the encoding of the file, default to UTF-8.
+		os << includedFilename(buffer, params()).fileContents("UTF-8");
 		os << "\n]";
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 	} else {

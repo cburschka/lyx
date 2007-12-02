@@ -495,6 +495,7 @@ enum GraphicsCopyStatus {
 std::pair<GraphicsCopyStatus, FileName> const
 copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 {
+	LYXERR(Debug::FILES, "Comparing " << file_in << " and " << file_out);
 	unsigned long const checksum_in  = file_in.checksum();
 	unsigned long const checksum_out = file_out.checksum();
 
