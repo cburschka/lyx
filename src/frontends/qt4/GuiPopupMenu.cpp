@@ -23,6 +23,7 @@
 #include "support/lstrings.h"
 #include "support/debug.h"
 
+#include <QMenuBar>
 
 namespace lyx {
 namespace frontend {
