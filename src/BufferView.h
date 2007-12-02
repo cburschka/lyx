@@ -245,6 +245,8 @@ public:
 		bool asParagraph);
 	// Insert plain text file (if filename is empty, prompt for one)
 	void insertPlaintextFile(support::FileName const & f, bool asParagraph);
+	///
+	void insertLyXFile(support::FileName const & f);
 
 private:
 	/// noncopyable
@@ -273,8 +275,6 @@ private:
 	Buffer & buffer_;
 
 	///
-	void menuInsertLyXFile(std::string const & filen);
-
 	void updateOffsetRef();
 
 	struct Private;

@@ -14,8 +14,9 @@
 #include <config.h>
 
 #include "GuiView.h"
-#include "Dialog.h"
 
+#include "Dialog.h"
+#include "frontends/FileDialog.h"
 #include "GuiApplication.h"
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
@@ -49,9 +50,12 @@
 #include "ToolbarBackend.h"
 #include "version.h"
 
+#include "support/FileFilterList.h"
 #include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/Package.h"
 #include "support/Timeout.h"
 
 #include <QAction>
@@ -96,8 +100,11 @@ extern bool quitting;
 
 namespace frontend {
 
+using support::addPath;
 using support::bformat;
+using support::FileFilterList;
 using support::FileName;
+using support::package;
 using support::trim;
 
 namespace {
@@ -1012,6 +1019,57 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 }
 
 
+void GuiView::insertLyXFile(docstring const & fname)
+{
+	BufferView * bv = view();
+	if (!bv)
+		return;
+
+	// FIXME UNICODE
+	FileName filename(to_utf8(fname));
+	
+	if (!filename.empty()) {
+		bv->insertLyXFile(filename);
+		return;
+	}
+
+	// Launch a file browser
+	// FIXME UNICODE
+	string initpath = lyxrc.document_path;
+	string const trypath = bv->buffer().filePath();
+	// If directory is writeable, use this as default.
+	if (FileName(trypath).isDirWritable())
+		initpath = trypath;
+
+	// FIXME UNICODE
+	FileDialog dlg(_("Select LyX document to insert"), LFUN_FILE_INSERT);
+	dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+	dlg.setButton2(_("Examples|#E#e"),
+		from_utf8(addPath(package().system_support().absFilename(),
+		"examples")));
+
+	FileDialog::Result result =
+		dlg.open(from_utf8(initpath),
+			     FileFilterList(_("LyX Documents (*.lyx)")),
+			     docstring());
+
+	if (result.first == FileDialog::Later)
+		return;
+
+	// FIXME UNICODE
+	filename.set(to_utf8(result.second));
+
+	// check selected filename
+	if (filename.empty()) {
+		// emit message signal.
+		message(_("Canceled."));
+		return;
+	}
+
+	bv->insertLyXFile(filename);
+}
+
+
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = view();	
@@ -1044,6 +1102,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_MENU_OPEN:
 			d.menubar_->openByName(toqstr(cmd.argument()));
+			break;
+
+		case LFUN_FILE_INSERT:
+			insertLyXFile(cmd.argument());
 			break;
 
 		case LFUN_TOOLBAR_TOGGLE: {

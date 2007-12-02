@@ -894,11 +894,6 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 		}
 		break;
 
-	case LFUN_FILE_INSERT:
-		// FIXME UNICODE
-		menuInsertLyXFile(to_utf8(cmd.argument()));
-		break;
-
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 		// FIXME UNICODE
 		insertPlaintextFile(FileName(to_utf8(cmd.argument())), true);
@@ -1735,57 +1730,21 @@ void BufferView::updateMetrics()
 }
 
 
-void BufferView::menuInsertLyXFile(string const & filenm)
+void BufferView::insertLyXFile(FileName const & fname)
 {
 	BOOST_ASSERT(d->cursor_.inTexted());
-	string filename = filenm;
-
-	if (filename.empty()) {
-		// Launch a file browser
-		// FIXME UNICODE
-		string initpath = lyxrc.document_path;
-		string const trypath = buffer_.filePath();
-		// If directory is writeable, use this as default.
-		if (FileName(trypath).isDirWritable())
-			initpath = trypath;
-
-		// FIXME UNICODE
-		FileDialog dlg(_("Select LyX document to insert"), LFUN_FILE_INSERT);
-		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-		dlg.setButton2(_("Examples|#E#e"),
-			from_utf8(addPath(package().system_support().absFilename(),
-			"examples")));
-
-		FileDialog::Result result =
-			dlg.open(from_utf8(initpath),
-				     FileFilterList(_("LyX Documents (*.lyx)")),
-				     docstring());
-
-		if (result.first == FileDialog::Later)
-			return;
-
-		// FIXME UNICODE
-		filename = to_utf8(result.second);
-
-		// check selected filename
-		if (filename.empty()) {
-			// emit message signal.
-			message(_("Canceled."));
-			return;
-		}
-	}
 
 	// Get absolute path of file and add ".lyx"
 	// to the filename if necessary
-	filename = fileSearch(string(), filename, "lyx").absFilename();
+	FileName filename = fileSearch(string(), fname.absFilename(), "lyx");
 
-	docstring const disp_fn = makeDisplayPath(filename);
+	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	// emit message signal.
 	message(bformat(_("Inserting document %1$s..."), disp_fn));
 
 	docstring res;
 	Buffer buf("", false);
-	if (buf.loadLyXFile(FileName(filename))) {
+	if (buf.loadLyXFile(filename)) {
 		ErrorList & el = buffer_.errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");
@@ -1797,10 +1756,11 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		res = _("Could not insert document %1$s");
 	}
 
+	updateMetrics();
+	buffer_.changed();
 	// emit message signal.
 	message(bformat(res, disp_fn));
 	buffer_.errors("Parse");
-	updateMetrics();
 }
 
 
