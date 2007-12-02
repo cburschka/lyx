@@ -326,37 +326,9 @@ bool FileName::createDirectory(int permission) const
 }
 
 
-std::vector<FileName> FileName::dirList(std::string const & ext)
+docstring const FileName::absoluteFilePath() const
 {
-	std::vector<FileName> dirlist;
-	if (!isDirectory()) {
-		LYXERR0("Directory '" << *this << "' does not exist!");
-		return dirlist;
-	}
-
-	QDir dir(d->fi.absoluteFilePath());
-
-	if (!ext.empty()) {
-		QString filter;
-		switch (ext[0]) {
-		case '.': filter = "*" + toqstr(ext); break;
-		case '*': filter = toqstr(ext); break;
-		default: filter = "*." + toqstr(ext);
-		}
-		dir.setNameFilters(QStringList(filter));
-		LYXERR(Debug::FILES, "filtering on extension "
-			<< fromqstr(filter) << " is requested.");
-	}
-
-	QFileInfoList list = dir.entryInfoList();
-	for (int i = 0; i != list.size(); ++i) {
-		FileName fi;
-		fi.d->fi = list.at(i);
-		dirlist.push_back(fi);
-		LYXERR(Debug::FILES, "found file " << fi);
-	}
-
-	return dirlist;
+	return qstring_to_ucs4(d->fi.absoluteFilePath());
 }
 
 
@@ -588,7 +560,7 @@ bool FileName::isZippedFile() const
 docstring const FileName::relPath(string const & path) const
 {
 	// FIXME UNICODE
-	return makeRelPath(qstring_to_ucs4(d->fi.absoluteFilePath()), from_utf8(path));
+	return makeRelPath(absoluteFilePath(), from_utf8(path));
 }
 
 

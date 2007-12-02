@@ -15,7 +15,6 @@
 #include "support/strfwd.h"
 
 #include <ctime>
-#include <vector>
 
 
 namespace lyx {
@@ -139,12 +138,11 @@ public:
 
 	/// change to a directory, return success
 	bool chdir() const;
-
-	/// \return list other files in the directory having optional extension 'ext'.
-	std::vector<FileName> dirList(std::string const & ext = empty_string());
 	
 	/// \param buffer_path if empty, uses `pwd`
 	docstring const relPath(std::string const & path) const;
+	
+	docstring const absoluteFilePath() const;
 
 private:
 	///
