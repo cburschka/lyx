@@ -56,9 +56,7 @@ private:
 // PathChanger("/tmp");   // wrong
 // PathChanger p("/tmp");  // right
 // we add this macro:
-#ifndef PATHCHANGER_C
 #define PathChanger(x) unnamed_PathChanger;
-#endif
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
 } // namespace support

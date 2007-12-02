@@ -10,13 +10,11 @@
 
 #include <config.h>
 
-// Needed to prevent the definition of the unnamed_PathChanger macro
-// in the header file.
-
-#define PATHCHANGER_C
-
 #include "support/Path.h"
 #include "support/lyxlib.h"
+
+// undef PathChanger macro when building PathChanger
+#undef PathChanger
 
 
 namespace lyx {
@@ -63,3 +61,7 @@ int PathChanger::pop()
 
 } // namespace support
 } // namespace lyx
+
+
+#define PathChanger(x) unnamed_PathChanger;
+// in merged builds this is not the last line.
