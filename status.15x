@@ -120,7 +120,13 @@ What's new
 - Fix an assertion when entering a math object in a list environment (bug 4335).
 
 - Fix a crash when the cursor leaves the first paragraph of the
-  appendix and it is empty (bug 4352)
+  appendix and it is empty (bug 4352).
+
+- Fix a crash when pasting text from the clipboard into a multi-line
+  tabular cell (bug 4368).
+
+- Fix a crash when inserting a file in a tabular cell via
+  Insert->File->Plain Text...
 
 - Correctly adjust screen fonts after the zoom or dpi settings were changed in
   the preferences (Mac and Windows only) (bug 4268).
@@ -145,6 +151,8 @@ What's new
 - Fix cut and paste of tabular cells via the external clipboard (bug 4147).
 
 - Fix undo in tabulars after pasting via the external clipboard (bug 4371).
+
+- Fix undo in tabulars after inserting a file via Insert->File->Plain Text...
 
 - Repair wasy font such that it can also be used on Mac (bug 2326).
 

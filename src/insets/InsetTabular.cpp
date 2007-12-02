@@ -3376,8 +3376,18 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 	case LFUN_FILE_INSERT_PLAINTEXT: {
 		// FIXME UNICODE
-		docstring const tmpstr = getContentsOfPlaintextFile(&cur.bv(), to_utf8(cmd.argument()), false);
-		if (!tmpstr.empty() && !insertPlaintextString(cur.bv(), tmpstr, false))
+		docstring const tmpstr =
+			getContentsOfPlaintextFile(&cur.bv(), to_utf8(cmd.argument()), false);
+		if (tmpstr.empty())
+			break;
+		recordUndoInset(cur, Undo::INSERT);
+		if (insertPlaintextString(cur.bv(), tmpstr, false)) {
+			// content has been replaced,
+			// so cursor might be invalid
+			cur.pos() = cur.lastpos();
+			cur.pit() = cur.lastpit();
+			bvcur.setCursor(cur);
+		} else
 			cur.undispatched();
 		break;
 	}
@@ -3428,6 +3438,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				// content has been replaced,
 				// so cursor might be invalid
 				cur.pos() = cur.lastpos();
+				cur.pit() = cur.lastpit();
 				bvcur.setCursor(cur);
 				break;
 			}
