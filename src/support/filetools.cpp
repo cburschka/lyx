@@ -33,6 +33,9 @@
 #include "support/Package.h"
 #include "support/Path.h"
 #include "support/Systemcall.h"
+#include "support/qstring_helpers.h"
+
+#include <QDir>
 
 #include <boost/assert.hpp>
 #include <boost/regex.hpp>
