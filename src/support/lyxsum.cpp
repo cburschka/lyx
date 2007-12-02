@@ -136,10 +136,6 @@ unsigned long sum(char const * file)
 {
 	//LYXERR(Debug::FILES, "lyx::sum() using istream_iterator (slow as a snail)");
 
-	// a directory may be passed here so we need to test it. (bug 3622)
-	if (file.isDirectory())
-		return 0;
-
 	ifstream ifs(file, std::ios_base::in | std::ios_base::binary);
 	if (!ifs)
 		return 0;
