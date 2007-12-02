@@ -631,7 +631,14 @@ Find\InsetSpace ~
 &\InsetSpace ~
 Replace
 \family default
- to search.
+ (toolbar button 
+\begin_inset Graphics
+	filename ../images/dialog-show_findreplace.xpm
+	scale 75
+
+\end_inset
+
+) to search.
  In the dialog, search with the 
 \family sans
 Find\InsetSpace ~
@@ -1890,7 +1897,7 @@ Templates: Writing a Letter
 \end_layout
 
 \begin_layout Standard
-ne way to write a letter would be to open a new file, and choose a 
+One way to write a letter would be to open a new file, and choose a 
 \family sans
 Letter
 \family default
@@ -2057,7 +2064,7 @@ You should not be using the letter any more, since the
 \family sans
 Letter
 \family default
- textclass doesn't allow titles.
+ document class doesn't allow titles.
 \end_layout
 
 \end_inset
@@ -2316,7 +2323,7 @@ Page\InsetSpace ~
 Conveniently, a cross-reference acts as a hyperlink when you are editing
  a document in LyX; clicking on it will pop up the 
 \family sans
-Reference
+Cross-Reference
 \family default
  dialog, clicking 
 \family sans
@@ -2833,6 +2840,14 @@ The table of contents is not printed in the on-screen version of the document
 Document\SpecialChar \menuseparator
 Outline
 \family default
+ or the toolbar button 
+\begin_inset Graphics
+	filename ../images/dialog-toggle_toc.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
 .
  This menu will work even if you don't have a table of contents inset in
  your document.
