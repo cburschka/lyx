@@ -3412,7 +3412,16 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// FIXME UNICODE
 		docstring const tmpstr = cur.bv().contentsOfPlaintextFile(
 			FileName(to_utf8(cmd.argument())), false);
-		if (!tmpstr.empty() && !insertPlaintextString(cur.bv(), tmpstr, false))
+		if (tmpstr.empty())
+			break;
+		cur.recordUndoInset(INSERT_UNDO);
+		if (insertPlaintextString(cur.bv(), tmpstr, false)) {
+			// content has been replaced,
+			// so cursor might be invalid
+			cur.pos() = cur.lastpos();
+			cur.pit() = cur.lastpit();
+			bvcur.setCursor(cur);
+		} else
 			cur.undispatched();
 		break;
 	}
@@ -3463,6 +3472,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				// content has been replaced,
 				// so cursor might be invalid
 				cur.pos() = cur.lastpos();
+				cur.pit() = cur.lastpit();
 				bvcur.setCursor(cur);
 				break;
 			}
