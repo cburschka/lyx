@@ -2186,6 +2186,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
+		else if (t.cs() == "newline") {
+			context.check_layout(os);
+			os << "\n\\" << t.cs() << "\n";
+			skip_braces(p); // eat {}
+		}
+
 		else if (t.cs() == "input" || t.cs() == "include"
 			 || t.cs() == "verbatiminput") {
 			string name = '\\' + t.cs();
