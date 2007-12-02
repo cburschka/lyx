@@ -1,5 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////////
-//  $Id: vld.h,v 1.29 2006/11/18 03:12:35 dmouldin Exp $
 //
 //  Visual Leak Detector - Import Library Header
 //  Copyright (c) 2006 Dan Moulding
@@ -24,9 +23,11 @@
 
 #pragma once
 
-#ifndef VLD_BUILD
+#ifdef VLD_BUILD
+#define VLD_EXPORT __declspec(dllexport)
+#else
 
-#ifdef _DEBUG
+#define VLD_EXPORT __declspec(dllimport)
 
 #pragma comment(lib, "vld.lib")
 
@@ -34,6 +35,11 @@
 // the DLL. This enusres that the DLL is loaded and linked with the program,
 // even if no code otherwise imports any of the DLL's exports.
 #pragma comment(linker, "/include:__imp_?vld@@3VVisualLeakDetector@@A")
+
+#endif
+
+
+#ifdef _DEBUG
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -64,7 +70,7 @@ extern "C" {
 //
 //    None.
 //
-__declspec(dllimport) void VLDDisable ();
+VLD_EXPORT void VLDDisable ();
 
 // VLDEnable - Enables Visual Leak Detector's memory leak detection at runtime.
 //   If memory leak detection is already enabled, which it is by default, then
@@ -86,7 +92,7 @@ __declspec(dllimport) void VLDDisable ();
 //
 //    None.
 //
-__declspec(dllimport) void VLDEnable ();
+VLD_EXPORT void VLDEnable ();
 
 #ifdef __cplusplus
 }
@@ -98,6 +104,3 @@ __declspec(dllimport) void VLDEnable ();
 #define VLDDisable()
 
 #endif // _DEBUG
-
-#endif //VLD_BUILD
-
