@@ -9,6 +9,8 @@
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
+project(lyx)
+
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/
 # is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
@@ -108,7 +110,6 @@ if(UNIX)
 endif()
 
 
-project(lyx)
 find_package(Qt4 REQUIRED)
 add_definitions(-DQT_CLEAN_NAMESPACE -DQT_NO_STL -DQT_NO_KEYWORDS)
 
@@ -263,9 +264,15 @@ if(MSVC)
 	
 endif()
 
-# create config.h
-include(ConfigureChecks.cmake)
+# compiler tests, config.h generation
+if(UNIX)
+	include(ConfigureChecks.cmake)
+	configure_file(configCompiler.h.cmake ${CMAKE_BINARY_DIR}/configCompiler.h)
+else()
+	configure_file(configCompiler.h.msvc ${CMAKE_BINARY_DIR}/configCompiler.h)
+endif()
 configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
+
 
 find_package(ICONV REQUIRED)
 add_definitions(-DHAVE_ICONV=1)
