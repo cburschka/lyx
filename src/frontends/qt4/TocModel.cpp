@@ -15,6 +15,7 @@
 
 #include "debug.h"
 
+#include <climits>
 #include <vector>
 #include <string>
 

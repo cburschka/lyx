@@ -15,6 +15,7 @@
 
 #include "support/types.h"
 
+#include <cstring>
 #include <string>
 #include <typeinfo>
 

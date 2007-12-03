@@ -106,6 +106,7 @@ What's new
 - If there exists a local layout file, use the local copy instead of the
   system one.
 
+
 * USER INTERFACE:
 
 - Fix a crash when using bookmarks in insets (bug 4301).
@@ -197,7 +198,7 @@ What's new
 - Make sure that the Chapter* layout appears in outline and naviagtion menu 
   (bug 3888).
 
-- Fix handling of Insert Plain Text dialog cancel
+- Fix problem after cancelling the Insert Plain Text dialog.
 
 
 * DOCUMENTATION
@@ -225,3 +226,5 @@ What's new
 
 - Make sure that all the files created when compiling are removed by
   "make clean".
+
+- Fix build problem on MacOS 10.5.1.
