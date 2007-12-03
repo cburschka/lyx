@@ -1,6 +1,41 @@
 # Textclass definition file for LaTeX.
 # Author : Martin vermeer <amrtin.vermeer@hut.fi>
 # Inset layouts definition
+# 
+#InsetLayout <string identifier used by LyX>
+#	LabelString           used for the inset decoration (either the inset button
+#	                      or the text underneath the inset).
+#	LatexType             FIXME
+#	LatexName             associated LateX command.
+#	BgColor               Color of the inset background within LyX.
+#                         FIXME: link to a doc file describing the different
+#                         color codes as defined in 'ColorCode.h'
+#	Font                  Nothing to put here, below are descriptions of the different
+#                         allowable adjustments for the font used to draw the text
+#                         appearing within the inset text. All these items are optional.
+#	  Color               Color of 
+#	  Size                Font size of the textallowed value: Small, Smaller, ...
+#                         FIXME defined in FontSize in FontEnums.h
+#	  Family              FIXME defined in FontFamily in FontEnums.h
+#	  Shape               FIXME defined in FontFamily in FontEnums.h
+#	  Series              FIXME defined in FontFamily in FontEnums.h
+#	  Misc                FIXME defined in FontFamily in FontEnums.h
+#	  Misc                FIXME defined in FontFamily in FontEnums.h
+#	  Misc                FIXME defined in FontFamily in FontEnums.h
+#	EndFont               Nothing to put here, it's just a markup to indicate that we are
+#                         finished with the Font definition.
+#	LabelFont             Nothing to put here, below are descriptions of the different
+#                         allowable adjustments for the font used to draw the text
+#                         appearing within the inset decoration. All these items are
+#                         optional.
+#	  Color               see definition above (in the Font node).
+#	  Size                see definition above (in the Font node).
+#	  ...
+#	EndFont               Nothing to put here, it's just a markup to indicate that we are
+#                         finished with the LabelFont definition.
+#	MultiPar              Indicates that multiple paragraphs are allowed within the inset
+#                         or not. FIXME: what is the default?
+#End
 
 Format 5
 
