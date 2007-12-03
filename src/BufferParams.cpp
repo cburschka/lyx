@@ -50,6 +50,7 @@
 using std::endl;
 using std::string;
 using std::istringstream;
+using std::make_pair;
 using std::ostream;
 using std::ostringstream;
 using std::pair;
@@ -456,7 +457,8 @@ string const BufferParams::readToken(Lexer & lex, string const & token)
 		string const classname = lex.getString();
 		// if there exists a local layout file, ignore the system one
 		// NOTE: in this case, the textclass (.cls file) is assumed to be available.
-		pair<bool, lyx::textclass_type> pp;
+		pair<bool, lyx::textclass_type> pp =
+			make_pair(false, textclass_type(0));
 		if (!filepath.empty())
 			pp = textclasslist.addTextClass(classname, filepath);
 		if (pp.first)
