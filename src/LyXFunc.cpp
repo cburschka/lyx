@@ -2118,11 +2118,13 @@ void LyXFunc::closeBuffer()
 
 void LyXFunc::reloadBuffer()
 {
-	FileName filename(lyx_view_->buffer()->absFileName());
+	FileName filename = lyx_view_->buffer()->fileName();
+	// The user has already confirmed that the changes, if any, should
+	// be discarded. So we just release the Buffer and don't call closeBuffer();
+	theBufferList().release(lyx_view_->buffer());
+	Buffer * buf = loadAndViewFile(filename);
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
-	closeBuffer();
-	Buffer * buf = loadAndViewFile(filename);
 	if (buf) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
