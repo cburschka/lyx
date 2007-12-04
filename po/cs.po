@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-12-02 23:43+0100\n"
+"POT-Creation-Date: 2007-12-04 23:20+0100\n"
 "PO-Revision-Date: 2007-12-03 04:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -11635,7 +11635,7 @@ msgstr " Ulo¾ení se nepovedlo! Nový pokus..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr " Ulo¾ení se nepovedlo! Dokument je ztracen."
 
-#: src/BufferParams.cpp:479
+#: src/BufferParams.cpp:481
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -11652,11 +11652,11 @@ msgstr ""
 "není dostupný. Pro více informací nahlédnìte do\n"
 "nápovìdy (Pøizpùsobení LyXu).\n"
 
-#: src/BufferParams.cpp:485
+#: src/BufferParams.cpp:487
 msgid "Document class not available"
 msgstr "Tøída dokumentu není dostupná"
 
-#: src/BufferParams.cpp:486
+#: src/BufferParams.cpp:488
 msgid "LyX will not be able to produce output."
 msgstr "LyX nebude schopen vytvoøit výstup."
 
@@ -14393,8 +14393,8 @@ msgid ""
 "\n"
 "Exception: "
 msgstr ""
-"LyX zachytil vyjímku a nyní se pokusí ulo¾it v¹echny neulo¾ené dokumenty "
-"a skonèit.\n"
+"LyX zachytil vyjímku a nyní se pokusí ulo¾it v¹echny neulo¾ené dokumenty a "
+"skonèit.\n"
 "Vyjímka: "
 
 #: src/frontends/qt4/GuiApplication.cpp:273
@@ -14407,8 +14407,8 @@ msgid ""
 "LyX has caught some really weird exception, it will now attemp to save all "
 "unsaved documents and exit."
 msgstr ""
-"LyX zachytil neobvyklou vyjímku a nyní se pokusí ulo¾it v¹echny "
-"neulo¾ené dokumenty a skonèit."
+"LyX zachytil neobvyklou vyjímku a nyní se pokusí ulo¾it v¹echny neulo¾ené "
+"dokumenty a skonèit."
 
 #: src/frontends/qt4/GuiApplication.cpp:408
 msgid "About %1"
@@ -15560,14 +15560,6 @@ msgstr "Nemù¾ete nastavit více-sloupec vertikálnì."
 msgid "Opened Text Inset"
 msgstr "Text - otevøená vlo¾ka"
 
-#: src/insets/InsetTheorem.cpp:41
-msgid "theorem"
-msgstr "teorém"
-
-#: src/insets/InsetTheorem.cpp:91
-msgid "Opened Theorem Inset"
-msgstr "Teorém - otevøená vlo¾ka"
-
 #: src/insets/InsetUrl.cpp:42
 msgid "Url: "
 msgstr "Url: "
@@ -15732,11 +15724,6 @@ msgstr "Øetìzec byl nahrazen."
 msgid " strings have been replaced."
 msgstr " øetìzcù bylo nahrazeno."
 
-#: src/mathed/InsetFormulaMacro.cpp:124 src/mathed/MathMacroTemplate.cpp:109
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Makro: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1247
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:75
 #, c-format
@@ -15803,6 +15790,11 @@ msgstr "vstup do text. prostøedí uvnitø matem. (textrm)"
 #: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
 msgstr "Standardní"
+
+#: src/mathed/MathMacroTemplate.cpp:109
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " Makro: %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:241
 msgid "math macro"
@@ -15921,6 +15913,12 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#~ msgid "theorem"
+#~ msgstr "teorém"
+
+#~ msgid "Opened Theorem Inset"
+#~ msgstr "Teorém - otevøená vlo¾ka"
 
 #, fuzzy
 #~ msgid "Placeholders"
