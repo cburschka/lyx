@@ -33,7 +33,7 @@ def find_end_of_inset(lines, i):
 
 def wrap_into_ert(string, src, dst):
     " Wrap a something into an ERT"
-    return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout standard\n' 
+    return string.replace(src, '\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n' 
       + dst + '\n\\end_layout\n\\end_inset\n')
 
 
@@ -367,7 +367,7 @@ def convert_latexcommand_index(document):
         fullcontent = document.body[i + 2][6:].strip('"')
         document.body[i:i + 2] = ["\\begin_inset Index",
           "status collapsed",
-          "\\begin_layout standard"]
+          "\\begin_layout Standard"]
         # Put here the conversions needed from LaTeX string to LyXText.
         # Here we do a minimal conversion to prevent crashes and data loss.
         # Manual patch-up may be needed.
@@ -425,7 +425,7 @@ def revert_latexcommand_index(document):
             line = line[16:]
           if line.startswith("\\begin_inset Formula"):
             line = line[20:]
-          if line.startswith("\\begin_layout standard"):
+          if line.startswith("\\begin_layout Standard"):
             line = line[22:]
           if line.startswith("\\end_layout"):
             line = line[11:]
@@ -861,6 +861,58 @@ def convert_serbocroatian(document):
         j = j + 1
 
 
+def convert_framed_notes(document):
+    "Convert framed notes to boxes. "
+    i = 0
+    while 1:
+        i = find_tokens(document.body, ["\\begin_inset Note Framed", "\\begin_inset Note Shaded"], i)
+
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace("\\begin_inset Note", "\\begin_inset Box")
+        document.body.insert(i + 1, 'position "t"\nhor_pos "c"\nhas_inner_box 0\ninner_pos "t"\n' \
+        'use_parbox 0\nwidth "100col%"\nspecial "none"\nheight "1in"\n' \
+        'height_special "totalheight"')
+        i = i + 1
+
+
+def revert_framed_notes(document):
+    "Revert framed boxes to notes. "
+    i = 0
+    while 1:
+        i = find_tokens(document.body, ["\\begin_inset Box Framed", "\\begin_inset Box Shaded"], i)
+
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i + 1)
+        if j == -1:
+            # should not happen
+            document.warning("Malformed LyX document: Could not find end of Box inset.")
+        k = find_token(document.body, "status", i + 1, j)
+        if k == -1:
+            document.warning("Malformed LyX document: Missing `status' tag in Box inset.")
+            return
+        status = document.body[k]
+        l = find_token(document.body, "\\begin_layout Standard", i + 1, j)
+        if l == -1:
+            document.warning("Malformed LyX document: Missing `\\begin_layout Standard' in Box inset.")
+            return
+        m = find_token(document.body, "\\end_layout", i + 1, j)
+        if m == -1:
+            document.warning("Malformed LyX document: Missing `\\end_layout' in Box inset.")
+            return
+        ibox = find_token(document.body, "has_inner_box 1", i + 1, k)
+        pbox = find_token(document.body, "use_parbox 1", i + 1, k)
+        if ibox == -1 and pbox == -1:
+            document.body[i] = document.body[i].replace("\\begin_inset Box", "\\begin_inset Note")
+            del document.body[i+1:k]
+        else:
+            document.body[i] = document.body[i].replace("\\begin_inset Box Shaded", "\\begin_inset Box Frameless")
+            document.body.insert(l + 1, "\\begin_inset Note Shaded\n" + status + "\n\\begin_layout Standard\n")
+            document.body.insert(m + 1, "\\end_layout\n\\end_inset")
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -892,10 +944,12 @@ convert = [[277, [fix_wrong_tables]],
            [300, []],
            [301, []],
            [302, []],
-           [303, [convert_serbocroatian]]
+           [303, [convert_serbocroatian]],
+           [304, [convert_framed_notes]]
           ]
 
-revert =  [[302, []],
+revert =  [[303, [revert_framed_notes]],
+           [302, []],
            [301, [revert_latin, revert_samin]],
            [300, [revert_linebreak]],
            [299, [revert_pagebreak]],

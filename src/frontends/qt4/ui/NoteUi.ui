@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>202</width>
-    <height>208</height>
+    <height>184</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,21 +17,11 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="0" >
-    <widget class="QPushButton" name="okPB" >
-     <property name="text" >
-      <string>&amp;OK</string>
-     </property>
-     <property name="default" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="1" >
     <widget class="QPushButton" name="closePB" >
      <property name="text" >
@@ -39,6 +29,16 @@
      </property>
      <property name="default" >
       <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QPushButton" name="okPB" >
+     <property name="text" >
+      <string>&amp;OK</string>
+     </property>
+     <property name="default" >
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -84,44 +84,21 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QRadioButton" name="framedRB" >
-        <property name="toolTip" >
-         <string>Framed in box</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Framed</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="shadedRB" >
-        <property name="toolTip" >
-         <string>Box with shaded background</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Shaded</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>noteRB</tabstop>
   <tabstop>commentRB</tabstop>
   <tabstop>greyedoutRB</tabstop>
-  <tabstop>framedRB</tabstop>
-  <tabstop>shadedRB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

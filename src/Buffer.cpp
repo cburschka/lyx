@@ -153,7 +153,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 303; // Uwe: Serbocroatian
+int const LYX_FORMAT = 304; // JSpitzm: framed.sty goes InsetBox
 
 } // namespace anon
 

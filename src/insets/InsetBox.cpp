@@ -49,9 +49,11 @@ BoxTranslator const init_boxtranslator()
 {
 	BoxTranslator translator("Boxed", InsetBox::Boxed);
 	translator.addPair("Frameless", InsetBox::Frameless);
+	translator.addPair("Framed", InsetBox::Framed);
 	translator.addPair("ovalbox", InsetBox::ovalbox);
 	translator.addPair("Ovalbox", InsetBox::Ovalbox);
 	translator.addPair("Shadowbox", InsetBox::Shadowbox);
+	translator.addPair("Shaded", InsetBox::Shaded);
 	translator.addPair("Doublebox",InsetBox::Doublebox);
 	return translator;
 }
@@ -59,12 +61,14 @@ BoxTranslator const init_boxtranslator()
 
 BoxTranslatorLoc const init_boxtranslator_loc()
 {
-	BoxTranslatorLoc translator(_("Boxed"), InsetBox::Boxed);
-	translator.addPair(_("Frameless"), InsetBox::Frameless);
-	translator.addPair(_("ovalbox"), InsetBox::ovalbox);
-	translator.addPair(_("Ovalbox"), InsetBox::Ovalbox);
-	translator.addPair(_("Shadowbox"), InsetBox::Shadowbox);
-	translator.addPair(_("Doublebox"), InsetBox::Doublebox);
+	BoxTranslatorLoc translator(_("simple frame"), InsetBox::Boxed);
+	translator.addPair(_("frameless"), InsetBox::Frameless);
+	translator.addPair(_("simple frame, page breaks"), InsetBox::Framed);
+	translator.addPair(_("oval, thin"), InsetBox::ovalbox);
+	translator.addPair(_("oval, thick"), InsetBox::Ovalbox);
+	translator.addPair(_("drop shadow"), InsetBox::Shadowbox);
+	translator.addPair(_("shaded background"), InsetBox::Shaded);
+	translator.addPair(_("double frame"), InsetBox::Doublebox);
 	return translator;
 }
 
@@ -110,6 +114,16 @@ Inset * InsetBox::clone() const
 docstring const InsetBox::editMessage() const
 {
 	return _("Opened Box Inset");
+}
+
+
+docstring InsetBox::name() const 
+{
+	// FIXME: UNICODE
+	string name = string("Box");
+	if (boxtranslator().find(params_.type) == Shaded)
+		name += string(":Shaded");
+	return from_ascii(name);
 }
 
 
@@ -244,8 +258,10 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 		stdwidth = true;
 		switch (btype) {
 		case Frameless:
+		case Framed:
 			break;
 		case Boxed:
+		case Shaded:
 			width_string += " - 2\\fboxsep - 2\\fboxrule";
 			break;
 		case ovalbox:
@@ -272,6 +288,10 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 
 	switch (btype) {
 	case Frameless:
+		break;
+	case Framed:
+		os << "\\begin{framed}%\n";
+		i += 1;
 		break;
 	case Boxed:
 		os << "\\framebox";
@@ -300,6 +320,9 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 		break;
 	case Shadowbox:
 		os << "\\shadowbox{";
+		break;
+	case Shaded:
+		// later
 		break;
 	case Doublebox:
 		os << "\\doublebox{";
@@ -341,8 +364,14 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 		os << "%\n";
 		i += 1;
 	}
+	if (btype == Shaded)
+		os << "\\begin{shaded}%\n";
+		i += 1;
 
 	i += InsetText::latex(buf, os, runparams);
+
+	if (btype == Shaded)
+		os << "\\end{shaded}";
 
 	if (params_.inner_box) {
 		if (params_.use_parbox)
@@ -354,6 +383,9 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 	switch (btype) {
 	case Frameless:
 		break;
+	case Framed:
+		os << "\\end{framed}";
+		break;
 	case Boxed:
 		if (!params_.inner_box)
 			os << "}"; // for makebox
@@ -364,6 +396,9 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 	case Doublebox:
 	case Shadowbox:
 		os << "}";
+		break;
+	case Shaded:
+		// already done
 		break;
 	}
 	os << "%\n";
@@ -380,24 +415,56 @@ int InsetBox::plaintext(Buffer const & buf, odocstream & os,
 	BoxType const btype = boxtranslator().find(params_.type);
 
 	switch (btype) {
-		case Frameless: break;
-		case Boxed:     os << "[\n";  break;
-		case ovalbox:   os << "(\n";  break;
-		case Ovalbox:   os << "((\n"; break;
-		case Shadowbox: os << "[/\n"; break;
-		case Doublebox: os << "[[\n"; break;
+		case Frameless:
+			break;
+		case Framed:
+		case Boxed:
+			os << "[\n";
+			break;
+		case ovalbox:
+			os << "(\n";
+			break;
+		case Ovalbox:
+			os << "((\n";
+			break;
+		case Shadowbox:
+		case Shaded:
+			os << "[/\n";
+			break;
+		case Doublebox:
+			os << "[[\n";
+			break;
 	}
 
 	InsetText::plaintext(buf, os, runparams);
 
 	int len = 0;
 	switch (btype) {
-		case Frameless: os << "\n";            break;
-		case Boxed:     os << "\n]";  len = 1; break;
-		case ovalbox:   os << "\n)";  len = 1; break;
-		case Ovalbox:   os << "\n))"; len = 2; break;
-		case Shadowbox: os << "\n/]"; len = 2; break;
-		case Doublebox: os << "\n]]"; len = 2; break;
+		case Frameless:
+			os << "\n";
+			break;
+		case Framed:
+		case Boxed:
+			os << "\n]";
+			len = 1;
+			break;
+		case ovalbox:
+			os << "\n)";
+			len = 1;
+			break;
+		case Ovalbox:
+			os << "\n))";
+			len = 2;
+			break;
+		case Shadowbox:
+		case Shaded:
+			os << "\n/]";
+			len = 2;
+			break;
+		case Doublebox:
+			os << "\n]]";
+			len = 2;
+			break;
 	}
 
 	return PLAINTEXT_NEWLINE + len; // len chars on a separate line
@@ -417,6 +484,9 @@ void InsetBox::validate(LaTeXFeatures & features) const
 	switch (btype) {
 	case Frameless:
 		break;
+	case Framed:
+		features.require("framed");
+		break;
 	case Boxed:
 		features.require("calc");
 		break;
@@ -426,6 +496,10 @@ void InsetBox::validate(LaTeXFeatures & features) const
 	case Doublebox:
 		features.require("calc");
 		features.require("fancybox");
+		break;
+	case Shaded:
+		features.require("color");
+		features.require("framed");
 		break;
 	}
 	InsetText::validate(features);

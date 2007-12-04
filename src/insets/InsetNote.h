@@ -23,9 +23,7 @@ public:
 	enum Type {
 		Note,
 		Comment,
-		Greyedout,
-		Framed,
-		Shaded
+		Greyedout
 	};
 	/// \c type defaults to Note
 	InsetNoteParams();
@@ -53,7 +51,7 @@ public:
 	InsetCode lyxCode() const { return NOTE_CODE; }
 	///
 	docstring name() const;
-	/// framed and shaded notes are displayed
+	///
 	virtual DisplayType display() const;
 	///
 	void write(Buffer const &, std::ostream &) const;

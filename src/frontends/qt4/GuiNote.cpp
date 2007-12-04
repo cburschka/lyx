@@ -37,8 +37,6 @@ GuiNote::GuiNote(GuiView & lv)
 	connect(noteRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(greyedoutRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(commentRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(framedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(shadedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(okPB);
@@ -71,12 +69,6 @@ void GuiNote::updateContents()
 	case InsetNoteParams::Greyedout:
 		greyedoutRB->setChecked(true);
 		break;
-	case InsetNoteParams::Framed:
-		framedRB->setChecked(true);
-		break;
-	case InsetNoteParams::Shaded:
-		shadedRB->setChecked(true);
-		break;
 	}
 }
 
@@ -87,10 +79,6 @@ void GuiNote::applyView()
 		params_.type = InsetNoteParams::Greyedout;
 	else if (commentRB->isChecked())
 		params_.type = InsetNoteParams::Comment;
-	else if (framedRB->isChecked())
-		params_.type = InsetNoteParams::Framed;
-	else if (shadedRB->isChecked())
-		params_.type = InsetNoteParams::Shaded;
 	else
 		params_.type = InsetNoteParams::Note;
 }

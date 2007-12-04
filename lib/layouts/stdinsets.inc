@@ -1,5 +1,5 @@
 # Textclass definition file for LaTeX.
-# Author : Martin vermeer <amrtin.vermeer@hut.fi>
+# Author : Martin vermeer <martin.vermeer@hut.fi>
 # Inset layouts definition
 # 
 #InsetLayout <string identifier used by LyX>
@@ -118,30 +118,6 @@ InsetLayout Note:Greyedout
 	MultiPar              true
 End
 
-InsetLayout Note:Framed
-	LabelString           framed
-	LatexType             environment
-	LatexName             framed
-	BgColor               greyedoutbg
-	LabelFont
-	  Color               greyedout
-	  Size                Small
-	EndFont
-	MultiPar              true
-End
-
-InsetLayout Note:Shaded
-	LabelString           shaded
-	LatexType             environment
-	LatexName             shaded
-	BgColor               shaded
-	LabelFont
-	  Color               greyedout
-	  Size                Small
-	EndFont
-	MultiPar              true
-End
-
 InsetLayout ERT
 	LabelString           ERT
 	LatexType             none
@@ -212,6 +188,15 @@ InsetLayout Index
 End
 
 InsetLayout Box
+	LabelFont
+	  Color               foreground
+	  Size                Small
+	EndFont
+	MultiPar              true
+End
+
+InsetLayout Box:Shaded
+	BgColor               shaded
 	LabelFont
 	  Color               foreground
 	  Size                Small

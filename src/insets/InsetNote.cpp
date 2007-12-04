@@ -57,8 +57,6 @@ NoteTranslator const init_notetranslator()
 	NoteTranslator translator("Note", InsetNoteParams::Note);
 	translator.addPair("Comment", InsetNoteParams::Comment);
 	translator.addPair("Greyedout", InsetNoteParams::Greyedout);
-	translator.addPair("Framed", InsetNoteParams::Framed);
-	translator.addPair("Shaded", InsetNoteParams::Shaded);
 	return translator;
 }
 
@@ -68,8 +66,6 @@ NoteTranslatorLoc const init_notetranslator_loc()
 	NoteTranslatorLoc translator(_("Note"), InsetNoteParams::Note);
 	translator.addPair(_("Comment"), InsetNoteParams::Comment);
 	translator.addPair(_("Greyed out"), InsetNoteParams::Greyedout);
-	translator.addPair(_("Framed"), InsetNoteParams::Framed);
-	translator.addPair(_("Shaded"), InsetNoteParams::Shaded);
 	return translator;
 }
 
@@ -151,13 +147,7 @@ docstring InsetNote::name() const
 
 Inset::DisplayType InsetNote::display() const
 {
-	switch (params_.type) {
-	case InsetNoteParams::Framed:
-	case InsetNoteParams::Shaded:
-		return AlignLeft;
-	default:
-		return Inline;
-	}
+	return Inline;
 }
 
 
@@ -323,12 +313,6 @@ void InsetNote::validate(LaTeXFeatures & features) const
 		features.require("color");
 		features.require("lyxgreyedout");
 	}
-	if (params_.type == InsetNoteParams::Shaded) {
-		features.require("color");
-		features.require("framed");
-	}
-	if (params_.type == InsetNoteParams::Framed)
-		features.require("framed");
 	InsetText::validate(features);
 }
 

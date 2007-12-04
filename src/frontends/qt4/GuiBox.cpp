@@ -43,16 +43,17 @@ void box_gui_tokens(vector<string> & ids, vector<docstring> & gui_names)
 {
 	char const * const ids_[] = {
 		"Frameless", "Boxed", "ovalbox",
-		"Ovalbox", "Shadowbox", "Doublebox"};
+		"Ovalbox", "Shadowbox", "Shaded", "Doublebox"};
 	size_t const ids_size = sizeof(ids_) / sizeof(char *);
 	ids = vector<string>(ids_, ids_ + ids_size);
 	gui_names.clear();
-	gui_names.push_back(_("No frame drawn"));
-	gui_names.push_back(_("Rectangular box"));
-	gui_names.push_back(_("Oval box, thin"));
-	gui_names.push_back(_("Oval box, thick"));
-	gui_names.push_back(_("Shadow box"));
-	gui_names.push_back(_("Double box"));
+	gui_names.push_back(_("No frame"));
+	gui_names.push_back(_("Simple rectangular frame"));
+	gui_names.push_back(_("Oval frame, thin"));
+	gui_names.push_back(_("Oval frame, thick"));
+	gui_names.push_back(_("Drop shadow"));
+	gui_names.push_back(_("Shaded background"));
+	gui_names.push_back(_("Double rectangular frame"));
 }
 
 
@@ -115,6 +116,8 @@ GuiBox::GuiBox(GuiView & lv)
 	connect(innerBoxCO, SIGNAL(activated(const QString&)),
 		this, SLOT(innerBoxChanged(const QString &)));
 	connect(innerBoxCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(pagebreakCB, SIGNAL(stateChanged(int)),
+		this, SLOT(pagebreakClicked()));
 
 	heightED->setValidator(unsignedLengthValidator(heightED));
 	widthED->setValidator(unsignedLengthValidator(widthED));
@@ -131,6 +134,7 @@ GuiBox::GuiBox(GuiView & lv)
 	bc().addReadOnly(heightCB);
 	bc().addReadOnly(heightED);
 	bc().addReadOnly(heightUnitsLC);
+	bc().addReadOnly(pagebreakCB);
 
 	bc().setRestore(restorePB);
 	bc().setOK(okPB);
@@ -183,6 +187,9 @@ void GuiBox::typeChanged(int index)
 		heightUnitsLC->setEnabled(true);
 		setSpecial(true);
 	}
+	if (index != 1)
+		pagebreakCB->setChecked(false);
+	pagebreakCB->setEnabled(index == 1);
 	int itype = innerBoxCO->currentIndex();
 	setInnerType(frameless, itype);
 }
@@ -202,9 +209,34 @@ void GuiBox::restoreClicked()
 }
 
 
+void GuiBox::pagebreakClicked()
+{
+	bool pbreak = (pagebreakCB->checkState() == Qt::Checked);
+	innerBoxCO->setEnabled(!pbreak);
+	if (pbreak) {
+		valignCO->setEnabled(false);
+		ialignCO->setEnabled(false);
+		halignCO->setEnabled(false);
+		heightCB->setEnabled(false);
+		heightED->setEnabled(false);
+		heightUnitsLC->setEnabled(false);
+		setSpecial(false);
+	} else
+		typeChanged(typeCO->currentIndex());
+	
+}
+
 void GuiBox::updateContents()
 {
 	string type = params_.type;
+	if (type == "Framed") {
+		pagebreakCB->setChecked(true);
+		type = "Boxed";
+	} else
+		pagebreakCB->setChecked(false);
+
+	pagebreakCB->setEnabled(type == "Boxed");
+
 	for (unsigned int i = 0; i < gui_names_.size(); ++i) {
 		if (type == ids_[i])
 			typeCO->setCurrentIndex(i);
@@ -282,10 +314,14 @@ void GuiBox::updateContents()
 
 void GuiBox::applyView()
 {
-	params_.type = ids_[typeCO->currentIndex()];
+	bool pagebreak = pagebreakCB->isChecked();
+	if (pagebreak)
+		params_.type = "Framed";
+	else
+		params_.type = ids_[typeCO->currentIndex()];
 
-	params_.inner_box = innerBoxCO->currentText() != qt_("None");
-	params_.use_parbox = innerBoxCO->currentText() ==  qt_("Parbox");
+	params_.inner_box = (!pagebreak && innerBoxCO->currentText() != qt_("None"));
+	params_.use_parbox = (!pagebreak && innerBoxCO->currentText() == qt_("Parbox"));
 
 	params_.pos = "tcb"[valignCO->currentIndex()];
 	params_.inner_pos = "tcbs"[ialignCO->currentIndex()];

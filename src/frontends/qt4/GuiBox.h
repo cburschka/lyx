@@ -35,6 +35,7 @@ private Q_SLOTS:
 	void innerBoxChanged(const QString &);
 	void typeChanged(int);
 	void restoreClicked();
+	void pagebreakClicked();
 
 private:
 	///

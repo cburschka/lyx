@@ -66,6 +66,8 @@ public:
 	///
 	InsetCode lyxCode() const { return BOX_CODE; }
 	///
+	docstring name() const;
+	///
 	void write(Buffer const &, std::ostream &) const;
 	///
 	void read(Buffer const & buf, Lexer & lex);
@@ -99,9 +101,11 @@ public:
 	enum BoxType {
 		Frameless,
 		Boxed,
+		Framed,
 		ovalbox,
 		Ovalbox,
 		Shadowbox,
+		Shaded,
 		Doublebox
 	};
 protected:
@@ -109,8 +113,6 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const;
-	///
-	virtual docstring name() const { return from_ascii("Box"); }
 private:
 	friend class InsetBoxParams;
 
