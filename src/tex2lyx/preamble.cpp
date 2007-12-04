@@ -3,7 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
+ * \author Uwe StÃ¶hr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -72,7 +73,7 @@ ostringstream h_preamble;
 string h_textclass               = "article";
 string h_options                 = string();
 string h_language                = "english";
-string h_inputencoding           = "latin1";
+string h_inputencoding           = "auto";
 string h_fontscheme              = "default";
 string h_graphics                = "default";
 string h_paperfontsize           = "default";
@@ -100,13 +101,19 @@ void handle_opt(vector<string> & opts, char const * const * what, string & targe
 	if (opts.empty())
 		return;
 
+	// the last language option is the document language (for babel and LyX)
+	// the last size option is the document font size
+	vector<string>::iterator it;
+	vector<string>::iterator position = opts.begin();
 	for (; *what; ++what) {
-		vector<string>::iterator it = find(opts.begin(), opts.end(), *what);
+		it = find(opts.begin(), opts.end(), *what);
 		if (it != opts.end()) {
-			//cerr << "### found option '" << *what << "'\n";
-			target = *what;
+			if (it >= position) {
+				target = *what;
+				position = it;
+			}
+			// remove found options from the list
 			opts.erase(it);
-			return;
 		}
 	}
 }
@@ -128,7 +135,7 @@ vector<string> split_options(string const & input)
 	while (p.good()) {
 		Token const & t = p.get_token();
 		if (t.asInput() == ",") {
-			options.push_back(option);
+			options.push_back(trim(option));
 			option.erase();
 		} else if (t.asInput() == "=") {
 			option += '=';
@@ -140,7 +147,7 @@ vector<string> split_options(string const & input)
 	}
 
 	if (!option.empty())
-		options.push_back(option);
+		options.push_back(trim(option));
 
 	return options;
 }
@@ -188,7 +195,10 @@ void handle_package(string const & name, string const & opts)
 	else if (name == "fontenc")
 		; // ignore this
 	else if (name == "inputenc") {
-		h_inputencoding = opts;
+		// only set when there is not more than one inputenc option
+		// therefore check for the "," character
+		if (opts.find(",", 0) == string::npos)
+			h_inputencoding = opts;
 		options.clear();
 	} else if (name == "makeidx")
 		; // ignore this
@@ -237,14 +247,15 @@ void handle_package(string const & name, string const & opts)
 
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
-	os << "#LyX file created by  tex2lyx 0.1.2\n"
+	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
 	   << "\\lyxformat 246\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
-	   << "\\textclass " << h_textclass << "\n"
-	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
+	   << "\\textclass " << h_textclass << "\n";
+	if (!h_preamble.str().empty())
+		os << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
 	if (!h_options.empty())
-	   os << "\\options " << h_options << "\n";
+		os << "\\options " << h_options << "\n";
 	os << "\\language " << h_language << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\fontscheme " << h_fontscheme << "\n"
@@ -373,8 +384,7 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 		}
 
 		else if (t.cs() == "documentclass") {
-			vector<string> opts;
-			split(p.getArg('[', ']'), opts, ',');
+			vector<string> opts = split_options(p.getArg('[', ']'));
 			handle_opt(opts, known_languages, h_language);
 			if (is_known(h_language, known_french_languages))
 				h_language = "french";

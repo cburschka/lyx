@@ -5,6 +5,7 @@
  *
  * \author André Pönitz
  * \author Jean-Marc Lasgouttes
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -1125,6 +1126,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context & context)
 {
 	LayoutPtr newlayout;
+	// store the current selectlanguage to be used after \foreignlanguage
+	string selectlang;
 	// Store the latest bibliographystyle (needed for bibtex inset)
 	string bibliographystyle;
 	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
@@ -2051,6 +2054,27 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, context, false);
 		}
 
+		else if (t.cs() == "selectlanguage") {
+			context.check_layout(os);
+			// save the language for the case that a \foreignlanguage is used 
+			selectlang = subst(p.verbatim_item(), "\n", " ");
+			os << "\\lang " << selectlang << "\n";
+			
+		}
+
+		else if (t.cs() == "foreignlanguage") {
+			context.check_layout(os);
+			os << "\n\\lang " << subst(p.verbatim_item(), "\n", " ") << "\n";
+			os << subst(p.verbatim_item(), "\n", " ");
+			// set back to last selectlanguage
+			os << "\n\\lang " << selectlang << "\n";
+		}
+
+		else if (t.cs() == "inputencoding")
+			// write nothing because this is done by LyX using the "\lang"
+			// information given by selectlanguage and foreignlanguage
+			subst(p.verbatim_item(), "\n", " ");
+		
 		else if (t.cs() == "LyX" || t.cs() == "TeX"
 			 || t.cs() == "LaTeX") {
 			context.check_layout(os);
