@@ -50,19 +50,19 @@ std::map<string, vector<string> > used_packages;
 
 namespace {
 
-const char * const known_languages[] = { "austrian", "babel", "bahasa",
-"basque", "breton", "british", "bulgarian", "catalan", "croatian", "czech",
-"danish", "dutch", "english", "esperanto", "estonian", "finnish",
-"francais", "french", "frenchb", "frenchle", "frenchpro",
-"galician", "german", "germanb", "greek", "hebcal", "hebfont",
-"hebrew", "hebrew_newcode", "hebrew_oldcode", "hebrew_p", "hyphen",
+const char * const known_languages[] = { "afrikaans", "american", "austrian",
+"babel", "bahasa", "basque", "belarusian", "brazil", "breton", "british",
+"bulgarian", "catalan", "croatian", "czech", "danish", "dutch", "english",
+"esperanto", "estonian", "finnish", "francais", "french", "frenchb",
+"frenchle", "frenchpro", "galician", "german", "germanb", "greek", "hebcal",
+"hebfont", "hebrew", "hebrew_newcode", "hebrew_oldcode", "hebrew_p", "hyphen",
 "icelandic", "irish", "italian", "latin", "lgrcmr", "lgrcmro", "lgrcmss",
-"lgrcmtt", "lgrenc", "lgrlcmss", "lgrlcmtt", "lheclas", "lhecmr",
-"lhecmss", "lhecmtt", "lhecrml", "lheenc", "lhefr", "lheredis", "lheshold",
-"lheshscr", "lheshstk", "lsorbian", "magyar", "naustrian", "ngermanb",
-"ngerman", "norsk", "polish", "portuges", "rlbabel", "romanian",
-"russianb", "samin", "scottish", "serbian", "slovak", "slovene", "spanish",
-"swedish", "turkish", "ukraineb", "usorbian", "welsh", 0};
+"lgrcmtt", "lgrenc", "lgrlcmss", "lgrlcmtt", "lheclas", "lhecmr", "lhecmss",
+"lhecmtt", "lhecrml", "lheenc", "lhefr", "lheredis", "lheshold", "lheshscr",
+"lheshstk", "lsorbian", "magyar", "naustrian", "ngermanb", "ngerman", "norsk",
+"nynorsk", "polish", "portuges", "rlbabel", "romanian",	"russian", "russianb",
+"samin", "scottish", "serbian", "slovak", "slovene", "spanish", "swedish",
+"thai", "turkish", "ukraineb", "ukrainian", "usorbian", "welsh", 0};
 
 const char * const known_french_languages[] = {"french", "frenchb", "francais",
 					       "frenchle", "frenchpro", 0};
