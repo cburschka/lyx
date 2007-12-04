@@ -516,7 +516,7 @@ string const LaTeXFeatures::getPackages() const
 				 << "]{graphicx}\n";
 	}
 	// shadecolor for shaded
-	if (mustProvide("framed") && mustProvide("color")) {
+	if (isRequired("framed") && mustProvide("color")) {
 		RGBColor c = rgbFromHexName(lcolor.getX11Name(Color_shadedbg));
 		//255.0 to force conversion to double
 		//NOTE As Jürgen Spitzmüller pointed out, an alternative would be
