@@ -338,7 +338,7 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 		child = theBufferList().newBuffer(included_file.absFilename());
 		if (!child->loadLyXFile(included_file)) {
 			//close the buffer we just opened
-			theBufferList().close(child, false);
+			theBufferList().release(child);
 			return 0;
 		}
 	}
@@ -372,7 +372,7 @@ void resetParentBuffer(Buffer const * parent, InsetCommandParams const & params,
 	//close the buffer.
 	child->setParent(0);
 	if (close_it)
-		theBufferList().close(child, false);
+		theBufferList().release(child);
 	else
 		updateLabels(*child);
 }

@@ -95,78 +95,6 @@ BufferList::const_iterator BufferList::end() const
 }
 
 
-bool BufferList::quitWriteBuffer(Buffer * buf)
-{
-	BOOST_ASSERT(buf);
-
-	docstring file;
-
-	// FIXME: Unicode?
-	if (buf->isUnnamed())
-		file = from_utf8(buf->fileName().onlyFileName());
-	else
-		file = buf->fileName().displayName(30);
-
-	docstring const text =
-		bformat(_("The document %1$s has unsaved changes.\n\n"
-				       "Do you want to save the document or discard the changes?"),
-					   file);
-	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
-
-	if (ret == 0) {
-		// FIXME: WriteAs can be asynch !
-		// but not right now...maybe we should remove that
-
-		bool succeeded;
-
-		if (buf->isUnnamed())
-			succeeded = buf->writeAs();
-		else
-			succeeded = buf->menuWrite();
-
-		if (!succeeded)
-			return false;
-	} else if (ret == 1) {
-		// if we crash after this we could
-		// have no autosave file but I guess
-		// this is really inprobable (Jug)
-		if (buf->isUnnamed())
-			removeAutosaveFile(buf->absFileName());
-
-	} else {
-		return false;
-	}
-
-	return true;
-}
-
-
-bool BufferList::quitWriteAll()
-{
-	BufferStorage::iterator it = bstore.begin();
-	BufferStorage::iterator end = bstore.end();
-	for (; it != end; ++it) {
-		if ((*it)->isClean())
-			continue;
-
-		if (!quitWriteBuffer(*it))
-			return false;
-	}
-	// now, all buffers have been written sucessfully
-	// save file names to .lyx/session
-	it = bstore.begin();
-	for (; it != end; ++it) {
-		// if master/slave are both open, do not save slave since it
-		// will be automatically loaded when the master is loaded
-		if ((*it)->masterBuffer() == (*it))
-			LyX::ref().session().lastOpened().add(FileName((*it)->absFileName()));
-	}
-
-	return true;
-}
-
-
 void BufferList::release(Buffer * buf)
 {
 	BOOST_ASSERT(buf);
@@ -193,47 +121,8 @@ Buffer * BufferList::newBuffer(string const & s, bool const ronly)
 
 void BufferList::closeAll()
 {
-	while (!bstore.empty()) {
-		close(bstore.front(), false);
-	}
-}
-
-
-bool BufferList::close(Buffer * buf, bool const ask)
-{
-	BOOST_ASSERT(buf);
-
-	if (!ask || buf->isClean() || buf->paragraphs().empty()) {
-		release(buf);
-		return true;
-	}
-
-	docstring fname;
-	if (buf->isUnnamed())
-		fname = from_utf8(onlyFilename(buf->absFileName()));
-	else
-		fname = makeDisplayPath(buf->absFileName(), 30);
-
-	docstring const text =
-		bformat(_("The document %1$s has unsaved changes.\n\n"
-				       "Do you want to save the document or discard the changes?"),
-					   fname);
-	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
-
-	if (ret == 0) {
-		if (buf->isUnnamed()) {
-			if (!buf->writeAs())
-				return false;
-		} else if (!buf->menuWrite())
-			return false;
-	} else if (ret == 2)
-		return false;
-		
-	removeAutosaveFile(buf->absFileName());
-
-	release(buf);
-	return true;
+	while (!bstore.empty())
+		release(bstore.front());
 }
 
 

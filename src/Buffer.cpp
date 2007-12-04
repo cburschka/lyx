@@ -73,7 +73,6 @@
 #include "frontends/alert.h"
 #include "frontends/Delegates.h"
 #include "frontends/WorkAreaManager.h"
-#include "frontends/FileDialog.h"
 
 #include "graphics/Previews.h"
 
@@ -874,8 +873,6 @@ bool Buffer::save() const
 
 	if (writeFile(d->filename)) {
 		markClean();
-		removeAutosaveFile(absFileName());
-		saveCheckSum(d->filename);
 		return true;
 	} else {
 		// Saving failed, so backup is not backup
@@ -899,27 +896,40 @@ bool Buffer::writeFile(FileName const & fname) const
 		content = FileName(addName(temppath(), "content.lyx"));
 	else
 		content = fname;
-	
+
+	docstring const str = bformat(_("Saving document %1$s..."),
+		makeDisplayPath(content.absFilename()));
+	message(str);
+
 	if (params().compressed) {
 		gz::ogzstream ofs(content.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
-		if (!ofs)
-			return false;
-
-		retval = write(ofs);
+		retval = ofs && write(ofs);
 	} else {
 		ofstream ofs(content.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
-		if (!ofs)
-			return false;
-
-		retval = write(ofs);
+		retval = ofs && write(ofs);
 	}
 
-	if (retval && params().embedded) {
-		// write file.lyx and all the embedded files to the zip file fname
-		// if embedding is enabled
-		return d->embedded_files.writeFile(fname);
+	if (!retval) {
+		message(str + _(" could not write file!."));
+		return false;
 	}
-	return retval;
+
+	removeAutosaveFile(d->filename.absFilename());
+	saveCheckSum(d->filename);
+	message(str + _(" done."));
+
+	if (!params().embedded)
+		return true;
+
+	message(str + _(" writing embedded files!."));
+	// if embedding is enabled, write file.lyx and all the embedded files
+	// to the zip file fname.
+	if (!d->embedded_files.writeFile(fname)) {
+		message(str + _(" could not write embedded files!."));
+		return false;
+	}
+	message(str + _(" error while writing embedded files."));
+	return true;
 }
 
 
@@ -2082,7 +2092,7 @@ void Buffer::autoSave() const
 	// create autosave filename
 	string fname = filePath();
 	fname += '#';
-	fname += onlyFilename(absFileName());
+	fname += d->filename.onlyFileName();
 	fname += '#';
 
 	AutoSaveBuffer autosave(*this, FileName(fname));
@@ -2090,115 +2100,6 @@ void Buffer::autoSave() const
 
 	markBakClean();
 	resetAutosaveTimers();
-}
-
-
-/** Write a buffer to a new file name and rename the buffer
-    according to the new file name.
-
-    This function is e.g. used by menu callbacks and
-    LFUN_BUFFER_WRITE_AS.
-
-    If 'newname' is empty (the default), the user is asked via a
-    dialog for the buffer's new name and location.
-
-    If 'newname' is non-empty and has an absolute path, that is used.
-    Otherwise the base directory of the buffer is used as the base
-    for any relative path in 'newname'.
-*/
-
-bool Buffer::writeAs(string const & newname)
-{
-	string fname = absFileName();
-	string const oldname = fname;
-
-	if (newname.empty()) {	/// No argument? Ask user through dialog
-
-		// FIXME UNICODE
-		FileDialog dlg(_("Choose a filename to save document as"),
-				   LFUN_BUFFER_WRITE_AS);
-		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-		dlg.setButton2(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
-
-		if (!support::isLyXFilename(fname))
-			fname += ".lyx";
-
-		support::FileFilterList const filter(_("LyX Documents (*.lyx)"));
-
-		FileDialog::Result result =
-			dlg.save(from_utf8(onlyPath(fname)),
-				     filter,
-				     from_utf8(onlyFilename(fname)));
-
-		if (result.first == FileDialog::Later)
-			return false;
-
-		fname = to_utf8(result.second);
-
-		if (fname.empty())
-			return false;
-
-		// Make sure the absolute filename ends with appropriate suffix
-		fname = makeAbsPath(fname).absFilename();
-		if (!support::isLyXFilename(fname))
-			fname += ".lyx";
-
-	} else 
-		fname = makeAbsPath(newname, onlyPath(oldname)).absFilename();
-
-	if (FileName(fname).exists()) {
-		docstring const file = makeDisplayPath(fname, 30);
-		docstring text = bformat(_("The document %1$s already "
-					   "exists.\n\nDo you want to "
-					   "overwrite that document?"), 
-					 file);
-		int const ret = Alert::prompt(_("Overwrite document?"),
-			text, 0, 1, _("&Overwrite"), _("&Cancel"));
-
-		if (ret == 1)
-			return false;
-	}
-
-	// Ok, change the name of the buffer
-	setFileName(fname);
-	markDirty();
-	bool unnamed = isUnnamed();
-	setUnnamed(false);
-	saveCheckSum(FileName(fname));
-
-	if (!menuWrite()) {
-		setFileName(oldname);
-		setUnnamed(unnamed);
-		saveCheckSum(FileName(oldname));
-		return false;
-	}
-
-	removeAutosaveFile(oldname);
-	return true;
-}
-
-
-bool Buffer::menuWrite()
-{
-	if (save()) {
-		LyX::ref().session().lastFiles().add(FileName(absFileName()));
-		return true;
-	}
-
-	// FIXME: we don't tell the user *WHY* the save failed !!
-
-	docstring const file = makeDisplayPath(absFileName(), 30);
-
-	docstring text = bformat(_("The document %1$s could not be saved.\n\n"
-				   "Do you want to rename the document and "
-				   "try again?"), file);
-	int const ret = Alert::prompt(_("Rename and save?"),
-		text, 0, 1, _("&Rename"), _("&Cancel"));
-
-	if (ret != 0)
-		return false;
-
-	return writeAs();
 }
 
 

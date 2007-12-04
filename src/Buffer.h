@@ -418,10 +418,6 @@ public:
 	///
 	void autoSave() const;
 	///
-	bool writeAs(std::string const & newname = std::string());
-	///
-	bool menuWrite();
-	///
 	void loadChildDocuments() const;
 	///
 	void resetChildDocuments(bool close_them) const;

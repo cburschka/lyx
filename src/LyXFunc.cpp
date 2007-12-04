@@ -531,17 +531,21 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	bool enable = true;
 	switch (cmd.action) {
 
+	// FIXME: these cases should be hidden in GuiApplication::getStatus().
 	case LFUN_WINDOW_CLOSE:
 		if (theApp())
 			return theApp()->getStatus(cmd);
 		enable = false;
 		break;
 
+	// FIXME: these cases should be hidden in GuiView::getStatus().
 	case LFUN_DIALOG_TOGGLE:
 	case LFUN_DIALOG_SHOW:
 	case LFUN_DIALOG_UPDATE:
 	case LFUN_TOOLBAR_TOGGLE:
 	case LFUN_INSET_APPLY:
+	case LFUN_BUFFER_WRITE:
+	case LFUN_BUFFER_WRITE_AS:
 		if (lyx_view_)
 			return lyx_view_->getStatus(cmd);
 		enable = false;
@@ -594,33 +598,33 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = getStatus(fr).enabled();
 		break;
 	}
-
-	case LFUN_BUFFER_WRITE: {
-		enable = lyx_view_->buffer()->isUnnamed()
-			|| !lyx_view_->buffer()->isClean();
+	
+	// This could be used for the no-GUI version. The GUI version is handled in
+	// LyXView::getStatus().
+	/*
+	case LFUN_BUFFER_WRITE:
+	case LFUN_BUFFER_WRITE_AS: {
+		Buffer * b = theBufferList().getBuffer(cmd.getArg(0));
+		enable = b && (b->isUnnamed() || !b->isClean());
 		break;
 	}
-
+	*/
 
 	case LFUN_BUFFER_WRITE_ALL: {
-	// We enable the command only if there are some modified buffers
+		// We enable the command only if there are some modified buffers
 		Buffer * first = theBufferList().first();
-		bool modified = false;
-		if (first) {
-			Buffer * b = first;
-		
+		enable = false;
+		if (!first)
+			break;
+		Buffer * b = first;
 		// We cannot use a for loop as the buffer list is a cycle.
-			do {
-				if (!b->isClean()) {
-					modified = true;
-					break;
-				}
-				b = theBufferList().next(b);
-			} while (b != first); 
-		}
-	
-		enable = modified;
-
+		do {
+			if (!b->isClean()) {
+				enable = true;
+				break;
+			}
+			b = theBufferList().next(b);
+		} while (b != first); 
 		break;
 	}
 
@@ -670,7 +674,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_CANCEL:
 	case LFUN_META_PREFIX:
 	case LFUN_BUFFER_CLOSE:
-	case LFUN_BUFFER_WRITE_AS:
 	case LFUN_BUFFER_UPDATE:
 	case LFUN_BUFFER_VIEW:
 	case LFUN_MASTER_BUFFER_UPDATE:
@@ -911,50 +914,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			closeBuffer();
 			updateFlags = Update::None;
 			break;
-
-		case LFUN_BUFFER_WRITE:
-			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			if (!lyx_view_->buffer()->isUnnamed()) {
-				docstring const str = bformat(_("Saving document %1$s..."),
-					 makeDisplayPath(lyx_view_->buffer()->absFileName()));
-				lyx_view_->message(str);
-				lyx_view_->buffer()->menuWrite();
-				lyx_view_->message(str + _(" done."));
-			} else {
-				lyx_view_->buffer()->writeAs();
-			}
-			updateFlags = Update::None;
-			break;
-
-		case LFUN_BUFFER_WRITE_AS:
-			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
-			lyx_view_->buffer()->writeAs(argument);
-			updateFlags = Update::None;
-			break;
-
-		case LFUN_BUFFER_WRITE_ALL: {
-			Buffer * first = theBufferList().first();
-			if (first) {
-				Buffer * b = first;
-				lyx_view_->message(_("Saving all documents..."));
-		
-				// We cannot use a for loop as the buffer list cycles.
-				do {
-					if (!b->isClean()) {
-						if (!b->isUnnamed()) {
-							b->menuWrite();
-							LYXERR(Debug::ACTION, "Saved " << b->absFileName());
-						} else
-							b->writeAs();
-					}
-					b = theBufferList().next(b);
-				} while (b != first); 
-				lyx_view_->message(_("All documents saved."));
-			} 
-	
-			updateFlags = Update::None;
-			break;
-		}
 
 		case LFUN_BUFFER_RELOAD: {
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
@@ -2116,8 +2075,10 @@ void LyXFunc::doImport(string const & argument)
 	FileName const lyxfile(changeExtension(fullname.absFilename(), ".lyx"));
 
 	// Check if the document already is open
-	if (use_gui && theBufferList().exists(lyxfile.absFilename())) {
-		if (!theBufferList().close(theBufferList().getBuffer(lyxfile.absFilename()), true)) {
+	Buffer * buf = theBufferList().getBuffer(lyxfile.absFilename());
+	if (use_gui && buf) {
+		lyx_view_->setBuffer(buf);
+		if (!lyx_view_->closeBuffer()) {
 			lyx_view_->message(_("Canceled."));
 			return;
 		}
@@ -2151,7 +2112,7 @@ void LyXFunc::closeBuffer()
 	for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
 		gotoBookmark(i+1, false, false);
 	
-	theBufferList().close(lyx_view_->buffer(), true);
+	lyx_view_->closeBuffer();
 }
 
 

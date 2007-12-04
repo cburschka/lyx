@@ -40,9 +40,6 @@ public:
 	iterator end();
 	const_iterator end() const;
 
-	/// write all buffers, asking the user, returns false if cancelled
-	bool quitWriteAll();
-
 	/// create a new buffer
 	Buffer * newBuffer(std::string const & s, bool ronly = false);
 
@@ -60,9 +57,6 @@ public:
 
 	/// emergency save for all buffers
 	void emergencyWriteAll();
-
-	/// close buffer. Returns false if cancelled by user
-	bool close(Buffer * buf, bool ask);
 
 	/// return true if no buffers loaded
 	bool empty() const;
@@ -107,9 +101,6 @@ private:
 	/// noncopiable
 	BufferList(BufferList const &);
 	void operator=(BufferList const &);
-
-	/// ask to save a buffer on quit, returns false if should cancel
-	bool quitWriteBuffer(Buffer * buf);
 
 	typedef std::vector<Buffer *> BufferStorage;
 

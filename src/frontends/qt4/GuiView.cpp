@@ -26,6 +26,8 @@
 
 #include "qt_helpers.h"
 
+#include "frontends/alert.h"
+
 #include "buffer_funcs.h"
 #include "Buffer.h"
 #include "BufferList.h"
@@ -104,7 +106,10 @@ using support::addPath;
 using support::bformat;
 using support::FileFilterList;
 using support::FileName;
+using support::makeAbsPath;
+using support::makeDisplayPath;
 using support::package;
+using support::removeAutosaveFile;
 using support::trim;
 
 namespace {
@@ -393,7 +398,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// we may have been called through the close window button
 	// which bypasses the LFUN machinery.
 	if (!d.quitting_by_menu_ && guiApp->viewCount() == 1) {
-		if (!theBufferList().quitWriteAll()) {
+		if (!quitWriteAll()) {
 			close_event->ignore();
 			return;
 		}
@@ -937,6 +942,14 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 		buf = 0;
 
 	switch(cmd.action) {
+	case LFUN_BUFFER_WRITE:
+		enable = buf && (buf->isUnnamed() || !buf->isClean());
+		break;
+
+	case LFUN_BUFFER_WRITE_AS:
+		enable = buf;
+		break;
+
 	case LFUN_TOOLBAR_TOGGLE:
 		flag.setOnOff(d.toolbars_->visible(cmd.getArg(0)));
 		break;
@@ -1108,6 +1121,180 @@ void GuiView::insertPlaintextFile(docstring const & fname,
 }
 
 
+bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
+{
+	FileName fname = b.fileName();
+	FileName const oldname = fname;
+
+	if (!newname.empty()) {
+		// FIXME UNICODE
+		fname = makeAbsPath(to_utf8(newname), oldname.onlyPath().absFilename());
+	} else {
+		// Switch to this Buffer.
+		setBuffer(&b);
+
+		/// No argument? Ask user through dialog.
+		// FIXME UNICODE
+		FileDialog dlg(_("Choose a filename to save document as"),
+				   LFUN_BUFFER_WRITE_AS);
+		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+		dlg.setButton2(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
+
+		if (!support::isLyXFilename(fname.absFilename()))
+			fname.changeExtension(".lyx");
+
+		support::FileFilterList const filter(_("LyX Documents (*.lyx)"));
+
+		FileDialog::Result result =
+			dlg.save(from_utf8(fname.onlyPath().absFilename()),
+				     filter,
+				     from_utf8(fname.onlyFileName()));
+
+		if (result.first == FileDialog::Later)
+			return false;
+
+		fname.set(to_utf8(result.second));
+
+		if (fname.empty())
+			return false;
+
+		if (!support::isLyXFilename(fname.absFilename()))
+			fname.changeExtension(".lyx");
+	}
+
+	if (FileName(fname).exists()) {
+		docstring const file = makeDisplayPath(fname.absFilename(), 30);
+		docstring text = bformat(_("The document %1$s already "
+					   "exists.\n\nDo you want to "
+					   "overwrite that document?"), 
+					 file);
+		int const ret = Alert::prompt(_("Overwrite document?"),
+			text, 0, 2, _("&Overwrite"), _("&Rename"), _("&Cancel"));
+		switch (ret) {
+		case 0: break;
+		case 1: return renameBuffer(b, docstring());
+		case 2: return false;
+		}
+	}
+
+	// Ok, change the name of the buffer
+	b.setFileName(fname.absFilename());
+	b.markDirty();
+	bool unnamed = b.isUnnamed();
+	b.setUnnamed(false);
+	b.saveCheckSum(fname);
+
+	if (!saveBuffer(b)) {
+		b.setFileName(oldname.absFilename());
+		b.setUnnamed(unnamed);
+		b.saveCheckSum(oldname);
+		return false;
+	}
+
+	return true;
+}
+
+
+bool GuiView::saveBuffer(Buffer & b)
+{
+	if (b.isUnnamed())
+		return renameBuffer(b, docstring());
+
+	if (b.save()) {
+		LyX::ref().session().lastFiles().add(b.fileName());
+		return true;
+	}
+
+	// Switch to this Buffer.
+	setBuffer(&b);
+
+	// FIXME: we don't tell the user *WHY* the save failed !!
+	docstring const file = makeDisplayPath(b.absFileName(), 30);
+	docstring text = bformat(_("The document %1$s could not be saved.\n\n"
+				   "Do you want to rename the document and "
+				   "try again?"), file);
+	int const ret = Alert::prompt(_("Rename and save?"),
+		text, 0, 2, _("&Rename"), _("&Retry"), _("&Cancel"));
+	switch (ret) {
+	case 0:
+		if (!renameBuffer(b, docstring()))
+			return false;
+		break;
+	case 1:
+		return false;
+	case 2:
+		break;
+	}
+
+	return saveBuffer(b);
+}
+
+
+bool GuiView::closeBuffer()
+{
+	Buffer * buf = buffer();
+	return buf && closeBuffer(*buf);
+}
+
+
+bool GuiView::closeBuffer(Buffer & buf)
+{
+	if (buf.isClean() || buf.paragraphs().empty()) {
+		theBufferList().release(&buf);
+		return true;
+	}
+	// Switch to this Buffer.
+	setBuffer(&buf);
+
+	docstring file;
+	// FIXME: Unicode?
+	if (buf.isUnnamed())
+		file = from_utf8(buf.fileName().onlyFileName());
+	else
+		file = buf.fileName().displayName(30);
+
+	docstring const text = bformat(_("The document %1$s has unsaved changes."
+		"\n\nDo you want to save the document or discard the changes?"), file);
+	int const ret = Alert::prompt(_("Save changed document?"),
+		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
+
+	switch (ret) {
+	case 0:
+		if (!saveBuffer(buf))
+			return false;
+		break;
+	case 1:
+		// if we crash after this we could
+		// have no autosave file but I guess
+		// this is really improbable (Jug)
+		removeAutosaveFile(buf.absFileName());
+		break;
+	case 2:
+		return false;
+	}
+
+	// save file names to .lyx/session
+	// if master/slave are both open, do not save slave since it
+	// will be automatically loaded when the master is loaded
+	if (buf.masterBuffer() == &buf)
+		LyX::ref().session().lastOpened().add(buf.fileName());
+
+	theBufferList().release(&buf);
+	return true;
+}
+
+
+bool GuiView::quitWriteAll()
+{
+	while (!theBufferList().empty()) {
+		Buffer * b = theBufferList().first();
+		if (!closeBuffer(*b))
+			return false;
+	}
+	return true;
+}
+
+
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = view();	
@@ -1153,6 +1340,33 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			insertPlaintextFile(cmd.argument(), false);
 			break;
 
+		case LFUN_BUFFER_WRITE:
+			if (bv)
+				saveBuffer(bv->buffer());
+			break;
+
+		case LFUN_BUFFER_WRITE_AS:
+			if (bv)
+				renameBuffer(bv->buffer(), cmd.argument());
+			break;
+
+		case LFUN_BUFFER_WRITE_ALL: {
+			Buffer * first = theBufferList().first();
+			if (!first)
+				break;
+			message(_("Saving all documents..."));
+			// We cannot use a for loop as the buffer list cycles.
+			Buffer * b = first;
+			do {
+				if (b->isClean())
+					continue;
+				saveBuffer(*b);
+				LYXERR(Debug::ACTION, "Saved " << b->absFileName());
+				b = theBufferList().next(b);
+			} while (b != first); 
+			message(_("All documents saved."));
+			break;
+		}
 
 		case LFUN_TOOLBAR_TOGGLE: {
 			string const name = cmd.getArg(0);

@@ -87,6 +87,10 @@ public:
 	Buffer const * buffer() const;
 	/// set a buffer to the current workarea.
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
+	///
+	bool closeBuffer();
+	/// write all buffers, asking the user, returns false if cancelled
+	bool quitWriteAll();
 
 	/// GuiBufferDelegate.
 	///@{
@@ -238,6 +242,28 @@ private:
 	///
 	void insertPlaintextFile(docstring const & fname,
 		bool asParagraph);
+
+	/// Save a buffer as a new file. 
+	/**
+	Write a buffer to a new file name and rename the buffer
+    according to the new file name.
+
+    This function is e.g. used by menu callbacks and
+    LFUN_BUFFER_WRITE_AS.
+
+    If 'newname' is empty, the user is asked via a
+    dialog for the buffer's new name and location.
+
+    If 'newname' is non-empty and has an absolute path, that is used.
+    Otherwise the base directory of the buffer is used as the base
+    for any relative path in 'newname'.
+	*/
+	bool renameBuffer(Buffer & b, docstring const & newname);
+	///
+	bool saveBuffer(Buffer & b);
+	///
+	bool closeBuffer(Buffer & buf);
+
 	///
 	Inset * getOpenInset(std::string const & name) const;
 

@@ -250,7 +250,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
 			theLyXFunc().gotoBookmark(i+1, false, false);
 		// ask the user for saving changes or cancel quit
-		if (!theBufferList().quitWriteAll())
+		if (!current_view_->quitWriteAll())
 			break;
 		current_view_->close();
 		break;
@@ -259,7 +259,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		// quitting is triggered by the gui code
 		// (leaving the event loop).
 		current_view_->message(from_utf8(N_("Exiting.")));
-		if (theBufferList().quitWriteAll())
+		if (current_view_->quitWriteAll())
 			closeAllViews();
 		break;
 
@@ -526,7 +526,7 @@ void GuiApplication::commitData(QSessionManager & sm)
 	/// visible top level widgets when session managment allows
 	/// interaction.
 	/// We are changing that to write all unsaved buffers...
-	if (sm.allowsInteraction() && !theBufferList().quitWriteAll())
+	if (sm.allowsInteraction() && !current_view_->quitWriteAll())
  		sm.cancel();
 }
 

@@ -82,11 +82,9 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 			return checkBuffer;
 
 		// FIXME: should be LFUN_REVERT
-		if (theBufferList().close(checkBuffer, false))
-			// Load it again.
-			return checkAndLoadLyXFile(filename);
-		// The file could not be closed.
-		return 0;
+		theBufferList().release(checkBuffer);
+		// Load it again.
+		return checkAndLoadLyXFile(filename);
 	}
 
 	if (filename.isReadableFile()) {
