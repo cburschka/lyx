@@ -223,7 +223,7 @@ void GuiBox::pagebreakClicked()
 		setSpecial(false);
 	} else
 		typeChanged(typeCO->currentIndex());
-	
+	change_adaptor();
 }
 
 void GuiBox::updateContents()
