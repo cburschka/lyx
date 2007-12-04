@@ -197,7 +197,7 @@ void handle_package(string const & name, string const & opts)
 	else if (name == "inputenc") {
 		// only set when there is not more than one inputenc option
 		// therefore check for the "," character
-		if (opts.find(",", 0) == string::npos)
+		if (opts.find(",") == string::npos)
 			h_inputencoding = opts;
 		options.clear();
 	} else if (name == "makeidx")
