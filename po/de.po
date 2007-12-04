@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-12-04 23:20+0100\n"
+"POT-Creation-Date: 2007-12-04 23:33+0100\n"
 "PO-Revision-Date: 2007-08-28 23:15+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -14550,17 +14550,23 @@ msgid ""
 "\n"
 "Exception: "
 msgstr ""
+"LyX hat eine Ausnahme abgefangen. Es wird nun versuchen, alle nicht "
+"gespeicherten Dokumente zu sichern und sich beenden.\n"
+"\n"
+"Ausnahme: "
 
 #: src/frontends/qt4/GuiApplication.cpp:273
 #: src/frontends/qt4/GuiApplication.cpp:280
 msgid "Software exception Detected"
-msgstr ""
+msgstr "Softwareausnahme erkannt"
 
 #: src/frontends/qt4/GuiApplication.cpp:278
 msgid ""
 "LyX has caught some really weird exception, it will now attemp to save all "
 "unsaved documents and exit."
 msgstr ""
+"LyX hat eine sehr seltsame Ausnahme abgefangen. Es wird nun versuchen, alle "
+"nicht gespeicherten Dokumente zu sichern und sich beenden."
 
 #: src/frontends/qt4/GuiApplication.cpp:408
 msgid "About %1"
