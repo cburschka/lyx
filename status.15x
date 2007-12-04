@@ -81,9 +81,10 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- tex2lyx imports the LaTeX-command \newline
-
-- tex2lyx imports framed and shaded notes
+- tex2lyx:
+ - import the LaTeX-command \newline
+ - import framed and shaded notes
+ - support for multi-language LaTeX-files
 
 
 ** Bug fixes:
@@ -105,6 +106,9 @@ What's new
 
 - If there exists a local layout file, use the local copy instead of the
   system one.
+
+- tex2lyx support for the LaTeX-commands \selectlanguage, \foreignlanguage,
+  and \inputencoding (bug 27).
 
 
 * USER INTERFACE:
