@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-12-04 23:20+0100\n"
+"POT-Creation-Date: 2007-12-05 23:05+0100\n"
 "PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -3624,7 +3624,7 @@ msgstr "Утверждение"
 #: lib/layouts/llncs.layout:360 lib/layouts/powerdot.layout:198
 #: lib/layouts/slides.layout:168 lib/layouts/amsmaths-plain.inc:134
 #: lib/layouts/amsmaths-seq.inc:325 lib/layouts/amsmaths.inc:445
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:64
+#: lib/layouts/svjour.inc:422
 msgid "Note"
 msgstr "Заметка"
 
@@ -16651,6 +16651,10 @@ msgstr "&Нет"
 #, fuzzy
 msgid "Nomenclature"
 msgstr "Предположение"
+
+#: src/insets/InsetNote.cpp:64
+msgid "Note[[InsetNote]]"
+msgstr ""
 
 #: src/insets/InsetNote.cpp:66
 msgid "Greyed out"

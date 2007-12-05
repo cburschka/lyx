@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-12-04 23:20+0100\n"
+"POT-Creation-Date: 2007-12-05 23:05+0100\n"
 "PO-Revision-Date: 2007-11-21 14:49+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-devel@lists.lyx.org>\n"
@@ -3387,7 +3387,7 @@ msgstr "主張 #:"
 #: lib/layouts/llncs.layout:360 lib/layouts/powerdot.layout:198
 #: lib/layouts/slides.layout:168 lib/layouts/amsmaths-plain.inc:134
 #: lib/layouts/amsmaths-seq.inc:325 lib/layouts/amsmaths.inc:445
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:64
+#: lib/layouts/svjour.inc:422
 msgid "Note"
 msgstr "注釈"
 
@@ -15461,6 +15461,10 @@ msgstr "用語"
 #: src/insets/InsetNomencl.cpp:86
 msgid "Nomenclature"
 msgstr "用語集"
+
+#: src/insets/InsetNote.cpp:64
+msgid "Note[[InsetNote]]"
+msgstr ""
 
 #: src/insets/InsetNote.cpp:66
 msgid "Greyed out"
