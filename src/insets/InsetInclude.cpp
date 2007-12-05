@@ -44,6 +44,7 @@
 #include "insets/InsetListingsParams.h"
 
 #include "support/docstream.h"
+#include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"
@@ -63,6 +64,7 @@ using support::contains;
 using support::copy;
 using support::DocFileName;
 using support::FileName;
+using support::FileNameList;
 using support::getVectorFromString;
 using support::isLyXFilename;
 using support::isValidLaTeXFilename;
@@ -726,17 +728,17 @@ void InsetInclude::updateBibfilesCache(Buffer const & buffer)
 }
 
 
-std::vector<FileName> const &
+FileNameList const &
 InsetInclude::getBibfilesCache(Buffer const & buffer) const
 {
 	Buffer * const tmp = getChildBuffer(buffer, params());
 	if (tmp) {
 		tmp->setParent(0);
-		std::vector<FileName> const & cache = tmp->getBibfilesCache();
+		FileNameList const & cache = tmp->getBibfilesCache();
 		tmp->setParent(&buffer);
 		return cache;
 	}
-	static std::vector<FileName> const empty;
+	static FileNameList const empty;
 	return empty;
 }
 

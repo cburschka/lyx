@@ -25,7 +25,9 @@
 #include "frontends/alert.h"
 
 #include "support/debug.h"
+#include "support/FileNameList.h"
 #include "support/filetools.h"
+#include "support/FileZipListDir.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -33,7 +35,6 @@
 #include "support/Package.h"
 #include "support/Path.h"
 #include "support/Systemcall.h"
-#include "support/FileZipListDir.h"
 
 using std::find_if;
 using std::string;
@@ -49,6 +50,7 @@ using support::changeExtension;
 using support::compare_ascii_no_case;
 using support::contains;
 using support::FileName;
+using support::FileNameList;
 using support::getExtension;
 using support::libFileSearch;
 using support::libScriptSearch;
@@ -511,8 +513,6 @@ bool Converters::convert(Buffer const * buffer,
 bool Converters::move(string const & fmt,
 		      FileName const & from, FileName const & to, bool copy)
 {
-	if (from == to)
-		return true;
 
 	bool no_errors = true;
 	string const path = onlyPath(from.absFilename());
@@ -520,9 +520,10 @@ bool Converters::move(string const & fmt,
 	string const to_base = removeExtension(to.absFilename());
 	string const to_extension = getExtension(to.absFilename());
 
-	vector<FileName> const files =
-			support::dirList(FileName(path), getExtension(from.absFilename()));
-	for (vector<FileName>::const_iterator it = files.begin();
+	FileNameList const files = FileName(path).dirList(getExtension(from.absFilename()));
+	if (from == to)
+		return true;
+	for (FileNameList::const_iterator it = files.begin();
 	     it != files.end(); ++it) {
 		string const from2 = it->absFilename();
 		string const file2 = onlyFilename(from2);

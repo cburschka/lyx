@@ -20,6 +20,9 @@
 namespace lyx {
 namespace support {
 
+/// Defined in "FileNameList.h".
+class FileNameList;
+
 /**
  * Class for storing file names.
  * The file name may be empty. If it is not empty it is an absolute path.
@@ -82,6 +85,8 @@ public:
 	bool isWritable() const;
 	/// return true when file/directory is writable (write test file)
 	bool isDirWritable() const;
+	/// \return list other files in the directory having optional extension 'ext'.
+	FileNameList dirList(std::string const & ext) const;
 	
 	/// copy a file
 	/// \return true when file/directory is writable (write test file)
@@ -225,7 +230,6 @@ private:
 
 bool operator==(DocFileName const &, DocFileName const &);
 bool operator!=(DocFileName const &, DocFileName const &);
-
 
 } // namespace support
 } // namespace lyx

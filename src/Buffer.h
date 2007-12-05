@@ -14,7 +14,6 @@
 
 #include "insets/InsetCode.h"
 
-#include "support/FileName.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 
@@ -52,6 +51,11 @@ class Undo;
 namespace frontend {
 class GuiBufferDelegate;
 class WorkAreaManager;
+}
+
+namespace support {
+class FileName;
+class FileNameList;
 }
 
 /** The buffer object.
@@ -298,7 +302,7 @@ public:
 	void updateBibfilesCache() const;
 	/// Return the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	std::vector<support::FileName> const & getBibfilesCache() const;
+	support::FileNameList const & getBibfilesCache() const;
 	///
 	void getLabelList(std::vector<docstring> &) const;
 
@@ -452,10 +456,6 @@ private:
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
 	Impl * const d;
-
-	/// A cache for the bibfiles (including bibfiles of loaded child
-	/// documents), needed for appropriate update of natbib labels.
-	mutable std::vector<support::FileName> bibfilesCache_;
 
 	frontend::GuiBufferDelegate * gui_;
 };

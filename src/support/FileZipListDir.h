@@ -19,16 +19,6 @@
 #include <utility>
 #include <string>
 
-namespace lyx {
-namespace support {
-
-/// \return list other files in the directory having optional extension 'ext'.
-std::vector<FileName> dirList(FileName const & filename, std::string const & ext);
-
-
-} // namespace support
-} // namespace lyx
-
 /// The following functions are implemented in minizip/zipunzip.cpp, and are not in
 /// the lyx::support namespace
 

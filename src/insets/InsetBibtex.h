@@ -16,10 +16,12 @@
 #include "InsetCommand.h"
 #include "BiblioInfo.h"
 
-#include "support/FileName.h"
-
-
 namespace lyx {
+
+namespace support {
+class FileNameList;
+}
+
 
 /** Used to insert BibTeX's information
   */
@@ -41,7 +43,7 @@ public:
 	virtual void fillWithBibKeys(Buffer const &,
 		BiblioInfo &, InsetIterator const &) const;
 	///
-	std::vector<support::FileName> const getFiles(Buffer const &) const;
+	support::FileNameList const getFiles(Buffer const &) const;
 	///
 	bool addDatabase(std::string const &);
 	///

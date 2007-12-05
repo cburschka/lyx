@@ -21,8 +21,6 @@
 #include "Counters.h"
 #include "EmbeddedFiles.h"
 
-#include "support/FileName.h"
-
 #include <boost/scoped_ptr.hpp>
 
 namespace lyx {
@@ -32,6 +30,9 @@ class Dimension;
 class LaTeXFeatures;
 class RenderMonitoredPreview;
 
+namespace support {
+class FileNameList;
+}
 
 /// for including tex/lyx files
 class InsetInclude : public InsetCommand {
@@ -73,7 +74,7 @@ public:
 	 *  Return an empty vector if the child doc is not loaded.
 	 *  \param buffer the Buffer containing this inset.
 	 */
-	std::vector<support::FileName> const &
+	support::FileNameList const &
 		getBibfilesCache(Buffer const & buffer) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }

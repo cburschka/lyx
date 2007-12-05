@@ -79,6 +79,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/FileFilterList.h"
+#include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/ForkedCalls.h"
 #include "support/gettext.h"
@@ -129,6 +130,7 @@ using support::changeExtension;
 using support::cmd_ret;
 using support::createBufferTmpDir;
 using support::FileName;
+using support::FileNameList;
 using support::libFileSearch;
 using support::latex_path;
 using support::ltrim;
@@ -229,6 +231,10 @@ public:
 
 	///
 	Undo undo_;
+
+	/// A cache for the bibfiles (including bibfiles of loaded child
+	/// documents), needed for appropriate update of natbib labels.
+	mutable FileNameList bibfilesCache_;
 };
 
 
@@ -1450,22 +1456,22 @@ void Buffer::updateBibfilesCache() const
 		return;
 	}
 
-	bibfilesCache_.clear();
+	d->bibfilesCache_.clear();
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				static_cast<InsetBibtex const &>(*it);
-			vector<FileName> const bibfiles = inset.getFiles(*this);
-			bibfilesCache_.insert(bibfilesCache_.end(),
+			FileNameList const bibfiles = inset.getFiles(*this);
+			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
 		} else if (it->lyxCode() == INCLUDE_CODE) {
 			InsetInclude & inset =
 				static_cast<InsetInclude &>(*it);
 			inset.updateBibfilesCache(*this);
-			vector<FileName> const & bibfiles =
+			FileNameList const & bibfiles =
 					inset.getBibfilesCache(*this);
-			bibfilesCache_.insert(bibfilesCache_.end(),
+			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
 		}
@@ -1473,7 +1479,7 @@ void Buffer::updateBibfilesCache() const
 }
 
 
-vector<FileName> const & Buffer::getBibfilesCache() const
+FileNameList const & Buffer::getBibfilesCache() const
 {
 	// if this is a child document and the parent is already loaded
 	// use the parent's cache instead
@@ -1483,10 +1489,10 @@ vector<FileName> const & Buffer::getBibfilesCache() const
 		return tmp->getBibfilesCache();
 
 	// We update the cache when first used instead of at loading time.
-	if (bibfilesCache_.empty())
+	if (d->bibfilesCache_.empty())
 		const_cast<Buffer *>(this)->updateBibfilesCache();
 
-	return bibfilesCache_;
+	return d->bibfilesCache_;
 }
 
 

@@ -938,38 +938,5 @@ int compare_timestamps(FileName const & file1, FileName const & file2)
 }
 
 
-std::vector<FileName> dirList(FileName const & filename, std::string const & ext)
-{
-	std::vector<FileName> dirlist;
-	if (!filename.isDirectory()) {
-		LYXERR0("Directory '" << filename << "' does not exist!");
-		return dirlist;
-	}
-
-	QDir dir(toqstr(filename.absoluteFilePath()));
-
-	if (!ext.empty()) {
-		QString filter;
-		switch (ext[0]) {
-		case '.': filter = "*" + toqstr(ext); break;
-		case '*': filter = toqstr(ext); break;
-		default: filter = "*." + toqstr(ext);
-		}
-		dir.setNameFilters(QStringList(filter));
-		LYXERR(Debug::FILES, "filtering on extension "
-			<< fromqstr(filter) << " is requested.");
-	}
-
-	QFileInfoList list = dir.entryInfoList();
-	for (int i = 0; i != list.size(); ++i) {
-		FileName fi(fromqstr(list.at(i).absoluteFilePath()));
-		dirlist.push_back(fi);
-		LYXERR(Debug::FILES, "found file " << fi);
-	}
-
-	return dirlist;
-}
-
-
 } //namespace support
 } // namespace lyx

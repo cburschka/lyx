@@ -22,13 +22,17 @@
 
 #include "support/lstrings.h"
 #include "support/docstream.h"
+#include "support/FileNameList.h"
 
 #include <algorithm>
 
+using std::string;
+using std::vector;
 
 namespace lyx {
 
 using support::FileName;
+using support::FileNameList;
 using support::getStringFromVector;
 using support::getVectorFromString;
 using support::ltrim;
@@ -36,9 +40,6 @@ using support::prefixIs;
 using support::rtrim;
 using support::split;
 using support::tokenPos;
-
-using std::string;
-using std::vector;
 
 namespace {
 
@@ -152,10 +153,10 @@ docstring const getNatbibLabel(Buffer const & buffer,
 
 	BiblioInfo biblist;
 
-	vector<FileName> const & bibfilesCache = buffer.getBibfilesCache();
+	FileNameList const & bibfilesCache = buffer.getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
 	bool changed = false;
-	for (vector<FileName>::const_iterator it = bibfilesCache.begin();
+	for (FileNameList::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
 		FileName const f = *it;
 		std::time_t lastw = f.lastModified();

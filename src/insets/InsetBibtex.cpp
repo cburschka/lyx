@@ -29,6 +29,7 @@
 
 #include "support/ExceptionMessage.h"
 #include "support/docstream.h"
+#include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -48,6 +49,7 @@ using support::contains;
 using support::copy;
 using support::DocFileName;
 using support::FileName;
+using support::FileNameList;
 using support::findtexfile;
 using support::isValidLaTeXFilename;
 using support::latex_path;
@@ -333,12 +335,12 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 }
 
 
-vector<FileName> const InsetBibtex::getFiles(Buffer const & buffer) const
+FileNameList const InsetBibtex::getFiles(Buffer const & buffer) const
 {
 	FileName path(buffer.filePath());
 	support::PathChanger p(path);
 
-	vector<FileName> vec;
+	FileNameList vec;
 
 	string tmp;
 	// FIXME UNICODE
@@ -601,7 +603,7 @@ namespace {
 void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		BiblioInfo & keylist, InsetIterator const & /*di*/) const
 {
-	vector<FileName> const files = getFiles(buffer);
+	FileNameList const files = getFiles(buffer);
 	for (vector<FileName>::const_iterator it = files.begin();
 	     it != files.end(); ++ it) {
 		// This bibtex parser is a first step to parse bibtex files
