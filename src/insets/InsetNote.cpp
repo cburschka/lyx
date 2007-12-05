@@ -63,7 +63,7 @@ NoteTranslator const init_notetranslator()
 
 NoteTranslatorLoc const init_notetranslator_loc()
 {
-	NoteTranslatorLoc translator(_("Note"), InsetNoteParams::Note);
+	NoteTranslatorLoc translator(_("Note[[InsetNote]]"), InsetNoteParams::Note);
 	translator.addPair(_("Comment"), InsetNoteParams::Comment);
 	translator.addPair(_("Greyed out"), InsetNoteParams::Greyedout);
 	return translator;
