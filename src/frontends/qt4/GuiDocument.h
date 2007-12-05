@@ -18,8 +18,6 @@
 #include "GuiSelectionManager.h"
 #include "BufferParams.h"
 
-#include "support/FileName.h"
-#include "support/filetools.h"
 #include "support/types.h"
 
 #include "ui_DocumentUi.h"
@@ -53,8 +51,6 @@ class PreambleModule;
 
 ///
 typedef void const * BufferId;
-///
-typedef std::map<std::string, support::FileName> ModuleMap;
 
 #include <QDialog>
 #include <QStringList>

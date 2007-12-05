@@ -12,8 +12,6 @@
 #ifndef MODULELIST_H
 #define MODULELIST_H
 
-#include "support/FileName.h"
-
 #include <map>
 #include <string>
 #include <vector>

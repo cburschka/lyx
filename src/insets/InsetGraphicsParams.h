@@ -16,7 +16,6 @@
 
 #include "graphics/GraphicsTypes.h"
 #include "Length.h"
-#include "support/FileName.h"
 #include "EmbeddedFiles.h"
 
 namespace lyx {

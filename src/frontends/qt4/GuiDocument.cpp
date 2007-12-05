@@ -42,6 +42,8 @@
 
 #include "insets/InsetListingsParams.h"
 
+#include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>

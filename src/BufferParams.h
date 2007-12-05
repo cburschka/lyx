@@ -23,7 +23,6 @@
 #include "insets/InsetQuotes.h"
 
 #include "support/copied_ptr.h"
-#include "support/FileName.h"
 #include "support/types.h"
 
 #include <vector>
