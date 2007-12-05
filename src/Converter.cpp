@@ -513,6 +513,8 @@ bool Converters::convert(Buffer const * buffer,
 bool Converters::move(string const & fmt,
 		      FileName const & from, FileName const & to, bool copy)
 {
+	if (from == to)
+		return true;
 
 	bool no_errors = true;
 	string const path = onlyPath(from.absFilename());
@@ -521,8 +523,6 @@ bool Converters::move(string const & fmt,
 	string const to_extension = getExtension(to.absFilename());
 
 	FileNameList const files = FileName(path).dirList(getExtension(from.absFilename()));
-	if (from == to)
-		return true;
 	for (FileNameList::const_iterator it = files.begin();
 	     it != files.end(); ++it) {
 		string const from2 = it->absFilename();
