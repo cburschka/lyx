@@ -144,7 +144,7 @@ char const * const known_sizes[] = { "tiny", "scriptsize", "footnotesize",
 "small", "normalsize", "large", "Large", "LARGE", "huge", "Huge", 0};
 
 /// the same as known_sizes with .lyx names
-char const * const known_coded_sizes[] = { "tiny", "scriptsize", "footnotesize",
+char const * const known_coded_sizes[] = { "default", "tiny", "scriptsize", "footnotesize",
 "small", "normal", "large", "larger", "largest",  "huge", "giant", 0};
 
 /// LaTeX 2.09 names for font families
