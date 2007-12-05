@@ -139,13 +139,21 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		setFormat(index, length, keywordFormat);
 		index = text.indexOf(exprKeyword, index + length);
 	}
-	// comment
-	QRegExp exprComment("(^|[^\\\\])%.*$");
-	index = text.indexOf(exprComment);
+	// %comment
+	// Treat a line as a comment starting at a percent sign
+	// * that is the first character in a line
+	// * that is preceded by 
+	// ** an even number of backslashes
+	// ** any character other than a backslash                   
+	QRegExp exprComment("(?:^|[^\\\\])(?:\\\\\\\\)*(%).*$"); 
+	text.indexOf(exprComment);
+	index = exprComment.pos(1);
 	while (index >= 0) {
-		int const length = exprComment.matchedLength();
+		int const length = exprComment.matchedLength() 
+				 - (index - exprComment.pos(0));
 		setFormat(index, length, commentFormat);
-		index = text.indexOf(exprComment, index + length);
+		text.indexOf(exprComment, index + length);
+		index = exprComment.pos(1);
 	}
 }
 
