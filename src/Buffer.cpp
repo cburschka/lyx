@@ -154,7 +154,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 304; // JSpitzm: framed.sty goes InsetBox
+int const LYX_FORMAT = 305; // Uwe: support for Bahasa
 
 } // namespace anon
 
