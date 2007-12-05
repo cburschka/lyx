@@ -26,7 +26,7 @@ czech       czech	"Czech"		false  iso8859-2  cs_CZ	 ""
 danish      danish	"Danish"	false  iso8859-15 da_DK	 ""
 dutch       dutch	"Dutch"		false  iso8859-15 nl_NL	 ""
 english     english	"English"	false  iso8859-15 en_US	 ""
-# Esperanto has no country code
+# Esperanto has no country code because it is an auxiliary language
 esperanto   esperanto	"Esperanto"	false  iso8859-3  eo	 ""
 estonian    estonian	"Estonian"	false  iso8859-15 et_EE	 ""
 # the definitions are only used due to bugs in the arabi-package - remove them if they become unnecessary!
@@ -43,7 +43,7 @@ hebrew      hebrew	"Hebrew"	true   cp1255     he_IL	 ""
 # "hungarian" might be used for special purposes, see http://www.math.bme.hu/latex/magyar_pre_tug2004.pdf
 #hungarian   hungarian	"Hungarian"	false  iso8859-2  hu_HU	 ""
 icelandic   icelandic	"Icelandic"	false  iso8859-15 is_IS	 ""
-# there is no country code for Interlingua because it is an auxiliary language
+# Interlingua has no country code because it is an auxiliary language
 interlingua   interlingua	"Interlingua"	false  iso8859-15 ia	 ""
 irish       irish	"Irish"		false  iso8859-15 ga_IE	 ""
 italian     italian	"Italian"	false  iso8859-15 it_IT	 ""
