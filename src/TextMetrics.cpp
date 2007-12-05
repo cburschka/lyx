@@ -512,7 +512,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 void TextMetrics::computeRowMetrics(pit_type const pit,
 		Row & row, int width) const
 {
-
 	row.label_hfill = 0;
 	row.hfill = 0;
 	row.separator = 0;
@@ -637,6 +636,28 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			if (body_pos <= end)
 				row.x += row.label_hfill;
 		}
+	}
+
+	pos_type const endpos = row.endpos();
+	pos_type body_pos = par.beginOfBody();
+	if (body_pos > 0
+		&& (body_pos > endpos || !par.isLineSeparator(body_pos - 1)))
+		body_pos = 0;
+
+	ParagraphMetrics & pm = par_metrics_[pit];
+	InsetList::const_iterator ii = par.insetList().begin();
+	InsetList::const_iterator iend = par.insetList().end();
+	for ( ; ii != iend; ++ii) {
+		if (ii->pos >= endpos || ii->pos < row.pos()
+			|| ii->inset->lyxCode() != HFILL_CODE
+			|| !pm.hfillExpansion(row, ii->pos))
+			continue;
+
+		Dimension dim = row.dimension();
+		dim.wid = int(ii->pos >= body_pos ? row.hfill : row.label_hfill);
+		// Cache the inset dimension. 
+		bv_->coordCache().insets().add(ii->inset, dim);
+		pm.setInsetDimension(ii->inset, dim);
 	}
 }
 
@@ -1045,7 +1066,6 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	int const xo = origin_.x_;
 	x -= xo;
 	Paragraph const & par = text_->getPar(pit);
-	ParagraphMetrics const & pm = par_metrics_[pit];
 	Bidi bidi;
 	bidi.computeTables(par, buffer, row);
 
@@ -1082,19 +1102,9 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 				tmpx -= singleWidth(pit, body_pos - 1);
 		}
 
-		if (pm.hfillExpansion(row, c)) {
-			tmpx += singleWidth(pit, c);
-			if (c >= body_pos)
-				tmpx += row.hfill;
-			else
-				tmpx += row.label_hfill;
-		} else if (par.isSeparator(c)) {
-			tmpx += singleWidth(pit, c);
-			if (c >= body_pos)
+		tmpx += singleWidth(pit, c);
+		if (par.isSeparator(c) && c >= body_pos)
 				tmpx += row.separator;
-		} else {
-			tmpx += singleWidth(pit, c);
-		}
 		++vc;
 	}
 
@@ -1512,9 +1522,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 
 		x += pm.singleWidth(pos, font);
 
-		if (pm.hfillExpansion(row, pos))
-			x += (pos >= body_pos) ? row.hfill : row.label_hfill;
-		else if (par.isSeparator(pos) && pos >= body_pos)
+		if (par.isSeparator(pos) && pos >= body_pos)
 			x += row.separator;
 	}
 

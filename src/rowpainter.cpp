@@ -89,36 +89,6 @@ int RowPainter::leftMargin() const
 		row_.pos());
 }
 
-
-void RowPainter::paintHfill(pos_type const pos, pos_type const body_pos)
-{
-	x_ += 1;
-
-	int const y0 = yo_;
-	int const y1 = y0 - defaultRowHeight() / 2;
-
-	pi_.pain.line(int(x_), y1, int(x_), y0, Color_added_space);
-
-	if (pm_.hfillExpansion(row_, pos)) {
-		int const y2 = (y0 + y1) / 2;
-
-		if (pos >= body_pos) {
-			pi_.pain.line(int(x_), y2, int(x_ + row_.hfill), y2,
-				Color_added_space,
-				Painter::line_onoffdash);
-			x_ += row_.hfill;
-		} else {
-			pi_.pain.line(int(x_), y2, int(x_ + row_.label_hfill), y2,
-				Color_added_space,
-				Painter::line_onoffdash);
-			x_ += row_.label_hfill;
-		}
-		pi_.pain.line(int(x_), y1, int(x_), y0, Color_added_space);
-	}
-	x_ += 2;
-}
-
-
 // If you want to debug inset metrics uncomment the following line:
 //#define DEBUG_METRICS
 // This draws green lines around each inset.
@@ -774,13 +744,7 @@ void RowPainter::paintText()
 			x_ += row_.label_hfill + lwidth - width_pos;
 		}
 
-		if (par_.isHfill(pos)) {
-			Inset const * inset = par_.getInset(pos);
-			pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
-			paintHfill(pos, body_pos);
-			++vpos;
-
-		} else if (par_.isSeparator(pos)) {
+		if (par_.isSeparator(pos)) {
 			Font const orig_font = text_metrics_.getDisplayFont(pit_, pos);
 			double const orig_x = x_;
 			x_ += width_pos;

@@ -11,6 +11,11 @@
 #include <config.h>
 
 #include "InsetHFill.h"
+
+#include "MetricsInfo.h"
+
+#include "frontends/Painter.h"
+
 #include "support/gettext.h"
 
 #include <ostream>
@@ -40,9 +45,30 @@ Inset * InsetHFill::clone() const
 
 void InsetHFill::metrics(MetricsInfo &, Dimension & dim) const
 {
-	dim.wid = 3;
-	dim.asc = 3;
-	dim.des = 3;
+	// The metrics for this inset are calculated externally in
+	// \c TextMetrics::computeRowMetrics. Those are dummy value:
+	dim = Dimension(10, 10, 10);
+}
+
+
+void InsetHFill::draw(PainterInfo & pi, int x, int y) const
+{
+	Dimension const dim = Inset::dimension(*pi.base.bv);
+	x += 1;
+
+	int const y0 = y + dim.des;
+	int const y1 = y - dim.asc;
+
+	pi.pain.line(x, y1, x, y0, Color_added_space);
+	if (dim.wid == 0)
+		// The HFill is not expanded.
+		return;
+
+	int const x1 = x + dim.wid;
+
+	pi.pain.line(x, y, x1, y, Color_added_space,
+		frontend::Painter::line_onoffdash);
+	pi.pain.line(x1, y1, x1, y0, Color_added_space);
 }
 
 

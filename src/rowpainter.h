@@ -63,7 +63,6 @@ private:
 	int paintAppendixStart(int y);
 	void paintFromPos(pos_type & vpos);
 	void paintInset(Inset const * inset, pos_type const pos);
-	void paintHfill(pos_type const pos, pos_type const body_pos);
 
 	/// return left margin
 	int leftMargin() const;

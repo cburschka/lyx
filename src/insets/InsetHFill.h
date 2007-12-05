@@ -25,6 +25,8 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
 	docstring const getScreenLabel(Buffer const &) const;
 	///
 	InsetCode lyxCode() const { return HFILL_CODE; }
