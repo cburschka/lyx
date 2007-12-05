@@ -200,11 +200,18 @@ TextClassList::addTextClass(std::string const & textclass, std::string const & p
 			if (regex_match(line, sub, reg)) {
 				// returns: whole string, classtype (not used here), first option, description
 				BOOST_ASSERT(sub.size()==4);
-				// now, add the layout to textclass.
+				// now, create a TextClass with description containing path information
 				TextClass tmpl(textclass, sub.str(2)==""?textclass:sub.str(2),
 					sub.str(3) + " <" + path + ">", true);
 				if (lyxerr.debugging(Debug::TCLASS))
 					tmpl.load(path);
+				// Do not add this local TextClass to classlist_ if it has
+				// already been loaded by, for example, a master buffer.
+				pair<bool, lyx::textclass_type> pp =
+					textclasslist.numberOfClass(textclass);
+				// only layouts from the same directory are considered to be identical.
+				if (pp.first && classlist_[pp.second].description() == tmpl.description())
+					return pp;
 				classlist_.push_back(tmpl);
 				return make_pair(true, classlist_.size() - 1);
 			}
