@@ -154,7 +154,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 305; // Uwe: support for Bahasa
+int const LYX_FORMAT = 306; // Uwe: support for Interlingua
 
 } // namespace anon
 

@@ -930,6 +930,23 @@ def revert_bahasam(document):
         j = j + 1
 
 
+def revert_interlingua(document):
+    "Set language Interlingua to English"
+    i = 0
+    if document.language == "interlingua":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang interlingua", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang interlingua", "\\lang english")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -963,10 +980,12 @@ convert = [[277, [fix_wrong_tables]],
            [302, []],
            [303, [convert_serbocroatian]],
            [304, [convert_framed_notes]],
-           [305, []]
+           [305, []],
+           [306, []]
           ]
 
-revert =  [[304, [revert_bahasam]],
+revert =  [[305, [revert_interlingua]],
+           [304, [revert_bahasam]],
            [303, [revert_framed_notes]],
            [302, []],
            [301, [revert_latin, revert_samin]],
