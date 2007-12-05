@@ -198,7 +198,7 @@ def checkDTLtools():
 
 def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
-    path, LATEX = checkProg('a Latex2e program', ['platex $$i', 'latex $$i', 'latex2e $$i'])
+    path, LATEX = checkProg('a Latex2e program', ['latex $$i', 'platex $$i', 'latex2e $$i'])
     path, PPLATEX = checkProg('a DVI postprocessing program', ['pplatex $$i'])
     # use LATEX to convert from latex to dvi if PPLATEX is not available    
     if PPLATEX == '':
