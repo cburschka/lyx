@@ -913,6 +913,23 @@ def revert_framed_notes(document):
         i = i + 1
 
 
+def revert_bahasam(document):
+    "Set language Bahasa Malaysia to Bahasa Indonesia"
+    i = 0
+    if document.language == "bahasam":
+        document.language = "bahasa"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language bahasa"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang bahasam", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang bahasam", "\\lang bahasa")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -945,10 +962,12 @@ convert = [[277, [fix_wrong_tables]],
            [301, []],
            [302, []],
            [303, [convert_serbocroatian]],
-           [304, [convert_framed_notes]]
+           [304, [convert_framed_notes]],
+           [305, []]
           ]
 
-revert =  [[303, [revert_framed_notes]],
+revert =  [[304, [revert_bahasam]],
+           [303, [revert_framed_notes]],
            [302, []],
            [301, [revert_latin, revert_samin]],
            [300, [revert_linebreak]],
