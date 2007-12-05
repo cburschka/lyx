@@ -649,12 +649,13 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	InsetList::const_iterator iend = par.insetList().end();
 	for ( ; ii != iend; ++ii) {
 		if (ii->pos >= endpos || ii->pos < row.pos()
-			|| ii->inset->lyxCode() != HFILL_CODE
-			|| !pm.hfillExpansion(row, ii->pos))
+			|| ii->inset->lyxCode() != HFILL_CODE)
 			continue;
-
 		Dimension dim = row.dimension();
-		dim.wid = int(ii->pos >= body_pos ? row.hfill : row.label_hfill);
+		if (pm.hfillExpansion(row, ii->pos))
+			dim.wid = int(ii->pos >= body_pos ? row.hfill : row.label_hfill);
+		else
+			dim.wid = 0;
 		// Cache the inset dimension. 
 		bv_->coordCache().insets().add(ii->inset, dim);
 		pm.setInsetDimension(ii->inset, dim);

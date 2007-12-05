@@ -64,7 +64,7 @@ void InsetHFill::draw(PainterInfo & pi, int x, int y) const
 		// The HFill is not expanded.
 		return;
 
-	int const x1 = x + dim.wid;
+	int const x1 = x + dim.wid - 2;
 
 	pi.pain.line(x, y, x1, y, Color_added_space,
 		frontend::Painter::line_onoffdash);
