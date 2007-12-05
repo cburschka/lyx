@@ -54,19 +54,13 @@ void InsetHFill::metrics(MetricsInfo &, Dimension & dim) const
 void InsetHFill::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = Inset::dimension(*pi.base.bv);
-	x += 1;
-
+	int const x0 = x + 1;
+	int const x1 = x + dim.wid - 2;
 	int const y0 = y + dim.des;
 	int const y1 = y - dim.asc;
 
-	pi.pain.line(x, y1, x, y0, Color_added_space);
-	if (dim.wid == 0)
-		// The HFill is not expanded.
-		return;
-
-	int const x1 = x + dim.wid - 2;
-
-	pi.pain.line(x, y, x1, y, Color_added_space,
+	pi.pain.line(x0, y1, x0, y0, Color_added_space);
+	pi.pain.line(x0, y, x1, y, Color_added_space,
 		frontend::Painter::line_onoffdash);
 	pi.pain.line(x1, y1, x1, y0, Color_added_space);
 }

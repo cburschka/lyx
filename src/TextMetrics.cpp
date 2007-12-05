@@ -655,7 +655,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		if (pm.hfillExpansion(row, ii->pos))
 			dim.wid = int(ii->pos >= body_pos ? row.hfill : row.label_hfill);
 		else
-			dim.wid = 0;
+			dim.wid = 3;
 		// Cache the inset dimension. 
 		bv_->coordCache().insets().add(ii->inset, dim);
 		pm.setInsetDimension(ii->inset, dim);
