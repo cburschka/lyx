@@ -292,7 +292,7 @@ unsigned long FileName::checksum() const
 	}
 	// a directory may be passed here so we need to test it. (bug 3622)
 	if (isDirectory()) {
-		LYXERR0('\\' << absFilename() << "\" is a directory!");
+		LYXERR0('"' << absFilename() << "\" is a directory!");
 		return 0;
 	}
 	LYXERR0("Checksumming \"" << absFilename() << "\".");
@@ -304,8 +304,7 @@ bool FileName::removeFile() const
 {
 	bool const success = QFile::remove(d->fi.absoluteFilePath());
 	if (!success && exists())
-		lyxerr << "FileName::removeFile(): Could not delete file "
-			<< *this << "." << endl;
+		LYXERR0("Could not delete file " << *this);
 	return success;
 }
 
@@ -314,32 +313,32 @@ static bool rmdir(QFileInfo const & fi)
 {
 	QDir dir(fi.absoluteFilePath());
 	QFileInfoList list = dir.entryInfoList();
-	bool global_success = true;
+	bool success = true;
 	for (int i = 0; i != list.size(); ++i) {
 		if (list.at(i).fileName() == ".")
 			continue;
 		if (list.at(i).fileName() == "..")
 			continue;
-		bool success;
+		bool removed;
 		if (list.at(i).isDir()) {
-			LYXERR(Debug::FILES, "Erasing dir " 
+			LYXERR(Debug::FILES, "Removing dir " 
 				<< fromqstr(list.at(i).absoluteFilePath()));
-			success = rmdir(list.at(i));
+			removed = rmdir(list.at(i));
 		}
 		else {
-			LYXERR(Debug::FILES, "Erasing file " 
+			LYXERR(Debug::FILES, "Removing file " 
 				<< fromqstr(list.at(i).absoluteFilePath()));
-			success = dir.remove(list.at(i).fileName());
+			removed = dir.remove(list.at(i).fileName());
 		}
-		if (!success) {
-			global_success = false;
-			lyxerr << "Could not delete "
-				<< fromqstr(list.at(i).absoluteFilePath()) << "." << endl;
+		if (!removed) {
+			success = false;
+			LYXERR0("Could not delete "
+				<< fromqstr(list.at(i).absoluteFilePath()));
 		}
 	} 
 	QDir parent = fi.absolutePath();
-	global_success |= parent.rmdir(fi.fileName());
-	return global_success;
+	success &= parent.rmdir(fi.fileName());
+	return success;
 }
 
 
@@ -347,7 +346,7 @@ bool FileName::destroyDirectory() const
 {
 	bool const success = rmdir(d->fi);
 	if (!success)
-		lyxerr << "Could not delete " << *this << "." << endl;
+		LYXERR0("Could not delete " << *this);
 
 	return success;
 }
@@ -375,8 +374,7 @@ docstring FileName::displayName(int threshold) const
 docstring FileName::fileContents(string const & encoding) const
 {
 	if (!isReadableFile()) {
-		LYXERR0("File '" << *this
-			<< "' is not redable!");
+		LYXERR0("File '" << *this << "' is not redable!");
 		return docstring();
 	}
 
@@ -457,8 +455,8 @@ string FileName::guessFormatFromContents() const
 	// GZIP	\037\213	http://www.ietf.org/rfc/rfc1952.txt
 	// ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
 	// Z	\037\235		UNIX compress
-	// paranoia check
 
+	// paranoia check
 	if (empty() || !isReadableFile())
 		return string();
 
