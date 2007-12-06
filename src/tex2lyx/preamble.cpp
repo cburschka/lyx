@@ -68,8 +68,8 @@ const char * const known_languages[] = { "afrikaans", "american", "arabic",
 
 const char * const known_french_languages[] = {"french", "frenchb", "francais",
 						"frenchle", "frenchpro", 0};
-const char * const known_german_languages[] = {"german", "germanb",	"ngerman",
-						"ngermanb", 0};
+const char * const known_german_languages[] = {"german", "germanb", 0};
+const char * const known_ngerman_languages[] = {"ngerman", "ngermanb", 0};
 const char * const known_russian_languages[] = {"russian", "russianb", 0};
 const char * const known_ukrainian_languages[] = {"ukrainian", "ukraineb", 0};
 
@@ -282,6 +282,8 @@ void handle_package(string const & name, string const & opts)
 		if (is_known(name, known_french_languages))
 			h_language = "french";
 		else if (is_known(name, known_german_languages))
+			h_language = "german";
+		else if (is_known(name, known_ngerman_languages))
 			h_language = "ngerman";
 		else if (is_known(name, known_russian_languages))
 			h_language = "russian";
@@ -494,6 +496,8 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 			if (is_known(h_language, known_french_languages))
 				h_language = "french";
 			else if (is_known(h_language, known_german_languages))
+				h_language = "german";
+			else if (is_known(h_language, known_ngerman_languages))
 				h_language = "ngerman";
 			else if (is_known(h_language, known_russian_languages))
 				h_language = "russian";
