@@ -513,7 +513,6 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		Row & row, int width) const
 {
 	row.label_hfill = 0;
-	row.hfill = 0;
 	row.separator = 0;
 
 	Buffer & buffer = bv_->buffer();
@@ -553,12 +552,11 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			row.label_hfill = labelFill(pit, row) / double(nlh);
 	}
 
-	// are there any hfills in the row?
-	int const nh = numberOfHfills(par, row);
-
-	if (nh) {
-		if (w > 0)
-			row.hfill = w / nh;
+	double hfill = 0;
+	if (w > 0) {
+		// are there any hfills in the row?
+		if (int nh = numberOfHfills(par, row))
+			hfill = w / double(nh);
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
 	// we force the LEFT_ALIGN'edness!
@@ -653,7 +651,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			continue;
 		Dimension dim = row.dimension();
 		if (pm.hfillExpansion(row, ii->pos))
-			dim.wid = int(ii->pos >= body_pos ? row.hfill : row.label_hfill);
+			dim.wid = int(ii->pos >= body_pos ? hfill : row.label_hfill);
 		else
 			dim.wid = 3;
 		// Cache the inset dimension. 

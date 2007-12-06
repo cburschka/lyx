@@ -68,8 +68,6 @@ public:
 
 	/// width of a separator (i.e. space)
 	double separator;
-	/// width of hfills in the body
-	double hfill;
 	/// width of hfills in the label
 	double label_hfill;
 	/// the x position of the row

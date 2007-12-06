@@ -24,13 +24,13 @@ namespace lyx {
 
 
 Row::Row()
-	: separator(0), hfill(0), label_hfill(0), x(0),
+	: separator(0), label_hfill(0), x(0),
 	sel_beg(-1), sel_end(-1), changed_(false), crc_(0), pos_(0), end_(0)
 {}
 
 
 Row::Row(pos_type pos)
-	: separator(0), hfill(0), label_hfill(0), x(0),
+	: separator(0), label_hfill(0), x(0),
 	sel_beg(-1), sel_end(-1), changed_(false), crc_(0), pos_(pos), end_(0)
 {}
 
