@@ -18,6 +18,7 @@
 #include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
@@ -42,6 +43,7 @@ using std::find;
 
 using support::FileName;
 using support::libFileSearch;
+using support::isStrDbl;
 
 // special columntypes
 extern std::map<char, int> special_columns;
@@ -218,8 +220,17 @@ void handle_package(string const & name, string const & opts)
 		h_font_sans = name;
 		if (!opts.empty()) {
 			scale = opts;
-			pos = scale.find(".");
-			h_font_sf_scale = scale.erase(0, pos + 1);
+			// the option is in the form "scaled=0.9"
+			// therefore cut of before the "="
+			pos = scale.find("=");
+			if (pos != string::npos) { 
+				scale.erase(0, pos + 1);
+				if (isStrDbl(scale)) {
+					// LyX needs the scale as integer, therfore multiply by 100
+					scale = convert<string>(100 * convert<double>(scale));
+					h_font_sf_scale = scale;
+				}
+			}
 		}
 	}
 	// typewriter fonts
@@ -227,8 +238,17 @@ void handle_package(string const & name, string const & opts)
 		h_font_typewriter = name;
 		if (!opts.empty()) {
 			scale = opts;
-			pos = scale.find(".");
-			h_font_tt_scale = scale.erase(0, pos + 1);
+			// the option is in the form "scaled=0.9"
+			// therefore cut of before the "="
+			pos = scale.find("=");
+			if (pos != string::npos) { 
+				scale.erase(0, pos + 1);
+				if (isStrDbl(scale)) {
+					// LyX needs the scale as integer, therfore multiply by 100
+					scale = convert<string>(100 * convert<double>(scale));
+					h_font_tt_scale = scale;
+				}
+			}
 		}
 	}
 	// font uses old-style figure
