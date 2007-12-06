@@ -404,7 +404,7 @@ def convert_latexcommand_index(document):
 
 
 def revert_latexcommand_index(document):
-    "Revert from collapsable form toLatexCommand form."
+    "Revert from collapsable form to LatexCommand form."
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset Index", i)
@@ -913,6 +913,37 @@ def revert_framed_notes(document):
         i = i + 1
 
 
+def revert_slash(document):
+    'Revert \\SpecialChar \\slash{} to ERT'
+    for i in range(len(document.body)):
+        document.body[i] = document.body[i].replace('\\SpecialChar \\slash{}', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'slash{}\n\\end_layout\n\n\\end_inset\n\n')
+	
+
+def revert_nobreakdash(document):
+    'Revert \\SpecialChar \\nobreakdash- to ERT'
+    found = 0
+    for i in range(len(document.body)):
+        line = document.body[i]
+        r = re.compile(r'\\SpecialChar \\nobreakdash-')
+        m = r.match(line)
+        if m:
+            found = 1
+        document.body[i] = document.body[i].replace('\\SpecialChar \\nobreakdash-', \
+        '\\begin_inset ERT\nstatus collapsed\n\n' \
+        '\\begin_layout Standard\n\n\n\\backslash\n' \
+        'nobreakdash-\n\\end_layout\n\n\\end_inset\n\n')
+    if not found:
+        return
+    j = find_token(document.header, "\\use_amsmath", 0)
+    if j == -1:
+        document.warning("Malformed LyX document: Missing '\\use_amsmath'.")
+        return
+    document.header[j] = "\\use_amsmath 2"
+
+
 def revert_bahasam(document):
     "Set language Bahasa Malaysia to Bahasa Indonesia"
     i = 0
@@ -981,10 +1012,12 @@ convert = [[277, [fix_wrong_tables]],
            [303, [convert_serbocroatian]],
            [304, [convert_framed_notes]],
            [305, []],
-           [306, []]
+           [306, []],
+           [307, []]
           ]
 
-revert =  [[305, [revert_interlingua]],
+revert =  [[306, [revert_slash, revert_nobreakdash]],
+           [305, [revert_interlingua]],
            [304, [revert_bahasam]],
            [303, [revert_framed_notes]],
            [302, []],

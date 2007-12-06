@@ -658,8 +658,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_CLEARDOUBLEPAGE_INSERT:
 	case LFUN_DEPTH_DECREMENT:
 	case LFUN_DEPTH_INCREMENT:
-	case LFUN_DOTS_INSERT:
-	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
 	case LFUN_ENVIRONMENT_INSERT:
 	case LFUN_ERT_INSERT:
 	case LFUN_FILE_INSERT:
@@ -684,13 +682,11 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FOOTNOTE_INSERT:
 	case LFUN_HFILL_INSERT:
 	case LFUN_HYPERLINK_INSERT:
-	case LFUN_HYPHENATION_POINT_INSERT:
 	case LFUN_INDEX_INSERT:
 	case LFUN_INDEX_PRINT:
 	case LFUN_INSET_INSERT:
 	case LFUN_LABEL_GOTO:
 	case LFUN_LABEL_INSERT:
-	case LFUN_LIGATURE_BREAK_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_NEWPAGE_INSERT:
 	case LFUN_PAGEBREAK_INSERT:
@@ -703,7 +699,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_MODE:
 	case LFUN_MENU_OPEN:
-	case LFUN_MENU_SEPARATOR_INSERT:
 	case LFUN_NOACTION:
 	case LFUN_NOMENCL_INSERT:
 	case LFUN_NOMENCL_PRINT:
@@ -719,6 +714,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_SET_XY:
 	case LFUN_SPACE_INSERT:
+	case LFUN_SPECIALCHAR_INSERT:
 	case LFUN_TABULAR_INSERT:
 	case LFUN_TOC_INSERT:
 	case LFUN_WRAP_INSERT:

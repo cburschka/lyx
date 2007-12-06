@@ -47,8 +47,8 @@
 \bind "C-M-d"			"master-buffer-view dvi"
 \bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
 \bind "C-S-T"			"buffer-update ps"
-\bind "C-M-S-t"		"master-buffer-update ps"
-\bind "C-M-S-d"		"master-buffer-update dvi"
+\bind "C-M-S-t"			"master-buffer-update ps"
+\bind "C-M-S-d"			"master-buffer-update dvi"
 \bind "C-q"			"lyx-quit"
 \bind "C-Next"			"buffer-next"
 \bind "C-Tab"			"buffer-next"
@@ -84,10 +84,12 @@
 \bind "C-S-E"			"changes-track"  # it's what MS Word uses
 \bind "~S-M-quotedbl"		"quote-insert single"
 \bind "~S-C-quotedbl"		"self-insert \""
-\bind "C-minus"			"hyphenation-point-insert"
+\bind "C-minus"			"specialchar-insert hyphenation-point"
+\bind "C-M-minus"		"specialchar-insert nobreakdash"
 \bind "M-S-Right"		"depth-increment"
 \bind "M-S-Left"		"depth-decrement"
-\bind "C-S-L"			"ligature-break-insert"
+\bind "C-S-L"			"specialchar-insert ligature-break"
+\bind "C-S-slash"		"specialchar-insert slash"
 \bind "C-l"			"ert-insert"		# 'l' for LaTeX
 \bind "C-S-I"			"info-insert"
 
@@ -200,10 +202,10 @@
 \bind "C-S-Return"		"line-break"
 \bind "C-k"			"line-delete-forward"
 \bind "C-space"			"space-insert protected"
-\bind "C-M-space"			"space-insert normal"
-\bind "S-C-space"			"space-insert thin"
-\bind "C-period"		"end-of-sentence-period-insert"
-\bind "M-period"		"dots-insert"
+\bind "C-M-space"		"space-insert normal"
+\bind "S-C-space"		"space-insert thin"
+\bind "C-period"		"specialchar-insert end-of-sentence"
+\bind "M-period"		"specialchar-insert dots"
 \bind "Escape"			"cancel"
 \bind "F9"			"meta-prefix"
 

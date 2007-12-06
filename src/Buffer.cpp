@@ -154,7 +154,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 306; // Uwe: support for Interlingua
+int const LYX_FORMAT = 307; // JSpitzm: support for \slash
 
 } // namespace anon
 

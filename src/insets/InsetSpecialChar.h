@@ -38,6 +38,10 @@ public:
 		END_OF_SENTENCE,
 		/// Menu separator
 		MENU_SEPARATOR,
+		/// breakable slash
+		SLASH,
+		/// protected dash
+		NOBREAKDASH,
 	};
 
 	///

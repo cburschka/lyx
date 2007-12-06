@@ -871,25 +871,28 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		moveCursor(cur, false);
 		break;
 
-	case LFUN_HYPHENATION_POINT_INSERT:
-		specialChar(cur, InsetSpecialChar::HYPHENATION);
+	case LFUN_SPECIALCHAR_INSERT: {
+		string const name = to_utf8(cmd.argument());
+		if (name == "hyphenation")
+			specialChar(cur, InsetSpecialChar::HYPHENATION);
+		else if (name == "ligature-break")
+			specialChar(cur, InsetSpecialChar::LIGATURE_BREAK);
+		else if (name == "slash")
+			specialChar(cur, InsetSpecialChar::SLASH);
+		else if (name == "nobreakdash")
+			specialChar(cur, InsetSpecialChar::NOBREAKDASH);
+		else if (name == "dots")
+			specialChar(cur, InsetSpecialChar::LDOTS);
+		else if (name == "end-of-sentence")
+			specialChar(cur, InsetSpecialChar::END_OF_SENTENCE);
+		else if (name == "menu-separator")
+			specialChar(cur, InsetSpecialChar::MENU_SEPARATOR);
+		else if (name.empty())
+			lyxerr << "LyX function 'specialchar-insert' needs an argument." << endl;
+		else
+			lyxerr << "Wrong argument for LyX function 'specialchar-insert'." << endl;
 		break;
-
-	case LFUN_LIGATURE_BREAK_INSERT:
-		specialChar(cur, InsetSpecialChar::LIGATURE_BREAK);
-		break;
-
-	case LFUN_DOTS_INSERT:
-		specialChar(cur, InsetSpecialChar::LDOTS);
-		break;
-
-	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
-		specialChar(cur, InsetSpecialChar::END_OF_SENTENCE);
-		break;
-
-	case LFUN_MENU_SEPARATOR_INSERT:
-		specialChar(cur, InsetSpecialChar::MENU_SEPARATOR);
-		break;
+	}
 
 	case LFUN_WORD_UPCASE:
 		changeCase(cur, text_uppercase);
@@ -1955,12 +1958,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// always allow this, since we will inset a raw quote
 		// if an inset is not allowed.
 		break;
-	case LFUN_HYPHENATION_POINT_INSERT:
-	case LFUN_LIGATURE_BREAK_INSERT:
 	case LFUN_HFILL_INSERT:
-	case LFUN_MENU_SEPARATOR_INSERT:
-	case LFUN_DOTS_INSERT:
-	case LFUN_END_OF_SENTENCE_PERIOD_INSERT:
+	case LFUN_SPECIALCHAR_INSERT:
 		code = SPECIALCHAR_CODE;
 		break;
 	case LFUN_SPACE_INSERT:

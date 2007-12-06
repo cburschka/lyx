@@ -339,12 +339,14 @@ Menuset
 	End
 
 	Menu "insert_special"
-		Item "Ellipsis|i" "dots-insert"
-		Item "End of Sentence|E" "end-of-sentence-period-insert"
+		Item "Ellipsis|i" "specialchar-insert dots"
+		Item "End of Sentence|E" "specialchar-insert end-of-sentence"
 		Item "Ordinary Quote|Q" "self-insert \""
 		Item "Single Quote|S" "quote-insert single"
-		Item "Menu Separator|M" "menu-separator-insert"
-		Item "Phonetic Symbols|y" "command-sequence math-mode on; math-insert \text\textipa ; char-forward ;"
+		Item "Protected Hyphen|y" "specialchar-insert nobreakdash"
+		Item "Breakable Slash|a" "specialchar-insert slash"
+		Item "Menu Separator|M" "specialchar-insert menu-separator"
+		Item "Phonetic Symbols|P" "command-sequence math-mode on; math-insert \text\textipa ; char-forward ;"
 	End
 
 	Menu "insert_formatting"
@@ -358,8 +360,8 @@ Menuset
 		Item "Horizontal Line|L" "line-insert"
 		Item "Vertical Space...|V" "dialog-show-new-inset vspace"
 		Separator
-		Item "Hyphenation Point|H" "hyphenation-point-insert"
-		Item "Ligature Break|k" "ligature-break-insert"
+		Item "Hyphenation Point|H" "specialchar-insert hyphenation-point"
+		Item "Ligature Break|k" "specialchar-insert ligature-break"
 		Item "New Line|e" "new-line"
 		Item "Line Break|B" "line-break"
 		Separator

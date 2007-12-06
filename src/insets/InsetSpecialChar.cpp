@@ -51,11 +51,27 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	string s;
 	switch (kind_) {
-		case LIGATURE_BREAK:      s = "|";     break;
-		case END_OF_SENTENCE:     s = ".";     break;
-		case LDOTS:               s = ". . ."; break;
-		case MENU_SEPARATOR:      s = " x ";   break;
-		case HYPHENATION:      s = "-";   break;
+		case LIGATURE_BREAK:
+			s = "|";
+			break;
+		case END_OF_SENTENCE:
+			s = ".";
+			break;
+		case LDOTS:
+			s = ". . .";
+			break;
+		case MENU_SEPARATOR:
+			s = " x ";
+			break;
+		case HYPHENATION:
+			s = "-";
+			break;
+		case SLASH:
+			s = "/";
+			break;
+		case NOBREAKDASH:
+			s = "-";
+			break;
 	}
 	docstring ds(s.begin(), s.end());
 	dim.wid = fm.width(ds);
@@ -116,6 +132,18 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.lines(xp, yp, 4, Color_special);
 		break;
 	}
+	case SLASH:
+	{
+		font.setColor(Color_special);
+		pi.pain.text(x, y, char_type('/'), font);
+		break;
+	}
+	case NOBREAKDASH:
+	{
+		font.setColor(Color_latex);
+		pi.pain.text(x, y, char_type('-'), font);
+		break;
+	}
 	}
 }
 
@@ -140,6 +168,12 @@ void InsetSpecialChar::write(Buffer const &, ostream & os) const
 	case MENU_SEPARATOR:
 		command = "\\menuseparator";
 		break;
+	case SLASH:
+		command = "\\slash{}";
+		break;
+	case NOBREAKDASH:
+		command = "\\nobreakdash-";
+		break;
 	}
 	os << "\\SpecialChar " << command << "\n";
 }
@@ -161,6 +195,10 @@ void InsetSpecialChar::read(Buffer const &, Lexer & lex)
 		kind_ = LDOTS;
 	else if (command == "\\menuseparator")
 		kind_ = MENU_SEPARATOR;
+	else if (command == "\\slash{}")
+		kind_ = SLASH;
+	else if (command == "\\nobreakdash-")
+		kind_ = NOBREAKDASH;
 	else
 		lex.printError("InsetSpecialChar: Unknown kind: `$$Token'");
 }
@@ -185,6 +223,12 @@ int InsetSpecialChar::latex(Buffer const &, odocstream & os,
 	case MENU_SEPARATOR:
 		os << "\\lyxarrow{}";
 		break;
+	case SLASH:
+		os << "\\slash{}";
+		break;
+	case NOBREAKDASH:
+		os << "\\nobreakdash-";
+		break;
 	}
 	return 0;
 }
@@ -206,6 +250,12 @@ int InsetSpecialChar::plaintext(Buffer const &, odocstream & os,
 	case MENU_SEPARATOR:
 		os << "->";
 		return 2;
+	case SLASH:
+		os << '/';
+		return 1;
+	case NOBREAKDASH:
+		os << '-';
+		return 1;
 	}
 	return 0;
 }
@@ -226,6 +276,12 @@ int InsetSpecialChar::docbook(Buffer const &, odocstream & os,
 		break;
 	case MENU_SEPARATOR:
 		os << "&lyxarrow;";
+		break;
+	case SLASH:
+		os << '/';
+		break;
+	case NOBREAKDASH:
+		os << '-';
 		break;
 	}
 	return 0;
@@ -249,6 +305,8 @@ void InsetSpecialChar::validate(LaTeXFeatures & features) const
 {
 	if (kind_ == MENU_SEPARATOR)
 		features.require("lyxarrow");
+	if (kind_ == NOBREAKDASH)
+		features.require("amsmath");
 }
 
 

@@ -35,7 +35,8 @@
 \bind "C-g"			"cancel"
 
 # help in emacs
-\bind "C-h"                    "hyphenation-point-insert"
+\bind "C-h"                    "specialchar-insert hyphenation-point"
+\bind "C-M-minus"		"specialchar-insert nobreakdash"
 \bind "C-i"                    "hfill-insert"
 \bind "C-j"                    "break-paragraph"
 \bind "C-k"                    "line-delete-forward"
@@ -211,12 +212,13 @@
 \bind "M-Return"		"break-paragraph inverse"
 \bind "C-Return"		"new-line"
 \bind "C-S-Return"		"line-break"
-\bind "C-S-L"			"ligature-break-insert"
+\bind "C-S-L"			"specialchar-insert ligature-break"
 \bind "C-space"			"space-insert protected"
-\bind "C-M-space"			"space-insert normal"
-\bind "S-C-space"			"space-insert thin"
-\bind "C-period"		"end-of-sentence-period-insert"
-\bind "M-period"		"dots-insert"
+\bind "C-M-space"		"space-insert normal"
+\bind "S-C-space"		"space-insert thin"
+\bind "C-S-slash"		"specialchar-insert slash"
+\bind "C-period"		"specialchar-insert end-of-sentence"
+\bind "M-period"		"specialchar-insert dots"
 \bind "M-w"			"copy"
 \bind "Escape"			"meta-prefix"
 
