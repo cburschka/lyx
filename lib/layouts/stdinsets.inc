@@ -1,11 +1,14 @@
 # Textclass definition file for LaTeX.
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 # Inset layouts definition
-# 
+#
+# More detailled format description is available in the customization manual
+# FIXME: create the contents in the manual and put the link here.  
+#
 #InsetLayout <string identifier used by LyX>
 #	LabelString           used for the inset decoration (either the inset button
 #	                      or the text underneath the inset).
-#	LatexType             FIXME
+#	LatexType             associated LateX type: command, environment, or none.
 #	LatexName             associated LateX command.
 #	BgColor               Color of the inset background within LyX.
 #                         FIXME: link to a doc file describing the different
@@ -17,11 +20,9 @@
 #	  Size                Font size of the textallowed value: Small, Smaller, ...
 #                         FIXME defined in FontSize in FontEnums.h
 #	  Family              FIXME defined in FontFamily in FontEnums.h
-#	  Shape               FIXME defined in FontFamily in FontEnums.h
-#	  Series              FIXME defined in FontFamily in FontEnums.h
-#	  Misc                FIXME defined in FontFamily in FontEnums.h
-#	  Misc                FIXME defined in FontFamily in FontEnums.h
-#	  Misc                FIXME defined in FontFamily in FontEnums.h
+#	  Shape               FIXME defined in FontShape in FontEnums.h
+#	  Series              FIXME defined in FontSeries in FontEnums.h
+#	  Misc                FIXME defined in FontMisc in FontEnums.h
 #	EndFont               Nothing to put here, it's just a markup to indicate that we are
 #                         finished with the Font definition.
 #	LabelFont             Nothing to put here, below are descriptions of the different
@@ -35,6 +36,13 @@
 #                         finished with the LabelFont definition.
 #	MultiPar              Indicates that multiple paragraphs are allowed within the inset
 #                         or not. FIXME: what is the default?
+#	Decoration:           Classic, Minimalistic, Conglomerate. Decoration styles
+#	PassThru              Do not do various LaTeX conversions, like the phrases
+#	                      LaTeX, LyX, quote commands, etc.
+#	KeepEmpty             Do not delete empty paragraphs (?)
+#	FreeSpacing           Preserve multiple spaces etc.
+#	ForceLTR              Force the "latex" language, leading to Left-to-Right
+#	                     (latin) output, e.g., in ERT or URL. A kludge.
 #End
 
 Format 5
