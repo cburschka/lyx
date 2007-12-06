@@ -203,8 +203,12 @@ void handle_package(string const & name, string const & opts)
 	// roman fonts
 	if (is_known(name, known_roman_fonts))
 		h_font_roman = name;
-	if (name == "fourier")
+	if (name == "fourier") {
 		h_font_roman = "utopia";
+		// when font uses real small capitals
+		if (opts == "expert")
+			h_font_sc = "true";
+	}
 	if (name == "mathpazo")
 		h_font_roman = "palatino";
 	if (name == "mathptmx")
@@ -214,7 +218,7 @@ void handle_package(string const & name, string const & opts)
 		h_font_sans = name;
 		if (!opts.empty()) {
 			scale = opts;
-			pos = scale.find(".", 0);
+			pos = scale.find(".");
 			h_font_sf_scale = scale.erase(0, pos + 1);
 		}
 	}
@@ -223,10 +227,13 @@ void handle_package(string const & name, string const & opts)
 		h_font_typewriter = name;
 		if (!opts.empty()) {
 			scale = opts;
-			pos = scale.find(".", 0);
+			pos = scale.find(".");
 			h_font_tt_scale = scale.erase(0, pos + 1);
 		}
 	}
+	// font uses old-style figure
+	if (name == "eco")
+		h_font_osf = "true";
 
 	else if (name == "amsmath" || name == "amssymb")
 		h_use_amsmath = "1";
