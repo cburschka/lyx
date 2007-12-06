@@ -52,22 +52,27 @@ std::map<string, vector<string> > used_packages;
 
 namespace {
 
-const char * const known_languages[] = { "afrikaans", "american", "austrian",
-"babel", "bahasa", "basque", "belarusian", "brazil", "breton", "british",
-"bulgarian", "catalan", "croatian", "czech", "danish", "dutch", "english",
-"esperanto", "estonian", "finnish", "francais", "french", "frenchb",
-"frenchle", "frenchpro", "galician", "german", "germanb", "greek", "hebcal",
-"hebfont", "hebrew", "hebrew_newcode", "hebrew_oldcode", "hebrew_p", "hyphen",
-"icelandic", "irish", "italian", "latin", "lgrcmr", "lgrcmro", "lgrcmss",
-"lgrcmtt", "lgrenc", "lgrlcmss", "lgrlcmtt", "lheclas", "lhecmr", "lhecmss",
-"lhecmtt", "lhecrml", "lheenc", "lhefr", "lheredis", "lheshold", "lheshscr",
-"lheshstk", "lsorbian", "magyar", "naustrian", "ngermanb", "ngerman", "norsk",
-"nynorsk", "polish", "portuges", "rlbabel", "romanian",	"russian", "russianb",
-"samin", "scottish", "serbian", "slovak", "slovene", "spanish", "swedish",
-"thai", "turkish", "ukraineb", "ukrainian", "usorbian", "welsh", 0};
+const char * const known_languages[] = { "afrikaans", "american", "arabic",
+"austrian", "bahasa", "basque", "belarusian", "brazil", "breton", "british",
+"bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
+"dutch", "english", "esperanto", "estonian", "finnish", "francais", "french",
+"frenchb", "frenchle", "frenchpro", "galician", "german", "germanb", "greek",
+"hebrew", "icelandic", "irish", "italian", "lsorbian", "magyar", "naustrian",
+"ngerman", "ngermanb", "norsk", "nynorsk", "polish", "portuges", "romanian",
+"russian", "russianb", "scottish", "serbian", "slovak", "slovene", "spanish",
+"swedish", "thai", "turkish", "ukraineb", "ukrainian", "usorbian", "welsh", 0};
+
+//note this when updating to lyxformat 305:
+//bahasai, indonesian, and indon = equal to bahasa
+//malay, and meyalu = equal to bahasam
 
 const char * const known_french_languages[] = {"french", "frenchb", "francais",
-					       "frenchle", "frenchpro", 0};
+						"frenchle", "frenchpro", 0};
+const char * const known_german_languages[] = {"german", "germanb",	"ngerman",
+						"ngermanb", 0};
+const char * const known_russian_languages[] = {"russian", "russianb", 0};
+const char * const known_ukrainian_languages[] = {"ukrainian", "ukraineb", 0};
+
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_fonts[] = { "ae", "bookman", "charter",
@@ -274,13 +279,17 @@ void handle_package(string const & name, string const & opts)
 	else if (name == "graphicx")
 		; // ignore this
 	else if (is_known(name, known_languages)) {
-		if (is_known(name, known_french_languages)) {
+		if (is_known(name, known_french_languages))
 			h_language = "french";
-			h_quotes_language = "french";
-		} else {
+		else if (is_known(name, known_german_languages))
+			h_language = "ngerman";
+		else if (is_known(name, known_russian_languages))
+			h_language = "russian";
+		else if (is_known(name, known_ukrainian_languages))
+			h_language = "ukrainian";
+		else
 			h_language = name;
-			h_quotes_language = name;
-		}
+		h_quotes_language = h_language;
 
 	} else if (name == "natbib") {
 		h_cite_engine = "natbib_authoryear";
@@ -484,6 +493,12 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 			handle_opt(opts, known_languages, h_language);
 			if (is_known(h_language, known_french_languages))
 				h_language = "french";
+			else if (is_known(h_language, known_german_languages))
+				h_language = "ngerman";
+			else if (is_known(h_language, known_russian_languages))
+				h_language = "russian";
+			else if (is_known(h_language, known_ukrainian_languages))
+				h_language = "ukrainian";
 			handle_opt(opts, known_fontsizes, h_paperfontsize);
 			// delete "pt" at the end
 			string::size_type i = h_paperfontsize.find("pt");
