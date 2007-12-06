@@ -56,8 +56,8 @@ void InsetHFill::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = Inset::dimension(*pi.base.bv);
 	int const x0 = x + 1;
 	int const x1 = x + dim.wid - 2;
-	int const y0 = y + dim.des;
-	int const y1 = y - dim.asc;
+	int const y0 = y + dim.des - 1;
+	int const y1 = y - dim.asc + 1;
 
 	pi.pain.line(x0, y1, x0, y0, Color_added_space);
 	pi.pain.line(x0, y, x1, y, Color_added_space,
