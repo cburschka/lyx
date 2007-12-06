@@ -18,6 +18,7 @@
 #include "Layout.h"
 #include "Lexer.h"
 #include "TextClass.h"
+#include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
@@ -42,6 +43,7 @@ using std::find;
 
 using support::FileName;
 using support::libFileSearch;
+using support::isStrDbl;
 
 // special columntypes
 extern std::map<char, int> special_columns;
@@ -68,13 +70,30 @@ const char * const known_french_languages[] = {"french", "frenchb", "francais",
 					       "frenchle", "frenchpro", 0};
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
+const char * const known_roman_fonts[] = { "ae", "bookman", "charter",
+"cmr", "fourier", "lmodern", "mathpazo", "mathptmx", "newcent", 0};
+
+const char * const known_sans_fonts[] = { "avant", "berasans", "cmbr", "cmss",
+"helvet", "lmss", 0};
+
+const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
+"courier", "lmtt", "luximono", "fourier", "lmodern", "mathpazo", "mathptmx",
+"newcent", 0};
+
 // some ugly stuff
 ostringstream h_preamble;
 string h_textclass               = "article";
 string h_options                 = string();
 string h_language                = "english";
 string h_inputencoding           = "auto";
-string h_fontscheme              = "default";
+string h_font_roman              = "default";
+string h_font_sans               = "default";
+string h_font_typewriter         = "default";
+string h_font_default_family     = "default";
+string h_font_sc                 = "false";
+string h_font_osf                = "false";
+string h_font_sf_scale           = "100";
+string h_font_tt_scale           = "100";
 string h_graphics                = "default";
 string h_paperfontsize           = "default";
 string h_spacing                 = "single";
@@ -180,15 +199,63 @@ void handle_package(string const & name, string const & opts)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
+	size_t pos;
+	string scale;
 
-	//cerr << "handle_package: '" << name << "'\n";
-	if (name == "ae")
-		h_fontscheme = "ae";
-	else if (name == "aecompl")
-		h_fontscheme = "ae";
-	else if (name == "amsmath")
-		h_use_amsmath = "1";
-	else if (name == "amssymb")
+	// roman fonts
+	if (is_known(name, known_roman_fonts))
+		h_font_roman = name;
+	if (name == "fourier") {
+		h_font_roman = "utopia";
+		// when font uses real small capitals
+		if (opts == "expert")
+			h_font_sc = "true";
+	}
+	if (name == "mathpazo")
+		h_font_roman = "palatino";
+	if (name == "mathptmx")
+		h_font_roman = "times";
+	// sansserif fonts
+	if (is_known(name, known_sans_fonts)) {
+		h_font_sans = name;
+		if (!opts.empty()) {
+			scale = opts;
+			// the option is in the form "scaled=0.9"
+			// therefore cut of before the "="
+			pos = scale.find("=");
+			if (pos != string::npos) { 
+				scale.erase(0, pos + 1);
+				if (isStrDbl(scale)) {
+					// LyX needs the scale as integer, therfore multiply by 100
+					scale = convert<string>(100 * convert<double>(scale));
+					h_font_sf_scale = scale;
+				}
+			}
+		}
+	}
+	// typewriter fonts
+	if (is_known(name, known_typewriter_fonts)) {
+		h_font_typewriter = name;
+		if (!opts.empty()) {
+			scale = opts;
+			// the option is in the form "scaled=0.9"
+			// therefore cut of before the "="
+			pos = scale.find("=");
+			if (pos != string::npos) { 
+				scale.erase(0, pos + 1);
+				if (isStrDbl(scale)) {
+					// LyX needs the scale as integer, therfore multiply by 100
+					scale = convert<string>(100 * convert<double>(scale));
+					h_font_tt_scale = scale;
+				}
+			}
+		}
+	}
+	// font uses old-style figure
+	if (name == "eco")
+		h_font_osf = "true";
+
+	else if (name == "amsmath" || name == "amssymb")
 		h_use_amsmath = "1";
 	else if (name == "babel")
 		; // ignore this
@@ -248,7 +315,7 @@ void handle_package(string const & name, string const & opts)
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
-	   << "\\lyxformat 246\n"
+	   << "\\lyxformat 247\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
@@ -258,7 +325,14 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 		os << "\\options " << h_options << "\n";
 	os << "\\language " << h_language << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
-	   << "\\fontscheme " << h_fontscheme << "\n"
+	   << "\\font_roman " << h_font_roman << "\n"
+	   << "\\font_sans " << h_font_sans << "\n"
+	   << "\\font_typewriter " << h_font_typewriter << "\n"
+	   << "\\font_default_family " << h_font_default_family << "\n"
+	   << "\\font_sc " << h_font_sc << "\n"
+	   << "\\font_osf " << h_font_osf << "\n"
+	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
+	   << "\\font_tt_scale " << h_font_tt_scale << "\n"
 	   << "\\graphics " << h_graphics << "\n"
 	   << "\\paperfontsize " << h_paperfontsize << "\n"
 	   << "\\spacing " << h_spacing << "\n"
@@ -355,6 +429,24 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 			string const opt1 = p.getOpt();
 			string const opt2 = p.getFullOpt();
 			string const body = p.verbatim_item();
+			// font settings
+			if (name == "\\rmdefault")
+				if (is_known(body, known_roman_fonts))
+					h_font_roman = body;
+
+			if (name == "\\sfdefault")
+				if (is_known(body, known_sans_fonts))
+					h_font_sans = body;
+
+			if (name == "\\ttdefault")
+				if (is_known(body, known_typewriter_fonts))
+					h_font_typewriter = body;
+
+			if (name == "\\familydefault") {
+				string family = body;
+				// remove leading "\"
+				h_font_default_family = family.erase(0,1);
+			}
 			// only non-lyxspecific stuff
 			if (   name != "\\noun"
 			    && name != "\\tabularnewline"
@@ -364,7 +456,11 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 			    && name != "\\lyxrightaddress"
 			    && name != "\\lyxdot"
 			    && name != "\\boldsymbol"
-			    && name != "\\lyxarrow") {
+			    && name != "\\lyxarrow"
+			    && name != "\\rmdefault"
+			    && name != "\\sfdefault"
+			    && name != "\\ttdefault"
+			    && name != "\\familydefault") {
 				ostringstream ss;
 				ss << '\\' << t.cs();
 				if (star)

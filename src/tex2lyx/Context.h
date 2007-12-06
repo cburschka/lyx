@@ -36,7 +36,7 @@ public:
 	}
 	void init()
 	{
-		size = "normal";
+		size = "default";
 		family = "default";
 		series = "default";
 		shape = "default";
