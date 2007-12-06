@@ -471,6 +471,15 @@ void LyX::prepareExit()
 	// close buffers first
 	pimpl_->buffer_list_.closeAll();
 
+	// register session changes and shutdown server and socket
+	if (use_gui) {
+		if (pimpl_->session_)
+			pimpl_->session_->writeFile();
+		pimpl_->session_.reset();
+		pimpl_->lyx_server_.reset();
+		pimpl_->lyx_socket_.reset();
+	}
+
 	// do any other cleanup procedures now
 	if (package().temp_dir() != package().system_temp_dir()) {
 		LYXERR(Debug::INFO, "Deleting tmp dir "
@@ -482,14 +491,6 @@ void LyX::prepareExit()
 				from_utf8(package().temp_dir().absFilename()));
 			Alert::warning(_("Unable to remove temporary directory"), msg);
 		}
-	}
-
-	if (use_gui) {
-		if (pimpl_->session_)
-			pimpl_->session_->writeFile();
-		pimpl_->session_.reset();
-		pimpl_->lyx_server_.reset();
-		pimpl_->lyx_socket_.reset();
 	}
 
 	// Kill the application object before exiting. This avoids crashes
