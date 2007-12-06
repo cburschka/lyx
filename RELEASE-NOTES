@@ -8,7 +8,21 @@ been applied because of incomplete testing.
 Interface changes
 -----------------
 
-Some of the LyX functions have changed names :
+Some of the LyX functions have changed names:
+
+- A new LFUN_SPECIALCHAR_INSERT has been implemented that obsoletes the
+  different LFUNs for single special characters:
+
+  * LFUN_HYPHENATION_POINT_INSERT: removed. "hyphenation-point-insert" 
+    has been replaced by "specialchar-insert hyphenation-point"
+  * LFUN_LIGATURE_BREAK_INSERT: removed. "ligature-break-insert" 
+    has been replaced by "specialchar-insert ligature-break"
+  * LFUN_DOTS_INSERT: removed. "dots-insert" 
+    has been replaced by "specialchar-insert dots"
+  * LFUN_END_OF_SENTENCE_PERIOD_INSERT: removed. "end-of-sentence-period-insert" 
+    has been replaced by "specialchar-insert end-of-sentence"
+  * LFUN_MENU_SEPARATOR_INSERT: removed. "menu-separator-insert" 
+    has been replaced by "specialchar-insert menu-separator"
 
 
 Known issues in version 1.5.2
