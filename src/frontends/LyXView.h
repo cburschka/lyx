@@ -67,6 +67,9 @@ public:
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 	///
 	virtual bool closeBuffer() = 0;
+	///
+	virtual void newDocument(std::string const & filename,
+		bool fromTemplate) = 0;
 
 	//@}
 

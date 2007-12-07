@@ -89,6 +89,8 @@ public:
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 	///
 	bool closeBuffer();
+	///
+	void newDocument(std::string const & filename, bool fromTemplate);
 	/// write all buffers, asking the user, returns false if cancelled
 	bool quitWriteAll();
 

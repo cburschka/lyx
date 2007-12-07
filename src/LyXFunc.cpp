@@ -901,12 +901,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		// --- Menus -----------------------------------------------
 		case LFUN_BUFFER_NEW:
-			menuNew(argument, false);
+			lyx_view_->newDocument(argument, false);
 			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_NEW_TEMPLATE:
-			menuNew(argument, true);
+			lyx_view_->newDocument(argument, true);
 			updateFlags = Update::None;
 			break;
 
@@ -1865,58 +1865,6 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 	LYXERR(Debug::ACTION, "verbose dispatch msg " << to_utf8(dispatch_msg));
 	if (!dispatch_msg.empty())
 		lyx_view_->message(dispatch_msg);
-}
-
-
-void LyXFunc::menuNew(string const & name, bool fromTemplate)
-{
-	// FIXME: initpath is not used. What to do?
-	string initpath = lyxrc.document_path;
-	string filename(name);
-
-	if (lyx_view_->buffer()) {
-		string const trypath = lyx_view_->buffer()->filePath();
-		// If directory is writeable, use this as default.
-		if (FileName(trypath).isDirWritable())
-			initpath = trypath;
-	}
-
-	static int newfile_number;
-
-	if (filename.empty()) {
-		filename = addName(lyxrc.document_path,
-			    "newfile" + convert<string>(++newfile_number) + ".lyx");
-		while (theBufferList().exists(filename) ||
-		       FileName(filename).isReadableFile()) {
-			++newfile_number;
-			filename = addName(lyxrc.document_path,
-					   "newfile" +	convert<string>(newfile_number) +
-				    ".lyx");
-		}
-	}
-
-	// The template stuff
-	string templname;
-	if (fromTemplate) {
-		FileDialog dlg(_("Select template file"));
-		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
-		dlg.setButton1(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
-
-		FileDialog::Result result =
-			dlg.open(from_utf8(lyxrc.template_path),
-				     FileFilterList(_("LyX Documents (*.lyx)")),
-				     docstring());
-
-		if (result.first == FileDialog::Later)
-			return;
-		if (result.second.empty())
-			return;
-		templname = to_utf8(result.second);
-	}
-
-	Buffer * const b = newFile(filename, templname, !name.empty());
-	if (b)
-		lyx_view_->setBuffer(b);
 }
 
 

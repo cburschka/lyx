@@ -120,9 +120,6 @@ private:
 	void sendDispatchMessage(docstring const & msg,
 		FuncRequest const & ev);
 
-	// I think the following should be moved to BufferView. (Asger)
-	///
-	void menuNew(std::string const & argument, bool fromTemplate);
 	///
 	void open(std::string const &);
 	///

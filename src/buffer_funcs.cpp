@@ -44,6 +44,7 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetInclude.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -55,6 +56,7 @@ namespace lyx {
 
 using namespace std;
 
+using support::addName;
 using support::bformat;
 using support::FileName;
 using support::libFileSearch;
@@ -143,6 +145,23 @@ Buffer * newFile(string const & filename, string const & templatename,
 	b->setFullyLoaded(true);
 
 	return b;
+}
+
+
+Buffer * newUnnamedFile(string const & templatename, FileName const & path)
+{
+	static int newfile_number;
+
+	string document_path = path.absFilename();
+	string filename = addName(document_path,
+		"newfile" + convert<string>(++newfile_number) + ".lyx");
+	while (theBufferList().exists(filename)
+		|| FileName(filename).isReadableFile()) {
+		++newfile_number;
+		filename = addName(document_path,
+			"newfile" +	convert<string>(newfile_number) + ".lyx");
+	}
+	return newFile(filename, templatename, false);
 }
 
 

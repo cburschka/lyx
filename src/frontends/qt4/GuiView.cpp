@@ -1032,6 +1032,54 @@ FuncStatus GuiView::getStatus(FuncRequest const & cmd)
 }
 
 
+static FileName selectTemplateFile()
+{
+	FileDialog dlg(_("Select template file"));
+	dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
+	dlg.setButton1(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
+
+	FileDialog::Result result =
+		dlg.open(from_utf8(lyxrc.template_path),
+			     FileFilterList(_("LyX Documents (*.lyx)")),
+			     docstring());
+
+	if (result.first == FileDialog::Later)
+		return FileName();
+	if (result.second.empty())
+		return FileName();
+	return FileName(to_utf8(result.second));
+}
+
+
+void GuiView::newDocument(string const & filename, bool from_template)
+{
+	FileName initpath;
+	Buffer * buf = buffer();
+	if (buf) {
+		FileName const trypath(buf->filePath());
+		// If directory is writeable, use this as default.
+		if (trypath.isDirWritable())
+			initpath = trypath;
+	} else
+		initpath.set(lyxrc.document_path);
+
+	// FIXME: Up to now initpath was unconditionally set to the user document
+	// path. Is it what we want? If yes, erase the code above.
+	initpath.set(lyxrc.document_path);
+
+	string templatefile = from_template ?
+		selectTemplateFile().absFilename() : string();
+	Buffer * b;
+	if (filename.empty())
+		b = newUnnamedFile(templatefile, initpath);
+	else
+		b = newFile(filename, templatefile, true);
+
+	if (b)
+		setBuffer(b);
+}
+
+
 void GuiView::insertLyXFile(docstring const & fname)
 {
 	BufferView * bv = view();
