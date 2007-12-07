@@ -553,9 +553,9 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	}
 
 	double hfill = 0;
-	if (w > 0) {
-		// are there any hfills in the row?
-		if (int nh = numberOfHfills(par, row))
+	// are there any hfills in the row?
+	if (int const nh = numberOfHfills(par, row)) {
+		if (w > 0)
 			hfill = w / double(nh);
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
