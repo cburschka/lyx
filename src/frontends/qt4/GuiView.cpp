@@ -1053,19 +1053,14 @@ static FileName selectTemplateFile()
 
 void GuiView::newDocument(string const & filename, bool from_template)
 {
-	FileName initpath;
+	FileName initpath(lyxrc.document_path);
 	Buffer * buf = buffer();
 	if (buf) {
 		FileName const trypath(buf->filePath());
 		// If directory is writeable, use this as default.
 		if (trypath.isDirWritable())
 			initpath = trypath;
-	} else
-		initpath.set(lyxrc.document_path);
-
-	// FIXME: Up to now initpath was unconditionally set to the user document
-	// path. Is it what we want? If yes, erase the code above.
-	initpath.set(lyxrc.document_path);
+	}
 
 	string templatefile = from_template ?
 		selectTemplateFile().absFilename() : string();
