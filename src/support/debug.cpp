@@ -153,36 +153,37 @@ bool LyXErr::debugging(Debug::Type t) const
 
 void LyXErr::endl()
 {
-	stream() << std::endl;
+	if (enabled_)
+		stream() << std::endl;
 }
 
 
 LyXErr & operator<<(LyXErr & l, void const * t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, char const * t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, char t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, int t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, unsigned int t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, long t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, unsigned long t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, double t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, std::string const & t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, docstring const & t)
-{ l.stream() << to_utf8(t); return l; }
+{ if (l.enabled()) l.stream() << to_utf8(t); return l; }
 LyXErr & operator<<(LyXErr & l, support::FileName const & t)
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, std::ostream &(*t)(std::ostream &))
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, std::ios_base &(*t)(std::ios_base &))
-{ l.stream() << t; return l; }
+{ if (l.enabled()) l.stream() << t; return l; }
 
 
 // The global instance

@@ -120,10 +120,13 @@ inline void operator|=(Debug::Type & d1, Debug::Type d2)
 class LyXErr
 {
 public:
+	LyXErr(): enabled_(true) {}
 	/// Disable the stream completely
 	void disable();
 	/// Enable the stream after a possible call of disable()
 	void enable();
+	///
+	bool enabled() const { return enabled_; }
 	/// Returns true if t is part of the current debug level.
 	bool debugging(Debug::Type t = Debug::ANY) const;
 	/// Ends output
