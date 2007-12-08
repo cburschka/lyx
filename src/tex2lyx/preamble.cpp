@@ -421,12 +421,10 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 
 		else if (t.cs() == "makeatletter") {
 			p.setCatCode('@', catLetter);
-			h_preamble << "\\makeatletter";
 		}
 
 		else if (t.cs() == "makeatother") {
 			p.setCatCode('@', catOther);
-			h_preamble << "\\makeatother";
 		}
 
 		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
