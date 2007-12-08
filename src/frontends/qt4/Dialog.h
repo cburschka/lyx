@@ -236,7 +236,7 @@ private:
 	/** The Dialog's name is the means by which a dialog identifies
 	 *  itself to the LyXView.
 	 */
-	std::string name_;
+	std::string const name_;
 	///
 	GuiView * lyxview_;
 

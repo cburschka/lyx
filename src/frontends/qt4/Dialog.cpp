@@ -41,7 +41,7 @@ std::string const & Dialog::name() const
 
 bool Dialog::canApply() const
 {
-	FuncRequest const fr(getLfun(), name_);
+	FuncRequest const fr(getLfun(), from_ascii(name_));
 	FuncStatus const fs(getStatus(fr));
 	return fs.enabled();
 }
@@ -56,7 +56,7 @@ void Dialog::dispatch(FuncRequest const & fr) const
 
 void Dialog::updateDialog() const
 {
-	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, name_));
+	dispatch(FuncRequest(LFUN_DIALOG_UPDATE, from_ascii(name_)));
 }
 
 
