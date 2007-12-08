@@ -53,6 +53,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\slides.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
+ SetOutPath "$INSTDIR\Resources\man\man1"
+ File "${PRODUCT_SOURCEDIR}\Resources\man\man1\lyxclient.1"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
