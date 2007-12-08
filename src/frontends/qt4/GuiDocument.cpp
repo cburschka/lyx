@@ -13,8 +13,6 @@
 
 #include "GuiDocument.h"
 
-#include "GuiView.h"
-
 #include "BranchList.h"
 #include "buffer_funcs.h"
 #include "Buffer.h"
@@ -1295,13 +1293,6 @@ void GuiDocument::apply(BufferParams & params)
 
 	// Embedded files
 	// FIXME
-
-	// GuiDocument is special because some change in there might affect other
-	// dialogs. It is then better to make sure that all dialogs are in sync
-	// with current document settings.
-	lyxview().updateBufferDependent(true);
-	lyxview().updateLayoutList();
-	lyxview().updateToolbars();
 }
 
 
