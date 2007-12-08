@@ -15,7 +15,9 @@
 #include "Layout.h"
 #include "TextClass.h"
 #include "Lexer.h"
+#include "Font.h"
 #include "support/debug.h"
+
 
 #include "support/lstrings.h"
 

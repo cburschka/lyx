@@ -24,6 +24,7 @@
 #include "FloatList.h"
 #include "Layout.h"
 #include "Lexer.h"
+#include "Font.h"
 
 #include "frontends/alert.h"
 
