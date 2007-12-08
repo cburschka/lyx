@@ -23,6 +23,7 @@
 #include "GuiMenubar.h"
 #include "GuiToolbar.h"
 #include "GuiToolbars.h"
+#include "GuiProgress.h"
 
 #include "qt_helpers.h"
 
@@ -1569,7 +1570,7 @@ char const * const dialognames[] = {
 "thesaurus",
 #endif
 
-"texinfo", "toc", "href", "view-source", "vspace", "wrap", "listings" };
+"texinfo", "toc", "href", "view-source", "latex-progress", "vspace", "wrap", "listings" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -1793,6 +1794,7 @@ Dialog * createGuiThesaurus(GuiView & lv);
 Dialog * createGuiHyperlink(GuiView & lv);
 Dialog * createGuiVSpace(GuiView & lv);
 Dialog * createGuiViewSource(GuiView & lv);
+Dialog * createGuiProgress(GuiView & lv);
 Dialog * createGuiWrap(GuiView & lv);
 
 
@@ -1844,6 +1846,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiLog(*this);
 	if (name == "view-source")
 		return createGuiViewSource(*this);
+	if (name == "latex-progress")
+		return createGuiProgress(*this);
 	if (name == "mathdelimiter")
 		return createGuiDelimiter(*this);
 	if (name == "mathmatrix")

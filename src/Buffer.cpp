@@ -1097,8 +1097,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	if (output_preamble) {
 		if (!runparams.nice) {
 			// code for usual, NOT nice-latex-file
-			os << "\\batchmode\n"; // changed
-			// from \nonstopmode
+			os << "\\nonstopmode\n"; 
 			d->texrow.newline();
 		}
 		if (!original_path.empty()) {

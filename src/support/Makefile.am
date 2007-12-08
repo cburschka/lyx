@@ -75,6 +75,9 @@ liblyxsupport_la_SOURCES = \
 	strfwd.h \
 	Systemcall.cpp \
 	Systemcall.h \
+	SystemcallPrivate.cpp \
+	SystemcallPrivate.h \
+	ProgressInterface.h \
 	SignalSlot.cpp \
 	SignalSlot.h \
 	SignalSlotPrivate.h \

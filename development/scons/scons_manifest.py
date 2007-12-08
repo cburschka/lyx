@@ -297,7 +297,9 @@ src_support_header_files = Split('''
     RandomAccessList.h
     SignalSlot.h
     SignalSlotPrivate.h
+    ProgressInterface.h
     Systemcall.h
+    SystemcallPrivate.h
     Timeout.h
     Translator.h
     convert.h
@@ -338,6 +340,7 @@ src_support_files = Split('''
     Path.cpp
     SignalSlot.cpp
     Systemcall.cpp
+    SystemcallPrivate.cpp
     Timeout.cpp
     abort.cpp
     convert.cpp
@@ -755,6 +758,7 @@ src_frontends_qt4_header_files = Split('''
     GuiPopupMenu.h
     GuiPrefs.h
     GuiPrint.h
+    GuiProgress.h
     GuiRef.h
     GuiSearch.h
     GuiSelection.h
@@ -841,6 +845,7 @@ src_frontends_qt4_files = Split('''
     GuiParagraph.cpp
     GuiPopupMenu.cpp
     GuiPrefs.cpp
+    GuiProgress.cpp
     GuiPrint.cpp
     GuiRef.cpp
     GuiSearch.cpp

@@ -415,11 +415,9 @@ int LaTeX::run(TeXErrors & terr)
 int LaTeX::startscript()
 {
 	// onlyFilename() is needed for cygwin
-	string tmp = cmd + ' '
-		     + quoteName(onlyFilename(file.toFilesystemEncoding()))
-		     + " > " + os::nulldev();
-	Systemcall one;
-	return one.startscript(Systemcall::Wait, tmp);
+	string tmp = cmd + ' ' + "-max-print-line=200 "
+				+ quoteName(onlyFilename(file.toFilesystemEncoding()));
+	return Systemcall().startscript(Systemcall::Wait, tmp);
 }
 
 

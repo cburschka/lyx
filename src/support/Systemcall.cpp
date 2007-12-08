@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
+ * \author Peter Kümmel
  *
  * Interface cleaned up by
  * \author Angus Leeming
@@ -14,37 +15,36 @@
 #include <config.h>
 
 #include "support/Systemcall.h"
-#include "support/os.h"
-
-#include <cstdlib>
-
-using std::string;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::system;
-#endif
+#include "support/SystemcallPrivate.h"
+#include "support/ProgressInterface.h"
 
 namespace lyx {
 namespace support {
 
-// Reuse of instance
-int Systemcall::startscript(Starttype how, string const & what)
+static ProgressInterface* progress_impl = 0;
+
+
+void Systemcall::registerProgressInterface(ProgressInterface* p)
 {
-	string command = what;
-
-	if (how == DontWait) {
-		switch (os::shell()) {
-		case os::UNIX:
-			command += " &";
-			break;
-		case os::CMD_EXE:
-			command = "start /min " + command;
-			break;
-		}
-	}
-
-	return ::system(command.c_str());
+	progress_impl = p;
 }
+
+
+ProgressInterface* Systemcall::progress()
+{
+	return progress_impl;
+}
+
+
+int Systemcall::startscript(Starttype how, std::string const & what)
+{
+	// TODO Reuse of instance?
+	SystemcallPrivate* process = new SystemcallPrivate;
+	if (how == Wait)
+		return process->start(what, true);
+	return process->start(what, false);
+}
+
 
 } // namespace support
 } // namespace lyx

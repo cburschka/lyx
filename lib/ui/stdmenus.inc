@@ -286,6 +286,7 @@ Menuset
 		Item "Fold Math Macro" "math-macro-fold"
 		Separator
 		Item "View Source|S" "dialog-toggle view-source"
+		Item "View LaTeX Progress|" "dialog-toggle latex-progress"
 		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator

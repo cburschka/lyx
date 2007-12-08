@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
+ * \author Peter Kümmel
  *
  * Interface cleaned up by
  * \author Angus Leeming
@@ -20,10 +21,12 @@
 namespace lyx {
 namespace support {
 
+class ProgressInterface;
+
 /**
  * An instance of Class Systemcall represents a single child process.
  *
- * Class Systemcall uses system() to launch the child process.
+ * Class Systemcall uses SystemcallPrivate to launch the child process.
  * The user can choose to wait or not wait for the process to complete, but no
  * callback is invoked upon completion of the child.
  *
@@ -43,6 +46,9 @@ public:
 	 *  by spaces.
 	 */
 	int startscript(Starttype how, std::string const & what);
+
+	static void registerProgressInterface(ProgressInterface*);
+	static ProgressInterface* progress();
 };
 
 } // namespace support
