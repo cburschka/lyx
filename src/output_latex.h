@@ -48,7 +48,7 @@ void latexParagraphs(Buffer const & buf,
 /// \return (did the encoding change?, number of characters written to \p os)
 std::pair<bool, int> switchEncoding(odocstream & os, 
 		     BufferParams const & bparams,
-		     bool moving_arg, Encoding const & oldEnc,
+		     OutputParams const &, Encoding const & oldEnc,
 		     Encoding const & newEnc);
 
 } // namespace lyx

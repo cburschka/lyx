@@ -1129,26 +1129,6 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
-	if (!lyxrc.language_auto_begin &&
-	    !params().language->babel().empty()) {
-		// FIXME UNICODE
-		os << from_utf8(subst(lyxrc.language_command_begin,
-					   "$$lang",
-					   params().language->babel()))
-		   << '\n';
-		d->texrow.newline();
-	}
-
-	Encoding const & encoding = params().encoding();
-	if (encoding.package() == Encoding::CJK) {
-		// Open a CJK environment, since in contrast to the encodings
-		// handled by inputenc the document encoding is not set in
-		// the preamble if it is handled by CJK.sty.
-		os << "\\begin{CJK}{" << from_ascii(encoding.latexName())
-		   << "}{}\n";
-		d->texrow.newline();
-	}
-
 	// if we are doing a real file with body, even if this is the
 	// child of some other buffer, let's cut the link here.
 	// This happens for example if only a child document is printed.
@@ -1170,23 +1150,6 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	// add this just in case after all the paragraphs
 	os << endl;
 	d->texrow.newline();
-
-	if (encoding.package() == Encoding::CJK) {
-		// Close the open CJK environment.
-		// latexParagraphs will have opened one even if the last text
-		// was not CJK.
-		os << "\\end{CJK}\n";
-		d->texrow.newline();
-	}
-
-	if (!lyxrc.language_auto_end &&
-	    !params().language->babel().empty()) {
-		os << from_utf8(subst(lyxrc.language_command_end,
-					   "$$lang",
-					   params().language->babel()))
-		   << '\n';
-		d->texrow.newline();
-	}
 
 	if (output_preamble) {
 		os << "\\end{document}\n";

@@ -464,7 +464,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 
 	if (language()->encoding()->package() == Encoding::CJK) {
 		pair<bool, int> const c = switchEncoding(os, bparams,
-				runparams.moving_arg, *(runparams.encoding),
+				runparams, *(runparams.encoding),
 				*(language()->encoding()));
 		if (c.first) {
 			open_encoding_ = true;
@@ -635,7 +635,7 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		// to do correct environment nesting
 		Encoding const * const ascii = encodings.getFromLyXName("ascii");
 		pair<bool, int> const c = switchEncoding(os, bparams,
-				runparams.moving_arg, *(runparams.encoding),
+				runparams, *(runparams.encoding),
 				*ascii);
 		BOOST_ASSERT(c.first);
 		count += c.second;
