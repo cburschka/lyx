@@ -557,7 +557,6 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 			string opts = p.getOpt();
 			if (!opts.empty()) {
 				istringstream is(string(opts, 1));
-				//cerr << "opt: " << is.str() << "\n";
 				is >> nargs;
 			}
 			special_columns[name[0]] = nargs;
