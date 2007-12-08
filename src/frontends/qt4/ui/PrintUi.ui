@@ -147,9 +147,9 @@
     </widget>
    </item>
    <item row="2" column="0" >
-    <widget class="QGroupBox" name="GroupBox3" >
+    <widget class="QGroupBox" name="copiesGB" >
      <property name="title" >
-      <string>Copies</string>
+      <string>Copie&amp;s</string>
      </property>
      <layout class="QHBoxLayout" >
       <property name="margin" >
@@ -345,5 +345,70 @@
   <tabstop>closePB</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>printerRB</sender>
+   <signal>clicked()</signal>
+   <receiver>printerED</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>60</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>254</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileRB</sender>
+   <signal>clicked()</signal>
+   <receiver>fileED</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>60</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>213</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rangeRB</sender>
+   <signal>clicked()</signal>
+   <receiver>fromED</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>55</x>
+     <y>206</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>108</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>copiesGB</sender>
+   <signal>clicked()</signal>
+   <receiver>copiesSB</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>214</x>
+     <y>373</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>52</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
