@@ -1722,8 +1722,10 @@ void GuiView::updateBufferDependent(bool switched) const
 
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
+		if (!dialog->isVisibleView())
+			continue;
 		if (switched && dialog->isBufferDependent()) {
-			if (dialog->isVisibleView() && dialog->initialiseParams(""))
+			if (dialog->initialiseParams(""))
 				dialog->updateView();
 			else
 				dialog->hide();
