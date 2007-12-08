@@ -433,6 +433,7 @@ def revert_latexcommand_index(document):
             line = line[10:]
           if line.startswith("status collapsed"):
             line = line[16:]
+          line = line.replace(u'ä', r'\\\"a').replace(u'ö', r'\\\"o').replace(u'ü', r'\\\"u')
           content = content + line;
         document.body[i + 3] = "name " + '"' + content + '"'
         for k in range(i + 4, j - 2):
