@@ -68,7 +68,7 @@ bool setEnv(string const & name, string const & value)
 #elif defined (HAVE_PUTENV)
 	static std::map<string, string> varmap;
 	varmap[name] = name + '=' + encoded;
-	return ::putenv(varmap[name].c_str()) == 0;
+	return ::putenv(const_cast<char*>(varmap[name].c_str())) == 0;
 #else
 #error No environment-setting function has been defined.
 #endif
