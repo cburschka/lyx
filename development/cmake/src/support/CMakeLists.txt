@@ -21,7 +21,11 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/atexit.c
 	${TOP_SRC_DIR}/src/support/strerror.c
 	${TOP_SRC_DIR}/src/support/minizip/iowin32.h
-	${TOP_SRC_DIR}/src/support/minizip/iowin32.c)
+	${TOP_SRC_DIR}/src/support/minizip/iowin32.c
+	${TOP_SRC_DIR}/src/support/gettext.cpp)
+
+# needed to compile tex2lyx in merged mode
+set(dont_merge ${TOP_SRC_DIR}/src/support/gettext.cpp)
 
 lyx_add_msvc_pch(support)
 
@@ -37,7 +41,7 @@ include_directories(${TOP_SRC_DIR}/src/support
 if(NOT MERGE_FILES)
 	set(support_sources ${support_sources} ${support_minizip_sources} ${support_minizip_cpp_sources})
 	set(support_headers ${support_headers} ${support_minizip_headers})
-	add_library(support ${library_type} ${support_sources} ${support_headers})
+	add_library(support ${library_type} ${support_sources} ${support_headers} ${dont_merge})
 else()
 	lyx_const_touched_files(_allinone  support_sources)
 		set(depends_moc ${support_headers})
@@ -46,7 +50,7 @@ else()
 	set_source_files_properties(_allinone_touched.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")	
 	add_library(support ${library_type} ${_allinone_files}
-		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_headers})
+		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_headers} ${dont_merge})
 endif()
 
 
