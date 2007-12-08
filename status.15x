@@ -81,11 +81,12 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- tex2lyx:
- - import the LaTeX-command \newline
- - import framed and shaded notes
- - support for multi-language LaTeX-files
- - import of font settings
+- tex2lyx now imports the following LaTeX commands and environments:
+  - \newline
+  - environments "framed" and "shaded" from package framed.sty (i.e. framed
+    and shaded notes in LyX)
+  - \selectlanguage, \foreignlanguage, and \inputencoding (bug 27).
+  - all font settings that are natively supported by LyX.
 
 - xdg-open and sensible-editor are now detected as possible viewer (wrappers).
 
@@ -112,9 +113,6 @@ What's new
 
 - If there exists a local layout file, use the local copy instead of the
   system one.
-
-- tex2lyx support for the LaTeX-commands \selectlanguage, \foreignlanguage,
-  and \inputencoding (bug 27).
 
 
 * USER INTERFACE:
