@@ -98,6 +98,9 @@ What's new
 - Fix a crash when exporting a file with a branch from the command line
   (bug 4255).
 
+- Fix a crash when importing an older LyX file (version < 1.5.0) that
+  contains index entries with escaped umlauts (bug 4333).
+
 - Exit gracefully and give the user some information if LyX catches an
   exception from an external program, such as iconv (part of bug 4385).
 

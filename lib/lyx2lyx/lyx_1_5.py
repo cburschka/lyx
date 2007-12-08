@@ -653,17 +653,17 @@ def convert_commandparams(document):
             if commandparams_info[name][0] == "":
                 document.warning("Ignoring invalid option `%s' of command `%s'." % (option1, name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][0], option1.replace('"', '\\"')))
+                lines.append('%s "%s"' % (commandparams_info[name][0], option1.replace('\\', '\\\\').replace('"', '\\"')))
         if option2 != "":
             if commandparams_info[name][1] == "":
                 document.warning("Ignoring invalid second option `%s' of command `%s'." % (option2, name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][1], option2.replace('"', '\\"')))
+                lines.append('%s "%s"' % (commandparams_info[name][1], option2.replace('\\', '\\\\').replace('"', '\\"')))
         if argument != "":
             if commandparams_info[name][2] == "":
                 document.warning("Ignoring invalid argument `%s' of command `%s'." % (argument, name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][2], argument.replace('"', '\\"')))
+                lines.append('%s "%s"' % (commandparams_info[name][2], argument.replace('\\', '\\\\').replace('"', '\\"')))
         document.body[i:i+1] = lines
         i = i + 1
 
@@ -690,13 +690,13 @@ def revert_commandparams(document):
                     preview_line = document.body[k]
                 elif (commandparams_info[name][0] != "" and
                       pname == commandparams_info[name][0]):
-                    option1 = pvalue.strip('"').replace('\\"', '"')
+                    option1 = pvalue.strip('"').replace('\\"', '"').replace('\\\\', '\\')
                 elif (commandparams_info[name][1] != "" and
                       pname == commandparams_info[name][1]):
-                    option2 = pvalue.strip('"').replace('\\"', '"')
+                    option2 = pvalue.strip('"').replace('\\"', '"').replace('\\\\', '\\')
                 elif (commandparams_info[name][2] != "" and
                       pname == commandparams_info[name][2]):
-                    argument = pvalue.strip('"').replace('\\"', '"')
+                    argument = pvalue.strip('"').replace('\\"', '"').replace('\\\\', '\\')
             elif document.body[k].strip() != "":
                 document.warning("Ignoring unknown contents `%s' in command inset %s." % (document.body[k], name))
         if name == "bibitem":
