@@ -50,8 +50,6 @@ using support::rtrim;
 using support::subst;
 using support::addName;
 
-extern FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
-
 
 namespace {
 

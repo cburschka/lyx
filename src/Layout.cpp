@@ -29,9 +29,6 @@ namespace lyx {
 using support::subst;
 using support::trim;
 
-#ifndef FONT_H
-extern FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
-#endif
 
 /// Special value of toclevel for layouts that to not belong in a TOC
 const int Layout::NOT_IN_TOC = -1000;

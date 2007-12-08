@@ -47,7 +47,7 @@ public:
 };
 
 /// Read a font specification from Lexer. Used for layout files.
-FontInfo lyxRead(Lexer &, FontInfo const & fi);
+FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
 
 } // namespace lyx
 
