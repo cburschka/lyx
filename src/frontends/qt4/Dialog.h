@@ -14,7 +14,7 @@
 
 #include "lfuns.h"
 
-#include "support/strfwd.h"
+#include <string>
 
 namespace lyx {
 
@@ -107,8 +107,11 @@ public:
 	virtual bool isVisibleView() const = 0;
 	//@}
 
-	///
-	std::string name() const;
+	/// Dialog identifier.
+	/// FIXME for Andre': Now that Dialog is entirely within qt4/
+	/// We can use QString instead in order to avoid <string> inclusion
+	/// or we can pimpl name_.
+	std::string const & name() const;
 
 	//@{
 	/** Enable the controller to initialise its data structures.
@@ -233,7 +236,7 @@ private:
 	/** The Dialog's name is the means by which a dialog identifies
 	 *  itself to the LyXView.
 	 */
-	char const * const name_;
+	std::string name_;
 	///
 	GuiView * lyxview_;
 
