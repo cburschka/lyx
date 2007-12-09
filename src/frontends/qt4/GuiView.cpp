@@ -462,7 +462,7 @@ void GuiView::dropEvent(QDropEvent* event)
 		string const file = support::os::internal_path(fromqstr(
 			files.at(i).toLocalFile()));
 		if (!file.empty())
-			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
+			lyx::dispatch(FuncRequest(LFUN_FILE_OPEN, file));
 	}
 }
 
