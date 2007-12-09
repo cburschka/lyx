@@ -30,7 +30,7 @@ namespace frontend {
 
 
 Dialog::Dialog(GuiView & lv, std::string const & name)
-	: lyxview_(&lv), name_(name)
+	: name_(name), lyxview_(&lv)
 {}
 
 
