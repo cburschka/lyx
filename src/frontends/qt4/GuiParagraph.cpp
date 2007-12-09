@@ -48,15 +48,10 @@ namespace lyx {
 namespace frontend {
 
 GuiParagraph::GuiParagraph(GuiView & lv)
-	: Dialog(lv, "paragraph")
+	: DialogView(lv, "paragraph")
 {
 	setupUi(this);
 	setWindowTitle(qt_("Paragraph Settings"));
-
-	//setModal(modal);
-	QGridLayout * gridLayout = new QGridLayout(this);
-	gridLayout->setMargin(0);
-	gridLayout->addWidget(this);
 
 	connect(alignDefaultRB, SIGNAL(clicked()), this, SLOT(changed()));
 	connect(alignJustRB, SIGNAL(clicked()), this, SLOT(changed()));
@@ -207,6 +202,11 @@ void GuiParagraph::on_applyPB_clicked()
 void GuiParagraph::on_restorePB_clicked()
 {
 	updateView();
+}
+
+
+void GuiParagraph::enableView(bool enable)
+{
 }
 
 

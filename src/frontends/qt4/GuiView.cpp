@@ -1668,7 +1668,7 @@ void GuiView::hideDialog(string const & name, Inset * inset)
 
 	Dialog * const dialog = it->second.get();
 	if (dialog->isVisibleView())
-		dialog->hide();
+		dialog->hideView();
 	d.open_insets_[name] = 0;
 }
 
@@ -1699,7 +1699,7 @@ void GuiView::hideAll() const
 	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
 
 	for(; it != end; ++it)
-		it->second->hide();
+		it->second->hideView();
 }
 
 
@@ -1711,7 +1711,7 @@ void GuiView::hideBufferDependent() const
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
 		if (dialog->isBufferDependent())
-			dialog->hide();
+			dialog->hideView();
 	}
 }
 
@@ -1729,7 +1729,7 @@ void GuiView::updateBufferDependent(bool switched) const
 			if (dialog->initialiseParams(""))
 				dialog->updateView();
 			else
-				dialog->hide();
+				dialog->hideView();
 		} else {
 			// A bit clunky, but the dialog will request
 			// that the kernel provides it with the necessary

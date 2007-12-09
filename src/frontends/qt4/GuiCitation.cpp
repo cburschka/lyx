@@ -30,6 +30,7 @@
 #include <string>
 
 #include <QCloseEvent>
+#include <QShowEvent>
 
 #undef KeyPress
 
@@ -138,27 +139,12 @@ void GuiCitation::applyView()
 }
 
 
-void GuiCitation::hideView()
-{
-	clearParams();
-	accept();
-}
-
-
-void GuiCitation::showView()
+void GuiCitation::showEvent(QShowEvent * e)
 {
 	init();
 	findLE->clear();
 	availableLV->setFocus();
-	QDialog::show();
-	raise();
-	activateWindow();
-}
-
-
-bool GuiCitation::isVisibleView() const
-{
-	return QDialog::isVisible();
+	GuiDialog::showEvent(e);
 }
 
 
@@ -166,14 +152,14 @@ void GuiCitation::on_okPB_clicked()
 {
 	applyView();
 	clearSelection();
-	hideView();
+	hide();
 }
 
 
 void GuiCitation::on_cancelPB_clicked()
 {
 	clearSelection();
-	hideView();
+	hide();
 }
 
 

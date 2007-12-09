@@ -38,18 +38,14 @@ public:
 
 	///
 	void applyView();
-	/// Hide the dialog from sight
-	void hideView();
-	/// Create the dialog if necessary, update it and display it.
-	void showView();
-	/// \return true if the dialog is visible.
-	bool isVisibleView() const;
 
 public Q_SLOTS:
 	/// Update the display of the dialog whilst it is still visible.
 	void updateView();
 
 private:
+	///
+	void showEvent(QShowEvent * e);
 	///
 	void closeEvent(QCloseEvent * e);
 	/// prepares a call to GuiCitation::searchKeys when we

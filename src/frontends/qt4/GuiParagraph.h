@@ -19,7 +19,7 @@
 
 #include "Layout.h"
 #include "ui_ParagraphUi.h"
-#include "Dialog.h"
+#include "DialogView.h"
 #include "ParagraphParameters.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
@@ -38,7 +38,7 @@ namespace lyx {
 namespace frontend {
 
 class GuiParagraph
-	: public QDialog, public Ui::ParagraphUi, public Dialog
+	: public DialogView, public Ui::ParagraphUi
 {
 	Q_OBJECT
 public:
@@ -63,50 +63,12 @@ private:
 	QString const alignDefaultLabel;
 
 	void applyView() {}
-	void hideView()
-	{
-		clearParams();
-		QDialog::hide();
-	}
-	void showData(std::string const & data)
-	{
-		initialiseParams(data);
-		showView();
-	}
-	void showView()
-	{
-		updateView();  // make sure its up-to-date
-		QDialog::show();
-		raise();
-		activateWindow();
-	}
-	bool isVisibleView() const { return QDialog::isVisible(); }
-	void checkStatus() { updateView(); }
-	void updateData(std::string const & data)
-	{
-		initialiseParams(data);
-		updateView();
-	}
+	void enableView(bool enable);
+
 	std::string name() const { return "paragraph"; }
 
 private:
 	QString name_;
-
-	void showEvent(QShowEvent * e)
-	{
-		QSettings settings;
-		QString key = name_ + "/geometry";
-		QDialog::restoreGeometry(settings.value(key).toByteArray());
-	    QDialog::showEvent(e);
-	}
-
-	void closeEvent(QCloseEvent * e)
-	{
-		QSettings settings;
-		QString key = name_ + "/geometry";
-		settings.setValue(key, QDialog::saveGeometry());
-		QDialog::closeEvent(e);
-	}
 
 private Q_SLOTS:
 	///

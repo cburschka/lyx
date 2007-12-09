@@ -50,6 +50,7 @@ SOURCEFILES = \
 	ButtonPolicy.h \
 	Dialog.cpp \
 	Dialog.h \
+	DialogView.cpp \
 	Resources.cpp \
 	Action.cpp \
 	BulletsModule.cpp \
@@ -135,7 +136,6 @@ SOURCEFILES = \
 
 NOMOCHEADER = \
 	ButtonController.h \
-	DialogView.h \
 	GuiFontLoader.h \
 	GuiFontMetrics.h \
 	GuiImage.h \
@@ -149,6 +149,7 @@ MOCHEADER = \
 	BulletsModule.h \
 	ColorCache.h \
 	CustomizedWidgets.h \
+	DialogView.h \
 	DockView.h \
 	EmptyTable.h \
 	FloatPlacement.h \

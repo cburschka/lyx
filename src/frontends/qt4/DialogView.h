@@ -9,102 +9,47 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef DIALOG_VIEW_H
-#define DIALOG_VIEW_H
+#ifndef DIALOGVIEW_H
+#define DIALOGVIEW_H
 
 #include "Dialog.h"
-#include "GuiView.h"
-#include "qt_helpers.h"
-#include "support/debug.h"
 
-#include <QCloseEvent>
 #include <QDialog>
-#include <QSettings>
-#include <QShowEvent>
-#include <QGridLayout>
 
-#include <string>
+class QCloseEvent;
+class QShowEvent;
 
 namespace lyx {
 namespace frontend {
 
-/// Window Dialog container for LyX dialogs.
-/// This template class that encapsulates a given Widget inside a
-/// QDialog and presents a Dialog interface
-template<class MyWidget>
+/** \c Dialog collects the different parts of a Model-Controller-View
+ *  split of a generic dialog together.
+ */
 class DialogView : public QDialog, public Dialog
 {
+	Q_OBJECT
+
 public:
-	DialogView(
-		GuiView & parent, ///< the main window where to dock.
-		std::string const & name, ///< dialog identifier.
-		bool modal = false, ///< Window modality.
-		Qt::WindowFlags flags = 0
-		)
-		: QDialog(&parent, flags), Dialog(parent, name)
-	{
-		setModal(modal);
-		QGridLayout * gridLayout = new QGridLayout(this);
-		gridLayout->setMargin(0);
-		widget_ = new MyWidget(*this, this);
-		gridLayout->addWidget(widget_);
-		setWindowTitle("LyX: " + widget_->windowTitle());
-	}
+	/// \param lv is the access point for the dialog to the LyX kernel.
+	/// \param name is the identifier given to the dialog by its parent
+	/// container.
+	explicit DialogView(GuiView & lv, std::string const & name);
+	virtual ~DialogView() {}
 
-	/// Dialog inherited methods
-	//@{
-	void applyView() {}
-	void hideView()
-	{
-		clearParams();
-		QDialog::hide();
-	}
-	void showData(std::string const & data)
-	{
-		initialiseParams(data);
-		showView();
-	}
-	void showView()
-	{
-		widget_->updateView();  // make sure its up-to-date
-		QDialog::show();
-		raise();
-		activateWindow();
-	}
-	bool isVisibleView() const { return QDialog::isVisible(); }
-	void checkStatus() { updateView(); }
-	void updateData(std::string const & data)
-	{
-		initialiseParams(data);
-		updateView();
-	}
-	void updateView()
-	{
-		widget_->updateView();
-	}
-	//@}
-private:
-	/// The encapsulated widget.
-	MyWidget * widget_;
+	virtual QWidget * asQWidget() { return this; }
+	virtual QWidget const * asQWidget() const { return this; }
 
-	void showEvent(QShowEvent * e)
-	{
-		QSettings settings;
-		std::string key = name() + "/geometry";
-		QDialog::restoreGeometry(settings.value(key.c_str()).toByteArray());
-	    QDialog::showEvent(e);
-	}
+public:
+	///
+	void setViewTitle(docstring const & title);
 
-	void closeEvent(QCloseEvent * e)
-	{
-		QSettings settings;
-		std::string key = name() + "/geometry";
-		settings.setValue(key.c_str(), QDialog::saveGeometry());
-		QDialog::closeEvent(e);
-	}
+	///
+	void closeEvent(QCloseEvent *);
+	///
+	void showEvent(QShowEvent *);
 };
 
-} // frontend
-} // lyx
+} // namespace frontend
+} // namespace lyx
 
-#endif // DIALOG_VIEW_H
+#endif // DIALOGVIEW_H

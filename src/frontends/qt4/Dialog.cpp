@@ -19,7 +19,11 @@
 #include "FuncStatus.h"
 #include "LyXFunc.h"
 
+#include "support/Debug.h"
+
 #include <string>
+
+using namespace std;
 
 namespace lyx {
 namespace frontend {
@@ -120,6 +124,121 @@ Buffer const & Dialog::buffer() const
 {
 	BOOST_ASSERT(lyxview_->buffer());
 	return *lyxview_->buffer();
+}
+
+
+void Dialog::showData(string const & data)
+{
+	if (isBufferDependent() && !isBufferAvailable())
+		return;
+
+	if (!initialiseParams(data)) {
+		LYXERR0("Dialog \"" << name()
+			<< "\" failed to translate the data string passed to show()");
+		return;
+	}
+
+	showView();
+}
+
+
+void Dialog::apply()
+{
+	if (isBufferDependent()) {
+		if (!isBufferAvailable() ||
+		    (isBufferReadonly() && !canApplyToReadOnly()))
+			return;
+	}
+
+	applyView();
+	dispatchParams();
+
+	if (disconnectOnApply() && !isClosing()) {
+		disconnect();
+		initialiseParams(string());
+		updateView();
+	}
+}
+
+
+void Dialog::updateData(string const & data)
+{
+	if (isBufferDependent() && !isBufferAvailable())
+		return;
+
+	if (!initialiseParams(data)) {
+		LYXERR0("Dialog \"" << name()
+		       << "\" could not be initialized");
+		return;
+	}
+
+	updateView();
+}
+
+
+void Dialog::showView()
+{
+	updateView();  // make sure its up-to-date
+	if (exitEarly())
+		return;
+
+	QWidget * w = asQWidget();
+	QSize const hint = w->sizeHint();
+	if (hint.height() >= 0 && hint.width() >= 0)
+		w->setMinimumSize(hint);
+
+	if (w->isVisible()) {
+		w->raise();
+		w->activateWindow();
+	} else
+		w->show();
+
+	w->setFocus();
+}
+
+
+void Dialog::hideView()
+{
+	QWidget * w = asQWidget();
+	if (!w->isVisible())
+		return;
+	clearParams();
+	disconnect();
+	w->hide();
+}
+
+
+bool Dialog::isVisibleView() const
+{
+	return asQWidget()->isVisible();
+}
+
+
+void Dialog::checkStatus()
+{
+	// buffer independant dialogs are always active.
+	// This check allows us leave canApply unimplemented for some dialogs.
+	if (!isBufferDependent())
+		return;
+
+	// deactivate the dialog if we have no buffer
+	if (!isBufferAvailable()) {
+		enableView(false);
+		return;
+	}
+
+	// check whether this dialog may be active
+	if (canApply()) {
+		bool const readonly = isBufferReadonly();
+		enableView(!readonly);
+		// refreshReadOnly() is too generous in _enabling_ widgets
+		// update dialog to disable disabled widgets again
+
+		if (!readonly || canApplyToReadOnly())
+			updateView();
+
+	} else
+		enableView(false);
 }
 
 } // namespace frontend

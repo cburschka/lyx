@@ -43,27 +43,12 @@ public:
 
 	virtual ~DockView() {}
 
+	virtual QWidget * asQWidget() { return this; }
+	virtual QWidget const * asQWidget() const { return this; }
+
 	/// Dialog inherited methods
 	//@{
 	void applyView() {}
-	void hideView()	{ QDockWidget::hide(); }
-	void showData(std::string const & data)
-	{
-		initialiseParams(data);
-		showView();
-	}
-	void showView()
-	{
-		updateView();  // make sure its up-to-date
-		QDockWidget::show();
-	}
-	bool isVisibleView() const { return QDockWidget::isVisible(); }
-	void checkStatus() { updateView(); }
-	void updateData(std::string const & data)
-	{
-		initialiseParams(data);
-		updateView();
-	}
 	bool isClosing() const { return false; }
 	//@}
 };

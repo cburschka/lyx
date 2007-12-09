@@ -33,7 +33,7 @@ private Q_SLOTS:
 	void replaceallClicked();
 
 private:
-	void showView();
+	void showEvent(QShowEvent * e);
 	void closeEvent(QCloseEvent * e);
 	///
 	bool initialiseParams(std::string const &) { return true; }

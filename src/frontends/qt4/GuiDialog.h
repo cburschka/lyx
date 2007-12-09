@@ -12,16 +12,10 @@
 #ifndef GUIDIALOG_H
 #define GUIDIALOG_H
 
-#include "Dialog.h"
+#include "DialogView.h"
 #include "ButtonController.h"
 
 #include "insets/InsetCommandParams.h"
-
-#include <QDialog>
-#include <QObject>
-
-class QCloseEvent;
-class QShowEvent;
 
 namespace lyx {
 namespace frontend {
@@ -29,7 +23,7 @@ namespace frontend {
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
  */
-class GuiDialog : public QDialog, public Dialog
+class GuiDialog : public DialogView
 {
 	Q_OBJECT
 
@@ -38,7 +32,6 @@ public:
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
 	explicit GuiDialog(GuiView & lv, std::string const & name);
-	~GuiDialog();
 
 public Q_SLOTS:
 	/** \name Buttons
@@ -59,7 +52,6 @@ public:
 	 *
 	 *  The buttons are disabled if not and (re-)enabled if yes.
 	 */
-	void checkStatus();
 	void setButtonsValid(bool valid);
 
 	/** \name Dialog Components
@@ -70,52 +62,26 @@ public:
 	ButtonController & bc() { return bc_; }
 	//@}
 
-	void setViewTitle(docstring const & title);
-
-
 	/// the dialog has changed contents
 	virtual void changed();
+
+	virtual void enableView(bool enable);
 
 	/// default: do nothing
 	virtual void applyView() {}
 	/// default: do nothing
 	virtual void updateContents() {}
-	///
-	void closeEvent(QCloseEvent *);
-	///
-	void showEvent(QShowEvent *);
 
-protected:
-	/// Hide the dialog.
-	virtual void hideView();
-	/// Create the dialog if necessary, update it and display it.
-	virtual void showView();
-	///
-	virtual bool isVisibleView() const;
+public:
 	/// is the dialog currently valid ?
 	virtual bool isValid() { return true; }
 
 public:
-	/** \name Container Access
-	 *  These methods are publicly accessible because they are invoked
-	 *  by the parent container acting on commands from the LyX kernel.
-	 */
-	//@{
-	/// \param data is a string encoding of the data to be displayed.
-	/// It is passed to the Controller to be translated into a useable form.
-	void showData(std::string const & data);
-	void updateData(std::string const & data);
-
-	void hide();
-
-	//@}
 
 	/** When applying, it's useful to know whether the dialog is about
 	 *  to close or not (no point refreshing the display for example).
 	 */
 	bool isClosing() const { return is_closing_; }
-
-	void apply();
 
 	/// Update the display of the dialog whilst it is still visible.
 	virtual void updateView();

@@ -16,6 +16,8 @@
 
 #include <string>
 
+class QWidget;
+
 namespace lyx {
 
 class Buffer;
@@ -51,6 +53,9 @@ public:
 
 	virtual ~Dialog();
 
+	virtual QWidget * asQWidget() = 0;
+	virtual QWidget const * asQWidget() const = 0;
+
 	/** \name Container Access
 	 *  These methods are publicly accessible because they are invoked
 	 *  by the parent container acting on commands from the LyX kernel.
@@ -58,29 +63,20 @@ public:
 	//@{
 	/// \param data is a string encoding of the data to be displayed.
 	/// It is passed to the Controller to be translated into a useable form.
-	virtual void showData(std::string const & /*data*/) {}
-	virtual void updateData(std::string const & /*data*/) {}
-
-	virtual void hide() {}
-
+	virtual void showData(std::string const & data);
+	virtual void updateData(std::string const & data);
 	//@}
 
 	/** Check whether we may apply our data.
 	 *
 	 *  The buttons are disabled if not and (re-)enabled if yes.
 	 */
-	virtual void checkStatus() {}
+	virtual void checkStatus();
 
 	/** When applying, it's useful to know whether the dialog is about
 	 *  to close or not (no point refreshing the display for example).
 	 */
 	virtual bool isClosing() const { return false; }
-
-
-	/** \c Button controller part
-	 */
-	virtual void setButtonsValid(bool /*valid*/) {}
-
 
 	/** \c View part
 	 *  of a Model-Controller-View split of a generic dialog.
@@ -95,16 +91,20 @@ public:
 	virtual void applyView() = 0;
 
 	/// Hide the dialog from sight
-	virtual void hideView() = 0;
+	void hideView();
 
 	/// Create the dialog if necessary, update it and display it.
-	virtual void showView() = 0;
+	void showView();
 
 	/// Update the display of the dialog whilst it is still visible.
 	virtual void updateView() = 0;
 
+	// Default Implementation does nothing.
+	// Each dialog has to choose what control to enable or disable.
+	virtual void enableView(bool /*enable*/) {}
+
 	/// \return true if the dialog is visible.
-	virtual bool isVisibleView() const = 0;
+	virtual bool isVisibleView() const;
 	//@}
 
 	/// Dialog identifier.
@@ -230,7 +230,7 @@ public:
 	//@}
 
 protected:
-	virtual void apply() {}
+	virtual void apply();
 
 private:
 	/** The Dialog's name is the means by which a dialog identifies

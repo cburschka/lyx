@@ -12,8 +12,9 @@
 
 #include "GuiDialog.h"
 #include "GuiView.h"
-#include "support/debug.h"
 #include "qt_helpers.h"
+
+#include "support/debug.h"
 
 #include <QCloseEvent>
 #include <QMainWindow>
@@ -26,19 +27,8 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(GuiView & lv, std::string const & name)
-	: QDialog(&lv), Dialog(lv, name), is_closing_(false)
+	: DialogView(lv, name), is_closing_(false)
 {}
-
-
-GuiDialog::~GuiDialog()
-{
-}
-
-
-void GuiDialog::setViewTitle(docstring const & title)
-{
-	setWindowTitle("LyX: " + toqstr(title));
-}
 
 
 void GuiDialog::setButtonsValid(bool valid)
@@ -49,7 +39,7 @@ void GuiDialog::setButtonsValid(bool valid)
 
 void GuiDialog::slotApply()
 {
-	apply();
+	applyView();
 	bc().apply();
 }
 
@@ -57,7 +47,7 @@ void GuiDialog::slotApply()
 void GuiDialog::slotOK()
 {
 	is_closing_ = true;
-	apply();
+	applyView();
 	is_closing_ = false;
 	QDialog::hide();
 	bc().ok();
@@ -80,66 +70,6 @@ void GuiDialog::slotRestore()
 	bc().restore();
 }
 
-void GuiDialog::checkStatus()
-{
-	// buffer independant dialogs are always active.
-	// This check allows us leave canApply unimplemented for some dialogs.
-	if (!isBufferDependent())
-		return;
-
-	// deactivate the dialog if we have no buffer
-	if (!isBufferAvailable()) {
-		bc().setReadOnly(true);
-		return;
-	}
-
-	// check whether this dialog may be active
-	if (canApply()) {
-		bool const readonly = isBufferReadonly();
-		bc().setReadOnly(readonly);
-		// refreshReadOnly() is too generous in _enabling_ widgets
-		// update dialog to disable disabled widgets again
-
-		if (!readonly || canApplyToReadOnly())
-			updateView();
-
-	} else {
-		bc().setReadOnly(true);
-	}	
-}
-
-
-bool GuiDialog::isVisibleView() const
-{
-	return QDialog::isVisible();
-}
-
-
-void GuiDialog::showView()
-{
-	QSize const hint = sizeHint();
-	if (hint.height() >= 0 && hint.width() >= 0)
-		setMinimumSize(hint);
-
-	updateView();  // make sure its up-to-date
-	if (exitEarly())
-		return;
-
-	if (QWidget::isVisible()) {
-		raise();
-		activateWindow();
-	} else {
-		QWidget::show();
-	}
-	setFocus();
-}
-
-
-void GuiDialog::hideView()
-{
-	QDialog::hide();
-}
-
 
 void GuiDialog::changed()
 {
@@ -149,101 +79,27 @@ void GuiDialog::changed()
 }
 
 
+void GuiDialog::enableView(bool enable)
+{
+	bc().setReadOnly(!enable);
+	bc().setValid(enable);
+	DialogView::enableView(enable);
+}
+
+
 void GuiDialog::updateView()
 {
 	setUpdatesEnabled(false);
 
+	bc().setReadOnly(isBufferReadonly());
 	// protect the BC from unwarranted state transitions
 	updating_ = true;
 	updateContents();
 	updating_ = false;
+	// The widgets may not be valid, so refresh the button controller
+	bc().refresh();
 
 	setUpdatesEnabled(true);
-	QDialog::update();
-}
-
-
-void GuiDialog::showData(string const & data)
-{
-	if (isBufferDependent() && !isBufferAvailable())
-		return;
-
-	if (!initialiseParams(data)) {
-		LYXERR0("Dialog \"" << name()
-			<< "\" failed to translate the data string passed to show()");
-		return;
-	}
-
-	bc().setReadOnly(isBufferReadonly());
-	showView();
-	// The widgets may not be valid, so refresh the button controller
-	bc().refresh();
-}
-
-
-void GuiDialog::updateData(string const & data)
-{
-	if (isBufferDependent() && !isBufferAvailable())
-		return;
-
-	if (!initialiseParams(data)) {
-		LYXERR0("Dialog \"" << name()
-		       << "\" could not be initialized");
-		return;
-	}
-
-	bc().setReadOnly(isBufferReadonly());
-	updateView();
-	// The widgets may not be valid, so refresh the button controller
-	bc().refresh();
-}
-
-
-void GuiDialog::hide()
-{
-	if (!isVisibleView())
-		return;
-
-	clearParams();
-	hideView();
-	Dialog::disconnect();
-}
-
-
-void GuiDialog::apply()
-{
-	if (isBufferDependent()) {
-		if (!isBufferAvailable() ||
-		    (isBufferReadonly() && !canApplyToReadOnly()))
-			return;
-	}
-
-	applyView();
-	dispatchParams();
-
-	if (disconnectOnApply() && !is_closing_) {
-		Dialog::disconnect();
-		initialiseParams(string());
-		updateView();
-	}
-}
-
-
-void GuiDialog::showEvent(QShowEvent * e)
-{
-	QSettings settings;
-	string key = name() + "/geometry";
-	restoreGeometry(settings.value(key.c_str()).toByteArray());
-	QDialog::showEvent(e);
-}
-
-
-void GuiDialog::closeEvent(QCloseEvent * e)
-{
-	QSettings settings;
-	string key = name() + "/geometry";
-	settings.setValue(key.c_str(), saveGeometry());
-	QDialog::closeEvent(e);
 }
 
 } // namespace frontend

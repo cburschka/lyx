@@ -21,6 +21,7 @@
 
 #include <QLineEdit>
 #include <QCloseEvent>
+#include <QShowEvent>
 
 using std::string;
 
@@ -64,10 +65,10 @@ GuiSearch::GuiSearch(GuiView & lv)
 }
 
 
-void GuiSearch::showView()
+void GuiSearch::showEvent(QShowEvent * e)
 {
 	findCO->lineEdit()->selectAll();
-	GuiDialog::showView();
+	GuiDialog::showEvent(e);
 }
 
 
