@@ -112,7 +112,7 @@
 #endif
 
 #cmakedefine PACKAGE "${PACKAGE}"
-#cmakedefine PACKAGE_VERSION ${PACKAGE_VERSION}
+#cmakedefine PACKAGE_VERSION "${PACKAGE_VERSION}"
 
 #cmakedefine USE_POSIX_PACKAGING 1
 #cmakedefine USE_WINDOWS_PACKAGING 1
