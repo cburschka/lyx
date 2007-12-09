@@ -203,15 +203,15 @@ void add_package(string const & name, vector<string> & options)
 // Given is a string like "scaled=0.9", return 0.9 * 100
 string const scale_as_percentage(string const & scale)
 {
-    string::size_type pos = scale.find('=');
-    if (pos != string::npos) {
-       string value = scale.substr(pos + 1);
-       if (isStrDbl(value))
-           return convert<string>(100 * convert<double>(value));
-    }
-    // If the input string didn't match our expectations.
-    // return the default value "100"
-    return "100";
+	string::size_type pos = scale.find('=');
+	if (pos != string::npos) {
+		string value = scale.substr(pos + 1);
+		if (isStrDbl(value))
+			return convert<string>(100 * convert<double>(value));
+	}
+	// If the input string didn't match our expectations.
+	// return the default value "100" 
+	return "100";
 }
 
 
