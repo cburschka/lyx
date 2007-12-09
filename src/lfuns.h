@@ -7,7 +7,7 @@
  * Full author contact details are available in file CREDITS.
  *
  * To add a new function:
- * - add a new enum constant immediately before LFUN_LASTACTION
+ * - add a new enum constant and doc immediately before LFUN_LASTACTION
  * - add an appropriate line in LyXAction.cpp
  * - add a branch to a suitable ::doDispatch() method
  * - add correct test to the corresponding ::getStatus() method
@@ -30,16 +30,20 @@ namespace lyx {
  * Inset*::doDispatch();
  */
 
-/** LFUN documentation (a start at least, Chr 2007-08-12)
+/* LFUN documentation (a start at least, Chr 2007-08-12)
  *
  * The documentation below is primarily notes about restrictions and
- * oddities relating to the different LFUNs. Note that this
- * documentation may well be moved to a more suitable location later
- * on.
+ * oddities relating to the different LFUNs.
  *
- * The documentation is interspersed with the enum:s. Another choice
- * was to put it in a separate list. The best choice was unclear, so
- * this may change. Particularly if doxygen can be used somehow.
+ * Doxygen template:
+
+/**
+ * 
+ * \li Action: 
+ * \li Notion: 
+ * \li Syntax: 
+ * \li Params: 
+ * \li Origin: 
  */
 
 enum kb_action {
@@ -51,13 +55,14 @@ enum kb_action {
 	LFUN_BUFFER_NEW,
 	LFUN_BUFFER_WRITE,
 	// 5
-	LFUN_BUFFER_WRITE_AS,
-/**	LFUN_BUFFER_WRITE_AS,		
- * Function:	Rename and save current buffer.
- * Syntax:	buffer-write-as <filename>
- * In:		<filename> = New name of the buffer/file. A relative path
- *		is with respect to the original location of the buffer/file.
+/**
+ * LFUN_BUFFER_WRITE_AS
+ * \li Action: Rename and save current buffer.
+ * \li Syntax: buffer-write-as <filename>
+ * \li Params: <filename> = New name of the buffer/file. A relative path
+ *             is with respect to the original location of the buffer/file.
  */
+	LFUN_BUFFER_WRITE_AS,
 	LFUN_BUILD_PROGRAM,
 	LFUN_BUFFER_VIEW,
 	LFUN_BUFFER_CLOSE,
@@ -329,6 +334,15 @@ enum kb_action {
 	// 230
 	LFUN_INSET_SETTINGS,
 	LFUN_PARAGRAPH_PARAMS_APPLY,
+/**
+ * LFUN_PARAGRAPH_PARAMS_APPLY
+ * \li Action: Change paragraph settings.
+ * \li Notion: Overwrite all nonspecified settings to the default ones. 
+               Use paragraph-params lfun if you don't want to overwrite others settings.
+ * \li Syntax: lfun-paragraph-params-apply [INDENT] [SPACING] [ALIGN] [OTHERS]
+ * \li Params: For parameters see lfun-paragraph-params lfun.
+ * \li Origin: leeming, 30 Mar 2004
+ */
 	LFUN_PARAGRAPH_UPDATE,
 	LFUN_EXTERNAL_EDIT,
 	LFUN_BRANCH_INSERT,
@@ -394,7 +408,19 @@ enum kb_action {
 	LFUN_TOOLBAR_TOGGLE,             // Edwin 20070521
 	// 285
 	LFUN_BUFFER_WRITE_ALL,           // rgh, gpothier 200707XX
-	LFUN_PARAGRAPH_PARAMS,           // rgh, 200708XX
+	LFUN_PARAGRAPH_PARAMS,
+/**
+ * LFUN_PARAGRAPH_PARAMS
+ * \li Action: Change paragraph settings
+ * \li Notion: Modifies the current paragraph, or currently selected paragraphs. 
+               This function only modifies, and does not override, existing settings.
+ * \li Syntax: lfun_paragraph-params [INDENT] [SPACING] [ALIGN] [OTHERS]
+ * \li Params: INDENT:  \\noindent|\\indent|\\indent-toggle|\\leftindent LENGTH\n
+               SPACING: \\paragraph_spacing default|single|onehalf|double|other\n
+	       ALIGN:   \\align block|left|right|center|default\n
+	       OTHERS:  \\labelwidthstring WIDTH|\\start_of_appendix\n
+ * \li Origin: rgh, Aug 15 2007
+ */
 	LFUN_LAYOUT_MODULES_CLEAR,       // rgh, 20070825
 	LFUN_LAYOUT_MODULE_ADD,          // rgh, 20070825
 	LFUN_LAYOUT_RELOAD,              // rgh, 20070903
