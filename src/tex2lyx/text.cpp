@@ -132,12 +132,16 @@ char const * const known_jurabib_commands[] = { "cite", "citet", "citep",
 "citefield", "citetitle", "cite*", 0 };
 
 /// LaTeX names for quotes
-char const * const known_quotes[] = { "glqq", "grqq", "quotedblbase",
-"textquotedblleft", "quotesinglbase", "guilsinglleft", "guilsinglright", 0};
+char const * const known_quotes[] = { "dq", "guillemotleft", "flqq", "og",
+"guillemotright", "frqq", "fg", "glq", "glqq", "textquoteleft", "grq", "grqq",
+"quotedblbase", "textquotedblleft", "quotesinglbase", "textquoteright", "flq",
+"guilsinglleft", "frq", "guilsinglright", 0};
 
 /// the same as known_quotes with .lyx names
-char const * const known_coded_quotes[] = { "gld", "grd", "gld",
-"grd", "gls", "fls", "frs", 0};
+char const * const known_coded_quotes[] = { "prd", "ard", "ard", "ard",
+"ald", "ald", "ald", "gls", "gld", "els", "els", "grd",
+"gld", "grd", "gls", "ers", "fls",
+"fls", "frs", "frs", 0};
 
 /// LaTeX names for font sizes
 char const * const known_sizes[] = { "tiny", "scriptsize", "footnotesize",
@@ -1189,8 +1193,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// extended to other quotes, but is not so easy (a
 		// left english quote is the same as a right german
 		// quote...)
-		else if (t.asInput() == "`"
-			 && p.next_token().asInput() == "`") {
+		else if (t.asInput() == "`" && p.next_token().asInput() == "`") {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
 			os << "eld";
@@ -1198,11 +1201,28 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.get_token();
 			skip_braces(p);
 		}
-		else if (t.asInput() == "'"
-			 && p.next_token().asInput() == "'") {
+		else if (t.asInput() == "'" && p.next_token().asInput() == "'") {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
 			os << "erd";
+			end_inset(os);
+			p.get_token();
+			skip_braces(p);
+		}
+
+		else if (t.asInput() == ">" && p.next_token().asInput() == ">") {
+			context.check_layout(os);
+			begin_inset(os, "Quotes ");
+			os << "ald";
+			end_inset(os);
+			p.get_token();
+			skip_braces(p);
+		}
+
+		else if (t.asInput() == "<" && p.next_token().asInput() == "<") {
+			context.check_layout(os);
+			begin_inset(os, "Quotes ");
+			os << "ard";
 			end_inset(os);
 			p.get_token();
 			skip_braces(p);
