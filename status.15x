@@ -139,6 +139,9 @@ What's new
 - Fix a crash when the cursor leaves the first paragraph of the
   appendix and it is empty (bug 4352).
 
+- Fix a crash when editing in an inset that contains an horizontal spring 
+  (hfill).
+
 - Fix a crash when pasting text from the clipboard into a multi-line
   tabular cell (bug 4368).
 

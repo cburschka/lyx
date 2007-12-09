@@ -740,7 +740,7 @@ void RowPainter::paintOnlyInsets()
 {
 	pos_type const end = row_.endpos();
 	for (pos_type pos = row_.pos(); pos != end; ++pos) {
-		if (!par_.isInset(pos))
+		if (!par_.isInset(pos) || par_.isHfill(pos))
 			continue;
 
 		if (x_ > bv_.workWidth())
