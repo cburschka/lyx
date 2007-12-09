@@ -35,7 +35,8 @@ namespace lyx {
  * The documentation below is primarily notes about restrictions and
  * oddities relating to the different LFUNs.
  *
- * Doxygen template:
+ * Doxygen template below.
+ */
 
 /**
  * 
