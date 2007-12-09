@@ -801,6 +801,7 @@ src_frontends_qt4_files = Split('''
     ButtonController.cpp
     ColorCache.cpp
     CustomizedWidgets.cpp
+    DialogView.cpp
     EmptyTable.cpp
     FileDialog.cpp
     FloatPlacement.cpp
