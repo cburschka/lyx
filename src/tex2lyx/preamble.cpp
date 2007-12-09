@@ -50,6 +50,12 @@ extern std::map<char, int> special_columns;
 
 std::map<string, vector<string> > used_packages;
 
+// needed to handle encodings with babel
+bool one_language = true;
+
+// to avoid that the babel options overwrite the documentclass options
+bool documentclass_language;
+
 namespace {
 
 const char * const known_languages[] = { "afrikaans", "american", "arabic",
@@ -132,13 +138,29 @@ void handle_opt(vector<string> & opts, char const * const * what, string & targe
 	for (; *what; ++what) {
 		it = find(opts.begin(), opts.end(), *what);
 		if (it != opts.end()) {
+			documentclass_language = true;
 			if (it >= position) {
 				target = *what;
 				position = it;
 			}
-			// remove found options from the list
-			opts.erase(it);
 		}
+	}
+}
+
+
+void delete_opt(vector<string> & opts, char const * const * what)
+{
+	if (opts.empty())
+		return;
+
+	// remove found options from the list
+	// do this after handle_opt to avoid potential memory leaks and to be able
+	// to find in every case the last language option
+	vector<string>::iterator it;
+	for (; *what; ++what) {
+		it = find(opts.begin(), opts.end(), *what);
+		if (it != opts.end())
+			opts.erase(it);
 	}
 }
 
@@ -256,14 +278,41 @@ void handle_package(string const & name, string const & opts)
 
 	else if (name == "amsmath" || name == "amssymb")
 		h_use_amsmath = "1";
-	else if (name == "babel")
-		; // ignore this
+	else if (name == "babel" && !opts.empty()) {
+		// check if more than one option was used - used later for inputenc
+		// in case inputenc is parsed before babel, set the encoding to auto
+		if (options.begin() != options.end() - 1) {
+			one_language = false;
+			h_inputencoding = "auto";
+		}
+		// only set the document language when there was not already one set
+		// via the documentclass options
+		// babel takes the the last language given in the documentclass options
+		// as document language. If there is no such language option, the last
+		// option of its \usepackage call is used.
+		if (documentclass_language == false) {
+			handle_opt(options, known_languages, h_language);
+			delete_opt(options, known_languages);
+			if (is_known(h_language, known_french_languages))
+				h_language = "french";
+			else if (is_known(h_language, known_german_languages))
+				h_language = "german";
+			else if (is_known(h_language, known_ngerman_languages))
+				h_language = "ngerman";
+			else if (is_known(h_language, known_russian_languages))
+				h_language = "russian";
+			else if (is_known(h_language, known_ukrainian_languages))
+				h_language = "ukrainian";
+			h_quotes_language = h_language;
+		}
+	}
 	else if (name == "fontenc")
 		; // ignore this
 	else if (name == "inputenc") {
 		// only set when there is not more than one inputenc option
 		// therefore check for the "," character
-		if (opts.find(",") == string::npos)
+		// also only set when there is not more then one babel language option
+		if (opts.find(",") == string::npos && one_language == true)
 			h_inputencoding = opts;
 		options.clear();
 	} else if (name == "makeidx")
@@ -484,7 +533,16 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 
 		else if (t.cs() == "documentclass") {
 			vector<string> opts = split_options(p.getArg('[', ']'));
+			handle_opt(opts, known_fontsizes, h_paperfontsize);
+			delete_opt(opts, known_fontsizes);
+			// delete "pt" at the end
+			string::size_type i = h_paperfontsize.find("pt");
+			if (i != string::npos)
+				h_paperfontsize.erase(i);
+			// to avoid that the babel options overwrite the documentclass options
+			documentclass_language = false;
 			handle_opt(opts, known_languages, h_language);
+			delete_opt(opts, known_languages);
 			if (is_known(h_language, known_french_languages))
 				h_language = "french";
 			else if (is_known(h_language, known_german_languages))
@@ -495,11 +553,6 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 				h_language = "russian";
 			else if (is_known(h_language, known_ukrainian_languages))
 				h_language = "ukrainian";
-			handle_opt(opts, known_fontsizes, h_paperfontsize);
-			// delete "pt" at the end
-			string::size_type i = h_paperfontsize.find("pt");
-			if (i != string::npos)
-				h_paperfontsize.erase(i);
 			h_quotes_language = h_language;
 			h_options = join(opts, ",");
 			h_textclass = p.getArg('{', '}');
