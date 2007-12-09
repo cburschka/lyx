@@ -39,7 +39,7 @@ void GuiDialog::setButtonsValid(bool valid)
 
 void GuiDialog::slotApply()
 {
-	applyView();
+	apply();
 	bc().apply();
 }
 
@@ -47,7 +47,7 @@ void GuiDialog::slotApply()
 void GuiDialog::slotOK()
 {
 	is_closing_ = true;
-	applyView();
+	apply();
 	is_closing_ = false;
 	QDialog::hide();
 	bc().ok();
