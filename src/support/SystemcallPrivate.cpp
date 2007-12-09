@@ -51,7 +51,7 @@ int SystemcallPrivate::start(const std::string& cmd, bool waitForFinished)
 	ProgressInterface* progress = Systemcall::progress();
 	if (progress) {
 		progress->clearMessages();
-		progress->appendMessage(qt_("Starting LaTex with command "));
+		progress->appendMessage(qt_("Starting LaTeX with command "));
 		progress->appendMessage(cmd.c_str());
 	}
 
@@ -89,7 +89,7 @@ void SystemcallPrivate::processStarted()
 {
 	ProgressInterface* progress = Systemcall::progress();
 	if (progress) {
-		progress->appendMessage(qt_("LaTex started\n"));
+		progress->appendMessage(qt_("LaTeX started\n"));
 	}
 }
 
@@ -98,7 +98,7 @@ void SystemcallPrivate::processError(QProcess::ProcessError)
 {
 	ProgressInterface* progress = Systemcall::progress();
 	if (progress) {
-		progress->appendMessage(qt_("LaTex error\n"));
+		progress->appendMessage(qt_("LaTeX error\n"));
 	}
 }
 
