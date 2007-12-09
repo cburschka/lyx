@@ -120,19 +120,14 @@ void handle_opt(vector<string> & opts, char const * const * what, string & targe
 	if (opts.empty())
 		return;
 
-	// the last language option is the document language (for babel and LyX)
-	// the last size option is the document font size
 	vector<string>::iterator it;
-	vector<string>::iterator position = opts.begin();
 	for (; *what; ++what) {
 		it = find(opts.begin(), opts.end(), *what);
 		if (it != opts.end()) {
-			if (it >= position) {
-				target = *what;
-				position = it;
-			}
+			target = *what;
 			// remove found options from the list
 			opts.erase(it);
+			return;
 		}
 	}
 }
