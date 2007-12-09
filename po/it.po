@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-12-09 15:22+0100\n"
-"PO-Revision-Date: 2007-12-08 23:45+0100\n"
+"PO-Revision-Date: 2007-12-09 16:08+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@tlc.unipr.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2490,7 +2490,7 @@ msgstr "Stampa tutte le pagine"
 
 #: src/frontends/qt4/ui/PrintUi.ui:94
 msgid "Fro&m"
-msgstr "D&a"
+msgstr "&Da"
 
 #: src/frontends/qt4/ui/PrintUi.ui:107
 msgid "&All"
@@ -2498,7 +2498,7 @@ msgstr "&Tutto"
 
 #: src/frontends/qt4/ui/PrintUi.ui:119
 msgid "Print &odd-numbered pages"
-msgstr "Stampa pagine &dispari"
+msgstr "Stampa pagine d&ispari"
 
 #: src/frontends/qt4/ui/PrintUi.ui:129
 msgid "Print &even-numbered pages"
@@ -2513,9 +2513,8 @@ msgid "Re&verse order"
 msgstr "Ordine in&verso"
 
 #: src/frontends/qt4/ui/PrintUi.ui:152
-#, fuzzy
 msgid "Copie&s"
-msgstr "Copie"
+msgstr "&Copie"
 
 #: src/frontends/qt4/ui/PrintUi.ui:164
 msgid "Number of copies"
@@ -2531,7 +2530,7 @@ msgstr "&Ordina"
 
 #: src/frontends/qt4/ui/PrintUi.ui:233
 msgid "&Print"
-msgstr "&Stampa"
+msgstr "Sta&mpa"
 
 #: src/frontends/qt4/ui/PrintUi.ui:261
 msgid "Print Destination"
@@ -2543,7 +2542,7 @@ msgstr "Manda l'output alla stampante"
 
 #: src/frontends/qt4/ui/PrintUi.ui:276
 msgid "P&rinter:"
-msgstr "S&tampante:"
+msgstr "Stampa&nte:"
 
 #: src/frontends/qt4/ui/PrintUi.ui:286
 msgid "Send output to the given printer"
@@ -15970,304 +15969,3 @@ msgstr ""
 #: src/support/userinfo.cpp:44
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
-
-#~ msgid "Placeholders"
-#~ msgstr "Segnaposto"
-
-#~ msgid "phantom"
-#~ msgstr "phantom"
-
-#~ msgid "vphantom"
-#~ msgstr "vphantom"
-
-#~ msgid "hphantom"
-#~ msgstr "hphantom"
-
-#~ msgid "&Right"
-#~ msgstr "A destra"
-
-#~ msgid "&Center"
-#~ msgstr "Centrato"
-
-#~ msgid "theorem"
-#~ msgstr "teorema"
-
-#~ msgid "Opened Theorem Inset"
-#~ msgstr "E' stato aperto l'inserto Teorema"
-
-#~ msgid "Case."
-#~ msgstr "Caso."
-
-#~ msgid "Case \\arabic{case}."
-#~ msgstr "Caso \\arabic{case}."
-
-#~ msgid "Algorithm #."
-#~ msgstr "Algoritmo #."
-
-#~ msgid "Case @Section@.\\arabic{theorem}."
-#~ msgstr "Caso @Section@.\\arabic{theorem}."
-
-#~ msgid "&Load"
-#~ msgstr "&Carica"
-
-#~ msgid "Acknowledgement \\arabic{theorem}"
-#~ msgstr "Riconoscimento \\arabic{theorem}"
-
-#~ msgid "To &file:"
-#~ msgstr "Al &file:"
-
-#~ msgid "Co&pies:"
-#~ msgstr "Co&pie:"
-
-#~ msgid "Specify the command option names for your printer command"
-#~ msgstr "Specifica le opzioni del comando per il tuo comando di stampa"
-
-#~ msgid "Printer &name:"
-#~ msgstr "&Nome stampante:"
-
-#~ msgid "Columns "
-#~ msgstr "Colonne "
-
-#~ msgid "Overprint "
-#~ msgstr "Sovrastampa "
-
-#~ msgid "Conjecture "
-#~ msgstr "Congettura"
-
-#~ msgid "Font st&yle:"
-#~ msgstr "Stile carattere:"
-
-#~ msgid "Use printer name explicitely"
-#~ msgstr "Usa esplicitamente il nome della stampante"
-
-#~ msgid "Adapt outp&ut"
-#~ msgstr "Adatta l'outp&ut"
-
-#~ msgid "&Type:"
-#~ msgstr "&Tipo:"
-
-#~ msgid "Part "
-#~ msgstr "Parte "
-
-#~ msgid "columns "
-#~ msgstr "colonne "
-
-#~ msgid "overprint "
-#~ msgstr "sovrastampa "
-
-#~ msgid "overlayarea"
-#~ msgstr "sovrapposizione"
-
-#~ msgid "Corollary_"
-#~ msgstr "Corollario_"
-
-#~ msgid "Definition. "
-#~ msgstr "Definizione. "
-
-#~ msgid "Example. "
-#~ msgstr "Esempio. "
-
-#~ msgid "Fact. "
-#~ msgstr "Fatto. "
-
-#~ msgid "Proof. "
-#~ msgstr "Dimostrazione. "
-
-#~ msgid "Theorem. "
-#~ msgstr "Teorema. "
-
-#~ msgid "note: "
-#~ msgstr "nota: "
-
-#~ msgid "&Extended Chars"
-#~ msgstr "&Caratteri estesi"
-
-#~ msgid "Placement:"
-#~ msgstr "Posizionamento:"
-
-#~ msgid "default"
-#~ msgstr "predefinito"
-
-#~ msgid "common"
-#~ msgstr "comune"
-
-#~ msgid "Listings"
-#~ msgstr "Listati"
-
-#~ msgid "Toggle Table of Contents"
-#~ msgstr "Commuta Indice generale"
-
-#~ msgid "Toc"
-#~ msgstr "Toc"
-
-#~ msgid "Table of Contents|T"
-#~ msgstr "Indice generale|g"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Chinese"
-#~ msgstr "Cinese"
-
-#~ msgid "Upper"
-#~ msgstr "Superiore"
-
-#~ msgid "Table of contents"
-#~ msgstr "Indice generale"
-
-#~ msgid "Number style"
-#~ msgstr "Stile numero"
-
-#~ msgid "Error closing file"
-#~ msgstr "Si è verificato un errore chiudendo il file"
-
-#~ msgid "block "
-#~ msgstr "Blocco "
-
-#~ msgid "Corollary.  "
-#~ msgstr "Corollario.  "
-
-#~ msgid "Basic style"
-#~ msgstr "Stile base"
-
-#~ msgid "A caption for the List of Listings"
-#~ msgstr "Didascalia per Elenco dei listati"
-
-#~ msgid "&Label"
-#~ msgstr "&Etichetta"
-
-#~ msgid "A Label for the caption"
-#~ msgstr "Etichetta per la didascalia"
-
-#~ msgid "<- P&romote"
-#~ msgstr "<- P&romuovi"
-
-#~ msgid "D&own"
-#~ msgstr "&Giu"
-
-#~ msgid "Upd&ate"
-#~ msgstr "&Aggiorna"
-
-#~ msgid "SubSection"
-#~ msgstr "Sottosezione"
-
-#~ msgid ""
-#~ "No font change defined. Use Character under the Layout menu to define "
-#~ "font change."
-#~ msgstr ""
-#~ "Non è stata definita alcuna modifica del carattere. Usa Carattere nel "
-#~ "menù Struttura per definire la modifica dei caratteri."
-
-#~ msgid "Unknown toc list"
-#~ msgstr "L'elenco dell'indice generale è sconosciuto"
-
-#~ msgid "Insert glossary entry"
-#~ msgstr "Inserisci voce di glossario"
-
-#~ msgid "Glo"
-#~ msgstr "Glo"
-
-#~ msgid "TeX Code:"
-#~ msgstr "Codice TeX:"
-
-#~ msgid "Open this panel as a separate window"
-#~ msgstr "Apri questo pannello come una finestra separata"
-
-#~ msgid "&Detach panel"
-#~ msgstr "&Stacca pannello"
-
-#~ msgid "Insert spacing"
-#~ msgstr "Inserisci spaziatura"
-
-#~ msgid "Set limits style"
-#~ msgstr "Imposta stile limiti"
-
-#~ msgid "Set math font"
-#~ msgstr "Imposta carattere matematico"
-
-#~ msgid "Insert fraction"
-#~ msgstr "Inserisci frazione"
-
-#~ msgid "Toggle between display and inline mode"
-#~ msgstr "Commuta tra modalità centrata e in linea"
-
-#~ msgid "Show delimiter and bracket dialog"
-#~ msgstr "Mostra finestra delimitarore e parentesi"
-
-#~ msgid "Math Panel|l"
-#~ msgstr "Pannello matematico|l"
-
-#~ msgid "Math Panel|P"
-#~ msgstr "Pannello matematico|l"
-
-#~ msgid "Show math panel"
-#~ msgstr "Mostra pannello matematico"
-
-#~ msgid "LyX: Math Roots"
-#~ msgstr "LyX: radici matematiche"
-
-#~ msgid "Cube root\t\\root"
-#~ msgstr "Radice cubica\t\\root"
-
-#~ msgid "LyX: Math Styles"
-#~ msgstr "LyX: stili matematici"
-
-#~ msgid "LyX: Math Fonts"
-#~ msgstr "LyX: caratteri matematici"
-
-#~ msgid "The document uses a missing TeX class \"%1$s\".\n"
-#~ msgstr "Il documento usa una classe di TeX scomparsa \"%1$s\".\n"
-
-#~ msgid "Insert math delimiters"
-#~ msgstr "Inserisci delimitatori matematici"
-
-#~ msgid "E&xtra options"
-#~ msgstr "Opzioni a&ggiuntive"
-
-#~ msgid "Alig&nment:"
-#~ msgstr "Alli&neamento:"
-
-#~ msgid "&From:"
-#~ msgstr "&Da:"
-
-#~ msgid "&To:[[as in 'From format x to format y']]"
-#~ msgstr "&A:"
-
-#~ msgid "&Converters"
-#~ msgstr "&Convertitori"
-
-#~ msgid "The encoding for the screen fonts."
-#~ msgstr "E' la codifica per i caratteri dello schermo."
-
-#~ msgid "Class Settings"
-#~ msgstr "Impostazioni classe"
-
-#~ msgid "Save Bookmark|S"
-#~ msgstr "Salva segnalibro|S"
-
-#~ msgid "The bold font in the dialogs."
-#~ msgstr "E' il carattere grassetto nei dialoghi."
-
-#~ msgid "The encoding for the menu/popups fonts."
-#~ msgstr "E' la codifica per i caratteri dei menù e dei popup."
-
-#~ msgid "The normal font in the dialogs."
-#~ msgstr "E' il carattere normale nei dialoghi."
-
-#~ msgid "\tEnd."
-#~ msgstr "\tFine."
-
-#~ msgid "#*"
-#~ msgstr "#*"
-
-#~ msgid "PrettyRef: "
-#~ msgstr "Riferimento considerevole: "
-
-#~ msgid "Opening child document "
-#~ msgstr "Sto aprendo il documento figlio "
-
-#~ msgid "Special Insets|S"
-#~ msgstr "Inserti speciali|s"
-
-#~ msgid "Insets|n"
-#~ msgstr "Inserti|n"
