@@ -195,11 +195,25 @@ void add_package(string const & name, vector<string> & options)
 }
 
 
+// Given is a string like "scaled=0.9", return 0.9 * 100
+string const scale_as_percentage(string const & scale)
+{
+    string::size_type pos = scale.find('=');
+    if (pos != string::npos) {
+       string value = scale.substr(pos + 1);
+       if (isStrDbl(value))
+           return convert<string>(100 * convert<double>(value));
+    }
+    // If the input string didn't match our expectations.
+    // return the default value "100"
+    return "100";
+}
+
+
 void handle_package(string const & name, string const & opts)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
-	size_t pos;
 	string scale;
 
 	// roman fonts
@@ -220,17 +234,7 @@ void handle_package(string const & name, string const & opts)
 		h_font_sans = name;
 		if (!opts.empty()) {
 			scale = opts;
-			// the option is in the form "scaled=0.9"
-			// therefore cut of before the "="
-			pos = scale.find("=");
-			if (pos != string::npos) { 
-				scale.erase(0, pos + 1);
-				if (isStrDbl(scale)) {
-					// LyX needs the scale as integer, therfore multiply by 100
-					scale = convert<string>(100 * convert<double>(scale));
-					h_font_sf_scale = scale;
-				}
-			}
+			h_font_sf_scale = scale_as_percentage(scale);
 		}
 	}
 	// typewriter fonts
@@ -238,17 +242,7 @@ void handle_package(string const & name, string const & opts)
 		h_font_typewriter = name;
 		if (!opts.empty()) {
 			scale = opts;
-			// the option is in the form "scaled=0.9"
-			// therefore cut of before the "="
-			pos = scale.find("=");
-			if (pos != string::npos) { 
-				scale.erase(0, pos + 1);
-				if (isStrDbl(scale)) {
-					// LyX needs the scale as integer, therfore multiply by 100
-					scale = convert<string>(100 * convert<double>(scale));
-					h_font_tt_scale = scale;
-				}
-			}
+			h_font_tt_scale = scale_as_percentage(scale);
 		}
 	}
 	// font uses old-style figure
@@ -538,7 +532,6 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 			string opts = p.getOpt();
 			if (!opts.empty()) {
 				istringstream is(string(opts, 1));
-				//cerr << "opt: " << is.str() << "\n";
 				is >> nargs;
 			}
 			special_columns[name[0]] = nargs;
