@@ -28,6 +28,7 @@ lang = {'afrikaans': ['afrikaans', 'Afrikaans', 'false', 'iso8859-1', 'af_ZA', '
  'croatian': ['croatian', 'Croatian', 'false', 'iso8859-2', 'hr_HR', ''],
  'czech': ['czech', 'Czech', 'false', 'iso8859-2', 'cs_CZ', ''],
  'danish': ['danish', 'Danish', 'false', 'iso8859-1', 'da_DK', ''],
+ 'default': ['default', 'default', 'false', 'iso8859-1', 'C', ''],
  'dutch': ['dutch', 'Dutch', 'false', 'iso8859-1', 'nl_NL', ''],
  'english': ['english', 'English', 'false', 'iso8859-1', 'en_US', ''],
  'esperanto': ['esperanto', 'Esperanto', 'false', 'iso8859-3', 'eo', ''],
