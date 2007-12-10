@@ -308,6 +308,7 @@ liblyxqt4_la_SOURCES = \
 	$(NOMOCHEADER)
 
 BUILT_SOURCES += liblyxqt4.cpp
+CLEANFILES += liblyxqt4.cpp
 
 else
 

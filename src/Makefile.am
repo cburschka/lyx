@@ -283,6 +283,7 @@ lyxcore.cpp:
 	@echo -e '$(SOURCEFILESCORE:%=\n#include "%")\n' > $@
 
 BUILT_SOURCES += lyxcore.cpp $(STANDALONEFILES)
+CLEANFILES += lyxcore.cpp
 
 liblyxcore_la_SOURCES = lyxcore.cpp $(STANDALONEFILES) $(HEADERFILESCORE)
 
@@ -461,6 +462,7 @@ lyxmathed.cpp:
 	@echo -e '$(SOURCEFILESMATHED:%=\n#include "%")\n' > $@
 
 BUILT_SOURCES += lyxmathed.cpp
+CLEANFILES += lyxmathed.cpp
 
 liblyxmathed_la_SOURCES = lyxmathed.cpp $(HEADERFILESMATHED)
 
@@ -600,6 +602,7 @@ lyxinsets.cpp:
 	@echo -e '$(SOURCEFILESINSETS:%=\n#include "%")\n' > $@
 
 BUILT_SOURCES += lyxinsets.cpp
+CLEANFILES += lyxinsets.cpp
 
 liblyxinsets_la_SOURCES = lyxinsets.cpp $(HEADERFILESINSETS)
 
