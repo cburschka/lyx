@@ -370,7 +370,8 @@ dist_images_DATA = \
 	images/toolbar-toggle_table.png \
 	images/undo.png \
 	images/unknown.png \
-	images/up.png
+	images/up.png \
+	images/url-insert.png
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
