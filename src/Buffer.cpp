@@ -1352,6 +1352,10 @@ void Buffer::validate(LaTeXFeatures & features) const
 		}
 	}
 
+	// Floats with 'Here definitely' as default setting.
+	if (params().float_placement.find('H') != string::npos)
+		features.require("float");
+
 	// AMS Style is at document level
 	if (params().use_amsmath == BufferParams::package_on
 	    || tclass.provides("amsmath"))
