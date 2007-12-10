@@ -19,7 +19,7 @@
 #include "FuncStatus.h"
 #include "LyXFunc.h"
 
-#include "support/Debug.h"
+#include "support/debug.h"
 
 #include <string>
 
