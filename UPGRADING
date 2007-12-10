@@ -12,6 +12,9 @@ able to read old preferences files, but it will save them in the new
 format, so it is not possible to run LyX 1.4.x and 1.5.x with the same
 personal configuration directory.
 
+The list of recently open files is now stored in a different location.
+It will therefore be reset when upgrading from LyX 1.4.x.
+
 The format of the layout files has also changed, but LyX 1.5.x uses a
 converter layout2layout.py written in python that will convert old layout
 files on the fly (see below, section "Document transfer").
