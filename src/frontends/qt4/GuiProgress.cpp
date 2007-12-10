@@ -13,6 +13,8 @@
 
 #include "GuiProgress.h"
 
+#include "qt_helpers.h"
+
 #include "support/Systemcall.h"
 
 #include <QApplication>
@@ -27,7 +29,7 @@ GuiProgress::GuiProgress(GuiView & parent, Qt::DockWidgetArea area,
 {
 	setWindowTitle(qt_("LaTeX Progress"));
 	setWidget(&text_edit);
-	lyx::support::Systemcall::registerProgressInterface(this);
+	support::Systemcall::registerProgressInterface(this);
 }
 
 

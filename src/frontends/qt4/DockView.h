@@ -14,8 +14,6 @@
 
 #include "Dialog.h"
 #include "GuiView.h"
-#include "qt_helpers.h"
-#include "support/debug.h"
 
 #include <QDockWidget>
 
@@ -23,8 +21,11 @@ namespace lyx {
 namespace frontend {
 
 /// Dock Widget container for LyX dialogs.
-/// This template class that encapsulates a given Widget inside a
-/// QDockWidget and presents a Dialog interface
+/**
+ * This template class that encapsulates a given Widget inside a
+ * QDockWidget and presents a Dialog interface
+ * FIXME: create a DockView.cpp file
+ **/
 class DockView : public QDockWidget, public Dialog
 {
 public:

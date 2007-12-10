@@ -39,14 +39,9 @@ public:
 	virtual QWidget * asQWidget() { return this; }
 	virtual QWidget const * asQWidget() const { return this; }
 
-public:
+protected:
 	///
 	void setViewTitle(docstring const & title);
-
-	///
-	void closeEvent(QCloseEvent *);
-	///
-	void showEvent(QShowEvent *);
 };
 
 } // namespace frontend

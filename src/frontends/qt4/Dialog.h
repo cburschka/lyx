@@ -16,6 +16,7 @@
 
 #include <string>
 
+class QString;
 class QWidget;
 
 namespace lyx {
@@ -55,6 +56,26 @@ public:
 
 	virtual QWidget * asQWidget() = 0;
 	virtual QWidget const * asQWidget() const = 0;
+
+	/// Session key.
+	/**
+	 * This key must be used for any session setting.
+	 **/
+	QString sessionKey() const;
+
+	/// Save session settings.
+	/**
+	 * This default implementation saves the geometry state.
+	 * Reimplement to save more settings.
+	 **/
+	virtual void saveSession() const;
+
+	/// Restore session settings.
+	/**
+	 * This default implementation restores the geometry state.
+	 * Reimplement to restore more settings.
+	 **/
+	virtual void restoreSession();
 
 	/** \name Container Access
 	 *  These methods are publicly accessible because they are invoked

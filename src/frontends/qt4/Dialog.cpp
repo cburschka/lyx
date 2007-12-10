@@ -13,6 +13,7 @@
 #include "Dialog.h"
 
 #include "GuiView.h"
+#include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "FuncRequest.h"
@@ -20,6 +21,9 @@
 #include "LyXFunc.h"
 
 #include "support/debug.h"
+
+#include <QSettings>
+#include <QString>
 
 #include <string>
 
@@ -239,6 +243,28 @@ void Dialog::checkStatus()
 
 	} else
 		enableView(false);
+}
+
+
+QString Dialog::sessionKey() const
+{
+	return "view-" + QString::number(lyxview_->id())
+		+ "/" + toqstr(name());
+}
+
+
+void Dialog::saveSession() const
+{
+	QSettings settings;
+	settings.setValue(sessionKey() + "/geometry", asQWidget()->saveGeometry());
+}
+
+
+void Dialog::restoreSession()
+{
+	QSettings settings;
+	asQWidget()->restoreGeometry(
+		settings.value(sessionKey() + "/geometry").toByteArray());
 }
 
 } // namespace frontend

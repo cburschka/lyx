@@ -16,7 +16,6 @@
 #include "qt_helpers.h"
 
 #include <QCloseEvent>
-#include <QSettings>
 #include <QShowEvent>
 
 
@@ -31,24 +30,6 @@ DialogView::DialogView(GuiView & lv, std::string const & name)
 void DialogView::setViewTitle(docstring const & title)
 {
 	setWindowTitle("LyX: " + toqstr(title));
-}
-
-
-void DialogView::showEvent(QShowEvent * e)
-{
-	QSettings settings;
-	QString key = toqstr(name()) + "/geometry";
-	restoreGeometry(settings.value(key).toByteArray());
-	QDialog::showEvent(e);
-}
-
-
-void DialogView::closeEvent(QCloseEvent * e)
-{
-	QSettings settings;
-	QString key = toqstr(name()) + "/geometry";
-	settings.setValue(key, saveGeometry());
-	QDialog::closeEvent(e);
 }
 
 } // namespace frontend

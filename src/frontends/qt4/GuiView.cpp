@@ -421,6 +421,10 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 #endif
 		settings.setValue(key + "/icon_size", iconSize());
 		d.toolbars_->saveToolbarInfo();
+		// Now take care of all other dialogs:
+		std::map<string, DialogPtr>::const_iterator it = d.dialogs_.begin();
+		for (; it!= d.dialogs_.end(); ++it)
+			it->second->saveSession();
 	}
 
 	guiApp->unregisterView(id_);
@@ -1619,8 +1623,11 @@ Dialog * GuiView::find_or_build(string const & name)
 	if (it != d.dialogs_.end())
 		return it->second.get();
 
-	d.dialogs_[name].reset(build(name));
-	return d.dialogs_[name].get();
+	Dialog * dialog = build(name);
+	d.dialogs_[name].reset(dialog);
+	if (lyxrc.allow_geometry_session)
+		dialog->restoreSession();
+	return dialog;
 }
 
 
