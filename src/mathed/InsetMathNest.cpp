@@ -726,6 +726,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
+	// 'Locks' the math inset. A 'locked' math inset behaves as a unit
+	// that is traversed by a single <CursorLeft>/<CursorRight>.
 	case LFUN_INSET_TOGGLE:
 		cur.recordUndo();
 		lock(!lock());
