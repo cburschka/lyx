@@ -1348,7 +1348,7 @@ void BufferParams::makeTextClass()
 				bformat(_("The module %1$s has been requested by\n"
 					"this document but has not been found in the list of\n"
 					"available modules. If you recently installed it, you\n"
-					"probalby need to reconfigure LyX.\n"), from_utf8(modName));
+					"probably need to reconfigure LyX.\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Module not available"),
 					msg + _("Some layouts may not be available."));
 			lyxerr << "BufferParams::makeTextClass(): Module " <<
