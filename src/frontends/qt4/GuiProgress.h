@@ -44,7 +44,7 @@ public:
 	bool initialiseParams(std::string const & source) { return true; }
 	void clearParams() {}
 	void dispatchParams() {}
-	bool isBufferDependent() const { return true; }
+	bool isBufferDependent() const { return false; }
 	bool canApply() const { return true; }
 	bool canApplyToReadOnly() const { return true; }
 	void updateView() {}
