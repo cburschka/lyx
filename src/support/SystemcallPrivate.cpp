@@ -52,11 +52,11 @@ int SystemcallPrivate::start(const std::string & cmd, bool waitForFinished)
 	if (progress) {
 		progress->clearMessages();
 		progress->appendMessage(qt_("Starting process with command "));
-		progress->appendMessage(cmd.c_str());
+		progress->appendMessage(toqstr(cmd));
 	}
 
 	process.setReadChannel(QProcess::StandardOutput);
-	process.start(cmd.c_str(), QStringList(), QIODevice::ReadOnly);
+	process.start(toqstr(cmd), QStringList(), QIODevice::ReadOnly);
 	// wait some seconds until the process has started
 	process.waitForStarted(10 * 1000);
 	if (waitForFinished) {
