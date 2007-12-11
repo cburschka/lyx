@@ -131,6 +131,19 @@ dist_frdoc_DATA = \
 	fr/Tutorial.lyx \
 	fr/UserGuide.lyx
 
+frclipartdocdir = $(pkgdatadir)/doc/fr/clipart
+dist_frclipartdoc_DATA = \
+	BoxInsetDefaultQt4.png \
+	ChildDocumentQt4.png \
+	CommentNoteImageQt4.png \
+	FramedNoteImageQt4.png \
+	GreyedOutNoteImageQt4.png \
+	LyXNoteImageQt4.png \
+	ShadedNoteImageQt4.png \
+	floatQt4.png \
+	footnoteQt4.png \
+	labelQt4.png
+
 gldocdir = $(pkgdatadir)/doc/gl
 dist_gldoc_DATA = \
 	gl/Intro.lyx \
