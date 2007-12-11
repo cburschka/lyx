@@ -121,6 +121,10 @@ What's new
 - Use package "float" when the default placement for floats is set to 
   'Here, definitely'.
 
+- Fix import of bounding box arguments "natheight", "natwidth", "bbllx",
+  "bblly", "bburx" and "bbury" (bug 4418).
+
+
 * USER INTERFACE:
 
 - Fix a crash when using bookmarks in insets (bug 4301).
