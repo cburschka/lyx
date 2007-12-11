@@ -1479,6 +1479,7 @@ lib_images_files = Split('''
     undo.png
     unknown.png
     up.png
+    url-insert.png
 ''')
 
 
