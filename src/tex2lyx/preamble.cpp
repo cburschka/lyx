@@ -232,7 +232,7 @@ string const scale_as_percentage(string const & scale)
 			return convert<string>(100 * convert<double>(value));
 	}
 	// If the input string didn't match our expectations.
-	// return the default value "100" 
+	// return the default value "100"
 	return "100";
 }
 
