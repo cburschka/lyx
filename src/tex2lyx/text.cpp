@@ -1671,8 +1671,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				numberOfbbOptions++;
 			if (numberOfbbOptions == 4)
 				os << "\tBoundingBox "
-				   << opts["bbllx"] << opts["bblly"]
-				   << opts["bburx"] << opts["bbury"] << '\n';
+				   << opts["bbllx"] << " " << opts["bblly"] << " "
+				   << opts["bburx"] << " " << opts["bbury"] << '\n';
 			else if (numberOfbbOptions > 0)
 				cerr << "Warning: Ignoring incomplete includegraphics boundingbox arguments.\n";
 			numberOfbbOptions = 0;
@@ -1682,7 +1682,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				numberOfbbOptions++;
 			if (numberOfbbOptions == 2)
 				os << "\tBoundingBox 0bp 0bp "
-				   << opts["natwidth"] << opts["natheight"] << '\n';
+				   << opts["natwidth"] << " " << opts["natheight"] << '\n';
 			else if (numberOfbbOptions > 0)
 				cerr << "Warning: Ignoring incomplete includegraphics boundingbox arguments.\n";
 			ostringstream special;
