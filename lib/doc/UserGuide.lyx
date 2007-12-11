@@ -25048,7 +25048,7 @@ preview
 
 \begin_layout Standard
 LyX will generate previews of math insets.
- It will also generate previews of include insets if you select the 
+ It will also generate previews of included insets if you select the 
 \family sans
 Show\InsetSpace ~
 preview
@@ -25068,7 +25068,8 @@ preview-latex
 preview
 \series default
 ) installed.
- You find it in the TeX Catalogue, 
+ In case it is not already installed, you find it in the TeX Catalogue,
+ 
 \begin_inset LatexCommand cite
 key "TeXCatalogue"
 
