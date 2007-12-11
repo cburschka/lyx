@@ -32,7 +32,7 @@ public:
 
 	// When waitForFinished == true :   returns the exit code of the process
 	// When waitForFinished == false:   returns 0 if the process could be started
-	int start(const std::string& cmd, bool waitForFinished);
+	int start(const std::string & cmd, bool waitForFinished);
 
 public Q_SLOTS:
 	void newProcessOutput();

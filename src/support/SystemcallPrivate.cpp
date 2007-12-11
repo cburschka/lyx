@@ -46,12 +46,12 @@ SystemcallPrivate::SystemcallPrivate()
 }
 
 
-int SystemcallPrivate::start(const std::string& cmd, bool waitForFinished)
+int SystemcallPrivate::start(const std::string & cmd, bool waitForFinished)
 {
 	ProgressInterface* progress = Systemcall::progress();
 	if (progress) {
 		progress->clearMessages();
-		progress->appendMessage(qt_("Starting LaTeX with command "));
+		progress->appendMessage(qt_("Starting process with command "));
 		progress->appendMessage(cmd.c_str());
 	}
 
@@ -89,22 +89,63 @@ void SystemcallPrivate::processStarted()
 {
 	ProgressInterface* progress = Systemcall::progress();
 	if (progress) {
-		progress->appendMessage(qt_("LaTeX started\n"));
+		progress->appendMessage(qt_("Process started\n"));
 	}
 }
 
 
-void SystemcallPrivate::processError(QProcess::ProcessError)
+void SystemcallPrivate::processError(QProcess::ProcessError err)
 {
 	ProgressInterface* progress = Systemcall::progress();
 	if (progress) {
-		progress->appendMessage(qt_("LaTeX error\n"));
+		QString message;
+		switch (err) {
+			case QProcess::FailedToStart:
+				message = qt_("The process failed to start. Either the invoked program is missing, "
+					      "or you may have insufficient permissions to invoke the program.");
+				break;
+			case QProcess::Crashed:
+				message = qt_("The process crashed some time after starting successfully.");
+				break;
+			case QProcess::Timedout:
+				message = qt_("The process timed out. It might be restarted automatically.");
+				break;
+			case QProcess::WriteError:
+				message = qt_("An error occurred when attempting to write to the process. For example, "
+					      "the process may not be running, or it may have closed its input channel.");
+				break;
+			case QProcess::ReadError:
+				message = qt_("An error occurred when attempting to read from the process. For example, "
+					      "the process may not be running.");
+				break;
+			case QProcess::UnknownError:
+			default:
+				message = qt_("An unknown error occured.");
+				break;
+		}
+		progress->appendMessage(qt_("The process failed: ") + message + '\n');
 	}
 }
 
 
-void SystemcallPrivate::processFinished(int, QProcess::ExitStatus)
+void SystemcallPrivate::processFinished(int, QProcess::ExitStatus status)
 {
+	ProgressInterface* progress = Systemcall::progress();
+	if (progress) {
+		QString message;
+		switch (status) {
+			case QProcess::NormalExit:
+				message = qt_("The process exited normally.");
+				break;
+			case QProcess::CrashExit:
+				message = qt_("The process crashed.");
+				break;
+			default:
+				message = qt_("Unknown exit state.");
+				break;
+		}
+		progress->appendMessage(qt_("Process finished: ") + message + '\n');
+	}
 	deleteLater();
 }
 
