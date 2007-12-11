@@ -183,6 +183,10 @@ extern LyXErr lyxerr;
 		else { lyx::lyxerr << CURRENT_POSITION << msg; lyx::lyxerr.endl(); } \
 	} while (0)
 
-#define LYXERR0(msg) LYXERR(lyx::Debug::ANY, msg)
+#define LYXERR0(msg) \
+	do { \
+		lyx::lyxerr << CURRENT_POSITION << msg; lyx::lyxerr.endl(); \
+	} while (0)
+
 
 #endif
