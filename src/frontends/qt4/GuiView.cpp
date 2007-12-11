@@ -1574,7 +1574,7 @@ char const * const dialognames[] = {
 "thesaurus",
 #endif
 
-"texinfo", "toc", "href", "view-source", "latex-progress", "vspace", "wrap", "listings" };
+"texinfo", "toc", "href", "view-source", "view-console", "vspace", "wrap", "listings" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -1853,7 +1853,7 @@ Dialog * GuiView::build(string const & name)
 		return createGuiLog(*this);
 	if (name == "view-source")
 		return createGuiViewSource(*this);
-	if (name == "latex-progress")
+	if (name == "view-console")
 		return createGuiProgress(*this);
 	if (name == "mathdelimiter")
 		return createGuiDelimiter(*this);

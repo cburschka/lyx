@@ -25,9 +25,9 @@ namespace frontend {
 
 
 GuiProgress::GuiProgress(GuiView & parent, Qt::DockWidgetArea area, 
-	Qt::WindowFlags flags) : DockView(parent, "latex-progress", area, flags)
+	Qt::WindowFlags flags) : DockView(parent, "view-console", area, flags)
 {
-	setWindowTitle(qt_("LaTeX Progress"));
+	setWindowTitle(qt_("External process monitoring"));
 	setWidget(&text_edit);
 	support::Systemcall::registerProgressInterface(this);
 }
