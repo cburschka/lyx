@@ -2369,6 +2369,20 @@ lib_doc_fr_files = Split('''
 ''')
 
 
+lib_doc_fr_clipart_files = Split('''
+    BoxInsetDefaultQt4.png
+    ChildDocumentQt4.png
+    CommentNoteImageQt4.png
+    FramedNoteImageQt4.png
+    GreyedOutNoteImageQt4.png
+    LyXNoteImageQt4.png
+    ShadedNoteImageQt4.png
+    floatQt4.png
+    footnoteQt4.png
+    labelQt4.png
+''')
+
+
 lib_doc_gl_extra_files = Split('''
     Intro.lyx
     Tutorial.lyx
