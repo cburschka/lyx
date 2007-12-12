@@ -104,16 +104,17 @@ int prompt(docstring const & title0, docstring const & question,
 		  int default_button, int cancel_button,
 		  docstring const & b1, docstring const & b2, docstring const & b3)
 {
+	lyxerr << "PROMPT" << title0 << "FOCUS: " << qApp->focusWidget() << endl;
 	if (!use_gui || lyxerr.debugging()) {
-		lyxerr << to_utf8(title0) << '\n'
+		lyxerr << title0 << '\n'
 		       << "----------------------------------------\n"
-		       << to_utf8(question) << endl;
+		       << question << endl;
 
 		lyxerr << "Assuming answer is ";
 		switch (default_button) {
-		case 0: lyxerr << to_utf8(b1) << endl;
-		case 1: lyxerr << to_utf8(b2) << endl;
-		case 2: lyxerr << to_utf8(b3) << endl;
+		case 0: lyxerr << b1 << endl;
+		case 1: lyxerr << b2 << endl;
+		case 2: lyxerr << b3 << endl;
 		}
 		if (!use_gui)
 			return default_button;
@@ -127,6 +128,7 @@ int prompt(docstring const & title0, docstring const & question,
 	qApp->changeOverrideCursor(Qt::ArrowCursor);
 
 	// FIXME replace that with guiApp->currentView()
+	LYXERR0("FOCUS: " << qApp->focusWidget());
 	int res = QMessageBox::information(qApp->focusWidget(),
 					   toqstr(title),
 					   toqstr(formatted(question)),
@@ -144,9 +146,9 @@ int prompt(docstring const & title0, docstring const & question,
 
 void warning(docstring const & title0, docstring const & message)
 {
-	lyxerr << "Warning: " << to_utf8(title0) << '\n'
+	lyxerr << "Warning: " << title0 << '\n'
 	       << "----------------------------------------\n"
-	       << to_utf8(message) << endl;
+	       << message << endl;
 
 	if (!use_gui)
 		return;
@@ -170,9 +172,9 @@ void warning(docstring const & title0, docstring const & message)
 
 void error(docstring const & title0, docstring const & message)
 {
-	lyxerr << "Error: " << to_utf8(title0) << '\n'
+	lyxerr << "Error: " << title0 << '\n'
 	       << "----------------------------------------\n"
-	       << to_utf8(message) << endl;
+	       << message << endl;
 
 	if (!use_gui)
 		return;
@@ -196,9 +198,9 @@ void error(docstring const & title0, docstring const & message)
 void information(docstring const & title0, docstring const & message)
 {
 	if (!use_gui || lyxerr.debugging())
-		lyxerr << to_utf8(title0) << '\n'
+		lyxerr << title0 << '\n'
 		       << "----------------------------------------\n"
-		       << to_utf8(message) << endl;
+		       << message << endl;
 
 	if (!use_gui)
 		return;
@@ -215,8 +217,8 @@ bool askForText(docstring & response, docstring const & msg,
 {
 	if (!use_gui || lyxerr.debugging()) {
 		lyxerr << "----------------------------------------\n"
-		       << to_utf8(msg) << '\n'
-		       << "Assuming answer is " << to_utf8(dflt) << '\n'
+		       << msg << '\n'
+		       << "Assuming answer is " << dflt << '\n'
 		       << "----------------------------------------" << endl;
 		if (!use_gui) {
 			response = dflt;

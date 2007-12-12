@@ -36,8 +36,6 @@ int main(int argc, char * argv[])
 	// early as possible.
 	lyx::lyxerr.setStream(cerr);
 
-	LYXERR0("acssdc");
-
 	lyx::support::os::init(argc, argv);
 
 	// initialize for internationalized version *EK*
