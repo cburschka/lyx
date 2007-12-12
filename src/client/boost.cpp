@@ -19,7 +19,7 @@
 #include <exception>
 #include <ostream>
 
-using endl;
+using namespace std;
 
 namespace boost {
 

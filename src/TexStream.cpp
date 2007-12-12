@@ -78,7 +78,7 @@ int TexStreamBuffer::sync()
 ////////////////////////////////////////////////////////////////
 
 TexStream::TexStream(TexStreamBase * sbuf, TexRow * texrow)
-		: basic_ostream<char_type>(sbuf_ = new TexStreamBuffer(sbuf, texrow))
+		: std::basic_ostream<char_type>(sbuf_ = new TexStreamBuffer(sbuf, texrow))
 {}
 
 

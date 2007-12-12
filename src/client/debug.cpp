@@ -122,7 +122,7 @@ bool LyXErr::debugging(Debug::Type t) const
 
 void LyXErr::endl()
 {
-	stream() << endl;
+	stream() << std::endl;
 }
 
 
