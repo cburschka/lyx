@@ -37,14 +37,10 @@ int compare_ascii_no_case(std::string const & s, std::string const & s2);
 int compare_ascii_no_case(docstring const & s, docstring const & s2);
 
 ///
-inline
-int compare(char const * a, char const * b)
+inline int compare(char const * a, char const * b)
 {
-#ifndef CXX_GLOBAL_CSTD
-	return std::strcmp(a, b);
-#else
+	using namespace std;
 	return strcmp(a, b);
-#endif
 }
 
 ///

@@ -81,7 +81,7 @@ dnl we do not need that currently (and probably all our supported
 dnl compiler allow that)
 dnl LYX_CXX_PARTIAL
 dnl LYX_CXX_EXPLICIT
-LYX_CXX_GLOBAL_CSTD
+dnl LYX_CXX_GLOBAL_CSTD
 dnl LYX_STD_COUNT
 dnl we disable rtti for now
 dnl LYX_CXX_RTTI
