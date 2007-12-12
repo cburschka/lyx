@@ -23,6 +23,8 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
+#include <cstring>
+
 using namespace std;
 using namespace lyx::support;
 
@@ -32,11 +34,14 @@ namespace {
 
 /// used to return numeric values in parsing vspace
 double number[4] = { 0, 0, 0, 0 };
+
 /// used to return unit types in parsing vspace
-Length::UNIT unit[4] = { Length::UNIT_NONE,
-			    Length::UNIT_NONE,
-			    Length::UNIT_NONE,
-			    Length::UNIT_NONE };
+Length::UNIT unit[4] = {
+	Length::UNIT_NONE,
+	Length::UNIT_NONE,
+	Length::UNIT_NONE,
+	Length::UNIT_NONE
+};
 
 /// the current position in the number array
 int number_index;
@@ -44,16 +49,14 @@ int number_index;
 int unit_index;
 
 /// skip n characters of input
-inline
-void lyx_advance(string & data, string::size_type n)
+inline void lyx_advance(string & data, size_t n)
 {
 	data.erase(0, n);
 }
 
 
 /// return true when the input is at the end
-inline
-bool isEndOfData(string const & data)
+inline bool isEndOfData(string const & data)
 {
 	return ltrim(data).empty();
 }
@@ -98,7 +101,7 @@ char nextToken(string & data)
 		return '-';
 	}
 
-	string::size_type i = data.find_first_not_of("0123456789.");
+	size_t i = data.find_first_not_of("0123456789.");
 
 	if (i != 0) {
 		if (number_index > 3)
@@ -110,8 +113,9 @@ char nextToken(string & data)
 		if (i == string::npos) {
 			buffer = data;
 			i = data.size() + 1;
-		} else
+		} else {
 			buffer = data.substr(0, i);
+		}
 
 		lyx_advance(data, i);
 
@@ -134,8 +138,9 @@ char nextToken(string & data)
 		if (i == string::npos) {
 			buffer = data;
 			i = data.size() + 1;
-		} else
+		} else {
 			buffer = data.substr(0, i);
+		}
 
 		// possibly we have "mmplus" string or similar
 		if (buffer.size() > 5 &&
@@ -256,7 +261,7 @@ bool isValidGlueLength(string const & data, GlueLength * result)
 
 	// search "pattern" in "table"
 	table_index = 0;
-	while (compare(pattern, table[table_index].pattern)) {
+	while (strcmp(pattern, table[table_index].pattern)) {
 		++table_index;
 		if (!*table[table_index].pattern)
 			return false;
@@ -321,7 +326,7 @@ bool isValidLength(string const & data, Length * result)
 	pattern[pattern_index] = '\0';
 
 	// only the most basic pattern is accepted here
-	if (compare(pattern, "nu") != 0)
+	if (strcmp(pattern, "nu") != 0)
 		return false;
 
 	// It _was_ a correct length string.
@@ -366,7 +371,7 @@ VSpace::VSpace(string const & data)
 
 	string input = rtrim(data);
 
-	string::size_type const length = input.length();
+	size_t const length = input.length();
 
 	if (length > 1 && input[length - 1] == '*') {
 		keep_ = true;

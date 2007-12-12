@@ -18,7 +18,6 @@
 
 #include "support/docstring.h"
 
-#include <cstring>
 #include <string>
 #include <vector>
 
@@ -35,13 +34,6 @@ int compare_ascii_no_case(std::string const & s, std::string const & s2);
 
 /// Compare \p s and \p s2, ignoring the case of ASCII characters only.
 int compare_ascii_no_case(docstring const & s, docstring const & s2);
-
-///
-inline int compare(char const * a, char const * b)
-{
-	using namespace std;
-	return strcmp(a, b);
-}
 
 ///
 bool isStrInt(std::string const & str);

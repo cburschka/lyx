@@ -76,7 +76,7 @@ struct PngMap {
 
 bool operator<(PngMap const & lhs, PngMap const & rhs)
 {
-		return compare(lhs.key, rhs.key) < 0;
+		return strcmp(lhs.key, rhs.key) < 0;
 }
 
 
