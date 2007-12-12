@@ -1083,7 +1083,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	if (output_preamble) {
 		if (!runparams.nice) {
 			// code for usual, NOT nice-latex-file
-			os << "\\nonstopmode\n"; 
+			os << "\\batchmode\n"; // changed
+			// from \nonstopmode
 			d->texrow.newline();
 		}
 		if (!original_path.empty()) {

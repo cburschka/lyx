@@ -1499,11 +1499,6 @@ if (included_gettext and not libExists('included_intl')) or 'intl' in BUILD_TARG
 #
 # src/support
 #
-frontend_env['QT4_MOCHPREFIX'] = ''
-frontend_env['QT4_MOCHSUFFIX'] = '_moc.cpp'
-
-support_moced_files = [frontend_env.Moc4('$BUILDDIR/src/support/%s' % x)
-    for x in src_support_header_files ]
 support = frontend_env.StaticLibrary(
     target = '$LOCALLIBPATH/support',
     source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files] + \
@@ -1516,7 +1511,7 @@ support = frontend_env.StaticLibrary(
         '-DQT_NO_STL',
         '-DQT_NO_KEYWORDS',
     ],
-    CPPPATH = ['$CPPPATH', '$BUILDDIR/src/support', '$TOP_SRCDIR/src/support/minizip']
+    CPPPATH = ['$CPPPATH', '$TOP_SRCDIR/src/support/minizip']
 )
 Alias('support', support)
 
@@ -1564,6 +1559,9 @@ Alias('graphics', graphics)
 #
 # src/frontend/qt4
 #
+frontend_env['QT4_MOCHPREFIX'] = ''
+frontend_env['QT4_MOCHSUFFIX'] = '_moc.cpp'
+
 # tells scons how to get these moced files, although not all moced files are needed
 # (or are actually generated).
 qt4_moced_files = [frontend_env.Moc4('$BUILDDIR/src/frontends/qt4/%s' % x)

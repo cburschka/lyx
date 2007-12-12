@@ -286,7 +286,6 @@ Menuset
 		Item "Fold Math Macro" "math-macro-fold"
 		Separator
 		Item "View Source|S" "dialog-toggle view-source"
-		Item "View Console" "dialog-toggle view-console"
 		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator

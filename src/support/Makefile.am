@@ -12,25 +12,6 @@ liblyxsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)
 
 BUILT_SOURCES = $(PCH_FILE)
 
-#########################  Qt stuff  #############################
-# 
-
-CLEANFILES += $(MOCEDFILES)
-BUILT_SOURCES += $(MOCEDFILES)
-
-MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
-
-%_moc.cpp: %.h
-	$(MOC4) -o $@ $<
-
-MOCHEADER = \
-	SystemcallPrivate.h
-
-liblyxsupport_la_DEPENDENCIES = $(MOCEDFILES)
-
-#
-#################################################################
-
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) -I$(srcdir)/minizip
 
@@ -39,7 +20,6 @@ AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES) -I$(srcdir)/minizip
 liblyxsupport_la_CFLAGS = -x c++
 
 liblyxsupport_la_SOURCES = \
-	$(MOCHEADER) \
 	FileMonitor.h \
 	FileMonitor.cpp \
 	RandomAccessList.h \
@@ -95,8 +75,6 @@ liblyxsupport_la_SOURCES = \
 	strfwd.h \
 	Systemcall.cpp \
 	Systemcall.h \
-	SystemcallPrivate.cpp \
-	ProgressInterface.h \
 	SignalSlot.cpp \
 	SignalSlot.h \
 	SignalSlotPrivate.h \

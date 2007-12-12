@@ -102,7 +102,6 @@ SOURCEFILES = \
 	GuiPopupMenu.cpp \
 	GuiPrefs.cpp \
 	GuiPrint.cpp \
-	GuiProgress.cpp \
 	GuiRef.cpp \
 	GuiSearch.cpp \
 	GuiSelection.cpp \
@@ -189,7 +188,6 @@ MOCHEADER = \
 	GuiPopupMenu.h \
 	GuiPrefs.h \
 	GuiPrint.h \
-	GuiProgress.h \
 	GuiRef.h \
 	GuiSearch.h \
 	GuiSelection.h \
