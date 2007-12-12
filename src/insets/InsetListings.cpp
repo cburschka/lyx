@@ -32,10 +32,7 @@
 
 #include <sstream>
 
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-using std::string;
+using namespace std;
 
 namespace lyx {
 

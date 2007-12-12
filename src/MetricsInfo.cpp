@@ -22,10 +22,9 @@
 
 #include <boost/assert.hpp>
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
 
 
 MetricsBase::MetricsBase()

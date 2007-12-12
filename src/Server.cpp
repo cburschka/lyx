@@ -58,6 +58,7 @@
 #endif
 #include <fcntl.h>
 
+using namespace std;
 
 namespace lyx {
 
@@ -65,9 +66,6 @@ using support::compare;
 using support::FileName;
 using support::rtrim;
 using support::split;
-
-using std::endl;
-using std::string;
 
 
 /////////////////////////////////////////////////////////////////////

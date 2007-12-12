@@ -35,13 +35,13 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 
+using namespace std;
+
 namespace lyx {
 
 using support::compare_no_case;
 using support::uppercase;
 using support::split;
-
-using std::advance;
 
 
 namespace {

@@ -50,14 +50,7 @@
 #include <fstream>
 #include <sstream>
 
-using std::endl;
-using std::getline;
-using std::make_pair;
-using std::string;
-using std::ifstream;
-using std::ostringstream;
-using std::vector;
-using std::pair;
+using namespace std;
 
 namespace lyx {
 namespace support {

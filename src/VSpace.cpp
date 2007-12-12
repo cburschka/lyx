@@ -23,6 +23,7 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -31,8 +32,6 @@ using support::isStrDbl;
 using support::ltrim;
 using support::prefixIs;
 using support::rtrim;
-
-using std::string;
 
 
 namespace {

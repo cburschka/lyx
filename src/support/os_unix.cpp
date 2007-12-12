@@ -19,8 +19,7 @@
 #include <Carbon/Carbon.h>
 #endif
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace support {

@@ -18,7 +18,7 @@
 
 #include "frontends/Painter.h"
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 

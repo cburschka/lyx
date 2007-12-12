@@ -16,11 +16,9 @@
 #include "frontends/Painter.h"
 #include "support/debug.h"
 
+using namespace std;
 
 namespace lyx {
-
-
-using std::max;
 
 
 InsetMathXYArrow::InsetMathXYArrow()

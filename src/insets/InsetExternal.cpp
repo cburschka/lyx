@@ -43,11 +43,7 @@
 
 #include <sstream>
 
-using std::string;
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-using std::vector;
+using namespace std;
 
 using lyx::support::DocFileName;
 

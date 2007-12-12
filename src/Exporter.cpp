@@ -29,10 +29,7 @@
 
 #include <algorithm>
 
-using std::find;
-using std::string;
-using std::vector;
-
+using namespace std;
 
 namespace lyx {
 

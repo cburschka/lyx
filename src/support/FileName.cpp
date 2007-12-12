@@ -25,6 +25,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QList>
+#include <QTime>
 
 #include <boost/assert.hpp>
 
@@ -42,12 +43,7 @@
 #include <cerrno>
 #include <fcntl.h>
 
-
-using std::map;
-using std::string;
-using std::ifstream;
-using std::ostringstream;
-using std::endl;
+using namespace std;
 
 namespace lyx {
 namespace support {
@@ -295,8 +291,15 @@ unsigned long FileName::checksum() const
 		LYXERR0('"' << absFilename() << "\" is a directory!");
 		return 0;
 	}
-	LYXERR0("Checksumming \"" << absFilename() << "\".");
-	return sum(absFilename().c_str());
+	if (!lyxerr.debugging(Debug::FILES))
+		return sum(absFilename().c_str());
+
+	QTime t;
+	t.start();
+	unsigned long r = sum(absFilename().c_str());
+	lyxerr << "Checksumming \"" << absFilename() << "\" lasted "
+		<< t.elapsed() << " ms." << endl;
+	return r;
 }
 
 

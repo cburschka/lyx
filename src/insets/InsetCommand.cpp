@@ -24,12 +24,9 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
-using std::istringstream;
-using std::ostringstream;
 
 
 // FIXME Would it now be possible to use the InsetCode in 

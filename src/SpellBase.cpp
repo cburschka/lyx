@@ -15,10 +15,9 @@
 #include "support/gettext.h"
 #include "support/docstring.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
 
 
 bool SpellBase::alive()

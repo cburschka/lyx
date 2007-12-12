@@ -89,6 +89,7 @@ TODO
 #include <algorithm>
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -110,12 +111,6 @@ using support::suffixIs;
 using support::Systemcall;
 using support::unzipFile;
 using support::unzippedFileName;
-
-using std::endl;
-using std::string;
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
 
 
 namespace {

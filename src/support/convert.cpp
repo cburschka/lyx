@@ -18,13 +18,11 @@
 
 #include <string>
 
+using namespace std;
 
 namespace lyx {
 
 using boost::lexical_cast;
-
-using std::string;
-
 
 template<>
 string convert<string>(bool b)

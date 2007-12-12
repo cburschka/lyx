@@ -38,11 +38,7 @@
 
 #include <utility>
 
-using std::string;
-using std::vector;
-using std::pair;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

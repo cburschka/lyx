@@ -28,17 +28,7 @@
 #include <algorithm>
 #include <sstream>
 
-
-using std::transform;
-using std::string;
-using std::vector;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::isdigit;
-using std::tolower;
-using std::toupper;
-#endif
-
+using namespace std;
 
 namespace lyx {
 

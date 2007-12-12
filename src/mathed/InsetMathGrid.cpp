@@ -33,21 +33,11 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
 using support::bformat;
-
-using std::endl;
-using std::max;
-using std::min;
-using std::swap;
-
-using std::string;
-using std::istream;
-using std::istringstream;
-using std::vector;
-
 
 namespace {
 

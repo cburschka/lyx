@@ -49,10 +49,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-using std::make_pair;
-using std::max;
-using std::min;
-using std::pair;
+using namespace std;
 
 namespace lyx {
 

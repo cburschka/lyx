@@ -13,10 +13,9 @@
 #include "MathAtom.h"
 #include "InsetMath.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::swap;
 
 
 MathAtom::MathAtom()

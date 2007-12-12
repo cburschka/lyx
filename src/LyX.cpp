@@ -69,18 +69,7 @@
 #include <string>
 #include <vector>
 
-using std::endl;
-using std::for_each;
-using std::map;
-using std::make_pair;
-using std::string;
-using std::vector;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::exit;
-using std::signal;
-using std::system;
-#endif
+using namespace std;
 
 namespace lyx {
 

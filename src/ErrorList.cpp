@@ -12,8 +12,7 @@
 
 #include "ErrorList.h"
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

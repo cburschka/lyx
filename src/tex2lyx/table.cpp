@@ -24,20 +24,12 @@
 #include <vector>
 #include <map>
 
+using namespace std;
 
 namespace lyx {
 
-using std::cerr;
-using std::endl;
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-using std::string;
-using std::vector;
-
-
 // filled in preamble.cpp
-std::map<char, int> special_columns;
+map<char, int> special_columns;
 
 
 namespace {

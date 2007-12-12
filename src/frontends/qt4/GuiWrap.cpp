@@ -25,8 +25,7 @@
 #include <QCloseEvent>
 #include <QPushButton>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

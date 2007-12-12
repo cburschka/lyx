@@ -21,10 +21,11 @@
 #include <QToolButton>
 #include <QHBoxLayout>
 
-using lyx::support::split;
-using std::string;
+using namespace std;
 
 namespace lyx {
+
+using support::split;
 
 /// return the Qt form of the label
 static docstring const getLabel(docstring const & ucs4str)

@@ -38,14 +38,9 @@
 #include <algorithm>
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-
 
 namespace {
 

@@ -35,15 +35,7 @@ using boost::bind;
 using boost::regex;
 using boost::smatch;
 
-using std::endl;
-using std::equal_to;
-using std::find_if;
-using std::make_pair;
-using std::sort;
-using std::string;
-using std::pair;
-using std::ifstream;
-
+using namespace std;
 
 // Gets textclass number from name
 pair<bool, textclass_type> const

@@ -24,11 +24,9 @@ extern "C" {
 
 #include <boost/assert.hpp>
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
-using std::string;
 
 
 PSpell::PSpell(BufferParams const &, string const & lang)

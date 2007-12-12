@@ -31,14 +31,7 @@
 #include "support/docstream.h"
 #include "support/filetools.h"
 
-using std::endl;
-using std::find;
-using std::string;
-using std::list;
-using std::ostream;
-using std::ostringstream;
-using std::set;
-
+using namespace std;
 
 namespace lyx {
 

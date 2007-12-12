@@ -39,10 +39,7 @@
 
 #include <sstream>
 
-using std::istringstream;
-using std::ostringstream;
-using std::string;
-using std::endl;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

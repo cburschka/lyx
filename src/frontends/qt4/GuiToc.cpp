@@ -35,8 +35,7 @@
 
 #include <algorithm>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

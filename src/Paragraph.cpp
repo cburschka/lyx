@@ -58,9 +58,7 @@
 #include <sstream>
 #include <vector>
 
-using std::endl;
-using std::string;
-using std::ostream;
+using namespace std;
 
 namespace lyx {
 
@@ -212,14 +210,6 @@ public:
 	///
 	TextContainer text_;
 };
-
-
-
-
-using std::endl;
-using std::upper_bound;
-using std::lower_bound;
-using std::string;
 
 
 // Initialization of the counter for the paragraph id's,

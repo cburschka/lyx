@@ -21,16 +21,13 @@
 #include <iostream>
 #include <iomanip>
 
+using namespace std;
 
 namespace lyx {
 
 using support::ascii_lowercase;
 using support::bformat;
 using support::isStrInt;
-
-using std::setw;
-using std::string;
-using std::ostream;
 
 namespace {
 

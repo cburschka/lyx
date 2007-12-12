@@ -36,7 +36,7 @@
 #include <algorithm>
 #include <ostream>
 
-using std::advance;
+using namespace std;
 
 namespace lyx {
 

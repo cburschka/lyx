@@ -53,6 +53,7 @@
 
 #include <boost/bind.hpp>
 
+using namespace std;
 
 namespace lyx {
 
@@ -75,13 +76,6 @@ using support::onlyFilename;
 using support::onlyPath;
 using support::prefixIs;
 using support::subst;
-
-using std::find;
-using std::string;
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-using std::vector;
 
 namespace Alert = frontend::Alert;
 

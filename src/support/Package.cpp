@@ -38,7 +38,7 @@
 # include <CoreServices/CoreServices.h> // FSFindFolder, FSRefMakePath
 #endif
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 namespace support {

@@ -20,12 +20,10 @@
 #include <sstream>
 #include <string>
 
+using namespace std;
+
 namespace lyx {
 
-
-using std::ostream;
-using std::ostringstream;
-using std::string;
 
 const string PDFOptions::pagemode_fullscreen("FullScreen");
 

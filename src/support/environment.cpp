@@ -23,9 +23,7 @@
 #include <map>
 #include <sstream>
 
-using std::string;
-using std::vector;
-
+using namespace std;
 
 namespace lyx {
 namespace support {

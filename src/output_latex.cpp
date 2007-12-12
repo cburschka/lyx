@@ -35,15 +35,11 @@
 
 #include <boost/next_prior.hpp>
 
+using namespace std;
+
 namespace lyx {
 
 using support::subst;
-
-using std::endl;
-using std::string;
-using std::pair;
-using std::make_pair;
-
 
 namespace {
 

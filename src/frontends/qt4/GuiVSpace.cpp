@@ -34,8 +34,7 @@
 #include <QPushButton>
 #include <QValidator>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

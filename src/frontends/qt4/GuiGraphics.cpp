@@ -54,16 +54,7 @@
 #include <cmath>
 #include <utility>
 
-#ifndef CXX_GLOBAL_CSTD
-using std::floor;
-#endif
-using std::find;
-using std::vector;
-using std::string;
-using std::transform;
-using std::make_pair;
-using std::pair;
-using std::vector;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

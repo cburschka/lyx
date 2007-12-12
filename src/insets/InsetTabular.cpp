@@ -62,21 +62,7 @@
 #include <iostream>
 #include <limits>
 
-using std::abs;
-using std::endl;
-using std::getline;
-using std::istream;
-using std::istringstream;
-using std::max;
-using std::ostream;
-using std::ostringstream;
-using std::string;
-using std::swap;
-using std::vector;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::strlen;
-#endif
+using namespace std;
 
 using boost::shared_ptr;
 using boost::dynamic_pointer_cast;

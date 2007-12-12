@@ -41,11 +41,7 @@
 
 #include <sstream>
 
-
-using std::endl;
-using std::string;
-using std::ostream;
-
+using namespace std;
 
 namespace lyx {
 

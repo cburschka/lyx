@@ -20,8 +20,7 @@
 
 #include <ostream>
 
-using std::endl;
-
+using namespace std;
 
 namespace lyx {
 

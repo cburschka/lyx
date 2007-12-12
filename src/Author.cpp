@@ -18,7 +18,7 @@
 
 #include <istream>
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 

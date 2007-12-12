@@ -30,7 +30,7 @@
 # include <sys/types.h>
 #endif
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 namespace support {

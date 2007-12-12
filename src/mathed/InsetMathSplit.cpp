@@ -25,12 +25,11 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
 using support::bformat;
-
-using std::string;
 
 
 InsetMathSplit::InsetMathSplit(docstring const & name, char valign)

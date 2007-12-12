@@ -55,21 +55,13 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
 using cap::grabAndEraseSelection;
 using support::bformat;
 using support::subst;
-
-using std::endl;
-using std::max;
-using std::ostream;
-using std::istringstream;
-using std::ostringstream;
-using std::swap;
-using std::vector;
-
 
 namespace {
 

@@ -19,14 +19,12 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+using namespace std;
 
 namespace lyx {
 
 using support::bformat;
 using support::FileName;
-
-using std::ofstream;
-using std::string;
 
 namespace {
 

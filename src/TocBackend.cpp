@@ -30,8 +30,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

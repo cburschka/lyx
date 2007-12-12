@@ -25,8 +25,7 @@
 #include "lyxfind.h"
 #include "FuncRequest.h"
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

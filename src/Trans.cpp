@@ -27,16 +27,13 @@
 #include "support/convert.h"
 #include "support/docstream.h"
 
+using namespace std;
+
 namespace lyx {
 
 using support::split;
 using support::contains;
 using support::libFileSearch;
-
-using std::endl;
-using std::string;
-using std::pair;
-using std::map;
 
 
 /////////////////////////////////////////////////////////////////////

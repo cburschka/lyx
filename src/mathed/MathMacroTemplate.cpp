@@ -45,13 +45,11 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
 using support::bformat;
-
-using std::ostream;
-using std::endl;
 
 
 class InsetMathWrapper : public InsetMath {

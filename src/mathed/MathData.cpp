@@ -37,15 +37,9 @@
 #include <boost/assert.hpp>
 #include <boost/next_prior.hpp>
 
+using namespace std;
 
 namespace lyx {
-
-using std::abs;
-using std::endl;
-using std::min;
-using std::ostringstream;
-using std::string;
-using std::vector;
 
 
 MathData::MathData(const_iterator from, const_iterator to)

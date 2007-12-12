@@ -22,13 +22,12 @@
 
 #include <boost/assert.hpp>
 
+using namespace std;
 
 namespace lyx {
 
 using support::split;
 using support::trim;
-
-using std::string;
 
 
 /*

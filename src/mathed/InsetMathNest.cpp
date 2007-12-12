@@ -59,6 +59,7 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -67,10 +68,6 @@ using cap::grabAndEraseSelection;
 using cap::cutSelection;
 using cap::replaceSelection;
 using cap::selClearOrDel;
-
-using std::endl;
-using std::string;
-using std::istringstream;
 
 
 InsetMathNest::InsetMathNest(idx_type nargs)

@@ -95,14 +95,7 @@
 
 #include <sstream>
 
-using std::endl;
-using std::make_pair;
-using std::pair;
-using std::string;
-using std::istringstream;
-using std::ostringstream;
-using std::find;
-using std::vector;
+using namespace std;
 
 namespace lyx {
 

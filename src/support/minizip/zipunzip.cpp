@@ -55,10 +55,6 @@
 #include <string>
 #include <vector>
 #include <utility>
-using std::string;
-using std::vector;
-using std::pair;
-
 
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
@@ -94,10 +90,8 @@ using std::pair;
 #define WRITEBUFFERSIZE (16384)
 #define MAXFILENAME (256)
 
+using namespace std;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::fgetc;
-#endif
 
 #ifdef WIN32
 uLong filetime(const char * f, tm_zip * tmzip, uLong * dt)

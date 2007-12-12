@@ -29,7 +29,7 @@
 #include <QTextCursor>
 #include <QTextDocument>
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

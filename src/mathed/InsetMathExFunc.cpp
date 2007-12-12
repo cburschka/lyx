@@ -19,10 +19,9 @@
 
 #include "support/docstream.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
 
 
 InsetMathExFunc::InsetMathExFunc(docstring const & name)

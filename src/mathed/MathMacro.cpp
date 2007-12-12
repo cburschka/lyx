@@ -31,10 +31,9 @@
 #include <ostream>
 #include <vector>
 
-namespace lyx {
+using namespace std;
 
-using std::string;
-using std::max;
+namespace lyx {
 
 
 /// A proxy for the macro values

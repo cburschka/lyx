@@ -16,7 +16,7 @@
 
 #include <ostream>
 
-using std::ostream;
+using namespace std;
 
 namespace lyx {
 

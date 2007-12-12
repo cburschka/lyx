@@ -22,8 +22,7 @@
 #include <QPushButton>
 #include <QSpinBox>
 
-using std::ostringstream;
-using std::string;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

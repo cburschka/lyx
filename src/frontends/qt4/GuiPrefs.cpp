@@ -65,10 +65,7 @@
 
 using namespace Ui;
 
-using std::endl;
-using std::ostringstream;
-using std::string;
-using std::vector;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

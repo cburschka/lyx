@@ -22,7 +22,7 @@
 
 #include <boost/assert.hpp>
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

@@ -22,10 +22,7 @@
 #include <algorithm>
 #include <ostream>
 	
-using std::endl;
-using std::map;
-using std::string;
-using std::vector;
+using namespace std;
 
 namespace lyx {
 

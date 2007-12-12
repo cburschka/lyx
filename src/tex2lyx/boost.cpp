@@ -18,8 +18,7 @@
 #include <exception>
 #include <ostream>
 
-
-using std::endl;
+using namespace std;
 
 namespace boost {
 

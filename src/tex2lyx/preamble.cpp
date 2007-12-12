@@ -29,17 +29,9 @@
 #include <vector>
 #include <map>
 
+using namespace std;
 
 namespace lyx {
-
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-using std::string;
-using std::vector;
-using std::cerr;
-using std::endl;
-using std::find;
 
 using support::FileName;
 using support::libFileSearch;

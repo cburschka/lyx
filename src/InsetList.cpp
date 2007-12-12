@@ -20,8 +20,7 @@
 
 #include "insets/InsetBranch.h"
 
-using std::lower_bound;
-
+using namespace std;
 
 namespace lyx {
 

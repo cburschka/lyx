@@ -43,9 +43,7 @@
 #include <fstream>
 #include <locale>
 
-using std::string;
-using std::vector;
-using std::endl;
+using namespace std;
 
 namespace lyx {
 

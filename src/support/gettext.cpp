@@ -20,8 +20,7 @@
 #  include <locale.h>
 #endif
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

@@ -20,8 +20,7 @@
 #include <fstream>
 #include <sstream>
 
-using std::ios;
-using std::string;
+using namespace std;
 
 namespace lyx {
 

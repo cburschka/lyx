@@ -22,12 +22,7 @@
 # include <sys/types.h>
 #endif
 
-
-using std::ifstream;
-using std::ofstream;
-using std::ios;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace support {

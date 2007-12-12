@@ -44,6 +44,7 @@
 #include <sstream>
 #include <fstream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -55,15 +56,6 @@ using support::FileName;
 using support::quoteName;
 using support::tempName;
 using support::subst;
-
-using std::auto_ptr;
-using std::endl;
-using std::find_if;
-using std::istringstream;
-using std::ostream;
-using std::swap;
-using std::string;
-using std::vector;
 
 static char const * function_names[] = {
 	"arccos", "arcsin", "arctan", "arg", "bmod",

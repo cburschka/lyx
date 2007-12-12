@@ -26,10 +26,7 @@
 #include <fstream>
 #include <sstream>
 
-using std::istringstream;
-using std::ostream;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

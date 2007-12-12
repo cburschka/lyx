@@ -22,10 +22,9 @@
 #include <algorithm>
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::strlen;
 
 
 //////////////////////////////////////////////////////////////////////

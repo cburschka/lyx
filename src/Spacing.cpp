@@ -18,13 +18,9 @@
 #include <sstream>
 #include <string>
 
+using namespace std;
 
 namespace lyx {
-
-
-using std::ostream;
-using std::ostringstream;
-using std::string;
 
 
 string const Spacing::spacing_string[]

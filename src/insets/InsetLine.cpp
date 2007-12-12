@@ -25,11 +25,11 @@
 #include "frontends/Painter.h"
 
 
+using namespace std;
+
 namespace lyx {
 
 using frontend::Painter;
-
-using std::ostream;
 
 
 void InsetLine::read(Buffer const &, Lexer &)

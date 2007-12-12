@@ -12,10 +12,10 @@
 
 #include "Section.h"
 
+using namespace std;
 
 namespace lyx {
 
-using std::string;
 
 string const & Section::name() const
 {

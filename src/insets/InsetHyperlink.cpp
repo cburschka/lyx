@@ -22,9 +22,7 @@
 #include "support/lstrings.h"
 #include "support/docstream.h"
 
-using std::string;
-using std::find;
-using std::replace;
+using namespace std;
 
 namespace lyx {
 

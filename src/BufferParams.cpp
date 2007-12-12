@@ -53,16 +53,8 @@
 #include <algorithm>
 #include <sstream>
 
-using std::count;
-using std::endl;
-using std::find;
-using std::string;
-using std::istringstream;
-using std::make_pair;
-using std::ostream;
-using std::ostringstream;
-using std::pair;
-using std::string;
+using namespace std;
+
 using lyx::support::FileName;
 using lyx::support::libFileSearch;
 using lyx::support::bformat;

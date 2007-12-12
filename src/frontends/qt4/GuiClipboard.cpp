@@ -24,15 +24,15 @@
 
 #include "support/lstrings.h"
 
-using lyx::support::internalLineEnding;
-using lyx::support::externalLineEnding;
-
-using std::string;
+using namespace std;
 
 static char const * const mime_type = "application/x-lyx";
 
-
 namespace lyx {
+
+using support::internalLineEnding;
+using support::externalLineEnding;
+
 namespace frontend {
 
 GuiClipboard::GuiClipboard()

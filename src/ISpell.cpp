@@ -36,16 +36,7 @@
 
 using boost::shared_ptr;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::strcpy;
-using std::strlen;
-using std::strpbrk;
-#endif
-
-using std::endl;
-using std::max;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

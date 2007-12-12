@@ -16,11 +16,7 @@
 #include <sstream>
 #include <vector>
 
-using std::getline;
-using std::istringstream;
-using std::vector;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

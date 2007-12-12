@@ -19,8 +19,7 @@
 #include <algorithm>
 #include <iomanip>
 
-using std::endl;
-using std::string;
+using namespace std;
 
 // OK, this is ugly, but it is the only workaround I found to compile
 // with gcc (any version) on a system which uses a non-GNU toolchain.
@@ -92,7 +91,6 @@ unsigned long sum(char const * file)
 #include <fstream>
 #include <iterator>
 
-
 namespace {
 
 template<typename InputIterator>
@@ -110,11 +108,6 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 namespace lyx {
 namespace support {
 
-using std::ifstream;
-using std::istreambuf_iterator;
-using std::istream_iterator;
-using std::ios;
-using std::ios_base;
 
 unsigned long sum(char const * file)
 {

@@ -39,6 +39,7 @@
 
 #include <boost/tokenizer.hpp>
 
+using namespace std;
 
 namespace lyx {
 
@@ -67,14 +68,6 @@ using support::lowercase;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
-
-using std::endl;
-using std::getline;
-using std::string;
-using std::ostream;
-using std::pair;
-using std::vector;
-using std::map;
 
 
 InsetBibtex::InsetBibtex(InsetCommandParams const & p)

@@ -30,8 +30,7 @@
 
 #include <ostream>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

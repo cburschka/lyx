@@ -19,7 +19,6 @@
 #include <exception>
 #include <ostream>
 
-
 using std::endl;
 
 namespace boost {

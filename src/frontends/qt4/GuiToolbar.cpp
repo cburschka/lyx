@@ -50,6 +50,7 @@
 
 #include <boost/assert.hpp>
 
+using namespace std;
 
 static void initializeResources()
 {
@@ -63,9 +64,6 @@ static void initializeResources()
 
 namespace lyx {
 namespace frontend {
-
-using std::string;
-using std::endl;
 
 using support::libFileSearch;
 using support::subst;

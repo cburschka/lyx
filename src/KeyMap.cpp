@@ -27,11 +27,7 @@
 #include <sstream>
 #include <utility>
 
-using std::endl;
-using std::ios;
-using std::ofstream;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

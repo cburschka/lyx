@@ -34,15 +34,11 @@
 
 #include <boost/next_prior.hpp>
 
+using namespace std;
 
 namespace lyx {
 
 using support::subst;
-
-using std::endl;
-using std::ostream;
-using std::vector;
-using std::string;
 
 namespace {
 

@@ -27,12 +27,7 @@
 
 #include <sstream>
 
-#ifndef CXX_GLOBAL_CSTD
-using std::strtol;
-#endif
-using std::endl;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

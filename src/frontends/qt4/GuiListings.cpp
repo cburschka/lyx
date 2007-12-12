@@ -27,18 +27,17 @@
 #include <QValidator>
 #include <QRegExpValidator>
 
-
-using std::string;
-using std::vector;
-using lyx::support::findToken;
-using lyx::support::getVectorFromString;
-using lyx::support::getStringFromVector;
-using lyx::support::prefixIs;
-using lyx::support::suffixIs;
-using lyx::support::contains;
-
+using namespace std;
 
 namespace lyx {
+
+using support::findToken;
+using support::getVectorFromString;
+using support::getStringFromVector;
+using support::prefixIs;
+using support::suffixIs;
+using support::contains;
+
 namespace frontend {
 
 

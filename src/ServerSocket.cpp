@@ -39,9 +39,7 @@
 
 using boost::shared_ptr;
 
-using std::endl;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

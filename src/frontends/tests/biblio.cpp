@@ -5,10 +5,7 @@
 
 #include <boost/regex.hpp>
 
-
-using std::cout;
-using std::endl;
-using std::string;
+using namespace std;
 
 // Escape special chars.
 // All characters are literals except: '.|*?+(){}[]^$\'

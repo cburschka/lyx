@@ -31,8 +31,7 @@
 
 #include <iomanip>
 
-using std::endl;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

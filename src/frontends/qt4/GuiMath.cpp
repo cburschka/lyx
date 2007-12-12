@@ -14,8 +14,7 @@
 #include "support/debug.h"
 #include "FuncRequest.h"
 
-using std::string;
-using std::map;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

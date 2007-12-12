@@ -26,16 +26,9 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
-using std::istringstream;
-using std::map;
-using std::pair;
-using std::string;
-using std::vector;
-using std::size_t;
 
 
 /////////////////////////////////////////////////////////////////////

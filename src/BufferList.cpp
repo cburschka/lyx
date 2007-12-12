@@ -35,17 +35,7 @@
 
 using boost::bind;
 
-using std::auto_ptr;
-using std::endl;
-using std::equal_to;
-using std::find;
-using std::find_if;
-using std::for_each;
-using std::string;
-using std::vector;
-using std::back_inserter;
-using std::transform;
-
+using namespace std;
 
 namespace lyx {
 

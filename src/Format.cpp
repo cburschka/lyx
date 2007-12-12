@@ -25,10 +25,7 @@
 #include "support/os.h"
 #include "support/Systemcall.h"
 
-using std::find_if;
-using std::string;
-using std::distance;
-
+using namespace std;
 
 namespace lyx {
 

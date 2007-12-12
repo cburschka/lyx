@@ -35,22 +35,9 @@
 #include <vector>
 #include <map>
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
-using std::cout;
-using std::cerr;
-using std::getline;
-
-using std::ifstream;
-using std::ofstream;
-using std::istringstream;
-using std::ostringstream;
-using std::stringstream;
-using std::string;
-using std::vector;
-using std::map;
 
 using support::changeExtension;
 using support::FileName;

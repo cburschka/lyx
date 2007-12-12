@@ -14,6 +14,7 @@
 #include "support/gettext.h"
 #include "Messages.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -21,8 +22,6 @@ namespace lyx {
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>
 #endif
-
-using std::string;
 
 
 namespace {

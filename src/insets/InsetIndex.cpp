@@ -21,11 +21,9 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
-using std::ostream;
 
 
 InsetIndex::InsetIndex(BufferParams const & bp)

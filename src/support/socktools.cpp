@@ -50,11 +50,8 @@ int accept(int)
 
 #include <cerrno>
 
-using std::string;
+using namespace std;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::strerror;
-#endif
 
 // This MACRO eppears to be defined only on Linux.
 #if !defined(SUN_LEN)

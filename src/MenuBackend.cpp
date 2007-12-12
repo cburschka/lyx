@@ -48,6 +48,8 @@
 #include <algorithm>
 #include <ostream>
 
+using namespace std;
+using boost::bind;
 
 namespace lyx {
 
@@ -55,18 +57,6 @@ using support::compare_ascii_no_case;
 using support::contains;
 using support::makeDisplayPath;
 using support::token;
-
-using boost::bind;
-
-using std::auto_ptr;
-using std::endl;
-using std::equal_to;
-using std::find_if;
-using std::max;
-using std::sort;
-using std::string;
-using std::vector;
-using std::stack;
 
 namespace {
 

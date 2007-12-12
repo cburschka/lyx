@@ -58,13 +58,7 @@
 
 #include <string>
 
-using std::endl;
-using std::for_each;
-using std::make_pair;
-using std::pair;
-using std::vector;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

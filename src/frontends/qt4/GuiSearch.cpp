@@ -23,8 +23,7 @@
 #include <QCloseEvent>
 #include <QShowEvent>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

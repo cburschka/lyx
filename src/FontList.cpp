@@ -24,7 +24,7 @@
 
 #include <algorithm>
 
-using std::distance;
+using namespace std;
 
 namespace lyx {
 

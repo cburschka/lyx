@@ -21,8 +21,7 @@
 
 #include <map>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

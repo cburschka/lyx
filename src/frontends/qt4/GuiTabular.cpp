@@ -31,8 +31,7 @@
 #include <QRadioButton>
 #include <QLineEdit>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

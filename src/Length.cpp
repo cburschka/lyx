@@ -23,11 +23,9 @@
 #include <sstream>
 #include <iomanip>
 
+using namespace std;
 
 namespace lyx {
-
-using std::ostringstream;
-using std::string;
 
 
 /////////////////////////////////////////////////////////////////////

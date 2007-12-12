@@ -23,8 +23,7 @@
 
 #include <boost/assert.hpp>
 
-using std::endl;
-
+using namespace std;
 
 namespace lyx {
 

@@ -26,8 +26,7 @@
 
 #include <algorithm>
 
-using std::string;
-using std::vector;
+using namespace std;
 
 namespace lyx {
 

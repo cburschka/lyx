@@ -26,11 +26,9 @@
 
 #include "support/docstream.h"
 
-namespace lyx {
+using namespace std;
 
-using std::string;
-using std::max;
-using std::ostream;
+namespace lyx {
 
 
 InsetSpace::InsetSpace()

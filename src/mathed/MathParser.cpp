@@ -70,21 +70,11 @@ following hack as starting point to write some macros:
 
 #include <sstream>
 
-
-namespace lyx {
-
-using std::endl;
-using std::fill;
-
-using std::string;
-using std::ios;
-using std::istream;
-using std::ostream;
-using std::vector;
-
-
 //#define FILEDEBUG
 
+using namespace std;
+
+namespace lyx {
 
 namespace {
 

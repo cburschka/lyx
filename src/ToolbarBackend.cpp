@@ -22,16 +22,12 @@
 #include <boost/bind.hpp>
 #include <algorithm>
 
+using namespace std;
+
 namespace lyx {
 
 using support::compare_ascii_no_case;
 using support::getVectorFromString;
-
-using std::make_pair;
-using std::string;
-using std::vector;
-using std::find_if;
-
 
 namespace {
 

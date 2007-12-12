@@ -20,8 +20,7 @@
 
 #include <boost/bind.hpp>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

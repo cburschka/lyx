@@ -23,15 +23,11 @@
 #include <fstream>
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
 using support::libFileSearch;
-
-using std::string;
-using std::ifstream;
-using std::endl;
-using std::vector;
 
 namespace {
 

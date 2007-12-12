@@ -24,13 +24,11 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 
+using namespace std;
 
 namespace lyx {
 
 using support::escape;
-
-using std::string;
-using std::ostream;
 
 
 InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)

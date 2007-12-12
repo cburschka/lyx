@@ -23,9 +23,7 @@
 
 #include <boost/format.hpp>
 
-using std::getline;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

@@ -26,10 +26,9 @@
 #include "TexRow.h"
 #include "TextMetrics.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
 
 
 InsetMathMBox::InsetMathMBox()

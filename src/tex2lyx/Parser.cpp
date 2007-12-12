@@ -15,18 +15,9 @@
 #include <iostream>
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::cerr;
-using std::endl;
-using std::fill;
-using std::istream;
-using std::istringstream;
-using std::ostringstream;
-using std::ostream;
-using std::string;
-
 
 namespace {
 

@@ -24,11 +24,7 @@
 
 #include <sstream>
 
-using std::map;
-using std::vector;
-using std::ostream;
-using std::string;
-using std::exception;
+using namespace std;
 
 namespace lyx {
 

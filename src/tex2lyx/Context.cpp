@@ -17,13 +17,9 @@
 
 #include <iostream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::ostream;
-using std::endl;
-using std::string;
-
 
 namespace {
 

@@ -106,21 +106,7 @@
 #include <sstream>
 #include <fstream>
 
-using std::endl;
-using std::for_each;
-using std::make_pair;
-
-using std::ios;
-using std::map;
-using std::ostream;
-using std::ostringstream;
-using std::ofstream;
-using std::ifstream;
-using std::pair;
-using std::stack;
-using std::vector;
-using std::string;
-using std::time_t;
+using namespace std;
 
 namespace lyx {
 

@@ -74,10 +74,7 @@
 #include <clocale>
 #include <sstream>
 
-using std::endl;
-using std::string;
-using std::istringstream;
-using std::ostringstream;
+using namespace std;
 
 namespace lyx {
 

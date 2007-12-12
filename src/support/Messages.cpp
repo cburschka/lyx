@@ -21,8 +21,7 @@
 
 #include <cerrno>
 
-using std::map;
-using std::string;
+using namespace std;
 
 namespace {
 

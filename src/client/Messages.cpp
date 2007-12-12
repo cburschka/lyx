@@ -18,17 +18,14 @@
 #include <cerrno>
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
 using support::package;
 
-using std::endl;
-using std::string;
-
 
 #ifdef ENABLE_NLS
-
 
 #if 0
 

@@ -23,14 +23,9 @@
 #include <iterator>
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::getline;
-using std::istringstream;
-using std::istream_iterator;
-using std::vector;
-using std::string;
 
 
 InsetMathArray::InsetMathArray(docstring const & name, int m, int n)

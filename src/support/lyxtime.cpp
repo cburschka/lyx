@@ -12,7 +12,7 @@
 
 #include "support/lyxtime.h"
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 

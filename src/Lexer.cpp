@@ -33,6 +33,7 @@
 #include <sstream>
 #include <vector>
 
+using namespace std;
 
 namespace lyx {
 
@@ -46,15 +47,6 @@ using support::prefixIs;
 using support::split;
 using support::subst;
 using support::trim;
-
-using std::endl;
-using std::getline;
-using std::lower_bound;
-using std::sort;
-using std::string;
-using std::ios;
-using std::istream;
-using std::ostream;
 
 
 //////////////////////////////////////////////////////////////////////

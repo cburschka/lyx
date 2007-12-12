@@ -31,15 +31,11 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 
+using namespace std;
 
 namespace lyx {
 
 using support::prefixIs;
-
-using std::endl;
-using std::string;
-using std::ostream;
-
 
 namespace {
 

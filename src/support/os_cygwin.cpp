@@ -27,8 +27,7 @@
 
 #include <sys/cygwin.h>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace support {

@@ -25,11 +25,10 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
-using std::string;
-using std::max;
 
 InsetMathScript::InsetMathScript()
 	: InsetMathNest(1), cell_1_is_up_(false), limits_(0)

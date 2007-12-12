@@ -22,12 +22,9 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
-using std::ostream;
-
 
 /*
   The intention is to be able to create arbitrary theorem like environments

@@ -40,9 +40,7 @@
 #include <string>
 #include <vector>
 
-using std::string;
-using std::vector;
-using std::pair;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

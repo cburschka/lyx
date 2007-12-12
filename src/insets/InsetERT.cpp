@@ -37,18 +37,11 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
 using support::token;
-
-using std::endl;
-using std::min;
-
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
-using std::string;
 
 
 InsetERT::InsetERT(BufferParams const & bp, CollapseStatus status)

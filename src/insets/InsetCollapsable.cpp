@@ -37,13 +37,9 @@
 
 #include "support/docstream.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
-using std::max;
-using std::ostream;
-using std::string;
 
 
 InsetCollapsable::CollapseStatus InsetCollapsable::status() const

@@ -17,8 +17,9 @@
 #include "insets/InsetFloat.h"
 #include "support/lstrings.h"
 
+using namespace std;
+
 using lyx::support::contains;
-using std::string;
 
 //namespace lyx {
 

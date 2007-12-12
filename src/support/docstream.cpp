@@ -18,11 +18,9 @@
 #include <iconv.h>
 #include <locale>
 
+using namespace std;
 
 using lyx::ucs4_codeset;
-
-using std::string;
-
 
 namespace {
 

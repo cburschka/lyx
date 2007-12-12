@@ -27,6 +27,7 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -34,8 +35,6 @@ using support::bformat;
 using support::FileName;
 using support::makeAbsPath;
 using support::tempName;
-
-using std::string;
 
 namespace Alert = frontend::Alert;
 

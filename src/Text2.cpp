@@ -61,12 +61,7 @@
 
 #include <sstream>
 
-using std::endl;
-using std::ostringstream;
-using std::string;
-using std::max;
-using std::min;
-using std::istringstream;
+using namespace std;
 
 namespace lyx {
 

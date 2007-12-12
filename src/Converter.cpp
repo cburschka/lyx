@@ -36,11 +36,7 @@
 #include "support/Path.h"
 #include "support/Systemcall.h"
 
-using std::find_if;
-using std::string;
-using std::vector;
-using std::distance;
-
+using namespace std;
 
 namespace lyx {
 

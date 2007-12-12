@@ -54,22 +54,16 @@
 #include <boost/bind.hpp>
 #include <boost/assert.hpp>
 
+using namespace std;
+
+using boost::bind;
+using boost::ref;
 
 namespace lyx {
 
 using graphics::PreviewLoader;
 
 using support::isStrUnsignedInt;
-
-using boost::bind;
-using boost::ref;
-
-using std::endl;
-using std::for_each;
-using std::max;
-using std::string;
-using std::ostream;
-using std::vector;
 
 
 InsetText::InsetText(BufferParams const & bp)

@@ -22,11 +22,9 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
-using std::ostream;
 
 
 InsetTOC::InsetTOC(InsetCommandParams const & p)

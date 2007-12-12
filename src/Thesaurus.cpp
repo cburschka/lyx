@@ -20,14 +20,12 @@
 
 #include <algorithm>
 
+using namespace std;
 
 namespace lyx {
 
 #ifdef HAVE_LIBAIKSAURUS
 using support::bformat;
-
-using std::sort;
-using std::string;
 
 
 Thesaurus::Thesaurus()

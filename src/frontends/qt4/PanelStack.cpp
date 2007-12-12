@@ -26,9 +26,7 @@
 
 #include <iostream>
 
-
-using std::endl;
-using std::cout;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

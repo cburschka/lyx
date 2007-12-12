@@ -29,13 +29,11 @@
 #include <map>
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
 using frontend::Painter;
-
-using std::max;
-using std::endl;
 
 
 ///

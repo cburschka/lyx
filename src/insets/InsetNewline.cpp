@@ -23,11 +23,9 @@
 #include "support/docstring.h"
 #include "support/docstream.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
-using std::ostream;
 
 
 void InsetNewline::read(Buffer const &, Lexer &)

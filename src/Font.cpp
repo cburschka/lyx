@@ -31,17 +31,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-using std::endl;
-using std::string;
-using std::ostream;
-using std::ostringstream;
-using std::istringstream;
-using std::pair;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::strlen;
-#endif
-
+using namespace std;
 
 namespace lyx {
 

@@ -73,8 +73,7 @@
 
 #include <sstream>
 
-using std::auto_ptr;
-using std::string;
+using namespace std;
 
 namespace lyx {
 

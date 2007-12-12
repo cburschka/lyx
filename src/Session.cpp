@@ -21,23 +21,7 @@
 #include <algorithm>
 #include <iterator>
 
-using lyx::support::absolutePath;
-using lyx::support::addName;
-using lyx::support::FileName;
-using lyx::support::package;
-
-using std::vector;
-using std::getline;
-using std::string;
-using std::ifstream;
-using std::ofstream;
-using std::istream;
-using std::ostream;
-using std::endl;
-using std::istringstream;
-using std::copy;
-using std::find;
-using std::ostream_iterator;
+using namespace std;
 
 namespace {
 
@@ -52,6 +36,11 @@ string const sec_toolbars = "[toolbars]";
 
 
 namespace lyx {
+
+using support::absolutePath;
+using support::addName;
+using support::FileName;
+using support::package;
 
 LastFilesSection::LastFilesSection(unsigned int num) :
 	default_num_last_files(4),

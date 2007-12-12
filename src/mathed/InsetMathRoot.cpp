@@ -18,6 +18,7 @@
 
 #include "frontends/Painter.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -35,7 +36,6 @@ Inset * InsetMathRoot::clone() const
 
 void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	using std::max;
 	InsetMathNest::metrics(mi);
 	Dimension const & dim0 = cell(0).dimension(*mi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*mi.base.bv);

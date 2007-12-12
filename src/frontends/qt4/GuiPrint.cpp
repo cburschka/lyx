@@ -33,8 +33,7 @@
 #include <QSpinBox>
 #include <QPushButton>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

@@ -29,9 +29,7 @@
 
 #include <map>
 
-
-using std::string;
-using std::map;
+using namespace std;
 
 namespace lyx {
 

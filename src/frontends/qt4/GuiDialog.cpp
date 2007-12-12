@@ -21,7 +21,7 @@
 #include <QSettings>
 #include <QShowEvent>
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 namespace frontend {
@@ -115,8 +115,7 @@ void GuiDialog::updateView()
 #include "FuncRequest.h"
 #include "insets/InsetCommand.h"
 
-
-using std::string;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

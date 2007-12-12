@@ -21,10 +21,7 @@
 #include <iostream>
 #include <iomanip>
 
-using std::setw;
-using std::string;
-using std::ostream;
-
+using namespace std;
 
 namespace lyx {
 

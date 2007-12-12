@@ -28,7 +28,9 @@
 #include <sstream>
 #include <fstream>
 
-namespace support = lyx::support;
+using namespace std;
+
+namespace lyx {
 
 using support::addExtension;
 using support::changeExtension;
@@ -43,13 +45,6 @@ using support::quote_python;
 using support::subst;
 using support::tempName;
 
-using std::endl;
-using std::ostream;
-using std::ostringstream;
-using std::string;
-
-
-namespace lyx {
 namespace graphics {
 
 class Converter::Impl : public boost::signals::trackable {

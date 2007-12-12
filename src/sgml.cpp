@@ -30,15 +30,11 @@
 #include <map>
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
 using support::subst;
-
-using std::map;
-using std::ostream;
-using std::ostringstream;
-using std::string;
 
 docstring sgml::escapeChar(char_type c)
 {

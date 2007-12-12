@@ -24,11 +24,9 @@
 
 #include <boost/next_prior.hpp>
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
-
 
 static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	Paragraph & toPar, pos_type toPos, BufferParams const & params)

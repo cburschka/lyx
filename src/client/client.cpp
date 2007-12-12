@@ -54,22 +54,15 @@
 #include <map>
 #include <iostream>
 
+using namespace std;
+
+using ::boost::scoped_ptr;
+namespace fs = ::boost::filesystem;
 
 namespace lyx {
 
 using support::FileName;
 using support::prefixIs;
-
-using ::boost::scoped_ptr;
-namespace fs = ::boost::filesystem;
-
-using std::string;
-using std::vector;
-using std::cout;
-using std::cerr;
-using std::cin;
-using std::endl;
-
 
 namespace support {
 

@@ -26,6 +26,7 @@
 
 #include <boost/bind.hpp>
 
+using namespace std;
 
 namespace lyx {
 
@@ -35,9 +36,6 @@ using support::makeDisplayPath;
 using support::onlyFilename;
 using support::tempName;
 using support::unzipFile;
-
-using std::endl;
-using std::string;
 
 
 namespace graphics {

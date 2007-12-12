@@ -36,11 +36,9 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
-using std::ostream;
 
 
 InsetFlex::InsetFlex(BufferParams const & bp,

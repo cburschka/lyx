@@ -26,8 +26,7 @@
 #include <QLineEdit>
 #include <QWidget>
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

@@ -23,6 +23,11 @@
 
 #include <fstream>
 
+using namespace std;
+
+using boost::regex;
+using boost::regex_match;
+using boost::smatch;
 
 namespace lyx {
 
@@ -36,20 +41,6 @@ using support::quoteName;
 using support::rtrim;
 using support::split;
 using support::Systemcall;
-
-using boost::regex;
-using boost::regex_match;
-using boost::smatch;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::asctime;
-using std::gmtime;
-#endif
-
-using std::endl;
-using std::getline;
-using std::string;
-using std::ifstream;
 
 
 int VCS::doVCCommand(string const & cmd, FileName const & path)

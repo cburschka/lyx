@@ -37,11 +37,7 @@
 #include <QToolTip>
 #include <QVBoxLayout>
 
-using std::back_inserter;
-using std::transform;
-using std::string;
-using std::vector;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

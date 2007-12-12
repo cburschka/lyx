@@ -43,24 +43,10 @@
 #include <fstream>
 #include <iomanip>
 
-using lyx::support::FileName;
-
-using std::endl;
-using std::find;
-using std::fill;
-using std::find_if;
-using std::make_pair;
+using namespace std;
 
 using boost::bind;
-
-using std::ifstream;
-using std::list;
-using std::map;
-using std::ostringstream;
-using std::pair;
-using std::vector;
-using std::string;
-
+using lyx::support::FileName;
 
 namespace {
 

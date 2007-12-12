@@ -35,11 +35,7 @@
 
 #include <sstream>
 
-using std::endl;
-using std::find_if;
-using std::remove_if;
-using std::string;
-using std::ostream;
+using namespace std;
 
 namespace lyx {
 

@@ -24,13 +24,12 @@
 #include <cmath> // std::abs
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 namespace external {
 
 using support::float_equal;
-using std::string;
-
 
 string const ExtraData::get(string const & id) const
 {

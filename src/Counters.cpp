@@ -23,9 +23,7 @@
 
 #include <sstream>
 
-using std::endl;
-using std::ostringstream;
-using std::string;
+using namespace std;
 
 namespace lyx {
 

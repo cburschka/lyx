@@ -40,6 +40,7 @@
 #include "support/os.h"
 #include "support/userinfo.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -52,15 +53,6 @@ using support::FileName;
 using support::getEnv;
 using support::libFileSearch;
 using support::token;
-
-using std::cout;
-using std::endl;
-
-using std::ios;
-using std::ofstream;
-using std::ostream;
-using std::string;
-
 
 namespace {
 

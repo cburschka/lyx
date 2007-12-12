@@ -17,8 +17,7 @@
 
 #include <boost/assert.hpp>
 
-using std::max;
-using std::min;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

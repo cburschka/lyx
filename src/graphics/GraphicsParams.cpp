@@ -16,10 +16,7 @@
 
 #include <sstream>
 
-
-using std::string;
-using std::abs;
-
+using namespace std;
 
 namespace lyx {
 namespace graphics {

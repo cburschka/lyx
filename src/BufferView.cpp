@@ -80,17 +80,7 @@
 #include <iterator>
 #include <vector>
 
-using std::distance;
-using std::endl;
-using std::ifstream;
-using std::istringstream;
-using std::istream_iterator;
-using std::make_pair;
-using std::min;
-using std::max;
-using std::mem_fun_ref;
-using std::string;
-using std::vector;
+using namespace std;
 
 namespace lyx {
 

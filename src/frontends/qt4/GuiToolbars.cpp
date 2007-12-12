@@ -30,8 +30,7 @@
 #include "TextClass.h"
 #include "ToolbarBackend.h"
 
-
-using std::string;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

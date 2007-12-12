@@ -30,6 +30,7 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -37,9 +38,6 @@ using support::float_equal;
 using support::readBB_from_PSFile;
 using support::token;
 using support::DocFileName;
-
-using std::string;
-using std::ostream;
 
 
 InsetGraphicsParams::InsetGraphicsParams()

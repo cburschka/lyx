@@ -30,11 +30,7 @@
 
 #include "boost/regex.hpp"
 
-using std::string;
-using std::vector;
-using std::pair;
-using std::endl;
-using std::set;
+using namespace std;
 
 namespace lyx {
 

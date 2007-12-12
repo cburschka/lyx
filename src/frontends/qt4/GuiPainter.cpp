@@ -37,9 +37,7 @@
 #define USE_PIXMAP_CACHE 1
 #endif
 
-using std::endl;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

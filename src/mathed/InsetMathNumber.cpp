@@ -15,10 +15,10 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
+using namespace std;
 
 namespace lyx {
 
-using std::vector;
 
 InsetMathNumber::InsetMathNumber(docstring const & s)
 	: str_(s)

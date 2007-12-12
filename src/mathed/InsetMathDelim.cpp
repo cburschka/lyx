@@ -22,6 +22,7 @@
 
 #include "frontends/FontMetrics.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -72,7 +73,6 @@ void InsetMathDelim::normalize(NormalStream & os) const
 
 void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	using std::max;
 	Dimension dim0;
 	cell(0).metrics(mi, dim0);
 	Dimension t = theFontMetrics(mi.base.font).dimension('I');

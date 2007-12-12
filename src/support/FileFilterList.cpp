@@ -20,11 +20,7 @@
 
 #include <sstream>
 
-using std::distance;
-using std::ostringstream;
-using std::string;
-using std::vector;
-
+using namespace std;
 
 namespace {
 

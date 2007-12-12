@@ -20,7 +20,7 @@
 #include <exception>
 #include <iomanip>
 
-using std::endl;
+using namespace std;
 using lyx::lyxerr;
 using lyx::LyX;
 

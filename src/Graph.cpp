@@ -15,10 +15,7 @@
 
 #include <algorithm>
 
-using std::vector;
-using std::reverse;
-using std::fill;
-
+using namespace std;
 
 namespace lyx {
 

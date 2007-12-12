@@ -36,10 +36,7 @@
 #include <QCloseEvent>
 #include <QLineEdit>
 
-using std::pair;
-using std::string;
-using std::vector;
-
+using namespace std;
 
 namespace lyx {
 namespace frontend {

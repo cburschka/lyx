@@ -34,11 +34,7 @@
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
 
-using std::pair;
-using std::string;
-using std::ostream;
-using std::ostringstream;
-using std::stack;
+using namespace std;
 
 namespace lyx {
 

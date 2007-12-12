@@ -13,8 +13,7 @@
 #include "FloatList.h"
 #include "Floating.h"
 
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

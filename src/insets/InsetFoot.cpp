@@ -29,11 +29,9 @@
 
 #include <ostream>
 
-namespace lyx {
+using namespace std;
 
-using std::string;
-using std::auto_ptr;
-using std::ostream;
+namespace lyx {
 
 
 InsetFoot::InsetFoot(BufferParams const & bp)

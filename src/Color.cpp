@@ -30,18 +30,7 @@
 #include <iomanip>
 
 
-#ifndef CXX_GLOBAL_CSTD
-using std::floor;
-#endif
-
-using std::max;
-using std::min;
-using std::setw;
-
-using std::istringstream;
-using std::ostringstream;
-using std::string;
-using std::endl;
+using namespace std;
 
 namespace lyx {
 

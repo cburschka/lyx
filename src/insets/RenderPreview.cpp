@@ -32,12 +32,11 @@
 
 #include <boost/bind.hpp>
 
+using namespace std;
 
 namespace lyx {
 
 using support::FileName;
-
-using std::string;
 
 
 LyXRC_PreviewStatus RenderPreview::status()

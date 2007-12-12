@@ -17,9 +17,9 @@
 
 #include <string>
 
-namespace lyx {
+using namespace std;
 
-using std::string;
+namespace lyx {
 
 // I am not sure if "mu" should be possible to select (Lgb)
 

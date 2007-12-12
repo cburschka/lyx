@@ -30,15 +30,7 @@
 #include <sstream>
 #include <vector>
 
-using std::cerr;
-using std::endl;
-using std::find;
-using std::map;
-using std::ostream;
-using std::ostringstream;
-using std::istringstream;
-using std::string;
-using std::vector;
+using namespace std;
 
 namespace lyx {
 

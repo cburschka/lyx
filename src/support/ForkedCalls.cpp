@@ -42,20 +42,11 @@
 #  include <unistd.h>
 # endif
 # include <sys/wait.h>
-# ifndef CXX_GLOBAL_CSTD
-  using std::signal;
-  using std::strerror;
-# endif
 #endif
 
+using namespace std;
+
 using boost::bind;
-
-using std::endl;
-using std::equal_to;
-using std::find_if;
-using std::string;
-using std::vector;
-
 
 namespace lyx {
 namespace support {

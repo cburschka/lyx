@@ -34,14 +34,9 @@
 #include "support/docstream.h"
 #include "support/convert.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::endl;
-using std::string;
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
 
 
 // With this inset it will be possible to support the latex package

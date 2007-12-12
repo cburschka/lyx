@@ -17,9 +17,9 @@
 #include <boost/assert.hpp>
 
 
-namespace lyx {
+using namespace std;
 
-using std::string;
+namespace lyx {
 
 
 PrinterParams::PrinterParams(Target t,

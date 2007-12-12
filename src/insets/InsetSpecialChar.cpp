@@ -25,10 +25,9 @@
 
 #include "support/docstream.h"
 
-namespace lyx {
+using namespace std;
 
-using std::string;
-using std::ostream;
+namespace lyx {
 
 
 InsetSpecialChar::InsetSpecialChar(Kind k)

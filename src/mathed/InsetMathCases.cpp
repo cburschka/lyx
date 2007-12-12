@@ -26,12 +26,11 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
 using support::bformat;
-
-using std::endl;
 
 
 InsetMathCases::InsetMathCases(row_type n)

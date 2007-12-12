@@ -57,20 +57,13 @@
 #include <stack>
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
 using lyx::support::contains;
 using lyx::support::rsplit;
 using support::subst;
-
-using std::distance;
-using std::endl;
-using std::list;
-using std::stack;
-using std::string;
-using std::ostream;
-using std::ostringstream;
 
 
 ParagraphMetrics::ParagraphMetrics(Paragraph const & par): position_(-1), par_(&par)

@@ -14,7 +14,7 @@
 #include "Lexer.h"
 #include "support/lstrings.h"
 
-using std::string;
+using namespace std;
 
 namespace lyx {
 

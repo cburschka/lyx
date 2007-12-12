@@ -18,10 +18,10 @@
 
 #include <sstream>
 
+using namespace std;
 
 namespace lyx {
 
-using std::string;
 
 CommandInset::CommandInset(docstring const & name)
 	: InsetMathNest(2), name_(name), set_label_(false)

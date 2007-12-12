@@ -42,9 +42,9 @@ extern "C" int mkstemp(char *);
 # endif
 #endif
 
-using boost::scoped_array;
+using namespace std;
 
-using std::string;
+using boost::scoped_array;
 
 namespace lyx {
 namespace support {

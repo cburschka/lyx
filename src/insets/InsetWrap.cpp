@@ -34,14 +34,9 @@
 #include "support/convert.h"
 #include "support/docstream.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
-using std::endl;
-using std::istringstream;
-using std::ostream;
-using std::ostringstream;
 
 
 InsetWrap::InsetWrap(BufferParams const & bp, string const & type)

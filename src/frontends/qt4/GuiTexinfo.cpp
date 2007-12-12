@@ -30,9 +30,7 @@
 #include <fstream>
 #include <algorithm>
 
-using std::string;
-using std::vector;
-using std::endl;
+using namespace std;
 
 namespace lyx {
 namespace frontend {

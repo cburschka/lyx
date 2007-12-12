@@ -24,10 +24,9 @@
 
 #include "support/docstream.h"
 
+using namespace std;
 
 namespace lyx {
-
-using std::string;
 
 
 InsetNomencl::InsetNomencl(InsetCommandParams const & p)

@@ -20,9 +20,7 @@
 
 #include "frontends/KeySymbol.h"
 
-using std::make_pair;
-using std::string;
-
+using namespace std;
 
 namespace lyx {
 

@@ -55,13 +55,7 @@
 #include <algorithm>
 #include <sstream>
 
-using std::distance;
-using std::make_pair;
-using std::pair;
-using std::vector;
-using std::string;
-using std::ostringstream;
-using std::sort;
+using namespace std;
 
 ///
 template<class Pair>
