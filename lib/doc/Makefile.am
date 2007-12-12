@@ -133,16 +133,16 @@ dist_frdoc_DATA = \
 
 frclipartdocdir = $(pkgdatadir)/doc/fr/clipart
 dist_frclipartdoc_DATA = \
-	BoxInsetDefaultQt4.png \
-	ChildDocumentQt4.png \
-	CommentNoteImageQt4.png \
-	FramedNoteImageQt4.png \
-	GreyedOutNoteImageQt4.png \
-	LyXNoteImageQt4.png \
-	ShadedNoteImageQt4.png \
-	floatQt4.png \
-	footnoteQt4.png \
-	labelQt4.png
+	fr/clipart/BoxInsetDefaultQt4.png \
+	fr/clipart/ChildDocumentQt4.png \
+	fr/clipart/CommentNoteImageQt4.png \
+	fr/clipart/FramedNoteImageQt4.png \
+	fr/clipart/GreyedOutNoteImageQt4.png \
+	fr/clipart/LyXNoteImageQt4.png \
+	fr/clipart/ShadedNoteImageQt4.png \
+	fr/clipart/floatQt4.png \
+	fr/clipart/footnoteQt4.png \
+	fr/clipart/labelQt4.png
 
 gldocdir = $(pkgdatadir)/doc/gl
 dist_gldoc_DATA = \
