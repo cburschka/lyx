@@ -15,7 +15,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "debug.h" // temporary
+#include "debug.h"
 
 #include "support/lstrings.h"
 
@@ -137,8 +137,16 @@ vector<string> ControlCitation::searchKeys(
 		// it is treated as a simple string by boost::regex.
 		expr = escape_special_chars(expr);
 
-	boost::regex reg_exp(to_utf8(expr), case_sensitive?
-		boost::regex_constants::normal : boost::regex_constants::icase);
+	boost::regex reg_exp;
+	try {
+		reg_exp.assign(to_utf8(expr), case_sensitive ?
+			boost::regex_constants::normal : boost::regex_constants::icase);
+	} catch (boost::regex_error & e) {
+		// boost::regex throws an exception if the regular expression is not
+		// valid.
+		LYXERR(Debug::GUI) << e.what() << std::endl;
+		return vector<string>();
+	}
 
 	vector<string>::const_iterator it = keys_to_search.begin();
 	vector<string>::const_iterator end = keys_to_search.end();
@@ -157,7 +165,8 @@ vector<string> ControlCitation::searchKeys(
 			if (boost::regex_search(data, reg_exp))
 				foundKeys.push_back(*it);
 		}
-		catch (boost::regex_error &) {
+		catch (boost::regex_error & e) {
+			LYXERR(Debug::GUI)  << e.what() << std::endl;
 			return vector<string>();
 		}
 	}

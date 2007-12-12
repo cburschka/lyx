@@ -157,6 +157,8 @@ What's new
 - Fix a crash when inserting a file in a tabular cell via
   Insert->File->Plain Text...
 
+- Fix a crash when using the regex search of the citation dialog (bug 4421).
+
 - Correctly adjust screen fonts after the zoom or dpi settings were changed in
   the preferences (Mac and Windows only) (bug 4268).
 
