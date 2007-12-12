@@ -36,7 +36,7 @@ bool Mover::copy(FileName const & from, FileName const & to,
 bool Mover::do_copy(FileName const & from, FileName const & to,
 		    string const &, unsigned long int mode) const
 {
-	return copy(from, to, mode);
+	return support::copy(from, to, mode);
 }
 
 
