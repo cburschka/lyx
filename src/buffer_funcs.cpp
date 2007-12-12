@@ -51,19 +51,10 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
+using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using namespace std;
-
-using support::addName;
-using support::bformat;
-using support::FileName;
-using support::libFileSearch;
-using support::makeAbsPath;
-using support::makeDisplayPath;
-using support::onlyFilename;
-using support::onlyPath;
 
 namespace Alert = frontend::Alert;
 

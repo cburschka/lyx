@@ -32,11 +32,11 @@
 #include <iomanip>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
 
-using support::bformat;
 
 static docstring const formatted(docstring const & text)
 {

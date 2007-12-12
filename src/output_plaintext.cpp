@@ -26,13 +26,9 @@
 #include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::ascii_lowercase;
-using support::compare_ascii_no_case;
-using support::contains;
-using support::FileName;
 
 
 void writePlaintextFile(Buffer const & buf, FileName const & fname,

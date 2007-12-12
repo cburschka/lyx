@@ -31,10 +31,10 @@
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::subst;
 
 docstring sgml::escapeChar(char_type c)
 {

@@ -32,13 +32,9 @@
 #include "support/filetools.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::isSGMLFilename;
-using support::libFileSearch;
-using support::makeRelPath;
-using support::onlyPath;
 
 /////////////////////////////////////////////////////////////////////
 //

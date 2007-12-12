@@ -26,11 +26,11 @@
 #include <queue>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace graphics {
 
-using support::FileName;
 
 /////////////////////////////////////////////////////////////////////
 //

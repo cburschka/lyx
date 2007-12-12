@@ -81,17 +81,9 @@
 #include <vector>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addPath;
-using support::bformat;
-using support::FileFilterList;
-using support::FileName;
-using support::fileSearch;
-using support::makeDisplayPath;
-using support::makeAbsPath;
-using support::package;
 
 namespace Alert = frontend::Alert;
 

@@ -41,18 +41,11 @@
 #include "support/userinfo.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
 namespace os = support::os;
-
-using support::ascii_lowercase;
-using support::bformat;
-using support::expandPath;
-using support::FileName;
-using support::getEnv;
-using support::libFileSearch;
-using support::token;
 
 namespace {
 

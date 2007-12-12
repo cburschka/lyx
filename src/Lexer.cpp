@@ -34,20 +34,9 @@
 #include <vector>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::compare_ascii_no_case;
-using support::FileName;
-using support::isStrDbl;
-using support::isStrInt;
-using support::ltrim;
-using support::makeDisplayPath;
-using support::prefixIs;
-using support::split;
-using support::subst;
-using support::trim;
-
 
 //////////////////////////////////////////////////////////////////////
 //

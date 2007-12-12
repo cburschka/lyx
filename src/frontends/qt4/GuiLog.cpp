@@ -27,11 +27,10 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-
-using support::FileName;
 
 /////////////////////////////////////////////////////////////////////
 //

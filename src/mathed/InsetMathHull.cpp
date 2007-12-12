@@ -56,12 +56,11 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
 using cap::grabAndEraseSelection;
-using support::bformat;
-using support::subst;
 
 namespace {
 

@@ -25,18 +25,9 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::bformat;
-using support::trim;
-using support::rtrim;
-using support::subst;
-using support::isStrInt;
-using support::prefixIs;
-using support::suffixIs;
-using support::getVectorFromString;
-using lyx::support::contains;
 
 namespace {
 

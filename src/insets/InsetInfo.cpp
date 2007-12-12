@@ -35,15 +35,10 @@
 #include "support/ExceptionMessage.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::prefixIs;
-using support::trim;
-using support::split;
-using support::rtrim;
-using support::ExceptionMessage;
-using support::WarningException;
 
 InsetInfo::InsetInfo(BufferParams const & bp, string const & name) 
 	: InsetText(bp), type_(UNKNOWN_INFO), name_(), bp_(bp),

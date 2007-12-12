@@ -70,23 +70,9 @@
 #include <vector>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addName;
-using support::addPath;
-using support::bformat;
-using support::changeExtension;
-using support::createLyXTmpDir;
-using support::FileName;
-using support::fileSearch;
-using support::getEnv;
-using support::i18nLibFileSearch;
-using support::libFileSearch;
-using support::package;
-using support::prependEnvPath;
-using support::rtrim;
-using support::Systemcall;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;

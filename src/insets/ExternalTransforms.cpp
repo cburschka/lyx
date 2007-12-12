@@ -25,11 +25,11 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace external {
 
-using support::float_equal;
 
 string const ExtraData::get(string const & id) const
 {

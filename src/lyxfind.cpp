@@ -36,13 +36,9 @@
 #include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::compare_no_case;
-using support::uppercase;
-using support::split;
-
 
 namespace {
 

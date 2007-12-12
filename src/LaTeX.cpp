@@ -37,28 +37,9 @@ using boost::regex;
 using boost::smatch;
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::absolutePath;
-using support::bformat;
-using support::changeExtension;
-using support::contains;
-using support::FileName;
-using support::findtexfile;
-using support::getcwd;
-using support::makeAbsPath;
-using support::onlyFilename;
-using support::prefixIs;
-using support::quoteName;
-using support::removeExtension;
-using support::rtrim;
-using support::rsplit;
-using support::split;
-using support::subst;
-using support::suffixIs;
-using support::Systemcall;
-using support::trim;
 
 namespace os = support::os;
 

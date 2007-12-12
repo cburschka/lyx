@@ -38,12 +38,10 @@
 #include <boost/assert.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::findToken;
-using support::ExceptionMessage;
-using support::WarningException;
 
 InsetCommandParams::InsetCommandParams(InsetCode code)
 	: insetCode_(code), preview_(false)

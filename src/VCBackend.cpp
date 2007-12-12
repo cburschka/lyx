@@ -24,23 +24,13 @@
 #include <fstream>
 
 using namespace std;
+using namespace lyx::support;
 
 using boost::regex;
 using boost::regex_match;
 using boost::smatch;
 
 namespace lyx {
-
-using support::addName;
-using support::addPath;
-using support::contains;
-using support::FileName;
-using support::onlyFilename;
-using support::onlyPath;
-using support::quoteName;
-using support::rtrim;
-using support::split;
-using support::Systemcall;
 
 
 int VCS::doVCCommand(string const & cmd, FileName const & path)

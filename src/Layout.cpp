@@ -24,12 +24,9 @@
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::subst;
-using support::trim;
-
 
 /// Special value of toclevel for layouts that to not belong in a TOC
 const int Layout::NOT_IN_TOC = -1000;

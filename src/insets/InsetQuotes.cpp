@@ -32,10 +32,9 @@
 #include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::prefixIs;
 
 namespace {
 

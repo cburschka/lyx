@@ -25,6 +25,7 @@ extern "C" {
 #include <boost/assert.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 

@@ -55,14 +55,12 @@
 #include <iostream>
 
 using namespace std;
+using namespace lyx::support;
 
 using ::boost::scoped_ptr;
 namespace fs = ::boost::filesystem;
 
 namespace lyx {
-
-using support::FileName;
-using support::prefixIs;
 
 namespace support {
 

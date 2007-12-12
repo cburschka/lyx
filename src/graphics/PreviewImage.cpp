@@ -21,11 +21,9 @@
 #include <boost/bind.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
-
 namespace graphics {
 
 class PreviewImage::Impl : public boost::signals::trackable {

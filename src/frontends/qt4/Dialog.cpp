@@ -28,6 +28,7 @@
 #include <string>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {

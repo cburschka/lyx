@@ -50,13 +50,9 @@
 
 using namespace std;
 using boost::bind;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::compare_ascii_no_case;
-using support::contains;
-using support::makeDisplayPath;
-using support::token;
 
 namespace {
 

@@ -21,6 +21,7 @@
 #include <string>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -123,7 +124,7 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyper_required) const
 	if (!pagemode.empty())
 		opt += "pdfpagemode=" + pagemode + ',';
 	
-	opt = support::rtrim(opt,",");
+	opt = rtrim(opt,",");
 	opt += "]\n {hyperref}\n";
 
 	// load the pdftitle etc. as hypersetup, otherwise you'll get
@@ -141,7 +142,7 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyper_required) const
 		hyperset += "\n ";
 		hyperset += quoted_options_get();
 	}
-	hyperset = support::rtrim(hyperset,",");
+	hyperset = rtrim(hyperset,",");
 	if (!hyperset.empty())
 		opt += "\\hypersetup{" + hyperset + "}\n ";
 	

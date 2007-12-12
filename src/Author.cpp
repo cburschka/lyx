@@ -19,11 +19,9 @@
 #include <istream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::token;
-using support::trim;
 
 
 bool operator==(Author const & l, Author const & r)

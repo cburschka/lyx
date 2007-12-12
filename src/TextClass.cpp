@@ -36,17 +36,9 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
-using support::libFileSearch;
-using support::makeDisplayPath;
-using support::quoteName;
-using support::rtrim;
-using support::subst;
-using support::addName;
-
 
 namespace {
 

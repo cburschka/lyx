@@ -30,12 +30,9 @@
 #include <map>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
-using support::libFileSearch;
-using support::isStrDbl;
 
 // special columntypes
 extern std::map<char, int> special_columns;

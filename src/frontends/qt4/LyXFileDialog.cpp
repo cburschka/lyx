@@ -22,10 +22,9 @@
 #include <QHBoxLayout>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::split;
 
 /// return the Qt form of the label
 static docstring const getLabel(docstring const & ucs4str)

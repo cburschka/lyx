@@ -58,11 +58,9 @@
 #include "frontends/FontLoader.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::libFileSearch;
-using support::split;
 
 bool has_math_fonts;
 

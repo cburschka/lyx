@@ -23,19 +23,14 @@
 
 #include <fstream>
 
+using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
-using support::addName;
-using support::libFileSearch;
-using support::makeDisplayPath;
 
 using boost::bind;
 using boost::regex;
 using boost::smatch;
-
-using namespace std;
 
 // Gets textclass number from name
 pair<bool, textclass_type> const

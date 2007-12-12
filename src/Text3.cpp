@@ -75,6 +75,7 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -83,9 +84,6 @@ using cap::cutSelection;
 using cap::pasteFromStack;
 using cap::pasteClipboard;
 using cap::replaceSelection;
-
-using support::isStrUnsignedInt;
-using support::token;
 
 // globals...
 static Font freefont(ignore_font, ignore_language);

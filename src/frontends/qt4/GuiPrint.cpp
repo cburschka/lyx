@@ -34,11 +34,10 @@
 #include <QPushButton>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-
-using support::FileFilterList;
 
 
 GuiPrint::GuiPrint(GuiView & lv)

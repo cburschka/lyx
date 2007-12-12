@@ -25,13 +25,10 @@
 #include <fstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::FileName;
-using support::ltrim;
-using support::onlyFilename;
-using support::suffixIs;
 
 inline
 bool DepTable::dep_info::changed() const

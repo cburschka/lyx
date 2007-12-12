@@ -59,14 +59,9 @@
 #include <fcntl.h>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::compare;
-using support::FileName;
-using support::rtrim;
-using support::split;
-
 
 /////////////////////////////////////////////////////////////////////
 //

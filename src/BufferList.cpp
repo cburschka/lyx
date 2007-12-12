@@ -36,17 +36,9 @@
 using boost::bind;
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addName;
-using support::bformat;
-using support::FileName;
-using support::makeDisplayPath;
-using support::onlyFilename;
-using support::removeAutosaveFile;
-using support::package;
-using support::prefixIs;
 
 namespace Alert = lyx::frontend::Alert;
 

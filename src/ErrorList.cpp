@@ -16,6 +16,7 @@ using namespace std;
 
 namespace lyx {
 
+
 ErrorItem::ErrorItem(docstring const & error_, docstring const & description_,
 		     int par_id_, pos_type pos_start_, pos_type pos_end_)
 	: error(error_), description(description_), par_id(par_id_),

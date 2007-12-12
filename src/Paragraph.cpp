@@ -59,16 +59,9 @@
 #include <vector>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::contains;
-using support::lowercase;
-using support::prefixIs;
-using support::subst;
-using support::suffixIs;
-using support::rsplit;
-using support::uppercase;
 
 namespace {
 /// Inset identifier (above 0x10ffff, for ucs-4)

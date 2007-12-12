@@ -40,31 +40,9 @@
 #include <boost/tokenizer.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::absolutePath;
-using support::ascii_lowercase;
-using support::changeExtension;
-using support::contains;
-using support::copy;
-using support::DocFileName;
-using support::FileName;
-using support::FileNameList;
-using support::findtexfile;
-using support::isValidLaTeXFilename;
-using support::latex_path;
-using support::ltrim;
-using support::makeAbsPath;
-using support::makeRelPath;
-using support::prefixIs;
-using support::removeExtension;
-using support::rtrim;
-using support::split;
-using support::subst;
-using support::tokenPos;
-using support::trim;
-using support::lowercase;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;

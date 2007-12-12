@@ -28,13 +28,9 @@
 #include "support/docstream.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::split;
-using support::contains;
-using support::libFileSearch;
-
 
 /////////////////////////////////////////////////////////////////////
 //

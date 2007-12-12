@@ -93,22 +93,13 @@
 #endif
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
 extern bool quitting;
 
 namespace frontend {
-
-using support::addPath;
-using support::bformat;
-using support::FileFilterList;
-using support::FileName;
-using support::makeAbsPath;
-using support::makeDisplayPath;
-using support::package;
-using support::removeAutosaveFile;
-using support::trim;
 
 namespace {
 

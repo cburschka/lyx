@@ -28,10 +28,9 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
 
 Encodings encodings;
 

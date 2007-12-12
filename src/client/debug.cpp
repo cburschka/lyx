@@ -22,12 +22,9 @@
 #include <iomanip>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::ascii_lowercase;
-using support::bformat;
-using support::isStrInt;
 
 namespace {
 

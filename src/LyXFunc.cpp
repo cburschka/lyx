@@ -96,33 +96,11 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
 using frontend::LyXView;
-
-using support::absolutePath;
-using support::addName;
-using support::addPath;
-using support::bformat;
-using support::changeExtension;
-using support::contains;
-using support::FileFilterList;
-using support::FileName;
-using support::fileSearch;
-using support::i18nLibFileSearch;
-using support::makeDisplayPath;
-using support::makeAbsPath;
-using support::package;
-using support::quoteName;
-using support::rtrim;
-using support::split;
-using support::subst;
-using support::Systemcall;
-using support::token;
-using support::trim;
-using support::prefixIs;
-
 
 namespace Alert = frontend::Alert;
 

@@ -55,20 +55,10 @@
 #include <utility>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-
-using support::addName;
-using support::FileFilterList;
-using support::FileName;
-using support::float_equal;
-using support::makeAbsPath;
-using support::os::internal_path;
-using support::package;
-using support::readBB_from_PSFile;
-using support::token;
-
 
 //FIXME setAutoTextCB should really take an argument, as indicated, that
 //determines what text is to be written for "auto". But making

@@ -45,17 +45,9 @@
 #include <fstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::cmd_ret;
-using support::getVectorFromString;
-using support::libFileSearch;
-using support::runCommand;
-using support::FileName;
-using support::quoteName;
-using support::tempName;
-using support::subst;
 
 static char const * function_names[] = {
 	"arccos", "arcsin", "arctan", "arg", "bmod",

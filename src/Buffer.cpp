@@ -107,33 +107,9 @@
 #include <fstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addName;
-using support::bformat;
-using support::changeExtension;
-using support::cmd_ret;
-using support::createBufferTmpDir;
-using support::FileName;
-using support::FileNameList;
-using support::libFileSearch;
-using support::latex_path;
-using support::ltrim;
-using support::makeAbsPath;
-using support::makeDisplayPath;
-using support::makeLatexName;
-using support::onlyFilename;
-using support::onlyPath;
-using support::quoteName;
-using support::removeAutosaveFile;
-using support::rename;
-using support::runCommand;
-using support::split;
-using support::subst;
-using support::tempName;
-using support::trim;
-using support::suffixIs;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;
@@ -1026,7 +1002,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	catch (...) {
 		lyxerr << "Caught some really weird exception..." << endl;
 		LyX::cref().emergencyCleanup();
-		abort();
+		lyx::support::abort();
 	}
 
 	ofs.close();

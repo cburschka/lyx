@@ -63,12 +63,9 @@ void cleanTranslation(docstring & trans)
 #    include "../intl/libintl.h"
 #  endif
 
+using namespace lyx::support;
+
 namespace lyx {
-
-using support::package;
-using support::getEnv;
-using support::setEnv;
-
 
 // This version use the traditional gettext.
 Messages::Messages(string const & l)

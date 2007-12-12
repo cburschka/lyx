@@ -37,12 +37,9 @@
 #include <algorithm>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
-using support::isValidLaTeXFilename;
-
 namespace external {
 
 Template const * getTemplatePtr(InsetExternalParams const & params)

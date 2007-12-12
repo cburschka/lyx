@@ -55,6 +55,7 @@
 #include <boost/assert.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 using boost::bind;
 using boost::ref;
@@ -62,8 +63,6 @@ using boost::ref;
 namespace lyx {
 
 using graphics::PreviewLoader;
-
-using support::isStrUnsignedInt;
 
 
 InsetText::InsetText(BufferParams const & bp)

@@ -39,22 +39,11 @@
 #include <utility>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
 namespace Alert = frontend::Alert;
-
-using support::FileName;
-using support::DocFileName;
-using support::makeAbsPath;
-using support::addName;
-using support::absolutePath;
-using support::onlyFilename;
-using support::makeRelPath;
-using support::changeExtension;
-using support::bformat;
-using support::prefixIs;
-using support::makedir;
 
 
 EmbeddedFile::EmbeddedFile(string const & file, string const & inzip_name,

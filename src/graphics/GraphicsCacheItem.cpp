@@ -27,16 +27,9 @@
 #include <boost/bind.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileMonitor;
-using support::FileName;
-using support::makeDisplayPath;
-using support::onlyFilename;
-using support::tempName;
-using support::unzipFile;
-
 
 namespace graphics {
 

@@ -25,10 +25,9 @@
 #include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::escape;
 
 
 InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)

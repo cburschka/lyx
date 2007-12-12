@@ -26,21 +26,9 @@
 #include "support/Systemcall.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::absolutePath;
-using support::bformat;
-using support::compare_ascii_no_case;
-using support::contains;
-using support::FileName;
-using support::libScriptSearch;
-using support::makeDisplayPath;
-using support::onlyPath;
-using support::quoteName;
-using support::subst;
-using support::Systemcall;
-using support::token;
 
 namespace Alert = frontend::Alert;
 namespace os = support::os;

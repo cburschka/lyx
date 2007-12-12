@@ -54,13 +54,7 @@
 #include <sstream>
 
 using namespace std;
-
-using lyx::support::FileName;
-using lyx::support::libFileSearch;
-using lyx::support::bformat;
-using lyx::support::rtrim;
-using lyx::support::tokenPos;
-using lyx::support::prefixIs;
+using namespace lyx::support;
 
 
 static char const * const string_paragraph_separation[] = {

@@ -74,13 +74,9 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::bformat;
-using support::contains;
-using support::split;
-using support::subst;
 
 using cap::cutSelection;
 using cap::pasteParagraphList;

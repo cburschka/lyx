@@ -21,10 +21,10 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::quoteName;
 
 bool Mover::copy(support::FileName const & from, support::FileName const & to,
 		 unsigned long int mode) const

@@ -29,11 +29,10 @@
 #include <QCloseEvent>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-
-using support::bformat;
 
 GuiErrorList::GuiErrorList(GuiView & lv)
 	: GuiDialog(lv, "errorlist")

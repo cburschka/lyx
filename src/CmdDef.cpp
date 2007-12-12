@@ -23,13 +23,9 @@
 #include <string>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
-using support::i18nLibFileSearch;
-using support::trim;
-
 
 namespace {
 

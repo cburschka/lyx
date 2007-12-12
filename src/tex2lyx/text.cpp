@@ -31,18 +31,9 @@
 #include <vector>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addExtension;
-using support::changeExtension;
-using support::FileName;
-using support::makeAbsPath;
-using support::makeRelPath;
-using support::rtrim;
-using support::suffixIs;
-using support::contains;
-using support::subst;
 
 
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,

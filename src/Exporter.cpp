@@ -30,16 +30,9 @@
 #include <algorithm>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::bformat;
-using support::FileName;
-using support::makeDisplayPath;
-using support::onlyFilename;
-using support::onlyPath;
-using support::package;
-using support::prefixIs;
 
 namespace Alert = frontend::Alert;
 

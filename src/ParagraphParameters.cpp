@@ -28,10 +28,10 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::rtrim;
 
 //NOTE The order of these MUST be the same as in Layout.h.
 static char const * const string_align[] = {

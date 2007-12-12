@@ -31,10 +31,10 @@
 
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::ascii_lowercase;
 
 struct ColorSet::ColorEntry {
 	ColorCode lcolor;

@@ -23,11 +23,9 @@
 #include <algorithm>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::compare_ascii_no_case;
-using support::getVectorFromString;
 
 namespace {
 

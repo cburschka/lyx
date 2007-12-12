@@ -28,16 +28,9 @@
 #include <QRegExpValidator>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::findToken;
-using support::getVectorFromString;
-using support::getStringFromVector;
-using support::prefixIs;
-using support::suffixIs;
-using support::contains;
-
 namespace frontend {
 
 

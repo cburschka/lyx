@@ -47,12 +47,11 @@
 #include "frontends/alert.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
 
-using support::bformat;
-using support::contains;
 
 GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 	: GuiDialog(lv, "spellchecker"), exitEarly_(false),

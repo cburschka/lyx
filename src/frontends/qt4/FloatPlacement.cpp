@@ -18,8 +18,8 @@
 #include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
-using lyx::support::contains;
 
 //namespace lyx {
 

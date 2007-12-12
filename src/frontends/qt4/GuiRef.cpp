@@ -32,12 +32,10 @@
 #include <QCloseEvent>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-
-using support::makeAbsPath;
-using support::makeDisplayPath;
 
 GuiRef::GuiRef(GuiView & lv)
 	: GuiCommand(lv, "ref")

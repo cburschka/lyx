@@ -44,28 +44,9 @@
 #include <locale>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addName;
-using support::bformat;
-using support::FileFilterList;
-using support::FileName;
-using support::getExtension;
-using support::getVectorFromString;
-using support::libFileSearch;
-using support::makeAbsPath;
-using support::makeRelPath;
-using support::onlyFilename;
-using support::onlyPath;
-using support::package;
-using support::prefixIs;
-using support::quoteName;
-using support::removeExtension;
-using support::Systemcall;
-using support::token;
-using support::isStrDbl;
-
 namespace frontend {
 
 string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)

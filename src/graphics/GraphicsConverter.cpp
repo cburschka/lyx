@@ -29,21 +29,9 @@
 #include <fstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addExtension;
-using support::changeExtension;
-using support::FileName;
-using support::ForkedCall;
-using support::getExtension;
-using support::libScriptSearch;
-using support::onlyPath;
-using support::onlyFilename;
-using support::quoteName;
-using support::quote_python;
-using support::subst;
-using support::tempName;
 
 namespace graphics {
 

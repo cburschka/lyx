@@ -20,11 +20,9 @@
 #include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::bformat;
-using support::FileName;
 
 namespace {
 

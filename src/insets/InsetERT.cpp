@@ -38,10 +38,9 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::token;
 
 
 InsetERT::InsetERT(BufferParams const & bp, CollapseStatus status)

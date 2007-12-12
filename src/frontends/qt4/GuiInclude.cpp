@@ -39,18 +39,11 @@
 #include <utility>
 
 using namespace std;
+using namespace lyx::support;
+using namespace lyx::support::os;
 
 namespace lyx {
 namespace frontend {
-
-using support::FileFilterList;
-using support::FileName;
-using support::makeAbsPath;
-using support::onlyPath;
-using support::os::internal_path;
-using support::prefixIs;
-using support::getStringFromVector;
-using support::getVectorFromString;
 
 
 GuiInclude::GuiInclude(GuiView & lv)

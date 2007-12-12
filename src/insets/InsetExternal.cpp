@@ -44,8 +44,7 @@
 #include <sstream>
 
 using namespace std;
-
-using lyx::support::DocFileName;
+using namespace lyx::support;
 
 namespace {
 

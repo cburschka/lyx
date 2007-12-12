@@ -44,9 +44,9 @@
 #include <iomanip>
 
 using namespace std;
+using namespace lyx::support;
 
 using boost::bind;
-using lyx::support::FileName;
 
 namespace {
 

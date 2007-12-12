@@ -66,21 +66,11 @@
 using namespace Ui;
 
 using namespace std;
+using namespace lyx::support;
+using namespace lyx::support::os;
 
 namespace lyx {
 namespace frontend {
-
-using support::compare_ascii_no_case;
-using support::os::external_path;
-using support::os::external_path_list;
-using support::os::internal_path;
-using support::os::internal_path_list;
-using support::FileName;
-using support::FileFilterList;
-using support::addPath;
-using support::addName;
-using support::mkdir;
-using support::package;
 
 
 /////////////////////////////////////////////////////////////////////

@@ -24,15 +24,9 @@
 #include <boost/format.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::changeExtension;
-using support::FileName;
-using support::makeAbsPath;
-using support::onlyFilename;
-using support::split;
-using support::Systemcall;
 
 
 Chktex::Chktex(string const & chktex, string const & f, string const & p)

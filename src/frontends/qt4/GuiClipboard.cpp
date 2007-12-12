@@ -25,13 +25,11 @@
 #include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
 static char const * const mime_type = "application/x-lyx";
 
 namespace lyx {
-
-using support::internalLineEnding;
-using support::externalLineEnding;
 
 namespace frontend {
 

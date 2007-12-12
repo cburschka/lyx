@@ -27,18 +27,9 @@
 #include <algorithm>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
-using support::FileNameList;
-using support::getStringFromVector;
-using support::getVectorFromString;
-using support::ltrim;
-using support::prefixIs;
-using support::rtrim;
-using support::split;
-using support::tokenPos;
 
 namespace {
 

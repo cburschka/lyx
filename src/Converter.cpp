@@ -37,30 +37,9 @@
 #include "support/Systemcall.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addName;
-using support::bformat;
-using support::changeExtension;
-using support::compare_ascii_no_case;
-using support::contains;
-using support::FileName;
-using support::FileNameList;
-using support::getExtension;
-using support::libFileSearch;
-using support::libScriptSearch;
-using support::makeAbsPath;
-using support::makeRelPath;
-using support::onlyFilename;
-using support::onlyPath;
-using support::package;
-using support::prefixIs;
-using support::quoteName;
-using support::removeExtension;
-using support::split;
-using support::subst;
-using support::Systemcall;
 
 namespace Alert = lyx::frontend::Alert;
 

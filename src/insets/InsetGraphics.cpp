@@ -90,28 +90,9 @@ TODO
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::bformat;
-using support::changeExtension;
-using support::compare_timestamps;
-using support::contains;
-using support::DocFileName;
-using support::FileName;
-using support::float_equal;
-using support::getExtension;
-using support::isValidLaTeXFilename;
-using support::latex_path;
-using support::onlyFilename;
-using support::removeExtension;
-using support::rtrim;
-using support::subst;
-using support::suffixIs;
-using support::Systemcall;
-using support::unzipFile;
-using support::unzippedFileName;
-
 
 namespace {
 

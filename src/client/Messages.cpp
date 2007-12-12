@@ -19,10 +19,9 @@
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::package;
 
 
 #ifdef ENABLE_NLS

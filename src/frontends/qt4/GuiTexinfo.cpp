@@ -31,17 +31,11 @@
 #include <algorithm>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
 
-using support::FileName;
-using support::contains;
-using support::split;
-using support::token;
-using support::getExtension;
-using support::libFileSearch;
-using support::onlyFilename;
 
 static string texFileFromList(string const & file, string const & type)
 {

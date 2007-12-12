@@ -38,12 +38,10 @@
 #include <QVBoxLayout>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-
-using support::prefixIs;
-
 
 namespace {
 

@@ -71,10 +71,9 @@ int const CursorWidth = 1;
 #undef NoModifier 
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
 
 
 /// return the LyX mouse button state from Qt's

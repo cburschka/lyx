@@ -54,28 +54,9 @@
 #include <boost/bind.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::addName;
-using support::absolutePath;
-using support::bformat;
-using support::changeExtension;
-using support::contains;
-using support::copy;
-using support::DocFileName;
-using support::FileName;
-using support::FileNameList;
-using support::getVectorFromString;
-using support::isLyXFilename;
-using support::isValidLaTeXFilename;
-using support::latex_path;
-using support::makeAbsPath;
-using support::makeRelPath;
-using support::onlyFilename;
-using support::onlyPath;
-using support::prefixIs;
-using support::subst;
 
 namespace Alert = frontend::Alert;
 

@@ -28,11 +28,11 @@
 #include <QCloseEvent>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
 
-using support::trim;
 
 GuiSendTo::GuiSendTo(GuiView & lv)
 	: GuiDialog(lv, "sendto")

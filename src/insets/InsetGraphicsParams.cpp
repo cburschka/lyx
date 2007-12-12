@@ -31,13 +31,9 @@
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::float_equal;
-using support::readBB_from_PSFile;
-using support::token;
-using support::DocFileName;
 
 
 InsetGraphicsParams::InsetGraphicsParams()

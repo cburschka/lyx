@@ -59,11 +59,9 @@
 #include <string>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::bformat;
-using frontend::Clipboard;
 
 namespace {
 

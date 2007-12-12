@@ -28,13 +28,9 @@
 #include "support/lyxlib.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::bformat;
-using support::FileName;
-using support::makeAbsPath;
-using support::tempName;
 
 namespace Alert = frontend::Alert;
 

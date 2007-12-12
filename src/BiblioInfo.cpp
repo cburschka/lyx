@@ -31,14 +31,10 @@
 #include "boost/regex.hpp"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::bformat;
-using support::compare_no_case;
-using support::getVectorFromString;
-using support::ltrim;
-using support::rtrim;
 
 //////////////////////////////////////////////////////////////////////
 //

@@ -23,12 +23,10 @@
 #include <ostream>
 	
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
-using support::FileName;
-using support::libFileSearch;
-using support::makeDisplayPath;
 
 //global variable: module list
 ModuleList moduleList;

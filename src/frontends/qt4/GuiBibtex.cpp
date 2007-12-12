@@ -37,17 +37,10 @@
 #include <QLineEdit>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-
-using support::changeExtension;
-using support::contains;
-using support::FileFilterList;
-using support::onlyFilename;
-using support::prefixIs;
-using support::split;
-using support::trim;
 
 
 GuiBibtex::GuiBibtex(GuiView & lv)

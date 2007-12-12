@@ -23,12 +23,9 @@
 #include <boost/assert.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::split;
-using support::trim;
-
 
 /*
      NAMING RULES FOR USER-COMMANDS

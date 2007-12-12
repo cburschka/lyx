@@ -36,18 +36,10 @@
 #include <map>
 
 using namespace std;
+using namespace lyx::support;
+using namespace lyx::support::os;
 
 namespace lyx {
-
-using support::changeExtension;
-using support::FileName;
-using support::isStrUnsignedInt;
-using support::ltrim;
-using support::makeAbsPath;
-using support::onlyPath;
-using support::os::internal_path;
-using support::rtrim;
-
 
 // Hacks to allow the thing to link in the lyxlayout stuff
 LayoutPtr captionlayout;

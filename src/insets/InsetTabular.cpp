@@ -63,17 +63,12 @@
 #include <limits>
 
 using namespace std;
+using namespace lyx::support;
 
 using boost::shared_ptr;
 using boost::dynamic_pointer_cast;
 
 namespace lyx {
-
-using support::prefixIs;
-using support::FileName;
-using support::ltrim;
-using support::rtrim;
-using support::suffixIs;
 
 using cap::dirtyTabularStack;
 using cap::tabularStackDirty;

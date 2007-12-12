@@ -22,10 +22,9 @@
 #include <map>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::FileName;
 
 namespace graphics {
 
