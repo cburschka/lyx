@@ -52,7 +52,7 @@ static docstring const formatted(docstring const & text)
 	while (true) {
 		size_t const nxtpos1 = text.find(' ',  curpos);
 		size_t const nxtpos2 = text.find('\n', curpos);
-		size_t const nxtpos = std::min(nxtpos1, nxtpos2);
+		size_t const nxtpos = min(nxtpos1, nxtpos2);
 
 		docstring const word =
 			nxtpos == docstring::npos ?

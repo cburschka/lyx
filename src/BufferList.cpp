@@ -310,11 +310,11 @@ void BufferList::setCurrentAuthor(docstring const & name, docstring const & emai
 }
 
 
-int BufferList::bufferNum(std::string const & name) const
+int BufferList::bufferNum(string const & name) const
 {
 	vector<string> buffers = getFileNames();
 	vector<string>::const_iterator cit =
-		std::find(buffers.begin(), buffers.end(), name);
+		find(buffers.begin(), buffers.end(), name);
 	if (cit == buffers.end())
 		return 0;
 	return int(cit - buffers.begin());

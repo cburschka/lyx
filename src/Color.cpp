@@ -49,7 +49,7 @@ static int hexstrToInt(string const & str)
 {
 	int val = 0;
 	istringstream is(str);
-	is >> std::setbase(16) >> val;
+	is >> setbase(16) >> val;
 	return val;
 }
 
@@ -65,7 +65,7 @@ string const X11hexname(RGBColor const & col)
 {
 	ostringstream ostr;
 
-	ostr << '#' << std::setbase(16) << std::setfill('0')
+	ostr << '#' << setbase(16) << setfill('0')
 	     << setw(2) << col.r
 	     << setw(2) << col.g
 	     << setw(2) << col.b;
@@ -220,7 +220,7 @@ bool ColorSet::setColor(ColorCode col, string const & x11name)
 	InfoTab::iterator it = infotab.find(col);
 	if (it == infotab.end()) {
 		lyxerr << "Color " << col << " not found in database."
-		       << std::endl;
+		       << endl;
 		return false;
 	}
 

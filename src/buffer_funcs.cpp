@@ -223,7 +223,7 @@ depth_type getItemDepth(ParIterator const & it)
 			if (prev_depth == min_depth)
 				return prev_par.itemdepth;
 		}
-		min_depth = std::min(min_depth, prev_depth);
+		min_depth = min(min_depth, prev_depth);
 		// small optimization: if we are at depth 0, we won't
 		// find anything else
 		if (prev_depth == 0)

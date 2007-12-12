@@ -370,7 +370,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
 		drawText(x, y, str);
-		//LYXERR(Debug::PAINTING, "draw " << std::string(str.toUtf8())
+		//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 		//	<< " at " << x << "," << y);
 		return textwidth;
 	}
@@ -383,7 +383,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// Only the left bearing of the first character is important
 	// as we always write from left to right, even for
 	// right-to-left languages.
-	int const lb = std::min(fi.metrics.lbearing(s[0]), 0);
+	int const lb = min(fi.metrics.lbearing(s[0]), 0);
 	int const mA = fi.metrics.maxAscent();
 	if (!QPixmapCache::find(key, pm)) {
 		// Only the right bearing of the last character is

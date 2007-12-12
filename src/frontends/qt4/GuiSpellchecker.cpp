@@ -231,7 +231,7 @@ static SpellBase * getSpeller(BufferParams const & bp)
 }
 
 
-bool GuiSpellchecker::initialiseParams(std::string const &)
+bool GuiSpellchecker::initialiseParams(string const &)
 {
 	LYXERR(Debug::GUI, "Spellchecker::initialiseParams");
 

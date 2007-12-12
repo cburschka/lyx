@@ -22,11 +22,11 @@ namespace lyx {
 namespace support {
 namespace os {
 
-std::string const python()
+string const python()
 {
 	// Use the -tt switch so that mixed tab/whitespace indentation is
 	// an error
-	static std::string const command("python -tt");
+	static string const command("python -tt");
 	return command;
 }
 

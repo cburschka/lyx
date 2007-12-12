@@ -16,6 +16,8 @@
 #include <QObject>
 #include <QTimerEvent>
 
+using namespace std;
+
 namespace lyx {
 
 /**
@@ -60,7 +62,7 @@ void Timeout::Impl::reset()
 void Timeout::Impl::start()
 {
 	if (running())
-		lyxerr << "Timeout::start: already running!" << std::endl;
+		lyxerr << "Timeout::start: already running!" << endl;
 	timeout_id = startTimer(timeout_ms());
 }
 

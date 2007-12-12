@@ -40,11 +40,11 @@ docstring const & empty_docstring()
 	return s;
 }
 
-// Using this allows us to have std::string default arguments in headers
+// Using this allows us to have string default arguments in headers
 // without #include <string>
-std::string const & empty_string()
+string const & empty_string()
 {
-	static std::string s;
+	static string s;
 	return s;
 }
 
@@ -410,8 +410,8 @@ char_type uppercase(char_type c)
 
 namespace {
 
-// since we cannot use std::tolower and std::toupper directly in the
-// calls to std::transform yet, we use these helper clases. (Lgb)
+// since we cannot use tolower and toupper directly in the
+// calls to transform yet, we use these helper clases. (Lgb)
 
 struct local_lowercase {
 	char_type operator()(char_type c) const {
@@ -622,10 +622,10 @@ namespace {
 
 /// Substitute all \a oldchar with \a newchar
 template<typename Ch> inline
-std::basic_string<Ch> const subst_char(std::basic_string<Ch> const & a,
+basic_string<Ch> const subst_char(basic_string<Ch> const & a,
 		Ch oldchar, Ch newchar)
 {
-	typedef std::basic_string<Ch> String;
+	typedef basic_string<Ch> String;
 	String tmp(a);
 	typename String::iterator lit = tmp.begin();
 	typename String::iterator end = tmp.end();

@@ -31,6 +31,8 @@
 
 #include <ostream>
 
+using namespace std;
+
 namespace lyx {
 
 
@@ -48,7 +50,7 @@ InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 }
 
 
-CommandInfo const * InsetBibitem::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetBibitem::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = {"label", "key", ""};
 	static const bool isoptional[] = {true, false};
@@ -95,7 +97,7 @@ void InsetBibitem::read(Buffer const & buf, Lexer & lex)
 
 	if (support::prefixIs(getParam("key"), key_prefix)) {
 		int const key = convert<int>(getParam("key").substr(key_prefix.length()));
-		key_counter = std::max(key_counter, key);
+		key_counter = max(key_counter, key);
 	}
 }
 

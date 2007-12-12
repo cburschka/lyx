@@ -136,7 +136,7 @@ public:
 		vector<string>::const_iterator qit = ft.requirements.begin();
 		vector<string>::const_iterator qend = ft.requirements.end();
 		for (; qit != qend; ++qit) {
-			lyxerr << "req:" << *qit << std::endl;
+			lyxerr << "req:" << *qit << endl;
 			ost << "\t\tRequirement " << *qit << '\n';
 		}
 
@@ -299,7 +299,7 @@ void add(vector<TransformID> & ids, string const & name)
 	if (int(id) == -1) {
 		lyxerr << "external::Template::readTemplate\n"
 		       << "Transform " << name << " is not recognized"
-		       << std::endl;
+		       << endl;
 	} else {
 		ids.push_back(id);
 	}
@@ -385,17 +385,17 @@ void Template::readTemplate(Lexer & lex)
 
 namespace {
 
-void transform_not_found(std::ostream & os, string const & transform)
+void transform_not_found(ostream & os, string const & transform)
 {
 	os << "external::Format::readFormat. Transformation \""
-	   << transform << "\" is unrecognized." << std::endl;
+	   << transform << "\" is unrecognized." << endl;
 }
 
 
-void transform_class_not_found(std::ostream & os, string const & tclass)
+void transform_class_not_found(ostream & os, string const & tclass)
 {
 	os << "external::Format::readFormat. Transformation class \""
-	   << tclass << "\" is unrecognized." << std::endl;
+	   << tclass << "\" is unrecognized." << endl;
 }
 
 

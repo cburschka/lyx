@@ -412,9 +412,9 @@ FileName const get_binary_path(string const & exe)
 	if (exe_name != exe_path)
 		return FileName();
 
-	std::vector<string> const path = getEnvPath("PATH");
-	std::vector<string>::const_iterator it = path.begin();
-	std::vector<string>::const_iterator const end = path.end();
+	vector<string> const path = getEnvPath("PATH");
+	vector<string>::const_iterator it = path.begin();
+	vector<string>::const_iterator const end = path.end();
 	for (; it != end; ++it) {
 		// This will do nothing if *it is already absolute.
 		string const exe_dir = makeAbsPath(*it).absFilename();
@@ -455,7 +455,7 @@ get_system_support_dir(FileName const & abs_binary,
 
 	// searched_dirs is used for diagnostic purposes only in the case
 	// that "chkconfig.ltx" is not found.
-	std::list<FileName> searched_dirs;
+	list<FileName> searched_dirs;
 
 	// 1. Use the -sysdir command line parameter.
 	FileName path = abs_path_from_command_line(command_line_system_support_dir);
@@ -545,7 +545,7 @@ get_system_support_dir(FileName const & abs_binary,
 	// Everything has failed :-(
 	// So inform the user and exit.
 	string searched_dirs_str;
-	typedef std::list<FileName>::const_iterator iterator;
+	typedef list<FileName>::const_iterator iterator;
 	iterator const begin = searched_dirs.begin();
 	iterator const end = searched_dirs.end();
 	for (iterator it = begin; it != end; ++it) {

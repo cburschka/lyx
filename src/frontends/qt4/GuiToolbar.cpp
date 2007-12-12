@@ -139,7 +139,7 @@ string const find_png(string const & name)
 	PngMap const * const end = begin + nr_sorted_png_map;
 	BOOST_ASSERT(sorted(begin, end));
 
-	PngMap const * const it = std::find_if(begin, end, CompareKey(name));
+	PngMap const * const it = find_if(begin, end, CompareKey(name));
 
 	string png_name;
 	if (it != end)

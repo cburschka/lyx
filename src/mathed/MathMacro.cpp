@@ -172,8 +172,8 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		Dimension bsdim;
 		mathed_string_dim(mi.base.font, from_ascii("\\"), bsdim);
 		dim.wid += bsdim.width() + 1;
-		dim.asc = std::max(bsdim.ascent(), dim.ascent());
-		dim.des = std::max(bsdim.descent(), dim.descent());
+		dim.asc = max(bsdim.ascent(), dim.ascent());
+		dim.des = max(bsdim.descent(), dim.descent());
 		metricsMarkers(dim);
 	} else {
 		BOOST_ASSERT(macro_ != 0);
@@ -191,10 +191,10 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			mathed_string_dim(font, name(), namedim);
 #if 0
 			dim.wid += 2 + namedim.wid + 2 + 2;
-			dim.asc = std::max(dim.asc, namedim.asc) + 2;
-			dim.des = std::max(dim.des, namedim.des) + 2;
+			dim.asc = max(dim.asc, namedim.asc) + 2;
+			dim.des = max(dim.des, namedim.des) + 2;
 #endif
-			dim.wid = std::max(1 + namedim.wid + 1, 2 + dim.wid + 2);
+			dim.wid = max(1 + namedim.wid + 1, 2 + dim.wid + 2);
 			dim.asc += 1 + namedim.height() + 1;
 			dim.des += 2;
 		}
@@ -252,10 +252,10 @@ void MathMacro::updateRepresentation(MetricsInfo & mi)
 				needsUpdate_ = false;
 
 				// get default values of macro
-				std::vector<docstring> const & defaults = macro_->defaults();
+				vector<docstring> const & defaults = macro_->defaults();
 
 				// create MathMacroArgumentValue objects pointing to the cells of the macro
-				std::vector<MathData> values(nargs());
+				vector<MathData> values(nargs());
 				for (size_t i = 0; i < nargs(); ++i) {
 					if (!cell(i).empty() || i >= defaults.size() || 
 							defaults[i].empty() || curIdx == (int)i)
@@ -450,7 +450,7 @@ void MathMacro::insertArgument(Inset::pos_type pos) {
 }
 
 
-void MathMacro::detachArguments(std::vector<MathData> & args, bool strip)
+void MathMacro::detachArguments(vector<MathData> & args, bool strip)
 {
 	BOOST_ASSERT(displayMode_ == DISPLAY_NORMAL);	
 	args = cells_;
@@ -471,7 +471,7 @@ void MathMacro::detachArguments(std::vector<MathData> & args, bool strip)
 }
 
 
-void MathMacro::attachArguments(std::vector<MathData> const & args, size_t arity, int optionals)
+void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int optionals)
 {
 	BOOST_ASSERT(displayMode_ == DISPLAY_NORMAL);
 	cells_ = args;
@@ -541,7 +541,7 @@ void MathMacro::write(WriteStream & os) const
 		// Use macroBackup_ instead of macro_ here, because
 		// this is outside the metrics/draw calls, hence the macro_
 		// variable can point to a MacroData which was freed already.
-		std::vector<docstring> const & defaults = macroBackup_.defaults();
+		vector<docstring> const & defaults = macroBackup_.defaults();
 
 		// Optional argument
 		if (os.latex()) {

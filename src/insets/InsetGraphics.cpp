@@ -298,7 +298,7 @@ void InsetGraphics::readInsetGraphics(Lexer & lex, string const & bufpath)
 		} else {
 			if (!params_.Read(lex, token, bufpath))
 				lyxerr << "Unknown token, " << token << ", skipping."
-					<< std::endl;
+					<< endl;
 		}
 	}
 }
@@ -468,7 +468,7 @@ enum GraphicsCopyStatus {
 };
 
 
-std::pair<GraphicsCopyStatus, FileName> const
+pair<GraphicsCopyStatus, FileName> const
 copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 {
 	LYXERR(Debug::FILES, "Comparing " << file_in << " and " << file_out);
@@ -477,7 +477,7 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 
 	if (checksum_in == checksum_out)
 		// Nothing to do...
-		return std::make_pair(IDENTICAL_CONTENTS, file_out);
+		return make_pair(IDENTICAL_CONTENTS, file_out);
 
 	Mover const & mover = getMover(formats.getFormatFromFile(file_in));
 	bool const success = mover.copy(file_in, file_out);
@@ -490,11 +490,11 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 	}
 
 	GraphicsCopyStatus status = success ? SUCCESS : FAILURE;
-	return std::make_pair(status, file_out);
+	return make_pair(status, file_out);
 }
 
 
-std::pair<GraphicsCopyStatus, FileName> const
+pair<GraphicsCopyStatus, FileName> const
 copyToDirIfNeeded(DocFileName const & file, string const & dir)
 {
 	using support::rtrim;
@@ -502,7 +502,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 	string const file_in = file.absFilename();
 	string const only_path = support::onlyPath(file_in);
 	if (rtrim(support::onlyPath(file_in) , "/") == rtrim(dir, "/"))
-		return std::make_pair(IDENTICAL_PATHS, file_in);
+		return make_pair(IDENTICAL_PATHS, file_in);
 
 	string mangled = file.mangledFilename();
 	if (file.isZipped()) {
@@ -809,7 +809,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 
 	LYXERR(Debug::GRAPHICS, "InsetGraphics::latex outputting:\n" << latex_str);
 	// Return how many newlines we issued.
-	return int(std::count(latex_str.begin(), latex_str.end(),'\n'));
+	return int(count(latex_str.begin(), latex_str.end(),'\n'));
 }
 
 
@@ -838,7 +838,7 @@ static int writeImageObject(char const * format, odocstream & os,
 {
 	if (runparams.flavor != OutputParams::XML)
 		os << "<![ %output.print." << format
-			 << "; [" << std::endl;
+			 << "; [" << endl;
 
 	os <<"<imageobject><imagedata fileref=\"&"
 		 << graphic_label
@@ -855,7 +855,7 @@ static int writeImageObject(char const * format, odocstream & os,
 	os << "</imageobject>";
 
 	if (runparams.flavor != OutputParams::XML)
-		os << std::endl << "]]>" ;
+		os << endl << "]]>" ;
 
 	return runparams.flavor == OutputParams::XML ? 0 : 2;
 }

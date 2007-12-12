@@ -72,7 +72,7 @@ namespace lyx {
 #if !defined (HAVE_MKFIFO)
 // We provide a stub class that disables the lyxserver.
 
-LyXComm::LyXComm(std::string const &, Server *, ClientCallbackfct)
+LyXComm::LyXComm(string const &, Server *, ClientCallbackfct)
 {}
 
 void LyXComm::openConnection()
@@ -107,7 +107,7 @@ void LyXComm::send(string const & msg)
 #else // defined (HAVE_MKFIFO)
 
 
-LyXComm::LyXComm(std::string const & pip, Server * cli, ClientCallbackfct ccb)
+LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
 	: pipename_(pip), client_(cli), clientcb_(ccb)
 {
 	ready_ = false;
@@ -344,7 +344,7 @@ void ServerCallback(Server * server, string const & msg)
 	server->callback(msg);
 }
 
-Server::Server(LyXFunc * f, std::string const & pipes)
+Server::Server(LyXFunc * f, string const & pipes)
 	: numclients_(0), func_(f), pipes_(pipes, this, &ServerCallback)
 {}
 

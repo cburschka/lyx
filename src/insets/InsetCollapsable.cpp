@@ -426,7 +426,7 @@ docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 	docstring label;
 	pos_type const max_length = 15;
 	pos_type const p_siz = paragraphs().begin()->size();
-	pos_type const n = std::min(max_length, p_siz);
+	pos_type const n = min(max_length, p_siz);
 	pos_type i = 0;
 	pos_type j = 0;
 	for (; i < n && j < p_siz; ++j) {

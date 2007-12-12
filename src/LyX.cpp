@@ -93,7 +93,7 @@ namespace {
 string cl_system_support;
 string cl_user_support;
 
-std::string geometryArg;
+string geometryArg;
 
 LyX * singleton_ = 0;
 
@@ -166,7 +166,7 @@ struct LyX::Impl
 	/// has this user started lyx for the first time?
 	bool first_start;
 	/// the parsed command line batch command if any
-	std::string batch_command;
+	string batch_command;
 };
 
 ///
@@ -317,15 +317,15 @@ KeyMap const & LyX::topLevelKeymap() const
 }
 
 
-Messages & LyX::getMessages(std::string const & language)
+Messages & LyX::getMessages(string const & language)
 {
 	map<string, Messages>::iterator it = pimpl_->messages_.find(language);
 
 	if (it != pimpl_->messages_.end())
 		return it->second;
 
-	std::pair<map<string, Messages>::iterator, bool> result =
-			pimpl_->messages_.insert(std::make_pair(language, Messages(language)));
+	pair<map<string, Messages>::iterator, bool> result =
+			pimpl_->messages_.insert(make_pair(language, Messages(language)));
 
 	BOOST_ASSERT(result.second);
 	return result.first->second;
@@ -338,7 +338,7 @@ Messages & LyX::getGuiMessages()
 }
 
 
-void LyX::setGuiLanguage(std::string const & language)
+void LyX::setGuiLanguage(string const & language)
 {
 	pimpl_->messages_["GUI"] = Messages(language);
 }
@@ -522,7 +522,7 @@ int LyX::init(int & argc, char * argv[])
 
 void LyX::addFileToLoad(FileName const & fname)
 {
-	vector<FileName>::const_iterator cit = std::find(
+	vector<FileName>::const_iterator cit = find(
 		pimpl_->files_to_load_.begin(), pimpl_->files_to_load_.end(),
 		fname);
 
@@ -740,7 +740,7 @@ void LyX::printError(ErrorItem const & ei)
 {
 	docstring tmp = _("LyX: ") + ei.error + char_type(':')
 		+ ei.description;
-	std::cerr << to_utf8(tmp) << std::endl;
+	cerr << to_utf8(tmp) << endl;
 }
 
 
@@ -1037,10 +1037,10 @@ bool LyX::readUIFile(string const & name, bool include)
 	};
 
 	// Ensure that a file is read only once (prevents include loops)
-	static std::list<string> uifiles;
-	std::list<string>::const_iterator it  = uifiles.begin();
-	std::list<string>::const_iterator end = uifiles.end();
-	it = std::find(it, end, name);
+	static list<string> uifiles;
+	list<string>::const_iterator it  = uifiles.begin();
+	list<string>::const_iterator end = uifiles.end();
+	it = find(it, end, name);
 	if (it != end) {
 		LYXERR(Debug::INIT, "UI file '" << name << "' has been read already. "
 				    << "Is this an include loop?");
@@ -1295,7 +1295,7 @@ int parse_geometry(string const & arg1, string const &)
 
 void LyX::easyParse(int & argc, char * argv[])
 {
-	std::map<string, cmd_helper> cmdmap;
+	map<string, cmd_helper> cmdmap;
 
 	cmdmap["-dbg"] = parse_dbg;
 	cmdmap["-help"] = parse_help;
@@ -1313,7 +1313,7 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["-geometry"] = parse_geometry;
 
 	for (int i = 1; i < argc; ++i) {
-		std::map<string, cmd_helper>::const_iterator it
+		map<string, cmd_helper>::const_iterator it
 			= cmdmap.find(argv[i]);
 
 		// don't complain if not found - may be parsed later
@@ -1405,13 +1405,13 @@ Movers & theMovers()
 }
 
 
-Mover const & getMover(std::string  const & fmt)
+Mover const & getMover(string  const & fmt)
 {
 	return  LyX::ref().pimpl_->movers_(fmt);
 }
 
 
-void setMover(std::string const & fmt, std::string const & command)
+void setMover(string const & fmt, string const & command)
 {
 	LyX::ref().pimpl_->movers_.set(fmt, command);
 }
@@ -1423,7 +1423,7 @@ Movers & theSystemMovers()
 }
 
 
-Messages & getMessages(std::string const & language)
+Messages & getMessages(string const & language)
 {
 	return LyX::ref().getMessages(language);
 }

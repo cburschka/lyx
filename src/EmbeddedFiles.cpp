@@ -293,7 +293,7 @@ bool EmbeddedFiles::writeFile(DocFileName const & filename)
 
 
 EmbeddedFiles::EmbeddedFileList::const_iterator
-EmbeddedFiles::find(std::string filename) const
+EmbeddedFiles::find(string filename) const
 {
 	EmbeddedFileList::const_iterator it = file_list_.begin();
 	EmbeddedFileList::const_iterator it_end = file_list_.end();

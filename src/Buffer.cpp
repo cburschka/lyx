@@ -121,7 +121,7 @@ int const LYX_FORMAT = 307; // JSpitzm: support for \slash
 } // namespace anon
 
 
-typedef std::map<string, bool> DepClean;
+typedef map<string, bool> DepClean;
 
 class Buffer::Impl
 {
@@ -173,8 +173,8 @@ public:
 	mutable TocBackend toc_backend;
 
 	/// macro table
-	typedef std::map<unsigned int, MacroData, std::greater<int> > PositionToMacroMap;
-	typedef std::map<docstring, PositionToMacroMap> NameToPositionMacroMap;
+	typedef map<unsigned int, MacroData, greater<int> > PositionToMacroMap;
+	typedef map<docstring, PositionToMacroMap> NameToPositionMacroMap;
 	NameToPositionMacroMap macros;
 
 	/// Container for all sort of Buffer dependant errors.
@@ -606,14 +606,14 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 }
 
 
-bool Buffer::readString(std::string const & s)
+bool Buffer::readString(string const & s)
 {
 	params().compressed = false;
 
 	// remove dummy empty par
 	paragraphs().clear();
 	Lexer lex(0, 0);
-	std::istringstream is(s);
+	istringstream is(s);
 	lex.setStream(is);
 	FileName const name(tempName());
 	switch (readFile(lex, name, true)) {
@@ -621,7 +621,7 @@ bool Buffer::readString(std::string const & s)
 		return false;
 	case wrongversion: {
 		// We need to call lyx2lyx, so write the input to a file
-		std::ofstream os(name.toFilesystemEncoding().c_str());
+		ofstream os(name.toFilesystemEncoding().c_str());
 		os << s;
 		os.close();
 		return readFile(name);
@@ -905,7 +905,7 @@ bool Buffer::write(ostream & ofs) const
 {
 #ifdef HAVE_LOCALE
 	// Use the standard "C" locale for file output.
-	ofs.imbue(std::locale::classic());
+	ofs.imbue(locale::classic());
 #endif
 
 	// The top of the file should not be written by params().
@@ -995,7 +995,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		lyxerr << "Caught iconv exception: " << e.what() << endl;
 		failed_export = true;
 	}
-	catch (std::exception const & e) {
+	catch (exception const & e) {
 		lyxerr << "Caught \"normal\" exception: " << e.what() << endl;
 		failed_export = true;
 	}
@@ -1760,7 +1760,7 @@ void Buffer::updateMacros()
 		pars[i].setMacrocontextPosition(i);
 
 		//lyxerr << "searching main par " << i
-		//	<< " for macro definitions" << std::endl;
+		//	<< " for macro definitions" << endl;
 		InsetList const & insets = pars[i].insetList();
 		InsetList::const_iterator it = insets.begin();
 		InsetList::const_iterator end = insets.end();
@@ -1813,7 +1813,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 		paramName = "reference";
 	}
 
-	if (std::count(labels.begin(), labels.end(), from) > 1)
+	if (count(labels.begin(), labels.end(), from) > 1)
 		return;
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
@@ -1876,7 +1876,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 ErrorList & Buffer::errorList(string const & type) const
 {
 	static ErrorList emptyErrorList;
-	std::map<string, ErrorList>::iterator I = d->errorLists.find(type);
+	map<string, ErrorList>::iterator I = d->errorLists.find(type);
 	if (I == d->errorLists.end())
 		return emptyErrorList;
 
@@ -1891,7 +1891,7 @@ void Buffer::structureChanged() const
 }
 
 
-void Buffer::errors(std::string const & err) const
+void Buffer::errors(string const & err) const
 {
 	if (gui_)
 		gui_->errors(err);

@@ -45,7 +45,7 @@ namespace {
 unsigned long do_crc(string const & s)
 {
 	boost::crc_32_type crc;
-	crc = std::for_each(s.begin(), s.end(), crc);
+	crc = for_each(s.begin(), s.end(), crc);
 	return crc.checksum();
 }
 
@@ -60,8 +60,8 @@ public:
 		  time_t t, unsigned long c)
 		: timestamp(t), checksum(c)
 	{
-		std::ostringstream os;
-		os << std::setw(10) << std::setfill('0') << do_crc(orig_from.absFilename())
+		ostringstream os;
+		os << setw(10) << setfill('0') << do_crc(orig_from.absFilename())
 		   << '-' << to_format;
 		cache_name = FileName(addName(cache_dir.absFilename(), os.str()));
 		LYXERR(Debug::FILES, "Add file cache item " << orig_from
@@ -80,7 +80,7 @@ public:
 /** The cache contains one item per orig file and target format, so use a
  *  nested map to find the cache item quickly by filename and format.
  */
-typedef std::map<string, CacheItem> FormatCacheType;
+typedef map<string, CacheItem> FormatCacheType;
 class FormatCache {
 public:
 	/// Format of the source file
@@ -88,7 +88,7 @@ public:
 	/// Cache target format -> item to quickly find the item by format
 	FormatCacheType cache;
 };
-typedef std::map<FileName, FormatCache> CacheType;
+typedef map<FileName, FormatCache> CacheType;
 
 
 class ConverterCache::Impl {
@@ -107,7 +107,7 @@ void ConverterCache::Impl::readIndex()
 {
 	time_t const now = current_time();
 	FileName const index(addName(cache_dir.absFilename(), "index"));
-	std::ifstream is(index.toFilesystemEncoding().c_str());
+	ifstream is(index.toFilesystemEncoding().c_str());
 	Lexer lex(0, 0);
 	lex.setStream(is);
 	while (lex.isOK()) {
@@ -167,7 +167,7 @@ void ConverterCache::Impl::readIndex()
 void ConverterCache::Impl::writeIndex()
 {
 	FileName const index(addName(cache_dir.absFilename(), "index"));
-	std::ofstream os(index.toFilesystemEncoding().c_str());
+	ofstream os(index.toFilesystemEncoding().c_str());
 	os.close();
 	if (!lyx::support::chmod(index, 0600))
 		return;
@@ -242,7 +242,7 @@ void ConverterCache::init()
 	if (!cache_dir.exists())
 		if (support::mkdir(cache_dir, 0700) != 0) {
 			lyxerr << "Could not create cache directory `"
-			       << cache_dir << "'." << std::endl;
+			       << cache_dir << "'." << endl;
 			exit(EXIT_FAILURE);
 		}
 	get().pimpl_->readIndex();

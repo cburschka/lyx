@@ -19,6 +19,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 namespace lyx {
 
 
@@ -50,7 +52,7 @@ void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetFootlike::write(Buffer const & buf, std::ostream & os) const
+void InsetFootlike::write(Buffer const & buf, ostream & os) const
 {
 	os << to_utf8(name()) << "\n";
 	InsetCollapsable::write(buf, os);

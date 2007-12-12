@@ -639,7 +639,7 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 }
 
 
-std::string Font::toString(bool const toggle) const
+string Font::toString(bool const toggle) const
 {
 	string lang = "ignore";
 	if (language())
@@ -780,7 +780,7 @@ ostream & operator<<(ostream & os, FontState fms)
 }
 
 
-ostream & operator<<(std::ostream & os, FontInfo const & f)
+ostream & operator<<(ostream & os, FontInfo const & f)
 {
 	return os << "font:"
 		<< " family " << f.family()
@@ -797,7 +797,7 @@ ostream & operator<<(std::ostream & os, FontInfo const & f)
 }
 
 
-std::ostream & operator<<(std::ostream & os, Font const & font)
+ostream & operator<<(ostream & os, Font const & font)
 {
 	return os << font.bits_
 		<< " lang: " << (font.lang_ ? font.lang_->lang() : 0);

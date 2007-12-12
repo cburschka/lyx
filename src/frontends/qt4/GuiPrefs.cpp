@@ -80,21 +80,21 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////////
 
 template<class A>
-static size_t findPos_helper(std::vector<A> const & vec, A const & val)
+static size_t findPos_helper(vector<A> const & vec, A const & val)
 {
-	typedef typename std::vector<A>::const_iterator Cit;
+	typedef typename vector<A>::const_iterator Cit;
 
-	Cit it = std::find(vec.begin(), vec.end(), val);
+	Cit it = find(vec.begin(), vec.end(), val);
 	if (it == vec.end())
 		return 0;
-	return std::distance(vec.begin(), it);
+	return distance(vec.begin(), it);
 }
 
 
 static void parseFontName(QString const & mangled0,
 	string & name, string & foundry)
 {
-	std::string mangled = fromqstr(mangled0);
+	string mangled = fromqstr(mangled0);
 	size_t const idx = mangled.find('[');
 	if (idx == string::npos || idx == 0) {
 		name = mangled;
@@ -579,7 +579,7 @@ PrefColors::PrefColors(GuiPreferences * form, QWidget * parent)
 
 		lcolors_.push_back(lc);
 	}
-	std::sort(lcolors_.begin(), lcolors_.end(), ColorSorter());
+	sort(lcolors_.begin(), lcolors_.end(), ColorSorter());
 	vector<ColorCode>::const_iterator cit = lcolors_.begin();
 	vector<ColorCode>::const_iterator const end = lcolors_.end();
 	for (; cit != end; ++cit) {
@@ -1030,7 +1030,7 @@ void PrefConverters::updateGui()
 	Converters::const_iterator ccit = form_->converters().begin();
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
-		std::string const name =
+		string const name =
 			ccit->From->prettyname() + " -> " + ccit->To->prettyname();
 		int type = form_->converters().getNumber(ccit->From->name(), ccit->To->name());
 		new QListWidgetItem(toqstr(name), convertersLW, type);
@@ -1204,7 +1204,7 @@ FormatNameValidator::FormatNameValidator(QWidget * parent, Formats const & f)
 {
 }
 
-std::string FormatNameValidator::str(Formats::const_iterator it) const
+string FormatNameValidator::str(Formats::const_iterator it) const
 {
 	return it->name();
 }
@@ -1216,7 +1216,7 @@ FormatPrettynameValidator::FormatPrettynameValidator(QWidget * parent, Formats c
 }
 
 
-std::string FormatPrettynameValidator::str(Formats::const_iterator it) const
+string FormatPrettynameValidator::str(Formats::const_iterator it) const
 {
 	return it->prettyname();
 }
@@ -1450,9 +1450,9 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 	defaultLanguageCO->clear();
 
 	// store the lang identifiers for later
-	std::vector<LanguagePair> const langs = getLanguageData(false);
-	std::vector<LanguagePair>::const_iterator lit  = langs.begin();
-	std::vector<LanguagePair>::const_iterator lend = langs.end();
+	vector<LanguagePair> const langs = getLanguageData(false);
+	vector<LanguagePair>::const_iterator lit  = langs.begin();
+	vector<LanguagePair>::const_iterator lend = langs.end();
 	lang_.clear();
 	for (; lit != lend; ++lit) {
 		defaultLanguageCO->addItem(toqstr(lit->first));
@@ -2227,7 +2227,7 @@ void GuiPreferences::updateContents()
 }
 
 
-bool GuiPreferences::initialiseParams(std::string const &)
+bool GuiPreferences::initialiseParams(string const &)
 {
 	rc_ = lyxrc;
 	formats_ = lyx::formats;

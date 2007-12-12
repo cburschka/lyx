@@ -420,7 +420,7 @@ void handle_comment(ostream & os, string const & s, Context & context)
 }
 
 
-class isLayout : public std::unary_function<LayoutPtr, bool> {
+class isLayout : public unary_function<LayoutPtr, bool> {
 public:
 	isLayout(string const name) : name_(name) {}
 	bool operator()(LayoutPtr const & ptr) const {
@@ -438,7 +438,7 @@ LayoutPtr findLayout(TextClass const & textclass,
 	TextClass::const_iterator end = textclass.end();
 
 	TextClass::const_iterator
-		it = std::find_if(beg, end, isLayout(name));
+		it = find_if(beg, end, isLayout(name));
 
 	return (it == end) ? LayoutPtr() : *it;
 }
@@ -995,7 +995,7 @@ void get_cite_arguments(Parser & p, bool natbibOrder,
 	if (!after.empty()) {
 		before = p.getFullOpt();
 		if (natbibOrder && !before.empty())
-			std::swap(before, after);
+			swap(before, after);
 	}
 }
 
@@ -1913,10 +1913,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const command = '\\' + t.cs();
 			char argumentOrder = '\0';
 			vector<string> const & options = used_packages["jurabib"];
-			if (std::find(options.begin(), options.end(),
+			if (find(options.begin(), options.end(),
 				      "natbiborder") != options.end())
 				argumentOrder = 'n';
-			else if (std::find(options.begin(), options.end(),
+			else if (find(options.begin(), options.end(),
 					   "jurabiborder") != options.end())
 				argumentOrder = 'j';
 

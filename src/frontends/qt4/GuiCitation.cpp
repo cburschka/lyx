@@ -125,7 +125,7 @@ void GuiCitation::closeEvent(QCloseEvent * e)
 
 void GuiCitation::applyView()
 {
-	int  const choice = std::max(0, citationStyleCO->currentIndex());
+	int  const choice = max(0, citationStyleCO->currentIndex());
 	style_ = choice;
 	bool const full  = fulllistCB->isChecked();
 	bool const force = forceuppercaseCB->isChecked();

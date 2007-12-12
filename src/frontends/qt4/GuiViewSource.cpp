@@ -132,7 +132,7 @@ QString GuiViewSource::getContent(bool fullSource)
 		par_end = view->cursor().selectionEnd().bottom().pit();
 	}
 	if (par_begin > par_end)
-		std::swap(par_begin, par_end);
+		swap(par_begin, par_end);
 	odocstringstream ostr;
 	view->buffer().getSourceCode(ostr, par_begin, par_end + 1, fullSource);
 	return toqstr(ostr.str());

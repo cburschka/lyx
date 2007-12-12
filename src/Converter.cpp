@@ -626,8 +626,8 @@ void Converters::buildGraph()
 }
 
 
-std::vector<Format const *> const
-Converters::intToFormat(std::vector<int> const & input)
+vector<Format const *> const
+Converters::intToFormat(vector<int> const & input)
 {
 	vector<Format const *> result(input.size());
 

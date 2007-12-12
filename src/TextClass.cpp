@@ -42,7 +42,7 @@ namespace lyx {
 
 namespace {
 
-class LayoutNamesEqual : public std::unary_function<LayoutPtr, bool> {
+class LayoutNamesEqual : public unary_function<LayoutPtr, bool> {
 public:
 	LayoutNamesEqual(docstring const & name)
 		: name_(name)
@@ -68,7 +68,7 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 		return false;
 	}
 
-	std::ostringstream command;
+	ostringstream command;
 	command << support::os::python() << ' ' << quoteName(script.toFilesystemEncoding())
 		<< ' ' << quoteName(filename.toFilesystemEncoding())
 		<< ' ' << quoteName(tempfile.toFilesystemEncoding());
@@ -466,9 +466,9 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 				if (min_toclevel_ == Layout::NOT_IN_TOC)
 					min_toclevel_ = toclevel;
 				else
-					min_toclevel_ = std::min(min_toclevel_,
+					min_toclevel_ = min(min_toclevel_,
 							 toclevel);
-				max_toclevel_ = std::max(max_toclevel_,
+				max_toclevel_ = max(max_toclevel_,
 							 toclevel);
 			}
 		}

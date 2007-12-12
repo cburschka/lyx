@@ -109,10 +109,10 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 		if (par != pbegin)
 			os << '\n';
 		if (par->layout() == defaultstyle && par->emptyTag()) {
-			par->simpleDocBookOnePar(buf, os, runparams, outerFont(std::distance(paragraphs.begin(), par), paragraphs));
+			par->simpleDocBookOnePar(buf, os, runparams, outerFont(distance(paragraphs.begin(), par), paragraphs));
 		} else {
 			sgml::openTag(buf, os, runparams, *par);
-			par->simpleDocBookOnePar(buf, os, runparams, outerFont(std::distance(paragraphs.begin(), par), paragraphs));
+			par->simpleDocBookOnePar(buf, os, runparams, outerFont(distance(paragraphs.begin(), par), paragraphs));
 			sgml::closeTag(os, *par);
 		}
 	}
@@ -177,7 +177,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ITEM_ENVIRONMENT: {
 			if (par->params().depth() == pbegin->params().depth()) {
 				sgml::openTag(os, wrapper);
-				par->simpleDocBookOnePar(buf, os, runparams, outerFont(std::distance(paragraphs.begin(), par), paragraphs), sep);
+				par->simpleDocBookOnePar(buf, os, runparams, outerFont(distance(paragraphs.begin(), par), paragraphs), sep);
 				sgml::closeTag(os, wrapper);
 				++par;
 			}
@@ -257,7 +257,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 
 	// Opend inner tag and	close inner tags
 	sgml::openTag(os, bstyle->innertag());
-	par->simpleDocBookOnePar(buf, os, runparams,  outerFont(std::distance(paragraphs.begin(), par), paragraphs));
+	par->simpleDocBookOnePar(buf, os, runparams,  outerFont(distance(paragraphs.begin(), par), paragraphs));
 	sgml::closeTag(os, bstyle->innertag());
 	os << '\n';
 
@@ -339,7 +339,7 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 			break;
 		}
 		// makeEnvironment may process more than one paragraphs and bypass pend
-		if (std::distance(lastpar, par) >= std::distance(lastpar, pend))
+		if (distance(lastpar, par) >= distance(lastpar, pend))
 			break;
 	}
 }

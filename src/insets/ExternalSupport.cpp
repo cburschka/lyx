@@ -373,7 +373,7 @@ int writeExternal(InsetExternalParams const & params,
 	str = substituteOptions(params, str, format);
 	// FIXME UNICODE
 	os << from_utf8(str);
-	return int(std::count(str.begin(), str.end(),'\n'));
+	return int(count(str.begin(), str.end(),'\n'));
 }
 
 namespace {
@@ -394,7 +394,7 @@ string const substituteIt<TransformCommand>(string const & input,
 					    Template::Format const & format,
 					    InsetExternalParams const & params)
 {
-	typedef std::map<TransformID, TransformStore> Transformers;
+	typedef map<TransformID, TransformStore> Transformers;
 	Transformers::const_iterator it = format.command_transformers.find(id);
 	if (it == format.command_transformers.end())
 		return input;
@@ -423,7 +423,7 @@ string const substituteIt<TransformOption>(string const & input,
 					   Template::Format const & format,
 					   InsetExternalParams const & params)
 {
-	typedef std::map<TransformID, TransformStore> Transformers;
+	typedef map<TransformID, TransformStore> Transformers;
 	Transformers::const_iterator it = format.option_transformers.find(id);
 	if (it == format.option_transformers.end())
 		return input;

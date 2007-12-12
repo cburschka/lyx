@@ -341,8 +341,8 @@ void LyXDataSocket::writeln(string const & line)
 class CmdLineParser {
 public:
 	typedef int (*optfunc)(vector<docstring> const & args);
-	std::map<string, optfunc> helper;
-	std::map<string, bool> isset;
+	map<string, optfunc> helper;
+	map<string, bool> isset;
 	bool parse(int, char * []);
 	vector<char *> nonopt;
 };

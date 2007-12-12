@@ -22,7 +22,7 @@ using namespace std;
 
 namespace boost {
 
-void throw_exception(std::exception const & e)
+void throw_exception(exception const & e)
 {
 	lyx::lyxerr << "Exception caught:\n"
 	       << e.what() << endl;

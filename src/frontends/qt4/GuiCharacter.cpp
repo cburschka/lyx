@@ -379,9 +379,9 @@ void GuiCharacter::closeEvent(QCloseEvent * e)
 
 
 template<class A, class B>
-static int findPos2nd(vector<std::pair<A, B> > const & vec, B const & val)
+static int findPos2nd(vector<pair<A, B> > const & vec, B const & val)
 {
-	typedef typename vector<std::pair<A, B> >::const_iterator
+	typedef typename vector<pair<A, B> >::const_iterator
 		const_iterator;
 
 	for (const_iterator cit = vec.begin(); cit != vec.end(); ++cit)

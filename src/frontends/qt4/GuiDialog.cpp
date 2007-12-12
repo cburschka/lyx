@@ -26,7 +26,7 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiDialog::GuiDialog(GuiView & lv, std::string const & name)
+GuiDialog::GuiDialog(GuiView & lv, string const & name)
 	: DialogView(lv, name), is_closing_(false)
 {}
 

@@ -23,6 +23,7 @@
 
 #include "frontends/Painter.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -132,8 +133,8 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
 			cell(1).metrics(mi, dim1);
 			dim.wid = dim0.width() + dim1.wid + 5;
-			dim.asc = std::max(dim0.asc, dim1.asc);
-			dim.des = std::max(dim0.des, dim1.des);
+			dim.asc = max(dim0.asc, dim1.asc);
+			dim.des = max(dim0.des, dim1.des);
 		} else {
 			cell(2).metrics(mi, dim2);
 			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
@@ -141,8 +142,8 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			cell(0).metrics(mi, dim0);
 			cell(1).metrics(mi, dim1);
 			dim.wid = dim0.width() + dim1.wid + dim2.wid + 10;
-			dim.asc = std::max(dim2.asc, dim0.height() + 5);
-			dim.des = std::max(dim2.des, dim1.height() - 5);
+			dim.asc = max(dim2.asc, dim0.height() + 5);
+			dim.des = max(dim2.des, dim1.height() - 5);
 		}
 	} else {
 		FracChanger dummy(mi.base);
@@ -161,7 +162,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.asc = dim0.height() + 5;
 			dim.des = dim1.height() - 5;
 		} else {
-			dim.wid = std::max(dim0.width(), dim1.wid) + 2;
+			dim.wid = max(dim0.width(), dim1.wid) + 2;
 			dim.asc = dim0.height() + 2 + 5;
 			dim.des = dim1.height() + 2 - 5;
 		}
@@ -243,7 +244,7 @@ void InsetMathFrac::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 	Dimension dim0, dim1;
 	cell(0).metricsT(mi, dim0);
 	cell(1).metricsT(mi, dim1);
-	dim.wid = std::max(dim0.width(), dim1.wid);
+	dim.wid = max(dim0.width(), dim1.wid);
 	dim.asc = dim0.height() + 1;
 	dim.des = dim1.height();
 }
@@ -369,7 +370,7 @@ void InsetMathDFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	Dimension dim0, dim1;
 	cell(0).metrics(mi, dim0);
 	cell(1).metrics(mi, dim1);
-	dim.wid = std::max(dim0.wid, dim1.wid) + 2;
+	dim.wid = max(dim0.wid, dim1.wid) + 2;
 	dim.asc = dim0.height() + 2 + 5;
 	dim.des = dim1.height() + 2 - 5;
 	// Cache the inset dimension. 
@@ -429,7 +430,7 @@ void InsetMathTFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(0).metrics(mi, dim0);
 	Dimension dim1;
 	cell(1).metrics(mi, dim1);
-	dim.wid = std::max(dim0.width(), dim1.width()) + 2;
+	dim.wid = max(dim0.width(), dim1.width()) + 2;
 	dim.asc = dim0.height() + 2 + 5;
 	dim.des = dim1.height() + 2 - 5;
 	// Cache the inset dimension. 
@@ -507,7 +508,7 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi, dim1);
 	dim.asc = dim0.height() + 4 + 5;
 	dim.des = dim1.height() + 4 - 5;
-	dim.wid = std::max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
+	dim.wid = max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(dim);
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
@@ -581,7 +582,7 @@ void InsetMathDBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi, dim1);
 	dim.asc = dim0.height() + 4 + 5;
 	dim.des = dim1.height() + 4 - 5;
-	dim.wid = std::max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
+	dim.wid = max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(dim);
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);
@@ -651,7 +652,7 @@ void InsetMathTBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi, dim1);
 	dim.asc = dim0.height() + 4 + 5;
 	dim.des = dim1.height() + 4 - 5;
-	dim.wid = std::max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
+	dim.wid = max(dim0.width(), dim1.wid) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(dim);
 	// Cache the inset dimension. 
 	setDimCache(mi, dim);

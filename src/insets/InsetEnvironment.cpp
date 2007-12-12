@@ -20,6 +20,7 @@
 #include "TexRow.h"
 #include "TextClass.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -44,7 +45,7 @@ Inset * InsetEnvironment::clone() const
 }
 
 
-void InsetEnvironment::write(Buffer const & buf, std::ostream & os) const
+void InsetEnvironment::write(Buffer const & buf, ostream & os) const
 {
 	os << "Environment " << to_utf8(name()) << "\n";
 	InsetText::write(buf, os);

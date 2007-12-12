@@ -51,7 +51,7 @@ InsetFormulaMacro::InsetFormulaMacro
 InsetFormulaMacro::InsetFormulaMacro(string const & s)
 	: InsetMathNest(2), name_("unknownB")
 {
-	std::istringstream is(s);
+	istringstream is(s);
 	read(is);
 }
 
@@ -106,7 +106,7 @@ void InsetFormulaMacro::read(Buffer const &, Lexer & lex)
 }
 
 
-void InsetFormulaMacro::read(std::istream & is)
+void InsetFormulaMacro::read(istream & is)
 {
 	auto_ptr<MathMacroTemplate> p(new MathMacroTemplate(is));
 	name_ = p->name();

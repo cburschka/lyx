@@ -380,7 +380,7 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 	ParagraphList::iterator ins = pl.insert(pl.end(), *pit);
 	++pit;
 	mergeParagraph(buffer->params(), pl,
-		       std::distance(pl.begin(), ins) - 1);
+		       distance(pl.begin(), ins) - 1);
 
 	for_each(pit, plist.end(),
 		 bind(&ParagraphList::push_back, ref(pl), _1));

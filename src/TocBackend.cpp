@@ -83,7 +83,7 @@ FuncRequest TocItem::action() const
 //
 ///////////////////////////////////////////////////////////////////////////
 
-Toc const & TocBackend::toc(std::string const & type) const
+Toc const & TocBackend::toc(string const & type) const
 {
 	// Is the type already supported?
 	TocList::const_iterator it = tocs_.find(type);
@@ -189,7 +189,7 @@ void TocBackend::update()
 }
 
 
-TocIterator const TocBackend::item(std::string const & type,
+TocIterator const TocBackend::item(string const & type,
 		ParConstIterator const & par_it) const
 {
 	TocList::const_iterator toclist_it = tocs_.find(type);

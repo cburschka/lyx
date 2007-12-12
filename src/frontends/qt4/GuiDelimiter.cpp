@@ -82,7 +82,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	leftLW->setViewMode(QListView::IconMode);
 	rightLW->setViewMode(QListView::IconMode);
 
-	typedef std::map<char_type, QListWidgetItem *> ListItems;
+	typedef map<char_type, QListWidgetItem *> ListItems;
 	ListItems list_items;
 	// The last element is the empty one.
 	int const end = nr_latex_delimiters - 1;

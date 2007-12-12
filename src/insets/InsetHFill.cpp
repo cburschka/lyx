@@ -20,16 +20,17 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
 
 InsetHFill::InsetHFill()
-	: InsetCommand(InsetCommandParams(HFILL_CODE), std::string())
+	: InsetCommand(InsetCommandParams(HFILL_CODE), string())
 {}
 
 
-CommandInfo const * InsetHFill::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetHFill::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = {""};
 	static const CommandInfo info = {0, paramnames, 0};
@@ -88,7 +89,7 @@ int InsetHFill::docbook(Buffer const &, odocstream & os,
 }
 
 
-void InsetHFill::write(Buffer const &, std::ostream & os) const
+void InsetHFill::write(Buffer const &, ostream & os) const
 {
 	os << "\n\\hfill\n";
 }

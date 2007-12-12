@@ -298,7 +298,7 @@ void GuiRef::redoRefs()
 	// the first item inserted
 	QString const oldSelection(referenceED->text());
 
-	for (std::vector<docstring>::const_iterator iter = refs_.begin();
+	for (vector<docstring>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {
 		refsLW->addItem(toqstr(*iter));
 	}

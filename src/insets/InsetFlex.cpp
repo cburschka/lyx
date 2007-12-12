@@ -120,7 +120,7 @@ int InsetFlex::docbook(Buffer const & buf, odocstream & os,
 
 	for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,
-					 outerFont(std::distance(beg, par),
+					 outerFont(distance(beg, par),
 						   paragraphs()));
 	}
 

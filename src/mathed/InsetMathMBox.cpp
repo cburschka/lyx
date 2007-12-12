@@ -78,7 +78,7 @@ void InsetMathMBox::write(Buffer const & buf, WriteStream & ws) const
 		ws << "}";
 	} else {
 		ws << "\\mbox{\n";
-		std::ostringstream os;
+		ostringstream os;
 		text_.write(buf, os);
 		ws.os() << from_utf8(os.str());
 		ws << "}";

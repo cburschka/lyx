@@ -27,7 +27,7 @@ using lyx::LyX;
 namespace boost {
 
 #ifndef BOOST_NO_EXCEPTIONS
-void throw_exception(std::exception const & e)
+void throw_exception(exception const & e)
 {
 	lyxerr << "Exception caught:\n" << e.what() << endl;
 	BOOST_ASSERT(false);

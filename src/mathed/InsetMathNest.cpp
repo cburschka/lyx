@@ -129,7 +129,7 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 	}
 	Point const pt2 = coord_cache.getInsets().xy(this);
 	//lyxerr << "retrieving position cache for MathData "
-	//	<< pt.x_ << ' ' << pt.y_ << std::endl;
+	//	<< pt.x_ << ' ' << pt.y_ << endl;
 	x = pt.x_ - pt2.x_ + ar.pos2x(sl.pos());
 	y = pt.y_ - pt2.y_;
 //	lyxerr << "pt.y_ : " << pt.y_ << " pt2_.y_ : " << pt2.y_
@@ -439,7 +439,7 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 
 void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "InsetMathNest: request: " << cmd << std::endl;
+	//lyxerr << "InsetMathNest: request: " << cmd << endl;
 	//CursorSlice sl = cur.current();
 
 	switch (cmd.action) {

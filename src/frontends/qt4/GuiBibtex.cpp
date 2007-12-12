@@ -401,7 +401,7 @@ void GuiBibtex::getBibStyles(vector<string> & data) const
 		*it = onlyFilename(*it);
 	}
 	// sort on filename only (no path)
-	std::sort(data.begin(), data.end());
+	sort(data.begin(), data.end());
 }
 
 
@@ -421,7 +421,7 @@ void GuiBibtex::getBibFiles(vector<string> & data) const
 		*it = onlyFilename(*it);
 	}
 	// sort on filename only (no path)
-	std::sort(data.begin(), data.end());
+	sort(data.begin(), data.end());
 }
 
 

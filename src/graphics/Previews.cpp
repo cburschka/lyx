@@ -19,6 +19,7 @@
 
 #include "insets/Inset.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -42,7 +43,7 @@ public:
 	///
 	typedef boost::shared_ptr<PreviewLoader> PreviewLoaderPtr;
 	///
-	typedef std::map<Buffer const *, PreviewLoaderPtr> CacheType;
+	typedef map<Buffer const *, PreviewLoaderPtr> CacheType;
 	///
 	CacheType cache;
 };

@@ -63,7 +63,7 @@ TextClassList::operator[](textclass_type textclass) const
 
 // used when sorting the textclass list.
 class less_textclass_avail_desc
-	: public std::binary_function<TextClass, TextClass, int>
+	: public binary_function<TextClass, TextClass, int>
 {
 public:
 	int operator()(TextClass const & tc1,
@@ -173,8 +173,8 @@ void TextClassList::reset(textclass_type const textclass) {
 }
 
 
-std::pair<bool, textclass_type> const
-TextClassList::addTextClass(std::string const & textclass, std::string const & path)
+pair<bool, textclass_type> const
+TextClassList::addTextClass(string const & textclass, string const & path)
 {
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
 	// NOTE: latex class name is defined in textclass.layout, which can be different from textclass

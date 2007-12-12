@@ -86,7 +86,7 @@ Translator<InsetInfo::info_type, string> const initTranslator()
 
 } // namespace anon
 
-Translator<InsetInfo::info_type, std::string> const & InsetInfo::nameTranslator() const
+Translator<InsetInfo::info_type, string> const & InsetInfo::nameTranslator() const
 {
 	static Translator<info_type, string> const translator =
 		initTranslator();
@@ -121,7 +121,7 @@ void InsetInfo::read(Buffer const &, Lexer & lex)
 }
 
 
-void InsetInfo::write(Buffer const &, std::ostream & os) const
+void InsetInfo::write(Buffer const &, ostream & os) const
 {
 	os << "Info\ntype  \""
 	   << nameTranslator().find(type_)

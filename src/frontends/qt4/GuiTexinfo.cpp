@@ -179,7 +179,7 @@ void GuiTexInfo::updateStyles(TexFileType type)
 		*it1 = support::onlyFilename(*it1);
 
 	// sort on filename only (no path)
-	std::sort(data.begin(), data.end());
+	sort(data.begin(), data.end());
 
 	fileListLW->clear();
 	ContentsType::const_iterator it  = data.begin();
@@ -210,7 +210,7 @@ string GuiTexInfo::classOptions(string const & classname) const
 	if (filename.empty())
 		return string();
 	string optionList;
-	std::ifstream is(filename.toFilesystemEncoding().c_str());
+	ifstream is(filename.toFilesystemEncoding().c_str());
 	while (is) {
 		string s;
 		is >> s;

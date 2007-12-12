@@ -22,6 +22,7 @@
 
 #include <vector>
 
+using namespace std;
 
 namespace lyx {
 namespace frontend {
@@ -214,7 +215,7 @@ void TocWidget::updateView()
 
 void TocWidget::updateGui()
 {
-	std::vector<docstring> const & type_names = form_.typeNames();
+	vector<docstring> const & type_names = form_.typeNames();
 	if (type_names.empty()) {
 		enableControls(false);
 		typeCO->clear();

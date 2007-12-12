@@ -14,11 +14,12 @@
 #include "support/gettext.h"
 #include "../support/docstring.h"
 
+using namespace std;
 
 namespace lyx {
 
 
-docstring const _(std::string const & str)
+docstring const _(string const & str)
 {
 	return from_ascii(str);
 }

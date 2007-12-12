@@ -40,7 +40,7 @@ string const token_path_format("$$p");
 string const token_socket_format("$$a");
 
 
-class FormatNamesEqual : public std::unary_function<Format, bool> {
+class FormatNamesEqual : public unary_function<Format, bool> {
 public:
 	FormatNamesEqual(string const & name)
 		: name_(name) {}
@@ -53,7 +53,7 @@ private:
 };
 
 
-class FormatExtensionsEqual : public std::unary_function<Format, bool> {
+class FormatExtensionsEqual : public unary_function<Format, bool> {
 public:
 	FormatExtensionsEqual(string const & extension)
 		: extension_(extension) {}

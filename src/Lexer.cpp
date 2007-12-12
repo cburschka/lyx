@@ -51,13 +51,13 @@ public:
 	///
 	Pimpl(keyword_item * tab, int num);
 	///
-	std::string const getString() const;
+	string const getString() const;
 	///
 	docstring const getDocString() const;
 	///
-	void printError(std::string const & message) const;
+	void printError(string const & message) const;
 	///
-	void printTable(std::ostream & os);
+	void printTable(ostream & os);
 	///
 	void pushTable(keyword_item * tab, int num);
 	///
@@ -65,7 +65,7 @@ public:
 	///
 	bool setFile(support::FileName const & filename);
 	///
-	void setStream(std::istream & i);
+	void setStream(istream & i);
 	///
 	void setCommentChar(char c);
 	///
@@ -81,29 +81,29 @@ public:
 	/// test if there is a pushed token or the stream is ok
 	bool inputAvailable();
 	///
-	void pushToken(std::string const &);
+	void pushToken(string const &);
 	/// fb_ is only used to open files, the stream is accessed through is.
-	std::filebuf fb_;
+	filebuf fb_;
 
 	/// gz_ is only used to open files, the stream is accessed through is.
 	gz::gzstreambuf gz_;
 
 	/// the stream that we use.
-	std::istream is;
+	istream is;
 	///
-	std::string name;
+	string name;
 	///
 	keyword_item * table;
 	///
 	int no_items;
 	///
-	std::string buff;
+	string buff;
 	///
 	int status;
 	///
 	int lineno;
 	///
-	std::string pushTok;
+	string pushTok;
 	///
 	char commentChar;
 private:
@@ -124,7 +124,7 @@ private:
 		int table_siz;
 	};
 	///
-	std::stack<pushed_table> pushed;
+	stack<pushed_table> pushed;
 };
 
 
@@ -132,7 +132,7 @@ private:
 namespace {
 
 class compare_tags
-	: public std::binary_function<keyword_item, keyword_item, bool> {
+	: public binary_function<keyword_item, keyword_item, bool> {
 public:
 	// used by lower_bound, sort and sorted
 	bool operator()(keyword_item const & a, keyword_item const & b) const
@@ -840,7 +840,7 @@ void Lexer::pushToken(string const & pt)
 
 Lexer::operator void const *() const
 {
-	// This behaviour is NOT the same as the std::streams which would
+	// This behaviour is NOT the same as the streams which would
 	// use fail() here. However, our implementation of getString() et al.
 	// can cause the eof() and fail() bits to be set, even though we
 	// haven't tried to read 'em.
@@ -854,7 +854,7 @@ bool Lexer::operator!() const
 }
 
 
-Lexer & Lexer::operator>>(std::string & s)
+Lexer & Lexer::operator>>(string & s)
 {
 	if (isOK()) {
 		next();
@@ -929,7 +929,7 @@ Lexer & Lexer::operator>>(bool & s)
 /// quotes a string, e.g. for use in preferences files or as an argument of the "log" dialog
 string const Lexer::quoteString(string const & arg)
 {
-	std::ostringstream os;
+	ostringstream os;
 	os << '"' << subst(subst(arg, "\\", "\\\\"), "\"", "\\\"") << '"';
 	return os.str();
 }

@@ -23,6 +23,7 @@
 
 #include <boost/assert.hpp>
 
+using namespace std;
 
 namespace lyx {
 
@@ -38,7 +39,7 @@ docstring const from_ascii(char const * ascii)
 }
 
 
-docstring const from_ascii(std::string const & ascii)
+docstring const from_ascii(string const & ascii)
 {
 	int const len = ascii.length();
 	for (int i = 0; i < len; ++i)
@@ -47,10 +48,10 @@ docstring const from_ascii(std::string const & ascii)
 }
 
 
-std::string const to_ascii(docstring const & ucs4)
+string const to_ascii(docstring const & ucs4)
 {
 	int const len = ucs4.length();
-	std::string ascii;
+	string ascii;
 	ascii.resize(len);
 	for (int i = 0; i < len; ++i) {
 		BOOST_ASSERT(ucs4[i] < 0x80);
@@ -68,7 +69,7 @@ IconvProcessor & utf8ToUcs4()
 
 
 
-void utf8_to_ucs4(std::string const & utf8, docstring & ucs4)
+void utf8_to_ucs4(string const & utf8, docstring & ucs4)
 {
 	size_t n = utf8.size();
 	// as utf8 is a multi-byte encoding, there would be at most
@@ -88,7 +89,7 @@ void utf8_to_ucs4(std::string const & utf8, docstring & ucs4)
 }
 
 
-docstring const from_utf8(std::string const & utf8)
+docstring const from_utf8(string const & utf8)
 {
 	docstring ucs4;
 	utf8_to_ucs4(utf8, ucs4);
@@ -96,24 +97,24 @@ docstring const from_utf8(std::string const & utf8)
 }
 
 
-std::string const to_utf8(docstring const & ucs4)
+string const to_utf8(docstring const & ucs4)
 {
-	std::vector<char> const utf8 =
+	vector<char> const utf8 =
 		ucs4_to_utf8(ucs4.data(), ucs4.size());
-	return std::string(utf8.begin(), utf8.end());
+	return string(utf8.begin(), utf8.end());
 }
 
 
-docstring const from_local8bit(std::string const & s)
+docstring const from_local8bit(string const & s)
 {
 	return qstring_to_ucs4(QString::fromLocal8Bit(s.data(), s.length()));
 }
 
 
 /// Exception thrown by to_local8bit if the string could not be converted
-class to_local8bit_failure : public std::bad_cast {
+class to_local8bit_failure : public bad_cast {
 public:
-	to_local8bit_failure() throw() : std::bad_cast() {}
+	to_local8bit_failure() throw() : bad_cast() {}
 	virtual ~to_local8bit_failure() throw() {}
 	virtual const char* what() const throw()
 	{
@@ -122,29 +123,29 @@ public:
 };
 
 
-std::string const to_local8bit(docstring const & s)
+string const to_local8bit(docstring const & s)
 {
 	// This conversion can fail, depending on input.
 	if (s.empty())
-		return std::string();
+		return string();
 	QByteArray const local = toqstr(s).toLocal8Bit();
 	if (local.size() == 0)
 		throw to_local8bit_failure();
-	return std::string(local.begin(), local.end());
+	return string(local.begin(), local.end());
 }
 
 
-docstring const from_filesystem8bit(std::string const & s)
+docstring const from_filesystem8bit(string const & s)
 {
 	QByteArray const encoded(s.c_str(), s.length());
 	return qstring_to_ucs4(QFile::decodeName(encoded));
 }
 
 
-std::string const to_filesystem8bit(docstring const & s)
+string const to_filesystem8bit(docstring const & s)
 {
 	QByteArray const encoded = QFile::encodeName(toqstr(s));
-	return std::string(encoded.begin(), encoded.end());
+	return string(encoded.begin(), encoded.end());
 }
 
 
@@ -262,9 +263,9 @@ ctype<lyx::char_type>::do_narrow(const lyx::char_type *, const lyx::char_type *,
 
 namespace lyx {
 
-class ctype_failure : public std::bad_cast {
+class ctype_failure : public bad_cast {
 public:
-	ctype_failure() throw() : std::bad_cast() {}
+	ctype_failure() throw() : bad_cast() {}
 	virtual ~ctype_failure() throw() {}
 	virtual const char* what() const throw()
 	{
@@ -273,9 +274,9 @@ public:
 };
 
 
-class num_put_failure : public std::bad_cast {
+class num_put_failure : public bad_cast {
 public:
-	num_put_failure() throw() : std::bad_cast() {}
+	num_put_failure() throw() : bad_cast() {}
 	virtual ~num_put_failure() throw() {}
 	virtual const char* what() const throw()
 	{
@@ -286,13 +287,13 @@ public:
 
 /// ctype facet for UCS4 characters. The implementation does only support pure
 /// ASCII, since we do not need anything else for now.
-/// The code is partly stolen from std::ctype<wchar_t> from gcc.
-class ascii_ctype_facet : public std::ctype<lyx::char_type>
+/// The code is partly stolen from ctype<wchar_t> from gcc.
+class ascii_ctype_facet : public ctype<lyx::char_type>
 {
 public:
 	typedef lyx::char_type char_type;
 	typedef wctype_t wmask_type;
-	explicit ascii_ctype_facet(size_t refs = 0) : std::ctype<char_type>(refs)
+	explicit ascii_ctype_facet(size_t refs = 0) : ctype<char_type>(refs)
 	{
 		M_initialize_ctype();
 	}
@@ -466,66 +467,66 @@ protected:
 
 /// Facet for outputting numbers to odocstreams as ascii.
 /// Here we simply need defining the virtual do_put functions.
-class ascii_num_put_facet : public std::num_put<lyx::char_type, std::ostreambuf_iterator<lyx::char_type, std::char_traits<lyx::char_type> > >
+class ascii_num_put_facet : public num_put<lyx::char_type, ostreambuf_iterator<lyx::char_type, char_traits<lyx::char_type> > >
 {
-	typedef std::ostreambuf_iterator<lyx::char_type, std::char_traits<lyx::char_type> > iter_type;
+	typedef ostreambuf_iterator<lyx::char_type, char_traits<lyx::char_type> > iter_type;
 public:
-	ascii_num_put_facet(size_t refs = 0) : std::num_put<lyx::char_type, iter_type>(refs) {}
+	ascii_num_put_facet(size_t refs = 0) : num_put<lyx::char_type, iter_type>(refs) {}
 
 	/// Facet for converting numbers to ascii strings.
-	class string_num_put_facet : public std::num_put<char, std::basic_string<char>::iterator>
+	class string_num_put_facet : public num_put<char, basic_string<char>::iterator>
 	{
 	public:
-		string_num_put_facet() : std::num_put<char, std::basic_string<char>::iterator>(1) {}
+		string_num_put_facet() : num_put<char, basic_string<char>::iterator>(1) {}
 	};
 
 protected:
 	iter_type
-	do_put(iter_type oit, std::ios_base & b, char_type fill, bool v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, bool v) const
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, std::ios_base & b, char_type fill, long v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, long v) const
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, std::ios_base & b, char_type fill, unsigned long v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, unsigned long v) const
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 #ifdef _GLIBCXX_USE_LONG_LONG
 	iter_type
-	do_put(iter_type oit, std::ios_base & b, char_type fill, long long v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, long long v) const
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, std::ios_base & b, char_type fill, unsigned long long v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, unsigned long long v) const
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 #endif
 
 	iter_type
-	do_put(iter_type oit, std::ios_base & b, char_type fill, double v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, double v) const
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, std::ios_base & b, char_type fill, long double v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, long double v) const
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
-	do_put(iter_type oit, std::ios_base & b, char_type fill, void const * v) const
+	do_put(iter_type oit, ios_base & b, char_type fill, void const * v) const
 	{
 		return do_put_helper(oit, b, fill, v);
 	}
@@ -533,19 +534,19 @@ protected:
 private:
 	template <typename ValueType>
 	iter_type
-	do_put_helper(iter_type oit, std::ios_base & b, char_type fill, ValueType v) const
+	do_put_helper(iter_type oit, ios_base & b, char_type fill, ValueType v) const
 	{
 		if (fill >= 0x80)
 			throw num_put_failure();
 
-		std::streamsize const sz = b.width() > b.precision() ?
+		streamsize const sz = b.width() > b.precision() ?
 					   b.width() : b.precision();
 		// 64 is large enough, unless width or precision are bigger
-		std::streamsize const wd = (sz > 56 ? sz : 56) + 8;
-		std::string s(wd, '\0');
+		streamsize const wd = (sz > 56 ? sz : 56) + 8;
+		string s(wd, '\0');
 		string_num_put_facet f;
-		std::string::const_iterator cit = s.begin();
-		std::string::const_iterator end =
+		string::const_iterator cit = s.begin();
+		string::const_iterator end =
 			f.put(s.begin(), b, fill, v);
 		for (; cit != end; ++cit, ++oit)
 			*oit = *cit;
@@ -557,32 +558,32 @@ private:
 
 /// Facet for inputting ascii representations of numbers from idocstreams.
 /// Here we simply need defining the virtual do_get functions.
-class ascii_num_get_facet : public std::num_get<lyx::char_type, std::istreambuf_iterator<lyx::char_type, std::char_traits<lyx::char_type> > >
+class ascii_num_get_facet : public num_get<lyx::char_type, istreambuf_iterator<lyx::char_type, char_traits<lyx::char_type> > >
 {
-	typedef std::istreambuf_iterator<lyx::char_type, std::char_traits<lyx::char_type> > iter_type;
+	typedef istreambuf_iterator<lyx::char_type, char_traits<lyx::char_type> > iter_type;
 public:
-	ascii_num_get_facet(size_t refs = 0) : std::num_get<lyx::char_type, iter_type>(refs) {}
+	ascii_num_get_facet(size_t refs = 0) : num_get<lyx::char_type, iter_type>(refs) {}
 
 	/// Facet for converting ascii representation of numbers to a value.
-	class string_num_get_facet : public std::num_get<char, std::basic_string<char>::iterator>
+	class string_num_get_facet : public num_get<char, basic_string<char>::iterator>
 	{
 	public:
-		string_num_get_facet() : std::num_get<char, std::basic_string<char>::iterator>(1) {}
+		string_num_get_facet() : num_get<char, basic_string<char>::iterator>(1) {}
 	};
 
 	/// Numpunct facet defining the I/O format.
-	class numpunct_facet : public std::numpunct<char>
+	class numpunct_facet : public numpunct<char>
 	{
 	public:
-		numpunct_facet() : std::numpunct<char>(1) {}
+		numpunct_facet() : numpunct<char>(1) {}
 	};
 
 protected:
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, bool & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, bool & v) const
 	{
-		if (b.flags() & std::ios_base::boolalpha) {
+		if (b.flags() & ios_base::boolalpha) {
 			numpunct_facet p;
 			lyx::docstring const truename = from_local8bit(p.truename());
 			lyx::docstring const falsename = from_local8bit(p.falsename());
@@ -609,100 +610,100 @@ protected:
 				}
 			}
 			if (ok) {
-				err = std::ios_base::goodbit;
+				err = ios_base::goodbit;
 				v = truename == s ? true : false;
 			} else
-				err = std::ios_base::failbit;
+				err = ios_base::failbit;
 			if (iit == eit)
-				err |= std::ios_base::eofbit;
+				err |= ios_base::eofbit;
 			return iit;
 		} else {
 			long l;
 			iter_type end = this->do_get(iit, eit, b, err, l);
-			if (!(err & std::ios_base::failbit)) {
+			if (!(err & ios_base::failbit)) {
 				if (l == 0)
 					v = false;
 				else if (l == 1)
 					v = true;
 				else
-					err |= std::ios_base::failbit;
+					err |= ios_base::failbit;
 			}
 			return end;
 		}
 	}
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, long & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, long & v) const
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, unsigned short & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, unsigned short & v) const
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, unsigned int & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, unsigned int & v) const
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, unsigned long & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, unsigned long & v) const
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 #ifdef _GLIBCXX_USE_LONG_LONG
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, long long & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, long long & v) const
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, unsigned long long & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, unsigned long long & v) const
 	{
 		return do_get_integer(iit, eit, b, err, v);
 	}
 #endif
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, float & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, float & v) const
 	{
 		return do_get_float(iit, eit, b, err, v);
 	}
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, double & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, double & v) const
 	{
 		return do_get_float(iit, eit, b, err, v);
 	}
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, long double & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, long double & v) const
 	{
 		return do_get_float(iit, eit, b, err, v);
 	}
 
 	iter_type
-	do_get(iter_type iit, iter_type eit, std::ios_base & b,
-		std::ios_base::iostate & err, void * & v) const
+	do_get(iter_type iit, iter_type eit, ios_base & b,
+		ios_base::iostate & err, void * & v) const
 	{
 		unsigned long val;
 		iter_type end = do_get_integer(iit, eit, b, err, val);
-		if (!(err & std::ios_base::failbit))
+		if (!(err & ios_base::failbit))
 			v = reinterpret_cast<void *>(val);
 		return end;
 	}
@@ -710,10 +711,10 @@ protected:
 private:
 	template <typename ValueType>
 	iter_type
-	do_get_integer(iter_type iit, iter_type eit, std::ios_base & b,
-			std::ios_base::iostate & err, ValueType & v) const
+	do_get_integer(iter_type iit, iter_type eit, ios_base & b,
+			ios_base::iostate & err, ValueType & v) const
 	{
-		std::string s;
+		string s;
 		s.reserve(64);
 		for (; iit != eit && isNumpunct(*iit); ++iit)
 			s += static_cast<char>(*iit);
@@ -725,7 +726,7 @@ private:
 		string_num_get_facet f;
 		f.get(s.begin(), s.end(), b, err, v);
 		if (iit == eit)
-		    err |= std::ios_base::eofbit;
+		    err |= ios_base::eofbit;
 
 		return iit;
 	}
@@ -740,12 +741,12 @@ private:
 
 	template <typename ValueType>
 	iter_type
-	do_get_float(iter_type iit, iter_type eit, std::ios_base & b,
-			std::ios_base::iostate & err, ValueType & v) const
+	do_get_float(iter_type iit, iter_type eit, ios_base & b,
+			ios_base::iostate & err, ValueType & v) const
 	{
 		// Gather a string of the form
 		// [+-]? [0-9]* .? [0-9]* ([eE] [+-]? [0-9]+)?
-		std::string s;
+		string s;
 		s.reserve(64);
 		char c;
 		numpunct_facet p;
@@ -774,7 +775,7 @@ private:
 		string_num_get_facet f;
 		f.get(s.begin(), s.end(), b, err, v);
 		if (iit == eit)
-		    err |= std::ios_base::eofbit;
+		    err |= ios_base::eofbit;
 
 		return iit;
 	}
@@ -791,11 +792,11 @@ class locale_initializer {
 public:
 	locale_initializer()
 	{
-		std::locale global;
-		std::locale const loc1(global, new ascii_ctype_facet);
-		std::locale const loc2(loc1, new ascii_num_put_facet);
-		std::locale const loc3(loc2, new ascii_num_get_facet);
-		std::locale::global(loc3);
+		locale global;
+		locale const loc1(global, new ascii_ctype_facet);
+		locale const loc2(loc1, new ascii_num_put_facet);
+		locale const loc3(loc2, new ascii_num_get_facet);
+		locale::global(loc3);
 	}
 };
 

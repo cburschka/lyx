@@ -78,7 +78,7 @@ int TexStreamBuffer::sync()
 ////////////////////////////////////////////////////////////////
 
 TexStream::TexStream(TexStreamBase * sbuf, TexRow * texrow)
-		: std::basic_ostream<char_type>(sbuf_ = new TexStreamBuffer(sbuf, texrow))
+		: basic_ostream<char_type>(sbuf_ = new TexStreamBuffer(sbuf, texrow))
 {}
 
 
@@ -104,13 +104,13 @@ int TexStream::line() const
 
 int main(int argc, char *argv[])
 {
-	TexStream out(std::cout.rdbuf());
+	TexStream out(cout.rdbuf());
 	char c;
-	while (std::cin) {
-		if (std::cin.get(c))
+	while (cin) {
+		if (cin.get(c))
 			out.put(c);
 	}
-	std::cout << "line count: " << out.line() << std::endl;
+	cout << "line count: " << out.line() << endl;
 
 	return 0;
 }

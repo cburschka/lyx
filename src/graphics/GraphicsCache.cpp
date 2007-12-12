@@ -31,7 +31,7 @@ namespace graphics {
 /** The cache contains one item per file, so use a map to find the
  *  cache item quickly by filename.
  */
-typedef std::map<FileName, Cache::ItemPtr> CacheType;
+typedef map<FileName, Cache::ItemPtr> CacheType;
 
 class Cache::Impl {
 public:
@@ -59,7 +59,7 @@ Cache::~Cache()
 }
 
 
-std::vector<string> Cache::loadableFormats() const
+vector<string> Cache::loadableFormats() const
 {
 	return Image::loadableFormats();
 }

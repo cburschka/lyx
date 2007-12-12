@@ -133,7 +133,7 @@ HullType InsetMath::getType() const
 }
 
 
-std::ostream & operator<<(std::ostream & os, MathAtom const & at)
+ostream & operator<<(ostream & os, MathAtom const & at)
 {
 	odocstringstream oss;
 	WriteStream wi(oss, false, false);

@@ -206,7 +206,7 @@ bool InsetBranch::isBranchSelected(Buffer const & buffer) const
 	BranchList const & branchlist = realbuffer.params().branchlist();
 	BranchList::const_iterator const end = branchlist.end();
 	BranchList::const_iterator it =
-		std::find_if(branchlist.begin(), end,
+		find_if(branchlist.begin(), end,
 			     BranchNamesEqual(params_.branch));
 	if (it == end)
 		return false;

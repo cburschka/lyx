@@ -298,8 +298,8 @@ static void outline(OutlineOp mode, Cursor & cur)
 			// Not found; do nothing
 			if (toclevel == Layout::NOT_IN_TOC || toclevel > thistoclevel)
 				break;
-			pit_type const newpit = std::distance(bgn, dest);
-			pit_type const len = std::distance(start, finish);
+			pit_type const newpit = distance(bgn, dest);
+			pit_type const len = distance(start, finish);
 			pit_type const deletepit = pit + len;
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, newpit, deletepit - 1);
 			pars.insert(dest, start, finish);
@@ -331,8 +331,8 @@ static void outline(OutlineOp mode, Cursor & cur)
 					break;
 			}
 			// One such was found:
-			pit_type newpit = std::distance(bgn, dest);
-			pit_type const len = std::distance(start, finish);
+			pit_type newpit = distance(bgn, dest);
+			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, newpit - 1);
 			pars.insert(dest, start, finish);
 			start = boost::next(bgn, pit);
@@ -413,7 +413,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		pit_type const pit = cur.pit();
 		recUndo(cur, pit, pit + 1);
 		cur.finishUndo();
-		std::swap(pars_[pit], pars_[pit + 1]);
+		swap(pars_[pit], pars_[pit + 1]);
 		updateLabels(cur.buffer());
 		needsUpdate = true;
 		++cur.pit();
@@ -424,7 +424,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		pit_type const pit = cur.pit();
 		recUndo(cur, pit - 1, pit);
 		cur.finishUndo();
-		std::swap(pars_[pit], pars_[pit - 1]);
+		swap(pars_[pit], pars_[pit - 1]);
 		updateLabels(cur.buffer());
 		--cur.pit();
 		needsUpdate = true;
@@ -945,7 +945,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		is >> x >> y;
 		if (!is)
 			lyxerr << "SETXY: Could not parse coordinates in '"
-			       << to_utf8(cmd.argument()) << std::endl;
+			       << to_utf8(cmd.argument()) << endl;
 		else
 			tm.setCursorFromCoordinates(cur, x, y);
 		break;
@@ -1155,7 +1155,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		CursorSlice old = bvcur.top();
 
 		int const wh = bv->workHeight();
-		int const y = std::max(0, std::min(wh - 1, cmd.y));
+		int const y = max(0, min(wh - 1, cmd.y));
 
 		tm.setCursorFromCoordinates(cur, cmd.x, y);
 		cur.setTargetX(cmd.x);

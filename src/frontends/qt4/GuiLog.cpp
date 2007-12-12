@@ -131,7 +131,7 @@ void GuiLog::updateContents()
 {
 	setViewTitle(title());
 
-	std::ostringstream ss;
+	ostringstream ss;
 	getContents(ss);
 
 	logTB->setPlainText(toqstr(ss.str()));
@@ -193,9 +193,9 @@ docstring GuiLog::title() const
 }
 
 
-void GuiLog::getContents(std::ostream & ss) const
+void GuiLog::getContents(ostream & ss) const
 {
-	std::ifstream in(logfile_.toFilesystemEncoding().c_str());
+	ifstream in(logfile_.toFilesystemEncoding().c_str());
 
 	bool success = false;
 

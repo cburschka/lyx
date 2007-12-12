@@ -169,9 +169,9 @@ void ParagraphParameters::leftIndent(Length const & li)
 }
 
 
-void ParagraphParameters::read(std::string str, bool merge)
+void ParagraphParameters::read(string str, bool merge)
 {
-	std::istringstream is(str);
+	istringstream is(str);
 	Lexer lex(0, 0);
 	lex.setStream(is);
 	read(lex, merge);

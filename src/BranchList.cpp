@@ -82,7 +82,7 @@ void Branch::setColor(string const & str)
 Branch * BranchList::find(docstring const & name)
 {
 	List::iterator it =
-		std::find_if(list.begin(), list.end(), BranchNamesEqual(name));
+		find_if(list.begin(), list.end(), BranchNamesEqual(name));
 	return it == list.end() ? 0 : &*it;
 }
 
@@ -90,7 +90,7 @@ Branch * BranchList::find(docstring const & name)
 Branch const * BranchList::find(docstring const & name) const
 {
 	List::const_iterator it =
-		std::find_if(list.begin(), list.end(), BranchNamesEqual(name));
+		find_if(list.begin(), list.end(), BranchNamesEqual(name));
 	return it == list.end() ? 0 : &*it;
 }
 
@@ -108,7 +108,7 @@ bool BranchList::add(docstring const & s)
 			name = s.substr(i, j - i);
 		// Is this name already in the list?
 		bool const already =
-			std::find_if(list.begin(), list.end(),
+			find_if(list.begin(), list.end(),
 				     BranchNamesEqual(name)) != list.end();
 		if (!already) {
 			added = true;

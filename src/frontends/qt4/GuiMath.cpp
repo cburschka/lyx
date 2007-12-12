@@ -19,7 +19,7 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiMath::GuiMath(GuiView & lv, std::string const & name)
+GuiMath::GuiMath(GuiView & lv, string const & name)
 	: GuiDialog(lv, name)
 {
 	// FIXME: Ideally, those unicode codepoints would be defined
@@ -54,8 +54,8 @@ GuiMath::GuiMath(GuiView & lv, std::string const & name)
 	math_symbols_["vert"] = MathSymbol(0x007C, 106, CMSY_FAMILY);
 	math_symbols_["Vert"] = MathSymbol(0x2016, 107, CMSY_FAMILY);
 
-	std::map<string, MathSymbol>::const_iterator it = math_symbols_.begin();
-	std::map<string, MathSymbol>::const_iterator end = math_symbols_.end();
+	map<string, MathSymbol>::const_iterator it = math_symbols_.begin();
+	map<string, MathSymbol>::const_iterator end = math_symbols_.end();
 	for (; it != end; ++it)
 		tex_names_[it->second.unicode] = it->first;
 }
@@ -136,7 +136,7 @@ MathSymbol const & GuiMath::mathSymbol(string tex_name) const
 }
 
 
-std::string const & GuiMath::texName(char_type math_symbol) const
+string const & GuiMath::texName(char_type math_symbol) const
 {
 	map<char_type, string>::const_iterator it =
 		tex_names_.find(math_symbol);

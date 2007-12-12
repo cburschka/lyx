@@ -79,7 +79,7 @@ bool positionable(DocIterator const & cursor, DocIterator const & anchor)
 // Used only in mathed
 DocIterator bruteFind2(Cursor const & c, int x, int y)
 {
-	double best_dist = std::numeric_limits<double>::max();
+	double best_dist = numeric_limits<double>::max();
 
 	DocIterator result;
 
@@ -91,9 +91,9 @@ DocIterator bruteFind2(Cursor const & c, int x, int y)
 		int xo;
 		int yo;
 		Inset const * inset = &it.inset();
-		std::map<Inset const *, Geometry> const & data =
+		map<Inset const *, Geometry> const & data =
 			c.bv().coordCache().getInsets().getData();
-		std::map<Inset const *, Geometry>::const_iterator I = data.find(inset);
+		map<Inset const *, Geometry>::const_iterator I = data.find(inset);
 
 		// FIXME: in the case where the inset is not in the cache, this
 		// means that no part of it is visible on screen. In this case
@@ -150,7 +150,7 @@ bool bruteFind(Cursor & cursor,
 	else
 		++et.pit();
 
-	double best_dist = std::numeric_limits<double>::max();;
+	double best_dist = numeric_limits<double>::max();;
 	DocIterator best_cursor = et;
 
 	for ( ; it != et; it.forwardPos(true)) {
@@ -207,7 +207,7 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 	it.pit() = from;
 	DocIterator et = doc_iterator_end(inset);
 
-	double best_dist = std::numeric_limits<double>::max();
+	double best_dist = numeric_limits<double>::max();
 	DocIterator best_cursor = et;
 
 	for ( ; it != et; it.forwardPos()) {
@@ -590,7 +590,7 @@ bool Cursor::selHandle(bool sel)
 }
 
 
-std::ostream & operator<<(std::ostream & os, Cursor const & cur)
+ostream & operator<<(ostream & os, Cursor const & cur)
 {
 	os << "\n cursor:                                | anchor:\n";
 	for (size_t i = 0, n = cur.depth(); i != n; ++i) {
@@ -1269,18 +1269,18 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		Cursor old = *this;
 		if (up) {
 			if (row > 0) {
-				top().pos() = std::min(tm.x2pos(pit(), row - 1, xo), top().lastpos());
+				top().pos() = min(tm.x2pos(pit(), row - 1, xo), top().lastpos());
 			} else if (pit() > 0) {
 				--pit();
 				ParagraphMetrics const & pmcur = bv_->parMetrics(text(), pit());
-				top().pos() = std::min(tm.x2pos(pit(), pmcur.rows().size() - 1, xo), top().lastpos());
+				top().pos() = min(tm.x2pos(pit(), pmcur.rows().size() - 1, xo), top().lastpos());
 			}
 		} else {
 			if (row + 1 < int(pm.rows().size())) {
-				top().pos() = std::min(tm.x2pos(pit(), row + 1, xo), top().lastpos());
+				top().pos() = min(tm.x2pos(pit(), row + 1, xo), top().lastpos());
 			} else if (pit() + 1 < int(text()->paragraphs().size())) {
 				++pit();
-				top().pos() = std::min(tm.x2pos(pit(), 0, xo), top().lastpos());
+				top().pos() = min(tm.x2pos(pit(), 0, xo), top().lastpos());
 			}
 		}
 

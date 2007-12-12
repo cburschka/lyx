@@ -77,7 +77,7 @@ namespace lyx {
 namespace support {
 
 FileFilterList::Filter::Filter(docstring const & description,
-			       std::string const & globs)
+			       string const & globs)
 	: desc_(description)
 {
 	typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;

@@ -52,7 +52,7 @@ bool parse_bool(docstring & howto)
 }
 
 
-class MatchString : public std::binary_function<Paragraph, pos_type, bool>
+class MatchString : public binary_function<Paragraph, pos_type, bool>
 {
 public:
 	MatchString(docstring const & str, bool cs, bool mw)
@@ -248,7 +248,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 	if (!bv || ev.action != LFUN_WORD_FIND)
 		return;
 
-	//lyxerr << "find called, cmd: " << ev << std::endl;
+	//lyxerr << "find called, cmd: " << ev << endl;
 
 	// data is of the form
 	// "<search>

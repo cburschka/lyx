@@ -28,6 +28,7 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -496,9 +497,9 @@ DocIterator::idx_type DocIterator::find(InsetMath const * inset) const
 }
 
 
-void DocIterator::cutOff(DocIterator::idx_type above, std::vector<CursorSlice> & cut)
+void DocIterator::cutOff(DocIterator::idx_type above, vector<CursorSlice> & cut)
 {
-	cut = std::vector<CursorSlice>(slices_.begin() + above + 1, slices_.end());
+	cut = vector<CursorSlice>(slices_.begin() + above + 1, slices_.end());
 	slices_.resize(above + 1);
 }
 
@@ -509,7 +510,7 @@ void DocIterator::cutOff(DocIterator::idx_type above)
 }
 
 
-void DocIterator::append(std::vector<CursorSlice> const & x) 
+void DocIterator::append(vector<CursorSlice> const & x) 
 {
 	slices_.insert(slices_.end(), x.begin(), x.end());
 }
@@ -523,7 +524,7 @@ void DocIterator::append(DocIterator::idx_type idx, pos_type pos)
 }
 
 
-std::ostream & operator<<(std::ostream & os, DocIterator const & dit)
+ostream & operator<<(ostream & os, DocIterator const & dit)
 {
 	for (size_t i = 0, n = dit.depth(); i != n; ++i)
 		os << " " << dit[i] << "\n";
@@ -533,7 +534,7 @@ std::ostream & operator<<(std::ostream & os, DocIterator const & dit)
 
 bool operator<(DocIterator const & p, DocIterator const & q)
 {
-	size_t depth = std::min(p.depth(), q.depth());
+	size_t depth = min(p.depth(), q.depth());
 	for (size_t i = 0 ; i < depth ; ++i) {
 		if (p[i] != q[i])
 			return p[i] < q[i];
@@ -592,7 +593,7 @@ DocIterator StableDocIterator::asDocIterator(Inset * inset) const
 }
 
 
-std::ostream & operator<<(std::ostream & os, StableDocIterator const & dit)
+ostream & operator<<(ostream & os, StableDocIterator const & dit)
 {
 	for (size_t i = 0, n = dit.data_.size(); i != n; ++i)
 		os << " " << dit.data_[i] << "\n";

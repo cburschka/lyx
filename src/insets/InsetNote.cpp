@@ -44,7 +44,7 @@ namespace lyx {
 
 namespace {
 
-typedef Translator<std::string, InsetNoteParams::Type> NoteTranslator;
+typedef Translator<string, InsetNoteParams::Type> NoteTranslator;
 typedef Translator<docstring, InsetNoteParams::Type> NoteTranslatorLoc;
 
 NoteTranslator const init_notetranslator()
@@ -251,7 +251,7 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 	os << str;
 	runparams_in.encoding = runparams.encoding;
 	// Return how many newlines we issued.
-	return int(std::count(str.begin(), str.end(), '\n'));
+	return int(count(str.begin(), str.end(), '\n'));
 }
 
 

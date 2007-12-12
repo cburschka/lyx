@@ -273,14 +273,14 @@ Parser::Arg Parser::getFullArg(char left, char right)
 	// This is needed if a partial file ends with a command without arguments,
 	// e. g. \medskip
 	if (! good())
-		return std::make_pair(false, string());
+		return make_pair(false, string());
 
 	string result;
 	char c = getChar();
 
 	if (c != left) {
 		putback();
-		return std::make_pair(false, string());
+		return make_pair(false, string());
 	} else
 		while ((c = getChar()) != right && good()) {
 			// Ignore comments
@@ -292,7 +292,7 @@ Parser::Arg Parser::getFullArg(char left, char right)
 				result += curr_token().asInput();
 		}
 
-	return std::make_pair(true, result);
+	return make_pair(true, result);
 }
 
 

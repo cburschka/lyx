@@ -329,7 +329,7 @@ void ToolbarSection::read(istream & is)
 		}
 	} while (is.good());
 	// sort the toolbars by location, line and position
-	std::sort(toolbars.begin(), toolbars.end());
+	sort(toolbars.begin(), toolbars.end());
 }
 
 

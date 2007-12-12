@@ -75,7 +75,7 @@ public:
 	{
 		if (pid_ != 0)
 			support::kill(pid_, SIGKILL);
-		lyxerr << "Killed " << pid_ << std::endl;
+		lyxerr << "Killed " << pid_ << endl;
 		delete this;
 	}
 
@@ -168,7 +168,7 @@ void ForkedProcess::kill(int tol)
 		return;
 	}
 
-	int const tolerance = std::max(0, tol);
+	int const tolerance = max(0, tol);
 	if (tolerance == 0) {
 		// Kill it dead NOW!
 		Murder::killItDead(0, pid());
@@ -200,14 +200,14 @@ int ForkedProcess::waitForChild()
 		DWORD exit_code = 0;
 		if (!GetExitCodeProcess(hProcess, &exit_code)) {
 			lyxerr << "GetExitCodeProcess failed waiting for child\n"
-			       << getChildErrorMessage() << std::endl;
+			       << getChildErrorMessage() << endl;
 		} else
 			retval_ = exit_code;
 		break;
 	}
 	case WAIT_FAILED:
 		lyxerr << "WaitForSingleObject failed waiting for child\n"
-		       << getChildErrorMessage() << std::endl;
+		       << getChildErrorMessage() << endl;
 		break;
 	}
 
@@ -348,7 +348,7 @@ int ForkedCall::generateChild()
 		for (; ait != aend; ++ait)
 			if (*ait)
 				lyxerr << '\t'<< *ait << '\n';
-		lyxerr << "</command>" << std::endl;
+		lyxerr << "</command>" << endl;
 	}
 
 #ifdef _WIN32
@@ -384,16 +384,16 @@ int ForkedCall::generateChild()
 namespace ForkedCallQueue {
 
 /// A process in the queue
-typedef std::pair<std::string, ForkedCall::SignalTypePtr> Process;
+typedef pair<string, ForkedCall::SignalTypePtr> Process;
 /** Add a process to the queue. Processes are forked sequentially
  *  only one is running at a time.
  *  Connect to the returned signal and you'll be informed when
  *  the process has ended.
  */
-ForkedCall::SignalTypePtr add(std::string const & process);
+ForkedCall::SignalTypePtr add(string const & process);
 
 /// in-progress queue
-static std::queue<Process> callQueue_;
+static queue<Process> callQueue_;
 
 /// flag whether queue is running
 static bool running_ = 0;
@@ -485,7 +485,7 @@ string const getChildErrorMessage()
 		(LPTSTR) &t_message, 0, 0
 		) != 0;
 
-	std::ostringstream ss;
+	ostringstream ss;
 	ss << "LyX: Error waiting for child: " << error_code;
 
 	if (ok) {
@@ -502,7 +502,7 @@ string const getChildErrorMessage()
 namespace ForkedCallsController {
 
 typedef boost::shared_ptr<ForkedProcess> ForkedProcessPtr;
-typedef std::list<ForkedProcessPtr> ListType;
+typedef list<ForkedProcessPtr> ListType;
 typedef ListType::iterator iterator;
 
 
@@ -546,7 +546,7 @@ void handleCompletedProcesses()
 			DWORD exit_code = 0;
 			if (!GetExitCodeProcess(hProcess, &exit_code)) {
 				lyxerr << "GetExitCodeProcess failed waiting for child\n"
-				       << getChildErrorMessage() << std::endl;
+				       << getChildErrorMessage() << endl;
 				// Child died, so pretend it returned 1
 				actCall->setRetValue(1);
 			} else {
@@ -557,7 +557,7 @@ void handleCompletedProcesses()
 		}
 		case WAIT_FAILED:
 			lyxerr << "WaitForSingleObject failed waiting for child\n"
-			       << getChildErrorMessage() << std::endl;
+			       << getChildErrorMessage() << endl;
 			actCall->setRetValue(1);
 			remove_it = true;
 			break;

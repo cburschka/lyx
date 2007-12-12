@@ -339,7 +339,7 @@ named_deco_struct deco_table[] = {
 };
 
 
-std::map<docstring, deco_struct> deco_list;
+map<docstring, deco_struct> deco_list;
 
 // sort the table on startup
 class init_deco_table {
@@ -360,7 +360,7 @@ static init_deco_table dummy;
 
 deco_struct const * search_deco(docstring const & name)
 {
-	std::map<docstring, deco_struct>::const_iterator p = deco_list.find(name);
+	map<docstring, deco_struct>::const_iterator p = deco_list.find(name);
 	return p == deco_list.end() ? 0 : &(p->second);
 }
 
@@ -499,7 +499,7 @@ void math_font_max_dim(FontInfo const & font, int & asc, int & des)
 
 
 struct fontinfo {
-	std::string cmd_;
+	string cmd_;
 	FontFamily family_;
 	FontSeries series_;
 	FontShape  shape_;
@@ -605,7 +605,7 @@ fontinfo * lookupFont(docstring const & name0)
 {
 	//lyxerr << "searching font '" << name << "'" << endl;
 	int const n = sizeof(fontinfos) / sizeof(fontinfo);
-	std::string name = to_utf8(name0);
+	string name = to_utf8(name0);
 	for (int i = 0; i < n; ++i)
 		if (fontinfos[i].cmd_ == name) {
 			//lyxerr << "found '" << i << "'" << endl;

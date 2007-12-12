@@ -43,7 +43,7 @@ MacroData::MacroData()
 
 
 MacroData::MacroData(docstring const & definition,
-		std::vector<docstring> const & defaults, 
+		vector<docstring> const & defaults, 
 		int numargs, int optionals, docstring const & display,
 		string const & requires)
 	: definition_(definition), numargs_(numargs), display_(display),
@@ -85,7 +85,7 @@ size_t MacroData::optionals() const
 }
 
 
-std::vector<docstring> const &  MacroData::defaults() const
+vector<docstring> const &  MacroData::defaults() const
 {
 	return defaults_;
 }

@@ -20,6 +20,7 @@
 #include <QPushButton>
 #include <QCloseEvent>
 
+using namespace std;
 
 namespace lyx {
 namespace frontend {
@@ -59,7 +60,7 @@ void GuiShowFile::updateContents()
 }
 
 
-bool GuiShowFile::initialiseParams(std::string const & data)
+bool GuiShowFile::initialiseParams(string const & data)
 {
 	filename_ = FileName(data);
 	return true;

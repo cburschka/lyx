@@ -887,7 +887,7 @@ string const readBB_from_PSFile(FileName const & file)
 
 	static boost::regex bbox_re(
 		"^%%BoundingBox:\\s*([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)");
-	std::ifstream is(file_.toFilesystemEncoding().c_str());
+	ifstream is(file_.toFilesystemEncoding().c_str());
 	while (is) {
 		string s;
 		getline(is,s);

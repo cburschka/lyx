@@ -76,7 +76,7 @@ enum Types {
 };
 
 
-Types type(std::string const & s)
+Types type(string const & s)
 {
 	if (s == "input")
 		return INPUT;
@@ -136,7 +136,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 }
 
 
-CommandInfo const * InsetInclude::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetInclude::findInfo(string const & /* cmdName */)
 {
 	// FIXME
 	// This is only correct for the case of listings, but it'll do for now.
@@ -148,7 +148,7 @@ CommandInfo const * InsetInclude::findInfo(std::string const & /* cmdName */)
 }
 
 
-bool InsetInclude::isCompatibleCommand(std::string const & s)
+bool InsetInclude::isCompatibleCommand(string const & s)
 {
 	return type(s) != NONE;
 }
@@ -660,7 +660,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 
 void InsetInclude::getLabelList(Buffer const & buffer,
-				std::vector<docstring> & list) const
+				vector<docstring> & list) const
 {
 	if (isListings(params())) {
 		InsetListingsParams p(to_utf8(params()["lstparams"]));

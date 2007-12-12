@@ -64,7 +64,7 @@ InsetCommandParams::InsetCommandParams(InsetCode code,
 
 
 CommandInfo const * InsetCommandParams::findInfo(
-	InsetCode code, std::string const & cmdName)
+	InsetCode code, string const & cmdName)
 {
 	switch (code) {
 	case BIBITEM_CODE:
@@ -100,7 +100,7 @@ CommandInfo const * InsetCommandParams::findInfo(
 }
 
 
-std::string InsetCommandParams::getDefaultCmd(InsetCode code) {
+string InsetCommandParams::getDefaultCmd(InsetCode code) {
 	switch (code) {
 		case BIBITEM_CODE: 
 			return InsetBibitem::defaultCommand();
@@ -136,7 +136,7 @@ std::string InsetCommandParams::getDefaultCmd(InsetCode code) {
 
 
 bool InsetCommandParams::isCompatibleCommand(
-		InsetCode code, std::string const & s)
+		InsetCode code, string const & s)
 {
 	switch (code) {
 		case BIBITEM_CODE: 
@@ -196,7 +196,7 @@ void InsetCommandParams::setCmdName(string const & name)
 			params[j] = params_[i];
 	}
 	info_ = info;
-	std::swap(params, params_);
+	swap(params, params_);
 }
 
 
@@ -269,7 +269,7 @@ void InsetCommandParams::read(Lexer & lex)
 }
 
 
-void InsetCommandParams::write(std::ostream & os) const
+void InsetCommandParams::write(ostream & os) const
 {
 	os << "CommandInset " << insetType() << '\n';
 	os << "LatexCommand " << cmdName_ << '\n';

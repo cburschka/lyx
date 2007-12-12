@@ -444,7 +444,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 			return false;
 		}
 	}
-	catch (std::exception const & e) {
+	catch (exception const & e) {
 		docstring s = _("LyX has caught an exception, it will now "
 			"attempt to save all unsaved documents and exit."
 			"\n\nException: ");

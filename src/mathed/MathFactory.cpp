@@ -68,7 +68,7 @@ bool has_math_fonts;
 namespace {
 
 // file scope
-typedef std::map<docstring, latexkeys> WordList;
+typedef map<docstring, latexkeys> WordList;
 
 WordList theWordList;
 
@@ -103,7 +103,7 @@ void initSymbols()
 		return;
 	}
 
-	std::ifstream fs(filename.toFilesystemEncoding().c_str());
+	ifstream fs(filename.toFilesystemEncoding().c_str());
 	string line;
 	bool skip = false;
 	while (getline(fs, line)) {

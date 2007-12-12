@@ -26,8 +26,8 @@
 #include <QImage>
 #include <QImageReader>
 
-using lyx::support::ascii_lowercase;
-
+using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace graphics {
@@ -70,7 +70,7 @@ Image::FormatList GuiImage::loadableFormats()
 
 		LYXERR(Debug::GRAPHICS, (const char *) *it << ", ");
 
-		std::string ext = ascii_lowercase((const char *) *it);
+		string ext = ascii_lowercase((const char *) *it);
 
 		// special case
 		if (ext == "jpeg")

@@ -622,7 +622,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	case LFUN_CALL: {
 		FuncRequest func;
-		std::string name = to_utf8(cmd.argument());
+		string name = to_utf8(cmd.argument());
 		if (LyX::ref().topLevelCmdDef().lock(name, func)) {
 			func.origin = cmd.origin;
 			flag = getStatus(func);
@@ -765,13 +765,13 @@ void showPrintError(string const & name)
 
 void loadTextClass(string const & name)
 {
-	std::pair<bool, textclass_type> const tc_pair =
+	pair<bool, textclass_type> const tc_pair =
 		textclasslist.numberOfClass(name);
 
 	if (!tc_pair.first) {
 		lyxerr << "Document class \"" << name
 		       << "\" does not exist."
-		       << std::endl;
+		       << endl;
 		return;
 	}
 
@@ -945,7 +945,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (!format) {
 				lyxerr << "Format \"" << format_name
 				       << "\" not recognized!"
-				       << std::endl;
+				       << endl;
 				break;
 			}
 
@@ -1331,7 +1331,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			default:
 				lyxerr << "Inset type '" << name << 
-					"' not recognized in LFUN_DIALOG_SHOW_NEW_INSET" << std:: endl;
+					"' not recognized in LFUN_DIALOG_SHOW_NEW_INSET" <<  endl;
 				insetCodeOK = false;
 				break;
 			} // end switch(code)
@@ -1672,7 +1672,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			loadTextClass(argument);
 
-			std::pair<bool, textclass_type> const tc_pair =
+			pair<bool, textclass_type> const tc_pair =
 				textclasslist.numberOfClass(argument);
 
 			if (!tc_pair.first)

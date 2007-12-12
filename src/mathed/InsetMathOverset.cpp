@@ -17,6 +17,7 @@
 #include "Cursor.h"
 #include "LaTeXFeatures.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -33,7 +34,7 @@ void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 	FracChanger dummy(mi.base);
 	Dimension dim0;
 	cell(0).metrics(mi, dim0);
-	dim.wid = std::max(dim0.width(), dim1.wid) + 4;
+	dim.wid = max(dim0.width(), dim1.wid) + 4;
 	dim.asc = dim1.asc + dim0.height() + 4;
 	dim.des = dim1.des;
 	metricsMarkers(dim);

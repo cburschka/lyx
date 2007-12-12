@@ -34,7 +34,7 @@ namespace lyx {
 namespace frontend {
 
 
-Dialog::Dialog(GuiView & lv, std::string const & name)
+Dialog::Dialog(GuiView & lv, string const & name)
 	: name_(name), lyxview_(&lv)
 {}
 
@@ -43,7 +43,7 @@ Dialog::~Dialog()
 {}
 
 
-std::string const & Dialog::name() const
+string const & Dialog::name() const
 {
 	return name_;
 }
@@ -89,7 +89,7 @@ bool Dialog::isBufferReadonly() const
 }
 
 
-std::string const Dialog::bufferFilepath() const
+string const Dialog::bufferFilepath() const
 {
 	return buffer().filePath();
 }

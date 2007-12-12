@@ -34,15 +34,15 @@ namespace lyx {
 // libstdc++ that is distributed with GNU G++.
 class Messages::Pimpl {
 public:
-	typedef std::messages<char>::catalog catalog;
+	typedef messages<char>::catalog catalog;
 
 	Pimpl(string const & l)
 		: lang_(l),
 		  loc_gl(lang_.c_str()),
-		  mssg_gl(std::use_facet<std::messages<char> >(loc_gl))
+		  mssg_gl(use_facet<messages<char> >(loc_gl))
 	{
 		//lyxerr << "Messages: language(" << l
-		//       << ") in dir(" << dir << ")" << std::endl;
+		//       << ") in dir(" << dir << ")" << endl;
 
 		string const locale_dir = package().locale_dir().toFilesystemEncoding();
 		cat_gl = mssg_gl.open(PACKAGE, loc_gl, locale_dir.c_str());
@@ -62,9 +62,9 @@ private:
 	///
 	string lang_;
 	///
-	std::locale loc_gl;
+	locale loc_gl;
 	///
-	std::messages<char> const & mssg_gl;
+	messages<char> const & mssg_gl;
 	///
 	catalog cat_gl;
 };
@@ -87,7 +87,7 @@ public:
 		: lang_(l)
 	{
 		//lyxerr << "Messages: language(" << l
-		//       << ") in dir(" << dir << ")" << std::endl;
+		//       << ") in dir(" << dir << ")" << endl;
 
 	}
 

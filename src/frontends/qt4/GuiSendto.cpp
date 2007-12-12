@@ -124,7 +124,7 @@ bool GuiSendTo::isValid()
 }
 
 
-bool GuiSendTo::initialiseParams(std::string const &)
+bool GuiSendTo::initialiseParams(string const &)
 {
 	format_ = 0;
 	command_ = lyxrc.custom_export_command;
@@ -181,8 +181,8 @@ vector<Format const *> GuiSendTo::allFormats() const
 	}
 
 	// Remove repeated formats.
-	std::sort(to.begin(), to.end());
-	to.erase(std::unique(to.begin(), to.end()), to.end());
+	sort(to.begin(), to.end());
+	to.erase(unique(to.begin(), to.end()), to.end());
 
 	return to;
 }

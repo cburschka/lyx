@@ -190,8 +190,8 @@ void ServerSocket::writeln(string const & line)
 //	lyxerr << "ServerSocket debug dump.\n"
 //	     << "fd = " << fd_ << ", address = " << address_.absFilename() << ".\n"
 //	     << "Clients: " << clients.size() << ".\n";
-//	std::map<int, shared_ptr<LyXDataSocket> >::const_iterator client = clients.begin();
-//	std::map<int, shared_ptr<LyXDataSocket> >::const_iterator end = clients.end();
+//	map<int, shared_ptr<LyXDataSocket> >::const_iterator client = clients.begin();
+//	map<int, shared_ptr<LyXDataSocket> >::const_iterator end = clients.end();
 //	for (; client != end; ++client)
 //		lyxerr << "fd = " << client->first << '\n';
 // }

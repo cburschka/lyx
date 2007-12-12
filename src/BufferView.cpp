@@ -187,7 +187,7 @@ void gotoInset(BufferView * bv, InsetCode code, bool same_content)
 
 
 /// A map from a Text to the associated text metrics
-typedef std::map<Text const *, TextMetrics> TextMetricsCache;
+typedef map<Text const *, TextMetrics> TextMetricsCache;
 
 enum ScreenUpdateStrategy {
 	NoScreenUpdate,
@@ -1363,7 +1363,7 @@ void BufferView::scrollDown(int offset)
 	TextMetrics & tm = d->text_metrics_[text];
 	int ymax = height_ + offset;
 	while (true) {
-		std::pair<pit_type, ParagraphMetrics const *> last = tm.last();
+		pair<pit_type, ParagraphMetrics const *> last = tm.last();
 		int bottom_pos = last.second->position() + last.second->descent();
 		if (last.first + 1 == int(text->paragraphs().size())) {
 			if (bottom_pos <= height_)
@@ -1387,7 +1387,7 @@ void BufferView::scrollUp(int offset)
 	TextMetrics & tm = d->text_metrics_[text];
 	int ymin = - offset;
 	while (true) {
-		std::pair<pit_type, ParagraphMetrics const *> first = tm.first();
+		pair<pit_type, ParagraphMetrics const *> first = tm.first();
 		int top_pos = first.second->position() - first.second->ascent();
 		if (first.first == 0) {
 			if (top_pos >= 0)
@@ -1425,7 +1425,7 @@ void BufferView::gotoLabel(docstring const & label)
 	for (InsetIterator it = inset_iterator_begin(buffer_.inset()); it; ++it) {
 		vector<docstring> labels;
 		it->getLabelList(buffer_, labels);
-		if (std::find(labels.begin(), labels.end(), label) != labels.end()) {
+		if (find(labels.begin(), labels.end(), label) != labels.end()) {
 			setCursor(it);
 			processUpdateFlags(Update::FitCursor);
 			return;
@@ -1532,7 +1532,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	// For an example, see bug 2933:
 	// http://bugzilla.lyx.org/show_bug.cgi?id=2933
 	// The code below could maybe be moved to a DocIterator method.
-	//lyxerr << "cur before " << cur <<std::endl;
+	//lyxerr << "cur before " << cur <<endl;
 	DocIterator dit(cur.inset());
 	dit.push_back(cur.bottom());
 	size_t i = 1;
@@ -1540,7 +1540,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 		dit.push_back(cur[i]);
 		++i;
 	}
-	//lyxerr << "5 cur after" << dit <<std::endl;
+	//lyxerr << "5 cur after" << dit <<endl;
 
 	d->cursor_.setCursor(dit);
 	d->cursor_.boundary(cur.boundary());
@@ -1797,7 +1797,7 @@ Point BufferView::coordOffset(DocIterator const & dit, bool boundary) const
 		int pos = sl.pos();
 		if (pos && boundary)
 			--pos;
-//		lyxerr << "coordOffset: boundary:" << boundary << " depth:" << dit.depth() << " pos:" << pos << " sl.pos:" << sl.pos() << std::endl;
+//		lyxerr << "coordOffset: boundary:" << boundary << " depth:" << dit.depth() << " pos:" << pos << " sl.pos:" << sl.pos() << endl;
 		rend = pm.pos2row(pos);
 	} else
 		rend = pm.pos2row(sl.pos());
@@ -1879,7 +1879,7 @@ void BufferView::draw(frontend::Painter & pain)
 		tm.draw(pi, 0, y);
 
 		// and possibly grey out below
-		std::pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
+		pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
 		int const y2 = lastpm.second->position() + lastpm.second->descent();
 		if (y2 < height_)
 			pain.fillRectangle(0, y2, width_, height_ - y2, Color_bottomarea);
@@ -1897,22 +1897,22 @@ void BufferView::message(docstring const & msg)
 }
 
 
-void BufferView::showDialog(std::string const & name)
+void BufferView::showDialog(string const & name)
 {
 	if (d->gui_)
 		d->gui_->showDialog(name, string());
 }
 
 
-void BufferView::showDialog(std::string const & name,
-	std::string const & data, Inset * inset)
+void BufferView::showDialog(string const & name,
+	string const & data, Inset * inset)
 {
 	if (d->gui_)
 		d->gui_->showDialog(name, data, inset);
 }
 
 
-void BufferView::updateDialog(std::string const & name, std::string const & data)
+void BufferView::updateDialog(string const & name, string const & data)
 {
 	if (d->gui_)
 		d->gui_->updateDialog(name, data);

@@ -39,6 +39,7 @@
 
 #include <map>
 
+using namespace std;
 
 namespace lyx {
 
@@ -46,13 +47,13 @@ extern bool quitting;
 
 class InsetName {
 public:
-	InsetName(std::string const & n, InsetCode c) : name(n), code(c) {}
-	std::string name;
+	InsetName(string const & n, InsetCode c) : name(n), code(c) {}
+	string name;
 	InsetCode code;
 };
 
 
-typedef std::map<std::string, InsetCode> TranslatorMap;
+typedef map<string, InsetCode> TranslatorMap;
 
 
 static TranslatorMap const build_translator()
@@ -108,7 +109,7 @@ static TranslatorMap const build_translator()
 	size_t const insetnames_size =
 		sizeof(insetnames) / sizeof(insetnames[0]);
 
-	std::map<std::string, InsetCode> data;
+	map<string, InsetCode> data;
 	for (size_t i = 0; i != insetnames_size; ++i) {
 		InsetName const & var = insetnames[i];
 		data[var.name] = var.code;
@@ -130,7 +131,7 @@ Dimension const Inset::dimension(BufferView const & bv) const
 }
 
 
-InsetCode insetCode(std::string const & name)
+InsetCode insetCode(string const & name)
 {
 	static TranslatorMap const translator = build_translator();
 
@@ -139,7 +140,7 @@ InsetCode insetCode(std::string const & name)
 }
 
 
-std::string insetName(InsetCode c) 
+string insetName(InsetCode c) 
 {
 	static TranslatorMap const translator = build_translator();
 
@@ -149,7 +150,7 @@ std::string insetName(InsetCode c)
 		if (it->second == c)
 			return it->first;
 	}
-	return std::string();
+	return string();
 }
 
 

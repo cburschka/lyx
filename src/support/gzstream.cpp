@@ -35,6 +35,8 @@
 # include <string.h> // for memcpy
 #endif
 
+using namespace std;
+
 #ifdef GZSTREAM_NAMESPACE
 namespace GZSTREAM_NAMESPACE {
 #endif
@@ -52,14 +54,14 @@ gzstreambuf* gzstreambuf::open( const char* name, int open_mode) {
         return (gzstreambuf*)0;
     mode = open_mode;
     // no append nor read/write mode
-    if ((mode & std::ios::ate) || (mode & std::ios::app)
-        || ((mode & std::ios::in) && (mode & std::ios::out)))
+    if ((mode & ios::ate) || (mode & ios::app)
+        || ((mode & ios::in) && (mode & ios::out)))
         return (gzstreambuf*)0;
     char  fmode[10];
     char* fmodeptr = fmode;
-    if ( mode & std::ios::in)
+    if ( mode & ios::in)
         *fmodeptr++ = 'r';
-    else if ( mode & std::ios::out)
+    else if ( mode & ios::out)
         *fmodeptr++ = 'w';
     *fmodeptr++ = 'b';
     *fmodeptr = '\0';
@@ -84,7 +86,7 @@ int gzstreambuf::underflow() { // used for input buffer only
     if ( gptr() && ( gptr() < egptr()))
         return * reinterpret_cast<unsigned char *>( gptr());
 
-    if ( ! (mode & std::ios::in) || ! opened)
+    if ( ! (mode & ios::in) || ! opened)
         return EOF;
     // Josuttis' implementation of inbuf
     int n_putback = gptr() - eback();
@@ -116,7 +118,7 @@ int gzstreambuf::flush_buffer() {
 }
 
 int gzstreambuf::overflow( int c) { // used for output buffer only
-    if ( ! ( mode & std::ios::out) || ! opened)
+    if ( ! ( mode & ios::out) || ! opened)
         return EOF;
     if (c != EOF) {
         *pptr() = c;
@@ -129,7 +131,7 @@ int gzstreambuf::overflow( int c) { // used for output buffer only
 
 int gzstreambuf::sync() {
     // Changed to use flush_buffer() instead of overflow( EOF)
-    // which caused improper behavior with std::endl and flush(),
+    // which caused improper behavior with endl and flush(),
     // bug reported by Vincent Ricard.
     if ( pptr() && pptr() > pbase()) {
         if ( flush_buffer() == EOF)
@@ -153,13 +155,13 @@ gzstreambase::~gzstreambase() {
 
 void gzstreambase::open( const char* name, int open_mode) {
     if ( ! buf.open( name, open_mode))
-        clear( rdstate() | std::ios::badbit);
+        clear( rdstate() | ios::badbit);
 }
 
 void gzstreambase::close() {
     if ( buf.is_open())
         if ( ! buf.close())
-            clear( rdstate() | std::ios::badbit);
+            clear( rdstate() | ios::badbit);
 }
 
 #ifdef GZSTREAM_NAMESPACE

@@ -167,7 +167,7 @@ void GuiCommandBuffer::complete()
 	list->resize(list->sizeHint());
 	QPoint const pos = edit_->mapToGlobal(QPoint(0, 0));
 
-	int const y = std::max(0, pos.y() - list->height());
+	int const y = max(0, pos.y() - list->height());
 
 	list->move(pos.x(), y);
 

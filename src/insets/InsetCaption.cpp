@@ -137,7 +137,7 @@ void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	InsetText::metrics(mi, textdim);
 	mi.base.font = tmpfont;
 	mi.base.textwidth += dim.wid;
-	dim.des = std::max(dim.des - textdim.asc + dim.asc, textdim.des);
+	dim.des = max(dim.des - textdim.asc + dim.asc, textdim.des);
 	dim.asc = textdim.asc;
 	dim.wid += textdim.wid;
 }

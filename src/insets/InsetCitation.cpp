@@ -135,11 +135,11 @@ docstring const getNatbibLabel(Buffer const & buffer,
 		return docstring();
 
 	// Cache the labels
-	typedef std::map<Buffer const *, BiblioInfo> CachedMap;
+	typedef map<Buffer const *, BiblioInfo> CachedMap;
 	static CachedMap cached_keys;
 
 	// and cache the timestamp of the bibliography files.
-	static std::map<FileName, time_t> bibfileStatus;
+	static map<FileName, time_t> bibfileStatus;
 
 	BiblioInfo biblist;
 
@@ -149,7 +149,7 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	for (FileNameList::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
 		FileName const f = *it;
-		std::time_t lastw = f.lastModified();
+		time_t lastw = f.lastModified();
 		if (lastw != bibfileStatus[f]) {
 			changed = true;
 			bibfileStatus[f] = lastw;
@@ -363,7 +363,7 @@ InsetCitation::InsetCitation(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetCitation::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetCitation::findInfo(string const & /* cmdName */)
 {
 	// standard cite does only take one argument if jurabib is
 	// not used, but jurabib extends this to two arguments, so
@@ -377,11 +377,11 @@ CommandInfo const * InsetCitation::findInfo(std::string const & /* cmdName */)
 }
 
 
-bool InsetCitation::isCompatibleCommand(std::string const & cmd)
+bool InsetCitation::isCompatibleCommand(string const & cmd)
 {
 	vector<string> const & possibles = possible_cite_commands();
 	vector<string>::const_iterator const end = possibles.end();
-	return std::find(possibles.begin(), end, cmd) != end;
+	return find(possibles.begin(), end, cmd) != end;
 }
 
 

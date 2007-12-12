@@ -180,7 +180,7 @@ docstring ListingsParam::validate(string const & par) const
 			lists.push_back(v);
 
 		// good, find the string
-		if (std::find(lists.begin(), lists.end(), par2) != lists.end()) {
+		if (find(lists.begin(), lists.end(), par2) != lists.end()) {
 			if (unclosed)
 				return _("Unbalanced braces!");
 			return docstring();

@@ -53,7 +53,7 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetBibtex::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetBibtex::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = 
 		{"options", "btprint", "bibfiles", ""};
@@ -597,7 +597,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		// 8bit clean bibtex forks exist.
 		
 		idocfstream ifs(it->toFilesystemEncoding().c_str(),
-			std::ios_base::in,
+			ios_base::in,
 			buffer.params().encoding().iconvName());
 
 		char_type ch;
@@ -620,7 +620,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 
 			if (entryType == from_ascii("comment")) {
 
-				ifs.ignore(std::numeric_limits<int>::max(), '\n');
+				ifs.ignore(numeric_limits<int>::max(), '\n');
 				continue;
 			}
 

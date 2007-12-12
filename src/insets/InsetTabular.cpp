@@ -162,7 +162,7 @@ TabularFeature tabularFeature[] =
 };
 
 
-class FeatureEqual : public std::unary_function<TabularFeature, bool> {
+class FeatureEqual : public unary_function<TabularFeature, bool> {
 public:
 	FeatureEqual(Tabular::Feature feature)
 		: feature_(feature) {}
@@ -456,7 +456,7 @@ string const featureAsString(Tabular::Feature feature)
 {
 	TabularFeature * end = tabularFeature +
 		sizeof(tabularFeature) / sizeof(TabularFeature);
-	TabularFeature * it = std::find_if(tabularFeature, end,
+	TabularFeature * it = find_if(tabularFeature, end,
 					   FeatureEqual(feature));
 	return (it == end) ? string() : it->feature;
 }
@@ -3940,7 +3940,7 @@ void InsetTabular::setCursorFromCoordinates(Cursor & cur, int x, int y) const
 InsetTabular::idx_type InsetTabular::getNearestCell(BufferView & bv, int x, int y) const
 {
 	idx_type idx_min = 0;
-	int dist_min = std::numeric_limits<int>::max();
+	int dist_min = numeric_limits<int>::max();
 	for (idx_type i = 0, n = nargs(); i != n; ++i) {
 		if (bv.coordCache().getInsets().has(tabular.getCellInset(i).get())) {
 			int const d = dist(bv, i, x, y);

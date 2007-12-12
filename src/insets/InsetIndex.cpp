@@ -52,7 +52,7 @@ Inset * InsetIndex::clone() const
 }
 
 
-void InsetIndex::write(Buffer const & buf, std::ostream & os) const
+void InsetIndex::write(Buffer const & buf, ostream & os) const
 {
 	os << to_utf8(name()) << "\n";
 	InsetCollapsable::write(buf, os);
@@ -64,7 +64,7 @@ InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetPrintIndex::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetPrintIndex::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = {"name", ""};
 	static const bool isoptional[] = {false};

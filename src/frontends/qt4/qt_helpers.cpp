@@ -153,7 +153,7 @@ public:
 	Sorter() : loc_ok(true)
 	{
 		try {
-			loc_ = std::locale("");
+			loc_ = locale("");
 		} catch (...) {
 			loc_ok = false;
 		}
@@ -167,7 +167,7 @@ public:
 			return lhs.first < rhs.first;
 	}
 private:
-	std::locale loc_;
+	locale loc_;
 	bool loc_ok;
 #endif
 };
@@ -201,7 +201,7 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	vector<LanguagePair>::iterator begin = character_dlg ?
 		langs.begin() + 2 : langs.begin();
 
-	std::sort(begin, langs.end(), Sorter());
+	sort(begin, langs.end(), Sorter());
 
 	return langs;
 }
@@ -320,7 +320,7 @@ void rescanTexStyles()
 }
 
 
-void getTexFileList(string const & filename, std::vector<string> & list)
+void getTexFileList(string const & filename, vector<string> & list)
 {
 	list.clear();
 	FileName const file = libFileSearch("", filename);
@@ -328,18 +328,18 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 		return;
 
 	// FIXME Unicode.
-	std::vector<docstring> doclist = 
+	vector<docstring> doclist = 
 		getVectorFromString(file.fileContents("UTF-8"), from_ascii("\n"));
 
 	// Normalise paths like /foo//bar ==> /foo/bar
 	boost::RegEx regex("/{2,}");
-	std::vector<docstring>::iterator it  = doclist.begin();
-	std::vector<docstring>::iterator end = doclist.end();
+	vector<docstring>::iterator it  = doclist.begin();
+	vector<docstring>::iterator end = doclist.end();
 	for (; it != end; ++it)
 		list.push_back(regex.Merge(to_utf8(*it), "/"));
 
 	// remove empty items and duplicates
-	list.erase(std::remove(list.begin(), list.end(), ""), list.end());
+	list.erase(remove(list.begin(), list.end(), ""), list.end());
 	eliminate_duplicates(list);
 }
 

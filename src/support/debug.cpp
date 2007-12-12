@@ -168,15 +168,15 @@ LyXErr & operator<<(LyXErr & l, unsigned long t)
 { if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, double t)
 { if (l.enabled()) l.stream() << t; return l; }
-LyXErr & operator<<(LyXErr & l, std::string const & t)
+LyXErr & operator<<(LyXErr & l, string const & t)
 { if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, docstring const & t)
 { if (l.enabled()) l.stream() << to_utf8(t); return l; }
 LyXErr & operator<<(LyXErr & l, support::FileName const & t)
 { if (l.enabled()) l.stream() << t; return l; }
-LyXErr & operator<<(LyXErr & l, std::ostream &(*t)(std::ostream &))
+LyXErr & operator<<(LyXErr & l, ostream &(*t)(ostream &))
 { if (l.enabled()) l.stream() << t; return l; }
-LyXErr & operator<<(LyXErr & l, std::ios_base &(*t)(std::ios_base &))
+LyXErr & operator<<(LyXErr & l, ios_base &(*t)(ios_base &))
 { if (l.enabled()) l.stream() << t; return l; }
 
 

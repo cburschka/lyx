@@ -17,6 +17,7 @@
 
 #include "support/docstream.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -43,7 +44,7 @@ docstring const InsetOptArg::editMessage() const
 }
 
 
-void InsetOptArg::write(Buffer const & buf, std::ostream & os) const
+void InsetOptArg::write(Buffer const & buf, ostream & os) const
 {
 	os << "OptArg" << "\n";
 	InsetCollapsable::write(buf, os);

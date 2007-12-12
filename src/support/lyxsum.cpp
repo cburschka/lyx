@@ -98,7 +98,7 @@ inline
 unsigned long do_crc(InputIterator first, InputIterator last)
 {
 	boost::crc_32_type crc;
-	crc = std::for_each(first, last, crc);
+	crc = for_each(first, last, crc);
 	return crc.checksum();
 }
 

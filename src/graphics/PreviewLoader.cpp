@@ -361,7 +361,7 @@ InProgress::InProgress(string const & filename_base,
 	PendingSnippets::const_iterator pend = pending.end();
 	BitmapFile::iterator sit = snippets.begin();
 
-	std::transform(pit, pend, sit,
+	transform(pit, pend, sit,
 		       IncrementedFileName(to_format, filename_base));
 }
 
@@ -516,7 +516,7 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 	InProgressProcesses::iterator ipit  = in_progress_.begin();
 	InProgressProcesses::iterator ipend = in_progress_.end();
 
-	std::for_each(ipit, ipend, EraseSnippet(latex_snippet));
+	for_each(ipit, ipend, EraseSnippet(latex_snippet));
 
 	while (ipit != ipend) {
 		InProgressProcesses::iterator curr = ipit++;
@@ -639,7 +639,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	BitmapFile::const_iterator it  = git->second.snippets.begin();
 	BitmapFile::const_iterator end = git->second.snippets.end();
 
-	std::list<PreviewImagePtr> newimages;
+	list<PreviewImagePtr> newimages;
 
 	int metrics_counter = 0;
 	for (; it != end; ++it, ++metrics_counter) {
@@ -657,9 +657,9 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	in_progress_.erase(git);
 
 	// Tell the outside world
-	std::list<PreviewImagePtr>::const_reverse_iterator
+	list<PreviewImagePtr>::const_reverse_iterator
 		nit  = newimages.rbegin();
-	std::list<PreviewImagePtr>::const_reverse_iterator
+	list<PreviewImagePtr>::const_reverse_iterator
 		nend = newimages.rend();
 	for (; nit != nend; ++nit) {
 		imageReady(*nit->get());

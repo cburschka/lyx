@@ -32,7 +32,7 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////
 
 GuiIndexDialogBase::GuiIndexDialogBase(GuiView & lv,
-		docstring const & title, QString const & label, std::string const & name)
+		docstring const & title, QString const & label, string const & name)
 	: GuiCommand(lv, name)
 {
 	label_ = label;

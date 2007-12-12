@@ -146,7 +146,7 @@ bool Undo::hasRedoStack() const
 
 namespace {
 
-std::ostream & operator<<(std::ostream & os, UndoElement const & undo)
+ostream & operator<<(ostream & os, UndoElement const & undo)
 {
 	return os << " from: " << undo.from << " end: " << undo.end
 		<< " cell:\n" << undo.cell
@@ -172,7 +172,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	bool isUndoOperation)
 {
 	if (first_pit > last_pit)
-		std::swap(first_pit, last_pit);
+		swap(first_pit, last_pit);
 	// create the position information of the Undo entry
 	UndoElement undo;
 	undo.array = 0;
@@ -223,7 +223,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 
 	// push the undo entry to undo stack
 	stack.push(undo);
-	//lyxerr << "undo record: " << stack.top() << std::endl;
+	//lyxerr << "undo record: " << stack.top() << endl;
 
 	// next time we'll try again to combine entries if possible
 	undo_finished = false;
@@ -243,7 +243,7 @@ void Undo::Private::recordUndo(UndoKind kind, DocIterator & cur,
 	redostack.clear();
 	//lyxerr << "undostack:\n";
 	//for (size_t i = 0, n = buf.undostack().size(); i != n && i < 6; ++i)
-	//	lyxerr << "  " << i << ": " << buf.undostack()[i] << std::endl;
+	//	lyxerr << "  " << i << ": " << buf.undostack()[i] << endl;
 }
 
 
@@ -281,7 +281,7 @@ bool Undo::Private::textUndoOrRedo(DocIterator & cur, bool isUndoOperation)
 		// This is a full document
 		otherstack.top().bparams = buffer_.params();
 		buffer_.params() = undo.bparams;
-		std::swap(buffer_.paragraphs(), *undo.pars);
+		swap(buffer_.paragraphs(), *undo.pars);
 		delete undo.pars;
 		undo.pars = 0;
 	} else if (dit.inMathed()) {

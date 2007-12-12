@@ -32,7 +32,7 @@ InsetTOC::InsetTOC(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetTOC::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetTOC::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = {"type", ""};
 	static const bool isoptional[] = {false};

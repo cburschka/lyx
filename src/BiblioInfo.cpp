@@ -202,8 +202,8 @@ docstring const BibTeXInfo::getInfo() const
 //////////////////////////////////////////////////////////////////////
 
 namespace {
-// A functor for use with std::sort, leading to case insensitive sorting
-	class compareNoCase: public std::binary_function<docstring, docstring, bool>
+// A functor for use with sort, leading to case insensitive sorting
+	class compareNoCase: public binary_function<docstring, docstring, bool>
 	{
 		public:
 			bool operator()(docstring const & s1, docstring const & s2) const {
@@ -219,7 +219,7 @@ vector<docstring> const BiblioInfo::getKeys() const
 	BiblioInfo::const_iterator it  = begin();
 	for (; it != end(); ++it)
 		bibkeys.push_back(it->first);
-	std::sort(bibkeys.begin(), bibkeys.end(), compareNoCase());
+	sort(bibkeys.begin(), bibkeys.end(), compareNoCase());
 	return bibkeys;
 }
 
@@ -231,7 +231,7 @@ vector<docstring> const BiblioInfo::getFields() const
 	set<docstring>::const_iterator end = fieldNames.end();
 	for (; it != end; ++it)
 		bibfields.push_back(*it);
-	std::sort(bibfields.begin(), bibfields.end());
+	sort(bibfields.begin(), bibfields.end());
 	return bibfields;
 }
 
@@ -243,7 +243,7 @@ vector<docstring> const BiblioInfo::getEntries() const
 	set<docstring>::const_iterator end = entryTypes.end();
 	for (; it != end; ++it)
 		bibentries.push_back(*it);
-	std::sort(bibentries.begin(), bibentries.end());
+	sort(bibentries.begin(), bibentries.end());
 	return bibentries;
 }
 
@@ -482,7 +482,7 @@ CitationStyle::CitationStyle(string const & command)
 	}
 
 	char const * const * const last = citeCommands + nCiteCommands;
-	char const * const * const ptr = std::find(citeCommands, last, cmd);
+	char const * const * const ptr = find(citeCommands, last, cmd);
 
 	if (ptr != last) {
 		size_t idx = ptr - citeCommands;
@@ -496,13 +496,13 @@ string const CitationStyle::asLatexStr() const
 	string cite = citeCommands[style];
 	if (full) {
 		CiteStyle const * last = citeStylesFull + nCiteStylesFull;
-		if (std::find(citeStylesFull, last, style) != last)
+		if (find(citeStylesFull, last, style) != last)
 			cite += '*';
 	}
 
 	if (forceUCase) {
 		CiteStyle const * last = citeStylesUCase + nCiteStylesUCase;
-		if (std::find(citeStylesUCase, last, style) != last)
+		if (find(citeStylesUCase, last, style) != last)
 			cite[0] = 'C';
 	}
 

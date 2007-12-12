@@ -25,6 +25,7 @@
 #include "support/docstring.h"
 #include "support/docstream.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -34,7 +35,7 @@ void InsetNewpage::read(Buffer const &, Lexer &)
 }
 
 
-void InsetNewpage::write(Buffer const &, std::ostream & os) const
+void InsetNewpage::write(Buffer const &, ostream & os) const
 {
 	os << "\n" << getCmdName() << '\n';
 }

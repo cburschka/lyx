@@ -22,16 +22,19 @@
 #include <ios>
 #endif
 
+using namespace std;
+
+
 int main(int argc, char * argv[])
 {
 #ifdef HAVE_IOS
-	std::ios_base::sync_with_stdio(false);
+	ios_base::sync_with_stdio(false);
 #endif
 
 	// To avoid ordering of global object problems with some
 	// stdlibs we do the initialization here, but still as
 	// early as possible.
-	lyx::lyxerr.setStream(std::cerr);
+	lyx::lyxerr.setStream(cerr);
 
 	LYXERR0("acssdc");
 

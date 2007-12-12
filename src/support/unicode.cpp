@@ -51,7 +51,7 @@ static const iconv_t invalid_cd = (iconv_t)(-1);
 
 struct IconvProcessor::Impl
 {
-	Impl(std::string const & to, std::string const & from)
+	Impl(string const & to, string const & from)
 		: cd(invalid_cd), tocode_(to), fromcode_(from)
 	{}
 
@@ -62,8 +62,8 @@ struct IconvProcessor::Impl
 	}
 
 	iconv_t cd;
-	std::string tocode_;
-	std::string fromcode_;
+	string tocode_;
+	string fromcode_;
 };
 
 
@@ -134,7 +134,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 
 	int res = iconv(pimpl_->cd, &inbuf, &inbytesleft, &outbuf, &outbytesleft);
 
-	//lyxerr << std::dec;
+	//lyxerr << dec;
 	//lyxerr << "Inbytesleft: " << inbytesleft << endl;
 	//lyxerr << "Outbytesleft: " << outbytesleft << endl;
 
@@ -153,7 +153,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 				<< " has been encountered in the input.\n"
 				<< "When converting from " << pimpl_->fromcode_
 				<< " to " << pimpl_->tocode_ << ".\n";
-			lyxerr << "Input:" << std::hex;
+			lyxerr << "Input:" << hex;
 			for (size_t i = 0; i < buflen; ++i) {
 				// char may be signed, avoid output of
 				// something like 0xffffffc2
@@ -161,14 +161,14 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 					*reinterpret_cast<unsigned char const *>(buf + i);
 				lyxerr << " 0x" << (unsigned int)b;
 			}
-			lyxerr << std::dec << endl;
+			lyxerr << dec << endl;
 			break;
 		case EINVAL:
 			lyxerr << "EINVAL An incomplete multibyte sequence"
 				<< " has been encountered in the input.\n"
 				<< "When converting from " << pimpl_->fromcode_
 				<< " to " << pimpl_->tocode_ << ".\n";
-			lyxerr << "Input:" << std::hex;
+			lyxerr << "Input:" << hex;
 			for (size_t i = 0; i < buflen; ++i) {
 				// char may be signed, avoid output of
 				// something like 0xffffffc2
@@ -176,7 +176,7 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 					*reinterpret_cast<unsigned char const *>(buf + i);
 				lyxerr << " 0x" << (unsigned int)b;
 			}
-			lyxerr << std::dec << endl;
+			lyxerr << dec << endl;
 			break;
 		default:
 			lyxerr << "\tSome other error: " << errno << endl;

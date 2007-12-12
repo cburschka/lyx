@@ -98,7 +98,7 @@ MathMacroTemplate::MathMacroTemplate()
 
 MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 	int optionals, docstring const & type, 
-	std::vector<MathData> const & optionalValues, 
+	vector<MathData> const & optionalValues, 
 	MathData const & def, MathData const & display)
 : InsetMathNest(optionals + 3), numargs_(numargs), 
 	optionals_(optionals), optionalValues_(optionalValues), type_(type)
@@ -107,7 +107,7 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 
 	if (numargs_ > 9)
 		lyxerr << "MathMacroTemplate::MathMacroTemplate: wrong # of arguments: "
-			<< numargs_ << std::endl;
+			<< numargs_ << endl;
 	
 	asArray(name, cell(0));
 	optionalValues_.resize(9);
@@ -201,20 +201,20 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 		defdim.width() + 16 + dspdim.width() + 2;	
 
 	dim.asc = dim0.ascent();
-	dim.asc = std::max(dim.asc, labeldim.ascent());
-	dim.asc = std::max(dim.asc, defdim.ascent());
-	dim.asc = std::max(dim.asc, dspdim.ascent());
+	dim.asc = max(dim.asc, labeldim.ascent());
+	dim.asc = max(dim.asc, defdim.ascent());
+	dim.asc = max(dim.asc, dspdim.ascent());
 
 	dim.des = dim0.descent();
-	dim.des = std::max(dim.des, labeldim.descent());
-	dim.des = std::max(dim.des, defdim.descent());
-	dim.des = std::max(dim.des, dspdim.descent());
+	dim.des = max(dim.des, labeldim.descent());
+	dim.des = max(dim.des, defdim.descent());
+	dim.des = max(dim.des, dspdim.descent());
 
 	// make the name cell vertically centered, and 5 pixel lines margin
 	int real_asc = dim.asc - dim0.ascent() / 2;
 	int real_des = dim.des + dim0.ascent() / 2;
-	dim.asc = std::max(real_asc, real_des) + dim0.ascent() / 2 + 5;
-	dim.des = std::max(real_asc, real_des) - dim0.ascent() / 2 + 5;
+	dim.asc = max(real_asc, real_des) + dim0.ascent() / 2 + 5;
+	dim.des = max(real_asc, real_des) - dim0.ascent() / 2 + 5;
 	
 	setDimCache(mi, dim);
 }
@@ -506,7 +506,7 @@ void MathMacroTemplate::makeNonOptional(Cursor & cur) {
 
 void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	std::string const arg = to_utf8(cmd.argument());
+	string const arg = to_utf8(cmd.argument());
 	switch (cmd.action) {
 
 	case LFUN_MATH_MACRO_ADD_PARAM: 
@@ -587,7 +587,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 	FuncStatus & flag) const
 {
 	bool ret = true;
-	std::string const arg = to_utf8(cmd.argument());
+	string const arg = to_utf8(cmd.argument());
 	switch (cmd.action) {
 		case LFUN_MATH_MACRO_ADD_PARAM: {
 			int num = numargs_ + 1;
@@ -651,7 +651,7 @@ void MathMacroTemplate::read(Buffer const &, Lexer & lex)
 }
 
 
-void MathMacroTemplate::write(Buffer const &, std::ostream & os) const
+void MathMacroTemplate::write(Buffer const &, ostream & os) const
 {
 	odocstringstream oss;
 	WriteStream wi(oss, false, false);
@@ -751,11 +751,11 @@ bool MathMacroTemplate::validMacro() const
 
 MacroData MathMacroTemplate::asMacroData() const
 {
-	std::vector<docstring> defaults(numargs_);
+	vector<docstring> defaults(numargs_);
 	for (int i = 0; i < optionals_; ++i)
 		defaults[i] = asString(cell(optIdx(i)));
 	return MacroData(asString(cell(defIdx())), defaults,
-		numargs_, optionals_, asString(cell(displayIdx())), std::string());
+		numargs_, optionals_, asString(cell(displayIdx())), string());
 }
 
 

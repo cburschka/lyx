@@ -951,7 +951,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 	iss >> dlang >> extra;
 	if (extra.empty())
 		extra = from_ascii("noextra");
-	std::string const lang = to_ascii(dlang);
+	string const lang = to_ascii(dlang);
 
 	// FIXME: temporarily disabled
 	//if (cur.selection()) {
@@ -1085,7 +1085,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		InsetCommandParams p(LABEL_CODE);
 		p["name"] = cmd.argument().empty() ? old_label : cmd.argument();
-		std::string const data = InsetCommandMailer::params2string("label", p);
+		string const data = InsetCommandMailer::params2string("label", p);
 
 		if (cmd.argument().empty())
 			cur.bv().showDialog("label", data);
@@ -1098,7 +1098,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_INSERT: {
 		//lyxerr << "arg: " << to_utf8(cmd.argument()) << endl;
-		std::string const name = cmd.getArg(0);
+		string const name = cmd.getArg(0);
 		if (name == "label") {
 			InsetCommandParams p(LABEL_CODE);
 			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), p);
@@ -1187,7 +1187,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetMathGrid::getStatus(cur, cmd, status);
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(to_utf8(cmd.argument()));
-		std::string s;
+		string s;
 		is >> s;
 		if (!rowChangeOK()
 		    && (s == "append-row"
@@ -1400,7 +1400,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 #endif
 
 
-void InsetMathHull::write(Buffer const &, std::ostream & os) const
+void InsetMathHull::write(Buffer const &, ostream & os) const
 {
 	odocstringstream oss;
 	WriteStream wi(oss, false, false);

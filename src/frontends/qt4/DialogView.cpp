@@ -18,11 +18,12 @@
 #include <QCloseEvent>
 #include <QShowEvent>
 
+using namespace std;
 
 namespace lyx {
 namespace frontend {
 
-DialogView::DialogView(GuiView & lv, std::string const & name)
+DialogView::DialogView(GuiView & lv, string const & name)
 	: QDialog(&lv), Dialog(lv, name)
 {}
 

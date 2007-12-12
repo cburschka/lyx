@@ -51,7 +51,7 @@ NormalStream & operator<<(NormalStream & ns, docstring const & s)
 }
 
 
-NormalStream & operator<<(NormalStream & ns, const std::string & s)
+NormalStream & operator<<(NormalStream & ns, const string & s)
 {
 	ns.os() << from_utf8(s);
 	return ns;
@@ -155,7 +155,7 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 		ws.pendingSpace(false);
 	}
 	ws.os() << s;
-	ws.addlines(int(std::count(s, s + strlen(s), '\n')));
+	ws.addlines(int(count(s, s + strlen(s), '\n')));
 	return ws;
 }
 
@@ -465,7 +465,7 @@ OctaveStream & operator<<(OctaveStream & ns, char_type c)
 }
 
 
-OctaveStream & operator<<(OctaveStream & os, std::string const & s)
+OctaveStream & operator<<(OctaveStream & os, string const & s)
 {
 	os.os() << from_utf8(s);
 	return os;

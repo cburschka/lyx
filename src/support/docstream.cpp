@@ -30,18 +30,18 @@ namespace {
 
 /// codecvt facet for conversion of UCS4 (internal representation) to UTF8
 /// (external representation) or vice versa
-class iconv_codecvt_facet : public std::codecvt<lyx::char_type, char, std::mbstate_t>
+class iconv_codecvt_facet : public codecvt<lyx::char_type, char, mbstate_t>
 {
-	typedef std::codecvt<lyx::char_type, char, std::mbstate_t> base;
+	typedef codecvt<lyx::char_type, char, mbstate_t> base;
 public:
 	/// Constructor. You have to specify with \p inout whether you want
 	/// to use this facet only for input, only for output or for both.
 	explicit iconv_codecvt_facet(string const & encoding = "UTF-8",
-			std::ios_base::openmode inout = std::ios_base::in | std::ios_base::out,
+			ios_base::openmode inout = ios_base::in | ios_base::out,
 			size_t refs = 0)
 		: base(refs), encoding_(encoding)
 	{
-		if (inout & std::ios_base::in) {
+		if (inout & ios_base::in) {
 			in_cd_ = iconv_open(ucs4_codeset, encoding.c_str());
 			if (in_cd_ == (iconv_t)(-1)) {
 				fprintf(stderr, "Error %d returned from iconv_open(in_cd_): %s\n",
@@ -51,7 +51,7 @@ public:
 			}
 		} else
 			in_cd_ = (iconv_t)(-1);
-		if (inout & std::ios_base::out) {
+		if (inout & ios_base::out) {
 			out_cd_ = iconv_open(encoding.c_str(), ucs4_codeset);
 			if (out_cd_ == (iconv_t)(-1)) {
 				fprintf(stderr, "Error %d returned from iconv_open(out_cd_): %s\n",
@@ -199,7 +199,7 @@ protected:
 		return to_next - to;
 #else
 		size_t const length = end - from;
-		return std::min(length, max);
+		return min(length, max);
 #endif
 	}
 	virtual int do_max_length() const throw()
@@ -257,7 +257,7 @@ private:
 	iconv_t in_cd_;
 	iconv_t out_cd_;
 	/// The narrow encoding
-	std::string encoding_;
+	string encoding_;
 };
 
 } // namespace anon
@@ -266,11 +266,11 @@ private:
 namespace lyx {
 
 template<class Ios>
-void setEncoding(Ios & ios, string const & encoding, std::ios_base::openmode mode)
+void setEncoding(Ios & ios, string const & encoding, ios_base::openmode mode)
 {
 	// We must imbue the stream before openening the file
-	std::locale global;
-	std::locale locale(global, new iconv_codecvt_facet(encoding, mode));
+	locale global;
+	locale locale(global, new iconv_codecvt_facet(encoding, mode));
 	ios.imbue(locale);
 }
 
@@ -287,7 +287,7 @@ idocfstream::idocfstream(string const & encoding) : base()
 }
 
 
-idocfstream::idocfstream(const char* s, std::ios_base::openmode mode,
+idocfstream::idocfstream(const char* s, ios_base::openmode mode,
 			 string const & encoding)
 	: base()
 {
@@ -307,7 +307,7 @@ odocfstream::odocfstream(string const & encoding) : base()
 }
 
 
-odocfstream::odocfstream(const char* s, std::ios_base::openmode mode,
+odocfstream::odocfstream(const char* s, ios_base::openmode mode,
 			 string const & encoding)
 	: base()
 {
@@ -331,14 +331,14 @@ SetEnc setEncoding(string const & encoding)
 
 odocstream & operator<<(odocstream & os, SetEnc e)
 {
-	if (std::has_facet<iconv_codecvt_facet>(os.rdbuf()->getloc())) {
+	if (has_facet<iconv_codecvt_facet>(os.rdbuf()->getloc())) {
 		// This stream must be a file stream, since we never imbue
 		// any other stream with a locale having a iconv_codecvt_facet.
 		// Flush the stream so that all pending output is written
 		// with the old encoding.
 		os.flush();
-		std::locale locale(os.rdbuf()->getloc(),
-			new iconv_codecvt_facet(e.encoding, std::ios_base::out));
+		locale locale(os.rdbuf()->getloc(),
+			new iconv_codecvt_facet(e.encoding, ios_base::out));
 		// FIXME Does changing the codecvt facet of an open file
 		// stream always work? It does with gcc 4.1, but I have read
 		// somewhere that it does not with MSVC.

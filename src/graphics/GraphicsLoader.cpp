@@ -50,11 +50,11 @@ private:
 	/// This class is a singleton class... use LoaderQueue::get() instead
 	LoaderQueue();
 	/// The in-progress loading queue (elements are unique here).
-	std::list<Cache::ItemPtr> cache_queue_;
+	list<Cache::ItemPtr> cache_queue_;
 	/// Used to make the insertion of new elements faster.
-	std::set<Cache::ItemPtr> cache_set_;
+	set<Cache::ItemPtr> cache_set_;
 	/// Newly touched elements go here. loadNext moves them to cache_queue_
-	std::queue<Cache::ItemPtr> bucket_;
+	queue<Cache::ItemPtr> bucket_;
 	///
 	Timeout timer;
 	///
@@ -142,7 +142,7 @@ void LoaderQueue::touch(Cache::ItemPtr const & item)
 		list<Cache::ItemPtr>::iterator
 			end = cache_queue_.end();
 
-		it = std::find(it, end, item);
+		it = find(it, end, item);
 		if (it != end)
 			cache_queue_.erase(it);
 	}

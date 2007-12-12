@@ -22,6 +22,7 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -48,8 +49,8 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 	Dimension dim0;
 	cell(0).metrics(mi, dim0);
 	Dimension t = theFontMetrics(mi.base.font).dimension('{');
-	dim.asc = std::max(dim0.asc, t.asc);
-	dim.des = std::max(dim0.des, t.des);
+	dim.asc = max(dim0.asc, t.asc);
+	dim.des = max(dim0.des, t.des);
 	dim.wid = dim0.width() + 2 * t.wid;
 	metricsMarkers(dim);
 	// Cache the inset dimension. 

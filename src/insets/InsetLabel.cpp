@@ -22,6 +22,7 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -31,7 +32,7 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetLabel::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetLabel::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = {"name", ""};
 	static const bool isoptional[] = {false};
@@ -46,7 +47,7 @@ Inset * InsetLabel::clone() const
 }
 
 
-void InsetLabel::getLabelList(Buffer const &, std::vector<docstring> & list) const
+void InsetLabel::getLabelList(Buffer const &, vector<docstring> & list) const
 {
 	list.push_back(getParam("name"));
 }

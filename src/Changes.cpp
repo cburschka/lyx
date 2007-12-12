@@ -24,6 +24,8 @@
 
 #include <ostream>
 
+using namespace std;
+
 namespace lyx {
 
 /*
@@ -270,7 +272,7 @@ void Changes::merge()
 				<< (it + 1)->range.end << ")");
 
 			(it + 1)->range.start = it->range.start;
-			(it + 1)->change.changetime = std::max(it->change.changetime,
+			(it + 1)->change.changetime = max(it->change.changetime,
 							  (it + 1)->change.changetime);
 			table_.erase(it);
 			// start again
@@ -318,7 +320,7 @@ int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
 }
 
 
-void Changes::lyxMarkChange(std::ostream & os, int & column,
+void Changes::lyxMarkChange(ostream & os, int & column,
 			    Change const & old, Change const & change)
 {
 	if (old == change)

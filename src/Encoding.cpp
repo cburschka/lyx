@@ -237,7 +237,7 @@ struct CharInfo {
 };
 
 
-typedef std::map<char_type, CharInfo> CharInfoMap;
+typedef map<char_type, CharInfo> CharInfoMap;
 CharInfoMap unicodesymbols;
 
 
@@ -275,7 +275,7 @@ void Encoding::init() const
 		// if we check all 256 code points of this encoding.
 		for (unsigned short j = 0; j < 256; ++j) {
 			char const c = char(j);
-			std::vector<char_type> const ucs4 = eightbit_to_ucs4(&c, 1, iconvName_);
+			vector<char_type> const ucs4 = eightbit_to_ucs4(&c, 1, iconvName_);
 			if (ucs4.size() == 1) {
 				char_type const c = ucs4[0];
 				CharInfoMap::const_iterator const it = unicodesymbols.find(c);
@@ -289,7 +289,7 @@ void Encoding::init() const
 		// therefore we need to check all UCS4 code points.
 		// This is expensive!
 		for (char_type c = 0; c < max_ucs4; ++c) {
-			std::vector<char> const eightbit = ucs4_to_eightbit(&c, 1, iconvName_);
+			vector<char> const eightbit = ucs4_to_eightbit(&c, 1, iconvName_);
 			if (!eightbit.empty()) {
 				CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 				if (it == unicodesymbols.end() || !it->second.force)
@@ -322,7 +322,7 @@ docstring const Encoding::latexChar(char_type c) const
 		CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 		if (it == unicodesymbols.end())
 			lyxerr << "Could not find LaTeX command for character 0x"
-			       << std::hex << c << std::dec
+			       << hex << c << dec
 			       << ".\nLaTeX export will fail."
 			       << endl;
 		else
@@ -428,7 +428,7 @@ Encoding const * Encodings::getFromLyXName(string const & name) const
 
 Encoding const * Encodings::getFromLaTeXName(string const & name) const
 {
-	// We don't use std::find_if because it makes copies of the pairs in
+	// We don't use find_if because it makes copies of the pairs in
 	// the map.
 	// This linear search is OK since we don't have many encodings.
 	// Users could even optimize it by putting the encodings they use
@@ -458,11 +458,11 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		string flags;
 
 		if (symbolslex.next(true)) {
-			std::istringstream is(symbolslex.getString());
+			istringstream is(symbolslex.getString());
 			// reading symbol directly does not work if
-			// char_type == std::wchar_t.
+			// char_type == wchar_t.
 			boost::uint32_t tmp;
-			if(!(is >> std::hex >> tmp))
+			if(!(is >> hex >> tmp))
 				break;
 			symbol = tmp;
 		} else
@@ -493,7 +493,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			else
 				lyxerr << "Ignoring unknown flag `" << flag
 				       << "' for symbol `0x"
-				       << std::hex << symbol << std::dec
+				       << hex << symbol << dec
 				       << "'." << endl;
 		}
 

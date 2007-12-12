@@ -122,7 +122,7 @@ bool LyXErr::debugging(Debug::Type t) const
 
 void LyXErr::endl()
 {
-	stream() << std::endl;
+	stream() << endl;
 }
 
 
@@ -142,15 +142,15 @@ LyXErr & operator<<(LyXErr & l, unsigned long t)
 { l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, double t)
 { l.stream() << t; return l; }
-LyXErr & operator<<(LyXErr & l, std::string const & t)
+LyXErr & operator<<(LyXErr & l, string const & t)
 { l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, docstring const & t)
 { l.stream() << to_utf8(t); return l; }
 LyXErr & operator<<(LyXErr & l, support::FileName const & t)
 { l.stream() << t; return l; }
-LyXErr & operator<<(LyXErr & l, std::ostream &(*t)(std::ostream &))
+LyXErr & operator<<(LyXErr & l, ostream &(*t)(ostream &))
 { l.stream() << t; return l; }
-LyXErr & operator<<(LyXErr & l, std::ios_base &(*t)(std::ios_base &))
+LyXErr & operator<<(LyXErr & l, ios_base &(*t)(ios_base &))
 { l.stream() << t; return l; }
 
 LyXErr lyxerr;

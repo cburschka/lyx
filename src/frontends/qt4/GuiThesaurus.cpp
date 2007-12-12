@@ -121,7 +121,7 @@ void GuiThesaurus::updateLists()
 		QTreeWidgetItem * i = new QTreeWidgetItem(meaningsTV);
 		i->setText(0, toqstr(cit->first));
 		meaningsTV->expandItem(i);
-		for (std::vector<docstring>::const_iterator cit2 = cit->second.begin();
+		for (vector<docstring>::const_iterator cit2 = cit->second.begin();
 			cit2 != cit->second.end(); ++cit2) {
 				QTreeWidgetItem * i2 = new QTreeWidgetItem(i);
 				i2->setText(0, toqstr(*cit2));

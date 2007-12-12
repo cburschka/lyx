@@ -90,7 +90,7 @@ void GuiToolbars::initFlags(ToolbarInfo & tbinfo)
 			TurnOnFlag(AUTO);
 	}
 	/*
-	std::cout << "State " << info.state << " FLAGS: " << flags
+	cout << "State " << info.state << " FLAGS: " << flags
 		<< " ON:" << (flags & ToolbarBackend::ON)
 		<< " OFF:" << (flags & ToolbarBackend::OFF)
 		<< " L:" << (flags & ToolbarBackend::LEFT)
@@ -101,7 +101,7 @@ void GuiToolbars::initFlags(ToolbarInfo & tbinfo)
 		<< " RE:" << (flags & ToolbarBackend::REVIEW)
 		<< " TB:" << (flags & ToolbarBackend::TABLE)
 		<< " AU:" << (flags & ToolbarBackend::AUTO)
-		<< std::endl;
+		<< endl;
 	*/
 	// now set the flags
 	tbinfo.flags = static_cast<lyx::ToolbarInfo::Flags>(flags);
@@ -248,7 +248,7 @@ void GuiToolbars::update(bool in_math, bool in_table, bool review)
 
 bool GuiToolbars::visible(string const & name) const
 {
-	std::map<string, GuiToolbar *>::const_iterator it =
+	map<string, GuiToolbar *>::const_iterator it =
 		toolbars_.find(name);
 	if (it == toolbars_.end())
 		return false;

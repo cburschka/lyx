@@ -107,10 +107,10 @@ getSecond(vector<Pair> const & pr)
 	 return tmp;
 }
 
-/// The (tranlated) GUI std::string and it's LaTeX equivalent.
-typedef std::pair<docstring, std::string> RotationOriginPair;
+/// The (tranlated) GUI string and it's LaTeX equivalent.
+typedef pair<docstring, string> RotationOriginPair;
 ///
-std::vector<RotationOriginPair> getRotationOriginData();
+vector<RotationOriginPair> getRotationOriginData();
 
 
 GuiGraphics::GuiGraphics(GuiView & lv)
@@ -672,7 +672,7 @@ void GuiGraphics::applyView()
 	igp.rotateAngle = fromqstr(angle->text());
 
 	double rotAngle = convert<double>(igp.rotateAngle);
-	if (std::abs(rotAngle) > 360.0) {
+	if (abs(rotAngle) > 360.0) {
 		rotAngle -= 360.0 * floor(rotAngle / 360.0);
 		igp.rotateAngle = convert<string>(rotAngle);
 	}

@@ -411,7 +411,7 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 	MathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
 	
 	// detach all arguments
-	std::vector<MathData> detachedArgs;
+	vector<MathData> detachedArgs;
 	if (macroPos + 1 == size())
 				// strip arguments if we are at the MathData end
 				macroInset->detachArguments(detachedArgs, true);
@@ -422,7 +422,7 @@ void MathData::detachMacroParameters(Cursor & cur, const size_type macroPos)
 	int curMacroSlice = cur.find(macroInset);
 	idx_type curMacroIdx = -1;
 	pos_type curMacroPos = -1;
-	std::vector<CursorSlice> argSlices;
+	vector<CursorSlice> argSlices;
 	if (curMacroSlice != -1) {
 				curMacroPos = cur[curMacroSlice].pos();
 				curMacroIdx = cur[curMacroSlice].idx();
@@ -536,7 +536,7 @@ void MathData::attachMacroParameters(Cursor & cur,
 	// start at atom behind the macro again, maybe with some new arguments 
 	// from the detach phase above, to add them back into the macro inset
 	size_t p = macroPos + 1;
-	std::vector<MathData> detachedArgs;
+	vector<MathData> detachedArgs;
 	MathAtom scriptToPutAround;
 	
 	// find cursor slice again of this MathData
@@ -600,7 +600,7 @@ void MathData::attachMacroParameters(Cursor & cur,
 
 
 void MathData::collectOptionalParameters(Cursor & cur, 
-	const size_type numOptionalParams, std::vector<MathData> & params, 
+	const size_type numOptionalParams, vector<MathData> & params, 
 	size_t & pos, const pos_type macroPos, const int thisPos, const int thisSlice)
 {
 	// insert optional arguments?
@@ -637,8 +637,8 @@ void MathData::collectOptionalParameters(Cursor & cur,
 		// place cursor in optional argument of macro
 		if (thisSlice != -1
 				&& thisPos >= int(pos) && thisPos <= int(right)) {
-			int paramPos = std::max(0, thisPos - int(pos) - 1);
-			std::vector<CursorSlice> x;
+			int paramPos = max(0, thisPos - int(pos) - 1);
+			vector<CursorSlice> x;
 			cur.cutOff(thisSlice, x);
 			cur[thisSlice].pos() = macroPos;
 			if (brace) {
@@ -659,7 +659,7 @@ void MathData::collectOptionalParameters(Cursor & cur,
 
 
 void MathData::collectParameters(Cursor & cur, 
-	const size_type numParams, std::vector<MathData> & params, 
+	const size_type numParams, vector<MathData> & params, 
 	size_t & pos, MathAtom & scriptToPutAround,
 	const pos_type macroPos, const int thisPos, const int thisSlice) 
 {
@@ -668,7 +668,7 @@ void MathData::collectParameters(Cursor & cur,
 		MathAtom & cell = operator[](pos);
 		
 		// fix cursor
-		std::vector<CursorSlice> argSlices;
+		vector<CursorSlice> argSlices;
 		int argPos = 0;
 		if (thisSlice != -1 && thisPos == int(pos)) {
 			cur.cutOff(thisSlice, argSlices);
@@ -737,7 +737,7 @@ int MathData::pos2x(size_type pos, int glue) const
 		if ((*it)->getChar() == ' ')
 			x += glue;
 		//lyxerr << "char: " << (*it)->getChar()
-		//	<< "width: " << (*it)->width() << std::endl;
+		//	<< "width: " << (*it)->width() << endl;
 		x += atom_dims_[i].wid;
 	}
 	return x;
@@ -791,7 +791,7 @@ int MathData::dist(BufferView const & bv, int x, int y) const
 
 void MathData::setXY(BufferView & bv, int x, int y) const
 {
-	//lyxerr << "setting position cache for MathData " << this << std::endl;
+	//lyxerr << "setting position cache for MathData " << this << endl;
 	bv.coordCache().arrays().add(this, x, y);
 }
 
@@ -830,7 +830,7 @@ int MathData::yo(BufferView const & bv) const
 }
 
 
-std::ostream & operator<<(std::ostream & os, MathData const & ar)
+ostream & operator<<(ostream & os, MathData const & ar)
 {
 	odocstringstream oss;
 	NormalStream ns(oss);

@@ -40,7 +40,7 @@ InsetRef::InsetRef(InsetRef const & ir)
 {}
 
 
-bool InsetRef::isCompatibleCommand(std::string const & s) {
+bool InsetRef::isCompatibleCommand(string const & s) {
 	//FIXME This is likely not the best way to handle this.
 	//But this stuff is hardcoded elsewhere already.
 	return s == "ref" 
@@ -52,7 +52,7 @@ bool InsetRef::isCompatibleCommand(std::string const & s) {
 }
 
 
-CommandInfo const * InsetRef::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetRef::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = {"name", "reference", ""};
 	static const bool isoptional[] = {true, false};

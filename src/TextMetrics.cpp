@@ -473,7 +473,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		first = end;
 		++row_index;
 
-		pm.dim().wid = std::max(pm.dim().wid, dim.wid);
+		pm.dim().wid = max(pm.dim().wid, dim.wid);
 		pm.dim().des += dim.height();
 	} while (first < par.size());
 
@@ -755,7 +755,7 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 			if (par.isLineSeparator(i - 1))
 				add -= singleWidth(pit, i - 1);
 
-			add = std::max(add, label_end - x);
+			add = max(add, label_end - x);
 			thiswidth += add;
 		}
 
@@ -1537,7 +1537,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 
 int TextMetrics::cursorY(CursorSlice const & sl, bool boundary) const
 {
-	//lyxerr << "TextMetrics::cursorY: boundary: " << boundary << std::endl;
+	//lyxerr << "TextMetrics::cursorY: boundary: " << boundary << endl;
 	ParagraphMetrics const & pm = par_metrics_[sl.pit()];
 	if (pm.rows().empty())
 		return 0;
@@ -1932,7 +1932,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING) && inside
 			&& (row_selection || pi.full_repaint || row_has_changed)) {
-				std::string const foreword = text_->isMainText(bv_->buffer()) ?
+				string const foreword = text_->isMainText(bv_->buffer()) ?
 					"main text redraw " : "inset text redraw: ";
 			LYXERR(Debug::PAINTING, foreword << "pit=" << pit << " row=" << i
 				<< " row_selection="	<< row_selection

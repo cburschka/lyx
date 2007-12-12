@@ -189,7 +189,7 @@ bool FileName::isReadableDirectory() const
 }
 
 
-std::string FileName::onlyFileName() const
+string FileName::onlyFileName() const
 {
 	return support::onlyFilename(absFilename());
 }
@@ -227,7 +227,7 @@ bool FileName::isDirWritable() const
 }
 
 
-FileNameList FileName::dirList(std::string const & ext) const
+FileNameList FileName::dirList(string const & ext) const
 {
 	FileNameList dirlist;
 	if (!isDirectory()) {
@@ -260,13 +260,13 @@ FileNameList FileName::dirList(std::string const & ext) const
 }
 
 
-FileName FileName::tempName(FileName const & dir, std::string const & mask)
+FileName FileName::tempName(FileName const & dir, string const & mask)
 {
 	return support::tempName(dir, mask);
 }
 
 
-std::time_t FileName::lastModified() const
+time_t FileName::lastModified() const
 {
 	return d->fi.lastModified().toTime_t();
 }
@@ -410,7 +410,7 @@ docstring FileName::fileContents(string const & encoding) const
 }
 
 
-void FileName::changeExtension(std::string const & extension)
+void FileName::changeExtension(string const & extension)
 {
 	// FIXME: use Qt native methods...
 	string const oldname = absFilename();
@@ -643,7 +643,7 @@ bool operator>(FileName const & lhs, FileName const & rhs)
 }
 
 
-std::ostream & operator<<(std::ostream & os, FileName const & filename)
+ostream & operator<<(ostream & os, FileName const & filename)
 {
 	return os << filename.absFilename();
 }
@@ -699,7 +699,7 @@ string DocFileName::outputFilename(string const & path) const
 }
 
 
-string DocFileName::mangledFilename(std::string const & dir) const
+string DocFileName::mangledFilename(string const & dir) const
 {
 	// We need to make sure that every DocFileName instance for a given
 	// filename returns the same mangled name.
@@ -733,7 +733,7 @@ string DocFileName::mangledFilename(std::string const & dir) const
 	// Prepend a counter to the filename. This is necessary to make
 	// the mangled name unique.
 	static int counter = 0;
-	std::ostringstream s;
+	ostringstream s;
 	s << counter++ << mname;
 	mname = s.str();
 
@@ -743,7 +743,7 @@ string DocFileName::mangledFilename(std::string const & dir) const
 	// If dir.size() > max length, all bets are off for YAP. We truncate
 	// the filename nevertheless, keeping a minimum of 10 chars.
 
-	string::size_type max_length = std::max(100 - ((int)dir.size() + 1), 10);
+	string::size_type max_length = max(100 - ((int)dir.size() + 1), 10);
 
 	// If the mangled file name is too long, hack it to fit.
 	// We know we're guaranteed to have a unique file name because

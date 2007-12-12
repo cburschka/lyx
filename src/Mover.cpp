@@ -61,7 +61,7 @@ bool SpecialisedMover::do_copy(support::FileName const & from, support::FileName
 		return Mover::do_copy(from, to, latex, mode);
 
 	if (mode != (unsigned long int)-1) {
-		std::ofstream ofs(to.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
+		ofstream ofs(to.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
 		if (!ofs)
 			return false;
 		ofs.close();

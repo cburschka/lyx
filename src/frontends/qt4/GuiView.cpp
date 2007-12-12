@@ -258,10 +258,10 @@ public:
 	GuiLayoutBox * layout_;
 
 	///
-	std::map<std::string, Inset *> open_insets_;
+	map<string, Inset *> open_insets_;
 
 	///
-	std::map<std::string, DialogPtr> dialogs_;
+	map<string, DialogPtr> dialogs_;
 
 	unsigned int smallIconSize;
 	unsigned int normalIconSize;
@@ -410,7 +410,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		settings.setValue(key + "/icon_size", iconSize());
 		d.toolbars_->saveToolbarInfo();
 		// Now take care of all other dialogs:
-		std::map<string, DialogPtr>::const_iterator it = d.dialogs_.begin();
+		map<string, DialogPtr>::const_iterator it = d.dialogs_.begin();
 		for (; it!= d.dialogs_.end(); ++it)
 			it->second->saveSession();
 	}
@@ -873,7 +873,7 @@ void GuiView::updateDialog(string const & name, string const & data)
 	if (!isDialogVisible(name))
 		return;
 
-	std::map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
+	map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
 	if (it == d.dialogs_.end())
 		return;
 
@@ -1580,7 +1580,7 @@ private:
 
 bool isValidName(string const & name)
 {
-	return std::find_if(dialognames, end_dialognames,
+	return find_if(dialognames, end_dialognames,
 			    cmpCStr(name.c_str())) != end_dialognames;
 }
 
@@ -1606,7 +1606,7 @@ Dialog * GuiView::find_or_build(string const & name)
 	if (!isValidName(name))
 		return 0;
 
-	std::map<string, DialogPtr>::iterator it = d.dialogs_.find(name);
+	map<string, DialogPtr>::iterator it = d.dialogs_.find(name);
 
 	if (it != d.dialogs_.end())
 		return it->second.get();
@@ -1638,7 +1638,7 @@ void GuiView::showDialog(string const & name, string const & data,
 
 bool GuiView::isDialogVisible(string const & name) const
 {
-	std::map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
+	map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
 	if (it == d.dialogs_.end())
 		return false;
 	return it->second.get()->isVisibleView();
@@ -1654,7 +1654,7 @@ void GuiView::hideDialog(string const & name, Inset * inset)
 	if (quitting)
 		return;
 
-	std::map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
+	map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
 	if (it == d.dialogs_.end())
 		return;
 
@@ -1683,15 +1683,15 @@ Inset * GuiView::getOpenInset(string const & name) const
 	if (!isValidName(name))
 		return 0;
 
-	std::map<string, Inset *>::const_iterator it = d.open_insets_.find(name);
+	map<string, Inset *>::const_iterator it = d.open_insets_.find(name);
 	return it == d.open_insets_.end() ? 0 : it->second;
 }
 
 
 void GuiView::hideAll() const
 {
-	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
 
 	for(; it != end; ++it)
 		it->second->hideView();
@@ -1700,8 +1700,8 @@ void GuiView::hideAll() const
 
 void GuiView::hideBufferDependent() const
 {
-	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
 
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
@@ -1713,8 +1713,8 @@ void GuiView::hideBufferDependent() const
 
 void GuiView::updateBufferDependent(bool switched) const
 {
-	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
 
 	for(; it != end; ++it) {
 		Dialog * dialog = it->second.get();
@@ -1737,8 +1737,8 @@ void GuiView::updateBufferDependent(bool switched) const
 
 void GuiView::checkStatus()
 {
-	std::map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
-	std::map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
+	map<string, DialogPtr>::const_iterator it  = d.dialogs_.begin();
+	map<string, DialogPtr>::const_iterator end = d.dialogs_.end();
 
 	for(; it != end; ++it) {
 		Dialog * const dialog = it->second.get();

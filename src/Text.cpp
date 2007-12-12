@@ -245,7 +245,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted") {
 		lex.eatLine();
-		std::istringstream is(lex.getString());
+		istringstream is(lex.getString());
 		unsigned int aid;
 		time_t ct;
 		is >> aid >> ct;
@@ -258,7 +258,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 			change = Change(Change::INSERTED, bp.author_map[aid], ct);
 	} else if (token == "\\change_deleted") {
 		lex.eatLine();
-		std::istringstream is(lex.getString());
+		istringstream is(lex.getString());
 		unsigned int aid;
 		time_t ct;
 		is >> aid >> ct;
@@ -1064,8 +1064,8 @@ bool Text::dissolveInset(Cursor & cur) {
 		pasteParagraphList(cur, plist, b.params().getTextClassPtr(),
 				   b.errorList("Paste"));
 		// restore position
-		cur.pit() = std::min(cur.lastpit(), spit);
-		cur.pos() = std::min(cur.lastpos(), spos);
+		cur.pit() = min(cur.lastpit(), spit);
+		cur.pos() = min(cur.lastpos(), spos);
 	}
 	cur.clearSelection();
 	cur.resetAnchor();
@@ -1112,7 +1112,7 @@ void Text::getWord(CursorSlice & from, CursorSlice & to,
 }
 
 
-void Text::write(Buffer const & buf, std::ostream & os) const
+void Text::write(Buffer const & buf, ostream & os) const
 {
 	ParagraphList::const_iterator pit = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
@@ -1245,7 +1245,7 @@ docstring Text::currentState(Cursor & cur)
 	if (!par.empty() && cur.pos() < par.size()) {
 		// Force output of code point, not character
 		size_t const c = par.getChar(cur.pos());
-		os << _(", Char: 0x") << std::hex << c;
+		os << _(", Char: 0x") << hex << c;
 	}
 	os << _(", Boundary: ") << cur.boundary();
 //	Row & row = cur.textRow();

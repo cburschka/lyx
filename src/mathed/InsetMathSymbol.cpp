@@ -58,7 +58,7 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	//lyxerr << "metrics: symbol: '" << sym_->name
 	//	<< "' in font: '" << sym_->inset
 	//	<< "' drawn as: '" << sym_->draw
-	//	<< "'" << std::endl;
+	//	<< "'" << endl;
 
 	int const em = mathed_char_width(mi.base.font, 'M');
 	FontSetChanger dummy(mi.base, sym_->inset);
@@ -93,7 +93,7 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 	//lyxerr << "metrics: symbol: '" << sym_->name
 	//	<< "' in font: '" << sym_->inset
 	//	<< "' drawn as: '" << sym_->draw
-	//	<< "'" << std::endl;
+	//	<< "'" << endl;
 	int const em = mathed_char_width(pi.base.font, 'M');
 	if (isRelOp())
 		x += static_cast<int>(0.25*em+0.5);

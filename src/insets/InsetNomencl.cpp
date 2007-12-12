@@ -35,7 +35,7 @@ InsetNomencl::InsetNomencl(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetNomencl::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetNomencl::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = {"prefix", "symbol", "description", ""};
 	static const bool isoptional[] = {true, false, false};
@@ -85,7 +85,7 @@ InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
 {}
 
 
-CommandInfo const * InsetPrintNomencl::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetPrintNomencl::findInfo(string const & /* cmdName */)
 {
 		static const char * const paramnames[] = {"labelwidth", ""};
 		static const bool isoptional[] = {true};

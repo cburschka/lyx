@@ -35,9 +35,9 @@ using namespace lyx::support;
 namespace lyx {
 
 // special columntypes
-extern std::map<char, int> special_columns;
+extern map<char, int> special_columns;
 
-std::map<string, vector<string> > used_packages;
+map<string, vector<string> > used_packages;
 
 // needed to handle encodings with babel
 bool one_language = true;

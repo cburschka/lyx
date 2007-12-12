@@ -65,7 +65,7 @@ namespace lyx {
 
 namespace {
 
-typedef std::pair<pit_type, int> PitPosPair;
+typedef pair<pit_type, int> PitPosPair;
 
 typedef limited_stack<pair<ParagraphList, TextClassPtr> > CutStack;
 
@@ -87,11 +87,11 @@ void region(CursorSlice const & i1, CursorSlice const & i2,
 	c1 = p.col(i1.idx());
 	c2 = p.col(i2.idx());
 	if (c1 > c2)
-		std::swap(c1, c2);
+		swap(c1, c2);
 	r1 = p.row(i1.idx());
 	r2 = p.row(i2.idx());
 	if (r1 > r2)
-		std::swap(r1, r2);
+		swap(r1, r2);
 }
 
 
@@ -331,7 +331,7 @@ void putClipboard(ParagraphList const & paragraphs, TextClassPtr textclass,
 	buffer.setUnnamed(true);
 	buffer.paragraphs() = paragraphs;
 	buffer.params().setTextClass(textclass);
-	std::ostringstream lyx;
+	ostringstream lyx;
 	if (buffer.write(lyx))
 		theClipboard().put(lyx.str(), plaintext);
 	else
@@ -462,7 +462,7 @@ void switchBetweenClasses(TextClassPtr const & c1,
 }
 
 
-std::vector<docstring> const availableSelections(Buffer const & buffer)
+vector<docstring> const availableSelections(Buffer const & buffer)
 {
 	vector<docstring> selList;
 
@@ -877,7 +877,7 @@ docstring grabSelection(Cursor const & cur)
 
 	// FIXME: What is wrong with the following?
 #if 0
-	std::ostringstream os;
+	ostringstream os;
 	for (DocIterator dit = cur.selectionBegin();
 	     dit != cur.selectionEnd(); dit.forwardPos())
 		os << asString(dit.cell());

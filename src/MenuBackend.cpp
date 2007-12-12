@@ -56,7 +56,7 @@ namespace lyx {
 
 namespace {
 
-class MenuNamesEqual : public std::unary_function<Menu, bool> {
+class MenuNamesEqual : public unary_function<Menu, bool> {
 public:
 	MenuNamesEqual(docstring const & name)
 		: name_(name) {}
@@ -375,7 +375,7 @@ MenuItem const & Menu::operator[](size_type i) const
 bool Menu::hasFunc(FuncRequest const & func) const
 {
 	return find_if(begin(), end(),
-		       bind(std::equal_to<FuncRequest>(),
+		       bind(equal_to<FuncRequest>(),
 			    bind(&MenuItem::func, _1),
 			    func)) != end();
 }
@@ -630,7 +630,7 @@ void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 }
 
 
-void expandFlexInsert(Menu & tomenu, Buffer const * buf, std::string s)
+void expandFlexInsert(Menu & tomenu, Buffer const * buf, string s)
 {
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
@@ -664,7 +664,7 @@ void expandToc2(Menu & tomenu,
 	// check whether depth is smaller than the smallest depth in toc.
 	int min_depth = 1000;
 	for (Toc::size_type i = from; i < to; ++i)
-		min_depth = std::min(min_depth, toc_list[i].depth());
+		min_depth = min(min_depth, toc_list[i].depth());
 	if (min_depth > depth)
 		depth = min_depth;
 

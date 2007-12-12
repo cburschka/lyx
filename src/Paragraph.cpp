@@ -165,7 +165,7 @@ public:
 		      pos_type initial) const;
 
 	/// match a string against a particular point in the paragraph
-	bool isTextAt(std::string const & str, pos_type pos) const;
+	bool isTextAt(string const & str, pos_type pos) const;
 	
 	/// Which Paragraph owns us?
 	Paragraph * owner_;
@@ -1164,7 +1164,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 			// this check is to amend a bug. LyX sometimes
 			// inserts '\0' this could cause problems.
 			if (c != '\0') {
-				std::vector<char> tmp = ucs4_to_utf8(c);
+				vector<char> tmp = ucs4_to_utf8(c);
 				tmp.push_back('\0');
 				os << &tmp[0];
 			} else
@@ -1212,7 +1212,7 @@ void Paragraph::appendString(docstring const & s, Font const & font,
 	size_t newsize = oldsize + end;
 	size_t capacity = d->text_.capacity();
 	if (newsize >= capacity)
-		d->text_.reserve(std::max(capacity + 100, newsize));
+		d->text_.reserve(max(capacity + 100, newsize));
 
 	// when appending characters, no need to update tables
 	d->text_.append(s);
@@ -1304,11 +1304,11 @@ FontSpan Paragraph::fontSpan(pos_type pos) const
 	for (; cit != end; ++cit) {
 		if (cit->pos() >= pos) {
 			if (pos >= beginOfBody())
-				return FontSpan(std::max(start, beginOfBody()),
+				return FontSpan(max(start, beginOfBody()),
 						cit->pos());
 			else
 				return FontSpan(start,
-						std::min(beginOfBody() - 1,
+						min(beginOfBody() - 1,
 							 cit->pos()));
 		}
 		start = cit->pos() + 1;
@@ -1960,7 +1960,7 @@ bool Paragraph::latex(Buffer const & buf,
 		if (!runparams.verbatim && 
 		    runparams.encoding->package() == Encoding::none &&
 		    font.language()->encoding()->package() == Encoding::none) {
-			std::pair<bool, int> const enc_switch = switchEncoding(os, bparams,
+			pair<bool, int> const enc_switch = switchEncoding(os, bparams,
 					runparams, *(runparams.encoding),
 					*(font.language()->encoding()));
 			if (enc_switch.first) {

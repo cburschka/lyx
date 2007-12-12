@@ -148,7 +148,7 @@ void clearIfNotFound(T & data, external::TransformID value,
 
 	const_iterator it  = ids.begin();
 	const_iterator end = ids.end();
-	it = std::find(it, end, value);
+	it = find(it, end, value);
 	if (it == end)
 		data = T();
 }

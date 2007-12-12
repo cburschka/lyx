@@ -16,6 +16,7 @@
 #include <QPixmap>
 #include <QPainter>
 
+using namespace std;
 
 namespace lyx {
 
@@ -51,7 +52,7 @@ BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
 
 
 void BulletsModule::setupPanel(QListWidget * lw, QString const & panelname,
-	std::string const & fname)
+	string const & fname)
 {
 	connect(lw, SIGNAL(currentItemChanged(QListWidgetItem*, QListWidgetItem*)),
 		this, SLOT(bulletSelected(QListWidgetItem *, QListWidgetItem*)));

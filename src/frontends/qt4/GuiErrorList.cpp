@@ -119,9 +119,9 @@ void GuiErrorList::goTo(int item)
 	// Now make the selection.
 	// This should be implemented using an LFUN. (Angus)
 	// if pos_end is 0, this means it is end-of-paragraph
-	pos_type const end = err.pos_end ? std::min(err.pos_end, pit->size())
+	pos_type const end = err.pos_end ? min(err.pos_end, pit->size())
 					 : pit->size();
-	pos_type const start = std::min(err.pos_start, end);
+	pos_type const start = min(err.pos_start, end);
 	pos_type const range = end - start;
 	DocIterator const dit = makeDocIterator(pit, start);
 	bufferview()->putSelectionAt(dit, range, false);

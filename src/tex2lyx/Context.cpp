@@ -102,8 +102,8 @@ Context::Context(bool need_layout_,
 Context::~Context()
 {
 	if (!extra_stuff.empty())
-		std::cerr << "Bug: Ignoring extra stuff '" << extra_stuff
-			  << '\'' << std::endl;
+		cerr << "Bug: Ignoring extra stuff '" << extra_stuff
+			  << '\'' << endl;
 }
 
 
@@ -204,7 +204,7 @@ void Context::new_paragraph(ostream & os)
 }
 
 
-void Context::add_extra_stuff(std::string const & stuff)
+void Context::add_extra_stuff(string const & stuff)
 {
 	if (!lyx::support::contains(extra_stuff, stuff))
 		extra_stuff += stuff;

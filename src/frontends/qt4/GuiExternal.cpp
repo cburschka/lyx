@@ -199,9 +199,9 @@ GuiExternal::GuiExternal(GuiView & lv)
 	bc().addCheckedLineEdit(ytED, rtLA);
 	bc().addCheckedLineEdit(fileED, fileLA);
 
-	std::vector<string> templates = getTemplates();
+	vector<string> templates = getTemplates();
 
-	for (std::vector<string>::const_iterator cit = templates.begin();
+	for (vector<string>::const_iterator cit = templates.begin();
 		cit != templates.end(); ++cit) {
 		externalCO->addItem(qt_(*cit));
 	}
@@ -286,7 +286,7 @@ void GuiExternal::editClicked()
 
 void GuiExternal::extraChanged(const QString& text)
 {
-	std::string const format = fromqstr(extraFormatCO->currentText());
+	string const format = fromqstr(extraFormatCO->currentText());
 	extra_[format] = text;
 	changed();
 }
@@ -439,7 +439,7 @@ static void setSize(QLineEdit & widthED, QComboBox & widthUnitCO,
 	external::ResizeData const & data)
 {
 	bool using_scale = data.usingScale();
-	std::string scale = data.scale;
+	string scale = data.scale;
 	if (data.no_resize()) {
 		// Everything is zero, so default to this!
 		using_scale = true;

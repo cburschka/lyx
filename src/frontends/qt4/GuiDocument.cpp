@@ -59,11 +59,11 @@ using namespace std;
 
 ///
 template<class Pair>
-std::vector<typename Pair::second_type> const
-getSecond(std::vector<Pair> const & pr)
+vector<typename Pair::second_type> const
+getSecond(vector<Pair> const & pr)
 {
-	 std::vector<typename Pair::second_type> tmp(pr.size());
-	 std::transform(pr.begin(), pr.end(), tmp.begin(),
+	 vector<typename Pair::second_type> tmp(pr.size());
+	 transform(pr.begin(), pr.end(), tmp.begin(),
 					 boost::bind(&Pair::second, _1));
 	 return tmp;
 }
@@ -1294,10 +1294,10 @@ void GuiDocument::apply(BufferParams & params)
     If not found, return 0.
  */
 template<class A>
-static size_t findPos(std::vector<A> const & vec, A const & val)
+static size_t findPos(vector<A> const & vec, A const & val)
 {
-	typename std::vector<A>::const_iterator it =
-		std::find(vec.begin(), vec.end(), val);
+	typename vector<A>::const_iterator it =
+		find(vec.begin(), vec.end(), val);
 	if (it == vec.end())
 		return 0;
 	return distance(vec.begin(), it);

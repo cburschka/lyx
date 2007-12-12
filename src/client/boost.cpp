@@ -19,11 +19,11 @@
 #include <exception>
 #include <ostream>
 
-using std::endl;
+using endl;
 
 namespace boost {
 
-void throw_exception(std::exception const & e)
+void throw_exception(exception const & e)
 {
 	lyx::lyxerr << "Exception caught:\n" << e.what() << endl;
 	BOOST_ASSERT(false);

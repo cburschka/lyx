@@ -28,6 +28,7 @@
 
 #include <boost/bind.hpp>
 
+using namespace std;
 
 namespace lyx {
 
@@ -153,11 +154,11 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		docstring const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
 			msgFont.setSize(FONT_SIZE_TINY);
-			font_width = std::max(font_width,
+			font_width = max(font_width,
 				theFontMetrics(msgFont).width(msg));
 		}
 
-		dim.wid = std::max(50, font_width + 15);
+		dim.wid = max(50, font_width + 15);
 	}
 
 	dim_ = dim;
@@ -193,7 +194,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		// Print the file name.
 		FontInfo msgFont = pi.base.font;
 		msgFont.setFamily(SANS_FAMILY);
-		std::string const justname = params_.filename.onlyFileName();
+		string const justname = params_.filename.onlyFileName();
 
 		if (!justname.empty()) {
 			msgFont.setSize(FONT_SIZE_FOOTNOTE);

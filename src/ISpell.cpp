@@ -184,7 +184,7 @@ int LaunchIspell::generateChild()
 string const to_iconv_encoding(docstring const & s, string const & encoding)
 {
 	if (lyxrc.isp_use_input_encoding) {
-		std::vector<char> const encoded =
+		vector<char> const encoded =
 			ucs4_to_eightbit(s.data(), s.length(), encoding);
 		return string(encoded.begin(), encoded.end());
 	}
@@ -196,7 +196,7 @@ string const to_iconv_encoding(docstring const & s, string const & encoding)
 docstring const from_iconv_encoding(string const & s, string const & encoding)
 {
 	if (lyxrc.isp_use_input_encoding) {
-		std::vector<char_type> const ucs4 =
+		vector<char_type> const ucs4 =
 			eightbit_to_ucs4(s.data(), s.length(), encoding);
 		return docstring(ucs4.begin(), ucs4.end());
 	}

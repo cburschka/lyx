@@ -30,14 +30,14 @@ bool operator==(Author const & l, Author const & r)
 }
 
 
-std::ostream & operator<<(std::ostream & os, Author const & a)
+ostream & operator<<(ostream & os, Author const & a)
 {
 	// FIXME UNICODE
 	os << "\"" << to_utf8(a.name()) << "\" " << to_utf8(a.email());
 	return os;
 }
 
-std::istream & operator>>(std::istream & is, Author & a)
+istream & operator>>(istream & is, Author & a)
 {
 	string s;
 	getline(is, s);

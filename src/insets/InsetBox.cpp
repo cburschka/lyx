@@ -36,7 +36,7 @@ namespace lyx {
 
 namespace {
 
-typedef Translator<std::string, InsetBox::BoxType> BoxTranslator;
+typedef Translator<string, InsetBox::BoxType> BoxTranslator;
 typedef Translator<docstring, InsetBox::BoxType> BoxTranslatorLoc;
 
 BoxTranslator const init_boxtranslator()

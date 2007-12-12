@@ -307,7 +307,7 @@ public:
 	///
 	Parser(Lexer & lex);
 	/// Only use this for reading from .lyx file format, for the reason
-	/// see Parser::tokenize(std::istream &).
+	/// see Parser::tokenize(istream &).
 	Parser(istream & is);
 	///
 	Parser(docstring const & str);
@@ -900,7 +900,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			docstring name;
 			int nargs = 0;
 			int optionals = 0;
-			std::vector<MathData> optionalValues;
+			vector<MathData> optionalValues;
 			if (t.cs() == "def") {
 				// get name
 				name = getToken().cs();

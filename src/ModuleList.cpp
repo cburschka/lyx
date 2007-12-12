@@ -114,7 +114,7 @@ bool ModuleList::load()
 	LYXERR(Debug::TCLASS, "End of parsing of lyxmodules.lst");
 
 	if (!moduleList.empty())
-		std::sort(moduleList.begin(), moduleList.end(), ModuleSorter());
+		sort(moduleList.begin(), moduleList.end(), ModuleSorter());
 	return true;
 }
 

@@ -201,7 +201,7 @@ static string const get_long_path(string const & short_path)
 	// GetLongPathName needs the path in file system encoding.
 	// We can use to_local8bit, since file system encoding and the
 	// local 8 bit encoding are identical on windows.
-	std::vector<char> long_path(MAX_PATH);
+	vector<char> long_path(MAX_PATH);
 	DWORD result = GetLongPathName(to_local8bit(from_utf8(short_path)).c_str(),
 				       &long_path[0], long_path.size());
 

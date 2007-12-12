@@ -28,13 +28,13 @@ string const escape_special_chars(string const & expr)
 }
 
 
-typedef std::map<string, string> InfoMap;
+typedef map<string, string> InfoMap;
 
-// A functor for use with std::find_if, used to ascertain whether a
+// A functor for use with find_if, used to ascertain whether a
 // data entry matches the required regex_
 // This class is unfortunately copied from ../frontend_helpers.cpp, so we should
 // try to make sure to keep the two in sync.
-class RegexMatch : public std::unary_function<string, bool>
+class RegexMatch : public unary_function<string, bool>
 {
 public:
 	// re and icase are used to construct an instance of boost::RegEx.

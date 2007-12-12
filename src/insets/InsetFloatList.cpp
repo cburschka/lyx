@@ -48,7 +48,7 @@ InsetFloatList::InsetFloatList(string const & type)
 }
 
 
-CommandInfo const * InsetFloatList::findInfo(std::string const & /* cmdName */)
+CommandInfo const * InsetFloatList::findInfo(string const & /* cmdName */)
 {
 	static const char * const paramnames[] = {"type", ""};
 	static const bool isoptional[] = {false};
@@ -58,9 +58,9 @@ CommandInfo const * InsetFloatList::findInfo(std::string const & /* cmdName */)
 
 
 //HACK
-bool InsetFloatList::isCompatibleCommand(std::string const & s)
+bool InsetFloatList::isCompatibleCommand(string const & s)
 {
-	std::string str = s.substr(0, 6);
+	string str = s.substr(0, 6);
 	return str == "listof";
 }
 
@@ -76,7 +76,7 @@ docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
 }
 
 
-void InsetFloatList::write(Buffer const &, std::ostream & os) const
+void InsetFloatList::write(Buffer const &, ostream & os) const
 {
 	os << "FloatList " << to_ascii(getParam("type")) << "\n";
 }

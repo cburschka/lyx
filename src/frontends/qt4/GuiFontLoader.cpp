@@ -27,6 +27,7 @@
 #include <QFontInfo>
 #include <QFontDatabase>
 
+using namespace std;
 
 QString const math_fonts[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
 	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
@@ -333,8 +334,8 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 
 bool GuiFontLoader::available(FontInfo const & f)
 {
-	static std::vector<int> cache_set(NUM_FAMILIES, false);
-	static std::vector<int> cache(NUM_FAMILIES, false);
+	static vector<int> cache_set(NUM_FAMILIES, false);
+	static vector<int> cache(NUM_FAMILIES, false);
 
 	FontFamily family = f.family();
 	if (cache_set[family])

@@ -143,12 +143,12 @@ Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 	script_file_ = FileName(onlyPath(to_file_base) + "lyxconvert" +
 		convert<string>(counter++) + ".py");
 
-	std::ofstream fs(script_file_.toFilesystemEncoding().c_str());
+	ofstream fs(script_file_.toFilesystemEncoding().c_str());
 	if (!fs.good()) {
 		lyxerr << "Unable to write the conversion script to \""
 		       << script_file_ << '\n'
 		       << "Please check your directory permissions."
-		       << std::endl;
+		       << endl;
 		return;
 	}
 

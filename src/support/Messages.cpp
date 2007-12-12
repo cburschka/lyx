@@ -155,8 +155,8 @@ docstring const Messages::get(string const & m) const
 #endif
 	}
 
-	std::pair<TranslationCache::iterator, bool> result =
-		cache_.insert(std::make_pair(m, trans));
+	pair<TranslationCache::iterator, bool> result =
+		cache_.insert(make_pair(m, trans));
 
 	BOOST_ASSERT(result.second);
 
@@ -198,12 +198,12 @@ namespace lyx {
 // libstdc++ that is distributed with GNU G++.
 class Messages::Pimpl {
 public:
-	typedef std::messages<char>::catalog catalog;
+	typedef messages<char>::catalog catalog;
 
 	Pimpl(string const & l)
 		: lang_(l),
 		  loc_gl(lang_.c_str()),
-		  mssg_gl(std::use_facet<std::messages<char> >(loc_gl))
+		  mssg_gl(use_facet<messages<char> >(loc_gl))
 	{
 		//LYXERR("Messages: language(" << l << ") in dir(" << dir << ")");
 
@@ -225,9 +225,9 @@ private:
 	///
 	string lang_;
 	///
-	std::locale loc_gl;
+	locale loc_gl;
 	///
-	std::messages<char> const & mssg_gl;
+	messages<char> const & mssg_gl;
 	///
 	catalog cat_gl;
 };

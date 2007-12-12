@@ -283,7 +283,7 @@ TeXOnePar(Buffer const & buf,
 	LayoutPtr style;
 
 	if (runparams_in.verbatim) {
-		int const dist = std::distance(paragraphs.begin(), pit);
+		int const dist = distance(paragraphs.begin(), pit);
 		Font const outerfont = outerFont(dist, paragraphs);
 
 		// No newline if only one paragraph in this lyxtext
@@ -540,7 +540,7 @@ TeXOnePar(Buffer const & buf,
 	}
 
 	Font const outerfont =
-		outerFont(std::distance(paragraphs.begin(), pit),
+		outerFont(distance(paragraphs.begin(), pit),
 			  paragraphs);
 
 	// FIXME UNICODE
@@ -834,7 +834,7 @@ void latexParagraphs(Buffer const & buf,
 			par = TeXOnePar(buf, paragraphs, par, os, texrow,
 					runparams, everypar);
 		}
-		if (std::distance(lastpar, par) >= std::distance(lastpar, endpar))
+		if (distance(lastpar, par) >= distance(lastpar, endpar))
 			break;
 	}
 	// It might be that we only have a title in this document

@@ -180,7 +180,7 @@ void GuiPrint::applyView()
 }
 
 
-bool GuiPrint::initialiseParams(std::string const &)
+bool GuiPrint::initialiseParams(string const &)
 {
 	/// get global printer parameters
 	string const name = support::changeExtension(buffer().absFileName(),

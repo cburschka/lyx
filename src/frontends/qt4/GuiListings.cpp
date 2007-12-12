@@ -433,7 +433,7 @@ void GuiListings::applyView()
 }
 
 
-static string plainParam(std::string const & par)
+static string plainParam(string const & par)
 {
 	// remove enclosing braces
 	if (prefixIs(par, "{") && suffixIs(par, "}"))

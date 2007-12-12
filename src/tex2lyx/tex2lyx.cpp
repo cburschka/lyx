@@ -341,7 +341,7 @@ void easyParse(int & argc, char * argv[])
 	cmdmap["-userdir"] = parse_userdir;
 
 	for (int i = 1; i < argc; ++i) {
-		std::map<string, cmd_helper>::const_iterator it
+		map<string, cmd_helper>::const_iterator it
 			= cmdmap.find(argv[i]);
 
 		// don't complain if not found - may be parsed later
@@ -393,7 +393,7 @@ namespace {
  *  You must ensure that \p parentFilePath is properly set before calling
  *  this function!
  */
-void tex2lyx(std::istream & is, std::ostream & os)
+void tex2lyx(istream & is, ostream & os)
 {
 	Parser p(is);
 	//p.dump();
@@ -424,7 +424,7 @@ void tex2lyx(std::istream & is, std::ostream & os)
 
 
 /// convert TeX from \p infilename to LyX and write it to \p os
-bool tex2lyx(FileName const & infilename, std::ostream & os)
+bool tex2lyx(FileName const & infilename, ostream & os)
 {
 	ifstream is(infilename.toFilesystemEncoding().c_str());
 	if (!is.good()) {
@@ -476,7 +476,7 @@ int main(int argc, char * argv[])
 {
 	using namespace lyx;
 
-	lyxerr.setStream(std::cerr);
+	lyxerr.setStream(cerr);
 
 	easyParse(argc, argv);
 

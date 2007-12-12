@@ -304,7 +304,7 @@ int LyXRC::read(FileName const & filename)
 }
 
 
-int LyXRC::read(std::istream & is)
+int LyXRC::read(istream & is)
 {
 	Lexer lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
@@ -1193,7 +1193,7 @@ void LyXRC::print() const
 
 class SameMover {
 public:
-	typedef std::pair<std::string, SpecialisedMover> Data;
+	typedef pair<string, SpecialisedMover> Data;
 
 	SameMover(Data const & comparison)
 		: comparison_(comparison) {}
@@ -2215,7 +2215,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				   << cit->shortcut() << "\" \""
 				   << cit->viewer() << "\" \""
 				   << cit->editor() << "\" \"";
-				std::vector<string> flags;
+				vector<string> flags;
 				if (cit->documentFormat())
 					flags.push_back("document");
 				if (cit->vectorFormat())
@@ -2281,10 +2281,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 
 		for (; it != end; ++it) {
 			Movers::const_iterator const sysit =
-				std::find_if(sysbegin, sysend, SameMover(*it));
+				find_if(sysbegin, sysend, SameMover(*it));
 			if (sysit == sysend) {
-				std::string const & fmt = it->first;
-				std::string const & command =
+				string const & fmt = it->first;
+				string const & command =
 					it->second.command();
 
 				os << "\\copier " << fmt

@@ -137,7 +137,7 @@ QuotesLangTranslator const & quoteslangtranslator()
 
 
 // Paper size
-typedef Translator<std::string, PAPER_SIZE> PaperSizeTranslator;
+typedef Translator<string, PAPER_SIZE> PaperSizeTranslator;
 
 
 PaperSizeTranslator const init_papersizetranslator()
@@ -1348,7 +1348,7 @@ void BufferParams::makeTextClass()
 }
 
 
-std::vector<string> const & BufferParams::getModules() const {
+vector<string> const & BufferParams::getModules() const {
 	return layoutModules_;
 }
 
@@ -1370,11 +1370,11 @@ bool BufferParams::addLayoutModule(string modName, bool makeClass) {
 }
 
 
-bool BufferParams::addLayoutModules(std::vector<string>modNames)
+bool BufferParams::addLayoutModules(vector<string>modNames)
 {
 	bool retval = true;
-	std::vector<string>::const_iterator it = modNames.begin();
-	std::vector<string>::const_iterator end = modNames.end();
+	vector<string>::const_iterator it = modNames.begin();
+	vector<string>::const_iterator end = modNames.end();
 	for (; it != end; ++it)
 		retval &= addLayoutModule(*it, false);
 	makeTextClass();
@@ -1590,7 +1590,7 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 
 		// Create a list with all the input encodings used
 		// in the document
-		std::set<string> encodings =
+		set<string> encodings =
 			features.getEncodingSet(doc_encoding);
 
 		// When the encodings EUC-JP-plain, JIS-plain, or SJIS-plainare used, the
@@ -1602,8 +1602,8 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 
 		if (!encodings.empty() || package == Encoding::inputenc) {
 			os << "\\usepackage[";
-			std::set<string>::const_iterator it = encodings.begin();
-			std::set<string>::const_iterator const end = encodings.end();
+			set<string>::const_iterator it = encodings.begin();
+			set<string>::const_iterator const end = encodings.end();
 			if (it != end) {
 				os << from_ascii(*it);
 				++it;

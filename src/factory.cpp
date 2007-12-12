@@ -185,7 +185,7 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_TABULAR_INSERT: {
 			if (cmd.argument().empty())
 				return 0;
-			std::istringstream ss(to_utf8(cmd.argument()));
+			istringstream ss(to_utf8(cmd.argument()));
 			int r = 0, c = 0;
 			ss >> r >> c;
 			if (r <= 0)
@@ -323,7 +323,7 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 			
 			default:
 				lyxerr << "Inset '" << name << "' not permitted with LFUN_INSET_INSERT."
-						<< std::endl;
+						<< endl;
 				return 0;
 			
 			}
@@ -450,7 +450,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			case NO_CODE:
 			default:
 				lyxerr << "unknown CommandInset '" << insetType
-							<< "'" << std::endl;
+							<< "'" << endl;
 				while (lex.isOK() && lex.getString() != "\\end_inset")
 					lex.next();
 				return 0;
@@ -527,7 +527,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 			inset.reset(new InsetInfo(buf.params()));
 		} else {
 			lyxerr << "unknown Inset type '" << tmptok
-			       << "'" << std::endl;
+			       << "'" << endl;
 			while (lex.isOK() && lex.getString() != "\\end_inset")
 				lex.next();
 			return 0;

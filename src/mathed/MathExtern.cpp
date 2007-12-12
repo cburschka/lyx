@@ -353,7 +353,7 @@ void splitScripts(MathData & ar)
 
 		// create extra script inset and move superscript over
 		InsetMathScript * p = ar[i].nucleus()->asScriptInset();
-		std::auto_ptr<InsetMathScript> q(new InsetMathScript(true));
+		auto_ptr<InsetMathScript> q(new InsetMathScript(true));
 		swap(q->up(), p->up());
 		p->removeScript(true);
 
@@ -555,7 +555,7 @@ void extractFunctions(MathData & ar)
 		extractScript(exp, jt, ar.end(), true);
 
 		// create a proper inset as replacement
-		std::auto_ptr<InsetMathExFunc> p(new InsetMathExFunc(name));
+		auto_ptr<InsetMathExFunc> p(new InsetMathExFunc(name));
 
 		// jt points to the "argument". Get hold of this.
 		MathData::iterator st = extractArgument(p->cell(0), jt, ar.end(), true);
@@ -807,7 +807,7 @@ void extractDiff(MathData & ar)
 		}
 
 		// create a proper diff inset
-		std::auto_ptr<InsetMathDiff> diff(new InsetMathDiff);
+		auto_ptr<InsetMathDiff> diff(new InsetMathDiff);
 
 		// collect function, let jt point behind last used item
 		MathData::iterator jt = it + 1;
@@ -1016,7 +1016,7 @@ void mathmlize(MathData const & dat, MathStream & os)
 
 namespace {
 
-	std::string captureOutput(std::string const & cmd, std::string const & data)
+	string captureOutput(string const & cmd, string const & data)
 	{
 		// In order to avoid parsing problems with command interpreters
 		// we pass input data through a file
@@ -1024,12 +1024,12 @@ namespace {
 		if (cas_tmpfile.empty()) {
 			lyxerr << "Warning: cannot create temporary file."
 			       << endl;
-			return std::string();
+			return string();
 		}
-		std::ofstream os(cas_tmpfile.toFilesystemEncoding().c_str());
+		ofstream os(cas_tmpfile.toFilesystemEncoding().c_str());
 		os << data << endl;
 		os.close();
-		std::string command =  cmd + " < "
+		string command =  cmd + " < "
 			+ quoteName(cas_tmpfile.toFilesystemEncoding());
 		lyxerr << "calling: " << cmd
 		       << "\ninput: '" << data << "'" << endl;
@@ -1038,7 +1038,7 @@ namespace {
 		return ret.second;
 	}
 
-	size_t get_matching_brace(std::string const & str, size_t i)
+	size_t get_matching_brace(string const & str, size_t i)
 	{
 		int count = 1;
 		size_t n = str.size();
@@ -1056,7 +1056,7 @@ namespace {
 		return npos;
 	}
 
-	size_t get_matching_brace_back(std::string const & str, size_t i)
+	size_t get_matching_brace_back(string const & str, size_t i)
 	{
 		int count = 1;
 		while (i > 0) {
@@ -1081,7 +1081,7 @@ namespace {
 		docstring expr = os.str();
 		docstring const header = from_ascii("simpsum:true;");
 
-		std::string out;
+		string out;
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			// try to fix missing '*' the hard way
 			//
@@ -1101,7 +1101,7 @@ namespace {
 
 			// search line with "Incorrect syntax"
 			istringstream is(out);
-			std::string line;
+			string line;
 			while (is) {
 				getline(is, line);
 				if (line.find("Incorrect syntax") != npos)
@@ -1121,11 +1121,11 @@ namespace {
 			expr.insert(pos, from_ascii("*"));
 		}
 
-		vector<std::string> tmp = getVectorFromString(out, "$$");
+		vector<string> tmp = getVectorFromString(out, "$$");
 		if (tmp.size() < 2)
 			return MathData();
 
-		out = subst(tmp[1], "\\>", std::string());
+		out = subst(tmp[1], "\\>", string());
 		lyxerr << "output: '" << out << "'" << endl;
 
 		// Ugly code that tries to make the result prettier
@@ -1135,7 +1135,7 @@ namespace {
 			size_t k = get_matching_brace(out, j + 1);
 			k = get_matching_brace(out, k + 1);
 			k = get_matching_brace(out, k + 1);
-			std::string mid = out.substr(i + 13, j - i - 13);
+			string mid = out.substr(i + 13, j - i - 13);
 			if (mid.find("\\over") != npos)
 				mid = '{' + mid + '}';
 			out = out.substr(0,i)
@@ -1170,7 +1170,7 @@ namespace {
 
 	MathData pipeThroughMaple(docstring const & extra, MathData const & ar)
 	{
-		std::string header = "readlib(latex):\n";
+		string header = "readlib(latex):\n";
 
 		// remove the \\it for variable names
 		//"#`latex/csname_font` := `\\it `:"
@@ -1198,11 +1198,11 @@ namespace {
 		//"#`latex/latex/symbol` "
 		//	" := subs((\\'_\\' = \\'`\\_`\\',eval(`latex/latex/symbol`)): ";
 
-		std::string trailer = "quit;";
+		string trailer = "quit;";
 		odocstringstream os;
 		MapleStream ms(os);
 		ms << ar;
-		std::string expr = to_utf8(os.str());
+		string expr = to_utf8(os.str());
 		lyxerr << "ar: '" << ar << "'\n"
 		       << "ms: '" << expr << "'" << endl;
 

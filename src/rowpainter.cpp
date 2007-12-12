@@ -125,15 +125,15 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	if (dim.wid != dim2.wid)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
 		       << " draw width " << dim.width()
-		       << "> metrics width " << dim2.wid << "." << std::endl;
+		       << "> metrics width " << dim2.wid << "." << endl;
 	if (dim->asc != dim2.asc)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
 		       << " draw ascent " << dim.ascent()
-		       << "> metrics ascent " << dim2.asc << "." << std::endl;
+		       << "> metrics ascent " << dim2.asc << "." << endl;
 	if (dim2.descent() != dim.des)
 		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
 		       << " draw ascent " << dim.descent()
-		       << "> metrics descent " << dim2.des << "." << std::endl;
+		       << "> metrics descent " << dim2.des << "." << endl;
 	BOOST_ASSERT(dim2.wid == dim.wid);
 	BOOST_ASSERT(dim2.asc == dim.asc);
 	BOOST_ASSERT(dim2.des == dim.des);
@@ -222,7 +222,7 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	Change::Type const prev_change = par_.lookupChange(pos).type;
 
 	// first character
-	std::vector<char_type> str;
+	vector<char_type> str;
 	str.reserve(100);
 	str.push_back(par_.getChar(pos));
 
@@ -329,7 +329,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 	char_type const c = par_.getChar(pos);
 
 	// special case languages
-	std::string const & lang = orig_font.language()->lang();
+	string const & lang = orig_font.language()->lang();
 	bool const hebrew = lang == "hebrew";
 	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi" || 
 						lang == "farsi";
@@ -487,7 +487,7 @@ void RowPainter::paintFirst()
 
 	bool const is_rtl = text_.isRTL(buffer, par_);
 	bool const is_seq = isFirstInSequence(pit_, text_.paragraphs());
-	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << std::endl;
+	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << endl;
 
 	// should we print a label?
 	if (layout->labeltype >= LABEL_STATIC

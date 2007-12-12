@@ -20,6 +20,7 @@
 #include <QPushButton>
 #include <QCloseEvent>
 
+using namespace std;
 
 namespace lyx {
 namespace frontend {
@@ -72,7 +73,7 @@ void GuiERT::updateContents()
 }
 
 
-bool GuiERT::initialiseParams(std::string const & data)
+bool GuiERT::initialiseParams(string const & data)
 {
 	InsetERTMailer::string2params(data, status_);
 	return true;

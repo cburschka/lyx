@@ -15,6 +15,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 namespace lyx {
 namespace frontend {
 
@@ -203,7 +205,7 @@ void ButtonPolicy::nextState(SMInput input)
 		       << printInput(input)
 		       << " from state "
 		       << printState(state_)
-		       << std::endl;
+		       << endl;
 	}
 }
 
@@ -566,13 +568,13 @@ void ButtonPolicy::initNoRepeatedApply()
 }
 
 
-std::ostream & operator<<(std::ostream & os, ButtonPolicy::State st)
+ostream & operator<<(ostream & os, ButtonPolicy::State st)
 {
 	return os << int(st);
 }
 
 
-std::ostream & operator<<(std::ostream & os, ButtonPolicy::SMInput smi)
+ostream & operator<<(ostream & os, ButtonPolicy::SMInput smi)
 {
 	return os << int(smi);
 }

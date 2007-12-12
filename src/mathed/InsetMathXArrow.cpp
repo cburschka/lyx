@@ -18,6 +18,7 @@
 
 #include "LaTeXFeatures.h"
 
+using namespace std;
 
 namespace lyx {
 
@@ -40,7 +41,7 @@ void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(0).metrics(mi, dim0);
 	Dimension dim1;
 	cell(1).metrics(mi, dim1);
-	dim.wid = std::max(dim0.width(), dim1.width()) + 10;
+	dim.wid = max(dim0.width(), dim1.width()) + 10;
 	dim.asc = dim0.height() + 10;
 	dim.des = dim1.height();
 	metricsMarkers(dim);

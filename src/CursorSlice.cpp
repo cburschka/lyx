@@ -29,6 +29,7 @@
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -205,7 +206,7 @@ bool operator<=(CursorSlice const & p, CursorSlice const & q)
 }
 
 
-std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
+ostream & operator<<(ostream & os, CursorSlice const & item)
 {
 	return os
 	   << "inset: " << (void *)&item.inset()
