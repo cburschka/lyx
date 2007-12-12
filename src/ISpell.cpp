@@ -43,8 +43,8 @@ namespace lyx {
 
 namespace {
 
-class LaunchIspell : public support::ForkedProcess {
-	typedef support::ForkedProcess ForkedProcess;
+class LaunchIspell : public ForkedProcess
+{
 public:
 	///
 	LaunchIspell(BufferParams const & p, string const & l,

@@ -300,7 +300,7 @@ docstring const romanCounter(int const n)
 
 docstring const lowerromanCounter(int const n)
 {
-	return support::lowercase(romanCounter(n));
+	return lowercase(romanCounter(n));
 }
 
 } // namespace anon

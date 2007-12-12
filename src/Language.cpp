@@ -24,6 +24,7 @@
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -37,7 +38,7 @@ Language latex_lang("latex", "", "Latex", false, "", 0, "latex", "");
 Language const * latex_language = &latex_lang;
 
 
-void Languages::read(support::FileName const & filename)
+void Languages::read(FileName const & filename)
 {
 	// We need to set the encoding of latex_lang
 	latex_lang = Language("latex", "", "Latex", false, "iso8859-1",
