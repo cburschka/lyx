@@ -596,8 +596,8 @@ protected:
 			for (; iit != eit; ++iit) {
 				s += *iit;
 				++n;
-				bool true_ok = prefixIs(truename, s);
-				bool false_ok = prefixIs(falsename, s);
+				bool true_ok = support::prefixIs(truename, s);
+				bool false_ok = support::prefixIs(falsename, s);
 				if (!true_ok && !false_ok) {
 					++iit;
 					ok = false;
