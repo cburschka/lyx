@@ -698,7 +698,7 @@ vector<docstring> GuiCitation::searchKeys(
 	} catch (boost::regex_error & e) {
 		// boost::regex throws an exception if the regular expression is not
 		// valid.
-		LYXERR0(Debug::GUI, e.what());
+		LYXERR(Debug::GUI, e.what());
 		return vector<docstring>();
 	}
 
