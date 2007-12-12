@@ -18,6 +18,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -206,7 +207,7 @@ void Context::new_paragraph(ostream & os)
 
 void Context::add_extra_stuff(string const & stuff)
 {
-	if (!lyx::support::contains(extra_stuff, stuff))
+	if (!contains(extra_stuff, stuff))
 		extra_stuff += stuff;
 }
 

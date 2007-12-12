@@ -1105,7 +1105,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring str = p["name"];
 			cur.recordUndoInset();
 			row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-			str = support::trim(str);
+			str = trim(str);
 			if (!str.empty())
 				numbered(r, true);
 			docstring old = label(r);

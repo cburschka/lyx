@@ -1253,7 +1253,7 @@ int Buffer::runChktex()
 	string const name = addName(path.absFilename(), latexName());
 	string const org_path = filePath();
 
-	support::PathChanger p(path); // path to LaTeX file
+	PathChanger p(path); // path to LaTeX file
 	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary
@@ -1942,7 +1942,7 @@ void Buffer::setGuiDelegate(frontend::GuiBufferDelegate * gui)
 
 namespace {
 
-class AutoSaveBuffer : public support::ForkedProcess {
+class AutoSaveBuffer : public ForkedProcess {
 public:
 	///
 	AutoSaveBuffer(Buffer const & buffer, FileName const & fname)
@@ -2149,7 +2149,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		if (!makeLaTeXFile(FileName(filename), string(), runparams))
 			return false;
 	} else if (!lyxrc.tex_allows_spaces
-		   && support::contains(filePath(), ' ')) {
+		   && contains(filePath(), ' ')) {
 		Alert::error(_("File name error"),
 			   _("The directory path to the document cannot contain spaces."));
 		return false;

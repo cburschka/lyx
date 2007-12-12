@@ -84,7 +84,7 @@ public:
 bool TextClassList::read()
 {
 	Lexer lex(0, 0);
-	support::FileName const real_file = libFileSearch("", "textclass.lst");
+	FileName const real_file = libFileSearch("", "textclass.lst");
 	LYXERR(Debug::TCLASS, "Reading textclasses from `" << real_file << '\'');
 
 	if (real_file.empty()) {

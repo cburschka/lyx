@@ -65,11 +65,11 @@ namespace external {
 
 TempName::TempName()
 {
-	support::FileName const tempname(support::tempName(support::FileName(), "lyxext"));
+	FileName const tempname(tempName(FileName(), "lyxext"));
 	// FIXME: This is unsafe
 	tempname.removeFile();
 	// must have an extension for the converter code to work correctly.
-	tempname_ = support::FileName(tempname.absFilename() + ".tmp");
+	tempname_ = FileName(tempname.absFilename() + ".tmp");
 }
 
 
@@ -224,7 +224,6 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 	}
 
 	if (!resizedata.no_resize()) {
-		using support::float_equal;
 		double const scl = convert<double>(resizedata.scale);
 		if (!float_equal(scl, 0.0, 0.05)) {
 			if (!float_equal(scl, 100.0, 0.05))
@@ -587,7 +586,7 @@ docstring const getScreenLabel(InsetExternalParams const & params,
 		external::getTemplatePtr(params);
 	if (!ptr)
 		// FIXME UNICODE
-		return support::bformat((_("External template %1$s is not installed")),
+		return bformat((_("External template %1$s is not installed")),
 					from_utf8(params.templatename()));
 	// FIXME UNICODE
 	docstring gui = _(ptr->guiName);

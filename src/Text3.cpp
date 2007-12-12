@@ -191,7 +191,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 
 	cur.recordUndo();
 	if (cmd.action == LFUN_INDEX_INSERT) {
-		docstring ds = support::subst(text->getStringToIndex(cur), '\n', ' ');
+		docstring ds = subst(text->getStringToIndex(cur), '\n', ' ');
 		text->insertInset(cur, inset);
 		if (edit)
 			inset->edit(cur, true);
@@ -1028,8 +1028,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.argument().empty())
 			break;
 		docstring hexstring = cmd.argument();
-		if (lyx::support::isHex(hexstring)) {
-			char_type c = lyx::support::hexToInt(hexstring);
+		if (isHex(hexstring)) {
+			char_type c = hexToInt(hexstring);
 			if (c >= 32 && c < 0x10ffff) {
 				lyxerr << "Inserting c: " << c << endl;
 				docstring s = docstring(1, c);

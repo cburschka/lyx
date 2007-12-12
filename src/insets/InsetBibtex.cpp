@@ -81,8 +81,8 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.noUpdate();
 				break;
 			}
-		} catch (support::ExceptionMessage const & message) {
-			if (message.type_ == support::WarningException) {
+		} catch (ExceptionMessage const & message) {
+			if (message.type_ == WarningException) {
 				Alert::warning(message.title_, message.details_);
 				cur.noUpdate();
 			} else 
@@ -309,7 +309,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 FileNameList const InsetBibtex::getFiles(Buffer const & buffer) const
 {
 	FileName path(buffer.filePath());
-	support::PathChanger p(path);
+	PathChanger p(path);
 
 	FileNameList vec;
 

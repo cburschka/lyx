@@ -60,6 +60,7 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -922,7 +923,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_DELIM: {
 		docstring ls;
-		docstring rs = support::split(cmd.argument(), ls, ' ');
+		docstring rs = split(cmd.argument(), ls, ' ');
 		// Reasonable default values
 		if (ls.empty())
 			ls = '(';

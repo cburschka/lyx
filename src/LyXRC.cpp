@@ -1061,7 +1061,7 @@ int LyXRC::read(Lexer & lexrc)
 			int flgs = Format::none;
 			while (!flags.empty()) {
 				string flag;
-				flags = support::split(flags, flag, ',');
+				flags = split(flags, flag, ',');
 				if (flag == "document")
 					flgs |= Format::document;
 				else if (flag == "vector")
@@ -2220,7 +2220,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 					flags.push_back("document");
 				if (cit->vectorFormat())
 					flags.push_back("vector");
-				os << support::getStringFromVector(flags);
+				os << getStringFromVector(flags);
 				os << "\"\n";
 			}
 		}

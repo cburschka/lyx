@@ -46,7 +46,7 @@ public:
 //Much of this is borrowed from TextClassList::read()
 bool ModuleList::load()
 {
-	support::FileName const real_file = libFileSearch("", "lyxmodules.lst");
+	FileName const real_file = libFileSearch("", "lyxmodules.lst");
 	LYXERR(Debug::TCLASS, "Reading modules from `" << real_file << '\'');
 
 	if (real_file.empty()) {
@@ -102,7 +102,7 @@ bool ModuleList::load()
 			vector<string> pkgs;
 			while (!packages.empty()) {
 				string p;
-				packages = support::split(packages, p, ',');
+				packages = split(packages, p, ',');
 				pkgs.push_back(p);
 			}
 			// This code is run when we have

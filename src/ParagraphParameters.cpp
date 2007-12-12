@@ -229,7 +229,7 @@ void ParagraphParameters::read(Lexer & lex, bool merge)
 			}
 		} else if (token == "\\align") {
 			lex.next();
-			int tmpret = support::findToken(string_align, lex.getString());
+			int tmpret = findToken(string_align, lex.getString());
 			if (tmpret == -1)
 				++tmpret;
 			align(LyXAlignment(1 << tmpret));

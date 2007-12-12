@@ -32,6 +32,7 @@
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -95,7 +96,7 @@ void InsetBibitem::read(Buffer const & buf, Lexer & lex)
 {
 	InsetCommand::read(buf, lex);
 
-	if (support::prefixIs(getParam("key"), key_prefix)) {
+	if (prefixIs(getParam("key"), key_prefix)) {
 		int const key = convert<int>(getParam("key").substr(key_prefix.length()));
 		key_counter = max(key_counter, key);
 	}

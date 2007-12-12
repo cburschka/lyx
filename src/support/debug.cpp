@@ -172,7 +172,7 @@ LyXErr & operator<<(LyXErr & l, string const & t)
 { if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, docstring const & t)
 { if (l.enabled()) l.stream() << to_utf8(t); return l; }
-LyXErr & operator<<(LyXErr & l, support::FileName const & t)
+LyXErr & operator<<(LyXErr & l, FileName const & t)
 { if (l.enabled()) l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, ostream &(*t)(ostream &))
 { if (l.enabled()) l.stream() << t; return l; }

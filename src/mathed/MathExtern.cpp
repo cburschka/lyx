@@ -1427,7 +1427,7 @@ MathData pipeThroughExtern(string const & lang, docstring const & extra,
 	string data = to_utf8(os.str());
 
 	// search external script
-	support::FileName const file = libFileSearch("mathed", "extern_" + lang);
+	FileName const file = libFileSearch("mathed", "extern_" + lang);
 	if (file.empty()) {
 		lyxerr << "converter to '" << lang << "' not found" << endl;
 		return MathData();

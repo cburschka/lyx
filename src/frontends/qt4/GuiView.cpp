@@ -451,7 +451,7 @@ void GuiView::dropEvent(QDropEvent* event)
 
 	LYXERR(Debug::GUI, "GuiView::dropEvent: got URLs!");
 	for (int i = 0; i != files.size(); ++i) {
-		string const file = support::os::internal_path(fromqstr(
+		string const file = os::internal_path(fromqstr(
 			files.at(i).toLocalFile()));
 		if (!file.empty())
 			lyx::dispatch(FuncRequest(LFUN_FILE_OPEN, file));
@@ -1176,10 +1176,10 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		dlg.setButton1(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
 		dlg.setButton2(_("Templates|#T#t"), from_utf8(lyxrc.template_path));
 
-		if (!support::isLyXFilename(fname.absFilename()))
+		if (!isLyXFilename(fname.absFilename()))
 			fname.changeExtension(".lyx");
 
-		support::FileFilterList const filter(_("LyX Documents (*.lyx)"));
+		FileFilterList const filter(_("LyX Documents (*.lyx)"));
 
 		FileDialog::Result result =
 			dlg.save(from_utf8(fname.onlyPath().absFilename()),
@@ -1194,7 +1194,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		if (fname.empty())
 			return false;
 
-		if (!support::isLyXFilename(fname.absFilename()))
+		if (!isLyXFilename(fname.absFilename()))
 			fname.changeExtension(".lyx");
 	}
 

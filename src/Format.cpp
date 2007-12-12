@@ -129,7 +129,7 @@ string Formats::getFormatFromFile(FileName const & filename) const
 		return format;
 
 	// try to find a format from the file extension.
-	string const ext = support::getExtension(filename.absFilename());
+	string const ext = getExtension(filename.absFilename());
 	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing

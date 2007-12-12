@@ -63,7 +63,7 @@ public:
 	///
 	void popTable();
 	///
-	bool setFile(support::FileName const & filename);
+	bool setFile(FileName const & filename);
 	///
 	void setStream(istream & i);
 	///
@@ -669,7 +669,7 @@ void Lexer::printError(string const & message) const
 }
 
 
-bool Lexer::setFile(support::FileName const & filename)
+bool Lexer::setFile(FileName const & filename)
 {
 	return pimpl_->setFile(filename);
 }

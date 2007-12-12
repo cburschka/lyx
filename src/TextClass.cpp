@@ -69,15 +69,15 @@ bool layout2layout(FileName const & filename, FileName const & tempfile)
 	}
 
 	ostringstream command;
-	command << support::os::python() << ' ' << quoteName(script.toFilesystemEncoding())
+	command << os::python() << ' ' << quoteName(script.toFilesystemEncoding())
 		<< ' ' << quoteName(filename.toFilesystemEncoding())
 		<< ' ' << quoteName(tempfile.toFilesystemEncoding());
 	string const command_str = command.str();
 
 	LYXERR(Debug::TCLASS, "Running `" << command_str << '\'');
 
-	support::cmd_ret const ret =
-		support::runCommand(command_str);
+	cmd_ret const ret =
+		runCommand(command_str);
 	if (ret.first != 0) {
 		lyxerr << "Could not run layout conversion "
 			  "script layout2layout.py." << endl;
@@ -433,7 +433,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	if (format != FORMAT) {
 		LYXERR(Debug::TCLASS, "Converting layout file from format "
 				      << format << " to " << FORMAT);
-		FileName const tempfile(support::tempName());
+		FileName const tempfile(tempName());
 		error = !layout2layout(filename, tempfile);
 		if (!error)
 			error = read(tempfile, rt);

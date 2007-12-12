@@ -452,7 +452,7 @@ void GuiWorkArea::toggleCursor()
 	// Use this opportunity to deal with any child processes that
 	// have finished but are waiting to communicate this fact
 	// to the rest of LyX.
-	support::ForkedCallsController::handleCompletedProcesses();
+	ForkedCallsController::handleCompletedProcesses();
 }
 
 

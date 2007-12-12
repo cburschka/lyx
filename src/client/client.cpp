@@ -248,7 +248,7 @@ private:
 
 LyXDataSocket::LyXDataSocket(FileName const & address)
 {
-	if ((fd_ = support::socktools::connect(address)) == -1) {
+	if ((fd_ = socktools::connect(address)) == -1) {
 		connected_ = false;
 	} else {
 		connected_ = true;
@@ -421,7 +421,7 @@ int h(vector<docstring> const &)
 
 
 docstring clientName =
-	from_ascii(support::itoa(::getppid()) + ">" + support::itoa(::getpid()));
+	from_ascii(itoa(::getppid()) + ">" + itoa(::getpid()));
 
 int n(vector<docstring> const & arg)
 {
@@ -553,7 +553,7 @@ int main(int argc, char * argv[])
 	} else {
 		// We have to look for an address.
 		// serverPid can be empty.
-		vector<fs::path> addrs = support::lyxSockets(to_filesystem8bit(cmdline::mainTmp), cmdline::serverPid);
+		vector<fs::path> addrs = lyxSockets(to_filesystem8bit(cmdline::mainTmp), cmdline::serverPid);
 		vector<fs::path>::const_iterator addr = addrs.begin();
 		vector<fs::path>::const_iterator end = addrs.end();
 		for (; addr != end; ++addr) {

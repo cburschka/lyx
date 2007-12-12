@@ -248,7 +248,7 @@ bool splitLatexLength(string const & len, string & value, string & unit)
 	if (contains(len, '\\'))
 		unit = trim(string(len, i));
 	else
-		unit = support::ascii_lowercase(trim(string(len, i)));
+		unit = ascii_lowercase(trim(string(len, i)));
 	return true;
 }
 
@@ -1029,7 +1029,7 @@ string const normalize_filename(string const & name)
 /// convention (relative to .lyx file) if it is relative
 void fix_relative_filename(string & name)
 {
-	if (lyx::support::absolutePath(name))
+	if (absolutePath(name))
 		return;
 	// FIXME UNICODE encoding of name may be wrong (makeAbsPath expects
 	// utf8)

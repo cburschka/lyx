@@ -317,7 +317,7 @@ string const sanitizeLatexOption(string const & input)
 	output = what.str(1);
 
 	// Remove any surrounding whitespace
-	output = support::trim(output);
+	output = trim(output);
 
 	// If the thing is empty, leave it so, else wrap it in square brackets.
 	return output.empty() ? output : "[" + output + "]";

@@ -110,7 +110,7 @@ void reconfigureUserLyXDir()
 	string const configure_command = package().configure_command();
 
 	lyxerr << to_utf8(_("LyX: reconfiguring user directory")) << endl;
-	support::PathChanger p(package().user_support());
+	PathChanger p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
 	lyxerr << "LyX: " << to_utf8(_("Done!")) << endl;
@@ -351,14 +351,14 @@ int LyX::exec(int & argc, char * argv[])
 	easyParse(argc, argv);
 
 	try {
-		support::init_package(to_utf8(from_local8bit(argv[0])),
+		init_package(to_utf8(from_local8bit(argv[0])),
 			      cl_system_support, cl_user_support,
-			      support::top_build_dir_is_one_level_up);
-	} catch (support::ExceptionMessage const & message) {
-		if (message.type_ == support::ErrorException) {
+			      top_build_dir_is_one_level_up);
+	} catch (ExceptionMessage const & message) {
+		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);
 			exit(1);
-		} else if (message.type_ == support::WarningException) {
+		} else if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
 		}
 	}
@@ -510,7 +510,7 @@ int LyX::init(int & argc, char * argv[])
 		// the filename if necessary
 		pimpl_->files_to_load_.push_back(fileSearch(string(),
 			os::internal_path(to_utf8(from_local8bit(argv[argi]))),
-			"lyx", support::allow_unreadable));
+			"lyx", allow_unreadable));
 	}
 
 	if (first_start)

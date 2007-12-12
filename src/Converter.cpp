@@ -287,7 +287,7 @@ bool Converters::convert(Buffer const * buffer,
 				formats.extension(from_format);
 			string const to_ext = formats.extension(to_format);
 			string const command =
-				support::os::python() + ' ' +
+				os::python() + ' ' +
 				quoteName(libFileSearch("scripts", "convertDefault.py").toFilesystemEncoding()) +
 				' ' +
 				quoteName(from_ext + ':' + from_file.toFilesystemEncoding()) +
@@ -325,7 +325,7 @@ bool Converters::convert(Buffer const * buffer,
 	string const path(onlyPath(from_file.absFilename()));
 	// Prevent the compiler from optimizing away p
 	FileName pp(path);
-	support::PathChanger p(pp);
+	PathChanger p(pp);
 
 	// empty the error list before any new conversion takes place.
 	errorList.clear();

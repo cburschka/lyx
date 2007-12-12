@@ -26,35 +26,35 @@ using namespace lyx::support;
 namespace lyx {
 
 
-bool Mover::copy(support::FileName const & from, support::FileName const & to,
+bool Mover::copy(FileName const & from, FileName const & to,
 		 unsigned long int mode) const
 {
 	return do_copy(from, to, to.absFilename(), mode);
 }
 
 
-bool Mover::do_copy(support::FileName const & from, support::FileName const & to,
+bool Mover::do_copy(FileName const & from, FileName const & to,
 		    string const &, unsigned long int mode) const
 {
-	return support::copy(from, to, mode);
+	return copy(from, to, mode);
 }
 
 
-bool Mover::rename(support::FileName const & from,
-		   support::FileName const & to) const
+bool Mover::rename(FileName const & from,
+		   FileName const & to) const
 {
 	return do_rename(from, to, to.absFilename());
 }
 
 
-bool Mover::do_rename(support::FileName const & from, support::FileName const & to,
+bool Mover::do_rename(FileName const & from, FileName const & to,
 		      string const &) const
 {
-	return support::rename(from, to);
+	return rename(from, to);
 }
 
 
-bool SpecialisedMover::do_copy(support::FileName const & from, support::FileName const & to,
+bool SpecialisedMover::do_copy(FileName const & from, FileName const & to,
 			       string const & latex, unsigned long int mode) const
 {
 	if (command_.empty())
@@ -65,21 +65,21 @@ bool SpecialisedMover::do_copy(support::FileName const & from, support::FileName
 		if (!ofs)
 			return false;
 		ofs.close();
-		if (!support::chmod(to, mode))
+		if (!chmod(to, mode))
 			return false;
 	}
 
-	string command = support::libScriptSearch(command_);
-	command = support::subst(command, "$$i", quoteName(from.toFilesystemEncoding()));
-	command = support::subst(command, "$$o", quoteName(to.toFilesystemEncoding()));
-	command = support::subst(command, "$$l", quoteName(latex));
+	string command = libScriptSearch(command_);
+	command = subst(command, "$$i", quoteName(from.toFilesystemEncoding()));
+	command = subst(command, "$$o", quoteName(to.toFilesystemEncoding()));
+	command = subst(command, "$$l", quoteName(latex));
 
-	support::Systemcall one;
-	return one.startscript(support::Systemcall::Wait, command) == 0;
+	Systemcall one;
+	return one.startscript(Systemcall::Wait, command) == 0;
 }
 
 
-bool SpecialisedMover::do_rename(support::FileName const & from, support::FileName const & to,
+bool SpecialisedMover::do_rename(FileName const & from, FileName const & to,
 				 string const & latex) const
 {
 	if (command_.empty())

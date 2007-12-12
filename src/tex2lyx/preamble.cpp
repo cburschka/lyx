@@ -649,7 +649,7 @@ TextClass const parse_preamble(Parser & p, ostream & os, string const & forcecla
 	// Force textclass if the user wanted it
 	if (!forceclass.empty())
 		h_textclass = forceclass;
-	if (noweb_mode && !lyx::support::prefixIs(h_textclass, "literate-"))
+	if (noweb_mode && !prefixIs(h_textclass, "literate-"))
 		h_textclass.insert(0, "literate-");
 	FileName layoutfilename = libFileSearch("layouts", h_textclass, "layout");
 	if (layoutfilename.empty()) {

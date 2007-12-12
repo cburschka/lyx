@@ -596,8 +596,8 @@ protected:
 			for (; iit != eit; ++iit) {
 				s += *iit;
 				++n;
-				bool true_ok = lyx::support::prefixIs(truename, s);
-				bool false_ok = lyx::support::prefixIs(falsename, s);
+				bool true_ok = prefixIs(truename, s);
+				bool false_ok = prefixIs(falsename, s);
 				if (!true_ok && !false_ok) {
 					++iit;
 					ok = false;

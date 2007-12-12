@@ -41,6 +41,7 @@
 #include <vector>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -682,7 +683,7 @@ vector<docstring> GuiCitation::searchKeys(
 {
 	vector<docstring> foundKeys;
 
-	docstring expr = support::trim(search_expression);
+	docstring expr = trim(search_expression);
 	if (expr.empty())
 		return foundKeys;
 

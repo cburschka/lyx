@@ -185,7 +185,7 @@ void reconfigure(LyXView & lv, string const & option)
 	lv.message(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	support::PathChanger p(package().user_support());
+	PathChanger p(package().user_support());
 	string configure_command = package().configure_command();
 	configure_command += option;
 	Systemcall one;
@@ -193,7 +193,7 @@ void reconfigure(LyXView & lv, string const & option)
 	p.pop();
 	// emit message signal.
 	lv.message(_("Reloading configuration..."));
-	lyxrc.read(support::libFileSearch(string(), "lyxrc.defaults"));
+	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();
 
@@ -1011,7 +1011,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			string const path = buffer->temppath();
 			// Prevent the compiler from optimizing away p
 			FileName pp(path);
-			support::PathChanger p(pp);
+			PathChanger p(pp);
 
 			// there are three cases here:
 			// 1. we print to a file
@@ -2170,7 +2170,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		if (lyxrc_orig.document_path != lyxrc_new.document_path) {
 			FileName path(lyxrc_new.document_path);
 			if (path.exists() && path.isDirectory())
-				support::package().document_dir() = FileName(lyxrc.document_path);
+				package().document_dir() = FileName(lyxrc.document_path);
 		}
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_EXAMPLEPATH:
@@ -2195,7 +2195,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_NUMLASTFILES:
 	case LyXRC::RC_PATH_PREFIX:
 		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
-			support::prependEnvPath("PATH", lyxrc.path_prefix);
+			prependEnvPath("PATH", lyxrc.path_prefix);
 		}
 	case LyXRC::RC_PERS_DICT:
 	case LyXRC::RC_PREVIEW:
@@ -2240,7 +2240,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_TEX_ALLOWS_SPACES:
 	case LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS:
 		if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
-			support::os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
+			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
 		}
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:

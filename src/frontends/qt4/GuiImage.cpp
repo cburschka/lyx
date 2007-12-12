@@ -125,7 +125,7 @@ unsigned int GuiImage::height() const
 }
 
 
-void GuiImage::load(support::FileName const & filename)
+void GuiImage::load(FileName const & filename)
 {
 	if (!original_.isNull()) {
 		LYXERR(Debug::GRAPHICS, "Image is loaded already!");

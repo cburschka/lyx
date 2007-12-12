@@ -51,6 +51,7 @@
 #include <boost/assert.hpp>
 
 using namespace std;
+using namespace lyx::support;
 
 static void initializeResources()
 {
@@ -64,11 +65,6 @@ static void initializeResources()
 
 namespace lyx {
 namespace frontend {
-
-using support::libFileSearch;
-using support::subst;
-using support::compare;
-
 
 namespace {
 

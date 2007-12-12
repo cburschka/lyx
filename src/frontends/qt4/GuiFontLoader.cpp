@@ -28,6 +28,7 @@
 #include <QFontDatabase>
 
 using namespace std;
+using namespace lyx::support;
 
 QString const math_fonts[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
 	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
@@ -35,11 +36,6 @@ int const num_math_fonts = sizeof(math_fonts) / sizeof(*math_fonts);
 
 
 namespace lyx {
-
-using support::contains;
-using support::package;
-using support::addPath;
-using support::addName;
 
 extern docstring const stateText(FontInfo const & f);
 

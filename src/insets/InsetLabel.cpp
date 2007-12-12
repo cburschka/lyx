@@ -23,6 +23,7 @@
 #include "support/lyxalgo.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -88,7 +89,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 int InsetLabel::latex(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
-	os << support::escape(getCommand());
+	os << escape(getCommand());
 	return 0;
 }
 

@@ -333,8 +333,6 @@ docstring const getNatbibLabel(Buffer const & buffer,
 
 docstring const getBasicLabel(docstring const & keyList, docstring const & after)
 {
-	using support::contains;
-
 	docstring keys = keyList;
 	docstring label;
 

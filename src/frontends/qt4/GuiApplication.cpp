@@ -72,6 +72,7 @@
 #include <exception>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -126,8 +127,6 @@ public:
 // at the end of this file...
 ///////////////////////////////////////////////////////////////
 
-
-using support::FileName;
 
 GuiApplication * guiApp;
 
@@ -434,12 +433,12 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	try {
 		return QApplication::notify(receiver, event);
 	}
-	catch (support::ExceptionMessage const & e) {
-		if (e.type_ == support::ErrorException) {
+	catch (ExceptionMessage const & e) {
+		if (e.type_ == ErrorException) {
 			Alert::error(e.title_, e.details_);
 			LyX::cref().emergencyCleanup();
 			QApplication::exit(1);
-		} else if (e.type_ == support::WarningException) {
+		} else if (e.type_ == WarningException) {
 			Alert::warning(e.title_, e.details_);
 			return false;
 		}
@@ -483,7 +482,7 @@ bool GuiApplication::getRgbColor(ColorCode col, RGBColor & rgbcol)
 
 string const GuiApplication::hexName(ColorCode col)
 {
-	return support::ltrim(fromqstr(color_cache_.get(col).name()), "#");
+	return ltrim(fromqstr(color_cache_.get(col).name()), "#");
 }
 
 

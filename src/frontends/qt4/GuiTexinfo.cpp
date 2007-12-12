@@ -176,7 +176,7 @@ void GuiTexInfo::updateStyles(TexFileType type)
 	vector<string>::iterator it1  = data.begin();
 	vector<string>::iterator end1 = data.end();
 	for (; it1 != end1; ++it1)
-		*it1 = support::onlyFilename(*it1);
+		*it1 = onlyFilename(*it1);
 
 	// sort on filename only (no path)
 	sort(data.begin(), data.end());

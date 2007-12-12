@@ -56,6 +56,7 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 ///
 template<class Pair>
@@ -132,11 +133,6 @@ vector<pair<string, lyx::docstring> > pagestyles;
 
 namespace lyx {
 namespace frontend {
-
-using support::token;
-using support::bformat;
-using support::findToken;
-using support::getVectorFromString;
 
 /////////////////////////////////////////////////////////////////////
 //

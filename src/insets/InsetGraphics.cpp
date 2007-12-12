@@ -484,7 +484,7 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 	if (!success) {
 		// FIXME UNICODE
 		LYXERR(Debug::GRAPHICS,
-			to_utf8(support::bformat(_("Could not copy the file\n%1$s\n"
+			to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 							   "into the temporary directory."),
 						from_utf8(file_in.absFilename()))));
 	}
@@ -497,11 +497,9 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 pair<GraphicsCopyStatus, FileName> const
 copyToDirIfNeeded(DocFileName const & file, string const & dir)
 {
-	using support::rtrim;
-
 	string const file_in = file.absFilename();
-	string const only_path = support::onlyPath(file_in);
-	if (rtrim(support::onlyPath(file_in) , "/") == rtrim(dir, "/"))
+	string const only_path = onlyPath(file_in);
+	if (rtrim(onlyPath(file_in) , "/") == rtrim(dir, "/"))
 		return make_pair(IDENTICAL_PATHS, file_in);
 
 	string mangled = file.mangledFilename();
@@ -516,7 +514,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 		string::size_type const ext_len = file_in.length() - base.length();
 		mangled[mangled.length() - ext_len] = '.';
 	}
-	FileName const file_out(support::makeAbsPath(mangled, dir));
+	FileName const file_out(makeAbsPath(mangled, dir));
 
 	return copyFileIfNeeded(file, file_out);
 }
@@ -535,13 +533,10 @@ string const stripExtensionIfPossible(string const & file, bool nice)
 	// dots with a macro whose definition is just a dot ;-)
 	// The automatic format selection does not work if the file
 	// name is escaped.
-	string const latex_name = latex_path(file,
-					     support::EXCLUDE_EXTENSION);
+	string const latex_name = latex_path(file, EXCLUDE_EXTENSION);
 	if (!nice || contains(latex_name, '"'))
 		return latex_name;
-	return latex_path(removeExtension(file),
-			  support::PROTECT_EXTENSION,
-			  support::ESCAPE_DOTS);
+	return latex_path(removeExtension(file), PROTECT_EXTENSION, ESCAPE_DOTS);
 }
 
 
@@ -556,7 +551,7 @@ string const stripExtensionIfPossible(string const & file, string const & to, bo
 	    (to_format == "eps" && file_format ==  "ps") ||
 	    (to_format ==  "ps" && file_format == "eps"))
 		return stripExtensionIfPossible(file, nice);
-	return latex_path(file, support::EXCLUDE_EXTENSION);
+	return latex_path(file, EXCLUDE_EXTENSION);
 }
 
 } // namespace anon
@@ -654,8 +649,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 					source_file, output_file);
 			// We can't strip the extension, because we don't know
 			// the unzipped file format
-			return latex_path(output_file,
-					  support::EXCLUDE_EXTENSION);
+			return latex_path(output_file, EXCLUDE_EXTENSION);
 		}
 
 		FileName const unzipped_temp_file =
@@ -694,7 +688,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// the file format from the extension, so we must
 			// change it.
 			FileName const new_file = FileName(changeExtension(temp_file.absFilename(), ext));
-			if (support::rename(temp_file, new_file)) {
+			if (rename(temp_file, new_file)) {
 				temp_file = new_file;
 				output_file = changeExtension(output_file, ext);
 				source_file = FileName(changeExtension(source_file.absFilename(), ext));

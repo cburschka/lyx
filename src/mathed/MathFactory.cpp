@@ -96,7 +96,7 @@ bool math_font_available(docstring & name)
 
 void initSymbols()
 {
-	support::FileName const filename = libFileSearch(string(), "symbols");
+	FileName const filename = libFileSearch(string(), "symbols");
 	LYXERR(Debug::MATHED, "read symbols from " << filename);
 	if (filename.empty()) {
 		lyxerr << "Could not find symbols file" << endl;

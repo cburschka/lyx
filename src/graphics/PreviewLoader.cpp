@@ -63,7 +63,7 @@ string const unique_filename(string const & bufferpath)
 {
 	static int theCounter = 0;
 	string const filename = lyx::convert<string>(theCounter++) + "lyxpreview";
-	return lyx::support::addName(bufferpath, filename);
+	return addName(bufferpath, filename);
 }
 
 
@@ -369,7 +369,7 @@ InProgress::InProgress(string const & filename_base,
 void InProgress::stop() const
 {
 	if (pid)
-		lyx::support::ForkedCallsController::kill(pid, 0);
+		ForkedCallsController::kill(pid, 0);
 
 	if (!metrics_file.empty())
 		metrics_file.removeFile();
@@ -469,7 +469,7 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 	if (!pconverter_ || status(latex_snippet) != NotFound)
 		return;
 
-	string const snippet = support::trim(latex_snippet);
+	string const snippet = trim(latex_snippet);
 	if (snippet.empty())
 		return;
 
@@ -584,19 +584,19 @@ void PreviewLoader::Impl::startLoading()
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
-	   << support::quoteName(latexfile.toFilesystemEncoding()) << ' '
+	   << quoteName(latexfile.toFilesystemEncoding()) << ' '
 	   << int(font_scaling_factor_) << ' '
 	   << theApp()->hexName(Color_preview) << ' '
 	   << theApp()->hexName(Color_background);
 
-	string const command = support::libScriptSearch(cs.str());
+	string const command = libScriptSearch(cs.str());
 
 	// Initiate the conversion from LaTeX to bitmap images files.
-	support::ForkedCall::SignalTypePtr
-		convert_ptr(new support::ForkedCall::SignalType);
+	ForkedCall::SignalTypePtr
+		convert_ptr(new ForkedCall::SignalType);
 	convert_ptr->connect(bind(&Impl::finishedGenerating, this, _1, _2));
 
-	support::ForkedCall call;
+	ForkedCall call;
 	int ret = call.startScript(command, convert_ptr);
 
 	if (ret != 0) {

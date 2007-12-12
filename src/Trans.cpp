@@ -386,7 +386,7 @@ docstring const Trans::process(char_type c, TransManager & k)
 
 int Trans::load(string const & language)
 {
-	support::FileName const filename = libFileSearch("kbd", language, "kmap");
+	FileName const filename = libFileSearch("kbd", language, "kmap");
 	if (filename.empty())
 		return -1;
 

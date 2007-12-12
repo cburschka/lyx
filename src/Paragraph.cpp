@@ -1519,7 +1519,7 @@ void Paragraph::setLabelWidthString(docstring const & s)
 docstring const Paragraph::translateIfPossible(docstring const & s,
 		BufferParams const & bparams) const
 {
-	if (!support::isAscii(s) || s.empty()) {
+	if (!isAscii(s) || s.empty()) {
 		// This must be a user defined layout. We cannot translate
 		// this, since gettext accepts only ascii keys.
 		return s;

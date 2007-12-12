@@ -159,7 +159,7 @@ Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 	// We create a dummy command for ease of understanding of the
 	// list of forked processes.
 	// Note: 'python ' is absolutely essential, or execvp will fail.
-	script_command_ = support::os::python() + ' ' +
+	script_command_ = os::python() + ' ' +
 		quoteName(script_file_.toFilesystemEncoding()) + ' ' +
 		quoteName(onlyFilename(from_file.toFilesystemEncoding())) + ' ' +
 		quoteName(to_format);
@@ -176,7 +176,7 @@ void Converter::Impl::startConversion()
 	}
 
 	ForkedCall::SignalTypePtr ptr =
-		support::ForkedCallQueue::add(script_command_);
+		ForkedCallQueue::add(script_command_);
 	ptr->connect(boost::bind(&Impl::converted, this, _1, _2));
 }
 
@@ -325,7 +325,7 @@ static void build_script(FileName const & from_file,
 		       << quoteName(to_file, quote_python) << ")\n";
 
 		ostringstream os;
-		os << support::os::python() << ' '
+		os << os::python() << ' '
 		   << libScriptSearch("$$s/scripts/convertDefault.py",
 				      quote_python) << ' ';
 		if (!from_format.empty())

@@ -21,12 +21,11 @@
 #include <QCloseEvent>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
 
-using support::FileName;
-using support::onlyFilename;
 
 GuiShowFile::GuiShowFile(GuiView & lv)
 	: GuiDialog(lv, "file")

@@ -24,6 +24,7 @@
 #include <ostream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace external {
@@ -59,7 +60,7 @@ Template::Format::Format()
 
 TemplateManager::TemplateManager()
 {
-	readTemplates(support::package().user_support());
+	readTemplates(package().user_support());
 	if (lyxerr.debugging(Debug::EXTERNAL)) {
 		dumpPreambleDefs(lyxerr);
 		lyxerr << '\n';
@@ -219,7 +220,7 @@ TemplateManager::getTemplateByName(string const & name) const
 string const
 TemplateManager::getPreambleDefByName(string const & name) const
 {
-	string const trimmed_name = support::trim(name);
+	string const trimmed_name = trim(name);
 	if (trimmed_name.empty())
 		return string();
 
@@ -231,9 +232,9 @@ TemplateManager::getPreambleDefByName(string const & name) const
 }
 
 
-void TemplateManager::readTemplates(support::FileName const & path)
+void TemplateManager::readTemplates(FileName const & path)
 {
-	support::PathChanger p(path);
+	PathChanger p(path);
 
 	enum TemplateTags {
 		TM_PREAMBLEDEF = 1,
@@ -251,7 +252,7 @@ void TemplateManager::readTemplates(support::FileName const & path)
 
 	Lexer lex(templatetags, TM_TEMPLATE_END);
 
-	support::FileName const filename = support::libFileSearch("", "external_templates");
+	FileName const filename = libFileSearch("", "external_templates");
 	if (filename.empty() || !lex.setFile(filename)) {
 		lex.printError("external::TemplateManager::readTemplates: "
 			       "No template file");

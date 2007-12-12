@@ -34,10 +34,9 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
-
-using support::bformat;
 
 namespace {
 
@@ -1419,7 +1418,7 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.enable(false);
 			break;
 		}
-		if (!support::contains("tcb", cmd.argument()[0])) {
+		if (!contains("tcb", cmd.argument()[0])) {
 			status.enable(false);
 			break;
 		}

@@ -42,6 +42,7 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -101,7 +102,7 @@ void InsetCaption::cursorPos(BufferView const & bv,
 
 void InsetCaption::setCustomLabel(docstring const & label)
 {
-	if (!support::isAscii(label) || label.empty())
+	if (!isAscii(label) || label.empty())
 		// This must be a user defined layout. We cannot translate
 		// this, since gettext accepts only ascii keys.
 		custom_label_ = label;
@@ -270,7 +271,6 @@ int InsetCaption::getOptArg(Buffer const & buf, odocstream & os,
 
 void InsetCaption::updateLabels(Buffer const & buf, ParIterator const & it)
 {
-	using support::bformat;
 	TextClass const & tclass = buf.params().getTextClass();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();

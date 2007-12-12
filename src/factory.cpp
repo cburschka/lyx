@@ -68,6 +68,7 @@
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -358,12 +359,12 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 			break;
 		}
 
-	} catch (support::ExceptionMessage const & message) {
-		if (message.type_ == support::ErrorException) {
+	} catch (ExceptionMessage const & message) {
+		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);
 			LyX::cref().emergencyCleanup();
 			abort();
-		} else if (message.type_ == support::WarningException) {
+		} else if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
 			return 0;
 		}

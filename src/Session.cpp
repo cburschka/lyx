@@ -22,6 +22,7 @@
 #include <iterator>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace {
 
@@ -37,10 +38,6 @@ string const sec_toolbars = "[toolbars]";
 
 namespace lyx {
 
-using support::absolutePath;
-using support::addName;
-using support::FileName;
-using support::package;
 
 LastFilesSection::LastFilesSection(unsigned int num) :
 	default_num_last_files(4),

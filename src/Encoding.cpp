@@ -485,7 +485,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		info.force = false;
 		while (!flags.empty()) {
 			string flag;
-			flags = support::split(flags, flag, ',');
+			flags = split(flags, flag, ',');
 			if (flag == "combining")
 				info.combining = true;
 			else if (flag == "force")

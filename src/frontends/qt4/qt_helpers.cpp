@@ -306,11 +306,11 @@ docstring browseDir(docstring const & pathname, docstring const & title,
 void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
-	support::PathChanger p(package().user_support());
+	PathChanger p(package().user_support());
 	FileName const command = libFileSearch("scripts", "TeXFiles.py");
 	Systemcall one;
 	int const status = one.startscript(Systemcall::Wait,
-			support::os::python() + ' ' +
+			os::python() + ' ' +
 			quoteName(command.toFilesystemEncoding()));
 	if (status == 0)
 		return;

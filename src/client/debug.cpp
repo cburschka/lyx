@@ -146,7 +146,7 @@ LyXErr & operator<<(LyXErr & l, string const & t)
 { l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, docstring const & t)
 { l.stream() << to_utf8(t); return l; }
-LyXErr & operator<<(LyXErr & l, support::FileName const & t)
+LyXErr & operator<<(LyXErr & l, FileName const & t)
 { l.stream() << t; return l; }
 LyXErr & operator<<(LyXErr & l, ostream &(*t)(ostream &))
 { l.stream() << t; return l; }

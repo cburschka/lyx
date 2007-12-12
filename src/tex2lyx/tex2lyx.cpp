@@ -486,15 +486,15 @@ int main(int argc, char * argv[])
 		return 2;
 	}
 
-	lyx::support::os::init(argc, argv);
+	os::init(argc, argv);
 
-	try { support::init_package(internal_path(to_utf8(from_local8bit(argv[0]))),
+	try { init_package(internal_path(to_utf8(from_local8bit(argv[0]))),
 		cl_system_support, cl_user_support,
-		support::top_build_dir_is_two_levels_up);
-	} catch (support::ExceptionMessage const & message) {
+		top_build_dir_is_two_levels_up);
+	} catch (ExceptionMessage const & message) {
 		cerr << to_utf8(message.title_) << ":\n"
 			<< to_utf8(message.details_) << endl;
-		if (message.type_ == support::ErrorException)
+		if (message.type_ == ErrorException)
 			exit(1);
 	}
 	
@@ -511,7 +511,7 @@ int main(int argc, char * argv[])
 	} else
 		outfilename = changeExtension(infilename, ".lyx");
 
-	FileName const system_syntaxfile = lyx::support::libFileSearch("", "syntax.default");
+	FileName const system_syntaxfile = libFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
 		cerr << "Error: Could not find syntax file \"syntax.default\"." << endl;
 		exit(1);

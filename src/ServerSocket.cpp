@@ -37,18 +37,19 @@
 # include <io.h>
 #endif
 
-using boost::shared_ptr;
-
 using namespace std;
+using namespace lyx::support;
+
+using boost::shared_ptr;
 
 namespace lyx {
 
 // Address is the unix address for the socket.
 // MAX_CLIENTS is the maximum number of clients
 // that can connect at the same time.
-ServerSocket::ServerSocket(LyXFunc * f, support::FileName const & addr)
+ServerSocket::ServerSocket(LyXFunc * f, FileName const & addr)
 	: func(f),
-	  fd_(support::socktools::listen(addr, 3)),
+	  fd_(socktools::listen(addr, 3)),
 	  address_(addr)
 {
 	if (fd_ == -1) {
@@ -58,9 +59,9 @@ ServerSocket::ServerSocket(LyXFunc * f, support::FileName const & addr)
 
 	// These env vars are used by DVI inverse search
 	// Needed by xdvi
-	support::setEnv("XEDITOR", "lyxclient -g %f %l");
+	setEnv("XEDITOR", "lyxclient -g %f %l");
 	// Needed by lyxclient
-	support::setEnv("LYXSOCKET", address_.absFilename());
+	setEnv("LYXSOCKET", address_.absFilename());
 
 	theApp()->registerSocketCallback(
 		fd_,
@@ -97,7 +98,7 @@ string const ServerSocket::address() const
 // is OK and if the number of clients does not exceed MAX_CLIENTS
 void ServerSocket::serverCallback()
 {
-	int const client_fd = support::socktools::accept(fd_);
+	int const client_fd = socktools::accept(fd_);
 
 	if (fd_ == -1) {
 		LYXERR(Debug::LYXSERVER, "lyx: Failed to accept new client");
