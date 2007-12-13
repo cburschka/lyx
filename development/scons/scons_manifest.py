@@ -313,14 +313,11 @@ src_support_header_files = Split('''
     lstrings.h
     lyxalgo.h
     lyxlib.h
-    lyxmanip.h
     lyxtime.h
     os.h
     os_win32.h
     qstring_helpers.h
     socktools.h
-    std_istream.h
-    std_ostream.h
     textutils.h
     types.h
     unicode.h
