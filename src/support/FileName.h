@@ -98,6 +98,11 @@ public:
 	/// \retrun true on success.
 	bool removeFile() const;
 
+	/// rename pointed file.
+	/// \retrun true on success.
+	bool renameTo(FileName const & target) const;
+
+
 	/// remove directory and all contents, returns true on success
 	bool destroyDirectory() const;
 	/// Creates directory. Returns true on success

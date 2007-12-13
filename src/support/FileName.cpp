@@ -139,6 +139,15 @@ bool FileName::copyTo(FileName const & name, bool overwrite) const
 }
 
 
+bool FileName::renameTo(FileName const & name) const
+{
+	bool success = QFile::rename(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
+	if (!success)
+		LYXERR0("Could not copy file " << *this << " to " << name);
+	return success;
+}
+
+
 string FileName::toFilesystemEncoding() const
 {
 	QByteArray const encoded = QFile::encodeName(d->fi.absoluteFilePath());
