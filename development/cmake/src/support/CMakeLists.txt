@@ -35,7 +35,8 @@ include_directories(${TOP_SRC_DIR}/src/support
 	${CMAKE_BINARY_DIR}/src/support
 	${TOP_SRC_DIR}/src/support/minizip
 	${QT_INCLUDES}
-	${ICONV_INCLUDE_DIR})
+	${ICONV_INCLUDE_DIR}
+	${ZLIB_INCLUDE_DIR})
 
 
 if(NOT MERGE_FILES)
@@ -54,7 +55,7 @@ else()
 endif()
 
 
-target_link_libraries(support boost_signals  ${QT_QTCORE_LIBRARY} )
+target_link_libraries(support boost_signals ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY} )
 
 if(WIN32)
 	target_link_libraries(support shlwapi)
