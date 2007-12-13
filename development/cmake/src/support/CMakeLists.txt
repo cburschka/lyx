@@ -50,7 +50,7 @@ else()
 	set_source_files_properties(_allinone_touched.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")	
 	add_library(support ${library_type} ${_allinone_files}
-		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_headers})
+		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_headers} ${dont_merge})
 endif()
 
 
