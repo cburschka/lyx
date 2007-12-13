@@ -318,7 +318,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		              onlyFilename(new_item.cache_name.absFilename()))) {
 			if (!changeMode(new_item.cache_name, 0600)) {
 				LYXERR(Debug::FILES, "Could not change file mode"
-					<< item->cache_name);
+					<< new_item.cache_name);
 			}
 			FormatCache & format_cache = pimpl_->cache[orig_from];
 			if (format_cache.from_format.empty())
