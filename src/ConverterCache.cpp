@@ -314,11 +314,9 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	} else {
 		CacheItem new_item(orig_from, to_format, timestamp,
 				orig_from.checksum());
-		// FIXME: The original code used to chmod the new file to 600.
-		// See SpecialisedMover::do_copy().
 		if (mover.copy(converted_file, new_item.cache_name,
 		              onlyFilename(new_item.cache_name.absFilename()))) {
-			if (!changeMode(item->cache_name, 0600)) {
+			if (!changeMode(new_item.cache_name, 0600)) {
 				LYXERR(Debug::FILES, "Could not change file mode"
 					<< item->cache_name);
 			}
