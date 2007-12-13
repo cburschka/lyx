@@ -1,8 +1,10 @@
 # Traduction française pour LyX
 # Copyright (C) 1998 Free Software Foundation, Inc.
 # Emmanuel GUREGHIAN <gureghia@spi.lip6.fr>, 1998.
-# Jean-Pierre Chrétien <chretien@cert.fr> 1999-2000
+# Jean-Pierre Chrétien <chretien@cert.fr> 1999-2000;2007
 # Faucheux Olivier <olivier.faucheux@depinfo.enseeiht.fr> 2000
+# Adien Rebollo <adrien.rebollo@gmx.fr> 2000-2005
+# Siegfried Meunier-Guttin-Cluzel <meunier@coria.fr> 2007-
 #
 # Création initiale par Emmanuel GUREGHIAN
 # point en suspens et choix effectués:
@@ -171,7 +173,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-12-13 22:57+0100\n"
-"PO-Revision-Date: 2007-11-19 19:20+0100\n"
+"PO-Revision-Date: 2007-12-13 13:43+0100\n"
 "Last-Translator: Siegfried MEUNIER-GUTTIN-CLUZEL <meunier@coria.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -435,7 +437,7 @@ msgstr "Types de boîtes supportées"
 
 #: src/frontends/qt4/ui/BoxUi.ui:66
 msgid "Inner Bo&x:"
-msgstr "Boîte Intérieure :"
+msgstr "Boîte &Intérieure :"
 
 #: src/frontends/qt4/ui/BoxUi.ui:79
 msgid "&Decoration:"
@@ -1412,7 +1414,7 @@ msgstr "Cocher pour entrer des paramètres non reconnus par LyX"
 #: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:522
 #: src/frontends/qt4/ui/TextLayoutUi.ui:238
 msgid "&Bypass validation"
-msgstr "Contourner validation"
+msgstr "Éviter la &validation"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
@@ -1500,7 +1502,7 @@ msgstr "Listing"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:43
 msgid "&Main Settings"
-msgstr "Paramètres Principaux"
+msgstr "&Paramètres Principaux"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/TabularUi.ui:301
 msgid "Style"
@@ -1545,7 +1547,7 @@ msgstr "Rendre les espaces visibles grâce à un symbole spécial"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:173
 msgid "S&pace as symbol"
-msgstr "Espace représenté par un symbole"
+msgstr "Espace représenté par un s&ymbole"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:183
 msgid "Break lines longer than the linewidth"
@@ -1585,7 +1587,7 @@ msgstr "&Emplacement :"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:254
 msgid "Line numbering"
-msgstr "&Numérotation des lignes"
+msgstr "Numérotation des lignes"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:266
 msgid "On which side should line numbers be printed?"
@@ -1817,7 +1819,7 @@ msgstr "Boîte avec cadre"
 
 #: src/frontends/qt4/ui/NoteUi.ui:96
 msgid "&Framed"
-msgstr "Encadrée"
+msgstr "E&ncadrée"
 
 #: src/frontends/qt4/ui/NoteUi.ui:103
 msgid "Box with shaded background"
@@ -1825,7 +1827,7 @@ msgstr "Boîte avec fond coloré"
 
 #: src/frontends/qt4/ui/NoteUi.ui:106
 msgid "&Shaded"
-msgstr "Colorée"
+msgstr "C&olorée"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:63
 msgid "&List in Table of Contents"
@@ -1986,7 +1988,7 @@ msgstr "Fichier Cache du Convertisseur"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
 msgid "&Enabled"
-msgstr "Activé"
+msgstr "Ac&tivé"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "&Maximum Age (in days):"
@@ -2088,7 +2090,7 @@ msgstr "É&diteur :"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:36
 msgid "&E-mail:"
-msgstr "&Email :"
+msgstr "&E-mail :"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:46
 msgid "Your name"
@@ -2636,7 +2638,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:395
 msgid "Enable Pi&xmap Cache"
-msgstr "Activer la cache pixels"
+msgstr "Activer le cache pi&xmap"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:76 src/BufferList.cpp:113
 #: src/BufferList.cpp:221 src/LyXFunc.cpp:768
@@ -2653,7 +2655,7 @@ msgstr "Numéro de la première page à imprimer"
 
 #: src/frontends/qt4/ui/PrintUi.ui:69
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr "&À :[['de la page x à la page y']]"
+msgstr "&À :"
 
 #: src/frontends/qt4/ui/PrintUi.ui:82
 msgid "Page number to print to"
@@ -2688,9 +2690,8 @@ msgid "Re&verse order"
 msgstr "Dans l'&ordre inverse"
 
 #: src/frontends/qt4/ui/PrintUi.ui:152
-#, fuzzy
 msgid "Copie&s"
-msgstr "Exemplaires"
+msgstr "Exemplaire&s"
 
 #: src/frontends/qt4/ui/PrintUi.ui:164
 msgid "Number of copies"
@@ -3703,11 +3704,11 @@ msgstr "SousSousSection*"
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
 #: src/output_plaintext.cpp:145
 msgid "Abstract"
-msgstr "Abstract"
+msgstr "Résumé"
 
 #: lib/layouts/IEEEtran.layout:335
 msgid "Abstract---"
-msgstr "Abstract---"
+msgstr "Résumé---"
 
 #: lib/layouts/IEEEtran.layout:349 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
@@ -3934,7 +3935,7 @@ msgstr "LaTeX"
 #: lib/layouts/latex8.layout:57 lib/layouts/llncs.layout:232
 #: lib/layouts/aapaper.inc:47 lib/layouts/amsdefs.inc:177
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
 #: lib/ui/stdtoolbars.inc:110 src/frontends/qt4/QThesaurus.cpp:148
@@ -4096,7 +4097,7 @@ msgstr "En-tête_Droite :"
 
 #: lib/layouts/apa.layout:83
 msgid "Abstract:"
-msgstr "Abstract :"
+msgstr "Résumé :"
 
 #: lib/layouts/apa.layout:92
 msgid "ShortTitle"
@@ -4480,7 +4481,7 @@ msgstr "Tableau"
 #: lib/layouts/beamer.layout:1091 lib/layouts/powerdot.layout:382
 #: lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
-msgstr "Liste des tableaux|T"
+msgstr "Liste des tableaux"
 
 #: lib/layouts/beamer.layout:1097 lib/layouts/powerdot.layout:388
 #: lib/layouts/stdfloats.inc:22
@@ -4490,7 +4491,7 @@ msgstr "Figure"
 #: lib/layouts/beamer.layout:1102 lib/layouts/powerdot.layout:392
 #: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
-msgstr "Liste des Figures|F"
+msgstr "Liste des Figures"
 
 #: lib/layouts/broadway.layout:32 lib/layouts/hollywood.layout:40
 msgid "Dialogue"
@@ -4704,7 +4705,7 @@ msgstr "Gruss:"
 
 #: lib/layouts/dinbrief.layout:85 lib/layouts/stdletter.inc:118
 msgid "encl"
-msgstr "PJ"
+msgstr "P.J."
 
 #: lib/layouts/dinbrief.layout:86 lib/layouts/g-brief-de.layout:217
 msgid "Anlagen:"
@@ -4848,7 +4849,7 @@ msgstr "demande_tirés_à_part_à :"
 #: lib/layouts/svglobal.layout:44 lib/layouts/svjog.layout:49
 #: lib/layouts/amsdefs.inc:138 lib/layouts/svjour.inc:266
 msgid "Abstract."
-msgstr "Abstract."
+msgstr "Résumé."
 
 #: lib/layouts/egs.layout:552 lib/layouts/amsmaths-plain.inc:154
 #: lib/layouts/amsmaths.inc:525 lib/layouts/svjour.inc:322
@@ -4868,11 +4869,11 @@ msgstr "Adresse :"
 
 #: lib/layouts/elsart.layout:149 lib/layouts/revtex4.layout:178
 msgid "Author Email"
-msgstr "EMail Auteur"
+msgstr "E-mail auteur"
 
 #: lib/layouts/elsart.layout:159 lib/layouts/llncs.layout:236
 msgid "Email:"
-msgstr "Email :"
+msgstr "E-mail :"
 
 #: lib/layouts/elsart.layout:170 lib/layouts/revtex4.layout:193
 msgid "Author URL"
@@ -5308,11 +5309,11 @@ msgstr "Telex:"
 
 #: lib/layouts/g-brief-de.layout:137 lib/layouts/g-brief-en.layout:137
 msgid "EMail"
-msgstr "EMail"
+msgstr "E-mail"
 
 #: lib/layouts/g-brief-de.layout:140 lib/layouts/g-brief-en.layout:140
 msgid "EMail:"
-msgstr "EMail:"
+msgstr "E-mail :"
 
 #: lib/layouts/g-brief-de.layout:144 lib/layouts/g-brief-en.layout:144
 msgid "HTTP"
@@ -6040,7 +6041,7 @@ msgstr "RÉSUMÉ :"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr "MOTS CLÉS :"
+msgstr "MOTS-CLÉS :"
 
 #: lib/layouts/isprs.layout:135
 msgid "Commission"
@@ -6077,7 +6078,7 @@ msgstr "Auteur courant :"
 
 #: lib/layouts/latex8.layout:70
 msgid "E-mail:"
-msgstr "Email :"
+msgstr "E-mail :"
 
 #: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:46
 #: lib/layouts/scrbook.layout:16 lib/layouts/agu_stdsections.inc:21
@@ -6493,11 +6494,11 @@ msgstr "Fax de l'expéditeur :"
 
 #: lib/layouts/scrlttr2.layout:199
 msgid "E-Mail"
-msgstr "EMail"
+msgstr "E-mail"
 
 #: lib/layouts/scrlttr2.layout:203
 msgid "Sender E-Mail:"
-msgstr "EMail de l'expéditeur :"
+msgstr "E-mail de l'expéditeur :"
 
 #: lib/layouts/scrlttr2.layout:211
 msgid "Sender URL:"
@@ -6642,7 +6643,7 @@ msgstr "REMERCIEMENTS"
 
 #: lib/layouts/aapaper.inc:56
 msgid "email:"
-msgstr "Email :"
+msgstr "E-mail :"
 
 #: lib/layouts/aapaper.inc:118
 msgid "Thesaurus not supported in recent A&A:"
@@ -7771,7 +7772,7 @@ msgstr "Copier une Sélection Extérieure|S"
 
 #: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:96
 msgid "Find & Replace...|F"
-msgstr "Rechercher et Remplacer..."
+msgstr "Rechercher et Remplacer...|e"
 
 #: lib/ui/classic.ui:100
 msgid "Tabular|T"
@@ -7787,7 +7788,7 @@ msgstr "Correcteur Orthographique...|O"
 
 #: lib/ui/classic.ui:105
 msgid "Thesaurus..."
-msgstr "Dictionnaire de Synonymes...|D"
+msgstr "Dictionnaire de Synonymes..."
 
 #: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:463
 msgid "Count Words|W"
@@ -7907,11 +7908,11 @@ msgstr "(Dés)Activer Numérotation de cette Ligne|m"
 
 #: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:186
 msgid "Change Limits Type|L"
-msgstr "Changer le Type de Limite"
+msgstr "Changer le Type de Limite|i"
 
 #: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:188
 msgid "Change Formula Type|F"
-msgstr "Changer le Type de Formule"
+msgstr "Changer le Type de Formule|F"
 
 #: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:192
 msgid "Use Computer Algebra System|S"
@@ -8020,7 +8021,7 @@ msgstr "Caractère Spécial|S"
 
 #: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:301
 msgid "Citation...|C"
-msgstr "Citation...|C"
+msgstr "Citation...|a"
 
 #: lib/ui/classic.ui:218
 msgid "Cross-reference...|r"
@@ -8040,7 +8041,7 @@ msgstr "Note en Marge|M"
 
 #: lib/ui/classic.ui:222
 msgid "Short Title"
-msgstr "Titre Court"
+msgstr "Titre court|c"
 
 #: lib/ui/classic.ui:223
 msgid "Index Entry|I"
@@ -8549,7 +8550,7 @@ msgstr "Collage Spécial|i"
 
 #: lib/ui/stdmenus.inc:94
 msgid "Select All"
-msgstr "Sélectionne Tout|o"
+msgstr "Sélectionne Tout"
 
 #: lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
@@ -8577,16 +8578,16 @@ msgstr "Lignes & Colonnes|L"
 
 #: lib/ui/stdmenus.inc:114
 msgid "Increase List Depth|I"
-msgstr "Augmenter la profondeur de liste|A"
+msgstr "Augmenter la profondeur de liste|f"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Decrease List Depth|D"
-msgstr "Réduire la Profondeur de Liste|R"
+msgstr "Réduire la Profondeur de Liste|u"
 
 # menu Editer quand on est dans un insert
 #: lib/ui/stdmenus.inc:116
 msgid "Dissolve Inset|l"
-msgstr "Supprime Insert|I"
+msgstr "Supprimer insert|u"
 
 #: lib/ui/stdmenus.inc:117
 msgid "TeX Code Settings...|C"
@@ -8691,19 +8692,19 @@ msgstr "Fractionner Cellule|C"
 
 #: lib/ui/stdmenus.inc:196
 msgid "Add Line Above|A"
-msgstr "Ajouter Ligne Dessus"
+msgstr "Ajouter Ligne Dessus|A"
 
 #: lib/ui/stdmenus.inc:197
 msgid "Add Line Below|B"
-msgstr "Ajouter Ligne Dessous"
+msgstr "Ajouter Ligne Dessous|o"
 
 #: lib/ui/stdmenus.inc:198
 msgid "Delete Line Above|D"
-msgstr "Supprimer Ligne Dessus"
+msgstr "Supprimer Ligne Dessus|S"
 
 #: lib/ui/stdmenus.inc:199
 msgid "Delete Line Below|e"
-msgstr "Supprimer Ligne Dessous"
+msgstr "Supprimer Ligne Dessous|p"
 
 #: lib/ui/stdmenus.inc:201
 msgid "Add Line to Left"
@@ -8800,7 +8801,7 @@ msgstr "Caractère Spécial|p"
 
 #: lib/ui/stdmenus.inc:293
 msgid "Formatting|o"
-msgstr "Formats|a"
+msgstr "Typographie spéciale|y"
 
 #: lib/ui/stdmenus.inc:294
 msgid "List / TOC|i"
@@ -8844,7 +8845,7 @@ msgstr "Tableau...|T"
 
 #: lib/ui/stdmenus.inc:313
 msgid "Short Title|S"
-msgstr "Titre Court"
+msgstr "Titre court|c"
 
 #: lib/ui/stdmenus.inc:314
 msgid "TeX Code|X"
@@ -8953,7 +8954,7 @@ msgstr "Commentaire|C"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Framed|F"
-msgstr "Encadrée"
+msgstr "Encadrée|E"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Greyed Out|G"
@@ -8961,7 +8962,7 @@ msgstr "Grisé|G"
 
 #: lib/ui/stdmenus.inc:400
 msgid "Shaded|S"
-msgstr "Colorée"
+msgstr "Colorée|o"
 
 #: lib/ui/stdmenus.inc:412
 msgid "Change Tracking|C"
@@ -8997,7 +8998,7 @@ msgstr "Rejeter toutes les modifications|e"
 
 #: lib/ui/stdmenus.inc:438
 msgid "Next Change|C"
-msgstr "Modif. Suivante|M"
+msgstr "Modification Suivante|M"
 
 #: lib/ui/stdmenus.inc:439
 msgid "Next Cross-Reference|R"
@@ -9317,19 +9318,19 @@ msgstr "Afficher les modifications dans la sortie"
 
 #: lib/ui/stdtoolbars.inc:174
 msgid "Next change"
-msgstr "Modification Suivante|M"
+msgstr "Modification Suivante"
 
 #: lib/ui/stdtoolbars.inc:175
 msgid "Accept change"
-msgstr "Accepter modif."
+msgstr "Accepter la modification"
 
 #: lib/ui/stdtoolbars.inc:176
 msgid "Reject change"
-msgstr "Rejeter modif."
+msgstr "Rejeter la modification"
 
 #: lib/ui/stdtoolbars.inc:178
 msgid "Merge changes"
-msgstr "Fusionner les Modifications"
+msgstr "Fusionner les modifications"
 
 #: lib/ui/stdtoolbars.inc:179
 msgid "Accept all changes"
@@ -11601,6 +11602,7 @@ msgstr ""
 #: lib/external_templates:251
 msgid ""
 "Today's date.\n"
+
 "Read 'info date' for more information.\n"
 msgstr ""
 "La date du jour.\n"
@@ -11976,11 +11978,11 @@ msgstr "Impossible d'insérer le document %1$s"
 #: src/Chktex.cpp:71
 #, c-format
 msgid "ChkTeX warning id # %1$d"
-msgstr "Avertissement ChkTeX n°%1$d"
+msgstr "Avertissement ChkTeX n° %1$d"
 
 #: src/Chktex.cpp:73
 msgid "ChkTeX warning id # "
-msgstr "Avertissement ChkTeX n°"
+msgstr "Avertissement ChkTeX n° "
 
 # à revoir, accord avec les autres mots incertain
 #: src/Color.cpp:268
@@ -12097,7 +12099,7 @@ msgstr "caractère spécial"
 
 #: src/Color.cpp:296
 msgid "math"
-msgstr "Mathématiques"
+msgstr "formules mathématiques"
 
 #: src/Color.cpp:297
 msgid "math background"
@@ -12228,7 +12230,7 @@ msgstr ""
 
 #: src/Converter.cpp:431 src/Format.cpp:320 src/Format.cpp:379
 msgid "Executing command: "
-msgstr "Exécution de la commande :"
+msgstr "Exécution de la commande : "
 
 #: src/Converter.cpp:473
 msgid "Build errors"
@@ -12761,7 +12763,7 @@ msgstr ""
 
 #: src/LyX.cpp:1383 src/support/Package.cpp.in:568
 msgid "No system directory"
-msgstr "Pas de Répertoire Système : "
+msgstr "Pas de répertoire système"
 
 #: src/LyX.cpp:1384
 msgid "Missing directory for -sysdir switch"
@@ -13663,7 +13665,7 @@ msgstr ""
 
 #: src/Text.cpp:1821
 msgid "[Change Tracking] "
-msgstr "[Suivi des Modifications]"
+msgstr "[Suivi des Modifications] "
 
 #: src/Text.cpp:1827
 msgid "Change: "
@@ -14613,19 +14615,19 @@ msgstr "Maths"
 
 #: src/frontends/qt4/BulletsModule.cpp:48
 msgid "Dings 1"
-msgstr "Dings &1"
+msgstr "Dings 1"
 
 #: src/frontends/qt4/BulletsModule.cpp:49
 msgid "Dings 2"
-msgstr "Dings &2"
+msgstr "Dings 2"
 
 #: src/frontends/qt4/BulletsModule.cpp:50
 msgid "Dings 3"
-msgstr "Dings &3"
+msgstr "Dings 3"
 
 #: src/frontends/qt4/BulletsModule.cpp:51
 msgid "Dings 4"
-msgstr "Dings &4"
+msgstr "Dings 4"
 
 #: src/frontends/qt4/Dialogs.cpp:225
 msgid "Index Entry"
@@ -14654,17 +14656,20 @@ msgid ""
 "\n"
 "Exception: "
 msgstr ""
+"LyX a reçu une exception, il va maintenant essayer d'enregistrer tous les documents en cours de modification avant de quitter.\n"
+"\n"
+"Exception : "
 
 #: src/frontends/qt4/GuiApplication.cpp:273
 #: src/frontends/qt4/GuiApplication.cpp:280
 msgid "Software exception Detected"
-msgstr ""
+msgstr "Détection d'une exception logicielle"
 
 #: src/frontends/qt4/GuiApplication.cpp:278
 msgid ""
 "LyX has caught some really weird exception, it will now attemp to save all "
 "unsaved documents and exit."
-msgstr ""
+msgstr "LyX a reçu une exception vraiment sérieuse, il va maintenant essayer d'enregistrer tous les documents en cours de modification avant de quitter."
 
 #: src/frontends/qt4/GuiApplication.cpp:408
 msgid "About %1"
@@ -14771,19 +14776,19 @@ msgstr "Commande suivante"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:46
 msgid "big[[delimiter size]]"
-msgstr "big[[delimiter size]]"
+msgstr "big"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:46
 msgid "Big[[delimiter size]]"
-msgstr "Big[[delimiter size]]"
+msgstr "Big"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:47
 msgid "bigg[[delimiter size]]"
-msgstr "bigg[[delimiter size]]"
+msgstr "bigg"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:47
 msgid "Bigg[[delimiter size]]"
-msgstr "Bigg[[delimiter size]]"
+msgstr "Bigg"
 
 #: src/frontends/qt4/QDelimiterDialog.cpp:69
 msgid "Math Delimiter"
@@ -14952,7 +14957,7 @@ msgstr "B4"
 
 #: src/frontends/qt4/QDocument.cpp:463
 msgid "LaTeX default"
-msgstr "Valeur par Défaut de LaTeX "
+msgstr "Valeur implicite de LaTeX"
 
 #: src/frontends/qt4/QDocument.cpp:469
 msgid "``text''"
@@ -15021,7 +15026,7 @@ msgstr "Numérotation & TdM"
 
 #: src/frontends/qt4/QDocument.cpp:588
 msgid "Math Options"
-msgstr "Options des Maths"
+msgstr "Options mode math."
 
 #: src/frontends/qt4/QDocument.cpp:589
 msgid "Float Placement"
@@ -15732,7 +15737,7 @@ msgstr "Glossaire"
 
 #: src/insets/InsetNote.cpp:64
 msgid "Note[[InsetNote]]"
-msgstr ""
+msgstr "Note"
 
 #: src/insets/InsetNote.cpp:66
 msgid "Greyed out"
@@ -15761,7 +15766,7 @@ msgstr "Insert de paramètre optionnel ouvert"
 
 #: src/insets/InsetPagebreak.h:65
 msgid "Clear Page"
-msgstr "Saut Page (vide le tampon)"
+msgstr "Saut de page (vide le tampon)"
 
 #: src/insets/InsetPagebreak.h:81
 msgid "Clear Double Page"
@@ -15897,7 +15902,7 @@ msgstr "Erreur en chargeant le fichier en mémoire"
 
 #: src/insets/RenderGraphic.cpp:121
 msgid "Error generating the pixmap"
-msgstr "Erreur lors de la génération de la pixmap"
+msgstr "Erreur lors de la génération du pixmap"
 
 #: src/insets/RenderGraphic.cpp:124
 msgid "No image"
@@ -16065,7 +16070,7 @@ msgstr "entré en mode texte math (textrm)"
 
 #: src/mathed/InsetMathRef.cpp:187
 msgid "Standard[[mathref]]"
-msgstr "Standard[[mathref]]"
+msgstr "Standard"
 
 #: src/mathed/MathMacroTemplate.cpp:109
 #, c-format
@@ -16087,7 +16092,7 @@ msgstr ""
 
 #: src/output_plaintext.cpp:148
 msgid "Abstract: "
-msgstr "Abstract : "
+msgstr "Résumé : "
 
 #: src/output_plaintext.cpp:160
 msgid "References: "
