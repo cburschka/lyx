@@ -26,17 +26,16 @@ using namespace lyx::support;
 namespace lyx {
 
 
-bool Mover::copy(FileName const & from, FileName const & to,
-		 unsigned long int mode) const
+bool Mover::copy(FileName const & from, FileName const & to) const
 {
-	return do_copy(from, to, to.absFilename(), mode);
+	return do_copy(from, to, to.absFilename());
 }
 
 
 bool Mover::do_copy(FileName const & from, FileName const & to,
-		    string const &, unsigned long int mode) const
+		    string const &) const
 {
-	return support::copy(from, to, mode);
+	return from.copyTo(to);
 }
 
 
@@ -50,24 +49,15 @@ bool Mover::rename(FileName const & from,
 bool Mover::do_rename(FileName const & from, FileName const & to,
 		      string const &) const
 {
-	return rename(from, to);
+	return from.renameTo(to);
 }
 
 
 bool SpecialisedMover::do_copy(FileName const & from, FileName const & to,
-			       string const & latex, unsigned long int mode) const
+			       string const & latex) const
 {
 	if (command_.empty())
-		return Mover::do_copy(from, to, latex, mode);
-
-	if (mode != (unsigned long int)-1) {
-		ofstream ofs(to.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
-		if (!ofs)
-			return false;
-		ofs.close();
-		if (!chmod(to, mode))
-			return false;
-	}
+		return Mover::do_copy(from, to, latex);
 
 	string command = libScriptSearch(command_);
 	command = subst(command, "$$i", quoteName(from.toFilesystemEncoding()));
@@ -85,7 +75,7 @@ bool SpecialisedMover::do_rename(FileName const & from, FileName const & to,
 	if (command_.empty())
 		return Mover::do_rename(from, to, latex);
 
-	if (!do_copy(from, to, latex, (unsigned long int)-1))
+	if (!do_copy(from, to, latex))
 		return false;
 	return from.removeFile();
 }

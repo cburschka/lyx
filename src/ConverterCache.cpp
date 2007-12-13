@@ -249,6 +249,21 @@ void ConverterCache::init()
 }
 
 
+static bool changeMode(FileName const & fname, unsigned long int mode)
+{
+	if (mode == (unsigned long int)-1)
+		return true;
+
+	ofstream ofs(fname.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
+	if (!ofs)
+		return false;
+	ofs.close();
+	if (!chmod(fname, mode))
+		return false;
+	return true;
+}
+
+
 void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		FileName const & converted_file) const
 {
@@ -289,15 +304,24 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		}
 		item->checksum = checksum;
 		if (!mover.copy(converted_file, item->cache_name,
-		                onlyFilename(item->cache_name.absFilename()), 0600)) {
-			LYXERR(Debug::FILES, "ConverterCache::add(" << orig_from << "):\n"
-						"Could not copy file.");
+		              onlyFilename(item->cache_name.absFilename()))) {
+			LYXERR(Debug::FILES, "Could not copy file " << orig_from << " to "
+				<< item->cache_name);
+		} else if (!changeMode(item->cache_name, 0600)) {
+			LYXERR(Debug::FILES, "Could not change file mode"
+				<< item->cache_name);
 		}
 	} else {
 		CacheItem new_item(orig_from, to_format, timestamp,
 				orig_from.checksum());
+		// FIXME: The original code used to chmod the new file to 600.
+		// See SpecialisedMover::do_copy().
 		if (mover.copy(converted_file, new_item.cache_name,
-		               onlyFilename(new_item.cache_name.absFilename()), 0600)) {
+		              onlyFilename(new_item.cache_name.absFilename()))) {
+			if (!changeMode(item->cache_name, 0600)) {
+				LYXERR(Debug::FILES, "Could not change file mode"
+					<< item->cache_name);
+			}
 			FormatCache & format_cache = pimpl_->cache[orig_from];
 			if (format_cache.from_format.empty())
 				format_cache.from_format =
