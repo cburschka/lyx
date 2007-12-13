@@ -25,8 +25,7 @@ namespace support {
 
 /// get the current working directory
 FileName const getcwd();
-/// Change file permissions
-bool chmod(FileName const & file, unsigned long int mode);
+
 /**
  * rename a file, returns false if it fails.
  * It can handle renames across partitions.

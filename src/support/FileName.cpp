@@ -157,10 +157,13 @@ bool FileName::changePermission(unsigned long int mode) const
 		return false;
 	}
 
-	if (!chmod(*this, mode)) {
-		LYXERR0("File " << *this << " cannot be changed to " << mode << " mode!");
+#if defined (HAVE_CHMOD) && defined (HAVE_MODE_T)
+	if (::chmod(file.toFilesystemEncoding().c_str(), mode_t(mode)) != 0) {
+		LYXERR0("File " << *this << ": cannot change permission to "
+			<< mode << ".");
 		return false;
 	}
+#endif
 	return true;
 }
 

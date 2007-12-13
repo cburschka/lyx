@@ -169,7 +169,7 @@ void ConverterCache::Impl::writeIndex()
 	FileName const index(addName(cache_dir.absFilename(), "index"));
 	ofstream os(index.toFilesystemEncoding().c_str());
 	os.close();
-	if (!chmod(index, 0600))
+	if (!index.changePermission(0600))
 		return;
 	os.open(index.toFilesystemEncoding().c_str());
 	CacheType::iterator it1 = cache.begin();

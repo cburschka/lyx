@@ -27,7 +27,7 @@ using namespace std;
 namespace lyx {
 namespace support {
 
-bool chmod(FileName const & file, unsigned long int mode)
+static bool chmod(FileName const & file, unsigned long int mode)
 {
 #if defined (HAVE_CHMOD) && defined (HAVE_MODE_T)
 	if (::chmod(file.toFilesystemEncoding().c_str(), mode_t(mode)) != 0)
