@@ -363,7 +363,7 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);
 			LyX::cref().emergencyCleanup();
-			abort();
+			support::abort();
 		} else if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
 			return 0;

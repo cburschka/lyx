@@ -70,7 +70,7 @@ mouse_button::state FuncRequest::button() const
 }
 
 
-void split(vector<string> & args, string const & str)
+void splitArg(vector<string> & args, string const & str)
 {
 	istringstream is(str);
 	while (is) {
@@ -93,7 +93,7 @@ void split(vector<string> & args, string const & str)
 string FuncRequest::getArg(unsigned int i) const
 {
 	vector<string> args;
-	split(args, to_utf8(argument_));
+	splitArg(args, to_utf8(argument_));
 	return i < args.size() ? args[i] : string();
 }
 
