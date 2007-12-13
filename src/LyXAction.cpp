@@ -218,7 +218,7 @@ void LyXAction::init()
 		{ LFUN_MATH_DELIM, "math-delim", Noop, Math },
 		{ LFUN_MATH_BIGDELIM, "math-bigdelim", Noop, Math },
 		{ LFUN_MATH_DISPLAY, "math-display", Noop, Math },
-		{ LFUN_MATH_INSERT, "math-insert", Noop, Edit },
+		{ LFUN_MATH_INSERT, "math-insert", Noop, Math },
 		{ LFUN_MATH_SUBSCRIPT, "math-subscript", Noop, Math },
 		{ LFUN_MATH_SUPERSCRIPT, "math-superscript", Noop, Math },
 		{ LFUN_MATH_LIMITS, "math-limits", Noop, Math },
