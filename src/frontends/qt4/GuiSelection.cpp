@@ -33,7 +33,7 @@ namespace frontend {
 GuiSelection::GuiSelection()
 	: selection_supported_(qApp->clipboard()->supportsSelection())
 {
-	connect(qApp->clipboard(), SIGNAL(dataChanged()),
+	connect(qApp->clipboard(), SIGNAL(selectionChanged()),
 		this, SLOT(on_dataChanged()));
 	// initialize clipboard status.
 	on_dataChanged();
