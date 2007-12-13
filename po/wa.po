@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-12-09 15:22+0100\n"
+"POT-Creation-Date: 2007-12-13 22:57+0100\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -4053,7 +4053,7 @@ msgstr "Ritrait"
 #: lib/layouts/ijmpd.layout:369 lib/layouts/latex8.layout:118
 #: lib/layouts/llncs.layout:261 lib/layouts/memoir.layout:138
 #: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:145
-#: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
+#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
 #: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
 #: lib/layouts/powerdot.layout:292 lib/layouts/report.layout:12
 #: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
@@ -13109,17 +13109,17 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex n' a pont trové di måcules"
 
-#: src/Buffer.cpp:1822
+#: src/Buffer.cpp:1826
 #, fuzzy
 msgid "Preview source code"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:1833
+#: src/Buffer.cpp:1837
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Comincî pal difén|#R"
 
-#: src/Buffer.cpp:1837
+#: src/Buffer.cpp:1841
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
