@@ -158,7 +158,7 @@ bool FileName::changePermission(unsigned long int mode) const
 	}
 
 #if defined (HAVE_CHMOD) && defined (HAVE_MODE_T)
-	if (::chmod(file.toFilesystemEncoding().c_str(), mode_t(mode)) != 0) {
+	if (::chmod(toFilesystemEncoding().c_str(), mode_t(mode)) != 0) {
 		LYXERR0("File " << *this << ": cannot change permission to "
 			<< mode << ".");
 		return false;
