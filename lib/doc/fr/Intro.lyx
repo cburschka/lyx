@@ -67,9 +67,9 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\papersize default
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
@@ -80,11 +80,10 @@
 \defskip medskip
 \quotes_language french
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
 \author "" 
 \author "" 
 \end_header
@@ -101,7 +100,7 @@ Informations de révision :
 \end_layout
 
 \begin_layout Standard
-Traduction : Mise à jour OK, Date : 30/06/2003
+Traduction : Mise à jour, Date : 10/12/2007
 \end_layout
 
 \begin_layout Standard
@@ -124,6 +123,10 @@ Merci d'envoyer vos commentaires et corrections à la liste de diffusion
 \family typewriter
 <lyx-docs@lists.lyx.org>
 \family default
+ou à la liste de diffusion de LyX en français 
+\family typewriter
+<lyx-fr@lists.lyx.org>
+\family default
 .
 \newline
 Traduction en français par : P.-H.
@@ -136,53 +139,33 @@ Boinnard
 \noun on
 Boinnard
 \noun default
-, 
+, Jean-Pierre 
 \noun on
-Jean-Marc
+Chrétien
 \noun default
- 
+, Jean-Marc 
 \noun on
 Lasgouttes
 \noun default
-, 
+, Siegfried 
 \noun on
-Denis
+Meunier-Guttin-Cluzel
 \noun default
- 
-\noun on
-Valdenaire
-\noun default
-, 
-\noun on
-Adrien
-\noun default
- 
+, Adrien 
 \noun on
 Rebollo
 \noun default
- 
-\family typewriter
-<adrien.rebollo@gmx.fr>
-\family default
- et 
+ et Denis 
 \noun on
-Siegfried Meunier-Guttin-Cluzel
+Valdenaire
 \noun default
- 
-\family typewriter
-<meunier@coria.fr>
-\family default
-.
- Merci d'envoyer vos commentaires et corrections sur la traduction à cette
- dernière adresse, ou à la liste de diffusion de LyX en français 
-\family typewriter
-<lyx-fr@lists.lyx.org>
-\family default
 .
 \end_layout
 
 \end_inset
 
+
+\newline
 
 \end_layout
 
@@ -714,7 +697,7 @@ fonctionne.
 \end_layout
 
 \begin_layout Subsection
-Qu'est-ce donc que LaTeX (et en quoi ça me concerne) ?
+Qu'est-ce donc que LaTeX (et en quoi cela me concerne-t-il) ?
 \end_layout
 
 \begin_layout Standard
@@ -751,7 +734,11 @@ l'Utilisateur
 
 .
  À son tour, il a été construit à partir d'un langage de composition appelé
- TeX, créé par Donald Knuth en 1984.
+ TeX, créé par Donald 
+\noun on
+Knuth
+\noun default
+ en 1984.
  
 \begin_inset Quotes fld
 \end_inset
@@ -799,8 +786,12 @@ trucs
 \begin_inset Quotes frd
 \end_inset
 
- du métier d'imprimeur ont été modélisés par Knuth sous la forme d'algorithmes
- informatiques et incorporés dans TeX, d'où son excellent rendu d'impression.
+ du métier d'imprimeur ont été modélisés par 
+\noun on
+Knuth
+\noun default
+ sous la forme d'algorithmes informatiques et incorporés dans TeX, d'où
+ son excellent rendu d'impression.
  Dans tous les cas, la sortie produite par TeX est le format de document
  portable 
 \family typewriter
@@ -858,12 +849,20 @@ TeX ne serait qu'un moteur de rendu typographique s'il n'avait pas une capacité
 
 \begin_layout Standard
 La plupart de ceux qui utilisent TeX utilisent en fait un paquetage de macros
- que Donald Knuth créa pour masquer nombre de détails typographiques.
+ que Donald 
+\noun on
+Knuth
+\noun default
+ créa pour masquer nombre de détails typographiques.
  C'est ce à quoi la plupart des gens pensent quand ils pensent à TeX.
  L'utilisateur lambda n'utilise jamais le TeX brut, qui constitue l'ensemble
  des commandes typographiques de base.
  Ceux qui écrivent des nouveaux paquetages le font.
- Et c'est ici que Leslie Lamport entre en scène.
+ Et c'est ici que Leslie 
+\noun on
+Lamport
+\noun default
+ entre en scène.
  Il voulait un paquetage plus orienté utilisateur que typographe, un ensemble
  de commandes pour composer avec cohérence des sections, des tableaux ou
  des formules de maths, d'une façon uniforme et cohérente avec le moins
@@ -878,8 +877,12 @@ Parallèlement au développement et au déploiement de LaTeX, d'autres personnes
  et bien d'autres encore.
  Si certains utilisaient le TeX brut, d'autre commençaient à modifier LaTeX.
  Pour essayer d'unifier cette foire, un groupe de LaTeX-niciens (dont Leslie
- Lamport, bien sûr) a commencé à travailler à LaTeX2e, la version actuelle
- de LaTeX, à la fin des années 1980.
+ 
+\noun on
+Lamport
+\noun default
+, bien sûr) a commencé à travailler à LaTeX2e, la version actuelle de LaTeX,
+ à la fin des années 1980.
  Cette nouvelle version de LaTeX comporte notamment un jeu de commandes
  qui fournit une interface conviviale pour les anciennes commandes de création
  de macros de TeX, des commandes facilitant l'utilisation de nouvelles polices,
@@ -1010,8 +1013,11 @@ a
 \end_inset
 
 .
- En général.
- Leslie Lamport dit pourtant dans son livre, que 
+ Leslie 
+\noun on
+Lamport
+\noun default
+ dit pourtant dans son livre, que 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1133,7 +1139,7 @@ lyx-users@lists.lyx.org
 \end_layout
 
 \begin_layout Subsection
-Le Format des Manuels
+Le Format des manuels
 \end_layout
 
 \begin_layout Standard
@@ -1268,11 +1274,11 @@ Nom Propre
 \end_layout
 
 \begin_layout Itemize
-le style
+le style 
 \series bold
- Gras 
+Gras
 \series default
-sert pour le code LaTeX.
+ sert pour le code LaTeX.
 \end_layout
 
 \begin_layout Standard
@@ -1747,14 +1753,14 @@ Emacs
 \begin_layout Subsection
 
 \series medium
-Unités utilisées dans le manuels
+Unités utilisées dans les manuels
 \end_layout
 
 \begin_layout Standard
 Le tableau\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "tab:Unités"
+reference "cap:Units-for-image"
 
 \end_inset
 
@@ -1772,8 +1778,10 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
+
+\lang english
 \begin_inset LatexCommand label
-name "tab:Unités"
+name "cap:Units-for-image"
 
 \end_inset
 
@@ -2145,7 +2153,7 @@ line%
 \begin_inset Text
 
 \begin_layout Standard
-% of line width
+% de la ligne
 \end_layout
 
 \end_inset
@@ -2282,7 +2290,7 @@ em)
 \begin_layout Subsection
 
 \series medium
-Les Manuels
+Les manuels
 \end_layout
 
 \begin_layout Standard
@@ -2303,8 +2311,6 @@ Ce fichier.
 
 \end_deeper
 \begin_layout Description
-
-\emph on
 Manuel\InsetSpace ~
 d'Apprentissage
 \end_layout
@@ -2355,16 +2361,12 @@ d'Apprentissage
 
 \end_deeper
 \begin_layout Description
-
-\emph on
 Guide\InsetSpace ~
 
 \shape italic
-\emph default
+\emph on
 de\InsetSpace ~
-l'U
-\series bold
-tilisateur
+l'Utilisateur
 \end_layout
 
 \begin_deeper
@@ -2384,14 +2386,10 @@ d'Apprentissage\SpecialChar \@.
 
 \end_deeper
 \begin_layout Description
-Embedded\InsetSpace ~
-Objects Extension
+Objets\InsetSpace ~
+Insérés Extension du 
 \emph on
- 
-\emph default
-du
-\emph on
- Guide\InsetSpace ~
+Guide\InsetSpace ~
 de L'Utilisateur
 \emph default
 , il explique en détail comment utiliser les tableaux, les graphiques, les
@@ -2400,8 +2398,6 @@ de L'Utilisateur
 \end_layout
 
 \begin_layout Description
-
-\emph on
 Options\InsetSpace ~
 Avancées
 \end_layout
@@ -2420,8 +2416,6 @@ ires, des fonctions d'édition particulières.
 
 \end_deeper
 \begin_layout Description
-
-\emph on
 Personnalisation
 \end_layout
 
@@ -2441,8 +2435,6 @@ d'Apprentissage
 
 \end_deeper
 \begin_layout Description
-
-\emph on
 Configuration\InsetSpace ~
 LaTeX
 \end_layout
@@ -2540,7 +2532,7 @@ Lors de votre utilisation de LyX, vous pouvez rencontrer un comportement
  que vous considérez comme un bogue.
  Les plantages sont rares, mais ça peut arriver.
  Les problèmes d'interface utilisateur sont considérés par l'équipe LyX
- comme des bogues importants : des indications sur les parties de l'inteface
+ comme des bogues importants : des indications sur les parties de l'interface
  LyX que vous trouvez confuses et peu claires nous sont précieuses.
 \end_layout
 
@@ -2731,7 +2723,7 @@ change log
 \end_layout
 
 \begin_layout Subsection
-Contribuer à la Documentation
+Contribuer à la documentation
 \end_layout
 
 \begin_layout Standard
@@ -2744,7 +2736,7 @@ ns.
 \end_layout
 
 \begin_layout Subsubsection
-Rapporter les erreurs dans les Manuels
+Rapporter les erreurs dans les manuels
 \end_layout
 
 \begin_layout Standard
@@ -2758,7 +2750,7 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Subsubsection
-Se joindre à l'Équipe de Documentation
+Se joindre à l'équipe de documentation
 \end_layout
 
 \begin_layout Standard
@@ -2774,7 +2766,7 @@ avant tout
 Récupérez le code source de LyX le plus récent.
  Désarchivez-le
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Les plus aventureux peuvent récupérer les sources les plus récentes sur
@@ -2861,7 +2853,7 @@ t à une restructuration majeure de la documentation.
 \end_layout
 
 \begin_layout Subsubsection
-Contribuer à la Traduction
+Contribuer à la traduction francophone
 \end_layout
 
 \begin_layout Standard
@@ -2898,14 +2890,10 @@ target "http://www.devel.lyx.org/"
 \end_inset
 
 .
- Il y a aussi une 
-\begin_inset LatexCommand url
-name "page de la traduction en français"
-target "http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr.html"
-
-\end_inset
-
-, sur laquelle vous pouvez télécharger les fichiers les plus récents.
+ Il y a aussi une site de référence pour les traductions en français, sur
+ laquelle vous pouvez télécharger les fichiers les plus récents; l'adresse
+ du site étant susceptible de modifications, voyez les archives de la liste
+ pour obtenir cette information.
 \end_layout
 
 \end_body
