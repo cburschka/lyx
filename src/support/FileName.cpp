@@ -60,7 +60,9 @@ struct FileName::Private
 	Private() {}
 
 	Private(string const & abs_filename) : fi(toqstr(abs_filename))
-	{}
+	{
+		fi.setCaching(fi.exists() ? true : false);
+	}
 	///
 	QFileInfo fi;
 };
@@ -145,6 +147,21 @@ bool FileName::renameTo(FileName const & name) const
 	if (!success)
 		LYXERR0("Could not rename file " << *this << " to " << name);
 	return success;
+}
+
+
+bool FileName::changePermission(unsigned long int mode) const
+{
+	if (!fname.isWritable()) {
+		LYXERR0("File " << *this << " is not writable!");
+		return false;
+	}
+
+	if (!chmod(fname, mode)) {
+		LYXERR0("File " << *this << " cannot be changed to " << mode << " mode!");
+		return false;
+	}
+	return true;
 }
 
 

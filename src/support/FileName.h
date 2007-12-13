@@ -102,6 +102,9 @@ public:
 	/// \retrun true on success.
 	bool renameTo(FileName const & target) const;
 
+	/// change mode of pointed file.
+	/// \retrun true on success.
+	bool changeMode(unsigned long int mode) const;
 
 	/// remove directory and all contents, returns true on success
 	bool destroyDirectory() const;
