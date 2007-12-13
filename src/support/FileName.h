@@ -104,7 +104,7 @@ public:
 
 	/// change mode of pointed file.
 	/// \retrun true on success.
-	bool changeMode(unsigned long int mode) const;
+	bool changePermission(unsigned long int mode) const;
 
 	/// remove directory and all contents, returns true on success
 	bool destroyDirectory() const;

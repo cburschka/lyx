@@ -152,12 +152,12 @@ bool FileName::renameTo(FileName const & name) const
 
 bool FileName::changePermission(unsigned long int mode) const
 {
-	if (!fname.isWritable()) {
+	if (!isWritable()) {
 		LYXERR0("File " << *this << " is not writable!");
 		return false;
 	}
 
-	if (!chmod(fname, mode)) {
+	if (!chmod(*this, mode)) {
 		LYXERR0("File " << *this << " cannot be changed to " << mode << " mode!");
 		return false;
 	}
