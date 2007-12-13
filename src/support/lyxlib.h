@@ -26,14 +26,6 @@ namespace support {
 /// get the current working directory
 FileName const getcwd();
 
-/**
- * rename a file, returns false if it fails.
- * It can handle renames across partitions.
- */
-bool rename(FileName const & from, FileName const & to);
-/// copy a file, returns false it it fails
-bool copy(FileName const & from, FileName const & to,
-	  unsigned long int mode = (unsigned long int)-1);
 /// FIXME: some point to this hmm ?
 int kill(int pid, int sig);
 /// FIXME: same here

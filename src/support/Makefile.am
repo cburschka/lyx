@@ -44,7 +44,6 @@ liblyxsupport_la_SOURCES = \
 	abort.cpp \
 	convert.cpp \
 	convert.h \
-	copy.cpp \
 	copied_ptr.h \
 	debug.cpp \
 	debug.h \
@@ -87,7 +86,6 @@ liblyxsupport_la_SOURCES = \
 	Package.cpp \
 	Package.h \
 	qstring_helpers.h \
-	rename.cpp \
 	socktools.cpp \
 	socktools.h \
 	strfwd.h \

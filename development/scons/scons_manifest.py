@@ -341,7 +341,6 @@ src_support_files = Split('''
     Timeout.cpp
     abort.cpp
     convert.cpp
-    copy.cpp
     debug.cpp
     docstream.cpp
     docstring.cpp
@@ -356,7 +355,6 @@ src_support_files = Split('''
     lyxtime.cpp
     mkdir.cpp
     os.cpp
-    rename.cpp
     socktools.cpp
     tempname.cpp
     unicode.cpp

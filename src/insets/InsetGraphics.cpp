@@ -688,7 +688,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// the file format from the extension, so we must
 			// change it.
 			FileName const new_file = FileName(changeExtension(temp_file.absFilename(), ext));
-			if (rename(temp_file, new_file)) {
+			if (temp_file.renameTo(new_file)) {
 				temp_file = new_file;
 				output_file = changeExtension(output_file, ext);
 				source_file = FileName(changeExtension(source_file.absFilename(), ext));

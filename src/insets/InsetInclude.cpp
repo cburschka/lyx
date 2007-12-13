@@ -475,7 +475,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		unsigned long const checksum_out = writefile.checksum();
 
 		if (checksum_in != checksum_out) {
-			if (!copy(included_file, writefile)) {
+			if (!included_file.copyTo(writefile)) {
 				// FIXME UNICODE
 				LYXERR(Debug::LATEX,
 					to_utf8(bformat(_("Could not copy the file\n%1$s\n"
