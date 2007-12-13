@@ -95,20 +95,24 @@ public:
 	bool copyTo(FileName const & target, bool overwrite = false) const;
 
 	/// remove pointed file.
-	/// \retrun true on success.
+	/// \return true on success.
 	bool removeFile() const;
 
 	/// rename pointed file.
-	/// \retrun true on success.
+	/// \return true on success.
 	bool renameTo(FileName const & target) const;
 
 	/// change mode of pointed file.
-	/// \retrun true on success.
+	/// This methods does nothing and return true on platforms that does not
+	/// support this.
+	/// \return true on success.
 	bool changePermission(unsigned long int mode) const;
 
-	/// remove directory and all contents, returns true on success
+	/// remove pointed directory and all contents.
+	/// \return true on success.
 	bool destroyDirectory() const;
-	/// Creates directory. Returns true on success
+	/// Creates pointed directory.
+	/// \return true on success.
 	bool createDirectory(int permissions) const;
 
 	/// Get the contents of a file as a huge docstring.
