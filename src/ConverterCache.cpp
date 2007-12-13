@@ -292,7 +292,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		              onlyFilename(item->cache_name.absFilename()))) {
 			LYXERR(Debug::FILES, "Could not copy file " << orig_from << " to "
 				<< item->cache_name);
-		} else if (!item->cache_name.changeMode(0600)) {
+		} else if (!item->cache_name.changePermission(0600)) {
 			LYXERR(Debug::FILES, "Could not change file mode"
 				<< item->cache_name);
 		}
@@ -301,7 +301,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 				orig_from.checksum());
 		if (mover.copy(converted_file, new_item.cache_name,
 		              onlyFilename(new_item.cache_name.absFilename()))) {
-			if (!new_item.cache_name.changeMode(0600)) {
+			if (!new_item.cache_name.changePermission(0600)) {
 				LYXERR(Debug::FILES, "Could not change file mode"
 					<< new_item.cache_name);
 			}
