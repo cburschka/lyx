@@ -979,6 +979,23 @@ def revert_interlingua(document):
         j = j + 1
 
 
+def revert_serbianlatin(document):
+    "Set language Serbian-Latin to Croatian"
+    i = 0
+    if document.language == "serbian-latin":
+        document.language = "croatian"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language croatian"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang serbian-latin", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang serbian-latin", "\\lang croatian")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -1014,10 +1031,12 @@ convert = [[277, [fix_wrong_tables]],
            [304, [convert_framed_notes]],
            [305, []],
            [306, []],
-           [307, []]
+           [307, []],
+           [308, []]
           ]
 
-revert =  [[306, [revert_slash, revert_nobreakdash]],
+revert =  [[307, [revert_serbianlatin]],
+           [306, [revert_slash, revert_nobreakdash]],
            [305, [revert_interlingua]],
            [304, [revert_bahasam]],
            [303, [revert_framed_notes]],

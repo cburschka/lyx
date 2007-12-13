@@ -116,7 +116,7 @@ namespace os = support::os;
 
 namespace {
 
-int const LYX_FORMAT = 307; // JSpitzm: support for \slash
+int const LYX_FORMAT = 308; // Uwe: Serbian-Latin
 
 } // namespace anon
 
