@@ -162,8 +162,7 @@ bool FileName::renameTo(FileName const & name) const
 
 bool FileName::moveTo(FileName const & name) const
 {
-	if (name.exists() && !name.removeFile())
-		return false;
+	QFile::remove(name.d->fi.absoluteFilePath());
 
 	bool success = QFile::rename(d->fi.absoluteFilePath(),
 		name.d->fi.absoluteFilePath());
