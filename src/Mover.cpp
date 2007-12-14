@@ -35,7 +35,7 @@ bool Mover::copy(FileName const & from, FileName const & to) const
 bool Mover::do_copy(FileName const & from, FileName const & to,
 		    string const &) const
 {
-	return from.copyTo(to);
+	return from.copyTo(to, true);
 }
 
 
