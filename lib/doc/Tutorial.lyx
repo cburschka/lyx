@@ -2901,22 +2901,7 @@ LaTeX is used by many scientists because it outputs great looking equations,
 Math\InsetSpace ~
 Panel
 \family default
- will allow you to write professional-looking math quickly and easily
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-LyX can't check if the math you're writing is actually 
-\emph on
-correct
-\emph default
-.
- Sorry.
-\end_layout
-
-\end_inset
-
-.
+ will allow you to write professional-looking math quickly and easily.
 \end_layout
 
 \begin_layout Section
@@ -2933,12 +2918,9 @@ I like what Einstein said, E=mc^2, because it's so simple.
 \end_layout
 
 \begin_layout Standard
-Now, that equation doesn't look very good, even in the 
-\family typewriter
-dvi
-\family default
- file; there's no space between the letters and the equals sign, and you'd
- like to write an actual superscript for the 
+Now, that equation doesn't look very good in LyX and in the output; there's
+ no space between the letters and the equals sign, and you'd like to write
+ an actual superscript for the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2954,13 +2936,24 @@ dvi
 
 \begin_layout Standard
 Instead, we create a formula that will get typeset properly.
- In order to create a formula, just click the toolbar button with 
-\begin_inset Formula $\frac{a+b}{c}$
+ In order to create a formula, just click the toolbar button 
+\begin_inset Graphics
+	filename ../images/math-mode.xpm
+	scale 75
+	scaleBeforeRotation
+
 \end_inset
 
- written on it in blue.
+ or use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Inline\InsetSpace ~
+Formula
+\family default
+.
  LyX will insert a little blue square, which is an empty math formula.
- LyX has placed the cursor in the blue square, so just type 
+ Now just type 
 \family typewriter
 E=mc^2
 \family default
@@ -2977,11 +2970,7 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Run LaTeX and look at the 
-\family typewriter
-dvi
-\family default
- file.
+Run LaTeX and look at the output.
  Notice that the expression was typeset nicely, with spaces between the
  letters and the equals sign, and a superscript 
 \begin_inset Quotes eld
@@ -3006,27 +2995,13 @@ This math editor is another example of the WYSIWYM philosophy.
 sqrt
 \family default
 ; this can be frustrating, because you can't see what an expression looks
- like until you LaTeX the file, and may have to spend time to find missing
- brackets or other 
-\begin_inset Quotes eld
-\end_inset
-
-bugs
-\begin_inset Quotes erd
-\end_inset
-
-.
- On the other hand, LyX doesn't attempt to get the expression to look perfect
- (WYSIWYG), but it gives you an extremely good idea of what the expression
- will look like.
+ like until you LaTeX the file, and may have to spend time to find e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+missing
+ brackets.
+ LyX doesn't attempt to get the expression to look perfect (WYSIWYG), but
+ it gives you an extremely good idea of what the expression will look like.
  LaTeX then takes care of the professional typesetting.
- 99% of the time, you won't have to make any changes to the font sizes or
- spacing that LaTeX outputs.
- This way (sorry to be so repetitive) you can focus on the 
-\emph on
-content
-\emph default
- of your mathematical expressions, not their format.
 \end_layout
 
 \begin_layout Section
@@ -3086,27 +3061,20 @@ Backspace
  Select text either with the arrow keys or with the mouse.
  
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-U
-\bar default
-ndo
+Edit\SpecialChar \menuseparator
+Undo
 \family default
- works in math mode, as does cutting and pasting.
- One thing to be careful of: if you're right outside a formula and you type
- 
+ works in math mode as well as cut and paste.
+ One thing to be careful of: If you are left or right outside a formula
+ and you press 
 \family sans
 Delete
 \family default
- (or 
+ or 
 \family sans
 Backspace
 \family default
-), it will delete the whole expression.
+, respectively, you delete the whole formula.
  Luckily, you can just use 
 \family sans
 Undo
@@ -3141,11 +3109,12 @@ c
 \begin_inset Quotes erd
 \end_inset
 
-, then typing 
+, then press 
 \family sans
 Up
 \family default
- will move the cursor to the level of the superscript, just before the 
+ and the cursor is moved to the level of the superscript, just before the
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3168,11 +3137,15 @@ Up
 Down
 \family default
  will move the cursor back to the regular level.
- In fact, if you hit 
+ When you hit 
+\family sans
+Space
+\family default
+ instead of 
 \family sans
 Down
 \family default
- from anywhere within the superscript, the cursor will be placed just 
+, the cursor will be placed 
 \emph on
 after
 \emph default
@@ -3195,7 +3168,7 @@ Exponents and Indices
 An exponent can be entered from the 
 \family sans
 Math\InsetSpace ~
-Panel
+Toolbar
 \family default
  (see below), but it's actually simpler just to type the caret key, 
 \begin_inset Quotes eld
@@ -3216,7 +3189,7 @@ Space
 \family sans
 Esc
 \family default
- to exit Mathed entirely) will be in the superscript.
+ to exit the formula entirely) will be in the superscript.
 \end_layout
 
 \begin_layout Standard
@@ -3261,9 +3234,9 @@ The
 Math\InsetSpace ~
 Toolbar
 \family default
- is a convenient way to enter symbols or to perform many complicated Mathed
- functions.
- Many of these functions can be accomplished from the keyboard or the 
+ is a convenient way to enter symbols or to perform complicated formula
+ operations.
+ Many of these operations can be accomplished from the keyboard or the 
 \family sans
 Edit\SpecialChar \menuseparator
 Math
@@ -3288,7 +3261,8 @@ The
 \family sans
 math toolbar
 \family default
- can be turned on in the menu 
+ is shown when the cursor is in a formula and can also be turned on manually
+ in the menu 
 \family sans
 View\SpecialChar \menuseparator
 Toolbars
@@ -3383,8 +3357,15 @@ Square roots, accents, and delimiters
 \end_layout
 
 \begin_layout Standard
-To type a square root, just click on the button with a square root sign
- on it.
+To type a square root, just click on the button 
+\begin_inset Graphics
+	filename ../images/math/sqrt.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+.
  The square root appears, and the cursor is in a new insertion point inside
  the square root.
  You can type variables, numbers, other square roots, fractions, whatever
@@ -3402,11 +3383,15 @@ Accenting a character (
 \end_inset
 
 ) is done the same way.
- The 
-\family sans
-Decoration
-\family default
- types are available from the toolbar.
+ Decorations are available from the toolbar via the button 
+\begin_inset Graphics
+	filename ../images/math/hat.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+.
  Click on a decoration, and LyX will insert that decoration with an insertion
  point under (or over) it.
  Just type what you want in the insertion point.
@@ -3419,19 +3404,22 @@ Decoration
 \begin_layout Standard
 Delimiters such as parentheses, brackets, and braces work similarly, but
  are a bit more complicated.
- Hit the 
-\family sans
-Delimiter
-\family default
- button, which features a blue square surrounded by brackets, to pop up
- the 
+ Hit the delimiter button 
+\begin_inset Graphics
+	filename ../images/dialog-show_mathdelimiter.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+ to pop up the 
 \family sans
 Delimiter
 \family default
  dialog.
  Your current selection of delimiters is displayed in a box.
  It's a pair of parentheses by default, but you can choose a pair of braces,
- a brace and a parenthesis, or even choose the empty square to have something
+ a brace and a parenthesis, or choose the empty square to have something
  like 
 \begin_inset Quotes eld
 \end_inset
@@ -3454,20 +3442,19 @@ If you're lazy, you can type actual parentheses in math mode, rather than
 \family sans
 Delimiter
 \family default
- window.
+ dialog.
  However, those parentheses will be the same size as regular text, which
  will look bad if you have a big fraction or matrix inside the parentheses.
- Using the 
-\family sans
-Delimiter
-\family default
- window will guarantee that the delimiters are sized based on what's inside
- them.
+ So better use in this case one of the three delimiter buttons that insert
+ directly e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+a (\InsetSpace \thinspace{}
+) pair.
 \end_layout
 
 \begin_layout Standard
 You can also put delimiters or a square root sign or a decoration on already
- existing text.
+ existing formula parts.
  Select the portion of the formula that you want to adjust, and then click
  on the button you want from the 
 \family sans
@@ -3494,17 +3481,21 @@ Fractions
 \end_layout
 
 \begin_layout Standard
-Fractions are very simple in Mathed.
- Just click on the 
-\family sans
-Fraction
-\family default
- button in the 
+To create a fraction, click on the fraction button 
+\begin_inset Graphics
+	filename ../images/math/frac.xpm
+	lyxscale 75
+	scale 60
+	scaleBeforeRotation
+
+\end_inset
+
+ in the 
 \family sans
 Math\InsetSpace ~
 Toolbar
 \family default
-, which shows a fraction with blue squares in the numerator and the denominator.
+.
  LyX writes two insertion points in a fraction.
  As you would expect, you can use arrow keys or the mouse to move around
  a fraction.
@@ -3562,7 +3553,7 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
- in math mode, LyX thinks you're typing the product of the three variables
+ in math mode, LyX thinks you are typing the product of the three variables
  
 \begin_inset Formula $s$
 \end_inset
@@ -3602,17 +3593,17 @@ x
 \begin_inset Quotes erd
 \end_inset
 
- (typing 
+ (pressing 
 \family sans
 Space
 \family default
- will just exit math mode).
+ will exit the formula).
  So how do you get 
 \begin_inset Quotes eld
 \end_inset
 
 
-\begin_inset Formula $\sin x$
+\begin_inset Formula $\sin(x)$
 \end_inset
 
 
@@ -3624,7 +3615,7 @@ Space
 \end_inset
 
 
-\begin_inset Formula $sinx$
+\begin_inset Formula $sin(x)$
 \end_inset
 
 
@@ -3635,7 +3626,20 @@ Space
 \end_layout
 
 \begin_layout Standard
-Click on 
+Click on the 
+\family sans
+Math\InsetSpace ~
+Toolbar
+\family default
+ button 
+\begin_inset Graphics
+	filename ../images/math/functions.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+ and then on 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3643,16 +3647,7 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
- in the 
-\family sans
-Functions
-\family default
- list in the 
-\family sans
-Math\InsetSpace ~
-Toolbar
-\family default
-.
+ in the appearing function list.
  The word 
 \begin_inset Quotes eld
 \end_inset
@@ -3661,7 +3656,7 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
- is written in black, in upright roman type.
+ is displayed in LyX in black, and set in upright roman type.
  The whole word is treated as one symbol, so if you type 
 \family sans
 Backspace
@@ -3671,26 +3666,18 @@ Backspace
 \begin_inset Quotes eld
 \end_inset
 
-x
+(x)
 \begin_inset Quotes erd
 \end_inset
 
-, which will be written in blue italics, like you expect in Mathed.
- In the 
-\family typewriter
-dvi
-\family default
- file, the expression will be correctly typeset.
- Try it.
+, which will be written in blue italics, like you expect in a formula.
+ In the output, the expression will be correctly typeset.
+ Try it out.
 \end_layout
 
 \begin_layout Standard
-Other commands you need to type in TeX mode using the 
-\family sans
-Functions
-\family default
- box include other trigonometric functions and their inverses, hyperbolic
- functions, logarithms, limits, and quite a few others.
+The function list include other trigonometric functions and their inverses,
+ hyperbolic functions, logarithms, limits, and quite a few others.
  These functions can take subscripts and superscripts, important for typing
  
 \begin_inset Quotes eld
@@ -3742,23 +3729,23 @@ name "sec:matrices"
 \end_layout
 
 \begin_layout Standard
-Click on the 
-\family sans
-Matrix
-\family default
- button in the 
+Click on the matrix button 
+\begin_inset Graphics
+	filename ../images/dialog-show_mathmatrix.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+ in the 
 \family sans
 Math\InsetSpace ~
 Toolbar
 \family default
 .
- The dialog has two sliding bars which allow you to choose how many rows
- and columns you want in your matrix.
+ The appearing dialog allows you to choose how many rows and columns you
+ want in your matrix.
  Choose 2 rows and 3 columns and hit 
-\family sans
-Apply
-\family default
- or 
 \family sans
 OK
 \family default
@@ -3768,7 +3755,7 @@ OK
 \end_inset
 
  matrix.
- As usual, you can put any sort of Mathed expression (a square root, another
+ As usual, you can put any sort of formula expression (a square root, another
  matrix, etc.) in each insertion point.
  You can also leave some of the insertion points empty if you want.
 \end_layout
@@ -3791,53 +3778,47 @@ Down
 \end_layout
 
 \begin_layout Standard
-If you suddenly need more rows or columns, use 
+If you need to change the number of rows and columns, use the menu 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-ath\SpecialChar \menuseparator
-Add\InsetSpace ~
-
-\bar under
-R
-\bar default
-ow
+Edit\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Rows\InsetSpace \thinspace{}
+&\InsetSpace \thinspace{}
+Columns
 \family default
- and 
-\family sans
-Add\InsetSpace ~
+ or the table toolbar buttons 
+\begin_inset Graphics
+	filename ../images/tabular-feature_append-row.xpm
+	scale 75
+	scaleBeforeRotation
 
-\bar under
-C
-\bar default
-olumn
-\family default
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../images/tabular-feature_delete-row.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../images/tabular-feature_append-column.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+, 
+\begin_inset Graphics
+	filename ../images/tabular-feature_delete-column.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
 .
- They add a row or column just after the current position.
- Overdid it? Use 
-\family sans
-\bar under
-D
-\bar default
-elete\InsetSpace ~
-Row
-\family default
- and 
-\family sans
-D
-\bar under
-e
-\bar default
-lete\InsetSpace ~
-Column
-\family default
- from the same menu.
 \end_layout
 
 \begin_layout Standard
@@ -3848,7 +3829,7 @@ User's Guide
  for information on how to change the horizontal alignment of each column,
  and how to change the vertical position of the whole matrix.
  Note that if you want to write a table containing text, you should use
- LyX' wonderful table support, rather than trying to write text in a matrix.
+ LyX's wonderful table support, rather than trying to write text in a matrix.
 \end_layout
 
 \begin_layout Subsection
@@ -3867,22 +3848,19 @@ All of the expressions we have written so far have been on the same line
 \emph on
 User's Guide
 \emph default
-), and multi-line equations (see Sec.
- 
-\begin_inset LatexCommand ref
-reference "sec:multiline"
-
-\end_inset
-
-) must be in display mode.
+), and multi-line equations must be in display mode.
 \end_layout
 
 \begin_layout Standard
-Click on the 
-\family sans
-Display
-\family default
- button in the 
+Click on the display button 
+\begin_inset Graphics
+	filename ../images/math-display.xpm
+	scale 75
+	scaleBeforeRotation
+
+\end_inset
+
+ in the 
 \family sans
 Math\InsetSpace ~
 Toolbar
@@ -3892,12 +3870,8 @@ Toolbar
  LyX inserts a formula, but the insertion point is on a new line, and it's
  centered within that line.
  Now type an expression and run LaTeX to see how it looks.
- The 
-\family sans
-Display
-\family default
- button is actually a toggle; use it now to change a couple of your expressions
- to display mode and back.
+ The display button is actually a toggle; use it now to change a couple
+ of your expressions to display mode and back.
  
 \end_layout
 
@@ -3932,7 +3906,7 @@ ns are very similar.
 \end_layout
 
 \begin_layout Standard
-One final note about the way displayed formulae are typeset: be careful
+One final note about the way displayed formulas are typeset: Be careful
  about whether you're putting your equation into a new paragraph or not.
  If your formula is in the middle of a sentence or paragraph, then don't
  press 
@@ -3945,7 +3919,8 @@ Return
 after
 \emph default
  the formula to start a new paragraph.
- That text will therefore be indented, which is probably not what you want.
+ That text will therefore eventually be indented, depending on your document
+ paragraph settings, which is probably not what you want.
 \end_layout
 
 \begin_layout Standard
@@ -3971,25 +3946,14 @@ Exercise
 status collapsed
 
 \begin_layout Standard
-After you've done it the hard way, why don't you give 
+After you've done it the hard way, give 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar \menuseparator
-Mat
-\bar under
-h
-\bar default
-\SpecialChar \menuseparator
-
-\bar under
-C
-\bar default
-ases\InsetSpace ~
-environment
+Insert\SpecialChar \menuseparator
+Math\SpecialChar \menuseparator
+Cases\InsetSpace ~
+Environment
 \family default
- a try?
+ a try.
 \end_layout
 
 \end_inset
@@ -4011,8 +3975,8 @@ More Math Stuff
 \end_layout
 
 \begin_layout Standard
-Mathed can do plenty more.
- By now, you're familiar with the basics, so we'll just refer to the 
+LyX's math editor can do plenty more.
+ By now, you're familiar with the basics, so we refer to the 
 \emph on
 User's Guide
 \emph default
@@ -4040,17 +4004,10 @@ Fine-tune font sizes and spacing within an expression.
 Write macros.
  These are very powerful, because you just define them once at the top of
  the document, and then you can use them throughout the document.
- If you change the macro definition, the references to the macro will be
- changed throughout the document.
- Macros can even take arguments.
 \end_layout
 
 \begin_layout Itemize
-Do lots of other things we didn't have time to mention in this 
-\emph on
-Tutorial
-\emph default
-.
+Do lots of other things that can't be mentioned in this Tutorial.
 \end_layout
 
 \begin_layout Chapter
