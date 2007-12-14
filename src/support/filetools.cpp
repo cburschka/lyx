@@ -329,7 +329,7 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 	// safe because of the gap between unlink and mkdir. (Lgb)
 	tmpfl.removeFile();
 
-	if (tmpfl.empty() || tmpfl.createDirectory(0700)) {
+	if (tmpfl.empty() || !tmpfl.createDirectory(0700)) {
 		lyxerr << "LyX could not create the temporary directory '"
 		       << tmpfl << "'" << endl;
 		return FileName();
@@ -348,7 +348,7 @@ string const createBufferTmpDir()
 		package().temp_dir().absFilename() + "/lyx_tmpbuf" +
 		convert<string>(count++);
 
-	if (FileName(tmpfl).createDirectory(0777)) {
+	if (!FileName(tmpfl).createDirectory(0777)) {
 		lyxerr << "LyX could not create the temporary directory '"
 		       << tmpfl << "'" << endl;
 		return string();
@@ -362,7 +362,7 @@ FileName const createLyXTmpDir(FileName const & deflt)
 	if (deflt.empty() || deflt.absFilename() == "/tmp")
 		return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
 
-	if (!deflt.createDirectory(0777)) 
+	if (deflt.createDirectory(0777)) 
 		return deflt;
 
 	if (deflt.isDirWritable()) {
