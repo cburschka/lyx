@@ -699,12 +699,12 @@ LyX: Visual, WYSIWYM word-processor that uses LaTeX to do its printing.
 \end_layout
 
 \begin_layout Standard
-LaTeX is the reason why LyX differs from other word processors.
- LyX is a graphical user interface (GUI) frontend for LaTeX.
- It is designed to typeset documents using LaTeX without knowing its macro
- commands.
- But although LyX can never support all commands graphically, it offers
- its usage, so that LyX is as functional as LaTeX.
+LaTeX makes LyX different from other word processors.
+ LyX is a graphical user interface (GUI) frontend for LaTeX, designed to
+ typeset documents without knowing LaTeX's macro commands.
+ LyX does not provide graphical support for all the countless existing LaTeX
+ macros, but can parse all of them.
+ Thus LyX is every bit as functional as LaTeX.
 \end_layout
 
 \begin_layout Standard
