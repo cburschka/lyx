@@ -1738,7 +1738,7 @@ void PrefShortcuts::apply(LyXRC & rc) const
 	rc.bind_file = internal_path(fromqstr(bindFileED->text()));
 	// write user_bind and user_unbind to .lyx/bind/user.bind
 	string bind_dir = addPath(package().user_support().absFilename(), "bind");
-	if (!FileName(bind_dir).exists() && mkdir(FileName(bind_dir), 0777)) {
+	if (!FileName(bind_dir).exists() && FileName(bind_dir).createDirectory(0777)) {
 		lyxerr << "LyX could not create the user bind directory '"
 		       << bind_dir << "'. All user-defined key bindings will be lost." << endl;
 		return;

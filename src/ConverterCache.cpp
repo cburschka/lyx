@@ -240,7 +240,7 @@ void ConverterCache::init()
 	// initialized after all static variables.
 	cache_dir = FileName(addName(package().user_support().absFilename(), "cache"));
 	if (!cache_dir.exists())
-		if (support::mkdir(cache_dir, 0700) != 0) {
+		if (!cache_dir.createDirectory(0700) != 0) {
 			lyxerr << "Could not create cache directory `"
 			       << cache_dir << "'." << endl;
 			exit(EXIT_FAILURE);
