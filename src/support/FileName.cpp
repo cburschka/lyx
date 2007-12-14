@@ -150,6 +150,19 @@ bool FileName::renameTo(FileName const & name) const
 }
 
 
+bool FileName::moveTo(FileName const & name) const
+{
+	if (name.exists() && !name.removeFile())
+		return false;
+
+	bool success = QFile::rename(d->fi.absoluteFilePath(),
+		name.d->fi.absoluteFilePath());
+	if (!success)
+		LYXERR0("Could not move file " << *this << " to " << name);
+	return success;
+}
+
+
 bool FileName::changePermission(unsigned long int mode) const
 {
 	if (!isWritable()) {

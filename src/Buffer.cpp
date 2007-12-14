@@ -845,7 +845,7 @@ bool Buffer::save() const
 	} else {
 		// Saving failed, so backup is not backup
 		if (madeBackup)
-			backupName.renameTo(d->filename);
+			backupName.moveTo(d->filename);
 		return false;
 	}
 }
@@ -1926,7 +1926,7 @@ int AutoSaveBuffer::generateChild()
 		if (!tmp_ret.empty()) {
 			buffer_.writeFile(tmp_ret);
 			// assume successful write of tmp_ret
-			if (!tmp_ret.renameTo(fname_)) {
+			if (!tmp_ret.moveTo(fname_)) {
 				failed = true;
 				// most likely couldn't move between
 				// filesystems unless write of tmp_ret

@@ -99,8 +99,14 @@ public:
 	bool removeFile() const;
 
 	/// rename pointed file.
+	/// \return false if the operation fails or if the \param target file
+	/// already exists.
 	/// \return true on success.
 	bool renameTo(FileName const & target) const;
+
+	/// move pointed file to \param target.
+	/// \return true on success.
+	bool moveTo(FileName const & target) const;
 
 	/// change mode of pointed file.
 	/// This methods does nothing and return true on platforms that does not

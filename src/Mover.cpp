@@ -49,7 +49,7 @@ bool Mover::rename(FileName const & from,
 bool Mover::do_rename(FileName const & from, FileName const & to,
 		      string const &) const
 {
-	return from.renameTo(to);
+	return from.moveTo(to);
 }
 
 
