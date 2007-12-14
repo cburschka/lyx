@@ -1285,75 +1285,12 @@ int Buffer::runChktex()
 
 void Buffer::validate(LaTeXFeatures & features) const
 {
-	TextClass const & tclass = params().getTextClass();
-
-	if (params().outputChanges) {
-		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
-		bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
-				  LaTeXFeatures::isAvailable("xcolor");
-
-		if (features.runparams().flavor == OutputParams::LATEX) {
-			if (dvipost) {
-				features.require("ct-dvipost");
-				features.require("dvipost");
-			} else if (xcolorsoul) {
-				features.require("ct-xcolor-soul");
-				features.require("soul");
-				features.require("xcolor");
-			} else {
-				features.require("ct-none");
-			}
-		} else if (features.runparams().flavor == OutputParams::PDFLATEX ) {
-			if (xcolorsoul) {
-				features.require("ct-xcolor-soul");
-				features.require("soul");
-				features.require("xcolor");
-				features.require("pdfcolmk"); // improves color handling in PDF output
-			} else {
-				features.require("ct-none");
-			}
-		}
-	}
-
-	// Floats with 'Here definitely' as default setting.
-	if (params().float_placement.find('H') != string::npos)
-		features.require("float");
-
-	// AMS Style is at document level
-	if (params().use_amsmath == BufferParams::package_on
-	    || tclass.provides("amsmath"))
-		features.require("amsmath");
-	if (params().use_esint == BufferParams::package_on)
-		features.require("esint");
+	params().validate(features);
 
 	loadChildDocuments();
 
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
-
-	// the bullet shapes are buffer level not paragraph level
-	// so they are tested here
-	for (int i = 0; i < 4; ++i) {
-		if (params().user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
-			int const font = params().user_defined_bullet(i).getFont();
-			if (font == 0) {
-				int const c = params()
-					.user_defined_bullet(i)
-					.getCharacter();
-				if (c == 16
-				   || c == 17
-				   || c == 25
-				   || c == 26
-				   || c == 31) {
-					features.require("latexsym");
-				}
-			} else if (font == 1) {
-				features.require("amssymb");
-			} else if ((font >= 2 && font <= 5)) {
-				features.require("pifont");
-			}
-		}
-	}
 
 	if (lyxerr.debugging(Debug::LATEX)) {
 		features.showStruct();

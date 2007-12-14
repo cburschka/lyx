@@ -808,6 +808,77 @@ void BufferParams::writeFile(ostream & os) const
 }
 
 
+void BufferParams::validate(LaTeXFeatures & features) const
+{
+	if (outputChanges) {
+		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
+		bool xcolorsoul = LaTeXFeatures::isAvailable("soul") &&
+				  LaTeXFeatures::isAvailable("xcolor");
+
+		switch (features.runparams().flavor) {
+		case OutputParams::LATEX:
+			if (dvipost) {
+				features.require("ct-dvipost");
+				features.require("dvipost");
+			} else if (xcolorsoul) {
+				features.require("ct-xcolor-soul");
+				features.require("soul");
+				features.require("xcolor");
+			} else {
+				features.require("ct-none");
+			}
+			break;
+		case OutputParams::PDFLATEX:
+			if (xcolorsoul) {
+				features.require("ct-xcolor-soul");
+				features.require("soul");
+				features.require("xcolor");
+				// improves color handling in PDF output
+				features.require("pdfcolmk"); 
+			} else {
+				features.require("ct-none");
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	// Floats with 'Here definitely' as default setting.
+	if (float_placement.find('H') != string::npos)
+		features.require("float");
+
+	// AMS Style is at document level
+	if (use_amsmath == package_on
+	    || getTextClass().provides("amsmath"))
+		features.require("amsmath");
+	if (use_esint == package_on)
+		features.require("esint");
+
+	// the bullet shapes are buffer level not paragraph level
+	// so they are tested here
+	for (int i = 0; i < 4; ++i) {
+		if (user_defined_bullet(i) == ITEMIZE_DEFAULTS[i]) 
+			continue;
+		int const font = user_defined_bullet(i).getFont();
+		if (font == 0) {
+			int const c = user_defined_bullet(i).getCharacter();
+			if (c == 16
+			    || c == 17
+			    || c == 25
+			    || c == 26
+			    || c == 31) {
+				features.require("latexsym");
+			}
+		} else if (font == 1) {
+			features.require("amssymb");
+		} else if (font >= 2 && font <= 5) {
+			features.require("pifont");
+		}
+	}
+}
+
+
 bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			      TexRow & texrow) const
 {

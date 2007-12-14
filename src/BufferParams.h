@@ -75,6 +75,9 @@ public:
 	///
 	void writeFile(std::ostream &) const;
 
+	/// check what features are implied by the buffer parameters.
+	void validate(LaTeXFeatures &) const;
+
 	/** \returns true if the babel package is used (interogates
 	 *  the BufferParams and a LyXRC variable).
 	 *  This returned value can then be passed to the insets...
