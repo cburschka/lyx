@@ -440,47 +440,6 @@ bool FileName::createDirectory(int permission) const
 }
 
 
-// adapted from zlib-1.2.3/contrib/minizip/miniunz.c
-static int makedir(char * newdir, unsigned long int mode)
-{
-	char *buffer;
-	char *p;
-	int	len = (int)strlen(newdir);
-
-	if (len <= 0)
-		return 1;
-
-	buffer = (char*)malloc(len+1);
-	strcpy(buffer,newdir);
-
-	if (buffer[len-1] == '/')
-		buffer[len-1] = '\0';
-	if (mymkdir(buffer, mode) == 0) {
-		free(buffer);
-		return 0;
-	}
-
-	p = buffer + 1;
-	while (1) {
-		char hold;
-
-		while(*p && *p != '\\' && *p != '/')
-			p++;
-		hold = *p;
-		*p = 0;
-		if (mymkdir(buffer, mode) != 0) {
-			free(buffer);
-			return 1;
-		}
-		if (hold == 0)
-			break;
-		*p++ = hold;
-	}
-	free(buffer);
-	return 0;
-}
-
-
 bool FileName::createPath() const
 {
 	BOOST_ASSERT(!empty());
