@@ -134,15 +134,21 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 
 	// need to make directory?
 	FileName path = ext.onlyPath();
-	if (!path.isDirectory())
-		makedir(const_cast<char*>(path.absFilename().c_str()), 0755);
-	if (emb.copyTo(ext))
+	if (!path.createPath()) {
+		Alert::error(_("Copy file failure"),
+			bformat(_("Cannot create file path '%1$s'.\n"
+			"Please check whether the path is writeable."),
+			from_utf8(path.absFilename())));
+		return false;
+	}
+
+	if (emb.copyTo(ext, true))
 		return true;
+
 	Alert::error(_("Copy file failure"),
 		 bformat(_("Cannot copy file %1$s to %2$s.\n"
 				 "Please check whether the directory exists and is writeable."),
 				from_utf8(emb_file), from_utf8(ext_file)));
-	//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 	return false;
 }
 
@@ -177,8 +183,8 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 	// need to make directory?
 	FileName path = emb.onlyPath();
 	if (!path.isDirectory())
-		makedir(const_cast<char*>(path.absFilename().c_str()), 0755);
-	if (ext.copyTo(emb))
+		path.createPath();
+	if (ext.copyTo(emb, true))
 		return true;
 	Alert::error(_("Copy file failure"),
 		 bformat(_("Cannot copy file %1$s to %2$s.\n"
@@ -281,7 +287,7 @@ bool EmbeddedFiles::writeFile(DocFileName const & filename)
 
 	::zipFiles(zipfile.toFilesystemEncoding(), filenames);
 	// copy file back
-	if (!zipfile.copyTo(filename)) {
+	if (!zipfile.copyTo(filename, true)) {
 		Alert::error(_("Save failure"),
 				 bformat(_("Cannot create file %1$s.\n"
 					   "Please check whether the directory exists and is writeable."),

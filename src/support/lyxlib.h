@@ -30,13 +30,7 @@ FileName const getcwd();
 int kill(int pid, int sig);
 /// FIXME: same here
 void abort();
-/// create the given directory with the given mode
-/// \ret return 0 if the directory is successfully created
-int mkdir(FileName const & pathname, unsigned long int mode);
-/// create the given directory with the given mode, create all
-/// intermediate directories if necessary
-/// \ret return 0 if the directory is successfully created
-int makedir(char * pathname, unsigned long int mode=0755);
+
 /// (securely) create a temporary file in the given dir with the given mask
 /// \p mask must be in filesystem encoding
 FileName const tempName(FileName const & dir = FileName(),

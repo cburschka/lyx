@@ -78,7 +78,6 @@ liblyxsupport_la_SOURCES = \
 	lyxsum.cpp \
 	Messages.cpp \
 	Messages.h \
-	mkdir.cpp \
 	os.cpp \
 	os.h \
 	Path.cpp \

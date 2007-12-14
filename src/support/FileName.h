@@ -120,6 +120,9 @@ public:
 	/// Creates pointed directory.
 	/// \return true on success.
 	bool createDirectory(int permissions) const;
+	/// Creates pointed path.
+	/// \return true on success.
+	bool createPath() const;
 
 	/// Get the contents of a file as a huge docstring.
 	/// \param encoding defines the encoding of the file contents.

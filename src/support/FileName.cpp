@@ -40,8 +40,18 @@
 #ifdef HAVE_SYS_STAT_H
 # include <sys/stat.h>
 #endif
-#include <cerrno>
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+#ifdef HAVE_DIRECT_H
+# include <direct.h>
+#endif
+#ifdef _WIN32
+# include <windows.h>
+#endif
+
 #include <fcntl.h>
+#include <cerrno>
 
 using namespace std;
 
@@ -397,10 +407,91 @@ bool FileName::destroyDirectory() const
 }
 
 
+static int mymkdir(char const * pathname, unsigned long int mode)
+{
+	// FIXME: why don't we have mode_t in lyx::mkdir prototype ??
+#if HAVE_MKDIR
+# if MKDIR_TAKES_ONE_ARG
+	// MinGW32
+	return ::mkdir(pathname);
+	// FIXME: "Permissions of created directories are ignored on this system."
+# else
+	// POSIX
+	return ::mkdir(pathname, mode_t(mode));
+# endif
+#elif defined(_WIN32)
+	// plain Windows 32
+	return CreateDirectory(pathname, 0) != 0 ? 0 : -1;
+	// FIXME: "Permissions of created directories are ignored on this system."
+#elif HAVE__MKDIR
+	return ::_mkdir(pathname);
+	// FIXME: "Permissions of created directories are ignored on this system."
+#else
+#   error "Don't know how to create a directory on this system."
+#endif
+
+}
+
+
 bool FileName::createDirectory(int permission) const
 {
 	BOOST_ASSERT(!empty());
-	return mkdir(*this, permission) == 0;
+	return mymkdir(toFilesystemEncoding().c_str(), permission) == 0;
+}
+
+
+// adapted from zlib-1.2.3/contrib/minizip/miniunz.c
+static int makedir(char * newdir, unsigned long int mode)
+{
+	char *buffer;
+	char *p;
+	int	len = (int)strlen(newdir);
+
+	if (len <= 0)
+		return 1;
+
+	buffer = (char*)malloc(len+1);
+	strcpy(buffer,newdir);
+
+	if (buffer[len-1] == '/')
+		buffer[len-1] = '\0';
+	if (mymkdir(buffer, mode) == 0) {
+		free(buffer);
+		return 0;
+	}
+
+	p = buffer + 1;
+	while (1) {
+		char hold;
+
+		while(*p && *p != '\\' && *p != '/')
+			p++;
+		hold = *p;
+		*p = 0;
+		if (mymkdir(buffer, mode) != 0) {
+			free(buffer);
+			return 1;
+		}
+		if (hold == 0)
+			break;
+		*p++ = hold;
+	}
+	free(buffer);
+	return 0;
+}
+
+
+bool FileName::createPath() const
+{
+	BOOST_ASSERT(!empty());
+	if (isDirectory())
+		return true;
+
+	QDir dir;
+	bool success = dir.mkpath(d->fi.absoluteFilePath());
+	if (!success)
+		LYXERR0("Cannot create path '" << *this << "'!");
+	return success;
 }
 
 
