@@ -915,7 +915,7 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, odocstream & os,
 		os.put(c);
 		// In T1 encoding, these characters exist
 		// but we should avoid ligatures
-		if (i + 1 > int(text_.size()) || text_[i + 1] != c)
+		if (i + 1 >= int(text_.size()) || text_[i + 1] != c)
 			return true;
 		os << "\\,{}";
 		column += 3;
