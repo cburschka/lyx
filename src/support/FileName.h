@@ -90,9 +90,9 @@ public:
 	
 	/// copy a file
 	/// \return true when file/directory is writable (write test file)
-	/// \param overwrite: set to true if we should erase the \c target 
-	/// file if it exists,
-	bool copyTo(FileName const & target, bool overwrite = false) const;
+	/// \warning This methods has different semantics when system level
+	/// copy command, it will overwrite the \c target file if it exists,
+	bool copyTo(FileName const & target) const;
 
 	/// remove pointed file.
 	/// \return true on success.

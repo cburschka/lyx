@@ -817,7 +817,7 @@ bool Buffer::save() const
 			backupName = FileName(addName(lyxrc.backupdir_path,
 						      mangledName));
 		}
-		if (fileName().copyTo(backupName, true)) {
+		if (fileName().copyTo(backupName)) {
 			madeBackup = true;
 		} else {
 			Alert::error(_("Backup failure"),

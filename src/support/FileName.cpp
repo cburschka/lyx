@@ -139,10 +139,9 @@ void FileName::erase()
 }
 
 
-bool FileName::copyTo(FileName const & name, bool overwrite) const
+bool FileName::copyTo(FileName const & name) const
 {
-	if (overwrite)
-		QFile::remove(name.d->fi.absoluteFilePath());
+	QFile::remove(name.d->fi.absoluteFilePath());
 	bool success = QFile::copy(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
 	if (!success)
 		lyxerr << "FileName::copyTo(): Could not copy file "

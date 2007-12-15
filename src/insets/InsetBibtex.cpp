@@ -179,7 +179,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			FileName const out_file = makeAbsPath(database + ".bib",
 					buffer.masterBuffer()->temppath());
 
-			bool const success = in_file.copyTo(out_file, true);
+			bool const success = in_file.copyTo(out_file);
 			if (!success) {
 				lyxerr << "Failed to copy '" << in_file
 				       << "' to '" << out_file << "'"
@@ -238,7 +238,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			base = removeExtension(in_file.mangledFilename());
 			FileName const out_file(makeAbsPath(base + ".bst",
 					buffer.masterBuffer()->temppath()));
-			bool const success = in_file.copyTo(out_file, true);
+			bool const success = in_file.copyTo(out_file);
 			if (!success) {
 				lyxerr << "Failed to copy '" << in_file
 				       << "' to '" << out_file << "'"

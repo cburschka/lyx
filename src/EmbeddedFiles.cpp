@@ -142,7 +142,7 @@ bool EmbeddedFile::extract(Buffer const * buf) const
 		return false;
 	}
 
-	if (emb.copyTo(ext, true))
+	if (emb.copyTo(ext))
 		return true;
 
 	Alert::error(_("Copy file failure"),
@@ -184,7 +184,7 @@ bool EmbeddedFile::updateFromExternalFile(Buffer const * buf) const
 	FileName path = emb.onlyPath();
 	if (!path.isDirectory())
 		path.createPath();
-	if (ext.copyTo(emb, true))
+	if (ext.copyTo(emb))
 		return true;
 	Alert::error(_("Copy file failure"),
 		 bformat(_("Cannot copy file %1$s to %2$s.\n"
@@ -287,7 +287,7 @@ bool EmbeddedFiles::writeFile(DocFileName const & filename)
 
 	::zipFiles(zipfile.toFilesystemEncoding(), filenames);
 	// copy file back
-	if (!zipfile.copyTo(filename, true)) {
+	if (!zipfile.copyTo(filename)) {
 		Alert::error(_("Save failure"),
 				 bformat(_("Cannot create file %1$s.\n"
 					   "Please check whether the directory exists and is writeable."),
