@@ -350,7 +350,6 @@ src_support_files = Split('''
     lstrings.cpp
     lyxsum.cpp
     lyxtime.cpp
-    mkdir.cpp
     os.cpp
     socktools.cpp
     tempname.cpp
