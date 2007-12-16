@@ -796,8 +796,8 @@ dist_imagesmath_DATA = \
 	images/math/surd.png \
 	images/math/swarrow.png \
 	images/math/tau.png \
-	images/math/textrm_Oe.png \
 	images/math/textrm_AA.png \
+	images/math/textrm_O.png \
 	images/math/therefore.png \
 	images/math/theta.png \
 	images/math/theta2.png \

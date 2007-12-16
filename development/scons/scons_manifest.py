@@ -1898,7 +1898,7 @@ lib_images_math_files = Split('''
     swarrow.png
     tau.png
     textrm_AA.png
-    textrm_Oe.png
+    textrm_O.png
     therefore.png
     theta.png
     theta2.png
