@@ -352,7 +352,6 @@ src_support_files = Split('''
     lyxtime.cpp
     os.cpp
     socktools.cpp
-    tempname.cpp
     unicode.cpp
     userinfo.cpp
 ''')
