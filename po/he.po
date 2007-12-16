@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-11-05 07:07+0200\n"
+"POT-Creation-Date: 2007-12-16 17:50+0100\n"
 "PO-Revision-Date: 2007-12-12 08:55+0200\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team:  <en@li.org>\n"
@@ -1397,7 +1397,9 @@ msgstr "מיקום"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:211
 msgid "Specify placement (htbp) for floating listings"
-msgstr "ציין מיקום (h=כאן, t=ראש הדף, b=תחתית הדף, p=עמוד אובייקטים צפים) עבור רישום צף"
+msgstr ""
+"ציין מיקום (h=כאן, t=ראש הדף, b=תחתית הדף, p=עמוד אובייקטים צפים) עבור רישום "
+"צף"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:218
 msgid "Check for floating listings"
@@ -1745,7 +1747,7 @@ msgstr "&מיושר לשני הכיוונים"
 msgid "L&ine spacing:"
 msgstr "מרווח &בין שורות:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1854
+#: src/frontends/qt4/ui/ParagraphUi.ui:260 src/Text.cpp:1855
 #: src/frontends/qt4/QDocument.cpp:245
 msgid "Single"
 msgstr "יחיד"
@@ -1754,7 +1756,7 @@ msgstr "יחיד"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1860
+#: src/frontends/qt4/ui/ParagraphUi.ui:270 src/Text.cpp:1861
 #: src/frontends/qt4/QDocument.cpp:249
 msgid "Double"
 msgstr "כפול"
@@ -2500,7 +2502,8 @@ msgid "Re&verse order"
 msgstr "סדר עמודים הפוך"
 
 #: src/frontends/qt4/ui/PrintUi.ui:152
-msgid "Copies"
+#, fuzzy
+msgid "Copie&s"
 msgstr "עותקים"
 
 #: src/frontends/qt4/ui/PrintUi.ui:164
@@ -2935,7 +2938,8 @@ msgid "&Rescan"
 msgstr "&סרוק מחדש"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr "הצג את תוכן הקובץ המסומן. אפשרי רק כאשר הקבצים מוצגים עם כתובת"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
@@ -3064,7 +3068,7 @@ msgid "Adjust the depth of the navigation tree"
 msgstr "התאם את העומק של עץ הניווט"
 
 #: src/frontends/qt4/ui/URLUi.ui:31 src/frontends/qt4/ui/URLUi.ui:64
-#: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:184
+#: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:185
 #: src/frontends/qt4/UrlView.cpp:33
 msgid "URL"
 msgstr "מען משאבים אוניורסלי"
@@ -3213,7 +3217,7 @@ msgstr "משפט #:"
 #: lib/layouts/ijmpc.layout:257 lib/layouts/ijmpd.layout:262
 #: lib/layouts/llncs.layout:354 lib/layouts/siamltex.layout:217
 #: lib/layouts/amsmaths-plain.inc:50 lib/layouts/amsmaths-seq.inc:171
-#: lib/layouts/amsmaths.inc:111 lib/layouts/svjour.inc:415
+#: lib/layouts/amsmaths.inc:112 lib/layouts/svjour.inc:415
 msgid "Lemma"
 msgstr "למה"
 
@@ -3226,7 +3230,7 @@ msgstr "למה #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:248 lib/layouts/llncs.layout:319
 #: lib/layouts/siamltex.layout:224 lib/layouts/amsmaths-plain.inc:44
-#: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:88
+#: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:89
 #: lib/layouts/svjour.inc:376
 msgid "Corollary"
 msgstr "מסקנה"
@@ -3240,7 +3244,7 @@ msgstr "מסקנה #:"
 #: lib/layouts/foils.layout:263 lib/layouts/ijmpc.layout:267
 #: lib/layouts/ijmpd.layout:273 lib/layouts/llncs.layout:388
 #: lib/layouts/siamltex.layout:231 lib/layouts/amsmaths-plain.inc:56
-#: lib/layouts/amsmaths-seq.inc:182 lib/layouts/amsmaths.inc:134
+#: lib/layouts/amsmaths-seq.inc:182 lib/layouts/amsmaths.inc:135
 #: lib/layouts/svjour.inc:450
 msgid "Proposition"
 msgstr "הצעה"
@@ -3253,7 +3257,7 @@ msgstr "הצעה #:"
 #: lib/layouts/IEEEtran.layout:112 lib/layouts/elsart.layout:367
 #: lib/layouts/ijmpc.layout:307 lib/layouts/ijmpd.layout:317
 #: lib/layouts/llncs.layout:312 lib/layouts/amsmaths-plain.inc:62
-#: lib/layouts/amsmaths-seq.inc:193 lib/layouts/amsmaths.inc:157
+#: lib/layouts/amsmaths-seq.inc:193 lib/layouts/amsmaths.inc:158
 #: lib/layouts/svjour.inc:369
 msgid "Conjecture"
 msgstr ""
@@ -3264,7 +3268,7 @@ msgstr ""
 
 #: lib/layouts/IEEEtran.layout:122 lib/layouts/elsart.layout:339
 #: lib/layouts/amsmaths-plain.inc:68 lib/layouts/amsmaths-seq.inc:204
-#: lib/layouts/amsmaths.inc:180
+#: lib/layouts/amsmaths.inc:181
 msgid "Criterion"
 msgstr "קריטריון"
 
@@ -3274,7 +3278,7 @@ msgstr "קריטריון #:"
 
 #: lib/layouts/IEEEtran.layout:132 lib/layouts/beamer.layout:959
 #: lib/layouts/amsmaths-plain.inc:80 lib/layouts/amsmaths-seq.inc:226
-#: lib/layouts/amsmaths.inc:225
+#: lib/layouts/amsmaths.inc:226
 msgid "Fact"
 msgstr "עובדה"
 
@@ -3283,7 +3287,7 @@ msgid "Fact #:"
 msgstr "עובדה #:"
 
 #: lib/layouts/IEEEtran.layout:142 lib/layouts/amsmaths-plain.inc:86
-#: lib/layouts/amsmaths-seq.inc:237 lib/layouts/amsmaths.inc:248
+#: lib/layouts/amsmaths-seq.inc:237 lib/layouts/amsmaths.inc:249
 msgid "Axiom"
 msgstr "אקסיומה"
 
@@ -3296,7 +3300,7 @@ msgstr "אקסיומה #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137 lib/layouts/llncs.layout:333
 #: lib/layouts/siamltex.layout:238 lib/layouts/amsmaths-plain.inc:92
-#: lib/layouts/amsmaths-seq.inc:248 lib/layouts/amsmaths.inc:271
+#: lib/layouts/amsmaths-seq.inc:248 lib/layouts/amsmaths.inc:272
 #: lib/layouts/svjour.inc:390
 msgid "Definition"
 msgstr "הגדרה"
@@ -3309,7 +3313,7 @@ msgstr "הגדרה #:"
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:175
 #: lib/layouts/ijmpd.layout:172 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:98 lib/layouts/amsmaths-seq.inc:259
-#: lib/layouts/amsmaths.inc:302 lib/layouts/svjour.inc:397
+#: lib/layouts/amsmaths.inc:303 lib/layouts/svjour.inc:397
 #: src/frontends/qt4/QDocument.cpp:489
 msgid "Example"
 msgstr "דוגמה"
@@ -3319,7 +3323,7 @@ msgid "Example #:"
 msgstr "דוגמה #:"
 
 #: lib/layouts/IEEEtran.layout:172 lib/layouts/amsmaths-plain.inc:104
-#: lib/layouts/amsmaths-seq.inc:270 lib/layouts/amsmaths.inc:324
+#: lib/layouts/amsmaths-seq.inc:270 lib/layouts/amsmaths.inc:325
 msgid "Condition"
 msgstr "תנאי"
 
@@ -3329,7 +3333,7 @@ msgstr "תנאי #:"
 
 #: lib/layouts/IEEEtran.layout:182 lib/layouts/elsart.layout:381
 #: lib/layouts/llncs.layout:367 lib/layouts/amsmaths-plain.inc:110
-#: lib/layouts/amsmaths-seq.inc:281 lib/layouts/amsmaths.inc:346
+#: lib/layouts/amsmaths-seq.inc:281 lib/layouts/amsmaths.inc:347
 #: lib/layouts/svjour.inc:429
 msgid "Problem"
 msgstr "בעיה"
@@ -3340,7 +3344,7 @@ msgstr "בעיה #:"
 
 #: lib/layouts/IEEEtran.layout:192 lib/layouts/llncs.layout:347
 #: lib/layouts/amsmaths-plain.inc:116 lib/layouts/amsmaths-seq.inc:292
-#: lib/layouts/amsmaths.inc:368 lib/layouts/svjour.inc:404
+#: lib/layouts/amsmaths.inc:369 lib/layouts/svjour.inc:404
 msgid "Exercise"
 msgstr "תרגיל"
 
@@ -3351,7 +3355,7 @@ msgstr "תרגיל #:"
 #: lib/layouts/IEEEtran.layout:202 lib/layouts/elsart.layout:388
 #: lib/layouts/ijmpc.layout:185 lib/layouts/ijmpd.layout:183
 #: lib/layouts/llncs.layout:401 lib/layouts/amsmaths-plain.inc:122
-#: lib/layouts/amsmaths-seq.inc:303 lib/layouts/amsmaths.inc:390
+#: lib/layouts/amsmaths-seq.inc:303 lib/layouts/amsmaths.inc:391
 #: lib/layouts/svjour.inc:464
 msgid "Remark"
 msgstr "הערה"
@@ -3364,7 +3368,7 @@ msgstr "הערה #:"
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:297
 #: lib/layouts/ijmpd.layout:306 lib/layouts/llncs.layout:305
 #: lib/layouts/amsmaths-plain.inc:128 lib/layouts/amsmaths-seq.inc:314
-#: lib/layouts/amsmaths.inc:422 lib/layouts/svjour.inc:348
+#: lib/layouts/amsmaths.inc:423 lib/layouts/svjour.inc:348
 msgid "Claim"
 msgstr "טענה"
 
@@ -3376,8 +3380,8 @@ msgstr "טענה #:"
 #: lib/layouts/elsart.layout:395 lib/layouts/iopart.layout:91
 #: lib/layouts/llncs.layout:360 lib/layouts/powerdot.layout:198
 #: lib/layouts/slides.layout:168 lib/layouts/amsmaths-plain.inc:134
-#: lib/layouts/amsmaths-seq.inc:325 lib/layouts/amsmaths.inc:444
-#: lib/layouts/svjour.inc:422 src/insets/InsetNote.cpp:64
+#: lib/layouts/amsmaths-seq.inc:325 lib/layouts/amsmaths.inc:445
+#: lib/layouts/svjour.inc:422
 msgid "Note"
 msgstr "הערה"
 
@@ -3387,7 +3391,7 @@ msgstr "הערה #:"
 
 #: lib/layouts/IEEEtran.layout:232 lib/layouts/ijmpc.layout:195
 #: lib/layouts/ijmpd.layout:194 lib/layouts/amsmaths-plain.inc:140
-#: lib/layouts/amsmaths-seq.inc:336 lib/layouts/amsmaths.inc:466
+#: lib/layouts/amsmaths-seq.inc:336 lib/layouts/amsmaths.inc:467
 msgid "Notation"
 msgstr ""
 
@@ -3396,11 +3400,11 @@ msgid "Notation #:"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/elsart.layout:417
-#: lib/layouts/llncs.layout:284 lib/layouts/amsmaths.inc:578
+#: lib/layouts/llncs.layout:284 lib/layouts/amsmaths.inc:579
 msgid "Case"
 msgstr "תנאי"
 
-#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:583
+#: lib/layouts/IEEEtran.layout:245 lib/layouts/amsmaths.inc:584
 msgid "Case #:"
 msgstr "תנאי #:"
 
@@ -3420,8 +3424,8 @@ msgstr "תנאי #:"
 #: lib/layouts/revtex4.layout:44 lib/layouts/siamltex.layout:41
 #: lib/layouts/simplecv.layout:27 lib/layouts/spie.layout:19
 #: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
-#: lib/layouts/db_stdsections.inc:28 lib/layouts/numarticle.inc:13
-#: lib/layouts/numreport.inc:21 lib/layouts/numrevtex.inc:6
+#: lib/layouts/db_stdsections.inc:28 lib/layouts/numarticle.inc:21
+#: lib/layouts/numreport.inc:18 lib/layouts/numrevtex.inc:6
 #: lib/layouts/scrclass.inc:61 lib/layouts/stdsections.inc:51
 #: lib/layouts/svjour.inc:52
 msgid "Section"
@@ -3441,7 +3445,7 @@ msgstr "קטע"
 #: lib/layouts/revtex4.layout:55 lib/layouts/siamltex.layout:59
 #: lib/layouts/simplecv.layout:48 lib/layouts/agu_stdsections.inc:40
 #: lib/layouts/aguplus.inc:41 lib/layouts/db_stdsections.inc:36
-#: lib/layouts/numarticle.inc:22 lib/layouts/numrevtex.inc:15
+#: lib/layouts/numarticle.inc:30 lib/layouts/numrevtex.inc:15
 #: lib/layouts/scrclass.inc:68 lib/layouts/stdsections.inc:72
 #: lib/layouts/svjour.inc:61
 msgid "Subsection"
@@ -3458,7 +3462,7 @@ msgstr "תת-קטע"
 #: lib/layouts/paper.layout:62 lib/layouts/revtex.layout:57
 #: lib/layouts/revtex4.layout:63 lib/layouts/siamltex.layout:65
 #: lib/layouts/agu_stdsections.inc:50 lib/layouts/db_stdsections.inc:44
-#: lib/layouts/numarticle.inc:31 lib/layouts/numrevtex.inc:24
+#: lib/layouts/numarticle.inc:39 lib/layouts/numrevtex.inc:24
 #: lib/layouts/scrclass.inc:75 lib/layouts/stdsections.inc:85
 #: lib/layouts/svjour.inc:70
 msgid "Subsubsection"
@@ -3503,7 +3507,7 @@ msgstr "תת-תת-קטע*"
 #: lib/layouts/revtex4.layout:202 lib/layouts/siamltex.layout:143
 #: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
 #: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
-#: lib/layouts/amsdefs.inc:124 lib/layouts/db_stdstruct.inc:11
+#: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
 #: src/output_plaintext.cpp:145
@@ -3521,7 +3525,7 @@ msgstr "תקציר--"
 #: lib/layouts/kluwer.layout:282 lib/layouts/paper.layout:174
 #: lib/layouts/revtex4.layout:241 lib/layouts/siamltex.layout:169
 #: lib/layouts/spie.layout:39 lib/layouts/agu_stdtitle.inc:120
-#: lib/layouts/amsdefs.inc:192 lib/layouts/svjour.inc:273
+#: lib/layouts/amsdefs.inc:193 lib/layouts/svjour.inc:273
 msgid "Keywords"
 msgstr "מילות מפתח"
 
@@ -3538,14 +3542,14 @@ msgstr "מונחי אינדקס---"
 #: lib/layouts/ijmpd.layout:369 lib/layouts/latex8.layout:118
 #: lib/layouts/llncs.layout:261 lib/layouts/memoir.layout:138
 #: lib/layouts/memoir.layout:140 lib/layouts/moderncv.layout:145
-#: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
+#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
 #: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
 #: lib/layouts/powerdot.layout:292 lib/layouts/report.layout:12
 #: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
 #: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
 #: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:183
 #: lib/layouts/simplecv.layout:140 lib/layouts/aguplus.inc:168
-#: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:227
+#: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:228
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
 #: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocument.cpp:587
 msgid "Bibliography"
@@ -3555,7 +3559,7 @@ msgstr "ביבליוגרפיה"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:335 lib/layouts/ijmpd.layout:346
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.cpp:540
+#: src/rowpainter.cpp:545
 msgid "Appendix"
 msgstr "נספח"
 
@@ -3634,7 +3638,7 @@ msgstr "רשימה"
 #: lib/layouts/scrlettr.layout:193 lib/layouts/scrlttr2.layout:271
 #: lib/layouts/siamltex.layout:109 lib/layouts/simplecv.layout:119
 #: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
-#: lib/layouts/amsdefs.inc:61 lib/layouts/db_stdtitle.inc:13
+#: lib/layouts/amsdefs.inc:62 lib/layouts/db_stdtitle.inc:13
 #: lib/layouts/scrclass.inc:146 lib/layouts/stdtitle.inc:12
 #: lib/layouts/svjour.inc:129
 msgid "Title"
@@ -3662,7 +3666,7 @@ msgstr "תת-כותרת"
 #: lib/layouts/paper.layout:123 lib/layouts/powerdot.layout:60
 #: lib/layouts/revtex.layout:98 lib/layouts/revtex4.layout:115
 #: lib/layouts/siamltex.layout:126 lib/layouts/svprobth.layout:52
-#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:82
+#: lib/layouts/agu_stdtitle.inc:167 lib/layouts/amsdefs.inc:83
 #: lib/layouts/db_stdtitle.inc:21 lib/layouts/scrclass.inc:154
 #: lib/layouts/stdtitle.inc:31 lib/layouts/svjour.inc:182
 msgid "Author"
@@ -3676,7 +3680,7 @@ msgstr "מחבר"
 #: lib/layouts/isprs.layout:115 lib/layouts/kluwer.layout:178
 #: lib/layouts/revtex.layout:116 lib/layouts/revtex4.layout:164
 #: lib/layouts/scrlettr.layout:144 lib/layouts/scrlttr2.layout:39
-#: lib/layouts/aapaper.inc:30 lib/layouts/amsdefs.inc:150
+#: lib/layouts/aapaper.inc:30 lib/layouts/amsdefs.inc:151
 #: lib/layouts/lyxmacros.inc:43
 msgid "Address"
 msgstr "כתובת"
@@ -3700,7 +3704,7 @@ msgstr ""
 #: lib/layouts/powerdot.layout:83 lib/layouts/revtex.layout:106
 #: lib/layouts/revtex4.layout:123 lib/layouts/scrlettr.layout:165
 #: lib/layouts/scrlttr2.layout:239 lib/layouts/siamltex.layout:137
-#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:101
+#: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:102
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:161
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:230
 #: lib/ui/stdmenus.inc:316 lib/external_templates:248
@@ -3712,7 +3716,7 @@ msgstr "תאריך"
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:538
 #: lib/layouts/elsart.layout:427 lib/layouts/aapaper.inc:83
 #: lib/layouts/amsmaths-plain.inc:152 lib/layouts/amsmaths-seq.inc:358
-#: lib/layouts/amsmaths.inc:510 lib/layouts/svjour.inc:319
+#: lib/layouts/amsmaths.inc:511 lib/layouts/svjour.inc:319
 msgid "Acknowledgement"
 msgstr "הכרת תודה"
 
@@ -3737,7 +3741,7 @@ msgstr "LaTeX"
 #: lib/layouts/aapaper.layout:85 lib/layouts/aastex.layout:97
 #: lib/layouts/aastex.layout:307 lib/layouts/iopart.layout:153
 #: lib/layouts/latex8.layout:57 lib/layouts/llncs.layout:232
-#: lib/layouts/aapaper.inc:47 lib/layouts/amsdefs.inc:176
+#: lib/layouts/aapaper.inc:47 lib/layouts/amsdefs.inc:177
 msgid "Email"
 msgstr "דוא\"ל"
 
@@ -3753,7 +3757,7 @@ msgstr "אגרון"
 #: lib/layouts/revtex.layout:65 lib/layouts/revtex4.layout:71
 #: lib/layouts/siamltex.layout:71 lib/layouts/agu_stdsections.inc:60
 #: lib/layouts/aguplus.inc:55 lib/layouts/db_stdsections.inc:52
-#: lib/layouts/numarticle.inc:40 lib/layouts/numrevtex.inc:33
+#: lib/layouts/numarticle.inc:48 lib/layouts/numrevtex.inc:33
 #: lib/layouts/scrclass.inc:82 lib/layouts/stdsections.inc:97
 #: lib/layouts/svjour.inc:79
 msgid "Paragraph"
@@ -3784,7 +3788,7 @@ msgstr "הכרת תודות"
 #: lib/layouts/iopart.layout:269 lib/layouts/iopart.layout:283
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/moderncv.layout:159
-#: lib/layouts/siamltex.layout:194 lib/layouts/amsdefs.inc:241
+#: lib/layouts/siamltex.layout:194 lib/layouts/amsdefs.inc:242
 #: lib/layouts/stdstruct.inc:53 lib/layouts/svjour.inc:340
 #: src/output_plaintext.cpp:157
 msgid "References"
@@ -3883,7 +3887,7 @@ msgid "Dataset:"
 msgstr ""
 
 #: lib/layouts/amsbook.layout:87 lib/layouts/amsbook.layout:88
-#: lib/layouts/powerdot.layout:230 lib/layouts/numarticle.inc:16
+#: lib/layouts/powerdot.layout:230 lib/layouts/numarticle.inc:24
 msgid "\\arabic{section}"
 msgstr ""
 
@@ -4037,7 +4041,7 @@ msgid "Section \\arabic{section}"
 msgstr ""
 
 #: lib/layouts/beamer.layout:171 lib/layouts/powerdot.layout:236
-#: lib/layouts/numarticle.inc:17
+#: lib/layouts/numarticle.inc:25
 msgid "\\Alph{section}"
 msgstr ""
 
@@ -4188,13 +4192,13 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:912 lib/layouts/foils.layout:315
 #: lib/layouts/siamltex.layout:284 lib/layouts/amsmaths-plain.inc:46
-#: lib/layouts/amsmaths.inc:103
+#: lib/layouts/amsmaths.inc:104
 msgid "Corollary."
 msgstr "מסקנה."
 
 #: lib/layouts/beamer.layout:932 lib/layouts/foils.layout:329
 #: lib/layouts/siamltex.layout:297 lib/layouts/amsmaths-plain.inc:94
-#: lib/layouts/amsmaths.inc:294
+#: lib/layouts/amsmaths.inc:295
 msgid "Definition."
 msgstr "הגדרה."
 
@@ -4207,7 +4211,7 @@ msgid "Definitions."
 msgstr "הגדרות."
 
 #: lib/layouts/beamer.layout:944 lib/layouts/amsmaths-plain.inc:100
-#: lib/layouts/amsmaths.inc:316
+#: lib/layouts/amsmaths.inc:317
 msgid "Example."
 msgstr "דוגמה."
 
@@ -4220,20 +4224,20 @@ msgid "Examples."
 msgstr "דוגמאות."
 
 #: lib/layouts/beamer.layout:962 lib/layouts/amsmaths-plain.inc:82
-#: lib/layouts/amsmaths.inc:240
+#: lib/layouts/amsmaths.inc:241
 msgid "Fact."
 msgstr "עובדה."
 
 #: lib/layouts/beamer.layout:968 lib/layouts/foils.layout:287
 #: lib/layouts/ijmpc.layout:236 lib/layouts/ijmpd.layout:236
 #: lib/layouts/llncs.layout:377 lib/layouts/siamltex.layout:255
-#: lib/layouts/amsdefs.inc:44 lib/layouts/svjour.inc:439
+#: lib/layouts/amsdefs.inc:45 lib/layouts/svjour.inc:439
 msgid "Proof."
 msgstr "הוכחה."
 
 #: lib/layouts/beamer.layout:974 lib/layouts/foils.layout:301
 #: lib/layouts/siamltex.layout:270 lib/layouts/amsmaths-plain.inc:40
-#: lib/layouts/amsmaths.inc:80
+#: lib/layouts/amsmaths.inc:81
 msgid "Theorem."
 msgstr "משפט."
 
@@ -4539,7 +4543,7 @@ msgstr ""
 #: lib/layouts/egs.layout:86 lib/layouts/kluwer.layout:93
 #: lib/layouts/llncs.layout:77 lib/layouts/memoir.layout:71
 #: lib/layouts/paper.layout:80 lib/layouts/agu_stdsections.inc:70
-#: lib/layouts/db_stdsections.inc:60 lib/layouts/numarticle.inc:49
+#: lib/layouts/db_stdsections.inc:60 lib/layouts/numarticle.inc:57
 #: lib/layouts/scrclass.inc:89 lib/layouts/stdsections.inc:105
 #: lib/layouts/svjour.inc:88
 msgid "Subparagraph"
@@ -4631,12 +4635,12 @@ msgstr ""
 #: lib/layouts/egs.layout:506 lib/layouts/kluwer.layout:271
 #: lib/layouts/llncs.layout:254 lib/layouts/siamltex.layout:156
 #: lib/layouts/svglobal.layout:44 lib/layouts/svjog.layout:49
-#: lib/layouts/amsdefs.inc:137 lib/layouts/svjour.inc:266
+#: lib/layouts/amsdefs.inc:138 lib/layouts/svjour.inc:266
 msgid "Abstract."
 msgstr "תקציר."
 
 #: lib/layouts/egs.layout:552 lib/layouts/amsmaths-plain.inc:154
-#: lib/layouts/amsmaths.inc:524 lib/layouts/svjour.inc:322
+#: lib/layouts/amsmaths.inc:525 lib/layouts/svjour.inc:322
 msgid "Acknowledgement."
 msgstr "הכרת תודה."
 
@@ -4647,7 +4651,7 @@ msgstr "מען הכותב"
 #: lib/layouts/elsart.layout:141 lib/layouts/g-brief-en.layout:184
 #: lib/layouts/g-brief2.layout:726 lib/layouts/revtex.layout:128
 #: lib/layouts/revtex4.layout:167 lib/layouts/scrlettr.layout:147
-#: lib/layouts/scrlttr2.layout:56 lib/layouts/amsdefs.inc:161
+#: lib/layouts/scrlttr2.layout:56 lib/layouts/amsdefs.inc:162
 msgid "Address:"
 msgstr "כתובת:"
 
@@ -4664,12 +4668,12 @@ msgid "Author URL"
 msgstr "אתר המחבר"
 
 #: lib/layouts/elsart.layout:181 lib/layouts/revtex4.layout:198
-#: lib/layouts/amsdefs.inc:188
+#: lib/layouts/amsdefs.inc:189
 msgid "URL:"
 msgstr "קישור:"
 
 #: lib/layouts/elsart.layout:193 lib/layouts/revtex4.layout:171
-#: lib/layouts/amsdefs.inc:199
+#: lib/layouts/amsdefs.inc:200
 msgid "Thanks"
 msgstr ""
 
@@ -4699,7 +4703,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:346 lib/layouts/powerdot.layout:398
 #: lib/layouts/amsmaths-plain.inc:74 lib/layouts/amsmaths-seq.inc:215
-#: lib/layouts/amsmaths.inc:202 lib/layouts/stdfloats.inc:34
+#: lib/layouts/amsmaths.inc:203 lib/layouts/stdfloats.inc:34
 msgid "Algorithm"
 msgstr "אלגוריתם"
 
@@ -4736,7 +4740,7 @@ msgid "Claim \\arabic{theorem}"
 msgstr ""
 
 #: lib/layouts/elsart.layout:409 lib/layouts/amsmaths-plain.inc:146
-#: lib/layouts/amsmaths-seq.inc:347 lib/layouts/amsmaths.inc:488
+#: lib/layouts/amsmaths-seq.inc:347 lib/layouts/amsmaths.inc:489
 msgid "Summary"
 msgstr "סיכום"
 
@@ -4940,37 +4944,37 @@ msgid "Definition #."
 msgstr "הגדרה #."
 
 #: lib/layouts/foils.layout:298 lib/layouts/siamltex.layout:267
-#: lib/layouts/amsmaths.inc:76
+#: lib/layouts/amsmaths.inc:77
 msgid "Theorem*"
 msgstr "משפט*"
 
 #: lib/layouts/foils.layout:305 lib/layouts/siamltex.layout:274
-#: lib/layouts/amsmaths.inc:123
+#: lib/layouts/amsmaths.inc:124
 msgid "Lemma*"
 msgstr "למה*"
 
 #: lib/layouts/foils.layout:308 lib/layouts/siamltex.layout:277
-#: lib/layouts/amsmaths-plain.inc:52 lib/layouts/amsmaths.inc:126
+#: lib/layouts/amsmaths-plain.inc:52 lib/layouts/amsmaths.inc:127
 msgid "Lemma."
 msgstr "למה."
 
 #: lib/layouts/foils.layout:312 lib/layouts/siamltex.layout:281
-#: lib/layouts/amsmaths.inc:100
+#: lib/layouts/amsmaths.inc:101
 msgid "Corollary*"
 msgstr "מסקנה*"
 
 #: lib/layouts/foils.layout:319 lib/layouts/siamltex.layout:288
-#: lib/layouts/amsmaths.inc:146
+#: lib/layouts/amsmaths.inc:147
 msgid "Proposition*"
 msgstr ""
 
 #: lib/layouts/foils.layout:322 lib/layouts/siamltex.layout:291
-#: lib/layouts/amsmaths-plain.inc:58 lib/layouts/amsmaths.inc:149
+#: lib/layouts/amsmaths-plain.inc:58 lib/layouts/amsmaths.inc:150
 msgid "Proposition."
 msgstr ""
 
 #: lib/layouts/foils.layout:326 lib/layouts/siamltex.layout:294
-#: lib/layouts/amsmaths.inc:290
+#: lib/layouts/amsmaths.inc:291
 msgid "Definition*"
 msgstr "הגדרה*"
 
@@ -5270,7 +5274,7 @@ msgstr ""
 #: lib/layouts/g-brief-en.layout:191 lib/layouts/g-brief2.layout:810
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
 #: lib/layouts/scrlettr.layout:168 lib/layouts/scrlttr2.layout:243
-#: lib/layouts/amsdefs.inc:113
+#: lib/layouts/amsdefs.inc:114
 msgid "Date:"
 msgstr "תאריך:"
 
@@ -5726,7 +5730,7 @@ msgstr ""
 msgid "Notation @Section@.\\arabic{notation}."
 msgstr ""
 
-#: lib/layouts/ijmpd.layout:219 lib/layouts/amsmaths.inc:60
+#: lib/layouts/ijmpd.layout:219 lib/layouts/amsmaths.inc:61
 msgid "Theorem @Section@.\\arabic{theorem}."
 msgstr ""
 
@@ -5861,8 +5865,9 @@ msgstr "דוא\"ל:"
 
 #: lib/layouts/llncs.layout:38 lib/layouts/memoir.layout:46
 #: lib/layouts/scrbook.layout:16 lib/layouts/agu_stdsections.inc:21
-#: lib/layouts/db_stdsections.inc:20 lib/layouts/numreport.inc:12
-#: lib/layouts/scrclass.inc:53 lib/layouts/stdsections.inc:31
+#: lib/layouts/db_stdsections.inc:20 lib/layouts/numarticle.inc:14
+#: lib/layouts/numreport.inc:12 lib/layouts/scrclass.inc:53
+#: lib/layouts/stdsections.inc:31
 msgid "Chapter"
 msgstr "פרק"
 
@@ -5899,7 +5904,7 @@ msgid "Case #."
 msgstr "תנאי #."
 
 #: lib/layouts/llncs.layout:308 lib/layouts/amsmaths-plain.inc:130
-#: lib/layouts/amsmaths.inc:436 lib/layouts/svjour.inc:362
+#: lib/layouts/amsmaths.inc:437 lib/layouts/svjour.inc:362
 msgid "Claim."
 msgstr "טענה."
 
@@ -6084,7 +6089,7 @@ msgstr ""
 msgid "AltAffiliation"
 msgstr ""
 
-#: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:202
+#: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:203
 msgid "Thanks:"
 msgstr ""
 
@@ -6282,8 +6287,8 @@ msgstr "כתובת דוא\"ל של המוען:"
 msgid "Sender URL:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:223
 # נראה כאילו זה מופיע גם כשם של שפת תכנות בהגדרות רישום קוד.
+#: lib/layouts/scrlttr2.layout:223
 msgid "Logo"
 msgstr "Logo"
 
@@ -6664,105 +6669,105 @@ msgstr "כותרת טבלה"
 msgid "TableCaption"
 msgstr "כותרת טבלה"
 
-#: lib/layouts/amsdefs.inc:169
+#: lib/layouts/amsdefs.inc:170
 msgid "Current Address"
 msgstr "כתובת נוכחית"
 
-#: lib/layouts/amsdefs.inc:172
+#: lib/layouts/amsdefs.inc:173
 msgid "Current address:"
 msgstr "כתובת נוכחית:"
 
-#: lib/layouts/amsdefs.inc:180
+#: lib/layouts/amsdefs.inc:181
 msgid "E-mail address:"
 msgstr "כתובת דוא\"ל:"
 
-#: lib/layouts/amsdefs.inc:195
+#: lib/layouts/amsdefs.inc:196
 msgid "Key words and phrases:"
 msgstr ""
 
-#: lib/layouts/amsdefs.inc:206
+#: lib/layouts/amsdefs.inc:207
 msgid "Dedicatory"
 msgstr ""
 
-#: lib/layouts/amsdefs.inc:209 lib/layouts/svjour.inc:125
+#: lib/layouts/amsdefs.inc:210 lib/layouts/svjour.inc:125
 msgid "Dedication:"
 msgstr "הקדשה:"
 
-#: lib/layouts/amsdefs.inc:213
+#: lib/layouts/amsdefs.inc:214
 msgid "Translator"
 msgstr "מתרגם"
 
-#: lib/layouts/amsdefs.inc:216
+#: lib/layouts/amsdefs.inc:217
 msgid "Translator:"
 msgstr "מתרגם:"
 
-#: lib/layouts/amsdefs.inc:220
+#: lib/layouts/amsdefs.inc:221
 msgid "Subjectclass"
 msgstr ""
 
-#: lib/layouts/amsdefs.inc:223
+#: lib/layouts/amsdefs.inc:224
 msgid "2000 Mathematics Subject Classification:"
 msgstr "מיון נושא מתמטי 2000:"
 
-#: lib/layouts/amsmaths-plain.inc:64 lib/layouts/amsmaths.inc:172
+#: lib/layouts/amsmaths-plain.inc:64 lib/layouts/amsmaths.inc:173
 msgid "Conjecture."
 msgstr ""
 
-#: lib/layouts/amsmaths-plain.inc:70 lib/layouts/amsmaths.inc:194
+#: lib/layouts/amsmaths-plain.inc:70 lib/layouts/amsmaths.inc:195
 msgid "Criterion."
 msgstr "קריטריון."
 
-#: lib/layouts/amsmaths-plain.inc:76 lib/layouts/amsmaths.inc:217
+#: lib/layouts/amsmaths-plain.inc:76 lib/layouts/amsmaths.inc:218
 msgid "Algorithm."
 msgstr "אלגוריתם."
 
-#: lib/layouts/amsmaths-plain.inc:88 lib/layouts/amsmaths.inc:263
+#: lib/layouts/amsmaths-plain.inc:88 lib/layouts/amsmaths.inc:264
 msgid "Axiom."
 msgstr "אקסיומה."
 
-#: lib/layouts/amsmaths-plain.inc:106 lib/layouts/amsmaths.inc:338
+#: lib/layouts/amsmaths-plain.inc:106 lib/layouts/amsmaths.inc:339
 msgid "Condition."
 msgstr "תנאי."
 
-#: lib/layouts/amsmaths-plain.inc:112 lib/layouts/amsmaths.inc:360
+#: lib/layouts/amsmaths-plain.inc:112 lib/layouts/amsmaths.inc:361
 msgid "Problem."
 msgstr "בעיה."
 
-#: lib/layouts/amsmaths-plain.inc:118 lib/layouts/amsmaths.inc:382
+#: lib/layouts/amsmaths-plain.inc:118 lib/layouts/amsmaths.inc:383
 msgid "Exercise."
 msgstr "תרגיל."
 
-#: lib/layouts/amsmaths-plain.inc:124 lib/layouts/amsmaths.inc:414
+#: lib/layouts/amsmaths-plain.inc:124 lib/layouts/amsmaths.inc:415
 msgid "Remark."
 msgstr "הערה."
 
-#: lib/layouts/amsmaths-plain.inc:136 lib/layouts/amsmaths.inc:458
+#: lib/layouts/amsmaths-plain.inc:136 lib/layouts/amsmaths.inc:459
 msgid "Note."
 msgstr "הערה."
 
-#: lib/layouts/amsmaths-plain.inc:142 lib/layouts/amsmaths.inc:480
+#: lib/layouts/amsmaths-plain.inc:142 lib/layouts/amsmaths.inc:481
 msgid "Notation."
 msgstr ""
 
-#: lib/layouts/amsmaths-plain.inc:148 lib/layouts/amsmaths.inc:502
+#: lib/layouts/amsmaths-plain.inc:148 lib/layouts/amsmaths.inc:503
 msgid "Summary."
 msgstr "סיכום."
 
 #: lib/layouts/amsmaths-plain.inc:158 lib/layouts/amsmaths-seq.inc:369
-#: lib/layouts/amsmaths.inc:532
+#: lib/layouts/amsmaths.inc:533
 msgid "Conclusion"
 msgstr ""
 
-#: lib/layouts/amsmaths-plain.inc:160 lib/layouts/amsmaths.inc:546
+#: lib/layouts/amsmaths-plain.inc:160 lib/layouts/amsmaths.inc:547
 msgid "Conclusion."
 msgstr ""
 
 #: lib/layouts/amsmaths-plain.inc:164 lib/layouts/amsmaths-seq.inc:380
-#: lib/layouts/amsmaths.inc:554
+#: lib/layouts/amsmaths.inc:555
 msgid "Assumption"
 msgstr ""
 
-#: lib/layouts/amsmaths-plain.inc:166 lib/layouts/amsmaths.inc:569
+#: lib/layouts/amsmaths-plain.inc:166 lib/layouts/amsmaths.inc:570
 msgid "Assumption."
 msgstr ""
 
@@ -6818,155 +6823,155 @@ msgstr ""
 msgid "Assumption \\arabic{assumption}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:92
+#: lib/layouts/amsmaths.inc:93
 msgid "Corollary @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:115
+#: lib/layouts/amsmaths.inc:116
 msgid "Lemma @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:138
+#: lib/layouts/amsmaths.inc:139
 msgid "Proposition @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:161
+#: lib/layouts/amsmaths.inc:162
 msgid "Conjecture @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:169
+#: lib/layouts/amsmaths.inc:170
 msgid "Conjecture*"
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:184
+#: lib/layouts/amsmaths.inc:185
 msgid "Criterion @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:191
+#: lib/layouts/amsmaths.inc:192
 msgid "Criterion*"
 msgstr "קריטריון*"
 
-#: lib/layouts/amsmaths.inc:206
+#: lib/layouts/amsmaths.inc:207
 msgid "Algorithm @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:214
+#: lib/layouts/amsmaths.inc:215
 msgid "Algorithm*"
 msgstr "אלגוריתם*"
 
-#: lib/layouts/amsmaths.inc:229
+#: lib/layouts/amsmaths.inc:230
 msgid "Fact @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:237
+#: lib/layouts/amsmaths.inc:238
 msgid "Fact*"
 msgstr "עובדה*"
 
-#: lib/layouts/amsmaths.inc:252
+#: lib/layouts/amsmaths.inc:253
 msgid "Axiom @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:260
+#: lib/layouts/amsmaths.inc:261
 msgid "Axiom*"
 msgstr "אקסיומה*"
 
-#: lib/layouts/amsmaths.inc:275
+#: lib/layouts/amsmaths.inc:276
 msgid "Definition @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:305
+#: lib/layouts/amsmaths.inc:306
 msgid "Example @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:313
+#: lib/layouts/amsmaths.inc:314
 msgid "Example*"
 msgstr "דוגמה*"
 
-#: lib/layouts/amsmaths.inc:327
+#: lib/layouts/amsmaths.inc:328
 msgid "Condition @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:335
+#: lib/layouts/amsmaths.inc:336
 msgid "Condition*"
 msgstr "תנאי*"
 
-#: lib/layouts/amsmaths.inc:349
+#: lib/layouts/amsmaths.inc:350
 msgid "Problem @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:357
+#: lib/layouts/amsmaths.inc:358
 msgid "Problem*"
 msgstr "בעיה*"
 
-#: lib/layouts/amsmaths.inc:371
+#: lib/layouts/amsmaths.inc:372
 msgid "Exercise @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:379
+#: lib/layouts/amsmaths.inc:380
 msgid "Exercise*"
 msgstr "תרגיל*"
 
-#: lib/layouts/amsmaths.inc:394
+#: lib/layouts/amsmaths.inc:395
 msgid "Remark @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:410
+#: lib/layouts/amsmaths.inc:411
 msgid "Remark*"
 msgstr "הערה*"
 
-#: lib/layouts/amsmaths.inc:425
+#: lib/layouts/amsmaths.inc:426
 msgid "Claim @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:433
+#: lib/layouts/amsmaths.inc:434
 msgid "Claim*"
 msgstr "טענה*"
 
-#: lib/layouts/amsmaths.inc:447
+#: lib/layouts/amsmaths.inc:448
 msgid "Note @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:455
+#: lib/layouts/amsmaths.inc:456
 msgid "Note*"
 msgstr "הערה*"
 
-#: lib/layouts/amsmaths.inc:469
+#: lib/layouts/amsmaths.inc:470
 msgid "Notation @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:477
+#: lib/layouts/amsmaths.inc:478
 msgid "Notation*"
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:491
+#: lib/layouts/amsmaths.inc:492
 msgid "Summary @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:499
+#: lib/layouts/amsmaths.inc:500
 msgid "Summary*"
 msgstr "סיכום*"
 
-#: lib/layouts/amsmaths.inc:513
+#: lib/layouts/amsmaths.inc:514
 msgid "Acknowledgement @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:521
+#: lib/layouts/amsmaths.inc:522
 msgid "Acknowledgement*"
 msgstr "הכרת תודה*"
 
-#: lib/layouts/amsmaths.inc:535
+#: lib/layouts/amsmaths.inc:536
 msgid "Conclusion @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:543
+#: lib/layouts/amsmaths.inc:544
 msgid "Conclusion*"
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:558
+#: lib/layouts/amsmaths.inc:559
 msgid "Assumption @Section@.\\arabic{theorem}."
 msgstr ""
 
-#: lib/layouts/amsmaths.inc:566
+#: lib/layouts/amsmaths.inc:567
 msgid "Assumption*"
 msgstr ""
 
@@ -7018,35 +7023,35 @@ msgstr ""
 msgid "Part \\Roman{part}"
 msgstr ""
 
-#: lib/layouts/numarticle.inc:25 lib/layouts/numarticle.inc:26
+#: lib/layouts/numarticle.inc:33 lib/layouts/numarticle.inc:34
 msgid "@Section@.\\arabic{subsection}"
 msgstr ""
 
-#: lib/layouts/numarticle.inc:34 lib/layouts/numarticle.inc:35
+#: lib/layouts/numarticle.inc:42 lib/layouts/numarticle.inc:43
 msgid "@Subsection@.\\arabic{subsubsection}"
 msgstr ""
 
-#: lib/layouts/numarticle.inc:43 lib/layouts/numarticle.inc:44
+#: lib/layouts/numarticle.inc:51 lib/layouts/numarticle.inc:52
 msgid "@Subsubsection@.\\arabic{paragraph}"
 msgstr ""
 
-#: lib/layouts/numarticle.inc:52 lib/layouts/numarticle.inc:53
+#: lib/layouts/numarticle.inc:60 lib/layouts/numarticle.inc:61
 msgid "@Paragraph@.\\arabic{subparagraph}"
 msgstr ""
 
-#: lib/layouts/numreport.inc:15
+#: lib/layouts/numreport.inc:13
 msgid "Chapter \\arabic{chapter}"
 msgstr ""
 
-#: lib/layouts/numreport.inc:16
+#: lib/layouts/numreport.inc:14
 msgid "Appendix \\Alph{chapter}"
 msgstr ""
 
-#: lib/layouts/numreport.inc:22
+#: lib/layouts/numreport.inc:19
 msgid "\\arabic{chapter}.\\arabic{section}"
 msgstr ""
 
-#: lib/layouts/numreport.inc:23
+#: lib/layouts/numreport.inc:20
 msgid "\\Alph{chapter}.\\arabic{section}"
 msgstr ""
 
@@ -7294,7 +7299,7 @@ msgstr "גרמנית"
 msgid "German (new spelling)"
 msgstr "גרמנית (איות חדש)"
 
-#: lib/languages:38 lib/ui/stdtoolbars.inc:435
+#: lib/languages:38 lib/ui/stdtoolbars.inc:438
 msgid "Greek"
 msgstr "יוונית"
 
@@ -8299,18 +8304,18 @@ msgstr "סגור חלון"
 msgid "Redo|R"
 msgstr "בצע שוב"
 
-#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:843
+#: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:66 src/Text3.cpp:848
 #: src/mathed/InsetMathNest.cpp:469
 msgid "Cut"
 msgstr "גזור"
 
-#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:848
+#: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:67 src/Text3.cpp:853
 #: src/mathed/InsetMathNest.cpp:477
 msgid "Copy"
 msgstr "העתק"
 
-#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:825
-#: src/mathed/InsetMathGrid.cpp:1257 src/mathed/InsetMathNest.cpp:449
+#: lib/ui/stdmenus.inc:90 lib/ui/stdtoolbars.inc:68 src/Text3.cpp:830
+#: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:449
 msgid "Paste"
 msgstr "הדבק"
 
@@ -8808,11 +8813,11 @@ msgstr "הדפס מסמך"
 msgid "Check spelling"
 msgstr "בדיקת איות"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:733
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:727
 msgid "Undo"
 msgstr "בטל"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:742
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:736
 msgid "Redo"
 msgstr "בצע שוב"
 
@@ -9152,15 +9157,15 @@ msgstr "לוח מתמטיקה"
 msgid "Math Spacings"
 msgstr "ריווח מתמטיקה"
 
-#: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:266
+#: lib/ui/stdtoolbars.inc:197 lib/ui/stdtoolbars.inc:269
 msgid "Styles"
 msgstr "סגנון"
 
-#: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:273
+#: lib/ui/stdtoolbars.inc:198 lib/ui/stdtoolbars.inc:276
 msgid "Fractions"
 msgstr "שברים"
 
-#: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:282
+#: lib/ui/stdtoolbars.inc:199 lib/ui/stdtoolbars.inc:285
 #: src/frontends/qt4/QDocument.cpp:581
 msgid "Fonts"
 msgstr "גופנים"
@@ -9329,969 +9334,973 @@ msgstr "רווח מתומן\t\\qquad"
 msgid "Negative space\t\\!"
 msgstr "רווח שלילי\t\\!"
 
+#: lib/ui/stdtoolbars.inc:259
+msgid "Placeholder\t\\phantom"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:260
+msgid "Horizontal placeholder\t\\hphantom"
+msgstr ""
+
 #: lib/ui/stdtoolbars.inc:261
+msgid "Vertical placeholder\t\\vphantom"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:264
 msgid "Roots"
 msgstr "שורשים"
 
-#: lib/ui/stdtoolbars.inc:262
+#: lib/ui/stdtoolbars.inc:265
 msgid "Square root\t\\sqrt"
 msgstr "שורש ריבועי\t\\sqrt"
 
-#: lib/ui/stdtoolbars.inc:263
+#: lib/ui/stdtoolbars.inc:266
 msgid "Other root\t\\root"
 msgstr "שורש אחר\t\\root"
 
-#: lib/ui/stdtoolbars.inc:267
+#: lib/ui/stdtoolbars.inc:270
 msgid "Display style\t\\displaystyle"
 msgstr "סגנון תצוגה\t\\displaystyle"
 
-#: lib/ui/stdtoolbars.inc:268
+#: lib/ui/stdtoolbars.inc:271
 msgid "Normal text style\t\\textstyle"
 msgstr "סגנון טקסט רגיל\t\\textstyle"
 
-#: lib/ui/stdtoolbars.inc:269
+#: lib/ui/stdtoolbars.inc:272
 msgid "Script (small) style\t\\scriptstyle"
 msgstr "סגנון מוקטן\t\\scriptstyle"
 
-#: lib/ui/stdtoolbars.inc:270
+#: lib/ui/stdtoolbars.inc:273
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "סגנון יותר קטן\t\\scriptscriptstyle"
 
-#: lib/ui/stdtoolbars.inc:274
+#: lib/ui/stdtoolbars.inc:277
 msgid "Standard\t\\frac"
 msgstr "רגיל\t\\frac"
 
-#: lib/ui/stdtoolbars.inc:275
-msgid "No hor. line\t\\atop"
+#: lib/ui/stdtoolbars.inc:278
+#, fuzzy
+msgid "No horizontal line\t\\atop"
 msgstr "ללא קו אופקי\t\\atop"
 
-#: lib/ui/stdtoolbars.inc:276
-msgid "Nice\t\\nicefrac"
+#: lib/ui/stdtoolbars.inc:279
+#, fuzzy
+msgid "Nice fraction (3/4)\t\\nicefrac"
 msgstr "קו אלכסוני\t\\nicefrac"
 
-#: lib/ui/stdtoolbars.inc:277
-msgid "Text frac (amsmath)\t\\tfrac"
+#: lib/ui/stdtoolbars.inc:280
+#, fuzzy
+msgid "Text fraction (amsmath)\t\\tfrac"
 msgstr "שבר לטקסט (amsmath)\t\\tfrac"
 
-#: lib/ui/stdtoolbars.inc:278
-msgid "Display frac (amsmath)\t\\dfrac"
+#: lib/ui/stdtoolbars.inc:281
+#, fuzzy
+msgid "Display fraction (amsmath)\t\\dfrac"
 msgstr "שבר תצוגה (amsmath)\t\\dfrac"
 
-#: lib/ui/stdtoolbars.inc:279
+#: lib/ui/stdtoolbars.inc:282
 msgid "Binomial\t\\choose"
 msgstr "בינום\t\\choose"
 
-#: lib/ui/stdtoolbars.inc:283
+#: lib/ui/stdtoolbars.inc:286
 msgid "Roman\t\\mathrm"
 msgstr "רומי\t\\mathrm"
 
-#: lib/ui/stdtoolbars.inc:284
+#: lib/ui/stdtoolbars.inc:287
 msgid "Bold\t\\mathbf"
 msgstr "מובלט\t\\mathbf"
 
-#: lib/ui/stdtoolbars.inc:285
+#: lib/ui/stdtoolbars.inc:288
 msgid "Bold symbol\t\\boldsymbol"
 msgstr "סמל מובלט\t\\boldsymbol"
 
-#: lib/ui/stdtoolbars.inc:286
+#: lib/ui/stdtoolbars.inc:289
 msgid "Sans serif\t\\mathsf"
 msgstr "נטול תגים\t\\mathsf"
 
-#: lib/ui/stdtoolbars.inc:287
+#: lib/ui/stdtoolbars.inc:290
 msgid "Italic\t\\mathit"
 msgstr "נטוי\t\\mathit"
 
-#: lib/ui/stdtoolbars.inc:288
+#: lib/ui/stdtoolbars.inc:291
 msgid "Typewriter\t\\mathtt"
 msgstr "מכונת כתיבה\t\\mathtt"
 
-#: lib/ui/stdtoolbars.inc:289
+#: lib/ui/stdtoolbars.inc:292
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:290
+#: lib/ui/stdtoolbars.inc:293
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:291
+#: lib/ui/stdtoolbars.inc:294
 msgid "Calligraphic\t\\mathcal"
 msgstr "קליגרפי\t\\mathcal"
 
-#: lib/ui/stdtoolbars.inc:292
+#: lib/ui/stdtoolbars.inc:295
 msgid "Normal text mode\t\\textrm"
 msgstr "מצב טקסט רגיל\t\\textrm"
 
-#: lib/ui/stdtoolbars.inc:295
+#: lib/ui/stdtoolbars.inc:298
 msgid "Dots"
 msgstr "נקודות"
 
-#: lib/ui/stdtoolbars.inc:296
+#: lib/ui/stdtoolbars.inc:299
 msgid "ldots"
 msgstr "ldots"
 
-#: lib/ui/stdtoolbars.inc:297
+#: lib/ui/stdtoolbars.inc:300
 msgid "cdots"
 msgstr "cdots"
 
-#: lib/ui/stdtoolbars.inc:298
+#: lib/ui/stdtoolbars.inc:301
 msgid "vdots"
 msgstr "vdots"
 
-#: lib/ui/stdtoolbars.inc:299
+#: lib/ui/stdtoolbars.inc:302
 msgid "ddots"
 msgstr "ddots"
 
-#: lib/ui/stdtoolbars.inc:302
+#: lib/ui/stdtoolbars.inc:305
 msgid "Frame Decorations"
 msgstr "עיטורי מסגרת"
 
-#: lib/ui/stdtoolbars.inc:303
+#: lib/ui/stdtoolbars.inc:306
 msgid "hat"
 msgstr "hat"
 
-#: lib/ui/stdtoolbars.inc:304
+#: lib/ui/stdtoolbars.inc:307
 msgid "tilde"
 msgstr "tilde"
 
-#: lib/ui/stdtoolbars.inc:305
+#: lib/ui/stdtoolbars.inc:308
 msgid "bar"
 msgstr "bar"
 
-#: lib/ui/stdtoolbars.inc:306
+#: lib/ui/stdtoolbars.inc:309
 msgid "grave"
 msgstr "grave"
 
-#: lib/ui/stdtoolbars.inc:307
+#: lib/ui/stdtoolbars.inc:310
 msgid "dot"
 msgstr "dot"
 
-#: lib/ui/stdtoolbars.inc:308
+#: lib/ui/stdtoolbars.inc:311
 msgid "check"
 msgstr "check"
 
-#: lib/ui/stdtoolbars.inc:309
+#: lib/ui/stdtoolbars.inc:312
 msgid "widehat"
 msgstr "widehat"
 
-#: lib/ui/stdtoolbars.inc:310
+#: lib/ui/stdtoolbars.inc:313
 msgid "widetilde"
 msgstr "widetilde"
 
-#: lib/ui/stdtoolbars.inc:311
+#: lib/ui/stdtoolbars.inc:314
 msgid "vec"
 msgstr "vec"
 
-#: lib/ui/stdtoolbars.inc:312
+#: lib/ui/stdtoolbars.inc:315
 msgid "acute"
 msgstr "acute"
 
-#: lib/ui/stdtoolbars.inc:313
+#: lib/ui/stdtoolbars.inc:316
 msgid "ddot"
 msgstr "ddot"
 
-#: lib/ui/stdtoolbars.inc:314
+#: lib/ui/stdtoolbars.inc:317
 msgid "breve"
 msgstr "breve"
 
-#: lib/ui/stdtoolbars.inc:315
+#: lib/ui/stdtoolbars.inc:318
 msgid "overline"
 msgstr "overline"
 
-#: lib/ui/stdtoolbars.inc:316
+#: lib/ui/stdtoolbars.inc:319
 msgid "overbrace"
 msgstr "overbrace"
 
-#: lib/ui/stdtoolbars.inc:317
+#: lib/ui/stdtoolbars.inc:320
 msgid "overleftarrow"
 msgstr "overleftarrow"
 
-#: lib/ui/stdtoolbars.inc:318
+#: lib/ui/stdtoolbars.inc:321
 msgid "overrightarrow"
 msgstr "overrightarrow"
 
-#: lib/ui/stdtoolbars.inc:319
+#: lib/ui/stdtoolbars.inc:322
 msgid "overleftrightarrow"
 msgstr "overleftrightarrow"
 
-#: lib/ui/stdtoolbars.inc:320
+#: lib/ui/stdtoolbars.inc:323
 msgid "overset"
 msgstr "overset"
 
-#: lib/ui/stdtoolbars.inc:321
+#: lib/ui/stdtoolbars.inc:324
 msgid "underline"
 msgstr "underline"
 
-#: lib/ui/stdtoolbars.inc:322
+#: lib/ui/stdtoolbars.inc:325
 msgid "underbrace"
 msgstr "underbrace"
 
-#: lib/ui/stdtoolbars.inc:323
+#: lib/ui/stdtoolbars.inc:326
 msgid "underleftarrow"
 msgstr "underleftarrow"
 
-#: lib/ui/stdtoolbars.inc:324
+#: lib/ui/stdtoolbars.inc:327
 msgid "underrightarrow"
 msgstr "underrightarrow"
 
-#: lib/ui/stdtoolbars.inc:325
+#: lib/ui/stdtoolbars.inc:328
 msgid "underleftrightarrow"
 msgstr "underleftrightarrow"
 
-#: lib/ui/stdtoolbars.inc:326
+#: lib/ui/stdtoolbars.inc:329
 msgid "underset"
 msgstr "underset"
 
-#: lib/ui/stdtoolbars.inc:329
+#: lib/ui/stdtoolbars.inc:332
 msgid "Arrows"
 msgstr "חצים "
 
-#: lib/ui/stdtoolbars.inc:330
+#: lib/ui/stdtoolbars.inc:333
 msgid "leftarrow"
 msgstr "חץ שמאלה"
 
-#: lib/ui/stdtoolbars.inc:331
+#: lib/ui/stdtoolbars.inc:334
 msgid "rightarrow"
 msgstr "rightarrow"
 
-#: lib/ui/stdtoolbars.inc:332
+#: lib/ui/stdtoolbars.inc:335
 msgid "downarrow"
 msgstr "downarrow"
 
-#: lib/ui/stdtoolbars.inc:333
+#: lib/ui/stdtoolbars.inc:336
 msgid "uparrow"
 msgstr "uparrow"
 
-#: lib/ui/stdtoolbars.inc:334
+#: lib/ui/stdtoolbars.inc:337
 msgid "updownarrow"
 msgstr "updownarrow"
 
-#: lib/ui/stdtoolbars.inc:335
+#: lib/ui/stdtoolbars.inc:338
 msgid "leftrightarrow"
 msgstr "leftrightarrow"
 
-#: lib/ui/stdtoolbars.inc:336
+#: lib/ui/stdtoolbars.inc:339
 msgid "Leftarrow"
 msgstr "Leftarrow"
 
-#: lib/ui/stdtoolbars.inc:337
+#: lib/ui/stdtoolbars.inc:340
 msgid "Rightarrow"
 msgstr "Rightarrow"
 
-#: lib/ui/stdtoolbars.inc:338
+#: lib/ui/stdtoolbars.inc:341
 msgid "Downarrow"
 msgstr "Downarrow"
 
-#: lib/ui/stdtoolbars.inc:339
+#: lib/ui/stdtoolbars.inc:342
 msgid "Uparrow"
 msgstr "Uparrow"
 
-#: lib/ui/stdtoolbars.inc:340
+#: lib/ui/stdtoolbars.inc:343
 msgid "Updownarrow"
 msgstr "Updownarrow"
 
-#: lib/ui/stdtoolbars.inc:341
+#: lib/ui/stdtoolbars.inc:344
 msgid "Leftrightarrow"
 msgstr "Leftrightarrow"
 
-#: lib/ui/stdtoolbars.inc:342
+#: lib/ui/stdtoolbars.inc:345
 msgid "Longleftrightarrow"
 msgstr " Longleftrightarrow"
 
-#: lib/ui/stdtoolbars.inc:343
+#: lib/ui/stdtoolbars.inc:346
 msgid "Longleftarrow"
 msgstr "Longleftarrow"
 
-#: lib/ui/stdtoolbars.inc:344
+#: lib/ui/stdtoolbars.inc:347
 msgid "Longrightarrow"
 msgstr "Longrightarrow"
 
-#: lib/ui/stdtoolbars.inc:345
+#: lib/ui/stdtoolbars.inc:348
 msgid "longleftrightarrow"
 msgstr "longleftrightarrow"
 
-#: lib/ui/stdtoolbars.inc:346
+#: lib/ui/stdtoolbars.inc:349
 msgid "longleftarrow"
 msgstr "longleftarrow"
 
-#: lib/ui/stdtoolbars.inc:347
+#: lib/ui/stdtoolbars.inc:350
 msgid "longrightarrow"
 msgstr "longrightarrow"
 
-#: lib/ui/stdtoolbars.inc:348
+#: lib/ui/stdtoolbars.inc:351
 msgid "leftharpoondown"
 msgstr "leftharpoondown"
 
-#: lib/ui/stdtoolbars.inc:349
+#: lib/ui/stdtoolbars.inc:352
 msgid "rightharpoondown"
 msgstr "rightharpoondown"
 
-#: lib/ui/stdtoolbars.inc:350
+#: lib/ui/stdtoolbars.inc:353
 msgid "mapsto"
 msgstr "mapsto"
 
-#: lib/ui/stdtoolbars.inc:351
+#: lib/ui/stdtoolbars.inc:354
 msgid "longmapsto"
 msgstr "longmapsto"
 
-#: lib/ui/stdtoolbars.inc:352
+#: lib/ui/stdtoolbars.inc:355
 msgid "nwarrow"
 msgstr "nwarrow"
 
-#: lib/ui/stdtoolbars.inc:353
+#: lib/ui/stdtoolbars.inc:356
 msgid "nearrow"
 msgstr "nearrow"
 
-#: lib/ui/stdtoolbars.inc:354
+#: lib/ui/stdtoolbars.inc:357
 msgid "leftharpoonup"
 msgstr "leftharpoonup"
 
-#: lib/ui/stdtoolbars.inc:355
+#: lib/ui/stdtoolbars.inc:358
 msgid "rightharpoonup"
 msgstr "rightharpoonup"
 
-#: lib/ui/stdtoolbars.inc:356
+#: lib/ui/stdtoolbars.inc:359
 msgid "hookleftarrow"
 msgstr "hookleftarrow"
 
-#: lib/ui/stdtoolbars.inc:357
+#: lib/ui/stdtoolbars.inc:360
 msgid "hookrightarrow"
 msgstr "hookrightarrow"
 
-#: lib/ui/stdtoolbars.inc:358
+#: lib/ui/stdtoolbars.inc:361
 msgid "swarrow"
 msgstr "swarrow"
 
-#: lib/ui/stdtoolbars.inc:359
+#: lib/ui/stdtoolbars.inc:362
 msgid "searrow"
 msgstr "searrow"
 
-#: lib/ui/stdtoolbars.inc:360 lib/ui/stdtoolbars.inc:631
+#: lib/ui/stdtoolbars.inc:363 lib/ui/stdtoolbars.inc:631
 msgid "rightleftharpoons"
 msgstr "rightleftharpoons"
 
-#: lib/ui/stdtoolbars.inc:363
+#: lib/ui/stdtoolbars.inc:366
 msgid "Operators"
 msgstr "אופרטורים"
 
-#: lib/ui/stdtoolbars.inc:364
+#: lib/ui/stdtoolbars.inc:367
 msgid "pm"
 msgstr "pm"
 
-#: lib/ui/stdtoolbars.inc:365
+#: lib/ui/stdtoolbars.inc:368
 msgid "cap"
 msgstr "cap"
 
-#: lib/ui/stdtoolbars.inc:366
+#: lib/ui/stdtoolbars.inc:369
 msgid "diamond"
 msgstr "diamond"
 
-#: lib/ui/stdtoolbars.inc:367
+#: lib/ui/stdtoolbars.inc:370
 msgid "oplus"
 msgstr "oplus"
 
-#: lib/ui/stdtoolbars.inc:368
+#: lib/ui/stdtoolbars.inc:371
 msgid "mp"
 msgstr "mp"
 
-#: lib/ui/stdtoolbars.inc:369
+#: lib/ui/stdtoolbars.inc:372
 msgid "cup"
 msgstr "cup"
 
-#: lib/ui/stdtoolbars.inc:370
+#: lib/ui/stdtoolbars.inc:373
 msgid "bigtriangleup"
 msgstr "bigtriangleup"
 
-#: lib/ui/stdtoolbars.inc:371
+#: lib/ui/stdtoolbars.inc:374
 msgid "ominus"
 msgstr "ominus"
 
-#: lib/ui/stdtoolbars.inc:372
+#: lib/ui/stdtoolbars.inc:375
 msgid "times"
 msgstr "times"
 
-#: lib/ui/stdtoolbars.inc:373
+#: lib/ui/stdtoolbars.inc:376
 msgid "uplus"
 msgstr "uplus"
 
-#: lib/ui/stdtoolbars.inc:374
+#: lib/ui/stdtoolbars.inc:377
 msgid "bigtriangledown"
 msgstr "bigtriangledown"
 
-#: lib/ui/stdtoolbars.inc:375
+#: lib/ui/stdtoolbars.inc:378
 msgid "otimes"
 msgstr "otimes"
 
-#: lib/ui/stdtoolbars.inc:376
+#: lib/ui/stdtoolbars.inc:379
 msgid "div"
 msgstr "div"
 
-#: lib/ui/stdtoolbars.inc:377
+#: lib/ui/stdtoolbars.inc:380
 msgid "sqcap"
 msgstr "sqcap"
 
-#: lib/ui/stdtoolbars.inc:378
+#: lib/ui/stdtoolbars.inc:381
 msgid "triangleright"
 msgstr "triangleright"
 
-#: lib/ui/stdtoolbars.inc:379
+#: lib/ui/stdtoolbars.inc:382
 msgid "oslash"
 msgstr "oslash"
 
-#: lib/ui/stdtoolbars.inc:380
+#: lib/ui/stdtoolbars.inc:383
 msgid "cdot"
 msgstr "cdot"
 
-#: lib/ui/stdtoolbars.inc:381
+#: lib/ui/stdtoolbars.inc:384
 msgid "sqcup"
 msgstr "sqcup"
 
-#: lib/ui/stdtoolbars.inc:382
+#: lib/ui/stdtoolbars.inc:385
 msgid "triangleleft"
 msgstr "triangleleft"
 
-#: lib/ui/stdtoolbars.inc:383
+#: lib/ui/stdtoolbars.inc:386
 msgid "odot"
 msgstr "odot"
 
-#: lib/ui/stdtoolbars.inc:384
+#: lib/ui/stdtoolbars.inc:387
 msgid "star"
 msgstr "star"
 
-#: lib/ui/stdtoolbars.inc:385
+#: lib/ui/stdtoolbars.inc:388
 msgid "vee"
 msgstr "vee"
 
-#: lib/ui/stdtoolbars.inc:386
+#: lib/ui/stdtoolbars.inc:389
 msgid "amalg"
 msgstr "amalg"
 
-#: lib/ui/stdtoolbars.inc:387
+#: lib/ui/stdtoolbars.inc:390
 msgid "bigcirc"
 msgstr "bigcirc"
 
-#: lib/ui/stdtoolbars.inc:388
+#: lib/ui/stdtoolbars.inc:391
 msgid "setminus"
 msgstr "setminus"
 
-#: lib/ui/stdtoolbars.inc:389
+#: lib/ui/stdtoolbars.inc:392
 msgid "wedge"
 msgstr "wedge"
 
-#: lib/ui/stdtoolbars.inc:390
+#: lib/ui/stdtoolbars.inc:393
 msgid "dagger"
 msgstr "dagger"
 
-#: lib/ui/stdtoolbars.inc:391
+#: lib/ui/stdtoolbars.inc:394
 msgid "circ"
 msgstr "circ"
 
-#: lib/ui/stdtoolbars.inc:392
+#: lib/ui/stdtoolbars.inc:395
 msgid "bullet"
 msgstr "bullet"
 
-#: lib/ui/stdtoolbars.inc:393
+#: lib/ui/stdtoolbars.inc:396
 msgid "wr"
 msgstr "wr"
 
-#: lib/ui/stdtoolbars.inc:394
+#: lib/ui/stdtoolbars.inc:397
 msgid "ddagger"
 msgstr "ddagger"
 
-#: lib/ui/stdtoolbars.inc:397
+#: lib/ui/stdtoolbars.inc:400
 msgid "Relations"
 msgstr "יחסים"
 
-#: lib/ui/stdtoolbars.inc:398
+#: lib/ui/stdtoolbars.inc:401
 msgid "leq"
 msgstr "leq"
 
-#: lib/ui/stdtoolbars.inc:399
+#: lib/ui/stdtoolbars.inc:402
 msgid "geq"
 msgstr "geq"
 
-#: lib/ui/stdtoolbars.inc:400
+#: lib/ui/stdtoolbars.inc:403
 msgid "equiv"
 msgstr "equiv"
 
-#: lib/ui/stdtoolbars.inc:401
+#: lib/ui/stdtoolbars.inc:404
 msgid "models"
 msgstr "models"
 
-#: lib/ui/stdtoolbars.inc:402
+#: lib/ui/stdtoolbars.inc:405
 msgid "prec"
 msgstr "prec"
 
-#: lib/ui/stdtoolbars.inc:403
+#: lib/ui/stdtoolbars.inc:406
 msgid "succ"
 msgstr "succ"
 
-#: lib/ui/stdtoolbars.inc:404
+#: lib/ui/stdtoolbars.inc:407
 msgid "sim"
 msgstr "sim"
 
-#: lib/ui/stdtoolbars.inc:405
+#: lib/ui/stdtoolbars.inc:408
 msgid "perp"
 msgstr "perp"
 
-#: lib/ui/stdtoolbars.inc:406
+#: lib/ui/stdtoolbars.inc:409
 msgid "preceq"
 msgstr "preceq"
 
-#: lib/ui/stdtoolbars.inc:407
+#: lib/ui/stdtoolbars.inc:410
 msgid "succeq"
 msgstr "succeq"
 
-#: lib/ui/stdtoolbars.inc:408
+#: lib/ui/stdtoolbars.inc:411
 msgid "simeq"
 msgstr "simeq"
 
-#: lib/ui/stdtoolbars.inc:409
+#: lib/ui/stdtoolbars.inc:412
 msgid "mid"
 msgstr "mid"
 
-#: lib/ui/stdtoolbars.inc:410
+#: lib/ui/stdtoolbars.inc:413
 msgid "ll"
 msgstr "ll"
 
-#: lib/ui/stdtoolbars.inc:411
+#: lib/ui/stdtoolbars.inc:414
 msgid "gg"
 msgstr "gg"
 
-#: lib/ui/stdtoolbars.inc:412
+#: lib/ui/stdtoolbars.inc:415
 msgid "asymp"
 msgstr "asymp"
 
-#: lib/ui/stdtoolbars.inc:413
+#: lib/ui/stdtoolbars.inc:416
 msgid "parallel"
 msgstr "parallel"
 
-#: lib/ui/stdtoolbars.inc:414
+#: lib/ui/stdtoolbars.inc:417
 msgid "subset"
 msgstr "subset"
 
-#: lib/ui/stdtoolbars.inc:415
+#: lib/ui/stdtoolbars.inc:418
 msgid "supset"
 msgstr "supset"
 
-#: lib/ui/stdtoolbars.inc:416
+#: lib/ui/stdtoolbars.inc:419
 msgid "approx"
 msgstr "approx"
 
-#: lib/ui/stdtoolbars.inc:417
+#: lib/ui/stdtoolbars.inc:420
 msgid "smile"
 msgstr "smile"
 
-#: lib/ui/stdtoolbars.inc:418
+#: lib/ui/stdtoolbars.inc:421
 msgid "subseteq"
 msgstr "subseteq"
 
-#: lib/ui/stdtoolbars.inc:419
+#: lib/ui/stdtoolbars.inc:422
 msgid "supseteq"
 msgstr "supseteq"
 
-#: lib/ui/stdtoolbars.inc:420
+#: lib/ui/stdtoolbars.inc:423
 msgid "cong"
 msgstr "cong"
 
-#: lib/ui/stdtoolbars.inc:421
+#: lib/ui/stdtoolbars.inc:424
 msgid "frown"
 msgstr "frown"
 
-#: lib/ui/stdtoolbars.inc:422
+#: lib/ui/stdtoolbars.inc:425
 msgid "sqsubseteq"
 msgstr "sqsubseteq"
 
-#: lib/ui/stdtoolbars.inc:423
+#: lib/ui/stdtoolbars.inc:426
 msgid "sqsupseteq"
 msgstr "sqsupseteq"
 
-#: lib/ui/stdtoolbars.inc:424
+#: lib/ui/stdtoolbars.inc:427
 msgid "doteq"
 msgstr "doteq"
 
-#: lib/ui/stdtoolbars.inc:425
+#: lib/ui/stdtoolbars.inc:428
 msgid "neq"
 msgstr "neq"
 
-#: lib/ui/stdtoolbars.inc:426 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:429 src/lengthcommon.cpp:38
 msgid "in"
 msgstr "in"
 
-#: lib/ui/stdtoolbars.inc:427
+#: lib/ui/stdtoolbars.inc:430
 msgid "ni"
 msgstr "ni"
 
-#: lib/ui/stdtoolbars.inc:428
+#: lib/ui/stdtoolbars.inc:431
 msgid "propto"
 msgstr "propto"
 
-#: lib/ui/stdtoolbars.inc:429
+#: lib/ui/stdtoolbars.inc:432
 msgid "notin"
 msgstr "notin"
 
-#: lib/ui/stdtoolbars.inc:430
+#: lib/ui/stdtoolbars.inc:433
 msgid "vdash"
 msgstr "vdash"
 
-#: lib/ui/stdtoolbars.inc:431
+#: lib/ui/stdtoolbars.inc:434
 msgid "dashv"
 msgstr "dashv"
 
-#: lib/ui/stdtoolbars.inc:432
+#: lib/ui/stdtoolbars.inc:435
 msgid "bowtie"
 msgstr "bowtie"
 
-#: lib/ui/stdtoolbars.inc:436
+#: lib/ui/stdtoolbars.inc:439
 msgid "alpha"
 msgstr "alpha"
 
-#: lib/ui/stdtoolbars.inc:437
+#: lib/ui/stdtoolbars.inc:440
 msgid "beta"
 msgstr "beta"
 
-#: lib/ui/stdtoolbars.inc:438
+#: lib/ui/stdtoolbars.inc:441
 msgid "gamma"
 msgstr "gamma"
 
-#: lib/ui/stdtoolbars.inc:439
+#: lib/ui/stdtoolbars.inc:442
 msgid "delta"
 msgstr "delta"
 
-#: lib/ui/stdtoolbars.inc:440
+#: lib/ui/stdtoolbars.inc:443
 msgid "epsilon"
 msgstr "epsilon"
 
-#: lib/ui/stdtoolbars.inc:441
+#: lib/ui/stdtoolbars.inc:444
 msgid "varepsilon"
 msgstr "varepsilon"
 
-#: lib/ui/stdtoolbars.inc:442
+#: lib/ui/stdtoolbars.inc:445
 msgid "zeta"
 msgstr "zeta"
 
-#: lib/ui/stdtoolbars.inc:443
+#: lib/ui/stdtoolbars.inc:446
 msgid "eta"
 msgstr "eta"
 
-#: lib/ui/stdtoolbars.inc:444
+#: lib/ui/stdtoolbars.inc:447
 msgid "theta"
 msgstr "theta"
 
-#: lib/ui/stdtoolbars.inc:445
+#: lib/ui/stdtoolbars.inc:448
 msgid "vartheta"
 msgstr "vartheta"
 
-#: lib/ui/stdtoolbars.inc:446
+#: lib/ui/stdtoolbars.inc:449
 msgid "iota"
 msgstr "iota"
 
-#: lib/ui/stdtoolbars.inc:447
+#: lib/ui/stdtoolbars.inc:450
 msgid "kappa"
 msgstr "kappa"
 
-#: lib/ui/stdtoolbars.inc:448
+#: lib/ui/stdtoolbars.inc:451
 msgid "lambda"
 msgstr "lambda"
 
-#: lib/ui/stdtoolbars.inc:449 src/lengthcommon.cpp:38
+#: lib/ui/stdtoolbars.inc:452 src/lengthcommon.cpp:38
 msgid "mu"
 msgstr "mu"
 
-#: lib/ui/stdtoolbars.inc:450
+#: lib/ui/stdtoolbars.inc:453
 msgid "nu"
 msgstr "nu"
 
-#: lib/ui/stdtoolbars.inc:451
+#: lib/ui/stdtoolbars.inc:454
 msgid "xi"
 msgstr "xi"
 
-#: lib/ui/stdtoolbars.inc:452
+#: lib/ui/stdtoolbars.inc:455
 msgid "pi"
 msgstr "pi"
 
-#: lib/ui/stdtoolbars.inc:453
+#: lib/ui/stdtoolbars.inc:456
 msgid "varpi"
 msgstr "varpi"
 
-#: lib/ui/stdtoolbars.inc:454
+#: lib/ui/stdtoolbars.inc:457
 msgid "rho"
 msgstr "rho"
 
-#: lib/ui/stdtoolbars.inc:455
+#: lib/ui/stdtoolbars.inc:458
 msgid "varrho"
 msgstr "varrho"
 
-#: lib/ui/stdtoolbars.inc:456
+#: lib/ui/stdtoolbars.inc:459
 msgid "sigma"
 msgstr "sigma"
 
-#: lib/ui/stdtoolbars.inc:457
+#: lib/ui/stdtoolbars.inc:460
 msgid "varsigma"
 msgstr "varsigma"
 
-#: lib/ui/stdtoolbars.inc:458
+#: lib/ui/stdtoolbars.inc:461
 msgid "tau"
 msgstr "tau"
 
-#: lib/ui/stdtoolbars.inc:459
+#: lib/ui/stdtoolbars.inc:462
 msgid "upsilon"
 msgstr "upsilon"
 
-#: lib/ui/stdtoolbars.inc:460
+#: lib/ui/stdtoolbars.inc:463
 msgid "phi"
 msgstr "phi"
 
-#: lib/ui/stdtoolbars.inc:461
+#: lib/ui/stdtoolbars.inc:464
 msgid "varphi"
 msgstr "varphi"
 
-#: lib/ui/stdtoolbars.inc:462
+#: lib/ui/stdtoolbars.inc:465
 msgid "chi"
 msgstr "chi"
 
-#: lib/ui/stdtoolbars.inc:463
+#: lib/ui/stdtoolbars.inc:466
 msgid "psi"
 msgstr "psi"
 
-#: lib/ui/stdtoolbars.inc:464
+#: lib/ui/stdtoolbars.inc:467
 msgid "omega"
 msgstr "omega"
 
-#: lib/ui/stdtoolbars.inc:465
+#: lib/ui/stdtoolbars.inc:468
 msgid "Gamma"
 msgstr "Gamma"
 
-#: lib/ui/stdtoolbars.inc:466
+#: lib/ui/stdtoolbars.inc:469
 msgid "Delta"
 msgstr "Delta"
 
-#: lib/ui/stdtoolbars.inc:467
+#: lib/ui/stdtoolbars.inc:470
 msgid "Theta"
 msgstr "Theta"
 
-#: lib/ui/stdtoolbars.inc:468
+#: lib/ui/stdtoolbars.inc:471
 msgid "Lambda"
 msgstr "Lambda"
 
-#: lib/ui/stdtoolbars.inc:469
+#: lib/ui/stdtoolbars.inc:472
 msgid "Xi"
 msgstr "Xi"
 
-#: lib/ui/stdtoolbars.inc:470
+#: lib/ui/stdtoolbars.inc:473
 msgid "Pi"
 msgstr "Pi"
 
-#: lib/ui/stdtoolbars.inc:471
+#: lib/ui/stdtoolbars.inc:474
 msgid "Sigma"
 msgstr "Sigma"
 
-#: lib/ui/stdtoolbars.inc:472
+#: lib/ui/stdtoolbars.inc:475
 msgid "Upsilon"
 msgstr "Upsilon"
 
-#: lib/ui/stdtoolbars.inc:473
+#: lib/ui/stdtoolbars.inc:476
 msgid "Phi"
 msgstr "Phi"
 
-#: lib/ui/stdtoolbars.inc:474
+#: lib/ui/stdtoolbars.inc:477
 msgid "Psi"
 msgstr "Psi"
 
-#: lib/ui/stdtoolbars.inc:475
+#: lib/ui/stdtoolbars.inc:478
 msgid "Omega"
 msgstr "Omega"
 
-#: lib/ui/stdtoolbars.inc:478
+#: lib/ui/stdtoolbars.inc:481
 msgid "Miscellaneous"
 msgstr "שונות"
 
-#: lib/ui/stdtoolbars.inc:479
+#: lib/ui/stdtoolbars.inc:482
 msgid "nabla"
 msgstr "nabla"
 
-#: lib/ui/stdtoolbars.inc:480
+#: lib/ui/stdtoolbars.inc:483
 msgid "partial"
 msgstr "partial"
 
-#: lib/ui/stdtoolbars.inc:481
+#: lib/ui/stdtoolbars.inc:484
 msgid "infty"
 msgstr "infty"
 
-#: lib/ui/stdtoolbars.inc:482
+#: lib/ui/stdtoolbars.inc:485
 msgid "prime"
 msgstr "prime"
 
-#: lib/ui/stdtoolbars.inc:483
+#: lib/ui/stdtoolbars.inc:486
 msgid "ell"
 msgstr "ell"
 
-#: lib/ui/stdtoolbars.inc:484
+#: lib/ui/stdtoolbars.inc:487
 msgid "emptyset"
 msgstr "emptyset"
 
-#: lib/ui/stdtoolbars.inc:485
+#: lib/ui/stdtoolbars.inc:488
 msgid "exists"
 msgstr "exists"
 
-#: lib/ui/stdtoolbars.inc:486
+#: lib/ui/stdtoolbars.inc:489
 msgid "forall"
 msgstr "forall"
 
-#: lib/ui/stdtoolbars.inc:487
+#: lib/ui/stdtoolbars.inc:490
 msgid "imath"
 msgstr "imath"
 
-#: lib/ui/stdtoolbars.inc:488
+#: lib/ui/stdtoolbars.inc:491
 msgid "jmath"
 msgstr "jmath"
 
-#: lib/ui/stdtoolbars.inc:489
+#: lib/ui/stdtoolbars.inc:492
 msgid "Re"
 msgstr "Re"
 
-#: lib/ui/stdtoolbars.inc:490
+#: lib/ui/stdtoolbars.inc:493
 msgid "Im"
 msgstr "Im"
 
-#: lib/ui/stdtoolbars.inc:491
+#: lib/ui/stdtoolbars.inc:494
 msgid "aleph"
 msgstr "aleph"
 
-#: lib/ui/stdtoolbars.inc:492
+#: lib/ui/stdtoolbars.inc:495
 msgid "wp"
 msgstr "wp"
 
-#: lib/ui/stdtoolbars.inc:493 lib/ui/stdtoolbars.inc:575
+#: lib/ui/stdtoolbars.inc:496 lib/ui/stdtoolbars.inc:575
 msgid "hbar"
 msgstr "hbar"
 
-#: lib/ui/stdtoolbars.inc:494 lib/ui/stdtoolbars.inc:582
+#: lib/ui/stdtoolbars.inc:497 lib/ui/stdtoolbars.inc:582
 msgid "angle"
 msgstr "angle"
 
-#: lib/ui/stdtoolbars.inc:495
+#: lib/ui/stdtoolbars.inc:498
 msgid "top"
 msgstr "top"
 
-#: lib/ui/stdtoolbars.inc:496
+#: lib/ui/stdtoolbars.inc:499
 msgid "bot"
 msgstr "bot"
 
-#: lib/ui/stdtoolbars.inc:497
+#: lib/ui/stdtoolbars.inc:500
 msgid "Vert"
 msgstr "Vert"
 
-#: lib/ui/stdtoolbars.inc:498
+#: lib/ui/stdtoolbars.inc:501
 msgid "neg"
 msgstr "neg"
 
-#: lib/ui/stdtoolbars.inc:499
+#: lib/ui/stdtoolbars.inc:502
 msgid "flat"
 msgstr "flat"
 
-#: lib/ui/stdtoolbars.inc:500
+#: lib/ui/stdtoolbars.inc:503
 msgid "natural"
 msgstr "natural"
 
-#: lib/ui/stdtoolbars.inc:501
+#: lib/ui/stdtoolbars.inc:504
 msgid "sharp"
 msgstr "sharp"
 
-#: lib/ui/stdtoolbars.inc:502
+#: lib/ui/stdtoolbars.inc:505
 msgid "surd"
 msgstr "surd"
 
-#: lib/ui/stdtoolbars.inc:503
+#: lib/ui/stdtoolbars.inc:506
 msgid "triangle"
 msgstr "triangle"
 
-#: lib/ui/stdtoolbars.inc:504
+#: lib/ui/stdtoolbars.inc:507
 msgid "diamondsuit"
 msgstr "diamondsuit"
 
-#: lib/ui/stdtoolbars.inc:505
+#: lib/ui/stdtoolbars.inc:508
 msgid "heartsuit"
 msgstr "heartsuit"
 
-#: lib/ui/stdtoolbars.inc:506
+#: lib/ui/stdtoolbars.inc:509
 msgid "clubsuit"
 msgstr "clubsuit"
 
-#: lib/ui/stdtoolbars.inc:507
+#: lib/ui/stdtoolbars.inc:510
 msgid "spadesuit"
 msgstr "spadesuit"
 
-#: lib/ui/stdtoolbars.inc:508
+#: lib/ui/stdtoolbars.inc:511
 msgid "textrm \\AA"
 msgstr "textrm \\AA"
 
-#: lib/ui/stdtoolbars.inc:509
+#: lib/ui/stdtoolbars.inc:512
 msgid "textrm \\O"
 msgstr "textrm \\O"
 
-#: lib/ui/stdtoolbars.inc:510
+#: lib/ui/stdtoolbars.inc:513
 msgid "mathcircumflex"
 msgstr "mathcircumflex"
 
-#: lib/ui/stdtoolbars.inc:511
+#: lib/ui/stdtoolbars.inc:514
 msgid "_"
 msgstr "_"
 
-#: lib/ui/stdtoolbars.inc:512
+#: lib/ui/stdtoolbars.inc:515
 msgid "mathrm T"
 msgstr "mathrm T"
 
-#: lib/ui/stdtoolbars.inc:513
+#: lib/ui/stdtoolbars.inc:516
 msgid "mathbb N"
 msgstr "mathbb N"
 
-#: lib/ui/stdtoolbars.inc:514
+#: lib/ui/stdtoolbars.inc:517
 msgid "mathbb Z"
 msgstr "mathbb Z"
 
-#: lib/ui/stdtoolbars.inc:515
+#: lib/ui/stdtoolbars.inc:518
 msgid "mathbb Q"
 msgstr "mathbb Q"
 
-#: lib/ui/stdtoolbars.inc:516
+#: lib/ui/stdtoolbars.inc:519
 msgid "mathbb R"
 msgstr "mathbb R"
 
-#: lib/ui/stdtoolbars.inc:517
+#: lib/ui/stdtoolbars.inc:520
 msgid "mathbb C"
 msgstr "mathbb C"
 
-#: lib/ui/stdtoolbars.inc:518
+#: lib/ui/stdtoolbars.inc:521
 msgid "mathbb H"
 msgstr "mathbb H"
 
-#: lib/ui/stdtoolbars.inc:519
+#: lib/ui/stdtoolbars.inc:522
 msgid "mathcal F"
 msgstr "mathcal F"
 
-#: lib/ui/stdtoolbars.inc:520
+#: lib/ui/stdtoolbars.inc:523
 msgid "mathcal L"
 msgstr "mathcal L"
 
-#: lib/ui/stdtoolbars.inc:521
+#: lib/ui/stdtoolbars.inc:524
 msgid "mathcal H"
 msgstr "mathcal H"
 
-#: lib/ui/stdtoolbars.inc:522
+#: lib/ui/stdtoolbars.inc:525
 msgid "mathcal O"
 msgstr "mathcal O"
-
-#: lib/ui/stdtoolbars.inc:523
-msgid "phantom"
-msgstr "phantom"
-
-#: lib/ui/stdtoolbars.inc:524
-msgid "vphantom"
-msgstr "vphantom"
-
-#: lib/ui/stdtoolbars.inc:525
-msgid "hphantom"
-msgstr "hphantom"
 
 #: lib/ui/stdtoolbars.inc:528
 msgid "Big Operators"
@@ -11398,7 +11407,7 @@ msgstr "מחלקת מסמך לא ידועה"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "משתמש בברירת המחדל עבור מחלקת המסמך, מכיוון שהמחלקה %1$s לא ידועה."
 
-#: src/Buffer.cpp:470 src/Text.cpp:295
+#: src/Buffer.cpp:470 src/Text.cpp:296
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr ""
@@ -11421,33 +11430,39 @@ msgstr "לא יכול לטעון את מחלקת המסמך"
 
 #: src/Buffer.cpp:512
 #, c-format
-msgid "Using the default document class, because the class %1$s could not be loaded."
-msgstr "משתמש בברירת המחדל עבור מחלקת מסמך, מכיוון שלא ניתן לטעון את המחלקה %1$s."
+msgid ""
+"Using the default document class, because the class %1$s could not be loaded."
+msgstr ""
+"משתמש בברירת המחדל עבור מחלקת מסמך, מכיוון שלא ניתן לטעון את המחלקה %1$s."
 
-#: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:866
-#: src/BufferView.cpp:872
+#: src/Buffer.cpp:523 src/Buffer.cpp:529 src/BufferView.cpp:841
+#: src/BufferView.cpp:847
 msgid "Changes not shown in LaTeX output"
 msgstr "השינויים לא יוצגו בפלט ה- LaTeX"
 
-#: src/Buffer.cpp:524 src/BufferView.cpp:867
+#: src/Buffer.cpp:524 src/BufferView.cpp:842
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/soul are installed.\n"
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"השינויים לא לא יודגשו בפלט ה- LaTeX, מפני שהחבילות dvipost ו- xcolor/soul לא מותקנות.\n"
-"אנא התקן חבילות אלו או הגדר מחדש את \\lyxadded ואת \\lyxdeleted בהקדמת ה- LaTeX."
+"השינויים לא לא יודגשו בפלט ה- LaTeX, מפני שהחבילות dvipost ו- xcolor/soul לא "
+"מותקנות.\n"
+"אנא התקן חבילות אלו או הגדר מחדש את \\lyxadded ואת \\lyxdeleted בהקדמת ה- "
+"LaTeX."
 
-#: src/Buffer.cpp:530 src/BufferView.cpp:873
+#: src/Buffer.cpp:530 src/BufferView.cpp:848
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and soul are not installed.\n"
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"השינויים לא יודגשו בפלט ה- LaTeX בשימוש ב- pdflatex, מפני שהחבילות xcolor ו- soul לא מותקנות.\n"
-"אנא התקן את שתי החבילות או הגדר מחדש את \\lyxadded ואת \\lyxdeleted בהקדמת ה- LaTeX."
+"השינויים לא יודגשו בפלט ה- LaTeX בשימוש ב- pdflatex, מפני שהחבילות xcolor ו- "
+"soul לא מותקנות.\n"
+"אנא התקן את שתי החבילות או הגדר מחדש את \\lyxadded ואת \\lyxdeleted בהקדמת "
+"ה- LaTeX."
 
 #: src/Buffer.cpp:665 src/Buffer.cpp:674
 msgid "Document could not be read"
@@ -11557,16 +11572,16 @@ msgstr "chktex נכשל"
 msgid "Could not run chktex successfully."
 msgstr "לא מצליח להריץ את chktex בהצלחה."
 
-#: src/Buffer.cpp:1821
+#: src/Buffer.cpp:1826
 msgid "Preview source code"
 msgstr "תצוגה מקדימה של קוד המקור"
 
-#: src/Buffer.cpp:1832
+#: src/Buffer.cpp:1837
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "תצוגה מקדימה של קוד המקור של פסקה %1$d"
 
-#: src/Buffer.cpp:1836
+#: src/Buffer.cpp:1841
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "תצוגה מקדימה של קוד המקור מפיסקה %1$s עד לפיסקה %2$s"
@@ -11607,7 +11622,7 @@ msgstr "שמירה נכשלה. מנסה..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "שמירה נכשלה! המסמך אבוד."
 
-#: src/BufferParams.cpp:476
+#: src/BufferParams.cpp:481
 #, c-format
 msgid ""
 "The layout file requested by this document,\n"
@@ -11624,69 +11639,69 @@ msgstr ""
 "ראה את מסמך העזרה \"התאמה אישית\" בשביל\n"
 "מידע נוסף.\n"
 
-#: src/BufferParams.cpp:482
+#: src/BufferParams.cpp:487
 msgid "Document class not available"
 msgstr "מחלקת מסמך לא זמינה"
 
-#: src/BufferParams.cpp:483
+#: src/BufferParams.cpp:488
 msgid "LyX will not be able to produce output."
 msgstr "LyX לא יוכל לייצר פלט."
 
-#: src/BufferView.cpp:520
+#: src/BufferView.cpp:519
 msgid "Save bookmark"
 msgstr "שמור סמנייה"
 
-#: src/BufferView.cpp:736
+#: src/BufferView.cpp:730
 msgid "No further undo information"
 msgstr "אין מידע עבור פעולת \"בטל\" נוספת"
 
-#: src/BufferView.cpp:745
+#: src/BufferView.cpp:739
 msgid "No further redo information"
 msgstr "אין מידע עבור פעולת \"בצע שוב\" נוספת"
 
-#: src/BufferView.cpp:932
+#: src/BufferView.cpp:907
 msgid "Mark off"
 msgstr ""
 
-#: src/BufferView.cpp:939
+#: src/BufferView.cpp:914
 msgid "Mark on"
 msgstr ""
 
-#: src/BufferView.cpp:946
+#: src/BufferView.cpp:921
 msgid "Mark removed"
 msgstr ""
 
-#: src/BufferView.cpp:949
+#: src/BufferView.cpp:924
 msgid "Mark set"
 msgstr ""
 
-#: src/BufferView.cpp:995
+#: src/BufferView.cpp:970
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d מילים נבחרו."
 
-#: src/BufferView.cpp:998
+#: src/BufferView.cpp:973
 #, c-format
 msgid "%1$d words in document."
 msgstr "יש %1$d מילים במסמך."
 
-#: src/BufferView.cpp:1003
+#: src/BufferView.cpp:978
 msgid "One word in selection."
 msgstr "מילה אחת נבחרה."
 
-#: src/BufferView.cpp:1005
+#: src/BufferView.cpp:980
 msgid "One word in document."
 msgstr "מילה אחת במסמך."
 
-#: src/BufferView.cpp:1008
+#: src/BufferView.cpp:983
 msgid "Count words"
 msgstr "ספירת מילים"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1586
 msgid "Select LyX document to insert"
 msgstr "בחר מסמך LyX להוספה"
 
-#: src/BufferView.cpp:1607 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
+#: src/BufferView.cpp:1588 src/LyXFunc.cpp:1996 src/LyXFunc.cpp:2035
 #: src/LyXFunc.cpp:2108 src/callback.cpp:148
 #: src/frontends/controllers/ControlBibtex.cpp:52
 #: src/frontends/controllers/ControlBibtex.cpp:64
@@ -11696,31 +11711,31 @@ msgstr "בחר מסמך LyX להוספה"
 msgid "Documents|#o#O"
 msgstr "מסמכים"
 
-#: src/BufferView.cpp:1608 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
+#: src/BufferView.cpp:1589 src/LyXFunc.cpp:2036 src/LyXFunc.cpp:2109
 msgid "Examples|#E#e"
 msgstr "דוגמאות"
 
-#: src/BufferView.cpp:1614 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
+#: src/BufferView.cpp:1595 src/LyXFunc.cpp:2001 src/LyXFunc.cpp:2040
 #: src/callback.cpp:156
 msgid "LyX Documents (*.lyx)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/BufferView.cpp:1626 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
+#: src/BufferView.cpp:1607 src/LyXFunc.cpp:2050 src/LyXFunc.cpp:2130
 #: src/LyXFunc.cpp:2144 src/LyXFunc.cpp:2160
 msgid "Canceled."
 msgstr "בוטל."
 
-#: src/BufferView.cpp:1637
+#: src/BufferView.cpp:1618
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "מוסיף מסמף %1$s..."
 
-#: src/BufferView.cpp:1648
+#: src/BufferView.cpp:1629
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "המסמך %1$s הוסף."
 
-#: src/BufferView.cpp:1650
+#: src/BufferView.cpp:1631
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "לא יכול להוסיף את המסמך %1$s"
@@ -12614,7 +12629,7 @@ msgstr "חזור"
 msgid "Exiting."
 msgstr "יוצא."
 
-#: src/LyXFunc.cpp:1189 src/Text3.cpp:1344
+#: src/LyXFunc.cpp:1189 src/Text3.cpp:1349
 msgid "Missing argument"
 msgstr "ארגומנט חסר"
 
@@ -12737,7 +12752,8 @@ msgstr "ly"
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr "בטל בחירתך אם אתה לא מעוניין שהבחירה הנוכחית תוחלף אוטומטית במה שתקליד."
+msgstr ""
+"בטל בחירתך אם אתה לא מעוניין שהבחירה הנוכחית תוחלף אוטומטית במה שתקליד."
 
 #: src/LyXRC.cpp:2119
 msgid ""
@@ -12748,7 +12764,8 @@ msgstr ""
 "מחלקה."
 
 #: src/LyXRC.cpp:2123
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "מרווח הזמן בין שמירות אוטומטיות (בשניות) 0 משמעותו ללא שמירה אוטומטית."
 
 #: src/LyXRC.cpp:2130
@@ -12854,7 +12871,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2224
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr ""
 
 #: src/LyXRC.cpp:2228
@@ -12920,7 +12938,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2280
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
 #: src/LyXRC.cpp:2284
@@ -12957,7 +12976,8 @@ msgstr "האפשרות להדפיס עמודים זוגיים בלבד."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr "אפשרות נוספות להעביר לתוכנת ההדפסה אחרי הכל, אבל לפני שם קובץ ה- DVI שיודפס."
+msgstr ""
+"אפשרות נוספות להעביר לתוכנת ההדפסה אחרי הכל, אבל לפני שם קובץ ה- DVI שיודפס."
 
 #: src/LyXRC.cpp:2316
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -13019,7 +13039,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 
 #: src/LyXRC.cpp:2368
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "בחר כדי לאפשר תמיכה בשפות הנכתבות מימין לשמאל."
 
 #: src/LyXRC.cpp:2372
@@ -13102,7 +13123,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:2455
-msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid ""
+"Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
 #: src/LyXRC.cpp:2462
@@ -13210,11 +13232,11 @@ msgstr ""
 msgid "Native OS API not yet supported."
 msgstr ""
 
-#: src/Text.cpp:135
+#: src/Text.cpp:136
 msgid "Unknown layout"
 msgstr "תצורה לא ידועה"
 
-#: src/Text.cpp:136
+#: src/Text.cpp:137
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
@@ -13223,93 +13245,93 @@ msgstr ""
 "תצורה '%1$s' לא קיימת במחלקת מסמך '%2$s'\n"
 "מנסה להשתמש בברירת המחדל.\n"
 
-#: src/Text.cpp:167
+#: src/Text.cpp:168
 msgid "Unknown Inset"
 msgstr "תוסף טקסט לא מוכר"
 
-#: src/Text.cpp:273 src/Text.cpp:286
+#: src/Text.cpp:274 src/Text.cpp:287
 msgid "Change tracking error"
 msgstr "שגיאה במעקב אחר שינויים"
 
-#: src/Text.cpp:274
+#: src/Text.cpp:275
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:287
+#: src/Text.cpp:288
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/Text.cpp:294
+#: src/Text.cpp:295
 msgid "Unknown token"
 msgstr ""
 
-#: src/Text.cpp:767
+#: src/Text.cpp:768
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "אינך יכול לכתוב רווח בתחילת פסקה. אנא קרא את \"השיעור המודרך\"."
 
-#: src/Text.cpp:778
+#: src/Text.cpp:779
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "אינך יכול להקליד שני רווחים רצופים. אנא קרא את \"השיעור המודרך\"."
 
-#: src/Text.cpp:1820
+#: src/Text.cpp:1821
 msgid "[Change Tracking] "
 msgstr "[מעקב אחר שינויים]"
 
-#: src/Text.cpp:1826
+#: src/Text.cpp:1827
 msgid "Change: "
 msgstr "שינוי: "
 
-#: src/Text.cpp:1830
+#: src/Text.cpp:1831
 msgid " at "
 msgstr "בתוך "
 
-#: src/Text.cpp:1840
+#: src/Text.cpp:1841
 #, c-format
 msgid "Font: %1$s"
 msgstr "גופן: %1$s"
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1846
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", עומק: %1$d"
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1852
 msgid ", Spacing: "
 msgstr ", ריווח: "
 
-#: src/Text.cpp:1857 src/frontends/qt4/QDocument.cpp:247
+#: src/Text.cpp:1858 src/frontends/qt4/QDocument.cpp:247
 msgid "OneHalf"
 msgstr "אחד וחצי"
 
-#: src/Text.cpp:1863
+#: src/Text.cpp:1864
 msgid "Other ("
 msgstr "אחר ("
 
-#: src/Text.cpp:1872
+#: src/Text.cpp:1873
 msgid ", Inset: "
 msgstr ", תוסף טקסט: "
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1874
 msgid ", Paragraph: "
 msgstr ", פסקה: "
 
-#: src/Text.cpp:1874
+#: src/Text.cpp:1875
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1876
 msgid ", Position: "
 msgstr ", מיקום:"
 
-#: src/Text.cpp:1881
+#: src/Text.cpp:1882
 msgid ", Char: 0x"
 msgstr ", תו: 0x"
 
-#: src/Text.cpp:1883
+#: src/Text.cpp:1884
 msgid ", Boundary: "
 msgstr ", גבול:"
 
@@ -13325,27 +13347,27 @@ msgstr "אין מה לשים באינדקס!"
 msgid "Cannot index more than one paragraph!"
 msgstr "לא יכול לשים באינדקס יותר מפסקה אחת!"
 
-#: src/Text3.cpp:178 src/mathed/InsetMathHull.cpp:1336
+#: src/Text3.cpp:183 src/mathed/InsetMathHull.cpp:1336
 msgid "Math editor mode"
 msgstr "מצב עורך מתמטיקה"
 
-#: src/Text3.cpp:728
+#: src/Text3.cpp:733
 msgid "Unknown spacing argument: "
 msgstr "ארגומנט מרווח לא ידוע:"
 
-#: src/Text3.cpp:902
+#: src/Text3.cpp:907
 msgid "Layout "
 msgstr "פריסה"
 
-#: src/Text3.cpp:903
+#: src/Text3.cpp:908
 msgid " not known"
 msgstr "לא ידוע"
 
-#: src/Text3.cpp:1455 src/Text3.cpp:1467
+#: src/Text3.cpp:1461 src/Text3.cpp:1473
 msgid "Character set"
 msgstr "סט תווים"
 
-#: src/Text3.cpp:1584 src/Text3.cpp:1595
+#: src/Text3.cpp:1590 src/Text3.cpp:1601
 msgid "Paragraph layout set"
 msgstr ""
 
@@ -14236,19 +14258,38 @@ msgstr "ראשי פרקים"
 msgid "Directories"
 msgstr "תיקיות"
 
-#: src/frontends/qt4/GuiApplication.cpp:390
+#: src/frontends/qt4/GuiApplication.cpp:269
+msgid ""
+"LyX has caught an exception, it will now attemp to save all unsaved "
+"documents and exit.\n"
+"\n"
+"Exception: "
+msgstr ""
+
+#: src/frontends/qt4/GuiApplication.cpp:273
+#: src/frontends/qt4/GuiApplication.cpp:280
+msgid "Software exception Detected"
+msgstr ""
+
+#: src/frontends/qt4/GuiApplication.cpp:278
+msgid ""
+"LyX has caught some really weird exception, it will now attemp to save all "
+"unsaved documents and exit."
+msgstr ""
+
+#: src/frontends/qt4/GuiApplication.cpp:408
 msgid "About %1"
 msgstr "אודות %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:390 src/frontends/qt4/QPrefs.cpp:2045
+#: src/frontends/qt4/GuiApplication.cpp:408 src/frontends/qt4/QPrefs.cpp:2045
 msgid "Preferences"
 msgstr "העדפות"
 
-#: src/frontends/qt4/GuiApplication.cpp:391
+#: src/frontends/qt4/GuiApplication.cpp:409
 msgid "Reconfigure"
 msgstr "הגדר מחדש"
 
-#: src/frontends/qt4/GuiApplication.cpp:391
+#: src/frontends/qt4/GuiApplication.cpp:409
 msgid "Quit %1"
 msgstr "יציאה %1"
 
@@ -14470,7 +14511,8 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/QDocument.cpp:232 src/frontends/qt4/QDocument.cpp:655
-msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 
 #: src/frontends/qt4/QDocument.cpp:241
@@ -14634,7 +14676,8 @@ msgstr "תמונות"
 #: src/frontends/qt4/QInclude.cpp:115 src/frontends/qt4/QInclude.cpp:229
 #: src/frontends/qt4/QListings.cpp:350 src/frontends/qt4/QListings.cpp:427
 #: src/frontends/qt4/QListings.cpp:459
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr "הכנס מימין פרמטרים לרישום. הכנס ? בשביל לקבל רשימה של כל הפרמטרים."
 
 #: src/frontends/qt4/QInclude.cpp:194
@@ -14875,7 +14918,8 @@ msgstr "LyX: %1$s"
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
-msgstr "שם הקובץ הבא עלול לגרום לבעיות כאשר מריצים את הקובץ המיוצא באמצעות LaTeX: "
+msgstr ""
+"שם הקובץ הבא עלול לגרום לבעיות כאשר מריצים את הקובץ המיוצא באמצעות LaTeX: "
 
 #: src/insets/Inset.cpp:255
 msgid "Opened inset"
@@ -14893,7 +14937,8 @@ msgstr "אזהרת יצוא!"
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
-msgstr "ישנם רווחים בכתובת של מסדי הנתונים של BibTex.<br>Bibtex לא יוכל לאתר אותם."
+msgstr ""
+"ישנם רווחים בכתובת של מסדי הנתונים של BibTex.<br>Bibtex לא יוכל לאתר אותם."
 
 #: src/insets/InsetBibtex.cpp:267
 msgid ""
@@ -15176,7 +15221,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "צריך להיות מורכב מאחד או יותר מ- %1$s."
 
 #: src/insets/InsetListingsParams.cpp:292
-msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:294
@@ -15263,6 +15309,10 @@ msgstr ""
 msgid "Nomenclature"
 msgstr "נומנקלטורה"
 
+#: src/insets/InsetNote.cpp:64
+msgid "Note[[InsetNote]]"
+msgstr ""
+
 #: src/insets/InsetNote.cpp:66
 msgid "Greyed out"
 msgstr ""
@@ -15279,11 +15329,11 @@ msgstr ""
 msgid "Opened Note Inset"
 msgstr ""
 
-#: src/insets/InsetOptArg.cpp:32 src/insets/InsetOptArg.cpp:42
+#: src/insets/InsetOptArg.cpp:35 src/insets/InsetOptArg.cpp:45
 msgid "opt"
 msgstr ""
 
-#: src/insets/InsetOptArg.cpp:54
+#: src/insets/InsetOptArg.cpp:57
 msgid "Opened Optional Argument Inset"
 msgstr ""
 
@@ -15347,15 +15397,15 @@ msgstr "סוג תוכן עניינים לא ידוע"
 msgid "Opened table"
 msgstr "טבלה פתוחה"
 
-#: src/insets/InsetTabular.cpp:4291
+#: src/insets/InsetTabular.cpp:4303
 msgid "Error setting multicolumn"
 msgstr "שגיאה בקביעת תא המתפרש על פני מספר עמודות"
 
-#: src/insets/InsetTabular.cpp:4292
+#: src/insets/InsetTabular.cpp:4304
 msgid "You cannot set multicolumn vertically."
 msgstr "אי אפשר ליצור תא המתפרש על פני מספר עמודות באופן אנכי."
 
-#: src/insets/InsetText.cpp:240
+#: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
 msgstr "תוסף טקסט פתוח"
 
@@ -15534,23 +15584,23 @@ msgstr "לא יכול להוסיף קווי רשת אנכיים בתוך '%1$s'"
 msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr "אין קווי רשת אנכיים בסביבה מוטלאת: תכונה %1$s"
 
-#: src/mathed/InsetMathGrid.cpp:1362
+#: src/mathed/InsetMathGrid.cpp:1364
 msgid "Only one row"
 msgstr "שורה אחת בלבד"
 
-#: src/mathed/InsetMathGrid.cpp:1368
+#: src/mathed/InsetMathGrid.cpp:1370
 msgid "Only one column"
 msgstr "עמודה אחת בלבד"
 
-#: src/mathed/InsetMathGrid.cpp:1376
+#: src/mathed/InsetMathGrid.cpp:1378
 msgid "No hline to delete"
 msgstr "אין קו אופקי למחיקה"
 
-#: src/mathed/InsetMathGrid.cpp:1385
+#: src/mathed/InsetMathGrid.cpp:1387
 msgid "No vline to delete"
 msgstr "אין קו אנכי למחיקה"
 
-#: src/mathed/InsetMathGrid.cpp:1403
+#: src/mathed/InsetMathGrid.cpp:1405
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "תכונת טבלה לא ידועה '%1$s'"
@@ -15626,7 +15676,8 @@ msgstr "הבינארי של LyX לא נמצא"
 
 #: src/support/Package.cpp.in:449
 #, c-format
-msgid "Unable to determine the path to the LyX binary from the command line %1$s"
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr "לא מצליח לקבוע את הכתובת של הבינארי של LyX משורת הפקודה %1$s"
 
 #: src/support/Package.cpp.in:569
@@ -15709,3 +15760,11 @@ msgstr ""
 msgid "Unknown user"
 msgstr "משתמש לא מוכר"
 
+#~ msgid "phantom"
+#~ msgstr "phantom"
+
+#~ msgid "vphantom"
+#~ msgstr "vphantom"
+
+#~ msgid "hphantom"
+#~ msgstr "hphantom"
