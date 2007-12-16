@@ -1,5 +1,5 @@
-#LyX 1.6svn created this file. For more info see http://www.lyx.org/
-\lyxformat 308
+#LyX 1.5.3svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
 \begin_document
 \begin_header
 \textclass scrbook
@@ -74,7 +74,6 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -125,6 +124,10 @@ lyx-docs@lists.lyx.org
 
 \end_inset
 
+
+\newline
+
+\newline
 Version 1.5.3
 \end_layout
 
@@ -150,8 +153,7 @@ This package should be part of all popular LaTeX-distributions.
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_inset LatexCommand tableofcontents
 
 \end_inset
 
@@ -307,8 +309,7 @@ Note that there is no horizontal scroll bar.
 For a brief description of all LyX menus and toolbar buttons, have a look
  at Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:The-User-Interface"
 
 \end_inset
@@ -338,8 +339,7 @@ Help
 
 \begin_layout Section
 Basic LyX Setup
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Basic-LyX-Setup"
 
 \end_inset
@@ -355,12 +355,8 @@ There are several features of LyX that can be configured from inside LyX,
  It uses this knowledge to give reasonable defaults to several 
 \family sans
 Preferences
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Preferences
-\end_layout
+\begin_inset LatexCommand index
+name "Preferences"
 
 \end_inset
 
@@ -376,12 +372,8 @@ Tools\SpecialChar \menuseparator
 Reconfigure
 \family default
 .
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Reconfiguration of LyX
-\end_layout
+\begin_inset LatexCommand index
+name "Reconfiguration of LyX"
 
 \end_inset
 
@@ -390,8 +382,7 @@ Reconfiguration of LyX
 
 \begin_layout Section
 LaTeX Setup
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:LaTeX-Setup"
 
 \end_inset
@@ -455,16 +446,14 @@ LaTeX
  is printed with sub- and superscript letters.
  More on ERT is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ERT"
 
 \end_inset
 
 , the printout of proper names like LaTeX is explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:LyX's-Proper-Names"
 
 \end_inset
@@ -475,12 +464,8 @@ reference "sub:LyX's-Proper-Names"
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Reconfiguration of LyX
-\end_layout
+\begin_inset LatexCommand index
+name "Reconfiguration of LyX"
 
 \end_inset
 
@@ -493,12 +478,8 @@ How to work with LyX
 
 \begin_layout Section
 Basic File Operations
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-File Operations
-\end_layout
+\begin_inset LatexCommand index
+name "File Operations"
 
 \end_inset
 
@@ -617,8 +598,7 @@ Template
  They can be of use for certain classes, especially those for writing letters
  (see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Document-Classes"
 
 \end_inset
@@ -705,18 +685,13 @@ you can there register the changes you made to a document so that others
 
 \begin_layout Section
 Basic Editing Features
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Editing
-\end_layout
+\begin_inset LatexCommand index
+name "Editing"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Basic-Editing-Features"
 
 \end_inset
@@ -810,12 +785,8 @@ Undo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paste
-\end_layout
+\begin_inset LatexCommand index
+name "Paste"
 
 \end_inset
 
@@ -855,22 +826,14 @@ Lines
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Replace
-\end_layout
+\begin_inset LatexCommand index
+name "Replace"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Find
-\end_layout
+\begin_inset LatexCommand index
+name "Find"
 
 \end_inset
 
@@ -977,28 +940,19 @@ starlet
 
 \begin_layout Section
 Undo and Redo
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Redo
-\end_layout
+\begin_inset LatexCommand index
+name "Redo"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Undo
-\end_layout
+\begin_inset LatexCommand index
+name "Undo"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Undo-and-Redo"
 
 \end_inset
@@ -1081,12 +1035,8 @@ Redo
 
 \begin_layout Section
 Mouse Operations
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Mouse Operations
-\end_layout
+\begin_inset LatexCommand index
+name "Mouse Operations"
 
 \end_inset
 
@@ -1175,19 +1125,14 @@ Single click
 \end_deeper
 \begin_layout Section
 Basic Key Bindings
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Key-Bindings"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Key Bindings
-\end_layout
+\begin_inset LatexCommand index
+name "Key Bindings"
 
 \end_inset
 
@@ -1237,8 +1182,7 @@ Down
 
 \family sans
 Tab
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
+\begin_inset LatexCommand nomenclature
 symbol "Tab"
 description "Tabulator key"
 
@@ -1249,23 +1193,20 @@ description "Tabulator key"
  There is no such thing as a tab stop in LyX.
  If you don't understand this, go read sections\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Par-indent-intro"
 
 \end_inset
 
  and 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Paragraph-Environments"
 
 \end_inset
 
 , especially section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Lists"
 
 \end_inset
@@ -1284,8 +1225,7 @@ Tutorial
 
 \family sans
 Esc
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
+\begin_inset LatexCommand nomenclature
 symbol "Esc"
 description "Escape key"
 
@@ -1345,8 +1285,7 @@ C
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
+\begin_inset LatexCommand nomenclature
 symbol "C"
 description "Control key"
 
@@ -1413,8 +1352,7 @@ S
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
+\begin_inset LatexCommand nomenclature
 symbol "S"
 description "Shift key"
 
@@ -1443,8 +1381,7 @@ M
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
+\begin_inset LatexCommand nomenclature
 symbol "M"
 description "Meta or Alt key"
 
@@ -1587,12 +1524,8 @@ Shift-Control-s
 
 \begin_layout Chapter
 LyX Basics
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LyX ! Basics
-\end_layout
+\begin_inset LatexCommand index
+name "LyX ! Basics"
 
 \end_inset
 
@@ -1601,12 +1534,8 @@ LyX ! Basics
 
 \begin_layout Section
 Document Types
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Types
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Types"
 
 \end_inset
 
@@ -1645,18 +1574,13 @@ Read on for info about the document classes you can choose from LyX, and
 
 \begin_layout Subsection
 Document Classes
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Classes
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Classes"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Document-Classes"
 
 \end_inset
@@ -1890,12 +1814,8 @@ You can select a class using the
 \family sans
 Document\SpecialChar \menuseparator
 Settings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -2435,8 +2355,7 @@ Subsubsection
  headings, and so on.
  We'll describe these headings fully in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Headings"
 
 \end_inset
@@ -2446,18 +2365,13 @@ reference "sub:Headings"
 
 \begin_layout Subsection
 Document Layout
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document !  Layout
-\end_layout
+\begin_inset LatexCommand index
+name "Document !  Layout"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Document-Layout"
 
 \end_inset
@@ -2465,12 +2379,8 @@ name "sub:Document-Layout"
 
 \family sans
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -2563,12 +2473,8 @@ Fancy
  have the 
 \series bold
 fancyhdr
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! fancyhdr
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! fancyhdr"
 
 \end_inset
 
@@ -2583,8 +2489,7 @@ LaTeX-packages ! fancyhdr
 fancyhdr
 \series default
  package for more details, 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "fancyhdr"
 
 \end_inset
@@ -2599,8 +2504,7 @@ Separation
 \family default
  of paragraphs is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Par-indent-intro"
 
 \end_inset
@@ -2610,18 +2514,13 @@ reference "sec:Par-indent-intro"
 
 \begin_layout Subsection
 Paper Size and Orientation
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Paper size
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Paper size"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Paper-Size,-Orientation,"
 
 \end_inset
@@ -2643,12 +2542,8 @@ Settings
  menu:
 \family sans
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -2741,29 +2636,20 @@ document
 
 \begin_layout Subsection
 Margins
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Margins
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Margins"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Margins"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Margins
-\end_layout
+\begin_inset LatexCommand index
+name "Margins"
 
 \end_inset
 
@@ -2779,12 +2665,8 @@ Settings
 .
 \family sans
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -2822,12 +2704,8 @@ Standard
 
 \begin_layout Section
 Paragraph Indentation and Separation
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph ! Indentation
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph ! Indentation"
 
 \end_inset
 
@@ -2836,8 +2714,7 @@ Paragraph ! Indentation
 
 \begin_layout Subsection
 Introduction
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Par-indent-intro"
 
 \end_inset
@@ -2901,12 +2778,8 @@ all
 
 \begin_layout Subsection
 Paragraph Separation
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph ! Separation
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph ! Separation"
 
 \end_inset
 
@@ -2931,12 +2804,8 @@ Layout
 \family sans
 Document\SpecialChar \menuseparator
 Settings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -2960,8 +2829,7 @@ parindent}{Length}
 \begin_layout Standard
 where length is a value in one of the units listed in Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Units"
 
 \end_inset
@@ -3001,12 +2869,8 @@ You should only need to change the indentation method for a single paragraph
 
 \begin_layout Subsection
 Line Spacing
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph ! Line spacing
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph ! Line spacing"
 
 \end_inset
 
@@ -3018,12 +2882,8 @@ In the
 \family sans
 Document\SpecialChar \menuseparator
 Settings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -3042,12 +2902,8 @@ status collapsed
 You need to have the LaTeX-package 
 \series bold
 setspace
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! setspace
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! setspace"
 
 \end_inset
 
@@ -3063,29 +2919,20 @@ LaTeX-packages ! setspace
 
 \begin_layout Section
 Paragraph Environments
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph ! Environments
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph ! Environments"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Paragraph-Environments"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph environments|(
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph environments|("
 
 \end_inset
 
@@ -3258,8 +3105,7 @@ Standard
  Usually, starting a new paragraph resets both the paragraph environment
  and the nesting depth (for more on nesting see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nesting"
 
 \end_inset
@@ -3314,12 +3160,8 @@ Standard
 
 \begin_layout Subsection
 Document Title
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document !Title
-\end_layout
+\begin_inset LatexCommand index
+name "Document !Title"
 
 \end_inset
 
@@ -3427,18 +3269,13 @@ thanks
 
 \begin_layout Subsection
 Headings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Section headings
-\end_layout
+\begin_inset LatexCommand index
+name "Section headings"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Headings"
 
 \end_inset
@@ -3453,12 +3290,8 @@ There are several paragraph environments for producing section headings.
 
 \begin_layout Subsubsection
 Numbered Headings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Section headings ! Numbered
-\end_layout
+\begin_inset LatexCommand index
+name "Section headings ! Numbered"
 
 \end_inset
 
@@ -3647,12 +3480,8 @@ Subsubsection
 
 \begin_layout Subsubsection
 Unnumbered Headings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Section headings ! Unnumbered
-\end_layout
+\begin_inset LatexCommand index
+name "Section headings ! Unnumbered"
 
 \end_inset
 
@@ -3707,8 +3536,7 @@ The
  They work the same as their numbered counterparts but won't appear in the
  table of contents, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:toc"
 
 \end_inset
@@ -3718,8 +3546,7 @@ reference "sec:toc"
 
 \begin_layout Subsubsection
 Changing the Numbering
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Numbering-depth"
 
 \end_inset
@@ -3768,12 +3595,8 @@ Settings
  dialog.
 \family sans
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -3798,12 +3621,8 @@ Numbering
 
 \begin_layout Subsubsection
 Short Titles of Headings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Section headings ! Short titles
-\end_layout
+\begin_inset LatexCommand index
+name "Section headings ! Short titles"
 
 \end_inset
 
@@ -3818,8 +3637,7 @@ Short Titles
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Short-Titles"
 
 \end_inset
@@ -3961,19 +3779,14 @@ Quote
 Quotation
 \family default
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Quote"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Quotation
-\end_layout
+\begin_inset LatexCommand index
+name "Quotation"
 
 \end_inset
 
@@ -4089,30 +3902,21 @@ Quotation
 Verse
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph ! Verse
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph ! Verse"
 
 \end_inset
 
 
 \family sans
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Poetry
-\end_layout
+\begin_inset LatexCommand index
+name "Poetry"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Verse"
 
 \end_inset
@@ -4177,18 +3981,13 @@ C-Return
 
 \begin_layout Subsection
 Lists
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Lists
-\end_layout
+\begin_inset LatexCommand index
+name "Lists"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Lists"
 
 \end_inset
@@ -4258,8 +4057,7 @@ You can nest lists of any type inside one another.
  If you intend to use any of the list paragraph environments, we suggest
  you read all of section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nesting"
 
 \end_inset
@@ -4274,18 +4072,13 @@ reference "sec:Nesting"
 Itemize
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Lists ! Itemize
-\end_layout
+\begin_inset LatexCommand index
+name "Lists ! Itemize"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Itemize"
 
 \end_inset
@@ -4350,8 +4143,7 @@ LyX always shows the same symbol on screen.
 \begin_layout Itemize
 See section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nesting"
 
 \end_inset
@@ -4435,12 +4227,8 @@ Bullets
 .
 \family sans
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -4452,8 +4240,7 @@ Notice how the space between items decreases with increasing depth.
  We'll explain nesting and all the tricks you can do with different depths
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nesting"
 
 \end_inset
@@ -4467,18 +4254,13 @@ reference "sec:Nesting"
 Enumerate
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Lists ! Enumerate
-\end_layout
+\begin_inset LatexCommand index
+name "Lists ! Enumerate"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Enumerate"
 
 \end_inset
@@ -4631,8 +4413,7 @@ Enumerate
  environments than we've stated here.
  You should read section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nesting"
 
 \end_inset
@@ -4646,18 +4427,13 @@ reference "sec:Nesting"
 Description
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Lists ! Description
-\end_layout
+\begin_inset LatexCommand index
+name "Lists ! Description"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Description-List"
 
 \end_inset
@@ -4729,8 +4505,7 @@ Space
 \family default
 , see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Protected-Space"
 
 \end_inset
@@ -4800,18 +4575,13 @@ The LyX
 List
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Lists ! LyX list
-\end_layout
+\begin_inset LatexCommand index
+name "Lists ! LyX list"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:LyX-List"
 
 \end_inset
@@ -5002,8 +4772,7 @@ List
  They work just like the other list paragraph environments.
  Read section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nesting"
 
 \end_inset
@@ -5029,8 +4798,7 @@ HFills
 \family default
  later in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Horizontal-Space"
 
 \end_inset
@@ -5074,12 +4842,8 @@ HFill
 
 \begin_layout Subsection
 Letters
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Letters
-\end_layout
+\begin_inset LatexCommand index
+name "Letters"
 
 \end_inset
 
@@ -5149,8 +4913,7 @@ Address
 
 \begin_layout Subsubsection
 Usage
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Address-Usage"
 
 \end_inset
@@ -5284,12 +5047,8 @@ Most academic writing begins with an abstract and ends with a bibliography
 
 \family sans
 Abstract
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Abstracts
-\end_layout
+\begin_inset LatexCommand index
+name "Abstracts"
 
 \end_inset
 
@@ -5375,8 +5134,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/Abstract.pdf
-	inzipName 
-	embed true
 	lyxscale 25
 
 \end_inset
@@ -5388,8 +5145,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Paragraph-in-the"
 
 \end_inset
@@ -5427,8 +5183,7 @@ book
  class, we can't do this.
  We inserted it therefore as figure\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Paragraph-in-the"
 
 \end_inset
@@ -5451,18 +5206,13 @@ abstract
 Bibliography
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Bibliography
-\end_layout
+\begin_inset LatexCommand index
+name "Bibliography"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Biblio_environment"
 
 \end_inset
@@ -5529,8 +5279,7 @@ Bibliography
 For a detailed description of LyX's bibliography handling, have a look at
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Bibliography"
 
 \end_inset
@@ -5542,18 +5291,13 @@ reference "sec:Bibliography"
 LyX
 \family sans
 -Code
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph ! LyX code
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph ! LyX code"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:LyX-Code"
 
 \end_inset
@@ -5769,12 +5513,8 @@ LyX-Code
  rc-files, and so on.
  Use it only in those very special cases where you need to generate text
  as if you used a typewriter.
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph environments|)
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph environments|)"
 
 \end_inset
 
@@ -5783,18 +5523,13 @@ Paragraph environments|)
 
 \begin_layout Section
 Nesting Environments
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Nesting ! Environments
-\end_layout
+\begin_inset LatexCommand index
+name "Nesting ! Environments"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Nesting"
 
 \end_inset
@@ -5870,16 +5605,12 @@ Edit
  Instead of the menu, you can also use the toolbar buttons 
 \begin_inset Graphics
 	filename ../images/depth-increment.png
-	inzipName 
-	embed true
 
 \end_inset
 
  and 
 \begin_inset Graphics
 	filename ../images/depth-decrement.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -6161,18 +5892,13 @@ Floats
 
 \begin_layout Subsection
 Nesting Other Things: Tables, Math, Floats, etc.
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Nesting ! Tables etc.
-\end_layout
+\begin_inset LatexCommand index
+name "Nesting ! Tables etc."
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:table-and-fig-nesting"
 
 \end_inset
@@ -6219,8 +5945,7 @@ Float
 
  Have a look at section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Floats"
 
 \end_inset
@@ -6673,8 +6398,7 @@ inside
 
 \begin_layout Subsection
 Usage and General Features
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Nesting-Usage"
 
 \end_inset
@@ -6760,12 +6484,8 @@ A.
 
 \begin_layout Subsection
 Some Examples
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Nesting ! Examples
-\end_layout
+\begin_inset LatexCommand index
+name "Nesting ! Examples"
 
 \end_inset
 
@@ -7671,8 +7391,7 @@ Spacing, pagination and line breaks
 
 \begin_layout Subsection
 Horizontal Space
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Horizontal-Space"
 
 \end_inset
@@ -7846,8 +7565,7 @@ fill}
  in ERT.
  (ERT is explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ERT"
 
 \end_inset
@@ -7862,8 +7580,7 @@ reference "sec:ERT"
 
 \begin_layout Subsubsection
 Other space variants
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Other-space-variants"
 
 \end_inset
@@ -7875,8 +7592,7 @@ name "sub:Other-space-variants"
 The following two sorts of spaces are not yet supported by LyX, so that
  you have to use ERT, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ERT"
 
 \end_inset
@@ -7949,8 +7665,7 @@ cm space between the arrows.
 \begin_layout Standard
 You can use all length units listed in Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Units-available-in"
 
 \end_inset
@@ -8079,8 +7794,7 @@ vphantom
 \series default
 , but this too special for the LyX Userguide.
  If you are interested in knowing more about this, have a look at 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "latexcompanion,latexguide"
 
 \end_inset
@@ -8095,8 +7809,7 @@ key "latexcompanion,latexguide"
 
 \begin_layout Subsection
 Vertical Space
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Vertical-Space"
 
 \end_inset
@@ -8138,12 +7851,8 @@ DefSkip
 \family sans
 Document\SpecialChar \menuseparator
 Settings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -8190,8 +7899,7 @@ HFill
 \family default
 s are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Horizontal-Space"
 
 \end_inset
@@ -8220,8 +7928,7 @@ Custom
 \family default
  are custom spaces in units explained in Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Units-available-in"
 
 \end_inset
@@ -8315,18 +8022,13 @@ this one is left aligned.
 
 \begin_layout Subsection
 Forced Pagebreaks
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Pagebreaks ! Forced
-\end_layout
+\begin_inset LatexCommand index
+name "Pagebreaks ! Forced"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Forced-Pagebreaks"
 
 \end_inset
@@ -8383,8 +8085,7 @@ status collapsed
 \begin_layout Standard
 For more about ERT see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ERT"
 
 \end_inset
@@ -8425,8 +8126,7 @@ You might try to use a pagebreak to ensure that a figure or table appears
  appear at the top of a page (or the bottom, or on their own page) without
  having to worry about what precedes or follows your figure or table.
  See chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Floats-and-Notes"
 
 \end_inset
@@ -8440,19 +8140,14 @@ Floats
 
 \begin_layout Subsubsection
 Clear Pagebreaks
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Clear-Pages"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Pagebreaks ! Clear
-\end_layout
+\begin_inset LatexCommand index
+name "Pagebreaks ! Clear"
 
 \end_inset
 
@@ -8490,18 +8185,13 @@ Page
 
 \begin_layout Subsection
 Forced Linebreaks
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Linebreaks
-\end_layout
+\begin_inset LatexCommand index
+name "Linebreaks"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Forced-Linebreaks"
 
 \end_inset
@@ -8563,22 +8253,19 @@ You shouldn't use forced linebreaks to correct LaTeX's linebreaking, as
  set a linebreak, e.g.
  in a poem or for an address (see sections\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Quote"
 
 \end_inset
 
 , 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Verse"
 
 \end_inset
 
  and 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Address-Usage"
 
 \end_inset
@@ -8588,12 +8275,8 @@ reference "sec:Address-Usage"
 
 \begin_layout Subsection
 Blanks / Spaces
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Spaces
-\end_layout
+\begin_inset LatexCommand index
+name "Spaces"
 
 \end_inset
 
@@ -8612,19 +8295,14 @@ A blank is a blank? Not in good typography.
 
 \begin_layout Subsubsection
 Inter-word Space
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Inter-word-Space"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Spaces ! inter-word
-\end_layout
+\begin_inset LatexCommand index
+name "Spaces ! inter-word"
 
 \end_inset
 
@@ -8638,8 +8316,7 @@ English) have the typographical convention to add extra
  space after an end-of-sentence punctuation mark, and LyX honors those conventio
 ns (see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Abbreviations"
 
 \end_inset
@@ -8663,19 +8340,14 @@ C-M-Space
 
 \begin_layout Subsubsection
 Protected Space
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Protected-Space"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Spaces ! protected
-\end_layout
+\begin_inset LatexCommand index
+name "Spaces ! protected"
 
 \end_inset
 
@@ -8692,8 +8364,7 @@ The protected space: It is used to tell LyX (and LaTeX) not to break the
 Further documentation is given in section
 \newline
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Bibliography"
 
 \end_inset
@@ -8716,8 +8387,7 @@ section
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Bibliography"
 
 \end_inset
@@ -8748,19 +8418,14 @@ C-Space
 
 \begin_layout Subsubsection
 Thin Space
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Thin-Space"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Spaces ! thin
-\end_layout
+\begin_inset LatexCommand index
+name "Spaces ! thin"
 
 \end_inset
 
@@ -8833,8 +8498,7 @@ Apart from the ones described, there are still some more spaces.
  Although LyX supports them natively, they can only be reached via a formula
  as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Altering-Spacing"
 
 \end_inset
@@ -8874,8 +8538,7 @@ em
 
  is explained in Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Units-available-in"
 
 \end_inset
@@ -9196,19 +8859,14 @@ yes
 
 \begin_layout Subsection
 Horizontal Lines
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Horizontal-Lines"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Horizontal lines
-\end_layout
+\begin_inset LatexCommand index
+name "Horizontal lines"
 
 \end_inset
 
@@ -9233,8 +8891,7 @@ Line
 
 \begin_layout Section
 Fonts and Text Styles
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Fonts-and-Text"
 
 \end_inset
@@ -9244,12 +8901,8 @@ name "sec:Fonts-and-Text"
 
 \begin_layout Subsection
 Font Types
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Font ! Types
-\end_layout
+\begin_inset LatexCommand index
+name "Font ! Types"
 
 \end_inset
 
@@ -9263,12 +8916,8 @@ There are two types of fonts:
 \begin_layout Description
 Vector\InsetSpace ~
 fonts
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Fonts ! Vector-
-\end_layout
+\begin_inset LatexCommand index
+name "Fonts ! Vector-"
 
 \end_inset
 
@@ -9308,12 +8957,8 @@ Type\InsetSpace ~
 \begin_layout Description
 Bitmap\InsetSpace ~
 fonts
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Fonts ! Bitmap-
-\end_layout
+\begin_inset LatexCommand index
+name "Fonts ! Bitmap-"
 
 \end_inset
 
@@ -9374,29 +9019,20 @@ emphasized style
 
 \begin_layout Subsection
 Document Font and Font size
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Document-Font"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Font ! Size
-\end_layout
+\begin_inset LatexCommand index
+name "Font ! Size"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Font
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Font"
 
 \end_inset
 
@@ -9410,12 +9046,8 @@ You can set the document fonts in the
 Settings
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -9557,12 +9189,8 @@ status collapsed
 Loading the LaTeX-package 
 \series bold
 aeguill
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! aeguill
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! aeguill"
 
 \end_inset
 
@@ -9655,8 +9283,7 @@ The LaTeX command
 More about ERT and LaTeX-commands is described
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ERT"
 
 \end_inset
@@ -9729,8 +9356,7 @@ typewriter
 \family default
  fonts are explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Fine-Tuning-with-the"
 
 \end_inset
@@ -9806,8 +9432,7 @@ Style
  dialog if needed.
  The possible font sizes for text parts are explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Fine-Tuning-with-the"
 
 \end_inset
@@ -9841,8 +9466,7 @@ Preferences
 \family default
  dialog, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Screen-Fonts"
 
 \end_inset
@@ -9857,22 +9481,14 @@ reference "sub:Screen-Fonts"
 
 \begin_layout Subsection
 Using Different Character Styles
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Character Styles
-\end_layout
+\begin_inset LatexCommand index
+name "Character Styles"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Text Style
-\end_layout
+\begin_inset LatexCommand index
+name "Text Style"
 
 \end_inset
 
@@ -9907,8 +9523,6 @@ Noun
 click on the toolbar button 
 \begin_inset Graphics
 	filename ../images/font-noun.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -9969,8 +9583,6 @@ Emphasized
 clicking on the toolbar button 
 \begin_inset Graphics
 	filename ../images/font-emph.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -10037,19 +9649,14 @@ Fine-Tuning with the
 Text Style
 \family default
  dialog
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Fine-Tuning-with-the"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Text Style
-\end_layout
+\begin_inset LatexCommand index
+name "Text Style"
 
 \end_inset
 
@@ -10177,8 +9784,7 @@ status collapsed
 The LaTeX-command prevents text to be broken at the end of a line.
  It is explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Hyphenation"
 
 \end_inset
@@ -11356,12 +10962,8 @@ Magenta
 Yellow
 \family default
  text.
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Color ! Text
-\end_layout
+\begin_inset LatexCommand index
+name "Color ! Text"
 
 \end_inset
 
@@ -11392,8 +10994,6 @@ Style
  You can activate them using the toolbar button 
 \begin_inset Graphics
 	filename ../images/font-free-apply.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -11524,8 +11124,7 @@ status collapsed
 \begin_layout Standard
 For more on phantoms see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Other-space-variants"
 
 \end_inset
@@ -11646,18 +11245,13 @@ Next, LaTeX uses the commands in the
 
 \begin_layout Subsection
 Output file formats
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-File formats
-\end_layout
+\begin_inset LatexCommand index
+name "File formats"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Output-file-formats"
 
 \end_inset
@@ -11667,12 +11261,8 @@ name "sub:Output-file-formats"
 
 \begin_layout Subsubsection
 ASCII
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-File formats ! ASCII
-\end_layout
+\begin_inset LatexCommand index
+name "File formats ! ASCII"
 
 \end_inset
 
@@ -11716,12 +11306,8 @@ ASCII
 
 \begin_layout Subsubsection
 LaTeX
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-File formats ! LaTeX
-\end_layout
+\begin_inset LatexCommand index
+name "File formats ! LaTeX"
 
 \end_inset
 
@@ -11772,12 +11358,8 @@ eX
 
 \begin_layout Subsubsection
 DVI
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-File formats ! DVI
-\end_layout
+\begin_inset LatexCommand index
+name "File formats ! DVI"
 
 \end_inset
 
@@ -11847,12 +11429,8 @@ DVI
 
 \begin_layout Subsubsection
 PostScript
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-File formats ! PostScript
-\end_layout
+\begin_inset LatexCommand index
+name "File formats ! PostScript"
 
 \end_inset
 
@@ -11899,12 +11477,8 @@ If you are interested to learn more about this, have a look at the LaTeX-package
 pstricks
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! pstricks
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! pstricks"
 
 \end_inset
 
@@ -11959,22 +11533,14 @@ PostScript
 
 \begin_layout Subsubsection
 PDF
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-File formats ! PDF
-\end_layout
+\begin_inset LatexCommand index
+name "File formats ! PDF"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-PDF
-\end_layout
+\begin_inset LatexCommand index
+name "PDF"
 
 \end_inset
 
@@ -12145,12 +11711,8 @@ dvipdfm
 
 \begin_layout Subsection
 Previewing
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Preview 
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Preview "
 
 \end_inset
 
@@ -12173,8 +11735,6 @@ DVI
  you can use the toolbar button 
 \begin_inset Graphics
 	filename ../images/buffer-view_dvi.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -12191,8 +11751,6 @@ PDF\InsetSpace ~
  you can use the toolbar button 
 \begin_inset Graphics
 	filename ../images/buffer-export_pdf2.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -12217,8 +11775,7 @@ When you preview a file, the output file is only generated in LyX's temporary
 
 \begin_layout Subsection
 Printing the File from within LyX
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Printing-the-File"
 
 \end_inset
@@ -12237,8 +11794,6 @@ Print
  or click on the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-show_print.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -12297,8 +11852,7 @@ dvips
  has to be configured for this printer name.
  The default printer can be set in LyX's preferences dialog, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Printer"
 
 \end_inset
@@ -12325,12 +11879,8 @@ File
 
 \begin_layout Section
 A few Words about Typography
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Typography
-\end_layout
+\begin_inset LatexCommand index
+name "Typography"
 
 \end_inset
 
@@ -12339,18 +11889,13 @@ Typography
 
 \begin_layout Subsection
 Hyphens
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Hyphens
-\end_layout
+\begin_inset LatexCommand index
+name "Hyphens"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Hyphens"
 
 \end_inset
@@ -12590,18 +12135,13 @@ minus sign
 
 \begin_layout Subsection
 Hyphenation
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Hyphenation
-\end_layout
+\begin_inset LatexCommand index
+name "Hyphenation"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Hyphenation"
 
 \end_inset
@@ -12614,12 +12154,8 @@ Words aren't hyphenated within LyX but automatically in the output.
  Hyphenation is done by the LaTeX-package 
 \series bold
 babel
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! babel
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! babel"
 
 \end_inset
 
@@ -12725,8 +12261,6 @@ mbox
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/mbox.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -12736,8 +12270,7 @@ mbox
 \begin_layout Standard
 To learn more about ERT, have a look at section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ERT"
 
 \end_inset
@@ -12747,12 +12280,8 @@ reference "sec:ERT"
 
 \begin_layout Subsection
 Punctuation Marks
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Punctuation marks
-\end_layout
+\begin_inset LatexCommand index
+name "Punctuation marks"
 
 \end_inset
 
@@ -12761,8 +12290,7 @@ Punctuation marks
 
 \begin_layout Subsubsection
 Abbreviations and End of Sentence
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Abbreviations"
 
 \end_inset
@@ -12855,19 +12383,14 @@ Space
 \family default
  after lowercase abbreviations (see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Inter-word-Space"
 
 \end_inset
 
 ).
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Spaces ! inter-word
-\end_layout
+\begin_inset LatexCommand index
+name "Spaces ! inter-word"
 
 \end_inset
 
@@ -12882,19 +12405,14 @@ Space
 \family default
  between two tokens of an abbreviation (see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Thin-Space"
 
 \end_inset
 
 ).
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Spaces ! thin
-\end_layout
+\begin_inset LatexCommand index
+name "Spaces ! thin"
 
 \end_inset
 
@@ -12965,50 +12483,19 @@ Extended Features
 
 \begin_layout Subsubsection
 Quotes
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Typography ! Quotes
-\end_layout
+\begin_inset LatexCommand index
+name "Typography ! Quotes"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Quotes | see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Typography
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
+\begin_inset LatexCommand index
+name "Quotes | see{Typography}"
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Quotes"
 
 \end_inset
@@ -13051,12 +12538,8 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -13270,50 +12753,19 @@ These settings affects what character the
 
 \begin_layout Subsection
 Ligatures
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Typography ! Ligatures
-\end_layout
+\begin_inset LatexCommand index
+name "Typography ! Ligatures"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Ligatures | see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Typography
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
+\begin_inset LatexCommand index
+name "Ligatures | see{Typography}"
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Ligatures"
 
 \end_inset
@@ -13431,18 +12883,13 @@ fest
 
 \begin_layout Subsection
 LyX's Proper Names
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LyX ! Proper names
-\end_layout
+\begin_inset LatexCommand index
+name "LyX ! Proper names"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:LyX's-Proper-Names"
 
 \end_inset
@@ -13639,8 +13086,6 @@ If you don't want to use proper names, e.g.
  This will look in LyX like: 
 \begin_inset Graphics
 	filename clipart/LaTeX.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -13648,8 +13093,7 @@ If you don't want to use proper names, e.g.
 \newline
 For more about ERT, look at section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ERT"
 
 \end_inset
@@ -13659,12 +13103,8 @@ reference "sec:ERT"
 
 \begin_layout Subsection
 Units
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Typography ! Units
-\end_layout
+\begin_inset LatexCommand index
+name "Typography ! Units"
 
 \end_inset
 
@@ -13767,18 +13207,13 @@ half space between number and unit
 
 \begin_layout Subsection
 Widows and Orphans
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Typography ! Widows and orphans
-\end_layout
+\begin_inset LatexCommand index
+name "Typography ! Widows and orphans"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Widows"
 
 \end_inset
@@ -13820,16 +13255,14 @@ There's no way we can go into how TeX and LaTeX decide to break a page,
  or how you can tweak that behavior.
  Some LaTeX books listed in the bibliography [such as\InsetSpace ~
 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "latexcompanion"
 
 \end_inset
 
  or\InsetSpace ~
 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "latexguide"
 
 \end_inset
@@ -13840,8 +13273,7 @@ key "latexguide"
 
 \begin_layout Chapter
 Notes, Graphics, Tables, and Floats
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cha:Floats-and-Notes"
 
 \end_inset
@@ -13860,18 +13292,13 @@ Embedded Objects
 
 \begin_layout Section
 Notes
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Notes
-\end_layout
+\begin_inset LatexCommand index
+name "Notes"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Notes"
 
 \end_inset
@@ -13966,16 +13393,7 @@ As you can see in the example, the first line of greyed out notes is a bit
 \begin_layout Description
 Framed This note will appear in the output as framed text.
  
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
+\begin_inset Note Framed
 status open
 
 \begin_layout Standard
@@ -13986,8 +13404,7 @@ This is text in a note box that appears framed in the output.
 
  In contrary to framed boxes like the one in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:ERT-Boxes"
 
 \end_inset
@@ -13998,16 +13415,7 @@ reference "sub:ERT-Boxes"
 
 \begin_layout Description
 Shaded This note will appear in the output with red background color.
-\begin_inset Box Shaded
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
+\begin_inset Note Shaded
 status open
 
 \begin_layout Standard
@@ -14024,8 +13432,6 @@ In contrary to colored boxes, the note uses always the whole text width
 Notes are inserted with the toolbar button 
 \begin_inset Graphics
 	filename ../images/note-insert.png
-	inzipName 
-	embed true
 	scale 85
 	scaleBeforeRotation
 
@@ -14042,18 +13448,13 @@ Note
 
 \begin_layout Section
 Footnotes
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Footnotes
-\end_layout
+\begin_inset LatexCommand index
+name "Footnotes"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Footnotes"
 
 \end_inset
@@ -14071,8 +13472,6 @@ Footnote
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/footnote-insert.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -14087,8 +13486,6 @@ you'll see
  the following box: 
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
-	inzipName 
-	embed false
 	scale 80
 
 \end_inset
@@ -14200,18 +13597,13 @@ Embedded Objects
 
 \begin_layout Section
 Marginal Notes
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Marginal notes
-\end_layout
+\begin_inset LatexCommand index
+name "Marginal notes"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Marginal-Notes"
 
 \end_inset
@@ -14230,8 +13622,6 @@ Note
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/marginalnote-insert.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -14293,28 +13683,19 @@ Marginal notes appear at the right side in single-sided documents.
 
 \begin_layout Section
 Graphics and Images
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Images
-\end_layout
+\begin_inset LatexCommand index
+name "Images"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Graphics
-\end_layout
+\begin_inset LatexCommand index
+name "Graphics"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Graphics"
 
 \end_inset
@@ -14327,8 +13708,6 @@ To insert an image in your document, place the cursor at the text position
  you want and click on the toolbar icon 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_graphics.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -14353,8 +13732,7 @@ Graphics
  factor.
  The scaling units are explained in Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Units-available-in"
 
 \end_inset
@@ -14406,8 +13784,7 @@ Subfigure
  option here if the image is inside a figure float.
  This option is explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Figure-Floats"
 
 \end_inset
@@ -14434,8 +13811,6 @@ The graphics dialog can be called at any time by right-clicking on an image.
 \align center
 \begin_inset Graphics
 	filename clipart/mobius.eps
-	inzipName 
-	embed true
 	display color
 	scale 70
 	rotateOrigin center
@@ -14449,8 +13824,7 @@ The graphics dialog can be called at any time by right-clicking on an image.
 If you need image captions and want to reference images, you have to put
  the image into a float, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Figure-Floats"
 
 \end_inset
@@ -14460,18 +13834,13 @@ reference "sec:Figure-Floats"
 
 \begin_layout Subsection
 Image Formats
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Image formats
-\end_layout
+\begin_inset LatexCommand index
+name "Image formats"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Image-Formats"
 
 \end_inset
@@ -14483,8 +13852,7 @@ name "sub:Image-Formats"
 You can insert images in any known file format.
  But as we explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Output-file-formats"
 
 \end_inset
@@ -14498,8 +13866,7 @@ Imagemagick
  To increase your workflow by avoiding these conversions in the background,
  you can use only the image formats listed in the subsections of section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Output-file-formats"
 
 \end_inset
@@ -14536,34 +13903,8 @@ Graphics Interchange Format
 \end_inset
 
 )
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-GIF|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset LatexCommand index
+name "GIF|see{Image formats}"
 
 \end_inset
 
@@ -14588,34 +13929,8 @@ Portable Network Graphics
 \end_inset
 
 )
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-PNG|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset LatexCommand index
+name "PNG|see{Image formats}"
 
 \end_inset
 
@@ -14652,34 +13967,8 @@ Joint Photographic Experts Group
 \end_inset
 
 )
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-JPG|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset LatexCommand index
+name "JPG|see{Image formats}"
 
 \end_inset
 
@@ -14716,34 +14005,8 @@ Scalable Vector Graphics
 \end_inset
 
 )
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-SVG|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset LatexCommand index
+name "SVG|see{Image formats}"
 
 \end_inset
 
@@ -14768,34 +14031,8 @@ Encapsulated PostScript
 \end_inset
 
 )
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-EPS|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Image formats
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset LatexCommand index
+name "EPS|see{Image formats}"
 
 \end_inset
 
@@ -14820,12 +14057,8 @@ Portable Document Format
 \end_inset
 
 )
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-PDF
-\end_layout
+\begin_inset LatexCommand index
+name "PDF"
 
 \end_inset
 
@@ -14853,18 +14086,13 @@ Normally one can't convert a bitmap image into a scalable one, only vice
 
 \begin_layout Section
 Tables
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Tables
-\end_layout
+\begin_inset LatexCommand index
+name "Tables"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Tables"
 
 \end_inset
@@ -14876,8 +14104,6 @@ name "sec:Tables"
 You can insert a table using either the toolbar button 
 \begin_inset Graphics
 	filename ../images/tabular-insert.png
-	inzipName 
-	embed true
 	scale 85
 
 \end_inset
@@ -15147,8 +14373,7 @@ Settings
  A given width will allow the cell to have linebreaks and multiple paragraphs
  of text, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Table-Cells"
 
 \end_inset
@@ -15367,22 +14592,14 @@ Default
 
 \begin_layout Subsection
 Longtables
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Tables ! Longtables
-\end_layout
+\begin_inset LatexCommand index
+name "Tables ! Longtables"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Longtables
-\end_layout
+\begin_inset LatexCommand index
+name "Longtables"
 
 \end_inset
 
@@ -17639,18 +16856,13 @@ End
 
 \begin_layout Subsection
 Table Cells
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Tables ! Cells
-\end_layout
+\begin_inset LatexCommand index
+name "Tables ! Cells"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Table-Cells"
 
 \end_inset
@@ -17932,18 +17144,13 @@ Shift
 
 \begin_layout Section
 Floats
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Floats
-\end_layout
+\begin_inset LatexCommand index
+name "Floats"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Floats"
 
 \end_inset
@@ -17985,8 +17192,7 @@ Floats makes it possible to get a high quality layout.
  Floats are therefore numbered.
  Referencing is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Cross-References"
 
 \end_inset
@@ -18016,12 +17222,8 @@ Figure\InsetSpace ~
  The label will automatically be translated to the document language in
  the output.
  Behind the label you can insert the caption text.
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Floats ! Captions
-\end_layout
+\begin_inset LatexCommand index
+name "Floats ! Captions"
 
 \end_inset
 
@@ -18032,8 +17234,6 @@ Floats ! Captions
  A closed float box looks like this: 
 \begin_inset Graphics
 	filename clipart/floatQt4.png
-	inzipName 
-	embed true
 	scale 80
 
 \end_inset
@@ -18052,18 +17252,13 @@ Float Types
 
 \begin_layout Subsubsection
 Figure Floats
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Floats ! Figure floats
-\end_layout
+\begin_inset LatexCommand index
+name "Floats ! Figure floats"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Figure-Floats"
 
 \end_inset
@@ -18096,8 +17291,7 @@ Figure\InsetSpace ~
  the image as described above to get the caption printed below the image.
  This is what we did for Figure\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Platypus"
 
 \end_inset
@@ -18107,8 +17301,7 @@ reference "cap:Platypus"
  of the caption, press enter and insert the image.
  This was done in Figure\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Escher"
 
 \end_inset
@@ -18126,8 +17319,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/platypus.eps
-	inzipName 
-	embed true
 	display color
 	width 50col%
 	rotateOrigin center
@@ -18141,8 +17332,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Platypus"
 
 \end_inset
@@ -18170,8 +17360,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Escher"
 
 \end_inset
@@ -18189,8 +17378,6 @@ M.C.
 \align center
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
-	inzipName 
-	embed false
 	display color
 	scale 80
 	rotateOrigin center
@@ -18210,8 +17397,7 @@ This figure float show also how to set a label and create a cross-reference
  to it.
  As described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Cross-References"
 
 \end_inset
@@ -18264,8 +17450,7 @@ Subfigure
 , and enter the subcaption for the image in the now enabled caption field.
  Figure\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Two-distorted-images"
 
 \end_inset
@@ -18286,8 +17471,6 @@ status open
 
 \begin_inset Graphics
 	filename clipart/escher-lsd.eps
-	inzipName 
-	embed false
 	width 45col%
 	subcaption
 	subcaptionText "Undefinable structure"
@@ -18299,8 +17482,6 @@ status open
 
 \begin_inset Graphics
 	filename clipart/platypus.eps
-	inzipName 
-	embed true
 	lyxscale 60
 	width 45col%
 	subcaption
@@ -18317,8 +17498,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Two-distorted-images"
 
 \end_inset
@@ -18345,8 +17525,7 @@ Figures
 \family default
  as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ListsOf"
 
 \end_inset
@@ -18356,18 +17535,13 @@ reference "sec:ListsOf"
 
 \begin_layout Subsubsection
 Table Floats
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Floats ! Table floats
-\end_layout
+\begin_inset LatexCommand index
+name "Floats ! Table floats"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Table-Floats"
 
 \end_inset
@@ -18387,8 +17561,7 @@ Table
  label.
  Table\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Table-float"
 
 \end_inset
@@ -18406,8 +17579,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Table-float"
 
 \end_inset
@@ -18621,12 +17793,8 @@ c & d\end{array}\right]$
 
 \begin_layout Subsubsection
 Algorithm Floats
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Floats ! Algorithm floats
-\end_layout
+\begin_inset LatexCommand index
+name "Floats ! Algorithm floats"
 
 \end_inset
 
@@ -18648,8 +17816,7 @@ LyX-Code
 \family default
 , described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:LyX-Code"
 
 \end_inset
@@ -18713,18 +17880,13 @@ algorithm
 
 \begin_layout Subsubsection
 Text Wrap Floats
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Floats ! Text Wrap Floats
-\end_layout
+\begin_inset LatexCommand index
+name "Floats ! Text Wrap Floats"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:floatflt"
 
 \end_inset
@@ -18745,17 +17907,13 @@ wrap
  width.
  It can be inserted using the menu 
 \begin_inset Wrap figure
-lines 0
 placement l
-overhang 0col%
 width "40col%"
 status open
 
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/mobius.eps
-	inzipName 
-	embed false
 	display color
 	width 40col%
 	rotateOrigin center
@@ -18769,8 +17927,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Wrapped-figure"
 
 \end_inset
@@ -18803,12 +17960,8 @@ Float
 floatflt
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! floatflt
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! floatflt"
 
 \end_inset
 
@@ -18831,8 +17984,7 @@ Configuration
  float box.
  Figure\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Wrapped-figure"
 
 \end_inset
@@ -18849,8 +18001,7 @@ status collapsed
 \begin_layout Standard
 Available units are explained in Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Units-available-in"
 
 \end_inset
@@ -18875,8 +18026,7 @@ floatflt
 floatflt
 \series default
  
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "floatflt"
 
 \end_inset
@@ -18907,12 +18057,8 @@ The better solution is to use the LaTeX-package
 wrapfig
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! wrapfig
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! wrapfig"
 
 \end_inset
 
@@ -18956,19 +18102,14 @@ Wrap floats are not allowed in section headings or tables.
 
 \begin_layout Subsection
 Rotated Floats
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Rotated-Floats"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Floats ! Rotating
-\end_layout
+\begin_inset LatexCommand index
+name "Floats ! Rotating"
 
 \end_inset
 
@@ -19001,8 +18142,7 @@ Embedded Objects
 Referencing rotated floats is the same like for normal floats, the caption
  format is also the same: Table\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Rotated-table"
 
 \end_inset
@@ -19037,8 +18177,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Rotated-table"
 
 \end_inset
@@ -19122,19 +18261,14 @@ e
 
 \begin_layout Subsection
 Float Placement
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Float-Placement"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Floats ! Placement
-\end_layout
+\begin_inset LatexCommand index
+name "Floats ! Placement"
 
 \end_inset
 
@@ -19161,8 +18295,7 @@ sideways
 \family default
  is used to rotate floats, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Rotated-Floats"
 
 \end_inset
@@ -19312,8 +18445,7 @@ There are no placement options for text wrap floats, because they are always
 \begin_layout Standard
 For more details about float placements, have a look at LaTeX books like
  
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
 
 \end_inset
@@ -19323,18 +18455,13 @@ key "latexcompanion,latexguide,latexbook"
 
 \begin_layout Section
 Minipages
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Minipages
-\end_layout
+\begin_inset LatexCommand index
+name "Minipages"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Minipages"
 
 \end_inset
@@ -19404,8 +18531,7 @@ Horizontal Fills
 \family default
  as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Horizontal-Space"
 
 \end_inset
@@ -19485,50 +18611,19 @@ Embedded Objects
 
 \begin_layout Chapter
 Mathematical Formulas
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math
-\end_layout
+\begin_inset LatexCommand index
+name "Math"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Formulas | see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Math
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
+\begin_inset LatexCommand index
+name "Formulas | see{Math}"
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cha:Mathematical-Formulas"
 
 \end_inset
@@ -19538,12 +18633,8 @@ name "cha:Mathematical-Formulas"
 
 \begin_layout Section
 Basic Math Editing
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Basics
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Basics"
 
 \end_inset
 
@@ -19554,8 +18645,6 @@ Math ! Basics
 To create a math formula, you can just click on the toolbar icon 
 \begin_inset Graphics
 	filename ../images/math-mode.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -19638,12 +18727,8 @@ Panel
 
 \begin_layout Subsection
 Navigating in Formulas
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Navigating
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Navigating"
 
 \end_inset
 
@@ -19835,22 +18920,14 @@ Shift
 
 \begin_layout Subsection
 Exponents and Subscripts
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Exponents
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Exponents"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Subscripts
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Subscripts"
 
 \end_inset
 
@@ -19980,12 +19057,8 @@ spce
 
 \begin_layout Subsection
 Fractions
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Fractions
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Fractions"
 
 \end_inset
 
@@ -20002,8 +19075,6 @@ frac
  or using the icon 
 \begin_inset Graphics
 	filename ../images/math/frac.png
-	inzipName 
-	embed true
 	scale 60
 
 \end_inset
@@ -20039,12 +19110,8 @@ Up
 
 \begin_layout Subsection
 Roots
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Roots
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Roots"
 
 \end_inset
 
@@ -20060,8 +19127,6 @@ Panel
  button
 \begin_inset Graphics
 	filename ../images/math/sqrt.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -20095,28 +19160,19 @@ sqrt
 
 \begin_layout Subsection
 Operators with Limits
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Sums
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Sums"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Integrals
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Integrals"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Operators-with-Limits"
 
 \end_inset
@@ -20189,12 +19245,8 @@ moving limits
 \end_inset
 
  feature as addition, such as
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Limits
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Limits"
 
 \end_inset
 
@@ -20234,8 +19286,7 @@ lim
 .
  Have a look at section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Functions"
 
 \end_inset
@@ -20245,12 +19296,8 @@ reference "sub:Functions"
 
 \begin_layout Subsection
 Math Symbols
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Symbols
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Symbols"
 
 \end_inset
 
@@ -20297,18 +19344,13 @@ Panel
 
 \begin_layout Subsection
 Altering Spacing
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Spaces
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Spaces"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Altering-Spacing"
 
 \end_inset
@@ -20331,8 +19373,6 @@ Panel
  button 
 \begin_inset Graphics
 	filename ../images/math/space.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -20349,8 +19389,6 @@ a C-Space b
  (appears in LyX as 
 \begin_inset Graphics
 	filename clipart/SpaceMarker.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -20397,18 +19435,13 @@ Space
 
 \begin_layout Subsection
 Functions
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Functions
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Functions"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Functions"
 
 \end_inset
@@ -20425,8 +19458,6 @@ Panel
  contains under the button 
 \begin_inset Graphics
 	filename ../images/math/functions.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -20479,8 +19510,7 @@ Using the function macros will also produce correct spacing around the function:
 For some mathematical objects, like the limes, the macro changes the way
  that subscripts are placed, like described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Operators-with-Limits"
 
 \end_inset
@@ -20490,12 +19520,8 @@ reference "sub:Operators-with-Limits"
 
 \begin_layout Subsection
 Accents
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Accents
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Accents"
 
 \end_inset
 
@@ -20534,8 +19560,7 @@ a
  in a formula.
  Table\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Accent-names-and"
 
 \end_inset
@@ -20553,8 +19578,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Accent-names-and"
 
 \end_inset
@@ -21165,8 +20189,6 @@ decorations
  symbol set button 
 \begin_inset Graphics
 	filename ../images/math/hat.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -21176,28 +20198,19 @@ decorations
 
 \begin_layout Section
 Brackets and Delimiters
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Brackets
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Brackets"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Delimiters
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Delimiters"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Brackets-and-Delimiters"
 
 \end_inset
@@ -21221,8 +20234,6 @@ Panel
 's delimiter icon 
 \begin_inset Graphics
 	filename ../images/math/delim.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -21290,18 +20301,13 @@ The next section explains how to insert a LaTeX
 
 \begin_layout Section
 Grouping
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Grouping
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Grouping"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Grouping"
 
 \end_inset
@@ -21354,32 +20360,20 @@ To create this grouping, you need to use the key sequence
 
 \begin_layout Section
 Arrays and Multi-line Equations
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Arrays
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Arrays"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Matrices
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Matrices"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Multi-line Equations
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Multi-line Equations"
 
 \end_inset
 
@@ -21395,8 +20389,6 @@ Panel
  matrix button 
 \begin_inset Graphics
 	filename ../images/math/matrix.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -21413,8 +20405,7 @@ Panel
 
 The parentheses aren't automatic, but you can add them as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Brackets-and-Delimiters"
 
 \end_inset
@@ -21620,8 +20611,7 @@ eqnarray
 .
  There are other multi-line types being more suitable for certain situations,
  for example if you want a better inter-line spacing than in formula (
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "eq:asquared"
 
 \end_inset
@@ -21629,8 +20619,7 @@ reference "eq:asquared"
 ).
  The other types are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:AMS-Formula-Types"
 
 \end_inset
@@ -21640,28 +20629,19 @@ reference "sub:AMS-Formula-Types"
 
 \begin_layout Section
 Formula Numbering and Referencing
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Formula numbering
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Formula numbering"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Referencing formulas
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Referencing formulas"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Formula-Numbering-and"
 
 \end_inset
@@ -21817,8 +20797,7 @@ Reference
 
 \begin_layout Standard
 This is a cross-reference to equation (
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "eq:tanhExp"
 
 \end_inset
@@ -21829,8 +20808,7 @@ reference "eq:tanhExp"
 \begin_layout Standard
 The properties of LyX's cross-reference box are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Cross-References"
 
 \end_inset
@@ -21857,18 +20835,13 @@ This is a unintuitive and will be fixed in the next version of LyX.
 
 \begin_layout Section
 User defined math macros
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Macros
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Macros"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:math-macros"
 
 \end_inset
@@ -22007,8 +20980,6 @@ spce
 This results in the following macro definition box: 
 \begin_inset Graphics
 	filename clipart/macrobox.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -22109,8 +21080,6 @@ qE
 \align center
 \begin_inset Graphics
 	filename clipart/macrouse.png
-	inzipName 
-	embed true
 
 \end_inset
 
@@ -22142,7 +21111,7 @@ If you change the macro definition all macros are changed automatically
 
 :
 \begin_inset Formula \[
-\qE {x}{\ln(y)}{B}\]
+\qE{x}{\ln(y)}{B}\]
 
 \end_inset
 
@@ -22221,12 +21190,8 @@ Fine-Tuning
 
 \begin_layout Subsection
 Typefaces
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Typefaces
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Typefaces"
 
 \end_inset
 
@@ -22243,15 +21208,12 @@ Panel
  button 
 \begin_inset Graphics
 	filename ../images/math/font.png
-	inzipName 
-	embed false
 
 \end_inset
 
 , or enter its command, listed in table\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Typefaces-and-the"
 
 \end_inset
@@ -22269,8 +21231,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Typefaces-and-the"
 
 \end_inset
@@ -22675,12 +21636,8 @@ Change
 
 \begin_layout Subsection
 Math Text
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Text
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Text"
 
 \end_inset
 
@@ -22705,8 +21662,6 @@ Panel
  button 
 \begin_inset Graphics
 	filename ../images/math/font.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -22731,12 +21686,8 @@ x & \textrm{if I say so}\\
 
 \begin_layout Subsection
 Font Sizes
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Font sizes
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Font sizes"
 
 \end_inset
 
@@ -22782,8 +21733,6 @@ displaystyle
  These choices can be overridden by using the math panel button 
 \begin_inset Graphics
 	filename ../images/math/style.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -22862,22 +21811,14 @@ largest
 
 \begin_layout Section
 AMS-LaTeX
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-AMS math
-\end_layout
+\begin_inset LatexCommand index
+name "AMS math"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! AMS
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! AMS"
 
 \end_inset
 
@@ -22907,12 +21848,8 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -22929,19 +21866,14 @@ Options
 
 \begin_layout Subsection
 AMS-Formula Types
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:AMS-Formula-Types"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Math ! Multi-line Equations
-\end_layout
+\begin_inset LatexCommand index
+name "Math ! Multi-line Equations"
 
 \end_inset
 
@@ -22980,18 +21912,13 @@ More Tools
 
 \begin_layout Section
 Cross-References
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Cross references
-\end_layout
+\begin_inset LatexCommand index
+name "Cross references"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Cross-References"
 
 \end_inset
@@ -23013,8 +21940,7 @@ First item
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "enu:Second-item"
 
 \end_inset
@@ -23035,8 +21961,6 @@ Label
  or the by pressing the toolbar button 
 \begin_inset Graphics
 	filename ../images/label-insert.png
-	inzipName 
-	embed false
 	scale 85
 
 \end_inset
@@ -23045,8 +21969,6 @@ Label
  A grey label box like this: 
 \begin_inset Graphics
 	filename clipart/labelQt4.png
-	inzipName 
-	embed false
 	scale 85
 
 \end_inset
@@ -23112,8 +22034,6 @@ Cross-Reference
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.png
-	inzipName 
-	embed false
 	scale 85
 
 \end_inset
@@ -23122,8 +22042,6 @@ Cross-Reference
  A grey cross-reference box like this: 
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
-	inzipName 
-	embed true
 	scale 85
 
 \end_inset
@@ -23151,8 +22069,7 @@ enu:Second-item
 \begin_layout Standard
 Item\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "enu:Second-item"
 
 \end_inset
@@ -23168,8 +22085,7 @@ status collapsed
 \begin_layout Standard
 described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Protected-Space"
 
 \end_inset
@@ -23189,8 +22105,7 @@ There are six varieties of cross-references:
 
 \begin_layout Description
 <reference>: prints the float number, this is the default: 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Two-distorted-images"
 
 \end_inset
@@ -23210,8 +22125,7 @@ Equation
 \end_inset
 
  is omitted: 
-\begin_inset CommandInset ref
-LatexCommand eqref
+\begin_inset LatexCommand eqref
 reference "eq:tanhExp"
 
 \end_inset
@@ -23222,8 +22136,7 @@ reference "eq:tanhExp"
 \begin_layout Description
 <page>: prints the page number: Page\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand pageref
+\begin_inset LatexCommand pageref
 reference "cap:Two-distorted-images"
 
 \end_inset
@@ -23235,8 +22148,7 @@ reference "cap:Two-distorted-images"
 on\InsetSpace ~
 page\InsetSpace ~
 <page>: prints the text "on page" and the page number: 
-\begin_inset CommandInset ref
-LatexCommand vpageref
+\begin_inset LatexCommand vpageref
 reference "cap:Two-distorted-images"
 
 \end_inset
@@ -23250,8 +22162,7 @@ on\InsetSpace ~
 page\InsetSpace ~
 <page>: prints the float number, the text "on page", and
  the page number: 
-\begin_inset CommandInset ref
-LatexCommand vref
+\begin_inset LatexCommand vref
 reference "cap:Two-distorted-images"
 
 \end_inset
@@ -23275,12 +22186,8 @@ Note:
  This feature is only available when you have the LaTeX-package 
 \series bold
 prettyref
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! prettyref
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! prettyref"
 
 \end_inset
 
@@ -23343,8 +22250,7 @@ If you want to reference a section, put the label in the section heading,
  For footnotes you can put the label somewhere in it.
  Referencing formulas is explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Formula-Numbering-and"
 
 \end_inset
@@ -23392,28 +22298,19 @@ Embedded Objects
 
 \begin_layout Section
 Table of Contents and other Listings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Table of contents
-\end_layout
+\begin_inset LatexCommand index
+name "Table of contents"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Outline
-\end_layout
+\begin_inset LatexCommand index
+name "Outline"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:toc"
 
 \end_inset
@@ -23423,8 +22320,7 @@ name "sec:toc"
 
 \begin_layout Subsection
 Table of Contents and Outline
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Table-of-Contents"
 
 \end_inset
@@ -23457,8 +22353,7 @@ The TOC lists every numbered section automatically.
  If you have declared a short title for a section heading, as described
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Short-Titles"
 
 \end_inset
@@ -23466,8 +22361,7 @@ reference "sec:Short-Titles"
 , it will be used in the TOC instead of the section heading.
  Section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Numbering-depth"
 
 \end_inset
@@ -23492,8 +22386,7 @@ Outline
 
 \begin_layout Subsection
 List of Figures, Tables and Algorithms
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:ListsOf"
 
 \end_inset
@@ -23516,18 +22409,13 @@ TOC
 
 \begin_layout Section
 URLs (Uniform Resource Locators)
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-URLs
-\end_layout
+\begin_inset LatexCommand index
+name "URLs"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:URL"
 
 \end_inset
@@ -23568,14 +22456,9 @@ Name
 \end_layout
 
 \begin_layout Standard
-LyX-Homepage 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://www.lyx.org
-\end_layout
+\begin_inset LatexCommand url
+name "LyX-Homepage"
+target "http://www.lyx.org"
 
 \end_inset
 
@@ -23615,18 +22498,13 @@ URLs must not end with a backslash!
 
 \begin_layout Section
 Appendices
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Appendix
-\end_layout
+\begin_inset LatexCommand index
+name "Appendix"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Appendices"
 
 \end_inset
@@ -23660,16 +22538,14 @@ Every chapter (or section) within the appendix region is treated as an appendix,
 \begin_layout Standard
 Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Credits"
 
 \end_inset
 
 ; Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Export"
 
 \end_inset
@@ -23679,18 +22555,13 @@ reference "sub:Export"
 
 \begin_layout Section
 Bibliography
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Bibliography
-\end_layout
+\begin_inset LatexCommand index
+name "Bibliography"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Bibliography"
 
 \end_inset
@@ -23726,8 +22597,7 @@ Bibliography
 \family default
 , described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Biblio_environment"
 
 \end_inset
@@ -23774,8 +22644,6 @@ Citation
  or the toobar button 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_citation.png
-	inzipName 
-	embed true
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -23814,8 +22682,7 @@ Have a look at the
 LaTeX Companion Second Edition
 \family default
 : 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "latexcompanion"
 
 \end_inset
@@ -23825,8 +22692,7 @@ key "latexcompanion"
 
 \begin_layout Standard
 The LyX-Team members are listed in the Credits: 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "lyxcredit"
 
 \end_inset
@@ -23836,28 +22702,19 @@ key "lyxcredit"
 
 \begin_layout Subsection
 Bibliography databases (BibTeX)
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Bibliography ! Databases
-\end_layout
+\begin_inset LatexCommand index
+name "Bibliography ! Databases"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Bibliography ! BibTeX
-\end_layout
+\begin_inset LatexCommand index
+name "Bibliography ! BibTeX"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Bibliography-databases"
 
 \end_inset
@@ -23891,8 +22748,7 @@ The database is a text file with the file extension
 
  containing the bibliography in a special format.
  The format is explained in LaTeX books (
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "Mittelbach,Kopka,Lamport"
 
 \end_inset
@@ -23902,13 +22758,8 @@ key "Mittelbach,Kopka,Lamport"
  Under
 \newline
  
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/BibTeX/Programs
-\end_layout
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/BibTeX/Programs"
 
 \end_inset
 
@@ -24043,12 +22894,8 @@ alphadin.bst
 
 \begin_layout Subsection
 Bibliography layout
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Bibliography ! Layout
-\end_layout
+\begin_inset LatexCommand index
+name "Bibliography ! Layout"
 
 \end_inset
 
@@ -24067,12 +22914,8 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -24103,8 +22946,7 @@ Chapter\InsetSpace ~
 
 \begin_layout Standard
 Have a look at 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 after "Chapter 3"
 key "latexcompanion"
 
@@ -24115,18 +22957,13 @@ key "latexcompanion"
 
 \begin_layout Section
 Index
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Index generation
-\end_layout
+\begin_inset LatexCommand index
+name "Index generation"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Index"
 
 \end_inset
@@ -24144,8 +22981,6 @@ Entry
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/index-insert.png
-	inzipName 
-	embed true
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -24220,8 +23055,7 @@ This behavior is necessary because index entries can be formatted in many
  We give a short overview of the index command in the next subsections.
  For a detailed description of LaTeX's index mechanism, have a look at one
  of the LaTeX books 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
 
 \end_inset
@@ -24262,12 +23096,8 @@ Index
 
 \begin_layout Subsection
 Grouping Index Entries
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Index ! Grouping
-\end_layout
+\begin_inset LatexCommand index
+name "Index ! Grouping"
 
 \end_inset
 
@@ -24297,8 +23127,7 @@ Lists
 
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Lists"
 
 \end_inset
@@ -24306,8 +23135,7 @@ reference "sub:Lists"
 .
  In the text field for the itemized list index entry in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Itemize"
 
 \end_inset
@@ -24334,8 +23162,7 @@ Lists ! Enumerate
 \begin_layout Standard
 for the enumerated list in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Enumerate"
 
 \end_inset
@@ -24368,12 +23195,8 @@ Lists
 
 \begin_layout Subsection
 Page Ranges
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Index ! Page ranges
-\end_layout
+\begin_inset LatexCommand index
+name "Index ! Page ranges"
 
 \end_inset
 
@@ -24387,8 +23210,7 @@ Normally an index entry will appear with the page number of the indexed
  E.g if we want to index the paragraph environments, we create an index entry
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Paragraph-Environments"
 
 \end_inset
@@ -24405,8 +23227,7 @@ Paragraph environments|(
 \begin_layout Standard
 and another entry at the end of section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:LyX-Code"
 
 \end_inset
@@ -24462,12 +23283,8 @@ Document ! Settings
 
 \begin_layout Subsection
 Cross referencing
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Index ! Cross referencing
-\end_layout
+\begin_inset LatexCommand index
+name "Index ! Cross referencing"
 
 \end_inset
 
@@ -24486,8 +23303,7 @@ GIF
 
  (in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Image-Formats"
 
 \end_inset
@@ -24516,12 +23332,8 @@ The text within the braces is the referenced entry.
 
 \begin_layout Subsection
 Index Entry Order
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Index ! Entry order
-\end_layout
+\begin_inset LatexCommand index
+name "Index ! Entry order"
 
 \end_inset
 
@@ -24539,8 +23351,7 @@ status collapsed
 The index generating is done in the background by an extra program, see
  section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Index-Program"
 
 \end_inset
@@ -24576,32 +23387,20 @@ maître
 \end_inset
 
 .
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Dummy entries ! maïs
-\end_layout
+\begin_inset LatexCommand index
+name "Dummy entries ! maïs"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Dummy entries ! maître
-\end_layout
+\begin_inset LatexCommand index
+name "Dummy entries ! maître"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Dummy entries ! maïs@maison
-\end_layout
+\begin_inset LatexCommand index
+name "Dummy entries ! maïs@maison"
 
 \end_inset
 
@@ -24650,12 +23449,8 @@ The previous entry needn't to be a real existing entry, you can also use
 
 \begin_layout Subsection
 Index Entry Layout
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Index ! Entry layout
-\end_layout
+\begin_inset LatexCommand index
+name "Index ! Entry layout"
 
 \end_inset
 
@@ -24683,75 +23478,13 @@ where the command
 textit
 \series default
  produces the italic layout.
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Dummy entries ! This@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-textit
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-This is an italic entry
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset LatexCommand index
+name "Dummy entries ! This@\\textit{This is an italic entry}"
 
 \end_inset
 
  We refer to LaTeX books (
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
 
 \end_inset
@@ -24791,12 +23524,8 @@ old-style page number:|oldstylenums
 
 \begin_layout Standard
 to get the page number in an old-style layout.
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Dummy entries ! old-style page number:|oldstylenums
-\end_layout
+\begin_inset LatexCommand index
+name "Dummy entries ! old-style page number:|oldstylenums"
 
 \end_inset
 
@@ -24823,8 +23552,7 @@ number}
 .
  Have a look at section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:LaTeX-Syntax"
 
 \end_inset
@@ -24841,18 +23569,13 @@ You can also change the layout for the whole index.
 
 \begin_layout Subsection
 Index Program
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Index ! Program
-\end_layout
+\begin_inset LatexCommand index
+name "Index ! Program"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Index-Program"
 
 \end_inset
@@ -24869,16 +23592,14 @@ makeindex
  It can be controlled by options that can be set in LyX's preferences dialog,
  see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:LaTeX-settings"
 
 \end_inset
 
 .
  The available options are listed and explained in 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "makeindex"
 
 \end_inset
@@ -24897,50 +23618,19 @@ xindy
 
 \begin_layout Section
 Nomenclature / Glossary 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Nomenclature
-\end_layout
+\begin_inset LatexCommand index
+name "Nomenclature"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Glossary|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Nomenclature
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
+\begin_inset LatexCommand index
+name "Glossary|see{Nomenclature}"
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Nomenclature"
 
 \end_inset
@@ -24958,12 +23648,8 @@ Sometimes you need to compile a list of symbols that are mentioned in your
 To be able to create nomenclatures, you need the LaTeX package 
 \series bold
 nomencl
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! nomencl
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! nomencl"
 
 \end_inset
 
@@ -24971,8 +23657,7 @@ LaTeX-packages ! nomencl
 \series default
  installed.
  You find it in the TeX Catalogue, 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "TeXCatalogue"
 
 \end_inset
@@ -24995,8 +23680,6 @@ Entry
  or the toobar button 
 \begin_inset Graphics
 	filename ../images/nomencl-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -25043,12 +23726,8 @@ Note:
 
 \begin_layout Subsection
 Nomenclature Definition and Layout
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Nomenclature ! Layout
-\end_layout
+\begin_inset LatexCommand index
+name "Nomenclature ! Layout"
 
 \end_inset
 
@@ -25117,8 +23796,7 @@ Sigma
 \begin_layout Standard
 (A short introduction to the LaTeX-syntax is given in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:LaTeX-Syntax"
 
 \end_inset
@@ -25202,12 +23880,8 @@ emph
 
 \begin_layout Subsection
 Sort Order of Nomenclature Entries
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Nomenclature ! Sort order
-\end_layout
+\begin_inset LatexCommand index
+name "Nomenclature ! Sort order"
 
 \end_inset
 
@@ -25221,8 +23895,7 @@ The nomenclature entries are sorted alphabetically by the LaTeX-code of
  Suppose you have nomenclature entries for the symbols 
 \emph on
 a
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
+\begin_inset LatexCommand nomenclature
 symbol "a"
 description "dummy entry for the character \"a\""
 
@@ -25235,8 +23908,7 @@ description "dummy entry for the character \"a\""
 \end_inset
 
 
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
+\begin_inset LatexCommand nomenclature
 prefix "sigma"
 symbol "$\\sigma$"
 description "dummy entry for the character \\textsf{sigma}"
@@ -25323,8 +23995,7 @@ For subgrouping and tips for using sort entries see the
 nomencl
 \series default
  documentation, 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "nomencl"
 
 \end_inset
@@ -25334,12 +24005,8 @@ key "nomencl"
 
 \begin_layout Subsection
 Nomenclature Options
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Nomenclature ! Options
-\end_layout
+\begin_inset LatexCommand index
+name "Nomenclature ! Options"
 
 \end_inset
 
@@ -25542,12 +24209,8 @@ nomnorefeqpage Turns off the corresponding options
 
 \begin_layout Subsection
 Printing the Nomenclature
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Nomenclature ! Printing
-\end_layout
+\begin_inset LatexCommand index
+name "Nomenclature ! Printing"
 
 \end_inset
 
@@ -25644,8 +24307,7 @@ nomlabelwidth}{width}
 \family roman
 Where the width is a value with one of the units listed in Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Units-available-in"
 
 \end_inset
@@ -25657,28 +24319,19 @@ cm.
 
 \begin_layout Section
 Branches
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Branches
-\end_layout
+\begin_inset LatexCommand index
+name "Branches"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Branches
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Branches"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Branches"
 
 \end_inset
@@ -25770,8 +24423,7 @@ status collapsed
 \begin_layout Standard
 For an introduction to the LaTeX-syntax, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:LaTeX-Syntax"
 
 \end_inset
@@ -25924,7 +24576,7 @@ question
 \series default
  part appears:
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question {x_{1}}\answer {x_{2}}=1\question {+\sqrt{3}}\answer {-\sqrt{3}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
 
 \end_inset
 
@@ -25934,8 +24586,7 @@ x^{2}-2x-2\Rightarrow\question {x_{1}}\answer {x_{2}}=1\question {+\sqrt{3}}\ans
 \begin_layout Standard
 Inside math, the same effect can be achieved using math macros, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:math-macros"
 
 \end_inset
@@ -25945,8 +24596,7 @@ reference "sec:math-macros"
 
 \begin_layout Section
 ERT and the LaTeX Syntax
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:ERT"
 
 \end_inset
@@ -25956,18 +24606,13 @@ name "sec:ERT"
 
 \begin_layout Subsection
 ERT Boxes
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-ERT
-\end_layout
+\begin_inset LatexCommand index
+name "ERT"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:ERT-Boxes"
 
 \end_inset
@@ -26006,8 +24651,6 @@ TeX
  or by the toolbar button 
 \begin_inset Graphics
 	filename ../images/ert-insert.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -26065,8 +24708,6 @@ fbox{
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ERT.png
-	inzipName 
-	embed true
 	scale 89
 
 \end_inset
@@ -26136,18 +24777,13 @@ The LaTeX Syntax
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX Syntax
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX Syntax"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:LaTeX-Syntax"
 
 \end_inset
@@ -26184,8 +24820,7 @@ Now LaTeX comes into play.
  As written above, for every problem exists a LaTeX-package.
  First you have to find out which and therefore look in the LaTeX package
  database, 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "Catalogue"
 
 \end_inset
@@ -26199,12 +24834,8 @@ As result you know that the package
 caption
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! caption
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! caption"
 
 \end_inset
 
@@ -26265,8 +24896,7 @@ For more commands provided by the
 caption
 \series default
  package, have a look at its documentation, 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "caption"
 
 \end_inset
@@ -26327,8 +24957,7 @@ Commands in the preamble affects the whole document, while commands in the
 \begin_layout Standard
 If you want to learn more about LaTeX and its syntax, have a look at the
  LaTeX-books 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "latexcompanion,latexguide"
 
 \end_inset
@@ -26339,29 +24968,20 @@ key "latexcompanion,latexguide"
 
 \begin_layout Section
 Previewing Snippets of your Document
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Instant preview
-\end_layout
+\begin_inset LatexCommand index
+name "Instant preview"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Previewing-snippets-of"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Preview
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Preview"
 
 \end_inset
 
@@ -26384,12 +25004,8 @@ If you would for example like to see in LyX your math formulas typeset by
  LaTeX, install the LaTeX-package 
 \series bold
 preview-latex
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! preview-latex
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! preview-latex"
 
 \end_inset
 
@@ -26454,8 +25070,7 @@ preview
 ) installed.
  In case it is not already installed, you find it in the TeX Catalogue,
  
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "TeXCatalogue"
 
 \end_inset
@@ -26500,19 +25115,14 @@ Source
 
 \begin_layout Section
 Spell Checking
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Spellchecking"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Spell checking
-\end_layout
+\begin_inset LatexCommand index
+name "Spell checking"
 
 \end_inset
 
@@ -26704,8 +25314,7 @@ status collapsed
 \begin_layout Standard
 The encodings are explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Settings"
 
 \end_inset
@@ -26726,18 +25335,13 @@ ispell
 
 \begin_layout Section
 Thesaurus
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Thesaurus
-\end_layout
+\begin_inset LatexCommand index
+name "Thesaurus"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Thesaurus"
 
 \end_inset
@@ -26759,8 +25363,6 @@ Thesaurus
  or the toolbar button 
 \begin_inset Graphics
 	filename ../images/thesaurus-entry.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -26818,28 +25420,19 @@ reports
 
 \begin_layout Section
 Change Tracking
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Change Tracking
-\end_layout
+\begin_inset LatexCommand index
+name "Change Tracking"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Change Tracking
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Change Tracking"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Change-Tracking"
 
 \end_inset
@@ -26883,12 +25476,8 @@ feel
 Colors
 \family default
 .
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Color ! LyX screen
-\end_layout
+\begin_inset LatexCommand index
+name "Color ! LyX screen"
 
 \end_inset
 
@@ -26897,12 +25486,8 @@ Color ! LyX screen
 
 \begin_layout Standard
 When change tracking is activated, you will see the review toolbar in LyX:
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Toolbar ! Review
-\end_layout
+\begin_inset LatexCommand index
+name "Toolbar ! Review"
 
 \end_inset
 
@@ -26919,8 +25504,6 @@ Toolbar ! Review
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ChangesToolbar.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -26959,8 +25542,6 @@ The review toolbar as shown above contains from left to right the following
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/changes-track.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -26994,8 +25575,6 @@ Changes
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/changes-output.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27031,8 +25610,6 @@ Output
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/change-next.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27060,8 +25637,6 @@ Jumps to the next change
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/change-accept.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27095,8 +25670,6 @@ Change
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/change-reject.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27130,8 +25703,6 @@ Change
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/changes-merge.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27165,8 +25736,6 @@ Changes
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/all-changes-accept.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27201,8 +25770,6 @@ Changes
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/all-changes-reject.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27237,8 +25804,6 @@ Changes
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/note-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27271,8 +25836,6 @@ Note
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/note-next.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -27331,12 +25894,8 @@ The toolbar has two buttons to handle notes because notes are often important
 To show made changes in the output you need the LaTeX package 
 \series bold
 dvipost
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! dvipost
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! dvipost"
 
 \end_inset
 
@@ -27344,8 +25903,7 @@ LaTeX-packages ! dvipost
 \series default
  installed.
  You find it in the TeX Catalogue, 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "TeXCatalogue"
 
 \end_inset
@@ -27355,12 +25913,8 @@ key "TeXCatalogue"
 
 \begin_layout Section
 International Support
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-International support
-\end_layout
+\begin_inset LatexCommand index
+name "International support"
 
 \end_inset
 
@@ -27371,8 +25925,7 @@ International support
 This section describes how to use LyX with any language you want.
  For some non-western languages there are special Wiki-pages that explain
  how to set up LyX to use them: 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "Arabic,Armenian,Farsi,Hebrew"
 
 \end_inset
@@ -27383,8 +25936,7 @@ key "Arabic,Armenian,Farsi,Hebrew"
 \begin_layout Standard
 Besides languages, LyX also supports phonetic symbols, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Special-Character"
 
 \end_inset
@@ -27394,32 +25946,20 @@ reference "sub:Special-Character"
 
 \begin_layout Subsection
 Language Options
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Language ! Options
-\end_layout
+\begin_inset LatexCommand index
+name "Language ! Options"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Language
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Language"
 
 \end_inset
 
@@ -27465,8 +26005,7 @@ use language's default encoding
  is the preferred choice and works well in most cases.
  For details abhout the different encoding options see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Settings"
 
 \end_inset
@@ -27486,8 +26025,7 @@ If you have for example a U.S.-style keyboard and want to write in a different
  The preferences dialog allows you to choose up to two keyboard mappings,
  see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Keyboard-Map"
 
 \end_inset
@@ -27513,8 +26051,7 @@ Customization
 
 \begin_layout Subsection
 Character Tables
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:keytab"
 
 \end_inset
@@ -27525,8 +26062,7 @@ name "sec:keytab"
 \begin_layout Standard
 Table\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:The-latin1-character"
 
 \end_inset
@@ -27583,8 +26119,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:The-latin1-character"
 
 \end_inset
@@ -32166,8 +30701,7 @@ T1
 \begin_layout Chapter
 \start_of_appendix
 The User Interface
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cha:The-User-Interface"
 
 \end_inset
@@ -32183,12 +30717,8 @@ This appendix lists all available menus and describes its functionality.
 
 \begin_layout Section
 The File Menu
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Menu ! File
-\end_layout
+\begin_inset LatexCommand index
+name "Menu ! File"
 
 \end_inset
 
@@ -32314,8 +30844,7 @@ Lines
 
 \begin_layout Subsection
 Export
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Export"
 
 \end_inset
@@ -32334,8 +30863,7 @@ You can export your document to various file formats.
 Here is a list of all available entries; they are explained in detail in
  section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Output-file-formats"
 
 \end_inset
@@ -32568,19 +31096,14 @@ Postscript
  is missing, you need to update your LaTeX installation.
  After updating you have to reconfigure LyX, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Basic-LyX-Setup"
 
 \end_inset
 
 .
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Reconfiguration of LyX
-\end_layout
+\begin_inset LatexCommand index
+name "Reconfiguration of LyX"
 
 \end_inset
 
@@ -32612,8 +31135,7 @@ dvips
 .
  For more informations have a look at section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Printing-the-File"
 
 \end_inset
@@ -32632,12 +31154,8 @@ Opens a new instance of LyX with all currently opened documents.
 
 \begin_layout Section
 The Edit Menu
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Menu ! Edit
-\end_layout
+\begin_inset LatexCommand index
+name "Menu ! Edit"
 
 \end_inset
 
@@ -32651,8 +31169,7 @@ Undo and Redo
 \begin_layout Standard
 Described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Undo-and-Redo"
 
 \end_inset
@@ -32667,8 +31184,7 @@ Cut, Copy, Paste, Paste Recent, Paste Special
 \begin_layout Standard
 Described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Basic-Editing-Features"
 
 \end_inset
@@ -32691,8 +31207,7 @@ Find & Replace
 \begin_layout Standard
 Described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Basic-Editing-Features"
 
 \end_inset
@@ -32716,8 +31231,7 @@ Text Style
 \begin_layout Standard
 Described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Fine-Tuning-with-the"
 
 \end_inset
@@ -32727,12 +31241,8 @@ reference "sub:Fine-Tuning-with-the"
 
 \begin_layout Subsection
 Paragraph Settings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paragraph ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Paragraph ! Settings"
 
 \end_inset
 
@@ -32770,16 +31280,14 @@ These two menus are only active when the cursor is inside a table or a formula.
  The properties of this table/formula can now be changed.
  The properties of tables are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Tables"
 
 \end_inset
 
 , the properties of formulas in chapter\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Mathematical-Formulas"
 
 \end_inset
@@ -32796,15 +31304,13 @@ These menus are only active when the cursor is in an environment that can
  be nested.
  They in/decrease the environment nesting level as explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nesting"
 
 \end_inset
 
  and 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Numbering-depth"
 
 \end_inset
@@ -32814,12 +31320,8 @@ reference "sub:Numbering-depth"
 
 \begin_layout Section
 The View Menu
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Menu ! View
-\end_layout
+\begin_inset LatexCommand index
+name "Menu ! View"
 
 \end_inset
 
@@ -32837,8 +31339,7 @@ View
  - it depends on the LaTeX programs that are found while LyX was configured.
  All possible formats are formats listed in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Export"
 
 \end_inset
@@ -32857,19 +31358,14 @@ PDF\InsetSpace ~
  If one of the two is missing, you need to update your LaTeX installation.
  After updating you have to reconfigure LyX, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Basic-LyX-Setup"
 
 \end_inset
 
 .
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Reconfiguration of LyX
-\end_layout
+\begin_inset LatexCommand index
+name "Reconfiguration of LyX"
 
 \end_inset
 
@@ -32880,8 +31376,7 @@ Reconfiguration of LyX
 Invoking a menu will start a viewer program.
  The viewer can be set or changed in the preferences, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:File-Formats"
 
 \end_inset
@@ -32909,8 +31404,7 @@ View Source
 Opens a window showing the source code of the actual document, as described
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Previewing-snippets-of"
 
 \end_inset
@@ -32929,19 +31423,14 @@ This menu allows you to update the view with your latest changes without
 
 \begin_layout Subsection
 Toolbars
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Toolbars"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Toolbar
-\end_layout
+\begin_inset LatexCommand index
+name "Toolbar"
 
 \end_inset
 
@@ -33008,8 +31497,7 @@ automatic
 \begin_layout Standard
 LyX's toolbars and its buttons are explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Toolbars"
 
 \end_inset
@@ -33019,12 +31507,8 @@ reference "sec:Toolbars"
 
 \begin_layout Section
 The Insert Menu
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Menu ! Insert
-\end_layout
+\begin_inset LatexCommand index
+name "Menu ! Insert"
 
 \end_inset
 
@@ -33038,8 +31522,7 @@ Math
 \begin_layout Standard
 Inserts math constructs that are explained in chapter\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Mathematical-Formulas"
 
 \end_inset
@@ -33049,8 +31532,7 @@ reference "cha:Mathematical-Formulas"
 
 \begin_layout Subsection
 Special Character
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Special-Character"
 
 \end_inset
@@ -33072,8 +31554,7 @@ End\InsetSpace ~
 of\InsetSpace ~
 Sentence Inserts an end of sentence dot as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Abbreviations"
 
 \end_inset
@@ -33117,22 +31598,14 @@ Separator Inserts the menu separator sign: \SpecialChar \menuseparator
 \begin_layout Description
 Phonetic\InsetSpace ~
 Symbols
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Phonetic symbols
-\end_layout
+\begin_inset LatexCommand index
+name "Phonetic symbols"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Language ! Phonetic symbols
-\end_layout
+\begin_inset LatexCommand index
+name "Language ! Phonetic symbols"
 
 \end_inset
 
@@ -33143,12 +31616,8 @@ Language ! Phonetic symbols
 tipa
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! tipa
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! tipa"
 
 \end_inset
 
@@ -33158,8 +31627,7 @@ For more informations about this feature we refer to the documentation
  of 
 \series bold
 tipa, 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "tipa"
 
 \end_inset
@@ -33169,13 +31637,8 @@ key "tipa"
  and this Wiki-page:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/LyX/LinguistLyX
-\end_layout
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/LinguistLyX"
 
 \end_inset
 
@@ -33210,8 +31673,7 @@ Subscript Inserts an subscript: test
 Protected\InsetSpace ~
 Space Inserts a protected space that is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Protected-Space"
 
 \end_inset
@@ -33223,8 +31685,7 @@ reference "sub:Protected-Space"
 Inter-word\InsetSpace ~
 Space Inserts an inter-word space that is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Inter-word-Space"
 
 \end_inset
@@ -33236,8 +31697,7 @@ reference "sub:Inter-word-Space"
 Thin\InsetSpace ~
 Space Inserts a thin space that is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Thin-Space"
 
 \end_inset
@@ -33249,8 +31709,7 @@ reference "sub:Thin-Space"
 Horizontal\InsetSpace ~
 Fill Inserts an horizontal fill, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Horizontal-Space"
 
 \end_inset
@@ -33262,8 +31721,7 @@ reference "sub:Horizontal-Space"
 Horizontal\InsetSpace ~
 Line Inserts an horizontal line, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Horizontal-Lines"
 
 \end_inset
@@ -33275,8 +31733,7 @@ reference "sub:Horizontal-Lines"
 Vertical\InsetSpace ~
 Space Inserts vertical space, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Vertical-Space"
 
 \end_inset
@@ -33288,8 +31745,7 @@ reference "sub:Vertical-Space"
 Hyphenation\InsetSpace ~
 Point Inserts an hyphenation point, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Hyphenation"
 
 \end_inset
@@ -33301,8 +31757,7 @@ reference "sub:Hyphenation"
 Ligature\InsetSpace ~
 Break Inserts a ligature break, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Ligatures"
 
 \end_inset
@@ -33314,8 +31769,7 @@ reference "sub:Ligatures"
 Line\InsetSpace ~
 Break Inserts a forced linebreak, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Forced-Linebreaks"
 
 \end_inset
@@ -33327,8 +31781,7 @@ reference "sub:Forced-Linebreaks"
 Page\InsetSpace ~
 Break Inserts a forced pagebreak, described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Forced-Pagebreaks"
 
 \end_inset
@@ -33340,8 +31793,7 @@ reference "sub:Forced-Pagebreaks"
 Clear\InsetSpace ~
 Page Inserts a clear pagebreak, described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Clear-Pages"
 
 \end_inset
@@ -33354,8 +31806,7 @@ Clear\InsetSpace ~
 Double\InsetSpace ~
 Page Inserts a clear doublepage break, described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Clear-Pages"
 
 \end_inset
@@ -33372,8 +31823,7 @@ Various lists can be inserted with this menu.
  The table of contents, the algorithm, figures, and tables list are described
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:toc"
 
 \end_inset
@@ -33381,24 +31831,21 @@ reference "sec:toc"
 .
  The index list is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Index"
 
 \end_inset
 
 , the nomenclature in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nomenclature"
 
 \end_inset
 
 , and the BibTeX bibliography in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Bibliography-databases"
 
 \end_inset
@@ -33413,8 +31860,7 @@ Float
 \begin_layout Standard
 To insert floats, described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Floats"
 
 \end_inset
@@ -33429,8 +31875,7 @@ Note
 \begin_layout Standard
 To insert notes, described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Notes"
 
 \end_inset
@@ -33445,8 +31890,7 @@ Branch
 \begin_layout Standard
 Inserts branch insets as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Branches"
 
 \end_inset
@@ -33456,12 +31900,8 @@ reference "sec:Branches"
 
 \begin_layout Subsection
 File
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-External Material
-\end_layout
+\begin_inset LatexCommand index
+name "External Material"
 
 \end_inset
 
@@ -33483,12 +31923,8 @@ Embedded Objects
 
 \begin_layout Subsection
 Box
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Boxes
-\end_layout
+\begin_inset LatexCommand index
+name "Boxes"
 
 \end_inset
 
@@ -33498,8 +31934,7 @@ Boxes
 \begin_layout Standard
 Inserts a minipage box that is described section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Minipages"
 
 \end_inset
@@ -33523,8 +31958,7 @@ Citation
 \begin_layout Standard
 Inserts a citation as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Bibliography"
 
 \end_inset
@@ -33539,8 +31973,7 @@ Cross-Reference
 \begin_layout Standard
 Inserts a cross-reference as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Cross-References"
 
 \end_inset
@@ -33555,8 +31988,7 @@ Label
 \begin_layout Standard
 Inserts a label as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Cross-References"
 
 \end_inset
@@ -33566,22 +31998,14 @@ reference "sec:Cross-References"
 
 \begin_layout Subsection
 Caption
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Captions
-\end_layout
+\begin_inset LatexCommand index
+name "Captions"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Longtables ! Caption
-\end_layout
+\begin_inset LatexCommand index
+name "Longtables ! Caption"
 
 \end_inset
 
@@ -33592,8 +32016,7 @@ Longtables ! Caption
 Inserts a caption to floats or longtables.
  Floats are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Floats"
 
 \end_inset
@@ -33616,8 +32039,7 @@ Index Entry
 \begin_layout Standard
 Inserts an index entry as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Index"
 
 \end_inset
@@ -33632,8 +32054,7 @@ Nomenclature Entry
 \begin_layout Standard
 Inserts a nomenclature entry as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Nomenclature"
 
 \end_inset
@@ -33649,8 +32070,7 @@ Table
 Inserts a table.
  Tables are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Tables"
 
 \end_inset
@@ -33666,8 +32086,7 @@ Graphics
 Inserts a graphic.
  Graphics are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Graphics"
 
 \end_inset
@@ -33682,8 +32101,7 @@ URL
 \begin_layout Standard
 Inserts an URL box as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:URL"
 
 \end_inset
@@ -33698,8 +32116,7 @@ Footnote
 \begin_layout Standard
 Inserts a footnote, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Footnotes"
 
 \end_inset
@@ -33714,8 +32131,7 @@ Marginal Note
 \begin_layout Standard
 Inserts a marginal note, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Marginal-Notes"
 
 \end_inset
@@ -33730,8 +32146,7 @@ Short Title
 \begin_layout Standard
 Inserts a short title, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Short-Titles"
 
 \end_inset
@@ -33746,8 +32161,7 @@ TeX Code
 \begin_layout Standard
 Inserts an ERT box, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:ERT-Boxes"
 
 \end_inset
@@ -33757,12 +32171,8 @@ reference "sub:ERT-Boxes"
 
 \begin_layout Subsection
 Program Listing
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Program listings
-\end_layout
+\begin_inset LatexCommand index
+name "Program listings"
 
 \end_inset
 
@@ -33805,12 +32215,8 @@ Embedded Objects
 
 \begin_layout Section
 The Navigate Menu
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Menu ! Navigate
-\end_layout
+\begin_inset LatexCommand index
+name "Menu ! Navigate"
 
 \end_inset
 
@@ -33892,12 +32298,8 @@ Only active when the cursor is in front of a cross-reference.
 
 \begin_layout Section
 The Document Menu
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Menu ! Document
-\end_layout
+\begin_inset LatexCommand index
+name "Menu ! Document"
 
 \end_inset
 
@@ -33911,8 +32313,7 @@ Change Tracking
 \begin_layout Standard
 Change Tracking is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Change-Tracking"
 
 \end_inset
@@ -33957,8 +32358,7 @@ Outline
 \begin_layout Standard
 Opens the TOC/Outline window as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Table-of-Contents"
 
 \end_inset
@@ -33974,8 +32374,7 @@ Start Appendix Here
 This menu will start the appendix of the document at the current cursor
  position as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Appendices"
 
 \end_inset
@@ -33993,19 +32392,14 @@ Un/compresses the actual document.
 
 \begin_layout Subsection
 Settings
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Settings"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Document ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Document ! Settings"
 
 \end_inset
 
@@ -34040,8 +32434,7 @@ Document Class
 Here you set the document class, class options, and a Postscript driver.
  Document classes are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Document-Classes"
 
 \end_inset
@@ -34063,8 +32456,7 @@ Fonts
 \begin_layout Standard
 The document font settings are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Fonts-and-Text"
 
 \end_inset
@@ -34105,15 +32497,13 @@ Page Layout
 \begin_layout Standard
 A description of this menu is given in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Paper-Size,-Orientation,"
 
 \end_inset
 
  and 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Document-Layout"
 
 \end_inset
@@ -34128,8 +32518,7 @@ Page Margins
 \begin_layout Standard
 Here you can adjust the paper margins, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Margins"
 
 \end_inset
@@ -34139,12 +32528,8 @@ reference "sub:Margins"
 
 \begin_layout Subsubsection*
 Language
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Language ! Encoding
-\end_layout
+\begin_inset LatexCommand index
+name "Language ! Encoding"
 
 \end_inset
 
@@ -34200,8 +32585,7 @@ XeTeX is a TeX typesetting engine, an alternative for LaTeX.
  It natively supports Unicode while its input file is assumed to be in UTF-8
  encoding.
  More about using LyX with XeTeX can be found in 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "XeTeX"
 
 \end_inset
@@ -34245,12 +32629,8 @@ use language's default encoding
 inputenc
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! inputenc
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! inputenc"
 
 \end_inset
 
@@ -34368,12 +32748,8 @@ utf8 Unicode utf8 with the LaTeX-package
 inputenc
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! inputenc
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! inputenc"
 
 \end_inset
 
@@ -34394,12 +32770,8 @@ UTF8 Unicode utf8 with the LaTeX-package
 CJK
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! CJK
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! CJK"
 
 \end_inset
 
@@ -34421,8 +32793,7 @@ status collapsed
 
 \begin_layout Standard
 More about using LyX with XeTeX can be found in 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "XeTeX"
 
 \end_inset
@@ -34443,8 +32814,7 @@ Numbering & TOC
 You can adjust here the numbering depth of sections headings as described
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Numbering-depth"
 
 \end_inset
@@ -34460,12 +32830,8 @@ Bibliography
 You can specify here a citation style using the LaTeX-packages 
 \series bold
 natbib
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! natbib
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! natbib"
 
 \end_inset
 
@@ -34476,20 +32842,15 @@ LaTeX-packages ! natbib
 jurabib
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! jurabib
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! jurabib"
 
 \end_inset
 
 .
  For a further description see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Bibliography"
 
 \end_inset
@@ -34505,12 +32866,8 @@ Math Options
 These options will force LyX to use the LaTeX-packages 
 \series bold
 amsmath
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! amsmath
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! amsmath"
 
 \end_inset
 
@@ -34519,12 +32876,8 @@ LaTeX-packages ! amsmath
  and 
 \series bold
 esint
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! esint
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! esint"
 
 \end_inset
 
@@ -34560,8 +32913,7 @@ The float placement options are described in section
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Float-Placement"
 
 \end_inset
@@ -34577,8 +32929,7 @@ Bullets
 Here you can adjust the characters for the itemize levels.
  The itemize environment is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Itemize"
 
 \end_inset
@@ -34593,8 +32944,7 @@ Branches
 \begin_layout Standard
 Branches are described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Branches"
 
 \end_inset
@@ -34628,8 +32978,7 @@ In this text field are entered commands to load special LaTeX-packages or
 \begin_layout Standard
 An introduction in the LaTeX-syntax is given in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:LaTeX-Syntax"
 
 \end_inset
@@ -34639,12 +32988,8 @@ reference "sub:LaTeX-Syntax"
 
 \begin_layout Section
 The Tools Menu
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Menu ! Tools
-\end_layout
+\begin_inset LatexCommand index
+name "Menu ! Tools"
 
 \end_inset
 
@@ -34658,8 +33003,7 @@ Spellchecker
 \begin_layout Standard
 Spell checking is explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Spellchecking"
 
 \end_inset
@@ -34674,8 +33018,7 @@ Thesaurus
 \begin_layout Standard
 The thesaurus is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Thesaurus"
 
 \end_inset
@@ -34685,12 +33028,8 @@ reference "sec:Thesaurus"
 
 \begin_layout Subsection
 Count Words
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Word count
-\end_layout
+\begin_inset LatexCommand index
+name "Word count"
 
 \end_inset
 
@@ -34715,12 +33054,8 @@ status collapsed
 \end_inset
 
 eX Information
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-TeX Information
-\end_layout
+\begin_inset LatexCommand index
+name "TeX Information"
 
 \end_inset
 
@@ -34733,44 +33068,14 @@ Shows you a list of the classes and styles installed in your LaTeX-system.
 
 \begin_layout Subsection
 Reconfigure
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Reconfiguration of LyX
-\end_layout
+\begin_inset LatexCommand index
+name "Reconfiguration of LyX"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LyX ! Reconfigure|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-{
-\end_layout
-
-\end_inset
-
-Reconfiguration of LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset LatexCommand index
+name "LyX ! Reconfigure|see{Reconfiguration of LyX}"
 
 \end_inset
 
@@ -34781,8 +33086,7 @@ status collapsed
 This menu reconfigures LyX.
  That means LyX looks for LaTeX-packages and needed programs, see also section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Basic-LyX-Setup"
 
 \end_inset
@@ -34800,8 +33104,7 @@ The preferences dialog is described in detail in chapter
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:The-Preferences-dialog"
 
 \end_inset
@@ -34811,12 +33114,8 @@ reference "cha:The-Preferences-dialog"
 
 \begin_layout Section
 The Help Menu
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Menu ! Help
-\end_layout
+\begin_inset LatexCommand index
+name "Menu ! Help"
 
 \end_inset
 
@@ -34837,8 +33136,7 @@ Configuration
  shows a LyX-document with informations about the LaTeX-packages and classes
  found by LyX (see also section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:LaTeX-Setup"
 
 \end_inset
@@ -34848,8 +33146,7 @@ reference "sec:LaTeX-Setup"
 
 \begin_layout Section
 Toolbars
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:Toolbars"
 
 \end_inset
@@ -34860,8 +33157,7 @@ name "sec:Toolbars"
 \begin_layout Standard
 How to show or hide toolbars is explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Toolbars"
 
 \end_inset
@@ -34881,12 +33177,8 @@ Extended Features
 
 \begin_layout Subsection
 Standard Toolbar
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Toolbar ! Standard
-\end_layout
+\begin_inset LatexCommand index
+name "Toolbar ! Standard"
 
 \end_inset
 
@@ -34896,8 +33188,6 @@ Toolbar ! Standard
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/StandardToolbar.png
-	inzipName 
-	embed true
 	width 100col%
 
 \end_inset
@@ -34967,8 +33257,6 @@ Embedded Objects
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ToolbarEnvBox.png
-	inzipName 
-	embed false
 	clip
 
 \end_inset
@@ -35018,8 +33306,6 @@ pull-down menu for the paragraph environments
 \family sans
 \begin_inset Graphics
 	filename ../images/buffer-new.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35049,8 +33335,6 @@ New
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/file-open.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35080,8 +33364,6 @@ Open
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/buffer-write.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35111,8 +33393,6 @@ Save
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-show_print.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 24bp 20bp
 
 \end_inset
@@ -35142,8 +33422,6 @@ Print
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-show_spellchecker.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35173,8 +33451,6 @@ Spellchecker
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/undo.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35204,8 +33480,6 @@ Undo
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/redo.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35235,8 +33509,6 @@ Redo
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/cut.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35266,8 +33538,6 @@ Cut
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/copy.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35297,8 +33567,6 @@ Copy
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/paste.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35328,8 +33596,6 @@ Paste
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-show_findreplace.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35362,8 +33628,6 @@ Replace
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/font-emph.png
-	inzipName 
-	embed true
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35396,8 +33660,6 @@ Style
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/font-noun.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35430,8 +33692,6 @@ Style
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/font-free-apply.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35464,8 +33724,6 @@ Style
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/math-mode.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35497,8 +33755,6 @@ Formula
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_graphics.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35529,8 +33785,6 @@ Graphics
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/tabular-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35561,8 +33815,6 @@ Table
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-toggle_toc.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35593,8 +33845,6 @@ Outline
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/toolbar-toggle_math.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35622,8 +33872,6 @@ Toggle math toolbar on/off
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/toolbar-toggle_table.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35653,12 +33901,8 @@ Toggle table toolbar on/off
 
 \begin_layout Subsection
 Extra Toolbar
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Toolbar ! Extra
-\end_layout
+\begin_inset LatexCommand index
+name "Toolbar ! Extra"
 
 \end_inset
 
@@ -35668,8 +33912,6 @@ Toolbar ! Extra
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ExtraToolbar.png
-	inzipName 
-	embed false
 	width 100col%
 
 \end_inset
@@ -35709,8 +33951,6 @@ The extra toolbar as shown above contains from left to right the following
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/layout.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35738,8 +33978,6 @@ Default
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/layout_Enumerate.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35767,8 +34005,6 @@ Numbered list
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/layout_Itemize.png
-	inzipName 
-	embed true
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35796,8 +34032,6 @@ Itemized list
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/layout_List.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35825,8 +34059,6 @@ List
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/layout_Description.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35854,8 +34086,6 @@ Description list
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/depth-increment.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35888,8 +34118,6 @@ Depth
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/depth-decrement.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -35922,8 +34150,6 @@ Depth
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/float-insert_figure.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35954,8 +34180,6 @@ Figure
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/float-insert_table.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -35986,8 +34210,6 @@ Table
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/label-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36017,8 +34239,6 @@ Label
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36048,8 +34268,6 @@ Cross-Reference
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_citation.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36079,8 +34297,6 @@ Citation
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/index-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36111,8 +34327,6 @@ Entry
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/nomencl-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36143,8 +34357,6 @@ Entry
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/footnote-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36174,8 +34386,6 @@ Footnote
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/marginalnote-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36207,8 +34417,6 @@ Note
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/note-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36240,8 +34448,6 @@ Note
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/url-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36271,8 +34477,6 @@ URL
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/ert-insert.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36317,8 +34521,6 @@ eX
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_include.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 20bp
 
 \end_inset
@@ -36350,8 +34552,6 @@ Document
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/dialog-show_character.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36383,8 +34583,6 @@ Style
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/layout-paragraph.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36416,8 +34614,6 @@ Settings
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/thesaurus-entry.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36450,12 +34646,8 @@ Thesaurus
 
 \begin_layout Subsection
 View / Update Toolbar
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Toolbar ! View / Update
-\end_layout
+\begin_inset LatexCommand index
+name "Toolbar ! View / Update"
 
 \end_inset
 
@@ -36465,8 +34657,6 @@ Toolbar ! View / Update
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ViewToolbar.png
-	inzipName 
-	embed false
 
 \end_inset
 
@@ -36505,8 +34695,6 @@ The view / update toolbar as shown above contains from left to right the
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/buffer-view_dvi.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36537,8 +34725,6 @@ DVI
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/buffer-update_dvi.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36570,8 +34756,6 @@ DVI
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/buffer-view_pdf2.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36602,8 +34786,6 @@ PDF
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/buffer-update_pdf2.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36652,8 +34834,6 @@ PDF
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/buffer-view_ps.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36684,8 +34864,6 @@ Postscript
 \begin_layout Standard
 \begin_inset Graphics
 	filename ../images/buffer-update_ps.png
-	inzipName 
-	embed false
 	BoundingBox 0bp 5bp 20bp 25bp
 	rotateOrigin center
 
@@ -36724,19 +34902,14 @@ Other Toolbars
 \begin_layout Standard
 The change tracking toolbar is explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Change-Tracking"
 
 \end_inset
 
 , the table toolbar
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Toolbar ! Table
-\end_layout
+\begin_inset LatexCommand index
+name "Toolbar ! Table"
 
 \end_inset
 
@@ -36753,19 +34926,14 @@ The
 Preferences
 \family default
  Dialog
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cha:The-Preferences-dialog"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Preferences
-\end_layout
+\begin_inset LatexCommand index
+name "Preferences"
 
 \end_inset
 
@@ -36784,29 +34952,20 @@ Look and Feel
 
 \begin_layout Subsection
 User Interface
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:ui"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Customization ! of toolbars
-\end_layout
+\begin_inset LatexCommand index
+name "Customization ! of toolbars"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Customization ! of menus
-\end_layout
+\begin_inset LatexCommand index
+name "Customization ! of menus"
 
 \end_inset
 
@@ -36832,22 +34991,14 @@ Note:
 
 \begin_layout Subsubsection
 User Interface File
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Customization ! of toolbars
-\end_layout
+\begin_inset LatexCommand index
+name "Customization ! of toolbars"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Customization ! of menus
-\end_layout
+\begin_inset LatexCommand index
+name "Customization ! of menus"
 
 \end_inset
 
@@ -36960,8 +35111,7 @@ LyX-function
 \end_inset
 
 All LyX-functions are listed in 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "LyX-func"
 
 \end_inset
@@ -37005,12 +35155,8 @@ to the navigate menu section in the .inc-file to have the sixth bookmark.
 
 \begin_layout Subsubsection
 Bind-File
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Bindings
-\end_layout
+\begin_inset LatexCommand index
+name "Bindings"
 
 \end_inset
 
@@ -37112,8 +35258,7 @@ LyX-function
 
 \begin_layout Standard
 All LyX-functions are listed in 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "LyX-func"
 
 \end_inset
@@ -37165,19 +35310,14 @@ Load opened files from last session
 
 \begin_layout Subsubsection
 Documents
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Backup documents"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Backup ! Documents
-\end_layout
+\begin_inset LatexCommand index
+name "Backup ! Documents"
 
 \end_inset
 
@@ -37241,18 +35381,13 @@ OS and
 
 \begin_layout Subsection
 Screen Fonts
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Font ! Screen
-\end_layout
+\begin_inset LatexCommand index
+name "Font ! Screen"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Screen-Fonts"
 
 \end_inset
@@ -37340,8 +35475,7 @@ Screen DPI
 points have the size of 1\InsetSpace \thinspace{}
 inch, see Appendix\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cha:Units-available-in"
 
 \end_inset
@@ -37361,8 +35495,7 @@ Font Sizes
 pt would be used.
  The sizes are explained in detail in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Document-Font"
 
 \end_inset
@@ -37372,22 +35505,14 @@ reference "sub:Document-Font"
 
 \begin_layout Subsection
 Colors
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Color ! LyX screen
-\end_layout
+\begin_inset LatexCommand index
+name "Color ! LyX screen"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! Color
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! Color"
 
 \end_inset
 
@@ -37405,12 +35530,8 @@ Alter
 
 \begin_layout Subsection
 Graphics
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! Graphics
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! Graphics"
 
 \end_inset
 
@@ -37429,8 +35550,7 @@ Instant Preview
  enables previewing snippets of your document.
  This feature is described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Previewing-snippets-of"
 
 \end_inset
@@ -37440,28 +35560,19 @@ reference "sec:Previewing-snippets-of"
 
 \begin_layout Subsection
 Keyboard Map
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Keyboard Map
-\end_layout
+\begin_inset LatexCommand index
+name "Keyboard Map"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! Keyboard Map
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! Keyboard Map"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Keyboard-Map"
 
 \end_inset
@@ -37501,22 +35612,14 @@ Note:
 
 \begin_layout Section
 Paths
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paths
-\end_layout
+\begin_inset LatexCommand index
+name "Paths"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! Directory
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! Directory"
 
 \end_inset
 
@@ -37557,20 +35660,15 @@ Template
 \begin_layout Description
 Backup\InsetSpace ~
 directory
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Backup ! Directory
-\end_layout
+\begin_inset LatexCommand index
+name "Backup ! Directory"
 
 \end_inset
 
  Backup copies will be saved to this directory.
  When no directory is given but backups are enabled as described in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Backup documents"
 
 \end_inset
@@ -37653,8 +35751,7 @@ Here you can insert your name and email address.
  The identity will be used when you have enabled change tracking as described
  in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Change-Tracking"
 
 \end_inset
@@ -37664,22 +35761,14 @@ reference "sec:Change-Tracking"
 
 \begin_layout Section
 Language Settings
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Language ! Settings
-\end_layout
+\begin_inset LatexCommand index
+name "Language ! Settings"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! Language
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! Language"
 
 \end_inset
 
@@ -37716,8 +35805,7 @@ status collapsed
 \begin_layout Standard
 For an introduction to the LaTeX-Syntax, have a look at section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:ERT"
 
 \end_inset
@@ -37761,8 +35849,7 @@ begin{arabtext}
 ArabTeX
 \series default
 , see 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "Arabic"
 
 \end_inset
@@ -37869,8 +35956,7 @@ Spellchecker
 \begin_layout Standard
 The spellchecker settings are explained in section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sec:Spellchecking"
 
 \end_inset
@@ -37884,29 +35970,20 @@ Outputs
 
 \begin_layout Subsection
 Printer
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:Printer"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Printer
-\end_layout
+\begin_inset LatexCommand index
+name "Printer"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! Printer
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! Printer"
 
 \end_inset
 
@@ -37991,22 +36068,14 @@ Printer command
 
 \begin_layout Subsection
 Date Format
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Date Format
-\end_layout
+\begin_inset LatexCommand index
+name "Date Format"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! Date format
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! Date format"
 
 \end_inset
 
@@ -38017,13 +36086,8 @@ Settings ! Date format
 The date format can be one or a mixture of the formats listed here:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://unixhelp.ed.ac.uk/CGI/man-cgi?date
-\end_layout
+\begin_inset LatexCommand url
+target "http://unixhelp.ed.ac.uk/CGI/man-cgi?date"
 
 \end_inset
 
@@ -38080,19 +36144,14 @@ status collapsed
 \end_inset
 
 eX
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sub:LaTeX-settings"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! LaTeX
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! LaTeX"
 
 \end_inset
 
@@ -38242,8 +36301,7 @@ BibTeX
 \family default
  that generates the bibliography, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Bibliography-databases"
 
 \end_inset
@@ -38255,8 +36313,7 @@ reference "sub:Bibliography-databases"
 Index\InsetSpace ~
 command Command for the program that generates the index, see section\InsetSpace ~
 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "sub:Index-Program"
 
 \end_inset
@@ -38278,22 +36335,14 @@ xdvi
 
 \begin_layout Subsection
 Paths
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Paths
-\end_layout
+\begin_inset LatexCommand index
+name "Paths"
 
 \end_inset
 
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Settings ! Paths
-\end_layout
+\begin_inset LatexCommand index
+name "Settings ! Paths"
 
 \end_inset
 
@@ -38331,12 +36380,8 @@ C:/test/hello
 
 \begin_layout Section
 Converters
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Converters
-\end_layout
+\begin_inset LatexCommand index
+name "Converters"
 
 \end_inset
 
@@ -38408,18 +36453,13 @@ Customization
 
 \begin_layout Section
 File Formats
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-File formats
-\end_layout
+\begin_inset LatexCommand index
+name "File formats"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "sec:File-Formats"
 
 \end_inset
@@ -38463,12 +36503,8 @@ Customization
 
 \begin_layout Section
 Copiers
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Copiers
-\end_layout
+\begin_inset LatexCommand index
+name "Copiers"
 
 \end_inset
 
@@ -38497,18 +36533,13 @@ Customization
 
 \begin_layout Chapter
 Units available in LyX
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-Units
-\end_layout
+\begin_inset LatexCommand index
+name "Units"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cha:Units-available-in"
 
 \end_inset
@@ -38518,8 +36549,7 @@ name "cha:Units-available-in"
 
 \begin_layout Standard
 To understand the units described in this documentation, 
-\begin_inset CommandInset ref
-LatexCommand ref
+\begin_inset LatexCommand ref
 reference "cap:Units"
 
 \end_inset
@@ -38538,8 +36568,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cap:Units"
 
 \end_inset
@@ -39006,8 +37035,7 @@ em)
 
 \begin_layout Chapter
 Credits
-\begin_inset CommandInset label
-LatexCommand label
+\begin_inset LatexCommand label
 name "cha:Credits"
 
 \end_inset
@@ -39124,8 +37152,7 @@ Uwe Stöhr
 
 \begin_layout Itemize
 The LyX Team: 
-\begin_inset CommandInset citation
-LatexCommand cite
+\begin_inset LatexCommand cite
 key "lyxcredit"
 
 \end_inset
@@ -39144,8 +37171,7 @@ Bibliography
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 label "Credits"
 key "lyxcredit"
 
@@ -39242,13 +37268,8 @@ Embedded Objects
 :
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS
-\end_layout
+\begin_inset LatexCommand url
+target "http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS"
 
 \end_inset
 
@@ -39256,8 +37277,7 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "latexcompanion"
 
 \end_inset
@@ -39271,8 +37291,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "latexguide"
 
 \end_inset
@@ -39287,8 +37306,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "latexbook"
 
 \end_inset
@@ -39302,8 +37320,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "texbook"
 
 \end_inset
@@ -39319,8 +37336,7 @@ The TeXbook.
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "TeXCatalogue"
 
 \end_inset
@@ -39328,13 +37344,8 @@ key "TeXCatalogue"
 The TeX Catalogue:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
-\end_layout
+\begin_inset LatexCommand url
+target "http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html"
 
 \end_inset
 
@@ -39342,20 +37353,15 @@ http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "LaTeXFAQ"
 
 \end_inset
 
-The LaTeX FAQ: 
-\begin_inset Flex URL
-status collapsed
 
-\begin_layout Standard
-
-http://www.tex.ac.uk/cgi-bin/texfaq2html
-\end_layout
+\begin_inset LatexCommand url
+name "The LaTeX FAQ:"
+target "http://www.tex.ac.uk/cgi-bin/texfaq2html"
 
 \end_inset
 
@@ -39363,8 +37369,7 @@ http://www.tex.ac.uk/cgi-bin/texfaq2html
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "makeindex"
 
 \end_inset
@@ -39400,13 +37405,8 @@ makeindex
 :
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
-\end_layout
+\begin_inset LatexCommand url
+target "http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi"
 
 \end_inset
 
@@ -39414,8 +37414,7 @@ http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "caption"
 
 \end_inset
@@ -39449,25 +37448,16 @@ status collapsed
 caption
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! caption
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! caption"
 
 \end_inset
 
 :
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
-\end_layout
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf"
 
 \end_inset
 
@@ -39475,8 +37465,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "fancyhdr"
 
 \end_inset
@@ -39511,25 +37500,16 @@ status collapsed
 fancyhdr
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! fancyhdr
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! fancyhdr"
 
 \end_inset
 
 :
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
-\end_layout
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 
 \end_inset
 
@@ -39537,8 +37517,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "floatflt"
 
 \end_inset
@@ -39573,25 +37552,16 @@ status collapsed
 floatflt
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! floatflt
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! floatflt"
 
 \end_inset
 
 :
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf
-\end_layout
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf"
 
 \end_inset
 
@@ -39599,8 +37569,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/floatflt/floatflt.pdf
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "nomencl"
 
 \end_inset
@@ -39634,25 +37603,16 @@ status collapsed
 nomencl
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! nomencl
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! nomencl"
 
 \end_inset
 
 :
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
-\end_layout
+\begin_inset LatexCommand url
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
 
 \end_inset
 
@@ -39660,8 +37620,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "tipa"
 
 \end_inset
@@ -39695,25 +37654,16 @@ status collapsed
 tipa
 \series default
 
-\begin_inset Index
-status collapsed
-
-\begin_layout Standard
-LaTeX-packages ! tipa
-\end_layout
+\begin_inset LatexCommand index
+name "LaTeX-packages ! tipa"
 
 \end_inset
 
 :
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
-\end_layout
+\begin_inset LatexCommand url
+target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
 
 \end_inset
 
@@ -39721,8 +37671,7 @@ http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "XeTeX"
 
 \end_inset
@@ -39754,13 +37703,8 @@ status collapsed
  how to use LyX with XeTeX:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/LyX/XeTeX
-\end_layout
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/XeTeX"
 
 \end_inset
 
@@ -39768,8 +37712,7 @@ http://wiki.lyx.org/LyX/XeTeX
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "Arabic"
 
 \end_inset
@@ -39801,13 +37744,8 @@ status collapsed
  how to set up LyX for Arabic:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/Windows/Arabic
-\end_layout
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Arabic"
 
 \end_inset
 
@@ -39815,8 +37753,7 @@ http://wiki.lyx.org/Windows/Arabic
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "Armenian"
 
 \end_inset
@@ -39848,13 +37785,8 @@ status collapsed
  how to set up LyX for Armenian:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/Windows/Armenian
-\end_layout
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Armenian"
 
 \end_inset
 
@@ -39862,8 +37794,7 @@ http://wiki.lyx.org/Windows/Armenian
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "Farsi"
 
 \end_inset
@@ -39895,13 +37826,8 @@ status collapsed
  how to set up LyX for Farsi:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/Windows/Farsi
-\end_layout
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Farsi"
 
 \end_inset
 
@@ -39909,8 +37835,7 @@ http://wiki.lyx.org/Windows/Farsi
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "Hebrew"
 
 \end_inset
@@ -39942,13 +37867,8 @@ status collapsed
  how to set up LyX for Hebrew:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/Windows/Hebrew
-\end_layout
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/Windows/Hebrew"
 
 \end_inset
 
@@ -39956,8 +37876,7 @@ http://wiki.lyx.org/Windows/Hebrew
 \end_layout
 
 \begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
+\begin_inset LatexCommand bibitem
 key "LyX-func"
 
 \end_inset
@@ -39989,13 +37908,8 @@ status collapsed
  with a list of all available LyX-functions:
 \newline
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Standard
-
-http://wiki.lyx.org/LyX/LyxFunctionList
-\end_layout
+\begin_inset LatexCommand url
+target "http://wiki.lyx.org/LyX/LyxFunctionList"
 
 \end_inset
 
@@ -40006,8 +37920,7 @@ http://wiki.lyx.org/LyX/LyxFunctionList
 
 \newpage
 
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
+\begin_inset LatexCommand bibtex
 options "biblio/alphadin"
 bibfiles "biblio/LyXDocs"
 
@@ -40069,14 +37982,12 @@ A manual TOC entry for the bibliography is only necessary because we use
 \begin_layout Standard
 
 \series bold
-\begin_inset CommandInset nomencl_print
-LatexCommand printnomenclature
+\begin_inset LatexCommand printnomenclature
 
 \end_inset
 
 
-\begin_inset CommandInset index_print
-LatexCommand printindex
+\begin_inset LatexCommand printindex
 
 \end_inset
 
