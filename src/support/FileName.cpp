@@ -422,7 +422,7 @@ extern unsigned long sum(char const * file);
 unsigned long FileName::checksum() const
 {
 	if (!exists()) {
-		LYXERR0("File \"" << absFilename() << "\" does not exist!");
+		//LYXERR0("File \"" << absFilename() << "\" does not exist!");
 		return 0;
 	}
 	// a directory may be passed here so we need to test it. (bug 3622)
