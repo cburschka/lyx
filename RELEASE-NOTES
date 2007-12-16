@@ -9,8 +9,9 @@ Known issues in version 1.5.3
 ------------------------------------
 
 - On Fedora 8, LyX might crash when inserting a graphic. This is a bug in
-  the kdelibs4 package shipped with Fedora 8. An update to kde-3.96.2.
-  fixes the problem. Cf.
+  the kdelibs4 package shipped with Fedora 8. The only known workaround,
+  until a fixed package is provided, is to uninstall kdelibs4 (or KDE4, for
+  that matter). Cf.
   https://bugzilla.redhat.com/show_bug.cgi?id=410391
 
 - Generally, CJK does not work very well yet when it is used in a multilingual
