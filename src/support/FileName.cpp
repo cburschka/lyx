@@ -288,7 +288,7 @@ bool FileName::isDirWritable() const
 {
 	LYXERR(Debug::FILES, "isDirWriteable: " << *this);
 
-	FileName const tmpfl = FileName::tempName(*this, "lyxwritetest");
+	FileName const tmpfl = FileName::tempName(absFilename() + "/lyxwritetest");
 
 	if (tmpfl.empty())
 		return false;
@@ -357,11 +357,15 @@ static int make_tempfile(char * templ)
 }
 
 
-FileName FileName::tempName(FileName const & dir, string const & mask)
+FileName FileName::tempName(string const & mask)
 {
-	string const tmpdir = dir.empty() ?
-		package().temp_dir().absFilename() : dir.absFilename();
-	string tmpfl = to_filesystem8bit(from_utf8(addName(tmpdir, mask)));
+	FileName tmp_name(mask);
+	string tmpfl;
+	if (tmp_name.d->fi.isAbsolute())
+		tmpfl = mask;
+	else
+		tmpfl = package().temp_dir().absFilename() + "/" + mask;
+
 #if defined (HAVE_GETPID)
 	tmpfl += convert<string>(getpid());
 #elif defined (HAVE__GETPID)

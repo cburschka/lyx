@@ -148,10 +148,11 @@ public:
 	bool isZippedFile() const;
 
 	static FileName fromFilesystemEncoding(std::string const & name);
-	/// (securely) create a temporary file in the given dir with the given mask
-	/// \p mask must be in filesystem encoding
-	static FileName tempName(FileName const & dir = FileName(),
-						std::string const & mask = empty_string());
+	/// (securely) create a temporary file with the given mask.
+	/// \p mask must be in filesystem encoding, if it contains a
+	/// relative path, the template file will be created in the global
+	/// temporary directory as given by 'package().temp_dir()'.
+	static FileName tempName(std::string const & mask = empty_string());
 
 	/// filename without path
 	std::string onlyFileName() const;

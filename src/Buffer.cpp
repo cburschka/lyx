@@ -1922,7 +1922,7 @@ int AutoSaveBuffer::generateChild()
 		// anyway.
 		bool failed = false;
 
-		FileName const tmp_ret = FileName::tempName(FileName(), "lyxauto");
+		FileName const tmp_ret = FileName::tempName("lyxauto");
 		if (!tmp_ret.empty()) {
 			buffer_.writeFile(tmp_ret);
 			// assume successful write of tmp_ret
