@@ -28,7 +28,6 @@
 #include "TextClass.h"
 
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 #include "support/convert.h"
 #include "support/types.h"
 

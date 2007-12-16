@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "support/Path.h"
-#include "support/lyxlib.h"
 
 // undef PathChanger macro when building PathChanger
 #undef PathChanger

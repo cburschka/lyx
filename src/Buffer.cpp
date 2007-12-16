@@ -86,7 +86,6 @@
 #include "support/gzstream.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
-#include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/Path.h"
 #include "support/textutils.h"

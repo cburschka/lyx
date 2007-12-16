@@ -22,7 +22,6 @@
 
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
-#include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
 

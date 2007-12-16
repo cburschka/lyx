@@ -37,8 +37,6 @@ int accept(int)
 
 #else // defined (HAVE_FCNTL)
 
-#include "support/lyxlib.h"
-
 #include "support/debug.h"
 
 #include <sys/socket.h>

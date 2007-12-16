@@ -13,7 +13,6 @@
 #include "support/FileMonitor.h"
 
 #include "support/FileName.h"
-#include "support/lyxlib.h"
 #include "support/Timeout.h"
 
 #include <boost/bind.hpp>

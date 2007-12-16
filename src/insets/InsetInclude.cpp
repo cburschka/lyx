@@ -48,7 +48,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"
-#include "support/lyxlib.h"
 #include "support/convert.h"
 
 #include <boost/bind.hpp>

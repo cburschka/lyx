@@ -25,7 +25,6 @@
 
 #include "support/environment.h"
 #include "support/FileName.h"
-#include "support/lyxlib.h"
 #include "support/socktools.h"
 
 #include <boost/bind.hpp>

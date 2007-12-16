@@ -25,7 +25,6 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 
 using namespace std;
 using namespace lyx::support;

@@ -17,7 +17,6 @@
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/qstring_helpers.h"

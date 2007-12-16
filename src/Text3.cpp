@@ -62,7 +62,6 @@
 #include "insets/InsetInfo.h"
 
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 #include "support/convert.h"
 #include "support/lyxtime.h"
 

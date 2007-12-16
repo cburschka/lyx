@@ -50,7 +50,6 @@
 
 #include "frontends/Painter.h"
 
-#include "support/lyxlib.h"
 #include "support/lstrings.h"
 
 #include <sstream>

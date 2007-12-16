@@ -29,7 +29,6 @@
 #include "frontends/alert.h"
 
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 #include "support/filetools.h"
 #include "support/os.h"
 

@@ -20,7 +20,6 @@
 #include "support/filetools.h"
 #include "support/ForkedCalls.h"
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 #include "support/os.h"
 
 #include <boost/bind.hpp>

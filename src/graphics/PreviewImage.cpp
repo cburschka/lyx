@@ -16,7 +16,6 @@
 #include "PreviewLoader.h"
 
 #include "support/FileName.h"
-#include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
 

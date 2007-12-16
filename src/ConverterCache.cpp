@@ -22,7 +22,6 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
-#include "support/lyxlib.h"
 #include "support/lyxtime.h"
 #include "support/Package.h"
 

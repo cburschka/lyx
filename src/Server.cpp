@@ -48,7 +48,6 @@
 
 #include "support/FileName.h"
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
 
