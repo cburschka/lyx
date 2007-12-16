@@ -19,7 +19,6 @@
 
 #include <exception>
 #include <iomanip>
-#include <stdlib.h>
 
 using namespace std;
 using lyx::lyxerr;

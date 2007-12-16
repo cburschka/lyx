@@ -65,7 +65,6 @@
 
 #include <boost/assert.hpp>
 
-#include <stdlib.h>
 #include <sstream>
 
 using namespace std;

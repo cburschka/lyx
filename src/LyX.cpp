@@ -66,6 +66,7 @@
 #include <iostream>
 #include <csignal>
 #include <map>
+#include <stdlib.h>
 #include <string>
 #include <vector>
 
@@ -184,7 +185,6 @@ LyX::~LyX()
 	delete pimpl_;
 }
 
-#include <stdlib.h>
 
 void LyX::exit(int exit_code) const
 {
