@@ -65,6 +65,7 @@
 
 #include <boost/assert.hpp>
 
+#include <stdlib.h>
 #include <sstream>
 
 using namespace std;
@@ -361,9 +362,9 @@ Inset * createInset(Buffer & buf, FuncRequest const & cmd)
 
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == ErrorException) {
+			// This should never happen!
 			Alert::error(message.title_, message.details_);
-			LyX::cref().emergencyCleanup();
-			abort();
+			LyX::cref().exit(1);
 		} else if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
 			return 0;

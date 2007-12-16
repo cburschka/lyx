@@ -19,6 +19,7 @@
 
 #include <exception>
 #include <iomanip>
+#include <stdlib.h>
 
 using namespace std;
 using lyx::lyxerr;
@@ -35,26 +36,17 @@ void throw_exception(exception const & e)
 #endif
 
 
-void emergencyCleanup()
-{
-	static bool didCleanup;
-	if (didCleanup)
-		return;
-
-	didCleanup = true;
-
-	LyX::cref().emergencyCleanup();
-}
-
-
 void assertion_failed(char const * expr, char const * function,
 		      char const * file, long line)
 {
 	lyxerr << "Assertion triggered in " << function
 	       << " by failing check \"" << expr << "\""
 	       << " in file " << file << ":" << line << endl;
-	emergencyCleanup();
-	lyx::support::abort();
+
+	// FIXME: by default we exit here but we could also inform the user
+	// about the assertion and do the emergency cleanup without exiting.
+	// FIXME: do we have a list of exit codes defined somewhere?
+	LyX::cref().exit(1);
 }
 
 } // namespace boost

@@ -184,6 +184,27 @@ LyX::~LyX()
 	delete pimpl_;
 }
 
+#include <stdlib.h>
+
+void LyX::exit(int exit_code) const
+{
+	if (exit_code)
+		// Something wrong happened so better save everything, just in
+		// case.
+		emergencyCleanup();
+
+#ifndef NDEBUG
+	// Properly crash in debug mode in order to get a useful backtrace.
+	abort();
+#endif
+
+	// In release mode, try to exit gracefully.
+	if (theApp())
+		theApp()->exit(exit_code);
+	else
+		exit(exit_code);
+}
+
 
 LyX & LyX::ref()
 {
@@ -729,7 +750,7 @@ static void error_handler(int err_sig)
 #else
 	if (err_sig == SIGSEGV || !getEnv("LYXDEBUG").empty())
 #endif
-		support::abort();
+		abort();
 	exit(0);
 }
 

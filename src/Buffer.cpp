@@ -103,6 +103,7 @@
 #include <algorithm>
 #include <iomanip>
 #include <stack>
+#include <stdlib.h>
 #include <sstream>
 #include <fstream>
 
@@ -1001,8 +1002,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	}
 	catch (...) {
 		lyxerr << "Caught some really weird exception..." << endl;
-		LyX::cref().emergencyCleanup();
-		lyx::support::abort();
+		LyX::cref().exit(1);
 	}
 
 	ofs.close();

@@ -41,7 +41,6 @@ liblyxsupport_la_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.cpp \
 	RandomAccessList.h \
-	abort.cpp \
 	convert.cpp \
 	convert.h \
 	copied_ptr.h \

@@ -54,6 +54,11 @@ public:
 	/// Execute LyX.
 	int exec(int & argc, char * argv[]);
 
+	/// Try to exit LyX properly.
+	/// \p exit_code is 0 by default, if a non zero value is passed,
+	/// emergencyCleanup() will be called before exiting.
+	void exit(int exit_code = 0) const;
+
 	static LyX & ref();
 	static LyX const & cref();
 

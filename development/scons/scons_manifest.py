@@ -336,7 +336,6 @@ src_support_files = Split('''
     SignalSlot.cpp
     Systemcall.cpp
     Timeout.cpp
-    abort.cpp
     convert.cpp
     debug.cpp
     docstream.cpp

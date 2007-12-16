@@ -436,8 +436,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 	catch (ExceptionMessage const & e) {
 		if (e.type_ == ErrorException) {
 			Alert::error(e.title_, e.details_);
-			LyX::cref().emergencyCleanup();
-			QApplication::exit(1);
+			LyX::cref().exit(1);
 		} else if (e.type_ == WarningException) {
 			Alert::warning(e.title_, e.details_);
 			return false;
@@ -449,15 +448,13 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 			"\n\nException: ");
 		s += from_ascii(e.what());
 		Alert::error(_("Software exception Detected"), s);
-		LyX::cref().emergencyCleanup();
-		QApplication::exit(1);
+		LyX::cref().exit(1);
 	}
 	catch (...) {
 		docstring s = _("LyX has caught some really weird exception, it will "
 			"now attempt to save all unsaved documents and exit.");
 		Alert::error(_("Software exception Detected"), s);
-		LyX::cref().emergencyCleanup();
-		QApplication::exit(1);
+		LyX::cref().exit(1);
 	}
 
 	return false;

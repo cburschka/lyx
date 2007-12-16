@@ -15,17 +15,11 @@
 #ifndef LYX_LIB_H
 #define LYX_LIB_H
 
-#include <string>
-
-
 namespace lyx {
 namespace support {
 
 /// FIXME: some point to this hmm ?
 int kill(int pid, int sig);
-/// FIXME: same here
-void abort();
-
 
 /**
  * Returns true if var is approximately equal to number with allowed error
