@@ -217,7 +217,7 @@ string const LyXVC::getLogFile() const
 	if (!vcs)
 		return string();
 
-	FileName const tmpf(tempName(FileName(), "lyxvclog"));
+	FileName const tmpf = FileName::tempName(FileName(), "lyxvclog");
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return string();

@@ -93,7 +93,6 @@ liblyxsupport_la_SOURCES = \
 	SignalSlot.cpp \
 	SignalSlot.h \
 	SignalSlotPrivate.h \
-	tempname.cpp \
 	textutils.h \
 	Translator.h \
 	Timeout.cpp \

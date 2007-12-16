@@ -433,7 +433,7 @@ bool TextClass::read(FileName const & filename, ReadType rt)
 	if (format != FORMAT) {
 		LYXERR(Debug::TCLASS, "Converting layout file from format "
 				      << format << " to " << FORMAT);
-		FileName const tempfile(tempName());
+		FileName const tempfile = FileName::tempName();
 		error = !layout2layout(filename, tempfile);
 		if (!error)
 			error = read(tempfile, rt);

@@ -31,11 +31,6 @@ int kill(int pid, int sig);
 /// FIXME: same here
 void abort();
 
-/// (securely) create a temporary file in the given dir with the given mask
-/// \p mask must be in filesystem encoding
-FileName const tempName(FileName const & dir = FileName(),
-		      std::string const & mask = std::string());
-
 
 /**
  * Returns true if var is approximately equal to number with allowed error

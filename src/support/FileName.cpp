@@ -13,11 +13,13 @@
 #include "support/FileName.h"
 #include "support/FileNameList.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
+#include "support/Package.h"
 #include "support/qstring_helpers.h"
 
 #include <QDateTime>
@@ -28,6 +30,7 @@
 #include <QTime>
 
 #include <boost/assert.hpp>
+#include <boost/scoped_array.hpp>
 
 #include <map>
 #include <sstream>
@@ -50,8 +53,26 @@
 # include <windows.h>
 #endif
 
-#include <fcntl.h>
 #include <cerrno>
+#include <fcntl.h>
+
+
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+
+#if defined(HAVE_MKSTEMP) && ! defined(HAVE_DECL_MKSTEMP)
+extern "C" int mkstemp(char *);
+#endif
+
+#if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)
+# ifdef HAVE_IO_H
+#  include <io.h>
+# endif
+# ifdef HAVE_PROCESS_H
+#  include <process.h>
+# endif
+#endif
 
 using namespace std;
 
@@ -267,7 +288,7 @@ bool FileName::isDirWritable() const
 {
 	LYXERR(Debug::FILES, "isDirWriteable: " << *this);
 
-	FileName const tmpfl(tempName(*this, "lyxwritetest"));
+	FileName const tmpfl = FileName::tempName(*this, "lyxwritetest");
 
 	if (tmpfl.empty())
 		return false;
@@ -310,9 +331,67 @@ FileNameList FileName::dirList(string const & ext) const
 }
 
 
+static int make_tempfile(char * templ)
+{
+#if defined(HAVE_MKSTEMP)
+	return ::mkstemp(templ);
+#elif defined(HAVE_MKTEMP)
+	// This probably just barely works...
+	::mktemp(templ);
+# if defined (HAVE_OPEN)
+# if (!defined S_IRUSR)
+#   define S_IRUSR S_IREAD
+#   define S_IWUSR S_IWRITE
+# endif
+	return ::open(templ, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
+# elif defined (HAVE__OPEN)
+	return ::_open(templ,
+		       _O_RDWR | _O_CREAT | _O_EXCL,
+		       _S_IREAD | _S_IWRITE);
+# else
+#  error No open() function.
+# endif
+#else
+#error FIX FIX FIX
+#endif
+}
+
+
 FileName FileName::tempName(FileName const & dir, string const & mask)
 {
-	return support::tempName(dir, mask);
+	string const tmpdir = dir.empty() ?
+		package().temp_dir().absFilename() : dir.absFilename();
+	string tmpfl = to_filesystem8bit(from_utf8(addName(tmpdir, mask)));
+#if defined (HAVE_GETPID)
+	tmpfl += convert<string>(getpid());
+#elif defined (HAVE__GETPID)
+	tmpfl += convert<string>(_getpid());
+#else
+# error No getpid() function
+#endif
+	tmpfl += "XXXXXX";
+
+	// The supposedly safe mkstemp version
+	// FIXME: why not using std::string directly?
+	boost::scoped_array<char> tmpl(new char[tmpfl.length() + 1]); // + 1 for '\0'
+	tmpfl.copy(tmpl.get(), string::npos);
+	tmpl[tmpfl.length()] = '\0'; // terminator
+
+	int const tmpf = make_tempfile(tmpl.get());
+	if (tmpf != -1) {
+		string const t(to_utf8(from_filesystem8bit(tmpl.get())));
+#if defined (HAVE_CLOSE)
+		::close(tmpf);
+#elif defined (HAVE__CLOSE)
+		::_close(tmpf);
+#else
+# error No x() function.
+#endif
+		LYXERR(Debug::FILES, "Temporary file `" << t << "' created.");
+		return FileName(t);
+	}
+	LYXERR(Debug::FILES, "LyX Error: Unable to create temporary file.");
+	return FileName();
 }
 
 

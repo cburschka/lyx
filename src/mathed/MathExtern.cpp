@@ -1020,7 +1020,7 @@ namespace {
 	{
 		// In order to avoid parsing problems with command interpreters
 		// we pass input data through a file
-		FileName const cas_tmpfile(tempName(FileName(), "casinput"));
+		FileName const cas_tmpfile = FileName::tempName(FileName(), "casinput");
 		if (cas_tmpfile.empty()) {
 			lyxerr << "Warning: cannot create temporary file."
 			       << endl;

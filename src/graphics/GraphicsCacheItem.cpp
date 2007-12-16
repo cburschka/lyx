@@ -372,7 +372,8 @@ void CacheItem::Impl::convertToDisplayFormat()
 	FileName filename;
 	zipped_ = filename_.isZippedFile();
 	if (zipped_) {
-		unzipped_filename_ = tempName(FileName(), filename_.toFilesystemEncoding());
+		unzipped_filename_ = FileName::tempName(FileName(),
+			filename_.toFilesystemEncoding());
 		if (unzipped_filename_.empty()) {
 			setStatus(ErrorConverting);
 			LYXERR(Debug::GRAPHICS, "\tCould not create temporary file.");
@@ -415,7 +416,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.
-	FileName const to_file_base(tempName(FileName(), "CacheItem"));
+	FileName const to_file_base = FileName::tempName(FileName(), "CacheItem");
 	remove_loaded_file_ = true;
 
 	// Remove the temp file, we only want the name...
