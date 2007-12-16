@@ -344,7 +344,6 @@ src_support_files = Split('''
     environment.cpp
     filetools.cpp
     gzstream.cpp
-    getcwd.cpp
     gettext.cpp
     kill.cpp
     lstrings.cpp

@@ -52,7 +52,7 @@ public:
 	 *
 	 * Up to two optional extra buttons are allowed for specifying
 	 * additional directories in the navigation (an empty
-	 * directory is interpreted as getcwd())
+	 * directory is interpreted as FileName::getcwd())
 	 */
 	FileDialog(docstring const & title, kb_action a = LFUN_SELECT_FILE_SYNC);
 

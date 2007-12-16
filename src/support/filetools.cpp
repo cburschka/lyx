@@ -410,7 +410,7 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 	if (os::is_absolute_path(basePath))
 		tempBase = basePath;
 	else
-		tempBase = addPath(getcwd().absFilename(), basePath);
+		tempBase = addPath(FileName::getcwd().absFilename(), basePath);
 
 	// Handle /./ at the end of the path
 	while (suffixIs(tempBase, "/./"))
@@ -508,7 +508,7 @@ string const expandPath(string const & path)
 	rTemp = split(rTemp, temp, '/');
 
 	if (temp == ".")
-		return getcwd().absFilename() + '/' + rTemp;
+		return FileName::getcwd().absFilename() + '/' + rTemp;
 
 	if (temp == "~")
 		return package().home_dir().absFilename() + '/' + rTemp;

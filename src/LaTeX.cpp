@@ -159,7 +159,7 @@ int LaTeX::run(TeXErrors & terr)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	theBufferList().updateIncludedTeXfiles(getcwd().absFilename(),
+	theBufferList().updateIncludedTeXfiles(FileName::getcwd().absFilename(),
 		runparams);
 
 	// Never write the depfile if an error was encountered.

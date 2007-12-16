@@ -154,6 +154,9 @@ public:
 	/// temporary directory as given by 'package().temp_dir()'.
 	static FileName tempName(std::string const & mask = empty_string());
 
+	/// get the current working directory
+	static FileName getcwd();
+
 	/// filename without path
 	std::string onlyFileName() const;
 	/// path without file name

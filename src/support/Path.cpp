@@ -24,7 +24,7 @@ PathChanger::PathChanger(FileName const & path)
 	: popped_(false)
 {
 	if (!path.empty()) {
-		pushedDir_ = getcwd();
+		pushedDir_ = FileName::getcwd();
 
 		if (pushedDir_.empty() || !path.chdir()) {
 			/* FIXME: throw */

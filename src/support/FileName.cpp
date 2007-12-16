@@ -399,6 +399,12 @@ FileName FileName::tempName(string const & mask)
 }
 
 
+FileName FileName::getcwd()
+{
+	return FileName(".");
+}
+
+
 time_t FileName::lastModified() const
 {
 	return d->fi.lastModified().toTime_t();

@@ -15,16 +15,11 @@
 #ifndef LYX_LIB_H
 #define LYX_LIB_H
 
-#include "support/FileName.h"
-
 #include <string>
 
 
 namespace lyx {
 namespace support {
-
-/// get the current working directory
-FileName const getcwd();
 
 /// FIXME: some point to this hmm ?
 int kill(int pid, int sig);

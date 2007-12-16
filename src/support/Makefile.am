@@ -64,7 +64,6 @@ liblyxsupport_la_SOURCES = \
 	ForkedCalls.h \
 	gettext.cpp \
 	gettext.h \
-	getcwd.cpp \
 	gzstream.cpp \
 	gzstream.h \
 	kill.cpp \
