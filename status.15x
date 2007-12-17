@@ -41,9 +41,17 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix LaTeX output of documents with both CJK and non-CJK languages.
+  LyX is usable for multilingual CJK now (bug 4337).
 
 
 * USER INTERFACE:
+
+- Fix a crash when changing the document encoding while View->Source
+  is open (bug 3561).
+
+- Fix an assertion when inserting a non-CJK character in a CJK paragraph
+  (bug 4349).
 
 - Fix access to network drives on Windows.
 
