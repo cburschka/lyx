@@ -41,6 +41,7 @@ public:
 	const_iterator end() const;
 
 	/// create a new buffer
+	/// \return 0 if the Buffer creation is not possible for whatever reason.
 	Buffer * newBuffer(std::string const & s, bool ronly = false);
 
 	/// delete a buffer

@@ -78,7 +78,9 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/ExceptionMessage.h"
 #include "support/FileFilterList.h"
+#include "support/FileName.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/ForkedCalls.h"
@@ -87,6 +89,7 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/os.h"
+#include "support/Package.h"
 #include "support/Path.h"
 #include "support/textutils.h"
 #include "support/types.h"
@@ -137,7 +140,7 @@ public:
 	
 	BufferParams params;
 	LyXVC lyxvc;
-	string temppath;
+	FileName temppath;
 	mutable TexRow texrow;
 	Buffer const * parent_buffer;
 
@@ -198,6 +201,24 @@ public:
 	mutable FileNameList bibfilesCache_;
 };
 
+/// Creates the per buffer temporary directory
+static FileName createBufferTmpDir()
+{
+	static int count;
+	// We are in our own directory.  Why bother to mangle name?
+	// In fact I wrote this code to circumvent a problematic behaviour
+	// (bug?) of EMX mkstemp().
+	FileName tmpfl(package().temp_dir().absFilename() + "/lyx_tmpbuf" +
+		convert<string>(count++));
+
+	if (!tmpfl.createDirectory(0777)) {
+		throw ExceptionMessage(WarningException, _("Disk Error: "), bformat(
+			_("LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"),
+			from_utf8(tmpfl.absFilename())));
+	}
+	return tmpfl;
+}
+
 
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
@@ -205,14 +226,9 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	  inset(params), toc_backend(&parent), embedded_files(&parent),
 	  timestamp_(0), checksum_(0), wa_(0), undo_(parent)
 {
+	temppath = createBufferTmpDir();
 	inset.setAutoBreakRows(true);
 	lyxvc.setBuffer(&parent);
-	temppath = createBufferTmpDir();
-
-	// FIXME: And now do something if temppath == string(), because we
-	// assume from now on that temppath points to a valid temp dir.
-	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg67406.html
-
 	if (use_gui)
 		wa_ = new frontend::WorkAreaManager;
 }
@@ -243,10 +259,10 @@ Buffer::~Buffer()
 
 	resetChildDocuments(false);
 
-	if (!temppath().empty() && !FileName(temppath()).destroyDirectory()) {
+	if (!d->temppath.destroyDirectory()) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"),
-			from_utf8(temppath())));
+			from_utf8(d->temppath.absFilename())));
 	}
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
@@ -318,9 +334,9 @@ LyXVC const & Buffer::lyxvc() const
 }
 
 
-string const & Buffer::temppath() const
+string const Buffer::temppath() const
 {
-	return d->temppath;
+	return d->temppath.absFilename();
 }
 
 

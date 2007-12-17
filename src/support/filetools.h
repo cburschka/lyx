@@ -22,9 +22,6 @@ namespace support {
 
 class FileName;
 
-/// Creates the per buffer temporary directory
-std::string const createBufferTmpDir();
-
 /** Creates the global LyX temp dir.
   \p deflt can be an existing directory name. In this case a new directory
   inside \p deflt is created. If \p deflt does not exist yet, \p deflt is

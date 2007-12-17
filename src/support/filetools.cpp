@@ -338,24 +338,6 @@ static FileName createTmpDir(FileName const & tempdir, string const & mask)
 	return tmpfl;
 }
 
-string const createBufferTmpDir()
-{
-	static int count;
-	// We are in our own directory.  Why bother to mangle name?
-	// In fact I wrote this code to circumvent a problematic behaviour
-	// (bug?) of EMX mkstemp().
-	string const tmpfl =
-		package().temp_dir().absFilename() + "/lyx_tmpbuf" +
-		convert<string>(count++);
-
-	if (!FileName(tmpfl).createDirectory(0777)) {
-		lyxerr << "LyX could not create the temporary directory '"
-		       << tmpfl << "'" << endl;
-		return string();
-	}
-	return tmpfl;
-}
-
 
 FileName const createLyXTmpDir(FileName const & deflt)
 {

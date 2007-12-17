@@ -22,6 +22,7 @@
 
 #include "frontends/alert.h"
 
+#include "support/ExceptionMessage.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -93,7 +94,17 @@ void BufferList::release(Buffer * buf)
 
 Buffer * BufferList::newBuffer(string const & s, bool const ronly)
 {
-	auto_ptr<Buffer> tmpbuf(new Buffer(s, ronly));
+	auto_ptr<Buffer> tmpbuf;
+	try { tmpbuf.reset(new Buffer(s, ronly));
+	} catch (ExceptionMessage const & message) {
+		if (message.type_ == ErrorException) {
+			Alert::error(message.title_, message.details_);
+			exit(1);
+		} else if (message.type_ == WarningException) {
+			Alert::warning(message.title_, message.details_);
+			return 0;
+		}
+	}
 	tmpbuf->params().useClassDefaults();
 	LYXERR(Debug::INFO, "Assigning to buffer " << bstore.size());
 	bstore.push_back(tmpbuf.get());

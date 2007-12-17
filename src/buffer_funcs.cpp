@@ -81,6 +81,9 @@ Buffer * checkAndLoadLyXFile(FileName const & filename)
 
 	if (filename.isReadableFile()) {
 		Buffer * b = theBufferList().newBuffer(filename.absFilename());
+		if (!b)
+			// Buffer creation is not possible.
+			return 0;
 		if (!b->loadLyXFile(filename)) {
 			theBufferList().release(b);
 			return 0;
@@ -105,7 +108,9 @@ Buffer * newFile(string const & filename, string const & templatename,
 {
 	// get a free buffer
 	Buffer * b = theBufferList().newBuffer(filename);
-	BOOST_ASSERT(b);
+	if (!b)
+		// Buffer creation is not possible.
+		return 0;
 
 	FileName tname;
 	// use defaults.lyx as a default template if it exists.

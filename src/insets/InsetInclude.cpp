@@ -312,6 +312,10 @@ Buffer * loadIfNeeded(Buffer const & parent, InsetCommandParams const & params)
 			return 0;
 
 		child = theBufferList().newBuffer(included_file.absFilename());
+		if (!child)
+			// Buffer creation is not possible.
+			return 0;
+
 		if (!child->loadLyXFile(included_file)) {
 			//close the buffer we just opened
 			theBufferList().release(child);

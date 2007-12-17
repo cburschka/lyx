@@ -328,7 +328,7 @@ public:
 	LyXVC const & lyxvc() const;
 
 	/// Where to put temporary files.
-	std::string const & temppath() const;
+	std::string const temppath() const;
 
 	/// Used when typesetting to place errorboxes.
 	TexRow const & texrow() const;
