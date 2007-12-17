@@ -1,11 +1,8 @@
 #LyX 1.6.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 299
+\lyxformat 308
 \begin_document
 \begin_header
 \textclass article
-\begin_modules
-URL
-\end_modules
 \language english
 \inputencoding default
 \font_roman default
@@ -1284,14 +1281,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author
 \end_layout
 
@@ -1361,14 +1350,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.sgmltools.org
 \end_layout
 
@@ -1436,14 +1417,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.dante.de
 \end_layout
 
@@ -1535,14 +1508,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://math.tulane.edu/~entcs/
 \end_layout
 
@@ -1874,14 +1839,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.ieee.org
 \end_layout
 
@@ -1943,14 +1900,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 \end_layout
 
@@ -1994,14 +1943,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 \end_layout
 
@@ -2045,14 +1986,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 ftp://ftp.iop.org/pub/journals/latex2e
 \end_layout
 
@@ -2250,14 +2183,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
 
@@ -2282,14 +2207,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.wkap.nl/jrnllist.htm/JRNLHOME
 \end_layout
 
@@ -2540,14 +2457,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 ftp://trick.ntp.springer.de/pub/tex/latex/llncs/latex2e
 \end_layout
 
@@ -2746,14 +2655,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://public.lanl.gov/kmh/spie/
 \end_layout
 
@@ -2775,14 +2676,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings
 \end_layout
 
@@ -2865,14 +2758,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://publish.aps.org/revtex4/
 \end_layout
 
@@ -2984,14 +2869,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.springeronline.com
 \end_layout
 
@@ -3067,14 +2944,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.springeronline.com
 \end_layout
 
@@ -3128,14 +2997,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.springeronline.com
 \end_layout
 
@@ -3204,14 +3065,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.tug.org
 \end_layout
 
@@ -3253,14 +3106,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls
 \end_layout
 
@@ -3405,6 +3250,34 @@ texconfig
 
 \end_deeper
 \begin_layout Subsection
+booktabs
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "booktabs"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/booktabs/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+booktabs
+\family default
+ is needed by LyX to be able to output correctly formal tables.
+\end_layout
+
+\begin_layout Subsection
 color
 \end_layout
 
@@ -3515,6 +3388,35 @@ default
 \end_layout
 
 \begin_layout Subsection
+hyperref
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "hyperref"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/hyperref/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+hyperref
+\family default
+ is needed by LyX to be able to set PDF properties for your document and
+ to create hyperlinks.
+\end_layout
+
+\begin_layout Subsection
 longtable
 \end_layout
 
@@ -3542,32 +3444,8 @@ longtable
  is needed by LyX to be able to output correctly multipage tables.
 \end_layout
 
-\begin_layout Subsection
-booktabs
-\end_layout
-
 \begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "booktabs"
-\end_inset
 
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/booktabs/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-booktabs
-\family default
- is needed by LyX to be able to output correctly formal tables.
 \end_layout
 
 \begin_layout Subsection
@@ -3942,14 +3820,6 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 http://www.jurabib.org
 \end_layout
 
