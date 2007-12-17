@@ -44,12 +44,11 @@ void latexParagraphs(Buffer const & buf,
 		     OutputParams const &,
 		     std::string const & everypar = std::string());
 
-/// Switch the encoding of \p os from \p oldEnc to \p newEnc if needed.
+/// Switch the encoding of \p os from runparams.encoding to \p newEnc if needed.
 /// \return (did the encoding change?, number of characters written to \p os)
-std::pair<bool, int> switchEncoding(odocstream & os, 
+std::pair<bool, int> switchEncoding(odocstream & os,
 		     BufferParams const & bparams,
-		     bool moving_arg, Encoding const & oldEnc,
-		     Encoding const & newEnc);
+		     OutputParams const &, Encoding const & newEnc);
 
 } // namespace lyx
 

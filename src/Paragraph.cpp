@@ -68,6 +68,7 @@ namespace lyx {
 
 using support::contains;
 using support::prefixIs;
+using support::subst;
 using support::suffixIs;
 using support::rsplit;
 
@@ -2163,12 +2164,21 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			open_font = false;
 		}
 
+		// close babel's font environment before opening CJK.
+		if (!running_font.language()->babel().empty() &&
+		    font.language()->encoding()->package() == Encoding::CJK) {
+				string end_tag = subst(lyxrc.language_command_end,
+							"$$lang",
+							running_font.language()->babel());
+				os << from_ascii(end_tag);
+				column += end_tag.length();
+		}
+
 		// Switch file encoding if necessary
-		if (runparams.encoding->package() == Encoding::inputenc &&
-		    font.language()->encoding()->package() == Encoding::inputenc) {
+		if (runparams.encoding->package() != Encoding::none &&
+		    font.language()->encoding()->package() != Encoding::none) {
 			std::pair<bool, int> const enc_switch = switchEncoding(os, bparams,
-					runparams.moving_arg, *(runparams.encoding),
-					*(font.language()->encoding()));
+					runparams, *(font.language()->encoding()));
 			if (enc_switch.first) {
 				column += enc_switch.second;
 				runparams.encoding = font.language()->encoding();
