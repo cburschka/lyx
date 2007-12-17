@@ -199,11 +199,6 @@ bool FileName::moveTo(FileName const & name) const
 
 bool FileName::changePermission(unsigned long int mode) const
 {
-	if (!isWritable()) {
-		LYXERR0("File " << *this << " is not writable!");
-		return false;
-	}
-
 #if defined (HAVE_CHMOD) && defined (HAVE_MODE_T)
 	if (::chmod(toFilesystemEncoding().c_str(), mode_t(mode)) != 0) {
 		LYXERR0("File " << *this << ": cannot change permission to "
