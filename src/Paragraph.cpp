@@ -1961,8 +1961,7 @@ bool Paragraph::latex(Buffer const & buf,
 		    runparams.encoding->package() == Encoding::none &&
 		    font.language()->encoding()->package() == Encoding::none) {
 			pair<bool, int> const enc_switch = switchEncoding(os, bparams,
-					runparams, *(runparams.encoding),
-					*(font.language()->encoding()));
+					runparams, *(font.language()->encoding()));
 			if (enc_switch.first) {
 				column += enc_switch.second;
 				runparams.encoding = font.language()->encoding();

@@ -455,7 +455,7 @@ TeXOnePar(Buffer const & buf,
 				OutputParams tmp_rp = runparams;
 				runparams.moving_arg = false;
 				pair<bool, int> enc_switch = switchEncoding(os, bparams, runparams,
-					*(runparams.encoding), *encoding);
+					*encoding);
 				runparams = tmp_rp;
 				// the following is necessary after a CJK environment in a multilingual
 				// context (nesting issue).
@@ -865,9 +865,9 @@ void latexParagraphs(Buffer const & buf,
 
 
 pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
-		   OutputParams const & runparams, Encoding const & oldEnc,
-		   Encoding const & newEnc)
+		   OutputParams const & runparams, Encoding const & newEnc)
 {
+	Encoding const oldEnc = *runparams.encoding;
 	bool moving_arg = runparams.moving_arg;
 	if ((bparams.inputenc != "auto" && bparams.inputenc != "default")
 		|| moving_arg)
