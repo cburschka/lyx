@@ -47,6 +47,7 @@ int accept(int)
 #endif
 
 #include <cerrno>
+#include <string>
 
 using namespace std;
 
